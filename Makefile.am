@@ -3,7 +3,12 @@ KDE_OPTIONS = nofinal
 SUBDIRS = knewstuff . korgac pixmaps sounds plugins interfaces
 
 INCLUDES = \
-  -I$(srcdir)/interfaces -I$(srcdir)/kdgantt -I$(top_srcdir)/libkdepim -I$(top_srcdir) $(all_includes)
+  -I$(srcdir)/interfaces \
+  -I$(srcdir)/kdgantt \
+  -I$(top_srcdir)/libkdepim \
+  -I$(top_srcdir)/mimelib \
+  -I$(top_srcdir) \
+  $(all_includes)
 
 bin_PROGRAMS = korganizer
 
