@@ -72,8 +72,8 @@ class KOEditorDetails : public QWidget
     /** Write event settings to event object */
     void writeEvent(Incidence *);
 
-		/** return a clone of the event with attendees to be canceld*/
-    Event *cancelAttendeeEvent(Incidence *);
+    /** return a clone of the event with attendees to be canceld*/
+    void cancelAttendeeEvent(Incidence *);
     /** Check if the input is valid. */
     bool validateInput();
 
