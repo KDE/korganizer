@@ -76,8 +76,8 @@ void TimeSpanView::addItem( KCal::Event *event )
 //  kdDebug(5850) << "TimeSpanView::addItem(): start: " << startDt.toString()
 //            << "  end: " << endDt.toString() << endl;
 
-  int startSecs = mStartDate.secsTo( startDt );
-  int durationSecs = startDt.secsTo( endDt );
+//  int startSecs = mStartDate.secsTo( startDt );
+//  int durationSecs = startDt.secsTo( endDt );
   
 //  kdDebug(5850) << "--- startSecs: " << startSecs << "  dur: " << durationSecs << endl;
 

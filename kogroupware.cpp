@@ -357,7 +357,7 @@ void KOGroupware::incomingResourceRequest( const QValueList<QPair<QDateTime, QDa
   to "false" to signal this to KMail.
 */
 
-bool KOGroupware::incidenceAnswer( const QCString& sender, const QString& vCalIn,
+bool KOGroupware::incidenceAnswer( const QCString& /*sender*/, const QString& vCalIn,
                                    QString& vCalOut )
 {
   vCalOut = "";

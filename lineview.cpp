@@ -51,7 +51,7 @@ void LineView::drawContents(QPainter* p, int cx, int cy, int cw, int ch)
 {
 //  kdDebug(5850) << "LineView::drawContents()" << endl;
 
-  int mGridSpacingX = 10;
+//  int mGridSpacingX = 10;
   int mGridSpacingY = 20;
 
 #if 0
