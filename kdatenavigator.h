@@ -36,6 +36,8 @@ class QTimer;
 
 class KCalendarSystem;
 
+class NavigatorBar;
+
 class KDateNavigator: public QFrame
 {
     Q_OBJECT
@@ -109,12 +111,8 @@ class KDateNavigator: public QFrame
     bool eventFilter (QObject *,QEvent *);
 
   private:
-    QFrame   *ctrlFrame;
-    QPushButton *prevYear;
-    QPushButton *prevMonth;
-    QPushButton *nextMonth;
-    QPushButton *nextYear;
-    QLabel *dateLabel;
+    NavigatorBar *mNavigatorBar;
+
     QFrame *headingSep;
     QFrame *weeknumSep;
     QLabel *headings[7];
@@ -134,13 +132,12 @@ class KDateNavigator: public QFrame
 
     const QString *curHeaders;
 
-
-     /** used to update the day view periodically, in particular every
-     * midnight to move the "today" rectangle.
-     */
-     QTimer *updateTimer;
-     QDate lastDayChecked;
-     RolloverType updateRollover;
+    /** used to update the day view periodically, in particular every
+    * midnight to move the "today" rectangle.
+    */
+    QTimer *updateTimer;
+    QDate lastDayChecked;
+    RolloverType updateRollover;
 
     // Disabling copy constructor and assignment operator
     KDateNavigator(const KDateNavigator & );

@@ -22,16 +22,15 @@
 */
 
 #include <qstring.h>
-#include <qtooltip.h>
 #include <qkeycode.h>
-#include <qpushbutton.h>
 #include <qlayout.h>
 #include <qtimer.h>
+#include <qframe.h>
+#include <qlabel.h>
 
 #include <kdebug.h>
 #include <klocale.h>
 #include <kglobal.h>
-#include <kiconloader.h>
 
 #include "koglobals.h"
 #include "koprefs.h"
@@ -41,8 +40,9 @@
 
 #include <kcalendarsystem.h>
 
+#include "navigatorbar.h"
+
 #include "kdatenavigator.h"
-#include "kdatenavigator.moc"
 
 KDateNavigator::KDateNavigator( QWidget *parent, Calendar *calendar,
                                 bool show_week_nums, const char *name,
@@ -65,76 +65,22 @@ KDateNavigator::KDateNavigator( QWidget *parent, Calendar *calendar,
   m_MthYr = startDate;
   m_bShowWeekNums = show_week_nums;
 
-  // Set up the control buttons and date label
-  ctrlFrame = new QFrame(this, "KDateNavigator::CtrlFrame");
-  ctrlFrame->setFrameStyle(QFrame::Panel|QFrame::Raised);
-  ctrlFrame->setLineWidth(1);
+  mNavigatorBar = new NavigatorBar( this );
+  topLayout->addMultiCellWidget( mNavigatorBar, 0, 0, 0, 7 );
 
-  topLayout->addMultiCellWidget(ctrlFrame,0,0,0,7);
-
-  QFont tfont = font();
-  tfont.setPointSize(10);
-  tfont.setBold(FALSE);
-
-  bool isRTL = KOGlobals::self()->reverseLayout();
-
-  // Create backward navigation buttons
-  prevYear = new QPushButton(ctrlFrame);
-  prevYear->setPixmap(SmallIcon(isRTL ? "2rightarrow" : "2leftarrow"));
-  QToolTip::add(prevYear, i18n("Previous Year"));
-
-  prevMonth = new QPushButton(ctrlFrame);
-  prevMonth->setPixmap(SmallIcon(isRTL ? "1rightarrow" : "1leftarrow"));
-  QToolTip::add(prevMonth, i18n("Previous Month"));
-
-  // Create forward navigation buttons
-  nextMonth = new QPushButton(ctrlFrame);
-  nextMonth->setPixmap(SmallIcon(isRTL ? "1leftarrow" : "1rightarrow"));
-  QToolTip::add(nextMonth, i18n("Next Month"));
-
-  nextYear = new QPushButton(ctrlFrame);
-  nextYear->setPixmap(SmallIcon(isRTL ? "2leftarrow" : "2rightarrow"));
-  QToolTip::add(nextYear, i18n("Next Year"));
-
-  // Create month name label
-  dateLabel = new QLabel(ctrlFrame);
-  dateLabel->setFont(tfont);
-  dateLabel->setAlignment(AlignCenter);
-
-  // Set minimum width to width of widest month name label
-  int i;
-  int maxwidth = 0;
-  QFontMetrics fm = dateLabel->fontMetrics();
-
-  for(i=1;i<=12;++i) {
-    int width = fm.width( KOGlobals::self()->calendarSystem()->monthName(i) + " 2000" );
-    if (width > maxwidth) maxwidth = width;
-  }
-  dateLabel->setMinimumWidth(maxwidth);
-
-  // set up control frame layout
-  QBoxLayout *ctrlLayout = new QHBoxLayout(ctrlFrame,1);
-  ctrlLayout->addWidget(prevYear,3);
-  ctrlLayout->addWidget(prevMonth,3);
-  ctrlLayout->addStretch(1);
-  ctrlLayout->addSpacing(2);
-  ctrlLayout->addWidget(dateLabel);
-  ctrlLayout->addSpacing(2);
-  ctrlLayout->addStretch(1);
-  ctrlLayout->addWidget(nextMonth,3);
-  ctrlLayout->addWidget(nextYear,3);
-
-  connect( prevYear, SIGNAL( clicked() ), SIGNAL( goPrevYear() ) );
-  connect( prevMonth, SIGNAL( clicked() ), SIGNAL( goPrevMonth() ) );
-  connect( nextMonth, SIGNAL( clicked() ), SIGNAL( goNextMonth() ) );
-  connect( nextYear, SIGNAL( clicked() ), SIGNAL( goNextYear() ) );
+  connect( mNavigatorBar, SIGNAL( goPrevYear() ), SIGNAL( goPrevYear() ) );
+  connect( mNavigatorBar, SIGNAL( goPrevMonth() ), SIGNAL( goPrevMonth() ) );
+  connect( mNavigatorBar, SIGNAL( goNextMonth() ), SIGNAL( goNextMonth() ) );
+  connect( mNavigatorBar, SIGNAL( goNextYear() ), SIGNAL( goNextYear() ) );
 
   // get the day of the week on the first day
   QDate dayone(m_MthYr.year(), m_MthYr.month(), 1);
   m_fstDayOfWk = dayone.dayOfWeek();
 
+  int i;
+
   // Set up the heading fields.
-  for(i=0; i<7; i++) {
+  for( i = 0; i < 7; i++ ) {
     headings[i] = new QLabel("",this);
     headings[i]->setFont(QFont("Arial", 10, QFont::Bold));
     headings[i]->setAlignment(AlignCenter);
@@ -143,7 +89,7 @@ KDateNavigator::KDateNavigator( QWidget *parent, Calendar *calendar,
   }
 
   // Create the weeknumber labels
-  for(i=0; i<6; i++) {
+  for( i = 0; i < 6; i++ ) {
     weeknos[i] = new QLabel(this);
     weeknos[i]->setAlignment(AlignCenter);
     weeknos[i]->setFont(QFont("Arial", 10));
@@ -283,12 +229,6 @@ void KDateNavigator::updateView()
 {
   setUpdatesEnabled( false );
 
-  // compute the label at the top of the navigator
-  QDate cT( m_MthYr.year(), m_MthYr.month(), m_MthYr.day() );
-  QString dtstr = KOGlobals::self()->calendarSystem()->monthName( cT ) + " " +
-                  QString::number(KOGlobals::self()->calendarSystem()->year( cT ) );
-  dateLabel->setText(dtstr);
-
   int i;
 
 //  kdDebug() << "updateView() -> daymatrix->updateView()" << endl;
@@ -349,11 +289,14 @@ void KDateNavigator::setShowWeekNums(bool enabled)
 void KDateNavigator::selectDates(const DateList& dateList)
 {
   if (dateList.count() > 0) {
+    mNavigatorBar->selectDates( dateList );
+
     mSelectedDates = dateList;
 
     // set our record of the month and year that this datetbl is
     // displaying.
     m_MthYr = mSelectedDates.first();
+
 
     // set our record of the first day of the week of the current
     // month. This needs to be done before calling dayToIndex, since it
@@ -409,3 +352,5 @@ bool KDateNavigator::eventFilter (QObject *o,QEvent *e)
     return false;
   }
 }
+
+#include "kdatenavigator.moc"
