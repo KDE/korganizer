@@ -22,12 +22,6 @@
 */
 #ifndef _EXPORTWEBDIALOG_H
 #define _EXPORTWEBDIALOG_H
-/*
-  ExportWebDialog is a class that provides the dialog and functions to export a
-  calendar as web page.
-
-  $Id$  
-*/
 
 #include <kdialogbase.h>
 #include <kio/job.h>
@@ -46,6 +40,10 @@ class KConfig;
 class HtmlExport;
 class KURLRequester;
 
+/**
+  ExportWebDialog is a class that provides the dialog and functions to export a
+  calendar as web page.
+*/
 class ExportWebDialog : public KDialogBase
 {
     Q_OBJECT
@@ -68,6 +66,9 @@ class ExportWebDialog : public KDialogBase
     void setupEventPage();
     void setupTodoPage();
     void setupAdvancedPage();
+
+    void loadSettings();
+    void saveSettings();
 
   private:
     Calendar *mCalendar;

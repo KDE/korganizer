@@ -21,11 +21,6 @@
     without including the source code for Qt in the source distribution.
 */
 
-// $Id$
-//
-// ExportWebDialog.cpp - Implementation of web page export dialog.
-//
-
 #include "exportwebdialog.h"
 #include "exportwebdialog.moc"
 
@@ -70,18 +65,21 @@ ExportWebDialog::ExportWebDialog (Calendar *cal, QWidget *parent,
 {
   mExport = new HtmlExport(cal);
 
+  mConfig = KGlobal::config();
+
   setupGeneralPage();
   setupEventPage();
   setupTodoPage();
 // Disabled bacause the functionality is not yet implemented.
 //  setupAdvancedPage();
 
-  QObject::connect(this,SIGNAL(user1Clicked()),this,SLOT(exportWebPage()));
+  loadSettings();
+
+  QObject::connect( this, SIGNAL( user1Clicked() ), SLOT( exportWebPage() ) );
 }
 
 ExportWebDialog::~ExportWebDialog()
 {
-  delete mConfig;
 }
 
 void ExportWebDialog::setupGeneralPage()
@@ -110,7 +108,6 @@ void ExportWebDialog::setupGeneralPage()
   mCbMonth = new QCheckBox(i18n("Month"), typeGroup);
   mCbEvent = new QCheckBox(i18n("Event list"), typeGroup);
   mCbTodo = new QCheckBox(i18n("To-Do list"), typeGroup);
-  mCbTodo->setChecked(true);
 
   QGroupBox *destGroup = new QVGroupBox(i18n("Destination"),mGeneralPage);
   topLayout->addWidget(destGroup);
@@ -188,8 +185,50 @@ void ExportWebDialog::setupAdvancedPage()
   topLayout->addStretch(1);
 }
 
+void ExportWebDialog::loadSettings()
+{
+  KConfig *cfg = KGlobal::config();
+  cfg->setGroup( "HtmlExport" );
+
+  mCbMonth->setChecked( cfg->readBoolEntry( "Month", false ) );
+  mCbEvent->setChecked( cfg->readBoolEntry( "Event", true ) );
+  mCbTodo->setChecked( cfg->readBoolEntry( "Todo", true ) );
+  mCbCategoriesEvent->setChecked( cfg->readBoolEntry( "CategoriesEvent", false ) );
+  mCbAttendeesEvent->setChecked( cfg->readBoolEntry( "AttendeesEvent", false ) );
+  mCbExcludePrivateEvent->setChecked( cfg->readBoolEntry( "ExcludePrivateEvent", true ) );
+  mCbExcludeConfidentialEvent->setChecked( cfg->readBoolEntry( "ExcludeConfidentialEvent", true ) );
+  mCbCategoriesTodo->setChecked( cfg->readBoolEntry( "CategoriesTodo", false ) );
+  mCbAttendeesTodo->setChecked( cfg->readBoolEntry( "AttendeesTodo", false ) );
+  mCbExcludePrivateTodo->setChecked( cfg->readBoolEntry( "ExcludePrivateTodo", true ) );
+  mCbExcludeConfidentialTodo->setChecked( cfg->readBoolEntry( "ExcludeConfidentialTodo", true ) );
+  mCbDueDates->setChecked( cfg->readBoolEntry( "DueDates", true ) );
+}
+
+void ExportWebDialog::saveSettings()
+{
+  KConfig *cfg = KGlobal::config();
+  cfg->setGroup( "HtmlExport" );
+
+  cfg->writeEntry( "Month", mCbMonth->isChecked() );
+  cfg->writeEntry( "Event", mCbEvent->isChecked() );
+  cfg->writeEntry( "Todo", mCbTodo->isChecked() );
+  cfg->writeEntry( "CategoriesEvent", mCbCategoriesEvent->isChecked() );
+  cfg->writeEntry( "AttendeesEvent", mCbAttendeesEvent->isChecked());
+  cfg->writeEntry( "ExcludePrivateEvent", mCbExcludePrivateEvent->isChecked());
+  cfg->writeEntry( "ExcludeConfidentialEvent", mCbExcludeConfidentialEvent->isChecked());
+  cfg->writeEntry( "CategoriesTodo", mCbCategoriesTodo->isChecked());
+  cfg->writeEntry( "AttendeesTodo", mCbAttendeesTodo->isChecked());
+  cfg->writeEntry( "ExcludePrivateTodo", mCbExcludePrivateTodo->isChecked());
+  cfg->writeEntry( "ExcludeConfidentialTodo", mCbExcludeConfidentialTodo->isChecked());
+  cfg->writeEntry( "DueDates", mCbDueDates->isChecked());
+
+  cfg->sync();
+}
+
 void ExportWebDialog::exportWebPage()
 {
+  saveSettings();
+
   mExport->setMonthViewEnabled(mCbMonth->isChecked());
   mExport->setEventsEnabled(mCbEvent->isChecked());
   mExport->setTodosEnabled(mCbTodo->isChecked());
