@@ -26,6 +26,7 @@
 #include <kio/job.h>
 #include <kstddirs.h>
 #include <kconfig.h>
+#include <kglobal.h>
 
 #include "calobject.h"
 #include "kdateedit.h"
@@ -169,14 +170,15 @@ void ExportWebDialog::exportWebPage()
 //  tmpFile.setAutoDelete(true);
   QTextStream *ts = tmpFile.textStream();
   kdDebug() << "ExportWebDialog::exportWebPage() textStream" << endl;
-  
+
   // Write HTML header
   *ts << "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0 Transitional//EN\" ";
   *ts << "\"http://www.w3.org/TR/REC-html40/loose.dtd\">\n";
 
   kdDebug() << "ExportWebDialog::exportWebPage() header" << endl;
-  
+
   *ts << "<HTML><HEAD>" << endl;
+  *ts << "  <META http-equiv=\"Content-Type\" content=\"text/html; charset=" + KGlobal::locale()->charset() +  "\">\n";
   *ts << "  <TITLE>" << i18n("KOrganizer To-Do List") << "</TITLE>\n";
   *ts << "  <style type=\"text/css\">\n";
   *ts << "    body { background-color:white; color:black }\n";
@@ -193,7 +195,7 @@ void ExportWebDialog::exportWebPage()
 
   // TO DO: Write KOrganizer header
   // (Heading, Calendar-Owner, Calendar-Date, ...)
-  
+
   // Write Event List
   if (mCbEvent->isChecked()) {
     kdDebug() << "ExportWebDialog::exportWebPage() evlist" << endl;
@@ -217,7 +219,7 @@ void ExportWebDialog::exportWebPage()
   // Write KOrganizer trailer
   *ts << "<P>" << i18n("This page was created by <A HREF=\"http://"
         "korganizer.kde.org\">KOrganizer</A>") << "</P>\n";
-  
+
   // Write HTML trailer
   *ts << "</BODY></HTML>\n";
 
@@ -230,7 +232,7 @@ void ExportWebDialog::exportWebPage()
   KOPrefs::instance()->mHtmlExportFile = mOutputFileEdit->text();
 
   kdDebug() << "ExportWebDialog::exportWebPage() move" << endl;
-  
+
   KIO::Job *job = KIO::move(src,dest);
   connect(job,SIGNAL(result(KIO::Job *)),SLOT(slotResult(KIO::Job *)));
   kdDebug() << "ExportWebDialog::exportWebPage() done" << endl;
