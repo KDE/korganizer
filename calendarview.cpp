@@ -273,7 +273,7 @@ CalendarView::CalendarView( QWidget *parent, const char *name )
 
   connect( QApplication::clipboard(), SIGNAL( dataChanged() ),
            SLOT( checkClipboard() ) );
-  
+
   connect( mTodoList, SIGNAL( incidenceSelected( Incidence * ) ),
            SLOT( processTodoListSelection( Incidence * ) ) );
   disconnect( mTodoList, SIGNAL( incidenceSelected( Incidence * ) ),
@@ -2038,6 +2038,7 @@ void CalendarView::recurTodo( Todo *todo )
       QDateTime oldRecStartDate = r->recurStart();
       todo->setDtStart( todo->dtDue().addDays( length ) );
       r->setRecurStart( oldRecStartDate );
+      todo->setCompleted( false );
 
       return;
   }
