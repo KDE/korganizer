@@ -442,9 +442,9 @@ void KODayMatrix::dropEvent( QDropEvent *e )
   }
 
   DndFactory factory( mCalendar );
-  Event *event = factory.createDrop(e);
-  Todo *todo = factory.createDropTodo(e);
-  if (!event && !todo) {
+  Event *event = factory.createDrop( e );
+  Todo *todo = factory.createDropTodo( e );
+  if ( !event && !todo ) {
     e->ignore();
     return;
   }
@@ -453,21 +453,21 @@ void KODayMatrix::dropEvent( QDropEvent *e )
   Event *existingEvent = 0, *oldEvent = 0;
 
   // Find the incidence in the calendar, then we don't need the drag object any more
-  if (event) existingEvent = mCalendar->event(event->uid());
-  if (todo) existingTodo = mCalendar->todo(todo->uid());
+  if ( event ) existingEvent = mCalendar->event( event->uid() );
+  if ( todo ) existingTodo = mCalendar->todo( todo->uid() );
 
-  int action=DRAG_CANCEL;
+  int action = DRAG_CANCEL;
 
   int root_x, root_y, win_x, win_y;
   uint keybstate;
   Window rootw, childw;
   XQueryPointer( qt_xdisplay(), qt_xrootwin(), &rootw, &childw,
-    &root_x, &root_y, &win_x, &win_y, &keybstate );
+                 &root_x, &root_y, &win_x, &win_y, &keybstate );
 
   if ( keybstate & ControlMask ) {
-    action=DRAG_COPY;
+    action = DRAG_COPY;
   } else if ( keybstate & ShiftMask ) {
-   action=DRAG_MOVE;
+    action = DRAG_MOVE;
   } else {
     KPopupMenu *menu = new KPopupMenu( this );
     if ( existingEvent || existingTodo ) {
@@ -483,53 +483,53 @@ void KODayMatrix::dropEvent( QDropEvent *e )
   }
 
   // When copying, clear the UID:
-  if ( action==DRAG_COPY ) {
-    if (todo) todo->recreate();
-    if (event) event->recreate();
+  if ( action == DRAG_COPY ) {
+    if ( todo ) todo->recreate();
+    if ( event ) event->recreate();
   } else {
-    if (existingEvent) oldEvent = existingEvent->clone();
-    if (event) delete event;
+    if ( existingEvent ) oldEvent = existingEvent->clone();
+    if ( event ) delete event;
     event = existingEvent;
-    if (existingTodo) oldTodo = existingTodo->clone();
-    if (todo) delete todo;
+    if ( existingTodo ) oldTodo = existingTodo->clone();
+    if ( todo ) delete todo;
     todo = existingTodo;
   }
 
-  if ( action==DRAG_COPY  || action==DRAG_MOVE ) {
+  if ( action == DRAG_COPY  || action == DRAG_MOVE ) {
     e->accept();
-    if (event) {
+    if ( event ) {
       // Adjust date
       QDateTime start = event->dtStart();
       QDateTime end = event->dtEnd();
-      int duration = start.daysTo(end);
-      int idx = getDayIndexFrom(e->pos().x(), e->pos().y());
+      int duration = start.daysTo( end );
+      int idx = getDayIndexFrom( e->pos().x(), e->pos().y() );
 
-      start.setDate(days[idx]);
-      end.setDate(days[idx].addDays(duration));
+      start.setDate( days[idx] );
+      end.setDate( days[idx].addDays( duration ) );
 
-      event->setDtStart(start);
-      event->setDtEnd(end);
-        // When moving, we don't need to insert  the item!
-      if (action!=DRAG_MOVE)
-        mCalendar->addEvent(event);
+      event->setDtStart( start );
+      event->setDtEnd( end );
+      // When moving, we don't need to insert  the item!
+      if ( action != DRAG_MOVE )
+        mCalendar->addEvent( event );
 
       if ( oldEvent ) {
         emit eventDroppedMove( oldEvent, event );
       } else {
         emit eventDropped( event );
       }
-    } // end event
-    if (todo) {
+    }
+    if ( todo ) {
       // Adjust date
       QDateTime due = todo->dtDue();
-      int idx = getDayIndexFrom(e->pos().x(), e->pos().y());
-      due.setDate(days[idx]);
+      int idx = getDayIndexFrom( e->pos().x(), e->pos().y() );
+      due.setDate( days[idx] );
 
-      todo->setDtDue(due);
-      todo->setHasDueDate(true);
+      todo->setDtDue( due );
+      todo->setHasDueDate( true );
 
-        // When moving, we don't need to insert  the item!
-      if ( action!=DRAG_MOVE )
+      // When moving, we don't need to insert  the item!
+      if ( action != DRAG_MOVE )
         mCalendar->addTodo( todo );
 
       if ( oldTodo ) {
@@ -537,10 +537,10 @@ void KODayMatrix::dropEvent( QDropEvent *e )
       } else {
         emit todoDropped( todo );
       }
-    } // end todo
-  } else { // cancel
-    if (todo) delete todo;
-    if (event) delete event;
+    }
+  } else {
+    if ( todo ) delete todo;
+    if ( event ) delete event;
     e->ignore();
   }
 #endif

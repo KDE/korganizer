@@ -358,24 +358,24 @@ bool KOAgenda::eventFilter ( QObject *object, QEvent *event )
   }
 }
 
-bool KOAgenda::eventFilter_drag(QObject *object, QDropEvent *de)
+bool KOAgenda::eventFilter_drag( QObject *object, QDropEvent *de )
 {
 #ifndef KORG_NODND
   QPoint viewportPos;
-  if (object != viewport() && object != this ) {
-    viewportPos = ((QWidget *)object)->mapToParent(de->pos());
+  if ( object != viewport() && object != this ) {
+    viewportPos = static_cast<QWidget *>( object )->mapToParent( de->pos() );
   } else {
     viewportPos = de->pos();
   }
 
-  switch (de->type())  {
+  switch ( de->type() ) {
     case QEvent::DragEnter:
     case QEvent::DragMove:
       if ( ICalDrag::canDecode( de ) || VCalDrag::canDecode( de ) ) {
 
         DndFactory factory( mCalendar );
         Todo *todo = factory.createDropTodo( de );
-        if (todo) {
+        if ( todo ) {
           de->accept();
           delete todo;
         } else {
@@ -403,8 +403,8 @@ bool KOAgenda::eventFilter_drag(QObject *object, QDropEvent *de)
           // 2000 (which is the left upper corner of the viewport). It works correctly
           // for agendaItems.
           if ( object == this  ) {
-            x=viewportPos.x()+contentsX();
-            y=viewportPos.y()+contentsY();
+            x = viewportPos.x() + contentsX();
+            y = viewportPos.y() + contentsY();
           } else {
             viewportToContents( viewportPos.x(), viewportPos.y(), x, y );
           }
@@ -417,7 +417,8 @@ bool KOAgenda::eventFilter_drag(QObject *object, QDropEvent *de)
       break;
 
     case QEvent::DragResponse:
-    default: break;
+    default:
+      break;
   }
 #endif
 
