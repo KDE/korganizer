@@ -5,6 +5,7 @@
     Parts of the source code have been copied from kdpdatebutton.cpp
 
     Copyright (c) 2003 Cornelius Schumacher <schumacher@kde.org>
+    Copyright (C) 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by

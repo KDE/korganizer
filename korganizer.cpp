@@ -8,6 +8,7 @@
     Laszlo Boloni (boloni@cs.purdue.edu)
 
     Copyright (c) 2000-2003 Cornelius Schumacher <schumacher@kde.org>
+    Copyright (C) 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -188,12 +189,12 @@ void KOrganizer::readSettings()
 
   KConfig *config = KOGlobals::self()->config();
 
-  config->setGroup( "KOrganizer Geometry" );
+/*  config->setGroup( "KOrganizer Geometry" );
 
   int windowWidth = config->readNumEntry( "Width", 600 );
   int windowHeight = config->readNumEntry( "Height", 400 );
 
-  resize( windowWidth, windowHeight );
+  resize( windowWidth, windowHeight );*/
 
   mActionManager->readSettings();
 

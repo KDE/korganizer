@@ -32,7 +32,6 @@
 #include "korganizer/incidencechangerbase.h"
 
 #include <libkcal/event.h>
-//#include <libkcal/calendar.h>
 
 using namespace KCal;
 

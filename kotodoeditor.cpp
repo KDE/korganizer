@@ -3,6 +3,7 @@
 
     Copyright (c) 1997, 1998 Preston Brown
     Copyright (c) 2000-2003 Cornelius Schumacher <schumacher@kde.org>
+    Copyright (C) 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by

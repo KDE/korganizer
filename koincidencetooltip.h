@@ -1,7 +1,6 @@
 /*
     This file is part of KOrganizer.
-    Copyright (c) 2003
-    Reinhold Kainhofer <reinhhold@kainhofer.com>
+    Copyright (c) 2003 Reinhold Kainhofer <reinhhold@kainhofer.com>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by

@@ -4,6 +4,7 @@
     Copyright (c) 2002 Mike Pilone <mpilone@slac.com>
     Copyright (c) 2002 Don Sanders <sanders@kde.org>
     Copyright (c) 2003,2004 Cornelius Schumacher <schumacher@kde.org>
+    Copyright (C) 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
