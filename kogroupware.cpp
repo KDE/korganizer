@@ -56,7 +56,7 @@ FreeBusyManager *KOGroupware::mFreeBusyManager = 0;
 KOGroupware *KOGroupware::mInstance = 0;
 
 KOGroupware *KOGroupware::create( CalendarView *view,
-                                  KCal::Calendar *calendar )
+                                  KCal::CalendarResources *calendar )
 {
   if( !mInstance )
     mInstance = new KOGroupware( view, calendar );
@@ -71,12 +71,9 @@ KOGroupware *KOGroupware::instance()
 }
 
 
-KOGroupware::KOGroupware( CalendarView* view, KCal::Calendar* calendar )
-  : QObject( 0, "kmgroupware_instance" )
+ KOGroupware::KOGroupware( CalendarView* view, KCal::CalendarResources* cal )
+   : QObject( 0, "kmgroupware_instance" ), mView( view ), mCalendar( cal )
 {
-  mView = view;
-  mCalendar = calendar;
-
   // Set up the dir watch of the three incoming dirs
   KDirWatch* watcher = KDirWatch::self();
   watcher->addDir( locateLocal( "data", "korganizer/income.accepted/" ) );
@@ -144,7 +141,7 @@ void KOGroupware::incomingDirChanged( const QString& path )
       errorMessage = "\nError message: " + mFormat.exception()->message();
     kdDebug(5850) << "MailScheduler::retrieveTransactions() Error parsing"
                   << errorMessage << endl;
-    KMessageBox::detailedError( mView, 
+    KMessageBox::detailedError( mView,
         i18n("Error while processing an invitation or update."),
         errorMessage );
     return;
@@ -220,9 +217,9 @@ bool KOGroupware::sendICalMessage( QWidget* parent,
 
   if ( isOrganizer ) {
     /* We are the organizer. If there is more than one attendee, or if there is
-     * only one, and it's not the same as the organizer, ask the user to send 
+     * only one, and it's not the same as the organizer, ask the user to send
      * mail. */
-    if ( incidence->attendees().count() > 1 
+    if ( incidence->attendees().count() > 1
         || incidence->attendees().first()->email() != incidence->organizer().email() ) {
       QString type;
       if( incidence->type() == "Event") type = i18n("event");
