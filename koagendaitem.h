@@ -54,6 +54,22 @@ struct MultiItemInfo
   to be used for dragging and resizing. That means it has to be installed as
   eventfiler for its children, if it has children, and it has to pass mouse
   events from the cildren to itself. See eventFilter().
+  
+  
+  Some comments on the movement of multi-day items:
+  Basically, the agenda items are arranged in two implicit double-linked lists.
+  The mMultiItemInfo works like before to describe the currently viewed
+  multi-item.
+  When moving, new events might need to be added to the beginning or the end of
+  the multi-item sequence, or events might need to be hidden. I cannot just
+  delete this items, since I have to restore/show them if the move is reset
+  (i.e. if a drag started). So internally, I keep another doubly-linked list
+  which is longer than the one defined by mMultiItemInfo, but includes the
+  multi-item sequence, too.
+
+  The mStartMoveInfo stores the first and last item of the multi-item sequence
+  when the move started. The prev and next members of mStartMoveInfo are used
+  for that longer sequence including all (shown and hidden) items.
 */
 class KOAgendaItem : public QWidget, public KOrg::CellItem
 {
