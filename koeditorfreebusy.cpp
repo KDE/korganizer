@@ -544,7 +544,11 @@ void KOEditorFreeBusy::reload()
 {
   kdDebug() << "KOEditorFreeBusy::reload()" << endl;
 
-  // TODO: Reload all free/busy information
+  FreeBusyItem *item = static_cast<FreeBusyItem *>( mGanttView->firstChild() );
+  while( item ) {
+    updateFreeBusyData( item->attendee() );
+    item = static_cast<FreeBusyItem *>( item->nextSibling() );
+  }
 }
 
 #include "koeditorfreebusy.moc"
