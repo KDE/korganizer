@@ -1,0 +1,19 @@
+[Desktop Entry]
+Encoding=UTF-8
+BinaryPattern=korganizer;
+MimeType=text/calendar;text/x-vcalendar;
+Exec=korganizer --import %u
+Icon=korganizer
+TerminalOptions=
+Path=
+DocPath=korganizer/index.html
+Type=Application
+Terminal=0
+Name=Import Calendar
+ServiceTypes=Browser/View,DCOP/Organizer
+X-KDE-Library=libkorganizerpart
+X-KDE-StartupNotify=true
+X-DCOP-ServiceType=Unique
+X-DCOP-ServiceName=korganizer
+InitialPreference=5
+
