@@ -336,20 +336,18 @@ class CalPrintBase : public QObject
       \param x x-coordinate of the upper left coordinate of the first item
       \param y y-coordinate of the upper left coordinate of the first item
       \param width width of the whole todo list
-      \param height Space left on the first page of the todo list
-      \param pageHeight Total height allowed for the todo list on a page. The first page uses height, 
-                        but at each line break the current position is reset to 0 and the 
-                        height is set to pageHeight.
+      \param pageHeight Total height allowed for the todo list on a page. If an item would be below that 
+                   line, a new page is started.
       \param r Internal (used when printing sub items to give information about its parent)
     */
     void drawTodo( int &count, Todo * item, QPainter &p, bool connectSubTodos,
                    bool desc, int pospriority, int possummary, int posDueDt,
-                   int level, int x, int &y, int width, int &height,
-                   int pageHeight, const Todo::List &todoList, TodoParentStart *r = 0 );
+                   int level, int x, int &y, int width, int pageHeight, 
+                   const Todo::List &todoList, TodoParentStart *r = 0 );
 
     void drawSplitWeek( QPainter &p, const QDate &fd, const QDate &td );
     void drawSplitHeaderRight( QPainter &p, const QDate &fd, const QDate &td,
-	                       const QDate &cd, int width, int height );
+                               const QDate &cd, int width, int height );
     void drawSplitDay( QPainter &p, const QDate &qd, int width, int height,
                        int offsetLeft );
     void drawSplitTimes( QPainter &p, int width, int timeWidth, int height );

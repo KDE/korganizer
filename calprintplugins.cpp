@@ -616,10 +616,9 @@ void CalPrintTodos::print( QPainter &p, int width, int height )
         continue;
       }
       count++;
-      int todoHeight = height - mCurrentLinePos;
       drawTodo( count, currEvent, p, mConnectSubTodos,
                 mIncludeDescription, pospriority, possummary, posdue, 0,
-                0, mCurrentLinePos, width, todoHeight, height, todoList );
+                0, mCurrentLinePos, width, height, todoList );
     }
   }
 }

@@ -831,7 +831,7 @@ void CalPrintBase::drawMonth(QPainter &p, const QDate &qd, bool weeknumbers,
 
 void CalPrintBase::drawTodo( int &count, Todo * item, QPainter &p, bool connectSubTodos,
     bool desc, int pospriority, int possummary, int posDueDt, int level,
-    int x, int &y, int width, int &height, int pageHeight, const Todo::List &todoList,
+    int x, int &y, int width, int pageHeight, const Todo::List &todoList,
     TodoParentStart *r )
 {
   QString outStr;
@@ -853,13 +853,13 @@ void CalPrintBase::drawTodo( int &count, Todo * item, QPainter &p, bool connectS
   outStr=item->summary();
   int left = possummary+(level*10);
   rect = p.boundingRect(left, y, (posdue-left-5),-1, WordBreak, outStr);
-  if ( !item->description().isEmpty() && !desc ) {
+  if ( !item->description().isEmpty() && desc ) {
     outStr = item->description();
     rect = p.boundingRect( left+20, rect.bottom()+5, width-(left+10-x), -1,
                            WordBreak, outStr );
   }
   // if too big make new page
-  if ( rect.bottom() > y+height) {
+  if ( rect.bottom() > pageHeight) {
     // first draw the connection lines from parent todos:
     if (level > 0 && connectSubTodos) {
       TodoParentStart *rct;
@@ -879,23 +879,24 @@ void CalPrintBase::drawTodo( int &count, Todo * item, QPainter &p, bool connectS
       }
     }
     y=0;
-    height=pageHeight-y;
     mPrinter->newPage();
   }
 
   // If this is a sub-item, r will not be 0, and we want the LH side of the priority line up
   //to the RH side of the parent item's priority
+  bool showPriority = pospriority>=0;
   if (r) {
     pospriority = r->mRect.right() + 1;
   }
 
-  // Priority
   outStr.setNum(priority);
   rect = p.boundingRect(pospriority, y + 10, 5, -1, AlignCenter, outStr);
   // Make it a more reasonable size
   rect.setWidth(18);
   rect.setHeight(18);
-  if ( priority > 0 && pospriority>=0 ) {
+  
+  // Priority
+  if ( priority > 0 && showPriority ) {
     p.drawText(rect, AlignCenter, outStr);
     p.drawRect(rect);
     // cross out the rectangle for completed items
@@ -966,7 +967,7 @@ void CalPrintBase::drawTodo( int &count, Todo * item, QPainter &p, bool connectS
     if (subtodo && todoList.contains( subtodo ) ) {
       drawTodo( count, subtodo, p, connectSubTodos,
           desc, pospriority, possummary, posDueDt, level+1,
-          x, y, width, height, pageHeight, todoList, &startpt);
+          x, y, width, pageHeight, todoList, &startpt);
     }
   }
   startPoints.remove(&startpt);
