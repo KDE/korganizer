@@ -9,6 +9,7 @@
 #include <kglobal.h>
 #include <kiconloader.h>
 #include <kdatepik.h>
+#include <knotifyclient.h>
 
 #include "kdateedit.h"
 #include "kdateedit.moc"
@@ -61,7 +62,7 @@ QDate KDateEdit::getDate() const
   if (date.isValid()) {
     return date;
   } else {
-    kapp->beep();
+    KNotifyClient::beep();
     return QDate::currentDate();
   }
 }
@@ -96,7 +97,7 @@ void KDateEdit::lineEnterPressed()
   if(date.isValid()) {
     emit(dateChanged(date));
   } else {
-    kapp->beep();
+    KNotifyClient::beep();
   }
 }
 

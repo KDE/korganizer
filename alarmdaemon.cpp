@@ -17,6 +17,7 @@
 #include <kiconloader.h>
 #include <kprocess.h>
 #include <kmessagebox.h>
+#include <knotifyclient.h>
 
 #include "config.h"
 #ifdef HAVE_LIBGEN_H
@@ -117,9 +118,9 @@ void AlarmDaemon::reloadCal()
   calendar->close();
   config.setGroup("General");
   QString fileName = config.readEntry("Active Calendar");
-  
+
   kdDebug() << "AlarmDaemon::reloadCal(): '" << fileName << "'" << endl;
-  
+
   calendar->load(fileName);
 }
 
@@ -161,7 +162,7 @@ void AlarmDaemon::suspend(int duration)
 
 void AlarmDaemon::showDialog()
 {
-  kapp->beep();
+  KNotifyClient::beep();
   mAlarmDialog->show();
   mAlarmDialog->eventNotification();
 }

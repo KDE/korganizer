@@ -1,9 +1,9 @@
 /*
   $Id$
-  
+
   Requires the Qt and KDE widget libraries, available at no cost at
   http://www.troll.no and http://www.kde.org respectively
-  
+
   Copyright (c) 1997, 1998, 1999
   Preston Brown (preston.brown@yale.edu)
   Fester Zigterman (F.J.F.ZigtermanRustenburg@student.utwente.nl)
@@ -14,12 +14,12 @@
   it under the terms of the GNU General Public License as published by
   the Free Software Foundation; either version 2 of the License, or
   (at your option) any later version.
-  
+
   This program is distributed in the hope that it will be useful,
   but WITHOUT ANY WARRANTY; without even the implied warranty of
   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.	See the
   GNU General Public License for more details.
-  
+
   You should have received a copy of the GNU General Public License
   along with this program; if not, write to the Free Software
   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
@@ -38,6 +38,7 @@
 #include <kstdaccel.h>
 #include <kfiledialog.h>
 #include <kmessagebox.h>
+#include <knotifyclient.h>
 
 #include "koarchivedlg.h"
 #include "komailclient.h"
@@ -63,7 +64,7 @@
 #include "calendarview.moc"
 
 
-CalendarView::CalendarView(QWidget *parent,const char *name) 
+CalendarView::CalendarView(QWidget *parent,const char *name)
   : QWidget(parent,name)
 {
   kdDebug() << "CalendarView::CalendarView()" << endl;
@@ -77,7 +78,7 @@ CalendarView::CalendarView(QWidget *parent,const char *name)
   mModified=false;
   mReadOnly = false;
   mEventsSelected = true;
-  
+
   mSearchDialog = 0L;
   mArchiveDialog = 0;
 
@@ -150,7 +151,7 @@ CalendarView::CalendarView(QWidget *parent,const char *name)
   QObject *obj;
   for(obj=mCalendarViews.first();obj;obj=mCalendarViews.next())
     kdDebug() << "calViews: " << obj->className() << endl;
-*/  
+*/
 
   // set up printing object
   mCalPrinter = new CalPrinter(this, mCalendar);
@@ -222,11 +223,11 @@ bool CalendarView::saveCalendar(QString filename)
 {
   kdDebug() << "CalendarView::saveCalendar(): " << filename << endl;
   mCalendar->save(filename);
-  
+
   // We should check for errors here.
 
   setModified(false);
-  
+
   return true;
 }
 
@@ -250,7 +251,7 @@ void CalendarView::archiveCalendar()
   }
   mArchiveDialog->show();
   mArchiveDialog->raise();
-  
+
   // Workaround.
   QApplication::restoreOverrideCursor();
 }
@@ -261,13 +262,13 @@ bool CalendarView::initCalendar(QString filename)
   readSettings();
 
   kdDebug() << "CalendarView::initCalendar(): filename: " << filename << endl;
-  
+
   QApplication::setOverrideCursor(waitCursor);
 
   if (!filename.isEmpty()) {
     setModified(false);
     if (!(mCalendar->load(filename))) {
-      // while failing to load, the calendar object could 
+      // while failing to load, the calendar object could
       // have become partially populated.  Cle1ar it out.
       mCalendar->close();
       QApplication::restoreOverrideCursor();
@@ -276,7 +277,7 @@ bool CalendarView::initCalendar(QString filename)
   }
 
   QApplication::restoreOverrideCursor();
-  
+
   return true;
 }
 
@@ -290,7 +291,7 @@ void CalendarView::readSettings()
   // read settings from the KConfig, supplying reasonable
   // defaults where none are to be found
 
-  KConfig config(locate("config", "korganizerrc")); 
+  KConfig config(locate("config", "korganizerrc"));
 
   config.setGroup("General");
 
@@ -306,14 +307,14 @@ void CalendarView::readSettings()
 
   // Set current view from Entry "Current View"
   readCurrentView();
-  
+
   mAgendaView->readSettings();
 }
 
 void CalendarView::readCurrentView()
 {
   QString str;
-  KConfig config(locate("config", "korganizerrc")); 
+  KConfig config(locate("config", "korganizerrc"));
 
   mCurrentView = mAgendaView;
 
@@ -327,14 +328,14 @@ void CalendarView::readCurrentView()
   }
 
   config.setGroup("Views");
-  mAgendaViewMode = config.readNumEntry("Agenda View", KOAgendaView::DAY);  
+  mAgendaViewMode = config.readNumEntry("Agenda View", KOAgendaView::DAY);
 }
 
 void CalendarView::writeSettings()
 {
 //  kdDebug() << "CalendarView::writeSettings" << endl;
 
-  KConfig config(locateLocal("config", "korganizerrc")); 
+  KConfig config(locateLocal("config", "korganizerrc"));
 
   config.setGroup("General");
 
@@ -418,7 +419,7 @@ void CalendarView::hookupSignals()
 	  this, SLOT(showEvent(KOEvent *)));
   connect(mListView, SIGNAL(editEventSignal(KOEvent *)),
 	  this, SLOT(editEvent(KOEvent *)));
-  connect(mListView, SIGNAL(deleteEventSignal(KOEvent *)), 
+  connect(mListView, SIGNAL(deleteEventSignal(KOEvent *)),
 	  this, SLOT(deleteEvent(KOEvent *)));
   connect(mListView,SIGNAL(eventsSelected(bool)),
           SLOT(processEventSelection(bool)));
@@ -434,7 +435,7 @@ void CalendarView::hookupSignals()
 	  this, SLOT(editEvent(KOEvent *)));
   connect(mAgendaView, SIGNAL(showEventSignal(KOEvent *)),
 	  this, SLOT(showEvent(KOEvent *)));
-  connect(mAgendaView, SIGNAL(deleteEventSignal(KOEvent *)), 
+  connect(mAgendaView, SIGNAL(deleteEventSignal(KOEvent *)),
 	  this, SLOT(deleteEvent(KOEvent *)));
   connect(mAgendaView,SIGNAL(eventsSelected(bool)),
           SLOT(processEventSelection(bool)));
@@ -552,7 +553,7 @@ void CalendarView::changeAgendaView( int newView )
   if (newView == mAgendaView->currentView()) return;
 
   QPixmap px;
-  
+
   switch( newView ) {
   case KOAgendaView::DAY: {
     QDateList tmpList(FALSE);
@@ -560,7 +561,7 @@ void CalendarView::changeAgendaView( int newView )
     if (mSaveSingleDate != *tmpList.first()) {
       mDateNavigator->selectDates(mSaveSingleDate);
       updateView(mDateNavigator->getSelected());
-    }    
+    }
     break;
   }
   // if its a workweek view, calculate the dates and emit
@@ -582,12 +583,12 @@ void CalendarView::changeAgendaView( int newView )
 void CalendarView::nextAgendaView()
 {
   int view;
-  
+
   if( mCurrentView == mAgendaView ) {
     view = mAgendaView->currentView() + 1;
     if ((view >= KOAgendaView::DAY) && ( view < KOAgendaView::LIST))
       changeAgendaView( view );
-    else 
+    else
       changeAgendaView( KOAgendaView::DAY );
   } else {
     changeAgendaView( mAgendaView->currentView() );
@@ -666,7 +667,7 @@ void CalendarView::updateView()
   updateView(tmpList);
 }
 
-  
+
 int CalendarView::msgItemDelete()
 {
   return KMessageBox::warningContinueCancel(this,
@@ -684,7 +685,7 @@ void CalendarView::edit_cut()
   }
 
   if (!anEvent) {
-    qApp->beep();
+    KNotifyClient::beep();
     return;
   }
   mCalendar->cutEvent(anEvent);
@@ -698,9 +699,9 @@ void CalendarView::edit_copy()
   if (mCurrentView->isEventView()) {
     anEvent = (mCurrentView->getSelected()).first();
   }
-  
+
   if (!anEvent) {
-    qApp->beep();
+    KNotifyClient::beep();
     return;
   }
   mCalendar->copyEvent(anEvent);
@@ -823,7 +824,7 @@ void CalendarView::appointment_new()
   tmpList = mDateNavigator->getSelected();
   from = *tmpList.first();
   to = *tmpList.last();
-  
+
   ASSERT(from.isValid());
   if (!from.isValid()) { // mDateNavigator sometimes returns GARBAGE!
     from = QDate::currentDate();
@@ -850,7 +851,7 @@ void CalendarView::allday_new()
     from = QDate::currentDate();
     to = from;
   }
-  
+
   newEvent(QDateTime(from, QTime(12,0,0)),
            QDateTime(to, QTime(12,0,0)), TRUE);
 }
@@ -900,7 +901,7 @@ void CalendarView::editEvent(KOEvent *anEvent)
       eventWin->show();
     }
   } else {
-    qApp->beep();
+    KNotifyClient::beep();
   }
 }
 
@@ -927,13 +928,13 @@ void CalendarView::showTodo(KOEvent *event)
 void CalendarView::appointment_show()
 {
   KOEvent *anEvent = 0;
-  
+
   if (mCurrentView->isEventView()) {
     anEvent = (mCurrentView->getSelected()).first();
   }
 
   if (!anEvent) {
-    qApp->beep();
+    KNotifyClient::beep();
     return;
   }
 
@@ -943,13 +944,13 @@ void CalendarView::appointment_show()
 void CalendarView::appointment_edit()
 {
   KOEvent *anEvent = 0;
-  
+
   if (mCurrentView->isEventView()) {
     anEvent = (mCurrentView->getSelected()).first();
   }
 
   if (!anEvent) {
-    qApp->beep();
+    KNotifyClient::beep();
     return;
   }
 
@@ -965,7 +966,7 @@ void CalendarView::appointment_delete()
   }
 
   if (!anEvent) {
-    qApp->beep();
+    KNotifyClient::beep();
     return;
   }
 
@@ -977,18 +978,18 @@ void CalendarView::appointment_delete()
 void CalendarView::action_deleteTodo()
 {
   KOEvent *aTodo;
-  KOTodoView *todoList2 = (mCurrentView->isEventView() ? mTodoList : mTodoView); 
-//  TodoView *todoList2 = (viewMode == TODOVIEW ? mTodoView : mTodoList); 
+  KOTodoView *todoList2 = (mCurrentView->isEventView() ? mTodoList : mTodoView);
+//  TodoView *todoList2 = (viewMode == TODOVIEW ? mTodoView : mTodoList);
 
   aTodo = (todoList2->getSelected()).first();
   if (!aTodo) {
-    qApp->beep();
+    KNotifyClient::beep();
     return;
   }
-  
+
   // disable deletion for now, because it causes a crash.
   return;
-  
+
   if (KOPrefs::instance()->mConfirm) {
     switch(msgItemDelete()) {
       case KMessageBox::Continue: // OK
@@ -1009,7 +1010,7 @@ void CalendarView::action_deleteTodo()
 void CalendarView::deleteEvent(KOEvent *anEvent)
 {
   if (!anEvent) {
-    qApp->beep();
+    KNotifyClient::beep();
     return;
   }
 
@@ -1035,7 +1036,7 @@ void CalendarView::deleteEvent(KOEvent *anEvent)
         qd = *(tmpList.first());
         if (!qd.isValid()) {
           kdDebug() << "no date selected, or invalid date" << endl;
-          qApp->beep();
+          KNotifyClient::beep();
           return;
         }
         while (!anEvent->recursOn(qd)) qd = qd.addDays(1);
@@ -1073,7 +1074,7 @@ void CalendarView::action_search()
 	    SLOT(showEvent(KOEvent *)));
     connect(mSearchDialog,SIGNAL(editEventSignal(KOEvent *)),
 	    SLOT(editEvent(KOEvent *)));
-    connect(mSearchDialog,SIGNAL(deleteEventSignal(KOEvent *)), 
+    connect(mSearchDialog,SIGNAL(deleteEventSignal(KOEvent *)),
 	    SLOT(deleteEvent(KOEvent *)));
     connect(this,SIGNAL(closingDown()),mSearchDialog,SLOT(reject()));
   }
@@ -1162,7 +1163,7 @@ void CalendarView::schedule_publish()
     KMessageBox::sorry(this,i18n("No event selected."));
     return;
   }
-  
+
   mOutgoingDialog->addMessage(event,Scheduler::Publish,"dummy@nowhere.nil");
 }
 
@@ -1213,7 +1214,7 @@ void CalendarView::schedule(Scheduler::Method method)
     KMessageBox::sorry(this,i18n("No event selected."));
     return;
   }
-  
+
   mOutgoingDialog->addMessage(event,method);
 }
 
@@ -1269,7 +1270,7 @@ void CalendarView::printSetup()
   mCalPrinter->setupPrinter();
 }
 
-void CalendarView::print() 
+void CalendarView::print()
 {
   QDateList tmpDateList(FALSE);
 
@@ -1281,7 +1282,7 @@ void CalendarView::print()
 void CalendarView::printPreview()
 {
   kdDebug() << "CalendarView::printPreview()" << endl;
-  
+
   QDateList tmpDateList(FALSE);
 
   tmpDateList = mDateNavigator->getSelected();
@@ -1322,7 +1323,7 @@ void CalendarView::eventUpdated(KOEvent *)
 {
   setModified();
   // Don't call updateView here. The code, which has caused the update of the
-  // event is responsible for updating the view. 
+  // event is responsible for updating the view.
 //  updateView();
 }
 
