@@ -115,10 +115,10 @@ void CalPrinter::setDateRange( const QDate &fd, const QDate &td )
   }
 }
 
-void CalPrinter::preview( int type, const QDate &fd, const QDate &td )
+void CalPrinter::preview( PrintType type, const QDate &fd, const QDate &td )
 {
   mPrintDialog->setPreview( true );
-  mPrintDialog->setPrintType( type );
+  mPrintDialog->setPrintType( int( type ) );
   setDateRange( fd, td );
 
   if ( mPrintDialog->exec() == QDialog::Accepted ) {
@@ -126,10 +126,10 @@ void CalPrinter::preview( int type, const QDate &fd, const QDate &td )
   }
 }
 
-void CalPrinter::print( int type, const QDate &fd, const QDate &td )
+void CalPrinter::print( PrintType type, const QDate &fd, const QDate &td )
 {
   mPrintDialog->setPreview( false );
-  mPrintDialog->setPrintType( type );
+  mPrintDialog->setPrintType( int( type ) );
   setDateRange( fd, td );
 
   if ( mPrintDialog->exec() == QDialog::Accepted ) {
@@ -137,7 +137,7 @@ void CalPrinter::print( int type, const QDate &fd, const QDate &td )
   }
 }
 
-void CalPrinter::forcePrint( int type, const QDate &fd, const QDate &td,
+void CalPrinter::forcePrint( PrintType type, const QDate &fd, const QDate &td,
                              bool preview )
 {
   if ( type < 0 ) return;
@@ -280,6 +280,8 @@ void CalPrintDialog::setPrinterLabel()
 
 void CalPrintDialog::setPrintType( int i )
 {
+  // TODO: Make a safe correlation between type and the radio button
+
   mTypeGroup->setButton( i );
   mConfigArea->raiseWidget( i );
 }

@@ -615,6 +615,11 @@ void KOTodoView::printPreview(CalPrinter *calPrinter, const QDate &fd,
 #endif
 }
 
+CalPrinter::PrintType KOTodoView::printType()
+{
+  return CalPrinter::Todolist;
+}
+
 void KOTodoView::editItem( QListViewItem *item )
 {
   emit editTodoSignal( static_cast<KOTodoViewItem *>( item )->todo() );

@@ -590,7 +590,7 @@ void CalendarView::eventAdded( Event *event )
   incidenceAdded( event );
 }
 
-void CalendarView::eventToBeDeleted( Event * event )
+void CalendarView::eventToBeDeleted( Event *event )
 {
   kdDebug(5850) << "CalendarView::eventToBeDeleted(): to be implemented"
                 << endl;
@@ -1388,9 +1388,14 @@ void CalendarView::print()
 #ifndef KORG_NOPRINTER
   createPrinter();
 
+  KOrg::BaseView *currentView = mViewManager->currentView();
+  
+  CalPrinter::PrintType printType = CalPrinter::Month;
+  
+  if ( currentView ) printType = currentView->printType();
+
   DateList tmpDateList = mNavigator->selectedDates();
-  mCalPrinter->print(CalPrinter::Month,
-                     tmpDateList.first(), tmpDateList.last());
+  mCalPrinter->print( printType, tmpDateList.first(), tmpDateList.last() );
 #endif
 }
 
@@ -1403,8 +1408,8 @@ void CalendarView::printPreview()
 
   DateList tmpDateList = mNavigator->selectedDates();
 
-  mViewManager->currentView()->printPreview(mCalPrinter,tmpDateList.first(),
-                             tmpDateList.last());
+  mViewManager->currentView()->printPreview( mCalPrinter, tmpDateList.first(),
+                                             tmpDateList.last() );
 #endif
 }
 

@@ -1,6 +1,7 @@
 /*
     This file is part of KOrganizer.
-    Copyright (c) 2000,2001 Cornelius Schumacher <schumacher@kde.org>
+
+    Copyright (c) 2000,2001,2003 Cornelius Schumacher <schumacher@kde.org>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -31,7 +32,7 @@
 #include <qlabel.h>
 
 #include "koeventview.h"
-
+#include "calprinter.h"
 
 class QHBox;
 class QFrame;
@@ -45,9 +46,10 @@ class TimeLabels : public QScrollView
 {
     Q_OBJECT
   public:
-    TimeLabels(int rows,QWidget *parent=0,const char *name=0,WFlags f=0);
+    TimeLabels( int rows, QWidget *parent = 0, const char *name = 0,
+                WFlags f = 0 );
 
-    void setCellHeight(int height);
+    void setCellHeight( int height );
 
     /** Calculates the minimum width */
     virtual int minimumWidth() const;
@@ -56,23 +58,22 @@ class TimeLabels : public QScrollView
     void updateConfig();
 
     /**  */
-    void setAgenda(KOAgenda* agenda);
+    void setAgenda( KOAgenda *agenda );
 
     /**  */
-    virtual void paintEvent(QPaintEvent* e);
+    virtual void paintEvent( QPaintEvent *e );
 
   public slots:
     /** update time label positions */
     void positionChanged();
 
   protected:
-    void drawContents(QPainter *p,int cx, int cy, int cw, int ch);
+    void drawContents( QPainter *p, int cx, int cy, int cw, int ch );
 
   private:
     int mRows;
     int mCellHeight;
 
-    /**  */
     KOAgenda* mAgenda;
 };
 
@@ -81,15 +82,16 @@ class EventIndicator : public QFrame
     Q_OBJECT
   public:
     enum Location { Top, Bottom };
-    EventIndicator(Location loc=Top,QWidget *parent=0,const char *name=0);
+    EventIndicator( Location loc = Top, QWidget *parent = 0,
+                    const char *name = 0 );
     virtual ~EventIndicator();
 
-    void changeColumns(int columns);
+    void changeColumns( int columns );
 
-    void enableColumn(int column, bool enable);
+    void enableColumn( int column, bool enable );
 
   protected:
-    void drawContents(QPainter *);
+    void drawContents( QPainter * );
 
   private:
     int mColumns;
@@ -104,8 +106,9 @@ class KOAlternateLabel : public QLabel
 {
     Q_OBJECT
   public:
-    KOAlternateLabel(QString shortlabel, QString longlabel, QString extensivelabel=QString::null,
-        QWidget *parent=0, const char *name=0 );
+    KOAlternateLabel( QString shortlabel, QString longlabel,
+                      QString extensivelabel = QString::null,
+                      QWidget *parent = 0, const char *name = 0 );
     ~KOAlternateLabel();
 
     virtual QSize minimumSizeHint() const;
@@ -132,7 +135,7 @@ class KOAgendaView : public KOEventView
 {
     Q_OBJECT
   public:
-    KOAgendaView(Calendar *cal,QWidget *parent = 0,const char *name = 0 );
+    KOAgendaView( Calendar *cal, QWidget *parent = 0, const char *name = 0 );
     virtual ~KOAgendaView();
 
     /** Returns maximum number of days supported by the koagendaview */
@@ -150,15 +153,17 @@ class KOAgendaView : public KOEventView
     /** Remove all events from view */
     void clearView();
 
-    virtual void printPreview(CalPrinter *calPrinter,
-                              const QDate &, const QDate &);
+    virtual void printPreview( CalPrinter *calPrinter,
+                               const QDate &, const QDate &);
+
+    CalPrinter::PrintType printType();
 
     /** start-datetime of selection */
-    QDateTime selectionStart() {return mTimeSpanBegin;}
+    QDateTime selectionStart() { return mTimeSpanBegin; }
     /** end-datetime of selection */
-    QDateTime selectionEnd() {return mTimeSpanEnd;}
+    QDateTime selectionEnd() { return mTimeSpanEnd; }
     /** returns true if selection is for whole day */
-    bool selectedIsAllDay() {return mTimeSpanInAllDay;}
+    bool selectedIsAllDay() { return mTimeSpanInAllDay; }
     /** make selected start/end invalid */
     void deleteSelectedDateTime();
     /** returns if only a single cell is selected, or a range of cells */
@@ -169,7 +174,7 @@ class KOAgendaView : public KOEventView
   public slots:
     virtual void updateView();
     virtual void updateConfig();
-    virtual void showDates(const QDate &start, const QDate &end);
+    virtual void showDates( const QDate &start, const QDate &end );
     virtual void showEvents( const Event::List & );
     virtual void showNewEventPopup();
 
@@ -179,17 +184,17 @@ class KOAgendaView : public KOEventView
 
     void clearSelection();
 
-    void newEvent(int gx,int gy);
-    void newEvent(int gxStart, int gyStart, int gxEnd, int gyEnd);
-    void newEventAllDay(int gx, int gy);
+    void newEvent( int gx, int gy );
+    void newEvent( int gxStart, int gyStart, int gxEnd, int gyEnd );
+    void newEventAllDay( int gx, int gy );
 
     void startDrag( Incidence * );
 
     void readSettings();
-    void readSettings(KConfig *);
-    void writeSettings(KConfig *);
+    void readSettings( KConfig * );
+    void writeSettings( KConfig * );
 
-    void setContentsPos(int y);
+    void setContentsPos( int y );
 
     void setExpandedButton( bool expanded );
 
@@ -207,7 +212,7 @@ class KOAgendaView : public KOEventView
 
   protected:
     /** Fill agenda beginning with date startDate */
-    void fillAgenda(const QDate &startDate);
+    void fillAgenda( const QDate &startDate );
 
     /** Fill agenda using the current set value for the start date */
     void fillAgenda();
@@ -222,15 +227,16 @@ class KOAgendaView : public KOEventView
 
   protected slots:
     /** Update event belonging to agenda item */
-    void updateEventDates(KOAgendaItem *item);
+    void updateEventDates( KOAgendaItem *item );
 
-    void updateEventIndicatorTop(int newY);
-    void updateEventIndicatorBottom(int newY);
+    void updateEventIndicatorTop( int newY );
+    void updateEventIndicatorBottom( int newY );
 
     /** Updates data for selected timespan */
-    void newTimeSpanSelected(int gxStart, int gyStart, int gxEnd, int gyEnd);
+    void newTimeSpanSelected( int gxStart, int gyStart, int gxEnd, int gyEnd );
     /** Updates data for selected timespan for all day event*/
-    void newTimeSpanSelectedAllDay(int gxStart, int gyStart, int gxEnd, int gyEnd);
+    void newTimeSpanSelectedAllDay( int gxStart, int gyStart,
+                                    int gxEnd, int gyEnd);
 
   private:
     // view widgets
@@ -269,4 +275,4 @@ class KOAgendaView : public KOEventView
 
 };
 
-#endif  // KOAGENDAVIEW_H
+#endif

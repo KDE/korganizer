@@ -1000,6 +1000,11 @@ void KOAgendaView::printPreview(CalPrinter *calPrinter, const QDate &fd,
 #endif
 }
 
+CalPrinter::PrintType KOAgendaView::printType()
+{
+  if ( currentDateCount() == 1 ) return CalPrinter::Day;
+  else return CalPrinter::Week;
+}
 
 void KOAgendaView::newEvent(int gx, int gy)
 {

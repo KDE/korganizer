@@ -1,7 +1,7 @@
 /*
     This file is part of the KOrganizer interfaces.
-    Copyright (c) 1999 Cornelius Schumacher <schumacher@kde.org>
-    Copyright (c) 2001 Cornelius Schumacher <schumacher@kde.org>
+
+    Copyright (c) 1999,2001,2003 Cornelius Schumacher <schumacher@kde.org>
 
     This library is free software; you can redistribute it and/or
     modify it under the terms of the GNU Library General Public
@@ -20,8 +20,6 @@
 */
 #ifndef KORG_BASEVIEW_H
 #define KORG_BASEVIEW_H
-// $Id$
-// KOBaseView is the abstract base class of all calendar views.
 
 #include <qwidget.h>
 #include <qptrlist.h>
@@ -41,6 +39,16 @@ class CalPrinter;
 namespace KOrg {
 
 /**
+  Base class of KOrganizer printer class.
+*/
+class CalPrinterBase
+{
+  public:
+    enum PrintType { Day, Week, Month, Todolist };
+};
+
+
+/**
   This class provides an interface for all views being displayed within the main
   calendar view. It has functions to update the view, to specify date range and
   other display parameter and to return selected objects. An important class,
@@ -51,6 +59,7 @@ namespace KOrg {
   @author Preston Brown, Cornelius Schumacher
   @see KOTodoView, KOEventView, KOListView, KOAgendaView, KOMonthView
 */
+// TODO: Make some functions of KOrg::BaseView const
 class BaseView : public QWidget
 {
     Q_OBJECT
@@ -102,8 +111,7 @@ class BaseView : public QWidget
   parameters. At the moment I just move the code from the topwidget to the
   individual views.
 */
-    virtual void printPreview(CalPrinter *,
-                              const QDate &, const QDate &)
+    virtual void printPreview( CalPrinter *, const QDate &, const QDate & )
     {
       KMessageBox::sorry(this, i18n("Unfortunately, we don't handle printing for\n"
                                     "that view yet.\n"));
@@ -114,10 +122,15 @@ class BaseView : public QWidget
 
       @param calPrinter Calendar printer object used for printing
     */
-    virtual void print(CalPrinter *)
+    virtual void print( CalPrinter * )
     {
       KMessageBox::sorry(this, i18n("Unfortunately, we don't handle printing for\n"
                                     "that view yet.\n"));
+    }
+
+    virtual CalPrinterBase::PrintType printType()
+    {
+      return CalPrinterBase::Month;
     }
 
     /**
@@ -182,4 +195,5 @@ class BaseView : public QWidget
 };
 
 }
+
 #endif

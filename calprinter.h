@@ -32,6 +32,8 @@
 
 #include <kdialogbase.h>
 
+#include <korganizer/baseview.h>
+
 #include "calprintbase.h"
 
 using namespace KCal;
@@ -50,7 +52,7 @@ class QLabel;
   different formats (day, week, month).  It also provides a way for setting
   up the printer and remembering these preferences.
 */
-class CalPrinter : public QObject
+class CalPrinter : public QObject, public KOrg::CalPrinterBase
 {
     Q_OBJECT
   public:
@@ -60,8 +62,6 @@ class CalPrinter : public QObject
     */
     CalPrinter( QWidget *par, Calendar *cal );
     virtual ~CalPrinter();
-
-    enum { Day = 0, Week, Month, Todolist };
 
     void init( KPrinter *printer, Calendar *calendar );
 
@@ -83,9 +83,9 @@ class CalPrinter : public QObject
     void doPrint( CalPrintBase *selectedStyle );
 
   public:
-    void preview( int type, const QDate &fd, const QDate &td );
-    void print( int type, const QDate &fd, const QDate &td );
-    void forcePrint( int type, const QDate &fd, const QDate &td, bool preview );
+    void preview( PrintType type, const QDate &fd, const QDate &td );
+    void print( PrintType type, const QDate &fd, const QDate &td );
+    void forcePrint( PrintType type, const QDate &fd, const QDate &td, bool preview );
 
   protected:
     QPtrList<CalPrintBase> mPrintPlugins;

@@ -47,6 +47,7 @@
 #include "kotodoviewitem.h"
 #include "koprefs.h"
 #include "koglobals.h"
+#include "calprinter.h"
 
 class QDragEnterEvent;
 class QDragMoveEvent;
@@ -142,6 +143,8 @@ class KOTodoView : public KOrg::BaseView
     int currentDateCount() { return 0; }
 
     void printPreview(CalPrinter *calPrinter, const QDate &fd, const QDate &td);
+
+    CalPrinter::PrintType printType();
 
     void setDocumentId( const QString & );
 
