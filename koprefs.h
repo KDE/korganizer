@@ -26,7 +26,7 @@
 
 #include <qdict.h>
 
-#include "kprefs.h"
+#include <libkdepim/kprefs.h>
 
 class KConfig;
 class QFont;

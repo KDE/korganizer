@@ -30,6 +30,7 @@ libkorganizer_la_LIBADD  = $(LIB_KPARTS) $(LIB_KFILE) \
                            -lkdeprint -lkabc \
                            $(top_builddir)/calendarsystem/libkcalsystem.la \
                            $(top_builddir)/libkcal/libkcal.la \
+                           $(top_builddir)/libkdepim/libkdepim.la \
                            $(top_builddir)/kalarmd/libkalarmd.la \
                            $(top_builddir)/korganizer/knewstuff/libknewstuff.la
 libkorganizer_la_SOURCES =  outgoingdialog_base.ui \
@@ -45,13 +46,13 @@ libkorganizer_la_SOURCES =  outgoingdialog_base.ui \
         kolistview.cpp \
         exportwebdialog.cpp htmlexport.cpp \
         koapp.cpp korganizer_part.cpp korganizer.cpp \
-        kprefsdialog.cpp koprefsdialog.cpp \
+        koprefsdialog.cpp \
         koincidenceeditor.cpp koeventeditor.cpp kotodoeditor.cpp \
         koprefs.cpp koeventviewer.cpp kowindowlist.cpp \
         koeditorgeneral.cpp \
         koeditorgeneralevent.cpp koeditorgeneraltodo.cpp koeditordetails.cpp \
         koeditorrecurrence.cpp koeventviewerdialog.cpp \
-        koeventpopupmenu.cpp kprefs.cpp \
+        koeventpopupmenu.cpp \
         outgoingdialog.cpp \
 	incomingdialog_base.ui incomingdialog.cpp \
 	publishdialog_base.ui publishdialog.cpp \
@@ -81,8 +82,8 @@ noinst_HEADERS = komonthview.h \
 	komailclient.h kotodoview.h \
         kolistview.h \
 	koapp.h exportwebdialog.h korganizer_part.h korganizer.h \
-        kprefsdialog.h koprefsdialog.h koeventeditor.h \
-        kotodoeditor.h kprefs.h koprefs.h koeventviewer.h \
+        koprefsdialog.h koeventeditor.h \
+        kotodoeditor.h koprefs.h koeventviewer.h \
         kowindowlist.h kocounterdialog.h \
         koeditorgeneralevent.h koeditorgeneraltodo.h koeditordetails.h \
         koeditorrecurrence.h koeventviewerdialog.h koeventpopupmenu.h \
