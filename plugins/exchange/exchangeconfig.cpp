@@ -21,6 +21,8 @@
 #include <qlabel.h>
 #include <qcombobox.h>
 
+#include <kapplication.h>
+#include <kconfig.h>
 #include <klocale.h>
 #include <kdebug.h>
 #include <kmessagebox.h>
@@ -66,7 +68,9 @@ ExchangeConfig::ExchangeConfig( KPIM::ExchangeAccount* account, QWidget* parent 
   topLayout->addWidget( m_tryFindMailbox, 4, 2 );
   connect( m_tryFindMailbox, SIGNAL(clicked()), this, SLOT(slotFindClicked()) );
 
-  m_autoMailbox->setChecked( true );
+  kapp->config()->setGroup( "Calendar/Exchange Plugin" );
+  bool autoChecked = kapp->config()->readBoolEntry( "auto-mailbox", true );
+  m_autoMailbox->setChecked( autoChecked );
   // m_mailboxEqualsUser->setChecked( mAccount->mailbox() == ("webdav://"+mAccount->host()+"/exchange/"+mAccount->account() ) );
 }
 
@@ -107,6 +111,9 @@ void ExchangeConfig::slotOk()
   mAccount->setHost( m_host->text() );
   mAccount->setAccount( m_user->text() );
   mAccount->setPassword( m_password->text() );
+
+  kapp->config()->setGroup( "Calendar/Exchange Plugin" );
+  kapp->config()->writeEntry( "auto-mailbox", m_autoMailbox->isChecked() );
   
   accept();
 }
