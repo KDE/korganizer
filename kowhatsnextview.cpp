@@ -120,7 +120,7 @@ void KOWhatsNextView::updateView()
   mText += "<font color=\"white\"> What's next?</h1></font>";
   mText += "</td></tr>\n<tr><td>";
   
-  QPtrList<Event> events = calendar()->events( QDate::currentDate() );
+  QPtrList<Event> events = calendar()->events( QDate::currentDate(), true );
   if (events.count() > 0) {
     mText += "<p></p>";
     kil.loadIcon("appointment",KIcon::NoGroup,22,KIcon::DefaultState,ipath);
