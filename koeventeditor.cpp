@@ -231,8 +231,6 @@ void KOEventEditor::readEvent(Event *event)
 
   // categories
   mCategoryDialog->setSelected(event->categories());
-
-  // We should handle read-only events here.
 }
 
 void KOEventEditor::writeEvent(Event *event)

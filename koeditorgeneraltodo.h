@@ -43,7 +43,6 @@ class KOEditorGeneralTodo : public QWidget
     void openCategoryDialog();
 
   protected slots:
-    virtual void setEnabled(bool);
     void timeStuffDisable(bool disable);
     void dueStuffDisable(bool disable);
     void startStuffDisable(bool disable);
@@ -71,7 +70,9 @@ class KOEditorGeneralTodo : public QWidget
     QMultiLineEdit          *descriptionEdit;
     QComboBox               *freeTimeCombo;
     QLabel                  *ownerLabel;
-    QCheckBox               *privateButton;
+    QLabel *mSecrecyLabel;
+    QComboBox *mSecrecyCombo;
+
     QPushButton             *categoriesButton;
     QLabel                  *categoriesLabel;
 

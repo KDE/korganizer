@@ -46,7 +46,6 @@ class KOEditorGeneralEvent : public QWidget
 
   protected slots:
 
-    virtual void setEnabled(bool);
     void timeStuffDisable(bool disable);
     void alarmStuffEnable(bool enable);
     void alarmStuffDisable(bool disable);
@@ -99,7 +98,8 @@ class KOEditorGeneralEvent : public QWidget
     QMultiLineEdit          *descriptionEdit;
     QComboBox               *freeTimeCombo;
     QLabel                  *ownerLabel;
-    QCheckBox               *privateButton;
+    QLabel *mSecrecyLabel;
+    QComboBox *mSecrecyCombo;
     QPushButton             *categoriesButton;
     QLabel                  *categoriesLabel;
     QComboBox               *alarmIncrCombo;

@@ -34,7 +34,7 @@ Incidence::Incidence()
   mPilotId = 0;
   mSyncStatus = 1;
 
-  mSecrecy = PRIVATE;
+  mSecrecy = SecrecyPublic;
   
   mPriority = 1;
 }
@@ -447,29 +447,6 @@ int Incidence::priority() const
   return mPriority;
 }
 
-
-void Incidence::setSecrecy(const QString &secStr)
-{
-  if (mReadOnly) return;
-  if (secStr == "PUBLIC")
-    mSecrecy = PUBLIC;
-  else if (secStr == "PRIVATE")
-    mSecrecy = PRIVATE;
-  else if (secStr == "CONFIDENTIAL")
-    mSecrecy = CONFIDENTIAL;
-  else
-    kdDebug() << "Unknown secrecy value specified!" << endl;
-
-  emit eventUpdated(this);
-}
-
-void Incidence::setSecrecy(const char *secStr)
-{
-  if (mReadOnly) return;
-  QString sec = secStr;
-  setSecrecy(sec.toInt());
-}
-
 void Incidence::setSecrecy(int sec)
 {
   if (mReadOnly) return;
@@ -484,20 +461,37 @@ int Incidence::secrecy() const
 
 QString Incidence::secrecyStr() const
 {
-  switch (mSecrecy) {
-  case PUBLIC:
-    return QString("PUBLIC");
-    break;
-  case PRIVATE:
-    return QString("PRIVATE");
-    break;
-  case CONFIDENTIAL:
-    return QString("CONFIDENTIAL");
-    break;
-  }
-  // should never reach here...
-  return QString("");
+  return secrecyName(mSecrecy);
 }
+
+QString Incidence::secrecyName(int secrecy)
+{
+  switch (secrecy) {
+    case SecrecyPublic:
+      return i18n("Public");
+      break;
+    case SecrecyPrivate:
+      return i18n("Private");
+      break;
+    case SecrecyConfidential:
+      return i18n("Confidential");
+      break;
+    default:
+      return i18n("Undefined");
+      break;
+  }
+}
+
+QStringList Incidence::secrecyList()
+{
+  QStringList list;
+  list << secrecyName(SecrecyPublic);
+  list << secrecyName(SecrecyPrivate);
+  list << secrecyName(SecrecyConfidential);
+
+  return list;
+}
+
 
 
 void Incidence::setPilotId(int id)

@@ -623,7 +623,8 @@ icalcomponent *ICalFormat::writeEvent(Event *event)
   }
 #endif
 
-// TODO: find correspondence to secrecy in iCal
+// TODO: find correspondence to secrecy in iCal, DONE: it's CLASS
+// TODO: implement secrecy
   // secrecy
 //  addPropValue(vevent, VCClassProp, anEvent->getSecrecyStr().ascii());
 

@@ -47,7 +47,7 @@ KOEditorGeneralEvent::KOEditorGeneralEvent(int spacing,QWidget* parent,
   QWidget::setTabOrder(alarmButton, freeTimeCombo);
   QWidget::setTabOrder(freeTimeCombo, descriptionEdit);
   QWidget::setTabOrder(descriptionEdit, categoriesButton);
-  QWidget::setTabOrder(categoriesButton, privateButton);
+  QWidget::setTabOrder(categoriesButton, mSecrecyCombo);
 
   summaryEdit->setFocus();
 
@@ -158,8 +158,9 @@ void KOEditorGeneralEvent::initMisc()
   ownerLabel = new QLabel( this, "Label_7" );
   ownerLabel->setText( i18n("Owner:") );
 
-  privateButton = new QCheckBox( this, "CheckBox_3" );
-  privateButton->setText( i18n("Private") );
+  mSecrecyLabel = new QLabel("Access:",this);
+  mSecrecyCombo = new QComboBox(this);
+  mSecrecyCombo->insertStringList(Incidence::secrecyList());
 
   categoriesButton = new QPushButton( this, "PushButton_6" );
   categoriesButton->setText( i18n("Categories...") );
@@ -252,7 +253,8 @@ void KOEditorGeneralEvent::initLayout()
   layoutTop->addLayout(layoutCategories);
   layoutCategories->addWidget(categoriesButton);
   layoutCategories->addWidget(categoriesLabel,1);
-  layoutCategories->addWidget(privateButton);
+  layoutCategories->addWidget(mSecrecyLabel);
+  layoutCategories->addWidget(mSecrecyCombo);
 }
 
 void KOEditorGeneralEvent::pickAlarmSound()
@@ -295,30 +297,6 @@ void KOEditorGeneralEvent::pickAlarmProgram()
     alarmProgramButton->setOn(false);
 }
 
-void KOEditorGeneralEvent::setEnabled(bool enabled)
-{
-  noTimeButton->setEnabled(enabled);
-  recursButton->setEnabled(enabled);
-
-  summaryEdit->setEnabled(enabled);
-  startDateEdit->setEnabled(enabled);
-  endDateEdit->setEnabled(enabled);
-
-  startTimeEdit->setEnabled(enabled);
-  endTimeEdit->setEnabled(enabled);
-
-  alarmButton->setEnabled(enabled);
-  alarmTimeEdit->setEnabled(enabled);
-  alarmSoundButton->setEnabled(enabled);
-  alarmProgramButton->setEnabled(enabled);
-
-  descriptionEdit->setEnabled(enabled);
-  freeTimeCombo->setEnabled(enabled);
-  privateButton->setEnabled(enabled);
-  categoriesButton->setEnabled(enabled);
-  categoriesLabel->setEnabled(enabled);
-}
-
 void KOEditorGeneralEvent::timeStuffDisable(bool disable)
 {
   if (disable) {
@@ -358,7 +336,7 @@ void KOEditorGeneralEvent::dontAssociateTime(bool noTime)
 		
 void KOEditorGeneralEvent::setDateTimes(QDateTime start, QDateTime end)
 {
-  kdDebug() << "KOEditorGeneralEvent::setDateTimes(): Start DateTime: " << start.toString() << endl;
+//  kdDebug() << "KOEditorGeneralEvent::setDateTimes(): Start DateTime: " << start.toString() << endl;
 
   startDateEdit->setDate(start.date());
   startTimeEdit->setTime(start.time());
@@ -394,7 +372,7 @@ void KOEditorGeneralEvent::startTimeChanged(QTime newtime)
 
 void KOEditorGeneralEvent::endTimeChanged(QTime newtime)
 {
-  kdDebug() << "KOEditorGeneralEvent::endTimeChanged " << newtime.toString() << endl;
+//  kdDebug() << "KOEditorGeneralEvent::endTimeChanged " << newtime.toString() << endl;
 
   QDateTime newdt(currEndDateTime.date(), newtime);
 
@@ -455,6 +433,8 @@ void KOEditorGeneralEvent::setDefaults(QDateTime from,QDateTime to,bool allDay)
     alarmText.truncate(pos);
   alarmTimeEdit->setText(alarmText);
   alarmStuffEnable(false);
+
+  mSecrecyCombo->setCurrentItem(Incidence::SecrecyPublic);
 }
 
 void KOEditorGeneralEvent::readEvent(Event *event)
@@ -479,7 +459,7 @@ void KOEditorGeneralEvent::readEvent(Event *event)
   recursButton->setChecked(event->recurrence()->doesRecur());
 //  recurStuffEnable(event->doesRecur());
 
-  privateButton->setChecked((event->secrecy() > 0) ? true : false);
+  mSecrecyCombo->setCurrentItem(event->secrecy());
 
   // set up alarm stuff
   alarmButton->setChecked(event->alarm()->alarmRepeatCount());
@@ -537,8 +517,8 @@ void KOEditorGeneralEvent::writeEvent(Event *event)
   event->setSummary(summaryEdit->text());
   event->setDescription(descriptionEdit->text());
   event->setCategories(categoriesLabel->text());
-  event->setSecrecy(privateButton->isChecked() ? 1 : 0);
-
+  event->setSecrecy(mSecrecyCombo->currentItem());
+  
   if (noTimeButton->isChecked()) {
     event->setFloats(true);
     // need to change this.
@@ -672,7 +652,7 @@ void KOEditorGeneralEvent::emitDateTimeStr()
 
 bool KOEditorGeneralEvent::validateInput()
 {
-  kdDebug() << "KOEditorGeneralEvent::validateInput()" << endl;
+//  kdDebug() << "KOEditorGeneralEvent::validateInput()" << endl;
 
   if (!noTimeButton->isChecked()) {
     if (!startTimeEdit->inputIsValid()) {

@@ -1,4 +1,4 @@
-// 	$Id$	
+// $Id$	
 
 #include <qtooltip.h>
 #include <qfiledialog.h>
@@ -38,7 +38,7 @@ KOEditorGeneralTodo::KOEditorGeneralTodo(int spacing,QWidget* parent,
   QWidget::setTabOrder(completedButton, priorityCombo);
   QWidget::setTabOrder(priorityCombo, descriptionEdit);
   QWidget::setTabOrder(descriptionEdit, categoriesButton);
-  QWidget::setTabOrder(categoriesButton, privateButton);
+  QWidget::setTabOrder(categoriesButton, mSecrecyCombo);
   summaryEdit->setFocus();
 }
 
@@ -137,8 +137,9 @@ void KOEditorGeneralTodo::initMisc()
   ownerLabel = new QLabel( this, "Label_7" );
   ownerLabel->setText( i18n("Owner:") );
 
-  privateButton = new QCheckBox( this, "CheckBox_3" );
-  privateButton->setText( i18n("Private") );
+  mSecrecyLabel = new QLabel("Access:",this);
+  mSecrecyCombo = new QComboBox(this);
+  mSecrecyCombo->insertStringList(Incidence::secrecyList());
 
   categoriesButton = new QPushButton( this, "PushButton_6" );
   categoriesButton->setText( i18n("Categories...") );
@@ -175,7 +176,8 @@ void KOEditorGeneralTodo::initLayout()
   layoutTop->addLayout(layoutCategories);
   layoutCategories->addWidget(categoriesButton);
   layoutCategories->addWidget(categoriesLabel,1);
-  layoutCategories->addWidget(privateButton);
+  layoutCategories->addWidget(mSecrecyLabel);
+  layoutCategories->addWidget(mSecrecyCombo);
 }
 
 void KOEditorGeneralTodo::setCategories(QString str)
@@ -201,6 +203,8 @@ void KOEditorGeneralTodo::setDefaults(QDateTime due,bool allDay)
   
   mStartDateEdit->setDate(QDate::currentDate());
   mStartTimeEdit->setTime(QTime::currentTime());  
+
+  mSecrecyCombo->setCurrentItem(Incidence::SecrecyPublic);
 }
 
 void KOEditorGeneralTodo::readTodo(Todo *todo)
@@ -245,6 +249,8 @@ void KOEditorGeneralTodo::readTodo(Todo *todo)
   priorityCombo->setCurrentItem(todo->priority()-1);
 
   setCategories(todo->categoriesStr());
+
+  mSecrecyCombo->setCurrentItem(todo->secrecy());
 }
 
 void KOEditorGeneralTodo::writeTodo(Todo *todo)
@@ -252,8 +258,8 @@ void KOEditorGeneralTodo::writeTodo(Todo *todo)
   todo->setSummary(summaryEdit->text());
   todo->setDescription(descriptionEdit->text());
   todo->setCategories(categoriesLabel->text());
-  todo->setSecrecy(privateButton->isChecked() ? 1 : 0);
-
+  todo->setSecrecy(mSecrecyCombo->currentItem());
+  
   todo->setHasDueDate(!mNoDueCheck->isChecked());
   todo->setHasStartDate(!mNoStartCheck->isChecked());
 
@@ -305,19 +311,6 @@ void KOEditorGeneralTodo::writeTodo(Todo *todo)
   } else {
     todo->setCompleted(false);
   }
-}
-
-void KOEditorGeneralTodo::setEnabled(bool enabled)
-{
-  // Enable all widgets, which are created in the initMisc method.
-  // Labels are not enabled, since they are not active input controls.
-
-  completedButton->setEnabled(enabled);
-  priorityCombo->setEnabled(enabled);
-  summaryEdit->setEnabled(enabled);
-  descriptionEdit->setEnabled(enabled);
-  privateButton->setEnabled(enabled);
-  categoriesButton->setEnabled(enabled);
 }
 
 void KOEditorGeneralTodo::dueStuffDisable(bool disable)

@@ -17,11 +17,9 @@ class Incidence : public QObject
 {
     Q_OBJECT
   public:
-    /** enumeration for describing an event's status. */
-    enum { NEEDS_ACTION = 0, ACCEPTED = 1, SENT = 2, TENTATIVE = 3,
-	   CONFIRMED = 4, DECLINED = 5, COMPLETED = 6, DELEGATED = 7 };
     /** enumeration for describing an event's secrecy. */
     enum { PUBLIC = 0, PRIVATE = 1, CONFIDENTIAL = 2 };
+    enum { SecrecyPublic = 0, SecrecyPrivate = 1, SecrecyConfidential = 2 };
 
     Incidence();
     ~Incidence();
@@ -144,12 +142,6 @@ class Incidence : public QObject
     /** return list of associated files */
     const QStringList &attachments() const;
 
-    /** sets the event's secrecy to the string specified.  The string
-     * must be one of PUBLIC, PRIVATE, or CONFIDENTIAL. */
-    void setSecrecy(const QString &secrecy);
-    /** sets the event's secrecy to the string specified.  The string
-     * must be one of PUBLIC, PRIVATE, or CONFIDENTIAL. */
-    void setSecrecy(const char *);
     /** sets the event's status the value specified.  See the enumeration
      * above for possible values. */
     void setSecrecy(int);
@@ -157,6 +149,10 @@ class Incidence : public QObject
     int secrecy() const;
     /** return the event's secrecy in string format. */
     QString secrecyStr() const;
+    /** return list of all availbale secrecy classes */
+    static QStringList secrecyList();
+    /** return human-readable name of secrecy class */
+    static QString secrecyName(int);
 
     /** pilot syncronization routines */
     enum { SYNCNONE = 0, SYNCMOD = 1, SYNCDEL = 3 };

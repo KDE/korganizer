@@ -679,8 +679,22 @@ VObject* VCalFormat::eventToVEvent(const Event *anEvent)
 //  addPropValue(vevent, VCStatusProp, anEvent->statusStr().latin1());
   
   // secrecy
-  addPropValue(vevent, VCClassProp, anEvent->secrecyStr().latin1());
-
+  const char *text = 0;
+  switch (anEvent->secrecy()) {
+    case Incidence::SecrecyPublic:
+      text = "PUBLIC";
+      break;
+    case Incidence::SecrecyPrivate:
+      text = "PRIVATE";
+      break;
+    case Incidence::SecrecyConfidential:
+      text = "CONFIDENTIAL";
+      break;
+  }
+  if (text) {
+    addPropValue(vevent, VCClassProp, text);
+  }
+  
   // categories
   tmpStrList = anEvent->categories();
   tmpStr = "";
@@ -1318,8 +1332,9 @@ Event* VCalFormat::VEventToEvent(VObject *vevent)
     QString tmpStr = anEvent->description().simplifyWhiteSpace();
     anEvent->setDescription("");
     anEvent->setSummary(tmpStr);
-  }  
+  }
 
+#if 0
   // status
   if ((vo = isAPropertyOf(vevent, VCStatusProp)) != 0) {
     QString tmpStr(s = fakeCString(vObjectUStringZValue(vo)));
@@ -1329,14 +1344,20 @@ Event* VCalFormat::VEventToEvent(VObject *vevent)
   }
   else
 //    anEvent->setStatus("NEEDS ACTION");
+#endif
 
   // secrecy
+  int secrecy = Incidence::SecrecyPublic;
   if ((vo = isAPropertyOf(vevent, VCClassProp)) != 0) {
-    anEvent->setSecrecy(s = fakeCString(vObjectUStringZValue(vo)));
+    s = fakeCString(vObjectUStringZValue(vo));
+    if (strcmp(s,"PRIVATE") == 0) {
+      secrecy = Incidence::SecrecyPrivate;
+    } else if (strcmp(s,"CONFIDENTIAL") == 0) {
+      secrecy = Incidence::SecrecyConfidential;
+    }
     deleteStr(s);
   }
-  else
-    anEvent->setSecrecy("PUBLIC");
+  anEvent->setSecrecy(secrecy);
 
   // categories
   QStringList tmpStrList;
