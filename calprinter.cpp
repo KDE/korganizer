@@ -482,6 +482,10 @@ void CalPrinter::drawHeader(QPainter &p, const QDate &fd, const QDate &td,
   case Month:
     drawSmallMonth(p, QDate(cd.addDays(-cd.day())),
 		   width/2+5, 5, /*width/4-10*/100, height-10);
+    //print the following month as well
+    drawSmallMonth(p, QDate(cd.addDays(cd.daysInMonth()-cd.day()+1)),
+  		 width/2+width/4+5, 5, /*width/4-10*/100, height-10);
+
   }
 }
 
