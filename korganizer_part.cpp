@@ -33,6 +33,7 @@
 #include "kocore.h"
 #include "korganizerifaceimpl.h"
 #include "stdcalendar.h"
+#include "alarmclient.h"
 
 #include "kalarmd/alarmdaemoniface_stub.h"
 
