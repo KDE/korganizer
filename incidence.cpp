@@ -1,5 +1,9 @@
 // $Id$
 
+#include <kglobal.h>
+#include <klocale.h>
+#include <kdebug.h>
+
 #include "calformat.h"
 #include "koprefs.h"
 
@@ -24,6 +28,13 @@ Incidence::Incidence() :
   mRelatedTo = 0;
 
   mExDates.setAutoDelete(true);
+  
+  mPilotId = 0;
+  mSyncStatus = 1;
+
+  mSecrecy = PRIVATE;
+  
+  mPriority = 1;
 }
 
 Incidence::~Incidence()
@@ -63,11 +74,6 @@ void Incidence::setLastModified(const QDateTime &lm)
 const QDateTime &Incidence::lastModified() const
 {
   return mLastModified;
-}
-
-const QDateTime &Incidence::dtStart() const
-{
-  return mDtStart;
 }
 
 void Incidence::setCreated(QDateTime created)
@@ -119,6 +125,57 @@ const QString &Incidence::organizer() const
 {
   return mOrganizer;
 }
+
+
+void Incidence::setDtStart(const QDateTime &dtStart)
+{  
+  int diffsecs = mDtStart.secsTo(dtStart);
+
+  if (mReadOnly) return;
+  if (getAlarmRepeatCount())
+    setAlarmTime(getAlarmTime().addSecs(diffsecs));
+
+  mDtStart = dtStart;
+
+  setRecurStart(mDtStart);
+  setAlarmStart(mDtStart);
+
+  emit eventUpdated(this);
+}
+
+const QDateTime &Incidence::dtStart() const
+{
+  return mDtStart;
+}
+
+QString Incidence::dtStartTimeStr() const
+{
+  return KGlobal::locale()->formatTime(dtStart().time());
+}
+
+QString Incidence::dtStartDateStr(bool shortfmt) const
+{
+  return KGlobal::locale()->formatDate(dtStart().date(),shortfmt);
+}
+
+QString Incidence::dtStartStr() const
+{
+  return KGlobal::locale()->formatDateTime(dtStart());
+}
+
+
+bool Incidence::doesFloat() const
+{
+  return mFloats;
+}
+
+void Incidence::setFloats(bool f)
+{
+  if (mReadOnly) return;
+  mFloats = f;
+  emit eventUpdated(this);
+}
+
 
 void Incidence::addAttendee(Attendee *a)
 {
@@ -364,4 +421,118 @@ bool Incidence::isException(const QDate &qd) const
     }
   }
   return FALSE;
+}
+
+void Incidence::setAttachments(const QStringList &attachments)
+{
+  if (mReadOnly) return;
+  mAttachments = attachments;
+  emit eventUpdated(this);
+}
+
+const QStringList &Incidence::attachments() const
+{
+  return mAttachments;
+}
+
+void Incidence::setResources(const QStringList &resources)
+{
+  if (mReadOnly) return;
+  mResources = resources;
+  emit eventUpdated(this);
+}
+
+const QStringList &Incidence::resources() const
+{
+  return mResources;
+}
+
+
+void Incidence::setPriority(int priority)
+{
+  if (mReadOnly) return;
+  mPriority = priority;
+  emit eventUpdated(this);
+}
+
+int Incidence::priority() const
+{
+  return mPriority;
+}
+
+
+void Incidence::setSecrecy(const QString &secStr)
+{
+  if (mReadOnly) return;
+  if (secStr == "PUBLIC")
+    mSecrecy = PUBLIC;
+  else if (secStr == "PRIVATE")
+    mSecrecy = PRIVATE;
+  else if (secStr == "CONFIDENTIAL")
+    mSecrecy = CONFIDENTIAL;
+  else
+    kdDebug() << "Unknown secrecy value specified!" << endl;
+
+  emit eventUpdated(this);
+}
+
+void Incidence::setSecrecy(const char *secStr)
+{
+  if (mReadOnly) return;
+  QString sec = secStr;
+  setSecrecy(sec.toInt());
+}
+
+void Incidence::setSecrecy(int sec)
+{
+  if (mReadOnly) return;
+  mSecrecy = sec;
+  emit eventUpdated(this);
+}
+
+int Incidence::secrecy() const
+{
+  return mSecrecy;
+}
+
+QString Incidence::secrecyStr() const
+{
+  switch (mSecrecy) {
+  case PUBLIC:
+    return QString("PUBLIC");
+    break;
+  case PRIVATE:
+    return QString("PRIVATE");
+    break;
+  case CONFIDENTIAL:
+    return QString("CONFIDENTIAL");
+    break;
+  }
+  // should never reach here...
+  return QString("");
+}
+
+
+void Incidence::setPilotId(int id)
+{
+  if (mReadOnly) return;
+  mPilotId = id;
+  //emit eventUpdated(this);
+}
+
+int Incidence::pilotId() const
+{
+  return mPilotId;
+}
+
+void Incidence::setSyncStatus(int stat)
+{
+  if (mReadOnly) return;
+  mSyncStatus = stat;
+  //  emit eventUpdated(this);
+}
+
+int Incidence::syncStatus() const
+{
+  return mSyncStatus;
 }

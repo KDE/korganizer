@@ -105,13 +105,6 @@ class CalObject : public QObject {
     /** Delete event from calendar */
     virtual void deleteEvent(KOEvent *) = 0;
 
-    /**
-      retrieves an event from the calendar, based on a date and an evenId.
-      faster than specifying an eventId alone.
-    */
-    virtual KOEvent *getEvent(const QDate &date, int eventId) = 0;
-    /** retrieves an event from the calendar on the basis of ID alone. */
-    virtual KOEvent *getEvent(int eventId) = 0;
     /** retrieves an event on the basis of the unique string ID. */
     virtual KOEvent *getEvent(const QString &UniqueStr) = 0;
     /**
@@ -161,24 +154,12 @@ class CalObject : public QObject {
     /** remove a todo from the todolist. */
     virtual void deleteTodo(KOEvent *) = 0;
     virtual const QList<KOEvent> &getTodoList() const = 0;
-    /** searches todolist for an event with this id, returns pointer or null. */
-    virtual KOEvent *getTodo(int id) = 0;
     /** searches todolist for an event with this unique string identifier,
       returns a pointer or null. */
     virtual KOEvent *getTodo(const QString &UniqueStr) = 0;
     /** Returns list of todos due on the specified date */
     virtual QList<KOEvent> getTodosForDate(const QDate & date) = 0;
   
-    /* traversal methods */
-    virtual KOEvent *first() = 0;
-    virtual KOEvent *last() = 0;
-    virtual KOEvent *next() = 0;
-    virtual KOEvent *prev() = 0;
-    virtual KOEvent *current() = 0;
-  
-    /** update internal position information */
-    virtual void updateCursors(KOEvent *dEvent) = 0;
-
     /** Enable/Disable dialogs shown by calendar class */  
     void showDialogs(bool d);
   

@@ -59,9 +59,6 @@ bool VCalFormat::load(const QString &fileName)
   cleanVObjects(vcal);
   cleanStrTbl();
 
-  // set cursors to beginning of list.
-  mCalendar->first(); 
-
   return TRUE;
 }
 
@@ -354,7 +351,6 @@ KOEvent *VCalFormat::pasteEvent(const QDate *newDate,
   }
   // get rid of temporary VObject
   deleteVObject(vcal);
-  mCalendar->updateCursors(anEvent);
   return anEvent;
 }
 
@@ -697,14 +693,14 @@ VObject* VCalFormat::eventToVEvent(const KOEvent *anEvent)
   }
 
   // attachments
-  tmpStrList = anEvent->getAttachments();
+  tmpStrList = anEvent->attachments();
   for ( QStringList::Iterator it = tmpStrList.begin();
         it != tmpStrList.end();
         ++it )
     addPropValue(vevent, VCAttachProp, (*it).latin1());
   
   // resources
-  tmpStrList = anEvent->getResources();
+  tmpStrList = anEvent->resources();
   tmpStr = tmpStrList.join(";");
   if (!tmpStr.isEmpty())
     addPropValue(vevent, VCResourcesProp, tmpStr.latin1());

@@ -33,11 +33,10 @@
 #include "calendarlocal.moc"
 
 CalendarLocal::CalendarLocal()
-  : CalObject(), mRecursCursor(mRecursList)
+  : CalObject()
 {
   mOldestDate = 0L;
   mNewestDate = 0L;
-  mCursor = 0L;
 
   mRecursList.setAutoDelete(TRUE);
   // solves the leak?
@@ -51,7 +50,6 @@ CalendarLocal::~CalendarLocal()
 {
   close();
   delete mCalDict;
-  delete mCursor;
   delete mNewestDate;
   delete mOldestDate;
 }
@@ -141,8 +139,6 @@ void CalendarLocal::close()
   mOldestDate = 0L;
   delete mNewestDate;
   mNewestDate = 0L;
-  delete mCursor;
-  mCursor = 0L;
 }
 
 
@@ -246,7 +242,7 @@ void CalendarLocal::deleteEvent(const QDate &date, int eventId)
       }
       anEvent = mRecursList.next();
     }
-  }	  
+  }
 }
 
 // probably not really efficient, but...it works for now.
@@ -261,47 +257,6 @@ void CalendarLocal::deleteEvent(KOEvent *anEvent)
   emit calUpdated(anEvent);
 }
 
-KOEvent *CalendarLocal::getEvent(const QDate &date, int eventId)
-{
-  QList<KOEvent> tmpList(eventsForDate(date));
-  KOEvent *anEvent = 0;
-
-  for (anEvent = tmpList.first(); anEvent; anEvent = tmpList.next()) {
-    if (anEvent->getEventId() == eventId) {
-      updateCursors(anEvent);
-      return anEvent;
-    }
-  }
-  return (KOEvent *) 0L;
-}
-
-KOEvent *CalendarLocal::getEvent(int eventId)
-{
-  QList<KOEvent>* eventList;
-  QIntDictIterator<QList<KOEvent> > dictIt(*mCalDict);
-  KOEvent *anEvent;
-
-  while (dictIt.current()) {
-    eventList = dictIt.current();
-    for (anEvent = eventList->first(); anEvent;
-	 anEvent = eventList->next()) {
-      if (anEvent->getEventId() == eventId) {
-	updateCursors(anEvent);
-	return anEvent;
-      }
-    }
-    ++dictIt;
-  }
-  for (anEvent = mRecursList.first(); anEvent;
-       anEvent = mRecursList.next()) {
-    if (anEvent->getEventId() == eventId) {
-      updateCursors(anEvent);
-      return anEvent;
-    }
-  }
-  // catch-all.
-  return (KOEvent *) 0L;
-}
 
 KOEvent *CalendarLocal::getEvent(const QString &UniqueStr)
 {
@@ -314,7 +269,6 @@ KOEvent *CalendarLocal::getEvent(const QString &UniqueStr)
     for (anEvent = eventList->first(); anEvent;
 	 anEvent = eventList->next()) {
       if (anEvent->getVUID() == UniqueStr) {
-	updateCursors(anEvent);
 	return anEvent;
       }
     }
@@ -323,7 +277,6 @@ KOEvent *CalendarLocal::getEvent(const QString &UniqueStr)
   for (anEvent = mRecursList.first(); anEvent;
        anEvent = mRecursList.next()) {
     if (anEvent->getVUID() == UniqueStr) {
-      updateCursors(anEvent);
       return anEvent;
     }
   }
@@ -353,17 +306,6 @@ const QList<KOEvent> &CalendarLocal::getTodoList() const
   return mTodoList;
 }
 
-KOEvent *CalendarLocal::getTodo(int id)
-{
-  KOEvent *aTodo;
-  for (aTodo = mTodoList.first(); aTodo;
-       aTodo = mTodoList.next())
-    if (id == aTodo->getEventId())
-      return aTodo;
-  // item not found
-  return (KOEvent *) 0L;
-}
-
 KOEvent *CalendarLocal::getTodo(const QString &UniqueStr)
 {
   KOEvent *aTodo;
@@ -388,296 +330,6 @@ QList<KOEvent> CalendarLocal::getTodosForDate(const QDate & date)
   
   return todos;
 }
-
-KOEvent *CalendarLocal::first()
-{
-  if (!mOldestDate || !mNewestDate)
-    return (KOEvent *) 0L;
-  
-  QList<KOEvent> *tmpList;
-  
-  if (mCalDict->isEmpty() && mRecursList.isEmpty())
-    return (KOEvent *) 0L;
-  
-  
-  if (mCursor) {
-    delete mCursor;
-    mCursor = 0L;
-  }
-  
-  mRecursCursor.toFirst();
-  if ((tmpList = mCalDict->find(makeKey((*mOldestDate))))) {
-    mCursor = new QListIterator<KOEvent> (*tmpList);
-    mCursorDate = mCursor->current()->getDtStart().date();
-    return mCursor->current();
-  } else {
-    mRecursCursor.toFirst();
-    while (mRecursCursor.current() &&
-	   mRecursCursor.current()->getDtStart().date() != (*mOldestDate))
-      ++mRecursCursor;
-    mCursorDate = mRecursCursor.current()->getDtStart().date();
-    return mRecursCursor.current();
-  }
-}
-
-KOEvent *CalendarLocal::last()
-{
-  if (!mOldestDate || !mNewestDate)
-    return (KOEvent *) 0L;
-
-  QList<KOEvent> *tmpList;
-  
-  if (mCalDict->isEmpty() && mRecursList.isEmpty())
-    return (KOEvent *) 0L;
-  
-  if (mCursor) {
-    delete mCursor;
-    mCursor = 0L;
-  }
-  
-  mRecursCursor.toLast();
-  if ((tmpList = mCalDict->find(makeKey((*mNewestDate))))) {
-    mCursor = new QListIterator<KOEvent> (*tmpList);
-    mCursor->toLast();
-    mCursorDate = mCursor->current()->getDtStart().date();
-    return mCursor->current();
-  } else {
-    while (mRecursCursor.current() &&
-	   mRecursCursor.current()->getDtStart().date() != (*mNewestDate))
-      --mRecursCursor;
-    mCursorDate = mRecursCursor.current()->getDtStart().date();
-    return mRecursCursor.current();
-  }
-}
-
-KOEvent *CalendarLocal::next()
-{
-  if (!mOldestDate || !mNewestDate)
-    return (KOEvent *) 0L;
-
-  QList<KOEvent> *tmpList;
-  int maxIterations = mOldestDate->daysTo(*mNewestDate);
-  int itCount = 0;
-  
-  if (mCalDict->isEmpty() && mRecursList.isEmpty())
-    return (KOEvent *) 0L;
-  
-  // if itCount is greater than maxIterations (i.e. going around in 
-  // a full circle) we have a bug. :)
-  while (itCount <= maxIterations) {
-    ++itCount;
-  RESET: if (mCursor) {
-    if (!mCursor->current()) {
-      // the cursor should ALWAYS be on a valid element here,
-      // but if something has been deleted from the list, it may
-      // no longer be on one. be dumb; reset to beginning of list.
-      mCursor->toFirst();
-      if (!mCursor->current()) {
-	// shit! we are traversing a cursor on a deleted list.
-	delete mCursor;
-	mCursor = 0L;
-	goto RESET;
-      }
-    }
-    KOEvent *anEvent = mCursor->current();
-    ++(*mCursor);
-    if (!mCursor->current()) {
-      // we have run out of events on this day.  delete cursor!
-      delete mCursor;
-      mCursor = 0L;
-    }
-    return anEvent;
-  } else {
-    // no cursor, we must check if anything in mRecursList
-    while (mRecursCursor.current() &&
-	   mRecursCursor.current()->getDtStart().date() != mCursorDate)
-      ++mRecursCursor;
-    if (mRecursCursor.current()) {
-      // we found one. :)
-      KOEvent *anEvent = mRecursCursor.current();
-      // increment, so we are set for the next time.
-      // there are more dates in the list we were last looking at
-      ++mRecursCursor;
-      // check to see that we haven't run off the end.  If so, reset.
-      //if (!mRecursCursor.current())
-      //	mRecursCursor.toFirst();
-      return anEvent;
-    } else {
-      // we ran out of events in the recurrence cursor.  
-      // Increment mCursorDate, make a new mCalDict cursor if dates available.
-      // reset mRecursCursor to beginning of list.
-      mCursorDate = mCursorDate.addDays(1);
-      // we may have circled the globe.
-      if (mCursorDate == (mNewestDate->addDays(1)))
-	mCursorDate = (*mOldestDate);
-      
-      if ((tmpList = mCalDict->find(makeKey(mCursorDate)))) {
-	mCursor = new QListIterator<KOEvent> (*tmpList);
-	mCursor->toFirst();
-      }
-      mRecursCursor.toFirst();
-    }
-  }
-  } // infinite while loop.
-  kdDebug() << "ieee! bug in calobject::next()" << endl;
-  return (KOEvent *) 0L;
-}
-
-KOEvent *CalendarLocal::prev()
-{
-  if (!mOldestDate || !mNewestDate)
-    return (KOEvent *) 0L;
-
-  QList<KOEvent> *tmpList;
-  int maxIterations = mOldestDate->daysTo(*mNewestDate);
-  int itCount = 0;
-
-  if (mCalDict->isEmpty() && mRecursList.isEmpty())
-    return (KOEvent *) 0L;
-  
-  // if itCount is greater than maxIterations (i.e. going around in 
-  // a full circle) we have a bug. :)
-  while (itCount <= maxIterations) {
-    ++itCount;
-  RESET: if (mCursor) {
-    if (!mCursor->current()) {
-      // the cursor should ALWAYS be on a valid element here,
-      // but if something has been deleted from the list, it may
-      // no longer be on one. be dumb; reset to end of list.
-      mCursor->toLast();
-      if (!mCursor->current()) {
-	// shit! we are traversing a cursor on a deleted list.
-	delete mCursor;
-	mCursor = 0L;
-	goto RESET;
-      }
-    }
-    KOEvent *anEvent = mCursor->current();
-    --(*mCursor);
-    if (!mCursor->current()) {
-      // we have run out of events on this day.  delete cursor!
-      delete mCursor;
-      mCursor = 0L;
-    }
-    return anEvent;
-  } else {
-    // no cursor, we must check if anything in mRecursList
-    while (mRecursCursor.current() &&
-	   mRecursCursor.current()->getDtStart().date() != mCursorDate)
-      --mRecursCursor;
-    if (mRecursCursor.current()) {
-      // we found one. :)
-      KOEvent *anEvent = mRecursCursor.current();
-      // increment, so we are set for the next time.
-      // there are more dates in the list we were last looking at
-      --mRecursCursor;
-      // check to see that we haven't run off the end.  If so, reset.
-      //if (!mRecursCursor.current())
-      //	mRecursCursor.toLast();
-      return anEvent;
-    } else {
-      // we ran out of events in the recurrence cursor.  
-      // Decrement mCursorDate, make a new mCalDict cursor if dates available.
-      // reset mRecursCursor to end of list.
-      mCursorDate = mCursorDate.addDays(-1);
-      // we may have circled the globe.
-      if (mCursorDate == (mOldestDate->addDays(-1)))
-	mCursorDate = (*mNewestDate);
-      
-      if ((tmpList = mCalDict->find(makeKey(mCursorDate)))) {
-	mCursor = new QListIterator<KOEvent> (*tmpList);
-	mCursor->toLast();
-      }
-      mRecursCursor.toLast();
-    }
-  }
-  } // while loop
-  kdDebug() << "ieee! bug in calobject::prev()" << endl;
-  return (KOEvent *) 0L;
-}
-
-KOEvent *CalendarLocal::current()
-{
-  if (!mOldestDate || !mNewestDate)
-    return (KOEvent *) 0L;
-
-  if (mCalDict->isEmpty() && mRecursList.isEmpty())
-    return (KOEvent *) 0L;
-
-  RESET: if (mCursor) {
-    if (mCursor->current()) {
-      // cursor should always be current, but weird things can
-      // happen if it pointed to an event that got deleted...
-      mCursor->toFirst();
-      if (!mCursor->current()) {
-	// shit! we are on a deleted list.
-	delete mCursor;
-	mCursor = 0L;
-	goto RESET;
-      }
-    }
-    return mCursor->current();
-  } else {
-    // we must be in the mRecursList;
-    return mRecursList.current();
-  }
-}
-
-#if 0
-QList<KOEvent> CalendarLocal::search(const QRegExp &searchExp) const
-{
-  QIntDictIterator<QList<KOEvent> > qdi(*mCalDict);
-  QString testStr;
-  QList<KOEvent> matchList, *tmpList, tmpList2;
-  KOEvent *matchEvent;
-
-  qdi.toFirst();
-  while ((tmpList = qdi.current()) != 0L) {
-    ++qdi;
-    for (matchEvent = tmpList->first(); matchEvent;
-	 matchEvent = tmpList->next()) {
-      testStr = matchEvent->getSummary();
-      if ((searchExp.match(testStr) != -1) && (matchList.findRef(matchEvent) == -1))
-	matchList.append(matchEvent);
-      // do other match tests here...
-    }
-  }
-
-  tmpList2 = mRecursList;
-  tmpList2.setAutoDelete(FALSE); // just to make sure
-  for (matchEvent = tmpList2.first(); matchEvent;
-       matchEvent = tmpList2.next()) {
-    testStr = matchEvent->getSummary();
-    if ((searchExp.match(testStr) != -1) && 
-	(matchList.findRef(matchEvent) == -1)) 
-      matchList.append(matchEvent);
-    // do other match tests here...
-  }
-
-  // now, we have to sort it based on getDtStart()
-  QList<KOEvent> matchListSorted;
-  for (matchEvent = matchList.first(); matchEvent; 
-       matchEvent = matchList.next()) {
-    if (!matchListSorted.isEmpty() &&
-        matchEvent->getDtStart() < matchListSorted.at(0)->getDtStart()) {
-      matchListSorted.insert(0,matchEvent);
-      goto nextToInsert;
-    }
-    for (int i = 0; (uint) i+1 < matchListSorted.count(); i++) {
-      if (matchEvent->getDtStart() > matchListSorted.at(i)->getDtStart() &&
-          matchEvent->getDtStart() <= matchListSorted.at(i+1)->getDtStart()) {
-        matchListSorted.insert(i+1,matchEvent);
-        goto nextToInsert;
-      }
-    }
-    matchListSorted.append(matchEvent);
-  nextToInsert:
-    continue;
-  }
-
-  return matchListSorted;
-}
-#endif
 
 int CalendarLocal::numEvents(const QDate &qd)
 {
@@ -914,7 +566,6 @@ QList<KOEvent> CalendarLocal::eventsForDate(const QDate &qd, bool sorted)
     }
   }
   if (!sorted) {
-    updateCursors(eventList.first());
     return eventList;
   }
   //  kdDebug() << "Sorting getEvents for date\n" << endl;
@@ -937,7 +588,6 @@ QList<KOEvent> CalendarLocal::eventsForDate(const QDate &qd, bool sorted)
   nextToInsert:
     continue;
   }
-  updateCursors(eventListSorted.first());
   return eventListSorted;
 }
 
@@ -1040,57 +690,4 @@ QList<KOEvent> CalendarLocal::getAllEvents()
 QList<KOEvent> CalendarLocal::eventsForDate(const QDateTime &qdt)
 {
   return eventsForDate(qdt.date());
-}
-
-void CalendarLocal::updateCursors(KOEvent *dEvent)
-{
-  if (!dEvent)
-    return;
-  
-  QDate newDate(dEvent->getDtStart().date());
-  mCursorDate = newDate;
-
-  if (mCalDict->isEmpty() && mRecursList.isEmpty())
-    return;
-  
-  if (mCursor && mCursor->current() && 
-      (newDate == mCursor->current()->getDtStart().date()))
-    return;
-  
-  if (mCursor) {
-    delete mCursor;
-    mCursor = 0L;
-  }
-  QList<KOEvent> *tmpList;
-  // we have to check tmpList->count(), because sometimes there are
-  // empty lists in the dictionary (they had events once, but they
-  // have all been deleted from that date)
-  if ((tmpList = mCalDict->find(makeKey(newDate))) && 
-      tmpList->count()) {
-    mCursor = new QListIterator<KOEvent> (*tmpList);
-    mCursor->toFirst();
-    while (mCursor->current() && 
-	   (mCursor->current() != dEvent)) 
-      ++(*mCursor);
-    if (mCursor->current()) {
-      return;
-    }
-  }
-
-  // it is in the recurrence list, or nonexistent.
-  if (!mRecursCursor.current())
-    // there's nothing in the recurrence list...
-    return;
-  if (mRecursCursor.current()->recursOn(newDate))
-    // we are already there...
-    return;
-  // try to find something in the recurrence list that matches new date.
-  mRecursCursor.toFirst();
-  while (mRecursCursor.current() && 
-	 mRecursCursor.current() != dEvent)
-    ++mRecursCursor;
-  if (!mRecursCursor.current())
-    // reset to beginning, no events exist on the new date.
-    mRecursCursor.toFirst();
-  return;
 }

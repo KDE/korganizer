@@ -72,8 +72,6 @@ bool ICalFormat::load(const QString &fileName)
 
   icalfileset_free(fs);
 
-  mCalendar->first();
-
   return true;
 
 #if 0
@@ -370,7 +368,6 @@ KOEvent *ICalFormat::pasteEvent(const QDate *newDate,
   }
   // get rid of temporary VObject
   deleteVObject(vcal);
-  mCalendar->updateCursors(anEvent);
   return anEvent;
 #endif
 }
@@ -615,14 +612,14 @@ icalcomponent *ICalFormat::writeEvent(KOEvent *event)
 // TODO: attachements, resources, alarm
 #if 0
   // attachments
-  tmpStrList = anEvent->getAttachments();
+  tmpStrList = anEvent->attachments();
   for ( QStringList::Iterator it = tmpStrList.begin();
         it != tmpStrList.end();
         ++it )
     addPropValue(vevent, VCAttachProp, (*it).ascii());
   
   // resources
-  tmpStrList = anEvent->getResources();
+  tmpStrList = anEvent->resources();
   tmpStr = tmpStrList.join(";");
   if (!tmpStr.isEmpty())
     addPropValue(vevent, VCResourcesProp, tmpStr.ascii());

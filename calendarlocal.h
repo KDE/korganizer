@@ -48,12 +48,7 @@ class CalendarLocal : public CalObject {
      */
     void deleteEvent(const QDate &date, int eventId);
     void deleteEvent(KOEvent *);
-    /** retrieves an event from the calendar, based on a date and an evenId.
-     * faster than specifying an eventId alone. 
-     */
-    KOEvent *getEvent(const QDate &date, int eventId);
-    /** retrieves an event from the calendar on the basis of ID alone. */
-    KOEvent *getEvent(int eventId);
+
     /** retrieves an event on the basis of the unique string ID. */
     KOEvent *getEvent(const QString &UniqueStr);
     /** builds and then returns a list of all events that match for the
@@ -81,23 +76,11 @@ class CalendarLocal : public CalObject {
     /** remove a todo from the todolist. */
     void deleteTodo(KOEvent *);
     const QList<KOEvent> &getTodoList() const;
-    /** searches todolist for an event with this id, returns pointer or null. */
-    KOEvent *getTodo(int id);
     /** searches todolist for an event with this unique string identifier,
       returns a pointer or null. */
     KOEvent *getTodo(const QString &UniqueStr);
     /** Returns list of todos due on the specified date */
     QList<KOEvent> getTodosForDate(const QDate & date);
-  
-    /** traversal methods */
-    KOEvent *first();
-    KOEvent *last();
-    KOEvent *next();
-    KOEvent *prev();
-    KOEvent *current();
-  
-    /** update internal position information */
-    void updateCursors(KOEvent *dEvent);
   
   signals:
     /** emitted at regular intervals to indicate that the events in the
@@ -137,9 +120,6 @@ class CalendarLocal : public CalObject {
   
     QDate *mOldestDate;
     QDate *mNewestDate;
-    QDate mCursorDate;                      // last date we were looking at.
-    QListIterator<KOEvent> *mCursor;        // for linear traversal methods
-    QListIterator<KOEvent> mRecursCursor;   // for linear traversal methods
 };  
 
 #endif

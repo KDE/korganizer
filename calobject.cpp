@@ -277,7 +277,9 @@ void CalObject::updateConfig()
 //  kdDebug() << "CalObject::updateConfig()" << endl;
 
   bool updateFlag = FALSE;
-
+  
+  // TODO: update Organizer in all events
+#if 0
   mOwner = KOPrefs::instance()->mName;
 
   // update events to new organizer (email address) 
@@ -307,7 +309,7 @@ void CalObject::updateConfig()
       atFirst = FALSE;
     }
   }
-
+#endif
   readHolidayFileName();
 
   setTimeZone(KOPrefs::instance()->mTimeZone.latin1());

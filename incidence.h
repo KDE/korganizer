@@ -35,8 +35,6 @@ class Incidence : public QObject, public KORecurrence, public KOAlarm
     /** returns the event's read only status */
     bool isReadOnly() const { return mReadOnly; }
 
-    const QDateTime &dtStart() const;
-
     void setLastModified(const QDateTime &lm);
     const QDateTime &lastModified() const;
     const QDateTime &getLastModified() const { return lastModified(); }
@@ -61,6 +59,30 @@ class Incidence : public QObject, public KORecurrence, public KOAlarm
     void setOrganizer(const QString &o);
     const QString &organizer() const;
     const QString &getOrganizer() const { return organizer(); }
+
+    /** for setting the event's starting date/time with a QDateTime. */
+    void setDtStart(const QDateTime &dtStart);
+    /** returns an event's starting date/time as a QDateTime. */
+    const QDateTime &dtStart() const;
+    const QDateTime &getDtStart() const { return dtStart(); }
+    /** returns an event's starting time as a string formatted according to the
+     users locale settings */
+    QString dtStartTimeStr() const;
+    QString getDtStartTimeStr() const { return dtStartTimeStr(); }
+    /** returns an event's starting date as a string formatted according to the
+     users locale settings */
+    QString dtStartDateStr(bool shortfmt=true) const;
+    QString getDtStartDateStr(bool shortfmt=true) const { return dtStartDateStr(shortfmt); }
+    /** returns an event's starting date and time as a string formatted according
+     to the users locale settings */
+    QString dtStartStr() const;
+    QString getDtStartStr() const { return dtStartStr(); }
+
+    /** returns TRUE or FALSE depending on whether the event "floats,"
+     * or doesn't have a time attached to it, only a date. */
+    bool doesFloat() const;
+    /** sets the event's float value. */
+    void setFloats(bool f);
 
     /** attendee stuff */
     void addAttendee(Attendee *a);
@@ -133,11 +155,55 @@ class Incidence : public QObject, public KORecurrence, public KOAlarm
      rule set, or false otherwise. */
     bool isException(const QDate &qd) const;
 
+    /** set the list of attachments/associated files for this event */
+    void setAttachments(const QStringList &attachments);
+    /** return list of associated files */
+    const QStringList &attachments() const;
+
+    /** sets the event's secrecy to the string specified.  The string
+     * must be one of PUBLIC, PRIVATE, or CONFIDENTIAL. */
+    void setSecrecy(const QString &secrecy);
+    /** sets the event's secrecy to the string specified.  The string
+     * must be one of PUBLIC, PRIVATE, or CONFIDENTIAL. */
+    void setSecrecy(const char *);
+    /** sets the event's status the value specified.  See the enumeration
+     * above for possible values. */
+    void setSecrecy(int);
+    /** return the event's secrecy. */
+    int secrecy() const;
+    int getSecrecy() const { return secrecy(); }
+    /** return the event's secrecy in string format. */
+    QString secrecyStr() const;
+    QString getSecrecyStr() const { return secrecyStr(); }
+
+    /** pilot syncronization routines */
+    enum { SYNCNONE = 0, SYNCMOD = 1, SYNCDEL = 3 };
+    void setPilotId(int id);
+    int pilotId() const;
+    int getPilotId() const { return pilotId(); }
+    
+    void setSyncStatus(int stat);
+    int syncStatus() const;
+    int getSyncStatus() const { return syncStatus(); }
+
     /** returns TRUE if the date specified is one on which the event will
      * recur. */
     bool recursOn(const QDate &qd) const;
 
     void emitEventUpdated(Incidence *i) { emit eventUpdated(i); }
+
+    // VEVENT and VTODO, but not VJOURNAL (move to EventBase class?):
+
+    /** set resources used, such as Office, Car, etc. */
+    void setResources(const QStringList &resources);
+    /** return list of current resources */
+    const QStringList &resources() const;
+
+    /** set the event's priority, 0 is undefined, 1 highest (decreasing order) */
+    void setPriority(int priority);
+    /** get the event's priority */
+    int priority() const;
+    int getPriority() const { return priority(); }
 
   signals:
     void eventUpdated(Incidence *);
@@ -160,7 +226,18 @@ class Incidence : public QObject, public KORecurrence, public KOAlarm
     QString mRelatedToVUID;   
     QList<Incidence> mRelations;
     QDateList mExDates;
-    
+    QStringList mAttachments;
+    QStringList mResources;  
+
+    int mSecrecy;
+    int mPriority;                        // 1 = highest, 2 = less, etc.
+
+    // PILOT SYNCHRONIZATION STUFF
+    int mPilotId;                         // unique id for pilot sync
+    int mSyncStatus;                      // status (for sync)
+
+    bool mFloats;                         // floating means date without time
+  
     bool mReadOnly;
 };
 
