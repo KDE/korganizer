@@ -1,0 +1,54 @@
+This README is outdated and will be updated with the next release.
+
+		       +-----------------------+
+                       | K   O R G A N I Z E R |
+                       +-----------------------+
+                                 v1.0
+                           by Preston Brown
+               http://www.redhat.com/~pbrown/korganizer
+
+QUICK NOTES ON WHAT'S NEW IN THIS RELEASE:
+
+* Official 1.0 release
+
+INTRODUCTION:
+
+KOrganizer aims to be a complete program for organizing your
+appointments, contacts, projects, etc.  It is in the same spirit as
+similar programs like the now ubiquitous Microsoft Outlook, Starfish
+Internet Sidekick, Time & Chaos, etc. (all for the Microsoft Windows
+platform, of course.)  Best of all, It reads and writes the vCalendar
+file format NATIVELY (please see http://www.imc.org/pdi for more
+information), which is now an industry-wide personal data interchange
+format.  Because of this, you should be able to move from other modern
+PIMs to KOrganizer with relative ease.  Current users of the popular
+program ical should definitely take a look at KOrganizer and compare
+features.
+
+KOrganizer also offers full synchronization with your Palm Pilot, if you
+have kpilot installed.
+
+To install KOrganizer, please read the file INSTALL.  The process is
+analogous to other KDE applications.
+
+Documentation is available online from the Help->Contents menu option.
+While it is not complete and has not been updated in several months,
+it is at least partially helpful.  Anyone wishing to help on completing
+or enhancing the documentation should contact me directly at the email
+address given at the end of this document.
+
+BUGS: Known bugs are listed in the file BUGS.  I'll add and remove
+bug reports to this file as they come in or get squashed.
+
+CONTACT INFORMATION:
+
+We want your suggestions and bug reports! 
+
+Please mail them to the maintainer:
+
+Preston Brown (pbrown@kde.org)
+
+I always welcome contributions and new members for the team. 
+
+---
+pgb: 01/24/99
