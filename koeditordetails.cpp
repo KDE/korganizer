@@ -114,6 +114,7 @@ void KOAttendeeListView::contentsDragMoveEvent( QDragMoveEvent *e )
   }
 #endif
 }
+
 void KOAttendeeListView::dragEnterEvent( QDragEnterEvent *e )
 {
 #ifndef KORG_NODND
@@ -125,13 +126,13 @@ void KOAttendeeListView::dragEnterEvent( QDragEnterEvent *e )
 #endif
 }
 
-void KOAttendeeListView::addAttendee(const QString &newAttendee)
+void KOAttendeeListView::addAttendee( const QString &newAttendee )
 {
   kdDebug(5850) << " Email: " << newAttendee << endl;
   QString name;
   QString email;
-  KPIM::AddresseeLineEdit::getNameAndMail(newAttendee, name, email);
-  emit dropped(new Attendee(name,email));
+  KPIM::AddresseeLineEdit::getNameAndMail( newAttendee, name, email );
+  emit dropped( new Attendee( name, email ) );
 }
 
 void KOAttendeeListView::contentsDropEvent( QDropEvent *e )
@@ -171,104 +172,111 @@ void KOAttendeeListView::dropEvent( QDropEvent *e )
 }
 
 
-KOEditorDetails::KOEditorDetails (int spacing,QWidget* parent,const char* name)
+KOEditorDetails::KOEditorDetails( int spacing, QWidget *parent,
+                                  const char *name )
   : QWidget( parent, name), mDisableItemUpdate( false ), mFreeBusy( 0 )
 {
-  QGridLayout *topLayout = new QGridLayout(this);
-  topLayout->setSpacing(spacing);
+  QGridLayout *topLayout = new QGridLayout( this );
+  topLayout->setSpacing( spacing );
 
   mOrganizerHBox = new QHBox( this );
-  // If creating a new event, then the user is the organizer -> show the identity combo
-  // readEvent will delete it and set another label text instead, if the user isn't the organizer.
+  // If creating a new event, then the user is the organizer -> show the
+  // identity combo
+  // readEvent will delete it and set another label text instead, if the user
+  // isn't the organizer.
   // Note that the i18n text below is duplicated in readEvent
-  mOrganizerLabel = new QLabel( i18n( "Identity as organizer:" ), mOrganizerHBox );
+  mOrganizerLabel = new QLabel( i18n( "Identity as organizer:" ),
+                                mOrganizerHBox );
   mOrganizerCombo = new QComboBox( mOrganizerHBox );
   fillOrganizerCombo();
   mOrganizerHBox->setStretchFactor( mOrganizerCombo, 100 );
 
-  mListView = new KOAttendeeListView(this,"mListView");
-  mListView->addColumn(i18n("Name"),200);
-  mListView->addColumn(i18n("Email"),200);
-  mListView->addColumn(i18n("Role"),60);
-  mListView->addColumn(i18n("Status"),100);
-  mListView->addColumn(i18n("RSVP"),35);
-  mListView->setResizeMode(QListView::LastColumn);
+  mListView = new KOAttendeeListView( this, "mListView" );
+  mListView->addColumn( i18n("Name"), 200 );
+  mListView->addColumn( i18n("Email"), 200 );
+  mListView->addColumn( i18n("Role"), 60 );
+  mListView->addColumn( i18n("Status"), 100 );
+  mListView->addColumn( i18n("RSVP"), 35 );
+  mListView->setResizeMode( QListView::LastColumn );
   if ( KOPrefs::instance()->mCompactDialogs ) {
-    mListView->setFixedHeight(78);
+    mListView->setFixedHeight( 78 );
   }
 
-  connect(mListView,SIGNAL(selectionChanged(QListViewItem *)),
-          SLOT(updateAttendeeInput()));
+  connect( mListView, SIGNAL( selectionChanged( QListViewItem * ) ),
+           SLOT( updateAttendeeInput() ) );
 #ifndef KORG_NODND
-  connect(mListView, SIGNAL(dropped( Attendee *)),
-          SLOT(insertAttendee(Attendee *)));
+  connect( mListView, SIGNAL( dropped( Attendee * ) ),
+           SLOT( insertAttendee( Attendee * ) ) );
 #endif
 
-  QLabel *attendeeLabel = new QLabel(this);
-  attendeeLabel->setText(i18n("Na&me:"));
+  QLabel *attendeeLabel = new QLabel( this );
+  attendeeLabel->setText( i18n("Na&me:") );
 
-  mNameEdit = new KPIM::AddresseeLineEdit(this);
-  mNameEdit->setClickMessage(i18n("Click to add a new attendee"));
+  mNameEdit = new KPIM::AddresseeLineEdit( this );
+  mNameEdit->setClickMessage( i18n("Click to add a new attendee") );
   attendeeLabel->setBuddy( mNameEdit );
-  mNameEdit->installEventFilter(this);
-  connect(mNameEdit,SIGNAL(textChanged(const QString &)),
-          SLOT(updateAttendeeItem()));
+  mNameEdit->installEventFilter( this );
+  connect( mNameEdit, SIGNAL( textChanged( const QString & ) ),
+           SLOT( updateAttendeeItem() ) );
 
-  mUidEdit = new QLineEdit(0);
-  mUidEdit->setText("");
+  mUidEdit = new QLineEdit( 0 );
+  mUidEdit->setText( "" );
 
-  QLabel *attendeeRoleLabel = new QLabel(this);
-  attendeeRoleLabel->setText(i18n("Ro&le:"));
+  QLabel *attendeeRoleLabel = new QLabel( this );
+  attendeeRoleLabel->setText( i18n("Ro&le:") );
 
-  mRoleCombo = new QComboBox(false,this);
-  mRoleCombo->insertStringList(Attendee::roleList());
+  mRoleCombo = new QComboBox( false, this );
+  mRoleCombo->insertStringList( Attendee::roleList() );
   attendeeRoleLabel->setBuddy( mRoleCombo );
-  connect(mRoleCombo,SIGNAL(activated(int)),SLOT(updateAttendeeItem()));
+  connect( mRoleCombo, SIGNAL( activated( int ) ),
+           SLOT( updateAttendeeItem() ) );
 
-  QLabel *statusLabel = new QLabel(this);
+  QLabel *statusLabel = new QLabel( this );
   statusLabel->setText( i18n("Stat&us:") );
 
-  mStatusCombo = new QComboBox(false,this);
-  mStatusCombo->insertStringList(Attendee::statusList());
+  mStatusCombo = new QComboBox( false, this );
+  mStatusCombo->insertStringList( Attendee::statusList() );
   statusLabel->setBuddy( mStatusCombo );
-  connect(mStatusCombo,SIGNAL(activated(int)),SLOT(updateAttendeeItem()));
+  connect( mStatusCombo, SIGNAL( activated( int ) ),
+           SLOT( updateAttendeeItem() ) );
 
-  mRsvpButton = new QCheckBox(this);
-  mRsvpButton->setText(i18n("Re&quest response"));
-  connect(mRsvpButton,SIGNAL(clicked()),SLOT(updateAttendeeItem()));
+  mRsvpButton = new QCheckBox( this );
+  mRsvpButton->setText( i18n("Re&quest response") );
+  connect( mRsvpButton, SIGNAL( clicked() ), SLOT( updateAttendeeItem() ) );
 
-  QWidget *buttonBox = new QWidget(this);
-  QVBoxLayout *buttonLayout = new QVBoxLayout(buttonBox);
+  QWidget *buttonBox = new QWidget( this );
+  QVBoxLayout *buttonLayout = new QVBoxLayout( buttonBox );
 
-  QPushButton *newButton = new QPushButton(i18n("&New"),buttonBox);
-  buttonLayout->addWidget(newButton);
-  connect(newButton,SIGNAL(clicked()),SLOT(addNewAttendee()));
+  QPushButton *newButton = new QPushButton( i18n("&New"), buttonBox );
+  buttonLayout->addWidget( newButton );
+  connect( newButton, SIGNAL( clicked() ), SLOT( addNewAttendee() ) );
 
-  mRemoveButton = new QPushButton(i18n("&Remove"),buttonBox);
-  buttonLayout->addWidget(mRemoveButton);
-  connect(mRemoveButton, SIGNAL(clicked()),SLOT(removeAttendee()));
+  mRemoveButton = new QPushButton( i18n("&Remove"), buttonBox );
+  buttonLayout->addWidget( mRemoveButton );
+  connect( mRemoveButton, SIGNAL( clicked() ), SLOT( removeAttendee() ) );
 
-  mAddressBookButton = new QPushButton(i18n("Select Addressee..."),buttonBox);
-  buttonLayout->addWidget(mAddressBookButton);
-  connect(mAddressBookButton,SIGNAL(clicked()),SLOT(openAddressBook()));
+  mAddressBookButton = new QPushButton( i18n("Select Addressee..."),
+                                        buttonBox );
+  buttonLayout->addWidget( mAddressBookButton );
+  connect( mAddressBookButton, SIGNAL( clicked() ), SLOT( openAddressBook() ) );
 
-  topLayout->addMultiCellWidget(mOrganizerHBox,0,0,0,5);
-  topLayout->addMultiCellWidget(mListView,1,1,0,5);
-  topLayout->addWidget(attendeeLabel,2,0);
-  topLayout->addMultiCellWidget(mNameEdit,2,2,1,1);
-//  topLayout->addWidget(emailLabel,3,0);
-  topLayout->addWidget(attendeeRoleLabel,3,0);
-  topLayout->addWidget(mRoleCombo,3,1);
+  topLayout->addMultiCellWidget( mOrganizerHBox, 0, 0, 0, 5 );
+  topLayout->addMultiCellWidget( mListView, 1, 1, 0, 5 );
+  topLayout->addWidget( attendeeLabel, 2, 0 );
+  topLayout->addMultiCellWidget( mNameEdit, 2, 2, 1, 1 );
+//  topLayout->addWidget( emailLabel, 3, 0 );
+  topLayout->addWidget( attendeeRoleLabel, 3, 0 );
+  topLayout->addWidget( mRoleCombo, 3, 1 );
 #if 0
-  topLayout->setColStretch(2,1);
-  topLayout->addWidget(statusLabel,3,3);
-  topLayout->addWidget(mStatusCombo,3,4);
+  topLayout->setColStretch( 2, 1 );
+  topLayout->addWidget( statusLabel, 3, 3 );
+  topLayout->addWidget( mStatusCombo, 3, 4 );
 #else
-  topLayout->addWidget(statusLabel,4,0);
-  topLayout->addWidget(mStatusCombo,4,1);
+  topLayout->addWidget( statusLabel, 4, 0 );
+  topLayout->addWidget( mStatusCombo, 4, 1 );
 #endif
-  topLayout->addMultiCellWidget(mRsvpButton,5,5,0,1);
-  topLayout->addMultiCellWidget(buttonBox,2,4,5,5);
+  topLayout->addMultiCellWidget( mRsvpButton, 5, 5, 0, 1 );
+  topLayout->addMultiCellWidget( buttonBox, 2, 4, 5, 5 );
 
 #ifdef KORG_NOKABC
   mAddressBookButton->hide();
