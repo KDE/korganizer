@@ -45,7 +45,7 @@ class ArchiveDialog : public KDialogBase
   protected slots:
     void slotUser1();
     void slotUser2();
-
+    void slotArchiveFileChanged(const QString &);
   private:
     KURLRequester *mArchiveFile;
     KDateEdit *mDateEdit;

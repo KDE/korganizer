@@ -60,7 +60,7 @@ ArchiveDialog::ArchiveDialog(Calendar *cal,QWidget *parent, const char *name)
   QFrame *topFrame = plainPage();
   QGridLayout *topLayout = new QGridLayout(topFrame);
   topLayout->setSpacing(spacingHint());
-  
+
   QLabel *dateLabel = new QLabel(i18n("Appointments older than:"),topFrame);
   topLayout->addWidget(dateLabel,0,0);
 
@@ -74,10 +74,17 @@ ArchiveDialog::ArchiveDialog(Calendar *cal,QWidget *parent, const char *name)
   mArchiveFile = new KURLRequester (KOPrefs::instance()->mArchiveFile,fileBox);
   mArchiveFile->fileDialog()->setMode(KFile::File);
   mArchiveFile->fileDialog()->setFilter(i18n("*.vcs|vCalendar Files"));
+  connect(mArchiveFile->lineEdit(),SIGNAL(textChanged ( const QString & )),this,SLOT(slotArchiveFileChanged(const QString &)));
+  enableButton(KDialogBase::User1,!mArchiveFile->lineEdit()->text().isEmpty());
 }
 
 ArchiveDialog::~ArchiveDialog()
 {
+}
+
+void ArchiveDialog::slotArchiveFileChanged(const QString &text)
+{
+    enableButton(KDialogBase::User1,!text.isEmpty());
 }
 
 // Archive old events
@@ -95,7 +102,7 @@ void ArchiveDialog::slotUser1()
     filename.append(".vcs");
     destUrl.setFileName(filename);
   }
-  
+
   // Get events to be archived
   QPtrList<Event> events = mCalendar->getEvents(QDate(1800,1,1),
                                              mDateEdit->getDate().addDays(-1),true);
@@ -143,7 +150,7 @@ void ArchiveDialog::slotUser1()
       kdDebug() << "ArchiveDialog::slotUser1(): Can't merge with archive file" << endl;
       return;
     }
-/*    
+/*
     QPtrList<Event> es = archiveCalendar.getEvents(QDate(1800,1,1),
                                                   QDate(3000,1,1),
                                                   false);
@@ -156,7 +163,7 @@ void ArchiveDialog::slotUser1()
   } else {
     archiveFile = tmpFile.name();
   }
-   
+
   // Save archive calendar
   if (!archiveCalendar.save(archiveFile)) {
     KMessageBox::error(this,i18n("Cannot write archive file."));
@@ -176,8 +183,8 @@ void ArchiveDialog::slotUser1()
   KOPrefs::instance()->mArchiveFile = destUrl.url();
 
   KIO::NetAccess::removeTempFile(archiveFile);
-   
-  // Delete archived events from calendar    
+
+  // Delete archived events from calendar
   for(ev=events.first();ev;ev=events.next()) {
     mCalendar->deleteEvent(ev);
   }
@@ -203,7 +210,7 @@ void ArchiveDialog::slotUser2()
   for(ev=events.first();ev;ev=events.next()) {
     eventStrs.append(ev->summary());
   }
-  
+
   int result = KMessageBox::questionYesNoList(this,
       i18n("Delete all events before %1?\nThe following events will be deleted:")
       .arg(KGlobal::locale()->formatDate(mDateEdit->getDate())),eventStrs,
