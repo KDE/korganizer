@@ -16,31 +16,33 @@
     along with this program; if not, write to the Free Software
     Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 */
-#ifndef KORG_HEBREW_H
-#define KORG_HEBREW_H
+#ifndef CONFIGDIALOG_H
+#define CONFIGDIALOG_H
 
-#include <qstring.h>
-#include <qstringlist.h>
-#include <calendar/calendardecoration.h>
+#include <kdialogbase.h>
+#include <qcheckbox.h>
 
-using namespace KOrg;
-
-class Hebrew:public CalendarDecoration
+/**
+@author Jonathan Singer
+*/
+class ConfigDialog:public KDialogBase
 {
-public:
-  Hebrew()
-  {
-  }
-  ~Hebrew()
-  {
-  }
-  void configure(QWidget * parent);
-  QString shortText(const QDate &);
+Q_OBJECT public:
 
-  QString info();
-  static bool IsraelP;
+  ConfigDialog(QWidget * parent = 0);
+  virtual ~ ConfigDialog();
+
+protected:
+  void load();
+  void save();
+
+  protected slots: void slotOk();
 
 private:
+   QCheckBox * omer_box;
+  QCheckBox *parsha_box;
+  QCheckBox *israel_box;
+  QCheckBox *chol_box;
 
 };
 

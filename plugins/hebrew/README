@@ -1,23 +1,12 @@
 Jewish calendar plugin for KOrganizer, by Jonathan Singer <jsinger@leeta.net>
 
-Note that it only applies to modern (Gregorian) dates, as KDE/Qt does not 
-support Julian dates. See my KLuach application <http://www.leeta.net/kluach> if 
-you want to look up historical dates.
+Note that it only applies to modern (Gregorian) dates, as KDE/Qt does not
+support Julian dates. See my KLuach application <http://www.leeta.net/kluach>
+if you want to look up historical dates.
 
-TRANSLATORS! The weird-looking text strings are the names of Jewish months. They 
-aren't translateable (although European or Near Eastern languages may spell them 
-differently) and should usually just be changed into local characters with the 
-same sound. "I" and "II" are Roman numerals. Please write me if you have any 
-questions.I'm working on adding holiday, parsha and omer support.
+TRANSLATORS! The weird-looking text strings are the names of Jewish months,
+holidays and whatnot. They aren't translateable (although European or Near
+Eastern languages may spell them differently) and should usually just be changed
+into local characters with the same sound. "I" and "II" are Roman numerals.
 
-Date routines from Hdate v6, by Amos Shapir. I don't have a link to 
-it but his contact information is below. 
-Amos Shapir
-July 1995 - Tamuz 5755
-Updated Sept. 2002, Tishrey 5762
-
-Net: 
-ashapir@cloverleafcomm.com
-Paper: 
-Cloverleaf Communications, Inc.
-16 Basel st., P.O.Box 10174 Petah Tikva, Israel
+Date routines from Jewish Calendar by Frank Yellin
