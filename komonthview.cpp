@@ -807,7 +807,7 @@ void KOMonthView::newEventSlot(int index)
 void KOMonthView::doRightClickMenu()
 {
   Incidence *incidence = selectedIncidences().first();
-  if( incidence->type() == "Event" ) {
+  if( incidence && incidence->type() == "Event" ) {
     Event *event = static_cast<Event *>(incidence);
     rightClickMenu->showEventPopup(event);
   } else {
