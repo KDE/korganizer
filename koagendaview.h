@@ -197,7 +197,7 @@ class KOAgendaView : public KOEventView
 
     void finishTypeAhead();
 
-    /** reschedule the todo  to the given x- and y- coordinates. Third parameter determines all-day (no time  specified */
+    /** reschedule the todo  to the given x- and y- coordinates. Third parameter determines all-day (no time specified) */
     void slotTodoDropped( Todo *, const QPoint &, bool );
     
     void enableAgendaUpdate( bool enable );
