@@ -74,7 +74,7 @@ class KOEventEditor : public KOIncidenceEditor
     void eventChanged(Event *);
     void eventToBeDeleted(Event *);
     void eventDeleted();
-    void deleteAttendee(Event *);
+    void deleteAttendee(Incidence *);
 
 
   protected slots:

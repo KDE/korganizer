@@ -272,10 +272,12 @@ void KOEventEditor::writeEvent(Event *event)
 
   if ( event->organizer() == KOPrefs::instance()->email() ) {
     Event *ev = new Event( *event );
+    ev->registerObserver(0);
     mDetails->cancelAttendeeEvent( ev );
     if ( ev->attendeeCount() > 0 ) {
       emit deleteAttendee( ev );
     }
+    delete(ev);
   }
 
 #ifndef KORG_NORECURRENCE

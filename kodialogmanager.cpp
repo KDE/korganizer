@@ -209,7 +209,7 @@ KOEventEditor *KODialogManager::getEventEditor()
           mMainView,SLOT(eventChanged(Event *)));
   connect(eventEditor,SIGNAL(eventDeleted()),
           mMainView,SLOT(eventDeleted()));
-  connect(eventEditor,SIGNAL(deleteAttendee(Event *)),
+  connect(eventEditor,SIGNAL(deleteAttendee(Incidence *)),
           mMainView,SLOT(schedule_cancel(Incidence *)));
 
   connect(mCategoryEditDialog,SIGNAL(categoryConfigChanged()),

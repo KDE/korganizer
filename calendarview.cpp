@@ -1084,6 +1084,7 @@ void CalendarView::schedule_publish(Incidence *incidence)
   if ( publishdlg->exec() == QDialog::Accepted ) {
     OutgoingDialog *dlg = mDialogManager->outgoingDialog();
     Event *ev = new Event(*event);
+    ev->registerObserver(0);
     ev->clearAttendees();
     if (!dlg->addMessage(ev,Scheduler::Publish,publishdlg->addresses())) {
       delete(ev);
@@ -1153,13 +1154,8 @@ void CalendarView::schedule(Scheduler::Method method, Incidence *incidence)
 {
   Event *event = 0;
 
-	if (incidence == 0) {
+  if (incidence == 0) {
     incidence = mViewManager->currentView()->selectedIncidences().first();
-//    if (mViewManager->currentView()->isEventView()) {
-//      if ( incidence && incidence->type() == "Event" ) {
-//        event = static_cast<Event *>(incidence);
-//      }
-//    }
   }
   if ( incidence && incidence->type() == "Event" ) {
     event = static_cast<Event *>(incidence);
@@ -1170,12 +1166,12 @@ void CalendarView::schedule(Scheduler::Method method, Incidence *incidence)
     return;
   }
 
-  Event *ev = new Event(*event);
-
   if( event->attendeeCount() == 0 && method != Scheduler::Publish ) {
     KMessageBox::sorry(this,i18n("The event has no attendees."));
     return;
   }
+  
+  Event *ev = new Event(*event);
 
   if (method == Scheduler::Reply ) {
     Attendee *me = event->attendeeByMails(KOPrefs::instance()->mAdditionalMails,KOPrefs::instance()->email());
