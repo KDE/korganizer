@@ -104,7 +104,6 @@ libkorganizer_la_SOURCES = komessagebox.cpp outgoingdialog_base.ui \
 	alarmclient.cpp \
 	actionmanager.cpp resourceview.cpp \
 	navigatorbar.cpp kogroupware.cpp \
-	kogroupwareincomingdialog_base.ui kogroupwareincomingdialog.cpp \
 	history.cpp \
 	koprefs_base.kcfgc \
 	koincidencetooltip.cpp aboutdata.cpp \
@@ -155,7 +154,7 @@ noinst_HEADERS = komonthview.h \
 	outgoingdialog.h incomingdialog.h publishdialog.h koeditorfreebusy.h \
 	koeventview.h statusdialog.h customlistviewitem.h \
 	alarmclient.h \
-	navigatorbar.h kogroupware.h kogroupwareincomingdialog.h \
+	navigatorbar.h kogroupware.h \
 	koincidencetooltip.h korganizerifaceimpl.h \
 	exportwebdialog.h
 
