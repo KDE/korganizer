@@ -216,8 +216,8 @@ void FreeBusyManager::publishFreeBusy()
   KURL targetURL ( KOPrefs::instance()->freeBusyPublishUrl() );
   if ( targetURL.isEmpty() )  {
     KMessageBox::sorry( 0,
-      i18n( "<qt>No URL configured for uploading your free/busy list! Please "
-            "set it in KOrganizer's configuration dialog, \"Free/Busy\" page. "
+      i18n( "<qt>No URL configured for uploading your free/busy list. Please "
+            "set it in KOrganizer's configuration dialog, on the \"Free/Busy\" page. "
             "<br>Contact your system administrator for the exact URL and the "
             "account details."
             "</qt>" ), i18n("No Free/Busy upload URL") );
