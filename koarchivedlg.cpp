@@ -74,7 +74,7 @@ void ArchiveDialog::slotUser1()
   
   // Get events to be archived
   QList<Event> events = mCalendar->getEvents(QDate(1800,1,1),
-                                               mDateEdit->getDate(),true);
+                                             mDateEdit->getDate().addDays(-1),true);
   if (events.count() == 0) {
     KMessageBox::sorry(this,i18n("There are no events before %1")
         .arg(KGlobal::locale()->formatDate(mDateEdit->getDate())));
@@ -166,7 +166,7 @@ void ArchiveDialog::slotUser1()
 void ArchiveDialog::slotUser2()
 {
   QList<Event> events = mCalendar->getEvents(QDate(1769,12,1),
-                                               mDateEdit->getDate(),true);
+                                             mDateEdit->getDate().addDays(-1),true);
 
   if (events.count() == 0) {
     KMessageBox::sorry(this,i18n("There are no events before %1")
