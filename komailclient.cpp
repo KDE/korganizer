@@ -39,7 +39,7 @@
 #include "komailclient.h"
 
 KOMailClient::KOMailClient()
-{   
+{
 }
 
 KOMailClient::~KOMailClient()
@@ -58,14 +58,24 @@ bool KOMailClient::mailAttendees(Incidence *incidence,const QString &attachment)
   }
 
   QString from = KOPrefs::instance()->email();
-  
+
   QString subject = incidence->summary();
-  
+
   QString body = createBody(incidence);
 
   bool bcc = KOPrefs::instance()->mBcc;
-  
+
   return send(from,to,subject,body,bcc,attachment);
+}
+
+bool KOMailClient::mailTo(Incidence *incidence,const QString recipients,const QString &attachment=QString::null)
+{
+  QString from = KOPrefs::instance()->email();
+  QString subject = incidence->summary();
+  QString body = createBody(incidence);
+  bool bcc = KOPrefs::instance()->mBcc;
+  kdDebug () << "KOMailClient::mailTo " << recipients << endl;
+  return send(from,recipients,subject,body,bcc,attachment);
 }
 
 bool KOMailClient::send(const QString &from,const QString &to,
@@ -256,6 +266,12 @@ QString KOMailClient::createBody(Incidence *incidence)
       }
       body += i18n("End Time : %1").arg(selectedEvent->dtEndTimeStr());
       body += CR;
+      QString details = incidence->description();
+      if (!details.isEmpty()) {
+        body += i18n("Details:");
+	body += CR;
+	body += details;
+      }
     }
   } else {
     body = incidence->summary();

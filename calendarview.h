@@ -36,11 +36,12 @@
 #include <korganizer/calendarviewbase.h>
 
 #include "kdatenav.h"
+#include "searchdialog.h"
 #include "koagendaview.h"
 #include "kolistview.h"
 #include "kotodoview.h"
 #include "komonthview.h"
-#include "searchdialog.h"
+#include "kotimespanview.h"
 
 class QWidgetStack;
 class CalPrinter;
@@ -353,6 +354,7 @@ class CalendarView : public KOrg::CalendarViewBase
     void showTodoView();
     void showProjectView();
     void showJournalView();
+    void showTimeSpanView();
 
     void schedule_outgoing();
     void schedule_incoming();
@@ -451,6 +453,7 @@ class CalendarView : public KOrg::CalendarViewBase
 //    KOProjectView   *mProjectView;
     KOWhatsNextView *mWhatsNextView;
     KOJournalView   *mJournalView;
+    KOTimeSpanView  *mTimeSpanView;
   
     KOrg::BaseView     *mCurrentView;  // currently active event view
   

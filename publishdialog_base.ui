@@ -1,0 +1,246 @@
+<!DOCTYPE UI><UI version="3.0" stdsetdef="1">
+<class>PublishDialog_base</class>
+<widget class="QDialog">
+    <property name="name">
+        <cstring>PublishDialog_base</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>420</width>
+            <height>394</height>
+        </rect>
+    </property>
+    <property name="caption">
+        <string>Form1</string>
+    </property>
+    <widget class="QLabel">
+        <property name="name">
+            <cstring>TextLabel1</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>10</x>
+                <y>290</y>
+                <width>50</width>
+                <height>21</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>Name</string>
+        </property>
+    </widget>
+    <widget class="QLabel">
+        <property name="name">
+            <cstring>TextLabel2</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>10</x>
+                <y>325</y>
+                <width>50</width>
+                <height>21</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>Email</string>
+        </property>
+    </widget>
+    <widget class="QPushButton">
+        <property name="name">
+            <cstring>PushButton11</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>295</x>
+                <y>320</y>
+                <width>117</width>
+                <height>30</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>Remove</string>
+        </property>
+    </widget>
+    <widget class="QPushButton">
+        <property name="name">
+            <cstring>PushButton12</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>295</x>
+                <y>355</y>
+                <width>117</width>
+                <height>30</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>Addressbook</string>
+        </property>
+    </widget>
+    <widget class="QPushButton">
+        <property name="name">
+            <cstring>PushButton10</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>295</x>
+                <y>285</y>
+                <width>117</width>
+                <height>30</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>New</string>
+        </property>
+    </widget>
+    <widget class="QPushButton">
+        <property name="name">
+            <cstring>PushButton9</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>10</x>
+                <y>355</y>
+                <width>107</width>
+                <height>30</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>Ok</string>
+        </property>
+    </widget>
+    <widget class="QPushButton">
+        <property name="name">
+            <cstring>PushButton8</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>150</x>
+                <y>355</y>
+                <width>107</width>
+                <height>30</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>Cancel</string>
+        </property>
+    </widget>
+    <widget class="QListView">
+        <column>
+            <property name="text">
+                <string>Name</string>
+            </property>
+            <property name="clickable">
+                <bool>true</bool>
+            </property>
+            <property name="resizeable">
+                <bool>true</bool>
+            </property>
+        </column>
+        <column>
+            <property name="text">
+                <string>Email</string>
+            </property>
+            <property name="clickable">
+                <bool>true</bool>
+            </property>
+            <property name="resizeable">
+                <bool>true</bool>
+            </property>
+        </column>
+        <property name="name">
+            <cstring>mAddressListView</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>5</x>
+                <y>10</y>
+                <width>405</width>
+                <height>270</height>
+            </rect>
+        </property>
+    </widget>
+    <widget class="QLineEdit">
+        <property name="name">
+            <cstring>mNameLineEdit</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>60</x>
+                <y>285</y>
+                <width>215</width>
+                <height>27</height>
+            </rect>
+        </property>
+    </widget>
+    <widget class="QLineEdit">
+        <property name="name">
+            <cstring>mEmailLineEdit</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>60</x>
+                <y>320</y>
+                <width>215</width>
+                <height>27</height>
+            </rect>
+        </property>
+    </widget>
+</widget>
+<connections>
+    <connection>
+        <sender>PushButton10</sender>
+        <signal>clicked()</signal>
+        <receiver>PublishDialog_base</receiver>
+        <slot>addItem()</slot>
+    </connection>
+    <connection>
+        <sender>PushButton11</sender>
+        <signal>clicked()</signal>
+        <receiver>PublishDialog_base</receiver>
+        <slot>removeItem()</slot>
+    </connection>
+    <connection>
+        <sender>PushButton12</sender>
+        <signal>clicked()</signal>
+        <receiver>PublishDialog_base</receiver>
+        <slot>openAddressbook()</slot>
+    </connection>
+    <connection>
+        <sender>PushButton9</sender>
+        <signal>clicked()</signal>
+        <receiver>PublishDialog_base</receiver>
+        <slot>accept()</slot>
+    </connection>
+    <connection>
+        <sender>PushButton8</sender>
+        <signal>clicked()</signal>
+        <receiver>PublishDialog_base</receiver>
+        <slot>reject()</slot>
+    </connection>
+    <connection>
+        <sender>mNameLineEdit</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>PublishDialog_base</receiver>
+        <slot>updateItem()</slot>
+    </connection>
+    <connection>
+        <sender>mEmailLineEdit</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>PublishDialog_base</receiver>
+        <slot>updateItem()</slot>
+    </connection>
+</connections>
+<includes>
+    <include location="local" impldecl="in implementation">publishdialog_base.ui.h</include>
+</includes>
+<slots>
+    <slot access="protected">addItem()</slot>
+    <slot access="protected">removeItem()</slot>
+    <slot access="protected">openAddressbook()</slot>
+    <slot access="protected">updateItem()</slot>
+</slots>
+<layoutdefaults spacing="6" margin="11"/>
+</UI>

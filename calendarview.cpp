@@ -37,6 +37,7 @@
 #include <qtimer.h>
 #include <qwidgetstack.h>
 #include <qclipboard.h>
+#include <qptrlist.h>
 
 #include <kglobal.h>
 #include <kdebug.h>
@@ -52,6 +53,7 @@
 #include <libkcal/calendarlocal.h>
 #include <libkcal/journal.h>
 #include <libkcal/calfilter.h>
+#include <libkcal/attendee.h>
 
 #ifndef KORG_NOARCHIVE
 #include "archivedialog.h"
@@ -68,6 +70,7 @@
 #include "koeventviewerdialog.h"
 #include "outgoingdialog.h"
 #include "incomingdialog.h"
+#include "publishdialog.h"
 #include "categoryeditdialog.h"
 #include "kofilterview.h"
 #include "filtereditdialog.h"
@@ -111,6 +114,7 @@ CalendarView::CalendarView(QWidget *parent,const char *name)
   mListView = 0;
 //  mProjectView = 0;
   mJournalView = 0;
+  mTimeSpanView = 0;
 
   mModified = false;
   mReadOnly = false;
@@ -262,7 +266,7 @@ void CalendarView::createPrinter()
 bool CalendarView::openCalendar(QString filename, bool merge)
 {
   kdDebug() << "CalendarView::openCalendar(): " << filename << endl;
-  
+
   if (filename.isEmpty()) {
     kdDebug() << "CalendarView::openCalendar(): Error! Empty filename." << endl;
     return false;
@@ -385,6 +389,7 @@ void CalendarView::readCurrentView(KConfig *config)
   else if (view == "List") showListView();
 //  else if (view == "Project") showProjectView();
   else if (view == "Journal") showJournalView();
+  else if (view == "TimeSpan") showTimeSpanView();
   else showAgendaView();
 }
 
@@ -398,6 +403,7 @@ void CalendarView::writeCurrentView(KConfig *config)
   else if (mCurrentView == mListView) view = "List";
 //  else if (mCurrentView == mProjectView) view = "Project";
   else if (mCurrentView == mJournalView) view = "Journal";
+  else if (mCurrentView == mTimeSpanView) view = "TimeSpan";
   else view = "Agenda";
 
   config->writeEntry("Current View",view);
@@ -422,6 +428,9 @@ void CalendarView::writeSettings()
 
   if (mAgendaView) {
     mAgendaView->writeSettings(config);
+  }
+  if (mTimeSpanView) {
+    mTimeSpanView->writeSettings(config);
   }
 #if 0
   if (mProjectView) {
@@ -1303,6 +1312,19 @@ void CalendarView::showJournalView()
   showView(mJournalView);
 }
 
+void CalendarView::showTimeSpanView()
+{
+  if (!mTimeSpanView) {
+    mTimeSpanView = new KOTimeSpanView(mCalendar,mRightFrame,
+                                       "CalendarView::TimeSpanView");
+    addView(mTimeSpanView);
+    
+    mTimeSpanView->readSettings();
+  }
+
+  showView(mTimeSpanView);
+}
+
 
 void CalendarView::schedule_outgoing()
 {
@@ -1332,8 +1354,21 @@ void CalendarView::schedule_publish()
     KMessageBox::sorry(this,i18n("No event selected."));
     return;
   }
-  createOutgoingDialog();
-  mOutgoingDialog->addMessage(event,Scheduler::Publish,"dummy@nowhere.nil");
+
+  PublishDialog *publishdlg = new PublishDialog();
+  if (event->attendeeCount()>0) {
+    QPtrList<Attendee> attendees = event->attendees();
+    attendees.first();
+    while ( attendees.current()!=0 ) {
+     publishdlg->addAttendee(attendees.current());
+     attendees.next();
+   }
+  }
+  if ( publishdlg->exec() == QDialog::Accepted ) {
+    createOutgoingDialog();
+    mOutgoingDialog->addMessage(event,Scheduler::Publish,publishdlg->addresses());
+  }
+  delete publishdlg;
 }
 
 void CalendarView::schedule_request()

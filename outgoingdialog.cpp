@@ -67,10 +67,11 @@ ScheduleItemOut::ScheduleItemOut(QListView *parent,Event *ev,
     setText(3,"");
   }
   setText(5,Scheduler::methodName(mMethod));
-  if (mMethod == Scheduler::Publish) {
-    if (!recipients.isEmpty())
-    setText(6,mRecipients);
-  }
+//  kdDebug() << "OutgoingItem rescipients: " << mRecipients << endl;
+//  if (mMethod == Scheduler::Publish) {
+//    if (!recipients.isEmpty())
+//    setText(6,mRecipients);
+//  }
 }
 
 OutgoingDialog::OutgoingDialog(Calendar *calendar,QWidget* parent,
@@ -147,6 +148,13 @@ void OutgoingDialog::send()
     if (success) delete oldItem;
   }
 
+  emit numMessagesChanged(mMessageListView->childCount());
+}
+
+void OutgoingDialog::deleteItem()
+{
+  ScheduleItemOut *item = (ScheduleItemOut *)(mMessageListView->selectedItem());
+  mMessageListView->takeItem(item);
   emit numMessagesChanged(mMessageListView->childCount());
 }
 

@@ -288,6 +288,9 @@ void KOrganizer::initActions()
   (void)new KAction(i18n("&Journal"), 0,
                     mCalendarView, SLOT(showJournalView()),
                     actionCollection(), "view_journal");
+  (void)new KAction(i18n("&Time Span"), "timespan", 0,
+                    mCalendarView, SLOT(showTimeSpanView()),
+                    actionCollection(), "view_timespan");
   (void)new KAction(i18n("&Update"), 0,
                     mCalendarView, SLOT(update()),
                     actionCollection(), "update");
@@ -296,7 +299,7 @@ void KOrganizer::initActions()
   (void)new KAction(i18n("New E&vent..."), "appointment", 0,
                     mCalendarView,SLOT(appointment_new()),
                     actionCollection(), "new_event");
-  (void)new KAction(i18n("New &To-Do..."), 0,
+  (void)new KAction(i18n("New &To-Do..."), "newtodo", 0,
                     mCalendarView,SLOT(newTodo()),
                     actionCollection(), "new_todo");
   action = new KAction(i18n("&Show Appointment..."), 0,
@@ -335,12 +338,12 @@ void KOrganizer::initActions()
   (void)new KAction(i18n("Incoming Messages..."),0,
                     mCalendarView,SLOT(schedule_incoming()),
                     actionCollection(),"incoming");
-  action = new KAction(i18n("Publish"),0,
+  action = new KAction(i18n("Publish"),"mail_send",0,
                        mCalendarView,SLOT(schedule_publish()),
                        actionCollection(),"publish");
   connect(mCalendarView,SIGNAL(eventsSelected(bool)),
           action,SLOT(setEnabled(bool)));
-  action = new KAction(i18n("Request"),0,
+  action = new KAction(i18n("Request"),"mail_forward",0,
                        mCalendarView,SLOT(schedule_request()),
                        actionCollection(),"request");
   connect(mCalendarView,SIGNAL(eventsSelected(bool)),
@@ -360,7 +363,7 @@ void KOrganizer::initActions()
                        actionCollection(),"add");
   connect(mCalendarView,SIGNAL(eventsSelected(bool)),
           action,SLOT(setEnabled(bool)));
-  action = new KAction(i18n("Reply"),0,
+  action = new KAction(i18n("Reply"),"mail_reply",0,
                        mCalendarView,SLOT(schedule_reply()),
                        actionCollection(),"reply");
   connect(mCalendarView,SIGNAL(eventsSelected(bool)),

@@ -871,7 +871,6 @@ void KOAgendaView::startDrag(Event *event)
 void KOAgendaView::readSettings()
 {
   readSettings(KGlobal::config());
-  updateConfig();
 }
 
 void KOAgendaView::readSettings(KConfig *config)
@@ -886,6 +885,8 @@ void KOAgendaView::readSettings(KConfig *config)
   }
 
   slotViewChange(config->readNumEntry("Agenda View", KOAgendaView::WEEK));
+
+  updateConfig();
 }
 
 void KOAgendaView::writeSettings(KConfig *config)

@@ -15,135 +15,165 @@
     <property name="caption">
         <string>Scheduler - Outgoing Messages</string>
     </property>
-    <grid>
-        <property name="name">
-            <cstring>unnamed</cstring>
-        </property>
-        <property name="margin">
-            <number>11</number>
-        </property>
-        <property name="spacing">
-            <number>6</number>
-        </property>
-        <widget class="QListView" row="0" column="0" rowspan="3" colspan="1">
-            <column>
-                <property name="text">
-                    <string>Summary</string>
-                </property>
-                <property name="clickable">
-                    <bool>true</bool>
-                </property>
-                <property name="resizeable">
-                    <bool>true</bool>
-                </property>
-            </column>
-            <column>
-                <property name="text">
-                    <string>Start Date</string>
-                </property>
-                <property name="clickable">
-                    <bool>true</bool>
-                </property>
-                <property name="resizeable">
-                    <bool>true</bool>
-                </property>
-            </column>
-            <column>
-                <property name="text">
-                    <string>Start Time</string>
-                </property>
-                <property name="clickable">
-                    <bool>true</bool>
-                </property>
-                <property name="resizeable">
-                    <bool>true</bool>
-                </property>
-            </column>
-            <column>
-                <property name="text">
-                    <string>End Date</string>
-                </property>
-                <property name="clickable">
-                    <bool>true</bool>
-                </property>
-                <property name="resizeable">
-                    <bool>true</bool>
-                </property>
-            </column>
-            <column>
-                <property name="text">
-                    <string>End Time</string>
-                </property>
-                <property name="clickable">
-                    <bool>true</bool>
-                </property>
-                <property name="resizeable">
-                    <bool>true</bool>
-                </property>
-            </column>
-            <column>
-                <property name="text">
-                    <string>Method</string>
-                </property>
-                <property name="clickable">
-                    <bool>true</bool>
-                </property>
-                <property name="resizeable">
-                    <bool>true</bool>
-                </property>
-            </column>
-            <column>
-                <property name="text">
-                    <string>Recipients</string>
-                </property>
-                <property name="clickable">
-                    <bool>true</bool>
-                </property>
-                <property name="resizeable">
-                    <bool>true</bool>
-                </property>
-            </column>
-            <property name="name">
-                <cstring>mMessageListView</cstring>
+    <widget class="QListView">
+        <column>
+            <property name="text">
+                <string>Summary</string>
             </property>
-            <property name="allColumnsShowFocus">
+            <property name="clickable">
                 <bool>true</bool>
             </property>
-        </widget>
-        <widget class="QPushButton" row="0" column="1">
-            <property name="name">
-                <cstring>PushButton5</cstring>
+            <property name="resizeable">
+                <bool>true</bool>
             </property>
+        </column>
+        <column>
             <property name="text">
-                <string>Send Messages</string>
+                <string>Start Date</string>
             </property>
-        </widget>
-        <spacer row="1" column="1">
-            <property name="name" stdset="0">
-                <cstring>Spacer2</cstring>
+            <property name="clickable">
+                <bool>true</bool>
             </property>
-            <property name="orientation">
-                <enum>Vertical</enum>
+            <property name="resizeable">
+                <bool>true</bool>
             </property>
-            <property name="sizeType">
-                <enum>Expanding</enum>
-            </property>
-            <property name="sizeHint">
-                <size>
-                    <width>20</width>
-                    <height>20</height>
-                </size>
-            </property>
-        </spacer>
-        <widget class="QPushButton" row="2" column="1">
-            <property name="name">
-                <cstring>PushButton6</cstring>
-            </property>
+        </column>
+        <column>
             <property name="text">
-                <string>Close</string>
+                <string>Start Time</string>
             </property>
-        </widget>
-    </grid>
+            <property name="clickable">
+                <bool>true</bool>
+            </property>
+            <property name="resizeable">
+                <bool>true</bool>
+            </property>
+        </column>
+        <column>
+            <property name="text">
+                <string>End Date</string>
+            </property>
+            <property name="clickable">
+                <bool>true</bool>
+            </property>
+            <property name="resizeable">
+                <bool>true</bool>
+            </property>
+        </column>
+        <column>
+            <property name="text">
+                <string>End Time</string>
+            </property>
+            <property name="clickable">
+                <bool>true</bool>
+            </property>
+            <property name="resizeable">
+                <bool>true</bool>
+            </property>
+        </column>
+        <column>
+            <property name="text">
+                <string>Method</string>
+            </property>
+            <property name="clickable">
+                <bool>true</bool>
+            </property>
+            <property name="resizeable">
+                <bool>true</bool>
+            </property>
+        </column>
+        <property name="name">
+            <cstring>mMessageListView</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>11</x>
+                <y>11</y>
+                <width>466</width>
+                <height>184</height>
+            </rect>
+        </property>
+        <property name="frameShape">
+            <enum>StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+            <enum>Sunken</enum>
+        </property>
+        <property name="allColumnsShowFocus">
+            <bool>true</bool>
+        </property>
+    </widget>
+    <widget class="QPushButton">
+        <property name="name">
+            <cstring>PushButton5</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>482</x>
+                <y>11</y>
+                <width>127</width>
+                <height>33</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>Send Messages</string>
+        </property>
+        <property name="default">
+            <bool>false</bool>
+        </property>
+    </widget>
+    <widget class="QPushButton">
+        <property name="name">
+            <cstring>PushButton7</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>482</x>
+                <y>52</y>
+                <width>127</width>
+                <height>33</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>Remove</string>
+        </property>
+    </widget>
+    <widget class="QPushButton">
+        <property name="name">
+            <cstring>PushButton6</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>484</x>
+                <y>164</y>
+                <width>127</width>
+                <height>33</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>Close</string>
+        </property>
+        <property name="default">
+            <bool>true</bool>
+        </property>
+    </widget>
+    <spacer>
+        <property name="name" stdset="0">
+            <cstring>Spacer2</cstring>
+        </property>
+        <property name="orientation">
+            <enum>Vertical</enum>
+        </property>
+        <property name="sizeType">
+            <enum>Expanding</enum>
+        </property>
+        <property name="sizeHint">
+            <size>
+                <width>20</width>
+                <height>20</height>
+            </size>
+        </property>
+    </spacer>
 </widget>
 <connections>
     <connection>
@@ -158,9 +188,19 @@
         <receiver>OutgoingDialog_base</receiver>
         <slot>send()</slot>
     </connection>
+    <connection>
+        <sender>PushButton7</sender>
+        <signal>clicked()</signal>
+        <receiver>OutgoingDialog_base</receiver>
+        <slot>deleteItem()</slot>
+    </connection>
 </connections>
+<includes>
+    <include location="local" impldecl="in implementation">outgoingdialog_base.ui.h</include>
+</includes>
 <slots>
     <slot access="protected">send()</slot>
+    <slot access="protected">deleteItem()</slot>
 </slots>
 <layoutdefaults spacing="6" margin="11"/>
 </UI>

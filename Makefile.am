@@ -41,7 +41,8 @@ libkorganizer_la_SOURCES =  outgoingdialog_base.ui \
         koeditorrecurrence.cpp koeventviewerdialog.cpp \
         koeventpopupmenu.cpp kprefs.cpp \
         outgoingdialog.cpp \
-        incomingdialog_base.ui incomingdialog.cpp \
+	incomingdialog_base.ui incomingdialog.cpp \
+	publishdialog_base.ui publishdialog.cpp \
         koeventview.cpp categoryselectdialog_base.ui categoryselectdialog.cpp \
         categoryeditdialog_base.ui categoryeditdialog.cpp \
         kofilterview_base.ui kofilterview.cpp \
@@ -50,7 +51,8 @@ libkorganizer_la_SOURCES =  outgoingdialog_base.ui \
         kowhatsnextview.cpp \
         kojournalview.cpp journalentry.cpp \
         kocore.cpp plugindialog.cpp mailscheduler.cpp \
-        docprefs.cpp
+        docprefs.cpp \
+        kotimespanview.cpp timespanview.cpp lineview.cpp
 
 METASOURCES = AUTO
 
@@ -71,7 +73,7 @@ noinst_HEADERS = komonthview.h \
         kowindowlist.h \
         koeditorgeneralevent.h koeditorgeneraltodo.h koeditordetails.h \
         koeditorrecurrence.h koeventviewerdialog.h koeventpopupmenu.h \
-        outgoingdialog.h incomingdialog.h \
+        outgoingdialog.h incomingdialog.h publishdialog.h \
         koeventview.h
 
 tip_DATA = tips

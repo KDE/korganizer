@@ -61,6 +61,7 @@ class OutgoingDialog : public OutgoingDialog_base
 
   protected slots:
     void send();
+    void deleteItem();
     void showEvent(QListViewItem *);
 
   private:

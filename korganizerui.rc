@@ -1,5 +1,5 @@
 <!DOCTYPE kpartgui>
-<kpartgui name="korganizer" version="12">
+<kpartgui name="korganizer" version="13">
 
   <MenuBar>
     <Menu name="file"><text>&amp;File</text>
@@ -23,6 +23,7 @@
       <Action name="view_whatsnext"/>
       <Separator/>
       <Action name="view_list"/>
+      <Action name="view_timespan"/>
       <Action name="view_day"/>
       <Action name="view_workweek"/>
       <Action name="view_week"/>
@@ -74,16 +75,24 @@
     <Action name="go_today"/>
     <Action name="mail_appointment"/>
     <Action name="new_event"/>
+    <Action name="new_todo"/>
   </ToolBar>
 
   <ToolBar name="korganizer_toolbar"><text>Views</text>
     <Action name="view_whatsnext"/>
     <Action name="view_list"/>
+    <Action name="view_timespan"/>
     <Action name="view_day"/>
     <Action name="view_workweek"/>
     <Action name="view_week"/>
     <Action name="view_month"/>
     <Action name="view_todo"/>
+  </ToolBar>
+
+  <ToolBar name="schedule_toolbar"><text>Schedule</text>
+    <Action name="publish"/>
+    <Action name="request"/>
+    <Action name="reply"/>
   </ToolBar>
 
 </kpartgui>
