@@ -19,7 +19,7 @@
 
 #include <klocale.h>
 #include <kdebug.h>
-#include <iostream.h>
+
 #include "kotodoviewitem.h"
 #include "kotodoview.h"
 #include "koprefs.h"
