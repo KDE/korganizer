@@ -35,7 +35,7 @@ ExchangeConfig::ExchangeConfig( KPIM::ExchangeAccount* account, QWidget* parent 
   mAccount = account;
 
   kdDebug() << "Creating ExchangeConfig with account: " << 
-      account->host() << ":" << account->account() << " (" << account->password() << ")" << endl;
+      account->host() << ":" << account->account() << endl;
 
   QFrame *topFrame = plainPage();
   QGridLayout *topLayout = new QGridLayout( topFrame, 3, 2, 3 );
@@ -51,43 +51,19 @@ ExchangeConfig::ExchangeConfig( KPIM::ExchangeAccount* account, QWidget* parent 
   m_password = new KPasswordEdit( topFrame );
   topLayout->addWidget( new QLabel( i18n( "Password" ), topFrame ), 2, 0 );
   topLayout->addWidget( m_password, 2, 1 );
-
+  m_password->setText( "<hidden>" );
+  m_password->selectAll();
 }
 
 ExchangeConfig::~ExchangeConfig()
 {
 }
-/*
-void ExchangeConfig::load()
-{
-  kapp->config()->setGroup("Calendar/Exchange Plugin");
-
-  QString host = kapp->config()->readEntry( "host" );
-  if ( ! host.isNull() ) {
-    m_host->setText( host );
-  }
-
-  QString user = kapp->config()->readEntry( "user" );
-  if ( ! user.isNull() ) {
-    m_user->setText( user );
-  }
-}
-
-void ExchangeConfig::save()
-{
-  kapp->config()->setGroup( "Calendar/Exchange Plugin" );
-  kapp->config()->writeEntry( "host", m_host->text() );
-  kapp->config()->writeEntry( "user", m_user->text() );
-  kapp->config()->sync();
-}
-*/
 
 void ExchangeConfig::slotOk()
 {
   mAccount->setHost( m_host->text() );
   mAccount->setAccount( m_user->text() );
   mAccount->setPassword( m_password->password() );
-  //save();
 
   accept();
 }
