@@ -37,3 +37,5 @@ noinst_HEADERS = testnewstuff.h ghns.h
 
 KDE_ICON=AUTO
 
+include ../../admin/Doxyfile.am
+
