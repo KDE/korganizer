@@ -124,23 +124,37 @@ class MonthViewItem: public QListBoxItem
 
 class KOMonthView;
 
+/** This class represents one day in KOrganizer's month view.
+
+@see KOMonthView
+*/
 class MonthViewCell : public QWidget
 {
     Q_OBJECT
   public:
     MonthViewCell( KOMonthView * );
 
+    /** Sets the date of the cell */
     void setDate( const QDate & );
+    /** @return Date of cell */
     QDate date() const;
 
     void setPrimary( bool );
     bool isPrimary() const;
 
+    /** Make this cell show as a holiday */
     void setHoliday( bool );
     void setHoliday( const QString & );
 
     void updateCell();
+    /** Adds an incidence to the cell.
+        Sets the right text and icons for this incidence.
+    */
     void addIncidence( Incidence * );
+    /** Removes an incidence from the cell.
+        @return True if successful, false if deletion failed
+       (e.g. when given incidence doesn't exist in the cell.
+    */
     bool removeIncidence( Incidence * );
 
     void updateConfig();
@@ -183,7 +197,13 @@ class MonthViewCell : public QWidget
     QPalette mTodayPalette;
 };
 
-
+/**
+  The class KOMonthView represents the monthly view in KOrganizer.
+  It holds several instances of the class MonthViewCell.
+  
+  @short KOMonthview represents the montly view in KOrganizer.
+  @see KOBaseView, KODayListView, MonthViewCell
+*/
 class KOMonthView: public KOEventView
 {
     Q_OBJECT
@@ -197,10 +217,10 @@ class KOMonthView: public KOEventView
     /** Returns number of currently shown dates. */
     virtual int currentDateCount();
 
-    /** returns the currently selected events */
+    /** Returns the currently selected events */
     virtual Incidence::List selectedIncidences();
 
-    /** returns dates of the currently selected events */
+    /** Returns dates of the currently selected events */
     virtual DateList selectedDates();
 
     virtual bool eventDurationHint(QDateTime &startDt, QDateTime &endDt, bool &allDay);
@@ -233,8 +253,9 @@ class KOMonthView: public KOEventView
     void viewChanged();
     void updateDayLabels();
     
-    /** Returns pointer of monthcell with given date, otherwise 0 */
-    MonthViewCell *lookupCellByDate( const QDate & );
+    /** @param date The date of the cell which should be returned.
+    @return Pointer of monthcell with given date, otherwise 0 */
+    MonthViewCell *lookupCellByDate( const QDate &date );
 
   private:
     int mDaysPerWeek;
