@@ -120,6 +120,7 @@ void CategoryEditDialog::slotApply()
     KOPrefs::instance()->mCustomCategories.append(item->text(0));
     item = item->nextSibling();
   }
+  KOPrefs::instance()->writeConfig();
 
   emit categoryConfigChanged();
 }
