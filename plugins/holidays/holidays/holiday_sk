@@ -1,0 +1,20 @@
+:
+: Slovak holiday file
+: Author: Juraj Korec
+:
+small        "Nový rok, Deò vzniku SR"          weekend on 1.1.
+small        "Traja králi"                      weekend on 6.1.
+small        "Veµký piatok"                     weekend on easter minus 2 days
+small        "Veµkonoèná nedeµa"                weekend on easter
+small        "Veµkonoèný pondelok"              weekend on easter plus 1 days
+small        "Sviatok práce"                    weekend on 1.5.
+small        "Deò ví»azstva nad fa¹izmom"       weekend on 8.5.
+small        "Cyril a Metod"                    weekend on 5.7.
+small        "Výroèie SNP"                      weekend on 29.8.
+small        "Deò Ústavy SR"                    weekend on 1.9.
+small        "Sedembolestná Panna Mária"        weekend on 15.9.
+small        "Sviatok V¹etkých svätých"         weekend on 1.11.
+small        "Deò boja za slobodu a demokraciu" weekend on 17.11.
+small        "©tedrý deò"                       weekend on 24.12.
+small        "Prvý sviatok vianoèný"            weekend on 25.12.
+small        "Druhý sviatok vianoèný"           weekend on 26.12.
