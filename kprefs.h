@@ -72,6 +72,22 @@ class KPrefsItemColor : public KPrefsItem {
 };
 
 
+class KPrefsItemString : public KPrefsItem {
+  public:
+    KPrefsItemString(const QString &name,QString *,
+                     const QString &defaultValue="");
+    virtual ~KPrefsItemString() {}
+    
+    void setDefault();
+    void readConfig(KConfig *);
+    void writeConfig(KConfig *);    
+
+  private:
+    QString *mReference;
+    QString mDefault;
+};
+
+
 class KPrefs {
   public:
     KPrefs(const QString &configname=QString::null);

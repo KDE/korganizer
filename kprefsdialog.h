@@ -1,5 +1,5 @@
 // $Id$
-// (C) 2000 by Cornelius Schumacher
+// (C) 2001 by Cornelius Schumacher
 
 #ifndef _KPREFSDIALOG_H
 #define _KPREFSDIALOG_H
@@ -101,6 +101,27 @@ class KPrefsWidRadios : public KPrefsWid
     int *mReference;
 
     QButtonGroup *mBox;
+};
+
+
+class KPrefsWidString : public KPrefsWid
+{
+  public:
+    KPrefsWidString(const QString &text,QString *reference,
+                    KPrefsDialog *prefsDialog,QWidget *parent);
+    virtual ~KPrefsWidString();
+
+    QLabel *label();
+    QLineEdit *lineEdit();
+    
+    void readConfig();
+    void writeConfig();
+    
+  private:
+    QString *mReference;
+
+    QLabel *mLabel;
+    QLineEdit *mEdit;
 };
 
 

@@ -103,6 +103,33 @@ void KPrefsItemColor::readConfig(KConfig *config)
 }
 
 
+KPrefsItemString::KPrefsItemString(const QString &name,
+                                   QString *reference,
+                                   const QString &defaultValue) :
+  KPrefsItem(name)
+{
+  mReference = reference;
+  mDefault = defaultValue;
+}
+
+void KPrefsItemString::setDefault()
+{
+  *mReference = mDefault;
+}
+
+void KPrefsItemString::writeConfig(KConfig *config)
+{
+  config->setGroup(mGroup);            
+  config->writeEntry(mName,*mReference);
+}
+
+void KPrefsItemString::readConfig(KConfig *config)
+{
+  config->setGroup(mGroup);
+  *mReference = config->readEntry(mName,mDefault);
+}
+
+
 
 KPrefs::KPrefs(const QString &configname)
 {

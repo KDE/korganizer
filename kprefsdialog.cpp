@@ -83,7 +83,7 @@ KPrefsWidColor::KPrefsWidColor(const QString &text,QColor *reference,
 
 KPrefsWidColor::~KPrefsWidColor()
 {
-  kdDebug() << "KPrefsWidColor::~KPrefsWidColor()" << endl;
+//  kdDebug() << "KPrefsWidColor::~KPrefsWidColor()" << endl;
 }
 
 void KPrefsWidColor::readConfig()
@@ -182,6 +182,41 @@ void KPrefsWidRadios::writeConfig()
 }
 
 
+KPrefsWidString::KPrefsWidString(const QString &text,QString *reference,
+                                 KPrefsDialog *prefsDialog,QWidget *parent) :
+  KPrefsWid(prefsDialog)
+{
+  mReference = reference;
+  
+  mLabel = new QLabel(text,parent);
+  mEdit = new QLineEdit(parent);
+}
+
+KPrefsWidString::~KPrefsWidString()
+{
+}
+
+void KPrefsWidString::readConfig()
+{
+  mEdit->setText(*mReference);
+}
+
+void KPrefsWidString::writeConfig()
+{
+  *mReference = mEdit->text();
+}
+
+QLabel *KPrefsWidString::label()
+{
+  return mLabel;
+}
+
+QLineEdit *KPrefsWidString::lineEdit()
+{
+  return mEdit;
+}
+
+
 KPrefsDialog::KPrefsDialog(KPrefs *prefs,QWidget *parent,char *name,bool modal) :
   KDialogBase(IconList,i18n("Preferences"),Ok|Apply|Cancel|Default,Ok,parent,
               name,modal,true)
@@ -213,6 +248,8 @@ void KPrefsDialog::setDefaults()
 
 void KPrefsDialog::readConfig()
 {
+//  kdDebug() << "KPrefsDialog::readConfig()" << endl;
+
   KPrefsWid *wid;
   for(wid = mPrefsWids.first();wid;wid=mPrefsWids.next()) {
     wid->readConfig();
@@ -223,7 +260,7 @@ void KPrefsDialog::readConfig()
 
 void KPrefsDialog::writeConfig()
 {
-  kdDebug() << "KPrefsDialog::writeConfig()" << endl;
+//  kdDebug() << "KPrefsDialog::writeConfig()" << endl;
 
   KPrefsWid *wid;
   for(wid = mPrefsWids.first();wid;wid=mPrefsWids.next()) {
@@ -232,11 +269,11 @@ void KPrefsDialog::writeConfig()
 
   usrWriteConfig();
 
-  kdDebug() << "KPrefsDialog::writeConfig() now writing..." << endl;
+//  kdDebug() << "KPrefsDialog::writeConfig() now writing..." << endl;
   
   mPrefs->writeConfig();
 
-  kdDebug() << "KPrefsDialog::writeConfig() done" << endl;
+//  kdDebug() << "KPrefsDialog::writeConfig() done" << endl;
 }
 
 
