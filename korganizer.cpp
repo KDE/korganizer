@@ -232,7 +232,7 @@ void KOrganizer::initActions()
   KStdAction::printPreview(mCalendarView, SLOT(printPreview()),
                            actionCollection());
 #endif
-  (void)new KAction(i18n("Make active"),0,this,SLOT(makeActive()),
+  (void)new KAction(i18n("Make Active"),0,this,SLOT(makeActive()),
                     actionCollection(),"make_active");
   KStdAction::quit(this, SLOT(close()), actionCollection());
 
@@ -278,7 +278,7 @@ void KOrganizer::initActions()
   (void)new KAction(i18n("&Month"), "month", 0,
                     mCalendarView->viewManager(), SLOT(showMonthView()),
                     actionCollection(), "view_month");
-  (void)new KAction(i18n("&To-do list"), "todo", 0,
+  (void)new KAction(i18n("&To-Do list"), "todo", 0,
                     mCalendarView->viewManager(), SLOT(showTodoView()),
                     actionCollection(), "view_todo");
   (void)new KAction(i18n("&Journal"), 0,
@@ -441,7 +441,7 @@ void KOrganizer::initActions()
                     actionCollection(),"show_intro");
 #endif
 
-  (void)new KAction(i18n("&Tip of the day..."), 0,
+  (void)new KAction(i18n("&Tip of the Day..."), 0,
                     this, SLOT(showTip()), actionCollection(), "help_tipofday");
 
   setInstance( KGlobal::instance() );

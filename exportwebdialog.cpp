@@ -56,7 +56,7 @@
 
 ExportWebDialog::ExportWebDialog (Calendar *cal, QWidget *parent,
                                   const char *name) :
-  KDialogBase(Tabbed,i18n("Export calendar as web page"),
+  KDialogBase(Tabbed,i18n("Export Calendar as Web Page"),
               Help|Default|User1|Cancel,User1,parent,name,false,false,
               i18n("Export")),
   mCalendar(cal),
