@@ -62,6 +62,7 @@ AboutData::AboutData()
   addCredit("Dan Pilone");
   addCredit("Roman Rohr");
   addCredit("Don Sanders");
+  addCredit("Bram Schoenmakers");
   addCredit("Günter Schwann");
   addCredit("Herwin Jan Steehouwer");
   addCredit("Nick Thompson");
@@ -69,7 +70,6 @@ AboutData::AboutData()
   addCredit("Larry Wright");
   addCredit("Thomas Zander");
   addCredit("Fester Zigterman");
-  addCredit("Bram Schoenmakers");
 }
     
 AboutData *AboutData::self()
