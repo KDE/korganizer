@@ -164,7 +164,7 @@ class KOMonthView: public KOEventView {
    void newEventSignal(QDateTime, QDateTime);  // From KOBaseView
    void editEventSignal(Event *);  // From KOBaseView
    void deleteEventSignal(Event *);  // From KOBaseView
-   void datesSelected(const DateList);  // From KOBaseView
+   void datesSelected(const DateList &);  // From KOBaseView
 
  protected slots:
    void resizeEvent(QResizeEvent *);

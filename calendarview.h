@@ -51,13 +51,13 @@ class OutgoingDialog;
 class IncomingDialog;
 class CategoryEditDialog;
 class KOFilterView;
-class KOProjectView;
 class FilterEditDialog;
-class KOWhatsNextView;
-class KOJournalView;
 class KOEventEditor;
 class KOTodoEditor;
 class PluginDialog;
+class KOViewManager;
+class KODialogManager;
+class KOTodoView;
 
 using namespace KCal;
 
@@ -104,10 +104,15 @@ class CalendarView : public KOrg::CalendarViewBase
     QDate startDate();
     QDate endDate();
 
-    void addView(KOrg::BaseView *);
+    QWidgetStack *viewStack();
+    QWidget *leftFrame();
 
-    /** changes the view to be the currently selected view */
+    KDateNavigator *dateNavigator();
+
+    void addView(KOrg::BaseView *);
     void showView(KOrg::BaseView *);
+
+    Incidence *currentSelection();
 
   signals:
   
@@ -206,10 +211,7 @@ class CalendarView : public KOrg::CalendarViewBase
     void deleteTodo(Todo *);
     
     //void eventsSelected(QPtrList<Event>);
-    
-    /** change Agenda view */
-    void changeAgendaView( int view );
-    
+        
     /** Check if clipboard contains vCalendar event. The signal pasteEnabled() is
      * emitted as result. */
     void checkClipboard();
@@ -225,11 +227,6 @@ class CalendarView : public KOrg::CalendarViewBase
      */
     void readSettings();
     
-    /** Read which view was shown last from config file */
-    void readCurrentView(KConfig *);
-    /** Write which view is currently shown to config file */
-    void writeCurrentView(KConfig *);
-  
     /** write current state to config file. */
     void writeSettings();
 
@@ -348,7 +345,6 @@ class CalendarView : public KOrg::CalendarViewBase
     void showWeekView();
     void showMonthView();
     void showTodoView();
-    void showProjectView();
     void showJournalView();
     void showTimeSpanView();
 
@@ -384,6 +380,8 @@ class CalendarView : public KOrg::CalendarViewBase
   
     /** Move to the previous date(s) in the current view */
     void goPrevious();
+
+    void processEventSelection(bool selected);
   
   protected slots:
     /** Select a week to be displayed in the calendar view */
@@ -392,7 +390,6 @@ class CalendarView : public KOrg::CalendarViewBase
     /** Select a view or adapt the current view to display the specified dates. */
     void selectDates(const DateList &);
   
-    void processEventSelection(bool selected);
   
   public:
     // show a standard warning
@@ -401,7 +398,10 @@ class CalendarView : public KOrg::CalendarViewBase
   
     void emitEventsSelected();
 
-    Incidence *currentSelection();
+    /** Adapt navigation units correpsonding to step size of navigation of the
+     * current view.
+     */
+    void adaptNavigationUnits();
   
   protected:
     void schedule(Scheduler::Method);
@@ -412,23 +412,7 @@ class CalendarView : public KOrg::CalendarViewBase
     /** tell the alarm daemon that we have saved, and he needs to reread */
     void signalAlarmDaemon();
   
-    /** Adapt navigation units correpsonding to step size of navigation of the
-     * current view.
-     */
-    void adaptNavigationUnits();
-
-    /** Get an editor dialog for an Event. */
-    KOEventEditor *getEventEditor();
-    
-    /** Get an editor dialog for a Todo. */
-    KOTodoEditor *getTodoEditor();
-    
   private:
-    void raiseCurrentView();
-
-    void createOptionsDialog();
-    void createIncomingDialog();
-    void createOutgoingDialog();
     void createPrinter();
   
     CalPrinter *mCalPrinter;
@@ -440,21 +424,12 @@ class CalendarView : public KOrg::CalendarViewBase
     KDateNavigator *mDateNavigator;       // widget showing small month view.
     
     KOFilterView *mFilterView;
-  
-    KOAgendaView    *mAgendaView;          // "week" view
-    KOListView      *mListView;            // "list/day" view
-    KOMonthView     *mMonthView; 
-    KOTodoView      *mTodoView;
-    KOTodoView      *mTodoList;  // Small todo list under date navigator
-//    KOProjectView   *mProjectView;
-    KOWhatsNextView *mWhatsNextView;
-    KOJournalView   *mJournalView;
-    KOTimeSpanView  *mTimeSpanView;
-  
-    KOrg::BaseView     *mCurrentView;  // currently active event view
-  
+    
     // calendar object for this viewing instance
     Calendar      *mCalendar;
+
+    KOViewManager *mViewManager;
+    KODialogManager *mDialogManager;
   
     // Calendar filters
     QPtrList<CalFilter> mFilters;
@@ -464,18 +439,16 @@ class CalendarView : public KOrg::CalendarViewBase
     bool            mReadOnly; // flag indicating if calendar is read-only
     QDate mSaveSingleDate;                
     int mEventsSelected;
-    int mAgendaViewMode;
+
+    KOTodoView *mTodoList;
   
     // dialogs
-    KOPrefsDialog *mOptionsDialog;
     SearchDialog *mSearchDialog;
     ExportWebDialog *mExportWebDialog;
     ArchiveDialog *mArchiveDialog;
-    OutgoingDialog *mOutgoingDialog;
-    IncomingDialog *mIncomingDialog;
     CategoryEditDialog *mCategoryEditDialog;
     FilterEditDialog *mFilterEditDialog;
     PluginDialog *mPluginDialog;
 };
 
-#endif // CALENDARVIEW_H
+#endif

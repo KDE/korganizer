@@ -26,6 +26,7 @@
 #include <qscrollview.h>
 #include <qdatetime.h>
 #include <qlayout.h>
+#include <qsplitter.h>
 
 #include "koeventview.h"
 

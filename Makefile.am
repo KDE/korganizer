@@ -26,7 +26,8 @@ libkorganizer_la_SOURCES =  outgoingdialog_base.ui \
 	kdpdatebutton.cpp komonthview.cpp \
 	ksellabel.cpp \
 	ktimeedit.cpp main.cpp  \
-	searchdialog.cpp calendarview.cpp \
+	searchdialog.cpp calendarview.cpp koviewmanager.cpp \
+        kodialogmanager.cpp \
 	calprinter.cpp \
 	archivedialog.cpp \
 	komailclient.cpp kotodoview.cpp \
