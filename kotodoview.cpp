@@ -231,7 +231,7 @@ void KOTodoListView::contentsDropEvent( QDropEvent *e )
 //      kdDebug(5850) << "Drop new Todo" << endl;
       todo->setRelatedTo(destinationEvent);
       if ( !mCalendar->addTodo( todo ) ) {
-        KODialogManager::errorSaveTodo( this );
+        KODialogManager::errorSaveIncidence( this, todo );
         return;
       }
 
@@ -246,7 +246,7 @@ void KOTodoListView::contentsDropEvent( QDropEvent *e )
       e->ignore();
       kdDebug( 5850 ) << "KOTodoListView::contentsDropEvent(): Not dropped on a todo item" << endl;
       kdDebug( 5850 ) << "TODO: Create a new todo with the given data" << endl;
-      // TODO: Create a new todo with the given text/contact/whatever
+      // @TODO: Create a new todo with the given text/contact/whatever
     } else if ( QTextDrag::decode(e, text) ) {
       //QListViewItem *qlvi = itemAt( contentsToViewport(e->pos()) );
       kdDebug(5850) << "Dropped : " << text << endl;
@@ -807,12 +807,7 @@ void KOTodoView::showTodo()
 void KOTodoView::deleteTodo()
 {
   if (mActiveItem) {
-    if (mActiveItem->childCount()) {
-      KMessageBox::sorry(this,i18n("Cannot delete To-Do which has children."),
-                         i18n("Delete To-Do"));
-    } else {
-      emit deleteIncidenceSignal(mActiveItem->todo());
-    }
+    emit deleteIncidenceSignal( mActiveItem->todo() );
   }
 }
 
@@ -992,7 +987,7 @@ void KOTodoView::addQuickTodo()
   todo->setSummary( mQuickAdd->text() );
   todo->setOrganizer( KOPrefs::instance()->email() );
   if ( !calendar()->addTodo( todo ) ) {
-    KODialogManager::errorSaveTodo( this );
+    KODialogManager::errorSaveIncidence( this, todo );
     return;
   }
   mQuickAdd->setText( QString::null );

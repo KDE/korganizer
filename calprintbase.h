@@ -361,7 +361,7 @@ class CalPrintBase : public QObject
     QWidget *mConfigWidget;
 
   protected:
-    // TODO_RK: move these to the appropriate subclasses or set them globally.
+    // @TODO: move these to the appropriate subclasses or set them globally.
     static int mSubHeaderHeight;
     static int mHeaderHeight;
     static int mMargin;

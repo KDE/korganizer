@@ -50,7 +50,7 @@ int main(int argc,char **argv)
 
   AlarmDialog dlg;
   app.setMainWidget( &dlg );
-  dlg.appendEvent( e );
+  dlg.appendIncidence( e );
   dlg.show();
   dlg.eventNotification();
     

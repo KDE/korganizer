@@ -57,6 +57,8 @@ class KODialogManager : public QObject
     KODialogManager( CalendarView * );
     virtual ~KODialogManager();
 
+    /** Get the appropriate editor for the given incidence */
+    KOIncidenceEditor *getEditor( Incidence * );
     /** Get an editor dialog for an Event. */
     KOEventEditor *getEventEditor();
     /** Get an editor dialog for a Todo. */
@@ -74,9 +76,7 @@ class KODialogManager : public QObject
 
     void connectTypeAhead( KOEventEditor *editor, KOAgendaView *agenda );
 
-    static void errorSaveEvent( QWidget *parent );
-    static void errorSaveTodo( QWidget *parent );
-    static void errorSaveJournal( QWidget *parent );
+    static void errorSaveIncidence( QWidget *parent, Incidence *incidence );
 
   public slots:
     void showOptionsDialog();

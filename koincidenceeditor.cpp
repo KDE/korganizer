@@ -152,6 +152,7 @@ void KOIncidenceEditor::slotSaveTemplate()
   kdDebug(5850) << "KOIncidenceEditor::saveTemplate()" << endl;
   QString tp = type();
   QStringList templates;
+  // @TODO: use a visitor here
   if ( tp == "Event" ) {
     templates = KOPrefs::instance()->mEventTemplates;
   } else if( tp == "ToDo" ) {
@@ -185,6 +186,7 @@ void KOIncidenceEditor::slotSaveTemplate()
     // Add template to list of existing templates
     if ( !templates.contains( templateName ) ) {
       templates.append( templateName );
+      // @TODO: use a visitor here
       if ( tp == "Event" ) {
         KOPrefs::instance()->mEventTemplates = templates;
       } else if ( tp == "ToDo" ) {

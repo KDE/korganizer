@@ -42,7 +42,7 @@ KOCounterDialog::KOCounterDialog( QWidget *parent, const char *name )
   connect( this, SIGNAL( user1Clicked() ), SLOT( slotCancel() ) );
   connect( this, SIGNAL( user2Clicked() ), SLOT( slotOk( ) ) );
 
-  // TODO: Set a sensible size (based on the content?).
+  // @TODO: Set a sensible size (based on the content?).
   setMinimumSize( 300, 200 );
   resize( 320, 300 );
 }
@@ -51,19 +51,14 @@ KOCounterDialog::~KOCounterDialog()
 {
 }
 
-void KOCounterDialog::setEvent( Event *event )
+void KOCounterDialog::setIncidence( Incidence *incidence )
 {
-  mEventViewer->setEvent( event );
+  mEventViewer->setIncidence( incidence );
 }
 
-void KOCounterDialog::addEvent( Event *event )
+void KOCounterDialog::addIncidence( Incidence *incidence )
 {
-  mEventViewer->appendEvent( event );
-}
-
-void KOCounterDialog::setTodo( Todo *todo )
-{
-  mEventViewer->setTodo( todo );
+  mEventViewer->appendIncidence( incidence );
 }
 
 void KOCounterDialog::addText( const QString &text )

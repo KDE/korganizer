@@ -43,9 +43,7 @@ class AlarmDialog : public KDialogBase {
     AlarmDialog( QWidget *parent = 0, const char *name = 0 );
     virtual ~AlarmDialog();
 
-    void appendEvent(Event *event);
-  
-    void appendTodo(Todo *todo);
+    void appendIncidence( Incidence *incidence );
   
     void clearEvents();
 

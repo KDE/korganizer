@@ -80,7 +80,7 @@ void CalPrinter::init( KPrinter *printer, Calendar *calendar )
   mPrintPlugins.append( new CalPrintMonth( printer, calendar, mConfig ) );
   mPrintPlugins.append( new CalPrintTodos( printer, calendar, mConfig ) );
 
-  // TODO_RK: Add a plugin interface here
+  // @TODO: Add a plugin interface here
   mPrintDialog = new CalPrintDialog( mPrintPlugins, mPrinter, mParent );
 
   CalPrintBase *plug = mPrintPlugins.first();
@@ -140,7 +140,6 @@ void CalPrinter::print( PrintType type, const QDate &fd, const QDate &td )
 
 void CalPrinter::doPrint( CalPrintBase *selectedStyle, bool preview )
 {
-  // FIXME: add a better caption to the Printingdialog
   mPrinter->setPreviewOnly( preview );
   if ( preview || mPrinter->setup( mParent, i18n("Print Calendar") ) ) {
     switch ( mPrintDialog->orientation() ) {
@@ -275,7 +274,7 @@ void CalPrintDialog::setPrinterLabel()
 
 void CalPrintDialog::setPrintType( int i )
 {
-  // TODO: Make a safe correlation between type and the radio button
+  // @TODO: Make a safe correlation between type and the radio button
 
   mTypeGroup->setButton( i );
   mConfigArea->raiseWidget( i );

@@ -231,7 +231,7 @@ void KOTodoEditor::loadDefaults()
   setDefaults(QDateTime::currentDateTime().addDays(7),0,false);
 }
 
-// TODO_RK: make sure calendar()->endChange is called somewhere!
+// @TODO: make sure calendar()->endChange is called somewhere!
 bool KOTodoEditor::processInput()
 {
   if ( !validateInput() ) return false;
@@ -284,7 +284,7 @@ bool KOTodoEditor::processInput()
     }
 
     if ( !mCalendar->addIncidence( mTodo ) ) {
-      KODialogManager::errorSaveTodo( this );
+      KODialogManager::errorSaveIncidence( this, mTodo );
       delete mTodo;
       mTodo = 0;
       return false;
@@ -307,28 +307,10 @@ void KOTodoEditor::processCancel()
 
 void KOTodoEditor::deleteTodo()
 {
-  if (mTodo) {
-    if (KOPrefs::instance()->mConfirm) {
-      switch (msgItemDelete()) {
-        case KMessageBox::Continue: // OK
-          emit incidenceToBeDeleted(mTodo);
-          emit dialogClose(mTodo);
-          mCalendar->deleteTodo(mTodo);
-          emit incidenceDeleted( mTodo );
-          reject();
-          break;
-      }
-    }
-    else {
-      emit incidenceToBeDeleted(mTodo);
-      emit dialogClose(mTodo);
-      mCalendar->deleteTodo(mTodo);
-      emit incidenceDeleted( mTodo );
-      reject();
-    }
-  } else {
-    reject();
-  }
+  if (mTodo)
+    emit deleteIncidenceSignal( mTodo );
+  emit dialogClose(mTodo);
+  reject();
 }
 
 void KOTodoEditor::setDefaults( QDateTime due, Todo *relatedEvent, bool allDay )

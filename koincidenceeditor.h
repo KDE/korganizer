@@ -75,8 +75,7 @@ class KOIncidenceEditor : public KDialogBase
 
     void incidenceAdded( Incidence * );
     void incidenceChanged( Incidence *oldTodo, Incidence *newTodo );
-    void incidenceToBeDeleted( Incidence * );
-    void incidenceDeleted( Incidence * );
+    void deleteIncidenceSignal( Incidence * );
 
   protected slots:
     void slotApply();

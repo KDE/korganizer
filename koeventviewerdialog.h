@@ -25,11 +25,10 @@
 #define KOEVENTVIEWERDIALOG_H
 
 #include <kdialogbase.h>
+#include "koeventviewer.h"
 
 namespace KCal {
-class Event;
-class Todo;
-class Journal;
+class Incidence;
 }
 using namespace KCal;
 
@@ -46,13 +45,8 @@ class KOEventViewerDialog : public KDialogBase
                          bool compact = false );
     virtual ~KOEventViewerDialog();
 
-    void setEvent( Event *event );
-    void setTodo( Todo *event );
-    void setJournal( Journal *journal );
-
-    void appendEvent( Event *event );
-    void appendTodo( Todo *todo );
-    void appendJournal( Journal *journal );
+    void setIncidence( Incidence *incidence ) { mEventViewer->setIncidence( incidence ); }
+    void appendIncidence( Incidence *incidence ) { mEventViewer->appendIncidence( incidence ); }
 
     void addText( const QString &text );
 

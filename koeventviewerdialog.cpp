@@ -26,8 +26,6 @@
 
 #include "koeventviewer.h"
 
-#include <libkcal/event.h>
-
 #include <klocale.h>
 
 KOEventViewerDialog::KOEventViewerDialog( QWidget *parent, const char *name,
@@ -38,7 +36,7 @@ KOEventViewerDialog::KOEventViewerDialog( QWidget *parent, const char *name,
   mEventViewer = new KOEventViewer( this );
   setMainWidget( mEventViewer );
 
-  // TODO: Set a sensible size (based on the content?).
+  // @TODO: Set a sensible size (based on the content?).
   if ( compact ) {
     setFixedSize( 240,284 );
     move( 0, 15 );
@@ -51,36 +49,6 @@ KOEventViewerDialog::KOEventViewerDialog( QWidget *parent, const char *name,
 
 KOEventViewerDialog::~KOEventViewerDialog()
 {
-}
-
-void KOEventViewerDialog::setEvent( Event *event )
-{
-  mEventViewer->setEvent(event);
-}
-
-void KOEventViewerDialog::setTodo( Todo *todo )
-{
-  mEventViewer->setTodo( todo );
-}
-
-void KOEventViewerDialog::setJournal( Journal *journal )
-{
-  mEventViewer->setJournal( journal );
-}
-
-void KOEventViewerDialog::appendEvent( Event *event )
-{
-  mEventViewer->appendEvent(event);
-}
-
-void KOEventViewerDialog::appendTodo( Todo *todo )
-{
-  mEventViewer->appendTodo( todo );
-}
-
-void KOEventViewerDialog::appendJournal( Journal *journal )
-{
-  mEventViewer->appendJournal( journal );
 }
 
 void KOEventViewerDialog::addText( const QString &text )

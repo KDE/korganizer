@@ -242,7 +242,7 @@ void KOrganizer::initViews()
 {
   kdDebug(5850) << "KOrganizer::initViews()" << endl;
 
-  // TODO: get calendar pointer from somewhere
+  // @TODO: get calendar pointer from somewhere
   KOrg::View::List views = KOCore::self()->views( this );
   KOrg::View *it;
   for( it = views.first(); it; it = views.next() ) {

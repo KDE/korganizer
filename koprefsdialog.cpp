@@ -126,7 +126,7 @@ KOPrefsDialogMain::KOPrefsDialogMain( QWidget *parent, const char *name )
       addWidBool( KOPrefs::instance()->useGroupwareCommunicationItem(),
       topFrame );
   topLayout->addMultiCellWidget(useGroupwareBool->checkBox(),12,12,0,1);
-  // TODO: This radio button should only be available when KMail is chosen
+  // @TODO: This radio button should only be available when KMail is chosen
 //   connect(thekmailradiobuttonupthere,SIGNAL(toggled(bool)),
 //           useGroupwareBool->checkBox(), SLOT(enabled(bool)));
 
@@ -916,7 +916,7 @@ extern "C"
   }
 }
 
-// TODO: find replacement for showing printer tab
+// @TODO: find replacement for showing printer tab
 #if 0
 void KOPrefsDialog::showPrinterTab()
 {

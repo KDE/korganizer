@@ -287,7 +287,7 @@ void KOEditorGeneral::setDefaults(bool allDay)
 
   enableAlarmEdit( !allDay );
 
-  // TODO: Implement a KPrefsComboItem to solve this in a clean way.
+  // @TODO: Implement a KPrefsComboItem to solve this in a clean way.
   int alarmTime;
   int a[] = { 1,5,10,15,30 };
   int index = KOPrefs::instance()->mAlarmTime;
@@ -318,7 +318,7 @@ void KOEditorGeneral::readIncidence(Incidence *event)
   enableAlarmEdit( event->isAlarmEnabled() );
 
   if(!event->isAlarmEnabled()) {
-    // TODO: Implement a KPrefsComboItem to solve this in a clean way.
+    // @TODO: Implement a KPrefsComboItem to solve this in a clean way.
     int alarmTime;
     int a[] = { 1,5,10,15,30 };
     int index = KOPrefs::instance()->mAlarmTime;
@@ -369,7 +369,7 @@ void KOEditorGeneral::readIncidence(Incidence *event)
     }
     mAlarmButton->setChecked(alarm->enabled());
     enableAlarmEdit( alarm->enabled() );
-// TODO: Deal with multiple alarms
+// @TODO: Deal with multiple alarms
     break; // For now, stop after the first alarm
   }
 
@@ -407,11 +407,11 @@ void KOEditorGeneral::writeIncidence(Incidence *event)
         alarm->setAudioAlarm(mAlarmSound);
       else
         alarm->setDisplayAlarm(QString::null);
-      // TODO: Make sure all alarm options are correctly set and don't erase other options!
+      // @TODO: Make sure all alarm options are correctly set and don't erase other options!
       if (!mAlarmProgram.isEmpty() && mAlarmProgramButton->isOn())
         alarm->setProcedureAlarm(mAlarmProgram);
 
-// TODO: Deal with multiple alarms
+// @TODO: Deal with multiple alarms
       break; // For now, stop after the first alarm
     }
   } else {

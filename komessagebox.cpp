@@ -154,7 +154,7 @@ static int createKOMessageBox( KDialogBase *dialog, QMessageBox::Icon icon,
     }
 
     // We add 10 pixels extra to compensate for some KActiveLabel margins.
-    // TODO: find out why this is 10.
+    // @TODO: find out why this is 10.
     label2->setFixedSize(QSize(pref_width+10, pref_height));
     lay->addWidget( label2 );
     lay->addStretch();

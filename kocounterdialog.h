@@ -44,9 +44,8 @@ class KOCounterDialog : public KDialogBase
     KOCounterDialog(QWidget *parent = 0, const char *name = 0 );
     virtual ~KOCounterDialog();
 
-    void setEvent( Event *event );
-    void addEvent( Event *event );
-    void setTodo( Todo *todo );
+    void setIncidence( Incidence *incidence );
+    void addIncidence( Incidence *incidence );
     void addText( const QString &text );
 
   private:

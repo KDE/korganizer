@@ -1701,7 +1701,7 @@ void KOAgenda::scrollDown()
 */
 int KOAgenda::minimumWidth() const
 {
-  // TODO:: develop a way to dynamically determine the minimum width
+  // @TODO:: develop a way to dynamically determine the minimum width
   int min = 100;
 
   return min;

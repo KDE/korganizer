@@ -414,6 +414,7 @@ void MonthViewCell::addIncidence( Incidence *incidence )
 {
   QString text;
   MonthViewItem *item = 0;
+  // @TODO: use a visitor here
   if ( incidence->type() == "Event" ) {
     Event *event = static_cast<Event *>(incidence);
     if (event->isMultiDay()) {
@@ -816,6 +817,7 @@ void KOMonthView::changeIncidenceDisplayAdded( Incidence *incidence )
   Event *event = 0;
   Todo *todo = 0;
   QDate date;
+  // @TODO: use a visitor here
   if ( incidence->type() == "Event" ) {
     event = static_cast<Event *>( incidence );
     date = event->dtStart().date();
@@ -901,14 +903,6 @@ void KOMonthView::resizeEvent( QResizeEvent * )
 void KOMonthView::showEventContextMenu( Incidence *incidence, QDate qd )
 {
   mEventContextMenu->showIncidencePopup( incidence, qd );
-  /*
-  if( incidence && incidence->type() == "Event" ) {
-    Event *event = static_cast<Event *>(incidence);
-    mContextMenu->showEventPopup(event);
-  } else {
-    kdDebug(5850) << "MonthView::showContextMenu(): cast failed." << endl;
-  }
-  */
 }
 
 void KOMonthView::showGeneralContextMenu()

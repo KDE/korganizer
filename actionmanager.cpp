@@ -647,7 +647,7 @@ void ActionManager::file_openRecent(const KURL& url)
 
 void ActionManager::file_import()
 {
-  // TODO: eventually, we will need a dialog box to select import type, etc.
+  // @TODO: eventually, we will need a dialog box to select import type, etc.
   // for now, hard-coded to ical file, $HOME/.calendar.
   int retVal = -1;
   QString progPath;
@@ -900,9 +900,9 @@ void ActionManager::exportToHTML()
 {
   KURL dest( KOPrefs::instance()->mHtmlExportFile );
   KCal::HtmlExport mExport( mCalendarView->calendar() );
-  //@TODO: Make these items translatable after 3.3.
-  mExport.setTitle( "KOrganizer Calendar" );
-  mExport.setTitleTodo( "KOrganizer To-Do List" );
+  
+  mExport.setTitle( i18n( "KOrganizer Calendar" ) );
+  mExport.setTitleTodo( i18n( "KOrganizer To-Do List" ) );
   mExport.setCredit( "KOrganizer", "http://korganizer.kde.org" );
   mExport.setEmail( KOPrefs::instance()->email() );
   mExport.setFullName( KOPrefs::instance()->fullName() );
@@ -1215,14 +1215,14 @@ bool ActionManager::editIncidence( const QString& uid )
   return mCalendarView->editIncidence(uid);
 }
 
-bool ActionManager::deleteEvent( const QString& uid )
+bool ActionManager::deleteIncidence( const QString& uid )
 {
-  return mCalendarView->deleteEvent(uid);
+  return mCalendarView->deleteIncidence(uid);
 }
 
 bool ActionManager::eventRequest( const QString& request,
-				  const QString& receiver,
-				  const QString& ical)
+                                  const QString& receiver,
+                                  const QString& ical)
 {
   if( !KOGroupware::instance() ) return false;
   return KOGroupware::instance()->incomingEventRequest(request, receiver,
@@ -1276,6 +1276,7 @@ void ActionManager::processIncidenceSelection( Incidence *incidence )
 
   enableIncidenceActions( true );
 
+  // @TODO: use a visitor here
   if ( incidence->type() == "Event" ) {
     mShowIncidenceAction->setText( i18n("&Show Event") );
     mEditIncidenceAction->setText( i18n("&Edit Event...") );
@@ -1427,9 +1428,9 @@ bool ActionManager::queryClose()
       kdDebug(5850) << "!mIsClosing" << endl;
       if ( !saveResourceCalendar() ) return false;
 
-      // TODO: Put main window into a state indicating final saving.
+      // @TODO: Put main window into a state indicating final saving.
       mIsClosing = true;
-// TODO: Close main window when save is finished
+// @TODO: Close main window when save is finished
 //      connect( mCalendarResources, SIGNAL( calendarSaved() ),
 //               mMainWindow, SLOT( close() ) );
     }
@@ -1462,7 +1463,7 @@ void ActionManager::saveCalendar()
     }
   } else if ( mCalendarResources ) {
     mCalendarResources->save();
-    // TODO: Make sure that asynchronous saves don't fail.
+    // @TODO: Make sure that asynchronous saves don't fail.
   }
 }
 

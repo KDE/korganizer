@@ -137,7 +137,7 @@ void KOJournalEditor::loadDefaults()
   setDefaults( QDate::currentDate() );
 }
 
-// TODO_RK: make sure calendar()->endChange is called somewhere!
+// @TODO: make sure calendar()->endChange is called somewhere!
 bool KOJournalEditor::processInput()
 {
   if ( !validateInput() ) return false;
@@ -159,7 +159,7 @@ bool KOJournalEditor::processInput()
     writeJournal( mJournal );
 
     if ( !mCalendar->addJournal( mJournal ) ) {
-      KODialogManager::errorSaveJournal( this );
+      KODialogManager::errorSaveIncidence( this, mJournal );
       delete mJournal;
       mJournal = 0;
       return false;
@@ -180,28 +180,12 @@ void KOJournalEditor::processCancel()
 
 void KOJournalEditor::deleteJournal()
 {
-  if ( mJournal ) {
-    if ( KOPrefs::instance()->mConfirm ) {
-      switch ( msgItemDelete() ) {
-        case KMessageBox::Continue: // OK
-          emit incidenceToBeDeleted( mJournal );
-          emit dialogClose( mJournal );
-          mCalendar->deleteJournal( mJournal );
-          emit incidenceDeleted( mJournal );
-          reject();
-          break;
-      }
-    }
-    else {
-      emit incidenceToBeDeleted( mJournal );
-      emit dialogClose( mJournal );
-      mCalendar->deleteJournal( mJournal );
-      emit incidenceDeleted( mJournal );
-      reject();
-    }
-  } else {
-    reject();
-  }
+  kdDebug(5850) << "Delete journal" << endl;
+
+  if ( mJournal )
+    emit deleteIncidenceSignal( mJournal );
+  emit dialogClose( mJournal );
+  reject();
 }
 
 void KOJournalEditor::setDefaults( QDate date )

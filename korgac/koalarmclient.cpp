@@ -99,13 +99,8 @@ void KOAlarmClient::checkAlarms()
   for( it = alarms.begin(); it != alarms.end(); ++it ) {
     kdDebug(5891) << "ALARM: " << (*it)->parent()->summary() << endl;
     Incidence *incidence = mCalendar->incidence( (*it)->parent()->uid() );
-    if ( incidence->type() == "Event" ) {
-      mAlarmDialog->appendEvent( static_cast<Event *>(incidence) );
-      newEvents = true;
-    } else if ( incidence->type() == "Todo" ) {
-      mAlarmDialog->appendTodo( static_cast<Todo *>(incidence) );
-      newEvents = true;
-    }
+    mAlarmDialog->appendIncidence( incidence );
+    newEvents = true;
   }
   if ( newEvents ) {
     showAlarmDialog();

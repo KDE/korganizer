@@ -129,7 +129,7 @@ void JournalEntry::writeJournal()
     mJournal = new Journal;
     mJournal->setDtStart(QDateTime(mDate,QTime(0,0,0)));
     if ( !mCalendar->addJournal( mJournal ) ) {
-      KODialogManager::errorSaveJournal( this );
+      KODialogManager::errorSaveIncidence( this, mJournal );
       delete mJournal;
       mJournal = 0;
       return;

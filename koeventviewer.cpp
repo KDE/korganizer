@@ -38,6 +38,27 @@
 #include <kabc/stdaddressbook.h>
 #endif
 
+class EventViewerVisitor : public Incidence::Visitor
+{
+  public:
+    EventViewerVisitor() : mViewer( 0 ) {}
+
+    bool act( Incidence *incidence, KOEventViewer *viewer )
+    {
+      mViewer = viewer;
+      return incidence->accept( *this );
+    }
+
+  protected:
+    bool visit( Event *event ) { return mViewer->appendEvent( event );}
+    bool visit( Todo *todo ) { return mViewer->appendTodo( todo ); }
+    bool visit( Journal *journal ) { return mViewer->appendJournal( journal ); }
+  
+  protected:
+    KOEventViewer *mViewer;
+};
+
+
 KOEventViewer::KOEventViewer( QWidget *parent, const char *name )
   : QTextBrowser( parent, name )
 {
@@ -79,8 +100,16 @@ void KOEventViewer::addTag( const QString & tag, const QString & text )
   }
 }
 
-void KOEventViewer::appendEvent( Event *event )
+bool KOEventViewer::appendIncidence( Incidence *incidence )
 {
+  if ( !incidence ) return false;
+  EventViewerVisitor v;
+  return v.act( incidence, this );
+}
+  
+bool KOEventViewer::appendEvent( Event *event )
+{
+  if ( !event ) return false;
   addTag( "h1", event->summary() );
 
   if ( !event->location().isEmpty() ) {
@@ -125,10 +154,12 @@ void KOEventViewer::appendEvent( Event *event )
   formatAttachments( event );
 
   setText( mText );
+  return true;
 }
 
-void KOEventViewer::appendTodo( Todo *todo )
+bool KOEventViewer::appendTodo( Todo *todo )
 {
+  if ( !todo ) return false;
   addTag( "h1", todo->summary() );
 
   if ( !todo->location().isEmpty() ) {
@@ -161,13 +192,16 @@ void KOEventViewer::appendTodo( Todo *todo )
   formatAttachments( todo );
 
   setText( mText );
+  return true;
 }
 
-void KOEventViewer::appendJournal( Journal *journal )
+bool KOEventViewer::appendJournal( Journal *journal )
 {
+  if ( !journal ) return false;
   addTag( "h1", i18n("Journal for %1").arg( journal->dtStartDateStr( false ) ) );
   addTag( "p", journal->description() );
   setText( mText );
+  return true;
 }
 
 void KOEventViewer::formatCategories( Incidence *event )
@@ -275,22 +309,10 @@ void KOEventViewer::formatAttachments( Incidence *i )
   }
 }
 
-void KOEventViewer::setTodo( Todo *event )
+void KOEventViewer::setIncidence( Incidence *incidence )
 {
   clearEvents();
-  appendTodo( event );
-}
-
-void KOEventViewer::setEvent( Event *event )
-{
-  clearEvents();
-  appendEvent( event );
-}
-
-void KOEventViewer::setJournal( Journal *journal )
-{
-  clearEvents();
-  appendJournal( journal );
+  appendIncidence( incidence );
 }
 
 void KOEventViewer::clearEvents( bool now )

@@ -510,7 +510,7 @@ void KODayMatrix::dropEvent( QDropEvent *e )
       // When moving, we don't need to insert  the item!
       if ( action != DRAG_MOVE ) {
         if ( !mCalendar->addEvent( event ) ) {
-          KODialogManager::errorSaveEvent( this );
+          KODialogManager::errorSaveIncidence( this, event );
           return;
         }
       }
@@ -533,7 +533,7 @@ void KODayMatrix::dropEvent( QDropEvent *e )
       // When moving, we don't need to insert  the item!
       if ( action != DRAG_MOVE ) {
         if ( !mCalendar->addTodo( todo ) ) {
-          KODialogManager::errorSaveTodo( this );
+          KODialogManager::errorSaveIncidence( this, todo );
         }
       }
 

@@ -264,11 +264,10 @@ void IncomingDialog::rejectMessage()
 
 void IncomingDialog::showEvent(QListViewItem *item)
 {
-  IncidenceBase *incidence = ((ScheduleItemIn *)item)->event();
-  if( incidence && incidence->type() == "Event" ) {
-    Event *event = static_cast<Event *>(incidence);
-    KOEventViewerDialog *eventViewer = new KOEventViewerDialog(this);
-    eventViewer->setEvent(event);
+  Incidence *incidence = dynamic_cast<Incidence*>( ((ScheduleItemIn *)item)->event());
+  if( incidence ) {
+    KOEventViewerDialog *eventViewer = new KOEventViewerDialog( this );
+    eventViewer->setIncidence( incidence );
     eventViewer->show();
   }
 }
@@ -281,9 +280,9 @@ bool IncomingDialog::incomeRefresh(ScheduleItemIn *item)
     Attendee::List attList = ev->attendees();
     Attendee::List::ConstIterator it;
     for( it = attList.begin(); it != attList.end(); ++it ) {
-      // TODO: Why do we clone the event here?
+      // @TODO: Why do we clone the event here?
       Event *event = new Event( *ev );
-      // TODO_RK: I don't understand why we use the mOutgoing here?
+      // @TODO: I don't understand why we use the mOutgoing here?
       mOutgoing->addMessage( event, Scheduler::Request, (*it)->email() );
       delete event;
     }
@@ -302,6 +301,7 @@ bool IncomingDialog::incomeCounter(ScheduleItemIn *item)
 {
   IncidenceBase *incidence = ((ScheduleItemIn *)item)->event();
   // currently only events supportet - attetion at insertion below!
+  // @TODO: Also treat todos here
   if ( incidence->type() != "Event" ) return false;
 
   Event *counterEvent = static_cast<Event *>( incidence );
@@ -310,10 +310,10 @@ bool IncomingDialog::incomeCounter(ScheduleItemIn *item)
 
   KOCounterDialog *eventViewer = new KOCounterDialog(this);
   eventViewer->addText(i18n("counter proposal event","<b>Counter-event:</b><p>"));
-  eventViewer->addEvent(counterEvent);
+  eventViewer->addIncidence( counterEvent );
   eventViewer->addText("<hr>");
   eventViewer->addText(i18n("<b>Original event:</b><p>"));
-  if (even) eventViewer->addEvent(even);
+  if (even) eventViewer->addIncidence( even );
   else eventViewer->addText(i18n("A corresponding event is missing in your calendar."));
   eventViewer->addText("<hr>");
   eventViewer->addText(i18n("If this counter-event is a good proposal for your event, press 'Accept'. All Attendees will then get the new version of this event"));
@@ -325,7 +325,7 @@ bool IncomingDialog::incomeCounter(ScheduleItemIn *item)
     int revision = 0;
     if (even) {
       revision = even->revision();
-      mCalendar->deleteEvent(even);
+      mCalendar->deleteIncidence( even );
     }
     mCalendar->addIncidence(counterEvent);
 
@@ -379,6 +379,7 @@ bool IncomingDialog::incomeDeclineCounter(ScheduleItemIn *item)
 
 bool IncomingDialog::incomeAdd(ScheduleItemIn *item)
 {
+  // @TODO: Also treat todos here
   IncidenceBase *incidence = ((ScheduleItemIn *)item)->event();
   if (incidence->type() == "Event" ) {
     Event *refr = static_cast<Event *>( incidence );
@@ -477,6 +478,8 @@ bool IncomingDialog::automaticAction(ScheduleItemIn *item)
     }
   }
 
+  // @TODO: use a visitor here
+  // @TODO: also treat todos here
   if ( inc->type()=="Event" ) {
     if ( method==Scheduler::Request || method==Scheduler::Publish ) {
       if ( KOPrefs::instance()->mIMIPAutoInsertRequest==KOPrefs::addressbookAuto ) {

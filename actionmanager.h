@@ -131,7 +131,7 @@ class ActionManager : public QObject, public KCalendarIface
     /** Get current URL as QString */
     QString getCurrentURLasString() const;
     /** Delete event with the given unique id from current calendar. */
-    virtual bool deleteEvent( const QString& uid );
+    virtual bool deleteIncidence( const QString& uid );
 
     /** Handle incoming event scheduling */
     bool eventRequest( const QString& request, const QString& receiver,

@@ -76,9 +76,9 @@ void ImportDialog::slotOk()
   kdDebug() << "Adding resource for url '" << mUrl << "'" << endl;
 
   if ( mAddButton->isChecked() ) {
-    // TODO: This should be better done by the action manager
-	 // TODO: currently, the new resource does not show up in the 
-	 //       resource view. You have to restart korganizer first.
+    // @TODO: This should be better done by the action manager
+    // @TODO: currently, the new resource does not show up in the 
+    //        resource view. You have to restart korganizer first.
     CalendarResources *cr = KOrg::StdCalendar::self();
 
     CalendarResourceManager *manager = cr->resourceManager();

@@ -51,8 +51,37 @@
 #include "kodialogmanager.moc"
 
 
-// TODO: Handle KOEventViewerDialogs in dialog manager. Pass
+// @TODO: Handle KOEventViewerDialogs in dialog manager. Pass
 // KOPrefs::mCompactDialog.
+
+class DialogManagerVisitor : public Incidence::Visitor
+{
+  public:
+    DialogManagerVisitor() : mDialogManager( 0 ) {}
+
+    bool act( Incidence *incidence, KODialogManager *manager )
+    {
+      mDialogManager = manager;
+      return incidence->accept( *this );
+    }
+
+  protected:
+    KODialogManager *mDialogManager;
+};
+
+class EditorDialogVisitor : public DialogManagerVisitor
+{
+  public: 
+    EditorDialogVisitor() : DialogManagerVisitor(), mEditor( 0 ) {}
+    KOIncidenceEditor *editor() const { return mEditor; }
+  protected:
+    bool visit( Event *event ) { mEditor = mDialogManager->getEventEditor(); return mEditor; }
+    bool visit( Todo *todo ) { mEditor = mDialogManager->getTodoEditor(); return mEditor; }
+    bool visit( Journal *journal ) { mEditor = mDialogManager->getJournalEditor(); return mEditor; }
+  protected:
+    KOIncidenceEditor *mEditor;
+};
+
 
 KODialogManager::KODialogManager( CalendarView *mainView ) :
   QObject(), mMainView( mainView )
@@ -86,19 +115,11 @@ KODialogManager::~KODialogManager()
 #endif
 }
 
-void KODialogManager::errorSaveEvent( QWidget *parent )
+void KODialogManager::errorSaveIncidence( QWidget *parent, Incidence *incidence )
 {
-  KMessageBox::sorry( parent, i18n("Unable to save event.") );
-}
-
-void KODialogManager::errorSaveTodo( QWidget *parent )
-{
-  KMessageBox::sorry( parent, i18n("Unable to save todo item.") );
-}
-
-void KODialogManager::errorSaveJournal( QWidget *parent )
-{
-  KMessageBox::sorry( parent, i18n("Unable to save journal entry.") );
+  KMessageBox::sorry( parent, i18n("Unable to save %1 \"%2\".")
+                      .arg( i18n( incidence->type() ) )
+                      .arg( incidence->summary() ) );
 }
 
 OutgoingDialog *KODialogManager::outgoingDialog()
@@ -136,7 +157,7 @@ void KODialogManager::showOptionsDialog()
              mMainView, SLOT( updateConfig() ) );
     connect( mOptionsDialog, SIGNAL( okClicked() ),
              mMainView, SLOT( updateConfig() ) );
-    // TODO Find a way to do this with KCMultiDialog
+    // @TODO Find a way to do this with KCMultiDialog
     connect(mCategoryEditDialog,SIGNAL(categoryConfigChanged()),
             mOptionsDialog,SLOT(updateCategories()));
 #endif
@@ -264,6 +285,16 @@ void KODialogManager::showPluginDialog()
 #endif
 }
 
+KOIncidenceEditor *KODialogManager::getEditor( Incidence *incidence )
+{
+  if ( !incidence ) return 0;
+  EditorDialogVisitor v;
+  if ( v.act( incidence, this ) ) {
+    return v.editor();
+  } else 
+    return 0;
+}
+
 KOEventEditor *KODialogManager::getEventEditor()
 {
   KOEventEditor *eventEditor = new KOEventEditor( mMainView->calendar(),
@@ -288,10 +319,8 @@ void KODialogManager::connectEditor( KOIncidenceEditor*editor )
            mMainView, SLOT( incidenceAdded( Incidence * ) ) );
   connect( editor, SIGNAL( incidenceChanged( Incidence *, Incidence * ) ),
            mMainView, SLOT( incidenceChanged( Incidence *, Incidence * ) ) );
-  connect( editor, SIGNAL( incidenceToBeDeleted( Incidence * ) ),
-           mMainView, SLOT( incidenceToBeDeleted( Incidence * ) ) );
-  connect( editor, SIGNAL( incidenceDeleted( Incidence * ) ),
-           mMainView, SLOT( incidenceDeleted( Incidence * ) ) );
+  connect( editor, SIGNAL( deleteIncidenceSignal( Incidence * ) ),
+           mMainView, SLOT( deleteIncidence( Incidence * ) ) );
 
   connect( mCategoryEditDialog, SIGNAL( categoryConfigChanged() ),
            editor, SLOT( updateCategoryConfig() ) );

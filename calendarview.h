@@ -89,20 +89,21 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     void setCalendar( Calendar * );
     Calendar *calendar();
 
-    KOrg::History *history() { return mHistory; }
+    KOrg::History *history() const { return mHistory; }
 
-    KOViewManager *viewManager();
-    KODialogManager *dialogManager();
+    KOViewManager *viewManager() const { return mViewManager; }
+    KODialogManager *dialogManager() const { return mDialogManager; }
+
+    QWidgetStack *viewStack() const { return mRightFrame; }
+    QWidget *leftFrame() const { return mLeftFrame; }
+    NavigatorBar *navigatorBar() const { return mNavigatorBar; }
+    DateNavigator *dateNavigator() const { return mNavigator; }
+    
+    KOIncidenceEditor *editorDialog( Incidence* ) const;
 
     QDate startDate();
     QDate endDate();
 
-    QWidgetStack *viewStack();
-    QWidget *leftFrame();
-    NavigatorBar *navigatorBar();
-    KOIncidenceEditor *editorDialog( Incidence* );
-
-    DateNavigator *dateNavigator();
 
     void addView( KOrg::BaseView * );
     void showView( KOrg::BaseView * );
@@ -243,29 +244,18 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     /** Delete the supplied incidence. It calls the correct deleteXXX method*/
     void deleteIncidence( Incidence * );
 
-    /** Create an editor for the supplied Journal. */
-    void editJournal( Journal * );
-    /** Delete the supplied journal. */
-    void deleteJournal( Journal * );
-    /** Create a read-only viewer dialog for the supplied event. */
-    void showJournal( Journal * );
-
-    /** Create an editor for the supplied event. */
-    void editEvent( Event * );
-    /** Delete the supplied event. */
-    void deleteEvent( Event * );
+    /** Check if deleting the supplied event is allowed. */
+    bool deleteEvent( Event * ) { return true; }
+    /** Check if deleting the todo is allowed */
+    bool deleteTodo( Todo * );
+    /** Check if deleting the supplied journal is allowed. */
+    bool deleteJournal( Journal * ) { return true; }
     /**
       Delete the event with the given unique ID. Returns false, if event wasn't
       found.
     */
-    bool deleteEvent( const QString &uid );
-    /** Create a read-only viewer dialog for the supplied event. */
-    void showEvent( Event * );
+    bool deleteIncidence( const QString &uid );
 
-    /** Create an editor dialog for a todo */
-    void editTodo( Todo * );
-    /** Create a read-only viewer dialog for the supplied todo */
-    void showTodo( Todo * );
     /** create new todo */
     void newTodo();
     /** create new todo, due on date */
@@ -274,8 +264,6 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     void newSubTodo();
     /** create new todo with a parent todo */
     void newSubTodo( Todo * );
-    /** Delete todo */
-    void deleteTodo( Todo * );
     /** Takes the todo's next occurence and marks the original as complete.*/
     void recurTodo( Todo * );
 
@@ -549,28 +537,12 @@ class CalendarViewVisitor : public Incidence::Visitor
     CalendarView *mView;
 };
 
-class ShowIncidenceVisitor : public CalendarViewVisitor
-{
-  protected:
-    bool visit( Event *event ) { mView->showEvent( event ); return true; }
-    bool visit( Todo *todo ) { mView->showTodo( todo ); return true; }
-    bool visit( Journal *journal ) { mView->showJournal( journal ); return true; }
-};
-
-class EditIncidenceVisitor : public CalendarViewVisitor
-{
-  protected:
-    bool visit( Event *event ) { mView->editEvent( event ); return true; }
-    bool visit( Todo *todo ) { mView->editTodo( todo ); return true; }
-    bool visit( Journal *journal ) { mView->editJournal( journal ); return true; }
-};
-
 class DeleteIncidenceVisitor : public CalendarViewVisitor
 {
   protected:
-    bool visit( Event *event ) { mView->deleteEvent( event ); return true; }
-    bool visit( Todo *todo ) { mView->deleteTodo( todo ); return true; }
-    bool visit( Journal *journal ) { mView->deleteJournal( journal ); return true; }
+    bool visit( Event *event ) { return mView->deleteEvent( event ); }
+    bool visit( Todo *todo ) { return mView->deleteTodo( todo ); }
+    bool visit( Journal *journal ) { return mView->deleteJournal( journal ); }
 };
 
 

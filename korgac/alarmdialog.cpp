@@ -97,16 +97,10 @@ AlarmDialog::~AlarmDialog()
 {
 }
 
-void AlarmDialog::appendEvent(Event *event)
+void AlarmDialog::appendIncidence( Incidence *incidence )
 {
-  mEventViewer->appendEvent(event);
-  mIncidences.append(event->clone());
-}
-
-void AlarmDialog::appendTodo(Todo *todo)
-{
-  mEventViewer->appendTodo(todo);
-  mIncidences.append(todo->clone());
+  mEventViewer->appendIncidence( incidence );
+  mIncidences.append( incidence->clone() );
 }
 
 void AlarmDialog::clearEvents()
@@ -189,7 +183,7 @@ void AlarmDialog::eventNotification()
     Alarm::List::ConstIterator it;
     for ( it = alarms.begin(); it != alarms.end(); ++it ) {
       Alarm *alarm = *it;
-// TODO: Check whether this should be done for all multiple alarms
+// @TODO: Check whether this should be done for all multiple alarms
       if (alarm->type() == Alarm::Procedure) {
         kdDebug(5890) << "Starting program: '" << alarm->programFile() << "'" << endl;
         KProcess proc;

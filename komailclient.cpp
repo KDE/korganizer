@@ -299,6 +299,8 @@ QString KOMailClient::createBody(IncidenceBase *incidence)
 
   QString body;
 
+  // @TODO: use a visitor here
+  
   // mailbody for Event
   if (incidence->type()=="Event") {
     Event *selectedEvent = static_cast<Event *>(incidence);
@@ -335,7 +337,7 @@ QString KOMailClient::createBody(IncidenceBase *incidence)
       body += i18n("Recurs: %1")
                .arg(recurrence[selectedEvent->recurrence()->doesRecur()]);
       body += CR;
-/* TODO: frequency
+/* @TODO: frequency
       body += i18n("Frequency: %1")
                .arg(recurrence[selectedEvent->recurrence()->frequency()]);
       body += CR;

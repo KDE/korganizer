@@ -257,7 +257,7 @@ void KOEventEditor::loadDefaults()
   setDefaults(from,to,false);
 }
 
-// TODO_RK: make sure calendar()->endChange is called somewhere!
+// @TODO: make sure calendar()->endChange is called somewhere!
 bool KOEventEditor::processInput()
 {
   kdDebug(5850) << "KOEventEditor::processInput()" << endl;
@@ -310,7 +310,7 @@ bool KOEventEditor::processInput()
     if ( mCalendar->addEvent( mEvent ) ) {
       emit incidenceAdded( mEvent );
     } else {
-      KODialogManager::errorSaveEvent( this );
+      KODialogManager::errorSaveIncidence( this, mEvent );
       delete mEvent;
       mEvent = 0;
       return false;
@@ -337,21 +337,10 @@ void KOEventEditor::deleteEvent()
 {
   kdDebug(5850) << "Delete event" << endl;
 
-  if (mEvent) {
-    bool groupwareCheck = KOPrefs::instance()->mConfirm &&
-          (!KOPrefs::instance()->mUseGroupwareCommunication ||
-           KOPrefs::instance()->thatIsMe( mEvent->organizer() ) );
-    if (!groupwareCheck || (msgItemDelete()==KMessageBox::Continue)) {
-      // Either no groupware check needed, or OK pressed
-      emit incidenceToBeDeleted(mEvent);
-      emit dialogClose(mEvent);
-      mCalendar->deleteEvent(mEvent);
-      emit incidenceDeleted(mEvent);
-      reject();
-    }
-  } else {
-    reject();
-  }
+  if ( mEvent )
+    emit deleteIncidenceSignal( mEvent );
+  emit dialogClose( mEvent );
+  reject();
 }
 
 void KOEventEditor::setDefaults( QDateTime from, QDateTime to, bool allDay )

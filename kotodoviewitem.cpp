@@ -46,7 +46,7 @@ KOTodoViewItem::KOTodoViewItem( KOTodoViewItem *parent, Todo *todo, KOTodoView *
   construct();
 }
 
-// TODO: Is this the best way to sort the items on due dates?
+// @TODO: Is this the best way to sort the items on due dates?
 int KOTodoViewItem::compare( QListViewItem *i, int col, bool ascending ) const
 {
   if ( i && ( col == eDueDateColumn ) ) {
@@ -196,7 +196,7 @@ void KOTodoViewItem::stateChange(bool state)
     if (mTodo->isCompleted()) setSortKey( ePercentColumn, QString::number(999) );
     else setSortKey( ePercentColumn, QString::number(99) );
   }
-  // TODO_RK: Find a way to emit startMultiModify( "..." ) somewhere so that checking all subitems will belong to the same undo item
+  // @TODO: Find a way to emit startMultiModify( "..." ) somewhere so that checking all subitems will belong to the same undo item
   QListViewItem *myChild = firstChild();
   KOTodoViewItem *item;
   while( myChild ) {

@@ -64,6 +64,7 @@ ScheduleItemOut::ScheduleItemOut(QListView *parent,IncidenceBase *ev,
 
 //  kdDebug(5850) << "ScheduleItemOut: setting the summary" << endl;
   //Set the summary
+  // @TODO: use a visitor here
   if(ev->type() != "FreeBusy") {
     Incidence *incidence = static_cast<Incidence *>(ev);
     setText(0,incidence->summary());
@@ -248,47 +249,29 @@ void OutgoingDialog::deleteItem()
   emit numMessagesChanged(mMessageListView->childCount());
 }
 
-void OutgoingDialog::showEvent(QListViewItem *qitem)
+void OutgoingDialog::showEvent( QListViewItem *qitem )
 {
   ScheduleItemOut *item = (ScheduleItemOut *)qitem;
-  Event *event = 0;
-  Todo *todo = 0;
-  if ( item->event()->type()=="Event" ) {
-    event = static_cast<Event *>(item->event());
-  }
-  if ( item->event()->type()=="Todo" ) {
-    todo = static_cast<Todo *>(item->event());
-  }
   QString sendText;
-  if (event || todo) {
+  Incidence *incidence = dynamic_cast<Incidence *>( item->event() );
+  if ( incidence ) {
     KOEventViewerDialog *eventViewer = new KOEventViewerDialog(this);
-    if (event) eventViewer->setEvent(event);
-    if (todo) eventViewer->setTodo(todo);
+    eventViewer->setIncidence( incidence );
     sendText = "<hr><h4>"+i18n("Event will be sent to:")+"</h4>";
-    switch (item->method()) {
+    switch ( item->method() ) {
     case Scheduler::Publish: {
       sendText += item->recipients();
       break; }
-    case Scheduler::Request: {
-      sendText += i18n("All attendees");
-      break; }
-    case Scheduler::Refresh: {
-      sendText += i18n("All attendees");
-      break; }
-    case Scheduler::Cancel: {
-      sendText += i18n("All attendees");
-      break; }
-    case Scheduler::Add: {
-      sendText += i18n("All attendees");
-      break; }
-    case Scheduler::Reply: {
-      sendText += i18n("The organizer %1").arg(item->event()->organizer());
-      break; }
-    case Scheduler::Counter: {
-      sendText += i18n("The organizer %1").arg(item->event()->organizer());
-      break; }
+    case Scheduler::Request:
+    case Scheduler::Refresh:
+    case Scheduler::Cancel:
+    case Scheduler::Add:
     case Scheduler::Declinecounter: {
       sendText += i18n("All attendees");
+      break; }
+    case Scheduler::Reply:
+    case Scheduler::Counter: {
+      sendText += i18n("The organizer %1").arg( incidence->organizer() );
       break; }
     case Scheduler::NoMethod: {
       sendText += "";

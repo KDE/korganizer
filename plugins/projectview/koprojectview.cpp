@@ -250,7 +250,7 @@ KGanttItem *KOProjectView::createTask(KGanttItem *parent,Todo *todo)
 
 void KOProjectView::updateConfig()
 {
-  // TODO: to be implemented.
+  // FIXME: to be implemented.
 }
 
 Incidence::List KOProjectView::selectedIncidences()
@@ -313,32 +313,6 @@ void KOProjectView::newSubTodo()
 {
   if (mActiveItem) {
     emit newSubTodoSignal(mActiveItem->event());
-  }
-}
-
-void KOProjectView::editTodo()
-{
-  if (mActiveItem) {
-    emit editIncidenceSignal(mActiveItem->event());
-  }
-}
-
-void KOProjectView::showTodo()
-{
-  if (mActiveItem) {
-    emit showIncidenceSignal(mActiveItem->event());
-  }
-}
-
-void KOProjectView::deleteTodo()
-{
-  if (mActiveItem) {
-    if (mActiveItem->childCount()) {
-      KMessageBox::sorry(this,i18n("Cannot delete To-Do which has children."),
-                         i18n("Delete To-Do"));
-    } else {
-      emit deleteIncidenceSignal(mActiveItem->event());
-    }
   }
 }
 

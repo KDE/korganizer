@@ -52,7 +52,7 @@ public:
   QString getCurrentURLasString() const;
 
   bool editIncidence( QString uid );
-  bool deleteEvent( QString uid );
+  bool deleteIncidence( QString uid );
   bool eventRequest( QString request, QString receiver, QString iCal );
   bool eventReply( QString iCal );
   bool cancelEvent( QString iCal );

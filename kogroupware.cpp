@@ -177,7 +177,7 @@ void KOGroupware::incomingDirChanged( const QString& path )
   if ( action.startsWith( "accepted" ) )
     scheduler.acceptTransaction( incidence, method, status );
   else if ( action.startsWith( "cancel" ) )
-    // TODO: Could this be done like the others?
+    // @TODO: Could this be done like the others?
     mCalendar->deleteIncidence( incidence );
   else if ( action.startsWith( "reply" ) )
     scheduler.acceptTransaction( incidence, method, status );
@@ -365,7 +365,7 @@ QString KOGroupware::formatICal( const QString& iCal )
   }
 
   // Parse the first event out of the vcal
-  // TODO: Is it legal to have several events/todos per mail part?
+  // @TODO: Is it legal to have several events/todos per mail part?
   Incidence* incidence = 0;
   Event* event = 0;
   Todo* todo = 0;
@@ -374,9 +374,9 @@ QString KOGroupware::formatICal( const QString& iCal )
   else
     incidence = todo = cl.todos().first();
 
-  // TODO: Actually the scheduler needs to do this:
+  // @TODO: Actually the scheduler needs to do this:
   QString sMethod; // = incidence->method();
-  // TODO: This is a temporary workaround to get the method
+  // @TODO: This is a temporary workaround to get the method
   sMethod = "METHOD";
   vPartMicroParser( iCal, sMethod );
   sMethod = sMethod.lower();
@@ -890,16 +890,12 @@ bool KOGroupware::sendICalMessage( QWidget* parent,
       // You never send something out if no others are involved
       return true;
 
-    QString type;
-    if( incidence->type() == "Event") type = i18n("event");
-    else if( incidence->type() == "Todo" ) type = i18n("task");
-    else if( incidence->type() == "Journal" ) type = i18n("journal entry");
-    else type = incidence->type();
     QString txt = i18n( "This %1 includes other people. "
                         "Should email be sent out to the attendees?" )
-      .arg( type );
+      .arg( i18n( incidence->type() ) );
     rc = KMessageBox::questionYesNoCancel( parent, txt,
                                            i18n("Group scheduling email") );
+  // @TODO: use a visitor here
   } else if( incidence->type() == "Todo" ) {
     if( method == Scheduler::Request )
       // This is an update to be sent to the organizer
@@ -927,7 +923,8 @@ bool KOGroupware::sendICalMessage( QWidget* parent,
     rc = KMessageBox::questionYesNo( parent, txt );
     return ( rc == KMessageBox::Yes );
   } else {
-    qFatal( "Some unimplemented thing happened" );
+    kdWarning(5850) << "Some unimplemented thing happened" << endl;
+    return true;
   }
 
   if( rc == KMessageBox::Yes ) {

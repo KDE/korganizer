@@ -94,9 +94,6 @@ class KOProjectView : public KOrg::BaseView
     void popupMenu(QListViewItem *item,const QPoint &,int);
     void newTodo();
     void newSubTodo();
-    void showTodo();
-    void editTodo();
-    void deleteTodo();
     void itemClicked(QListViewItem *);
 */
 

@@ -51,30 +51,23 @@ class KOEventViewer : public QTextBrowser
     void setSource( const QString & );
 
     /**
-      Show given event in viewer. Clear all previously shown incidences.
+      Show given incidence in viewer. Clear all previously shown incidences.
     */
-    void setEvent( Event *event );
-    /**
-      Show given todo in viewer. Clear all previously shown incidences.
-    */
-    void setTodo( Todo *event );
-    /**
-      Show given journal in viewer. Clear all previously shown incidences.
-    */
-    void setJournal( Journal *journal );
+    virtual void setIncidence( Incidence * );
 
+    virtual bool appendIncidence( Incidence * );
     /**
       Show given event by appending it to already shown incidences.
     */
-    void appendEvent( Event *event );
+    virtual bool appendEvent( Event *event );
     /**
       Show given todo by appending it to already shown incidences.
     */
-    void appendTodo( Todo *event );
+    virtual bool appendTodo( Todo *todo );
     /**
       Show given journal by appending it to already shown incidences.
     */
-    void appendJournal( Journal *journal );
+    virtual bool appendJournal( Journal *journal );
     
     /**
       Clear viewer. If \a now is set to true delete view immediately. If set to

@@ -709,7 +709,7 @@ void KOAgendaView::updateConfig()
   mAllDayAgenda->updateConfig();
 
   // widget synchronization
-  //TODO: find a better way, maybe signal/slot
+  // @TODO: find a better way, maybe signal/slot
   mTimeLabels->positionChanged();
 
   // for some reason, this needs to be called explicitly
@@ -770,6 +770,7 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
 
 //  kdDebug(5850) << "KOAgendaView::updateEventDates(): now setting dates" << endl;
   Incidence *i = incidence->clone();
+  // @TODO: use a visitor here
   if ( i->type() == "Event" ) {
     startDt = i->dtStart();
     startDt = startDt.addDays( daysOffset );
@@ -797,7 +798,7 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
     }
     td->setDtDue( endDt );
   }
-  // TODO: Adjusting the recurrence should really go to CalendarView so this
+  // @TODO: Adjusting the recurrence should really go to CalendarView so this
   // functionality will also be available in other views!
   Recurrence *recur = incidence->recurrence();
   if ( recur && (recur->doesRecur()!=Recurrence::rNone) && (daysOffset!=0) ) {
@@ -864,7 +865,7 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
               QDate endDt( recur->endDate() );
               QPtrList<Recurrence::rMonthPos> monthPos( recur->monthPositions() );
               if ( !monthPos.isEmpty() ) {
-          // TODO: How shall I adapt the day x of week Y if we move the date across month borders???
+          // @TODO: How shall I adapt the day x of week Y if we move the date across month borders???
           // for now, just use the date of the moved item and assume the recurrence only occurs on that day.
           // That's fine for korganizer, but might mess up other organizers.
                 QBitArray rDays( 7 );
@@ -901,7 +902,7 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
                 } else {
                   recur->setMonthly( Recurrence::rMonthlyDay, freq, duration );
                 }
-        // TODO: How shall I adapt the n-th day if we move the date across month borders???
+        // @TODO: How shall I adapt the n-th day if we move the date across month borders???
         // for now, just use the date of the moved item and assume the recurrence only occurs on that day.
         // That's fine for korganizer, but might mess up other organizers.
                 recur->addMonthlyDay( thisDate.day() );
@@ -937,8 +938,8 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
 
   i->setRevision( i->revision() + 1 );
   if( !KOPrefs::instance()->mUseGroupwareCommunication ||
-       KOGroupware::instance()->sendICalMessage( this, KCal::Scheduler::Request,
-  i ) ) {
+       KOGroupware::instance()->sendICalMessage( this, KCal::Scheduler::Request, i ) ) {
+    // @TODO: use a visitor here
     if ( i->type() == "Event" ) {
       incidence->setDtStart( startDt );
       (static_cast<Event*>( incidence ) )->setDtEnd( endDt );
@@ -1365,7 +1366,7 @@ void KOAgendaView::slotTodoDropped( Todo *todo, const QPoint &gpos, bool allDay 
       if ( calendar()->addTodo( todo ) ) {
         emit incidenceAdded(todo);
       } else {
-        KODialogManager::errorSaveTodo( this );
+        KODialogManager::errorSaveIncidence( this, todo );
       }
     }
   }
