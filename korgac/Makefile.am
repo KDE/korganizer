@@ -24,7 +24,7 @@ METASOURCES = AUTO
 SUBDIRS = pixmaps
  
 autostart_DATA = korgac.desktop
-autostartdir = $(prefix)/share/autostart
+autostartdir = $(datadir)/autostart
 
 KDE_ICON = AUTO
 
