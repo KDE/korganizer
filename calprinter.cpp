@@ -926,7 +926,6 @@ void CalPrinter::drawDay(QPainter &p, const QDate &qd, int width, int height)
       startTime -= startHour;
       int startMinuteOff = (int) (minuteInc * 
       currEvent->dtStart().time().minute());
-      int endMinuteOff = (int) (minuteInc * currEvent->dtEnd().time().minute());
       int cheight = (int) (minuteInc * 
                     currEvent->dtStart().secsTo(currEvent->dtEnd()) / 60 );
       p.drawRect(80, offset+startMinuteOff+startTime*cellHeight, 
