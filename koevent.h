@@ -355,11 +355,7 @@ public:
    * @var _rEndDate the ending date for which to stop recurring
    */
   void setRecursDaily(int _rFreq, const QDate &_rEndDate);
-  /** set an event to recur weekly.
-   * @var _rFreq the frequency to recur, i.e every other week etc.
-   * @var _rDays a 7 bit array indicating which days on which to recur.
-   * @var _rDuration the duration for which to recur
-   */
+
   int getRecursFrequency() const;
   int getRecursDuration() const;
   /**
@@ -377,6 +373,11 @@ public:
   const QList<rMonthPos> &getRecursMonthPositions() const;
   const QList<int> &getRecursMonthDays() const;
 
+  /** set an event to recur weekly.
+   * @var _rFreq the frequency to recur, i.e every other week etc.
+   * @var _rDays a 7 bit array indicating which days on which to recur.
+   * @var _rDuration the duration for which to recur
+   */
   void setRecursWeekly(int _rFreq, const QBitArray &_rDays, int _rDuration);
   /** set an event to recur weekly.
    * @var _rFreq the frequency to recur, i.e every other week etc.

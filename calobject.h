@@ -50,11 +50,11 @@ public:
    * @param fileName the name of the calendar on disk.
    */
   bool load(const QString &fileName);
-  /** writes out the calendar to disk in vCalendar format. Returns nonzero
-   * on save error.
+  /** writes out the calendar to disk in vCalendar format. Returns true if
+   * successful and false on error.
    * @param fileName the name of the file
    */
-  int save(const QString &fileName);
+  bool save(const QString &fileName);
   /** clears out the current calendar, freeing all used memory etc. etc. */
   void close();
 
@@ -113,8 +113,10 @@ public:
    * date specified. useful for dayView, etc. etc. */
   QList<KOEvent> getEventsForDate(const QDate &date, bool sorted = FALSE);
   QList<KOEvent> getEventsForDate(const QDateTime &qdt);
-  /** Get events in a range of dates */
-  QList<KOEvent> getEvents(const QDate &start,const QDate &end);
+  /** Get events in a range of dates. If inclusive is set to true, only events
+   * are returned, which are completely included in the range. */
+  QList<KOEvent> getEvents(const QDate &start,const QDate &end,
+                           bool inclusive=false);
 
   /*
    * returns a QString with the text of the holiday (if any) that falls

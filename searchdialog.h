@@ -11,6 +11,7 @@
 #include "calobject.h"
 
 class KDateEdit;
+class QCheckBox;
 
 class SearchDialog : public KDialogBase
 {
@@ -39,13 +40,17 @@ class SearchDialog : public KDialogBase
     
     QList<KOEvent> mMatchedEvents;
     
-    QPushButton *searchButton;
     QLabel *searchLabel;
     QLineEdit *searchEdit;
     KOListView *listView;
     
     KDateEdit *mStartDate;
     KDateEdit *mEndDate;
+    
+    QCheckBox *mInclusiveCheck;
+    QCheckBox *mSummaryCheck;
+    QCheckBox *mDescriptionCheck;
+    QCheckBox *mCategoryCheck;
 };
 
 #endif

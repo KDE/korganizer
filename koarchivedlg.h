@@ -5,12 +5,13 @@
 
 class KURLRequester;
 class KDateEdit;
+class CalObject;
 
 class ArchiveDialog : public KDialogBase
 {
     Q_OBJECT
   public:
-    ArchiveDialog(QWidget *parent = 0, const char *name = 0);
+    ArchiveDialog(CalObject *calendar,QWidget *parent=0, const char *name=0);
     virtual ~ArchiveDialog();
 
   protected slots:
@@ -20,6 +21,8 @@ class ArchiveDialog : public KDialogBase
   private:
     KURLRequester *mArchiveFile;
     KDateEdit *mDateEdit;
+    
+    CalObject *mCalendar;
 };
 
 #endif

@@ -3,6 +3,8 @@
 // (c) 1998 by Preston Brown
 
 #include <qlayout.h>
+#include <qcheckbox.h>
+#include <qgroupbox.h>
 
 #include <klocale.h>
 #include <kbuttonbox.h>
@@ -35,22 +37,40 @@ SearchDialog::SearchDialog(CalObject *calendar)
   searchEdit->setText("*"); // Find all events by default
   searchEdit->setFocus();
  
-  // Date range
-  QHBoxLayout *rangeLayout = new QHBoxLayout;
-  layout->addLayout(rangeLayout);
-  
-  rangeLayout->addWidget(new QLabel(i18n("Date range from"),topFrame));
-  mStartDate = new KDateEdit(topFrame);
+  // Date range  
+  QGroupBox *rangeGroup = new QGroupBox(1,Horizontal,i18n("Date Range"),
+                                        topFrame);
+  layout->addWidget(rangeGroup);
+
+  QWidget *rangeWidget = new QWidget(rangeGroup);
+  QHBoxLayout *rangeLayout = new QHBoxLayout(rangeWidget,0,spacingHint());
+
+  rangeLayout->addWidget(new QLabel(i18n("Date range from"),rangeWidget));
+  mStartDate = new KDateEdit(rangeWidget);
   rangeLayout->addWidget(mStartDate);
-  rangeLayout->addWidget(new QLabel(i18n("to"),topFrame));
-  mEndDate = new KDateEdit(topFrame);
+  rangeLayout->addWidget(new QLabel(i18n("to"),rangeWidget));
+  mEndDate = new KDateEdit(rangeWidget);
   mEndDate->setDate(QDate::currentDate().addDays(365));
   rangeLayout->addWidget(mEndDate);
 
+  mInclusiveCheck = new QCheckBox(i18n("Events have to be completely included"),
+                                  rangeGroup);
+  mInclusiveCheck->setChecked(false);
+
+  // Subjects to search
+  QGroupBox *subjectGroup = new QGroupBox(1,Vertical,i18n("Search In:"),
+                                          topFrame);
+  layout->addWidget(subjectGroup);
+  
+  mSummaryCheck = new QCheckBox(i18n("Summaries"),subjectGroup);
+  mSummaryCheck->setChecked(true);
+  mDescriptionCheck = new QCheckBox(i18n("Descriptions"),subjectGroup);
+  mCategoryCheck = new QCheckBox(i18n("Categories"),subjectGroup);
+
   // Results list view
   listView = new KOListView(mCalendar,topFrame);
-  listView->setMinimumWidth(300);
-  listView->setMinimumHeight(200);
+//  listView->setMinimumWidth(300);
+//  listView->setMinimumHeight(200);
   listView->showDates();
   layout->addWidget(listView);
  
@@ -103,6 +123,8 @@ void SearchDialog::updateView()
   re = searchEdit->text();
   if (re.isValid()) {
     search(re);
+  } else {
+    mMatchedEvents.clear();
   }
 
   listView->selectEvents(mMatchedEvents);
@@ -110,8 +132,30 @@ void SearchDialog::updateView()
 
 void SearchDialog::search(const QRegExp &re)
 {
-//  mMatchedEvents = mCalendar(getEvents(mStartDate->getDate()),
-//                                       mEndDate->getDate());
+  QList<KOEvent> events = mCalendar->getEvents(mStartDate->getDate(),
+                                               mEndDate->getDate(),
+                                               mInclusiveCheck->isChecked());
 
-  mMatchedEvents = mCalendar->search(re);
+  mMatchedEvents.clear();
+  KOEvent *ev;
+  for(ev=events.first();ev;ev=events.next()) {
+    if (mSummaryCheck->isChecked()) {
+      if (re.match(ev->getSummary()) != -1) {
+        mMatchedEvents.append(ev);
+        continue;
+      }
+    }
+    if (mDescriptionCheck->isChecked()) {
+      if (re.match(ev->getDescription()) != -1) {
+        mMatchedEvents.append(ev);
+        continue;
+      }
+    }
+    if (mCategoryCheck->isChecked()) {
+      if (re.match(ev->getCategoriesStr()) != -1) {
+        mMatchedEvents.append(ev);
+        continue;
+      }
+    }
+  }
 }

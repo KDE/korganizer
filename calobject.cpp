@@ -222,11 +222,13 @@ void CalObject::close()
   } 
 }
 
-int CalObject::save(const QString &fileName)
+bool CalObject::save(const QString &fileName)
 {
   QString tmpStr;
   VObject *vcal, *vo;
-  const char *fn = (const char *) fileName;
+  const char *fn = fileName.latin1();
+
+  qDebug("CalObject::save(): %s",fn);
 
   vcal = newVObject(VCCalProp);
 
@@ -278,10 +280,13 @@ int CalObject::save(const QString &fileName)
   cleanVObjects(vcal);
   cleanStrTbl();
 
-  if (QFile::exists(fn))
-    return 0;
-  else
-    return 1; // error
+  if (QFile::exists(fn)) {
+    qDebug("No error");
+    return true;
+  } else  {
+    qDebug("Error");
+    return false; // error
+  }
 }
 
 VCalDrag *CalObject::createDrag(KOEvent *selectedEv, QWidget *owner)
@@ -2343,19 +2348,6 @@ long int CalObject::makeKey(const QDateTime &dt)
   return tmpStr.toLong();
 }
 
-QDate CalObject::keyToDate(long int key)
-{
-#if 0
-  qDebug("CalObject::keyToDate(): %l",key);
-  
-  QString dateStr = QString::number(key);
-  QDate date(dateStr.mid(0,4).toInt(),dateStr.mid(4,2).toInt(),
-             dateStr.mid(6,2).toInt());
-             
-  qDebug("  QDate: %s",date.toString().latin1());
-#endif
-}
-
 // make a long dict key out of a QDate
 long int CalObject::makeKey(const QDate &d)
 {
@@ -2364,6 +2356,19 @@ long int CalObject::makeKey(const QDate &d)
   tmpStr.sprintf("%d%.2d%.2d",d.year(), d.month(), d.day());
   return tmpStr.toLong();
 }
+
+QDate CalObject::keyToDate(long int key)
+{  
+  QString dateStr = QString::number(key);
+//  qDebug("CalObject::keyToDate(): %s",dateStr.latin1());
+  QDate date(dateStr.mid(0,4).toInt(),dateStr.mid(4,2).toInt(),
+             dateStr.mid(6,2).toInt());
+             
+//  qDebug("  QDate: %s",date.toString().latin1());
+
+  return date;
+}
+
 
 // taking a QDate, this function will look for an eventlist in the dict
 // with that date attached -
@@ -2422,26 +2427,93 @@ QList<KOEvent> CalObject::getEventsForDate(const QDate &qd, bool sorted)
   return eventListSorted;
 }
 
-QList<KOEvent> CalObject::getEvents(const QDate &start,const QDate &end)
+
+QList<KOEvent> CalObject::getEvents(const QDate &start,const QDate &end,
+                                    bool inclusive)
 {
-#if 0
   QIntDictIterator<QList<KOEvent> > qdi(*calDict);
-  const char *testStr;
   QList<KOEvent> matchList, *tmpList, tmpList2;
-  KOEvent *matchEvent;
+  KOEvent *ev = 0;
 
   qdi.toFirst();
-  while ((tmpList = qdi.current()) != 0L) {
-    ++qdi;
-    for (matchEvent = tmpList->first(); matchEvent;
-	 matchEvent = tmpList->next()) {
-      testStr = matchEvent->getSummary();
-      if ((searchExp.match(testStr) != -1) && (matchList.findRef(matchEvent) == -1))
-	matchList.append(matchEvent);
-      // do other match tests here...
+
+  // Get non-recurring events
+  while (qdi.current()) {
+    QDate keyDate = keyToDate(qdi.currentKey());
+    if (keyDate >= start && keyDate <= end) {
+      tmpList = qdi.current();
+      for(ev = tmpList->first();ev;ev = tmpList->next()) {
+        bool found = false;
+        if (ev->isMultiDay()) {  // multi day event
+          QDate mStart = ev->getDtStart().date();
+          QDate mEnd = ev->getDtEnd().date();
+
+          // Check multi-day events only on one date of its duration, the first
+          // date which lies in the specified range.
+          if ((mStart >= start && mStart == keyDate) ||
+              (mStart < start && start == keyDate)) {
+            if (inclusive) {
+              if (mStart >= start && mEnd <= end) {
+                // Event is completely included in range
+                found = true;
+              }
+            } else {
+              // Multi-day event has a day in the range
+              found = true;
+            }
+          }
+        } else {  // single day event
+          found = true;
+        }
+        if (found) matchList.append(ev);
+      }
     }
+    ++qdi;
   }
 
+  // Get recurring events
+  for(ev = recursList.first();ev;ev = recursList.next()) {
+    QDate rStart = ev->getDtStart().date();
+    bool found = false;
+    if (inclusive) {
+      if (rStart >= start && rStart <= end) {
+        // Start date of event is in range. Now check for end date.
+        // if duration is negative, event recurs forever, so do not include it.
+        if (ev->getRecursDuration() == 0) {  // End date set
+          QDate rEnd = ev->getRecursEndDate();
+          if (rEnd >= start && rEnd <= end) {  // End date within range
+            found = true;
+          }
+        } else if (ev->getRecursDuration() > 0) {  // Duration set
+          // TODO: Calculate end date from duration. Should be done in KOEvent
+          // For now exclude all events with a duration.
+        }
+      }
+    } else {
+      if (rStart <= end) {  // Start date not after range
+        if (rStart >= start) {  // Start date within range
+          found = true;
+        } else if (ev->getRecursDuration() == -1) {  // Recurs forever
+          found = true;
+        } else if (ev->getRecursDuration() == 0) {  // End date set
+          QDate rEnd = ev->getRecursEndDate();
+          if (rEnd >= start && rEnd <= end) {  // End date within range
+            found = true;
+          }
+        } else {  // Duration set
+          // TODO: Calculate end date from duration. Should be done in KOEvent
+          // For now include all events with a duration.
+          found = true;
+        }
+      }
+    }
+
+    if (found) matchList.append(ev);
+  }
+
+  return matchList;
+
+#if 0
   tmpList2 = recursList;
   tmpList2.setAutoDelete(FALSE); // just to make sure
   for (matchEvent = tmpList2.first(); matchEvent;
@@ -2453,28 +2525,9 @@ QList<KOEvent> CalObject::getEvents(const QDate &start,const QDate &end)
     // do other match tests here...
   }
 
-  // now, we have to sort it based on getDtStart()
-  QList<KOEvent> matchListSorted;
-  for (matchEvent = matchList.first(); matchEvent; 
-       matchEvent = matchList.next()) {
-    if (!matchListSorted.isEmpty() &&
-        matchEvent->getDtStart() < matchListSorted.at(0)->getDtStart()) {
-      matchListSorted.insert(0,matchEvent);
-      goto nextToInsert;
-    }
-    for (int i = 0; (uint) i+1 < matchListSorted.count(); i++) {
-      if (matchEvent->getDtStart() > matchListSorted.at(i)->getDtStart() &&
-          matchEvent->getDtStart() <= matchListSorted.at(i+1)->getDtStart()) {
-        matchListSorted.insert(i+1,matchEvent);
-        goto nextToInsert;
-      }
-    }
-    matchListSorted.append(matchEvent);
-  nextToInsert:
-    continue;
-  }
+#endif
 
-  return matchListSorted;
+#if 0
   QIntDictIterator<QList<KOEvent>> it(calDict );
 
   while ( it.current() ) {

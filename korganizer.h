@@ -26,7 +26,6 @@ class CalendarView;
 class KTempFile;
 class KRecentFilesAction;
 class KOWindowList;
-class ArchiveDialog;
 
 /**
  *
@@ -196,8 +195,6 @@ class KOrganizer : public KTMainWindow
     static KOWindowList *windowList;
 
     bool mActive;  // Indicates if this calendar is active (for alarm daemon)
-
-    ArchiveDialog *mArchiveDialog;
 
   private slots:
     void dumpText(const QString &);  // only for debugging purposes

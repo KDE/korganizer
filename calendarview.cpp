@@ -46,6 +46,7 @@
 #include "kotodoeditor.h"
 #include "koprefs.h"
 #include "koeventviewerdialog.h"
+#include "koarchivedlg.h"
 
 #include "calendarview.h"
 #include "calendarview.moc"
@@ -66,6 +67,8 @@ CalendarView::CalendarView(QWidget *parent,const char *name)
   mReadOnly = false;
   
   searchDlg = 0L;
+  mArchiveDialog = 0;
+
   setMinimumSize(620,400);	// make sure we don't get resized too small...
 
   // Create calendar object, which manages all calendar information associated
@@ -210,6 +213,15 @@ void CalendarView::closeCalendar()
   updateView();
 }
 
+void CalendarView::archiveCalendar()
+{
+  if (!mArchiveDialog) mArchiveDialog = new ArchiveDialog(mCalendar,this);
+  mArchiveDialog->show();
+  mArchiveDialog->raise();
+  
+  // Workaround.
+  QApplication::restoreOverrideCursor();
+}
 
 bool CalendarView::initCalendar(QString filename)
 {

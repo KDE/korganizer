@@ -30,6 +30,7 @@ class QWidgetStack;
 class CalPrinter;
 class ExportWebDialog;
 class KOOptionsDialog;
+class ArchiveDialog;
 
 /**
  *
@@ -96,6 +97,9 @@ public slots:
 
   /** Close calendar */
   void closeCalendar();
+
+  /** Archive old events of calendar */
+  void archiveCalendar();
 
   /** create an editeventwin with supplied date/time, and if bool is true,
    * make the event take all day. */
@@ -319,6 +323,7 @@ protected:
   KOOptionsDialog *mOptionsDialog;
   SearchDialog *searchDlg;
   ExportWebDialog *mExportWebDialog;
+  ArchiveDialog *mArchiveDialog;
 };
 
 #endif // _CALENDARVIEW_H

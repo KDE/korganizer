@@ -64,13 +64,19 @@ KOListView::KOListView(CalObject *calendar, QWidget *parent,
   mListView = new QListView(this);
   mListView->addColumn(i18n("Summary"));
   mListView->addColumn(i18n("Start Date"));
+  mListView->setColumnAlignment(1,AlignHCenter);
   mListView->addColumn(i18n("Start Time"));
+  mListView->setColumnAlignment(2,AlignHCenter);
   mListView->addColumn(i18n("End Date"));
+  mListView->setColumnAlignment(3,AlignHCenter);
   mListView->addColumn(i18n("End Time"));
+  mListView->setColumnAlignment(4,AlignHCenter);
   mListView->addColumn(i18n("Alarm")); // alarm set?
   mListView->addColumn(i18n("Recurs")); // recurs?
   mListView->addColumn(i18n("Due Date"));
+  mListView->setColumnAlignment(7,AlignHCenter);
   mListView->addColumn(i18n("Due Time"));
+  mListView->setColumnAlignment(8,AlignHCenter);
 
   QBoxLayout *layoutTop = new QVBoxLayout(this);
   layoutTop->addWidget(mListView);

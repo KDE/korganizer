@@ -44,7 +44,6 @@
 #include <dcopclient.h>
 #include <kprocess.h>
 
-#include "koarchivedlg.h"
 #include "komailclient.h"
 #include "calprinter.h"
 #include "exportwebdialog.h"
@@ -64,7 +63,6 @@ KOrganizer::KOrganizer(const char *name)
   qDebug("KOrganizer::KOrganizer()");
 
   mTempFile = 0;
-  mArchiveDialog = 0;
   mActive = false;
 
   // add this instance of the window to the static list.
@@ -373,12 +371,7 @@ void KOrganizer::file_merge()
 
 void KOrganizer::file_archive()
 {
-  if (!mArchiveDialog) mArchiveDialog = new ArchiveDialog(this);
-  mArchiveDialog->show();
-  mArchiveDialog->raise();
-  
-  // Workaround.
-  QApplication::restoreOverrideCursor();
+  mCalendarView->archiveCalendar();
 }
 
 
