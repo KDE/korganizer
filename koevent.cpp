@@ -34,9 +34,9 @@ KOEvent::KOEvent()
   summary = "";
   status = TENTATIVE;
   secrecy = PRIVATE;
-  categories = 0;
-  attachments = 0;
-  resources = 0;
+//  categories = 0;
+//  attachments = 0;
+//  resources = 0;
 
   audioAlarmFile = "";
   programAlarmFile = "";
@@ -474,6 +474,9 @@ void KOEvent::setCategories(const QStringList &categories)
 void KOEvent::setCategories(const QString &catStr)
 {
   if (ro) return;
+
+  if (catStr.isEmpty()) return;
+
   QStringList tmpList;
   int index1 = 0;
   int index2 = 0;

@@ -298,8 +298,6 @@ bool CalObject::save(const QString &fileName)
 
 VCalDrag *CalObject::createDrag(KOEvent *selectedEv, QWidget *owner)
 {
-  if (selectedEv == 0) qDebug("----------------000");
-
   VObject *vcal, *vevent;
   QString tmpStr;
   
@@ -1301,7 +1299,6 @@ VObject* CalObject::eventToVEvent(const KOEvent *anEvent)
     }
   }
 
-
   // recurrence rule stuff
   if (anEvent->doesRecur()) {
     // some more variables
@@ -1394,7 +1391,6 @@ VObject* CalObject::eventToVEvent(const KOEvent *anEvent)
 
   } // event repeats
 
-
   // exceptions to recurrence
   QDateList dateList(FALSE);
   dateList = anEvent->getExDates();
@@ -1462,7 +1458,7 @@ VObject* CalObject::eventToVEvent(const KOEvent *anEvent)
   tmpStr = tmpStrList.join(";");
   if (!tmpStr.isEmpty())
     addPropValue(vevent, VCResourcesProp, tmpStr.ascii());
-  
+
   // alarm stuff
   if (anEvent->getAlarmRepeatCount()) {
     VObject *a = addProp(vevent, VCDAlarmProp);
