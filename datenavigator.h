@@ -50,11 +50,13 @@ class DateNavigator : public QObject
     void selectDates( int count );
     void selectDates( const QDate &, int count );
 
-    void selectWeek();   
+    void selectWeek();
     void selectWeek( const QDate & );
 
     void selectWorkWeek();
     void selectWorkWeek( const QDate & );
+
+    void selectWeekByDay( int weekDay, const QDate & );
    
     void selectToday();
    

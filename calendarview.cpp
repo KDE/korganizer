@@ -403,7 +403,10 @@ void CalendarView::readSettings()
   readFilterSettings(config);
 
   config->setGroup( "Views" );
-  mNavigator->selectDates( config->readNumEntry( "ShownDatesCount", 7 ) );
+  int dateCount = config->readNumEntry( "ShownDatesCount", 7 );
+  if ( dateCount == 5 ) mNavigator->selectWorkWeek();
+  else if ( dateCount == 7 ) mNavigator->selectWeek();
+  else mNavigator->selectDates( dateCount );
 }
 
 
@@ -1469,8 +1472,7 @@ void CalendarView::showDates(const DateList &selectedDates)
 {
 //  kdDebug() << "CalendarView::selectDates()" << endl;
 
-  if ( mViewManager->currentView() &&
-       mViewManager->currentView()->isEventView()) {	
+  if ( mViewManager->currentView() ) {	
     updateView( selectedDates.first(), selectedDates.last() );
   } else {
     mViewManager->showAgendaView();

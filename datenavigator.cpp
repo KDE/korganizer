@@ -94,6 +94,15 @@ void DateNavigator::selectDates( const QDate &d, int count )
   emitSelected();
 }
 
+void DateNavigator::selectWeekByDay( int weekDay, const QDate &d )
+{
+  int dateCount = mSelectedDates.count();
+  bool weekStart = ( weekDay == KGlobal::locale()->weekStartDay() );
+  if ( weekStart && dateCount == 5 ) selectWorkWeek( d );
+  else if ( weekStart && dateCount == 7 ) selectWeek( d );
+  else selectDates( d, dateCount );
+}
+
 void DateNavigator::selectWeek()
 {
   selectWeek( mSelectedDates.first() );
@@ -105,17 +114,7 @@ void DateNavigator::selectWeek( const QDate &d )
 
   int dayOfWeek = KOCore::self()->calendarSystem()->dayOfTheWeek( d );
 
-  if ( dayOfWeek == 7 ) {
-    if ( KGlobal::locale()->weekStartsMonday() ) {
-      firstDate = d.addDays( -6 );
-    } else {
-      firstDate = d.addDays( 1 );
-    }
-  } else if ( dayOfWeek > 1 ) {
-    firstDate = d.addDays( dayOfWeek * -1 + 1 );
-  } else  {
-    firstDate = d;
-  }
+  firstDate = d.addDays( KGlobal::locale()->weekStartDay() - dayOfWeek );
 
   selectDates( firstDate, 7 );
 }
@@ -131,66 +130,57 @@ void DateNavigator::selectWorkWeek( const QDate &d )
 
   int dayOfWeek = KOCore::self()->calendarSystem()->dayOfTheWeek( d );
 
-  // find the beginning of this week (could be monday or sunday)
-  if( dayOfWeek == 7 ) {
-    if ( KGlobal::locale()->weekStartsMonday() ) {
-      firstDate = d.addDays( -6 );
-    }
-  } else if ( KGlobal::locale()->weekStartsMonday() ) {
-    firstDate = d.addDays( dayOfWeek * -1 + 1 );
-  } else {
-    firstDate = d.addDays( dayOfWeek * -1 );
-  }
+  firstDate = d.addDays( KGlobal::locale()->weekStartDay() - dayOfWeek );
 
   selectDates( firstDate, 5 );
 }
 
 void DateNavigator::selectToday()
 {
-  mSelectedDates.clear();
-  mSelectedDates.append( QDate::currentDate() );
-  
-  emitSelected();
+  QDate d = QDate::currentDate();
+
+  int dateCount = mSelectedDates.count();
+
+  if ( dateCount == 5 ) selectWorkWeek( d );
+  else if ( dateCount == 7 ) selectWeek( d );
+  else selectDates( d, dateCount );
 }
 
 void DateNavigator::selectPreviousYear()
 {
-  DateList::Iterator it;
-  for( it = mSelectedDates.begin(); it != mSelectedDates.end(); ++it ) {
-    KOCore::self()->calendarSystem()->previousYearDate( *it );
-  }
+  QDate firstSelected = mSelectedDates.first();
+  int weekDay = firstSelected.dayOfWeek();
+  KOCore::self()->calendarSystem()->previousYearDate( firstSelected );
 
-  emitSelected();
+  selectWeekByDay( weekDay, firstSelected );
 }
 
 void DateNavigator::selectPreviousMonth()
 {
-  DateList::Iterator it;
-  for( it = mSelectedDates.begin(); it != mSelectedDates.end(); ++it ) {
-    KOCore::self()->calendarSystem()->previousMonthDate( *it );
-  }
+  QDate firstSelected = mSelectedDates.first();
+  int weekDay = firstSelected.dayOfWeek();
+  KOCore::self()->calendarSystem()->previousMonthDate( firstSelected );
 
-  emitSelected();
+  selectWeekByDay( weekDay, firstSelected );
 }
 
 void DateNavigator::selectNextMonth()
 {
-  DateList::Iterator it;
-  for( it = mSelectedDates.begin(); it != mSelectedDates.end(); ++it ) {
-    KOCore::self()->calendarSystem()->nextMonthDate( *it );
-  }
+  QDate firstSelected = mSelectedDates.first();
+  int weekDay = firstSelected.dayOfWeek();
 
-  emitSelected();
+  KOCore::self()->calendarSystem()->nextMonthDate( firstSelected );
+
+  selectWeekByDay( weekDay, firstSelected );
 }
 
 void DateNavigator::selectNextYear()
 {
-  DateList::Iterator it;
-  for( it = mSelectedDates.begin(); it != mSelectedDates.end(); ++it ) {
-    KOCore::self()->calendarSystem()->nextYearDate( *it );
-  }
+  QDate firstSelected = mSelectedDates.first();
+  int weekDay = firstSelected.dayOfWeek();
+  KOCore::self()->calendarSystem()->nextYearDate( firstSelected );
 
-  emitSelected();
+  selectWeekByDay( weekDay, firstSelected );
 }
 
 void DateNavigator::selectPrevious()
