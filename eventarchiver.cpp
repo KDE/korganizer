@@ -141,7 +141,7 @@ void EventArchiver::deleteIncidences( Calendar* calendar, const QDate& limitDate
   emit eventsDeleted();
 }
 
-void EventArchiver::archiveIncidences( Calendar* calendar, const QDate& limitDate, QWidget* widget, const Incidence::List& incidences, bool /*withGUI*/)
+void EventArchiver::archiveIncidences( Calendar* calendar, const QDate& /*limitDate*/, QWidget* widget, const Incidence::List& incidences, bool /*withGUI*/)
 {
   FileStorage storage( calendar );
 

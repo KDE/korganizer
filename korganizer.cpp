@@ -260,7 +260,7 @@ void KOrganizer::toggleStatusBar()
      statusBar()->hide();
 }
 
-void KOrganizer::statusBarPressed( int id )
+void KOrganizer::statusBarPressed( int /*id*/ )
 {
 }
 

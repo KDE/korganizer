@@ -58,7 +58,7 @@ class JournalTitleLable : public KActiveLabel
 public:
   JournalTitleLable( QWidget *parent, const char *name=0 ) : KActiveLabel( parent, name ) {}
 
-  void openLink( const QString &link ) {}
+  void openLink( const QString &/*link*/ ) {}
 };
 
 
