@@ -56,7 +56,6 @@ using namespace KOrg;
 #include "kotodoviewitem.h"
 #include "kotodoview.moc"
 
-const int KOTodoView::POPUP_UNSUBTODO=1234;
 
 KOTodoListViewToolTip::KOTodoListViewToolTip (QWidget* parent,
                                               KOTodoListView* lv )
@@ -377,11 +376,11 @@ KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent, const char* name)
   mTodoListView->addColumn( i18n("Summary") );
   mTodoListView->addColumn( i18n("Recurs") );
   mTodoListView->addColumn( i18n("Priority") );
-  mTodoListView->setColumnAlignment( 2, AlignHCenter );
+  mTodoListView->setColumnAlignment( ePriorityColumn, AlignHCenter );
   mTodoListView->addColumn( i18n("Complete") );
-  mTodoListView->setColumnAlignment( 3, AlignRight );
+  mTodoListView->setColumnAlignment( ePercentColumn, AlignRight );
   mTodoListView->addColumn( i18n("Due Date/Time") );
-  mTodoListView->setColumnAlignment( 4, AlignLeft );
+  mTodoListView->setColumnAlignment( eDueDateColumn, AlignLeft );
   mTodoListView->addColumn( i18n("Categories") );
 #if 0
   mTodoListView->addColumn( i18n("Sort Id") );
@@ -392,14 +391,14 @@ KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent, const char* name)
   mTodoListView->setItemsRenameable( true );
   mTodoListView->setRenameable( 0 );
 
-  mTodoListView->setColumnWidthMode( 0, QListView::Manual );
-  mTodoListView->setColumnWidthMode( 1, QListView::Manual );
-  mTodoListView->setColumnWidthMode( 2, QListView::Manual );
-  mTodoListView->setColumnWidthMode( 3, QListView::Manual );
-  mTodoListView->setColumnWidthMode( 4, QListView::Manual );
-  mTodoListView->setColumnWidthMode( 5, QListView::Manual );
+  mTodoListView->setColumnWidthMode( eSummaryColumn, QListView::Manual );
+  mTodoListView->setColumnWidthMode( eRecurColumn, QListView::Manual );
+  mTodoListView->setColumnWidthMode( ePriorityColumn, QListView::Manual );
+  mTodoListView->setColumnWidthMode( ePercentColumn, QListView::Manual );
+  mTodoListView->setColumnWidthMode( eDueDateColumn, QListView::Manual );
+  mTodoListView->setColumnWidthMode( eCategoriesColumn, QListView::Manual );
 #if 0
-  mTodoListView->setColumnWidthMode( 6, QListView::Manual );
+  mTodoListView->setColumnWidthMode( eDescriptionColumn, QListView::Manual );
 #endif
 
   mPriorityPopupMenu = new QPopupMenu( this );
@@ -437,19 +436,19 @@ KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent, const char* name)
   mItemPopupMenu->insertItem(i18n("Show"), this,
                              SLOT (showTodo()));
   mItemPopupMenu->insertItem(i18n("Edit..."), this,
-                             SLOT (editTodo()));
+                             SLOT (editTodo()), 0, ePopupEdit );
   mItemPopupMenu->insertItem(KOGlobals::self()->smallIconSet("editdelete"), i18n("Delete"), this,
-                             SLOT (deleteTodo()));
+                             SLOT (deleteTodo()), 0, ePopupDelete );
   mItemPopupMenu->insertSeparator();
   mItemPopupMenu->insertItem(KOGlobals::self()->smallIconSet("todo"), i18n("New To-do..."), this,
                              SLOT (newTodo()));
   mItemPopupMenu->insertItem(i18n("New Sub-to-do..."), this,
                              SLOT (newSubTodo()));
   mItemPopupMenu->insertItem( i18n("Make Sub-to-do Independent"), this,
-      SIGNAL( unSubTodoSignal() ), 0, POPUP_UNSUBTODO );
+      SIGNAL( unSubTodoSignal() ), 0, ePopupUnSubTodo );
   mItemPopupMenu->insertSeparator();
-  mItemPopupMenu->insertItem( i18n("Copy To"), mCopyPopupMenu );
-  mItemPopupMenu->insertItem(i18n("Move To"), mMovePopupMenu);
+  mItemPopupMenu->insertItem( i18n("Copy To"), mCopyPopupMenu, ePopupCopyTo );
+  mItemPopupMenu->insertItem(i18n("Move To"), mMovePopupMenu, ePopupMoveTo );
   mItemPopupMenu->insertSeparator();
   mItemPopupMenu->insertItem(i18n("delete completed to-dos","Purge Completed"),
                              this, SLOT( purgeCompleted() ) );
@@ -741,33 +740,44 @@ void KOTodoView::showItem( QListViewItem *item, const QPoint &, int )
 void KOTodoView::popupMenu( QListViewItem *item, const QPoint &, int column )
 {
   mActiveItem = static_cast<KOTodoViewItem *>( item );
-  if ( item ) {
-    QDate date = mActiveItem->todo()->dtDue().date();
-    if ( mActiveItem->todo()->hasDueDate () ) {
-      mMovePopupMenu->datePicker()->setDate( date );
-    } else {
-      mMovePopupMenu->datePicker()->setDate( QDate::currentDate() );
-    }
-    switch ( column ) {
-      case 2:
-        mPriorityPopupMenu->popup( QCursor::pos() );
-        break;
-      case 3: {
-        mPercentageCompletedPopupMenu->popup( QCursor::pos() );
-        break;
+  if ( mActiveItem && mActiveItem->todo() ) {
+    bool editable = !mActiveItem->todo()->isReadOnly();
+    mItemPopupMenu->setItemEnabled( ePopupEdit, editable );
+    mItemPopupMenu->setItemEnabled( ePopupDelete, editable );
+    mItemPopupMenu->setItemEnabled( ePopupMoveTo, editable );
+    mItemPopupMenu->setItemEnabled( ePopupCopyTo, editable );
+    mItemPopupMenu->setItemEnabled( ePopupUnSubTodo, editable );
+
+    if ( editable ) {
+      QDate date = mActiveItem->todo()->dtDue().date();
+      if ( mActiveItem->todo()->hasDueDate () ) {
+        mMovePopupMenu->datePicker()->setDate( date );
+      } else {
+        mMovePopupMenu->datePicker()->setDate( QDate::currentDate() );
       }
-      case 4:
-        mMovePopupMenu->popup( QCursor::pos() );
-        break;
-      case 5:
-        getCategoryPopupMenu( mActiveItem )->popup( QCursor::pos() );
-        break;
-      default:
-        mCopyPopupMenu->datePicker()->setDate( date );
-        mCopyPopupMenu->datePicker()->setDate( QDate::currentDate() );
-        mItemPopupMenu->setItemEnabled( POPUP_UNSUBTODO,
-                                        mActiveItem->todo()->relatedTo() );
-        mItemPopupMenu->popup( QCursor::pos() );
+      switch ( column ) {
+        case ePriorityColumn:
+          mPriorityPopupMenu->popup( QCursor::pos() );
+          break;
+        case ePercentColumn: {
+          mPercentageCompletedPopupMenu->popup( QCursor::pos() );
+          break;
+        }
+        case eDueDateColumn:
+          mMovePopupMenu->popup( QCursor::pos() );
+          break;
+        case eCategoriesColumn:
+          getCategoryPopupMenu( mActiveItem )->popup( QCursor::pos() );
+          break;
+        default:
+          mCopyPopupMenu->datePicker()->setDate( date );
+          mCopyPopupMenu->datePicker()->setDate( QDate::currentDate() );
+          mItemPopupMenu->setItemEnabled( ePopupUnSubTodo,
+                                          mActiveItem->todo()->relatedTo() );
+          mItemPopupMenu->popup( QCursor::pos() );
+      }
+    } else {
+      mItemPopupMenu->popup( QCursor::pos() );
     }
   } else mPopupMenu->popup( QCursor::pos() );
 }
@@ -846,6 +856,7 @@ void KOTodoView::setNewPercentage( KOTodoViewItem *item, int percentage )
     mChanger->endChange( todo );
     delete oldTodo;
   } else {
+    item->construct();
     kdDebug(5850) << "No active item, active item is read-only, or locking failed" << endl;
   }
 }

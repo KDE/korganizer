@@ -220,7 +220,24 @@ class KOTodoView : public KOrg::BaseView
     QString mCurrentDoc;
     KPIM::ClickLineEdit *mQuickAdd;
 
-    static const int POPUP_UNSUBTODO;
+  public:
+    enum {
+      eSummaryColumn = 0,
+      eRecurColumn = 1,
+      ePriorityColumn = 2,
+      ePercentColumn = 3,
+      eDueDateColumn = 4,
+      eCategoriesColumn = 5,
+      eDescriptionColumn = 6
+    }; 
+    enum {
+      ePopupEdit = 1300,
+      ePopupDelete = 1301,
+      ePopupMoveTo = 1302,
+      ePopupCopyTo = 1303,
+      ePopupUnSubTodo = 1304
+    };
+  
 };
 
 #endif

@@ -75,15 +75,6 @@ class KOTodoViewItem : public QCheckListItem
 #else
 #endif
   virtual void stateChange(bool);
-  enum {
-    eSummaryColumn=0,
-    eRecurColumn=1,
-    ePriorityColumn=2,
-    ePercentColumn=3,
-    eDueDateColumn=4,
-    eCategoriesColumn=5,
-    eDescriptionColumn=6
-  };
 
 
   private:

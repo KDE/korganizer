@@ -49,7 +49,7 @@ KOTodoViewItem::KOTodoViewItem( KOTodoViewItem *parent, Todo *todo, KOTodoView *
 // FIXME: Is this the best way to sort the items on due dates?
 int KOTodoViewItem::compare( QListViewItem *i, int col, bool ascending ) const
 {
-  if ( i && ( col == eDueDateColumn ) ) {
+  if ( i && ( col == KOTodoView::eDueDateColumn ) ) {
     QString thiskey( key( col, ascending ) );
     QString ikey( i->key( col, ascending ) );
     if ( thiskey.isEmpty() ) { // no due date set
@@ -99,22 +99,22 @@ void KOTodoViewItem::construct()
   QString keyd = "9";
 
   setOn( mTodo->isCompleted() );
-  setText( eSummaryColumn, mTodo->summary());
+  setText( KOTodoView::eSummaryColumn, mTodo->summary());
   static const QPixmap recurPxmp = KOGlobals::self()->smallIcon("recur");
   if ( mTodo->doesRecur() ) {
-    setPixmap( eRecurColumn, recurPxmp );
-    setSortKey( eRecurColumn, "1" );
+    setPixmap( KOTodoView::eRecurColumn, recurPxmp );
+    setSortKey( KOTodoView::eRecurColumn, "1" );
   }
-  else setSortKey( eRecurColumn, "0" );
-  setText( ePriorityColumn, QString::number(mTodo->priority()) );
-  setText( ePercentColumn, QString::number(mTodo->percentComplete()) );
+  else setSortKey( KOTodoView::eRecurColumn, "0" );
+  setText( KOTodoView::ePriorityColumn, QString::number(mTodo->priority()) );
+  setText( KOTodoView::ePercentColumn, QString::number(mTodo->percentComplete()) );
   if ( mTodo->percentComplete()<100 ) {
-    if (mTodo->isCompleted()) setSortKey( ePercentColumn, QString::number(999) );
-    else setSortKey( ePercentColumn, QString::number( mTodo->percentComplete() ) );
+    if (mTodo->isCompleted()) setSortKey( KOTodoView::ePercentColumn, QString::number(999) );
+    else setSortKey( KOTodoView::ePercentColumn, QString::number( mTodo->percentComplete() ) );
   }
   else {
-    if (mTodo->isCompleted()) setSortKey( ePercentColumn, QString::number(999) );
-    else setSortKey( ePercentColumn, QString::number(99) );
+    if (mTodo->isCompleted()) setSortKey( KOTodoView::ePercentColumn, QString::number(999) );
+    else setSortKey( KOTodoView::ePercentColumn, QString::number(99) );
   }
 
   if (mTodo->hasDueDate()) {
@@ -123,20 +123,20 @@ void KOTodoViewItem::construct()
     if (!mTodo->doesFloat()) {
       dtStr += " " + mTodo->dtDueTimeStr();
     }
-    setText( eDueDateColumn, dtStr );
+    setText( KOTodoView::eDueDateColumn, dtStr );
     keyd = mTodo->dtDue().toString(Qt::ISODate);
   } else {
     keyd = "";
-    setText( eDueDateColumn, "" );
+    setText( KOTodoView::eDueDateColumn, "" );
   }
   keyd += QString::number( mTodo->priority() );
-  setSortKey( eDueDateColumn, keyd );
+  setSortKey( KOTodoView::eDueDateColumn, keyd );
 
   QString priorityKey = QString::number( mTodo->priority() ) + keyd;
-  if ( mTodo->isCompleted() ) setSortKey( ePriorityColumn, "1" + priorityKey );
-  else setSortKey( ePriorityColumn, "0" + priorityKey );
+  if ( mTodo->isCompleted() ) setSortKey( KOTodoView::ePriorityColumn, "1" + priorityKey );
+  else setSortKey( KOTodoView::ePriorityColumn, "0" + priorityKey );
 
-  setText( eCategoriesColumn, mTodo->categoriesStr() );
+  setText( KOTodoView::eCategoriesColumn, mTodo->categoriesStr() );
 
 #if 0
   // Find sort id in description. It's the text behind the last '#' character
@@ -144,11 +144,11 @@ void KOTodoViewItem::construct()
   // of sort id.
   int pos = mTodo->description().findRev('#');
   if (pos < 0) {
-    setText( eDescriptionColumn, "" );
+    setText( KOTodoView::eDescriptionColumn, "" );
   } else {
     QString str = mTodo->description().mid(pos+1);
     str.stripWhiteSpace();
-    setText( eDescriptionColumn, str );
+    setText( KOTodoView::eDescriptionColumn, str );
   }
 #endif
 
@@ -232,7 +232,7 @@ void KOTodoViewItem::paintCell(QPainter *p, const QColorGroup &cg, int column, i
 #endif
 
   // show the progess by a horizontal bar
-  if ( column == ePercentColumn ) {
+  if ( column == KOTodoView::ePercentColumn ) {
     p->save();
     int progress = (int)(( (width-6)*mTodo->percentComplete())/100.0 + 0.5);
 
