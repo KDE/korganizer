@@ -169,8 +169,6 @@ class KOAgenda : public QScrollView
 
   signals:
     void newEventSignal();
-    void newEventSignal( const QPoint &pos );
-    void newEventSignal( const QPoint &start, const QPoint &end );
     void newTimeSpanSignal( const QPoint &, const QPoint & );
     void newStartSelectSignal();
 

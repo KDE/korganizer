@@ -190,10 +190,6 @@ class KOAgendaView : public KOEventView
 
     void clearSelection();
 
-    void newEvent( const QPoint &pos );
-    void newEvent( const QPoint &start, const QPoint &end );
-    void newEventAllDay( const QPoint &pos );
-
     void startDrag( Incidence * );
 
     void readSettings();

@@ -632,8 +632,6 @@ bool KOAgenda::eventFilter_mouse(QObject *object, QMouseEvent *me)
     case QEvent::MouseMove:
       if (object != viewport()) {
         KOAgendaItem *moveItem = dynamic_cast<KOAgendaItem *>(object);
-// OLD_RK:        if (moveItem && !moveItem->incidence()->isReadOnly() &&
-//            !moveItem->incidence()->doesRecur() )
         if (moveItem && !moveItem->incidence()->isReadOnly() )
           if (!mActionItem)
             setNoActionCursor(moveItem,viewportPos);
@@ -659,9 +657,7 @@ bool KOAgenda::eventFilter_mouse(QObject *object, QMouseEvent *me)
     case QEvent::MouseButtonDblClick:
       if (object == viewport()) {
         selectItem(0);
-        QPoint pos = viewportToContents( viewportPos );
-        QPoint gpos = contentsToGrid( pos );
-        emit newEventSignal( gpos );
+        emit newEventSignal();
       } else {
         KOAgendaItem *doubleClickedItem = dynamic_cast<KOAgendaItem *>(object);
         if (doubleClickedItem) {

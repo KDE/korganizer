@@ -502,14 +502,6 @@ KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name) :
           SLOT(setContentsPos(int)));
 
   // Create Events, depends on type of agenda
-  connect( mAgenda, SIGNAL(newEventSignal(const QPoint &)),
-                    SLOT(newEvent(const QPoint &)));
-  connect( mAllDayAgenda, SIGNAL(newEventSignal(const QPoint &)),
-                          SLOT(newEventAllDay(const QPoint &)));
-  connect( mAgenda, SIGNAL(newEventSignal(const QPoint &, const QPoint &)),
-                    SLOT(newEvent(const QPoint &, const QPoint &)));
-  connect( mAllDayAgenda, SIGNAL(newEventSignal(const QPoint &, const QPoint &)),
-                          SLOT(newEventAllDay(const QPoint &)));
   connect( mAgenda, SIGNAL(newTimeSpanSignal(const QPoint &, const QPoint &)),
                     SLOT(newTimeSpanSelected(const QPoint &, const QPoint &)));
   connect( mAllDayAgenda, SIGNAL(newTimeSpanSignal(const QPoint &, const QPoint &)),
@@ -1458,43 +1450,6 @@ CalPrinter::PrintType KOAgendaView::printType()
 {
   if ( currentDateCount() == 1 ) return CalPrinter::Day;
   else return CalPrinter::Week;
-}
-
-void KOAgendaView::newEvent( const QPoint &pos)
-{
-  if (!mSelectedDates.count()) return;
-
-  QDate day = mSelectedDates[pos.x()];
-
-  QTime time = mAgenda->gyToTime(pos.y());
-  QDateTime dt(day,time);
-
-  emit newEventSignal(dt);
-}
-
-void KOAgendaView::newEvent(const QPoint &start, const QPoint &end)
-{
-  if (!mSelectedDates.count()) return;
-
-  QDate dayStart = mSelectedDates[start.x()];
-  QDate dayEnd = mSelectedDates[end.x()];
-
-  QTime timeStart = mAgenda->gyToTime( start.y() );
-  QTime timeEnd = mAgenda->gyToTime( end.y() + 1 );
-
-  QDateTime dtStart(dayStart,timeStart);
-  QDateTime dtEnd(dayEnd,timeEnd);
-
-  emit newEventSignal(dtStart,dtEnd);
-}
-
-void KOAgendaView::newEventAllDay( const QPoint &start )
-{
-  if (!mSelectedDates.count()) return;
-
-  QDate day = mSelectedDates[start.x()];
-
-  emit newEventSignal(day);
 }
 
 void KOAgendaView::updateEventIndicatorTop(int newY)
