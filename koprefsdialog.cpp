@@ -452,37 +452,41 @@ class KOPrefsDialogViews : public KPrefsModule
           addWidBool( KOPrefs::instance()->enableToolTipsItem(), topFrame );
       topLayout->addWidget(enableToolTips->checkBox(),5,0);
 
+      KPrefsWidBool *showAllDayTodo =
+          addWidBool( KOPrefs::instance()->showAllDayTodoItem(), topFrame );
+      topLayout->addWidget(showAllDayTodo->checkBox(),6,0);
+      
       KPrefsWidBool *enableMonthScroll =
           addWidBool( KOPrefs::instance()->enableMonthScrollItem(), topFrame );
-      topLayout->addWidget(enableMonthScroll->checkBox(),6,0);
+      topLayout->addWidget(enableMonthScroll->checkBox(),7,0);
 
       KPrefsWidBool *fullViewMonth =
           addWidBool( KOPrefs::instance()->fullViewMonthItem(), topFrame );
-      topLayout->addWidget(fullViewMonth->checkBox(),7,0);
+      topLayout->addWidget(fullViewMonth->checkBox(),8,0);
 
       KPrefsWidBool *coloredCategoriesInMonthView =
           addWidBool( KOPrefs::instance()->monthViewUsesCategoryColorItem(),
                       topFrame );
-      topLayout->addWidget(coloredCategoriesInMonthView->checkBox(),8,0);
+      topLayout->addWidget(coloredCategoriesInMonthView->checkBox(),9,0);
 
       KPrefsWidBool *fullViewTodo =
           addWidBool( KOPrefs::instance()->fullViewTodoItem(), topFrame );
-      topLayout->addWidget(fullViewTodo->checkBox(),9,0);
+      topLayout->addWidget(fullViewTodo->checkBox(),10,0);
 
       KPrefsWidBool *marcusBainsEnabled =
           addWidBool( KOPrefs::instance()->marcusBainsEnabledItem(), topFrame );
-      topLayout->addWidget(marcusBainsEnabled->checkBox(),10,0);
+      topLayout->addWidget(marcusBainsEnabled->checkBox(),11,0);
 
       KPrefsWidBool *marcusBainsShowSeconds =
           addWidBool( KOPrefs::instance()->marcusBainsShowSecondsItem(), topFrame );
-      topLayout->addWidget(marcusBainsShowSeconds->checkBox(),11,0);
+      topLayout->addWidget(marcusBainsShowSeconds->checkBox(),12,0);
       connect( marcusBainsEnabled->checkBox(), SIGNAL( toggled( bool ) ),
                marcusBainsShowSeconds->checkBox(), SLOT( setEnabled( bool ) ) );
 
       KPrefsWidBool *selectionStartsEditor =
           addWidBool( KOPrefs::instance()->selectionStartsEditorItem(),
                       topFrame );
-      topLayout->addWidget(selectionStartsEditor->checkBox(),12,0);
+      topLayout->addWidget(selectionStartsEditor->checkBox(),13,0);
 
       topLayout->setRowStretch(11,1);
 

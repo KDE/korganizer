@@ -987,34 +987,37 @@ void KOAgendaView::fillAgenda()
 
 
     // ---------- [display Todos --------------
-    unsigned int numTodo;
-    for (numTodo = 0; numTodo < todos.count(); ++numTodo) {
-      Todo *todo = *todos.at(numTodo);
+    if ( KOPrefs::instance()->showAllDayTodo() )
+    {
+      unsigned int numTodo;
+      for (numTodo = 0; numTodo < todos.count(); ++numTodo) {
+        Todo *todo = *todos.at(numTodo);
 
-      if ( ! todo->hasDueDate() ) continue;  // todo shall not be displayed if it has no date
+        if ( ! todo->hasDueDate() ) continue;  // todo shall not be displayed if it has no date
 
-      // ToDo items shall be displayed for the day they are due, but only showed today if they are already overdue.
-      // Already completed items can be displayed on their original due date
-      bool overdue = (!todo->isCompleted()) && (todo->dtDue() < today);
+        // ToDo items shall be displayed for the day they are due, but only showed today if they are already overdue.
+        // Already completed items can be displayed on their original due date
+        bool overdue = (!todo->isCompleted()) && (todo->dtDue() < today);
 
-      if ( ((todo->dtDue().date() == currentDate) && !overdue) ||
-           ((currentDate == today) && overdue) )
-        if ( todo->doesFloat() || overdue ) {  // Todo has no due-time set or is already overdue
-          //kdDebug(5850) << "todo without time:" << todo->dtDueDateStr() << ";" << todo->summary() << endl;
+        if ( ((todo->dtDue().date() == currentDate) && !overdue) ||
+             ((currentDate == today) && overdue) )
+          if ( todo->doesFloat() || overdue ) {  // Todo has no due-time set or is already overdue
+            //kdDebug(5850) << "todo without time:" << todo->dtDueDateStr() << ";" << todo->summary() << endl;
 
-          mAllDayAgenda->insertAllDayItem(todo, currentDate, curCol, curCol);
-        }
-        else {
-          //kdDebug(5850) << "todo with time:" << todo->dtDueStr() << ";" << todo->summary() << endl;
+            mAllDayAgenda->insertAllDayItem(todo, currentDate, curCol, curCol);
+          }
+          else {
+            //kdDebug(5850) << "todo with time:" << todo->dtDueStr() << ";" << todo->summary() << endl;
 
-          int endY = mAgenda->timeToY(todo->dtDue().time()) - 1;
-          int startY = endY - 1;
+            int endY = mAgenda->timeToY(todo->dtDue().time()) - 1;
+            int startY = endY - 1;
 
-          mAgenda->insertItem(todo,currentDate,curCol,startY,endY);
+            mAgenda->insertItem(todo,currentDate,curCol,startY,endY);
 
-          if (startY < mMinY[curCol]) mMinY[curCol] = startY;
-          if (endY > mMaxY[curCol]) mMaxY[curCol] = endY;
-        }
+            if (startY < mMinY[curCol]) mMinY[curCol] = startY;
+            if (endY > mMaxY[curCol]) mMaxY[curCol] = endY;
+          }
+      }
     }
     // ---------- display Todos] --------------
 
