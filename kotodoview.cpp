@@ -73,7 +73,7 @@ void KOTodoListViewToolTip::maybeTip( const QPoint & pos)
     /* Show the tip */
     tip(r, i18n("%1 %").arg(QString::number(i->todo()->percentComplete())));
   }
-  
+
 }
 
 
@@ -108,10 +108,10 @@ bool KOTodoListView::event(QEvent *e)
    * the small Progress bars to make therm have the right colors. */
   if(e->type()==QEvent::ApplicationPaletteChange)
   {
-    
+
     KListView::event(e);
     i=(KOTodoViewItem *)itemAtIndex(tmp);
-   
+
     while(i!=0)
     {
       i->construct();
@@ -327,13 +327,13 @@ void KOQuickTodo::focusInEvent(QFocusEvent *ev)
 void KOQuickTodo::focusOutEvent(QFocusEvent *ev)
 {
   setText(i18n("Click to add a new Todo"));
-  setPaletteForegroundColor(gray); 
+  setPaletteForegroundColor(gray);
   QLineEdit::focusOutEvent(ev);
 }
 
 void KOQuickTodo::mousePressEvent(QMouseEvent *ev)
 {
-  setPaletteForegroundColor(parentWidget()->paletteForegroundColor()); 
+  setPaletteForegroundColor(parentWidget()->paletteForegroundColor());
   QLineEdit::mousePressEvent(ev);
 }
 
@@ -380,7 +380,7 @@ KOTodoView::KOTodoView(Calendar *calendar,QWidget* parent,const char* name) :
   mTodoListView->setItemsRenameable( true );
   mTodoListView->setRenameable( 0 );
   mTodoListView->header()->setResizeEnabled(false, 2);
-  
+
   mTodoListView->setColumnWidthMode(0, QListView::Manual);
   mTodoListView->setColumnWidthMode(1, QListView::Manual);
   mTodoListView->setColumnWidthMode(2, QListView::Manual);
