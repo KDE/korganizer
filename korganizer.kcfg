@@ -148,7 +148,7 @@
     </entry>
     <entry type="Bool" name="SelectionStartsEditor">
       <label>Time range selection in agenda view starts event editor</label>
-      <whatsthis>If you check this option, you can drag the mouse from the start time to the end time of the event you are about to plan. An editor will open to an event with the selected timerange. This works only in the daily and weekly view.</whatsthis>
+      <whatsthis>If you check this option, you can drag the mouse from the start time to the end time of the event you are about to plan. An editor will open to an event with the selected time range. This works only in the daily and weekly view.</whatsthis>
       <default>false</default>
     </entry>
 
