@@ -58,13 +58,13 @@ int main (int argc, char **argv)
   aboutData.addCredit("Christopher Beard");
   aboutData.addCredit("Ian Dawes");
   aboutData.addCredit("Neil Hart");
-  aboutData.addCredit("Hans-Jürgen Husel");
+  aboutData.addCredit("Hans-JÃ¼rgen Husel");
   aboutData.addCredit("Christian Kirsch");
   aboutData.addCredit("Uwe Koloska");
   aboutData.addCredit("Glen Parker");
   aboutData.addCredit("Dan Pilone");
   aboutData.addCredit("Roman Rohr");
-  aboutData.addCredit("Günter Schwann");
+  aboutData.addCredit("GÃ¼nter Schwann");
   aboutData.addCredit("Herwin Jan Steehouwer");
   aboutData.addCredit("Nick Thompson");
   aboutData.addCredit("Larry Wright");
@@ -79,6 +79,8 @@ int main (int argc, char **argv)
     exit(0);
 
   KOrganizerApp app;
+  
+  KGlobal::locale()->insertCatalogue("libkcal");
 
 //  kdDebug() << "app.exec" << endl;
   return app.exec();
