@@ -126,26 +126,29 @@ void AlarmDaemon::reloadCal()
 
   KURL url(urlString);
 
-  QString tmpFile;
-  if(KIO::NetAccess::download(url,tmpFile)) {
-    kdDebug() << "--- Downloaded to " << tmpFile << endl;
-    bool success = mCalendar->load(tmpFile);
-    KIO::NetAccess::removeTempFile(tmpFile);
-    if (success) {
-      mDocker->addToolTip(url.prettyURL());
+  if (!url.isEmpty()) {
+    QString tmpFile;
+    if(KIO::NetAccess::download(url,tmpFile)) {
+      kdDebug() << "--- Downloaded to " << tmpFile << endl;
+      bool success = mCalendar->load(tmpFile);
+      KIO::NetAccess::removeTempFile(tmpFile);
+      if (success) {
+        mDocker->addToolTip(url.prettyURL());
       
-      // timeout every minute.
-      mAlarmTimer->start(1000*60);
+        // timeout every minute.
+        mAlarmTimer->start(1000*60);
+        return;
+      } else {
+        kdDebug() << "Error loading calendar file '" << tmpFile << "'" << endl;
+      }
     } else {
-      kdDebug() << "Error loading calendar file '" << tmpFile << "'" << endl;
-      mDocker->addToolTip(i18n("No calendar loaded."));
+      QString msg;
+      msg = i18n("Cannot download calendar from '%1'.").arg(url.prettyURL());
+      KMessageBox::error(0,msg);
     }
-  } else {
-    QString msg;
-    msg = i18n("Cannot download calendar from %1.").arg(url.prettyURL());
-    KMessageBox::error(0,msg);
-    mDocker->addToolTip(i18n("No calendar loaded."));
   }
+
+  mDocker->addToolTip(i18n("No calendar loaded."));
 }
 
 void AlarmDaemon::showAlarms(QList<Event> &alarmEvents)

@@ -151,6 +151,7 @@ void KOrganizerApp::processCalendar(const QString &urlString,int numDays,
       if (0 == korg) {
         korg = new KOrganizer("KOrganizer MainWindow");
         korg->show();
+        
         if (!url.isEmpty()) {
           korg->openURL(url);
         }
