@@ -975,7 +975,13 @@ void KOEditorRecurrence::readEvent(Event *event)
       recurrenceType = RecurrenceChooser::Monthly;
 
       rmd = r->monthDays();
-      day = *rmd.first();
+      // check if we have any setting for which day (vcs import is broken and 
+      // does not set any day, thus we need to check)
+      if ( rmd.first() ) {
+        day = *rmd.first();
+      } else {
+        day = event->dtStart().date().day();
+      }
       mMonthly->setByDay( day );
 
       mMonthly->setFrequency( f );
