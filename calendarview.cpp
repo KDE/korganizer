@@ -2052,7 +2052,7 @@ void CalendarView::showErrorMessage( const QString &msg )
 
 void CalendarView::updateCategories()
 {
-  QStringList allCats( calendar()->incidenceCategories() );
+  QStringList allCats( calendar()->categories() );
   allCats.sort();
   QStringList categories( KOPrefs::instance()->mCustomCategories );
   for ( QStringList::ConstIterator si = allCats.constBegin(); si != allCats.constEnd(); ++si ) {
