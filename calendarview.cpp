@@ -31,11 +31,11 @@
 #include <stdlib.h>
 
 #include <qapplication.h>
+#include <qclipboard.h>
 #include <qcursor.h>
 #include <qmultilineedit.h>
 #include <qtimer.h>
 #include <qwidgetstack.h>
-#include <qclipboard.h>
 #include <qptrlist.h>
 #include <qfile.h>
 #ifndef KORG_NOSPLITTER
@@ -95,7 +95,7 @@
 using namespace KOrg;
 #include "calendarview.moc"
 
-CalendarView::CalendarView( QWidget *parent, const char *name ) 
+CalendarView::CalendarView( QWidget *parent, const char *name )
   : CalendarViewBase(parent,name)
 {
   kdDebug() << "CalendarView::CalendarView()" << endl;
@@ -137,7 +137,7 @@ CalendarView::CalendarView( QWidget *parent, const char *name )
   mPanner->setResizeMode(mLeftSplitter,QSplitter::KeepSize);
 
   mDateNavigator = new KDateNavigator(mLeftSplitter, mCalendar, TRUE,
-                        "CalendarView::DateNavigator", QDate::currentDate() ); 
+                        "CalendarView::DateNavigator", QDate::currentDate() );
   mLeftSplitter->setResizeMode(mDateNavigator,QSplitter::KeepSize);
   mTodoList = new KOTodoView(mCalendar, mLeftSplitter, "todolist");
   mFilterView = new KOFilterView(&mFilters,mLeftSplitter,"CalendarView::FilterView");
@@ -160,7 +160,7 @@ CalendarView::CalendarView( QWidget *parent, const char *name )
   topLayout->addWidget( mainBox );
 
   mDateNavigator = new KDateNavigator(leftFrame, mCalendar, TRUE,
-                        "CalendarView::DateNavigator", QDate::currentDate()); 
+                        "CalendarView::DateNavigator", QDate::currentDate());
   mTodoList = new KOTodoView(mCalendar, leftFrame, "todolist");
   mFilterView = new KOFilterView(&mFilters,leftFrame,"CalendarView::FilterView");
 
@@ -310,9 +310,9 @@ bool CalendarView::openCalendar(QString filename, bool merge)
   }
 
   if (!merge) mCalendar->close();
-  
+
   mStorage->setFileName( filename );
-  
+
   if ( mStorage->load() ) {
     if ( merge ) setModified( true );
     else {
@@ -329,7 +329,7 @@ bool CalendarView::openCalendar(QString filename, bool merge)
     if ( !merge ) mCalendar->close();
 
     KMessageBox::error(this,i18n("Couldn't load calendar '%1'.").arg(filename));
-    
+
     return false;
   }
 }
@@ -760,7 +760,7 @@ void CalendarView::editEvent( Event *event )
     showEvent( event );
     return;
   }
-  
+
   kdDebug() << "CalendarView::editEvent() new EventEditor" << endl;
   KOEventEditor *eventEditor = mDialogManager->getEventEditor();
   mDialogList.insert( event, eventEditor );
@@ -924,7 +924,7 @@ void CalendarView::deleteEvent(Event *anEvent)
     KNotifyClient::beep();
     return;
   }
-  
+
   if (anEvent->recurrence()->doesRecur()) {
     QDate itemDate = mViewManager->currentSelectionDate();
     kdDebug() << "Recurrence-Date: " << itemDate.toString() << endl;
@@ -1096,9 +1096,9 @@ void CalendarView::schedule_publish(Incidence *incidence)
   }
   bool send = true;
   if ( KOPrefs::instance()->mMailClient == KOPrefs::MailClientSendmail ) {
-    if ( publishdlg->exec() != QDialog::Accepted ) 
+    if ( publishdlg->exec() != QDialog::Accepted )
       send = false;
-  }    
+  }
   if ( send ) {
     OutgoingDialog *dlg = mDialogManager->outgoingDialog();
     if ( event ) {
@@ -1166,9 +1166,9 @@ void CalendarView::schedule_publish_freebusy(int daysToPublish)
   freebusy->setOrganizer(KOPrefs::instance()->email());
 
   kdDebug() << "calendarview: schedule_publish_freebusy: startDate: "
-     << KGlobal::locale()->formatDateTime( start ) << " End Date: " 
+     << KGlobal::locale()->formatDateTime( start ) << " End Date: "
      << KGlobal::locale()->formatDateTime( end ) << endl;
-  
+
   PublishDialog *publishdlg = new PublishDialog();
   if ( publishdlg->exec() == QDialog::Accepted ) {
     OutgoingDialog *dlg = mDialogManager->outgoingDialog();
@@ -1206,7 +1206,7 @@ void CalendarView::schedule(Scheduler::Method method, Incidence *incidence)
     KMessageBox::sorry(this,i18n("The event has no attendees."));
     return;
   }
-  
+
   Event *ev = 0;
   if (event) ev = new Event(*event);
   Todo *to = 0;
@@ -1380,7 +1380,7 @@ void CalendarView::processTodoListSelection( Incidence *incidence )
 void CalendarView::processIncidenceSelection( Incidence *incidence )
 {
   if ( incidence == mSelectedIncidence ) return;
-  
+
   mSelectedIncidence = incidence;
 
   emit incidenceSelected( mSelectedIncidence );
@@ -1448,7 +1448,7 @@ void CalendarView::showDates(const DateList &selectedDates)
 {
 //  kdDebug() << "CalendarView::selectDates()" << endl;
 
-  if ( mViewManager->currentView() ) {	
+  if ( mViewManager->currentView() ) {
     updateView( selectedDates.first(), selectedDates.last() );
   } else {
     mViewManager->showAgendaView();
@@ -1497,7 +1497,7 @@ void CalendarView::takeOverEvent()
   Incidence *incidence = currentSelection();
 
   if (!incidence) return;
-  
+
   incidence->setOrganizer(KOPrefs::instance()->email());
   incidence->recreate();
   incidence->setReadOnly(false);
@@ -1509,7 +1509,7 @@ void CalendarView::takeOverCalendar()
 {
   // TODO: Create Calendar::allIncidences() function and use it here
 
-  QPtrList<Event> events = mCalendar->events();  
+  QPtrList<Event> events = mCalendar->events();
   for(uint i=0; i<events.count(); ++i) {
     events.at(i)->setOrganizer(KOPrefs::instance()->email());
     events.at(i)->recreate();
@@ -1529,7 +1529,7 @@ void CalendarView::takeOverCalendar()
     journals.at(i)->recreate();
     journals.at(i)->setReadOnly(false);
   }
-  
+
   updateView();
 }
 

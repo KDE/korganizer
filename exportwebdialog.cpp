@@ -38,7 +38,6 @@
 #include <kdebug.h>
 #include <kfiledialog.h>
 #include <klineedit.h>
-#include <ktempfile.h>
 #include <kurl.h>
 #include <kio/job.h>
 #include <kstandarddirs.h>
@@ -47,6 +46,7 @@
 #include <kurlrequester.h>
 #include <kio/netaccess.h>
 #include <knotifyclient.h>
+#include <ktempfile.h>
 
 #include <libkcal/calendar.h>
 

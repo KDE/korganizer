@@ -48,7 +48,7 @@ class KOrganizerApp : public KUniqueApplication
       if is is greater print events from corresponding number of dates to the
       screen.
     */
-    void processCalendar( const KURL &url, int numDays ); 
+    void processCalendar( const KURL &url, int numDays );
 };
 
 #endif
