@@ -42,7 +42,7 @@ void KOTodoViewItem::construct()
   setText(2,i18n("%1 %").arg(QString::number(mEvent->percentComplete())));
   if (mEvent->hasDueDate()) {
     setText(3, mEvent->dtDueDateStr());
-    if (mEvent->doesFloat()) setText(3,"");
+    if (mEvent->doesFloat()) setText(4,"");
     else setText(4,mEvent->dtDueTimeStr());
   } else {
     setText(3,"");
