@@ -26,17 +26,14 @@ if (defined($ARGV[0]) && defined($ARGV[1])) {
 } elsif (defined($ARGV[0])) {
     $outfilename = $ARGV[0];
 } else {
-    $! = -1;
-    exit;
+    exit -1;
 }
 
 if (!open(ICALFILE, $filename)) {
-    $! = -1;
-    exit;
+    exit -1;
 }
 if (!open(VCALFILE, ">$outfilename")) {
-    $! = -1;
-    exit;
+    exit -1;
 }
 
 $line = <ICALFILE>;
@@ -54,8 +51,7 @@ if ($line =~ /Calendar(\s+)\[v/) {
     }
 } else {
     # not a ical file?!
-    $! = -2;
-    exit;
+    exit -2;
 }
 
 close(ICALFILE);
@@ -66,13 +62,7 @@ sub getLine
     $_ = <ICALFILE>;
     if (!defined($_)) {
 	&write_footer;
-	if ($exitstatus) {
-	    $! = $exitstatus;
-	    exit;
-	} else {
-	    $! = 0;
-	    exit;
-	}
+	exit $exitstatus;
     }
     s/\\\[/\(/g;
     s/\\\]/\)/g;
@@ -179,9 +169,8 @@ sub process_appointment
 		# do nothing
 	    } elsif ($line =~ /^Remind/) {
 		# do nothing
-	    } elsif (($line =~ /^Todo/) || ($line =~ /^Done/)) {
-		# no support for todo's yet
-		$exitstatus = 1;
+	    } elsif ($line =~ /^Done/) {
+		$curappt{"done"}=1;
 	    } else {
 		# do nothing
 		;
@@ -303,6 +292,13 @@ sub write_appointment
 	$exceptions = "EXDATE:" . $curappt{"exceptions"};
 	chop($exceptions);
 	output($exceptions);
+    }
+    if (defined($curappt{"todo"})) {
+	if (defined($curappt{"done"})) {
+	    output("STATUS:COMPLETED");
+	} else {
+	    output("STATUS:NEEDS ACTION");
+	}
     }
     output("CLASS:PUBLIC");
     output("PRIORITY:0");
