@@ -27,6 +27,7 @@
 #include <klocale.h>
 
 #include <libkcal/vcaldrag.h>
+#include <libkcal/dndfactory.h>
 
 #include "koprefs.h"
 #include "kodaymatrix.h"
@@ -361,7 +362,8 @@ void KODayMatrix::dropEvent(QDropEvent *e)
     return;
   }
 
-  Event *event = mCalendar->createDrop(e);
+  DndFactory factory( mCalendar );
+  Event *event = factory.createDrop(e);
 
   if (event) {
     e->acceptAction();

@@ -54,6 +54,7 @@
 #include <libkcal/journal.h>
 #include <libkcal/calfilter.h>
 #include <libkcal/attendee.h>
+#include <libkcal/dndfactory.h>
 
 #ifndef KORG_NOMAIL
 #include "komailclient.h"
@@ -548,7 +549,8 @@ void CalendarView::edit_cut()
     KNotifyClient::beep();
     return;
   }
-  mCalendar->cutEvent(anEvent);
+  DndFactory factory( mCalendar );
+  factory.cutEvent(anEvent);
   changeEventDisplay(anEvent, KOGlobals::EVENTDELETED);
 }
 
@@ -564,14 +566,16 @@ void CalendarView::edit_copy()
     KNotifyClient::beep();
     return;
   }
-  mCalendar->copyEvent(anEvent);
+  DndFactory factory( mCalendar );
+  factory.copyEvent(anEvent);
 }
 
 void CalendarView::edit_paste()
 {
   QDate date = mDateNavigator->selectedDates().first();
   
-  Event *pastedEvent = mCalendar->pasteEvent(date);
+  DndFactory factory( mCalendar );
+  Event *pastedEvent = factory.pasteEvent(date);
   changeEventDisplay(pastedEvent, KOGlobals::EVENTADDED);
 }
 

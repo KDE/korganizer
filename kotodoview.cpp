@@ -30,6 +30,7 @@
 #include <kmessagebox.h>
 
 #include <libkcal/vcaldrag.h>
+#include <libkcal/dndfactory.h>
 
 #include "calprinter.h"
 #include "docprefs.h"
@@ -91,7 +92,8 @@ void KOTodoListView::contentsDropEvent(QDropEvent *e)
     return;
   }
 
-  Todo *todo = mCalendar->createDropTodo(e);
+  DndFactory factory( mCalendar );
+  Todo *todo = factory.createDropTodo(e);
 
   if (todo) {
     e->acceptAction();
@@ -158,7 +160,8 @@ void KOTodoListView::contentsMouseMoveEvent(QMouseEvent* e)
     QListViewItem *item = itemAt(contentsToViewport(mPressPos));
     if (item) {
 //      kdDebug() << "Start Drag for item " << item->text(0) << endl;
-      VCalDrag *vd = mCalendar->createDragTodo(
+      DndFactory factory( mCalendar );
+      VCalDrag *vd = factory.createDragTodo(
                           ((KOTodoViewItem *)item)->event(),viewport());
       if (vd->drag()) {
         kdDebug() << "KOTodoListView::contentsMouseMoveEvent(): Delete drag source" << endl;

@@ -41,6 +41,7 @@
 
 #include <libkcal/calendar.h>
 #include <libkcal/vcaldrag.h>
+#include <libkcal/dndfactory.h>
 
 #ifndef KORG_NOPLUGINS
 #include "kocore.h"
@@ -876,7 +877,8 @@ void KOAgendaView::updateEventIndicatorBottom(int newY)
 
 void KOAgendaView::startDrag(Event *event)
 {
-  VCalDrag *vd = calendar()->createDrag(event,this);
+  DndFactory factory( calendar() );
+  VCalDrag *vd = factory.createDrag(event,this);
   if (vd->drag()) {
     kdDebug() << "KOTodoListView::contentsMouseMoveEvent(): Delete drag source" << endl;
   }
