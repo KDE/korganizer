@@ -24,7 +24,7 @@
 
 #include "resourceview.h"
 
-#include <kcolordialog.h> 
+#include <kcolordialog.h>
 #include <klistview.h>
 #include <klocale.h>
 #include <kdebug.h>
@@ -167,9 +167,9 @@ void ResourceItem::update()
   setGuiState();
 }
 
-void ResourceItem::setResourceColor(QColor& color) { 
+void ResourceItem::setResourceColor(QColor& color) {
   if ( color.isValid() && mResourceColor != color ) {
-    QPixmap px(height()-2,height()-2);
+    QPixmap px(height()-13,height()-13);
     mResourceColor = color;
     px.fill(color);
     setPixmap(0,px);
@@ -286,15 +286,15 @@ void ResourceView::addResource()
 
 void ResourceView::addResourceItem( ResourceCalendar *resource )
 {
-  
+
   ResourceItem *item=new ResourceItem( resource, this, mListView );
 
   QColor resourceColor=KOPrefs::instance()->mEventColor;
-  
+
   kdDebug(5850) << "ResourceView::addResourceItem from calendar: " << resource->identifier()<< endl;
   resourceColor= *KOPrefs::instance()->resourceColor(resource->identifier());
   kdDebug(5850) << "ResourceView::addResourceItem with color: " << resourceColor.name() <<endl;
-  
+
   item->setResourceColor(resourceColor);
 
   connect( resource, SIGNAL( signalSubresourceAdded( ResourceCalendar *,
@@ -474,7 +474,7 @@ void ResourceView::contextMenuRequested ( QListViewItem *i,
                                    SLOT( saveResource() ) );
     menu->setItemEnabled( saveId, item->resource()->isActive() );
     menu->insertSeparator();
-    
+
     menu->insertItem( i18n("Show &Info"), this, SLOT( showInfo() ) );
     if ( !item->isSubresource() ) {
       //FIXME: This is better on the resource dialog
@@ -483,7 +483,7 @@ void ResourceView::contextMenuRequested ( QListViewItem *i,
       menu->insertItem( i18n("&Remove"), this, SLOT( removeResource() ) );
       if ( item->resource() != manager->standardResource() ) {
         menu->insertSeparator();
-        menu->insertItem( i18n("Use as &Default Calendar"), this, 
+        menu->insertItem( i18n("Use as &Default Calendar"), this,
                           SLOT( setStandard() ) );
       }
     }
@@ -497,15 +497,15 @@ void ResourceView::contextMenuRequested ( QListViewItem *i,
 void ResourceView::assignColor()
 {
   ResourceItem *item = currentItem();
-  if ( !item ) 
+  if ( !item )
     return;
   QColor myColor;
   KCal::ResourceCalendar *cal = item->resource();
-  
+
   QColor defaultColor =*KOPrefs::instance()->resourceColor( cal->identifier() );
-  
+
   int result = KColorDialog::getColor( myColor,defaultColor);
-  
+
   if ( result == KColorDialog::Accepted ) {
     KOPrefs::instance()->setResourceColor( cal->identifier(), myColor );
     item->setResourceColor( myColor );
