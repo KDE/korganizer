@@ -29,3 +29,13 @@ the same time.
 button on an existing To-Do and selecting <b>New Sub-To-Do</b> from the context menu?
 </html>
 </tip>
+
+<tip category="KOrganizer|General">
+<html>
+<p>...that a color can be assigned to each categorie? Events with a certain
+categorie will be shown in that color. You can assign these in the section
+Colors of the dialog which appears after selecting  <b>Settings</b>, 
+<b>KOrganizer settings...</b> from the Menubar.
+</html>
+</tip>
+
