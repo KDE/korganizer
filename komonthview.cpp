@@ -340,6 +340,12 @@ void MonthViewCell::setDate( const QDate &date )
 
   mDate = date;
 
+  // show current day with a thicker frame
+  if ( mDate == QDate::currentDate() )
+    mItemList->setLineWidth( 3 );
+  else
+    mItemList->setLineWidth( 1 );
+
   QString text;
   if ( KOGlobals::self()->calendarSystem()->day( date ) == 1 ) {
     text = i18n("'Month day' for month view cells", "%1 %2")
@@ -403,12 +409,20 @@ void MonthViewCell::updateCell()
 {
   if ( mDate == QDate::currentDate() ) {
     setPalette( mTodayPalette );
+
+    QPalette pal = mItemList->palette();
+    pal.setColor( QColorGroup::Foreground, KOPrefs::instance()->highlightColor() );
+    mItemList->setPalette( pal );
   }
   else {
     if ( mHoliday )
       setPalette( mHolidayPalette );
     else
       setPalette( mStandardPalette );
+
+    QPalette pal = mItemList->palette();
+    pal.setColor( QColorGroup::Foreground, KOPrefs::instance()->agendaBgColor().dark( 150 ) );
+    mItemList->setPalette( pal );
   }
 
   mItemList->clear();
