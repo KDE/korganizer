@@ -1,6 +1,7 @@
 /*
     This file is part of KOrganizer.
-    Copyright (c) 2002 Cornelius Schumacher <schumacher@kde.org>
+
+    Copyright (c) 2002,2003 Cornelius Schumacher <schumacher@kde.org>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -32,10 +33,7 @@
 
 #include <kcalendarsystem.h>
 
-#ifndef KORG_NOKALARMD
-#include "kalarmdclient.h"
-#endif
-#include "simplealarmclient.h"
+#include "alarmclient.h"
 
 #include "koglobals.h"
 
@@ -43,10 +41,7 @@ class NopAlarmClient : public AlarmClient
 {
   public:
     void startDaemon() {}
-    bool setCalendars( const QStringList & ) { return false; }
-    bool addCalendar( const QString & ) { return false; }
-    bool removeCalendar( const QString & ) { return false; }
-    bool reloadCalendar( const QString & ) { return false; }
+    void stopDaemon() {}
 };
 
 KOGlobals *KOGlobals::mSelf = 0;
@@ -67,23 +62,13 @@ KOGlobals::KOGlobals()
   cfg->setGroup("General");
   mCalendarSystem = KGlobal::locale()->calendar();
 
-  cfg->setGroup("AlarmDaemon");
-  QString alarmClient = cfg->readEntry( "Daemon", "kalarmd" );
-  if ( alarmClient == "simple" ) {
-    mAlarmClient = new SimpleAlarmClient;
-#ifndef KORG_NOKALARMD
-  } else if ( alarmClient == "kalarmd" ) {
-    mAlarmClient = new KalarmdClient;
-#endif
-  } else {
-    mAlarmClient = new NopAlarmClient;
-  }
+  mAlarmClient = new AlarmClient;
 }
 
 KConfig* KOGlobals::config()
 {
   static KConfig *mConfig = 0;
-  if (!mConfig)
+  if ( !mConfig )
     mConfig = new KConfig( locateLocal( "config", "korganizerrc" ) );
   return mConfig;
 }

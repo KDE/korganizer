@@ -1,7 +1,7 @@
 /*
-    KDE Panel docking window for KDE Alarm Daemon GUI.
+    This file is part of KOrganizer.
 
-    Copyright (c) 2001 David Jarvie <software@astrojar.org.uk>
+    Copyright (c) 2003 Cornelius Schumacher <schumacher@kde.org>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -23,46 +23,37 @@
 */
 #ifndef ALARMDOCKWINDOW_H
 #define ALARMDOCKWINDOW_H
-// $Id$
 
 #include <ksystemtray.h>
-#include <kpopupmenu.h>
 
-#include "koalarmclient.h"
+#include <qpixmap.h>
 
 class AlarmDockWindow : public KSystemTray
 {
     Q_OBJECT
   public:
-    AlarmDockWindow(KOAlarmClient *, QWidget *parent = 0L, const char *name = 0L);
+    AlarmDockWindow( const char *name = 0 );
     virtual ~AlarmDockWindow();
 
-    bool alarmsOn()        { return contextMenu()->isItemChecked(mAlarmsEnabledId); }
-    bool autostartGuiOn()  { return contextMenu()->isItemChecked(mAutostartGuiId); }
-
-    void setGuiAutostart(bool on);
-
-  protected:
-    void mousePressEvent(QMouseEvent*);
-    void closeEvent(QCloseEvent*);
+    void enableAutostart( bool enabled );
 
   public slots:
-    void toggleAlarmsEnabled();
-    void toggleGuiAutostart()     { setGuiAutostart(!autostartGuiOn()); }
+    void toggleAlarmsEnabled();    
+    void toggleAutostart();  
   
-  protected slots:
-    void configureAlarmDaemon();
-
   protected:
-    QPixmap    mPixmapEnabled, mPixmapDisabled;
-    int        mAlarmsEnabledId;     // alarms enabled item in menu
-    int        mAutostartGuiId;      // GUI autostart item in menu
+    void mousePressEvent( QMouseEvent * );
+//    void closeEvent( QCloseEvent * );
+
+  protected slots:
+    void slotQuit();
 
   private:
-    // DCOP interface
-    void       handleEvent(const QString& calendarURL, const QString& eventID);
+    QPixmap mPixmapEnabled;
+    QPixmap mPixmapDisabled;
 
-    KOAlarmClient   *mAlarmGui;
+    int mAlarmsEnabledId;
+    int mAutostartId;
 };
 
 #endif

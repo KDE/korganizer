@@ -1,63 +1,60 @@
+/*
+    This file is part of KOrganizer.
+
+    Copyright (c) 2003 Cornelius Schumacher <schumacher@kde.org>
+
+    This library is free software; you can redistribute it and/or
+    modify it under the terms of the GNU Library General Public
+    License as published by the Free Software Foundation; either
+    version 2 of the License, or (at your option) any later version.
+
+    This library is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+    Library General Public License for more details.
+
+    You should have received a copy of the GNU Library General Public License
+    along with this library; see the file COPYING.LIB.  If not, write to
+    the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+    Boston, MA 02111-1307, USA.
+*/
+
 #include "alarmclient.h"
 
-#include "kalarmd/alarmdaemoniface_stub.h"
-
-#include <kstandarddirs.h>
 #include <kprocess.h>
 #include <dcopclient.h>
 #include <kapplication.h>
 #include <kdebug.h>
 
-#include <qstring.h>
-#include <qfile.h>
-
-
-void AlarmClient::startAlarmDaemon()
+AlarmClient::AlarmClient( QObject *o, const char *name )
+  : QObject( o, name )
 {
-  if( kapp->dcopClient()->isApplicationRegistered( "kalarmd" ) )
-    // Alarm daemon already registered
-    return;
-
-  // Start alarmdaemon. It is a KUniqueApplication, that means it is
-  // automatically made sure that there is only one instance of the alarm daemon
-  // running.
-  KProcess proc;
-  proc << "kalarmd";
-  proc.start(KProcess::Block, KProcess::NoCommunication);
+  kdDebug() << "AlarmClient::AlarmClient()" << endl;
 }
 
-void AlarmClient::startAlarmClient()
+void AlarmClient::startDaemon()
 {
-  if( kapp->dcopClient()->isApplicationRegistered( "korgac" ) )
-    // Alarm daemon already registered
+  if ( kapp->dcopClient()->isApplicationRegistered( "korgac" ) ) {
+    // Alarm daemon already runs
     return;
+  }
 
   KProcess *proc = new KProcess;
   *proc << "korgac";
   *proc << "--miniicon" <<  "korganizer";
-  connect( proc, SIGNAL( processExited( KProcess* ) ),
-           instance(), SLOT( startCompleted( KProcess* ) ) );
-  if( !proc->start() )
-    delete proc;
-
-  // Register this application with the alarm daemon
-  AlarmDaemonIface_stub stub( "kalarmd", "ad" );
-  stub.registerApp( "korgac", "KOrganizer", "ac", 3, true );
-  if( !stub.ok() )
-    kdDebug(5850) << "AlarmClient::startAlarmClient(): dcop send failed" << endl;
+  connect( proc, SIGNAL( processExited( KProcess * ) ),
+           SLOT( startCompleted( KProcess * ) ) );
+  if ( !proc->start() ) delete proc;
 }
 
-void AlarmClient::startCompleted( KProcess* process )
+void AlarmClient::startCompleted( KProcess *process )
 {
   delete process;
 }
 
-AlarmClient* AlarmClient::instance()
+void AlarmClient::stopDaemon()
 {
-  static AlarmClient *singleton = 0;
-
-  if( singleton == 0 )
-    singleton = new AlarmClient();
-
-  return singleton;
+  kapp->dcopClient()->send( "korgac", "ac", "quit()", QByteArray() );
 }
+
+#include "alarmclient.moc"

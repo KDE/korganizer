@@ -1,5 +1,5 @@
 /*
-    This file is part of the KOrganizer interfaces.
+    This file is part of the KOrganizer alarm client.
 
     Copyright (c) 2003 Cornelius Schumacher <schumacher@kde.org>
 
@@ -17,36 +17,26 @@
     along with this library; see the file COPYING.LIB.  If not, write to
     the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
     Boston, MA 02111-1307, USA.
+
+    As a special exception, permission is given to link this program
+    with any edition of Qt, and distribute the resulting executable,
+    without including the source code for Qt in the source distribution.
 */
-#ifndef ALARMCLIENT_H
-#define ALARMCLIENT_H
+#ifndef ALARMCLIENTIFACE_H
+#define ALARMCLIENTIFACE_H
 
-#include <qobject.h>
+#include <dcopobject.h>
+#include <qstringlist.h>
 
-class KProcess;
-
-/**
-  This class provides the interface for communicating with the alarm daemon. It
-  can be subclassed for specific daemons.
-*/
-class AlarmClient : public QObject
+class AlarmClientIface : virtual public DCOPObject
 {
-    Q_OBJECT
-  public:
-    AlarmClient( QObject *parent = 0, const char *name = 0 );
-  
-    /**
-      Start alarm daemon.
-    */
-    virtual void startDaemon();
+    K_DCOP
+  k_dcop:
+    virtual ASYNC quit() = 0;
 
-    /**
-      Stop alarm daemon.
-    */
-    virtual void stopDaemon();
-
-  private slots:
-    void startCompleted( KProcess *process );
+    virtual ASYNC forceAlarmCheck() = 0;
+    virtual ASYNC dumpDebug() = 0;
+    virtual QStringList dumpAlarms() = 0;
 };
 
 #endif

@@ -1,6 +1,7 @@
 /*
     This file is part of the KOrganizer alarm client.
-    Copyright (c) 2001 Cornelius Schumacher <schumacher@kde.org>
+
+    Copyright (c) 2003 Cornelius Schumacher <schumacher@kde.org>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -21,11 +22,6 @@
     without including the source code for Qt in the source distribution.
 */
 
-// $Id$
-//
-// KOrganizer alarm client main program
-//
-
 #include <stdlib.h>
 
 #include <kdebug.h>
@@ -43,46 +39,44 @@ class MyApp : public KUniqueApplication
     int newInstance()
     {
       // Check if we already have a running alarm daemon widget
-      if (mClient) return 0;
-
-//      KCmdLineArgs *args = KCmdLineArgs::parsedArgs();
+      if ( mClient ) return 0;
 
       mClient = new KOAlarmClient;
 
       return 0;
     }
+
   private:
     KOAlarmClient *mClient;
 };
 
 
-static const char* korgacVersion = "0.9";
+static const char *korgacVersion = "0.9";
+
 static const KCmdLineOptions options[] =
 {
-   {0L,0L,0L}
+  { 0, 0, 0 }
 };
 
-int main(int argc, char **argv)
+int main( int argc, char **argv )
 {
-  KLocale::setMainCatalogue("korgac");
-  KAboutData aboutData("korgac", I18N_NOOP("KOrganizer Alarm Client"),
-      korgacVersion, I18N_NOOP("KOrganizer Alarm Client"), KAboutData::License_GPL,
-      "(c) 2001 Cornelius Schumacher\n"
-      "(c) 2001 David Jarvie <software@astrojar.org.uk>",
-      0, "http://pim.kde.org");
-  aboutData.addAuthor("Cornelius Schumacher",I18N_NOOP("Maintainer"),
-                      "schumacher@kde.org");
-  aboutData.addAuthor("David Jarvie",0,
-                      "software@astrojar.org.uk");
+  KLocale::setMainCatalogue( "korgac" );
+  KAboutData aboutData( "korgac", I18N_NOOP("KOrganizer Alarm Daemon"),
+                        korgacVersion, I18N_NOOP("KOrganizer Alarm Daemon"),
+                        KAboutData::License_GPL,
+                        "(c) 2003 Cornelius Schumacher",
+                        0, "http://pim.kde.org" );
+  aboutData.addAuthor( "Cornelius Schumacher", I18N_NOOP("Maintainer"),
+                       "schumacher@kde.org" );
 
-  KCmdLineArgs::init(argc,argv,&aboutData);
-  KCmdLineArgs::addCmdLineOptions(options);
+  KCmdLineArgs::init( argc, argv, &aboutData );
+  KCmdLineArgs::addCmdLineOptions( options );
   KUniqueApplication::addCmdLineOptions();
 
-  if (!MyApp::start())
-    exit(0);
+  if ( !MyApp::start() ) exit( 0 );
 
   MyApp app;
+  app.disableSessionManagement();
 
   return app.exec();
 }

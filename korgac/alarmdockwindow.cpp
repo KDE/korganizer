@@ -1,9 +1,7 @@
 /*
-    KDE Panel docking window for KDE Alarm Daemon GUI.
-
-    This file is part of the GUI interface for the KDE alarm daemon.
-    Copyright (c) 2001 David Jarvie <software@astrojar.org.uk>
-    Based on the original, (c) 1998, 1999 Preston Brown
+    This file is part of KOrganizer.
+    
+    Copyright (c) 2003 Cornelius Schumacher <schumacher@kde.org>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -24,41 +22,36 @@
     without including the source code for Qt in the source distribution.
 */
 
-#include <stdlib.h>
-
-#include <qtooltip.h>
-#include <qfile.h>
+#include "alarmdockwindow.h"
 
 #include <kapplication.h>
 #include <kdebug.h>
 #include <klocale.h>
 #include <kiconloader.h>
-#include <kprocess.h>
 #include <kconfig.h>
-#include <kmessagebox.h>
 #include <kurl.h>
 #include <kstandarddirs.h>
 #include <dcopclient.h>
+#include <kpopupmenu.h>
+#include <kmessagebox.h>
+#include <kaction.h>
+#include <kstdaction.h>
 
-#include "koalarmclient.h"
-#include "alarmdaemoniface_stub.h"
+#include <qtooltip.h>
+#include <qfile.h>
 
-#include "alarmdockwindow.h"
-#include "alarmdockwindow.moc"
+#include <stdlib.h>
 
-
-AlarmDockWindow::AlarmDockWindow(KOAlarmClient *client, QWidget *parent,
-                                 const char *name)
-  : KSystemTray(parent, name),
-    mAlarmGui(client)
+AlarmDockWindow::AlarmDockWindow( const char *name )
+  : KSystemTray( 0, name )
 {
-  // Read the GUI autostart status from the config file
-  KConfig* config = kapp->config();
+  // Read the autostart status from the config file
+  KConfig *config = kapp->config();
   config->setGroup("General");
-  bool autostartGui = config->readBoolEntry( "Autostart", true );
+  bool autostart = config->readBoolEntry( "Autostart", true );
   bool alarmsEnabled = config->readBoolEntry( "Enabled", true );
 
-  // Set up GUI icons
+  // Set up icons
   KGlobal::iconLoader()->addAppDir( "korgac" );
   mPixmapEnabled  = loadIcon( "korgac" );
   mPixmapDisabled = loadIcon( "korgac_disabled" );
@@ -66,15 +59,29 @@ AlarmDockWindow::AlarmDockWindow(KOAlarmClient *client, QWidget *parent,
   setPixmap( alarmsEnabled ? mPixmapEnabled : mPixmapDisabled );
 
   // Set up the context menu
-  mAlarmsEnabledId = contextMenu()->insertItem(i18n("Alarms Enabled"),
-                                              this, SLOT(toggleAlarmsEnabled()));
-  mAutostartGuiId = contextMenu()->insertItem(i18n("Start Alarm Client at Login"),
-                                              this, SLOT(toggleGuiAutostart()));
-  contextMenu()->insertItem( i18n("Configure Alarm Client..."), this,
-                             SLOT( configureAlarmDaemon() ) );
+  mAlarmsEnabledId = contextMenu()->insertItem( i18n("Alarms Enabled"),
+                                                this,
+                                                SLOT( toggleAlarmsEnabled() ) );
+  mAutostartId = contextMenu()->insertItem( i18n("Start Alarm Client at Login"),
+                                            this,
+                                            SLOT( toggleAutostart() ) );
   
-  contextMenu()->setItemChecked(mAutostartGuiId, autostartGui);
-  contextMenu()->setItemChecked(mAlarmsEnabledId, alarmsEnabled);
+  contextMenu()->setItemChecked( mAutostartId, autostart );
+  contextMenu()->setItemChecked( mAlarmsEnabledId, alarmsEnabled );
+
+  // Disable standard quit behaviour. We have to intercept the quit even, if the
+  // main window is hidden.
+  KActionCollection *ac = actionCollection();
+  const char *quitName = KStdAction::name( KStdAction::Quit );
+  KAction *quit = ac->action( quitName );
+  if ( !quit ) {
+    kdDebug() << "No Quit standard action." << endl;
+  } else {
+    quit->disconnect( SIGNAL( activated() ), qApp,
+                      SLOT( closeAllWindows() ) );
+  }
+
+  connect( this, SIGNAL( quitSelected() ), SLOT( slotQuit() ) );
 }
 
 AlarmDockWindow::~AlarmDockWindow()
@@ -82,15 +89,12 @@ AlarmDockWindow::~AlarmDockWindow()
 }
 
 
-/*
- * Called when the Alarms Enabled context menu item is selected.
- */
 void AlarmDockWindow::toggleAlarmsEnabled()
 {
   kdDebug() << "AlarmDockWindow::toggleAlarmsEnabled()" << endl;
 
-  KConfig* config = kapp->config();
-  config->setGroup("General");
+  KConfig *config = kapp->config();
+  config->setGroup( "General" );
 
   bool enabled = !contextMenu()->isItemChecked( mAlarmsEnabledId );
   contextMenu()->setItemChecked( mAlarmsEnabledId, enabled );
@@ -100,27 +104,25 @@ void AlarmDockWindow::toggleAlarmsEnabled()
   config->sync();
 }
 
-
-/*
- * Set GUI autostart at login on or off, and set the context menu accordingly.
- */
-void AlarmDockWindow::setGuiAutostart(bool on)
+void AlarmDockWindow::toggleAutostart()
 {
-  kdDebug() << "setGuiAutostart()=" << int(on) << endl;
+  bool autostart = !contextMenu()->isItemChecked( mAutostartId );
 
-  KConfig* config = kapp->config();
-  config->setGroup("General");
-  config->writeEntry("Autostart", on);
-  config->sync();
-
-  contextMenu()->setItemChecked(mAutostartGuiId, on);
+  enableAutostart( autostart );
 }
 
 
-/*
- * Called when the mouse is clicked over the panel icon.
- */
-void AlarmDockWindow::mousePressEvent(QMouseEvent* e)
+void AlarmDockWindow::enableAutostart( bool enable )
+{
+  KConfig *config = kapp->config();
+  config->setGroup( "General" );
+  config->writeEntry( "Autostart", enable );
+  config->sync();
+
+  contextMenu()->setItemChecked( mAutostartId, enable );
+}
+
+void AlarmDockWindow::mousePressEvent( QMouseEvent *e )
 {
   if ( e->button() == LeftButton ) {
     kapp->startServiceByDesktopName( "korganizer", QString::null );
@@ -129,13 +131,19 @@ void AlarmDockWindow::mousePressEvent(QMouseEvent* e)
   }
 }
 
-
-void AlarmDockWindow::closeEvent(QCloseEvent*)
+//void AlarmDockWindow::closeEvent( QCloseEvent * )
+void AlarmDockWindow::slotQuit()
 {
-  kapp->quit();
+  int result = KMessageBox::questionYesNoCancel( this,
+      i18n("Do you want to start the KOrganizer alarm daemon at login "
+           "(Note that you won't get alarms when the daemon isn't running)?"),
+      i18n("Close KOrganizer Alarm Daemon") );
+
+  bool autostart = true;
+  if ( result == KMessageBox::No ) autostart = false;
+  enableAutostart( autostart );
+
+  if ( result != KMessageBox::Cancel ) kapp->quit();
 }
 
-void AlarmDockWindow::configureAlarmDaemon()
-{
-  kapp->startServiceByDesktopName( "kcmkded", QString::null );
-}
+#include "alarmdockwindow.moc"

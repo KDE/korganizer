@@ -793,47 +793,44 @@ bool ActionManager::saveURL()
 {
   QString ext;
 
-  if (mURL.isLocalFile()) {
-    ext = mFile.right(4);
+  if ( mURL.isLocalFile() ) {
+    ext = mFile.right( 4 );
   } else {
-    ext = mURL.filename().right(4);
+    ext = mURL.filename().right( 4 );
   }
 
-  if (ext == ".vcs") {
+  if ( ext == ".vcs" ) {
     int result = KMessageBox::warningContinueCancel(
         mCalendarView->topLevelWidget(),
         i18n("Your calendar will be saved in iCalendar format. Use "
               "'Export vCalendar' to save in vCalendar format."),
-        i18n("Format Conversion"),i18n("Proceed"),"dontaskFormatConversion",
-        true);
-    if (result != KMessageBox::Continue) return false;
-
-    // Tell the alarm daemon to stop monitoring the vCalendar file
-    if ( !KOGlobals::self()->alarmClient()->removeCalendar( mURL.url() ) ) {
-      kdDebug(5850) << "ActionManager::saveURL(): dcop send failed" << endl;
-    }
+        i18n("Format Conversion"), i18n("Proceed"), "dontaskFormatConversion",
+        true );
+    if ( result != KMessageBox::Continue ) return false;
 
     QString filename = mURL.fileName();
-    filename.replace(filename.length()-4,4,".ics");
-    mURL.setFileName(filename);
-    if (mURL.isLocalFile()) {
+    filename.replace( filename.length() - 4, 4, ".ics" );
+    mURL.setFileName( filename );
+    if ( mURL.isLocalFile() ) {
       mFile = mURL.path();
     }
     setTitle();
-    mRecent->addURL(mURL);
+    mRecent->addURL( mURL );
   }
 
-  if (!mCalendarView->saveCalendar(mFile)) {
-    kdDebug(5850) << "ActionManager::saveURL(): calendar view save failed." << endl;
+  if ( !mCalendarView->saveCalendar( mFile ) ) {
+    kdDebug(5850) << "ActionManager::saveURL(): calendar view save failed."
+                  << endl;
     return false;
   } else {
     mCalendarView->setModified( false );
   }
 
-  if (!mURL.isLocalFile()) {
+  if ( !mURL.isLocalFile() ) {
     if ( !KIO::NetAccess::upload( mFile, mURL, view() ) ) {
-      QString msg = i18n("Cannot upload calendar to '%1'").arg(mURL.prettyURL());
-      KMessageBox::error(mCalendarView->topLevelWidget(),msg);
+      QString msg = i18n("Cannot upload calendar to '%1'")
+                    .arg( mURL.prettyURL() );
+      KMessageBox::error( mCalendarView->topLevelWidget() ,msg );
       return false;
     }
   }

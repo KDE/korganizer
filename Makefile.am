@@ -85,7 +85,7 @@ libkorganizer_la_SOURCES =  outgoingdialog_base.ui \
 	kodaymatrix.cpp docprefs.cpp statusdialog.cpp\
         kotimespanview.cpp timespanview.cpp lineview.cpp timeline.cpp \
         koglobals.cpp konewstuff.cpp \
-        kalarmdclient.cpp simplealarmclient.cpp \
+        alarmclient.cpp \
 	actionmanager.cpp resourceview.cpp \
         navigatorbar.cpp kogroupware.cpp \
 	kogroupwareincomingdialog_base.ui kogroupwareincomingdialog.cpp \
@@ -115,7 +115,7 @@ noinst_HEADERS = komonthview.h \
         koeditorrecurrence.h koeventviewerdialog.h koeventpopupmenu.h \
         outgoingdialog.h incomingdialog.h publishdialog.h \
         koeventview.h statusdialog.h customlistviewitem.h \
-        alarmclient.h kalarmdclient.h simplealarmclient.h \
+        alarmclient.h \
         navigatorbar.h kogroupware.h kogroupwareincomingdialog.h \
 	koincidencetooltip.h
 

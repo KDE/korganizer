@@ -2,7 +2,8 @@
     KOrganizer Alarm Daemon Client.
 
     This file is part of KOrganizer.
-    Copyright (c) 2002 Cornelius Schumacher
+
+    Copyright (c) 2002,2003 Cornelius Schumacher
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -24,38 +25,50 @@
 */
 #ifndef KOALARMCLIENT_H
 #define KOALARMCLIENT_H
-// $Id$
+
+#include "alarmclientiface.h"
 
 #include <qtimer.h>
-
-#include "alarmguiiface.h"
 
 class AlarmDialog;
 class AlarmDockWindow;
 
-class KOAlarmClient : public QObject, virtual public AlarmGuiIface
+namespace KCal {
+class CalendarResources;
+}
+
+class KOAlarmClient : public QObject, virtual public AlarmClientIface
 {
     Q_OBJECT
   public:
     KOAlarmClient( QObject *parent = 0, const char *name = 0 );
-    virtual ~KOAlarmClient();
+    ~KOAlarmClient();
+
+    // DCOP interface
+    void quit();
+    void forceAlarmCheck();
+    void dumpDebug();
+    QStringList dumpAlarms();
 
   public slots:
-    void suspend(int minutes);
+    /**
+      Schedule the alarm dialog for redisplay after a specified number of
+      minutes.
+    */
+    void suspend( int minutes );
 
-  private slots:
+  protected slots:
     void showAlarmDialog();
-
-  private:
-    // DCOP interface
-    void alarmDaemonUpdate( int, const QString &, const QCString & ) {}
-    void handleEvent( const QString &, const QString & ) {}
-    void handleEvent( const QString &iCalendarString );
+    void checkAlarms();    
 
   private:
     AlarmDockWindow *mDocker;  // the panel icon
     AlarmDialog *mAlarmDialog;
     QTimer mSuspendTimer;
+
+    KCal::CalendarResources *mCalendar;
+
+    QTimer mCheckTimer;
 };
 
 #endif
