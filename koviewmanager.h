@@ -93,23 +93,25 @@ class KOViewManager : public QObject
 
     void showEventView();
 
+    void connectTodoView( KOTodoView* todoView );
+
   private:
     CalendarView *mMainView;
 
     KOAgendaView    *mAgendaView;
     KOListView      *mListView;
-    KOMonthView     *mMonthView; 
+    KOMonthView     *mMonthView;
     KOTodoView      *mTodoView;
     KOWhatsNextView *mWhatsNextView;
     KOJournalView   *mJournalView;
     KOTimeSpanView  *mTimeSpanView;
-  
+
     KOrg::BaseView *mCurrentView;  // currently active event view
-    
+
     KOrg::BaseView *mLastEventView;
-    
+
     int mAgendaViewMode;
-  
+
 };
 
 #endif

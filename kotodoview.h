@@ -181,7 +181,7 @@ class KOTodoView : public KOrg::BaseView
     void itemStateChanged(QListViewItem *);
     void modified(bool);
     void setTodoModified(Todo*oldTodo, Todo*todo) {
-      emit todoModifiedSignal( oldTodo, todo, KOGlobals::UNKNOWN_MODIFIED ); }
+      emit todoChanged( oldTodo, todo); }
 
   signals:
     void newTodoSignal();

@@ -251,27 +251,7 @@ CalendarView::CalendarView( Calendar *calendar,
   connect( this, SIGNAL( configChanged() ),
            mDateNavigator, SLOT( updateConfig() ) );
 
-  connect( mTodoList, SIGNAL( newTodoSignal() ),
-           SLOT( newTodo() ) );
-  connect( mTodoList, SIGNAL( newSubTodoSignal( Todo *) ),
-           SLOT( newSubTodo( Todo * ) ) );
-  connect( mTodoList, SIGNAL( editTodoSignal( Todo * ) ),
-           SLOT( editTodo( Todo * ) ) );
-  connect( mTodoList, SIGNAL( showTodoSignal( Todo * ) ),
-           SLOT( showTodo( Todo *) ) );
-  connect( mTodoList, SIGNAL( deleteTodoSignal( Todo *) ),
-           SLOT( deleteTodo( Todo *) ) );
-  connect( this, SIGNAL( configChanged()), mTodoList, SLOT( updateConfig() ) );
-  connect( mTodoList, SIGNAL( purgeCompletedSignal() ),
-           SLOT( purgeCompleted() ) );
-  connect( mTodoList, SIGNAL( unSubTodoSignal() ),
-           SLOT( todo_unsub() ) );
-  connect( mTodoList, SIGNAL( todoModifiedSignal( Todo *, Todo *, int ) ),
-           SLOT( todoModified( Todo *, Todo *, int ) ) );
-  connect( mTodoList, SIGNAL( todoChanged( Todo*, Todo* ) ),
-           SLOT( todoChanged( Todo *, Todo* ) ) );
-  connect( mTodoList, SIGNAL( todoAdded( Todo * ) ),
-           SLOT( todoAdded( Todo * ) ) );
+  mViewManager->connectTodoView( mTodoList );
 
   connect( mFilterView, SIGNAL( filterChanged() ), SLOT( updateFilter() ) );
   connect( mFilterView, SIGNAL( editFilters() ), SLOT( editFilters() ) );
@@ -619,19 +599,22 @@ void CalendarView::eventDeleted( Event *event )
 
 void CalendarView::todoChanged( Todo *oldTodo, Todo *newTodo )
 {
-  updateTodoViews();
+  // use a QTimer here, because when marking todos finished using
+  // the checkbox, this slot gets called, but we cannot update the views
+  // because we're still insice KOTodoViewItem::stateChange
+  QTimer::singleShot(0, this, SLOT(updateTodoViews()));
   incidenceChanged( oldTodo, newTodo );
 }
 
 void CalendarView::todoAdded( Todo *todo )
 {
-  updateTodoViews();
+  QTimer::singleShot(0, this, SLOT(updateTodoViews()));
   incidenceAdded( todo );
 }
 
 void CalendarView::todoDeleted( Todo *todo )
 {
-  updateTodoViews();
+  QTimer::singleShot(0, this, SLOT(updateTodoViews()));
   incidenceDeleted( todo );
 }
 
@@ -952,7 +935,7 @@ void CalendarView::todoModified (Todo *event, Todo *oldEvent, int changed)
   }
   if (oldEvent) todoChanged( oldEvent, event );
 
-//  mViewManager->updateView();
+  mViewManager->updateView();
 }
 
 void CalendarView::appointment_show()

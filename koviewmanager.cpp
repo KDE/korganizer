@@ -296,37 +296,46 @@ void KOViewManager::showMonthView()
   showView(mMonthView);
 }
 
+void KOViewManager::connectTodoView( KOTodoView* todoView )
+{
+  if (!todoView) return;
+
+  // SIGNALS/SLOTS FOR TODO VIEW
+  connect( todoView, SIGNAL( newTodoSignal() ),
+           mMainView, SLOT( newTodo() ) );
+  connect( todoView, SIGNAL( newSubTodoSignal( Todo * ) ),
+           mMainView, SLOT( newSubTodo( Todo *) ) );
+  connect( todoView, SIGNAL( showTodoSignal( Todo *) ),
+           mMainView, SLOT( showTodo( Todo * ) ) );
+  connect( todoView, SIGNAL( editTodoSignal( Todo * ) ),
+           mMainView, SLOT( editTodo( Todo * ) ) );
+  connect( todoView, SIGNAL( deleteTodoSignal( Todo * ) ),
+           mMainView, SLOT( deleteTodo( Todo * ) ) );
+  connect( todoView, SIGNAL( purgeCompletedSignal() ),
+           mMainView, SLOT( purgeCompleted() ) );
+  connect( todoView, SIGNAL( unSubTodoSignal() ),
+           mMainView, SLOT( todo_unsub() ) );
+  connect( todoView, SIGNAL( todoChanged( Todo*, Todo* ) ),
+           mMainView, SLOT( todoChanged( Todo*, Todo* ) ) );
+  connect( todoView, SIGNAL( todoAdded( Todo*) ),
+           mMainView, SLOT( todoAdded( Todo* ) ) );
+  connect( todoView, SIGNAL( todoModifiedSignal( Todo *, Todo *, int ) ),
+           mMainView, SLOT( todoModified( Todo *, Todo *, int ) ) );
+
+  connect( mMainView, SIGNAL( configChanged() ),
+           todoView, SLOT( updateConfig() ) );
+}
+
 void KOViewManager::showTodoView()
 {
   if ( !mTodoView ) {
     mTodoView = new KOTodoView( mMainView->calendar(), mMainView->viewStack(),
                                 "KOViewManager::TodoView" );
     addView( mTodoView );
+    connectTodoView( mTodoView );
 
-    // SIGNALS/SLOTS FOR TODO VIEW
-    connect( mTodoView, SIGNAL( newTodoSignal() ),
-             mMainView, SLOT( newTodo() ) );
-    connect( mTodoView, SIGNAL( newSubTodoSignal( Todo * ) ),
-             mMainView, SLOT( newSubTodo( Todo *) ) );
-    connect( mTodoView, SIGNAL( showTodoSignal( Todo *) ),
-             mMainView, SLOT( showTodo( Todo * ) ) );
-    connect( mTodoView, SIGNAL( editTodoSignal( Todo * ) ),
-             mMainView, SLOT( editTodo( Todo * ) ) );
-    connect( mTodoView, SIGNAL( deleteTodoSignal( Todo * ) ),
-             mMainView, SLOT( deleteTodo( Todo * ) ) );
-    connect( mTodoView, SIGNAL( purgeCompletedSignal() ),
-             mMainView, SLOT( purgeCompleted() ) );
-    connect( mTodoView, SIGNAL( unSubTodoSignal() ),
-             mMainView, SLOT( todo_unsub() ) );
     connect( mTodoView, SIGNAL( incidenceSelected( Incidence * ) ),
              mMainView, SLOT( processMainViewSelection( Incidence * ) ) );
-    connect( mTodoView, SIGNAL( todoChanged( Todo*, Todo* ) ),
-             mMainView, SLOT( todoChanged( Todo*, Todo* ) ) );
-    connect( mTodoView, SIGNAL( todoAdded( Todo*) ),
-             mMainView, SLOT( todoAdded( Todo* ) ) );
-
-    connect( mMainView, SIGNAL( configChanged() ), mTodoView,
-             SLOT( updateConfig() ) );
 
     KConfig *config = KOGlobals::config();
     mTodoView->restoreLayout(config,"Todo View");
