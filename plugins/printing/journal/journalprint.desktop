@@ -2,7 +2,15 @@
 Encoding=UTF-8
 X-KDE-Library=libkorg_journalprint
 Name=Journal Print Style
-Comment=This journal allows you to print out journal entries (diary entries).
+Name[es]=Estilo de impresión del diario
+Name[et]=Žurnaali trükkimise stiil
+Name[it]=Stile di stampa a diario
+Name[nl]=Printstijl voor journaals
+Name[pt]=Estilo de Impressão em Diário
+Name[pt_BR]=Estilo de Impressão em Diário
+Name[ru]=Стиль печати журнала
+Name[sv]=Journal-utskriftsstil
+Comment=This plugin allows you to print out journal entries (diary entries).
 Comment[bg]=Приставката служи за печат на дневника.
 Comment[da]=Dette plugin gør at du kan udskrive journalindgange (dagbogsindgange).
 Comment[es]=Puede imprimir entradas del diario.
