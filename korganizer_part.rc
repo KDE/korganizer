@@ -95,8 +95,6 @@
       <Action name="configure_plugins" append="save_merge"/>
       <Action name="edit_filters" append="save_merge"/>
       <Action name="edit_categories" append="save_merge"/>
-      <Action name="korganizer_configure"/>
-      <Action name="korganizer_configure_shortcuts"/>
     </Menu>
     <Menu name="help"><text>&amp;Help</text>
       <Action name="show_intro"/>
