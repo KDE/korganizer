@@ -182,6 +182,9 @@ CalendarView::CalendarView(QWidget *parent,const char *name)
   connect(mTodoList, SIGNAL(deleteTodoSignal(Todo *)),
           this, SLOT(deleteTodo(Todo *)));
   connect(this, SIGNAL(configChanged()), mTodoList, SLOT(updateConfig()));
+  connect( mTodoList, SIGNAL( purgeCompletedSignal() ),
+           this, SLOT( purgeCompleted() ) );
+  
 
   connect(mFilterView,SIGNAL(filterChanged()),SLOT(updateFilter()));
   connect(mFilterView,SIGNAL(editFilters()),SLOT(editFilters()));
