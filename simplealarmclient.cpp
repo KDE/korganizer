@@ -50,17 +50,25 @@ void SimpleAlarmClient::startDaemon()
   if ( !mProcess ) {
     mProcess = new KProcess;
     *mProcess << "simplealarmdaemon";
-    mProcess->start();
+    if ( !mProcess->start() ) {
+      kdDebug() << "Failed to start process." << endl;
+    }
   }
 }
 
 bool SimpleAlarmClient::setCalendars( const QStringList &calendars )
 {
+  kdDebug() << "SimpleAlarmClient::setCalendars()" << endl;
+
   QFile f( mCalendarsFile );
-  if ( !f.open( IO_WriteOnly ) ) return false;
+  if ( !f.open( IO_WriteOnly ) ) {
+    kdDebug() << "Unable to open file '" << mCalendarsFile << "'" << endl;
+    return false;
+  }
   QTextStream ts( &f );
   QStringList::ConstIterator it;
   for ( it = calendars.begin(); it != calendars.end(); ++it ) {
+    kdDebug() << "CAL: " << *it << endl;
     ts << *it << "\n";
   }
   f.close();
