@@ -13,10 +13,7 @@ class QSpinBox;
 class QSlider;
 class KURLRequester;
 class QComboBox;
-class QPushButton;
-class QRadioButton;
 class QLineEdit;
-class QCheckBox;
 
 /** Dialog to change the korganizer configuration.
   */
@@ -35,10 +32,6 @@ class KOPrefsDialog : public KPrefsDialog
     void updateCategories();
 
   protected slots:
-    void selectTimeBarFont();
-    void selectMonthViewFont();
-    void selectAgendaViewFont();
-
     void selectCategoryColor();
     void updateCategoryColor();
 
@@ -68,33 +61,17 @@ class KOPrefsDialog : public KPrefsDialog
 
     QFrame *mPrinterTab;
   
-    QFrame *personalFrame;
     QLineEdit *nameEdit;
     QLineEdit *emailEdit;
   
-    QFrame *timeFrame;
     QComboBox *timeCombo;
     QComboBox *tzCombo;
   
-    QFrame *fontsFrame;
-    QFrame *colorsFrame;
-    QFrame *viewsFrame;
-    QFrame *displayFrame;
-    QFrame *printerFrame;
-
-    // font frame
-    QLabel *listFontLabel;
-    QLabel *agendaFontLabel;
-    QLabel *monthFontLabel;
-
     // widgets holding preferences data
     QLineEdit *mNameEdit;
     QLineEdit *mEmailEdit;
     QLineEdit *mAdditionalEdit;
-    QCheckBox *mBccCheck;
-    QCheckBox *mAutoSaveCheck;
     QSpinBox  *mAutoSaveIntervalSpin;
-    QCheckBox *mConfirmCheck;
     QComboBox *mHolidayCombo;
     QStringList mHolidayList;
   
@@ -103,20 +80,12 @@ class KOPrefsDialog : public KPrefsDialog
     QSpinBox     *mDefaultDurationSpin;
     QComboBox    *mAlarmTimeCombo;
 
-    QLabel *mTimeBarFont;
-    QLabel *mMonthViewFont;
-    QLabel *mAgendaViewFont;
-
     QFrame        *mCategoryColor;
     QComboBox     *mCategoryCombo;
     QDict<QColor> mCategoryDict;
 
     QSlider   *mHourSizeSlider;
-    QCheckBox *mEnableToolTipsCheck;
 
-    QComboBox    *mPrinterCombo;
-    QButtonGroup *mPaperSizeGroup;
-    QButtonGroup *mPaperOrientationGroup;
     KURLRequester *mPrintPreviewEdit;
 };
 

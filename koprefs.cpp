@@ -34,57 +34,69 @@ KOPrefs::KOPrefs() :
 
   KPrefsItem::setCurrentGroup("General");
 
-  addPrefsItem(new KPrefsItemBool("Enable Group Scheduling",
-                                  &mEnableGroupScheduling,false));
-  addPrefsItem(new KPrefsItemBool("Enable Project View",
-                                  &mEnableProjectView,false));
+  addItemBool("Enable Group Scheduling",&mEnableGroupScheduling,false);
+  addItemBool("Enable Project View",&mEnableProjectView,false);
+  addItemBool("Auto Save",&mAutoSave,false);
+  addItemInt("Auto Save Interval",&mAutoSaveInterval,10);
+  addItemBool("Confirm Deletes",&mConfirm,true);
+  addItemString("Archive File",&mArchiveFile);
+  addItemString("Html Export File",&mHtmlExportFile,
+      QDir::homeDirPath() + "/" + i18n("Default export file", "calendar.html"));
 
   KPrefsItem::setCurrentGroup("Personal Settings");
 
-  addPrefsItem(new KPrefsItemInt("Mail Client",&mMailClient,
-                                 MailClientKMail));
-  addPrefsItem(new KPrefsItemBool("Use Control Center Email",
-                                  &mEmailControlCenter,false));
+  addItemInt("Mail Client",&mMailClient,MailClientKMail);
+  addItemBool("Use Control Center Email",&mEmailControlCenter,false);
+  addItemBool("Bcc",&mBcc,false);
+
+  KPrefsItem::setCurrentGroup("Time & Date");
+
+  addItemString("Time Zone",&mTimeZone,"+0000");
+  addItemInt("Default Start Time",&mStartTime,10);
+  addItemInt("Default Duration",&mDefaultDuration,2);
+  addItemInt("Default Alarm Time",&mAlarmTime,0);
+  addItemInt("Daylight Savings",&mDaylightSavings,0);
 
   KPrefsItem::setCurrentGroup("AlarmDaemon");
 
-  addPrefsItem(new KPrefsItemBool("Autostart",&mAlarmdAutostart,true));
+  addItemBool("Autostart",&mAlarmdAutostart,true);
 
   KPrefsItem::setCurrentGroup("Calendar");
 
-  addPrefsItem(new KPrefsItemInt("Default Calendar Format",&mDefaultFormat,
-                                 FormatICalendar));
+  addItemInt("Default Calendar Format",&mDefaultFormat,FormatICalendar);
+
+  KPrefsItem::setCurrentGroup("Fonts");
+  addItemFont("TimeBar Font",&mTimeBarFont);
+  addItemFont("MonthView Font",&mMonthViewFont);
+  addItemFont("AgendaView Font",&mAgendaViewFont);
 
   KPrefsItem::setCurrentGroup("Colors");
 
-  addPrefsItem(new KPrefsItemColor("Holiday Color",&mHolidayColor,
-                                   defaultHolidayColor));
-  addPrefsItem(new KPrefsItemColor("Highlight Color",&mHighlightColor,
-                                   defaultHighlightColor));
-  addPrefsItem(new KPrefsItemColor("Event Color",&mEventColor,
-                                   mDefaultCategoryColor));
-  addPrefsItem(new KPrefsItemColor("Agenda Background Color",&mAgendaBgColor,
-                                   defaultAgendaBgColor));
-  addPrefsItem(new KPrefsItemColor("WorkingHours Color",&mWorkingHoursColor,
-                                   defaultWorkingHoursColor));
+  addItemColor("Holiday Color",&mHolidayColor,defaultHolidayColor);
+  addItemColor("Highlight Color",&mHighlightColor,defaultHighlightColor);
+  addItemColor("Event Color",&mEventColor,mDefaultCategoryColor);
+  addItemColor("Agenda Background Color",&mAgendaBgColor,defaultAgendaBgColor);
+  addItemColor("WorkingHours Color",&mWorkingHoursColor,defaultWorkingHoursColor);
 
   KPrefsItem::setCurrentGroup("Views");
 
-  addPrefsItem(new KPrefsItemBool("Show Daily Recurrences",&mDailyRecur,true));
-  addPrefsItem(new KPrefsItemBool("Show Weekly Recurrences",&mWeeklyRecur,
-                                  true));
-  addPrefsItem(new KPrefsItemBool("Enable ToolTips",&mEnableToolTips,false));
-  addPrefsItem(new KPrefsItemBool("Enable MonthView ScrollBars",
-                                  &mEnableMonthScroll,false));
+  addItemInt("Hour Size",&mHourSize,10);
+  addItemBool("Show Daily Recurrences",&mDailyRecur,true);
+  addItemBool("Show Weekly Recurrences",&mWeeklyRecur,true);
+  addItemBool("Enable ToolTips",&mEnableToolTips,false);
+  addItemBool("Enable MonthView ScrollBars",&mEnableMonthScroll,false);
 
-  addPrefsItem(new KPrefsItemInt("Day Begins",&mDayBegins,7));
-  addPrefsItem(new KPrefsItemInt("Working Hours Start",&mWorkingHoursStart,8));
-  addPrefsItem(new KPrefsItemInt("Working Hours End",&mWorkingHoursEnd,17));
-  addPrefsItem(new KPrefsItemBool("Exclude Holidays",&mExcludeHolidays,true));
-  addPrefsItem(new KPrefsItemBool("Exclude Saturdays",&mExcludeSaturdays,true));
+  addItemInt("Day Begins",&mDayBegins,7);
+  addItemInt("Working Hours Start",&mWorkingHoursStart,8);
+  addItemInt("Working Hours End",&mWorkingHoursEnd,17);
+  addItemBool("Exclude Holidays",&mExcludeHolidays,true);
+  addItemBool("Exclude Saturdays",&mExcludeSaturdays,true);
 
-  addPrefsItem(new KPrefsItemBool("Full View Month",&mFullViewMonth,false));
-  addPrefsItem(new KPrefsItemBool("Full View Todo",&mFullViewTodo,true));
+  addItemBool("Full View Month",&mFullViewMonth,false);
+  addItemBool("Full View Todo",&mFullViewTodo,true);
+
+  KPrefsItem::setCurrentGroup("Printer");
+  addItemString("Preview",&mPrintPreview,"kghostview");
 }
 
 
@@ -112,44 +124,18 @@ void KOPrefs::usrSetDefaults()
   // Default should be set a bit smarter, respecting username and locale
   // settings for example.
 
-  mAutoSave = false;
-  mAutoSaveInterval = 10;
-  mConfirm = true;
-
   KEMailSettings settings;
   mName = settings.getSetting(KEMailSettings::RealName);
   mEmail = settings.getSetting(KEMailSettings::RealName);
   fillMailDefaults();
-  mBcc = false;
 
-  mAdditional = "";
   mHoliday = KGlobal::locale()->country();
 
   mTimeZone = "+0000";
-  mStartTime = 10;
-  mDefaultDuration = 2;
-  mAlarmTime = 0;
-  mDaylightSavings = 0;
-
-//  mDayBegins = 8;
-  mHourSize = 10;
-//  mDailyRecur = true;
-//  mWeeklyRecur = true;
-//  mEnableToolTips = false;
 
   mTimeBarFont = mDefaultTimeBarFont;
   mMonthViewFont = mDefaultViewFont;
   mAgendaViewFont = mDefaultViewFont;
-
-//  mHolidayColor = mDefaultHolidayColor;
-//  mHighlightColor = mDefaultHighlightColor;
-//  mEventColor = mDefaultCategoryColor;
-//  mAgendaBgColor = mDefaultAgendaBgColor;
-
-  mPrinter = "";
-  mPaperSize = 0;
-  mPaperOrientation = 0;
-  mPrintPreview = "kghostview";
 
   setCategoryDefaults();
 }
@@ -176,134 +162,43 @@ void KOPrefs::setCategoryDefaults()
   }
 }
 
+
 void KOPrefs::usrReadConfig()
 {
-  kdDebug() << "KOPrefs::usrReadConfig()" << endl;
-
-  mConfig->setGroup("General");
-  mAutoSave = mConfig->readBoolEntry("Auto Save",false);
-  mAutoSaveInterval = mConfig->readNumEntry("Auto Save Interval",10);
-  mConfirm = mConfig->readBoolEntry("Confirm Deletes",true);
-  mCustomCategories = mConfig->readListEntry("Custom Categories");
+  config()->setGroup("General");
+  mCustomCategories = config()->readListEntry("Custom Categories");
   if (mCustomCategories.isEmpty()) setCategoryDefaults();
 
-  mArchiveFile = mConfig->readEntry("Archive File");
-  mHtmlExportFile = mConfig->readEntry("Html Export File",QDir::homeDirPath() + "/" +
-                                       i18n("Default export file", "calendar.html"));
-
-  mConfig->setGroup("Personal Settings");
-  mName = mConfig->readEntry("user_name","");
-  mEmail = mConfig->readEntry("user_email","");
+  config()->setGroup("Personal Settings");
+  mName = config()->readEntry("user_name","");
+  mEmail = config()->readEntry("user_email","");
   fillMailDefaults();
-  mAdditional = mConfig->readEntry("Additional","");
-  mBcc = mConfig->readBoolEntry("Bcc",false);
+  mHoliday = config()->readEntry("Holidays", KGlobal::locale()->country());
 
-  mHoliday = mConfig->readEntry("Holidays", KGlobal::locale()->country());
-
-  mConfig->setGroup("Time & Date");
-  mTimeZone = mConfig->readEntry("Time Zone","+0000");
-  mStartTime = mConfig->readNumEntry("Default Start Time",10);
-  mDefaultDuration = mConfig->readNumEntry("Default Duration",2);
-  mAlarmTime = mConfig->readNumEntry("Default Alarm Time",0);
-  mDaylightSavings = mConfig->readNumEntry("Daylight Savings", 0);
-
-  mConfig->setGroup("Views");
-//  mDayBegins = mConfig->readNumEntry("Day Begins",8);
-  mHourSize = mConfig->readNumEntry("Hour Size",10);
-//  mDailyRecur = mConfig->readBoolEntry("Show Daily Recurrences",true);
-//  mWeeklyRecur = mConfig->readBoolEntry("Show Weekly Recurrences",true);
-//  mEnableToolTips = mConfig->readBoolEntry("Enable ToolTips",false);
-
-  mConfig->setGroup("Fonts");
-  mTimeBarFont = mConfig->readFontEntry("TimeBar Font",&mDefaultTimeBarFont);
-  mMonthViewFont = mConfig->readFontEntry("MonthView Font",
-                                          &mDefaultViewFont);
-  mAgendaViewFont = mConfig->readFontEntry("AgendaView Font",
-                                          &mDefaultViewFont);
-
-  mConfig->setGroup("Colors");
-//  mHolidayColor = mConfig->readColorEntry("Holiday Color",
-//                                         &mDefaultHolidayColor);
-//  mHighlightColor = mConfig->readColorEntry("Highlight Color",
-//                                            &mDefaultHighlightColor);
-//  mEventColor = mConfig->readColorEntry("Event Color",
-//                                            &mDefaultCategoryColor);
-//  mAgendaBgColor = mConfig->readColorEntry("Agenda Background Color",
-//                                            &mDefaultAgendaBgColor);
-
-  mConfig->setGroup("Category Colors");
+  config()->setGroup("Category Colors");
   QStringList::Iterator it;
   for (it = mCustomCategories.begin();it != mCustomCategories.end();++it ) {
-    setCategoryColor(*it,mConfig->readColorEntry(*it,&mDefaultCategoryColor));
+    setCategoryColor(*it,config()->readColorEntry(*it,&mDefaultCategoryColor));
   }
-
-  mConfig->setGroup("Printer");
-  mPrinter = mConfig->readEntry("Printer Name",0);
-  mPaperSize = mConfig->readNumEntry("Paper Size",0);
-  mPaperOrientation = mConfig->readNumEntry("Paper Orientation",0);
-  mPrintPreview = mConfig->readEntry("Preview","kghostview");
-
-  kdDebug() << "KOPrefs::usrReadConfig() done" << endl;
 }
 
 
 void KOPrefs::usrWriteConfig()
 {
-//  kdDebug() << "KOPrefs::writeConfig()" << endl;
+  config()->setGroup("General");
+  config()->writeEntry("Custom Categories",mCustomCategories);
 
-  mConfig->setGroup("General");
-  mConfig->writeEntry("Auto Save",mAutoSave);
-  mConfig->writeEntry("Auto Save Interval",mAutoSaveInterval);
-  mConfig->writeEntry("Confirm Deletes",mConfirm);
-  mConfig->writeEntry("Custom Categories",mCustomCategories);
+  config()->setGroup("Personal Settings");
+  config()->writeEntry("user_name",mName);
+  config()->writeEntry("user_email",mEmail);
+  config()->writeEntry("Holidays",mHoliday);
 
-  mConfig->writeEntry("Archive File",mArchiveFile);
-  mConfig->writeEntry("Html Export File",mHtmlExportFile);
-
-  mConfig->setGroup("Personal Settings");
-  mConfig->writeEntry("user_name",mName);
-  mConfig->writeEntry("user_email",mEmail);
-  mConfig->writeEntry("Additional",mAdditional);
-  mConfig->writeEntry("Bcc",mBcc);
-  mConfig->writeEntry("Holidays",mHoliday);
-
-  mConfig->setGroup("Time & Date");
-  mConfig->writeEntry("Time Zone",mTimeZone);
-  mConfig->writeEntry("Default Start Time",mStartTime);
-  mConfig->writeEntry("Default Duration",mDefaultDuration);
-  mConfig->writeEntry("Default Alarm Time",mAlarmTime);
-  mConfig->writeEntry("Daylight Savings",mDaylightSavings);
-
-  mConfig->setGroup("Views");
-//  mConfig->writeEntry("Day Begins",mDayBegins);
-  mConfig->writeEntry("Hour Size",mHourSize);
-//  mConfig->writeEntry("Show Daily Recurrences",mDailyRecur);
-//  mConfig->writeEntry("Show Weekly Recurrences",mWeeklyRecur);
-//  mConfig->writeEntry("Enable ToolTips",mEnableToolTips);
-
-  mConfig->setGroup("Fonts");
-  mConfig->writeEntry("TimeBar Font",mTimeBarFont);
-  mConfig->writeEntry("MonthView Font",mMonthViewFont);
-  mConfig->writeEntry("AgendaView Font",mAgendaViewFont);
-
-  mConfig->setGroup("Colors");
-//  mConfig->writeEntry("Holiday Color",mHolidayColor);
-//  mConfig->writeEntry("Highlight Color",mHighlightColor);
-//  mConfig->writeEntry("Event Color",mEventColor);
-//  mConfig->writeEntry("Agenda Background Color",mAgendaBgColor);
-
-  mConfig->setGroup("Category Colors");
+  config()->setGroup("Category Colors");
   QDictIterator<QColor> it(mCategoryColors);
   while (it.current()) {
-    mConfig->writeEntry(it.currentKey(),*(it.current()));
+    config()->writeEntry(it.currentKey(),*(it.current()));
     ++it;
   }
-
-  mConfig->setGroup("Printer");
-  mConfig->writeEntry("Printer Name",mPrinter);
-  mConfig->writeEntry("Paper Size",mPaperSize);
-  mConfig->writeEntry("Paper Orientation",mPaperOrientation);
-  mConfig->writeEntry("Preview",mPrintPreview);
 }
 
 void KOPrefs::setCategoryColor(QString cat,const QColor & color)

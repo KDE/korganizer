@@ -49,10 +49,7 @@ KOPrefsDialog::KOPrefsDialog(QWidget *parent, char *name, bool modal) :
   setupFontsTab();
   setupColorsTab();
   setupViewsTab();
-  // Printer configuration is now done by KPrinter::setup()
-#if 1
   setupPrinterTab();
-#endif
 }
 
 
@@ -63,10 +60,8 @@ KOPrefsDialog::~KOPrefsDialog()
 
 void KOPrefsDialog::setupMainTab()
 {
-//  KIconEffect *iconeffect=KGlobal::iconLoader()->iconEffect();
   QFrame *topFrame = addPage(i18n("Personal"),0,
       DesktopIcon("identity",KIcon::SizeMedium));
-//    iconeffect->apply(QPixmap(user_xpm),KIcon::Desktop,KIcon::DefaultState));
 
   QGridLayout *topLayout = new QGridLayout(topFrame,6,2);
   topLayout->setSpacing(spacingHint());
@@ -81,24 +76,17 @@ void KOPrefsDialog::setupMainTab()
   mEmailEdit = new QLineEdit(topFrame);
   topLayout->addWidget(mEmailEdit,1,1);
 
-#if 0
-  topLayout->addWidget(new QLabel(i18n("Additional:"),topFrame),2,0);
-  mAdditionalEdit = new QLineEdit(topFrame);
-  topLayout->addWidget(mAdditionalEdit,2,1);
-#endif
-
   KPrefsWidBool *emailControlCenter =
-      new KPrefsWidBool(i18n("Use Email settings from Control Center"),
-                        &(KOPrefs::instance()->mEmailControlCenter),this,
-                        topFrame);
+      addWidBool(i18n("Use Email settings from Control Center"),
+                 &(KOPrefs::instance()->mEmailControlCenter),topFrame);
   topLayout->addMultiCellWidget(emailControlCenter->checkBox(),3,3,0,1);
   connect(emailControlCenter->checkBox(),SIGNAL(toggled(bool)),
           SLOT(toggleEmailSettings(bool)));
 
-  mBccCheck = new QCheckBox(i18n("Send copy to owner when mailing events"),
-                            topFrame);
-  topLayout->addMultiCellWidget(mBccCheck,4,4,0,1);
-
+  KPrefsWidBool *bcc =
+      addWidBool(i18n("Send copy to owner when mailing events"),
+                 &(KOPrefs::instance()->mBcc),topFrame);
+  topLayout->addMultiCellWidget(bcc->checkBox(),4,4,0,1);
 
   mHolidayList << QString::null;
   QStringList countryList = KGlobal::dirs()->findAllResources("data",
@@ -119,8 +107,8 @@ void KOPrefsDialog::setupMainTab()
                                            topFrame);
   topLayout->addMultiCellWidget(autoSaveGroup,6,6,0,1);
 
-  mAutoSaveCheck = new QCheckBox(i18n("Enable automatic saving of calendar"),
-                                 autoSaveGroup);
+  addWidBool(i18n("Enable automatic saving of calendar"),
+             &(KOPrefs::instance()->mAutoSave),autoSaveGroup);
 
   QHBox *intervalBox = new QHBox(autoSaveGroup);
   intervalBox->setSpacing(spacingHint());
@@ -129,34 +117,35 @@ void KOPrefsDialog::setupMainTab()
   mAutoSaveIntervalSpin = new QSpinBox(0,500,1,intervalBox);
 
 
-  mConfirmCheck = new QCheckBox(i18n("Confirm Deletes"),topFrame);
-  topLayout->addMultiCellWidget(mConfirmCheck,7,7,0,1);
+  KPrefsWidBool *confirmCheck =
+      addWidBool(i18n("Confirm Deletes"),&(KOPrefs::instance()->mConfirm),
+                 topFrame);
+  topLayout->addMultiCellWidget(confirmCheck->checkBox(),7,7,0,1);
+
 
   mEnableGroupScheduling =
-      new KPrefsWidBool(i18n("Enable Group Scheduling"),
-                        &(KOPrefs::instance()->mEnableGroupScheduling),this,
-                        topFrame);
+      addWidBool(i18n("Enable Group Scheduling"),
+                 &(KOPrefs::instance()->mEnableGroupScheduling),topFrame);
   topLayout->addWidget(mEnableGroupScheduling->checkBox(),8,0);
   connect(mEnableGroupScheduling->checkBox(),SIGNAL(clicked()),
           SLOT(warningGroupScheduling()));
 
   mEnableProjectView =
-      new KPrefsWidBool(i18n("Enable Project View"),
-                        &(KOPrefs::instance()->mEnableProjectView),this,
-                        topFrame);
+      addWidBool(i18n("Enable Project View"),
+                 &(KOPrefs::instance()->mEnableProjectView),topFrame);
   topLayout->addWidget(mEnableProjectView->checkBox(),9,0);
   connect(mEnableProjectView->checkBox(),SIGNAL(clicked()),
           SLOT(warningProjectView()));
 
   // Disable settings for experimental features
-  mEnableGroupScheduling->checkBox()->hide();
+//  mEnableGroupScheduling->checkBox()->hide();
 
   // Disable setting, because this feature now becomes stable
   mEnableProjectView->checkBox()->hide();
 
   KPrefsWidRadios *defaultFormatGroup =
-      new KPrefsWidRadios(i18n("Default Calendar Format"),
-                          &(KOPrefs::instance()->mDefaultFormat),this,topFrame);
+      addWidRadios(i18n("Default Calendar Format"),
+                   &(KOPrefs::instance()->mDefaultFormat),topFrame);
   defaultFormatGroup->addRadio(i18n("vCalendar"));
   defaultFormatGroup->addRadio(i18n("iCalendar"));
 
@@ -166,17 +155,16 @@ void KOPrefsDialog::setupMainTab()
   defaultFormatGroup->groupBox()->hide();
 
   KPrefsWidRadios *mailClientGroup =
-      new KPrefsWidRadios(i18n("Mail Client"),
-                          &(KOPrefs::instance()->mMailClient),this,topFrame);
+      addWidRadios(i18n("Mail Client"),&(KOPrefs::instance()->mMailClient),
+                   topFrame);
   mailClientGroup->addRadio(i18n("KMail"));
   mailClientGroup->addRadio(i18n("Sendmail"));
 
   topLayout->addMultiCellWidget(mailClientGroup->groupBox(),11,11,0,1);
 
   KPrefsWidBool *alarmdAutostart =
-      new KPrefsWidBool(i18n("Automatically Start Alarm Dameon on Login"),
-                        &(KOPrefs::instance()->mAlarmdAutostart),this,
-                        topFrame);
+      addWidBool(i18n("Automatically Start Alarm Dameon on Login"),
+                 &(KOPrefs::instance()->mAlarmdAutostart),topFrame);
   topLayout->addMultiCellWidget(alarmdAutostart->checkBox(),12,12,0,1);
 
   topLayout->setRowStretch(13,1);
@@ -237,32 +225,20 @@ void KOPrefsDialog::setupTimeTab()
   topLayout->addMultiCellWidget(workingHoursGroup,4,4,0,1);
 
   QHBox *workStartBox = new QHBox(workingHoursGroup);
-//  KPrefsWidTime *workingHoursStart =
-    new KPrefsWidTime(i18n("Daily Starting Hour:"),
-                      &(KOPrefs::instance()->mWorkingHoursStart),
-                      this,workStartBox);
-//  topLayout->addWidget(workingHoursStart->label(),6,0);
-//  topLayout->addWidget(workingHoursStart->spinBox(),6,1);
+
+  addWidTime(i18n("Daily Starting Hour:"),
+             &(KOPrefs::instance()->mWorkingHoursStart),workStartBox);
 
   QHBox *workEndBox = new QHBox(workingHoursGroup);
-//  KPrefsWidTime *workingHoursEnd =
-    new KPrefsWidTime(i18n("Daily Ending Hour:"),
-                      &(KOPrefs::instance()->mWorkingHoursEnd),
-                      this,workEndBox);
-//  topLayout->addWidget(workingHoursEnd->label(),7,0);
-//  topLayout->addWidget(workingHoursEnd->spinBox(),7,1);
 
-//  KPrefsWidBool *excludeHolidays =
-      new KPrefsWidBool(i18n("Exclude Holidays"),
-                        &(KOPrefs::instance()->mExcludeHolidays),this,
-                        workingHoursGroup);
-//  topLayout->addWidget(fullViewMonth->checkBox(),8,0);
+  addWidTime(i18n("Daily Ending Hour:"),
+             &(KOPrefs::instance()->mWorkingHoursEnd),workEndBox);
 
-//  KPrefsWidBool *excludeSaturdays =
-      new KPrefsWidBool(i18n("Exclude Saturdays"),
-                        &(KOPrefs::instance()->mExcludeSaturdays),this,
-                        workingHoursGroup);
-//  topLayout->addWidget(fullViewMonth->checkBox(),8,0);
+  addWidBool(i18n("Exclude Holidays"),
+             &(KOPrefs::instance()->mExcludeHolidays),workingHoursGroup);
+
+  addWidBool(i18n("Exclude Saturdays"),
+             &(KOPrefs::instance()->mExcludeSaturdays),workingHoursGroup);
 
   topLayout->setRowStretch(5,1);
 }
@@ -278,8 +254,8 @@ void KOPrefsDialog::setupViewsTab()
   topLayout->setMargin(marginHint());
 
   KPrefsWidTime *dayBegins =
-    new KPrefsWidTime(i18n("Day begins at:"),&(KOPrefs::instance()->mDayBegins),
-                      this,topFrame);
+    addWidTime(i18n("Day begins at:"),&(KOPrefs::instance()->mDayBegins),
+               topFrame);
   topLayout->addWidget(dayBegins->label(),0,0);
   topLayout->addWidget(dayBegins->spinBox(),0,1);
 
@@ -293,36 +269,33 @@ void KOPrefsDialog::setupViewsTab()
   hourSizeGroup->hide();
 
   KPrefsWidBool *dailyRecur =
-    new KPrefsWidBool(i18n("Show events that recur daily in Date Navigator"),
-                      &(KOPrefs::instance()->mDailyRecur),this,topFrame);
+    addWidBool(i18n("Show events that recur daily in Date Navigator"),
+               &(KOPrefs::instance()->mDailyRecur),topFrame);
   topLayout->addWidget(dailyRecur->checkBox(),2,0);
 
   KPrefsWidBool *weeklyRecur =
-    new KPrefsWidBool(i18n("Show events that recur weekly in Date Navigator"),
-                      &(KOPrefs::instance()->mWeeklyRecur),this,topFrame);
+    addWidBool(i18n("Show events that recur weekly in Date Navigator"),
+               &(KOPrefs::instance()->mWeeklyRecur),topFrame);
   topLayout->addWidget(weeklyRecur->checkBox(),3,0);
 
-  mEnableToolTipsCheck =
-      new QCheckBox(i18n("Enable ToolTips displaying summary of events"),
-                    topFrame);
-  topLayout->addWidget(mEnableToolTipsCheck,4,0);
+  KPrefsWidBool *enableToolTips =
+      addWidBool(i18n("Enable ToolTips displaying summary of events"),
+                 &(KOPrefs::instance()->mEnableToolTips),topFrame);
+  topLayout->addWidget(enableToolTips->checkBox(),4,0);
 
   KPrefsWidBool *enableMonthScroll =
-      new KPrefsWidBool(i18n("Enable Scrollbars in Month View cells"),
-                        &(KOPrefs::instance()->mEnableMonthScroll),this,
-                        topFrame);
+      addWidBool(i18n("Enable Scrollbars in Month View cells"),
+                 &(KOPrefs::instance()->mEnableMonthScroll),topFrame);
   topLayout->addWidget(enableMonthScroll->checkBox(),5,0);
 
   KPrefsWidBool *fullViewMonth =
-      new KPrefsWidBool(i18n("Month View uses full window"),
-                        &(KOPrefs::instance()->mFullViewMonth),this,
-                        topFrame);
+      addWidBool(i18n("Month View uses full window"),
+                 &(KOPrefs::instance()->mFullViewMonth),topFrame);
   topLayout->addWidget(fullViewMonth->checkBox(),8,0);
 
   KPrefsWidBool *fullViewTodo =
-      new KPrefsWidBool(i18n("Todo View uses full window"),
-                        &(KOPrefs::instance()->mFullViewTodo),this,
-                        topFrame);
+      addWidBool(i18n("Todo View uses full window"),
+                 &(KOPrefs::instance()->mFullViewTodo),topFrame);
   topLayout->addWidget(fullViewTodo->checkBox(),9,0);
 
   topLayout->setRowStretch(10,1);
@@ -338,59 +311,26 @@ void KOPrefsDialog::setupFontsTab()
   topLayout->setSpacing(spacingHint());
   topLayout->setMargin(marginHint());
 
-  mTimeBarFont = new QLabel(KGlobal::locale()->formatTime(QTime(12,34)),
-                            topFrame);
-  mTimeBarFont->setFrameStyle(QFrame::Panel|QFrame::Sunken);
-  topLayout->addWidget(mTimeBarFont,0,0);
+  KPrefsWidFont *timeBarFont =
+      addWidFont(KGlobal::locale()->formatTime(QTime(12,34)),i18n("Time Bar"),
+                 &(KOPrefs::instance()->mTimeBarFont),topFrame);
+  topLayout->addWidget(timeBarFont->preview(),0,0);
+  topLayout->addWidget(timeBarFont->button(),0,1);
 
-  QPushButton *buttonTimeBar = new QPushButton(i18n("Time Bar"),topFrame);
-  topLayout->addWidget(buttonTimeBar,0,1);
-  connect(buttonTimeBar,SIGNAL(clicked()),SLOT(selectTimeBarFont()));
+  KPrefsWidFont *monthViewFont =
+      addWidFont(KGlobal::locale()->formatTime(QTime(12,34)) + " " + i18n("Event Text"),
+                 i18n("Month View"),&(KOPrefs::instance()->mMonthViewFont),topFrame);
+  topLayout->addWidget(monthViewFont->preview(),1,0);
+  topLayout->addWidget(monthViewFont->button(),1,1);
 
-  mMonthViewFont = new QLabel(KGlobal::locale()->formatTime(QTime(12,34)) +
-                              " " + i18n("Event Text"),topFrame);
-  mMonthViewFont->setFrameStyle(QFrame::Panel|QFrame::Sunken);
-  topLayout->addWidget(mMonthViewFont,1,0);
-
-  QPushButton *buttonMonthView = new QPushButton(i18n("Month View"),topFrame);
-  topLayout->addWidget(buttonMonthView,1,1);
-  connect(buttonMonthView,SIGNAL(clicked()),SLOT(selectMonthViewFont()));
-
-  mAgendaViewFont = new QLabel(i18n("Event Text"),topFrame);
-  mAgendaViewFont->setFrameStyle(QFrame::Panel|QFrame::Sunken);
-  topLayout->addWidget(mAgendaViewFont,2,0);
-
-  QPushButton *buttonAgendaView = new QPushButton(i18n("Agenda View"),topFrame);
-  topLayout->addWidget(buttonAgendaView,2,1);
-  connect(buttonAgendaView,SIGNAL(clicked()),SLOT(selectAgendaViewFont()));
+  KPrefsWidFont *agendaViewFont =
+      addWidFont(i18n("Event Text"),i18n("Agenda View"),
+                 &(KOPrefs::instance()->mAgendaViewFont),topFrame);
+  topLayout->addWidget(agendaViewFont->preview(),2,0);
+  topLayout->addWidget(agendaViewFont->button(),2,1);
 
   topLayout->setRowStretch(3,1);
 }
-
-void KOPrefsDialog::selectTimeBarFont()
-{
-  QFont theFont(mTimeBarFont->font());
-  QString theText(mTimeBarFont->text());
-  KFontDialog::getFontAndText(theFont,theText);
-  mTimeBarFont->setFont(theFont);
-}
-
-void KOPrefsDialog::selectMonthViewFont()
-{
-  QFont theFont(mMonthViewFont->font());
-  QString theText(mMonthViewFont->text());
-  KFontDialog::getFontAndText(theFont,theText);
-  mMonthViewFont->setFont(theFont);
-}
-
-void KOPrefsDialog::selectAgendaViewFont()
-{
-  QFont theFont(mAgendaViewFont->font());
-  QString theText(mAgendaViewFont->text());
-  KFontDialog::getFontAndText(theFont,theText);
-  mAgendaViewFont->setFont(theFont);
-}
-
 
 void KOPrefsDialog::setupColorsTab()
 {
@@ -403,37 +343,36 @@ void KOPrefsDialog::setupColorsTab()
 
   // Holiday Color
   KPrefsWidColor *holidayColor =
-      new KPrefsWidColor(i18n("Holiday Color"),
-                         &(KOPrefs::instance()->mHolidayColor),this,topFrame);
+      addWidColor(i18n("Holiday Color"),
+                  &(KOPrefs::instance()->mHolidayColor),topFrame);
   topLayout->addWidget(holidayColor->preview(),0,0);
   topLayout->addWidget(holidayColor->button(),0,1);
 
   // Highlight Color
   KPrefsWidColor *highlightColor =
-      new KPrefsWidColor(i18n("Highlight Color"),
-                         &(KOPrefs::instance()->mHighlightColor),this,topFrame);
+      addWidColor(i18n("Highlight Color"),
+                  &(KOPrefs::instance()->mHighlightColor),topFrame);
   topLayout->addWidget(highlightColor->preview(),1,0);
   topLayout->addWidget(highlightColor->button(),1,1);
 
   // Event color
   KPrefsWidColor *eventColor =
-      new KPrefsWidColor(i18n("Default Event Color"),
-                         &(KOPrefs::instance()->mEventColor),this,topFrame);
+      addWidColor(i18n("Default Event Color"),
+                  &(KOPrefs::instance()->mEventColor),topFrame);
   topLayout->addWidget(eventColor->preview(),2,0);
   topLayout->addWidget(eventColor->button(),2,1);
 
   // agenda view background color
   KPrefsWidColor *agendaBgColor =
-      new KPrefsWidColor(i18n("Agenda View Background Color"),
-                         &(KOPrefs::instance()->mAgendaBgColor),this,topFrame);
+      addWidColor(i18n("Agenda View Background Color"),
+                  &(KOPrefs::instance()->mAgendaBgColor),topFrame);
   topLayout->addWidget(agendaBgColor->preview(),3,0);
   topLayout->addWidget(agendaBgColor->button(),3,1);
 
   // working hours color
   KPrefsWidColor *workingHoursColor =
-      new KPrefsWidColor(i18n("Working Hours Color"),
-                         &(KOPrefs::instance()->mWorkingHoursColor),this,
-                         topFrame);
+      addWidColor(i18n("Working Hours Color"),
+                  &(KOPrefs::instance()->mWorkingHoursColor),topFrame);
   topLayout->addWidget(workingHoursColor->preview(),4,0);
   topLayout->addWidget(workingHoursColor->button(),4,1);
 
@@ -485,76 +424,17 @@ void KOPrefsDialog::updateCategoryColor()
 void KOPrefsDialog::setupPrinterTab()
 {
   mPrinterTab = addPage(i18n("Printing"),0,
-                             DesktopIcon("fileprint",KIcon::SizeMedium));
+                        DesktopIcon("fileprint",KIcon::SizeMedium));
 
   QGridLayout *topLayout = new QGridLayout(mPrinterTab,5,2);
   topLayout->setSpacing(spacingHint());
   topLayout->setMargin(marginHint());
 
-  QLabel *printerNameLabel = new QLabel(i18n("Printer Name:"),mPrinterTab);
-  topLayout->addWidget(printerNameLabel,0,0);
-  mPrinterCombo = new QComboBox(mPrinterTab);
-  topLayout->addWidget(mPrinterCombo,0,1);
-
-  //lukas: TODO - replace by KPrinter capabilities in the future
-  QString prName;
-  QFile printcap("/etc/printcap");
-
-  if ( printcap.open(IO_ReadOnly) ) {
-    QTextStream t (&printcap);
-    while ( !t.eof() ){
-      QString whole_line = t.readLine();
-      whole_line = whole_line.stripWhiteSpace();
-      if (whole_line.left(1) != "#" &&
-	  whole_line.left(1) != ":" &&
-	  whole_line != "") { // ignore certain lines
-	QString pname(whole_line.mid(whole_line.find("|")+1,
-				     whole_line.length()));
-	if (pname.find("|") != -1) { // If there is no 2nd bar.XCXC
-	  // Try to account for poorly formatted lines
-	  prName = pname.left(pname.find("|"));
-	} else {
-	  prName = pname.left(pname.find(":"));
-	}
-	mPrinterCombo->insertItem(prName);
-      }
-    }
-    printcap.close();
-  }
-
-  mPaperSizeGroup = new QButtonGroup(1,Horizontal,i18n("Paper Size:"),
-                                     mPrinterTab);
-  (void)new QRadioButton(i18n("A4"),mPaperSizeGroup);
-  (void)new QRadioButton(i18n("B5"),mPaperSizeGroup);
-  (void)new QRadioButton(i18n("Letter"),mPaperSizeGroup);
-  (void)new QRadioButton(i18n("Legal"),mPaperSizeGroup);
-  (void)new QRadioButton(i18n("Executive"),mPaperSizeGroup);
-  topLayout->addMultiCellWidget(mPaperSizeGroup,1,1,0,1);
-
-  mPaperOrientationGroup = new QButtonGroup(1,Horizontal,
-                                            i18n("Paper Orientation:"),
-                                            mPrinterTab);
-  (void)new QRadioButton(i18n("Portrait"),mPaperOrientationGroup);
-  (void)new QRadioButton(i18n("Landscape"),mPaperOrientationGroup);
-  topLayout->addMultiCellWidget(mPaperOrientationGroup,2,2,0,1);
-
-  // CalPrinter doesn't allow to chose the orientation
-  mPaperOrientationGroup->hide();
-
   topLayout->addWidget(new QLabel(i18n("Preview Program:"),mPrinterTab),3,0);
   mPrintPreviewEdit = new KURLRequester(mPrinterTab);
   topLayout->addWidget(mPrintPreviewEdit,3,1);
 
-  // Add some pixels spacing to avoid scrollbars in icon field. Not safe, but
-  // works for me :-)
-  topLayout->addRowSpacing(4,27);
-
   topLayout->setRowStretch(4,1);
-
-  // KPrinter::setup() does this now
-  mPaperSizeGroup->hide();
-  mPrinterCombo->hide();
-  printerNameLabel->hide();
 }
 
 
@@ -584,14 +464,8 @@ void KOPrefsDialog::usrReadConfig()
 {
   mNameEdit->setText(KOPrefs::instance()->fullName());
   mEmailEdit->setText(KOPrefs::instance()->email());
-#if 0
-  mAdditionalEdit->setText(KOPrefs::instance()->mAdditional);
-#endif
-  mBccCheck->setChecked(KOPrefs::instance()->mBcc);
 
-  mAutoSaveCheck->setChecked(KOPrefs::instance()->mAutoSave);
   mAutoSaveIntervalSpin->setValue(KOPrefs::instance()->mAutoSaveInterval);
-  mConfirmCheck->setChecked(KOPrefs::instance()->mConfirm);
 
   setCombo(mHolidayCombo,KOPrefs::instance()->mHoliday, &mHolidayList);
 
@@ -601,68 +475,29 @@ void KOPrefsDialog::usrReadConfig()
   mDefaultDurationSpin->setValue(KOPrefs::instance()->mDefaultDuration);
   mAlarmTimeCombo->setCurrentItem(KOPrefs::instance()->mAlarmTime);
 
-//  mDayBeginsSpin->setValue(KOPrefs::instance()->mDayBegins);
   mHourSizeSlider->setValue(KOPrefs::instance()->mHourSize);
-//  mDailyRecurCheck->setChecked(KOPrefs::instance()->mDailyRecur);
-//  mWeeklyRecurCheck->setChecked(KOPrefs::instance()->mWeeklyRecur);
-  mEnableToolTipsCheck->setChecked(KOPrefs::instance()->mEnableToolTips);
 
-  mTimeBarFont->setFont(KOPrefs::instance()->mTimeBarFont);
-  mMonthViewFont->setFont(KOPrefs::instance()->mMonthViewFont);
-  mAgendaViewFont->setFont(KOPrefs::instance()->mAgendaViewFont);
-
-//  mHolidayColor->setBackgroundColor(KOPrefs::instance()->mHolidayColor);
-//  mHighlightColor->setBackgroundColor(KOPrefs::instance()->mHighlightColor);
-//  mEventColor->setBackgroundColor(KOPrefs::instance()->mEventColor);
-//  mAgendaBgColor->setBackgroundColor(KOPrefs::instance()->mAgendaBgColor);
-
-  // Printer configuration is now done by KPrinter::setup()
-#if 1
-  setCombo(mPrinterCombo,KOPrefs::instance()->mPrinter);
-
-  mPaperSizeGroup->setButton(KOPrefs::instance()->mPaperSize);
-  mPaperOrientationGroup->setButton(KOPrefs::instance()->mPaperOrientation);
   mPrintPreviewEdit->lineEdit()->setText(KOPrefs::instance()->mPrintPreview);
-#endif
 }
 
 
 void KOPrefsDialog::usrWriteConfig()
 {
-  kdDebug() << "KOPrefsDialog::usrWriteConfig()" << endl;
-
-  KOPrefs::instance()->mBcc = mBccCheck->isChecked();
-  KOPrefs::instance()->mAutoSave = mAutoSaveCheck->isChecked();
-  KOPrefs::instance()->mAutoSaveInterval = mAutoSaveIntervalSpin->value();
-  KOPrefs::instance()->mConfirm = mConfirmCheck->isChecked();
-
   KOPrefs::instance()->setFullName(mNameEdit->text());
   KOPrefs::instance()->setEmail(mEmailEdit->text());
-#if 0
-  KOPrefs::instance()->mAdditional = mAdditionalEdit->text();
-#endif
+
+  KOPrefs::instance()->mAutoSaveInterval = mAutoSaveIntervalSpin->value();
+
   KOPrefs::instance()->mHoliday = *mHolidayList.at(mHolidayCombo->currentItem());
   kdDebug() << "Holiday: " << KOPrefs::instance()->mHoliday << endl;
 
   KOPrefs::instance()->mTimeZone = mTimeZoneCombo->currentText();
+
   KOPrefs::instance()->mStartTime = mStartTimeSpin->value();
   KOPrefs::instance()->mDefaultDuration = mDefaultDurationSpin->value();
   KOPrefs::instance()->mAlarmTime = mAlarmTimeCombo->currentItem();
 
-//  KOPrefs::instance()->mDayBegins = mDayBeginsSpin->value();
   KOPrefs::instance()->mHourSize = mHourSizeSlider->value();
-//  KOPrefs::instance()->mDailyRecur = mDailyRecurCheck->isChecked();
-//  KOPrefs::instance()->mWeeklyRecur = mWeeklyRecurCheck->isChecked();
-  KOPrefs::instance()->mEnableToolTips = mEnableToolTipsCheck->isChecked();
-
-  KOPrefs::instance()->mTimeBarFont = mTimeBarFont->font();
-  KOPrefs::instance()->mMonthViewFont = mMonthViewFont->font();
-  KOPrefs::instance()->mAgendaViewFont = mAgendaViewFont->font();
-
-//  KOPrefs::instance()->mHolidayColor = mHolidayColor->backgroundColor();
-//  KOPrefs::instance()->mHighlightColor = mHighlightColor->backgroundColor();
-//  KOPrefs::instance()->mEventColor = mEventColor->backgroundColor();
-//  KOPrefs::instance()->mAgendaBgColor = mAgendaBgColor->backgroundColor();
 
   QDictIterator<QColor> it(mCategoryDict);
   while (it.current()) {
@@ -671,14 +506,7 @@ void KOPrefsDialog::usrWriteConfig()
   }
   mCategoryDict.clear();
 
-#if 1
-  KOPrefs::instance()->mPrinter = mPrinterCombo->currentText();
-  KOPrefs::instance()->mPaperSize =
-      mPaperSizeGroup->id(mPaperSizeGroup->selected());
-  KOPrefs::instance()->mPaperOrientation =
-      mPaperOrientationGroup->id(mPaperOrientationGroup->selected());
   KOPrefs::instance()->mPrintPreview = mPrintPreviewEdit->lineEdit()->text();
-#endif
 }
 
 void KOPrefsDialog::updateCategories()

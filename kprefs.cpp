@@ -104,6 +104,32 @@ void KPrefsItemColor::readConfig(KConfig *config)
 }
 
 
+KPrefsItemFont::KPrefsItemFont(const QString &name,
+                               QFont *reference,QFont defaultValue) :
+  KPrefsItem(name)
+{
+  mReference = reference;
+  mDefault = defaultValue;
+}
+
+void KPrefsItemFont::setDefault()
+{
+  *mReference = mDefault;
+}
+
+void KPrefsItemFont::writeConfig(KConfig *config)
+{
+  config->setGroup(mGroup);
+  config->writeEntry(mName,*mReference);
+}
+
+void KPrefsItemFont::readConfig(KConfig *config)
+{
+  config->setGroup(mGroup);
+  *mReference = config->readFontEntry(mName,&mDefault);
+}
+
+
 KPrefsItemString::KPrefsItemString(const QString &name,
                                    QString *reference,
                                    const QString &defaultValue) :
@@ -157,6 +183,11 @@ KPrefs::~KPrefs()
   }
 }
 
+KConfig *KPrefs::config()
+{
+  return mConfig;
+}
+
 void KPrefs::setDefaults()
 {
   KPrefsItem *item;
@@ -193,11 +224,36 @@ void KPrefs::writeConfig()
 //  kdDebug() << "KPrefs::writeConfig() done" << endl;
 }
 
-void KPrefs::addPrefsItem(KPrefsItem *item)
+void KPrefs::addItem(KPrefsItem *item)
 {
 //  kdDebug() << "KPrefs::addPrefsItem()" << endl;
 
   mItems.append(item);
 
 //  kdDebug() << "KPrefs::addPrefsItem(): done" << endl;
+}
+
+void KPrefs::addItemBool(const QString &key,bool *reference,bool defaultValue)
+{
+  addItem(new KPrefsItemBool(key,reference,defaultValue));
+}
+
+void KPrefs::addItemInt(const QString &key,int *reference,int defaultValue)
+{
+  addItem(new KPrefsItemInt(key,reference,defaultValue));
+}
+
+void KPrefs::addItemColor(const QString &key,QColor *reference,const QColor &defaultValue)
+{
+  addItem(new KPrefsItemColor(key,reference,defaultValue));
+}
+
+void KPrefs::addItemFont(const QString &key,QFont *reference,const QFont &defaultValue)
+{
+  addItem(new KPrefsItemFont(key,reference,defaultValue));
+}
+
+void KPrefs::addItemString(const QString &key,QString *reference,const QString &defaultValue)
+{
+  addItem(new KPrefsItemString(key,reference,defaultValue));
 }

@@ -16,8 +16,6 @@ class QSpinBox;
 class KPrefsWid
 {
   public:
-    KPrefsWid(KPrefsDialog *prefsDialog);
-    
     virtual void readConfig() = 0;
     virtual void writeConfig() = 0;
 };
@@ -25,8 +23,7 @@ class KPrefsWid
 class KPrefsWidBool : public KPrefsWid
 {
   public:
-    KPrefsWidBool(const QString &text,bool *reference,KPrefsDialog *prefsDialog,
-                  QWidget *parent);
+    KPrefsWidBool(const QString &text,bool *reference,QWidget *parent);
     
     QCheckBox *checkBox();
     
@@ -42,8 +39,7 @@ class KPrefsWidBool : public KPrefsWid
 class KPrefsWidTime : public KPrefsWid
 {
   public:
-    KPrefsWidTime(const QString &text,int *reference,KPrefsDialog *prefsDialog,
-                  QWidget *parent);
+    KPrefsWidTime(const QString &text,int *reference,QWidget *parent);
     
     QLabel *label();
     QSpinBox *spinBox();
@@ -58,13 +54,11 @@ class KPrefsWidTime : public KPrefsWid
     QSpinBox *mSpin;
 };
 
-
 class KPrefsWidColor : public QObject, public KPrefsWid
 {
     Q_OBJECT
   public:
-    KPrefsWidColor(const QString &text,QColor *reference,
-                   KPrefsDialog *prefsDialog,QWidget *parent);
+    KPrefsWidColor(const QString &text,QColor *reference,QWidget *parent);
     ~KPrefsWidColor();
     
     QFrame *preview();
@@ -83,11 +77,34 @@ class KPrefsWidColor : public QObject, public KPrefsWid
     QPushButton *mButton;
 };
 
+class KPrefsWidFont : public QObject, public KPrefsWid
+{
+    Q_OBJECT
+  public:
+    KPrefsWidFont(const QString &sampleText,const QString &buttonText,
+                  QFont *reference,QWidget *parent);
+    ~KPrefsWidFont();
+    
+    QFrame *preview();
+    QPushButton *button();
+    
+    void readConfig();
+    void writeConfig();
+
+  protected slots:
+    void selectFont();
+    
+  private:
+    QFont *mReference;
+    
+    QLabel *mPreview;
+    QPushButton *mButton;
+};
+
 class KPrefsWidRadios : public KPrefsWid
 {
   public:
-    KPrefsWidRadios(const QString &text,int *reference,
-                    KPrefsDialog *prefsDialog,QWidget *parent);
+    KPrefsWidRadios(const QString &text,int *reference,QWidget *parent);
     virtual ~KPrefsWidRadios();
 
     void addRadio(const QString &text);
@@ -107,8 +124,7 @@ class KPrefsWidRadios : public KPrefsWid
 class KPrefsWidString : public KPrefsWid
 {
   public:
-    KPrefsWidString(const QString &text,QString *reference,
-                    KPrefsDialog *prefsDialog,QWidget *parent);
+    KPrefsWidString(const QString &text,QString *reference,QWidget *parent);
     virtual ~KPrefsWidString();
 
     QLabel *label();
@@ -125,8 +141,9 @@ class KPrefsWidString : public KPrefsWid
 };
 
 
-/** Preferences dialog base class.
-  */
+/**
+  Preferences dialog base class.
+*/
 class KPrefsDialog : public KDialogBase
 {
     Q_OBJECT
@@ -135,7 +152,14 @@ class KPrefsDialog : public KDialogBase
     KPrefsDialog(KPrefs *prefs,QWidget *parent=0,char *name=0,bool modal=false);
     virtual ~KPrefsDialog();
 
-    void addPrefsWid(KPrefsWid *);
+    void addWid(KPrefsWid *);
+    KPrefsWidBool *addWidBool(const QString &text,bool *reference,QWidget *parent);
+    KPrefsWidTime *addWidTime(const QString &text,int *reference,QWidget *parent);
+    KPrefsWidColor *addWidColor(const QString &text,QColor *reference,QWidget *parent);
+    KPrefsWidRadios *addWidRadios(const QString &text,int *reference,QWidget *parent);
+    KPrefsWidString *addWidString(const QString &text,QString *reference,QWidget *parent);
+    KPrefsWidFont *addWidFont(const QString &sampleText,const QString &buttonText,
+                              QFont *reference,QWidget *parent);
 
   public slots:
     /** Set all widgets to default values */

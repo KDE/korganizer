@@ -103,9 +103,6 @@ class KOPrefs : public KPrefs
     bool    mFullViewMonth;
     bool    mFullViewTodo;
 
-    QString mPrinter;
-    int     mPaperSize;
-    int     mPaperOrientation;
     QString mPrintPreview;
 
     QStringList mCustomCategories;

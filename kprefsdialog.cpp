@@ -37,15 +37,8 @@
 #include "kprefsdialog.moc"
 
 
-KPrefsWid::KPrefsWid(KPrefsDialog *prefsDialog)
-{
-  prefsDialog->addPrefsWid(this);
-}
-
-
 KPrefsWidBool::KPrefsWidBool(const QString &text,bool *reference,
-                             KPrefsDialog *prefsDialog,QWidget *parent) :
-  KPrefsWid(prefsDialog)
+                             QWidget *parent)
 {
   mReference = reference;
 
@@ -69,8 +62,7 @@ QCheckBox *KPrefsWidBool::checkBox()
 
 
 KPrefsWidColor::KPrefsWidColor(const QString &text,QColor *reference,
-                               KPrefsDialog *prefsDialog,QWidget *parent) :
-  KPrefsWid(prefsDialog)
+                               QWidget *parent)
 {
   mReference = reference;
 
@@ -116,9 +108,54 @@ void KPrefsWidColor::selectColor()
 }
 
 
+KPrefsWidFont::KPrefsWidFont(const QString &sampleText,const QString &buttonText,
+                             QFont *reference,QWidget *parent)
+{
+  mReference = reference;
+
+  mPreview = new QLabel(sampleText,parent);
+  mPreview->setFrameStyle(QFrame::Panel|QFrame::Sunken);
+
+  mButton = new QPushButton(buttonText,parent);
+  connect(mButton,SIGNAL(clicked()),SLOT(selectFont()));
+}
+
+KPrefsWidFont::~KPrefsWidFont()
+{
+}
+
+void KPrefsWidFont::readConfig()
+{
+  mPreview->setFont(*mReference);
+}
+
+void KPrefsWidFont::writeConfig()
+{
+  *mReference = mPreview->font();
+}
+
+QFrame *KPrefsWidFont::preview()
+{
+  return mPreview;
+}
+
+QPushButton *KPrefsWidFont::button()
+{
+  return mButton;
+}
+
+void KPrefsWidFont::selectFont()
+{
+  QFont myFont(mPreview->font());
+  int result = KFontDialog::getFont(myFont);
+  if (result == KFontDialog::Accepted) {
+    mPreview->setFont(myFont);
+  }
+}
+
+
 KPrefsWidTime::KPrefsWidTime(const QString &text,int *reference,
-                             KPrefsDialog *prefsDialog,QWidget *parent) :
-  KPrefsWid(prefsDialog)
+                             QWidget *parent)
 {
   mReference = reference;
 
@@ -149,8 +186,7 @@ QSpinBox *KPrefsWidTime::spinBox()
 
 
 KPrefsWidRadios::KPrefsWidRadios(const QString &text,int *reference,
-                KPrefsDialog *prefsDialog,QWidget *parent) :
-  KPrefsWid(prefsDialog)
+                QWidget *parent)
 {
   mReference = reference;
 
@@ -183,8 +219,7 @@ void KPrefsWidRadios::writeConfig()
 
 
 KPrefsWidString::KPrefsWidString(const QString &text,QString *reference,
-                                 KPrefsDialog *prefsDialog,QWidget *parent) :
-  KPrefsWid(prefsDialog)
+                                 QWidget *parent)
 {
   mReference = reference;
   
@@ -226,17 +261,60 @@ KPrefsDialog::KPrefsDialog(KPrefs *prefs,QWidget *parent,char *name,bool modal) 
 // This seems to cause a crash on exit. Investigate later.
 //  mPrefsWids.setAutoDelete(true);
 
-  QObject::connect(this,SIGNAL(defaultClicked()),SLOT(setDefaults()));
-  QObject::connect(this,SIGNAL(cancelClicked()),SLOT(reject()));
+  connect(this,SIGNAL(defaultClicked()),SLOT(setDefaults()));
+  connect(this,SIGNAL(cancelClicked()),SLOT(reject()));
 }
 
 KPrefsDialog::~KPrefsDialog()
 {
 }
 
-void KPrefsDialog::addPrefsWid(KPrefsWid *wid)
+void KPrefsDialog::addWid(KPrefsWid *wid)
 {
   mPrefsWids.append(wid);
+}
+
+KPrefsWidBool *KPrefsDialog::addWidBool(const QString &text,bool *reference,QWidget *parent)
+{
+  KPrefsWidBool *w = new KPrefsWidBool(text,reference,parent);
+  addWid(w);
+  return w;
+}
+
+KPrefsWidTime *KPrefsDialog::addWidTime(const QString &text,int *reference,QWidget *parent)
+{
+  KPrefsWidTime *w = new KPrefsWidTime(text,reference,parent);
+  addWid(w);
+  return w;
+}
+
+KPrefsWidColor *KPrefsDialog::addWidColor(const QString &text,QColor *reference,QWidget *parent)
+{
+  KPrefsWidColor *w = new KPrefsWidColor(text,reference,parent);
+  addWid(w);
+  return w;
+}
+
+KPrefsWidRadios *KPrefsDialog::addWidRadios(const QString &text,int *reference,QWidget *parent)
+{
+  KPrefsWidRadios *w = new KPrefsWidRadios(text,reference,parent);
+  addWid(w);
+  return w;
+}
+
+KPrefsWidString *KPrefsDialog::addWidString(const QString &text,QString *reference,QWidget *parent)
+{
+  KPrefsWidString *w = new KPrefsWidString(text,reference,parent);
+  addWid(w);
+  return w;
+}
+
+KPrefsWidFont *KPrefsDialog::addWidFont(const QString &sampleText,const QString &buttonText,
+                                        QFont *reference,QWidget *parent)
+{
+  KPrefsWidFont *w = new KPrefsWidFont(sampleText,buttonText,reference,parent);
+  addWid(w);
+  return w;
 }
 
 void KPrefsDialog::setDefaults()

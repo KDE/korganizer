@@ -186,31 +186,6 @@ void CalPrinter::doPrint(int pt, QDate fd, QDate td)
 
 void CalPrinter::updateConfig()
 {
-  // printer name
-  QString pName = KOPrefs::instance()->mPrinter;
-  if (!pName.isEmpty())
-    mPrinter->setPrinterName(pName);
-
-  // paper size
-  int val;
-  val = KOPrefs::instance()->mPaperSize;
-  switch(val) {
-    case 0: mPrinter->setPageSize(KPrinter::A4); break;
-    case 1: mPrinter->setPageSize(KPrinter::B5); break;
-    case 2: mPrinter->setPageSize(KPrinter::Letter); break;
-    case 3: mPrinter->setPageSize(KPrinter::Legal); break;
-    case 4: mPrinter->setPageSize(KPrinter::Executive); break;
-  }
- 
-  // paper orientation
-  // ignored for now.
-  /*  val = config->readNumEntry("Paper Orientation", 1);
-  if (val == 0)
-    mPrinter->setOrientation(KPrinter::Portrait);
-  else 
-    mPrinter->setOrientation(KPrinter::Landscape);
-  */
-
   mStartHour = KOPrefs::instance()->mDayBegins;
 }
 

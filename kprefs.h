@@ -34,7 +34,7 @@ class KPrefsItemBool : public KPrefsItem {
     
     void setDefault();
     void readConfig(KConfig *);
-    void writeConfig(KConfig *);    
+    void writeConfig(KConfig *);
 
   private:
     bool *mReference;
@@ -48,7 +48,7 @@ class KPrefsItemInt : public KPrefsItem {
     
     void setDefault();
     void readConfig(KConfig *);
-    void writeConfig(KConfig *);    
+    void writeConfig(KConfig *);
 
   private:
     int *mReference;
@@ -69,6 +69,22 @@ class KPrefsItemColor : public KPrefsItem {
   private:
     QColor *mReference;
     QColor mDefault;
+};
+
+
+class KPrefsItemFont : public KPrefsItem {
+  public:
+    KPrefsItemFont(const QString &name,QFont *,
+                   QFont defaultValue=QFont("helvetica",12));
+    virtual ~KPrefsItemFont() {}
+    
+    void setDefault();
+    void readConfig(KConfig *);
+    void writeConfig(KConfig *);    
+
+  private:
+    QFont *mReference;
+    QFont mDefault;
 };
 
 
@@ -110,17 +126,23 @@ class KPrefs {
     /** Implemented by subclasses that write special config values */
     virtual void usrWriteConfig() {};
 
-//    void addPrefsItem(const QString &group,KPrefsItem *);
-    void addPrefsItem(KPrefsItem *);
+    void addItem(KPrefsItem *);
+    void addItemBool(const QString &key,bool *reference,
+                     bool defaultValue=false);
+    void addItemInt(const QString &key,int *reference,
+                    int defaultValue=0);
+    void addItemColor(const QString &key,QColor *reference,
+                      const QColor &defaultValue=QColor(128,128,128));
+    void addItemFont(const QString &key,QFont *reference,
+                     const QFont &defaultValue=QFont("helvetica",12));
+    void addItemString(const QString &key,QString *reference,
+                       const QString &defaultValue="");
 
-    KConfig *mConfig;  // pointer to KConfig object
-
-    /** Constructor disabled for public. Use instance() to create a KPrefs
-    object. */
-    KPrefs();
+    KConfig *config();
 
   private:
-//    QDict<QList<KPrefsItem> > mGroups;
+    KConfig *mConfig;  // pointer to KConfig object
+
     QList<KPrefsItem> mItems;
 };
 
