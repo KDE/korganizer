@@ -102,6 +102,9 @@ rc_DATA = korganizerui.rc korganizergsui.rc
 partdir   = $(kde_datadir)/korganizer
 part_DATA = korganizer_part.rc
 
+servicesdir = $(kde_servicesdir)
+services_DATA = webcal.protocol
+
 KDE_ICON = AUTO
 
 META_INCLUDES = $(srcdir)/interfaces/korganizer

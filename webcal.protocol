@@ -1,0 +1,10 @@
+[Protocol]
+exec=kio_http
+protocol=webcal
+input=none
+output=filesystem
+reading=true
+defaultMimetype=application/octet-stream
+determineMimetypeFromExtension=true
+Icon=www
+maxInstances=3
