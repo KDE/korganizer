@@ -60,6 +60,7 @@ JournalEntry::JournalEntry(Calendar *calendar,QWidget *parent) :
 
 JournalEntry::~JournalEntry()
 {
+  writeJournal();
 }
 
 void JournalEntry::setDate(const QDate &date)
@@ -97,9 +98,10 @@ bool JournalEntry::eventFilter( QObject *o, QEvent *e )
 {
 //  kdDebug(5850) << "JournalEntry::event received " << e->type() << endl;
 
-  if ( e->type() == QEvent::FocusOut ) {
+  if ( e->type() == QEvent::FocusOut || e->type() == QEvent::Hide || 
+       e->type() == QEvent::Close ) {
     writeJournal();
-  }
+  } 
   return QFrame::eventFilter( o, e );    // standard event processing
 }
 

@@ -58,13 +58,10 @@ class KOJournalView : public KOrg::BaseView
     void showIncidences( const Incidence::List & );
 
     void changeIncidenceDisplay( Incidence *, int );
-//  protected slots: 
-//    void resizeEvent( QResizeEvent * );
   protected:
     void clearEntries();
 
   private:
-//    QBoxLayout *mTopLayout;
     QScrollView *mSV;
     QVBox *mVBox;
     JournalEntry::List mEntries;

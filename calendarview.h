@@ -227,6 +227,13 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     /** Delete the supplied incidence. It calls the correct deleteXXX method*/
     void deleteIncidence( Incidence * );
 
+    /** Create an editor for the supplied Journal. */
+    //void editJournal( Journal * );
+    /** Delete the supplied journal. */
+    void deleteJournal( Journal * );
+    /** Create a read-only viewer dialog for the supplied event. */
+    void showJournal( Journal * );
+
     /** Create an editor for the supplied event. */
     void editEvent( Event * );
     /** Delete the supplied event. */
@@ -518,7 +525,7 @@ class ShowIncidenceVisitor : public CalendarViewVisitor
   protected:
     bool visit( Event *event ) { mView->showEvent( event ); return true; }
     bool visit( Todo *todo ) { mView->showTodo( todo ); return true; }
-    bool visit( Journal * ) { return false; }
+    bool visit( Journal *journal ) { mView->showJournal( journal ); return true; }
 };
 
 class EditIncidenceVisitor : public CalendarViewVisitor
@@ -526,6 +533,7 @@ class EditIncidenceVisitor : public CalendarViewVisitor
   protected:
     bool visit( Event *event ) { mView->editEvent( event ); return true; }
     bool visit( Todo *todo ) { mView->editTodo( todo ); return true; }
+    // TODO: find a dialog way to edit a journal
     bool visit( Journal * ) { return false; }
 };
 
@@ -534,7 +542,7 @@ class DeleteIncidenceVisitor : public CalendarViewVisitor
   protected:
     bool visit( Event *event ) { mView->deleteEvent( event ); return true; }
     bool visit( Todo *todo ) { mView->deleteTodo( todo ); return true; }
-    bool visit( Journal * ) { return false; }
+    bool visit( Journal *journal ) { mView->deleteJournal( journal ); return true; }
 };
 
 

@@ -28,6 +28,7 @@
 
 #include <libkcal/event.h>
 #include <libkcal/todo.h>
+#include <libkcal/journal.h>
 
 #include <kiconloader.h>
 #include <klocale.h>
@@ -154,6 +155,13 @@ void KOEventViewer::appendTodo( Todo *todo )
   setText( mText );
 }
 
+void KOEventViewer::appendJournal( Journal *journal )
+{
+  addTag( "h1", i18n("Journal for %1").arg( journal->dtStartDateStr( false ) ) );
+  addTag( "p", journal->description() );
+  setText( mText );
+}
+
 void KOEventViewer::formatCategories( Incidence *event )
 {
   if ( !event->categoriesStr().isEmpty() ) {
@@ -269,6 +277,12 @@ void KOEventViewer::setEvent( Event *event )
 {
   clearEvents();
   appendEvent( event );
+}
+  
+void KOEventViewer::setJournal( Journal *journal )
+{
+  clearEvents();
+  appendJournal( journal );
 }
 
 void KOEventViewer::clearEvents( bool now )

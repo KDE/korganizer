@@ -63,6 +63,11 @@ void KOEventViewerDialog::setTodo( Todo *todo )
   mEventViewer->setTodo( todo );
 }
 
+void KOEventViewerDialog::setJournal( Journal *journal )
+{
+  mEventViewer->setJournal( journal );
+}
+
 void KOEventViewerDialog::appendEvent( Event *event )
 {
   mEventViewer->appendEvent(event);
@@ -71,6 +76,11 @@ void KOEventViewerDialog::appendEvent( Event *event )
 void KOEventViewerDialog::appendTodo( Todo *todo )
 {
   mEventViewer->appendTodo( todo );
+}
+
+void KOEventViewerDialog::appendJournal( Journal *journal )
+{
+  mEventViewer->appendJournal( journal );
 }
 
 void KOEventViewerDialog::addText( const QString &text )

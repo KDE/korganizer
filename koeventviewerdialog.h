@@ -47,9 +47,11 @@ class KOEventViewerDialog : public KDialogBase
 
     void setEvent( Event *event );
     void setTodo( Todo *event );
+    void setJournal( Journal *journal );
 
     void appendEvent( Event *event );
     void appendTodo( Todo *todo );
+    void appendJournal( Journal *journal );
 
     void addText( const QString &text );
 

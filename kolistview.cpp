@@ -159,7 +159,8 @@ bool ListItemVisitor::visit(Journal *t)
 {
   static const QPixmap jrnalPxmp = KOGlobals::self()->smallIcon("journal");
   mItem->setPixmap(0,jrnalPxmp);
-  mItem->setText( 0, t->description() );
+  // Just use the first line
+  mItem->setText( 0, t->description().section( "\n", 0, 0 ) );
   mItem->setText( 3, t->dtStartDateStr() );
 
   return true;

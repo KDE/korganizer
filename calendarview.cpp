@@ -1015,6 +1015,13 @@ void CalendarView::showTodo(Todo *event)
   eventViewer->show();
 }
 
+void CalendarView::showJournal(Journal *journal)
+{
+  KOEventViewerDialog *eventViewer = new KOEventViewerDialog(this);
+  eventViewer->setJournal(journal);
+  eventViewer->show();
+}
+
 void CalendarView::appointment_show()
 {
   Incidence *incidence = selectedIncidence();
@@ -1099,6 +1106,40 @@ void CalendarView::deleteTodo(Todo *todo)
       }
     }
   }
+}
+
+void CalendarView::deleteJournal(Journal *journal)
+{
+  if ( !journal ) {
+    KNotifyClient::beep();
+    return;
+  }
+  if (KOPrefs::instance()->mConfirm && (!KOPrefs::instance()->mUseGroupwareCommunication ||
+                                        KOPrefs::instance()->email() == journal->organizer())) {
+    switch (msgItemDelete()) {
+      case KMessageBox::Continue: // OK
+        bool doDelete = true;
+        if( KOPrefs::instance()->mUseGroupwareCommunication ) {
+          doDelete = KOGroupware::instance()->sendICalMessage( this, KCal::Scheduler::Cancel, journal, true );
+        }
+        if( doDelete ) {
+          incidenceToBeDeleted( journal );
+          calendar()->deleteJournal( journal );
+          incidenceDeleted( journal );
+        }
+        break;
+    } // switch
+  } else {
+      bool doDelete = true;
+      if( KOPrefs::instance()->mUseGroupwareCommunication ) {
+        doDelete = KOGroupware::instance()->sendICalMessage( this, KCal::Scheduler::Cancel, journal, true );
+      }
+      if( doDelete ) {
+        incidenceToBeDeleted( journal );
+        calendar()->deleteJournal( journal );
+        incidenceDeleted( journal );
+      }
+    }
 }
 
 void CalendarView::deleteEvent(Event *anEvent)

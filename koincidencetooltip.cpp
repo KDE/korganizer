@@ -104,9 +104,12 @@ QString ToolTipVisitor::dateRangeText( Todo*todo )
   return ret;
 }
 
-QString ToolTipVisitor::dateRangeText( Journal* )
+QString ToolTipVisitor::dateRangeText( Journal*journal )
 {
   QString ret;
+  if (journal->dtStart().isValid() ) {
+    ret += "<br>" + i18n("<i>Date:</i>&nbsp;%1").arg( journal->dtStartDateStr( false ) );
+  }
   return ret;
 }
 
