@@ -41,12 +41,13 @@ class PluginDialog : public KDialogBase
 
   protected slots:
     void slotOk();
-    
+    void slotCancel();
     void configure();
 
     void selectionChanged( QListViewItem* );
 
   private:
+    void buildList();
     QListView *mListView;
     CalendarView *mMainView;
 };

@@ -44,9 +44,9 @@ class PluginItem : public QCheckListItem {
       QCheckListItem( parent, service->name(), QCheckListItem::CheckBox ), mService( service )
     {
     }
-    
-    KService::Ptr service() { return mService; } 
-    
+
+    KService::Ptr service() { return mService; }
+
   private:
     KService::Ptr mService;
 };
@@ -67,19 +67,7 @@ PluginDialog::PluginDialog( QWidget *parent )
   topLayout->addWidget( mListView );
   connect( mListView, SIGNAL( selectionChanged() ), SLOT( checkSelection() ) );
 
-  KTrader::OfferList plugins = KOCore::self()->availablePlugins();
-  plugins += KOCore::self()->availableParts();
-  
-  QStringList selectedPlugins = KOPrefs::instance()->mSelectedPlugins;
-  
-  KTrader::OfferList::ConstIterator it;
-  for( it = plugins.begin(); it != plugins.end(); ++it ) {
-    QCheckListItem *item = new PluginItem( mListView, *it );
-    if ( selectedPlugins.find( (*it)->desktopEntryName() ) !=
-                               selectedPlugins.end() ) {
-      item->setOn( true );
-    }
-  }
+  buildList();
 
   connect( mListView, SIGNAL( selectionChanged( QListViewItem* ) ),
            this, SLOT( selectionChanged( QListViewItem* ) ) );
@@ -93,6 +81,30 @@ PluginDialog::PluginDialog( QWidget *parent )
 
 PluginDialog::~PluginDialog()
 {
+}
+
+void PluginDialog::slotCancel()
+{
+    buildList();
+    reject();
+}
+
+void PluginDialog::buildList()
+{
+    mListView->clear();
+    KTrader::OfferList plugins = KOCore::self()->availablePlugins();
+    plugins += KOCore::self()->availableParts();
+
+    QStringList selectedPlugins = KOPrefs::instance()->mSelectedPlugins;
+
+    KTrader::OfferList::ConstIterator it;
+    for( it = plugins.begin(); it != plugins.end(); ++it ) {
+        QCheckListItem *item = new PluginItem( mListView, *it );
+        if ( selectedPlugins.find( (*it)->desktopEntryName() ) !=
+                               selectedPlugins.end() ) {
+            item->setOn( true );
+        }
+    }
 }
 
 void PluginDialog::slotOk()
