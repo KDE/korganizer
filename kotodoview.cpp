@@ -751,7 +751,8 @@ void KOTodoView::showItem( QListViewItem *item, const QPoint &, int )
 void KOTodoView::popupMenu( QListViewItem *item, const QPoint &, int column )
 {
   mActiveItem = static_cast<KOTodoViewItem *>( item );
-  if ( mActiveItem && mActiveItem->todo() ) {
+  if ( mActiveItem && mActiveItem->todo() &&
+       !mActiveItem->todo()->isReadOnly() ) {
     bool editable = !mActiveItem->todo()->isReadOnly();
     mItemPopupMenu->setItemEnabled( ePopupEdit, editable );
     mItemPopupMenu->setItemEnabled( ePopupDelete, editable );
