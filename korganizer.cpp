@@ -331,10 +331,19 @@ void KOrganizer::file_open()
   QString defaultPath = locateLocal("appdata", "");
   url = KFileDialog::getOpenURL(defaultPath,"*.vcs",this);
 
-  if (openURL(url)) {
-    setTitle();
-    mRecent->addURL(url);
-    setActive(false);
+  if (!mCalendarView->isModified() && mFile.isEmpty()) {
+    if (openURL(url)) {
+      setTitle();
+      mRecent->addURL(url);
+      setActive(false);
+    }
+  } else {
+    KOrganizer *korg = new KOrganizer;
+    korg->show();
+    if (korg->openURL(url)) {
+      korg->setTitle();
+      mRecent->addURL(url);
+    }
   }
 }
 
@@ -636,8 +645,10 @@ bool KOrganizer::closeURL()
 
   mCalendarView->closeCalendar();
   if (mURL.isLocalFile()) mLastFile = mFile;
+  else mLastFile = "";
   mURL="";
   mFile="";
+  setActive(false);
   
   KIO::NetAccess::removeTempFile( mFile );
 
@@ -763,10 +774,8 @@ void KOrganizer::toggleToolBar()
 
 void KOrganizer::saveProperties(KConfig *config)
 {
-  qDebug("KOrganizer::saveProperties()");
-  config->writeEntry("Calendar",mLastFile);
   if (mURL.isLocalFile()) {
-    config->writeEntry("Calendar",mFile);
+    config->writeEntry("Calendar",mLastFile);
   }
 }
 

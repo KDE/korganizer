@@ -19,6 +19,7 @@
 #include "kdateedit.h"
 #include "koevent.h"
 #include "calobject.h"
+#include "koprefs.h"
 
 #include "koarchivedlg.h"
 #include "koarchivedlg.moc"
@@ -44,7 +45,7 @@ ArchiveDialog::ArchiveDialog(CalObject *cal,QWidget *parent, const char *name)
   fileBox->setSpacing(spacingHint());
   topLayout->addMultiCellWidget(fileBox,1,1,0,1);
   (void)new QLabel(i18n("Archive file:"),fileBox);
-  mArchiveFile = new KURLRequester (fileBox);
+  mArchiveFile = new KURLRequester (KOPrefs::instance()->mArchiveFile,fileBox);
   mArchiveFile->fileDialog()->setMode(KFile::File);
   mArchiveFile->fileDialog()->setFilter("*vcs|vCalendar Files");
 }
@@ -56,25 +57,6 @@ ArchiveDialog::~ArchiveDialog()
 // Archive old events
 void ArchiveDialog::slotUser1()
 {
-/*
-  QString str = mArchiveFile->lineEdit()->text();
-  if (str.isEmpty()) {
-    KMessageBox::sorry(this,i18n("The archive file name is not valid.\n"));
-    return;
-  }
-
-  qDebug("str: %s",str.latin1());
-  KURL destUrl;
-  destUrl.setPath(str);
-  qDebug("url: %s",destUrl.prettyURL().latin1());
-  QString filename = destUrl.fileName();
-  if (filename.right(4) != ".vcs") {
-    filename.append(".vcs");
-    destUrl.setFileName(filename);
-  }
-  qDebug("url: %s",destUrl.prettyURL().latin1());
-*/
-
   // Get destination URL
   KURL destUrl = mArchiveFile->url();
   if (destUrl.isMalformed()) {
@@ -165,6 +147,8 @@ void ArchiveDialog::slotUser1()
     }
   }
 
+  KOPrefs::instance()->mArchiveFile = destUrl.url();
+
   KIO::NetAccess::removeTempFile(archiveFile);
    
   // Delete archived events from calendar    
@@ -172,16 +156,6 @@ void ArchiveDialog::slotUser1()
     mCalendar->deleteEvent(ev);
   }
   emit eventsDeleted();
-
-#if 0
-  // NetAccess::upload deletes the contents of the file. This is a bug!
-  QString testFile = "/home/corni/tmp/piep";
-  KURL testUrl;
-  testUrl.setPath(testFile);
-  if (!KIO::NetAccess::upload(testFile,testUrl)) {
-    qDebug("test upload failed");
-  }
-#endif
 
   accept();
 }

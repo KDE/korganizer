@@ -532,7 +532,7 @@ void KOEditorGeneralEvent::readEvent(KOEvent *event)
 
 void KOEditorGeneralEvent::writeEvent(KOEvent *event)
 {
-  qDebug("KOEditorGeneralEvent::writeEvent()");
+//  qDebug("KOEditorGeneralEvent::writeEvent()");
 
   QDate tmpDate;
   QTime tmpTime;
@@ -564,20 +564,12 @@ void KOEditorGeneralEvent::writeEvent(KOEvent *event)
   } else {
     event->setFloats(false);
 
-    qDebug("---end dt");
-    
     // set date/time end
     tmpDate = endDateEdit->getDate();
-    qDebug("-----1");
     tmpTime = endTimeEdit->getTime();
-    qDebug("-----2");
     tmpDT.setDate(tmpDate);
-    qDebug("-----3");
     tmpDT.setTime(tmpTime);
-    qDebug("-----4");
     event->setDtEnd(tmpDT);
-
-    qDebug("---start dt");
 
     // set date/time start
     tmpDate = startDateEdit->getDate();
@@ -586,8 +578,6 @@ void KOEditorGeneralEvent::writeEvent(KOEvent *event)
     tmpDT.setTime(tmpTime);
     event->setDtStart(tmpDT);
   } // check for float
-
-  qDebug("---Alarm");
 
   // alarm stuff
   if (alarmButton->isChecked()) {
@@ -620,7 +610,7 @@ void KOEditorGeneralEvent::writeEvent(KOEvent *event)
   // we will have to change this to suit.
   event->setTransparency(freeTimeCombo->currentItem());
 
-  qDebug("KOEditorGeneralEvent::writeEvent() done");
+//  qDebug("KOEditorGeneralEvent::writeEvent() done");
 }
 
 void KOEditorGeneralEvent::setDuration()
@@ -712,6 +702,19 @@ bool KOEditorGeneralEvent::validateInput()
 
   if (!endDateEdit->inputIsValid()) {
     kapp->beep();
+    return false;
+  }
+
+  QDateTime startDt,endDt;
+  startDt.setDate(startDateEdit->getDate());
+  endDt.setDate(endDateEdit->getDate());
+  if (!noTimeButton->isChecked()) {
+    startDt.setTime(startTimeEdit->getTime());
+    endDt.setTime(endTimeEdit->getTime());
+  }
+
+  if (startDt > endDt) {
+    KMessageBox::sorry(this,"You must specify a valid time");
     return false;
   }
 

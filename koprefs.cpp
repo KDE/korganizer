@@ -1,11 +1,6 @@
 // $Id$
 
-#include "config.h"
-
-//#include <pwd.h>
-//#include <sys/types.h>
-//#include <unistd.h>
-//#include <netdb.h>
+#include <qdir.h>
 
 #include "koprefs.h"
 
@@ -123,6 +118,10 @@ void KOPrefs::readConfig()
   mCustomCategories = mConfig->readListEntry("Custom Categories");
   if (mCustomCategories.isEmpty()) setCategoryDefaults();
 
+  mArchiveFile = mConfig->readEntry("Archive File");
+  mHtmlExportFile = mConfig->readEntry("Html Export File",QDir::homeDirPath() +
+                                       "/calendar.html");
+
   mConfig->setGroup("Personal Settings");
   mName = mConfig->readEntry("user_name","");
   mEmail = mConfig->readEntry("user_email","");
@@ -185,6 +184,9 @@ void KOPrefs::writeConfig()
   mConfig->writeEntry("Auto Save Interval",mAutoSaveInterval);
   mConfig->writeEntry("Confirm Deletes",mConfirm);
   mConfig->writeEntry("Custom Categories",mCustomCategories);
+
+  mConfig->writeEntry("Archive File",mArchiveFile);
+  mConfig->writeEntry("Html Export File",mHtmlExportFile);
 
   mConfig->setGroup("Personal Settings");
   mConfig->writeEntry("user_name",mName);

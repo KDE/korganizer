@@ -28,6 +28,7 @@
 
 #include "calobject.h"
 #include "kdateedit.h"
+#include "koprefs.h"
 
 ExportWebDialog::ExportWebDialog (CalObject *cal, QWidget *parent,
                                   const char *name) :
@@ -77,7 +78,7 @@ void ExportWebDialog::setupGeneralPage()
 
   mCbEvent = new QCheckBox(i18n("Event List"), typeGroup);
   mCbTodo = new QCheckBox(i18n("To-Do List"), typeGroup);
-  mCbTodo->setChecked(true);  
+  mCbTodo->setChecked(true);
 
   QGroupBox *destGroup = new QVGroupBox(i18n("Destination"),mGeneralPage);
   topLayout->addWidget(destGroup);
@@ -85,11 +86,8 @@ void ExportWebDialog::setupGeneralPage()
   new QLabel(i18n("Output File:"),destGroup);
 
   QHBox *outputFileLayout = new QHBox(destGroup);
-  mConfig = new KConfig(locate("config","korganizerrc"));
-  mConfig->setGroup("General");
-  QString str = mConfig->readEntry("Export HTML URL",
-                                      QDir::homeDirPath() + "/calendar.html");
-  mOutputFileEdit = new QLineEdit(str,outputFileLayout);
+  mOutputFileEdit = new QLineEdit(KOPrefs::instance()->mHtmlExportFile,
+                                  outputFileLayout);
   QPushButton *browseButton = new QPushButton(i18n("Browse"),outputFileLayout);
   QObject::connect(browseButton, SIGNAL(clicked()),
                    this, SLOT(browseOutputFile()));
@@ -228,9 +226,7 @@ void ExportWebDialog::exportWebPage()
 
   KURL dest(mOutputFileEdit->text());
   // Remember destination.
-  mConfig->setGroup("General");
-  mConfig->writeEntry("Export HTML URL",mOutputFileEdit->text());
-  mConfig->sync();
+  KOPrefs::instance()->mHtmlExportFile = mOutputFileEdit->text();
 
   qDebug ("ExportWebDialog::exportWebPage() move");
   

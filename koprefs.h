@@ -83,6 +83,9 @@ class KOPrefs
 
     void setCategoryColor(QString cat,const QColor & color);
     QColor *categoryColor(QString cat);
+
+    QString mArchiveFile;
+    QString mHtmlExportFile;
     
   private:
     QDict<QColor> mCategoryColors;

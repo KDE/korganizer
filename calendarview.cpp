@@ -795,8 +795,6 @@ void CalendarView::appointment_new()
     to = from;
   }
 
-  qDebug("StartTime: %d",KOPrefs::instance()->mStartTime);
-
   newEvent(QDateTime(from, QTime(KOPrefs::instance()->mStartTime,0,0)),
 	   QDateTime(to, QTime(KOPrefs::instance()->mStartTime +
                      KOPrefs::instance()->mDefaultDuration,0,0)));

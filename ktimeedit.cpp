@@ -36,7 +36,10 @@ KTimeEdit::~KTimeEdit()
 
 QTime KTimeEdit::getTime()
 {
-  return KGlobal::locale()->readTime(currentText());
+  qDebug("KTimeEdit::getTime()");
+  QTime time = KGlobal::locale()->readTime(currentText());
+  qDebug("KTimeEdit::getTime(): %s",time.toString().latin1());
+  return time;
 }
 
 QSizePolicy  KTimeEdit::sizePolicy() const
@@ -105,7 +108,9 @@ void KTimeEdit::keyPressEvent(QKeyEvent *qke)
   switch(qke->key()) {
   case Key_Enter:
   case Key_Return:
-    validateEntry();
+    mTime = getTime();
+    emit timeChanged(mTime);
+//    validateEntry();
     break;
   case Key_Down:
     addTime(QTime(0,15,0));

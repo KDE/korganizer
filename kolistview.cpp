@@ -232,7 +232,7 @@ KOListViewItem *KOListView::getItemForEvent(KOEvent *event)
 {
   KOListViewItem *item = (KOListViewItem *)mListView->firstChild();
   while (item) {
-    qDebug ("Item %s found",item->text(0).latin1());
+//    qDebug ("Item %s found",item->text(0).latin1());
     if (item->event() == event) return item;
     item = (KOListViewItem *)item->nextSibling();
   }  
