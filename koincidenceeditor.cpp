@@ -39,9 +39,10 @@
 #include "koincidenceeditor.h"
 #include "koincidenceeditor.moc"
 
-KOIncidenceEditor::KOIncidenceEditor(const QString &caption,Calendar *calendar) :
-  KDialogBase(Tabbed,caption,Ok|Apply|Cancel|Default|User1,Ok,0,0,
-              false,false,i18n("Delete"))
+KOIncidenceEditor::KOIncidenceEditor( const QString &caption, 
+                                      Calendar *calendar, QWidget *parent ) :
+  KDialogBase( Tabbed, caption, Ok | Apply | Cancel | Default | User1, Ok,
+               parent, 0, false, false, i18n("Delete") )
 {
   mCalendar = calendar;
 

@@ -38,8 +38,8 @@
 #include "kotodoeditor.h"
 #include "kotodoeditor.moc"
 
-KOTodoEditor::KOTodoEditor(Calendar *calendar) :
-  KOIncidenceEditor(i18n("Edit To-Do"),calendar)
+KOTodoEditor::KOTodoEditor( Calendar *calendar, QWidget *parent ) :
+  KOIncidenceEditor( i18n("Edit To-Do"), calendar, parent )
 {
   mTodo = 0;
   mRelatedTodo = 0;

@@ -49,7 +49,7 @@ class KOEventEditor : public KOIncidenceEditor
     /**
       Construct new event editor.
     */
-    KOEventEditor( Calendar *calendar);
+    KOEventEditor( Calendar *calendar, QWidget *parent );
     virtual ~KOEventEditor(void);
 
     void init();

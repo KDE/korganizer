@@ -45,8 +45,9 @@ class KOIncidenceEditor : public KDialogBase
     /**
       Construct new IncidenceEditor.
     */
-    KOIncidenceEditor(const QString &caption,Calendar *calendar);
-    virtual ~KOIncidenceEditor(void);
+    KOIncidenceEditor( const QString &caption, Calendar *calendar,
+                       QWidget *parent );
+    virtual ~KOIncidenceEditor();
 
     /** Initialize editor. This function creates the tab widgets. */
     virtual void init() = 0;

@@ -193,7 +193,8 @@ void KODialogManager::showPluginDialog()
 
 KOEventEditor *KODialogManager::getEventEditor()
 {
-  KOEventEditor *eventEditor = new KOEventEditor(mMainView->calendar());
+  KOEventEditor *eventEditor = new KOEventEditor( mMainView->calendar(),
+                                                  mMainView );
 
   connect(eventEditor,SIGNAL(eventAdded(Event *)),
           mMainView,SLOT(eventAdded(Event *)));
@@ -218,7 +219,8 @@ KOEventEditor *KODialogManager::getEventEditor()
 
 KOTodoEditor *KODialogManager::getTodoEditor()
 {
-  KOTodoEditor *todoEditor = new KOTodoEditor(mMainView->calendar());
+  KOTodoEditor *todoEditor = new KOTodoEditor( mMainView->calendar(),
+                                               mMainView );
 
   connect(mCategoryEditDialog,SIGNAL(categoryConfigChanged()),
           todoEditor,SLOT(updateCategoryConfig()));

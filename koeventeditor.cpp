@@ -40,8 +40,8 @@
 #include "koeventeditor.h"
 #include "koeventeditor.moc"
 
-KOEventEditor::KOEventEditor(Calendar *calendar) :
-  KOIncidenceEditor(i18n("Edit Event"),calendar)
+KOEventEditor::KOEventEditor( Calendar *calendar, QWidget *parent ) :
+  KOIncidenceEditor( i18n("Edit Event"), calendar, parent )
 {
   mEvent = 0;
 }

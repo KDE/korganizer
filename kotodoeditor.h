@@ -43,8 +43,8 @@ class KOTodoEditor : public KOIncidenceEditor
     /**
       Constructs a new todo editor.
     */  
-    KOTodoEditor(Calendar *calendar);
-    virtual ~KOTodoEditor(void);
+    KOTodoEditor( Calendar *calendar, QWidget *parent );
+    virtual ~KOTodoEditor();
 
     void init();
   
