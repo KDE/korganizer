@@ -115,13 +115,18 @@ RecurWeekly::RecurWeekly( QWidget *parent, const char *name ) :
 
   QHBox *dayBox = new QHBox( this );
   topLayout->addWidget( dayBox, 1, AlignVCenter );
-  // TODO: Respect start of week setting
+  // Respect start of week setting
+  int weekStart=KGlobal::locale()->weekStartDay();
   for ( int i = 0; i < 7; ++i ) {
-    QString weekDayName = KGlobal::locale()->weekDayName( i + 1, true );
+    // i is the nr of the combobox, not the day of week!
+    // label=(i+weekStart+6)%7 + 1;
+    // index in CheckBox array(=day): label-1
+    QString weekDayName = KGlobal::locale()->weekDayName(
+      (i + weekStart + 6)%7 + 1, true );
     if ( KOPrefs::instance()->mCompactDialogs ) {
       weekDayName = weekDayName.left( 1 );
     }
-    mDayBoxes[ i ] = new QCheckBox( weekDayName, dayBox );
+    mDayBoxes[ (i + weekStart + 6)%7 ] = new QCheckBox( weekDayName, dayBox );
   }
 
   topLayout->addStretch( 1 );
