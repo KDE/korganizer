@@ -221,6 +221,8 @@ void KODialogManager::showArchiveDialog()
     mArchiveDialog = new ArchiveDialog(mMainView->calendar(),mMainView);
     connect(mArchiveDialog,SIGNAL(eventsDeleted()),
             mMainView,SLOT(updateView()));
+    connect(mArchiveDialog,SIGNAL(autoArchivingSettingsModified()),
+            mMainView,SLOT(slotAutoArchivingSettingsModified()));
   }
   mArchiveDialog->show();
   mArchiveDialog->raise();

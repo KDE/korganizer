@@ -148,7 +148,7 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
       signal is emitted with 0 as argument.
     */
     void incidenceSelected( Incidence * );
-    /** Emitted, when a todoitem is selected or deselected. 
+    /** Emitted, when a todoitem is selected or deselected.
         the connected slots enables/disables the corresponding menu items */
     void todoSelected( bool );
     void subtodoSelected( bool );
@@ -169,6 +169,9 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     void statusMessage( const QString & );
 
     void calendarViewExpanded( bool );
+
+    /** Emitted when auto-archiving options were modified */
+    void autoArchivingSettingsModified();
 
   public slots:
     /** options dialog made a changed to the configuration. we catch this
@@ -266,7 +269,7 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     /**
       Using the KConfig associated with the kapp variable, read in the
       settings from the config file.
-      
+
       You have to call setCalendar before calling readSettings.
     */
     void readSettings();
@@ -415,6 +418,8 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
 
     void slotCalendarChanged();
 
+    void slotAutoArchivingSettingsModified() { emit autoArchivingSettingsModified(); }
+
     void importQtopia( const QString &categoriesFile,
                        const QString &datebookFile,
                        const QString &tasklistFile );
@@ -428,7 +433,7 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     // returns KMsgBox::yesNoCancel()
     int msgCalModified();
 
-    /** Adapt navigation units correpsonding to step size of navigation of the
+    /** Adapt navigation units corresponding to step size of navigation of the
      * current view.
      */
     void adaptNavigationUnits();

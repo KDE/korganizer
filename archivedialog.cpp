@@ -21,7 +21,7 @@
     without including the source code for Qt in the source distribution.
 */
 
-// ArchiveDialog -- archive/delete past appointments.
+// ArchiveDialog -- archive/delete past events.
 
 #include <qlabel.h>
 #include <qlayout.h>
@@ -33,28 +33,24 @@
 #include <klocale.h>
 #include <kurlrequester.h>
 #include <kmessagebox.h>
-#include <kglobal.h>
 #include <kfiledialog.h>
 #include <kurl.h>
-#include <ktempfile.h>
-#include <kio/netaccess.h>
 #include <klineedit.h>
 #include <kactivelabel.h>
-
-#include <libkcal/event.h>
-#include <libkcal/calendar.h>
-#include <libkcal/calendarlocal.h>
-#include <libkcal/filestorage.h>
 
 #include <libkdepim/kdateedit.h>
 
 #include "koprefs.h"
 
 #include "archivedialog.h"
+#include "eventarchiver.h"
+#include <knuminput.h>
+#include <qbuttongroup.h>
+#include <qradiobutton.h>
 #include "archivedialog.moc"
 
 ArchiveDialog::ArchiveDialog(Calendar *cal,QWidget *parent, const char *name)
-  : KDialogBase (Plain,i18n("Archive/Delete Past Appointments"),
+  : KDialogBase (Plain,i18n("Archive/Delete Past Events"),
                  User1|Cancel,User1,parent,name,false,true,
                  i18n("&Archive"))
 {
@@ -65,7 +61,7 @@ ArchiveDialog::ArchiveDialog(Calendar *cal,QWidget *parent, const char *name)
   topLayout->setSpacing(spacingHint());
 
   KActiveLabel *descLabel = new KActiveLabel(
-    i18n("Archiving saves old appointments into the given file and "
+    i18n("Archiving saves old events into the given file and "
          "then deletes them in the current calendar. If the archive file "
          "already exists they will be added. "
          "(<a href=\"whatsthis:In order to add an archive "
@@ -76,16 +72,50 @@ ArchiveDialog::ArchiveDialog(Calendar *cal,QWidget *parent, const char *name)
     topFrame);
   topLayout->addWidget(descLabel);
 
+  QButtonGroup* radioBG = new QButtonGroup( this );
+  radioBG->hide(); // just for the exclusive behavior
+
   QHBoxLayout *dateLayout = new QHBoxLayout(0);
-  QLabel *dateLabel = new QLabel(i18n("A&ppointments older than:"),topFrame);
-  dateLayout->addWidget(dateLabel);
+  mArchiveOnceRB = new QRadioButton(i18n("Archive now events older than:"),topFrame);
+  dateLayout->addWidget(mArchiveOnceRB);
+  radioBG->insert(mArchiveOnceRB);
   mDateEdit = new KDateEdit(topFrame);
   QWhatsThis::add(mDateEdit,
-    i18n("The age of the appointments to archive. All older appointments "
-         "will be saved and deleted, the newer will be kept."));
-  dateLabel->setBuddy(mDateEdit);
+    i18n("The date before which events should be archived. All older events will "
+         "be saved and deleted, the newer (and events exactly on that date) will be kept."));
   dateLayout->addWidget(mDateEdit);
   topLayout->addLayout(dateLayout);
+  connect( mArchiveOnceRB, SIGNAL(toggled(bool)),
+           mDateEdit, SLOT(setEnabled(bool)) );
+
+  // Checkbox, numinput and combo for auto-archiving
+  // (similar to kmail's mExpireFolderCheckBox/mReadExpiryTimeNumInput in kmfolderdia.cpp)
+  QHBox* autoArchiveHBox = new QHBox(topFrame);
+  topLayout->addWidget(autoArchiveHBox);
+  mAutoArchiveRB = new QRadioButton(i18n("Automaticall&y archive events older than:"), autoArchiveHBox);
+  radioBG->insert(mAutoArchiveRB);
+  QWhatsThis::add(mAutoArchiveRB,
+    i18n("If this feature is enabled, KOrganizer will regularly check if events have to be archived. "
+         "This means you won't need to use this dialog box again, except to change the settings."));
+
+  mExpiryTimeNumInput = new KIntNumInput(autoArchiveHBox);
+  mExpiryTimeNumInput->setRange(1, 500, 1, false);
+  mExpiryTimeNumInput->setEnabled(false);
+  mExpiryTimeNumInput->setValue(7);
+  connect( mAutoArchiveRB, SIGNAL(toggled(bool)),
+           mExpiryTimeNumInput, SLOT(setEnabled(bool)) );
+  QWhatsThis::add(mExpiryTimeNumInput,
+    i18n("The age of the events to archive. All older events "
+         "will be saved and deleted, the newer will be kept."));
+
+  mExpiryUnitsComboBox = new QComboBox(autoArchiveHBox);
+  // Those items must match the "Expiry Unit" enum in the kcfg file!
+  mExpiryUnitsComboBox->insertItem(i18n("Day(s)"));
+  mExpiryUnitsComboBox->insertItem(i18n("Week(s)"));
+  mExpiryUnitsComboBox->insertItem(i18n("Month(s)"));
+  mExpiryUnitsComboBox->setEnabled(false);
+  connect( mAutoArchiveRB, SIGNAL(toggled(bool)),
+           mExpiryUnitsComboBox, SLOT(setEnabled(bool)) );
 
   QHBoxLayout *fileLayout = new QHBoxLayout(0);
   fileLayout->setSpacing(spacingHint());
@@ -95,8 +125,8 @@ ArchiveDialog::ArchiveDialog(Calendar *cal,QWidget *parent, const char *name)
   mArchiveFile->setMode(KFile::File);
   mArchiveFile->setFilter(i18n("*.vcs|vCalendar Files"));
   QWhatsThis::add(mArchiveFile,
-    i18n("The path of the archive. The appointments will be added to the "
-         "archive file, so any appointments that are already in the file "
+    i18n("The path of the archive. The events will be added to the "
+         "archive file, so any events that are already in the file "
          "will not be modified or deleted. You can later load or merge the "
          "file like any other calendar. It is not saved in a special "
          "format, it uses the vCalendar format. "));
@@ -107,14 +137,29 @@ ArchiveDialog::ArchiveDialog(Calendar *cal,QWidget *parent, const char *name)
   mDeleteCb = new QCheckBox(i18n("&Delete only, do not save"),
                             topFrame);
   QWhatsThis::add(mDeleteCb,
-    i18n("Select this option to delete old appointments without saving them. "
-         "It is not possible to recover the appointments later."));
+    i18n("Select this option to delete old events without saving them. "
+         "It is not possible to recover the events later."));
   topLayout->addWidget(mDeleteCb);
   connect(mDeleteCb, SIGNAL(toggled(bool)), mArchiveFile, SLOT(setDisabled(bool)));
   connect(mDeleteCb, SIGNAL(toggled(bool)), this, SLOT(slotEnableUser1()));
   connect(mArchiveFile->lineEdit(),SIGNAL(textChanged ( const QString & )),
           this,SLOT(slotEnableUser1()));
+
+  // Load settings from KOPrefs
+  mExpiryTimeNumInput->setValue( KOPrefs::instance()->mExpiryTime );
+  mExpiryUnitsComboBox->setCurrentItem( KOPrefs::instance()->mExpiryUnit );
+  mDeleteCb->setChecked( KOPrefs::instance()->mArchiveAction == KOPrefs::deleteEvents );
+
   enableButton(KDialogBase::User1,!mArchiveFile->lineEdit()->text().isEmpty());
+
+  // The focus should go to a useful field by default, not to the top richtext-label
+  if ( KOPrefs::instance()->mAutoArchive ) {
+    mAutoArchiveRB->setChecked( true );
+    mAutoArchiveRB->setFocus();
+  } else {
+    mArchiveOnceRB->setChecked( true );
+    mArchiveOnceRB->setFocus();
+  }
 }
 
 ArchiveDialog::~ArchiveDialog()
@@ -131,151 +176,43 @@ void ArchiveDialog::slotEnableUser1()
 // Archive old events
 void ArchiveDialog::slotUser1()
 {
+  EventArchiver archiver;
+  connect( &archiver, SIGNAL( eventsDeleted() ), this, SLOT( slotEventsDeleted() ) );
+
+  KOPrefs::instance()->mAutoArchive = mAutoArchiveRB->isChecked();
+  KOPrefs::instance()->mExpiryTime = mExpiryTimeNumInput->value();
+  KOPrefs::instance()->mExpiryUnit = mExpiryUnitsComboBox->currentItem();
+
   if (mDeleteCb->isChecked()) {
-    deleteOldEvents();
-    return;
-  }
-
-  // Get destination URL
-  KURL destUrl ( mArchiveFile->url() );
-  if ( !destUrl.isValid() ) {
-    KMessageBox::sorry(this,i18n("The archive file name is not valid.\n"));
-    return;
-  }
-  // Force filename to be ending with vCalendar extension
-  QString filename = destUrl.fileName();
-  if (filename.right(4) != ".vcs" && filename.right(4) != ".ics") {
-    filename.append(".ics");
-    destUrl.setFileName(filename);
-  }
-
-  // Get events to be archived
-  Event::List events = mCalendar->events( QDate( 1800, 1, 1 ),
-                                          mDateEdit->date().addDays( -1 ),
-                                          true );
-  if ( events.count() == 0 ) {
-    KMessageBox::sorry(this,i18n("There are no events before %1")
-        .arg(KGlobal::locale()->formatDate(mDateEdit->date())));
-    return;
-  }
-
-  FileStorage storage( mCalendar );
-
-  // Save current calendar to disk
-  KTempFile tmpFile;
-  tmpFile.setAutoDelete(true);
-  storage.setFileName( tmpFile.name() );
-  if ( !storage.save() ) {
-    kdDebug(5850) << "ArchiveDialog::slotUser1(): Can't save calendar to temp file" << endl;
-    return;
-  }
-
-  // Duplicate current calendar by loading in new calendar object
-  CalendarLocal archiveCalendar( KOPrefs::instance()->mTimeZoneId );
-
-  FileStorage archiveStore( &archiveCalendar );
-  archiveStore.setFileName( tmpFile.name() );
-  if (!archiveStore.load()) {
-    kdDebug(5850) << "ArchiveDialog::slotUser1(): Can't load calendar from temp file" << endl;
-    return;
-  }
-
-  // Strip active events from calendar so that only events to be archived
-  // remain.
-  Event::List activeEvents = archiveCalendar.events( mDateEdit->date(),
-                                                     QDate( 3000, 1, 1 ),
-                                                     false );
-  Event::List::ConstIterator it;
-  for( it = activeEvents.begin(); it != activeEvents.end(); ++it ) {
-    archiveCalendar.deleteEvent( *it );
-  }
-
-  // Get or create the archive file
-  QString archiveFile;
-
-  if ( KIO::NetAccess::exists( destUrl, true, this ) ) {
-    if( !KIO::NetAccess::download( destUrl, archiveFile, this ) ) {
-      kdDebug(5850) << "ArchiveDialog::slotUser1(): Can't download archive file" << endl;
-      return;
-    }
-    // Merge with events to be archived.
-    archiveStore.setFileName( archiveFile );
-    if ( !archiveStore.load() ) {
-      kdDebug(5850) << "ArchiveDialog::slotUser1(): Can't merge with archive file" << endl;
-      return;
-    }
-/*
-    QPtrList<Event> es = archiveCalendar.events(QDate(1800,1,1),
-                                                QDate(3000,1,1),
-                                                false);
-    kdDebug(5850) << "--Following events in archive calendar:" << endl;
-    Event *e;
-    for(e=es.first();e;e=es.next()) {
-      kdDebug(5850) << "-----Event: " << e->getSummary() << endl;
-    }
-*/
+    KOPrefs::instance()->mArchiveAction = KOPrefs::deleteEvents;
   } else {
-    archiveFile = tmpFile.name();
-  }
+    KOPrefs::instance()->mArchiveAction = KOPrefs::archiveEvents;
 
-  // Save archive calendar
-  if ( !archiveStore.save() ) {
-    KMessageBox::error(this,i18n("Cannot write archive file."));
-    return;
-  }
-
-  // Upload if necessary
-  KURL srcUrl;
-  srcUrl.setPath(archiveFile);
-  if (srcUrl != destUrl) {
-    if ( !KIO::NetAccess::upload( archiveFile, destUrl, this ) ) {
-      KMessageBox::error(this,i18n("Cannot write archive to final destination."));
+    // Get destination URL
+    KURL destUrl( mArchiveFile->url() );
+    if ( !destUrl.isValid() ) {
+      KMessageBox::sorry(this,i18n("The archive file name is not valid.\n"));
       return;
     }
+    // Force filename to be ending with vCalendar extension
+    QString filename = destUrl.fileName();
+    if (!filename.endsWith(".vcs") && !filename.endsWith(".ics")) {
+      filename.append(".ics");
+      destUrl.setFileName(filename);
+    }
+
+    KOPrefs::instance()->mArchiveFile = destUrl.url();
   }
-
-  KOPrefs::instance()->mArchiveFile = destUrl.url();
-
-  KIO::NetAccess::removeTempFile(archiveFile);
-
-  // Delete archived events from calendar
-  for( it = events.begin(); it != events.end(); ++it ) {
-    mCalendar->deleteEvent( *it );
+  if ( KOPrefs::instance()->mAutoArchive ) {
+    archiver.runAuto( mCalendar, this, true /*with gui*/ );
+    emit autoArchivingSettingsModified();
   }
-  emit eventsDeleted();
-
-  accept();
+  else
+    archiver.runOnce( mCalendar, mDateEdit->date(), this );
 }
 
-// Delete old events
-void ArchiveDialog::deleteOldEvents()
+void ArchiveDialog::slotEventsDeleted()
 {
-  Event::List events = mCalendar->events( QDate( 1769, 12, 1 ),
-                                          mDateEdit->date().addDays( -1 ),
-                                          true );
-
-  if ( events.count() == 0 ) {
-    KMessageBox::sorry(this,i18n("There are no events before %1")
-        .arg(KGlobal::locale()->formatDate(mDateEdit->date())));
-    return;
-  }
-
-  QStringList eventStrs;
-  Event::List::ConstIterator it;
-  for( it = events.begin(); it != events.end(); ++it ) {
-    eventStrs.append( (*it)->summary() );
-  }
-
-  int result = KMessageBox::warningContinueCancelList(this,
-      i18n("Delete all events before %1 without saving?\n"
-           "The following events will be deleted:")
-      .arg(KGlobal::locale()->formatDate(mDateEdit->date())),eventStrs,
-      i18n("Delete old events"),i18n("&Delete"));
-  if (result == KMessageBox::Continue) {
-    for( it = events.begin(); it != events.end(); ++it ) {
-      mCalendar->deleteEvent( *it );
-    }
-    emit eventsDeleted();
-    accept();
-  }
+  emit eventsDeleted();
+  accept();
 }

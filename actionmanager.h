@@ -38,7 +38,7 @@ namespace KCal
   class CalendarResources;
   class Incidence;
 }
-namespace KOrg 
+namespace KOrg
 {
   class MainWindow;
 }
@@ -270,6 +270,12 @@ class ActionManager : public QObject, public KCalendarIface
     /** called by the autoSaveTimer to automatically save the calendar */
     void checkAutoSave();
 
+    /** connected to CalendarView's signal which comes from the ArchiveDialog */
+    void slotAutoArchivingSettingsModified();
+
+    /** called by the auto archive timer to automatically delete/archive events */
+    void slotAutoArchive();
+
     void configureDateTimeFinished(KProcess *);
 
     void setTitle();
@@ -301,6 +307,7 @@ class ActionManager : public QObject, public KCalendarIface
 
     KTempFile *mTempFile;
     QTimer *mAutoSaveTimer;   // used if calendar is to be autosaved
+    QTimer *mAutoArchiveTimer; // used for the auto-archiving feature
 
     // list of all existing KOrganizer instances
     static KOWindowList *mWindowList;
@@ -330,6 +337,7 @@ class ActionManager : public QObject, public KCalendarIface
     KONewStuff *mNewStuff;
     bool mHtmlExportSync;
 
+    // Either mCalendar *or* mCalendarResources is set.
     Calendar *mCalendar;
     CalendarResources *mCalendarResources;
 

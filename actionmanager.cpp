@@ -62,6 +62,7 @@
 #include "kogroupware.h"
 #include "resourceview.h"
 #include "resourceimportdialog.h"
+#include "eventarchiver.h"
 
 KOWindowList *ActionManager::mWindowList = 0;
 
@@ -128,6 +129,12 @@ void ActionManager::ActionManager::init()
        KOPrefs::instance()->mAutoSaveInterval > 0 ) {
     mAutoSaveTimer->start( 1000 * 60 * KOPrefs::instance()->mAutoSaveInterval );
   }
+
+  mAutoArchiveTimer = new QTimer( this );
+  connect( mAutoArchiveTimer, SIGNAL( timeout() ), SLOT( slotAutoArchive() ) );
+  // First auto-archive should be in 5 minutes (like in kmail).
+  if ( KOPrefs::instance()->mAutoArchive )
+    mAutoArchiveTimer->start( 5 * 60 * 1000, true ); // singleshot
 
   setTitle();
 
@@ -1413,6 +1420,26 @@ void ActionManager::importResource( const QString &url )
   ResourceImportDialog *dialog;
   dialog = new ResourceImportDialog( url, mMainWindow->topLevelWidget() );
   dialog->show();
+}
+
+void ActionManager::slotAutoArchivingSettingsModified()
+{
+  if ( KOPrefs::instance()->mAutoArchive )
+    mAutoArchiveTimer->start( 4 * 60 * 60 * 1000, true ); // check again in 4 hours
+  else
+    mAutoArchiveTimer->stop();
+}
+
+void ActionManager::slotAutoArchive()
+{
+  if ( !mCalendarView->calendar() ) // can this happen?
+    return;
+  mAutoArchiveTimer->stop();
+  EventArchiver archiver;
+  connect( &archiver, SIGNAL( eventsDeleted() ), mCalendarView, SLOT( updateView() ) );
+  archiver.runAuto( mCalendarView->calendar(), mCalendarView, false /*no gui*/ );
+  // restart timer with the correct delay (especially useful for the first time)
+  slotAutoArchivingSettingsModified();
 }
 
 #include "actionmanager.moc"

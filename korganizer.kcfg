@@ -16,8 +16,46 @@
       <label>Confirm deletes</label>
       <default>true</default>
     </entry>
-    <entry type="String" key="Archive File">
+
+    <entry type="Bool" key="Auto Archive">
+      <label>Regularly archive events</label>
+      <default>false</default>
     </entry>
+    <entry type="Enum" key="Archive Action">
+      <label>What to do when archiving</label>
+      <default>archiveEvents</default>
+      <choices>
+        <choice name="deleteEvents">
+          <label>Delete old events</label>
+        </choice>
+        <choice name="archiveEvents">
+          <label>Archive old events to a separate file</label>
+        </choice>
+      </choices>
+    </entry>
+    <entry type="Int" key="Expiry Time">
+      <label>If auto-archiving is enabled, events older than this amount will be archived. The unit of this value is specified in another field.</label>
+      <default>1</default>
+    </entry>
+    <entry type="Enum" key="Expiry Unit" name="ExpiryUnit">
+      <label>The unit in which the expiry time is expressed.</label>
+      <default>UnitMonths</default>
+      <choices>
+        <choice name="UnitDays">
+          <label>In days</label>
+        </choice>
+        <choice name="UnitWeeks">
+          <label>In weeks</label>
+        </choice>
+        <choice name="UnitMonths">
+          <label>In months</label>
+        </choice>
+      </choices>
+    </entry>
+    <entry type="String" key="Archive File">
+      <label>URL of the file where old events should be archived</label>
+    </entry>
+
     <entry type="Bool" key="Html With Save">
       <label>Export to HTML with every save</label>
       <default>false</default>

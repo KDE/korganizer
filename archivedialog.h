@@ -25,14 +25,17 @@
 
 #include <kdialogbase.h>
 
+class QRadioButton;
+class QComboBox;
+class KIntNumInput;
+class KURLRequester;
+class KDateEdit;
+class QCheckBox;
+
 namespace KCal {
 class Calendar;
 }
 using namespace KCal;
-
-class KURLRequester;
-class KDateEdit;
-class QCheckBox;
 
 class ArchiveDialog : public KDialogBase
 {
@@ -42,20 +45,24 @@ class ArchiveDialog : public KDialogBase
     virtual ~ArchiveDialog();
 
   signals:
+    // connected by KODialogManager to CalendarView
     void eventsDeleted();
+    void autoArchivingSettingsModified();
 
   protected slots:
+    void slotEventsDeleted();
     void slotUser1();
     void slotEnableUser1();
 
-  protected:    
-    void deleteOldEvents();
-    
   private:
     KURLRequester *mArchiveFile;
     KDateEdit *mDateEdit;
     QCheckBox *mDeleteCb;
-    
+    QRadioButton *mArchiveOnceRB;
+    QRadioButton *mAutoArchiveRB;
+    KIntNumInput *mExpiryTimeNumInput;
+    QComboBox *mExpiryUnitsComboBox;
+
     Calendar *mCalendar;
 };
 
