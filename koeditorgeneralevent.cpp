@@ -149,7 +149,6 @@ void KOEditorGeneralEvent::initClass(QWidget *parent,QBoxLayout *topLayout)
   mFreeTimeCombo->insertItem(i18n("Busy"));
   mFreeTimeCombo->insertItem(i18n("Free"));
   classLayout->addWidget(mFreeTimeCombo);
-  mFreeTimeCombo->setEnabled(false);
 }
 
 void KOEditorGeneralEvent::timeStuffDisable(bool disable)
@@ -260,9 +259,14 @@ void KOEditorGeneralEvent::readEvent( Event *event, bool tmpl )
     setDateTimes(event->dtStart(),event->dtEnd());
   }
 
-  if (event->transparency() > 0)
+  switch( event->transparency() ) {
+  case Event::Transparent:
     mFreeTimeCombo->setCurrentItem(1);
-  // else it is implicitly 0 (i.e. busy)
+    break;
+  case Event::Opaque:
+    mFreeTimeCombo->setCurrentItem(0);
+    break;
+  }
 
   readIncidence(event);
 }
