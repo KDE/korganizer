@@ -91,7 +91,9 @@ void KOWhatsNextView::updateView()
     mText += i18n("<table>");
     Event *ev = events.first();
     while(ev) {
-      appendEvent(ev);
+      if (!ev->recurrence()->doesRecur() || ev->recursOn( QDate::currentDate())) {
+        appendEvent(ev);
+      }
       ev = events.next();
     }
     mText += i18n("</table>");
