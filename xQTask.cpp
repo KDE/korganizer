@@ -131,7 +131,7 @@ xQTask::registerTask(xQTask* task)
 
 
   //  increase start/end if necessary
-  Change change = adjustStartEnd();
+  int change = adjustStartEnd();
 
 
   if(_mode == Rubberband) {
@@ -147,7 +147,7 @@ xQTask::registerTask(xQTask* task)
   }
 
   if(change != NoChange)
-    emit changed(this,change);
+    emit changed(this,(Change) change);
 
 }
 
@@ -160,7 +160,7 @@ xQTask::unregisterTask(xQTask* task)
   _subtasks.remove(task);
   disconnect(task);
 
-  Change change = adjustMinMax();
+  int change = adjustMinMax();
 
   if( isOpen() ) {
     if(!(change & TotalHeightChanged))
@@ -168,7 +168,7 @@ xQTask::unregisterTask(xQTask* task)
   }
 
   if(change != NoChange)
-    emit changed(this,change);
+    emit changed(this,(Change) change);
 
 }
 
@@ -278,7 +278,7 @@ xQTask::adjustStartEnd()
 {
   //  first update _min and _max of subtasks
 
-  Change c = adjustMinMax();
+  int c = adjustMinMax();
 
   if(_start > _minDateTime) {
     _start = _minDateTime;
@@ -292,7 +292,7 @@ xQTask::adjustStartEnd()
       c += EndChanged;
   }  
   
-  return c;
+  return (Change)c;
   
 }
 
@@ -310,7 +310,7 @@ xQTask::adjustMinMax()
 
   QDateTime min = _minDateTime;
   QDateTime max = _maxDateTime;
-  Change c = NoChange;
+  int c = NoChange;
 
   if(_subtasks.count()==0) {
 
@@ -350,7 +350,7 @@ xQTask::adjustMinMax()
   
   }
 
-  return c;
+  return (Change) c;
 
 }
 
@@ -370,7 +370,7 @@ xQTask::subTaskChanged(xQTask* task, Change change)
   if( (change & StartChanged) || 
       (change & EndChanged) ) {
 
-    Change c = adjustStartEnd();
+    int c = adjustStartEnd();
     
     if(_mode == Rubberband) {
       if(c & MinChanged && !(c & StartChanged)) 
@@ -380,7 +380,7 @@ xQTask::subTaskChanged(xQTask* task, Change change)
     }
 
     if(c != NoChange)
-      emit changed(this, c);
+      emit changed(this, (Change) c);
    
   }
 }
@@ -571,3 +571,4 @@ xQTask::ChangeAsString(Change c)
   return ret;
 
 }
+#include "xQTask.moc"
