@@ -84,10 +84,10 @@ void KOEditorAttachments::showAttachment( QListViewItem *item )
 
 void KOEditorAttachments::slotAdd()
 {
-  QString uri = KFileDialog::getOpenFileName( QString::null, QString::null,
+  KURL uri = KFileDialog::getOpenURL( QString::null, QString::null,
       0, i18n("Add Attachment") );
   if ( !uri.isEmpty() ) {
-    new QListViewItem( mAttachments, uri );
+    new QListViewItem( mAttachments, uri.url() );
   }
 }
 
@@ -96,10 +96,10 @@ void KOEditorAttachments::slotEdit()
   QListViewItem *item = mAttachments->currentItem();
   if ( !item ) return;
 
-  QString uri = KFileDialog::getOpenFileName( item->text( 0 ), QString::null,
+  KURL uri = KFileDialog::getOpenURL( item->text( 0 ), QString::null,
       0, i18n("Edit Attachment") );
 
-  if ( !uri.isEmpty() ) item->setText( 0, uri );
+  if ( !uri.isEmpty() ) item->setText( 0, uri.url() );
 }
 
 void KOEditorAttachments::slotRemove()
