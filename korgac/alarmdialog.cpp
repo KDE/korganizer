@@ -54,7 +54,7 @@
 AlarmDialog::AlarmDialog( QWidget *parent, const char *name )
   : KDialogBase( Plain, WType_TopLevel | WStyle_Customize | WStyle_StaysOnTop |
                  WStyle_DialogBorder,
-                 parent, name, false, i18n("Alarm"), Ok | User1 | User2/* | User3*/, Ok/*3*/,
+                 parent, name, false, i18n("Alarm"), Ok | User1 | User2/* | User3*/, User1/*3*/,
                  false, i18n("Suspend"), i18n("Edit...") ),
                  mSuspendTimer(this)
 {
