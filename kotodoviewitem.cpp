@@ -24,7 +24,7 @@
 #include "kotodoviewitem.h"
 #include "kotodoview.h"
 #include "koprefs.h"
-//#include "kotodoviewitem.moc"
+#include "kotodoviewitem.moc"
 
 KOTodoViewItem::KOTodoViewItem( QListView *parent, Todo *todo )
   : QCheckListItem( parent , "", CheckBox ), mTodo( todo )
@@ -127,7 +127,6 @@ void KOTodoViewItem::stateChange(bool state)
   else mTodo->setPercentComplete(0);
   if (isOn()!=state) {
     setOn(state);
-//    emit isModified(true);
   }
 
   if (mTodo->hasDueDate()) {
@@ -164,6 +163,7 @@ void KOTodoViewItem::stateChange(bool state)
     item->stateChange(state);
     myChild = myChild->nextSibling();
   }
+  emit isModified(true);
 }
 
 bool KOTodoViewItem::isAlternate()
@@ -182,12 +182,12 @@ bool KOTodoViewItem::isAlternate()
     {
        KOTodoViewItem *item;
        bool previous = true;
-       if (parent())
+       if (QListViewItem::parent())
        {
-          item = dynamic_cast<KOTodoViewItem *>(parent());
+          item = dynamic_cast<KOTodoViewItem *>(QListViewItem::parent());
           if (item)
              previous = item->m_odd;
-          item = dynamic_cast<KOTodoViewItem *>(parent()->firstChild());
+          item = dynamic_cast<KOTodoViewItem *>(QListViewItem::parent()->firstChild());
        }
        else
        {

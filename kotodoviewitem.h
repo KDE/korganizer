@@ -43,9 +43,9 @@ using namespace KCal;
   @author Cornelius Schumacher <schumacher@kde.org>
   @see KOTodoView
 */
-class KOTodoViewItem : public QCheckListItem
+class KOTodoViewItem : public QObject, public QCheckListItem
 {
-//    Q_OBJECT
+    Q_OBJECT
   public:
     /**
       Constructor.
@@ -70,8 +70,8 @@ class KOTodoViewItem : public QCheckListItem
     virtual void paintCell(QPainter *p, const QColorGroup &cg,
       int column, int width, int alignment);
 
-//  signals:
-//    void isModified(bool);
+  signals:
+    void isModified(bool);
 
   protected:
 #if QT_VERSION >= 300
