@@ -722,6 +722,10 @@ inline const QString &KOEvent::getRelatedToVUID() const
 inline void KOEvent::setRelatedTo(KOEvent *relatedTo)
 {
   if (ro) return;
+  KOEvent *oldRelatedTo = KOEvent::relatedTo;
+  if(oldRelatedTo) {
+    oldRelatedTo->removeRelation(this);
+  }
   KOEvent::relatedTo = relatedTo;
   if (relatedTo) relatedTo->addRelation(this);
   emit eventUpdated(this);
@@ -746,7 +750,7 @@ inline void KOEvent::addRelation(KOEvent *event)
 inline void KOEvent::removeRelation(KOEvent *event)
 {
   relations.removeRef(event);
-  if (event->getRelatedTo() == this) event->setRelatedTo(0);
+//  if (event->getRelatedTo() == this) event->setRelatedTo(0);
   emit eventUpdated(this);
 }
 

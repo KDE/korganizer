@@ -5,11 +5,10 @@
 
 #include <qdatetm.h>
 #include <qlabel.h>
-#include <qdropsite.h>
 
 class CalObject;
 
-class KDateButton: public QLabel, QDropSite {
+class KDateButton: public QLabel {
    Q_OBJECT
  public:
    

@@ -60,6 +60,11 @@ public:
 
   /** create an object to be used with the Xdnd Drag And Drop protocol. */
   VCalDrag *createDrag(KOEvent *selectedEv, QWidget *owner);
+  /** create an object to be used with the Xdnd Drag And Drop protocol. */
+  VCalDrag *createDragTodo(KOEvent *selectedEv, QWidget *owner);
+  /** Create Todo object from drop event */
+  KOEvent *createDropTodo(QDropEvent *de);
+
   /** cut, copy, and paste operations follow. */
   void cutEvent(KOEvent *);
   bool copyEvent(KOEvent *);

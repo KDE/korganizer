@@ -317,6 +317,60 @@ VCalDrag *CalObject::createDrag(KOEvent *selectedEv, QWidget *owner)
   return vcd;
 }
 
+VCalDrag *CalObject::createDragTodo(KOEvent *selectedEv, QWidget *owner)
+{
+  VObject *vcal, *vevent;
+  QString tmpStr;
+  
+  vcal = newVObject(VCCalProp);
+  
+  addPropValue(vcal,VCProdIdProp, _PRODUCT_ID);
+  tmpStr = getTimeZoneStr();
+  addPropValue(vcal,VCTimeZoneProp, tmpStr.ascii());
+  addPropValue(vcal,VCVersionProp, _VCAL_VERSION);
+  
+  vevent = eventToVTodo(selectedEv);
+  
+  addVObjectProp(vcal, vevent);
+
+  VCalDrag *vcd = new VCalDrag(vcal, owner);
+  // free memory associated with vCalendar stuff
+  cleanVObject(vcal);  
+  vcd->setPixmap(BarIcon("newevent"));
+
+  return vcd;
+}
+
+KOEvent *CalObject::createDropTodo(QDropEvent *de)
+{
+  VObject *vcal;
+  KOEvent *event = 0;
+
+  if (VCalDrag::decode(de, &vcal)) {
+    VObjectIterator i;
+    VObject *curvo;
+    initPropIterator(&i, vcal);
+    
+    // we only take the first object.
+    do  {
+      curvo = nextVObject(&i);
+    } while (strcmp(vObjectName(curvo), VCEventProp) &&
+             strcmp(vObjectName(curvo), VCTodoProp));
+
+    if (strcmp(vObjectName(curvo), VCEventProp) == 0) {
+      qDebug("CalObject::createDropTodo(): Got event instead of todo.");
+    } else if (strcmp(vObjectName(curvo), VCTodoProp) == 0) {
+      event = VTodoToEvent(curvo);
+    } else {
+      qDebug("CalObject::createDropTodo(): Unknown event type in drop.");
+    }
+    // get rid of temporary VObject
+    deleteVObject(vcal);
+  }
+  
+  return event;
+}
+
 void CalObject::cutEvent(KOEvent *selectedEv)
 {
   if (copyEvent(selectedEv))

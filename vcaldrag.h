@@ -11,12 +11,12 @@
 #include "vobject.h"
 
 class VCalDrag : public QStoredDrag {
-public:
-  VCalDrag(VObject *vcal, QWidget *parent=0, const char *name=0);
-  ~VCalDrag() {};
+  public:
+    VCalDrag(VObject *vcal, QWidget *parent=0, const char *name=0);
+    ~VCalDrag() {};
 
-  static bool canDecode(QDragMoveEvent *);
-  static bool decode(QDropEvent *e, VObject **vcal);
+    static bool canDecode(QMimeSource *);
+    static bool decode(QDropEvent *e, VObject **vcal);
 };
 
 #endif

@@ -35,7 +35,7 @@ QColorGroup KDateButton::my_HolidaySelectGroup;
 
 KDateButton::KDateButton(QDate date, int index, CalObject *_calendar,
 			 QWidget *parent, const char *name)
-  : QLabel(parent, name), QDropSite(this), currHiliteStyle(NoHilite)
+  : QLabel(parent, name), currHiliteStyle(NoHilite)
 {
 
   selFlag = FALSE;

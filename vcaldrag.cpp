@@ -13,14 +13,14 @@ VCalDrag::VCalDrag(VObject *vcal, QWidget *parent, const char *name)
   // we don't delete the buf because QByteArray claims it will handle that?!?
 }
 
-bool VCalDrag::canDecode(QDragMoveEvent *me)
+bool VCalDrag::canDecode(QMimeSource *me)
 {
   return me->provides("text/x-vCalendar");
 }
 
 bool VCalDrag::decode(QDropEvent *de, VObject **vcal)
 {
-  QByteArray payload = de->data("text/x-vCalendar");
+  QByteArray payload = de->encodedData("text/x-vCalendar");
   if (payload.size()) { // check to see if we got this kind of data
     de->accept();
     
