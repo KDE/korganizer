@@ -497,8 +497,8 @@ KOAgendaView::~KOAgendaView()
 void KOAgendaView::connectAgenda( KOAgenda *agenda, QPopupMenu *popup,
                                   KOAgenda *otherAgenda )
 {
-  connect( agenda, SIGNAL( showIncidencePopupSignal( Incidence *, QDate ) ),
-           popup, SLOT( showIncidencePopup( Incidence *, QDate ) ) );
+  connect( agenda, SIGNAL( showIncidencePopupSignal( Incidence *, const QDate & ) ),
+           popup, SLOT( showIncidencePopup( Incidence *, const QDate & ) ) );
 
   connect( agenda, SIGNAL( showNewEventPopupSignal() ),
            SLOT( showNewEventPopup() ) );

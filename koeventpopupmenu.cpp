@@ -50,7 +50,7 @@ KOEventPopupMenu::KOEventPopupMenu()
                                      SLOT( popupAlarm() ) ) );
 }
 
-void KOEventPopupMenu::showIncidencePopup( Incidence *incidence, QDate qd )
+void KOEventPopupMenu::showIncidencePopup( Incidence *incidence, const QDate &qd )
 {
   mCurrentIncidence = incidence;
   mCurrentDate = qd;

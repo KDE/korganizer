@@ -45,7 +45,7 @@ class KOEventPopupMenu : public QPopupMenu {
 
 
   public slots:
-    void showIncidencePopup( Incidence *, QDate );
+    void showIncidencePopup( Incidence *, const QDate & );
 
   protected slots:
     void popupShow();
