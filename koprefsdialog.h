@@ -61,8 +61,6 @@ class KOPrefsDialog : public KPrefsDialog
     void updateCategoryColor();
 
     void warningExperimental(bool on);
-    void warningGroupScheduling();
-    void warningProjectView();
 
     void toggleEmailSettings(bool);
     
@@ -90,9 +88,6 @@ class KOPrefsDialog : public KPrefsDialog
 
 
   private:
-    KPrefsWidBool *mEnableGroupScheduling;
-    KPrefsWidBool *mEnableProjectView;
-
     QFrame *mPrinterTab;
 
     QLineEdit *nameEdit;

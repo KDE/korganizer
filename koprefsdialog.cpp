@@ -718,16 +718,6 @@ void KOPrefsDialog::updateCategories()
   updateCategoryColor();
 }
 
-void KOPrefsDialog::warningGroupScheduling()
-{
-  warningExperimental(mEnableGroupScheduling->checkBox()->isChecked());
-}
-
-void KOPrefsDialog::warningProjectView()
-{
-  warningExperimental(mEnableProjectView->checkBox()->isChecked());
-}
-
 void KOPrefsDialog::warningExperimental(bool on)
 {
   if (on) {
