@@ -48,8 +48,7 @@ libkorganizer_la_SOURCES =  outgoingdialog_base.ui \
         filtereditdialog.cpp filteredit_base.ui \
         kowhatsnextview.cpp \
         kojournalview.cpp journalentry.cpp \
-        kocore.cpp plugindialog.cpp mailscheduler.cpp \
-        moc_baseview.cpp
+        kocore.cpp plugindialog.cpp mailscheduler.cpp
 
 METASOURCES = AUTO
 
@@ -92,10 +91,9 @@ part_DATA = korganizer_part.rc
 
 KDE_ICON = AUTO
 
+META_INCLUDES = interfaces/korganizer
+
 messages: rc.cpp
 	perl ./preparetips > tips.cc
 	$(XGETTEXT) *.cpp tips.cc -o $(podir)/korganizer.pot
 	rm -f tips.cc
-
-moc_baseview.cpp: interfaces/korganizer/baseview.h
-	$(MOC) interfaces/korganizer/baseview.h -o moc_baseview.cpp
