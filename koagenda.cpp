@@ -1066,7 +1066,7 @@ void KOAgenda::placeAgendaItem( KOAgendaItem *item, double subCellWidth )
   // right lower corner
   gridToContents( item->cellX(), item->cellYTop(), x, y );
   gridToContents( item->cellX() + item->cellWidth(),
-                  item->cellYBottom(), x1, y1 );
+                  item->cellYBottom()+1, x1, y1 );
 
   double subCellPos = item->subCell() * subCellWidth;
 
