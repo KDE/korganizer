@@ -1,6 +1,7 @@
 METASOURCES = AUTO
 
 INCLUDES = -I$(top_srcdir)/korganizer/interfaces \
+           -I$(top_srcdir)/libkdepim \
            -I$(top_srcdir)/korganizer \
 					 -I$(top_srcdir) \
 					 -I$(top_builddir) \
