@@ -46,7 +46,7 @@ KOCore *KOCore::self()
 }
 
 KOCore::KOCore() :
-  mCalendarDecorationsLoaded(false)
+  mCalendarDecorationsLoaded( false ), mHolidays( 0 )
 {
 }
 
@@ -216,6 +216,7 @@ void KOCore::unloadPlugins()
   }
   mCalendarDecorations.clear();
   mCalendarDecorationsLoaded = false;
+  mHolidays = 0;
 }
 
 void KOCore::unloadParts( KOrg::MainWindow *parent, KOrg::Part::List& parts )
