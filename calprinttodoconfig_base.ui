@@ -10,8 +10,8 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>365</width>
-            <height>310</height>
+            <width>351</width>
+            <height>302</height>
         </rect>
     </property>
     <property name="caption">
@@ -199,6 +199,14 @@
                 <cstring>mTitle</cstring>
             </property>
         </widget>
+        <widget class="QCheckBox" row="5" column="0" rowspan="1" colspan="2">
+            <property name="name">
+                <cstring>mConnectSubTodos</cstring>
+            </property>
+            <property name="text">
+                <string>Co&amp;nnect subtodos with its parent</string>
+            </property>
+        </widget>
         <spacer row="6" column="1">
             <property name="name">
                 <cstring>spacer3</cstring>
@@ -212,18 +220,10 @@
             <property name="sizeHint">
                 <size>
                     <width>20</width>
-                    <height>16</height>
+                    <height>0</height>
                 </size>
             </property>
         </spacer>
-        <widget class="QCheckBox" row="5" column="0" rowspan="1" colspan="2">
-            <property name="name">
-                <cstring>mConnectSubTodos</cstring>
-            </property>
-            <property name="text">
-                <string>Co&amp;nnect subtodos with its parent</string>
-            </property>
-        </widget>
     </grid>
 </widget>
 <connections>
