@@ -27,6 +27,7 @@
 #include <kglobal.h>
 #include <kconfig.h>
 #include <kstandarddirs.h>
+#include <kglobalsettings.h>
 #include <klocale.h>
 
 #include <kcalendarsystem.h>
@@ -109,18 +110,21 @@ void KOGlobals::fitDialogToScreen( QWidget *wid, bool force )
   int w = wid->frameSize().width();
   int h = wid->frameSize().height();  
 
-  if ( w > QApplication::desktop()->size().width() ) {
-    w = QApplication::desktop()->size().width();
+  QRect desk = KGlobalSettings::desktopGeometry(wid);
+  if ( w > desk.width() ) {
+    w = desk.width();
     resized = true;
   }
-  if ( h > QApplication::desktop()->size().height() - 30 ) {
-    h = QApplication::desktop()->size().height() - 30;
+  // Yuck this hack is ugly.  Is the -30 really to circumvent the size of
+  // kicker?!
+  if ( h > desk.height() - 30 ) {
+    h = desk.height() - 30;
     resized = true;
   }
   
   if ( resized || force ) {
     wid->resize( w, h );
-    wid->move( 0, 15 );
+    wid->move( desk.x(), desk.y()+15 );
     if ( force ) wid->setFixedSize( w, h );
   }
 }
