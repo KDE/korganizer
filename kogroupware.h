@@ -37,6 +37,7 @@
 #ifndef KOGROUPWARE_H
 #define KOGROUPWARE_H
 
+#include <libkcal/calendarresources.h>
 #include <libkcal/icalformat.h>
 #include <libkcal/scheduler.h>
 #include <qstring.h>
@@ -56,7 +57,7 @@ class KOGroupware : public QObject
 {
     Q_OBJECT
   public:
-    static KOGroupware* create( CalendarView*, KCal::Calendar* );
+    static KOGroupware* create( CalendarView*, KCal::CalendarResources* );
     static KOGroupware* instance();
 
     FreeBusyManager *freeBusyManager();
@@ -78,13 +79,13 @@ class KOGroupware : public QObject
     void slotStartScheduling();
 
   protected:
-    KOGroupware( CalendarView*, KCal::Calendar* );
+    KOGroupware( CalendarView*, KCal::CalendarResources* );
 
   private:
     static KOGroupware *mInstance;
     KCal::ICalFormat mFormat;
     CalendarView *mView;
-    KCal::Calendar *mCalendar;
+    KCal::CalendarResources *mCalendar;
     static FreeBusyManager *mFreeBusyManager;
 };
 

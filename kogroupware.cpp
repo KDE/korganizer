@@ -56,7 +56,7 @@ FreeBusyManager *KOGroupware::mFreeBusyManager = 0;
 KOGroupware *KOGroupware::mInstance = 0;
 
 KOGroupware *KOGroupware::create( CalendarView *view,
-                                  KCal::Calendar *calendar )
+                                  KCal::CalendarResources *calendar )
 {
   if( !mInstance )
     mInstance = new KOGroupware( view, calendar );
@@ -71,12 +71,9 @@ KOGroupware *KOGroupware::instance()
 }
 
 
-KOGroupware::KOGroupware( CalendarView* view, KCal::Calendar* calendar )
-  : QObject( 0, "kmgroupware_instance" )
+KOGroupware::KOGroupware( CalendarView* view, KCal::CalendarResources* cal )
+  : QObject( 0, "kmgroupware_instance" ), mView( view ), mCalendar( cal )
 {
-  mView = view;
-  mCalendar = calendar;
-
   // Temporary hack: Wait one minute before starting the scheduling handling
   // This is because we need the full calendars to be loaded first
   // TODO: GET RID OF THIS!!! The real fix is to listen for the resources
