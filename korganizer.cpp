@@ -451,10 +451,6 @@ void KOrganizer::file_quit()
 
 bool KOrganizer::queryClose()
 {
-  // Write configuration. I don't know if it really makes sense doing it this
-  // way, when having opened multiple calendars in different CalendarViews.
-  writeSettings();
-  
   if (windowList->lastInstance() && !mActive && !mURL.isEmpty()) {
     int result = KMessageBox::questionYesNo(this,i18n("Do you want to make this"
       " calendar active?\nThis means that it is monitored for alarms and loaded"
@@ -462,7 +458,13 @@ bool KOrganizer::queryClose()
     if (result == KMessageBox::Yes) makeActive();
   }
 
-  return closeURL();
+  bool success = closeURL();
+
+  // Write configuration. I don't know if it really makes sense doing it this
+  // way, when having opened multiple calendars in different CalendarViews.
+  writeSettings();
+  
+  return success;
 }
 
 
@@ -670,7 +672,7 @@ bool KOrganizer::saveAsURL( const KURL & kurl )
     // otherwise, we already had a temp file
   }
   bool success = saveURL(); // Save local file and upload local file
-  qDebug("saveAsURL() %s",mURL.prettyURL().latin1());
+  qDebug("KOrganizer::saveAsURL() %s",mURL.prettyURL().latin1());
   if (success) mRecent->addURL(mURL);
   else qDebug("  failed");
   return success;
@@ -686,20 +688,20 @@ void KOrganizer::setActive(bool active)
 
 void KOrganizer::makeActive()
 {
-  setActive();
-
   // Write only local Files to config file. This prevents loading of a remote
   // file automatically on startup, which could block KOrganizer even before
-  // it has opened.
-  QString file;
-  if (mURL.isLocalFile()) {
-    file = mFile;
+  // it has opened. Perhaps this is to strict...
+  if (mURL.isEmpty()) {
+    KMessageBox::sorry(this,i18n("The calendar does not have a filename. "
+                                 "Please save it before activating."));
+  } else if (mURL.isLocalFile()) {
     KConfig *config(kapp->config());
-    config->writeEntry("Active Calendar", file);
+    config->writeEntry("Active Calendar",mFile);
     config->sync();
     if (!kapp->dcopClient()->send("alarmd","ad","reloadCal()","")) {
       qDebug("KOrganizer::saveURL(): dcop send failed");
     }
+    setActive();
     emit calendarActivated(this);
   } else {
     KMessageBox::sorry(this,i18n("Only local files can be active calendars."));

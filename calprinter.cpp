@@ -754,6 +754,8 @@ CalPrintDialog::CalPrintDialog(QPrinter *p, bool preview, const QDate &fd,
   : QDialog(parent, name, FALSE)
 {
   printer = p;
+
+  setCaption(i18n("Print"));
   
   QVBoxLayout *layout = new QVBoxLayout(this, 10);
   
@@ -825,10 +827,6 @@ CalPrintDialog::CalPrintDialog(QPrinter *p, bool preview, const QDate &fd,
 	  this, SLOT(reject()));
   button->setFixedSize(button->sizeHint());
   subLayout->addWidget(button);
-
-  adjustSize();
-
-  layout->activate();
 }
 
 CalPrintDialog::~CalPrintDialog()

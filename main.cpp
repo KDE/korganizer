@@ -22,13 +22,12 @@ KOrganizerApp *app;
 
 static const KCmdLineOptions options[] =
 {
-        {"l", 0, 0},
-        {"list", "List the events for the current day", 0},
-	{"s", 0, 0},
-	{"show <numdays>", "Show a list of all events for the next <numdays>",
-         "1"},
-        {"+[calendar]", "A calendar file to load", 0},
-	{0,0,0}
+  {"l", 0, 0},
+  {"list", "List the events for the current day", 0},
+  {"s", 0, 0},
+  {"show <numdays>", "Show a list of all events for the next <numdays>","1"},
+  {"+[calendar]", "A calendar file to load", 0},
+  {0,0,0}
 };
 
 int main (int argc, char **argv)
@@ -41,7 +40,7 @@ int main (int argc, char **argv)
                       "schumacher@kde.org");
   aboutData.addAuthor("Preston Brown",I18N_NOOP("Original Author"),
                       "pbrown@kde.org");
-  aboutData.addCredit("Richard Apodaca");                    
+  aboutData.addCredit("Richard Apodaca");              
   aboutData.addCredit("Laszlo Boloni");
   aboutData.addCredit("Barry Benowitz");
   aboutData.addCredit("Christopher Beard");
