@@ -1623,29 +1623,14 @@ void CalendarView::takeOverEvent()
 
 void CalendarView::takeOverCalendar()
 {
-  // TODO: Create Calendar::allIncidences() function and use it here
-
-  Event::List events = mCalendar->events();
-  for(uint i=0; i<events.count(); ++i) {
-    (*events.at(i))->setOrganizer(KOPrefs::instance()->email());
-    (*events.at(i))->recreate();
-    (*events.at(i))->setReadOnly(false);
+  Incidence::List incidences = mCalendar->rawIncidences();
+  Incidence::List::Iterator it;
+  
+  for ( it = incidences.begin(); it != incidences.end(); it++ ) {
+    (*it)->setOrganizer(KOPrefs::instance()->email());
+    (*it)->recreate();
+    (*it)->setReadOnly(false);
   }
-
-  Todo::List todos = mCalendar->todos();
-  for(uint i=0; i<todos.count(); ++i) {
-    (*todos.at(i))->setOrganizer(KOPrefs::instance()->email());
-    (*todos.at(i))->recreate();
-    (*todos.at(i))->setReadOnly(false);
-  }
-
-  Journal::List journals = mCalendar->journals();
-  for(uint i=0; i<journals.count(); ++i) {
-    (*journals.at(i))->setOrganizer(KOPrefs::instance()->email());
-    (*journals.at(i))->recreate();
-    (*journals.at(i))->setReadOnly(false);
-  }
-
   updateView();
 }
 
