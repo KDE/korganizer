@@ -752,7 +752,7 @@ void CalendarView::edit_copy()
     factory.copyEvent( anEvent );
   } else if ( incidence->type() == "Todo" ) {
     Todo *anTodo = static_cast<Todo *>(incidence);
-    // TODO: Why should we need to remove the recurrence from a todo when it is copied? 
+    // TODO: Why should we need to remove the recurrence from a todo when it is copied?
     // Note that this removes the recurrence from the original todo, not only from the todo in the clipboard!
 /*    if (anTodo->doesRecur())
       anTodo->recurrence()->unsetRecurs(); // avoid 'forking'*/
@@ -1257,7 +1257,7 @@ void CalendarView::deleteEvent(Event *anEvent)
           incidenceChanged( oldEvent, anEvent );
         }
         break;
-      // TODO_RK: Find a proper dialogbox with four buttons, then change the 9999 
+      // TODO_RK: Find a proper dialogbox with four buttons, then change the 9999
       // to the actual code of the "delete only future items" button
       case 9999: // all future items
         Recurrence *recur = anEvent->recurrence();
@@ -2061,6 +2061,15 @@ void CalendarView::recurTodo( Todo *todo )
 
       do {
         todo->setDtDue( r->getNextDateTime( todo->dtDue() ) );
+        // TODO: This works around a bug in libkcal, which returns an invalid
+        //       date if the recurrence frequency is >1.
+        //       It makes KOrganizer hang in this loop. Remove this check
+        //       after the bug has been fixed!
+        if ( !todo->dtDue().isValid() ) {
+          kdDebug(5850) << "Unable to find next recursion date." << endl;
+          todo->setDtDue( QDateTime::currentDateTime() );
+          return;
+        }
       } while ( !todo->recursAt( todo->dtDue() ) ||
                  todo->dtDue() <= QDateTime::currentDateTime() );
 
