@@ -390,11 +390,28 @@ KURL FreeBusyManager::freeBusyUrl( const QString &email )
     return KURL();
 
   // Cut off everything left of the @ sign to get the user name.
-  QString emailName = email.left( emailpos );
+  const QString emailName = email.left( emailpos );
+  const QString emailHost = email.mid( emailpos + 1 );
 
   // Build the URL
   KURL sourceURL;
   sourceURL = KOPrefs::instance()->mFreeBusyRetrieveUrl;
+
+  // This test is disabled to make the multidomains of Kolab2 work.
+  // It's a temporary workaround until a real solution can be agreed with
+  // the kdepim people
+#if 0
+  // Don't try to fetch free/busy data for users not on the specified servers
+  // This tests if the hostnames match, or one is a subset of the other
+  const QString hostDomain = sourceURL.host();
+  if ( hostDomain != emailHost && !hostDomain.endsWith( '.' + emailHost )
+       && !emailHost.endsWith( '.' + hostDomain ) )
+    // Host names do not match
+    return KURL();
+#else
+  Q_UNUSED( emailHost )
+#endif
+
   if ( KOPrefs::instance()->mFreeBusyFullDomainRetrieval )
     sourceURL.setFileName( email + ".ifb" );
   else
