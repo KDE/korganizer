@@ -119,7 +119,8 @@ libkorganizer_la_SOURCES =  outgoingdialog_base.ui \
 libkorganizer_eventviewer_la_LDFLAGS = $(all_libraries) $(KDE_RPATH) \
                                        -no-undefined -version-info 1:0
 libkorganizer_eventviewer_la_LIBADD  = $(LIB_KPARTS) \
-                                       $(top_builddir)/libkcal/libkcal.la
+                                       $(top_builddir)/libkcal/libkcal.la \
+                                       $(top_builddir)/libkdepim/libkdepim.la
 libkorganizer_eventviewer_la_SOURCES = koeventviewer.cpp urihandler.cpp \
                                        kmailIface.stub koeventviewerdialog.cpp
 

@@ -29,6 +29,7 @@
 #include <libkcal/event.h>
 #include <libkcal/todo.h>
 #include <libkcal/journal.h>
+#include <libkdepim/email.h>
 
 #include <kiconloader.h>
 #include <klocale.h>
@@ -182,72 +183,95 @@ void KOEventViewer::formatCategories( Incidence *event )
   }
 }
 
+void KOEventViewer::linkPerson( const QString& email, QString name,
+                                QString uid, const QString& iconPath )
+{
+#ifndef KORG_NOKABC
+  // Make the search, if there is an email address to search on,
+  // and either name or uid is missing
+  if ( !email.isEmpty() && ( name.isEmpty() || uid.isEmpty() ) ) {
+    KABC::AddressBook *add_book = KABC::StdAddressBook::self();
+    KABC::Addressee::List addressList = add_book->findByEmail( email );
+    KABC::Addressee o = addressList.first();
+    if ( !o.isEmpty() && addressList.size() < 2 ) {
+      if ( name.isEmpty() )
+        // No name set, so use the one from the addressbook
+        name = o.formattedName();
+      uid = o.uid();
+    } else
+      // Email not found in the addressbook. Don't make a link
+      uid = "";
+  }
+#else
+  // No addressbook - don't try to contact it then
+  uid = "";
+#endif
+  kdDebug(5850) << "formatAttendees: uid = " << uid << endl;
+
+  // Show the attendee
+  mText += "<li>";
+  if ( !uid.isEmpty() ) {
+    // There is a UID, so make a link to the addressbook
+    if ( name.isEmpty() )
+      // Use the email address for text
+      addLink( "uid:" + uid, email );
+    else
+      addLink( "uid:" + uid, name );
+  } else {
+    // No UID, just show some text
+    mText += ( name.isEmpty() ? email : name );
+  }
+  mText += '\n';
+
+  // Make the mailto link
+  if ( !email.isEmpty() && !iconPath.isNull() ) {
+    QString receiver;
+    if ( name.isEmpty() )
+      // Only use the email address
+      receiver = email;
+    else
+      // Full receiver
+      receiver = name +" <" + email + ">";
+    addLink( "mailto:" + receiver, "<img src=\"" + iconPath + "\">" );
+  }
+  mText += "</li>\n";
+}
+
 void KOEventViewer::formatAttendees( Incidence *event )
 {
   Attendee::List attendees = event->attendees();
   if ( attendees.count() ) {
-    KIconLoader* iconLoader = new KIconLoader();
-    QString iconPath = iconLoader->iconPath( "mail_generic", KIcon::Small );
-    addTag( "h3", i18n("Organizer") );
-    mText.append( "<ul><li>" );
-#ifndef KORG_NOKABC
-    KABC::AddressBook *add_book = KABC::StdAddressBook::self();
-    KABC::Addressee::List addressList;
-    addressList = add_book->findByEmail( event->organizer() );
-    KABC::Addressee o = addressList.first();
-    if ( !o.isEmpty() && addressList.size() < 2 ) {
-      addLink( "uid" + o.uid(), o.formattedName() );
-    } else {
-      mText.append( event->organizer() );
-    }
-#else
-    mText.append( event->organizer() );
-#endif
-    if ( !iconPath.isNull() ) {
-      addLink( "mailto:" + event->organizer(),
-               "<img src=\"" + iconPath + "\">" );
-    }
-    mText.append( "</li></ul>" );
+    KIconLoader iconLoader;
+    const QString iconPath = iconLoader.iconPath( "mail_generic",
+                                                  KIcon::Small );
 
+    // Add organizer link
+    addTag( "h3", i18n("Organizer") );
+    mText.append( "<ul>" );
+    QString name, email, organizer;
+    organizer = event->organizer();
+    if ( organizer.length() > 1 ) {
+      // If the organizer does not have a name, it looks like <foo@bar.org>
+      // which can not be shown in a rich text widget. Filter those <> out
+      if ( organizer[0] == '<' && organizer[organizer.length()-1] == '>' )
+        organizer = organizer.mid( 1, organizer.length() - 2 );
+    }
+    if ( KPIM::getNameAndMail( organizer, name, email ) )
+      linkPerson( email, name, "", iconPath );
+    else
+      // Doesn't seem to be a valid address. Just show whatever we have
+      mText += "<li>" + organizer + "</li>\n";
+    mText += "</ul>";
+
+    // Add attendees links
     addTag( "h3", i18n("Attendees") );
     mText.append( "<ul>" );
     Attendee::List::ConstIterator it;
     for( it = attendees.begin(); it != attendees.end(); ++it ) {
       Attendee *a = *it;
-#ifndef KORG_NOKABC
-      if ( a->name().isEmpty() ) {
-        addressList = add_book->findByEmail( a->email() );
-        KABC::Addressee o = addressList.first();
-        if ( !o.isEmpty() && addressList.size() < 2 ) {
-          addLink( "uid" + o.uid(), o.formattedName() );
-        } else {
-          mText += "<li>";
-          mText.append( a->email() );
-          mText += "\n";
-        }
-      } else {
-        mText += "<li><a href=\"uid:" + a->uid() + "\">";
-        if ( !a->name().isEmpty() ) mText += a->name();
-        else mText += a->email();
-        mText += "</a>\n";
-      }
-#else
-      mText += "<li><a href=\"uid:" + a->uid() + "\">";
-      if ( !a->name().isEmpty() ) mText += a->name();
-      else mText += a->email();
-      mText += "</a>\n";
-#endif
-      kdDebug(5850) << "formatAttendees: uid = " << a->uid() << endl;
-
-      if ( !a->email().isEmpty() ) {
-        if ( !iconPath.isNull() ) {
-          mText += "<a href=\"mailto:" + a->name() +" "+ "<" + a->email() + ">" + "\">";
-          mText += "<img src=\"" + iconPath + "\">";
-          mText += "</a>\n";
-        }
-      }
+      linkPerson( a->email(), a->name(), a->uid(), iconPath );
     }
-    mText.append( "</li></ul>" );
+    mText.append( "</ul>" );
   }
 }
 
