@@ -76,6 +76,7 @@ void KOViewManager::readSettings(KConfig *config)
   else if (view == "List") showListView();
   else if (view == "Journal") showJournalView();
   else if (view == "TimeSpan") showTimeSpanView();
+  else if (view == "Todo") showTodoView();
   else showAgendaView();
 }
 
@@ -89,6 +90,7 @@ void KOViewManager::writeSettings(KConfig *config)
   else if (mCurrentView == mListView) view = "List";
   else if (mCurrentView == mJournalView) view = "Journal";
   else if (mCurrentView == mTimeSpanView) view = "TimeSpan";
+  else if (mCurrentView == mTodoView) view = "Todo";
   else view = "Agenda";
 
   config->writeEntry("Current View",view);
