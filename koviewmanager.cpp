@@ -200,6 +200,8 @@ void KOViewManager::connectView(KOrg::BaseView *view)
            mMainView, SLOT( incidenceAdded( Incidence* ) ) );
   connect( view, SIGNAL( incidenceChanged( Incidence*, Incidence* ) ),
            mMainView, SLOT( incidenceChanged( Incidence*, Incidence* ) ) );
+  connect( view, SIGNAL( incidenceChanged( Incidence*, Incidence*, int ) ),
+           mMainView, SLOT( incidenceChanged( Incidence*, Incidence*, int ) ) );
   connect( view, SIGNAL( incidenceToBeDeleted( Incidence* ) ),
            mMainView, SLOT( incidenceToBeDeleted( Incidence* ) ) );
   connect( view, SIGNAL( incidenceDeleted( Incidence* ) ),
