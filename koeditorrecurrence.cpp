@@ -669,7 +669,7 @@ void KOEditorRecurrence::readEvent(Event *event)
   QList<int> rmd;
   int i;
 
-  setDateTimes(event->dtStart(),event->getDtEnd());
+  setDateTimes(event->dtStart(),event->dtEnd());
 
   // unset everything
   unsetAllCheckboxes();
@@ -730,7 +730,7 @@ void KOEditorRecurrence::readEvent(Event *event)
   }
 
   startDateLabel->setText(i18n("Begins On: %1")
-      .arg(KGlobal::locale()->formatDate(event->getDtStart().date())));
+      .arg(KGlobal::locale()->formatDate(event->dtStart().date())));
 
   if (event->recurrence()->doesRecur()) {
 
@@ -760,7 +760,7 @@ void KOEditorRecurrence::readEvent(Event *event)
   }
 
   QDateList exDates(false);
-  exDates = event->getExDates();
+  exDates = event->exDates();
   QDate *curDate;
   exceptionDateEdit->setDate(QDate::currentDate());
   for (curDate = exDates.first(); curDate;

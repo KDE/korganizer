@@ -230,7 +230,7 @@ void KOEventEditor::readEvent(Event *event)
   enableRecurrence(event->recurrence()->doesRecur());
 
   // categories
-  mCategoryDialog->setSelected(event->getCategories());
+  mCategoryDialog->setSelected(event->categories());
 
   // We should handle read-only events here.
 }

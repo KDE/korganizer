@@ -230,7 +230,7 @@ void KDateButton::dropEvent(QDropEvent *e)
   if (event) {
     e->acceptAction();
 
-    Event *existingEvent = mCalendar->getEvent(event->getVUID());
+    Event *existingEvent = mCalendar->getEvent(event->VUID());
       
     if(existingEvent) {
       // uniquify event
@@ -245,8 +245,8 @@ void KDateButton::dropEvent(QDropEvent *e)
     }
 //      kdDebug() << "Drop new Event" << endl;
     // Adjust date
-    QDateTime start = event->getDtStart();
-    QDateTime end = event->getDtEnd();
+    QDateTime start = event->dtStart();
+    QDateTime end = event->dtEnd();
     int duration = start.daysTo(end);
     start.setDate(mDate);
     end.setDate(mDate.addDays(duration));

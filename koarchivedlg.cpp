@@ -177,7 +177,7 @@ void ArchiveDialog::slotUser2()
   QStringList eventStrs;
   Event *ev;
   for(ev=events.first();ev;ev=events.next()) {
-    eventStrs.append(ev->getSummary());
+    eventStrs.append(ev->summary());
   }
   
   int result = KMessageBox::questionYesNoList(this,

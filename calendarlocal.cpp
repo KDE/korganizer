@@ -112,18 +112,18 @@ void CalendarLocal::close()
     QDate keyDate = keyToDate(qdi.currentKey());
     Event *ev;
     for(ev = tmpList->first();ev;ev = tmpList->next()) {
-//      kdDebug() << "-----FIRST.  " << ev->getSummary() << endl;
+//      kdDebug() << "-----FIRST.  " << ev->summary() << endl;
 //      kdDebug() << "---------MUL: " << (ev->isMultiDay() ? "Ja" : "Nein") << endl;
       bool del = false;
       if (ev->isMultiDay()) {
-        if (ev->getDtStart().date() == keyDate) {
+        if (ev->dtStart().date() == keyDate) {
           del = true;
         }
       } else {
         del = true;
       }
       if (del) {
-//        kdDebug() << "-----DEL  " << ev->getSummary() << endl;
+//        kdDebug() << "-----DEL  " << ev->summary() << endl;
         delete ev;
       }
     }
@@ -144,10 +144,9 @@ void CalendarLocal::close()
 
 void CalendarLocal::addEvent(Event *anEvent)
 {
-// OBSOLETE: anEvent->setTodoStatus(false);
   insertEvent(anEvent);
   // set event's read/write status  
-  if (anEvent->getOrganizer() != getEmail())
+  if (anEvent->organizer() != getEmail())
     anEvent->setReadOnly(TRUE);
   connect(anEvent, SIGNAL(eventUpdated(Incidence *)), this,
 	  SLOT(updateEvent(Incidence *)));
@@ -159,7 +158,7 @@ void CalendarLocal::deleteEvent(Event *event)
 {
   kdDebug() << "CalendarLocal::deleteEvent" << endl;
   
-  QDate date(event->getDtStart().date());
+  QDate date(event->dtStart().date());
 
   QList<Event> *tmpList;
   Event *anEvent;
@@ -180,8 +179,8 @@ void CalendarLocal::deleteEvent(Event *event)
 	} else {
 	  //kdDebug() << "deleting multi-day event" << endl;
 	  // event covers multiple days.
-	  startDate = anEvent->getDtStart().date();
-	  extraDays = startDate.daysTo(anEvent->getDtEnd().date());
+	  startDate = anEvent->dtStart().date();
+	  extraDays = startDate.daysTo(anEvent->dtEnd().date());
 	  for (dayOffset = 0; dayOffset <= extraDays; dayOffset++) {
 	    tmpDate = startDate.addDays(dayOffset);
 	    tmpList = mCalDict->find(makeKey(tmpDate));
@@ -227,8 +226,8 @@ void CalendarLocal::deleteEvent(Event *event)
 	 (*mOldestDate) = mOldestDate->addDays(1));
     mRecursList.first();
     while ((anEvent = mRecursList.current())) {
-      if (anEvent->getDtStart().date() < (*mOldestDate)) {
-	(*mOldestDate) = anEvent->getDtStart().date();
+      if (anEvent->dtStart().date() < (*mOldestDate)) {
+	(*mOldestDate) = anEvent->dtStart().date();
 	mRecursList.first();
       }
       anEvent = mRecursList.next();
@@ -241,8 +240,8 @@ void CalendarLocal::deleteEvent(Event *event)
 	 (*mNewestDate) = mNewestDate->addDays(-1));
     mRecursList.first();
     while ((anEvent = mRecursList.current())) {
-      if (anEvent->getDtStart().date() > (*mNewestDate)) {
-	(*mNewestDate) = anEvent->getDtStart().date();
+      if (anEvent->dtStart().date() > (*mNewestDate)) {
+	(*mNewestDate) = anEvent->dtStart().date();
 	mRecursList.first();
       }
       anEvent = mRecursList.next();
@@ -264,7 +263,7 @@ Event *CalendarLocal::getEvent(const QString &UniqueStr)
     eventList = dictIt.current();
     for (anEvent = eventList->first(); anEvent;
 	 anEvent = eventList->next()) {
-      if (anEvent->getVUID() == UniqueStr) {
+      if (anEvent->VUID() == UniqueStr) {
 	return anEvent;
       }
     }
@@ -272,7 +271,7 @@ Event *CalendarLocal::getEvent(const QString &UniqueStr)
   }
   for (anEvent = mRecursList.first(); anEvent;
        anEvent = mRecursList.next()) {
-    if (anEvent->getVUID() == UniqueStr) {
+    if (anEvent->VUID() == UniqueStr) {
       return anEvent;
     }
   }
@@ -282,7 +281,6 @@ Event *CalendarLocal::getEvent(const QString &UniqueStr)
 
 void CalendarLocal::addTodo(Todo *todo)
 {
-// OBSOLETE:  todo->setTodoStatus(true);
   mTodoList.append(todo);
   connect(todo, SIGNAL(eventUpdated(Incidence *)), this,
 	  SLOT(updateEvent(Incidence *)));
@@ -307,7 +305,7 @@ Todo *CalendarLocal::getTodo(const QString &UniqueStr)
   Todo *aTodo;
   for (aTodo = mTodoList.first(); aTodo;
        aTodo = mTodoList.next())
-    if (aTodo->getVUID() == UniqueStr)
+    if (aTodo->VUID() == UniqueStr)
       return aTodo;
   // not found
   return 0;
@@ -342,7 +340,7 @@ int CalendarLocal::numEvents(const QDate &qd)
   // next, check for repeating events.  Even those that span multiple days...
   for (anEvent = mRecursList.first(); anEvent; anEvent = mRecursList.next()) {
     if (anEvent->isMultiDay()) {
-      extraDays = anEvent->getDtStart().date().daysTo(anEvent->getDtEnd().date());
+      extraDays = anEvent->dtStart().date().daysTo(anEvent->dtEnd().date());
       //kdDebug() << "multi day event w/" << extraDays << " days" << endl;
       for (i = 0; i <= extraDays; i++) {
 	if (anEvent->recursOn(qd.addDays(i))) {
@@ -412,7 +410,7 @@ void CalendarLocal::updateEvent(Incidence *incidence)
     QList<Attendee> al;
     Attendee *a;
     
-    al = incidence->getAttendeeList();
+    al = incidence->attendees();
     for (a = al.first(); a; a = al.next()) {
       if ((a->flag()) && (a->RSVP())) {
 	//kdDebug() << "send appointment to " << a->getName() << endl;
@@ -462,26 +460,26 @@ void CalendarLocal::insertEvent(const Event *anEvent)
   // initialize if they haven't been allocated yet;
   if (!mOldestDate) {
     mOldestDate = new QDate();
-    (*mOldestDate) = anEvent->getDtStart().date();
+    (*mOldestDate) = anEvent->dtStart().date();
   } 
   if (!mNewestDate) {
     mNewestDate = new QDate();
-    (*mNewestDate) = anEvent->getDtStart().date();
+    (*mNewestDate) = anEvent->dtStart().date();
   }
     
   // update oldest and newest dates if necessary.
-  if (anEvent->getDtStart().date() < (*mOldestDate))
-    (*mOldestDate) = anEvent->getDtStart().date();
-  if (anEvent->getDtStart().date() > (*mNewestDate))
-    (*mNewestDate) = anEvent->getDtStart().date();
+  if (anEvent->dtStart().date() < (*mOldestDate))
+    (*mOldestDate) = anEvent->dtStart().date();
+  if (anEvent->dtStart().date() > (*mNewestDate))
+    (*mNewestDate) = anEvent->dtStart().date();
 
   if (anEvent->recurrence()->doesRecur()) {
     mRecursList.append(anEvent);
   } else {
     // set up the key
-    extraDays = anEvent->getDtStart().date().daysTo(anEvent->getDtEnd().date());
+    extraDays = anEvent->dtStart().date().daysTo(anEvent->dtEnd().date());
     for (dayCount = 0; dayCount <= extraDays; dayCount++) {
-      tmpKey = makeKey(anEvent->getDtStart().addDays(dayCount));
+      tmpKey = makeKey(anEvent->dtStart().addDays(dayCount));
       // insert the item into the proper list in the dictionary
       if ((eventList = mCalDict->find(tmpKey)) != 0) {
 	eventList->append(anEvent);
@@ -546,7 +544,7 @@ QList<Event> CalendarLocal::eventsForDate(const QDate &qd, bool sorted)
   int extraDays, i;
   for (anEvent = mRecursList.first(); anEvent; anEvent = mRecursList.next()) {
     if (anEvent->isMultiDay()) {
-      extraDays = anEvent->getDtStart().date().daysTo(anEvent->getDtEnd().date());
+      extraDays = anEvent->dtStart().date().daysTo(anEvent->dtEnd().date());
       for (i = 0; i <= extraDays; i++) {
 	if (anEvent->recursOn(qd.addDays(i))) {
 	  eventList.append(anEvent);
@@ -566,13 +564,13 @@ QList<Event> CalendarLocal::eventsForDate(const QDate &qd, bool sorted)
   QList<Event> eventListSorted;
   for (anEvent = eventList.first(); anEvent; anEvent = eventList.next()) {
     if (!eventListSorted.isEmpty() &&
-	anEvent->getDtStart().time() < eventListSorted.at(0)->getDtStart().time()) {
+	anEvent->dtStart().time() < eventListSorted.at(0)->dtStart().time()) {
       eventListSorted.insert(0,anEvent);
       goto nextToInsert;
     }
     for (i = 0; (uint) i+1 < eventListSorted.count(); i++) {
-      if (anEvent->getDtStart().time() > eventListSorted.at(i)->getDtStart().time() &&
-	  anEvent->getDtStart().time() <= eventListSorted.at(i+1)->getDtStart().time()) {
+      if (anEvent->dtStart().time() > eventListSorted.at(i)->dtStart().time() &&
+	  anEvent->dtStart().time() <= eventListSorted.at(i+1)->dtStart().time()) {
 	eventListSorted.insert(i+1,anEvent);
 	goto nextToInsert;
       }
@@ -602,8 +600,8 @@ QList<Event> CalendarLocal::events(const QDate &start,const QDate &end,
       for(ev = tmpList->first();ev;ev = tmpList->next()) {
         bool found = false;
         if (ev->isMultiDay()) {  // multi day event
-          QDate mStart = ev->getDtStart().date();
-          QDate mEnd = ev->getDtEnd().date();
+          QDate mStart = ev->dtStart().date();
+          QDate mEnd = ev->dtEnd().date();
 
           // Check multi-day events only on one date of its duration, the first
           // date which lies in the specified range.
@@ -630,7 +628,7 @@ QList<Event> CalendarLocal::events(const QDate &start,const QDate &end,
 
   // Get recurring events
   for(ev = mRecursList.first();ev;ev = mRecursList.next()) {
-    QDate rStart = ev->getDtStart().date();
+    QDate rStart = ev->dtStart().date();
     bool found = false;
     if (inclusive) {
       if (rStart >= start && rStart <= end) {

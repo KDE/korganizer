@@ -50,9 +50,9 @@ void MailMsgString::buildTextMsg(Event * selectedEvent)
   mBody += i18n("Summary: %1").arg(selectedEvent->summary());
   if (!selectedEvent->doesFloat()) {
     mBody += CR;
-    mBody += i18n("Start Date: %1").arg(selectedEvent->getDtStartDateStr());
+    mBody += i18n("Start Date: %1").arg(selectedEvent->dtStartDateStr());
     mBody += CR;
-    mBody += i18n("Start Time: %1").arg(selectedEvent->getDtStartTimeStr());
+    mBody += i18n("Start Time: %1").arg(selectedEvent->dtStartTimeStr());
     mBody += CR;
     if (selectedEvent->recurrence()->doesRecur()) {
       mBody += i18n("Recurs: %1")
@@ -95,13 +95,13 @@ void KOMailClient::emailEvent(Event *selectedEvent)
   bool sent = false;
 
   // Generate List of Addressees
-  QList<Attendee> participants = selectedEvent->getAttendeeList();
+  QList<Attendee> participants = selectedEvent->attendees();
   Attendee *a;
   for (a = participants.first();a;a=participants.next()) {
     if (a->getStatus() == Attendee::NEEDS_ACTION) {
       msg.setAddressee(a);
       if (!sendMail(KOPrefs::instance()->mEmail,msg.addressee(),
-                    selectedEvent->getSummary(),msg.body(),
+                    selectedEvent->summary(),msg.body(),
                     KOPrefs::instance()->mBcc)) {
         KMessageBox::error(0,i18n("Mail delivery to %1 failed.")
                              .arg(msg.addressee()));

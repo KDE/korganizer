@@ -8,8 +8,6 @@
 
 Todo::Todo()
 {
-  mIsTodo = false;
-
   mStatus = TENTATIVE;
 
   mHasDueDate = false;

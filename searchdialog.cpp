@@ -140,19 +140,19 @@ void SearchDialog::search(const QRegExp &re)
   Event *ev;
   for(ev=events.first();ev;ev=events.next()) {
     if (mSummaryCheck->isChecked()) {
-      if (re.match(ev->getSummary()) != -1) {
+      if (re.match(ev->summary()) != -1) {
         mMatchedEvents.append(ev);
         continue;
       }
     }
     if (mDescriptionCheck->isChecked()) {
-      if (re.match(ev->getDescription()) != -1) {
+      if (re.match(ev->description()) != -1) {
         mMatchedEvents.append(ev);
         continue;
       }
     }
     if (mCategoryCheck->isChecked()) {
-      if (re.match(ev->getCategoriesStr()) != -1) {
+      if (re.match(ev->categoriesStr()) != -1) {
         mMatchedEvents.append(ev);
         continue;
       }

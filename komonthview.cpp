@@ -185,21 +185,21 @@ void KSummaries::calUpdated()
   Event *anEvent;
   for(anEvent = events.first(); anEvent; anEvent = events.next()) {
     if (anEvent->isMultiDay()) {
-      if (myDate == anEvent->getDtStart().date()) {
-        sumString = "(---- " + anEvent->getSummary();
-      } else if (myDate == anEvent->getDtEnd().date()) {
-        sumString = anEvent->getSummary() + " ----)";
-      } else if (!(anEvent->getDtStart().date().daysTo(myDate) % 7)) {
-        sumString = "---- " + anEvent->getSummary() + "----";
+      if (myDate == anEvent->dtStart().date()) {
+        sumString = "(---- " + anEvent->summary();
+      } else if (myDate == anEvent->dtEnd().date()) {
+        sumString = anEvent->summary() + " ----)";
+      } else if (!(anEvent->dtStart().date().daysTo(myDate) % 7)) {
+        sumString = "---- " + anEvent->summary() + "----";
       } else {
         sumString = "----------------";
       }
     } else {
       if (anEvent->doesFloat())
-        sumString = anEvent->getSummary();
+        sumString = anEvent->summary();
       else {
-        sumString = KGlobal::locale()->formatTime(anEvent->getDtStart().time());
-        sumString += " " + anEvent->getSummary();
+        sumString = KGlobal::locale()->formatTime(anEvent->dtStart().time());
+        sumString += " " + anEvent->summary();
       }
     }
 
@@ -221,7 +221,7 @@ void KSummaries::calUpdated()
         sumString += " ";
       }
     }
-    sumString += i18n("Todo: ") + todo->getSummary();
+    sumString += i18n("Todo: ") + todo->summary();
 
     elitem = new EventListBoxItem(sumString);
     insertItem(elitem);

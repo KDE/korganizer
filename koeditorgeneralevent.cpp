@@ -463,23 +463,23 @@ void KOEditorGeneralEvent::readEvent(Event *event)
   QDateTime tmpDT;
   int i;
 
-  summaryEdit->setText(event->getSummary());
-  descriptionEdit->setText(event->getDescription());
+  summaryEdit->setText(event->summary());
+  descriptionEdit->setText(event->description());
 
   // organizer information
-  ownerLabel->setText(i18n("Owner: ") + event->getOrganizer());
+  ownerLabel->setText(i18n("Owner: ") + event->organizer());
 
   // the rest is for the events only
   noTimeButton->setChecked(event->doesFloat());
   timeStuffDisable(event->doesFloat());
   alarmStuffDisable(event->doesFloat());
 
-  setDateTimes(event->getDtStart(),event->getDtEnd());
+  setDateTimes(event->dtStart(),event->dtEnd());
 
   recursButton->setChecked(event->recurrence()->doesRecur());
 //  recurStuffEnable(event->doesRecur());
 
-  privateButton->setChecked((event->getSecrecy() > 0) ? true : false);
+  privateButton->setChecked((event->secrecy() > 0) ? true : false);
 
   // set up alarm stuff
   alarmButton->setChecked(event->alarm()->alarmRepeatCount());
@@ -515,11 +515,11 @@ void KOEditorGeneralEvent::readEvent(Event *event)
     alarmStuffEnable(false);
   }
 
-  if (event->getTransparency() > 0)
+  if (event->transparency() > 0)
     freeTimeCombo->setCurrentItem(1);
   // else it is implicitly 0 (i.e. busy)
 
-  setCategories(event->getCategoriesStr());
+  setCategories(event->categoriesStr());
 }
 
 void KOEditorGeneralEvent::writeEvent(Event *event)
@@ -581,7 +581,7 @@ void KOEditorGeneralEvent::writeEvent(Event *event)
     else if (alarmIncrCombo->currentItem() == 2)
       j = j * (60 * 24);
 
-    tmpDT = event->getDtStart();
+    tmpDT = event->dtStart();
     tmpDT = tmpDT.addSecs(j);
     event->alarm()->setAlarmTime(tmpDT);
     if (!alarmProgram.isEmpty() && alarmProgramButton->isOn())

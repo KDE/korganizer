@@ -45,10 +45,10 @@ void KOrganizerApp::displayImminent(const QString &file,int numdays)
     printf("---------------------------------------------------------------\n");
     if (tmpList.count() > 0) {
       for (currEvent = tmpList.first(); currEvent; currEvent = tmpList.next()) {
-        printf("%s",currEvent->getSummary().latin1());
+        printf("%s",(const char *)currEvent->summary().local8Bit());
         if (!currEvent->doesFloat()) {
-          printf(" (%s - %s)",currEvent->getDtStartStr().latin1(),
-                 currEvent->getDtEndStr().latin1());
+          printf(" (%s - %s)",(const char *)currEvent->dtStartStr().local8Bit(),
+                 (const char *)currEvent->dtEndStr().local8Bit());
         }
         printf("\n");
       }
@@ -61,7 +61,7 @@ void KOrganizerApp::displayImminent(const QString &file,int numdays)
     Todo *currTodo;
     if (tmpList.count() > 0) {
       for (currTodo = tmpList2.first(); currTodo; currTodo = tmpList2.next()) {
-        printf("%s",(const char *)currTodo->getSummary().local8Bit());
+        printf("%s",(const char *)currTodo->summary().local8Bit());
         if (!currTodo->doesFloat()) {
           printf(" (%s)",(const char *)currTodo->dtDueStr().local8Bit());
         }

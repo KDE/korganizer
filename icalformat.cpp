@@ -345,16 +345,16 @@ Event *ICalFormat::pasteEvent(const QDate *newDate,const QTime *newTime)
       if (mCalendar->getEvent(anEvent->VUID()))
 	anEvent->setVUID(uidStr);
 
-      daysOffset = anEvent->getDtEnd().date().dayOfYear() - 
-	anEvent->getDtStart().date().dayOfYear();
+      daysOffset = anEvent->dtEnd().date().dayOfYear() - 
+	anEvent->dtStart().date().dayOfYear();
       
       if (newTime)
 	anEvent->setDtStart(QDateTime(*newDate, *newTime));
       else
-	anEvent->setDtStart(QDateTime(*newDate, anEvent->getDtStart().time()));
+	anEvent->setDtStart(QDateTime(*newDate, anEvent->dtStart().time()));
       
       anEvent->setDtEnd(QDateTime(newDate->addDays(daysOffset),
-				  anEvent->getDtEnd().time()));
+				  anEvent->dtEnd().time()));
       mCalendar->addEvent(anEvent);
     } else {
       kdDebug() << "found a VEvent with no DTSTART/DTEND! Skipping" << endl;
@@ -576,11 +576,11 @@ icalcomponent *ICalFormat::writeEvent(Event *event)
   // start and end time
   icaltimetype start,end;
   if (event->doesFloat()) {
-    start = writeICalDate(event->getDtStart().date());
-    end = writeICalDate(event->getDtEnd().date());
+    start = writeICalDate(event->dtStart().date());
+    end = writeICalDate(event->dtEnd().date());
   } else {
-    start = writeICalDateTime(event->getDtStart());
-    end = writeICalDateTime(event->getDtEnd());
+    start = writeICalDateTime(event->dtStart());
+    end = writeICalDateTime(event->dtEnd());
   }
   icalcomponent_add_property(vevent,icalproperty_new_dtstart(start));
   icalcomponent_add_property(vevent,icalproperty_new_dtend(end));
@@ -597,7 +597,7 @@ icalcomponent *ICalFormat::writeEvent(Event *event)
 #if 0
   // exceptions to recurrence
   QDateList dateList(FALSE);
-  dateList = anEvent->getExDates();
+  dateList = anEvent->exDates();
   QDate *tmpDate;
   QString tmpStr2 = "";
 
@@ -677,18 +677,18 @@ void ICalFormat::writeIncidence(icalcomponent *parent,Incidence *incidence)
 
   // last modification date
   icalcomponent_add_property(parent,icalproperty_new_lastmodified(
-      writeICalDateTime(incidence->getLastModified())));
+      writeICalDateTime(incidence->lastModified())));
 
   icalcomponent_add_property(parent,icalproperty_new_dtstamp(
       writeICalDateTime(QDateTime::currentDateTime())));
 
   // organizer stuff
   icalcomponent_add_property(parent,icalproperty_new_organizer(
-      writeText("MAILTO:" + incidence->getOrganizer())));
+      writeText("MAILTO:" + incidence->organizer())));
 
   // attendees
   if (incidence->attendeeCount() != 0) {
-    QList<Attendee> al = incidence->getAttendeeList();
+    QList<Attendee> al = incidence->attendees();
     QListIterator<Attendee> ai(al);
     Attendee *curAttendee;
     
@@ -724,18 +724,18 @@ void ICalFormat::writeIncidence(icalcomponent *parent,Incidence *incidence)
   }
 
   // description
-  if (!incidence->getDescription().isEmpty()) {
+  if (!incidence->description().isEmpty()) {
     icalcomponent_add_property(parent,icalproperty_new_description(
-        writeText(incidence->getDescription())));
+        writeText(incidence->description())));
 // TODO:
 //    if (incidence->getDescription().find('\n') != -1)
 //      addProp(d, VCQuotedPrintableProp);
   }
 
   // summary
-  if (!incidence->getSummary().isEmpty()) {
+  if (!incidence->summary().isEmpty()) {
     icalcomponent_add_property(parent,icalproperty_new_summary(
-        writeText(incidence->getSummary())));
+        writeText(incidence->summary())));
   }
 
 // TODO:
@@ -744,10 +744,10 @@ void ICalFormat::writeIncidence(icalcomponent *parent,Incidence *incidence)
 
   // priority
   icalcomponent_add_property(parent,icalproperty_new_priority(
-      incidence->getPriority()));
+      incidence->priority()));
 
   // categories
-  QStringList categories = incidence->getCategories();
+  QStringList categories = incidence->categories();
   QStringList::Iterator it;
   for(it = categories.begin(); it != categories.end(); ++it ) {
     icalcomponent_add_property(parent,icalproperty_new_categories(
@@ -781,17 +781,17 @@ void ICalFormat::writeIncidence(icalcomponent *parent,Incidence *incidence)
 */
 
   // related event
-  if (incidence->getRelatedTo()) {
+  if (incidence->relatedTo()) {
     icalcomponent_add_property(parent,icalproperty_new_relatedto(
-        writeText(incidence->getRelatedTo()->VUID())));
+        writeText(incidence->relatedTo()->VUID())));
   }
 
 // TODO:
   // pilot sync stuff
 #if 0
-  tmpStr.sprintf("%i",incidence->getPilotId());
+  tmpStr.sprintf("%i",incidence->pilotId());
   addPropValue(parent, KPilotIdProp, tmpStr.ascii());
-  tmpStr.sprintf("%i",incidence->getSyncStatus());
+  tmpStr.sprintf("%i",incidence->syncStatus());
   addPropValue(parent, KPilotStatusProp, tmpStr.ascii());
 #endif
 
@@ -896,7 +896,6 @@ icalproperty *writeRecurrenceRule(Incidence *event)
 Todo *ICalFormat::readTodo(icalcomponent *vtodo)
 {
   Todo *todo = new Todo;
-// OBSOLETE:  todo->setTodoStatus(true);
 
   readIncidence(vtodo,todo);
 
@@ -986,9 +985,9 @@ Event *ICalFormat::readEvent(icalcomponent *vevent)
   // fix up for events that take up no time but have a time associated
 #if 0
   if (!(vo = isAPropertyOf(vevent, VCDTstartProp)))
-    anEvent->setDtStart(anEvent->getDtEnd());
+    anEvent->setDtStart(anEvent->dtEnd());
   if (!(vo = isAPropertyOf(vevent, VCDTendProp)))
-    anEvent->setDtEnd(anEvent->getDtStart());
+    anEvent->setDtEnd(anEvent->dtStart());
 #endif
   
       case ICAL_RRULE_PROPERTY:
@@ -1093,9 +1092,9 @@ Event *ICalFormat::readEvent(icalcomponent *vevent)
 
   // some stupid vCal exporters ignore the standard and use Description
   // instead of Summary for the default field.  Correct for this.
-  if (event->getSummary().isEmpty() && 
-      !(event->getDescription().isEmpty())) {
-    QString tmpStr = event->getDescription().simplifyWhiteSpace();
+  if (event->summary().isEmpty() && 
+      !(event->description().isEmpty())) {
+    QString tmpStr = event->description().simplifyWhiteSpace();
     event->setDescription("");
     event->setSummary(tmpStr);
   }
@@ -1282,7 +1281,7 @@ void ICalFormat::readRecurrenceRule(icalproperty *rrule,Incidence *event)
       QString dayStr;
       if( index == last ) {
 	// e.g. W1 #0
-	qba.setBit(anEvent->getDtStart().date().dayOfWeek() - 1);
+	qba.setBit(anEvent->dtStart().date().dayOfWeek() - 1);
       }
       else {
 	// e.g. W1 SU #0
@@ -1315,10 +1314,10 @@ void ICalFormat::readRecurrenceRule(icalproperty *rrule,Incidence *event)
       short tmpPos;
       if( index == last ) {
 	// e.g. MP1 #0
-	tmpPos = anEvent->getDtStart().date().day()/7 + 1;
+	tmpPos = anEvent->dtStart().date().day()/7 + 1;
 	if( tmpPos == 5 )
 	  tmpPos = -1;
-	qba.setBit(anEvent->getDtStart().date().dayOfWeek() - 1);
+	qba.setBit(anEvent->dtStart().date().dayOfWeek() - 1);
 	anEvent->addRecursMonthlyPos(tmpPos, qba);
       }
       else {
@@ -1363,7 +1362,7 @@ void ICalFormat::readRecurrenceRule(icalproperty *rrule,Incidence *event)
       short tmpDay;
       if( index == last ) {
 	// e.g. MD1 #0
-	tmpDay = anEvent->getDtStart().date().day();
+	tmpDay = anEvent->dtStart().date().day();
 	anEvent->addRecursMonthlyDay(tmpDay);
       }
       else {
@@ -1400,7 +1399,7 @@ void ICalFormat::readRecurrenceRule(icalproperty *rrule,Incidence *event)
       short tmpMonth;
       if( index == last ) {
 	// e.g. YM1 #0
-	tmpMonth = anEvent->getDtStart().date().month();
+	tmpMonth = anEvent->dtStart().date().month();
 	anEvent->addRecursYearlyNum(tmpMonth);
       }
       else {
@@ -1434,7 +1433,7 @@ void ICalFormat::readRecurrenceRule(icalproperty *rrule,Incidence *event)
       short tmpDay;
       if( index == last ) {
 	// e.g. YD1 #0
-	tmpDay = anEvent->getDtStart().date().dayOfYear();
+	tmpDay = anEvent->dtStart().date().dayOfYear();
 	anEvent->addRecursYearlyNum(tmpDay);
       }
       else {
@@ -1710,11 +1709,11 @@ void ICalFormat::populate(icalcomponent *calendar)
   // Post-Process list of events with relations, put Event objects in relation
   Event *ev;
   for ( ev=mEventsRelate.first(); ev != 0; ev=mEventsRelate.next() ) {
-    ev->setRelatedTo(mCalendar->getEvent(ev->getRelatedToVUID()));
+    ev->setRelatedTo(mCalendar->getEvent(ev->relatedToVUID()));
   }
   Todo *todo;
   for ( todo=mTodosRelate.first(); todo != 0; todo=mTodosRelate.next() ) {
-    todo->setRelatedTo(mCalendar->getTodo(todo->getRelatedToVUID()));
+    todo->setRelatedTo(mCalendar->getTodo(todo->relatedToVUID()));
   }
 }
 

@@ -300,20 +300,20 @@ void ExportWebDialog::createHtmlEvent (QTextStream *ts, Event *event,
   *ts << "  <TR>\n";
 
   *ts << "    <TD CLASS=sum>\n";
-  *ts << "      <B>" << event->getSummary() << "</B>\n";
-  if (!event->getDescription().isEmpty()) {
-    *ts << "      <P>" << event->getDescription() << "</P>\n";
+  *ts << "      <B>" << event->summary() << "</B>\n";
+  if (!event->description().isEmpty()) {
+    *ts << "      <P>" << event->description() << "</P>\n";
   }
   *ts << "    </TD>\n";
 
   if (!event->doesFloat()) {
-    if (event->getDtStart().date() == date) {
-      *ts << "    <TD>" << event->getDtStartTimeStr() << "</TD>\n";
+    if (event->dtStart().date() == date) {
+      *ts << "    <TD>" << event->dtStartTimeStr() << "</TD>\n";
     } else {
       *ts << "    <TD>&nbsp;</TD>\n";
     }
-    if (event->getDtEnd().date() == date) {
-      *ts << "    <TD>" << event->getDtEndTimeStr() << "</TD>\n";
+    if (event->dtEnd().date() == date) {
+      *ts << "    <TD>" << event->dtEndTimeStr() << "</TD>\n";
     } else {
       *ts << "    <TD>&nbsp;</TD>\n";
     }
@@ -347,7 +347,7 @@ void ExportWebDialog::createHtmlTodoList (QTextStream *ts)
   // replaced by a real sorting algorithm.
   for (int i=1; i<=5; ++i) {
     for(ev=rawTodoList.first();ev;ev=rawTodoList.next()) {
-      if (ev->getPriority() == i) todoList.append(ev);
+      if (ev->priority() == i) todoList.append(ev);
     }
   }
   
@@ -369,12 +369,12 @@ void ExportWebDialog::createHtmlTodoList (QTextStream *ts)
 
   // Create top-level list.
   for(ev=todoList.first();ev;ev=todoList.next()) {
-    if (!ev->getRelatedTo()) createHtmlTodo(ts,ev);
+    if (!ev->relatedTo()) createHtmlTodo(ts,ev);
   }
 
   // Create sub-level lists
   for(ev=todoList.first();ev;ev=todoList.next()) {
-    QList<Incidence> relations = ev->getRelations();
+    QList<Incidence> relations = ev->relations();
     if (relations.count()) {
       // Generate sub-task list of event ev
       *ts << "  <TR>\n";
@@ -481,7 +481,7 @@ void ExportWebDialog::createHtmlTodo (QTextStream *ts,Todo *todo)
 
 void ExportWebDialog::formatHtmlCategories (QTextStream *ts,Incidence *event)
 {
-  if (!event->getCategoriesStr().isEmpty()) {
+  if (!event->categoriesStr().isEmpty()) {
     *ts << "    " << event->categoriesStr() << "\n";
   } else {
     *ts << "    &nbsp;\n";

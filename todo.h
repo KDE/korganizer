@@ -51,9 +51,6 @@ class Todo : public Incidence
     /** return the event's status in string format. */
     QString statusStr() const;
 
-    void setTodoStatus(bool stat) { mIsTodo = stat; emit eventUpdated(this); };
-    bool todoStatus() const { return mIsTodo; };
-
   private:
 
     QDateTime mDtDue;                     // due date of todo
@@ -62,8 +59,6 @@ class Todo : public Incidence
     bool mHasStartDate;                  // if todo has associated start date
 
     int  mStatus;                         // confirmed/delegated/tentative/etc
-
-    bool mIsTodo;                         // true if this is a "todo"
 };
 
 #endif

@@ -359,14 +359,14 @@ void CalPrinter::printTodo(const QDate &fd, const QDate &td)
   for(int cprior = 1; cprior <= 6; cprior++) {
     Todo *currEvent(todoList.first());
     while (currEvent != NULL) {
-      QDate start = currEvent->getDtStart().date();
+      QDate start = currEvent->dtStart().date();
       // if it is not to start yet, skip.
       if ( (!start.isValid()) && (start >= td) ) {
 	currEvent = todoList.next();
 	continue;
       }      
       // priority
-      int priority = currEvent->getPriority();
+      int priority = currEvent->priority();
       // 6 is the lowest priority (the unspecified one)
       if ((priority != cprior) || ((cprior==6) && (priority==0))) {
 	currEvent = todoList.next();
@@ -379,7 +379,7 @@ void CalPrinter::printTodo(const QDate &fd, const QDate &td)
 		     outStr);
       }
       // summary
-      outStr=currEvent->getSummary();
+      outStr=currEvent->summary();
      
       p.drawText(possummary, (lineSpacing*count)+headerHeight,
 		 outStr);
@@ -533,13 +533,13 @@ void CalPrinter::drawDayBox(QPainter &p, const QDate &qd,
 
   while (count <= 9 && (currEvent != NULL)) {
     if (currEvent->doesFloat() || currEvent->isMultiDay())
-      outStr += currEvent->getSummary();
+      outStr += currEvent->summary();
     
     else {
-      QTime t1 = currEvent->getDtStart().time();
+      QTime t1 = currEvent->dtStart().time();
       
       outStr = local->formatTime(t1);
-      outStr += currEvent->getSummary();
+      outStr += currEvent->summary();
   
     } // doesFloat
      
@@ -604,24 +604,24 @@ void CalPrinter::drawDay(QPainter &p, const QDate &qd, int width, int height)
   p.setBrush(QBrush(Dense4Pattern));
   for (currEvent = eventList.first(); currEvent;
        currEvent = eventList.next()) {
-    int startTime = currEvent->getDtStart().time().hour();
-    int endTime = currEvent->getDtEnd().time().hour();
+    int startTime = currEvent->dtStart().time().hour();
+    int endTime = currEvent->dtEnd().time().hour();
     float minuteInc = cellHeight / 60.0;
     if ((startTime >= startHour)  && 
 	(endTime <= (startHour + 12))) {
       startTime -= startHour;
       int startMinuteOff = (int) (minuteInc * 
-	currEvent->getDtStart().time().minute());
+	currEvent->dtStart().time().minute());
       endTime -= startHour;
       int endMinuteOff = (int) (minuteInc * 
-	currEvent->getDtEnd().time().minute());
+	currEvent->dtEnd().time().minute());
       p.drawRect(80, offset+startMinuteOff+startTime*cellHeight, 
 		 cellWidth, endMinuteOff + (endTime - startTime)*cellHeight);
       p.drawText(85, 
 		 offset+startMinuteOff+startTime*cellHeight+5,
 		 cellWidth-10, 
 		 endMinuteOff + (endTime - startTime)*cellHeight-10,
-		 AlignLeft | AlignTop, currEvent->getSummary());
+		 AlignLeft | AlignTop, currEvent->summary());
     }
   }
   p.setBrush(QBrush(NoBrush));

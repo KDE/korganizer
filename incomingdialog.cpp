@@ -57,7 +57,7 @@ void IncomingDialog::retrieve()
     Scheduler::Method method = (Scheduler::Method)message->method();
     icalclass status = message->status();
   
-    kdDebug() << "IncomingDialog::retrieve(): summary: " << event->getSummary()
+    kdDebug() << "IncomingDialog::retrieve(): summary: " << event->summary()
               << "  method: " << Scheduler::methodName(method) << endl;
     new ScheduleItemIn(mMessageListView,event,method,status);
   }

@@ -20,7 +20,7 @@ KOAgendaItem::KOAgendaItem(Event *event, QWidget *parent,
 {
   mEvent = event;
 
-  QStringList categories = mEvent->getCategories();
+  QStringList categories = mEvent->categories();
   QString cat = categories.first();
   if (cat.isEmpty()) {
     setPalette(QPalette(KOPrefs::instance()->mEventColor,
@@ -30,7 +30,7 @@ KOAgendaItem::KOAgendaItem(Event *event, QWidget *parent,
                         *(KOPrefs::instance()->categoryColor(cat))));
   }
 
-  mItemLabel = new QLabel(mEvent->getSummary(),this,"KOAgendaItem::itemLabel");
+  mItemLabel = new QLabel(mEvent->summary(),this,"KOAgendaItem::itemLabel");
   mItemLabel->setAlignment(AlignCenter|WordBreak);
   mItemLabel->setMouseTracking(true);
 
@@ -86,8 +86,8 @@ KOAgendaItem::KOAgendaItem(Event *event, QWidget *parent,
   mSelected = true;
   select(false);
 
-//  QToolTip::add(this,mEvent->getSummary());
-  QToolTip::add(this,mEvent->getSummary(),toolTipGroup(),"");
+//  QToolTip::add(this,mEvent->summary());
+  QToolTip::add(this,mEvent->summary(),toolTipGroup(),"");
 }
 
 

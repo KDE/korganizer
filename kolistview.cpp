@@ -30,11 +30,11 @@ ListItemVisitor::~ListItemVisitor()
 
 bool ListItemVisitor::visit(Event *e)
 {
-  mItem->setText(0,e->getSummary());
-  mItem->setText(1,e->getDtStartDateStr());
-  mItem->setText(2,e->getDtStartTimeStr());
-  mItem->setText(3,e->getDtEndDateStr());
-  mItem->setText(4,e->getDtEndTimeStr());
+  mItem->setText(0,e->summary());
+  mItem->setText(1,e->dtStartDateStr());
+  mItem->setText(2,e->dtStartTimeStr());
+  mItem->setText(3,e->dtEndDateStr());
+  mItem->setText(4,e->dtEndTimeStr());
   mItem->setText(5,e->alarm()->alarmRepeatCount() ? i18n("Yes") : i18n("No"));
   mItem->setText(6,e->recurrence()->doesRecur() ? i18n("Yes") : i18n("No"));
   mItem->setText(7,"---");
@@ -45,7 +45,7 @@ bool ListItemVisitor::visit(Event *e)
 
 bool ListItemVisitor::visit(Todo *t)
 {
-  mItem->setText(0,i18n("Todo: %1").arg(t->getSummary()));
+  mItem->setText(0,i18n("Todo: %1").arg(t->summary()));
   mItem->setText(1,"---");
   mItem->setText(2,"---");
   mItem->setText(3,"---");

@@ -724,8 +724,8 @@ void KOAgendaView::fillAgenda()
       Event *event = dayEvents.at(numEvent);
 //      kdDebug() << " Event: " << event->getSummary() << endl;
 
-      int beginX = currentDate.daysTo(event->getDtStart().date()) + curCol;
-      int endX = currentDate.daysTo(event->getDtEnd().date()) + curCol;
+      int beginX = currentDate.daysTo(event->dtStart().date()) + curCol;
+      int endX = currentDate.daysTo(event->dtEnd().date()) + curCol;
 
 //      kdDebug() << "  beginX: " << beginX << "  endX: " << endX << endl;
       
@@ -740,8 +740,8 @@ void KOAgendaView::fillAgenda()
           }
         }
       } else if (event->isMultiDay()) {
-        int startY = mAgenda->timeToY(event->getDtStart().time());
-        int endY = mAgenda->timeToY(event->getDtEnd().time()) - 1;  
+        int startY = mAgenda->timeToY(event->dtStart().time());
+        int endY = mAgenda->timeToY(event->dtEnd().time()) - 1;  
         if ((beginX <= 0 && curCol == 0) || beginX == curCol) {
           mAgenda->insertMultiItem(event,beginX,endX,startY,endY);
         }
@@ -756,8 +756,8 @@ void KOAgendaView::fillAgenda()
           mMaxY[curCol] = mAgenda->timeToY(QTime(23,59));
         }
       } else {
-        int startY = mAgenda->timeToY(event->getDtStart().time());
-        int endY = mAgenda->timeToY(event->getDtEnd().time()) - 1;
+        int startY = mAgenda->timeToY(event->dtStart().time());
+        int endY = mAgenda->timeToY(event->dtEnd().time()) - 1;
 	if (endY < startY) endY = startY;
 	mAgenda->insertItem(event,curCol,startY,endY);
         if (startY < mMinY[curCol]) mMinY[curCol] = startY;

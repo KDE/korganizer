@@ -15,7 +15,7 @@ ScheduleItemOut::ScheduleItemOut(QListView *parent,Event *ev,
   mMethod = method;
   mRecipients = recipients;
   
-  setText(0,ev->getSummary());
+  setText(0,ev->summary());
   setText(1,Scheduler::methodName(mMethod));
   if (mMethod == Scheduler::Publish) {
     if (!recipients.isEmpty())

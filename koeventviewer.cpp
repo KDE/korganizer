@@ -26,30 +26,30 @@ void KOEventViewer::addTag(const QString & tag,const QString & text)
 
 void KOEventViewer::appendEvent(Event *event)
 {
-  addTag("h1",event->getSummary());
+  addTag("h1",event->summary());
   
   if (event->doesFloat()) {
     if (event->isMultiDay()) {
       mText.append(i18n("<b>From:</b> %1 <b>To:</b> %2")
-                   .arg(event->getDtStartDateStr())
-                   .arg(event->getDtEndDateStr()));
+                   .arg(event->dtStartDateStr())
+                   .arg(event->dtEndDateStr()));
     } else {
-      mText.append(i18n("<b>On:</b> %1").arg(event->getDtStartDateStr()));
+      mText.append(i18n("<b>On:</b> %1").arg(event->dtStartDateStr()));
     }
   } else {
     if (event->isMultiDay()) {
       mText.append(i18n("<b>From:</b> %1 <b>To:</b> %2")
-                   .arg(event->getDtStartStr())
-                   .arg(event->getDtEndStr()));
+                   .arg(event->dtStartStr())
+                   .arg(event->dtEndStr()));
     } else {
       mText.append(i18n("<b>On:</b> %1 <b>From:</b> %2 <b>To:</b> %3")
-                   .arg(event->getDtStartDateStr())
-                   .arg(event->getDtStartTimeStr())
-                   .arg(event->getDtEndTimeStr()));
+                   .arg(event->dtStartDateStr())
+                   .arg(event->dtStartTimeStr())
+                   .arg(event->dtEndTimeStr()));
     }
   }
 
-  if (!event->getDescription().isEmpty()) addTag("p",event->getDescription());
+  if (!event->description().isEmpty()) addTag("p",event->description());
 
   formatCategories(event);
   formatAttendees(event);
@@ -65,13 +65,13 @@ void KOEventViewer::appendEvent(Event *event)
 
 void KOEventViewer::appendTodo(Todo *event)
 {
-  addTag("h1",event->getSummary());
+  addTag("h1",event->summary());
   
   if (event->hasDueDate()) {
     mText.append(i18n("<b>Due on:</b> %1").arg(event->dtDueStr()));
   }
 
-  if (!event->getDescription().isEmpty()) addTag("p",event->description());  
+  if (!event->description().isEmpty()) addTag("p",event->description());  
 
   formatCategories(event);
   formatAttendees(event);
@@ -87,19 +87,19 @@ void KOEventViewer::appendTodo(Todo *event)
 
 void KOEventViewer::formatCategories(Incidence *event)
 {
-  if (!event->getCategoriesStr().isEmpty()) {
-    if (event->getCategories().count() == 1) {
+  if (!event->categoriesStr().isEmpty()) {
+    if (event->categories().count() == 1) {
       addTag("h2",i18n("Category"));
     } else {
       addTag("h2",i18n("Categories"));
     }
-    addTag("p",event->getCategoriesStr());
+    addTag("p",event->categoriesStr());
   }
 }
 
 void KOEventViewer::formatAttendees(Incidence *event)
 {
-  QList<Attendee> attendees = event->getAttendeeList();
+  QList<Attendee> attendees = event->attendees();
   if (attendees.count()) {
     addTag("h2",i18n("Attendees"));
     Attendee *a;

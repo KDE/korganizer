@@ -759,7 +759,7 @@ void KOAgenda::insertMultiItem (Event *event,int XBegin,int XEnd,
     if (cellX == XEnd) cellYBottom = YBottom;
     else cellYBottom = rows() - 1;
     newtext = QString("(%1/%2): ").arg(++count).arg(width);
-    newtext.append(event->getSummary());
+    newtext.append(event->summary());
     current = insertItem(event,cellX,cellYTop,cellYBottom);
     current->setText(newtext);
     multiItems.append(current);

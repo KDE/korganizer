@@ -13,9 +13,6 @@
 #include "koalarm.h"
 #include "incidencevisitor.h"
 
-// TODO: remove all the getBlah() functions.
-// TODO: make KORecurrence and KOAlarm members instead of base classes
-
 class Incidence : public QObject
 {
     Q_OBJECT
@@ -43,7 +40,6 @@ class Incidence : public QObject
 
     void setLastModified(const QDateTime &lm);
     const QDateTime &lastModified() const;
-    const QDateTime &getLastModified() const { return lastModified(); }
 
     /** set creation date */
     void setCreated(QDateTime);
@@ -54,7 +50,6 @@ class Incidence : public QObject
     void setVUID(const QString &);
     /** get the unique text string for the event */
     const QString &VUID() const;
-    const QString &getVUID() const { return VUID(); }
 
     /** set the number of revisions this event has seen */
     void setRevision(int rev);
@@ -64,25 +59,20 @@ class Incidence : public QObject
     /** sets the organizer for the event */
     void setOrganizer(const QString &o);
     const QString &organizer() const;
-    const QString &getOrganizer() const { return organizer(); }
 
     /** for setting the event's starting date/time with a QDateTime. */
     void setDtStart(const QDateTime &dtStart);
     /** returns an event's starting date/time as a QDateTime. */
     const QDateTime &dtStart() const;
-    const QDateTime &getDtStart() const { return dtStart(); }
     /** returns an event's starting time as a string formatted according to the
      users locale settings */
     QString dtStartTimeStr() const;
-    QString getDtStartTimeStr() const { return dtStartTimeStr(); }
     /** returns an event's starting date as a string formatted according to the
      users locale settings */
     QString dtStartDateStr(bool shortfmt=true) const;
-    QString getDtStartDateStr(bool shortfmt=true) const { return dtStartDateStr(shortfmt); }
     /** returns an event's starting date and time as a string formatted according
      to the users locale settings */
     QString dtStartStr() const;
-    QString getDtStartStr() const { return dtStartStr(); }
 
     /** returns TRUE or FALSE depending on whether the event "floats,"
      * or doesn't have a time attached to it, only a date. */
@@ -97,25 +87,18 @@ class Incidence : public QObject
     void clearAttendees();
     Attendee *getAttendee(const char *n) const;
     // TODO: Remove get from function name
-    const QList<Attendee> &getAttendeeList() const { return mAttendees; };
     const QList<Attendee> &attendees() const { return mAttendees; };
     int attendeeCount() const { return mAttendees.count(); };
 
     /** sets the event's lengthy description. */
     void setDescription(const QString &description);
-    /** sets the event's lengthy description. */
-//    void setDescription(const char *);
     /** returns a reference to the event's description. */
     const QString &description() const;
-    const QString &getDescription() const { return description(); }
 
     /** sets the event's short summary. */
     void setSummary(const QString &summary);
-    /** sets the event's short summary. */
-//    void setSummary(const char *);
     /** returns a reference to the event's summary. */
     const QString &summary() const;
-    const QString &getSummary() const { return summary(); }
 
     /** set event's applicable categories */
     void setCategories(const QStringList &categories);
@@ -123,10 +106,8 @@ class Incidence : public QObject
     void setCategories(const QString &catStr);
     /** return categories in a list */
     const QStringList &categories() const;
-    const QStringList &getCategories() const { return categories(); }
     /** return categories as a comma separated string */
     QString categoriesStr();
-    QString getCategoriesStr() { return categoriesStr(); }
 
     /** point at some other event to which the event relates. This function should
      *  only be used when constructing a calendar before the related Event
@@ -136,15 +117,12 @@ class Incidence : public QObject
      *  only be used when constructing a calendar before the related Event
      *  exists. */
     const QString &relatedToVUID() const;
-    const QString &getRelatedToVUID() const { return relatedToVUID(); }
     /** point at some other event to which the event relates */
     void setRelatedTo(Incidence *relatedTo);
     /** what event does this one relate to? */
     Incidence *relatedTo() const;
-    Incidence *getRelatedTo() const { return relatedTo(); }
     /** All events that are related to this event */
     const QList<Incidence> &relations() const;
-    const QList<Incidence> &getRelations() const { return relations(); }
     /** Add an event which is related to this event */
     void addRelation(Incidence *);
     /** Remove event that is related to this event */
@@ -152,7 +130,6 @@ class Incidence : public QObject
 
     /** returns the list of dates which are exceptions to the recurrence rule */
     const QDateList &exDates() const;
-    const QDateList &getExDates() const { return exDates(); }
     /** sets the list of dates which are exceptions to the recurrence rule */
     void setExDates(const QDateList &_exDates);
     void setExDates(const char *dates);
@@ -178,20 +155,16 @@ class Incidence : public QObject
     void setSecrecy(int);
     /** return the event's secrecy. */
     int secrecy() const;
-    int getSecrecy() const { return secrecy(); }
     /** return the event's secrecy in string format. */
     QString secrecyStr() const;
-    QString getSecrecyStr() const { return secrecyStr(); }
 
     /** pilot syncronization routines */
     enum { SYNCNONE = 0, SYNCMOD = 1, SYNCDEL = 3 };
     void setPilotId(int id);
     int pilotId() const;
-    int getPilotId() const { return pilotId(); }
     
     void setSyncStatus(int stat);
     int syncStatus() const;
-    int getSyncStatus() const { return syncStatus(); }
 
     /** returns TRUE if the date specified is one on which the event will
      * recur. */
@@ -210,7 +183,6 @@ class Incidence : public QObject
     void setPriority(int priority);
     /** get the event's priority */
     int priority() const;
-    int getPriority() const { return priority(); }
 
     KOAlarm *alarm() const;
     KORecurrence *recurrence() const;

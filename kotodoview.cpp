@@ -37,8 +37,8 @@ void KOTodoViewItem::paintBranches(QPainter *p,const QColorGroup & cg,int w,
 void KOTodoViewItem::construct()
 {
   setOn(mEvent->status() == Event::NEEDS_ACTION ? false : true );
-  setText(0, mEvent->getSummary());
-  setText(1, QString::number(mEvent->getPriority()));
+  setText(0, mEvent->summary());
+  setText(1, QString::number(mEvent->priority()));
   if (mEvent->hasDueDate()) {
     setText(2, mEvent->dtDueDateStr());
     if (mEvent->doesFloat()) setText(3,"");
@@ -50,11 +50,11 @@ void KOTodoViewItem::construct()
   // Find sort id in description. It's the text behind the last '#' character
   // found in the description. White spaces are removed from beginning and end
   // of sort id.
-  int pos = mEvent->getDescription().findRev('#');
+  int pos = mEvent->description().findRev('#');
   if (pos < 0) {
     setText(4,"");
   } else {
-    QString str = mEvent->getDescription().mid(pos+1);
+    QString str = mEvent->description().mid(pos+1);
     str.stripWhiteSpace();
     setText(4,str);
   }
@@ -126,7 +126,7 @@ void KOTodoListView::contentsDropEvent(QDropEvent *e)
     Todo *destinationEvent = 0;
     if (destination) destinationEvent = destination->event();
     
-    Todo *existingTodo = mCalendar->getTodo(todo->getVUID());
+    Todo *existingTodo = mCalendar->getTodo(todo->VUID());
       
     if(existingTodo) {
 //      kdDebug() << "Drop existing Todo" << endl;
@@ -139,7 +139,7 @@ void KOTodoListView::contentsDropEvent(QDropEvent *e)
           delete todo;
           return;
         }
-        to = to->getRelatedTo();
+        to = to->relatedTo();
       }
       existingTodo->setRelatedTo(destinationEvent);
       emit todoDropped(todo);
@@ -320,7 +320,7 @@ QMap<Todo *,KOTodoViewItem *>::ConstIterator
 {
 //  kdDebug() << "KOTodoView::insertTodoItem(): " << todo->getSummary() << endl;
   // TODO: Check, if dynmaic cast is necessary
-  Todo *relatedTodo = dynamic_cast<Todo *>(todo->getRelatedTo());
+  Todo *relatedTodo = dynamic_cast<Todo *>(todo->relatedTo());
 
   if (relatedTodo) {
 //    kdDebug() << "  has Related" << endl;

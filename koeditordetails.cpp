@@ -402,7 +402,7 @@ void KOEditorDetails::setDefaults()
 
 void KOEditorDetails::readEvent(Incidence *event)
 {
-  QList<Attendee> tmpAList = event->getAttendeeList();
+  QList<Attendee> tmpAList = event->attendees();
   Attendee *a;
   for (a = tmpAList.first(); a; a = tmpAList.next())
     insertAttendee(new Attendee(*a));
