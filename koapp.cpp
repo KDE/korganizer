@@ -27,7 +27,7 @@ void KOrganizerApp::displayImminent(const QString &file,int numdays)
   KOEvent *currEvent;
 
   if (!cal->load(file)) {
-    printf(i18n("Could not load calendar '%1'.\n").arg(file));
+    printf(i18n("Could not load calendar '%1'.\n").arg(file).local8Bit());
     exit(0);
   }
 

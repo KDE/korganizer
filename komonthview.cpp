@@ -80,7 +80,7 @@ void KNoScrollListBox::mousePressEvent(QMouseEvent *e)
   } 
 }
 
-EventListBoxItem::EventListBoxItem(const char *s)
+EventListBoxItem::EventListBoxItem(const QString & s)
   : QListBoxItem()
 { 
   setText(s); 

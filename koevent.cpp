@@ -501,9 +501,8 @@ const QStrList &KOEvent::getCategories() const
 QString KOEvent::getCategoriesStr()
 {
   QString temp; 
-  QString cat;
   bool first = TRUE;
-  for (cat = categories.first(); cat; cat = categories.next()) {
+  for (const char * cat = categories.first(); cat; cat = categories.next()) {
     if (!first) {
       temp += ",";
     } else {

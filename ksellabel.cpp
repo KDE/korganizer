@@ -14,7 +14,7 @@
 #define MARGIN 3
 
 KSelLabel::KSelLabel(QWidget    *parent, 
-		     const char *text,
+		     const QString & text,
 		     int         idx,
 		     const char *name) 
   : QFrame(parent, name)
@@ -33,12 +33,12 @@ KSelLabel::~KSelLabel()
 {
 }
 
-const char *KSelLabel::text()
+QString KSelLabel::text()
 {
   return(labeltext);
 }
 
-void KSelLabel::setText(const char *s)
+void KSelLabel::setText(const QString & s)
 {
   labeltext = s;
   updateLabel();

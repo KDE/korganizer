@@ -454,12 +454,11 @@ KOEvent *CalObject::pasteEvent(const QDate *newDate,
   if (!vc) {
     QClipboard *cb = QApplication::clipboard();
     int bufsize;
-    const char *buf;
-    buf = cb->text();
+    const char * buf;
+    buf = cb->text().ascii();
     bufsize = strlen(buf);
     
-    if (strncmp("BEGIN:VCALENDAR",buf,
-		strlen("BEGIN:VCALENDAR"))) {
+    if (qstrncmp("BEGIN:VCALENDAR", buf, strlen("BEGIN:VCALENDAR")) ) {
       if (dialogsOn)
 	QMessageBox::critical(topWidget, i18n("KOrganizer Error"),
 			      i18n("An error has occurred parsing the "
@@ -545,7 +544,8 @@ const QString &CalObject::getOwner() const
 void CalObject::setOwner(const QString &os)
 {
   int i;
-  ownerString = os.ascii(); // to detach it
+  // ownerString = os.ascii(); // to detach it
+  ownerString = os; // #### Why? This should be okay?
   i = ownerString.find(',');
   if (i != -1)
     ownerString = ownerString.left(i);
@@ -1181,7 +1181,7 @@ VObject *CalObject::eventToVTodo(const KOEvent *anEvent)
   // description BL:
   if (!anEvent->getDescription().isEmpty()) {
     VObject *d = addPropValue(vtodo, VCDescriptionProp,
-			      (const char *) anEvent->getDescription());
+			      anEvent->getDescription());
     if (strchr((const char *) anEvent->getDescription(), '\n'))
       addProp(d, VCQuotedPrintableProp);
   }
@@ -1409,7 +1409,7 @@ VObject* CalObject::eventToVEvent(const KOEvent *anEvent)
   // description
   if (!anEvent->getDescription().isEmpty()) {
     VObject *d = addPropValue(vevent, VCDescriptionProp,
-			      (const char *) anEvent->getDescription());
+			      anEvent->getDescription());
     if (strchr((const char *) anEvent->getDescription(), '\n'))
       addProp(d, VCQuotedPrintableProp);
   }

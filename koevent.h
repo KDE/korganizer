@@ -23,7 +23,7 @@ class Attendee
 	   CONFIRMED = 4, DECLINED = 5, COMPLETED = 6, DELEGATED = 7 };
     // used to tell whether we have need to mail this person or not.
     bool flag;
-    Attendee(const char *n, const char *e = 0L,
+    Attendee(const char * n, const char *e = 0L,
              bool _rsvp=FALSE, int s = NEEDS_ACTION, int r = 0);
 //    Attendee(const Attendee &);
     virtual ~Attendee();

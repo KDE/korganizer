@@ -8,14 +8,14 @@
 class KSelLabel: public QFrame {
    Q_OBJECT
  public:
-   KSelLabel(QWidget *parent = 0, const char *text = 0,
+   KSelLabel(QWidget *parent = 0, const QString & text = QString::null,
 	     int idx =  0, const char *name = 0);
    ~KSelLabel();
-   const char * text();
+   QString text();
    QSize sizeHint() const;
 
  public slots:
-   void setText(const char *);
+   void setText(const QString &);
    void setActivated(bool activated);
    void setAlignment(int align);
 

@@ -23,10 +23,10 @@ KOrganizerApp *app;
 static const KCmdLineOptions options[] =
 {
   {"l", 0, 0},
-  {"list", "List the events for the current day", 0},
+  {"list", I18N_NOOP("List the events for the current day"), 0},
   {"s", 0, 0},
-  {"show <numdays>", "Show a list of all events for the next <numdays>","1"},
-  {"+[calendar]", "A calendar file to load", 0},
+  {"show <numdays>", I18N_NOOP("Show a list of all events for the next <numdays>"),"1"},
+  {"+[calendar]", I18N_NOOP("A calendar file to load"), 0},
   {0,0,0}
 };
 

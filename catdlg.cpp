@@ -104,8 +104,8 @@ void CategoryDialog::addCat()
     if (catListBox->currentItem() >= 0) {
       bool okToAdd = TRUE;
       for (unsigned int i = 0; i < selCatListBox->count(); i++) {
-	if (!strcmp(selCatListBox->text(i), 
-		    catListBox->text(catListBox->currentItem()))) {
+	if ( selCatListBox->text(i) ==
+		    catListBox->text(catListBox->currentItem()) ) {
 	  okToAdd = FALSE;
 	  break;
 	}

@@ -39,8 +39,8 @@ class KONavButton: public QPushButton
 class EventListBoxItem: public QListBoxItem
 {
  public:
-  EventListBoxItem(const char *s);
-  void setText(const char *s)
+  EventListBoxItem(const QString & s);
+  void setText(const QString & s)
     { QListBoxItem::setText(s); }
   void setRecur(bool on) 
     { recur = on; }
