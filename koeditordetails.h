@@ -118,8 +118,10 @@ class KOEditorDetails : public QWidget
 
     /** Reads values from a KABC::Addressee and inserts a new Attendee
      * item into the listview with those items. Used when adding attendees
-     * from the addressbook and expanding distribution lists. */
-    void insertAttendeeFromAddressee( const KABC::Addressee& a );
+     * from the addressbook and expanding distribution lists. 
+     * The optional Attendee parameter can be used to pass in default values
+     * to be used by the new Attendee. */
+    void insertAttendeeFromAddressee( const KABC::Addressee& , const Attendee* at=0 );
 
   private:
     bool mDisableItemUpdate;

@@ -458,7 +458,7 @@ void KOEditorDetails::writeEvent(Incidence *event)
           KPIM::DistributionList::Entry &e = ( *it );
           ++it;
           // this calls insertAttendee, which appends
-          insertAttendeeFromAddressee( e.addressee ); 
+          insertAttendeeFromAddressee( e.addressee, attendee ); 
           // TODO: duplicate check, in case it was already added manually
         }
       }
@@ -609,22 +609,25 @@ void KOEditorDetails::fillOrganizerCombo()
   mOrganizerCombo->insertStringList( uniqueList );
 }
 
-void KOEditorDetails::insertAttendeeFromAddressee( const KABC::Addressee& a )
+void KOEditorDetails::insertAttendeeFromAddressee( const KABC::Addressee& a,
+                                                   const Attendee* at )
 {
   bool myself = KOPrefs::instance()->thatIsMe( a.preferredEmail() );
   bool sameAsOrganizer = mOrganizerCombo &&
     KPIM::compareEmail( a.preferredEmail(), mOrganizerCombo->currentText(), false );
-  KCal::Attendee::PartStat partStat;
-  if ( myself && sameAsOrganizer )
+  KCal::Attendee::PartStat partStat = at? at->status() : KCal::Attendee::NeedsAction;
+  bool rsvp = at? at->RSVP() : true;
+  
+  if ( myself && sameAsOrganizer ) {
     partStat = KCal::Attendee::Accepted;
-  else
-    partStat = KCal::Attendee::NeedsAction;
-  Attendee *at = new Attendee( a.realName(),
+    rsvp = false;
+  }
+  Attendee *newAt = new Attendee( a.realName(),
                                a.preferredEmail(),
                                !myself, partStat,
-                               KCal::Attendee::ReqParticipant,
+                               at ? at->role() : Attendee::ReqParticipant,
                                a.uid() );
-  at->setRSVP( partStat != KCal::Attendee::Accepted );
-  insertAttendee( at, true );
+  newAt->setRSVP( rsvp );
+  insertAttendee( newAt, true );
 }
 #include "koeditordetails.moc"
