@@ -83,11 +83,11 @@ class KOEditorGeneralTodo : public KOEditorGeneral
 
  private:
     KDateEdit               *mStartDateEdit;
-    KOTimeEdit               *mStartTimeEdit;
+    KTimeEdit               *mStartTimeEdit;
     QCheckBox               *mTimeButton;
     QCheckBox               *mDueCheck;
     KDateEdit               *mDueDateEdit;
-    KOTimeEdit               *mDueTimeEdit;
+    KTimeEdit               *mDueTimeEdit;
     QComboBox               *mCompletedCombo;
     QLabel                  *mCompletedLabel;
     QLabel                  *mPriorityLabel;

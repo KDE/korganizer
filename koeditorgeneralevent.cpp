@@ -103,7 +103,7 @@ void KOEditorGeneralEvent::initTime(QWidget *parent,QBoxLayout *topLayout)
   layoutTimeBox->addWidget(mStartDateEdit,0,1);
   mStartDateLabel->setBuddy( mStartDateEdit );
 
-  mStartTimeEdit = new KOTimeEdit(timeBoxFrame);
+  mStartTimeEdit = new KTimeEdit(timeBoxFrame);
   layoutTimeBox->addWidget(mStartTimeEdit,0,2);
 
 
@@ -114,7 +114,7 @@ void KOEditorGeneralEvent::initTime(QWidget *parent,QBoxLayout *topLayout)
   layoutTimeBox->addWidget(mEndDateEdit,1,1);
   mEndDateLabel->setBuddy( mEndDateEdit );
 
-  mEndTimeEdit = new KOTimeEdit(timeBoxFrame);
+  mEndTimeEdit = new KTimeEdit(timeBoxFrame);
   layoutTimeBox->addWidget(mEndTimeEdit,1,2);
 
   QHBoxLayout *flagsBox = new QHBoxLayout( timeBoxFrame );

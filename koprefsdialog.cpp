@@ -58,6 +58,7 @@
 
 #include "koprefsdialog.h"
 #include "kogroupwareprefspage.h"
+#include "ktimeedit.h"
 
 
 KOPrefsDialogMain::KOPrefsDialogMain( QWidget *parent, const char *name )
@@ -286,21 +287,15 @@ class KOPrefsDialogTime : public KPrefsModule
 
       mTimeZoneCombo->setCurrentItem(nCurrentlySet);
 
-      topLayout->addWidget(new QLabel(i18n("Default appointment time:"),
-                           topFrame),1,0);
-      mStartTimeSpin = new QSpinBox(0,23,1,topFrame);
-      connect( mStartTimeSpin, SIGNAL( valueChanged( int ) ),
-               SLOT( slotWidChanged() ) );
-      mStartTimeSpin->setSuffix(":00");
-      topLayout->addWidget(mStartTimeSpin,1,1);
+      KPrefsWidTime *defaultTime =
+            addWidTime( KOPrefs::instance()->startTimeItem(), topFrame );
+      topLayout->addWidget( defaultTime->label(), 1, 0);
+      topLayout->addWidget( defaultTime->timeEdit(), 1, 1);
 
-      topLayout->addWidget(new QLabel(i18n("Default duration of new appointment:"),
-                           topFrame),2,0);
-      mDefaultDurationSpin = new QSpinBox(0,23,1,topFrame);
-      connect( mDefaultDurationSpin, SIGNAL( valueChanged( int ) ),
-               SLOT( slotWidChanged() ) );
-      mDefaultDurationSpin->setSuffix(":00");
-      topLayout->addWidget(mDefaultDurationSpin,2,1);
+      KPrefsWidTime *defaultDuration =
+            addWidTime( KOPrefs::instance()->defaultDurationItem(), topFrame );
+      topLayout->addWidget( defaultDuration->label(), 2, 0);
+      topLayout->addWidget( defaultDuration->timeEdit(), 2, 1);
 
       QStringList alarmList;
       alarmList << i18n("1 minute") << i18n("5 minutes") << i18n("10 minutes")
@@ -320,7 +315,6 @@ class KOPrefsDialogTime : public KPrefsModule
       topLayout->addMultiCellWidget(workingHoursGroup,4,4,0,1);
 
       QHBox *workStartBox = new QHBox(workingHoursGroup);
-
       addWidTime( KOPrefs::instance()->workingHoursStartItem(), workStartBox );
 
       QHBox *workEndBox = new QHBox(workingHoursGroup);
@@ -343,8 +337,6 @@ class KOPrefsDialogTime : public KPrefsModule
     {
       setCombo(mTimeZoneCombo,i18n(KOPrefs::instance()->mTimeZoneId.utf8()));
 
-      mStartTimeSpin->setValue(KOPrefs::instance()->mStartTime);
-      mDefaultDurationSpin->setValue(KOPrefs::instance()->mDefaultDuration);
       mAlarmTimeCombo->setCurrentItem(KOPrefs::instance()->mAlarmTime);
     }
 
@@ -360,8 +352,6 @@ class KOPrefsDialogTime : public KPrefsModule
       else
         KOPrefs::instance()->mTimeZoneId = mTimeZoneCombo->currentText();
 
-      KOPrefs::instance()->mStartTime = mStartTimeSpin->value();
-      KOPrefs::instance()->mDefaultDuration = mDefaultDurationSpin->value();
       KOPrefs::instance()->mAlarmTime = mAlarmTimeCombo->currentItem();
     }
 
@@ -384,8 +374,8 @@ class KOPrefsDialogTime : public KPrefsModule
   private:
     QComboBox    *mTimeZoneCombo;
     QStringList  tzonenames;
-    QSpinBox     *mStartTimeSpin;
-    QSpinBox     *mDefaultDurationSpin;
+/*    KOTimeEdit   *mStartTimeSpin;
+    KOTimeEdit   *mDefaultDurationEdit;*/
     QComboBox    *mAlarmTimeCombo;
 };
 
@@ -421,7 +411,7 @@ class KOPrefsDialogViews : public KPrefsModule
                     topFrame );
       dayBeginsLayout->addWidget(dayBegins->label());
       dayBeginsLayout->addStretch(1);
-      dayBeginsLayout->addWidget(dayBegins->spinBox());
+      dayBeginsLayout->addWidget(dayBegins->timeEdit());
 
       QBoxLayout *nextDaysLayout = new QHBoxLayout;
       topLayout->addLayout(nextDaysLayout,1,0);

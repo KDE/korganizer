@@ -84,7 +84,7 @@ class KOAgenda : public QScrollView
     int timeToY ( const QTime &time );
     QTime gyToTime ( int y );
 
-    void setStartHour( int startHour );
+    void setStartTime( QTime startHour );
 
     KOAgendaItem *insertItem ( Incidence *event, QDate qd, int X, int YTop,
                                int YBottom );
@@ -266,6 +266,7 @@ class KOAgenda : public QScrollView
 
     // Working Hour coordiantes
     bool mWorkingHoursEnable;
+    QMemArray<bool> *mHolidayMask;
     int mWorkingHoursYTop;
     int mWorkingHoursYBottom;
 
@@ -304,8 +305,6 @@ class KOAgenda : public QScrollView
 
     int mOldLowerScrollValue;
     int mOldUpperScrollValue;
-
-    QMemArray<bool> *mHolidayMask;
 
     bool mTypeAhead;
     QObject *mTypeAheadReceiver;

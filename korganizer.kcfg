@@ -63,11 +63,13 @@
   <group name="Time &amp; Date">
     <entry type="String" name="TimeZoneId">
     </entry>
-    <entry type="Int" key="Default Start Time" name="StartTime">
-      <default>10</default>
+    <entry type="DateTime" key="Default Start Time" name="StartTime">
+		  <label>Default appointment time:</label>
+      <default>QDateTime(QDate(), QTime(10,0))</default>
     </entry>
-    <entry type="Int" key="Default Duration">
-      <default>2</default>
+    <entry type="DateTime" key="Default Duration">
+		  <label>Default duration of new appointment:</label>
+      <default>QDateTime(QDate(), QTime(2,0))</default>
     </entry>
     <entry type="Int" key="Default Alarm Time" name="AlarmTime">
       <default>0</default>
@@ -112,18 +114,18 @@
       <default>false</default>
     </entry>
 
-    <entry type="Int" key="Day Begins">
-      <label>Day begins at:</label>
-      <default>7</default>
+    <entry type="DateTime" key="Day Begins">
+      <label>Day begins at</label>
+      <default>QDateTime(QDate(), QTime(7,0))</default>
     </entry>
 
-    <entry type="Int" key="Working Hours Start">
-      <label>Daily starting hour:</label>
-      <default>8</default>
+    <entry type="DateTime" key="Working Hours Start">
+      <label>Daily starting hour</label>
+      <default>QDateTime(QDate(), QTime(8,0))</default>
     </entry>
-    <entry type="Int" key="Working Hours End">
-      <label>Daily ending hour:</label>
-      <default>17</default>
+    <entry type="DateTime" key="Working Hours End">
+      <label>Daily ending hour</label>
+      <default>QDateTime(QDate(), QTime(17,0))</default>
     </entry>
     <entry type="Bool" key="Exclude Holidays">
       <label>Exclude holidays</label>

@@ -250,7 +250,7 @@ void KOAgenda::init()
   // not necessary to turn off the scrollbar.
   setHScrollBarMode( AlwaysOff );
 
-  setStartHour( KOPrefs::instance()->mDayBegins );
+  setStartTime( KOPrefs::instance()->mDayBegins.time() );
 
   calculateWorkingHours();
 
@@ -1114,8 +1114,6 @@ void KOAgenda::drawContents(QPainter* p, int cx, int cy, int cw, int ch)
     int y1 = mWorkingHoursYTop;
     if (y1 < cy) y1 = cy;
     int x2 = cx+cw-1;
-    //  int x2 = mGridSpacingX * 5 - 1;
-    //  if (x2 > cx+cw-1) x2 = cx + cw - 1;
     int y2 = mWorkingHoursYBottom;
     if (y2 > cy+ch-1) y2=cy+ch-1;
 
@@ -1284,10 +1282,11 @@ QTime KOAgenda::gyToTime(int gy)
   return time;
 }
 
-void KOAgenda::setStartHour(int startHour)
+void KOAgenda::setStartTime( QTime startHour )
 {
-  int startCell = startHour * mRows / 24;
-  setContentsPos(0, (int)(startCell * gridSpacingY()));
+  double startPos = ( startHour.hour()/24. + startHour.minute()/1440. +
+     startHour.second()/86400. )* mRows * gridSpacingY();
+  setContentsPos(0, (int)( startPos ));
 }
 
 
@@ -1663,13 +1662,14 @@ void KOAgenda::keyPressEvent( QKeyEvent *kev )
 
 void KOAgenda::calculateWorkingHours()
 {
-//  mWorkingHoursEnable = KOPrefs::instance()->mEnableWorkingHours;
   mWorkingHoursEnable = !mAllDayMode;
 
-  mWorkingHoursYTop = (int)(mGridSpacingY *
-                      KOPrefs::instance()->mWorkingHoursStart * 4);
-  mWorkingHoursYBottom = (int)(mGridSpacingY *
-                         KOPrefs::instance()->mWorkingHoursEnd * 4 - 1);
+  QTime tmp = KOPrefs::instance()->mWorkingHoursStart.time();
+  mWorkingHoursYTop = (int)(4 * mGridSpacingY *
+                      (tmp.hour() + tmp.minute()/60. + tmp.second()/3600.) );
+  tmp = KOPrefs::instance()->mWorkingHoursEnd.time();
+  mWorkingHoursYBottom = (int)(4 * mGridSpacingY *
+                      (tmp.hour() + tmp.minute()/60. + tmp.second()/3600.) - 1);
 }
 
 

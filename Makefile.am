@@ -63,7 +63,6 @@ libkorganizer_la_SOURCES =  outgoingdialog_base.ui \
 	koagendaview.cpp koagenda.cpp koagendaitem.cpp \
 	datenavigator.cpp kdatenavigator.cpp \
 	komonthview.cpp \
-	ktimeedit.cpp \
 	searchdialog.cpp calendarview.cpp koviewmanager.cpp \
         kodialogmanager.cpp \
 	calprintdayconfig_base.ui calprintweekconfig_base.ui \
@@ -121,7 +120,7 @@ noinst_HEADERS = komonthview.h \
 	koagendaview.h koagenda.h \
 	koagendaitem.h \
 	kdatenavigator.h \
-	calendarview.h ktimeedit.h \
+	calendarview.h \
 	version.h \
 	searchdialog.h calprinter.h calprintbase.h calprintplugins.h \
 	archivedialog.h \

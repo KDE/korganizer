@@ -114,7 +114,7 @@ void CalPrintDay::loadConfig()
 {
   if ( mConfig ) {
     QDate dt;
-    QTime tm1( KOPrefs::instance()->mDayBegins , 0 );
+    QTime tm1( KOPrefs::instance()->mDayBegins.time() );
     QDateTime startTm( dt, tm1  );
     QDateTime endTm( dt, tm1.addSecs( 43200 ) );
     mStartTime = mConfig->readDateTimeEntry( "Start time", &startTm ).time();
@@ -256,7 +256,7 @@ void CalPrintWeek::loadConfig()
 {
   if ( mConfig ) {
     QDate dt;
-    QTime tm1( KOPrefs::instance()->mDayBegins , 0 );
+    QTime tm1( KOPrefs::instance()->mDayBegins.time() );
     QDateTime startTm( dt, tm1  );
     QDateTime endTm( dt, tm1.addSecs( 43200 ) );
     mStartTime = mConfig->readDateTimeEntry( "Start time", &startTm ).time();

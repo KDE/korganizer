@@ -107,7 +107,7 @@ void KOEditorGeneralTodo::initTime(QWidget *parent,QBoxLayout *topLayout)
   mDueDateEdit = new KDateEdit(timeBoxFrame);
   layoutTimeBox->addWidget(mDueDateEdit,0,1);
 
-  mDueTimeEdit = new KOTimeEdit(timeBoxFrame);
+  mDueTimeEdit = new KTimeEdit(timeBoxFrame);
   layoutTimeBox->addWidget(mDueTimeEdit,0,2);
 
 
@@ -118,7 +118,7 @@ void KOEditorGeneralTodo::initTime(QWidget *parent,QBoxLayout *topLayout)
   mStartDateEdit = new KDateEdit(timeBoxFrame);
   layoutTimeBox->addWidget(mStartDateEdit,1,1);
 
-  mStartTimeEdit = new KOTimeEdit(timeBoxFrame);
+  mStartTimeEdit = new KTimeEdit(timeBoxFrame);
   layoutTimeBox->addWidget(mStartTimeEdit,1,2);
 
 

@@ -828,9 +828,12 @@ void CalendarView::newEvent()
 {
   kdDebug() << "CalendarView::newEvent()" << endl;
   QDate date = mNavigator->selectedDates().first();
-  QDateTime startDt( date, QTime( KOPrefs::instance()->mStartTime, 0, 0 ) );
-  QDateTime endDt( date, QTime( KOPrefs::instance()->mStartTime +
-                                KOPrefs::instance()->mDefaultDuration, 0, 0 ) );
+  QTime startTime = KOPrefs::instance()->mStartTime.time();
+  QDateTime startDt( date, startTime );
+  QTime defaultDuration( KOPrefs::instance()->mDefaultDuration.time() );
+  QTime endTime( startTime.addSecs( defaultDuration.hour()*3600 + 
+     defaultDuration.minute()*60 + defaultDuration.second() ) );
+  QDateTime endDt( date, endTime );
   bool allDay = false;
   
   // let the current view change the default start/end datetime
@@ -845,8 +848,10 @@ void CalendarView::newEvent()
 
 void CalendarView::newEvent(QDateTime fh)
 {
-  newEvent(fh,
-           QDateTime(fh.addSecs(3600*KOPrefs::instance()->mDefaultDuration)));
+  QTime defaultDuration( KOPrefs::instance()->mDefaultDuration.time() );
+  QDateTime endTime = fh.addSecs( defaultDuration.hour()*3600 + 
+     defaultDuration.minute()*60 + defaultDuration.second() );
+  newEvent( fh, endTime );
 }
 
 void CalendarView::newEvent(QDate dt)
