@@ -26,8 +26,6 @@
 
 #include <kdialogbase.h>
 
-#include <libkcal/calendar.h>
-
 class QDateTime;
 
 namespace KPIM { class CategorySelectDialog; }
@@ -35,6 +33,10 @@ namespace KPIM { class CategorySelectDialog; }
 class KOEditorDetails;
 class KOEditorAttachments;
 
+namespace KCal {
+class Calendar;
+class Incidence;
+}
 using namespace KCal;
 
 /**

@@ -38,6 +38,7 @@
 #include <libkdepim/categoryselectdialog.h>
 
 #include <libkcal/calendarlocal.h>
+#include <libkcal/incidence.h>
 #include <libkcal/icalformat.h>
 
 #include "koprefs.h"

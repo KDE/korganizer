@@ -263,7 +263,8 @@ void KODialogManager::showPluginDialog()
 
 KOEventEditor *KODialogManager::getEventEditor()
 {
-  KOEventEditor *eventEditor = new KOEventEditor( mMainView->calendar(), mMainView );
+  KOEventEditor *eventEditor = new KOEventEditor( mMainView->calendar(),
+                                                  mMainView );
   connectEditor( eventEditor );
   return eventEditor;
 }
