@@ -93,7 +93,7 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
                   const char *name = 0 );
     virtual ~CalendarView();
 
-    Calendar *calendar() { return mCalendar; }
+    Calendar *calendar();
 
     KOrg::History *history() { return mHistory; }
 

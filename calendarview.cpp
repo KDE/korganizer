@@ -66,6 +66,7 @@
 #include <libkcal/filestorage.h>
 #include <libkcal/calendarresources.h>
 #include <libkcal/qtopiaformat.h>
+#include <libkcal/calendarnull.h>
 
 #ifndef KORG_NOMAIL
 #include "komailclient.h"
@@ -120,7 +121,7 @@ CalendarView::CalendarView( Calendar *calendar,
 
   mCalPrinter = 0;
 
-  mFilters.setAutoDelete(true);
+  mFilters.setAutoDelete( true );
 
   mExtensions.setAutoDelete( true );
 
@@ -132,24 +133,25 @@ CalendarView::CalendarView( Calendar *calendar,
 
   mNavigator = new DateNavigator( this );
 
-  QBoxLayout *topLayout = new QVBoxLayout(this);
+  QBoxLayout *topLayout = new QVBoxLayout( this );
 
 #ifndef KORG_NOSPLITTER
   // create the main layout frames.
   mPanner = new QSplitter( QSplitter::Horizontal, this,
                            "CalendarView::Panner" );
-  topLayout->addWidget(mPanner);
+  topLayout->addWidget( mPanner );
 
   mLeftSplitter = new QSplitter( QSplitter::Vertical, mPanner,
                                  "CalendarView::LeftFrame" );
-  mPanner->setResizeMode(mLeftSplitter,QSplitter::KeepSize);
+  mPanner->setResizeMode( mLeftSplitter, QSplitter::KeepSize );
 
   mDateNavigator = new KDateNavigator( mLeftSplitter, mCalendar, true,
                                        "CalendarView::DateNavigator",
                                        QDate::currentDate() );
-  mLeftSplitter->setResizeMode(mDateNavigator,QSplitter::KeepSize);
-  mTodoList = new KOTodoView(mCalendar, mLeftSplitter, "todolist");
-  mFilterView = new KOFilterView(&mFilters,mLeftSplitter,"CalendarView::FilterView");
+  mLeftSplitter->setResizeMode( mDateNavigator, QSplitter::KeepSize );
+  mTodoList = new KOTodoView( mCalendar, mLeftSplitter, "todolist" );
+  mFilterView = new KOFilterView( &mFilters, mLeftSplitter,
+                                  "CalendarView::FilterView" );
 
   QWidget *rightBox = new QWidget( mPanner );
   QBoxLayout *rightLayout = new QVBoxLayout( rightBox );
@@ -178,8 +180,9 @@ CalendarView::CalendarView( Calendar *calendar,
   mDateNavigator = new KDateNavigator( leftFrame, mCalendar, true,
                                        "CalendarView::DateNavigator",
                                        QDate::currentDate() );
-  mTodoList = new KOTodoView(mCalendar, leftFrame, "todolist");
-  mFilterView = new KOFilterView(&mFilters,leftFrame,"CalendarView::FilterView");
+  mTodoList = new KOTodoView( mCalendar, leftFrame, "todolist" );
+  mFilterView = new KOFilterView( &mFilters, leftFrame,
+                                  "CalendarView::FilterView" );
 
   QWidget *rightBox = new QWidget( mainBox );
   QBoxLayout *rightLayout = new QVBoxLayout( rightBox );
@@ -264,17 +267,19 @@ CalendarView::CalendarView( Calendar *calendar,
   readSettings();
 
   KDirWatch *messageWatch = new KDirWatch();
-  messageWatch->addDir(locateLocal("data","korganizer/income/"));
-  connect (messageWatch,SIGNAL(dirty(const QString &)),SLOT(lookForIncomingMessages()));
+  messageWatch->addDir( locateLocal( "data", "korganizer/income/" ) );
+  connect( messageWatch, SIGNAL( dirty( const QString & ) ),
+           SLOT( lookForIncomingMessages() ) );
 
   // We should think about seperating startup settings and configuration change.
   updateConfig();
 
-  connect(QApplication::clipboard(),SIGNAL(dataChanged()),
-          SLOT(checkClipboard()));
-  connect( mTodoList,SIGNAL( incidenceSelected( Incidence * ) ),
+  connect( QApplication::clipboard(), SIGNAL( dataChanged() ),
+           SLOT( checkClipboard() ) );
+  connect( mTodoList, SIGNAL( incidenceSelected( Incidence * ) ),
            SLOT( processTodoListSelection( Incidence * ) ) );
-  connect(mTodoList,SIGNAL(isModified(bool)),SLOT(setModified(bool)));
+  connect( mTodoList, SIGNAL( isModified( bool ) ),
+           SLOT( setModified( bool ) ) );
 
   kdDebug(5850) << "CalendarView::CalendarView() done" << endl;
 }
@@ -287,6 +292,12 @@ CalendarView::~CalendarView()
   delete mViewManager;
 
   kdDebug(5850) << "~CalendarView() done" << endl;
+}
+
+Calendar *CalendarView::calendar()
+{
+  if ( mCalendar ) return mCalendar;
+  else return CalendarNull::self();
 }
 
 KOViewManager *CalendarView::viewManager()
@@ -564,19 +575,19 @@ void CalendarView::updateConfig()
 
 void CalendarView::incidenceAdded( Incidence *incidence )
 {
-  setModified(true);
+  setModified( true );
   mHistory->recordAdd( incidence );
 }
 
 void CalendarView::incidenceChanged( Incidence *oldIncidence, Incidence *newIncidence )
 {
-  setModified(true);
+  setModified( true );
   mHistory->recordEdit( oldIncidence, newIncidence );
 }
 
 void CalendarView::incidenceDeleted( Incidence *incidence )
 {
-  setModified(true);
+  setModified( true );
   mHistory->recordDelete( incidence );
 }
 
