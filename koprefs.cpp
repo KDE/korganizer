@@ -137,7 +137,7 @@ void KOPrefs::readConfig()
   mEmail = mConfig->readEntry("user_email","");
   mAdditional = mConfig->readEntry("Additional","");
 
-  mHoliday = mConfig->readEntry("Holidays","(none)");
+  mHoliday = mConfig->readEntry("Holidays", KGlobal::locale()->country());
   
   mConfig->setGroup("Time & Date");
   mTimeZone = mConfig->readNumEntry("Time Zone",0);

@@ -202,9 +202,9 @@ void KOrganizer::initActions()
   KStdAction::close(this, SLOT(file_close()), actionCollection());
   (void)new KAction(i18n("&Import From Ical"), 0, this, SLOT(file_import()),
                     actionCollection(), "import_ical");
-  (void)new KAction(i18n("&Merge Calendar"), 0, this, SLOT(file_merge()),
+  (void)new KAction(i18n("&Merge Calendar..."), 0, this, SLOT(file_merge()),
                     actionCollection(), "merge_calendar");
-  (void)new KAction(i18n("Archive Old Entries"), 0, this, SLOT(file_archive()),
+  (void)new KAction(i18n("Archive Old Entries..."), 0, this, SLOT(file_archive()),
                     actionCollection(), "file_archive");
   (void)new KAction(i18n("Export as web page..."), 0,
                     mCalendarView, SLOT(exportWeb()),
@@ -248,16 +248,16 @@ void KOrganizer::initActions()
                     actionCollection(), "update");
 
   // event handling menu
-  (void)new KAction(i18n("New &Appointment"), UserIcon("newevent"), 0,
+  (void)new KAction(i18n("New &Appointment..."), UserIcon("newevent"), 0,
                     mCalendarView,SLOT(appointment_new()),
                     actionCollection(), "new_appointment");
-  (void)new KAction(i18n("New E&vent"), 0,
+  (void)new KAction(i18n("New E&vent..."), 0,
                     mCalendarView,SLOT(allday_new()),
                     actionCollection(), "new_event");
-  (void)new KAction(i18n("New To-Do"), 0,
+  (void)new KAction(i18n("New To-Do..."), 0,
                     mCalendarView,SLOT(newTodo()),
                     actionCollection(), "new_todo");
-  (void)new KAction(i18n("&Edit Appointment"), 0,
+  (void)new KAction(i18n("&Edit Appointment..."), 0,
                     mCalendarView,SLOT(appointment_edit()),
                     actionCollection(), "new_appointment");
   (void)new KAction(i18n("&Delete Appointment"), 0,

@@ -2566,9 +2566,9 @@ void CalObject::populate(VObject *vcal)
     char *methodType = 0;
     methodType = fakeCString(vObjectUStringZValue(curVO));
     if (dialogsOn)
-      QMessageBox::information(topWidget, "KOrganizer: iTIP Transaction",
-			       QString("This calendar is an iTIP transaction of type \"") +
-			       methodType + "\"");
+      QMessageBox::information(topWidget, i18n("KOrganizer: iTIP Transaction"),
+			       i18n("This calendar is an iTIP transaction of type \"%1\".")
+			       .arg(methodType));
     delete methodType;
   }
 
@@ -2577,9 +2577,9 @@ void CalObject::populate(VObject *vcal)
     char *s = fakeCString(vObjectUStringZValue(curVO));
     if (strcmp(_PRODUCT_ID, s) != 0)
       if (dialogsOn)
-	QMessageBox::warning(topWidget, "KOrganizer: Unknown vCalendar Vendor",
-			     QString("This vCalendar file was not created by KOrganizer\n"
-				     "or any other product we support.  Loading anyway..."));
+	QMessageBox::warning(topWidget, i18n("KOrganizer: Unknown vCalendar Vendor"),
+			     i18n("This vCalendar file was not created by KOrganizer\n"
+				     "or any other product we support. Loading anyway..."));
     deleteStr(s);
   }
   
@@ -2588,9 +2588,10 @@ void CalObject::populate(VObject *vcal)
     char *s = fakeCString(vObjectUStringZValue(curVO));
     if (strcmp(_VCAL_VERSION, s) != 0)
       if (dialogsOn)
-	QMessageBox::warning(topWidget, "KOrganizer: Unknown vCalendar Version",
-			     QString("This vCalendar file has version ") +
-			     s + ".\n We only support " + _VCAL_VERSION + ".");
+	QMessageBox::warning(topWidget, i18n("KOrganizer: Unknown vCalendar Version"),
+			     i18n("This vCalendar file has version %1.\n"
+			          "We only support %2.")
+         .arg(s).arg(_VCAL_VERSION));
     deleteStr(s);
   }
   
@@ -2639,20 +2640,28 @@ void CalObject::populate(VObject *vcal)
 
 	if (getEvent(tmpStr)) {
 	  if (dialogsOn)
-	    QMessageBox::warning(topWidget, "KOrganizer: Possible Duplicate Event",
-				 QString("Aborting merge of an event already in calendar.\n"
-					 "UID is ") + tmpStr + "\n" +
-				 "Please check your vCalendar file for duplicate UIDs\n" +
-				 "and change them MANUALLY to be unique if you find any.\n");
+	    QMessageBox::warning(topWidget,
+				 i18n("KOrganizer: Possible Duplicate Event"),
+				 i18n("Aborting merge of an event already in "
+				      "calendar.\n"
+				      "UID is %1\n"
+				      "Please check your vCalendar file for "
+				      "duplicate UIDs\n"
+				      "and change them MANUALLY to be unique "
+				      "if you find any.\n").arg(tmpStr));
 	  goto SKIP;
 	}
 	if (getTodo(tmpStr)) {
 	  if (dialogsOn)
-	    QMessageBox::warning(topWidget, "KOrganizer: Possible Duplicate Event",
-				 QString("Aborting merge of an event already in calendar.\n"
-					 "UID is ") + tmpStr + "\n" +
-				 "Please check your vCalendar file for duplicate UIDs\n" +
-				 "and change them MANUALLY to be unique if you find any.\n");
+	    QMessageBox::warning(topWidget,
+				 i18n("KOrganizer: Possible Duplicate Event"),
+				 i18n("Aborting merge of an event already in "
+				      "calendar.\n"
+				      "UID is %1\n"
+				      "Please check your vCalendar file for "
+				      "duplicate UIDs\n"
+				      "and change them MANUALLY to be unique "
+				      "if you find any.\n").arg(tmpStr));
 	  
 	  goto SKIP;
 	}
@@ -2722,19 +2731,26 @@ int CalObject::numFromDay(const QString &day)
 void CalObject::loadError(const QString &fileName) 
 {
   if (dialogsOn)
-    QMessageBox::critical(topWidget, "KOrganizer: Error Loading Calendar",
-			  QString("An error has occurred loading the file:\n") +
-			  fileName + ".\nPlease verify that the file is in vCalendar format,\n"
-			  "that it exists, and it is readeable, then try again or load another file.\n");
+    QMessageBox::critical(topWidget,
+			  i18n("KOrganizer: Error Loading Calendar"),
+			  i18n("An error has occurred loading the file:\n"
+			       "%1.\n"
+			       "Please verify that the file is in vCalendar "
+			       "format,\n"
+			       "that it exists, and it is readeable, then "
+			       "try again or load another file.\n")
+			  .arg(fileName));
 }
 
 void CalObject::parseError(const char *prop) 
 {
   if (dialogsOn)
-    QMessageBox::critical(topWidget, "KOrganizer: Error Parsing Calendar",
-			  QString("An error has occurred parsing this file.\n") +
-			  "It is missing property '" +
-			  prop + "'.\n" +
-			  "Please verify that the file is in vCalendar format\n" +
-			  "and try again, or load another file.\n");
+    QMessageBox::critical(topWidget,
+			  i18n("KOrganizer: Error Parsing Calendar"),
+			  i18n("An error has occurred parsing this file.\n"
+			       "It is missing property \"%1\".\n"
+			       "Please verify that the file is in vCalendar "
+			       "format\n"
+			       "and try again, or load another file.\n")
+			  .arg(prop));
 }

@@ -22,7 +22,7 @@ ArchiveDialog::ArchiveDialog(QWidget *parent, const char *name)
   
   QLabel *dateLabel;
   dateLabel = new QLabel(this);
-  dateLabel->setText("Appointments older than:");
+  dateLabel->setText(i18n("Appointments older than:"));
   dateLabel->adjustSize();
   dateLabel->move(10, 10);
 
@@ -37,12 +37,12 @@ ArchiveDialog::ArchiveDialog(QWidget *parent, const char *name)
 
   QRadioButton *deleteRB, *archiveRB;
   deleteRB = new QRadioButton(deleteGroup);
-  deleteRB->setText("Delete Events");
+  deleteRB->setText(i18n(i18n("Delete Events")));
   deleteRB->adjustSize();
   deleteRB->move(10, 10);
   
   archiveRB = new QRadioButton(deleteGroup);
-  archiveRB->setText("Archive Events");
+  archiveRB->setText(i18n(i18n("Archive Events")));
   archiveRB->adjustSize();
   archiveRB->move(10, deleteRB->geometry().bottomLeft().y());
 
@@ -50,7 +50,7 @@ ArchiveDialog::ArchiveDialog(QWidget *parent, const char *name)
 
   QLabel *archivePL;
   archivePL = new QLabel(this);
-  archivePL->setText("Archive File:");
+  archivePL->setText(i18n("Archive File:"));
   archivePL->adjustSize();
   archivePL->move(10, deleteGroup->geometry().bottomLeft().y()+10);
 
@@ -64,7 +64,7 @@ ArchiveDialog::ArchiveDialog(QWidget *parent, const char *name)
   
   QPushButton *browse;
   browse = new QPushButton(this);
-  browse->setText("Browse");
+  browse->setText(i18n("Browse"));
   browse->adjustSize();
   browse->move(archiveFnEdit->geometry().topRight().x()+10,
 	       archivePL->geometry().topRight().y());
@@ -77,15 +77,14 @@ ArchiveDialog::ArchiveDialog(QWidget *parent, const char *name)
 
   QPushButton *ok, *cancel; 
 
-  cancel = new QPushButton( "Cancel", this ); 
+  cancel = new QPushButton( i18n("Cancel"), this ); 
   cancel->setDefault(TRUE);
   cancel->setGeometry( this->width()-180, this->height()-40, 80,30 );
   connect( cancel, SIGNAL(clicked()), SLOT(reject()) );
 
-  ok = new QPushButton( "OK", this );  
+  ok = new QPushButton( i18n("OK"), this );  
   ok->setGeometry( this->width()-90, this->height()-40, 80,30 ); 
   connect( ok, SIGNAL(clicked()), SLOT(accept()) );
-
 }
 
 ArchiveDialog::~ArchiveDialog()
