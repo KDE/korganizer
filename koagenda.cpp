@@ -1033,6 +1033,7 @@ void KOAgenda::endItemAction()
     if ( modify ) {
       mActionItem->endMove();
       KOAgendaItem *placeItem = mActionItem->firstMultiItem();
+      // FIXME: A mChanger->changeIncidence is missing here!
       if  ( !placeItem ) {
         placeItem = mActionItem;
       }
