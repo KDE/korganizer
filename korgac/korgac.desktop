@@ -57,6 +57,7 @@ Icon=korganizer
 Type=Application
 GenericName=KOrganizer Alarm Daemon Client
 GenericName[bg]=Клиент за алармата
+GenericName[bs]=Klijent KOrganizer alarm demona
 GenericName[ca]=Client del dimoni d'alarma de KOrganizer
 GenericName[cs]=Klient KOrganizeru pro spouštění alarmů
 GenericName[da]=KOrganizer-alarmdæmon-klient
