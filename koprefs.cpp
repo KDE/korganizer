@@ -32,7 +32,7 @@ KOPrefs::KOPrefs() :
   mDefaultTimeBarFont = QFont("helvetica",12,QFont::Bold);
   mDefaultViewFont = QFont("helvetica",12);
 
-  KPrefsItem::setCurrentGroup("General");
+  KPrefs::setCurrentGroup("General");
 
   addItemBool("Enable Group Scheduling",&mEnableGroupScheduling,false);
   addItemBool("Enable Project View",&mEnableProjectView,false);
@@ -43,13 +43,13 @@ KOPrefs::KOPrefs() :
   addItemString("Html Export File",&mHtmlExportFile,
       QDir::homeDirPath() + "/" + i18n("Default export file", "calendar.html"));
 
-  KPrefsItem::setCurrentGroup("Personal Settings");
+  KPrefs::setCurrentGroup("Personal Settings");
 
   addItemInt("Mail Client",&mMailClient,MailClientKMail);
   addItemBool("Use Control Center Email",&mEmailControlCenter,false);
   addItemBool("Bcc",&mBcc,false);
 
-  KPrefsItem::setCurrentGroup("Time & Date");
+  KPrefs::setCurrentGroup("Time & Date");
 
   addItemString("Time Zone",&mTimeZone,"+0000");
   addItemInt("Default Start Time",&mStartTime,10);
@@ -57,20 +57,21 @@ KOPrefs::KOPrefs() :
   addItemInt("Default Alarm Time",&mAlarmTime,0);
   addItemInt("Daylight Savings",&mDaylightSavings,0);
 
-  KPrefsItem::setCurrentGroup("AlarmDaemon");
+  KPrefs::setCurrentGroup("AlarmDaemon");
 
   addItemBool("Autostart",&mAlarmdAutostart,true);
 
-  KPrefsItem::setCurrentGroup("Calendar");
+  KPrefs::setCurrentGroup("Calendar");
 
   addItemInt("Default Calendar Format",&mDefaultFormat,FormatICalendar);
 
-  KPrefsItem::setCurrentGroup("Fonts");
+  KPrefs::setCurrentGroup("Fonts");
+
   addItemFont("TimeBar Font",&mTimeBarFont);
   addItemFont("MonthView Font",&mMonthViewFont);
   addItemFont("AgendaView Font",&mAgendaViewFont);
 
-  KPrefsItem::setCurrentGroup("Colors");
+  KPrefs::setCurrentGroup("Colors");
 
   addItemColor("Holiday Color",&mHolidayColor,defaultHolidayColor);
   addItemColor("Highlight Color",&mHighlightColor,defaultHighlightColor);
@@ -78,7 +79,7 @@ KOPrefs::KOPrefs() :
   addItemColor("Agenda Background Color",&mAgendaBgColor,defaultAgendaBgColor);
   addItemColor("WorkingHours Color",&mWorkingHoursColor,defaultWorkingHoursColor);
 
-  KPrefsItem::setCurrentGroup("Views");
+  KPrefs::setCurrentGroup("Views");
 
   addItemInt("Hour Size",&mHourSize,10);
   addItemBool("Show Daily Recurrences",&mDailyRecur,true);
@@ -95,7 +96,8 @@ KOPrefs::KOPrefs() :
   addItemBool("Full View Month",&mFullViewMonth,false);
   addItemBool("Full View Todo",&mFullViewTodo,true);
 
-  KPrefsItem::setCurrentGroup("Printer");
+  KPrefs::setCurrentGroup("Printer");
+
   addItemString("Preview",&mPrintPreview,"kghostview");
 }
 

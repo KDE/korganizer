@@ -8,26 +8,86 @@
 
 #include "kprefs.h"
 
-QString *KPrefsItem::mCurrentGroup = 0;
+class KPrefsItemBool : public KPrefsItem {
+  public:
+    KPrefsItemBool(const QString &group,const QString &name,bool *,bool defaultValue=true);
+    virtual ~KPrefsItemBool() {}
+    
+    void setDefault();
+    void readConfig(KConfig *);
+    void writeConfig(KConfig *);
 
-KPrefsItem::KPrefsItem(const QString &name)
-{
-  mName = name;
+  private:
+    bool *mReference;
+    bool mDefault;
+};
 
-  if (mCurrentGroup == 0) mGroup = "No Group";
-  else mGroup = *mCurrentGroup;
-}
+class KPrefsItemInt : public KPrefsItem {
+  public:
+    KPrefsItemInt(const QString &group,const QString &name,int *,int defaultValue=0);
+    virtual ~KPrefsItemInt() {}
+    
+    void setDefault();
+    void readConfig(KConfig *);
+    void writeConfig(KConfig *);
 
-void KPrefsItem::setCurrentGroup(const QString &group)
-{
-  if (mCurrentGroup) delete mCurrentGroup;
-  mCurrentGroup = new QString(group);
-}
+  private:
+    int *mReference;
+    int mDefault;
+};
 
 
-KPrefsItemBool::KPrefsItemBool(const QString &name,
+class KPrefsItemColor : public KPrefsItem {
+  public:
+    KPrefsItemColor(const QString &group,const QString &name,QColor *,
+                    const QColor &defaultValue=QColor(128,128,128));
+    virtual ~KPrefsItemColor() {}
+    
+    void setDefault();
+    void readConfig(KConfig *);
+    void writeConfig(KConfig *);    
+
+  private:
+    QColor *mReference;
+    QColor mDefault;
+};
+
+
+class KPrefsItemFont : public KPrefsItem {
+  public:
+    KPrefsItemFont(const QString &group,const QString &name,QFont *,
+                   const QFont &defaultValue=QFont("helvetica",12));
+    virtual ~KPrefsItemFont() {}
+    
+    void setDefault();
+    void readConfig(KConfig *);
+    void writeConfig(KConfig *);    
+
+  private:
+    QFont *mReference;
+    QFont mDefault;
+};
+
+
+class KPrefsItemString : public KPrefsItem {
+  public:
+    KPrefsItemString(const QString &group,const QString &name,QString *,
+                     const QString &defaultValue="");
+    virtual ~KPrefsItemString() {}
+    
+    void setDefault();
+    void readConfig(KConfig *);
+    void writeConfig(KConfig *);    
+
+  private:
+    QString *mReference;
+    QString mDefault;
+};
+
+
+KPrefsItemBool::KPrefsItemBool(const QString &group,const QString &name,
                                bool *reference,bool defaultValue) :
-  KPrefsItem(name)
+  KPrefsItem(group,name)
 {
   mReference = reference;
   mDefault = defaultValue;
@@ -52,9 +112,9 @@ void KPrefsItemBool::readConfig(KConfig *config)
 }
 
 
-KPrefsItemInt::KPrefsItemInt(const QString &name,
+KPrefsItemInt::KPrefsItemInt(const QString &group,const QString &name,
                              int *reference,int defaultValue) :
-  KPrefsItem(name)
+  KPrefsItem(group,name)
 {
   mReference = reference;
   mDefault = defaultValue;
@@ -78,9 +138,9 @@ void KPrefsItemInt::readConfig(KConfig *config)
 }
 
 
-KPrefsItemColor::KPrefsItemColor(const QString &name,
-                                 QColor *reference,QColor defaultValue) :
-  KPrefsItem(name)
+KPrefsItemColor::KPrefsItemColor(const QString &group,const QString &name,
+                                 QColor *reference,const QColor &defaultValue) :
+  KPrefsItem(group,name)
 {
   mReference = reference;
   mDefault = defaultValue;
@@ -104,9 +164,9 @@ void KPrefsItemColor::readConfig(KConfig *config)
 }
 
 
-KPrefsItemFont::KPrefsItemFont(const QString &name,
-                               QFont *reference,QFont defaultValue) :
-  KPrefsItem(name)
+KPrefsItemFont::KPrefsItemFont(const QString &group,const QString &name,
+                               QFont *reference,const QFont &defaultValue) :
+  KPrefsItem(group,name)
 {
   mReference = reference;
   mDefault = defaultValue;
@@ -130,10 +190,9 @@ void KPrefsItemFont::readConfig(KConfig *config)
 }
 
 
-KPrefsItemString::KPrefsItemString(const QString &name,
-                                   QString *reference,
-                                   const QString &defaultValue) :
-  KPrefsItem(name)
+KPrefsItemString::KPrefsItemString(const QString &group,const QString &name,
+                                   QString *reference,const QString &defaultValue) :
+  KPrefsItem(group,name)
 {
   mReference = reference;
   mDefault = defaultValue;
@@ -157,14 +216,10 @@ void KPrefsItemString::readConfig(KConfig *config)
 }
 
 
+QString *KPrefs::mCurrentGroup = 0;
 
 KPrefs::KPrefs(const QString &configname)
 {
-  kdDebug() << "KPrefs::KPrefs(): locate: " << locate("config",configname)
-            << endl;
-  kdDebug() << "KPrefs::KPrefs(): locateLocal: "
-            << locateLocal("config",configname) << endl;
-
   if (!configname.isEmpty()) {
     mConfig = new KConfig(locateLocal("config",configname));
   } else {
@@ -172,18 +227,25 @@ KPrefs::KPrefs(const QString &configname)
   }
 
   mItems.setAutoDelete(true);
+
+  // Set default group
+  if (mCurrentGroup == 0) mCurrentGroup = new QString("No Group");
 }
 
 KPrefs::~KPrefs()
 {
-  kdDebug() << "KPrefs::~KPrefs()" << endl;
-
   if (mConfig != KGlobal::config()) {
     delete mConfig;
   }
 }
 
-KConfig *KPrefs::config()
+void KPrefs::setCurrentGroup(const QString &group)
+{
+  if (mCurrentGroup) delete mCurrentGroup;
+  mCurrentGroup = new QString(group);
+}
+
+KConfig *KPrefs::config() const
 {
   return mConfig;
 }
@@ -210,8 +272,6 @@ void KPrefs::readConfig()
 
 void KPrefs::writeConfig()
 {
-//  kdDebug() << "KPrefs::writeConfig()" << endl;
-
   KPrefsItem *item;
   for(item = mItems.first();item;item = mItems.next()) {
     item->writeConfig(mConfig);
@@ -220,40 +280,35 @@ void KPrefs::writeConfig()
   usrWriteConfig();
 
   mConfig->sync();
-
-//  kdDebug() << "KPrefs::writeConfig() done" << endl;
 }
+
 
 void KPrefs::addItem(KPrefsItem *item)
 {
-//  kdDebug() << "KPrefs::addPrefsItem()" << endl;
-
   mItems.append(item);
-
-//  kdDebug() << "KPrefs::addPrefsItem(): done" << endl;
 }
 
 void KPrefs::addItemBool(const QString &key,bool *reference,bool defaultValue)
 {
-  addItem(new KPrefsItemBool(key,reference,defaultValue));
+  addItem(new KPrefsItemBool(*mCurrentGroup,key,reference,defaultValue));
 }
 
 void KPrefs::addItemInt(const QString &key,int *reference,int defaultValue)
 {
-  addItem(new KPrefsItemInt(key,reference,defaultValue));
+  addItem(new KPrefsItemInt(*mCurrentGroup,key,reference,defaultValue));
 }
 
 void KPrefs::addItemColor(const QString &key,QColor *reference,const QColor &defaultValue)
 {
-  addItem(new KPrefsItemColor(key,reference,defaultValue));
+  addItem(new KPrefsItemColor(*mCurrentGroup,key,reference,defaultValue));
 }
 
 void KPrefs::addItemFont(const QString &key,QFont *reference,const QFont &defaultValue)
 {
-  addItem(new KPrefsItemFont(key,reference,defaultValue));
+  addItem(new KPrefsItemFont(*mCurrentGroup,key,reference,defaultValue));
 }
 
 void KPrefs::addItemString(const QString &key,QString *reference,const QString &defaultValue)
 {
-  addItem(new KPrefsItemString(key,reference,defaultValue));
+  addItem(new KPrefsItemString(*mCurrentGroup,key,reference,defaultValue));
 }
