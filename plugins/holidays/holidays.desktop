@@ -1,4 +1,5 @@
 [Desktop Entry]
+Encoding=UTF-8
 X-KDE-Library=libkorg_holidays
 Name=Holiday plugin for Calendars
 Name[ar]=ملحق العطل للتقويم
@@ -8,10 +9,13 @@ Name[da]=Helligdage-indstik for kalendere
 Name[de]=Ferien-Plugin für Kalender
 Name[es]=Plugin de vacaciones para Calendar
 Name[eu]=Calendars-erako oporretako plugina
+Name[fi]=Lomasovelma kalentereihin
 Name[fr]=Module de vacances pour les agendas
 Name[he]=תוסף חגים ללוחות שנה
 Name[hu]=Szabadságnyilvántartó bővítőmodul naptárakhoz
 Name[is]=Frídaga- og helgidagaviðbót við dagatalið
+Name[it]=Plugin vacanze per Calendars
+Name[lt]=Švenčių priedas Kalendoriams
 Name[lv]=Brīvdienu iespraudnis Kalendāriem
 Name[nl]=Vakantieplugin voor kalenders
 Name[pt]='Plugin' de feriados para o Calendário
@@ -21,6 +25,7 @@ Name[sl]=Vstavek za počitnice za Koledar
 Name[sv]=Semesterinsticksprogram för kalendrar
 Name[xh]=Iplagi efakiweyo yeHolide zee Calendar
 Name[xx]=xx
+Name[zh_TW]=Calendars 假日外掛程式
 Name[zu]=Eyeholide iplagi yamaKhalenda
 Type=Service
 ServiceTypes=Calendar/Plugin,Calendar/Decoration

@@ -1,4 +1,23 @@
 [Desktop Entry]
+Encoding=UTF-8
 Type=ServiceType
 X-KDE-ServiceType=KOrganizer/Part
 Comment=KOrganizer Part
+Comment[af]=korganizer deel
+Comment[de]=KOrganizer-Objekt (KPart)
+Comment[es]=Parte de KOrganizer
+Comment[fi]=KOrganizer osa
+Comment[fr]=Composant kOrganizer
+Comment[he]=רכיב KOrganizer
+Comment[hu]=KOrganizer objektum
+Comment[is]=KOrganizer hlutur
+Comment[lt]=KOrganizer dalis
+Comment[lv]=KOrganizer Daļa
+Comment[pt]=Componente do KOrganizer
+Comment[pt_BR]=KOrganizer
+Comment[sk]=Part KOrganizer
+Comment[sl]=Del KOrganizerja
+Comment[sv]=Korganizer-del
+Comment[uk]=Складова KOrganizer
+Comment[xx]=xx
+Comment[zu]=KUmgqugquzeleli Wengxenye

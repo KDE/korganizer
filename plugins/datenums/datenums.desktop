@@ -1,4 +1,5 @@
 [Desktop Entry]
+Encoding=UTF-8
 X-KDE-Library=libkorg_datenums
 Name=Date numbers plugin for Calendars
 Name[af]=datum nommers inplak vir kalenders
@@ -9,10 +10,12 @@ Name[da]=Datonumre-indstik for kalendere
 Name[de]=Daten-Plugin für Kalender
 Name[es]=Plugin de números de fecha para Calendar
 Name[eu]=Calendars-erako data zenbaki plugina
+Name[fi]=Päivämääräsovelma kalentereihin
 Name[fr]=Module de date pour les agendas
-Name[he]=תוסף מספרי תאריכם ללוחות שנה
+Name[he]=תוסף מספרי תאריכים ללוחות שנה
 Name[hu]=Dátummegjelenítő bővítőmodul naptárakhoz
 Name[is]=Viðbót til að breyta dagsetningum í dagatali
+Name[lt]=Datos skaičių priedas Kalendoriams
 Name[lv]=Datuma ciparu iespraudnis Kalendāriem
 Name[nl]=Datumgetallenplugin voor kalenders
 Name[pt]=Um 'plugin' de números de datas para Calendários
@@ -22,6 +25,7 @@ Name[sl]=Datumski vstavek za Koledar
 Name[sv]=Datuminsticksprogram för kalendrar
 Name[xh]=Iplagi efakiweyo yamanani omhla wee Calendar
 Name[xx]=xx
+Name[zh_TW]=Calendars 日期數字外掛程式
 Name[zu]=Izinamba zezinsuku zeplagi zamaKhalenda
 Type=Service
 ServiceTypes=Calendar/Plugin,Calendar/Decoration
