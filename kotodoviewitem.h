@@ -64,6 +64,11 @@ class KOTodoViewItem : public QCheckListItem
     QString key(int, bool) const;
 
     void setSortKey(int column,const QString &key);
+    
+    bool isAlternate();
+
+    virtual void paintCell(QPainter *p, const QColorGroup &cg,
+      int column, int width, int alignment);
 
 //  signals:
 //    void isModified(bool);
@@ -79,6 +84,10 @@ class KOTodoViewItem : public QCheckListItem
     Todo *mTodo;
 
     QMap<int,QString> mKeyMap;
+    uint m_odd : 1;
+    uint m_known : 1;
+    uint m_unused : 30;
+
 };
 
 #endif

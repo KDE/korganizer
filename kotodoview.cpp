@@ -408,7 +408,7 @@ QMap<Todo *,KOTodoViewItem *>::ConstIterator
 
 void KOTodoView::updateConfig()
 {
-  // to be implemented.
+  mTodoListView->repaintContents();
 }
 
 QPtrList<Incidence> KOTodoView::selectedIncidences()

@@ -116,6 +116,8 @@ class KOPrefs : public KPrefs
     QColor  mEventColor;
     QColor  mAgendaBgColor;
     QColor  mWorkingHoursColor;
+    QColor  mTodoDueTodayColor;
+    QColor  mTodoOverdueColor;
 
     int     mDayBegins;
     int     mHourSize;

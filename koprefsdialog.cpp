@@ -381,7 +381,7 @@ void KOPrefsDialog::setupColorsTab()
   QFrame *topFrame = addPage(i18n("Colors"),0,
                              DesktopIcon("colorize",KIcon::SizeMedium));
 
-  QGridLayout *topLayout = new QGridLayout(topFrame,5,2);
+  QGridLayout *topLayout = new QGridLayout(topFrame,7,2);
   topLayout->setSpacing(spacingHint());
   topLayout->setMargin(marginHint());
 
@@ -420,10 +420,24 @@ void KOPrefsDialog::setupColorsTab()
   topLayout->addWidget(workingHoursColor->preview(),4,0);
   topLayout->addWidget(workingHoursColor->button(),4,1);
 
+  // Todo due today color
+  KPrefsWidColor *todoDueTodayColor =
+      addWidColor(i18n("Todo due today Color"),
+                  &(KOPrefs::instance()->mTodoDueTodayColor),topFrame);
+  topLayout->addWidget(todoDueTodayColor->preview(),5,0);
+  topLayout->addWidget(todoDueTodayColor->button(),5,1);
+  
+  // Todo overdue color
+  KPrefsWidColor *todoOverdueColor =
+      addWidColor(i18n("Todo overdue Color"),
+                  &(KOPrefs::instance()->mTodoOverdueColor),topFrame);
+  topLayout->addWidget(todoOverdueColor->preview(),6,0);
+  topLayout->addWidget(todoOverdueColor->button(),6,1);
+  
   // categories colors
   QGroupBox *categoryGroup = new QGroupBox(1,Horizontal,i18n("Categories"),
                                            topFrame);
-  topLayout->addMultiCellWidget(categoryGroup,5,5,0,1);
+  topLayout->addMultiCellWidget(categoryGroup,7,7,0,1);
 
   mCategoryCombo = new QComboBox(categoryGroup);
   mCategoryCombo->insertStringList(KOPrefs::instance()->mCustomCategories);
@@ -440,7 +454,7 @@ void KOPrefsDialog::setupColorsTab()
   connect(categoryButton,SIGNAL(clicked()),SLOT(selectCategoryColor()));
   updateCategoryColor();
 
-  topLayout->setRowStretch(6,1);
+  topLayout->setRowStretch(8,1);
 }
 
 void KOPrefsDialog::selectCategoryColor()

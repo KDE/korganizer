@@ -54,7 +54,9 @@ KOPrefs::KOPrefs() :
   QColor defaultHighlightColor    = QColor("blue");
   QColor defaultAgendaBgColor     = QColor(128,128,128);
   QColor defaultWorkingHoursColor = QColor(160,160,160);
-
+  QColor defaultTodoDueTodayColor = QColor("blue");
+  QColor defaultTodoOverdueColor  = QColor("red");
+  
   mDefaultTimeBarFont = QFont("helvetica",12,QFont::Bold);
   mDefaultViewFont = QFont("helvetica",12);
   mDefaultMonthViewFont = QFont("helvetica",10);
@@ -103,6 +105,8 @@ KOPrefs::KOPrefs() :
   addItemColor("Event Color",&mEventColor,mDefaultCategoryColor);
   addItemColor("Agenda Background Color",&mAgendaBgColor,defaultAgendaBgColor);
   addItemColor("WorkingHours Color",&mWorkingHoursColor,defaultWorkingHoursColor);
+  addItemColor("Todo due today Color",&mTodoDueTodayColor,defaultTodoDueTodayColor);
+  addItemColor("Todo overdue Color",&mTodoOverdueColor,defaultTodoOverdueColor);
 
   KPrefs::setCurrentGroup("Views");
 

@@ -22,7 +22,9 @@
 #include <klocale.h>
 #include <iostream.h>
 #include "kotodoviewitem.h"
-#include "kotodoviewitem.moc"
+#include "kotodoview.h"
+#include "koprefs.h"
+//#include "kotodoviewitem.moc"
 
 KOTodoViewItem::KOTodoViewItem( QListView *parent, Todo *todo )
   : QCheckListItem( parent , "", CheckBox ), mTodo( todo )
@@ -113,6 +115,7 @@ void KOTodoViewItem::construct()
     str.stripWhiteSpace();
     setText(6,str);
   }
+  m_known = false;
 }
 
 void KOTodoViewItem::stateChange(bool state)
@@ -161,4 +164,63 @@ void KOTodoViewItem::stateChange(bool state)
     item->stateChange(state);
     myChild = myChild->nextSibling();
   }
+}
+
+bool KOTodoViewItem::isAlternate()
+{
+  KOTodoListView *lv = static_cast<KOTodoListView *>(listView());
+  if (lv && lv->alternateBackground().isValid())
+  {
+    KOTodoViewItem *above = 0;
+    above = dynamic_cast<KOTodoViewItem *>(itemAbove());
+    m_known = above ? above->m_known : true;
+    if (m_known)
+    {
+       m_odd = above ? !above->m_odd : false;
+    }
+    else
+    {
+       KOTodoViewItem *item;
+       bool previous = true;
+       if (parent())
+       {
+          item = dynamic_cast<KOTodoViewItem *>(parent());
+          if (item)
+             previous = item->m_odd;
+          item = dynamic_cast<KOTodoViewItem *>(parent()->firstChild());
+       }
+       else
+       {
+          item = dynamic_cast<KOTodoViewItem *>(lv->firstChild());
+       }
+
+       while(item)
+       {
+          item->m_odd = previous = !previous;
+          item->m_known = true;
+          item = dynamic_cast<KOTodoViewItem *>(item->nextSibling());
+       }
+    }
+    return m_odd;
+  }
+  return false;
+}
+
+void KOTodoViewItem::paintCell(QPainter *p, const QColorGroup &cg, int column, int width, int alignment)
+{
+  QColorGroup _cg = cg;
+  if (isAlternate())
+        _cg.setColor(QColorGroup::Base, static_cast< KOTodoListView* >(listView())->alternateBackground());
+  if (mTodo->hasDueDate()) {
+    if (mTodo->dtDue().date()==QDate::currentDate() &&
+        !mTodo->isCompleted()) {
+      _cg.setColor(QColorGroup::Base, KOPrefs::instance()->mTodoDueTodayColor);    
+    }
+    if (mTodo->dtDue().date() < QDate::currentDate() &&
+        !mTodo->isCompleted()) {
+      _cg.setColor(QColorGroup::Base, KOPrefs::instance()->mTodoOverdueColor);
+    }
+  }
+  
+  QCheckListItem::paintCell(p, _cg, column, width, alignment);
 }
