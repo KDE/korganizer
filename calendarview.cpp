@@ -1019,7 +1019,7 @@ void CalendarView::schedule_declinecounter()
   schedule(Scheduler::Declinecounter);
 }
 
-void CalendarView::schedule(Scheduler::Method method, Event *event = 0)
+void CalendarView::schedule(Scheduler::Method method, Event *event)
 {
 //  Event *event = 0;
   if (event == 0) {
