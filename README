@@ -2,11 +2,18 @@
                        | K   O R G A N I Z E R |
                        +-----------------------+
 
-                            version 2.2 alpha 1
+                            version 2.2 beta 1
 
                        http://korganizer.kde.org
 
 QUICK NOTES ON WHAT'S NEW IN THIS RELEASE:
+
+* Beta-Release 2.2beta1 (May 2001)
+
+  What's new:
+  - Active remote calendar
+  - Sending events via KMail
+  - Bug fixes
 
 * Alpha 1 release of version 2.2 (April 2001)
 
