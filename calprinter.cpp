@@ -410,7 +410,7 @@ void CalPrinter::printTodo(const QDate &fd, const QDate &td)
   for(int cprior = 1; cprior <= 6; cprior++) {
     Todo *currEvent(todoList.first());
     while (currEvent != NULL) {
-
+                
                 //Filter out the subitems.
       if (currEvent->relatedTo()){
             currEvent = todoList.next();
@@ -451,6 +451,12 @@ void CalPrinter::drawTodo(int count, Todo * item, QPainter &p,int level,QRect *r
   int priority=item->priority();
   QRect rect;
   QRect startpoint;
+  
+  int lineEndHeight = mCurrentLinePos+p.fontMetrics().lineSpacing()+p.fontMetrics().height();
+  if ( lineEndHeight > p.viewport().height()) {
+    mCurrentLinePos = 0;
+    mPrinter->newPage();
+  }
 
   // If this is a sub-item, r will not be 0, and we want the LH side of the priority line up
   //to the RH side of the parent item's priority
