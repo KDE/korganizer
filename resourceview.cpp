@@ -34,6 +34,7 @@
 #include <kinputdialog.h>
 
 #include <qlayout.h>
+#include <qlabel.h>
 
 using namespace KCal;
 
@@ -55,9 +56,9 @@ CalendarViewExtension *ResourceViewFactory::create( QWidget *parent )
 }
 
 ResourceItem::ResourceItem( ResourceCalendar *resource, ResourceView *view,
-                            KListView *parent ) :
-      QCheckListItem( parent, resource->resourceName(), CheckBox ),
-      mResource( resource ), mView( view )
+                            KListView *parent )
+  : QCheckListItem( parent, resource->resourceName(), CheckBox ),
+    mResource( resource ), mView( view )
 {
   setOn( mResource->isActive() );
 }
@@ -81,30 +82,27 @@ ResourceView::ResourceView( KCal::CalendarResourceManager *manager,
   : CalendarViewExtension( parent, name ),
     mManager( manager )
 {
+  QBoxLayout *topLayout = new QVBoxLayout( this );
+
   mListView = new KListView( this );
   mListView->addColumn( i18n("Calendar") );
   mListView->setResizeMode( QListView::LastColumn );
-
-  QBoxLayout *topLayout = new QVBoxLayout( this );
   topLayout->addWidget( mListView );
 
-  QBoxLayout *buttonLayout = new QHBoxLayout( this );
+  QHBox *buttonBox = new QHBox( this );
+  topLayout->addWidget( buttonBox );
 
-  add = new QPushButton( i18n("Add..."), this, "add" );
-  del = new QPushButton( i18n("Remove"), this, "del" );
-  edit = new QPushButton( i18n("Edit..."), this, "edit" );
-  del->setDisabled( true );
-  edit->setDisabled( true );
-  buttonLayout->addWidget( add );
-  buttonLayout->addWidget( del );
-  buttonLayout->addWidget( edit );
-  topLayout->addLayout( buttonLayout );
+  mAddButton = new QPushButton( i18n("Add..."), buttonBox, "add" );
+  mDeleteButton = new QPushButton( i18n("Remove"), buttonBox, "del" );
+  mEditButton = new QPushButton( i18n("Edit..."), buttonBox, "edit" );
+  mDeleteButton->setDisabled( true );
+  mEditButton->setDisabled( true );
 
-  connect( mListView, SIGNAL(clicked(QListViewItem*)),
-           SLOT(currentChanged(QListViewItem*)) );
-  connect( add, SIGNAL(clicked()), SLOT(addResource()) );
-  connect( del, SIGNAL(clicked()), SLOT(removeResource()) );
-  connect( edit, SIGNAL(clicked()), SLOT(editResource()) );
+  connect( mListView, SIGNAL( clicked( QListViewItem * ) ),
+           SLOT( currentChanged( QListViewItem * ) ) );
+  connect( mAddButton, SIGNAL( clicked() ), SLOT( addResource() ) );
+  connect( mDeleteButton, SIGNAL( clicked() ), SLOT( removeResource() ) );
+  connect( mEditButton, SIGNAL( clicked() ), SLOT( editResource() ) );
 
   updateView();
 }
@@ -134,7 +132,8 @@ void ResourceView::addResource()
   QStringList types = mManager->resourceTypeNames();
   bool ok = false;
   QString type = KInputDialog::getItem( i18n( "Resource Configuration" ),
-      i18n( "Please select type of the new resource:" ), types, 0, false, &ok, this );
+      i18n( "Please select type of the new resource:" ), types, 0, false, &ok,
+            this );
   if ( !ok )
     return;
 
@@ -148,7 +147,8 @@ void ResourceView::addResource()
 
   resource->setResourceName( type + "-resource" );
 
-  KRES::ConfigDialog dlg( this, QString("calendar"), resource, "KRES::ConfigDialog" );
+  KRES::ConfigDialog dlg( this, QString("calendar"), resource,
+                          "KRES::ConfigDialog" );
 
   if ( dlg.exec() ) {
     mManager->add( resource );
@@ -162,7 +162,7 @@ void ResourceView::addResource()
 void ResourceView::removeResource()
 {
   QListViewItem *item = mListView->currentItem();
-  ResourceItem *rItem = static_cast<ResourceItem*>( item );
+  ResourceItem *rItem = static_cast<ResourceItem *>( item );
 
   if ( !rItem )
     return;
@@ -173,7 +173,8 @@ void ResourceView::removeResource()
   if ( km == KMessageBox::No ) return;
 
   if ( rItem->resource() == mManager->standardResource() ) {
-    KMessageBox::sorry( this, i18n( "You cannot remove your standard resource!" ) );
+    KMessageBox::sorry( this,
+                        i18n( "You cannot remove your standard resource!" ) );
     return;
   }
 
@@ -187,7 +188,7 @@ void ResourceView::removeResource()
 void ResourceView::editResource()
 {
   QListViewItem *item = mListView->currentItem();
-  ResourceItem *rItem = static_cast<ResourceItem*>( item );
+  ResourceItem *rItem = static_cast<ResourceItem *>( item );
   if ( !rItem )
     return;
 
@@ -207,8 +208,8 @@ void ResourceView::currentChanged( QListViewItem *item)
 {
   bool selected = true;
   if ( !item ) selected = false;
-  del->setEnabled( selected );
-  edit->setEnabled( selected );
+  mDeleteButton->setEnabled( selected );
+  mEditButton->setEnabled( selected );
 }
 
 #include "resourceview.moc"

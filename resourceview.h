@@ -94,7 +94,9 @@ class ResourceView : public CalendarViewExtension
   private:
     KListView *mListView;
     KCal::CalendarResourceManager *mManager;
-    QPushButton *add, *del, *edit;
+    QPushButton *mAddButton;
+    QPushButton *mDeleteButton;
+    QPushButton *mEditButton;
 };
 
 #endif
