@@ -7,7 +7,7 @@ lib_LTLIBRARIES = libkorganizer.la
 
 libkorganizer_la_LDFLAGS = $(all_libraries) $(KDE_RPATH)
 libkorganizer_la_LIBADD  = -lkparts \
-                           versit/libversit.a $(LIB_KFILE) -lkab
+                           versit/libversit.la $(LIB_KFILE) -lkab
 libkorganizer_la_LDFLAGS = $(all_libraries) -version-info 1:0:0 -module
 
 korganizer_LDFLAGS = $(all_libraries) $(KDE_RPATH)
@@ -15,7 +15,7 @@ korganizer_SOURCES = main.cpp
 korganizer_LDADD   = libkorganizer.la
 
 alarmd_LDFLAGS = $(all_libraries) $(KDE_RPATH)
-alarmd_LDADD = versit/libversit.a $(LIB_KDEUI)
+alarmd_LDADD = versit/libversit.la $(LIB_KDEUI)
 
 ########## FILES
 

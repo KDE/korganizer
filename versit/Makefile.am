@@ -1,8 +1,8 @@
 #	$Id$	
 
-noinst_LIBRARIES = libversit.a
+noinst_LTLIBRARIES = libversit.la
 
-libversit_a_SOURCES = vcc.c vobject.c
+libversit_la_SOURCES = vcc.c vobject.c
 
 $(srcdir)/vcc.c: vcc.y
 	bison $(srcdir)/vcc.y -o $(srcdir)/vcc.c
