@@ -105,7 +105,7 @@
                         <cstring>mFromTime</cstring>
                     </property>
                     <property name="whatsThis" stdset="0">
-                        <string>All events which start earlier than the given time won't be printed.</string>
+                        <string>All events which start earlier than the given time will not be printed.</string>
                     </property>
                 </widget>
                 <widget class="QTimeEdit" row="1" column="1">
@@ -120,7 +120,7 @@
                         </time>
                     </property>
                     <property name="whatsThis" stdset="0">
-                        <string>All events which start earlier than the given time won't be printed.</string>
+                        <string>All events which start earlier than the given time will not be printed.</string>
                     </property>
                 </widget>
                 <widget class="KDateEdit" row="0" column="1">
@@ -159,7 +159,7 @@
                         <cstring>mToTime</cstring>
                     </property>
                     <property name="whatsThis" stdset="0">
-                        <string>All events which start later than the given time won't be printed.</string>
+                        <string>All events which start later than the given time will not be printed.</string>
                     </property>
                 </widget>
                 <spacer row="1" column="4">
@@ -191,7 +191,7 @@
                         </time>
                     </property>
                     <property name="whatsThis" stdset="0">
-                        <string>All events which start later than the given time won't be printed.</string>
+                        <string>All events which start later than the given time will not be printed.</string>
                     </property>
                 </widget>
             </grid>

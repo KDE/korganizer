@@ -155,7 +155,7 @@
                 <string>Print week &amp;numbers</string>
             </property>
             <property name="whatsThis" stdset="0">
-                <string>Enable this to print week numers at the left of each row.</string>
+                <string>Enable this to print week numbers at the left of each row.</string>
             </property>
         </widget>
         <widget class="QCheckBox" row="2" column="0">
@@ -166,7 +166,7 @@
                 <string>Print daily re&amp;curring incidences</string>
             </property>
             <property name="whatsThis" stdset="0">
-                <string>With this option it's possible to leave out the daily recurring to-dos in the print. The incidences take a lot of space and make the month view needlessly complicated.</string>
+                <string>With this option it is possible to leave out the daily recurring to-dos in the print. The incidences take a lot of space and make the month view needlessly complicated.</string>
             </property>
         </widget>
         <widget class="QCheckBox" row="3" column="0">

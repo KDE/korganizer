@@ -110,7 +110,7 @@
                         <string>Hide &amp;recurring incidences</string>
                     </property>
                     <property name="whatsThis" stdset="0">
-                        <string>Select this option if you don't want to show recurring incidences in your views. Daily and weekly recurring incidences may take a lot of space, so it might be handy to hide them.</string>
+                        <string>Select this option if you do not want to show recurring incidences in your views. Daily and weekly recurring incidences may take a lot of space, so it might be handy to hide them.</string>
                     </property>
                 </widget>
                 <widget class="QCheckBox" row="2" column="0" rowspan="1" colspan="4">
