@@ -66,8 +66,8 @@ class KOEditorGeneralTodo : public KOEditorGeneral
     void completedChanged(int);
 
   protected:
-    QBoxLayout *initTime();
-    QBoxLayout *initStatus();
+    void initTime(QBoxLayout *);
+    void initStatus(QBoxLayout *);
   
     void setCompletedDate();
 

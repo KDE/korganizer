@@ -82,8 +82,8 @@ class KOEditorGeneralEvent : public KOEditorGeneral
     void dateTimeStrChanged(const QString &);
 
   protected:
-    QBoxLayout *initTime();
-    QBoxLayout *initClass();
+    void initTime(QBoxLayout *);
+    void initClass(QBoxLayout *);
 
   private:
     QLabel                  *mStartDateLabel;

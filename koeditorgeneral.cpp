@@ -52,9 +52,9 @@ KOEditorGeneral::~KOEditorGeneral()
 {
 }
 
-QBoxLayout *KOEditorGeneral::initHeader()
+void KOEditorGeneral::initHeader(QBoxLayout *topLayout)
 {
-  QBoxLayout *headerLayout = new QVBoxLayout;
+  QBoxLayout *headerLayout = new QVBoxLayout(topLayout);
 
   mOwnerLabel = new QLabel(i18n("Owner:"),this);
   headerLayout->addWidget(mOwnerLabel);
@@ -67,14 +67,12 @@ QBoxLayout *KOEditorGeneral::initHeader()
 
   mSummaryEdit = new QLineEdit(this);
   summaryLayout->addWidget(mSummaryEdit);
-
-  return headerLayout;
 }
 
 
-QBoxLayout *KOEditorGeneral::initDescription()
+void KOEditorGeneral::initDescription(QBoxLayout *topLayout)
 {
-  QBoxLayout *descriptionLayout = new QVBoxLayout;
+  QBoxLayout *descriptionLayout = new QVBoxLayout( topLayout );
 
   mDescriptionEdit = new QMultiLineEdit(this);
   mDescriptionEdit->insertLine("");
@@ -83,8 +81,8 @@ QBoxLayout *KOEditorGeneral::initDescription()
   mDescriptionEdit->setWordWrap(QMultiLineEdit::WidgetWidth);
   descriptionLayout->addWidget(mDescriptionEdit);
 
-  QBoxLayout *detailsLayout = new QHBoxLayout;
-  descriptionLayout->addLayout(detailsLayout);
+  QBoxLayout *detailsLayout = new QHBoxLayout(descriptionLayout);
+//  descriptionLayout->addLayout(detailsLayout);
 
   mCategoriesButton = new QPushButton(this);
   mCategoriesButton->setText(i18n("Categories..."));
@@ -93,7 +91,7 @@ QBoxLayout *KOEditorGeneral::initDescription()
 
   mCategoriesLabel = new QLabel(this);
   mCategoriesLabel->setFrameStyle(QFrame::Panel|QFrame::Sunken);
-  detailsLayout->addWidget(mCategoriesLabel);
+  detailsLayout->addWidget(mCategoriesLabel,1);
 
   QLabel *secrecyLabel = new QLabel("Access:",this);
   detailsLayout->addWidget(secrecyLabel);
@@ -101,13 +99,11 @@ QBoxLayout *KOEditorGeneral::initDescription()
   mSecrecyCombo = new QComboBox(this);
   mSecrecyCombo->insertStringList(Incidence::secrecyList());
   detailsLayout->addWidget(mSecrecyCombo);
-
-  return descriptionLayout;
 }
 
-QBoxLayout *KOEditorGeneral::initAlarm()
+void KOEditorGeneral::initAlarm(QBoxLayout *topLayout)
 {
-  QBoxLayout *alarmLayout = new QHBoxLayout;
+  QBoxLayout *alarmLayout = new QHBoxLayout(topLayout);
 
   QLabel *alarmBell = new QLabel(this);
   alarmBell->setPixmap(SmallIcon("bell"));
@@ -142,8 +138,6 @@ QBoxLayout *KOEditorGeneral::initAlarm()
   QToolTip::add(mAlarmProgramButton, i18n("No program set"));
   connect(mAlarmProgramButton, SIGNAL(clicked()), SLOT(pickAlarmProgram()));
   alarmLayout->addWidget(mAlarmProgramButton);
-
-  return alarmLayout;
 }
 
 void KOEditorGeneral::pickAlarmSound()

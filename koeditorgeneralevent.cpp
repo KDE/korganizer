@@ -49,12 +49,13 @@ KOEditorGeneralEvent::KOEditorGeneralEvent(int spacing,QWidget* parent,
   mSpacing = spacing;
 
   QBoxLayout *topLayout = new QVBoxLayout(this);
-  topLayout->addLayout(initHeader());
-  topLayout->addLayout(initTime());
+  topLayout->setSpacing(mSpacing);
+  initHeader(topLayout);
+  initTime(topLayout);
   QBoxLayout *alarmLineLayout = new QHBoxLayout(topLayout);
-  alarmLineLayout->addLayout(initAlarm());
-  alarmLineLayout->addLayout(initClass());
-  topLayout->addLayout(initDescription());
+  initAlarm(alarmLineLayout);
+  initClass(alarmLineLayout);
+  initDescription(topLayout);
 
   QWidget::setTabOrder(mSummaryEdit, mStartDateEdit);
   QWidget::setTabOrder(mStartDateEdit, mStartTimeEdit);
@@ -80,9 +81,9 @@ KOEditorGeneralEvent::~KOEditorGeneralEvent()
 {
 }
 
-QBoxLayout *KOEditorGeneralEvent::initTime()
+void KOEditorGeneralEvent::initTime(QBoxLayout *topLayout)
 {
-  QBoxLayout *timeLayout = new QVBoxLayout;
+  QBoxLayout *timeLayout = new QVBoxLayout(topLayout);
 
   QGroupBox *timeGroupBox = new QGroupBox(1,QGroupBox::Horizontal,
                                           i18n("Appointment Time "),this);
@@ -146,13 +147,11 @@ QBoxLayout *KOEditorGeneralEvent::initTime()
 	  this, SLOT(startDateChanged(QDate)));
   connect(mEndDateEdit, SIGNAL(dateChanged(QDate)),
 	  this, SLOT(endDateChanged(QDate)));
-
-  return timeLayout;  
 }
 
-QBoxLayout *KOEditorGeneralEvent::initClass()
+void KOEditorGeneralEvent::initClass(QBoxLayout *topLayout)
 {
-  QBoxLayout *classLayout = new QHBoxLayout(this);
+  QBoxLayout *classLayout = new QHBoxLayout(topLayout);
 
   QLabel *freeTimeLabel = new QLabel(i18n("Show Time As:"),this);
   classLayout->addWidget(freeTimeLabel);
@@ -161,8 +160,6 @@ QBoxLayout *KOEditorGeneralEvent::initClass()
   mFreeTimeCombo->insertItem(i18n("Busy"));
   mFreeTimeCombo->insertItem(i18n("Free"));
   classLayout->addWidget(mFreeTimeCombo);
-
-  return classLayout;
 }
 
 void KOEditorGeneralEvent::timeStuffDisable(bool disable)

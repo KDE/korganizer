@@ -68,9 +68,9 @@ class KOEditorGeneral : public QWidget
     void openCategoryDialog();
 
   protected:
-    QBoxLayout *initHeader();
-    QBoxLayout *initDescription();
-    QBoxLayout *initAlarm();
+    void initHeader(QBoxLayout *);
+    void initDescription(QBoxLayout *);
+    void initAlarm(QBoxLayout *);
 
     QLineEdit               *mSummaryEdit;
     QCheckBox               *mAlarmButton;

@@ -51,12 +51,13 @@ KOEditorGeneralTodo::KOEditorGeneralTodo(int spacing,QWidget* parent,
   mSpacing = spacing;
 
   QBoxLayout *topLayout = new QVBoxLayout(this);
-  topLayout->addLayout(initHeader());
-  topLayout->addLayout(initTime());
-  topLayout->addLayout(initStatus());
+  topLayout->setSpacing(mSpacing);
+  initHeader(topLayout);
+  initTime(topLayout);
+  initStatus(topLayout);
   QBoxLayout *alarmLineLayout = new QHBoxLayout(topLayout);
-  alarmLineLayout->addLayout(initAlarm());
-  topLayout->addLayout(initDescription());
+  initAlarm(alarmLineLayout);
+  initDescription(topLayout);
 
   QWidget::setTabOrder(mSummaryEdit, mCompletedCombo);
   QWidget::setTabOrder(mCompletedCombo, mPriorityCombo);
@@ -72,9 +73,9 @@ KOEditorGeneralTodo::~KOEditorGeneralTodo()
 {
 }
 
-QBoxLayout *KOEditorGeneralTodo::initTime()
+void KOEditorGeneralTodo::initTime(QBoxLayout *topLayout)
 {
-  QBoxLayout *timeLayout = new QVBoxLayout;
+  QBoxLayout *timeLayout = new QVBoxLayout(topLayout);
 
   QGroupBox *timeGroupBox = new QGroupBox(1,QGroupBox::Horizontal,
                                           i18n("Due Date "),this);
@@ -120,14 +121,12 @@ QBoxLayout *KOEditorGeneralTodo::initTime()
   
   // some more layouting
   layoutTimeBox->setColStretch(3,1);
-
-  return timeLayout;
 }
 
 
-QBoxLayout *KOEditorGeneralTodo::initStatus()
+void KOEditorGeneralTodo::initStatus(QBoxLayout *topLayout)
 {
-  QBoxLayout *statusLayout = new QHBoxLayout;
+  QBoxLayout *statusLayout = new QHBoxLayout(topLayout);
 
   mCompletedCombo = new QComboBox(this);
   // xgettext:no-c-format
@@ -160,8 +159,6 @@ QBoxLayout *KOEditorGeneralTodo::initStatus()
   mPriorityCombo->insertItem(i18n("4"));
   mPriorityCombo->insertItem(i18n("5 (lowest)"));
   statusLayout->addWidget(mPriorityCombo);
-
-  return statusLayout;
 }
 
 

@@ -75,28 +75,27 @@ class KOEditorDetails : public QWidget
 
   protected slots:
     void addNewAttendee();
-    void updateAttendee();
     void removeAttendee();
-    void attendeeListHilite(QListViewItem *);
-    void attendeeListAction(QListViewItem *);
     void openAddressBook();
-    void checkLineEdits();
-    void checkAttendeeSelection();
+    void updateAttendeeInput();
+    void clearAttendeeInput();
+    void fillAttendeeInput(AttendeeListItem *);
+    void updateAttendeeItem();
+    void setEnabledAttendeeInput(bool);
 
   private:
-    void clearAttendeeInput();
+    bool mDisableItemUpdate;
 
     QLineEdit *mNameEdit;
     QLineEdit *mEmailEdit;
     QListView *mListView;
-    QPushButton* mAddButton;
-    QPushButton* mModifyButton;
-    QPushButton* mRemoveButton;
-    QPushButton* mAddressBookButton;
     QComboBox* mRoleCombo;
     QCheckBox* mRsvpButton;
     QComboBox* mStatusCombo;
 
+    QPushButton* mAddButton;
+    QPushButton* mRemoveButton;
+    QPushButton* mAddressBookButton;
 };
 
 #endif
