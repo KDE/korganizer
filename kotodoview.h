@@ -42,6 +42,8 @@
 #include <korganizer/baseview.h>
 
 #include "kotodoviewitem.h"
+#include "koprefs.h"
+#include "koglobals.h"
 
 class QDragEnterEvent;
 class QDragMoveEvent;
@@ -110,6 +112,8 @@ class KOTodoView : public KOrg::BaseView
     
     void saveLayout(KConfig *config, const QString &group) const;
     void restoreLayout(KConfig *config, const QString &group);
+    /** Create a popup menu to set categories */
+    QPopupMenu *getCategoryPopupMenu (KOTodoViewItem *todoItem);
 
   public slots:
     void updateView();
@@ -130,7 +134,11 @@ class KOTodoView : public KOrg::BaseView
     void showTodo();
     void editTodo();
     void deleteTodo();
-    
+
+    void setNewPriority(int);
+    void setNewPercentage(int);
+    void changedCategories(int);
+
     void purgeCompleted();
     
     void itemClicked(QListViewItem *);
@@ -144,6 +152,7 @@ class KOTodoView : public KOrg::BaseView
 
     void editTodoSignal(Todo *);
     void deleteTodoSignal(Todo *);
+    void todoModifiedSignal (Todo *, int);
 
     void isModified(bool);
 
@@ -159,6 +168,14 @@ class KOTodoView : public KOrg::BaseView
     KOTodoListView *mTodoListView;
     QPopupMenu *mItemPopupMenu;
     QPopupMenu *mPopupMenu;
+    QPopupMenu *mPriorityPopupMenu;
+    QPopupMenu *mPercentageCompletedPopupMenu;
+    QPopupMenu *mCategoryPopupMenu;
+
+    QMap<int, int> mPercentage;
+    QMap<int, int> mPriority;
+    QMap<int, QString> mCategory;
+
     KOTodoViewItem *mActiveItem;
 
     QMap<Todo *,KOTodoViewItem *> mTodoMap;

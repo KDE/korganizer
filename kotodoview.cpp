@@ -267,6 +267,22 @@ KOTodoView::KOTodoView(Calendar *calendar,QWidget* parent,const char* name) :
 
   mTodoListView->setMinimumHeight( 60 );
 
+  mPriorityPopupMenu = new QPopupMenu;
+  for (int i = 1; i <= 5; i++) {
+    QString label = QString ("%1").arg (i);
+    mPriority[mPriorityPopupMenu->insertItem (label)] = i;
+  }
+  connect (mPriorityPopupMenu, SIGNAL(activated (int)), SLOT (setNewPriority(int)));
+
+  mPercentageCompletedPopupMenu = new QPopupMenu;
+  for (int i = 0; i <= 100; i+=20) {
+    QString label = QString ("%1 %").arg (i);
+    mPercentage[mPercentageCompletedPopupMenu->insertItem (label)] = i;
+  }
+  connect (mPercentageCompletedPopupMenu, SIGNAL (activated (int)), SLOT (setNewPercentage (int)));
+
+
+
   mItemPopupMenu = new QPopupMenu;
   mItemPopupMenu->insertItem(i18n("Show..."), this,
                              SLOT (showTodo()));
@@ -463,11 +479,21 @@ void KOTodoView::showItem(QListViewItem *item,const QPoint &,int)
   emit showTodoSignal(((KOTodoViewItem *)item)->todo());
 }
 
-void KOTodoView::popupMenu(QListViewItem *item,const QPoint &,int)
+void KOTodoView::popupMenu(QListViewItem *item,const QPoint &,int column)
 {
   mActiveItem = (KOTodoViewItem *)item;
-  if (item) mItemPopupMenu->popup(QCursor::pos());
-  else mPopupMenu->popup(QCursor::pos());
+  if (item) {
+    switch (column){
+    case 1:
+      mPriorityPopupMenu->popup(QCursor::pos ()); break;
+    case 2:
+      mPercentageCompletedPopupMenu->popup(QCursor::pos ()); break;
+    case 5:
+      getCategoryPopupMenu((KOTodoViewItem *)item)->popup(QCursor::pos ()); break;
+    default:
+      mItemPopupMenu->popup(QCursor::pos());
+    }
+ } else mPopupMenu->popup(QCursor::pos());
 }
 
 void KOTodoView::newTodo()
@@ -508,6 +534,65 @@ void KOTodoView::deleteTodo()
   }
 }
 
+void KOTodoView::setNewPriority(int index)
+{
+  if (mActiveItem && !mActiveItem->todo()->isReadOnly ()) {
+    mActiveItem->todo()->setPriority(mPriority[index]);
+    mActiveItem->setText (1, QString ("%1").arg (mPriority[index]));
+    emit todoModifiedSignal (mActiveItem->todo(), KOGlobals::PRIORITY_MODIFIED);
+  }
+}
+
+void KOTodoView::setNewPercentage(int index)
+{
+  if (mActiveItem && !mActiveItem->todo()->isReadOnly ()) {
+    if (mPercentage[index] == 100) {
+      mActiveItem->todo()->setCompleted(QDateTime::currentDateTime());
+      mActiveItem->setOn (true);
+    } else {
+      mActiveItem->todo()->setCompleted(false);
+      mActiveItem->setOn (false);
+    }
+    mActiveItem->todo()->setPercentComplete(mPercentage[index]);
+    mActiveItem->setText (2, QString ("%1 %").arg (mPercentage[index]));
+    emit todoModifiedSignal (mActiveItem->todo (), KOGlobals::COMPLETION_MODIFIED);
+  }
+}
+
+
+QPopupMenu * KOTodoView::getCategoryPopupMenu (KOTodoViewItem *todoItem)
+{
+  QPopupMenu* tempMenu = new QPopupMenu ();
+  QStringList checkedCategories = todoItem->todo()->categories ();
+
+  tempMenu->setCheckable (true);
+  for (QStringList::Iterator it = KOPrefs::instance()->mCustomCategories.begin (); 
+       it != KOPrefs::instance()->mCustomCategories.end (); 
+       ++it) {
+    int index = tempMenu->insertItem (*it);
+    mCategory[index] = *it;
+    if (checkedCategories.find (*it) != checkedCategories.end ()) tempMenu->setItemChecked (index, true);
+  }
+
+  connect (tempMenu, SIGNAL (activated (int)), SLOT (changedCategories (int)));
+  return tempMenu;
+
+
+}
+void KOTodoView::changedCategories(int index)
+{
+  if (mActiveItem && !mActiveItem->todo()->isReadOnly ()) {
+    QStringList categories = mActiveItem->todo()->categories ();
+    if (categories.find (mCategory[index]) != categories.end ()) 
+      categories.remove (mCategory[index]);
+    else
+      categories.insert (categories.end(), mCategory[index]);
+    categories.sort ();
+    mActiveItem->todo()->setCategories (categories);
+    mActiveItem->setText(5, mActiveItem->todo()->categoriesStr());
+    emit todoModifiedSignal (mActiveItem->todo (), KOGlobals::CATEGORY_MODIFIED);
+  }
+}
 
 void KOTodoView::itemClicked(QListViewItem *item)
 {

@@ -236,3 +236,10 @@ int KOTodoEditor::msgItemDelete()
       i18n("KOrganizer Confirmation"),i18n("Delete"));
 }
 
+void KOTodoEditor::modified (int modification)
+{
+  if (modification == KOGlobals::CATEGORY_MODIFIED)
+    mCategoryDialog->setSelected (mTodo->categories ());
+  mGeneral->modified (mTodo, modification);
+
+}

@@ -192,7 +192,8 @@ CalendarView::CalendarView( QWidget *parent, const char *name )
   connect(this, SIGNAL(configChanged()), mTodoList, SLOT(updateConfig()));
   connect( mTodoList, SIGNAL( purgeCompletedSignal() ),
            this, SLOT( purgeCompleted() ) );
-  
+  connect(mTodoList, SIGNAL(todoModifiedSignal (Todo *, int)),
+	  this, SLOT(todoModified (Todo *, int)));
 
   connect(mFilterView,SIGNAL(filterChanged()),SLOT(updateFilter()));
   connect(mFilterView,SIGNAL(editFilters()),SLOT(editFilters()));
@@ -815,6 +816,15 @@ void CalendarView::showTodo(Todo *event)
   KOEventViewerDialog *eventViewer = new KOEventViewerDialog(this);
   eventViewer->setTodo(event);
   eventViewer->show();
+}
+
+void CalendarView::todoModified (Todo *event, int changed)
+{
+  if (mDialogList.find (event) != mDialogList.end ()) {
+    KOTodoEditor* temp = (KOTodoEditor *) mDialogList[event];
+    temp->modified (changed);
+
+  }
 }
 
 void CalendarView::appointment_show()

@@ -379,3 +379,22 @@ void KOEditorGeneralTodo::setCompletedDate()
     mCompletedLabel->setText(i18n("completed"));
   }
 }
+
+void KOEditorGeneralTodo::modified (Todo* todo, int modification) 
+{
+  switch (modification) {
+  case KOGlobals::PRIORITY_MODIFIED:
+    mPriorityCombo->setCurrentItem(todo->priority()-1);
+    break;
+  case KOGlobals::COMPLETION_MODIFIED:
+    mCompletedCombo->setCurrentItem(todo->percentComplete() / 20);
+    if (todo->isCompleted() && todo->hasCompletedDate()) {
+      mCompleted = todo->completed();
+    }
+    setCompletedDate();
+    break;
+  case KOGlobals::CATEGORY_MODIFIED:
+    setCategories (todo->categoriesStr ());
+    break;
+  }
+}

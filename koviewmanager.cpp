@@ -346,6 +346,9 @@ void KOViewManager::showTodoView()
 
     connect( mMainView, SIGNAL( configChanged() ), mTodoView,
              SLOT( updateConfig() ) );
+    connect( mTodoView, SIGNAL( todoModifiedSignal( Todo *, int ) ),
+	     mMainView, SLOT ( todoModified( Todo *, int ) ) );
+
     KConfig *config = KGlobal::config();
     mTodoView->restoreLayout(config,"Todo View");
   }

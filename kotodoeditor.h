@@ -71,6 +71,9 @@ class KOTodoEditor : public KOIncidenceEditor
      * is not valid */
     bool processInput();
 
+    /** This todo has been modified externally */
+    void modified (int);
+
   signals:
     void todoChanged(Todo *);
     void todoAdded(Todo *);

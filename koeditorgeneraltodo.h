@@ -36,6 +36,7 @@
 
 #include "ktimeedit.h"
 #include "koeditorgeneral.h"
+#include "koglobals.h"
 
 class KRestrictedLine;
 
@@ -66,6 +67,9 @@ class KOEditorGeneralTodo : public KOEditorGeneral
 
     /** Check if the input is valid. */
     bool validateInput();
+
+    /** The todo has been modified externally */
+    void modified (Todo*, int);
 
   signals:
     void openCategoryDialog();
