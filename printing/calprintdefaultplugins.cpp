@@ -621,7 +621,7 @@ void CalPrintTodos::print( QPainter &p, int width, int height )
   fontHeight = p.fontMetrics().height();
 
   Todo::List todoList;
-  Todo::List unfinishedList;
+  Todo::List tempList;
   Todo::List::ConstIterator it;
 
   // Create list of Todos which will be printed
@@ -632,13 +632,23 @@ void CalPrintTodos::print( QPainter &p, int width, int height )
   case TodosUnfinished:
     todoList = mCalendar->todos();
     for( it = todoList.begin(); it!= todoList.end(); ++it ) {
-      if ( !( *it )->isCompleted() )
-        unfinishedList.append( *it );
+      if ( !(*it)->isCompleted() )
+        tempList.append( *it );
     }
-    todoList = unfinishedList;
+    todoList = tempList;
     break;
   case TodosDueRange:
-    //TODO
+    todoList = mCalendar->todos();
+    for( it = todoList.begin(); it!= todoList.end(); ++it ) {
+      if ( (*it)->hasDueDate() ) {
+        if ( (*it)->dtDue().date() >= mFromDate &&
+             (*it)->dtDue().date() <= mToDate )
+          tempList.append( *it );
+      } else {
+        tempList.append( *it );
+      }
+    }
+    todoList = tempList;
     break;
   }
 
