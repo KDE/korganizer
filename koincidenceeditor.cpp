@@ -137,7 +137,7 @@ QString KOIncidenceEditor::loadTemplate( Calendar *cal, const QString &type,
                                       const QStringList &templates )
 {
   QString templateName = QInputDialog::getItem( i18n("Load Template"),
-      i18n("Select a template to load."), templates );
+      i18n("Select a template to load:"), templates );
   if ( templateName.isEmpty() ) return QString::null;
 
   QString fileName = locateLocal( "appdata", "templates/" + type + "/" +

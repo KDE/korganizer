@@ -39,7 +39,7 @@ SaveTemplateDialog::SaveTemplateDialog( IncidenceType type, QWidget *parent )
   QFrame *topFrame = plainPage();
   QVBoxLayout *topLayout = new QVBoxLayout( topFrame, 0, spacingHint() );
 
-  mEditListBox = new KEditListBox( i18n("Select a template name."), topFrame,
+  mEditListBox = new KEditListBox( i18n("Select Template Name"), topFrame,
                                    0, false, KEditListBox::Add |
                                    KEditListBox::Remove );
   topLayout->addWidget( mEditListBox );
