@@ -60,12 +60,20 @@ KOEditorGeneralTodo::~KOEditorGeneralTodo()
 
 void KOEditorGeneralTodo::finishSetup()
 {
-  QWidget::setTabOrder(mSummaryEdit, mCompletedCombo);
+  QWidget::setTabOrder(mSummaryEdit, mLocationEdit);
+  QWidget::setTabOrder(mLocationEdit, mDueCheck);
+  QWidget::setTabOrder(mDueCheck, mDueDateEdit);
+  QWidget::setTabOrder(mDueDateEdit, mDueTimeEdit);
+  QWidget::setTabOrder(mDueTimeEdit, mStartCheck);
+  QWidget::setTabOrder(mStartCheck, mStartDateEdit);
+  QWidget::setTabOrder(mStartDateEdit, mStartTimeEdit);
+  QWidget::setTabOrder(mStartTimeEdit, mTimeButton);
+  QWidget::setTabOrder(mTimeButton, mCompletedCombo);
   QWidget::setTabOrder(mCompletedCombo, mPriorityCombo);
-  QWidget::setTabOrder(mPriorityCombo, mDescriptionEdit);
-  QWidget::setTabOrder(mDescriptionEdit, mCategoriesButton);
+  QWidget::setTabOrder(mPriorityCombo, mAlarmButton);
+  QWidget::setTabOrder(mAlarmButton, mCategoriesButton);
   QWidget::setTabOrder(mCategoriesButton, mSecrecyCombo);
-  QWidget::setTabOrder(mSecrecyCombo, mAlarmButton);
+  QWidget::setTabOrder(mSecrecyCombo, mDescriptionEdit);
   
   mSummaryEdit->setFocus();
 }
