@@ -50,6 +50,19 @@ class KDateNavigator: public QFrame
 
    void gotoYMD(int yr, int mth, int day);
 
+   /** The DateNavigator automatically checks for
+   * the passage of midnight. If rollover type is 
+   * set to None, no signals are emitted and no
+   * processing is done. With rollover set to 
+   * FollowDay, the day highlighter changes at
+   * midnight and dayPassed() is emitted.
+   * With FollowMonth, it has the same effect
+   * as FollowDay but also adjusts the month that is 
+   * visible and emits monthPassed() when the month changes.
+   */
+   enum RolloverType { None, FollowDay, FollowMonth } ;
+   void enableRollover(RolloverType);
+
  public slots:
    void selectDates(const DateList &);
    void selectDates(QDate);
@@ -58,18 +71,18 @@ class KDateNavigator: public QFrame
    void updateView();
    void updateConfig();
    void shiftEvent(const QDate& , const QDate&);
-    
+
  signals:
    void datesSelected(const DateList &);
    void eventDropped(Event *);
    void weekClicked(QDate);
    void goNext();
    void goPrevious();
-   
+
    // Signals emitted at midnight carrying the new date.
    void dayPassed(QDate);
    void monthPassed(QDate);
-   
+
  protected slots:
 
 //+   void goNextWeek();
@@ -90,17 +103,17 @@ class KDateNavigator: public QFrame
     * which calls passedMidnight() at the right moments.
     */
     void possiblyPastMidnight();
-    
+
     /** handles updating the view when midnight has come by due to idle time.
-    * 
+    *
     */
     void passedMidnight();
 
  protected:
    void updateDates();
 
-   void wheelEvent (QWheelEvent *);   
-   
+   void wheelEvent (QWheelEvent *);
+
    bool eventFilter (QObject *,QEvent *);
 
  private:
@@ -125,16 +138,17 @@ class KDateNavigator: public QFrame
    int dayToIndex(int dayNum);
 
    Calendar *mCalendar;
-   KCalendarSystem *mCalendarSystem; 
+   KCalendarSystem *mCalendarSystem;
 
    const QString *curHeaders;
 
-   
-    /** used to update the day view periodically, in particular every 
+
+    /** used to update the day view periodically, in particular every
     * midnight to move the "today" rectangle.
     */
     QTimer *updateTimer;
     QDate lastDayChecked;
+    RolloverType updateRollover;
 
    // Disabling copy constructor and assignment operator
    KDateNavigator(const KDateNavigator & );

@@ -46,7 +46,8 @@
 KDateNavigator::KDateNavigator(QWidget *parent,Calendar *calendar,
                                bool show_week_nums,const char *name,
                                QDate startDate, KCalendarSystem* calSys)
-  : QFrame(parent, name)
+  : QFrame(parent, name),
+    updateTimer(0L)
 {
   mCalendar = calendar;
 
@@ -175,12 +176,33 @@ KDateNavigator::KDateNavigator(QWidget *parent,Calendar *calendar,
 
   // read settings from configuration file.
   updateConfig();
-  
-  updateTimer = new QTimer(this);
-  QObject::connect(updateTimer,SIGNAL(timeout()),
-    this,SLOT(possiblyPastMidnight()));
-  updateTimer->start(0,true);
-  lastDayChecked = QDate::currentDate();  
+  enableRollover(FollowMonth);
+}
+
+void KDateNavigator::enableRollover(RolloverType r)
+{
+  switch(r)
+  {
+  case None :
+    if (updateTimer)
+    {
+      updateTimer->stop();
+      delete updateTimer;
+      updateTimer=0L;
+    }
+    break;
+  case FollowDay :
+  case FollowMonth :
+    if (!updateTimer)
+    {
+      updateTimer = new QTimer(this);
+      QObject::connect(updateTimer,SIGNAL(timeout()),
+        this,SLOT(possiblyPastMidnight()));
+    }
+    updateTimer->start(0,true);
+    lastDayChecked = QDate::currentDate();
+  }
+  updateRollover=r;
 }
 
 
@@ -192,19 +214,20 @@ KDateNavigator::~KDateNavigator()
 void KDateNavigator::passedMidnight()
 {
     QDate today = QDate::currentDate();
+    bool emitMonth = false;
 
-    daymatrix->recalculateToday();
-    daymatrix->repaint();    
-    emit dayPassed(today);
-    if (today.month() != lastDayChecked.month()) 
+    if (today.month() != lastDayChecked.month())
     {
-       if (daymatrix->isEndOfMonth()) {
+       if (updateRollover==FollowMonth &&
+           daymatrix->isEndOfMonth()) {
          goNextMonth();
-	 daymatrix->recalculateToday();
-	 daymatrix->repaint();
+	 emitMonth=true;
        }
-       emit monthPassed(today); 
     }
+    daymatrix->recalculateToday();
+    daymatrix->repaint();
+    emit dayPassed(today);
+    if (emitMonth) { emit monthPassed(today); }
 }
 
 /* slot */ void KDateNavigator::possiblyPastMidnight()
@@ -221,10 +244,10 @@ void KDateNavigator::passedMidnight()
     QTime now = QTime::currentTime();
     QTime midnight = QTime(23,59,59);
     int msecsWait = QMIN(480000,now.msecsTo(midnight)+2000);
-    
-    qDebug(QString("Waiting %1 msec from %2 to %3.").arg(msecsWait)
-    	.arg(now.toString()).arg(midnight.toString()));
-    
+
+    // qDebug(QString("Waiting %1 msec from %2 to %3.").arg(msecsWait)
+    //	.arg(now.toString()).arg(midnight.toString()));
+
     updateTimer->stop();
     updateTimer->start(msecsWait,true);
   }

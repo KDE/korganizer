@@ -184,6 +184,9 @@ void KODayMatrix::recalculateToday()
 {
     today = -1;
     for (int i=0; i<NUMDAYS; i++) {
+      days[i] = startdate.addDays(i);
+      daylbls[i] = QString::number( mCalendarSystem->day( days[i] ));
+      
       // if today is in the currently displayed month, hilight today
       if (days[i].year() == QDate::currentDate().year() &&
           days[i].month() == QDate::currentDate().month() &&
@@ -191,6 +194,7 @@ void KODayMatrix::recalculateToday()
         today = i;
       }
     }
+    // qDebug(QString("Today is visible at %1.").arg(today));
 }
 
 /* slot */ void KODayMatrix::updateView()
@@ -227,7 +231,6 @@ void KODayMatrix::updateView(QDate actdate)
                 if( mSelEnd > NUMDAYS || mSelEnd < 0 )
        			mSelEnd = mSelEnd + tmp;
       }	
-
     }
 
     startdate = actdate;
@@ -237,10 +240,8 @@ void KODayMatrix::updateView(QDate actdate)
   if (daychanged) {
     recalculateToday();
   }
-      
+
     for(int i = 0; i < NUMDAYS; i++) {
-      days[i] = startdate.addDays(i);
-      daylbls[i] = QString::number( mCalendarSystem->day( days[i] ));
 
     // if events are set for the day then remember to draw it bold
     QPtrList<Event> eventlist = mCalendar->events(days[i]);

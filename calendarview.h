@@ -216,12 +216,6 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
      * emitted as result. */
     void checkClipboard();
     
-    /** slot that sets up a single shot timer to call the dateNavigator 
-     * and update the current date when midnight comes around (if we are
-     * running, of course)
-     */
-    void setupRollover();
-   
     /** using the KConfig associated with the kapp variable, read in the
      * settings from the config file. 
      */
@@ -438,8 +432,6 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
 
     KOTodoView *mTodoList;
     QMap<Incidence*,QDialog*> mDialogList;
-
-    QTimer      *mMidnightTimer;
 };
 
 

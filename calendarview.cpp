@@ -183,6 +183,7 @@ CalendarView::CalendarView( QWidget *parent, const char *name )
           SLOT(eventAdded(Event *)));
   connect(mDateNavigator,SIGNAL(goNext()),SLOT(goNext()));
   connect(mDateNavigator,SIGNAL(goPrevious()),SLOT(goPrevious()));
+  connect(mDateNavigator,SIGNAL(dayPassed(QDate)),SLOT(updateView()));
   connect(this, SIGNAL(configChanged()), mDateNavigator, SLOT(updateConfig()));
 
   connect(mTodoList, SIGNAL(newTodoSignal()),
@@ -208,20 +209,10 @@ CalendarView::CalendarView( QWidget *parent, const char *name )
 
   readSettings();
 
-  setupRollover();
-
   KDirWatch *messageWatch = new KDirWatch();
   messageWatch->addDir(locateLocal("data","korganizer/income/"));
   connect (messageWatch,SIGNAL(dirty(const QString &)),SLOT(lookForIncomingMessages()));
-  
-  mMidnightTimer = new QTimer();
-  connect(mMidnightTimer,SIGNAL(timeout()),SLOT(updateView()));
-  
-  QTime now = QTime::currentTime();
-  int secs = 0;
-  secs = now.hour()*60*60 + now.minute()*60 + now.second();
-  // timer for 1 second after midnoght
-  mMidnightTimer->start((24*60*60-secs)*1000+1000,true);
+
   // We should think about seperating startup settings and configuration change.
   updateConfig();
 
@@ -230,7 +221,7 @@ CalendarView::CalendarView( QWidget *parent, const char *name )
   connect( mTodoList,SIGNAL( incidenceSelected( Incidence * ) ),
            SLOT( processTodoListSelection( Incidence * ) ) );
   connect(mTodoList,SIGNAL(isModified(bool)),SLOT(setModified(bool)));
-  
+
   kdDebug() << "CalendarView::CalendarView() done" << endl;
 }
 
@@ -508,19 +499,6 @@ void CalendarView::goPrevious()
 //#endif
   // this *appears* to work fine...
   updateView();
-}
-
-void CalendarView::setupRollover()
-{
-  // right now, this is a single shot (because I am too lazy to code a
-  // real one using a real qtimer object).  It will only work for a single
-  // day rollover.  I should fix this. :)
-  QDate tmpDate = QDate::currentDate().addDays(1);
-  QTime tmpTime = QTime(00, 1);
-  QDateTime tomorrow(tmpDate, tmpTime);
-
-  QTimer::singleShot(QDateTime::currentDateTime().secsTo(tomorrow)*1000,
-		     mDateNavigator, SLOT(updateView()));
 }
 
 void CalendarView::updateConfig()
