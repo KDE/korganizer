@@ -68,7 +68,7 @@ libkorganizer_la_LIBADD  = $(LIB_KPARTS) $(LIB_KFILE) $(LIB_KNEWSTUFF) \
         $(top_builddir)/libkholidays/libkholidays.la
 libkorganizer_la_COMPILE_FIRST = \
 	kogroupwareprefspage.ui \
-	$(top_builddir)/libkdepim/categoryselectdialog.h
+	$(top_srcdir)/libkdepim/categoryselectdialog.h
 libkorganizer_la_SOURCES = komessagebox.cpp \
 	koagendaview.cpp koagenda.cpp koagendaitem.cpp \
 	datenavigator.cpp kdatenavigator.cpp datenavigatorcontainer.cpp \
