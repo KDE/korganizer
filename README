@@ -64,7 +64,7 @@ QUICK NOTES ON WHAT'S NEW IN THIS RELEASE:
 * Official 3.0.1 release (May 2002)
 
   - Lots of bug fixes including fixes to two major bugs:
-    - Fixed time shift problem which occured sometimes when saving a calendar.
+    - Fixed time shift problem which occurred sometimes when saving a calendar.
     - Fixed memory leaks in loading and saving the calendar
 
 * Official 3.0 release (March 2002)

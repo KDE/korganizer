@@ -145,7 +145,7 @@ bool KOGroupware::incomingEventRequest( const QString& request,
     int ret = dlg.exec();
     if( ret == QDialog::Rejected ) {
       // User declined to make a choice, we can't send a vCal back
-      kdDebug(5850) << "KOGroupware::incomingEventRequest(): User cancelled\n";
+      kdDebug(5850) << "KOGroupware::incomingEventRequest(): User canceled\n";
       return false;
     }
 

@@ -55,7 +55,7 @@ class KOTimeEdit : public QComboBox
     /** returns the time that is currently set in the timeLineEdit. */
     QTime getTime() const;
 
-    /** returns the prefered size policy of the KOTimeEdit */
+    /** returns the preferred size policy of the KOTimeEdit */
     QSizePolicy sizePolicy() const;
 
     /** return true if input is a valid time and false if not */
