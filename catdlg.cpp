@@ -81,7 +81,7 @@ CategoryDialog::~CategoryDialog()
 {
 }
 
-void CategoryDialog::setSelected(const QStrList &selList)
+void CategoryDialog::setSelected(const QStringList &selList)
 {
   selCatListBox->clear(); 
   selCatListBox->insertStrList(&selList); 

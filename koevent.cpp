@@ -57,10 +57,6 @@ KOEvent::KOEvent()
   rMonthPositions.setAutoDelete(TRUE);
   rYearNums.setAutoDelete(TRUE);
   exDates.setAutoDelete(TRUE);
-  categories.setAutoDelete(TRUE);
-  attachments.setAutoDelete(TRUE);
-  attendeeList.setAutoDelete(TRUE);
-  resources.setAutoDelete(TRUE);
 
   pilotId = 0;
   syncStatus = 1;
@@ -468,7 +464,7 @@ QString KOEvent::getSecrecyStr() const
   return QString("");
 }
 
-void KOEvent::setCategories(const QStrList &categories)
+void KOEvent::setCategories(const QStringList &categories)
 {
   if (ro) return;
   KOEvent::categories = categories;
@@ -478,7 +474,7 @@ void KOEvent::setCategories(const QStrList &categories)
 void KOEvent::setCategories(const QString &catStr)
 {
   if (ro) return;
-  QStrList tmpList;
+  QStringList tmpList;
   int index1 = 0;
   int index2 = 0;
 
@@ -493,46 +489,36 @@ void KOEvent::setCategories(const QString &catStr)
   emit eventUpdated(this);
 }
 
-const QStrList &KOEvent::getCategories() const
+const QStringList &KOEvent::getCategories() const
 {
   return categories;
 }
 
 QString KOEvent::getCategoriesStr()
 {
-  QString temp; 
-  bool first = TRUE;
-  for (const char * cat = categories.first(); cat; cat = categories.next()) {
-    if (!first) {
-      temp += ",";
-    } else {
-      first = FALSE;
-    }
-    temp += cat;
-  }
-  return temp;
+  return categories.join(",");
 }
 
-void KOEvent::setAttachments(const QStrList &attachments)
+void KOEvent::setAttachments(const QStringList &attachments)
 {
   if (ro) return;
   KOEvent::attachments = attachments;
   emit eventUpdated(this);
 }
 
-const QStrList &KOEvent::getAttachments() const
+const QStringList &KOEvent::getAttachments() const
 {
   return attachments;
 }
 
-void KOEvent::setResources(const QStrList &resources)
+void KOEvent::setResources(const QStringList &resources)
 {
   if (ro) return;
   KOEvent::resources = resources;
   emit eventUpdated(this);
 }
 
-const QStrList &KOEvent::getResources() const
+const QStringList &KOEvent::getResources() const
 {
   return resources;
 }
@@ -1398,7 +1384,7 @@ int KOEvent::weekOfMonth(const QDate &qd) const
 
 /******************************* ATTENDEE CLASS *****************************/
 // most methods have been inlined, see koevent.h for more information.
-Attendee::Attendee(const char *n, const char *e, bool _rsvp, int s, int r)
+Attendee::Attendee(const QString & n, const QString & e, bool _rsvp, int s, int r)
 {
   flag = TRUE;
   rsvp = _rsvp;

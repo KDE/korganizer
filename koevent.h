@@ -23,7 +23,7 @@ class Attendee
 	   CONFIRMED = 4, DECLINED = 5, COMPLETED = 6, DELEGATED = 7 };
     // used to tell whether we have need to mail this person or not.
     bool flag;
-    Attendee(const char * n, const char *e = 0L,
+    Attendee(const QString& n, const QString & e = QString::null,
              bool _rsvp=FALSE, int s = NEEDS_ACTION, int r = 0);
 //    Attendee(const Attendee &);
     virtual ~Attendee();
@@ -226,25 +226,25 @@ public:
   QString getSecrecyStr() const;
 
   /** set event's applicable categories */
-  void setCategories(const QStrList &categories);
+  void setCategories(const QStringList &categories);
   /** set event's categories based on a comma delimited string */
   void setCategories(const QString &catStr);
   /** return categories in a list */
-  const QStrList &getCategories() const;
+  const QStringList &getCategories() const;
   /** return categories as a comma separated string */
   QString getCategoriesStr();
   /** get color associated with first category */
   const QColor &getColor();
 
   /** set the list of attachments/associated files for this event */
-  void setAttachments(const QStrList &attachments);
+  void setAttachments(const QStringList &attachments);
   /** return list of associated files */
-  const QStrList &getAttachments() const;
+  const QStringList &getAttachments() const;
 
   /** set resources used, such as Office, Car, etc. */
-  void setResources(const QStrList &resources);
+  void setResources(const QStringList &resources);
   /** return list of current resources */
-  const QStrList &getResources() const;
+  const QStringList &getResources() const;
 
   /** set the event to have this file as the noise for the alarm. */
   void setAudioAlarmFile(const QString &audioAlarmFile);
@@ -487,9 +487,9 @@ protected:
   QString summary;                     // summary of event
   int  status;                         // confirmed/delegated/tentative/etc
   int  secrecy;                        // public/private/confidential
-  QStrList categories;                 // business/personal/vacation/etc
-  QStrList attachments;                // attached files, sounds, anything!
-  QStrList resources;                  // a list of resources needed for event
+  QStringList categories;                 // business/personal/vacation/etc
+  QStringList attachments;                // attached files, sounds, anything!
+  QStringList resources;                  // a list of resources needed for event
 
   QString audioAlarmFile;              // url/filename of sound to play
   QString programAlarmFile;            // filename of program to run

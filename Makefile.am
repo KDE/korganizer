@@ -1,5 +1,4 @@
 # set the include path for X, qt and KDE, and versit library for vCalendar
-AM_CPPFLAGS = -UQT_NO_ASCII_CAST
 INCLUDES= $(all_includes) \
 	   -I$(srcdir)/versit 
 

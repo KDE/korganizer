@@ -131,7 +131,7 @@ void KDPSmallDayDisp::updateDisp()
   KOEvent *anEvent;
   QTime t1;
   int h, i;
-  QStrList *summarylist;
+  QStringList *summarylist;
   QFontMetrics fontmetric(font());
 
 //   if (myDate.month() % 2) {
@@ -180,7 +180,7 @@ void KDPSmallDayDisp::updateDisp()
     return;
   }
   summaries->clear();
-  summarylist = new QStrList;
+  summarylist = new QStringList;
   currIdxs->clear();
   events = myCal->getEventsForDate(myDate);
 

@@ -20,7 +20,7 @@ KOAgendaItem::KOAgendaItem(KOEvent *event, QWidget *parent,
 {
   mEvent = event;
 
-  QStrList categories = mEvent->getCategories();
+  QStringList categories = mEvent->getCategories();
   QString cat = categories.first();
   if (cat.isEmpty()) {
     setPalette(QPalette(KOPrefs::instance()->mEventColor,

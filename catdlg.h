@@ -6,7 +6,7 @@
 #include <qstrlist.h>
 #include <kdialogbase.h>
 
-class QStrList;
+class QStringList;
 class KButtonBox;
 class QListBox;
 class QPushButton;
@@ -22,7 +22,7 @@ public:
   virtual ~CategoryDialog();
 
 public slots:
-  void setSelected(const QStrList &selList);
+  void setSelected(const QStringList &selList);
 
 protected slots:
   void accept();

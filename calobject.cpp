@@ -129,7 +129,7 @@ CalObject::CalObject() : QObject(), recursCursor(recursList)
     KOPrefs::instance()->mDaylightSavings = now->tm_isdst;
   }
   
-  setTimeZone(tzStr.ascii());
+  setTimeZone(tzStr);
 
   KOPrefs::instance()->writeConfig();
 
@@ -551,7 +551,7 @@ void CalObject::setOwner(const QString &os)
     ownerString = ownerString.left(i);
 }
 
-void CalObject::setTimeZone(const char *tz)
+void CalObject::setTimeZone(const QString & tz)
 {
   bool neg = FALSE;
   int hours, minutes;
@@ -1121,7 +1121,7 @@ VObject *CalObject::eventToVTodo(const KOEvent *anEvent)
 {
   VObject *vtodo;
   QString tmpStr;
-  QStrList tmpStrList;
+  QStringList tmpStrList;
 
   vtodo = newVObject(VCTodoProp);
 
@@ -1181,8 +1181,8 @@ VObject *CalObject::eventToVTodo(const KOEvent *anEvent)
   // description BL:
   if (!anEvent->getDescription().isEmpty()) {
     VObject *d = addPropValue(vtodo, VCDescriptionProp,
-			      anEvent->getDescription());
-    if (strchr((const char *) anEvent->getDescription(), '\n'))
+			      anEvent->getDescription().ascii());
+    if (anEvent->getDescription().find('\n') != -1)
       addProp(d, VCQuotedPrintableProp);
   }
 
@@ -1206,11 +1206,13 @@ VObject *CalObject::eventToVTodo(const KOEvent *anEvent)
   // categories
   tmpStrList = anEvent->getCategories();
   tmpStr = "";
-  char *catStr;
-  for (catStr = tmpStrList.first(); catStr; 
-       catStr = tmpStrList.next()) {
+  QString catStr;
+  for ( QStringList::Iterator it = tmpStrList.begin();
+        it != tmpStrList.end();
+        ++it ) {
+    catStr = *it;
     if (catStr[0] == ' ')
-      tmpStr += (catStr+1);
+      tmpStr += catStr.mid(1);
     else
       tmpStr += catStr;
     // this must be a ';' character as the vCalendar specification requires!
@@ -1236,7 +1238,7 @@ VObject* CalObject::eventToVEvent(const KOEvent *anEvent)
 {
   VObject *vevent;
   QString tmpStr;
-  QStrList tmpStrList;
+  QStringList tmpStrList;
   
   vevent = newVObject(VCEventProp);
 
@@ -1409,8 +1411,8 @@ VObject* CalObject::eventToVEvent(const KOEvent *anEvent)
   // description
   if (!anEvent->getDescription().isEmpty()) {
     VObject *d = addPropValue(vevent, VCDescriptionProp,
-			      anEvent->getDescription());
-    if (strchr((const char *) anEvent->getDescription(), '\n'))
+			      anEvent->getDescription().ascii());
+    if (anEvent->getDescription().find('\n') != -1)
       addProp(d, VCQuotedPrintableProp);
   }
 
@@ -1427,11 +1429,13 @@ VObject* CalObject::eventToVEvent(const KOEvent *anEvent)
   // categories
   tmpStrList = anEvent->getCategories();
   tmpStr = "";
-  char *catStr;
-  for (catStr = tmpStrList.first(); catStr; 
-       catStr = tmpStrList.next()) {
+  QString catStr;
+  for ( QStringList::Iterator it = tmpStrList.begin();
+        it != tmpStrList.end();
+        ++it ) {
+    catStr = *it;
     if (catStr[0] == ' ')
-      tmpStr += (catStr+1);
+      tmpStr += catStr.mid(1);
     else
       tmpStr += catStr;
     // this must be a ';' character as the vCalendar specification requires!
@@ -1446,21 +1450,14 @@ VObject* CalObject::eventToVEvent(const KOEvent *anEvent)
 
   // attachments
   tmpStrList = anEvent->getAttachments();
-  char *attachStr;
-  for (attachStr = tmpStrList.first(); attachStr;
-       attachStr = tmpStrList.next())
-    addPropValue(vevent, VCAttachProp, attachStr);
+  for ( QStringList::Iterator it = tmpStrList.begin();
+        it != tmpStrList.end();
+        ++it )
+    addPropValue(vevent, VCAttachProp, (*it).ascii());
   
   // resources
   tmpStrList = anEvent->getResources();
-  tmpStr = "";
-  char *resStr;
-  for (resStr = tmpStrList.first(); resStr;
-       resStr = tmpStrList.next()) {
-    tmpStr += resStr;
-    if (tmpStrList.next())
-      tmpStr += ";";
-  }
+  tmpStr = tmpStrList.join(";");
   if (!tmpStr.isEmpty())
     addPropValue(vevent, VCResourcesProp, tmpStr.ascii());
   
@@ -1566,15 +1563,15 @@ KOEvent *CalObject::VTodoToEvent(VObject *vtodo)
       if ((emailPos1 = tmpStr.find('<')) > 0) {
 	// both email address and name
 	emailPos2 = tmpStr.find('>');
-	a = new Attendee(tmpStr.left(emailPos1 - 1).ascii(),
+	a = new Attendee(tmpStr.left(emailPos1 - 1),
 			 tmpStr.mid(emailPos1 + 1, 
-				    emailPos2 - (emailPos1 + 1)).ascii());
+				    emailPos2 - (emailPos1 + 1)));
       } else if (tmpStr.find('@') > 0) {
 	// just an email address
-	a = new Attendee(0, tmpStr.ascii());
+	a = new Attendee(0, tmpStr);
       } else {
 	// just a name
-	a = new Attendee(tmpStr.ascii());
+	a = new Attendee(tmpStr);
       }
 
       // is there an RSVP property?
@@ -1631,7 +1628,7 @@ KOEvent *CalObject::VTodoToEvent(VObject *vtodo)
   }
 
   // categories
-  QStrList tmpStrList;
+  QStringList tmpStrList;
   int index1 = 0;
   int index2 = 0;
   if ((vo = isAPropertyOf(vtodo, VCCategoriesProp)) != 0) {
@@ -1735,15 +1732,15 @@ KOEvent* CalObject::VEventToEvent(VObject *vevent)
       if ((emailPos1 = tmpStr.find('<')) > 0) {
 	// both email address and name
 	emailPos2 = tmpStr.find('>');
-	a = new Attendee(tmpStr.left(emailPos1 - 1).ascii(),
+	a = new Attendee(tmpStr.left(emailPos1 - 1),
 			 tmpStr.mid(emailPos1 + 1, 
-				    emailPos2 - (emailPos1 + 1)).ascii());
+				    emailPos2 - (emailPos1 + 1)));
       } else if (tmpStr.find('@') > 0) {
 	// just an email address
-	a = new Attendee(0, tmpStr.ascii());
+	a = new Attendee(0, tmpStr);
       } else {
 	// just a name
-	a = new Attendee(tmpStr.ascii());
+	a = new Attendee(tmpStr);
       }
 
       // is there an RSVP property?
@@ -1809,7 +1806,7 @@ KOEvent* CalObject::VEventToEvent(VObject *vevent)
       index = tmpStr.findRev(' ') + 1; // advance to last field
       if (tmpStr.mid(index,1) == "#") index++;
       if (tmpStr.find('T', index) != -1) {
-	QDate rEndDate = (ISOToQDateTime(tmpStr.mid(index, tmpStr.length()-index).ascii())).date();
+	QDate rEndDate = (ISOToQDateTime(tmpStr.mid(index, tmpStr.length()-index))).date();
 	anEvent->setRecursDaily(rFreq, rEndDate);
       } else {
 	int rDuration = tmpStr.mid(index, tmpStr.length()-index).toInt();
@@ -1842,7 +1839,7 @@ KOEvent* CalObject::VEventToEvent(VObject *vevent)
       }
       index = last; if (tmpStr.mid(index,1) == "#") index++;
       if (tmpStr.find('T', index) != -1) {
-	QDate rEndDate = (ISOToQDateTime(tmpStr.mid(index, tmpStr.length()-index).ascii())).date();
+	QDate rEndDate = (ISOToQDateTime(tmpStr.mid(index, tmpStr.length()-index))).date();
 	anEvent->setRecursWeekly(rFreq, qba, rEndDate);
       } else {
 	int rDuration = tmpStr.mid(index, tmpStr.length()-index).toInt();
@@ -1890,7 +1887,7 @@ KOEvent* CalObject::VEventToEvent(VObject *vevent)
       index = last; if (tmpStr.mid(index,1) == "#") index++;
       if (tmpStr.find('T', index) != -1) {
 	QDate rEndDate = (ISOToQDateTime(tmpStr.mid(index, tmpStr.length() - 
-						    index).ascii())).date();
+						    index))).date();
 	anEvent->setRecursMonthly(KOEvent::rMonthlyPos, rFreq, rEndDate);
       } else {
 	int rDuration = tmpStr.mid(index, tmpStr.length()-index).toInt();
@@ -1927,7 +1924,7 @@ KOEvent* CalObject::VEventToEvent(VObject *vevent)
       }
       index = last; if (tmpStr.mid(index,1) == "#") index++;
       if (tmpStr.find('T', index) != -1) {
-	QDate rEndDate = (ISOToQDateTime(tmpStr.mid(index, tmpStr.length()-index).ascii())).date();
+	QDate rEndDate = (ISOToQDateTime(tmpStr.mid(index, tmpStr.length()-index))).date();
 	anEvent->setRecursMonthly(KOEvent::rMonthlyDay, rFreq, rEndDate);
       } else {
 	int rDuration = tmpStr.mid(index, tmpStr.length()-index).toInt();
@@ -1961,7 +1958,7 @@ KOEvent* CalObject::VEventToEvent(VObject *vevent)
       }
       index = last; if (tmpStr.mid(index,1) == "#") index++;
       if (tmpStr.find('T', index) != -1) {
-	QDate rEndDate = (ISOToQDateTime(tmpStr.mid(index, tmpStr.length()-index).ascii())).date();
+	QDate rEndDate = (ISOToQDateTime(tmpStr.mid(index, tmpStr.length()-index))).date();
 	anEvent->setRecursYearly(KOEvent::rYearlyMonth, rFreq, rEndDate);
       } else {
 	int rDuration = tmpStr.mid(index, tmpStr.length()-index).toInt();
@@ -1995,7 +1992,7 @@ KOEvent* CalObject::VEventToEvent(VObject *vevent)
       }
       index = last; if (tmpStr.mid(index,1) == "#") index++;
       if (tmpStr.find('T', index) != -1) {
-	QDate rEndDate = (ISOToQDateTime(tmpStr.mid(index, tmpStr.length()-index).ascii())).date();
+	QDate rEndDate = (ISOToQDateTime(tmpStr.mid(index, tmpStr.length()-index))).date();
 	anEvent->setRecursYearly(KOEvent::rYearlyDay, rFreq, rEndDate);
       } else {
 	int rDuration = tmpStr.mid(index, tmpStr.length()-index).toInt();
@@ -2039,7 +2036,7 @@ KOEvent* CalObject::VEventToEvent(VObject *vevent)
       !(anEvent->getDescription().isEmpty())) {
     QString tmpStr = anEvent->getDescription().simplifyWhiteSpace();
     anEvent->setDescription("");
-    anEvent->setSummary(tmpStr.ascii());
+    anEvent->setSummary(tmpStr);
   }  
 
   // status
@@ -2060,7 +2057,7 @@ KOEvent* CalObject::VEventToEvent(VObject *vevent)
     anEvent->setSecrecy("PUBLIC");
 
   // categories
-  QStrList tmpStrList;
+  QStringList tmpStrList;
   int index1 = 0;
   int index2 = 0;
   if ((vo = isAPropertyOf(vevent, VCCategoriesProp)) != 0) {
@@ -2099,9 +2096,9 @@ KOEvent* CalObject::VEventToEvent(VObject *vevent)
     tmpStrList.clear();
     index1 = 0;
     index2 = 0;
-    const char *resource;
+    QString resource;
     while ((index2 = resources.find(';', index1)) != -1) {
-      resource = (const char *) resources.mid(index1, (index2 - index1));
+      resource = resources.mid(index1, (index2 - index1));
       tmpStrList.append(resource);
       index1 = index2;
     }
@@ -2170,7 +2167,7 @@ KOEvent* CalObject::VEventToEvent(VObject *vevent)
 QList<KOEvent> CalObject::search(const QRegExp &searchExp) const
 {
   QIntDictIterator<QList<KOEvent> > qdi(*calDict);
-  const char *testStr;
+  QString testStr;
   QList<KOEvent> matchList, *tmpList, tmpList2;
   KOEvent *matchEvent;
 
@@ -2735,7 +2732,7 @@ QString CalObject::qDateTimeToISO(const QDateTime &qdt, bool zulu)
   return tmpStr;
 }
 
-QDateTime CalObject::ISOToQDateTime(const char *dtStr)
+QDateTime CalObject::ISOToQDateTime(const QString & dtStr)
 {
   QDate tmpDate;
   QTime tmpTime;
@@ -2756,7 +2753,7 @@ QDateTime CalObject::ISOToQDateTime(const char *dtStr)
   ASSERT(tmpTime.isValid());
   QDateTime tmpDT(tmpDate, tmpTime);
   // correct for GMT if string is in Zulu format
-  if (dtStr[strlen(dtStr)-1] == 'Z')
+  if (dtStr[dtStr.length()-1] == 'Z')
     tmpDT = tmpDT.addSecs(60*timeZone);
   return tmpDT;
 }

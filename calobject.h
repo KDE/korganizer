@@ -87,7 +87,7 @@ public:
    */
 
   /** methods to get/set the local time zone */
-  void setTimeZone(const char *tz);
+  void setTimeZone(const QString & tz);
   inline void setTimeZone(int tz) { timeZone = tz; };
   int getTimeZone() const { return timeZone; };
   /* compute an ISO 8601 format string from the time zone. */
@@ -201,7 +201,7 @@ protected:
   QString qDateTimeToISO(const QDateTime &, bool zulu=TRUE);
   /** takes a string in the format YYYYMMDDTHHMMSS and returns a 
    * valid QDateTime. */
-  QDateTime ISOToQDateTime(const char *dtStr);
+  QDateTime ISOToQDateTime(const QString & dtStr);
   /** takes a vCalendar tree of VObjects, and puts all of them that have
    * the "event" property into the dictionary, todos in the todo-list, etc. */
   void populate(VObject *vcal);
