@@ -248,7 +248,7 @@ void KOEventViewer::formatAttendees( Incidence *event )
     // Add organizer link
     addTag( "h3", i18n("Organizer") );
     mText.append( "<ul>" );
-    linkPerson( event->organizer().email(), event->organizer().fullName(), "", iconPath );
+    linkPerson( event->organizer().email(), event->organizer().name(), "", iconPath );
     mText += "</ul>";
 
     // Add attendees links

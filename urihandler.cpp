@@ -65,14 +65,11 @@ bool UriHandler::process( const QString &uri )
                                         replyTypeStr, replyData );
     if ( foundAbbrowser ) {
       //KAddressbook is already running, so just DCOP to it to bring up the contact editor
-      //client->send("kaddressbook","KAddressBookIface",
-      QDataStream arg( paramData, IO_WriteOnly );
-      arg << uri.mid( 6 );
 #if KDE_IS_VERSION( 3, 2, 90 )
       kapp->updateRemoteUserTimestamp("kaddressbook");
 #endif
-      client->send( "kaddressbook", "KAddressBookIface",
-                    "showContactEditor( QString )", paramData );
+      DCOPRef kaddressbook( "kaddressbook", "KAddressBookIface" );
+      kaddressbook.send( "showContactEditor", uri.mid( 6 ) );
       return true;
     } else {
       /*
@@ -88,9 +85,9 @@ bool UriHandler::process( const QString &uri )
     }
   }
   else {  // no special URI, let KDE handle it
-    KRun *run = new KRun(KURL( uri ));
+    new KRun(KURL( uri ));
   }
 #endif
-  
+
   return false;
 }
