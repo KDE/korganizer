@@ -68,7 +68,7 @@ WebExport::~WebExport()
 
 QString WebExport::info()
 {
-  return i18n("This plugin provides export of calendars as web pages.");
+  return i18n("This plugin provides exporting of calendars as web pages.");
 }
 
 void WebExport::exportWeb()

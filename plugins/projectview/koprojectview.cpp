@@ -339,7 +339,7 @@ void KOProjectView::deleteTodo()
 void KOProjectView::purgeCompleted()
 {
   int result = KMessageBox::warningContinueCancel(this,
-      i18n("Delete all completed todos?"),i18n("Purge Todos"),i18n("Purge"));
+      i18n("Delete all completed To-Dos?"),i18n("Purge To-Dos"),i18n("Purge"));
 
   if (result == KMessageBox::Continue) {
     QPtrList<Todo> todoCal = calendar()->getTodoList();

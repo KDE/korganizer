@@ -120,8 +120,8 @@ void KOTodoListView::contentsDropEvent(QDropEvent *e)
       while(to) {
         if (to->VUID() == todo->VUID()) {
           KMessageBox::sorry(this,
-              i18n("Cannot move Todo to itself or a child of itself"),
-              i18n("Drop Todo"));
+              i18n("Cannot move To-Do to itself or a child of itself"),
+              i18n("Drop To-Do"));
           delete todo;
           return;
         }
@@ -253,7 +253,7 @@ KOTodoView::KOTodoView(Calendar *calendar,QWidget* parent,const char* name) :
   mItemPopupMenu->insertItem(i18n("New Sub-To-Do..."), this,
                              SLOT (newSubTodo()));
   mItemPopupMenu->insertSeparator();
-  mItemPopupMenu->insertItem(i18n("delete completed todos","Purge Completed"),
+  mItemPopupMenu->insertItem(i18n("delete completed To-Dos","Purge Completed"),
                              this,SLOT(purgeCompleted()));
                        
   mPopupMenu = new QPopupMenu;
@@ -469,7 +469,7 @@ void KOTodoView::deleteTodo()
 void KOTodoView::purgeCompleted()
 {
   int result = KMessageBox::warningContinueCancel(this,
-      i18n("Delete all completed todos?"),i18n("Purge Todos"),i18n("Purge"));
+      i18n("Delete all completed To-Dos?"),i18n("Purge To-Dos"),i18n("Purge"));
 
   if (result == KMessageBox::Continue) {
     QPtrList<Todo> todoCal = calendar()->getTodoList();

@@ -130,7 +130,7 @@ void KOWhatsNextView::updateView()
 
   QPtrList<Todo> todos = calendar()->getTodoList();
   if (todos.count() > 0) {
-    mText += i18n("<h2>Todo:</h2>\n");
+    mText += i18n("<h2>To-Do:</h2>\n");
     mText += i18n("<ul>\n");
     Todo *todo = todos.first();
     while(todo) {

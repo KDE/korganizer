@@ -72,7 +72,7 @@ bool ListItemVisitor::visit(Event *e)
 
 bool ListItemVisitor::visit(Todo *t)
 {
-  mItem->setText(0,i18n("Todo: %1").arg(t->summary()));
+  mItem->setText(0,i18n("To-Do: %1").arg(t->summary()));
   mItem->setText(1,"---");
   mItem->setText(2,"---");
   mItem->setText(3,"---");

@@ -244,7 +244,7 @@ void KSummaries::calUpdated()
         sumString += " ";
       }
     }
-    sumString += i18n("Todo: ") + todo->summary();
+    sumString += i18n("To-Do: ") + todo->summary();
 
     elitem = new EventListBoxItem(sumString);
     insertItem(elitem);

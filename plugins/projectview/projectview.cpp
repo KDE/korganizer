@@ -69,7 +69,7 @@ ProjectView::~ProjectView()
 
 QString ProjectView::info()
 {
-  return i18n("This plugin provides a gantt diagram as project view.");
+  return i18n("This plugin provides a Gantt diagram as project view.");
 }
 
 void ProjectView::showView()

@@ -336,7 +336,7 @@ void KOPrefsDialog::setupViewsTab()
   topLayout->addWidget(fullViewMonth->checkBox(),8,0);
 
   KPrefsWidBool *fullViewTodo =
-      addWidBool(i18n("Todo View uses full window"),
+      addWidBool(i18n("To-Do View uses full window"),
                  &(KOPrefs::instance()->mFullViewTodo),topFrame);
   topLayout->addWidget(fullViewTodo->checkBox(),9,0);
 
