@@ -60,13 +60,17 @@ class ResourceItem : public QCheckListItem
 
     KCal::ResourceCalendar *resource() { return mResource; }
 
+    void update();
+
   protected:
     void stateChange( bool active );
+
+    void setGuiState();
 
   private:
     KCal::ResourceCalendar *mResource;
     ResourceView *mView;
-    bool mStartUp;
+    bool mBlockStateChange;
 };
 
 /**
@@ -77,7 +81,7 @@ class ResourceView : public CalendarViewExtension
     Q_OBJECT
   public:
     ResourceView( KCal::CalendarResourceManager *manager, QWidget *parent = 0,
-                  const char *name = 0);
+                  const char *name = 0 );
     ~ResourceView();
 
     void updateView();
@@ -87,10 +91,14 @@ class ResourceView : public CalendarViewExtension
 
   public slots:
     void addResourceItem( ResourceCalendar * );
+    void updateResourceItem( ResourceCalendar * );
 
   signals:
     void resourcesChanged();
     void signalErrorMessage( const QString & );
+
+  protected:
+    ResourceItem *findItem( ResourceCalendar * );
 
   private slots:
     void addResource();

@@ -50,12 +50,18 @@ CalendarViewExtension *ResourceViewFactory::create( QWidget *parent )
 {
   ResourceView *view = new ResourceView( mCalendar->resourceManager(), parent );
   view->updateView();
+
   QObject::connect( view, SIGNAL( resourcesChanged() ),
                     mView, SLOT( updateView() ) );
-  QObject::connect( mCalendar, SIGNAL( signalResourceAdded( ResourceCalendar * ) ),
-                    view, SLOT( addResourceItem( ResourceCalendar * ) ) );
   QObject::connect( view, SIGNAL( signalErrorMessage( const QString & ) ),
                     mView, SLOT( showErrorMessage( const QString & ) ) );
+
+  QObject::connect( mCalendar,
+                    SIGNAL( signalResourceAdded( ResourceCalendar * ) ),
+                    view, SLOT( addResourceItem( ResourceCalendar * ) ) );
+  QObject::connect( mCalendar,
+                    SIGNAL( signalResourceModified( ResourceCalendar * ) ),
+                    view, SLOT( updateResourceItem( ResourceCalendar * ) ) );
 
   return view;
 }
@@ -63,17 +69,23 @@ CalendarViewExtension *ResourceViewFactory::create( QWidget *parent )
 ResourceItem::ResourceItem( ResourceCalendar *resource, ResourceView *view,
                             KListView *parent )
   : QCheckListItem( parent, resource->resourceName(), CheckBox ),
-    mResource( resource ), mView( view )
+    mResource( resource ), mView( view ), mBlockStateChange( false )
 {
-  mStartUp = true;
+  setGuiState();
+}
+
+void ResourceItem::setGuiState()
+{
+  mBlockStateChange = true;
   setOn( mResource->isActive() );
-  mStartUp = false;
+  mBlockStateChange = false;
 }
 
 void ResourceItem::stateChange( bool active )
 {
-  if ( mStartUp )
-    return;
+  if ( mBlockStateChange ) return;
+
+  bool toActivate = active;
 
   if ( active ) {
     bool success = mResource->open();
@@ -83,14 +95,22 @@ void ResourceItem::stateChange( bool active )
     if ( !success ) {
       QString msg = mResource->errorMessage();
       if ( !msg.isEmpty() ) mView->emitErrorMessage( msg );
+      toActivate = false;
     }
   } else {
     mResource->save();
     mResource->close();
   }
-  mResource->setActive( active );
+  mResource->setActive( toActivate );
+
+  setGuiState();
 
   mView->emitResourcesChanged();
+}
+
+void ResourceItem::update()
+{
+  setGuiState();
 }
 
 ResourceView::ResourceView( KCal::CalendarResourceManager *manager,
@@ -120,6 +140,7 @@ ResourceView::ResourceView( KCal::CalendarResourceManager *manager,
   connect( mDeleteButton, SIGNAL( clicked() ), SLOT( removeResource() ) );
   connect( mEditButton, SIGNAL( clicked() ), SLOT( editResource() ) );
   connect( mListView, SIGNAL( doubleClicked ( QListViewItem *, const QPoint &, int ) ), SLOT( editResource() ) );
+
   updateView();
 }
 
@@ -188,6 +209,14 @@ void ResourceView::addResourceItem( ResourceCalendar *resource )
   emitResourcesChanged();
 }
 
+void ResourceView::updateResourceItem( ResourceCalendar *resource )
+{
+  ResourceItem *item = findItem( resource );
+  if ( item ) {
+    item->update();
+  }
+}
+
 void ResourceView::removeResource()
 {
   QListViewItem *item = mListView->currentItem();
@@ -247,6 +276,17 @@ void ResourceView::currentChanged( QListViewItem *item)
 void ResourceView::emitErrorMessage( const QString &msg )
 {
   emit signalErrorMessage( msg );
+}
+
+ResourceItem *ResourceView::findItem( ResourceCalendar *r )
+{
+  QListViewItem *item;
+  ResourceItem *i = 0;
+  for( item = mListView->firstChild(); item; item = item->nextSibling() ) {
+    i = static_cast<ResourceItem *>( item );
+    if ( i->resource() == r ) break;
+  }
+  return i;
 }
 
 #include "resourceview.moc"
