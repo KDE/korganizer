@@ -1014,21 +1014,20 @@ void CalPrinter::drawTimeTable(QPainter &p, const QDate &qd, int width, int heig
 }
 
 void CalPrinter::drawMonth(QPainter &p, const QDate &qd,
-			   int width, int height)
+                           int width, int height)
 {
-  int weekdayCol;
   int offset = mHeaderHeight+5+mSubHeaderHeight;
-  int cellWidth = width/7;
-  int cellHeight = (height-offset) / 5;
   QDate monthDate(QDate(qd.year(), qd.month(), 1));
 
-  if (KGlobal::locale()->weekStartsMonday())
-    weekdayCol = monthDate.dayOfWeek() - 1;
-  else
-    weekdayCol = monthDate.dayOfWeek() % 7;
+  int weekdayCol=(monthDate.dayOfWeek()+7-KGlobal::locale()->weekStartDay())%7;
   monthDate = monthDate.addDays(-weekdayCol);
 
-  for (int row = 0; row < (weekdayCol + qd.daysInMonth() - 1 )/7 + 1; row++) {
+  int rows=(weekdayCol + qd.daysInMonth() - 1)/7 +1;
+
+  int cellWidth = width / 7;
+  int cellHeight = (height-offset) / rows;
+
+  for (int row = 0; row < rows; row++) {
     for (int col = 0; col < 7; col++) {
       drawDayBox(p, monthDate, col*cellWidth, offset+row*cellHeight,
                  cellWidth, cellHeight);
