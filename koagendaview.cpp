@@ -61,9 +61,6 @@
 #include "koprefs.h"
 #include "koagenda.h"
 #include "koagendaitem.h"
-#ifndef KORG_NOPRINTER
-#include "calprinter.h"
-#endif
 
 #include "koincidencetooltip.h"
 #include "kogroupware.h"

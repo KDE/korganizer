@@ -45,9 +45,6 @@
 #include <libkdepim/clicklineedit.h>
 #include <libkdepim/kdatepickerpopup.h>
 
-#ifndef KORG_NOPRINTER
-#include "calprinter.h"
-#endif
 #include "docprefs.h"
 
 #include "koincidencetooltip.h"
