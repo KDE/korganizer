@@ -51,7 +51,7 @@ KODialogManager::KODialogManager( CalendarView *mainView ) :
   mFilterEditDialog = 0;
   mPluginDialog = 0;
 
-  mCategoryEditDialog = new CategoryEditDialog(KOPrefs::instance(),mMainView);
+  mCategoryEditDialog = new KPIM::CategoryEditDialog(KOPrefs::instance(),mMainView);
 }
 
 KODialogManager::~KODialogManager()

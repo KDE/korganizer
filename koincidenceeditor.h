@@ -31,7 +31,7 @@
 #include "savetemplatedialog.h"
 
 class QDateTime;
-class CategorySelectDialog;
+namespace KPIM { class CategorySelectDialog; }
 
 using namespace KCal;
 
@@ -87,7 +87,7 @@ class KOIncidenceEditor : public KDialogBase
 
     Calendar *mCalendar;
 
-    CategorySelectDialog *mCategoryDialog;
+    KPIM::CategorySelectDialog *mCategoryDialog;
 
     KOEditorDetails *mDetails;
 

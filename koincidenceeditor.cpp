@@ -53,7 +53,7 @@ KOIncidenceEditor::KOIncidenceEditor( const QString &caption,
 
   setButtonText( Default, i18n("Template...") );
 
-  mCategoryDialog = new CategorySelectDialog( KOPrefs::instance(), this );
+  mCategoryDialog = new KPIM::CategorySelectDialog( KOPrefs::instance(), this );
 
   connect(mCategoryDialog,SIGNAL(editCategories()),SIGNAL(editCategories()));
 

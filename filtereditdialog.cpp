@@ -131,10 +131,8 @@ void FilterEditDialog::slotAdd()
 
 void FilterEditDialog::editCategorySelection()
 {
-  CategorySelectDialog *dlg = new CategorySelectDialog( KOPrefs::instance(),
-                                                        this,
-                                                        "filterCatSelect",
-                                                        true);
+  KPIM::CategorySelectDialog *dlg = new KPIM::CategorySelectDialog(
+      KOPrefs::instance(), this, "filterCatSelect", true );
   dlg->setSelected(mCategories);
 
   connect(dlg,SIGNAL(categoriesSelected(const QStringList &)),
