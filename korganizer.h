@@ -66,6 +66,10 @@ namespace KCal { class CalendarResources; }
 
 using namespace KCal;
 
+// Workaround for moc workaround for visual c++ 6.0 sucking
+typedef KOrg::MainWindow KOrgMainWindow;
+typedef KParts::MainWindow KPartsMainWindow;
+
 /**
   This is the main class for KOrganizer. It extends the KDE KMainWindow.
   it provides the main view that the user sees upon startup, as well as
@@ -74,8 +78,8 @@ using namespace KCal;
   @short constructs a new main window for korganizer
   @author Preston Brown
 */
-class KOrganizer : public KParts::MainWindow, virtual public KOrganizerIface,
-                   public KOrg::MainWindow
+class KOrganizer : public KPartsMainWindow, virtual public KOrganizerIface,
+                   public KOrgMainWindow
 {
     Q_OBJECT
   public:
