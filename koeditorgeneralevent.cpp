@@ -647,7 +647,7 @@ void KOEditorGeneralEvent::setDuration()
         if (minutediff > 1)
           catStr = i18n("%1 minutes").arg(QString::number(minutediff));
         else if (minutediff == 1)
-          catStr = i18n("1 minute").arg(QString::number(minutediff));
+          catStr = i18n("%1 minute").arg(QString::number(minutediff));
         tmpStr += catStr;
       }
     } else tmpStr = "";
