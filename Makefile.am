@@ -2,7 +2,9 @@
 INCLUDES= $(all_includes) \
 	   -I$(srcdir)/versit \
            -I$(top_srcdir)/libical/src/libical \
-           -I$(top_srcdir)/libical/src/libicalss
+           -I$(top_srcdir)/libical/src/libicalss \
+	   -I$(top_builddir)/libical/src/libical \
+	   -I$(top_builddir)/libical/src/libicalss
 
 bin_PROGRAMS = 	korganizer alarmd
 lib_LTLIBRARIES = libkorganizer.la
