@@ -111,7 +111,7 @@ void KOEditorGeneralTodo::initTime(QWidget *parent,QBoxLayout *topLayout)
 
   mDueTimeEdit = new KTimeEdit(timeBoxFrame);
   layoutTimeBox->addWidget(mDueTimeEdit,0,2);
-  connect(mDueTimeEdit,SIGNAL(timeChanged()),SLOT(dateChanged()));
+  connect(mDueTimeEdit,SIGNAL(timeChanged( QTime )),SLOT(dateChanged()));
 
   mStartCheck = new QCheckBox(i18n("Sta&rt:"),timeBoxFrame);
   layoutTimeBox->addWidget(mStartCheck,1,0);
