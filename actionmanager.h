@@ -140,14 +140,6 @@ class ActionManager : public QObject, public KCalendarIface
     /** Delete event with the given unique id from current calendar. */
     virtual bool deleteIncidence( const QString& uid );
 
-    /** Handle incoming event scheduling */
-    bool eventRequest( const QString& request, const QString& receiver,
-                       const QString& ical );
-    /** Handle event replies */
-    bool eventReply( const QString& ical );
-    /** Handle cancelling an event */
-    bool cancelEvent( const QString& ical );
-
     bool editIncidence( const QString& uid );
 
     //// Implementation of the DCOP interface
@@ -176,7 +168,7 @@ class ActionManager : public QObject, public KCalendarIface
     QString localFileName();
 
     bool queryClose();
-    
+
   signals:
     /**
       Emitted when the "New" action is activated.
@@ -200,7 +192,7 @@ class ActionManager : public QObject, public KCalendarIface
       Announce filter selection changes.
     */
     void filterActivated( int );
-    
+
     /** Indicates that a new resource was added */
     void resourceAdded( ResourceCalendar * );
 
@@ -318,7 +310,7 @@ class ActionManager : public QObject, public KCalendarIface
 
   private:
     class ActionStringsVisitor;
-    
+
     /** Create all the actions. */
     void initActions();
     void enableIncidenceActions( bool enable );
@@ -350,7 +342,7 @@ class ActionManager : public QObject, public KCalendarIface
 
     KAction *mUndoAction;
     KAction *mRedoAction;
-    
+
     KSelectAction *mFilterAction;
 
     KXMLGUIClient *mGUIClient;

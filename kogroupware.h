@@ -72,32 +72,6 @@ class KOGroupware : public QObject
     // THIS IS THE ACTUAL KM/KO API
     enum EventState { Accepted, ConditionallyAccepted, Declined, Request };
 
-    // Event initiated by somebody else, coming into KO from KM, returning
-    // resulting state
-    bool incomingEventRequest( const QString& request,
-                               const QString& receiver,
-                               const QString& vCalIn );
-    void incomingResourceRequest( const QValueList<QPair<QDateTime, QDateTime> >& busy,
-                                  const QCString& resource,
-                                  const QString& vCalIn,
-                                  bool& vCalInOK,
-                                  QString& vCalOut,
-                                  bool& vCalOutOK,
-                                  bool& isFree,
-                                  QDateTime& start, QDateTime& end );
-
-    // Answer to invitation
-    bool incidenceAnswer( const QString& vCal );
-
-    // Cancel an invitation
-    bool cancelIncidence( const QString& iCal );
-
-    // These are supposed to be moved to the upcoming HTML
-    // body part formatter plugin
-    // Format an iCal as an HTML file
-    QString formatICal( const QString& iCal );
-    // Format a TNEF attachment to an HTML mail
-    QString formatTNEF( const QByteArray& tnef );
     // convert the TNEF attachment to a vCard or iCalendar part
     QString msTNEFToVPart( const QByteArray& tnef );
 

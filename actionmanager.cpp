@@ -555,12 +555,12 @@ void ActionManager::initActions()
   new KAction( i18n("Edit &Filters..."), "configure", 0,
                     mCalendarView, SLOT( editFilters() ),
                     mACollection, "edit_filters" );
-  
+
   QLabel *filterLabel = new QLabel( i18n("Filter: "), mCalendarView );
-  new KWidgetAction( filterLabel, i18n("Filter: "), 0, 0, 0, 
+  new KWidgetAction( filterLabel, i18n("Filter: "), 0, 0, 0,
                      mACollection, "filter_label" );
-  
-  mFilterAction = new KSelectAction( i18n("F&ilter"), 0, 
+
+  mFilterAction = new KSelectAction( i18n("F&ilter"), 0,
                   mACollection, "filter_select" );
   mFilterAction->setEditable( false );
   connect( mFilterAction, SIGNAL( activated(int) ),
@@ -1165,7 +1165,7 @@ void ActionManager::updateConfig()
   mParts = KOCore::self()->reloadParts( mMainWindow, mParts );
 
   setDestinationPolicy();
-  
+
   mResourceView->updateView();
 }
 
@@ -1256,27 +1256,6 @@ bool ActionManager::editIncidence( const QString& uid )
 bool ActionManager::deleteIncidence( const QString& uid )
 {
   return mCalendarView->deleteIncidence( uid );
-}
-
-bool ActionManager::eventRequest( const QString& request,
-                                  const QString& receiver,
-                                  const QString& ical )
-{
-  if( !KOGroupware::instance() ) return false;
-  return KOGroupware::instance()->incomingEventRequest( request, receiver,
-                                                       ical );
-}
-
-bool ActionManager::eventReply( const QString& ical )
-{
-  if( !KOGroupware::instance() ) return false;
-  return KOGroupware::instance()->incidenceAnswer( ical );
-}
-
-bool ActionManager::cancelEvent( const QString& ical )
-{
-  if( !KOGroupware::instance() ) return false;
-  return KOGroupware::instance()->cancelIncidence( ical );
 }
 
 void ActionManager::configureDateTimeFinished( KProcess *proc )

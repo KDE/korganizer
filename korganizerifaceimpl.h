@@ -53,16 +53,8 @@ public:
 
   bool editIncidence( QString uid );
   bool deleteIncidence( QString uid );
-  
-  // FIXME: Where are these really used?
-  bool eventRequest( QString request, QString receiver, QString iCal );
-  bool eventReply( QString iCal );
-  bool cancelEvent( QString iCal );
 
-  // These are supposed to be moved to the upcoming HTML
-  // body part formatter plugin
-  QString formatICal( QString iCal );
-  QString formatTNEF( QByteArray tnef );
+  // TODO: Move to a library
   QString msTNEFToVPart( QByteArray tnef );
 
 private:
