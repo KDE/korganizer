@@ -94,6 +94,7 @@ AlarmDialog::AlarmDialog( QWidget *parent, const char *name )
 
 AlarmDialog::~AlarmDialog()
 {
+  delete mIncidence;
 }
 
 void AlarmDialog::setIncidence( Incidence *incidence )
