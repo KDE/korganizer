@@ -107,10 +107,6 @@ class KOProjectView : public KOrg::BaseView
     void zoomOut();
     void taskChanged(KGanttItem *task,KGanttItem::Change change);
 
-  signals:
-    void newTodoSignal();
-    void newSubTodoSignal(Todo *);
-
   private:
     void createMainTask();
     KGanttItem *createTask(KGanttItem *,Todo *);

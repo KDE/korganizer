@@ -110,28 +110,6 @@ class KOEventView : public KOrg::BaseView
      */
     void datesSelected(const DateList);
 
-    /**
-     * instructs the receiver to create a new event.  Doesn't make
-     * sense to connect to more than one receiver.
-     */
-    void newEventSignal();
-    /**
-     * instructs the receiver to create a new event with the specified beginning
-     * time. Doesn't make sense to connect to more than one receiver.
-     */
-    void newEventSignal(QDate);
-    /**
-     * instructs the receiver to create a new event with the specified beginning
-     * time. Doesn't make sense to connect to more than one receiver.
-     */
-    void newEventSignal(QDateTime);
-    /**
-     * instructs the receiver to create a new event, with the specified
-     * beginning end ending times.  Doesn't make sense to connect to more
-     * than one receiver.
-     */
-    void newEventSignal(QDateTime, QDateTime);
-
     //ET CVS MERGE !
     /**
      * Emitted when an event is moved using the mouse in an agenda

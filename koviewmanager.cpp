@@ -178,6 +178,20 @@ void KOViewManager::connectView(KOrg::BaseView *view)
   connect(view, SIGNAL(deleteIncidenceSignal(Incidence *)),
           mMainView, SLOT(deleteIncidence(Incidence *)));
 
+  // signals to create new incidences
+  connect( view, SIGNAL( newEventSignal() ),
+           mMainView, SLOT( newEvent() ) );
+  connect( view, SIGNAL( newEventSignal( QDateTime ) ),
+           mMainView, SLOT( newEvent( QDateTime ) ) );
+  connect( view, SIGNAL( newEventSignal( QDateTime, QDateTime ) ),
+           mMainView, SLOT( newEvent( QDateTime, QDateTime ) ) );
+  connect( view, SIGNAL( newEventSignal( QDate ) ),
+           mMainView, SLOT( newEvent( QDate ) ) );
+  connect( view, SIGNAL( newTodoSignal() ),
+           mMainView, SLOT( newTodo() ) );
+  connect( view, SIGNAL( newSubTodoSignal( Todo * ) ),
+           mMainView, SLOT( newSubTodo( Todo *) ) );
+
   // reload settings
   connect(mMainView, SIGNAL(configChanged()), view, SLOT(updateConfig()));
 
@@ -197,10 +211,6 @@ void KOViewManager::connectTodoView( KOTodoView* todoView )
   if (!todoView) return;
 
   // SIGNALS/SLOTS FOR TODO VIEW
-  connect( todoView, SIGNAL( newTodoSignal() ),
-           mMainView, SLOT( newTodo() ) );
-  connect( todoView, SIGNAL( newSubTodoSignal( Todo * ) ),
-           mMainView, SLOT( newSubTodo( Todo *) ) );
   connect( todoView, SIGNAL( purgeCompletedSignal() ),
            mMainView, SLOT( purgeCompleted() ) );
   connect( todoView, SIGNAL( unSubTodoSignal() ),
@@ -244,16 +254,6 @@ void KOViewManager::showAgendaView()
     mAgendaView = new KOAgendaView(mMainView->calendar(), mMainView->viewStack(), "KOViewManager::AgendaView");
 
     addView(mAgendaView);
-
-    // SIGNALS/SLOTS FOR DAY/WEEK VIEW
-    connect( mAgendaView, SIGNAL( newEventSignal() ),
-             mMainView, SLOT( newEvent() ) );
-    connect( mAgendaView, SIGNAL( newEventSignal( QDateTime ) ),
-             mMainView, SLOT( newEvent( QDateTime ) ) );
-    connect( mAgendaView, SIGNAL( newEventSignal( QDateTime, QDateTime ) ),
-             mMainView, SLOT( newEvent( QDateTime, QDateTime ) ) );
-    connect( mAgendaView, SIGNAL( newEventSignal( QDate ) ),
-             mMainView, SLOT( newEvent( QDate ) ) );
 
     connect(mAgendaView, SIGNAL( toggleExpand() ),
             mMainView, SLOT( toggleExpand() ) );

@@ -220,6 +220,32 @@ class BaseView : public QWidget
     void incidenceDeleted( Incidence* );
     void incidenceToBeDeleted( Incidence* );
 
+
+    /**
+     * instructs the receiver to create a new event.  Doesn't make
+     * sense to connect to more than one receiver.
+     */
+    void newEventSignal();
+    /**
+     * instructs the receiver to create a new event with the specified beginning
+     * time. Doesn't make sense to connect to more than one receiver.
+     */
+    void newEventSignal(QDate);
+    /**
+     * instructs the receiver to create a new event with the specified beginning
+     * time. Doesn't make sense to connect to more than one receiver.
+     */
+    void newEventSignal(QDateTime);
+    /**
+     * instructs the receiver to create a new event, with the specified
+     * beginning end ending times.  Doesn't make sense to connect to more
+     * than one receiver.
+     */
+    void newEventSignal(QDateTime, QDateTime);
+  
+    void newTodoSignal();
+    void newSubTodoSignal( Todo * );
+    
   private:
     Calendar *mCalendar;
 };

@@ -189,8 +189,6 @@ class KOTodoView : public KOrg::BaseView
     void emitRecurSignal( Todo * );
 
   signals:
-    void newTodoSignal();
-    void newSubTodoSignal( Todo * );
     void unSubTodoSignal();
 
     void recurTodo ( Todo * );
