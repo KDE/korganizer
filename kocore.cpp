@@ -250,8 +250,13 @@ KOrg::Part::List KOCore::loadParts( KOrg::MainWindow *parent )
                                selectedPlugins.end() ) {
       KOrg::Part *part = loadPart( *it, parent );
       if ( part ) {
-        parent->mainGuiFactory()->addClient( part );
-        parts.append( part );
+        if ( !parent->mainGuiFactory() ) {
+          kdError() << "KOCore::loadParts(): parent has no mainGuiFactory."
+                    << endl;
+        } else {
+          parent->mainGuiFactory()->addClient( part );
+          parts.append( part );
+        }
       }
     }
   }
