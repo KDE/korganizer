@@ -615,13 +615,13 @@ void CalendarView::incidenceChanged( Incidence *oldIncidence, Incidence *newInci
   incidenceChanged( oldIncidence, newIncidence, KOGlobals::UNKNOWN_MODIFIED );
 }
 
-void CalendarView::incidenceChanged( Incidence *oldIncidence, Incidence *newIncidence, int /*what*/ )
+void CalendarView::incidenceChanged( Incidence *oldIncidence, Incidence *newIncidence, int what )
 {
   // TODO_RK: Make use of the what flag, which indicates which parts of the incidence have changed!
   KOIncidenceEditor *tmp = editorDialog( newIncidence );
   if (tmp) {
     kdDebug(5850) << "Incidence modified and open" << endl;
-    tmp->modified();
+    tmp->modified( what );
   }
   setModified( true );
   history()->recordEdit( oldIncidence, newIncidence );
