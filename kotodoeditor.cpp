@@ -32,7 +32,8 @@
 #include <klocale.h>
 #include <kmessagebox.h>
 
-#include "categoryselectdialog.h"
+#include <libkdepim/categoryselectdialog.h>
+
 #include "koprefs.h"
 
 #include "kotodoeditor.h"

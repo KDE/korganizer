@@ -20,20 +20,19 @@
     with any edition of Qt, and distribute the resulting executable,
     without including the source code for Qt in the source distribution.
 */
-#ifndef _KOPREFS_H
-#define _KOPREFS_H
-// $Id$
+#ifndef KOPREFS_H
+#define KOPREFS_H
 
 #include <qdict.h>
 
-#include <libkdepim/kprefs.h>
+#include <libkdepim/kpimprefs.h>
 
 class KConfig;
 class QFont;
 class QColor;
 class QStringList;
 
-class KOPrefs : public KPrefs
+class KOPrefs : public KPimPrefs
 {
   public:
     enum { FormatVCalendar, FormatICalendar };
@@ -132,8 +131,6 @@ class KOPrefs : public KPrefs
    
     bool    mCompactDialogs;
     bool    mVerticalScreen;
-
-    QStringList mCustomCategories;
 
     void setCategoryColor(QString cat,const QColor & color);
     QColor *categoryColor(QString cat);

@@ -19,16 +19,15 @@
   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 */
 
-// $Id$
+#include <libkdepim/categoryeditdialog.h>
 
 #include "calendarview.h"
-
 #include "incomingdialog.h"
 #include "outgoingdialog.h"
 #include "koprefsdialog.h"
 #include "koeventeditor.h"
+#include "koprefs.h"
 #include "kotodoeditor.h"
-#include "categoryeditdialog.h"
 #include "searchdialog.h"
 #include "filtereditdialog.h"
 #ifndef KORG_NOPLUGINS
@@ -52,7 +51,7 @@ KODialogManager::KODialogManager( CalendarView *mainView ) :
   mFilterEditDialog = 0;
   mPluginDialog = 0;
 
-  mCategoryEditDialog = new CategoryEditDialog(mMainView);
+  mCategoryEditDialog = new CategoryEditDialog(KOPrefs::instance(),mMainView);
 }
 
 KODialogManager::~KODialogManager()

@@ -56,8 +56,7 @@ libkorganizer_la_SOURCES =  outgoingdialog_base.ui \
         outgoingdialog.cpp \
 	incomingdialog_base.ui incomingdialog.cpp \
 	publishdialog_base.ui publishdialog.cpp \
-        koeventview.cpp categoryselectdialog_base.ui categoryselectdialog.cpp \
-        categoryeditdialog_base.ui categoryeditdialog.cpp \
+        koeventview.cpp \
         kofilterview_base.ui kofilterview.cpp \
         korganizeriface.skel \
         filtereditdialog.cpp filteredit_base.ui \

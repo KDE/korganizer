@@ -45,7 +45,7 @@ KOPrefs *KOPrefs::mInstance = 0;
 static KStaticDeleter<KOPrefs> insd;
 
 KOPrefs::KOPrefs() :
-  KPrefs("")
+  KPimPrefs()
 {
   mCategoryColors.setAutoDelete(true);
 
@@ -190,9 +190,9 @@ void KOPrefs::usrSetDefaults()
   mAgendaViewFont = mDefaultViewFont;
   mMarcusBainsFont = mDefaultViewFont;
 
-  setCategoryDefaults();
-  
   setTimeZoneIdDefault();
+
+  KPimPrefs::usrSetDefaults();
 }
 
 void KOPrefs::fillMailDefaults()
@@ -258,6 +258,8 @@ void KOPrefs::usrReadConfig()
   if (mTimeZoneId.isEmpty()) {
     setTimeZoneIdDefault();
   }
+
+  KPimPrefs::usrReadConfig();
 }
 
 
@@ -276,6 +278,8 @@ void KOPrefs::usrWriteConfig()
     config()->writeEntry(it.currentKey(),*(it.current()));
     ++it;
   }
+
+  KPimPrefs::usrWriteConfig();
 }
 
 void KOPrefs::setCategoryColor(QString cat,const QColor & color)

@@ -33,7 +33,8 @@
 #include <kdebug.h>
 #include <klocale.h>
 
-#include "categoryselectdialog.h"
+#include <libkdepim/categoryselectdialog.h>
+
 #include "koprefs.h"
 
 #include "koincidenceeditor.h"
@@ -46,7 +47,7 @@ KOIncidenceEditor::KOIncidenceEditor( const QString &caption,
 {
   mCalendar = calendar;
 
-  mCategoryDialog = new CategorySelectDialog();
+  mCategoryDialog = new CategorySelectDialog( KOPrefs::instance(), this );
 
   connect(mCategoryDialog,SIGNAL(editCategories()),SIGNAL(editCategories()));
 

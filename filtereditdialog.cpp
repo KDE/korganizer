@@ -32,9 +32,10 @@
 #include <klocale.h>
 #include <klineeditdlg.h>
 
+#include <libkdepim/categoryselectdialog.h>
+
 #include "koprefs.h"
 #include "filteredit_base.h"
-#include "categoryselectdialog.h"
 
 #include "filtereditdialog.h"
 #include "filtereditdialog.moc"
@@ -130,7 +131,10 @@ void FilterEditDialog::slotAdd()
 
 void FilterEditDialog::editCategorySelection()
 {
-  CategorySelectDialog *dlg = new CategorySelectDialog(this,"filterCatSelect",true);
+  CategorySelectDialog *dlg = new CategorySelectDialog( KOPrefs::instance(),
+                                                        this,
+                                                        "filterCatSelect",
+                                                        true);
   dlg->setSelected(mCategories);
 
   connect(dlg,SIGNAL(categoriesSelected(const QStringList &)),

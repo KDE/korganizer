@@ -35,7 +35,7 @@
 #include <kmessagebox.h>
 
 #include "koprefs.h"
-#include "categoryselectdialog.h"
+#include <libkdepim/categoryselectdialog.h>
 
 #include "koeventeditor.h"
 #include "koeventeditor.moc"
