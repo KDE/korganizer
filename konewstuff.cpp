@@ -48,13 +48,13 @@ bool KONewStuff::install( const QString &fileName )
     return false;
   }
 
-  QPtrList<Event> events = cal.events();
+  Event::List events = cal.events();
 
   QStringList eventList;
-  
-  Event *e;
-  for( e = events.first(); e; e = events.next() ) {
-    QString text = e->summary();
+
+  Event::List::ConstIterator it;
+  for( it = events.begin(); it != events.end(); ++it ) {
+    QString text = (*it)->summary();
     eventList.append( text );
   }
 

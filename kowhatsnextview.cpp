@@ -39,8 +39,8 @@
 #include "koeventviewerdialog.h"
 
 #include "kowhatsnextview.h"
+
 using namespace KOrg;
-#include "kowhatsnextview.moc"
 
 void WhatsNextTextBrowser::setSource(const QString& n)
 {
@@ -90,9 +90,9 @@ int KOWhatsNextView::currentDateCount()
   return 0;
 }
 
-QPtrList<Incidence> KOWhatsNextView::selectedIncidences()
+Incidence::List KOWhatsNextView::selectedIncidences()
 {
-  QPtrList<Incidence> eventList;
+  Incidence::List eventList;
 
   return eventList;
 }
@@ -120,7 +120,7 @@ void KOWhatsNextView::updateView()
   mText += "<font color=\"white\"> " + i18n("What's next?") + "</font></h1>";
   mText += "</td></tr>\n<tr><td>";
   
-  QPtrList<Event> events = calendar()->events( QDate::currentDate(), true );
+  Event::List events = calendar()->events( QDate::currentDate(), true );
   if (events.count() > 0) {
     mText += "<p></p>";
     kil.loadIcon("appointment",KIcon::NoGroup,22,KIcon::DefaultState,ipath);
@@ -129,41 +129,40 @@ void KOWhatsNextView::updateView()
     mText += "\">";    
     mText += i18n("Events:") + "</h2>\n";
     mText += "<table>\n";
-    Event *ev = events.first();
-    while(ev) {
+    Event::List::ConstIterator it;
+    for( it = events.begin(); it != events.end(); ++it ) {
+      Event *ev = *it;
       if (!ev->recurrence()->doesRecur() || ev->recursOn( QDate::currentDate())) {
         appendEvent(ev);
       }
-      ev = events.next();
     }
     mText += "</table>\n";
   }
 
   mTodos.clear();
-  QPtrList<Todo> todos = calendar()->todos();
-  if (todos.count() > 0) {
+  Todo::List todos = calendar()->todos();
+  if ( todos.count() > 0 ) {
     kil.loadIcon("todo",KIcon::NoGroup,22,KIcon::DefaultState,ipath);
     mText += "<h2><img src=\"";
     mText += *ipath;
     mText += "\">";
     mText += i18n("To-Do:") + "</h2>\n";
     mText += "<ul>\n";
-    Todo *todo = todos.first();
-    while(todo) {
+    Todo::List::ConstIterator it;
+    for( it = todos.begin(); it != todos.end(); ++it ) {
+      Todo *todo = *it;
       if ( todo->hasDueDate() && todo->dtDue().date() == QDate::currentDate() )
 		  appendTodo(todo);
-      todo = todos.next();
     }
     bool gotone = false;
     int priority = 1;
     while (!gotone && priority<6) {
-      todo = todos.first();
-      while(todo) {
+      for( it = todos.begin(); it != todos.end(); ++it ) {
+        Todo *todo = *it;
 	if (!todo->isCompleted() && (todo->priority() == priority) ) {
-	  appendTodo(todo);
-	  gotone = true;
+          appendTodo(todo);
+          gotone = true;
 	}
-	todo = todos.next();
       }
       priority++;
       kdDebug(5850) << "adding the todos..." << endl;
@@ -173,51 +172,47 @@ void KOWhatsNextView::updateView()
 
   int replys = 0;
   events = calendar()->events(QDate::currentDate(), QDate(2975,12,6));
-  if (events.count() > 0) {
-    Event *ev = events.first();
-    while(ev) {
-      Attendee *me = ev->attendeeByMails(KOPrefs::instance()->mAdditionalMails,KOPrefs::instance()->email());
-      if (me!=0) {
-        if (me->status()==Attendee::NeedsAction && me->RSVP()) {
-          if (replys == 0) {
-            mText += "<p></p>";
-            kil.loadIcon("reply",KIcon::NoGroup,22,KIcon::DefaultState,ipath);
-            mText += "<h2><img src=\"";
-            mText += *ipath;
-            mText += "\">";    
-            mText += i18n("Events and To-Dos that need a reply:") + "</h2>\n";
-            mText += "<table>\n";
-          }
-          replys++;
-          appendEvent(ev,true);
+  Event::List::ConstIterator it2;
+  for( it2 = events.begin(); it2 != events.end(); ++it2 ) {
+    Event *ev = *it2;
+    Attendee *me = ev->attendeeByMails(KOPrefs::instance()->mAdditionalMails,KOPrefs::instance()->email());
+    if (me!=0) {
+      if (me->status()==Attendee::NeedsAction && me->RSVP()) {
+        if (replys == 0) {
+          mText += "<p></p>";
+          kil.loadIcon("reply",KIcon::NoGroup,22,KIcon::DefaultState,ipath);
+          mText += "<h2><img src=\"";
+          mText += *ipath;
+          mText += "\">";    
+          mText += i18n("Events and To-Dos that need a reply:") + "</h2>\n";
+          mText += "<table>\n";
         }
+        replys++;
+        appendEvent(ev,true);
       }
-      ev = events.next();
     }
   }
   todos = calendar()->todos();
-  if (todos.count() > 0) {
-    Todo *to = todos.first();
-    while(to) {
-      Attendee *me = to->attendeeByMails(KOPrefs::instance()->mAdditionalMails,KOPrefs::instance()->email());
-      if (me!=0) {
-        if (me->status()==Attendee::NeedsAction && me->RSVP()) {
-          if (replys == 0) {
-            mText += "<p></p>";
-            kil.loadIcon("reply",KIcon::NoGroup,22,KIcon::DefaultState,ipath);
-            mText += "<h2><img src=\"";
-            mText += *ipath;
-            mText += "\">";    
-            mText += i18n("Events and To-Dos that need a reply:") + "</h2>\n";
-            mText += "<table>\n";
-          }
-          replys++;
-          appendEvent(to);
+  Todo::List::ConstIterator it3;
+  for( it3 = todos.begin(); it3 != todos.end(); ++it3 ) {
+    Todo *to = *it3;
+    Attendee *me = to->attendeeByMails(KOPrefs::instance()->mAdditionalMails,KOPrefs::instance()->email());
+    if (me!=0) {
+      if (me->status()==Attendee::NeedsAction && me->RSVP()) {
+        if (replys == 0) {
+          mText += "<p></p>";
+          kil.loadIcon("reply",KIcon::NoGroup,22,KIcon::DefaultState,ipath);
+          mText += "<h2><img src=\"";
+          mText += *ipath;
+          mText += "\">";    
+          mText += i18n("Events and To-Dos that need a reply:") + "</h2>\n";
+          mText += "<table>\n";
         }
+        replys++;
+        appendEvent(to);
       }
-      kdDebug () << "check for todo-replys..." << endl;
-      to = todos.next();
     }
+    kdDebug () << "check for todo-replys..." << endl;
   }
   if (replys > 0 ) mText += "</table>\n";
 
@@ -233,7 +228,7 @@ void KOWhatsNextView::showDates(const QDate &, const QDate &)
   updateView();
 }
 
-void KOWhatsNextView::showEvents(QPtrList<Event>)
+void KOWhatsNextView::showEvents( const Event::List & )
 {
 }
 
@@ -308,3 +303,5 @@ void KOWhatsNextView::showIncidence(const QString &uid)
   mEventViewer->show();
   mEventViewer->raise();
 }
+
+#include "kowhatsnextview.moc"

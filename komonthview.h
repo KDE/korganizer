@@ -168,7 +168,7 @@ class KOMonthView: public KOEventView
     virtual int currentDateCount();
 
     /** returns the currently selected events */
-    virtual QPtrList<Incidence> selectedIncidences();
+    virtual Incidence::List selectedIncidences();
 
     /** returns dates of the currently selected events */
     virtual DateList selectedDates();
@@ -180,7 +180,7 @@ class KOMonthView: public KOEventView
     virtual void updateView();
     virtual void updateConfig();
     virtual void showDates(const QDate &start, const QDate &end);
-    virtual void showEvents(QPtrList<Event> eventList);
+    virtual void showEvents( const Event::List &eventList );
 
     void changeEventDisplay(Event *, int);
 

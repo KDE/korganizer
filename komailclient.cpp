@@ -52,12 +52,12 @@ KOMailClient::~KOMailClient()
 
 bool KOMailClient::mailAttendees(IncidenceBase *incidence,const QString &attachment)
 {
-  QPtrList<Attendee> attendees = incidence->attendees();
+  Attendee::List attendees = incidence->attendees();
   if (attendees.count() == 0) return false;
 
   QString to;
   for(uint i=0; i<attendees.count();++i) {
-    to += attendees.at(i)->email();
+    to += (*attendees.at(i))->email();
     if (i != attendees.count()-1) to += ", ";
   }
 

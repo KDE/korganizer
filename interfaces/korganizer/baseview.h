@@ -81,7 +81,7 @@ class BaseView : public QWidget
       select a single event at a time, but some may be able to select
       more than one.
     */
-    virtual QPtrList<Incidence> selectedIncidences() = 0;
+    virtual Incidence::List selectedIncidences() = 0;
   
     /**
       @return a list of the dates of selected events.  Most views can probably only
@@ -145,7 +145,7 @@ class BaseView : public QWidget
 
       @param eventList a list of events to show.
     */
-    virtual void showEvents(QPtrList<Event> eventList) = 0;
+    virtual void showEvents( const Event::List &eventList ) = 0;
 
     /**
       Updates the current display to reflect changes that may have happened
@@ -161,7 +161,7 @@ class BaseView : public QWidget
     /**
       Updates the current display to reflect the changes to one particular event.
     */
-    virtual void changeEventDisplay(Event *, int) = 0;
+    virtual void changeEventDisplay( Event *, int ) = 0;
   
     /**
       Re-reads the KOrganizer configuration and picks up relevant

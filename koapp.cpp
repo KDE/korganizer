@@ -82,11 +82,13 @@ void KOrganizerApp::displayImminent( const KURL &url, int numdays )
   for (int i = 1; i <= numdays; i++) {
     cout << KGlobal::locale()->formatDate(currDate).local8Bit() << endl;
 
-    QPtrList<Event> tmpList( cal.events( currDate, true ) );
+    Event::List tmpList( cal.events( currDate, true ) );
     cout << "---------------------------------------------------------------"
          << endl;
     if (tmpList.count() > 0) {
-      for (currEvent = tmpList.first(); currEvent; currEvent = tmpList.next()) {
+      Event::List::ConstIterator it;
+      for ( it = tmpList.begin(); it != tmpList.end(); ++it ) {
+        currEvent = *it;
         cout << currEvent->summary().local8Bit() << endl;
         if (!currEvent->doesFloat()) {
           cout << " (" << currEvent->dtStartStr().local8Bit() << " - "
@@ -100,10 +102,12 @@ void KOrganizerApp::displayImminent( const KURL &url, int numdays )
 
     cout << "---------------------------------------------------------------"
          << endl;
-    QPtrList<Todo> tmpList2 = cal.todos(currDate);
+    Todo::List tmpList2 = cal.todos(currDate);
     Todo *currTodo;
     if (tmpList.count() > 0) {
-      for (currTodo = tmpList2.first(); currTodo; currTodo = tmpList2.next()) {
+      Todo::List::ConstIterator it2;
+      for( it2 = tmpList2.begin(); it2 != tmpList2.end(); ++it2 ) {
+        currTodo = *it2;
         cout << currTodo->summary().local8Bit() << endl;
         if (!currTodo->doesFloat()) {
           cout << " (" << currTodo->dtDueStr().local8Bit() << ")" << endl;

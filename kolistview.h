@@ -77,7 +77,7 @@ class KOListView : public KOEventView
 
     virtual int maxDatesHint();
     virtual int currentDateCount();
-    virtual QPtrList<Incidence> selectedIncidences();
+    virtual Incidence::List selectedIncidences();
     virtual DateList selectedDates();
     
     void showDates(bool show);
@@ -92,8 +92,8 @@ class KOListView : public KOEventView
 
   public slots:
     virtual void updateView();
-    virtual void showDates(const QDate &start, const QDate &end);
-    virtual void showEvents(QPtrList<Event> eventList);
+    virtual void showDates( const QDate &start, const QDate &end );
+    virtual void showEvents( const Event::List & );
 
     void clearSelection();
 
@@ -109,8 +109,8 @@ class KOListView : public KOEventView
     void processSelectionChange();
 
   protected:
-    void addEvents(QPtrList<Event> eventList);
-    void addTodos(QPtrList<Todo> eventList);
+    void addEvents( const Event::List & );
+    void addTodos( const Todo::List & );
     void addIncidence(Incidence *);
     KOListViewItem *getItemForEvent(Event *event);
 

@@ -207,8 +207,8 @@ void KOEventViewer::formatCategories(Incidence *event)
 
 void KOEventViewer::formatAttendees(Incidence *event)
 {
-  QPtrList<Attendee> attendees = event->attendees();
-  if (attendees.count()) {
+  Attendee::List attendees = event->attendees();
+  if ( attendees.count() ) {
     KIconLoader* iconLoader = new KIconLoader();
     QString iconPath = iconLoader->iconPath("mail_generic",KIcon::Small);
     addTag("h3",i18n("Organizer"));
@@ -236,9 +236,10 @@ void KOEventViewer::formatAttendees(Incidence *event)
     mText.append("</li></ul>");
 
     addTag("h3",i18n("Attendees"));
-    Attendee *a;
     mText.append("<ul>");
-    for(a=attendees.first();a;a=attendees.next()) {
+    Attendee::List::ConstIterator it;
+    for( it = attendees.begin(); it != attendees.end(); ++it ) {
+      Attendee *a = *it;
 #ifndef KORG_NOKABC
       if (a->name().isEmpty()) {
         addressList = add_book->findByEmail(a->email());

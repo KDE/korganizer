@@ -52,17 +52,15 @@ class KOWhatsNextView : public KOrg::BaseView
 
     virtual int maxDatesHint();
     virtual int currentDateCount();
-    virtual QPtrList<Incidence> selectedIncidences();
-    DateList selectedDates()
-      {DateList q;
-       return q;}    
+    virtual Incidence::List selectedIncidences();
+    DateList selectedDates() { return DateList(); }
     virtual void printPreview(CalPrinter *calPrinter,
                               const QDate &, const QDate &);
   
   public slots:
     virtual void updateView();
     virtual void showDates(const QDate &start, const QDate &end);
-    virtual void showEvents(QPtrList<Event> eventList);
+    virtual void showEvents( const Event::List & );
 
     void changeEventDisplay(Event *, int);
   
@@ -81,7 +79,7 @@ class KOWhatsNextView : public KOrg::BaseView
 
     KOEventViewerDialog *mEventViewer;
     
-    QValueList<Incidence *> mTodos;
+    Incidence::List mTodos;
 };
 
 #endif

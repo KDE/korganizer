@@ -65,7 +65,7 @@ class SearchDialog : public KDialogBase
 
     Calendar *mCalendar;
     
-    QPtrList<Event> mMatchedEvents;
+    Event::List mMatchedEvents;
     
     QLabel *searchLabel;
     QLineEdit *searchEdit;

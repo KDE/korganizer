@@ -57,9 +57,9 @@ int KOJournalView::currentDateCount()
   return 0;
 }
 
-QPtrList<Incidence> KOJournalView::selectedIncidences()
+Incidence::List KOJournalView::selectedIncidences()
 {
-  QPtrList<Incidence> eventList;
+  Incidence::List eventList;
 
   return eventList;
 }
@@ -87,7 +87,7 @@ void KOJournalView::showDates(const QDate &start, const QDate &)
 //  emit incidenceSelected( 0 );
 }
 
-void KOJournalView::showEvents(QPtrList<Event>)
+void KOJournalView::showEvents( const Event::List & )
 {
   // After new creation of list view no events are selected.
 //  emit incidenceSelected( 0 );

@@ -164,13 +164,14 @@ void SearchDialog::updateView()
 
 void SearchDialog::search(const QRegExp &re)
 {
-  QPtrList<Event> events = mCalendar->events( mStartDate->date(),
-                                              mEndDate->date(),
-                                              mInclusiveCheck->isChecked() );
+  Event::List events = mCalendar->events( mStartDate->date(),
+                                          mEndDate->date(),
+                                          mInclusiveCheck->isChecked() );
 
   mMatchedEvents.clear();
-  Event *ev;
-  for(ev=events.first();ev;ev=events.next()) {
+  Event::List::ConstIterator it;
+  for( it = events.begin(); it != events.end(); ++it ) {
+    Event *ev = *it;
     if (mSummaryCheck->isChecked()) {
 #if QT_VERSION >= 300
       if (re.search(ev->summary()) != -1) {

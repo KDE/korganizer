@@ -296,9 +296,10 @@ void KOEditorGeneral::readIncidence(Incidence *event)
   mSecrecyCombo->setCurrentItem(event->secrecy());
 
   // set up alarm stuff
-  QPtrList<Alarm> alarms = event->alarms();
-  Alarm* alarm;
-  for ( alarm = alarms.first(); alarm; alarm = alarms.next() ) {
+  Alarm::List alarms = event->alarms();
+  Alarm::List::ConstIterator it;
+  for( it = alarms.begin(); it != alarms.end(); ++it ) {
+    Alarm *alarm = *it;
     int offset;
     if ( alarm->hasTime() ) {
       QDateTime t = alarm->time();
@@ -351,9 +352,10 @@ void KOEditorGeneral::writeIncidence(Incidence *event)
   // alarm stuff
   if (mAlarmButton->isChecked()) {
     if (event->alarms().count() == 0) event->newAlarm();
-    QPtrList<Alarm> alarms = event->alarms();
-    Alarm *alarm;
-    for (alarm = alarms.first(); alarm; alarm = alarms.next() ) {
+    Alarm::List alarms = event->alarms();
+    Alarm::List::ConstIterator it;
+    for( it = alarms.begin(); it != alarms.end(); ++it ) {
+      Alarm *alarm = *it;
       alarm->setEnabled(true);
 
       QString tmpStr = mAlarmTimeEdit->text();

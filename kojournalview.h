@@ -20,8 +20,8 @@
     with any edition of Qt, and distribute the resulting executable,
     without including the source code for Qt in the source distribution.
 */
-#ifndef _KOJOURNALVIEW_H
-#define _KOJOURNALVIEW_H
+#ifndef KOJOURNALVIEW_H
+#define KOJOURNALVIEW_H
 
 #include <korganizer/baseview.h>
 
@@ -38,23 +38,22 @@ class KOJournalView : public KOrg::BaseView
 {
     Q_OBJECT
   public:
-    KOJournalView(Calendar *calendar, QWidget *parent = 0, 
-	       const char *name = 0);
+    KOJournalView( Calendar *calendar, QWidget *parent = 0, 
+	           const char *name = 0);
     ~KOJournalView();
 
     virtual int currentDateCount();
-    virtual QPtrList<Incidence> selectedIncidences();
-    DateList selectedDates()
-      {DateList q;
-       return q;}
+    virtual Incidence::List selectedIncidences();
+    DateList selectedDates() { return DateList(); }
+
   public slots:
     void updateView();
     void flushView();
   
     void showDates( const QDate &start, const QDate &end );
-    void showEvents(QPtrList<Event> eventList);
+    void showEvents( const Event::List & );
 
-    void changeEventDisplay(Event *, int);
+    void changeEventDisplay( Event *, int );
   
   private:
     JournalEntry *mEntry;

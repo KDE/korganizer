@@ -10,16 +10,14 @@ class KOTimeSpanView : public KOEventView
 {
     Q_OBJECT
   public:
-    KOTimeSpanView(Calendar *calendar, QWidget *parent = 0, 
-	           const char *name = 0);
+    KOTimeSpanView( Calendar *calendar, QWidget *parent = 0, 
+	            const char *name = 0 );
     ~KOTimeSpanView();
 
     virtual int maxDatesHint();
     virtual int currentDateCount();
-    virtual QPtrList<Incidence> selectedIncidences();
-    DateList selectedDates() 
-      {DateList q;
-       return q;}
+    virtual Incidence::List selectedIncidences();
+    DateList selectedDates() { return DateList(); }
 
     void readSettings();
     void readSettings( KConfig * );
@@ -27,8 +25,8 @@ class KOTimeSpanView : public KOEventView
 
   public slots:
     virtual void updateView();
-    virtual void showDates(const QDate &start, const QDate &end);
-    virtual void showEvents(QPtrList<Event> eventList);
+    virtual void showDates( const QDate &start, const QDate &end );
+    virtual void showEvents( const Event::List & );
 
     void changeEventDisplay(Event *, int);
 

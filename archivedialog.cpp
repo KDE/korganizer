@@ -104,9 +104,10 @@ void ArchiveDialog::slotUser1()
   }
 
   // Get events to be archived
-  QPtrList<Event> events = mCalendar->events(QDate(1800,1,1),
-                                             mDateEdit->date().addDays(-1),true);
-  if (events.count() == 0) {
+  Event::List events = mCalendar->events( QDate( 1800, 1, 1 ),
+                                          mDateEdit->date().addDays( -1 ),
+                                          true );
+  if ( events.count() == 0 ) {
     KMessageBox::sorry(this,i18n("There are no events before %1")
         .arg(KGlobal::locale()->formatDate(mDateEdit->date())));
     return;
@@ -135,12 +136,12 @@ void ArchiveDialog::slotUser1()
 
   // Strip active events from calendar so that only events to be archived
   // remain.
-  QPtrList<Event> activeEvents = archiveCalendar.events(mDateEdit->date(),
-                                                        QDate(3000,1,1),
-                                                        false);
-  Event *ev;
-  for(ev=activeEvents.first();ev;ev=activeEvents.next()) {
-    archiveCalendar.deleteEvent(ev);
+  Event::List activeEvents = archiveCalendar.events( mDateEdit->date(),
+                                                     QDate( 3000, 1, 1 ),
+                                                     false );
+  Event::List::ConstIterator it;
+  for( it = activeEvents.begin(); it != activeEvents.end(); ++it ) {
+    archiveCalendar.deleteEvent( *it );
   }
 
   // Get or create the archive file
@@ -192,8 +193,8 @@ void ArchiveDialog::slotUser1()
   KIO::NetAccess::removeTempFile(archiveFile);
 
   // Delete archived events from calendar
-  for(ev=events.first();ev;ev=events.next()) {
-    mCalendar->deleteEvent(ev);
+  for( it = events.begin(); it != events.end(); ++it ) {
+    mCalendar->deleteEvent( *it );
   }
   emit eventsDeleted();
 
@@ -203,19 +204,20 @@ void ArchiveDialog::slotUser1()
 // Delete old events
 void ArchiveDialog::slotUser2()
 {
-  QPtrList<Event> events = mCalendar->events(QDate(1769,12,1),
-                                             mDateEdit->date().addDays(-1),true);
+  Event::List events = mCalendar->events( QDate( 1769, 12, 1 ),
+                                          mDateEdit->date().addDays( -1 ),
+                                          true );
 
-  if (events.count() == 0) {
+  if ( events.count() == 0 ) {
     KMessageBox::sorry(this,i18n("There are no events before %1")
         .arg(KGlobal::locale()->formatDate(mDateEdit->date())));
     return;
   }
 
   QStringList eventStrs;
-  Event *ev;
-  for(ev=events.first();ev;ev=events.next()) {
-    eventStrs.append(ev->summary());
+  Event::List::ConstIterator it;
+  for( it = events.begin(); it != events.end(); ++it ) {
+    eventStrs.append( (*it)->summary() );
   }
 
   int result = KMessageBox::warningContinueCancelList(this,
@@ -223,8 +225,8 @@ void ArchiveDialog::slotUser2()
       .arg(KGlobal::locale()->formatDate(mDateEdit->date())),eventStrs,
       i18n("Delete old events"),i18n("Delete"));
   if (result == KMessageBox::Continue) {
-    for(ev=events.first();ev;ev=events.next()) {
-      mCalendar->deleteEvent(ev);
+    for( it = events.begin(); it != events.end(); ++it ) {
+      mCalendar->deleteEvent( *it );
     }
     emit eventsDeleted();
     accept();

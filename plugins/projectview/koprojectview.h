@@ -70,7 +70,7 @@ class KOProjectView : public KOrg::BaseView
     KOProjectView(Calendar *, QWidget* parent=0, const char* name=0 );
     ~KOProjectView() {}
 
-    QPtrList<Incidence> selectedIncidences();
+    Incidence::List selectedIncidences();
     DateList selectedDates();
 
     /** Return number of shown dates. */
@@ -86,7 +86,7 @@ class KOProjectView : public KOrg::BaseView
     void changeEventDisplay(Event *, int);
   
     void showDates(const QDate &start, const QDate &end);
-    void showEvents(QPtrList<Event> eventList);
+    void showEvents( const Event::List & );
 
 /*
     void editItem(QListViewItem *item);

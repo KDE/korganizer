@@ -264,12 +264,13 @@ bool IncomingDialog::incomeRefresh(ScheduleItemIn *item)
   Event *ev = mCalendar->event(item->event()->uid());
   if (ev) {
     //user interaction before??
-    Attendee *att;
-    QPtrList<Attendee> attlist = ev->attendees();
-    for (att=attlist.first(); att; att=attlist.next()) {
-      Event *event = new Event(*ev);
-      mOutgoing->addMessage(event,Scheduler::Request,att->email());
-      delete(event);
+    Attendee::List attList = ev->attendees();
+    Attendee::List::ConstIterator it;
+    for( it = attList.begin(); it != attList.end(); ++it ) {
+      // TODO: Why do we clone the event here?
+      Event *event = new Event( *ev );
+      mOutgoing->addMessage( event, Scheduler::Request, (*it)->email() );
+      delete event;
     }
     mScheduler->deleteTransaction(item->event());
     delete item;
@@ -510,12 +511,11 @@ bool IncomingDialog::checkAttendeesInAddressbook(IncidenceBase *inc)
 #ifndef KORG_NOKABC
   KABC::AddressBook *add_book = KABC::StdAddressBook::self();
   KABC::Addressee::List addressList;
-  QPtrList <Attendee> attendees;
-  Attendee *att;
-  attendees = inc->attendees();
-  for (att=attendees.first();att;att=attendees.next()) {
-    addressList = add_book->findByEmail(att->email());
-    if (addressList.size()>0 ) inBook = true;
+  Attendee::List attendees = inc->attendees();
+  Attendee::List::ConstIterator it;
+  for( it = attendees.begin(); it != attendees.end(); ++it ) {
+    addressList = add_book->findByEmail( (*it)->email() );
+    if ( addressList.size() > 0 ) inBook = true;
   }
 #endif
   return inBook;

@@ -61,9 +61,9 @@ int KOTimeSpanView::currentDateCount()
   return 0;
 }
 
-QPtrList<Incidence> KOTimeSpanView::selectedIncidences()
+Incidence::List KOTimeSpanView::selectedIncidences()
 {
-  QPtrList<Incidence> selected;
+  Incidence::List selected;
   
   return selected;
 }
@@ -87,21 +87,16 @@ void KOTimeSpanView::insertItems(const QDate &start, const QDate &end)
   mTimeSpanView->clear();
   mTimeSpanView->setDateRange( start, end );
 
-  QPtrList<Event> events = calendar()->events( start, end );
-  Event *event = events.first();
-  while( event ) {
-//    kdDebug(5850) << "KOTimeSpanView::showDates() add event: " << event->summary()
-//              << endl;
-
-    mTimeSpanView->addItem( event );          
-
-    event = events.next();
+  Event::List events = calendar()->events( start, end );
+  Event::List::ConstIterator it;
+  for( it = events.begin(); it != events.end(); ++it ) {
+    mTimeSpanView->addItem( *it );
   }
   
   mTimeSpanView->updateView();
 }
 
-void KOTimeSpanView::showEvents(QPtrList<Event> eventList)
+void KOTimeSpanView::showEvents( const Event::List & )
 {
 }
 

@@ -182,9 +182,9 @@ int KOListView::currentDateCount()
   return 0;
 }
 
-QPtrList<Incidence> KOListView::selectedIncidences()
+Incidence::List KOListView::selectedIncidences()
 {
-  QPtrList<Incidence> eventList;
+  Incidence::List eventList;
 
   QListViewItem *item = mListView->selectedItem();
   if (item) eventList.append(((KOListViewItem *)item)->data());
@@ -254,19 +254,19 @@ void KOListView::showDates(const QDate &start, const QDate &end)
   emit incidenceSelected( 0 );
 }
 
-void KOListView::addEvents(QPtrList<Event> eventList)
+void KOListView::addEvents( const Event::List &eventList )
 {
-  Event *ev;
-  for(ev = eventList.first(); ev; ev = eventList.next()) {
-    addIncidence(ev);
+  Event::List::ConstIterator it;
+  for( it = eventList.begin(); it != eventList.end(); ++it ) {
+    addIncidence( *it );
   }
 }
 
-void KOListView::addTodos(QPtrList<Todo> eventList)
+void KOListView::addTodos( const Todo::List &eventList )
 {
-  Todo *ev;
-  for(ev = eventList.first(); ev; ev = eventList.next()) {
-    addIncidence(ev);
+  Todo::List::ConstIterator it;
+  for( it = eventList.begin(); it != eventList.end(); ++it ) {
+    addIncidence( *it );
   }
 }
 
@@ -282,11 +282,11 @@ void KOListView::addIncidence(Incidence *incidence)
   else delete item;
 }
 
-void KOListView::showEvents(QPtrList<Event> eventList)
+void KOListView::showEvents( const Event::List &eventList )
 {
   clear();
 
-  addEvents(eventList);
+  addEvents( eventList );
 
   // After new creation of list view no events are selected.
   emit incidenceSelected( 0 );

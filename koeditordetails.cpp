@@ -235,10 +235,10 @@ void KOEditorDetails::readEvent(Incidence *event)
 {
   mListView->clear();
   mdelAttendees.clear();
-  QPtrList<Attendee> tmpAList = event->attendees();
-  Attendee *a;
-  for (a = tmpAList.first(); a; a = tmpAList.next())
-    insertAttendee(new Attendee(*a));
+  Attendee::List al = event->attendees();
+  Attendee::List::ConstIterator it;
+  for( it = al.begin(); it != al.end(); ++it )
+    insertAttendee( new Attendee( **it ) );
 
   mListView->setSelected( mListView->firstChild(), true );
   mOrganizerLabel->setText(i18n("Organizer: %1").arg(event->organizer()));

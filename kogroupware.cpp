@@ -172,24 +172,23 @@ bool KOGroupware::incomingEventRequest( const QString& request,
     mView->updateView();
   }
 
-  QPtrList<KCal::Attendee> attendees = event->attendees();
-  QPtrListIterator<KCal::Attendee> attendeeIt( attendees );
-  KCal::Attendee* myself = 0, *current = 0;
+  KCal::Attendee::List attendees = event->attendees();
+  KCal::Attendee::List::ConstIterator it;
+  KCal::Attendee* myself = 0;
   // Find myself, there will always be all attendees listed, even if
   // only I need to answer it.
-  while( ( current = attendeeIt.current() ) != 0 ) {
-    ++attendeeIt;
-    if( current->email().utf8() == receiver ) {
+  for ( it = attendees.begin(); it != attendees.end(); ++it ) {
+    if( (*it)->email().utf8() == receiver ) {
       // We are the current one, and even the receiver, note
       // this and quit searching.
-      myself = current;
+      myself = (*it);
       break;
     }
 
-    if( current->email() == KOPrefs::instance()->email() ) {
+    if( (*it)->email() == KOPrefs::instance()->email() ) {
       // If we are the current one, note that. Still continue to
       // search in case we find the receiver himself.
-      myself = current;
+      myself = (*it);
     }
   }
 
@@ -312,17 +311,18 @@ void KOGroupware::incomingResourceRequest( const QValueList<QPair<QDateTime, QDa
     }
 
     // Send back the answer; construct it on the base of state
-    QPtrList<KCal::Attendee> attendees = event->attendees();
+    KCal::Attendee::List attendees = event->attendees();
     KCal::Attendee* resourceAtt = 0;
 
     // Find the resource addresse, there will always be all attendees
     // listed, even if only one needs to answer it.
-    for( KCal::Attendee* current = attendees.first(); current;
-         current = attendees.next() )
-        if( current->email().utf8() == resource ) {
-            resourceAtt = current;
+    KCal::Attendee::List::ConstIterator it;
+    for( it = attendees.begin(); it != attendees.end(); ++it ) {
+        if( (*it)->email().utf8() == resource ) {
+            resourceAtt = *it;
             break;
         }
+    }
     Q_ASSERT( resourceAtt );
     if( resourceAtt ) {
         if( isFree )
@@ -610,10 +610,11 @@ bool KOGroupware::sendICalMessage( QWidget* parent,
   if( isOrganizer ) {
     // Figure out if there are other people involved in this incidence
     bool otherPeople = false;
-    QPtrList<Attendee> attendees = incidence->attendees();
-    for( Attendee* attendee = attendees.first(); attendee; attendee = attendees.next() ) {
+    Attendee::List attendees = incidence->attendees();
+    Attendee::List::ConstIterator it;
+    for ( it = attendees.begin(); it != attendees.end(); ++it ) {
       // Don't send email to ourselves
-      if( attendee->email() != KOPrefs::instance()->email() ) {
+      if( (*it)->email() != KOPrefs::instance()->email() ) {
 	otherPeople = true;
 	break;
       }

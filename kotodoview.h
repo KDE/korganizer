@@ -132,12 +132,10 @@ class KOTodoView : public KOrg::BaseView
     KOTodoView(Calendar *, QWidget* parent=0, const char* name=0 );
     ~KOTodoView();
 
-    QPtrList<Incidence> selectedIncidences();
-    QPtrList<Todo> selectedTodos();
+    Incidence::List selectedIncidences();
+    Todo::List selectedTodos();
 
-    DateList selectedDates()
-      {DateList q;
-       return q;}
+    DateList selectedDates() { return DateList(); }
 
     /** Return number of shown dates. TodoView does not show dates, */
     int currentDateCount() { return 0; }
@@ -158,7 +156,7 @@ class KOTodoView : public KOrg::BaseView
     void changeEventDisplay(Event *, int);
 
     void showDates(const QDate &start, const QDate &end);
-    void showEvents(QPtrList<Event> eventList);
+    void showEvents( const Event::List & );
 
     void clearSelection();
 

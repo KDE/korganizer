@@ -188,7 +188,7 @@ void MonthViewItem::paint(QPainter *p)
   QString t = text();
   int maxW = listBox()->width() - x;
   if ( ( fm.boundingRect( t ).width() > maxW ) && ( t.length() > 1 ) ) {
-    int tl = 0;
+    uint tl = 0;
     int w = 0;
     while ( tl < t.length() ) {
       w += fm.charWidth( t, tl );
@@ -350,9 +350,10 @@ void MonthViewCell::updateCell()
     mItemList->insertItem( item );
   }
 
-  QPtrList<Event> events = mMonthView->calendar()->events( mDate, true );
-  Event *event;
-  for( event = events.first(); event; event = events.next() ) {
+  Event::List events = mMonthView->calendar()->events( mDate, true );
+  Event::List::ConstIterator it;
+  for( it = events.begin(); it != events.end(); ++it ) {
+    Event *event = *it;
     QString text;
     if (event->isMultiDay()) {
       if (mDate == event->dtStart().date()) {
@@ -402,9 +403,10 @@ void MonthViewCell::updateCell()
   }
 
   // insert due todos
-  QPtrList<Todo> todos = mMonthView->calendar()->todos( mDate );
-  Todo *todo;
-  for(todo = todos.first(); todo; todo = todos.next()) {
+  Todo::List todos = mMonthView->calendar()->todos( mDate );
+  Todo::List::ConstIterator it2;
+  for( it2 = todos.begin(); it2 != todos.end(); ++it2 ) {
+    Todo *todo = *it2;
     QString text;
     if (todo->hasDueDate()) {
       if (!todo->doesFloat()) {
@@ -589,9 +591,9 @@ int KOMonthView::currentDateCount()
   return mNumCells;
 }
 
-QPtrList<Incidence> KOMonthView::selectedIncidences()
+Incidence::List KOMonthView::selectedIncidences()
 {
-  QPtrList<Incidence> selected;
+  Incidence::List selected;
 
   if ( mSelectedCell ) {
     Incidence *incidence = mSelectedCell->selectedIncidence();
@@ -694,7 +696,7 @@ void KOMonthView::showDates(const QDate &start, const QDate &)
   updateView();
 }
 
-void KOMonthView::showEvents(QPtrList<Event>)
+void KOMonthView::showEvents( const Event::List & )
 {
   kdDebug(5850) << "KOMonthView::selectEvents is not implemented yet." << endl;
 }
@@ -764,7 +766,7 @@ void KOMonthView::setSelectedCell( MonthViewCell *cell )
 
 void KOMonthView::processSelectionChange()
 {
-  QPtrList<Incidence> incidences = selectedIncidences();
+  Incidence::List incidences = selectedIncidences();
   if (incidences.count() > 0) {
     emit incidenceSelected( incidences.first() );
   } else {

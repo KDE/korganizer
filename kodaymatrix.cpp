@@ -240,11 +240,11 @@ void KODayMatrix::updateView(QDate actdate)
     for(int i = 0; i < NUMDAYS; i++) {
 
     // if events are set for the day then remember to draw it bold
-    QPtrList<Event> eventlist = mCalendar->events(days[i]);
-    Event *event;
+    Event::List eventlist = mCalendar->events( days[ i ] );
     int numEvents = eventlist.count();
-
-    for(event=eventlist.first();event != 0;event=eventlist.next()) {
+    Event::List::ConstIterator it;
+    for( it = eventlist.begin(); it != eventlist.end(); ++it ) {
+      Event *event = *it;
       ushort recurType = event->recurrence()->doesRecur();
 
       if ((recurType == Recurrence::rDaily && !KOPrefs::instance()->mDailyRecur) ||

@@ -1148,12 +1148,11 @@ void CalendarView::schedule_publish(Incidence *incidence)
 
   PublishDialog *publishdlg = new PublishDialog();
   if (incidence->attendeeCount()>0) {
-    QPtrList<Attendee> attendees = incidence->attendees();
-    attendees.first();
-    while ( attendees.current()!=0 ) {
-     publishdlg->addAttendee(attendees.current());
-     attendees.next();
-   }
+    Attendee::List attendees = incidence->attendees();
+    Attendee::List::ConstIterator it;
+    for( it = attendees.begin(); it != attendees.end(); ++it ) {
+      publishdlg->addAttendee( *it );
+    }
   }
   bool send = true;
   if ( KOPrefs::instance()->mMailClient == KOPrefs::MailClientSendmail ) {
@@ -1570,25 +1569,25 @@ void CalendarView::takeOverCalendar()
 {
   // TODO: Create Calendar::allIncidences() function and use it here
 
-  QPtrList<Event> events = mCalendar->events();
+  Event::List events = mCalendar->events();
   for(uint i=0; i<events.count(); ++i) {
-    events.at(i)->setOrganizer(KOPrefs::instance()->email());
-    events.at(i)->recreate();
-    events.at(i)->setReadOnly(false);
+    (*events.at(i))->setOrganizer(KOPrefs::instance()->email());
+    (*events.at(i))->recreate();
+    (*events.at(i))->setReadOnly(false);
   }
 
-  QPtrList<Todo> todos = mCalendar->todos();
+  Todo::List todos = mCalendar->todos();
   for(uint i=0; i<todos.count(); ++i) {
-    todos.at(i)->setOrganizer(KOPrefs::instance()->email());
-    todos.at(i)->recreate();
-    todos.at(i)->setReadOnly(false);
+    (*todos.at(i))->setOrganizer(KOPrefs::instance()->email());
+    (*todos.at(i))->recreate();
+    (*todos.at(i))->setReadOnly(false);
   }
 
-  QPtrList<Journal> journals = mCalendar->journals();
+  Journal::List journals = mCalendar->journals();
   for(uint i=0; i<journals.count(); ++i) {
-    journals.at(i)->setOrganizer(KOPrefs::instance()->email());
-    journals.at(i)->recreate();
-    journals.at(i)->setReadOnly(false);
+    (*journals.at(i))->setOrganizer(KOPrefs::instance()->email());
+    (*journals.at(i))->recreate();
+    (*journals.at(i))->setReadOnly(false);
   }
 
   updateView();
@@ -1745,23 +1744,25 @@ void CalendarView::purgeCompleted()
       i18n("Delete all completed To-Dos?"),i18n("Purge To-Dos"),i18n("Purge"));
 
   if (result == KMessageBox::Continue) {
-    QPtrList<Todo> todoCal;
-    QPtrList<Incidence> rel;
-    Todo *aTodo, *rTodo;
-    Incidence *rIncidence;
+    Todo::List todoCal;
+    Incidence::List rel;
     bool childDelete = false;
     bool deletedOne = true;
     while (deletedOne) {
       todoCal.clear();
       todoCal = calendar()->todos();
       deletedOne = false;
-      for (aTodo = todoCal.first(); aTodo; aTodo = todoCal.next()) {
+      Todo::List::ConstIterator it;
+      for ( it = todoCal.begin(); it != todoCal.end(); ++it ) {
+        Todo *aTodo = *it;
         if (aTodo->isCompleted()) {
           rel = aTodo->relations();
           if (!rel.isEmpty()) {
-            for (rIncidence=rel.first(); rIncidence; rIncidence=rel.next()){
+            Incidence::List::ConstIterator it2;
+            for ( it2 = rel.begin(); it2 != rel.end(); ++it2 ) {
+              Incidence *rIncidence = *it2;
               if (rIncidence->type()=="Todo") {
-                rTodo = static_cast<Todo*>(rIncidence);
+                Todo *rTodo = static_cast<Todo*>(rIncidence);
                 if (!rTodo->isCompleted()) childDelete = true;
               }
             }

@@ -296,15 +296,14 @@ void KOEventEditor::slotLoadTemplate()
     return;
   }
 
-  QPtrList<Event> events = cal.events();
-  event = events.first();
-  if ( !event ) {
+  Event::List events = cal.events();
+  if ( events.count() == 0 ) {
     KMessageBox::error( this,
         i18n("Template does not contain a valid event.")
         .arg( templateName ) );
   } else {
     kdDebug(5850) << "KOEventEditor::slotLoadTemplate(): readTemplate" << endl;
-    readEvent( event, true );
+    readEvent( events.first(), true );
   }
 }
 

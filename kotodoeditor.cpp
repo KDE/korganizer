@@ -260,14 +260,13 @@ void KOTodoEditor::slotLoadTemplate()
     return;
   }
 
-  QPtrList<Todo> todos = cal.todos();
-  todo = todos.first();
-  if ( !todo ) {
+  Todo::List todos = cal.todos();
+  if ( todos.count() == 0 ) {
     KMessageBox::error( this,
         i18n("Template '%1' does not contain a valid todo.")
         .arg( templateName ) );
   } else {
-    readTodo( todo );
+    readTodo( todos.first() );
   }
 }
 

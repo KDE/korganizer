@@ -17,8 +17,6 @@
     Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 */
 
-// $Id$
-
 #include <qlayout.h>
 #include <qheader.h>
 #include <qpushbutton.h>
@@ -44,8 +42,8 @@
 #include "KGantt.h"
 
 #include "koprojectview.h"
+
 using namespace KOrg;
-#include "koprojectview.moc"
 
 KOProjectViewItem::KOProjectViewItem(Todo *event,KGanttItem* parentTask,
                                      const QString& text,
@@ -164,7 +162,7 @@ void KOProjectView::updateView()
                              QDateTime(QDate(2000,10,31)) );
 #endif
 
-  QPtrList<Todo> todoList = calendar()->todos();
+  Todo::List todoList = calendar()->todos();
 
 /*
   kdDebug(5850) << "KOProjectView::updateView(): Todo List:" << endl;
@@ -188,10 +186,10 @@ void KOProjectView::updateView()
   // specific order of events. That means that we have to generate parent items
   // recursively for proper hierarchical display of Todos.
   mTodoMap.clear();
-  Todo *todo;
-  for(todo = todoList.first(); todo; todo = todoList.next()) {
-    if (!mTodoMap.contains(todo)) {
-      insertTodoItem(todo);
+  Todo::List::ConstIterator it;
+  for( it = todoList.begin(); it != todoList.end(); ++it ) {
+    if ( !mTodoMap.contains( *it ) ) {
+      insertTodoItem( *it );
     }
   }
 }
@@ -255,9 +253,9 @@ void KOProjectView::updateConfig()
   // TODO: to be implemented.
 }
 
-QPtrList<Incidence> KOProjectView::selectedIncidences()
+Incidence::List KOProjectView::selectedIncidences()
 {
-  QPtrList<Incidence> selected;
+  Incidence::List selected;
 
 /*
   KOProjectViewItem *item = (KOProjectViewItem *)(mTodoListView->selectedItem());
@@ -283,7 +281,7 @@ void KOProjectView::showDates(const QDate &, const QDate &)
   updateView();
 }
 
-void KOProjectView::showEvents(QPtrList<Event>)
+void KOProjectView::showEvents( const Event::List & )
 {
   kdDebug(5850) << "KOProjectView::selectEvents(): not yet implemented" << endl;
 }
@@ -407,3 +405,5 @@ void KOProjectView::zoomOut()
 {
   mGantt->zoom(0.5);
 }
+
+#include "koprojectview.moc"

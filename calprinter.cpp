@@ -379,9 +379,6 @@ void CalPrinter::printTodo(const QDate &fd, const QDate &td)
   mCurrentLinePos = mHeaderHeight + 5;
   kdDebug(5850) << "Header Height: " << mCurrentLinePos << endl;
 
-  QPtrList<Todo> todoList = mCalendar->todos();
-  todoList.first();
-  int count = 1;
   QString outStr;
  
   p.setFont(QFont("helvetica", 10));
@@ -405,33 +402,37 @@ void CalPrinter::printTodo(const QDate &fd, const QDate &td)
   p.setFont(QFont("helvetica", 10));
 
   fontHeight =  p.fontMetrics().height();
-  for(int cprior = 1; cprior <= 6; cprior++) {
-    Todo *currEvent(todoList.first());
-    while (currEvent != NULL) {
+
+  Todo::List todoList = mCalendar->todos();
+
+  int count = 1;
+  for( int cprior = 1; cprior <= 6; cprior++ ) {
+    Todo::List::ConstIterator it;
+    for( it = todoList.begin(); it != todoList.end(); ++it ) {
+      Todo *currEvent = *it;
                 
-      //Filter out the subitems.
-      if (currEvent->relatedTo()){
-            currEvent = todoList.next();
-            continue;
-        }
+      // Filter out the subitems.
+      if ( currEvent->relatedTo() ) {
+        ++it;
+        continue;
+      }
 
       QDate start = currEvent->dtStart().date();
       // if it is not to start yet, skip.
-      if ( (!start.isValid()) && (start >= td) ) {
-	currEvent = todoList.next();
+      if ( ( !start.isValid() ) && ( start >= td ) ) {
+	++it;
 	continue;
       }      
       // priority
       int priority = currEvent->priority();
       // 6 is the lowest priority (the unspecified one)
-      if ((priority != cprior) || ((cprior==6) && (priority==0))) {
-	currEvent = todoList.next();
+      if ( ( priority != cprior ) ||
+           ( ( cprior == 6 ) && ( priority == 0 ) ) ) {
+        ++it;
 	continue;
       }
       bool connect = true;
-      drawTodo(count,currEvent,p,connect);
-      currEvent = todoList.next();
-      ++count;
+      drawTodo( count++, currEvent, p, connect );
     }
   }
   p.end();
@@ -532,12 +533,12 @@ void CalPrinter::drawTodo(int count, Todo * item, QPainter &p, bool &connect,
 
   // If the item has subitems, we need to call ourselves recursively
   bool conn = true;
-  QPtrList<Incidence> l = item->relations();
-  Incidence *c;
-  for(c=l.first();c;c=l.next()) {
-    drawTodo(count, static_cast<Todo *> (c),p,conn,level+1,&startpoint);
-    if ( !conn )
-      connect = false;
+  Incidence::List l = item->relations();
+  Incidence::List::ConstIterator it;
+  for( it = l.begin(); it != l.end(); ++it ) {
+    drawTodo( count, static_cast<Todo *>( *it ), p, conn, level + 1,
+              &startpoint );
+    if ( !conn ) connect = false;
   }
 }
 
@@ -642,7 +643,6 @@ void CalPrinter::drawDayBox(QPainter &p, const QDate &qd,
 {
   KLocale *local = KGlobal::locale();
   QString dayNumStr;
-  QPtrList<Event> eventList;
   QString ampm;
 
 #ifndef KORG_NOPLUGINS
@@ -679,15 +679,15 @@ void CalPrinter::drawDayBox(QPainter &p, const QDate &qd,
   p.drawText(x+5, y, width-10, mSubHeaderHeight, AlignRight | AlignVCenter,
 	     dayNumStr);
 
-  eventList = mCalendar->events(qd, TRUE);
-  eventList.first();
+  Event::List eventList = mCalendar->events(qd, TRUE);
   int count = 1;
   QString outStr;
-  Event *currEvent(eventList.first());
   p.setFont(QFont("helvetica", 8));
   int lineSpacing = p.fontMetrics().lineSpacing();
 
-  while (count <= 9 && (currEvent != NULL)) {
+  Event::List::ConstIterator it;
+  for( it = eventList.begin(); it != eventList.end() && count <= 9; ++it ) {
+    Event *currEvent = *it;
     if (currEvent->doesFloat() || currEvent->isMultiDay())
       outStr = currEvent->summary();
 
@@ -701,14 +701,14 @@ void CalPrinter::drawDayBox(QPainter &p, const QDate &qd,
 
     p.drawText(x+5, y+(lineSpacing*(count+1)), width-10, lineSpacing,
 	       AlignLeft|AlignVCenter, outStr);
-    currEvent = eventList.next();
     ++count;
   }
 
   if ( count <= 9 ) {
-    QPtrList<Todo> todos = mCalendar->todos( qd );
-    Todo *todo;
-    for( todo = todos.first(); todo && count <= 9; todo = todos.next() ) {
+    Todo::List todos = mCalendar->todos( qd );
+    Todo::List::ConstIterator it2;
+    for( it2 = todos.begin(); it2 != todos.end() && count <= 9; ++it2 ) {
+      Todo *todo = *it2;
       QString text;
       if (todo->hasDueDate()) {
         if (!todo->doesFloat()) {
@@ -731,7 +731,6 @@ void CalPrinter::drawTTDayBox(QPainter &p, const QDate &qd,
 {
   KLocale *local = KGlobal::locale();
   QString dayNumStr;
-  QPtrList<Event> eventList;
   QString ampm;
 
 #ifndef KORG_NOPLUGINS
@@ -775,12 +774,13 @@ void CalPrinter::drawTTDayBox(QPainter &p, const QDate &qd,
   QBrush oldBrush=p.brush();
   p.setBrush(QBrush(Dense5Pattern));
 
-  eventList = mCalendar->events(qd, TRUE);
-  Event *currEvent;
+  Event::List eventList = mCalendar->events(qd, TRUE);
+  Event::List::ConstIterator it;
 
   //Draw all Events for Day
   QString MultiDayStr; //string for storing Multi Day Events
-  for (currEvent = eventList.first(); currEvent; currEvent = eventList.next()) {
+  for ( it = eventList.begin(); it != eventList.end(); ++it ) {
+      Event *currEvent = *it;
       if (currEvent->doesFloat() || currEvent->isMultiDay()) {
           if(!MultiDayStr.isNull()) MultiDayStr += ", ";
           MultiDayStr += currEvent->summary(); // add MultiDayevent
@@ -847,31 +847,32 @@ void CalPrinter::drawDay(QPainter &p, const QDate &qd, int width, int height)
   int startHour = mStartHour;
   int endHour = 20;
   int offset = mHeaderHeight + 5;
-  QPtrList<Event> eventList = mCalendar->events(qd, TRUE);
-  Event *currEvent;
+  Event::List eventList = mCalendar->events(qd, TRUE);
+  Event::List::Iterator it;
  
   p.setFont(QFont("helvetica", 14));
   p.setBrush(QBrush(Dense7Pattern));
-  currEvent = eventList.first();
+  it = eventList.begin();
+  Event *currEvent = *it;
   int allDays = 0;
-  while(currEvent) {
-    if (currEvent->doesFloat()) {
+  while( currEvent ) {
+    if ( currEvent->doesFloat() ) {
       p.drawRect(20, offset, width-25, 35);
       p.drawText(30, offset+10, width-40, 30, AlignLeft | AlignTop, 
                  currEvent->summary());
       offset += 40;
       allDays++;
-      eventList.remove();
-      currEvent = eventList.current();
+      eventList.remove( it );
     } else {
-      currEvent = eventList.next();
+      ++it;
     }
+    currEvent = *it;
   }
   startHour += (allDays/2);
   p.setBrush(QBrush());
   int tmpEnd;
-  for (currEvent = eventList.first(); currEvent;
-       currEvent = eventList.next()) {
+  for ( it = eventList.begin(); it != eventList.end(); ++it ) {
+    currEvent = *it;
     if (currEvent->dtStart().time().hour() < startHour) 
       startHour = currEvent->dtStart().time().hour();
     tmpEnd = currEvent->dtEnd().time().hour();
@@ -918,8 +919,8 @@ void CalPrinter::drawDay(QPainter &p, const QDate &qd, int width, int height)
 
   p.setFont(QFont("helvetica", 14));
   p.setBrush(QBrush(Dense7Pattern));
-  for (currEvent = eventList.first(); currEvent;
-       currEvent = eventList.next()) {
+  for ( it = eventList.begin(); it != eventList.end(); ++it ) {
+    Event *currEvent = *it;
     int startTime = currEvent->dtStart().time().hour();
     int endTime = currEvent->dtEnd().time().hour();
     float minuteInc = cellHeight / 60.0;

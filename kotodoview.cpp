@@ -472,7 +472,7 @@ void KOTodoView::updateView()
 
   mTodoListView->clear();
 
-  QPtrList<Todo> todoList = calendar()->todos();
+  Todo::List todoList = calendar()->todos();
 
 /*
   kdDebug(5850) << "KOTodoView::updateView(): Todo List:" << endl;
@@ -496,10 +496,10 @@ void KOTodoView::updateView()
   // specific order of events. That means that we have to generate parent items
   // recursively for proper hierarchical display of Todos.
   mTodoMap.clear();
-  Todo *todo;
-  for(todo = todoList.first(); todo; todo = todoList.next()) {
-    if (!mTodoMap.contains(todo)) {
-      insertTodoItem(todo);
+  Todo::List::ConstIterator it;
+  for( it = todoList.begin(); it != todoList.end(); ++it ) {
+    if ( !mTodoMap.contains( *it ) ) {
+      insertTodoItem( *it );
     }
   }
 
@@ -556,9 +556,9 @@ void KOTodoView::updateConfig()
   mTodoListView->repaintContents();
 }
 
-QPtrList<Incidence> KOTodoView::selectedIncidences()
+Incidence::List KOTodoView::selectedIncidences()
 {
-  QPtrList<Incidence> selected;
+  Incidence::List selected;
 
   KOTodoViewItem *item = (KOTodoViewItem *)(mTodoListView->selectedItem());
 //  if (!item) item = mActiveItem;
@@ -567,9 +567,9 @@ QPtrList<Incidence> KOTodoView::selectedIncidences()
   return selected;
 }
 
-QPtrList<Todo> KOTodoView::selectedTodos()
+Todo::List KOTodoView::selectedTodos()
 {
-  QPtrList<Todo> selected;
+  Todo::List selected;
 
   KOTodoViewItem *item = (KOTodoViewItem *)(mTodoListView->selectedItem());
 //  if (!item) item = mActiveItem;
@@ -587,7 +587,7 @@ void KOTodoView::showDates(const QDate &, const QDate &)
 {
 }
 
-void KOTodoView::showEvents(QPtrList<Event>)
+void KOTodoView::showEvents( const Event::List & )
 {
   kdDebug(5850) << "KOTodoView::selectEvents(): not yet implemented" << endl;
 }

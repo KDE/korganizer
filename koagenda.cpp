@@ -1200,10 +1200,10 @@ void KOAgenda::popupAlarm()
     return;
   }
 // TODO: deal correctly with multiple alarms
-  Alarm* alarm;
-  QPtrList<Alarm> list(mClickedItem->incidence()->alarms());
-  for(alarm=list.first();alarm;alarm=list.next())
-      alarm->toggleAlarm();
+  Alarm::List alarms = mClickedItem->incidence()->alarms();
+  Alarm::List::ConstIterator it;
+  for( it = alarms.begin(); it != alarms.end(); ++it )
+    (*it)->toggleAlarm();
 
   mClickedItem->updateIcons();
 }

@@ -497,9 +497,9 @@ int KOAgendaView::currentDateCount()
   return mSelectedDates.count();
 }
 
-QPtrList<Incidence> KOAgendaView::selectedIncidences()
+Incidence::List KOAgendaView::selectedIncidences()
 {
-  QPtrList<Incidence> selected;
+  Incidence::List selected;
   Incidence *incidence;
 
   incidence = mAgenda->selectedIncidence();
@@ -631,7 +631,7 @@ void KOAgendaView::showDates( const QDate &start, const QDate &end )
 }
 
 
-void KOAgendaView::showEvents(QPtrList<Event>)
+void KOAgendaView::showEvents( const Event::List & )
 {
   kdDebug(5850) << "KOAgendaView::showEvents() is not yet implemented" << endl;
 }
@@ -664,11 +664,11 @@ void KOAgendaView::fillAgenda()
   mMinY.resize(mSelectedDates.count());
   mMaxY.resize(mSelectedDates.count());
 
-  QPtrList<Event> dayEvents;
+  Event::List dayEvents;
 
   // ToDo items shall be displayed for the day they are due, but only showed today if they are already overdue.
   // Therefore, get all of them.
-  QPtrList<Todo> todos  = calendar()->todos();
+  Todo::List todos  = calendar()->todos();
 
   mAgenda->setDateList(mSelectedDates);
 
@@ -689,7 +689,7 @@ void KOAgendaView::fillAgenda()
 
     unsigned int numEvent;
     for(numEvent=0;numEvent<dayEvents.count();++numEvent) {
-      Event *event = dayEvents.at(numEvent);
+      Event *event = *dayEvents.at(numEvent);
 //      kdDebug(5850) << " Event: " << event->summary() << endl;
 
       int beginX = currentDate.daysTo(event->dtStart().date()) + curCol;
@@ -738,7 +738,7 @@ void KOAgendaView::fillAgenda()
     // ---------- [display Todos --------------
     unsigned int numTodo;
     for (numTodo = 0; numTodo < todos.count(); ++numTodo) {
-      Todo *todo = todos.at(numTodo);
+      Todo *todo = *todos.at(numTodo);
 
       if ( ! todo->hasDueDate() ) continue;  // todo shall not be displayed if it has no date
 
