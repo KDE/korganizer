@@ -29,6 +29,7 @@
 #include <qfont.h>
 #include <qcolor.h>
 #include <qstringlist.h>
+#include <kglobalsettings.h>
 
 #include <kglobal.h>
 #include <kconfig.h>
@@ -49,15 +50,17 @@ KOPrefs::KOPrefs() :
 
   mDefaultCategoryColor           = QColor(196,196,196);
   QColor defaultHolidayColor      = QColor("red");
-  QColor defaultHighlightColor    = QColor("blue");
+  QColor defaultHighlightColor    = KGlobalSettings::highlightColor(); 
   QColor defaultAgendaBgColor     = QColor(128,128,128);
   QColor defaultWorkingHoursColor = QColor(160,160,160);
-  QColor defaultTodoDueTodayColor = QColor(255,136,0);
+  QColor defaultTodoDueTodayColor = QColor("orange");
   QColor defaultTodoOverdueColor  = QColor("red");
 
-  mDefaultTimeBarFont = QFont("helvetica",12,QFont::Bold);
-  mDefaultViewFont = QFont("helvetica",12);
-  mDefaultMonthViewFont = QFont("helvetica",10);
+  mDefaultTimeBarFont = KGlobalSettings::generalFont();
+  mDefaultViewFont = KGlobalSettings::generalFont();
+  mDefaultMonthViewFont = KGlobalSettings::generalFont();
+  // make it a bit smaller
+  mDefaultMonthViewFont.setPointSize(mDefaultMonthViewFont.pointSize()-2);
 
   KPrefs::setCurrentGroup("General");
 
@@ -92,10 +95,10 @@ KOPrefs::KOPrefs() :
 
   KPrefs::setCurrentGroup("Fonts");
 
-  addItemFont("TimeBar Font",&mTimeBarFont);
-  addItemFont("MonthView Font",&mMonthViewFont);
-  addItemFont("AgendaView Font",&mAgendaViewFont);
-  addItemFont("MarcusBains Font",&mAgendaViewFont);
+  addItemFont("TimeBar Font",&mTimeBarFont, mDefaultTimeBarFont);
+  addItemFont("MonthView Font",&mMonthViewFont, mDefaultMonthViewFont);
+  addItemFont("AgendaView Font",&mAgendaViewFont, mDefaultViewFont);
+  addItemFont("MarcusBains Font",&mMarcusBainsFont, mDefaultViewFont);
 
   KPrefs::setCurrentGroup("Colors");
 
