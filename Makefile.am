@@ -150,11 +150,9 @@ messages: rc.cpp
 
 xdg_apps_DATA = korganizer.desktop
 
-hidden_apps_DATA = configmain.desktop configtime.desktop \
-                   configviews.desktop configcolors.desktop \
-                   configfonts.desktop configgroupscheduling.desktop \
-                   configgroupautomation.desktop
-hidden_appsdir = $(kde_appsdir)/.hidden
-
+kde_services_DATA =  configmain.desktop configtime.desktop \
+                     configviews.desktop configcolors.desktop \
+                     configfonts.desktop configgroupscheduling.desktop \
+                     configgroupautomation.desktop
 
 include ../admin/Doxyfile.am
