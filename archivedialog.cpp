@@ -119,7 +119,7 @@ void ArchiveDialog::slotUser1()
   tmpFile.setAutoDelete(true);
   storage.setFileName( tmpFile.name() );
   if ( !storage.save() ) {
-    kdDebug() << "ArchiveDialog::slotUser1(): Can't save calendar to temp file" << endl;
+    kdDebug(5850) << "ArchiveDialog::slotUser1(): Can't save calendar to temp file" << endl;
     return;
   }
 
@@ -129,7 +129,7 @@ void ArchiveDialog::slotUser1()
   FileStorage archiveStore( &archiveCalendar );
   archiveStore.setFileName( tmpFile.name() );
   if (!archiveStore.load()) {
-    kdDebug() << "ArchiveDialog::slotUser1(): Can't load calendar from temp file" << endl;
+    kdDebug(5850) << "ArchiveDialog::slotUser1(): Can't load calendar from temp file" << endl;
     return;
   }
 
@@ -148,23 +148,23 @@ void ArchiveDialog::slotUser1()
 
   if (KIO::NetAccess::exists(destUrl)) {
     if(!KIO::NetAccess::download(destUrl,archiveFile)) {
-      kdDebug() << "ArchiveDialog::slotUser1(): Can't download archive file" << endl;
+      kdDebug(5850) << "ArchiveDialog::slotUser1(): Can't download archive file" << endl;
       return;
     }
     // Merge with events to be archived.
     archiveStore.setFileName( archiveFile );
     if ( !archiveStore.load() ) {
-      kdDebug() << "ArchiveDialog::slotUser1(): Can't merge with archive file" << endl;
+      kdDebug(5850) << "ArchiveDialog::slotUser1(): Can't merge with archive file" << endl;
       return;
     }
 /*
     QPtrList<Event> es = archiveCalendar.events(QDate(1800,1,1),
                                                 QDate(3000,1,1),
                                                 false);
-    kdDebug() << "--Following events in archive calendar:" << endl;
+    kdDebug(5850) << "--Following events in archive calendar:" << endl;
     Event *e;
     for(e=es.first();e;e=es.next()) {
-      kdDebug() << "-----Event: " << e->getSummary() << endl;
+      kdDebug(5850) << "-----Event: " << e->getSummary() << endl;
     }
 */
   } else {

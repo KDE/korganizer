@@ -86,7 +86,7 @@ bool MailScheduler::performTransaction(IncidenceBase *incidence,Method method)
 QPtrList<ScheduleMessage> MailScheduler::retrieveTransactions()
 {
   QString incomingDirName = locateLocal("data","korganizer/income");
-  kdDebug() << "MailScheduler::retrieveTransactions: dir: " << incomingDirName
+  kdDebug(5850) << "MailScheduler::retrieveTransactions: dir: " << incomingDirName
             << endl;
 
   QPtrList<ScheduleMessage> messageList;
@@ -95,7 +95,7 @@ QPtrList<ScheduleMessage> MailScheduler::retrieveTransactions()
   QStringList incoming = incomingDir.entryList(QDir::Files);
   QStringList::ConstIterator it;
   for(it = incoming.begin(); it != incoming.end(); ++it) {
-    kdDebug() << "-- File: " << (*it) << endl;
+    kdDebug(5850) << "-- File: " << (*it) << endl;
 
     QFile f(incomingDirName + "/" + (*it));
     bool inserted = false;
@@ -105,7 +105,7 @@ QPtrList<ScheduleMessage> MailScheduler::retrieveTransactions()
     }
     if (!inserted) {
     if (!f.open(IO_ReadOnly)) {
-      kdDebug() << "MailScheduler::retrieveTransactions(): Can't open file'"
+      kdDebug(5850) << "MailScheduler::retrieveTransactions(): Can't open file'"
                 << (*it) << "'" << endl;
     } else {
       QTextStream t(&f);
@@ -113,7 +113,7 @@ QPtrList<ScheduleMessage> MailScheduler::retrieveTransactions()
       ScheduleMessage *message = mFormat->parseScheduleMessage( mCalendar,
                                                                 messageString );
       if (message) {
-        kdDebug() << "MailScheduler::retrieveTransactions: got message '"
+        kdDebug(5850) << "MailScheduler::retrieveTransactions: got message '"
                   << (*it) << "'" << endl;
         messageList.append(message);
         mEventMap[message->event()]=incomingDirName + "/" + (*it);
@@ -122,7 +122,7 @@ QPtrList<ScheduleMessage> MailScheduler::retrieveTransactions()
         if (mFormat->exception()) {
           errorMessage = mFormat->exception()->message();
         }
-        kdDebug() << "MailScheduler::retrieveTransactions() Error parsing "
+        kdDebug(5850) << "MailScheduler::retrieveTransactions() Error parsing "
                      "message: " << errorMessage << endl;
       }
       f.close();

@@ -230,7 +230,7 @@ MonthViewCell::MonthViewCell( KOMonthView *parent)
 
 void MonthViewCell::setDate( const QDate &date )
 {
-//  kdDebug() << "MonthViewCell::setDate(): " << date.toString() << endl;
+//  kdDebug(5850) << "MonthViewCell::setDate(): " << date.toString() << endl;
 
   mDate = date;
 
@@ -597,7 +597,7 @@ void KOMonthView::updateConfig()
 
 void KOMonthView::updateDayLabels()
 {
-  kdDebug() << "KOMonthView::updateDayLabels()" << endl;
+  kdDebug(5850) << "KOMonthView::updateDayLabels()" << endl;
 
   for (int i = 0; i < 7; i++) {
     if (mWeekStartsMonday) {
@@ -612,7 +612,7 @@ void KOMonthView::updateDayLabels()
 
 void KOMonthView::showDates(const QDate &start, const QDate &)
 {
-//  kdDebug() << "KOMonthView::showDates(): " << start.toString() << endl;
+//  kdDebug(5850) << "KOMonthView::showDates(): " << start.toString() << endl;
 
   mStartDate = start;
 
@@ -651,7 +651,7 @@ void KOMonthView::showDates(const QDate &start, const QDate &)
 
 void KOMonthView::showEvents(QPtrList<Event>)
 {
-  kdDebug() << "KOMonthView::selectEvents is not implemented yet." << endl;
+  kdDebug(5850) << "KOMonthView::selectEvents is not implemented yet." << endl;
 }
 
 void KOMonthView::changeEventDisplay(Event *, int)
@@ -698,7 +698,7 @@ void KOMonthView::showContextMenu( Incidence *incidence )
     Event *event = static_cast<Event *>(incidence);
     mContextMenu->showEventPopup(event);
   } else {
-    kdDebug() << "MonthView::showContextMenu(): cast failed." << endl;
+    kdDebug(5850) << "MonthView::showContextMenu(): cast failed." << endl;
   }
   */
 }

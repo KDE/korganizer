@@ -98,7 +98,7 @@ KInstance *KOrganizerFactory::instance()
     s_instance = new KInstance(s_about);
   }
 
-  kdDebug() << "KOrganizerFactory::instance(): Name: " <<
+  kdDebug(5850) << "KOrganizerFactory::instance(): Name: " <<
                s_instance->instanceName() << endl;
 
   return s_instance;

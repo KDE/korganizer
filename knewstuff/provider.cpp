@@ -135,7 +135,7 @@ ProviderLoader::ProviderLoader( QWidget *parentWidget ) :
 
 void ProviderLoader::load( const QString &type )
 {
-  kdDebug() << "ProviderLoader::load()" << endl;
+  kdDebug(5850) << "ProviderLoader::load()" << endl;
 
   mProviders.clear();
   mJobData = "";
@@ -153,7 +153,7 @@ void ProviderLoader::load( const QString &type )
     providersUrl = server + "/knewstuff/" + type + "/providers.xml";
   }
 
-  kdDebug() << "ProviderLoader::load(): providersUrl: " << providersUrl << endl;
+  kdDebug(5850) << "ProviderLoader::load(): providersUrl: " << providersUrl << endl;
   
   KIO::TransferJob *job = KIO::get( providersUrl );
   connect( job, SIGNAL( result( KIO::Job * ) ),
@@ -166,7 +166,7 @@ void ProviderLoader::load( const QString &type )
 
 void ProviderLoader::slotJobData( KIO::Job *, const QByteArray &data )
 {
-  kdDebug() << "ProviderLoader::slotJobData()" << endl;
+  kdDebug(5850) << "ProviderLoader::slotJobData()" << endl;
 
   if ( data.size() == 0 ) return;
   
@@ -180,19 +180,19 @@ void ProviderLoader::slotJobResult( KIO::Job *job )
     job->showErrorDialog( mParentWidget );
   }
 
-  kdDebug() << "--PROVIDERS-START--" << endl << mJobData << "--PROV_END--"
+  kdDebug(5850) << "--PROVIDERS-START--" << endl << mJobData << "--PROV_END--"
             << endl;
 
   QDomDocument doc;
   if ( !doc.setContent( QString::fromUtf8( mJobData ) ) ) {
-    kdDebug() << "Error parsing Providers.xml." << endl;
+    kdDebug(5850) << "Error parsing Providers.xml." << endl;
     return;
   }
 
   QDomElement providers = doc.documentElement();
 
   if ( providers.isNull() ) {
-    kdDebug() << "No document in Providers.xml." << endl;
+    kdDebug(5850) << "No document in Providers.xml." << endl;
   }
 
   QDomNode n;

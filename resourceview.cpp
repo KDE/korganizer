@@ -112,7 +112,7 @@ void ResourceView::emitResourcesChanged()
 
 void ResourceView::addResource()
 {
-  kdDebug() << "ResourceView::addResource()" << endl;
+  kdDebug(5850) << "ResourceView::addResource()" << endl;
   QStringList types = mManager->resourceTypeNames();
   bool ok = false;
   QString type = QInputDialog::getItem( i18n( "Resource Configuration" ),

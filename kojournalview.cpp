@@ -66,7 +66,7 @@ QPtrList<Incidence> KOJournalView::selectedIncidences()
 
 void KOJournalView::updateView()
 {
-  kdDebug() << "KOJournalView::updateView() does nothing" << endl;
+  kdDebug(5850) << "KOJournalView::updateView() does nothing" << endl;
 }
 
 void KOJournalView::flushView()
@@ -76,7 +76,7 @@ void KOJournalView::flushView()
 
 void KOJournalView::showDates(const QDate &start, const QDate &)
 {
-//  kdDebug() << "KOJournalView::selectDates()" << endl;
+//  kdDebug(5850) << "KOJournalView::selectDates()" << endl;
 
   mEntry->setDate(start);
 

@@ -30,7 +30,7 @@
 KOWindowList::KOWindowList(const char *name) 
   : QObject(0,name)
 {
-  kdDebug() << "KOWindowList::KOWindowList()" << endl;
+  kdDebug(5850) << "KOWindowList::KOWindowList()" << endl;
 }
 
 KOWindowList::~KOWindowList()

@@ -73,18 +73,18 @@ void TimeSpanView::addItem( KCal::Event *event )
   QDateTime startDt = event->dtStart();
   QDateTime endDt = event->dtEnd();
 
-//  kdDebug() << "TimeSpanView::addItem(): start: " << startDt.toString()
+//  kdDebug(5850) << "TimeSpanView::addItem(): start: " << startDt.toString()
 //            << "  end: " << endDt.toString() << endl;
 
   int startSecs = mStartDate.secsTo( startDt );
   int durationSecs = startDt.secsTo( endDt );
   
-//  kdDebug() << "--- startSecs: " << startSecs << "  dur: " << durationSecs << endl;
+//  kdDebug(5850) << "--- startSecs: " << startSecs << "  dur: " << durationSecs << endl;
 
   int startX = mStartDate.secsTo( startDt ) / mSecsPerPixel;
   int endX = startX + startDt.secsTo( endDt ) / mSecsPerPixel;
   
-//  kdDebug() << "TimeSpanView::addItem(): s: " << startX << "  e: " << endX << endl;
+//  kdDebug(5850) << "TimeSpanView::addItem(): s: " << startX << "  e: " << endX << endl;
   
   mLineView->addLine( startX, endX );
 }

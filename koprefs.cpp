@@ -166,7 +166,7 @@ KOPrefs::KOPrefs() :
 
 KOPrefs::~KOPrefs()
 {
-  kdDebug() << "KOPrefs::~KOPrefs()" << endl;
+  kdDebug(5850) << "KOPrefs::~KOPrefs()" << endl;
   if (mInstance == this)
       mInstance = insd.setObject(0);
 }

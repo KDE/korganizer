@@ -127,7 +127,7 @@ void KOTodoViewItem::stateChange(bool state)
   // do not change setting on startup
   if ( m_init ) return;
   
-  kdDebug() << "State changed, modified " << state << endl;
+  kdDebug(5850) << "State changed, modified " << state << endl;
   QString keyd = "==";
   QString keyt = "==";
   

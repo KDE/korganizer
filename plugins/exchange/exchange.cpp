@@ -55,7 +55,7 @@ class ExchangeFactory : public KOrg::PartFactory {
 extern "C" {
   void *init_libkorg_exchange()
   {
-    kdDebug() << "Registering Exchange Plugin...\n";
+    kdDebug(5850) << "Registering Exchange Plugin...\n";
     KGlobal::locale()->insertCatalogue("libkpimexchange");
     return (new ExchangeFactory);
   }
@@ -64,7 +64,7 @@ extern "C" {
 Exchange::Exchange(KOrg::MainWindow *parent, const char *name) :
   KOrg::Part(parent,name)
 {
-  kdDebug() << "Creating Exchange Plugin...\n";
+  kdDebug(5850) << "Creating Exchange Plugin...\n";
 
   mAccount = new KPIM::ExchangeAccount( "Calendar/Exchange Plugin" );
   mClient = new KPIM::ExchangeClient( mAccount );
@@ -105,7 +105,7 @@ Exchange::Exchange(KOrg::MainWindow *parent, const char *name) :
 
 Exchange::~Exchange()
 {
-  kdDebug() << "Exchange Plugin destructor" << endl;
+  kdDebug(5850) << "Exchange Plugin destructor" << endl;
 }
 
 QString Exchange::info()
@@ -141,7 +141,7 @@ void Exchange::download()
 
 void Exchange::upload()
 {
-  kdDebug() << "Called Exchange::upload()" << endl;
+  kdDebug(5850) << "Called Exchange::upload()" << endl;
 
   Event* event = static_cast<Event *> ( mainWindow()->view()->currentSelection() );
   if ( ! event )
@@ -151,7 +151,7 @@ void Exchange::upload()
   }
   if ( KMessageBox::warningContinueCancel( 0L, i18n("Exchange Upload is EXPERIMENTAL, you may lose data on this appointment!"), i18n("Exchange Plugin") )
        == KMessageBox::Continue ) {
-    kdDebug() << "Trying to add appointment " << event->summary() << endl;
+    kdDebug(5850) << "Trying to add appointment " << event->summary() << endl;
     int result = mClient->uploadSynchronous( event );
     if ( result != KPIM::ExchangeClient::ResultOK )
       showError( result, mClient->detailedErrorString() );
@@ -160,7 +160,7 @@ void Exchange::upload()
 
 void Exchange::remove()
 {
-  kdDebug() << "Called Exchange::remove()" << endl;
+  kdDebug(5850) << "Called Exchange::remove()" << endl;
 
   Event* event = static_cast<Event *> ( mainWindow()->view()->currentSelection() );
   if ( ! event )
@@ -171,7 +171,7 @@ void Exchange::remove()
 
   if ( KMessageBox::warningContinueCancel( 0L, i18n("Exchange Delete is EXPERIMENTAL, if this is a recurring event it will delete all instances!"), i18n("Exchange Plugin") )
        == KMessageBox::Continue ) {
-    kdDebug() << "Trying to delete appointment " << event->summary() << endl;
+    kdDebug(5850) << "Trying to delete appointment " << event->summary() << endl;
     int result = mClient->removeSynchronous( event );
 
     if ( result == KPIM::ExchangeClient::ResultOK ) {
@@ -184,7 +184,7 @@ void Exchange::remove()
 
 void Exchange::configure()
 {
-  kdDebug() << "Exchange::configure" << endl;
+  kdDebug(5850) << "Exchange::configure" << endl;
   ExchangeConfig dialog( mAccount );
 
   if (dialog.exec() == QDialog::Accepted )
@@ -231,12 +231,12 @@ void Exchange::showError( int error, const QString& moreInfo /* = QString::null 
 
 void Exchange::test()
 {
-  kdDebug() << "Entering test()" << endl;
+  kdDebug(5850) << "Entering test()" << endl;
   mClient->test();
 }
 
 void Exchange::test2()
 {
-  kdDebug() << "Entering test2()" << endl;
+  kdDebug(5850) << "Entering test2()" << endl;
 }
 #include "exchange.moc"

@@ -59,7 +59,7 @@ KTrader::OfferList KOCore::availablePlugins(const QString &type)
 
 KOrg::Plugin *KOCore::loadPlugin(KService::Ptr service)
 {
-  kdDebug() << "loadPlugin: library: " << service->library() << endl;
+  kdDebug(5850) << "loadPlugin: library: " << service->library() << endl;
 
   if ( !service->hasServiceType( "Calendar/Plugin" ) ) {
     return 0;
@@ -68,14 +68,14 @@ KOrg::Plugin *KOCore::loadPlugin(KService::Ptr service)
   KLibFactory *factory = KLibLoader::self()->factory(service->library());
 
   if (!factory) {
-    kdDebug() << "KOCore::loadPlugin(): Factory creation failed" << endl;
+    kdDebug(5850) << "KOCore::loadPlugin(): Factory creation failed" << endl;
     return 0;
   }
   
   KOrg::PluginFactory *pluginFactory = static_cast<KOrg::PluginFactory *>(factory);
   
   if (!pluginFactory) {
-    kdDebug() << "KOCore::loadPlugin(): Cast to KOrg::PluginFactory failed" << endl;
+    kdDebug(5850) << "KOCore::loadPlugin(): Cast to KOrg::PluginFactory failed" << endl;
     return 0;
   }
   
@@ -96,12 +96,12 @@ KOrg::Plugin *KOCore::loadPlugin(const QString &name)
 
 KOrg::CalendarDecoration *KOCore::loadCalendarDecoration(KService::Ptr service)
 {
-  kdDebug() << "loadCalendarDecoration: library: " << service->library() << endl;
+  kdDebug(5850) << "loadCalendarDecoration: library: " << service->library() << endl;
 
   KLibFactory *factory = KLibLoader::self()->factory(service->library());
 
   if (!factory) {
-    kdDebug() << "KOCore::loadCalendarDecoration(): Factory creation failed" << endl;
+    kdDebug(5850) << "KOCore::loadCalendarDecoration(): Factory creation failed" << endl;
     return 0;
   }
   
@@ -109,7 +109,7 @@ KOrg::CalendarDecoration *KOCore::loadCalendarDecoration(KService::Ptr service)
       static_cast<KOrg::CalendarDecorationFactory *>(factory);
   
   if (!pluginFactory) {
-    kdDebug() << "KOCore::loadCalendarDecoration(): Cast failed" << endl;
+    kdDebug(5850) << "KOCore::loadCalendarDecoration(): Cast failed" << endl;
     return 0;
   }
   
@@ -130,7 +130,7 @@ KOrg::CalendarDecoration *KOCore::loadCalendarDecoration(const QString &name)
 
 KOrg::Part *KOCore::loadPart(KService::Ptr service, KOrg::MainWindow *parent)
 {
-  kdDebug() << "loadPart: library: " << service->library() << endl;
+  kdDebug(5850) << "loadPart: library: " << service->library() << endl;
 
   if ( !service->hasServiceType( "KOrganizer/Part" ) ) {
     return 0;
@@ -139,7 +139,7 @@ KOrg::Part *KOCore::loadPart(KService::Ptr service, KOrg::MainWindow *parent)
   KLibFactory *factory = KLibLoader::self()->factory(service->library());
 
   if (!factory) {
-    kdDebug() << "KOCore::loadPart(): Factory creation failed" << endl;
+    kdDebug(5850) << "KOCore::loadPart(): Factory creation failed" << endl;
     return 0;
   }
   
@@ -147,7 +147,7 @@ KOrg::Part *KOCore::loadPart(KService::Ptr service, KOrg::MainWindow *parent)
       static_cast<KOrg::PartFactory *>(factory);
   
   if (!pluginFactory) {
-    kdDebug() << "KOCore::loadPart(): Cast failed" << endl;
+    kdDebug(5850) << "KOCore::loadPart(): Cast failed" << endl;
     return 0;
   }
   

@@ -149,7 +149,7 @@ void KOViewManager::updateView()
 
 void KOViewManager::updateView(const QDate &start, const QDate &end)
 {
-//  kdDebug() << "KOViewManager::updateView()" << endl;
+//  kdDebug(5850) << "KOViewManager::updateView()" << endl;
 
   if (mCurrentView) mCurrentView->showDates(start, end);
 

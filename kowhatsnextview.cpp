@@ -44,7 +44,7 @@ using namespace KOrg;
 
 void WhatsNextTextBrowser::setSource(const QString& n)
 {
-  kdDebug() << "WhatsNextTextBrowser::setSource(): " << n << endl;
+  kdDebug(5850) << "WhatsNextTextBrowser::setSource(): " << n << endl;
 
   if (n.startsWith("event:")) {
     emit showIncidence(n);
@@ -166,7 +166,7 @@ void KOWhatsNextView::updateView()
 	todo = todos.next();
       }
       priority++;
-      kdDebug() << "adding the todos..." << endl;
+      kdDebug(5850) << "adding the todos..." << endl;
     }
     mText += "</ul>\n";
   }
@@ -224,7 +224,7 @@ void KOWhatsNextView::updateView()
 
   mText += "</td></tr>\n</table>\n";
 
-  kdDebug() << "KOWhatsNextView::updateView: text: " << mText << endl;
+  kdDebug(5850) << "KOWhatsNextView::updateView: text: " << mText << endl;
   mView->setText(mText);
 }
 
@@ -247,13 +247,13 @@ void KOWhatsNextView::changeEventDisplay(Event *, int action)
     case KOGlobals::EVENTDELETED:
       break;
     default:
-      kdDebug() << "KOWhatsNextView::changeEventDisplay(): Illegal action " << action << endl;
+      kdDebug(5850) << "KOWhatsNextView::changeEventDisplay(): Illegal action " << action << endl;
   }
 }
 
 void KOWhatsNextView::appendEvent(Incidence *ev, bool reply)
 {
-  kdDebug() << "KOWhatsNextView::appendEvent(): " << ev->uid() << endl;
+  kdDebug(5850) << "KOWhatsNextView::appendEvent(): " << ev->uid() << endl;
 
   mText += "<tr><td><b>";
   if (!ev->doesFloat()) {
@@ -292,7 +292,7 @@ void KOWhatsNextView::createEventViewer()
 // TODO: Create this function in CalendarView and remove it from here
 void KOWhatsNextView::showIncidence(const QString &uid)
 {
-  kdDebug() << "KOWhatsNextView::showIncidence(): " << uid << endl;
+  kdDebug(5850) << "KOWhatsNextView::showIncidence(): " << uid << endl;
 
   if (uid.startsWith("event://")) {
     Event *event = calendar()->event(uid.mid(8));

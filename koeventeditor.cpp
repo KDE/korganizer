@@ -189,7 +189,7 @@ bool KOEventEditor::processInput()
 
 void KOEventEditor::deleteEvent()
 {
-  kdDebug() << "Delete event" << endl;
+  kdDebug(5850) << "Delete event" << endl;
 
   if (mEvent) {
     if (KOPrefs::instance()->mConfirm) {
@@ -283,7 +283,7 @@ void KOEventEditor::slotLoadTemplate()
         i18n("Template does not contain a valid Event.")
         .arg( templateName ) );
   } else {
-    kdDebug() << "KOEventEditor::slotLoadTemplate(): readTemplate" << endl;
+    kdDebug(5850) << "KOEventEditor::slotLoadTemplate(): readTemplate" << endl;
     readEvent( event, true );
   }
 }

@@ -53,7 +53,7 @@ ScheduleItemOut::ScheduleItemOut(QListView *parent,IncidenceBase *ev,
   mMethod = method;
   mRecipients = recipients;
 
-//  kdDebug() << "ScheduleItemOut: setting the summary" << endl;
+//  kdDebug(5850) << "ScheduleItemOut: setting the summary" << endl;
   //Set the summary
   if(ev->type() != "FreeBusy") {
     Incidence *incidence = static_cast<Incidence *>(ev);
@@ -62,7 +62,7 @@ ScheduleItemOut::ScheduleItemOut(QListView *parent,IncidenceBase *ev,
     setText(0,i18n("Free Busy Object"));
   }
 
-//  kdDebug() << "ScheduleItemOut: checking if the object is an event" << endl;
+//  kdDebug(5850) << "ScheduleItemOut: checking if the object is an event" << endl;
   //If the object is an event
   if(ev->type()=="Event") {
     Event *event = static_cast<Event *>(ev);
@@ -104,7 +104,7 @@ ScheduleItemOut::ScheduleItemOut(QListView *parent,IncidenceBase *ev,
     }
   }
 
-//  kdDebug() << "ScheduleItemOut: checking if the object is a FreeBusy object" << endl;
+//  kdDebug(5850) << "ScheduleItemOut: checking if the object is a FreeBusy object" << endl;
   //If the object is a freebusy object
   if(ev->type() == "FreeBusy") {
     FreeBusy *freebusy = static_cast<FreeBusy *>(ev);
@@ -116,7 +116,7 @@ ScheduleItemOut::ScheduleItemOut(QListView *parent,IncidenceBase *ev,
     setText(4,KGlobal::locale()->formatTime( freebusy->dtEnd().time() ) );
   }
 
-//  kdDebug() << "ScheduleItemOut: Setting the method" << endl;
+//  kdDebug(5850) << "ScheduleItemOut: Setting the method" << endl;
   //Set the Method
   setText(5,Scheduler::translatedMethodName(mMethod));
 }
@@ -157,7 +157,7 @@ OutgoingDialog::~OutgoingDialog()
 
 bool OutgoingDialog::addMessage(IncidenceBase *incidence,Scheduler::Method method)
 {
-  kdDebug() << "Outgoing::addMessage" << "Method:" << method << endl;
+  kdDebug(5850) << "Outgoing::addMessage" << "Method:" << method << endl;
   if (method == Scheduler::Publish) return false;
   if( mDocPrefs ) {
     if (method != Scheduler::Cancel) {
@@ -204,7 +204,7 @@ bool OutgoingDialog::addMessage(IncidenceBase *incidence,Scheduler::Method metho
 
 void OutgoingDialog::send()
 {
-  kdDebug() << "OutgoingDialog::send" << endl;
+  kdDebug(5850) << "OutgoingDialog::send" << endl;
   ScheduleItemOut *item = (ScheduleItemOut *)(mMessageListView->firstChild());
   while(item) {
     bool success;
@@ -322,7 +322,7 @@ void OutgoingDialog::loadMessages()
   QStringList outgoing = outgoingDir.entryList(QDir::Files);
   QStringList::ConstIterator it;
   for(it = outgoing.begin(); it != outgoing.end(); ++it) {
-    kdDebug() << "-- File: " << (*it) << endl;
+    kdDebug(5850) << "-- File: " << (*it) << endl;
     QFile f(outgoingDirName + "/" + (*it));
     bool inserted = false;
     QMap<IncidenceBase*, QString>::Iterator iter;
@@ -331,7 +331,7 @@ void OutgoingDialog::loadMessages()
     }
     if (!inserted) {
     if (!f.open(IO_ReadOnly)) {
-      kdDebug() << "OutgoingDialog::loadMessage(): Can't open file'"
+      kdDebug(5850) << "OutgoingDialog::loadMessage(): Can't open file'"
                 << (*it) << "'" << endl;
     } else {
       QTextStream t(&f);
@@ -356,7 +356,7 @@ void OutgoingDialog::loadMessages()
       begin_pos = messageString.find('\n',begin_pos)+1;
       int end_pos = messageString.find(":RECIPIENTS-END",begin_pos)-1;
       recipients = messageString.mid(begin_pos, end_pos-begin_pos);
-      kdDebug() << "Outgoing::loadMessage(): Recipients: " << recipients << endl;
+      kdDebug(5850) << "Outgoing::loadMessage(): Recipients: " << recipients << endl;
 
       if (message) {
         bool inserted = false;
@@ -365,7 +365,7 @@ void OutgoingDialog::loadMessages()
           if (iter.data() == outgoingDirName + "/" + (*it)) inserted = true;
         }
         if (!inserted) {
-          kdDebug() << "OutgoingDialog::loadMessage(): got message '"
+          kdDebug(5850) << "OutgoingDialog::loadMessage(): got message '"
                     << (*it) << "'" << endl;
           IncidenceBase *inc = message->event();
           new ScheduleItemOut(mMessageListView,inc,method,recipients);
@@ -376,7 +376,7 @@ void OutgoingDialog::loadMessages()
         if (mFormat->exception()) {
           errorMessage = mFormat->exception()->message();
         }
-        kdDebug() << "OutgoingDialog::loadMessage(): Error parsing "
+        kdDebug(5850) << "OutgoingDialog::loadMessage(): Error parsing "
                      "message: " << errorMessage << endl;
       }
       f.close();

@@ -260,7 +260,7 @@ void KOAgendaItem::select(bool selected)
 */
 bool KOAgendaItem::eventFilter ( QObject *object, QEvent *e )
 {
-//  kdDebug() << "KOAgendaItem::eventFilter" << endl;
+//  kdDebug(5850) << "KOAgendaItem::eventFilter" << endl;
   if (e->type() == QEvent::MouseButtonPress ||
       e->type() == QEvent::MouseButtonDblClick ||
       e->type() == QEvent::MouseButtonRelease ||
@@ -421,10 +421,10 @@ void KOAgendaItem::dropEvent( QDropEvent *e )
   QString text;
   if(QTextDrag::decode(e,text))
   {
-    kdDebug() << "Dropped : " << text << endl;
+    kdDebug(5850) << "Dropped : " << text << endl;
     QStringList emails = QStringList::split(",",text);
     for(QStringList::ConstIterator it = emails.begin();it!=emails.end();++it) {
-      kdDebug() << " Email: " << (*it) << endl;
+      kdDebug(5850) << " Email: " << (*it) << endl;
       int pos = (*it).find("<");
       QString name = (*it).left(pos);
       QString email = (*it).mid(pos);

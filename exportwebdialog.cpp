@@ -276,28 +276,28 @@ void ExportWebDialog::exportWebPage(bool synchronous)
 
 void ExportWebDialog::slotResult(KIO::Job *job)
 {
-  kdDebug() << "slotResult" << endl;
+  kdDebug(5850) << "slotResult" << endl;
   int err = job->error();
   if (err)
   {
-    kdDebug() << "  Error " << err << ": " << job->errorString() << endl;
+    kdDebug(5850) << "  Error " << err << ": " << job->errorString() << endl;
     job->showErrorDialog();
   } else {
-    kdDebug() << "  No Error" << endl;
+    kdDebug(5850) << "  No Error" << endl;
     accept();
   }
-  kdDebug() << "slotResult done" << endl;
+  kdDebug(5850) << "slotResult done" << endl;
 }
 
 void ExportWebDialog::slotDataReq(KIO::Job *,QByteArray &data)
 {
-  kdDebug() << "ExportWebDialog::slotDataReq()" << endl;
+  kdDebug(5850) << "ExportWebDialog::slotDataReq()" << endl;
 
   if (mDataAvailable) {
-    kdDebug() << "  Data availavble" << endl;
+    kdDebug(5850) << "  Data availavble" << endl;
     QTextStream ts(data,IO_WriteOnly);
     mExport->save(&ts);
     mDataAvailable = false;
   } else
-    kdDebug() << "  No Data" << endl;
+    kdDebug(5850) << "  No Data" << endl;
 }

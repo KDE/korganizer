@@ -181,7 +181,7 @@ void FilterEditDialog::updateCategorySelection(const QStringList &categories)
 void FilterEditDialog::filterSelected()
 {
   CalFilter *f = mFilters->at(mSelectionCombo->currentItem());
-  kdDebug() << "Selected filter " << f->name() << endl;
+  kdDebug(5850) << "Selected filter " << f->name() << endl;
   if (f) readFilter(f);
 }
 

@@ -18,38 +18,38 @@ int main(int argc,char **argv)
   KTrader::OfferList plugins = KOCore::self()->availablePlugins("Calendar/Plugin");
   KTrader::OfferList::ConstIterator it;
   for(it = plugins.begin(); it != plugins.end(); ++it) {
-    kdDebug() << "Plugin: " << (*it)->desktopEntryName() << " ("
+    kdDebug(5850) << "Plugin: " << (*it)->desktopEntryName() << " ("
               << (*it)->name() << ")" << endl;
     KOrg::Plugin *p = KOCore::self()->loadPlugin(*it);
     if (!p) {
-      kdDebug() << "Plugin loading failed." << endl;
+      kdDebug(5850) << "Plugin loading failed." << endl;
     } else {
-      kdDebug() << "PLUGIN INFO: " << p->info() << endl;
+      kdDebug(5850) << "PLUGIN INFO: " << p->info() << endl;
     }
   }
   
   plugins = KOCore::self()->availablePlugins("KOrganizer/Part");
   for(it = plugins.begin(); it != plugins.end(); ++it) {
-    kdDebug() << "Part: " << (*it)->desktopEntryName() << " ("
+    kdDebug(5850) << "Part: " << (*it)->desktopEntryName() << " ("
               << (*it)->name() << ")" << endl;
     KOrg::Part *p = KOCore::self()->loadPart(*it,0);
     if (!p) {
-      kdDebug() << "Plugin loading failed." << endl;
+      kdDebug(5850) << "Plugin loading failed." << endl;
     } else {
-      kdDebug() << "PLUGIN INFO: " << p->info() << endl;
+      kdDebug(5850) << "PLUGIN INFO: " << p->info() << endl;
     }
   }
   
   plugins = KOCore::self()->availablePlugins("KOrganizer/View");
   for(it = plugins.begin(); it != plugins.end(); ++it) {
-    kdDebug() << "Part: " << (*it)->desktopEntryName() << " ("
+    kdDebug(5850) << "Part: " << (*it)->desktopEntryName() << " ("
               << (*it)->name() << ")" << endl;
 #if 0
     KOrg::Part *p = KOCore::self()->loadPart(*it,0,0);
     if (!p) {
-      kdDebug() << "Plugin loading failed." << endl;
+      kdDebug(5850) << "Plugin loading failed." << endl;
     } else {
-      kdDebug() << "PLUGIN INFO: " << p->info() << endl;
+      kdDebug(5850) << "PLUGIN INFO: " << p->info() << endl;
     }
 #endif
   }
@@ -58,7 +58,7 @@ int main(int argc,char **argv)
   KOrg::TextDecoration::List tdl = KOCore::self()->textDecorations();
   KOrg::TextDecoration *td = tdl.first();
   while(td) {
-    kdDebug() << "TEXT DECORATION INFO: " << td->info() << endl;
+    kdDebug(5850) << "TEXT DECORATION INFO: " << td->info() << endl;
     td = tdl.next();
   }
 

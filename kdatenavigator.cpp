@@ -57,7 +57,7 @@ KDateNavigator::KDateNavigator( QWidget *parent, Calendar *calendar,
   QGridLayout *topLayout = new QGridLayout(this,8,8);
 
   if (! startDate.isValid()) {
-    kdDebug() << "KDateNavigator::KDateNavigator(): an invalid date was passed as a parameter!" << endl;
+    kdDebug(5850) << "KDateNavigator::KDateNavigator(): an invalid date was passed as a parameter!" << endl;
     startDate = QDate::currentDate();
   }
 
@@ -231,7 +231,7 @@ void KDateNavigator::updateView()
 
   int i;
 
-//  kdDebug() << "updateView() -> daymatrix->updateView()" << endl;
+//  kdDebug(5850) << "updateView() -> daymatrix->updateView()" << endl;
   daymatrix->updateView();
 
   // set the week numbers.
@@ -252,7 +252,7 @@ void KDateNavigator::updateView()
   }
 
   setUpdatesEnabled( true );
-//  kdDebug() << "updateView() -> repaint()" << endl;
+//  kdDebug(5850) << "updateView() -> repaint()" << endl;
   repaint();
   daymatrix->repaint();
 }

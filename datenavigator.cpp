@@ -67,7 +67,7 @@ void DateNavigator::selectDate( const QDate &date )
   QDate d = date;
 
   if ( !d.isValid() ) {
-    kdDebug() << "DateNavigator::selectDates(QDate): an invalid date was passed as a parameter!" << endl;
+    kdDebug(5850) << "DateNavigator::selectDates(QDate): an invalid date was passed as a parameter!" << endl;
     d = QDate::currentDate();
   }
 

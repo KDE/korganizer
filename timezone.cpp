@@ -18,23 +18,23 @@ int main(int argc,char **argv)
 
   KApplication app;
 
-  kdDebug() << "KOrganizer TimezoneId: " << KOPrefs::instance()->mTimeZoneId
+  kdDebug(5850) << "KOrganizer TimezoneId: " << KOPrefs::instance()->mTimeZoneId
             << endl;
   
   time_t ltime;
   ::time( &ltime );
   tm *t = localtime( &ltime );
 
-  kdDebug() << "localtime: " << t->tm_hour << ":" << t->tm_min << endl;
+  kdDebug(5850) << "localtime: " << t->tm_hour << ":" << t->tm_min << endl;
 
-  kdDebug() << "tzname: " << tzname[0] << " " << tzname[1] << endl;
-  kdDebug() << "timezone: " << timezone/3600 << endl;
+  kdDebug(5850) << "tzname: " << tzname[0] << " " << tzname[1] << endl;
+  kdDebug(5850) << "timezone: " << timezone/3600 << endl;
   
   QTime qtime = QTime::currentTime();
   
-  kdDebug() << "QDateTime::currentTime(): "
+  kdDebug(5850) << "QDateTime::currentTime(): "
             << qtime.toString( Qt::ISODate ) << endl;
 
-  kdDebug() << "KLocale::formatTime(): "
+  kdDebug(5850) << "KLocale::formatTime(): "
             << KGlobal::locale()->formatTime( qtime ) << endl;
 }

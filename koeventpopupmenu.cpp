@@ -55,7 +55,7 @@ void KOEventPopupMenu::showIncidencePopup(Incidence *incidence)
     }
     popup(QCursor::pos());
   } else {
-    kdDebug() << "KOEventPopupMenu::showEventPopup(): No event selected" << endl;
+    kdDebug(5850) << "KOEventPopupMenu::showEventPopup(): No event selected" << endl;
   }
 }
 

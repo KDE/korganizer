@@ -70,7 +70,7 @@ void KOEventView::showIncidencePopup(QPopupMenu *popup,Incidence *event)
 {
   mCurrentIncidence = event;
   if (event) popup->popup(QCursor::pos());
-  else kdDebug() << "KOEventView::showEventPopup(): No event selected" << endl;
+  else kdDebug(5850) << "KOEventView::showEventPopup(): No event selected" << endl;
 }
 
 //---------------------------------------------------------------------------
@@ -98,11 +98,11 @@ void KOEventView::popupDelete()
 
 void KOEventView::defaultAction( Incidence *incidence )
 {
-  kdDebug() << "KOEventView::defaultAction()" << endl;
+  kdDebug(5850) << "KOEventView::defaultAction()" << endl;
 
   if ( !incidence ) return;
 
-  kdDebug() << "  type: " << incidence->type() << endl;
+  kdDebug(5850) << "  type: " << incidence->type() << endl;
 
   if ( incidence->isReadOnly() )
     emit showIncidenceSignal(incidence);

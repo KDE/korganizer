@@ -51,13 +51,13 @@ bool DocPrefs::readBoolEntry( const QString &id ) const
 {
     mConfig->setGroup( mDocId );
     bool result = mConfig->readBoolEntry( id, false );
-//    kdDebug() << "DocPrefs::readEntry(): " << id << " : " << (result ? "True" : "False" ) << endl;
+//    kdDebug(5850) << "DocPrefs::readEntry(): " << id << " : " << (result ? "True" : "False" ) << endl;
     return result;
 }
 
 void DocPrefs::writeEntry( const QString &id, bool value )
 {
-//    kdDebug() << "DocPrefs::writeEntry(): " << id << " : " << (value ? "True" : "False" ) << endl;
+//    kdDebug(5850) << "DocPrefs::writeEntry(): " << id << " : " << (value ? "True" : "False" ) << endl;
     mConfig->setGroup( mDocId );
     mConfig->writeEntry( id, value );
 }

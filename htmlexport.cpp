@@ -214,7 +214,7 @@ void HtmlExport::createHtmlEventList (QTextStream *ts)
   if (attendeesEventEnabled()) ++columns;
 
   for (QDate dt = fromDate(); dt <= toDate(); dt = dt.addDays(1)) {
-    kdDebug() << "Getting events for " << dt.toString() << endl;
+    kdDebug(5850) << "Getting events for " << dt.toString() << endl;
     QPtrList<Event> events = mCalendar->events(dt,true);
     if (events.count()) {
       *ts << "  <tr><td colspan=\"" << QString::number(columns)
@@ -236,7 +236,7 @@ void HtmlExport::createHtmlEventList (QTextStream *ts)
 void HtmlExport::createHtmlEvent (QTextStream *ts, Event *event,
                                        QDate date,bool withDescription)
 {
-  kdDebug() << "HtmlExport::createHtmlEvent(): " << event->summary() << endl;
+  kdDebug(5850) << "HtmlExport::createHtmlEvent(): " << event->summary() << endl;
   *ts << "  <tr>\n";
 
   if (!event->doesFloat()) {
@@ -365,7 +365,7 @@ void HtmlExport::createHtmlTodoList (QTextStream *ts)
 
 void HtmlExport::createHtmlTodo (QTextStream *ts,Todo *todo)
 {
-  kdDebug() << "HtmlExport::createHtmlTodo()" << endl;
+  kdDebug(5850) << "HtmlExport::createHtmlTodo()" << endl;
 
   bool completed = todo->isCompleted();
   QPtrList<Incidence> relations = todo->relations();

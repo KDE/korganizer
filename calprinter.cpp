@@ -376,7 +376,7 @@ void CalPrinter::printTodo(const QDate &fd, const QDate &td)
   drawHeader(p, fd, td, fd, pageWidth, mHeaderHeight, Todolist);
 
   mCurrentLinePos = mHeaderHeight + 5;
-  kdDebug() << "Header Height: " << mCurrentLinePos << endl;
+  kdDebug(5850) << "Header Height: " << mCurrentLinePos << endl;
 
   QPtrList<Todo> todoList = mCalendar->todos();
   todoList.first();
@@ -795,7 +795,7 @@ void CalPrinter::drawTTDayBox(QPainter &p, const QDate &qd,
                 endTime -= mStartHour;
                 int endMinuteOff = (int) (minuteInc * currEvent->dtEnd().time().minute());
                 int eventLenght=endMinuteOff + (endTime - startTime)*height;
-                kdDebug() << currEvent->summary() << ": " << " x=" << x << " currY=" << currentyPos << " width=" << width << " lenght=" << eventLenght;
+                kdDebug(5850) << currEvent->summary() << ": " << " x=" << x << " currY=" << currentyPos << " width=" << width << " lenght=" << eventLenght;
                 p.drawRect(x, currentyPos,
                 width, eventLenght);
                 p.drawText(x,

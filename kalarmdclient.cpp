@@ -74,7 +74,7 @@ void KalarmdClient::startCompleted( KProcess* process )
   AlarmDaemonIface_stub stub( "kalarmd", "ad" );
   stub.registerApp( "korgac", "KOrganizer", "ac", 3, true );
   if( !stub.ok() ) {
-    kdDebug() << "KalarmdClient::startCompleted(): dcop send failed" << endl;
+    kdDebug(5850) << "KalarmdClient::startCompleted(): dcop send failed" << endl;
   }
 }
 

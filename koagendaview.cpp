@@ -189,7 +189,7 @@ void TimeLabels::setAgenda(KOAgenda* agenda)
 /** This is called in response to repaint() */
 void TimeLabels::paintEvent(QPaintEvent*)
 {
-//  kdDebug() << "paintevent..." << endl;
+//  kdDebug(5850) << "paintevent..." << endl;
   // this is another hack!
 //  QPainter painter(this);
   //QString c
@@ -218,7 +218,7 @@ EventIndicator::~EventIndicator()
 
 void EventIndicator::drawContents(QPainter *p)
 {
-//  kdDebug() << "======== top: " << contentsRect().top() << "  bottom "
+//  kdDebug(5850) << "======== top: " << contentsRect().top() << "  bottom "
 //         << contentsRect().bottom() << "  left " << contentsRect().left()
 //         << "  right " << contentsRect().right() << endl;
 
@@ -428,7 +428,7 @@ KOAgendaView::~KOAgendaView()
 
 void KOAgendaView::createDayLabels()
 {
-//  kdDebug() << "KOAgendaView::createDayLabels()" << endl;
+//  kdDebug(5850) << "KOAgendaView::createDayLabels()" << endl;
 
   // ### Before deleting and recreating we could check if mSelectedDates changed...
   // It would remove some flickering and gain speed (since this is called by
@@ -528,7 +528,7 @@ DateList KOAgendaView::selectedDates()
 
 void KOAgendaView::updateView()
 {
-//  kdDebug() << "KOAgendaView::updateView()" << endl;
+//  kdDebug(5850) << "KOAgendaView::updateView()" << endl;
   fillAgenda();
 }
 
@@ -539,7 +539,7 @@ void KOAgendaView::updateView()
 */
 void KOAgendaView::updateConfig()
 {
-//  kdDebug() << "KOAgendaView::updateConfig()" << endl;
+//  kdDebug(5850) << "KOAgendaView::updateConfig()" << endl;
 
   // update config for children
   mTimeLabels->updateConfig();
@@ -569,7 +569,7 @@ void KOAgendaView::updateConfig()
 
 void KOAgendaView::updateEventDates(KOAgendaItem *item)
 {
-//  kdDebug() << "KOAgendaView::updateEventDates(): " << item->text() << endl;
+//  kdDebug(5850) << "KOAgendaView::updateEventDates(): " << item->text() << endl;
 
   QDateTime startDt,endDt;
   QDate startDate;
@@ -595,7 +595,7 @@ void KOAgendaView::updateEventDates(KOAgendaItem *item)
     }
   }
 
-//  kdDebug() << "KOAgendaView::updateEventDates(): now setting dates" << endl;
+//  kdDebug(5850) << "KOAgendaView::updateEventDates(): now setting dates" << endl;
 
 
   if ( item->incidence()->type() == "Event" ) {
@@ -610,13 +610,13 @@ void KOAgendaView::updateEventDates(KOAgendaItem *item)
 
   emit eventChanged();
 
-//  kdDebug() << "KOAgendaView::updateEventDates() done " << endl;
+//  kdDebug(5850) << "KOAgendaView::updateEventDates() done " << endl;
 }
 
 
 void KOAgendaView::showDates( const QDate &start, const QDate &end )
 {
-//  kdDebug() << "KOAgendaView::selectDates" << endl;
+//  kdDebug(5850) << "KOAgendaView::selectDates" << endl;
 
   mSelectedDates.clear();
 
@@ -633,12 +633,12 @@ void KOAgendaView::showDates( const QDate &start, const QDate &end )
 
 void KOAgendaView::showEvents(QPtrList<Event>)
 {
-  kdDebug() << "KOAgendaView::showEvents() is not yet implemented" << endl;
+  kdDebug(5850) << "KOAgendaView::showEvents() is not yet implemented" << endl;
 }
 
 void KOAgendaView::changeEventDisplay(Event *, int)
 {
-//  kdDebug() << "KOAgendaView::changeEventDisplay" << endl;
+//  kdDebug(5850) << "KOAgendaView::changeEventDisplay" << endl;
   // this should be re-written to be MUCH smarter.  Right now we
   // are just playing dumb.
   fillAgenda();
@@ -678,7 +678,7 @@ void KOAgendaView::fillAgenda()
   int curCol = 0;
   for( dit = mSelectedDates.begin(); dit != mSelectedDates.end(); ++dit ) {
     QDate currentDate = *dit;
-//    kdDebug() << "KOAgendaView::fillAgenda(): " << currentDate.toString()
+//    kdDebug(5850) << "KOAgendaView::fillAgenda(): " << currentDate.toString()
 //              << endl;
 
     dayEvents = calendar()->events(currentDate,true);
@@ -690,12 +690,12 @@ void KOAgendaView::fillAgenda()
     unsigned int numEvent;
     for(numEvent=0;numEvent<dayEvents.count();++numEvent) {
       Event *event = dayEvents.at(numEvent);
-//      kdDebug() << " Event: " << event->summary() << endl;
+//      kdDebug(5850) << " Event: " << event->summary() << endl;
 
       int beginX = currentDate.daysTo(event->dtStart().date()) + curCol;
       int endX = currentDate.daysTo(event->dtEnd().date()) + curCol;
 
-//      kdDebug() << "  beginX: " << beginX << "  endX: " << endX << endl;
+//      kdDebug(5850) << "  beginX: " << beginX << "  endX: " << endX << endl;
 
       if (event->doesFloat()) {
         if (event->recurrence()->doesRecur()) {
@@ -732,7 +732,7 @@ void KOAgendaView::fillAgenda()
         if (endY > mMaxY[curCol]) mMaxY[curCol] = endY;
       }
     }
-//    if (numEvent == 0) kdDebug() << " No events" << endl;
+//    if (numEvent == 0) kdDebug(5850) << " No events" << endl;
 
 
     // ---------- [display Todos --------------
@@ -749,12 +749,12 @@ void KOAgendaView::fillAgenda()
       if ( ((todo->dtDue().date() == currentDate) && !overdue) ||
            ((currentDate == today) && overdue) )
         if ( todo->doesFloat() || overdue ) {  // Todo has no due-time set or is already overdue
-          //kdDebug() << "todo without time:" << todo->dtDueDateStr() << ";" << todo->summary() << endl;
+          //kdDebug(5850) << "todo without time:" << todo->dtDueDateStr() << ";" << todo->summary() << endl;
 
           mAllDayAgenda->insertAllDayItem(todo, currentDate, curCol, curCol);
         }
         else {
-          //kdDebug() << "todo with time:" << todo->dtDueStr() << ";" << todo->summary() << endl;
+          //kdDebug(5850) << "todo with time:" << todo->dtDueStr() << ";" << todo->summary() << endl;
 
           int endY = mAgenda->timeToY(todo->dtDue().time()) - 1;
           int startY = endY - 1;
@@ -780,12 +780,12 @@ void KOAgendaView::fillAgenda()
   
   emit incidenceSelected( 0 );
 
-//  kdDebug() << "Fill Agenda done" << endl;
+//  kdDebug(5850) << "Fill Agenda done" << endl;
 }
 
 void KOAgendaView::clearView()
 {
-//  kdDebug() << "ClearView" << endl;
+//  kdDebug(5850) << "ClearView" << endl;
   mAllDayAgenda->clear();
   mAgenda->clear();
 }
@@ -867,7 +867,7 @@ void KOAgendaView::startDrag(Event *event)
   DndFactory factory( calendar() );
   ICalDrag *vd = factory.createDrag(event,this);
   if (vd->drag()) {
-    kdDebug() << "KOAgendaView::startDrag(): Delete drag source" << endl;
+    kdDebug(5850) << "KOAgendaView::startDrag(): Delete drag source" << endl;
   }
 #endif
 }
@@ -879,7 +879,7 @@ void KOAgendaView::readSettings()
 
 void KOAgendaView::readSettings(KConfig *config)
 {
-//  kdDebug() << "KOAgendaView::readSettings()" << endl;
+//  kdDebug(5850) << "KOAgendaView::readSettings()" << endl;
 
   config->setGroup("Views");
 
@@ -895,7 +895,7 @@ void KOAgendaView::readSettings(KConfig *config)
 
 void KOAgendaView::writeSettings(KConfig *config)
 {
-//  kdDebug() << "KOAgendaView::writeSettings()" << endl;
+//  kdDebug(5850) << "KOAgendaView::writeSettings()" << endl;
 
   config->setGroup("Views");
 

@@ -110,12 +110,12 @@ void KOIncidenceEditor::slotCancel()
 
 void KOIncidenceEditor::slotLoadTemplate()
 {
-  kdDebug() << "KOIncidenceEditor::loadTemplate()" << endl;
+  kdDebug(5850) << "KOIncidenceEditor::loadTemplate()" << endl;
 }
 
 void KOIncidenceEditor::slotSaveTemplate()
 {
-  kdDebug() << "KOIncidenceEditor::saveTemplate()" << endl;
+  kdDebug(5850) << "KOIncidenceEditor::saveTemplate()" << endl;
 }
 
 void KOIncidenceEditor::createSaveTemplateDialog( SaveTemplateDialog::IncidenceType type )

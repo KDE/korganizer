@@ -118,7 +118,7 @@ void KOProjectView::createMainTask()
 
 void KOProjectView::readSettings()
 {
-  kdDebug() << "KOProjectView::readSettings()" << endl;
+  kdDebug(5850) << "KOProjectView::readSettings()" << endl;
 
   //KConfig *config = kapp->config();
   KConfig config( locateLocal( "config", "korganizerrc" ));
@@ -132,7 +132,7 @@ void KOProjectView::readSettings()
 
 void KOProjectView::writeSettings(KConfig *config)
 {
-  kdDebug() << "KOProjectView::writeSettings()" << endl;
+  kdDebug(5850) << "KOProjectView::writeSettings()" << endl;
 
   config->setGroup("Views");
 
@@ -143,7 +143,7 @@ void KOProjectView::writeSettings(KConfig *config)
 
 void KOProjectView::updateView()
 {
-  kdDebug() << "KOProjectView::updateView()" << endl;
+  kdDebug(5850) << "KOProjectView::updateView()" << endl;
 
   // Clear Gantt view
   QPtrList<KGanttItem> subs = mMainTask->getSubItems();
@@ -167,19 +167,19 @@ void KOProjectView::updateView()
   QPtrList<Todo> todoList = calendar()->todos();
 
 /*
-  kdDebug() << "KOProjectView::updateView(): Todo List:" << endl;
+  kdDebug(5850) << "KOProjectView::updateView(): Todo List:" << endl;
   Event *t;
   for(t = todoList.first(); t; t = todoList.next()) {
-    kdDebug() << "  " << t->getSummary() << endl;
+    kdDebug(5850) << "  " << t->getSummary() << endl;
 
     if (t->getRelatedTo()) {
-      kdDebug() << "      (related to " << t->getRelatedTo()->getSummary() << ")" << endl;
+      kdDebug(5850) << "      (related to " << t->getRelatedTo()->getSummary() << ")" << endl;
     }
 
     QPtrList<Event> l = t->getRelations();
     Event *c;
     for(c=l.first();c;c=l.next()) {
-      kdDebug() << "    - relation: " << c->getSummary() << endl;
+      kdDebug(5850) << "    - relation: " << c->getSummary() << endl;
     }
   }
 */
@@ -199,20 +199,20 @@ void KOProjectView::updateView()
 QMap<Todo *,KGanttItem *>::ConstIterator
     KOProjectView::insertTodoItem(Todo *todo)
 {
-//  kdDebug() << "KOProjectView::insertTodoItem(): " << todo->getSummary() << endl;
+//  kdDebug(5850) << "KOProjectView::insertTodoItem(): " << todo->getSummary() << endl;
   Todo *relatedTodo = dynamic_cast<Todo *>(todo->relatedTo());
   if (relatedTodo) {
-//    kdDebug() << "  has Related" << endl;
+//    kdDebug(5850) << "  has Related" << endl;
     QMap<Todo *,KGanttItem *>::ConstIterator itemIterator;
     itemIterator = mTodoMap.find(relatedTodo);
     if (itemIterator == mTodoMap.end()) {
-//      kdDebug() << "    related not yet in list" << endl;
+//      kdDebug(5850) << "    related not yet in list" << endl;
       itemIterator = insertTodoItem (relatedTodo);
     }
     KGanttItem *task = createTask(*itemIterator,todo);
     return mTodoMap.insert(todo,task);
   } else {
-//    kdDebug() << "  no Related" << endl;
+//    kdDebug(5850) << "  no Related" << endl;
     KGanttItem *task = createTask(mMainTask,todo);
     return mTodoMap.insert(todo,task);
   }
@@ -285,7 +285,7 @@ void KOProjectView::showDates(const QDate &, const QDate &)
 
 void KOProjectView::showEvents(QPtrList<Event>)
 {
-  kdDebug() << "KOProjectView::selectEvents(): not yet implemented" << endl;
+  kdDebug(5850) << "KOProjectView::selectEvents(): not yet implemented" << endl;
 }
 
 #if 0

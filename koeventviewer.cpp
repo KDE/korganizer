@@ -52,7 +52,7 @@ KOEventViewer::~KOEventViewer()
 void KOEventViewer::setSource(const QString& n)
 {
 #ifndef KORG_NODCOP
-  kdDebug() << "KOEventViewer::setSource(): " << n << endl;
+  kdDebug(5850) << "KOEventViewer::setSource(): " << n << endl;
   QString tmpStr;
   if (n.startsWith("mailto:")) {
     KApplication::kApplication()->invokeMailer(n.mid(7),QString::null);
@@ -264,7 +264,7 @@ void KOEventViewer::formatAttendees(Incidence *event)
       else mText += a->email();
       mText += "</a>\n";
 #endif
-      kdDebug() << "formatAttendees: uid = " << a->uid() << endl;
+      kdDebug(5850) << "formatAttendees: uid = " << a->uid() << endl;
 
       if (!a->email().isEmpty()) {
         if (iconPath) {

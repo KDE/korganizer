@@ -94,7 +94,7 @@ Journal *JournalEntry::journal() const
 void JournalEntry::setDirty()
 {
   mDirty = true;
-//  kdDebug() << "JournalEntry::setDirty()" << endl;
+//  kdDebug(5850) << "JournalEntry::setDirty()" << endl;
 }
 
 void JournalEntry::clear()
@@ -105,7 +105,7 @@ void JournalEntry::clear()
 
 bool JournalEntry::eventFilter( QObject *o, QEvent *e )
 {
-//  kdDebug() << "JournalEntry::event received " << e->type() << endl;
+//  kdDebug(5850) << "JournalEntry::event received " << e->type() << endl;
 
   if ( e->type() == QEvent::FocusOut ) {
     writeJournal();
@@ -115,13 +115,13 @@ bool JournalEntry::eventFilter( QObject *o, QEvent *e )
 
 void JournalEntry::writeJournal()
 {
-//  kdDebug() << "JournalEntry::writeJournal()" << endl;
+//  kdDebug(5850) << "JournalEntry::writeJournal()" << endl;
 
   if (!mDirty) return;
  
   if (mEditor->text().isEmpty()) return;
 
-//  kdDebug() << "JournalEntry::writeJournal()..." << endl;
+//  kdDebug(5850) << "JournalEntry::writeJournal()..." << endl;
   
   if (!mJournal) {
     mJournal = new Journal;

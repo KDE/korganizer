@@ -36,7 +36,7 @@ ExchangeConfig::ExchangeConfig( KPIM::ExchangeAccount* account, QWidget* parent 
 {
   mAccount = account;
 
-  kdDebug() << "Creating ExchangeConfig with account: " << 
+  kdDebug(5850) << "Creating ExchangeConfig with account: " << 
       account->host() << ":" << account->account() << endl;
 
   QFrame *topFrame = plainPage();

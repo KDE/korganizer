@@ -122,7 +122,7 @@ void KOrganizerApp::displayImminent( const KURL &url, int numdays )
 
 int KOrganizerApp::newInstance()
 {
-  kdDebug() << "KOApp::newInstance()" << endl;
+  kdDebug(5850) << "KOApp::newInstance()" << endl;
 
   KCmdLineArgs *args = KCmdLineArgs::parsedArgs();
   
@@ -156,7 +156,7 @@ int KOrganizerApp::newInstance()
     processCalendar( KURL(), numDays ); 
   }
   
-  kdDebug() << "KOApp::newInstance() done" << endl;
+  kdDebug(5850) << "KOApp::newInstance() done" << endl;
   return 0;
 }
 
@@ -175,7 +175,7 @@ void KOrganizerApp::processCalendar( const KURL &url, int numDays )
         korg = new KOrganizer( hasDocument, "KOrganizer MainWindow" );
         korg->topLevelWidget()->show();
 
-        kdDebug() << "KOrganizerApp::processCalendar(): '" << url.url()
+        kdDebug(5850) << "KOrganizerApp::processCalendar(): '" << url.url()
                   << "'" << endl;
 
         if ( hasDocument ) korg->openURL(url);

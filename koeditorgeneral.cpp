@@ -340,7 +340,7 @@ void KOEditorGeneral::readIncidence(Incidence *event)
 
 void KOEditorGeneral::writeIncidence(Incidence *event)
 {
-//  kdDebug() << "KOEditorGeneral::writeEvent()" << endl;
+//  kdDebug(5850) << "KOEditorGeneral::writeEvent()" << endl;
 
   event->setSummary(mSummaryEdit->text());
   event->setLocation(mLocationEdit->text());

@@ -39,7 +39,7 @@ KONewStuff::KONewStuff( CalendarView *view ) :
 
 bool KONewStuff::install( const QString &fileName )
 {
-  kdDebug() << "KONewStuff::install(): " << fileName << endl;
+  kdDebug(5850) << "KONewStuff::install(): " << fileName << endl;
 
   CalendarLocal cal;
   FileStorage storage( &cal, fileName );

@@ -120,7 +120,7 @@ bool KOMailClient::send(const QString &from,const QString &to,
                         const QString &subject,const QString &body,bool bcc,
                         const QString &attachment)
 {
-  kdDebug() << "KOMailClient::sendMail():\nFrom: " << from << "\nTo: " << to
+  kdDebug(5850) << "KOMailClient::sendMail():\nFrom: " << from << "\nTo: " << to
             << "\nSubject: " << subject << "\nBody: \n" << body
             << "\nAttachment:\n" << attachment << endl;
 
@@ -221,10 +221,10 @@ int KOMailClient::kMailOpenComposer(const QString& arg0,const QString& arg1,
       QDataStream _reply_stream( replyData, IO_ReadOnly );
       _reply_stream >> result;
     } else {
-      kdDebug() << "kMailOpenComposer() call failed." << endl;
+      kdDebug(5850) << "kMailOpenComposer() call failed." << endl;
     }
   } else {
-    kdDebug() << "kMailOpenComposer() call failed." << endl;
+    kdDebug(5850) << "kMailOpenComposer() call failed." << endl;
   }
   return result;
 }
@@ -261,10 +261,10 @@ int KOMailClient::kMailOpenComposer( const QString& arg0, const QString& arg1,
 	    QDataStream _reply_stream( replyData, IO_ReadOnly );
 	    _reply_stream >> result;
 	} else {
-            kdDebug() << "kMailOpenComposer() call failed." << endl;
+            kdDebug(5850) << "kMailOpenComposer() call failed." << endl;
 	}
     } else { 
-        kdDebug() << "kMailOpenComposer() call failed." << endl;
+        kdDebug(5850) << "kMailOpenComposer() call failed." << endl;
     }
     return result;
 }

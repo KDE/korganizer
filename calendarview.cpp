@@ -105,7 +105,7 @@ CalendarView::CalendarView( CalendarResources *calendar,
     mCalendar( calendar ),
     mResourceManager( calendar->resourceManager() )
 {
-  kdDebug() << "CalendarView::CalendarView( CalendarResources )" << endl;
+  kdDebug(5850) << "CalendarView::CalendarView( CalendarResources )" << endl;
 
   init();
 }
@@ -116,7 +116,7 @@ CalendarView::CalendarView( Calendar *calendar,
     mCalendar( calendar ),
     mResourceManager( 0 )
 {
-  kdDebug() << "CalendarView::CalendarView( Calendar )" << endl;
+  kdDebug(5850) << "CalendarView::CalendarView( Calendar )" << endl;
 
   init();
 }
@@ -295,17 +295,17 @@ void CalendarView::init()
            SLOT( processTodoListSelection( Incidence * ) ) );
   connect(mTodoList,SIGNAL(isModified(bool)),SLOT(setModified(bool)));
 
-  kdDebug() << "CalendarView::CalendarView() done" << endl;
+  kdDebug(5850) << "CalendarView::CalendarView() done" << endl;
 }
 
 CalendarView::~CalendarView()
 {
-  kdDebug() << "~CalendarView()" << endl;
+  kdDebug(5850) << "~CalendarView()" << endl;
 
   delete mDialogManager;
   delete mViewManager;
 
-  kdDebug() << "~CalendarView() done" << endl;
+  kdDebug(5850) << "~CalendarView() done" << endl;
 }
 
 KOViewManager *CalendarView::viewManager()
@@ -346,15 +346,15 @@ void CalendarView::createPrinter()
 
 bool CalendarView::openCalendar(const QString& filename, bool merge)
 {
-  kdDebug() << "CalendarView::openCalendar(): " << filename << endl;
+  kdDebug(5850) << "CalendarView::openCalendar(): " << filename << endl;
 
   if (filename.isEmpty()) {
-    kdDebug() << "CalendarView::openCalendar(): Error! Empty filename." << endl;
+    kdDebug(5850) << "CalendarView::openCalendar(): Error! Empty filename." << endl;
     return false;
   }
 
   if (!QFile::exists(filename)) {
-    kdDebug() << "CalendarView::openCalendar(): Error! File '" << filename
+    kdDebug(5850) << "CalendarView::openCalendar(): Error! File '" << filename
               << "' doesn't exist." << endl;
   }
 
@@ -385,7 +385,7 @@ bool CalendarView::openCalendar(const QString& filename, bool merge)
 
 bool CalendarView::saveCalendar( const QString& filename )
 {
-  kdDebug() << "CalendarView::saveCalendar(): " << filename << endl;
+  kdDebug(5850) << "CalendarView::saveCalendar(): " << filename << endl;
 
   // Store back all unsaved data into calendar object
   mViewManager->currentView()->flushView();
@@ -404,7 +404,7 @@ bool CalendarView::saveCalendar( const QString& filename )
 
 void CalendarView::closeCalendar()
 {
-  kdDebug() << "CalendarView::closeCalendar()" << endl;
+  kdDebug(5850) << "CalendarView::closeCalendar()" << endl;
 
   // child windows no longer valid
   emit closingDown();
@@ -422,7 +422,7 @@ void CalendarView::archiveCalendar()
 
 void CalendarView::readSettings()
 {
-//  kdDebug() << "CalendarView::readSettings()" << endl;
+//  kdDebug(5850) << "CalendarView::readSettings()" << endl;
 
   QString str;
 
@@ -463,7 +463,7 @@ void CalendarView::readSettings()
 
 void CalendarView::writeSettings()
 {
-//  kdDebug() << "CalendarView::writeSettings" << endl;
+//  kdDebug(5850) << "CalendarView::writeSettings" << endl;
 
   KConfig *config = KOGlobals::config();
 
@@ -492,7 +492,7 @@ void CalendarView::writeSettings()
 
 void CalendarView::readFilterSettings(KConfig *config)
 {
-//  kdDebug() << "CalendarView::readFilterSettings()" << endl;
+//  kdDebug(5850) << "CalendarView::readFilterSettings()" << endl;
 
   mFilters.clear();
 
@@ -502,7 +502,7 @@ void CalendarView::readFilterSettings(KConfig *config)
   QStringList::ConstIterator it = filterList.begin();
   QStringList::ConstIterator end = filterList.end();
   while(it != end) {
-//    kdDebug() << "  filter: " << (*it) << endl;
+//    kdDebug(5850) << "  filter: " << (*it) << endl;
 
     CalFilter *filter;
     filter = new CalFilter(*it);
@@ -531,13 +531,13 @@ void CalendarView::readFilterSettings(KConfig *config)
 
 void CalendarView::writeFilterSettings(KConfig *config)
 {
-//  kdDebug() << "CalendarView::writeFilterSettings()" << endl;
+//  kdDebug(5850) << "CalendarView::writeFilterSettings()" << endl;
 
   QStringList filterList;
 
   CalFilter *filter = mFilters.first();
   while(filter) {
-//    kdDebug() << " fn: " << filter->name() << endl;
+//    kdDebug(5850) << " fn: " << filter->name() << endl;
     filterList << filter->name();
     config->setGroup("Filter_" + filter->name());
     config->writeEntry("Criteria",filter->criteria());
@@ -570,7 +570,7 @@ void CalendarView::goPrevious()
 
 void CalendarView::updateConfig()
 {
-  kdDebug() << "CalendarView::updateConfig()" << endl;
+  kdDebug(5850) << "CalendarView::updateConfig()" << endl;
 
   emit configChanged();
 
@@ -593,7 +593,7 @@ void CalendarView::eventAdded(Event *event)
 
 void CalendarView::eventToBeDeleted(Event *)
 {
-  kdDebug() << "CalendarView::eventToBeDeleted(): to be implemented" << endl;
+  kdDebug(5850) << "CalendarView::eventToBeDeleted(): to be implemented" << endl;
 }
 
 void CalendarView::eventDeleted()
@@ -606,7 +606,7 @@ void CalendarView::eventDeleted()
 // total update mode, but they SHOULD be recoded to be more refresh-efficient.
 void CalendarView::changeEventDisplay(Event *which, int action)
 {
-//  kdDebug() << "CalendarView::changeEventDisplay" << endl;
+//  kdDebug(5850) << "CalendarView::changeEventDisplay" << endl;
 
   mDateNavigator->updateView();
   mDialogManager->updateSearchDialog();
@@ -626,7 +626,7 @@ void CalendarView::changeEventDisplay(Event *which, int action)
 
 void CalendarView::updateTodoViews()
 {
-  kdDebug() << "CalendarView::updateTodoViews()" << endl;
+  kdDebug(5850) << "CalendarView::updateTodoViews()" << endl;
 
   mTodoList->updateView();
   mViewManager->currentView()->updateView();
@@ -792,12 +792,12 @@ void CalendarView::newFloatingEvent()
 
 void CalendarView::editEvent( Event *event )
 {
-  kdDebug() << "CalendarView::editEvent()" << endl;
+  kdDebug(5850) << "CalendarView::editEvent()" << endl;
 
   if ( !event ) return;
 
   if ( mDialogList.find( event ) != mDialogList.end() ) {
-    kdDebug() << "CalendarView::editEvent() in List" << endl;
+    kdDebug(5850) << "CalendarView::editEvent() in List" << endl;
     mDialogList[ event ]->reload();
     mDialogList[ event ]->raise();
     mDialogList[ event ]->show();
@@ -809,7 +809,7 @@ void CalendarView::editEvent( Event *event )
     return;
   }
 
-  kdDebug() << "CalendarView::editEvent() new EventEditor" << endl;
+  kdDebug(5850) << "CalendarView::editEvent() new EventEditor" << endl;
   KOEventEditor *eventEditor = mDialogManager->getEventEditor();
   mDialogList.insert( event, eventEditor );
   eventEditor->editEvent( event );
@@ -819,10 +819,10 @@ void CalendarView::editEvent( Event *event )
 void CalendarView::editTodo( Todo *todo )
 {
   if ( !todo ) return;
-  kdDebug() << "CalendarView::editTodo" << endl;
+  kdDebug(5850) << "CalendarView::editTodo" << endl;
 
   if ( mDialogList.find( todo ) != mDialogList.end() ) {
-    kdDebug() << "Already in the list " << endl;
+    kdDebug(5850) << "Already in the list " << endl;
     mDialogList[todo]->reload();
     mDialogList[todo]->raise();
     mDialogList[todo]->show();
@@ -835,7 +835,7 @@ void CalendarView::editTodo( Todo *todo )
   }
 
   KOTodoEditor *todoEditor = mDialogManager->getTodoEditor();
-  kdDebug() << "New editor" << endl;
+  kdDebug(5850) << "New editor" << endl;
   mDialogList.insert( todo, todoEditor );
   todoEditor->editTodo( todo );
   todoEditor->show();
@@ -858,7 +858,7 @@ void CalendarView::showTodo(Todo *event)
 void CalendarView::todoModified (Todo *event, int changed)
 {
   if (mDialogList.find (event) != mDialogList.end ()) {
-    kdDebug() << "Todo modified and open" << endl;
+    kdDebug(5850) << "Todo modified and open" << endl;
     KOTodoEditor* temp = (KOTodoEditor *) mDialogList[event];
     temp->modified (changed);
 
@@ -977,10 +977,10 @@ void CalendarView::deleteEvent(Event *anEvent)
 
   if (anEvent->recurrence()->doesRecur()) {
     QDate itemDate = mViewManager->currentSelectionDate();
-    kdDebug() << "Recurrence-Date: " << itemDate.toString() << endl;
+    kdDebug(5850) << "Recurrence-Date: " << itemDate.toString() << endl;
     int km;
     if (!itemDate.isValid()) {
-      kdDebug() << "Date Not Valid" << endl;
+      kdDebug(5850) << "Date Not Valid" << endl;
       km = KMessageBox::warningContinueCancel(this,
         i18n("This event recurs over multiple dates. "
              "Are you sure you want to delete this event "
@@ -1009,7 +1009,7 @@ void CalendarView::deleteEvent(Event *anEvent)
       case KMessageBox::Yes: // just this one
         //QDate qd = mNavigator->selectedDates().first();
         //if (!qd.isValid()) {
-        //  kdDebug() << "no date selected, or invalid date" << endl;
+        //  kdDebug(5850) << "no date selected, or invalid date" << endl;
         //  KNotifyClient::beep();
         //  return;
         //}
@@ -1215,7 +1215,7 @@ void CalendarView::schedule_publish_freebusy(int daysToPublish)
   FreeBusy *freebusy = new FreeBusy(mCalendar, start, end);
   freebusy->setOrganizer(KOPrefs::instance()->email());
 
-  kdDebug() << "calendarview: schedule_publish_freebusy: startDate: "
+  kdDebug(5850) << "calendarview: schedule_publish_freebusy: startDate: "
      << KGlobal::locale()->formatDateTime( start ) << " End Date: "
      << KGlobal::locale()->formatDateTime( end ) << endl;
 
@@ -1350,7 +1350,7 @@ void CalendarView::print()
 void CalendarView::printPreview()
 {
 #ifndef KORG_NOPRINTER
-  kdDebug() << "CalendarView::printPreview()" << endl;
+  kdDebug(5850) << "CalendarView::printPreview()" << endl;
 
   createPrinter();
 
@@ -1485,10 +1485,10 @@ void CalendarView::checkClipboard()
 {
 #ifndef KORG_NODND
   if (ICalDrag::canDecode(QApplication::clipboard()->data())) {
-    kdDebug() << "CalendarView::checkClipboard() true" << endl;
+    kdDebug(5850) << "CalendarView::checkClipboard() true" << endl;
     emit pasteEnabled(true);
   } else {
-    kdDebug() << "CalendarView::checkClipboard() false" << endl;
+    kdDebug(5850) << "CalendarView::checkClipboard() false" << endl;
     emit pasteEnabled(false);
   }
 #endif
@@ -1496,7 +1496,7 @@ void CalendarView::checkClipboard()
 
 void CalendarView::showDates(const DateList &selectedDates)
 {
-//  kdDebug() << "CalendarView::selectDates()" << endl;
+//  kdDebug(5850) << "CalendarView::selectDates()" << endl;
 
   if ( mViewManager->currentView() ) {
     updateView( selectedDates.first(), selectedDates.last() );
@@ -1507,11 +1507,11 @@ void CalendarView::showDates(const DateList &selectedDates)
 
 void CalendarView::editFilters()
 {
-//  kdDebug() << "CalendarView::editFilters()" << endl;
+//  kdDebug(5850) << "CalendarView::editFilters()" << endl;
 
   CalFilter *filter = mFilters.first();
   while(filter) {
-    kdDebug() << " Filter: " << filter->name() << endl;
+    kdDebug(5850) << " Filter: " << filter->name() << endl;
     filter = mFilters.next();
   }
 
@@ -1585,7 +1585,7 @@ void CalendarView::takeOverCalendar()
 
 void CalendarView::showIntro()
 {
-  kdDebug() << "To be implemented." << endl;
+  kdDebug(5850) << "To be implemented." << endl;
 }
 
 QWidgetStack *CalendarView::viewStack()
@@ -1765,7 +1765,7 @@ void CalendarView::purgeCompleted()
 
 void CalendarView::slotCalendarChanged()
 {
-  kdDebug() << "CalendarView::slotCalendarChanged()" << endl;
+  kdDebug(5850) << "CalendarView::slotCalendarChanged()" << endl;
 }
 
 NavigatorBar *CalendarView::navigatorBar()

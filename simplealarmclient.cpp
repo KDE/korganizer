@@ -35,7 +35,7 @@ SimpleAlarmClient::SimpleAlarmClient()
 {
   mCalendarsFile = locateLocal( "data", "simplealarmdaemon/calendars" );
 
-  kdDebug() << "SimpleAlarmClient(): file: " << mCalendarsFile << endl;
+  kdDebug(5850) << "SimpleAlarmClient(): file: " << mCalendarsFile << endl;
 }
 
 SimpleAlarmClient::~SimpleAlarmClient()
@@ -45,30 +45,30 @@ SimpleAlarmClient::~SimpleAlarmClient()
 
 void SimpleAlarmClient::startDaemon()
 {
-  kdDebug() << "SimpleAlarmClient::startDaemon()" << endl;
+  kdDebug(5850) << "SimpleAlarmClient::startDaemon()" << endl;
 
   if ( !mProcess ) {
     mProcess = new KProcess;
     *mProcess << "simplealarmdaemon";
     if ( !mProcess->start() ) {
-      kdDebug() << "Failed to start process." << endl;
+      kdDebug(5850) << "Failed to start process." << endl;
     }
   }
 }
 
 bool SimpleAlarmClient::setCalendars( const QStringList &calendars )
 {
-  kdDebug() << "SimpleAlarmClient::setCalendars()" << endl;
+  kdDebug(5850) << "SimpleAlarmClient::setCalendars()" << endl;
 
   QFile f( mCalendarsFile );
   if ( !f.open( IO_WriteOnly ) ) {
-    kdDebug() << "Unable to open file '" << mCalendarsFile << "'" << endl;
+    kdDebug(5850) << "Unable to open file '" << mCalendarsFile << "'" << endl;
     return false;
   }
   QTextStream ts( &f );
   QStringList::ConstIterator it;
   for ( it = calendars.begin(); it != calendars.end(); ++it ) {
-    kdDebug() << "CAL: " << *it << endl;
+    kdDebug(5850) << "CAL: " << *it << endl;
     ts << *it << "\n";
   }
   f.close();

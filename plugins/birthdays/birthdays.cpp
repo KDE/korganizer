@@ -84,7 +84,7 @@ QString Birthdays::info()
 
 void Birthdays::importBirthdays()
 {
-//  kdDebug() << "import the birthdays from the addressbook" << endl;
+//  kdDebug(5850) << "import the birthdays from the addressbook" << endl;
 
 #ifndef KORG_NOKABC
   Calendar *cal = mainWindow()->view()->calendar();
@@ -99,7 +99,7 @@ void Birthdays::importBirthdays()
   KABC::AddressBook::Iterator it;
   for ( it = add_book->begin(); it != add_book->end(); ++it ) {
     if ( (*it).birthday().date().isValid() ) {
-      kdDebug() << "found a birthday " << (*it).birthday().toString() << endl;
+      kdDebug(5850) << "found a birthday " << (*it).birthday().toString() << endl;
 
       QString name = (*it).nickName();
       if (name.isEmpty()) name = (*it).realName();
@@ -112,9 +112,9 @@ void Birthdays::importBirthdays()
       bool insert = true;
       QPtrList<Event> events = cal->events(birthdate);
       for ( e = events.first(); e; e = events.next() ) {
-        kdDebug() << summary << " | " << e->summary() << endl;
+        kdDebug(5850) << summary << " | " << e->summary() << endl;
         if ( e->summary()==summary ) {
-          kdDebug() << " inserted " << e->summary() << endl;
+          kdDebug(5850) << " inserted " << e->summary() << endl;
           insert = false;
           ev = e;
           e = events.last();
@@ -156,7 +156,7 @@ void Birthdays::importBirthdays()
       if (insert) {
         cal->addEvent(ev);
         inserted_birthdays++;
-        kdDebug() << "imported " << birthdate.toString() << endl;
+        kdDebug(5850) << "imported " << birthdate.toString() << endl;
       }
     }
   }

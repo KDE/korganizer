@@ -85,7 +85,7 @@ KOrganizer::KOrganizer( bool document, const char *name )
     DCOPObject("KOrganizerIface"),
     mIsClosing( false )
 {
-  kdDebug() << "KOrganizer::KOrganizer()" << endl;
+  kdDebug(5850) << "KOrganizer::KOrganizer()" << endl;
 
 //  setMinimumSize(600,400);	// make sure we don't get resized too small...
 
@@ -117,7 +117,7 @@ KOrganizer::KOrganizer( bool document, const char *name )
         resourceName = i18n("Active Calendar");
       }
 
-      kdDebug() << "Using as default resource: '" << fileName << "'" << endl;
+      kdDebug(5850) << "Using as default resource: '" << fileName << "'" << endl;
 
       ResourceCalendar *defaultResource = new ResourceLocal( fileName );
       defaultResource->setResourceName( resourceName );
@@ -126,7 +126,7 @@ KOrganizer::KOrganizer( bool document, const char *name )
       manager->setStandardResource( defaultResource );
     }
 
-    kdDebug() << "CalendarResources used by KOrganizer:" << endl;
+    kdDebug(5850) << "CalendarResources used by KOrganizer:" << endl;
     CalendarResourceManager::Iterator it;
     for( it = manager->begin(); it != manager->end(); ++it ) {
       (*it)->dump();
@@ -177,7 +177,7 @@ KOrganizer::KOrganizer( bool document, const char *name )
           SLOT(showStatusMessage(const QString &)));
 
   mActionManager->loadParts();
-  kdDebug() << "KOrganizer::KOrganizer() done" << endl;
+  kdDebug(5850) << "KOrganizer::KOrganizer() done" << endl;
 }
 
 KOrganizer::~KOrganizer()
@@ -209,7 +209,7 @@ void KOrganizer::readSettings()
 
 void KOrganizer::writeSettings()
 {
-  kdDebug() << "KOrganizer::writeSettings" << endl;
+  kdDebug(5850) << "KOrganizer::writeSettings" << endl;
 
   KConfig *config = KOGlobals::config();
 
@@ -258,7 +258,7 @@ void KOrganizer::initActions()
 #if 0
 void KOrganizer::initViews()
 {
-  kdDebug() << "KOrganizer::initViews()" << endl;
+  kdDebug(5850) << "KOrganizer::initViews()" << endl;
 
   // TODO: get calendar pointer from somewhere
   KOrg::View::List views = KOCore::self()->views(this);
@@ -271,7 +271,7 @@ void KOrganizer::initViews()
 
 bool KOrganizer::queryClose()
 {
-  kdDebug() << "KOrganizer::queryClose()" << endl;
+  kdDebug(5850) << "KOrganizer::queryClose()" << endl;
 
   bool close = true;
 
@@ -279,17 +279,17 @@ bool KOrganizer::queryClose()
     close = mActionManager->saveModifiedURL();
   } else {
     if ( !mIsClosing ) {
-      kdDebug() << "!mIsClosing" << endl;
+      kdDebug(5850) << "!mIsClosing" << endl;
       mCalendar->save();
       hide();
       mIsClosing = true;
       connect( mCalendar, SIGNAL( calendarSaved() ), SLOT( close() ) );
     }
     if ( mCalendar->isSaving() ) {
-      kdDebug() << "KOrganizer::queryClose(): isSaving" << endl;
+      kdDebug(5850) << "KOrganizer::queryClose(): isSaving" << endl;
       close = false;
     } else {
-      kdDebug() << "KOrganizer::queryClose(): close = true" << endl;
+      kdDebug(5850) << "KOrganizer::queryClose(): close = true" << endl;
       close = true;
     }
   }
@@ -342,7 +342,7 @@ void KOrganizer::toggleToolBars(bool toggle)
     if (toggle) bar->show();
     else bar->hide();
   } else {
-    kdDebug() << "KOrganizer::toggleToolBars(): Toolbar not found" << endl;
+    kdDebug(5850) << "KOrganizer::toggleToolBars(): Toolbar not found" << endl;
   }
 }
 
@@ -436,7 +436,7 @@ KOrg::CalendarViewBase *KOrganizer::view() const
 
 void KOrganizer::setTitle()
 {
-//  kdDebug() << "KOrganizer::setTitle" << endl;
+//  kdDebug(5850) << "KOrganizer::setTitle" << endl;
 
   if ( !hasDocument() ) return;
 

@@ -306,7 +306,7 @@ bool IncomingDialog::incomeCounter(ScheduleItemIn *item)
 
   eventViewer->exec();
   if (eventViewer->result()) {
-    kdDebug() << "IncomingDialog::Counter:Accept" << endl;
+    kdDebug(5850) << "IncomingDialog::Counter:Accept" << endl;
     int revision = 0;
     if (even) {
       revision = even->revision();
@@ -329,7 +329,7 @@ bool IncomingDialog::incomeCounter(ScheduleItemIn *item)
     emit numMessagesChanged(mMessageListView->childCount());
     return true;
   } else {
-    kdDebug() << "IncomingDialog::Counter:Decline" << endl;
+    kdDebug(5850) << "IncomingDialog::Counter:Decline" << endl;
     //the counter-sender's email is missing...
     //now every attendee gets an declinecounter :-(
     mOutgoing->addMessage(counterEvent,Scheduler::Declinecounter);
@@ -374,7 +374,7 @@ bool IncomingDialog::incomeAdd(ScheduleItemIn *item)
     return true;
   }
   else {
-    kdDebug() << "IncomingDialog::incomeAdd - only Events are supportet yet" << endl;
+    kdDebug(5850) << "IncomingDialog::incomeAdd - only Events are supportet yet" << endl;
     mScheduler->deleteTransaction( incidence );
     delete item;
     emit numMessagesChanged(mMessageListView->childCount());
@@ -391,7 +391,7 @@ bool IncomingDialog::incomeDefault(ScheduleItemIn *item)
   }
   else {
     KMessageBox::error(this,i18n("Unable to accept the IMIP-message. It may be a problem with the email addresses."));
-    kdDebug() << "IncomingDialog::acceptMessage(): Error!" << endl;
+    kdDebug(5850) << "IncomingDialog::acceptMessage(): Error!" << endl;
     return false;
   }
   return false;
@@ -411,7 +411,7 @@ bool IncomingDialog::incomeRequest(ScheduleItemIn *item)
                                KOPrefs::instance()->email());
     freebusy->addAttendee(att);
 
-    kdDebug() << "calendarview: schedule_publish_freebusy: startDate: "
+    kdDebug(5850) << "calendarview: schedule_publish_freebusy: startDate: "
       << KGlobal::locale()->formatDateTime( start ) << " End Date: " 
       << KGlobal::locale()->formatDateTime( end ) << endl;
   

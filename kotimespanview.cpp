@@ -31,7 +31,7 @@ void KOTimeSpanView::readSettings()
 
 void KOTimeSpanView::readSettings(KConfig *config)
 {
-//  kdDebug() << "KOTimeSpanView::readSettings()" << endl;
+//  kdDebug(5850) << "KOTimeSpanView::readSettings()" << endl;
 
   config->setGroup("Views");
 
@@ -43,7 +43,7 @@ void KOTimeSpanView::readSettings(KConfig *config)
 
 void KOTimeSpanView::writeSettings(KConfig *config)
 {
-//  kdDebug() << "KOTimeSpanView::writeSettings()" << endl;
+//  kdDebug(5850) << "KOTimeSpanView::writeSettings()" << endl;
 
   config->setGroup("Views");
 
@@ -90,7 +90,7 @@ void KOTimeSpanView::insertItems(const QDate &start, const QDate &end)
   QPtrList<Event> events = calendar()->events( start, end );
   Event *event = events.first();
   while( event ) {
-//    kdDebug() << "KOTimeSpanView::showDates() add event: " << event->summary()
+//    kdDebug(5850) << "KOTimeSpanView::showDates() add event: " << event->summary()
 //              << endl;
 
     mTimeSpanView->addItem( event );          
