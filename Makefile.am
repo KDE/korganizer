@@ -2,7 +2,6 @@ SUBDIRS = printing . korgac pixmaps sounds plugins interfaces
 
 INCLUDES = \
   -I$(srcdir)/interfaces \
-  -I$(top_srcdir)/libkdepim \
   -I$(top_srcdir)/libemailfunctions \
   -I$(top_srcdir)/libkpimidentities \
   -I$(top_srcdir)/libkholidays \
@@ -12,7 +11,6 @@ INCLUDES = \
   -I$(top_srcdir)/korganizer/printing \
   -I$(top_srcdir) \
   -I$(top_builddir) \
-  -I$(top_builddir)/libkdepim \
   $(all_includes)
 
 bin_PROGRAMS = korganizer
