@@ -256,6 +256,11 @@ CalendarView::CalendarView( QWidget *parent, const char *name )
 
   connect( this, SIGNAL( incidenceSelected(Incidence *) ),
            mEventViewer, SLOT ( setIncidence (Incidence *) ) );
+  
+  //TODO: do a pretty Summary, 
+  mEventViewer->setDefaultText( "<H1>···</H1>" );
+  mEventViewer->setIncidence( 0 );
+  
   mViewManager->connectTodoView( mTodoList );
   mViewManager->connectView( mTodoList );
 

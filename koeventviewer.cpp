@@ -31,7 +31,7 @@
 #include <kdebug.h>
 
 KOEventViewer::KOEventViewer( QWidget *parent, const char *name )
-  : QTextBrowser( parent, name )
+  : QTextBrowser( parent, name ), mDefaultText("")
 {
 }
 
@@ -73,19 +73,25 @@ bool KOEventViewer::appendIncidence( Incidence *incidence )
 void KOEventViewer::setIncidence( Incidence *incidence )
 {
   clearEvents();
-  appendIncidence( incidence );
+  if( incidence ) appendIncidence( incidence );
+  else clearEvents(true);
 }
 
 void KOEventViewer::clearEvents( bool now )
 {
   mText = "";
-  if ( now ) setText( mText );
+  if ( now ) setText( mDefaultText );
 }
 
 void KOEventViewer::addText( const QString &text )
 {
   mText.append( text );
   setText( mText );
+}
+
+void KOEventViewer::setDefaultText( const QString &text )
+{
+  mDefaultText = text;
 }
 
 #include "koeventviewer.moc"
