@@ -70,7 +70,6 @@ class CalPrinter : public QObject
   private slots:
     void doPreview(int, QDate, QDate);
     void doPrint(int, QDate, QDate);
-    void previewCleanup(KProcess *);
 
   private:
     void drawHeader(QPainter &p, const QDate &fd, const QDate &td,
@@ -94,7 +93,6 @@ class CalPrinter : public QObject
     void drawTodo(int count, Todo *item,QPainter &p,int level=0, QRect *r=0);
 
     KPrinter *mPrinter;
-    KTempFile *mPreviewFile;
     Calendar *mCalendar;
     QWidget *mParent;
     int mHeaderHeight;

@@ -61,8 +61,6 @@ CalPrinter::CalPrinter(QWidget *parent, Calendar *calendar)
   mPrintDialog = new CalPrintDialog(mPrinter,parent);
   mPrinter->setOrientation(KPrinter::Landscape);
 
-  mPreviewFile = 0;
-
   updateConfig();
 }
 
@@ -114,13 +112,6 @@ void CalPrinter::preview(PrintType pt, const QDate &fd, const QDate &td)
 
 void CalPrinter::doPreview(int pt, QDate fd, QDate td)
 {
-  bool oldOutputToFile = mPrinter->outputToFile();
-  QString oldFileName = mPrinter->outputFileName();
-
-  mPreviewFile = new KTempFile;
-  mPreviewFile->setAutoDelete(true);
-  mPrinter->setOutputToFile(true);
-  mPrinter->setOutputFileName(mPreviewFile->name());
   mPrinter->setPreviewOnly(true);
 
   switch(pt) {
@@ -143,28 +134,6 @@ void CalPrinter::doPreview(int pt, QDate fd, QDate td)
 
   // restore previous settings that were used before the preview.
   mPrinter->setPreviewOnly(false);
-  mPrinter->setOutputToFile(oldOutputToFile);
-  mPrinter->setOutputFileName(oldFileName);
-  
-/*  QString previewProg = KOPrefs::instance()->mPrintPreview;
-
-  KProcess *previewProc = new KProcess;
-  connect(previewProc, SIGNAL(processExited(KProcess *)), 
-	  SLOT(previewCleanup(KProcess *)));
-
-  previewProc->clearArguments(); // clear out any old arguments
-  *previewProc << previewProg; // program name
-  *previewProc << mPreviewFile->name(); // command line arguments
-  if (!previewProc->start()) {
-    KMessageBox::error(0,i18n("Could not start %1.").arg(previewProg));
-  }*/
-}
-
-void CalPrinter::previewCleanup(KProcess *process)
-{
-  delete process;
-  delete mPreviewFile;
-  mPreviewFile = 0;
 }
 
 void CalPrinter::print(PrintType pt, const QDate &fd, const QDate &td)
