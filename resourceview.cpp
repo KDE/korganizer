@@ -171,7 +171,12 @@ void ResourceView::addResource()
 
 void ResourceView::addResourceItem( ResourceCalendar *resource )
 {
+  if ( resource->isActive() ) {
+    resource->open();
+    resource->load();
+  }
   new ResourceItem( resource, this, mListView );
+  emitResourcesChanged();
 }
 
 void ResourceView::removeResource()
@@ -200,6 +205,7 @@ void ResourceView::removeResource()
 
   mListView->takeItem( item );
   delete item;
+  emitResourcesChanged();
 }
 
 void ResourceView::editResource()
