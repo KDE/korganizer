@@ -32,7 +32,6 @@
 
 #include "korganizerifaceimpl.h"
 #include "actionmanager.h"
-#include "kogroupware.h"
 
 
 KOrganizerIfaceImpl::KOrganizerIfaceImpl( ActionManager* actionManager,
@@ -84,10 +83,4 @@ bool KOrganizerIfaceImpl::deleteEvent( QString uid )
 bool KOrganizerIfaceImpl::editIncidence( QString uid )
 {
   return mActionManager->editIncidence( uid );
-}
-
-QString KOrganizerIfaceImpl::msTNEFToVPart( QByteArray tnef )
-{
-  if( !KOGroupware::instance() ) return QString();
-  return KOGroupware::instance()->msTNEFToVPart( tnef );
 }

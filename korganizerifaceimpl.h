@@ -54,9 +54,6 @@ public:
   bool editIncidence( QString uid );
   bool deleteEvent( QString uid );
 
-  // TODO: Move to a library
-  QString msTNEFToVPart( QByteArray tnef );
-
 private:
   ActionManager* mActionManager;
 };
