@@ -595,6 +595,7 @@ bool KOTodoView::removeTodoItem( KOTodoViewItem *todoItem )
       mTodoMap.remove( todo );
     }
     delete todoItem;
+    return true;
   } else 
     return false;
 }
