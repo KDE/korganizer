@@ -15,10 +15,6 @@
             <height>122</height>
         </rect>
     </property>
-    <property stdset="1">
-        <name>caption</name>
-        <string>Form2</string>
-    </property>
     <property>
         <name>layoutMargin</name>
     </property>

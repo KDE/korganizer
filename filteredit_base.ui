@@ -15,10 +15,6 @@
             <height>188</height>
         </rect>
     </property>
-    <property stdset="1">
-        <name>caption</name>
-        <string>FilterEditor</string>
-    </property>
     <property>
         <name>layoutMargin</name>
     </property>
