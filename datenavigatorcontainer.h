@@ -24,12 +24,6 @@
 #ifndef DATENAVIGATORCONTAINER_H
 #define DATENAVIGATORCONTAINER_H
 
-#include <qframe.h>
-#include <qdatetime.h>
-#include <qlabel.h>
-
-#include <libkcal/calendar.h>
-
 #include "kdatenavigator.h"
 
 class DateNavigatorContainer: public QWidget
@@ -77,7 +71,6 @@ class DateNavigatorContainer: public QWidget
     void connectNavigatorView( KDateNavigator *v );
 
   private:
-    QGridLayout *mTopLayout;
     KDateNavigator *mNavigatorView;
 
     KCal::Calendar *mCalendar;

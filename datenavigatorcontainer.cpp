@@ -22,28 +22,12 @@
     without including the source code for Qt in the source distribution.
 */
 
-#include <qstring.h>
-#include <qkeycode.h>
-#include <qlayout.h>
-#include <qtimer.h>
-#include <qframe.h>
-#include <qlabel.h>
-#include <qpushbutton.h>
-
 #include <kdebug.h>
 #include <klocale.h>
-#include <kglobal.h>
-#include <kglobalsettings.h>
 
 #include "koglobals.h"
-#include "koprefs.h"
-#ifndef KORG_NOPLUGINS
-#include "kocore.h"
-#endif
 
 #include <kcalendarsystem.h>
-
-#include "navigatorbar.h"
 
 #include "datenavigatorcontainer.h"
 
@@ -54,10 +38,7 @@ DateNavigatorContainer::DateNavigatorContainer( QWidget *parent,
 {
   mExtraViews.setAutoDelete( true );
 
-  mTopLayout = new QGridLayout( this );
-
   mNavigatorView = new KDateNavigator( this, name );
-  mTopLayout->addWidget( mNavigatorView, 1, 1 );
 
   connectNavigatorView( mNavigatorView );
 }
@@ -181,26 +162,26 @@ void DateNavigatorContainer::resizeEvent( QResizeEvent * )
       n->setCalendar( mCalendar );
       setBaseDates();
       connectNavigatorView( n );
+      n->show();
     }
 
     while ( count < ( mExtraViews.count() + 1 ) ) {
       mExtraViews.removeLast();
     }
 
-    delete mTopLayout;
-    mTopLayout = new QGridLayout( this );
-    mTopLayout->addWidget( mNavigatorView, 0, 0 );
-    
-    for( uint i = 0; i < mExtraViews.count(); ++i ) {
-      int x = ( i + 1 ) % horizontalCount;
-      int y = ( i + 1 ) / horizontalCount;
-      
-      mTopLayout->addWidget( mExtraViews.at( i ), y, x );
-      mExtraViews.at( i )->show();
-    }
-
     mHorizontalCount = horizontalCount;
     mVerticalCount = verticalCount;
+  }
+  
+  int height = size().height() / verticalCount;
+  int width = size().width() / horizontalCount;
+  
+  mNavigatorView->setGeometry( 0, 0, width, height );
+  for( uint i = 0; i < mExtraViews.count(); ++i ) {
+    int x = ( i + 1 ) % horizontalCount;
+    int y = ( i + 1 ) / horizontalCount;
+
+    mExtraViews.at( i )->setGeometry( x * width, y * height, width, height );
   }
 }
 

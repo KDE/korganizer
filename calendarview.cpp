@@ -145,7 +145,8 @@ CalendarView::CalendarView( QWidget *parent, const char *name )
 
   mDateNavigator = new DateNavigatorContainer( mLeftSplitter,
                                                "CalendarView::DateNavigator" );
-//  mLeftSplitter->setResizeMode( mDateNavigator, QSplitter::FollowSizeHint );
+//  mLeftSplitter->setResizeMode( mDateNavigator, QSplitter::Stretch );
+  mLeftSplitter->setCollapsible( mDateNavigator, true );
   mTodoList = new KOTodoView( CalendarNull::self(), mLeftSplitter, "todolist" );
   mFilterView = new KOFilterView( &mFilters, mLeftSplitter,
                                   "CalendarView::FilterView" );
