@@ -212,7 +212,7 @@ void KOEditorGeneral::initAlarm(QWidget *parent,QBoxLayout *topLayout)
   QWhatsThis::add( mAlarmSoundButton,
 		   i18n("Sets a sound to play in conjunction with the popup "
 		        "dialog as a reminder.") );
-  mAlarmSoundButton->setPixmap(KOGlobals::self()->smallIcon("playsound"));
+  mAlarmSoundButton->setIconSet(KOGlobals::self()->smallIconSet("playsound"));
   mAlarmSoundButton->setToggleButton(true);
   QToolTip::add(mAlarmSoundButton, i18n("No sound set"));
   connect(mAlarmSoundButton, SIGNAL(clicked()), SLOT(pickAlarmSound()));
@@ -222,7 +222,7 @@ void KOEditorGeneral::initAlarm(QWidget *parent,QBoxLayout *topLayout)
   QWhatsThis::add( mAlarmProgramButton,
 		   i18n("Sets a program to execute in conjunction with the "
 			"popup dialog.") );
-  mAlarmProgramButton->setPixmap(KOGlobals::self()->smallIcon("runprog"));
+  mAlarmProgramButton->setIconSet(KOGlobals::self()->smallIconSet("runprog"));
   mAlarmProgramButton->setToggleButton(true);
   QToolTip::add(mAlarmProgramButton, i18n("No program set"));
   connect(mAlarmProgramButton, SIGNAL(clicked()), SLOT(pickAlarmProgram()));
