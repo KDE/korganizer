@@ -261,9 +261,11 @@ void KOrganizer::initActions()
   // edit menu
 
   action = KStdAction::cut(mCalendarView,SLOT(edit_cut()),actionCollection());
+  action->setEnabled(false);
   connect(mCalendarView,SIGNAL(eventsSelected(bool)),
           action,SLOT(setEnabled(bool)));
   action = KStdAction::copy(mCalendarView,SLOT(edit_copy()),actionCollection());
+  action->setEnabled(false);
   connect(mCalendarView,SIGNAL(eventsSelected(bool)),
           action,SLOT(setEnabled(bool)));
   action = KStdAction::paste(mCalendarView,SLOT(edit_paste()),
@@ -273,6 +275,7 @@ void KOrganizer::initActions()
   action = new KAction(i18n("&Delete"),"editdelete",0,
                     mCalendarView,SLOT(appointment_delete()),
                     actionCollection(), "edit_delete");
+  action->setEnabled(false);
   connect(mCalendarView,SIGNAL(eventsSelected(bool)),
           action,SLOT(setEnabled(bool)));
   KStdAction::find(mCalendarView->dialogManager(), SLOT(showSearchDialog()),
@@ -323,11 +326,13 @@ void KOrganizer::initActions()
   action = new KAction(i18n("&Show Appointment..."), 0,
                     mCalendarView,SLOT(appointment_show()),
                     actionCollection(), "show_appointment");
+  action->setEnabled(false);
   connect(mCalendarView,SIGNAL(eventsSelected(bool)),
           action,SLOT(setEnabled(bool)));
   action = new KAction(i18n("&Edit Appointment..."), 0,
                     mCalendarView,SLOT(appointment_edit()),
                     actionCollection(), "edit_appointment");
+  action->setEnabled(false);
   connect(mCalendarView,SIGNAL(eventsSelected(bool)),
           action,SLOT(setEnabled(bool)));
 #if 0
@@ -359,47 +364,53 @@ void KOrganizer::initActions()
   action = new KAction(i18n("Publish"),"mail_send",0,
                        mCalendarView,SLOT(schedule_publish()),
                        actionCollection(),"publish");
-  connect(mCalendarView,SIGNAL(eventsSelected(bool)),
+  action->setEnabled(false);
+  connect(mCalendarView,SIGNAL(organizerEventsSelected(bool)),
           action,SLOT(setEnabled(bool)));
   action = new KAction(i18n("Request"),"mail_forward",0,
                        mCalendarView,SLOT(schedule_request()),
                        actionCollection(),"request");
-  connect(mCalendarView,SIGNAL(eventsSelected(bool)),
+  action->setEnabled(false);
+  connect(mCalendarView,SIGNAL(organizerEventsSelected(bool)),
           action,SLOT(setEnabled(bool)));
   action = new KAction(i18n("Refresh"),0,
                        mCalendarView,SLOT(schedule_refresh()),
                        actionCollection(),"refresh");
-  connect(mCalendarView,SIGNAL(eventsSelected(bool)),
+  action->setEnabled(false);
+  connect(mCalendarView,SIGNAL(groupEventsSelected(bool)),
           action,SLOT(setEnabled(bool)));
   action = new KAction(i18n("Cancel"),0,
                        mCalendarView,SLOT(schedule_cancel()),
                        actionCollection(),"cancel");
-  connect(mCalendarView,SIGNAL(eventsSelected(bool)),
+  action->setEnabled(false);
+  connect(mCalendarView,SIGNAL(organizerEventsSelected(bool)),
           action,SLOT(setEnabled(bool)));
-  action = new KAction(i18n("Add"),0,
+/*  action = new KAction(i18n("Add"),0,
                        mCalendarView,SLOT(schedule_add()),
                        actionCollection(),"add");
   connect(mCalendarView,SIGNAL(eventsSelected(bool)),
           action,SLOT(setEnabled(bool)));
-  action = new KAction(i18n("Reply"),"mail_reply",0,
+*/  action = new KAction(i18n("Reply"),"mail_reply",0,
                        mCalendarView,SLOT(schedule_reply()),
                        actionCollection(),"reply");
-  connect(mCalendarView,SIGNAL(eventsSelected(bool)),
+  action->setEnabled(false);
+  connect(mCalendarView,SIGNAL(groupEventsSelected(bool)),
           action,SLOT(setEnabled(bool)));
   action = new KAction(i18n("Counter"),0,
                        mCalendarView,SLOT(schedule_counter()),
                        actionCollection(),"counter");
-  connect(mCalendarView,SIGNAL(eventsSelected(bool)),
+  action->setEnabled(false);
+  connect(mCalendarView,SIGNAL(groupEventsSelected(bool)),
           action,SLOT(setEnabled(bool)));
-  action = new KAction(i18n("Decline Counter"),0,
+/*  action = new KAction(i18n("Decline Counter"),0,
                        mCalendarView,SLOT(schedule_declinecounter()),
                        actionCollection(),"declinecounter");
   connect(mCalendarView,SIGNAL(eventsSelected(bool)),
           action,SLOT(setEnabled(bool)));
+*/
 
-  
   // Navigation menu
-  
+
   (void)new KAction(i18n("Go to &Today"), "today", 0,
                     mCalendarView,SLOT(goToday()),
                     actionCollection(), "go_today");

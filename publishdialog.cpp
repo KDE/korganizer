@@ -96,6 +96,8 @@ void PublishDialog::removeItem()
   if (!item) {
     mNameLineEdit->setText("");
     mEmailLineEdit->setText("");
+    mNameLineEdit->setEnabled(false);
+    mEmailLineEdit->setEnabled(false);
   }
   if (mAddressListView->childCount() == 0) {
     mNameLineEdit->setEnabled(false);
@@ -140,6 +142,8 @@ void PublishDialog::updateInput()
   QListViewItem *item;
   item = mAddressListView->selectedItem();
   if (!item) return;
+  mNameLineEdit->setEnabled(true);
+  mEmailLineEdit->setEnabled(true);
   QString mail = item->text(1);
   mNameLineEdit->setText(item->text(0));
   mEmailLineEdit->setText(mail);

@@ -280,9 +280,10 @@ bool IncomingDialog::incomeCounter(ScheduleItemIn *item)
   else {
     kdDebug() << "IncomingDialog::Counter:Decline" << endl;
     //the counter-sender's email is missing...
-    //mOutgoing->addMessage(counterevent,Scheduler::Declinecounter);
-    //delete item;
-    //emit numMessagesChanged(mMessageListView->childCount());
+    //now every attendee gets an declinecounter :-(
+    mOutgoing->addMessage(counterevent,Scheduler::Declinecounter);
+    delete item;
+    emit numMessagesChanged(mMessageListView->childCount());
     mScheduler->deleteTransaction(item->event());
     delete item;
     emit numMessagesChanged(mMessageListView->childCount());

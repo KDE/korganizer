@@ -148,7 +148,7 @@ void KOAgendaItem::updateIcons()
       mIconOrganizer->show();
     }
     else {
-      Attendee *me = mEvent->attendeeByMail(KOPrefs::instance()->email());
+      Attendee *me = mEvent->attendeeByMails(KOPrefs::instance()->mAdditionalMails,KOPrefs::instance()->email());
       if (me!=0) {
         if (me->status()==Attendee::NeedsAction && me->RSVP()) {
           mIconReply->show();

@@ -240,7 +240,7 @@ void KSummaries::calUpdated()
     elitem->setRecur(anEvent->recurrence()->doesRecur());
     elitem->setAlarm(anEvent->isAlarmEnabled());
 
-    Attendee *me = anEvent->attendeeByMail(KOPrefs::instance()->email());
+    Attendee *me = anEvent->attendeeByMails(KOPrefs::instance()->mAdditionalMails,KOPrefs::instance()->email());
     if (me!=0) {
       if (me->status()==Attendee::NeedsAction && me->RSVP()) elitem->setReply(true);
       else elitem->setReply(false);

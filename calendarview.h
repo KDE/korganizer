@@ -131,7 +131,11 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
   
     /** Emitted when state of events selection has changed. */
     void eventsSelected(bool);
-  
+   /** Emitted when state of events selection has changed and user is organizer*/
+    void organizerEventsSelected(bool);
+    /** Emitted when state of events selection has changed and user is attendee*/
+    void groupEventsSelected(bool);
+
     /** Emitted, when clipboard content changes. Parameter indicates if paste
      * is possible or not */
     void pasteEnabled(bool);
@@ -230,7 +234,7 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     
     /** write settings for calendar filters */
     void writeFilterSettings(KConfig *config);
-      
+
     /** passes on the message that an event has changed to the currently
      * activated view so that it can make appropriate display changes. */
     void changeEventDisplay(Event *, int);
@@ -265,7 +269,7 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     void print();
     void printSetup();
     void printPreview();
-  
+
     /** Export as iCalendar file */
     void exportICalendar();
   
@@ -370,7 +374,7 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     //Attendee* getYourAttendee(Event *event);
   
   protected:
-    void schedule(Scheduler::Method);
+    void schedule(Scheduler::Method, Event *event = 0);
     
     // returns KMsgBox::OKCandel()
     int msgItemDelete();

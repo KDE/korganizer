@@ -27,6 +27,7 @@
 #include <qframe.h>
 #include <qdict.h>
 #include <qcolor.h>
+#include <qlistview.h>
 
 #include <kdialogbase.h>
 
@@ -63,6 +64,12 @@ class KOPrefsDialog : public KPrefsDialog
     void warningProjectView();
 
     void toggleEmailSettings(bool);
+    
+    //additional emails
+    void addItem();
+    void removeItem();
+    void updateItem();
+    void updateInput();
 
   protected:
     void usrReadConfig();
@@ -79,18 +86,19 @@ class KOPrefsDialog : public KPrefsDialog
 
     void setCombo(QComboBox *combo,const QString & text, const QStringList *tags = 0);
 
+
   private:
     KPrefsWidBool *mEnableGroupScheduling;
     KPrefsWidBool *mEnableProjectView;
 
     QFrame *mPrinterTab;
-  
+
     QLineEdit *nameEdit;
     QLineEdit *emailEdit;
-  
+
     QComboBox *timeCombo;
     QComboBox *tzCombo;
-  
+
     // widgets holding preferences data
     QLineEdit *mNameEdit;
     QLineEdit *mEmailEdit;
@@ -98,7 +106,9 @@ class KOPrefsDialog : public KPrefsDialog
     QSpinBox  *mAutoSaveIntervalSpin;
     QComboBox *mHolidayCombo;
     QStringList mHolidayList;
-  
+    QListView *mAMails;
+    QLineEdit *aEmailsEdit;
+
     QComboBox    *mTimeZoneCombo;
     QSpinBox     *mStartTimeSpin;
     QSpinBox     *mDefaultDurationSpin;

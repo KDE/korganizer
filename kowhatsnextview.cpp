@@ -134,7 +134,7 @@ void KOWhatsNextView::updateView()
     int replys = 0;
     Event *ev = events.first();
     while(ev) {
-      Attendee *me = ev->attendeeByMail(KOPrefs::instance()->email());
+      Attendee *me = ev->attendeeByMails(KOPrefs::instance()->mAdditionalMails,KOPrefs::instance()->email());
       if (me!=0) {
         if (me->status()==Attendee::NeedsAction && me->RSVP()) {
           if (replys == 0) {
@@ -149,7 +149,7 @@ void KOWhatsNextView::updateView()
     }
     if (replys > 0 ) mText += i18n("</table>\n");
   }
-  
+
   QPtrList<Todo> todos = calendar()->getTodoList();
   if (todos.count() > 0) {
     mText += i18n("<h2>To-Do:</h2>\n");

@@ -500,7 +500,7 @@ void KOPrefsDialog::setupGroupSchedulingTab()
   QFrame *topFrame  = addPage(i18n("Group Scheduling"),0,
                               DesktopIcon("personal",KIcon::SizeMedium));
 
-  QGridLayout *topLayout = new QGridLayout(topFrame,5,2);
+  QGridLayout *topLayout = new QGridLayout(topFrame,6,2);
   topLayout->setSpacing(spacingHint());
   topLayout->setMargin(marginHint());
 
@@ -520,8 +520,26 @@ void KOPrefsDialog::setupGroupSchedulingTab()
 
   topLayout->addMultiCellWidget(sendGroup->groupBox(),1,1,0,1);
 
+  topLayout->addMultiCellWidget(new QLabel(i18n("Additional email addresses:"),topFrame),2,2,0,1);
+  mAMails = new QListView(topFrame);
+  mAMails->addColumn(i18n("Email"),300);
+  topLayout->addMultiCellWidget(mAMails,3,3,0,1);
 
-  topLayout->setRowStretch(2,1);
+  topLayout->addWidget(new QLabel(i18n("Additional email address:"),topFrame),4,0);
+  aEmailsEdit = new QLineEdit(topFrame);
+  aEmailsEdit->setEnabled(false);
+  topLayout->addWidget(aEmailsEdit,4,1);
+
+  QPushButton *add = new QPushButton("New",topFrame,"new");
+  topLayout->addWidget(add,5,0);
+  QPushButton *del = new QPushButton("Remove",topFrame,"remove");
+  topLayout->addWidget(del,5,1);
+
+  //topLayout->setRowStretch(2,1);
+  connect(add, SIGNAL( clicked() ), this, SLOT(addItem()) );
+  connect(del, SIGNAL( clicked() ), this, SLOT(removeItem()) );
+  connect(aEmailsEdit,SIGNAL( textChanged(const QString&) ), this,SLOT(updateItem()));
+  connect(mAMails,SIGNAL(selectionChanged(QListViewItem *)),SLOT(updateInput()));
 }
 
 void KOPrefsDialog::showPrinterTab()
@@ -564,6 +582,14 @@ void KOPrefsDialog::usrReadConfig()
   mHourSizeSlider->setValue(KOPrefs::instance()->mHourSize);
 
   mPrintPreviewEdit->lineEdit()->setText(KOPrefs::instance()->mPrintPreview);
+  
+  mAMails->clear();
+  for ( QStringList::Iterator it = KOPrefs::instance()->mAdditionalMails.begin();
+            it != KOPrefs::instance()->mAdditionalMails.end(); ++it ) {
+    QListViewItem *item = new QListViewItem(mAMails);
+    item->setText(0,*it);
+    mAMails->insertItem(item);
+  }
 }
 
 
@@ -593,6 +619,17 @@ void KOPrefsDialog::usrWriteConfig()
   mCategoryDict.clear();
 
   KOPrefs::instance()->mPrintPreview = mPrintPreviewEdit->lineEdit()->text();
+
+  KOPrefs::instance()->mAdditionalMails.clear();
+  QListViewItem *item;
+  int i, count;
+  count = mAMails->childCount();
+  for (i=0;i<count;i++) {
+    item = mAMails->firstChild();
+    mAMails->takeItem(item);
+    KOPrefs::instance()->mAdditionalMails.append( item->text(0) );
+  }
+
 }
 
 void KOPrefsDialog::updateCategories()
@@ -638,4 +675,46 @@ void KOPrefsDialog::toggleEmailSettings(bool on)
     mEmailEdit->setEnabled(true);
     mNameEdit->setEnabled(true);
   }
+}
+
+void KOPrefsDialog::addItem()
+{
+  aEmailsEdit->setEnabled(true);
+  QListViewItem *item = new QListViewItem(mAMails);
+  mAMails->insertItem(item);
+  mAMails->setSelected(item,true);
+  aEmailsEdit->setText(i18n("(EmptyEmail)"));
+}
+
+void KOPrefsDialog::removeItem()
+{
+  QListViewItem *item;
+  item = mAMails->selectedItem();
+  if (!item) return;
+  mAMails->takeItem(item);
+  item = mAMails->selectedItem();
+  if (!item) {
+    aEmailsEdit->setText("");
+    aEmailsEdit->setEnabled(false);
+  }
+  if (mAMails->childCount() == 0) {
+    aEmailsEdit->setEnabled(false);
+  }
+}
+
+void KOPrefsDialog::updateItem()
+{
+  QListViewItem *item;
+  item = mAMails->selectedItem();
+  if (!item) return;
+  item->setText(0,aEmailsEdit->text());
+}
+
+void KOPrefsDialog::updateInput()
+{
+  QListViewItem *item;
+  item = mAMails->selectedItem();
+  if (!item) return;
+  aEmailsEdit->setEnabled(true);
+  aEmailsEdit->setText(item->text(0));
 }

@@ -112,7 +112,7 @@ CalendarView::CalendarView(QWidget *parent,const char *name)
 
   mModified = false;
   mReadOnly = false;
-  mEventsSelected = true;
+  mEventsSelected = false;
 
   mCalPrinter = 0;
 
@@ -854,6 +854,8 @@ void CalendarView::deleteEvent(Event *anEvent)
              i18n("KOrganizer Confirmation"),i18n("&Continue"))) {
 
       case KMessageBox::Continue: // all
+        if (anEvent->organizer()==KOPrefs::instance()->email())
+          schedule(Scheduler::Cancel,anEvent);
         mCalendar->deleteEvent(anEvent);
         changeEventDisplay(anEvent,KOGlobals::EVENTDELETED);
         break;
@@ -877,11 +879,15 @@ void CalendarView::deleteEvent(Event *anEvent)
     if (KOPrefs::instance()->mConfirm) {
       switch (msgItemDelete()) {
         case KMessageBox::Continue: // OK
+          if (anEvent->organizer()==KOPrefs::instance()->email())
+	    schedule(Scheduler::Cancel,anEvent);
           mCalendar->deleteEvent(anEvent);
           changeEventDisplay(anEvent, KOGlobals::EVENTDELETED);
           break;
       } // switch
     } else {
+      if (anEvent->organizer()==KOPrefs::instance()->email())
+        schedule(Scheduler::Cancel,anEvent);
       mCalendar->deleteEvent(anEvent);
       changeEventDisplay(anEvent, KOGlobals::EVENTDELETED);
     }
@@ -1013,15 +1019,15 @@ void CalendarView::schedule_declinecounter()
   schedule(Scheduler::Declinecounter);
 }
 
-void CalendarView::schedule(Scheduler::Method method)
+void CalendarView::schedule(Scheduler::Method method, Event *event = 0)
 {
-  Event *event = 0;
-
-  Incidence *incidence = mViewManager->currentView()->selectedIncidences().first();
-
-  if (mViewManager->currentView()->isEventView()) {
-    if ( incidence && incidence->type() == "Event" ) {
-      event = static_cast<Event *>(incidence);
+//  Event *event = 0;
+  if (event == 0) {
+    Incidence *incidence = mViewManager->currentView()->selectedIncidences().first();
+    if (mViewManager->currentView()->isEventView()) {
+      if ( incidence && incidence->type() == "Event" ) {
+        event = static_cast<Event *>(incidence);
+      }
     }
   }
 
@@ -1032,13 +1038,14 @@ void CalendarView::schedule(Scheduler::Method method)
 
   Event *ev = new Event(*event);
 
-  if( ev->attendeeCount() == 0 && method != Scheduler::Publish ) {
+  if( event->attendeeCount() == 0 && method != Scheduler::Publish ) {
     KMessageBox::sorry(this,i18n("The event has no attendees."));
     return;
   }
 
   if (method == Scheduler::Reply ) {
-    Attendee *me = event->attendeeByMail(KOPrefs::instance()->email());
+    Attendee *me = event->attendeeByMails(KOPrefs::instance()->mAdditionalMails,KOPrefs::instance()->email());
+    //Attendee *me = event->attendeeByMail(KOPrefs::instance()->email());
     if (!me) {
       KMessageBox::sorry(this,i18n("Could not find your attendee entry. Please check the emails."));
       return;
@@ -1046,13 +1053,13 @@ void CalendarView::schedule(Scheduler::Method method)
     if (me->status()==Attendee::NeedsAction && me->RSVP()) {
       StatusDialog *statdlg = new StatusDialog(this);
       if (!statdlg->exec()==QDialog::Accepted) return;
-      me->setStatus( statdlg->status() );//Attendee::Accepted  );
+      me->setStatus( statdlg->status() );
       delete(statdlg);
-      me->setRSVP(false);
+      //me->setRSVP(false);
     }
     Attendee *menew = new Attendee(*me);
     ev->clearAttendees();
-    ev->addAttendee(menew);
+    ev->addAttendee(menew,false);
   }
 
   OutgoingDialog *dlg = mDialogManager->outgoingDialog();
@@ -1220,15 +1227,46 @@ void CalendarView::processEventSelection(bool selected)
 {
   // Do nothing, if state hasn't changed
 // Disabled because initial state wasn't propagated correctly
-  if (mEventsSelected == selected) return;
+//  if (mEventsSelected == selected) return;
 
   mEventsSelected = selected;
   emit eventsSelected(mEventsSelected);
+
+  Event *event = 0;
+  if (mViewManager->currentView()) {
+  Incidence *incidence = mViewManager->currentView()->selectedIncidences().first();
+  if (mViewManager->currentView()->isEventView()) {
+    if ( incidence && incidence->type() == "Event" ) {
+      event = static_cast<Event *>(incidence);
+    }
+  }
+  }
+  if (event) {
+    if (event->organizer()==KOPrefs::instance()->email()) {
+      emit organizerEventsSelected(mEventsSelected);
+    }
+    else {
+      emit organizerEventsSelected(false);
+    }
+
+    if (event->attendeeByMails(KOPrefs::instance()->mAdditionalMails,KOPrefs::instance()->email())) {
+//    if (event->attendeeByMail(KOPrefs::instance()->email())) {
+      emit groupEventsSelected(mEventsSelected);
+    }
+    else {
+      emit groupEventsSelected(false);
+    }
+  }
+  else {
+     emit organizerEventsSelected(false);
+     emit groupEventsSelected(false);
+  }
 }
 
 void CalendarView::emitEventsSelected()
 {
-  emit eventsSelected(mEventsSelected);
+//  emit eventsSelected(mEventsSelected);
+  processEventSelection(mEventsSelected);
 }
 
 void CalendarView::checkClipboard()
@@ -1314,7 +1352,7 @@ void CalendarView::takeOverCalendar()
     events.at(i)->recreate();
     events.at(i)->setReadOnly(false);
   }
-  
+
   QPtrList<Todo> todos = mCalendar->getTodoList();
   for(uint i=0; i<todos.count(); ++i) {
     todos.at(i)->setOrganizer(KOPrefs::instance()->email());
