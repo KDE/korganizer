@@ -1203,8 +1203,8 @@ void ActionManager::processIncidenceSelection( Incidence *incidence )
     mDeleteIncidenceAction->setText( i18n("&Delete To-Do") );
   } else {
     mShowIncidenceAction->setText( i18n("&Show") );
-    mShowIncidenceAction->setText( i18n("&Edit...") );
-    mShowIncidenceAction->setText( i18n("&Delete") );
+    mEditIncidenceAction->setText( i18n("&Edit...") );
+    mDeleteIncidenceAction->setText( i18n("&Delete") );
  }
 }
 
