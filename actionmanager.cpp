@@ -499,7 +499,7 @@ void ActionManager::initActions()
                     mCalendarView,SLOT( goToday() ),
                     mACollection, "go_today" );
 
-  action = new KAction( i18n("Go &Backward"), isRTL ? "1rightarrow" : "1leftarrow", 0,
+  action = new KAction( i18n("Go &Backward"), isRTL ? "forward" : "back", 0,
                        mCalendarView,SLOT( goPrevious() ),
                        mACollection, "go_previous" );
 
@@ -512,7 +512,7 @@ void ActionManager::initActions()
           this,SLOT( dumpText( const QString & ) ) );
 */
 
-  action = new KAction( i18n("Go &Forward"), isRTL ? "1leftarrow" : "1rightarrow", 0,
+  action = new KAction( i18n("Go &Forward"), isRTL ? "back" : "forward", 0,
                        mCalendarView,SLOT( goNext() ),
                        mACollection, "go_next" );
 
