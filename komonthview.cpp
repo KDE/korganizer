@@ -109,7 +109,7 @@ void KNoScrollListBox::setBackground( bool primary, bool workDay )
   } else {
     pal.setColor( QColorGroup::Base, color.dark( 115 ) );
   }
-  setPalette( pal );  
+  setPalette( pal );
 }
 
 void KNoScrollListBox::keyPressEvent( QKeyEvent *e )
@@ -285,7 +285,7 @@ int MonthViewItem::width( const QListBox *lb ) const
 
 MonthViewCell::MonthViewCell( KOMonthView *parent)
   : QWidget( parent ),
-    mMonthView( parent )
+    mMonthView( parent ), mPrimary( false ), mHoliday( false )
 {
   QVBoxLayout *topLayout = new QVBoxLayout( this );
 
