@@ -654,53 +654,69 @@ void KOAgenda::endSelectAction( const QPoint &currentPos )
   }
 }
 
+KOAgenda::MouseActionType KOAgenda::isInResizeArea( bool horizontal, 
+    const QPoint &pos, KOAgendaItem*item )
+{
+  if (!item) return NOP;
+  QPoint gridpos = contentsToGrid( pos );
+  QPoint contpos = gridToContents( gridpos + 
+      QPoint( (KOGlobals::self()->reverseLayout())?1:0, 0 ) );
+
+//kdDebug()<<"contpos="<<contpos<<", pos="<<pos<<", gpos="<<gpos<<endl;
+//kdDebug()<<"clXLeft="<<clXLeft<<", clXRight="<<clXRight<<endl;
+
+  if ( horizontal ) {
+    int clXLeft = item->cellXLeft();
+    int clXRight = item->cellXRight();
+    if ( KOGlobals::self()->reverseLayout() ) {
+      int tmp = clXLeft;
+      clXLeft = clXRight;
+      clXRight = tmp;
+    }
+    int gridDistanceX = int( pos.x() - contpos.x() );
+    if (gridDistanceX < mResizeBorderWidth && clXLeft == gridpos.x() ) {
+      if ( KOGlobals::self()->reverseLayout() ) return RESIZERIGHT;
+      else return RESIZELEFT;
+    } else if ((mGridSpacingX - gridDistanceX) < mResizeBorderWidth &&
+               clXRight == gridpos.x() ) {
+      if ( KOGlobals::self()->reverseLayout() ) return RESIZELEFT;
+      else return RESIZERIGHT;
+    } else {
+      return MOVE;
+    }
+  } else {
+    int gridDistanceY = int( pos.y() - contpos.y() );
+    if (gridDistanceY < mResizeBorderWidth &&
+        item->cellYTop() == gridpos.y() &&
+        !item->firstMultiItem() ) {
+      return RESIZETOP;
+    } else if ((mGridSpacingY - gridDistanceY) < mResizeBorderWidth &&
+               item->cellYBottom() == gridpos.y() &&
+               !item->lastMultiItem() )  {
+      return RESIZEBOTTOM;
+    } else {
+      return MOVE;
+    }
+  }
+}
+
 void KOAgenda::startItemAction(const QPoint& viewportPos)
 {
   QPoint pos = viewportToContents( viewportPos );
-  QPoint gpos = contentsToGrid( pos );
-
-  mStartCell = gpos;
-  mEndCell = gpos;
+  mStartCell = contentsToGrid( pos );
+  mEndCell = mStartCell;
+  
   bool noResize = ( mActionItem->incidence()->type() == "Todo");
-
-
-  if (mAllDayMode) {
-    int gridDistanceX = int( pos.x() - gpos.x() * mGridSpacingX );
-    if (gridDistanceX < mResizeBorderWidth &&
-        mActionItem->cellXLeft() == mEndCell.x() &&
-        !noResize ) {
-      mActionType = RESIZELEFT;
-      setCursor(sizeHorCursor);
-    } else if ((mGridSpacingX - gridDistanceX) < mResizeBorderWidth &&
-               mActionItem->cellXRight() == mEndCell.x() &&
-               !noResize ) {
-      mActionType = RESIZERIGHT;
-      setCursor(sizeHorCursor);
-    } else {
-      mActionType = MOVE;
-      mActionItem->startMove();
-      setCursor(sizeAllCursor);
-    }
-  } else {
-    int gridDistanceY = int( pos.y() - gpos.y() * mGridSpacingY );
-    if (gridDistanceY < mResizeBorderWidth &&
-        mActionItem->cellYTop() == mEndCell.y() &&
-        !mActionItem->firstMultiItem() &&
-        !noResize ) {
-      mActionType = RESIZETOP;
-      setCursor(sizeVerCursor);
-    } else if ((mGridSpacingY - gridDistanceY) < mResizeBorderWidth &&
-               mActionItem->cellYBottom() == mEndCell.y() &&
-               !mActionItem->lastMultiItem() &&
-               !noResize )  {
-      mActionType = RESIZEBOTTOM;
-      setCursor(sizeVerCursor);
-    } else {
-      mActionType = MOVE;
-      mActionItem->startMove();
-      setCursor(sizeAllCursor);
-    }
+  
+  mActionType = MOVE;
+  if ( !noResize ) {
+    mActionType = isInResizeArea( mAllDayMode, pos, mActionItem );
   }
+
+  if ( mActionType==MOVE ) {
+    mActionItem->startMove();
+  };
+  setActionCursor( mActionType, true );
 }
 
 void KOAgenda::performItemAction(const QPoint& viewportPos)
@@ -734,21 +750,7 @@ void KOAgenda::performItemAction(const QPoint& viewportPos)
       return;
     }
   } else {
-    switch ( mActionType ) {
-      case MOVE:
-        setCursor( sizeAllCursor );
-        break;
-      case RESIZETOP:
-      case RESIZEBOTTOM:
-        setCursor( sizeVerCursor );
-        break;
-      case RESIZELEFT:
-      case RESIZERIGHT:
-        setCursor( sizeHorCursor );
-        break;
-      default:
-        setCursor( arrowCursor );
-    }
+    setActionCursor( mActionType );
   }
 
   // Scroll if item was moved to upper or lower end of agenda.
@@ -854,42 +856,30 @@ void KOAgenda::performItemAction(const QPoint& viewportPos)
           changed=true;
         }
         if (changed) {
-          moveItem->resize( int( mGridSpacingX * moveItem->cellWidth() ),
-                            int( mGridSpacingY * moveItem->cellHeight() ) );
-          QPoint cpos = gridToContents( QPoint( moveItem->cellXLeft(), moveItem->cellYTop() ) );
-          moveChild( moveItem, cpos.x(), cpos.y() );
+          adjustItemPosition( moveItem );
         }
         moveItem = moveItem->nextMultiItem();
       }
     } else if (mActionType == RESIZETOP) {
       if (mEndCell.y() <= mActionItem->cellYBottom()) {
         mActionItem->expandTop(gpos.y() - mEndCell.y());
-        mActionItem->resize(mActionItem->width(),
-                            int( mGridSpacingY * mActionItem->cellHeight() ));
-        // TODO_RK: Simplify:
-        QPoint cpos = gridToContents( QPoint( mEndCell.x(), mActionItem->cellYTop() ) );
-        moveChild( mActionItem, childX(mActionItem), cpos.y() );
+        adjustItemPosition( mActionItem );
       }
     } else if (mActionType == RESIZEBOTTOM) {
       if (mEndCell.y() >= mActionItem->cellYTop()) {
         mActionItem->expandBottom(gpos.y() - mEndCell.y());
-        mActionItem->resize(mActionItem->width(),
-                            int( mGridSpacingY * mActionItem->cellHeight() ));
+        adjustItemPosition( mActionItem );
       }
     } else if (mActionType == RESIZELEFT) {
-       if (mEndCell.x() <= mActionItem->cellXRight()) {
-         mActionItem->expandLeft(gpos.x() - mEndCell.x());
-         mActionItem->resize( int(mGridSpacingX * mActionItem->cellWidth() ),
-                              mActionItem->height() );
-        QPoint cpos = gridToContents( QPoint( mActionItem->cellXLeft(),mActionItem->cellYTop() ) );
-        moveChild(mActionItem, cpos.x(), childY(mActionItem));
-       }
+      if (mEndCell.x() <= mActionItem->cellXRight()) {
+        mActionItem->expandLeft( gpos.x() - mEndCell.x() );
+        adjustItemPosition( mActionItem );
+      }
     } else if (mActionType == RESIZERIGHT) {
-       if (mEndCell.x() >= mActionItem->cellXLeft()) {
-         mActionItem->expandRight(gpos.x() - mEndCell.x());
-         mActionItem->resize( int( mGridSpacingX * mActionItem->cellWidth() ),
-                              mActionItem->height());
-       }
+      if (mEndCell.x() >= mActionItem->cellXLeft()) {
+        mActionItem->expandRight(gpos.x() - mEndCell.x());
+        adjustItemPosition( mActionItem );
+      }
     }
     mEndCell = gpos;
   }
@@ -934,6 +924,26 @@ void KOAgenda::endItemAction()
 
   kdDebug(5850) << "KOAgenda::endItemAction() done" << endl;
 }
+    
+void KOAgenda::setActionCursor( int actionType, bool acting ) 
+{
+  switch ( actionType ) {
+    case MOVE:
+      if (acting) setCursor( sizeAllCursor );
+      else setCursor( arrowCursor );
+      break;
+    case RESIZETOP:
+    case RESIZEBOTTOM:
+      setCursor( sizeVerCursor );
+      break;
+    case RESIZELEFT:
+    case RESIZERIGHT:
+      setCursor( sizeHorCursor );
+      break;
+    default:
+      setCursor( arrowCursor );
+  }
+}
 
 void KOAgenda::setNoActionCursor( KOAgendaItem *moveItem, const QPoint& viewportPos )
 {
@@ -944,41 +954,12 @@ void KOAgenda::setNoActionCursor( KOAgendaItem *moveItem, const QPoint& viewport
 //  kdDebug(5850) << "clipper: " << point.x() << "," << point.y() << endl;
 
   QPoint pos = viewportToContents( viewportPos );
-//  kdDebug(5850) << "contents: " << x << "," << y << endl  << endl;
-  QPoint gpos = contentsToGrid( pos );
   bool noResize = (moveItem && moveItem->incidence() &&
       moveItem->incidence()->type() == "Todo");
-
-  // Change cursor to resize cursor if appropriate
-  if (mAllDayMode) {
-    int gridDistanceX = int( pos.x() - gpos.x() * mGridSpacingX );
-    if ( !noResize &&
-         gridDistanceX < mResizeBorderWidth &&
-         moveItem->cellXLeft() == gpos.x() ) {
-      setCursor(sizeHorCursor);
-    } else if ( !noResize &&
-                (mGridSpacingX - gridDistanceX) < mResizeBorderWidth &&
-                moveItem->cellXRight() == gpos.x() ) {
-      setCursor(sizeHorCursor);
-    } else {
-      setCursor(arrowCursor);
-    }
-  } else {
-    int gridDistanceY = int( pos.y() - gpos.y() * mGridSpacingY );
-    if ( !noResize &&
-         gridDistanceY < mResizeBorderWidth &&
-         moveItem->cellYTop() == gpos.y() &&
-         !moveItem->firstMultiItem() ) {
-      setCursor(sizeVerCursor);
-    } else if ( !noResize &&
-                (mGridSpacingY - gridDistanceY) < mResizeBorderWidth &&
-                moveItem->cellYBottom() == gpos.y() &&
-                !moveItem->lastMultiItem()) {
-      setCursor(sizeVerCursor);
-    } else {
-      setCursor(arrowCursor);
-    }
-  }
+  
+  KOAgenda::MouseActionType resizeType = MOVE;
+  if ( !noResize ) resizeType = isInResizeArea( mAllDayMode, pos , moveItem);
+  setActionCursor( resizeType );
 }
 
 
@@ -998,6 +979,18 @@ double KOAgenda::calcSubCellWidth( KOAgendaItem *item )
     newSubCellWidth = double( pt1.x() ) / maxSubCells;
   }
   return newSubCellWidth;
+}
+
+void KOAgenda::adjustItemPosition( KOAgendaItem *item ) 
+{
+  if (!item) return;
+  item->resize( int( mGridSpacingX * item->cellWidth() ),
+                int( mGridSpacingY * item->cellHeight() ) );
+  int clXLeft = item->cellXLeft();
+  if ( KOGlobals::self()->reverseLayout() ) 
+    clXLeft = item->cellXRight() + 1;
+  QPoint cpos = gridToContents( QPoint( clXLeft, item->cellYTop() ) );
+  moveChild( item, cpos.x(), cpos.y() );
 }
 
 void KOAgenda::placeAgendaItem( KOAgendaItem *item, double subCellWidth )
@@ -1029,11 +1022,11 @@ void KOAgenda::placeAgendaItem( KOAgendaItem *item, double subCellWidth )
     xpos = pt.x() + int( subCellPos );
     ypos = pt.y();
   }
-  if (width<0) { // RTL language/layout
+  if ( KOGlobals::self()->reverseLayout() ) { // RTL language/layout
     xpos += width;
     width = -width;
   }
-  if (height<0) { // BTT (bottom-to-top) layout ?!?
+  if ( height<0 ) { // BTT (bottom-to-top) layout ?!?
     ypos += height;
     height = -height;
   }
@@ -1349,7 +1342,6 @@ KOAgendaItem *KOAgenda::insertItem( Incidence *incidence, QDate qd, int X, int Y
   return agendaItem;
 }
 
-
 /*
   Insert all-day KOAgendaItem into agenda.
 */
@@ -1438,8 +1430,6 @@ void KOAgenda::insertMultiItem (Event *event,QDate qd,int XBegin,int XEnd,
 
 void KOAgenda::removeIncidence( Incidence *incidence )
 {
-  // TODO_RK: make sure the conflicting items are updated correctly
-
   // First find all items to be deleted and store them
   // in its own list. Otherwise removeAgendaItem will reset
   // the current position and mess this up.
