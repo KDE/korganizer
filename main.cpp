@@ -65,6 +65,7 @@ int main (int argc, char **argv)
   aboutData.addCredit("Neil Hart");
   aboutData.addCredit("Declan Houlihan");
   aboutData.addCredit("Hans-Jürgen Husel");
+  aboutData.addCredit("Reinhold Kainhofer");
   aboutData.addCredit("Christian Kirsch");
   aboutData.addCredit("Uwe Koloska");
   aboutData.addCredit("Glen Parker");
