@@ -39,7 +39,7 @@ QString CellItem::label() const
 QPtrList<CellItem> CellItem::placeItem( QPtrList<CellItem> cells,
                                         CellItem *placeItem )
 {
-  kdDebug(5855) << "Placing " << placeItem->label() << endl;
+//  kdDebug(5855) << "Placing " << placeItem->label() << endl;
 
   QPtrList<KOrg::CellItem> conflictItems;
   int maxSubCells = 0;
@@ -52,7 +52,7 @@ QPtrList<CellItem> CellItem::placeItem( QPtrList<CellItem> cells,
     if ( item == placeItem ) continue;
 
     if ( item->overlaps( placeItem ) ) {
-      kdDebug(5855) << "  Overlaps: " << item->label() << endl;
+//      kdDebug(5855) << "  Overlaps: " << item->label() << endl;
 
       conflictItems.append( item );
       if ( item->subCells() > maxSubCells ) maxSubCells = item->subCells();
@@ -64,20 +64,20 @@ QPtrList<CellItem> CellItem::placeItem( QPtrList<CellItem> cells,
     // Look for unused sub cell and insert item
     int i;
     for( i = 0; i < maxSubCells; ++i ) {
-      kdDebug(5855) << "  Trying subcell " << i << endl;
+//      kdDebug(5855) << "  Trying subcell " << i << endl;
       if ( !subCellDict.find( i ) ) {
-        kdDebug(5855) << "  Use subcell " << i << endl;
+//        kdDebug(5855) << "  Use subcell " << i << endl;
         placeItem->setSubCell( i );
         break;
       }
     }
     if ( i == maxSubCells ) {
-      kdDebug(5855) << "  New subcell " << i << endl;
+//      kdDebug(5855) << "  New subcell " << i << endl;
       placeItem->setSubCell( maxSubCells );
       maxSubCells++;  // add new item to number of sub cells
     }
 
-    kdDebug(5855) << "  Sub cells: " << maxSubCells << endl;
+//    kdDebug(5855) << "  Sub cells: " << maxSubCells << endl;
 
     // Write results to item to be placed
     conflictItems.append( placeItem );
@@ -89,7 +89,7 @@ QPtrList<CellItem> CellItem::placeItem( QPtrList<CellItem> cells,
     }
     // Todo: Adapt subCells of items conflicting with conflicting items
   } else {
-    kdDebug(5855) << "  no conflicts" << endl;
+//    kdDebug(5855) << "  no conflicts" << endl;
     placeItem->setSubCell( 0 );
     placeItem->setSubCells( 1 );
   }
