@@ -499,9 +499,9 @@ QPtrList<Incidence> KOAgendaView::selectedIncidences()
   return selectedEvents;
 }
 
-QValueList<QDate> KOAgendaView::selectedIncidencesDates()
+DateList KOAgendaView::selectedDates()
 {
-  QValueList<QDate> selectedEventsDates;
+  DateList selectedEventsDates;
   QDate qd;
 
   qd = mAgenda->selectedEventDate();

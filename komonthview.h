@@ -167,7 +167,7 @@ class KOMonthView: public KOEventView
     virtual QPtrList<Incidence> selectedIncidences();
 
     /** returns dates of the currently selected events */
-    virtual QValueList<QDate> selectedIncidencesDates();
+    virtual DateList selectedDates();
     
     virtual void printPreview(CalPrinter *calPrinter,
                               const QDate &, const QDate &);

@@ -105,7 +105,7 @@
     <Action name="publish"/>
     <Action name="request"/>
     <Action name="reply"/>
-    <Action name="addresbook"/>
+    <Action name="addressbook"/>
   </ToolBar>
 
 </kpartgui>

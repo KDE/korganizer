@@ -45,8 +45,8 @@ class KOJournalView : public KOrg::BaseView
 
     virtual int currentDateCount();
     virtual QPtrList<Incidence> selectedIncidences();
-    QValueList<QDate> selectedIncidencesDates()
-      {QValueList<QDate> q;
+    DateList selectedDates()
+      {DateList q;
        return q;}
   public slots:
     void updateView();

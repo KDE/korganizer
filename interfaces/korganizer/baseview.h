@@ -88,7 +88,7 @@ class BaseView : public QWidget
       select a single event at a time, but some may be able to select
       more than one.
     */
-    virtual QValueList<QDate> selectedIncidencesDates() = 0;
+    virtual DateList selectedDates() = 0;
     
     /**
       Generate a print preview of this event view.

@@ -190,10 +190,9 @@ QPtrList<Incidence> KOListView::selectedIncidences()
   return eventList;
 }
 
-QValueList<QDate> KOListView::selectedIncidencesDates()
+DateList KOListView::selectedDates()
 {
-  QValueList<QDate> eventList;
-
+  DateList eventList;
   return eventList;
 }
 

@@ -266,9 +266,9 @@ QPtrList<Incidence> KOProjectView::selectedIncidences()
   return selected;
 }
 
-QValueList<QDate> KOProjectView::selectedIncidencesDates()
+DateList KOProjectView::selectedDates()
 {
-  QValueList<QDate> selected;
+  DateList selected;
   return selected;
 }
 

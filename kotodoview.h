@@ -97,8 +97,8 @@ class KOTodoView : public KOrg::BaseView
     QPtrList<Incidence> selectedIncidences();
     QPtrList<Todo> selectedTodos();
     
-    QValueList<QDate> selectedIncidencesDates()
-      {QValueList<QDate> q;
+    DateList selectedDates()
+      {DateList q;
        return q;}
 
     /** Return number of shown dates. TodoView does not show dates, */

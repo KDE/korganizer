@@ -531,9 +531,9 @@ QPtrList<Incidence> KOMonthView::selectedIncidences()
   return selected;
 }
 
-QValueList<QDate> KOMonthView::selectedIncidencesDates()
+DateList KOMonthView::selectedDates()
 {
-  QValueList<QDate> selected;
+  DateList selected;
 
   if ( mSelectedCell ) {
     QDate qd = mSelectedCell->selectedIncidenceDate();

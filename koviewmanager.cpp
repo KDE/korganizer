@@ -387,7 +387,7 @@ QDate KOViewManager::currentSelectionDate()
 {
   QDate qd;
   if (mCurrentView) {
-    QValueList<QDate> qvl = mCurrentView->selectedIncidencesDates();
+    DateList qvl = mCurrentView->selectedDates();
     if (!qvl.isEmpty()) qd = qvl.first();
   }
   return qd;
