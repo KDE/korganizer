@@ -171,7 +171,7 @@ void CalendarView::init()
   QWidget *rightBox = new QWidget( mPanner );
   QBoxLayout *rightLayout = new QVBoxLayout( rightBox );
 
-  mNavigatorBar = new NavigatorBar( rightBox );
+  mNavigatorBar = new NavigatorBar( QDate::currentDate(), rightBox );
   rightLayout->addWidget( mNavigatorBar );
   
   mRightFrame = new QWidgetStack( rightBox );

@@ -44,7 +44,7 @@
 
 #include "navigatorbar.h"
 
-NavigatorBar::NavigatorBar( QWidget *parent, const char *name )
+NavigatorBar::NavigatorBar( const QDate & date, QWidget *parent, const char *name )
   : QWidget( parent, name )
 {
   QBoxLayout *topLayout = new QHBoxLayout( this );
@@ -90,8 +90,10 @@ NavigatorBar::NavigatorBar( QWidget *parent, const char *name )
   int maxwidth = 0;
   QFontMetrics fm = mDateLabel->fontMetrics();
 
-  for( i = 1; i <= 12; ++i ) {
-    int width = fm.width( KOGlobals::self()->calendarSystem()->monthName(i) + " 2000" );
+  for( i = 1; i <= KOGlobals::self()->calendarSystem()->monthsInYear(date);
+      ++i ) {
+    int width = fm.width( KOGlobals::self()->calendarSystem()->monthName(i,
+        KOGlobals::self()->calendarSystem()->year(date) ) + " 2000" );
     if ( width > maxwidth ) maxwidth = width;
   }
   mDateLabel->setMinimumWidth( maxwidth );

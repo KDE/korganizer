@@ -65,7 +65,7 @@ KDateNavigator::KDateNavigator( QWidget *parent, Calendar *calendar,
   m_MthYr = startDate;
   m_bShowWeekNums = show_week_nums;
 
-  mNavigatorBar = new NavigatorBar( this );
+  mNavigatorBar = new NavigatorBar( startDate, this );
   topLayout->addMultiCellWidget( mNavigatorBar, 0, 0, 0, 7 );
 
   connect( mNavigatorBar, SIGNAL( goPrevYear() ), SIGNAL( goPrevYear() ) );

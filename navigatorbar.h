@@ -36,7 +36,7 @@ class NavigatorBar: public QWidget
 {
     Q_OBJECT
   public:
-    NavigatorBar( QWidget *parent = 0, const char *name = 0 );
+    NavigatorBar( const QDate & date, QWidget *parent = 0, const char *name = 0 );
     ~NavigatorBar();
 
   public slots:
