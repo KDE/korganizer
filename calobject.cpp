@@ -56,6 +56,11 @@ class AddIncidenceVisitor : public IncidenceVisitor {
 CalObject::CalObject()
   : QObject()
 {
+  mDndFormat = new VCalFormat(this);
+  
+  mFormat = 0;
+
+#if 0
   switch (KOPrefs::instance()->mDefaultFormat) {
     case KOPrefs::FormatVCalendar: 
       mFormat = new VCalFormat(this);
@@ -67,6 +72,7 @@ CalObject::CalObject()
       mFormat = new ICalFormat(this);
       break;
   }
+#endif
   
   mICalFormat = new ICalFormat(this);
 
@@ -169,8 +175,9 @@ CalObject::CalObject()
 
 CalObject::~CalObject() 
 {
-  delete mFormat;
   delete mICalFormat;
+  delete mDndFormat;
+  delete mFormat;
 }
 
 ICalFormat *CalObject::iCalFormat()
@@ -180,23 +187,23 @@ ICalFormat *CalObject::iCalFormat()
 
 VCalDrag *CalObject::createDrag(Event *selectedEv, QWidget *owner)
 {
-  return mFormat->createDrag(selectedEv,owner);
+  return mDndFormat->createDrag(selectedEv,owner);
 }
 
 VCalDrag *CalObject::createDragTodo(Todo *selectedEv, QWidget *owner)
 {
-  return mFormat->createDragTodo(selectedEv,owner);
+  return mDndFormat->createDragTodo(selectedEv,owner);
 }
 
 Event *CalObject::createDrop(QDropEvent *de)
 {
-  return mFormat->createDrop(de);
+  return mDndFormat->createDrop(de);
 }
 
 Todo *CalObject::createDropTodo(QDropEvent *de)
 {
   kdDebug() << "CalObject::createDropTodo()" << endl;
-  return mFormat->createDropTodo(de);
+  return mDndFormat->createDropTodo(de);
 }
 
 void CalObject::cutEvent(Event *selectedEv)
@@ -207,12 +214,12 @@ void CalObject::cutEvent(Event *selectedEv)
 
 bool CalObject::copyEvent(Event *selectedEv)
 {
-  return mFormat->copyEvent(selectedEv);
+  return mDndFormat->copyEvent(selectedEv);
 }
 
 Event *CalObject::pasteEvent(const QDate *newDate,const QTime *newTime)
 {
-  return mFormat->pasteEvent(newDate,newTime);
+  return mDndFormat->pasteEvent(newDate,newTime);
 }
 
 const QString &CalObject::getOwner() const

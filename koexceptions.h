@@ -26,9 +26,10 @@ class KOException {
 class KOErrorFormat : public KOException {
   public:
     enum ErrorCodeFormat { LoadError,ParseError,CalVersion1,CalVersion2,
+                           CalVersionUnknown,
                            Restriction };
   
-    KOErrorFormat(ErrorCodeFormat code,const QString &message);
+    KOErrorFormat(ErrorCodeFormat code,const QString &message = QString::null);
     
     QString message();
     ErrorCodeFormat errorCode();

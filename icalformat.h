@@ -61,7 +61,7 @@ class ICalFormat : public CalFormat {
     ScheduleMessage *parseScheduleMessage(const QString &);
     
   protected:
-    void populate(icalfileset *fs);
+    bool populate(icalfileset *fs);
 
     icalcomponent *writeTodo(Todo *todo);
     icalcomponent *writeEvent(Event *event);

@@ -206,6 +206,7 @@ class CalObject : public QObject {
     void readHolidayFileName();
   
     CalFormat *mFormat;
+    CalFormat *mDndFormat;  // format used for drag and drop operations
     ICalFormat *mICalFormat;
   
   private:

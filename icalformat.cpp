@@ -41,6 +41,8 @@ ICalFormat::~ICalFormat()
 
 bool ICalFormat::load(const QString &fileName)
 {
+  clearException();
+
   kdDebug() << "ICalFormat::load() " << fileName << endl;
 
   icalfileset *fs = icalfileset_new(writeText(fileName));
@@ -66,40 +68,14 @@ bool ICalFormat::load(const QString &fileName)
     return false;
   }
 
+//  kdDebug() << "Error: " << icalerror_perror() << endl;
+
   // put all vobjects into their proper places
-  populate(calendar);
+  bool success = populate(calendar);
 
   icalfileset_free(fs);
 
-  return true;
-
-#if 0
-  VObject *vcal = 0L;
-  const char *fn = fileName.latin1();
-
-  // this is not necessarily only 1 vcal.  Could be many vcals, or include
-  // a vcard...
-  vcal = Parse_MIME_FromFileName(fn);
-
-  if (!vcal) {
-    loadError(fileName);
-    return FALSE;
-  }
-
-  // any other top-level calendar stuff should be added/initialized here
-
-  // put all vobjects into their proper places
-  populate(vcal);
-
-  // clean up from vcal API stuff
-  cleanVObjects(vcal);
-  cleanStrTbl();
-
-  // set cursors to beginning of list.
-  mCalendar->first(); 
-
-  return TRUE;
-#endif
+  return success;
 }
 
 
@@ -583,7 +559,6 @@ icalcomponent *ICalFormat::writeTodo(Todo *todo)
     icaltimetype completed = writeICalDateTime(todo->completed());
     icalcomponent_add_property(vtodo,icalproperty_new_completed(completed));
   }
-
   
   return vtodo;
 }
@@ -614,7 +589,7 @@ icalcomponent *ICalFormat::writeEvent(Event *event)
 //  addPropValue(vevent, VCClassProp, anEvent->getSecrecyStr().ascii());
 
 
-// TODO: attachements, resources, alarm
+// TODO: attachements, resources
 #if 0
   // attachments
   tmpStrList = anEvent->attachments();
@@ -725,9 +700,6 @@ void ICalFormat::writeIncidence(icalcomponent *parent,Incidence *incidence)
   if (!incidence->description().isEmpty()) {
     icalcomponent_add_property(parent,icalproperty_new_description(
         writeText(incidence->description())));
-// TODO:
-//    if (incidence->getDescription().find('\n') != -1)
-//      addProp(d, VCQuotedPrintableProp);
   }
 
   // summary
@@ -784,15 +756,15 @@ void ICalFormat::writeIncidence(icalcomponent *parent,Incidence *incidence)
         writeText(incidence->relatedTo()->VUID())));
   }
 
-// TODO:
   // pilot sync stuff
-#if 0
-  tmpStr.sprintf("%i",incidence->pilotId());
-  addPropValue(parent, KPilotIdProp, tmpStr.ascii());
-  tmpStr.sprintf("%i",incidence->syncStatus());
-  addPropValue(parent, KPilotStatusProp, tmpStr.ascii());
-#endif
-
+  icalproperty *p =
+      icalproperty_new_x((QString::number(incidence->pilotId())).utf8());
+  icalproperty_set_x_name(p,"X-PILOTID");
+  icalcomponent_add_property(parent,p);  
+  p = icalproperty_new_x((QString::number(incidence->syncStatus())).utf8());
+  icalproperty_set_x_name(p,"X-PILOTSTAT");
+  icalcomponent_add_property(parent,p);
+  
   // recurrence rule stuff
   KORecurrence *recur = incidence->recurrence();
   if (recur->doesRecur()) {
@@ -1434,6 +1406,18 @@ void ICalFormat::readIncidence(icalcomponent *parent,Incidence *incidence)
         readRecurrenceRule(p,incidence);
         break;
 
+      case ICAL_X_PROPERTY:
+        kdDebug() << "X Prop: " << icalproperty_get_name(p) << endl;
+        if (strcmp(icalproperty_get_name(p),"X-PILOTID") == 0) {
+          text = icalproperty_get_value_as_string(p);
+          kdDebug() << "Pilot-Id: " << text << endl;
+          incidence->setPilotId(QString::fromUtf8(text).toInt());
+        } else if (strcmp(icalproperty_get_name(p),"X-PILOTSTAT") == 0) {
+          text = icalproperty_get_value_as_string(p);
+          kdDebug() << "Pilot-Status: " << text << endl;
+          incidence->setSyncStatus(QString::fromUtf8(text).toInt());
+        }
+        break;
 // TODO:
 #if 0
   /* PILOT SYNC STUFF */
@@ -1916,7 +1900,7 @@ icalcomponent *ICalFormat::createCalendarComponent()
 // take a raw vcalendar (i.e. from a file on disk, clipboard, etc. etc.
 // and break it down from it's tree-like format into the dictionary format
 // that is used internally in the ICalFormat.
-void ICalFormat::populate(icalcomponent *calendar)
+bool ICalFormat::populate(icalcomponent *calendar)
 {
   // this function will populate the caldict dictionary and other event 
   // lists. It turns vevents into Events and then inserts them.
@@ -1949,6 +1933,29 @@ void ICalFormat::populate(icalcomponent *calendar)
     deleteStr(s);
   }
 #endif
+
+  icalproperty *p;
+  
+  p = icalcomponent_get_first_property(calendar,ICAL_VERSION_PROPERTY);
+  if (!p) {
+    kdDebug() << "No VERSION property found" << endl;
+    return false;
+  } else {
+    const char *version = icalproperty_get_version(p);
+    kdDebug() << "VCALENDAR version: '" << version << "'" << endl; 
+    
+    if (strcmp(version,"1.0") == 0) {
+      kdDebug() << "Expected iCalendar, got vCalendar" << endl;
+      setException(new KOErrorFormat(KOErrorFormat::CalVersion1,
+                   i18n("Expected iCalendar format")));
+      return false;
+    } else if (strcmp(version,"2.0") != 0) {
+      kdDebug() << "Expected iCalendar, got unknown format" << endl;
+      setException(new KOErrorFormat(KOErrorFormat::CalVersionUnknown));
+      return false;
+    }
+  }
+
 
 // TODO: check for calendar format version
 #if 0  
@@ -2091,6 +2098,8 @@ void ICalFormat::populate(icalcomponent *calendar)
   for ( todo=mTodosRelate.first(); todo != 0; todo=mTodosRelate.next() ) {
     todo->setRelatedTo(mCalendar->getTodo(todo->relatedToVUID()));
   }
+
+  return true;
 }
 
 QString ICalFormat::extractErrorProperty(icalcomponent *c)

@@ -63,33 +63,36 @@ bool CalendarLocal::load(const QString &fileName)
   // it is a semantical thing vs. a practical thing.
   if (fileName.isEmpty()) return false;
 
+  delete mFormat;
+  
   // If cal format can be identified by extension use appropriate format. If
   // not, try to load with iCalendar. It will detect, if it is actually a
   // vCalendar file.
   QString extension = fileName.right(4);
-  if (extension == ".ics") {
-    return mICalFormat->load(fileName);
-  } else if (extension == ".vcs") {
-    return mFormat->load(fileName);
+  if (extension == ".vcs") {
+    mFormat = new VCalFormat(this);
   } else {
-    mICalFormat->clearException();
-    if (!mICalFormat->load(fileName)) {
-      // iCalendar loading failed
-      if (mICalFormat->exception()) {
-        if (mICalFormat->exception()->errorCode() == 
-            KOErrorFormat::CalVersion1) {
-          return mFormat->load(fileName);
-        } else {
-          return false;
-        }
-      } else {
-        return false;
-      }
-    } else {
-      // successfully loaded iCalendar
-      return true;
-    }
+    mFormat = new ICalFormat(this);
   }
+ 
+  mFormat->clearException();
+  bool success = mFormat->load(fileName);
+
+  if (!success) {
+    kdDebug() << "---Error: " << mFormat->exception()->errorCode() << endl;
+    if (mFormat->exception()->errorCode() == KOErrorFormat::CalVersion1) {
+      // Expected non vCalendar file, but detected vCalendar
+      kdDebug() << "CalendarLocal::load() Fallback to VCalFormat" << endl;
+      delete mFormat;
+      mFormat = new VCalFormat(this);
+      return mFormat->load(fileName);
+    }
+    return false;
+  } else {
+    kdDebug() << "---Success" << endl;
+  }
+  
+  return true;
 }
 
 bool CalendarLocal::save(const QString &fileName,CalFormat *format)

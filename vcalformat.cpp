@@ -39,6 +39,8 @@ VCalFormat::~VCalFormat()
 
 bool VCalFormat::load(const QString &fileName)
 {
+  kdDebug() << "VCalFormat::load() " << fileName << endl;
+
   VObject *vcal = 0L;
 
   // this is not necessarily only 1 vcal.  Could be many vcals, or include
