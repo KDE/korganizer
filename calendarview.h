@@ -288,24 +288,14 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
 
     void incidenceAdded( Incidence * );
     void incidenceChanged( Incidence *oldEvent, Incidence *newEvent );
+    void incidenceChanged( Incidence *oldEvent, Incidence *newEvent, int what );
+    void incidenceToBeDeleted( Incidence *incidence );
     void incidenceDeleted( Incidence * );
-
-    void eventAdded( Event * );
-    void eventChanged( Event *oldEvent, Event *newEvent );
-    void eventToBeDeleted( Event * );
-    void eventDeleted( Event * );
-
-    void todoAdded( Todo * );
-    void todoChanged( Todo *oldTodo, Todo *newTodo );
-    void todoDeleted( Todo * );
 
     void editCanceled( Incidence * );
 
     void updateView( const QDate &start, const QDate &end );
     void updateView();
-
-    /** Full update of visible todo views */
-    void updateTodoViews();
 
     void updateUnmanagedViews();
 
@@ -541,5 +531,6 @@ class DeleteIncidenceVisitor : public CalendarViewVisitor
     bool visit( Todo *todo ) { mView->deleteTodo( todo ); return true; }
     bool visit( Journal * ) { return false; }
 };
+
 
 #endif

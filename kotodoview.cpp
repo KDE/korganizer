@@ -219,8 +219,7 @@ void KOTodoListView::contentsDropEvent( QDropEvent *e )
       Todo*oldTodo = existingTodo->clone();
       existingTodo->setRelatedTo(destinationEvent);
 
-      emit todoDropped( todo );
-      emit todoChanged( oldTodo, todo );
+      emit incidenceChanged( oldTodo, todo );
       delete oldTodo;
       delete todo;
     } else {
@@ -231,8 +230,7 @@ void KOTodoListView::contentsDropEvent( QDropEvent *e )
         return;
       }
 
-      emit todoDropped(todo);
-      emit todoAdded( todo );
+      emit incidenceAdded( todo );
     }
   }
   else {
@@ -242,15 +240,18 @@ void KOTodoListView::contentsDropEvent( QDropEvent *e )
       KOTodoViewItem *todoi = static_cast<KOTodoViewItem *>(itemAt( contentsToViewport(e->pos()) ));
       kdDebug(5850) << "Dropped : " << text << endl;
       QStringList emails = QStringList::split(",",text);
+      Todo*newtodo = todoi->todo();
+      Todo*oldtodo = newtodo->clone();
       for(QStringList::ConstIterator it = emails.begin();it!=emails.end();++it) {
         kdDebug(5850) << " Email: " << (*it) << endl;
         int pos = (*it).find("<");
         QString name = (*it).left(pos);
         QString email = (*it).mid(pos);
         if (!email.isEmpty() && todoi) {
-          todoi->todo()->addAttendee(new Attendee(name,email));
+          newtodo->addAttendee(new Attendee(name,email));
         }
       }
+      emit incidenceChanged( oldtodo, newtodo );
     }
     else {
       kdDebug(5850) << "KOTodoListView::contentsDropEvent(): Todo from drop not decodable" << endl;
@@ -449,8 +450,6 @@ KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent, const char* name)
            SLOT( popupMenu( QListViewItem *, const QPoint &, int ) ) );
   connect( mTodoListView, SIGNAL( clicked( QListViewItem * ) ),
            SLOT( itemClicked( QListViewItem * ) ) );
-  connect( mTodoListView, SIGNAL( todoDropped( Todo * ) ),
-           SLOT( updateView() ) );
   connect( mTodoListView, SIGNAL( expanded( QListViewItem * ) ),
            SLOT( itemStateChanged( QListViewItem * ) ) );
   connect( mTodoListView, SIGNAL( collapsed( QListViewItem * ) ),
@@ -468,10 +467,15 @@ KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent, const char* name)
            SLOT( processSelectionChange() ) );
   connect( mQuickAdd, SIGNAL( returnPressed () ),
            SLOT( addQuickTodo() ) );
-  connect( mTodoListView, SIGNAL( todoChanged( Todo*, Todo* ) ),
-           SIGNAL( todoChanged( Todo*, Todo* ) ) );
-  connect( mTodoListView, SIGNAL( todoAdded( Todo* ) ),
-           SIGNAL( todoAdded( Todo* ) ) );
+  
+  connect( mTodoListView, SIGNAL( incidenceAdded( Incidence* ) ),
+           SIGNAL( incidenceAdded( Incidence* ) ) );
+  connect( mTodoListView, SIGNAL( incidenceChanged( Incidence*, Incidence* ) ),
+           SIGNAL( incidenceChanged( Incidence*, Incidence* ) ) );
+  connect( mTodoListView, SIGNAL( incidenceToBeDeleted( Incidence* ) ),
+           SIGNAL( incidenceToBeDeleted( Incidence* ) ) );
+  connect( mTodoListView, SIGNAL( incidenceDeleted( Incidence* ) ),
+           SIGNAL( incidenceDeleted( Incidence* ) ) );
 }
 
 KOTodoView::~KOTodoView()
@@ -722,7 +726,7 @@ void KOTodoView::setNewPriority(int index)
     Todo *oldTodo = todo->clone();
     todo->setPriority(mPriority[index]);
     mActiveItem->construct();
-    emit todoModifiedSignal ( todo, oldTodo, KOGlobals::PRIORITY_MODIFIED );
+    emit incidenceChanged( todo, oldTodo, KOGlobals::PRIORITY_MODIFIED );
     delete oldTodo;
   }
 }
@@ -740,7 +744,7 @@ void KOTodoView::setNewPercentage(int index)
     }
     todo->setPercentComplete(mPercentage[index]);
     mActiveItem->construct();
-    emit todoModifiedSignal( todo, oldTodo, KOGlobals::COMPLETION_MODIFIED );
+    emit incidenceChanged( todo, oldTodo, KOGlobals::COMPLETION_MODIFIED );
     delete oldTodo;
   }
 }
@@ -756,7 +760,7 @@ void KOTodoView::setNewDate(QDate date)
       newTodo->recreate();
       newTodo->setDtDue( date );
       calendar()->addTodo( newTodo );
-      emit todoAdded( newTodo );
+      emit incidenceAdded( newTodo );
     }
     else {
       Todo *oldTodo = todo->clone();
@@ -764,7 +768,7 @@ void KOTodoView::setNewDate(QDate date)
         todo->setHasDueDate( true );
       todo->setDtDue( date );
       mActiveItem->construct();
-      emit todoModifiedSignal( todo, oldTodo, KOGlobals::DATE_MODIFIED );      
+      emit incidenceChanged( todo, oldTodo, KOGlobals::DATE_MODIFIED );      
       delete oldTodo;
     }
   }
@@ -805,7 +809,7 @@ void KOTodoView::changedCategories(int index)
     categories.sort ();
     todo->setCategories (categories);
     mActiveItem->construct();
-    emit todoModifiedSignal( todo, oldTodo, KOGlobals::CATEGORY_MODIFIED);
+    emit incidenceChanged( todo, oldTodo, KOGlobals::CATEGORY_MODIFIED);
     delete oldTodo;
   }
 }
@@ -869,11 +873,6 @@ void KOTodoView::processSelectionChange()
   }
 }
 
-void KOTodoView::modified(bool b)
-{
-  emit isModified(b);
-}
-
 void KOTodoView::clearSelection()
 {
   mTodoListView->selectAll( false );
@@ -894,7 +893,7 @@ void KOTodoView::addQuickTodo()
     return;
   }
   mQuickAdd->setText( QString::null );
-  emit todoAdded( todo );
+  emit incidenceAdded( todo );
   updateView();
 }
 

@@ -520,9 +520,9 @@ void KODayMatrix::dropEvent( QDropEvent *e )
       }
 
       if ( oldEvent ) {
-        emit eventDroppedMove( oldEvent, event );
+        emit incidenceDroppedMove( oldEvent, event );
       } else {
-        emit eventDropped( event );
+        emit incidenceDropped( event );
       }
     }
     if ( todo ) {
@@ -542,9 +542,9 @@ void KODayMatrix::dropEvent( QDropEvent *e )
       }
 
       if ( oldTodo ) {
-        emit todoDroppedMove( oldTodo, todo );
+        emit incidenceDroppedMove( oldTodo, todo );
       } else {
-        emit todoDropped( todo );
+        emit incidenceDropped( todo );
       }
     }
   } else {

@@ -85,9 +85,9 @@ class KOEditorGeneralEvent : public KOEditorGeneral
     void emitDateTimeStr();
 
   signals:
-    void dateTimesChanged(QDateTime start,QDateTime end);
     void allDayChanged(bool);
     void dateTimeStrChanged(const QString &);
+    void dateTimesChanged(QDateTime start,QDateTime end);
 
   private:
     QLabel                  *mStartDateLabel;

@@ -189,7 +189,6 @@ void KOTodoViewItem::stateChange(bool state)
     item->stateChange(state);
     myChild = myChild->nextSibling();
   }
-  mTodoView->modified(true);
   mTodoView->setTodoModified( oldTodo, mTodo );
   delete oldTodo;
 }

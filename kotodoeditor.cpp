@@ -215,7 +215,7 @@ bool KOTodoEditor::processInput()
 
     mTodo->setRevision( mTodo->revision() + 1 );
 
-    emit todoChanged( oldTodo, mTodo );
+    emit incidenceChanged( oldTodo, mTodo );
 
     delete oldTodo;
   } else {
@@ -231,7 +231,7 @@ bool KOTodoEditor::processInput()
       return false;
     }
 
-    emit todoAdded( mTodo );
+    emit incidenceAdded( mTodo );
   }
 
   return true;
@@ -250,19 +250,19 @@ void KOTodoEditor::deleteTodo()
     if (KOPrefs::instance()->mConfirm) {
       switch (msgItemDelete()) {
         case KMessageBox::Continue: // OK
-          emit todoToBeDeleted(mTodo);
+          emit incidenceToBeDeleted(mTodo);
           emit dialogClose(mTodo);
           mCalendar->deleteTodo(mTodo);
-          emit todoDeleted();
+          emit incidenceDeleted( mTodo );
           reject();
           break;
       }
     }
     else {
-      emit todoToBeDeleted(mTodo);
+      emit incidenceToBeDeleted(mTodo);
       emit dialogClose(mTodo);
       mCalendar->deleteTodo(mTodo);
-      emit todoDeleted();
+      emit incidenceDeleted( mTodo );
       reject();
     }
   } else {

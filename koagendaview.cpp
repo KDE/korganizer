@@ -411,11 +411,6 @@ KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name) :
   mAllDayAgenda = new KOAgenda(1,mAllDayFrame);
   QWidget *dummyAllDayRight = new QWidget(mAllDayFrame);
 
-  // Create event context menu for all day agenda
-  mAllDayAgendaPopup = eventPopup();
-  connect(mAllDayAgenda,SIGNAL(showIncidencePopupSignal(Incidence *)),
-          mAllDayAgendaPopup,SLOT(showIncidencePopup(Incidence *)));
-
   // Create agenda frame
   QGridLayout *agendaLayout = new QGridLayout(agendaFrame,3,3);
 //  QHBox *agendaFrame = new QHBox(splitterAgenda);
@@ -446,7 +441,14 @@ KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name) :
   connect(mAgenda,SIGNAL(showIncidencePopupSignal(Incidence *)),
           mAgendaPopup,SLOT(showIncidencePopup(Incidence *)));
 
+  // Create event context menu for all day agenda
+  mAllDayAgendaPopup = eventPopup();
+  connect(mAllDayAgenda,SIGNAL(showIncidencePopupSignal(Incidence *)),
+          mAllDayAgendaPopup,SLOT(showIncidencePopup(Incidence *)));
+
   connect(mAgenda,SIGNAL(showNewEventPopupSignal()),
+          this, SLOT(showNewEventPopup()));
+  connect(mAllDayAgenda,SIGNAL(showNewEventPopupSignal()),
           this, SLOT(showNewEventPopup()));
 
   // make connections between dependent widgets
@@ -786,11 +788,7 @@ void KOAgendaView::updateEventDates(KOAgendaItem *item)
     KOIncidenceToolTip::remove(item);
     KOIncidenceToolTip::add( item, incidence, KOAgendaItem::toolTipGroup() );
 
-    if ( incidence->type() == "Todo" ) {
-      emit todoChanged( (static_cast<Todo*>(oldIncidence) ),
-                        (static_cast<Todo*>(incidence) ) );
-    } else
-      emit incidenceChanged( oldIncidence, incidence );
+    emit incidenceChanged( oldIncidence, incidence );
   } else
     /*updateView()*/;
 
@@ -872,6 +870,7 @@ void KOAgendaView::insertEvent( Event *event, QDate curDate, int curCol )
 
 void KOAgendaView::changeIncidenceDisplayAdded( Incidence *incidence )
 {
+  // TODO: the agenda view also displays Todos, so check for them, too!!!
   Event *event = dynamic_cast<Event *>(incidence);
   if (!event) return;
   
@@ -904,6 +903,7 @@ void KOAgendaView::changeIncidenceDisplayAdded( Incidence *incidence )
 void KOAgendaView::changeIncidenceDisplay(Incidence *incidence, int mode)
 {
   kdDebug(5850) << "KOAgendaView::changeIncidenceDisplay" << endl;
+  Event*event;
 
   switch (mode) {
     case KOGlobals::INCIDENCEADDED: {
@@ -916,25 +916,31 @@ void KOAgendaView::changeIncidenceDisplay(Incidence *incidence, int mode)
       break;
 
     case KOGlobals::INCIDENCEEDITED:    
-/* TODO: Removing does not work, as it does not correctly reset the max nr. of conflicting items. Thus the items will sometimes not fill the whole width of the column. As a workaround, just recreate the whole view for now... 
-      if ( event->doesFloat() ) {
-        mAllDayAgenda->removeEvent( event );
-      } else {
-        mAgenda->removeEvent( event );
-      }
-      changeIncidenceDisplayAdded( event );
-*/
-      updateView();
+// TODO: Removing does not work, as it does not correctly reset the max nr. of conflicting items. Thus the items will sometimes not fill the whole width of the column. As a workaround, just recreate the whole view for now... */
+/*      event=dynamic_cast<Event*>(incidence);
+      if ( event ) {
+        if ( incidence->doesFloat() ) {
+          mAllDayAgenda->removeEvent( event );
+        } else {
+          mAgenda->removeEvent( event );
+        }
+        changeIncidenceDisplayAdded( event );
+      } else {*/
+        updateView();
+/*      }*/
       break;
     case KOGlobals::INCIDENCEDELETED:
-/* TODO: Same as above, the items will not use the whole column width, as maxSubCells will not be decremented/reset correctly. Just update the whole view for now.
-      if ( event->doesFloat() ) {
-        mAllDayAgenda->removeEvent( event );
-      } else {
-        mAgenda->removeEvent( event );
-      }
-*/
-      updateView();
+// TODO: Same as above, the items will not use the whole column width, as maxSubCells will not be decremented/reset correctly. Just update the whole view for now.
+/*      event=dynamic_cast<Event*>(incidence);
+      if ( event ) {
+        if ( incidence->doesFloat() ) {
+          mAllDayAgenda->removeEvent( event );
+        } else {
+          mAgenda->removeEvent( event );
+        }
+      } else {*/
+        updateView();
+/*      }*/
       break;
 
     default:
@@ -1144,7 +1150,7 @@ void KOAgendaView::slotTodoDropped( Todo *todo, int gx, int gy, bool allDay )
       existingTodo->setFloats( allDay );
       existingTodo->setHasDueDate( true );
       existingTodo->setRevision( existingTodo->revision() + 1 );
-      emit todoChanged( oldTodo, existingTodo );
+      emit incidenceChanged( oldTodo, existingTodo );
       delete oldTodo;
     } else {
       kdDebug(5850) << "Drop new Todo" << endl;
@@ -1152,7 +1158,7 @@ void KOAgendaView::slotTodoDropped( Todo *todo, int gx, int gy, bool allDay )
       todo->setFloats( allDay );
       existingTodo->setHasDueDate( true );
       if ( calendar()->addTodo( todo ) ) {
-        emit todoDropped(todo);
+        emit incidenceAdded(todo);
       } else {
         KODialogManager::errorSaveTodo( this );
       }

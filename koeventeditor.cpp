@@ -39,6 +39,8 @@
 #include <libkcal/calendarlocal.h>
 
 #include "koprefs.h"
+#include "koeditorgeneralevent.h"
+#include "koeditorrecurrence.h"
 #include "koeditordetails.h"
 #include "koeditorattachments.h"
 #include "koeditorfreebusy.h"
@@ -73,13 +75,13 @@ void KOEventEditor::init()
   connect( mGeneral, SIGNAL( dateTimeStrChanged( const QString & ) ),
            mRecurrence, SLOT( setDateTimeStr( const QString & ) ) );
   connect( mFreeBusy, SIGNAL( dateTimesChanged( QDateTime, QDateTime ) ),
-	   mRecurrence, SLOT( setDateTimes( QDateTime, QDateTime ) ) );
+           mRecurrence, SLOT( setDateTimes( QDateTime, QDateTime ) ) );
 
   // Propagate date time settings to gantt tab and back
   connect( mGeneral, SIGNAL( dateTimesChanged( QDateTime, QDateTime ) ),
-	   mFreeBusy, SLOT( setDateTimes( QDateTime, QDateTime ) ) );
+           mFreeBusy, SLOT( setDateTimes( QDateTime, QDateTime ) ) );
   connect( mFreeBusy, SIGNAL( dateTimesChanged( QDateTime, QDateTime ) ),
-	   mGeneral, SLOT( setDateTimes( QDateTime, QDateTime ) ) );
+           mGeneral, SLOT( setDateTimes( QDateTime, QDateTime ) ) );
 
   // Category dialog
   connect( mGeneral, SIGNAL( openCategoryDialog() ),
@@ -234,6 +236,7 @@ bool KOEventEditor::processInput()
     bool rc = true;
     Event *event = mEvent->clone();
     Event *oldEvent = mEvent->clone();
+    // TODO_RK: Why do we write the event here, and then later once again?
     kdDebug(5850) << "KOEventEditor::processInput() write event." << endl;
     writeEvent( event );
     kdDebug(5850) << "KOEventEditor::processInput() event written." << endl;
@@ -246,18 +249,19 @@ bool KOEventEditor::processInput()
       int revision = event->revision();
       event->setRevision( revision + 1 );
       if( !KOPrefs::instance()->mUseGroupwareCommunication ||
-	  KOGroupware::instance()->sendICalMessage( this, KCal::Scheduler::Request, event ) )
+        KOGroupware::instance()->sendICalMessage( this, KCal::Scheduler::Request, event ) )
       {
-	// Accept the event changes
-	writeEvent( mEvent );
-	mEvent->setRevision( revision + 1 );
-	emit eventChanged( oldEvent, mEvent );
+        // Accept the event changes
+        writeEvent( mEvent );
+        mEvent->setRevision( revision + 1 );
+        emit incidenceChanged( oldEvent, mEvent );
       } else {
-	// Revert the changes
-	event->setRevision( revision );
-	rc = false;
+        // Revert the changes
+        event->setRevision( revision );
+        rc = false;
       }
     }
+    // TODO: do we need to delete oldEvent?
     delete event;
     return rc;
   } else {
@@ -272,7 +276,7 @@ bool KOEventEditor::processInput()
       }
     }
     if ( mCalendar->addEvent( mEvent ) ) {
-      emit eventAdded( mEvent );
+      emit incidenceAdded( mEvent );
     } else {
       KODialogManager::errorSaveEvent( this );
       delete mEvent;
@@ -298,23 +302,13 @@ void KOEventEditor::deleteEvent()
   kdDebug(5850) << "Delete event" << endl;
 
   if (mEvent) {
-    if (KOPrefs::instance()->mConfirm && (!KOPrefs::instance()->mUseGroupwareCommunication ||
-					  KOPrefs::instance()->email() == mEvent->organizer())) {
-      switch (msgItemDelete()) {
-        case KMessageBox::Continue: // OK
-          emit eventToBeDeleted(mEvent);
-          emit dialogClose(mEvent);
-          mCalendar->deleteEvent(mEvent);
-          emit eventDeleted(mEvent);
-          reject();
-          break;
-      }
-    }
-    else {
-      emit eventToBeDeleted(mEvent);
+    bool groupwareCheck = KOPrefs::instance()->mConfirm && 
+          (!KOPrefs::instance()->mUseGroupwareCommunication || KOPrefs::instance()->email() == mEvent->organizer());
+    if (!groupwareCheck || (msgItemDelete()==KMessageBox::Continue)) { // Either no groupware check needed, or OK pressed
+      emit incidenceToBeDeleted(mEvent);
       emit dialogClose(mEvent);
       mCalendar->deleteEvent(mEvent);
-      emit eventDeleted(mEvent);
+      emit incidenceDeleted(mEvent);
       reject();
     }
   } else {
@@ -354,7 +348,8 @@ void KOEventEditor::writeEvent( Event *event )
   mGeneral->writeEvent( event );
   mDetails->writeEvent( event );
   mAttachments->writeIncidence( event );
-
+  
+  // TODO_RK: What the heck does this do??? Isn't this completely wrong? cancelDttendee Event really deletes the removed attendees from the event, so the event might have less attendeed, even 0 attendees afterwards. So the check for attendeeCount is inappropriate here
   if ( event->organizer() == KOPrefs::instance()->email() ) {
     Event *ev = new Event( *event );
     ev->registerObserver( 0 );

@@ -30,10 +30,11 @@
 
 #include <libkcal/calendar.h>
 
-#include "koeditorgeneralevent.h"
-#include "koeditordetails.h"
-#include "koeditorrecurrence.h"
 #include "koincidenceeditor.h"
+
+class KOEditorGeneralEvent;
+class KOEditorRecurrence;
+class KOEditorFreeBusy;
 
 class SaveTemplateDialog;
 
@@ -94,12 +95,6 @@ class KOEventEditor : public KOIncidenceEditor
     QObject *typeAheadReceiver() const;
 
   signals:
-    void eventAdded( Event * );
-    void eventChanged( Event *oldEvent, Event *newEvent );
-    void eventToBeDeleted( Event * );
-    void eventDeleted( Event * );
-    void deleteAttendee( Incidence * );
-
     void focusReceivedSignal();
 
   protected slots:

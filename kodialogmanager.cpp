@@ -260,29 +260,8 @@ void KODialogManager::showPluginDialog()
 
 KOEventEditor *KODialogManager::getEventEditor()
 {
-  KOEventEditor *eventEditor = new KOEventEditor( mMainView->calendar(),
-                                                  mMainView );
-
-  connect( eventEditor, SIGNAL( eventAdded( Event * ) ),
-           mMainView, SLOT( eventAdded( Event * ) ) );
-  connect( eventEditor, SIGNAL( eventChanged( Event *, Event * ) ),
-           mMainView, SLOT( eventChanged( Event *, Event * ) ) );
-  connect( eventEditor, SIGNAL( eventDeleted( Event * ) ),
-           mMainView, SLOT( eventDeleted( Event * ) ) );
-  connect( eventEditor, SIGNAL( deleteAttendee( Incidence * ) ),
-           mMainView, SLOT( schedule_cancel( Incidence * ) ) );
-  connect( eventEditor, SIGNAL( editCanceled( Incidence * ) ),
-           mMainView, SLOT( editCanceled( Incidence * ) ) );
-
-  connect( mCategoryEditDialog, SIGNAL( categoryConfigChanged() ),
-           eventEditor, SLOT( updateCategoryConfig() ) );
-  connect( eventEditor, SIGNAL( editCategories() ),
-           mCategoryEditDialog, SLOT( show() ) );
-  connect( eventEditor, SIGNAL( dialogClose( Incidence * ) ),
-           mMainView, SLOT( dialogClosing( Incidence * ) ) );
-
-  connect( mMainView, SIGNAL( closingDown() ), eventEditor, SLOT( reject() ) );
-
+  KOEventEditor *eventEditor = new KOEventEditor( mMainView->calendar(), mMainView );
+  connectEditor( eventEditor );
   return eventEditor;
 }
 
@@ -296,31 +275,41 @@ void KODialogManager::connectTypeAhead( KOEventEditor *editor,
   }
 }
 
-KOTodoEditor *KODialogManager::getTodoEditor()
+void KODialogManager::connectEditor( KOIncidenceEditor*editor )
 {
-  KOTodoEditor *todoEditor = new KOTodoEditor( mMainView->calendar(),
-                                               mMainView );
+  connect( editor, SIGNAL( incidenceAdded( Incidence * ) ),
+           mMainView, SLOT( incidenceAdded( Incidence * ) ) );
+  connect( editor, SIGNAL( incidenceChanged( Incidence *, Incidence * ) ),
+           mMainView, SLOT( incidenceChanged( Incidence *, Incidence * ) ) );
+  connect( editor, SIGNAL( incidenceToBeDeleted( Incidence * ) ),
+           mMainView, SLOT( incidenceToBeDeleted( Incidence * ) ) );
+  connect( editor, SIGNAL( incidenceDeleted( Incidence * ) ),
+           mMainView, SLOT( incidenceDeleted( Incidence * ) ) );
 
   connect( mCategoryEditDialog, SIGNAL( categoryConfigChanged() ),
-           todoEditor, SLOT( updateCategoryConfig() ) );
-  connect( todoEditor, SIGNAL( editCategories() ),
+           editor, SLOT( updateCategoryConfig() ) );
+  connect( editor, SIGNAL( editCategories() ),
            mCategoryEditDialog, SLOT( show() ) );
 
-  connect( todoEditor, SIGNAL( todoAdded( Todo * ) ),
-           mMainView, SLOT( todoAdded( Todo * ) ) );
-  connect( todoEditor, SIGNAL( todoChanged( Todo *, Todo * ) ),
-           mMainView, SLOT( todoChanged( Todo *, Todo * ) ) );
-  connect( todoEditor, SIGNAL( todoDeleted() ),
-           mMainView, SLOT( updateTodoViews() ) );
-  connect( todoEditor, SIGNAL( dialogClose( Incidence * ) ),
+  connect( editor, SIGNAL( dialogClose( Incidence * ) ),
            mMainView, SLOT( dialogClosing( Incidence * ) ) );
-  connect( todoEditor, SIGNAL( editCanceled( Incidence * ) ),
+  connect( editor, SIGNAL( editCanceled( Incidence * ) ),
            mMainView, SLOT( editCanceled( Incidence * ) ) );
+  connect( mMainView, SIGNAL( closingDown() ), editor, SLOT( reject() ) );
+
+  // TODO_RK: Check this. I'm afraid the deleteAttendee is emitted on wrong conditions.
+  // Also, we don't have the addresses of the deleted attendees available here!
+  // We should probably do this on the incidenceChanged signal.
+  connect( editor, SIGNAL( deleteAttendee( Incidence * ) ),
+           mMainView, SLOT( schedule_cancel( Incidence * ) ) );
+}
+
+KOTodoEditor *KODialogManager::getTodoEditor()
+{
+  KOTodoEditor *todoEditor = new KOTodoEditor( mMainView->calendar(), mMainView );
+  connectEditor( todoEditor );
   connect( todoEditor, SIGNAL( recurTodo( Todo * ) ),
            mMainView, SLOT( recurTodo( Todo *) ) ) ;
-
-  connect( mMainView, SIGNAL( closingDown() ), todoEditor, SLOT( reject() ) );
-
   return todoEditor;
 }
 

@@ -208,10 +208,6 @@ class KOAgendaView : public KOEventView
 
   signals:
     void toggleExpand();
-    void incidenceChanged( Incidence*, Incidence* );
-
-    void todoChanged( Todo*, Todo* );
-    void todoDropped( Todo* );
 
   protected:
     /** Fill agenda beginning with date startDate */

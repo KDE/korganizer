@@ -35,6 +35,7 @@ class IncomingDialog;
 class KCMultiDialog;
 class KConfigureDialog;
 namespace KPIM { class CategoryEditDialog; }
+class KOIncidenceEditor;
 class KOEventEditor;
 class KOTodoEditor;
 class SearchDialog;
@@ -58,9 +59,9 @@ class KODialogManager : public QObject
 
     /** Get an editor dialog for an Event. */
     KOEventEditor *getEventEditor();
-
     /** Get an editor dialog for a Todo. */
     KOTodoEditor *getTodoEditor();
+    void connectEditor( KOIncidenceEditor*editor );
 
     OutgoingDialog *outgoingDialog();
 

@@ -193,7 +193,7 @@ class BaseView : public QWidget
     /**
       Set the default start/end date/time for new events. Return true if anything was changed
     */
-    virtual bool eventDurationHint(QDateTime &startDt, QDateTime &endDt, bool &allDay) { return false; }
+    virtual bool eventDurationHint(QDateTime &/*startDt*/, QDateTime &/*endDt*/, bool &/*allDay*/) { return false; }
 
   signals:
     void incidenceSelected( Incidence * );
@@ -216,6 +216,12 @@ class BaseView : public QWidget
      * box, etc.  Doesn't make sense to connect to more than one receiver.
      */
     void deleteIncidenceSignal(Incidence *);
+    
+    void incidenceAdded( Incidence* );
+    void incidenceChanged( Incidence*, Incidence*, int );
+    void incidenceChanged( Incidence*, Incidence* );
+    void incidenceDeleted( Incidence* );
+    void incidenceToBeDeleted( Incidence* );
 
   private:
     Calendar *mCalendar;

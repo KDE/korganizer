@@ -162,6 +162,63 @@ void KOViewManager::updateView(const QDate &start, const QDate &end)
   if (mTodoView) mTodoView->updateView();
 }
 
+void KOViewManager::connectView(KOrg::BaseView *view)
+{
+  if (!view) return;
+
+  // selecting an incidence
+  connect( view, SIGNAL( incidenceSelected( Incidence * ) ),
+           mMainView, SLOT( processMainViewSelection( Incidence * ) ) );
+
+  // showing/editing/deleting an incidence. The calendar view takes care of the action.
+  connect(view, SIGNAL(showIncidenceSignal(Incidence *)),
+          mMainView, SLOT(showIncidence(Incidence *)));
+  connect(view, SIGNAL(editIncidenceSignal(Incidence *)),
+          mMainView, SLOT(editIncidence(Incidence *)));
+  connect(view, SIGNAL(deleteIncidenceSignal(Incidence *)),
+          mMainView, SLOT(deleteIncidence(Incidence *)));
+
+  // reload settings
+  connect(mMainView, SIGNAL(configChanged()), view, SLOT(updateConfig()));
+
+  // Notifications about added, changed and deleted incidences
+  connect( view, SIGNAL( incidenceAdded( Incidence* ) ),
+           mMainView, SLOT( incidenceAdded( Incidence* ) ) );
+  connect( view, SIGNAL( incidenceChanged( Incidence*, Incidence* ) ),
+           mMainView, SLOT( incidenceChanged( Incidence*, Incidence* ) ) );
+  connect( view, SIGNAL( incidenceToBeDeleted( Incidence* ) ),
+           mMainView, SLOT( incidenceToBeDeleted( Incidence* ) ) );
+  connect( view, SIGNAL( incidenceDeleted( Incidence* ) ),
+           mMainView, SLOT( incidenceDeleted( Incidence* ) ) );
+}
+
+void KOViewManager::connectTodoView( KOTodoView* todoView )
+{
+  if (!todoView) return;
+
+  // SIGNALS/SLOTS FOR TODO VIEW
+  connect( todoView, SIGNAL( newTodoSignal() ),
+           mMainView, SLOT( newTodo() ) );
+  connect( todoView, SIGNAL( newSubTodoSignal( Todo * ) ),
+           mMainView, SLOT( newSubTodo( Todo *) ) );
+  connect( todoView, SIGNAL( purgeCompletedSignal() ),
+           mMainView, SLOT( purgeCompleted() ) );
+  connect( todoView, SIGNAL( unSubTodoSignal() ),
+           mMainView, SLOT( todo_unsub() ) );
+  connect( todoView, SIGNAL( recurTodo( Todo * ) ),
+           mMainView, SLOT( recurTodo( Todo * ) ) );
+}
+
+void KOViewManager::addView(KOrg::BaseView *view)
+{
+  connectView( view );
+#if QT_VERSION >= 300
+  mMainView->viewStack()->addWidget( view );
+#else
+  mMainView->viewStack()->addWidget( view, 1 );
+#endif
+}
+
 void KOViewManager::showWhatsNextView()
 {
   if (!mWhatsNextView) {
@@ -169,7 +226,6 @@ void KOViewManager::showWhatsNextView()
                                          "KOViewManager::WhatsNextView");
     addView(mWhatsNextView);
   }
-
   showView(mWhatsNextView);
 }
 
@@ -178,13 +234,7 @@ void KOViewManager::showListView()
   if (!mListView) {
     mListView = new KOListView(mMainView->calendar(), mMainView->viewStack(), "KOViewManager::ListView");
     addView(mListView);
-
-    connect( mListView, SIGNAL( incidenceSelected( Incidence * ) ),
-             mMainView, SLOT( processMainViewSelection( Incidence * ) ) );
-
-    connect(mMainView, SIGNAL(configChanged()), mListView, SLOT(updateConfig()));
   }
-
   showView(mListView);
 }
 
@@ -194,11 +244,6 @@ void KOViewManager::showAgendaView()
     mAgendaView = new KOAgendaView(mMainView->calendar(), mMainView->viewStack(), "KOViewManager::AgendaView");
 
     addView(mAgendaView);
-
-    connect( mAgendaView, SIGNAL( incidenceChanged( Incidence*, Incidence* ) ),
-             mMainView, SLOT( updateUnmanagedViews() ) );
-    connect( mAgendaView, SIGNAL( incidenceChanged( Incidence*, Incidence* ) ),
-             mMainView, SLOT( incidenceChanged( Incidence*, Incidence* ) ) );
 
     // SIGNALS/SLOTS FOR DAY/WEEK VIEW
     connect( mAgendaView, SIGNAL( newEventSignal() ),
@@ -210,20 +255,10 @@ void KOViewManager::showAgendaView()
     connect( mAgendaView, SIGNAL( newEventSignal( QDate ) ),
              mMainView, SLOT( newEvent( QDate ) ) );
 
-    connect( mAgendaView, SIGNAL( incidenceSelected( Incidence * ) ),
-             mMainView, SLOT( processMainViewSelection( Incidence * ) ) );
-
     connect(mAgendaView, SIGNAL( toggleExpand() ),
             mMainView, SLOT( toggleExpand() ) );
     connect(mMainView, SIGNAL( calendarViewExpanded( bool ) ),
             mAgendaView, SLOT( setExpandedButton( bool ) ) );
-
-    connect(mAgendaView, SIGNAL( todoChanged( Todo *, Todo* ) ),
-            mMainView, SLOT( todoChanged( Todo *, Todo * ) ) );
-    connect(mAgendaView, SIGNAL( todoDropped( Todo* ) ),
-            mMainView, SLOT( todoAdded( Todo* ) ) );
-
-    connect(mMainView, SIGNAL(configChanged()), mAgendaView, SLOT(updateConfig()));
 
     mAgendaView->readSettings();
   }
@@ -269,40 +304,9 @@ void KOViewManager::showMonthView()
             mMainView, SLOT(newEvent(QDate)));
     connect(mMonthView, SIGNAL(newEventSignal()),
             mMainView, SLOT(newEvent()));
-
-    connect( mMonthView, SIGNAL( incidenceSelected( Incidence * ) ),
-             mMainView, SLOT( processMainViewSelection( Incidence * ) ) );
-
-    connect(mMainView, SIGNAL(configChanged()), mMonthView, SLOT(updateConfig()));
   }
 
   showView(mMonthView);
-}
-
-void KOViewManager::connectTodoView( KOTodoView* todoView )
-{
-  if (!todoView) return;
-
-  // SIGNALS/SLOTS FOR TODO VIEW
-  connect( todoView, SIGNAL( newTodoSignal() ),
-           mMainView, SLOT( newTodo() ) );
-  connect( todoView, SIGNAL( newSubTodoSignal( Todo * ) ),
-           mMainView, SLOT( newSubTodo( Todo *) ) );
-  connect( todoView, SIGNAL( purgeCompletedSignal() ),
-           mMainView, SLOT( purgeCompleted() ) );
-  connect( todoView, SIGNAL( unSubTodoSignal() ),
-           mMainView, SLOT( todo_unsub() ) );
-  connect( todoView, SIGNAL( todoChanged( Todo*, Todo* ) ),
-           mMainView, SLOT( todoChanged( Todo*, Todo* ) ) );
-  connect( todoView, SIGNAL( todoAdded( Todo*) ),
-           mMainView, SLOT( todoAdded( Todo* ) ) );
-  connect( todoView, SIGNAL( todoModifiedSignal( Todo *, Todo *, int ) ),
-           mMainView, SLOT( todoModified( Todo *, Todo *, int ) ) );
-  connect( todoView, SIGNAL( recurTodo( Todo * ) ),
-           mMainView, SLOT( recurTodo( Todo * ) ) );
-  
-  connect( mMainView, SIGNAL( configChanged() ),
-           todoView, SLOT( updateConfig() ) );
 }
 
 void KOViewManager::showTodoView()
@@ -313,9 +317,6 @@ void KOViewManager::showTodoView()
     mTodoView->setCalendar( mMainView->calendar() );
     addView( mTodoView );
     connectTodoView( mTodoView );
-
-    connect( mTodoView, SIGNAL( incidenceSelected( Incidence * ) ),
-             mMainView, SLOT( processMainViewSelection( Incidence * ) ) );
 
     KConfig *config = KOGlobals::self()->config();
     mTodoView->restoreLayout( config, "Todo View" );
@@ -341,7 +342,6 @@ void KOViewManager::showTimeSpanView()
     mTimeSpanView = new KOTimeSpanView(mMainView->calendar(),mMainView->viewStack(),
                                        "KOViewManager::TimeSpanView");
     addView(mTimeSpanView);
-
     mTimeSpanView->readSettings();
   }
 
@@ -371,26 +371,6 @@ QDate KOViewManager::currentSelectionDate()
     if (!qvl.isEmpty()) qd = qvl.first();
   }
   return qd;
-}
-
-void KOViewManager::connectView(KOrg::BaseView *view)
-{
-  connect(view, SIGNAL(showIncidenceSignal(Incidence *)),
-          mMainView, SLOT(showIncidence(Incidence *)));
-  connect(view, SIGNAL(editIncidenceSignal(Incidence *)),
-          mMainView, SLOT(editIncidence(Incidence *)));
-  connect(view, SIGNAL(deleteIncidenceSignal(Incidence *)),
-          mMainView, SLOT(deleteIncidence(Incidence *)));
-}
-
-void KOViewManager::addView(KOrg::BaseView *view)
-{
-  connectView( view );
-#if QT_VERSION >= 300
-  mMainView->viewStack()->addWidget( view );
-#else
-  mMainView->viewStack()->addWidget( view, 1 );
-#endif
 }
 
 void KOViewManager::setDocumentId( const QString &id )

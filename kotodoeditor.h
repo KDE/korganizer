@@ -86,10 +86,6 @@ class KOTodoEditor : public KOIncidenceEditor
     void modified (int);
 
   signals:
-    void todoChanged( Todo *oldTodo, Todo *newTodo );
-    void todoAdded( Todo * );
-    void todoToBeDeleted( Todo * );
-    void todoDeleted();
     void recurTodo( Todo * );
 
   protected slots:

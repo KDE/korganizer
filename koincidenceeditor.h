@@ -28,8 +28,6 @@
 
 #include <libkcal/calendar.h>
 
-//#include "savetemplatedialog.h"
-
 class QDateTime;
 
 namespace KPIM { class CategorySelectDialog; }
@@ -62,9 +60,16 @@ class KOIncidenceEditor : public KDialogBase
     void updateCategoryConfig();
 
   signals:
+    void deleteAttendee( Incidence * );
+
     void editCategories();
     void dialogClose( Incidence * );
     void editCanceled( Incidence * );
+
+    void incidenceAdded( Incidence * );
+    void incidenceChanged( Incidence *oldTodo, Incidence *newTodo );
+    void incidenceToBeDeleted( Incidence * );
+    void incidenceDeleted( Incidence * );
 
   protected slots:
     void slotApply();

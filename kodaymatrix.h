@@ -199,28 +199,17 @@ class KODayMatrix: public QFrame
      */
     void selected( const KCal::DateList &daylist );
 
-    /** emitted if the user has dropped an event inside the matrix
+    /** emitted if the user has dropped an incidence (event or todo) inside the matrix
      *
      *  @param event the dropped calendar event
      */
-    void eventDropped( Event *event );
+    void incidenceDropped( Incidence * );
     /** emitted if the user has dropped an event inside the matrix and chose to move it instead of copy
      *
      *  @param oldevent the new calendar event
      *  @param newevent the item that was moved
      */
-    void eventDroppedMove( Event *oldevent, Event *newevent );
-    /** emitted if the user has dropped a todo inside the matrix and chose to move it instead of copy
-     *
-     *  @param oldtodo the new todo
-     *  @param newtodo the item that was moved
-     */
-    void todoDroppedMove( Todo *oldtodo, Todo *newtodo );
-    /** emitted if the user has dropped a todo inside the matrix
-     *
-     *  @param event the dropped todo item
-     */
-    void todoDropped( Todo *todo );
+    void incidenceDroppedMove( Incidence *oldincidence, Incidence *newincidence );
 
   protected:
     void paintEvent( QPaintEvent *ev );

@@ -86,11 +86,12 @@ class KOTodoListView : public KListView
     ~KOTodoListView();
 
     void setCalendar( Calendar * );
-
+    
   signals:
-    void todoDropped( Todo * );
-    void todoChanged( Todo*, Todo* );
-    void todoAdded( Todo* );
+    void incidenceAdded( Incidence* );
+    void incidenceChanged( Incidence*, Incidence* );
+    void incidenceDeleted( Incidence* );
+    void incidenceToBeDeleted( Incidence* );
 
   protected:
     virtual bool event( QEvent * );
@@ -181,10 +182,9 @@ class KOTodoView : public KOrg::BaseView
 
     void itemClicked( QListViewItem * );
     void itemStateChanged( QListViewItem * );
-    void modified( bool );
     void setTodoModified( Todo *oldTodo, Todo *todo )
     {
-      emit todoChanged( oldTodo, todo );
+      emit incidenceChanged( oldTodo, todo );
     }
     void emitRecurSignal( Todo * );
 
@@ -193,12 +193,9 @@ class KOTodoView : public KOrg::BaseView
     void newSubTodoSignal( Todo * );
     void unSubTodoSignal();
 
+    // TODO_RK: Get rid of this signal!
     void todoModifiedSignal( Todo *, Todo *, int );
-    void todoChanged ( Todo*, Todo* );
-    void todoAdded ( Todo* );
     void recurTodo ( Todo * );
-
-    void isModified( bool );
 
     void purgeCompletedSignal();
 
@@ -218,7 +215,6 @@ class KOTodoView : public KOrg::BaseView
      */
     friend class KOTodoViewItem;
 
-    void setTodoModified( Todo * );
     QMap<Todo *,KOTodoViewItem *>::ConstIterator insertTodoItem( Todo *todo );
     void restoreItemState( QListViewItem * );
 
