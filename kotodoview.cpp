@@ -143,16 +143,7 @@ void KOTodoListView::contentsDropEvent(QDropEvent *e)
     } else {
 //      kdDebug() << "Drop new Todo" << endl;
       todo->setRelatedTo(destinationEvent);
-      CalendarResources *cal = dynamic_cast<CalendarResources*> (mCalendar);
-      if (cal) {
-        KRES::Resource *res = KRES::ResourceSelectDialog::getResource( cal->resourceList(), this );
-        if (res) {
-            ResourceCalendar *rcal = static_cast<ResourceCalendar*> (res);
-            cal->addTodo(todo, rcal);
-        }
-      } else {
-        mCalendar->addTodo(todo);
-      }
+      mCalendar->addTodo(todo);
 
       emit todoDropped(todo);
     }

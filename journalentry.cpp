@@ -126,16 +126,7 @@ void JournalEntry::writeJournal()
   if (!mJournal) {
     mJournal = new Journal;
     mJournal->setDtStart(QDateTime(mDate,QTime(0,0,0)));
-    CalendarResources *cal = dynamic_cast<CalendarResources*> (mCalendar);
-    if (cal) {
-      KRES::Resource *res = KRES::ResourceSelectDialog::getResource( cal->resourceList(), this );
-      if (res) {
-          ResourceCalendar *rcal = static_cast<ResourceCalendar*> (res);
-          cal->addJournal(mJournal, rcal);
-      }
-    } else {
-      mCalendar->addJournal(mJournal);
-    }
+    mCalendar->addJournal(mJournal);
   }
 
   mJournal->setDescription(mEditor->text());

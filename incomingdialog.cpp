@@ -312,17 +312,7 @@ bool IncomingDialog::incomeCounter(ScheduleItemIn *item)
       revision = even->revision();
       mCalendar->deleteEvent(even);
     }
-    CalendarResources *cal = dynamic_cast<CalendarResources*> (mCalendar);
-    if (cal) {
-      KRES::Resource *res = KRES::ResourceSelectDialog::getResource( cal->resourceList(), this );
-      if (res) {
-          ResourceCalendar *rcal = static_cast<ResourceCalendar*> (res);
-          // currently only events supportet
-          cal->addEvent(counterEvent, rcal);
-      }
-    } else {
-      mCalendar->addIncidence(counterEvent);
-    }
+    mCalendar->addIncidence(counterEvent);
 
     even = mCalendar->event(item->event()->uid());
     if (even) {

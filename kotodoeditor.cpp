@@ -161,16 +161,7 @@ bool KOTodoEditor::processInput()
     todo->setRevision(todo->revision()+1);
     emit todoChanged(todo);
   } else {
-    CalendarResources *cal = dynamic_cast<CalendarResources*> (mCalendar);
-    if (cal) {
-      KRES::Resource *res = KRES::ResourceSelectDialog::getResource( cal->resourceList(), this );
-      if (res) {
-          ResourceCalendar *rcal = static_cast<ResourceCalendar*> (res);
-          cal->addTodo(todo, rcal);
-      }
-    } else {
-      mCalendar->addTodo(todo);
-    }
+    mCalendar->addTodo(todo);
     mTodo = todo;
     emit todoAdded(todo);
   }

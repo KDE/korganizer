@@ -179,16 +179,7 @@ bool KOEventEditor::processInput()
     event->setRevision(event->revision()+1);
     emit eventChanged(event);
   } else {
-    CalendarResources *cal = dynamic_cast<CalendarResources*> (mCalendar);
-    if (cal) {
-      KRES::Resource *res = KRES::ResourceSelectDialog::getResource( cal->resourceList(), this );
-      if (res) {
-          ResourceCalendar *rcal = static_cast<ResourceCalendar*> (res);
-          cal->addEvent(event, rcal);
-      }
-    } else {
-      mCalendar->addEvent(event);
-    }
+    mCalendar->addEvent(event);
     mEvent = event;
     emit eventAdded(event);
   }

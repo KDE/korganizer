@@ -437,16 +437,7 @@ void KODayMatrix::dropEvent(QDropEvent *e)
 
     event->setDtStart(start);
     event->setDtEnd(end);
-    CalendarResources *cal = dynamic_cast<CalendarResources*> (mCalendar);
-    if (cal) {
-      KRES::Resource *res = KRES::ResourceSelectDialog::getResource( cal->resourceList(), this );
-      if (res) {
-          ResourceCalendar *rcal = static_cast<ResourceCalendar*> (res);
-          cal->addEvent(event, rcal);
-      }
-    } else {
-      mCalendar->addEvent(event);
-    }
+    mCalendar->addEvent(event);
 
     emit eventDropped(event);
   } else {
