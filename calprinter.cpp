@@ -843,6 +843,7 @@ void CalPrinter::drawDay(QPainter &p, const QDate &qd, int width, int height)
   int cellHeight = (height-offset) / hours; // hour increments.
   int cellWidth = width-80;
 
+  // TODO: Use KLocale::formatTime() to print time.
   QString numStr;
   for (int i = 0; i < hours; i++) {
     p.drawRect(0, offset+i*cellHeight, 75, cellHeight);
