@@ -1,6 +1,6 @@
 #ifndef KORG_VERSION_H
 #define KORG_VERSION_H
 
-static const char *korgVersion = "3.0";
+static const char *korgVersion = "pre3.1";
 
 #endif
