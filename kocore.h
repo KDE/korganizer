@@ -75,6 +75,7 @@ class KOCore
                                   KOrg::Part::List &parts );
 
     QString holiday( const QDate & );
+    bool isWorkDay( const QDate & );
 
     KCal::CalendarResources *calendarResources();
 

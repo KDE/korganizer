@@ -315,6 +315,18 @@ QString KOCore::holiday( const QDate &date )
   else return QString::null;
 }
 
+bool KOCore::isWorkDay( const QDate &date )
+{
+  int mask( ~( KOPrefs::instance()->mWorkWeekMask ) );
+
+  bool nonWorkDay = ( mask & ( 1 << ( date.dayOfWeek() - 1 ) ) );
+
+  nonWorkDay = nonWorkDay || ( KOPrefs::instance()->mExcludeHolidays &&
+                               !holiday( date ).isEmpty() );
+
+  return !nonWorkDay;
+}
+
 KCal::CalendarResources *KOCore::calendarResources()
 {
   if ( !mCalendarResources ) {

@@ -94,13 +94,20 @@ KNoScrollListBox::KNoScrollListBox( QWidget *parent, const char *name )
   setPalette( pal );
 }
 
-void KNoScrollListBox::setPrimary( bool primary )
+void KNoScrollListBox::setBackground( bool primary, bool workDay )
 {
+  QColor color;
+  if ( workDay ) {
+    color = KOPrefs::instance()->workingHoursColor();
+  } else {
+    color = KOPrefs::instance()->agendaBgColor();
+  }
+
   QPalette pal = palette();
   if ( primary ) {
-    pal.setColor( QColorGroup::Base, KOPrefs::instance()->agendaBgColor() );
+    pal.setColor( QColorGroup::Base, color );
   } else {
-    pal.setColor( QColorGroup::Base, KOPrefs::instance()->agendaBgColor().dark( 115 ) );
+    pal.setColor( QColorGroup::Base, color.dark( 115 ) );
   }
   setPalette( pal );  
 }
@@ -350,8 +357,8 @@ void MonthViewCell::setPrimary( bool primary )
   } else {
     mLabel->setBackgroundMode( PaletteBackground );
   }
-  
-  mItemList->setPrimary( mPrimary );
+
+  mItemList->setBackground( mPrimary, KOCore::self()->isWorkDay( mDate ) );
 }
 
 bool MonthViewCell::isPrimary() const
@@ -524,7 +531,7 @@ void MonthViewCell::updateConfig()
                           KOPrefs::instance()->highlightColor() );
   updateCell();
 
-  mItemList->setPrimary( mPrimary );
+  mItemList->setBackground( mPrimary, KOCore::self()->isWorkDay( mDate ) );
 }
 
 void MonthViewCell::enableScrollBars( bool enabled )
@@ -774,6 +781,8 @@ void KOMonthView::showDates( const QDate &start, const QDate & )
     if ( KOGlobals::self()->calendarSystem()->day( date ) == 1 ) {
       primary = !primary;
     }
+    mCells[i]->setDate( date );
+
     mCells[i]->setPrimary( primary );
 
     if ( KOGlobals::self()->calendarSystem()->dayOfWeek( date ) ==
@@ -788,8 +797,6 @@ void KOMonthView::showDates( const QDate &start, const QDate & )
     QString hstring( KOCore::self()->holiday( date ) );
     mCells[i]->setHoliday( hstring );
 #endif
-
-    mCells[i]->setDate( date );
   }
 
   updateView();

@@ -1185,40 +1185,24 @@ void KOAgendaView::writeSettings(KConfig *config)
 
 void KOAgendaView::setHolidayMasks()
 {
-  mHolidayMask.resize(mSelectedDates.count()+1);
+  mHolidayMask.resize( mSelectedDates.count() + 1 );
 
-  uint i;
-  bool showDay;
-  int mask(~(KOPrefs::instance()->mWorkWeekMask));
-  QDate date;
-
-  for(i=0;i<mSelectedDates.count();++i) {
-    QDate date = mSelectedDates[i];
-    showDay = (mask & (1<<(date.dayOfWeek()-1)) );
-
-#ifndef KORG_NOPLUGINS
-    showDay = showDay || ( KOPrefs::instance()->mExcludeHolidays &&
-                          !KOCore::self()->holiday(date).isEmpty() );
-#endif
-    mHolidayMask[i] = showDay;
+  for( uint i = 0; i < mSelectedDates.count(); ++i ) {
+    mHolidayMask[i] = !KOCore::self()->isWorkDay( mSelectedDates[ i ] );
   }
+
   // Store the information about the day before the visible area (needed for
   // overnight working hours) in the last bit of the mask:
-  date = mSelectedDates[0].addDays(-1);
-  showDay = (mask & (1<<(date.dayOfWeek()-1)) );
-#ifndef KORG_NOPLUGINS
-  showDay = showDay || ( KOPrefs::instance()->mExcludeHolidays &&
-                        !KOCore::self()->holiday(date).isEmpty() );
-#endif
-  mHolidayMask[mSelectedDates.count()] = showDay;
-
-  mAgenda->setHolidayMask(&mHolidayMask);
-  mAllDayAgenda->setHolidayMask(&mHolidayMask);
+  bool showDay = !KOCore::self()->isWorkDay( mSelectedDates[ 0 ].addDays( -1 ) );
+  mHolidayMask[ mSelectedDates.count() ] = showDay;
+  
+  mAgenda->setHolidayMask( &mHolidayMask );
+  mAllDayAgenda->setHolidayMask( &mHolidayMask );
 }
 
-void KOAgendaView::setContentsPos(int y)
+void KOAgendaView::setContentsPos( int y )
 {
-  mAgenda->setContentsPos(0,y);
+  mAgenda->setContentsPos( 0, y );
 }
 
 void KOAgendaView::setExpandedButton( bool expanded )

@@ -63,7 +63,7 @@ class KNoScrollListBox: public QListBox
     KNoScrollListBox(QWidget *parent=0, const char *name=0);
     ~KNoScrollListBox() {}
 
-    void setPrimary( bool primary );
+    void setBackground( bool primary, bool workday );
 
   signals:
     void shiftDown();
