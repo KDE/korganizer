@@ -916,6 +916,14 @@ void CalendarView::newTodo( const QString &summary, const QString &description,
   todoEditor->show();
 }
 
+void CalendarView::newTodo( const QString &summary, const QString &description,
+                            const QString &attachment, const QStringList &attendees )
+{
+  KOTodoEditor *todoEditor = mDialogManager->getTodoEditor();
+  todoEditor->newTodo( summary, description, attachment, attendees );
+  todoEditor->show();
+}
+
 void CalendarView::newTodo()
 {
   kdDebug() << "CalendarView::newTodo()" << endl;

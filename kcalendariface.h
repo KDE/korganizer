@@ -61,6 +61,8 @@ class KCalendarIface : public DCOPObject
     virtual void openTodoEditor( QString text ) = 0;
     virtual void openTodoEditor( QString summary, QString description,
                                  QString attachment ) = 0;
+    virtual void openTodoEditor( QString summary, QString description,
+                                 QString attachment, QStringList attendees ) = 0;
 
     virtual void showTodoView() = 0;
     virtual void showEventView() = 0;

@@ -60,6 +60,11 @@ class KOTodoEditor : public KOIncidenceEditor
     */
     void newTodo( const QString &summary, const QString &description,
                   const QString &attachment );
+    /**
+      Edit new todo.
+    */
+    void newTodo( const QString &summary, const QString &description,
+                  const QString &attachment, const QStringList &attendees );
 
     /** Edit an existing todo. */
     void editIncidence(Incidence *);

@@ -29,6 +29,7 @@
 #include <qlayout.h>
 #include <qdatetime.h>
 
+#include <kabc/addressee.h>
 #include <kiconloader.h>
 #include <klocale.h>
 #include <kmessagebox.h>
@@ -192,8 +193,8 @@ void KOTodoEditor::newTodo( const QString &text )
 }
 
 void KOTodoEditor::newTodo( const QString &summary,
-                              const QString &description,
-                              const QString &attachment )
+                            const QString &description,
+                            const QString &attachment )
 {
   init();
 
@@ -206,6 +207,21 @@ void KOTodoEditor::newTodo( const QString &summary,
 
   if ( !attachment.isEmpty() ) {
     mAttachments->addAttachment( attachment );
+  }
+}
+
+void KOTodoEditor::newTodo( const QString &summary,
+                            const QString &description,
+                            const QString &attachment,
+                            const QStringList &attendees )
+{
+  newTodo( summary, description, attachment );
+
+  QStringList::ConstIterator it;
+  for ( it = attendees.begin(); it != attendees.end(); ++it ) {
+    QString name, email;
+    KABC::Addressee::parseEmailAddress( *it, name, email );
+    mDetails->insertAttendee( new Attendee( name, email ) );
   }
 }
 

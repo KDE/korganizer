@@ -1345,6 +1345,12 @@ void ActionManager::openTodoEditor( QString summary, QString description,
   mCalendarView->newTodo( summary, description, attachment );
 }
 
+void ActionManager::openTodoEditor( QString summary, QString description,
+                                    QString attachment, QStringList attendees )
+{
+  mCalendarView->newTodo( summary, description, attachment, attendees );
+}
+
 void ActionManager::showTodoView()
 {
   mCalendarView->viewManager()->showTodoView();

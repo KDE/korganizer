@@ -157,6 +157,8 @@ class ActionManager : public QObject, public KCalendarIface
     void openTodoEditor( QString );
     void openTodoEditor( QString summary, QString description,
                          QString attachment );
+    void openTodoEditor( QString summary, QString description,
+                         QString attachment, QStringList attendees );
 
     void showTodoView();
     void showEventView();

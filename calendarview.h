@@ -282,6 +282,8 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     void newTodo( const QString & );
     void newTodo( const QString &summary, const QString &description,
                   const QString &attachment );
+    void newTodo( const QString &summary, const QString &description,
+                  const QString &attachment, const QStringList &attendees );
 
     /**
       Check if clipboard contains vCalendar event. The signal pasteEnabled() is
