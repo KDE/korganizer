@@ -48,3 +48,4 @@ dnl AC_OUTPUT(korganizer/ical2vcal)
 
 dnl AC_OUTPUT(korganizer/korganizerIn)
 
+AC_PROG_YACC
