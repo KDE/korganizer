@@ -236,6 +236,7 @@ void AboutDialog::updateContributers()
     "Glen Parker",
     "Dan Pilone",
     "Roman Rohr",
+    "Cornelius Schumacher",
     "Herwin Jan Steehouwer",
     "Fester Zigterman",
     i18n("many more, thank you!"),

@@ -33,6 +33,7 @@
 #include "searchdialog.h"
 
 class CalPrinter;
+class ExportWebDialog;
 
 /**
  *
@@ -204,6 +205,9 @@ public slots:
   void printSetup();
   void printPreview();
 
+  /** Export calendar as web page */
+  void exportWeb();
+
   /**
    *
    * pop up an Appointment Dialog to make a new appointment. Uses date that
@@ -371,7 +375,7 @@ protected:
   // dialogs
   OptionsDialog *optionsDlg;
   SearchDialog *searchDlg;
-
+  ExportWebDialog *mExportWebDialog;
 };
 
 #endif // _TOPWIDGET_H

@@ -60,7 +60,7 @@ public:
   virtual QList<KOEvent> getSelected() = 0;
 
   /**
-   * Print this event view.
+   * Generate a print preview of this event view.
    * @param calPrinter Calendar printer object used for printing
    * @param fd from date
    * @param td to date
@@ -69,7 +69,7 @@ public:
                             const QDate &fd, const QDate &td);
   
   /**
-   * Generate a print preview of this event view.
+   * Print this event view.
    * @param calPrinter Calendar printer object used for printing
    */
   virtual void print(CalPrinter *calPrinter);

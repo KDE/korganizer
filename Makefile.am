@@ -30,7 +30,7 @@ korganizer_SOURCES	=  calobject.cpp catdlg.cpp editeventwin.cpp \
 	vcaldrag.cpp kpropgroup.cpp komailclient.cpp kotodoview.cpp \
 	dateedit.cpp datevalidator.cpp todoeventwin.cpp eventwin.cpp \
         wingeneral.cpp todowingeneral.cpp kobaseview.cpp kolistview.cpp \
-	koapp.cpp
+	koapp.cpp exportwebdialog.cpp
 
 alarmd_SOURCES = alarmdaemon.cpp alarmmain.cpp calobject.cpp koevent.cpp \
 	scanholiday.c parseholiday.c vcaldrag.cpp
@@ -52,7 +52,7 @@ noinst_HEADERS = komonthview.h misc.h calobject.h \
 	vcaldrag.h kpropgroup.h komailclient.h kotodoview.h \
 	dateedit.h datevalidator.h todoeventwin.h eventwin.h \
         wingeneral.h todowingeneral.h kobaseview.h kolistview.h \
-	alarmapp.h koapp.h
+	alarmapp.h koapp.h exportwebdialog.h
 
 
 SUBDIRS = versit \

@@ -291,6 +291,12 @@ public:
   void setRelatedTo(KOEvent *relatedTo);
   /** what event does this one relate to? */
   KOEvent *getRelatedTo() const;
+  /** All events that are related to this event */
+  const QList<KOEvent> &getRelations() const;
+  /** Add an event which is related to this event */
+  void addRelation(KOEvent *);
+  /** Remove event that is related to this event */
+  void removeRelation(KOEvent *);
 
   /** set the internal identifier for the event */
   void setEventId(int id);
@@ -487,6 +493,8 @@ protected:
                                        // 1 = never block.
   KOEvent *relatedTo;                  // related event;
   QString relatedToVUID;               // UID of related event;
+  QList<KOEvent> relations;            // List of events that are related to
+                                       // this event.
 
   // stuff below here is for recurring events
   // this is a SUBSET of vCalendar and should be expanded...

@@ -32,7 +32,6 @@ KOEvent::KOEvent()
   relatedTo = 0;
   lastModified = QDateTime::currentDateTime();
   
-
   KConfig *config = new KConfig("korganizerrc");
   config->setGroup("Personal Settings");
   organizer = config->readEntry("user_email");
@@ -80,6 +79,12 @@ KOEvent::KOEvent()
 
 KOEvent::~KOEvent()
 {
+  KOEvent *ev;
+  for (ev=relations.first();ev;ev=relations.next()) {
+    if (ev->getRelatedTo() == this) ev->setRelatedTo(0);
+  }
+  if (getRelatedTo()) getRelatedTo()->removeRelation(this);
+  
   KOEvent::eventCount--;
 }
 
@@ -718,12 +723,31 @@ inline void KOEvent::setRelatedTo(KOEvent *relatedTo)
 {
   if (ro) return;
   KOEvent::relatedTo = relatedTo;
+  if (relatedTo) relatedTo->addRelation(this);
   emit eventUpdated(this);
 }
 
 inline KOEvent *KOEvent::getRelatedTo() const
 {
   return relatedTo;
+}
+
+inline  const QList<KOEvent> &KOEvent::getRelations() const
+{
+  return relations;
+}
+
+inline void KOEvent::addRelation(KOEvent *event)
+{
+  relations.append(event);
+  emit eventUpdated(this);
+}
+
+inline void KOEvent::removeRelation(KOEvent *event)
+{
+  relations.removeRef(event);
+  if (event->getRelatedTo() == this) event->setRelatedTo(0);
+  emit eventUpdated(this);
 }
 
 inline void KOEvent::setEventId(int id)

@@ -47,6 +47,7 @@
 #include "komailclient.h"
 #include "calprinter.h"
 #include "aboutdlg.h"
+#include "exportwebdialog.h"
 
 #include "topwidget.h"
 #include "topwidget.moc"	
@@ -149,16 +150,23 @@ TopWidget::TopWidget(CalObject *cal, QString fn,
   initMenus();
   initToolBar();
 
+// We don't use a status bar up to now.
+#if 0
   sb = new KStatusBar(this, "sb");
   setStatusBar(sb);
+#endif
 
   // set up printing object
   calPrinter = new CalPrinter(this, calendar);
 
+  // set up web exporting object
+  mExportWebDialog = new ExportWebDialog(calendar);
+
+
   // hook up the signals/slots of all widgets together so communication
   // can happen when things get clicked.
   hookupSignals();
-  
+
   // set up autoSaving stuff
   autoSaveTimer = new QTimer(this);
   connect(autoSaveTimer, SIGNAL(timeout()),
@@ -168,7 +176,6 @@ TopWidget::TopWidget(CalObject *cal, QString fn,
 
   // this is required for KTMainWindow for geometry management
   setView(panner, TRUE);
-
   if (currentView) {
     rightFrame->raiseWidget(currentView);
   } else {
@@ -450,6 +457,9 @@ void TopWidget::initMenus()
 						SLOT(file_archive())),
 			   FALSE);
   
+
+  fileMenu->insertItem(i18n("Export as web page"), this,
+                       SLOT(exportWeb()));
 
   fileMenu->insertSeparator();
   fileMenu->insertItem(i18n("Print Setup"), this,
@@ -934,7 +944,7 @@ void TopWidget::updateView()
 }
 
 QString TopWidget::file_getname(int open_save)
-  {
+{
   QString    fileName;
   QString    defaultPath;
 
@@ -944,13 +954,13 @@ QString TopWidget::file_getname(int open_save)
   switch (open_save) {
   case 0 :
     // KFileDialog works?
-    //fileName = QFileDialog::getOpenFileName(defaultPath, "*.vcs", this);
-    fileName = KFileDialog::getOpenFileName(defaultPath, "*.vcs", this);
+    fileName = QFileDialog::getOpenFileName(defaultPath, "*.vcs", this);
+    //fileName = KFileDialog::getOpenFileName(defaultPath, "*.vcs", this);
     break;
   case 1 :
     // KFileDialog works?
-    //fileName = QFileDialog::getSaveFileName(defaultPath, "*.vcs", this);
-    fileName = KFileDialog::getSaveFileName(defaultPath, "*.vcs", this);
+    fileName = QFileDialog::getSaveFileName(defaultPath, "*.vcs", this);
+    //fileName = KFileDialog::getSaveFileName(defaultPath, "*.vcs", this);
     break;
   default :
     debug("Internal error: TopWidget::file_getname(): invalid paramater");
@@ -1872,18 +1882,22 @@ void TopWidget::print()
   QDateList tmpDateList(FALSE);
 
   tmpDateList = dateNavigator->getSelected();
-  calPrinter->print(CalPrinter::Month, 
+  calPrinter->print(CalPrinter::Month,
 		    *tmpDateList.first(), *tmpDateList.last());
 }
 
 void TopWidget::printPreview()
 {
+  qDebug("TopWidget::printPreview()");
+  
   QDateList tmpDateList(FALSE);
 
   tmpDateList = dateNavigator->getSelected();
 
   if (currentView) currentView->printPreview(calPrinter,*tmpDateList.first(),
                                              *tmpDateList.last());
+  else calPrinter->print(CalPrinter::Todo,
+                         *tmpDateList.first(), *tmpDateList.last());
 
 /*
   switch(viewMode) {
@@ -1909,6 +1923,12 @@ void TopWidget::printPreview()
     break;
   }
 */
+}
+
+void TopWidget::exportWeb()
+{
+  mExportWebDialog->show();
+  mExportWebDialog->raise();
 }
 
 void TopWidget::cleanWindow(QWidget *widget)

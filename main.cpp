@@ -28,7 +28,7 @@ void signalHandler(int signo)
    fprintf(stderr, "KOrganizer Crash Handler (signal %d)\n\n", signo);
    fprintf(stderr, "KOrganizer has crashed.  Congratulations,\n"
 	   "You have found a bug! :( Please send e-mail to\n"
-	   "pbrown@kde.org with the following details:\n\n"
+	   "schumacher@kde.org with the following details:\n\n"
 	   "1. What you were doing when the program crashed.\n"
 	   "2. What version of KOrganizer you are running.\n"
 	   "3. Any other details you feel are relevant.\n\n"

@@ -114,6 +114,7 @@ int KOrganizerApp::newInstance()
     (new TopWidget(cal, QString::fromLocal8Bit( (const char*) fn), "TopWidget"))->show();
   }
 
+  qDebug("KOApp::newInstance() done");
   return 0;
 }
 
