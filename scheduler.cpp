@@ -29,7 +29,7 @@ Scheduler::~Scheduler()
 bool Scheduler::acceptTransaction(KOEvent *incidence,icalclass status)
 {
   switch (status) {
-    case ICAL_PUBLISH_CLASS:
+    case ICAL_PUBLISH_NEW_CLASS:
       if (!mCalendar->getEvent(incidence->getVUID())) {
         mCalendar->addEvent(incidence);
       }
@@ -71,7 +71,7 @@ QString Scheduler::methodName(Method method)
 QString Scheduler::statusName(icalclass status)
 {
   switch (status) {
-    case ICAL_PUBLISH_CLASS:
+    case ICAL_PUBLISH_NEW_CLASS:
       return i18n("Publish");
     case ICAL_OBSOLETE_CLASS:
       return i18n("Obsolete");

@@ -18,11 +18,6 @@
 #include <kiconloader.h>
 #include <klocale.h>
 
-extern "C" {
-  #include "ical.h"
-  #include "icalfileset.h"
-}
-
 #include "qdatelist.h"
 #include "calobject.h"
 
