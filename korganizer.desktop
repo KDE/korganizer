@@ -1,7 +1,7 @@
 [Desktop Entry]
 BinaryPattern=korganizer;
 Protocols=file;
-MimeType=text/x-vCalendar;text/plain;
+MimeType=text/x-vcalendar;text/plain;
 Comment=A Calendar and Scheduling Program
 Comment[cs]=Kalendářový a plánovací program
 Comment[de]=Ein Kalender und Terminplaner
