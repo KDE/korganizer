@@ -168,12 +168,16 @@ void ResourceItem::update()
 }
 
 void ResourceItem::setResourceColor(QColor& color) {
-  if ( color.isValid() && mResourceColor != color ) {
-    QPixmap px(height()-13,height()-13);
-    mResourceColor = color;
-    px.fill(color);
-    setPixmap(0,px);
-    //repaint();
+  if ( color.isValid() ) {
+    if ( mResourceColor != color ) {
+      QPixmap px(height()-13,height()-13);
+      mResourceColor = color;
+      px.fill(color);
+      setPixmap(0,px);
+    }
+  } else {
+    mResourceColor = color ;
+    setPixmap(0,0);
   }
 }
 /*
@@ -289,12 +293,9 @@ void ResourceView::addResourceItem( ResourceCalendar *resource )
 
   ResourceItem *item=new ResourceItem( resource, this, mListView );
 
-  QColor resourceColor=KOPrefs::instance()->mEventColor;
+  QColor resourceColor;
 
-  kdDebug(5850) << "ResourceView::addResourceItem from calendar: " << resource->identifier()<< endl;
   resourceColor= *KOPrefs::instance()->resourceColor(resource->identifier());
-  kdDebug(5850) << "ResourceView::addResourceItem with color: " << resourceColor.name() <<endl;
-
   item->setResourceColor(resourceColor);
 
   connect( resource, SIGNAL( signalSubresourceAdded( ResourceCalendar *,
@@ -478,7 +479,13 @@ void ResourceView::contextMenuRequested ( QListViewItem *i,
     menu->insertItem( i18n("Show &Info"), this, SLOT( showInfo() ) );
     if ( !item->isSubresource() ) {
       //FIXME: This is better on the resource dialog
-      menu->insertItem( i18n( "Assign &Color" ),this , SLOT( assignColor() ) );
+      if ( KOPrefs::instance()->agendaViewUsesResourceColor() ) {
+        QPopupMenu *assignMenu= new QPopupMenu( menu );
+        assignMenu->insertItem( i18n( "Assign &Color" ), this, SLOT( assignColor() ) );
+        if ( item->resourceColor().isValid() )
+          assignMenu->insertItem( i18n( "Disable &Color" ), this, SLOT( disableColor() ) );
+        menu->insertItem( i18n( "Resources Colors" ), assignMenu );
+      }
       menu->insertItem( i18n("&Edit..."), this, SLOT( editResource() ) );
       menu->insertItem( i18n("&Remove"), this, SLOT( removeResource() ) );
       if ( item->resource() != manager->standardResource() ) {
@@ -499,6 +506,7 @@ void ResourceView::assignColor()
   ResourceItem *item = currentItem();
   if ( !item )
     return;
+  // A color without initialized is a color invalid
   QColor myColor;
   KCal::ResourceCalendar *cal = item->resource();
 
@@ -514,6 +522,18 @@ void ResourceView::assignColor()
   }
 }
 
+void ResourceView::disableColor()
+{
+  ResourceItem *item = currentItem();
+  if ( !item )
+    return;
+  QColor colorInvalid;
+  KCal::ResourceCalendar *cal = item->resource();
+  KOPrefs::instance()->setResourceColor(cal->identifier(),colorInvalid);
+  item->setResourceColor( colorInvalid );
+  item->update();
+  emit resourcesChanged();
+}
 void ResourceView::showInfo()
 {
   ResourceItem *item = currentItem();

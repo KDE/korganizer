@@ -141,6 +141,7 @@ class ResourceView : public CalendarViewExtension
     void contextMenuRequested ( QListViewItem *i, const QPoint &pos, int );
 
     void assignColor();
+    void disableColor();
     void showInfo();
   
     void reloadResource();
