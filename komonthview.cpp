@@ -435,7 +435,6 @@ void KOMonthView::printPreview(CalPrinter *calPrinter, const QDate &fd,
 
 void KOMonthView::updateConfig()
 {
-  bool fmt;
   const QString longDayNames[] = { i18n("Sunday"), i18n("Monday"),
                                    i18n("Tuesday"), i18n("Wednesday"),
                                    i18n("Thursday"),
@@ -446,11 +445,8 @@ void KOMonthView::updateConfig()
                                     i18n("Sunday") };
   
   KConfig config(locate("config", "korganizerrc")); 
-  config.setGroup("Time & Date");
-  weekStartsMonday = config.readBoolEntry("Week Starts Monday", FALSE);
+  weekStartsMonday = KGlobal::locale()->weekStartsMonday();
   
-  fmt = (config.readNumEntry("Time Format", 1) ? TRUE : FALSE);
-
   QColor tmpColor("#cc3366");
   config.setGroup("Colors");
   QColor hiliteColor = config.readColorEntry("Holiday Color", &tmpColor);
