@@ -27,11 +27,14 @@
 #include <qlayout.h>
 #include <qframe.h>
 #include <qlabel.h>
+#include <qptrlist.h>
+#include <qintdict.h>
 
 #include <kglobal.h>
 #include <klocale.h>
 #include <kdebug.h>
 #include <kconfig.h>
+#include <kprinter.h>
 
 #include <libkcal/todo.h>
 #include <libkcal/event.h>
@@ -41,8 +44,7 @@
 #ifndef KORG_NOPLUGINS
 #include "kocore.h"
 #endif
-
-#include <kprinter.h>
+#include "cellitem.h"
 
 #include "calprintbase.h"
 
@@ -64,6 +66,29 @@ class CalPrintBase::TodoParentStart
     bool mSamePage;
 };
 
+class PrintCellItem : public KOrg::CellItem
+{
+  public:
+    PrintCellItem( Event *event )
+      : mEvent( event )
+    {
+    }
+  
+    Event *event() const { return mEvent; }
+
+    QString label() const { return mEvent->summary(); }
+    
+    bool overlaps( KOrg::CellItem *o ) const
+    {
+      PrintCellItem *other = static_cast<PrintCellItem *>( o );
+
+      return !( other->event()->dtStart() >= event()->dtEnd() ||
+                other->event()->dtEnd() <= event()->dtStart() );
+    }
+    
+  private:
+    Event *mEvent;
+};
 
 void setCategoryColors( QPainter &p, Incidence *incidence)
 {
@@ -481,7 +506,27 @@ void CalPrintBase::drawAgendaDayBox( QPainter &p, Event::List &events,
     currY += cellHeight / 2;
   }
 
-  // draw the event boxes
+  QDateTime startPrintDate = QDateTime( qd, fromTime );
+  QDateTime endPrintDate = QDateTime( qd, toTime );
+
+  // Calculate horizontal positions and widths of events taking into account
+  // overlapping events
+
+  QPtrList<KOrg::CellItem> cells;
+  cells.setAutoDelete( true );
+
+  Event::List::ConstIterator itEvents;
+  for( itEvents = events.begin(); itEvents != events.end(); ++itEvents ) {
+    cells.append( new PrintCellItem( *itEvents ) );
+  }
+
+  QPtrListIterator<KOrg::CellItem> it1( cells );
+  for( it1.toFirst(); it1.current(); ++it1 ) {
+    KOrg::CellItem *placeItem = it1.current();
+
+    KOrg::CellItem::placeItem( cells, placeItem );
+  }
+
   QPen oldPen = p.pen();
   QColor oldBgColor = p.backgroundColor();
   QBrush oldBrush = p.brush();
@@ -489,42 +534,54 @@ void CalPrintBase::drawAgendaDayBox( QPainter &p, Event::List &events,
   p.setFont( QFont( "helvetica", 14 ) );
   p.setBrush( QBrush( Dense7Pattern ) );
 
-  // now print the rectangles for the events
-  QDateTime startPrintDate = QDateTime( qd, fromTime );
-  QDateTime endPrintDate = QDateTime( qd, toTime );
-  Event::List::ConstIterator it;
-  for ( it = events.begin(); it != events.end(); ++it ) {
-    event = *it;
-    // set the colors according to the categories
-    if ( mUseColors ) setCategoryColors( p, event );
+  for( it1.toFirst(); it1.current(); ++it1 ) {
+    PrintCellItem *placeItem = static_cast<PrintCellItem *>( it1.current() );
 
-    // start/end of print area for event
-    QDateTime startTime = event->dtStart();
-    QDateTime endTime = event->dtEnd();
-    if ( event->doesRecur() ) {
-      startTime.setDate( qd );
-      endTime.setDate( qd );
-    }
-    if ( ( startTime < endPrintDate && endTime > startPrintDate ) ||
-         ( endTime > startPrintDate && startTime < endPrintDate ) ) {
-      if ( startTime < startPrintDate ) startTime = startPrintDate;
-      if ( endTime > endPrintDate ) endTime = endPrintDate;
-      int eventLength = int( startTime.secsTo( endTime ) / 60. * minlen );
-      int currentyPos = int( y + startPrintDate.secsTo( startTime ) *
-                             minlen / 60. );
-      p.drawRect( x, currentyPos, width, eventLength );
-      p.drawText( x, currentyPos, width, eventLength,
-                  AlignCenter | AlignVCenter | AlignJustify | WordBreak,
-                  event->summary() );
-    }
+    drawAgendaItem( placeItem, p, qd, startPrintDate, endPrintDate, minlen, x,
+                    y, width );
 
     p.setBrush( oldBrush );
     p.setPen( oldPen );
     p.setBackgroundColor( oldBgColor );
   }
+  
   p.setBrush( QBrush( NoBrush ) );
 }
 
+void CalPrintBase::drawAgendaItem( PrintCellItem *item, QPainter &p,
+                                   const QDate &qd,
+                                   const QDateTime &startPrintDate,
+                                   const QDateTime &endPrintDate,
+                                   float minlen, int x, int y, int width )
+{
+  Event *event = item->event();
+
+  // set the colors according to the categories
+  if ( mUseColors ) setCategoryColors( p, event );
+
+  // start/end of print area for event
+  QDateTime startTime = event->dtStart();
+  QDateTime endTime = event->dtEnd();
+  if ( event->doesRecur() ) {
+    startTime.setDate( qd );
+    endTime.setDate( qd );
+  }
+  if ( ( startTime < endPrintDate && endTime > startPrintDate ) ||
+       ( endTime > startPrintDate && startTime < endPrintDate ) ) {
+    if ( startTime < startPrintDate ) startTime = startPrintDate;
+    if ( endTime > endPrintDate ) endTime = endPrintDate;
+    int eventLength = int( startTime.secsTo( endTime ) / 60. * minlen );
+    int currentyPos = int( y + startPrintDate.secsTo( startTime ) *
+                           minlen / 60. );
+    int currentWidth = width / item->subCells();
+    int currentX = x + item->subCell() * currentWidth;
+
+    p.drawRect( currentX, currentyPos, currentWidth, eventLength );
+    p.drawText( currentX, currentyPos, currentWidth, eventLength,
+                AlignCenter | AlignVCenter | AlignJustify | WordBreak,
+                event->summary() );
+  }
+}
 
 void CalPrintBase::drawDayBox(QPainter &p, const QDate &qd,
     int x, int y, int width, int height,

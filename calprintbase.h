@@ -33,6 +33,8 @@
 #include <kprinter.h>
 #include <libkcal/event.h>
 
+class PrintCellItem;
+
 namespace KCal {
 class Calendar;
 class Todo;
@@ -255,6 +257,11 @@ class CalPrintBase : public QObject
                            const QDate &qd, bool expandable,
                            QTime &fromTime, QTime &toTime,
                            int x, int y, int width, int height);
+
+    void drawAgendaItem( PrintCellItem *item, QPainter &p, const QDate &,
+                         const QDateTime &startPrintDate,
+                         const QDateTime &endPrintDate,
+                         float minlen, int x, int y, int width );
     /**
       Draw the box containing a list of all events of the given day (with their times, 
       of course). Used in the Filofax and the month print style.

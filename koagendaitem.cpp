@@ -1,6 +1,7 @@
 /*
     This file is part of KOrganizer.
-    Copyright (c) 2000,2001 Cornelius Schumacher <schumacher@kde.org>
+
+    Copyright (c) 2000,2001,2003 Cornelius Schumacher <schumacher@kde.org>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -46,30 +47,28 @@ QToolTipGroup *KOAgendaItem::mToolTipGroup = 0;
 
 //--------------------------------------------------------------------------
 
-KOAgendaItem::KOAgendaItem(Incidence *incidence, QDate qd, QWidget *parent,
-                           const char *name,WFlags) :
-  QWidget(parent, name), mIncidence(incidence), mDate(qd),
-  mLabelText(mIncidence->summary()), mIconAlarm(false),
-  mIconRecur(false), mIconReadonly(false), mIconReply(false),
-  mIconGroup(false), mIconOrganizer(false),
-  mMultiItemInfo(0), mStartMoveInfo(0)
+KOAgendaItem::KOAgendaItem( Incidence *incidence, QDate qd, QWidget *parent,
+                            const char *name, WFlags f ) :
+  QWidget( parent, name, f ), mIncidence( incidence ), mDate( qd ),
+  mLabelText( mIncidence->summary() ), mIconAlarm( false ),
+  mIconRecur( false ), mIconReadonly( false ), mIconReply( false ),
+  mIconGroup( false ), mIconOrganizer( false ),
+  mMultiItemInfo( 0 ), mStartMoveInfo( 0 )
 {
-  setBackgroundMode(Qt::NoBackground);
+  setBackgroundMode( Qt::NoBackground );
 
-  setCellXY(0,0,1);
-  setCellXWidth(0);
-  setSubCell(0);
-  setSubCells(1);
-  setMouseTracking(true);
+  setCellXY( 0, 0, 1 );
+  setCellXWidth( 0 );
+  setMouseTracking( true );
 
   updateIcons();
 
   // select() does nothing, if state hasn't change, so preset mSelected.
   mSelected = true;
-  select(false);
+  select( false );
 
   KOIncidenceToolTip::add( this, incidence, toolTipGroup() );
-  setAcceptDrops(true);
+  setAcceptDrops( true );
 }
 
 void KOAgendaItem::updateIcons()
@@ -77,27 +76,24 @@ void KOAgendaItem::updateIcons()
   mIconReadonly = mIncidence->isReadOnly();
   mIconRecur = mIncidence->doesRecur();
   mIconAlarm = mIncidence->isAlarmEnabled();
-  if (mIncidence->attendeeCount()>0) {
-    if (mIncidence->organizer() == KOPrefs::instance()->email()) {
+  if ( mIncidence->attendeeCount() > 0 ) {
+    if ( mIncidence->organizer() == KOPrefs::instance()->email() ) {
       mIconReply = false;
       mIconGroup = false;
       mIconOrganizer = true;
-    }
-    else {
-      Attendee *me = mIncidence->attendeeByMails(KOPrefs::instance()->mAdditionalMails,KOPrefs::instance()->email());
-      if (me!=0) {
-        if (me->status()==Attendee::NeedsAction && me->RSVP()) {
+    } else {
+      Attendee *me = mIncidence->attendeeByMails( KOPrefs::instance()->mAdditionalMails,KOPrefs::instance()->email() );
+      if ( me ) {
+        if ( me->status() == Attendee::NeedsAction && me->RSVP() ) {
           mIconReply = true;
           mIconGroup = false;
           mIconOrganizer = false;
-        }
-        else {
+        } else {
           mIconReply = false;
           mIconGroup = true;
           mIconOrganizer = false;
         }
-      }
-      else {
+      } else {
         mIconReply = false;
         mIconGroup = true;
         mIconOrganizer = false;
@@ -108,9 +104,9 @@ void KOAgendaItem::updateIcons()
 }
 
 
-void KOAgendaItem::select(bool selected)
+void KOAgendaItem::select( bool selected )
 {
-  if (mSelected == selected) return;
+  if ( mSelected == selected ) return;
   mSelected = selected;
 
   update();
@@ -120,7 +116,7 @@ void KOAgendaItem::select(bool selected)
 /*
   Return height of item in units of agenda cells
 */
-int KOAgendaItem::cellHeight()
+int KOAgendaItem::cellHeight() const
 {
   return mCellYBottom - mCellYTop + 1;
 }
@@ -128,48 +124,38 @@ int KOAgendaItem::cellHeight()
 /*
   Return height of item in units of agenda cells
 */
-int KOAgendaItem::cellWidth()
+int KOAgendaItem::cellWidth() const
 {
   return mCellXWidth - mCellX + 1;
 }
 
-void KOAgendaItem::setItemDate(QDate qd)
+void KOAgendaItem::setItemDate( QDate qd )
 {
   mDate = qd;
 }
 
-void KOAgendaItem::setCellXY(int X, int YTop, int YBottom)
+void KOAgendaItem::setCellXY( int X, int YTop, int YBottom )
 {
   mCellX = X;
   mCellYTop = YTop;
   mCellYBottom = YBottom;
 }
 
-void KOAgendaItem::setCellXWidth(int xwidth)
+void KOAgendaItem::setCellXWidth( int xwidth )
 {
   mCellXWidth = xwidth;
 }
 
-void KOAgendaItem::setCellX(int XLeft, int XRight)
+void KOAgendaItem::setCellX( int XLeft, int XRight )
 {
   mCellX = XLeft;
   mCellXWidth = XRight;
 }
 
-void KOAgendaItem::setCellY(int YTop, int YBottom)
+void KOAgendaItem::setCellY( int YTop, int YBottom )
 {
   mCellYTop = YTop;
   mCellYBottom = YBottom;
-}
-
-void KOAgendaItem::setSubCell(int subCell)
-{
-  mSubCell = subCell;
-}
-
-void KOAgendaItem::setSubCells(int subCells)
-{
-  mSubCells = subCells;
 }
 
 void KOAgendaItem::setMultiItem(KOAgendaItem *first, KOAgendaItem *prev,
@@ -519,12 +505,12 @@ void KOAgendaItem::dropEvent( QDropEvent *e )
     }
   } else
 #endif
-  if(QTextDrag::decode(e,text))
-  {
+  if( QTextDrag::decode( e, text ) ) {
     kdDebug(5850) << "Dropped : " << text << endl;
-    QStringList emails = QStringList::split(",",text);
-    for(QStringList::ConstIterator it = emails.begin();it!=emails.end();++it) {
-      addAttendee(*it);
+    QStringList emails = QStringList::split( ",", text );
+    for( QStringList::ConstIterator it = emails.begin(); it != emails.end();
+         ++it ) {
+      addAttendee( *it );
     }
   }
 #endif
@@ -536,53 +522,71 @@ QPtrList<KOAgendaItem> KOAgendaItem::conflictItems()
   return mConflictItems;
 }
 
-void KOAgendaItem::setConflictItems(QPtrList<KOAgendaItem> ci)
+void KOAgendaItem::setConflictItems( QPtrList<KOAgendaItem> ci )
 {
   mConflictItems = ci;
   KOAgendaItem *item;
-  for ( item=mConflictItems.first(); item != 0;
-        item=mConflictItems.next() ) {
-    item->addConflictItem(this);
+  for ( item = mConflictItems.first(); item != 0;
+        item = mConflictItems.next() ) {
+    item->addConflictItem( this );
   }
 }
 
-void KOAgendaItem::addConflictItem(KOAgendaItem *ci)
+void KOAgendaItem::addConflictItem( KOAgendaItem *ci )
 {
-  if (mConflictItems.find(ci)<0)
-    mConflictItems.append(ci);
+  if ( mConflictItems.find( ci ) < 0 ) mConflictItems.append( ci );
 }
 
-void KOAgendaItem::paintFrame(QPainter *p,
-                              const QColor &color)
+QString KOAgendaItem::label() const
+{
+  return mLabelText;
+}
+
+bool KOAgendaItem::overlaps( KOrg::CellItem *o ) const
+{
+  KOAgendaItem *other = static_cast<KOAgendaItem *>( o );
+
+  if ( cellX() <= other->cellXWidth() &&
+       cellXWidth() >= other->cellX() ) {
+    if ( ( cellYTop() <= other->cellYBottom() ) &&
+         ( cellYBottom() >= other->cellYTop() ) ) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
+void KOAgendaItem::paintFrame( QPainter *p, const QColor &color )
 {
   p->setPen( color );
   p->drawRect( 0, 0, width(), height() );
-  p->drawRect( 1, 1, width()-2, height()-2 );
+  p->drawRect( 1, 1, width() - 2, height() - 2 );
 }
 
-static void conditionalPaint(QPainter *p, bool cond, int &x, int ft,
-                             const QPixmap &pxmp)
+static void conditionalPaint( QPainter *p, bool cond, int &x, int ft,
+                              const QPixmap &pxmp )
 {
-  if (!cond)
-    return;
-  p->drawPixmap( x, ft, pxmp);
+  if ( !cond ) return;
+
+  p->drawPixmap( x, ft, pxmp );
   x += pxmp.width() + ft;
 }
 
-void KOAgendaItem::paintTodoIcon(QPainter *p, int &x, int ft)
+void KOAgendaItem::paintTodoIcon( QPainter *p, int &x, int ft )
 {
   static const QPixmap todoPxmp = SmallIcon("todo");
   static const QPixmap completedPxmp = SmallIcon("checkedbox");
   if ( mIncidence->type() != "Todo" )
     return;
-  bool b = (static_cast<Todo*>(mIncidence))->isCompleted();
-  conditionalPaint(p, b, x, ft, todoPxmp);
-  conditionalPaint(p, !b, x, ft, completedPxmp);
+  bool b = ( static_cast<Todo *>( mIncidence ) )->isCompleted();
+  conditionalPaint( p, b, x, ft, todoPxmp );
+  conditionalPaint( p, !b, x, ft, completedPxmp );
 }
 
-void KOAgendaItem::paintEvent(QPaintEvent *)
+void KOAgendaItem::paintEvent( QPaintEvent * )
 {
-  QPainter p(this);
+  QPainter p( this );
   const int ft = 2; // frame thickness for layout, see paintFrame()
   const int margin = 1 + ft; // frame + space between frame and content
 
@@ -669,12 +673,10 @@ void KOAgendaItem::paintEvent(QPaintEvent *)
                .arg(KGlobal::locale()->formatTime(mIncidence->dtEnd().time()));
     else
       longH = shortH;
-  }
-  else if ( !mMultiItemInfo->mFirstMultiItem ) {
+  } else if ( !mMultiItemInfo->mFirstMultiItem ) {
     shortH = KGlobal::locale()->formatTime(mIncidence->dtStart().time());
     longH = shortH;
-  }
-  else {
+  } else {
     shortH = KGlobal::locale()->formatTime(mIncidence->dtEnd().time());
     longH = i18n("- %1").arg(shortH);
   }
@@ -747,8 +749,7 @@ void KOAgendaItem::paintEvent(QPaintEvent *)
       x += (width() - x - margin - hw) / 2;
     else
       headline = "";
-  }
-  else {
+  } else {
     headline = longH;
     x += (width() - x - margin - hw) / 2;
   }

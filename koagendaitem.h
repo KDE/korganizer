@@ -1,6 +1,7 @@
 /*
     This file is part of KOrganizer.
-    Copyright (c) 2000,2001 Cornelius Schumacher <schumacher@kde.org>
+
+    Copyright (c) 2000,2001,2003 Cornelius Schumacher <schumacher@kde.org>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -19,10 +20,12 @@
 #ifndef KOAGENDAITEM_H
 #define KOAGENDAITEM_H
 
-#include <qframe.h>
-#include <qdatetime.h>
+#include "cellitem.h"
 
 #include <libkcal/incidence.h>
+
+#include <qframe.h>
+#include <qdatetime.h>
 
 class QToolTipGroup;
 class QDragEnterEvent;
@@ -48,28 +51,24 @@ struct MultiItemInfo
   eventfiler for its children, if it has children, and it has to pass mouse
   events from the cildren to itself. See eventFilter().
 */
-class KOAgendaItem : public QWidget
+class KOAgendaItem : public QWidget, public KOrg::CellItem
 {
     Q_OBJECT
   public:
     KOAgendaItem(Incidence *incidence, QDate qd, QWidget *parent, const char *name=0,
                  WFlags f=0 );
 
-    int cellX() { return mCellX; }
-    int cellXWidth() { return mCellXWidth; }
-    int cellYTop() { return mCellYTop; }
-    int cellYBottom() { return mCellYBottom; }
-    int cellHeight();
-    int cellWidth();
-    int subCell() { return mSubCell; }
-    int subCells() { return mSubCells; }
+    int cellX() const { return mCellX; }
+    int cellXWidth() const { return mCellXWidth; }
+    int cellYTop() const { return mCellYTop; }
+    int cellYBottom() const { return mCellYBottom; }
+    int cellHeight() const;
+    int cellWidth() const;
 
     void setCellXY(int X, int YTop, int YBottom);
     void setCellY(int YTop, int YBottom);
     void setCellX(int XLeft, int XRight);
     void setCellXWidth(int xwidth);
-    void setSubCell(int subCell);
-    void setSubCells(int subCells);
 
     /** Start movement */
     void startMove();
@@ -112,6 +111,10 @@ class KOAgendaItem : public QWidget
     QPtrList<KOAgendaItem> conflictItems();
     void setConflictItems(QPtrList<KOAgendaItem>);
     void addConflictItem(KOAgendaItem *ci);
+
+    QString label() const;
+
+    bool overlaps( KOrg::CellItem * ) const;
 
   public slots:
     void updateIcons();
@@ -158,4 +161,4 @@ class KOAgendaItem : public QWidget
     QPtrList<KOAgendaItem> mConflictItems;
 };
 
-#endif // KOAGENDAITEM_H
+#endif

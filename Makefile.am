@@ -96,7 +96,8 @@ libkorganizer_la_SOURCES =  outgoingdialog_base.ui \
         navigatorbar.cpp kogroupware.cpp \
 	kogroupwareincomingdialog_base.ui kogroupwareincomingdialog.cpp \
         history.cpp \
-        koprefs_base.cpp koincidencetooltip.cpp aboutdata.cpp
+        koprefs_base.cpp koincidencetooltip.cpp aboutdata.cpp \
+        cellitem.cpp
 
 METASOURCES = AUTO
 

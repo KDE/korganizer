@@ -1094,60 +1094,24 @@ void KOAgenda::placeSubCells( KOAgendaItem *placeItem )
   kdDebug(5850) << "KOAgenda::placeSubCells()..." << endl;
 #endif
 
-  QPtrList<KOAgendaItem> conflictItems;
-  int maxSubCells = 0;
-  QIntDict<KOAgendaItem> subCellDict( 5 );
-
-  // Find all items which are in the same cell.
+  QPtrList<KOrg::CellItem> cells;
   KOAgendaItem *item;
-  for ( item=mItems.first(); item != 0; item = mItems.next() ) {
-    if ( item != placeItem ) {
-      if ( placeItem->cellX() <= item->cellXWidth() &&
-           placeItem->cellXWidth() >= item->cellX() ) {
-        if ( ( placeItem->cellYTop() <= item->cellYBottom() ) &&
-             ( placeItem->cellYBottom() >= item->cellYTop() ) ) {
-          conflictItems.append( item );
-          if ( item->subCells() > maxSubCells )
-            maxSubCells = item->subCells();
-          subCellDict.insert( item->subCell(), item );
-        }
-      }
-    }
+  for ( item = mItems.first(); item != 0; item = mItems.next() ) {
+    cells.append( item );  
+  }
+  
+  QPtrList<KOrg::CellItem> items = KOrg::CellItem::placeItem( cells,
+                                                              placeItem );
+
+  placeItem->setConflictItems( QPtrList<KOAgendaItem>() );
+  double newSubCellWidth = calcSubCellWidth( placeItem );
+  KOrg::CellItem *i;
+  for ( i = items.first(); i; i = items.next() ) {
+    item = static_cast<KOAgendaItem *>( i );
+    placeAgendaItem( item, newSubCellWidth );
+    placeItem->addConflictItem( item );
   }
 
-  if ( conflictItems.count() > 0 ) {
-    // Look for unused sub cell and insert item
-    int i;
-    for( i = 0; i < maxSubCells; ++i ) {
-      if ( !subCellDict.find( i ) ) {
-        placeItem->setSubCell( i );
-        break;
-      }
-    }
-    if ( i == maxSubCells ) {
-      placeItem->setSubCell( maxSubCells );
-      maxSubCells++;  // add new item to number of sub cells
-    }
-
-    conflictItems.append( placeItem );
-
-//    kdDebug(5850) << "---Conflict items: " << conflictItems.count() << endl;
-
-    // Adjust sub cell geometry of all items
-    placeItem->setSubCells( maxSubCells );
-    double newSubCellWidth = calcSubCellWidth( placeItem );
-    for ( item = conflictItems.first(); item != 0; item = conflictItems.next() ) {
-      item->setSubCells( maxSubCells );
-      placeAgendaItem( item, newSubCellWidth );
-    }
-  } else {
-    // There is only one item in this cell
-    placeItem->setSubCell( 0 );
-    placeItem->setSubCells( 1 );
-    double newSubCellWidth = calcSubCellWidth( placeItem );
-    placeAgendaItem( placeItem, newSubCellWidth );
-  }
-  placeItem->setConflictItems( conflictItems );
   placeItem->update();
 }
 
