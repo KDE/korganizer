@@ -188,8 +188,8 @@ void KOPrefs::usrReadConfig()
   if (mCustomCategories.isEmpty()) setCategoryDefaults();
 
   mArchiveFile = mConfig->readEntry("Archive File");
-  mHtmlExportFile = mConfig->readEntry("Html Export File",QDir::homeDirPath() +
-                                       "/calendar.html");
+  mHtmlExportFile = mConfig->readEntry("Html Export File",QDir::homeDirPath() + "/" +
+                                       i18n("Default export file", "calendar.html"));
 
   mConfig->setGroup("Personal Settings");
   mName = mConfig->readEntry("user_name","");
