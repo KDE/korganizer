@@ -87,11 +87,17 @@ ResourceItem::ResourceItem( ResourceCalendar *resource, ResourceView *view,
                             KListView *parent )
   : QCheckListItem( parent, resource->resourceName(), CheckBox ),
     mResource( resource ), mView( view ), mBlockStateChange( false ),
-    mIsSubresource( false ), mResourceIdentifier( QString::null )
-   
+    mIsSubresource( false ), mResourceIdentifier( QString::null ), 
+    mSubItemsCreated( false )
 {
   setGuiState();
 
+  if ( mResource->isActive() ) {
+    createSubresourceItems();
+  }
+}
+
+void ResourceItem::createSubresourceItems() {
   const QStringList subresources = mResource->subresources();
   if ( !subresources.isEmpty() ) {
     setOpen( true );
@@ -102,13 +108,15 @@ ResourceItem::ResourceItem( ResourceCalendar *resource, ResourceView *view,
       ( void )new ResourceItem( mResource, *it, mView, this );
     }
   }
+  mSubItemsCreated = true;
 }
 
 ResourceItem::ResourceItem( KCal::ResourceCalendar *resource,
                             const QString& sub, ResourceView *view,
                             ResourceItem* parent )
   : QCheckListItem( parent, sub, CheckBox ), mResource( resource ),
-    mView( view ), mBlockStateChange( false ), mIsSubresource( true )
+    mView( view ), mBlockStateChange( false ), mIsSubresource( true ),
+    mSubItemsCreated( false )
 {
   mResourceIdentifier = sub;
   QString label = resource->labelForSubresource( mResourceIdentifier );
@@ -134,7 +142,11 @@ void ResourceItem::stateChange( bool active )
     mResource->setSubresourceActive( mResourceIdentifier, active );
   } else {
     if ( active ) {
-      if ( mResource->load() ) mResource->setActive( true );
+      if ( mResource->load() ) {
+        mResource->setActive( true );
+        if ( !mSubItemsCreated )
+          createSubresourceItems();
+      }
     } else {
       if ( mResource->save() ) mResource->setActive( false );
       mView->requestClose( mResource );

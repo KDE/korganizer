@@ -65,6 +65,7 @@ class ResourceItem : public QCheckListItem
     KCal::ResourceCalendar *resource() { return mResource; }
     const QString& resourceIdentifier() { return mResourceIdentifier; }
     bool isSubresource() const { return mIsSubresource; }
+    void createSubresourceItems();
 
     void update();
 
@@ -79,6 +80,7 @@ class ResourceItem : public QCheckListItem
     bool mBlockStateChange;
     bool mIsSubresource;
     QString mResourceIdentifier;
+    bool mSubItemsCreated;
 };
 
 /**
