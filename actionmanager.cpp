@@ -612,7 +612,8 @@ void ActionManager::file_open()
 
   kdDebug(5850) << "ActionManager::file_open(): " << url.prettyURL() << endl;
 
-  if (!mCalendarView->isModified() && mFile.isEmpty()) {
+  // Open the calendar file in the same window only if we have an empty calendar window, and not the resource calendar
+  if (!mCalendarView->isModified() && mFile.isEmpty() && !mCalendarResources ) {
     openURL(url);
   } else {
     emit actionNew( url );
