@@ -2,7 +2,8 @@
 holidaysdir = $(kde_datadir)/korganizer
 
 holidays_DATA = holiday_at holiday_au holiday_bavarian holiday_be holiday_ca  \
-                holiday_catalan holiday_ch holiday_cz holiday_de holiday_dk \
+                holiday_catalan holiday_co \
+                holiday_ch holiday_cz holiday_de holiday_dk \
                 holiday_es holiday_fi holiday_fr holiday_frswiss holiday_gb \
                 holiday_gt \
                 holiday_hu holiday_is holiday_il holiday_it holiday_ja holiday_mx \
