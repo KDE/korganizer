@@ -826,12 +826,13 @@ void KOMonthView::changeIncidenceDisplayAdded( Incidence *incidence )
     date = todo->dtDue().date();
   }
 
-  if ( !calendar()->filter()->filterIncidence( incidence ) )
-    return;
+//  if ( !calendar()->filter()->filterIncidence( incidence ) )
+//    return;
   if ( incidence->doesRecur() ) {
      for ( uint i = 0; i < mCells.count(); i++ ) {
-       if ( incidence->recursAt( mCells[i]->date() ) )
+       if ( incidence->recursOn( mCells[i]->date() ) ) {
          mCells[i]->addIncidence( incidence );
+       }
      }
   } else if ( event ) {
       for ( QDateTime _date = date;
