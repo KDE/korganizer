@@ -248,19 +248,7 @@ void KOEventViewer::formatAttendees( Incidence *event )
     // Add organizer link
     addTag( "h3", i18n("Organizer") );
     mText.append( "<ul>" );
-    QString name, email, organizer;
-    organizer = event->organizer();
-    if ( organizer.length() > 1 ) {
-      // If the organizer does not have a name, it looks like <foo@bar.org>
-      // which can not be shown in a rich text widget. Filter those <> out
-      if ( organizer[0] == '<' && organizer[organizer.length()-1] == '>' )
-        organizer = organizer.mid( 1, organizer.length() - 2 );
-    }
-    if ( KPIM::getNameAndMail( organizer, name, email ) )
-      linkPerson( email, name, "", iconPath );
-    else
-      // Doesn't seem to be a valid address. Just show whatever we have
-      mText += "<li>" + organizer + "</li>\n";
+    linkPerson( event->organizer().email(), event->organizer().fullName(), "", iconPath );
     mText += "</ul>";
 
     // Add attendees links

@@ -57,8 +57,8 @@ bool KOMailClient::mailAttendees(IncidenceBase *incidence,const QString &attachm
   Attendee::List attendees = incidence->attendees();
   if (attendees.count() == 0) return false;
 
-  const QString from = incidence->organizer();
-  const QString organizerEmail = KPIM::getEmailAddr( incidence->organizer() );
+  const QString from = incidence->organizer().fullName();
+  const QString organizerEmail = incidence->organizer().email();
   QStringList toList;
   for(uint i=0; i<attendees.count();++i) {
     const QString email = (*attendees.at(i))->email();
@@ -90,7 +90,7 @@ bool KOMailClient::mailAttendees(IncidenceBase *incidence,const QString &attachm
 
 bool KOMailClient::mailOrganizer(IncidenceBase *incidence,const QString &attachment)
 {
-  QString to = incidence->organizer();
+  QString to = incidence->organizer().fullName();
 
   QString from = KOPrefs::instance()->email();
 
@@ -313,7 +313,7 @@ QString KOMailClient::createBody(IncidenceBase *incidence)
       i18n("Yearly"), i18n("Yearly"), i18n("Yearly")};
 
     if (!selectedEvent->organizer().isEmpty()) {
-      body += i18n("Organizer: %1").arg(selectedEvent->organizer());
+      body += i18n("Organizer: %1").arg(selectedEvent->organizer().fullName());
       body += CR;
     }
     body += i18n("Summary: %1").arg(selectedEvent->summary());
@@ -374,7 +374,7 @@ QString KOMailClient::createBody(IncidenceBase *incidence)
   if (incidence->type()=="Todo") {
     Todo *selectedEvent = static_cast<Todo *>(incidence);
     if (!selectedEvent->organizer().isEmpty()) {
-      body += i18n("Organizer: %1").arg(selectedEvent->organizer());
+      body += i18n("Organizer: %1").arg(selectedEvent->organizer().fullName());
       body += CR;
     }
     body += i18n("Summary: %1").arg(selectedEvent->summary());

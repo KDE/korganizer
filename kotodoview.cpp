@@ -990,7 +990,8 @@ void KOTodoView::addQuickTodo()
 {
   Todo *todo = new Todo();
   todo->setSummary( mQuickAdd->text() );
-  todo->setOrganizer( KOPrefs::instance()->email() );
+  todo->setOrganizer( Person( KOPrefs::instance()->fullName(), 
+                      KOPrefs::instance()->email() ) );
   if ( !calendar()->addTodo( todo ) ) {
     KODialogManager::errorSaveTodo( this );
     return;

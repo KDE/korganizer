@@ -298,7 +298,8 @@ bool KOEventEditor::processInput()
     return rc;
   } else {
     mEvent = new Event;
-    mEvent->setOrganizer( KOPrefs::instance()->email() );
+    mEvent->setOrganizer( Person( KOPrefs::instance()->fullName(), 
+                          KOPrefs::instance()->email() ) );
     writeEvent( mEvent );
     if ( KOPrefs::instance()->mUseGroupwareCommunication ) {
       if ( !KOGroupware::instance()->sendICalMessage( this,
@@ -340,7 +341,7 @@ void KOEventEditor::deleteEvent()
   if (mEvent) {
     bool groupwareCheck = KOPrefs::instance()->mConfirm &&
           (!KOPrefs::instance()->mUseGroupwareCommunication ||
-           KOPrefs::instance()->thatIsMe( mEvent->organizer() ) );
+           KOPrefs::instance()->thatIsMe( mEvent->organizer().email() ) );
     if (!groupwareCheck || (msgItemDelete()==KMessageBox::Continue)) {
       // Either no groupware check needed, or OK pressed
       emit incidenceToBeDeleted(mEvent);

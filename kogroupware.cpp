@@ -717,8 +717,8 @@ bool KOGroupware::incomingEventRequest( const QString& request,
   // Fix broken OL appointments
   if( vCalIn.contains( "PRODID:-//Microsoft" ) ) {
     // OL doesn't send the organizer as an attendee as it should
-    Attendee* organizer = new KCal::Attendee( i18n("Organizer"),
-                                             event->organizer(), false,
+    Attendee* organizer = new KCal::Attendee( event->organizer().name(),
+                                             event->organizer().email(), false,
                                              KCal::Attendee::Accepted );
     event->addAttendee( organizer );
   }
@@ -887,7 +887,7 @@ bool KOGroupware::sendICalMessage( QWidget* parent,
                                    KCal::Scheduler::Method method,
                                    Incidence* incidence, bool isDeleting )
 {
-  bool isOrganizer = KOPrefs::instance()->thatIsMe( incidence->organizer() );
+  bool isOrganizer = KOPrefs::instance()->thatIsMe( incidence->organizer().email() );
 
   int rc = 0;
   if( isOrganizer ) {

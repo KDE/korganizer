@@ -1139,7 +1139,7 @@ void CalendarView::deleteTodo(Todo *todo)
     return;
   }
   if (KOPrefs::instance()->mConfirm && (!KOPrefs::instance()->mUseGroupwareCommunication ||
-                                        KOPrefs::instance()->thatIsMe( todo->organizer() ))) {
+                                        KOPrefs::instance()->thatIsMe( todo->organizer().email() ))) {
     switch (msgItemDelete()) {
       case KMessageBox::Continue: // OK
         if (!todo->relations().isEmpty()) {
@@ -1183,7 +1183,7 @@ void CalendarView::deleteJournal(Journal *journal)
     return;
   }
   if (KOPrefs::instance()->mConfirm && (!KOPrefs::instance()->mUseGroupwareCommunication ||
-                                        KOPrefs::instance()->thatIsMe( journal->organizer() ))) {
+                                        KOPrefs::instance()->thatIsMe( journal->organizer().email() ))) {
     switch (msgItemDelete()) {
       case KMessageBox::Continue: // OK
         bool doDelete = true;
@@ -1241,7 +1241,7 @@ void CalendarView::deleteEvent(Event *anEvent)
     switch(km) {
       case KMessageBox::No: // Continue // all
       case KMessageBox::Continue:
-        if (KOPrefs::instance()->thatIsMe( anEvent->organizer() ) && anEvent->attendeeCount()>0
+        if (KOPrefs::instance()->thatIsMe( anEvent->organizer().email() ) && anEvent->attendeeCount()>0
             && !KOPrefs::instance()->mUseGroupwareCommunication) {
           schedule(Scheduler::Cancel,anEvent);
         } else if( KOPrefs::instance()->mUseGroupwareCommunication ) {
@@ -1273,7 +1273,7 @@ void CalendarView::deleteEvent(Event *anEvent)
         break;
     }
   } else {
-    bool userIsOrganizer = KOPrefs::instance()->thatIsMe( anEvent->organizer() );
+    bool userIsOrganizer = KOPrefs::instance()->thatIsMe( anEvent->organizer().email() );
     if (KOPrefs::instance()->mConfirm && (!KOPrefs::instance()->mUseGroupwareCommunication ||
                                           userIsOrganizer)) {
       bool doDelete = true;
@@ -1499,7 +1499,8 @@ void CalendarView::mailFreeBusy( int daysToPublish )
   QDateTime end = start.addDays(daysToPublish);
 
   FreeBusy *freebusy = new FreeBusy(mCalendar, start, end);
-  freebusy->setOrganizer(KOPrefs::instance()->email());
+  freebusy->setOrganizer( Person( KOPrefs::instance()->fullName(), 
+                      KOPrefs::instance()->email() ) );
 
   kdDebug(5850) << "calendarview: schedule_publish_freebusy: startDate: "
      << KGlobal::locale()->formatDateTime( start ) << " End Date: "
@@ -1733,7 +1734,7 @@ void CalendarView::processIncidenceSelection( Incidence *incidence )
   bool subtodo = false;
 
   if ( incidence ) {
-    organizerEvents = KOPrefs::instance()->thatIsMe( incidence->organizer() );
+    organizerEvents = KOPrefs::instance()->thatIsMe( incidence->organizer().email() );
     groupEvents = incidence->attendeeByMails( KOPrefs::instance()->allEmails() );
     if ( incidence && incidence->type() == "Event" ) {
 //      Event *event = static_cast<Event *>( incidence );
@@ -1817,7 +1818,8 @@ void CalendarView::takeOverEvent()
 
   if (!incidence) return;
 
-  incidence->setOrganizer(KOPrefs::instance()->email());
+  incidence->setOrganizer( Person( KOPrefs::instance()->fullName(), 
+                           KOPrefs::instance()->email() ) );
   incidence->recreate();
   incidence->setReadOnly(false);
 
@@ -1830,7 +1832,8 @@ void CalendarView::takeOverCalendar()
   Incidence::List::Iterator it;
 
   for ( it = incidences.begin(); it != incidences.end(); it++ ) {
-    (*it)->setOrganizer(KOPrefs::instance()->email());
+    (*it)->setOrganizer( Person( KOPrefs::instance()->fullName(), 
+                         KOPrefs::instance()->email() ) );
     (*it)->recreate();
     (*it)->setReadOnly(false);
   }

@@ -281,11 +281,9 @@ void OutgoingDialog::showEvent(QListViewItem *qitem)
     case Scheduler::Add: {
       sendText += i18n("All attendees");
       break; }
-    case Scheduler::Reply: {
-      sendText += i18n("The organizer %1").arg(item->event()->organizer());
-      break; }
+    case Scheduler::Reply:
     case Scheduler::Counter: {
-      sendText += i18n("The organizer %1").arg(item->event()->organizer());
+      sendText += i18n("The organizer %1").arg( item->event()->organizer().fullName() );
       break; }
     case Scheduler::Declinecounter: {
       sendText += i18n("All attendees");

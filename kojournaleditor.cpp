@@ -155,6 +155,8 @@ bool KOJournalEditor::processInput()
   } else {
     mJournal = new Journal;
 //    mJournal->setOrganizer( KOPrefs::instance()->email() );
+    mJournal->setOrganizer( Person( KOPrefs::instance()->fullName(), 
+                            KOPrefs::instance()->email() ) );
 
     writeJournal( mJournal );
 

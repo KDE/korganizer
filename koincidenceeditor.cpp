@@ -130,7 +130,7 @@ void KOIncidenceEditor::cancelRemovedAttendees( Incidence *incidence )
   
   // cancelAttendeeEvent removes all attendees from the incidence, 
   // and then only adds those that need to be cancelled (i.e. a mail needs to be sent to them).
-  if ( KOPrefs::instance()->thatIsMe( incidence->organizer() ) ) {
+  if ( KOPrefs::instance()->thatIsMe( incidence->organizer().email() ) ) {
     Incidence *ev = incidence->clone();
     ev->registerObserver( 0 );
     mDetails->cancelAttendeeEvent( ev );

@@ -125,7 +125,8 @@ KCal::FreeBusy *FreeBusyManager::ownerFreeBusy()
   QDateTime end = start.addDays( KOPrefs::instance()->mFreeBusyPublishDays );
 
   FreeBusy *freebusy = new FreeBusy( mCalendar, start, end );
-  freebusy->setOrganizer( KOPrefs::instance()->email() );
+  freebusy->setOrganizer( Person( KOPrefs::instance()->fullName(), 
+                          KOPrefs::instance()->email() ) );
 
   return freebusy;
 }
@@ -460,9 +461,9 @@ FreeBusy *FreeBusyManager::loadFreeBusy( const QString &email )
   return iCalToFreeBusy( str.utf8() );
 }
 
-bool FreeBusyManager::saveFreeBusy( FreeBusy *freebusy, const QString &email )
+bool FreeBusyManager::saveFreeBusy( FreeBusy *freebusy, const Person &person )
 {
-  kdDebug() << "FreeBusyManager::saveFreeBusy(): " << email << endl;
+  kdDebug() << "FreeBusyManager::saveFreeBusy(): " << person.fullName() << endl;
 
   QString fbd = freeBusyDir();
 
@@ -479,7 +480,7 @@ bool FreeBusyManager::saveFreeBusy( FreeBusy *freebusy, const QString &email )
 
   QString filename( fbd );
   filename += "/";
-  filename += email;
+  filename += person.email();
   filename += ".ifb";
   QFile f( filename );
 
@@ -487,7 +488,7 @@ bool FreeBusyManager::saveFreeBusy( FreeBusy *freebusy, const QString &email )
             << endl;
 
   freebusy->clearAttendees();
-  freebusy->setOrganizer( email );
+  freebusy->setOrganizer( person );
 
   QString messageText = mFormat.createScheduleMessage( freebusy,
                                                        Scheduler::Publish );

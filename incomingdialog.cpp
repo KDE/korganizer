@@ -99,7 +99,7 @@ bool ScheduleItemVisitor::visit(Event *e)
   else {
     mItem->setText(3,"");
   }
-  mItem->setText(5,e->organizer()+" ");
+  mItem->setText(5,e->organizer().fullName() );
 
   return true;
 }
@@ -119,7 +119,7 @@ bool ScheduleItemVisitor::visit(Todo *e)
       mItem->setText(2,e->dtDueTimeStr());
     }
   }
-  mItem->setText(5,e->organizer()+" ");
+  mItem->setText(5,e->organizer().fullName() );
 
   return true;
 }
@@ -197,7 +197,7 @@ void IncomingDialog::retrieve()
       item->setText(2, KGlobal::locale()->formatTime( fb->dtStart().time() ) );
       item->setText(3, KGlobal::locale()->formatDate( fb->dtEnd().date() ) );
       item->setText(4, KGlobal::locale()->formatTime( fb->dtEnd().time() ) );
-      item->setText(5, fb->organizer());
+      item->setText(5, fb->organizer().fullName());
     }
     automaticAction(item);
   }
@@ -421,7 +421,7 @@ bool IncomingDialog::incomeRequest(ScheduleItemIn *item)
     QDateTime end = start.addDays(inc->duration()/86400);
 
     FreeBusy *freebusy = new FreeBusy(mCalendar, start, end);
-    freebusy->setOrganizer(inc->organizer());
+    freebusy->setOrganizer( inc->organizer() );
     Attendee *att = new Attendee(KOPrefs::instance()->fullName(),
                                KOPrefs::instance()->email());
     freebusy->addAttendee(att);
@@ -453,7 +453,7 @@ bool IncomingDialog::automaticAction(ScheduleItemIn *item)
     if ( method==Scheduler::Request ) {
       if ( KOPrefs::instance()->mIMIPAutoFreeBusy==KOPrefs::addressbookAuto ) {
         // reply freebusy information
-        if ( checkOrganizerInAddressbook(inc->organizer()) ) {
+        if ( checkOrganizerInAddressbook( inc->organizer().email() ) ) {
           incomeRequest(item);
         }
       } else return false;
@@ -469,7 +469,7 @@ bool IncomingDialog::automaticAction(ScheduleItemIn *item)
         if ( method==Scheduler::Publish) {
           if ( KOPrefs::instance()->mIMIPAutoFreeBusy==KOPrefs::addressbookAuto ) {
             // insert freebusy information
-            //if ( checkOrganizerInAddressbook(inc->organizer()) )
+            //if ( checkOrganizerInAddressbook(inc->organizer().email()) )
 
           }
         } else return false;
@@ -481,7 +481,7 @@ bool IncomingDialog::automaticAction(ScheduleItemIn *item)
     if ( method==Scheduler::Request || method==Scheduler::Publish ) {
       if ( KOPrefs::instance()->mIMIPAutoInsertRequest==KOPrefs::addressbookAuto ) {
         // insert event
-        if ( checkOrganizerInAddressbook(inc->organizer()) )
+        if ( checkOrganizerInAddressbook(inc->organizer().email()) )
           autoAction = acceptMessage(item);
       } else return false;
     } else {
