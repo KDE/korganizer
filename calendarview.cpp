@@ -328,24 +328,24 @@ void CalendarView::readSettings()
   // read settings from the KConfig, supplying reasonable
   // defaults where none are to be found
 
-  KConfig config(locateLocal("config", "korganizerrc"));
+  KConfig *config = kapp->config();
 
-  config.setGroup("General");
+  config->setGroup("KOrganizer Geometry");
 
-  QValueList<int> sizes = config.readIntListEntry("Separator1");
+  QValueList<int> sizes = config->readIntListEntry("Separator1");
   if (sizes.count() == 2) {
     mPanner->setSizes(sizes);
   }
 
-  sizes = config.readIntListEntry("Separator2");
+  sizes = config->readIntListEntry("Separator2");
   if (sizes.count() == 3) {
     mLeftFrame->setSizes(sizes);
   }
 
   // Set current view from Entry "Current View"
-  readCurrentView(&config);
+  readCurrentView(config);
 
-  readFilterSettings(&config);
+  readFilterSettings(config);
 }
 
 void CalendarView::readCurrentView(KConfig *config)
@@ -381,30 +381,30 @@ void CalendarView::writeSettings()
 {
 //  kdDebug() << "CalendarView::writeSettings" << endl;
 
-  KConfig config(locateLocal("config", "korganizerrc"));
+  KConfig *config = kapp->config();
 
-  config.setGroup("General");
+  config->setGroup("KOrganizer Geometry");
 
   QValueList<int> list = mPanner->sizes();
-  config.writeEntry("Separator1",list);
+  config->writeEntry("Separator1",list);
 
   list = mLeftFrame->sizes();
-  config.writeEntry("Separator2",list);
+  config->writeEntry("Separator2",list);
 
-  writeCurrentView(&config);
+  writeCurrentView(config);
 
   if (mAgendaView) {
-    mAgendaView->writeSettings(&config);
+    mAgendaView->writeSettings(config);
   }
   if (mProjectView) {
-    mProjectView->writeSettings(&config);
+    mProjectView->writeSettings(config);
   }
 
   KOPrefs::instance()->writeConfig();
 
-  writeFilterSettings(&config);
+  writeFilterSettings(config);
 
-  config.sync();
+  config->sync();
 }
 
 void CalendarView::readFilterSettings(KConfig *config)

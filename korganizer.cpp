@@ -152,12 +152,15 @@ void KOrganizer::readSettings()
   // read settings from the KConfig, supplying reasonable
   // defaults where none are to be found
 
-  KConfig *config(kapp->config());
+  KConfig *config = kapp->config();
 
-  config->setGroup("General");
+  config->setGroup("KOrganizer Geometry");
 
   int windowWidth = config->readNumEntry("Width",600);
   int windowHeight = config->readNumEntry("Height",400);
+
+  kdDebug() << "---- Width: " << windowWidth << " Height: " << windowHeight << endl;
+
   resize(windowWidth,windowHeight);
 
   mRecent->loadEntries(config);
@@ -172,10 +175,10 @@ void KOrganizer::writeSettings()
 {
   kdDebug() << "KOrganizer::writeSettings" << endl;
 
-  KConfig *config(kapp->config());
+  KConfig *config = kapp->config();
 
   QString tmpStr;
-  config->setGroup("General");
+  config->setGroup("KOrganizer Geometry");
 
   config->writeEntry("Width",width());
   config->writeEntry("Height",height());
