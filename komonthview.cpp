@@ -437,7 +437,8 @@ void MonthViewCell::addIncidence( Incidence *incidence )
       item->setReply(false);
   }
   
-  if ( incidence->type() == "Todo" ) {
+  if ( incidence->type() == "Todo" &&
+       KOPrefs::instance()->showAllDayTodo() ) {
     Todo *todo = static_cast<Todo *>(incidence);
     if (todo->hasDueDate()) {
       if (!todo->doesFloat()) {
