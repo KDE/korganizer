@@ -44,9 +44,13 @@
 #include <kio/netaccess.h>
 #include <kapplication.h>
 #include <kconfig.h>
+#include <dcopclient.h>
+#include <dcopref.h>
 
 #include <qfile.h>
 #include <qregexp.h>
+
+#include <mimelib/enum.h>
 
 KOGroupware* KOGroupware::mInstance = 0;
 
@@ -66,7 +70,7 @@ KOGroupware* KOGroupware::instance()
 
 
 KOGroupware::KOGroupware( CalendarView* view, KCal::Calendar* calendar )
-  : QObject( 0, "kmgroupware_instance" )
+  : QObject( 0, "kmgroupware_instance" )/*, mKMail( 0 )*/
 {
   mView = view;
   mCalendar = calendar;
@@ -194,8 +198,8 @@ bool KOGroupware::incomingEventRequest( const QString& request,
   // take an MailScheduler, because we need a concrete one, but we
   // really only want code from Scheduler.
   // PENDING(kalle) Handle tentative acceptance differently.
+  KCal::MailScheduler scheduler( mCalendar );
   if( state == Accepted || state == ConditionallyAccepted ) {
-    KCal::MailScheduler scheduler( mCalendar );
     scheduler.acceptTransaction( event,
                                  (KCal::Scheduler::Method)message->method(),
                                  message->status() );
@@ -286,6 +290,7 @@ bool KOGroupware::incomingEventRequest( const QString& request,
   // Create the outgoing vCal
   QString messageText = mFormat.createScheduleMessage( newEvent,
                                                        KCal::Scheduler::Reply );
+  scheduler.performTransaction( newEvent, KCal::Scheduler::Reply );
 
   // Fix broken OL appointments
   if( vCalIn.contains( "PRODID:-//Microsoft" ) ) {
@@ -447,7 +452,6 @@ bool KOGroupware::incidenceAnswer( const QCString& /*sender*/,
   return true;
 }
 
-#if 0
 QString KOGroupware::getFreeBusyString()
 {
   QDateTime start = QDateTime::currentDateTime();
@@ -463,7 +467,7 @@ QString KOGroupware::getFreeBusyString()
   return mFormat.createScheduleMessage( &freebusy, Scheduler::Publish );
 }
 
-
+#if 0
 /*!
   This method is called when the user has selected to publish its
   free/busy list.
@@ -563,7 +567,6 @@ void FBDownloadJob::slotResult( KIO::Job* job )
   delete this;
 }
 
-#if 0
 bool KOGroupware::downloadFreeBusyData( const QString& email, QObject* receiver, const char* member )
 {
   // Don't do anything with free/busy if the user does not want it.
@@ -611,7 +614,6 @@ bool KOGroupware::downloadFreeBusyData( const QString& email, QObject* receiver,
 
   return true;
 }
-#endif
 
 KCal::FreeBusy* KOGroupware::parseFreeBusy( const QCString& data )
 {
@@ -709,8 +711,9 @@ bool KOGroupware::sendICalMessage( QWidget* parent,
     if( incidence->summary().isEmpty() )
       incidence->setSummary( i18n("<No summary given>") );
 
-    // Send the mail (TODO)
-    //static_cast<CalendarIMAP*>( mCalendar )->sendICalMessage( method, incidence );
+    // Send the mail
+    KCal::MailScheduler scheduler( mCalendar );
+    scheduler.performTransaction( incidence, method );
 
     return true;
   } else if( rc == KMessageBox::No )
@@ -718,4 +721,5 @@ bool KOGroupware::sendICalMessage( QWidget* parent,
   else
     return false;
 }
+
 #include "kogroupware.moc"
