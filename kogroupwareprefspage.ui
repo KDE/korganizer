@@ -294,7 +294,7 @@
                             <string>Set this to retrieve user@domain.ifb instead of user.ifb from the server</string>
                         </property>
                         <property name="whatsThis" stdset="0">
-                            <string>With this setting, you can change the filename that will be fetched from the server. Without this checked, it will download a free/busy file called user@domain.ifb, for example nn@kde.org.ifb. Without this set, it will download user.ifb, for example nn.ifb.</string>
+                            <string>With this setting, you can change the filename that will be fetched from the server. With this checked, it will download a free/busy file called user@domain.ifb, for example nn@kde.org.ifb. Without this set, it will download user.ifb, for example nn.ifb.</string>
                         </property>
                     </widget>
                     <widget class="QButtonGroup">
