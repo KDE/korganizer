@@ -447,13 +447,13 @@ void ResourceView::contextMenuRequested ( QListViewItem *i,
     if ( !item->isSubresource() ) {
       menu->insertItem( i18n("&Edit..."), this, SLOT( editResource() ) );
       menu->insertItem( i18n("&Remove"), this, SLOT( removeResource() ) );
+      if ( item->resource() != manager->standardResource() ) {
+        menu->insertSeparator();
+        menu->insertItem( i18n("Use as &Default Calendar"), this, 
+                          SLOT( setStandard() ) );
+      }
     }
     menu->insertSeparator();
-    if ( item->resource() != manager->standardResource() ) {
-      menu->insertItem( i18n("Use as &Default Calendar"), this, 
-                        SLOT( setStandard() ) );
-      menu->insertSeparator();
-    }
  }
   menu->insertItem( i18n("&Add..."), this, SLOT( addResource() ) );
 
