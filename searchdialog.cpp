@@ -97,9 +97,9 @@ void SearchDialog::doSearch()
 {
   QRegExp re;
 
-  re.setWildcard(TRUE); // most people understand these better.
-  re.setCaseSensitive(FALSE);
-  re = searchEdit->text();
+  re.setWildcard(true); // most people understand these better.
+  re.setCaseSensitive(false);
+  re.setPattern(searchEdit->text());
   if (!re.isValid()) {
     KMessageBox::sorry(this,
                        i18n("Invalid search expression, cannot perform\n"
@@ -126,9 +126,9 @@ SearchDialog::~SearchDialog()
 void SearchDialog::updateView()
 {
   QRegExp re;
-  re.setWildcard(TRUE); // most people understand these better.
-  re.setCaseSensitive(FALSE);
-  re = searchEdit->text();
+  re.setWildcard(true); // most people understand these better.
+  re.setCaseSensitive(false);
+  re.setPattern(searchEdit->text());
   if (re.isValid()) {
     search(re);
   } else {
@@ -148,19 +148,19 @@ void SearchDialog::search(const QRegExp &re)
   Event *ev;
   for(ev=events.first();ev;ev=events.next()) {
     if (mSummaryCheck->isChecked()) {
-      if (re.match(ev->summary()) != -1) {
+      if (re.search(ev->summary()) != -1) {
         mMatchedEvents.append(ev);
         continue;
       }
     }
     if (mDescriptionCheck->isChecked()) {
-      if (re.match(ev->description()) != -1) {
+      if (re.search(ev->description()) != -1) {
         mMatchedEvents.append(ev);
         continue;
       }
     }
     if (mCategoryCheck->isChecked()) {
-      if (re.match(ev->categoriesStr()) != -1) {
+      if (re.search(ev->categoriesStr()) != -1) {
         mMatchedEvents.append(ev);
         continue;
       }

@@ -1,7 +1,6 @@
-/* 	$Id$	 */
-
-#ifndef _CALENDARVIEW_H
-#define _CALENDARVIEW_H
+#ifndef CALENDARVIEW_H
+#define CALENDARVIEW_H
+/* $Id$	 */
 
 #include <qframe.h>
 #include <qlayout.h>
@@ -464,4 +463,4 @@ class CalendarView : public QWidget
     PluginDialog *mPluginDialog;
 };
 
-#endif // _CALENDARVIEW_H
+#endif // CALENDARVIEW_H
