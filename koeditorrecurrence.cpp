@@ -630,7 +630,7 @@ RecurrenceRangeWidget::RecurrenceRangeWidget( QWidget *parent,
   QBoxLayout *endDateLayout = new QHBoxLayout( rangeLayout );
   endDateLayout->setSpacing( KDialog::spacingHint() );
 
-  mEndDateButton = new QRadioButton( i18n("End &by:"), rangeBox );
+  mEndDateButton = new QRadioButton( i18n("End &on:"), rangeBox );
   rangeButtonGroup->insert( mEndDateButton );
   endDateLayout->addWidget( mEndDateButton );
 
