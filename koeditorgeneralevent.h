@@ -69,7 +69,7 @@ class KOEditorGeneralEvent : public KOEditorGeneral
 
   protected slots:
     void timeStuffDisable( bool disable );
-    void dontAssociateTime( bool noTime );
+    void associateTime( bool time );
 
     void startTimeChanged( QTime );
     void startDateChanged( QDate );
@@ -91,7 +91,7 @@ class KOEditorGeneralEvent : public KOEditorGeneral
     KTimeEdit               *mStartTimeEdit;
     KTimeEdit               *mEndTimeEdit;
     QLabel                  *mDurationLabel;
-    QCheckBox               *mNoTimeButton;
+    QCheckBox               *mTimeAssociateButton;
     QComboBox               *mFreeTimeCombo;
 
     // current start and end date and time

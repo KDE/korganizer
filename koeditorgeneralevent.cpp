@@ -74,8 +74,8 @@ void KOEditorGeneralEvent::finishSetup()
   QWidget::setTabOrder( mStartDateEdit, mStartTimeEdit );
   QWidget::setTabOrder( mStartTimeEdit, mEndDateEdit );
   QWidget::setTabOrder( mEndDateEdit, mEndTimeEdit );
-  QWidget::setTabOrder( mEndTimeEdit, mNoTimeButton );
-  QWidget::setTabOrder( mNoTimeButton, mAlarmButton );
+  QWidget::setTabOrder( mEndTimeEdit, mTimeAssociateButton );
+  QWidget::setTabOrder( mTimeAssociateButton, mAlarmButton );
   QWidget::setTabOrder( mAlarmButton, mAlarmTimeEdit );
   QWidget::setTabOrder( mAlarmTimeEdit, mAlarmIncrCombo );
   QWidget::setTabOrder( mAlarmIncrCombo, mAlarmSoundButton );
@@ -126,9 +126,9 @@ void KOEditorGeneralEvent::initTime(QWidget *parent,QBoxLayout *topLayout)
 
   QHBoxLayout *flagsBox = new QHBoxLayout( timeBoxFrame );
 
-  mNoTimeButton = new QCheckBox(i18n("&No time associated"),timeBoxFrame);
-  flagsBox->addWidget(mNoTimeButton);
-  connect(mNoTimeButton, SIGNAL(toggled(bool)),SLOT(dontAssociateTime(bool)));
+  mTimeAssociateButton = new QCheckBox(i18n("T&ime associated"),timeBoxFrame);
+  flagsBox->addWidget(mTimeAssociateButton);
+  connect(mTimeAssociateButton, SIGNAL(toggled(bool)),SLOT(associateTime(bool)));
 
   mDurationLabel = new QLabel( timeBoxFrame );
   if ( KOPrefs::instance()->mCompactDialogs ) {
@@ -175,11 +175,11 @@ void KOEditorGeneralEvent::timeStuffDisable(bool disable)
   emitDateTimeStr();
 }
 
-void KOEditorGeneralEvent::dontAssociateTime(bool noTime)
+void KOEditorGeneralEvent::associateTime(bool time)
 {
-  timeStuffDisable(noTime);
+  timeStuffDisable(!time);
   //if(alarmButton->isChecked()) alarmStuffDisable(noTime);
-  allDayChanged(noTime);
+  allDayChanged(!time);
 }
 
 void KOEditorGeneralEvent::setDateTimes(QDateTime start, QDateTime end)
@@ -259,7 +259,7 @@ void KOEditorGeneralEvent::setDefaults(QDateTime from,QDateTime to,bool allDay)
 {
   KOEditorGeneral::setDefaults(allDay);
 
-  mNoTimeButton->setChecked(allDay);
+  mTimeAssociateButton->setChecked(!allDay);
   timeStuffDisable(allDay);
 
   setDateTimes(from,to);
@@ -269,7 +269,7 @@ void KOEditorGeneralEvent::readEvent( Event *event, bool tmpl )
 {
   QString tmpStr;
 
-  mNoTimeButton->setChecked(event->doesFloat());
+  mTimeAssociateButton->setChecked(!event->doesFloat());
   timeStuffDisable(event->doesFloat());
 
   if ( !tmpl ) {
@@ -302,7 +302,7 @@ void KOEditorGeneralEvent::writeEvent(Event *event)
   // temp. until something better happens.
   QString tmpStr;
 
-  if (mNoTimeButton->isChecked()) {
+  if (!mTimeAssociateButton->isChecked()) {
     event->setFloats(true);
     // need to change this.
     tmpDate = mStartDateEdit->date();
@@ -349,7 +349,7 @@ void KOEditorGeneralEvent::setDuration()
   // any duration if this happens
   if(mCurrEndDateTime >= mCurrStartDateTime) {
 
-    if (mNoTimeButton->isChecked()) {
+    if (!mTimeAssociateButton->isChecked()) {
       int daydiff = mCurrStartDateTime.date().daysTo(mCurrEndDateTime.date()) + 1;
       tmpStr = i18n("Duration: ");
       tmpStr.append(i18n("1 Day","%n Days",daydiff));
@@ -388,7 +388,7 @@ void KOEditorGeneralEvent::emitDateTimeStr()
   KLocale *l = KGlobal::locale();
 
   QString from,to;
-  if (mNoTimeButton->isChecked()) {
+  if (!mTimeAssociateButton->isChecked()) {
     from = l->formatDate(mCurrStartDateTime.date());
     to = l->formatDate(mCurrEndDateTime.date());
   } else {
@@ -406,7 +406,7 @@ bool KOEditorGeneralEvent::validateInput()
 {
 //  kdDebug(5850) << "KOEditorGeneralEvent::validateInput()" << endl;
 
-  if (!mNoTimeButton->isChecked()) {
+  if (mTimeAssociateButton->isChecked()) {
     if (!mStartTimeEdit->inputIsValid()) {
       KMessageBox::sorry( 0,
           i18n("Please specify a valid start time, for example '%1'.")
@@ -439,7 +439,7 @@ bool KOEditorGeneralEvent::validateInput()
   QDateTime startDt,endDt;
   startDt.setDate(mStartDateEdit->date());
   endDt.setDate(mEndDateEdit->date());
-  if (!mNoTimeButton->isChecked()) {
+  if (mTimeAssociateButton->isChecked()) {
     startDt.setTime(mStartTimeEdit->getTime());
     endDt.setTime(mEndTimeEdit->getTime());
   }
