@@ -2,6 +2,8 @@
 Encoding=UTF-8
 X-KDE-Library=libkorg_birthdays
 Name=Birthdays import plugin from KAddressBook for KOrganizer
+Name[be]=Дапаўненьне K Арганізатара "Імпарт дзён нараджэньня з K Адраснай кнігі"
+Name[bg]=Импортиране на Рlugin за Рождени Дни от КАдреснаКнига към KОрганайзер
 Name[bs]=Dodatak za uvoz rođendana iz KAddressBook ili KOrganizer
 Name[cs]=Modul pro import svátků z Knihy adres do KOrganizeru
 Name[da]=KOrganizer-plugin til importering af fødselsdage fra KAddressBook
