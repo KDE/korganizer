@@ -23,6 +23,7 @@
 #include <dcopobject.h>
 #include <qdatetime.h>
 #include <qdatastream.h>
+#include <qstringlist.h>
 // yes, this is this very header - but it tells dcopidl to include it
 // in _stub.cpp and _skel.cpp files, to get the definition of the structs.
 #include "kcalendariface.h"
@@ -54,6 +55,8 @@ class KCalendarIface : public DCOPObject
     virtual void openEventEditor( QString text ) = 0;
     virtual void openEventEditor( QString summary, QString description,
                                   QString attachment ) = 0;
+    virtual void openEventEditor( QString summary, QString description,
+                                  QString attachment, QStringList attendees ) = 0;
 
     virtual void openTodoEditor( QString text ) = 0;
     virtual void openTodoEditor( QString summary, QString description,

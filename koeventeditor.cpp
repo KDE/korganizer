@@ -28,6 +28,7 @@
 #include <qlayout.h>
 #include <qwidgetstack.h>
 
+#include <kabc/addressee.h>
 #include <kiconloader.h>
 #include <kdebug.h>
 #include <klocale.h>
@@ -227,6 +228,21 @@ void KOEventEditor::newEvent( const QString &summary,
 
   if ( !attachment.isEmpty() ) {
     mAttachments->addAttachment( attachment );
+  }
+}
+
+void KOEventEditor::newEvent( const QString &summary,
+                              const QString &description,
+                              const QString &attachment,
+                              const QStringList &attendees )
+{
+  newEvent( summary, description, attachment );
+
+  QStringList::ConstIterator it;
+  for ( it = attendees.begin(); it != attendees.end(); ++it ) {
+    QString name, email;
+    KABC::Addressee::parseEmailAddress( *it, name, email );
+    mDetails->insertAttendee( new Attendee( name, email ) );
   }
 }
 

@@ -72,6 +72,11 @@ class KOEventEditor : public KOIncidenceEditor
     void newEvent( const QString &summary, const QString &description,
                    const QString &attachment );
     /**
+      Edit new event.
+    */
+    void newEvent( const QString &summary, const QString &description,
+                   const QString &attachment, const QStringList &attendees );
+    /**
       Edit an existing event.
     */
     void editIncidence( Incidence * );

@@ -1328,6 +1328,12 @@ void ActionManager::openEventEditor( QString summary, QString description,
   mCalendarView->newEvent( summary, description, attachment );
 }
 
+void ActionManager::openEventEditor( QString summary, QString description,
+                                     QString attachment, QStringList attendees )
+{
+  mCalendarView->newEvent( summary, description, attachment, attendees );
+}
+
 void ActionManager::openTodoEditor( QString text )
 {
   mCalendarView->newTodo( text );
