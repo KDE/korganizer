@@ -616,7 +616,6 @@ void CalendarView::updateView(const QDateList selectedDates)
 
   }
 
-  qDebug("CalendarView::updateView() now selecting dates");
   if (currentView) currentView->selectDates(selectedDates);
 
   todoList->updateView();

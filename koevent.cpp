@@ -1303,6 +1303,12 @@ bool KOEvent::isException(const QDate &qd) const
   return FALSE;
 }
 
+bool KOEvent::isMultiDay() const
+{
+  bool multi = !(dtStart.date() == dtEnd.date());
+  return multi;
+}
+
 void KOEvent::setPilotId(int id)
 {
   if (ro) return;

@@ -434,7 +434,7 @@ public:
   void setTodoStatus(bool stat) { isTodo = stat; priority = 1; emit eventUpdated(this); };
   bool getTodoStatus() const { return isTodo; };
 
-  bool isMultiDay() const {  return !(dtStart.date() == dtEnd.date()); };
+  bool isMultiDay() const;
 
 //  void print(int) const;
 

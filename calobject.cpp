@@ -187,39 +187,43 @@ void CalObject::close()
 {
   QIntDictIterator<QList<KOEvent> > qdi(*calDict);
   QList<KOEvent> *tmpList;
-  QList<KOEvent> multiDayEvents;
-  KOEvent *anEvent;
+
+  // Delete non-recurring events
+  qdi.toFirst();
   while (qdi.current()) {
     tmpList = qdi.current();
-    ++qdi;
-    tmpList->setAutoDelete(TRUE);
-    for (anEvent = tmpList->first(); anEvent; anEvent = tmpList->next()) {
-      // if the event spans multiple days, we need to put a pointer to it
-      // in a list for later deletion, and only remove it's reference.  
-      // Otherwise, since the list contains the only pointer to it, we
-      // really want to blow it away.
-      if (anEvent->isMultiDay()) {
-	if (multiDayEvents.findRef(anEvent) == -1)
-	  multiDayEvents.append(anEvent);
-	tmpList->take();
+    QDate keyDate = keyToDate(qdi.currentKey());
+    KOEvent *ev;
+    for(ev = tmpList->first();ev;ev = tmpList->next()) {
+//      qDebug("-----FIRST.  %s",ev->getSummary().latin1());
+//      qDebug("---------MUL: %s",ev->isMultiDay() ? "Ja" : "Nein");
+      bool del = false;
+      if (ev->isMultiDay()) {
+        if (ev->getDtStart().date() == keyDate) {
+          del = true;
+        }
       } else {
-	tmpList->remove();
+        del = true;
+      }
+      if (del) {
+//        qDebug("-----DEL  %s",ev->getSummary().latin1());
+        delete ev;
       }
     }
+    ++qdi;
   }
-  multiDayEvents.setAutoDelete(TRUE);
-  multiDayEvents.clear();
+
   calDict->clear();
   recursList.clear();
   todoList.clear();
   
   // reset oldest/newest date markers
-  delete oldestDate; oldestDate = 0L;
-  delete newestDate; newestDate = 0L;
-  if (cursor) {
-    delete cursor;
-    cursor = 0L;
-  } 
+  delete oldestDate;
+  oldestDate = 0L;
+  delete newestDate;
+  newestDate = 0L;
+  delete cursor;
+  cursor = 0L;
 }
 
 bool CalObject::save(const QString &fileName)
