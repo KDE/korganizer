@@ -133,8 +133,6 @@ class KOPrefs : public KPrefs
     bool    mCompactDialogs;
     bool    mVerticalScreen;
 
-    QString mPrintPreview;
-
     QStringList mCustomCategories;
 
     void setCategoryColor(QString cat,const QColor & color);

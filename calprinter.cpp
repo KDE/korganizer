@@ -121,6 +121,7 @@ void CalPrinter::doPreview(int pt, QDate fd, QDate td)
   mPreviewFile->setAutoDelete(true);
   mPrinter->setOutputToFile(true);
   mPrinter->setOutputFileName(mPreviewFile->name());
+  mPrinter->setPreviewOnly(true);
 
   switch(pt) {
     case Day:
@@ -141,10 +142,11 @@ void CalPrinter::doPreview(int pt, QDate fd, QDate td)
   }
 
   // restore previous settings that were used before the preview.
+  mPrinter->setPreviewOnly(false);
   mPrinter->setOutputToFile(oldOutputToFile);
   mPrinter->setOutputFileName(oldFileName);
   
-  QString previewProg = KOPrefs::instance()->mPrintPreview;
+/*  QString previewProg = KOPrefs::instance()->mPrintPreview;
 
   KProcess *previewProc = new KProcess;
   connect(previewProc, SIGNAL(processExited(KProcess *)), 
@@ -155,7 +157,7 @@ void CalPrinter::doPreview(int pt, QDate fd, QDate td)
   *previewProc << mPreviewFile->name(); // command line arguments
   if (!previewProc->start()) {
     KMessageBox::error(0,i18n("Could not start %1.").arg(previewProg));
-  }
+  }*/
 }
 
 void CalPrinter::previewCleanup(KProcess *process)

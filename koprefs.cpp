@@ -136,8 +136,6 @@ KOPrefs::KOPrefs() :
   addItemBool("CompactDialogs",&mCompactDialogs,false);
   addItemBool("VerticalScreen",&mVerticalScreen,false);
 
-  addItemString("Preview",&mPrintPreview,"kghostview");
-
   KPrefs::setCurrentGroup("KOrganizer Plugins");
 
   addItemStringList("SelectedPlugins",&mSelectedPlugins,"holidays");

@@ -338,14 +338,7 @@ void KOPrefsDialog::setupViewsTab()
                  &(KOPrefs::instance()->mMarcusBainsEnabled),topFrame);
   topLayout->addWidget(marcusBainsEnabled->checkBox(),10,0);
   
-  QBoxLayout *printLayout = new QHBoxLayout;
-  topLayout->addLayout(printLayout,11,0);
-  printLayout->addWidget(new QLabel(i18n("Print Preview Program:"),topFrame));
-  printLayout->addStretch(1);
-  mPrintPreviewEdit = new KURLRequester(topFrame);
-  printLayout->addWidget(mPrintPreviewEdit);
-
-  topLayout->setRowStretch(12,1);
+  topLayout->setRowStretch(11,1);
 }
 
 
@@ -484,10 +477,6 @@ void KOPrefsDialog::setupPrinterTab()
   QGridLayout *topLayout = new QGridLayout(mPrinterTab,5,2);
   topLayout->setSpacing(spacingHint());
   topLayout->setMargin(marginHint());
-
-  topLayout->addWidget(new QLabel(i18n("Preview Program:"),mPrinterTab),3,0);
-  mPrintPreviewEdit = new KURLRequester(mPrinterTab);
-  topLayout->addWidget(mPrintPreviewEdit,3,1);
 
   topLayout->setRowStretch(4,1);
 }
@@ -638,8 +627,6 @@ void KOPrefsDialog::usrReadConfig()
 
   mHourSizeSlider->setValue(KOPrefs::instance()->mHourSize);
 
-  mPrintPreviewEdit->lineEdit()->setText(KOPrefs::instance()->mPrintPreview);
-
   mAutoCheckIntervalSpin->setValue(KOPrefs::instance()->mIntervalCheckTime);
   mNextXDaysSpin->setValue(KOPrefs::instance()->mNextXDays);
   mAMails->clear();
@@ -673,8 +660,6 @@ void KOPrefsDialog::usrWriteConfig()
     ++it;
   }
   mCategoryDict.clear();
-
-  KOPrefs::instance()->mPrintPreview = mPrintPreviewEdit->lineEdit()->text();
 
   KOPrefs::instance()->mIntervalCheckTime = mAutoCheckIntervalSpin->value();
 
