@@ -93,6 +93,7 @@ class KOEditorDetails : public QWidget
   private:
     bool mDisableItemUpdate;
 
+    QLineEdit *mOrganizerEdit;
     QLineEdit *mNameEdit;
     QLineEdit *mUidEdit;
     QLineEdit *mEmailEdit;

@@ -29,6 +29,9 @@
 #include <kiconloader.h>
 #include <krun.h>
 #include <dcopclient.h>
+#ifndef KORG_NOKABC
+ #include <kabc/stdaddressbook.h>
+#endif
 
 #ifndef KORG_NODCOP
 #include "korganizer.h"
@@ -147,13 +150,13 @@ void KOEventViewer::appendEvent(Event *event)
   if (!event->description().isEmpty()) addTag("p",event->description());
 
   formatCategories(event);
-  formatAttendees(event);
 
   if (event->recurrence()->doesRecur()) {
     addTag("p","<em>" + i18n("This is a recurring event.") + "</em>");
   }
 
   formatReadOnly(event);
+  formatAttendees(event);
 
   setText(mText);
 }
@@ -161,15 +164,14 @@ void KOEventViewer::appendEvent(Event *event)
 void KOEventViewer::appendTodo(Todo *event)
 {
   addTag("h1",event->summary());
-  
+
   if (event->hasDueDate()) {
     mText.append(i18n("<b>Due on:</b> %1").arg(event->dtDueStr()));
   }
 
-  if (!event->description().isEmpty()) addTag("p",event->description());  
+  if (!event->description().isEmpty()) addTag("p",event->description());
 
   formatCategories(event);
-  formatAttendees(event);
 
   mText.append(i18n("<p><b>Priority:</b> %2</p>")
                .arg(QString::number(event->priority())));
@@ -178,6 +180,7 @@ void KOEventViewer::appendTodo(Todo *event)
                     .arg(event->percentComplete()));
 
   formatReadOnly(event);
+  formatAttendees(event);
 
   setText(mText);
 }
@@ -198,7 +201,32 @@ void KOEventViewer::formatAttendees(Incidence *event)
 {
   QPtrList<Attendee> attendees = event->attendees();
   if (attendees.count()) {
-    addTag("h2",i18n("Attendees"));
+    KIconLoader* iconLoader = new KIconLoader();
+    QString iconPath = iconLoader->iconPath("mail_generic",KIcon::Small);
+    addTag("h3",i18n("Organizer"));
+    mText.append("<ul><li>");
+#ifndef KORG_NOKABC
+    KABC::AddressBook *add_book = KABC::StdAddressBook::self();
+    KABC::Addressee::List addressList;
+    addressList = add_book->findByEmail(event->organizer());
+    KABC::Addressee o = addressList.first();
+    if (!o.isEmpty() && addressList.size()<2) {
+      mText += "<a href=\"uid:" + o.uid() + "\">";
+      mText += o.formattedName();
+      mText += "</a>\n";
+    }
+		else mText.append(event->organizer());
+#else
+	  mText.append(event->organizer());
+#endif
+    if (iconPath) {
+      mText += " <a href=\"mailto:" + event->organizer() + "\">";
+      mText += "<IMG src=\"" + iconPath + "\">";
+      mText += "</a>\n";
+    }
+    mText.append("</li></ul>");
+
+    addTag("h3",i18n("Attendees"));
     Attendee *a;
     mText.append("<ul>");
     for(a=attendees.first();a;a=attendees.next()) {
@@ -209,8 +237,6 @@ void KOEventViewer::formatAttendees(Incidence *event)
       kdDebug() << "formatAttendees: uid = " << a->uid() << endl;
 
       if (!a->email().isEmpty()) {
-        KIconLoader* iconLoader = new KIconLoader();
-        QString iconPath = iconLoader->iconPath("mail_generic",KIcon::Small);
         if (iconPath) {
           mText += "<a href=\"mailto:" + a->name() +" "+ "<" + a->email() + ">" + "\">";
           mText += "<IMG src=\"" + iconPath + "\">";

@@ -52,6 +52,7 @@
 #include <kmessagebox.h>
 #include <knotifyclient.h>
 #include <kconfig.h>
+#include <krun.h>
 
 #include <libkcal/vcaldrag.h>
 #include <libkcal/icalformat.h>
@@ -928,7 +929,21 @@ void CalendarView::action_mail()
     return;
   }
 
-  mailClient.mailAttendees(currentSelection());
+	Calendar *cal_tmp = new CalendarLocal();
+  Event *event = 0;
+  Event *ev = 0;
+  if ( incidence && incidence->type() == "Event" ) {
+    event = static_cast<Event *>(incidence);
+    ev = new Event(*event);
+  	cal_tmp->addEvent(ev);
+  }
+	ICalFormat mForm(cal_tmp);
+	QString attachment = mForm.toString();
+	if (ev) delete(ev);
+	delete(cal_tmp);
+
+  mailClient.mailAttendees(currentSelection(), attachment);
+
 #endif
 
 #if 0
@@ -1077,6 +1092,11 @@ void CalendarView::schedule(Scheduler::Method method, Incidence *incidence)
 
   OutgoingDialog *dlg = mDialogManager->outgoingDialog();
   if ( !dlg->addMessage(ev,method) ) delete(ev);
+}
+
+void CalendarView::openAddressbook()
+{
+  KRun::runCommand("kaddressbook");
 }
 
 void CalendarView::setModified(bool modified)

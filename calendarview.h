@@ -255,7 +255,7 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
   
     /** copy the current appointment(s) to the clipboard */
     void edit_copy();
-  
+
     /** paste the current vobject(s) in the clipboard buffer into calendar */
     void edit_paste();
   
@@ -312,15 +312,15 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     bool isModified();
     /** set the state of calendar. Modified means "dirty", i.e. needing a save. */
     void setModified(bool modified=true);
-  
+
     /** query if the calendar is read-only. */
     bool isReadOnly();
     /** set state of calendar to read-only */
     void setReadOnly(bool readOnly=true);
-    
+
     void eventUpdated(Incidence *);
-  
-    /* iTIP scheduling actions */  
+
+    /* iTIP scheduling actions */
     void schedule_publish(Incidence *incidence = 0);
     void schedule_request(Incidence *incidence = 0);
     void schedule_refresh(Incidence *incidence = 0);
@@ -329,6 +329,8 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     void schedule_reply(Incidence *incidence = 0);
     void schedule_counter(Incidence *incidence = 0);
     void schedule_declinecounter(Incidence *incidence = 0);
+		
+		void openAddressbook();
 
     void editFilters();
 
@@ -340,7 +342,7 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
 
     /** Move the current view date to today */
     void goToday();
-  
+
     /** Move to the next date(s) in the current view */
     void goNext();
   

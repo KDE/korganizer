@@ -79,7 +79,12 @@ KOEditorDetails::KOEditorDetails (int spacing,QWidget* parent,const char* name)
 {
   QGridLayout *topLayout = new QGridLayout(this);
   topLayout->setSpacing(spacing);
-
+	
+	QLabel *organizerLabel = new QLabel(this);
+	organizerLabel->setText(i18n("Organizer:"));
+  mOrganizerEdit = new QLineEdit(this);
+  mOrganizerEdit->setReadOnly(true);
+	
   mListView = new QListView(this,"mListView");
   mListView->addColumn(i18n("Name"),180);
   mListView->addColumn(i18n("Email"),180);
@@ -143,23 +148,25 @@ KOEditorDetails::KOEditorDetails (int spacing,QWidget* parent,const char* name)
   buttonLayout->addWidget(mAddressBookButton);
   connect(mAddressBookButton,SIGNAL(clicked()),SLOT(openAddressBook()));
 
-  topLayout->addMultiCellWidget(mListView,0,0,0,5);
-  topLayout->addWidget(attendeeLabel,1,0);
-  topLayout->addMultiCellWidget(mNameEdit,1,1,1,1);
-  topLayout->addWidget(emailLabel,2,0);
-  topLayout->addMultiCellWidget(mEmailEdit,2,2,1,1);
-  topLayout->addWidget(attendeeRoleLabel,3,0);
-  topLayout->addWidget(mRoleCombo,3,1);
+  topLayout->addWidget(organizerLabel,0,0);
+  topLayout->addMultiCellWidget(mOrganizerEdit,0,0,1,1);
+  topLayout->addMultiCellWidget(mListView,1,1,0,5);
+  topLayout->addWidget(attendeeLabel,2,0);
+  topLayout->addMultiCellWidget(mNameEdit,2,2,1,1);
+  topLayout->addWidget(emailLabel,3,0);
+  topLayout->addMultiCellWidget(mEmailEdit,3,3,1,1);
+  topLayout->addWidget(attendeeRoleLabel,4,0);
+  topLayout->addWidget(mRoleCombo,4,1);
 #if 0
   topLayout->setColStretch(2,1);
   topLayout->addWidget(statusLabel,3,3);
   topLayout->addWidget(mStatusCombo,3,4);
 #else
-  topLayout->addWidget(statusLabel,4,0);
-  topLayout->addWidget(mStatusCombo,4,1);  
+  topLayout->addWidget(statusLabel,5,0);
+  topLayout->addWidget(mStatusCombo,5,1);
 #endif
-  topLayout->addMultiCellWidget(mRsvpButton,5,5,0,1);
-  topLayout->addMultiCellWidget(buttonBox,1,5,5,5);
+  topLayout->addMultiCellWidget(mRsvpButton,6,6,0,1);
+  topLayout->addMultiCellWidget(buttonBox,2,5,5,5);
 
 #ifdef KORG_NOKABC
   mAddressBookButton->hide();
@@ -245,6 +252,9 @@ void KOEditorDetails::readEvent(Incidence *event)
     insertAttendee(new Attendee(*a));
 
   mListView->setSelected( mListView->firstChild(), true );
+	mOrganizerEdit->setText(event->organizer());
+//	if (event->organizer()!=KOPrefs::instance()->email())
+//	  mOrganizerEdit->setReadOnly(true);
 }
 
 void KOEditorDetails::writeEvent(Incidence *event)

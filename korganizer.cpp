@@ -356,10 +356,10 @@ void KOrganizer::initActions()
 
   // Schedule menu.
 
-  (void)new KAction(i18n("Outgoing Messages..."),0,
+  (void)new KAction(i18n("Outgoing Messages"),0,
                     mCalendarView->dialogManager(),SLOT(showOutgoingDialog()),
                     actionCollection(),"outgoing");
-  (void)new KAction(i18n("Incoming Messages..."),0,
+  (void)new KAction(i18n("Incoming Messages"),0,
                     mCalendarView->dialogManager(),SLOT(showIncomingDialog()),
                     actionCollection(),"incoming");
   action = new KAction(i18n("Publish"),"mail_send",0,
@@ -368,7 +368,7 @@ void KOrganizer::initActions()
   action->setEnabled(false);
   connect(mCalendarView,SIGNAL(organizerEventsSelected(bool)),
           action,SLOT(setEnabled(bool)));
-  action = new KAction(i18n("Request"),"mail_forward",0,
+  action = new KAction(i18n("Request"),"mail_generic",0,
                        mCalendarView,SLOT(schedule_request()),
                        actionCollection(),"request");
   action->setEnabled(false);
@@ -409,6 +409,9 @@ void KOrganizer::initActions()
   connect(mCalendarView,SIGNAL(eventsSelected(bool)),
           action,SLOT(setEnabled(bool)));
 */
+  action = new KAction(i18n("Addressbook"),"contents",0,
+                       mCalendarView,SLOT(openAddressbook()),
+                       actionCollection(),"addresbook");
 
   // Navigation menu
 
