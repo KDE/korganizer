@@ -13,6 +13,7 @@ X-KDE-ParentComponents=korganizer,kontact_korganizerplugin
 X-KDE-CfgDlgHierarchy=KOrganizer
 
 Name=Group Automation
+Name[ar]=أتمتة المجموعة
 Name[bg]=Организация
 Name[bs]=Automatizacija grupe
 Name[ca]=Automatització de grups
@@ -95,7 +96,7 @@ Keywords[de]=KOrganizer,Gruppe,Automation
 Keywords[es]=korganizer,grupo,automatización
 Keywords[et]=korganizer,grupid,grupitöö
 Keywords[fi]=korganizer,ryhmä,automaatio
-Keywords[fr]=korganizer,groupes,automatisation
+Keywords[fr]=KOrganizer,groupes,automatisation
 Keywords[gl]=korganizer,grupo,automatización
 Keywords[hi]=के-आर्गेनाइज़र,समूह,स्वचालन
 Keywords[hu]=korganizer,csoport,csoportmunka
