@@ -514,6 +514,10 @@ void CalPrintTodos::readSettingsWidget()
     mIncludeDueDate = cfg->mDueDate->isChecked();
     mIncludePercentComplete = cfg->mPercentComplete->isChecked();
     mConnectSubTodos = cfg->mConnectSubTodos->isChecked();
+    mStrikeOutCompleted = cfg->mStrikeOutCompleted->isChecked();
+
+    mTodoSortField = (eTodoSortField)cfg->mSortField->currentItem();
+    mTodoSortDirection = (eTodoSortDirection)cfg->mSortDirection->currentItem();
   }
 }
 
@@ -534,6 +538,18 @@ void CalPrintTodos::setSettingsWidget()
     cfg->mDueDate->setChecked( mIncludeDueDate );
     cfg->mPercentComplete->setChecked( mIncludePercentComplete );
     cfg->mConnectSubTodos->setChecked( mConnectSubTodos );
+    cfg->mStrikeOutCompleted->setChecked( mStrikeOutCompleted );
+
+    cfg->mSortField->insertItem( i18n("Summary") );
+    cfg->mSortField->insertItem( i18n("Start Date") );
+    cfg->mSortField->insertItem( i18n("Due Date") );
+    cfg->mSortField->insertItem( i18n("Priority") );
+    cfg->mSortField->insertItem( i18n("Percent Complete") );
+    cfg->mSortField->setCurrentItem( mTodoSortField );
+
+    cfg->mSortDirection->insertItem( i18n( "Ascending" ) );
+    cfg->mSortDirection->insertItem( i18n( "Descending" ) );
+    cfg->mSortDirection->setCurrentItem( mTodoSortDirection );
   }
 }
 
@@ -547,6 +563,9 @@ void CalPrintTodos::loadConfig()
     mIncludeDueDate = mConfig->readBoolEntry( "Include due date", true );
     mIncludePercentComplete = mConfig->readBoolEntry( "Include percentage completed", true );
     mConnectSubTodos = mConfig->readBoolEntry( "Connect subtodos", true );
+    mStrikeOutCompleted = mConfig->readBoolEntry( "Strike out completed summaries",  true );
+    mTodoSortField = (eTodoSortField)mConfig->readNumEntry( "Sort field", (int)TodoFieldSummary );
+    mTodoSortDirection = (eTodoSortDirection)mConfig->readNumEntry( "Sort direction", (int)TodoDirectionAscending );
   }
   setSettingsWidget();
 }
@@ -562,6 +581,9 @@ void CalPrintTodos::saveConfig()
     mConfig->writeEntry( "Include due date", mIncludeDueDate );
     mConfig->writeEntry( "Include percentage completed", mIncludePercentComplete );
     mConfig->writeEntry( "Connect subtodos", mConnectSubTodos );
+    mConfig->writeEntry( "Strike out completed summaries", mStrikeOutCompleted );
+    mConfig->writeEntry( "Sort field", mTodoSortField );
+    mConfig->writeEntry( "Sort direction", mTodoSortDirection );
   }
 }
 
@@ -616,7 +638,6 @@ void CalPrintTodos::print( QPainter &p, int width, int height )
     posdue = -1;
   }
 
-  // Printing the Todos Now
   p.setFont( QFont( "helvetica", 10 ) );
   fontHeight = p.fontMetrics().height();
 
@@ -624,13 +645,36 @@ void CalPrintTodos::print( QPainter &p, int width, int height )
   Todo::List tempList;
   Todo::List::ConstIterator it;
 
-  // Create list of Todos which will be printed
+  // Convert sort options to the corresponding enums
+  TodoSortField sortField;
+  switch( mTodoSortField ) {
+  case TodoFieldSummary:
+    sortField = TodoSortSummary; break;
+  case TodoFieldStartDate:
+    sortField = TodoSortStartDate; break;
+  case TodoFieldDueDate:
+    sortField = TodoSortDueDate; break;
+  case TodoFieldPriority:
+    sortField = TodoSortPriority; break;
+  case TodoFieldPercentComplete:
+    sortField = TodoSortPercentComplete; break;
+  }
+
+  SortDirection sortDirection;
+  switch( mTodoSortDirection ) {
+  case TodoDirectionAscending:
+    sortDirection = SortDirectionAscending; break;
+  case TodoDirectionDescending:
+    sortDirection = SortDirectionDescending; break;
+  }
+
+  // Create list of to-dos which will be printed
+  // Also sort toplevel by summaries.
+  todoList = mCalendar->todos( TodoSortSummary,  sortDirection );
   switch( mTodoPrintType ) {
   case TodosAll:
-    todoList = mCalendar->todos();
     break;
   case TodosUnfinished:
-    todoList = mCalendar->todos();
     for( it = todoList.begin(); it!= todoList.end(); ++it ) {
       if ( !(*it)->isCompleted() )
         tempList.append( *it );
@@ -638,7 +682,6 @@ void CalPrintTodos::print( QPainter &p, int width, int height )
     todoList = tempList;
     break;
   case TodosDueRange:
-    todoList = mCalendar->todos();
     for( it = todoList.begin(); it!= todoList.end(); ++it ) {
       if ( (*it)->hasDueDate() ) {
         if ( (*it)->dtDue().date() >= mFromDate &&
@@ -652,29 +695,20 @@ void CalPrintTodos::print( QPainter &p, int width, int height )
     break;
   }
 
-  // The toplevel Todos are printed in priority order
+  // Print to-dos
   int count = 0;
-  for( int cprior = 1; cprior <= 10; cprior++ ) {
-    for( it = todoList.begin(); it != todoList.end(); ++it ) {
-      Todo *currEvent = *it;
+  for ( it=todoList.begin(); it!=todoList.end(); ++it ) {
+    Todo *currEvent = *it;
 
-      // Filter out the subTodos
-      if ( currEvent->relatedTo() ) {
-        continue;
-      }
-
-      // Skip this Todo if it does not have the current priority
-      int priority = currEvent->priority();
-      // 0 is the lowest priority (the unspecified one)
-      if ( ( priority != cprior ) &&
-           !( ( cprior == 10 ) && ( priority == 0 ) ) ) {
-        continue;
-      }
+    // Skip sub-to-dos. They will be printed recursively in drawTodo()
+    if ( !currEvent->relatedTo() ) {
       count++;
-      mHelper->drawTodo( count, currEvent, p, mConnectSubTodos,
-                         mIncludeDescription, pospriority, possummary, posdue,
-                         poscomplete, 0, 0, mCurrentLinePos, width, height,
-                         todoList );
+      mHelper->drawTodo( count, currEvent, p,
+                         sortField, sortDirection,
+                         mConnectSubTodos,
+                         mStrikeOutCompleted, mIncludeDescription,
+                         pospriority, possummary, posdue, poscomplete,
+                         0, 0, mCurrentLinePos, width, height, todoList );
     }
   }
   p.setFont( oldFont );

@@ -38,9 +38,9 @@
 #include <kprinter.h>
 #include <kwordwrap.h>
 
+#include <libkcal/calendar.h>
 #include <libkcal/todo.h>
 #include <libkcal/event.h>
-#include <libkcal/calendar.h>
 
 #include "korganizer/corehelper.h"
 #include "cellitem.h"
@@ -147,7 +147,7 @@ void CalPrintHelper::drawHeader( QPainter &p, QString title,
 
   int right=x+width;
 
-  // print previous month for month view, print current for todo, day and week
+  // print previous month for month view, print current for to-do, day and week
   int smallMonthWidth=width/4-10;
   if (smallMonthWidth>100) smallMonthWidth=100;
   if (month2.isValid()) {
@@ -793,7 +793,8 @@ void CalPrintHelper::drawMonth(QPainter &p, const QDate &qd, bool weeknumbers,
 ///////////////////////////////////////////////////////////////////////////////
 
 void CalPrintHelper::drawTodo( int &count, Todo *todo, QPainter &p,
-                               bool connectSubTodos,
+                               TodoSortField sortField, SortDirection sortDir,
+                               bool connectSubTodos, bool strikeoutCompleted,
                                bool desc, int posPriority, int posSummary,
                                int posDueDt, int posPercentComplete,
                                int level, int x, int &y, int width,
@@ -805,7 +806,7 @@ void CalPrintHelper::drawTodo( int &count, Todo *todo, QPainter &p,
   QRect rect;
   TodoParentStart startpt;
 
-  // This list keeps all starting points of the parent todos so the connection
+  // This list keeps all starting points of the parent to-dos so the connection
   // lines of the tree can easily be drawn (needed if a new page is started)
   static QPtrList<TodoParentStart> startPoints;
   if ( level < 1 ) {
@@ -828,7 +829,7 @@ void CalPrintHelper::drawTodo( int &count, Todo *todo, QPainter &p,
   }
   // if too big make new page
   if ( rect.bottom() > pageHeight ) {
-    // first draw the connection lines from parent todos:
+    // first draw the connection lines from parent to-dos:
     if ( level > 0 && connectSubTodos ) {
       TodoParentStart *rct;
       for ( rct = startPoints.first(); rct; rct = startPoints.next() ) {
@@ -901,8 +902,20 @@ void CalPrintHelper::drawTodo( int &count, Todo *todo, QPainter &p,
                          -1, Qt::WordBreak, outStr );
 
   QRect newrect;
+  //FIXME: the following code prints underline rather than strikeout text
+#if 0
+  QFont f( p.font() );
+  if ( todo->isCompleted() && strikeoutCompleted ) {
+    f.setStrikeOut( true );
+    p.setFont( f );
+  }
   p.drawText( rect, Qt::WordBreak, outStr, -1, &newrect );
-  if ( todo->isCompleted() ) {
+  f.setStrikeOut( false );
+  p.setFont( f );
+#endif
+  //TODO: Remove this section when the code above is fixed
+  p.drawText( rect, Qt::WordBreak, outStr, -1, &newrect );
+  if ( todo->isCompleted() && strikeoutCompleted ) {
     // strike out the summary text if to-do is complete
     // Note: we tried to use a strike-out font and for unknown reasons the
     // result was underline instead of strike-out, so draw the lines ourselves.
@@ -957,21 +970,49 @@ void CalPrintHelper::drawTodo( int &count, Todo *todo, QPainter &p,
   y = newrect.bottom() + 10; //set the line position
 
   // If the to-do has sub-to-dos, we need to call ourselves recursively
+#if 0
   Incidence::List l = todo->relations();
   Incidence::List::ConstIterator it;
   startPoints.append( &startpt );
   for( it = l.begin(); it != l.end(); ++it ) {
     count++;
-    // In the future, todos might also be related to events
-    // Manually check if the subtodo is in the list of todos to print
+    // In the future, to-dos might also be related to events
+    // Manually check if the sub-to-do is in the list of to-dos to print
     // The problem is that relations() does not apply filters, so
     // we need to compare manually with the complete filtered list!
     Todo* subtodo = dynamic_cast<Todo *>( *it );
     if (subtodo && todoList.contains( subtodo ) ) {
-      drawTodo( count, subtodo, p, connectSubTodos,
+      drawTodo( count, subtodo, p, connectSubTodos, strikeoutCompleted,
                 desc, posPriority, posSummary, posDueDt, posPercentComplete,
                 level+1, x, y, width, pageHeight, todoList, &startpt );
     }
+  }
+#endif
+  // Make a list of all the sub-to-dos related to this to-do.
+  Todo::List t;
+  Incidence::List l = todo->relations();
+  Incidence::List::ConstIterator it;
+  for( it=l.begin(); it!=l.end(); ++it ) {
+    // In the future, to-dos might also be related to events
+    // Manually check if the sub-to-do is in the list of to-dos to print
+    // The problem is that relations() does not apply filters, so
+    // we need to compare manually with the complete filtered list!
+    Todo* subtodo = dynamic_cast<Todo *>( *it );
+    if ( subtodo && todoList.contains( subtodo ) ) {
+      t.append( subtodo );
+    }
+  }
+
+  // Sort the sub-to-dos and then print them
+  Todo::List sl = mCalendar->sortTodos( &t, sortField, sortDir );
+  Todo::List::ConstIterator isl;
+  startPoints.append( &startpt );
+  for( isl = sl.begin(); isl != sl.end(); ++isl ) {
+    count++;
+    drawTodo( count, ( *isl ), p, sortField,  sortDir,
+              connectSubTodos, strikeoutCompleted,
+              desc, posPriority, posSummary, posDueDt, posPercentComplete,
+              level+1, x, y, width, pageHeight, todoList, &startpt );
   }
   startPoints.remove( &startpt );
 }

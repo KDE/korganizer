@@ -29,6 +29,7 @@
 
 #include <qdatetime.h>
 #include <kprinter.h>
+#include <libkcal/calendar.h>
 #include <libkcal/event.h>
 #include <libkcal/todo.h>
 
@@ -262,30 +263,27 @@ class CalPrintHelper
                     int x, int y, int width, int height );
 
     /**
-      Draws single todo item and its (intented) subitems, optionally connects them by a tree-like line,
-      and optionally shows due date, summary, description and priority.
-      \param count The number of the currently printed todo (count will be incremented for each drawn item)
-      \param item The item to be printed. It's subitems are recursively
-                  drawn, so drawTodo should only be called on the
-                  items of the highest level.
+      Draws single to-do and its (intented) sub-to-dos, optionally connects them by a tree-like line, and optionally shows due date, summary, description and priority.
+      \param count The number of the currently printed to-do (count will be incremented for each to-do drawn)
+      \param to-do The to-do to be printed. It's sub-to-dos are recursively drawn, so drawTodo should only be called on the to-dos of the highest level.
       \param p QPainter of the printout
-      \param connectSubTodos Whether subtodos shall be connected with their parent by a line (tree-like).
-      \param desc Whether to print the whole description of the item (the summary is always printed).
+      \param connectSubTodos Whether sub-to-dos shall be connected with their parent by a line (tree-like).
+      \param strikeoutCompleted. Whether completed to-dos should be printed with strike-out summaries.
+      \param desc Whether to print the whole description of the to-do (the summary is always printed).
       \param posPriority x-coordinate where the priority is supposed to be printed. If <0, no priority will be printed.
-      \param posSummary x-coordinate where the summary of the item is supposed to be printed.
+      \param posSummary x-coordinate where the summary of the to-do is supposed to be printed.
       \param posDueDt x-coordinate where the due date is supposed to the be printed. If <0, no due date will be printed.
       \param posPercentComplete x-coordinate where the percentage complete is supposed to be printed. If <0, percentage complete will not be printed.
-      \param level Level of the current item in the todo hierarchy (0 means highest
-                   level of printed items, 1 are their subtodos, etc.)
-      \param x x-coordinate of the upper left coordinate of the first item
-      \param y y-coordinate of the upper left coordinate of the first item
-      \param width width of the whole todo list
-      \param pageHeight Total height allowed for the todo list on a page. If an item would be below that
-                   line, a new page is started.
-      \param r Internal (used when printing sub items to give information about its parent)
+      \param level Level of the current to-do in the to-do hierarchy (0 means highest level of printed to-dos, 1 are their sub-to-dos, etc.)
+      \param x x-coordinate of the upper left coordinate of the first to-do
+      \param y y-coordinate of the upper left coordinate of the first to-do
+      \param width width of the whole to-do list
+      \param pageHeight Total height allowed for the to-do list on a page. If an to-do would be below that line, a new page is started.
+      \param r Internal (used when printing sub-to-dos to give information about its parent)
     */
-    void drawTodo( int &count, Todo * item, QPainter &p,
-                   bool connectSubTodos, bool desc,
+    void drawTodo( int &count, Todo *todo, QPainter &p,
+                   TodoSortField sortField, SortDirection sortDir,
+                   bool connectSubTodos, bool strikeoutCompleted, bool desc,
                    int posPriority, int posSummary, int posDueDt,
                    int posPercentComplete, int level, int x, int &y,
                    int width, int pageHeight,

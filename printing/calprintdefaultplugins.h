@@ -131,11 +131,24 @@ class CalPrintTodos : public CalPrintPluginBase
       TodosAll = 0, TodosUnfinished, TodosDueRange
     } mTodoPrintType;
 
+    enum eTodoSortField {
+      TodoFieldSummary=0,
+      TodoFieldStartDate, TodoFieldDueDate,
+      TodoFieldPriority, TodoFieldPercentComplete
+    } mTodoSortField;
+
+    enum eTodoSortDirection {
+      TodoDirectionAscending=0, TodoDirectionDescending
+    } mTodoSortDirection;
+
     bool mIncludeDescription;
     bool mIncludePriority;
     bool mIncludeDueDate;
     bool mIncludePercentComplete;
     bool mConnectSubTodos;
+    bool mStrikeOutCompleted;
+    bool mSortField;
+    bool mSortDirection;
 };
 
 #endif
