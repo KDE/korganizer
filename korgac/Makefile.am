@@ -14,6 +14,13 @@ simplealarmdaemon_LDADD = $(LIB_KDEUI) $(top_builddir)/libkcal/libkcal.la
 simplealarmdaemon_SOURCES = simplealarmdaemon.cpp alarmdialog.cpp koeventviewer.cpp  \
   simplealarmdaemonmain.cpp
 
+check_PROGRAMS = testalarmdlg
+
+testalarmdlg_LDFLAGS = $(all_libraries) $(KDE_RPATH)
+testalarmdlg_LDADD = $(LIB_KDEUI) $(top_builddir)/libkcal/libkcal.la \
+	$(top_builddir)/kalarmd/libkalarmd.la
+testalarmdlg_SOURCES = testalarmdlg.cpp alarmdialog.cpp koeventviewer.cpp
+
 noinst_HEADERS = alarmguiiface.h alarmdialog.h \
 	alarmdockwindow.h koeventviewer.h koalarmclient.h \
 	simplealarmdaemon.h
