@@ -4,7 +4,7 @@
 : generously with more obscure catholic holidays.
 :
 small "Neujahr" weekend on 1.1.
-small "Hl.3 Könige" on 6.1.
+small "Hl. 3 Könige" on 6.1.
 blue "Sommerzeit" on last sunday in march
 small "Rosenmontag" on easter minus 48 days
 small "Fasching" on easter minus 47 days
@@ -14,7 +14,7 @@ small "Ostern" weekend on easter length 2 days
 small "Pfingsten" weekend on easter plus 49 days length 2 days
 small "Himmelfahrt" weekend on easter plus 39 days
 small "Fronleichnam" on easter plus 60 days
-small "1.Mai" weekend on 1.5.
+small "1. Mai" weekend on 1.5.
 small "Muttertag" on second sunday in may
 blue "Winterzeit" on last sunday in october
 small "Tag d. Einheit" weekend on 3.10.
@@ -27,4 +27,4 @@ small "3. Advent" on sunday before 24.12. minus 7 days
 small "4. Advent" on sunday before 24.12.
 small "Hl. Abend" on 24.12.
 small "Weihnachten" weekend on 25.12. length 2 days
-small "Sylvester" on 31.12.
+small "Silvester" on 31.12.

@@ -27,7 +27,7 @@
 :
 
 small        "Neujahr"             weekend on 1.1.
-small        "Hl.3 Könige"         weekend on 6.1.
+small        "Hl. 3 Könige"         weekend on 6.1.
 small        "Rosenmontag"                 on easter minus 48 days
 small        "Fasching"                    on easter minus 47 days
 small        "Aschermittwoch"              on easter minus 46 days
@@ -37,13 +37,13 @@ small        "Pfingsten"           weekend on easter plus 49 days length 2 days
 small        "Christi Himmelfahrt" weekend on easter plus 39 days
 small        "Mariä Himmelfahrt"   weekend on 15.8
 small        "Fronleichnam"        weekend on easter plus 60 days
-small        "1.Mai"               weekend on 1.5.
-small        "Einheistag"          weekend on 3.10.
+small        "1. Mai"               weekend on 1.5.
+small        "Einheitstag"          weekend on 3.10.
 small        "Allerheiligen"       weekend on 1.11.
 small        "Buß- und Bettag"     weekend on sunday before 24.12. minus 32 days
 small        "Hl. Abend"                   on 24.12.
 small        "Weihnachten"         weekend on 25.12. length 2 days
-small        "Sylvester"                   on 31.12.
+small        "Silvester"                   on 31.12.
 
 : 
 : 3) Devil's Grandmothers Days
