@@ -150,7 +150,7 @@ KOEditorFreeBusy::KOEditorFreeBusy( int spacing, QWidget *parent,
                                     const char *name )
   : QWidget( parent, name )
 {
-  QVBoxLayout* topLayout = new QVBoxLayout( this );
+  QVBoxLayout *topLayout = new QVBoxLayout( this );
   topLayout->setSpacing( spacing );
 
   QString organizer = KOPrefs::instance()->email();
@@ -246,6 +246,8 @@ KOEditorFreeBusy::KOEditorFreeBusy( int spacing, QWidget *parent,
   FreeBusyManager *m = KOGroupware::instance()->freeBusyManager();
   connect( m, SIGNAL( freeBusyRetrieved( KCal::FreeBusy *, const QString & ) ),
            SLOT( slotInsertFreeBusy( KCal::FreeBusy *, const QString & ) ) );
+
+  connect( &mReloadTimer, SIGNAL( timeout() ), SLOT( reload() ) );
 }
 
 KOEditorFreeBusy::~KOEditorFreeBusy()
@@ -269,7 +271,9 @@ void KOEditorFreeBusy::removeAttendee( Attendee *attendee )
 void KOEditorFreeBusy::insertAttendee( Attendee *attendee )
 {
   (void)new FreeBusyItem( attendee, mGanttView );
+#if 0
   updateFreeBusyData( attendee );
+#endif
   updateStatusSummary();
 }
 
@@ -345,11 +349,6 @@ void KOEditorFreeBusy::updateFreeBusyData( KDGanttViewItem *item )
   updateFreeBusyData( g->attendee() );
 }
 
-/*!
-  This slot is called when the user changes the email address of a
-  participant. It downloads the free/busy data from the net and enters
-  it into the Gantt view by means of the KOGroupware class.
-*/
 void KOEditorFreeBusy::updateFreeBusyData( Attendee *attendee )
 {
   if( KOGroupware::instance() && attendee->name() != "(EmptyName)" ) {
@@ -363,6 +362,8 @@ void KOEditorFreeBusy::updateFreeBusyData( Attendee *attendee )
 void KOEditorFreeBusy::slotInsertFreeBusy( KCal::FreeBusy *fb,
                                            const QString &email )
 {
+  kdDebug() << "KOEditorFreeBusy::slotInsertFreeBusy() " << email << endl;
+
   if( fb )
     fb->sortList();
   bool block = mGanttView->getUpdateEnabled();
@@ -559,6 +560,16 @@ void KOEditorFreeBusy::updateStatusSummary()
     mStatusSummaryLabel->setText( "" );
   }
   mStatusSummaryLabel->adjustSize();
+}
+
+void KOEditorFreeBusy::triggerReload()
+{
+  mReloadTimer.start( 1000, true );
+}
+
+void KOEditorFreeBusy::cancelReload()
+{
+  mReloadTimer.stop();
 }
 
 void KOEditorFreeBusy::reload()

@@ -381,7 +381,7 @@ void KOEditorDetails::setDefaults()
   mRsvpButton->setChecked( true );
 }
 
-void KOEditorDetails::readEvent(Incidence *event)
+void KOEditorDetails::readEvent( Incidence *event )
 {
   // Stop flickering in the free/busy view (not sure if this is necessary)
   bool block = false;

@@ -355,6 +355,11 @@ bool FreeBusyManager::processRetrieveQueue()
   return true;
 }
 
+void FreeBusyManager::cancelRetrieval()
+{
+  mRetrieveQueue.clear();
+}
+
 KURL FreeBusyManager::freeBusyUrl( const QString &email )
 {
   QString configFile = locateLocal( "data", "korganizer/freebusyurls" );

@@ -96,6 +96,8 @@ class FreeBusyManager : public QObject, public KCal::FreeBusyCache
     */
     bool retrieveFreeBusy( const QString &email );
 
+    void cancelRetrieval();
+
     KCal::FreeBusy *iCalToFreeBusy( const QCString &data );
 
     /**

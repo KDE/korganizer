@@ -49,10 +49,10 @@
 
 #include "koeventeditor.h"
 
-KOEventEditor::KOEventEditor( Calendar *calendar, QWidget *parent ) :
-  KOIncidenceEditor( i18n("Edit Event"), calendar, parent )
+KOEventEditor::KOEventEditor( Calendar *calendar, QWidget *parent )
+  : KOIncidenceEditor( i18n("Edit Event"), calendar, parent ),
+    mEvent( 0 )
 {
-  mEvent = 0;
 }
 
 KOEventEditor::~KOEventEditor()
@@ -95,7 +95,8 @@ void KOEventEditor::init()
 
 void KOEventEditor::reload()
 {
-kdDebug()<<"reloading event"<<endl;
+  kdDebug() << "KOEventEditor::reload()" << endl;
+
   if ( mEvent ) readEvent( mEvent );
 }
 
@@ -148,8 +149,8 @@ void KOEventEditor::setupGeneral()
 
 void KOEventEditor::modified (int /*modification*/)
 {
-  // Play dump, just reload the event. This dialog has become so complicated that
-  // there is no point in trying to be smart here...
+  // Play dump, just reload the event. This dialog has become so complicated
+  // that there is no point in trying to be smart here...
   reload();
 }
 
@@ -165,9 +166,12 @@ void KOEventEditor::setupRecurrence()
 
 void KOEventEditor::setupFreeBusy()
 {
-  QFrame* frame = addPage( i18n("&Free/Busy") );
-  mFreeBusy = new KOEditorFreeBusy( spacingHint(), frame );
-  ( new QVBoxLayout( frame ) )->addWidget( mFreeBusy );
+  QFrame *freeBusyPage = addPage( i18n("&Free/Busy") );
+
+  QBoxLayout *topLayout = new QVBoxLayout( freeBusyPage );
+
+  mFreeBusy = new KOEditorFreeBusy( spacingHint(), freeBusyPage );
+  topLayout->addWidget( mFreeBusy );
 }
 
 void KOEventEditor::editIncidence(Incidence *incidence)
@@ -261,8 +265,9 @@ bool KOEventEditor::processInput()
       int revision = event->revision();
       event->setRevision( revision + 1 );
       if( !KOPrefs::instance()->mUseGroupwareCommunication ||
-        KOGroupware::instance()->sendICalMessage( this, KCal::Scheduler::Request, event ) )
-      {
+          KOGroupware::instance()->sendICalMessage( this,
+                                                    KCal::Scheduler::Request,
+                                                    event ) ) {
         // Accept the event changes
         writeEvent( mEvent );
         mEvent->setRevision( revision + 1 );
@@ -297,6 +302,8 @@ bool KOEventEditor::processInput()
     }
   }
 
+  if ( mFreeBusy ) mFreeBusy->cancelReload();
+
   return true;
 }
 
@@ -307,6 +314,8 @@ void KOEventEditor::processCancel()
   if ( mEvent ) {
     emit editCanceled( mEvent );
   }
+
+  if ( mFreeBusy ) mFreeBusy->cancelReload();
 }
 
 void KOEventEditor::deleteEvent()
@@ -317,7 +326,8 @@ void KOEventEditor::deleteEvent()
     bool groupwareCheck = KOPrefs::instance()->mConfirm &&
           (!KOPrefs::instance()->mUseGroupwareCommunication ||
            KOPrefs::instance()->thatIsMe( mEvent->organizer() ) );
-    if (!groupwareCheck || (msgItemDelete()==KMessageBox::Continue)) { // Either no groupware check needed, or OK pressed
+    if (!groupwareCheck || (msgItemDelete()==KMessageBox::Continue)) {
+      // Either no groupware check needed, or OK pressed
       emit incidenceToBeDeleted(mEvent);
       emit dialogClose(mEvent);
       mCalendar->deleteEvent(mEvent);
@@ -336,22 +346,23 @@ void KOEventEditor::setDefaults( QDateTime from, QDateTime to, bool allDay )
   mAttachments->setDefaults();
   mRecurrence->setDefaults( from, to, allDay );
   if( mFreeBusy ) {
-      if ( allDay )
-          mFreeBusy->setDateTimes( from, to.addDays(1) );
-      else
-          mFreeBusy->setDateTimes( from, to );
-
+    if ( allDay )
+      mFreeBusy->setDateTimes( from, to.addDays( 1 ) );
+    else
+      mFreeBusy->setDateTimes( from, to );
    }
 }
 
 void KOEventEditor::readEvent( Event *event, bool tmpl )
 {
-kdDebug()<<"read event"<<endl;
   mGeneral->readEvent( event, tmpl );
   mDetails->readEvent( event );
   mRecurrence->readIncidence( event );
   mAttachments->readIncidence( event );
-  if( mFreeBusy ) mFreeBusy->readEvent( event );
+  if( mFreeBusy ) { 
+    mFreeBusy->readEvent( event );
+    mFreeBusy->triggerReload();
+  }
 
   // categories
   mCategoryDialog->setSelected( event->categories() );
@@ -363,7 +374,10 @@ void KOEventEditor::writeEvent( Event *event )
   mDetails->writeEvent( event );
   mAttachments->writeIncidence( event );
 
-  // TODO_RK: What the heck does this do??? Isn't this completely wrong? cancelDttendee Event really deletes the removed attendees from the event, so the event might have less attendeed, even 0 attendees afterwards. So the check for attendeeCount is inappropriate here
+  // TODO_RK: What the heck does this do??? Isn't this completely wrong?
+  // cancelDttendee Event really deletes the removed attendees from the event,
+  // so the event might have less attendeed, even 0 attendees afterwards. So the
+  // check for attendeeCount is inappropriate here
   if ( KOPrefs::instance()->thatIsMe( event->organizer() ) ) {
     Event *ev = new Event( *event );
     ev->registerObserver( 0 );

@@ -26,11 +26,13 @@
 
 #include <qwidget.h>
 #include <qdatetime.h>
+#include <qtimer.h>
 
 class QLabel;
 class KDGanttView;
 class KDGanttViewItem;
 class FreeBusyItem;
+
 namespace KCal {
   class FreeBusy;
   class Attendee;
@@ -54,6 +56,9 @@ class KOEditorFreeBusy : public QWidget
     void clearAttendees();
 
     void readEvent( KCal::Event * );
+
+    void triggerReload();
+    void cancelReload();
 
   signals:
     void dateTimesChanged( QDateTime, QDateTime );
@@ -93,6 +98,8 @@ class KOEditorFreeBusy : public QWidget
     QComboBox *scaleCombo;
 
     QDateTime mDtStart, mDtEnd;
+
+    QTimer mReloadTimer;
 };
 
 #endif
