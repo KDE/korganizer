@@ -98,8 +98,8 @@ void KOEditorGeneralEvent::initTime(QWidget *parent,QBoxLayout *topLayout)
   QGroupBox *timeGroupBox = new QGroupBox(1,QGroupBox::Horizontal,
                                           i18n("Date && Time"),parent);
   QWhatsThis::add( timeGroupBox,
-		   i18n("Sets options related to the date and time of the "
-			"event or to-do.") );
+       i18n("Sets options related to the date and time of the "
+            "event or to-do.") );
   timeLayout->addWidget(timeGroupBox);
 
   QFrame *timeBoxFrame = new QFrame(timeGroupBox);
