@@ -58,8 +58,9 @@ void ConfigDialog::load()
   QString currentHolidayName;
 
   QStringList holidayList;
+  //TODO: create a new KHolidays method that returns the countryList
   QStringList countryList = KGlobal::dirs()->findAllResources("data",
-      "korganizer/holiday_*", false, true);
+      "libkholidays/holiday_*", false, true);
   QStringList::ConstIterator it;
   for ( it = countryList.begin(); it != countryList.end(); ++it ) {
     QString country = (*it).mid((*it).findRev('_') + 1);

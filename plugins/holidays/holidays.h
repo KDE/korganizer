@@ -18,11 +18,11 @@
 */
 #ifndef KORG_HOLIDAYS_H
 #define KORG_HOLIDAYS_H
-// $Id$
 
 #include <qstring.h>
 
 #include <calendar/calendardecoration.h>
+#include <libkholidays/kholidays.h>
 
 using namespace KOrg;
 
@@ -30,18 +30,15 @@ class Holidays : public CalendarDecoration {
   public:
     Holidays();
     ~Holidays();
-    
-    QString shortText(const QDate &);
-    
+
+    QString shortText( const QDate &date );
+
     QString info();
 
     void configure(QWidget *parent);
-    
-    QString getHoliday(const QDate &);
-    
+
   private:
-    QString mHolidayFile;
-    int yearLast;
+    KHolidays::KHolidays *mKHolidays;
 };
 
 #endif
