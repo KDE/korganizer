@@ -395,10 +395,6 @@ KURL FreeBusyManager::freeBusyUrl( const QString &email )
   // Build the URL
   KURL sourceURL;
   sourceURL = KOPrefs::instance()->mFreeBusyRetrieveUrl;
-
-  // Don't try to fetch free/busy data for users not on the specified servers
-  if ( sourceURL.host() != email.mid( emailpos + 1 ) ) return KURL();
-
   if ( KOPrefs::instance()->mFreeBusyFullDomainRetrieval )
     sourceURL.setFileName( email + ".ifb" );
   else
