@@ -72,6 +72,7 @@ class KOEditorGeneralTodo : public KOEditorGeneral
   
   signals:
     void recurTodo( Todo * );
+    void dueDateEditToggle( bool );
     
   protected slots:
     void completedChanged(int);
@@ -85,6 +86,8 @@ class KOEditorGeneralTodo : public KOEditorGeneral
     void setCompletedDate();
 
  private:
+    bool                    alreadyComplete;
+   
     KDateEdit               *mStartDateEdit;
     KTimeEdit               *mStartTimeEdit;
     QCheckBox               *mTimeButton;

@@ -43,6 +43,7 @@
 #include <kmessagebox.h>
 
 #include <libkdepim/kdateedit.h>
+#include <libkcal/todo.h>
 
 #include "koprefs.h"
 #include "koglobals.h"
@@ -747,7 +748,7 @@ KOEditorRecurrence::KOEditorRecurrence( QWidget* parent, const char *name ) :
 
   mEnabledCheck = new QCheckBox( i18n("&Enable recurrence"), this );
   connect( mEnabledCheck, SIGNAL( toggled( bool ) ),
-           SLOT( setEnabled( bool ) ) );
+           SLOT( setRecurrenceEnabled( bool ) ) );
   topLayout->addMultiCellWidget( mEnabledCheck, 0, 0, 0, 1 );
 
 
@@ -840,9 +841,9 @@ KOEditorRecurrence::~KOEditorRecurrence()
 {
 }
 
-void KOEditorRecurrence::setEnabled( bool enabled )
+void KOEditorRecurrence::setRecurrenceEnabled( bool enabled )
 {
-//  kdDebug(5850) << "KOEditorRecurrence::setEnabled(): " << (enabled ? "on" : "off") << endl;
+//  kdDebug(5850) << "KOEditorRecurrence::setRecurrenceEnabled(): " << (enabled ? "on" : "off") << endl;
 
   mTimeGroupBox->setEnabled( enabled );
   mRuleBox->setEnabled( enabled );
@@ -889,7 +890,7 @@ void KOEditorRecurrence::setDefaults( QDateTime from, QDateTime to, bool )
 
   bool enabled = false;
   mEnabledCheck->setChecked( enabled );
-  setEnabled( enabled );
+  setRecurrenceEnabled( enabled );
 
   mRecurrenceRange->setDefaults( from );
 
@@ -938,7 +939,7 @@ void KOEditorRecurrence::readIncidence(Incidence *incidence)
 
 
   mEnabledCheck->setChecked( recurs );
-  setEnabled( recurs );
+  setRecurrenceEnabled( recurs );
 
   int recurrenceType = RecurrenceChooser::Weekly;
 
@@ -1034,6 +1035,9 @@ void KOEditorRecurrence::writeIncidence( Incidence *incidence )
   // clear out any old settings;
   r->unsetRecurs();
 
+  if ( incidence->type() == "Todo" )
+    r->setRecurStart( static_cast<Todo *>(incidence)->dtDue() );
+  
   int duration = mRecurrenceRange->duration();
   QDate endDate;
   if ( duration == 0 ) endDate = mRecurrenceRange->endDate();

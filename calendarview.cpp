@@ -768,7 +768,7 @@ void CalendarView::edit_copy()
   
   // Clear selection to avoid accidental creation subtodo's.
   // 1) Left todolist
-  mTodoList->clearSelection();  
+  mTodoList->clearSelection();
   // 2) Fullscreen todolist, test if active
   if ( mViewManager->todoView() )
     mViewManager->todoView()->clearSelection();
@@ -1969,31 +1969,43 @@ void CalendarView::editCanceled( Incidence *i )
 void CalendarView::recurTodo( Todo *todo )
 {
   if (!todo) return;
+  int duration = todo->recurrence()->duration();
   
-  if ( todo->hasDueDate() && todo->doesRecur() ) {
+  QDateTime endDate = todo->recurrence()->endDateTime();
+  if ( ( todo->hasDueDate() && todo->doesRecur() ) &&
+     ( duration == -1 || duration > 1 ||
+     ( duration == 0 && endDate.isValid() && todo->dtDue() < endDate ) ) ) {
+
       Todo *copyTodo = new Todo( *todo );
       copyTodo->recreate();
       copyTodo->setPercentComplete(0);
-      
+
       // find next date
       if ( todo->dtDue() > QDateTime::currentDateTime() ) {
-        copyTodo->setDtDue( todo->recurrence()->getNextDateTime(
-                                                todo->dtDue() ) );
+        copyTodo->setDtDue( copyTodo->recurrence()->getNextDateTime(
+                                                copyTodo->dtDue() ) );
       }
       else {
-        copyTodo->setDtDue( todo->recurrence()->getNextDateTime(
+        copyTodo->setDtDue( copyTodo->recurrence()->getNextDateTime(
                                                 QDateTime::currentDateTime()));
       }
-      
+
       // exception-handling (recurrence)
-      while ( !copyTodo->recursAt( copyTodo->dtDue() ) )
+      while ( !copyTodo->recursAt( copyTodo->dtDue() ) ) {
         copyTodo->setDtDue( copyTodo->recurrence()->getNextDateTime( 
                                                       copyTodo->dtDue() ) );
-      
+        if ( duration > 1 )
+          copyTodo->recurrence()->setDuration( duration - 1 );
+      }
+
+      copyTodo->recurrence()->setRecurStart( copyTodo->dtDue() );
+      if ( duration > 1 )
+        copyTodo->recurrence()->setDuration( duration - 1 );
+
       mCalendar->addTodo( copyTodo );
       todoAdded( copyTodo );
   }
-  
+
   todo->setCompleted( QDateTime::currentDateTime() );
   // todoChanged() should be emitted by caller.
 }

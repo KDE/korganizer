@@ -249,7 +249,7 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     void newSubTodo( Todo * );
     /** Delete todo */
     void deleteTodo( Todo * );
-    
+    /** Takes the todo's next occurence and marks the original as complete.*/
     void recurTodo( Todo * );
 
     void newTodo( const QString & );

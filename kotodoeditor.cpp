@@ -81,8 +81,9 @@ void KOTodoEditor::setupGeneral()
   connect(mGeneral,SIGNAL(openCategoryDialog()),mCategoryDialog,SLOT(show()));
   connect(mCategoryDialog, SIGNAL(categoriesSelected(const QString &)),
           mGeneral,SLOT(setCategories(const QString &)));
-  connect(mGeneral,SIGNAL(signalTodoRecur( Todo * )),
+  connect(mGeneral,SIGNAL( recurTodo( Todo * )),
                    SIGNAL( recurTodo( Todo * ) ) );
+
 
   if (KOPrefs::instance()->mCompactDialogs) {
     QFrame *topFrame = addPage(i18n("General"));
@@ -140,6 +141,9 @@ void KOTodoEditor::setupRecurrence()
 
   mRecurrence = new KOEditorRecurrence( topFrame );
   topLayout->addWidget( mRecurrence );
+  
+  connect(mGeneral,SIGNAL(dueDateEditToggle( bool ) ),
+          mRecurrence, SLOT( setEnabled( bool ) ) );
 }
 
 void KOTodoEditor::editTodo(Todo *todo)

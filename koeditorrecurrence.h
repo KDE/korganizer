@@ -276,7 +276,7 @@ class KOEditorRecurrence : public QWidget
     bool validateInput();
 
   public slots:
-    void setEnabled( bool );
+    void setRecurrenceEnabled( bool );
     void setDateTimes( QDateTime start, QDateTime end );
     void setDateTimeStr( const QString & );
   

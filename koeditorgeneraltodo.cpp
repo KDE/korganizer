@@ -242,9 +242,11 @@ void KOEditorGeneralTodo::readTodo(Todo *todo)
 
   mTimeButton->setChecked( !todo->doesFloat() );
 
+  alreadyComplete = false;
   mCompletedCombo->setCurrentItem(todo->percentComplete() / 10);
   if (todo->isCompleted() && todo->hasCompletedDate()) {
     mCompleted = todo->completed();
+    alreadyComplete = true;
   }
   setCompletedDate();
 
@@ -302,14 +304,16 @@ void KOEditorGeneralTodo::writeTodo(Todo *todo)
   // set completion state
   todo->setPercentComplete(mCompletedCombo->currentItem() * 10);
 
-  if (mCompletedCombo->currentItem() == 10 && mCompleted.isValid()) {
-    todo->setCompleted(mCompleted);
+  if (mCompletedCombo->currentItem() == 10 && mCompleted.isValid()) {    
+    if (! alreadyComplete) emit recurTodo( todo );
+    else todo->setCompleted(mCompleted);
   }
 }
 
 void KOEditorGeneralTodo::enableDueEdit(bool enable)
 {
   mDueDateEdit->setEnabled( enable );
+  emit dueDateEditToggle( enable );
 
   if(mDueCheck->isChecked() || mStartCheck->isChecked()) {
     mTimeButton->setEnabled(true);
