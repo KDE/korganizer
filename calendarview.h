@@ -329,7 +329,7 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     void schedule_counter(Incidence *incidence = 0);
     void schedule_declinecounter(Incidence *incidence = 0);
     void schedule_publish_freebusy();
-		
+
     void openAddressbook();
 
     void editFilters();

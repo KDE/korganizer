@@ -190,6 +190,13 @@ QPtrList<Incidence> KOListView::selectedIncidences()
   return eventList;
 }
 
+QValueList<QDate> KOListView::selectedIncidencesDates()
+{
+  QValueList<QDate> eventList;
+
+  return eventList;
+}
+
 void KOListView::showDates(bool show)
 {
   // Shouldn't we set it to a value greater 0? When showDates is called with

@@ -266,6 +266,12 @@ QPtrList<Incidence> KOProjectView::selectedIncidences()
   return selected;
 }
 
+QValueList<QDate> KOProjectView::selectedIncidencesDates()
+{
+  QValueList<QDate> selected;
+  return selected;
+}
+
 void KOProjectView::changeEventDisplay(Event *, int)
 {
   updateView();

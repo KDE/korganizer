@@ -59,7 +59,7 @@ class KNoScrollListBox: public QListBox
 class MonthViewItem: public QListBoxItem
 {
   public:
-    MonthViewItem( Incidence *, const QString & title );
+    MonthViewItem( Incidence *, QDate qd, const QString & title );
 
     void setRecur(bool on) { mRecur = on; }
     void setAlarm(bool on) { mAlarm = on; }
@@ -69,6 +69,7 @@ class MonthViewItem: public QListBoxItem
     QPalette palette() const { return mPalette; }
 
     Incidence *incidence() const { return mIncidence; }
+    QDate incidenceDate() { return mDate; }
 
   protected:
     virtual void paint(QPainter *);
@@ -85,6 +86,7 @@ class MonthViewItem: public QListBoxItem
     QPixmap mReplyPixmap;
 
     QPalette mPalette;
+    QDate mDate;    
     
     Incidence *mIncidence;
 };
@@ -114,6 +116,7 @@ class MonthViewCell : public QWidget
     void enableScrollBars( bool );
 
     Incidence *selectedIncidence();
+    QDate selectedIncidenceDate();
 
     void deselect();
 
@@ -163,6 +166,9 @@ class KOMonthView: public KOEventView
     /** returns the currently selected events */
     virtual QPtrList<Incidence> selectedIncidences();
 
+    /** returns dates of the currently selected events */
+    virtual QValueList<QDate> selectedIncidencesDates();
+    
     virtual void printPreview(CalPrinter *calPrinter,
                               const QDate &, const QDate &);
 

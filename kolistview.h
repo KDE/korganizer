@@ -77,7 +77,8 @@ class KOListView : public KOEventView
     virtual int maxDatesHint();
     virtual int currentDateCount();
     virtual QPtrList<Incidence> selectedIncidences();
-
+    virtual QValueList<QDate> selectedIncidencesDates();
+    
     void showDates(bool show);
 
     virtual void printPreview(CalPrinter *calPrinter,

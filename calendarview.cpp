@@ -902,15 +902,30 @@ void CalendarView::deleteEvent(Event *anEvent)
     KNotifyClient::beep();
     return;
   }
-
+  
   if (anEvent->recurrence()->doesRecur()) {
-    switch(KMessageBox::warningContinueCancel(this,
+    QDate itemDate = mViewManager->currentSelectionDate();
+    kdDebug() << "Recurrence-Date: " << itemDate.toString() << endl;
+    int km;
+    if (!itemDate.isValid()) {
+      kdDebug() << "Date Not Valid" << endl;
+      km = KMessageBox::questionYesNo(this,
         i18n("This event recurs over multiple dates.\n"
              "Are you sure you want to delete this event "
              "and all its recurrences?"),
-             i18n("KOrganizer Confirmation"),i18n("&Continue"))) {
+             i18n("KOrganizer Confirmation"),i18n("Cancel"),
+             i18n("All"));
+    } else {
+      km = KMessageBox::questionYesNoCancel(this,
+        i18n("This event recurs over multiple dates.\n"
+             "Do you want to delete all it's recurrences, \n"
+             "or only the current occurence?"),
+             i18n("KOrganizer Confirmation"),i18n("Current"),
+             i18n("All"));
+    }
+    switch(km) {
 
-      case KMessageBox::Continue: // all
+      case KMessageBox::No: // Continue // all
         if (anEvent->organizer()==KOPrefs::instance()->email() && anEvent->attendeeCount()>0)
           schedule(Scheduler::Cancel,anEvent);
         mCalendar->deleteEvent(anEvent);
@@ -918,19 +933,21 @@ void CalendarView::deleteEvent(Event *anEvent)
         break;
 
 // Disabled because it does not work
-#if 0
-      case KMessageBox::No: // just this one
-        QDate qd = mDateNavigator->selectedDates().first();
-        if (!qd.isValid()) {
-          kdDebug() << "no date selected, or invalid date" << endl;
-          KNotifyClient::beep();
-          return;
+//#if 0
+      case KMessageBox::Yes: // just this one
+        //QDate qd = mDateNavigator->selectedDates().first();
+        //if (!qd.isValid()) {
+        //  kdDebug() << "no date selected, or invalid date" << endl;
+        //  KNotifyClient::beep();
+        //  return;
+        //}
+        //while (!anEvent->recursOn(qd)) qd = qd.addDays(1);
+        if (itemDate!=QDate::QDate(1,1,1) || itemDate.isValid()) {
+          anEvent->addExDate(itemDate);
+          changeEventDisplay(anEvent, KOGlobals::EVENTEDITED);
         }
-        while (!anEvent->recursOn(qd)) qd = qd.addDays(1);
-        anEvent->addExDate(qd);
-        changeEventDisplay(anEvent, KOGlobals::EVENTEDITED);
         break;
-#endif
+//#endif
     } // switch
   } else {
     if (KOPrefs::instance()->mConfirm) {

@@ -492,6 +492,20 @@ QPtrList<Incidence> KOAgendaView::selectedIncidences()
   return selectedEvents;
 }
 
+QValueList<QDate> KOAgendaView::selectedIncidencesDates()
+{
+  QValueList<QDate> selectedEventsDates;
+  QDate qd;
+
+  qd = mAgenda->selectedEventDate();
+  if (qd.isValid()) selectedEventsDates.append(qd);
+
+  qd = mAllDayAgenda->selectedEventDate();
+  if (qd.isValid()) selectedEventsDates.append(qd);
+
+  return selectedEventsDates;
+}
+
 
 void KOAgendaView::updateView()
 {
@@ -831,19 +845,19 @@ void KOAgendaView::fillAgenda()
 
       if (event->doesFloat()) {
         if (event->recurrence()->doesRecur()) {
-          mAllDayAgenda->insertAllDayItem(event,curCol,curCol);
+          mAllDayAgenda->insertAllDayItem(event,currentDate,curCol,curCol);
         } else {
           if (beginX <= 0 && curCol == 0) {
-            mAllDayAgenda->insertAllDayItem(event,beginX,endX);
+            mAllDayAgenda->insertAllDayItem(event,currentDate,beginX,endX);
           } else if (beginX == curCol) {
-            mAllDayAgenda->insertAllDayItem(event,beginX,endX);
+            mAllDayAgenda->insertAllDayItem(event,currentDate,beginX,endX);
           }
         }
       } else if (event->isMultiDay()) {
         int startY = mAgenda->timeToY(event->dtStart().time());
         int endY = mAgenda->timeToY(event->dtEnd().time()) - 1;
         if ((beginX <= 0 && curCol == 0) || beginX == curCol) {
-          mAgenda->insertMultiItem(event,beginX,endX,startY,endY);
+          mAgenda->insertMultiItem(event,currentDate,beginX,endX,startY,endY);
         }
         if (beginX == curCol) {
           mMaxY[curCol] = mAgenda->timeToY(QTime(23,59));
@@ -859,7 +873,7 @@ void KOAgendaView::fillAgenda()
         int startY = mAgenda->timeToY(event->dtStart().time());
         int endY = mAgenda->timeToY(event->dtEnd().time()) - 1;
 	if (endY < startY) endY = startY;
-	mAgenda->insertItem(event,curCol,startY,endY);
+	mAgenda->insertItem(event,currentDate,curCol,startY,endY);
         if (startY < mMinY[curCol]) mMinY[curCol] = startY;
         if (endY > mMaxY[curCol]) mMaxY[curCol] = endY;
       }

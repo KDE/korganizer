@@ -70,6 +70,7 @@ class KOAgenda : public QScrollView
     virtual ~KOAgenda();
 
     Event *selectedEvent();
+    QDate selectedEventDate();
 
     virtual bool eventFilter ( QObject *, QEvent * );
 
@@ -81,9 +82,9 @@ class KOAgenda : public QScrollView
 
     void setStartHour(int startHour);
 
-    KOAgendaItem *insertItem (Event *event,int X,int YTop,int YBottom);
-    KOAgendaItem *insertAllDayItem (Event *event,int XBegin,int XEnd);
-    void insertMultiItem (Event *event,int XBegin,int XEnd,
+    KOAgendaItem *insertItem (Event *event,QDate qd,int X,int YTop,int YBottom);
+    KOAgendaItem *insertAllDayItem (Event *event,QDate qd,int XBegin,int XEnd);
+    void insertMultiItem (Event *event,QDate qd,int XBegin,int XEnd,
                           int YTop,int YBottom);
 
     void changeColumns(int columns);

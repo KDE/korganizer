@@ -302,6 +302,15 @@ Event *KOAgenda::selectedEvent()
   }
 }
 
+QDate KOAgenda::selectedEventDate()
+{
+  QDate qd;
+  if (mSelectedItem) {
+    qd = mSelectedItem->itemDate();
+  }
+  return qd;
+}
+
 /*
   This is the eventFilter function, which gets all events from the KOAgendaItems
   contained in the agenda. It has to handle moving and resizing for all items.
@@ -967,7 +976,7 @@ void KOAgenda::setStartHour(int startHour)
 /*
   Insert KOAgendaItem into agenda.
 */
-KOAgendaItem *KOAgenda::insertItem (Event *event,int X,int YTop,int YBottom)
+KOAgendaItem *KOAgenda::insertItem (Event *event,QDate qd,int X,int YTop,int YBottom)
 {
   kdDebug() << "KOAgenda::insertItem" << endl;
 
@@ -976,7 +985,7 @@ KOAgendaItem *KOAgenda::insertItem (Event *event,int X,int YTop,int YBottom)
     return 0;
   }
 
-  KOAgendaItem *agendaItem = new KOAgendaItem (event,viewport());
+  KOAgendaItem *agendaItem = new KOAgendaItem (event,qd,viewport());
   agendaItem->setFrameStyle(WinPanel|Raised);
 
   int YSize = YBottom - YTop + 1;
@@ -1007,14 +1016,14 @@ KOAgendaItem *KOAgenda::insertItem (Event *event,int X,int YTop,int YBottom)
 /*
   Insert all-day KOAgendaItem into agenda.
 */
-KOAgendaItem *KOAgenda::insertAllDayItem (Event *event,int XBegin,int XEnd)
+KOAgendaItem *KOAgenda::insertAllDayItem (Event *event,QDate qd,int XBegin,int XEnd)
 {
    if (!mAllDayMode) {
     kdDebug() << "KOAgenda: calling insertAllDayItem in non all-day mode is illegal." << endl;
     return 0;
   }
 
-  KOAgendaItem *agendaItem = new KOAgendaItem (event,viewport());
+  KOAgendaItem *agendaItem = new KOAgendaItem (event,qd,viewport());
   agendaItem->setFrameStyle(WinPanel|Raised);
 
   agendaItem->setCellXY(XBegin,0,0);
@@ -1034,7 +1043,7 @@ KOAgendaItem *KOAgenda::insertAllDayItem (Event *event,int XBegin,int XEnd)
 }
 
 
-void KOAgenda::insertMultiItem (Event *event,int XBegin,int XEnd,
+void KOAgenda::insertMultiItem (Event *event,QDate qd,int XBegin,int XEnd,
                                 int YTop,int YBottom)
 {
   if (mAllDayMode) {
@@ -1055,7 +1064,7 @@ void KOAgenda::insertMultiItem (Event *event,int XBegin,int XEnd,
     else cellYBottom = rows() - 1;
     newtext = QString("(%1/%2): ").arg(++count).arg(width);
     newtext.append(event->summary());
-    current = insertItem(event,cellX,cellYTop,cellYBottom);
+    current = insertItem(event,qd,cellX,cellYTop,cellYBottom);
     current->setText(newtext);
     multiItems.append(current);
   }

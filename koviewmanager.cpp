@@ -382,6 +382,16 @@ Incidence *KOViewManager::currentSelection()
   return mCurrentView->selectedIncidences().first();
 }
 
+QDate KOViewManager::currentSelectionDate()
+{
+  QDate qd;
+  if (mCurrentView) {
+    QValueList<QDate> qvl = mCurrentView->selectedIncidencesDates();
+    if (!qvl.isEmpty()) qd = qvl.first();
+  }
+  return qd;
+}
+
 void KOViewManager::addView(KOrg::BaseView *view)
 {
   mMainView->viewStack()->addWidget(view,1);

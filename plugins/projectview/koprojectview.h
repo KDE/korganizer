@@ -71,6 +71,7 @@ class KOProjectView : public KOrg::BaseView
     ~KOProjectView() {}
 
     QPtrList<Incidence> selectedIncidences();
+    QValueList<QDate> selectedIncidencesDates();
 
     /** Return number of shown dates. */
     int currentDateCount() { return 0; }

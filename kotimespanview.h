@@ -17,6 +17,9 @@ class KOTimeSpanView : public KOEventView
     virtual int maxDatesHint();
     virtual int currentDateCount();
     virtual QPtrList<Incidence> selectedIncidences();
+    QValueList<QDate> selectedIncidencesDates() 
+      {QValueList<QDate> q;
+       return q;}
 
     void readSettings();
     void readSettings( KConfig * );

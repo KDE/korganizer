@@ -36,7 +36,7 @@
 
 QToolTipGroup *KOAgendaItem::mToolTipGroup = 0;
 
-KOAgendaItem::KOAgendaItem(Event *event, QWidget *parent,
+KOAgendaItem::KOAgendaItem(Event *event, QDate qd, QWidget *parent,
                            const char *name,WFlags) :
   QFrame( parent, name )
 {
@@ -45,6 +45,7 @@ KOAgendaItem::KOAgendaItem(Event *event, QWidget *parent,
   mLastMultiItem = 0;
 
   mEvent = event;
+  mDate = qd;
 
   QStringList categories = mEvent->categories();
   QString cat = categories.first();

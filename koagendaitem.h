@@ -22,6 +22,7 @@
 
 #include <qframe.h>
 #include <qlabel.h>
+#include <qdatetime.h>
 
 #include <libkcal/event.h>
 
@@ -41,7 +42,7 @@ class KOAgendaItem : public QFrame
 {
     Q_OBJECT
   public:
-    KOAgendaItem(Event *event, QWidget *parent, const char *name=0,
+    KOAgendaItem(Event *event, QDate qd, QWidget *parent, const char *name=0,
                  WFlags f=0 );
 
     int cellX() { return mCellX; }
@@ -78,7 +79,8 @@ class KOAgendaItem : public QFrame
     KOAgendaItem *lastMultiItem() { return mLastMultiItem; }
 
     Event *itemEvent() { return mEvent; }
-
+    QDate itemDate() { return mDate; }
+    
     void setText ( const QString & text ) { mItemLabel->setText(text); }
     QString text () { return mItemLabel->text(); }
 
@@ -112,6 +114,7 @@ class KOAgendaItem : public QFrame
     KOAgendaItem *mLastMultiItem;
 
     Event *mEvent; // corresponding event
+    QDate mDate; //date this events occurs (for recurrence)
 
     QLabel *mItemLabel;
     QLabel *mIconAlarm,*mIconRecur,*mIconReadonly;

@@ -54,7 +54,9 @@ class KOWhatsNextView : public KOrg::BaseView
     virtual int maxDatesHint();
     virtual int currentDateCount();
     virtual QPtrList<Incidence> selectedIncidences();
-
+    QValueList<QDate> selectedIncidencesDates()
+      {QValueList<QDate> q;
+       return q;}    
     virtual void printPreview(CalPrinter *calPrinter,
                               const QDate &, const QDate &);
   

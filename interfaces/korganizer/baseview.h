@@ -25,6 +25,7 @@
 
 #include <qwidget.h>
 #include <qptrlist.h>
+#include <qvaluelist.h>
 
 #include <klocale.h>
 #include <kdebug.h>
@@ -82,6 +83,13 @@ class BaseView : public QWidget
     */
     virtual QPtrList<Incidence> selectedIncidences() = 0;
   
+    /**
+      @return a list of the dates of selected events.  Most views can probably only
+      select a single event at a time, but some may be able to select
+      more than one.
+    */
+    virtual QValueList<QDate> selectedIncidencesDates() = 0;
+    
     /**
       Generate a print preview of this event view.
       

@@ -112,6 +112,9 @@ class KOAgendaView : public KOEventView {
 
     /** returns the currently selected events */
     virtual QPtrList<Incidence> selectedIncidences();
+    
+    /** returns the currently selected events */
+    virtual QValueList<QDate> selectedIncidencesDates();
 
     /** Agenda view types. DAY is a one day view, WORKWEEK is a 5 day view of a
     week, excluding the weekend, WEEK is a 7 day view of a complete week and

@@ -110,12 +110,13 @@ void KNoScrollListBox::mousePressEvent(QMouseEvent *e)
 }
 
 
-MonthViewItem::MonthViewItem( Incidence *incidence, const QString & s)
+MonthViewItem::MonthViewItem( Incidence *incidence, QDate qd, const QString & s)
   : QListBoxItem()
 {
   setText( s );
 
   mIncidence = incidence;
+  mDate = qd;
 
   mAlarmPixmap = SmallIcon("bell");
   mRecurPixmap = SmallIcon("recur");
@@ -285,7 +286,7 @@ void MonthViewCell::updateCell()
   mItemList->clear();
 
   if ( !mHolidayString.isEmpty() ) {
-    MonthViewItem *item = new MonthViewItem( 0, mHolidayString );
+    MonthViewItem *item = new MonthViewItem( 0, mDate, mHolidayString );
     item->setPalette( mHolidayPalette );
     mItemList->insertItem( item );
   }
@@ -313,7 +314,7 @@ void MonthViewCell::updateCell()
       }
     }
 
-    MonthViewItem *item = new MonthViewItem( event, text );
+    MonthViewItem *item = new MonthViewItem( event, mDate, text );
     item->setPalette( mStandardPalette );
     item->setRecur( event->recurrence()->doesRecur() );
     item->setAlarm( event->isAlarmEnabled() );
@@ -344,7 +345,7 @@ void MonthViewCell::updateCell()
     }
     text += i18n("To-Do: ") + todo->summary();
 
-    MonthViewItem *item = new MonthViewItem( todo, text );
+    MonthViewItem *item = new MonthViewItem( todo, mDate, text );
     item->setPalette( mStandardPalette );
 
     mItemList->insertItem( item );
@@ -389,6 +390,20 @@ Incidence *MonthViewCell::selectedIncidence()
   if ( !item ) return 0;
   
   return item->incidence();
+}
+
+QDate MonthViewCell::selectedIncidenceDate()
+{
+  QDate qd;
+  int index = mItemList->currentItem();
+  if ( index < 0 ) return qd;
+  
+  MonthViewItem *item =
+      static_cast<MonthViewItem *>( mItemList->item( index ) );
+
+  if ( !item ) return qd;
+  
+  return item->incidenceDate();
 }
 
 void MonthViewCell::deselect()
@@ -511,6 +526,18 @@ QPtrList<Incidence> KOMonthView::selectedIncidences()
   if ( mSelectedCell ) {
     Incidence *incidence = mSelectedCell->selectedIncidence();
     if ( incidence ) selected.append( incidence );
+  }
+
+  return selected;
+}
+
+QValueList<QDate> KOMonthView::selectedIncidencesDates()
+{
+  QValueList<QDate> selected;
+
+  if ( mSelectedCell ) {
+    QDate qd = mSelectedCell->selectedIncidenceDate();
+    if ( qd.isValid() ) selected.append( qd );
   }
 
   return selected;

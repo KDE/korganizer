@@ -74,6 +74,7 @@ class KOViewManager : public QObject
     void addView(KOrg::BaseView *);
 
     Incidence *currentSelection();
+    QDate currentSelectionDate();
 
 //ET
         KOAgendaView    *mAgendaView;
