@@ -2,7 +2,7 @@
 Encoding=UTF-8
 X-KDE-Library=libkorg_listprint
 Name=List print style
-Comment=This plugin allows you to print out events and todos in list form.
+Comment=This plugin allows you to print out events and to-dos in list form.
 Type=Service
 ServiceTypes=Calendar/Plugin,KOrganizer/PrintPlugin
 X-KDE-KOrganizer-HasSettings=false

@@ -2,7 +2,7 @@
 Encoding=UTF-8
 X-KDE-Library=libkorg_whatsnextprint
 Name=What's Next print style
-Comment=This plugin allows you to print out a list of all upcoming events and todos.
+Comment=This plugin allows you to print out a list of all upcoming events and to-dos.
 Type=Service
 ServiceTypes=Calendar/Plugin,KOrganizer/PrintPlugin
 X-KDE-KOrganizer-HasSettings=false
