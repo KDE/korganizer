@@ -132,6 +132,15 @@ class KOAgendaView : public KOEventView {
 
     virtual void printPreview(CalPrinter *calPrinter,
                               const QDate &, const QDate &);
+                              
+    /** start-datetime of selection */                          
+    QDateTime selectionStart() {return mTimeSpanBegin;}
+    /** end-datetime of selection */                          
+    QDateTime selectionEnd() {return mTimeSpanEnd;}
+    /** returns true if selection is for whole day */
+    bool selectedIsAllDay() {return mTimeSpanInAllDay;}
+    /** make selected start/end invalid */
+    void deleteSelectedDateTime();
 
   public slots:
     virtual void updateView();
@@ -208,6 +217,11 @@ class KOAgendaView : public KOEventView {
 
     void updateEventIndicatorTop(int newY);
     void updateEventIndicatorBottom(int newY);
+    
+    /** Updates data for selected timespan */    
+    void newTimeSpanSelected(int gxStart, int gyStart, int gxEnd, int gyEnd);
+    /** Updates data for selected timespan for all day event*/    
+    void newTimeSpanSelectedAllDay(int gxStart, int gyStart, int gxEnd, int gyEnd);
 
   private:
     // view widgets
@@ -241,6 +255,10 @@ class KOAgendaView : public KOEventView {
     
     QPixmap mExpandedPixmap;
     QPixmap mNotExpandedPixmap;
+    
+    QDateTime mTimeSpanBegin;
+    QDateTime mTimeSpanEnd;
+    bool mTimeSpanInAllDay;
 };
 
 #endif  // KOAGENDAVIEW_H

@@ -368,6 +368,13 @@ KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name) :
                         SLOT(newEventAllDay(int,int)));
   connect(mAllDayAgenda,SIGNAL(newEventSignal(int,int,int,int)),
                         SLOT(newEventAllDay(int,int)));
+  connect(mAgenda,SIGNAL(newTimeSpanSignal(int,int,int,int)),
+                        SLOT(newTimeSpanSelected(int,int,int,int)));
+  connect(mAllDayAgenda,SIGNAL(newTimeSpanSignal(int,int,int,int)),
+                        SLOT(newTimeSpanSelectedAllDay(int,int,int,int)));
+  connect(mAgenda,SIGNAL(newStartSelectSignal()),SLOT(updateView()));
+  connect(mAllDayAgenda,SIGNAL(newStartSelectSignal()),SLOT(updateView()));
+  
   connect(mAgenda,SIGNAL(editEventSignal(Event *)),
                   SIGNAL(editEventSignal(Event *)));
   connect(mAllDayAgenda,SIGNAL(editEventSignal(Event *)),
@@ -888,6 +895,9 @@ void KOAgendaView::fillAgenda()
 //  mAgenda->viewport()->update();
 //  mAllDayAgenda->viewport()->update();
 
+// make invalid
+  deleteSelectedDateTime();
+  
   emit incidenceSelected( 0 );
 
 //  kdDebug() << "Fill Agenda done" << endl;
@@ -1074,4 +1084,36 @@ void KOAgendaView::clearSelection()
 {
   mAgenda->deselectItem();
   mAllDayAgenda->deselectItem();
+}
+
+void KOAgendaView::newTimeSpanSelectedAllDay(int gxStart, int gyStart,
+                                       int gxEnd, int gyEnd)
+{
+  mTimeSpanInAllDay = true;
+  newTimeSpanSelected(gxStart,gyStart,gxEnd,gyEnd);
+}
+
+void KOAgendaView::newTimeSpanSelected(int gxStart, int gyStart,
+                                       int gxEnd, int gyEnd)
+{
+  if (!mSelectedDates.count()) return;
+  
+  QDate dayStart = mSelectedDates[gxStart];
+  QDate dayEnd = mSelectedDates[gxEnd];
+
+  QTime timeStart = mAgenda->gyToTime(gyStart);
+  QTime timeEnd = mAgenda->gyToTime( gyEnd + 1 );
+
+  QDateTime dtStart(dayStart,timeStart);
+  QDateTime dtEnd(dayEnd,timeEnd);
+
+  mTimeSpanBegin = dtStart;
+  mTimeSpanEnd = dtEnd;
+}
+                                   
+void KOAgendaView::deleteSelectedDateTime()
+{
+  mTimeSpanBegin.setDate(QDate::QDate());
+  mTimeSpanEnd.setDate(QDate::QDate());
+  mTimeSpanInAllDay = false;
 }

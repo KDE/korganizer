@@ -424,6 +424,8 @@ bool KOAgenda::eventFilter_mouse(QObject *object, QMouseEvent *me)
 
 void KOAgenda::startSelectAction(QPoint viewportPos)
 {
+  emit newStartSelectSignal();
+
   mActionType = SELECT;
 
   int x,y;
@@ -511,7 +513,7 @@ void KOAgenda::endSelectAction()
   mScrollUpTimer.stop();
   mScrollDownTimer.stop();
 
-  emit newEventSignal(mStartCellX,mStartCellY,mCurrentCellX,mCurrentCellY);
+  emit newTimeSpanSignal(mStartCellX,mStartCellY,mCurrentCellX,mCurrentCellY);
 }
 
 void KOAgenda::startItemAction(QPoint viewportPos)

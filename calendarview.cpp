@@ -716,6 +716,17 @@ void CalendarView::newSubTodo(Todo *parentEvent)
 
 void CalendarView::appointment_new()
 {
+  KOAgendaView *aView = mViewManager->mAgendaView;
+  if (aView) {
+    if (aView->selectionStart().isValid()) {
+      if (aView->selectedIsAllDay()) {
+        newEvent(aView->selectionStart(),aView->selectionEnd(),true);
+      } else {
+        newEvent(aView->selectionStart(),aView->selectionEnd());
+      }
+      return;
+    }
+  }
   DateList tmpList = mDateNavigator->selectedDates();
   QDate from = tmpList.first();
   QDate to = tmpList.last();

@@ -132,6 +132,8 @@ class KOAgenda : public QScrollView
     void newEventSignal();
     void newEventSignal(int gx,int gy);
     void newEventSignal(int gxStart, int gyStart, int gxEnd, int gyEnd);
+    void newTimeSpanSignal(int gxStart, int gyStart, int gxEnd, int gyEnd);
+    void newStartSelectSignal();
     void editEventSignal(Event *event);
     void showEventSignal(Event *event);
     void deleteEventSignal(Event *event);
