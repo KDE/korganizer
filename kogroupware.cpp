@@ -13,7 +13,7 @@
 
   This program is distributed in the hope that it will be useful,
   but WITHOUT ANY WARRANTY; without even the implied warranty of
-  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.        See the
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
   GNU General Public License for more details.
 
   You should have received a copy of the GNU General Public License
@@ -160,8 +160,34 @@ bool KOGroupware::incomingEventRequest( const QString& request,
     else if( dlg.isAccepted() )
       state = Accepted;
     else
-      kdDebug(5850) << "KOGroupware::incomingEventRequest(): unknown event request state" << endl;
+      kdDebug(5850) << "KOGroupware::incomingEventRequest(): unknown "
+					<< "event request state" << endl;
   }
+
+  // If the event has an alarm, make sure it doesn't have a negative time.
+  // This is yet another OL workaround
+#if 0
+  // PENDING(bo): Disabled for now, until I figure out how the old offset
+  // matches the two new offsets
+  Alarm::List alarms = event->alarms();
+  Alarm::List::ConstIterator it;
+  for ( it = alarms.begin(); it != alarms.end(); ++it) {
+    if ( (*it)->hasTime() ) {
+      QDateTime t = (*it)->time();
+      int offset = event->dtStart().secsTo( t );
+      if( offset > 0 )
+       // PENDING(Bo): Not implemented yet
+       kdDebug(5850) << "Warning: Alarm fires after the event\n";
+    } else {
+      int offset = (*it)->offset().asSeconds();
+      if( offset > 0 ) {
+       // This number should be negative so the alarm fires before the event
+       Duration d( -offset );
+       (*it)->setOffset( d );
+      }
+    }
+  }
+#endif
 
   // Enter the event into the calendar. We just create a
   // Scheduler, because all the code we need is already there. We
@@ -241,14 +267,35 @@ bool KOGroupware::incomingEventRequest( const QString& request,
   Incidence* newIncidence = event->clone();
   Event* newEvent = static_cast<KCal::Event*>( newIncidence );
 
-  newEvent->clearAttendees();
+#if 0
+  // OL compatibility thing. To be ported.
+  // The problem is that OL is braindead when it comes to receiving
+  // events that mention alarms. So strip them before sending to OL
+  // people
+  bool stripAlarms = false;
+  emit getStripAlarmsForSending( stripAlarms );
+  if( stripAlarms )
+    // Strip alarms from the send
+    newEvent->clearAlarms();
+#endif
 
+  newEvent->clearAttendees();
   if( newMyself )
     newEvent->addAttendee( newMyself );
 
   // Create the outgoing vCal
   QString messageText = mFormat.createScheduleMessage( newEvent,
                                                        KCal::Scheduler::Reply );
+
+  // Fix broken OL appointments
+  if( vCalIn.contains( "PRODID:-//Microsoft" ) ) {
+    // OL doesn't send the organizer as an attendee as it should
+    Attendee* organizer = new KCal::Attendee( i18n("Organizer"),
+                                             event->organizer(), false,
+                                             KCal::Attendee::Accepted );
+    event->addAttendee( organizer );
+  }
+
   kdDebug(5850) << "Done" << endl;
   return true;
 }
@@ -268,83 +315,79 @@ void KOGroupware::incomingResourceRequest( const QValueList<QPair<QDateTime, QDa
                                            QDateTime& start,
                                            QDateTime& end )
 {
-    // Parse the event request into a ScheduleMessage; this needs to
-    // be done in any case.
-    KCal::ScheduleMessage *message = mFormat.parseScheduleMessage( mCalendar,
-                                                                   vCalIn );
-    if( message ) {
-        kdDebug(5850) << "+++KOGroupware::incomingResourceRequest: got message '"
-                  << vCalIn << "'" << endl;
-        vCalInOK = true;
-    } else {
-        QString errorMessage;
-        if( mFormat.exception() ) {
-            errorMessage = mFormat.exception()->message();
-        }
-        kdDebug(5850) << "+++KOGroupware::incomingResourceRequest() Error parsing "
-            "message: " << errorMessage << endl;
-        vCalInOK = false;
-        // If the message was broken, there's nothing we can do.
-        return;
+  // Parse the event request into a ScheduleMessage; this needs to
+  // be done in any case.
+  KCal::ScheduleMessage *message = mFormat.parseScheduleMessage( mCalendar,
+								 vCalIn );
+  if( message )
+    vCalInOK = true;
+  else {
+    QString errorMessage;
+    if( mFormat.exception() ) {
+      errorMessage = mFormat.exception()->message();
     }
-
-    KCal::Event* event = dynamic_cast<KCal::Event*>( message->event() );
-    Q_ASSERT( event );
-    if( !event ) {
-        // Something has gone badly wrong
-        vCalInOK = false;
-        return;
-    }
-
-    // Now find out whether the resource is free at the requested
-    // time, take the opportunity to assign the reference parameters.
-    start = event->dtStart();
-    end = event->dtEnd();
-    isFree = true;
-    for( QValueList<QPair<QDateTime, QDateTime> >::ConstIterator it = busy.begin();
-         it != busy.end(); ++it ) {
-        if( (*it).second <= start || // busy period ends before try
-                                       // period
-            (*it).first >= end )  // busy period starts after try
-                                     // period
-            continue;
-        else {
-            isFree = false;
-            break; // no need to search further
-        }
-    }
-
-    // Send back the answer; construct it on the base of state
-    KCal::Attendee::List attendees = event->attendees();
-    KCal::Attendee* resourceAtt = 0;
-
-    // Find the resource addresse, there will always be all attendees
-    // listed, even if only one needs to answer it.
-    KCal::Attendee::List::ConstIterator it;
-    for( it = attendees.begin(); it != attendees.end(); ++it ) {
-        if( (*it)->email().utf8() == resource ) {
-            resourceAtt = *it;
-            break;
-        }
-    }
-    Q_ASSERT( resourceAtt );
-    if( resourceAtt ) {
-        if( isFree )
-            resourceAtt->setStatus( KCal::Attendee::Accepted );
-        else
-            resourceAtt->setStatus( KCal::Attendee::Declined );
-    } else {
-        vCalOutOK = false;
-        return;
-    }
-
-    // Create the outgoing vCal
-    QString messageText = mFormat.createScheduleMessage( event,
-                                                         KCal::Scheduler::Reply );
-    kdDebug(5850) << "+++Sending vCal back to KMail: " << messageText << endl;
-    vCalOut = messageText;
-    vCalOutOK = true;
+    kdDebug(5850) << "KOGroupware::incomingResourceRequest() Error parsing "
+      "message: " << errorMessage << endl;
+    vCalInOK = false;
+    // If the message was broken, there's nothing we can do.
     return;
+  }
+
+  KCal::Event* event = dynamic_cast<KCal::Event*>( message->event() );
+  Q_ASSERT( event );
+  if( !event ) {
+    // Something has gone badly wrong
+    vCalInOK = false;
+    return;
+  }
+
+  // Now find out whether the resource is free at the requested
+  // time, take the opportunity to assign the reference parameters.
+  start = event->dtStart();
+  end = event->dtEnd();
+  isFree = true;
+  for( QValueList<QPair<QDateTime, QDateTime> >::ConstIterator it = busy.begin();
+       it != busy.end(); ++it ) {
+    if( (*it).second <= start || // busy period ends before try period
+	(*it).first >= end )  // busy period starts after try period
+      continue;
+    else {
+      isFree = false;
+      break; // no need to search further
+    }
+  }
+
+  // Send back the answer; construct it on the base of state
+  KCal::Attendee::List attendees = event->attendees();
+  KCal::Attendee* resourceAtt = 0;
+
+  // Find the resource addresse, there will always be all attendees
+  // listed, even if only one needs to answer it.
+  KCal::Attendee::List::ConstIterator it;
+  for( it = attendees.begin(); it != attendees.end(); ++it ) {
+    if( (*it)->email().utf8() == resource ) {
+      resourceAtt = *it;
+      break;
+    }
+  }
+  Q_ASSERT( resourceAtt );
+  if( resourceAtt ) {
+    if( isFree )
+      resourceAtt->setStatus( KCal::Attendee::Accepted );
+    else
+      resourceAtt->setStatus( KCal::Attendee::Declined );
+  } else {
+    vCalOutOK = false;
+    return;
+  }
+
+  // Create the outgoing vCal
+  QString messageText = mFormat.createScheduleMessage( event,
+						       KCal::Scheduler::Reply );
+  // kdDebug(5850) << "Sending vCal back to KMail: " << messageText << endl;
+  vCalOut = messageText;
+  vCalOutOK = true;
+  return;
 }
 
 
@@ -357,8 +400,9 @@ void KOGroupware::incomingResourceRequest( const QValueList<QPair<QDateTime, QDa
   to "false" to signal this to KMail.
 */
 
-bool KOGroupware::incidenceAnswer( const QCString& /*sender*/, const QString& vCalIn,
-                                   QString& vCalOut )
+bool KOGroupware::incidenceAnswer( const QCString& /*sender*/,
+				   const QString& vCalIn,
+				   QString& vCalOut )
 {
   vCalOut = "";
 
@@ -368,7 +412,7 @@ bool KOGroupware::incidenceAnswer( const QCString& /*sender*/, const QString& vC
   if( !message ) {
     // a parse error of some sort
     KMessageBox::error( mView, i18n("<b>There was a problem parsing the iCal data:</b><br>%1")
-                        .arg(mFormat.exception()->message()) );
+			.arg(mFormat.exception()->message()) );
     vCalOut = "false";
     return false;
   }
@@ -381,15 +425,14 @@ bool KOGroupware::incidenceAnswer( const QCString& /*sender*/, const QString& vC
   // really only want code from Scheduler.
   QString uid = incidence->uid();
   KCal::MailScheduler scheduler( mCalendar );
-#if 0
   // TODO: Make this work
-  if( !scheduler.acceptTransaction( incidence, (KCal::Scheduler::Method)message->method(),
-                                    message->status(), sender ) ) {
+  if( !scheduler.acceptTransaction( incidence,
+				    (KCal::Scheduler::Method)message->method(),
+				    message->status()/*, sender*/ ) ) {
     KMessageBox::error( mView, i18n("Scheduling failed") );
     vCalOut = "false";
     return false;
   }
-#endif
 
   mView->updateView();
 
@@ -605,8 +648,8 @@ KCal::FreeBusy* KOGroupware::parseFreeBusy( const QCString& data )
  * Return false means revert the changes
  */
 bool KOGroupware::sendICalMessage( QWidget* parent,
-                                   KCal::Scheduler::Method method,
-                                   Incidence* incidence, bool isDeleting )
+				   KCal::Scheduler::Method method,
+				   Incidence* incidence, bool isDeleting )
 {
   bool isOrganizer = KOPrefs::instance()->email() == incidence->organizer();
 
@@ -633,7 +676,7 @@ bool KOGroupware::sendICalMessage( QWidget* parent,
     else if( incidence->type() == "Journal" ) type = i18n("journal entry");
     else type = incidence->type();
     QString txt = i18n("This %1 includes other people. "
-                       "Should email be sent out to the attendees?").arg(type);
+		       "Should email be sent out to the attendees?").arg(type);
     rc = KMessageBox::questionYesNoCancel( parent, txt, i18n("Group scheduling email") );
   } else if( incidence->type() == "Todo" ) {
     if( method == Scheduler::Request )
