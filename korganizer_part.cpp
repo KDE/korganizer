@@ -114,8 +114,6 @@ KOrganizerPart::KOrganizerPart( QWidget *parentWidget, const char *widgetName,
   connect( this, SIGNAL( textChanged( const QString & ) ),
            ie, SIGNAL( textChanged( const QString & ) ) );
 
-  mView->show();
-
   mActionManager->init();
   mActionManager->readSettings();
 
