@@ -172,7 +172,9 @@ void KODayMatrix::addSelectedDaysTo(DateList& selDays)
 
 void KODayMatrix::setSelectedDaysFrom(const QDate& start, const QDate& end)
 {
-  //kdDebug() << "startdate = " << startdate.day() << endl;
+  kdDebug() << "KODayMatrix::setSelectedDaysFrom(): " << startdate.day()
+            << endl;
+  
   mSelStart = startdate.daysTo(start);
   mSelEnd = startdate.daysTo(end);
 }
@@ -202,6 +204,8 @@ void KODayMatrix::recalculateToday()
 
 void KODayMatrix::updateView(QDate actdate)
 {
+  kdDebug() << "KODayMatrix::updateView() " << actdate.toString() << endl;
+
   //flag to indicate if the starting day of the matrix has changed by this call
   bool daychanged = false;
 

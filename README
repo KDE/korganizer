@@ -10,6 +10,17 @@
 
 QUICK NOTES ON WHAT'S NEW IN THIS RELEASE:
 
+* Official 3.0.3 release (August 2002)
+
+  - Fixed problem caused by Qt 3.0.5 that made context menus in todo and list
+    view inaccessible.
+
+* Official 3.0.2 release (June 2002)
+
+  - Bug fixes
+    - Respect secrecy setting in HTML export also in non-english languages.
+    - Insert page breaks in todo printouts when necessary.
+
 * Official 3.0.1 release (May 2002)
 
   - Lots of bug fixes including fixes to two major bugs:
