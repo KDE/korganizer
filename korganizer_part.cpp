@@ -81,10 +81,12 @@ KOrganizerPart::KOrganizerPart( QWidget *parentWidget, const char *widgetName,
 
   mActionManager = new ActionManager( this, mView, this, this, true );
 
-  if ( pname!="kontact" ) {
-    mActionManager->createCalendarLocal();
-  } else {
+  if ( pname == "kontact" ) {
     mActionManager->createCalendarResources();
+    setHasDocument( false );
+  } else {
+    mActionManager->createCalendarLocal();
+    setHasDocument( true );
   }
 
   mBrowserExtension = new KOrganizerBrowserExtension( this );
