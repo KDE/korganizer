@@ -66,7 +66,7 @@ void AlarmListViewItem::construct()
   
     // Alarm offset:
     QString startend;
-    int offset;
+    int offset = 0;
     if ( mAlarm->hasStartOffset() ) {
       offset = mAlarm->startOffset().asSeconds();
       setText( 2, i18n( "start" ) );
