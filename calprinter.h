@@ -11,9 +11,9 @@
 
 #include <unistd.h>
 
-#include <qprinter.h>
-#include <qprintdialog.h>
+#include <kprinter.h>
 #include <qfile.h>
+#include <qdialog.h>
 
 #include <kprocess.h>
 
@@ -66,7 +66,7 @@ protected:
   void drawDaysOfWeek(QPainter &p, const QDate &qd, int width, int height);
 
   KProcess    *previewProc;
-  QPrinter    *printer;
+  KPrinter    *printer;
   QString      previewProg, previewFileName;
   CalObject   *calendar;
   QWidget     *parent;
@@ -82,7 +82,7 @@ class CalPrintDialog : public QDialog
   Q_OBJECT
 
 public:
-  CalPrintDialog(QPrinter *p, bool preview, const QDate &fd, 
+  CalPrintDialog(KPrinter *p, bool preview, const QDate &fd, 
 		 const QDate &td, QWidget *parent=0, const char *name=0);
   virtual ~CalPrintDialog();
 
@@ -105,7 +105,7 @@ signals:
 
 protected:
   QButtonGroup *typeGroup;
-  QPrinter *printer;
+  KPrinter *printer;
   KDateEdit *fromDated, *toDated;
   CalPrinter::PrintType pt;
 };

@@ -11,7 +11,7 @@ bin_PROGRAMS = 	korganizer alarmd
 lib_LTLIBRARIES = libkorganizer.la
 
 libkorganizer_la_LDFLAGS = $(all_libraries) $(KDE_RPATH)
-libkorganizer_la_LIBADD  = -lkparts \
+libkorganizer_la_LIBADD  = $(LIB_KPARTS) -lkdeprint \
                            versit/libversit.la $(LIB_KFILE) -lkab \
                            $(top_builddir)/libical/src/libical/libical.la \
                            $(top_builddir)/libical/src/libicalss/libicalss.la \

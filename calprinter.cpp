@@ -31,12 +31,12 @@ CalPrinter::CalPrinter(QWidget *par, CalObject *cal)
 {
   calendar = cal;
   parent = par;
-  printer = new QPrinter;
+  printer = new KPrinter;
   cpd = 0L;
   previewProc = new KProcess;
   connect(previewProc, SIGNAL(processExited(KProcess *)), 
 	  SLOT(previewCleanup()));
-  printer->setOrientation(QPrinter::Landscape);
+  printer->setOrientation(KPrinter::Landscape);
 
   updateConfig();
 }
@@ -174,20 +174,20 @@ void CalPrinter::updateConfig()
   int val;
   val = KOPrefs::instance()->mPaperSize;
   switch(val) {
-  case 0: printer->setPageSize(QPrinter::A4); break;
-  case 1: printer->setPageSize(QPrinter::B5); break;
-  case 2: printer->setPageSize(QPrinter::Letter); break;
-  case 3: printer->setPageSize(QPrinter::Legal); break;
-  case 4: printer->setPageSize(QPrinter::Executive); break;
+  case 0: printer->setPageSize(KPrinter::A4); break;
+  case 1: printer->setPageSize(KPrinter::B5); break;
+  case 2: printer->setPageSize(KPrinter::Letter); break;
+  case 3: printer->setPageSize(KPrinter::Legal); break;
+  case 4: printer->setPageSize(KPrinter::Executive); break;
   }
  
   // paper orientation
   // ignored for now.
   /*  val = config->readNumEntry("Paper Orientation", 1);
   if (val == 0)
-    printer->setOrientation(QPrinter::Portrait);
+    printer->setOrientation(KPrinter::Portrait);
   else 
-    printer->setOrientation(QPrinter::Landscape);
+    printer->setOrientation(KPrinter::Landscape);
   */
 
   startHour = KOPrefs::instance()->mDayBegins;
@@ -198,7 +198,7 @@ void CalPrinter::printDay(const QDate &fd, const QDate &td)
   QPainter p;
   QDate curDay, fromDay, toDay;
 
-  printer->setOrientation(QPrinter::Portrait);
+  printer->setOrientation(KPrinter::Portrait);
 
   fromDay = fd;
   curDay = fd;
@@ -233,7 +233,7 @@ void CalPrinter::printWeek(const QDate &fd, const QDate &td)
   QPainter p;
   QDate curWeek, fromWeek, toWeek;
 
-  printer->setOrientation(QPrinter::Portrait);
+  printer->setOrientation(KPrinter::Portrait);
 
   if (KGlobal::locale()->weekStartsMonday()) {
     // correct to monday
@@ -278,7 +278,7 @@ void CalPrinter::printMonth(const QDate &fd, const QDate &td)
   QPainter p;
   QDate curMonth, fromMonth, toMonth;
 
-  printer->setOrientation(QPrinter::Landscape);
+  printer->setOrientation(KPrinter::Landscape);
 
   fromMonth = fd.addDays(-(fd.day()-1));
   toMonth = td.addDays(td.daysInMonth()-td.day());
@@ -315,7 +315,7 @@ void CalPrinter::printTodo(const QDate &fd, const QDate &td)
   KLocale *local = KGlobal::locale();
   QPainter p;
 
-  printer->setOrientation(QPrinter::Portrait);
+  printer->setOrientation(KPrinter::Portrait);
 
   p.begin(printer);
   pageWidth = p.viewport().width();
@@ -746,7 +746,7 @@ void CalPrinter::drawSmallMonth(QPainter &p, const QDate &qd,
 
 /****************************************************************************/
 
-CalPrintDialog::CalPrintDialog(QPrinter *p, bool preview, const QDate &fd, 
+CalPrintDialog::CalPrintDialog(KPrinter *p, bool preview, const QDate &fd, 
 			       const QDate &td, QWidget *parent, 
 			       const char *name)
   : QDialog(parent, name, FALSE)
