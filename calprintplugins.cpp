@@ -432,7 +432,6 @@ void CalPrintMonth::print( QPainter &p, int width, int height )
 
   curMonth = fromMonth;
   do {
-    KLocale *local = KGlobal::locale();
     QString title( i18n("monthname year", "%1 %2") );
     title = title.arg( KOGlobals::self()->calendarSystem()->monthName( curMonth ) )
                  .arg( curMonth.year() );
