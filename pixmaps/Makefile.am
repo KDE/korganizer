@@ -10,7 +10,7 @@ pics_DATA = smallcal.xpm 1downarrow.xpm 1leftarrow.xpm 1rightarrow.xpm \
 
 toolbar_DATA = listicon.xpm 5dayicon.xpm  dayicon.xpm agenda.xpm \
 	weekicon.xpm todayicon.xpm newevent.xpm newrecurevent.xpm \
-	delete.xpm monthicon.xpm search.xpm
+	delete.xpm monthicon.xpm search.xpm checkedclipboard.xpm
 
 EXTRA_DIST = dayview.xpm   inverse_recur.xpm korganizer.xpm \
 	mini-korganizer.xpm 

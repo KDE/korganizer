@@ -1,5 +1,5 @@
 /* XPM */
-static char * viewzoom_xpm[] = {
+static char * search_xpm[] = {
 "22 22 6 1",
 " 	c None",
 ".	c #000000000000",
