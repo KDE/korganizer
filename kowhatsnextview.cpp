@@ -36,9 +36,6 @@
 
 #include <libkcal/calendar.h>
 
-#ifndef KORG_NOPRINTER
-#include "calprinter.h"
-#endif
 #include "koglobals.h"
 #include "koprefs.h"
 #include "koeventviewerdialog.h"
@@ -100,14 +97,6 @@ Incidence::List KOWhatsNextView::selectedIncidences()
   return eventList;
 }
 
-
-void KOWhatsNextView::printPreview(CalPrinter *calPrinter, const QDate &fd,
-                               const QDate &td)
-{
-#ifndef KORG_NOPRINTER
-  calPrinter->preview(CalPrinter::Day, fd, td);
-#endif
-}
 
 void KOWhatsNextView::updateView()
 {

@@ -1293,20 +1293,6 @@ void CalendarView::print()
 #endif
 }
 
-void CalendarView::printPreview()
-{
-#ifndef KORG_NOPRINTER
-  kdDebug(5850) << "CalendarView::printPreview()" << endl;
-
-  createPrinter();
-
-  DateList tmpDateList = mNavigator->selectedDates();
-
-  mViewManager->currentView()->printPreview( mCalPrinter, tmpDateList.first(),
-                                             tmpDateList.last() );
-#endif
-}
-
 void CalendarView::exportWeb()
 {
   ExportWebDialog *dlg = new ExportWebDialog( calendar(), this );

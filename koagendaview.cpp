@@ -1265,17 +1265,6 @@ void KOAgendaView::clearView()
   mAgenda->clear();
 }
 
-void KOAgendaView::printPreview(CalPrinter *calPrinter, const QDate &fd,
-                               const QDate &td)
-{
-#ifndef KORG_NOPRINTER
-  if (fd == td)
-    calPrinter->preview(CalPrinter::Day, fd, td);
-  else
-    calPrinter->preview(CalPrinter::Week, fd, td);
-#endif
-}
-
 CalPrinter::PrintType KOAgendaView::printType()
 {
   if ( currentDateCount() == 1 ) return CalPrinter::Day;

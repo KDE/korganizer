@@ -413,7 +413,7 @@ void DownloadDialog::slotInstalled(KIO::Job *job)
   {
     install(m_entry);
 
-    KMessageBox::information(this, i18n("Installation successful."), i18n("Installation"));
+    KMessageBox::information(this, i18n("Installation successful."), i18n("Installation"), "NewStuffDownloadSuccessful" );
   }
   else KMessageBox::error(this, i18n("Installation failed."), i18n("Installation"));
 

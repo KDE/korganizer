@@ -31,7 +31,6 @@
 #include "korganizer.h"
 
 #include "komailclient.h"
-#include "calprinter.h"
 #include "calendarview.h"
 #include "koviewmanager.h"
 #include "kodialogmanager.h"

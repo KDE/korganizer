@@ -94,9 +94,6 @@ class KOListView : public KOEventView
 
     void showDates(bool show);
 
-    virtual void printPreview(CalPrinter *calPrinter,
-                              const QDate &, const QDate &);
-
     void readSettings(KConfig *config);
     void writeSettings(KConfig *config);
 

@@ -35,9 +35,6 @@
 #include <libkcal/calendar.h>
 #include <libkcal/incidenceformatter.h>
 
-#ifndef KORG_NOPRINTER
-#include "calprinter.h"
-#endif
 #include "koglobals.h"
 #include "koprefs.h"
 #include "koincidencetooltip.h"
@@ -280,14 +277,6 @@ void KOListView::showDates(bool show)
     mListView->setColumnWidth(3, oldColWidth3);
   }
   mListView->repaint();
-}
-
-void KOListView::printPreview(CalPrinter *calPrinter, const QDate &fd,
-                               const QDate &td)
-{
-#ifndef KORG_NOPRINTER
-  calPrinter->preview(CalPrinter::Day, fd, td);
-#endif
 }
 
 void KOListView::showDates()

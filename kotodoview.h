@@ -128,9 +128,6 @@ class KOTodoView : public KOrg::BaseView
     /** Return number of shown dates. TodoView does not show dates, */
     int currentDateCount() { return 0; }
 
-    void printPreview( CalPrinter *calPrinter, const QDate &fd,
-                       const QDate &td );
-
     CalPrinter::PrintType printType();
 
     void setDocumentId( const QString & );

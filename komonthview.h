@@ -216,9 +216,6 @@ class KOMonthView: public KOEventView
 
     virtual bool eventDurationHint(QDateTime &startDt, QDateTime &endDt, bool &allDay);
 
-    virtual void printPreview(CalPrinter *calPrinter,
-                              const QDate &, const QDate &);
-
   public slots:
     virtual void updateView();
     virtual void updateConfig();

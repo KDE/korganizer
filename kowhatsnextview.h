@@ -59,8 +59,6 @@ class KOWhatsNextView : public KOrg::BaseView
     virtual int currentDateCount();
     virtual Incidence::List selectedIncidences();
     DateList selectedDates() { return DateList(); }
-    virtual void printPreview(CalPrinter *calPrinter,
-                              const QDate &, const QDate &);
 
   public slots:
     virtual void updateView();

@@ -291,31 +291,15 @@ void ActionManager::initActions()
   new KAction(i18n("&vCalendar..."), 0,
                     mCalendarView, SLOT(exportVCalendar()),
                     mACollection, "export_vcalendar");
-  new KAction( i18n("Export &Web Page..."), 0, 
+  new KAction( i18n("Export &Web Page..."), "webexport", 0, 
                     mCalendarView, SLOT(exportWeb()),
                     mACollection, "export_web");
-
-// This is now done by KPrinter::setup().
-#if 0
-  (void)new KAction(i18n("Print Setup..."), 0,
-                    mCalendarView, SLOT(printSetup()),
-                    mACollection, "print_setup");
-#endif
 
   if (mIsPart) {
     KStdAction::print(mCalendarView, SLOT(print()), mACollection, "korganizer_print" );
   } else {
     KStdAction::print(mCalendarView, SLOT(print()), mACollection);
   }
-
-#if 1
-  if (mIsPart) {
-    KStdAction::printPreview(mCalendarView, SLOT(printPreview()), mACollection, "korganizer_quickprint" );
-  } else {
-    KStdAction::printPreview(mCalendarView, SLOT(printPreview()),
-                             mACollection);
-  }
-#endif
 
   new KAction( i18n("delete completed To-Dos","Pur&ge Completed"), 0,
                mCalendarView, SLOT( purgeCompleted() ), mACollection,

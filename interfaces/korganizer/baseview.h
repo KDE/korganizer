@@ -99,35 +99,6 @@ class BaseView : public QWidget
     */
     virtual DateList selectedDates() = 0;
 
-    /**
-      Generate a print preview of this event view.
-
-      @param calPrinter Calendar printer object used for printing
-      @param fd from date
-      @param td to date
-    */
-/*
-  The date parameters should be determined by the view itself and not given as
-  parameters. At the moment I just move the code from the topwidget to the
-  individual views.
-*/
-    virtual void printPreview( CalPrinter *, const QDate &, const QDate & )
-    {
-      KMessageBox::sorry(this, i18n("Unfortunately, we don't handle printing for\n"
-                                    "that view yet.\n"));
-    }
-
-    /**
-      Print this view.
-
-      @param calPrinter Calendar printer object used for printing
-    */
-    virtual void print( CalPrinter * )
-    {
-      KMessageBox::sorry(this, i18n("Unfortunately, we don't handle printing for\n"
-                                    "that view yet.\n"));
-    }
-
     virtual CalPrinterBase::PrintType printType()
     {
       return CalPrinterBase::Month;

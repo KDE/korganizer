@@ -47,9 +47,6 @@
 #include <libkcal/calfilter.h>
 #include <libkcal/incidenceformatter.h>
 
-#ifndef KORG_NOPRINTER
-#include "calprinter.h"
-#endif
 #include "koprefs.h"
 #ifndef KORG_NOPLUGINS
 #include "kocore.h"
@@ -744,14 +741,6 @@ bool KOMonthView::eventDurationHint( QDateTime &startDt, QDateTime &endDt, bool 
     return true;
   }
   return false;
-}
-
-void KOMonthView::printPreview( CalPrinter *calPrinter, const QDate &fd,
-                                const QDate &td )
-{
-#ifndef KORG_NOPRINTER
-  calPrinter->preview( CalPrinter::Month, fd, td );
-#endif
 }
 
 void KOMonthView::updateConfig()

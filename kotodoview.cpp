@@ -713,14 +713,6 @@ void KOTodoView::showIncidences( const Incidence::List & )
   kdDebug(5850) << "KOTodoView::showIncidences( const Incidence::List & ): not yet implemented" << endl;
 }
 
-void KOTodoView::printPreview(CalPrinter *calPrinter, const QDate &fd,
-                              const QDate &td)
-{
-#ifndef KORG_NOPRINTER
-  calPrinter->preview(CalPrinter::Todolist, fd, td);
-#endif
-}
-
 CalPrinter::PrintType KOTodoView::printType()
 {
   return CalPrinter::Todolist;
