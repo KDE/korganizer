@@ -122,7 +122,14 @@ void ExportWebDialog::setupGeneralPage()
   QHBox *outputFileLayout = new QHBox(destGroup);
   mOutputFileEdit = new KURLRequester(KOPrefs::instance()->mHtmlExportFile,
                                   outputFileLayout);
+  connect( mOutputFileEdit->lineEdit(), SIGNAL( textChanged ( const QString & ) ), this, SLOT( slotTextChanged( const QString & ) ) );
+  slotTextChanged( mOutputFileEdit->lineEdit()->text());
   topLayout->addStretch(1);
+}
+
+void ExportWebDialog::slotTextChanged( const QString & _text)
+{
+    enableButton( User1, !_text.isEmpty() );
 }
 
 void ExportWebDialog::setupTodoPage()
@@ -307,7 +314,7 @@ void ExportWebDialog::slotDataReq(KIO::Job *,QByteArray &data)
     kdDebug(5850) << "  Data availavble" << endl;
     QTextStream ts(data,IO_WriteOnly);
     ts.setEncoding( QTextStream::Latin1 );
-    
+
     mExport->save(&ts);
     mDataAvailable = false;
   } else

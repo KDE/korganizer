@@ -56,10 +56,10 @@ class ExportWebDialog : public KDialogBase
 
     void slotResult(KIO::Job *);
     void slotDataReq(KIO::Job *,QByteArray &data);
-
+    void slotTextChanged( const QString & _text);
   protected slots:
- 
-  signals:
+
+signals:
 
   protected:
     void setupGeneralPage();
@@ -76,12 +76,12 @@ class ExportWebDialog : public KDialogBase
     HtmlExport *mExport;
 
     KConfig *mConfig;
-  
+
     QFrame *mGeneralPage;
     QFrame *mEventPage;
     QFrame *mTodoPage;
     QFrame *mAdvancedPage;
-  
+
     // Widgets containing export parameters
     KDateEdit *mFromDate,*mToDate;
     QCheckBox *mCbMonth;
