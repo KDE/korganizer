@@ -64,103 +64,103 @@ KOPrefs::KOPrefs() :
 
   KPrefs::setCurrentGroup("General");
 
-  addItemBool("Enable Group Scheduling",&mEnableGroupScheduling,false);
-  addItemBool("Enable Project View",&mEnableProjectView,false);
-  addItemBool("Auto Save",&mAutoSave,false);
-  addItemInt("Auto Save Interval",&mAutoSaveInterval,10);
-  addItemBool("Confirm Deletes",&mConfirm,true);
-  addItemString("Archive File",&mArchiveFile);
-  addItemString("Html Export File",&mHtmlExportFile,
+  addItemBool("Enable Group Scheduling",mEnableGroupScheduling,false);
+  addItemBool("Enable Project View",mEnableProjectView,false);
+  addItemBool("Auto Save",mAutoSave,false);
+  addItemInt("Auto Save Interval",mAutoSaveInterval,10);
+  addItemBool("Confirm Deletes",mConfirm,true);
+  addItemString("Archive File",mArchiveFile);
+  addItemString("Html Export File",mHtmlExportFile,
       QDir::homeDirPath() + "/" + i18n("Default export file", "calendar.html"));
-  addItemBool("Html With Save",&mHtmlWithSave,false);
+  addItemBool("Html With Save",mHtmlWithSave,false);
 
   KPrefs::setCurrentGroup("Personal Settings");
 
-  addItemInt("Mail Client",&mMailClient,MailClientKMail);
-  addItemBool("Use Control Center Email",&mEmailControlCenter,false);
-  addItemBool("Bcc",&mBcc,false);
+  addItemInt("Mail Client",mMailClient,MailClientKMail);
+  addItemBool("Use Control Center Email",mEmailControlCenter,false);
+  addItemBool("Bcc",mBcc,false);
 
   KPrefs::setCurrentGroup("Time & Date");
 
-  addItemString("Time Zone",&mTimeZone,"+0000");
-  addItemString("TimeZoneId",&mTimeZoneId);
-  addItemInt("Default Start Time",&mStartTime,10);
-  addItemInt("Default Duration",&mDefaultDuration,2);
-  addItemInt("Default Alarm Time",&mAlarmTime,0);
-  addItemInt("Daylight Savings",&mDaylightSavings,0);
+  addItemString("Time Zone",mTimeZone,"+0000");
+  addItemString("TimeZoneId",mTimeZoneId);
+  addItemInt("Default Start Time",mStartTime,10);
+  addItemInt("Default Duration",mDefaultDuration,2);
+  addItemInt("Default Alarm Time",mAlarmTime,0);
+  addItemInt("Daylight Savings",mDaylightSavings,0);
 
   KPrefs::setCurrentGroup("Calendar");
 
-  addItemInt("Default Calendar Format",&mDefaultFormat,FormatICalendar);
+  addItemInt("Default Calendar Format",mDefaultFormat,FormatICalendar);
 
   KPrefs::setCurrentGroup("Fonts");
 
-  addItemFont("TimeBar Font",&mTimeBarFont, mDefaultTimeBarFont);
-  addItemFont("MonthView Font",&mMonthViewFont, mDefaultMonthViewFont);
-  addItemFont("AgendaView Font",&mAgendaViewFont, mDefaultViewFont);
-  addItemFont("MarcusBains Font",&mMarcusBainsFont, mDefaultViewFont);
+  addItemFont("TimeBar Font",mTimeBarFont, mDefaultTimeBarFont);
+  addItemFont("MonthView Font",mMonthViewFont, mDefaultMonthViewFont);
+  addItemFont("AgendaView Font",mAgendaViewFont, mDefaultViewFont);
+  addItemFont("MarcusBains Font",mMarcusBainsFont, mDefaultViewFont);
 
   KPrefs::setCurrentGroup("Colors");
 
-  addItemColor("Holiday Color",&mHolidayColor,defaultHolidayColor);
-  addItemColor("Highlight Color",&mHighlightColor,defaultHighlightColor);
-  addItemColor("Event Color",&mEventColor,mDefaultCategoryColor);
-  addItemColor("Agenda Background Color",&mAgendaBgColor,defaultAgendaBgColor);
-  addItemColor("WorkingHours Color",&mWorkingHoursColor,defaultWorkingHoursColor);
-  addItemColor("Todo due today Color",&mTodoDueTodayColor,defaultTodoDueTodayColor);
-  addItemColor("Todo overdue Color",&mTodoOverdueColor,defaultTodoOverdueColor);
+  addItemColor("Holiday Color",mHolidayColor,defaultHolidayColor);
+  addItemColor("Highlight Color",mHighlightColor,defaultHighlightColor);
+  addItemColor("Event Color",mEventColor,mDefaultCategoryColor);
+  addItemColor("Agenda Background Color",mAgendaBgColor,defaultAgendaBgColor);
+  addItemColor("WorkingHours Color",mWorkingHoursColor,defaultWorkingHoursColor);
+  addItemColor("Todo due today Color",mTodoDueTodayColor,defaultTodoDueTodayColor);
+  addItemColor("Todo overdue Color",mTodoOverdueColor,defaultTodoOverdueColor);
 
   KPrefs::setCurrentGroup("Views");
 
-  addItemInt("Hour Size",&mHourSize,10);
-  addItemBool("Show Daily Recurrences",&mDailyRecur,true);
-  addItemBool("Show Weekly Recurrences",&mWeeklyRecur,true);
-  addItemBool("Enable ToolTips",&mEnableToolTips,false);
-  addItemBool("Enable MonthView ScrollBars",&mEnableMonthScroll,false);
-  addItemBool("Marcus Bains shows seconds",&mMarcusBainsShowSeconds,false);
-  addItemBool("Show Marcus Bains",&mMarcusBainsEnabled,true);
+  addItemInt("Hour Size",mHourSize,10);
+  addItemBool("Show Daily Recurrences",mDailyRecur,true);
+  addItemBool("Show Weekly Recurrences",mWeeklyRecur,true);
+  addItemBool("Enable ToolTips",mEnableToolTips,false);
+  addItemBool("Enable MonthView ScrollBars",mEnableMonthScroll,false);
+  addItemBool("Marcus Bains shows seconds",mMarcusBainsShowSeconds,false);
+  addItemBool("Show Marcus Bains",mMarcusBainsEnabled,true);
 
-  addItemInt("Day Begins",&mDayBegins,7);
-  addItemInt("Working Hours Start",&mWorkingHoursStart,8);
-  addItemInt("Working Hours End",&mWorkingHoursEnd,17);
-  addItemBool("Exclude Holidays",&mExcludeHolidays,true);
-  addItemBool("Exclude Saturdays",&mExcludeSaturdays,true);
+  addItemInt("Day Begins",mDayBegins,7);
+  addItemInt("Working Hours Start",mWorkingHoursStart,8);
+  addItemInt("Working Hours End",mWorkingHoursEnd,17);
+  addItemBool("Exclude Holidays",mExcludeHolidays,true);
+  addItemBool("Exclude Saturdays",mExcludeSaturdays,true);
 
-  addItemBool("Month View Uses Category Color",&mMonthViewUsesCategoryColor,false);
-  addItemBool("Full View Month",&mFullViewMonth,false);
-  addItemBool("Full View Todo",&mFullViewTodo,true);
-  addItemBool("Quick Todo",&mEnableQuickTodo,true);
+  addItemBool("Month View Uses Category Color",mMonthViewUsesCategoryColor,false);
+  addItemBool("Full View Month",mFullViewMonth,false);
+  addItemBool("Full View Todo",mFullViewTodo,true);
+  addItemBool("Quick Todo",mEnableQuickTodo,true);
 
-  addItemInt("Next X Days",&mNextXDays,3);
+  addItemInt("Next X Days",mNextXDays,3);
 
   KPrefs::setCurrentGroup("Printer");
 
   KPrefs::setCurrentGroup("Layout");
 
-  addItemBool("CompactDialogs",&mCompactDialogs,false);
-  addItemBool("VerticalScreen",&mVerticalScreen,false);
+  addItemBool("CompactDialogs",mCompactDialogs,false);
+  addItemBool("VerticalScreen",mVerticalScreen,false);
 
   KPrefs::setCurrentGroup("KOrganizer Plugins");
 
-  addItemStringList("SelectedPlugins",&mSelectedPlugins,"holidays");
+  addItemStringList("SelectedPlugins",mSelectedPlugins,"holidays");
 
   KPrefs::setCurrentGroup("Group Scheduling");
 
-  addItemInt("IMIPScheduler",&mIMIPScheduler,IMIPKMail);
-  addItemInt("IMIPSend",&mIMIPSend,IMIPdirectsend);
-  addItemStringList("AdditionalMails",&mAdditionalMails,"");
-  addItemInt("IMIP auto refresh",&mIMIPAutoRefresh,neverAuto);
-  addItemInt("IMIP auto insert request",&mIMIPAutoInsertRequest,neverAuto);
-  addItemInt("IMIP auto insert reply",&mIMIPAutoInsertReply,neverAuto);
-  addItemInt("IMIP auto FreeBusy",&mIMIPAutoFreeBusy,neverAuto);
-  addItemInt("IMIP auto save FreeBusy",&mIMIPAutoFreeBusyReply,neverAuto);
+  addItemInt("IMIPScheduler",mIMIPScheduler,IMIPKMail);
+  addItemInt("IMIPSend",mIMIPSend,IMIPdirectsend);
+  addItemStringList("AdditionalMails",mAdditionalMails,"");
+  addItemInt("IMIP auto refresh",mIMIPAutoRefresh,neverAuto);
+  addItemInt("IMIP auto insert request",mIMIPAutoInsertRequest,neverAuto);
+  addItemInt("IMIP auto insert reply",mIMIPAutoInsertReply,neverAuto);
+  addItemInt("IMIP auto FreeBusy",mIMIPAutoFreeBusy,neverAuto);
+  addItemInt("IMIP auto save FreeBusy",mIMIPAutoFreeBusyReply,neverAuto);
 
   KPrefs::setCurrentGroup( "Editors" );
 
-  addItemStringList( "EventTemplates", &mEventTemplates );
-  addItemStringList( "TodoTemplates", &mTodoTemplates );
+  addItemStringList( "EventTemplates", mEventTemplates );
+  addItemStringList( "TodoTemplates", mTodoTemplates );
 
-  addItemInt("DestinationPolicy",&mDestination,standardDestination);
+  addItemInt("DestinationPolicy",mDestination,standardDestination);
 }
 
 
