@@ -27,6 +27,7 @@
 #include <kio/job.h>
 
 #include <libkcal/calendar.h>
+#include <libkcal/htmlexport.h>
 
 using namespace KCal;
 
@@ -37,7 +38,6 @@ class QLineEdit;
 class QTextStream;
 class QFrame;
 class KConfig;
-class HtmlExport;
 class KURLRequester;
 
 /**

@@ -39,6 +39,9 @@
 #include <ktempfile.h>
 #include <kxmlguiclient.h>
 #include <kwin.h>
+#include <knotifyclient.h>
+
+#include <libkcal/htmlexport.h>
 
 #include "alarmclient.h"
 #include "calendarview.h"
@@ -51,7 +54,7 @@
 #include "korganizer.h"
 #include "kprocess.h"
 #include "konewstuff.h"
-#include "exportwebdialog.h"
+
 
 KOWindowList *ActionManager::windowList = 0;
 bool ActionManager::startedKAddressBook = false;
@@ -782,9 +785,59 @@ bool ActionManager::saveURL()
 
   mMainWindow->showStatusMessage(i18n("Saved calendar '%1'.").arg(mURL.prettyURL()));
 
-  if ( KOPrefs::instance()->mHtmlWithSave ) {
-    ExportWebDialog *dlg = new ExportWebDialog(mCalendarView->calendar());
-    dlg->exportWebPage(mHtmlExportSync);
+  // export to HTML
+  if ( KOPrefs::instance()->mHtmlWithSave==true &&
+        !KOPrefs::instance()->mHtmlExportFile.isNull() ) {
+    KURL dest( KOPrefs::instance()->mHtmlExportFile );
+    KCal::HtmlExport mExport( mCalendarView->calendar() );
+    mExport.setEmail( KOPrefs::instance()->email() );
+    mExport.setFullName( KOPrefs::instance()->fullName() );
+
+    KConfig *cfg = KOGlobals::config();
+    cfg->setGroup( "HtmlExport" );
+
+    mExport.setMonthViewEnabled( cfg->readBoolEntry( "Month", false ) );
+    mExport.setEventsEnabled( cfg->readBoolEntry( "Event", true ) );
+    mExport.setTodosEnabled( cfg->readBoolEntry( "Todo", true ) );
+    mExport.setCategoriesEventEnabled( cfg->readBoolEntry( "CategoriesEvent", false ) );
+    mExport.setAttendeesEventEnabled( cfg->readBoolEntry( "AttendeesEvent", false ) );
+    mExport.setExcludePrivateEventEnabled( cfg->readBoolEntry( "ExcludePrivateEvent", true ) );
+    mExport.setExcludeConfidentialEventEnabled( cfg->readBoolEntry( "ExcludeConfidentialEvent", true ) );
+    mExport.setCategoriesTodoEnabled( cfg->readBoolEntry( "CategoriesTodo", false ) );
+    mExport.setAttendeesTodoEnabled( cfg->readBoolEntry( "AttendeesTodo", false ) );
+    mExport.setExcludePrivateTodoEnabled( cfg->readBoolEntry( "ExcludePrivateTodo", true ) );
+    mExport.setExcludeConfidentialTodoEnabled( cfg->readBoolEntry( "ExcludeConfidentialTodo", true ) );
+    mExport.setDueDateEnabled( cfg->readBoolEntry( "DueDates", true ) );
+    QDate qd1;
+    qd1 = QDate::currentDate();
+    QDate qd2;
+    qd2 = QDate::currentDate();
+    if ( mExport.monthViewEnabled() )
+      qd2.addMonths( 1 );
+    else
+      qd2.addDays( 7 );
+
+    mExport.setDateRange( qd1, qd2 );
+    QDate cdate=qd1;;
+    while (cdate<=qd2)
+    {
+      if ( !KOCore::self()->holiday(cdate).isEmpty() )
+        mExport.addHoliday( cdate, KOCore::self()->holiday(cdate) );
+      cdate = cdate.addDays(1);
+    }
+
+    if ( dest.isLocalFile() ) {
+      mExport.save( dest.path() );
+    } else {
+      KTempFile tf;
+      QString tfile = tf.name();
+      tf.close();
+      mExport.save( tfile );
+      if (!KIO::NetAccess::upload(tfile, dest) ) {
+        KNotifyClient::event ( "Could not upload file." );
+      }
+      tf.unlink();
+    }
   }
 
   return true;

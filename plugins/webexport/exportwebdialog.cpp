@@ -51,11 +51,10 @@
 #include <libkcal/calendar.h>
 
 #include <libkdepim/kdateedit.h>
-
 #include <libkdepim/kdateedit.h>
 
 #include "koprefs.h"
-#include "htmlexport.h"
+#include "kocore.h"
 
 #include "exportwebdialog.h"
 #include "exportwebdialog.moc"
@@ -85,6 +84,7 @@ ExportWebDialog::ExportWebDialog (Calendar *cal, QWidget *parent,
 
 ExportWebDialog::~ExportWebDialog()
 {
+  delete(mExport);
 }
 
 void ExportWebDialog::setupGeneralPage()
@@ -234,6 +234,8 @@ void ExportWebDialog::exportWebPage(bool synchronous)
 {
   saveSettings();
 
+  mExport->setEmail( KOPrefs::instance()->email() );
+  mExport->setFullName( KOPrefs::instance()->fullName() );
   mExport->setMonthViewEnabled(mCbMonth->isChecked());
   mExport->setEventsEnabled(mCbEvent->isChecked());
   mExport->setTodosEnabled(mCbTodo->isChecked());
@@ -247,6 +249,14 @@ void ExportWebDialog::exportWebPage(bool synchronous)
   mExport->setExcludeConfidentialTodoEnabled(mCbExcludeConfidentialTodo->isChecked());
   mExport->setDueDateEnabled(mCbDueDates->isChecked());
   mExport->setDateRange(mFromDate->date(),mToDate->date());
+
+  QDate cdate=mFromDate->date();
+  while (cdate<=mToDate->date())
+  {
+    if ( !KOCore::self()->holiday(cdate).isEmpty() )
+      mExport->addHoliday( cdate, KOCore::self()->holiday(cdate) );
+    cdate = cdate.addDays(1);
+  }
 
   KURL dest(mOutputFileEdit->lineEdit()->text());
   // Remember destination.

@@ -47,7 +47,6 @@ libkorganizer_la_SOURCES =  outgoingdialog_base.ui \
 	archivedialog.cpp \
 	komailclient.cpp kotodoview.cpp kotodoviewitem.cpp \
         kolistview.cpp \
-        exportwebdialog.cpp htmlexport.cpp \
         koprefsdialog.cpp \
         koincidenceeditor.cpp koeventeditor.cpp kotodoeditor.cpp \
         koprefs.cpp koeventviewer.cpp kowindowlist.cpp \
@@ -87,7 +86,7 @@ noinst_HEADERS = komonthview.h \
 	archivedialog.h \
 	komailclient.h kotodoview.h \
         kolistview.h \
-	koapp.h exportwebdialog.h korganizer_part.h korganizer.h \
+	koapp.h korganizer_part.h korganizer.h \
         koprefsdialog.h koeventeditor.h \
         kotodoeditor.h koprefs.h koeventviewer.h \
         kowindowlist.h kocounterdialog.h \
