@@ -57,7 +57,7 @@ bool KOMailClient::mailAttendees(IncidenceBase *incidence,const QString &attachm
   if (attendees.count() == 0) return false;
 
   const QString from = incidence->organizer().fullName();
-  const QString organizerEmail = incidence->organizer()->email();
+  const QString organizerEmail = incidence->organizer().email();
   QStringList toList;
   for(uint i=0; i<attendees.count();++i) {
     const QString email = (*attendees.at(i))->email();
