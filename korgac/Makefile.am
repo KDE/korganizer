@@ -1,4 +1,5 @@
-INCLUDES= -I$(top_srcdir) -I$(top_builddir)/kalarmd $(all_includes)
+INCLUDES= -I$(top_srcdir) -I$(top_srcdir)/kalarmd -I$(top_builddir)/kalarmd \
+  $(all_includes)
 
 bin_PROGRAMS = korgac simplealarmdaemon
 
