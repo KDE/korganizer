@@ -53,6 +53,7 @@ using namespace KOrg;
 #include "kotodoview.moc"
 
 const int KOTodoView::POPUP_UNSUBTODO=1234;
+const int KOTodoView::POPUP_COPYTO=1235;
 
 KOTodoListViewToolTip::KOTodoListViewToolTip (QWidget* parent,
                                               KOTodoListView* lv )
@@ -418,9 +419,17 @@ KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent, const char* name)
   mItemPopupMenu->insertItem( i18n("Make Sub-To-Do Independent"), this,
       SIGNAL( unSubTodoSignal() ), 0, POPUP_UNSUBTODO );
   mItemPopupMenu->insertSeparator();
+  mItemPopupMenu->insertItem( i18n("Copy to"), mDatePickerPopupMenu,
+                              POPUP_COPYTO, -1);
+  mItemPopupMenu->insertItem(i18n("Move to"), mDatePickerPopupMenu, -1, -1);
+  mItemPopupMenu->insertSeparator();
   mItemPopupMenu->insertItem(i18n("delete completed To-Dos","Purge Completed"),
                              this, SLOT( purgeCompleted() ) );
-
+  
+  // mItemPopupMenu won't hide when a date is selected
+  connect( mDatePickerPopupMenu, SIGNAL( dateChanged( QDate ) ),
+      mItemPopupMenu, SLOT( hide() ) );
+  
   mPopupMenu = new QPopupMenu(this);
   mPopupMenu->insertItem(KOGlobals::self()->smallIconSet("todo"), i18n("New To-Do..."), this,
                          SLOT (newTodo()));
@@ -634,6 +643,10 @@ void KOTodoView::popupMenu( QListViewItem *item, const QPoint &, int column )
 {
   mActiveItem = static_cast<KOTodoViewItem *>( item );
   if ( item ) {
+    if ( mActiveItem->todo()->hasDueDate () ) {
+      mDatePickerPopupMenu->datePicker()->setDate( mActiveItem->todo()->
+        dtDue().date() );
+    }
     switch ( column ) {
       case 1:
         mPriorityPopupMenu->popup( QCursor::pos () );
@@ -641,12 +654,9 @@ void KOTodoView::popupMenu( QListViewItem *item, const QPoint &, int column )
       case 2:
         mPercentageCompletedPopupMenu->popup( QCursor::pos () );
         break;
-      case 3:
-        if ( mActiveItem->todo()->hasDueDate () ) {
-          mDatePickerPopupMenu->datePicker()->setDate( mActiveItem->todo()->
-            dtDue().date() );
+      case 3: 
+        if ( mActiveItem->todo()->hasDueDate() )
           mDatePickerPopupMenu->popup( QCursor::pos () );
-        }
         else {
           mItemPopupMenu->setItemEnabled( POPUP_UNSUBTODO,
                                           mActiveItem->todo()->relatedTo() );
@@ -737,13 +747,22 @@ void KOTodoView::setNewDate(QDate date)
 {   
   if ( mActiveItem && !mActiveItem->todo()->isReadOnly () ) {
     Todo *todo = mActiveItem->todo();
-    Todo *oldTodo = todo->clone();
 
-    todo->setDtDue( date );
-    
-    mActiveItem->construct();
-    emit todoModifiedSignal( todo, oldTodo, KOGlobals::DATE_MODIFIED );
-    delete oldTodo;
+    // Check whether "Copy to" is highlighted
+    if ( mItemPopupMenu->isItemActive( POPUP_COPYTO ) ) {
+      Todo *newTodo = new Todo( *todo );
+      newTodo->recreate();
+      newTodo->setDtDue( date );
+      calendar()->addTodo( newTodo );
+      emit todoAdded( newTodo );
+    }
+    else {
+      Todo *oldTodo = todo->clone();      
+      todo->setDtDue( date );
+      mActiveItem->construct();
+      emit todoModifiedSignal( todo, oldTodo, KOGlobals::DATE_MODIFIED );      
+      delete oldTodo;
+    }
   }
 }
 

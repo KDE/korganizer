@@ -243,6 +243,7 @@ class KOTodoView : public KOrg::BaseView
     KPIM::ClickLineEdit *mQuickAdd;
 
     static const int POPUP_UNSUBTODO;
+    static const int POPUP_COPYTO;
 };
 
 #endif
