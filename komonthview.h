@@ -16,7 +16,7 @@
 #include "qdatelist.h"
 #include "calobject.h"
 #include "koevent.h"
-#include "kobaseview.h"
+#include "koeventview.h"
 #include "ksellabel.h" 
 
 class KONavButton: public QPushButton
@@ -64,13 +64,7 @@ class EventListBoxItem: public QListBoxItem
 class KNoScrollListBox: public QListBox {
   Q_OBJECT
  public:
-  KNoScrollListBox(QWidget *parent=0, const char *name=0)
-    :QListBox(parent, name)
-    {
-//      clearTableFlags();
-//      setTableFlags(Tbl_clipCellPainting | Tbl_cutCellsV | Tbl_snapToVGrid |
-//		    Tbl_scrollLastHCell| Tbl_smoothHScrolling);
-    }
+  KNoScrollListBox(QWidget *parent=0, const char *name=0);
   ~KNoScrollListBox() {}
 
  signals:
@@ -115,7 +109,7 @@ class KSummaries: public KNoScrollListBox {
    QIntDict<KOEvent> *currIdxs; 
 };
 
-class KOMonthView: public KOBaseView {
+class KOMonthView: public KOEventView {
    Q_OBJECT
  public:
    KOMonthView(CalObject *cal,

@@ -66,6 +66,7 @@ class KOAgendaItem : public QFrame
 
   public slots:
     void updateIcons();
+    void select(bool=true);
 
   private:
     int mCellX;
@@ -90,6 +91,8 @@ class KOAgendaItem : public QFrame
     QLabel *mIconAlarm,*mIconRecur,*mIconReadonly;
     
     static QToolTipGroup *mToolTipGroup;
+
+    bool mSelected;
 };
 
 #endif // KOAGENDAITEM_H

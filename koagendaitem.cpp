@@ -82,6 +82,10 @@ KOAgendaItem::KOAgendaItem(KOEvent *event, QWidget *parent,
 
   updateIcons();
 
+  // select() does nothing, if state hasn't change, so preset mSelected.
+  mSelected = true;
+  select(false);
+
 //  QToolTip::add(this,mEvent->getSummary());
   QToolTip::add(this,mEvent->getSummary(),toolTipGroup(),"");
 }
@@ -95,6 +99,20 @@ void KOAgendaItem::updateIcons()
   else mIconRecur->hide();
   if (mEvent->getAlarmRepeatCount()) mIconAlarm->show();
   else mIconAlarm->hide();
+}
+
+
+void KOAgendaItem::select(bool selected)
+{
+  if (mSelected == selected) return;
+  mSelected = selected;
+  if (mSelected) {
+    mItemLabel->setFrameStyle(Panel|Sunken);
+    mItemLabel->setLineWidth(1);
+  } else {
+    mItemLabel->setFrameStyle(Panel|Plain);
+    mItemLabel->setLineWidth(0);   
+  }
 }
 
 

@@ -58,7 +58,7 @@ KOListViewItem::KOListViewItem(QListView *parent, KOEvent *ev)
 
 KOListView::KOListView(CalObject *calendar, QWidget *parent,
 		       const char *name)
-  : KOBaseView(calendar, parent, name)
+  : KOEventView(calendar, parent, name)
 {
   mActiveItem = 0;
 

@@ -1,3 +1,4 @@
+// $Id$
 #ifndef __korganizer_part_h__
 #define __korganizer_part_h__
 
@@ -5,8 +6,9 @@
 #include <klibloader.h>
 
 class KInstance;
+class KAboutData;
 class KOrganizerBrowserExtension;
-//class QLabel;
+
 class CalendarView;
 
 class KOrganizerFactory : public KLibFactory
@@ -24,6 +26,7 @@ class KOrganizerFactory : public KLibFactory
 
   private:
     static KInstance *s_instance;
+    static KAboutData *s_about;
 };
 
 class KOrganizerPart: public KParts::ReadOnlyPart

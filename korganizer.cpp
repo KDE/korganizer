@@ -26,6 +26,8 @@
   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 */
 
+#include <stdlib.h>
+
 #include <qcursor.h>
 #include <qtimer.h>
 #include <qvbox.h>
@@ -185,9 +187,17 @@ void KOrganizer::initActions()
                     actionCollection(), "merge_calendar");
   (void)new KAction(i18n("Archive Old Entries..."), 0, this, SLOT(file_archive()),
                     actionCollection(), "file_archive");
-  (void)new KAction(i18n("Export as web page..."), 0,
+
+  (void)new KAction(i18n("Web Page..."), 0,
                     mCalendarView, SLOT(exportWeb()),
                     actionCollection(), "export_web");
+  (void)new KAction(i18n("iCalendar..."), 0,
+                    mCalendarView, SLOT(exportICalendar()),
+                    actionCollection(), "export_icalendar");
+  (void)new KAction(i18n("vCalendar..."), 0,
+                    mCalendarView, SLOT(exportVCalendar()),
+                    actionCollection(), "export_vcalendar");
+
   (void)new KAction(i18n("Print Setup..."), 0,
                     mCalendarView, SLOT(printSetup()),
                     actionCollection(), "print_setup");
@@ -208,6 +218,11 @@ void KOrganizer::initActions()
   action = KStdAction::paste(mCalendarView,SLOT(edit_paste()),
                              actionCollection());
   connect(mCalendarView,SIGNAL(pasteEnabled(bool)),
+          action,SLOT(setEnabled(bool)));
+  action = new KAction(i18n("&Delete"),"editdelete",0,
+                    mCalendarView,SLOT(appointment_delete()),
+                    actionCollection(), "edit_delete");
+  connect(mCalendarView,SIGNAL(eventsSelected(bool)),
           action,SLOT(setEnabled(bool)));
 
   // view menu
@@ -250,17 +265,60 @@ void KOrganizer::initActions()
                     actionCollection(), "edit_appointment");
   connect(mCalendarView,SIGNAL(eventsSelected(bool)),
           action,SLOT(setEnabled(bool)));
-  action = new KAction(i18n("&Delete Appointment"), 0,
-                    mCalendarView,SLOT(appointment_delete()),
-                    actionCollection(), "delete_appointment");
-  connect(mCalendarView,SIGNAL(eventsSelected(bool)),
-          action,SLOT(setEnabled(bool)));
 
   KStdAction::find(mCalendarView, SLOT(action_search()), actionCollection());
 
   action = new KAction(i18n("&Mail Appointment"), "send", 0,
                     mCalendarView,SLOT(action_mail()),
                     actionCollection(), "mail_appointment");
+  connect(mCalendarView,SIGNAL(eventsSelected(bool)),
+          action,SLOT(setEnabled(bool)));
+
+  // Schedule menu
+  (void)new KAction(i18n("Outgoing Messages..."),0,
+                    mCalendarView,SLOT(schedule_outgoing()),
+                    actionCollection(),"outgoing");
+  (void)new KAction(i18n("Incoming Messages..."),0,
+                    mCalendarView,SLOT(schedule_incoming()),
+                    actionCollection(),"incoming");
+  action = new KAction(i18n("Publish"),0,
+                       mCalendarView,SLOT(schedule_publish()),
+                       actionCollection(),"publish");
+  connect(mCalendarView,SIGNAL(eventsSelected(bool)),
+          action,SLOT(setEnabled(bool)));
+  action = new KAction(i18n("Request"),0,
+                       mCalendarView,SLOT(schedule_request()),
+                       actionCollection(),"request");
+  connect(mCalendarView,SIGNAL(eventsSelected(bool)),
+          action,SLOT(setEnabled(bool)));
+  action = new KAction(i18n("Refresh"),0,
+                       mCalendarView,SLOT(schedule_refresh()),
+                       actionCollection(),"refresh");
+  connect(mCalendarView,SIGNAL(eventsSelected(bool)),
+          action,SLOT(setEnabled(bool)));
+  action = new KAction(i18n("Cancel"),0,
+                       mCalendarView,SLOT(schedule_cancel()),
+                       actionCollection(),"cancel");
+  connect(mCalendarView,SIGNAL(eventsSelected(bool)),
+          action,SLOT(setEnabled(bool)));
+  action = new KAction(i18n("Add"),0,
+                       mCalendarView,SLOT(schedule_add()),
+                       actionCollection(),"add");
+  connect(mCalendarView,SIGNAL(eventsSelected(bool)),
+          action,SLOT(setEnabled(bool)));
+  action = new KAction(i18n("Reply"),0,
+                       mCalendarView,SLOT(schedule_reply()),
+                       actionCollection(),"reply");
+  connect(mCalendarView,SIGNAL(eventsSelected(bool)),
+          action,SLOT(setEnabled(bool)));
+  action = new KAction(i18n("Counter"),0,
+                       mCalendarView,SLOT(schedule_counter()),
+                       actionCollection(),"counter");
+  connect(mCalendarView,SIGNAL(eventsSelected(bool)),
+          action,SLOT(setEnabled(bool)));
+  action = new KAction(i18n("Decline Counter"),0,
+                       mCalendarView,SLOT(schedule_declinecounter()),
+                       actionCollection(),"declinecounter");
   connect(mCalendarView,SIGNAL(eventsSelected(bool)),
           action,SLOT(setEnabled(bool)));
 
@@ -334,7 +392,7 @@ void KOrganizer::file_open()
 {
   KURL url;
   QString defaultPath = locateLocal("appdata", "");
-  url = KFileDialog::getOpenURL(defaultPath,"*.vcs",this);
+  url = KFileDialog::getOpenURL(defaultPath,"*.vcs *.ics",this);
 
   KOrganizer *korg=KOrganizer::findInstance(url);
   if ((0 != korg)&&(korg != this)) {
@@ -586,6 +644,8 @@ void KOrganizer::configureToolbars()
   if (dlg.exec())
   {
     createGUI();
+
+    plugActionList("toolbartoggles",mToolBarToggles);
   }
 }
 

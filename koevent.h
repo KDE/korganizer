@@ -14,6 +14,7 @@
 
 class CalObject;
 class KOEvent;
+class VCalFormat;
 
 class Attendee
 {
@@ -67,7 +68,8 @@ class Attendee
 class KOEvent : public QObject {
   Q_OBJECT
 
-  friend CalObject;
+//  friend CalObject;
+  friend VCalFormat;
 public:
   /** number of events created */
   static int eventCount;
@@ -332,6 +334,11 @@ public:
   /** return the number of revisions this event has seen */
   int getRevisionNum() const;
 
+  /** set creation date */
+  void setCreated(QDateTime);
+  /** return time and date of cration. */
+  QDateTime getCreated() const;
+
   /** set the time the event was last modified */
   void setLastModified(const QDateTime &lm);
   /** return the time the event was last modified */
@@ -431,7 +438,7 @@ public:
   void setSyncStatus(int stat);
   int getSyncStatus() const;
 
-  void setTodoStatus(bool stat) { isTodo = stat; priority = 1; emit eventUpdated(this); };
+  void setTodoStatus(bool stat) { isTodo = stat; emit eventUpdated(this); };
   bool getTodoStatus() const { return isTodo; };
 
   bool isMultiDay() const;

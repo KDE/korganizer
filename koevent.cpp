@@ -25,6 +25,8 @@ KOEvent::KOEvent()
 
   recreate();
 
+  isTodo = false;
+
   relatedTo = 0;
   
   organizer = KOPrefs::instance()->mEmail;
@@ -45,11 +47,12 @@ KOEvent::KOEvent()
   alarmText = "";
 
   floats = TRUE; // whether or not the event has a time attached.
+  mHasDueDate = false;
 
   alarmSnoozeTime = 5;
   alarmRepeatCount = 0; // alarm disabled
   
-  priority = 0;
+  priority = 1;
   transparency = 0;
   
   recurs = rNone; // by default, it's not a recurring event.
@@ -764,6 +767,17 @@ void KOEvent::setRevisionNum(int rev)
 int KOEvent::getRevisionNum() const
 {
   return revisionNum;
+}
+
+void KOEvent::setCreated(QDateTime created)
+{
+  if (ro) return;
+  dateCreated = created;
+}
+
+QDateTime KOEvent::getCreated() const
+{
+  return dateCreated;
 }
 
 void KOEvent::setLastModified(const QDateTime &lm)

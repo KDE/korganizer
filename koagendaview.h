@@ -15,7 +15,7 @@
 
 //#include <kapp.h>
 
-#include "kobaseview.h"
+#include "koeventview.h"
 
 #include <qscrollview.h>
 #include <qdatetime.h>
@@ -88,7 +88,7 @@ class EventIndicator : public QFrame {
     QArray<bool> mEnabled;
 };
 
-class KOAgendaView : public KOBaseView {
+class KOAgendaView : public KOEventView {
     Q_OBJECT
   public:
     KOAgendaView(CalObject *cal,QWidget *parent = 0,const char *name = 0);
@@ -114,8 +114,8 @@ class KOAgendaView : public KOBaseView {
     /** Remove all events from view */
     void clearView();
 
-   virtual void printPreview(CalPrinter *calPrinter,
-                             const QDate &, const QDate &);
+    virtual void printPreview(CalPrinter *calPrinter,
+                              const QDate &, const QDate &);
     
   public slots:
     virtual void updateView();
@@ -135,6 +135,9 @@ class KOAgendaView : public KOBaseView {
     void newEventAllDay(int gx, int gy);
 
     void startDrag(KOEvent *);
+
+    void readSettings();
+    void writeSettings();
 
   signals:
     void editEventSignal(KOEvent *);  // From KOBaseView
@@ -183,6 +186,7 @@ class KOAgendaView : public KOBaseView {
     KOAgenda *mAgenda;
     TimeLabels *mTimeLabels;
     QWidget *mDummyAllDayLeft;
+    QSplitter *mSplitterAgenda;
 
     QDate mStartDate;  // Date of first event displayed
     QDateList mSelectedDates;  // List of dates to be displayed

@@ -1,5 +1,5 @@
 
-#DO_NOT_COMPILE="$DO_NOT_COMPILE korganizer"
+DO_NOT_COMPILE="$DO_NOT_COMPILE korganizer"
 
 dnl Checks if we want to use insure++ to debug
 KDE_CHECK_INSURE

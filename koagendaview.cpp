@@ -17,6 +17,7 @@
 #include <kstddirs.h>
 #include <kiconloader.h>
 #include <klocale.h>
+#include <kconfig.h>
 
 #include "koprefs.h"
 #include "koagenda.h"
@@ -205,7 +206,7 @@ void EventIndicator::enableColumn(int column, bool enable)
 ////////////////////////////////////////////////////////////////////////////
 
 KOAgendaView::KOAgendaView(CalObject *cal,QWidget *parent,const char *name) :
-  KOBaseView (cal,parent,name)
+  KOEventView (cal,parent,name)
 {
   mStartDate = QDate::currentDate();
   mStartHour = 8;
@@ -215,11 +216,11 @@ KOAgendaView::KOAgendaView(CalObject *cal,QWidget *parent,const char *name) :
   mDayLabels = 0;
   
   // Create agenda splitter
-  QSplitter *splitterAgenda = new QSplitter(Vertical,this);
-  splitterAgenda->setOpaqueResize();
+  mSplitterAgenda = new QSplitter(Vertical,this);
+  mSplitterAgenda->setOpaqueResize();
 
   // Create all-day agenda widget
-  mAllDayFrame = new QHBox(splitterAgenda);
+  mAllDayFrame = new QHBox(mSplitterAgenda);
   mDummyAllDayLeft = new QWidget(mAllDayFrame);
   mAllDayAgenda = new KOAgenda(1,mAllDayFrame);
   QWidget *dummyAllDayRight = new QWidget(mAllDayFrame);
@@ -230,7 +231,7 @@ KOAgendaView::KOAgendaView(CalObject *cal,QWidget *parent,const char *name) :
           mAllDayAgendaPopup,SLOT(showEventPopup(KOEvent *)));
 
   // Create agenda frame
-  QWidget *agendaFrame = new QWidget(splitterAgenda);
+  QWidget *agendaFrame = new QWidget(mSplitterAgenda);
   QGridLayout *agendaLayout = new QGridLayout(agendaFrame,3,3);
 //  QHBox *agendaFrame = new QHBox(splitterAgenda);
 
@@ -277,7 +278,7 @@ KOAgendaView::KOAgendaView(CalObject *cal,QWidget *parent,const char *name) :
 
   QBoxLayout *layoutTop = new QVBoxLayout(this);
   layoutTop->addWidget(mDayLabelsFrame);
-  layoutTop->addWidget(splitterAgenda);
+  layoutTop->addWidget(mSplitterAgenda);
 
   //connect signals and slots
   connect(mAgenda->verticalScrollBar(),SIGNAL(valueChanged(int)),
@@ -314,6 +315,16 @@ KOAgendaView::KOAgendaView(CalObject *cal,QWidget *parent,const char *name) :
           SLOT(startDrag(KOEvent *)));
   connect(mAllDayAgenda,SIGNAL(startDragSignal(KOEvent *)),
           SLOT(startDrag(KOEvent *)));
+
+  // synchronize selections
+  connect(mAgenda,SIGNAL(itemSelected(bool)),
+          mAllDayAgenda,SLOT(deselectItem()));
+  connect(mAllDayAgenda,SIGNAL(itemSelected(bool)),
+          mAgenda,SLOT(deselectItem()));
+  connect(mAgenda,SIGNAL(itemSelected(bool)),
+          SIGNAL(eventsSelected(bool)));
+  connect(mAllDayAgenda,SIGNAL(itemSelected(bool)),
+          SIGNAL(eventsSelected(bool)));
 }
 
 
@@ -368,7 +379,14 @@ int KOAgendaView::currentDateCount()
 QList<KOEvent> KOAgendaView::getSelected()
 {
   QList<KOEvent> selectedEvents;
-  
+  KOEvent *event;
+
+  event = mAgenda->selectedEvent();
+  if (event) selectedEvents.append(event);
+
+  event = mAllDayAgenda->selectedEvent();
+  if (event) selectedEvents.append(event);  
+
   return selectedEvents;
 }
 
@@ -412,7 +430,8 @@ void KOAgendaView::updateConfig()
 
 void KOAgendaView::updateEventDates(KOAgendaItem *item)
 {
-//  kdDebug() << "updateEventDates " << item->text() << endl;
+//  kdDebug() << "updateEventDates(): " << item->text() << endl;
+
   QDateTime startDt,endDt;
   QDate startDate;
 
@@ -437,8 +456,12 @@ void KOAgendaView::updateEventDates(KOAgendaItem *item)
     }
   }
   
+//  kdDebug() << "updateEventDates(): now setting dates" << endl;
+
   item->itemEvent()->setDtStart(startDt);
   item->itemEvent()->setDtEnd(endDt);
+
+//  kdDebug() << "updateEventDates() done " << endl;
 }
 
 
@@ -809,4 +832,26 @@ void KOAgendaView::startDrag(KOEvent *event)
   if (vd->drag()) {
     kdDebug() << "KOTodoListView::contentsMouseMoveEvent(): Delete drag source" << endl;
   }
+}
+
+void KOAgendaView::readSettings()
+{
+  KConfig *config = KGlobal::config();
+
+  config->setGroup("Views");
+    
+  QValueList<int> sizes = config->readIntListEntry("Separator AgendaView");
+  if (sizes.count() == 2) {
+    mSplitterAgenda->setSizes(sizes);
+  }  
+}
+
+void KOAgendaView::writeSettings()
+{
+  KConfig *config = KGlobal::config();
+
+  config->setGroup("Views");
+    
+  QValueList<int> list = mSplitterAgenda->sizes();
+  config->writeEntry("Separator AgendaView",list);
 }

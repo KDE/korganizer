@@ -422,7 +422,7 @@ void ExportWebDialog::createHtmlTodo (QTextStream *ts,KOEvent *todo)
   *ts << "  <TD";
   if (completed) *ts << " CLASS=done";
   *ts << ">\n";
-  *ts << "    " << (completed ? i18n("Done") : i18n("Open"))
+  *ts << "    " << (completed ? i18n("not yet done","Done") : i18n("Open"))
       << "\n";
   *ts << "  </TD>\n";
 

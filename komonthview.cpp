@@ -23,14 +23,22 @@
 #include "komonthview.h"
 #include "komonthview.moc"
 
+KNoScrollListBox::KNoScrollListBox(QWidget *parent,const char *name)
+  : QListBox(parent, name)
+{
+//      clearTableFlags();
+//      setTableFlags(Tbl_clipCellPainting | Tbl_cutCellsV | Tbl_snapToVGrid |
+//		    Tbl_scrollLastHCell| Tbl_smoothHScrolling);
+}
+
 void KNoScrollListBox::keyPressEvent(QKeyEvent *e) 
 {
   switch(e->key()) {
   case Key_Right:
-//    setXOffset(xOffset()+2);
+    scrollBy(4,0);
     break; 
   case Key_Left:
-//    setXOffset(xOffset()-2);
+    scrollBy(-4,0);
     break;
   case Key_Up:
     if(!count()) break;
@@ -80,6 +88,7 @@ void KNoScrollListBox::mousePressEvent(QMouseEvent *e)
     emit rightClick();
   } 
 }
+
 
 EventListBoxItem::EventListBoxItem(const QString & s)
   : QListBoxItem()
@@ -135,12 +144,13 @@ int EventListBoxItem::width(const QListBox *lb) const
   return(x + lb->fontMetrics().width(text())+1);
 }
 
+
 KSummaries::KSummaries(QWidget    *parent, 
                        CalObject  *cal,
                        QDate       qd,
                        int         index,
                        const char *name)
-  :KNoScrollListBox(parent, name)
+  : KNoScrollListBox(parent, name)
 {
   idx = index;
   myCal = cal;
@@ -157,6 +167,8 @@ KSummaries::KSummaries(QWidget    *parent,
 
 void KSummaries::calUpdated()
 {
+//  kdDebug() << "KSummaries::calUpdated()" << endl;
+  
   setBackgroundMode(PaletteBase);
   clear();
   currIdxs->clear();
@@ -216,6 +228,8 @@ void KSummaries::calUpdated()
   }
 
   repaint();
+
+//  kdDebug() << "KSummaries::calUpdated() done" << endl;  
 }
 
 KOEvent *KSummaries::getSelected()
@@ -262,7 +276,7 @@ KOMonthView::KOMonthView(CalObject *cal,
                            QWidget    *parent,
                            const char *name,
                            QDate       qd)
-    : KOBaseView(cal,parent, name)
+    : KOEventView(cal,parent, name)
 {
     KIconLoader *loader = KGlobal::iconLoader();
     QPixmap pixmap;
@@ -487,6 +501,13 @@ void KOMonthView::updateConfig()
   for (int i = 0; i < 42; i++) {
     dayHeaders[i]->setFont(hfont);
     daySummaries[i]->setFont(newFont);
+    if (KOPrefs::instance()->mEnableMonthScroll) {
+      daySummaries[i]->setVScrollBarMode(QScrollView::Auto);
+      daySummaries[i]->setHScrollBarMode(QScrollView::Auto);
+    } else {
+      daySummaries[i]->setVScrollBarMode(QScrollView::AlwaysOff);
+      daySummaries[i]->setHScrollBarMode(QScrollView::AlwaysOff);
+    }
   }
   
   viewChanged();

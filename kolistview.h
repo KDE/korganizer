@@ -9,7 +9,7 @@
 
 #include <qlistview.h>
 
-#include "kobaseview.h"
+#include "koeventview.h"
 
 /**
  * This class provides a way of displaying a single KOEvent in a QListView.
@@ -45,7 +45,7 @@ private:
  * @author Preston Brown <pbrown@kde.org>
  * @see KOBaseView, KODayListView
  */
-class KOListView : public KOBaseView
+class KOListView : public KOEventView
 {
   Q_OBJECT
 

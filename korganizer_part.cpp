@@ -1,3 +1,4 @@
+// $Id$
 #include "korganizer_part.h"
 
 #include <kinstance.h>
@@ -5,8 +6,8 @@
 #include <kaboutdata.h>
 #include <kiconloader.h>
 #include <kaction.h>
+#include <kdebug.h>
 
-//#include <qlabel.h>
 #include "calendarview.h"
 
 extern "C"
@@ -27,6 +28,7 @@ extern "C"
 * function
 */
 KInstance *KOrganizerFactory::s_instance = 0L;
+KAboutData *KOrganizerFactory::s_about = 0L;
 
 KOrganizerFactory::KOrganizerFactory()
 {
@@ -34,10 +36,9 @@ KOrganizerFactory::KOrganizerFactory()
 
 KOrganizerFactory::~KOrganizerFactory()
 {
-  if (s_instance)
   delete s_instance;
-
   s_instance = 0;
+  delete s_about;
 }
 
 QObject *KOrganizerFactory::create(QObject *parent, const char *name,
@@ -51,9 +52,13 @@ QObject *KOrganizerFactory::create(QObject *parent, const char *name,
 KInstance *KOrganizerFactory::instance()
 {
   if ( !s_instance ) {
-    KAboutData *about = new KAboutData("korganizer", I18N_NOOP("KOrganizer"), "1.99");
-    s_instance = new KInstance(about);
+    s_about = new KAboutData("korganizer", I18N_NOOP("KOrganizer"),"1.99");
+    s_instance = new KInstance(s_about);
   }
+  
+  kdDebug() << "KOrganizerFactory::instance(): Name: " <<
+               s_instance->instanceName() << endl;
+  
   return s_instance;
 }
 

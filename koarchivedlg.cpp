@@ -20,6 +20,7 @@
 #include "kdateedit.h"
 #include "koevent.h"
 #include "calobject.h"
+#include "calendarlocal.h"
 #include "koprefs.h"
 
 #include "koarchivedlg.h"
@@ -89,7 +90,7 @@ void ArchiveDialog::slotUser1()
   }
 
   // Duplicate current calendar by loading in new calendar object
-  CalObject archiveCalendar;
+  CalendarLocal archiveCalendar;
   if (!archiveCalendar.load(tmpFile.name())) {
     kdDebug() << "ArchiveDialog::slotUser1(): Can't load calendar from temp file" << endl;
     return;

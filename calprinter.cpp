@@ -18,7 +18,7 @@
 #include <kmessagebox.h>
 #include <kapp.h>
 
-#include "kooptionsdialog.h"
+#include "koprefsdialog.h"
 #include "koprefs.h"
 
 #include "calprinter.h"
@@ -47,7 +47,8 @@ CalPrinter::~CalPrinter()
 
 void CalPrinter::setupPrinter()
 {
-  KOOptionsDialog *optionsDlg = new KOOptionsDialog;
+  KOPrefsDialog *optionsDlg = new KOPrefsDialog;
+  optionsDlg->readConfig();
   optionsDlg->showPrinterTab();
   connect(optionsDlg, SIGNAL(configChanged()),
 	  parent, SLOT(updateConfig()));

@@ -2,9 +2,15 @@
                        | K   O R G A N I Z E R |
                        +-----------------------+
 
-                                 v2.0
+                            version pre2.1
 
                  http://devel-home.kde.org/~korganiz
+
+THIS IS A DEVElOPMENT VERSION. SOME NOTES:
+
+KOrganizer now requires that you have libical 0.20
+(http://softwarestudio.org/libical) installed. This will change in the future,
+but for now it's necessary to support the iCalendar format.
 
 QUICK NOTES ON WHAT'S NEW IN THIS RELEASE:
 
@@ -69,7 +75,7 @@ in the Help menu for convenient reporting of bugs or feature requests.
 
 NEWS and TODO:
 
-Have a look at the KOrganizer homepage (http://devel-home.kde.org/~korganiz).
+Have a look at the KOrganizer homepage (http://korganizer.kde.org).
 There you find news and a todo list for future KOrganizer development (of
 course generated with KOrganizer itself).
 

@@ -16,6 +16,7 @@
 #include <kstddirs.h>
 #include <kbuttonbox.h>
 #include <kabapi.h>
+#include <kdebug.h>
 
 #include "koevent.h"
 #include "koprefs.h"
@@ -431,6 +432,8 @@ void KOEditorRecurrence::initYearly()
 
 void KOEditorRecurrence::initExceptions()
 {
+  mExceptionDates.setAutoDelete(true);
+
   // Create the exceptions group box, which holds controls for
   // specifying dates which are exceptions to the rule specified on
   // this tab.
@@ -508,24 +511,29 @@ void KOEditorRecurrence::setEnabled(bool enabled)
 
 void KOEditorRecurrence::addException()
 {
-  QDate tmpDate;
-
-  tmpDate = exceptionDateEdit->getDate();
+  QDate tmpDate = exceptionDateEdit->getDate();
   exceptionList->insertItem(KGlobal::locale()->formatDate(tmpDate));
+  mExceptionDates.append(new QDate(tmpDate));
 }
 
 void KOEditorRecurrence::changeException()
 {
-  QDate tmpDate;
-  tmpDate = exceptionDateEdit->getDate();
-
-  exceptionList->changeItem(KGlobal::locale()->formatDate(tmpDate),
-			    exceptionList->currentItem());
+  int pos = exceptionList->currentItem();
+  if (pos < 0) return;
+  
+  QDate tmpDate = exceptionDateEdit->getDate();
+  mExceptionDates.remove(pos);
+  mExceptionDates.insert(pos,new QDate(tmpDate));
+  exceptionList->changeItem(KGlobal::locale()->formatDate(tmpDate),pos);
 }
 
 void KOEditorRecurrence::deleteException()
 {
-  exceptionList->removeItem(exceptionList->currentItem());
+  int pos = exceptionList->currentItem();
+  if (pos < 0) return;
+
+  mExceptionDates.remove(pos);
+  exceptionList->removeItem(pos);
 }
 
 void KOEditorRecurrence::unsetAllCheckboxes()
@@ -747,8 +755,10 @@ void KOEditorRecurrence::readEvent(KOEvent *event)
   QDate *curDate;
   exceptionDateEdit->setDate(QDate::currentDate());
   for (curDate = exDates.first(); curDate;
-       curDate = exDates.next())
+       curDate = exDates.next()) {
     exceptionList->insertItem(KGlobal::locale()->formatDate(*curDate));
+    mExceptionDates.append(new QDate(*curDate));
+  }
 }
 
 void KOEditorRecurrence::writeEvent(KOEvent *event)
@@ -874,9 +884,10 @@ void KOEditorRecurrence::writeEvent(KOEvent *event)
     event->unsetRecurs();
 
   QDateList exDates;
-  for (i = 0; i < exceptionList->count(); i++)
-    exDates.inSort(dateFromText(exceptionList->text(i)));
-
+  for (i = 0; i < exceptionList->count(); i++) {
+    exDates.inSort(new QDate(*(mExceptionDates.at(i))));
+  }
+  
   event->setExDates(exDates);
   exDates.clear();
 }

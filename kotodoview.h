@@ -16,6 +16,7 @@
 
 #include "calobject.h"
 #include "koevent.h"
+#include "kobaseview.h"
 
 /**
  * This class provides a way of displaying a single KOEvent of Todo-Type in a
@@ -69,6 +70,7 @@ class KOTodoListView : public QListView
     void contentsMousePressEvent(QMouseEvent *);
     void contentsMouseMoveEvent(QMouseEvent *);
     void contentsMouseReleaseEvent(QMouseEvent *);
+    void contentsMouseDoubleClickEvent(QMouseEvent *);
 
   private:
     CalObject *mCalendar;
@@ -85,18 +87,42 @@ class KOTodoListView : public QListView
  * @short multi-column list view of todo events.
  * @author Cornelius Schumacher <schumacher@asic.uni-heidelberg.de>
  */
-class KOTodoView : public QWidget
+class KOTodoView : public KOBaseView
 {
     Q_OBJECT
   public:
     KOTodoView(CalObject *, QWidget* parent=0, const char* name=0 );
     ~KOTodoView() {}
 
+    QList<KOEvent> getSelected();
+
+    /** Return number of shown dates. TodoView does not show dates, */
+    int currentDateCount() { return 0; }
+
+    void printPreview(CalPrinter *calPrinter, const QDate &fd, const QDate &td);
+
   public slots:
     void updateView();
     void updateConfig();
-    KOEvent *getSelected();
+
+    void changeEventDisplay(KOEvent *, int);
+  
+    /**
+     * selects the dates specified in the list.  If the view cannot support
+     * displaying all the dates requested, or it needs to change the dates
+     * in some manner, it may call @see datesSelected.
+     * @param dateList is the list of dates to try and select.
+     */
+    void selectDates(const QDateList dateList);
+  
+    /**
+     * Select events visible in the current display
+     * @param eventList a list of events to select.
+     */
+    void selectEvents(QList<KOEvent> eventList);
+
     void editItem(QListViewItem *item);
+    void showItem(QListViewItem *item);
     void popupMenu(QListViewItem *item,const QPoint &,int);
     void newTodo();
     void newSubTodo();
@@ -118,8 +144,6 @@ class KOTodoView : public QWidget
     QMap<KOEvent *,KOTodoViewItem *>::ConstIterator
       insertTodoItem(KOEvent *todo);
 
-    CalObject *mCalendar;
-    
     KOTodoListView *mTodoListView;
     QPopupMenu *mItemPopupMenu;
     QPopupMenu *mPopupMenu;

@@ -22,6 +22,8 @@ class KOAgenda : public QScrollView
                const char * name=0, WFlags f=0 );
     virtual ~KOAgenda();
 
+    KOEvent *selectedEvent();
+
     virtual bool eventFilter ( QObject *, QEvent * );   
 
     void contentsToGrid (int x, int y, int& gx, int& gy);
@@ -63,7 +65,14 @@ class KOAgenda : public QScrollView
     void popupAlarm();
 
     void checkScrollBoundaries(int);
-        
+    
+    /** Deselect selected items. This function does not emit any signals. */
+    void deselectItem();
+    /** Select item. If the argument is 0, the currently selected item gets
+     deselected. This function emits the itemSelected(bool) signal to inform
+     about selection/deseelction of events. */
+    void selectItem(KOAgendaItem *);
+    
   signals:
     void newEventSignal();
     void newEventSignal(int gx,int gy);
@@ -72,6 +81,7 @@ class KOAgenda : public QScrollView
     void deleteEventSignal(KOEvent *event);
 
     void itemModified(KOAgendaItem *item);
+    void itemSelected(bool);
 
     void showEventPopupSignal(KOEvent *);
 
@@ -104,6 +114,8 @@ class KOAgenda : public QScrollView
      */
     void keyPressEvent( QKeyEvent * );
 
+    void calculateWorkingHours();
+    
   private:
     void init();
     bool mAllDayMode;
@@ -133,11 +145,19 @@ class KOAgenda : public QScrollView
     int mCurrentCellX;
     int mCurrentCellY;
 
+    // Working Hour coordiantes
+    bool mWorkingHoursEnable;
+    int mWorkingHoursYTop;
+    int mWorkingHoursYBottom;
+    
     // The KOAgendaItem, which has been right-clicked last
     KOAgendaItem *mClickedItem;
 
     // The KOAgendaItem, which is being moved/resized    
     KOAgendaItem *mActionItem;
+
+    // Currently selected item
+    KOAgendaItem *mSelectedItem;
 
     enum MouseActionType {NOP,MOVE,RESIZETOP,RESIZEBOTTOM,RESIZELEFT,
                           RESIZERIGHT};

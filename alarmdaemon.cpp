@@ -24,6 +24,7 @@
 #endif
 
 #include "alarmdialog.h"
+#include "calendarlocal.h"
 
 #include "alarmdaemon.h"
 #include "alarmdaemon.moc"
@@ -78,7 +79,7 @@ AlarmDaemon::AlarmDaemon(const QString &fn, QObject *parent, const char *name)
   docker = new AlarmDockWindow;
   docker->show();
 
-  calendar = new CalObject;
+  calendar = new CalendarLocal;
   calendar->showDialogs(FALSE);
 
   mAlarmDialog = new AlarmDialog;

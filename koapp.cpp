@@ -1,3 +1,8 @@
+// $Id$
+
+#include <stdio.h>
+#include <stdlib.h>
+
 #include <kstddirs.h>
 #include <kglobal.h>
 #include <kcmdlineargs.h>
@@ -6,7 +11,7 @@
 #include <dcopclient.h>
 #include <kwin.h>
 
-#include "calobject.h"
+#include "calendarlocal.h"
 #include "korganizer.h"
 
 #include "koapp.h"
@@ -23,7 +28,7 @@ KOrganizerApp::~KOrganizerApp()
 
 void KOrganizerApp::displayImminent(const QString &file,int numdays)
 {
-  CalObject *cal = new CalObject;
+  CalObject *cal = new CalendarLocal;
 
   QDate currDate(QDate::currentDate());
   KOEvent *currEvent;

@@ -85,6 +85,8 @@ void KOAgenda::init()
   mActionType = NOP;
   mItemMoved = false;
 
+  mSelectedItem = 0;
+
   mItems.setAutoDelete(true);
   
   resizeContents( mGridSpacingX * mColumns + 1 , mGridSpacingY * mRows + 1 );
@@ -100,7 +102,9 @@ void KOAgenda::init()
   setHScrollBarMode(AlwaysOff);
 
   setStartHour(KOPrefs::instance()->mDayBegins);
-  
+
+  calculateWorkingHours();
+
   connect(verticalScrollBar(),SIGNAL(valueChanged(int)),
           SLOT(checkScrollBoundaries(int)));
 }
@@ -115,6 +119,8 @@ void KOAgenda::clear()
     removeChild(item);
   }
   mItems.clear();
+
+  mSelectedItem = 0;
 }
 
 
@@ -133,6 +139,15 @@ void KOAgenda::changeColumns(int columns)
   QApplication::sendEvent(this,new QResizeEvent(size(),size()));
 }
 
+
+KOEvent *KOAgenda::selectedEvent()
+{
+  if (mSelectedItem) {
+    return mSelectedItem->itemEvent();
+  } else {
+    return 0;
+  }
+}
 
 /*
   This is the eventFilter function, which gets all events from the KOAgendaItems
@@ -163,19 +178,24 @@ bool KOAgenda::eventFilter ( QObject *object, QEvent *event )
           if (me->button() == RightButton) {
             mClickedItem = (KOAgendaItem *)object;
             if (mClickedItem) {
+              selectItem(mClickedItem);
               emit showEventPopupSignal(mClickedItem->itemEvent());
             }
 //            mItemPopup->popup(QCursor::pos());
           } else {
             mActionItem = (KOAgendaItem *)object;
-            if (!(mActionItem->itemEvent()->isReadOnly() ||
-                  mActionItem->itemEvent()->doesRecur())) {
-              startItemAction(viewportPos);
-            } else {
-              mActionItem = 0;
+            if (mActionItem) {
+              selectItem(mActionItem);
+              if (!(mActionItem->itemEvent()->isReadOnly() ||
+                    mActionItem->itemEvent()->doesRecur())) {
+                startItemAction(viewportPos);
+              } else {
+                mActionItem = 0;
+              }
             }
           }
         } else {
+          selectItem(0);
           mActionItem = 0;
 	  mActionType = NOP;
           setCursor(arrowCursor);
@@ -198,13 +218,16 @@ bool KOAgenda::eventFilter ( QObject *object, QEvent *event )
 	}
       } else if (me->type() == QEvent::MouseButtonDblClick) {
         if (object == viewport()) {
+          selectItem(0);
           int x,y;
           viewportToContents(viewportPos.x(),viewportPos.y(),x,y);
           int gx,gy;
           contentsToGrid(x,y,gx,gy);
 	  emit newEventSignal(gx,gy);
         } else {
-	  emit editEventSignal(((KOAgendaItem *)object)->itemEvent());
+          KOAgendaItem *doubleClickedItem = (KOAgendaItem *)object;
+          selectItem(doubleClickedItem);
+	  emit editEventSignal(doubleClickedItem->itemEvent());
 	}
       }
       break;
@@ -387,6 +410,8 @@ void KOAgenda::performItemAction(QPoint viewportPos)
 
 void KOAgenda::endItemAction()
 {
+//  kdDebug() << "KOAgenda::endItemAction()" << endl;
+
   if (mItemMoved) {
     KOAgendaItem *placeItem = mActionItem->firstMultiItem();
     if (!placeItem) placeItem = mActionItem;
@@ -402,6 +427,8 @@ void KOAgenda::endItemAction()
   mActionItem = 0;
   mActionType = NOP;
   mItemMoved = 0;
+
+//  kdDebug() << "KOAgenda::endItemAction() done" << endl;
 }
 
 void KOAgenda::setNoActionCursor(KOAgendaItem *moveItem,QPoint viewportPos)
@@ -498,10 +525,13 @@ void KOAgenda::placeSubCells(KOAgendaItem *placeItem)
     if (mAllDayMode) newSubCellWidth = mGridSpacingY / maxSubCells;
     else newSubCellWidth = mGridSpacingX / maxSubCells;
     conflictItems.append(placeItem);
+
+//    kdDebug() << "---Conflict items: " << conflictItems.count() << endl;
     
     // Adjust sub cell geometry of all items
     for ( item=conflictItems.first(); item != 0;
           item=conflictItems.next() ) {
+//      kdDebug() << "---Placing item: " << item->itemEvent()->getSummary() << endl;
       item->setSubCells(maxSubCells);
       if (mAllDayMode) {
         item->resize(item->cellWidth() * mGridSpacingX, newSubCellWidth);        
@@ -533,12 +563,28 @@ void KOAgenda::placeSubCells(KOAgendaItem *placeItem)
 */
 void KOAgenda::drawContents(QPainter* p, int cx, int cy, int cw, int ch)
 {
-//  kdDebug() << "drawContents cx: " << cx << " cy: " << cy << " cw: " << cw << " ch: " << ch << endl;
+  if (mWorkingHoursEnable) {
+    int x1 = cx;
+    int y1 = mWorkingHoursYTop;
+    if (y1 < cy) y1 = cy;
+    int x2 = cx+cw-1;
+  //  int x2 = mGridSpacingX * 5 - 1;
+  //  if (x2 > cx+cw-1) x2 = cx + cw - 1;
+    int y2 = mWorkingHoursYBottom;
+    if (y2 > cy+ch-1) y2=cy+ch-1;
+
+    if (x2 >= x1 && y2 >= y1) {
+      p->fillRect(x1,y1,x2-x1+1,y2-y1+1,
+                  KOPrefs::instance()->mWorkingHoursColor);
+    }
+  }
+        
+  //  kdDebug() << "drawContents cx: " << cx << " cy: " << cy << " cw: " << cw << " ch: " << ch << endl;
   int x = ((int)(cx/mGridSpacingX))*mGridSpacingX;
   while (x < cx + cw) {
     p->drawLine(x,cy,x,cy+ch);
     x+=mGridSpacingX;
-  }  
+  }
 
   int y = ((int)(cy/mGridSpacingY))*mGridSpacingY;
   while (y < cy + ch) {
@@ -816,6 +862,8 @@ int KOAgenda::minimumWidth() const
 void KOAgenda::updateConfig()
 {
   viewport()->setBackgroundColor(KOPrefs::instance()->mAgendaBgColor);
+
+  calculateWorkingHours();
 }
 
 void KOAgenda::checkScrollBoundaries()
@@ -844,6 +892,26 @@ void KOAgenda::checkScrollBoundaries(int v)
   }
 }
 
+void KOAgenda::deselectItem()
+{
+  if (mSelectedItem == 0) return;
+  mSelectedItem->select(false);
+  mSelectedItem = 0;
+}
+
+void KOAgenda::selectItem(KOAgendaItem *item)
+{
+  if (mSelectedItem == item) return;
+  deselectItem();
+  if (item == 0) {
+    emit itemSelected(false);
+    return;
+  }
+  mSelectedItem = item;
+  mSelectedItem->select();
+  emit itemSelected(true);
+}
+
 // This function seems never be called.
 void KOAgenda::keyPressEvent( QKeyEvent *kev )
 {
@@ -863,4 +931,15 @@ void KOAgenda::keyPressEvent( QKeyEvent *kev )
     default:
       ;
   }
+}
+
+void KOAgenda::calculateWorkingHours()
+{
+//  mWorkingHoursEnable = KOPrefs::instance()->mEnableWorkingHours;
+  mWorkingHoursEnable = !mAllDayMode;
+  
+  mWorkingHoursYTop = mGridSpacingY * 
+                      KOPrefs::instance()->mWorkingHoursStart * 2;
+  mWorkingHoursYBottom = mGridSpacingY *
+                         KOPrefs::instance()->mWorkingHoursEnd * 2 - 1;
 }

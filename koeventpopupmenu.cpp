@@ -16,7 +16,7 @@ KOEventPopupMenu::KOEventPopupMenu()
 
   insertItem (i18n("&Show"),this,SLOT(popupShow()));
   mEditOnlyItems.append(insertItem (i18n("&Edit"),this,SLOT(popupEdit())));
-  mEditOnlyItems.append(insertItem (SmallIcon("delete"),i18n("&Delete"),
+  mEditOnlyItems.append(insertItem (SmallIcon("editdelete"),i18n("&Delete"),
                                    this,SLOT(popupDelete())));
 }
 

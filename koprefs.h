@@ -10,25 +10,27 @@
 #include <qstringlist.h>
 #include <qdict.h>
 
+#include "kprefs.h"
+
 class KConfig;
 
-class KOPrefs
+class KOPrefs : public KPrefs
 {
   public:
-    ~KOPrefs();
+    virtual ~KOPrefs();
   
     /** Get instance of KOPrefs. It is made sure that there is only one
     instance. */
     static KOPrefs *instance();
   
     /** Set preferences to default values */
-    void setDefaults();
+    void usrSetDefaults();
   
     /** Read preferences from config file */
-    void readConfig();
+    void usrReadConfig();
 
     /** Write preferences to config file */
-    void writeConfig();
+    void usrWriteConfig();
 
   protected:
     void setCategoryDefaults();
@@ -37,8 +39,6 @@ class KOPrefs
     /** Constructor disabled for public. Use instance() to create a KOPrefs
     object. */
     KOPrefs();
-
-    KConfig *mConfig;  // pointer to KConfig object
 
     static KOPrefs *mInstance;
 
@@ -67,12 +67,16 @@ class KOPrefs
     QColor  mHighlightColor;
     QColor  mEventColor;
     QColor  mAgendaBgColor;
+    QColor  mWorkingHoursColor;
 
     int     mDayBegins;
     int     mHourSize;
     bool    mDailyRecur;
     bool    mWeeklyRecur;
     bool    mEnableToolTips;
+    bool    mEnableMonthScroll;
+    int     mWorkingHoursStart;
+    int     mWorkingHoursEnd;
 
     QString mPrinter;
     int     mPaperSize;
@@ -90,9 +94,6 @@ class KOPrefs
   private:
     QDict<QColor> mCategoryColors;
     QColor mDefaultCategoryColor;
-    QColor mDefaultHolidayColor;
-    QColor mDefaultHighlightColor;
-    QColor mDefaultAgendaBgColor;
 
     QFont mDefaultTimeBarFont;
     QFont mDefaultViewFont;

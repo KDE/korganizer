@@ -11,6 +11,7 @@
 #include <kmessagebox.h>
 
 #include "vcaldrag.h"
+#include "calprinter.h"
 
 #include "kotodoview.h"
 #include "kotodoview.moc"
@@ -206,11 +207,23 @@ void KOTodoListView::contentsMouseReleaseEvent(QMouseEvent *e)
   mMousePressed = false;
 }
 
+void KOTodoListView::contentsMouseDoubleClickEvent(QMouseEvent *e)
+{
+  if (!e) return;
+
+  QPoint vp = contentsToViewport(e->pos());
+
+  QListViewItem *item = itemAt(vp);
+
+  if (!item) return;
+
+  emit doubleClicked(item);
+}
 
 /////////////////////////////////////////////////////////////////////////////
 
 KOTodoView::KOTodoView(CalObject *calendar,QWidget* parent,const char* name) :
-  QWidget(parent,name), mCalendar(calendar)
+  KOBaseView(calendar,parent,name)
 {
   QBoxLayout *topLayout = new QVBoxLayout(this);
   
@@ -255,8 +268,8 @@ KOTodoView::KOTodoView(CalObject *calendar,QWidget* parent,const char* name) :
                          SLOT(purgeCompleted()));
   
   // Double clicking conflicts with opening/closing the subtree                   
-//  QObject::connect(mTodoListView,SIGNAL(doubleClicked(QListViewItem *)),
-//                   this,SLOT(editItem(QListViewItem *)));
+  QObject::connect(mTodoListView,SIGNAL(doubleClicked(QListViewItem *)),
+                   this,SLOT(showItem(QListViewItem *)));
   QObject::connect(mTodoListView,SIGNAL(rightButtonClicked ( QListViewItem *,
                    const QPoint &, int )),
                    this,SLOT(popupMenu(QListViewItem *,const QPoint &,int)));
@@ -332,16 +345,44 @@ void KOTodoView::updateConfig()
   // to be implemented.
 }
 
-KOEvent *KOTodoView::getSelected()
+QList<KOEvent> KOTodoView::getSelected()
 {
+  QList<KOEvent> selected;
+
   KOTodoViewItem *item = (KOTodoViewItem *)(mTodoListView->selectedItem());
-  if (item) return item->event();
-  else return 0;
+  if (item) selected.append(item->event());
+
+  return selected;
+}
+
+void KOTodoView::changeEventDisplay(KOEvent *, int)
+{
+  updateView();
+}
+
+void KOTodoView::selectDates(const QDateList)
+{
+}
+ 
+void KOTodoView::selectEvents(QList<KOEvent>)
+{
+  kdDebug() << "KOTodoView::selectEvents(): not yet implemented" << endl;
+}
+
+void KOTodoView::printPreview(CalPrinter *calPrinter, const QDate &fd,
+                              const QDate &td)
+{
+  calPrinter->preview(CalPrinter::Todo, fd, td);
 }
 
 void KOTodoView::editItem(QListViewItem *item)
 {
   emit editEventSignal(((KOTodoViewItem *)item)->event());
+}
+
+void KOTodoView::showItem(QListViewItem *item)
+{
+  emit showTodoSignal(((KOTodoViewItem *)item)->event());
 }
 
 void KOTodoView::popupMenu(QListViewItem *item,const QPoint &,int)
