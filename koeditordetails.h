@@ -108,6 +108,7 @@ class KOEditorDetails : public QWidget
     void fillAttendeeInput(AttendeeListItem *);
     void updateAttendeeItem();
     void setEnabledAttendeeInput(bool);
+    void attendeeMatched( const KABC::Addressee& );
 
   private:
     bool mDisableItemUpdate;

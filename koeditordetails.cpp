@@ -194,6 +194,8 @@ KOEditorDetails::KOEditorDetails (int spacing,QWidget* parent,const char* name)
   attendeeLabel->setBuddy( mNameEdit );
   connect(mNameEdit,SIGNAL(textChanged(const QString &)),
           SLOT(updateAttendeeItem()));
+  connect(mNameEdit,SIGNAL(contactMatched(const KABC::Addressee&)),
+          SLOT(attendeeMatched(const KABC::Addressee&)));
 
   mUidEdit = new QLineEdit(0);
   mUidEdit->setText("");
@@ -443,6 +445,11 @@ void KOEditorDetails::setEnabledAttendeeInput( bool enabled )
   mRsvpButton->setEnabled( enabled );
 
   mRemoveButton->setEnabled( enabled );
+}
+
+void KOEditorDetails::attendeeMatched( const KABC::Addressee &addr )
+{
+  mEmailEdit->setText( addr.preferredEmail() );
 }
 
 void KOEditorDetails::updateAttendeeItem()
