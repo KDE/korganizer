@@ -62,7 +62,7 @@ void KOTodoListView::contentsDragEnterEvent(QDragEnterEvent *e)
 {
 #ifndef KORG_NODND
 //  kdDebug() << "KOTodoListView::contentsDragEnterEvent" << endl;
-  if (!VCalDrag::canDecode(e)) {
+  if (!VCalDrag::canDecode(e)&&!QTextDrag::canDecode(e)) {
     e->ignore();
     return;
   }
@@ -77,7 +77,7 @@ void KOTodoListView::contentsDragMoveEvent(QDragMoveEvent *e)
 #ifndef KORG_NODND
 //  kdDebug() << "KOTodoListView::contentsDragMoveEvent" << endl;
 
-  if (!VCalDrag::canDecode(e)) {
+  if (!VCalDrag::canDecode(e)&&!QTextDrag::canDecode(e)) {
     e->ignore();
     return;
   }
@@ -101,7 +101,7 @@ void KOTodoListView::contentsDropEvent(QDropEvent *e)
 #ifndef KORG_NODND
 //  kdDebug() << "KOTodoListView::contentsDropEvent" << endl;
 
-  if (!VCalDrag::canDecode(e)) {
+  if (!VCalDrag::canDecode(e)&&!QTextDrag::canDecode(e)) {
     e->ignore();
     return;
   }
@@ -116,9 +116,9 @@ void KOTodoListView::contentsDropEvent(QDropEvent *e)
         (KOTodoViewItem *)itemAt(contentsToViewport(e->pos()));
     Todo *destinationEvent = 0;
     if (destination) destinationEvent = destination->event();
-    
+
     Todo *existingTodo = mCalendar->getTodo(todo->uid());
-      
+
     if(existingTodo) {
 //      kdDebug() << "Drop existing Todo" << endl;
       Incidence *to = destinationEvent;
@@ -141,9 +141,28 @@ void KOTodoListView::contentsDropEvent(QDropEvent *e)
       mCalendar->addTodo(todo);
       emit todoDropped(todo);
     }
-  } else {
-    kdDebug() << "KOTodoListView::contentsDropEvent(): Todo from drop not decodable" << endl;
-    e->ignore();
+  } 
+  else {
+    QString text;
+    if (QTextDrag::decode(e,text)) {
+      //QListViewItem *qlvi = itemAt( contentsToViewport(e->pos()) );
+      KOTodoViewItem *todoi = static_cast<KOTodoViewItem *>(itemAt( contentsToViewport(e->pos()) ));
+      kdDebug() << "Dropped : " << text << endl;
+      QStringList emails = QStringList::split(",",text);
+      for(QStringList::ConstIterator it = emails.begin();it!=emails.end();++it) {
+        kdDebug() << " Email: " << (*it) << endl;
+        int pos = (*it).find("<");
+        QString name = (*it).left(pos);
+        QString email = (*it).mid(pos);
+        if (!email.isEmpty() && todoi) {
+          todoi->event()->addAttendee(new Attendee(name,email));
+        }
+      }
+    }
+    else {
+      kdDebug() << "KOTodoListView::contentsDropEvent(): Todo from drop not decodable" << endl;
+      e->ignore();
+    }
   }
 #endif
 }
@@ -169,6 +188,7 @@ void KOTodoListView::contentsMousePressEvent(QMouseEvent* e)
 void KOTodoListView::contentsMouseMoveEvent(QMouseEvent* e)
 {
 #ifndef KORG_NODND
+//  kdDebug() << "KOTodoListView::contentsMouseMoveEvent()" << endl;
   QListView::contentsMouseMoveEvent(e);
   if (mMousePressed && (mPressPos - e->pos()).manhattanLength() >
       QApplication::startDragDistance()) {

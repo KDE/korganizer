@@ -58,7 +58,7 @@ void KOTodoEditor::init()
 void KOTodoEditor::setupGeneral()
 {
   mGeneral = new KOEditorGeneralTodo(this);
- 
+
   connect(mGeneral,SIGNAL(openCategoryDialog()),mCategoryDialog,SLOT(show()));
   connect(mCategoryDialog, SIGNAL(categoriesSelected(const QString &)),
           mGeneral,SLOT(setCategories(const QString &)));
@@ -183,6 +183,9 @@ void KOTodoEditor::readTodo(Todo *todo)
 {
   mGeneral->readTodo(todo);
   mDetails->readEvent(todo);
+  
+  // categories
+  mCategoryDialog->setSelected(todo->categories());
 
   // We should handle read-only events here.
 }

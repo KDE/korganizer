@@ -80,7 +80,8 @@ void ConfigDialog::load()
 
     if (country == currentHoliday) currentHolidayName = countryName;
   }
-
+  holidayList.sort();
+  
   mHolidayCombo->insertStringList(holidayList);
     
   for(int i=0;i<mHolidayCombo->count();++i) {
