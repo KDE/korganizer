@@ -87,11 +87,6 @@ void KOrganizerApp::startAlarmDaemon()
   QString execStr = locate("exe","alarmd");
   system(execStr.latin1());
 
-  // Force alarm daemon to load active calendar
-  if (!dcopClient()->send("alarmd","ad","reloadCal()","")) {
-    kdDebug() << "KOrganizerApp::startAlarmDaemon(): dcop send failed" << endl;
-  }
-
   kdDebug() << "Starting alarm daemon done" << endl;
 }
 
@@ -109,7 +104,13 @@ int KOrganizerApp::newInstance()
   } else if (args->isSet("show")) {
     numDays = args->getOption("show").toInt();
   } else {
-    startAlarmDaemon();
+    if (!dcopClient()->isApplicationRegistered("alarmd")) {
+      startAlarmDaemon();
+    }
+    // Force alarm daemon to load active calendar
+    if (!dcopClient()->send("alarmd","ad","reloadCal()","")) {
+      kdDebug() << "KOrganizerApp::startAlarmDaemon(): dcop send failed" << endl;
+    }
   }
 
   // If filenames was given as argument load this as calendars, one per window.
