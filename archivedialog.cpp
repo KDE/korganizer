@@ -26,6 +26,8 @@
 #include <qlabel.h>
 #include <qlayout.h>
 #include <qdatetime.h>
+#include <qcheckbox.h>
+#include <qwhatsthis.h>
 
 #include <kdebug.h>
 #include <klocale.h>
@@ -37,6 +39,7 @@
 #include <ktempfile.h>
 #include <kio/netaccess.h>
 #include <klineedit.h>
+#include <kactivelabel.h>
 
 #include <libkcal/event.h>
 #include <libkcal/calendar.h>
@@ -52,28 +55,62 @@
 
 ArchiveDialog::ArchiveDialog(Calendar *cal,QWidget *parent, const char *name)
   : KDialogBase (Plain,i18n("Archive/Delete Past Appointments"),
-                 User1|User2|Cancel,User1,parent,name,false,true,
-                 i18n("Archive"),i18n("Delete"))
+                 User1|Cancel,User1,parent,name,false,true,
+                 i18n("&Archive"))
 {
   mCalendar = cal;
 
   QFrame *topFrame = plainPage();
-  QGridLayout *topLayout = new QGridLayout(topFrame);
+  QVBoxLayout *topLayout = new QVBoxLayout(topFrame);
   topLayout->setSpacing(spacingHint());
 
-  QLabel *dateLabel = new QLabel(i18n("Appointments older than:"),topFrame);
-  topLayout->addWidget(dateLabel,0,0);
+  KActiveLabel *descLabel = new KActiveLabel(
+    i18n("Archiving saves old appointments into the given file and "
+         "then deletes them in the current calendar. If the archive file "
+         "already exists they will be added. "
+         "(<a href=\"whatsthis:In order to add an archive "
+         "to your calendar, use the &quot;Merge Calendar&quot; function. "
+         "You can view an archive by opening it in KOrganizer like any "
+         "other calendar. It is not saved in a special format, but as "
+         "vCalendar.\">How to restore</a>)"),
+    topFrame);
+  topLayout->addWidget(descLabel);
 
+  QHBoxLayout *dateLayout = new QHBoxLayout(0);
+  QLabel *dateLabel = new QLabel(i18n("A&ppointments older than:"),topFrame);
+  dateLayout->addWidget(dateLabel);
   mDateEdit = new KDateEdit(topFrame);
-  topLayout->addWidget(mDateEdit,0,1);
+  QWhatsThis::add(mDateEdit, 
+    i18n("The age of the appointments to archive. All older appointments "
+         "will be saved and deleted, the newer will be kept."));
+  dateLabel->setBuddy(mDateEdit);
+  dateLayout->addWidget(mDateEdit);  
+  topLayout->addLayout(dateLayout);
 
-  QHBox *fileBox = new QHBox(topFrame);
-  fileBox->setSpacing(spacingHint());
-  topLayout->addMultiCellWidget(fileBox,1,1,0,1);
-  (void)new QLabel(i18n("Archive file:"),fileBox);
-  mArchiveFile = new KURLRequester (KOPrefs::instance()->mArchiveFile,fileBox);
+  QHBoxLayout *fileLayout = new QHBoxLayout(0);
+  fileLayout->setSpacing(spacingHint());
+  QLabel *l = new QLabel(i18n("Archive &file:"),topFrame);
+  fileLayout->addWidget(l);
+  mArchiveFile = new KURLRequester(KOPrefs::instance()->mArchiveFile,topFrame);
   mArchiveFile->setMode(KFile::File);
   mArchiveFile->setFilter(i18n("*.vcs|vCalendar Files"));
+  QWhatsThis::add(mArchiveFile, 
+    i18n("The path of the archive. The appointments will be added to the "
+         "archive file, so any appointments that are already in the file "
+         "will not be modified or deleted. You can later load or merge the "
+         "file like any other calendar. It is not saved in a special "
+         "format, it uses the vCalendar format. "));
+  l->setBuddy(mArchiveFile->lineEdit());
+  fileLayout->addWidget(mArchiveFile);
+  topLayout->addLayout(fileLayout);
+  
+  mDeleteCb = new QCheckBox(i18n("&Delete only, do not save"),
+                            topFrame);
+  QWhatsThis::add(mDeleteCb,  
+    i18n("Select this option to delete old appointments without saving them."
+         "It is not possible to recover the appointments later."));
+  topLayout->addWidget(mDeleteCb);
+  connect(mDeleteCb, SIGNAL(toggled(bool)), mArchiveFile, SLOT(setDisabled(bool)));
   connect(mArchiveFile->lineEdit(),SIGNAL(textChanged ( const QString & )),this,SLOT(slotArchiveFileChanged(const QString &)));
   enableButton(KDialogBase::User1,!mArchiveFile->lineEdit()->text().isEmpty());
 }
@@ -90,6 +127,11 @@ void ArchiveDialog::slotArchiveFileChanged(const QString &text)
 // Archive old events
 void ArchiveDialog::slotUser1()
 {
+  if (mDeleteCb->isChecked()) {
+    deleteOldEvents();
+    return;
+  }
+
   // Get destination URL
   KURL destUrl = mArchiveFile->url();
   if (destUrl.isMalformed()) {
@@ -202,7 +244,7 @@ void ArchiveDialog::slotUser1()
 }
 
 // Delete old events
-void ArchiveDialog::slotUser2()
+void ArchiveDialog::deleteOldEvents()
 {
   Event::List events = mCalendar->events( QDate( 1769, 12, 1 ),
                                           mDateEdit->date().addDays( -1 ),
@@ -221,9 +263,10 @@ void ArchiveDialog::slotUser2()
   }
 
   int result = KMessageBox::warningContinueCancelList(this,
-      i18n("Delete all events before %1?\nThe following events will be deleted:")
+      i18n("Delete all events before %1 without saving?\n"
+           "The following events will be deleted:")
       .arg(KGlobal::locale()->formatDate(mDateEdit->date())),eventStrs,
-      i18n("Delete old events"),i18n("Delete"));
+      i18n("Delete old events"),i18n("&Delete"));
   if (result == KMessageBox::Continue) {
     for( it = events.begin(); it != events.end(); ++it ) {
       mCalendar->deleteEvent( *it );

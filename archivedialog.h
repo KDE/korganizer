@@ -31,6 +31,7 @@ using namespace KCal;
 
 class KURLRequester;
 class KDateEdit;
+class QCheckBox;
 
 class ArchiveDialog : public KDialogBase
 {
@@ -44,11 +45,15 @@ class ArchiveDialog : public KDialogBase
 
   protected slots:
     void slotUser1();
-    void slotUser2();
     void slotArchiveFileChanged(const QString &);
+
+  protected:    
+    void deleteOldEvents();
+    
   private:
     KURLRequester *mArchiveFile;
     KDateEdit *mDateEdit;
+    QCheckBox *mDeleteCb;
     
     Calendar *mCalendar;
 };
