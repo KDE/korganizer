@@ -53,6 +53,63 @@
 #include "freebusymanager.h"
 #include "docprefs.h"
 
+class ScheduleItemOutVisitor : public Incidence::Visitor
+{
+  public:
+    ScheduleItemOutVisitor() : mItem(0) {}
+
+    bool act( Incidence *incidence, ScheduleItemOut *item )
+    {
+      mItem = item;
+      return (incidence && mItem) ? incidence->accept( *this ) : false;
+    }
+
+  protected:
+    bool visit( Event *event ) {
+      mItem->setText( 0, event->summary() );
+      mItem->setText( 1, event->dtStartDateStr() );
+      if ( event->doesFloat() ) {  //If the event floats set the start and end times to no time
+        mItem->setText( 2, i18n("no time") );
+        mItem->setText( 4, i18n("no time") );
+      } else {  //If it does not float
+        mItem->setText( 2, event->dtStartTimeStr() );
+      }
+      if ( event->hasEndDate() ) {
+        mItem->setText( 3, event->dtEndDateStr() );
+        if ( !event->doesFloat() ) 
+          mItem->setText( 4, event->dtEndTimeStr() );
+      } else {
+        mItem->setText( 3, i18n("no date") );
+        mItem->setText( 4, i18n("no time") );
+      }
+      return true;
+    }
+    bool visit( Todo *todo ) {
+      mItem->setText( 0, todo->summary() );
+      if ( todo->hasStartDate() ) {
+        mItem->setText( 1, todo->dtStartDateStr() );
+        if ( !todo->doesFloat() )
+          mItem->setText( 2, todo->dtStartTimeStr() );
+      }
+      if ( todo->hasDueDate() ) {
+        mItem->setText( 3, todo->dtDueDateStr() );
+        if ( !todo->doesFloat() )
+          mItem->setText( 4, todo->dtDueTimeStr() );
+      }
+      return true;
+    }
+    bool visit( Journal *journal ) {
+      mItem->setText( 0, journal->description().left(50) );
+      mItem->setText( 1, journal->dtStartDateStr() );
+      if ( !journal->doesFloat() )
+        mItem->setText( 2, journal->dtStartTimeStr() );
+      return true;
+    }
+  protected:
+    ScheduleItemOut *mItem;
+};
+
+
 ScheduleItemOut::ScheduleItemOut(QListView *parent,IncidenceBase *ev,
                                  Scheduler::Method method,
                                  const QString &recipients)
@@ -63,62 +120,17 @@ ScheduleItemOut::ScheduleItemOut(QListView *parent,IncidenceBase *ev,
   mRecipients = recipients;
 
 //  kdDebug(5850) << "ScheduleItemOut: setting the summary" << endl;
-  //Set the summary
   // @TODO: use a visitor here
   if(ev->type() != "FreeBusy") {
-    Incidence *incidence = static_cast<Incidence *>(ev);
-    setText(0,incidence->summary());
+    Incidence *incidence = dynamic_cast<Incidence*>(ev);
+    ScheduleItemOutVisitor v;
+    if ( !incidence || !v.act( incidence, this ) ) {
+      setText( 0, i18n("Unable to interpret incidence") );
+    }
   } else {
-    setText(0,i18n("Free Busy Object"));
-  }
-
-//  kdDebug(5850) << "ScheduleItemOut: checking if the object is an event" << endl;
-  //If the object is an event
-  if(ev->type()=="Event") {
-    Event *event = static_cast<Event *>(ev);
-
-    setText(1,event->dtStartDateStr());
-    if (event->doesFloat()) {  //If the event floats set the start and end times to no time
-      setText(2,i18n("no time"));
-      setText(4,i18n("no time"));
-    } else {  //If it does not float
-      setText(2,event->dtStartTimeStr());
-      if (event->hasDuration()) {
-        setText(4,event->dtEndTimeStr());
-      } else {
-        setText(4,i18n("no time"));
-      }
-    }
-    if (event->hasEndDate()) {
-      setText(3,event->dtEndDateStr());
-    }
-    else {
-       setText(3,i18n("no time"));
-    }
-  }
-
-  //If the object is an Todo
-  if(ev->type()=="Todo") {
-    Todo *event = static_cast<Todo *>(ev);
-    if (event->hasStartDate()) {
-      setText(1,event->dtStartDateStr());
-      if (!event->doesFloat()) {
-        setText(2,event->dtStartTimeStr());
-      }
-    }
-    if (event->hasDueDate()) {
-      setText(3,event->dtDueDateStr());
-      if (!event->doesFloat()) {
-        setText(4,event->dtDueTimeStr());
-      }
-    }
-  }
-
-//  kdDebug(5850) << "ScheduleItemOut: checking if the object is a FreeBusy object" << endl;
-  //If the object is a freebusy object
-  if(ev->type() == "FreeBusy") {
     FreeBusy *freebusy = static_cast<FreeBusy *>(ev);
-
+    
+    setText(0,i18n("Free Busy Object"));
     setText(1,freebusy->dtStartDateStr());
     setText(2,freebusy->dtStartTimeStr());
     //Must try and get this to the users local settings
@@ -126,7 +138,6 @@ ScheduleItemOut::ScheduleItemOut(QListView *parent,IncidenceBase *ev,
     setText(4,KGlobal::locale()->formatTime( freebusy->dtEnd().time() ) );
   }
 
-//  kdDebug(5850) << "ScheduleItemOut: Setting the method" << endl;
   //Set the Method
   setText(5,Scheduler::translatedMethodName(mMethod));
 }
