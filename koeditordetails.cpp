@@ -530,7 +530,7 @@ void KOEditorDetails::setFreeBusyWidget( KOEditorFreeBusy *v )
 
 void KOEditorDetails::fillOrganizerCombo()
 {
-  assert( mOrganizerCombo );
+  Q_ASSERT( mOrganizerCombo );
   // Get all emails from KOPrefs (coming from various places),
   // and insert them - removing duplicates
   const QStringList lst = KOPrefs::instance()->allEmails();
