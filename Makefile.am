@@ -10,7 +10,8 @@ INCLUDES = \
   -I$(top_srcdir)/kresources/remote \
   -I$(top_srcdir)/korganizer/printing \
   -I$(top_srcdir) \
-	-I$(top_builddir) \
+  -I$(top_builddir) \
+  -I$(top_builddir)/libkdepim \
   $(all_includes)
 
 bin_PROGRAMS = korganizer
