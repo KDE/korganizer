@@ -27,7 +27,6 @@
 #include "journalentry.h"
 
 class JournalEntry;
-class QVBox;
 
 /**
  * This class provides a journal view.

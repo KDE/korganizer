@@ -43,7 +43,7 @@
 JournalEntry::JournalEntry(Calendar *calendar,QWidget *parent) :
   QVBox(parent)
 {
-kdDebug(5850)<<"JournalEntry::JournalEntry, parent="<<parent<<endl;
+//kdDebug(5850)<<"JournalEntry::JournalEntry, parent="<<parent<<endl;
   mCalendar = calendar;
   mJournal = 0;
   mDirty = false;
