@@ -104,12 +104,12 @@ SearchDialog::SearchDialog(Calendar *calendar,QWidget *parent)
   connect(this,SIGNAL(user1Clicked()),SLOT(doSearch()));
 
   // Propagate edit and delete event signals from event list view
-  connect(listView,SIGNAL(showEventSignal(Event *)),
-	  SIGNAL(showEventSignal(Event *)));
-  connect(listView,SIGNAL(editEventSignal(Event *)),
-	  SIGNAL(editEventSignal(Event *)));
-  connect(listView,SIGNAL(deleteEventSignal(Event *)),
-	  SIGNAL(deleteEventSignal(Event *)));
+  connect(listView,SIGNAL(showIncidenceSignal(Incidence *)),
+          SIGNAL(showIncidenceSignal(Incidence *)));
+  connect(listView,SIGNAL(editIncidenceSignal(Incidence *)),
+          SIGNAL(editIncidenceSignal(Incidence *)));
+  connect(listView,SIGNAL(deleteIncidenceSignal(Incidence *)),
+          SIGNAL(deleteIncidenceSignal(Incidence *)));
 }
 
 SearchDialog::~SearchDialog()

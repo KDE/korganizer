@@ -56,9 +56,9 @@ class SearchDialog : public KDialogBase
     void searchTextChanged( const QString &_text );	
 
   signals:
-    void showEventSignal(Event *);
-    void editEventSignal(Event *);
-    void deleteEventSignal(Event *);
+    void showIncidenceSignal(Incidence *);
+    void editIncidenceSignal(Incidence *);
+    void deleteIncidenceSignal(Incidence *);
 
   private:
     void search(const QRegExp &);

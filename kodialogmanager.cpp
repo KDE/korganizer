@@ -149,12 +149,12 @@ void KODialogManager::showSearchDialog()
 {
   if (!mSearchDialog) {
     mSearchDialog = new SearchDialog(mMainView->calendar(),mMainView);
-    connect(mSearchDialog,SIGNAL(showEventSignal(Event *)),
-            mMainView,SLOT(showEvent(Event *)));
-    connect(mSearchDialog,SIGNAL(editEventSignal(Event *)),
-            mMainView,SLOT(editEvent(Event *)));
-    connect(mSearchDialog,SIGNAL(deleteEventSignal(Event *)),
-            mMainView, SLOT(deleteEvent(Event *)));
+    connect(mSearchDialog,SIGNAL(showIncidenceSignal(Incidence *)),
+            mMainView,SLOT(showIncidence(Incidence *)));
+    connect(mSearchDialog,SIGNAL(editIncidenceSignal(Incidence *)),
+            mMainView,SLOT(editIncidence(Incidence *)));
+    connect(mSearchDialog,SIGNAL(deleteIncidenceSignal(Incidence *)),
+            mMainView, SLOT(deleteIncidence(Incidence *)));
     connect(mMainView,SIGNAL(closingDown()),mSearchDialog,SLOT(reject()));
   }
   // make sure the widget is on top again
