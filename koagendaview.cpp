@@ -352,7 +352,7 @@ void KOAlternateLabel::setText( const QString &text ) {
 ////////////////////////////////////////////////////////////////////////////
 
 KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name) :
-  KOEventView (cal,parent,name), mItemDragged( false )
+  KOEventView (cal,parent,name), mAllowAgendaUpdate( true )
 {
   mSelectedDates.append(QDate::currentDate());
 
@@ -528,6 +528,8 @@ void KOAgendaView::connectAgenda( KOAgenda *agenda, QPopupMenu *popup,
 
   connect( agenda, SIGNAL( itemModified( KOAgendaItem * ) ),
                    SLOT( updateEventDates( KOAgendaItem * ) ) );
+  connect( agenda, SIGNAL( enableAgendaUpdate( bool ) ),
+                   SLOT( enableAgendaUpdate( bool ) ) );
 
   // drag signals
   connect( agenda, SIGNAL( startDragSignal( Incidence * ) ),
@@ -610,6 +612,11 @@ void KOAgendaView::createDayLabels()
 
   mLayoutDayLabels->addSpacing(mAgenda->verticalScrollBar()->width());
   mDayLabels->show();
+}
+
+void KOAgendaView::enableAgendaUpdate( bool enable ) 
+{
+  mAllowAgendaUpdate = enable;
 }
 
 int KOAgendaView::maxDatesHint()
@@ -787,8 +794,15 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
     KOIncidenceToolTip::remove( item );
     KOIncidenceToolTip::add( item, incidence, KOAgendaItem::toolTipGroup() );
 
-    mItemDragged = true;
+    // don't update the agenda as the item already has the correct coordinates.
+    // an update would delete the current item and recreate it, but we are still
+    // using a pointer to that item! => CRASH
+    enableAgendaUpdate( false );
+    // TODO_RK: Find a way to update the series of agenda items for a recurring event!
+    // Only the actually moved agenda item is at the correct position and mustn't be
+    // recreated. All others would have to!!!
     emit incidenceChanged( oldIncidence, incidence );
+    enableAgendaUpdate( true );
   } else {
     updateView();
   }
@@ -933,6 +947,7 @@ void KOAgendaView::changeIncidenceDisplayAdded( Incidence *incidence )
 
 void KOAgendaView::changeIncidenceDisplay( Incidence *incidence, int mode )
 {
+  if ( !mAllowAgendaUpdate ) return;
   switch ( mode ) {
     case KOGlobals::INCIDENCEADDED: {
         //  Add an event. No need to recreate the whole view!
@@ -944,19 +959,14 @@ void KOAgendaView::changeIncidenceDisplay( Incidence *incidence, int mode )
     }
     case KOGlobals::INCIDENCEEDITED:
     case KOGlobals::INCIDENCEDELETED: {
-// TODO: Removing does not work, as it does not correctly reset the max nr. of conflicting items. Thus the items will sometimes not fill the whole width of the column. As a workaround, just recreate the whole view for now... */
-      if ( !mItemDragged ) {
-        bool floats = incidence->doesFloat();
-        QCString type = incidence->type();
-        if ( type == "Todo" || ( type == "Event" && floats ) )
-          mAllDayAgenda->removeIncidence( incidence );
-        if ( type == "Todo" || ( type == "Event" && !floats ) )
-          mAgenda->removeIncidence( incidence );
-        if ( mode == KOGlobals::INCIDENCEEDITED )
-          changeIncidenceDisplayAdded( incidence );
-      } else {
-        mItemDragged = false;
-      }
+      bool floats = incidence->doesFloat();
+      QCString type = incidence->type();
+      if ( type == "Todo" || ( type == "Event" && floats ) )
+        mAllDayAgenda->removeIncidence( incidence );
+      if ( type == "Todo" || ( type == "Event" && !floats ) )
+        mAgenda->removeIncidence( incidence );
+      if ( mode == KOGlobals::INCIDENCEEDITED )
+        changeIncidenceDisplayAdded( incidence );
       break;
     }
     default:
@@ -971,7 +981,7 @@ void KOAgendaView::fillAgenda( const QDate & )
 
 void KOAgendaView::fillAgenda()
 {
-  mItemDragged = false;
+  enableAgendaUpdate( true );
   clearView();
 
   mAllDayAgenda->changeColumns(mSelectedDates.count());

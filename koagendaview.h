@@ -199,6 +199,8 @@ class KOAgendaView : public KOEventView
 
     /** reschedule the todo  to the given x- and y- coordinates. Third parameter determines all-day (no time  specified */
     void slotTodoDropped( Todo *, const QPoint &, bool );
+    
+    void enableAgendaUpdate( bool enable );
 
   signals:
     void toggleExpand();
@@ -265,8 +267,7 @@ class KOAgendaView : public KOEventView
     QDateTime mTimeSpanBegin;
     QDateTime mTimeSpanEnd;
     bool mTimeSpanInAllDay;
-    bool mItemDragged;
-
+    bool mAllowAgendaUpdate;
 };
 
 #endif

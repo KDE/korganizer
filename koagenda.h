@@ -174,7 +174,13 @@ class KOAgenda : public QScrollView
 
     void startDragSignal(Incidence *);
     void droppedToDo( Todo*todo, const QPoint &gpos, bool allDay );
+    
+    void enableAgendaUpdate( bool enable );
 
+  private:
+    enum MouseActionType { NOP, MOVE, SELECT,
+                           RESIZETOP, RESIZEBOTTOM, RESIZELEFT, RESIZERIGHT };
+  
   protected:
     void drawContents( QPainter *p, int cx, int cy, int cw, int ch );
     virtual void resizeEvent ( QResizeEvent * );
@@ -288,9 +294,6 @@ class KOAgenda : public QScrollView
 
     // The Marcus Bains Line widget.
     MarcusBains *mMarcusBains;
-
-    enum MouseActionType { NOP, MOVE, SELECT,
-                           RESIZETOP, RESIZEBOTTOM, RESIZELEFT, RESIZERIGHT };
 
     MouseActionType mActionType;
 
