@@ -43,7 +43,7 @@ class MainWindow
     MainWindow() : mDocument( true ) {}
     virtual ~MainWindow() {}
 
-    virtual void init( bool hasDocument ) { qDebug("INIT"); Q_UNUSED( hasDocument ); }
+    virtual void init( bool hasDocument ) { Q_UNUSED( hasDocument ); }
 
     virtual CalendarViewBase *view() const = 0;
 
