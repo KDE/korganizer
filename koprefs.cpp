@@ -10,6 +10,7 @@
 #include "koprefs.h"
 
 #include <kconfig.h>
+#include <ksimpleconfig.h>
 #include <kstddirs.h>
 #include <klocale.h>
 
@@ -54,36 +55,13 @@ void KOPrefs::setDefaults()
   mAutoSave = false;
   mConfirm = true;
 
-  // user information...
-  uid_t userId = getuid();
-  struct passwd *pwent = getpwuid(userId);
-  if (strlen(pwent->pw_gecos) > 0) mName = pwent->pw_gecos;
-  else mName = i18n("Anonymous");
-
-  // user email...
-  mEmail = pwent->pw_name;
-  mEmail += "@";
-#ifdef HAVE_GETHOSTNAME
-  char cbuf[80];
-  if (gethostname(cbuf, 79)) {
-    // error getting hostname
-    mEmail += "localhost";
-  } else {
-    hostent he;
-    if (gethostbyname(cbuf)) {
-      he = *gethostbyname(cbuf);
-      mEmail += he.h_name;
-    } else {
-      // error getting hostname
-      mEmail += "localhost";
-    }
-  }
-#else
-  mEmail += "localhost";
-#endif
+  KSimpleConfig config( QString::fromLatin1("emaildefaults"), false );
+  config.setGroup("UserInfo");
+  mName = config.readEntry( "FullName", i18n("Anonymous") );
+  mEmail = config.readEntry( "EmailAddress" );
 
   mAdditional = "";
-  mHoliday = "(none)";
+  mHoliday = KGlobal::locale()->country();
   
   mTimeZone = "";
   mStartTime = 10;
