@@ -513,8 +513,8 @@ void KOAgendaView::updateConfig()
   mAgenda->updateConfig();
   mAllDayAgenda->updateConfig();
 
-  if ((mViewType==NEXTX) &&
-      (mSelectedDates.count()!=KOPrefs::instance()->mNextXDays)) {
+  if ( ( mViewType == NEXTX ) &&
+      ( int( mSelectedDates.count() ) != KOPrefs::instance()->mNextXDays) ) {
     int count;
     QDate firstDate = mSelectedDates.first();
     mSelectedDates.clear();

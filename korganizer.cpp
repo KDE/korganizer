@@ -309,7 +309,7 @@ void KOrganizer::initActions()
   (void)new KAction(i18n("&Week"), "7days", 0,
                     mCalendarView->viewManager(), SLOT(showWeekView()),
                     actionCollection(), "view_week");
-  (void)new KAction(i18n("&Next X Days"), "nextXdays", 0,
+  (void)new KAction(i18n("&Next X Days"), "xdays", 0,
                     mCalendarView->viewManager(), SLOT(showNextXView()),
                     actionCollection(), "view_nextx");
   (void)new KAction(i18n("&Month"), "month", 0,
