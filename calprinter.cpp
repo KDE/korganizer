@@ -817,24 +817,21 @@ void CalPrinter::drawTTDayBox(QPainter &p, const QDate &qd,
 
 
 void CalPrinter::drawDaysOfWeek(QPainter &p, const QDate &qd,
-				int width, int /*height*/)
+                                int width, int /*height*/)
 {
   int offset=mHeaderHeight+5;
   int cellWidth = width/7;
   int cellHeight = mSubHeaderHeight;
   QDate monthDate(QDate(qd.year(), qd.month(),1));
 
-  if (KGlobal::locale()->weekStartsMonday())
-    // correct to monday
-    monthDate = monthDate.addDays(-(monthDate.dayOfWeek()-1));
-  else
-    // correct to sunday
-    monthDate = monthDate.addDays(-(monthDate.dayOfWeek()%7));
+  int weekdayCol=(monthDate.dayOfWeek()+7-KGlobal::locale()->weekStartDay())%7;
+  // correct to first day of that week
+  monthDate = monthDate.addDays(-weekdayCol);
 
   for (int col = 0; col < 7; col++) {
     drawDaysOfWeekBox(p, monthDate,
-		      col*cellWidth, offset,
-		      cellWidth, cellHeight);
+                      col*cellWidth, offset,
+                      cellWidth, cellHeight);
     monthDate = monthDate.addDays(1);
   }
 }
