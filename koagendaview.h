@@ -155,6 +155,8 @@ class KOAgendaView : public KOEventView
     bool selectedIsAllDay() {return mTimeSpanInAllDay;}
     /** make selected start/end invalid */
     void deleteSelectedDateTime();
+    /** returns if only a single cell is selected, or a range of cells */
+    bool selectedIsSingleCell();
 
     void setTypeAheadReceiver( QObject * );
 

@@ -599,6 +599,21 @@ DateList KOAgendaView::selectedDates()
   return selected;
 }
 
+/** returns if only a single cell is selected, or a range of cells */
+bool KOAgendaView::selectedIsSingleCell()
+{
+  if ( !selectionStart().isValid() || !selectionEnd().isValid() ) return false;
+
+  if (selectedIsAllDay()) {
+    int days = selectionStart().daysTo(selectionEnd());
+    return ( days < 1 );
+  } else {
+    int secs = selectionStart().secsTo(selectionEnd());
+    return ( secs <= 24*60*60/mAgenda->rows() );
+  }
+}
+
+
 
 void KOAgendaView::updateView()
 {

@@ -722,12 +722,19 @@ void CalendarView::edit_paste()
   QDate date;
   // create an invalid time to check if we got a new time for the eevent
   QTime time(-1,-1);
+  QDateTime startDT, endDT;
+  bool useEndTime = false;
 
   KOAgendaView *aView = mViewManager->agendaView();
   if (aView && aView->selectionStart().isValid()) {
       date = aView->selectionStart().date();
-      if (!aView->selectedIsAllDay())
+    startDT = aView->selectionStart();
+    endDT = aView->selectionEnd();
+    useEndTime = !aView->selectedIsSingleCell();
+    if (!aView->selectedIsAllDay()) {
         time = aView->selectionStart().time();
+    }
+
   } else {
     date = mNavigator->selectedDates().first();
   }
@@ -738,6 +745,15 @@ void CalendarView::edit_paste()
     pastedEvent = factory.pasteEvent( date, &time );
   else
     pastedEvent = factory.pasteEvent( date );
+  // only use selected area if event is of the same type (all-day or non-all-day
+  // as the current selection is
+  if ( aView && endDT.isValid() && useEndTime ) {
+    if ( (pastedEvent->doesFloat() && aView->selectedIsAllDay()) ||
+         (!pastedEvent->doesFloat() && ! aView->selectedIsAllDay()) ) {
+      pastedEvent->setDtEnd(endDT);
+    }
+  }
+
   changeEventDisplay( pastedEvent, KOGlobals::EVENTADDED );
 }
 
