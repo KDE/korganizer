@@ -728,7 +728,7 @@ void KOAgenda::performItemAction(const QPoint& viewportPos)
       setCursor( arrowCursor );
       mActionItem = 0;
       mActionType = NOP;
-      mItemMoved = 0;
+      mItemMoved = false;
       return;
     }
   } else {
