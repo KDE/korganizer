@@ -126,6 +126,7 @@ KOPrefs::KOPrefs() :
   addItemBool("Month View Uses Category Color",&mMonthViewUsesCategoryColor,false);
   addItemBool("Full View Month",&mFullViewMonth,false);
   addItemBool("Full View Todo",&mFullViewTodo,true);
+  addItemBool("Quick Todo",&mEnableQuickTodo,true);
 
   addItemInt("Next X Days",&mNextXDays,3);
 

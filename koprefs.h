@@ -130,6 +130,7 @@ class KOPrefs : public KPimPrefs
     bool    mFullViewTodo;
     bool    mMarcusBainsEnabled;
     int     mNextXDays;
+    bool    mEnableQuickTodo;
 
     bool    mCompactDialogs;
     bool    mVerticalScreen;
