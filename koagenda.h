@@ -96,8 +96,8 @@ class KOAgenda : public QScrollView
     int columns() { return mColumns; }
     int rows() { return mRows; }
 
-    int gridSpacingX() const { return mGridSpacingX; }
-    int gridSpacingY() const { return mGridSpacingY; }
+    double gridSpacingX() const { return mGridSpacingX; }
+    double gridSpacingY() const { return mGridSpacingY; }
 
 //    virtual QSizePolicy sizePolicy() const;
 
@@ -213,9 +213,12 @@ class KOAgenda : public QScrollView
     // We need the calendar for drag'n'drop
     Calendar*mCalendar;
 
-    // Width and height of agenda cells
-    int mGridSpacingX;
-    int mGridSpacingY;
+    // Width and height of agenda cells. mDesiredGridSpacingY is the height
+    // set in the config. The actual height might be larger since otherwise
+    // more than 24 hours might be displayed.
+    double mGridSpacingX;
+    double mGridSpacingY;
+    double mDesiredGridSpacingY;
 
     // size of border, where mouse action will resize the KOAgendaItem
     int mResizeBorderWidth;

@@ -104,17 +104,19 @@ void TimeLabels::drawContents(QPainter *p,int cx, int cy, int cw, int ch)
   // these two assignments fix the weird redraw bug
   cx = contentsX() + 2;
   cw = contentsWidth() - 2;
+  double cellHeight=mCellHeight;
+  if (mAgenda) cellHeight=(4*mAgenda->gridSpacingY());
   // end of workaround
 
-  int cell = ((int)(cy/mCellHeight));
-  int y = cell * mCellHeight;
+  int cell = ((int)(cy/cellHeight));
+  double y = (cell * cellHeight);
   QFontMetrics fm = fontMetrics();
   QString hour;
   QString suffix;
   QString fullTime;
 
   while (y < cy + ch) {
-    p->drawLine(cx,y,cx+cw,y);
+    p->drawLine(cx,(int)y,cx+cw,(int)y);
     hour.setNum(cell);
     suffix = "am";
 
@@ -134,10 +136,10 @@ void TimeLabels::drawContents(QPainter *p,int cx, int cy, int cw, int ch)
     int timeWidth = fm.width(fullTime);
     int offset = this->width() - timeWidth;
     int borderWidth = 5;
-    p->drawText(cx -borderWidth + offset, y+15, fullTime);
+    p->drawText(cx -borderWidth + offset, (int)y+15, fullTime);
 
     // increment indices
-    y += mCellHeight;
+    y += cellHeight;
     cell++;
   }
 }
@@ -171,6 +173,8 @@ void TimeLabels::updateConfig()
 
   // update HourSize
   mCellHeight = KOPrefs::instance()->mHourSize*4;
+  if (mCellHeight>mAgenda->gridSpacingY())
+    mCellHeight=(int)(4*mAgenda->gridSpacingY());
   resizeContents(50,mRows * mCellHeight);
 }
 
