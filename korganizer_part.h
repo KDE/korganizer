@@ -25,6 +25,7 @@
 
 #include <kurl.h>
 #include <kparts/browserextension.h>
+#include <kparts/statusbarextension.h>
 #include <kparts/factory.h>
 #include <korganizer/mainwindow.h>
 #include <korganizer/calendarviewbase.h>
@@ -101,7 +102,8 @@ class KOrganizerPart: public KParts::ReadOnlyPart,
     KCal::Calendar *mCalendar;    
     CalendarView *mWidget;
     ActionManager *mActionManager;
-    KOrganizerBrowserExtension *mExtension;
+    KOrganizerBrowserExtension *mBrowserExtension;
+    KParts::StatusBarExtension *mStatusBarExtension;
 };
 
 class KOrganizerBrowserExtension : public KParts::BrowserExtension

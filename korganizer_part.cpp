@@ -114,7 +114,11 @@ KOrganizerPart::KOrganizerPart(QWidget *parentWidget, const char *widgetName,
   canvas->setFocusPolicy(QWidget::ClickFocus);
   setWidget(canvas);
 
-  mExtension = new KOrganizerBrowserExtension(this);
+  mBrowserExtension = new KOrganizerBrowserExtension(this);
+  mStatusBarExtension = new KParts::StatusBarExtension(this);
+
+  QLabel *dummy = new QLabel( "huhu", mStatusBarExtension->statusBar() );
+  mStatusBarExtension->addStatusBarItem( dummy, 1, true );
 
   QVBoxLayout *topLayout = new QVBoxLayout(canvas);
 
