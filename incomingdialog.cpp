@@ -274,46 +274,34 @@ void IncomingDialog::showEvent(QListViewItem *item)
 
 bool IncomingDialog::incomeRefresh(ScheduleItemIn *item)
 {
-  Event *ev = mCalendar->event(item->event()->uid());
-  if (ev) {
-    //user interaction before??
-    Attendee::List attList = ev->attendees();
+  Incidence *inc = mCalendar->incidence( item->event()->uid() );
+  bool res = false;
+  if ( inc ) {
+    Attendee::List attList = inc->attendees();
     Attendee::List::ConstIterator it;
     for( it = attList.begin(); it != attList.end(); ++it ) {
-      // @TODO: Why do we clone the event here?
-      Event *event = new Event( *ev );
-      // @TODO: I don't understand why we use the mOutgoing here?
-      mOutgoing->addMessage( event, Scheduler::Request, (*it)->email() );
-      delete event;
+      mOutgoing->addMessage( inc, Scheduler::Request, (*it)->email() );
     }
-    mScheduler->deleteTransaction(item->event());
-    delete item;
-    emit numMessagesChanged(mMessageListView->childCount());
-    return true;
+    res = true;
   }
   mScheduler->deleteTransaction(item->event());
   delete item;
   emit numMessagesChanged(mMessageListView->childCount());
-  return false;
+  return res;
 }
 
 bool IncomingDialog::incomeCounter(ScheduleItemIn *item)
 {
-  IncidenceBase *incidence = ((ScheduleItemIn *)item)->event();
-  // currently only events supportet - attetion at insertion below!
-  // @TODO: Also treat todos here
-  if ( incidence->type() != "Event" ) return false;
-
-  Event *counterEvent = static_cast<Event *>( incidence );
-
-  Event *even = mCalendar->event(counterEvent->uid());
+  bool res = false;
+  Incidence *counterInc = dynamic_cast<Incidence*>( ((ScheduleItemIn *)item)->event() );
+  Incidence *inc = mCalendar->incidence( counterInc->uid() );
 
   KOCounterDialog *eventViewer = new KOCounterDialog(this);
   eventViewer->addText(i18n("counter proposal event","<b>Counter-event:</b><p>"));
-  eventViewer->addIncidence( counterEvent );
+  eventViewer->addIncidence( counterInc );
   eventViewer->addText("<hr>");
   eventViewer->addText(i18n("<b>Original event:</b><p>"));
-  if (even) eventViewer->addIncidence( even );
+  if (inc) eventViewer->addIncidence( inc );
   else eventViewer->addText(i18n("A corresponding event is missing in your calendar."));
   eventViewer->addText("<hr>");
   eventViewer->addText(i18n("If this counter-event is a good proposal for your event, press 'Accept'. All Attendees will then get the new version of this event"));
@@ -323,53 +311,41 @@ bool IncomingDialog::incomeCounter(ScheduleItemIn *item)
   if (eventViewer->result()) {
     kdDebug(5850) << "IncomingDialog::Counter:Accept" << endl;
     int revision = 0;
-    if (even) {
-      revision = even->revision();
-      mCalendar->deleteIncidence( even );
+    if ( inc ) {
+      revision = inc->revision();
+      mCalendar->deleteIncidence( inc );
     }
-    mCalendar->addIncidence(counterEvent);
+    mCalendar->addIncidence( counterInc );
 
-    even = mCalendar->event(item->event()->uid());
-    if (even) {
-      if (revision < even->revision())
-        even->setRevision(even->revision()+1);
+    inc = mCalendar->incidence( item->event()->uid() );
+    if ( inc ) {
+      if ( revision < inc->revision() )
+        inc->setRevision( inc->revision() + 1 );
       else
-        even->setRevision(revision+1);
-      Event *ev = new Event(*even);
-      mOutgoing->addMessage(ev,Scheduler::Request);
-      delete(ev);
+        inc->setRevision( revision + 1 );
+      mOutgoing->addMessage( inc, Scheduler::Request );
     }
-    mScheduler->deleteTransaction(item->event());
-    delete item;
-    emit numMessagesChanged(mMessageListView->childCount());
-    return true;
+    res = true;
   } else {
     kdDebug(5850) << "IncomingDialog::Counter:Decline" << endl;
     //the counter-sender's email is missing...
     //now every attendee gets an declinecounter :-(
-    mOutgoing->addMessage(counterEvent,Scheduler::Declinecounter);
-    delete item;
-    emit numMessagesChanged(mMessageListView->childCount());
-    mScheduler->deleteTransaction(item->event());
-    delete item;
-    emit numMessagesChanged(mMessageListView->childCount());
-    return true;
+    mOutgoing->addMessage( counterInc, Scheduler::Declinecounter );
+    res = true;
   }
-  //mScheduler->deleteTransaction(item->event());
+  mScheduler->deleteTransaction( item->event() );
   delete item;
   emit numMessagesChanged(mMessageListView->childCount());
-  return false;
+  return res;
 }
 
 bool IncomingDialog::incomeDeclineCounter(ScheduleItemIn *item)
 {
-  Event *even = mCalendar->event(item->event()->uid());
-  if (even) {
-    mOutgoing->addMessage(even,Scheduler::Refresh);
-    mScheduler->deleteTransaction(item->event());
-    delete item;
-    emit numMessagesChanged(mMessageListView->childCount());
-    return true;
+  Incidence *inc = dynamic_cast<Incidence*>( mCalendar->incidence( item->event()->uid() ) );
+  bool res = false;
+  if ( inc ) {
+    mOutgoing->addMessage( inc, Scheduler::Refresh );
+    res = true;
   }
   mScheduler->deleteTransaction(item->event());
   delete item;
@@ -379,23 +355,19 @@ bool IncomingDialog::incomeDeclineCounter(ScheduleItemIn *item)
 
 bool IncomingDialog::incomeAdd(ScheduleItemIn *item)
 {
-  // @TODO: Also treat todos here
-  IncidenceBase *incidence = ((ScheduleItemIn *)item)->event();
-  if (incidence->type() == "Event" ) {
-    Event *refr = static_cast<Event *>( incidence );
-    mOutgoing->addMessage(refr,Scheduler::Refresh);
-    mScheduler->deleteTransaction( incidence );
-    delete item;
-    emit numMessagesChanged(mMessageListView->childCount());
-    return true;
+  Incidence *inc = dynamic_cast<Incidence*>( mCalendar->incidence( item->event()->uid() ) );
+  bool res = false;
+  if ( inc ) {
+    mOutgoing->addMessage( inc, Scheduler::Refresh );
+    res = true;
   }
   else {
-    kdDebug(5850) << "IncomingDialog::incomeAdd - only Events are supportet yet" << endl;
-    mScheduler->deleteTransaction( incidence );
-    delete item;
-    emit numMessagesChanged(mMessageListView->childCount());
-    return false;
+    kdDebug(5850) << "IncomingDialog::incomeAdd - only Incidences are supportet yet" << endl;
   }
+  mScheduler->deleteTransaction( inc );
+  delete item;
+  emit numMessagesChanged( mMessageListView->childCount() );
+  return res;
 }
 
 bool IncomingDialog::incomeDefault(ScheduleItemIn *item)

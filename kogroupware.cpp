@@ -356,6 +356,7 @@ QString KOGroupware::formatICal( const QString& iCal )
 {
   KCal::CalendarLocal cl( mCalendar->timeZoneId() );
   ICalFormat format;
+  // @TODO: What the heck??? We have parseScheduleMessage, which returns just what we need!
   format.fromString( &cl, iCal );
 
   // Make a shallow copy of the event and task lists
