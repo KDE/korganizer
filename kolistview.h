@@ -55,15 +55,15 @@ class KOListViewToolTip : public QToolTip
   This class provides the initialization of a KOListViewItem for calendar
   components using the Incidence::Visitor.
 */
-class ListItemVisitor : public Incidence::Visitor
+class ListItemVisitor : public IncidenceBase::Visitor
 {
   public:
-    ListItemVisitor(KOListViewItem *);
+    ListItemVisitor( KOListViewItem * );
     ~ListItemVisitor();
 
-    bool visit(Event *);
-    bool visit(Todo *);
-    bool visit(Journal *);
+    bool visit( Event * );
+    bool visit( Todo * );
+    bool visit( Journal * );
 
   private:
     KOListViewItem *mItem;

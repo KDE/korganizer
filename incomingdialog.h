@@ -56,15 +56,16 @@ class ScheduleItemIn : public QListViewItem
   This class provides the initialization of a ScheduleItemIn for calendar
   components using the Incidence::Visitor.
 */
-class ScheduleItemVisitor : public Incidence::Visitor
+class ScheduleItemVisitor : public IncidenceBase::Visitor
 {
   public:
     ScheduleItemVisitor(ScheduleItemIn *);
     ~ScheduleItemVisitor();
 
-    bool visit(Event *);
-    bool visit(Todo *);
-    bool visit(Journal *);
+    bool visit( Event * );
+    bool visit( Todo * );
+    bool visit( Journal * );
+    bool visit( FreeBusy * );
 
   private:
     ScheduleItemIn *mItem;

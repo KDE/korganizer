@@ -65,6 +65,7 @@
 #include "komonthview.h"
 #include "datechecker.h"
 #include "komessagebox.h"
+#include "exportwebdialog.h"
 
 #include <libkcal/vcaldrag.h>
 #include <libkcal/icaldrag.h>
@@ -1304,6 +1305,12 @@ void CalendarView::printPreview()
   mViewManager->currentView()->printPreview( mCalPrinter, tmpDateList.first(),
                                              tmpDateList.last() );
 #endif
+}
+
+void CalendarView::exportWeb()
+{
+  ExportWebDialog *dlg = new ExportWebDialog( calendar(), this );
+  dlg->show();
 }
 
 void CalendarView::exportICalendar()

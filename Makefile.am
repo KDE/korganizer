@@ -60,7 +60,7 @@ libkorganizer_la_LIBADD  = $(LIB_KPARTS) $(LIB_KFILE) \
 	libkorganizer_calendar.la \
 	$(top_builddir)/kdgantt/libkdgantt.la \
 	$(KNEWSTUFF_LIB) \
-        $(top_builddir)/kresources/remote/libkcal_resourceremote.la
+	$(top_builddir)/kresources/remote/libkcal_resourceremote.la
 libkorganizer_la_COMPILE_FIRST = kofilterview_base.ui \
 	outgoingdialog_base.ui \
 	incomingdialog_base.ui \
@@ -111,7 +111,8 @@ libkorganizer_la_SOURCES = komessagebox.cpp outgoingdialog_base.ui \
 	importdialog.cpp \
 	korganizerifaceimpl.cpp \
 	freebusymanager.cpp freebusyurldialog.cpp \
-	eventarchiver.cpp koidentitymanager.cpp
+	eventarchiver.cpp koidentitymanager.cpp \
+	exportwebdialog.cpp
 
 
 libkorganizer_eventviewer_la_LDFLAGS = $(all_libraries) $(KDE_RPATH) \
@@ -153,7 +154,8 @@ noinst_HEADERS = komonthview.h \
 	koeventview.h statusdialog.h customlistviewitem.h \
 	alarmclient.h \
 	navigatorbar.h kogroupware.h kogroupwareincomingdialog.h \
-	koincidencetooltip.h korganizerifaceimpl.h
+	koincidencetooltip.h korganizerifaceimpl.h \
+	exportwebdialog.h
 
 tip_DATA = tips
 tipdir = $(kde_datadir)/korganizer

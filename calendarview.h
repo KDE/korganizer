@@ -339,6 +339,9 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     void printSetup();
     void printPreview();
 
+    /** Export as HTML file */
+    void exportWeb();
+    
     /** Export as iCalendar file */
     void exportICalendar();
 
@@ -522,12 +525,12 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
 };
 
 
-class CalendarViewVisitor : public Incidence::Visitor
+class CalendarViewVisitor : public IncidenceBase::Visitor
 {
   public:
     CalendarViewVisitor() : mView( 0 ) {}
 
-    bool act( Incidence *incidence, CalendarView *view )
+    bool act( IncidenceBase *incidence, CalendarView *view )
     {
       mView = view;
       return incidence->accept( *this );

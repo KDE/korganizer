@@ -72,7 +72,7 @@ ScheduleItemIn::ScheduleItemIn(QListView *parent,IncidenceBase *ev,
 
 
 /* Visitor */
-ScheduleItemVisitor::ScheduleItemVisitor(ScheduleItemIn *item)
+ScheduleItemVisitor::ScheduleItemVisitor( ScheduleItemIn *item )
 {
   mItem = item;
 }
@@ -81,7 +81,7 @@ ScheduleItemVisitor::~ScheduleItemVisitor()
 {
 }
 
-bool ScheduleItemVisitor::visit(Event *e)
+bool ScheduleItemVisitor::visit( Event *e )
 {
   mItem->setText(0,e->summary());
   mItem->setText(1,e->dtStartDateStr());
@@ -104,7 +104,7 @@ bool ScheduleItemVisitor::visit(Event *e)
   return true;
 }
 
-bool ScheduleItemVisitor::visit(Todo *e)
+bool ScheduleItemVisitor::visit( Todo *e )
 {
   mItem->setText(0,e->summary());
   if (e->hasStartDate()) {
@@ -124,11 +124,28 @@ bool ScheduleItemVisitor::visit(Todo *e)
   return true;
 }
 
-bool ScheduleItemVisitor::visit(Journal *)
+bool ScheduleItemVisitor::visit( Journal *j )
 {
+  // @TODO: Allow Journals in the schedule items...
+  mItem->setText( 0, j->description().left(150) );
+  mItem->setText( 1, j->dtStartDateStr() );
+  if ( !j->doesFloat() ) {
+    mItem->setText( 2, j->dtStartTimeStr() );
+  }
+  mItem->setText( 5, j->organizer()+" " );
   return false;
 }
 
+bool ScheduleItemVisitor::visit( FreeBusy *fb )
+{
+  mItem->setText(0, "FreeBusy");
+  mItem->setText(1, KGlobal::locale()->formatDate( fb->dtStart().date() ) );
+  mItem->setText(2, KGlobal::locale()->formatTime( fb->dtStart().time() ) );
+  mItem->setText(3, KGlobal::locale()->formatDate( fb->dtEnd().date() ) );
+  mItem->setText(4, KGlobal::locale()->formatTime( fb->dtEnd().time() ) );
+  mItem->setText(5, fb->organizer());
+  return true;
+}
 
 /*
  *  Constructs a IncomingDialog which is a child of 'parent', with the
@@ -186,19 +203,8 @@ void IncomingDialog::retrieve()
     ScheduleMessage::Status status = message->status();
 
     ScheduleItemIn *item = new ScheduleItemIn(mMessageListView,inc,method,status);
-    if(inc->type()!="FreeBusy") {
-      Incidence *incidence = static_cast<Incidence *>(inc);
-      ScheduleItemVisitor v(item);
-      if (!incidence->accept(v)) delete item;
-    } else {
-      FreeBusy *fb = static_cast<FreeBusy *>(item->event());
-      item->setText(0, "FreeBusy");
-      item->setText(1, KGlobal::locale()->formatDate( fb->dtStart().date() ) );
-      item->setText(2, KGlobal::locale()->formatTime( fb->dtStart().time() ) );
-      item->setText(3, KGlobal::locale()->formatDate( fb->dtEnd().date() ) );
-      item->setText(4, KGlobal::locale()->formatTime( fb->dtEnd().time() ) );
-      item->setText(5, fb->organizer());
-    }
+    ScheduleItemVisitor v(item);
+    if (!inc->accept(v)) delete item;
     automaticAction(item);
   }
   emit numMessagesChanged(mMessageListView->childCount());

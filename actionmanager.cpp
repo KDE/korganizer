@@ -285,12 +285,15 @@ void ActionManager::initActions()
                SLOT( uploadNewStuff() ), mACollection,
                "uploadnewstuff" );
 
-  (void)new KAction(i18n("&iCalendar..."), 0,
+  new KAction(i18n("&iCalendar..."), 0,
                     mCalendarView, SLOT(exportICalendar()),
                     mACollection, "export_icalendar");
-  (void)new KAction(i18n("&vCalendar..."), 0,
+  new KAction(i18n("&vCalendar..."), 0,
                     mCalendarView, SLOT(exportVCalendar()),
                     mACollection, "export_vcalendar");
+  new KAction( i18n("Export &Web Page..."), 0, 
+                    mCalendarView, SLOT(exportWeb()),
+                    mACollection, "export_web");
 
 // This is now done by KPrinter::setup().
 #if 0
@@ -1304,12 +1307,12 @@ QString ActionManager::localFileName()
   return mFile;
 }
 
-class ActionStringsVisitor : public Incidence::Visitor
+class ActionStringsVisitor : public IncidenceBase::Visitor
 {
   public:
     ActionStringsVisitor() : mShow(0), mEdit(0), mDelete(0) {}
 
-    bool act( Incidence *incidence, KAction *show, KAction *edit, KAction *del )
+    bool act( IncidenceBase *incidence, KAction *show, KAction *edit, KAction *del )
     {
       mShow = show;
       mEdit = edit;
@@ -1330,13 +1333,14 @@ class ActionStringsVisitor : public Incidence::Visitor
       if ( mDelete ) mDelete->setText( i18n("&Delete To-Do") );
       return true;
     }
-    bool visit( Journal * ) {
+    bool visit( Journal * ) { return assignDefaultStrings(); }
+  protected:
+    bool assignDefaultStrings() {
       if ( mShow ) mShow->setText( i18n("&Show") );
       if ( mEdit ) mEdit->setText( i18n("&Edit...") );
       if ( mDelete ) mDelete->setText( i18n("&Delete") );
       return true;
     }
-  protected:
     KAction *mShow;
     KAction *mEdit;
     KAction *mDelete;
@@ -1358,7 +1362,7 @@ void ActionManager::processIncidenceSelection( Incidence *incidence )
     mShowIncidenceAction->setText( i18n("&Show") );
     mEditIncidenceAction->setText( i18n("&Edit...") );
     mDeleteIncidenceAction->setText( i18n("&Delete") );
-	}
+  }
 }
 
 void ActionManager::enableIncidenceActions( bool enabled )

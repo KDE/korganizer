@@ -25,10 +25,11 @@
       <Menu name="export"><text>&amp;Export</text>
         <Action name="uploadnewstuff"/>
         <Separator/>
-        <Merge/>
-        <Separator/>
+        <Action name="export_web" />
         <Action name="export_icalendar"/>
         <Action name="export_vcalendar"/>
+        <Separator/>
+        <Merge/>
       </Menu>
       <Separator/>
       <Action name="purge_completed"/>

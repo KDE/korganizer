@@ -53,12 +53,12 @@
 #include "freebusymanager.h"
 #include "docprefs.h"
 
-class ScheduleItemOutVisitor : public Incidence::Visitor
+class ScheduleItemOutVisitor : public IncidenceBase::Visitor
 {
   public:
     ScheduleItemOutVisitor() : mItem(0) {}
 
-    bool act( Incidence *incidence, ScheduleItemOut *item )
+    bool act( IncidenceBase *incidence, ScheduleItemOut *item )
     {
       mItem = item;
       return (incidence && mItem) ? incidence->accept( *this ) : false;
@@ -105,6 +105,14 @@ class ScheduleItemOutVisitor : public Incidence::Visitor
         mItem->setText( 2, journal->dtStartTimeStr() );
       return true;
     }
+    bool visit( FreeBusy *fb ) {
+      mItem->setText( 0, i18n("Free Busy Object") );
+      mItem->setText( 1, fb->dtStartDateStr() );
+      mItem->setText( 2, fb->dtStartTimeStr() );
+      mItem->setText( 3, KGlobal::locale()->formatDate( fb->dtEnd().date() ) );
+      mItem->setText( 4, KGlobal::locale()->formatTime( fb->dtEnd().time() ) );
+      return true;
+    }
   protected:
     ScheduleItemOut *mItem;
 };
@@ -121,21 +129,9 @@ ScheduleItemOut::ScheduleItemOut(QListView *parent,IncidenceBase *ev,
 
 //  kdDebug(5850) << "ScheduleItemOut: setting the summary" << endl;
   // @TODO: use a visitor here
-  if(ev->type() != "FreeBusy") {
-    Incidence *incidence = dynamic_cast<Incidence*>(ev);
-    ScheduleItemOutVisitor v;
-    if ( !incidence || !v.act( incidence, this ) ) {
-      setText( 0, i18n("Unable to interpret incidence") );
-    }
-  } else {
-    FreeBusy *freebusy = static_cast<FreeBusy *>(ev);
-    
-    setText(0,i18n("Free Busy Object"));
-    setText(1,freebusy->dtStartDateStr());
-    setText(2,freebusy->dtStartTimeStr());
-    //Must try and get this to the users local settings
-    setText(3,KGlobal::locale()->formatDate( freebusy->dtEnd().date() ) );
-    setText(4,KGlobal::locale()->formatTime( freebusy->dtEnd().time() ) );
+  ScheduleItemOutVisitor v;
+  if ( !mIncidence || !v.act( mIncidence, this ) ) {
+    setText( 0, i18n("Unable to interpret incidence") );
   }
 
   //Set the Method

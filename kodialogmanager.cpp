@@ -54,12 +54,12 @@
 // @TODO: Handle KOEventViewerDialogs in dialog manager. Pass
 // KOPrefs::mCompactDialog.
 
-class DialogManagerVisitor : public Incidence::Visitor
+class DialogManagerVisitor : public IncidenceBase::Visitor
 {
   public:
     DialogManagerVisitor() : mDialogManager( 0 ) {}
 
-    bool act( Incidence *incidence, KODialogManager *manager )
+    bool act( IncidenceBase *incidence, KODialogManager *manager )
     {
       mDialogManager = manager;
       return incidence->accept( *this );

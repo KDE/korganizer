@@ -72,7 +72,7 @@ void KOListViewToolTip::maybeTip( const QPoint & pos)
 
 }
 
-ListItemVisitor::ListItemVisitor(KOListViewItem *item)
+ListItemVisitor::ListItemVisitor( KOListViewItem *item )
 {
   mItem = item;
 }
@@ -81,7 +81,7 @@ ListItemVisitor::~ListItemVisitor()
 {
 }
 
-bool ListItemVisitor::visit(Event *e)
+bool ListItemVisitor::visit( Event *e )
 {
   mItem->setText(0,e->summary());
   if ( e->isAlarmEnabled() ) {

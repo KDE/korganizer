@@ -410,12 +410,12 @@ void MonthViewCell::updateCell()
   }
 }
 
-class CreateMonthViewItemVisitor : public Incidence::Visitor
+class CreateMonthViewItemVisitor : public IncidenceBase::Visitor
 {
   public:
     CreateMonthViewItemVisitor() : mItem(0) {}
 
-    bool act( Incidence *incidence, QDate date, QPalette stdPal )
+    bool act( IncidenceBase *incidence, QDate date, QPalette stdPal )
     {
       mItem = 0;
       mDate = date;
@@ -830,12 +830,12 @@ void KOMonthView::showIncidences( const Incidence::List & )
   kdDebug(5850) << "KOMonthView::showIncidences( const Incidence::List & ) is not implemented yet." << endl;
 }
 
-class MonthViewDateVisitor : public Incidence::Visitor
+class MonthViewDateVisitor : public IncidenceBase::Visitor
 {
   public:
     MonthViewDateVisitor() {}
 
-    bool act( Incidence *incidence )
+    bool act( IncidenceBase *incidence )
     {
       return incidence->accept( *this );
     }
@@ -854,6 +854,7 @@ class MonthViewDateVisitor : public Incidence::Visitor
         return false;
     }
     bool visit( Journal *journal ) {
+      mDate = journal->dtStart().date();
       return true;
     }
   protected:
