@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#! @PERL@
 #
 # This is the input filter for KOrganizer. It has to be set as "pipe through"
 # filter in KMail and will write all mails containing an iCalendar or vCalendar

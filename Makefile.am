@@ -76,7 +76,7 @@ tip_DATA = tips
 tipdir = $(kde_datadir)/korganizer
 
 datadir = $(kde_bindir)
-data_SCRIPTS = ical2vcal
+data_SCRIPTS = ical2vcal korganizerIn
 
 kde_conf_DATA = korganizerrc
 
