@@ -20,6 +20,9 @@
 // $Id$
 
 #include "datenums.h"
+#include "koglobals.h"
+
+#include <kcalendarsystem.h>
 
 class DatenumsFactory : public CalendarDecorationFactory {
   public:
@@ -36,7 +39,8 @@ extern "C" {
 
 QString Datenums::shortText(const QDate &date)
 {
-  return QString::number(date.dayOfYear());
+  //return QString::number(KOGlobals::self()->calendarSystem()->dayOfYear(date));
+  return QString::number(KOGlobals::self()->calendarSystem()->dayOfYear(date));
 }
 
 QString Datenums::info()
