@@ -199,7 +199,7 @@ bool KOMailClient::send(const QString &from,const QString &to,
       }
       if (!kMailOpenComposer(to,"",from,subject,body,0,"cal.ics","7bit",
                              attachment.utf8(),"text","calendar","method",meth,
-                             "attachment")) return false;
+                             "attachment","utf-8")) return false;
     }
   }
   return true;
@@ -209,6 +209,9 @@ int KOMailClient::kMailOpenComposer(const QString& arg0,const QString& arg1,
   const QString& arg2,const QString& arg3,const QString& arg4,int arg5,
   const KURL& arg6)
 {
+  //kdDebug(5850) << "KOMailClient::kMailOpenComposer( "
+  //  << arg0 << " , " << arg1 << arg2 << " , " << arg3
+  //  << arg4 << " , " << arg5 << " , " << arg6 << " )" << endl;
   int result = 0;
 
   QByteArray data, replyData;
@@ -240,8 +243,15 @@ int KOMailClient::kMailOpenComposer( const QString& arg0, const QString& arg1,
                                      const QCString& arg7, const QCString& arg8,
                                      const QCString& arg9, const QCString& arg10,
                                      const QCString& arg11, const QString& arg12,
-                                     const QCString& arg13 )
+                                     const QCString& arg13, const QCString& arg14 )
 {
+    //kdDebug(5850) << "KOMailClient::kMailOpenComposer( "
+    //    << arg0 << " , " << arg1 << arg2 << " , " << arg3
+    //   << arg4 << " , " << arg5 << " , " << arg6
+    //    << arg7 << " , " << arg8 << " , " << arg9
+    //    << arg10<< " , " << arg11<< " , " << arg12
+    //    << arg13<< " , " << arg14<< " )" << endl;
+    
     int result = 0;
 
     QByteArray data, replyData;
@@ -261,7 +271,9 @@ int KOMailClient::kMailOpenComposer( const QString& arg0, const QString& arg1,
     arg << arg11;
     arg << arg12;
     arg << arg13;
-    if ( kapp->dcopClient()->call("kmail","KMailIface","openComposer(QString,QString,QString,QString,QString,int,QString,QCString,QCString,QCString,QCString,QCString,QString,QCString)", data, replyType, replyData ) ) {
+    arg << arg14;
+    if ( kapp->dcopClient()->call("kmail","KMailIface",
+          "openComposer(QString,QString,QString,QString,QString,int,QString,QCString,QCString,QCString,QCString,QCString,QString,QCString,QCString)", data, replyType, replyData ) ) {
         if ( replyType == "int" ) {
             QDataStream _reply_stream( replyData, IO_ReadOnly );
             _reply_stream >> result;
