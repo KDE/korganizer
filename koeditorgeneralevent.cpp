@@ -129,7 +129,7 @@ void KOEditorGeneralEvent::initTime(QWidget *parent,QBoxLayout *topLayout)
   mEndTimeEdit = new KTimeEdit(timeBoxFrame);
   layoutTimeBox->addWidget(mEndTimeEdit,1,2);
 
-  QHBoxLayout *flagsBox = new QHBoxLayout( timeBoxFrame );
+  QHBoxLayout *flagsBox = new QHBoxLayout();
 
   mTimeAssociateButton = new QCheckBox(i18n("T&ime associated"),timeBoxFrame);
   flagsBox->addWidget(mTimeAssociateButton);
