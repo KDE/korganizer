@@ -20,11 +20,11 @@
 #ifndef KORG_BIRTHDAYSDIALOG_H
 #define KORG_BIRTHDAYSDIALOG_H
 
-#include <qcheckbox.h>
-#include <qlabel.h>
-
-#include <krestrictedline.h>
 #include <kdialogbase.h>
+
+class QLabel;
+class QCheckBox;
+class KRestrictedLine;
 
 class BirthdaysDialog : public KDialogBase {
     Q_OBJECT
@@ -36,7 +36,7 @@ class BirthdaysDialog : public KDialogBase {
     KRestrictedLine *mAlarmTimeEdit;
   public slots:
     void slotUser1();
-    
+
   private slots:
     void alarmClicked();
   private:

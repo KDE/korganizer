@@ -20,6 +20,10 @@
 
 #include <qframe.h>
 #include <qlayout.h>
+#include <qcheckbox.h>
+#include <qlabel.h>
+
+#include <krestrictedline.h>
 
 #include <klocale.h>
 

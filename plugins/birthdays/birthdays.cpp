@@ -28,6 +28,8 @@
 #include <kdebug.h>
 #include <kaction.h>
 #include <kmessagebox.h>
+#include <qcheckbox.h>
+#include <krestrictedline.h>
 
 #include <kabc/addressbook.h>
 #include <kabc/stdaddressbook.h>
