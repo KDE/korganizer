@@ -471,7 +471,7 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     Todo *selectedTodo();
 
     void warningChangeFailed( Incidence * );
-    void checkForFilteredChange( Incidence *incidence )
+    void checkForFilteredChange( Incidence *incidence );
 
   private:
     void init();
