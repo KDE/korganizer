@@ -824,103 +824,103 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
         // Terrible hack: to change the month days, I have to unset the recurrence, and set all days manually again
         recur->unsetRecurs();
         if ( duration != 0 ) {
-            recur->setYearly( Recurrence::rYearlyPos, freq, duration );
+          recur->setYearly( Recurrence::rYearlyPos, freq, duration );
         } else {
-            recur->setYearly( Recurrence::rYearlyPos, freq, endDt );
+          recur->setYearly( Recurrence::rYearlyPos, freq, endDt );
         }
         recur->addYearlyMonthPos( pos, days );
         recur->addYearlyNum( thisDate.month() );
 
         break; }
-      case Recurrence::rYearlyDay: {
-        int freq = recur->frequency();
-        int duration = recur->duration();
-        QDate endDt( recur->endDate() );
+        case Recurrence::rYearlyDay: {
+          int freq = recur->frequency();
+          int duration = recur->duration();
+          QDate endDt( recur->endDate() );
         // Terrible hack: to change the month days, I have to unset the recurrence, and set all days manually again
-        recur->unsetRecurs();
-        if ( duration == 0 ) { // end by date
-          recur->setYearly( Recurrence::rYearlyDay, freq, endDt );
-        } else {
-          recur->setYearly( Recurrence::rYearlyDay, freq, duration );
-        }
-        recur->addYearlyNum( thisDate.dayOfYear() );
-        break; }
-      case Recurrence::rYearlyMonth: {
-        int freq = recur->frequency();
-        int duration = recur->duration();
-        QDate endDt( recur->endDate() );
+          recur->unsetRecurs();
+          if ( duration == 0 ) { // end by date
+            recur->setYearly( Recurrence::rYearlyDay, freq, endDt );
+          } else {
+            recur->setYearly( Recurrence::rYearlyDay, freq, duration );
+          }
+          recur->addYearlyNum( thisDate.dayOfYear() );
+          break; }
+          case Recurrence::rYearlyMonth: {
+            int freq = recur->frequency();
+            int duration = recur->duration();
+            QDate endDt( recur->endDate() );
         // Terrible hack: to change the month days, I have to unset the recurrence, and set all days manually again
-        recur->unsetRecurs();
-        if ( duration != 0 ) {
-            recur->setYearlyByDate( thisDate.day(), recur->feb29YearlyType(), freq, duration );
-        } else {
-            recur->setYearlyByDate( thisDate.day(), recur->feb29YearlyType(), freq, endDt );
-        }
-        recur->addYearlyNum( thisDate.month() );
-        break; }
-      case Recurrence::rMonthlyPos: {
-        int freq = recur->frequency();
-        int duration = recur->duration();
-        QDate endDt( recur->endDate() );
-        QPtrList<Recurrence::rMonthPos> monthPos( recur->monthPositions() );
-        if ( !monthPos.isEmpty() ) {
+            recur->unsetRecurs();
+            if ( duration != 0 ) {
+              recur->setYearlyByDate( thisDate.day(), recur->feb29YearlyType(), freq, duration );
+            } else {
+              recur->setYearlyByDate( thisDate.day(), recur->feb29YearlyType(), freq, endDt );
+            }
+            recur->addYearlyNum( thisDate.month() );
+            break; }
+            case Recurrence::rMonthlyPos: {
+              int freq = recur->frequency();
+              int duration = recur->duration();
+              QDate endDt( recur->endDate() );
+              QPtrList<Recurrence::rMonthPos> monthPos( recur->monthPositions() );
+              if ( !monthPos.isEmpty() ) {
           // TODO: How shall I adapt the day x of week Y if we move the date across month borders???
           // for now, just use the date of the moved item and assume the recurrence only occurs on that day.
           // That's fine for korganizer, but might mess up other organizers.
-          QBitArray rDays( 7 );
-          rDays = monthPos.first()->rDays;
-          bool negative = monthPos.first()->negative;
-          int newPos;
-          rDays.fill( false );
-          rDays.setBit( thisDate.dayOfWeek() - 1 );
-          if ( negative ) {
-            newPos =  - ( thisDate.daysInMonth() - thisDate.day() - 1 ) / 7 - 1;
-          } else {
-            newPos =  ( thisDate.day()-1 ) / 7 + 1;
-          }
+                QBitArray rDays( 7 );
+                rDays = monthPos.first()->rDays;
+                bool negative = monthPos.first()->negative;
+                int newPos;
+                rDays.fill( false );
+                rDays.setBit( thisDate.dayOfWeek() - 1 );
+                if ( negative ) {
+                  newPos =  - ( thisDate.daysInMonth() - thisDate.day() - 1 ) / 7 - 1;
+                } else {
+                  newPos =  ( thisDate.day()-1 ) / 7 + 1;
+                }
 
           // Terrible hack: to change the month days, I have to unset the recurrence, and set all days manually again
-          recur->unsetRecurs();
-          if ( duration == 0 ) { // end by date
-            recur->setMonthly( Recurrence::rMonthlyPos, freq, endDt );
-          } else {
-            recur->setMonthly( Recurrence::rMonthlyPos, freq, duration );
-          }
-          recur->addMonthlyPos( newPos, rDays );
-        }
-        break;}
-      case Recurrence::rMonthlyDay: {
-        int freq = recur->frequency();
-        int duration = recur->duration();
-        QDate endDt( recur->endDate() );
-        QPtrList<int> monthDays( recur->monthDays() );
+                recur->unsetRecurs();
+                if ( duration == 0 ) { // end by date
+                  recur->setMonthly( Recurrence::rMonthlyPos, freq, endDt );
+                } else {
+                  recur->setMonthly( Recurrence::rMonthlyPos, freq, duration );
+                }
+                recur->addMonthlyPos( newPos, rDays );
+              }
+              break;}
+              case Recurrence::rMonthlyDay: {
+                int freq = recur->frequency();
+                int duration = recur->duration();
+                QDate endDt( recur->endDate() );
+                QPtrList<int> monthDays( recur->monthDays() );
         // Terrible hack: to change the month days, I have to unset the recurrence, and set all days manually again
-        recur->unsetRecurs();
-        if ( duration == 0 ) { // end by date
-          recur->setMonthly( Recurrence::rMonthlyDay, freq, endDt );
-        } else {
-          recur->setMonthly( Recurrence::rMonthlyDay, freq, duration );
-        }
+                recur->unsetRecurs();
+                if ( duration == 0 ) { // end by date
+                  recur->setMonthly( Recurrence::rMonthlyDay, freq, endDt );
+                } else {
+                  recur->setMonthly( Recurrence::rMonthlyDay, freq, duration );
+                }
         // TODO: How shall I adapt the n-th day if we move the date across month borders???
         // for now, just use the date of the moved item and assume the recurrence only occurs on that day.
         // That's fine for korganizer, but might mess up other organizers.
-        recur->addMonthlyDay( thisDate.day() );
+                recur->addMonthlyDay( thisDate.day() );
 
-        break;}
-      case Recurrence::rWeekly: {
-        QBitArray days(7), oldDays( recur->days() );
-        int offset = daysOffset % 7;
-        if ( offset<0 ) offset = (offset+7) % 7;
+                break;}
+                case Recurrence::rWeekly: {
+                  QBitArray days(7), oldDays( recur->days() );
+                  int offset = daysOffset % 7;
+                  if ( offset<0 ) offset = (offset+7) % 7;
         // rotate the days
-        for (int d=0; d<7; d++ ) {
-          days.setBit( (d+offset) % 7, oldDays.at(d) );
-        }
-        if ( recur->duration() == 0 ) { // end by date
-          recur->setWeekly( recur->frequency(), days, recur->endDate(), recur->weekStart() );
-        } else { // duration or no end
-          recur->setWeekly( recur->frequency(), days, recur->duration(), recur->weekStart() );
-        }
-        break;}
+                  for (int d=0; d<7; d++ ) {
+                    days.setBit( (d+offset) % 7, oldDays.at(d) );
+                  }
+                  if ( recur->duration() == 0 ) { // end by date
+                    recur->setWeekly( recur->frequency(), days, recur->endDate(), recur->weekStart() );
+                  } else { // duration or no end
+                    recur->setWeekly( recur->frequency(), days, recur->duration(), recur->weekStart() );
+                  }
+                  break;}
       // nothing to be done for the following:
       case Recurrence::rDaily:
       case Recurrence::rHourly:
@@ -937,8 +937,8 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
 
   i->setRevision( i->revision() + 1 );
   if( !KOPrefs::instance()->mUseGroupwareCommunication ||
-      KOGroupware::instance()->sendICalMessage( this, KCal::Scheduler::Request,
-                                                i ) ) {
+       KOGroupware::instance()->sendICalMessage( this, KCal::Scheduler::Request,
+  i ) ) {
     if ( i->type() == "Event" ) {
       incidence->setDtStart( startDt );
       (static_cast<Event*>( incidence ) )->setDtEnd( endDt );
@@ -1076,8 +1076,9 @@ void KOAgendaView::insertIncidence( Incidence *incidence, QDate curDate,
 
 void KOAgendaView::changeIncidenceDisplayAdded( Incidence *incidence )
 {
+  Todo *todo = dynamic_cast<Todo *>(incidence);
   if ( !calendar()->filter()->filterIncidence( incidence ) ||
-     ( incidence->type() == "Todo" && !KOPrefs::instance()->showAllDayTodo() ) )
+     ( todo && !KOPrefs::instance()->showAllDayTodo() ) )
     return;
 
   QDate f = mSelectedDates.first();
@@ -1099,9 +1100,11 @@ void KOAgendaView::changeIncidenceDisplayAdded( Incidence *incidence )
   QDate endDt;
   if ( incidence->type() == "Event" )
     endDt = (static_cast<Event *>(incidence))->dtEnd().date();
-  if ( incidence->type() == "Todo" ) {
-    Todo *todo = static_cast<Todo *>(incidence);
-    endDt = todo->dtDue().date();
+  if ( todo ) {
+    bool overdue = (!todo->isCompleted()) &&
+                   (todo->dtDue() < QDate::currentDate() );
+    endDt = overdue ? QDate::currentDate()
+                    : todo->dtDue().date();
     if ( endDt >= f && endDt <= l ) {
       insertIncidence( incidence, endDt );
       return;
@@ -1119,7 +1122,6 @@ void KOAgendaView::changeIncidenceDisplayAdded( Incidence *incidence )
 
 void KOAgendaView::changeIncidenceDisplay( Incidence *incidence, int mode )
 {
-  if ( !mAllowAgendaUpdate ) return;
   switch ( mode ) {
     case KOGlobals::INCIDENCEADDED: {
         //  Add an event. No need to recreate the whole view!
@@ -1129,12 +1131,20 @@ void KOAgendaView::changeIncidenceDisplay( Incidence *incidence, int mode )
       changeIncidenceDisplayAdded( incidence );
       break;
     }
-    case KOGlobals::INCIDENCEEDITED:
-    case KOGlobals::INCIDENCEDELETED: {
-      mAllDayAgenda->removeIncidence( incidence );
-      mAgenda->removeIncidence( incidence );
-      if ( mode == KOGlobals::INCIDENCEEDITED )
+    case KOGlobals::INCIDENCEEDITED: {
+      if ( !mAllowAgendaUpdate ) {
+        updateEventIndicators();
+      } else {
+        removeIncidence( incidence );
+        updateEventIndicators();
         changeIncidenceDisplayAdded( incidence );
+      }
+      break;
+    }
+    case KOGlobals::INCIDENCEDELETED: {
+      mAgenda->removeIncidence( incidence );
+      mAllDayAgenda->removeIncidence( incidence );
+      updateEventIndicators();
       break;
     }
     default:
@@ -1207,8 +1217,8 @@ void KOAgendaView::fillAgenda()
         // Already completed items can be displayed on their original due date
         bool overdue = (!todo->isCompleted()) && (todo->dtDue() < today);
 
-        if ( ((todo->dtDue().date() == currentDate) && !overdue) ||
-             ((currentDate == today) && overdue) ||
+        if ( (( todo->dtDue().date() == currentDate) && !overdue) ||
+             (( currentDate == today) && overdue) ||
              ( todo->recursOn( currentDate ) ) ) {
           if ( todo->doesFloat() || overdue ) {  // Todo has no due-time set or is already overdue
             //kdDebug(5850) << "todo without time:" << todo->dtDueDateStr() << ";" << todo->summary() << endl;
@@ -1484,4 +1494,18 @@ void KOAgendaView::finishTypeAhead()
 {
   mAgenda->finishTypeAhead();
   mAllDayAgenda->finishTypeAhead();
+}
+
+void KOAgendaView::removeIncidence( Incidence *incidence )
+{
+  mAgenda->removeIncidence( incidence );
+  mAllDayAgenda->removeIncidence( incidence );
+}
+
+void KOAgendaView::updateEventIndicators()
+{
+  mMinY = mAgenda->minContentsY();
+  mMaxY = mAgenda->maxContentsY();
+
+  mAgenda->checkScrollBoundaries();
 }

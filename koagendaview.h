@@ -199,7 +199,7 @@ class KOAgendaView : public KOEventView
 
     /** reschedule the todo  to the given x- and y- coordinates. Third parameter determines all-day (no time specified) */
     void slotTodoDropped( Todo *, const QPoint &, bool );
-    
+
     void enableAgendaUpdate( bool enable );
 
   signals:
@@ -221,6 +221,13 @@ class KOAgendaView : public KOEventView
       Set the masks on the agenda widgets indicating, which days are holidays.
     */
     void setHolidayMasks();
+
+    void removeIncidence( Incidence * );
+    /**
+      Updates the event indicators after a certain incidence was modified or
+      removed.
+    */
+    void updateEventIndicators();
 
   protected slots:
     /** Update event belonging to agenda item */
@@ -270,7 +277,7 @@ class KOAgendaView : public KOEventView
     QDateTime mTimeSpanEnd;
     bool mTimeSpanInAllDay;
     bool mAllowAgendaUpdate;
-    
+
     Incidence *mUpdateItem;
 };
 

@@ -82,6 +82,9 @@ class KOAgenda : public QScrollView
     int timeToY ( const QTime &time );
     QTime gyToTime ( int y );
 
+    QMemArray<int> minContentsY();
+    QMemArray<int> maxContentsY();
+
     void setStartTime( QTime startHour );
 
     KOAgendaItem *insertItem ( Incidence *incidence, QDate qd, int X, int YTop,
@@ -172,13 +175,13 @@ class KOAgenda : public QScrollView
 
     void startDragSignal(Incidence *);
     void droppedToDo( Todo*todo, const QPoint &gpos, bool allDay );
-    
+
     void enableAgendaUpdate( bool enable );
 
   private:
     enum MouseActionType { NOP, MOVE, SELECT,
                            RESIZETOP, RESIZEBOTTOM, RESIZELEFT, RESIZERIGHT };
-  
+
   protected:
     void drawContents( QPainter *p, int cx, int cy, int cw, int ch );
     int columnWidth( int column );
@@ -192,7 +195,7 @@ class KOAgenda : public QScrollView
     /** Handles drag and drop events. Called from eventFilter */
     virtual bool eventFilter_drag( QObject *, QDropEvent * );
 
-    /** returns RESIZELEFT if pos is near the lower edge of the action item, 
+    /** returns RESIZELEFT if pos is near the lower edge of the action item,
       RESIZERIGHT if pos is near the higher edge, and MOVE otherwise.
       If --reverse is used, RESIZELEFT still means resizing the beginning of
       the event, although that means moving to the right!
@@ -203,7 +206,7 @@ class KOAgenda : public QScrollView
     */
     bool ptInSelection( QPoint gpos ) const;
 
-    
+
     /** Start selecting time span. */
     void startSelectAction( const QPoint &viewportPos );
 
@@ -224,8 +227,8 @@ class KOAgenda : public QScrollView
 
     /** Set cursor, when no item action is in progress */
     void setNoActionCursor( KOAgendaItem *moveItem, const QPoint &viewportPos );
-    /** Sets the cursor according to the given action type. If acting==true, 
-      the corresponding action is running (i.e. the item is really moved). If 
+    /** Sets the cursor according to the given action type. If acting==true,
+      the corresponding action is running (i.e. the item is really moved). If
       acting==false the cursor should just indicate that the corresponding action
       is possible */
     void setActionCursor( int actionType, bool acting=false );
