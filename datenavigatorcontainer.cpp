@@ -155,6 +155,7 @@ void DateNavigatorContainer::resizeEvent( QResizeEvent * )
   if ( horizontalCount != mHorizontalCount ||
        verticalCount != mVerticalCount ) {
     uint count = horizontalCount * verticalCount;
+    if ( count == 0 ) return;
 
     while ( count > ( mExtraViews.count() + 1 ) ) {
       KDateNavigator *n = new KDateNavigator( this );
