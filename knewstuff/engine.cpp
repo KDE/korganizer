@@ -41,7 +41,7 @@ using namespace KNS;
 
 Engine::Engine( KNewStuff *newStuff, const QString &type,
                 QWidget *parentWidget ) :
-  mParentWidget( parentWidget ), mNewStuffJobCount( 0 ), mDownloadDialog( 0 ),
+  mParentWidget( parentWidget ), mDownloadDialog( 0 ),
   mUploadDialog( 0 ), mProviderDialog( 0 ), mUploadProvider( 0 ),
   mMetaUploaded( false ), mNewStuff( newStuff ), mType( type )
 {
@@ -72,7 +72,7 @@ void Engine::getMetaInformation( Provider::List *providers )
 {
   mProviderLoader->disconnect();
 
-  mNewStuffJobCount = 0;
+  mNewStuffJobData.clear();
 
   if ( !mDownloadDialog ) {
     mDownloadDialog = new DownloadDialog( this, mParentWidget );
@@ -91,7 +91,6 @@ void Engine::getMetaInformation( Provider::List *providers )
              SLOT( slotNewStuffJobData( KIO::Job *, const QByteArray & ) ) );
 
     mNewStuffJobData.insert( job, "" );
-    ++mNewStuffJobCount;
   }
 }
 
@@ -151,8 +150,10 @@ void Engine::slotNewStuffJobResult( KIO::Job *job )
       }
     }
   }
+  
+  mNewStuffJobData.remove( job );
 
-  if ( --mNewStuffJobCount == 0 ) {
+  if ( mNewStuffJobData.count() == 0 ) {
     mDownloadDialog->show();
     mDownloadDialog->raise();
   }
