@@ -345,7 +345,7 @@ class CalPrintBase : public QObject
     void drawTodo( int &count, Todo * item, QPainter &p, bool connectSubTodos,
                    bool desc, int pospriority, int possummary, int posDueDt,
                    int level, int x, int &y, int width, int &height,
-                   int pageHeight, TodoParentStart *r = 0 );
+                   int pageHeight, const Todo::List &todoList, TodoParentStart *r = 0 );
 
     void drawSplitWeek( QPainter &p, const QDate &fd, const QDate &td );
     void drawSplitHeaderRight( QPainter &p, const QDate &fd, const QDate &td,

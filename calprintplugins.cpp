@@ -591,7 +591,6 @@ void CalPrintTodos::print( QPainter &p, int width, int height )
 //   } else {
     todoList = mCalendar->todos();
 //   }
-  // TODO_RK: filter out todos
 
   int count = 0;
   for( int cprior = 1; cprior <= 6; cprior++ ) {
@@ -620,7 +619,7 @@ void CalPrintTodos::print( QPainter &p, int width, int height )
       int todoHeight = height - mCurrentLinePos;
       drawTodo( count, currEvent, p, mConnectSubTodos,
                 mIncludeDescription, pospriority, possummary, posdue, 0,
-                0, mCurrentLinePos, width, todoHeight, height );
+                0, mCurrentLinePos, width, todoHeight, height, todoList );
     }
   }
 }

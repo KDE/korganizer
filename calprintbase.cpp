@@ -831,7 +831,7 @@ void CalPrintBase::drawMonth(QPainter &p, const QDate &qd, bool weeknumbers,
 
 void CalPrintBase::drawTodo( int &count, Todo * item, QPainter &p, bool connectSubTodos,
     bool desc, int pospriority, int possummary, int posDueDt, int level,
-    int x, int &y, int width, int &height, int pageHeight,
+    int x, int &y, int width, int &height, int pageHeight, const Todo::List &todoList,
     TodoParentStart *r )
 {
   QString outStr;
@@ -903,7 +903,7 @@ void CalPrintBase::drawTodo( int &count, Todo * item, QPainter &p, bool connectS
       p.drawLine( rect.topLeft(), rect.bottomRight() );
       p.drawLine( rect.topRight(), rect.bottomLeft() );
     }
-	}
+  }
   startpt.mRect = rect; //save for later
 
   // Connect the dots
@@ -958,9 +958,16 @@ void CalPrintBase::drawTodo( int &count, Todo * item, QPainter &p, bool connectS
   startPoints.append( &startpt );
   for( it = l.begin(); it != l.end(); ++it ) {
     count++;
-    drawTodo( count, static_cast<Todo *>( *it ), p, connectSubTodos,
-        desc, pospriority, possummary, posDueDt, level+1,
-        x, y, width, height, pageHeight, &startpt);
+    // In the future, todos might also be related to events
+    // Manually check if the subtodo is in the list of todos to print
+    // The problem is that relations() does not apply filters, so
+    // we need to compare manually with the complete filtered list!
+    Todo* subtodo = dynamic_cast<Todo *>( *it );
+    if (subtodo && todoList.contains( subtodo ) ) {
+      drawTodo( count, static_cast<Todo *>( *it ), p, connectSubTodos,
+          desc, pospriority, possummary, posDueDt, level+1,
+          x, y, width, height, pageHeight, todoList, &startpt);
+    }
   }
   startPoints.remove(&startpt);
 }
