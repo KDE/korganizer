@@ -56,6 +56,8 @@
 #include <kconfig.h>
 #include <klocale.h>
 #include <kstandarddirs.h>
+#include <kabc/stdaddressbook.h> 
+#include <kabc/addressee.h> 
 
 #include <qfile.h>
 #include <qbuffer.h>
@@ -98,6 +100,11 @@ void FreeBusyDownloadJob::slotResult( KIO::Job *job )
   }
 
   FreeBusy *fb = mManager->iCalToFreeBusy( mFreeBusyData );
+  if ( fb ) {
+    Person p = fb->organizer();
+    p.setEmail( mEmail );
+    mManager->saveFreeBusy( fb, p );
+  }
   emit freeBusyDownloaded( fb, mEmail );
   // PENDING(steffen): Is this safe?
   //job->deleteLater();
@@ -380,7 +387,23 @@ KURL FreeBusyManager::freeBusyUrl( const QString &email )
   if ( !url.isEmpty() ) {
     return KURL( url );
   }
-
+  // Try with the url configurated by preferred email in kaddressbook
+  KABC::Addressee::List list= KABC::StdAddressBook::self()->findByEmail( email );
+  KABC::Addressee::List::Iterator it;
+  QString pref;
+  for ( it = list.begin(); it != list.end(); ++it ) {
+    pref = (*it).preferredEmail();
+    if ( !pref.isEmpty() && pref != email ) {
+      kdDebug( 5850 ) << "FreeBusyManager::freeBusyUrl():" <<
+        "Preferred email of " << email << " is " << pref << endl;
+      cfg.setGroup( pref );
+      url = cfg.readEntry ( "url" );
+      if ( !url.isEmpty() )
+        kdDebug( 5850 ) << "FreeBusyManager::freeBusyUrl():" <<
+          "Taken url from preferred email:" << url << endl;
+        return KURL( url );
+    }
+  }
   // None found. Check if we do automatic FB retrieving then
   if ( !KOPrefs::instance()->mFreeBusyRetrieveAuto )
     // No, so no FB list here
@@ -430,9 +453,8 @@ KCal::FreeBusy *FreeBusyManager::iCalToFreeBusy( const QCString &data )
   if ( !fb ) {
     kdDebug(5850) << "FreeBusyManager::iCalToFreeBusy(): Error parsing free/busy"
               << endl;
-  } else {
-    saveFreeBusy( fb, fb->organizer() );
-  }
+    kdDebug(5850) << freeBusyVCal << endl;
+  } 
   return fb;
 }
 
