@@ -52,19 +52,19 @@ KOEditorAttachments::KOEditorAttachments( int spacing, QWidget *parent,
 
   QBoxLayout *buttonLayout = new QHBoxLayout( topLayout );
 
-  QPushButton *button = new QPushButton( i18n("Add..."), this );
+  QPushButton *button = new QPushButton( i18n("&Add..."), this );
   buttonLayout->addWidget( button );
   connect( button, SIGNAL( clicked() ), SLOT( slotAdd() ) );
 
-  button = new QPushButton( i18n("Edit..."), this );
+  button = new QPushButton( i18n("&Edit..."), this );
   buttonLayout->addWidget( button );
   connect( button, SIGNAL( clicked() ), SLOT( slotEdit() ) );
 
-  button = new QPushButton( i18n("Remove"), this );
+  button = new QPushButton( i18n("&Remove"), this );
   buttonLayout->addWidget( button );
   connect( button, SIGNAL( clicked() ), SLOT( slotRemove() ) );
 
-  button = new QPushButton( i18n("Show"), this );
+  button = new QPushButton( i18n("&Show"), this );
   buttonLayout->addWidget( button );
   connect( button, SIGNAL( clicked() ), SLOT( slotShow() ) );
 }
@@ -109,7 +109,7 @@ void KOEditorAttachments::slotRemove()
 
   if ( KMessageBox::warningContinueCancel(this,
         i18n("This item will be permanently deleted."),
-        i18n("KOrganizer Confirmation"),KGuiItem(i18n("Delete"),"editdelete")) == KMessageBox::Continue )
+        i18n("KOrganizer Confirmation"),KGuiItem(i18n("&Delete"),"editdelete")) == KMessageBox::Continue )
     delete item;
 }
 

@@ -95,7 +95,7 @@ void KOIncidenceEditor::setupAttendeesTab()
 
 void KOIncidenceEditor::setupAttachmentsTab()
 {
-  QFrame *topFrame = addPage( i18n("Attachments") );
+  QFrame *topFrame = addPage( i18n("Attach&ments") );
 
   QBoxLayout *topLayout = new QVBoxLayout( topFrame );
 
