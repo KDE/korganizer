@@ -37,6 +37,23 @@
 
 using namespace KCal;
 
+ResourceViewFactory::ResourceViewFactory( KCal::CalendarResourceManager *manager,
+                                          CalendarView *view )
+{
+  mManager = manager;
+  mView = view;
+}
+
+CalendarViewExtension *ResourceViewFactory::create( QWidget *parent )
+{
+  ResourceView *view = new ResourceView( mManager, parent );
+  view->updateView();
+  QObject::connect( view, SIGNAL( resourcesChanged() ),
+                    mView, SLOT( updateView() ) );
+
+  return view;
+}
+
 ResourceItem::ResourceItem( ResourceCalendar *resource, ResourceView *view,
                             KListView *parent ) :
       QCheckListItem( parent, resource->resourceName(), CheckBox ),
@@ -61,7 +78,7 @@ void ResourceItem::stateChange( bool active )
 
 ResourceView::ResourceView( KCal::CalendarResourceManager *manager,
                             QWidget *parent, const char *name )
-  : QWidget( parent, name ),
+  : CalendarViewExtension( parent, name ),
     mManager( manager )
 {
   mListView = new KListView( this );
@@ -72,9 +89,9 @@ ResourceView::ResourceView( KCal::CalendarResourceManager *manager,
 
   QBoxLayout *buttonLayout = new QHBoxLayout( this );
 
-  add = new QPushButton( i18n("Add"), this, "add" );
+  add = new QPushButton( i18n("Add..."), this, "add" );
   del = new QPushButton( i18n("Remove"), this, "del" );
-  edit = new QPushButton( i18n("Edit"), this, "edit" );
+  edit = new QPushButton( i18n("Edit..."), this, "edit" );
   del->setDisabled( true );
   edit->setDisabled( true );
   buttonLayout->addWidget( add );

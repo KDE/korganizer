@@ -25,6 +25,7 @@
 #define KORG_RESOURCEVIEW_H
 
 #include "customlistviewitem.h"
+#include "calendarview.h"
 
 #include <libkcal/resourcecalendar.h>
 
@@ -35,6 +36,20 @@
 
 class KListView;
 class ResourceView;
+
+class ResourceViewFactory : public CalendarViewExtension::Factory
+{
+  public:
+    ResourceViewFactory( KCal::CalendarResourceManager *manager,
+                         CalendarView *view );
+    
+    CalendarViewExtension *create( QWidget * );
+
+  private:
+    KCal::CalendarResourceManager *mManager;
+    CalendarView *mView;
+};
+
 
 class ResourceItem : public QCheckListItem
 {
@@ -55,7 +70,7 @@ class ResourceItem : public QCheckListItem
 /**
   This class provides a view of calendar resources.
 */
-class ResourceView : public QWidget
+class ResourceView : public CalendarViewExtension
 {
     Q_OBJECT
   public:

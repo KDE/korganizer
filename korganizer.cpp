@@ -32,6 +32,7 @@
 #include <qtimer.h>
 #include <qvbox.h>
 #include <qfile.h>
+#include <qlabel.h>
 
 #include <kglobal.h>
 #include <kdebug.h>
@@ -72,6 +73,7 @@
 #include "actionmanager.h"
 #include "koglobals.h"
 #include "alarmclient.h"
+#include "resourceview.h"
 
 #include "korganizer.h"
 using namespace KParts;
@@ -80,9 +82,9 @@ using namespace KOrg;
 
 
 KOrganizer::KOrganizer( bool document, const char *name )
-  : KParts::MainWindow(0,name),
+  : DCOPObject("KOrganizerIface"),
+    KParts::MainWindow(0,name),
     KOrg::MainWindow( document ),
-    DCOPObject("KOrganizerIface"),
     mIsClosing( false )
 {
   kdDebug(5850) << "KOrganizer::KOrganizer()" << endl;
@@ -134,6 +136,9 @@ KOrganizer::KOrganizer( bool document, const char *name )
 
     mCalendarView = new CalendarView( mCalendarResources, this,
                                       "KOrganizer::CalendarView" );
+
+    ResourceViewFactory factory( manager, mCalendarView );
+    mCalendarView->addExtension( &factory );
 
     connect( mCalendarResources, SIGNAL( calendarChanged() ),
              mCalendarView, SLOT( updateView() ) );

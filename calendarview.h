@@ -33,8 +33,6 @@
 
 #include <libkcal/calendar.h>
 #include <libkcal/scheduler.h>
-#include <libkcal/calendarresources.h>
-#include <libkcal/resourcecalendar.h>
 
 #include <korganizer/calendarviewbase.h>
 
@@ -56,6 +54,19 @@ namespace KCal { class FileStorage; }
 
 using namespace KCal;
 
+class CalendarViewExtension : public QWidget
+{
+  public:
+    CalendarViewExtension( QWidget *parent, const char *name = 0 )
+      : QWidget( parent, name ) {}
+
+    class Factory
+    {
+      public:
+        virtual CalendarViewExtension *create( QWidget *parent ) = 0;
+    };
+};
+
 /**
   This is the main calendar widget. It provides the different vies on t he
   calendar data as well as the date navigator. It also handles synchronisation
@@ -76,8 +87,6 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
       @param parent   parent window
       @param name     Qt internal widget object name
     */
-    CalendarView( CalendarResources *calendar, QWidget *parent = 0,
-                  const char *name = 0 );
     CalendarView( Calendar *calendar, QWidget *parent = 0,
                   const char *name = 0 );
     virtual ~CalendarView();
@@ -98,6 +107,12 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
 
     void addView(KOrg::BaseView *);
     void showView(KOrg::BaseView *);
+
+    /**
+      Add calendar view extension widget. CalendarView takes ownership of the
+      objects created by the factory.
+    */
+    void addExtension( CalendarViewExtension::Factory * );
 
     Incidence *currentSelection();
 
@@ -422,12 +437,10 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
 
     KOFilterView *mFilterView;
 
-    ResourceView *mResourceView;
+    QPtrList<CalendarViewExtension> mExtensions;
 
     // calendar object for this viewing instance
     Calendar      *mCalendar;
-
-    CalendarResourceManager *mResourceManager;
 
     FileStorage *mStorage;
 

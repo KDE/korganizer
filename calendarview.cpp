@@ -99,22 +99,10 @@
 
 using namespace KOrg;
 
-CalendarView::CalendarView( CalendarResources *calendar,
-                            QWidget *parent, const char *name )
-  : CalendarViewBase( parent, name ),
-    mCalendar( calendar ),
-    mResourceManager( calendar->resourceManager() )
-{
-  kdDebug(5850) << "CalendarView::CalendarView( CalendarResources )" << endl;
-
-  init();
-}
-
 CalendarView::CalendarView( Calendar *calendar,
                             QWidget *parent, const char *name )
   : CalendarViewBase( parent, name ),
-    mCalendar( calendar ),
-    mResourceManager( 0 )
+    mCalendar( calendar )
 {
   kdDebug(5850) << "CalendarView::CalendarView( Calendar )" << endl;
 
@@ -133,6 +121,8 @@ void CalendarView::init()
   mCalPrinter = 0;
 
   mFilters.setAutoDelete(true);
+
+  mExtensions.setAutoDelete( true );
 
   mCalendar->registerObserver( this );
 
@@ -158,15 +148,6 @@ void CalendarView::init()
   mLeftSplitter->setResizeMode(mDateNavigator,QSplitter::KeepSize);
   mTodoList = new KOTodoView(mCalendar, mLeftSplitter, "todolist");
   mFilterView = new KOFilterView(&mFilters,mLeftSplitter,"CalendarView::FilterView");
-
-  if ( mResourceManager ) {
-    mResourceView = new ResourceView( mResourceManager, mLeftSplitter );
-    mResourceView->updateView();
-    connect( mResourceView, SIGNAL( resourcesChanged() ),
-             SLOT( updateView() ) );
-  } else {
-    mResourceView = 0;
-  }
 
   QWidget *rightBox = new QWidget( mPanner );
   QBoxLayout *rightLayout = new QVBoxLayout( rightBox );
@@ -442,10 +423,7 @@ void CalendarView::readSettings()
   mPanner->setSizes(sizes);
 
   sizes = config->readIntListEntry("Separator2");
-  if ( ( mResourceView && sizes.count() == 4 ) ||
-       ( !mResourceView && sizes.count() == 3 ) ) {
-    mLeftSplitter->setSizes(sizes);
-  }
+  mLeftSplitter->setSizes(sizes);
 #endif
 
   mViewManager->readSettings( config );
@@ -1611,6 +1589,13 @@ void CalendarView::addView(KOrg::BaseView *view)
 void CalendarView::showView(KOrg::BaseView *view)
 {
   mViewManager->showView(view);
+}
+
+void CalendarView::addExtension( CalendarViewExtension::Factory *factory )
+{
+  CalendarViewExtension *extension = factory->create( mLeftSplitter );
+
+  mExtensions.append( extension );
 }
 
 Incidence *CalendarView::currentSelection()
