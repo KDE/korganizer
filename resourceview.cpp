@@ -31,8 +31,8 @@
 #include <kmessagebox.h>
 #include <kresources/resource.h>
 #include <kresources/configdialog.h>
+#include <kinputdialog.h>
 
-#include <qinputdialog.h>
 #include <qlayout.h>
 
 using namespace KCal;
@@ -133,7 +133,7 @@ void ResourceView::addResource()
   kdDebug(5850) << "ResourceView::addResource()" << endl;
   QStringList types = mManager->resourceTypeNames();
   bool ok = false;
-  QString type = QInputDialog::getItem( i18n( "Resource Configuration" ),
+  QString type = KInputDialog::getItem( i18n( "Resource Configuration" ),
       i18n( "Please select type of the new resource:" ), types, 0, false, &ok, this );
   if ( !ok )
     return;
