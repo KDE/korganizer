@@ -1095,7 +1095,6 @@ void KOEditorRecurrence::writeIncidence( Incidence *incidence )
 
     // overwrite start for todo's
     if ( incidence->type() == "Todo" ) {
-      kdDebug(5850) << "RecurStart veranderen" << endl;
       r->setRecurStart( static_cast<Todo *>(incidence)->dtDue() );
     }
     
