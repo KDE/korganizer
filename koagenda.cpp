@@ -445,7 +445,7 @@ bool KOAgenda::eventFilter_key( QObject *, QKeyEvent *ke )
   }
 
   // Ignore all input that does not produce any output
-  if ( ke->text().isEmpty() ) return false;
+  if ( ke->type() == QEvent::KeyPress && ke->text().isEmpty() ) return false;
 
   if ( ke->type() == QEvent::KeyPress || ke->type() == QEvent::KeyRelease ) {
     switch ( ke->key() ) {
@@ -476,9 +476,8 @@ bool KOAgenda::eventFilter_key( QObject *, QKeyEvent *ke )
         if ( !mTypeAhead ) {
           mTypeAhead = true;
           emitNewEventForSelection();
-          return true;
         }
-        break;
+        return true;
     }
   }
   return false;
@@ -495,8 +494,8 @@ void KOAgenda::finishTypeAhead()
   if ( typeAheadReceiver() ) {
     for( QEvent *e = mTypeAheadEvents.first(); e;
          e = mTypeAheadEvents.next() ) {
-//      kdDebug() << "postEvent() " << int( typeAheadReceiver() ) << endl;
-      QApplication::postEvent( typeAheadReceiver(), e );
+//      kdDebug() << "sendEvent() " << int( typeAheadReceiver() ) << endl;
+      QApplication::sendEvent( typeAheadReceiver(), e );
     }
   }
   mTypeAheadEvents.clear();
