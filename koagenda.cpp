@@ -540,17 +540,7 @@ bool KOAgenda::eventFilter_mouse(QObject *object, QMouseEvent *me)
         {
           // if mouse pointer is not in selection, select the cell below the cursor
           QPoint gpos = contentsToGrid( viewportToContents( viewportPos ) );
-          bool needNewSelection = false;
-          if ( !mHasSelection ) {
-            needNewSelection = true;
-          } else if ( gpos.x()<mSelectionStartCell.x() || gpos.x()>mSelectionEndCell.x() ) {
-            needNewSelection = true;
-          } else if ( (gpos.x()==mSelectionStartCell.x()) && (gpos.y()<mSelectionStartCell.y()) ) {
-            needNewSelection = true;
-          } else if ( (gpos.x()==mSelectionEndCell.x()) && (gpos.y()>mSelectionEndCell.y()) ) {
-            needNewSelection = true;
-          }
-          if ( needNewSelection ) {
+          if ( !ptInSelection( gpos ) ) {
             mSelectionStartCell = gpos;
             mSelectionEndCell = gpos;
             mHasSelection = true;
@@ -562,10 +552,14 @@ bool KOAgenda::eventFilter_mouse(QObject *object, QMouseEvent *me)
         }
         else
         {
-          selectItem(0);
-          mActionItem = 0;
-          setCursor(arrowCursor);
-          startSelectAction(viewportPos);
+          // if mouse pointer is in selection, don't change selection
+          QPoint gpos = contentsToGrid( viewportToContents( viewportPos ) );
+          if ( !ptInSelection( gpos ) ) {
+            selectItem(0);
+            mActionItem = 0;
+            setCursor(arrowCursor);
+            startSelectAction(viewportPos);
+          }
         }
       }
       break;
@@ -614,6 +608,20 @@ bool KOAgenda::eventFilter_mouse(QObject *object, QMouseEvent *me)
       break;
   }
 
+  return true;
+}
+
+bool KOAgenda::ptInSelection( QPoint gpos ) const
+{
+  if ( !mHasSelection ) {
+    return false;
+  } else if ( gpos.x()<mSelectionStartCell.x() || gpos.x()>mSelectionEndCell.x() ) {
+    return false;
+  } else if ( (gpos.x()==mSelectionStartCell.x()) && (gpos.y()<mSelectionStartCell.y()) ) {
+    return false;
+  } else if ( (gpos.x()==mSelectionEndCell.x()) && (gpos.y()>mSelectionEndCell.y()) ) {
+    return false;
+  }
   return true;
 }
 

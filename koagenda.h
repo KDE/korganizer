@@ -201,6 +201,10 @@ class KOAgenda : public QScrollView
       horizontal is the same as mAllDayAgenda.
     */
     MouseActionType isInResizeArea( bool horizontal, const QPoint &pos, KOAgendaItem *item );
+    /** Return whether the cell specified by the grid point belongs to the current select
+    */
+    bool ptInSelection( QPoint gpos ) const;
+
     
     /** Start selecting time span. */
     void startSelectAction( const QPoint &viewportPos );
