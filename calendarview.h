@@ -162,13 +162,13 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
       calendar into existing one, if it is false, clear calendar, before
       loading. Return true, if calendar could be successfully loaded.
     */
-    bool openCalendar(QString filename, bool merge=false);
+    bool openCalendar(const QString& filename, bool merge=false);
 
     /**
       Save calendar data to file. Return true if calendar could be
       successfully saved.
     */
-    bool saveCalendar(QString filename);
+    bool saveCalendar(const QString& filename);
   
     /**
       Close calendar. Clear calendar data and reset views to display an empty

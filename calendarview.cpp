@@ -344,7 +344,7 @@ void CalendarView::createPrinter()
 }
 
 
-bool CalendarView::openCalendar(QString filename, bool merge)
+bool CalendarView::openCalendar(const QString& filename, bool merge)
 {
   kdDebug() << "CalendarView::openCalendar(): " << filename << endl;
 
@@ -383,7 +383,7 @@ bool CalendarView::openCalendar(QString filename, bool merge)
   }
 }
 
-bool CalendarView::saveCalendar( QString filename )
+bool CalendarView::saveCalendar( const QString& filename )
 {
   kdDebug() << "CalendarView::saveCalendar(): " << filename << endl;
 
