@@ -91,26 +91,31 @@ NavigatorBar::NavigatorBar( const QDate & date, QWidget *parent, const char *nam
   }
   mMonth->setMinimumWidth( maxwidth );
 
+  QPixmap pix;
   // Create backward navigation buttons
   mPrevYear = new QPushButton( mCtrlFrame );
-  mPrevYear->setPixmap( KOGlobals::self()->smallIcon( isRTL ? "2rightarrow" : "2leftarrow" ) );
-  mPrevYear->setMinimumHeight(mMonth->height());
+  pix = KOGlobals::self()->smallIcon( isRTL ? "2rightarrow" : "2leftarrow" );
+  mPrevYear->setPixmap( pix );
+  mPrevYear->setSizePolicy( QSizePolicy::Fixed, QSizePolicy::Fixed );
   QToolTip::add( mPrevYear, i18n("Previous year") );
 
+  pix = KOGlobals::self()->smallIcon( isRTL ? "1rightarrow" : "1leftarrow");
   mPrevMonth = new QPushButton( mCtrlFrame );
-  mPrevMonth->setPixmap( KOGlobals::self()->smallIcon( isRTL ? "1rightarrow" : "1leftarrow") );
-  mPrevMonth->setMinimumHeight(mMonth->height());
+  mPrevMonth->setPixmap( pix );
+  mPrevMonth->setSizePolicy( QSizePolicy::Fixed, QSizePolicy::Fixed );
   QToolTip::add( mPrevMonth, i18n("Previous month") );
 
   // Create forward navigation buttons
+  pix = KOGlobals::self()->smallIcon( isRTL ? "1leftarrow" : "1rightarrow");
   mNextMonth = new QPushButton( mCtrlFrame );
-  mNextMonth->setPixmap( KOGlobals::self()->smallIcon( isRTL ? "1leftarrow" : "1rightarrow") );
-  mNextMonth->setMinimumHeight(mMonth->height());
+  mNextMonth->setPixmap( pix );
+  mNextMonth->setSizePolicy( QSizePolicy::Fixed, QSizePolicy::Fixed );
   QToolTip::add( mNextMonth, i18n("Next month") );
 
+  pix = KOGlobals::self()->smallIcon( isRTL ? "2leftarrow" : "2rightarrow");
   mNextYear = new QPushButton( mCtrlFrame );
-  mNextYear->setPixmap( KOGlobals::self()->smallIcon( isRTL ? "2leftarrow" : "2rightarrow") );
-  mNextYear->setMinimumHeight(mMonth->height());
+  mNextYear->setPixmap( pix );
+  mNextYear->setSizePolicy( QSizePolicy::Fixed, QSizePolicy::Fixed );
   QToolTip::add( mNextYear, i18n("Next year") );
 
   // set up control frame layout
