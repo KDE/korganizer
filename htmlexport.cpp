@@ -278,18 +278,32 @@ void HtmlExport::createHtmlEvent (QTextStream *ts, Event *event,
 void HtmlExport::createHtmlTodoList (QTextStream *ts)
 {
   Todo *ev,*subev;
-  
-  QPtrList<Todo> rawTodoList = mCalendar->getTodoList();
+
+  QPtrList<Todo> rawTodoList = mCalendar->getFilteredTodoList();
   QPtrList<Todo> todoList;
+
+  ev = rawTodoList.first();
+  while (ev) {
+    subev = ev;
+    if (ev->relatedTo()) {
+      if (ev->relatedTo()->type()=="Todo") {
+        if (rawTodoList.find(static_cast<Todo*>(ev->relatedTo()))<0) {
+          rawTodoList.append(static_cast<Todo*>(ev->relatedTo()));
+        }
+      }
+    }
+    rawTodoList.find(subev);
+    ev = rawTodoList.next();
+  }
 
   // Sort list by priorities. This is brute force and should be
   // replaced by a real sorting algorithm.
   for (int i=1; i<=5; ++i) {
     for(ev=rawTodoList.first();ev;ev=rawTodoList.next()) {
-      if (ev->priority() == i) todoList.append(ev);
+      if (ev->priority()==i && checkSecrecyTodo(ev)) todoList.append(ev);
     }
   }
-  
+
   *ts << "<TABLE BORDER=0 CELLPADDING=3 CELLSPACING=3>\n";
   *ts << "  <TR>\n";
   *ts << "    <TH CLASS=sum>" << i18n("Task") << "</TH>\n";
@@ -327,7 +341,7 @@ void HtmlExport::createHtmlTodoList (QTextStream *ts)
           << i18n("Sub-Tasks of: ") << "<A HREF=\"#"
           << ev->uid() << "\"><B>" << ev->summary() << "</B></A></TD>\n";
       *ts << "  </TR>\n";
-      
+
       QPtrList<Todo> sortedList;
       Incidence *ev2;
       // Sort list by priorities. This is brute force and should be
@@ -338,11 +352,9 @@ void HtmlExport::createHtmlTodoList (QTextStream *ts)
           if (ev3 && ev3->priority() == i) sortedList.append(ev3);
         }
       }
-      
+
       for(subev=sortedList.first();subev;subev=sortedList.next()) {
-	if (checkSecrecyTodo(subev)) {
-	  createHtmlTodo(ts,subev);
-	}
+        createHtmlTodo(ts,subev);
       }
     }
   }
