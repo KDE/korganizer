@@ -406,7 +406,10 @@ void KOEditorDetails::fillAttendeeInput( AttendeeListItem *aItem )
 {
   Attendee *a = aItem->data();
   mDisableItemUpdate = true;
-  mNameEdit->setText(QString("%1 <%2>").arg(a->name(), a->email()));
+  QString name = a->name();
+  if (!a->email().isEmpty()) 
+    name += " <" + a->email() + ">";
+  mNameEdit->setText(name);
   mUidEdit->setText(a->uid());
   mRoleCombo->setCurrentItem(a->role());
   mStatusCombo->setCurrentItem(a->status());
