@@ -1,6 +1,7 @@
 /*
     This file is part of KOrganizer.
-    Copyright (c) 2000,2001 Cornelius Schumacher <schumacher@kde.org>
+
+    Copyright (c) 2000,2001,2004 Cornelius Schumacher <schumacher@kde.org>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -20,8 +21,8 @@
     with any edition of Qt, and distribute the resulting executable,
     without including the source code for Qt in the source distribution.
 */
-#ifndef _KOEDITORGANTT_H
-#define _KOEDITORGANTT_H
+#ifndef KOEDITORFREEBUSY_H
+#define KOEDITORFREEBUSY_H
 
 #include <qwidget.h>
 #include <qdatetime.h>
@@ -40,24 +41,25 @@ class KOEditorFreeBusy : public QWidget
 {
     Q_OBJECT
   public:
-    KOEditorFreeBusy( int spacing=8, QWidget* parent=0, const char* name=0 );
+    KOEditorFreeBusy( int spacing = 8, QWidget *parent = 0,
+                      const char *name = 0 );
     virtual ~KOEditorFreeBusy();
 
     void setUpdateEnabled( bool enabled );
     bool updateEnabled() const;
 
-    void insertAttendee( KCal::Attendee* );
-    void removeAttendee( KCal::Attendee* );
-    void updateAttendee( KCal::Attendee* );
+    void insertAttendee( KCal::Attendee * );
+    void removeAttendee( KCal::Attendee * );
+    void updateAttendee( KCal::Attendee * );
     void clearAttendees();
 
-    void readEvent( KCal::Event* );
+    void readEvent( KCal::Event * );
 
   signals:
     void dateTimesChanged( QDateTime, QDateTime );
 
   public slots:
-    void slotInsertFreeBusy( const QString& email, KCal::FreeBusy* fb );
+    void slotInsertFreeBusy( KCal::FreeBusy *fb, const QString &email );
 
     void setDateTimes( QDateTime, QDateTime );
 
@@ -76,17 +78,17 @@ class KOEditorFreeBusy : public QWidget
   private:
     void updateFreeBusyData( KCal::Attendee * );
 
-    bool findFreeSlot( QDateTime& dtFrom, QDateTime& dtTo );
-    bool tryDate( QDateTime& tryFrom, QDateTime& tryTo );
-    bool tryDate( FreeBusyItem* attendee,
-                  QDateTime& tryFrom, QDateTime& tryTo );
+    bool findFreeSlot( QDateTime &dtFrom, QDateTime &dtTo );
+    bool tryDate( QDateTime &tryFrom, QDateTime &tryTo );
+    bool tryDate( FreeBusyItem *attendee,
+                  QDateTime &tryFrom, QDateTime &tryTo );
     void updateStatusSummary();
 
-    KDGanttView* mGanttView;
-    QLabel* mOrganizerLabel;
-    QLabel* mStatusSummaryLabel;
+    KDGanttView *mGanttView;
+    QLabel *mOrganizerLabel;
+    QLabel *mStatusSummaryLabel;
     bool mIsOrganizer;
-    QComboBox* scaleCombo;
+    QComboBox *scaleCombo;
 
     QDateTime mDtStart, mDtEnd;
 };

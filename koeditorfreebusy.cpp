@@ -1,6 +1,7 @@
 /*
     This file is part of KOrganizer.
-    Copyright (c) 2001 Cornelius Schumacher <schumacher@kde.org>
+
+    Copyright (c) 2001,2004 Cornelius Schumacher <schumacher@kde.org>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -51,10 +52,10 @@
 class FreeBusyItem : public KDGanttViewTaskItem
 {
   public:
-    FreeBusyItem( Attendee* data, KDGanttView *parent ) :
-      KDGanttViewTaskItem( parent ), mData( data )
+    FreeBusyItem( Attendee *attendee, KDGanttView *parent ) :
+      KDGanttViewTaskItem( parent ), mAttendee( attendee )
     {
-      Q_ASSERT( data );
+      Q_ASSERT( attendee );
       updateItem();
       setFreeBusyPeriods( 0 );
     }
@@ -62,43 +63,43 @@ class FreeBusyItem : public KDGanttViewTaskItem
 
     void updateItem();
 
-    Attendee* data() const { return mData; }
-    void setFreeBusy( KCal::FreeBusy* fb ) { mFreeBusy = fb; }
+    Attendee *attendee() const { return mAttendee; }
+    void setFreeBusy( KCal::FreeBusy *fb ) { mFreeBusy = fb; }
     KCal::FreeBusy* freeBusy() const { return mFreeBusy; }
 
-    void setFreeBusyPeriods( FreeBusy* fb );
+    void setFreeBusyPeriods( FreeBusy *fb );
 
-    QString key(int column, bool) const
+    QString key( int column, bool ) const
     {
-      QMap<int,QString>::ConstIterator it = mKeyMap.find(column);
-      if (it == mKeyMap.end()) return listViewText(column);
+      QMap<int,QString>::ConstIterator it = mKeyMap.find( column );
+      if ( it == mKeyMap.end() ) return listViewText( column );
       else return *it;
     }
 
-    void setSortKey(int column,const QString &key)
+    void setSortKey( int column, const QString &key )
     {
-      mKeyMap.insert(column,key);
+      mKeyMap.insert( column, key );
     }
 
-    QString email() const { return mData->email(); }
+    QString email() const { return mAttendee->email(); }
 
   private:
-    Attendee* mData;
-    KCal::FreeBusy* mFreeBusy;
+    Attendee *mAttendee;
+    KCal::FreeBusy *mFreeBusy;
 
     QMap<int,QString> mKeyMap;
 };
 
 void FreeBusyItem::updateItem()
 {
-  setListViewText(0,mData->name());
-  setListViewText(1,mData->email());
-  setListViewText(2,mData->roleStr());
-  setListViewText(3,mData->statusStr());
-  if (mData->RSVP() && !mData->email().isEmpty())
-    setPixmap(4,KOGlobals::self()->smallIcon("mailappt"));
+  setListViewText( 0, mAttendee->name() );
+  setListViewText( 1, mAttendee->email() );
+  setListViewText( 2, mAttendee->roleStr() );
+  setListViewText( 3, mAttendee->statusStr() );
+  if ( mAttendee->RSVP() && !mAttendee->email().isEmpty() )
+    setPixmap( 4, KOGlobals::self()->smallIcon( "mailappt" ) );
   else
-    setPixmap(4,KOGlobals::self()->smallIcon("nomailappt"));
+    setPixmap( 4, KOGlobals::self()->smallIcon( "nomailappt" ) );
 }
 
 
@@ -217,6 +218,10 @@ KOEditorFreeBusy::KOEditorFreeBusy( int spacing, QWidget* parent, const char* na
 
   connect( mGanttView, SIGNAL( lvItemDoubleClicked( KDGanttViewItem * ) ),
            SLOT( updateFreeBusyData( KDGanttViewItem * ) ) );
+
+  FreeBusyManager *m = KOGroupware::instance()->freeBusyManager();
+  connect( m, SIGNAL( freeBusyRetrieved( KCal::FreeBusy *, const QString & ) ),
+           SLOT( slotInsertFreeBusy( KCal::FreeBusy *, const QString & ) ) );
 }
 
 KOEditorFreeBusy::~KOEditorFreeBusy()
@@ -228,7 +233,7 @@ void KOEditorFreeBusy::removeAttendee( Attendee* attendee )
   FreeBusyItem *anItem =
     static_cast<FreeBusyItem*>( mGanttView->firstChild() );
   while( anItem ) {
-    if( anItem->data() == attendee ) {
+    if( anItem->attendee() == attendee ) {
       delete anItem;
       updateStatusSummary();
       break;
@@ -249,7 +254,7 @@ void KOEditorFreeBusy::updateAttendee( Attendee* attendee )
   FreeBusyItem *anItem =
     static_cast<FreeBusyItem*>( mGanttView->firstChild() );
   while( anItem ) {
-    if( anItem->data() == attendee ) {
+    if( anItem->attendee() == attendee ) {
       anItem->updateItem();
       updateFreeBusyData( attendee );
       updateStatusSummary();
@@ -320,7 +325,7 @@ void KOEditorFreeBusy::slotZoomToTime()
 void KOEditorFreeBusy::updateFreeBusyData( KDGanttViewItem *item )
 {
   FreeBusyItem *g = static_cast<FreeBusyItem *>( item );
-  updateFreeBusyData( g->data() );
+  updateFreeBusyData( g->attendee() );
 }
 
 /*!
@@ -328,26 +333,18 @@ void KOEditorFreeBusy::updateFreeBusyData( KDGanttViewItem *item )
   participant. It downloads the free/busy data from the net and enters
   it into the Gantt view by means of the KOGroupware class.
 */
-void KOEditorFreeBusy::updateFreeBusyData( Attendee* attendee )
+void KOEditorFreeBusy::updateFreeBusyData( Attendee *attendee )
 {
   if( KOGroupware::instance() && attendee->name() != "(EmptyName)" ) {
     FreeBusyManager *m = KOGroupware::instance()->freeBusyManager();
-    if( attendee->email() == KOPrefs::instance()->email() ) {
-      // Don't download our own free-busy list from the net
-      QCString fbText = m->getFreeBusyString().utf8();
-      slotInsertFreeBusy( attendee->email(), m->parseFreeBusy( fbText ) );
-    } else {
-      m->downloadFreeBusyData( attendee->email(), this,
-                               SLOT( slotInsertFreeBusy( const QString &,
-                                                         KCal::FreeBusy * ) ) );
-    }
+    m->retrieveFreeBusy( attendee->email() );
   }
 }
 
 // Set the Free Busy list for everyone having this email address
 // If fb == 0, this disabled the free busy list for them
-void KOEditorFreeBusy::slotInsertFreeBusy( const QString& email,
-                                           KCal::FreeBusy* fb )
+void KOEditorFreeBusy::slotInsertFreeBusy( KCal::FreeBusy *fb,
+                                           const QString &email )
 {
   if( fb )
     fb->sortList();
@@ -512,7 +509,7 @@ void KOEditorFreeBusy::updateStatusSummary()
   int declined = 0;
   while( aItem ) {
     ++total;
-    switch( aItem->data()->status() ) {
+    switch( aItem->attendee()->status() ) {
     case Attendee::Accepted:
       ++accepted;
       break;
