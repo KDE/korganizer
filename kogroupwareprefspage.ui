@@ -352,7 +352,7 @@
                                             <cstring>textLabel3</cstring>
                                         </property>
                                         <property name="text">
-                                            <string>User name:</string>
+                                            <string>Us&amp;er name:</string>
                                         </property>
                                         <property name="buddy" stdset="0">
                                             <cstring>retrieveUser</cstring>
@@ -363,7 +363,7 @@
                                             <cstring>textLabel4</cstring>
                                         </property>
                                         <property name="text">
-                                            <string>Password:</string>
+                                            <string>Pass&amp;word:</string>
                                         </property>
                                         <property name="buddy" stdset="0">
                                             <cstring>retrievePassword</cstring>
