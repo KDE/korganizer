@@ -617,12 +617,11 @@ void KOPrefsDialog::usrWriteConfig()
 
   KOPrefs::instance()->mAdditionalMails.clear();
   QListViewItem *item;
-  int i, count;
-  count = mAMails->childCount();
-  for (i=0;i<count;i++) {
-    item = mAMails->firstChild();
-    mAMails->takeItem(item);
+  item = mAMails->firstChild();
+  while (item)
+  {
     KOPrefs::instance()->mAdditionalMails.append( item->text(0) );
+    item = item->nextSibling();
   }
 
 }
