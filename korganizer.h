@@ -208,6 +208,8 @@ class KOrganizer : public KParts::MainWindow, virtual public KOrganizerIface
 
     void configureDateTimeFinished(KProcess *);
     
+    void slotNewToolbarConfig();
+        
   protected:
     void initActions();
     void initParts();

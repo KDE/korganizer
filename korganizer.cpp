@@ -442,8 +442,11 @@ void KOrganizer::initActions()
 
   (void)new KAction(i18n("&Tip of the day..."), 0,
                     this, SLOT(showTip()), actionCollection(), "help_tipofday");
+
+  setInstance( KGlobal::instance() );
   
   setXMLFile("korganizerui.rc");
+  createGUI(0);
 
   KConfig *config = kapp->config();
 
@@ -473,7 +476,8 @@ void KOrganizer::initParts()
   KOrg::Part::List parts = KOCore::self()->parts(this);
   KOrg::Part *it;
   for( it=parts.first(); it; it=parts.next() ) {
-    createGUI(it);
+    guiFactory()->addClient(it);
+//    createGUI(it);
   }
 }
 
@@ -968,12 +972,19 @@ void KOrganizer::configureDateTime()
 
 void KOrganizer::configureToolbars()
 {
-  KEditToolbar dlg(actionCollection());
+  saveMainWindowSettings( KGlobal::config(), "MainWindow" );
 
-  if (dlg.exec()) {
-    KMainWindow::createGUI();
-    plugActionList("toolbartoggles",mToolBarToggles);
-  }
+  KEditToolbar dlg(factory());
+  connect(&dlg,SIGNAL(newToolbarConfig()),this,SLOT(slotNewToolbarConfig()));
+
+  dlg.exec();
+}
+
+void KOrganizer::slotNewToolbarConfig() // This is called when OK or Apply is clicked
+{
+  plugActionList("toolbartoggles",mToolBarToggles);
+
+  applyMainWindowSettings( KGlobal::config(), "MainWindow" );
 }
 
 void KOrganizer::editKeys()
