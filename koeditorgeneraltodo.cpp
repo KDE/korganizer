@@ -212,6 +212,8 @@ void KOEditorGeneralTodo::setDefaults(QDateTime due,bool allDay)
 
   mSecrecyCombo->setCurrentItem(Incidence::SecrecyPublic);
 
+  priorityCombo->setCurrentItem(2);
+
   completedCombo->setCurrentItem(0);
 }
 
