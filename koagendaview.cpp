@@ -564,6 +564,8 @@ void KOAgendaView::updateEventDates(KOAgendaItem *item)
 
   emit shiftedEvent(olddate, startDate);
 
+  updateView();
+
   kdDebug() << "KOAgendaView::updateEventDates() done " << endl;
 }
 
