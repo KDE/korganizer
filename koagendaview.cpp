@@ -36,6 +36,7 @@
 #include <qpainter.h>
 #include <qpushbutton.h>
 #include <qcursor.h>
+#include <qbitarray.h>
 
 #include <kapplication.h>
 #include <kdebug.h>
@@ -352,7 +353,7 @@ void KOAlternateLabel::setText( const QString &text ) {
 ////////////////////////////////////////////////////////////////////////////
 
 KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name) :
-  KOEventView (cal,parent,name), mAllowAgendaUpdate( true )
+  KOEventView (cal,parent,name), mAllowAgendaUpdate( true ), mUpdateItem( 0 )
 {
   mSelectedDates.append(QDate::currentDate());
 
@@ -544,6 +545,7 @@ void KOAgendaView::connectAgenda( KOAgenda *agenda, QPopupMenu *popup,
   // rescheduling of todos by d'n'd
   connect( agenda, SIGNAL( droppedToDo( Todo *, const QPoint &, bool ) ),
            SLOT( slotTodoDropped( Todo *, const QPoint &, bool ) ) );
+
 }
 
 void KOAgendaView::createDayLabels()
@@ -731,51 +733,203 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
 //  kdDebug(5850) << "KOAgendaView::updateEventDates(): " << item->text() << endl;
 
   QDateTime startDt,endDt;
-  QDate startDate;
-
+    
+  // Start date of this incidence, calculate the offset from it (so recurring and 
+  // non-recurring items can be treated exactly the same, we never need to check 
+  // for doesRecur(), because we only move the start day by the number of days the 
+  // agenda item was really moved. Smart, isn't it?)
+  QDate thisDate;
   if ( item->cellXLeft() < 0 ) {
-    startDate = ( mSelectedDates.first() ).addDays( item->cellXLeft() );
+    thisDate = ( mSelectedDates.first() ).addDays( item->cellXLeft() );
   } else {
-    startDate = mSelectedDates[ item->cellXLeft() ];
+    thisDate = mSelectedDates[ item->cellXLeft() ];
   }
-  startDt.setDate( startDate );
+  QDate oldThisDate( item->itemDate() );
+  int daysOffset = oldThisDate.daysTo( thisDate );
+  int daysLength = 0;
+
+//  startDt.setDate( startDate );
 
   Incidence *incidence = item->incidence();
   if ( !incidence ) return;
   Incidence *oldIncidence = incidence->clone();
 
+  QTime startTime(0,0,0), endTime(0,0,0);
   if ( incidence->doesFloat() ) {
-    endDt.setDate( startDate.addDays( item->cellWidth() - 1 ) );
+    daysLength = item->cellWidth() - 1;
   } else {
-    startDt.setTime( mAgenda->gyToTime( item->cellYTop() ) );
+    startTime = mAgenda->gyToTime( item->cellYTop() );
     if ( item->lastMultiItem() ) {
-      endDt.setTime( mAgenda->gyToTime( item->lastMultiItem()->cellYBottom() +
-                                        1 ) );
-      endDt.setDate( startDate. addDays( item->lastMultiItem()->cellXLeft() -
-                                         item->cellXLeft() ) );
+      endTime = mAgenda->gyToTime( item->lastMultiItem()->cellYBottom() + 1 );
+      daysLength = item->lastMultiItem()->cellXLeft() - item->cellXLeft();
     } else {
-      endDt.setTime( mAgenda->gyToTime( item->cellYBottom() + 1 ) );
-      endDt.setDate( startDate );
+      endTime = mAgenda->gyToTime( item->cellYBottom() + 1 );
     }
   }
 
 //  kdDebug(5850) << "KOAgendaView::updateEventDates(): now setting dates" << endl;
   Incidence *i = incidence->clone();
   if ( i->type() == "Event" ) {
-    if( i->dtStart() == startDt && static_cast<Event*>(i)->dtEnd() == endDt ) {
+    startDt = i->dtStart();
+    startDt = startDt.addDays( daysOffset );
+    startDt.setTime( startTime );
+    endDt = startDt.addDays( daysLength );
+    endDt.setTime( endTime );
+    Event*ev = static_cast<Event*>(i);
+    if( i->dtStart() == startDt && ev->dtEnd() == endDt ) {
       // No change
       delete i;
       return;
     }
     i->setDtStart( startDt );
-    (static_cast<Event*>(i))->setDtEnd( endDt );
+    ev->setDtEnd( endDt );
   } else if ( i->type() == "Todo" ) {
-    if( static_cast<Todo*>(i)->dtDue() == endDt ) {
+    Todo *td = static_cast<Todo*>(i);
+    endDt = td->dtDue();
+    endDt = endDt.addDays( daysOffset );
+    endDt.setTime( endTime );
+    
+    if( td->dtDue() == endDt ) {
       // No change
       delete i;
       return;
     }
-    (static_cast<Todo*>(i))->setDtDue( endDt );
+    td->setDtDue( endDt );
+  }
+  Recurrence *recur = incidence->recurrence();
+  if ( recur && (recur->doesRecur()!=Recurrence::rNone) && (daysOffset!=0) ) {
+    switch ( recur->doesRecur() ) {
+      case Recurrence::rYearlyPos: {
+        int freq = recur->frequency();
+        int duration = recur->duration();
+        QDate endDt( recur->endDate() );
+        bool negative = false;
+
+        QPtrList<Recurrence::rMonthPos> monthPos( recur->yearMonthPositions() );
+        if ( monthPos.first() ) {
+          negative = monthPos.first()->negative;
+        }
+        QBitArray days( 7 );
+        int pos = 0;
+        days.fill( false );
+        days.setBit( thisDate.dayOfWeek() - 1 );
+        if ( negative ) {
+          pos =  - ( thisDate.daysInMonth() - thisDate.day() - 1 ) / 7 - 1;
+        } else {
+          pos =  ( thisDate.day()-1 ) / 7 + 1;
+        }
+        // Terrible hack: to change the month days, I have to unset the recurrence, and set all days manually again
+        recur->unsetRecurs();
+        if ( duration != 0 ) {
+            recur->setYearly( Recurrence::rYearlyPos, freq, duration );
+        } else {
+            recur->setYearly( Recurrence::rYearlyPos, freq, endDt );
+        }
+        recur->addYearlyMonthPos( pos, days );
+        recur->addYearlyNum( thisDate.month() );
+        
+        break; }
+      case Recurrence::rYearlyDay: {
+        int freq = recur->frequency();
+        int duration = recur->duration();
+        QDate endDt( recur->endDate() );
+        // Terrible hack: to change the month days, I have to unset the recurrence, and set all days manually again
+        recur->unsetRecurs();
+        if ( duration == 0 ) { // end by date
+          recur->setYearly( Recurrence::rYearlyDay, freq, endDt );
+        } else {
+          recur->setYearly( Recurrence::rYearlyDay, freq, duration );
+        }
+        recur->addYearlyNum( thisDate.dayOfYear() );
+        break; }
+      case Recurrence::rYearlyMonth: {
+        int freq = recur->frequency();
+        int duration = recur->duration();
+        QDate endDt( recur->endDate() );
+        // Terrible hack: to change the month days, I have to unset the recurrence, and set all days manually again
+        recur->unsetRecurs();
+        if ( duration != 0 ) {
+            recur->setYearlyByDate( thisDate.day(), recur->feb29YearlyType(), freq, duration );
+        } else {
+            recur->setYearlyByDate( thisDate.day(), recur->feb29YearlyType(), freq, endDt );
+        }
+        recur->addYearlyNum( thisDate.month() );
+        break; }
+      case Recurrence::rMonthlyPos: {
+        int freq = recur->frequency();
+        int duration = recur->duration();
+        QDate endDt( recur->endDate() );
+        QPtrList<Recurrence::rMonthPos> monthPos( recur->monthPositions() );
+        if ( !monthPos.isEmpty() ) {
+          // TODO: How shall I adapt the day x of week Y if we move the date across month borders???
+          // for now, just use the date of the moved item and assume the recurrence only occurs on that day.
+          // That's fine for korganizer, but might mess up other organizers.
+          QBitArray rDays( 7 );
+          rDays = monthPos.first()->rDays;
+          bool negative = monthPos.first()->negative;
+          int newPos;
+          rDays.fill( false );
+          rDays.setBit( thisDate.dayOfWeek() - 1 );
+          if ( negative ) {
+            newPos =  - ( thisDate.daysInMonth() - thisDate.day() - 1 ) / 7 - 1;
+          } else {
+            newPos =  ( thisDate.day()-1 ) / 7 + 1;
+          }
+          
+          // Terrible hack: to change the month days, I have to unset the recurrence, and set all days manually again
+          recur->unsetRecurs();
+          if ( duration == 0 ) { // end by date
+            recur->setMonthly( Recurrence::rMonthlyPos, freq, endDt );
+          } else {
+            recur->setMonthly( Recurrence::rMonthlyPos, freq, duration );
+          }
+          recur->addMonthlyPos( newPos, rDays );
+        }
+        break;}
+      case Recurrence::rMonthlyDay: {
+        int freq = recur->frequency();
+        int duration = recur->duration();
+        QDate endDt( recur->endDate() );
+        QPtrList<int> monthDays( recur->monthDays() );
+        // Terrible hack: to change the month days, I have to unset the recurrence, and set all days manually again
+        recur->unsetRecurs();
+        if ( duration == 0 ) { // end by date
+          recur->setMonthly( Recurrence::rMonthlyDay, freq, endDt );
+        } else {
+          recur->setMonthly( Recurrence::rMonthlyDay, freq, duration );
+        }
+        // TODO: How shall I adapt the n-th day if we move the date across month borders???
+        // for now, just use the date of the moved item and assume the recurrence only occurs on that day.
+        // That's fine for korganizer, but might mess up other organizers.
+        recur->addMonthlyDay( thisDate.day() );
+
+        break;}
+      case Recurrence::rWeekly: {
+        QBitArray days(7), oldDays( recur->days() );
+        int offset = daysOffset % 7;
+        if ( offset<0 ) offset = (offset+7) % 7;
+        // rotate the days
+        for (int d=0; d<7; d++ ) {
+          days.setBit( (d+offset) % 7, oldDays.at(d) );
+        }
+        if ( recur->duration() == 0 ) { // end by date
+          recur->setWeekly( recur->frequency(), days, recur->endDate(), recur->weekStart() );
+        } else { // duration or no end
+          recur->setWeekly( recur->frequency(), days, recur->duration(), recur->weekStart() );
+        }
+        break;}
+      // nothing to be done for the following:
+      case Recurrence::rDaily:
+      case Recurrence::rHourly:
+      case Recurrence::rMinutely:
+      case Recurrence::rNone:
+      default:
+        break;
+    }
+    if ( recur->duration()==0 ) { // end by date
+      recur->setEndDate( recur->endDate().addDays( daysOffset ) );
+    }
+    KMessageBox::information( this, i18n("A recurring incidence was moved to a different day. The recurrence settings have been updated with that move. Please check them in the incidence editor."), i18n("Recurrence moved"), "RecurrenceMoveInAgendaWarning" );
   }
 
   i->setRevision( i->revision() + 1 );
@@ -798,9 +952,15 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
     // an update would delete the current item and recreate it, but we are still
     // using a pointer to that item! => CRASH
     enableAgendaUpdate( false );
-    // TODO_RK: Find a way to update the series of agenda items for a recurring event!
-    // Only the actually moved agenda item is at the correct position and mustn't be
-    // recreated. All others would have to!!!
+    // We need to do this in a timer to make sure we are not deleting the item 
+    // we are currently working on, which would lead to crashes
+    // Only the actually moved agenda item is already at the correct position and mustn't be
+    // recreated. All others have to!!!
+    if ( incidence->doesRecur() ) {
+      mUpdateItem = incidence;
+      QTimer::singleShot( 0, this, SLOT( doUpdateItem() ) );
+    }
+
     emit incidenceChanged( oldIncidence, incidence );
     enableAgendaUpdate( true );
   } else {
@@ -811,6 +971,15 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
   delete oldIncidence;
 //  kdDebug(5850) << "KOAgendaView::updateEventDates() done " << endl;
 }
+
+void KOAgendaView::doUpdateItem()
+{
+  if ( mUpdateItem ) {
+    changeIncidenceDisplay( mUpdateItem, KOGlobals::INCIDENCEEDITED );
+    mUpdateItem = 0;
+  }
+}
+
 
 
 void KOAgendaView::showDates( const QDate &start, const QDate &end )

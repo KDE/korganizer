@@ -225,6 +225,8 @@ class KOAgendaView : public KOEventView
   protected slots:
     /** Update event belonging to agenda item */
     void updateEventDates( KOAgendaItem *item );
+    /** update just the display of the given incidence, called by a single-shot timer */
+    void doUpdateItem();
 
     void updateEventIndicatorTop( int newY );
     void updateEventIndicatorBottom( int newY );
@@ -268,6 +270,8 @@ class KOAgendaView : public KOEventView
     QDateTime mTimeSpanEnd;
     bool mTimeSpanInAllDay;
     bool mAllowAgendaUpdate;
+    
+    Incidence *mUpdateItem;
 };
 
 #endif

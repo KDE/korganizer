@@ -522,13 +522,13 @@ bool KOAgenda::eventFilter_mouse(QObject *object, QMouseEvent *me)
             selectItem(mClickedItem);
             emit showIncidencePopupSignal(mClickedItem->incidence());
           }
-    //            mItemPopup->popup(QCursor::pos());
         } else {
           mActionItem = dynamic_cast<KOAgendaItem *>(object);
           if (mActionItem) {
             selectItem(mActionItem);
             Incidence *incidence = mActionItem->incidence();
-            if ( incidence->isReadOnly() || incidence->doesRecur() ) {
+// OLD_RK:            if ( incidence->isReadOnly() || incidence->doesRecur() ) {
+            if ( incidence->isReadOnly() ) {
               mActionItem = 0;
             } else {
               startItemAction(viewportPos);
@@ -581,8 +581,9 @@ bool KOAgenda::eventFilter_mouse(QObject *object, QMouseEvent *me)
     case QEvent::MouseMove:
       if (object != viewport()) {
         KOAgendaItem *moveItem = dynamic_cast<KOAgendaItem *>(object);
-        if (moveItem && !moveItem->incidence()->isReadOnly() &&
-            !moveItem->incidence()->recurrence()->doesRecur() )
+// OLD_RK:        if (moveItem && !moveItem->incidence()->isReadOnly() &&
+//            !moveItem->incidence()->doesRecur() )
+        if (moveItem && !moveItem->incidence()->isReadOnly() )
           if (!mActionItem)
             setNoActionCursor(moveItem,viewportPos);
           else
@@ -920,43 +921,122 @@ void KOAgenda::performItemAction(const QPoint& viewportPos)
 void KOAgenda::endItemAction()
 {
 //  kdDebug(5850) << "KOAgenda::endItemAction() " << endl;
-
-  if ( mItemMoved ) {
-    if ( mActionType == MOVE ) {
-      mActionItem->endMove();
-    }
-    KOAgendaItem *placeItem = mActionItem->firstMultiItem();
-    if ( !placeItem ) {
-      placeItem = mActionItem;
-    }
-
-    KOAgendaItem *modif = placeItem;
-
-    QPtrList<KOAgendaItem> oldconflictItems = placeItem->conflictItems();
-    KOAgendaItem *item;
-    for ( item = oldconflictItems.first(); item != 0;
-          item = oldconflictItems.next() ) {
-      placeSubCells( item );
-    }
-    while ( placeItem ) {
-      placeSubCells( placeItem );
-      placeItem = placeItem->nextMultiItem();
-    }
-
-    // Notify about change, so that agenda view can update the event data
-    emit itemModified( modif );
-  }
-
   mScrollUpTimer.stop();
   mScrollDownTimer.stop();
   setCursor( arrowCursor );
+  bool multiModify = false;
+  bool needItemUpdate = false;
+
+  if ( mItemMoved ) {
+    bool modify = true;
+    if ( mActionItem->incidence()->doesRecur() ) {
+      int res = KMessageBox::questionYesNoCancel( this, 
+          i18n("The item you try to change is a recurring item. Shall the changes "
+               "be applied to all items in the recurrence, "/*"only the future items, "*/
+               "or just to this single occurence?"), 
+          i18n("Changing a recurring item"), 
+          i18n("&All occurences"), i18n("Only &this item") );
+      switch ( res ) {
+        case KMessageBox::Yes: // All occurences
+            // Moving the whole sequene of events is handled by the itemModified below.
+            modify = true;
+            needItemUpdate = true;
+            break;
+        case KMessageBox::No: { // Just this occurence
+            // Dissociate this occurence: 
+            // create clone of event, set relation to old event, set cloned event 
+            // for mActionItem, add exception date to old event, emit incidenceChanged 
+            // for the old event, remove the recurrence from the new copy and then just 
+            // go on with the newly adjusted mActionItem and let the usual code take 
+            // care of the new time!
+            modify = true;
+            multiModify = true; 
+            emit startMultiModify( i18n("Dissociate event from recurrence") );
+            Incidence* oldInc = mActionItem->incidence()->clone();
+            Incidence* newInc = mCalendar->dissociateOccurrence( 
+                mActionItem->incidence(), mActionItem->itemDate() );
+            if ( newInc ) {
+              // don't recreate items, they already have the correct position
+              emit enableAgendaUpdate( false );
+              emit incidenceChanged( oldInc, mActionItem->incidence() );
+              mActionItem->setIncidence( newInc );
+              emit incidenceAdded( newInc );
+              emit enableAgendaUpdate( true );
+            } else {
+              KMessageBox::sorry( this, i18n("Unable to add the exception item to the "
+                  "calendar. No change will be done."), i18n("Error occured") );
+            }
+            delete oldInc;
+            break; }
+        case KMessageBox::Continue/*Future*/: { // All future occurences
+            // Dissociate this occurence: 
+            // create clone of event, set relation to old event, set cloned event 
+            // for mActionItem, add recurrence end date to old event, emit incidenceChanged 
+            // for the old event, adjust the recurrence for the new copy and then just 
+            // go on with the newly adjusted mActionItem and let the usual code take 
+            // care of the new time!
+            modify = true;
+            multiModify = true; 
+            emit startMultiModify( i18n("Split future recurrences") );
+            Incidence* oldInc = mActionItem->incidence()->clone();
+            Incidence* newInc = mCalendar->dissociateOccurrence( 
+                mActionItem->incidence(), mActionItem->itemDate(), true );
+            if ( newInc ) {
+              emit incidenceChanged( oldInc, mActionItem->incidence() );
+              emit enableAgendaUpdate( false );
+              mActionItem->setIncidence( newInc );
+              emit incidenceAdded( newInc );
+              emit enableAgendaUpdate( true );
+              needItemUpdate = true;
+            } else {
+              KMessageBox::sorry( this, i18n("Unable to add the future items to the "
+                  "calendar. No change will be done."), i18n("Error occured") );
+            }
+            delete oldInc;
+            break; }
+        default:
+          modify = false;
+          mActionItem->resetMove();
+          placeSubCells( mActionItem );
+      }
+    }
+    
+    if ( modify ) {
+      if ( mActionType == MOVE ) {
+        mActionItem->endMove();
+      }
+      KOAgendaItem *placeItem = mActionItem->firstMultiItem();
+      if  ( !placeItem ) {
+        placeItem = mActionItem;
+      }
+
+      KOAgendaItem *modif = placeItem;
+
+      QPtrList<KOAgendaItem> oldconflictItems = placeItem->conflictItems();
+      KOAgendaItem *item;
+      for ( item = oldconflictItems.first(); item != 0;
+            item = oldconflictItems.next() ) {
+        placeSubCells( item );
+      }
+      while ( placeItem ) {
+        placeSubCells( placeItem );
+        placeItem = placeItem->nextMultiItem();
+      }
+
+      // Notify about change, so that agenda view can update the event data
+      emit itemModified( modif );
+    }
+  }
+
   mActionItem = 0;
   mActionType = NOP;
-  mItemMoved = 0;
+  mItemMoved = false;
+
+  if ( multiModify ) emit endMultiModify();
 
   kdDebug(5850) << "KOAgenda::endItemAction() done" << endl;
 }
-    
+
 void KOAgenda::setActionCursor( int actionType, bool acting ) 
 {
   switch ( actionType ) {
