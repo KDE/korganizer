@@ -18,6 +18,8 @@
  * Adapted for use in KOrganizer by Preston Brown (pbrown@kde.org)
  */
 
+#include <config.h>
+
 #include <stdio.h>
 #include <unistd.h>
 #include <time.h>
@@ -25,8 +27,11 @@
 #include <pwd.h>
 #include <sys/types.h>
 #include <sys/stat.h>
-#include <malloc.h>
 #include <string.h>
+
+#ifdef HAVE_MALLOC_H
+#include <malloc.h>
+#endif
 
 /*** Macro definitions and constants ***/
 /*
