@@ -92,7 +92,7 @@
     </entry>
     <entry type="Bool" name="ShowAllDayTodo">
       <label>Display todo's in all day view</label>
-      <default>false</default>
+      <default>true</default>
     </entry>
     <entry type="Bool" key="Enable MonthView ScrollBars" name="EnableMonthScroll">
       <label>Enable scrollbars in month view cells</label>
