@@ -3,7 +3,7 @@
 #define __korganizer_part_h__
 
 #include <kparts/browserextension.h>
-#include <klibloader.h>
+#include <kparts/factory.h>
 
 class KInstance;
 class KAboutData;
@@ -11,14 +11,15 @@ class KOrganizerBrowserExtension;
 
 class CalendarView;
 
-class KOrganizerFactory : public KLibFactory
+class KOrganizerFactory : public KParts::Factory
 {
     Q_OBJECT
   public:
     KOrganizerFactory();
     virtual ~KOrganizerFactory();
 
-    virtual QObject* create(QObject* parent = 0, const char* name = 0,
+    virtual KParts::Part* createPartObject(QWidget *parentWidget, const char *name,
+    QObject* parent = 0, const char* name = 0,
     const char* classname = "QObject",
     const QStringList &args = QStringList());
 
@@ -33,7 +34,8 @@ class KOrganizerPart: public KParts::ReadOnlyPart
 {
     Q_OBJECT
   public:
-    KOrganizerPart(QWidget *parent, const char *name);
+    KOrganizerPart(QWidget *parentWidget, const char *widgetName,
+                   QObject *parent, const char *name);
     virtual ~KOrganizerPart();
 
   protected:

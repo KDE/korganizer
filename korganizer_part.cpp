@@ -41,11 +41,11 @@ KOrganizerFactory::~KOrganizerFactory()
   delete s_about;
 }
 
-QObject *KOrganizerFactory::create(QObject *parent, const char *name,
+KParts::Part *KOrganizerFactory::createPartObject(QWidget *parentWidget, const char *widgetName,
+                                   QObject *parent, const char *name,
                                    const char*,const QStringList& )
 {
-  QObject *obj = new KOrganizerPart((QWidget*)parent, name);
-  emit objectCreated(obj);
+  KParts::Part *obj = new KOrganizerPart(parentWidget, widgetName, parent, name );
   return obj;
 }
 
@@ -62,13 +62,14 @@ KInstance *KOrganizerFactory::instance()
   return s_instance;
 }
 
-KOrganizerPart::KOrganizerPart(QWidget *parent, const char *name) :
+KOrganizerPart::KOrganizerPart(QWidget *parentWidget, const char *widgetName,
+                               QObject *parent, const char *name) :
   KParts::ReadOnlyPart(parent, name)
 {
   setInstance(KOrganizerFactory::instance());
 
   // create a canvas to insert our widget
-  QWidget *canvas = new QWidget(parent);
+  QWidget *canvas = new QWidget(parentWidget, widgetName);
   canvas->setFocusPolicy(QWidget::ClickFocus);
   setWidget(canvas);
 
