@@ -787,8 +787,6 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
     hw = fm.boundingRect( shortH ).width();
     if ( hw < (width() - x - margin) )
       x += (width() - x - margin - hw) / 2;
-    else
-      headline = "";
   } else {
     headline = longH;
     x += (width() - x - margin - hw) / 2;
