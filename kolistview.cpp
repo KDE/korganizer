@@ -1,6 +1,7 @@
 /*
     This file is part of KOrganizer.
-    Copyright (c) 1999 Preston Brown
+
+    Copyright (c) 1999 Preston Brown <pbrown@kde.org>
     Copyright (c) 2000,2001 Cornelius Schumacher <schumacher@kde.org>
     Copyright (C) 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
 
@@ -411,7 +412,7 @@ void KOListView::popupMenu(QListViewItem *item,const QPoint &,int)
   mActiveItem = (KOListViewItem *)item;
   if (mActiveItem) {
     Incidence *incidence = mActiveItem->data();
-    // FIXME: For recurring incidences we don't know the date of this 
+    // FIXME: For recurring incidences we don't know the date of this
     // occurence, there's no reference to it at all!
     mPopupMenu->showIncidencePopup( incidence, QDate() );
   }

@@ -1,6 +1,7 @@
 /*
     This file is part of KOrganizer.
-    Copyright (c) 1998 Preston Brown
+
+    Copyright (c) 1998 Preston Brown <pbrown@kde.org>
     Copyright (c) 2000,2001 Cornelius Schumacher <schumacher@kde.org>
     Copyright (C) 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
 
@@ -77,13 +78,13 @@ class SearchDialog : public KDialogBase
     QCheckBox *mEventsCheck;
     QCheckBox *mTodosCheck;
     QCheckBox *mJournalsCheck;
-    
+
     KDateEdit *mStartDate;
     KDateEdit *mEndDate;
 
     QCheckBox *mInclusiveCheck;
     QCheckBox *mIncludeUndatedTodos;
-    
+
     QCheckBox *mSummaryCheck;
     QCheckBox *mDescriptionCheck;
     QCheckBox *mCategoryCheck;

@@ -1,7 +1,7 @@
 /*
     This file is part of KOrganizer.
 
-    Copyright (c) 1998 Preston Brown
+    Copyright (c) 1998 Preston Brown <pbrown@kde.org>
     Copyright (c) 2003 Reinhold Kainhofer <reinhold@kainhofer.com>
     Copyright (c) 2003 Cornelius Schumacher <schumacher@kde.org>
 

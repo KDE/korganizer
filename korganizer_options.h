@@ -1,7 +1,7 @@
 /*
     This file is part of KOrganizer.
 
-    Copyright (c) 1997-1999 Preston Brown
+    Copyright (c) 1997-1999 Preston Brown <pbrown@kde.org>
     Copyright (c) 2001,2003 Cornelius Schumacher <schumacher@kde.org>
 
     This program is free software; you can redistribute it and/or modify

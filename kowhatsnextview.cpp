@@ -111,7 +111,7 @@ void KOWhatsNextView::updateView()
   mText+="</h2>\n";
 
   Event::List unsortedevents = calendar()->events( mStartDate, mEndDate, false );
-  Event::List events = Calendar::sortEvents( &unsortedevents, 
+  Event::List events = Calendar::sortEvents( &unsortedevents,
                      EventSortStartDate, SortDirectionAscending );
 
   if (events.count() > 0) {
@@ -129,11 +129,11 @@ void KOWhatsNextView::updateView()
         appendEvent(ev);
       } else {
         // FIXME: This should actually be cleaned up. Libkcal should
-        // provide a method to return a list of all recurrences in a 
+        // provide a method to return a list of all recurrences in a
         // given time span.
         Recurrence *recur = ev->recurrence();
         int duration = ev->dtStart().secsTo( ev->dtEnd() );
-        QDateTime start = recur->getPreviousDateTime( 
+        QDateTime start = recur->getPreviousDateTime(
                                 QDateTime( mStartDate, QTime() ) );
         QDateTime end = start.addSecs( duration );
         if ( end.date() >= mStartDate ) {
@@ -158,24 +158,43 @@ void KOWhatsNextView::updateView()
     mText += "\">";
     mText += i18n("To-do:") + "</h2>\n";
     mText += "<ul>\n";
+
+    // Start rendering Todos
     Todo::List::ConstIterator it;
-    for( it = todos.begin(); it != todos.end(); ++it ) {
-      Todo *todo = *it;
-      if ( !todo->isCompleted() && todo->hasDueDate() && todo->dtDue().date() <= mEndDate )
-                  appendTodo(todo);
-    }
-    bool gotone = false;
-    int priority = 1;
-    while (!gotone && priority<=9 ) {
+
+    // Find highest priority Todo within the date range
+    int priority, bestpriority = 9;
+    for ( priority = 1; priority<=9; priority++ ) {
       for( it = todos.begin(); it != todos.end(); ++it ) {
         Todo *todo = *it;
-        if (!todo->isCompleted() && (todo->priority() == priority) ) {
-          appendTodo(todo);
+        if ( !todo->isCompleted() && ( todo->priority() == priority ) ) {
+	  // Record the highest (lowest number) priority
+      	  if( priority < bestpriority )
+	  {
+            bestpriority = priority;
+            kdDebug(5850) << "Setting bestpriority to " << bestpriority << endl;
+          }
+        }
+      }
+    }
+
+    // First render those that are due before or within current range
+    for( it = todos.begin(); it != todos.end(); ++it ) {
+      Todo *todo = *it;
+      if ( !todo->isCompleted() && todo->hasDueDate() &&
+           todo->dtDue().date() <= mEndDate )
+        appendTodo( findToplevelTodo( todo ), bestpriority );
+    }
+    // Render the others based on priority
+    bool gotone = false;
+    for ( priority = 1; !gotone && priority<=9; priority++ ) {
+      for( it = todos.begin(); it != todos.end(); ++it ) {
+        Todo *todo = *it;
+        if ( !todo->isCompleted() && ( todo->priority() == priority ) ) {
+          appendTodo( findToplevelTodo( todo ), bestpriority );
           gotone = true;
         }
       }
-      priority++;
-      kdDebug(5850) << "adding the todos..." << endl;
     }
     mText += "</ul>\n";
   }
@@ -233,6 +252,15 @@ void KOWhatsNextView::updateView()
   mView->setText(mText);
 }
 
+Incidence* KOWhatsNextView::findToplevelTodo( Incidence *todo)
+{
+  if( !todo ) return NULL;
+  Incidence* parentTodo;
+  while( ( parentTodo = todo->relatedTo() ) )
+    todo = parentTodo;
+  return todo;
+}
+
 void KOWhatsNextView::showDates( const QDate &start, const QDate &end )
 {
   mStartDate = start;
@@ -267,13 +295,13 @@ void KOWhatsNextView::appendEvent( Incidence *ev, const QDateTime &start,
     if (ev->type()=="Event") {
       Event *event = static_cast<Event *>(ev);
       QDateTime starttime( start );
-      if ( !starttime.isValid() ) 
+      if ( !starttime.isValid() )
         starttime = event->dtStart();
       QDateTime endtime( end );
-      if ( !endtime.isValid() ) 
-        endtime = starttime.addSecs( 
+      if ( !endtime.isValid() )
+        endtime = starttime.addSecs(
                   event->dtStart().secsTo( event->dtEnd() ) );
-      
+
       if ( starttime.date().daysTo( endtime.date() ) >= 1 ) {
         mText += i18n("date from - to", "%1 - %2")
               .arg( KGlobal::locale()->formatDateTime( starttime ) )
@@ -295,16 +323,35 @@ void KOWhatsNextView::appendEvent( Incidence *ev, const QDateTime &start,
   mText += "</a></td></tr>\n";
 }
 
-void KOWhatsNextView::appendTodo( Incidence *ev )
+void KOWhatsNextView::appendTodo( Incidence *ev, int bestpriority )
 {
-  if ( mTodos.find( ev ) != mTodos.end() ) return;
+  if ( mTodos.find( ev ) != mTodos.end()) return;
+
+  // Don't show completed TODOs or their sub-todos
+  if ( ev->type()=="Todo" && static_cast<Todo*>(ev)->isCompleted() ) return;
 
   mTodos.append( ev );
 
-  mText += "<li><a href=\"todo:" + ev->uid() + "\">";
+  kdDebug(5850) << "adding todo \"" << ev->summary() << "\" with priority '" << ev->priority() << "'" << endl;
+
+  // Grey-out ToDos below the highest priority Todo and configure other colours
+  // TODO: Make these configurable (perhaps with a stylesheet & KHTML)
+  QString linkstyle = QString(" <font color=\"#000055\"> ");
+
+  if( ev->priority() > bestpriority )
+    linkstyle = " <font color=\"#999999\"> ";
+  if ( ev->type()=="Todo" ) {
+    Todo *todo = static_cast<Todo*>(ev);
+    if ( todo->hasDueDate() && todo->dtDue().date() < mStartDate)
+      linkstyle = " <font color=\"#FF0000\"> ";
+    else if ( todo->hasDueDate() && todo->dtDue().date() <= mEndDate)
+      linkstyle = " <font color=\"#0000FF\"> ";
+  }
+
+  mText += "<li>" + linkstyle + "<a href=\"todo:" + ev->uid() + "\">";
   mText += ev->summary();
   mText += "</a>";
-  
+
   if ( ev->type()=="Todo" ) {
     Todo *todo = static_cast<Todo*>(ev);
     if ( todo->hasDueDate() ) {
@@ -312,6 +359,15 @@ void KOWhatsNextView::appendTodo( Incidence *ev )
          .arg( (todo->doesFloat())?(todo->dtDueDateStr()):(todo->dtDueStr()) );
     }
   }
+  // Find its child TODOs
+  mText += "</font>\n<ul>\n";
+ Incidence::List children = ev->relations();
+ Incidence::List::ConstIterator it;
+ for( it = children.begin(); it != children.end(); ++it ) {
+     appendTodo( *it, bestpriority );
+ }
+  mText += "</ul>\n";
+
   mText += "</li>\n";
 }
 

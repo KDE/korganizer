@@ -34,6 +34,7 @@
 #include <qpushbutton.h>
 #include <qlabel.h>
 #include <qwhatsthis.h>
+#include <qvalidator.h>
 
 #include <kglobal.h>
 #include <klocale.h>
@@ -159,6 +160,28 @@ void KOEditorGeneralTodo::initTime(QWidget *parent,QBoxLayout *topLayout)
   layoutTimeBox->setColStretch(3,1);
 }
 
+class CompletedValidator : public QValidator
+{
+public:
+  CompletedValidator( QWidget *parent=0, const char *name=0)
+    : QValidator(parent, name) { }
+//TODO: This validator needs to handle i18n("%")
+    State validate(QString &str, int &) const
+    {
+      if (str.isEmpty())
+        return Acceptable;
+
+      bool ok;
+      int val = str.toInt( &ok );
+      if ( ! ok )
+        return Invalid;
+
+      if ( val < 0 || val > 100 )
+        return Invalid;
+
+      return Acceptable;
+    }
+};
 
 void KOEditorGeneralTodo::initCompletion(QWidget *parent, QBoxLayout *topLayout)
 {
@@ -166,6 +189,7 @@ void KOEditorGeneralTodo::initCompletion(QWidget *parent, QBoxLayout *topLayout)
                            "as a percentage.");
   mCompletedCombo = new QComboBox(parent);
   QWhatsThis::add( mCompletedCombo, whatsThis );
+  mCompletedCombo->setEditable( true );
   for (int i = 0; i <= 100; i+=10) {
     // xgettext:no-c-format
     QString label = i18n("Percent complete", "%1 %").arg (i);
@@ -173,6 +197,9 @@ void KOEditorGeneralTodo::initCompletion(QWidget *parent, QBoxLayout *topLayout)
   }
   connect(mCompletedCombo,SIGNAL(activated(int)),SLOT(completedChanged(int)));
   topLayout->addWidget(mCompletedCombo);
+  CompletedValidator *validator =
+    new CompletedValidator( mCompletedCombo, "Completed Validator" );
+  mCompletedCombo->setValidator( validator );
 
   mCompletedLabel = new QLabel(i18n("co&mpleted"),parent);
   topLayout->addWidget(mCompletedLabel);
@@ -368,7 +395,7 @@ void KOEditorGeneralTodo::writeTodo(Todo *todo)
     QDateTime completed( mCompletionDateEdit->date(),
                          mCompletionTimeEdit->getTime() );
     int difference = mCompleted.secsTo( completed );
-    if ( (difference < 60) && (difference > -60) && 
+    if ( (difference < 60) && (difference > -60) &&
          (completed.time().minute() == mCompleted.time().minute() ) ) {
       // completion time wasn't changed substantially (only the seconds
       // truncated, but that's an effect done by KTimeEdit automatically).
