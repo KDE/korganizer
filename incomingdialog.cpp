@@ -28,6 +28,7 @@
 #include <klocale.h>
 #include <kdebug.h>
 #include <kstandarddirs.h>
+#include <kmessagebox.h>
 
 #include <libkcal/incidence.h>
 #include <libkcal/event.h>
@@ -41,9 +42,14 @@
 #include <libkcal/dummyscheduler.h>
 #endif
 
+#ifndef KORG_NOKABC
+ #include <kabc/stdaddressbook.h>
+#endif
+
 #include "incomingdialog.h"
 #include "koeventviewerdialog.h"
 #include "kocounterdialog.h"
+#include "koprefs.h"
 
 
 ScheduleItemIn::ScheduleItemIn(QListView *parent,IncidenceBase *ev,
@@ -151,7 +157,6 @@ void IncomingDialog::retrieve()
     IncidenceBase *inc = message->event();
     Scheduler::Method method = (Scheduler::Method)message->method();
     ScheduleMessage::Status status = message->status();
-
     /*
     kdDebug() << "IncomingDialog::retrieve(): summary: " << event->summary()
               << "  method: " << Scheduler::methodName(method) << endl;
@@ -163,16 +168,14 @@ void IncomingDialog::retrieve()
       if (!incidence->accept(v)) delete item;
     } else {
       FreeBusy *fb = static_cast<FreeBusy *>(item->event());
-
       item->setText(0, "FreeBusy");
       item->setText(1, KGlobal::locale()->formatDate( fb->dtStart().date() ) );
       item->setText(2, KGlobal::locale()->formatTime( fb->dtStart().time() ) );
       item->setText(3, KGlobal::locale()->formatDate( fb->dtEnd().date() ) );
       item->setText(4, KGlobal::locale()->formatTime( fb->dtEnd().time() ) );
       item->setText(5, fb->organizer());
-
     }
-
+    automaticAction(item);
   }
   emit numMessagesChanged(mMessageListView->childCount());
 }
@@ -367,10 +370,104 @@ bool IncomingDialog::incomeDefault(ScheduleItemIn *item)
     return true;
   }
   else {
+    KMessageBox::error(this,i18n("Sorry can't accept the IMIP-message. Maybe a problem with the email addresses"));
     kdDebug() << "IncomingDialog::acceptMessage(): Error!" << endl;
     return false;
   }
   return false;
+}
+
+bool IncomingDialog::automaticAction(ScheduleItemIn *item)
+{
+  bool autoAction = false;
+  IncidenceBase *inc = item->event();
+  Scheduler::Method method = item->method();
+
+  if( inc->type()=="FreeBusy" ) {
+    if ( method==Scheduler::Request ) {
+      if ( KOPrefs::instance()->mIMIPAutoFreeBusy==KOPrefs::addressbookAuto ) {
+        // reply freebusy information
+        // if ( checkOrganizerInAddressbook(inc->organizer()) );
+      
+      } else return false;
+    } else {
+
+      if ( method==Scheduler::Reply ) {
+        if ( KOPrefs::instance()->mIMIPAutoFreeBusy==KOPrefs::addressbookAuto ) {
+          // insert freebusy information
+          //if ( checkAttendeesInAddressbook(inc) )
+
+        } else return false;
+      } else {
+        if ( method==Scheduler::Publish) {
+          if ( KOPrefs::instance()->mIMIPAutoFreeBusy==KOPrefs::addressbookAuto ) {
+            // insert freebusy information
+            //if ( checkOrganizerInAddressbook(inc->organizer()) )
+          
+          }
+        } else return false;
+      }
+    }
+  }
+
+  if ( inc->type()=="Event" ) {
+    if ( method==Scheduler::Request || method==Scheduler::Publish ) {
+      if ( KOPrefs::instance()->mIMIPAutoInsertRequest==KOPrefs::addressbookAuto ) {
+        // insert event
+        if ( checkOrganizerInAddressbook(inc->organizer()) )
+          autoAction = acceptMessage(item);
+      } else return false;
+    } else {
+
+      if ( method==Scheduler::Reply ) {
+        if ( KOPrefs::instance()->mIMIPAutoInsertReply==KOPrefs::addressbookAuto ) {
+          //  update event information
+          if ( checkAttendeesInAddressbook(inc) )
+            autoAction = acceptMessage(item);
+        } else return false;
+      } else {
+
+        if ( method==Scheduler::Refresh ) {
+          if ( KOPrefs::instance()->mIMIPAutoRefresh==KOPrefs::addressbookAuto ) {
+            // send refresh-information
+            if ( checkAttendeesInAddressbook(inc) )
+              autoAction = acceptMessage(item);
+            else return false;
+          } else return false;
+        } else return false;
+      }
+    }
+  }
+  return autoAction;
+}
+
+bool IncomingDialog::checkOrganizerInAddressbook(QString organizer)
+{
+  bool inBook = false;
+#ifndef KORG_NOKABC
+  KABC::AddressBook *add_book = KABC::StdAddressBook::self();
+  KABC::Addressee::List addressList;
+  addressList = add_book->findByEmail(organizer);
+  if ( addressList.size()>0 ) inBook = true;
+#endif
+  return inBook;
+}
+
+bool IncomingDialog::checkAttendeesInAddressbook(IncidenceBase *inc)
+{
+  bool inBook = false;
+#ifndef KORG_NOKABC
+  KABC::AddressBook *add_book = KABC::StdAddressBook::self();
+  KABC::Addressee::List addressList;
+  QPtrList <Attendee> attendees;
+  Attendee *att;
+  attendees = inc->attendees();
+  for (att=attendees.first();att;att=attendees.next()) {
+    addressList = add_book->findByEmail(att->email());
+    if (addressList.size()>0 ) inBook = true;
+  }
+#endif
+  return inBook;
 }
 
 #include "incomingdialog.moc"

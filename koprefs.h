@@ -40,6 +40,7 @@ class KOPrefs : public KPrefs
     enum { MailClientKMail, MailClientSendmail };
     enum { IMIPDummy, IMIPKMail };
     enum { IMIPOutbox, IMIPdirectsend };
+    enum { neverAuto, addressbookAuto, selectedAuto };
   
     virtual ~KOPrefs();
   
@@ -146,6 +147,11 @@ class KOPrefs : public KPrefs
     QStringList mAdditionalMails;
     bool mIntervalCheck;
     int mIntervalCheckTime;
+    int mIMIPAutoRefresh;
+    int mIMIPAutoInsertReply;
+    int mIMIPAutoInsertRequest;
+    int mIMIPAutoFreeBusy;
+    int mIMIPAutoFreeBusyReply;
 
   private:
     QDict<QColor> mCategoryColors;

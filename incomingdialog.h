@@ -97,8 +97,11 @@ class IncomingDialog : public IncomingDialog_base
     bool incomeDeclineCounter(ScheduleItemIn *item);
     bool incomeAdd(ScheduleItemIn *item);
     bool incomeDefault(ScheduleItemIn *item);
+    bool automaticAction(ScheduleItemIn *item);
 
   private:
+    bool checkAttendeesInAddressbook(IncidenceBase *inc);
+    bool checkOrganizerInAddressbook(QString organizer);
     Calendar *mCalendar;
     Scheduler *mScheduler;
     OutgoingDialog *mOutgoing;

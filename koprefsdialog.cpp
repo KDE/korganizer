@@ -536,12 +536,12 @@ void KOPrefsDialog::setupGroupAutomationTab()
   QFrame *topFrame  = addPage(i18n("Group Automation"),0,
                               DesktopIcon("personal",KIcon::SizeMedium));
 
-  QGridLayout *topLayout = new QGridLayout(topFrame,2,2);
+  QGridLayout *topLayout = new QGridLayout(topFrame,6,1);
   topLayout->setSpacing(spacingHint());
   topLayout->setMargin(marginHint());
 
   QGroupBox *autoCheckGroup = new QGroupBox(1,Horizontal,i18n("Auto-Check"),topFrame);
-  topLayout->addMultiCellWidget(autoCheckGroup,0,0,0,1);
+  topLayout->addMultiCellWidget(autoCheckGroup,0,0,0,0);
 
   addWidBool(i18n("Enable interval message checking"),
              &(KOPrefs::instance()->mIntervalCheck),autoCheckGroup);
@@ -552,6 +552,45 @@ void KOPrefsDialog::setupGroupAutomationTab()
   (void)new QLabel(i18n("Check interval in minutes:"),intervalBox);
   mAutoCheckIntervalSpin = new QSpinBox(1,500,1,intervalBox);
 
+  KPrefsWidRadios *autoRefreshGroup =
+      addWidRadios(i18n("Auto send Refresh"),
+                   &(KOPrefs::instance()->mIMIPAutoRefresh),topFrame);
+  autoRefreshGroup->addRadio(i18n("Never"));
+  autoRefreshGroup->addRadio(i18n("if attendee is in addressbook"));
+  //autoRefreshGroup->addRadio(i18n("selected emails"));
+  topLayout->addMultiCellWidget(autoRefreshGroup->groupBox(),1,1,0,0);
+
+  KPrefsWidRadios *autoInsertGroup =
+      addWidRadios(i18n("Auto insert IMIP replys"),
+                   &(KOPrefs::instance()->mIMIPAutoInsertReply),topFrame);
+  autoInsertGroup->addRadio(i18n("Never"));
+  autoInsertGroup->addRadio(i18n("if attendee is in addressbook"));
+  //autoInsertGroup->addRadio(i18n("selected emails"));
+  topLayout->addMultiCellWidget(autoInsertGroup->groupBox(),2,2,0,0);
+
+  KPrefsWidRadios *autoRequestGroup =
+      addWidRadios(i18n("Auto insert IMIP requests"),
+                   &(KOPrefs::instance()->mIMIPAutoInsertRequest),topFrame);
+  autoRequestGroup->addRadio(i18n("Never"));
+  autoRequestGroup->addRadio(i18n("if organizer is in addressbook"));
+  //autoInsertGroup->addRadio(i18n("selected emails"));
+  topLayout->addMultiCellWidget(autoRequestGroup->groupBox(),3,3,0,0);
+
+  KPrefsWidRadios *autoFreeBusyGroup =
+      addWidRadios(i18n("Auto send FreeBusy information"),
+                   &(KOPrefs::instance()->mIMIPAutoFreeBusy),topFrame);
+  autoFreeBusyGroup->addRadio(i18n("Never"));
+  autoFreeBusyGroup->addRadio(i18n("if requested from an email in addressbook"));
+  //autoFreeBusyGroup->addRadio(i18n("selected emails"));
+  topLayout->addMultiCellWidget(autoFreeBusyGroup->groupBox(),4,4,0,0);
+
+  KPrefsWidRadios *autoFreeBusyReplyGroup =
+      addWidRadios(i18n("Auto save FreeBusy replys"),
+                   &(KOPrefs::instance()->mIMIPAutoFreeBusyReply),topFrame);
+  autoFreeBusyReplyGroup->addRadio(i18n("Never"));
+  autoFreeBusyReplyGroup->addRadio(i18n("if attendee is in addressbook"));
+  //autoFreeBusyGroup->addRadio(i18n("selected emails"));
+  topLayout->addMultiCellWidget(autoFreeBusyReplyGroup->groupBox(),5,5,0,0);
 }
 
 void KOPrefsDialog::showPrinterTab()
