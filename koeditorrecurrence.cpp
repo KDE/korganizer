@@ -635,6 +635,9 @@ void KOEditorRecurrence::setDateTimes(QDateTime start,QDateTime end)
 
   currStartDateTime = start;
   currEndDateTime = end;
+  
+  startDateLabel->setText(i18n("Begins On: %1")
+      .arg(KGlobal::locale()->formatDate(start.date()))); 
 }
 
 
