@@ -60,7 +60,8 @@ class ResourceItem : public QCheckListItem
     ResourceItem( KCal::ResourceCalendar *resource, ResourceView *view,
                   KListView *parent );
     ResourceItem( KCal::ResourceCalendar *resource, const QString& sub,
-                  ResourceView *view, ResourceItem* parent );
+                  const QString& label, ResourceView *view, 
+                  ResourceItem* parent );
 
     KCal::ResourceCalendar *resource() { return mResource; }
     const QString& resourceIdentifier() { return mResourceIdentifier; }
@@ -122,7 +123,11 @@ class ResourceView : public CalendarViewExtension
     void editResource();
     void currentChanged( QListViewItem* );
     void slotSubresourceAdded( ResourceCalendar *, const QString &,
+                               const QString &resource,const QString& label );
+    // FIXME proko2: merge once we are back in head by porting imap resource
+    void slotSubresourceAdded( ResourceCalendar *, const QString &,
                                const QString &resource );
+
     void slotSubresourceRemoved( ResourceCalendar *, const QString &,
                                  const QString &resource );
     void closeResource( ResourceCalendar * );

@@ -105,21 +105,22 @@ void ResourceItem::createSubresourceItems() {
     // This resource has subresources
     QStringList::ConstIterator it;
     for ( it=subresources.begin(); it!=subresources.end(); ++it ) {
-      ( void )new ResourceItem( mResource, *it, mView, this );
+      ( void )new ResourceItem( mResource, *it, mResource->labelForSubresource( *it ),
+                                mView, this );
     }
   }
   mSubItemsCreated = true;
 }
 
 ResourceItem::ResourceItem( KCal::ResourceCalendar *resource,
-                            const QString& sub, ResourceView *view,
-                            ResourceItem* parent )
+                            const QString& sub, const QString& label,
+                            ResourceView *view, ResourceItem* parent )
+
   : QCheckListItem( parent, sub, CheckBox ), mResource( resource ),
     mView( view ), mBlockStateChange( false ), mIsSubresource( true ),
     mSubItemsCreated( false )
 {
   mResourceIdentifier = sub;
-  QString label = resource->labelForSubresource( mResourceIdentifier );
   setText( 0, label );
   setGuiState();
 }
@@ -269,9 +270,17 @@ void ResourceView::addResourceItem( ResourceCalendar *resource )
 
   connect( resource, SIGNAL( signalSubresourceAdded( ResourceCalendar *,
                                                      const QString &,
+                                                     const QString &,
+                                                     const QString & ) ),
+           SLOT( slotSubresourceAdded( ResourceCalendar *, const QString &,
+                                       const QString &, const QString & ) ) );
+
+  connect( resource, SIGNAL( signalSubresourceAdded( ResourceCalendar *,
+                                                     const QString &,
                                                      const QString & ) ),
            SLOT( slotSubresourceAdded( ResourceCalendar *, const QString &,
                                        const QString & ) ) );
+ 
   connect( resource, SIGNAL( signalSubresourceRemoved( ResourceCalendar *,
                                                        const QString &,
                                                        const QString & ) ),
@@ -284,10 +293,20 @@ void ResourceView::addResourceItem( ResourceCalendar *resource )
   emitResourcesChanged();
 }
 
+
+// FIXME proko2: merge once we are back in HEAD by porting imap resource
+void ResourceView::slotSubresourceAdded( ResourceCalendar *calendar,
+                                         const QString& type,
+                                         const QString& resource )
+{
+   slotSubresourceAdded( calendar, type, resource, resource );
+}
+
 // Add a new entry
 void ResourceView::slotSubresourceAdded( ResourceCalendar *calendar,
-                                         const QString &/*type*/,
-                                         const QString &resource )
+                                         const QString& /*type*/,
+                                         const QString& resource,
+                                         const QString& label)
 {
   QListViewItem *i = mListView->findItem( calendar->resourceName(), 0 );
   if ( !i )
@@ -295,7 +314,7 @@ void ResourceView::slotSubresourceAdded( ResourceCalendar *calendar,
     return;
 
   ResourceItem *item = static_cast<ResourceItem *>( i );
-  ( void )new ResourceItem( calendar, resource, this, item );
+  ( void )new ResourceItem( calendar, resource, label, this, item );
 }
 
 // Remove an entry
