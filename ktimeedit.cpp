@@ -49,6 +49,8 @@ KTimeEdit::KTimeEdit(QWidget *parent, QTime qt, const char *name)
     insertItem(KGlobal::locale()->formatTime(timeEntry));
     timeEntry = timeEntry.addSecs(60*15);
   } while (!timeEntry.isNull());
+  // Add end of day.
+  insertItem( KGlobal::locale()->formatTime( QTime( 23, 59, 59 ) ) );
 
   updateSelection();
   setFocusPolicy(QWidget::StrongFocus);
