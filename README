@@ -1,15 +1,22 @@
-This README is outdated and will be updated with the next release.
-
 		       +-----------------------+
                        | K   O R G A N I Z E R |
                        +-----------------------+
-                                 v1.0
-                           by Preston Brown
-               http://www.redhat.com/~pbrown/korganizer
+
+                                 v1.91
+
+                 http://devel-home.kde.org/~korganiz
 
 QUICK NOTES ON WHAT'S NEW IN THIS RELEASE:
 
-* Official 1.0 release
+* Beta-Release 1.91 (June 2000)
+
+  - Full integration in KDE 2 framework
+  - Improved Todo-View (hierarchical todos, drag and drop, ...)
+  - Web Page Export
+  - Improved Agenda View (colored events, parallel events, ...)
+  - Many, many other improvements and bug fixes
+
+* Official 1.0 release (February 1999)
 
 INTRODUCTION:
 
@@ -37,18 +44,25 @@ it is at least partially helpful.  Anyone wishing to help on completing
 or enhancing the documentation should contact me directly at the email
 address given at the end of this document.
 
-BUGS: Known bugs are listed in the file BUGS.  I'll add and remove
-bug reports to this file as they come in or get squashed.
+BUGS:
+
+Bugs can be reported to the KDE bug tracking system (http://bugs.kde.org).
+There you can also get information about the status of older bugs.
+KOrganizer, as most other KDE 2 programs, offers a menu item "Report Bug"
+in the Help menu for convenient reporting of bugs or feature requests.
+
+NEWS and TODO:
+
+Have a look at the KOrganizer homepage (http://devel-home.kde.org/~korganiz).
+There you find news and a todo list for future KOrganizer development (of
+course generated with KOrganizer itself).
 
 CONTACT INFORMATION:
 
-We want your suggestions and bug reports! 
+We want your suggestions and comments! 
 
 Please mail them to the maintainer:
 
-Preston Brown (pbrown@kde.org)
+Cornelius Schumacher (schumacher@kde.org)
 
-I always welcome contributions and new members for the team. 
-
----
-pgb: 01/24/99
+I always welcome contributions and new members for the team.
