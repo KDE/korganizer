@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE kcfg SYSTEM "http://www.kde.org/standards/kcfg/1.0/kcfg.dtd">
+<kcfg>
+  <kcfgfile name="korganizerrc"/>
+
+  <group name="General">
+    <entry type="bool" key="Auto Save">
+      <default>false</default>
+    </entry>
+    <entry type="int" key="Auto Save Interval">
+      <default>10</default>
+    </entry>
+    <entry type="bool" key="Confirm Deletes" name="Confirm">
+      <default>true</default>
+    </entry>
+    <entry type="QString" key="Archive File">
+    </entry>
+    <entry type="bool" key="Html With Save">
+      <default>false</default>
+    </entry>
+    <entry type="Enum" key="Destination" name="Destination">
+      <values>
+        <value>standardDestination</value>
+        <value>askDestination</value>
+      </values>
+      <default>standardDestination</default>
+    </entry>
+  </group>
+
+  <group name="Personal Settings">
+    <entry type="bool" key="Bcc">
+      <default>false</default>
+    </entry>
+    <entry type="bool" key="Use Control Center Email" name="EmailControlCenter">
+      <default>false</default>
+    </entry>
+    <entry type="Enum" key="Mail Client">
+      <values>
+        <value>MailClientKMail</value>
+        <value>MailClientSendmail</value>
+      </values>
+      <default>MailClientKMail</default>
+    </entry>
+  </group>
+
+  <group name="Time &amp; Date">
+    <entry type="QString" name="TimeZoneId">
+    </entry>
+    <entry type="int" key="Default Start Time" name="StartTime">
+      <default>10</default>
+    </entry>
+    <entry type="int" key="Default Duration">
+      <default>2</default>
+    </entry>
+    <entry type="int" key="Default Alarm Time" name="AlarmTime">
+      <default>0</default>
+    </entry>
+  </group>
+
+  <group name="Views">
+    <entry type="int" key="Hour Size">
+      <default>10</default>
+    </entry>
+    <entry type="bool" key="Show Daily Recurrences" name="DailyRecur">
+      <default>true</default>
+    </entry>
+    <entry type="bool" key="Show Weekly Recurrences" name="WeeklyRecur">
+      <default>true</default>
+    </entry>
+    <entry type="bool" key="Enable ToolTips">
+      <default>false</default>
+    </entry>
+    <entry type="bool" key="Enable MonthView ScrollBars" name="EnableMonthScroll">
+      <default>false</default>
+    </entry>
+    <entry type="bool" name="SelectionStartsEditor">
+      <default>false</default>
+    </entry>
+
+    <entry type="bool" key="Marcus Bains shows seconds" name="MarcusBainsShowSeconds">
+      <default>false</default>
+    </entry>
+    <entry type="bool" key="Show Marcus Bains" name="MarcusBainsEnabled">
+      <default>false</default>
+    </entry>
+
+    <entry type="int" key="Day Begins">
+      <default>7</default>
+    </entry>
+
+    <entry type="int" key="Working Hours Start">
+      <default>8</default>
+    </entry>
+    <entry type="int" key="Working Hours End">
+      <default>17</default>
+    </entry>
+    <entry type="bool" key="Exclude Holidays">
+      <default>true</default>
+    </entry>
+    <entry type="bool" key="Exclude Saturdays">
+      <default>true</default>
+    </entry>
+
+    <entry type="bool" key="Month View Uses Category Color">
+      <default>false</default>
+    </entry>
+
+    <entry type="bool" key="Full View Month">
+      <default>false</default>
+    </entry>
+    <entry type="bool" key="Full View Todo">
+      <default>true</default>
+    </entry>
+
+    <entry type="bool" key="Quick Todo" name="EnableQuickTodo">
+      <default>true</default>
+    </entry>
+
+    <entry type="int" key="Next X Days">
+      <default>3</default>
+    </entry>
+
+  </group>
+
+  <group name="Layout">
+    <entry type="bool" key="CompactDialogs">
+      <default>false</default>
+    </entry>
+    <entry type="bool" key="VerticalScreen">
+      <default>false</default>
+    </entry>
+  </group>
+  
+  <group name="KOrganizer Plugins">
+    <entry type="QStringList" name="SelectedPlugins">
+      <default>holidays,webexport</default>
+    </entry>
+  </group>
+
+  <group name="Editors">
+    <entry type="QStringList" name="EventTemplates">
+    </entry>
+    <entry type="QStringList" name="TodoTemplates">
+    </entry>
+  </group>
+
+  <group name="Group Scheduling">
+    <entry type="Enum" name="IMIPScheduler">
+      <values>
+        <value>IMIPDummy</value>
+        <value>IMIPKMail</value>
+      </values>
+      <default>IMIPKMail</default>
+    </entry>
+
+    <entry type="QStringList" name="AdditionalMails">
+    </entry>
+
+    <entry type="Enum" name="IMIPSend">
+      <values>
+        <value>IMIPOutbox</value>
+        <value>IMIPdirectsend</value>
+      </values>
+      <default>IMIPdirectsend</default>
+    </entry>
+
+    <entry type="Enum" key="IMIP auto refresh" name="IMIPAutoRefresh">
+      <values>
+        <value>neverAuto</value>
+        <value>addressbookAuto</value>
+        <value>selectedAuto</value>
+      </values>
+      <default>neverAuto</default>
+    </entry>
+    <entry type="int" key="IMIP auto insert request" name="IMIPAutoInsertRequest">
+      <default>neverAuto</default>
+    </entry>
+    <entry type="int" key="IMIP auto insert reply" name="IMIPAutoInsertReply">
+      <default>neverAuto</default>
+    </entry>
+    <entry type="int" key="IMIP auto FreeBusy" name="IMIPAutoFreeBusy">
+      <default>neverAuto</default>
+    </entry>
+    <entry type="int" key="IMIP auto save FreeBusy" name="IMIPAutoFreeBusyReply">
+      <default>neverAuto</default>
+    </entry>
+  
+  </group>
+
+  <group name="Colors">
+    <entry type="QColor" key="Holiday Color">
+      <default>255, 100, 100</default>
+    </entry>
+    <entry type="QColor" key="Highlight Color">
+      <default>100, 100, 255</default>
+    </entry>
+    <entry type="QColor" key="Agenda Background Color" name="AgendaBgColor">
+      <default>255, 255, 255</default>
+    </entry>
+    <entry type="QColor" key="WorkingHours Color">
+      <default>225, 225, 255</default>
+    </entry>
+    <entry type="QColor" key="Todo due today Color" name="TodoDueTodayColor">
+      <default>255, 200, 50</default>
+    </entry>
+    <entry type="QColor" key="Todo overdue Color" name="TodoOverdueColor">
+      <default>255, 100, 100</default>
+    </entry>
+  </group>
+
+  <group name="Fonts">
+    <entry type="QFont" key="TimeBar Font">
+    </entry>
+    <entry type="QFont" key="AgendaView Font">
+    </entry>
+    <entry type="QFont" key="MarcusBains Font">
+    </entry>
+  </group>
+
+</kcfg>

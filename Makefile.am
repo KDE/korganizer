@@ -38,11 +38,6 @@ timezone_LDADD   = libkorganizer.la $(LIB_KSYCOCA)
 timezone_SOURCES = timezone.cpp
 timezone_COMPILE_FIRST = koprefs.h
 
-koprefs_base.h koprefs_base.cpp: $(srcdir)/koprefs.cfg $(top_builddir)/libkdepim/cfgc/cfgc
-	$(top_builddir)/libkdepim/cfgc/cfgc $(srcdir)/koprefs.cfg
-$(srcdir)/koprefs.h: koprefs_base.h
-
-
 lib_LTLIBRARIES = libkorganizer.la
 
 libkorganizer_la_LDFLAGS = $(all_libraries) $(KDE_RPATH) -version-info 1:0
@@ -56,8 +51,7 @@ libkorganizer_la_COMPILE_FIRST = kofilterview_base.ui \
 	outgoingdialog_base.ui \
 	incomingdialog_base.ui \
 	../libkdepim/categoryselectdialog.h \
-	../kalarmd/alarmdaemoniface_stub.h \
-	koprefs_base.h
+	../kalarmd/alarmdaemoniface_stub.h
 libkorganizer_la_SOURCES =  outgoingdialog_base.ui \
 	koagendaview.cpp koagenda.cpp koagendaitem.cpp \
 	datenavigator.cpp kdatenavigator.cpp \
@@ -96,7 +90,8 @@ libkorganizer_la_SOURCES =  outgoingdialog_base.ui \
         navigatorbar.cpp kogroupware.cpp \
 	kogroupwareincomingdialog_base.ui kogroupwareincomingdialog.cpp \
         history.cpp \
-        koprefs_base.cpp koincidencetooltip.cpp aboutdata.cpp \
+        koprefs_base.kcfgc \
+        koincidencetooltip.cpp aboutdata.cpp \
         cellitem.cpp
 
 METASOURCES = AUTO
@@ -122,8 +117,6 @@ noinst_HEADERS = komonthview.h \
         alarmclient.h kalarmdclient.h simplealarmclient.h \
         navigatorbar.h kogroupware.h kogroupwareincomingdialog.h \
 	koincidencetooltip.h
-
-DISTCLEANFILES = koprefs_base.cpp
 
 tip_DATA = tips
 tipdir = $(kde_datadir)/korganizer

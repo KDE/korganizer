@@ -61,34 +61,32 @@ KOPrefs::KOPrefs() :
   // make it a bit smaller
   mDefaultMonthViewFont.setPointSize(mDefaultMonthViewFont.pointSize()-2);
 
-  KPrefs::setCurrentGroup("General");
+  KConfigSkeleton::setCurrentGroup("General");
 
-  addItemPath("Html Export File",mHtmlExportFile,
+  addItemPath("Html Export File","Html Export File",mHtmlExportFile,
       QDir::homeDirPath() + "/" + i18n("Default export file", "calendar.html"));
 
-  KPrefs::setCurrentGroup("Fonts");
+  KConfigSkeleton::setCurrentGroup("Fonts");
 
-  addItemFont("MonthView Font",mMonthViewFont, mDefaultMonthViewFont);
+  addItemFont("MonthView Font","MonthView Font",mMonthViewFont, mDefaultMonthViewFont);
 
-  KPrefs::setCurrentGroup("Colors");
+  KConfigSkeleton::setCurrentGroup("Colors");
 
-  addItemColor("Event Color",mEventColor,mDefaultCategoryColor);
+  addItemColor("Event Color","Event Color",mEventColor,mDefaultCategoryColor);
 }
 
 
 KOPrefs::~KOPrefs()
 {
   kdDebug(5850) << "KOPrefs::~KOPrefs()" << endl;
-  if (mInstance == this)
-      mInstance = insd.setObject(0);
 }
 
 
 KOPrefs *KOPrefs::instance()
 {
-  if (!mInstance) {
-      mInstance = insd.setObject(new KOPrefs());
-      mInstance->readConfig();
+  if ( !mInstance ) {
+    insd.setObject( mInstance, new KOPrefs() );
+    mInstance->readConfig();
   }
 
   return mInstance;
