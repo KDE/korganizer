@@ -1,1 +1,1 @@
-SUBDIRS = journal 
+SUBDIRS = journal
