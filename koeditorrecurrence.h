@@ -72,7 +72,7 @@ class KOEditorRecurrence : public QWidget
     void initLayout();
 
   private:
-    QDate *dateFromText(QString text);
+//    QDate *dateFromText(QString text);
     
     /* stuff to hold the appointment time setting widgets. */
     QGroupBox* timeGroupBox;
@@ -141,7 +141,7 @@ class KOEditorRecurrence : public QWidget
     QGroupBox*    rangeGroupBox;
     QButtonGroup* rangeButtonGroup;
     QLabel*       startDateLabel;
-    KDateEdit*    startDateEdit;
+//    KDateEdit*    startDateEdit;
     QRadioButton* noEndDateButton;
     QRadioButton* endDurationButton;
     QLineEdit*    endDurationEdit;

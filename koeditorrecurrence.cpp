@@ -147,7 +147,7 @@ void KOEditorRecurrence::initMain()
 //  rangeButtonGroup->setExclusive(true);
 
   startDateLabel = new QLabel(i18n("Begin On:"), rangeButtonGroup);
-  startDateEdit = new KDateEdit(rangeButtonGroup);
+//  startDateEdit = new KDateEdit(rangeButtonGroup);
   noEndDateButton = new QRadioButton(i18n("No Ending Date"), rangeButtonGroup);
   endDurationButton = new QRadioButton(i18n("End after"), rangeButtonGroup);
   endDurationEdit = new QLineEdit(rangeButtonGroup);
@@ -158,10 +158,12 @@ void KOEditorRecurrence::initMain()
   // Construct layout for recurrence range box
   QBoxLayout *layoutRange = new QVBoxLayout(rangeButtonGroup,5);
     
-  QBoxLayout *layoutStart = new QHBoxLayout;
-  layoutRange->addLayout(layoutStart);
-  layoutStart->addWidget(startDateLabel);
-  layoutStart->addWidget(startDateEdit,AlignVCenter);
+//  QBoxLayout *layoutStart = new QHBoxLayout;
+//  layoutRange->addLayout(layoutStart);
+//  layoutStart->addWidget(startDateLabel);
+//  layoutStart->addWidget(startDateEdit,AlignVCenter);
+
+  layoutRange->addWidget(startDateLabel);
 
   layoutRange->addWidget(noEndDateButton);
   
@@ -642,6 +644,9 @@ void KOEditorRecurrence::setDefaults(QDateTime from, QDateTime to,bool)
   unsetAllCheckboxes();
 
   setDateTimes(from,to);
+
+  startDateLabel->setText(i18n("Begins On: %1")
+                          .arg(KGlobal::locale()->formatDate(from.date())));
   
   noEndDateButton->setChecked(true);
   weeklyButton->setChecked(true);
@@ -724,7 +729,11 @@ void KOEditorRecurrence::readEvent(KOEvent *event)
     break;
   }
 
+  startDateLabel->setText(i18n("Begins On: %1")
+      .arg(KGlobal::locale()->formatDate(event->getDtStart().date())));
+
   if (event->doesRecur()) {
+
     // get range information
     if (event->getRecursDuration() == -1)
       noEndDateButton->setChecked(true);
@@ -787,7 +796,7 @@ void KOEditorRecurrence::writeEvent(KOEvent *event)
       rDuration = 0;
       rEndDate = endDateEdit->getDate();
     }
-    
+
     // check for daily recurrence
     if (dailyButton->isChecked()) {
       int rFreq;
@@ -892,6 +901,8 @@ void KOEditorRecurrence::writeEvent(KOEvent *event)
   exDates.clear();
 }
 
+// obsolete
+#if 0
 QDate *KOEditorRecurrence::dateFromText(QString text)
 {
   QString tmpStr = text;
@@ -934,6 +945,7 @@ QDate *KOEditorRecurrence::dateFromText(QString text)
   
   return new QDate(y,m,d);
 }
+#endif
 
 void KOEditorRecurrence::setDateTimeStr(const QString &str)
 {

@@ -702,6 +702,9 @@ void KOAgendaView::fillAgenda()
   int curCol;  // current column of agenda, i.e. the X coordinate
   QDate currentDate = mStartDate;
   for(curCol=0;curCol<int(mSelectedDates.count());++curCol) {
+//    kdDebug() << "KOAgendaView::fillAgenda(): " << currentDate.toString()
+//              << endl;
+
     dayEvents = mCalendar->getEventsForDate(currentDate,false);
 
     // Default values, which can never be reached
@@ -719,11 +722,15 @@ void KOAgendaView::fillAgenda()
 //      kdDebug() << "  beginX: " << beginX << "  endX: " << endX << endl;
       
       if (event->doesFloat()) {
-      	if (beginX <= 0 && curCol == 0) {     
-          mAllDayAgenda->insertAllDayItem(event,beginX,endX);
-	} else if (beginX == curCol) {
-          mAllDayAgenda->insertAllDayItem(event,beginX,endX);
-	}
+        if (event->doesRecur()) {
+          mAllDayAgenda->insertAllDayItem(event,curCol,curCol);
+        } else {
+          if (beginX <= 0 && curCol == 0) {     
+            mAllDayAgenda->insertAllDayItem(event,beginX,endX);
+          } else if (beginX == curCol) {
+            mAllDayAgenda->insertAllDayItem(event,beginX,endX);
+          }
+        }
       } else if (event->isMultiDay()) {
         int startY = mAgenda->timeToY(event->getDtStart().time());
         int endY = mAgenda->timeToY(event->getDtEnd().time()) - 1;  
