@@ -479,6 +479,12 @@ class KOPrefsDialogViews : public KPrefsModule
                      KOPrefs::instance()->mMarcusBainsEnabled,topFrame);
       topLayout->addWidget(marcusBainsEnabled->checkBox(),10,0);
 
+      KPrefsWidBool *selectionStartsEditor =
+          addWidBool(i18n("Time range selection in agenda view starts event "
+                          "editor."),
+                     KOPrefs::instance()->mSelectionStartsEditor,topFrame);
+      topLayout->addWidget(selectionStartsEditor->checkBox(),11,0);
+
       topLayout->setRowStretch(11,1);
 
       load();

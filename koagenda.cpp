@@ -143,9 +143,9 @@ void MarcusBains::updateLocation(bool recalculate)
 /*
   Create an agenda widget with rows rows and columns columns.
 */
-KOAgenda::KOAgenda(int columns,int rows,int rowSize,QWidget *parent,
-                   const char *name,WFlags f) :
-  QScrollView(parent,name,f)
+KOAgenda::KOAgenda( int columns, int rows, int rowSize, QWidget *parent,
+                    const char *name, WFlags f )
+  : QScrollView( parent, name, f )
 {
   mColumns = columns;
   mRows = rows;
@@ -159,8 +159,8 @@ KOAgenda::KOAgenda(int columns,int rows,int rowSize,QWidget *parent,
   Create an agenda widget with columns columns and one row. This is used for
   all-day events.
 */
-KOAgenda::KOAgenda(int columns,QWidget *parent,const char *name,WFlags f) :
-  QScrollView(parent,name,f)
+KOAgenda::KOAgenda( int columns, QWidget *parent, const char *name, WFlags f )
+  : QScrollView( parent, name, f )
 {
   mColumns = columns;
   mRows = 1;
@@ -179,13 +179,13 @@ KOAgenda::~KOAgenda()
 
 Incidence *KOAgenda::selectedIncidence() const
 {
-  return (mSelectedItem ? mSelectedItem->incidence() : 0);
+  return ( mSelectedItem ? mSelectedItem->incidence() : 0 );
 }
 
 
 QDate KOAgenda::selectedIncidenceDate() const
 {
-  return (mSelectedItem ? mSelectedItem->itemDate() : QDate());
+  return ( mSelectedItem ? mSelectedItem->itemDate() : QDate() );
 }
 
 
@@ -198,14 +198,14 @@ void KOAgenda::init()
   mScrollDelay = 30;
   mScrollOffset = 10;
 
-  enableClipper(true);
+  enableClipper( true );
 
   // Grab key strokes for keyboard navigation of agenda. Seems to have no
   // effect. Has to be fixed.
-  setFocusPolicy(WheelFocus);
+  setFocusPolicy( WheelFocus );
 
-  connect(&mScrollUpTimer,SIGNAL(timeout()),SLOT(scrollUp()));
-  connect(&mScrollDownTimer,SIGNAL(timeout()),SLOT(scrollDown()));
+  connect( &mScrollUpTimer, SIGNAL( timeout() ), SLOT( scrollUp() ) );
+  connect( &mScrollDownTimer, SIGNAL( timeout() ), SLOT( scrollDown() ) );
 
   mStartCellX = 0;
   mStartCellY = 0;
@@ -227,42 +227,45 @@ void KOAgenda::init()
 
   mSelectedItem = 0;
 
-  setAcceptDrops(true);
-  installEventFilter(this);
-  mItems.setAutoDelete(true);
+  setAcceptDrops( true );
+  installEventFilter( this );
+  mItems.setAutoDelete( true );
 
 //  resizeContents( (int)(mGridSpacingX * mColumns + 1) , (int)(mGridSpacingY * mRows + 1) );
-  resizeContents( (int)(mGridSpacingX * mColumns) , (int)(mGridSpacingY * mRows) );
+  resizeContents( int( mGridSpacingX * mColumns ),
+                  int( mGridSpacingY * mRows ) );
 
   viewport()->update();
-  viewport()->setBackgroundMode(NoBackground);
-  viewport()->setFocusPolicy(WheelFocus);
+  viewport()->setBackgroundMode( NoBackground );
+  viewport()->setFocusPolicy( WheelFocus );
 
-  setMinimumSize(30, (int)(mGridSpacingY + 1) );
+  setMinimumSize( 30, int( mGridSpacingY + 1 ) );
 //  setMaximumHeight(mGridSpacingY * mRows + 5);
 
   // Disable horizontal scrollbar. This is a hack. The geometry should be
   // controlled in a way that the contents horizontally always fits. Then it is
   // not necessary to turn off the scrollbar.
-  setHScrollBarMode(AlwaysOff);
+  setHScrollBarMode( AlwaysOff );
 
-  setStartHour(KOPrefs::instance()->mDayBegins);
+  setStartHour( KOPrefs::instance()->mDayBegins );
 
   calculateWorkingHours();
 
-  connect(verticalScrollBar(),SIGNAL(valueChanged(int)),
-          SLOT(checkScrollBoundaries(int)));
+  connect( verticalScrollBar(), SIGNAL( valueChanged( int ) ),
+           SLOT( checkScrollBoundaries( int ) ) );
 
   // Create the Marcus Bains line.
-  if(mAllDayMode)
-      mMarcusBains = 0;
-  else {
-      mMarcusBains = new MarcusBains(this);
-      addChild(mMarcusBains);
+  if( mAllDayMode ) {
+    mMarcusBains = 0;
+  } else {
+    mMarcusBains = new MarcusBains( this );
+    addChild( mMarcusBains );
   }
 
   mTypeAhead = false;
   mTypeAheadReceiver = 0;
+
+  mReturnPressed = false;
 }
 
 
@@ -421,6 +424,20 @@ bool KOAgenda::eventFilter_key( QObject *, QKeyEvent *ke )
 {
 //  kdDebug() << "KOAgenda::eventFilter_key() " << ke->type() << endl;
 
+  // If Return is pressed bring up an editor for the current selected time span.
+  if ( ke->key() == Key_Return ) {
+    if ( ke->type() == QEvent::KeyPress ) mReturnPressed = true;
+    else if ( ke->type() == QEvent::KeyRelease ) {
+      if ( mReturnPressed ) {
+        emitNewEventForSelection();
+        mReturnPressed = false;
+        return true;
+      } else {
+        mReturnPressed = false;
+      }
+    }
+  }
+
   // Ignore all input that does not produce any output
   if ( ke->text().isEmpty() ) return false;
 
@@ -452,20 +469,25 @@ bool KOAgenda::eventFilter_key( QObject *, QKeyEvent *ke )
                                                 ke->count() ) );
         if ( !mTypeAhead ) {
           mTypeAhead = true;
-          if ( mSelectionHeight > 0 ) {
-            emit newEventSignal( mSelectionCellX, (int)(mSelectionYTop / mGridSpacingY),
-                                 mSelectionCellX,
-                                 (int)( ( mSelectionYTop + mSelectionHeight ) /
-                                 mGridSpacingY ) );
-          } else {
-            emit newEventSignal();
-          }
+          emitNewEventForSelection();
           return true;
         }
         break;
     }
   }
   return false;
+}
+
+void KOAgenda::emitNewEventForSelection()
+{
+  if ( mSelectionHeight > 0 ) {
+    emit newEventSignal( mSelectionCellX, (int)(mSelectionYTop / mGridSpacingY),
+                         mSelectionCellX,
+                         (int)( ( mSelectionYTop + mSelectionHeight ) /
+                         mGridSpacingY ) );
+  } else {
+    emit newEventSignal();
+  }
 }
 
 void KOAgenda::finishTypeAhead()
@@ -533,7 +555,7 @@ bool KOAgenda::eventFilter_mouse(QObject *object, QMouseEvent *me)
       if (mActionItem) {
         endItemAction();
       } else if ( mActionType == SELECT ) {
-        endSelectAction();
+        endSelectAction( viewportPos );
       }
       break;
 
@@ -575,16 +597,17 @@ bool KOAgenda::eventFilter_mouse(QObject *object, QMouseEvent *me)
   return true;
 }
 
-void KOAgenda::startSelectAction(const QPoint& viewportPos)
+void KOAgenda::startSelectAction( const QPoint &viewportPos )
 {
   emit newStartSelectSignal();
 
   mActionType = SELECT;
+  mSelectionStartPoint = viewportPos;
 
   int x,y;
-  viewportToContents(viewportPos.x(),viewportPos.y(),x,y);
+  viewportToContents( viewportPos.x(), viewportPos.y(), x, y );
   int gx,gy;
-  contentsToGrid(x,y,gx,gy);
+  contentsToGrid( x, y, gx, gy );
 
   mStartCellX = gx;
   mStartCellY = gy;
@@ -592,22 +615,22 @@ void KOAgenda::startSelectAction(const QPoint& viewportPos)
   mCurrentCellY = gy;
 
   // Store coordinates of old selection
-  int selectionX = (int)(mSelectionCellX * mGridSpacingX);
+  int selectionX = int( mSelectionCellX * mGridSpacingX );
   int selectionYTop = mSelectionYTop;
   int selectionHeight = mSelectionHeight;
 
   // Store new selection
   mSelectionCellX = gx;
-  mSelectionYTop = (int)(gy * mGridSpacingY);
-  mSelectionHeight = (int)mGridSpacingY;
+  mSelectionYTop = int( gy * mGridSpacingY );
+  mSelectionHeight = int( mGridSpacingY );
 
   // Clear old selection
   repaintContents( selectionX, selectionYTop,
-                   (int)mGridSpacingX, selectionHeight );
+                   int( mGridSpacingX ), selectionHeight );
 
   // Paint new selection
-  repaintContents( (int)(mSelectionCellX * mGridSpacingX), mSelectionYTop,
-                   (int)mGridSpacingX, mSelectionHeight );
+  repaintContents( int( mSelectionCellX * mGridSpacingX ), mSelectionYTop,
+                   int( mGridSpacingX ), mSelectionHeight );
 }
 
 void KOAgenda::performSelectAction(const QPoint& viewportPos)
@@ -664,13 +687,20 @@ void KOAgenda::performSelectAction(const QPoint& viewportPos)
   }
 }
 
-void KOAgenda::endSelectAction()
+void KOAgenda::endSelectAction( const QPoint &currentPos )
 {
   mActionType = NOP;
   mScrollUpTimer.stop();
   mScrollDownTimer.stop();
 
   emit newTimeSpanSignal(mStartCellX,mStartCellY,mCurrentCellX,mCurrentCellY);
+
+  if ( KOPrefs::instance()->mSelectionStartsEditor ) {
+    if ( ( mSelectionStartPoint - currentPos ).manhattanLength() >
+         QApplication::startDragDistance() ) {
+       emitNewEventForSelection();
+    }
+  }
 }
 
 void KOAgenda::startItemAction(const QPoint& viewportPos)
