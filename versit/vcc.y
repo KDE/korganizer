@@ -660,9 +660,9 @@ static char* lexGetWord() {
     lexSkipWhite();
     lexClearToken();
     c = lexLookahead();
-    // some "words" have a space in them, like "NEEDS ACTION".
-    // this may be an oversight of the spec, but it is true nevertheless.
-    //    while (c != EOF && !strchr("\t\n ;:=",c)) {
+    /* some "words" have a space in them, like "NEEDS ACTION".
+       this may be an oversight of the spec, but it is true nevertheless.
+       while (c != EOF && !strchr("\t\n ;:=",c)) { */
     while (c != EOF && !strchr("\n;:=",c)) {
 	lexAppendc(c);
 	lexSkipLookahead();
@@ -1116,7 +1116,7 @@ static int yylex() {
 		    break;
 		default: {
 		    lexPushLookaheadc(c);
-		    if (isalpha(c) || c == " ") {
+		    if (isalpha(c) || c == ' ') {
 			char *t = lexGetWord();
 			yylval.str = t;
 			if (!strcasecmp(t, "begin")) {
