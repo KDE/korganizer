@@ -72,8 +72,8 @@ class BaseView : public QWidget
       @param parent parent widget.
       @param name   name of this widget.
     */
-    BaseView(Calendar *cal, QWidget *parent = 0, const char *name = 0) :
-        QWidget(parent, name), mCalendar(cal) {}
+    BaseView( Calendar *cal, QWidget *parent = 0, const char *name = 0 )
+      : QWidget( parent, name ), mCalendar( cal ) {}
 
     /**
       Destructor.  Views will do view-specific cleanups here.
@@ -190,7 +190,7 @@ class BaseView : public QWidget
   signals:
     void incidenceSelected( Incidence * );
 
-  protected:
+  private:
     Calendar *mCalendar;
 };
 

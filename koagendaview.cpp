@@ -1065,7 +1065,7 @@ void KOAgendaView::updateEventIndicatorBottom(int newY)
   mEventIndicatorBottom->update();
 }
 
-void KOAgendaView::rescheduleTodo( Todo*todo, int gx, int gy, bool allDay )
+void KOAgendaView::rescheduleTodo( Todo *todo, int gx, int gy, bool allDay )
 {
   if (gx<0 || gy<0) return;
   QDate day = mSelectedDates[gx];
@@ -1073,7 +1073,7 @@ void KOAgendaView::rescheduleTodo( Todo*todo, int gx, int gy, bool allDay )
   QDateTime newTime(day, time);
 
   if (todo) {
-    Todo *existingTodo = mCalendar->todo(todo->uid());
+    Todo *existingTodo = calendar()->todo(todo->uid());
     if(existingTodo) {
       kdDebug(5850) << "Drop existing Todo" << endl;
       Todo *oldTodo = existingTodo->clone();
@@ -1088,7 +1088,7 @@ void KOAgendaView::rescheduleTodo( Todo*todo, int gx, int gy, bool allDay )
       todo->setDtDue( newTime );
       todo->setFloats( allDay );
       existingTodo->setHasDueDate( true );
-      mCalendar->addTodo( todo );
+      calendar()->addTodo( todo );
 
       emit todoDropped(todo);
     }
