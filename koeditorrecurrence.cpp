@@ -699,6 +699,7 @@ void KOEditorRecurrence::readEvent(Event *event)
   QPtrList<Recurrence::rMonthPos> rmp;
   QPtrList<int> rmd;
   int i;
+  int month;
 
   setDateTimes(event->dtStart(),event->dtEnd());
 
@@ -745,15 +746,16 @@ void KOEditorRecurrence::readEvent(Event *event)
     nMonthsEntry->setText(QString::number(event->recurrence()->frequency()));
     break;
   case Recurrence::rYearlyMonth:
-    yearlyButton->setChecked(true);
-    yearMonthButton->setChecked(true);
-    rmd = event->recurrence()->yearNums();
-    yearMonthComboBox->setCurrentItem(*rmd.first() - 1);
-    nYearsEntry->setText(QString::number(event->recurrence()->frequency()));
-    break;
   case Recurrence::rYearlyDay:
-    yearlyButton->setChecked(true);
-    yearDayButton->setChecked(true);
+    yearlyButton->setChecked( true );
+    rmd = event->recurrence()->yearNums();
+    month = *rmd.first(); 
+    if ( month == event->dtStart().date().month() ) {
+      yearDayButton->setChecked( true );
+    } else {
+      yearMonthButton->setChecked( true );
+      yearMonthComboBox->setCurrentItem( month - 1 );
+    }
     nYearsEntry->setText(QString::number(event->recurrence()->frequency()));
     break;
   default:
@@ -885,39 +887,28 @@ void KOEditorRecurrence::writeEvent(Event *event)
 	event->recurrence()->addMonthlyDay(rDay);
       }
     } else if (yearlyButton->isChecked()) {
-      if (yearMonthButton->isChecked()) {
-	int rFreq, rMonth;
+      int rFreq = nYearsEntry->text().toInt();
+      if (rFreq < 1) rFreq = 1;
 
-	tmpStr = nYearsEntry->text();
-	rFreq = tmpStr.toInt();
-        if (rFreq < 1) rFreq = 1;
-	rMonth = yearMonthComboBox->currentItem() + 1;
-	if (rDuration != 0)
-	  event->recurrence()->setYearly(Recurrence::rYearlyMonth, rFreq, rDuration);
-	else
-	  event->recurrence()->setYearly(Recurrence::rYearlyMonth, rFreq, rEndDate);
-	event->recurrence()->addYearlyNum(rMonth);
+      int rMonth;
+      if ( yearMonthButton->isChecked() ) {
+        rMonth = yearMonthComboBox->currentItem() + 1;
       } else {
-	// it's by day
-	int rFreq;
-	int rDay;
-
-	tmpStr = nYearsEntry->text();
-	rFreq = tmpStr.toInt();
-        if (rFreq < 1) rFreq = 1;
-
-	//tmpStr = Recurrence->yearDayLineEdit->text();
-	rDay = event->dtStart().date().dayOfYear();
-
-	if (rDuration != 0)
-	  event->recurrence()->setYearly(Recurrence::rYearlyDay, rFreq, rDuration);
-	else
-	  event->recurrence()->setYearly(Recurrence::rYearlyDay, rFreq, rEndDate);
-	event->recurrence()->addYearlyNum(rDay);
+        rMonth = event->dtStart().date().month();
       }
-    } // yearly
-  } else
+      if ( rDuration != 0 ) {
+	event->recurrence()->setYearly( Recurrence::rYearlyMonth, rFreq,
+                                        rDuration );
+      } else {
+	event->recurrence()->setYearly( Recurrence::rYearlyMonth, rFreq,
+                                        rEndDate );
+      }
+
+      event->recurrence()->addYearlyNum( rMonth );
+    }
+  } else {
     event->recurrence()->unsetRecurs();
+  }
 
   event->setExDates(mExceptionDates);
 }
