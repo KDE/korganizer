@@ -72,6 +72,9 @@
 #ifndef KORG_NOPRINTER
 #include "calprinter.h"
 #endif
+#ifndef KORG_NOPLUGINS
+#include "kocore.h"
+#endif
 #include "koeventeditor.h"
 #include "kotodoeditor.h"
 #include "koprefs.h"
@@ -90,7 +93,6 @@
 #include "datenavigator.h"
 
 #include "calendarview.h"
-#include "kocore.h"
 using namespace KOrg;
 #include "calendarview.moc"
 
