@@ -277,6 +277,9 @@ protected slots:
   /** Select a week to be displayed in the calendar view */
   void selectWeek(QDate weekstart);
 
+  /** Select a view or adapt the current view to display the specified dates. */
+  void selectDates(const QDateList);
+
   void processEventSelection(bool selected);
 
 public:

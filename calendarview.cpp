@@ -373,20 +373,20 @@ void CalendarView::setupRollover()
 
 void CalendarView::hookupSignals()
 {
-  // SIGNAL/SLOTS FOR DATE SYNCHRO    
+  // SIGNAL/SLOTS FOR DATE SYNCHRO
   connect(listView, SIGNAL(datesSelected(const QDateList)),
 	  dateNavigator, SLOT(selectDates(const QDateList)));
   connect(agendaView, SIGNAL(datesSelected(const QDateList)),
 	  dateNavigator, SLOT(selectDates(const QDateList)));
   connect(monthView, SIGNAL(datesSelected(const QDateList)),
-	  dateNavigator, SLOT(selectDates(const QDateList)));    
+	  dateNavigator, SLOT(selectDates(const QDateList)));
   connect(dateNavigator, SIGNAL(datesSelected(const QDateList)),
-	  this, SLOT(updateView(const QDateList)));
+	  this, SLOT(selectDates(const QDateList)));
 
   connect(dateNavigator,SIGNAL(weekClicked(QDate)),SLOT(selectWeek(QDate)));
 
   connect(dateNavigator,SIGNAL(eventDropped(KOEvent *)),
-          SLOT(eventAdded(KOEvent *)));    
+          SLOT(eventAdded(KOEvent *)));
 
   // SIGNALS/SLOTS FOR LIST VIEW
   connect(listView, SIGNAL(showEventSignal(KOEvent *)),
@@ -588,6 +588,8 @@ void CalendarView::changeView(KOBaseView *view)
 
 void CalendarView::updateView(const QDateList selectedDates)
 {
+//  qDebug("CalendarView::updateView()");
+
   QDateList tmpList(false);
   tmpList = selectedDates;
 
@@ -1186,12 +1188,8 @@ void CalendarView::selectWeek(QDate weekstart)
 
   QDateList week;
 
-  // Determine number of days for a week. If current view is work week, than
-  // n is 5. This does not work at the moment.
   int n = 7;
   if (currentView) {
-    // maxDatesHint is not the correct function to find out the number of dates
-    // of a view.
     if (currentView->currentDateCount() == 5) n = 5;
   }
 
@@ -1201,7 +1199,12 @@ void CalendarView::selectWeek(QDate weekstart)
     week.append(&date);
   }
   dateNavigator->selectDates(week);
-  updateView(week);
+
+  if (currentView) {
+    updateView(week);
+  } else {
+    changeView(agendaView);
+  }
 }
 
 void CalendarView::adaptNavigationUnits()
@@ -1241,5 +1244,15 @@ void CalendarView::checkClipboard()
   } else {
     qDebug("CalendarView::checkClipboard() false");
     emit pasteEnabled(false);
+  }
+}
+
+void CalendarView::selectDates(const QDateList selectedDates)
+{
+//  qDebug("CalendarView::selectDates()");
+  if (currentView) {
+    updateView(selectedDates);
+  } else {
+    changeView(agendaView);
   }
 }
