@@ -39,7 +39,7 @@ bool ICalFormat::load(const QString &fileName)
   kdDebug() << "ICalFormat::load()" << endl;
 
   icalfileset *fs = icalfileset_new(writeText(fileName));
-  
+
   if (!fs) {
     loadError(fileName);
     return false;
@@ -49,7 +49,7 @@ bool ICalFormat::load(const QString &fileName)
   // TODO: Handle more than one VCALENDAR or non-VCALENDAR top components
   icalcomponent *calendar;
   calendar = icalfileset_get_first_component(fs);
-  
+
   while(calendar) {
     if (icalcomponent_isa(calendar) == ICAL_VCALENDAR_COMPONENT) break;
     calendar = icalfileset_get_next_component(fs);
@@ -65,7 +65,7 @@ bool ICalFormat::load(const QString &fileName)
   populate(calendar);
 
   icalfileset_free(fs);
-  
+
   mCalendar->first();
 
   return true;

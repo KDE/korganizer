@@ -280,8 +280,9 @@ bool CalendarView::initCalendar(QString filename)
     setModified(false);
     if (!(mCalendar->load(filename))) {
       // while failing to load, the calendar object could
-      // have become partially populated.  Cle1ar it out.
+      // have become partially populated.  Clear it out.
       mCalendar->close();
+      
       QApplication::restoreOverrideCursor();
       return false;
     }

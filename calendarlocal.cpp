@@ -75,8 +75,13 @@ bool CalendarLocal::load(const QString &fileName)
     mICalFormat->clearException();
     if (!mICalFormat->load(fileName)) {
       // iCalendar loading failed
-      if (mICalFormat->exception()->errorCode() == KOErrorFormat::CalVersion1) {
-        return mFormat->load(fileName);
+      if (mICalFormat->exception()) {
+        if (mICalFormat->exception()->errorCode() == 
+            KOErrorFormat::CalVersion1) {
+          return mFormat->load(fileName);
+        } else {
+          return false;
+        }
       } else {
         return false;
       }

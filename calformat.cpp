@@ -3,6 +3,7 @@
 #include <klocale.h>
 #include <kmessagebox.h>
 #include <kapp.h>
+#include <kdebug.h>
 
 #include "calformat.h"
 
@@ -33,7 +34,9 @@ void CalFormat::showDialogs(bool enable)
 
 void CalFormat::loadError(const QString &fileName) 
 {
-  if (mEnableDialogs)
+  kdDebug() << "CalFormat::loadError()" << endl;
+
+  if (mEnableDialogs) {
     KMessageBox::sorry(mTopWidget,
                        i18n("An error has occurred loading the file:\n"
                             "%1.\n"
@@ -43,6 +46,7 @@ void CalFormat::loadError(const QString &fileName)
                             "try again or load another file.\n")
                             .arg(fileName),
                        i18n("KOrganizer: Error Loading Calendar"));
+  }
 }
 
 void CalFormat::clearException()
