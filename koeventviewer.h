@@ -64,6 +64,12 @@ class KOEventViewer : public QTextBrowser
   
     void addText( const QString &text );
    
+    /**
+      Set the default text that is showed when 
+      there aren't a incidence to show
+    */
+    void setDefaultText( const QString &text );
+    
     void readSettings( KConfig *config);
     void writeSettings ( KConfig *config);
     
@@ -74,7 +80,7 @@ class KOEventViewer : public QTextBrowser
     virtual void setIncidence( Incidence * );
   private:
     QTextBrowser *mEventTextView;
-
+    QString mDefaultText;
     QString mText;
 };
 
