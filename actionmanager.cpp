@@ -1423,12 +1423,12 @@ bool ActionManager::queryClose()
 //               mMainWindow, SLOT( close() ) );
     }
     if ( mCalendarResources->isSaving() ) {
-      kdDebug(5850) << "KOrganizer::queryClose(): isSaving" << endl;
+      kdDebug(5850) << "ActionManager::queryClose(): isSaving" << endl;
       close = false;
       KMessageBox::information( dialogParent(),
           i18n("Unable to exit. Saving still in progress.") );
     } else {
-      kdDebug(5850) << "KOrganizer::queryClose(): close = true" << endl;
+      kdDebug(5850) << "ActionManager::queryClose(): close = true" << endl;
       close = true;
     }
   } else {
