@@ -1396,13 +1396,20 @@ void KOAgenda::removeEvent ( Event *event )
 {
   KOAgendaItem *item = mItems.first();
   bool taken = false;
+  // First find all items to be deleted and store them 
+  // in its own list. Otherwise removeAgendaItem will reset
+  // the current position and mess this up.
+  QPtrList<KOAgendaItem> mItemsToRemove;
   while ( item ) {
-    taken = false;
-    if (item->incidence() == event) {
-      taken = removeAgendaItem( item );
+    if ( item->incidence() == event ) {
+      mItemsToRemove.append( item );
     }
-    if ( !taken ) item = mItems.next();
-    else item = mItems.current();
+    item = mItems.next();
+  }
+  item = mItemsToRemove.first();
+  while ( item ) {
+    taken = removeAgendaItem( item );
+    item = mItemsToRemove.next();
   }
 }
 
