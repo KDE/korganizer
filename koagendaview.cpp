@@ -1217,7 +1217,8 @@ void KOAgendaView::insertIncidence( Incidence *incidence, QDate curDate,
 void KOAgendaView::changeIncidenceDisplayAdded( Incidence *incidence )
 {
   Todo *todo = dynamic_cast<Todo *>(incidence);
-  if ( !calendar()->filter()->filterIncidence( incidence ) ||
+  CalFilter *filter = calendar()->filter();
+  if ( filter && !filter->filterIncidence( incidence ) ||
      ( todo && !KOPrefs::instance()->showAllDayTodo() ) )
     return;
 

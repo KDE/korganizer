@@ -649,7 +649,8 @@ void KOTodoView::changeIncidenceDisplay(Incidence *incidence, int action)
   // The todo view only displays todos, so exit on all other incidences
   if ( incidence->type() != "Todo" )
     return;
-  bool isFiltered = !calendar()->filter()->filterIncidence( incidence );
+  CalFilter *filter = calendar()->filter();
+  bool isFiltered = filter && !filter->filterIncidence( incidence );
   Todo *todo = static_cast<Todo *>(incidence);
   if ( todo ) {
     KOTodoViewItem *todoItem = 0;
