@@ -848,6 +848,9 @@ bool ActionManager::saveURL()
         !KOPrefs::instance()->mHtmlExportFile.isNull() ) {
     KURL dest( KOPrefs::instance()->mHtmlExportFile );
     KCal::HtmlExport mExport( mCalendarView->calendar() );
+    mExport.setTitle( "KOrganizer Calendar" );
+    mExport.setTitleTodo( "KOrganizer To-Do List" );
+    mExport.setCredit( "KOrganizer", "http://korganizer.kde.org" );
     mExport.setEmail( KOPrefs::instance()->email() );
     mExport.setFullName( KOPrefs::instance()->fullName() );
 

@@ -241,6 +241,9 @@ void ExportWebDialog::exportWebPage(bool synchronous)
 {
   saveSettings();
 
+  mExport->setTitle( "KOrganizer Calendar" );
+  mExport->setTitleTodo( "KOrganizer To-Do List" );
+  mExport->setCredit( "KOrganizer", "http://korganizer.kde.org" );
   mExport->setEmail( KOPrefs::instance()->email() );
   mExport->setFullName( KOPrefs::instance()->fullName() );
   mExport->setMonthViewEnabled(mCbMonth->isChecked());
