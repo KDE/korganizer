@@ -1029,16 +1029,18 @@ void KOTodoView::purgeCompleted()
 
 void KOTodoView::addQuickTodo()
 {
-  Todo *todo = new Todo();
-  todo->setSummary( mQuickAdd->text() );
-  todo->setOrganizer( Person( KOPrefs::instance()->fullName(),
-                      KOPrefs::instance()->email() ) );
-  if ( !mChanger->addIncidence( todo ) ) {
-    KODialogManager::errorSaveIncidence( this, todo );
-    delete todo;
-    return;
+  if ( ! mQuickAdd->text().stripWhiteSpace().isEmpty() ) {
+    Todo *todo = new Todo();
+    todo->setSummary( mQuickAdd->text() );
+    todo->setOrganizer( Person( KOPrefs::instance()->fullName(),
+                        KOPrefs::instance()->email() ) );
+    if ( !mChanger->addIncidence( todo ) ) {
+      KODialogManager::errorSaveIncidence( this, todo );
+      delete todo;
+      return;
+    }
+    mQuickAdd->setText( QString::null );
   }
-  mQuickAdd->setText( QString::null );
 }
 
 void KOTodoView::setIncidenceChanger( IncidenceChangerBase *changer )

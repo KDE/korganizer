@@ -1759,9 +1759,6 @@ void CalendarView::deleteSubTodosIncidence ( Todo *todo )
 
 void CalendarView::deleteTodoIncidence ( Todo *todo )
 {
-  Todo *subtodo;
-  int i;
-  
   if ( !todo ) return ;
  
   // it a simple todo, ask and delete it.
