@@ -326,7 +326,7 @@ void KOrganizer::initActions()
   (void)new KAction(i18n("&To-Do List"), "todo", 0,
                     mCalendarView->viewManager(), SLOT(showTodoView()),
                     actionCollection(), "view_todo");
-  (void)new KAction(i18n("&Journal"), 0,
+  (void)new KAction(i18n("&Journal"), "journal", 0,
                     mCalendarView->viewManager(), SLOT(showJournalView()),
                     actionCollection(), "view_journal");
   (void)new KAction(i18n("&Time Span"), "timespan", 0,
