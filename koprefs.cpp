@@ -70,7 +70,7 @@ KOPrefs::KOPrefs() :
   addItemInt("Auto Save Interval",mAutoSaveInterval,10);
   addItemBool("Confirm Deletes",mConfirm,true);
   addItemString("Archive File",mArchiveFile);
-  addItemString("Html Export File",mHtmlExportFile,
+  addItemPath("Html Export File",mHtmlExportFile,
       QDir::homeDirPath() + "/" + i18n("Default export file", "calendar.html"));
   addItemBool("Html With Save",mHtmlWithSave,false);
 
