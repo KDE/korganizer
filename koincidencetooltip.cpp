@@ -14,7 +14,7 @@
 
   This program is distributed in the hope that it will be useful,
   but WITHOUT ANY WARRANTY; without even the implied warranty of
-  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.	See the
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
   GNU General Public License for more details.
 
   You should have received a copy of the GNU General Public License
@@ -32,6 +32,7 @@
 
 /**
 @author Reinhold Kainhofer
+some improvements by Mikolaj Machowski
 */
 
 void KOIncidenceToolTip::add ( QWidget * widget, Incidence *incidence,
@@ -47,26 +48,34 @@ void KOIncidenceToolTip::add ( QWidget * widget, Incidence *incidence,
 QString ToolTipVisitor::dateRangeText( Event*event )
 {
   QString ret;
+  QString tmp;
   if ( event->isMultiDay() ) {
 
-    ret += "<br>" + i18n("From: ");
+    tmp = "<br>" + i18n("Event start", "<i>From:</i> %1");
     if (event->doesFloat())
-      ret += event->dtStartDateStr();
+      ret += tmp.arg( event->dtStartDateStr().replace(" ", "&nbsp;") );
     else
-      ret += event->dtStartStr();
-    ret += "<br>"+i18n("To: ") + event->dtEndStr();
+      ret += tmp.arg( event->dtStartStr().replace(" ", "&nbsp;") );
+
+    tmp = "<br>" + i18n("<i>To:</i> %1");
     if (event->doesFloat())
-      ret += event->dtEndDateStr();
+      ret += tmp.arg( event->dtEndDateStr().replace(" ", "&nbsp;") );
     else
-      ret += event->dtEndStr();
+      ret += tmp.arg( event->dtEndStr().replace(" ", "&nbsp;") );
 
   } else {
 
-    if ( event->doesFloat() ) {
-      ret += "<br>"+i18n("Date: ")+event->dtStartDateStr();
-    } else {
-      ret += "<br>" + i18n("Time: ") + event->dtStartTimeStr();
-      ret += " - " + event->dtEndTimeStr();
+    ret += "<br>"+i18n("<i>Date:</i> %1").
+        arg( event->dtStartDateStr().replace(" ", "&nbsp;") );
+    if ( !event->doesFloat() ) {
+      // Hmm. Remove space here and add &nbsp; for not breaking Time:
+      // line. Note crucial lack of space after : . But even if
+      // translators don't notice it is much better than a line break
+      // between start and end time.
+      tmp = "<br>" + i18n("time range for event, &nbsp; to prevent ugly line breaks",
+        "<i>Time:</i> %1&nbsp;-&nbsp;%2").
+        arg( event->dtStartTimeStr().replace(" ", "&nbsp;") ).
+        arg( event->dtEndTimeStr().replace(" ", "&nbsp;") );
     }
 
   }
@@ -78,18 +87,27 @@ QString ToolTipVisitor::dateRangeText( Todo*todo )
   QString ret;
   bool floats( todo->doesFloat() );
   if (todo->hasStartDate())
-    ret += "<br>" + i18n("Start: ") + ((floats)?(todo->dtStartDateStr()):(todo->dtStartStr()) );
+    // No need to add <i> here. This is separated issue and each line
+    // is very visible on its own. On the other hand... Yes, I like it
+    // italics here :)
+    ret += "<br>" + i18n("<i>Start:</i> %1").arg(
+      (floats)
+        ?(todo->dtStartDateStr().replace(" ", "&nbsp;"))
+        :(todo->dtStartStr().replace(" ", "&nbsp;")) ) ;
   if (todo->hasDueDate())
-    ret += "<br>" + i18n("Due: ") + ( (floats)?(todo->dtDueDateStr()):(todo->dtDueStr()) );
+    ret += "<br>" + i18n("<i>Due:</i> %1").arg(
+      (floats)
+        ?(todo->dtDueDateStr().replace(" ", "&nbsp;"))
+        :(todo->dtDueStr().replace(" ", "&nbsp;")) );
   if (todo->isCompleted())
-    ret += "<br>" + i18n("Completed: ") + todo->completedStr();
+    ret += "<br>" + i18n("<i>Completed:</i> %1").arg( todo->completedStr().replace(" ", "&nbsp;") );
   else
     ret += "<br>" + i18n("%1 % completed").arg(todo->percentComplete());
 
   return ret;
 }
 
-QString ToolTipVisitor::dateRangeText( Journal*journal )
+QString ToolTipVisitor::dateRangeText( Journal* )
 {
   QString ret;
   return ret;
@@ -121,10 +139,16 @@ bool ToolTipVisitor::generateToolTip( Incidence* incidence, QString dtRangeText 
   tipText += dtRangeText;
 
   if (!incidence->location().isEmpty()) {
-    tipText += "<br>"+i18n("Location: ")+incidence->location().replace("\n", "<br>");
+    // Put Location: in italics
+    tipText += "<br>"+i18n("<i>Location:</i> %1").
+      arg( incidence->location().replace("\n", "<br>") );
   }
   if (!incidence->description().isEmpty()) {
-    tipText += "<br><hr>" +incidence->description().replace("\n", "<br>");
+    QString desc(incidence->description());
+    if (desc.length()>120) {
+      desc = desc.left(120) + "...";
+    }
+    tipText += "<br><hr>" + desc.replace("\n", "<br>");
   }
   tipText += "</qt>";
   *mTipText = tipText;
