@@ -215,8 +215,9 @@ void TopWidget::initCalendar(QString fn, bool fnOverride)
   // read the settings from the config file
   readSettings();
   // cmd line argument for filename overrides config files 
-  if(!fn.isEmpty() || fnOverride)
+  if(!fn.isEmpty() || fnOverride) {
     fileName = fn;
+  }
 
   qDebug("TopWidget::initCalendar(): filename: %s",fileName.latin1());
   
@@ -234,7 +235,7 @@ void TopWidget::initCalendar(QString fn, bool fnOverride)
   unsetModified();
   KConfig *config(kapp->config());
   config->setGroup("General");
-  config->writeEntry("Current Calendar", fileName);
+  config->writeEntry("Current Calendar (2.0)", fileName);
   QApplication::restoreOverrideCursor();
 }
 
@@ -291,7 +292,7 @@ void TopWidget::readSettings()
   // Set current view from Entry "Current View"
   readCurrentView();
 
-  str = config->readEntry("Current Calendar");
+  str = config->readEntry("Current Calendar (2.0)");
   if (!str.isEmpty() && QFile::exists(str))
     fileName = str;
 
@@ -368,7 +369,10 @@ void TopWidget::writeSettings()
   else tmpStr = "KOTodoView";  
   config->writeEntry("Current View", tmpStr);
 
-  config->writeEntry("Current Calendar", fileName);
+  // Write version number to prevent automatic loading and saving of a calendar
+  // written by a newer KOrganizer, because this can lead to the loss of
+  // information not processed by Korganizer 1.1.
+  config->writeEntry("Current Calendar (2.0)", fileName);
 
   config->setGroup("Views");
   config->writeEntry("Agenda View", agendaView->currentView());
@@ -1775,6 +1779,10 @@ void TopWidget::set_title()
 
 bool TopWidget::queryClose()
 {
+  // Write configuration. I don't know if it really makes sense doing it this
+  // way, when having opened multiple calendars in different TopWidgets.
+  writeSettings();
+
   int whattodo = 0; // the same as button numbers from QMessageBox return
 
   if (isModified() && (fileName.isEmpty() || !calendar->autoSave())) {
@@ -1816,7 +1824,9 @@ bool TopWidget::queryClose()
 
 bool TopWidget::queryExit()
 {
-  writeSettings();
+  // Don't call writeSettings here, because filename isn't valid anymore. It is
+  // now called in queryClose.
+//  writeSettings();
   return true;
 }
 

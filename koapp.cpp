@@ -111,7 +111,8 @@ int KOrganizerApp::newInstance()
     // Important: fn is a QCString, while the TopWidget constructor takes
     // a QString. There is no QString( const QCString& ) constructor.
     // It compiles, but we get a null-string with a length of MAXINT ;(
-    (new TopWidget(cal, QString::fromLocal8Bit( (const char*) fn), "TopWidget"))->show();
+    (new TopWidget(cal, QString::fromLocal8Bit( (const char*) fn), "TopWidget",
+                   false))->show();
   }
 
   qDebug("KOApp::newInstance() done");
