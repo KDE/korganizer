@@ -784,14 +784,15 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
       txtWidth = visRect.right() - margin - x;
     }
     ww = KWordWrap::formatText( fm,
-                                QRect(x, 0, txtWidth,
-                                height() - (2 * margin)),
+                                QRect( 0, 0, txtWidth,
+                                (height() - (2 * margin)) ),
                                 0,
                                 mLabelText );
     p.eraseRect( 0, 0, width(), height() );
     paintTodoIcon( &p, x, ft );
     paintFrame( &p, frameColor );
-    ww->drawText( &p, x, margin, Qt::AlignAuto | KWordWrap::FadeOut );
+    //kdDebug() << "SIZES for " << mLabelText <<  ": " << width() << " :: " << txtWidth << endl; 
+    ww->drawText( &p, x, margin, Qt::AlignHCenter | KWordWrap::FadeOut );
     delete ww;
     return;
   }
