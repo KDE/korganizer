@@ -543,9 +543,6 @@ void ActionManager::initActions()
   new KAction( i18n("Edit &Filters..."), 0,
                     mCalendarView,SLOT( editFilters() ),
                     mACollection,"edit_filters" );
-  new KAction( i18n("Configure &Plugins..."), 0,
-                    mCalendarView->dialogManager(),SLOT( showPluginDialog() ),
-                    mACollection,"configure_plugins" );
 
 #if 0
   new KAction( i18n("Show Intro Page"), 0,
