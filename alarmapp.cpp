@@ -35,7 +35,7 @@ int AlarmApp::newInstance()
   // We should add the option to load multiple calendars with one command.
   if (args->count() > 0) {
     const char *fn = args->arg(0);
-    mAd = new AlarmDaemon(fn,0,"ad");
+    mAd = new AlarmDaemon(QString::fromLocal8Bit(fn),0,"ad");
   } else {
     KSimpleConfig config("korganizerrc", true);
     
@@ -43,7 +43,7 @@ int AlarmApp::newInstance()
     QString newFileName = config.readEntry("Active Calendar");
 
     // this is the docking widget
-    mAd = new AlarmDaemon(newFileName.latin1(), 0, "ad");
+    mAd = new AlarmDaemon(newFileName, 0, "ad");
   }
   
   return 0;

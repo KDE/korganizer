@@ -21,8 +21,10 @@ class AlarmDockWindow : public KSystemTray
     virtual ~AlarmDockWindow();
 
     bool alarmsOn() { return contextMenu()->isItemChecked(itemId); }
-    //  void mousePressEvent(QMouseEvent *);
-    //  void mouseReleaseEvent(QMouseEvent *);
+
+  protected:
+    void mousePressEvent(QMouseEvent *);
+    void closeEvent(QCloseEvent *e);
 
   public slots:
     void toggleAlarmsEnabled() 
@@ -41,7 +43,7 @@ class AlarmDockWindow : public KSystemTray
 class AlarmDaemon : public QObject, DCOPObject {
     Q_OBJECT
   public:
-    AlarmDaemon(const char *fn, QObject *parent = 0, const char *name = 0);
+    AlarmDaemon(const QString &fn, QObject *parent = 0, const char *name = 0);
     virtual ~AlarmDaemon();
 
     bool process(const QCString &fun, const QByteArray &data,
@@ -59,8 +61,6 @@ class AlarmDaemon : public QObject, DCOPObject {
   private:
     AlarmDockWindow *docker;
     CalObject *calendar;
-    const char *fileName;
-    QString newFileName;
     AlarmDialog *mAlarmDialog;
     QTimer *mSuspendTimer;
 };

@@ -54,6 +54,15 @@ bool KOWindowList::lastInstance()
   else return false;
 }
 
+KOrganizer* KOWindowList::findInstance(const KURL &url)
+{
+  KOrganizer *inst;
+  for(inst=mWindowList.first();inst;inst=mWindowList.next())
+    if (inst->getCurrentURL()==url)
+      return inst;
+  return 0;
+}
+
 void KOWindowList::deactivateCalendars(KOrganizer *korg)
 {
   KOrganizer *k;

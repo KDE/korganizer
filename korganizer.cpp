@@ -45,6 +45,7 @@
 #include <kmessagebox.h>
 #include <dcopclient.h>
 #include <kprocess.h>
+#include <kwin.h>
 
 #include "komailclient.h"
 #include "calprinter.h"
@@ -330,6 +331,12 @@ void KOrganizer::file_open()
   QString defaultPath = locateLocal("appdata", "");
   url = KFileDialog::getOpenURL(defaultPath,"*.vcs",this);
 
+  KOrganizer *korg=KOrganizer::findInstance(url);
+  if ((0 != korg)&&(korg != this)) {
+    KWin::setActiveWindow(korg->winId());
+    return;
+  }
+
   if (!mCalendarView->isModified() && mFile.isEmpty()) {
     if (openURL(url)) {
       setTitle();
@@ -350,6 +357,11 @@ void KOrganizer::file_open()
 void KOrganizer::file_openRecent(const KURL& url)
 {
   if (!url.isEmpty()) {
+    KOrganizer *korg=KOrganizer::findInstance(url);
+    if ((0 != korg)&&(korg != this)) {
+      KWin::setActiveWindow(korg->winId());
+      return;
+    }
     if (openURL(url)) {
       setTitle();
     }
@@ -513,18 +525,12 @@ void KOrganizer::setTitle()
   if (!mURL.isEmpty()) tmpStr = mURL.fileName();
   else tmpStr = i18n("New Calendar");
 
-  if (mCalendarView->isReadOnly()) {
-    tmpStr += " (" + i18n("read-only") + ")";
-  } else {
-    // display the modified thing in the title
-    if (mCalendarView->isModified()) {
-      tmpStr += " (" + i18n("modified") + ")";
-    }
-  }
+  if (mCalendarView->isReadOnly())
+    tmpStr += " [" + i18n("read-only") + "]";
 
   if (mActive) tmpStr += " [" + i18n("active") + "]";
 
-  setCaption(tmpStr);
+  setCaption(tmpStr,!mCalendarView->isReadOnly()&&mCalendarView->isModified());
 }
 
 void KOrganizer::checkAutoSave()
@@ -714,6 +720,14 @@ bool KOrganizer::saveAsURL( const KURL & kurl )
   if (success) mRecent->addURL(mURL);
   else kdDebug() << "  failed" << endl;
   return success;
+}
+
+KOrganizer* KOrganizer::findInstance(const KURL &url)
+{
+  if (windowList)
+    return windowList->findInstance(url);
+  else
+    return 0;
 }
 
 void KOrganizer::setActive(bool active)

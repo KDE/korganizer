@@ -6,6 +6,8 @@
 
 #include "korganizer.h"
 
+class KURL;
+
 /**
  * This class manages a list of KOrganizer instances, each associated with a
  * window displaying a calendar. It acts as relay for signals between this
@@ -29,6 +31,9 @@ class KOWindowList : public QObject
 
     /** Is there only one instance left? */
     bool lastInstance();
+
+    /** Is there a instance with this URL? */
+    KOrganizer* findInstance(const KURL &url);
 
   signals:
 

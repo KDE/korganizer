@@ -16,6 +16,7 @@
 #include <kglobal.h>
 #include <ksimpleconfig.h>
 #include <kiconloader.h>
+#include <kprocess.h>
 
 #include "config.h"
 #ifdef HAVE_LIBGEN_H
@@ -43,8 +44,6 @@ AlarmDockWindow::AlarmDockWindow(QWidget *parent, const char *name)
   itemId = contextMenu()->insertItem(i18n("Alarms Enabled"),
 				   this, SLOT(toggleAlarmsEnabled()));
   contextMenu()->setItemChecked(itemId, TRUE);
-  contextMenu()->insertItem(i18n("Close Alarm Monitor"), kapp,
-			    SLOT(quit()));
 
   QToolTip::add(this, i18n("Appointment Alarm Monitor"));
 }
@@ -53,25 +52,25 @@ AlarmDockWindow::~AlarmDockWindow()
 {
 }
 
-/*void DockWidget::mousePressEvent(QMouseEvent *e)
+void AlarmDockWindow::mousePressEvent(QMouseEvent *e)
 {
-  if (e->button() == RightButton) {
-    QPoint pt = this->mapToGlobal(QPoint(0, 0));
-    pt = pt - QPoint(30, 30);
-    popupMenu->popup(pt);
-    popupMenu->exec();
-  }
   if (e->button() == LeftButton) {
     // start up a korganizer.
     KProcess proc;
     proc << "korganizer";
     proc.start(KProcess::DontCare);
-  }
-  }*/
+  } else
+    KSystemTray::mousePressEvent(e);
+}
+
+void AlarmDockWindow::closeEvent(QCloseEvent *e)
+{
+  kapp->quit();
+}
 
 ///////////////////////////////////////////////////////////////////////////////
 
-AlarmDaemon::AlarmDaemon(const char *fn, QObject *parent, const char *name)
+AlarmDaemon::AlarmDaemon(const QString &fn, QObject *parent, const char *name)
   : QObject(parent, name), DCOPObject(this)
 {
   kdDebug() << "AlarmDaemon::AlarmDaemon()" << endl;
@@ -81,12 +80,11 @@ AlarmDaemon::AlarmDaemon(const char *fn, QObject *parent, const char *name)
 
   calendar = new CalObject;
   calendar->showDialogs(FALSE);
-  fileName = fn;
 
   mAlarmDialog = new AlarmDialog;
   connect(mAlarmDialog,SIGNAL(suspendSignal(int)),SLOT(suspend(int)));
 
-  calendar->load(fileName);
+  calendar->load(fn);
 
   // set up the alarm timer
   QTimer *alarmTimer = new QTimer(this);
@@ -117,11 +115,11 @@ void AlarmDaemon::reloadCal()
 
   calendar->close();
   config.setGroup("General");
-  newFileName = config.readEntry("Active Calendar");
+  QString fileName = config.readEntry("Active Calendar");
   
-  kdDebug() << "AlarmDaemon::reloadCal(): '" << newFileName << "'" << endl;
+  kdDebug() << "AlarmDaemon::reloadCal(): '" << fileName << "'" << endl;
   
-  calendar->load(newFileName);
+  calendar->load(fileName);
 }
 
 void AlarmDaemon::showAlarms(QList<KOEvent> &alarmEvents)

@@ -30,7 +30,7 @@ class KToggleAction;
 
 /**
  *
- * This is the main class for KOrganizer. It extends the KDE KTMainWindow.
+ * This is the main class for KOrganizer. It extends the KDE KMainWindow.
  * it provides the main view that the user sees upon startup, as well as
  * menus, buttons, etc. etc.
  *
@@ -60,6 +60,11 @@ class KOrganizer : public KMainWindow
     bool saveURL();
     /** Save calendar file to URL */
     bool saveAsURL(const KURL & kurl);
+    /** Get current URL */
+    KURL getCurrentURL() const { return mURL; }
+
+    /** Is there a instance with this URL? */
+    static KOrganizer* findInstance(const KURL &url);
 
   signals:
 

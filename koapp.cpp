@@ -4,6 +4,7 @@
 #include <kconfig.h>
 #include <kdebug.h>
 #include <dcopclient.h>
+#include <kwin.h>
 
 #include "calobject.h"
 #include "korganizer.h"
@@ -127,14 +128,18 @@ void KOrganizerApp::processCalendar(const QString & file,int numDays,
     if (isRestored()) {
       RESTORE(KOrganizer)
     } else {
-      KOrganizer *korg = new KOrganizer("KOrganizer MainWindow");
       KURL url;
       url.setPath(file);
-      if (!file.isEmpty()) {
-        korg->openURL(url);
-        korg->setActive(active);
-      }
-      korg->show();
+      KOrganizer *korg=KOrganizer::findInstance(url);
+      if (0 == korg) {
+        korg = new KOrganizer("KOrganizer MainWindow");
+        if (!file.isEmpty()) {
+          korg->openURL(url);
+          korg->setActive(active);
+        }
+        korg->show();
+      } else
+          KWin::setActiveWindow(korg->winId());
     }
   }
 }
