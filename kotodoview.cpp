@@ -177,8 +177,10 @@ void KOTodoListView::contentsMousePressEvent(QMouseEvent* e)
         treeStepSize() * (i->depth() + (rootIsDecorated() ? 1 : 0)) +
         itemMargin() ||
         p.x() < header()->sectionPos(header()->mapToIndex(0))) {
-      mPressPos = e->pos();
-      mMousePressed = true;
+      if (e->button()==Qt::LeftButton) {
+        mPressPos = e->pos();
+        mMousePressed = true;
+      }
     }
   }
 }
