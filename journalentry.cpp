@@ -82,7 +82,7 @@ JournalDateEntry::~JournalDateEntry()
 void JournalDateEntry::setDate(const QDate &date)
 {
   QString dtstring = i18n("<qt><center><b><i>%1</i></b>  "
-       "<font size=\"-1\"><a href=\"#\">[add Journal]</a></font></center></qt>")
+       "<font size=\"-1\"><a href=\"#\">" + i18n("[add Journal]") + "</a></font></center></qt>")
        .arg( KGlobal::locale()->formatDate(date) );
 
   mTitle->setText( dtstring );
