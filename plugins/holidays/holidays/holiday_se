@@ -19,7 +19,7 @@ weekend "Första Maj" weekend on 1.5
 black "Nationaldagen" black on 6.6
 black "Midsommarafton" black on friday before 26.6
 weekend "Midsommardagen" weekend on saturday before 27.6
-blue "Vintertid" on last sunday in september
+blue "Vintertid" on last sunday in october
 weekend "Alla helgons dag" weekend on first sunday in november minus 1
 black "1. Advent" on sunday before 23.12 minus 21 days
 black "2. Advent" on sunday before 23.12 minus 14 days
