@@ -29,6 +29,9 @@
 #include <qlabel.h>
 #include <qmap.h>
 #include <qlistview.h>
+#include <qpixmap.h>
+#include <qimage.h>
+#include <kglobalsettings.h>
 
 #include <libkcal/calendar.h>
 #include <libkcal/todo.h>
@@ -76,6 +79,7 @@ class KOTodoViewItem : public QCheckListItem
 #else
 #endif
   virtual void stateChange(bool);
+  QPixmap progressImg(int progress);
 
   private:
     Todo *mTodo;

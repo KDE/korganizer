@@ -47,6 +47,38 @@
 using namespace KOrg;
 #include "kotodoview.moc"
 
+KOTodoListViewToolTip::KOTodoListViewToolTip (QWidget* parent,
+                                              KOTodoListView* lv )
+  :QToolTip(parent)
+{
+  todolist=lv;
+}
+
+void KOTodoListViewToolTip::maybeTip( const QPoint & pos)
+{
+  QRect r;
+  int headerPos;
+  int col=todolist->header()->sectionAt(pos.x());
+  KOTodoViewItem *i=(KOTodoViewItem *)todolist->itemAt(pos);
+
+  /* Check wether a tooltip is necessary. */
+  if(i && col == 2)
+  {
+
+    /* Calculate the rectangle. */
+    r=todolist->itemRect(i);
+    headerPos = todolist->header()->sectionPos(col);
+    r.setLeft(headerPos);
+    r.setRight(headerPos + todolist->header()->sectionSize(col));
+
+    /* Show the tip */
+    tip(r, i18n("%1 %").arg(QString::number(i->todo()->percentComplete())));
+  }
+  
+}
+
+
+
 KOTodoListView::KOTodoListView(Calendar *calendar,QWidget *parent,
                                const char *name) :
   KListView(parent,name)
@@ -58,6 +90,39 @@ KOTodoListView::KOTodoListView(Calendar *calendar,QWidget *parent,
 
   setAcceptDrops(true);
   viewport()->setAcceptDrops(true);
+
+  /* Create a Tooltip */
+  tooltip=new KOTodoListViewToolTip(viewport(), this);
+}
+
+KOTodoListView::~KOTodoListView()
+{
+  delete tooltip;
+}
+
+bool KOTodoListView::event(QEvent *e)
+{
+  int tmp=0;
+  KOTodoViewItem *i;
+
+  /* Checks for an ApplicationPaletteChange event and updates
+   * the small Progress bars to make therm have the right colors. */
+  if(e->type()==QEvent::ApplicationPaletteChange)
+  {
+    
+    KListView::event(e);
+    i=(KOTodoViewItem *)itemAtIndex(tmp);
+   
+    while(i!=0)
+    {
+      i->construct();
+      tmp++;
+      i=(KOTodoViewItem *)itemAtIndex(tmp);
+    }
+
+  }
+
+  return (KListView::event(e) || e->type()==QEvent::ApplicationPaletteChange);
 }
 
 void KOTodoListView::contentsDragEnterEvent(QDragEnterEvent *e)
@@ -299,7 +364,7 @@ KOTodoView::KOTodoView(Calendar *calendar,QWidget* parent,const char* name) :
   mTodoListView->addColumn(i18n("Summary"));
   mTodoListView->addColumn(i18n("Priority"));
   mTodoListView->setColumnAlignment(1,AlignHCenter);
-  mTodoListView->addColumn(i18n("Complete"));
+  mTodoListView->addColumn(i18n("Complete"), 64);
   mTodoListView->setColumnAlignment(2,AlignRight);
   mTodoListView->addColumn(i18n("Due Date"));
   mTodoListView->setColumnAlignment(3,AlignHCenter);
@@ -314,7 +379,8 @@ KOTodoView::KOTodoView(Calendar *calendar,QWidget* parent,const char* name) :
   mTodoListView->setMinimumHeight( 60 );
   mTodoListView->setItemsRenameable( true );
   mTodoListView->setRenameable( 0 );
-
+  mTodoListView->header()->setResizeEnabled(false, 2);
+  
   mTodoListView->setColumnWidthMode(0, QListView::Manual);
   mTodoListView->setColumnWidthMode(1, QListView::Manual);
   mTodoListView->setColumnWidthMode(2, QListView::Manual);

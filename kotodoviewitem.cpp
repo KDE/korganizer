@@ -69,7 +69,7 @@ void KOTodoViewItem::construct()
   setOn(mTodo->isCompleted());
   setText(0,mTodo->summary());
   setText(1,QString::number(mTodo->priority()));
-  setText(2,i18n("%1 %").arg(QString::number(mTodo->percentComplete())));
+  setPixmap(2, progressImg(mTodo->percentComplete()));
   if (mTodo->percentComplete()<100) {
     if (mTodo->isCompleted()) setSortKey(2,QString::number(999));
     else setSortKey(2,QString::number(mTodo->percentComplete()));
@@ -155,7 +155,7 @@ void KOTodoViewItem::stateChange(bool state)
   if (mTodo->isCompleted()) setSortKey(1,QString::number(9)+keyd+keyt);
   else setSortKey(1,QString::number(mTodo->priority())+keyd+keyt);
   
-  setText(2,i18n("%1 %").arg(QString::number(mTodo->percentComplete())));
+  setPixmap(2, progressImg(mTodo->percentComplete()));
   if (mTodo->percentComplete()<100) {
     if (mTodo->isCompleted()) setSortKey(2,QString::number(999));
     else setSortKey(2,QString::number(mTodo->percentComplete()));
@@ -173,6 +173,45 @@ void KOTodoViewItem::stateChange(bool state)
   }
   mTodoView->modified(true);
   mTodoView->setTodoModified( mTodo );
+}
+
+QPixmap KOTodoViewItem::progressImg(int progress)
+{
+  QImage img(64, 11, 32, 16);
+  QPixmap progr;
+  int x, y;
+
+  /* White Background */
+  img.fill(KGlobalSettings::baseColor().rgb());
+
+
+  /* Check wether progress is in valid range */
+  if(progress > 100) progress = 100;
+  else if (progress < 0) progress=0;
+
+  /* Calculating the number of pixels to fill */
+  progress=(int) (((float)progress)/100 * 62 + 0.5);
+		      
+  /* Drawing the border */
+  for(x = 0; x < 64; x++) {
+    img.setPixel(x, 0, KGlobalSettings::textColor().rgb());
+    img.setPixel(x, 10, KGlobalSettings::textColor().rgb());
+  }
+
+  for(y = 0; y < 11; y++) {
+    img.setPixel(0, y, KGlobalSettings::textColor().rgb());
+    img.setPixel(63, y, KGlobalSettings::textColor().rgb());
+  }
+
+  /* Drawing the progress */
+  for(y = 1; y <= 9; ++y)
+    for(x = 1; x <= progress; ++x)
+      img.setPixel(x, y, KGlobalSettings::highlightColor().rgb());
+
+  /* Converting to a pixmap */
+  progr.convertFromImage(img);
+
+  return progr;
 }
 
 bool KOTodoViewItem::isAlternate()

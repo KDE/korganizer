@@ -32,6 +32,10 @@
 #include <qlabel.h>
 #include <qmap.h>
 #include <qtimer.h>
+#include <qevent.h>
+#include <qtooltip.h>
+#include <qpoint.h>
+#include <qrect.h>
 
 #include <klistview.h>
 
@@ -49,19 +53,37 @@ class QDragMoveEvent;
 class QDragLeaveEvent;
 class QDropEvent;
 
+class KOTodoListView;
+
 class DocPrefs;
+
+
+class KOTodoListViewToolTip : public QToolTip
+{
+  public:
+    KOTodoListViewToolTip (QWidget* parent, KOTodoListView* lv );
+    
+  protected:
+    void maybeTip( const QPoint & pos);
+
+  private:
+    KOTodoListView* todolist;
+};
+
 
 class KOTodoListView : public KListView
 {
     Q_OBJECT
   public:
     KOTodoListView(Calendar *,QWidget *parent=0,const char *name=0);
-    virtual ~KOTodoListView() {}
+    ~KOTodoListView();
 
   signals:
     void todoDropped(Todo *);
 
   protected:
+    virtual bool event(QEvent *);
+    
     void contentsDragEnterEvent(QDragEnterEvent *);
     void contentsDragMoveEvent(QDragMoveEvent *);
     void contentsDragLeaveEvent(QDragLeaveEvent *);
@@ -78,6 +100,7 @@ class KOTodoListView : public KListView
     QPoint mPressPos;
     bool mMousePressed;
     QListViewItem *mOldCurrent;
+    KOTodoListViewToolTip *tooltip;
 };
 
 
