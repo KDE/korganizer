@@ -122,7 +122,7 @@
                     </grid>
                 </widget>
                 <widget>
-                    <class>QRadioButton</class>
+                    <class>QCheckBox</class>
                     <property stdset="1">
                         <name>name</name>
                         <cstring>mRecurringCheck</cstring>
@@ -133,7 +133,7 @@
                     </property>
                 </widget>
                 <widget>
-                    <class>QRadioButton</class>
+                    <class>QCheckBox</class>
                     <property stdset="1">
                         <name>name</name>
                         <cstring>mCompletedCheck</cstring>

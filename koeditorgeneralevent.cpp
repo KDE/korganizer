@@ -99,7 +99,7 @@ void KOEditorGeneralEvent::initTime(QWidget *parent,QBoxLayout *topLayout)
   layoutTimeBox->addWidget(mStartDateEdit,0,1);
 
   mStartTimeEdit = new KTimeEdit(timeBoxFrame);
-  layoutTimeBox->addWidget(mStartTimeEdit,0,3);
+  layoutTimeBox->addWidget(mStartTimeEdit,0,2);
 
 
   mEndDateLabel = new QLabel(i18n("End:"),timeBoxFrame);
@@ -109,7 +109,7 @@ void KOEditorGeneralEvent::initTime(QWidget *parent,QBoxLayout *topLayout)
   layoutTimeBox->addWidget(mEndDateEdit,1,1);
 
   mEndTimeEdit = new KTimeEdit(timeBoxFrame);
-  layoutTimeBox->addWidget(mEndTimeEdit,1,3);
+  layoutTimeBox->addWidget(mEndTimeEdit,1,2);
 
   QHBoxLayout *flagsBox = new QHBoxLayout( timeBoxFrame );
 
@@ -124,11 +124,10 @@ void KOEditorGeneralEvent::initTime(QWidget *parent,QBoxLayout *topLayout)
   flagsBox->addWidget(mNoTimeButton);
   connect(mNoTimeButton, SIGNAL(toggled(bool)),SLOT(dontAssociateTime(bool)));
 
-  layoutTimeBox->addMultiCellLayout(flagsBox,2,2,0,3);
-
   mDurationLabel = new QLabel(timeBoxFrame);
   flagsBox->addWidget(mDurationLabel,0,2);
-  
+
+  layoutTimeBox->addMultiCellLayout(flagsBox,2,2,0,3);
 
   // time widgets are checked if they contain a valid time
   connect(mStartTimeEdit, SIGNAL(timeChanged(QTime)),
@@ -158,13 +157,9 @@ void KOEditorGeneralEvent::initClass(QWidget *parent,QBoxLayout *topLayout)
 
 void KOEditorGeneralEvent::timeStuffDisable(bool disable)
 {
-  if (disable) {
-    mStartTimeEdit->hide();
-    mEndTimeEdit->hide();
-  } else {
-    mStartTimeEdit->show();
-    mEndTimeEdit->show();
-  }
+  mStartTimeEdit->setEnabled( !disable );
+  mEndTimeEdit->setEnabled( !disable );
+
   setDuration();
   emitDateTimeStr();
 }
