@@ -26,6 +26,8 @@
 
 #include <qlistview.h>
 #include <qmap.h>
+#include <qdict.h>
+
 #include <klistview.h>
 
 #include <libkcal/incidence.h>
@@ -86,6 +88,8 @@ class KOListView : public KOEventView
     void readSettings(KConfig *config);
     void writeSettings(KConfig *config);
 
+    void clear();
+
   public slots:
     virtual void updateView();
     virtual void showDates(const QDate &start, const QDate &end);
@@ -114,6 +118,7 @@ class KOListView : public KOEventView
     KListView *mListView;
     KOEventPopupMenu *mPopupMenu;
     KOListViewItem *mActiveItem;
+    QDict<Incidence> mUidDict;
 };
 
 #endif

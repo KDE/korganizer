@@ -240,7 +240,7 @@ void KOListView::updateView()
 
 void KOListView::showDates(const QDate &start, const QDate &end)
 {
-  mListView->clear();
+  clear();
 
   QDate date = start;
   while( date <= end ) {
@@ -270,6 +270,10 @@ void KOListView::addTodos(QPtrList<Todo> eventList)
 
 void KOListView::addIncidence(Incidence *incidence)
 {
+  if ( mUidDict.find( incidence->uid() ) ) return;
+  
+  mUidDict.insert( incidence->uid(), incidence );
+
   KOListViewItem *item = new KOListViewItem( incidence, mListView );
   ListItemVisitor v(item);
   if (incidence->accept(v)) return;
@@ -278,7 +282,8 @@ void KOListView::addIncidence(Incidence *incidence)
 
 void KOListView::showEvents(QPtrList<Event> eventList)
 {
-  mListView->clear();
+  clear();
+
   addEvents(eventList);
 
   // After new creation of list view no events are selected.
@@ -367,4 +372,10 @@ void KOListView::processSelectionChange()
 void KOListView::clearSelection()
 {
   mListView->selectAll( false );
+}
+
+void KOListView::clear()
+{
+  mListView->clear();
+  mUidDict.clear();
 }
