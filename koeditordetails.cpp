@@ -313,8 +313,8 @@ void KOEditorDetails::addNewAttendee()
   insertAttendee(a);
   // We don't want the hint again
   mNameEdit->setClickMessage("");
-  mNameEdit->selectAll();
   mNameEdit->setFocus();
+  QTimer::singleShot(0, mNameEdit, SLOT(selectAll()));
 }
 
 
