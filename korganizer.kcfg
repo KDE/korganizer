@@ -59,7 +59,7 @@
 
     <entry type="Bool" key="Html With Save">
       <label>Export to HTML with every save</label>
-      <whatsthis>The calendar will be exported to a HTML-file everytime you save if you select this option.</whatsthis>
+      <whatsthis>The calendar will be exported to a HTML-file every time you save if you select this option.</whatsthis>
       <default>false</default>
     </entry>
     <entry type="Enum" key="Destination" name="Destination">
@@ -105,12 +105,12 @@
     </entry>
     <entry type="DateTime" name="StartTime">
       <label>Default appointment time</label>
-      <whatsthis>Here you can enter the event's default time if you didn't supply a starttime.</whatsthis>
+      <whatsthis>Here you can enter the event's default time, used if you do not supply a start time.</whatsthis>
       <default>QDateTime(QDate(), QTime(10,0))</default>
     </entry>
     <entry type="DateTime" name="DefaultDuration">
       <label>Default duration of new appointment</label>
-      <whatsthis>Here you can enter the event's default duration if you didn't supply an endtime.</whatsthis>
+      <whatsthis>Here you can enter the event's default duration, used if you do not supply an end time.</whatsthis>
       <default>QDateTime(QDate(), QTime(2,0))</default>
     </entry>
     <entry type="Int" key="Default Alarm Time" name="AlarmTime">
@@ -137,18 +137,18 @@
       <default>true</default>
     </entry>
     <entry type="Bool" name="ShowAllDayTodo">
-      <label>Display todo's in day-, week and monthviews</label>
-      <whatsthis>This option toggles the display of todo's in the day-, week- and monthview. This comes in handy when you have a lot of (recurring) todo's.</whatsthis>
+      <label>Display todos in day, week, and month views</label>
+      <whatsthis>This option toggles the display of todos in the day, week, and month view. This comes in handy when you have a lot of (recurring) todos.</whatsthis>
       <default>true</default>
     </entry>
-    <entry type="Bool" key="Enable MonthView ScrollBars" name="EnableMonthScroll">
+    <entry type="Bool" key="Enable Month-View Scrollbars" name="EnableMonthScroll">
       <label>Enable scrollbars in month view cells</label>
-      <whatsthis>By checking this option, scrollbars will appear when clicking on a cell in the Monthview. They will only appear when it's needed though.</whatsthis>
+      <whatsthis>By checking this option, scrollbars will appear when clicking on a cell in the month view; they will only appear when needed though.</whatsthis>
       <default>false</default>
     </entry>
     <entry type="Bool" name="SelectionStartsEditor">
       <label>Time range selection in agenda view starts event editor</label>
-      <whatsthis>If you check this option, you can drag the mouse from the starttime to the endtime of the event you are about to plan. This works only in the daily and weekly view.</whatsthis>
+      <whatsthis>If you check this option, you can drag the mouse from the start time to the end time of the event you are about to plan. This works only in the daily and weekly view.</whatsthis>
       <default>false</default>
     </entry>
 
@@ -159,7 +159,7 @@
     </entry>
     <entry type="Bool" key="Show Marcus Bains" name="MarcusBainsEnabled">
       <label>Show current time (Marcus Bains line)</label>
-      <whatsthis>If selected, a red line will appear in the day- or weekview indicating the current time.</whatsthis>
+      <whatsthis>If selected, a red line will appear in the day or week view indicating the current time.</whatsthis>
       <default>false</default>
     </entry>
 
@@ -186,7 +186,7 @@
 
     <entry type="Bool" key="Month View Uses Category Color">
       <label>Month view uses category colors</label>
-      <whatsthis>Check this option to make the monthview use the category colors of an incidence.</whatsthis>
+      <whatsthis>Check this option to make the month view use the category colors of an incidence.</whatsthis>
       <default>false</default>
     </entry>
 
