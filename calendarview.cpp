@@ -838,13 +838,23 @@ void CalendarView::deleteTodo(Todo *todo)
   if (KOPrefs::instance()->mConfirm) {
     switch (msgItemDelete()) {
       case KMessageBox::Continue: // OK
-        mCalendar->deleteTodo(todo);
-        updateView();
+        if (!todo->relations().isEmpty()) {
+          KMessageBox::sorry(this,i18n("Cannot delete To-Do which has children."),
+                         i18n("Delete To-Do"));
+        } else {
+          calendar()->deleteTodo(todo);
+          updateView();
+        }
         break;
     } // switch
   } else {
-    mCalendar->deleteTodo(todo);
-    updateView();
+    if (!todo->relations().isEmpty()) {
+        KMessageBox::sorry(this,i18n("Cannot delete To-Do which has children."),
+                         i18n("Delete To-Do"));
+    } else {
+      calendar()->deleteTodo(todo);
+      updateView();
+    }
   }
 }
 

@@ -500,9 +500,23 @@ void KOTodoView::purgeCompleted()
     QPtrList<Todo> todoCal = calendar()->getTodoList();
 
     Todo *aTodo;
-    for (aTodo = todoCal.first(); aTodo; aTodo = todoCal.next()) {
-    if (aTodo->isCompleted())
-      calendar()->deleteTodo(aTodo);
+    bool childDelete = false;
+    bool deletedOne = true;
+    while (deletedOne) {
+      deletedOne = false;
+      for (aTodo = todoCal.first(); aTodo; aTodo = todoCal.next()) {
+      if (aTodo->isCompleted())
+        if (!aTodo->relations().isEmpty()) {
+          childDelete = true;
+        } else {
+          calendar()->deleteTodo(aTodo);
+          deletedOne = true;
+        }
+      }
+    }
+    if (childDelete){
+      KMessageBox::sorry(this,i18n("Cannot purge To-Do which has children."),
+                         i18n("Delete To-Do"));
     }
     updateView();
   }
