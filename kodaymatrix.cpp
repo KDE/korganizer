@@ -74,6 +74,9 @@ void DynamicTip::maybeTip( const QPoint &pos )
 //  K O D A Y M A T R I X
 // ============================================================================
 
+const int KODayMatrix::NOSELECTION = -1000;
+const int KODayMatrix::NUMDAYS = 42;
+
 KODayMatrix::KODayMatrix(QWidget *parent, Calendar* calendar, QDate date, const char *name) :
   QFrame(parent, name)
 {

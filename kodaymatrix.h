@@ -210,7 +210,7 @@ private:
 
     /** number of days to be displayed. For now there is no support for any other number then 42.
         so change it at your own risk :o) */
-    static const int NUMDAYS = 42;
+    static const int NUMDAYS;
 
     /** calendar instance to be queried for holidays, events, ... */
     Calendar  *mCalendar;
@@ -242,7 +242,7 @@ private:
 
     /** if mSelStart has this value it indicates that there is no
         actual selection in the matrix. */
-    static const int NOSELECTION = -1000;
+    static const int NOSELECTION;
 
     /** index of first selected day. */
     int       mSelStart;
