@@ -378,7 +378,6 @@ class CalendarView : public KOrg::CalendarViewBase
 
     void configurePlugins();
 
-  protected slots:
     /** Move the current view date to today */
     void goToday();
   
@@ -388,6 +387,7 @@ class CalendarView : public KOrg::CalendarViewBase
     /** Move to the previous date(s) in the current view */
     void goPrevious();
   
+  protected slots:
     /** Select a week to be displayed in the calendar view */
     void selectWeek(QDate weekstart);
   
