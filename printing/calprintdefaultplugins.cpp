@@ -569,32 +569,32 @@ void CalPrintTodos::print( QPainter &p, int width, int height )
 {
   int pospriority = 10;
   int possummary = 60;
-  int posdue = width - 65; //was 85
+  int posdue = width - 65;
   int poscomplete = posdue - 70; //Complete column is to right of the Due column
   int lineSpacing = 15;
   int fontHeight = 10;
 
   mHelper->drawHeader( p, mPageTitle, mFromDate, QDate(),
-              0, 0, width, mHelper->mHeaderHeight );
+                       0, 0, width, mHelper->mHeaderHeight );
 
   int mCurrentLinePos = mHelper->mHeaderHeight + 5;
   QString outStr;
   QFont oldFont( p.font() );
 
   // draw the headers
-  p.setFont( QFont("helvetica", 10, QFont::Bold ) );
+  p.setFont( QFont( "helvetica", 10, QFont::Bold ) );
   lineSpacing = p.fontMetrics().lineSpacing();
   mCurrentLinePos += lineSpacing;
   if ( mIncludePriority ) {
-    outStr += i18n("Priority");
-    p.drawText( pospriority, mCurrentLinePos - 2, outStr);
+    outStr += i18n( "Priority" );
+    p.drawText( pospriority, mCurrentLinePos - 2, outStr );
   } else {
     possummary = 10;
     pospriority = -1;
   }
 
   outStr.truncate( 0 );
-  outStr += i18n("Summary");
+  outStr += i18n( "Summary" );
   p.drawText( possummary, mCurrentLinePos - 2, outStr );
 
   if ( mIncludePercentComplete ) {
@@ -609,7 +609,7 @@ void CalPrintTodos::print( QPainter &p, int width, int height )
 
   if ( mIncludeDueDate ) {
     outStr.truncate( 0 );
-    outStr += i18n("Due");
+    outStr += i18n( "Due" );
     p.drawText( posdue, mCurrentLinePos - 2, outStr );
   } else {
     posdue = -1;

@@ -801,16 +801,10 @@ void CalPrintHelper::drawTodo( int &count, Todo *item, QPainter &p,
                                TodoParentStart *r )
 {
   QString outStr;
-//  int fontHeight = 10;
   const KLocale *local = KGlobal::locale();
   int priority=item->priority();
   QRect rect;
   TodoParentStart startpt;
-
-  // Compute the right hand side of the item box
-  int rhs = posPercentComplete;
-  if ( rhs < 0 ) rhs = posDueDt; //not printing percent completed
-  if ( rhs < 0 ) rhs = x+width;  //not printing due dates either
 
   // Skip this Todo if it is complete
   if ( skipDone && item->isCompleted() )
@@ -819,23 +813,28 @@ void CalPrintHelper::drawTodo( int &count, Todo *item, QPainter &p,
   // This list keeps all starting points of the parent todos so the connection
   // lines of the tree can easily be drawn (needed if a new page is started)
   static QPtrList<TodoParentStart> startPoints;
-  if (level<1) {
+  if ( level < 1 ) {
     startPoints.clear();
   }
 
+  // Compute the right hand side of the item box
+  int rhs = posPercentComplete;
+  if ( rhs < 0 ) rhs = posDueDt; //not printing percent completed
+  if ( rhs < 0 ) rhs = x+width;  //not printing due dates either
+
   // size of item
   outStr=item->summary();
-  int left = posSummary+(level*10);
-  rect = p.boundingRect(left, y, (rhs-left-5),-1, Qt::WordBreak, outStr);
+  int left = posSummary + ( level*10 );
+  rect = p.boundingRect( left, y, ( rhs-left-5 ), -1, Qt::WordBreak, outStr );
   if ( !item->description().isEmpty() && desc ) {
     outStr = item->description();
     rect = p.boundingRect( left+20, rect.bottom()+5, width-(left+10-x), -1,
                            Qt::WordBreak, outStr );
   }
   // if too big make new page
-  if ( rect.bottom() > pageHeight) {
+  if ( rect.bottom() > pageHeight ) {
     // first draw the connection lines from parent todos:
-    if (level > 0 && connectSubTodos) {
+    if ( level > 0 && connectSubTodos ) {
       TodoParentStart *rct;
       for ( rct = startPoints.first(); rct; rct = startPoints.next() ) {
         int start;
@@ -843,37 +842,37 @@ void CalPrintHelper::drawTodo( int &count, Todo *item, QPainter &p,
         int to = p.viewport().bottom();
 
         // draw either from start point of parent or from top of the page
-        if (rct->mSamePage)
+        if ( rct->mSamePage )
           start = rct->mRect.bottom() + 1;
         else
           start = p.viewport().top();
         p.moveTo( center, start );
         p.lineTo( center, to );
-        rct->mSamePage=false;
+        rct->mSamePage = false;
       }
     }
     y=0;
     mPrinter->newPage();
   }
 
-  // If this is a sub-item, r will not be 0, and we want the LH side of the priority line up
-  //to the RH side of the parent item's priority
+  // If this is a sub-item, r will not be 0, and we want the LH side
+  // of the priority line up to the RH side of the parent item's priority
   bool showPriority = posPriority>=0;
-  if (r) {
+  if ( r ) {
     posPriority = r->mRect.right() + 1;
   }
 
-  outStr.setNum(priority);
-  rect = p.boundingRect(posPriority, y + 10, 5, -1, Qt::AlignCenter, outStr);
+  outStr.setNum( priority );
+  rect = p.boundingRect( posPriority, y + 10, 5, -1, Qt::AlignCenter, outStr );
   // Make it a more reasonable size
   rect.setWidth(18);
   rect.setHeight(18);
 
   // Priority
   if ( priority > 0 && showPriority ) {
-    p.drawText(rect, Qt::AlignCenter, outStr);
+    p.drawText( rect, Qt::AlignCenter, outStr );
     p.setBrush( QBrush( Qt::NoBrush ) );
-    p.drawRect(rect);
+    p.drawRect( rect );
     // cross out the rectangle for completed items
     if ( item->isCompleted() ) {
       p.drawLine( rect.topLeft(), rect.bottomRight() );
@@ -883,18 +882,18 @@ void CalPrintHelper::drawTodo( int &count, Todo *item, QPainter &p,
   startpt.mRect = rect; //save for later
 
   // Connect the dots
-  if (level > 0 && connectSubTodos) {
+  if ( level > 0 && connectSubTodos ) {
     int bottom;
     int center( r->mRect.left() + (r->mRect.width()/2) );
-    if (r->mSamePage )
+    if ( r->mSamePage )
       bottom = r->mRect.bottom() + 1;
     else
       bottom = 0;
     int to( rect.top() + (rect.height()/2) );
     int endx( rect.left() );
-    p.moveTo(center, bottom);
-    p.lineTo(center, to);
-    p.lineTo(endx, to);
+    p.moveTo( center, bottom );
+    p.lineTo( center, to );
+    p.lineTo( endx, to );
   }
 
   // if completed, use strike out font
@@ -904,15 +903,15 @@ void CalPrintHelper::drawTodo( int &count, Todo *item, QPainter &p,
   // summary
   outStr=item->summary();
   rect = p.boundingRect( left, rect.top(), (rhs-(left + rect.width() + 5)),
-    -1, Qt::WordBreak, outStr);
+                         -1, Qt::WordBreak, outStr );
   QRect newrect;
   p.drawText( rect, Qt::WordBreak, outStr, -1, &newrect );
-  ft.setStrikeOut(false);
-  p.setFont(ft);
+  ft.setStrikeOut( false );
+  p.setFont( ft );
 
   // due
   if ( item->hasDueDate() && posDueDt>=0 ) {
-    outStr = local->formatDate(item->dtDue().date(),true);
+    outStr = local->formatDate( item->dtDue().date(), true );
     rect = p.boundingRect( posDueDt, y, x + width, -1,
                            Qt::AlignTop | Qt::AlignLeft, outStr );
     p.drawText( rect, Qt::AlignTop | Qt::AlignLeft, outStr );
@@ -921,8 +920,8 @@ void CalPrintHelper::drawTodo( int &count, Todo *item, QPainter &p,
   // percentage completed
   bool showPercentComplete = posPercentComplete>=0;
   if ( showPercentComplete ) {
-    int lwidth=24;
-    int lheight=12;
+    int lwidth = 24;
+    int lheight = 12;
     //first, draw the progress bar
     int progress = (int)(( lwidth*item->percentComplete())/100.0 + 0.5);
 
@@ -942,7 +941,7 @@ void CalPrintHelper::drawTodo( int &count, Todo *item, QPainter &p,
 
   // description
   if ( !item->description().isEmpty() && desc ) {
-    y=newrect.bottom() + 5;
+    y = newrect.bottom() + 5;
     outStr = item->description();
     rect = p.boundingRect( left+20, y, x+width-(left+10), -1,
                            Qt::WordBreak, outStr );
@@ -950,7 +949,7 @@ void CalPrintHelper::drawTodo( int &count, Todo *item, QPainter &p,
   }
 
   // Set the new line position
-  y=newrect.bottom() + 10; //set the line position
+  y = newrect.bottom() + 10; //set the line position
 
   // If the item has subitems, we need to call ourselves recursively
   Incidence::List l = item->relations();
@@ -965,11 +964,11 @@ void CalPrintHelper::drawTodo( int &count, Todo *item, QPainter &p,
     Todo* subtodo = dynamic_cast<Todo *>( *it );
     if (subtodo && todoList.contains( subtodo ) ) {
       drawTodo( count, subtodo, p, connectSubTodos, skipDone,
-          desc, posPriority, posSummary, posDueDt, posPercentComplete, level+1,
-          x, y, width, pageHeight, todoList, &startpt);
+                desc, posPriority, posSummary, posDueDt, posPercentComplete,
+                level+1, x, y, width, pageHeight, todoList, &startpt );
     }
   }
-  startPoints.remove(&startpt);
+  startPoints.remove( &startpt );
 }
 
 int CalPrintHelper::weekdayColumn( int weekday )
