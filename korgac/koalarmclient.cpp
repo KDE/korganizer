@@ -119,6 +119,9 @@ void KOAlarmClient::checkAlarms()
 
 void KOAlarmClient::createReminder( KCal::Incidence *incidence, QDateTime dt )
 {
+  if ( !incidence )
+    return;
+
   AlarmDialog *dialog = new AlarmDialog();
   dialog->setIncidence( incidence );
   dialog->setRemindAt( dt );
