@@ -673,6 +673,7 @@ bool KOrganizer::saveURL()
     if (mURL.isLocalFile()) {
       mFile = mURL.path();
     }
+    writeActiveState();
     setTitle();
     mRecent->addURL(mURL);
   }
@@ -732,17 +733,20 @@ bool KOrganizer::saveAsURL(const KURL &url)
     mFile = tempFile->name();
   }
   mURL = url;
-  
+
   bool success = saveURL(); // Save local file and upload local file
   if (success) {
-    mURL = url;
     delete mTempFile;
     mTempFile = tempFile;
     KIO::NetAccess::removeTempFile(fileOrig);    
     KGlobal::config()->setGroup("General");
     QString active = KGlobal::config()->readEntry("Active Calendar");
-    if (KURL(active) == mURL) setActive(true);
-    else setActive(false);
+    if (KURL(active) == mURL) {
+      setActive(true);
+//      emit calendarActivated(this);
+    } else {
+      setActive(false);
+    }
     setTitle();
     mRecent->addURL(mURL);
   } else {
@@ -995,15 +999,20 @@ void KOrganizer::makeActive()
     if (result == KMessageBox::Cancel) return;
   }
 
-  KConfig *config(kapp->config());
-  config->setGroup("General");
-  config->writeEntry("Active Calendar",mURL.url());
-  config->sync();
+  writeActiveState();
   if (!kapp->dcopClient()->send("alarmd","ad","reloadCal()","")) {
     kdDebug() << "KOrganizer::saveURL(): dcop send failed" << endl;
   }
   setActive();
   emit calendarActivated(this);
+}
+
+void KOrganizer::writeActiveState()
+{
+  KConfig *config(kapp->config());
+  config->setGroup("General");
+  config->writeEntry("Active Calendar",mURL.url());
+  config->sync();
 }
 
 void KOrganizer::dumpText(const QString &str)

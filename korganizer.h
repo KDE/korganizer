@@ -218,6 +218,8 @@ class KOrganizer : public KMainWindow, virtual public KOrganizerIface
     KURL getSaveURL();
 
   private:
+    void writeActiveState();
+  
     // variables
     CalendarView *mCalendarView;  // Main view widget
     KURL mURL;      // URL of calendar file
