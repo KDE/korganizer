@@ -26,13 +26,7 @@
   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 */
 
-#include <sys/types.h>
-#include <signal.h>
-
-#include <qfiledlg.h>
 #include <qcursor.h>
-#include <qmlined.h>
-#include <qmsgbox.h>
 #include <qtimer.h>
 #include <qvbox.h>
 
@@ -53,17 +47,15 @@
 #include "koarchivedlg.h"
 #include "komailclient.h"
 #include "calprinter.h"
-#include "aboutdlg.h"
 #include "exportwebdialog.h"
 #include "calendarview.h"
+#include "kowindowlist.h"
 
 #include "korganizer.h"
 #include "korganizer.moc"
 
-#define AGENDABUTTON 0x10
-#define NOACCEL 0
 
-QList<KOrganizer> *KOrganizer::windowList = 0;
+KOWindowList *KOrganizer::windowList = 0;
 
 KOrganizer::KOrganizer(const char *name) 
   : KTMainWindow(name)
@@ -73,10 +65,11 @@ KOrganizer::KOrganizer(const char *name)
   mTempFile = 0;
 
   mAutoSave = false;
+  mActive = false;
 
   // add this instance of the window to the static list.
-  if (!windowList) windowList = new QList<KOrganizer>;
-  windowList->append(this);
+  if (!windowList) windowList = new KOWindowList;
+  windowList->addWindow(this);
 
 //  setMinimumSize(600,400);	// make sure we don't get resized too small...
 
@@ -110,14 +103,15 @@ KOrganizer::KOrganizer(const char *name)
 
 KOrganizer::~KOrganizer()
 {
+  qDebug("~KOrganizer()");
+
   if (mTempFile) delete mTempFile;
 
-  qDebug("~KOrganizer()");
-  hide();
+//  hide();
 
-  // Free memory allocated for widgets (not children)
   // Take this window out of the window list.
-  windowList->removeRef( this );
+  windowList->removeWindow(this);
+
   qDebug("~KOrganizer() done");
 }
 
@@ -189,14 +183,6 @@ void KOrganizer::writeSettings()
   config->writeEntry("Status Bar", tmpStr);
 #endif
 
-  // Write only local Files to config file. This prevents loading of a remote
-  // file automatically on startup, which could block KOrganizer even before
-  // it has opened.
-  QString file;
-  if (mURL.isLocalFile()) file = mFile;
-
-  config->writeEntry("Active Calendar", file);
-
   mRecent->saveEntries(config);
 
   mCalendarView->writeSettings();
@@ -220,15 +206,17 @@ void KOrganizer::initActions()
                     actionCollection(), "merge_calendar");
   (void)new KAction(i18n("Archive Old Entries"), 0, this, SLOT(file_archive()),
                     actionCollection(), "file_archive");
-  (void)new KAction(i18n("Export as web page"), 0,
+  (void)new KAction(i18n("Export as web page..."), 0,
                     mCalendarView, SLOT(exportWeb()),
                     actionCollection(), "export_web");
-  (void)new KAction(i18n("Print Setup"), 0,
+  (void)new KAction(i18n("Print Setup..."), 0,
                     mCalendarView, SLOT(printSetup()),
                     actionCollection(), "print_setup");
   KStdAction::print(mCalendarView, SLOT(print()), actionCollection());
   KStdAction::printPreview(mCalendarView, SLOT(printPreview()),
                            actionCollection());
+  (void)new KAction(i18n("Make active"),0,this,SLOT(makeActive()),
+                    actionCollection(),"make_active");
   KStdAction::quit(this, SLOT(close()), actionCollection());
 
   // setup edit menu
@@ -321,6 +309,7 @@ void KOrganizer::file_open()
   if (openURL(url)) {
     setTitle();
     mRecent->addURL(url);
+    setActive(false);
   }
 }
 
@@ -347,9 +336,9 @@ void KOrganizer::file_import()
   homeDir.sprintf("%s/.calendar",getenv("HOME"));
 		  
   if (!QFile::exists(homeDir)) {
-    QMessageBox::critical(this, i18n("KOrganizer Error"),
-			  i18n("You have no ical file in your home directory.\n"
-			       "Import cannot proceed.\n"));
+    KMessageBox::error(this,
+		       i18n("You have no ical file in your home directory.\n"
+		            "Import cannot proceed.\n"));
     return;
   }
   tmpFn = tmpnam(0);
@@ -361,23 +350,23 @@ void KOrganizer::file_import()
     // now we need to MERGE what is in the iCal to the current calendar.
     mCalendarView->mergeCalendar(tmpFn);
     if (!retVal)
-      QMessageBox::information(this, i18n("KOrganizer Info"),
+      KMessageBox::information(this,
 			       i18n("KOrganizer succesfully imported and "
 				    "merged your\n.calendar file from ical "
-				    "into the currently\nopened calendar.\n"),
-			       QMessageBox::Ok);
+				    "into the currently\nopened calendar.\n"));
     else
-      QMessageBox::warning(this, i18n("ICal Import Successful With Warning"),
+      KMessageBox::information(this,
 			   i18n("KOrganizer encountered some unknown fields while\n"
 				"parsing your .calendar ical file, and had to\n"
 				"discard them.  Please check to see that all\n"
-				"your relevant data was correctly imported.\n"));
+				"your relevant data was correctly imported.\n"),
+                                 i18n("ICal Import Successful With Warning"));
   } else if (retVal == -1) {
-    QMessageBox::warning(this, i18n("KOrganizer Error"),
+    KMessageBox::error(this,
 			 i18n("KOrganizer encountered some error parsing your\n"
 			      ".calendar file from ical.  Import has failed.\n"));
   } else if (retVal == -2) {
-    QMessageBox::warning(this, i18n("KOrganizer Error"),
+    KMessageBox::error(this,
 			 i18n("KOrganizer doesn't think that your .calendar\n"
 			      "file is a valid ical calendar. Import has failed.\n"));
   }
@@ -459,6 +448,13 @@ bool KOrganizer::queryClose()
   // Write configuration. I don't know if it really makes sense doing it this
   // way, when having opened multiple calendars in different CalendarViews.
   writeSettings();
+  
+  if (windowList->lastInstance() & !mActive) {
+    int result = KMessageBox::questionYesNo(this,i18n("Do you want to make this"
+      " calendar active?\nThis means that it is monitored for alarms and loaded"
+      " as default calendar."));
+    if (result == KMessageBox::Yes) makeActive();
+  }
 
   return closeURL();
 }
@@ -487,6 +483,8 @@ void KOrganizer::setTitle()
   if (mCalendarView->isModified() && (mFile.isEmpty() || !autoSave())) {
     tmpStr += " (" + i18n("modified") + ")";
   }
+
+  if (mActive) tmpStr += " [" + i18n("active") + "]";
 
   setCaption(tmpStr);
 }
@@ -607,7 +605,9 @@ bool KOrganizer::saveURL()
   if (!mCalendarView->saveCalendar(mFile)) {
     qDebug("KOrganizer::saveURL(): calendar view save failed.");
     return false;
-  } else {
+  }
+  
+  if (mActive) {
     qDebug("KOrganizer::saveURL(): Notify alarm daemon");
     if (!kapp->dcopClient()->send("alarmd","ad","reloadCal()","")) {
       qDebug("KOrganizer::saveURL(): dcop send failed");
@@ -660,4 +660,34 @@ bool KOrganizer::saveAsURL( const KURL & kurl )
   if (success) mRecent->addURL(mURL);
   else qDebug("  failed");
   return success;
+}
+
+void KOrganizer::setActive(bool active)
+{
+  if (active == mActive) return;
+  
+  mActive = active;
+  setTitle();
+}
+
+void KOrganizer::makeActive()
+{
+  setActive();
+
+  // Write only local Files to config file. This prevents loading of a remote
+  // file automatically on startup, which could block KOrganizer even before
+  // it has opened.
+  QString file;
+  if (mURL.isLocalFile()) {
+    file = mFile;
+    KConfig *config(kapp->config());
+    config->writeEntry("Active Calendar", file);
+    config->sync();
+    if (!kapp->dcopClient()->send("alarmd","ad","reloadCal()","")) {
+      qDebug("KOrganizer::saveURL(): dcop send failed");
+    }
+    emit calendarActivated(this);
+  } else {
+    KMessageBox::sorry(this,i18n("Only local files can be active calendars."));
+  }
 }

@@ -88,22 +88,26 @@ int KOrganizerApp::newInstance()
     KGlobal::config()->setGroup("General");
     QString file = KGlobal::config()->readEntry("Active Calendar");
 
-    processCalendar(file,numDays);
+    processCalendar(file,numDays,true);
   }
   
   qDebug("KOApp::newInstance() done");
   return 0;
 }
 
-void KOrganizerApp::processCalendar(const QString & file,int numDays)
+void KOrganizerApp::processCalendar(const QString & file,int numDays,
+                                    bool active)
 {
   if (numDays > 0) {
     displayImminent(file,numDays);
   } else {
     KOrganizer *korg = new KOrganizer("KOrganizer MainWindow");
-    korg->show();
     KURL url;
     url.setPath(file);
-    if (!file.isEmpty()) korg->openURL(url);
+    if (!file.isEmpty()) {
+      korg->openURL(url);
+      korg->setActive(active);
+    }
+    korg->show();
   }
 }

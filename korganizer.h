@@ -25,6 +25,7 @@
 class CalendarView;
 class KTempFile;
 class KRecentFilesAction;
+class KOWindowList;
 
 /**
  *
@@ -41,22 +42,12 @@ class KOrganizer : public KTMainWindow
     Q_OBJECT
   public:
     /**
-     *
      * Constructs a new main window.
      *
-     * @param cal is a newly allocated calendar passed from the main program
-     * @param parent this should usually be 0, unless it is a child win (when?)
-     * @param name this is the name of the window to display in the titlebar
-     * @param fnOverride specifies whether if the filename given is empty,
-     * KOrg. will try to obtain a filename from the config file instead of 
-     * starting up with an empty calendar.
-     *
+     * @param name Qt internal widget name
      */
     KOrganizer(const char *name=0);
     virtual ~KOrganizer();
-
-    // list of all existing KOrganizer instances
-    static QList<KOrganizer> *windowList;
 
     /** Open calendar file from URL */
     bool openURL(const KURL &url);
@@ -75,16 +66,29 @@ class KOrganizer : public KTMainWindow
      *  and emit this signal which notifies all widgets which have registered 
      *  for notification to update their settings. */  
     void configChanged();
+    
     /** emitted when the topwidget is closing down, so that any attached
         child windows can also close. */
     void closingDown();
-
+    
+    /** emitted when this calendar has been made active */
+    void calendarActivated(KOrganizer *);
+    
   public slots:
 
     /** options dialog made a changed to the configuration. we catch this
      *  and notify all widgets which need to update their configuration. */
     void updateConfig();
 
+    /** Sets the active state of the calendar belonging to this window. If a
+      * calendar is active the alarm daemon checks and signals events for
+      * alarm notification. The active calendar is loaded by default, when
+      * starting KOrganizer.
+      */
+    void setActive(bool active=true);
+
+    /** Make calendar active */
+    void makeActive();
 
   protected slots:
  
@@ -149,7 +153,7 @@ class KOrganizer : public KTMainWindow
       sb->enable(KStatusBar::Toggle);
       updateRects();
       optionsMenu->setItemChecked(statusBarMenuId, 
-				  !optionsMenu->isItemChecked(statusBarMenuId));
+                                  !optionsMenu->isItemChecked(statusBarMenuId));
     };
 */
 
@@ -172,7 +176,6 @@ class KOrganizer : public KTMainWindow
     /** Get URL for saving. Opens FileDialog. */
     KURL getSaveURL();
 
-
     // variables
     CalendarView *mCalendarView;  // Main view widget
     KURL mURL;      // URL of calendar file
@@ -189,6 +192,12 @@ class KOrganizer : public KTMainWindow
     bool mAutoSave;  // Auto-Save calendar on close
 
     QTimer         *mAutoSaveTimer;   // used if calendar is to be autosaved
+
+  private:
+    // list of all existing KOrganizer instances
+    static KOWindowList *windowList;
+
+    bool mActive;  // Indicates if this calendar is active (for alarm daemon)
 };
 
 #endif // _KORGANIZER_H

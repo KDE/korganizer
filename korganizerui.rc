@@ -3,11 +3,13 @@
 
   <MenuBar>
     <Menu name="file"><text>&amp;File</text>
+      <Action name="print_setup"/>
       <Action name="import_ical"/>
       <Action name="merge_calendar"/>
       <Action name="file_archive"/>
       <Action name="export_web"/>
-      <Action name="print_setup"/>
+      <Separator/>
+      <Action name="make_active"/>
     </Menu>
     <Menu name="view"><text>&amp;View</text>
       <Action name="view_list"/>
