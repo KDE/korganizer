@@ -435,7 +435,6 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     KOTodoView *mTodoList;
     QMap<Incidence*,QDialog*> mDialogList;
 
-    QTimer      *mMessageTimer;
     QTimer      *mMidnightTimer;
 };
 

@@ -121,7 +121,6 @@ class KOPrefsDialog : public KPrefsDialog
 
     QSlider   *mHourSizeSlider;
 
-    QSpinBox  *mAutoCheckIntervalSpin;
     QSpinBox  *mNextXDaysSpin;
 };
 

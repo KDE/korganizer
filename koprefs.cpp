@@ -143,8 +143,6 @@ KOPrefs::KOPrefs() :
   addItemInt("IMIPScheduler",&mIMIPScheduler,IMIPKMail);
   addItemInt("IMIPSend",&mIMIPSend,IMIPdirectsend);
   addItemStringList("AdditionalMails",&mAdditionalMails,"");
-  addItemBool("ImcomingMessage check",&mIntervalCheck,false);
-  addItemInt("ImcomingMessage interval",&mIntervalCheckTime,10);
   addItemInt("IMIP auto refresh",&mIMIPAutoRefresh,neverAuto);
   addItemInt("IMIP auto insert request",&mIMIPAutoInsertRequest,neverAuto);
   addItemInt("IMIP auto insert reply",&mIMIPAutoInsertReply,neverAuto);

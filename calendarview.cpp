@@ -51,6 +51,7 @@
 #include <knotifyclient.h>
 #include <kconfig.h>
 #include <krun.h>
+#include <kdirwatch.h>
 
 #include <calendarsystem/kcalendarsystem.h>
 
@@ -204,8 +205,10 @@ CalendarView::CalendarView( QWidget *parent, const char *name )
 
   setupRollover();
 
-  mMessageTimer = new QTimer();
-  connect(mMessageTimer,SIGNAL(timeout()),SLOT(lookForIncomingMessages()));
+  KDirWatch *messageWatch = new KDirWatch();
+  messageWatch->addDir(locateLocal("data","korganizer/income/"));
+  connect (messageWatch,SIGNAL(dirty(const QString &)),SLOT(lookForIncomingMessages()));
+  
   mMidnightTimer = new QTimer();
   connect(mMidnightTimer,SIGNAL(timeout()),SLOT(updateView()));
   
@@ -518,11 +521,6 @@ void CalendarView::updateConfig()
 {
   kdDebug() << "CalendarView::updateConfig()" << endl;
   emit configChanged();
-
-  mMessageTimer->stop();
-  if (KOPrefs::instance()->mIntervalCheck) {
-    mMessageTimer->start(KOPrefs::instance()->mIntervalCheckTime*60*1000,false);
-  }
 
   mCalendar->setTimeZoneId(KOPrefs::instance()->mTimeZoneId.local8Bit());
 

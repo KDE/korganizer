@@ -143,8 +143,6 @@ class KOPrefs : public KPimPrefs
     int mIMIPScheduler;
     int mIMIPSend;
     QStringList mAdditionalMails;
-    bool mIntervalCheck;
-    int mIntervalCheckTime;
     int mIMIPAutoRefresh;
     int mIMIPAutoInsertReply;
     int mIMIPAutoInsertRequest;
