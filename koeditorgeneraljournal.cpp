@@ -90,7 +90,7 @@ void KOEditorGeneralJournal::initDate( QWidget *parent, QBoxLayout *topLayout )
   
   dateLayout->addStretch();
   
-  mTimeCheckBox = new QCheckBox( "&Time: ", parent );
+  mTimeCheckBox = new QCheckBox( i18n("&Time: "), parent );
   dateLayout->addWidget( mTimeCheckBox );
   
   mTimeEdit = new KTimeEdit( parent );
