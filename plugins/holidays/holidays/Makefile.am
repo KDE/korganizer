@@ -11,5 +11,6 @@ holidays_DATA = holiday_at holiday_au holiday_bavarian holiday_be holiday_ca  \
                 holiday_no holiday_nz holiday_pl holiday_pt holiday_py \
                 holiday_quebec \
                 holiday_ro holiday_se holiday_si holiday_th holiday_us \
-                holiday_ie
+                holiday_ie \
+                holiday_Suedtirol
 
