@@ -303,6 +303,9 @@ QStringList KOPrefs::allEmails()
 QStringList KOPrefs::fullEmails()
 {
   QStringList fullEmails;
+  // The user name and email from the config dialog:
+  fullEmails << QString("%1 <%2>").arg( fullName() ).arg( email() );
+  
   QStringList::Iterator it;
   // Grab emails from the email identities
   KPIM::IdentityManager *idmanager = KOCore::self()->identityManager();
