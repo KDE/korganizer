@@ -219,7 +219,9 @@ void EventIndicator::drawContents(QPainter *p)
   for(i=0;i<mColumns;++i) {
     if (mEnabled[i]) {
       int cellWidth = contentsRect().right()/mColumns;
-      int xOffset = i*cellWidth + cellWidth/2 -mPixmap.width()/2;
+      int xOffset = QApplication::reverseLayout() ? 
+               (mColumns - 1 - i)*cellWidth + cellWidth/2 -mPixmap.width()/2 :
+               i*cellWidth + cellWidth/2 -mPixmap.width()/2;
       p->drawPixmap(QPoint(xOffset,0),mPixmap);
     }
   }
@@ -253,12 +255,14 @@ KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name) :
   mDayLabelsFrame = 0;
   mDayLabels = 0;
 
+  bool isRTL = QApplication::reverseLayout();
+
   if ( KOPrefs::instance()->mVerticalScreen ) {
     mExpandedPixmap = SmallIcon( "1downarrow" );
     mNotExpandedPixmap = SmallIcon( "1uparrow" );
   } else {
-    mExpandedPixmap = SmallIcon( "1rightarrow" );
-    mNotExpandedPixmap = SmallIcon( "1leftarrow" );
+    mExpandedPixmap = SmallIcon( isRTL ? "1leftarrow" : "1rightarrow" );
+    mNotExpandedPixmap = SmallIcon( isRTL ? "1rightarrow" : "1leftarrow" );
   }
 
   QBoxLayout *topLayout = new QVBoxLayout(this);

@@ -438,11 +438,12 @@ void KOrganizer::initActions()
                        actionCollection(),"addressbook");
 
   // Navigation menu
+  bool isRTL = QApplication::reverseLayout();
 
   (void)new KAction(i18n("Go to &Today"), "today", 0,
                     mCalendarView,SLOT(goToday()),
                     actionCollection(), "go_today");
-  action = new KAction(i18n("Go &Backward"), "1leftarrow", 0,
+  action = new KAction(i18n("Go &Backward"), isRTL ? "1rightarrow" : "1leftarrow", 0,
                        mCalendarView,SLOT(goPrevious()),
                        actionCollection(), "go_previous");
 
@@ -454,7 +455,7 @@ void KOrganizer::initActions()
   connect(mCalendarView,SIGNAL(changeNavStringPrev(const QString &)),
           this,SLOT(dumpText(const QString &)));
 */
-  action = new KAction(i18n("Go &Forward"), "1rightarrow", 0,
+  action = new KAction(i18n("Go &Forward"), isRTL ? "1leftarrow" : "1rightarrow", 0,
                        mCalendarView,SLOT(goNext()),
                        actionCollection(), "go_next");
 /*

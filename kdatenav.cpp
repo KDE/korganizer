@@ -73,22 +73,24 @@ KDateNavigator::KDateNavigator(QWidget *parent,Calendar *calendar,
   tfont.setPointSize(10);
   tfont.setBold(FALSE);
 
+  bool isRTL = QApplication::reverseLayout();
+
   // Create backward navigation buttons
   prevYear = new QPushButton(ctrlFrame);
-  prevYear->setPixmap(SmallIcon("2leftarrow"));
+  prevYear->setPixmap(SmallIcon(isRTL ? "2rightarrow" : "2leftarrow"));
   QToolTip::add(prevYear, i18n("Previous Year"));
 
   prevMonth = new QPushButton(ctrlFrame);
-  prevMonth->setPixmap(SmallIcon("1leftarrow"));
+  prevMonth->setPixmap(SmallIcon(isRTL ? "1rightarrow" : "1leftarrow"));
   QToolTip::add(prevMonth, i18n("Previous Month"));
 
   // Create forward navigation buttons
   nextMonth = new QPushButton(ctrlFrame);
-  nextMonth->setPixmap(SmallIcon("1rightarrow"));
+  nextMonth->setPixmap(SmallIcon(isRTL ? "1leftarrow" : "1rightarrow"));
   QToolTip::add(nextMonth, i18n("Next Month"));
 
   nextYear = new QPushButton(ctrlFrame);
-  nextYear->setPixmap(SmallIcon("2rightarrow"));
+  nextYear->setPixmap(SmallIcon(isRTL ? "2leftarrow" : "2rightarrow"));
   QToolTip::add(nextYear, i18n("Next Year"));
 
   // Create month name label
