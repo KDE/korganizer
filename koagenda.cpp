@@ -79,7 +79,7 @@ int MarcusBains::todayColumn()
     return -1;
 }
 
-void MarcusBains::updateLocation(bool recalculate=false)
+void MarcusBains::updateLocation(bool recalculate)
 {
     QTime tim = QTime::currentTime();
     if((tim.hour() == 0) && (oldTime.hour()==23))
