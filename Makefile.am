@@ -7,6 +7,7 @@ SUBDIRS = $(knewstuff_SUBDIR) printing . korgac pixmaps sounds plugins interface
 INCLUDES = \
   -I$(srcdir)/interfaces \
   -I$(top_srcdir)/libkdepim \
+  -I$(top_srcdir)/libemailfunctions \
   -I$(top_srcdir)/libkpimidentities \
   -I$(top_srcdir)/mimelib \
   -I$(top_srcdir)/certmanager/lib \
