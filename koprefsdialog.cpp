@@ -481,7 +481,7 @@ void KOPrefsDialog::setupGroupSchedulingTab()
   QFrame *topFrame  = addPage(i18n("Group Scheduling"),0,
                               DesktopIcon("personal",KIcon::SizeMedium));
 
-  QGridLayout *topLayout = new QGridLayout(topFrame,6,2);
+  QGridLayout *topLayout = new QGridLayout(topFrame,7,2);
   topLayout->setSpacing(spacingHint());
   topLayout->setMargin(marginHint());
 
@@ -501,20 +501,32 @@ void KOPrefsDialog::setupGroupSchedulingTab()
 
   topLayout->addMultiCellWidget(sendGroup->groupBox(),1,1,0,1);
 
-  topLayout->addMultiCellWidget(new QLabel(i18n("Additional email addresses:"),topFrame),2,2,0,1);
+  QGroupBox *autoCheckGroup = new QGroupBox(1,Horizontal,i18n("Auto-Check"),topFrame);
+  topLayout->addMultiCellWidget(autoCheckGroup,2,2,0,1);
+
+  addWidBool(i18n("Enable interval message checking"),
+             &(KOPrefs::instance()->mIntervalCheck),autoCheckGroup);
+
+  QHBox *intervalBox = new QHBox(autoCheckGroup);
+  intervalBox->setSpacing(spacingHint());
+
+  (void)new QLabel(i18n("Check interval in minutes:"),intervalBox);
+  mAutoCheckIntervalSpin = new QSpinBox(1,500,1,intervalBox);
+
+  topLayout->addMultiCellWidget(new QLabel(i18n("Additional email addresses:"),topFrame),3,3,0,1);
   mAMails = new QListView(topFrame);
   mAMails->addColumn(i18n("Email"),300);
-  topLayout->addMultiCellWidget(mAMails,3,3,0,1);
+  topLayout->addMultiCellWidget(mAMails,4,4,0,1);
 
-  topLayout->addWidget(new QLabel(i18n("Additional email address:"),topFrame),4,0);
+  topLayout->addWidget(new QLabel(i18n("Additional email address:"),topFrame),5,0);
   aEmailsEdit = new QLineEdit(topFrame);
   aEmailsEdit->setEnabled(false);
-  topLayout->addWidget(aEmailsEdit,4,1);
+  topLayout->addWidget(aEmailsEdit,5,1);
 
   QPushButton *add = new QPushButton(i18n("New"),topFrame,"new");
-  topLayout->addWidget(add,5,0);
+  topLayout->addWidget(add,6,0);
   QPushButton *del = new QPushButton(i18n("Remove"),topFrame,"remove");
-  topLayout->addWidget(del,5,1);
+  topLayout->addWidget(del,6,1);
 
   //topLayout->setRowStretch(2,1);
   connect(add, SIGNAL( clicked() ), this, SLOT(addItem()) );
@@ -561,7 +573,8 @@ void KOPrefsDialog::usrReadConfig()
   mHourSizeSlider->setValue(KOPrefs::instance()->mHourSize);
 
   mPrintPreviewEdit->lineEdit()->setText(KOPrefs::instance()->mPrintPreview);
-  
+
+  mAutoCheckIntervalSpin->setValue(KOPrefs::instance()->mIntervalCheckTime);
   mAMails->clear();
   for ( QStringList::Iterator it = KOPrefs::instance()->mAdditionalMails.begin();
             it != KOPrefs::instance()->mAdditionalMails.end(); ++it ) {
@@ -595,6 +608,8 @@ void KOPrefsDialog::usrWriteConfig()
   mCategoryDict.clear();
 
   KOPrefs::instance()->mPrintPreview = mPrintPreviewEdit->lineEdit()->text();
+
+  KOPrefs::instance()->mIntervalCheckTime = mAutoCheckIntervalSpin->value();
 
   KOPrefs::instance()->mAdditionalMails.clear();
   QListViewItem *item;

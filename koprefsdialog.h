@@ -119,6 +119,8 @@ class KOPrefsDialog : public KPrefsDialog
     QSlider   *mHourSizeSlider;
 
     KURLRequester *mPrintPreviewEdit;
+    
+    QSpinBox  *mAutoCheckIntervalSpin;
 };
 
 #endif

@@ -62,6 +62,8 @@ class KODialogManager : public QObject
     KOTodoEditor *getTodoEditor();
 
     OutgoingDialog *outgoingDialog();
+    
+    IncomingDialog *incomingDialog();
 
     void updateSearchDialog();
     
@@ -77,6 +79,7 @@ class KODialogManager : public QObject
 
   private:
     void createOutgoingDialog();
+    void createIncomingDialog();
 
     CalendarView *mMainView;
     

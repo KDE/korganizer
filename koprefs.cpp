@@ -131,16 +131,18 @@ KOPrefs::KOPrefs() :
   addItemBool("VerticalScreen",&mVerticalScreen,false);
 
   addItemString("Preview",&mPrintPreview,"kghostview");
-  
+
   KPrefs::setCurrentGroup("KOrganizer Plugins");
-  
+
   addItemStringList("SelectedPlugins",&mSelectedPlugins,"holidays");
 
   KPrefs::setCurrentGroup("Group Scheduling");
 
   addItemInt("IMIPScheduler",&mIMIPScheduler,IMIPKMail);
-  addItemInt("IMIPSend",&mIMIPSend,IMIPOutbox);
+  addItemInt("IMIPSend",&mIMIPSend,IMIPdirectsend);
   addItemStringList("AdditionalMails",&mAdditionalMails,"");
+  addItemBool("ImcomingMessage check",&mIntervalCheck,false);
+  addItemInt("ImcomingMessage interval",&mIntervalCheckTime,10);
 }
 
 

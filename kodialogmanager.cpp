@@ -97,7 +97,7 @@ void KODialogManager::showOutgoingDialog()
   mOutgoingDialog->raise();
 }
 
-void KODialogManager::showIncomingDialog()
+IncomingDialog *KODialogManager::incomingDialog()
 {
   createOutgoingDialog();
   if (!mIncomingDialog) {
@@ -107,7 +107,24 @@ void KODialogManager::showIncomingDialog()
     connect(mIncomingDialog,SIGNAL(calendarUpdated()),
             mMainView,SLOT(updateView()));
   }
+  return mIncomingDialog;
+}
 
+void KODialogManager::createIncomingDialog()
+{
+  createOutgoingDialog();
+  if (!mIncomingDialog) {
+    mIncomingDialog = new IncomingDialog(mMainView->calendar(),mOutgoingDialog,mMainView);
+    connect(mIncomingDialog,SIGNAL(numMessagesChanged(int)),
+            mMainView,SIGNAL(numIncomingChanged(int)));
+    connect(mIncomingDialog,SIGNAL(calendarUpdated()),
+            mMainView,SLOT(updateView()));
+  }
+}
+
+void KODialogManager::showIncomingDialog()
+{
+  createIncomingDialog();
   mIncomingDialog->show();
   mIncomingDialog->raise();
 }

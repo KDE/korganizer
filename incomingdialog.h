@@ -81,9 +81,10 @@ class IncomingDialog : public IncomingDialog_base
   signals:
     void calendarUpdated();
     void numMessagesChanged(int);
-
-  protected slots:
+  public slots:
     void retrieve();
+    
+  protected slots:
     void acceptAllMessages();
     void acceptMessage();
     void rejectMessage();

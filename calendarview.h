@@ -375,14 +375,17 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     
     void dialogClosing(Incidence *);
   
+    /** Look for new messages in the inbox */
+    void lookForIncomingMessages();
+   /** Look for new messages in the outbox */
+    void lookForOutgoingMessages();
   protected slots:
     /** Select a week to be displayed in the calendar view */
     void selectWeek(QDate weekstart);
-  
+
     /** Select a view or adapt the current view to display the specified dates. */
     void selectDates(const DateList &);
-  
-  
+
   public:
     // show a standard warning
     // returns KMsgBox::yesNoCancel()
@@ -441,6 +444,7 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
 
     KOTodoView *mTodoList;
     QMap<Incidence*,QDialog*> mDialogList;
+    QTimer      *mMessageTimer;
 };
 
 #endif

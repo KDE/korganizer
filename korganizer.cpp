@@ -139,6 +139,9 @@ KOrganizer::KOrganizer(const char *name)
 
   // Update state of paste action
   mCalendarView->checkClipboard();
+  
+  mCalendarView->lookForOutgoingMessages();
+  mCalendarView->lookForIncomingMessages();
 
   kdDebug() << "KOrganizer::KOrganizer() done" << endl;
 }

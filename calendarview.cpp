@@ -83,6 +83,7 @@
 #include "koagendaview.h"
 #include "kodialogmanager.h"
 #include "outgoingdialog.h"
+#include "incomingdialog.h"
 
 #include "calendarview.h"
 using namespace KOrg;
@@ -210,12 +211,15 @@ CalendarView::CalendarView(QWidget *parent,const char *name)
 
   setupRollover();
 
+  mMessageTimer = new QTimer();
+  connect(mMessageTimer,SIGNAL(timeout()),SLOT(lookForIncomingMessages()));
+  //  mMessageTimer->start(10000,true);
   // We should think about seperating startup settings and configuration change.
   updateConfig();
 
   connect(QApplication::clipboard(),SIGNAL(dataChanged()),
           SLOT(checkClipboard()));
-          
+
   connect(mTodoList,SIGNAL(todoSelected(bool)),SLOT(todoSelect(bool)));
 
   kdDebug() << "CalendarView::CalendarView() done" << endl;
@@ -516,6 +520,11 @@ void CalendarView::updateConfig()
   kdDebug() << "CalendarView::updateConfig()" << endl;
   emit configChanged();
 
+  mMessageTimer->stop();
+  if (KOPrefs::instance()->mIntervalCheck) {
+    mMessageTimer->start(KOPrefs::instance()->mIntervalCheckTime*60*1000,false);
+  }
+
   mCalendar->setTimeZoneId(KOPrefs::instance()->mTimeZoneId.local8Bit());
 
   // To make the "fill window" configurations work
@@ -648,7 +657,7 @@ void CalendarView::edit_copy()
 void CalendarView::edit_paste()
 {
   QDate date = mDateNavigator->selectedDates().first();
-  
+
   DndFactory factory( mCalendar );
   Event *pastedEvent = factory.pasteEvent(date);
   changeEventDisplay(pastedEvent, KOGlobals::EVENTADDED);
@@ -1581,3 +1590,17 @@ void CalendarView::dialogClosing(Incidence *in)
 {
   mDialogList.remove(in);
 }
+
+
+void CalendarView::lookForOutgoingMessages()
+{
+  OutgoingDialog *ogd = mDialogManager->outgoingDialog();
+  ogd->loadMessages();
+}
+
+void CalendarView::lookForIncomingMessages()
+{
+  IncomingDialog *icd = mDialogManager->incomingDialog();
+  icd->retrieve();
+}
+

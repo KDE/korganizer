@@ -62,6 +62,9 @@ class OutgoingDialog : public OutgoingDialog_base
     bool addMessage(IncidenceBase *,Scheduler::Method);
     bool addMessage(IncidenceBase *,Scheduler::Method,const QString &recipients);
 
+  public slots:
+    void loadMessages();
+
   signals:
     void numMessagesChanged(int);
 
@@ -73,7 +76,6 @@ class OutgoingDialog : public OutgoingDialog_base
   private:
     bool saveMessage(IncidenceBase *,Scheduler::Method,const QString &recipients=0);
     bool deleteMessage(IncidenceBase *);
-    void loadMessages();
     Calendar *mCalendar;
     Scheduler *mScheduler;
     QMap<IncidenceBase*, QString> mMessageMap;

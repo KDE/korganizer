@@ -67,7 +67,7 @@ ScheduleItemOut::ScheduleItemOut(QListView *parent,IncidenceBase *ev,
   //If the object is an event
   if(ev->type()=="Event") {
     Event *event = static_cast<Event *>(ev);
-  
+
     setText(1,event->dtStartDateStr());
     if (event->doesFloat()) {  //If the event floats set the start and end times to no time
       setText(2,i18n("no time"));
@@ -319,13 +319,18 @@ void OutgoingDialog::loadMessages()
       kdDebug() << "Outgoing::loadMessage(): Recipients: " << recipients << endl;
 
       if (message) {
-        kdDebug() << "OutgoingDialog::loadMessage(): got message '"
-                  << (*it) << "'" << endl;
-        IncidenceBase *inc = message->event();
-        new ScheduleItemOut(mMessageListView,inc,method,recipients);
-        emit numMessagesChanged(mMessageListView->childCount());
-
-        mMessageMap[message->event()]=outgoingDirName + "/" + (*it);
+        bool inserted = false;
+        QMap<IncidenceBase*, QString>::Iterator iter;
+        for ( iter = mMessageMap.begin(); iter != mMessageMap.end(); ++iter ) {
+          if (iter.data() == outgoingDirName + "/" + (*it)) inserted = true;
+        }
+        if (!inserted) {
+          kdDebug() << "OutgoingDialog::loadMessage(): got message '"
+                    << (*it) << "'" << endl;
+          IncidenceBase *inc = message->event();
+          new ScheduleItemOut(mMessageListView,inc,method,recipients);
+          mMessageMap[message->event()]=outgoingDirName + "/" + (*it);
+        }
       } else {
         QString errorMessage;
         if (mFormat->exception()) {
@@ -338,6 +343,7 @@ void OutgoingDialog::loadMessages()
     }
     }
   }
+  emit numMessagesChanged(mMessageListView->childCount());
 }
 
 #include "outgoingdialog.moc"

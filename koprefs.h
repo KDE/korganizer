@@ -144,6 +144,8 @@ class KOPrefs : public KPrefs
     int mIMIPScheduler;
     int mIMIPSend;
     QStringList mAdditionalMails;
+    bool mIntervalCheck;
+    int mIntervalCheckTime;
 
   private:
     QDict<QColor> mCategoryColors;
