@@ -34,6 +34,7 @@
 #include <libkdepim/kdateedit.h>
 
 #include "koglobals.h"
+#include "koprefs.h"
 
 #include "searchdialog.h"
 #include "searchdialog.moc"
@@ -96,7 +97,9 @@ SearchDialog::SearchDialog(Calendar *calendar,QWidget *parent)
   listView->showDates();
   layout->addWidget(listView);
 
-  KOGlobals::fitDialogToScreen( this, true );
+  if ( KOPrefs::instance()->mCompactDialogs ) {
+    KOGlobals::fitDialogToScreen( this, true );
+  }
 
   connect(this,SIGNAL(user1Clicked()),SLOT(doSearch()));
 
