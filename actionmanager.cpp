@@ -1034,8 +1034,10 @@ void ActionManager::checkAutoSave()
   if (KOPrefs::instance()->mAutoSaveInterval == 0) return;
 
   // has this calendar been saved before? If yes automatically save it.
-  if (KOPrefs::instance()->mAutoSave && !mURL.isEmpty()) {
-    saveURL();
+  if ( KOPrefs::instance()->mAutoSave ) {
+    if ( mCalendarResources || ( mCalendar && !url().isEmpty() ) ) {
+      saveCalendar();
+    }
   }
 }
 
