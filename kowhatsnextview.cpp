@@ -117,7 +117,7 @@ void KOWhatsNextView::updateView()
   mText += "<img src=\"";
   mText += *ipath;
   mText += "\">";
-  mText += i18n("<font color=\"white\"> What's next?</h1></font>");
+  mText += "<font color=\"white\"> " + i18n("What's next?") + "</h1></font>";
   mText += "</td></tr>\n<tr><td>";
   
   QPtrList<Event> events = calendar()->events( QDate::currentDate(), true );
