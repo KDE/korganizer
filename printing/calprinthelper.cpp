@@ -792,7 +792,7 @@ void CalPrintHelper::drawMonth(QPainter &p, const QDate &qd, bool weeknumbers,
 
 ///////////////////////////////////////////////////////////////////////////////
 
-void CalPrintHelper::drawTodo( int &count, Todo *item, QPainter &p,
+void CalPrintHelper::drawTodo( int &count, Todo *todo, QPainter &p,
                                bool connectSubTodos,
                                bool desc, int posPriority, int posSummary,
                                int posDueDt, int posPercentComplete,
@@ -802,7 +802,6 @@ void CalPrintHelper::drawTodo( int &count, Todo *item, QPainter &p,
 {
   QString outStr;
   const KLocale *local = KGlobal::locale();
-  int priority=item->priority();
   QRect rect;
   TodoParentStart startpt;
 
@@ -813,17 +812,17 @@ void CalPrintHelper::drawTodo( int &count, Todo *item, QPainter &p,
     startPoints.clear();
   }
 
-  // Compute the right hand side of the item box
+  // Compute the right hand side of the to-do box
   int rhs = posPercentComplete;
   if ( rhs < 0 ) rhs = posDueDt; //not printing percent completed
   if ( rhs < 0 ) rhs = x+width;  //not printing due dates either
 
-  // size of item
-  outStr=item->summary();
+  // size of to-do
+  outStr=todo->summary();
   int left = posSummary + ( level*10 );
   rect = p.boundingRect( left, y, ( rhs-left-5 ), -1, Qt::WordBreak, outStr );
-  if ( !item->description().isEmpty() && desc ) {
-    outStr = item->description();
+  if ( !todo->description().isEmpty() && desc ) {
+    outStr = todo->description();
     rect = p.boundingRect( left+20, rect.bottom()+5, width-(left+10-x), -1,
                            Qt::WordBreak, outStr );
   }
@@ -851,29 +850,33 @@ void CalPrintHelper::drawTodo( int &count, Todo *item, QPainter &p,
     mPrinter->newPage();
   }
 
-  // If this is a sub-item, r will not be 0, and we want the LH side
-  // of the priority line up to the RH side of the parent item's priority
+  // If this is a sub-to-do, r will not be 0, and we want the LH side
+  // of the priority line up to the RH side of the parent to-do's priority
   bool showPriority = posPriority>=0;
+  int lhs = posPriority;
   if ( r ) {
-    posPriority = r->mRect.right() + 1;
+    lhs = r->mRect.right() + 1;
   }
 
-  outStr.setNum( priority );
-  rect = p.boundingRect( posPriority, y + 10, 5, -1, Qt::AlignCenter, outStr );
+  outStr.setNum( todo->priority() );
+  rect = p.boundingRect( lhs, y + 10, 5, -1, Qt::AlignCenter, outStr );
   // Make it a more reasonable size
   rect.setWidth(18);
   rect.setHeight(18);
 
+  // Draw a checkbox
+  p.setBrush( QBrush( Qt::NoBrush ) );
+  p.drawRect( rect );
+  if ( todo->isCompleted() ) {
+    // cross out the rectangle for completed to-dos
+    p.drawLine( rect.topLeft(), rect.bottomRight() );
+    p.drawLine( rect.topRight(), rect.bottomLeft() );
+  }
+  lhs = rect.right() + 3;
+
   // Priority
-  if ( priority > 0 && showPriority ) {
+  if ( todo->priority() > 0 && showPriority ) {
     p.drawText( rect, Qt::AlignCenter, outStr );
-    p.setBrush( QBrush( Qt::NoBrush ) );
-    p.drawRect( rect );
-    // cross out the rectangle for completed items
-    if ( item->isCompleted() ) {
-      p.drawLine( rect.topLeft(), rect.bottomRight() );
-      p.drawLine( rect.topRight(), rect.bottomLeft() );
-    }
   }
   startpt.mRect = rect; //save for later
 
@@ -894,11 +897,11 @@ void CalPrintHelper::drawTodo( int &count, Todo *item, QPainter &p,
 
   // if completed, use strike out font
   QFont ft( p.font() );
-  ft.setStrikeOut( item->isCompleted() );
+  ft.setStrikeOut( todo->isCompleted() );
   p.setFont( ft );
   // summary
-  outStr=item->summary();
-  rect = p.boundingRect( left, rect.top(), (rhs-(left + rect.width() + 5)),
+  outStr=todo->summary();
+  rect = p.boundingRect( lhs, rect.top(), (rhs-(left + rect.width() + 5)),
                          -1, Qt::WordBreak, outStr );
   QRect newrect;
   p.drawText( rect, Qt::WordBreak, outStr, -1, &newrect );
@@ -906,8 +909,8 @@ void CalPrintHelper::drawTodo( int &count, Todo *item, QPainter &p,
   p.setFont( ft );
 
   // due
-  if ( item->hasDueDate() && posDueDt>=0 ) {
-    outStr = local->formatDate( item->dtDue().date(), true );
+  if ( todo->hasDueDate() && posDueDt>=0 ) {
+    outStr = local->formatDate( todo->dtDue().date(), true );
     rect = p.boundingRect( posDueDt, y, x + width, -1,
                            Qt::AlignTop | Qt::AlignLeft, outStr );
     p.drawText( rect, Qt::AlignTop | Qt::AlignLeft, outStr );
@@ -919,7 +922,7 @@ void CalPrintHelper::drawTodo( int &count, Todo *item, QPainter &p,
     int lwidth = 24;
     int lheight = 12;
     //first, draw the progress bar
-    int progress = (int)(( lwidth*item->percentComplete())/100.0 + 0.5);
+    int progress = (int)(( lwidth*todo->percentComplete())/100.0 + 0.5);
 
     p.setBrush( QBrush( Qt::NoBrush ) );
     p.drawRect( posPercentComplete, y+3, lwidth, lheight );
@@ -929,16 +932,16 @@ void CalPrintHelper::drawTodo( int &count, Todo *item, QPainter &p,
     }
 
     //now, write the percentage
-    outStr = i18n( "%1%" ).arg( item->percentComplete() );
+    outStr = i18n( "%1%" ).arg( todo->percentComplete() );
     rect = p.boundingRect( posPercentComplete+lwidth+3, y, x + width, -1,
                            Qt::AlignTop | Qt::AlignLeft, outStr );
     p.drawText( rect, Qt::AlignTop | Qt::AlignLeft, outStr );
   }
 
   // description
-  if ( !item->description().isEmpty() && desc ) {
+  if ( !todo->description().isEmpty() && desc ) {
     y = newrect.bottom() + 5;
-    outStr = item->description();
+    outStr = todo->description();
     rect = p.boundingRect( left+20, y, x+width-(left+10), -1,
                            Qt::WordBreak, outStr );
     p.drawText( rect, Qt::WordBreak, outStr, -1, &newrect );
@@ -947,8 +950,8 @@ void CalPrintHelper::drawTodo( int &count, Todo *item, QPainter &p,
   // Set the new line position
   y = newrect.bottom() + 10; //set the line position
 
-  // If the item has subitems, we need to call ourselves recursively
-  Incidence::List l = item->relations();
+  // If the to-do has sub-to-dos, we need to call ourselves recursively
+  Incidence::List l = todo->relations();
   Incidence::List::ConstIterator it;
   startPoints.append( &startpt );
   for( it = l.begin(); it != l.end(); ++it ) {
