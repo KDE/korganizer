@@ -28,6 +28,8 @@
 #include <qpushbutton.h>
 #include <qcombobox.h>
 #include <qlabel.h>
+#include <qvbox.h>
+#include <qsplitter.h>
 
 #include <kprinter.h>
 #include <ksimpleconfig.h>
@@ -174,52 +176,67 @@ CalPrintDialog::CalPrintDialog(QPtrList<CalPrintBase> plugins, KPrinter *p,
         KDialogBase::Ok|KDialogBase::Cancel),
     mPrinter(p), mPrintPlugins(plugins)
 {
-  QWidget *page = new QWidget( this );
-  setMainWidget(page);
-  QGridLayout *topLayout = new QGridLayout( page );
+  QVBox *page = makeVBoxMainWidget();
 
-  mPrinterLabel = new QLabel("", page);
-  topLayout->addMultiCellWidget(mPrinterLabel, 0, 0, 0, 2);
+  QHBox *printerLayout = new QHBox( page );
 
-  QPushButton*setupButton = new QPushButton(i18n("&Setup printer..."), page);
-  topLayout->addWidget(setupButton, 0, 3);
-  connect(setupButton, SIGNAL(clicked()), this, SLOT(setupPrinter()) );
+  mPrinterLabel = new QLabel("", printerLayout);
+  QPushButton*setupButton = new QPushButton(i18n("&Setup printer..."), printerLayout);
+  setupButton->setSizePolicy( QSizePolicy(
+      (QSizePolicy::SizeType)4, (QSizePolicy::SizeType)0,
+      0, 0, setupButton->sizePolicy().hasHeightForWidth() ) );
 
-  mTypeGroup = new QVButtonGroup(i18n("View Type"), page);
+
+  QSplitter *splitter = new QSplitter( page );
+  splitter->setOrientation( QSplitter::Horizontal );
+
+  mTypeGroup = new QVButtonGroup(i18n("View Type"), splitter, "buttonGroup" );
   // use the minimal width possible = max width of the radio buttons, not extensible
-  mTypeGroup->setSizePolicy( QSizePolicy( (QSizePolicy::SizeType)4,
+/*  mTypeGroup->setSizePolicy( QSizePolicy( (QSizePolicy::SizeType)4,
     (QSizePolicy::SizeType)5, 0, 0,
-    mTypeGroup->sizePolicy().hasHeightForWidth() ) );
+      mTypeGroup->sizePolicy().hasHeightForWidth() ) );*/
 
-  mConfigArea = new QWidgetStack(page);
-  connect( mTypeGroup, SIGNAL(clicked(int)),
-    this, SLOT(setPrintType(int)) );
+  QWidget* splitterRight = new QWidget( splitter, "splitterRight" );
+  QGridLayout* splitterRightLayout = new QGridLayout( splitterRight );
+
+  mConfigArea = new QWidgetStack( splitterRight, "configWidgetStack" );
+  splitterRightLayout->addMultiCellWidget( mConfigArea, 0,0, 0,1 );
+
+  QLabel*orientationLabel=new QLabel(i18n("Page &orientation:"), splitterRight, "orientationLabel" );
+  splitterRightLayout->addWidget(orientationLabel, 1,0 );
+
+  mOrientationSelection=new QComboBox( splitterRight, "orientationCombo" );
+  mOrientationSelection->insertItem(i18n("Use default setting of printer"));
+  mOrientationSelection->insertItem(i18n("Use default setting of print style"));
+  mOrientationSelection->insertItem(i18n("Portrait"));
+  mOrientationSelection->insertItem(i18n("Landscape"));
+  splitterRightLayout->addWidget( mOrientationSelection, 1,1 );
+
+    // signals and slots connections
+  connect(setupButton, SIGNAL(clicked()), this, SLOT(setupPrinter()) );
+  connect( mTypeGroup, SIGNAL(clicked(int)), this, SLOT(setPrintType(int)) );
+
+    // buddies
+  orientationLabel->setBuddy(mOrientationSelection);
 
   CalPrintBase*plug=mPrintPlugins.first();
   QRadioButton *rButt;
+  int id=0;
   while (plug) {
     rButt = new QRadioButton(plug->description(), mTypeGroup);
+    mTypeGroup->insert( rButt, id );
     rButt->setMinimumHeight( rButt->sizeHint().height()-5 );
 
-    mConfigArea->addWidget(plug->configWidget(mConfigArea));
+    mConfigArea->addWidget( plug->configWidget(mConfigArea), id );
     connect( this, SIGNAL(applySettings()), plug, SLOT(readSettingsWidget()) );
     connect( this, SIGNAL(doSettings()), plug, SLOT(setSettingsWidget()) );
 
     plug=mPrintPlugins.next();
+    id++;
   }
 
-  topLayout->addMultiCellWidget(mTypeGroup, 1,2, 0,0 );
-  topLayout->addMultiCellWidget(mConfigArea, 1,1, 1,3 );
-
-  QLabel*orientationLabel=new QLabel(i18n("&Orientation:"), page);
-  topLayout->addWidget(orientationLabel, 2, 1);
-
-  mOrientationSelection=new QComboBox(page);
-  mOrientationSelection->insertItem(i18n("Use default setting of printer"));
-  mOrientationSelection->insertItem(i18n("Portrait"));
-  mOrientationSelection->insertItem(i18n("Landscape"));
-  topLayout->addMultiCellWidget( mOrientationSelection, 2,2, 2,3 );
-  orientationLabel->setBuddy(mOrientationSelection);
+  setMinimumSize( minimumSizeHint() );
+  resize( minimumSizeHint() );
 }
 
 CalPrintDialog::~CalPrintDialog()
@@ -253,7 +270,7 @@ void CalPrintDialog::setPrinterLabel()
 void CalPrintDialog::setPrintType(int i)
 {
   mTypeGroup->setButton(i);
-  mConfigArea->raiseWidget(i+1);
+  mConfigArea->raiseWidget(i);
 }
 
 CalPrintBase* CalPrintDialog::selectedPlugin()
