@@ -41,6 +41,7 @@
 
 KOrganizerApp::KOrganizerApp() : KUniqueApplication()
 {
+  CalFormat::setApplication("KOrganizer");
 }
 
 KOrganizerApp::~KOrganizerApp()
