@@ -102,11 +102,11 @@
     <entry type="String" name="TimeZoneId">
     </entry>
     <entry type="DateTime" name="StartTime">
-      <label>Default appointment time:</label>
+      <label>Default appointment time</label>
       <default>QDateTime(QDate(), QTime(10,0))</default>
     </entry>
     <entry type="DateTime" name="DefaultDuration">
-      <label>Default duration of new appointment:</label>
+      <label>Default duration of new appointment</label>
       <default>QDateTime(QDate(), QTime(2,0))</default>
     </entry>
     <entry type="Int" key="Default Alarm Time" name="AlarmTime">
@@ -153,7 +153,7 @@
     </entry>
 
     <entry type="DateTime" name="DayBegins">
-      <label>Day begins at:</label>
+      <label>Day begins at</label>
       <default>QDateTime(QDate(), QTime(7,0))</default>
     </entry>
 
@@ -286,47 +286,47 @@
 
   <group name="Colors">
     <entry type="Color" key="Holiday Color">
-      <label>Holiday color:</label>
+      <label>Holiday color</label>
       <default>255, 100, 100</default>
     </entry>
     <entry type="Color" key="Highlight Color">
-      <label>Highlight color:</label>
+      <label>Highlight color</label>
       <default>100, 100, 255</default>
     </entry>
     <entry type="Color" key="AgendaBackgroundColor" name="AgendaBgColor">
-      <label>Agenda view background color:</label>
+      <label>Agenda view background color</label>
       <default>255, 255, 255</default>
     </entry>
     <entry type="Color" key="WorkingHoursColor">
-      <label>Working hours color:</label>
+      <label>Working hours color</label>
       <default>225, 225, 255</default>
     </entry>
     <entry type="Color" key="Todo due today Color" name="TodoDueTodayColor">
-      <label>Todo due today color:</label>
+      <label>Todo due today color</label>
       <default>255, 200, 50</default>
     </entry>
     <entry type="Color" key="Todo overdue Color" name="TodoOverdueColor">
-      <label>Todo overdue color:</label>
+      <label>Todo overdue color</label>
       <default>255, 100, 100</default>
     </entry>
     <entry type="Color" key="EventColor">
-      <label>Default event color:</label>
+      <label>Default event color</label>
       <default>151, 235, 121</default>
     </entry>
   </group>
 
   <group name="Fonts">
     <entry type="Font" key="TimeBar Font">
-      <label>Time bar:</label>
+      <label>Time bar</label>
     </entry>
     <entry type="Font" key="AgendaView Font">
-      <label>Agenda view:</label>
+      <label>Agenda view</label>
     </entry>
     <entry type="Font" key="MarcusBains Font">
-      <label>Marcus Bains line:</label>
+      <label>Marcus Bains line</label>
     </entry>
     <entry type="Font" key="MonthView Font">
-      <label>Month view:</label>
+      <label>Month view</label>
     </entry>
   </group>
 
