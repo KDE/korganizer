@@ -785,7 +785,11 @@ void KOAgendaView::updateEventDates(KOAgendaItem *item)
     KOIncidenceToolTip::remove(item);
     KOIncidenceToolTip::add( item, incidence, KOAgendaItem::toolTipGroup() );
 
-    emit incidenceChanged( oldIncidence, incidence );
+    if ( incidence->type() == "Todo" ) {
+      emit todoChanged( (static_cast<Todo*>(oldIncidence) ),
+                        (static_cast<Todo*>(incidence) ) );
+    } else
+      emit incidenceChanged( oldIncidence, incidence );
   } else
     /*updateView()*/;
 
