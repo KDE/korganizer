@@ -205,7 +205,7 @@ void KSummaries::calUpdated()
 
     elitem = new EventListBoxItem(sumString);
     elitem->setRecur(anEvent->recurrence()->doesRecur());
-    elitem->setAlarm(anEvent->alarm()->repeatCount() > 0);
+    elitem->setAlarm(anEvent->alarm()->enabled());
     insertItem(elitem);
     currIdxs->insert(i++, anEvent);
   }

@@ -635,6 +635,7 @@ bool KOrganizer::openURL(const KURL &url,bool merge)
         if (KURL(active) == mURL) setActive(true);
         else setActive(false);
         setTitle();
+        kdDebug() << "-- Add recent URL: " << url.prettyURL() << endl;
         mRecent->addURL(url);
         showStatusMessage(i18n("Opened calendar '%1'.").arg(mURL.prettyURL()));
       }

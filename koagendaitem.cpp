@@ -102,7 +102,7 @@ void KOAgendaItem::updateIcons()
   else mIconReadonly->hide();
   if (mEvent->recurrence()->doesRecur()) mIconRecur->show();
   else mIconRecur->hide();
-  if (mEvent->alarm()->repeatCount()) mIconAlarm->show();
+  if (mEvent->alarm()->enabled()) mIconAlarm->show();
   else mIconAlarm->hide();
 }
 

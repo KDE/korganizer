@@ -467,7 +467,7 @@ void KOEditorGeneralEvent::readEvent(Event *event)
   mSecrecyCombo->setCurrentItem(event->secrecy());
 
   // set up alarm stuff
-  alarmButton->setChecked(event->alarm()->repeatCount());
+  alarmButton->setChecked(event->alarm()->enabled());
   if (alarmButton->isChecked()) {
     alarmStuffEnable(true);
     tmpDT = event->alarm()->time();
@@ -558,7 +558,7 @@ void KOEditorGeneralEvent::writeEvent(Event *event)
 
   // alarm stuff
   if (alarmButton->isChecked()) {
-    event->alarm()->setRepeatCount(1);
+    event->alarm()->setEnabled(true);
     tmpStr = alarmTimeEdit->text();
     j = tmpStr.toInt() * -60;
     if (alarmIncrCombo->currentItem() == 1)
@@ -578,7 +578,7 @@ void KOEditorGeneralEvent::writeEvent(Event *event)
     else
       event->alarm()->setAudioFile("");
   } else {
-    event->alarm()->setRepeatCount(0);
+    event->alarm()->setEnabled(false);
     event->alarm()->setProgramFile("");
     event->alarm()->setAudioFile("");
   }
