@@ -764,7 +764,12 @@ void CalendarView::edit_copy()
     KNotifyClient::beep();
   }
   
-  mTodoList->clearSelection();
+  // Clear selection to avoid accidental creation subtodo's.
+  // 1) Left todolist
+  mTodoList->clearSelection();  
+  // 2) Fullscreen todolist, test if active
+  if ( mViewManager->todoView() )
+    mViewManager->todoView()->clearSelection();
 }
 
 void CalendarView::edit_paste()
