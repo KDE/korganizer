@@ -409,14 +409,25 @@ KURL FreeBusyManager::freeBusyUrl( const QString &email )
        && !emailHost.endsWith( '.' + hostDomain ) )
     // Host names do not match
     return KURL();
-#else
-  Q_UNUSED( emailHost )
-#endif
 
   if ( KOPrefs::instance()->mFreeBusyFullDomainRetrieval )
     sourceURL.setFileName( email + ".ifb" );
   else
     sourceURL.setFileName( emailName + ".ifb" );
+#endif
+
+  //Add some intelligence to the fb URL (MS Outlook style)
+  QString fbAddress = sourceURL.fileName();
+  fbAddress.replace( "%EMAIL%", email );
+  fbAddress.replace( "%NAME%", emailName );
+  fbAddress.replace( "%SERVER%", emailHost );
+
+  //Just set it to what the user wants, make no assumptions on his/her behalf
+  kdDebug() << "FreeBusyManager::freeBusyUrl(): " << sourceURL.fileName()
+            << " set to " << fbAddress << "."
+            << endl;
+  sourceURL.setFileName(  fbAddress );
+
   sourceURL.setUser( KOPrefs::instance()->mFreeBusyRetrieveUser );
   sourceURL.setPass( KOPrefs::instance()->mFreeBusyRetrievePassword );
 
