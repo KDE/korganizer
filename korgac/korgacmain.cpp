@@ -60,7 +60,7 @@ static const KCmdLineOptions options[] =
 
 int main( int argc, char **argv )
 {
-  KLocale::setMainCatalogue( "korgac" );
+  KLocale::setMainCatalogue( "korganizer" );
   KAboutData aboutData( "korgac", I18N_NOOP("KOrganizer Alarm Daemon"),
                         korgacVersion, I18N_NOOP("KOrganizer Alarm Daemon"),
                         KAboutData::License_GPL,
