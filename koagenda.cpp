@@ -1415,6 +1415,34 @@ void KOAgenda::insertMultiItem (Event *event,QDate qd,int XBegin,int XEnd,
   marcus_bains();
 }
 
+void KOAgenda::removeEvent ( Event *event )
+{
+  KOAgendaItem *item = mItems.first();
+  while ( item && (item->incidence() != event) )
+    item = mItems.next();
+
+  if ( item ) {
+    // we found the item. Let's remove it and all its multiitems
+    if ( item->firstMultiItem() )
+      item = item->firstMultiItem();
+
+    KOAgendaItem *thisItem;
+    while (item) {
+      thisItem = item;
+      item = item->nextMultiItem();
+      QPtrList<KOAgendaItem> conflictItems = thisItem->conflictItems();
+      removeChild( thisItem );
+      mItems.remove( thisItem );
+
+      KOAgendaItem *confitem;
+      for ( confitem = conflictItems.first(); confitem != 0;
+            confitem = conflictItems.next() ) {
+        // the item itself is also in its own conflictItems list!
+        if ( confitem != thisItem ) placeSubCells(confitem);
+      }
+    }
+  }
+}
 
 //QSizePolicy KOAgenda::sizePolicy() const
 //{

@@ -824,8 +824,6 @@ void KOAgendaView::insertEvent( Event *event, QDate curDate, int curCol )
 void KOAgendaView::changeEventDisplay(Event *event, int mode)
 {
 //  kdDebug(5850) << "KOAgendaView::changeEventDisplay" << endl;
-  // TODO: this should be re-written to be MUCH smarter.  Right now we
-  // are just playing dumb.
 
   switch (mode) {
     case KOGlobals::EVENTADDED: {
@@ -834,7 +832,7 @@ void KOAgendaView::changeEventDisplay(Event *event, int mode)
         // recreates the agenda items, but the evaluation is still in an agendaItems' code,
         // which was deleted in the mean time. Thus KOrg crashes...
         if ( !event->doesRecur() ) {
-          // TODO: find a suitable date
+          // find a suitable date
           QDate f = mSelectedDates.first();
           QDate l = mSelectedDates.last();
           QDate startDt = event->dtStart().date();
@@ -858,7 +856,21 @@ void KOAgendaView::changeEventDisplay(Event *event, int mode)
       break;
 
     case KOGlobals::EVENTEDITED:
+/*      if ( event->doesFloat() ) {
+        mAllDayAgenda->changeEvent( event );
+      } else {
+        mAgenda->changeEvent( event );
+      }*/
+      fillAgenda();
+      break;
     case KOGlobals::EVENTDELETED:
+      if ( event->doesFloat() ) {
+        mAllDayAgenda->removeEvent( event );
+      } else {
+        mAgenda->removeEvent( event );
+      }
+      break;
+
     default:
       fillAgenda();
   }

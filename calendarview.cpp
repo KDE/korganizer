@@ -590,7 +590,7 @@ void CalendarView::eventAdded( Event *event )
   incidenceAdded( event );
 }
 
-void CalendarView::eventToBeDeleted( Event * )
+void CalendarView::eventToBeDeleted( Event * event )
 {
   kdDebug(5850) << "CalendarView::eventToBeDeleted(): to be implemented"
                 << endl;
@@ -627,7 +627,7 @@ void CalendarView::todoDeleted( Todo *todo )
 
 // most of the changeEventDisplays() right now just call the view's
 // total update mode, but they SHOULD be recoded to be more refresh-efficient.
-void CalendarView::changeEventDisplay(Event *which, int action)
+void CalendarView::changeEventDisplay( Event *which, int action )
 {
 //  kdDebug(5850) << "CalendarView::changeEventDisplay" << endl;
 
@@ -636,7 +636,7 @@ void CalendarView::changeEventDisplay(Event *which, int action)
 
   if (which) {
     // If there is an event view visible update the display
-    mViewManager->currentView()->changeEventDisplay(which,action);
+    mViewManager->currentView()->changeEventDisplay( which, action );
 // TODO: check, if update needed
 //    if (which->getTodoStatus()) {
       mTodoList->updateView();
@@ -695,6 +695,7 @@ void CalendarView::edit_cut()
   DndFactory factory( mCalendar );
   if ( incidence->type() == "Event" ) {
     Event *anEvent = static_cast<Event *>(incidence);
+    eventToBeDeleted( anEvent );
     factory.cutEvent(anEvent);
     eventDeleted( anEvent );
   } else if ( incidence->type() == "Todo" ) {
@@ -1046,6 +1047,7 @@ void CalendarView::deleteEvent(Event *anEvent)
 
       case KMessageBox::No: // Continue // all
       case KMessageBox::Continue:
+        eventToBeDeleted( anEvent );
         if (anEvent->organizer()==KOPrefs::instance()->email() && anEvent->attendeeCount()>0)
           schedule(Scheduler::Cancel,anEvent);
         mCalendar->deleteEvent(anEvent);
@@ -1078,6 +1080,7 @@ void CalendarView::deleteEvent(Event *anEvent)
     if (KOPrefs::instance()->mConfirm) {
       switch (msgItemDelete()) {
         case KMessageBox::Continue: // OK
+          eventToBeDeleted( anEvent );
           if ( anEvent->organizer() == KOPrefs::instance()->email() &&
                anEvent->attendeeCount() > 0 ) {
             schedule( Scheduler::Cancel,anEvent );
@@ -1087,6 +1090,7 @@ void CalendarView::deleteEvent(Event *anEvent)
           break;
       }
     } else {
+      eventToBeDeleted( anEvent );
       if ( anEvent->organizer() == KOPrefs::instance()->email() &&
            anEvent->attendeeCount() > 0 ) {
         schedule(Scheduler::Cancel,anEvent);

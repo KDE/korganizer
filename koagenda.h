@@ -93,6 +93,9 @@ class KOAgenda : public QScrollView
     void insertMultiItem ( Event *event, QDate qd, int XBegin, int XEnd,
                            int YTop, int YBottom );
 
+    // remove an event and all its multi-items from the agenda.
+    void removeEvent ( Event *event );
+
     void changeColumns( int columns );
 
     int columns() { return mColumns; }
@@ -266,7 +269,7 @@ class KOAgenda : public QScrollView
     DateList mSelectedDates;
 
     // The KOAgendaItem, which has been right-clicked last
-    KOAgendaItem *mClickedItem;
+    QGuardedPtr<KOAgendaItem> mClickedItem;
 
     // The KOAgendaItem, which is being moved/resized
     QGuardedPtr<KOAgendaItem> mActionItem;
