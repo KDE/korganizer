@@ -271,19 +271,6 @@ bool CalendarView::saveCalendar(QString filename)
   // Store back all unsaved data into calendar object
   mCurrentView->flushView();
 
-  QString e = filename.right(4);
-
-  if (e == ".vcs") {
-    int result = KMessageBox::warningContinueCancel(this,
-        i18n("Your calendar will be saved in iCalendar format.Use\n"
-              "'Export vCalendar' to save in vCalendar format."),
-        i18n("Format Conversion"),i18n("Proceed"),"dontaskFormatConversion",
-        true);
-    if (result != KMessageBox::Continue) return false;
-    filename.right(4) = ".ics";
-  }
-  
-
   CalFormat *format = new ICalFormat(mCalendar);
 
   bool success = mCalendar->save(filename,format);

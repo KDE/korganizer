@@ -243,7 +243,7 @@ class KOrganizer : public KMainWindow, virtual public KOrganizerIface
     KToggleAction *mFilterViewAction;
 
     // status bar ids
-    enum { ID_GENERAL, ID_ACTIVE, ID_MESSAGES_IN, ID_MESSAGES_OUT };
+    enum { ID_HISTORY, ID_GENERAL, ID_ACTIVE, ID_MESSAGES_IN, ID_MESSAGES_OUT };
 
   private slots:
     void dumpText(const QString &);  // only for debugging purposes

@@ -4,7 +4,7 @@
   Requires the Qt and KDE widget libraries, available at no cost at
   http://www.troll.no and http://www.kde.org respectively
   
-  Copyright (c) 1997, 1998, 1999, 2000
+  Copyright (c) 1997, 1998, 1999, 2000, 2001
   Preston Brown (preston.brown@yale.edu)
   Fester Zigterman (F.J.F.ZigtermanRustenburg@student.utwente.nl)
   Ian Dawes (iadawes@globalserve.net)
@@ -633,12 +633,10 @@ bool KOrganizer::openURL(const KURL &url,bool merge)
         showStatusMessage(i18n("Opened calendar '%1'.").arg(mURL.prettyURL()));
       }
     }
-
-
     return success;
   } else {
     QString msg;
-    msg = i18n("Cannot download calendar from '%1'.").arg(mURL.prettyURL());
+    msg = i18n("Cannot download calendar from '%1'.").arg(url.prettyURL());
     KMessageBox::error(this,msg);
     return false;
   }
@@ -653,6 +651,32 @@ void KOrganizer::closeURL()
 
 bool KOrganizer::saveURL()
 {
+  QString ext;
+
+  if (mURL.isLocalFile()) {
+    ext = mFile.right(4);
+  } else {
+    ext = mURL.filename().right(4);
+  }
+
+  if (ext == ".vcs") {
+    int result = KMessageBox::warningContinueCancel(this,
+        i18n("Your calendar will be saved in iCalendar format.Use\n"
+              "'Export vCalendar' to save in vCalendar format."),
+        i18n("Format Conversion"),i18n("Proceed"),"dontaskFormatConversion",
+        true);
+    if (result != KMessageBox::Continue) return false;
+
+    QString filename = mURL.fileName();
+    filename.replace(filename.length()-4,4,".ics");
+    mURL.setFileName(filename);
+    if (mURL.isLocalFile()) {
+      mFile = mURL.path();
+    }
+    setTitle();
+    mRecent->addURL(mURL);
+  }
+
   if (!mCalendarView->saveCalendar(mFile)) {
     kdDebug() << "KOrganizer::saveURL(): calendar view save failed." << endl;
     return false;
@@ -711,7 +735,6 @@ bool KOrganizer::saveAsURL(const KURL &url)
   
   bool success = saveURL(); // Save local file and upload local file
   if (success) {
-    mRecent->addURL(mURL);
     mURL = url;
     delete mTempFile;
     mTempFile = tempFile;
@@ -721,9 +744,10 @@ bool KOrganizer::saveAsURL(const KURL &url)
     if (KURL(active) == mURL) setActive(true);
     else setActive(false);
     setTitle();
+    mRecent->addURL(mURL);
   } else {
     kdDebug() << "KOrganizer::saveAsURL() failed" << endl;
-    mURL = URLOrig;    
+    mURL = URLOrig;
     mFile = fileOrig;
     delete tempFile;
   }

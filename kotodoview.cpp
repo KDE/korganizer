@@ -37,26 +37,27 @@ void KOTodoViewItem::paintBranches(QPainter *p,const QColorGroup & cg,int w,
 void KOTodoViewItem::construct()
 {
   setOn(mEvent->isCompleted());
-  setText(0, mEvent->summary());
-  setText(1, QString::number(mEvent->priority()));
+  setText(0,mEvent->summary());
+  setText(1,QString::number(mEvent->priority()));
+  setText(2,QString::number(mEvent->percentComplete()));
   if (mEvent->hasDueDate()) {
-    setText(2, mEvent->dtDueDateStr());
+    setText(3, mEvent->dtDueDateStr());
     if (mEvent->doesFloat()) setText(3,"");
-    else setText(3,mEvent->dtDueTimeStr());
+    else setText(4,mEvent->dtDueTimeStr());
   } else {
-    setText(2,"");
-    setText(2,"");
+    setText(3,"");
+    setText(4,"");
   }
   // Find sort id in description. It's the text behind the last '#' character
   // found in the description. White spaces are removed from beginning and end
   // of sort id.
   int pos = mEvent->description().findRev('#');
   if (pos < 0) {
-    setText(4,"");
+    setText(5,"");
   } else {
     QString str = mEvent->description().mid(pos+1);
     str.stripWhiteSpace();
-    setText(4,str);
+    setText(5,str);
   }
 }
 
@@ -240,6 +241,7 @@ KOTodoView::KOTodoView(Calendar *calendar,QWidget* parent,const char* name) :
   mTodoListView->addColumn(i18n("Summary"));
   mTodoListView->addColumn(i18n("Priority"));
   mTodoListView->setColumnAlignment(1,AlignHCenter);
+  mTodoListView->addColumn(i18n("Complete"));
   mTodoListView->addColumn(i18n("Due Date"));
   mTodoListView->addColumn(i18n("Due Time"));
   mTodoListView->addColumn(i18n("Sort Id"));
