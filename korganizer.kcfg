@@ -7,7 +7,7 @@
     <entry type="Bool" key="Auto Save">
       <label>Enable automatic saving of calendar</label>
       <whatsthis>WhatsThis text for AutoSave option</whatsthis>
-      <default>false</default>
+      <default>true</default>
     </entry>
     <entry type="Int" key="Auto Save Interval">
       <default>10</default>
