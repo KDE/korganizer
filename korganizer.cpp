@@ -578,7 +578,7 @@ void KOrganizer::file_import()
 {
   // eventually, we will need a dialog box to select import type, etc.
   // for now, hard-coded to ical file, $HOME/.calendar.
-  int retVal;
+  int retVal = -1;
   QString progPath;
   KTempFile tmpfn;
 
@@ -590,9 +590,19 @@ void KOrganizer::file_import()
 		            "Import cannot proceed.\n"));
     return;
   }
-  progPath = locate("exe", "ical2vcal") + " " + tmpfn.name();
+  
+  KProcess proc;
+  proc << "ical2vcal" << tmpfn.name();
+  bool success = proc.start( KProcess::Block );
 
-  retVal = system(QFile::encodeName(progPath));
+  if ( !success ) {
+    kdDebug() << "Error starting ical2vcal." << endl;
+    return;
+  } else {
+    retVal = proc.exitStatus();
+  } 
+
+  kdDebug() << "ical2vcal return value: " << retVal << endl;
   
   if (retVal >= 0 && retVal <= 2) {
     // now we need to MERGE what is in the iCal to the current calendar.
