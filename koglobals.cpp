@@ -67,8 +67,6 @@ KOGlobals::KOGlobals()
   mOwnInstance = new KInstance("korganizer");
   mOwnInstance->config()->setGroup("General");
 
-  mCalendarSystem = KGlobal::locale()->calendar();
-
   mAlarmClient = new AlarmClient;
 }
 
@@ -88,7 +86,7 @@ KOGlobals::~KOGlobals()
 
 const KCalendarSystem *KOGlobals::calendarSystem() const
 {
-  return mCalendarSystem;
+  return KGlobal::locale()->calendar();
 }
 
 AlarmClient *KOGlobals::alarmClient() const

@@ -61,7 +61,6 @@ class KOGlobals
 
     KInstance *mOwnInstance;
 
-    const KCalendarSystem *mCalendarSystem;    
     AlarmClient *mAlarmClient;
 };
 
