@@ -259,9 +259,9 @@ CalendarView::CalendarView( QWidget *parent, const char *name )
   
   //TODO: do a pretty Summary, 
   QString s;
-  s= "<H1>No incidence selected<H1>";
-  s = s + "<p>If you select an event or todo in korganizer's main view, "
-	  " you will see a preview of that item here.</p>";
+  s= i18n( "<H1>No incidence selected<H1>"
+           "<p>If you select an event or todo in korganizer's main view, "
+           " you will see a preview of that item here.</p>");
 
   mEventViewer->setDefaultText( s );
   mEventViewer->setIncidence( 0 );
