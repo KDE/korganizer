@@ -55,6 +55,7 @@ class KNoScrollListBox: public QListBox
     void keyReleaseEvent(QKeyEvent *);
     void mousePressEvent(QMouseEvent *);
     void resizeEvent(QResizeEvent *);
+    void contentsMouseDoubleClickEvent( QMouseEvent * e );
 
   private:
     bool mSqueezing;
@@ -127,7 +128,7 @@ class MonthViewCell : public QWidget
 
   signals:
     void defaultAction( Incidence * );
-    void newEventSignal( QDateTime );
+    void newEventSignal( QDate );
 
   protected:
     void resizeEvent( QResizeEvent * );

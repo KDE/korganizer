@@ -134,6 +134,15 @@ void KNoScrollListBox::mousePressEvent(QMouseEvent *e)
   }
 }
 
+void KNoScrollListBox::contentsMouseDoubleClickEvent ( QMouseEvent * e )
+{
+  QListBox::contentsMouseDoubleClickEvent( e );
+  QListBoxItem* item = itemAt( e->pos() );
+  if (!item) {
+    emit doubleClicked( item );
+  }
+}
+
 void KNoScrollListBox::resizeEvent(QResizeEvent *e)
 {
   bool s = count() && ( maxItemWidth() > e->size().width() );
@@ -491,20 +500,17 @@ void MonthViewCell::resizeEvent ( QResizeEvent * )
 
 void MonthViewCell::defaultAction( QListBoxItem *item )
 {
-  if ( !item ) return;
-
-  MonthViewItem *eventItem = static_cast<MonthViewItem *>( item );
-  Incidence *incidence = eventItem->incidence();
-  if ( incidence ) mMonthView->defaultAction( incidence );
+  if ( !item ) {
+    emit newEventSignal( date() );
+  } else {
+    MonthViewItem *eventItem = static_cast<MonthViewItem *>( item );
+    Incidence *incidence = eventItem->incidence();
+    if ( incidence ) mMonthView->defaultAction( incidence );
+  }
 }
 
-void MonthViewCell::cellClicked( QListBoxItem *item )
+void MonthViewCell::cellClicked( QListBoxItem * )
 {
-  if ( item == 0 ) {
-    QDateTime dt( date(), QTime( KOPrefs::instance()->startTime(), 0 ) );
-    emit newEventSignal( dt );
-  }
-
   if( KOPrefs::instance()->enableMonthScroll() ) enableScrollBars( true );
 }
 
@@ -567,13 +573,14 @@ KOMonthView::KOMonthView(Calendar *calendar, QWidget *parent, const char *name)
 
       connect( cell, SIGNAL( defaultAction( Incidence * ) ),
                SLOT( defaultAction( Incidence * ) ) );
-      connect( cell, SIGNAL( newEventSignal( QDateTime ) ),
-               SIGNAL( newEventSignal( QDateTime ) ) );
+      connect( cell, SIGNAL( newEventSignal( QDate ) ),
+               SIGNAL( newEventSignal( QDate ) ) );
     }
     dayLayout->setRowStretch( row + 1, 1 );
   }
 
   mEventContextMenu = eventPopup();
+  mGeneralContextMenu = 0;
 
   updateConfig();
 
@@ -582,8 +589,8 @@ KOMonthView::KOMonthView(Calendar *calendar, QWidget *parent, const char *name)
 
 KOMonthView::~KOMonthView()
 {
-  delete mEventContextMenu;
-  delete mGeneralContextMenu;
+  if (mEventContextMenu) delete mEventContextMenu;
+  if (mGeneralContextMenu) delete mGeneralContextMenu;
 }
 
 int KOMonthView::maxDatesHint()
@@ -756,6 +763,7 @@ void KOMonthView::showGeneralContextMenu()
   if ( !mGeneralContextMenu )
     mGeneralContextMenu = newEventPopup();
 
+  if (mGeneralContextMenu)
     mGeneralContextMenu->popup(QCursor::pos());
 }
 
