@@ -91,6 +91,8 @@ class KOViewManager : public QObject
     void showJournalView();
     void showTimeSpanView();
 
+    void showEventView();
+
   private:
     CalendarView *mMainView;
 
@@ -102,7 +104,9 @@ class KOViewManager : public QObject
     KOJournalView   *mJournalView;
     KOTimeSpanView  *mTimeSpanView;
   
-    KOrg::BaseView     *mCurrentView;  // currently active event view
+    KOrg::BaseView *mCurrentView;  // currently active event view
+    
+    KOrg::BaseView *mLastEventView;
     
     int mAgendaViewMode;
   

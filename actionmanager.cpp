@@ -1257,7 +1257,7 @@ void ActionManager::showTodoView()
 
 void ActionManager::showEventView()
 {
-  mCalendarView->viewManager()->showWeekView();
+  mCalendarView->viewManager()->showEventView();
 }
 
 void ActionManager::updateUndoAction( const QString &text )

@@ -1,8 +1,7 @@
 /*
     This file is part of KOrganizer.
 
-    Copyright (c) 2001
-    Cornelius Schumacher <schumacher@kde.org>
+    Copyright (c) 2001,2003 Cornelius Schumacher <schumacher@kde.org>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -47,6 +46,8 @@ KOViewManager::KOViewManager( CalendarView *mainView ) :
   QObject(), mMainView( mainView )
 {
   mCurrentView = 0;
+
+  mLastEventView = 0;
 
   mWhatsNextView = 0;
   mTodoView = 0;
@@ -112,7 +113,11 @@ void KOViewManager::writeSettings(KConfig *config)
 
 void KOViewManager::showView(KOrg::BaseView *view)
 {
-  if(view == mCurrentView) return;
+  if( view == mCurrentView ) return;
+
+  if ( mCurrentView && mCurrentView->isEventView() ) {
+    mLastEventView = mCurrentView;
+  }
 
   if ( mAgendaView ) mAgendaView->deleteSelectedDateTime();
   mCurrentView = view;
@@ -340,6 +345,12 @@ void KOViewManager::showTimeSpanView()
   }
 
   showView(mTimeSpanView);
+}
+
+void KOViewManager::showEventView()
+{
+  if ( mLastEventView ) showView( mLastEventView );
+  else showWeekView();
 }
 
 Incidence *KOViewManager::currentSelection()
