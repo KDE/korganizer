@@ -1753,10 +1753,14 @@ NavigatorBar *CalendarView::navigatorBar()
   return mNavigatorBar;
 }
 
-void CalendarView::importQtopia( const QString &fileName )
+void CalendarView::importQtopia( const QString &categories,
+                                 const QString &datebook,
+                                 const QString &todolist )
 {
   QtopiaFormat qtopiaFormat;
-  qtopiaFormat.load( mCalendar, fileName );  
+  if ( !categories.isEmpty() ) qtopiaFormat.load( mCalendar, categories );  
+  if ( !datebook.isEmpty() ) qtopiaFormat.load( mCalendar, datebook );  
+  if ( !todolist.isEmpty() ) qtopiaFormat.load( mCalendar, todolist );  
   updateView();
 }
 

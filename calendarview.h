@@ -368,7 +368,9 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
 
     void slotCalendarChanged();
 
-    void importQtopia( const QString &fileName );
+    void importQtopia( const QString &categoriesFile,
+                       const QString &datebookFile,
+                       const QString &tasklistFile );
     
   protected slots:
     /** Select a view or adapt the current view to display the specified dates. */

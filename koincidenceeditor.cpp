@@ -40,6 +40,7 @@
 #include <libkcal/icalformat.h>
 
 #include "koprefs.h"
+#include "koglobals.h"
 
 #include "koincidenceeditor.h"
 #include "koincidenceeditor.moc"
@@ -64,6 +65,7 @@ KOIncidenceEditor::KOIncidenceEditor( const QString &caption,
   setButtonText( User1, saveTemplateText );
 
   mCategoryDialog = new KPIM::CategorySelectDialog( KOPrefs::instance(), this );
+  KOGlobals::fitDialogToScreen( mCategoryDialog );
 
   connect(mCategoryDialog,SIGNAL(editCategories()),SIGNAL(editCategories()));
 

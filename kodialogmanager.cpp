@@ -52,6 +52,7 @@ KODialogManager::KODialogManager( CalendarView *mainView ) :
   mPluginDialog = 0;
 
   mCategoryEditDialog = new KPIM::CategoryEditDialog(KOPrefs::instance(),mMainView);
+  KOGlobals::fitDialogToScreen( mCategoryEditDialog );
 }
 
 KODialogManager::~KODialogManager()
