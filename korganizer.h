@@ -38,7 +38,7 @@
 #include <qsplitter.h>
 
 #include <ktoolbar.h>
-#include <kapp.h>
+#include <kapplication.h>
 #include <klocale.h>
 #include <kstatusbar.h>
 #include <kmenubar.h>
