@@ -27,7 +27,6 @@
 #ifndef KORG_NODCOP
 #include <dcopclient.h>
 #include "kmailIface_stub.h"
-#include <kdcopservicestarter.h>
 #endif
 
 #include <kiconloader.h>
@@ -43,7 +42,7 @@ bool UriHandler::process( const QString &uri )
 #ifndef KORG_NODCOP
   if ( uri.startsWith( "kmail:" ) ) {
     // make sure kmail is running or the part is shown
-    KDCOPServiceStarter::self()->startServiceFor("DCOP/ResourceBackend/IMAP");
+    kapp->startServiceByDesktopPath("kmail");
     // parse string, show
     int start = uri.find( ':' ) + 1;
     int delimiter = uri.find( '/', start );
