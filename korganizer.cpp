@@ -787,9 +787,7 @@ void KOrganizer::toggleToolBar()
 
 void KOrganizer::saveProperties(KConfig *config)
 {
-  if (mURL.isLocalFile()) {
-    config->writeEntry("Calendar",mLastFile);
-  }
+  config->writeEntry("Calendar",mLastFile);
 }
 
 void KOrganizer::readProperties(KConfig *config)
