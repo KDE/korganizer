@@ -240,7 +240,7 @@ KOTodoView::KOTodoView(Calendar *calendar,QWidget* parent,const char* name) :
 {
   QBoxLayout *topLayout = new QVBoxLayout(this);
 
-  QLabel *title = new QLabel(i18n("To-Do Items"),this);
+  QLabel *title = new QLabel(i18n("To-do items:"),this);
   title->setFrameStyle(QFrame::Panel|QFrame::Raised);
   topLayout->addWidget(title);
 
