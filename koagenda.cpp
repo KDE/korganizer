@@ -216,7 +216,10 @@ void KOAgenda::init()
   mStartCell = QPoint( 0, 0 );
   mEndCell = QPoint( 0, 0 );
 
-  mSelectionCell = QPoint( 0, 0 );
+  mHasSelection = false;
+  mSelectionStartPoint = QPoint( 0, 0 );
+  mSelectionStartCell = QPoint( 0, 0 );
+  mSelectionEndCell = QPoint( 0, 0 );
 
   mOldLowerScrollValue = -1;
   mOldUpperScrollValue = -1;
@@ -291,8 +294,9 @@ void KOAgenda::clear()
 
 void KOAgenda::clearSelection()
 {
-  mSelectionCell = QPoint( 0, 0 );
+  mHasSelection = false;
   mActionType = NOP;
+  updateContents();
 }
 
 void KOAgenda::marcus_bains()
@@ -534,6 +538,26 @@ bool KOAgenda::eventFilter_mouse(QObject *object, QMouseEvent *me)
       } else {
         if (me->button() == RightButton)
         {
+          // if mouse pointer is not in selection, select the cell below the cursor
+          QPoint gpos = contentsToGrid( viewportToContents( viewportPos ) );
+          bool needNewSelection = false;
+          if ( !mHasSelection ) {
+            needNewSelection = true;
+          } else if ( gpos.x()<mSelectionStartCell.x() || gpos.x()>mSelectionEndCell.x() ) {
+            needNewSelection = true;
+          } else if ( (gpos.x()==mSelectionStartCell.x()) && (gpos.y()<mSelectionStartCell.y()) ) {
+            needNewSelection = true;
+          } else if ( (gpos.x()==mSelectionEndCell.x()) && (gpos.y()>mSelectionEndCell.y()) ) {
+            needNewSelection = true;
+          }
+          if ( needNewSelection ) {
+            mSelectionStartCell = gpos;
+            mSelectionEndCell = gpos;
+            mHasSelection = true;
+            emit newStartSelectSignal();
+            emit newTimeSpanSignal( mSelectionStartCell, mSelectionEndCell );
+            updateContents();
+          }
           showNewEventPopupSignal();
         }
         else
@@ -598,6 +622,7 @@ void KOAgenda::startSelectAction( const QPoint &viewportPos )
 
   mActionType = SELECT;
   mSelectionStartPoint = viewportPos;
+  mHasSelection = true;
 
   QPoint pos = viewportToContents( viewportPos );
   QPoint gpos = contentsToGrid( pos );
@@ -605,7 +630,8 @@ void KOAgenda::startSelectAction( const QPoint &viewportPos )
   // Store new selection
   mStartCell = gpos;
   mEndCell = gpos;
-  mSelectionCell = gpos;
+  mSelectionStartCell = gpos;
+  mSelectionEndCell = gpos;
 
   updateContents();
 }
@@ -630,9 +656,18 @@ void KOAgenda::performSelectAction(const QPoint& viewportPos)
   }
 
   if ( gpos != mEndCell ) {
-    mSelectionCell = gpos;
-    updateContents();
     mEndCell = gpos;
+    if ( mStartCell.x()>mEndCell.x() || 
+         ( mStartCell.x()==mEndCell.x() && mStartCell.y()>mEndCell.y() ) ) { 
+      // backward selection
+      mSelectionStartCell = mEndCell;
+      mSelectionEndCell = mStartCell;
+    } else {
+      mSelectionStartCell = mStartCell;
+      mSelectionEndCell = mEndCell;
+    }
+  
+    updateContents();
   }
 }
 
@@ -641,10 +676,7 @@ void KOAgenda::endSelectAction( const QPoint &currentPos )
   mScrollUpTimer.stop();
   mScrollDownTimer.stop();
 
-  if ( (mEndCell.x() < mStartCell.x()) || (mEndCell.x() == mStartCell.x() && mEndCell.y() < mStartCell.y()) )
-    emit newTimeSpanSignal( mEndCell, mStartCell );
-  else
-    emit newTimeSpanSignal( mStartCell, mEndCell );
+  emit newTimeSpanSignal( mSelectionStartCell, mSelectionEndCell );
 
   if ( KOPrefs::instance()->mSelectionStartsEditor ) {
     if ( ( mSelectionStartPoint - currentPos ).manhattanLength() >
@@ -1138,66 +1170,34 @@ void KOAgenda::drawContents(QPainter* p, int cx, int cy, int cw, int ch)
   }
 
   // draw selection
-  if ( mActionType == SELECT ) {
+  if ( mHasSelection ) {
     QPoint pt, pt1;
 //    int x, x1, y, y1, y2;
     int height = contentsHeight();
 
-    // clear column(s) with old selection
-    if ( mSelectionCell.x() < mEndCell.x() && mSelectionCell.x() >= mStartCell.x() ) {
-      pt = gridToContents( mEndCell );
-      pt1 = gridToContents( mEndCell + QPoint(1,1) );
-      dbp.fillRect( QRect( pt.x(), 0, pt1.x() - pt.x(), height), KOPrefs::instance()->mHighlightColor );
-    }
-
-    if ( mSelectionCell.x() > mStartCell.x() ) { // forward multi day selection
+    if ( mSelectionEndCell.x() > mSelectionStartCell.x() ) { // multi day selection
       // draw start day
-      pt = gridToContents( mStartCell );
-      pt1 = gridToContents( QPoint(mStartCell.x()+1, mRows+1) );
+      pt = gridToContents( mSelectionStartCell );
+      pt1 = gridToContents( QPoint( mSelectionStartCell.x() + 1, mRows + 1 ) );
 
       dbp.fillRect( QRect( pt, pt1 ), KOPrefs::instance()->mHighlightColor );
 
       // draw all other days between the start day and the day of the selection end
-      for ( int c = mStartCell.x() + 1; c < mSelectionCell.x(); ++c ) {
-        pt = gridToContents( QPoint(c,0) );
-        pt1 = gridToContents( QPoint(c+1,mRows+1) );
+      for ( int c = mSelectionStartCell.x() + 1; c < mSelectionEndCell.x(); ++c ) {
+        pt = gridToContents( QPoint( c, 0 ) );
+        pt1 = gridToContents( QPoint( c + 1, mRows + 1 ) );
 
-        dbp.fillRect( QRect(pt, pt1), KOPrefs::instance()->mHighlightColor );
+        dbp.fillRect( QRect( pt, pt1 ), KOPrefs::instance()->mHighlightColor );
       }
 
       // draw end day
-      pt = gridToContents( QPoint( mSelectionCell.x(), 0 ) );
-      pt1 = gridToContents( mSelectionCell + QPoint(1,1) );
+      pt = gridToContents( QPoint( mSelectionEndCell.x(), 0 ) );
+      pt1 = gridToContents( mSelectionEndCell + QPoint(1,1) );
       dbp.fillRect( QRect( pt, pt1), KOPrefs::instance()->mHighlightColor );
-    } else if ( mSelectionCell.x() < mStartCell.x() ) { // backward multi day selection
-      // draw start day
-      pt = gridToContents( QPoint(mStartCell.x(), 0) );
-      pt1 = gridToContents( mStartCell + QPoint(1,1) );
-
+    }  else { // single day selection
+      pt = gridToContents( mSelectionStartCell );
+      pt1 = gridToContents( mSelectionEndCell + QPoint(1,1) );
       dbp.fillRect( QRect( pt, pt1 ), KOPrefs::instance()->mHighlightColor );
-
-      // draw all other days between the day of begin and the end date
-      for ( int c = mSelectionCell.x() + 1; c < mStartCell.x(); ++c ) {
-        pt = gridToContents( QPoint(c,0) );
-        pt1 = gridToContents( QPoint(c+1, mRows+1) );
-
-        dbp.fillRect( QRect(pt, pt1), KOPrefs::instance()->mHighlightColor );
-      }
-
-      // draw end day
-      pt = gridToContents( mSelectionCell );
-      pt1 = gridToContents( QPoint( mSelectionCell.x() + 1, mRows+1 ) );
-      dbp.fillRect( QRect( pt, pt1 ), KOPrefs::instance()->mHighlightColor );
-    } else { // single day selection
-      if ( mSelectionCell.y() >= mStartCell.y() ) {
-        pt = gridToContents( mStartCell );
-        pt1 = gridToContents( mSelectionCell + QPoint(1,1) );
-        dbp.fillRect( QRect( pt, pt1 ), KOPrefs::instance()->mHighlightColor );
-      } else {
-        pt = gridToContents( mSelectionCell );
-        pt1 = gridToContents( mStartCell + QPoint(1,1) );
-        dbp.fillRect( QRect( pt, pt1 ), KOPrefs::instance()->mHighlightColor );
-      }
     }
   }
 

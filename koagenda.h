@@ -281,7 +281,7 @@ class KOAgenda : public QScrollView
     int mColumns;
     int mRows;
 
-    // Cells to store Move and Resize coordiantes
+    // Cells to store Move and Resize coordiantes while performing the action
     QPoint mStartCell;
     QPoint mEndCell;
 
@@ -292,8 +292,10 @@ class KOAgenda : public QScrollView
     int mWorkingHoursYBottom;
 
     // Selection
+    bool mHasSelection;
     QPoint mSelectionStartPoint;
-    QPoint mSelectionCell;
+    QPoint mSelectionStartCell;
+    QPoint mSelectionEndCell;
 
     // List of dates to be displayed
     DateList mSelectedDates;
