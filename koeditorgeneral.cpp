@@ -312,7 +312,7 @@ void KOEditorGeneral::readIncidence(Incidence *event)
     }
     mAlarmTimeEdit->setText(QString::number( offset ));
 
-    if (alarm->type() == Alarm::Procedure)) {
+    if (alarm->type() == Alarm::Procedure) {
       mAlarmProgram = alarm->programFile();
       mAlarmProgramButton->setOn(true);
       QString dispStr = i18n("Running '%1'").arg(mAlarmProgram);
