@@ -28,9 +28,8 @@
 #include <qcolor.h>
 #include <qstringlist.h>
 
+#include <kglobal.h>
 #include <kconfig.h>
-#include <ksimpleconfig.h>
-#include <kstddirs.h>
 #include <klocale.h>
 #include <kdebug.h>
 #include <kemailsettings.h>

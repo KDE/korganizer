@@ -37,6 +37,7 @@ class QRadioButton;
 class QCheckBox;
 class QLineEdit;
 class QTextStream;
+class QFrame;
 class KConfig;
 class HtmlExport;
 

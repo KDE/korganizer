@@ -31,7 +31,9 @@
 #include <kdebug.h>
 #include <klocale.h>
 #include <kiconloader.h>
+#ifndef KORG_NOKAB
 #include <kabapi.h>
+#endif
 #include <kmessagebox.h>
 
 #include <libkcal/incidence.h>
@@ -150,6 +152,10 @@ KOEditorDetails::KOEditorDetails (int spacing,QWidget* parent,const char* name)
   buttonLayout->addWidget(mAddressBookButton);
   connect(mAddressBookButton,SIGNAL(clicked()),SLOT(openAddressBook()));
 
+#ifdef KORG_NOKAB
+  mAddressBookButton->hide();
+#endif
+
   checkAttendeeSelection();
 }
 
@@ -205,6 +211,7 @@ void KOEditorDetails::attendeeListAction(QListViewItem *item)
 
 void KOEditorDetails::openAddressBook()
 {
+#ifndef KORG_NOKAB
   KabAPI addrDialog(this);
 
   if (addrDialog.init() != AddressBook::NoError) {
@@ -230,6 +237,7 @@ void KOEditorDetails::openAddressBook()
       KMessageBox::sorry(this,i18n("Error getting entry from address book."));
     }
   }
+#endif
 }
 
 
@@ -249,6 +257,7 @@ void KOEditorDetails::addNewAttendee()
   if (QString(mNameEdit->text()).stripWhiteSpace().isEmpty())
     return;
 
+#ifndef KORG_NOKAB
   // this is cool.  If they didn't enter an email address,
   // try to look it up in the address book and fill it in for them.
   if (QString(mEmailEdit->text()).stripWhiteSpace().isEmpty()) {
@@ -266,6 +275,7 @@ void KOEditorDetails::addNewAttendee()
       }
     }
   }
+#endif
 
   Attendee *a = new Attendee(mNameEdit->text(),mEmailEdit->text(),
                              mRsvpButton->isChecked(),

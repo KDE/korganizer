@@ -26,7 +26,11 @@
 #include <libkcal/incidence.h>
 #include <libkcal/calendar.h>
 
+#ifndef KORG_NOMAIL
 #include "mailscheduler.h"
+#else
+#include <libkcal/dummyscheduler.h>
+#endif
 
 #include "incomingdialog.h"
 
@@ -56,7 +60,11 @@ IncomingDialog::IncomingDialog(Calendar *calendar,QWidget* parent,
   IncomingDialog_base(parent,name,modal,fl)
 {
   mCalendar = calendar;
+#ifndef KORG_NOMAIL
   mScheduler = new MailScheduler(mCalendar);
+#else
+  mScheduler = new DummyScheduler(mCalendar);
+#endif
 }
 
 /*  

@@ -25,7 +25,9 @@
 //#include <libkcal/imipscheduler.h>
 #include <libkcal/dummyscheduler.h>
 
+#ifndef KORG_NOMAIL
 #include "mailscheduler.h"
+#endif
 
 #include "koprefs.h"
 #include "outgoingdialog.h"
@@ -58,8 +60,12 @@ OutgoingDialog::OutgoingDialog(Calendar *calendar,QWidget* parent,
     kdDebug() << "--- Dummy" << endl;
     mScheduler = new DummyScheduler(mCalendar);
   } else {
+#ifndef KORG_NOMAIL
     kdDebug() << "--- Mailer" << endl;
     mScheduler = new MailScheduler(mCalendar);
+#else
+    mScheduler = new DummyScheduler(mCalendar);
+#endif
   }
 }
 

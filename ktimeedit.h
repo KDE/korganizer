@@ -23,7 +23,7 @@
 #include <qevent.h>
 #include <qkeycode.h>
 #include <qstring.h>
-#include <kapp.h>
+#include <kapplication.h>
 
 class QComboBox;
 class QDateTime;

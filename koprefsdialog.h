@@ -21,6 +21,8 @@
 // $Id$
 
 #include <qframe.h>
+#include <qdict.h>
+#include <qcolor.h>
 
 #include <kdialogbase.h>
 

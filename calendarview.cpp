@@ -40,7 +40,7 @@
 
 #include <kglobal.h>
 #include <kdebug.h>
-#include <kstddirs.h>
+#include <kstandarddirs.h>
 #include <kfiledialog.h>
 #include <kmessagebox.h>
 #include <knotifyclient.h>
@@ -53,10 +53,14 @@
 #include <libkcal/journal.h>
 #include <libkcal/calfilter.h>
 
+#ifndef KORG_NOARCHIVE
 #include "koarchivedlg.h"
+#endif
+#ifndef KORG_NOMAIL
 #include "komailclient.h"
+#endif
 #include "calprinter.h"
-#include "exportwebdialog.h"
+//#include "exportwebdialog.h"
 #include "koprefsdialog.h"
 #include "koeventeditor.h"
 #include "kotodoeditor.h"
@@ -69,7 +73,10 @@
 #include "filtereditdialog.h"
 #include "kowhatsnextview.h"
 #include "kojournalview.h"
+#ifndef KORG_NOPLUGINS
 #include "plugindialog.h"
+#endif
+#include "koglobals.h"
 
 #include "calendarview.h"
 #include "calendarview.moc"
@@ -319,6 +326,7 @@ void CalendarView::closeCalendar()
 
 void CalendarView::archiveCalendar()
 {
+#ifndef KORG_NOARCHIVE
   if (!mArchiveDialog) {
     mArchiveDialog = new ArchiveDialog(mCalendar,this);
     connect(mArchiveDialog,SIGNAL(eventsDeleted()),SLOT(updateView()));
@@ -328,6 +336,7 @@ void CalendarView::archiveCalendar()
 
   // Workaround.
   QApplication::restoreOverrideCursor();
+#endif
 }
 
 void CalendarView::readSettings()
@@ -339,7 +348,7 @@ void CalendarView::readSettings()
   // read settings from the KConfig, supplying reasonable
   // defaults where none are to be found
 
-  KConfig *config = kapp->config();
+  KConfig *config = KGlobal::config();
 
   config->setGroup("KOrganizer Geometry");
 
@@ -394,7 +403,7 @@ void CalendarView::writeSettings()
 {
 //  kdDebug() << "CalendarView::writeSettings" << endl;
 
-  KConfig *config = kapp->config();
+  KConfig *config = KGlobal::config();
 
   config->setGroup("KOrganizer Geometry");
 
@@ -527,12 +536,12 @@ void CalendarView::updateConfig()
 
 void CalendarView::eventChanged(Event *event)
 {
-  changeEventDisplay(event,EVENTEDITED);
+  changeEventDisplay(event,KOGlobals::EVENTEDITED);
 }
 
 void CalendarView::eventAdded(Event *event)
 {
-  changeEventDisplay(event,EVENTADDED);
+  changeEventDisplay(event,KOGlobals::EVENTADDED);
 }
 
 void CalendarView::eventToBeDeleted(Event *)
@@ -542,7 +551,7 @@ void CalendarView::eventToBeDeleted(Event *)
 
 void CalendarView::eventDeleted()
 {
-  changeEventDisplay(0,EVENTDELETED);
+  changeEventDisplay(0,KOGlobals::EVENTDELETED);
 }
 
 // most of the changeEventDisplays() right now just call the view's
@@ -717,7 +726,7 @@ void CalendarView::edit_cut()
     return;
   }
   mCalendar->cutEvent(anEvent);
-  changeEventDisplay(anEvent, EVENTDELETED);
+  changeEventDisplay(anEvent, KOGlobals::EVENTDELETED);
 }
 
 void CalendarView::edit_copy()
@@ -742,7 +751,7 @@ void CalendarView::edit_paste()
 
   tmpList = mDateNavigator->getSelected();
   pastedEvent = mCalendar->pasteEvent(tmpList.first());
-  changeEventDisplay(pastedEvent, EVENTADDED);
+  changeEventDisplay(pastedEvent, KOGlobals::EVENTADDED);
 }
 
 void CalendarView::edit_options()
@@ -1019,7 +1028,7 @@ void CalendarView::deleteEvent(Event *anEvent)
 
       case KMessageBox::Continue: // all
         mCalendar->deleteEvent(anEvent);
-        changeEventDisplay(anEvent,EVENTDELETED);
+        changeEventDisplay(anEvent,KOGlobals::EVENTDELETED);
         break;
 
 // Disabled because it does not work
@@ -1036,7 +1045,7 @@ void CalendarView::deleteEvent(Event *anEvent)
         }
         while (!anEvent->recursOn(qd)) qd = qd.addDays(1);
         anEvent->addExDate(qd);
-        changeEventDisplay(anEvent, EVENTEDITED);
+        changeEventDisplay(anEvent, KOGlobals::EVENTEDITED);
         break;
 #endif
     } // switch
@@ -1045,12 +1054,12 @@ void CalendarView::deleteEvent(Event *anEvent)
       switch (msgItemDelete()) {
         case KMessageBox::Continue: // OK
           mCalendar->deleteEvent(anEvent);
-          changeEventDisplay(anEvent, EVENTDELETED);
+          changeEventDisplay(anEvent, KOGlobals::EVENTDELETED);
           break;
       } // switch
     } else {
       mCalendar->deleteEvent(anEvent);
-      changeEventDisplay(anEvent, EVENTDELETED);
+      changeEventDisplay(anEvent, KOGlobals::EVENTDELETED);
     }
   } // if-else
 }
@@ -1087,6 +1096,7 @@ void CalendarView::action_search()
 
 void CalendarView::action_mail()
 {
+#ifndef KORG_NOMAIL
   KOMailClient mailClient;
 
   Incidence *incidence = currentSelection();
@@ -1102,6 +1112,7 @@ void CalendarView::action_mail()
   }
 
   mailClient.mailAttendees(currentSelection());
+#endif
 
 #if 0
   Event *anEvent = 0;
@@ -1402,6 +1413,7 @@ bool CalendarView::isModified()
 // TODO: Check, if this function is still needed
 void CalendarView::signalAlarmDaemon()
 {
+#if 0
   QFile pidFile;
   QString tmpStr;
   pid_t pid;
@@ -1419,6 +1431,7 @@ void CalendarView::signalAlarmDaemon()
     if (pid > 0)
       kill(pid, SIGHUP);
   }
+#endif
 }
 
 void CalendarView::printSetup()
@@ -1455,12 +1468,14 @@ void CalendarView::printPreview()
 
 void CalendarView::exportWeb()
 {
+#if 0
   if (!mExportWebDialog) {
     mExportWebDialog = new ExportWebDialog(mCalendar);
   }
 
   mExportWebDialog->show();
   mExportWebDialog->raise();
+#endif
 }
 
 void CalendarView::exportICalendar()
@@ -1708,12 +1723,14 @@ void CalendarView::showIntro()
 
 void CalendarView::configurePlugins()
 {
+#ifndef KORG_NOPLUGINS
   if (!mPluginDialog) {
     mPluginDialog = new PluginDialog(this);
     connect(mPluginDialog,SIGNAL(configChanged()),SLOT(updateConfig()));
   }
   mPluginDialog->show();
   mPluginDialog->raise();
+#endif
 }
 
 void CalendarView::addView(KOrg::BaseView *view)

@@ -28,12 +28,12 @@
 #include <qdatetime.h>
 
 #include <kdebug.h>
+#include <kglobal.h>
 #include <klocale.h>
 #include <kiconloader.h>
-#include <kbuttonbox.h>
 #include <kmessagebox.h>
 #include <kfiledialog.h>
-#include <kstddirs.h>
+#include <kstandarddirs.h>
 
 #include <libkcal/event.h>
 

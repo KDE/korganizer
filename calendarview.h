@@ -99,8 +99,6 @@ class CalendarView : public KOrg::CalendarViewBase
     CalendarView(QWidget *parent=0, const char *name=0 );
     virtual ~CalendarView();
   
-    enum { EVENTADDED, EVENTEDITED, EVENTDELETED };
-
     Calendar *calendar() { return mCalendar; }
 
     QDate startDate();

@@ -23,6 +23,7 @@
 #include <qinputdialog.h>
 #include <qcheckbox.h>
 #include <qradiobutton.h>
+#include <qlistbox.h>
 
 #include <kdebug.h>
 #include <klocale.h>

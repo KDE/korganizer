@@ -19,6 +19,7 @@
 
 // $Id$
 
+#include <qwidget.h>
 #include <qtooltip.h>
 #include <qlayout.h>
 #include <qvbox.h>
@@ -27,12 +28,13 @@
 #include <qwidgetstack.h>
 #include <qdatetime.h>
 
+#include <kglobal.h>
 #include <kdebug.h>
 #include <klocale.h>
 #include <kiconloader.h>
 #include <kmessagebox.h>
 #include <kfiledialog.h>
-#include <kstddirs.h>
+#include <kstandarddirs.h>
 
 #include <libkcal/event.h>
 

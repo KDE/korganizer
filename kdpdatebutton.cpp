@@ -21,11 +21,8 @@
 
 #include <qstring.h>
 
-#include <kapp.h>
 #include <kdebug.h>
 #include <klocale.h>
-#include <kstddirs.h>
-#include <kconfig.h>
 #include <kmessagebox.h>
 
 #include <libkcal/vcaldrag.h>

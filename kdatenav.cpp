@@ -31,7 +31,9 @@
 #include <kiconloader.h>
 
 #include "koprefs.h"
+#ifndef KORG_NOPLUGINS
 #include "kocore.h"
+#endif
 
 #include "kdatenav.h"
 #include "kdatenav.moc"
@@ -330,8 +332,9 @@ void KDateNavigator::updateButton(int i)
 
   QToolTip::remove(buttons[i]); // remove any previous tooltip
  
+#ifndef KORG_NOPLUGINS  
   QString holiStr = KOCore::self()->holiday(buttons[i]->date());
-  
+
   // Calculate holidays. Sunday is also treated as holiday.
   if (!KGlobal::locale()->weekStartsMonday() && (float(i)/7 == float(i/7)) ||
       KGlobal::locale()->weekStartsMonday() && (float(i-6)/7 == float((i-6)/7)) ||
@@ -341,6 +344,7 @@ void KDateNavigator::updateButton(int i)
   } else {
     buttons[i]->setHoliday(false);
   }
+#endif
   
   // if today is in the currently displayed month, hilight today. 
   if ((buttons[i]->date().year() == QDate::currentDate().year()) &&

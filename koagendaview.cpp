@@ -31,10 +31,10 @@
 #include <qtooltip.h>
 #include <qpainter.h>
 
-#include <kapp.h>
+#include <kapplication.h>
 #include <kdebug.h>
 #include <kglobal.h>
-#include <kstddirs.h>
+#include <kstandarddirs.h>
 #include <kiconloader.h>
 #include <klocale.h>
 #include <kconfig.h>
@@ -42,7 +42,10 @@
 #include <libkcal/calendar.h>
 #include <libkcal/vcaldrag.h>
 
+#ifndef KORG_NOPLUGINS
 #include "kocore.h"
+#endif
+
 #include "koprefs.h"
 #include "koagenda.h"
 #include "koagendaitem.h"
@@ -393,6 +396,7 @@ void KOAgendaView::createDayLabels()
     }
     dayLayout->addWidget(dayLabel);
 
+#ifndef KORG_NOPLUGINS
     TextDecoration::List tds = KOCore::self()->textDecorations();
     TextDecoration *it;
     for(it = tds.first(); it; it = tds.next()) {
@@ -408,6 +412,7 @@ void KOAgendaView::createDayLabels()
 //      wid->setHeight(20);
       dayLayout->addWidget(wid);
     }
+#endif
   }
 
   mLayoutDayLabels->addSpacing(mAgenda->verticalScrollBar()->width());
@@ -865,7 +870,7 @@ void KOAgendaView::startDrag(Event *event)
 
 void KOAgendaView::readSettings()
 {
-  readSettings(kapp->config());
+  readSettings(KGlobal::config());
   updateConfig();
 }
 
@@ -902,11 +907,16 @@ void KOAgendaView::setHolidayMasks()
   uint i;
   for(i=0;i<mSelectedDates.count();++i) {
     QDate date = *(mSelectedDates.at(i));
-    if ((KOPrefs::instance()->mExcludeSaturdays &&
-         date.dayOfWeek() == 6) ||
-        (KOPrefs::instance()->mExcludeHolidays &&
-         (!KOCore::self()->holiday(date).isEmpty() ||
-          date.dayOfWeek() == 7))) {
+    bool showSaturday = KOPrefs::instance()->mExcludeSaturdays && (date.dayOfWeek() == 6);
+    bool showSunday = KOPrefs::instance()->mExcludeHolidays && (date.dayOfWeek() == 7);
+#ifndef KORG_NOPLUGINS
+    bool showHoliday = KOPrefs::instance()->mExcludeHolidays &&
+                       !KOCore::self()->holiday(date).isEmpty();
+    bool showDay = showSaturday || showSunday || showHoliday;
+#else
+    bool showDay = showSaturday || showSunday;
+#endif
+    if (showDay) {
       mHolidayMask[i] = true;
     } else {
       mHolidayMask[i] = false;

@@ -28,12 +28,13 @@
 #include <qwidgetstack.h>
 #include <qdatetime.h>
 
+#include <kglobal.h>
 #include <klocale.h>
 #include <kiconloader.h>
 #include <kmessagebox.h>
 #include <kdebug.h>
 #include <krestrictedline.h>
-#include <kstddirs.h>
+#include <kstandarddirs.h>
 #include <kfiledialog.h>
 
 #include <libkcal/todo.h>

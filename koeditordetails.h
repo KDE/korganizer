@@ -31,7 +31,7 @@
 #include <qlistview.h>
 #include <qradiobutton.h>
 
-#include <kapp.h>
+#include <kapplication.h>
 
 #include <libkcal/event.h>
 

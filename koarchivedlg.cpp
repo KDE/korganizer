@@ -25,7 +25,6 @@
 #include <qlayout.h>
 #include <qdatetime.h>
 
-#include <kapp.h>
 #include <kdebug.h>
 #include <klocale.h>
 #include <kurlrequester.h>

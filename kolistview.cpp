@@ -29,7 +29,7 @@
 #include <libkcal/calendar.h>
 
 #include "calprinter.h"
-#include "calendarview.h"
+#include "koglobals.h"
 
 #include "kolistview.h"
 #include "kolistview.moc"
@@ -298,17 +298,17 @@ void KOListView::changeEventDisplay(Event *event, int action)
   KOListViewItem *item;
   
   switch(action) {
-    case CalendarView::EVENTADDED:
+    case KOGlobals::EVENTADDED:
       new KOListViewItem(mListView,event);
       break;
-    case CalendarView::EVENTEDITED:
+    case KOGlobals::EVENTEDITED:
       item = getItemForEvent(event);
       if (item) {
         delete item;
         new KOListViewItem(mListView,event);
       }
       break;
-    case CalendarView::EVENTDELETED:
+    case KOGlobals::EVENTDELETED:
       item = getItemForEvent(event);
       if (item) {
         delete item;

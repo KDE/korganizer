@@ -38,14 +38,12 @@
 #include <qradiobutton.h>
 #include <qpushbutton.h>
 
-#include <kapp.h>
 #include <kdebug.h>
 #include <klocale.h>
 #include <kglobal.h>
 #include <kfontdialog.h>
-#include <kstddirs.h>
 #include <kmessagebox.h>
-#include <kcolordlg.h>
+#include <kcolordialog.h>
 #include <kiconloader.h>
 
 #include "kprefs.h"

@@ -25,6 +25,7 @@
 #include <qfileinfo.h>
 #include <qlabel.h>
 
+#include <kglobal.h>
 #include <klocale.h>
 #include <kdebug.h>
 #include <kiconloader.h>
@@ -33,7 +34,7 @@
 #include <libkcal/calendar.h>
 
 #include "calprinter.h"
-#include "calendarview.h"
+#include "koglobals.h"
 #include "koeventviewerdialog.h"
 
 #include "kowhatsnextview.h"
@@ -147,11 +148,11 @@ void KOWhatsNextView::selectEvents(QPtrList<Event> eventList)
 void KOWhatsNextView::changeEventDisplay(Event *event, int action)
 {
   switch(action) {
-    case CalendarView::EVENTADDED:
+    case KOGlobals::EVENTADDED:
       break;
-    case CalendarView::EVENTEDITED:
+    case KOGlobals::EVENTEDITED:
       break;
-    case CalendarView::EVENTDELETED:
+    case KOGlobals::EVENTDELETED:
       break;
     default:
       kdDebug() << "KOWhatsNextView::changeEventDisplay(): Illegal action " << action << endl;

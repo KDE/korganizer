@@ -32,6 +32,7 @@
 #include <kdebug.h>
 #include <klocale.h>
 #include <kiconloader.h>
+#include <kglobal.h>
 
 #include "koagendaitem.h"
 #include "koprefs.h"
@@ -374,7 +375,11 @@ bool KOAgenda::eventFilter_mouse(QObject *object, QMouseEvent *me)
       emit editEventSignal(doubleClickedItem->itemEvent());
     }
     break;
+    
+  default:
+    break;
   }
+
 
   return true;
 }

@@ -28,18 +28,21 @@
 #include <qlayout.h>
 #include <qrect.h>
 
+#include <kglobal.h>
 #include <klocale.h>
-#include <kstddirs.h>
+#include <kstandarddirs.h>
 #include <kmessagebox.h>
 #include <ktempfile.h>
 #include <kdebug.h>
-#include <kseparator.h>
+//#include <kseparator.h>
 
 #include <libkcal/todo.h>
 
 #include "koprefsdialog.h"
 #include "koprefs.h"
+#ifndef KORG_NOPLUGINS
 #include "kocore.h"
+#endif
 #include "kdateedit.h"
 
 #include "calprinter.h"
@@ -579,7 +582,11 @@ void CalPrinter::drawDayBox(QPainter &p, const QDate &qd,
   QPtrList<Event> eventList;
   QString ampm;
 
+#ifndef KORG_NOPLUGINS
   QString hstring(KOCore::self()->holiday(qd));
+#else
+  QString hstring;
+#endif
 
   // This has to be localized
   if (fullDate) {
@@ -885,8 +892,10 @@ CalPrintDialog::CalPrintDialog(KPrinter *p, QWidget *parent, const char *name)
   
   layout->addWidget(mTypeGroup);
 
+#if 0
   KSeparator *hLine = new KSeparator( KSeparator::HLine, this);
   layout->addWidget(hLine);
+#endif
 
   QHBoxLayout *subLayout = new QHBoxLayout();
   layout->addLayout(subLayout);

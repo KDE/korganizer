@@ -29,6 +29,7 @@
 #include <qdatetime.h>
 #include <qlistbox.h>
 
+#include <kglobal.h>
 #include <klocale.h>
 #include <kiconloader.h>
 #include <kdebug.h>

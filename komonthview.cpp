@@ -37,7 +37,9 @@
 
 #include "calprinter.h"
 #include "koprefs.h"
+#ifndef KORG_NOPLUGINS
 #include "kocore.h"
+#endif
 
 #include "komonthview.h"
 #include "komonthview.moc"
@@ -699,6 +701,7 @@ void KOMonthView::viewChanged()
       daynum.prepend(KGlobal::locale()->monthName(date.month(), true));
     }
 
+#ifndef KORG_NOPLUGINS
     // add holiday, if present
     QString hstring(KOCore::self()->holiday(date));
     if (!hstring.isEmpty()) {
@@ -708,6 +711,7 @@ void KOMonthView::viewChanged()
     } else {
       dayHeaders[i]->setPalette(palette());
     }
+#endif
 
     dayHeaders[i]->setText(daynum);
     daySummaries[i]->setDate(date);
