@@ -10,6 +10,7 @@ bin_PROGRAMS = korganizer
 korganizer_LDFLAGS = $(all_libraries) $(KDE_RPATH)
 korganizer_LDADD   = libkorganizer.la
 korganizer_SOURCES = main.cpp korganizer.cpp koapp.cpp
+korganizer_COMPILE_FIRST = koprefs.h
 
 kde_module_LTLIBRARIES = libkorganizerpart.la
 
@@ -45,7 +46,8 @@ libkorganizer_la_COMPILE_FIRST = kofilterview_base.ui \
 	outgoingdialog_base.ui \
 	incomingdialog_base.ui \
 	../libkdepim/categoryselectdialog.h \
-	../kalarmd/alarmdaemoniface_stub.h
+	../kalarmd/alarmdaemoniface_stub.h \
+	koprefs_base.h
 libkorganizer_la_SOURCES =  outgoingdialog_base.ui \
 	koagendaview.cpp koagenda.cpp koagendaitem.cpp \
 	datenavigator.cpp kdatenavigator.cpp \
