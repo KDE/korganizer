@@ -248,8 +248,6 @@ void KDateNavigator::passedMidnight()
 
 void KDateNavigator::updateDates()
 {
-  kdDebug() << "KDateNavigator::updateDates()" << endl;
-
   // Find the first day of the week of the current month.
   //int d1 = KOCore::self()->calendarSystem()->day( m_MthYr );
   QDate dayone( m_MthYr.year(), m_MthYr.month(), m_MthYr.day() );
@@ -359,18 +357,16 @@ void KDateNavigator::selectDates(const DateList& dateList)
     // displaying.
     m_MthYr = mSelectedDates.first();
 
-    kdDebug() << "KDateNavigator::selectDates(): " << m_MthYr.toString()
-              << endl;
-
     // set our record of the first day of the week of the current
     // month. This needs to be done before calling dayToIndex, since it
     // relies on this information being up to date.
     QDate dayone(m_MthYr.year(), m_MthYr.month(), 1);
     m_fstDayOfWk = dayone.dayOfWeek();
 
+    updateDates();
+
     daymatrix->setSelectedDaysFrom(*(dateList.begin()), *(--dateList.end()));
 
-    updateDates();
     updateView();
   }
 }
