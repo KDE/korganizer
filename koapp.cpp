@@ -37,6 +37,7 @@
 #include <dcopclient.h>
 #include <kwin.h>
 #include <kurl.h>
+#include <kprocess.h>
 
 #include <libkcal/calendarlocal.h>
 
@@ -127,6 +128,23 @@ void KOrganizerApp::startAlarmDaemon()
   kdDebug() << "Starting alarm daemon done" << endl;
 }
 
+void KOrganizerApp::startAlarmClient()
+{
+  kdDebug() << "Starting alarm client" << endl;
+
+  KProcess *proc = new KProcess;
+  *proc << "korgac";
+  *proc << "--miniicon" <<  "korganizer";
+  connect( proc, SIGNAL( processExited( KProcess * ) ),
+           SLOT( startCompleted( KProcess * ) ) );
+  proc->start();
+}
+
+void KOrganizerApp::startCompleted( KProcess *process )
+{
+  delete process;
+}
+
 
 int KOrganizerApp::newInstance()
 {
@@ -144,6 +162,10 @@ int KOrganizerApp::newInstance()
     if (!dcopClient()->isApplicationRegistered("kalarmd")) {
       startAlarmDaemon();
     }
+    if (!dcopClient()->isApplicationRegistered("korgac")) {
+      startAlarmClient();
+    }
+
     kdDebug() << "KOApp::newInstance() registerApp" << endl;
     // Register this application with the alarm daemon
     AlarmDaemonIface_stub stub( "kalarmd", "ad" );
