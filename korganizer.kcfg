@@ -114,7 +114,7 @@
       <default>QDateTime(QDate(), QTime(2,0))</default>
     </entry>
     <entry type="Int" key="Default Alarm Time" name="AlarmTime">
-      <whatsthis>Here you can enter the default alarmtime of an ic</whatsthis>
+      <whatsthis>Here you can enter an incidence's default alarmtime.</whatsthis>
       <default>0</default>
     </entry>
   </group>
