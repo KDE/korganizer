@@ -17,17 +17,19 @@ kde_module_LTLIBRARIES = libkorganizerpart.la
 libkorganizerpart_la_LDFLAGS = -module $(KDE_PLUGIN) $(all_libraries)
 libkorganizerpart_la_LIBADD  = libkorganizer.la
 libkorganizerpart_la_SOURCES = korganizer_part.cpp
-libkorganizerpart_la_COMPILE_FIRST = publishdialog_base.h
+libkorganizerpart_la_COMPILE_FIRST = publishdialog_base.h koprefs.h
 
 check_PROGRAMS = korgplugins timezone
 
 korgplugins_LDFLAGS = $(all_libraries) $(KDE_RPATH)
 korgplugins_LDADD   = libkorganizer.la $(LIB_KSYCOCA)
 korgplugins_SOURCES = korgplugins.cpp
+korgplugins_COMPILE_FIRST = koprefs.h
 
 timezone_LDFLAGS = $(all_libraries) $(KDE_RPATH)
 timezone_LDADD   = libkorganizer.la $(LIB_KSYCOCA)
 timezone_SOURCES = timezone.cpp
+timezone_COMPILE_FIRST = koprefs.h
 
 koprefs_base.h koprefs_base.cpp: $(srcdir)/koprefs.cfg $(top_builddir)/libkdepim/cfgc/cfgc
 	$(top_builddir)/libkdepim/cfgc/cfgc $(srcdir)/koprefs.cfg
