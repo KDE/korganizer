@@ -168,7 +168,8 @@ void ResourceItem::update()
   setGuiState();
 }
 
-void ResourceItem::setResourceColor(QColor& color) {
+void ResourceItem::setResourceColor(QColor& color)
+{
   if ( color.isValid() ) {
     if ( mResourceColor != color ) {
       QPixmap px(height()-13,height()-13);
