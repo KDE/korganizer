@@ -23,17 +23,15 @@
 #ifndef _FILTEREDITDIALOG_H
 #define _FILTEREDITDIALOG_H
 
-#include <qptrlist.h>
-
 #include <kdialogbase.h>
-
-#include <libkcal/calfilter.h>
 
 class QComboBox;
 class QPushButton;
 class FilterEdit_base;
+template<class type> class QPtrList;
 
 namespace KPIM { class CategorySelectDialog; }
+namespace KCal { class CalFilter; }
 
 using namespace KCal;
 

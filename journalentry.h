@@ -27,11 +27,13 @@
 
 #include <qframe.h>
 
-#include <libkcal/calendar.h>
-
 class QLabel;
 class KTextEdit;
 
+namespace KCal {
+  class Calendar; 
+	class Journal;
+}
 using namespace KCal;
 
 class JournalEntry : public QFrame {

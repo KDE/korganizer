@@ -25,8 +25,9 @@
 
 #include <kdialogbase.h>
 
-#include <libkcal/calendar.h>
-
+namespace KCal {
+class Calendar;
+}
 using namespace KCal;
 
 class KURLRequester;

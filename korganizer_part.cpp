@@ -61,6 +61,7 @@
 #include <qapplication.h>
 #include <qfile.h>
 #include <qtimer.h>
+#include <qlayout.h>
 
 typedef KParts::GenericFactory< KOrganizerPart > KOrganizerFactory;
 K_EXPORT_COMPONENT_FACTORY( libkorganizerpart, KOrganizerFactory )

@@ -34,6 +34,7 @@
 #include <kinputdialog.h>
 #include <kmessagebox.h>
 
+#include <libkcal/calfilter.h>
 #include <libkdepim/categoryselectdialog.h>
 
 #include "koprefs.h"

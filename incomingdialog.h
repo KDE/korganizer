@@ -26,7 +26,7 @@
 
 #include <qlistview.h>
 
-#include <libkcal/calendar.h>
+#include <libkcal/incidence.h>
 #include <libkcal/scheduler.h>
 
 #include "incomingdialog_base.h"

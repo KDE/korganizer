@@ -24,14 +24,10 @@
 #ifndef CALENDARVIEW_H
 #define CALENDARVIEW_H
 
-#include <qframe.h>
-#include <qlayout.h>
 #include <qwidget.h>
 #include <qptrlist.h>
-#include <qvbox.h>
 #include <qmap.h>
 
-#include <libkcal/calendar.h>
 #include <libkcal/scheduler.h>
 
 #include <korganizer/calendarviewbase.h>

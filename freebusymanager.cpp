@@ -46,6 +46,7 @@
 #include <libkcal/calendarlocal.h>
 #include <libkcal/icalformat.h>
 
+#include <kio/job.h>
 #include <kdebug.h>
 #include <kmessagebox.h>
 #include <ktempfile.h>

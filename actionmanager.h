@@ -27,25 +27,27 @@
 #define KORG_ACTIONMANAGER_H
 
 #include <qobject.h>
-
-#include <kaction.h>
-#include <klocale.h>
 #include <kurl.h>
-
 #include <korganizer/part.h>
-#include <korganizer/mainwindow.h>
 
-#include "calendarview.h"
 #include "kcalendariface.h"
 
 namespace KCal
 {
   class Calendar;
   class CalendarResources;
+	class Incidence;
+}
+namespace KOrg 
+{
+  class MainWindow;
 }
 
 class KAction;
 class KActionCollection;
+class KRecentFilesAction;
+class KToggleAction;
+class KConfig;
 class KProcess;
 class KTempFile;
 class KXMLGUIClient;

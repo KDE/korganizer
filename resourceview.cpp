@@ -33,6 +33,7 @@
 #include <kresources/configdialog.h>
 #include <kinputdialog.h>
 
+#include <qhbox.h>
 #include <qlayout.h>
 #include <qlabel.h>
 

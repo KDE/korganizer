@@ -36,16 +36,16 @@
 #ifndef FREEBUSYMANAGER_H
 #define FREEBUSYMANAGER_H
 
+#include <kurl.h>
 #include <libkcal/icalformat.h>
-#include <libkcal/freebusy.h>
 #include <libkcal/freebusycache.h>
 #include <qstring.h>
 #include <qobject.h>
 
-#include <kio/job.h>
-
+namespace KIO { class Job; }
 namespace KCal {
 class Calendar;
+class FreeBusy;
 }
 class FreeBusyManager;
 
