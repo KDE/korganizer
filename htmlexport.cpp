@@ -98,11 +98,12 @@ bool HtmlExport::save(QTextStream *ts)
   }
 
   // Write KOrganizer trailer
-  *ts << "<p>" << i18n("This page was created by ");
-	*ts << "<a href=\"mailto:" << KOPrefs::instance()->email() << "\">";
-        *ts << KOPrefs::instance()->fullName() << "</a>";
-	*ts << i18n(" with <a href=\"http://korganizer.kde.org\">KOrganizer</a>");
-        *ts << "</p>\n";
+  QString trailer =
+    i18n("This page was created by <a href=\"mailto:%1\">%2</a> with "
+         "<a href=\"http://korganizer.kde.org\">KOrganizer</a>")
+         .arg( KOPrefs::instance()->email() )
+         .arg( KOPrefs::instance()->fullName() );
+  *ts << "<p>" << trailer << "</p>\n";
 
   // Write HTML trailer
   *ts << "</body></html>\n";
