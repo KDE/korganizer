@@ -999,7 +999,7 @@ KOPrefsDialogPlugins::KOPrefsDialogPlugins( QWidget *parent, const char* name )
  
 
   mConfigureButton = new KPushButton( KGuiItem( i18n("&Configure plugin..."),
-      "configure", QString::null, i18n("This button allows you to configure "
+      "configure", QString::null, i18n("This button allows you to configure"
       " the plugin that you have selected in the list above") ), topFrame );
   
   topLayout->addWidget( mConfigureButton );

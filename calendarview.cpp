@@ -1050,12 +1050,12 @@ void CalendarView::dissociateOccurrence( Incidence *incidence, const QDate &date
   Incidence* newInc = mCalendar->dissociateOccurrence( 
     incidence, date, true );
   if ( newInc ) {
-    startMultiModify( i18n("Dissociate ocurrence") );
+    startMultiModify( i18n("Dissociate occurrence") );
     incidenceChanged( oldInc, incidence );
     incidenceAdded( newInc );
     endMultiModify();
   } else {
-    KMessageBox::sorry( this, i18n("Dissociating the occurence failed!"), 
+    KMessageBox::sorry( this, i18n("Dissociating the occurrence failed."), 
       i18n("Dissociating failed") );
   }
 }
@@ -1065,12 +1065,12 @@ void CalendarView::dissociateFutureOccurrence( Incidence *incidence, const QDate
   Incidence* newInc = mCalendar->dissociateOccurrence( 
     incidence, date, false );
   if ( newInc ) {
-    startMultiModify( i18n("Dissociate future ocurrences") );
+    startMultiModify( i18n("Dissociate future occurrences") );
     incidenceChanged( oldInc, incidence );
     incidenceAdded( newInc );
     endMultiModify();
   } else {
-    KMessageBox::sorry( this, i18n("Dissociating the future occurences failed!"), 
+    KMessageBox::sorry( this, i18n("Dissociating the future occurrences failed."), 
       i18n("Dissociating failed") );
   }
 }
@@ -1641,7 +1641,7 @@ void CalendarView::deleteIncidence(Incidence *incidence)
   }
   if ( incidence->isReadOnly() ) {
     KMessageBox::information( this, i18n("The item \"%1\" is marked read-only "
-                              "and cannot be deleted. Probably it belongs to "
+                              "and cannot be deleted; it probably belongs to "
                               "a read-only calendar resource.")
                               .arg(incidence->summary()), 
                               i18n("Removing not possible"), 
@@ -1662,15 +1662,15 @@ void CalendarView::deleteIncidence(Incidence *incidence)
     if ( !itemDate.isValid() ) {
       kdDebug(5850) << "Date Not Valid" << endl;
       km = KMessageBox::warningContinueCancel(this,
-        i18n("The incidence \"%1\" recurs over multiple dates. "
-             "Are you sure you want to delete this event "
+        i18n("The incidence \"%1\" recurs over multiple dates; "
+             "are you sure you want to delete this event "
              "and all its recurrences?").arg( incidence->summary() ),
              i18n("KOrganizer Confirmation"), i18n("Delete All") );
     } else {
       km = KOMessageBox::fourBtnMsgBox( this, QMessageBox::Warning,
         i18n("The incidence \"%1\" recurs over multiple dates. "
              "Do you want to delete only the current one on %2, only all "
-             "future recurrences, or all it's recurrences?" )
+             "future recurrences, or all its recurrences?" )
              .arg( incidence->summary() )
              .arg( KGlobal::locale()->formatDate(itemDate)),
              i18n("KOrganizer Confirmation"), i18n("Delete C&urrent"),
