@@ -416,10 +416,12 @@ bool IncomingDialog::incomeRequest(ScheduleItemIn *item)
   return false;
 }
 
+
 bool IncomingDialog::automaticAction(ScheduleItemIn *item)
 {
   bool autoAction = false;
   IncidenceBase *inc = item->event();
+  Incidence *incidence = dynamic_cast< Incidence *>( inc );
   Scheduler::Method method = item->method();
 
   if( inc->type()=="FreeBusy" ) {
@@ -448,11 +450,7 @@ bool IncomingDialog::automaticAction(ScheduleItemIn *item)
         } else return false;
       }
     }
-  }
-
-  // @TODO: use a visitor here
-  // @TODO: also treat todos here
-  if ( inc->type()=="Event" ) {
+  } else if ( incidence ) {
     if ( method==Scheduler::Request || method==Scheduler::Publish ) {
       if ( KOPrefs::instance()->mIMIPAutoInsertRequest==KOPrefs::addressbookAuto ) {
         // insert event
@@ -479,6 +477,7 @@ bool IncomingDialog::automaticAction(ScheduleItemIn *item)
         } else return false;
       }
     }
+
   }
   return autoAction;
 }
