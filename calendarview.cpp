@@ -626,7 +626,7 @@ void CalendarView::incidenceChanged( Incidence *oldIncidence,
 void CalendarView::incidenceChanged( Incidence *oldIncidence,
                                      Incidence *newIncidence, int what )
 {
-  // TODO_RK: Make use of the what flag, which indicates which parts of the incidence have changed!
+  // TODO: Make use of the what flag, which indicates which parts of the incidence have changed!
   KOIncidenceEditor *tmp = editorDialog( newIncidence );
   if ( tmp ) {
     kdDebug(5850) << "Incidence modified and open" << endl;
@@ -751,19 +751,23 @@ void CalendarView::edit_copy()
     factory.copyEvent( anEvent );
   } else if ( incidence->type() == "Todo" ) {
     Todo *anTodo = static_cast<Todo *>(incidence);
-    if (anTodo->doesRecur())
-      anTodo->recurrence()->unsetRecurs(); // avoid 'forking'
+    // TODO: Why should we need to remove the recurrence from a todo when it is copied? 
+    // Note that this removes the recurrence from the original todo, not only from the todo in the clipboard!
+/*    if (anTodo->doesRecur())
+      anTodo->recurrence()->unsetRecurs(); // avoid 'forking'*/
     factory.copyTodo( anTodo );
   } else {
     KNotifyClient::beep();
   }
 
-  // Clear selection to avoid accidental creation subtodo's.
+  // Don't clear todo selection when copying, as this is inconsistent with the rest of KDE.
+/*  // Clear selection to avoid accidental creation subtodo's.
   // 1) Left todolist
   mTodoList->clearSelection();
   // 2) Fullscreen todolist, test if active
   if ( mViewManager->todoView() )
     mViewManager->todoView()->clearSelection();
+*/
 }
 
 void CalendarView::edit_paste()
@@ -1230,10 +1234,19 @@ void CalendarView::deleteEvent(Event *anEvent)
         break;
 
       case KMessageBox::Yes: // just this one
-        // TODO_RK: Why the heck do we check for itemDate!=QDate(1,1,1)?????
-        if (itemDate!=QDate(1,1,1) || itemDate.isValid()) {
+        if ( itemDate.isValid()) {
           Event*oldEvent = anEvent->clone();
           anEvent->addExDate(itemDate);
+          incidenceChanged( oldEvent, anEvent );
+        }
+        break;
+      // TODO_RK: Find a proper dialogbox with four buttons, then change the 9999 
+      // to the actual code of the "delete only future items" button
+      case 9999: // all future items
+        Recurrence *recur = anEvent->recurrence();
+        if ( recur ) {
+          Event*oldEvent = anEvent->clone();
+          recur->setEndDate( itemDate.addDays(-1) );
           incidenceChanged( oldEvent, anEvent );
         }
         break;
