@@ -1863,18 +1863,18 @@ void KOAgenda::checkScrollBoundaries()
   checkScrollBoundaries(verticalScrollBar()->value());
 }
 
-void KOAgenda::checkScrollBoundaries(int v)
+void KOAgenda::checkScrollBoundaries( int v )
 {
   int yMin = int( v / mGridSpacingY );
   int yMax = int( ( v + visibleHeight() ) / mGridSpacingY );
 
 //  kdDebug(5850) << "--- yMin: " << yMin << "  yMax: " << yMax << endl;
 
-  if (yMin != mOldLowerScrollValue) {
+  if ( yMin != mOldLowerScrollValue ) {
     mOldLowerScrollValue = yMin;
     emit lowerYChanged(yMin);
   }
-  if (yMax != mOldUpperScrollValue) {
+  if ( yMax != mOldUpperScrollValue ) {
     mOldUpperScrollValue = yMax;
     emit upperYChanged(yMax);
   }

@@ -191,7 +191,7 @@ class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::
     /** Emitted, when a day changed (i.e. korganizer was running at midnight).
         The argument is the new date */
     void dayPassed( const QDate & );
-	/**
+    /**
       Attendees were removed from this incidence. Only the removed attendees
       are present in the incidence, so we just need to send a cancel messages
       to all attendees groupware messages are enabled at all.
