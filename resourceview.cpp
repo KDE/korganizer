@@ -105,7 +105,7 @@ ResourceView::ResourceView( KCal::CalendarResourceManager *manager,
   connect( mAddButton, SIGNAL( clicked() ), SLOT( addResource() ) );
   connect( mDeleteButton, SIGNAL( clicked() ), SLOT( removeResource() ) );
   connect( mEditButton, SIGNAL( clicked() ), SLOT( editResource() ) );
-
+  connect( mListView, SIGNAL( doubleClicked ( QListViewItem *, const QPoint &, int ) ), SLOT( editResource() ) );
   updateView();
 }
 
