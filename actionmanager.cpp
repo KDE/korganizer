@@ -205,7 +205,7 @@ void ActionManager::createCalendarResources()
 
   KConfig *config = KOGlobals::self()->config();
   config->setGroup( "Settings" );
-  mResourceButtonsAction->setChecked( 
+  mResourceButtonsAction->setChecked(
       config->readBoolEntry( "ResourceButtonsVisible", true ) );
   toggleResourceButtons();
 
@@ -270,9 +270,7 @@ void ActionManager::initActions()
                                         SLOT( toggleFilterView() ),
                                         mACollection,
                                         "show_filter" );
-#if KDE_IS_VERSION( 3,2,90 )
   mFilterViewAction->setCheckedState( i18n("Hi&de Filter") );
-#endif
 
   KStdAction::tipOfDay( this, SLOT( showTip() ), mACollection,
                         "help_tipofday" );
@@ -291,7 +289,7 @@ void ActionManager::initActions()
   new KAction( i18n("&vCalendar..."), 0,
                     mCalendarView, SLOT( exportVCalendar() ),
                     mACollection, "export_vcalendar" );
-  new KAction( i18n("Export &Web Page..."), "webexport", 0, 
+  new KAction( i18n("Export &Web Page..."), "webexport", 0,
                     mCalendarView, SLOT( exportWeb() ),
                     mACollection, "export_web" );
 
@@ -667,7 +665,7 @@ void ActionManager::file_import()
       KMessageBox::information( dialogParent(),
                                i18n( "KOrganizer successfully imported and "
                                     "merged your .calendar file from ical "
-                                    "into the currently opened calendar." ), 
+                                    "into the currently opened calendar." ),
                                "dotCalendarImportSuccess" );
     else
       KMessageBox::information( dialogParent(),
@@ -807,10 +805,10 @@ bool ActionManager::openURL( const KURL &url,bool merge )
   return true;
 }
 
-bool ActionManager::addResource( const KURL &mUrl ) 
+bool ActionManager::addResource( const KURL &mUrl )
 {
   CalendarResources *cr = KOrg::StdCalendar::self();
-  
+
   CalendarResourceManager *manager = cr->resourceManager();
 
   ResourceCalendar *resource = 0;
@@ -837,7 +835,7 @@ bool ActionManager::addResource( const KURL &mUrl )
     // we have to call resourceAdded manually, because for in-process changes
     // the dcop signals are not connected, so the resource's signals would not
     // be connected otherwise
-    if ( mCalendarResources ) 
+    if ( mCalendarResources )
       mCalendarResources->resourceAdded( resource );
   }
   return true;
@@ -873,7 +871,7 @@ bool ActionManager::saveURL()
   }
 
   if ( ext == ".vcs" ) {
-    int result = KMessageBox::warningContinueCancel( 
+    int result = KMessageBox::warningContinueCancel(
         dialogParent(),
         i18n( "Your calendar will be saved in iCalendar format. Use "
               "'Export vCalendar' to save in vCalendar format." ),
@@ -923,7 +921,7 @@ void ActionManager::exportToHTML()
 {
   KURL dest( KOPrefs::instance()->mHtmlExportFile );
   KCal::HtmlExport mExport( mCalendarView->calendar() );
-  
+
   mExport.setTitle( i18n("KOrganizer Calendar") );
   mExport.setTitleTodo( i18n("KOrganizer To-do List") );
   mExport.setCredit( "KOrganizer", "http://korganizer.kde.org" );
@@ -1035,7 +1033,7 @@ bool ActionManager::saveModifiedURL()
     // Save automatically, when auto save is enabled.
     return saveURL();
   } else {
-    int result = KMessageBox::warningYesNoCancel( 
+    int result = KMessageBox::warningYesNoCancel(
         dialogParent(),
         i18n("The calendar has been modified.\nDo you want to save it?"),
         QString::null,
@@ -1098,7 +1096,7 @@ void ActionManager::readProperties( KConfig *config )
 {
   kdDebug(5850) << "ActionManager::readProperties" << endl;
 
-  bool isResourceCalendar( 
+  bool isResourceCalendar(
     config->readBoolEntry( "UseResourceCalendar", true ) );
   QString calendarUrl = config->readPathEntry( "Calendar" );
 
@@ -1338,7 +1336,7 @@ void ActionManager::processIncidenceSelection( Incidence *incidence )
   }
 
   enableIncidenceActions( true );
-  
+
   ActionStringsVisitor v;
   if ( !v.act( incidence, mShowIncidenceAction, mEditIncidenceAction, mDeleteIncidenceAction ) ) {
     mShowIncidenceAction->setText( i18n("&Show") );
@@ -1362,10 +1360,10 @@ void ActionManager::enableIncidenceActions( bool enabled )
 void ActionManager::keyBindings()
 {
   KKeyDialog dlg( false, view() );
-  if ( mMainWindow ) 
+  if ( mMainWindow )
     dlg.insert( mMainWindow->getActionCollection() );
 
-  KOrg::Part *part;  
+  KOrg::Part *part;
   for ( part = mParts.first(); part; part = mParts.next() ) {
     dlg.insert( part->actionCollection(), part->shortInfo() );
   }
@@ -1477,7 +1475,7 @@ bool ActionManager::queryClose()
   bool close = true;
 
   if ( mCalendar ) {
-    int res = KMessageBox::questionYesNoCancel( dialogParent(), 
+    int res = KMessageBox::questionYesNoCancel( dialogParent(),
       i18n("The calendar contains unsaved changes. Do you want to save them before exiting?") );
     // Exit on yes and no, don't exit on cancel. If saving fails, ask for exiting.
     if ( res == KMessageBox::Yes ) {
