@@ -638,7 +638,7 @@ bool KOrganizer::openURL(const KURL &url,bool merge)
     return success;
   } else {
     QString msg;
-    msg = i18n("Cannot download calendar from %1.").arg(mURL.prettyURL());
+    msg = i18n("Cannot download calendar from '%1'.").arg(mURL.prettyURL());
     KMessageBox::error(this,msg);
     return false;
   }
@@ -660,7 +660,7 @@ bool KOrganizer::saveURL()
 
   if (!mURL.isLocalFile()) {
     if (!KIO::NetAccess::upload(mFile,mURL)) {
-      QString msg = i18n("Cannot upload calendar to %1").arg(mURL.prettyURL());
+      QString msg = i18n("Cannot upload calendar to '%1'").arg(mURL.prettyURL());
       KMessageBox::error(this,msg);
       return false;
     }
@@ -897,7 +897,7 @@ void KOrganizer::configureDateTime()
 
   if (!proc->start()) {
     KMessageBox::sorry(this,
-        i18n("Couldn't start control module for date and time format"));
+        i18n("Couldn't start control module for date and time format."));
   }
 }
 

@@ -261,6 +261,9 @@ bool CalendarView::openCalendar(QString filename, bool merge)
     // while failing to load, the calendar object could
     // have become partially populated.  Clear it out.
     if (!merge) mCalendar->close();
+
+    KMessageBox::error(this,i18n("Couldn't load calendar '%1'.").arg(filename));
+    
     return false;
   }
 }
