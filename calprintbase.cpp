@@ -875,20 +875,20 @@ void CalPrintBase::drawTodo( int &count, Todo * item, QPainter &p, bool connectS
   }
 
   // Priority
-  rect = p.boundingRect(pospriority, y + 10, 5, -1, AlignCenter, outStr);
   outStr.setNum(priority);
+  rect = p.boundingRect(pospriority, y + 10, 5, -1, AlignCenter, outStr);
   // Make it a more reasonable size
   rect.setWidth(18);
   rect.setHeight(18);
   if ( priority > 0 && pospriority>=0 ) {
     p.drawText(rect, AlignCenter, outStr);
-  }
-  p.drawRect(rect);
-  // cross out the rectangle for completed items
-  if ( item->isCompleted() ) {
-    p.drawLine( rect.topLeft(), rect.bottomRight() );
-    p.drawLine( rect.topRight(), rect.bottomLeft() );
-  }
+    p.drawRect(rect);
+    // cross out the rectangle for completed items
+    if ( item->isCompleted() ) {
+      p.drawLine( rect.topLeft(), rect.bottomRight() );
+      p.drawLine( rect.topRight(), rect.bottomLeft() );
+    }
+	}
   startpt.mRect = rect; //save for later
 
   // Connect the dots
