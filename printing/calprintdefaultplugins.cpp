@@ -532,7 +532,7 @@ void CalPrintTodos::setSettingsWidget()
 void CalPrintTodos::loadConfig()
 {
   if ( mConfig ) {
-    mPageTitle = mConfig->readEntry( "Page title", i18n("Todo list") );
+    mPageTitle = mConfig->readEntry( "Page title", i18n("To-do list") );
     mTodoPrintType = (eTodoPrintType)mConfig->readNumEntry( "Print type", (int)TodosAll );
     mIncludeDescription = mConfig->readBoolEntry( "Include description", true );
     mIncludePriority = mConfig->readBoolEntry( "Include priority", true );

@@ -23,7 +23,7 @@
 			<default>true</default>
 		</entry>
 		<entry type="Bool" key="Archive Todos">
-		  <label>Archive todo items</label>
+		  <label>Archive to-do items</label>
 			<default>true</default>
 		</entry>
 
@@ -72,7 +72,7 @@
       <default>false</default>
     </entry>
     <entry type="Enum" key="Destination" name="Destination">
-      <label>New Events/Todos Should</label>
+      <label>New Events/To-dos Should</label>
       <choices>
         <choice name="standardDestination">
           <label>Be added to the standard resource</label>
@@ -149,8 +149,8 @@
       <default>true</default>
     </entry>
     <entry type="Bool" name="ShowAllDayTodo">
-      <label>Display todos in day, week and month views</label>
-      <whatsthis>This option toggles the display of todos in the day, week, and month view. This comes in handy when you have a lot of (recurring) todos.</whatsthis>
+      <label>Display to-dos in day, week and month views</label>
+      <whatsthis>This option toggles the display of to-dos in the day, week, and month view. This comes in handy when you have a lot of (recurring) to-dos.</whatsthis>
       <default>true</default>
     </entry>
     <entry type="Bool" key="Enable Month-View Scrollbars" name="EnableMonthScroll">
@@ -327,11 +327,11 @@
       <default>225, 225, 255</default>
     </entry>
     <entry type="Color" key="Todo due today Color" name="TodoDueTodayColor">
-      <label>Todo due today color</label>
+      <label>To-do due today color</label>
       <default>255, 200, 50</default>
     </entry>
     <entry type="Color" key="Todo overdue Color" name="TodoOverdueColor">
-      <label>Todo overdue color</label>
+      <label>To-do overdue color</label>
       <default>255, 100, 100</default>
     </entry>
     <entry type="Color" key="EventColor">

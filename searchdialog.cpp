@@ -91,7 +91,7 @@ SearchDialog::SearchDialog(Calendar *calendar,QWidget *parent)
   mInclusiveCheck = new QCheckBox( i18n("E&vents have to be completely included"),
                                   rangeGroup );
   mInclusiveCheck->setChecked( false );
-  mIncludeUndatedTodos = new QCheckBox( i18n("Include todos &without due date"), rangeGroup );
+  mIncludeUndatedTodos = new QCheckBox( i18n("Include to-dos &without due date"), rangeGroup );
   mIncludeUndatedTodos->setChecked( true );
 
   // Subjects to search
