@@ -1,4 +1,4 @@
-<!DOCTYPE UI><UI version="3.2" stdsetdef="1">
+<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
 <class>CalPrintMonthConfig_Base</class>
 <comment>Configuration page for the print day mode.</comment>
 <author>Reinhold Kainhofer &lt;reinhold@kainhofer.com&gt;</author>
@@ -13,6 +13,9 @@
             <width>496</width>
             <height>170</height>
         </rect>
+    </property>
+    <property name="caption">
+        <string>CalPrintMonth_Base</string>
     </property>
     <grid>
         <property name="name">
@@ -76,6 +79,9 @@
                     <property name="buddy" stdset="0">
                         <cstring>mToDate</cstring>
                     </property>
+                    <property name="whatsThis" stdset="0">
+                        <string>When you want to print more months at once, you can define a month range. This option defines the last month to be printed. Use the option &lt;i&gt;Start month&lt;/i&gt; to define the first month in this range.</string>
+                    </property>
                 </widget>
                 <widget class="QLabel" row="0" column="0">
                     <property name="name">
@@ -86,6 +92,9 @@
                     </property>
                     <property name="buddy" stdset="0">
                         <cstring>mFromDate</cstring>
+                    </property>
+                    <property name="whatsThis" stdset="0">
+                        <string>When you want to print more months at once, you can define a month range. This option defines the first month to be printed. Use the option &lt;i&gt;End month&lt;/i&gt; to define the last month in this range.</string>
                     </property>
                 </widget>
                 <widget class="KDateEdit" row="0" column="3">
@@ -101,6 +110,9 @@
                     <property name="focusPolicy">
                         <enum>StrongFocus</enum>
                     </property>
+                    <property name="whatsThis" stdset="0">
+                        <string>When you want to print more months at once, you can define a month range. This option defines the last month to be printed. Use the option &lt;i&gt;Start month&lt;/i&gt; to define the first month in this range.</string>
+                    </property>
                 </widget>
                 <widget class="KDateEdit" row="0" column="1">
                     <property name="name">
@@ -115,6 +127,9 @@
                     <property name="focusPolicy">
                         <enum>StrongFocus</enum>
                     </property>
+                    <property name="whatsThis" stdset="0">
+                        <string>When you want to print more months at once, you can define a month range. This option defines the first month to be printed.</string>
+                    </property>
                 </widget>
             </grid>
         </widget>
@@ -128,6 +143,9 @@
             <property name="text">
                 <string>Include to&amp;dos that are due on the printed day(s)</string>
             </property>
+            <property name="whatsThis" stdset="0">
+                <string>Check this option if you want to have todos on the print, placed by their due date.</string>
+            </property>
         </widget>
         <widget class="QCheckBox" row="1" column="0">
             <property name="name">
@@ -135,6 +153,9 @@
             </property>
             <property name="text">
                 <string>Print week &amp;numbers</string>
+            </property>
+            <property name="whatsThis" stdset="0">
+                <string>Enable this to print week numers at the left of each row.</string>
             </property>
         </widget>
         <widget class="QCheckBox" row="2" column="0">
@@ -144,6 +165,9 @@
             <property name="text">
                 <string>Print daily re&amp;curring incidences</string>
             </property>
+            <property name="whatsThis" stdset="0">
+                <string>With this option it's possible to leave out the daily recurring todos in the print. The incidences take a lot of space and make the month view needlessly complicated.</string>
+            </property>
         </widget>
         <widget class="QCheckBox" row="3" column="0">
             <property name="name">
@@ -151,6 +175,9 @@
             </property>
             <property name="text">
                 <string>Print weekl&amp;y recurring incidences</string>
+            </property>
+            <property name="whatsThis" stdset="0">
+                <string>Similar to "Print daily recurring incidences". Weekly incidences will be omitted when making a print of the selected month.</string>
             </property>
         </widget>
     </grid>
@@ -175,7 +202,7 @@
 </customwidgets>
 <images>
     <image name="image0">
-        <data format="XPM.GZ" length="2926">789c9d95594f32591086effd15c4ba3393fae895ee4ce6824540141011b7c95cf406a202caa6f065fefb549faaea0b24996fc623cb937aeb3d55754e871f67a587eb6ee9ecc7c96a1dada74929798e96a5b374339bedfefceb8f9f27a7b65da27fcb724bf6e96f27a783752929f516f32c070402289b3fc39d8203c3136157e276c1260eac0f0ade0907927f2d9c58261f929cad72be0cef8535ff5959e277c201ef0fa02cf1ae7022f9efca12ff301ca81e87c21a5f32db5acf95b0eebfcdd92e2be3a5b0fa7986435bfd6e981d99278c0ae6795c288b3e2b98e3036157d8f839961308af985df51b1b0e9dc0098ddf5a3811fd7dceaee52a370d475e28f9b7ca1c07539f67173c144e65be2fcae2d763f62d89df2acb7cc282393e57b6b9ff58d893fca632c7d1ccc78bbcd48b4c7cc2ec4bfdf0aa2cfbf50be6fa2c65d9af2aacfd2c94e53cccf9fa7645eb7794a59ebdb027fe5565895f09cb7e981a267f9febaf3117fab6702af599e7a5e2049e6dce1377c25affa6608e4786e34a58894dfc8b59f5f890731087e28f2de648fbdb16ccfd6c9465bf7365c732f12f61ed3f5016fd4a59f4e6790fddd00a5d137f638eb4bfa532df5ffc148ea4be5ac17c5ea9b2ecd72b98efff403893fa1accb12d5c5696fd4d7f6152c41f95c53f2a98f56b6597fbf3857da9b75e30fb5584b59fa78239de5596fd3e0be6fdccf311b99115f1fcdaccb12fe77927ac7e2365f1c382793e63e14cfccdf3132571e69b1f07e83327d23fbac2bee4d785d57f2a9c89de9c6fecaa1fce98135bf845b9e2189e2a07e6fee287b0cfcf3bce9525ff5d38927a1bcca9cc1b66ca528ff93d89d338e3f9e182b9c86f31a752ff609d2f847f5f83b5ea31c218137a4f8fac0cc738e10cd6d3b7189f718a2ff88a6f38c339ad05adfcf31d3f7089ab037d42ea356e708b9ff8853bdc6395de6b58c706ad736c1ee823f2de608b146dbcc08e8976f012afb04b3975ec1de853aa2457f749d5c16b1ce00d0ecdf75b1ce1dd11fd1b55d236cef7f8808ff88465b4d02676d03da29f51dd9e513fa28f150c3004246d07002288bfe9e7d45f0712f22635a490d15ef730361e3b389c67aedf2390ea3157e73dc333e9a6f042d13ebc7ed32f6882405d3ee1c678030ee10d6630a76f162c8ee8f37adeb14c0aaa0b3e68b725ac80a2b039a29f630db6e46bc127d5fd45de4b5226b0833d8ea07a445f871ae96dacc218ead08073c835136842eba8be016db830e77a419f21aca143f76c025b9ae7e5813ea35bd5a0731fd1c4877a7f614fde57d085deb7f31ad31dccf54fd087883ab7a88f6baabb45fdf760003707fa09ddd826f66048af1826f00a0bb3aa7009b73082bb03fd2faeffa7fff58cfffcbcfffdfbc93f7f7d62d7</data>
+        <data format="PNG" length="824">89504e470d0a1a0a0000000d4948445200000016000000160806000000c4b46c3b000002ff49444154789cb59531681c4714863f992dde820cb370815b50600f54e8ca0ba43970712a8fb838438a3895634813d238a5ab80e314ae4d0a812060a4226017c27221c8a9da6b8c4fe0e00d28b0571cec82043b85611f78c12966efa4bb8bc085f29a6567df7cef9f7fdeccaec571cc2cbaddee47ae21e2385e5b9b815f1ebcfcd8de6a63ad25cb338af7c52741acb5a4a729a3d723a82ec6bd99d267bf3f23fc1c4cab2442d14a915986e792fdfa59569766573049417784f1b12e8267954dab24b78714450a28beaf941f847c2a14e70a0841035a2d45d641eb027213c210c69756320767794684d6508bef0befde1a860796e4c402333542b4256c0f0cdd1e50b97191458be6e0e27d81563a87c643d8fb2d7793d685d696413cc8a6cae46f65f7d79c7c62b87b4f2e15fd0fb0d302be0fefde4a0d557a5f35e90f84e0334014d590f855c9de4ecee17e4eb319d1ff3a00ec02f8c67299f283307c61e7d06fbf1782d082588a33e1cf1705fd81cf773f3601e1f9bec59e2f4b5c7ef5209f0ac95f16630cfd818067c103b586dd274a726229cee0fe8380d191cb4d1267d3d58aa1de7d258ceae5d7d0a78fdd269a86f0c52d414c49bbe3762c9b686de41560d7a72e41c4795a6486a78f95e4c4151481d686efbe7b3398ac58b1a23868b8c474aaa8068c8e714a8dd06c1af2a9e5d1c38c641c909dba6e08237f19b358a7ac5cf3479bc2e41f257e55d2ffc6a73833746f09e186cfa387904f2cbffc90a2aa9886d0e99464d3c5965b512cebd01f1800f67672e2a392fb0f023a3d883a053ffddcc2340dd65ab452b6074dc2cd15c1cbceb863daed413e353cdfcfd97d92333a12da6d0181ec3443cf753ef3cdd092de0e116ff1a02cdc157338ca9d7b8269461cfee1ba2139b9286e1a427f10110f2d561555b076d18a39383d4d99a4c0cd0b787f20747b214962c8266e3cdcf0e97c59126ec2f6edd089f40a92f115e0d1eb11ba238461dd6a15f32b53666de841965bb203575a3cc15a48c64a965fe57105e3635db8fa96dcffc431172b5d715d7103dc3fea7f015f373c8ee3b57f0135105a0ffe02a8010000000049454e44ae426082</data>
     </image>
 </images>
 <layoutdefaults spacing="6" margin="11"/>
