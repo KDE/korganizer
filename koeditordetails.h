@@ -93,7 +93,6 @@ class KOEditorDetails : public QWidget
   private:
     bool mDisableItemUpdate;
 
-    QLineEdit *mOrganizerEdit;
     QLineEdit *mNameEdit;
     QLineEdit *mUidEdit;
     QLineEdit *mEmailEdit;
@@ -101,13 +100,13 @@ class KOEditorDetails : public QWidget
     QComboBox* mRoleCombo;
     QCheckBox* mRsvpButton;
     QComboBox* mStatusCombo;
+    QLabel *mOrganizerLabel;
 
     QPushButton* mAddButton;
     QPushButton* mRemoveButton;
     QPushButton* mAddressBookButton;
-		
-		QPtrList<Attendee> mdelAttendees;
-
+	
+    QPtrList<Attendee> mdelAttendees;
 };
 
 #endif

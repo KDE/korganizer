@@ -79,12 +79,10 @@ KOEditorDetails::KOEditorDetails (int spacing,QWidget* parent,const char* name)
 {
   QGridLayout *topLayout = new QGridLayout(this);
   topLayout->setSpacing(spacing);
-	
-	QLabel *organizerLabel = new QLabel(this);
-	organizerLabel->setText(i18n("Organizer:"));
-  mOrganizerEdit = new QLineEdit(this);
-  mOrganizerEdit->setReadOnly(true);
-	
+
+  QString organizer = KOPrefs::instance()->email();
+  mOrganizerLabel = new QLabel(i18n("Organizer: %1").arg(organizer),this);
+
   mListView = new QListView(this,"mListView");
   mListView->addColumn(i18n("Name"),180);
   mListView->addColumn(i18n("Email"),180);
@@ -92,7 +90,7 @@ KOEditorDetails::KOEditorDetails (int spacing,QWidget* parent,const char* name)
   mListView->addColumn(i18n("Status"),100);
   mListView->addColumn(i18n("RSVP"),35);
   if ( KOPrefs::instance()->mCompactDialogs ) {
-    mListView->setFixedHeight(90);
+    mListView->setFixedHeight(78);
   }
 
   connect(mListView,SIGNAL(selectionChanged(QListViewItem *)),
@@ -148,8 +146,7 @@ KOEditorDetails::KOEditorDetails (int spacing,QWidget* parent,const char* name)
   buttonLayout->addWidget(mAddressBookButton);
   connect(mAddressBookButton,SIGNAL(clicked()),SLOT(openAddressBook()));
 
-  topLayout->addWidget(organizerLabel,0,0);
-  topLayout->addMultiCellWidget(mOrganizerEdit,0,0,1,1);
+  topLayout->addMultiCellWidget(mOrganizerLabel,0,0,0,5);
   topLayout->addMultiCellWidget(mListView,1,1,0,5);
   topLayout->addWidget(attendeeLabel,2,0);
   topLayout->addMultiCellWidget(mNameEdit,2,2,1,1);
@@ -252,7 +249,7 @@ void KOEditorDetails::readEvent(Incidence *event)
     insertAttendee(new Attendee(*a));
 
   mListView->setSelected( mListView->firstChild(), true );
-	mOrganizerEdit->setText(event->organizer());
+  mOrganizerLabel->setText(i18n("Organizer: %1").arg(event->organizer()));
 //	if (event->organizer()!=KOPrefs::instance()->email())
 //	  mOrganizerEdit->setReadOnly(true);
 }

@@ -438,7 +438,6 @@ KOMonthView::KOMonthView(Calendar *calendar, QWidget *parent, const char *name)
   mDayLabels.resize( mDaysPerWeek );
   QFont bfont = font();
   bfont.setBold( true );
-  mShortDayLabels = true;
   int i;
   for( i = 0; i < mDaysPerWeek; i++ ) {
     QLabel *label = new QLabel( this );
@@ -468,6 +467,8 @@ KOMonthView::KOMonthView(Calendar *calendar, QWidget *parent, const char *name)
   }
 
   mContextMenu = eventPopup();
+
+  updateConfig();
 
   emit eventsSelected(false);
 }
@@ -528,6 +529,8 @@ void KOMonthView::updateConfig()
 
 void KOMonthView::updateDayLabels()
 {
+  kdDebug() << "KOMonthView::updateDayLabels()" << endl;
+
   for (int i = 0; i < 7; i++) {
     if (mWeekStartsMonday) {
       mDayLabels[i]->setText(KGlobal::locale()->weekDayName(i+1,mShortDayLabels));

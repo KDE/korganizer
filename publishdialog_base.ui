@@ -9,7 +9,7 @@
             <x>0</x>
             <y>0</y>
             <width>371</width>
-            <height>390</height>
+            <height>422</height>
         </rect>
     </property>
     <property name="caption">
@@ -25,90 +25,6 @@
         <property name="spacing">
             <number>6</number>
         </property>
-        <widget class="Line" row="4" column="0" rowspan="1" colspan="7">
-            <property name="name">
-                <cstring>Line1</cstring>
-            </property>
-            <property name="frameShape" stdset="0">
-                <enum>HLine</enum>
-            </property>
-            <property name="frameShadow">
-                <enum>Sunken</enum>
-            </property>
-            <property name="orientation">
-                <enum>Horizontal</enum>
-            </property>
-        </widget>
-        <spacer row="5" column="0">
-            <property name="name" stdset="0">
-                <cstring>Spacer17</cstring>
-            </property>
-            <property name="orientation">
-                <enum>Horizontal</enum>
-            </property>
-            <property name="sizeType">
-                <enum>Expanding</enum>
-            </property>
-            <property name="sizeHint">
-                <size>
-                    <width>20</width>
-                    <height>20</height>
-                </size>
-            </property>
-        </spacer>
-        <widget class="QPushButton" row="5" column="1">
-            <property name="name">
-                <cstring>PushButton9</cstring>
-            </property>
-            <property name="text">
-                <string>Ok</string>
-            </property>
-            <property name="default">
-                <bool>true</bool>
-            </property>
-        </widget>
-        <widget class="QPushButton" row="5" column="4" rowspan="1" colspan="2">
-            <property name="name">
-                <cstring>PushButton8</cstring>
-            </property>
-            <property name="text">
-                <string>Cancel</string>
-            </property>
-        </widget>
-        <spacer row="5" column="2">
-            <property name="name" stdset="0">
-                <cstring>Spacer15</cstring>
-            </property>
-            <property name="orientation">
-                <enum>Horizontal</enum>
-            </property>
-            <property name="sizeType">
-                <enum>Expanding</enum>
-            </property>
-            <property name="sizeHint">
-                <size>
-                    <width>20</width>
-                    <height>20</height>
-                </size>
-            </property>
-        </spacer>
-        <spacer row="5" column="3">
-            <property name="name" stdset="0">
-                <cstring>Spacer18</cstring>
-            </property>
-            <property name="orientation">
-                <enum>Horizontal</enum>
-            </property>
-            <property name="sizeType">
-                <enum>Expanding</enum>
-            </property>
-            <property name="sizeHint">
-                <size>
-                    <width>20</width>
-                    <height>20</height>
-                </size>
-            </property>
-        </spacer>
         <widget class="QListView" row="0" column="0" rowspan="1" colspan="7">
             <column>
                 <property name="text">
@@ -134,30 +50,6 @@
             </column>
             <property name="name">
                 <cstring>mAddressListView</cstring>
-            </property>
-        </widget>
-        <widget class="QPushButton" row="1" column="5" rowspan="1" colspan="2">
-            <property name="name">
-                <cstring>PushButton10</cstring>
-            </property>
-            <property name="text">
-                <string>New</string>
-            </property>
-        </widget>
-        <widget class="QPushButton" row="2" column="5" rowspan="1" colspan="2">
-            <property name="name">
-                <cstring>PushButton11</cstring>
-            </property>
-            <property name="text">
-                <string>Remove</string>
-            </property>
-        </widget>
-        <widget class="QPushButton" row="3" column="5" rowspan="1" colspan="2">
-            <property name="name">
-                <cstring>PushButton12</cstring>
-            </property>
-            <property name="text">
-                <string>Addressbook</string>
             </property>
         </widget>
         <widget class="QLayoutWidget" row="1" column="0" rowspan="3" colspan="5">
@@ -201,6 +93,114 @@
                     </property>
                 </widget>
             </grid>
+        </widget>
+        <widget class="QPushButton" row="1" column="5" rowspan="1" colspan="2">
+            <property name="name">
+                <cstring>PushButton10</cstring>
+            </property>
+            <property name="text">
+                <string>New</string>
+            </property>
+        </widget>
+        <widget class="QPushButton" row="2" column="5" rowspan="1" colspan="2">
+            <property name="name">
+                <cstring>PushButton11</cstring>
+            </property>
+            <property name="text">
+                <string>Remove</string>
+            </property>
+        </widget>
+        <widget class="QPushButton" row="3" column="5" rowspan="1" colspan="2">
+            <property name="name">
+                <cstring>PushButton12</cstring>
+            </property>
+            <property name="text">
+                <string>Addressbook</string>
+            </property>
+        </widget>
+        <widget class="Line" row="4" column="0" rowspan="1" colspan="7">
+            <property name="name">
+                <cstring>Line2</cstring>
+            </property>
+            <property name="frameShape" stdset="0">
+                <enum>HLine</enum>
+            </property>
+            <property name="frameShadow">
+                <enum>Sunken</enum>
+            </property>
+            <property name="orientation">
+                <enum>Horizontal</enum>
+            </property>
+        </widget>
+        <widget class="QPushButton" row="5" column="1">
+            <property name="name">
+                <cstring>PushButton9</cstring>
+            </property>
+            <property name="text">
+                <string>Ok</string>
+            </property>
+            <property name="default">
+                <bool>true</bool>
+            </property>
+        </widget>
+        <spacer row="5" column="0">
+            <property name="name" stdset="0">
+                <cstring>Spacer17</cstring>
+            </property>
+            <property name="orientation">
+                <enum>Horizontal</enum>
+            </property>
+            <property name="sizeType">
+                <enum>Expanding</enum>
+            </property>
+            <property name="sizeHint">
+                <size>
+                    <width>20</width>
+                    <height>20</height>
+                </size>
+            </property>
+        </spacer>
+        <spacer row="5" column="2">
+            <property name="name" stdset="0">
+                <cstring>Spacer15</cstring>
+            </property>
+            <property name="orientation">
+                <enum>Horizontal</enum>
+            </property>
+            <property name="sizeType">
+                <enum>Expanding</enum>
+            </property>
+            <property name="sizeHint">
+                <size>
+                    <width>20</width>
+                    <height>20</height>
+                </size>
+            </property>
+        </spacer>
+        <spacer row="5" column="3">
+            <property name="name" stdset="0">
+                <cstring>Spacer18</cstring>
+            </property>
+            <property name="orientation">
+                <enum>Horizontal</enum>
+            </property>
+            <property name="sizeType">
+                <enum>Expanding</enum>
+            </property>
+            <property name="sizeHint">
+                <size>
+                    <width>20</width>
+                    <height>20</height>
+                </size>
+            </property>
+        </spacer>
+        <widget class="QPushButton" row="5" column="4" rowspan="1" colspan="2">
+            <property name="name">
+                <cstring>PushButton8</cstring>
+            </property>
+            <property name="text">
+                <string>Cancel</string>
+            </property>
         </widget>
         <spacer row="5" column="6">
             <property name="name" stdset="0">
@@ -265,9 +265,6 @@
         <slot>reject()</slot>
     </connection>
 </connections>
-<includes>
-    <include location="local" impldecl="in implementation">publishdialog_base.ui.h</include>
-</includes>
 <slots>
     <slot access="protected">addItem()</slot>
     <slot access="protected">removeItem()</slot>
