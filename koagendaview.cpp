@@ -61,8 +61,7 @@ KOAgendaView::KOAgendaView(CalObject *cal,QWidget *parent,const char *name) :
   mWeekStartsMonday = true;
   mStartHour = 8;
 
-  mConfig = new KConfig (KGlobal::dirs()->findResource("config",
-                         "korganizerrc"));
+  mConfig = new KConfig(locate("config","korganizerrc"));
                          
   mLayoutDayLabels = 0;
   mDayLabelsFrame = 0;
@@ -189,7 +188,8 @@ QList<KOEvent> KOAgendaView::getSelected()
 
 void KOAgendaView::updateView()
 {
-  qDebug("KOAgendaView::updateView()");
+//  qDebug("KOAgendaView::updateView()");
+  fillAgenda();
 }
 
 
@@ -415,7 +415,7 @@ void KOAgendaView::slotViewChange()
 
 void KOAgendaView::slotViewChange(int newView)
 {
-//  qDebug("slotViewChange");
+//  qDebug("KOAgendaView::slotViewChange(): %d",newView);
 
   int datenum, count;
 
@@ -468,6 +468,11 @@ void KOAgendaView::slotViewChange(int newView)
 
     break;
 
+  default:
+    mSelectedDates.clear();
+    mSelectedDates.append(new QDate(QDate::currentDate()));
+    newView = DAY;
+    break;
   }
 
   emit datesSelected(mSelectedDates);

@@ -162,6 +162,9 @@ class KOrganizer : public KTMainWindow
     /** Sets title of window according to filename and modification state */
     void setTitle();
 
+    /** Get URL for saving. Opens FileDialog. */
+    KURL getSaveURL();
+
     /** Open calendar file from URL */
     bool openURL(const KURL &url);
     /** Merge calendar file from URL to current calendar */

@@ -108,7 +108,7 @@ void CalPrinter::doPreview(int pt, QDate fd, QDate td)
   printer->setOutputToFile(oldOutputToFile);
   printer->setOutputFileName(oldFileName.data());
   
-  KConfig config(KGlobal::dirs()->findResource("config", "korganizerrc")); 
+  KConfig config(locate("config", "korganizerrc")); 
   config.setGroup("Printer");
   previewProg = config.readEntry("Preview", "gv");
 
@@ -163,7 +163,7 @@ void CalPrinter::doPrint(int pt, QDate fd, QDate td)
 
 void CalPrinter::updateConfig()
 {
-  KConfig config(KGlobal::dirs()->findResource("config", "korganizerrc")); 
+  KConfig config(locate("config", "korganizerrc")); 
 
   config.setGroup("Printer");
 

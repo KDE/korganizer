@@ -101,7 +101,7 @@ QDate KDateEdit::getDate() const
 
 void KDateEdit::updateConfig()
 {
-  KConfig config(KGlobal::dirs()->findResource("config", "korganizerrc")); 
+  KConfig config(locate("config", "korganizerrc")); 
   config.setGroup("Time & Date");
   int dateFormat = config.readNumEntry("Date Format", 1);
 

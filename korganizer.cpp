@@ -89,6 +89,10 @@ KOrganizer::KOrganizer(QString filename, bool fnOverride, const char *name )
     mFile = filename;
   }
 
+  QString url = mFile;
+  KURL::encode(url);
+  mURL = KURL(url);
+
   mCalendarView = new CalendarView(mFile,this,"KOrganizer::CalendarView");
   setView(mCalendarView);
 
@@ -194,10 +198,16 @@ void KOrganizer::writeSettings()
   config->writeEntry("Status Bar", tmpStr);
 #endif
 
+  // Write only local Files to config file. This prevents loading of a remote
+  // file automatically on startup, which could block KOrganizer even before
+  // it has opened.
+  QString file;
+  if (mURL.isLocalFile()) file = mFile;
+
   // Write version number to prevent automatic loading and saving of a calendar
   // written by a newer KOrganizer, because this can lead to the loss of
   // information not processed by Korganizer 1.1.
-  config->writeEntry("Current Calendar (2.0)", mFile);
+  config->writeEntry("Current Calendar (2.0)", file);
 
   mRecent->saveEntries(config);
 
@@ -404,6 +414,17 @@ void KOrganizer::file_archive()
 
 void KOrganizer::file_saveas()
 {
+  KURL url = getSaveURL();
+
+  if (saveAsURL(url)) {
+    setTitle();
+    mRecent->addURL(url);
+  }
+}
+
+
+KURL KOrganizer::getSaveURL()
+{
   KURL url = KFileDialog::getSaveURL(locateLocal("appdata", ""),"*.vcs",this);
 
   QString filename = url.filename(false); 
@@ -418,13 +439,10 @@ void KOrganizer::file_saveas()
 
   url.setFileName(filename);
 
-  qDebug("KOrganizer::files_saveas(): Decoded url: %s",
+  qDebug("KOrganizer::getSaveURL(): Decoded url: %s",
          url.decodedURL().latin1());
 
-  if (saveAsURL(url)) {
-    setTitle();
-    mRecent->addURL(url);
-  }
+  return url;
 }
 
 
@@ -569,7 +587,7 @@ bool KOrganizer::mergeURL( const KURL &url )
 bool KOrganizer::closeURL()
 {
   qDebug("KOrganizer::closeURL()");
-  if ( mCalendarView->isModified() )
+  if (mCalendarView->isModified())
   {
     int result = KMessageBox::warningYesNoCancel(0L,
             i18n("The calendar has been modified.\nDo you want to save it?"));
@@ -577,7 +595,7 @@ bool KOrganizer::closeURL()
     switch(result) {
     case KMessageBox::Yes :
       if (mURL.isEmpty()) {
-        KURL url = KFileDialog::getSaveURL();
+        KURL url = getSaveURL();
         if (url.isEmpty()) return false;
         if (!saveAsURL(url)) return false;
       }

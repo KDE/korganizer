@@ -154,12 +154,6 @@ KOEvent *KOTodoView::getSelected()
   else return 0;
 }
 
-void KOTodoView::changeEventDisplay(KOEvent *, int)
-{
-  // play dumb and update all todos.
-  updateView();
-}
-
 void KOTodoView::editItem(QListViewItem *item)
 {
   emit editEventSignal(((KOTodoViewItem *)item)->event());

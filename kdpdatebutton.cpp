@@ -74,7 +74,7 @@ KDateButton::~KDateButton()
 
 void KDateButton::updateConfig()
 {
-  KConfig config(KGlobal::dirs()->findResource("config", "korganizerrc")); 
+  KConfig config(locate("config", "korganizerrc")); 
   config.setGroup ("Colors");
   QColor *tmpColor = new QColor("#cccccc");
   QColor todayColor = config.readColorEntry("Today Color", tmpColor);

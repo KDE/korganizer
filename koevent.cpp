@@ -33,7 +33,7 @@ KOEvent::KOEvent()
   relatedTo = 0;
   lastModified = QDateTime::currentDateTime();
   
-  KConfig config(KGlobal::dirs()->findResource("config", "korganizerrc")); 
+  KConfig config(locate("config", "korganizerrc")); 
   config.setGroup("Personal Settings");
   organizer = config.readEntry("user_email");
   if (organizer.isEmpty())
@@ -673,7 +673,7 @@ inline void KOEvent::toggleAlarm()
     alarmRepeatCount = 0;
   } else {
     alarmRepeatCount = 1;
-    KConfig config(KGlobal::dirs()->findResource("config", "korganizerrc")); 
+    KConfig config(locate("config", "korganizerrc")); 
     config.setGroup("Time & Date");
     QString alarmStr(config.readEntry("Default Alarm Time", "15"));
     int pos = alarmStr.find(' ');
@@ -1403,7 +1403,7 @@ int KOEvent::weekOfMonth(const QDate &qd) const
 
 void KOEvent::updateConfig() 
 {
-  KConfig config(KGlobal::dirs()->findResource("config", "korganizerrc")); 
+  KConfig config(locate("config", "korganizerrc")); 
   config.setGroup("Time & Date");
   
   weekStartsMonday = config.readBoolEntry("Week Starts Monday", FALSE);

@@ -33,6 +33,7 @@
 #include <qmlined.h>
 #include <qmsgbox.h>
 #include <qtimer.h>
+#include <qwidgetstack.h>
 
 #include <kglobal.h>
 #include <kiconloader.h>
@@ -47,6 +48,10 @@
 #include "calprinter.h"
 #include "aboutdlg.h"
 #include "exportwebdialog.h"
+#include "kooptionsdialog.h"
+#include "koeventeditor.h"
+#include "kotodoeditor.h"
+//#include "editeventwin.h"
 
 #include "calendarview.h"
 #include "calendarview.moc"	
@@ -85,9 +90,8 @@ CalendarView::CalendarView(QString filename, QWidget *parent, const char *name )
   leftFrame = new QFrame(panner, "CalendarView::LeftFrame");
   rightFrame = new QWidgetStack(panner, "CalendarView::RightFrame");
 
-  optionsDlg = new OptionsDialog("KOrganizer Configuration Options",
-				 this);
-  connect(optionsDlg, SIGNAL(configChanged()),
+  mOptionsDialog = new KOOptionsDialog(this);
+  connect(mOptionsDialog, SIGNAL(configChanged()),
 	  this, SLOT(updateConfig()));
 
   QVBoxLayout *layoutLeftFrame = new QVBoxLayout(leftFrame, 1, -1,
@@ -260,7 +264,7 @@ void CalendarView::readSettings()
   // read settings from the KConfig, supplying reasonable
   // defaults where none are to be found
 
-  KConfig config(KGlobal::dirs()->findResource("config", "korganizerrc")); 
+  KConfig config(locate("config", "korganizerrc")); 
 
   config.setGroup("General");
 
@@ -283,17 +287,15 @@ void CalendarView::readSettings()
   config.setGroup( "Colors" );
   if( config.readBoolEntry( "DefaultColors", TRUE ) == TRUE )
   {
-    optionsDlg->setColorDefaults();
-    optionsDlg->applyColorDefaults();
+    mOptionsDialog->setColorDefaults();
+    mOptionsDialog->applyColorDefaults();
   }
-
-  config.sync();
 }
 
 void CalendarView::readCurrentView()
 {
   QString str;
-  KConfig config(KGlobal::dirs()->findResource("config", "korganizerrc")); 
+  KConfig config(locate("config", "korganizerrc")); 
 
   config.setGroup("General");
   str = config.readEntry("Current View");
@@ -313,7 +315,7 @@ void CalendarView::writeSettings()
 {
 //  qDebug("CalendarView::writeSettings");
 
-  KConfig config(KGlobal::dirs()->findResource("config", "korganizerrc")); 
+  KConfig config(locateLocal("config", "korganizerrc")); 
 
   QString tmpStr;
   config.setGroup("General");
@@ -455,20 +457,52 @@ void CalendarView::updateConfig()
   emit configChanged();
 }
 
+void CalendarView::eventChanged(KOEvent *event)
+{
+  changeEventDisplay(event,EVENTEDITED);
+}
+
+void CalendarView::eventAdded(KOEvent *event)
+{
+  changeEventDisplay(event,EVENTADDED);
+}
+
+void CalendarView::eventToBeDeleted(KOEvent *)
+{
+  qDebug("CalendarView::eventToBeDeleted(): to be implemented");
+}
+
+void CalendarView::eventDeleted()
+{
+  changeEventDisplay(0,EVENTDELETED);
+}
+
 // most of the changeEventDisplays() right now just call the view's
 // total update mode, but they SHOULD be recoded to be more refresh-efficient.
 void CalendarView::changeEventDisplay(KOEvent *which, int action)
 {
+//  qDebug("CalendarView::changeEventDisplay");
+
   dateNavigator->updateView();
   if (searchDlg)
     searchDlg->updateView();
 
-  // If there is an event view visible update the display
-  if (currentView) currentView->changeEventDisplay(which,action);
-  if (which->getTodoStatus()) {
-    if (!currentView) todoView->changeEventDisplay(which,action);
-    todoList->changeEventDisplay(which,action);
+  if (which) {
+    // If there is an event view visible update the display
+    if (currentView) currentView->changeEventDisplay(which,action);
+    if (which->getTodoStatus()) {
+      if (!currentView) todoView->updateView();
+      todoList->updateView();
+    }
+  } else {
+    if (currentView) currentView->updateView();
   }
+}
+
+void CalendarView::updateTodoViews()
+{
+  todoList->updateView();
+  if (!currentView) todoView->updateView();
 }
 
 void CalendarView::changeAgendaView( int newView )
@@ -534,7 +568,7 @@ void CalendarView::updateView(const QDateList selectedDates)
   QDateList tmpList(FALSE);
   tmpList = selectedDates;
   int numView;
-  KConfig config(KGlobal::dirs()->findResource("config", "korganizerrc")); 
+  KConfig config(locate("config", "korganizerrc")); 
   config.setGroup("Time & Date");
   bool weekStartsMonday = config.readBoolEntry("Week Starts Monday", TRUE);
   QPixmap px;
@@ -630,38 +664,31 @@ void CalendarView::edit_paste()
 
 void CalendarView::edit_options()
 {
-  // Don´t know why this is necessary, but the options dialog doesn´t show
-  // correctly, when called for the first time, unless it is resized here.
-  // This is a workaround, the dialog should be fixed.
-  optionsDlg->resize(600,460);
-
-  optionsDlg->show();
+  mOptionsDialog->readConfig();
+  mOptionsDialog->show();
 }
 
 
-/****************************************************************************/
 void CalendarView::newEvent()
 {
   qDebug("CalendarView::newEvent()");
-//  QDate date;
-//  date = QDate::currentDate();
   newEvent(QDate::currentDate());
 }
+
 void CalendarView::newEvent(QDateTime fromHint, QDateTime toHint)
 {
   // create empty event win
-  EditEventWin *eventWin = new EditEventWin( mCalendar );
+  KOEventEditor *eventWin = new KOEventEditor(mCalendar);
 
   // put in date hint
   eventWin->newEvent(fromHint, toHint);
 
-
   // connect the win for changed events
-  connect(eventWin, SIGNAL(eventChanged(KOEvent *, int)), 
-  	  SLOT(changeEventDisplay(KOEvent *, int)));
-  connect(this, SIGNAL(closingDown()),
-	  eventWin, SLOT(cancel()));
+  connect(eventWin,SIGNAL(eventAdded(KOEvent *)),
+          SLOT(eventAdded(KOEvent *)));
 
+  connect(this, SIGNAL(closingDown()),
+	  eventWin, SLOT(reject()));
 
   // show win
   eventWin->show();
@@ -670,14 +697,15 @@ void CalendarView::newEvent(QDateTime fromHint, QDateTime toHint)
 void CalendarView::newEvent(QDateTime fromHint, QDateTime toHint, bool allDay)
 {
   // create empty event win
-  EditEventWin *eventWin = new EditEventWin( mCalendar );
+  KOEventEditor *eventWin = new KOEventEditor(mCalendar);
 
   // put in date hint
   eventWin->newEvent(fromHint, toHint, allDay);
 
   // connect the win for changed events
-  connect(eventWin, SIGNAL(eventChanged(KOEvent *, int)), 
-  	  SLOT(changeEventDisplay(KOEvent *, int)));
+  connect(eventWin,SIGNAL(eventAdded(KOEvent *)),
+          SLOT(eventAdded(KOEvent *)));
+
   connect(this, SIGNAL(closingDown()),
 	  eventWin, SLOT(cancel()));
 
@@ -687,14 +715,14 @@ void CalendarView::newEvent(QDateTime fromHint, QDateTime toHint, bool allDay)
 
 void CalendarView::newTodo()
 {
-  TodoEventWin *todoWin = new TodoEventWin( mCalendar );
-  todoWin->newEvent(QDateTime::currentDateTime().addDays(7),0,true);
+  KOTodoEditor *todoWin = new KOTodoEditor( mCalendar );
+  todoWin->newTodo(QDateTime::currentDateTime().addDays(7),0,true);
 
   // connect the win for changed events
-  connect(todoWin, SIGNAL(eventChanged(KOEvent *, int)), 
-  	  SLOT(changeEventDisplay(KOEvent *, int)));
+  connect(todoWin,SIGNAL(todoAdded(KOEvent *)),SLOT(updateTodoViews()));
+
   connect(this, SIGNAL(closingDown()),
-	  todoWin, SLOT(cancel()));
+	  todoWin, SLOT(reject()));
 
   // show win
   todoWin->show();
@@ -702,14 +730,14 @@ void CalendarView::newTodo()
 
 void CalendarView::newSubTodo(KOEvent *parentEvent)
 {
-  TodoEventWin *todoWin = new TodoEventWin( mCalendar );
-  todoWin->newEvent(QDateTime::currentDateTime().addDays(7),parentEvent,true);
+  KOTodoEditor *todoWin = new KOTodoEditor( mCalendar );
+  todoWin->newTodo(QDateTime::currentDateTime().addDays(7),parentEvent,true);
 
   // connect the win for changed events
-  connect(todoWin, SIGNAL(eventChanged(KOEvent *, int)), 
-  	  SLOT(changeEventDisplay(KOEvent *, int)));
+  connect(todoWin,SIGNAL(todoAdded(KOEvent *)),SLOT(updateTodoViews()));
+
   connect(this, SIGNAL(closingDown()),
-	  todoWin, SLOT(cancel()));
+	  todoWin, SLOT(reject()));
 
   // show win
   todoWin->show();
@@ -730,7 +758,7 @@ void CalendarView::appointment_new()
     to = from;
   }
 
-  KConfig config(KGlobal::dirs()->findResource("config", "korganizerrc")); 
+  KConfig config(locate("config", "korganizerrc")); 
   config.setGroup("Time & Date");
   QString confStr(config.readEntry("Default Start Time", "12:00"));
   int pos = confStr.find(':');
@@ -759,7 +787,7 @@ void CalendarView::allday_new()
   }
   
   newEvent(QDateTime(from, QTime(12,0,0)),
-	   QDateTime(to, QTime(12,0,0)), TRUE);
+           QDateTime(to, QTime(12,0,0)), TRUE);
 }
 
 void CalendarView::editEvent(KOEvent *anEvent)
@@ -768,33 +796,36 @@ void CalendarView::editEvent(KOEvent *anEvent)
   QDate qd;
 
   tmpList = dateNavigator->getSelected();
-  if(anEvent!=0)    {
-      qd = *tmpList.first();
-        EventWin *eventWin;
-        if (anEvent->getTodoStatus()) {
-            // this is a todo
-            eventWin = new TodoEventWin(mCalendar );
-            eventWin->editEvent(anEvent, qd);
-            connect(eventWin, SIGNAL(eventChanged(KOEvent *, int)),
-                    todoList, SLOT(updateView()));
-            connect(eventWin, SIGNAL(eventChanged(KOEvent *, int)),
-                    todoView, SLOT(updateView()));
-        } else { // this is an event
-            eventWin = new EditEventWin(mCalendar );
-            eventWin->editEvent(anEvent, qd);
-        }
-        // connect for changed events, common for todos and events
-        connect(eventWin, SIGNAL(eventChanged(KOEvent *, int)),
-                SLOT(changeEventDisplay(KOEvent *, int)));
-        connect(this, SIGNAL(closingDown()),
-                eventWin, SLOT(cancel()));
-
-        eventWin->show();
-    } else {
-        qApp->beep();
+  if(anEvent) {
+    qd = *tmpList.first();
+    if (anEvent->getTodoStatus()) {
+      // this is a todo
+      KOTodoEditor *eventWin = new KOTodoEditor(mCalendar );
+      eventWin->editTodo(anEvent, qd);
+      // connect for changed events
+      connect(eventWin,SIGNAL(todoChanged(KOEvent *)),
+              SLOT(updateTodoViews()));
+      connect(eventWin,SIGNAL(todoDeleted()),
+              SLOT(updateTodoViews()));
+      connect(this, SIGNAL(closingDown()),
+              eventWin, SLOT(reject()));
+      eventWin->show();
+    } else { // this is an event
+      KOEventEditor *eventWin = new KOEventEditor(mCalendar );
+      eventWin->editEvent(anEvent, qd);
+      // connect the win for changed events
+      connect(eventWin,SIGNAL(eventChanged(KOEvent *)),
+              SLOT(eventChanged(KOEvent *)));
+      connect(eventWin,SIGNAL(eventDeleted()),
+              SLOT(eventDeleted()));
+      connect(this, SIGNAL(closingDown()),
+              eventWin, SLOT(reject()));
+      eventWin->show();
     }
+  } else {
+    qApp->beep();
+  }
 }
-
 
 
 void CalendarView::appointment_edit()
@@ -842,19 +873,23 @@ void CalendarView::action_deleteTodo()
   // disable deletion for now, because it causes a crash.
   return;
   
-  KConfig config(KGlobal::dirs()->findResource("config", "korganizerrc")); 
+  KConfig config(locate("config", "korganizerrc")); 
   config.setGroup("General");
   if (config.readBoolEntry("Confirm Deletes") == TRUE) {
     switch(msgItemDelete()) {
     case 0: // OK
       mCalendar->deleteTodo(aTodo);
-      todoList2->changeEventDisplay(aTodo, EVENTDELETED);
+      // If there would be a removeTodo() function in KOTodoView we would call
+      // it here... (before the mCalendar->deleteTodo call actually)
+      todoList2->updateView();
       break;
 
     } // switch
   } else {
     mCalendar->deleteTodo(aTodo);
-    todoList2->changeEventDisplay(aTodo, EVENTDELETED);
+    // If there would be a removeTodo() function in KOTodoView we would call
+    // it here... (before the mCalendar->deleteTodo call actually)
+    todoList2->updateView();
   }
 }
 
@@ -901,7 +936,7 @@ void CalendarView::deleteEvent(KOEvent *anEvent)
 
     } // switch
   } else {
-    KConfig config(KGlobal::dirs()->findResource("config", "korganizerrc")); 
+    KConfig config(locate("config", "korganizerrc")); 
     config.setGroup("General");
     if (config.readBoolEntry("Confirm Deletes") == TRUE) {
       switch (msgItemDelete()) {
@@ -963,25 +998,6 @@ void CalendarView::action_mail()
   mailobject.emailEvent(anEvent,this);
 }
 
-
-void CalendarView::help_contents()
-{
-  kapp->invokeHTMLHelp("korganizer/korganizer.html","");
-}
-
-void CalendarView::help_about()
-{
-  AboutDialog *ad = new AboutDialog(this, "AboutDialog");
-  ad->show();
-  delete ad;
-}
-
-void CalendarView::help_postcard()
-{
-  PostcardDialog *pcd = new PostcardDialog(this, "PostcardDialog");
-  pcd->show();
-  delete pcd;
-}
 
 void CalendarView::view_list()
 {

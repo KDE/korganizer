@@ -20,9 +20,9 @@ alarmd_LDADD = versit/libversit.a $(LIB_KDEUI)
 ########## FILES
 
 # Which sources should be compiled for korganizer.
-libkorganizer_la_SOURCES =  calobject.cpp catdlg.cpp editeventwin.cpp \
-	eventwidget.cpp eventwingeneral.cpp eventwindetails.cpp \
-	eventwinrecur.cpp koagendaview.cpp koagenda.cpp koagendaitem.cpp \
+libkorganizer_la_SOURCES =  calobject.cpp catdlg.cpp \
+	eventwidget.cpp \
+	koagendaview.cpp koagenda.cpp koagendaitem.cpp \
 	kdated.cpp kdatenav.cpp \
 	kdpdatebutton.cpp komonthview.cpp koevent.cpp kpbutton.cpp \
 	kdpquickevt.cpp ksellabel.cpp \
@@ -34,9 +34,11 @@ libkorganizer_la_SOURCES =  calobject.cpp catdlg.cpp editeventwin.cpp \
 	kpropcolor.cpp kpropspin.cpp kproptext.cpp \
 	scanholiday.c parseholiday.c aboutdlg.cpp \
 	vcaldrag.cpp kpropgroup.cpp komailclient.cpp kotodoview.cpp \
-	dateedit.cpp datevalidator.cpp todoeventwin.cpp eventwin.cpp \
-        wingeneral.cpp todowingeneral.cpp kobaseview.cpp kolistview.cpp \
-	koapp.cpp exportwebdialog.cpp korganizer_part.cpp korganizer.cpp
+	dateedit.cpp datevalidator.cpp \
+        kobaseview.cpp kolistview.cpp \
+	koapp.cpp exportwebdialog.cpp korganizer_part.cpp korganizer.cpp \
+        kooptionsdialog.cpp koeventeditor.cpp koeditorwidgets.cpp \
+        kotodoeditor.cpp
 
 alarmd_SOURCES = alarmdaemon.cpp alarmmain.cpp calobject.cpp koevent.cpp \
 	scanholiday.c parseholiday.c vcaldrag.cpp
@@ -46,19 +48,21 @@ METASOURCES = AUTO
 noinst_HEADERS = komonthview.h misc.h calobject.h \
 	kpbutton.h optionsdlg.h catdlg.h koagendaview.h koagenda.h \
 	koagendaitem.h kptbutton.h \
-	quickdialog.h editeventwin.h kdated.h ksellabel.h \
+	quickdialog.h kdated.h ksellabel.h \
 	eventwidget.h kdatenav.h ksmalldaydisp.h \
-	calendarview.h eventwindetails.h kdpdatebutton.h ktimed.h \
-	version.h eventwingeneral.h koevent.h \
-	eventwinrecur.h kdpquickevt.h \
+	calendarview.h kdpdatebutton.h ktimed.h \
+	version.h koevent.h \
+	kdpquickevt.h \
 	searchdialog.h calprinter.h kptbutton.h \
 	koarchivedlg.h kpropdlg.h kpropcheck.h \
 	kpropcombo.h kpropradio.h kproptext.h kpropfont.h \
 	kpropcolor.h kpropspin.h parseholiday.h aboutdlg.h \
 	vcaldrag.h kpropgroup.h komailclient.h kotodoview.h \
-	dateedit.h datevalidator.h todoeventwin.h eventwin.h \
-        wingeneral.h todowingeneral.h kobaseview.h kolistview.h \
-	alarmapp.h koapp.h exportwebdialog.h korganizer_part.h korganizer.h
+	dateedit.h datevalidator.h \
+        kobaseview.h kolistview.h \
+	alarmapp.h koapp.h exportwebdialog.h korganizer_part.h korganizer.h \
+        kooptionsdialog.h koeventeditor.h koeditorwidgets.h \
+        kotodoeditor.h
 
 
 SUBDIRS = versit \

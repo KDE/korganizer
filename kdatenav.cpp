@@ -323,7 +323,7 @@ void KDateNavigator::updateConfig()
                                  i18n("Saturday")
                                };
 
-  KConfig config(KGlobal::dirs()->findResource("config", "korganizerrc")); 
+  KConfig config(locate("config", "korganizerrc")); 
 
   config.setGroup("Views");
   showDailyRecurrences = config.readBoolEntry("Show Daily Recurrences", FALSE);
@@ -633,32 +633,34 @@ void KDateNavigator::fixupSelectedDates(int, int)
 
 void KDateNavigator::selectDates(const QDateList dateList)
 {
-  selectedDates.clear();
-  selectedDates = dateList;
+  if (dateList.count() > 0) {
+    selectedDates.clear();
+    selectedDates = dateList;
   
-  // check to see if these dates are valid.
-  QListIterator<QDate> it(dateList);
-  for (; it.current(); ++it) {
-    if (!it.current()->isValid()) {
-      selectedDates.clear();
-      selectedDates.append(new QDate(QDate::currentDate()));
-      debug("KDateNavigator::selectDates(const QDateList): an invalid date was passed as a parameter!");
-      emit datesSelected(selectedDates);
+    // check to see if these dates are valid.
+    QListIterator<QDate> it(dateList);
+    for (; it.current(); ++it) {
+      if (!it.current()->isValid()) {
+        selectedDates.clear();
+        selectedDates.append(new QDate(QDate::currentDate()));
+        debug("KDateNavigator::selectDates(const QDateList): an invalid date was passed as a parameter!");
+        emit datesSelected(selectedDates);
+      }
     }
-  }
   
-  // set our record of the month and year that this datetbl is
-  // displaying.
-  m_MthYr = *selectedDates.first();
+    // set our record of the month and year that this datetbl is
+    // displaying.
+    m_MthYr = *selectedDates.first();
 
-  // set our record of the first day of the week of the current
-  // month. This needs to be done before calling dayToIndex, since it
-  // relies on this information being up to date.
-  QDate dayone(m_MthYr.year(), m_MthYr.month(), 1);
-  m_fstDayOfWk = dayone.dayOfWeek();
+    // set our record of the first day of the week of the current
+    // month. This needs to be done before calling dayToIndex, since it
+    // relies on this information being up to date.
+    QDate dayone(m_MthYr.year(), m_MthYr.month(), 1);
+    m_fstDayOfWk = dayone.dayOfWeek();
 
-  updateDates();
-  updateView();
+    updateDates();
+    updateView();
+  }
 }
 
 void KDateNavigator::selectDates(QDate qd)

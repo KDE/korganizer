@@ -456,7 +456,7 @@ void KOMonthView::updateConfig()
                                     i18n("Friday"), i18n("Saturday"),
                                     i18n("Sunday") };
   
-  KConfig config(KGlobal::dirs()->findResource("config", "korganizerrc")); 
+  KConfig config(locate("config", "korganizerrc")); 
   config.setGroup("Time & Date");
   weekStartsMonday = config.readBoolEntry("Week Starts Monday", FALSE);
   

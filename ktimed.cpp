@@ -67,7 +67,7 @@ KTimeEdit::KTimeEdit(QWidget *parent, QTime qt, const char *name)
   : QComboBox(TRUE, parent, name)
 {
   timeAmPm = TRUE;
-  config = new KConfig(KGlobal::dirs()->findResource("config", "korganizerrc")); 
+  config = new KConfig(locate("config", "korganizerrc")); 
 
   setInsertionPolicy(NoInsertion);
 

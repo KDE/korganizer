@@ -53,8 +53,7 @@ CalObject::CalObject() : QObject(), recursCursor(recursList)
   // even that good of one at that.
   srandom(time(0L));
 
-  KConfig *config = new KConfig(KGlobal::dirs()->findResource("config",
-                                "korganizerrc")); 
+  KConfig *config = new KConfig(locate("config","korganizerrc")); 
     
   // user information...
   userId = getuid();
@@ -501,7 +500,7 @@ void CalObject::updateConfig()
 {
   bool updateFlag = FALSE;
 
-  KConfig config(KGlobal::dirs()->findResource("config", "korganizerrc")); 
+  KConfig config(locate("config", "korganizerrc")); 
 
   config.setGroup("Personal Settings");
   ownerString = config.readEntry("user_name");
@@ -521,7 +520,7 @@ void CalObject::updateConfig()
     // gotta skip over the first one, which is same as first. 
     // I know, bad coding.
     for (currEvent = prev(); currEvent; currEvent = prev()) {
-      debug("in calobject::updateConfig(), currEvent summary: %s",currEvent->getSummary().ascii());
+//      debug("in calobject::updateConfig(), currEvent summary: %s",currEvent->getSummary().ascii());
       if ((currEvent == firstEvent) && !atFirst) {
 	break;
       }
@@ -2208,7 +2207,7 @@ inline QList<KOEvent> CalObject::getEventsForDate(const QDateTime &qdt)
 QString CalObject::getHolidayForDate(const QDate &qd)
 {
   static int lastYear = 0;
-  KConfig config(KGlobal::dirs()->findResource("config", "korganizerrc")); 
+  KConfig config(locate("config", "korganizerrc")); 
 
   config.setGroup("Personal Settings");
   QString holidays(config.readEntry("Holidays", "us"));

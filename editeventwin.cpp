@@ -141,8 +141,9 @@ void EditEventWin::initConstructor()
 	  catDlg, SLOT(show()));
   connect(Details->categoriesButton, SIGNAL(clicked()),
 	  catDlg, SLOT(show()));
-  connect(catDlg, SIGNAL(okClicked(QString)), 
+  connect(catDlg, SIGNAL(okClicked(QString)),
 	  this, SLOT(updateCatEdit(QString)));
+          
   // time widgets on General and Recurrence tab are synchronized
   connect(General->startTimeEdit, SIGNAL(timeChanged(QTime, int)),
 	  this, SLOT(startTimeChanged(QTime, int)));
@@ -166,7 +167,6 @@ void EditEventWin::initConstructor()
 	  this, SLOT(recurStuffEnable(bool)));
   connect(General->noTimeButton, SIGNAL(toggled(bool)),
 	  Recurrence, SLOT(timeStuffDisable(bool)));
-
 }
 
 EditEventWin::~EditEventWin()

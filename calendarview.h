@@ -21,9 +21,9 @@
 #include "qdatelist.h"
 #include "calobject.h"
 #include "kdatenav.h"
-#include "eventwin.h"
-#include "editeventwin.h"
-#include "todoeventwin.h"
+//#include "eventwin.h"
+//#include "editeventwin.h"
+//#include "todoeventwin.h"
 #include "koagendaview.h"
 //#include "listview.h"
 #include "kolistview.h"
@@ -34,6 +34,7 @@
 
 class CalPrinter;
 class ExportWebDialog;
+class KOOptionsDialog;
 
 /**
  *
@@ -121,7 +122,6 @@ public slots:
   void newSubTodo(KOEvent *);
   
   //void eventsSelected(QList<KOEvent>);
-
   
   /** change Agenda view */
   void changeAgendaView( int view );
@@ -156,11 +156,19 @@ public slots:
    * activated view so that it can make appropriate display changes. */
   void changeEventDisplay(KOEvent *, int);
 
+  void eventAdded(KOEvent *);
+  void eventChanged(KOEvent *);
+  void eventToBeDeleted(KOEvent *);
+  void eventDeleted();
+
   /** changes the view to be the currently selected view */
   void changeView(KOBaseView *);
   
   void updateView(const QDateList);
   void updateView();
+
+  /** Full update of visible todo views */
+  void updateTodoViews();
 
   /** cut the current appointment to the clipboard */
   void edit_cut();
@@ -221,10 +229,6 @@ public slots:
   /** mails the currently selected event to a particular user as a vCalendar 
     attachment. */
   void action_mail();
-
-  void help_contents();
-  void help_about();
-  void help_postcard();
 
   /** query whether or not the calendar is "dirty". */
   bool isModified();
@@ -303,7 +307,7 @@ protected:
   QDate saveSingleDate;                
 
   // dialogs
-  OptionsDialog *optionsDlg;
+  KOOptionsDialog *mOptionsDialog;
   SearchDialog *searchDlg;
   ExportWebDialog *mExportWebDialog;
 };

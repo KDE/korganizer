@@ -65,7 +65,6 @@ class KOTodoView : public QWidget
     void updateView();
     void updateConfig();
     KOEvent *getSelected();
-    void changeEventDisplay(KOEvent *which, int action);
     void editItem(QListViewItem *item);
     void popupMenu(QListViewItem *item,const QPoint &,int);
     void newTodo();
