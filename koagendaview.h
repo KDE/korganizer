@@ -28,10 +28,27 @@ class QFrame;
 class KConfig;
 
 class TimeLabels : public QScrollView {
+    Q_OBJECT
   public:
     TimeLabels(int rows,QWidget *parent=0,const char *name=0,WFlags f=0);
     
     void setCellHeight(int height);
+
+    /** Sets the time display style */
+    void setTimeFormat(int format);
+
+    /** Calculates the minimum width */
+    virtual int minimumWidth() const;
+
+    /** updates widget's internal state */
+    void updateConfig(KConfig* config);
+
+    /**  */
+    void setAgenda(KOAgenda* agenda);
+
+  public slots:
+    /** update time label positions */
+    void positionChanged();
     
   protected:
     void drawContents(QPainter *p,int cx, int cy, int cw, int ch);
@@ -39,6 +56,13 @@ class TimeLabels : public QScrollView {
   private:
     int mRows;
     int mCellHeight;
+
+    /** 12 = am/pm
+        24 = military time */
+    int mTimeFormat;
+
+    /**  */
+    KOAgenda* mAgenda;
 };
 
 class KOAgendaView: public KOBaseView {
@@ -109,7 +133,7 @@ class KOAgendaView: public KOBaseView {
   protected slots:
 
     /** Move TimeLabels, so that its positions correspond to the agenda. */
-    void adjustTimeLabels();
+    //void adjustTimeLabels();
     
     /** Update event belonging to agenda item */
     void updateEventDates(KOAgendaItem *item);

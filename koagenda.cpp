@@ -7,6 +7,7 @@
 
 #include <klocale.h>
 #include <kiconloader.h>
+#include <kconfig.h>
 
 #include <qintdict.h>
 #include <qdatetime.h>
@@ -689,19 +690,19 @@ void KOAgenda::insertMultiItem (KOEvent *event,int XBegin,int XEnd,
 }
 
 
-QSizePolicy KOAgenda::sizePolicy() const
-{
+//QSizePolicy KOAgenda::sizePolicy() const
+//{
   // Thought this would make the all-day event agenda minimum size and the
   // normal agenda take the remaining space. But it doesn´t work. The QSplitter
   // don´t seem to think that an Expanding widget needs more space than a
   // Preferred one.
   // But it doesn´t hurt, so it stays.
-  if (mAllDayMode) {
-    return QSizePolicy(QSizePolicy::Expanding,QSizePolicy::Preferred);
-  } else {
-    return QSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
-  }  
-}
+//  if (mAllDayMode) {
+//    return QSizePolicy(QSizePolicy::Expanding,QSizePolicy::Preferred);
+//  } else {
+//    return QSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
+//  }
+//}
 
 
 /*
@@ -786,4 +787,29 @@ void KOAgenda::popupAlarm()
 
   mClickedItem->itemEvent()->toggleAlarm();
   mClickedItem->updateIcons();
+}
+
+/*
+  Calculates the minimum width
+*/
+int KOAgenda::minimumWidth() const
+{
+  // TODO:: develop a way to dynamically determine the minimum width
+  int min = 100;
+
+  return min;
+}
+
+/**  */
+void KOAgenda::updateConfig(KConfig* config)
+{
+  // set start hour
+  config->setGroup("Views");
+  QString startStr(config->readEntry("Day Begins", "8:00"));
+  //TODO: handle case where old config files are in format "8" instead of "8:00".
+  int colonPos = startStr.find(':');
+  if (colonPos >= 0)
+    startStr.truncate(colonPos);
+  int mStartHour = startStr.toUInt();
+  setStartHour(mStartHour);
 }

@@ -10,6 +10,7 @@
 class QPopupMenu;
 class QTime;
 class KOEvent;
+class KConfig;
 
 class KOAgenda : public QScrollView
 {
@@ -44,9 +45,14 @@ class KOAgenda : public QScrollView
     int gridSpacingX() const { return mGridSpacingX; }
     int gridSpacingY() const { return mGridSpacingY; }
 
-    virtual QSizePolicy sizePolicy() const;
+//    virtual QSizePolicy sizePolicy() const;
 
     void clear();
+
+    /** Calculates the minimum width */
+    virtual int minimumWidth() const;
+    /**  */
+    void updateConfig(KConfig* config);
 
   public slots:
     void scrollUp();

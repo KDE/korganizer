@@ -14,6 +14,8 @@
 #include <qframe.h>
 #include <qlayout.h>
 #include <qsplitter.h>
+#include <qfont.h>
+#include <qfontmetrics.h>
 
 #include <kapp.h>
 #include <kconfig.h>
@@ -44,15 +46,112 @@ void TimeLabels::drawContents(QPainter *p,int cx, int cy, int cw, int ch)
 {
   int cell = ((int)(cy/mCellHeight));
   int y = cell * mCellHeight;
+  QFontMetrics fm = fontMetrics();
   QString hour;
+  QString suffix;
+  QString fullTime;
+
   while (y < cy + ch) {
     p->drawLine(cx,y,cx+cw,y);
-    hour.setNum(cell++);
-    p->drawText(cx+5,y+15,hour);
+    hour.setNum(cell);
+    suffix = "am";
+    debug(hour);
+
+    // handle 24h and am/pm time formats
+    switch (mTimeFormat)
+    {
+      // am/pm format
+      case 12:
+      {
+        if (cell > 11) suffix = "pm";
+        if (cell == 0) hour.setNum(12);
+        if (cell > 12) hour.setNum(cell - 12);
+        break;
+      }
+
+      // 24h time
+      case 24:
+      {
+        suffix = ":00";
+        break;
+      }
+
+      default:
+        debug("Error:  time format not recognised.");
+    }
+
+    // create string in format of "XX:XX" or "XXpm/am"
+    fullTime = hour + suffix;
+
+    // center and draw the time label
+    int timeWidth = fm.width(fullTime);
+    int offset = this->width() - timeWidth;
+    int borderWidth = 5;
+    p->drawText(cx -borderWidth + offset, y+15, fullTime);
+
+    // increment indices
     y += mCellHeight;
+    cell++;
   }
 }
 
+/**
+   Calculates the minimum width.
+*/
+int TimeLabels::minimumWidth() const
+{
+  QFontMetrics fm = fontMetrics();
+
+  //TODO: calculate this value
+  int borderWidth = 8;
+
+  // the maximum width possible
+  int width = fm.width("88:88") + borderWidth;
+
+  return width;
+}
+
+void TimeLabels::setTimeFormat(int format)
+{
+  mTimeFormat = format;
+}
+
+/** updates widget's internal state */
+void TimeLabels::updateConfig(KConfig* config)
+{
+  // set the font
+  // TODO: this could be read from config
+  config->setGroup("Fonts");
+  //QFont font = config->readFontEntry( "TimeBar Font" ) );
+  QFont font("helvetica", 18);
+  setFont(font);
+
+  // set the time format
+  // TODO: use the time format in config
+  config->setGroup("Time & Date");
+  int fmt = config->readNumEntry("Time Format", 1);
+  setTimeFormat(12);
+
+  // update geometry restrictions based on new settings
+  setFixedWidth(minimumWidth());
+}
+
+/** update time label positions */
+void TimeLabels::positionChanged()
+{
+  int adjustment = mAgenda->contentsY();
+  setContentsPos(0, adjustment);
+}
+
+/**  */
+void TimeLabels::setAgenda(KOAgenda* agenda)
+{
+  mAgenda = agenda;
+}
+
+////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
 
 KOAgendaView::KOAgendaView(CalObject *cal,QWidget *parent,const char *name) :
   KOBaseView (cal,parent,name)
@@ -66,7 +165,6 @@ KOAgendaView::KOAgendaView(CalObject *cal,QWidget *parent,const char *name) :
   mLayoutDayLabels = 0;
   mDayLabelsFrame = 0;
   mDayLabels = 0;
-//  mDayLabelsFrame = new QFrame(this);
   
   // Create agenda splitter
   QSplitter *splitterAgenda = new QSplitter(Vertical,this);
@@ -80,45 +178,34 @@ KOAgendaView::KOAgendaView(CalObject *cal,QWidget *parent,const char *name) :
 
   // Create agenda frame
   QHBox *agendaFrame = new QHBox(splitterAgenda);
-      
+
   // Create time labels
   mTimeLabels = new TimeLabels(24,agendaFrame);
-//  mTimeLabels->setFrameStyle(QFrame::Box|QFrame::Raised);
-  mTimeLabels->setFixedWidth(30);
 
   // Create agenda
   mAgenda = new KOAgenda(1,48,20,agendaFrame);
 
   // Create day name labels for agenda columns
-//  QWidget *dummyDaysLeft = new QWidget(mDayLabelsFrame);
-//  mDayLabels = 0;
   mDayLabelsFrame = new QHBox(this);
   createDayLabels();
-//  QWidget *dummyDaysRight = new QWidget(mDayLabelsFrame);
 
-  // Create layout for KOAgendaView 
-//  QGridLayout *layoutTop = new QGridLayout(this,3,3);
-//  layoutTop->addWidget(mDayLabels,0,1);
-//  layoutTop->addWidget(mTimeLabels,2,0);
-//  layoutTop->addMultiCellWidget(splitterAgenda,1,2,1,2);
-//  layoutTop->addColSpacing(2,mAgenda->verticalScrollBar()->width());
-//  dummyDaysRight->setFixedWidth(mAgenda->verticalScrollBar()->width());
+  // make connections between dependent widgets
+  mTimeLabels->setAgenda(mAgenda);
+
+  // Update widgets to reflect user preferences
+  updateConfig();
+
+  // these blank widgets make the All Day Event box line up with the agenda
   dummyAllDayRight->setFixedWidth(mAgenda->verticalScrollBar()->width());
-//  dummyDaysLeft->setFixedWidth(mTimeLabels->width());
   dummyAllDayLeft->setFixedWidth(mTimeLabels->width());
 
   QBoxLayout *layoutTop = new QVBoxLayout(this);
   layoutTop->addWidget(mDayLabelsFrame);
   layoutTop->addWidget(splitterAgenda);
 
-  QValueList<int> splitterSizes;
-  splitterSizes.append(mAllDayFrame->minimumHeight());
-  splitterSizes.append(300);  // don´t know what this should be, works anyway
-  splitterAgenda->setSizes(splitterSizes);
-
+  //connect signals and slots
   QObject::connect(mAgenda->verticalScrollBar(),SIGNAL(valueChanged(int)),
-                                                SLOT(adjustTimeLabels()));
-
+                   mTimeLabels, SLOT(positionChanged()));
   QObject::connect(mAgenda,SIGNAL(newEventSignal(int,int)),
                            SLOT(newEvent(int,int)));
   QObject::connect(mAllDayAgenda,SIGNAL(newEventSignal(int,int)),
@@ -131,7 +218,6 @@ KOAgendaView::KOAgendaView(CalObject *cal,QWidget *parent,const char *name) :
                            SIGNAL(deleteEventSignal(KOEvent *)));
   QObject::connect(mAllDayAgenda,SIGNAL(deleteEventSignal(KOEvent *)),
                                  SIGNAL(deleteEventSignal(KOEvent *)));
-
   QObject::connect(mAgenda,SIGNAL(itemModified(KOAgendaItem *)),
                            SLOT(updateEventDates(KOAgendaItem *)));
   QObject::connect(mAllDayAgenda,SIGNAL(itemModified(KOAgendaItem *)),
@@ -195,46 +281,20 @@ void KOAgendaView::updateView()
 
 /*
   Update configuration settings for the agenda view. This method is not
-  complete. It currently only sets the start day of the week.
+  complete.
 */
 void KOAgendaView::updateConfig()
 {
-  int fmt;
-
-  mConfig->setGroup("Time & Date");
-  fmt = mConfig->readNumEntry("Time Format", 1);
-//  agendaSheet->setTimeStyle((fmt == 1 ? KAgendaSheet::Time_12 :
-//                                        KAgendaSheet::Time_24));
+  // update koagendaview members
   mWeekStartsMonday = mConfig->readBoolEntry("Week Starts Monday", true);
-  
-  mConfig->setGroup("Views");
-  QString startStr(mConfig->readEntry("Day Begins", "8:00"));
-  // handle case where old config files are in format "8" instead of "8:00".
-  int colonPos = startStr.find(':');
-  if (colonPos >= 0)
-    startStr.truncate(colonPos);
-  int mStartHour = startStr.toUInt();
-  mAgenda->setStartHour(mStartHour);
-//  startScrollVal = scrollBar->minValue() +
-//                   (agendaSheet->rowSize() * startHour);
 
-  mConfig->setGroup("Fonts");
-//  agendaSheet->setTimeFont( mConfig->readFontEntry( "TimeBar Font" ) );
+  // update config for children
+  mTimeLabels->updateConfig(mConfig);
+  mAgenda->updateConfig(mConfig);
 
-/*
-  QListIterator<EventWidget> iter(WidgetList);
-  EventWidget *tmpWidget;
-  iter.toFirst();
-  while ((tmpWidget = iter.current()))
-  {
-  	  tmpWidget->updateConfig();
-  	  ++iter;
-  }
-
-  agendaSheet->updateConfig();
-
-  update();
-*/
+  // widget synchronization
+  //TODO: find a better way, maybe signal/slot
+  mTimeLabels->positionChanged();
 }
 
 
@@ -480,10 +540,10 @@ void KOAgendaView::slotViewChange(int newView)
   fillAgenda();
 }
 
-void KOAgendaView::adjustTimeLabels()
-{
-  mTimeLabels->setContentsPos(0,mAgenda->contentsY());
-}
+//void KOAgendaView::adjustTimeLabels()
+//{
+  //mTimeLabels->setContentsPos(0,mAgenda->contentsY());
+//}
 
 
 void KOAgendaView::fillAgenda(const QDate &startDate)
@@ -579,3 +639,5 @@ void KOAgendaView::newEventAllDay(int gx, int )
 {
   emit newEventSignal(mStartDate.addDays(gx));
 }
+
+
