@@ -26,6 +26,8 @@ if ( !-e $outfile ) {
 
 $outfile .= rand;
 
-if (!open OUT,">$outfile") { print "Can't open outputfile '$outfile'\n"; exit; }
-  print OUT $data;
-close OUT;
+if ( length($data) > 0 ) {
+  if (!open OUT,">$outfile") { print "Can't open outputfile '$outfile'\n"; exit; }
+    print OUT $data;
+  close OUT;
+}
