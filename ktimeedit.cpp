@@ -78,10 +78,10 @@ public:
 // KTimeWidget/QTimeEdit provide nicer editing, but don't provide a combobox.
 // Difficult to get all in one...
 // But Qt-3.2 will offer QLineEdit::setMask, so a "99:99" mask would help.
-KOTimeEdit::KOTimeEdit(QWidget *parent, QTime qt, const char *name)
-  : QComboBox(TRUE, parent, name)
+KOTimeEdit::KOTimeEdit( QWidget *parent, QTime qt, const char *name )
+  : QComboBox( true, parent, name )
 {
-  setInsertionPolicy(NoInsertion);
+  setInsertionPolicy( NoInsertion );
   setValidator( new KOTimeValidator( this ) );
 
   mTime = qt;

@@ -1,7 +1,7 @@
 /*
   This file is part of KOrganizer.
-  Copyright (c) 2001
-  Cornelius Schumacher <schumacher@kde.org>
+
+  Copyright (c) 2001 Cornelius Schumacher <schumacher@kde.org>
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -52,15 +52,15 @@ class KOViewManager : public QObject
     virtual ~KOViewManager();
 
     /** changes the view to be the currently selected view */
-    void showView(KOrg::BaseView *);
+    void showView( KOrg::BaseView * );
 
-    void readSettings(KConfig *config);
-    void writeSettings(KConfig *config);
+    void readSettings( KConfig *config );
+    void writeSettings( KConfig *config );
 
     /** Read which view was shown last from config file */
-    void readCurrentView(KConfig *);
+    void readCurrentView( KConfig * );
     /** Write which view is currently shown to config file */
-    void writeCurrentView(KConfig *);
+    void writeCurrentView( KConfig * );
 
     KOrg::BaseView *currentView();
 
@@ -71,7 +71,7 @@ class KOViewManager : public QObject
 
     void raiseCurrentView();
 
-    void addView(KOrg::BaseView *);
+    void addView( KOrg::BaseView * );
 
     Incidence *currentSelection();
     QDate currentSelectionDate();
@@ -93,7 +93,7 @@ class KOViewManager : public QObject
 
     void showEventView();
 
-    void connectTodoView( KOTodoView* todoView );
+    void connectTodoView( KOTodoView *todoView );
 
   private:
     CalendarView *mMainView;
@@ -106,12 +106,11 @@ class KOViewManager : public QObject
     KOJournalView   *mJournalView;
     KOTimeSpanView  *mTimeSpanView;
 
-    KOrg::BaseView *mCurrentView;  // currently active event view
+    KOrg::BaseView *mCurrentView;
 
     KOrg::BaseView *mLastEventView;
 
     int mAgendaViewMode;
-
 };
 
 #endif

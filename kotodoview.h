@@ -1,5 +1,6 @@
 /*
     This file is part of KOrganizer.
+
     Copyright (c) 2000, 2001 Cornelius Schumacher <schumacher@kde.org>
 
     This program is free software; you can redistribute it and/or modify
@@ -62,13 +63,13 @@ class DocPrefs;
 class KOTodoListViewToolTip : public QToolTip
 {
   public:
-    KOTodoListViewToolTip (QWidget* parent, KOTodoListView* lv );
+    KOTodoListViewToolTip( QWidget *parent, KOTodoListView *lv );
 
   protected:
-    void maybeTip( const QPoint & pos);
+    void maybeTip( const QPoint &pos );
 
   private:
-    KOTodoListView* todolist;
+    KOTodoListView *todolist;
 };
 
 
@@ -76,26 +77,26 @@ class KOTodoListView : public KListView
 {
     Q_OBJECT
   public:
-    KOTodoListView(Calendar *,QWidget *parent=0,const char *name=0);
+    KOTodoListView( Calendar *,QWidget *parent = 0, const char *name = 0 );
     ~KOTodoListView();
 
   signals:
-    void todoDropped(Todo *);
+    void todoDropped( Todo * );
     void todoChanged( Todo*, Todo* );
     void todoAdded( Todo* );
 
   protected:
-    virtual bool event(QEvent *);
+    virtual bool event( QEvent * );
 
-    void contentsDragEnterEvent(QDragEnterEvent *);
-    void contentsDragMoveEvent(QDragMoveEvent *);
-    void contentsDragLeaveEvent(QDragLeaveEvent *);
-    void contentsDropEvent(QDropEvent *);
+    void contentsDragEnterEvent( QDragEnterEvent * );
+    void contentsDragMoveEvent( QDragMoveEvent * );
+    void contentsDragLeaveEvent( QDragLeaveEvent * );
+    void contentsDropEvent( QDropEvent * );
 
-    void contentsMousePressEvent(QMouseEvent *);
-    void contentsMouseMoveEvent(QMouseEvent *);
-    void contentsMouseReleaseEvent(QMouseEvent *);
-    void contentsMouseDoubleClickEvent(QMouseEvent *);
+    void contentsMousePressEvent( QMouseEvent * );
+    void contentsMouseMoveEvent( QMouseEvent * );
+    void contentsMouseReleaseEvent( QMouseEvent * );
+    void contentsMouseDoubleClickEvent( QMouseEvent * );
 
   private:
     Calendar *mCalendar;
@@ -112,12 +113,13 @@ class KOTodoListView : public KListView
 */
 class KOQuickTodo : public QLineEdit
 {
-  Q_OBJECT
+    Q_OBJECT
   public:
-    KOQuickTodo(QWidget *parent=0);
+    KOQuickTodo( QWidget *parent = 0 );
+
   protected:
-    void focusInEvent(QFocusEvent *ev);
-    void focusOutEvent(QFocusEvent *ev);
+    void focusInEvent( QFocusEvent *ev );
+    void focusOutEvent( QFocusEvent *ev );
 };
 
 
@@ -131,7 +133,7 @@ class KOTodoView : public KOrg::BaseView
 {
     Q_OBJECT
   public:
-    KOTodoView(Calendar *, QWidget* parent=0, const char* name=0 );
+    KOTodoView( Calendar *, QWidget *parent = 0, const char *name = 0 );
     ~KOTodoView();
 
     Incidence::List selectedIncidences();
@@ -142,24 +144,25 @@ class KOTodoView : public KOrg::BaseView
     /** Return number of shown dates. TodoView does not show dates, */
     int currentDateCount() { return 0; }
 
-    void printPreview(CalPrinter *calPrinter, const QDate &fd, const QDate &td);
+    void printPreview( CalPrinter *calPrinter, const QDate &fd,
+                       const QDate &td );
 
     CalPrinter::PrintType printType();
 
     void setDocumentId( const QString & );
 
-    void saveLayout(KConfig *config, const QString &group) const;
-    void restoreLayout(KConfig *config, const QString &group);
+    void saveLayout( KConfig *config, const QString &group ) const;
+    void restoreLayout( KConfig *config, const QString &group );
     /** Create a popup menu to set categories */
-    QPopupMenu *getCategoryPopupMenu (KOTodoViewItem *todoItem);
+    QPopupMenu *getCategoryPopupMenu( KOTodoViewItem *todoItem );
 
   public slots:
     void updateView();
     void updateConfig();
 
-    void changeEventDisplay(Event *, int);
+    void changeEventDisplay( Event *, int );
 
-    void showDates(const QDate &start, const QDate &end);
+    void showDates( const QDate &start, const QDate &end );
     void showEvents( const Event::List & );
 
     void clearSelection();
@@ -174,31 +177,33 @@ class KOTodoView : public KOrg::BaseView
     void editTodo();
     void deleteTodo();
 
-    void setNewPriority(int);
-    void setNewPercentage(int);
-    void changedCategories(int);
+    void setNewPriority( int );
+    void setNewPercentage( int );
+    void changedCategories( int );
 
     void purgeCompleted();
 
-    void itemClicked(QListViewItem *);
-    void itemStateChanged(QListViewItem *);
-    void modified(bool);
-    void setTodoModified(Todo*oldTodo, Todo*todo) {
-      emit todoChanged( oldTodo, todo); }
+    void itemClicked( QListViewItem * );
+    void itemStateChanged( QListViewItem * );
+    void modified( bool );
+    void setTodoModified( Todo *oldTodo, Todo *todo )
+    {
+      emit todoChanged( oldTodo, todo );
+    }
 
   signals:
     void newTodoSignal();
-    void newSubTodoSignal(Todo *);
+    void newSubTodoSignal( Todo * );
     void unSubTodoSignal();
-    void showTodoSignal(Todo *);
+    void showTodoSignal( Todo * );
 
-    void editTodoSignal(Todo *);
-    void deleteTodoSignal(Todo *);
-    void todoModifiedSignal (Todo *, Todo *, int);
+    void editTodoSignal( Todo * );
+    void deleteTodoSignal( Todo * );
+    void todoModifiedSignal( Todo *, Todo *, int );
     void todoChanged ( Todo*, Todo* );
     void todoAdded ( Todo* );
 
-    void isModified(bool);
+    void isModified( bool );
 
     void purgeCompletedSignal();
 
@@ -217,8 +222,9 @@ class KOTodoView : public KOrg::BaseView
      *  -- zecke 2002-07-08
      */
     friend class KOTodoViewItem;
-    void setTodoModified( Todo* );
-    QMap<Todo *,KOTodoViewItem *>::ConstIterator insertTodoItem(Todo *todo);
+
+    void setTodoModified( Todo * );
+    QMap<Todo *,KOTodoViewItem *>::ConstIterator insertTodoItem( Todo *todo );
     void restoreItemState( QListViewItem * );
 
     KOTodoListView *mTodoListView;

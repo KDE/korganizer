@@ -127,6 +127,8 @@ class CalPrintBase : public QObject
     }
 
   protected:
+    int weekdayColumn( int weekday );
+
     QDate mFromDate;
     QDate mToDate;
     bool mUseColors;
@@ -177,6 +179,8 @@ class CalPrintBase : public QObject
                    bool desc, int pospriority, int possummary, int posDueDt,
                    int level, int x, int &y, int width, int &height,
                    int pageHeight, TodoParentStart *r = 0 );
+
+    int weekDayColumn( int weekday );
 
     KPrinter *mPrinter;
     Calendar *mCalendar;

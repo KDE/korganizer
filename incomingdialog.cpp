@@ -1,5 +1,6 @@
 /*
     This file is part of KOrganizer.
+
     Copyright (c) 2001 Cornelius Schumacher <schumacher@kde.org>
 
     This program is free software; you can redistribute it and/or modify
@@ -128,25 +129,26 @@ bool ScheduleItemVisitor::visit(Journal *)
  *  name 'name' and widget flags set to 'f'
  *
  *  The dialog will by default be modeless, unless you set 'modal' to
- *  TRUE to construct a modal dialog.
+ *  true to construct a modal dialog.
  */
-IncomingDialog::IncomingDialog(Calendar *calendar,OutgoingDialog *outgoing,
-                QWidget* parent,const char* name,bool modal,WFlags fl) :
-  IncomingDialog_base(parent,name,modal,fl)
+IncomingDialog::IncomingDialog( Calendar *calendar, OutgoingDialog * outgoing,
+                                QWidget *parent, const char *name, bool modal,
+                                WFlags fl )
+  : IncomingDialog_base( parent, name, modal, fl )
 {
   mCalendar = calendar;
   mOutgoing = outgoing;
 #ifndef KORG_NOMAIL
-  mScheduler = new MailScheduler(mCalendar);
+  mScheduler = new MailScheduler( mCalendar );
 #else
-  mScheduler = new DummyScheduler(mCalendar);
+  mScheduler = new DummyScheduler( mCalendar );
 #endif
-  mMessageListView->setColumnAlignment(1,AlignHCenter);
-  mMessageListView->setColumnAlignment(2,AlignHCenter);
-  mMessageListView->setColumnAlignment(3,AlignHCenter);
-  mMessageListView->setColumnAlignment(4,AlignHCenter);
-  QObject::connect(mMessageListView,SIGNAL(doubleClicked(QListViewItem *)),
-                   this,SLOT(showEvent(QListViewItem *)));
+  mMessageListView->setColumnAlignment( 1, AlignHCenter );
+  mMessageListView->setColumnAlignment( 2, AlignHCenter );
+  mMessageListView->setColumnAlignment( 3, AlignHCenter );
+  mMessageListView->setColumnAlignment( 4, AlignHCenter );
+  connect( mMessageListView, SIGNAL( doubleClicked( QListViewItem * ) ),
+           SLOT( showEvent( QListViewItem * ) ) );
   retrieve();
 }
 

@@ -85,7 +85,7 @@ void KOEditorGeneral::initHeader(QWidget *parent,QBoxLayout *topLayout)
 
   QLabel *summaryLabel = new QLabel(i18n("T&itle:"),parent);
   QFont f = summaryLabel->font();
-  f.setBold(TRUE);
+  f.setBold( true );
   summaryLabel->setFont(f);
   headerLayout->addWidget(summaryLabel,1,0);
 

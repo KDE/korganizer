@@ -63,14 +63,14 @@ NavigatorBar::NavigatorBar( const QDate & date, QWidget *parent, const char *nam
 
   // Set up the control buttons and date label
   mCtrlFrame = new QFrame( this );
-  mCtrlFrame->setFrameStyle(QFrame::Panel|QFrame::Raised);
-  mCtrlFrame->setLineWidth(1);
+  mCtrlFrame->setFrameStyle( QFrame::Panel | QFrame::Raised );
+  mCtrlFrame->setLineWidth( 1 );
 
   topLayout->addWidget( mCtrlFrame );
 
   QFont tfont = font();
-  tfont.setPointSize(10);
-  tfont.setBold(FALSE);
+  tfont.setPointSize( 10 );
+  tfont.setBold( false );
 
   bool isRTL = KOGlobals::self()->reverseLayout();
 
@@ -151,22 +151,23 @@ void NavigatorBar::selectMonth()
   // every year can have different month names (in some calendar systems)
   const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
 
-  int i, month, months = calSys->monthsInYear(mDate);
+  int i, month, months = calSys->monthsInYear( mDate );
 
-  QPopupMenu *popup = new QPopupMenu(mMonth);
+  QPopupMenu *popup = new QPopupMenu( mMonth );
 
-  for (i = 1; i <= months; i++)
-    popup->insertItem(calSys->monthName(i, calSys->year(mDate)), i);
+  for ( i = 1; i <= months; i++ )
+    popup->insertItem( calSys->monthName( i, calSys->year( mDate ) ), i );
 
-  popup->setActiveItem(calSys->month(mDate) - 1);
-  popup->setMinimumWidth(mMonth->width());
+  popup->setActiveItem( calSys->month( mDate ) - 1 );
+  popup->setMinimumWidth( mMonth->width() );
 
-  if ( (month = popup->exec(mMonth->mapToGlobal(QPoint(0, 0)), calSys->month(mDate) - 1)) == -1 ) {
+  if ( ( month = popup->exec( mMonth->mapToGlobal( QPoint( 0, 0 ) ),
+                              calSys->month( mDate ) - 1 ) ) == -1 ) {
     delete popup;
     return;  // canceled
   }
 
-  emit goMonth(month);
+  emit goMonth( month );
 
   delete popup;
 }

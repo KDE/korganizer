@@ -64,7 +64,7 @@ bool ActionManager::startedKAddressBook = false;
 ActionManager::ActionManager( KXMLGUIClient *client, CalendarView *widget,
                               QObject *parent, KOrg::MainWindow *mainWindow,
                               bool isPart )
-    : QObject(parent), KCalendarIface()
+    : QObject( parent ), KCalendarIface()
 {
   mGUIClient = client;
   mACollection = mGUIClient->actionCollection();

@@ -211,7 +211,7 @@ void CalPrintBase::drawHeader( QPainter &p, QString title,
 void CalPrintBase::drawSmallMonth(QPainter &p, const QDate &qd,
     int x, int y, int width, int height)
 {
-  bool firstCol = TRUE;
+  bool firstCol = true;
   QDate monthDate(QDate(qd.year(), qd.month(), 1));
   QDate monthDate2;
   int month = monthDate.month();
@@ -249,7 +249,7 @@ void CalPrintBase::drawSmallMonth(QPainter &p, const QDate &qd,
       if (monthDate.month() != month)
         break;
       if (firstCol) {
-        firstCol = FALSE;
+        firstCol = true;
         int weekStartDay = KGlobal::locale()->weekStartDay();
         col = (monthDate.dayOfWeek()+7-weekStartDay)%7;
       }
@@ -561,18 +561,18 @@ void CalPrintBase::drawDayBox(QPainter &p, const QDate &qd,
 #endif
 
   if (!hstring.isEmpty()) {
-    p.setFont(QFont("helvetica", 8, QFont::Bold, TRUE));
+    p.setFont( QFont( "helvetica", 8, QFont::Bold, true ) );
 
-    p.drawText(x+5, y, width-25, mSubHeaderHeight, AlignLeft | AlignVCenter,
-               hstring);
+    p.drawText( x+5, y, width-25, mSubHeaderHeight, AlignLeft | AlignVCenter,
+                hstring );
   }
   p.setFont(QFont("helvetica", 10, QFont::Bold));
   p.drawText(x+5, y, width-10, mSubHeaderHeight, AlignRight | AlignVCenter,
              dayNumStr);
 
-  Event::List eventList = mCalendar->events(qd, TRUE);
+  Event::List eventList = mCalendar->events( qd, true );
   QString outStr;
-  p.setFont(QFont("helvetica", 8));
+  p.setFont( QFont( "helvetica", 8 ) );
   int lineSpacing = p.fontMetrics().lineSpacing();
 
   int textY=mSubHeaderHeight+3; // gives the relative y-coord of the next printed entry
@@ -866,5 +866,9 @@ void CalPrintBase::drawTodo( int &count, Todo * item, QPainter &p, bool connectS
   startPoints.remove(&startpt);
 }
 
+int CalPrintBase::weekdayColumn( int weekday )
+{
+  return ( weekday + 7 - KGlobal::locale()->weekStartDay() ) % 7;
+}
 
 #endif

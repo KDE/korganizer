@@ -136,15 +136,17 @@ CalendarView::CalendarView( Calendar *calendar,
 
 #ifndef KORG_NOSPLITTER
   // create the main layout frames.
-  mPanner = new QSplitter(QSplitter::Horizontal,this,"CalendarView::Panner");
+  mPanner = new QSplitter( QSplitter::Horizontal, this,
+                           "CalendarView::Panner" );
   topLayout->addWidget(mPanner);
 
-  mLeftSplitter = new QSplitter(QSplitter::Vertical,mPanner,
-                            "CalendarView::LeftFrame");
+  mLeftSplitter = new QSplitter( QSplitter::Vertical, mPanner,
+                                 "CalendarView::LeftFrame" );
   mPanner->setResizeMode(mLeftSplitter,QSplitter::KeepSize);
 
-  mDateNavigator = new KDateNavigator(mLeftSplitter, mCalendar, TRUE,
-                        "CalendarView::DateNavigator", QDate::currentDate() );
+  mDateNavigator = new KDateNavigator( mLeftSplitter, mCalendar, true,
+                                       "CalendarView::DateNavigator",
+                                       QDate::currentDate() );
   mLeftSplitter->setResizeMode(mDateNavigator,QSplitter::KeepSize);
   mTodoList = new KOTodoView(mCalendar, mLeftSplitter, "todolist");
   mFilterView = new KOFilterView(&mFilters,mLeftSplitter,"CalendarView::FilterView");
@@ -173,8 +175,9 @@ CalendarView::CalendarView( Calendar *calendar,
 
   topLayout->addWidget( mainBox );
 
-  mDateNavigator = new KDateNavigator(leftFrame, mCalendar, TRUE,
-                        "CalendarView::DateNavigator", QDate::currentDate());
+  mDateNavigator = new KDateNavigator( leftFrame, mCalendar, true,
+                                       "CalendarView::DateNavigator",
+                                       QDate::currentDate() );
   mTodoList = new KOTodoView(mCalendar, leftFrame, "todolist");
   mFilterView = new KOFilterView(&mFilters,leftFrame,"CalendarView::FilterView");
 

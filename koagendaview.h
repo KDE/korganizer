@@ -154,7 +154,7 @@ class KOAgendaView : public KOEventView
     void clearView();
 
     virtual void printPreview( CalPrinter *calPrinter,
-                               const QDate &, const QDate &);
+                               const QDate &, const QDate & );
 
     CalPrinter::PrintType printType();
 
