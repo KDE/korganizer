@@ -973,8 +973,8 @@ typedef struct OFile {
     } OFile;
 
 
-// vCalendar files need crlf linebreaks. The disabled functions didn't provide
-// that.
+/* vCalendar files need crlf linebreaks. The disabled functions didn't provide
+   that. */
 #if 0
 
 static void appendsOFile(OFile *fp, const char *s)
