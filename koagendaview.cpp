@@ -616,7 +616,7 @@ void KOAgendaView::createDayLabels()
   mDayLabels->show();
 }
 
-void KOAgendaView::enableAgendaUpdate( bool enable ) 
+void KOAgendaView::enableAgendaUpdate( bool enable )
 {
   mAllowAgendaUpdate = enable;
 }
@@ -733,10 +733,10 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
 //  kdDebug(5850) << "KOAgendaView::updateEventDates(): " << item->text() << endl;
 
   QDateTime startDt,endDt;
-    
-  // Start date of this incidence, calculate the offset from it (so recurring and 
-  // non-recurring items can be treated exactly the same, we never need to check 
-  // for doesRecur(), because we only move the start day by the number of days the 
+
+  // Start date of this incidence, calculate the offset from it (so recurring and
+  // non-recurring items can be treated exactly the same, we never need to check
+  // for doesRecur(), because we only move the start day by the number of days the
   // agenda item was really moved. Smart, isn't it?)
   QDate thisDate;
   if ( item->cellXLeft() < 0 ) {
@@ -788,7 +788,7 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
     endDt = td->dtDue();
     endDt = endDt.addDays( daysOffset );
     endDt.setTime( endTime );
-    
+
     if( td->dtDue() == endDt ) {
       // No change
       delete i;
@@ -796,7 +796,7 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
     }
     td->setDtDue( endDt );
   }
-  // TODO: Adjusting the recurrence should really go to CalendarView so this 
+  // TODO: Adjusting the recurrence should really go to CalendarView so this
   // functionality will also be available in other views!
   Recurrence *recur = incidence->recurrence();
   if ( recur && (recur->doesRecur()!=Recurrence::rNone) && (daysOffset!=0) ) {
@@ -829,7 +829,7 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
         }
         recur->addYearlyMonthPos( pos, days );
         recur->addYearlyNum( thisDate.month() );
-        
+
         break; }
       case Recurrence::rYearlyDay: {
         int freq = recur->frequency();
@@ -877,7 +877,7 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
           } else {
             newPos =  ( thisDate.day()-1 ) / 7 + 1;
           }
-          
+
           // Terrible hack: to change the month days, I have to unset the recurrence, and set all days manually again
           recur->unsetRecurs();
           if ( duration == 0 ) { // end by date
@@ -954,7 +954,7 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
     // an update would delete the current item and recreate it, but we are still
     // using a pointer to that item! => CRASH
     enableAgendaUpdate( false );
-    // We need to do this in a timer to make sure we are not deleting the item 
+    // We need to do this in a timer to make sure we are not deleting the item
     // we are currently working on, which would lead to crashes
     // Only the actually moved agenda item is already at the correct position and mustn't be
     // recreated. All others have to!!!
@@ -1132,10 +1132,8 @@ void KOAgendaView::changeIncidenceDisplay( Incidence *incidence, int mode )
     case KOGlobals::INCIDENCEDELETED: {
       bool floats = incidence->doesFloat();
       QCString type = incidence->type();
-      if ( type == "Todo" || ( type == "Event" && floats ) )
-        mAllDayAgenda->removeIncidence( incidence );
-      if ( type == "Todo" || ( type == "Event" && !floats ) )
-        mAgenda->removeIncidence( incidence );
+      mAllDayAgenda->removeIncidence( incidence );
+      mAgenda->removeIncidence( incidence );
       if ( mode == KOGlobals::INCIDENCEEDITED )
         changeIncidenceDisplayAdded( incidence );
       break;
