@@ -154,12 +154,12 @@ void AlarmDialog::slotUser2()
                              mIncidences.first()->uid() );
   
   // get desktop # where korganizer (or kontact) runs 
-  QByteArray data, replyData;
+  QByteArray replyData;
   QCString object, replyType;
   object = kapp->dcopClient()->isApplicationRegistered( "kontact" ) ?
            "kontact-mainwindow#1" : "KOrganizer MainWindow";
   if (!kapp->dcopClient()->call( "korganizer", object,
-                            "getWinID()", data, replyType, replyData, true, -1 ) ) {
+                            "getWinID()", QByteArray(), replyType, replyData, true, -1 ) ) {
   }
   
   if ( replyType == "int" ) {
