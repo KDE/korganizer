@@ -61,6 +61,7 @@ class KOEditorGeneral : public QWidget
   protected slots:
     void alarmStuffEnable(bool enable);
     void alarmStuffDisable(bool disable);
+    void alarmDisable(bool disable);
     void pickAlarmSound();
     void pickAlarmProgram();
 
@@ -73,6 +74,7 @@ class KOEditorGeneral : public QWidget
     void initAlarm(QBoxLayout *);
 
     QLineEdit               *mSummaryEdit;
+    QLabel                  *mAlarmBell;
     QCheckBox               *mAlarmButton;
     KRestrictedLine         *mAlarmTimeEdit;
     QPushButton             *mAlarmSoundButton;
@@ -83,7 +85,7 @@ class KOEditorGeneral : public QWidget
     QComboBox               *mSecrecyCombo;
     QPushButton             *mCategoriesButton;
     QLabel                  *mCategoriesLabel;
-
+     
   private:
     QString mAlarmSound;
     QString mAlarmProgram;

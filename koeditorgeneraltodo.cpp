@@ -89,6 +89,7 @@ void KOEditorGeneralTodo::initTime(QBoxLayout *topLayout)
   mNoDueCheck = new QCheckBox(i18n("No due date"),timeBoxFrame);
   layoutTimeBox->addWidget(mNoDueCheck,0,0);
   connect(mNoDueCheck,SIGNAL(toggled(bool)),SLOT(dueStuffDisable(bool)));
+  connect(mNoDueCheck,SIGNAL(toggled(bool)),SLOT(alarmDisable(bool)));
 
   mDueLabel = new QLabel(i18n("Due Date:"),timeBoxFrame);
   layoutTimeBox->addWidget(mDueLabel,1,0);
@@ -172,6 +173,8 @@ void KOEditorGeneralTodo::setDefaults(QDateTime due,bool allDay)
   mNoDueCheck->setChecked(true);
   dueStuffDisable(true);
 
+  alarmDisable(true);
+  
   mNoStartCheck->setChecked(true);
   startStuffDisable(true);
 

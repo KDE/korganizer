@@ -105,9 +105,9 @@ void KOEditorGeneral::initAlarm(QBoxLayout *topLayout)
 {
   QBoxLayout *alarmLayout = new QHBoxLayout(topLayout);
 
-  QLabel *alarmBell = new QLabel(this);
-  alarmBell->setPixmap(SmallIcon("bell"));
-  alarmLayout->addWidget(alarmBell);
+  mAlarmBell = new QLabel(this);
+  mAlarmBell->setPixmap(SmallIcon("bell"));
+  alarmLayout->addWidget(mAlarmBell);
 
   mAlarmButton = new QCheckBox(i18n("Reminder:"),this);
   connect(mAlarmButton, SIGNAL(toggled(bool)), SLOT(alarmStuffEnable(bool)));
@@ -191,6 +191,26 @@ void KOEditorGeneral::alarmStuffEnable(bool enable)
 void KOEditorGeneral::alarmStuffDisable(bool disable)
 {
   alarmStuffEnable(!disable);
+}
+
+void KOEditorGeneral::alarmDisable(bool disable)
+{
+  if (!disable) {
+    mAlarmBell->show();
+    mAlarmButton->show();
+    mAlarmTimeEdit->show();
+    mAlarmSoundButton->show();
+    mAlarmProgramButton->show();
+    mAlarmIncrCombo->show();
+  }
+  else {
+    mAlarmBell->hide();
+    mAlarmButton->hide();
+    mAlarmTimeEdit->hide();
+    mAlarmSoundButton->hide();
+    mAlarmProgramButton->hide();
+    mAlarmIncrCombo->hide();
+  }
 }
 
 void KOEditorGeneral::setCategories(const QString &str)
