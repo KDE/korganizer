@@ -34,6 +34,8 @@ class CustomListViewItem : public KListViewItem
   public:
     CustomListViewItem( T data, KListView *parent ) :
       KListViewItem( parent ), mData( data ) { updateItem(); };
+    CustomListViewItem( T data, KListView *parent, KListViewItem* after ) :
+      KListViewItem( parent, after ), mData( data ) { updateItem(); };
     ~CustomListViewItem() {};
     
     void updateItem() {};
