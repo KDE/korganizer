@@ -186,9 +186,9 @@ void KOEditorGeneralEvent::initAlarmBox()
   alarmTimeEdit->setText("");
 
   alarmIncrCombo = new QComboBox(false, this);
-  alarmIncrCombo->insertItem("minute(s)");
-  alarmIncrCombo->insertItem("hour(s)");
-  alarmIncrCombo->insertItem("day(s)");
+  alarmIncrCombo->insertItem(i18n("minute(s)"));
+  alarmIncrCombo->insertItem(i18n("hour(s)"));
+  alarmIncrCombo->insertItem(i18n("day(s)"));
   alarmIncrCombo->setMinimumHeight(20);
 
   alarmSoundButton = new QPushButton( this, "PushButton_4" );
