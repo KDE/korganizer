@@ -597,7 +597,7 @@ void KOrganizer::file_import()
   } else if (retVal == -1) {
     KMessageBox::error(this,
 			 i18n("KOrganizer encountered an error parsing your "
-			      ".calendar file from ical.  Import has failed."));
+			      ".calendar file from ical. Import has failed."));
   } else if (retVal == -2) {
     KMessageBox::error(this,
 			 i18n("KOrganizer doesn't think that your .calendar "
