@@ -117,7 +117,6 @@ IncomingDialog::IncomingDialog(Calendar *calendar,OutgoingDialog *outgoing,
   mOutgoing = outgoing;
 #ifndef KORG_NOMAIL
   mScheduler = new MailScheduler(mCalendar);
-  retrieve();
 #else
   mScheduler = new DummyScheduler(mCalendar);
 #endif
@@ -127,6 +126,7 @@ IncomingDialog::IncomingDialog(Calendar *calendar,OutgoingDialog *outgoing,
   mMessageListView->setColumnAlignment(4,AlignHCenter);
   QObject::connect(mMessageListView,SIGNAL(doubleClicked(QListViewItem *)),
                    this,SLOT(showEvent(QListViewItem *)));
+  retrieve();
 }
 
 /*

@@ -1210,7 +1210,6 @@ void KOrganizer::setNumIncoming(int num)
 
 void KOrganizer::setNumOutgoing(int num)
 {
-kdDebug() << "KOrganizer::setNumOutgoing " << num << endl;
   statusBar()->changeItem(i18n(" Outgoing Messages: %1 ").arg(num),
                           ID_MESSAGES_OUT);
 }

@@ -71,8 +71,9 @@ KOPrefsDialog::KOPrefsDialog(QWidget *parent, char *name, bool modal) :
   setupFontsTab();
   setupColorsTab();
   setupViewsTab();
-  setupPrinterTab();
+  //setupPrinterTab();
   setupGroupSchedulingTab();
+  setupGroupAutomationTab();
 }
 
 
@@ -330,8 +331,14 @@ void KOPrefsDialog::setupViewsTab()
                  &(KOPrefs::instance()->mMarcusBainsEnabled),topFrame);
   topLayout->addWidget(marcusBainsEnabled->checkBox(),10,0);
 
+  QBoxLayout *printLayout = new QHBoxLayout;
+  topLayout->addLayout(printLayout,11,0);
+  printLayout->addWidget(new QLabel(i18n("Printpreview Program:"),topFrame));
+  printLayout->addStretch(1);
+  mPrintPreviewEdit = new KURLRequester(topFrame);
+  printLayout->addWidget(mPrintPreviewEdit);
 
-  topLayout->setRowStretch(11,1);
+  topLayout->setRowStretch(12,1);
 }
 
 
@@ -481,7 +488,7 @@ void KOPrefsDialog::setupGroupSchedulingTab()
   QFrame *topFrame  = addPage(i18n("Group Scheduling"),0,
                               DesktopIcon("personal",KIcon::SizeMedium));
 
-  QGridLayout *topLayout = new QGridLayout(topFrame,7,2);
+  QGridLayout *topLayout = new QGridLayout(topFrame,6,2);
   topLayout->setSpacing(spacingHint());
   topLayout->setMargin(marginHint());
 
@@ -501,8 +508,39 @@ void KOPrefsDialog::setupGroupSchedulingTab()
 
   topLayout->addMultiCellWidget(sendGroup->groupBox(),1,1,0,1);
 
+  topLayout->addMultiCellWidget(new QLabel(i18n("Additional email addresses:"),topFrame),2,2,0,1);
+  mAMails = new QListView(topFrame);
+  mAMails->addColumn(i18n("Email"),300);
+  topLayout->addMultiCellWidget(mAMails,3,3,0,1);
+
+  topLayout->addWidget(new QLabel(i18n("Additional email address:"),topFrame),4,0);
+  aEmailsEdit = new QLineEdit(topFrame);
+  aEmailsEdit->setEnabled(false);
+  topLayout->addWidget(aEmailsEdit,4,1);
+
+  QPushButton *add = new QPushButton(i18n("New"),topFrame,"new");
+  topLayout->addWidget(add,5,0);
+  QPushButton *del = new QPushButton(i18n("Remove"),topFrame,"remove");
+  topLayout->addWidget(del,5,1);
+
+  //topLayout->setRowStretch(2,1);
+  connect(add, SIGNAL( clicked() ), this, SLOT(addItem()) );
+  connect(del, SIGNAL( clicked() ), this, SLOT(removeItem()) );
+  connect(aEmailsEdit,SIGNAL( textChanged(const QString&) ), this,SLOT(updateItem()));
+  connect(mAMails,SIGNAL(selectionChanged(QListViewItem *)),SLOT(updateInput()));
+}
+
+void KOPrefsDialog::setupGroupAutomationTab()
+{
+  QFrame *topFrame  = addPage(i18n("Group Automation"),0,
+                              DesktopIcon("personal",KIcon::SizeMedium));
+
+  QGridLayout *topLayout = new QGridLayout(topFrame,2,2);
+  topLayout->setSpacing(spacingHint());
+  topLayout->setMargin(marginHint());
+
   QGroupBox *autoCheckGroup = new QGroupBox(1,Horizontal,i18n("Auto-Check"),topFrame);
-  topLayout->addMultiCellWidget(autoCheckGroup,2,2,0,1);
+  topLayout->addMultiCellWidget(autoCheckGroup,0,0,0,1);
 
   addWidBool(i18n("Enable interval message checking"),
              &(KOPrefs::instance()->mIntervalCheck),autoCheckGroup);
@@ -513,26 +551,6 @@ void KOPrefsDialog::setupGroupSchedulingTab()
   (void)new QLabel(i18n("Check interval in minutes:"),intervalBox);
   mAutoCheckIntervalSpin = new QSpinBox(1,500,1,intervalBox);
 
-  topLayout->addMultiCellWidget(new QLabel(i18n("Additional email addresses:"),topFrame),3,3,0,1);
-  mAMails = new QListView(topFrame);
-  mAMails->addColumn(i18n("Email"),300);
-  topLayout->addMultiCellWidget(mAMails,4,4,0,1);
-
-  topLayout->addWidget(new QLabel(i18n("Additional email address:"),topFrame),5,0);
-  aEmailsEdit = new QLineEdit(topFrame);
-  aEmailsEdit->setEnabled(false);
-  topLayout->addWidget(aEmailsEdit,5,1);
-
-  QPushButton *add = new QPushButton(i18n("New"),topFrame,"new");
-  topLayout->addWidget(add,6,0);
-  QPushButton *del = new QPushButton(i18n("Remove"),topFrame,"remove");
-  topLayout->addWidget(del,6,1);
-
-  //topLayout->setRowStretch(2,1);
-  connect(add, SIGNAL( clicked() ), this, SLOT(addItem()) );
-  connect(del, SIGNAL( clicked() ), this, SLOT(removeItem()) );
-  connect(aEmailsEdit,SIGNAL( textChanged(const QString&) ), this,SLOT(updateItem()));
-  connect(mAMails,SIGNAL(selectionChanged(QListViewItem *)),SLOT(updateInput()));
 }
 
 void KOPrefsDialog::showPrinterTab()
