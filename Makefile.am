@@ -9,10 +9,13 @@ bin_PROGRAMS = korganizer
 
 korganizer_LDFLAGS = $(all_libraries) $(KDE_RPATH)
 korganizer_LDADD   = libkorganizer.la
-korganizer_SOURCES = dummy.cpp
+korganizer_SOURCES = main.cpp korganizer.cpp koapp.cpp
 
-dummy.cpp:
-	echo > $@
+kde_module_LTLIBRARIES = libkorganizerpart.la
+
+libkorganizerpart_la_LDFLAGS = -module $(KDE_PLUGIN) $(all_libraries)
+libkorganizerpart_la_LIBADD  = libkorganizer.la
+libkorganizerpart_la_SOURCES = korganizer_part.cpp
 
 check_PROGRAMS = korgplugins timezone
 
@@ -37,7 +40,7 @@ libkorganizer_la_SOURCES =  outgoingdialog_base.ui \
 	koagendaview.cpp koagenda.cpp koagendaitem.cpp \
 	datenavigator.cpp kdatenavigator.cpp \
 	komonthview.cpp \
-	ktimeedit.cpp main.cpp  \
+	ktimeedit.cpp \
 	searchdialog.cpp calendarview.cpp koviewmanager.cpp \
         kodialogmanager.cpp \
 	calprinter.cpp \
@@ -45,7 +48,6 @@ libkorganizer_la_SOURCES =  outgoingdialog_base.ui \
 	komailclient.cpp kotodoview.cpp kotodoviewitem.cpp \
         kolistview.cpp \
         exportwebdialog.cpp htmlexport.cpp \
-        koapp.cpp korganizer_part.cpp korganizer.cpp \
         koprefsdialog.cpp \
         koincidenceeditor.cpp koeventeditor.cpp kotodoeditor.cpp \
         koprefs.cpp koeventviewer.cpp kowindowlist.cpp \
