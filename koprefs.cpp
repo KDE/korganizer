@@ -54,7 +54,7 @@ KOPrefs::KOPrefs() :
   QColor defaultWorkingHoursColor = QColor(160,160,160);
   QColor defaultTodoDueTodayColor = QColor(255,136,0);
   QColor defaultTodoOverdueColor  = QColor("red");
-  
+
   mDefaultTimeBarFont = QFont("helvetica",12,QFont::Bold);
   mDefaultViewFont = QFont("helvetica",12);
   mDefaultMonthViewFont = QFont("helvetica",10);
@@ -126,7 +126,7 @@ KOPrefs::KOPrefs() :
   addItemBool("Month View Uses Category Color",&mMonthViewUsesCategoryColor,false);
   addItemBool("Full View Month",&mFullViewMonth,false);
   addItemBool("Full View Todo",&mFullViewTodo,true);
-  
+
   addItemInt("Next X Days",&mNextXDays,3);
 
   KPrefs::setCurrentGroup("Printer");
@@ -152,9 +152,11 @@ KOPrefs::KOPrefs() :
   addItemInt("IMIP auto save FreeBusy",&mIMIPAutoFreeBusyReply,neverAuto);
 
   KPrefs::setCurrentGroup( "Editors" );
-  
+
   addItemStringList( "EventTemplates", &mEventTemplates );
   addItemStringList( "TodoTemplates", &mTodoTemplates );
+
+  addItemInt("DestinationPolicy",&mDestination,standardDestination);
 }
 
 
@@ -218,7 +220,7 @@ void KOPrefs::setTimeZoneIdDefault()
     tzset();
     zone = tzname[0];
   }
-  
+
   kdDebug () << "----- time zone: " << zone << endl;
 
   mTimeZoneId = zone;
@@ -257,7 +259,7 @@ void KOPrefs::usrReadConfig()
   for (it = mCustomCategories.begin();it != mCustomCategories.end();++it ) {
     setCategoryColor(*it,config()->readColorEntry(*it,&mDefaultCategoryColor));
   }
-  
+
   if (mTimeZoneId.isEmpty()) {
     setTimeZoneIdDefault();
   }

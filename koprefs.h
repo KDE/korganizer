@@ -40,16 +40,17 @@ class KOPrefs : public KPimPrefs
     enum { IMIPDummy, IMIPKMail };
     enum { IMIPOutbox, IMIPdirectsend };
     enum { neverAuto, addressbookAuto, selectedAuto };
-  
+    enum { standardDestination, askDestination };
+
     virtual ~KOPrefs();
-  
+
     /** Get instance of KOPrefs. It is made sure that there is only one
     instance. */
     static KOPrefs *instance();
-  
+
     /** Set preferences to default values */
     void usrSetDefaults();
-  
+
     /** Read preferences from config file */
     void usrReadConfig();
 
@@ -85,10 +86,10 @@ class KOPrefs : public KPimPrefs
     bool    mAutoSave;
     int     mAutoSaveInterval;
     bool    mConfirm;
-  
+
     bool    mEnableGroupScheduling;
     bool    mEnableProjectView;
-  
+
     int     mDefaultFormat;
     int     mMailClient;
 
@@ -125,11 +126,11 @@ class KOPrefs : public KPimPrefs
     bool    mEnableToolTips;
     bool    mEnableMonthScroll;
     bool    mFullViewMonth;
-    bool    mMonthViewUsesCategoryColor;    
+    bool    mMonthViewUsesCategoryColor;
     bool    mFullViewTodo;
     bool    mMarcusBainsEnabled;
     int     mNextXDays;
-   
+
     bool    mCompactDialogs;
     bool    mVerticalScreen;
 
@@ -153,6 +154,8 @@ class KOPrefs : public KPimPrefs
 
     QStringList mTodoTemplates;
     QStringList mEventTemplates;
+
+    int mDestination;
 
   private:
     QDict<QColor> mCategoryColors;

@@ -100,7 +100,7 @@
 using namespace KOrg;
 
 CalendarView::CalendarView( CalendarResources *calendar,
-                            QWidget *parent, const char *name ) 
+                            QWidget *parent, const char *name )
   : CalendarViewBase( parent, name ),
     mCalendar( calendar ),
     mResourceManager( calendar->resourceManager() )
@@ -111,7 +111,7 @@ CalendarView::CalendarView( CalendarResources *calendar,
 }
 
 CalendarView::CalendarView( Calendar *calendar,
-                            QWidget *parent, const char *name ) 
+                            QWidget *parent, const char *name )
   : CalendarViewBase( parent, name ),
     mCalendar( calendar ),
     mResourceManager( 0 )
@@ -173,7 +173,7 @@ void CalendarView::init()
 
   mNavigatorBar = new NavigatorBar( QDate::currentDate(), rightBox );
   rightLayout->addWidget( mNavigatorBar );
-  
+
   mRightFrame = new QWidgetStack( rightBox );
   rightLayout->addWidget( mRightFrame, 1 );
 
@@ -575,6 +575,13 @@ void CalendarView::updateConfig()
 
   mCalendar->setTimeZoneId(KOPrefs::instance()->mTimeZoneId);
 
+  if ( mResourceManager ) {
+    CalendarResources *calendar = static_cast<CalendarResources*>(mCalendar);
+    if ( KOPrefs::instance()->mDestination==KOPrefs::askDestination )
+      calendar->setAskDestinationPolicy();
+    else
+      calendar->setStandardDestinationPolicy();
+  }
   // To make the "fill window" configurations work
   mViewManager->raiseCurrentView();
 }
@@ -869,7 +876,7 @@ void CalendarView::todoModified (Todo *event, int changed)
     temp->modified (changed);
 
   }
-  
+
   mViewManager->updateView();
 }
 
@@ -1784,9 +1791,9 @@ void CalendarView::importQtopia( const QString &categories,
                                  const QString &todolist )
 {
   QtopiaFormat qtopiaFormat;
-  if ( !categories.isEmpty() ) qtopiaFormat.load( mCalendar, categories );  
-  if ( !datebook.isEmpty() ) qtopiaFormat.load( mCalendar, datebook );  
-  if ( !todolist.isEmpty() ) qtopiaFormat.load( mCalendar, todolist );  
+  if ( !categories.isEmpty() ) qtopiaFormat.load( mCalendar, categories );
+  if ( !datebook.isEmpty() ) qtopiaFormat.load( mCalendar, datebook );
+  if ( !todolist.isEmpty() ) qtopiaFormat.load( mCalendar, todolist );
   updateView();
 }
 

@@ -178,7 +178,6 @@ void KOPrefsDialog::setupMainTab()
                    topFrame);
   mailClientGroup->addRadio(i18n("KMail"));
   mailClientGroup->addRadio(i18n("Sendmail"));
-
   topLayout->addMultiCellWidget(mailClientGroup->groupBox(),11,11,0,1);
 
   KPrefsWidBool *htmlsave =
@@ -186,7 +185,14 @@ void KOPrefsDialog::setupMainTab()
                  topFrame);
   topLayout->addMultiCellWidget(htmlsave->checkBox(),12,12,0,1);
 
-  topLayout->setRowStretch(13,1);
+  KPrefsWidRadios *destinationGroup =
+      addWidRadios(i18n("New Events/Todos should"),&(KOPrefs::instance()->mDestination),
+                   topFrame);
+  destinationGroup->addRadio(i18n("be added to the standard resource"));
+  destinationGroup->addRadio(i18n("be asked which resource to use"));
+  topLayout->addMultiCellWidget(destinationGroup->groupBox(),13,13,0,1);
+
+  topLayout->setRowStretch(14,1);
 }
 
 
@@ -218,7 +224,7 @@ void KOPrefsDialog::setupTimeTab()
     snprintf(buf, MAXPATHLEN,
             "/bin/fgrep 'TZ=' %s | /bin/head -n 1 | /bin/cut -b 4-",
             INITFILE);
-    
+
     if (f = popen(buf, "r"))
       {
        if (fgets(buf, MAXPATHLEN - 1, f) != NULL)
@@ -245,7 +251,7 @@ void KOPrefsDialog::setupTimeTab()
     snprintf(buf, MAXPATHLEN,
            "/bin/find %s \\( -name src -prune \\) -o -type f -print | /bin/cut -b %d-",
            ZONEINFODIR, strlen(ZONEINFODIR) + 2);
-    
+
     if (f = popen(buf, "r"))
       {
        while(fgets(buf, MAXPATHLEN - 1, f) != NULL)
@@ -255,7 +261,7 @@ void KOPrefsDialog::setupTimeTab()
          }
        pclose(f);
       }
-    
+
 #else
   f = popen("grep -e  ^[^#] /usr/share/zoneinfo/zone.tab | cut -f 3","r");
   if (!f) return;
@@ -280,7 +286,7 @@ void KOPrefsDialog::setupTimeTab()
     }
 
   mTimeZoneCombo->setCurrentItem(nCurrentlySet);
-  
+
   topLayout->addWidget(new QLabel(i18n("Default appointment time:"),
                        topFrame),1,0);
   mStartTimeSpin = new QSpinBox(0,23,1,topFrame);
@@ -351,10 +357,10 @@ void KOPrefsDialog::setupViewsTab()
   dayBeginsLayout->addWidget(dayBegins->label());
   dayBeginsLayout->addStretch(1);
   dayBeginsLayout->addWidget(dayBegins->spinBox());
-  
+
   QBoxLayout *nextDaysLayout = new QHBoxLayout;
   topLayout->addLayout(nextDaysLayout,1,0);
-  nextDaysLayout->addWidget(new QLabel(i18n("Days to show in Next-X-Days view:"),topFrame));  
+  nextDaysLayout->addWidget(new QLabel(i18n("Days to show in Next-X-Days view:"),topFrame));
   mNextXDaysSpin = new QSpinBox(2,14,1,topFrame);
   nextDaysLayout->addStretch(1);
   nextDaysLayout->addWidget(mNextXDaysSpin);
@@ -389,7 +395,7 @@ void KOPrefsDialog::setupViewsTab()
       addWidBool(i18n("Month view uses full window"),
                  &(KOPrefs::instance()->mFullViewMonth),topFrame);
   topLayout->addWidget(fullViewMonth->checkBox(),7,0);
-  
+
   KPrefsWidBool *coloredCategoriesInMonthView =
       addWidBool(i18n("Month view uses category colors"),
                  &(KOPrefs::instance()->mMonthViewUsesCategoryColor),topFrame);
@@ -404,7 +410,7 @@ void KOPrefsDialog::setupViewsTab()
       addWidBool(i18n("Show Marcus Bains line"),
                  &(KOPrefs::instance()->mMarcusBainsEnabled),topFrame);
   topLayout->addWidget(marcusBainsEnabled->checkBox(),10,0);
-  
+
   topLayout->setRowStretch(11,1);
 }
 
@@ -500,14 +506,14 @@ void KOPrefsDialog::setupColorsTab()
                   &(KOPrefs::instance()->mTodoDueTodayColor),topFrame);
   topLayout->addWidget(todoDueTodayColor->label(),5,0);
   topLayout->addWidget(todoDueTodayColor->button(),5,1);
-  
+
   // Todo overdue color
   KPrefsWidColor *todoOverdueColor =
       addWidColor(i18n("Todo overdue color:"),
                   &(KOPrefs::instance()->mTodoOverdueColor),topFrame);
   topLayout->addWidget(todoOverdueColor->label(),6,0);
   topLayout->addWidget(todoOverdueColor->button(),6,1);
-  
+
   // categories colors
   QGroupBox *categoryGroup = new QGroupBox(1,Horizontal,i18n("Categories"),
                                            topFrame);
@@ -730,7 +736,7 @@ void KOPrefsDialog::usrWriteConfig()
   }
 
   KOPrefs::instance()->mNextXDays = mNextXDaysSpin->value();
-  
+
   KOPrefs::instance()->mAdditionalMails.clear();
   QListViewItem *item;
   item = mAMails->firstChild();

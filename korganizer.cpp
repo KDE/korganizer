@@ -99,8 +99,13 @@ KOrganizer::KOrganizer( bool document, const char *name )
     CalendarResources *calendar = new CalendarResources( KOPrefs::instance()->mTimeZoneId );
     mCalendar = calendar;
     setCaption( i18n("Calendar") );
-  
+
     CalendarResourceManager *manager = calendar->resourceManager();
+
+    if ( KOPrefs::instance()->mDestination==KOPrefs::askDestination )
+      calendar->setAskDestinationPolicy();
+    else
+      calendar->setStandardDestinationPolicy();
 
     if ( manager->isEmpty() ) {
       KConfig *config = KOGlobals::config();
@@ -114,7 +119,7 @@ KOrganizer::KOrganizer( bool document, const char *name )
       } else {
         resourceName = i18n("Active Calendar");
       }
-    
+
       kdDebug() << "Using as default resource: '" << fileName << "'" << endl;
 
       ResourceCalendar *defaultResource = new ResourceLocal( fileName );
@@ -287,7 +292,7 @@ bool KOrganizer::queryClose()
       close = true;
     }
   }
-  
+
   // Write configuration. I don't know if it really makes sense doing it this
   // way, when having opened multiple calendars in different CalendarViews.
   if ( close ) writeSettings();
