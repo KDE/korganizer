@@ -47,6 +47,8 @@
 #include <libkdepim/clicklineedit.h>
 #include <libkdepim/kdatepickerpopup.h>
 
+#include <libemailfunctions/email.h>
+
 #include "docprefs.h"
 
 #include "koincidencetooltip.h"
@@ -252,17 +254,21 @@ void KOTodoListView::contentsDropEvent( QDropEvent *e )
     } else if ( QTextDrag::decode(e, text) ) {
       //QListViewItem *qlvi = itemAt( contentsToViewport(e->pos()) );
       kdDebug(5850) << "Dropped : " << text << endl;
-      QStringList emails = QStringList::split(",",text);
       Todo*todo = todoi->todo();
       Todo*oldtodo = todo->clone();
-      if ( mChanger->beginChange( todo ) ) {
-        for(QStringList::ConstIterator it = emails.begin();it!=emails.end();++it) {
-          kdDebug(5850) << " Email: " << (*it) << endl;
-          int pos = (*it).find("<");
-          QString name = (*it).left(pos);
-          QString email = (*it).mid(pos);
-          if (!email.isEmpty() && todoi) {
-            todo->addAttendee( new Attendee( name, email ) );
+      if( text.startsWith( "file:" ) ) {
+        todo->addAttachment( new Attachment( text ) );
+      } else {
+        QStringList emails = KPIM::splitEmailAddrList( text );
+        if ( mChanger->beginChange( todo ) ) {
+          for(QStringList::ConstIterator it = emails.begin();it!=emails.end();++it) {
+            kdDebug(5850) << " Email: " << (*it) << endl;
+            int pos = (*it).find("<");
+            QString name = (*it).left(pos);
+            QString email = (*it).mid(pos);
+            if (!email.isEmpty() && todoi) {
+              todo->addAttendee( new Attendee( name, email ) );
+            }
           }
         }
         mChanger->changeIncidence( oldtodo, todo );
@@ -363,6 +369,7 @@ KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent, const char* name)
   topLayout->addWidget( title );
 
   mQuickAdd = new KPIM::ClickLineEdit( this, i18n( "Click to add a new to-do" ) );
+  mQuickAdd->setAcceptDrops( false );
   topLayout->addWidget( mQuickAdd );
 
   if ( !KOPrefs::instance()->mEnableQuickTodo ) mQuickAdd->hide();
