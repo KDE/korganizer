@@ -1,5 +1,5 @@
 <!DOCTYPE kpartgui>
-<kpartgui name="korganizer" version="24">
+<kpartgui name="korganizer" version="25">
 
   <MenuBar>
     <Menu name="file"><text>&amp;File</text>
@@ -70,7 +70,9 @@
       <Action name="publish_freebusy"/>
     </Menu>
     <Menu name="settings"><text>&amp;Settings</text>
-      <Actionlist name="toolbartoggles" append="show_merge"/>
+      <Menu name="toolbars"><text>Toolbars</text>
+        <Actionlist name="toolbartoggles" append="show_merge"/>
+      </Menu>
       <Action name="show_filter" append="show_merge"/>
       <Action name="conf_datetime" append="save_merge"/>
       <Action name="configure_plugins" append="save_merge"/>

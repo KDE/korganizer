@@ -1,5 +1,5 @@
 <!DOCTYPE kpartgui>
-<kpartgui name="korganizer" version="10">
+<kpartgui name="korganizer" version="11">
 
   <MenuBar>
     <Menu name="file"><text>&amp;File</text>
@@ -62,7 +62,9 @@
       <Action name="declinecounter"/>
     </Menu>
     <Menu name="settings"><text>&amp;Settings</text>
-      <Actionlist name="toolbartoggles" append="show_merge"/>
+      <Menu name="toolbars"><text>Toolbars</text>
+        <Actionlist name="toolbartoggles" append="show_merge"/>
+      </Menu>
       <Action name="show_filter" append="show_merge"/>
       <Action name="conf_datetime"/>
       <Action name="edit_filters"/>
