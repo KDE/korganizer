@@ -42,13 +42,15 @@ public:
   bool deleteIncidence( Incidence *incidence );
   
   bool cutIncidence( Incidence *incidence );
-
   static bool incidencesEqual( Incidence *inc1, Incidence *inc2 );
   // FIXME: Assigning an incidence to another one (provided they are the same 
   //        type) doesn't work. It just copies pointers to recurrence, so when
   //        the first one is deleted, the other one has a stale pointer and will
   //        crash...
 //  static bool assignIncidence( Incidence *inc1, Incidence *inc2 );
+public slots:
+  bool cancelAttendees( Incidence *incidence );
+
 protected:
   bool myAttendeeStatusChanged( Incidence *oldInc, Incidence *newInc );
 

@@ -63,7 +63,6 @@
 #include "exportwebdialog.h"
 #include "kocorehelper.h"
 #include "incidencechanger.h"
-#include "mailscheduler.h"
 
 #include <libkcal/vcaldrag.h>
 #include <libkcal/icaldrag.h>
@@ -323,6 +322,10 @@ void CalendarView::setIncidenceChanger( IncidenceChangerBase *changer )
 
   connect( mChanger, SIGNAL( schedule( Scheduler::Method, Incidence*) ),
            this, SLOT( schedule( Scheduler::Method, Incidence*) ) );
+
+
+  connect( this, SIGNAL( cancelAttendees( Incidence * ) ),
+           mChanger, SLOT( cancelAttendees( Incidence * ) ) );
 }
 
 Calendar *CalendarView::calendar()
@@ -1360,28 +1363,6 @@ void CalendarView::setModified(bool modified)
     emit modifiedChanged(mModified);
   }
 }
-
-void CalendarView::deleteAttendee( Incidence *incidence )
-{
-  if ( KOPrefs::instance()->mUseGroupwareCommunication ) {
-    if ( KMessageBox::questionYesNo( this, i18n("Some attendees were removed "
-       "from the incidence. Shall cancel messages be sent to these attendees?"),
-       i18n( "Attendees removed" ) ) == KMessageBox::Yes ) {
-      // don't use KOGroupware::sendICalMessage here, because that asks just
-      // a very general question "Other people are involved, send message to
-      // them?", which isn't helpful at all in this situation. Afterwards, it
-      // would only call the MailScheduler::performTransaction, so do this
-      // manually.
-      // FIXME: Groupware schedulling should be factored out to it's own class
-      //        anyway
-      KCal::MailScheduler scheduler( mCalendar );
-      scheduler.performTransaction( incidence, Scheduler::Cancel );
-    }
-  } else {
-    schedule_cancel( incidence );
-  }
-}
-
 
 bool CalendarView::isReadOnly()
 {

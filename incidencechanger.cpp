@@ -25,6 +25,8 @@
 #include "incidencechanger.h"
 #include "koprefs.h"
 #include "kogroupware.h"
+#include "mailscheduler.h"
+
 #include <libkcal/freebusy.h>
 #include <libkcal/dndfactory.h>
 #include <kdebug.h>
@@ -51,6 +53,25 @@ bool IncidenceChanger::sendGroupwareMessage( Incidence *incidence, KCal::Schedul
     return KOGroupware::instance()->sendICalMessage( 0, method, incidence, deleting );
   }
   return true;
+}
+
+bool IncidenceChanger::cancelAttendees( Incidence *incidence )
+{
+  if ( KOPrefs::instance()->mUseGroupwareCommunication ) {
+    if ( KMessageBox::questionYesNo( 0, i18n("Some attendees were removed "
+       "from the incidence. Shall cancel messages be sent to these attendees?"),
+       i18n( "Attendees removed" ) ) == KMessageBox::Yes ) {
+      // don't use KOGroupware::sendICalMessage here, because that asks just
+      // a very general question "Other people are involved, send message to
+      // them?", which isn't helpful at all in this situation. Afterwards, it
+      // would only call the MailScheduler::performTransaction, so do this
+      // manually.
+      // FIXME: Groupware schedulling should be factored out to it's own class
+      //        anyway
+      KCal::MailScheduler scheduler( mCalendar );
+      scheduler.performTransaction( incidence, Scheduler::Cancel );
+    }
+  }
 }
 
 bool IncidenceChanger::endChange( Incidence *incidence )

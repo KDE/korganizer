@@ -208,7 +208,7 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
 
     void newFilterListSignal( const QStringList & );
     void selectFilterSignal( int );
-
+    
   public slots:
     /** options dialog made a changed to the configuration. we catch this
      *  and notify all widgets which need to update their configuration. */
@@ -318,9 +318,8 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
       are present in the incidence, so we just need to send a cancel messages
       to all attendees groupware messages are enabled at all.
     */
-    void deleteAttendee( Incidence *incidence );
-
-
+    void cancelAttendees( Incidence * );
+    
     /**
       Check if clipboard contains vCalendar event. The signal pasteEnabled() is
       emitted as result.
