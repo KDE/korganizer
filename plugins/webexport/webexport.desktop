@@ -25,7 +25,6 @@ Name[sr@Latn]=Прикључак KOrganizer-а за веб извоз
 Name[sv]=Webbexportinsticksprogram för Korganizer
 Name[ta]=கேஅமைப்பாளருக்கான இணைய ஏற்றுமதி சொருகுப்பொருள்
 Name[tg]=Содирот ба намуди саҳифаи веб
-Name[xx]=xxWeb Export Plugin for KOrganizerxx
 Name[zh_CN]=KOrganizer 的网页导出插件
 Type=Service
 ServiceTypes=KOrganizer/Part
