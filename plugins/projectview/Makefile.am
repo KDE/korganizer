@@ -3,7 +3,7 @@
 METASOURCES = AUTO
 
 INCLUDES = -I$(top_srcdir)/korganizer/interfaces \
-  -I$(top_srcdir)/libkcal -I$(top_srcdir)/kgantt/kgantt $(all_includes)
+  -I$(top_srcdir) -I$(top_srcdir)/kgantt/kgantt $(all_includes)
 
 kde_module_LTLIBRARIES = libkorg_projectview.la
 
