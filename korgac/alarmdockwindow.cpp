@@ -75,7 +75,7 @@ AlarmDockWindow::AlarmDockWindow( const char *name )
   const char *quitName = KStdAction::name( KStdAction::Quit );
   KAction *quit = ac->action( quitName );
   if ( !quit ) {
-    kdDebug() << "No Quit standard action." << endl;
+    kdDebug(5890) << "No Quit standard action." << endl;
   } else {
     quit->disconnect( SIGNAL( activated() ), qApp,
                       SLOT( closeAllWindows() ) );
@@ -91,7 +91,7 @@ AlarmDockWindow::~AlarmDockWindow()
 
 void AlarmDockWindow::toggleAlarmsEnabled()
 {
-  kdDebug() << "AlarmDockWindow::toggleAlarmsEnabled()" << endl;
+  kdDebug(5890) << "AlarmDockWindow::toggleAlarmsEnabled()" << endl;
 
   KConfig *config = kapp->config();
   config->setGroup( "General" );

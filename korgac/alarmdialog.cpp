@@ -115,7 +115,7 @@ void AlarmDialog::eventNotification()
       Alarm *alarm = *it;
 // TODO: Check whether this should be done for all multiple alarms
       if (alarm->type() == Alarm::Procedure) {
-        kdDebug() << "Starting program: '" << alarm->programFile() << "'" << endl;
+        kdDebug(5890) << "Starting program: '" << alarm->programFile() << "'" << endl;
         KProcess proc;
         proc << QFile::encodeName(alarm->programFile());
         proc.start(KProcess::DontCare);
