@@ -45,7 +45,7 @@ KOEventViewer::~KOEventViewer()
 
 void KOEventViewer::setSource( const QString &n )
 {
-  KOCore::self()->uriHandler()->process( n );
+  UriHandler::process( n );
 }
 
 void KOEventViewer::addTag(const QString & tag,const QString & text)

@@ -63,7 +63,6 @@
 #include "resourceimportdialog.h"
 
 KOWindowList *ActionManager::mWindowList = 0;
-bool ActionManager::startedKAddressBook = false;
 
 ActionManager::ActionManager( KXMLGUIClient *client, CalendarView *widget,
                               QObject *parent, KOrg::MainWindow *mainWindow,
@@ -88,13 +87,6 @@ ActionManager::~ActionManager()
   // Remove Part plugins
   if ( mPluginMenu ) mPluginMenu->popupMenu()->clear();
   KOCore::self()->unloadParts( mMainWindow, mParts );
-  //close down KAddressBook if we started it
-  if ( ActionManager::startedKAddressBook == true ) {
-    kdDebug(5850) << "Closing down kaddressbook" << endl;
-    DCOPClient *client = KApplication::kApplication()->dcopClient();
-    const QByteArray noParamData;
-    client->send("kaddressbook", "KAddressBookIface", "exit()",  noParamData);
-  }
 
   delete mTempFile;
 

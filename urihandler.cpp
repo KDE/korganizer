@@ -26,19 +26,13 @@
 
 #ifndef KORG_NODCOP
 #include <dcopclient.h>
-#include "korganizer.h"
-#include "actionmanager.h"
-#endif
-
 #include "kmailIface_stub.h"
+#endif
 
 #include <kiconloader.h>
 #include <krun.h>
 #include <kprocess.h>
-
-UriHandler::UriHandler()
-{
-}
+#include <kdebug.h>
 
 bool UriHandler::process( const QString &uri )
 {
@@ -85,7 +79,6 @@ bool UriHandler::process( const QString &uri )
       */
       KIconLoader *iconLoader = new KIconLoader();
       QString iconPath = iconLoader->iconPath( "go", KIcon::Small );
-      ActionManager::setStartedKAddressBook( true );
       QString tmpStr = "kaddressbook --editor-only --uid ";
       tmpStr += KProcess::quote( uri.mid( 6 ) );
       KRun::runCommand( tmpStr, "KAddressBook", iconPath );

@@ -78,7 +78,7 @@ void KOEditorAttachments::showAttachment( QListViewItem *item )
   
   QString uri = item->text( 0 );
   
-  KOCore::self()->uriHandler()->process( uri );
+  UriHandler::process( uri );
 }
 
 void KOEditorAttachments::slotAdd()

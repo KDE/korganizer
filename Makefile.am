@@ -1,6 +1,6 @@
 KDE_OPTIONS = nofinal
 
-SUBDIRS = knewstuff korgac . pixmaps sounds plugins interfaces
+SUBDIRS = knewstuff . korgac pixmaps sounds plugins interfaces
 
 INCLUDES = \
   -I$(srcdir)/interfaces -I$(top_srcdir)/libkdepim -I$(top_srcdir) $(all_includes)
@@ -38,20 +38,19 @@ timezone_LDADD   = libkorganizer.la $(LIB_KSYCOCA)
 timezone_SOURCES = timezone.cpp
 timezone_COMPILE_FIRST = koprefs.h
 
-lib_LTLIBRARIES = libkorganizer.la
+lib_LTLIBRARIES = libkorganizer.la libkorganizer_eventviewer.la
 
 libkorganizer_la_LDFLAGS = $(all_libraries) $(KDE_RPATH) -version-info 1:0
 libkorganizer_la_LIBADD  = $(LIB_KPARTS) $(LIB_KFILE) \
                            -lkdeprint -lkabc -lkutils \
                            $(top_builddir)/libkcal/libkcal.la \
                            $(top_builddir)/libkdepim/libkdepim.la \
-                           $(top_builddir)/kalarmd/libkalarmd.la \
+                           libkorganizer_eventviewer.la \
                            $(top_builddir)/korganizer/knewstuff/libknewstuff.la
 libkorganizer_la_COMPILE_FIRST = kofilterview_base.ui \
 	outgoingdialog_base.ui \
 	incomingdialog_base.ui \
-	../libkdepim/categoryselectdialog.h \
-	../kalarmd/alarmdaemoniface_stub.h
+	../libkdepim/categoryselectdialog.h
 libkorganizer_la_SOURCES =  outgoingdialog_base.ui \
 	koagendaview.cpp koagenda.cpp koagendaitem.cpp \
 	datenavigator.cpp kdatenavigator.cpp \
@@ -67,7 +66,7 @@ libkorganizer_la_SOURCES =  outgoingdialog_base.ui \
         kolistview.cpp \
         koprefsdialog.cpp \
         koincidenceeditor.cpp koeventeditor.cpp kotodoeditor.cpp \
-        koprefs.cpp koeventviewer.cpp kowindowlist.cpp \
+        koprefs.cpp kowindowlist.cpp \
         koeditorgeneral.cpp \
         koeditorgeneralevent.cpp koeditorgeneraltodo.cpp koeditordetails.cpp \
         koeditorrecurrence.cpp koeditorattachments.cpp koeventviewerdialog.cpp \
@@ -93,7 +92,18 @@ libkorganizer_la_SOURCES =  outgoingdialog_base.ui \
         koprefs_base.kcfgc \
         koincidencetooltip.cpp aboutdata.cpp \
         cellitem.cpp \
-        resourceimportdialog.cpp kmailIface.stub urihandler.cpp
+        resourceimportdialog.cpp
+
+
+libkorganizer_eventviewer_la_LDFLAGS = $(all_libraries) $(KDE_RPATH) \
+                                       -version-info 1:0
+libkorganizer_eventviewer_la_LIBADD  = $(LIB_KDEUI) \
+                                       $(top_builddir)/libkcal/libkcal.la
+libkorganizer_eventviewer_la_SOURCES = koeventviewer.cpp urihandler.cpp \
+                                       kmailIface.stub
+
+kmailIface_DIR = $(top_srcdir)/kmail
+kmailIface_DCOPIDLNG = true
 
 METASOURCES = AUTO
 

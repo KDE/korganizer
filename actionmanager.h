@@ -109,7 +109,6 @@ class ActionManager : public QObject, public KCalendarIface
 
     /** Is there a instance with this URL? */
     static KOrg::MainWindow* findInstance( const KURL &url );
-    static void setStartedKAddressBook( bool tmpBool ) { startedKAddressBook = tmpBool; }
     /** Open calendar file from URL */
     bool openURL( QString url );
     /** Open calendar file from URL */
@@ -309,7 +308,6 @@ class ActionManager : public QObject, public KCalendarIface
     KOrg::MainWindow *mMainWindow;
     bool mIsPart;
 
-    static bool startedKAddressBook; //whether we started KAddressBook ourselves
     KONewStuff *mNewStuff;
     bool mHtmlExportSync;
 

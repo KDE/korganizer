@@ -36,12 +36,10 @@ using namespace KCal;
 class UriHandler
 {
   public:
-    UriHandler();
-
     /**
       Process URI. Return true if handler handled the URI, otherwise false.
     */
-    bool process( const QString &uri );
+    static bool process( const QString &uri );
 };
 
 #endif
