@@ -26,6 +26,7 @@
 #include "resourceview.h"
 
 #include <kcolordialog.h>
+#include <kdialog.h>
 #include <klistview.h>
 #include <klocale.h>
 #include <kdebug.h>
@@ -196,7 +197,7 @@ ResourceView::ResourceView( KCal::CalendarResources *calendar,
                             QWidget *parent, const char *name )
   : CalendarViewExtension( parent, name ), mCalendar( calendar )
 {
-  QBoxLayout *topLayout = new QVBoxLayout( this );
+  QBoxLayout *topLayout = new QVBoxLayout( this, 0, KDialog::spacingHint() );
 
   mListView = new KListView( this );
   mListView->addColumn( i18n("Calendar") );
@@ -204,6 +205,7 @@ ResourceView::ResourceView( KCal::CalendarResources *calendar,
   topLayout->addWidget( mListView );
 
   QHBox *buttonBox = new QHBox( this );
+  buttonBox->setSpacing( KDialog::spacingHint() );
   topLayout->addWidget( buttonBox );
 
   mAddButton = new QPushButton( i18n("Add..."), buttonBox, "add" );
