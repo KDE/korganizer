@@ -88,10 +88,13 @@ KNoScrollListBox::KNoScrollListBox(QWidget *parent,const char *name)
   pal.setColor( QColorGroup::Base, KOPrefs::instance()->agendaBgColor() );
   setPalette( pal );
 
+#if 0
+  // These slots don't exist
   connect( this, SIGNAL( onItem( QListBoxItem* ) ),
            this, SLOT( addToolTip( QListBoxItem* ) ) );
   connect( this, SIGNAL( onViewport() ),
            this, SLOT( removeToolTip() ) );
+#endif
 }
 
 void KNoScrollListBox::keyPressEvent(QKeyEvent *e)
