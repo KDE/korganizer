@@ -935,6 +935,10 @@ void KOrganizer::readProperties(KConfig *config)
     KURL u;
     u.setPath(calendarUrl);
     openURL(u);
+
+    KGlobal::config()->setGroup("General");
+    QString active = KGlobal::config()->readEntry("Active Calendar");
+    if (active == calendarUrl) setActive(true);
   }
 }
 
