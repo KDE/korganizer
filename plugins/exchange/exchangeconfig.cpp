@@ -47,10 +47,21 @@ ExchangeConfig::ExchangeConfig( KPIM::ExchangeAccount* account, QWidget* parent 
   m_user = new KLineEdit( mAccount->account(), topFrame );
   topLayout->addWidget( new QLabel( i18n( "User:" ), topFrame ), 1, 0 );
   topLayout->addWidget( m_user, 1, 1 );
+  connect( m_user, SIGNAL(textChanged(const QString&)), this, SLOT(slotUserChanged(const QString&)) );
+
+  m_mailbox= new KLineEdit( mAccount->mailbox(), topFrame );
+
+  m_mailboxEqualsUser = new QCheckBox( i18n( "Exchange Mailbox is equal to User" ), topFrame );
+  topLayout->addWidget( m_mailboxEqualsUser, 2, 0 );
+  connect( m_mailboxEqualsUser, SIGNAL(toggled(bool)), this, SLOT(slotToggleEquals(bool)) );
+  m_mailboxEqualsUser->setChecked( mAccount->mailbox() == mAccount->account() );
+
+  topLayout->addWidget( new QLabel( i18n( "Mailbox:" ), topFrame ), 3, 0 );
+  topLayout->addWidget( m_mailbox, 3, 1 );
 
   m_password = new KLineEdit( mAccount->password(), topFrame );
-  topLayout->addWidget( new QLabel( i18n( "Password:" ), topFrame ), 2, 0 );
-  topLayout->addWidget( m_password, 2, 1 );
+  topLayout->addWidget( new QLabel( i18n( "Password:" ), topFrame ), 4, 0 );
+  topLayout->addWidget( m_password, 4, 1 );
   m_password->setEchoMode( QLineEdit::Password );
 }
 
@@ -58,12 +69,32 @@ ExchangeConfig::~ExchangeConfig()
 {
 }
 
+void ExchangeConfig::slotToggleEquals( bool on )
+{
+  m_mailbox->setEnabled( ! on );
+  if ( on ) {
+    m_mailbox->setText( m_user->text() );
+  }
+}
+
+void ExchangeConfig::slotUserChanged( const QString& text )
+{
+  if ( m_mailboxEqualsUser->isChecked() ) {
+    m_mailbox->setText( text );
+  }
+}
+
 void ExchangeConfig::slotOk()
 {
   mAccount->setHost( m_host->text() );
   mAccount->setAccount( m_user->text() );
+  if ( m_mailboxEqualsUser->isChecked() ) {
+    mAccount->setMailbox( m_user->text() );
+  } else {
+    mAccount->setMailbox( m_mailbox->text() );
+  }
   mAccount->setPassword( m_password->text() );
-
+  
   accept();
 }
 #include "exchangeconfig.moc"

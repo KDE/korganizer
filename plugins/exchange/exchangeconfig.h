@@ -19,6 +19,7 @@
 #ifndef EXCHANGECONFIG_H
 #define EXCHANGECONFIG_H
 
+#include <qcheckbox.h>
 #include <kdialogbase.h>
 #include <klineedit.h>
 //#include <kpassdlg.h>
@@ -37,6 +38,8 @@ class ExchangeConfig : public KDialogBase
 //    void save();
 
   protected slots:
+    void slotToggleEquals( bool on );
+    void slotUserChanged( const QString& text );
     void slotOk();
 
   private:
@@ -44,6 +47,8 @@ class ExchangeConfig : public KDialogBase
     KPIM::ExchangeAccount* mAccount;
     KLineEdit *m_host;
     KLineEdit *m_user;
+    QCheckBox *m_mailboxEqualsUser;
+    KLineEdit *m_mailbox;
     KLineEdit *m_password;
 };
 
