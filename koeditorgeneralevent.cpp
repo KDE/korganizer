@@ -1,4 +1,4 @@
-// 	$Id$	
+// 	$Id$
 
 #include <qtooltip.h>
 #include <qlayout.h>
@@ -271,9 +271,7 @@ void KOEditorGeneralEvent::pickAlarmSound()
     if (!fileName.isEmpty()) {
       alarmSound = fileName;
       QToolTip::remove(alarmSoundButton);
-      QString dispStr = "Playing \"";
-      dispStr += fileName;
-      dispStr += "\"";
+      QString dispStr = i18n("Playing '%1'").arg(fileName);
       QToolTip::add(alarmSoundButton, dispStr);
     }
   }
@@ -292,9 +290,7 @@ void KOEditorGeneralEvent::pickAlarmProgram()
     if (!fileName.isEmpty()) {
       alarmProgram = fileName;
       QToolTip::remove(alarmProgramButton);
-      QString dispStr = "Running \"";
-      dispStr += fileName;
-      dispStr += "\"";
+      QString dispStr = i18n("Running '%1'").arg(fileName);
       QToolTip::add(alarmProgramButton, dispStr);
     }
   }
@@ -504,17 +500,13 @@ void KOEditorGeneralEvent::readEvent(KOEvent *event)
     if (!event->getProgramAlarmFile().isEmpty()) {
       alarmProgram = event->getProgramAlarmFile();
       alarmProgramButton->setOn(true);
-      QString dispStr = "Running \"";
-      dispStr += alarmProgram;
-      dispStr += "\"";
+      QString dispStr = i18n("Running '%1'").arg(alarmProgram);
       QToolTip::add(alarmProgramButton, dispStr);
     }
     if (!event->getAudioAlarmFile().isEmpty()) {
       alarmSound = event->getAudioAlarmFile();
       alarmSoundButton->setOn(true);
-      QString dispStr = "Playing \"";
-      dispStr += alarmSound;
-      dispStr += "\"";
+      QString dispStr = i18n("Playing '%1'").arg(alarmSound);
       QToolTip::add(alarmSoundButton, dispStr);
     }
   } else {
