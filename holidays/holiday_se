@@ -5,7 +5,7 @@
 weekend "Nyårsdagen" weekend on 1.1
 black "Trett.d.afton" black on 5.1
 weekend "Trett.d. Jul" weekend on 6.1
-black "Alla hjärtans dag" on easter minus 48 days
+black "Alla hjärtans dag" on 26.2
 black "Fettisdagen" on easter minus 47 days
 black "Askonsdagen" on easter minus 46 days
 blue "Sommartid" on last sunday in march

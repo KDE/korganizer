@@ -32,8 +32,14 @@ public:
 
   Incidence *event() { return mEvent; }
 
+  QString key(int, bool) const;
+
+  void setSortKey(int column,const QString &key);
+
 private:
   Incidence *mEvent;
+
+  QMap<int,QString> mKeyMap;
 };
 
 /**

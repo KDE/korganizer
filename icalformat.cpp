@@ -1403,34 +1403,14 @@ void ICalFormat::readIncidence(icalcomponent *parent,Incidence *incidence)
         
 
       case ICAL_X_PROPERTY:
-        kdDebug() << "X Prop: " << icalproperty_get_name(p) << endl;
         if (strcmp(icalproperty_get_name(p),"X-PILOTID") == 0) {
           text = icalproperty_get_value_as_string(p);
-          kdDebug() << "Pilot-Id: " << text << endl;
           incidence->setPilotId(QString::fromUtf8(text).toInt());
         } else if (strcmp(icalproperty_get_name(p),"X-PILOTSTAT") == 0) {
           text = icalproperty_get_value_as_string(p);
-          kdDebug() << "Pilot-Status: " << text << endl;
           incidence->setSyncStatus(QString::fromUtf8(text).toInt());
         }
         break;
-// TODO:
-#if 0
-  /* PILOT SYNC STUFF */
-  if ((vo = isAPropertyOf(vincidence, KPilotIdProp))) {
-    incidence->setPilotId(atoi(s = fakeCString(vObjectUStringZValue(vo))));
-    deleteStr(s);
-  }
-  else
-    incidence->setPilotId(0);
-
-  if ((vo = isAPropertyOf(vincidence, KPilotStatusProp))) {
-    incidence->setSyncStatus(atoi(s = fakeCString(vObjectUStringZValue(vo))));
-    deleteStr(s);
-  }
-  else
-    incidence->setSyncStatus(Event::SYNCMOD);
-#endif
 
       default:
 //        kdDebug() << "ICALFormat::readIncidence(): Unknown property: " << kind

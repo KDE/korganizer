@@ -427,11 +427,16 @@ void KOEditorGeneralEvent::setDefaults(QDateTime from,QDateTime to,bool allDay)
   recursButton->setChecked(false);
 //  recurStuffEnable(false);
 
-  QString alarmText(QString::number(KOPrefs::instance()->mAlarmTime));
-  int pos = alarmText.find(' ');
-  if (pos >= 0)
-    alarmText.truncate(pos);
-  alarmTimeEdit->setText(alarmText);
+  // TODO: Implement a KPrefsComboItem to solve this in a clean way.
+  int alarmTime;
+  int a[] = { 1,5,10,15,30 };
+  int index = KOPrefs::instance()->mAlarmTime;
+  if (index < 0 || index > 4) {
+    alarmTime = 0;
+  } else {
+    alarmTime = a[index];
+  }
+  alarmTimeEdit->setText(QString::number(alarmTime));
   alarmStuffEnable(false);
 
   mSecrecyCombo->setCurrentItem(Incidence::SecrecyPublic);

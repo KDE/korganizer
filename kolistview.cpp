@@ -40,6 +40,17 @@ bool ListItemVisitor::visit(Event *e)
   mItem->setText(7,"---");
   mItem->setText(8,"---");
 
+  QString key;
+  QDate d = e->dtStart().date();
+  QTime t = e->doesFloat() ? QTime(0,0) : e->dtStart().time();
+  key.sprintf("%04d%02d%02d%02d%02d",d.year(),d.month(),d.day(),t.hour(),t.minute());
+  mItem->setSortKey(1,key);
+
+  d = e->dtEnd().date();
+  t = e->doesFloat() ? QTime(0,0) : e->dtEnd().time();
+  key.sprintf("%04d%02d%02d%02d%02d",d.year(),d.month(),d.day(),t.hour(),t.minute());
+  mItem->setSortKey(3,key);
+
   return true;
 }
 
@@ -57,13 +68,19 @@ bool ListItemVisitor::visit(Todo *t)
     if (t->doesFloat()) {
       mItem->setText(8,"---");
     } else {
-      mItem->setText(8,t->dtDueDateStr());
+      mItem->setText(8,t->dtDueTimeStr());
     }
   } else {
     mItem->setText(7,"---");
     mItem->setText(8,"---");
   }
 
+  QString key; 
+  QDate d = t->dtDue().date();
+  QTime tm = t->doesFloat() ? QTime(0,0) : t->dtDue().time();
+  key.sprintf("%04d%02d%02d%02d%02d",d.year(),d.month(),d.day(),tm.hour(),tm.minute());
+  mItem->setSortKey(7,key);
+  
   return true;
 }
 
@@ -76,38 +93,21 @@ bool ListItemVisitor::visit(Journal *)
 KOListViewItem::KOListViewItem(QListView *parent, Incidence *ev)
   : QListViewItem(parent), mEvent(ev)
 {
-#if 0
-  if (mEvent->getTodoStatus()) {
-    setText(0,i18n("Todo: %1").arg(mEvent->getSummary()));
-    setText(1,"---");
-    setText(2,"---");
-    setText(3,"---");
-    setText(4,"---");
-    setText(5,"---");
-    setText(6,"---");
-    if (mEvent->hasDueDate()) {
-      setText(7,mEvent->getDtDueDateStr());
-      if (mEvent->doesFloat()) {
-        setText(8,"---");
-      } else {
-        setText(8,mEvent->getDtDueDateStr());
-      }
-    } else {
-      setText(7,"---");
-      setText(8,"---");
-    }
+}
+
+QString KOListViewItem::key(int column,bool) const
+{
+  QMap<int,QString>::ConstIterator it = mKeyMap.find(column);
+  if (it == mKeyMap.end()) {
+    return text(column);
   } else {
-    setText(0, mEvent->getSummary());
-    setText(1,mEvent->getDtStartDateStr());
-    setText(2,mEvent->getDtStartTimeStr());
-    setText(3,mEvent->getDtEndDateStr());
-    setText(4,mEvent->getDtEndTimeStr());
-    setText(5,mEvent->getAlarmRepeatCount() ? i18n("Yes") : i18n("No"));
-    setText(6,mEvent->doesRecur() ? i18n("Yes") : i18n("No"));
-    setText(7,"---");
-    setText(8,"---");
+    return *it;
   }
-#endif
+}
+
+void KOListViewItem::setSortKey(int column,const QString &key)
+{
+  mKeyMap.insert(column,key);
 }
 
 

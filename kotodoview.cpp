@@ -258,8 +258,8 @@ KOTodoView::KOTodoView(Calendar *calendar,QWidget* parent,const char* name) :
   mItemPopupMenu->insertItem(i18n("New Sub-To-Do..."), this,
                              SLOT (newSubTodo()));
   mItemPopupMenu->insertSeparator();
-  mItemPopupMenu->insertItem(i18n("Purge Completed"), this,
-                             SLOT(purgeCompleted()));
+  mItemPopupMenu->insertItem(i18n("delete completed todos","Purge Completed"),
+                             this,SLOT(purgeCompleted()));
                        
   mPopupMenu = new QPopupMenu;
   mPopupMenu->insertItem(SmallIconSet("todo"), i18n("New To-Do"), this,
