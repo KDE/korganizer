@@ -119,11 +119,11 @@ void Exchange::upload()
     KMessageBox::information( 0L, i18n("Please select an appointment"), i18n("Exchange Plugin") );
     return;
   }
-  KMessageBox::information( 0L, "Exchange Upload is HIGHLY EXPERIMENTAL!", i18n("Exchange Plugin") );
-  
-  kdDebug() << "Trying to add appointment " << event->summary() << endl;
-
-  mClient->upload( event );
+  if ( KMessageBox::warningContinueCancel( 0L, "Exchange Upload is EXPERIMENTAL, you may lose data on this appointment!", i18n("Exchange Plugin") )
+       == KMessageBox::Continue ) {
+    kdDebug() << "Trying to add appointment " << event->summary() << endl;
+    mClient->upload( event );
+  }
 }
 
 void Exchange::remove()
@@ -136,13 +136,13 @@ void Exchange::remove()
     KMessageBox::information( 0L, i18n("Please select an appointment"), i18n("Exchange Plugin") );
     return;
   }
-  KMessageBox::information( 0L, "Exchange Delete Event is HIGHLY EXPERIMENTAL!", i18n("Exchange Plugin") );
-  
-  kdDebug() << "Trying to delete appointment " << event->summary() << endl;
 
-  mClient->remove( event );
-
-  mainWindow()->view()->calendar()->deleteEvent( event );
+  if ( KMessageBox::warningContinueCancel( 0L, "Exchange Delete is EXPERIMENTAL, if this is a recurring event it will delete all instances!", i18n("Exchange Plugin") )
+       == KMessageBox::Continue ) {
+    kdDebug() << "Trying to delete appointment " << event->summary() << endl;
+    mClient->remove( event );
+    mainWindow()->view()->calendar()->deleteEvent( event );
+  }
 }
 
 void Exchange::configure()

@@ -52,7 +52,6 @@ ExchangeConfig::ExchangeConfig( KPIM::ExchangeAccount* account, QWidget* parent 
   topLayout->addWidget( new QLabel( i18n( "Password" ), topFrame ), 2, 0 );
   topLayout->addWidget( m_password, 2, 1 );
   m_password->setEchoMode( QLineEdit::Password );
-  m_password->selectAll();
 }
 
 ExchangeConfig::~ExchangeConfig()
