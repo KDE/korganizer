@@ -216,9 +216,9 @@ void KOrganizer::init( bool document )
 void KOrganizer::newMainWindow( const KURL &url )
 {
   KOrganizer *korg = new KOrganizer();
-  if ( url.isValid() && !url.isEmpty() ) {
+  if ( url.isValid() || url.isEmpty() ) {
     korg->init( true );
-    if ( korg->openURL( url ) ) {
+    if ( korg->openURL( url ) || url.isEmpty() ) {
       korg->show();
     } else {
       delete korg;
