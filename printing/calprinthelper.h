@@ -271,9 +271,10 @@ class CalPrintHelper
       \param p QPainter of the printout
       \param connectSubTodos Whether subtodos shall be connected with their parent by a line (tree-like).
       \param desc Whether to print the whole description of the item (the summary is always printed).
-      \param pospriority x-coordinate where the priority is supposed to be printed. If <0, no priority will be printed.
-      \param possummary x-coordinate where the summary of the item is supposed to be printed.
+      \param posPriority x-coordinate where the priority is supposed to be printed. If <0, no priority will be printed.
+      \param posSummary x-coordinate where the summary of the item is supposed to be printed.
       \param posDueDt x-coordinate where the due date is supposed to the be printed. If <0, no due date will be printed.
+      \param posPercentComplete x-coordinate where the percentage complete is supposed to be printed. If <0, percentage complete will not be printed.
       \param level Level of the current item in the todo hierarchy (0 means highest
                    level of printed items, 1 are their subtodos, etc.)
       \param x x-coordinate of the upper left coordinate of the first item
@@ -284,8 +285,9 @@ class CalPrintHelper
       \param r Internal (used when printing sub items to give information about its parent)
     */
     void drawTodo( int &count, Todo * item, QPainter &p, bool connectSubTodos,
-                   bool desc, int pospriority, int possummary, int posDueDt,
-                   int level, int x, int &y, int width, int pageHeight,
+                   bool desc, int posPriority, int posSummary, int posDueDt,
+                   int posPercentComplete, int level, int x, int &y,
+                   int width, int pageHeight,
                    const Todo::List &todoList, TodoParentStart *r = 0 );
 
     /**

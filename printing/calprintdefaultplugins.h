@@ -134,6 +134,7 @@ class CalPrintTodos : public CalPrintPluginBase
     bool mIncludeDescription;
     bool mIncludePriority;
     bool mIncludeDueDate;
+    bool mIncludePercentComplete;
     bool mConnectSubTodos;
 };
 

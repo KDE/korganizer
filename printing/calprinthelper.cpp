@@ -792,10 +792,13 @@ void CalPrintHelper::drawMonth(QPainter &p, const QDate &qd, bool weeknumbers,
 
 ///////////////////////////////////////////////////////////////////////////////
 
-void CalPrintHelper::drawTodo( int &count, Todo * item, QPainter &p, bool connectSubTodos,
-    bool desc, int pospriority, int possummary, int posDueDt, int level,
-    int x, int &y, int width, int pageHeight, const Todo::List &todoList,
-    TodoParentStart *r )
+void CalPrintHelper::drawTodo( int &count, Todo *item, QPainter &p,
+                               bool connectSubTodos, bool desc,
+                               int posPriority, int posSummary,
+                               int posDueDt, int posPercentComplete,
+                               int level, int x, int &y, int width,
+                               int pageHeight, const Todo::List &todoList,
+                               TodoParentStart *r )
 {
   QString outStr;
 //  int fontHeight = 10;
@@ -814,7 +817,7 @@ void CalPrintHelper::drawTodo( int &count, Todo * item, QPainter &p, bool connec
 
   // size of item
   outStr=item->summary();
-  int left = possummary+(level*10);
+  int left = posSummary+(level*10);
   rect = p.boundingRect(left, y, (posdue-left-5),-1, Qt::WordBreak, outStr);
   if ( !item->description().isEmpty() && desc ) {
     outStr = item->description();
@@ -847,13 +850,13 @@ void CalPrintHelper::drawTodo( int &count, Todo * item, QPainter &p, bool connec
 
   // If this is a sub-item, r will not be 0, and we want the LH side of the priority line up
   //to the RH side of the parent item's priority
-  bool showPriority = pospriority>=0;
+  bool showPriority = posPriority>=0;
   if (r) {
-    pospriority = r->mRect.right() + 1;
+    posPriority = r->mRect.right() + 1;
   }
 
   outStr.setNum(priority);
-  rect = p.boundingRect(pospriority, y + 10, 5, -1, Qt::AlignCenter, outStr);
+  rect = p.boundingRect(posPriority, y + 10, 5, -1, Qt::AlignCenter, outStr);
   // Make it a more reasonable size
   rect.setWidth(18);
   rect.setHeight(18);
@@ -861,6 +864,7 @@ void CalPrintHelper::drawTodo( int &count, Todo * item, QPainter &p, bool connec
   // Priority
   if ( priority > 0 && showPriority ) {
     p.drawText(rect, Qt::AlignCenter, outStr);
+    p.setBrush( QBrush( Qt::NoBrush ) );
     p.drawRect(rect);
     // cross out the rectangle for completed items
     if ( item->isCompleted() ) {
@@ -906,6 +910,29 @@ void CalPrintHelper::drawTodo( int &count, Todo * item, QPainter &p, bool connec
     p.drawText( rect, Qt::AlignTop | Qt::AlignLeft, outStr );
   }
 
+  // percentage completed
+  bool showPercentComplete = posPercentComplete>=0;
+  if ( showPercentComplete ) {
+    int lwidth=24;
+    int lheight=18;
+    //first, draw the progress bar
+    int progress = (int)(( (lwidth-6)*item->percentComplete())/100.0 + 0.5);
+
+    p.setBrush( QBrush( Qt::NoBrush ) );
+    p.drawRect( posPercentComplete, y, lwidth, lheight );
+    if ( progress > 0 ) {
+      p.setBrush( QBrush( Qt::SolidPattern ) );
+      p.drawRect( posPercentComplete+3, y+3, progress, lheight-6 );
+    }
+
+    //now, write the percentage
+    outStr = i18n( "%1%" ).arg( item->percentComplete() );
+    rect = p.boundingRect( posPercentComplete+lwidth+3, y, x + width, -1,
+                           Qt::AlignTop | Qt::AlignLeft, outStr );
+    p.drawText( rect, Qt::AlignTop | Qt::AlignLeft, outStr );
+  }
+
+  // description
   if ( !item->description().isEmpty() && desc ) {
     y=newrect.bottom() + 5;
     outStr = item->description();
@@ -930,7 +957,7 @@ void CalPrintHelper::drawTodo( int &count, Todo * item, QPainter &p, bool connec
     Todo* subtodo = dynamic_cast<Todo *>( *it );
     if (subtodo && todoList.contains( subtodo ) ) {
       drawTodo( count, subtodo, p, connectSubTodos,
-          desc, pospriority, possummary, posDueDt, level+1,
+          desc, posPriority, posSummary, posDueDt, posPercentComplete, level+1,
           x, y, width, pageHeight, todoList, &startpt);
     }
   }

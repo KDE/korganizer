@@ -512,7 +512,7 @@ void CalPrintTodos::readSettingsWidget()
     mIncludeDescription = cfg->mDescription->isChecked();
     mIncludePriority = cfg->mPriority->isChecked();
     mIncludeDueDate = cfg->mDueDate->isChecked();
-//TODO:    mIncludePercentComplete = cfg->mPercentComplete->isChecked();
+    mIncludePercentComplete = cfg->mPercentComplete->isChecked();
     mConnectSubTodos = cfg->mConnectSubTodos->isChecked();
   }
 }
@@ -532,7 +532,7 @@ void CalPrintTodos::setSettingsWidget()
     cfg->mDescription->setChecked( mIncludeDescription );
     cfg->mPriority->setChecked( mIncludePriority );
     cfg->mDueDate->setChecked( mIncludeDueDate );
-//TODO:   cfg->mPercentComplete->setChecked( mIncludePercentComplete );
+    cfg->mPercentComplete->setChecked( mIncludePercentComplete );
     cfg->mConnectSubTodos->setChecked( mConnectSubTodos );
   }
 }
@@ -545,7 +545,7 @@ void CalPrintTodos::loadConfig()
     mIncludeDescription = mConfig->readBoolEntry( "Include description", true );
     mIncludePriority = mConfig->readBoolEntry( "Include priority", true );
     mIncludeDueDate = mConfig->readBoolEntry( "Include due date", true );
-//TODO:    mIncludePercentComplete = mConfig->readBoolEntry( "Include percentage completed", true );
+    mIncludePercentComplete = mConfig->readBoolEntry( "Include percentage completed", true );
     mConnectSubTodos = mConfig->readBoolEntry( "Connect subtodos", true );
   }
   setSettingsWidget();
@@ -560,7 +560,7 @@ void CalPrintTodos::saveConfig()
     mConfig->writeEntry( "Include description", mIncludeDescription );
     mConfig->writeEntry( "Include priority", mIncludePriority );
     mConfig->writeEntry( "Include due date", mIncludeDueDate );
-//TODO:    mConfig->writeEntry( "Include percentage completed", mIncludePercentComplete );
+    mConfig->writeEntry( "Include percentage completed", mIncludePercentComplete );
     mConfig->writeEntry( "Connect subtodos", mConnectSubTodos );
   }
 }
@@ -569,6 +569,7 @@ void CalPrintTodos::print( QPainter &p, int width, int height )
 {
   int pospriority = 10;
   int possummary = 60;
+  int poscomplete = width - 170;
   int posdue = width - 85;
   int lineSpacing = 15;
   int fontHeight = 10;
@@ -602,6 +603,14 @@ void CalPrintTodos::print( QPainter &p, int width, int height )
     p.drawText( posdue, mCurrentLinePos - 2, outStr );
   } else {
     posdue = -1;
+  }
+
+  if ( mIncludePercentComplete ) {
+    outStr.truncate( 0 );
+    outStr += i18n( "Complete" );
+    p.drawText( poscomplete, mCurrentLinePos - 2, outStr );
+  } else {
+    poscomplete = -1;
   }
 
   p.setFont( QFont( "helvetica", 10 ) );
@@ -640,8 +649,9 @@ void CalPrintTodos::print( QPainter &p, int width, int height )
       }
       count++;
       mHelper->drawTodo( count, currEvent, p, mConnectSubTodos,
-                mIncludeDescription, pospriority, possummary, posdue, 0,
-                0, mCurrentLinePos, width, height, todoList );
+                         mIncludeDescription, pospriority, possummary, posdue,
+                         poscomplete, 0, 0, mCurrentLinePos, width, height,
+                         todoList );
     }
   }
   p.setFont( oldFont );
