@@ -138,7 +138,7 @@ void ArchiveDialog::slotUser1()
 
   // Get destination URL
   KURL destUrl = mArchiveFile->url();
-  if (destUrl.isMalformed()) {
+  if ( !destUrl.isValid() ) {
     KMessageBox::sorry(this,i18n("The archive file name is not valid.\n"));
     return;
   }
@@ -193,8 +193,8 @@ void ArchiveDialog::slotUser1()
   // Get or create the archive file
   QString archiveFile;
 
-  if (KIO::NetAccess::exists(destUrl)) {
-    if(!KIO::NetAccess::download(destUrl,archiveFile)) {
+  if ( KIO::NetAccess::exists( destUrl, true, this ) ) {
+    if( !KIO::NetAccess::download( destUrl, archiveFile, this ) ) {
       kdDebug(5850) << "ArchiveDialog::slotUser1(): Can't download archive file" << endl;
       return;
     }
@@ -228,7 +228,7 @@ void ArchiveDialog::slotUser1()
   KURL srcUrl;
   srcUrl.setPath(archiveFile);
   if (srcUrl != destUrl) {
-    if (!KIO::NetAccess::upload(archiveFile,destUrl)) {
+    if ( !KIO::NetAccess::upload( archiveFile, destUrl, this ) ) {
       KMessageBox::error(this,i18n("Cannot write archive to final destination."));
       return;
     }

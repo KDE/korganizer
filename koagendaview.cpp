@@ -416,6 +416,7 @@ KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name) :
           SLOT(setContentsPos(int)));
 
   // Create/Show/Edit/Delete Event
+  connect(mAgenda,SIGNAL(newEventSignal()),SIGNAL(newEventSignal()));
   connect(mAgenda,SIGNAL(newEventSignal(int,int)),
                   SLOT(newEvent(int,int)));
   connect(mAgenda,SIGNAL(newEventSignal(int,int,int,int)),
@@ -1058,4 +1059,14 @@ void KOAgendaView::showNewEventPopup()
   }
 
   mNewEventPopup->popup( QCursor::pos() );
+}
+
+void KOAgendaView::setTypeAheadReceiver( QObject *o )
+{
+  mAgenda->setTypeAheadReceiver( o );
+}
+
+void KOAgendaView::finishTypeAhead()
+{
+  mAgenda->finishTypeAhead();
 }

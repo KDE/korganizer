@@ -45,6 +45,22 @@ class KDateEdit;
 
 using namespace KCal;
 
+class FocusLineEdit : public QLineEdit
+{
+    Q_OBJECT
+  public:
+    FocusLineEdit( QWidget *parent );
+    
+  signals:
+    void focusReceivedSignal();
+
+  protected:
+    void focusInEvent ( QFocusEvent *e );
+  
+  private:
+    bool mSkipFirst;
+};
+
 class KOEditorGeneral : public QObject
 {
     Q_OBJECT
@@ -73,6 +89,8 @@ class KOEditorGeneral : public QObject
     void setSummary( const QString & );
     void setDescription( const QString & );
 
+    QObject *typeAheadReceiver() const;
+
   public slots:
     void setCategories(const QString &);
 
@@ -85,7 +103,8 @@ class KOEditorGeneral : public QObject
 
   signals:
     void openCategoryDialog();
-
+    void focusReceivedSignal();
+    
   protected:
     QLineEdit               *mSummaryEdit;
     QLineEdit               *mLocationEdit;

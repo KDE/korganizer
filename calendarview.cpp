@@ -742,6 +742,8 @@ void CalendarView::edit_options()
 
 void CalendarView::newEvent()
 {
+  kdDebug() << "CalendarView::newEvent()" << endl;
+
   // TODO: Replace this code by a common eventDurationHint of KOBaseView.
   KOAgendaView *aView = mViewManager->agendaView();
   if (aView) {
@@ -778,6 +780,7 @@ void CalendarView::newEvent( const QString &text )
 {
   KOEventEditor *eventEditor = mDialogManager->getEventEditor();
   eventEditor->newEvent( text );
+  mDialogManager->connectTypeAhead( eventEditor, viewManager()->agendaView() );
   eventEditor->show();
 }
 
@@ -785,9 +788,9 @@ void CalendarView::newEvent(QDateTime fromHint, QDateTime toHint, bool allDay)
 {
   KOEventEditor *eventEditor = mDialogManager->getEventEditor();
   eventEditor->newEvent(fromHint,toHint,allDay);
+  mDialogManager->connectTypeAhead( eventEditor, viewManager()->agendaView() );
   eventEditor->show();
 }
-
 
 void CalendarView::newTodo()
 {

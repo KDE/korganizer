@@ -41,6 +41,7 @@ class SearchDialog;
 class ArchiveDialog;
 class PluginDialog;
 class FilterEditDialog;
+class KOAgendaView;
 
 using namespace KCal;
 
@@ -67,7 +68,9 @@ class KODialogManager : public QObject
 
     void updateSearchDialog();
     void setDocumentId( const QString &id );
-    
+
+    void connectTypeAhead( KOEventEditor *editor, KOAgendaView *agenda );
+
   public slots:
     void showOptionsDialog();
     void showIncomingDialog();

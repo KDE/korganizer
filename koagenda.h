@@ -114,6 +114,10 @@ class KOAgenda : public QScrollView
     void setDateList(const DateList &selectedDates);
     DateList dateList() const;
 
+    void setTypeAheadReceiver( QObject * );
+    QObject *typeAheadReceiver() const;
+    void finishTypeAhead();
+
   public slots:
     void scrollUp();
     void scrollDown();
@@ -263,6 +267,10 @@ class KOAgenda : public QScrollView
     int mOldUpperScrollValue;
 
     QMemArray<bool> *mHolidayMask;
+    
+    bool mTypeAhead;
+    QObject *mTypeAheadReceiver;
+    QPtrList<QEvent> mTypeAheadEvents;
 };
 
 #endif // KOAGENDA_H

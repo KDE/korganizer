@@ -41,7 +41,8 @@ class KOAgenda;
 class KOAgendaItem;
 class KConfig;
 
-class TimeLabels : public QScrollView {
+class TimeLabels : public QScrollView
+{
     Q_OBJECT
   public:
     TimeLabels(int rows,QWidget *parent=0,const char *name=0,WFlags f=0);
@@ -75,7 +76,8 @@ class TimeLabels : public QScrollView {
     KOAgenda* mAgenda;
 };
 
-class EventIndicator : public QFrame {
+class EventIndicator : public QFrame
+{
     Q_OBJECT
   public:
     enum Location { Top, Bottom };
@@ -98,28 +100,30 @@ class EventIndicator : public QFrame {
     QMemArray<bool> mEnabled;
 };
 
-class KOAlternateLabel : public QLabel {
-  Q_OBJECT
-public:
-  KOAlternateLabel(QString shortlabel, QString longlabel, QWidget *parent=0, const char *name=0 );
-  ~KOAlternateLabel();
+class KOAlternateLabel : public QLabel
+{
+    Q_OBJECT
+  public:
+    KOAlternateLabel(QString shortlabel, QString longlabel, QWidget *parent=0, const char *name=0 );
+    ~KOAlternateLabel();
 
-  virtual QSize minimumSizeHint() const;
+    virtual QSize minimumSizeHint() const;
 
-public slots:
-  void setText( const QString & );
+  public slots:
+    void setText( const QString & );
 
-protected:
-  virtual void resizeEvent( QResizeEvent * );
-  virtual void squeezeTextToLabel();
-  QString fullText, shortText;
+  protected:
+    virtual void resizeEvent( QResizeEvent * );
+    virtual void squeezeTextToLabel();
+    QString fullText, shortText;
 };
 
 /**
   KOAgendaView is the agenda-like view used to display events in an one or
   multi-day view.
 */
-class KOAgendaView : public KOEventView {
+class KOAgendaView : public KOEventView
+{
     Q_OBJECT
   public:
     KOAgendaView(Calendar *cal,QWidget *parent = 0,const char *name = 0 );
@@ -152,6 +156,8 @@ class KOAgendaView : public KOEventView {
     /** make selected start/end invalid */
     void deleteSelectedDateTime();
 
+    void setTypeAheadReceiver( QObject * );
+
   public slots:
     virtual void updateView();
     virtual void updateConfig();
@@ -176,6 +182,8 @@ class KOAgendaView : public KOEventView {
     void setContentsPos(int y);
 
     void setExpandedButton( bool expanded );
+
+    void finishTypeAhead();
 
   signals:
     void toggleExpand();

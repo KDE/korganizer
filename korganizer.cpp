@@ -529,5 +529,5 @@ void KOrganizer::slotConfigChanged()
 
 void KOrganizer::configureKeyBindings()
 {
-  KKeyDialog::configureKeys( actionCollection(), xmlFile(), true, this );
+  KKeyDialog::configure( actionCollection(), this );
 }

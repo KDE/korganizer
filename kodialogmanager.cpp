@@ -39,6 +39,8 @@
 #ifndef KORG_NOARCHIVE
 #include "archivedialog.h"
 #endif
+#include "koviewmanager.h"
+#include "koagendaview.h"
 
 #include "kodialogmanager.h"
 #include "kodialogmanager.moc"
@@ -261,6 +263,16 @@ KOEventEditor *KODialogManager::getEventEditor()
   connect( mMainView, SIGNAL( closingDown() ), eventEditor, SLOT( reject() ) );
 
   return eventEditor;
+}
+
+void KODialogManager::connectTypeAhead( KOEventEditor *editor,
+                                        KOAgendaView *agenda )
+{
+  if ( editor && agenda ) {
+    agenda->setTypeAheadReceiver( editor->typeAheadReceiver() );
+    connect( editor, SIGNAL( focusReceivedSignal() ),
+             agenda, SLOT( finishTypeAhead() ) );
+  }
 }
 
 KOTodoEditor *KODialogManager::getTodoEditor()

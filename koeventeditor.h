@@ -84,12 +84,16 @@ class KOEventEditor : public KOIncidenceEditor
     */
     void writeEvent( Event * );
 
+    QObject *typeAheadReceiver() const;
+
   signals:
     void eventAdded( Event * );
     void eventChanged( Event *oldEvent, Event *newEvent );
     void eventToBeDeleted( Event * );
     void eventDeleted();
     void deleteAttendee( Incidence * );
+
+    void focusReceivedSignal();
 
   protected slots:
     void loadDefaults();

@@ -54,8 +54,8 @@ CalPrinter::CalPrinter(QWidget *parent, Calendar *calendar)
 
 CalPrinter::~CalPrinter()
 {
-  delete mPrinter;
   delete mPrintDialog;
+  delete mPrinter;
 }
 
 void CalPrinter::init(KPrinter *printer, Calendar *calendar)

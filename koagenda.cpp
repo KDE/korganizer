@@ -258,6 +258,9 @@ void KOAgenda::init()
       mMarcusBains = new MarcusBains(this);
       addChild(mMarcusBains);
   }
+
+  mTypeAhead = false;
+  mTypeAheadReceiver = 0;
 }
 
 
@@ -337,20 +340,62 @@ bool KOAgenda::eventFilter ( QObject *object, QEvent *event )
   }
 }
 
-bool KOAgenda::eventFilter_key( QObject *object, QKeyEvent *ke )
+bool KOAgenda::eventFilter_key( QObject *, QKeyEvent *ke )
 {
-  Q_UNUSED( object );
-
-  kdDebug() << "KOAgenda::eventFilter_key()" << endl;
-#if 0
-  if ( ke->type() == QEvent::KeyPress ) {
-    emit newEventSignal(2,4);
-    return true;
+//  kdDebug() << "KOAgenda::eventFilter_key() " << ke->type() << endl;
+  if ( ke->type() == QEvent::KeyPress || ke->type() == QEvent::KeyRelease ) {
+    switch ( ke->key() ) {
+      case Key_Escape:
+      case Key_Return:
+      case Key_Enter:
+      case Key_Tab:
+      case Key_Backtab:
+      case Key_Left:
+      case Key_Right:
+      case Key_Up:
+      case Key_Down:
+      case Key_Backspace:
+      case Key_Delete:
+      case Key_Prior:
+      case Key_Next:
+      case Key_Home:
+      case Key_End:
+        break;
+      default:
+        mTypeAheadEvents.append( new QKeyEvent( ke->type(), ke->key(),
+                                                ke->ascii(), ke->state(),
+                                                ke->text(), ke->isAutoRepeat(),
+                                                ke->count() ) );
+        if ( !mTypeAhead ) {
+          mTypeAhead = true;
+          if ( mSelectionHeight > 0 ) {
+            emit newEventSignal( mSelectionCellX, mSelectionYTop / mGridSpacingY,
+                                 mSelectionCellX,
+                                 ( mSelectionYTop + mSelectionHeight ) /
+                                 mGridSpacingY );
+          } else {
+            emit newEventSignal();
+          }
+          return true;
+        }
+        break;
+    }
   }
-#else
-  Q_UNUSED( ke );
-#endif
   return false;
+}
+
+void KOAgenda::finishTypeAhead()
+{
+//  kdDebug() << "KOAgenda::finishTypeAhead()" << endl;
+  if ( typeAheadReceiver() ) {
+    for( QEvent *e = mTypeAheadEvents.first(); e;
+         e = mTypeAheadEvents.next() ) {
+//      kdDebug() << "postEvent() " << int( typeAheadReceiver() ) << endl;
+      QApplication::postEvent( typeAheadReceiver(), e );
+    }
+  }
+  mTypeAheadEvents.clear();
+  mTypeAhead = false;  
 }
 
 bool KOAgenda::eventFilter_mouse(QObject *object, QMouseEvent *me)
@@ -1363,4 +1408,14 @@ void KOAgenda::contentsMousePressEvent ( QMouseEvent *event )
 {
   kdDebug(5850) << "KOagenda::contentsMousePressEvent(): type: " << event->type() << endl;
   QScrollView::contentsMousePressEvent(event);
+}
+
+void KOAgenda::setTypeAheadReceiver( QObject *o )
+{
+  mTypeAheadReceiver = o;
+}
+
+QObject *KOAgenda::typeAheadReceiver() const
+{
+  return mTypeAheadReceiver;
 }

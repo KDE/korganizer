@@ -69,6 +69,8 @@ void KOEventEditor::init()
   connect(mGeneral,SIGNAL(openCategoryDialog()),mCategoryDialog,SLOT(show()));
   connect(mCategoryDialog,SIGNAL(categoriesSelected(const QString &)),
           mGeneral,SLOT(setCategories(const QString &)));
+
+  connect(mGeneral,SIGNAL(focusReceivedSignal()),SIGNAL(focusReceivedSignal()));
 }
 
 void KOEventEditor::reload()
@@ -317,4 +319,9 @@ void KOEventEditor::saveTemplate( const QString &templateName )
   Event *event = new Event;
   writeEvent( event );
   saveAsTemplate( event, templateName );
+}
+
+QObject *KOEventEditor::typeAheadReceiver() const
+{
+  return mGeneral->typeAheadReceiver();
 }

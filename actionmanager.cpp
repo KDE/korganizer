@@ -353,7 +353,7 @@ void ActionManager::initActions()
   mEditIncidenceAction = new KAction(i18n("&Edit..."), 0,
                          mCalendarView,SLOT(editIncidence()),
                          mACollection, "edit_incidence");
-  mDeleteIncidenceAction = new KAction(i18n("&Delete"), 0,
+  mDeleteIncidenceAction = new KAction(i18n("&Delete"), Key_Delete,
                          mCalendarView,SLOT(deleteIncidence()),
                          mACollection, "delete_incidence");
 
@@ -696,13 +696,13 @@ bool ActionManager::openURL(const KURL &url,bool merge)
     kdDebug(5850) << "ActionManager::openURL(): Error! Empty URL." << endl;
     return false;
   }
-  if (url.isMalformed()) {
+  if ( !url.isValid() ) {
     kdDebug(5850) << "ActionManager::openURL(): Error! URL is malformed." << endl;
     return false;
   }
 
   QString tmpFile;
-  if(KIO::NetAccess::download(url,tmpFile)) {
+  if( KIO::NetAccess::download( url, tmpFile, view() ) ) {
     kdDebug(5850) << "--- Downloaded to " << tmpFile << endl;
     bool success = mCalendarView->openCalendar(tmpFile,merge);
     if (merge) {
@@ -784,7 +784,7 @@ bool ActionManager::saveURL()
   }
 
   if (!mURL.isLocalFile()) {
-    if (!KIO::NetAccess::upload(mFile,mURL)) {
+    if ( !KIO::NetAccess::upload( mFile, mURL, view() ) ) {
       QString msg = i18n("Cannot upload calendar to '%1'").arg(mURL.prettyURL());
       KMessageBox::error(mCalendarView->topLevelWidget(),msg);
       return false;
@@ -854,8 +854,9 @@ bool ActionManager::saveURL()
       QString tfile = tf.name();
       tf.close();
       mExport.save( tfile );
-      if (!KIO::NetAccess::upload(tfile, dest) ) {
-        KNotifyClient::event ( "Could not upload file." );
+      if (!KIO::NetAccess::upload( tfile, dest, view() ) ) {
+        KNotifyClient::event ( view()->winId(),
+                               i18n("Could not upload file.") );
       }
       tf.unlink();
     }
@@ -868,11 +869,11 @@ bool ActionManager::saveAsURL(const KURL &url)
 {
   kdDebug(5850) << "ActionManager::saveAsURL() " << url.prettyURL() << endl;
 
-  if (url.isEmpty()) {
+  if ( url.isEmpty() ) {
     kdDebug(5850) << "ActionManager::saveAsURL(): Empty URL." << endl;
     return false;
   }
-  if (url.isMalformed()) {
+  if ( !url.isValid() ) {
     kdDebug(5850) << "ActionManager::saveAsURL(): Malformed URL." << endl;
     return false;
   }

@@ -57,6 +57,23 @@ KOEditorGeneral::~KOEditorGeneral()
 {
 }
 
+
+FocusLineEdit::FocusLineEdit( QWidget *parent )
+  : QLineEdit( parent ), mSkipFirst( true )
+{
+}
+
+void FocusLineEdit::focusInEvent ( QFocusEvent *e )
+{
+  if ( !mSkipFirst ) {
+    emit focusReceivedSignal();
+  } else {
+    mSkipFirst = false;
+  }
+  QLineEdit::focusInEvent( e );
+}
+
+
 void KOEditorGeneral::initHeader(QWidget *parent,QBoxLayout *topLayout)
 {
   QGridLayout *headerLayout = new QGridLayout(topLayout);
@@ -69,7 +86,9 @@ void KOEditorGeneral::initHeader(QWidget *parent,QBoxLayout *topLayout)
   QLabel *summaryLabel = new QLabel(i18n("S&ummary:"),parent);
   headerLayout->addWidget(summaryLabel,1,0);
 
-  mSummaryEdit = new QLineEdit(parent);
+  mSummaryEdit = new FocusLineEdit(parent);
+  connect( mSummaryEdit, SIGNAL( focusReceivedSignal() ),
+           SIGNAL( focusReceivedSignal() ) );
   headerLayout->addWidget(mSummaryEdit,1,1);
   summaryLabel->setBuddy( mSummaryEdit );
 
@@ -397,4 +416,9 @@ void KOEditorGeneral::setSummary( const QString &text )
 void KOEditorGeneral::setDescription( const QString &text )
 {
   mDescriptionEdit->setText( text );
+}
+
+QObject *KOEditorGeneral::typeAheadReceiver() const
+{
+  return mSummaryEdit;
 }
