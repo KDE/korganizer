@@ -165,10 +165,10 @@ void IncomingDialog::retrieve()
       FreeBusy *fb = static_cast<FreeBusy *>(item->event());
 
       item->setText(0, "FreeBusy");
-      item->setText(1, fb->dtStart().toString("ddd MMMM d yyyy"));
-      item->setText(2, fb->dtStart().toString("hh:mm:ss"));
-      item->setText(3, fb->dtEnd().toString("ddd MMMM d yyyy"));
-      item->setText(4, fb->dtEnd().toString("hh:mm:ss"));
+      item->setText(1, KGlobal::locale()->formatDate( fb->dtStart().date() ) );
+      item->setText(2, KGlobal::locale()->formatTime( fb->dtStart().time() ) );
+      item->setText(3, KGlobal::locale()->formatDate( fb->dtEnd().date() ) );
+      item->setText(4, KGlobal::locale()->formatTime( fb->dtEnd().time() ) );
       item->setText(5, fb->organizer());
 
     }
@@ -262,22 +262,18 @@ bool IncomingDialog::incomeRefresh(ScheduleItemIn *item)
 
 bool IncomingDialog::incomeCounter(ScheduleItemIn *item)
 {
-//  Incidence *incidence = ((ScheduleItemIn *)item)->event();
-//  if ( incidence->type() != "Event" ) return false;
-//  Event *counterevent = static_cast<Event *>( incidence );
-  Event *anevent = 0;
-  if(item->event()->type()=="Event") {
-    anevent = static_cast<Event *>(item->event());
-  }
-  Event *counterevent = dynamic_cast<Event *>(((ScheduleItemIn*)item)->event());
+  IncidenceBase *incidence = ((ScheduleItemIn *)item)->event();
+  if ( incidence->type() != "Event" ) return false;
 
-  Event *even = mCalendar->getEvent(item->event()->uid());
+  Event *counterEvent = static_cast<Event *>( incidence );
+
+  Event *even = mCalendar->getEvent(counterEvent->uid());
 
   KOCounterDialog *eventViewer = new KOCounterDialog(this);
   //eventViewer->addText(i18n("You received a counterevent<p>"));
   //eventViewer->addText(i18n("<hr>"));
   eventViewer->addText(i18n("<b>Counter-event:</b><p>"));
-  eventViewer->addEvent(counterevent);
+  eventViewer->addEvent(counterEvent);
   eventViewer->addText(i18n("<hr>"));
   eventViewer->addText(i18n("<b>Original event:</b><p>"));
   if (even) eventViewer->addEvent(even);
@@ -294,7 +290,7 @@ bool IncomingDialog::incomeCounter(ScheduleItemIn *item)
       revision = even->revision();
       mCalendar->deleteEvent(even);
     }
-    mCalendar->addIncidence(anevent);
+    mCalendar->addIncidence(counterEvent);
     even = mCalendar->getEvent(item->event()->uid());
     if (even) {
       if (revision < even->revision())
@@ -313,7 +309,7 @@ bool IncomingDialog::incomeCounter(ScheduleItemIn *item)
     kdDebug() << "IncomingDialog::Counter:Decline" << endl;
     //the counter-sender's email is missing...
     //now every attendee gets an declinecounter :-(
-    mOutgoing->addMessage(counterevent,Scheduler::Declinecounter);
+    mOutgoing->addMessage(counterEvent,Scheduler::Declinecounter);
     delete item;
     emit numMessagesChanged(mMessageListView->childCount());
     mScheduler->deleteTransaction(item->event());

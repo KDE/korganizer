@@ -29,6 +29,7 @@
 #include <klocale.h>
 #include <kdebug.h>
 #include <kiconloader.h>
+#include <kglobal.h>
 
 #include <libkcal/calendar.h>
 

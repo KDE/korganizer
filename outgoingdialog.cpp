@@ -96,8 +96,8 @@ ScheduleItemOut::ScheduleItemOut(QListView *parent,IncidenceBase *ev,
     setText(1,freebusy->dtStartDateStr());
     setText(2,freebusy->dtStartTimeStr());
     //Must try and get this to the users local settings
-    setText(3,freebusy->dtEnd().toString("dd.MM.yyyy"));
-    setText(4,freebusy->dtEnd().toString("h:m:s ap"));
+    setText(3,KGlobal::locale()->formatDate( freebusy->dtEnd().date() ) );
+    setText(4,KGlobal::locale()->formatTime( freebusy->dtEnd().time() ) );
   }
 
   kdDebug() << "ScheduleItemOut: Setting the method" << endl;

@@ -1133,8 +1133,8 @@ void CalendarView::schedule_publish_freebusy()
   freebusy->setOrganizer(KOPrefs::instance()->email());
 
   kdDebug() << "calendarview: schedule_publish_freebusy: startDate: "
-     << start.toString("ddd MMMM d yyyy: h:m:s ap") << " End Date: " 
-     << end.toString("ddd MMMM d yyyy: h:m:s ap") << endl;
+     << KGlobal::locale()->formatDateTime( start ) << " End Date: " 
+     << KGlobal::locale()->formatDateTime( end ) << endl;
   
   PublishDialog *publishdlg = new PublishDialog();
   if ( publishdlg->exec() == QDialog::Accepted ) {
