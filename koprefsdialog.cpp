@@ -824,7 +824,7 @@ void KOPrefsDialogGroupScheduling::addItem()
   slotWidChanged();
 }
 
-void KOPrefsDialoGroupScheduling::removeItem()
+void KOPrefsDialogGroupScheduling::removeItem()
 {
   QListViewItem *item;
   item = mAMails->selectedItem();
