@@ -115,7 +115,7 @@ void KOPrefs::usrSetDefaults()
   KEMailSettings settings;
   mName = settings.getSetting(KEMailSettings::RealName);
   mEmail = settings.getSetting(KEMailSettings::RealName);
-  if (mName.isEmpty()) mName = i18n("Anonoymous");
+  if (mName.isEmpty()) mName = i18n("Anonymous");
   if (mEmail.isEmpty()) mEmail = i18n("nobody@nowhere");
   mBcc = false;
 
