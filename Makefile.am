@@ -106,6 +106,6 @@ part_DATA = korganizer_part.rc
 KDE_ICON = AUTO
 
 messages: rc.cpp
-	preparetips > tips.cc
+	perl ./preparetips > tips.cc
 	$(XGETTEXT) *.cpp tips.cc -o $(podir)/korganizer.pot
 	rm -f tips.cc
