@@ -157,7 +157,8 @@ IncomingDialog::IncomingDialog( Calendar *calendar, OutgoingDialog * outgoing,
  */
 IncomingDialog::~IncomingDialog()
 {
-    // no need to delete child widgets, Qt does it all for us
+  delete mScheduler;
+  // no need to delete child widgets, Qt does it all for us
 }
 
 void IncomingDialog::setOutgoingDialog(OutgoingDialog *outgoing)

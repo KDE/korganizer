@@ -152,6 +152,7 @@ OutgoingDialog::OutgoingDialog(Calendar *calendar,QWidget* parent,
 
 OutgoingDialog::~OutgoingDialog()
 {
+  delete mScheduler;
   delete mDocPrefs;
   delete mFormat;
 }
