@@ -71,7 +71,7 @@ class KOEditorGeneralTodo : public KOEditorGeneral
     void modified (Todo*, int);
   
   signals:
-    void recurTodo( Todo * );
+    void todoCompleted( Todo * );
     void dueDateEditToggle( bool );
     void dateTimeStrChanged( const QString & );
     

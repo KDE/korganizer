@@ -186,12 +186,12 @@ class KOTodoView : public KOrg::BaseView
     {
       emit incidenceChanged( oldTodo, todo );
     }
-    void emitRecurSignal( Todo * );
+    void emitCompletedSignal( Todo * );
 
   signals:
     void unSubTodoSignal();
 
-    void recurTodo ( Todo * );
+    void todoCompleted( Todo * );
 
     void purgeCompletedSignal();
 

@@ -141,7 +141,7 @@ void KOTodoViewItem::stateChange(bool state)
   Todo*oldTodo = mTodo->clone();
 
   if (state)
-    mTodoView->emitRecurSignal( mTodo );
+    mTodoView->emitCompletedSignal( mTodo );
   else mTodo->setPercentComplete(0);
   if (isOn()!=state) {
     setOn(state);

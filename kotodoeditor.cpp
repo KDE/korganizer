@@ -80,8 +80,8 @@ void KOTodoEditor::setupGeneral()
   connect(mGeneral,SIGNAL(openCategoryDialog()),mCategoryDialog,SLOT(show()));
   connect(mCategoryDialog, SIGNAL(categoriesSelected(const QString &)),
           mGeneral,SLOT(setCategories(const QString &)));
-  connect(mGeneral,SIGNAL( recurTodo( Todo * )),
-                   SIGNAL( recurTodo( Todo * ) ) );
+  connect(mGeneral,SIGNAL( todoCompleted( Todo * )),
+                   SIGNAL( todoCompleted( Todo * ) ) );
 
 
   if (KOPrefs::instance()->mCompactDialogs) {

@@ -86,7 +86,7 @@ class KOTodoEditor : public KOIncidenceEditor
     void modified (int change=0);
 
   signals:
-    void recurTodo( Todo * );
+    void todoCompleted( Todo * );
 
   protected slots:
     void loadDefaults();

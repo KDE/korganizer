@@ -310,7 +310,7 @@ void KOEditorGeneralTodo::writeTodo(Todo *todo)
   todo->setPercentComplete(mCompletedCombo->currentItem() * 10);
 
   if (mCompletedCombo->currentItem() == 10 && mCompleted.isValid()) {    
-    if (! alreadyComplete) emit recurTodo( todo );
+    if (! alreadyComplete) emit todoCompleted( todo );
     else todo->setCompleted(mCompleted);
   }
 }

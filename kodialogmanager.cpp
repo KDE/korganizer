@@ -308,7 +308,7 @@ KOTodoEditor *KODialogManager::getTodoEditor()
 {
   KOTodoEditor *todoEditor = new KOTodoEditor( mMainView->calendar(), mMainView );
   connectEditor( todoEditor );
-  connect( todoEditor, SIGNAL( recurTodo( Todo * ) ),
+  connect( todoEditor, SIGNAL( todoCompleted( Todo * ) ),
            mMainView, SLOT( recurTodo( Todo *) ) ) ;
   return todoEditor;
 }
