@@ -110,7 +110,7 @@ void ExportWebDialog::setupGeneralPage()
 //  new QRadioButton(i18n("Week"), typeGroup);
   mCbMonth = new QCheckBox(i18n("Month"), typeGroup);
   mCbEvent = new QCheckBox(i18n("Event list"), typeGroup);
-  mCbTodo = new QCheckBox(i18n("To-Do list"), typeGroup);
+  mCbTodo = new QCheckBox(i18n("To-do list"), typeGroup);
 
   QGroupBox *destGroup = new QVGroupBox(i18n("Destination"),mGeneralPage);
   topLayout->addWidget(destGroup);
@@ -159,10 +159,10 @@ void ExportWebDialog::setupEventPage()
   mCbAttendeesEvent = new QCheckBox (i18n("Attendees"),mEventPage);
   topLayout->addWidget(mCbAttendeesEvent);
 
-  mCbExcludePrivateEvent = new QCheckBox (i18n("Exclude Private"),mEventPage);
+  mCbExcludePrivateEvent = new QCheckBox (i18n("Exclude private"),mEventPage);
   topLayout->addWidget(mCbExcludePrivateEvent);
 
-  mCbExcludeConfidentialEvent = new QCheckBox (i18n("Exclude Confidential"),mEventPage);
+  mCbExcludeConfidentialEvent = new QCheckBox (i18n("Exclude confidential"),mEventPage);
   topLayout->addWidget(mCbExcludeConfidentialEvent);
 
   topLayout->addStretch(1);
