@@ -14,8 +14,6 @@
 
 int KOEvent::eventCount = 0;
 
-bool KOEvent::weekStartsMonday = FALSE;
-
 KOEvent::KOEvent() 
   : QObject()
 {
@@ -193,21 +191,17 @@ const QDateTime &KOEvent::getDtStart() const
 
 QString KOEvent::getDtStartTimeStr() const
 {
-  QString timeStr;
-
-  timeStr.sprintf("%02d:%02d",dtStart.time().hour(), 
-		  dtStart.time().minute());
-  return timeStr;
+  return KGlobal::locale()->formatTime(dtStart.time());
 }
 
-QString KOEvent::getDtStartDateStr() const
+QString KOEvent::getDtStartDateStr(bool shortfmt) const
 {
-  QString dateStr;
- 
-  dateStr.sprintf("%.2d %3s %4d",dtStart.date().day(),
-		  (const char*)dtStart.date().monthName(dtStart.date().month()),
-		  dtStart.date().year());
-  return dateStr;
+  return KGlobal::locale()->formatDate(dtStart.date(),shortfmt);
+}
+
+QString KOEvent::getDtStartStr() const
+{
+  return KGlobal::locale()->formatDateTime(dtStart);
 }
 
 void KOEvent::setDtDue(const QDateTime &dtDue)
@@ -242,21 +236,17 @@ const QDateTime &KOEvent::getDtDue() const
 
 QString KOEvent::getDtDueTimeStr() const
 {
-  QString timeStr;
-
-  timeStr.sprintf("%02d:%02d",dtDue.time().hour(), 
-		  dtDue.time().minute());
-  return timeStr;		  
+  return KGlobal::locale()->formatTime(dtDue.time());
 }
 
-QString KOEvent::getDtDueDateStr() const
+QString KOEvent::getDtDueDateStr(bool shortfmt) const
 {
-  QString dateStr;
- 
-  dateStr.sprintf("%.2d %3s %4d",dtDue.date().day(),
-		  (const char*)dtDue.date().monthName(dtDue.date().month()),
-		  dtDue.date().year());
-  return dateStr;
+  return KGlobal::locale()->formatDate(dtDue.date(),shortfmt);
+}
+
+QString KOEvent::getDtDueStr() const
+{
+  return KGlobal::locale()->formatDateTime(dtDue);
 }
 
 void KOEvent::setDtEnd(const QDateTime &dtEnd)
@@ -280,21 +270,17 @@ const QDateTime &KOEvent::getDtEnd() const
 
 QString KOEvent::getDtEndTimeStr() const
 {
-  QString timeStr;
-
-  timeStr.sprintf("%02d:%02d",dtEnd.time().hour(), 
-		  dtEnd.time().minute());
-  return timeStr;		  
+  return KGlobal::locale()->formatTime(dtEnd.time());
 }
 
-QString KOEvent::getDtEndDateStr() const
+QString KOEvent::getDtEndDateStr(bool shortfmt) const
 {
-  QString dateStr;
+  return KGlobal::locale()->formatDate(dtEnd.date(),shortfmt);
+}
 
-  dateStr.sprintf("%.2d %3s %4d",dtEnd.date().day(),
-		  (const char*)dtEnd.date().monthName(dtEnd.date().month()),
-		  dtEnd.date().year());
-  return dateStr;
+QString KOEvent::getDtEndStr() const
+{
+  return KGlobal::locale()->formatDateTime(dtEnd);
 }
 
 bool KOEvent::doesFloat() const
@@ -1121,14 +1107,9 @@ const QDate &KOEvent::getRecursEndDate() const
   return rEndDate;
 }
 
-QString KOEvent::getRecursEndDateStr() const
+QString KOEvent::getRecursEndDateStr(bool shortfmt) const
 {
-  QString dateStr;
-
-  dateStr.sprintf("%.2d %3s %4d",rEndDate.day(),
-		  (const char*)rEndDate.monthName(rEndDate.month()),
-		  rEndDate.year());
-  return dateStr;
+  return KGlobal::locale()->formatDate(rEndDate,shortfmt);
 }
 
 const QBitArray &KOEvent::getRecursDays() const
@@ -1406,11 +1387,6 @@ int KOEvent::weekOfMonth(const QDate &qd) const
   int firstWeekNum(1 +(firstDate.dayOfYear() - firstDate.dayOfWeek() + 6)/7);
   int thisWeekNum(1 +(qd.dayOfYear() - qd.dayOfWeek() + 6)/7);
   return (thisWeekNum - firstWeekNum + 1);
-}
-
-void KOEvent::updateConfig() 
-{
-  weekStartsMonday = KOPrefs::instance()->mWeekstart;
 }
 
 /******************************* ATTENDEE CLASS *****************************/

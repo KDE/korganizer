@@ -16,6 +16,7 @@
 #include <qhbox.h>
 #include <qfiledialog.h>
 #include <qtextstream.h>
+#include <qlabel.h>
 
 #include <klocale.h>
 #include <kfiledialog.h>
@@ -24,7 +25,7 @@
 #include <kio/job.h>
 
 #include "calobject.h"
-#include "kdated.h"
+#include "kdateedit.h"
 
 ExportWebDialog::ExportWebDialog (CalObject *cal, QWidget *parent,
                                   const char *name) :
@@ -221,12 +222,14 @@ void ExportWebDialog::exportWebPage()
 
 void ExportWebDialog::slotResult(KIO::Job *job)
 {
+  qDebug("slotResult");
   if (job->error())
   {
     job->showErrorDialog();
   } else {
     accept();
   }
+  qDebug("slotResult done");
 }
 
 void ExportWebDialog::createHtmlEventList (QTextStream *ts)

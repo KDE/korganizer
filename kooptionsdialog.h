@@ -100,12 +100,9 @@ class KOOptionsDialog : public KDialogBase
     QCheckBox *mConfirmCheck;
     QComboBox *mHolidayCombo;
   
-    QButtonGroup *mTimeFormatGroup;
-    QButtonGroup *mDateFormatGroup;
     QComboBox    *mTimeZoneCombo;
     QSpinBox     *mStartTimeSpin;
     QComboBox    *mAlarmTimeCombo;
-    QCheckBox    *mWeekstartCheck;
 
     QLabel *mTimeBarFont;
 

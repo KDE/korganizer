@@ -22,16 +22,15 @@ alarmd_LDADD = versit/libversit.a $(LIB_KDEUI)
 # Which sources should be compiled for korganizer.
 libkorganizer_la_SOURCES =  calobject.cpp catdlg.cpp \
 	koagendaview.cpp koagenda.cpp koagendaitem.cpp \
-	kdated.cpp kdatenav.cpp \
+	kdateedit.cpp kdatenav.cpp \
 	kdpdatebutton.cpp komonthview.cpp koevent.cpp kpbutton.cpp \
 	ksellabel.cpp \
-	ktimed.cpp main.cpp  \
+	ktimeedit.cpp main.cpp  \
 	searchdialog.cpp calendarview.cpp \
 	calprinter.cpp \
 	koarchivedlg.cpp \
 	scanholiday.c parseholiday.c \
 	vcaldrag.cpp komailclient.cpp kotodoview.cpp \
-	dateedit.cpp datevalidator.cpp \
         kobaseview.cpp kolistview.cpp \
 	koapp.cpp exportwebdialog.cpp korganizer_part.cpp korganizer.cpp \
         kooptionsdialog.cpp koeventeditor.cpp \
@@ -48,14 +47,13 @@ METASOURCES = AUTO
 noinst_HEADERS = komonthview.h calobject.h \
 	kpbutton.h catdlg.h koagendaview.h koagenda.h \
 	koagendaitem.h \
-	kdated.h ksellabel.h \
+	kdateedit.h ksellabel.h \
 	kdatenav.h ksmalldaydisp.h \
-	calendarview.h kdpdatebutton.h ktimed.h \
+	calendarview.h kdpdatebutton.h ktimeedit.h \
 	version.h koevent.h \
 	searchdialog.h calprinter.h \
 	koarchivedlg.h parseholiday.h \
 	vcaldrag.h komailclient.h kotodoview.h \
-	dateedit.h datevalidator.h \
         kobaseview.h kolistview.h \
 	alarmapp.h koapp.h exportwebdialog.h korganizer_part.h korganizer.h \
         kooptionsdialog.h koeventeditor.h \

@@ -1,20 +1,18 @@
 /* 	$Id$	 */
 
-#ifndef _KTIMED_H
-#define _KTIMED_H
+#ifndef _KTIMEEDIT_H
+#define _KTIMEEDIT_H
 
 #include <qevent.h>
 #include <qkeycode.h>
-#include <qdatetm.h>
+#include <qdatetime.h>
 #include <qstring.h>
-#include <qcombo.h>
-#include <qmsgbox.h>
+#include <qcombobox.h>
 #include <kapp.h>
 
 /** 
  * This is a class that provides an easy, user friendly way to edit times.
- * times are displayed in 12 hour format (i.e. am, pm) but kept internally 
- * in 24 hour format.  up/down/ increase or decrease time, respectively.
+ * up/down/ increase or decrease time, respectively.
  *
  * @short Provides a way to edit times in a user-friendly manner.
  * @author Preston Brown, Ian Dawes
@@ -48,28 +46,22 @@ signals:
 public slots:
   /** used to set the time which is displayed to a specific value. */
   void setTime(QTime qt);
-  void updateConfig();
 
 protected slots: 
   void activ(int);
   void hilit(int); 
 
 protected:
-  void insertTimes();
   void addTime(QTime qt);
   void subTime(QTime qt);
   void keyPressEvent(QKeyEvent *qke);
   void validateEntry();
   void updateDisp();
   
-  QTime time;                   // the widget's displayed time.
-  QTime min_time;               // the widget's lower time bound.
-  int  user_inserted;           /* index of the last user typed string
-				   if there is one. */
+  QTime mTime;                   // the widget's displayed time.
   bool current_display_valid;   /* TRUE if what is currently displayed
 				   in the widget corresponds to the
 				   stored time, FALSE otherwise. */
-  bool timeAmPm;
 };
 
 #endif

@@ -51,12 +51,9 @@ class KOPrefs
     bool    mAutoSave;
     bool    mConfirm;
   
-    int     mTimeFormat;
-    int     mDateFormat;
     QString mTimeZone;
     int     mStartTime;
     int     mAlarmTime;
-    bool    mWeekstart;
     int     mDaylightSavings;
 
     QFont   mTimeBarFont;

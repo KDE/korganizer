@@ -14,7 +14,7 @@
 
 #include <klocale.h>
 #include <kstddirs.h>
-#include <kdated.h>
+#include <kdateedit.h>
 #include <kmessagebox.h>
 #include <kapp.h>
 
@@ -187,9 +187,6 @@ void CalPrinter::updateConfig()
     printer->setOrientation(QPrinter::Landscape);
   */
 
-  weekStartsMonday = KOPrefs::instance()->mWeekstart;
-  timeAmPm = (KOPrefs::instance()->mTimeFormat ? TRUE : FALSE);
-
   startHour = KOPrefs::instance()->mDayBegins;
 }
 
@@ -235,7 +232,7 @@ void CalPrinter::printWeek(const QDate &fd, const QDate &td)
 
   printer->setOrientation(QPrinter::Portrait);
 
-  if (weekStartsMonday) {
+  if (KGlobal::locale()->weekStartsMonday()) {
     // correct to monday
     fromWeek = fd.addDays(-(fd.dayOfWeek()-1));
     // correct to sunday
@@ -538,7 +535,6 @@ void CalPrinter::drawDayBox(QPainter &p, const QDate &qd,
     else {
       QTime t1 = currEvent->getDtStart().time();
       
-      if (timeAmPm) local->use12Clock();
       outStr = local->formatTime(t1);
       outStr += currEvent->getSummary();
   
@@ -559,7 +555,7 @@ void CalPrinter::drawDaysOfWeek(QPainter &p, const QDate &qd,
   int cellHeight = subHeaderHeight;
   QDate monthDate(QDate(qd.year(), qd.month(),1));
   
-  if (weekStartsMonday)
+  if (KGlobal::locale()->weekStartsMonday())
     // correct to monday
     monthDate = monthDate.addDays(-(monthDate.dayOfWeek()-1)); 
   else
@@ -635,7 +631,7 @@ void CalPrinter::drawWeek(QPainter &p, const QDate &qd, int width, int height)
   int cellWidth = width/2;
   int cellHeight = (height-offset)/3;
 
-  if (weekStartsMonday)
+  if (KGlobal::locale()->weekStartsMonday())
     // correct to monday
     weekDate = qd.addDays(-(qd.dayOfWeek()-1));
   else
@@ -647,12 +643,12 @@ void CalPrinter::drawWeek(QPainter &p, const QDate &qd, int width, int height)
       drawDayBox(p, weekDate, 0, offset+i*cellHeight, 
 		 cellWidth, cellHeight, TRUE);
     else
-      if ((weekDate.dayOfWeek() == 6 && weekStartsMonday) ||
-	  (weekDate.dayOfWeek() == 5 && !weekStartsMonday))
+      if ((weekDate.dayOfWeek() == 6 && KGlobal::locale()->weekStartsMonday()) ||
+	  (weekDate.dayOfWeek() == 5 && !KGlobal::locale()->weekStartsMonday()))
 	drawDayBox(p, weekDate, cellWidth, offset+2*cellHeight, 
 		   cellWidth, cellHeight/2, TRUE);
-      else if ((weekDate.dayOfWeek() == 7 && weekStartsMonday) ||
-	       (weekDate.dayOfWeek() == 6 && !weekStartsMonday))
+      else if ((weekDate.dayOfWeek() == 7 && KGlobal::locale()->weekStartsMonday()) ||
+	       (weekDate.dayOfWeek() == 6 && !KGlobal::locale()->weekStartsMonday()))
 	drawDayBox(p, weekDate, cellWidth, offset+2*cellHeight+(cellHeight/2),
 		   cellWidth, cellHeight/2, TRUE);
       else
@@ -677,7 +673,7 @@ void CalPrinter::drawMonth(QPainter &p, const QDate &qd,
 	break;
       if (firstCol) {
 	firstCol = FALSE;
-	if (weekStartsMonday)
+	if (KGlobal::locale()->weekStartsMonday())
 	  col = monthDate.dayOfWeek() - 1;
 	else
 	  col = monthDate.dayOfWeek() % 7;
@@ -710,7 +706,7 @@ void CalPrinter::drawSmallMonth(QPainter &p, const QDate &qd,
   QString tmpStr;
   KLocale *local = KGlobal::locale();
 
-  if (weekStartsMonday)
+  if (KGlobal::locale()->weekStartsMonday())
     // correct to monday
     monthDate2 = monthDate.addDays(-(monthDate.dayOfWeek()-1)); 
   else
@@ -735,7 +731,7 @@ void CalPrinter::drawSmallMonth(QPainter &p, const QDate &qd,
 	break;
       if (firstCol) {
 	firstCol = FALSE;
-	if (weekStartsMonday)
+	if (KGlobal::locale()->weekStartsMonday())
 	  col = monthDate.dayOfWeek() - 1;
 	else
 	  col = monthDate.dayOfWeek() % 7;

@@ -104,17 +104,6 @@ void KOOptionsDialog::setupTimeTab()
   topLayout->setSpacing(spacingHint());
   topLayout->setMargin(marginHint());
   
-  mTimeFormatGroup = new QButtonGroup(1,Horizontal,i18n("Time Format:"),
-                                      topFrame);
-  (void)new QRadioButton(i18n("24 hour"),mTimeFormatGroup);
-  (void)new QRadioButton(i18n("AM / PM"),mTimeFormatGroup);
-  topLayout->addMultiCellWidget(mTimeFormatGroup,0,0,0,1);
-
-  mDateFormatGroup = new QButtonGroup(1,Horizontal,i18n("Date Format:"),topFrame);
-  (void)new QRadioButton(i18n("Month/Day/Year (01/31/2000)"),mDateFormatGroup);
-  (void)new QRadioButton(i18n("Month-Day-Year (01-31-2000)"),mDateFormatGroup);
-  topLayout->addMultiCellWidget(mDateFormatGroup,1,1,0,1);
-
   const char *tzList[] = { "-1200", "-1130", "-1100", "-1030", "-1000",
                            "-0930", "-0900", "-0830", "-0800", "-0730",
                            "-0700", "-0630", "-0600", "-0530", "-0500",
@@ -127,16 +116,16 @@ void KOOptionsDialog::setupTimeTab()
                            "+1030", "+1100", "+1130", "+1200", "+1230",
                            "+1300", "+1330", "+1400", 0L };
 
-  topLayout->addWidget(new QLabel(i18n("TimeZone:"),topFrame),2,0);
+  topLayout->addWidget(new QLabel(i18n("TimeZone:"),topFrame),0,0);
   mTimeZoneCombo = new QComboBox(topFrame);
   mTimeZoneCombo->insertStrList(tzList);
-  topLayout->addWidget(mTimeZoneCombo,2,1);
+  topLayout->addWidget(mTimeZoneCombo,0,1);
 
   topLayout->addWidget(new QLabel(i18n("Default Appointment Time:"),
-                       topFrame),3,0);
+                       topFrame),1,0);
   mStartTimeSpin = new QSpinBox(0,23,1,topFrame);
   mStartTimeSpin->setSuffix(":00");
-  topLayout->addWidget(mStartTimeSpin,3,1);
+  topLayout->addWidget(mStartTimeSpin,1,1);
 
   QStringList alarmList;
   
@@ -144,15 +133,12 @@ void KOOptionsDialog::setupTimeTab()
             << i18n("15 minutes") << i18n("30 minutes");
 
   topLayout->addWidget(new QLabel(i18n("Default Alarm Time:"),topFrame),
-                       4,0);
+                       2,0);
   mAlarmTimeCombo = new QComboBox(topFrame);
   mAlarmTimeCombo->insertStringList(alarmList);
-  topLayout->addWidget(mAlarmTimeCombo,4,1);
+  topLayout->addWidget(mAlarmTimeCombo,2,1);
   
-  mWeekstartCheck = new QCheckBox(i18n("Week Starts on Monday"),topFrame);
-  topLayout->addWidget(mWeekstartCheck,5,0);
-  
-  topLayout->setRowStretch(6,1);
+  topLayout->setRowStretch(3,1);
 }
 
 
@@ -400,13 +386,10 @@ void KOOptionsDialog::readConfig()
 
   setCombo(mHolidayCombo,KOPrefs::instance()->mHoliday);
   
-  mTimeFormatGroup->setButton(KOPrefs::instance()->mTimeFormat);
-  mDateFormatGroup->setButton(KOPrefs::instance()->mDateFormat);
   setCombo(mTimeZoneCombo,KOPrefs::instance()->mHoliday);
 
   mStartTimeSpin->setValue(KOPrefs::instance()->mStartTime);
   mAlarmTimeCombo->setCurrentItem(KOPrefs::instance()->mAlarmTime);
-  mWeekstartCheck->setChecked(KOPrefs::instance()->mWeekstart);
 
   mDayBeginsSpin->setValue(KOPrefs::instance()->mDayBegins);
   mHourSizeSlider->setValue(KOPrefs::instance()->mHourSize);
@@ -438,14 +421,9 @@ void KOOptionsDialog::writeConfig()
   KOPrefs::instance()->mAdditional = mAdditionalEdit->text();
   KOPrefs::instance()->mHoliday = mHolidayCombo->currentText();
 
-  KOPrefs::instance()->mTimeFormat = 
-      mTimeFormatGroup->id(mTimeFormatGroup->selected());
-  KOPrefs::instance()->mDateFormat = 
-      mDateFormatGroup->id(mDateFormatGroup->selected());
   KOPrefs::instance()->mTimeZone = mTimeZoneCombo->currentText();
   KOPrefs::instance()->mStartTime = mStartTimeSpin->value();
   KOPrefs::instance()->mAlarmTime = mAlarmTimeCombo->currentItem();
-  KOPrefs::instance()->mWeekstart = mWeekstartCheck->isChecked();
 
   KOPrefs::instance()->mDayBegins = mDayBeginsSpin->value();
   KOPrefs::instance()->mHourSize = mHourSizeSlider->value();

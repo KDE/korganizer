@@ -69,7 +69,6 @@ protected:
   CalObject   *calendar;
   QWidget     *parent;
   int margin, pageWidth, pageHeight, headerHeight, subHeaderHeight;
-  bool weekStartsMonday, timeAmPm;
   bool oldOutputToFile;
   int startHour;
   QString oldFileName;

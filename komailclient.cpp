@@ -10,7 +10,7 @@
 #include "komailclient.moc"
 
 #include <kconfig.h>
-#include <kdated.h>
+#include <kdateedit.h>
 
 #include "version.h"
 

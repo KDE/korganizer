@@ -123,12 +123,15 @@ public:
   void setDtStart(const QString &dtStartStr);
   /** returns an event's starting date/time as a QDateTime. */
   const QDateTime &getDtStart() const;
-  /** returns an event's starting time as a string in the format
-   * HH:MM */
+  /** returns an event's starting time as a string formatted according to the 
+   users locale settings */
   QString getDtStartTimeStr() const;
-  /** returns an event's starting date as a string in the format
-      DD MM YYYY */
-  QString getDtStartDateStr() const;
+  /** returns an event's starting date as a string formatted according to the 
+   users locale settings */
+  QString getDtStartDateStr(bool shortfmt=true) const;
+  /** returns an event's starting date and time as a string formatted according
+   to the users locale settings */
+  QString getDtStartStr() const;
 
   /** for setting the todo's due date/time with a QDateTime. */
   void setDtDue(const QDateTime &dtDue);
@@ -140,12 +143,15 @@ public:
   void setDtDue(const QString &dtDueStr);
   /** returns an event's Due date/time as a QDateTime. */
   const QDateTime &getDtDue() const;
-  /** returns an event's Due time as a string in the format
-   * HH:MM */
+  /** returns an event's due time as a string formatted according to the 
+   users locale settings */
   QString getDtDueTimeStr() const;
-  /** returns an event's Due date as a string in the format
-      DD MM YYYY */
-  QString getDtDueDateStr() const;
+  /** returns an event's due date as a string formatted according to the 
+   users locale settings */
+  QString getDtDueDateStr(bool shortfmt=true) const;
+  /** returns an event's due date and time as a string formatted according
+   to the users locale settings */
+  QString getDtDueStr() const;
 
   /** for setting an event's ending date/time with a QDateTime. */
   void setDtEnd(const QDateTime &dtEnd);
@@ -155,11 +161,15 @@ public:
   void setDtEnd(const QString &dtEndStr);
   /** returns an event's ending date/time as a QDateTime. */
   const QDateTime &getDtEnd() const;
-  /** returns an event's ending time in the format HH:MM */
+  /** returns an event's end time as a string formatted according to the 
+   users locale settings */
   QString getDtEndTimeStr() const;
-  /** returns an event's ending date as a string in the format
-      DD MM YYYY */
-  QString getDtEndDateStr() const;
+  /** returns an event's end date as a string formatted according to the 
+   users locale settings */
+  QString getDtEndDateStr(bool shortfmt=true) const;
+  /** returns an event's end date and time as a string formatted according
+   to the users locale settings */
+  QString getDtEndStr() const;
 
   /** returns TRUE or FALSE depending on whether the event "floats,"
    * or doesn't have a time attached to it, only a date. */
@@ -356,10 +366,9 @@ public:
    * functionality is not complete at the moment. 
    */
   const QDate &getRecursEndDate() const;
-  /**
-   * Returns a string representing the end date in the format 
-   * DD MM YYYY */
-  QString getRecursEndDateStr() const;
+  /** Returns a string representing the recurrence end date in the format
+   according to the users lcoale settings. */
+  QString getRecursEndDateStr(bool shortfmt=true) const;
   const QBitArray &getRecursDays() const;
   struct rMonthPos;
   const QList<rMonthPos> &getRecursMonthPositions() const;
@@ -425,9 +434,6 @@ public:
 
   void print(int) const;
 
-public slots:
-  static void updateConfig();
-
 signals:
   void eventUpdated(KOEvent *);
   
@@ -444,8 +450,6 @@ protected:
   int weekOfMonth(const QDate &qd) const;
 
   // data variables
-  static bool weekStartsMonday;        // global, gotten from config file
-
   bool ro;                             // is this event able to be changed?
 
   QDateTime dateCreated;               // date that the event was first created

@@ -573,7 +573,7 @@ void CalendarView::updateView(const QDateList selectedDates)
   // if there are 7 dates and the first date is a monday, we have a regular week.
   } else if ((tmpList.count() == 7) &&
 	   (tmpList.first()->dayOfWeek() ==
-           (KOPrefs::instance()->mWeekstart ? 1 : 7)) &&
+           (KGlobal::locale()->weekStartsMonday() ? 1 : 7)) &&
 	   (tmpList.first()->daysTo(*tmpList.last()) == 6)) {
     numView = KOAgendaView::WEEK;
 

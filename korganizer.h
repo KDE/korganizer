@@ -130,6 +130,9 @@ class KOrganizer : public KTMainWindow
     /** exit the program, prompt for save if files are "dirty". */
     void file_quit();
 
+    /** Open kcontrol module for configuring date and time formats */
+//    void configureDateTime();
+
     /** Open toolbar configuration dialog */
     void configureToolbars();
 

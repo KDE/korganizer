@@ -38,9 +38,9 @@ void KOTodoViewItem::construct()
   setText(0, mEvent->getSummary());
   setText(1, QString::number(mEvent->getPriority()));
   if (mEvent->hasDueDate()) {
-    setText(2, mEvent->getDtDue().date().toString());
+    setText(2, mEvent->getDtDueDateStr());
     if (mEvent->doesFloat()) setText(3,"");
-    else setText(3,mEvent->getDtDue().time().toString());
+    else setText(3,mEvent->getDtDueTimeStr());
   } else {
     setText(2,"");
     setText(2,"");

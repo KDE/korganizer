@@ -16,6 +16,7 @@
 #include <kstddirs.h>
 #include <kbuttonbox.h>
 #include <kabapi.h>
+#include <kmessagebox.h>
 
 #include "koevent.h"
 #include "koprefs.h"
@@ -304,8 +305,7 @@ void KOEditorDetails::openAddressBook()
   KabAPI addrDialog(this);
 
   if (addrDialog.init() != AddressBook::NoError) {
-    QMessageBox::critical(this, i18n("KOrganizer Error"),
-			  i18n("Unable to open address book."));
+    KMessageBox::error(this,i18n("Unable to open address book."));
     return;
   }
   KabKey key;
@@ -321,8 +321,7 @@ void KOEditorDetails::openAddressBook()
       if (!entry.emails.isEmpty() && entry.emails.first().length()>0)
       	emailEdit->setText(entry.emails.first());      
     } else {
-      QMessageBox::warning(this, i18n("KOrganizer Error"),
-			   i18n("Error getting entry from address book."));
+      KMessageBox::sorry(this,i18n("Error getting entry from address book."));
     }
   }
 }

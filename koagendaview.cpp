@@ -30,7 +30,6 @@
 TimeLabels::TimeLabels(int rows,QWidget *parent,const char *name,WFlags f) :
   QScrollView(parent,name,f)
 {
-  mTimeFormat = 0;
   mRows = rows;
 
   mCellHeight = 40;
@@ -77,28 +76,12 @@ void TimeLabels::drawContents(QPainter *p,int cx, int cy, int cw, int ch)
     suffix = "am";
 
     // handle 24h and am/pm time formats
-    switch (mTimeFormat)
-    {
-      // am/pm format
-      case 1:
-      {
-        //debug("am/pm format");
-        if (cell > 11) suffix = "pm";
-        if (cell == 0) hour.setNum(12);
-        if (cell > 12) hour.setNum(cell - 12);
-        break;
-      }
-
-      // 24h time
-      case 0:
-      {
-        //debug("24h format");
-        suffix = ":00";
-        break;
-      }
-
-      default:
-        debug("Error:  time format not recognised.");
+    if (KGlobal::locale()->use12Clock()) {
+      if (cell > 11) suffix = "pm";
+      if (cell == 0) hour.setNum(12);
+      if (cell > 12) hour.setNum(cell - 12);
+    } else {
+      suffix = ":00";
     }
 
     // create string in format of "XX:XX" or "XXpm/am"
@@ -132,24 +115,13 @@ int TimeLabels::minimumWidth() const
   return width;
 }
 
-void TimeLabels::setTimeFormat(int format)
-{
-  mTimeFormat = format;
-}
-
 /** updates widget's internal state */
-void TimeLabels::updateConfig(KConfig *config)
+void TimeLabels::updateConfig()
 {
   // set the font
 //  config->setGroup("Fonts");
 //  QFont font = config->readFontEntry("TimeBar Font");
   setFont(KOPrefs::instance()->mTimeBarFont);
-
-  // set the time format
-  config->setGroup("Time & Date");
-  int fmt = config->readNumEntry("Time Format", 1);
-  // fmt = 0 for 24h, or 1 for am/pm
-  setTimeFormat(fmt);
 
   // update geometry restrictions based on new settings
   setFixedWidth(minimumWidth());
@@ -236,7 +208,6 @@ KOAgendaView::KOAgendaView(CalObject *cal,QWidget *parent,const char *name) :
   KOBaseView (cal,parent,name)
 {
   mStartDate = QDate::currentDate();
-  mWeekStartsMonday = true;
   mStartHour = 8;
                          
   mLayoutDayLabels = 0;
@@ -409,11 +380,8 @@ void KOAgendaView::updateConfig()
 
   KConfig config(locate("config","korganizerrc"));
 
-  // update koagendaview members
-  mWeekStartsMonday = config.readBoolEntry("Week Starts Monday", true);
-
   // update config for children
-  mTimeLabels->updateConfig(&config);
+  mTimeLabels->updateConfig();
   mAgenda->updateConfig(&config);
 
   // widget synchronization
@@ -456,15 +424,8 @@ void KOAgendaView::updateEventDates(KOAgendaItem *item)
     }
   }
   
-//  qDebug("  B StartDt: %s, EndDt: %s",startDt.toString().latin1(),
-//                                    endDt.toString().latin1());
-  
   item->itemEvent()->setDtStart(startDt);
   item->itemEvent()->setDtEnd(endDt);
-
-//  qDebug("  A StartDt: %s, EndDt: %s",
-//         item->itemEvent()->getDtStart().toString().latin1(),
-//         item->itemEvent()->getDtEnd().toString().latin1());
 }
 
 
@@ -485,7 +446,7 @@ void KOAgendaView::selectDates(const QDateList list)
   // if there are 7 dates and the first is a monday, we have a regular week.
   } else if ((mSelectedDates.count() == 7) &&
              (mSelectedDates.first()->dayOfWeek() ==
-	     (mWeekStartsMonday ? 1 : 7)) &&
+	     (KGlobal::locale()->weekStartsMonday() ? 1 : 7)) &&
              (mSelectedDates.first()->daysTo(*mSelectedDates.last()) == 6)) {
     setView(WEEK);
 
@@ -620,7 +581,7 @@ void KOAgendaView::slotViewChange(int newView)
   case WORKWEEK:
     // find monday for this week
     if (mStartDate.dayOfWeek() == 7) {
-      if (mWeekStartsMonday)
+      if (KGlobal::locale()->weekStartsMonday())
         mStartDate = mStartDate.addDays(-6);
       else
         mStartDate = mStartDate.addDays(1);
@@ -637,9 +598,9 @@ void KOAgendaView::slotViewChange(int newView)
   case WEEK:
     // find the beginning of this week (could be monday or sunday)
     if (mStartDate.dayOfWeek() == 7) {
-      if (mWeekStartsMonday)
+      if (KGlobal::locale()->weekStartsMonday())
         mStartDate = mStartDate.addDays(-6);
-    } else if (mWeekStartsMonday) {
+    } else if (KGlobal::locale()->weekStartsMonday()) {
       mStartDate = mStartDate.addDays(mStartDate.dayOfWeek() * -1 + 1);
     } else {
       mStartDate = mStartDate.addDays(mStartDate.dayOfWeek() * -1);

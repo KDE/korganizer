@@ -16,8 +16,8 @@
 #include <kapp.h>
 #include <krestrictedline.h>
 
-#include "ktimed.h"
-#include "kdated.h"
+#include "ktimeedit.h"
+#include "kdateedit.h"
 
 class KOEditorGeneralTodo : public QWidget
 {

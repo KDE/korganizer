@@ -10,7 +10,7 @@
 #include <kapp.h>
 #include <klocale.h>
 
-#include "kdated.h"
+#include "kdateedit.h"
 #include "koarchivedlg.h"
 #include "koarchivedlg.moc"
 

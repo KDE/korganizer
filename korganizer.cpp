@@ -42,6 +42,7 @@
 #include <kio/netaccess.h>
 #include <kmessagebox.h>
 #include <dcopclient.h>
+#include <kprocess.h>
 
 #include "koarchivedlg.h"
 #include "komailclient.h"
@@ -283,6 +284,12 @@ void KOrganizer::initActions()
   KStdAction::showToolbar(this, SLOT(toggleToolBar()), actionCollection());
 //  KStdAction::showStatusbar(this, SLOT(toggleStatusBar()), actionCollection());
 
+/*
+  (void)new KAction(i18n("Configure &Date & Time..."), 0,
+                    this,SLOT(configureDateTime()),
+                    actionCollection(), "conf_datetime");
+*/
+
   KStdAction::configureToolbars(this, SLOT(configureToolbars()),
                                 actionCollection());
   KStdAction::preferences(mCalendarView, SLOT(edit_options()),
@@ -448,7 +455,7 @@ bool KOrganizer::queryClose()
   // way, when having opened multiple calendars in different CalendarViews.
   writeSettings();
   
-  if (windowList->lastInstance() & !mActive) {
+  if (windowList->lastInstance() && !mActive && !mURL.isEmpty()) {
     int result = KMessageBox::questionYesNo(this,i18n("Do you want to make this"
       " calendar active?\nThis means that it is monitored for alarms and loaded"
       " as default calendar."));
@@ -513,13 +520,21 @@ void KOrganizer::updateConfig()
     checkAutoSave();
     mAutoSaveTimer->start(1000*60);
   }
-  if (!autoSave())
-    mAutoSaveTimer->stop();
-
-  // static slot calls here
-  KOEvent::updateConfig();
+  if (!autoSave()) mAutoSaveTimer->stop();
 }
 
+/*
+void KOrganizer::configureDateTime()
+{
+  KProcess proc;
+  proc << "xeyes";
+//  proc << "kcmshell" << "Personalization/language";
+  if (!proc.start()) {
+    KMessageBox::sorry(this,
+        i18n("Couldn't start control module for date and time format"));
+  }
+}
+*/
 
 void KOrganizer::configureToolbars()
 {

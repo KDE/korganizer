@@ -34,14 +34,11 @@ class TimeLabels : public QScrollView {
     
     void setCellHeight(int height);
 
-    /** Sets the time display style */
-    void setTimeFormat(int format);
-
     /** Calculates the minimum width */
     virtual int minimumWidth() const;
 
     /** updates widget's internal state */
-    void updateConfig(KConfig *);
+    void updateConfig();
 
     /**  */
     void setAgenda(KOAgenda* agenda);

@@ -85,12 +85,9 @@ void KOPrefs::setDefaults()
   mAdditional = "";
   mHoliday = "(none)";
   
-  mTimeFormat = 0;
-  mDateFormat = 0;
   mTimeZone = "";
   mStartTime = 10;
   mAlarmTime = 0;
-  mWeekstart = true;
   mDaylightSavings = 0;
 
   mDayBegins = 8;
@@ -143,12 +140,9 @@ void KOPrefs::readConfig()
   mHoliday = mConfig->readEntry("Holidays","(none)");
   
   mConfig->setGroup("Time & Date");
-  mTimeFormat = mConfig->readNumEntry("Time Format",0);
-  mDateFormat = mConfig->readNumEntry("Date Format",0);
   mTimeZone = mConfig->readNumEntry("Time Zone",0);
   mStartTime = mConfig->readNumEntry("Default Start Time",10);
   mAlarmTime = mConfig->readNumEntry("Default Alarm Time",0);
-  mWeekstart = mConfig->readBoolEntry("Week Starts Monday",true);
   mDaylightSavings = mConfig->readNumEntry("Daylight Savings", 0);
 
   mConfig->setGroup("Views");
@@ -196,12 +190,9 @@ void KOPrefs::writeConfig()
   mConfig->writeEntry("Holidays",mHoliday);
 
   mConfig->setGroup("Time & Date");
-  mConfig->writeEntry("Time Format",mTimeFormat);
-  mConfig->writeEntry("Date Format",mDateFormat);
   mConfig->writeEntry("Time Zone",mTimeZone);
   mConfig->writeEntry("Default Start Time",mStartTime);
   mConfig->writeEntry("Default Alarm Time",mAlarmTime);
-  mConfig->writeEntry("Week Starts Monday",mWeekstart);
   mConfig->writeEntry("Daylight Savings",mDaylightSavings);
 
   mConfig->setGroup("Views");

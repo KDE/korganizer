@@ -64,7 +64,6 @@ class KDateNavigator: public QFrame {
    QDate m_MthYr;
    int m_fstDayOfWk;
    bool m_bShowWeekNums;
-   bool weekStartsMonday;
 
    int dayNum(int row, int col);
    int dayToIndex(int dayNum);

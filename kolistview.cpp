@@ -31,11 +31,11 @@ KOListViewItem::KOListViewItem(QListView *parent, KOEvent *ev)
     setText(5,"---");
     setText(6,"---");
     if (mEvent->hasDueDate()) {
-      setText(7,mEvent->getDtDue().date().toString());
+      setText(7,mEvent->getDtDueDateStr());
       if (mEvent->doesFloat()) {
         setText(8,"---");
       } else {
-        setText(8,mEvent->getDtDue().date().toString());
+        setText(8,mEvent->getDtDueDateStr());
       }
     } else {
       setText(7,"---");
@@ -43,10 +43,10 @@ KOListViewItem::KOListViewItem(QListView *parent, KOEvent *ev)
     }
   } else {
     setText(0, mEvent->getSummary());
-    setText(1,mEvent->getDtStart().date().toString());
-    setText(2,mEvent->getDtStart().time().toString());
-    setText(3,mEvent->getDtEnd().date().toString());
-    setText(4,mEvent->getDtEnd().time().toString());
+    setText(1,mEvent->getDtStartDateStr());
+    setText(2,mEvent->getDtStartTimeStr());
+    setText(3,mEvent->getDtEndDateStr());
+    setText(4,mEvent->getDtEndTimeStr());
     setText(5,mEvent->getAlarmRepeatCount() ? i18n("Yes") : i18n("No"));
     setText(6,mEvent->doesRecur() ? i18n("Yes") : i18n("No"));
     setText(7,"---");

@@ -141,12 +141,12 @@ KDateNavigator::KDateNavigator(QWidget *parent,
 
   // If month begins on Monday and Monday is first day of week,
   // month should begin on second line. Sunday doesn't have this problem.
-  int nextLine = ((m_fstDayOfWk == 1) && (weekStartsMonday == 1)) ? 7 : 0;
+  int nextLine = ((m_fstDayOfWk == 1) && (KGlobal::locale()->weekStartsMonday() == 1)) ? 7 : 0;
   int index = 0;
   //  int daysInMonth = m_MthYr.daysInMonth();
 
   for(i = 0; i < 42; i++) {
-    index = i + (weekStartsMonday ? 1 : 0) - m_fstDayOfWk - nextLine;
+    index = i + (KGlobal::locale()->weekStartsMonday() ? 1 : 0) - m_fstDayOfWk - nextLine;
     buttons[i] = new KDateButton(dayone.addDays(index), i, 
 				 calendar, viewFrame);
     connect(buttons[i], SIGNAL(selected(QDate, int, bool)),
@@ -238,7 +238,7 @@ void KDateNavigator::updateDates()
 
   // If month begins on Monday and Monday is first day of week,
   // month should begin on second line. Sunday doesn't have this problem.
-  int nextLine = ((m_fstDayOfWk == 1) && (weekStartsMonday == 1)) ? 7 : 0;
+  int nextLine = ((m_fstDayOfWk == 1) && (KGlobal::locale()->weekStartsMonday() == 1)) ? 7 : 0;
 
   //find the first day of the week of the current month.
   QDate dayone(m_MthYr.year(), m_MthYr.month(), 1);
@@ -246,7 +246,7 @@ void KDateNavigator::updateDates()
   // set the date of each of the day buttons. Buttons not belonging to the month
   // currently displayed are shown in italics.
   for(int i = 0; i < 42; i++) {
-    index = i + (weekStartsMonday ? 1 : 0) - m_fstDayOfWk - nextLine;
+    index = i + (KGlobal::locale()->weekStartsMonday() ? 1 : 0) - m_fstDayOfWk - nextLine;
     QDate buttonDate = dayone.addDays(index);
     buttons[i]->setDate(buttonDate);
     if (buttonDate.month() != dayone.month()) buttons[i]->setItalic(true);
@@ -322,8 +322,7 @@ void KDateNavigator::updateConfig()
 //  heading_Palette.setActive(my_Group);
 //  heading_Palette.setInactive(my_Group);
  
-  weekStartsMonday = KOPrefs::instance()->mWeekstart;
-  curHeaders = (weekStartsMonday ? monHeaders : sunHeaders);
+  curHeaders = (KGlobal::locale()->weekStartsMonday() ? monHeaders : sunHeaders);
   for(int i=0; i<7; i++) {
     // take the first letter of the day name to be the abbreviation
     sDay[0] = curHeaders[i][0];
@@ -346,13 +345,13 @@ void KDateNavigator::updateButton(int i)
   int extraDays;
   // If month begins on Monday and Monday is first day of week,
   // month should begin on second line. Sunday doesn't have this problem.
-  //  int nextLine = ((m_fstDayOfWk == 1) && (weekStartsMonday == 1)) ? 7 : 0;
+  //  int nextLine = ((m_fstDayOfWk == 1) && (KGlobal::locale()->weekStartsMonday() == 1)) ? 7 : 0;
   //  int daysInMonth = m_MthYr.daysInMonth();
 
   // check right away that a valid calendar is available.
   ASSERT(calendar != 0);
 
-  //  index = i + (weekStartsMonday ? 1 : 0) - m_fstDayOfWk - nextLine;
+  //  index = i + (KGlobal::locale()->weekStartsMonday() ? 1 : 0) - m_fstDayOfWk - nextLine;
   /*if (buttons[i]->date().month() == m_MthYr.month())
     buttons[i]->setItalic(FALSE);
   else
@@ -406,8 +405,8 @@ void KDateNavigator::updateButton(int i)
   buttons[i]->setSelected(selected);
 
   // Calculate holidays. Sunday is also treated as holiday.
-  if (!weekStartsMonday && (float(i)/7 == float(i/7)) ||
-      weekStartsMonday && (float(i-6)/7 == float((i-6)/7)) ||
+  if (!KGlobal::locale()->weekStartsMonday() && (float(i)/7 == float(i/7)) ||
+      KGlobal::locale()->weekStartsMonday() && (float(i-6)/7 == float((i-6)/7)) ||
       !calendar->getHolidayForDate(buttons[i]->date()).isEmpty()) {
     buttons[i]->setHoliday();
   } else {
@@ -706,9 +705,9 @@ int KDateNavigator::dayToIndex(int dayNum)
 {
   int row, col;
 
-  row = (dayNum+m_fstDayOfWk-1-(weekStartsMonday ? 1 : 0)) / 7;
-  if (weekStartsMonday && (m_fstDayOfWk == 1))
+  row = (dayNum+m_fstDayOfWk-1-(KGlobal::locale()->weekStartsMonday() ? 1 : 0)) / 7;
+  if (KGlobal::locale()->weekStartsMonday() && (m_fstDayOfWk == 1))
     row++;
-  col = (dayNum+m_fstDayOfWk-1-(weekStartsMonday ? 1 : 0)) % 7;
+  col = (dayNum+m_fstDayOfWk-1-(KGlobal::locale()->weekStartsMonday() ? 1 : 0)) % 7;
   return row * 7 + col;
 }

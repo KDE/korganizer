@@ -798,7 +798,6 @@ int KOAgenda::minimumWidth() const
   return min;
 }
 
-/**  */
 void KOAgenda::updateConfig(KConfig* config)
 {
   // set start hour
