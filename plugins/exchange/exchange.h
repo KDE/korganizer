@@ -20,6 +20,7 @@
 #define KORG_EXCHANGE_H
 
 #include <qstring.h>
+#include <qdatetime.h>
 
 #include <korganizer/part.h>
 
@@ -42,6 +43,8 @@ class Exchange : public KOrg::Part {
 
   signals:
     void enableIncidenceActions( bool );
+    void calendarChanged();
+    void calendarChanged(const QDate&start,const QDate&end);
 
   private slots:
     void download();

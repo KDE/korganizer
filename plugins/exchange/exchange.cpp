@@ -66,6 +66,7 @@ Exchange::Exchange(KOrg::MainWindow *parent, const char *name) :
 
   mAccount = new KPIM::ExchangeAccount( "Calendar/Exchange Plugin" );
   mClient = new KPIM::ExchangeClient( mAccount );
+  mClient->setWindow( parent );
   
   setXMLFile("plugins/exchangeui.rc");
 
@@ -92,6 +93,10 @@ Exchange::Exchange(KOrg::MainWindow *parent, const char *name) :
 
   new KAction(i18n("Configure..."), 0, this, SLOT(configure()),
               actionCollection(), "exchange_configure");
+
+  connect( this, SIGNAL( calendarChanged() ), mainWindow()->view(), SLOT( updateView() ) );
+  connect( this, SIGNAL( calendarChanged(const QDate &, const QDate &)), 
+    mainWindow()->view(), SLOT(updateView(const QDate &, const QDate &)) );
 }
 
 Exchange::~Exchange()
@@ -109,6 +114,23 @@ void  Exchange::slotIncidenceSelected( Incidence *incidence )
   emit enableIncidenceActions( incidence != 0 );
 }
 
+void Exchange::download()
+{
+  ExchangeDialog dialog( mainWindow()->view()->startDate(), mainWindow()->view()->endDate() );
+  
+  if (dialog.exec() != QDialog::Accepted ) 
+    return;
+
+  QDate start = dialog.m_start->date();
+  QDate end = dialog.m_end->date();
+
+  KCal::Calendar* calendar = mainWindow()->view()->calendar();
+
+  mClient->downloadSynchronous(calendar, start, end, true );
+
+  emit calendarChanged();
+}
+
 void Exchange::upload()
 {
   kdDebug() << "Called Exchange::upload()" << endl;
@@ -122,7 +144,7 @@ void Exchange::upload()
   if ( KMessageBox::warningContinueCancel( 0L, "Exchange Upload is EXPERIMENTAL, you may lose data on this appointment!", i18n("Exchange Plugin") )
        == KMessageBox::Continue ) {
     kdDebug() << "Trying to add appointment " << event->summary() << endl;
-    mClient->upload( event );
+    mClient->uploadSynchronous( event );
   }
 }
 
@@ -140,8 +162,9 @@ void Exchange::remove()
   if ( KMessageBox::warningContinueCancel( 0L, "Exchange Delete is EXPERIMENTAL, if this is a recurring event it will delete all instances!", i18n("Exchange Plugin") )
        == KMessageBox::Continue ) {
     kdDebug() << "Trying to delete appointment " << event->summary() << endl;
-    mClient->remove( event );
+    mClient->removeSynchronous( event );
     mainWindow()->view()->calendar()->deleteEvent( event );
+    emit calendarChanged();
   }
 }
 
@@ -164,19 +187,3 @@ void Exchange::test2()
 {
   kdDebug() << "Entering test2()" << endl;
 }
-
-void Exchange::download()
-{
-  ExchangeDialog dialog( mainWindow()->view()->startDate(), mainWindow()->view()->endDate() );
-  
-  if (dialog.exec() != QDialog::Accepted ) 
-    return;
-
-  QDate start = dialog.m_start->date();
-  QDate end = dialog.m_end->date();
-
-  KCal::Calendar* calendar = mainWindow()->view()->calendar();
-  
-  mClient->download(calendar, start, end, true );
-}
-
