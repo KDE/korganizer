@@ -111,20 +111,6 @@ void KOPrefsDialog::setupMainTab()
                  &(KOPrefs::instance()->mBcc),topFrame);
   topLayout->addMultiCellWidget(bcc->checkBox(),4,4,0,1);
 
-  mHolidayList << QString::null;
-  QStringList countryList = KGlobal::dirs()->findAllResources("data",
-      "korganizer/holiday_*", false, true);
-  for ( QStringList::Iterator it = countryList.begin();
-        it != countryList.end();
-        ++it )
-    mHolidayList << (*it).mid((*it).findRev('_') + 1);
-
-  topLayout->addWidget(new QLabel(i18n("Holidays:"),topFrame),5,0);
-  mHolidayCombo = new QComboBox(topFrame);
-  mHolidayCombo->insertStringList(mHolidayList);
-
-  topLayout->addWidget(mHolidayCombo,5,1);
-
 
   QGroupBox *autoSaveGroup = new QGroupBox(1,Horizontal,i18n("Auto-Save"),
                                            topFrame);
@@ -566,8 +552,6 @@ void KOPrefsDialog::usrReadConfig()
 
   mAutoSaveIntervalSpin->setValue(KOPrefs::instance()->mAutoSaveInterval);
 
-  setCombo(mHolidayCombo,KOPrefs::instance()->mHoliday, &mHolidayList);
-
   setCombo(mTimeZoneCombo,KOPrefs::instance()->mTimeZoneId);
 
   mStartTimeSpin->setValue(KOPrefs::instance()->mStartTime);
@@ -594,9 +578,6 @@ void KOPrefsDialog::usrWriteConfig()
   KOPrefs::instance()->setEmail(mEmailEdit->text());
 
   KOPrefs::instance()->mAutoSaveInterval = mAutoSaveIntervalSpin->value();
-
-  KOPrefs::instance()->mHoliday = *mHolidayList.at(mHolidayCombo->currentItem());
-  kdDebug() << "Holiday: " << KOPrefs::instance()->mHoliday << endl;
 
   KOPrefs::instance()->mTimeZoneId = mTimeZoneCombo->currentText();
 

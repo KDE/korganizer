@@ -104,8 +104,6 @@ class KOPrefsDialog : public KPrefsDialog
     QLineEdit *mEmailEdit;
     QLineEdit *mAdditionalEdit;
     QSpinBox  *mAutoSaveIntervalSpin;
-    QComboBox *mHolidayCombo;
-    QStringList mHolidayList;
     QListView *mAMails;
     QLineEdit *aEmailsEdit;
 

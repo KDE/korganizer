@@ -82,7 +82,6 @@ class KOPrefs : public KPrefs
     bool    mEmailControlCenter;
 
     bool    mBcc;
-    QString mHoliday;
     bool    mAutoSave;
     int     mAutoSaveInterval;
     bool    mConfirm;

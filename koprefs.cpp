@@ -171,8 +171,6 @@ void KOPrefs::usrSetDefaults()
   mEmail = settings.getSetting(KEMailSettings::RealName);
   fillMailDefaults();
 
-  mHoliday = KGlobal::locale()->country();
-
   mTimeZone = "+0000";
 
   mTimeBarFont = mDefaultTimeBarFont;
@@ -238,7 +236,6 @@ void KOPrefs::usrReadConfig()
   mName = config()->readEntry("user_name","");
   mEmail = config()->readEntry("user_email","");
   fillMailDefaults();
-  mHoliday = config()->readEntry("Holidays", KGlobal::locale()->country());
 
   config()->setGroup("Category Colors");
   QStringList::Iterator it;
@@ -260,7 +257,6 @@ void KOPrefs::usrWriteConfig()
   config()->setGroup("Personal Settings");
   config()->writeEntry("user_name",mName);
   config()->writeEntry("user_email",mEmail);
-  config()->writeEntry("Holidays",mHoliday);
 
   config()->setGroup("Category Colors");
   QDictIterator<QColor> it(mCategoryColors);
