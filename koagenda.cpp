@@ -1758,6 +1758,17 @@ void KOAgenda::selectItem(KOAgendaItem *item)
   emit incidenceSelected( mSelectedItem->incidence() );
 }
 
+void KOAgenda::selectItemByUID( const QString& uid )
+{
+  KOAgendaItem *item;
+  for ( item = mItems.first(); item != 0; item = mItems.next() ) {
+    if( item->incidence() && item->incidence()->uid() == uid ) {
+      selectItem( item );
+      break;
+    }
+  }
+}
+
 // This function seems never be called.
 void KOAgenda::keyPressEvent( QKeyEvent *kev )
 {
