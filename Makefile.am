@@ -1,5 +1,3 @@
-KDE_OPTIONS = nofinal
-
 SUBDIRS = knewstuff . korgac pixmaps sounds plugins interfaces
 
 INCLUDES = \
