@@ -116,7 +116,7 @@ void KOEventViewer::appendEvent( Event *event )
     QDateTime dt = event->recurrence()->getNextDateTime(
                                           QDateTime::currentDateTime() );
     addTag( "p", "<em>" +
-      i18n("This is a recurring event. The next occurrence will be on %1").arg(
+      i18n("This is a recurring event. The next occurrence will be on %1.").arg(
       KGlobal::locale()->formatDateTime( dt, true ) ) + "</em>" );
   }
 
@@ -153,7 +153,7 @@ void KOEventViewer::appendTodo( Todo *todo )
     QDateTime dt = todo->recurrence()->getNextDateTime(
                                          QDateTime::currentDateTime() );
     addTag( "p", "<em>" +
-      i18n("This is a recurring todo. The next occurrence will be on %1").arg(
+      i18n("This is a recurring todo. The next occurrence will be on %1.").arg(
       KGlobal::locale()->formatDateTime( dt, true ) ) + "</em>" );
   }
   formatReadOnly( todo );
