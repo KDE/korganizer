@@ -26,6 +26,7 @@ KDateButton::KDateButton(QDate date, int index, CalObject *calendar,
   mItalic = false;
   mToday = false;
   mHoliday = false;
+  mShaded = false;
 
   mTodayMarginWidth = 2;
 
@@ -33,6 +34,7 @@ KDateButton::KDateButton(QDate date, int index, CalObject *calendar,
 
   mDefaultBackColor = palette().active().base();
   mDefaultTextColor = palette().active().foreground();
+  mDefaultTextColorShaded = getShadedColor(mDefaultTextColor);
 
   mCalendar = calendar;
 
@@ -57,6 +59,8 @@ KDateButton::~KDateButton()
 
 void KDateButton::updateConfig()
 {
+  mHolidayColorShaded = getShadedColor(KOPrefs::instance()->mHolidayColor);
+  
   setColors();
 }
 
@@ -73,6 +77,17 @@ void KDateButton::setItalic(bool italic)
   QFont myFont = font();
   myFont.setItalic(mItalic);
   setFont(myFont);
+}
+
+void KDateButton::setShaded(bool shaded)
+{
+  if (mShaded == shaded) return;
+  mShaded = shaded;
+
+  setColors();
+
+// This disables mouse press events, which is bad.
+//  setEnabled(!mShaded);
 }
 
 void KDateButton::setEvent(bool event)
@@ -117,13 +132,15 @@ void KDateButton::setHoliday(bool holiday)
 void KDateButton::setColors()
 {
   if (mHoliday) {
-    setTextColor(KOPrefs::instance()->mHolidayColor);
+    if (mShaded) setTextColor(mHolidayColorShaded);
+    else setTextColor(KOPrefs::instance()->mHolidayColor);
   } else {
     if (mSelected) {
       if (mToday) setTextColor("grey");
       else setTextColor("white");
     } else {
-      setTextColor(mDefaultTextColor);
+      if (mShaded) setTextColor(mDefaultTextColorShaded);
+      else setTextColor(mDefaultTextColor);
     }
   }
   
@@ -255,4 +272,18 @@ QSize KDateButton::sizeHint () const
   int add = 2*mTodayMarginWidth + 1;
   size += QSize(add,add);  
   return size;
+}
+
+QColor KDateButton::getShadedColor(QColor color)
+{
+  QColor shaded;
+  int h=0;
+  int s=0;
+  int v=0;
+  color.hsv(&h,&s,&v);
+  s = s/4;
+  v = 192+v/4;
+  shaded.setHsv(h,s,v);
+  
+  return shaded;
 }

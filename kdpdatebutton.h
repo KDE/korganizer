@@ -22,6 +22,7 @@ class KDateButton: public QLabel {
     void setSelected(bool select=true);
     void setToday(bool today=true);
     void setHoliday(bool holiday=true);
+    void setShaded(bool shaded=true);
 
     bool isSelected() const { return mSelected; }
 
@@ -48,15 +49,20 @@ class KDateButton: public QLabel {
     void setBackColor(const QColor & color);
     void setTextColor(const QColor & color);
 
+    QColor getShadedColor(QColor color);
+
   private:
     bool mSelected;
     bool mEvent;
     bool mToday;
     bool mHoliday;
     bool mItalic;
+    bool mShaded;
 
     QColor mDefaultBackColor;
     QColor mDefaultTextColor;
+    QColor mDefaultTextColorShaded;
+    QColor mHolidayColorShaded;
 
     int mTodayMarginWidth;
 

@@ -185,8 +185,10 @@ void KDateNavigator::updateDates()
     index = i + (KGlobal::locale()->weekStartsMonday() ? 1 : 0) - m_fstDayOfWk - nextLine;
     QDate buttonDate = dayone.addDays(index);
     buttons[i]->setDate(buttonDate);
-    if (buttonDate.month() != dayone.month()) buttons[i]->setItalic(true);
-    else buttons[i]->setItalic(false);
+    if (buttonDate.month() != dayone.month()) buttons[i]->setShaded(true);
+    else buttons[i]->setShaded(false);
+//    if (buttonDate.month() != dayone.month()) buttons[i]->setItalic(true);
+//    else buttons[i]->setItalic(false);
   }
 }
 

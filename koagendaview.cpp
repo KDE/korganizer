@@ -355,6 +355,11 @@ void KOAgendaView::createDayLabels()
     if (!holiday.isEmpty()) str.append("\n" + holiday);
     dayLabel->setText(str);
     dayLabel->setAlignment(QLabel::AlignHCenter);
+    if (date == QDate::currentDate()) {
+      QFont font = dayLabel->font();
+      font.setBold(true);
+      dayLabel->setFont(font);
+    }
     mLayoutDayLabels->addWidget(dayLabel,1);
   }
   
