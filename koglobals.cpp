@@ -26,6 +26,8 @@
 #include <kdebug.h>
 #include <kglobal.h>
 #include <kconfig.h>
+#include <kconfig.h>
+#include <kstandarddirs.h>
 
 #include <calendarsystem/kcalendarsystem.h>
 
@@ -56,7 +58,7 @@ KOGlobals *KOGlobals::self()
 
 KOGlobals::KOGlobals()
 {
-  KConfig *cfg = KGlobal::config();
+  KConfig *cfg = KOGlobals::config();
 
   cfg->setGroup("General");
   QString calSystem = cfg->readEntry( "CalendarSystem", "gregorian" );
@@ -71,6 +73,14 @@ KOGlobals::KOGlobals()
   } else {
     mAlarmClient = new NopAlarmClient;
   }
+}
+
+KConfig* KOGlobals::config()
+{
+  static KConfig *mConfig = 0;
+  if (!mConfig)
+    mConfig = new KConfig( locateLocal( "config", "korganizerrc" ) );
+  return mConfig;
 }
 
 KOGlobals::~KOGlobals()

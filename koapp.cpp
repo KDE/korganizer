@@ -29,6 +29,7 @@
 #include <kcmdlineargs.h>
 #include <kconfig.h>
 #include <kdebug.h>
+#include <klocale.h>
 #include <kwin.h>
 #include <kurl.h>
 
@@ -136,8 +137,9 @@ int KOrganizerApp::newInstance()
       processCalendar( args->url(i), numDays ); 
     }
   } else {
-    KGlobal::config()->setGroup("General");
-    QString urlString = KGlobal::config()->readEntry("Active Calendar");
+    KConfig *config = KOGlobals::config();
+    config->setGroup("General");
+    QString urlString = config->readEntry("Active Calendar");
 
     // Force alarm daemon to load active calendar
     KOGlobals::self()->alarmClient()->addCalendar( urlString );

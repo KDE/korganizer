@@ -43,7 +43,7 @@
 #include <kio/job.h>
 #include <kstandarddirs.h>
 #include <kconfig.h>
-#include <kglobal.h>
+#include <koglobals.h>
 #include <kurlrequester.h>
 #include <ktempfile.h>
 #include <kio/netaccess.h>
@@ -71,7 +71,7 @@ ExportWebDialog::ExportWebDialog (Calendar *cal, QWidget *parent,
 {
   mExport = new HtmlExport(cal);
 
-  mConfig = KGlobal::config();
+  mConfig = KOGlobals::config();
 
   setupGeneralPage();
   setupEventPage();
@@ -193,7 +193,7 @@ void ExportWebDialog::setupAdvancedPage()
 
 void ExportWebDialog::loadSettings()
 {
-  KConfig *cfg = KGlobal::config();
+  KConfig *cfg = KOGlobals::config();
   cfg->setGroup( "HtmlExport" );
 
   mCbMonth->setChecked( cfg->readBoolEntry( "Month", false ) );
@@ -212,7 +212,7 @@ void ExportWebDialog::loadSettings()
 
 void ExportWebDialog::saveSettings()
 {
-  KConfig *cfg = KGlobal::config();
+  KConfig *cfg = KOGlobals::config();
   cfg->setGroup( "HtmlExport" );
 
   cfg->writeEntry( "Month", mCbMonth->isChecked() );

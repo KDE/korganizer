@@ -28,7 +28,7 @@ KSimpleConfig *DocPrefs::mConfig = 0;
 DocPrefs::DocPrefs( const QString &type )
 {
     if ( !mConfig ) {
-        mConfig = new KSimpleConfig( locateLocal( "appdata", "docprefs." + type + ".kconfig" ) );
+        mConfig = new KSimpleConfig( locateLocal( "data", "korganizer/docprefs." + type + ".kconfig" ) );
     }
 }
 

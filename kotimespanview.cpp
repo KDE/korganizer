@@ -1,6 +1,6 @@
 #include <qlayout.h>
 
-#include <kglobal.h>
+#include <koglobals.h>
 #include <kconfig.h>
 
 #include "timespanview.h"
@@ -26,7 +26,7 @@ KOTimeSpanView::~KOTimeSpanView()
 
 void KOTimeSpanView::readSettings()
 {
-  readSettings(KGlobal::config());
+  readSettings(KOGlobals::config());
 }
 
 void KOTimeSpanView::readSettings(KConfig *config)

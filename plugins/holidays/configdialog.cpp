@@ -56,8 +56,9 @@ ConfigDialog::~ConfigDialog()
 
 void ConfigDialog::load()
 {
-  kapp->config()->setGroup("Calendar/Holiday Plugin");
-  QString currentHoliday = kapp->config()->readEntry("Holidays");
+  KConfig config( locateLocal( "config", "korganizerrc" ));
+  config.setGroup("Calendar/Holiday Plugin");
+  QString currentHoliday = config.readEntry("Holidays");
   QString currentHolidayName;
 
   QStringList holidayList;
@@ -95,10 +96,11 @@ void ConfigDialog::load()
 void ConfigDialog::save()
 {
   QString currentHoliday = mCountryMap[mHolidayCombo->currentText()];
+  KConfig config( locateLocal( "config", "korganizerrc" ));
 
-  kapp->config()->setGroup("Calendar/Holiday Plugin");
-  kapp->config()->writeEntry("Holidays",currentHoliday);
-  kapp->config()->sync();
+  config.setGroup("Calendar/Holiday Plugin");
+  config.writeEntry("Holidays",currentHoliday);
+  config.sync();
 }
 
 void ConfigDialog::slotOk()

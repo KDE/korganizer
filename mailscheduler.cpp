@@ -85,7 +85,7 @@ bool MailScheduler::performTransaction(IncidenceBase *incidence,Method method)
 
 QPtrList<ScheduleMessage> MailScheduler::retrieveTransactions()
 {
-  QString incomingDirName = locateLocal("appdata","income");
+  QString incomingDirName = locateLocal("data","korganizer/income");
   kdDebug() << "MailScheduler::retrieveTransactions: dir: " << incomingDirName
             << endl;
 

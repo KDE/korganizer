@@ -55,8 +55,9 @@ extern "C" {
 
 Holidays::Holidays()
 {
-  kapp->config()->setGroup("Calendar/Holiday Plugin");
-  QString holiday = kapp->config()->readEntry("Holidays");
+  KConfig config( locateLocal( "config", "korganizerrc" ));
+  config.setGroup("Calendar/Holiday Plugin");
+  QString holiday = config.readEntry("Holidays");
 
   mHolidayFile = locate("appdata","holiday_" + holiday);
 

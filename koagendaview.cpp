@@ -38,7 +38,7 @@
 
 #include <kapplication.h>
 #include <kdebug.h>
-#include <kglobal.h>
+#include <koglobals.h>
 #include <kstandarddirs.h>
 #include <kiconloader.h>
 #include <klocale.h>
@@ -832,7 +832,7 @@ void KOAgendaView::startDrag(Event *event)
 
 void KOAgendaView::readSettings()
 {
-  readSettings(KGlobal::config());
+  readSettings(KOGlobals::config());
 }
 
 void KOAgendaView::readSettings(KConfig *config)

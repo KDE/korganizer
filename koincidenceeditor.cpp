@@ -134,7 +134,7 @@ void KOIncidenceEditor::saveAsTemplate( Incidence *incidence,
 
   QString fileName = "templates/" + incidence->type();
   fileName.append( "/" + templateName );
-  fileName = locateLocal( "appdata", fileName );
+  fileName = locateLocal( "data", "korganizer/" + fileName );
 
   CalendarLocal cal;
   cal.addIncidence( incidence );
@@ -149,7 +149,7 @@ QString KOIncidenceEditor::loadTemplate( Calendar *cal, const QString &type,
       i18n("Select a template to load:"), templates, 0, false );
   if ( templateName.isEmpty() ) return QString::null;
 
-  QString fileName = locateLocal( "appdata", "templates/" + type + "/" +
+  QString fileName = locateLocal( "data", "korganizer/templates/" + type + "/" +
                                   templateName );
 
   if ( fileName.isEmpty() ) {

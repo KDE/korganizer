@@ -26,6 +26,8 @@
 class KCalendarSystem;
 class AlarmClient;
 
+class KConfig;
+
 class KOGlobals
 {
   public:
@@ -35,6 +37,7 @@ class KOGlobals
     enum { PRIORITY_MODIFIED, COMPLETION_MODIFIED, CATEGORY_MODIFIED, UNKNOWN_MODIFIED };
 
     static void fitDialogToScreen( QWidget *widget, bool force=false );
+    static KConfig *config();
 
     static bool reverseLayout();
 

@@ -320,7 +320,7 @@ void OutgoingDialog::loadMessages()
   Scheduler::Method method;
   QString recipients;
 
-  QString outgoingDirName = locateLocal("appdata","outgoing");
+  QString outgoingDirName = locateLocal("data","korganizer/outgoing");
   QDir outgoingDir(outgoingDirName);
   QStringList outgoing = outgoingDir.entryList(QDir::Files);
   QStringList::ConstIterator it;

@@ -37,6 +37,7 @@
 #include <kiconloader.h>
 #include <kmessagebox.h>
 #include <kconfig.h>
+#include <kstandarddirs.h>
 
 #include <libkcal/vcaldrag.h>
 
@@ -119,11 +120,11 @@ void KOProjectView::readSettings()
 {
   kdDebug() << "KOProjectView::readSettings()" << endl;
 
-  KConfig *config = kapp->config();
+  //KConfig *config = kapp->config();
+  KConfig config( locateLocal( "config", "korganizerrc" ));
+  config.setGroup("Views");
 
-  config->setGroup("Views");
-
-  QValueList<int> sizes = config->readIntListEntry("Separator ProjectView");
+  QValueList<int> sizes = config.readIntListEntry("Separator ProjectView");
   if (sizes.count() == 2) {
     mGantt->splitter()->setSizes(sizes);
   }

@@ -234,7 +234,7 @@ void Engine::requestMetaInformation( Provider *provider )
 void Engine::upload( Entry *entry )
 {
   QString uploadFile = entry->fullName();
-  uploadFile = locateLocal( "appdata", "upload/" + uploadFile );
+  uploadFile = locateLocal( "data", "korganizer/upload/" + uploadFile );
 
   if ( !mNewStuff->createUploadFile( uploadFile ) ) {
     KMessageBox::error( mParentWidget, i18n("Unable to create file to upload") );
@@ -294,7 +294,7 @@ bool Engine::createMetaFile( Entry *entry )
             << "--DOM_END--" << endl;
 
   mUploadMetaFile = entry->fullName() + ".meta";
-  mUploadMetaFile = locateLocal( "appdata", "upload/" + mUploadMetaFile );
+  mUploadMetaFile = locateLocal( "data", "korganizer/upload/" + mUploadMetaFile );
 
   QFile f( mUploadMetaFile );
   if ( !f.open( IO_WriteOnly ) ) {

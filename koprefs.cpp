@@ -43,7 +43,7 @@ KOPrefs *KOPrefs::mInstance = 0;
 static KStaticDeleter<KOPrefs> insd;
 
 KOPrefs::KOPrefs() :
-  KPimPrefs()
+  KPimPrefs("korganizerrc")
 {
   mCategoryColors.setAutoDelete(true);
 

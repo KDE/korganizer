@@ -162,7 +162,7 @@ KOListView::KOListView(Calendar *calendar, QWidget *parent,
                    SLOT(processSelectionChange()));
 
 //  setMinimumSize(100,100);
-  mListView->restoreLayout(KGlobal::config(),"KOListView Layout");
+  mListView->restoreLayout(KOGlobals::config(),"KOListView Layout");
 }
 
 KOListView::~KOListView()

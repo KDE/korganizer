@@ -189,7 +189,7 @@ void KOrganizer::readSettings()
   // read settings from the KConfig, supplying reasonable
   // defaults where none are to be found
 
-  KConfig *config = kapp->config();
+  KConfig *config = KOGlobals::config();
 
   config->setGroup("KOrganizer Geometry");
 
@@ -210,7 +210,7 @@ void KOrganizer::writeSettings()
 {
   kdDebug() << "KOrganizer::writeSettings" << endl;
 
-  KConfig *config = kapp->config();
+  KConfig *config = KOGlobals::config();
 
   config->setGroup("KOrganizer Geometry");
 
@@ -527,7 +527,7 @@ void KOrganizer::initActions()
   setXMLFile("korganizerui.rc");
   createGUI(0);
 
-  KConfig *config = kapp->config();
+  KConfig *config = KOGlobals::config();
 
   applyMainWindowSettings(config);
 
@@ -1075,7 +1075,7 @@ void KOrganizer::configureDateTime()
 
 void KOrganizer::configureToolbars()
 {
-  saveMainWindowSettings( KGlobal::config(), "MainWindow" );
+  saveMainWindowSettings( KOGlobals::config(), "MainWindow" );
 
   KEditToolbar dlg(factory());
   connect(&dlg,SIGNAL(newToolbarConfig()),this,SLOT(slotNewToolbarConfig()));
