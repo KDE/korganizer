@@ -7,14 +7,6 @@ by using <a href="http://www.slac.com/pilone/kpilot_home">KPilot</a>?
 
 <tip category="KOrganizer|General">
 <html>
-<p>...that KOrganizer considers events as read-only, when they were created by
-somebody else? This can make all your events read-only, if you change your email
-address. Use "Actions"->"Take Over Calendar" to make them writeable again.
-</html>
-</tip>
-
-<tip category="KOrganizer|General">
-<html>
 <p>...that you can select, if the week starts on Monday or on Sunday in the KDE
 control center? KOrganizer uses this settings. Look at "Personalization"->"Date
 & Time".
