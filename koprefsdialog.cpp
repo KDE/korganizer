@@ -333,7 +333,7 @@ void KOPrefsDialog::setupViewsTab()
 
   QBoxLayout *printLayout = new QHBoxLayout;
   topLayout->addLayout(printLayout,11,0);
-  printLayout->addWidget(new QLabel(i18n("Printpreview Program:"),topFrame));
+  printLayout->addWidget(new QLabel(i18n("Print Preview Program:"),topFrame));
   printLayout->addStretch(1);
   mPrintPreviewEdit = new KURLRequester(topFrame);
   printLayout->addWidget(mPrintPreviewEdit);

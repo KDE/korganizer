@@ -365,7 +365,7 @@ void KOrganizer::initActions()
           action,SLOT(setEnabled(bool)));
 #endif
 
-  action = new KAction(i18n("&Make Sub-Todo independent"), 0,
+  action = new KAction(i18n("&Make Sub-To-Do independent"), 0,
                     mCalendarView,SLOT(todo_unsub()),
                     actionCollection(), "unsub_todo");
   action->setEnabled(false);
@@ -1244,9 +1244,9 @@ void KOrganizer::processIncidenceSelection( Incidence *incidence )
     mEditIncidenceAction->setText( i18n("&Edit Event...") );
     mDeleteIncidenceAction->setText( i18n("&Delete Event...") );
   } else if ( incidence->type() == "Todo" ) {
-    mShowIncidenceAction->setText( i18n("&Show Todo...") );
-    mEditIncidenceAction->setText( i18n("&Edit Todo...") );
-    mDeleteIncidenceAction->setText( i18n("&Delete Todo...") );
+    mShowIncidenceAction->setText( i18n("&Show To-Do...") );
+    mEditIncidenceAction->setText( i18n("&Edit To-Do...") );
+    mDeleteIncidenceAction->setText( i18n("&Delete To-Do...") );
   } else {
     mShowIncidenceAction->setText( i18n("&Show...") );
     mShowIncidenceAction->setText( i18n("&Edit...") );
