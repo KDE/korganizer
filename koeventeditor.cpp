@@ -227,7 +227,7 @@ void KOEventEditor::readEvent(Event *event)
   mDetails->readEvent(event);
   mRecurrence->readEvent(event);
 
-  enableRecurrence(event->doesRecur());
+  enableRecurrence(event->recurrence()->doesRecur());
 
   // categories
   mCategoryDialog->setSelected(event->getCategories());

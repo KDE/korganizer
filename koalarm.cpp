@@ -35,26 +35,12 @@ void KOAlarm::setAudioAlarmFile(const QString &audioAlarmFile)
   mParent->emitEventUpdated(mParent);
 }
 
-void KOAlarm::setAudioAlarmFile(const char *audioAlarmFile)
-{
-  if (mAlarmReadOnly) return;
-  mAudioAlarmFile = audioAlarmFile;
-  mParent->emitEventUpdated(mParent);
-}
-
 const QString &KOAlarm::audioAlarmFile() const
 {
   return mAudioAlarmFile;
 }
 
 void KOAlarm::setProgramAlarmFile(const QString &programAlarmFile)
-{
-  if (mAlarmReadOnly) return;
-  mProgramAlarmFile = programAlarmFile;
-  mParent->emitEventUpdated(mParent);
-}
-
-void KOAlarm::setProgramAlarmFile(const char *programAlarmFile)
 {
   if (mAlarmReadOnly) return;
   mProgramAlarmFile = programAlarmFile;
@@ -73,26 +59,12 @@ void KOAlarm::setMailAlarmAddress(const QString &mailAlarmAddress)
   mParent->emitEventUpdated(mParent);
 }
 
-void KOAlarm::setMailAlarmAddress(const char *mailAlarmAddress)
-{
-  if (mAlarmReadOnly) return;
-  mMailAlarmAddress = mailAlarmAddress;
-  mParent->emitEventUpdated(mParent);
-}
-
 const QString &KOAlarm::mailAlarmAddress() const
 {
   return mMailAlarmAddress;
 }
 
 void KOAlarm::setAlarmText(const QString &alarmText)
-{
-  if (mAlarmReadOnly) return;
-  mAlarmText = alarmText;
-  mParent->emitEventUpdated(mParent);
-}
-
-void KOAlarm::setAlarmText(const char *alarmText)
 {
   if (mAlarmReadOnly) return;
   mAlarmText = alarmText;
@@ -110,15 +82,6 @@ void KOAlarm::setAlarmTime(const QDateTime &alarmTime)
   mAlarmTime = alarmTime;
   mParent->emitEventUpdated(mParent);
 }
-
-/*
-void KOAlarm::setAlarmTime(const QString &alarmTimeStr)
-{
-  if (mAlarmReadOnly) return;
-  mAlarmTime = strToDateTime(alarmTimeStr);
-  mParent->emitEventUpdated(mParent);
-}
-*/
 
 const QDateTime &KOAlarm::alarmTime() const
 {

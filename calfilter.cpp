@@ -49,7 +49,7 @@ bool CalFilter::filterEvent(Event *event)
   if (mInclusion) {
     bool passed = false;
     if (mInclusion & Recurring) {
-      if (event->doesRecur()) passed = true;
+      if (event->recurrence()->doesRecur()) passed = true;
     }
     if (mInclusion & Floating) {
       if (event->doesFloat()) passed = true;
@@ -60,7 +60,7 @@ bool CalFilter::filterEvent(Event *event)
   
   if (mExclusion) {
     if (mExclusion & Recurring) {
-      if (event->doesRecur()) return false;
+      if (event->recurrence()->doesRecur()) return false;
     }
     if (mExclusion & Floating) {
       if (event->doesFloat()) return false;

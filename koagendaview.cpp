@@ -730,7 +730,7 @@ void KOAgendaView::fillAgenda()
 //      kdDebug() << "  beginX: " << beginX << "  endX: " << endX << endl;
       
       if (event->doesFloat()) {
-        if (event->doesRecur()) {
+        if (event->recurrence()->doesRecur()) {
           mAllDayAgenda->insertAllDayItem(event,curCol,curCol);
         } else {
           if (beginX <= 0 && curCol == 0) {     

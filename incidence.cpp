@@ -10,11 +10,13 @@
 #include "incidence.h"
 #include "incidence.moc"
 
-Incidence::Incidence() :
-  KORecurrence(this),
-  KOAlarm(this)
+Incidence::Incidence()
 {
   mReadOnly = false;
+  mFloats = true;
+
+  mAlarm = new KOAlarm(this);
+  mRecurrence = new KORecurrence(this);
 
   recreate();
 
@@ -44,6 +46,9 @@ Incidence::~Incidence()
     if (ev->relatedTo() == this) ev->setRelatedTo(0);
   }
   if (relatedTo()) relatedTo()->removeRelation(this);  
+
+  delete mRecurrence;
+  delete mAlarm;
 }
 
 void Incidence::recreate()
@@ -60,8 +65,8 @@ void Incidence::recreate()
 void Incidence::setReadOnly(bool readonly)
 {
   mReadOnly = readonly;
-  setRecurReadOnly(mReadOnly);
-  setAlarmReadOnly(mReadOnly);
+  recurrence()->setRecurReadOnly(mReadOnly);
+  alarm()->setAlarmReadOnly(mReadOnly);
 }
 
 void Incidence::setLastModified(const QDateTime &lm)
@@ -132,13 +137,13 @@ void Incidence::setDtStart(const QDateTime &dtStart)
   int diffsecs = mDtStart.secsTo(dtStart);
 
   if (mReadOnly) return;
-  if (getAlarmRepeatCount())
-    setAlarmTime(getAlarmTime().addSecs(diffsecs));
+  if (alarm()->alarmRepeatCount())
+    alarm()->setAlarmTime(alarm()->alarmTime().addSecs(diffsecs));
 
   mDtStart = dtStart;
 
-  setRecurStart(mDtStart);
-  setAlarmStart(mDtStart);
+  recurrence()->setRecurStart(mDtStart);
+  alarm()->setAlarmStart(mDtStart);
 
   emit eventUpdated(this);
 }
@@ -234,15 +239,6 @@ void Incidence::setDescription(const QString &description)
   emit eventUpdated(this);
 }
 
-/*
-void Incidence::setDescription(const char *description)
-{
-  if (mReadOnly) return;
-  Incidence::description = description;
-  emit eventUpdated(this);
-}
-*/
-
 const QString &Incidence::description() const
 {
   return mDescription;
@@ -255,15 +251,6 @@ void Incidence::setSummary(const QString &summary)
   mSummary = summary;
   emit eventUpdated(this);
 }
-
-/*
-void Incidence::setSummary(const char *summary)
-{
-  if (mReadOnly) return;
-  Incidence::summary = summary;
-  emit eventUpdated(this);
-}
-*/
 
 const QString &Incidence::summary() const
 {
@@ -352,7 +339,7 @@ void Incidence::removeRelation(Incidence *event)
 
 bool Incidence::recursOn(const QDate &qd) const
 {
-  if (recursOnPure(qd) && !isException(qd)) return true;
+  if (recurrence()->recursOnPure(qd) && !isException(qd)) return true;
   else return false;
 }
 
@@ -362,7 +349,7 @@ void Incidence::setExDates(const QDateList &exDates)
   mExDates.clear();
   mExDates = exDates;
 
-  setRecurExDatesCount(mExDates.count());
+  recurrence()->setRecurExDatesCount(mExDates.count());
 
   emit eventUpdated(this);
 }
@@ -386,7 +373,7 @@ void Incidence::setExDates(const char *dates)
   *tmpDate = strToDate(tmpStr.mid(index, (tmpStr.length()-index)));
   mExDates.inSort(tmpDate);
 
-  setRecurExDatesCount(mExDates.count());
+  recurrence()->setRecurExDatesCount(mExDates.count());
 
   emit eventUpdated(this);
 }
@@ -397,7 +384,7 @@ void Incidence::addExDate(const QDate &date)
   QDate *addDate = new QDate(date);
   mExDates.inSort(addDate);
 
-  setRecurExDatesCount(mExDates.count());
+  recurrence()->setRecurExDatesCount(mExDates.count());
 
   emit eventUpdated(this);
 }
@@ -536,3 +523,25 @@ int Incidence::syncStatus() const
 {
   return mSyncStatus;
 }
+
+KOAlarm *Incidence::alarm() const
+{
+  return mAlarm;
+}
+
+KORecurrence *Incidence::recurrence() const
+{
+  return mRecurrence;
+}
+
+QDate Incidence::strToDate(const QString &dateStr)
+{
+
+  int year, month, day;
+
+  year = dateStr.left(4).toInt();
+  month = dateStr.mid(4,2).toInt();
+  day = dateStr.mid(6,2).toInt();
+  return(QDate(year, month, day));
+}
+

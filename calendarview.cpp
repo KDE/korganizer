@@ -1130,7 +1130,7 @@ void CalendarView::deleteEvent(Event *anEvent)
     return;
   }
 
-  if (anEvent->doesRecur()) {
+  if (anEvent->recurrence()->doesRecur()) {
     switch(KMessageBox::warningContinueCancel(this,
         i18n("This event recurs over multiple dates.\n"
              "Are you sure you want to delete this event "

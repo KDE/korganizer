@@ -42,30 +42,30 @@ void MailMsgString::buildTextMsg(Event * selectedEvent)
   QString recurrence[]= {"None","Daily","Weekly","Monthly Same Day",
                          "Monthly Same Position","Yearly","Yearly"};
   
-  if (selectedEvent->getOrganizer() != "") {
-    mBody += i18n("Organizer: %1").arg(selectedEvent->getOrganizer());
+  if (selectedEvent->organizer() != "") {
+    mBody += i18n("Organizer: %1").arg(selectedEvent->organizer());
     mBody += CR;
   }
 
-  mBody += i18n("Summary: %1").arg(selectedEvent->getSummary());
+  mBody += i18n("Summary: %1").arg(selectedEvent->summary());
   if (!selectedEvent->doesFloat()) {
     mBody += CR;
     mBody += i18n("Start Date: %1").arg(selectedEvent->getDtStartDateStr());
     mBody += CR;
     mBody += i18n("Start Time: %1").arg(selectedEvent->getDtStartTimeStr());
     mBody += CR;
-    if (selectedEvent->doesRecur()) {
+    if (selectedEvent->recurrence()->doesRecur()) {
       mBody += i18n("Recurs: %1")
-               .arg(recurrence[selectedEvent->getRecursFrequency()]);
+               .arg(recurrence[selectedEvent->recurrence()->frequency()]);
       mBody += CR;
-      if (selectedEvent->getRecursDuration() > 0 ) {
+      if (selectedEvent->recurrence()->duration() > 0 ) {
         mBody += i18n ("Repeats %1 times")
-                 .arg(QString::number(selectedEvent->getRecursDuration()));
+                 .arg(QString::number(selectedEvent->recurrence()->duration()));
         mBody += CR;
       } else {
-        if (selectedEvent->getRecursDuration() != -1) {
+        if (selectedEvent->recurrence()->duration() != -1) {
           mBody += i18n("End Date : %1")
-                   .arg(selectedEvent->getRecursEndDateStr());
+                   .arg(selectedEvent->recurrence()->endDateStr());
           mBody += CR;
         } else {
           mBody += i18n("Repeats forever");
@@ -73,7 +73,7 @@ void MailMsgString::buildTextMsg(Event * selectedEvent)
         }
       }
     }
-    mBody += i18n("End Time : %1").arg(selectedEvent->getDtEndTimeStr());
+    mBody += i18n("End Time : %1").arg(selectedEvent->dtEndTimeStr());
     mBody += CR;
   } 
 }

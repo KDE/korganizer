@@ -665,35 +665,35 @@ void KOEditorRecurrence::setDefaults(QDateTime from, QDateTime to,bool)
 void KOEditorRecurrence::readEvent(Event *event)
 {
   QBitArray rDays;
-  QList<Event::rMonthPos> rmp;
+  QList<KORecurrence::rMonthPos> rmp;
   QList<int> rmd;
   int i;
 
-  setDateTimes(event->getDtStart(),event->getDtEnd());
+  setDateTimes(event->dtStart(),event->getDtEnd());
 
   // unset everything
   unsetAllCheckboxes();
-  switch (event->doesRecur()) {
-  case Event::rNone:
+  switch (event->recurrence()->doesRecur()) {
+  case KORecurrence::rNone:
     break;
-  case Event::rDaily:
+  case KORecurrence::rDaily:
     dailyButton->setChecked(true);
-    nDaysEntry->setText(QString::number(event->getRecursFrequency()));
+    nDaysEntry->setText(QString::number(event->recurrence()->frequency()));
     break;
-  case Event::rWeekly:
+  case KORecurrence::rWeekly:
     weeklyButton->setChecked(true);
-    nWeeksEntry->setText(QString::number(event->getRecursFrequency()));
+    nWeeksEntry->setText(QString::number(event->recurrence()->frequency()));
     
-    rDays = event->getRecursDays();
+    rDays = event->recurrence()->days();
     setCheckedDays(rDays);
     break;
-  case Event::rMonthlyPos:
+  case KORecurrence::rMonthlyPos:
     // we only handle one possibility in the list right now,
     // so I have hardcoded calls with first().  If we make the GUI
     // more extended, this can be changed.
     monthlyButton->setChecked(true);
     onNthTypeOfDay->setChecked(true);
-    rmp = event->getRecursMonthPositions();
+    rmp = event->recurrence()->monthPositions();
     if (rmp.first()->negative)
       i = 5 - rmp.first()->rPos - 1;
     else
@@ -703,27 +703,27 @@ void KOEditorRecurrence::readEvent(Event *event)
     while (!rmp.first()->rDays.testBit(i))
       ++i;
     nthTypeOfDayEntry->setCurrentItem(i);
-    nMonthsEntry->setText(QString::number(event->getRecursFrequency()));
+    nMonthsEntry->setText(QString::number(event->recurrence()->frequency()));
     break;
-  case Event::rMonthlyDay:
+  case KORecurrence::rMonthlyDay:
     monthlyButton->setChecked(true);
     onNthDay->setChecked(true);
-    rmd = event->getRecursMonthDays();
+    rmd = event->recurrence()->monthDays();
     i = *rmd.first() - 1;
     nthDayEntry->setCurrentItem(i);
-    nMonthsEntry->setText(QString::number(event->getRecursFrequency()));
+    nMonthsEntry->setText(QString::number(event->recurrence()->frequency()));
     break;
-  case Event::rYearlyMonth:
+  case KORecurrence::rYearlyMonth:
     yearlyButton->setChecked(true);
     yearMonthButton->setChecked(true);
-    rmd = event->getRecursYearNums();
+    rmd = event->recurrence()->yearNums();
     yearMonthComboBox->setCurrentItem(*rmd.first() - 1);
-    nYearsEntry->setText(QString::number(event->getRecursFrequency()));
+    nYearsEntry->setText(QString::number(event->recurrence()->frequency()));
     break;
-  case Event::rYearlyDay:
+  case KORecurrence::rYearlyDay:
     yearlyButton->setChecked(true);
     yearDayButton->setChecked(true);
-    nYearsEntry->setText(QString::number(event->getRecursFrequency()));
+    nYearsEntry->setText(QString::number(event->recurrence()->frequency()));
     break;
   default:
     break;
@@ -732,17 +732,17 @@ void KOEditorRecurrence::readEvent(Event *event)
   startDateLabel->setText(i18n("Begins On: %1")
       .arg(KGlobal::locale()->formatDate(event->getDtStart().date())));
 
-  if (event->doesRecur()) {
+  if (event->recurrence()->doesRecur()) {
 
     // get range information
-    if (event->getRecursDuration() == -1)
+    if (event->recurrence()->duration() == -1)
       noEndDateButton->setChecked(true);
-    else if (event->getRecursDuration() == 0) {
+    else if (event->recurrence()->duration() == 0) {
       endDateButton->setChecked(true);
-      endDateEdit->setDate(event->getRecursEndDate());
+      endDateEdit->setDate(event->recurrence()->endDate());
     } else {
       endDurationButton->setChecked(true);
-      endDurationEdit->setText(QString::number(event->getRecursDuration()));
+      endDurationEdit->setText(QString::number(event->recurrence()->duration()));
     }
   } else {
     // the event doesn't recur, but we should provide some logical
@@ -783,7 +783,7 @@ void KOEditorRecurrence::writeEvent(Event *event)
     QDate rEndDate;
     
     // clear out any old settings;
-    event->unsetRecurs();
+    event->recurrence()->unsetRecurs();
 
     // first get range information.  It is common to all types
     // of recurring events.
@@ -805,9 +805,9 @@ void KOEditorRecurrence::writeEvent(Event *event)
       rFreq = tmpStr.toInt();
       if (rFreq < 1) rFreq = 1;
       if (rDuration != 0)
-	event->setRecursDaily(rFreq, rDuration);
+	event->recurrence()->setDaily(rFreq, rDuration);
       else
-	event->setRecursDaily(rFreq, rEndDate);
+	event->recurrence()->setDaily(rFreq, rEndDate);
       // check for weekly recurrence
     } else if (weeklyButton->isChecked()) {
       int rFreq;
@@ -820,9 +820,9 @@ void KOEditorRecurrence::writeEvent(Event *event)
       getCheckedDays(rDays);
       
       if (rDuration != 0)
-	event->setRecursWeekly(rFreq, rDays, rDuration);
+	event->recurrence()->setWeekly(rFreq, rDays, rDuration);
       else
-	event->setRecursWeekly(rFreq, rDays, rEndDate);
+	event->recurrence()->setWeekly(rFreq, rDays, rEndDate);
     } else if (monthlyButton->isChecked()) {
       if (onNthTypeOfDay->isChecked()) {
 	// it's by position
@@ -836,10 +836,10 @@ void KOEditorRecurrence::writeEvent(Event *event)
 	rPos = nthNumberEntry->currentItem() + 1;
 	rDays.setBit(nthTypeOfDayEntry->currentItem());
 	if (rDuration != 0)
-	  event->setRecursMonthly(Event::rMonthlyPos, rFreq, rDuration);
+	  event->recurrence()->setMonthly(KORecurrence::rMonthlyPos, rFreq, rDuration);
 	else
-	  event->setRecursMonthly(Event::rMonthlyPos, rFreq, rEndDate);
-	event->addRecursMonthlyPos(rPos, rDays);
+	  event->recurrence()->setMonthly(KORecurrence::rMonthlyPos, rFreq, rEndDate);
+	event->recurrence()->addMonthlyPos(rPos, rDays);
       } else {
 	// it's by day
 	int rFreq;
@@ -852,10 +852,10 @@ void KOEditorRecurrence::writeEvent(Event *event)
 	rDay = nthDayEntry->currentItem() + 1;
 	
 	if (rDuration != 0)
-	  event->setRecursMonthly(Event::rMonthlyDay, rFreq, rDuration);
+	  event->recurrence()->setMonthly(KORecurrence::rMonthlyDay, rFreq, rDuration);
 	else
-	  event->setRecursMonthly(Event::rMonthlyDay, rFreq, rEndDate);
-	event->addRecursMonthlyDay(rDay);
+	  event->recurrence()->setMonthly(KORecurrence::rMonthlyDay, rFreq, rEndDate);
+	event->recurrence()->addMonthlyDay(rDay);
       }
     } else if (yearlyButton->isChecked()) {
       if (yearMonthButton->isChecked()) {
@@ -866,10 +866,10 @@ void KOEditorRecurrence::writeEvent(Event *event)
         if (rFreq < 1) rFreq = 1;
 	rMonth = yearMonthComboBox->currentItem() + 1;
 	if (rDuration != 0)
-	  event->setRecursYearly(Event::rYearlyMonth, rFreq, rDuration);
+	  event->recurrence()->setYearly(KORecurrence::rYearlyMonth, rFreq, rDuration);
 	else
-	  event->setRecursYearly(Event::rYearlyMonth, rFreq, rEndDate);
-	event->addRecursYearlyNum(rMonth);
+	  event->recurrence()->setYearly(KORecurrence::rYearlyMonth, rFreq, rEndDate);
+	event->recurrence()->addYearlyNum(rMonth);
       } else {
 	// it's by day
 	int rFreq;
@@ -880,17 +880,17 @@ void KOEditorRecurrence::writeEvent(Event *event)
         if (rFreq < 1) rFreq = 1;
 	
 	//tmpStr = Recurrence->yearDayLineEdit->text();
-	rDay = event->getDtStart().date().dayOfYear();
+	rDay = event->dtStart().date().dayOfYear();
 
 	if (rDuration != 0)
-	  event->setRecursYearly(Event::rYearlyDay, rFreq, rDuration);
+	  event->recurrence()->setYearly(KORecurrence::rYearlyDay, rFreq, rDuration);
 	else
-	  event->setRecursYearly(Event::rYearlyDay, rFreq, rEndDate);
-	event->addRecursYearlyNum(rDay);
+	  event->recurrence()->setYearly(KORecurrence::rYearlyDay, rFreq, rEndDate);
+	event->recurrence()->addYearlyNum(rDay);
       }
     } // yearly
   } else
-    event->unsetRecurs();
+    event->recurrence()->unsetRecurs();
 
   QDateList exDates;
   for (i = 0; i < exceptionList->count(); i++) {

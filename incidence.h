@@ -16,10 +16,16 @@
 // TODO: remove all the getBlah() functions.
 // TODO: make KORecurrence and KOAlarm members instead of base classes
 
-class Incidence : public QObject, public KORecurrence, public KOAlarm
+class Incidence : public QObject
 {
     Q_OBJECT
   public:
+    /** enumeration for describing an event's status. */
+    enum { NEEDS_ACTION = 0, ACCEPTED = 1, SENT = 2, TENTATIVE = 3,
+	   CONFIRMED = 4, DECLINED = 5, COMPLETED = 6, DELEGATED = 7 };
+    /** enumeration for describing an event's secrecy. */
+    enum { PUBLIC = 0, PRIVATE = 1, CONFIDENTIAL = 2 };
+
     Incidence();
     ~Incidence();
 
@@ -206,10 +212,18 @@ class Incidence : public QObject, public KORecurrence, public KOAlarm
     int priority() const;
     int getPriority() const { return priority(); }
 
+    KOAlarm *alarm() const;
+    KORecurrence *recurrence() const;
+
   signals:
     void eventUpdated(Incidence *);
 
   protected:
+    QDate strToDate(const QString &dateStr);
+
+    bool mReadOnly;
+
+  private:
     // base components
     QDateTime mDtStart;
     QString mOrganizer;
@@ -239,7 +253,8 @@ class Incidence : public QObject, public KORecurrence, public KOAlarm
 
     bool mFloats;                         // floating means date without time
   
-    bool mReadOnly;
+    KOAlarm *mAlarm;
+    KORecurrence *mRecurrence;
 };
 
 #endif

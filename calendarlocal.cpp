@@ -373,7 +373,7 @@ void CalendarLocal::checkAlarms()
     tmpList = dictIt.current();
     for (anEvent = tmpList->first(); anEvent;
 	 anEvent = tmpList->next()) {
-      tmpDT = anEvent->getAlarmTime();
+      tmpDT = anEvent->alarm()->alarmTime();
       if (tmpDT.date() == QDate::currentDate()) {
 	if ((tmpDT.time().hour() == QTime::currentTime().hour()) &&
 	    (tmpDT.time().minute() == QTime::currentTime().minute()))
@@ -384,7 +384,7 @@ void CalendarLocal::checkAlarms()
   }
   for (anEvent = mRecursList.first(); anEvent;
        anEvent = mRecursList.next()) {
-    tmpDT = anEvent->getAlarmTime();
+    tmpDT = anEvent->alarm()->alarmTime();
     if(anEvent->recursOn(QDate::currentDate())) {
       if ((tmpDT.time().hour() == QTime::currentTime().hour()) &&
 	  (tmpDT.time().minute() == QTime::currentTime().minute()))
@@ -475,7 +475,7 @@ void CalendarLocal::insertEvent(const Event *anEvent)
   if (anEvent->getDtStart().date() > (*mNewestDate))
     (*mNewestDate) = anEvent->getDtStart().date();
 
-  if (anEvent->doesRecur()) {
+  if (anEvent->recurrence()->doesRecur()) {
     mRecursList.append(anEvent);
   } else {
     // set up the key
@@ -636,12 +636,12 @@ QList<Event> CalendarLocal::events(const QDate &start,const QDate &end,
       if (rStart >= start && rStart <= end) {
         // Start date of event is in range. Now check for end date.
         // if duration is negative, event recurs forever, so do not include it.
-        if (ev->getRecursDuration() == 0) {  // End date set
-          QDate rEnd = ev->getRecursEndDate();
+        if (ev->recurrence()->duration() == 0) {  // End date set
+          QDate rEnd = ev->recurrence()->endDate();
           if (rEnd >= start && rEnd <= end) {  // End date within range
             found = true;
           }
-        } else if (ev->getRecursDuration() > 0) {  // Duration set
+        } else if (ev->recurrence()->duration() > 0) {  // Duration set
           // TODO: Calculate end date from duration. Should be done in Event
           // For now exclude all events with a duration.
         }
@@ -650,10 +650,10 @@ QList<Event> CalendarLocal::events(const QDate &start,const QDate &end,
       if (rStart <= end) {  // Start date not after range
         if (rStart >= start) {  // Start date within range
           found = true;
-        } else if (ev->getRecursDuration() == -1) {  // Recurs forever
+        } else if (ev->recurrence()->duration() == -1) {  // Recurs forever
           found = true;
-        } else if (ev->getRecursDuration() == 0) {  // End date set
-          QDate rEnd = ev->getRecursEndDate();
+        } else if (ev->recurrence()->duration() == 0) {  // End date set
+          QDate rEnd = ev->recurrence()->endDate();
           if (rEnd >= start && rEnd <= end) {  // End date within range
             found = true;
           }

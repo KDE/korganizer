@@ -187,7 +187,7 @@ bool KOAgenda::eventFilter ( QObject *object, QEvent *event )
             if (mActionItem) {
               selectItem(mActionItem);
               if (!(mActionItem->itemEvent()->isReadOnly() ||
-                    mActionItem->itemEvent()->doesRecur())) {
+                    mActionItem->itemEvent()->recurrence()->doesRecur())) {
                 startItemAction(viewportPos);
               } else {
                 mActionItem = 0;
@@ -208,7 +208,7 @@ bool KOAgenda::eventFilter ( QObject *object, QEvent *event )
         if (object != viewport()) {
           KOAgendaItem *moveItem = (KOAgendaItem *)object;
           if (!(moveItem->itemEvent()->isReadOnly() ||
-                moveItem->itemEvent()->doesRecur())) {
+                moveItem->itemEvent()->recurrence()->doesRecur())) {
             if (!mActionItem) {
       	      setNoActionCursor(moveItem,viewportPos);
 	    } else {
@@ -859,7 +859,7 @@ void KOAgenda::popupAlarm()
     return;
   }
 
-  mClickedItem->itemEvent()->toggleAlarm();
+  mClickedItem->itemEvent()->alarm()->toggleAlarm();
   mClickedItem->updateIcons();
 }
 

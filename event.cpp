@@ -7,7 +7,6 @@
 
 Event::Event()
 {
-  mFloats = true;
   mTransparency = 0;
 }
 

@@ -270,10 +270,10 @@ void KDateNavigator::updateButton(int i)
   QList<Event> events = mCalendar->getEventsForDate(buttons[i]->date());
   Event *event;
   for(event=events.first();event;event=events.next()) {
-    ushort recurType = event->doesRecur();
-    if ((recurType == Event::rNone) ||
-        (recurType == Event::rDaily && KOPrefs::instance()->mDailyRecur) ||
-        (recurType == Event::rWeekly && KOPrefs::instance()->mWeeklyRecur)) {
+    ushort recurType = event->recurrence()->doesRecur();
+    if ((recurType == KORecurrence::rNone) ||
+        (recurType == KORecurrence::rDaily && KOPrefs::instance()->mDailyRecur) ||
+        (recurType == KORecurrence::rWeekly && KOPrefs::instance()->mWeeklyRecur)) {
       hasEvents = true;
       break;
     }

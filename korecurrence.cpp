@@ -296,7 +296,7 @@ void KORecurrence::unsetRecurs()
   rYearNums.clear();
 }
 
-void KORecurrence::setRecursDaily(int _rFreq, int _rDuration)
+void KORecurrence::setDaily(int _rFreq, int _rDuration)
 {
   if (mRecurReadOnly) return;
   recurs = rDaily;
@@ -309,7 +309,7 @@ void KORecurrence::setRecursDaily(int _rFreq, int _rDuration)
   mParent->emitEventUpdated(mParent);
 }
 
-void KORecurrence::setRecursDaily(int _rFreq, const QDate &_rEndDate)
+void KORecurrence::setDaily(int _rFreq, const QDate &_rEndDate)
 {
   if (mRecurReadOnly) return;
   recurs = rDaily;
@@ -323,42 +323,42 @@ void KORecurrence::setRecursDaily(int _rFreq, const QDate &_rEndDate)
   mParent->emitEventUpdated(mParent);
 }
 
-int KORecurrence::getRecursFrequency() const
+int KORecurrence::frequency() const
 {
   return rFreq;
 }
 
-int KORecurrence::getRecursDuration() const
+int KORecurrence::duration() const
 {
   return rDuration;
 }
 
-const QDate &KORecurrence::getRecursEndDate() const
+const QDate &KORecurrence::endDate() const
 {
   return rEndDate;
 }
 
-QString KORecurrence::getRecursEndDateStr(bool shortfmt) const
+QString KORecurrence::endDateStr(bool shortfmt) const
 {
   return KGlobal::locale()->formatDate(rEndDate,shortfmt);
 }
 
-const QBitArray &KORecurrence::getRecursDays() const
+const QBitArray &KORecurrence::days() const
 {
   return rDays;
 }
 
-const QList<KORecurrence::rMonthPos> &KORecurrence::getRecursMonthPositions() const
+const QList<KORecurrence::rMonthPos> &KORecurrence::monthPositions() const
 {
   return rMonthPositions;
 }
 
-const QList<int> &KORecurrence::getRecursMonthDays() const
+const QList<int> &KORecurrence::monthDays() const
 {
   return rMonthDays;
 }
 
-void KORecurrence::setRecursWeekly(int _rFreq, const QBitArray &_rDays, 
+void KORecurrence::setWeekly(int _rFreq, const QBitArray &_rDays, 
 			       int _rDuration)
 {
   if (mRecurReadOnly) return;
@@ -372,7 +372,7 @@ void KORecurrence::setRecursWeekly(int _rFreq, const QBitArray &_rDays,
   mParent->emitEventUpdated(mParent);
 }
 
-void KORecurrence::setRecursWeekly(int _rFreq, const QBitArray &_rDays, 
+void KORecurrence::setWeekly(int _rFreq, const QBitArray &_rDays, 
 			       const QDate &_rEndDate)
 {
   if (mRecurReadOnly) return;
@@ -388,7 +388,7 @@ void KORecurrence::setRecursWeekly(int _rFreq, const QBitArray &_rDays,
   mParent->emitEventUpdated(mParent);
 }
 
-void KORecurrence::setRecursMonthly(short type, int _rFreq, int _rDuration)
+void KORecurrence::setMonthly(short type, int _rFreq, int _rDuration)
 {
   if (mRecurReadOnly) return;
   recurs = type;
@@ -399,7 +399,7 @@ void KORecurrence::setRecursMonthly(short type, int _rFreq, int _rDuration)
   mParent->emitEventUpdated(mParent);
 }
 
-void KORecurrence::setRecursMonthly(short type, int _rFreq, 
+void KORecurrence::setMonthly(short type, int _rFreq, 
 				const QDate &_rEndDate)
 {
   if (mRecurReadOnly) return;
@@ -412,7 +412,7 @@ void KORecurrence::setRecursMonthly(short type, int _rFreq,
   mParent->emitEventUpdated(mParent);
 }
 
-void KORecurrence::addRecursMonthlyPos(short _rPos, const QBitArray &_rDays)
+void KORecurrence::addMonthlyPos(short _rPos, const QBitArray &_rDays)
 {
   if (mRecurReadOnly) return;
   rMonthPos *tmpPos = new rMonthPos;
@@ -427,7 +427,7 @@ void KORecurrence::addRecursMonthlyPos(short _rPos, const QBitArray &_rDays)
   mParent->emitEventUpdated(mParent);
 }
 
-void KORecurrence::addRecursMonthlyDay(short _rDay)
+void KORecurrence::addMonthlyDay(short _rDay)
 {
   if (mRecurReadOnly) return;
   int *tmpDay = new int;
@@ -436,7 +436,7 @@ void KORecurrence::addRecursMonthlyDay(short _rDay)
   mParent->emitEventUpdated(mParent);
 }
 
-void KORecurrence::setRecursYearly(int type, int _rFreq, int _rDuration)
+void KORecurrence::setYearly(int type, int _rFreq, int _rDuration)
 {
   if (mRecurReadOnly) return;
   recurs = type;
@@ -448,7 +448,7 @@ void KORecurrence::setRecursYearly(int type, int _rFreq, int _rDuration)
   mParent->emitEventUpdated(mParent);
 }
 
-void KORecurrence::setRecursYearly(int type, int _rFreq, const QDate &_rEndDate)
+void KORecurrence::setYearly(int type, int _rFreq, const QDate &_rEndDate)
 {
   if (mRecurReadOnly) return;
   recurs = type;
@@ -461,12 +461,12 @@ void KORecurrence::setRecursYearly(int type, int _rFreq, const QDate &_rEndDate)
   mParent->emitEventUpdated(mParent);
 }
 
-const QList<int> &KORecurrence::getRecursYearNums() const
+const QList<int> &KORecurrence::yearNums() const
 {
   return rYearNums;
 }
 
-void KORecurrence::addRecursYearlyNum(short _rNum)
+void KORecurrence::addYearlyNum(short _rNum)
 {
 
   if (mRecurReadOnly) return;
@@ -476,57 +476,7 @@ void KORecurrence::addRecursYearlyNum(short _rNum)
   mParent->emitEventUpdated(mParent);
 }
 
-
-#if 0
-void KORecurrence::print(int style) const
-{
-  switch(style) {
-  case ASCII:
-    if (doesFloat())
-      kdDebug() << "\t\t: " << getSummary().data() << endl;
-    else
-      kdDebug() << "\t" << mRecurStart.time().hour() << ":" << mRecurStart.time().minute() << "-" << dtEnd.time().hour() << ":" << dtEnd.time().minute() << ": " << summary.data() << endl;
-    break;
-  case POSTSCRIPT:
-    break;
-  }
-}
-#endif
-
 /***************************** PROTECTED FUNCTIONS ***************************/
-
-QDateTime KORecurrence::strToDateTime(const QString &dateStr)
-{
-  // string should be in the format yyyymmddThhmmss
-  
-  int year, month, day, hour, minute, second;
-  QDate tmpDate;
-  QTime tmpTime;
-  
-  year = dateStr.left(4).toInt();
-  month = dateStr.mid(4, 2).toInt();
-  day = dateStr.mid(6, 2).toInt();
-  
-  hour = dateStr.mid(9, 2).toInt();
-  minute = dateStr.mid(11, 2).toInt();
-  second = dateStr.right(2).toInt();
-  
-  tmpDate.setYMD(year, month, day);
-  tmpTime.setHMS(hour, minute, second);
-
-  return QDateTime(tmpDate, tmpTime);
-}
-
-QDate KORecurrence::strToDate(const QString &dateStr)
-{
-
-  int year, month, day;
-
-  year = dateStr.left(4).toInt();
-  month = dateStr.mid(4,2).toInt();
-  day = dateStr.mid(6,2).toInt();
-  return(QDate(year, month, day));
-}
 
 // this should return the week of the month for the date
 int KORecurrence::weekOfMonth(const QDate &qd) const
