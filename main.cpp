@@ -87,6 +87,7 @@ int main (int argc, char **argv)
   KOrganizerApp app;
 
   KGlobal::locale()->insertCatalogue("libkcal");
+  KGlobal::locale()->insertCatalogue("libkdepim");
 
 //  kdDebug() << "app.exec" << endl;
   return app.exec();
