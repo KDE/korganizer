@@ -52,7 +52,7 @@ class ExchangeFactory : public KOrg::PartFactory {
 extern "C" { 
   void *init_libkorg_exchange()
   {
-    kdDebug() << "Registering Exchange...\n";
+    kdDebug() << "Registering Exchange Plugin...\n";
     return (new ExchangeFactory);
   }
 }
@@ -60,7 +60,7 @@ extern "C" {
 Exchange::Exchange(KOrg::MainWindow *parent, const char *name) :
   KOrg::Part(parent,name)
 {
-  kdDebug() << "Creating Exchange...\n";
+  kdDebug() << "Creating Exchange Plugin...\n";
 
   mAccount = new KPIM::ExchangeAccount( "Calendar/Exchange Plugin" );
   mClient = new KPIM::ExchangeClient( mAccount );
@@ -68,20 +68,19 @@ Exchange::Exchange(KOrg::MainWindow *parent, const char *name) :
   setXMLFile("plugins/exchangeui.rc");
   new KAction(i18n("Download..."), 0, this, SLOT(download()),
               actionCollection(), "exchange_download");
-  new KAction(i18n("Test"), 0, this, SLOT(test()),
-              actionCollection(), "exchange_test");
+//  new KAction(i18n("Test"), 0, this, SLOT(test()),
+//              actionCollection(), "exchange_test");
   KAction *action = new KAction(i18n("Upload Event..."), 0, this, SLOT(upload()),
                                 actionCollection(), "exchange_upload");
-  QObject::connect(mainWindow()->view(),SIGNAL(eventsSelected(bool)),
-          action,SLOT(setEnabled(bool)));
+//  QObject::connect(mainWindow()->view(),SIGNAL(eventsSelected(bool)),
+//          action,SLOT(setEnabled(bool)));
   new KAction(i18n("Configure..."), 0, this, SLOT(configure()),
               actionCollection(), "exchange_configure");
 }
 
 Exchange::~Exchange()
 {
-  kdDebug() << "Entering Exchange destructor" << endl;
-  kdDebug() << "Finished Exchange destructor" << endl;
+  kdDebug() << "Exchange Plugin destructor" << endl;
 }
 
 QString Exchange::info()

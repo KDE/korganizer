@@ -5,7 +5,6 @@
     <Menu name="exchange"><text>Exchange</text>
       <Action name="exchange_download" />
       <Action name="exchange_upload" />
-      <Action name="exchange_test" />
       <Action name="exchange_configure" />
     </Menu>
   </MenuBar>
