@@ -33,7 +33,7 @@ class IdentityManager : public KPIM::IdentityManager
 {
 public:
   IdentityManager( QObject * parent=0, const char * name=0 )
-    : KPIM::IdentityManager( false, parent, name ) {}
+    : KPIM::IdentityManager( true /*readonly*/, parent, name ) {}
 
 protected:
   virtual void createDefaultIdentity( QString& fullName, QString& emailAddress );
