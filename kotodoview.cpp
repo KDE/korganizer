@@ -31,6 +31,7 @@
 #include <kiconloader.h>
 #include <kmessagebox.h>
 
+#include <libkcal/icaldrag.h>
 #include <libkcal/vcaldrag.h>
 #include <libkcal/dndfactory.h>
 
@@ -60,7 +61,8 @@ void KOTodoListView::contentsDragEnterEvent(QDragEnterEvent *e)
 {
 #ifndef KORG_NODND
 //  kdDebug() << "KOTodoListView::contentsDragEnterEvent" << endl;
-  if (!VCalDrag::canDecode(e)&&!QTextDrag::canDecode(e)) {
+  if ( !ICalDrag::canDecode( e ) && !VCalDrag::canDecode( e ) &&
+       !QTextDrag::canDecode( e ) ) {
     e->ignore();
     return;
   }
@@ -75,7 +77,8 @@ void KOTodoListView::contentsDragMoveEvent(QDragMoveEvent *e)
 #ifndef KORG_NODND
 //  kdDebug() << "KOTodoListView::contentsDragMoveEvent" << endl;
 
-  if (!VCalDrag::canDecode(e)&&!QTextDrag::canDecode(e)) {
+  if ( !ICalDrag::canDecode( e ) && !VCalDrag::canDecode( e ) &&
+       !QTextDrag::canDecode( e ) ) {
     e->ignore();
     return;
   }
@@ -99,7 +102,8 @@ void KOTodoListView::contentsDropEvent(QDropEvent *e)
 #ifndef KORG_NODND
 //  kdDebug() << "KOTodoListView::contentsDropEvent" << endl;
 
-  if (!VCalDrag::canDecode(e)&&!QTextDrag::canDecode(e)) {
+  if ( !ICalDrag::canDecode( e ) && !VCalDrag::canDecode( e ) &&
+       !QTextDrag::canDecode( e ) ) {
     e->ignore();
     return;
   }
@@ -197,7 +201,7 @@ void KOTodoListView::contentsMouseMoveEvent(QMouseEvent* e)
     if (item) {
 //      kdDebug() << "Start Drag for item " << item->text(0) << endl;
       DndFactory factory( mCalendar );
-      VCalDrag *vd = factory.createDragTodo(
+      ICalDrag *vd = factory.createDragTodo(
                           ((KOTodoViewItem *)item)->todo(),viewport());
       if (vd->drag()) {
         kdDebug() << "KOTodoListView::contentsMouseMoveEvent(): Delete drag source" << endl;

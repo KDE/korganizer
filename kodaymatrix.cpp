@@ -31,6 +31,7 @@
 #include <klocale.h>
 
 #include <libkcal/vcaldrag.h>
+#include <libkcal/icaldrag.h>
 #include <libkcal/dndfactory.h>
 
 #include "koprefs.h"
@@ -207,13 +208,6 @@ void KODayMatrix::updateView(QDate actdate)
   // if a new startdate is to be set then apply Cornelius's calculation
   // of the first day to be shown
   if (actdate != startdate) {
-    // calculation is from Cornelius
-    int fstDayOfWk = KOCore::self()->calendarSystem()->dayOfTheWeek( actdate );
-    
-    int nextLine = ((fstDayOfWk == 1) && (KGlobal::locale()->weekStartsMonday() == 1)) ? 7 : 0;
-
-    // int offset = (KGlobal::locale()->weekStartsMonday() ? 1 : 0) - fstDayOfWk - nextLine;
-
     // reset index of selection according to shift of starting date from startdate to actdate
     if (mSelStart != NOSELECTION) {
       int tmp = actdate.daysTo(startdate);
@@ -364,7 +358,7 @@ void KODayMatrix::mouseMoveEvent (QMouseEvent* e)
 void KODayMatrix::dragEnterEvent(QDragEnterEvent *e)
 {
 #ifndef KORG_NODND
-  if (!VCalDrag::canDecode(e)) {
+  if ( !ICalDrag::canDecode( e ) && !VCalDrag::canDecode( e ) ) {
     e->ignore();
     return;
   }
@@ -379,7 +373,7 @@ void KODayMatrix::dragEnterEvent(QDragEnterEvent *e)
 void KODayMatrix::dragMoveEvent(QDragMoveEvent *e)
 {
 #ifndef KORG_NODND
-  if (!VCalDrag::canDecode(e)) {
+  if ( !ICalDrag::canDecode( e ) && !VCalDrag::canDecode( e ) ) {
     e->ignore();
     return;
   }
@@ -401,7 +395,7 @@ void KODayMatrix::dropEvent(QDropEvent *e)
 #ifndef KORG_NODND
 //  kdDebug() << "KODayMatrix::dropEvent(e) begin" << endl;
 
-  if (!VCalDrag::canDecode(e)) {
+  if ( !ICalDrag::canDecode( e ) && !VCalDrag::canDecode( e ) ) {
     e->ignore();
     return;
   }

@@ -45,7 +45,7 @@
 #include <kconfig.h>
 
 #include <libkcal/calendar.h>
-#include <libkcal/vcaldrag.h>
+#include <libkcal/icaldrag.h>
 #include <libkcal/dndfactory.h>
 
 #ifndef KORG_NOPLUGINS
@@ -588,8 +588,6 @@ void KOAgendaView::updateEventDates(KOAgendaItem *item)
 
 //  kdDebug() << "KOAgendaView::updateEventDates(): now setting dates" << endl;
 
-  QDate olddate = item->itemEvent()->dtStart().date();
-
   item->itemEvent()->setDtStart(startDt);
   item->itemEvent()->setDtEnd(endDt);
   item->itemEvent()->setRevision(item->itemEvent()->revision()+1);
@@ -822,9 +820,9 @@ void KOAgendaView::startDrag(Event *event)
 {
 #ifndef KORG_NODND
   DndFactory factory( calendar() );
-  VCalDrag *vd = factory.createDrag(event,this);
+  ICalDrag *vd = factory.createDrag(event,this);
   if (vd->drag()) {
-    kdDebug() << "KOTodoListView::contentsMouseMoveEvent(): Delete drag source" << endl;
+    kdDebug() << "KOAgendaView::startDrag(): Delete drag source" << endl;
   }
 #endif
 }
