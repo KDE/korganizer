@@ -16,14 +16,13 @@
 #include <kstddirs.h>
 #include <kdated.h>
 #include <kmessagebox.h>
+#include <kapp.h>
 
 #include "kooptionsdialog.h"
 #include "koprefs.h"
 
 #include "calprinter.h"
 #include "calprinter.moc"
-
-#include <kapp.h>
 
 CalPrinter::CalPrinter(QWidget *par, CalObject *cal)
   : QObject(0L, "CalPrinter")
@@ -64,7 +63,7 @@ void CalPrinter::preview(PrintType pt, const QDate &fd, const QDate &td)
   oldFileName = printer->outputFileName();
 
   printer->setOutputToFile(TRUE);
-  printer->setOutputFileName(previewFileName.data());
+  printer->setOutputFileName(previewFileName);
 
   cpd = new CalPrintDialog(printer, TRUE, fd, td);
   switch(pt) {
@@ -106,7 +105,7 @@ void CalPrinter::doPreview(int pt, QDate fd, QDate td)
   
   // restore previous settings that were used before the preview.
   printer->setOutputToFile(oldOutputToFile);
-  printer->setOutputFileName(oldFileName.data());
+  printer->setOutputFileName(oldFileName);
   
   previewProg = KOPrefs::instance()->mPrintPreview;
 
@@ -218,9 +217,7 @@ void CalPrinter::printDay(const QDate &fd, const QDate &td)
   subHeaderHeight = 20;
 
   do {
-    drawHeader(p, fromDay.addDays(-(fd.day()-1)),
-	       toDay.addDays(td.daysInMonth()-td.day()),
-	       curDay,
+    drawHeader(p, curDay,toDay,curDay,
 	       pageWidth, headerHeight, Day);
     drawDay(p, curDay, pageWidth, pageHeight);
     curDay = curDay.addDays(1);
@@ -264,8 +261,7 @@ void CalPrinter::printWeek(const QDate &fd, const QDate &td)
 
   curWeek = fromWeek.addDays(6);
   do {
-    drawHeader(p, fd.addDays(-(fd.day()-1)),
-	       td.addDays(td.daysInMonth()-td.day()),
+     drawHeader(p, fd, td,
 	       curWeek,
 	       pageWidth, headerHeight, Week);
     drawWeek(p, curWeek, pageWidth, pageHeight);
@@ -316,13 +312,7 @@ void CalPrinter::printMonth(const QDate &fd, const QDate &td)
 
 void CalPrinter::printTodo(const QDate &fd, const QDate &td)
 {
-  static const char *monthNames[] = { i18n("January"), i18n("February"),
-				      i18n("March"), i18n("April"), 
-				      i18n("May"), i18n("June"), 
-				      i18n("July"), i18n("August"),
-				      i18n("September"), i18n("October"),
-				      i18n("November"), i18n("December"),
-				      0L, };
+  KLocale *local = KGlobal::locale();
   QPainter p;
   QList<KOEvent> todoList;
 
@@ -345,23 +335,25 @@ void CalPrinter::printTodo(const QDate &fd, const QDate &td)
   todoList.first();
   int count = 1;
   QString outStr;
-  //  KOEvent *currEvent(todoList.first());
+ 
   p.setFont(QFont("helvetica", 10));
   lineSpacing = p.fontMetrics().lineSpacing();
   // draw the headers
   p.setFont(QFont("helvetica", 10, QFont::Bold));
-  outStr.sprintf(i18n("Priority"));
-  int len = outStr.length();
+  outStr += i18n("Priority");
+  
   p.drawText(pospriority, headerHeight - 2,
-	     outStr.data(), len);
-  outStr.sprintf(i18n("Summary"));
-  len = outStr.length();
+	     outStr);
+  outStr.truncate(0);
+  outStr += i18n("Summary");
+  
   p.drawText(possummary, headerHeight - 2,
-		 outStr.data(), len);
-  outStr.sprintf(i18n("Due"));
-  len = outStr.length();
+		 outStr);
+  outStr.truncate(0);
+  outStr += i18n("Due");
+ 
   p.drawText(posdue,  headerHeight - 2,
-		 outStr.data(), len);  
+		 outStr);  
   p.setFont(QFont("helvetica", 10));
 
   fontHeight =  p.fontMetrics().height();
@@ -383,21 +375,22 @@ void CalPrinter::printTodo(const QDate &fd, const QDate &td)
 	continue;
       }
       if (priority > 0) {
-	  outStr.sprintf("%d",priority);
-	  int len = outStr.length();
+	  outStr.setNum(priority);
+	 
 	  p.drawText(pospriority, (lineSpacing*count)+headerHeight,
-		     outStr.data(), len);
+		     outStr);
       }
       // summary
-      outStr.sprintf("%s",currEvent->getSummary().data());
-      int len = outStr.length();
+      outStr=currEvent->getSummary();
+     
       p.drawText(possummary, (lineSpacing*count)+headerHeight,
-		 outStr.data(), len);
+		 outStr);
       // due
-      outStr.sprintf("%s %.2d",monthNames[due.month()-1], due.day());
-      len = outStr.length();
+      if (currEvent->hasDueDate()){
+      outStr = local->formatDate(due);
       p.drawText(posdue, (lineSpacing*count)+headerHeight,
-		 outStr.data(), len);
+		 outStr);
+      }
       // if terminated, cross it
       int status = currEvent->getStatus();
       if (status == KOEvent::COMPLETED) {
@@ -418,19 +411,13 @@ void CalPrinter::drawHeader(QPainter &p, const QDate &fd, const QDate &td,
 			    const QDate &cd,
 			    int width, int height, PrintType pt)
 {
-  static const char *monthNames[] = { i18n("January"), i18n("February"),
-				      i18n("March"), i18n("April"), 
-				      i18n("May"), i18n("June"), 
-				      i18n("July"), i18n("August"),
-				      i18n("September"), i18n("October"),
-				      i18n("November"), i18n("December"),
-				      0L, };
+  KLocale *local = KGlobal::locale();
 
   p.drawRect(0, 0, width, height);
   p.fillRect(1, 1, 
 	     width-2, 
 	     height-2, 
-	     QBrush(Dense1Pattern));
+	     QBrush(Dense3Pattern));
 
   p.setFont(QFont("helvetica", 24, QFont::Bold));
   int lineSpacing = p.fontMetrics().lineSpacing();
@@ -442,16 +429,26 @@ void CalPrinter::drawHeader(QPainter &p, const QDate &fd, const QDate &td,
 
   switch(pt) {
   case Todo:
-    title.sprintf(i18n("To-Do items: %s %.2d"),monthNames[fd.month()-1], fd.day());
-    p.drawText(5, lineSpacing, title.data());
+    title +=  i18n("To-Do items:");
+   
+    p.drawText(5, lineSpacing,title);
     break;
   case Month:
   case Week:
+    
+    title += local->formatDate(fd);
+   
+    p.drawText(5, lineSpacing, title );
+    title.truncate(0);
+   
+    title+= local->formatDate(td);
+    p.drawText(5, 2*lineSpacing, title);
+    break;
   case Day:
-    title.sprintf("%s %.2d -",monthNames[fd.month()-1], fd.day());
-    p.drawText(5, lineSpacing, title.data());
-    title.sprintf("%s %.2d",monthNames[td.month()-1], td.day());
-    p.drawText(5, 2*lineSpacing, title.data());
+   
+    title =+ local->formatDate(fd,false);
+    p.drawText(5, lineSpacing, title );
+    
   }
   
   // print previous month for month view, print current for todo, day and week
@@ -462,12 +459,13 @@ void CalPrinter::drawHeader(QPainter &p, const QDate &fd, const QDate &td,
     drawSmallMonth(p, QDate(cd.addDays(-cd.day()+1)),
 		   width/2+5, 5, /*width/4-10*/100, height-10);
     break;
+    
+    drawSmallMonth(p, QDate(cd.addDays(cd.daysInMonth()-cd.day()+1)),
+  		 width/2+width/4+5, 5, /*width/4-10*/100, height-10);
   case Month:
     drawSmallMonth(p, QDate(cd.addDays(-cd.day())),
 		   width/2+5, 5, /*width/4-10*/100, height-10);
   }
-  drawSmallMonth(p, QDate(cd.addDays(cd.daysInMonth()-cd.day()+1)),
-  		 width/2+width/4+5, 5, /*width/4-10*/100, height-10);
 }
 
 /*
@@ -477,49 +475,53 @@ void CalPrinter::drawHeader(QPainter &p, const QDate &fd, const QDate &td,
 void CalPrinter::drawDaysOfWeekBox(QPainter &p, const QDate &qd,
 				   int x, int y, int width, int height)
 {
-	p.setFont(QFont("helvetica", 10, QFont::Bold));
-	p.drawRect(x, y, width, height);
-	p.fillRect(x+1, y+1,
-		   width-2, height-2, 
-		   QBrush(Dense3Pattern));
-	p.drawText(x+5, y, width-10, height, AlignCenter | AlignVCenter,
-		   qd.dayName(qd.dayOfWeek()));
+  KLocale *local = KGlobal::locale();
+  
+  p.setFont(QFont("helvetica", 10, QFont::Bold));
+  p.drawRect(x, y, width, height);
+  p.fillRect(x+1, y+1,
+             width-2, height-2, 
+             QBrush(Dense3Pattern));
+  p.drawText(x+5, y, width-10, height, AlignCenter | AlignVCenter,
+             local->WeekDayName(qd.dayOfWeek()));
 }
 
 void CalPrinter::drawDayBox(QPainter &p, const QDate &qd,
 			    int x, int y, int width, int height, 
 			    bool fullDate)
 {
+  KLocale *local = KGlobal::locale();
   QString dayNumStr;
   QList<KOEvent> eventList;
   QString ampm;
 
-  QString hstring(calendar->getHolidayForDate(qd));;
+  QString hstring(calendar->getHolidayForDate(qd));
 
   if (fullDate) {
     int index;
-    dayNumStr.sprintf("%s", qd.toString().data());
+    dayNumStr= qd.toString();
     index = dayNumStr.find(' ');
     dayNumStr.remove(0, index);
     index = dayNumStr.findRev(' ');
     dayNumStr.truncate(index);
-    dayNumStr = qd.dayName(qd.dayOfWeek()) + dayNumStr;
+    dayNumStr = local->WeekDayName(qd.dayOfWeek()) + dayNumStr;
   } else {
-    dayNumStr.sprintf("%d",qd.day());
+    dayNumStr = QString::number(qd.day());
   }
 
   p.drawRect(x, y, width, height);
+  // p.fillRect(x+1, y+1, width-2,height, QBrush(Dense3Pattern));
   p.drawRect(x, y, width, subHeaderHeight);
-  p.fillRect(x+1, y+1, width-2, subHeaderHeight-2, QBrush(Dense2Pattern));
+  p.fillRect(x+1, y+1, width-2, subHeaderHeight-2, QBrush(Dense4Pattern));
   if (!hstring.isEmpty()) {
     p.setFont(QFont("helvetica", 8, QFont::Bold, TRUE));
 
     p.drawText(x+5, y, width-25, subHeaderHeight, AlignLeft | AlignVCenter,
-	       hstring.data());
+	       hstring);
   }
   p.setFont(QFont("helvetica", 10, QFont::Bold));
   p.drawText(x+5, y, width-10, subHeaderHeight, AlignRight | AlignVCenter, 
-	     dayNumStr.data());
+	     dayNumStr);
 
   eventList = calendar->getEventsForDate(qd, TRUE);
   eventList.first();
@@ -531,40 +533,22 @@ void CalPrinter::drawDayBox(QPainter &p, const QDate &qd,
 
   while (count <= 9 && (currEvent != NULL)) {
     if (currEvent->doesFloat() || currEvent->isMultiDay())
-      outStr.sprintf("%s",currEvent->getSummary().data());
+      outStr += currEvent->getSummary();
+    
     else {
       QTime t1 = currEvent->getDtStart().time();
-      int h1;
-      if (timeAmPm) {
-	h1 = t1.hour();
-	if (h1 == 0) {
-	  h1 = 12;
-	  ampm = "am";
-	} else if (h1 > 11) {
-	  ampm = "pm";
-	  if (h1 != 12) {
-	    h1 -= 12;
-	  }
-	} else {
-	  ampm = "am";
-	}
-	
-	outStr.sprintf("%.2d:%.2d %s: %s",
-		       h1, t1.minute(), ampm.data(),
-		       currEvent->getSummary().data());
-      } else {
-	outStr.sprintf("%.2d:%.2d: %s",
-		       currEvent->getDtStart().time().hour(),
-		       currEvent->getDtStart().time().minute(),
-		       currEvent->getSummary().data());
-      }
+      
+      if (timeAmPm) local->use12Clock();
+      outStr = local->formatTime(t1);
+      outStr += currEvent->getSummary();
+  
     } // doesFloat
      
     p.drawText(x+5, y+(lineSpacing*(count+1)), width-10, lineSpacing, 
-	       AlignLeft|AlignVCenter, outStr.data());
+	       AlignLeft|AlignVCenter, outStr);
     currEvent = eventList.next();
     ++count;
-    }
+  }
 }
 
 void CalPrinter::drawDaysOfWeek(QPainter &p, const QDate &qd, 
@@ -604,7 +588,7 @@ void CalPrinter::drawDay(QPainter &p, const QDate &qd, int width, int height)
     numStr.setNum(i+startHour);
     p.setFont(QFont("helvetica", 20, QFont::Bold));
     p.drawText(0, offset+i*cellHeight, 33, cellHeight/2,
-	       AlignTop|AlignRight, numStr.data());
+	       AlignTop|AlignRight, numStr);
     p.setFont(QFont("helvetica", 14, QFont::Bold));
     p.drawText(37, offset+i*cellHeight, 45, cellHeight/2,
 	       AlignTop | AlignLeft, "00");
@@ -618,7 +602,7 @@ void CalPrinter::drawDay(QPainter &p, const QDate &qd, int width, int height)
   p.setFont(QFont("helvetica", 14));
   QList<KOEvent> eventList = calendar->getEventsForDate(qd, TRUE);
   KOEvent *currEvent;
-  p.setBrush(QBrush(Dense2Pattern));
+  p.setBrush(QBrush(Dense4Pattern));
   for (currEvent = eventList.first(); currEvent;
        currEvent = eventList.next()) {
     int startTime = currEvent->getDtStart().time().hour();
@@ -638,7 +622,7 @@ void CalPrinter::drawDay(QPainter &p, const QDate &qd, int width, int height)
 		 offset+startMinuteOff+startTime*cellHeight+5,
 		 cellWidth-10, 
 		 endMinuteOff + (endTime - startTime)*cellHeight-10,
-		 AlignLeft | AlignTop, currEvent->getSummary().data());
+		 AlignLeft | AlignTop, currEvent->getSummary());
     }
   }
   p.setBrush(QBrush(NoBrush));
@@ -709,13 +693,7 @@ void CalPrinter::drawMonth(QPainter &p, const QDate &qd,
 void CalPrinter::drawSmallMonth(QPainter &p, const QDate &qd, 
 				int x, int y, int width, int height)
 {
-  static const char *monthNames[] = { i18n("January"), i18n("February"),
-				      i18n("March"), i18n("April"), 
-				      i18n("May"), i18n("June"), 
-				      i18n("July"), i18n("August"),
-				      i18n("September"), i18n("October"),
-				      i18n("November"), i18n("December"),
-				      0L, };
+  
 
   bool firstCol = TRUE;
   QDate monthDate(QDate(qd.year(), qd.month(), 1));
@@ -725,11 +703,13 @@ void CalPrinter::drawSmallMonth(QPainter &p, const QDate &qd,
   // draw the title
   p.setFont(QFont("helvetica", 8, QFont::Bold));
   //  int lineSpacing = p.fontMetrics().lineSpacing();
-  p.drawText(x, y, width, height/4, AlignCenter, monthNames[qd.month()-1]);
+  p.drawText(x, y, width, height/4, AlignCenter, qd.monthName(qd.month()));
 
   int cellWidth = width/7;
   int cellHeight = height/8;
   QString tmpStr;
+  KLocale *local = KGlobal::locale();
+
   if (weekStartsMonday)
     // correct to monday
     monthDate2 = monthDate.addDays(-(monthDate.dayOfWeek()-1)); 
@@ -739,9 +719,10 @@ void CalPrinter::drawSmallMonth(QPainter &p, const QDate &qd,
 
   // draw days of week
   for (int col = 0; col < 7; col++) {
-    tmpStr.sprintf("%c",(const char*)monthDate2.dayName(monthDate2.dayOfWeek()));
+    // tmpStr.sprintf("%c",(const char*)monthDate2.dayName(monthDate2.dayOfWeek()));
+    tmpStr=local->WeekDayName(monthDate2.dayOfWeek());
     p.drawText(x+col*cellWidth, y+height/4, cellWidth, cellHeight,
-	       AlignCenter, tmpStr.data());
+	       AlignCenter, tmpStr);
     monthDate2 = monthDate2.addDays(1);
   }
 
