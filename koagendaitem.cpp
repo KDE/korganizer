@@ -137,15 +137,15 @@ bool KOAgendaItem::dissociateFromMultiItem()
 
   KOAgendaItem *prevItem = prevMultiItem();
   KOAgendaItem *nextItem = nextMultiItem();
-  
+
   if ( prevItem ) {
-    prevItem->setMultiItem( firstItem, 
-                            prevItem->prevMultiItem(), 
+    prevItem->setMultiItem( firstItem,
+                            prevItem->prevMultiItem(),
                             nextItem, lastItem );
   }
   if ( nextItem ) {
     nextItem->setMultiItem( firstItem, prevItem,
-                            nextItem->prevMultiItem(), 
+                            nextItem->prevMultiItem(),
                             lastItem );
   }
   delete mMultiItemInfo;
@@ -672,8 +672,7 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
 
   QColor bgColor;
   if ( (mIncidence->type() == "Todo") &&
-       ( !((static_cast<Todo*>(mIncidence))->isCompleted()) &&
-         ((static_cast<Todo*>(mIncidence))->dtDue() < QDate::currentDate()) ) ) {
+     ( (static_cast<Todo*>(mIncidence)->isOverdue()) ) ) {
     bgColor = KOPrefs::instance()->mTodoOverdueColor;
     isTodoOverdue = true;
   } else {
@@ -685,7 +684,7 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
       bgColor = *(KOPrefs::instance()->categoryColor(cat));
   }
   QColor frameColor;
-  if ( KOPrefs::instance()->agendaViewUsesResourceColor() 
+  if ( KOPrefs::instance()->agendaViewUsesResourceColor()
     && mResourceColor.isValid() ) {
      frameColor = mSelected ? QColor( 85 + mResourceColor.red() * 2/3,
                                           85 + mResourceColor.green() * 2/3,
