@@ -124,26 +124,33 @@ bool ListItemVisitor::visit(Todo *t)
     mItem->setPixmap(2,recurPxmp);
   }
   
-  mItem->setText(3,"---");
-  mItem->setText(4,"---");
-  mItem->setText(5,"---");
-  mItem->setText(6,"---");
-  
-  if (t->hasDueDate()) {
-    mItem->setText(7,t->dtDueDateStr());
+  if (t->hasStartDate()) {
+    mItem->setText(3,t->dtStartDateStr());
+    mItem->setSortKey(3,t->dtStart().toString(Qt::ISODate));
     if (t->doesFloat()) {
-      mItem->setText(8,"---");
+      mItem->setText(4,"---");
     } else {
-      mItem->setText(8,t->dtDueTimeStr());
+      mItem->setText(4,t->dtStartTimeStr());
     }
   } else {
-    mItem->setText(7,"---");
-    mItem->setText(8,"---");
+    mItem->setText(3,"---");
+    mItem->setText(4,"---");
   }
-  mItem->setText(9,t->categoriesStr());
+  
+  if (t->hasDueDate()) {
+    mItem->setText(5,t->dtDueDateStr());
+    if (t->doesFloat()) {
+      mItem->setText(6,"---");
+    } else {
+      mItem->setText(6,t->dtDueTimeStr());
+    }
+  } else {
+    mItem->setText(5,"---");
+    mItem->setText(6,"---");
+  }
+  mItem->setText(7,t->categoriesStr());
 
-  QString key = t->dtDue().toString(Qt::ISODate);
-  mItem->setSortKey(7,key);
+  mItem->setSortKey(5,t->dtDue().toString(Qt::ISODate));
 
   return true;
 }
@@ -176,12 +183,8 @@ KOListView::KOListView( Calendar *calendar, QWidget *parent,
   mListView->setColumnAlignment(5,AlignHCenter);
   mListView->addColumn(i18n("End Time"));
   mListView->setColumnAlignment(6,AlignHCenter);
-  mListView->addColumn(i18n("Due Date"));
-  mListView->setColumnAlignment(7,AlignHCenter);
-  mListView->addColumn(i18n("Due Time"));
-  mListView->setColumnAlignment(8,AlignHCenter);
   mListView->addColumn(i18n("Categories"));
-  mListView->setColumnAlignment(9,AlignHCenter);
+  mListView->setColumnAlignment(7,AlignHCenter);
 
   QBoxLayout *layoutTop = new QVBoxLayout(this);
   layoutTop->addWidget(mListView);
