@@ -244,10 +244,12 @@ void KOTodoViewItem::paintCell(QPainter *p, const QColorGroup &cg, int column, i
     if (mTodo->dtDue().date()==QDate::currentDate() &&
         !mTodo->isCompleted()) {
       _cg.setColor(QColorGroup::Base, KOPrefs::instance()->mTodoDueTodayColor);
+      _cg.setColor(QColorGroup::Text, getTextColor(KOPrefs::instance()->mTodoDueTodayColor));
     }
     if (mTodo->dtDue().date() < QDate::currentDate() &&
         !mTodo->isCompleted()) {
       _cg.setColor(QColorGroup::Base, KOPrefs::instance()->mTodoOverdueColor);
+      _cg.setColor(QColorGroup::Text, getTextColor(KOPrefs::instance()->mTodoOverdueColor));
     }
   }
 #endif
