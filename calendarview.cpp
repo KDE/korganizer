@@ -571,17 +571,11 @@ void CalendarView::goPrevious()
 void CalendarView::updateConfig()
 {
   kdDebug() << "CalendarView::updateConfig()" << endl;
+
   emit configChanged();
 
   mCalendar->setTimeZoneId(KOPrefs::instance()->mTimeZoneId);
 
-  if ( mResourceManager ) {
-    CalendarResources *calendar = static_cast<CalendarResources*>(mCalendar);
-    if ( KOPrefs::instance()->mDestination==KOPrefs::askDestination )
-      calendar->setAskDestinationPolicy();
-    else
-      calendar->setStandardDestinationPolicy();
-  }
   // To make the "fill window" configurations work
   mViewManager->raiseCurrentView();
 }

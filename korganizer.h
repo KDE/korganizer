@@ -60,6 +60,8 @@ class KONewStuff;
 class ActionManager;
 class CalendarView;
 
+namespace KCal { class CalendarResources; }
+
 using namespace KCal;
 
 /**
@@ -128,6 +130,8 @@ class KOrganizer : public KParts::MainWindow, virtual public KOrganizerIface, pu
       */
     void setActive(bool active=true);
 
+    void slotConfigChanged();
+
   protected slots:
 
     /** using the KConfig associated with the kapp variable, read in the
@@ -173,6 +177,7 @@ class KOrganizer : public KParts::MainWindow, virtual public KOrganizerIface, pu
   private:
     bool mDocument;
     Calendar *mCalendar;
+    CalendarResources *mCalendarResources;
     CalendarView *mCalendarView;  // Main view widget
     KOrg::Part::List mParts; // List of parts loaded
 

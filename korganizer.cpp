@@ -94,18 +94,16 @@ KOrganizer::KOrganizer( bool document, const char *name )
   // with this calendar view window.
   if ( mDocument ) {
     mCalendar = new CalendarLocal(KOPrefs::instance()->mTimeZoneId);
+    mCalendarResources = 0;
     mCalendarView = new CalendarView( mCalendar, this, "KOrganizer::CalendarView" );
   } else {
-    CalendarResources *calendar = new CalendarResources( KOPrefs::instance()->mTimeZoneId );
-    mCalendar = calendar;
+    mCalendarResources = new CalendarResources( KOPrefs::instance()->mTimeZoneId );
+    mCalendar = mCalendarResources;
     setCaption( i18n("Calendar") );
 
-    CalendarResourceManager *manager = calendar->resourceManager();
+    CalendarResourceManager *manager = mCalendarResources->resourceManager();
 
-    if ( KOPrefs::instance()->mDestination==KOPrefs::askDestination )
-      calendar->setAskDestinationPolicy();
-    else
-      calendar->setStandardDestinationPolicy();
+    slotConfigChanged();
 
     if ( manager->isEmpty() ) {
       KConfig *config = KOGlobals::config();
@@ -135,12 +133,16 @@ KOrganizer::KOrganizer( bool document, const char *name )
       (*it)->dump();
     }
 
-    mCalendarView = new CalendarView( calendar, this, "KOrganizer::CalendarView" );
+    mCalendarView = new CalendarView( mCalendarResources, this,
+                                      "KOrganizer::CalendarView" );
 
-    connect( calendar, SIGNAL( calendarChanged() ),
+    connect( mCalendarResources, SIGNAL( calendarChanged() ),
              mCalendarView, SLOT( updateView() ) );
-    connect( calendar, SIGNAL( calendarChanged() ),
+    connect( mCalendarResources, SIGNAL( calendarChanged() ),
              mCalendarView, SLOT( slotCalendarChanged() ) );
+
+    connect( mCalendarView, SIGNAL( configChanged() ),
+             SLOT( slotConfigChanged() ) );
   }
 
   mCalendar->setOwner( KOPrefs::instance()->fullName() );
@@ -483,4 +485,14 @@ bool KOrganizer::mergeURL(QString url)
 bool KOrganizer::saveAsURL(QString url)
 {
   return mActionManager->saveAsURL( url );
+}
+
+void KOrganizer::slotConfigChanged()
+{
+  if ( mCalendarResources ) {
+    if ( KOPrefs::instance()->mDestination==KOPrefs::askDestination )
+      mCalendarResources->setAskDestinationPolicy();
+    else
+      mCalendarResources->setStandardDestinationPolicy();
+  }
 }
