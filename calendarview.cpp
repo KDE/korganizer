@@ -1134,7 +1134,7 @@ void CalendarView::todo_unsub()
 
 void CalendarView::deleteTodo(Todo *todo)
 {
-  if (!todo) {
+  if ( !todo ) {
     KNotifyClient::beep();
     return;
   }
@@ -1948,10 +1948,15 @@ bool CalendarView::editIncidence(Incidence *incidence)
 
 void CalendarView::deleteIncidence(Incidence *incidence)
 {
-  if ( incidence ) {
+  if ( incidence && !incidence->isReadOnly() ) {
     DeleteIncidenceVisitor v;
     v.act( incidence, this );
   }
+/* @TODO: Enable this warning message after 3.3
+  if ( incidence && incidence->isReadOnly() ) {
+    KMessageBox::information( this, TODO_I18N("The item \"%1\" is marked read-only and cannot be deleted. Probably it belongs to a read-only calendar resource.").arg(incidence->summary()), TODO_I18N("Removing not possible"), "deleteReadOnlyIncidence" );
+  }
+*/
 }
 
 
