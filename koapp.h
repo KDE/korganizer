@@ -26,8 +26,6 @@
 
 #include <kuniqueapp.h>
 
-class KProcess;
-
 class KOrganizerApp : public KUniqueApplication
 {
     Q_OBJECT
@@ -41,16 +39,10 @@ class KOrganizerApp : public KUniqueApplication
     */
     int newInstance();
 
-  private slots:
-    void startCompleted( KProcess * );
-
   private:
     /** Print events for numDays days from calendar loaded from file to screen.*/
     void displayImminent( const KURL &url, int numdays );
-    /** Start alarm daemon from KDE binary directory */
-    void startAlarmDaemon();
-    /** Start alarm client from KDE binary directory */
-    void startAlarmClient();
+
     /**
       Process calendar from file. If numDays is 0, open a new KOrganizer window,
       if is is greater print events from corresponding number of dates to the

@@ -25,28 +25,22 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include <qfile.h>
-
-#include <kstandarddirs.h>
 #include <kglobal.h>
 #include <kcmdlineargs.h>
 #include <kconfig.h>
 #include <kdebug.h>
-#include <dcopclient.h>
 #include <kwin.h>
 #include <kurl.h>
-#include <kprocess.h>
 
 #include <libkcal/calendarlocal.h>
 #include <libkcal/filestorage.h>
 #include <libkcal/calformat.h>
 
-#include "kalarmd/alarmdaemoniface_stub.h"
-
 #include "korganizer.h"
 #include "koprefs.h"
 #include "version.h"
 
+#include "alarmclient.h"
 #include "koapp.h"
 #include "koapp.moc"
 
@@ -118,37 +112,6 @@ void KOrganizerApp::displayImminent( const KURL &url, int numdays )
 }
 
 
-void KOrganizerApp::startAlarmDaemon()
-{
-  kdDebug() << "Starting alarm daemon" << endl;
-
-  // Start alarmdaemon. It is a KUniqueApplication, that means it is
-  // automatically made sure that there is only one instance of the alarm daemon
-  // running.
-  QString execStr = locate("exe","kalarmd");
-  kapp->kdeinitExecWait(execStr);
-
-  kdDebug() << "Starting alarm daemon done" << endl;
-}
-
-void KOrganizerApp::startAlarmClient()
-{
-  kdDebug() << "Starting alarm client" << endl;
-
-  KProcess *proc = new KProcess;
-  *proc << "korgac";
-  *proc << "--miniicon" <<  "korganizer";
-  connect( proc, SIGNAL( processExited( KProcess * ) ),
-           SLOT( startCompleted( KProcess * ) ) );
-  if (!proc->start())
-      delete proc;
-}
-
-void KOrganizerApp::startCompleted( KProcess *process )
-{
-  delete process;
-}
-
 int KOrganizerApp::newInstance()
 {
   kdDebug() << "KOApp::newInstance()" << endl;
@@ -162,20 +125,8 @@ int KOrganizerApp::newInstance()
   } else if (args->isSet("show")) {
     numDays = args->getOption("show").toInt();
   } else {
-    if (!dcopClient()->isApplicationRegistered("kalarmd")) {
-      startAlarmDaemon();
-    }
-    if (!dcopClient()->isApplicationRegistered("korgac")) {
-      startAlarmClient();
-    }
-
-    kdDebug() << "KOApp::newInstance() registerApp" << endl;
-    // Register this application with the alarm daemon
-    AlarmDaemonIface_stub stub( "kalarmd", "ad" );
-    stub.registerApp( "korgac", "KOrganizer", "ac", 3, true );
-    if( !stub.ok() ) {
-      kdDebug() << "KOrganizerApp::newInstance(): dcop send failed" << endl;
-    }
+    AlarmClient::startAlarmDaemon();
+    AlarmClient::startAlarmClient();
   }
 
   // If filenames was given as argument load this as calendars, one per window.
