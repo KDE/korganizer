@@ -38,15 +38,9 @@
 #endif
 
 
-/*TODO
-Destructor to tidy up all dynamically allocated stuff ! (DONE?)
-Manage Selection of serial days ! (DONE)
-
-dheight and dwidth should be stored and recalculated on resize only !
-Manage update of selection by pressing toolbar buttons
-
-*/
-
+// ============================================================================
+//  D Y N A M I C   T I P
+// ============================================================================
 
 DynamicTip::DynamicTip( QWidget * parent )
     : QToolTip( parent )
@@ -57,6 +51,7 @@ DynamicTip::DynamicTip( QWidget * parent )
 
 void DynamicTip::maybeTip( const QPoint &pos )
 {
+  //calculate which cell of the matrix the mouse is in
   QRect sz = matrix->frameRect();
   int dheight = sz.height()*7 / 42;
   int dwidth = sz.width() / 7;
@@ -65,14 +60,19 @@ void DynamicTip::maybeTip( const QPoint &pos )
 
   QRect rct(col*dwidth, row*dheight, dwidth, dheight);
 
-  kdDebug() << "DynamicTip::maybeTip index " << (col+row*7) << endl;
+//  kdDebug() << "DynamicTip::maybeTip matrix cell index [" <<
+//                col << "][" << row << "] => " <<(col+row*7) << endl;
+
+  //show holiday names only
   QString str = matrix->getHolidayLabel(col+row*7);
   if (str.isEmpty()) return;
-
-  kdDebug() << "DynamicTip::maybeTip #" << *str << "#" << endl;
-
   tip(rct, str);
 }
+
+
+// ============================================================================
+//  K O D A Y M A T R I X
+// ============================================================================
 
 KODayMatrix::KODayMatrix(QWidget *parent, Calendar* calendar, QDate date, const char *name) :
   QFrame(parent, name)
@@ -80,8 +80,8 @@ KODayMatrix::KODayMatrix(QWidget *parent, Calendar* calendar, QDate date, const 
   mCalendar = calendar;
 
   // initialize dynamic arrays
-  daylbls = new QString[NUMDAYS];
   days = new QDate[NUMDAYS];
+  daylbls = new QString[NUMDAYS];
   events = new int[NUMDAYS];
   mToolTip = new DynamicTip(this);
 
@@ -90,9 +90,10 @@ KODayMatrix::KODayMatrix(QWidget *parent, Calendar* calendar, QDate date, const 
   mDefaultTextColor = palette().active().foreground();
   mDefaultTextColorShaded = getShadedColor(mDefaultTextColor);
   mHolidayColorShaded = getShadedColor(KOPrefs::instance()->mHolidayColor);
+  mSelectedDaysColor = QColor("white");
   mTodayMarginWidth = 2;
   mTodayPen = 0;
-  mSelStart = -1;
+  mSelStart = NOSELECTION;
 
   setAcceptDrops(true);
 
@@ -125,15 +126,44 @@ KODayMatrix::~KODayMatrix()
   if (mTodayPen != 0) delete mTodayPen;
 }
 
+/*
 void KODayMatrix::setStartDate(QDate start)
 {
   updateView(start);
 }
+*/
 
 void KODayMatrix::addSelectedDaysTo(DateList& selDays)
 {
-  for (int i = mSelStart; i <= mSelEnd; i++) {
-    selDays.append(/*new QDate*/days[i]);
+  kdDebug() << "KODayMatrix::addSelectedDaysTo() - " << "mSelStart:" << mSelStart << endl;
+
+  if (mSelStart == NOSELECTION) {
+    return;
+  }
+
+  //cope with selection being out of matrix limits at top (< 0)
+  int i0 = mSelStart;
+  if (i0 < 0) {
+    for (int i = i0; i < 0; i++) {
+      selDays.append(days[0].addDays(i));
+    }
+    i0 = 0;
+  }
+
+  //cope with selection being out of matrix limits at bottom (> NUMDAYS-1)
+  if (mSelEnd > NUMDAYS-1) {
+    for (int i = i0; i <= NUMDAYS-1; i++) {
+      selDays.append(days[i]);
+    }
+    for (int i = NUMDAYS; i < mSelEnd; i++) {
+      selDays.append(days[0].addDays(i));
+    }
+
+  // apply normal routine to selection being entirely within matrix limits
+  } else {
+    for (int i = i0; i <= mSelEnd; i++) {
+      selDays.append(days[i]);
+    }
   }
 }
 
@@ -141,8 +171,6 @@ void KODayMatrix::setSelectedDaysFrom(const QDate& start, const QDate& end)
 {
   mSelStart = startdate.daysTo(start);
   mSelEnd = startdate.daysTo(end);
-  kdDebug() << "startdate" << startdate.day() << endl;
-  kdDebug() << "selection:" << mSelStart << " - " << mSelEnd << endl;
 }
 
 
@@ -153,6 +181,7 @@ void KODayMatrix::updateView()
 
 void KODayMatrix::updateView(QDate actdate)
 {
+  //flag to indicate if the starting day of the matrix has changed by this call
   bool daychanged = false;
 
   // if a new startdate is to be set then apply Cornelius's calculation
@@ -162,7 +191,20 @@ void KODayMatrix::updateView(QDate actdate)
     int fstDayOfWk = actdate.dayOfWeek();
     int nextLine = ((fstDayOfWk == 1) && (KGlobal::locale()->weekStartsMonday() == 1)) ? 7 : 0;
     int offset = (KGlobal::locale()->weekStartsMonday() ? 1 : 0) - fstDayOfWk - nextLine;
-    startdate = actdate.addDays(offset);
+    // reset index of selection according to shift of starting date from startdate to actdate
+    if (mSelStart != NOSELECTION) {
+      int tmp = actdate.daysTo(startdate);
+      kdDebug() << "Shift of Selection1: " << mSelStart << " - " << mSelEnd << " -> " << tmp << "(" << offset << ")" << endl;
+
+      // shift selection if new one would be visible at least partly !
+      if (mSelStart+tmp < NUMDAYS && mSelEnd+tmp >= 0) {
+        mSelStart = mSelStart + tmp;
+        mSelEnd = mSelEnd + tmp;
+      }
+
+    }
+
+    startdate = actdate;
     daychanged = true;
   }
 
@@ -181,7 +223,6 @@ void KODayMatrix::updateView(QDate actdate)
       if (days[i].year() == QDate::currentDate().year() &&
           days[i].month() == QDate::currentDate().month() &&
           days[i].day() == QDate::currentDate().day()) {
-//        kdDebug() << "KODayMatrix::updateView() today:" << days[i].day() << "i" << i << endl;
         today = i;
       }
     }
@@ -191,9 +232,10 @@ void KODayMatrix::updateView(QDate actdate)
     int numEvents = 0;
     QPtrList<Event> eventlist = mCalendar->getEventsForDate(days[i]);
     Event *event;
+
     for(event=eventlist.first();event != 0;event=eventlist.next()) {
       ushort recurType = event->recurrence()->doesRecur();
-//      kdDebug() << "KODayMatrix::updateView recurType " << recurType << endl;
+
       if ((recurType == Recurrence::rNone) ||
           (recurType == Recurrence::rDaily && KOPrefs::instance()->mDailyRecur) ||
           (recurType == Recurrence::rWeekly && KOPrefs::instance()->mWeeklyRecur)) {
@@ -202,22 +244,19 @@ void KODayMatrix::updateView(QDate actdate)
       }
     }
     events[i] = numEvents;
-//    kdDebug() << "KODayMatrix::updateView events " << i << " = " << events[i] << endl;
 
-    //if it is a holy day then draw it red
+    //if it is a holy day then draw it red. Sundays are consider holidays, too
 #ifndef KORG_NOPLUGINS
     QString holiStr = KOCore::self()->holiday(days[i]);
 #else
     QString holiStr = QString::null;
 #endif
-    // Calculate holidays. Sunday is also treated as holiday.
     if (!KGlobal::locale()->weekStartsMonday() && (float(i)/7 == float(i/7)) ||
         KGlobal::locale()->weekStartsMonday() && (float(i-6)/7 == float((i-6)/7)) ||
         !holiStr.isEmpty()) {
       if (holiStr.isNull()) holiStr = "";
       mHolidays[i] = holiStr;
 
-//      kdDebug() << "KODayMatrix::updateView holidays " << i << " = #" << holiStr << "#" << endl;
     } else {
       mHolidays[i] = QString::null;
     }
@@ -244,10 +283,7 @@ QString KODayMatrix::getHolidayLabel(int offset)
 
 int KODayMatrix::getDayIndexFrom(int x, int y)
 {
-  QRect sz = frameRect();
-  int dheight = sz.height()*7 / NUMDAYS;
-  int dwidth = sz.width() / 7;
-  return 7*(y/dheight) + x/dwidth;
+  return 7*(y/daysize.height()) + x/daysize.width();
 }
 
 // ----------------------------------------------------------------------------
@@ -256,21 +292,15 @@ int KODayMatrix::getDayIndexFrom(int x, int y)
 
 void KODayMatrix::mousePressEvent (QMouseEvent* e)
 {
-  //QRect sz = frameRect();
-  //int dheight = sz.height()*7 / NUMDAYS;
-  //int dwidth = sz.width() / 7;
-  mSelStart = getDayIndexFrom(e->x(), e->y()); //7*(e->y()/dheight) + e->x()/dwidth;
-  if (mSelStart > 41) mSelStart=41;
+  mSelStart = getDayIndexFrom(e->x(), e->y());
+  if (mSelStart > NUMDAYS-1) mSelStart=NUMDAYS-1;
   mSelInit = mSelStart;
 }
 
 void KODayMatrix::mouseReleaseEvent (QMouseEvent* e)
 {
-  //QRect sz = frameRect();
-  //int dheight = sz.height()*7 / NUMDAYS;
-  //int dwidth = sz.width() / 7;
-  int tmp = getDayIndexFrom(e->x(), e->y());//7*(e->y()/dheight) + e->x()/dwidth;
-  if (tmp > 41) tmp=41;
+  int tmp = getDayIndexFrom(e->x(), e->y());
+  if (tmp > NUMDAYS-1) tmp=NUMDAYS-1;
 
   if (mSelInit > tmp) {
     mSelEnd = mSelInit;
@@ -297,11 +327,8 @@ void KODayMatrix::mouseReleaseEvent (QMouseEvent* e)
 
 void KODayMatrix::mouseMoveEvent (QMouseEvent* e)
 {
-  //QRect sz = frameRect();
-  //int dheight = sz.height()*7 / NUMDAYS;
-  //int dwidth = sz.width() / 7;
-  int tmp = getDayIndexFrom(e->x(), e->y());//7*(e->y()/dheight) + e->x()/dwidth;
-  if (tmp > 41) tmp=41;
+  int tmp = getDayIndexFrom(e->x(), e->y());
+  if (tmp > NUMDAYS-1) tmp=NUMDAYS-1;
 
   if (mSelInit > tmp) {
     mSelEnd = mSelInit;
@@ -362,7 +389,7 @@ void KODayMatrix::dragLeaveEvent(QDragLeaveEvent */*dl*/)
 void KODayMatrix::dropEvent(QDropEvent *e)
 {
 #ifndef KORG_NODND
-  kdDebug() << "KODayMatrix::dropEvent(e) begin" << endl;
+//  kdDebug() << "KODayMatrix::dropEvent(e) begin" << endl;
 
   if (!VCalDrag::canDecode(e)) {
     e->ignore();
@@ -404,7 +431,7 @@ void KODayMatrix::dropEvent(QDropEvent *e)
 
     emit eventDropped(event);
   } else {
-    kdDebug() << "KODayMatrix::dropEvent(): Event from drop not decodable" << endl;
+//    kdDebug() << "KODayMatrix::dropEvent(): Event from drop not decodable" << endl;
     e->ignore();
   }
 #endif
@@ -414,25 +441,26 @@ void KODayMatrix::dropEvent(QDropEvent *e)
 //  P A I N T   E V E N T   H A N D L I N G
 // ----------------------------------------------------------------------------
 
-void KODayMatrix::paintEvent(QPaintEvent *)
+void KODayMatrix::paintEvent(QPaintEvent * pevent)
 {
+//kdDebug() << "KODayMatrix::paintEvent() BEGIN" << endl;
+
   QPainter p(this);
 
   QRect sz = frameRect();
-  int dheight = sz.height()*7 / NUMDAYS;
-  int dwidth = sz.width() / 7;
+  int dheight = daysize.height();
+  int dwidth = daysize.width();
   int row,col;
   int selw, selh;
 
   // draw background and topleft frame
-  p.fillRect(0, 0, sz.width(), sz.height(), mDefaultBackColor);
+  p.fillRect(pevent->rect(), mDefaultBackColor);
   p.setPen(mDefaultTextColor);
   p.drawRect(0, 0, sz.width()+1, sz.height()+1);
 
   // draw selected days with highlighted background color
-  if (mSelStart != -1) {
+  if (mSelStart != NOSELECTION) {
 
-//    kdDebug() << "Sel:" << mSelStart << " - " << mSelEnd << endl;
     row = mSelStart/7;
     col = mSelStart -row*7;
     QColor selcol = KOPrefs::instance()->mHighlightColor;
@@ -454,14 +482,13 @@ void KODayMatrix::paintEvent(QPaintEvent *)
     }
   }
 
+  // iterate over all days in the matrix and draw the day label in appropriate colors
   QColor actcol = mDefaultTextColorShaded;
   p.setPen(actcol);
   QPen tmppen;
   for(int i = 0; i < NUMDAYS; i++) {
     row = i/7;
     col = i-row*7;
-
-    //TODO ET: if i > mSelStart and <= mSelEnd then set textcolor to white(?)
 
     // if it is the first day of a month switch color from normal to shaded and vice versa
     if (days[i].day() == 1) {
@@ -473,17 +500,35 @@ void KODayMatrix::paintEvent(QPaintEvent *)
       p.setPen(actcol);
     }
 
+    //Reset pen color after selected days block
+    if (i == mSelEnd+1) {
+      p.setPen(actcol);
+    }
+
     // if today then draw rectangle around day
     if (today == i) {
       tmppen = p.pen();
       mTodayPen = new QPen(tmppen);
       mTodayPen->setWidth(mTodayMarginWidth);
+      //draw red rectangle for holidays
+      if (!mHolidays[i].isNull()) {
+        if (actcol == mDefaultTextColor) {
+          mTodayPen->setColor(KOPrefs::instance()->mHolidayColor);
+        } else {
+          mTodayPen->setColor(mHolidayColorShaded);
+        }
+      }
+      //draw gray rectangle for today if in selection
+      if (i >= mSelStart && i <= mSelEnd) {
+        QColor grey("grey");
+        mTodayPen->setColor(grey);
+      }
       p.setPen(*mTodayPen);
       p.drawRect(col*dwidth, row*dheight, dwidth, dheight);
       p.setPen(tmppen);
     }
 
-    // if any events are ont hat day then draw it using a bold font
+    // if any events are on that day then draw it using a bold font
     if (events[i] > 0) {
       QFont myFont = font();
       myFont.setBold(true);
@@ -497,6 +542,12 @@ void KODayMatrix::paintEvent(QPaintEvent *)
       } else {
         p.setPen(mHolidayColorShaded);
       }
+    }
+
+    // draw selected days with special color
+    // DO NOT specially highlight holidays in selection !
+    if (i >= mSelStart && i <= mSelEnd) {
+      p.setPen(mSelectedDaysColor);
     }
 
     p.drawText(col*dwidth, row*dheight, dwidth, dheight,
@@ -513,4 +564,15 @@ void KODayMatrix::paintEvent(QPaintEvent *)
       p.setFont(myFont);
     }
   }
+}
+
+// ----------------------------------------------------------------------------
+//  R E SI Z E   E V E N T   H A N D L I N G
+// ----------------------------------------------------------------------------
+
+void KODayMatrix::resizeEvent(QResizeEvent *)
+{
+  QRect sz = frameRect();
+  daysize.setHeight(sz.height()*7 / NUMDAYS);
+  daysize.setWidth(sz.width() / 7);
 }
