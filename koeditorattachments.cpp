@@ -24,7 +24,8 @@
 
 #include "koeditorattachments.h"
 
-#include "kmailIface_stub.h"
+#include "kocore.h"
+#include "urihandler.h"
 
 #include <klocale.h>
 #include <kdebug.h>
@@ -77,19 +78,7 @@ void KOEditorAttachments::showAttachment( QListViewItem *item )
   
   QString uri = item->text( 0 );
   
-  if ( uri.startsWith( "kmail:" ) ) {
-    int pos = uri.find( "/" );
-    if ( pos > 5 ) {
-      QString serialNumberStr = uri.mid( 6, pos - 6 );
-      QString messageId = uri.mid( pos + 1 );
-      kdDebug() << "SERIALNUMBERSTR: " << serialNumberStr << " MESSAGEID: "
-                << messageId << endl;
-      Q_UINT32 serialNumber = serialNumberStr.toUInt();
-      kdDebug() << "SERIALNUMBER: " << serialNumber << endl;
-      KMailIface_stub kmailIface( "kmail", "KMailIface" );
-      kmailIface.showMail( serialNumber, messageId );
-    }
-  }
+  KOCore::self()->uriHandler()->process( uri );
 }
 
 void KOEditorAttachments::slotAdd()

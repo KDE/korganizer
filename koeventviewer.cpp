@@ -1,6 +1,7 @@
 /*
     This file is part of KOrganizer.
-    Copyright (c) 2001 Cornelius Schumacher <schumacher@kde.org>
+
+    Copyright (c) 2001,2003 Cornelius Schumacher <schumacher@kde.org>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -17,28 +18,21 @@
     Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 */
 
-#include <qcstring.h>
+#include "koeventviewer.h"
 
-#include <klocale.h>
-#include <kapplication.h>
+#include "kocore.h"
+#include "urihandler.h"
+
 #include <libkcal/event.h>
 #include <libkcal/todo.h>
-#include <kdebug.h>
+
 #include <kiconloader.h>
-#include <krun.h>
-#include <kprocess.h>
+#include <klocale.h>
+#include <kapplication.h>
+#include <kdebug.h>
 #ifndef KORG_NOKABC
  #include <kabc/stdaddressbook.h>
 #endif
-
-#ifndef KORG_NODCOP
-#include <dcopclient.h>
-#include "korganizer.h"
-#include "actionmanager.h"
-#endif
-
-#include "koeventviewer.h"
-#include "koeventviewer.moc"
 
 KOEventViewer::KOEventViewer(QWidget *parent,const char *name)
   : QTextBrowser(parent,name)
@@ -49,48 +43,9 @@ KOEventViewer::~KOEventViewer()
 {
 }
 
-void KOEventViewer::setSource(const QString& n)
+void KOEventViewer::setSource( const QString &n )
 {
-#ifndef KORG_NODCOP
-  kdDebug(5850) << "KOEventViewer::setSource(): " << n << endl;
-  QString tmpStr;
-  if (n.startsWith("mailto:")) {
-    KApplication::kApplication()->invokeMailer(n.mid(7),QString::null);
-    //emit showIncidence(n);
-    return;
-  } else if (n.startsWith("uid:")) {
-    DCOPClient *client = KApplication::kApplication()->dcopClient();
-    const QByteArray noParamData;
-    const QByteArray paramData;
-    QByteArray replyData;
-    QCString replyTypeStr;
-    #define PING_ABBROWSER (client->call("kaddressbook", "KAddressBookIface", "interfaces()",  noParamData, replyTypeStr, replyData))
-    bool foundAbbrowser = PING_ABBROWSER;
-
-    if (foundAbbrowser) {
-      //KAddressbook is already running, so just DCOP to it to bring up the contact editor
-      //client->send("kaddressbook","KAddressBookIface",
-      QDataStream arg(paramData, IO_WriteOnly);
-      arg << n.mid(6);
-      client->send("kaddressbook", "KAddressBookIface", "showContactEditor( QString )",  paramData);
-      return;
-    } else {
-      /*
-        KaddressBook is not already running.  Pass it the UID of the contact via the command line while starting it - its neater.
-        We start it without its main interface
-      */
-      KIconLoader* iconLoader = new KIconLoader();
-      QString iconPath = iconLoader->iconPath("go",KIcon::Small);
-      ActionManager::setStartedKAddressBook(true);
-      tmpStr = "kaddressbook --editor-only --uid ";
-      tmpStr += KProcess::quote(n.mid(6));
-      KRun::runCommand(tmpStr,"KAddressBook",iconPath);
-      return;
-    }
-  } else {
-    //QTextBrowser::setSource(n);
-  }
-#endif
+  KOCore::self()->uriHandler()->process( n );
 }
 
 void KOEventViewer::addTag(const QString & tag,const QString & text)
@@ -159,38 +114,40 @@ void KOEventViewer::appendEvent(Event *event)
     addTag("p","<em>" + i18n("This is a recurring event.") + "</em>");
   }
 
-  formatReadOnly(event);
-  formatAttendees(event);
+  formatReadOnly( event );
+  formatAttendees( event );
+  formatAttachments( event );
 
-  setText(mText);
+  setText( mText );
 }
 
-void KOEventViewer::appendTodo(Todo *event)
+void KOEventViewer::appendTodo( Todo *todo )
 {
-  addTag("h1",event->summary());
+  addTag( "h1", todo->summary() );
 
-  if (!event->location().isEmpty()) {
-    addTag("b",i18n("Location: "));
-    mText.append(event->location()+"<br>");
+  if ( !todo->location().isEmpty() ) {
+    addTag( "b", i18n("Location:") );
+    mText.append( todo->location() + "<br>" );
   }
-  if (event->hasDueDate()) {
-    mText.append(i18n("<b>Due on:</b> %1").arg(event->dtDueStr()));
+  if ( todo->hasDueDate() ) {
+    mText.append( i18n("<b>Due on:</b> %1").arg( todo->dtDueStr() ) );
   }
 
-  if (!event->description().isEmpty()) addTag("p",event->description());
+  if ( !todo->description().isEmpty() ) addTag( "p", todo->description() );
 
-  formatCategories(event);
+  formatCategories( todo );
 
-  mText.append(i18n("<p><b>Priority:</b> %2</p>")
-               .arg(QString::number(event->priority())));
+  mText.append( i18n("<p><b>Priority:</b> %2</p>")
+                .arg( QString::number( todo->priority() ) ) );
 
-  mText.append(i18n("<p><i>%1 % completed</i></p>")
-                    .arg(event->percentComplete()));
+  mText.append( i18n("<p><i>%1 % completed</i></p>")
+                     .arg( todo->percentComplete() ) );
 
-  formatReadOnly(event);
-  formatAttendees(event);
+  formatReadOnly( todo );
+  formatAttendees( todo );
+  formatAttachments( todo );
 
-  setText(mText);
+  setText( mText );
 }
 
 void KOEventViewer::formatCategories(Incidence *event)
@@ -218,20 +175,17 @@ void KOEventViewer::formatAttendees(Incidence *event)
     KABC::Addressee::List addressList;
     addressList = add_book->findByEmail(event->organizer());
     KABC::Addressee o = addressList.first();
-    if (!o.isEmpty() && addressList.size()<2) {
-      mText += "<a href=\"uid:" + o.uid() + "\">";
-      mText += o.formattedName();
-      mText += "</a>\n";
+    if ( !o.isEmpty() && addressList.size() < 2 ) {
+      addLink( "uid" + o.uid(), o.formattedName() );
     } else {
-      mText.append(event->organizer());
+      mText.append( event->organizer() );
     }
 #else
-    mText.append(event->organizer());
+    mText.append( event->organizer() );
 #endif
-    if (!iconPath.isNull()) {
-      mText += " <a href=\"mailto:" + event->organizer() + "\">";
-      mText += "<IMG src=\"" + iconPath + "\">";
-      mText += "</a>\n";
+    if ( !iconPath.isNull() ) {
+      addLink( "mailto:" + event->organizer(),
+               "<img src=\"" + iconPath + "\">" );
     }
     mText.append("</li></ul>");
 
@@ -241,16 +195,14 @@ void KOEventViewer::formatAttendees(Incidence *event)
     for( it = attendees.begin(); it != attendees.end(); ++it ) {
       Attendee *a = *it;
 #ifndef KORG_NOKABC
-      if (a->name().isEmpty()) {
-        addressList = add_book->findByEmail(a->email());
+      if ( a->name().isEmpty() ) {
+        addressList = add_book->findByEmail( a->email() );
         KABC::Addressee o = addressList.first();
-        if (!o.isEmpty() && addressList.size()<2) {
-          mText += "<a href=\"uid:" + o.uid() + "\">";
-          mText += o.formattedName();
-          mText += "</a>\n";
+        if ( !o.isEmpty() && addressList.size() < 2 ) {
+          addLink( "uid" + o.uid(), o.formattedName() );
         } else {
           mText += "<li>";
-          mText.append(a->email());
+          mText.append( a->email() );
           mText += "\n";
         }
       } else {
@@ -270,7 +222,7 @@ void KOEventViewer::formatAttendees(Incidence *event)
       if (!a->email().isEmpty()) {
         if (!iconPath.isNull()) {
           mText += "<a href=\"mailto:" + a->name() +" "+ "<" + a->email() + ">" + "\">";
-          mText += "<IMG src=\"" + iconPath + "\">";
+          mText += "<img src=\"" + iconPath + "\">";
           mText += "</a>\n";
         }
       }
@@ -279,13 +231,29 @@ void KOEventViewer::formatAttendees(Incidence *event)
   }
 }
 
-void KOEventViewer::formatReadOnly(Incidence *event)
+void KOEventViewer::formatReadOnly( Incidence *i )
 {
-  if (event->isReadOnly()) {
-    addTag("p","<em>(" + i18n("read-only") + ")</em>");
+  if ( i->isReadOnly() ) {
+    addTag( "p", "<em>(" + i18n("read-only") + ")</em>" );
   }
 }
 
+void KOEventViewer::formatAttachments( Incidence *i )
+{
+  Attachment::List as = i->attachments();
+  if ( as.count() > 0 ) {
+    mText += "<ul>";
+    Attachment *a;
+    for( a = as.first(); a; a = as.next() ) {
+      if ( a->isURI() ) {
+        mText += "<li>";
+        addLink( a->uri(), a->uri() );
+        mText += "</li>";
+      }
+    }
+    mText += "</ul>";
+  }
+}
 
 void KOEventViewer::setTodo(Todo *event)
 {
@@ -310,8 +278,17 @@ void KOEventViewer::clearEvents(bool now)
   if (now) setText(mText);
 }
 
-void KOEventViewer::addText(QString text)
+void KOEventViewer::addText( const QString &text )
 {
-  mText.append(text);
-  setText(mText);
+  mText.append( text );
+  setText( mText );
 }
+
+void KOEventViewer::addLink( const QString &ref, const QString &text,
+                             bool newline )
+{
+  mText += "<a href=\"" + ref + "\">" + text + "</a>";
+  if ( newline ) mText += "\n";
+}
+
+#include "koeventviewer.moc"

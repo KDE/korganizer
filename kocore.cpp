@@ -26,6 +26,7 @@
 
 #include "koprefs.h"
 #include "koglobals.h"
+#include "urihandler.h"
 
 #include <calendar/plugin.h>
 #include <korganizer/part.h>
@@ -55,8 +56,16 @@ KOCore *KOCore::self()
 
 KOCore::KOCore()
   : mCalendarDecorationsLoaded( false ), mHolidays( 0 ), mXMLGUIClient( 0 ),
-    mCalendarResources( 0 )
+    mCalendarResources( 0 ), mUriHandler( 0 )
 {
+}
+
+KOCore::~KOCore()
+{
+  delete mUriHandler;
+  delete mCalendarResources;
+
+  mSelf = 0;
 }
 
 KTrader::OfferList KOCore::availablePlugins( const QString &type, int version )
@@ -326,4 +335,10 @@ KCal::CalendarResources *KOCore::calendarResources()
   }
   
   return mCalendarResources;
+}
+
+UriHandler *KOCore::uriHandler()
+{
+  if ( !mUriHandler ) mUriHandler = new UriHandler;
+  return mUriHandler;
 }

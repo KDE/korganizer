@@ -1,6 +1,7 @@
 /*
     This file is part of KOrganizer.
-    Copyright (c) 2001 Cornelius Schumacher <schumacher@kde.org>
+
+    Copyright (c) 2001,2003 Cornelius Schumacher <schumacher@kde.org>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -18,9 +19,6 @@
 */
 #ifndef KOEVENTVIEWER_H
 #define KOEVENTVIEWER_H
-//
-// Viewer widget for events.
-//
 
 #include <qtextbrowser.h>
 
@@ -28,37 +26,43 @@
 
 using namespace KCal;
 
-class KOEventViewer : public QTextBrowser {
+
+/**
+  Viewer widget for events.
+*/
+class KOEventViewer : public QTextBrowser
+{
     Q_OBJECT
   public:
-    KOEventViewer(QWidget *parent=0,const char *name=0);
+    KOEventViewer( QWidget *parent = 0, const char *name = 0 );
     virtual ~KOEventViewer();
 
-    void setSource(const QString &);
-    void setEvent(Event *event);
-    void addEvent(Event *event);
-    void setTodo(Todo *event);
+    void setSource( const QString & );
+    void setEvent( Event *event );
+    void addEvent( Event *event );
+    void setTodo( Todo *event );
 
-    void appendEvent(Event *event);
-    void appendTodo(Todo *event);
+    void appendEvent( Event *event );
+    void appendTodo( Todo *event );
     
-    void clearEvents(bool now=false);
+    void clearEvents( bool now = false );
     
-    void addText(QString text);
+    void addText( const QString &text );
 
   protected:
-    void addTag(const QString & tag,const QString & text);
+    void addTag( const QString &tag, const QString &text );
+    void addLink( const QString &ref, const QString &text,
+                  bool newline = true );
 
-    void formatCategories(Incidence *event);
-    void formatAttendees(Incidence *event);
-    void formatReadOnly(Incidence *event);
+    void formatCategories( Incidence * );
+    void formatAttendees( Incidence * );
+    void formatReadOnly( Incidence * );
+    void formatAttachments( Incidence * );
 
   private:
     QTextBrowser *mEventTextView;
 
     QString mText;
-  signals:
-    void launchaddressbook(QString uid);    
 };
 
 #endif

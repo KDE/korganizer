@@ -31,9 +31,13 @@
 
 namespace KCal { class CalendarResources; }
 
+class UriHandler;
+
 class KOCore
 {
   public:
+    ~KOCore();
+
     static KOCore *self();
 
     KTrader::OfferList availablePlugins();
@@ -75,6 +79,8 @@ class KOCore
 
     KCal::CalendarResources *calendarResources();
 
+    UriHandler *uriHandler();
+
   protected:
     KOCore();
 
@@ -92,6 +98,8 @@ class KOCore
     KXMLGUIClient *mXMLGUIClient;
 
     KCal::CalendarResources *mCalendarResources;
+
+    UriHandler *mUriHandler;
 };
 
 #endif
