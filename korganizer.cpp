@@ -591,12 +591,12 @@ void KOrganizer::file_import()
       KMessageBox::information(this,
 			   i18n("KOrganizer encountered some unknown fields while "
 				"parsing your .calendar ical file, and had to "
-				"discard them.  Please check to see that all "
+				"discard them. Please check to see that all "
 				"your relevant data was correctly imported."),
                                  i18n("ICal Import Successful With Warning"));
   } else if (retVal == -1) {
     KMessageBox::error(this,
-			 i18n("KOrganizer encountered some error parsing your "
+			 i18n("KOrganizer encountered an error parsing your "
 			      ".calendar file from ical.  Import has failed."));
   } else if (retVal == -2) {
     KMessageBox::error(this,
@@ -723,7 +723,7 @@ bool KOrganizer::saveURL()
 
   if (ext == ".vcs") {
     int result = KMessageBox::warningContinueCancel(this,
-        i18n("Your calendar will be saved in iCalendar format.Use "
+        i18n("Your calendar will be saved in iCalendar format. Use "
               "'Export vCalendar' to save in vCalendar format."),
         i18n("Format Conversion"),i18n("Proceed"),"dontaskFormatConversion",
         true);
