@@ -119,9 +119,6 @@
                     <property name="text">
                         <string>Print &amp;all todo items</string>
                     </property>
-                    <property name="accel">
-                        <string>Alt+A</string>
-                    </property>
                     <property name="checked">
                         <bool>true</bool>
                     </property>
@@ -135,9 +132,6 @@
                     </property>
                     <property name="text">
                         <string>Print only &amp;unfinished items</string>
-                    </property>
-                    <property name="accel">
-                        <string>Alt+U</string>
                     </property>
                 </widget>
                 <widget class="QDateEdit" row="4" column="4">
@@ -171,9 +165,6 @@
                     </property>
                     <property name="text">
                         <string>Only items due in the &amp;range:</string>
-                    </property>
-                    <property name="accel">
-                        <string>Alt+R</string>
                     </property>
                 </widget>
             </grid>
