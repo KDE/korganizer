@@ -48,10 +48,15 @@ void AlarmDialog::appendEvent(KOEvent *event)
   mEvents.append(event);
 }
 
-void AlarmDialog::slotOk()
+void AlarmDialog::clearEvents()
 {
   mEventViewer->clearEvents();
   mEvents.clear();
+}
+
+void AlarmDialog::slotOk()
+{
+  clearEvents();
   accept();
 }
 

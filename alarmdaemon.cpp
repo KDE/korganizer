@@ -89,6 +89,7 @@ AlarmDaemon::AlarmDaemon(const char *fn, QObject *parent, const char *name)
 
   // set up the alarm timer
   QTimer *alarmTimer = new QTimer(this);
+  mSuspendTimer = new QTimer(this);
 
   connect(alarmTimer, SIGNAL(timeout()),
     calendar, SLOT(checkAlarms()));
@@ -97,6 +98,7 @@ AlarmDaemon::AlarmDaemon(const char *fn, QObject *parent, const char *name)
 
   // timeout every minute.
   alarmTimer->start(1000*60);
+
 }
 
 AlarmDaemon::~AlarmDaemon()
@@ -108,6 +110,9 @@ AlarmDaemon::~AlarmDaemon()
 void AlarmDaemon::reloadCal()
 {
   KSimpleConfig config("korganizerrc", true);
+
+  mSuspendTimer->stop();
+  mAlarmDialog->clearEvents();
 
   calendar->close();
   config.setGroup("General");
@@ -149,10 +154,9 @@ void AlarmDaemon::suspend(int duration)
 {
 //  qDebug("AlarmDaemon::suspend() %d minutes",duration);
 
-  QTimer *suspendTimer = new QTimer(this);
-  connect(suspendTimer,SIGNAL(timeout()),SLOT(showDialog()));
+  connect(mSuspendTimer,SIGNAL(timeout()),SLOT(showDialog()));
 
-  suspendTimer->start(1000*60*duration,true);
+  mSuspendTimer->start(1000*60*duration,true);
 }
 
 void AlarmDaemon::showDialog()

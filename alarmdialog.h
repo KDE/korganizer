@@ -21,6 +21,8 @@ class AlarmDialog : public KDialogBase {
 
     void eventNotification();
 
+    void clearEvents();
+
   public slots:
     void slotOk();
     void slotUser1();

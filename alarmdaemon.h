@@ -62,6 +62,7 @@ class AlarmDaemon : public QObject, DCOPObject {
     const char *fileName;
     QString newFileName;
     AlarmDialog *mAlarmDialog;
+    QTimer *mSuspendTimer;
 };
 
 #endif
