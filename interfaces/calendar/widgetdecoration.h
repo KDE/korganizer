@@ -13,7 +13,7 @@ namespace KOrg {
 
 class WidgetDecoration : public Plugin {
   public:
-    typedef QList<WidgetDecoration> List;
+    typedef QPtrList<WidgetDecoration> List;
 
     WidgetDecoration() {};
     virtual ~WidgetDecoration() {};

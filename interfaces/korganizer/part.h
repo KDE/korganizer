@@ -13,7 +13,7 @@ namespace KOrg {
 
 class Part : public KParts::Part {
   public:
-    typedef QList<Part> List;
+    typedef QPtrList<Part> List;
 
     Part(KOrganizer *parent, const char *name) :
       KParts::Part(parent,name), mMainWindow(parent) {};

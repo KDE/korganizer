@@ -13,7 +13,7 @@ namespace KOrg {
 
 class TextDecoration : public Plugin {
   public:
-    typedef QList<TextDecoration> List;
+    typedef QPtrList<TextDecoration> List;
 
     TextDecoration() {};
     virtual ~TextDecoration() {};
