@@ -247,11 +247,11 @@
       <label>Highlight color:</label>
       <default>100, 100, 255</default>
     </entry>
-    <entry type="Color" key="Agenda Background Color" name="AgendaBgColor">
+    <entry type="Color" key="AgendaBackgroundColor" name="AgendaBgColor">
       <label>Agenda view background color:</label>
       <default>255, 255, 255</default>
     </entry>
-    <entry type="Color" key="WorkingHours Color">
+    <entry type="Color" key="WorkingHoursColor">
       <label>Working hours color:</label>
       <default>225, 225, 255</default>
     </entry>
@@ -263,8 +263,9 @@
       <label>Todo overdue color:</label>
       <default>255, 100, 100</default>
     </entry>
-    <entry type="Color" key="Event Color">
+    <entry type="Color" key="EventColor">
       <label>Default event color:</label>
+      <default>151, 235, 121</default>
     </entry>
   </group>
 
