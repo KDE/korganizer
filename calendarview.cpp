@@ -856,7 +856,7 @@ void CalendarView::deleteEvent(Event *anEvent)
              i18n("KOrganizer Confirmation"),i18n("&Continue"))) {
 
       case KMessageBox::Continue: // all
-        if (anEvent->organizer()==KOPrefs::instance()->email())
+        if (anEvent->organizer()==KOPrefs::instance()->email() && anEvent->attendeeCount()>0)
           schedule(Scheduler::Cancel,anEvent);
         mCalendar->deleteEvent(anEvent);
         changeEventDisplay(anEvent,KOGlobals::EVENTDELETED);
@@ -881,14 +881,14 @@ void CalendarView::deleteEvent(Event *anEvent)
     if (KOPrefs::instance()->mConfirm) {
       switch (msgItemDelete()) {
         case KMessageBox::Continue: // OK
-          if (anEvent->organizer()==KOPrefs::instance()->email())
+          if (anEvent->organizer()==KOPrefs::instance()->email() && anEvent->attendeeCount()>0)
 	    schedule(Scheduler::Cancel,anEvent);
           mCalendar->deleteEvent(anEvent);
           changeEventDisplay(anEvent, KOGlobals::EVENTDELETED);
           break;
       } // switch
     } else {
-      if (anEvent->organizer()==KOPrefs::instance()->email())
+      if (anEvent->organizer()==KOPrefs::instance()->email() && anEvent->attendeeCount()>0)
         schedule(Scheduler::Cancel,anEvent);
       mCalendar->deleteEvent(anEvent);
       changeEventDisplay(anEvent, KOGlobals::EVENTDELETED);
