@@ -29,7 +29,7 @@
 
 #include <klocale.h>
 #include <kdebug.h>
-#include <kinputdialog.h>
+#include <kfiledialog.h>
 #include <kmessagebox.h>
 
 #include <qlayout.h>
@@ -84,9 +84,8 @@ void KOEditorAttachments::showAttachment( QListViewItem *item )
 
 void KOEditorAttachments::slotAdd()
 {
-  QString uri = KInputDialog::getText( i18n("Add Attachment"),
-                                       i18n("Please put in URI of attachment:"),
-                                       QString::null, 0, this );
+  QString uri = KFileDialog::getOpenFileName( QString::null, QString::null,
+      0, i18n("Add Attachment") );
   if ( !uri.isEmpty() ) {
     new QListViewItem( mAttachments, uri );
   }
@@ -97,9 +96,8 @@ void KOEditorAttachments::slotEdit()
   QListViewItem *item = mAttachments->currentItem();
   if ( !item ) return;
 
-  QString uri = KInputDialog::getText( i18n("Edit Attachment"),
-                                       i18n("Please put in URI of attachment:"),
-                                       item->text( 0 ), 0, this );
+  QString uri = KFileDialog::getOpenFileName( item->text( 0 ), QString::null,
+      0, i18n("Edit Attachment") );
 
   if ( !uri.isEmpty() ) item->setText( 0, uri );
 }
