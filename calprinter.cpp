@@ -5,6 +5,7 @@
  */
 
 #include <math.h>
+#include <stdlib.h>
 
 #include <qpainter.h>
 #include <qbuttongroup.h>
@@ -61,7 +62,15 @@ void CalPrinter::setupPrinter()
 
 void CalPrinter::preview(PrintType pt, const QDate &fd, const QDate &td)
 {
-  previewFileName = tmpnam(0L);
+  char previewFileName[200];
+  int tmpfd;
+
+  sprintf(previewFileName,"/tmp/korg.prv.XXXXXX");
+
+  if (-1==(tmpfd=::mkstemp(previewFileName)))
+	  return;
+  ::close(tmpfd);
+
   oldOutputToFile = printer->outputToFile();
   oldFileName = printer->outputFileName();
 
@@ -105,6 +114,9 @@ void CalPrinter::doPreview(int pt, QDate fd, QDate td)
     printTodo(fd, td);
     break;
   }
+  // remove temporary file.
+  QString tmpfn = printer->outputFileName();
+  ::unlink(tmpfn.latin1());
   
   // restore previous settings that were used before the preview.
   printer->setOutputToFile(oldOutputToFile);
