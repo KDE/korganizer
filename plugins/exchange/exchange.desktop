@@ -44,3 +44,4 @@ Name[zu]=I-plugin ye-Microsoft Exchange 2000 ye-KOrganizer
 Type=Service
 ServiceTypes=KOrganizer/Part
 X-KDE-KOrganizer-HasSettings=false
+X-KDE-PluginInterfaceVersion=1
