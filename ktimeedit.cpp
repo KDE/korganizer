@@ -44,15 +44,27 @@ public:
 
     virtual State validate(QString& str, int& /*cursorPos*/) const
     {
+        int length = str.length();
+        // empty string is intermediate so one can clear the edit line and start from scratch
+        if ( length <= 0 ) 
+            return Intermediate;
+        
         bool ok = false;
-        // TODO use KLocale::WithoutSeconds in HEAD
-        /*QTime time =*/ KGlobal::locale()->readTime(str, &ok);
+        /*QTime time =*/ KGlobal::locale()->readTime(str, KLocale::WithoutSeconds, &ok);
         if ( ok )
             return Acceptable;
+//         kdDebug(5850)<<"Time "<<str<<" not directly acceptable, trying military format "<<endl;
+        // Also try to accept times in "military format", i.e. no delimiter, like 1200
+        int tm = str.toInt( &ok );
+        if ( ok && ( 0 <= tm ) ) {
+          if ( ( tm < 2400 ) && ( tm%100 < 60 ) )
+            return Acceptable;
+          else 
+            return Intermediate;
+        }
+//         kdDebug(5850)<<str<<" not acceptable or intermediate for military format, either "<<str<<endl;
+        
         // readTime doesn't help knowing when the string is "Intermediate".
-        int length = str.length();
-        if ( !str ) // empty string?
-            return Invalid; // there should always be a ':' in it, right?
         // HACK. Not fully locale aware etc. (esp. the separator is '.' in sv_SE...)
         QChar sep = ':';
         // I want to allow "HH:", ":MM" and ":" to make editing easier
@@ -72,6 +84,17 @@ public:
                 return Intermediate;
         }
         return Invalid;
+    }
+    virtual void fixup ( QString & input ) const {
+      bool ok = false;
+      KGlobal::locale()->readTime( input, KLocale::WithoutSeconds, &ok );
+      if ( !ok ) {
+        // Also try to accept times in "military format", i.e. no delimiter, like 1200
+        int tm = input.toInt( &ok );
+        if ( ( 0 <= tm ) && ( tm < 2400 ) && ( tm%100 < 60 ) && ok ) {
+          input = KGlobal::locale()->formatTime( QTime( tm / 100, tm % 100, 0 ) );
+        }
+      }
     }
 };
 
@@ -103,7 +126,7 @@ KOTimeEdit::KOTimeEdit( QWidget *parent, QTime qt, const char *name )
 
   connect(this, SIGNAL(activated(int)), this, SLOT(active(int)));
   connect(this, SIGNAL(highlighted(int)), this, SLOT(hilit(int)));
-  connect(this,SIGNAL(textChanged(const QString&)),this,SLOT(changedText()));
+  connect(this, SIGNAL(textChanged(const QString&)),this,SLOT(changedText()));
 }
 
 KOTimeEdit::~KOTimeEdit()
@@ -123,7 +146,17 @@ QTime KOTimeEdit::getTime() const
 {
   //kdDebug(5850) << "KOTimeEdit::getTime(), currentText() = " << currentText() << endl;
   // TODO use KLocale::WithoutSeconds in HEAD
-  QTime time = KGlobal::locale()->readTime(currentText());
+  bool ok = false;
+  QTime time = KGlobal::locale()->readTime( currentText(), KLocale::WithoutSeconds, &ok );
+  if ( !ok ) {
+    // Also try to accept times in "military format", i.e. no delimiter, like 1200
+    int tm = currentText().toInt( &ok );
+    if ( ( 0 <= tm ) && ( tm < 2400 ) && ( tm%100 < 60 ) && ok ) {
+      time.setHMS( tm / 100, tm % 100, 0 );
+    } else {
+      ok = false;
+    }
+  }
   kdDebug(5850) << "KOTimeEdit::getTime(): " << time.toString() << endl;
   return time;
 }
