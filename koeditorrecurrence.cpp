@@ -659,7 +659,7 @@ void KOEditorRecurrence::setDefaults(QDateTime from, QDateTime to,bool)
   nthDayEntry->setCurrentItem(from.date().day()-1);
   nMonthsEntry->setText("1");
   yearDayButton->setChecked(true);
-  nYearsEntry->setText(QString::number(from.date().dayOfYear()));
+  nYearsEntry->setText("1");
 }
 
 void KOEditorRecurrence::readEvent(KOEvent *event)
