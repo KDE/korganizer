@@ -115,7 +115,7 @@ void PluginDialog::configure()
 
   KOrg::Plugin *plugin = KOCore::self()->loadPlugin(item->service());
 
-  plugin->configure(this);
+  if ( plugin ) plugin->configure(this);
 }
 
 void PluginDialog::checkSelection()
