@@ -964,7 +964,7 @@ void CalPrintBase::drawTodo( int &count, Todo * item, QPainter &p, bool connectS
     // we need to compare manually with the complete filtered list!
     Todo* subtodo = dynamic_cast<Todo *>( *it );
     if (subtodo && todoList.contains( subtodo ) ) {
-      drawTodo( count, static_cast<Todo *>( *it ), p, connectSubTodos,
+      drawTodo( count, subtodo, p, connectSubTodos,
           desc, pospriority, possummary, posDueDt, level+1,
           x, y, width, height, pageHeight, todoList, &startpt);
     }
@@ -987,9 +987,9 @@ void CalPrintBase::drawSplitWeek( QPainter &p, const QDate &fd,
   // correct begin of week according to global weekStartDay setting
   int weekdayCol = weekdayColumn( fd.dayOfWeek() );
   fromWeek = fd.addDays( -weekdayCol );
-	// correct end of week 
+  // correct end of week 
   weekdayCol = weekdayColumn( td.dayOfWeek() );
-	toWeek = td.addDays( 6-weekdayCol );
+  toWeek = td.addDays( 6-weekdayCol );
 
   fromDay = fd;
   curDay = fd;
@@ -1071,7 +1071,7 @@ void CalPrintBase::drawSplitHeaderRight( QPainter &p, const QDate &fd,
   QString title;
   QString myOwner(mCalendar->getOwner());
   const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
-	// TODO: Argh, this is untranslatable!!!
+  // TODO: Argh, this is untranslatable!!!
   if ( fd.month() == td.month() ) {
     title = calSys->monthName(fd.month(), false) + ' ' + QString::number(fd.day()) + ' ' 
        + '-' + ' ' + QString::number(td.day());
@@ -1113,7 +1113,7 @@ void CalPrintBase::drawSplitDay( QPainter &p, const QDate &qd, int width,
   QString dayName;
  
   const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
-	// TODO: This is untranslatable
+  // TODO: This is untranslatable
   dayName = calSys->weekDayName(qd.dayOfWeek()) + ' ' + ' ' + QString::number(qd.day());
   p.setBrush(QBrush(black));
 // width+1 to make sure there's a continuous, black bar across the top.
