@@ -512,6 +512,7 @@ void KOTodoView::updateView()
 {
 //  kdDebug(5850) << "KOTodoView::updateView()" << endl;
   int oldPos = mTodoListView->contentsY();
+  mItemsToDelete.clear();
   mTodoListView->clear();
 
   Todo::List todoList = calendar()->todos();
