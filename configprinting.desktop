@@ -1,0 +1,16 @@
+[Desktop Entry]
+Encoding=UTF-8
+Exec=kcmshell korganizerconfigprinting
+Icon=fileprint
+Type=Application
+Terminal=0
+
+X-KDE-ModuleType=Library
+X-KDE-Library=korganizer
+X-KDE-FactoryName=korganizerconfigprinting
+X-KDE-HasReadOnlyMode=false
+X-KDE-ParentApp=korganizer
+
+Name=Printing
+Comment=KOrganizer Printing Configuration
+Keywords=korganizer,printing

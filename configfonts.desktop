@@ -1,0 +1,16 @@
+[Desktop Entry]
+Encoding=UTF-8
+Exec=kcmshell korganizerconfigfonts
+Icon=fonts
+Type=Application
+Terminal=0
+
+X-KDE-ModuleType=Library
+X-KDE-Library=korganizer
+X-KDE-FactoryName=korganizerconfigfonts
+X-KDE-HasReadOnlyMode=false
+X-KDE-ParentApp=korganizer
+
+Name=Fonts
+Comment=KOrganizer Fonts Configuration
+Keywords=korganizer,fonts

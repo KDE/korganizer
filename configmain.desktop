@@ -1,0 +1,16 @@
+[Desktop Entry]
+Encoding=UTF-8
+Exec=kcmshell korganizerconfigmain
+Icon=identity
+Type=Application
+Terminal=0
+
+X-KDE-ModuleType=Library
+X-KDE-Library=korganizer
+X-KDE-FactoryName=korganizerconfigmain
+X-KDE-HasReadOnlyMode=false
+X-KDE-ParentApp=korganizer
+
+Name=Personal
+Comment=KOrganizer Main Configuration
+Keywords=korganizer,main,personal

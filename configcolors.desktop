@@ -1,0 +1,16 @@
+[Desktop Entry]
+Encoding=UTF-8
+Exec=kcmshell korganizerconfigcolors
+Icon=colors
+Type=Application
+Terminal=0
+
+X-KDE-ModuleType=Library
+X-KDE-Library=korganizer
+X-KDE-FactoryName=korganizerconfigcolors
+X-KDE-HasReadOnlyMode=false
+X-KDE-ParentApp=korganizer
+
+Name=Colors
+Comment=KOrganizer Colors Configuration
+Keywords=korganizer,colors

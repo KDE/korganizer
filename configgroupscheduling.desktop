@@ -1,0 +1,16 @@
+[Desktop Entry]
+Encoding=UTF-8
+Exec=kcmshell korganizerconfiggreoupscheduling
+Icon=personal
+Type=Application
+Terminal=0
+
+X-KDE-ModuleType=Library
+X-KDE-Library=korganizer
+X-KDE-FactoryName=korganizerconfiggroupscheduling
+X-KDE-HasReadOnlyMode=false
+X-KDE-ParentApp=korganizer
+
+Name=Group Scheduling
+Comment=KOrganizer Group Scheduling Configuration
+Keywords=korganizer,group,scheduling
