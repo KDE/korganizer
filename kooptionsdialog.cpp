@@ -328,7 +328,7 @@ void KOOptionsDialog::setupTimeTab()
                        topFrame),2,0);
   mDefaultDurationSpin = new QSpinBox(0,23,1,topFrame);
   mDefaultDurationSpin->setSuffix(":00");
-  topLayout->addWidget(mDefaultDurationSpin,1,1);
+  topLayout->addWidget(mDefaultDurationSpin,2,1);
 
   QStringList alarmList;  
   alarmList << i18n("1 minute") << i18n("5 minutes") << i18n("10 minutes")

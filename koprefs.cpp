@@ -127,6 +127,7 @@ void KOPrefs::readConfig()
   mConfig->setGroup("Time & Date");
   mTimeZone = mConfig->readNumEntry("Time Zone",0);
   mStartTime = mConfig->readNumEntry("Default Start Time",10);
+  mDefaultDuration = mConfig->readNumEntry("Default Duration",2);
   mAlarmTime = mConfig->readNumEntry("Default Alarm Time",0);
   mDaylightSavings = mConfig->readNumEntry("Daylight Savings", 0);
 
@@ -182,6 +183,7 @@ void KOPrefs::writeConfig()
   mConfig->setGroup("Time & Date");
   mConfig->writeEntry("Time Zone",mTimeZone);
   mConfig->writeEntry("Default Start Time",mStartTime);
+  mConfig->writeEntry("Default Duration",mDefaultDuration);
   mConfig->writeEntry("Default Alarm Time",mAlarmTime);
   mConfig->writeEntry("Daylight Savings",mDaylightSavings);
 
