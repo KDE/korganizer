@@ -87,8 +87,6 @@ void Birthdays::importBirthdays()
 #ifndef KORG_NOKABC
   Calendar *cal = mainWindow()->view()->calendar();
   QDateTime birthdate;
-  //QDate now_date = QDate::currentDate();
-  //QDate birthd;
   QString summary;
   int inserted_birthdays = 0;
 
@@ -101,7 +99,9 @@ void Birthdays::importBirthdays()
     if ( (*it).birthday().date().isValid() ) {
       kdDebug() << "found a birthday " << (*it).birthday().toString() << endl;
 
-      summary = i18n("%1's birthday").arg( (*it).formattedName() );
+      QString name = (*it).nickName();
+      if (name.isEmpty()) name = (*it).realName();
+      summary = i18n("%1's birthday").arg( name );
       birthdate = (*it).birthday();
 
       Event *ev = 0;
