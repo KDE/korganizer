@@ -577,9 +577,10 @@ void ActionManager::file_open()
 
   if (url.isEmpty()) return;
 
+  // is that URL already opened somewhere else? Activate that window
   KOrg::MainWindow *korg=ActionManager::findInstance(url);
   if ((0 != korg)&&(korg != mMainWindow)) {
-    KWin::setActiveWindow(korg->topLevelWidget()->winId());
+    KWin::forceActiveWindow(korg->topLevelWidget()->winId());
     return;
   }
 
@@ -598,7 +599,8 @@ void ActionManager::file_openRecent(const KURL& url)
   if (!url.isEmpty()) {
     KOrg::MainWindow *korg=ActionManager::findInstance(url);
     if ((0 != korg)&&(korg != mMainWindow)) {
-      KWin::setActiveWindow(korg->topLevelWidget()->winId());
+		  // already open in a different windows, activate that one
+      KWin::forceActiveWindow(korg->topLevelWidget()->winId());
       return;
     }
     openURL(url);
@@ -771,6 +773,7 @@ bool ActionManager::openURL(const KURL &url,bool merge)
       return false;
     }
   }
+	return true;
 }
 
 void ActionManager::showStatusMessageOpen( const KURL &url, bool merge )

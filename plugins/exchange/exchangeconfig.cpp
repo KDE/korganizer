@@ -90,7 +90,7 @@ void ExchangeConfig::slotToggleAuto( bool on )
 //  }
 }
 
-void ExchangeConfig::slotUserChanged( const QString& text )
+void ExchangeConfig::slotUserChanged( const QString& /*text*/ )
 {
 //  if ( m_mailboxEqualsUser->isChecked() ) {
 //    m_mailbox->setText( "webdav://" + m_host->text() + "/exchange/" + text );

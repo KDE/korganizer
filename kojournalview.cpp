@@ -38,6 +38,7 @@
 #include "journalentry.h"
 
 #include "kojournalview.h"
+#include "koglobals.h"
 using namespace KOrg;
 #include "kojournalview.moc"
 
@@ -154,26 +155,30 @@ void KOJournalView::changeIncidenceDisplay(Incidence *incidence, int action)
 //  kdDebug(5850) << "KOJournalView::changeIncidenceDisplay(): "<< endl;
   Journal *journal = dynamic_cast<Journal*>(incidence);
   if (journal) {
-/*    switch(action) {
+    switch(action) {
       case KOGlobals::INCIDENCEADDED:
-        addIncidence( incidence );
+        //addIncidence( incidence );
         break;
       case KOGlobals::INCIDENCEEDITED:
-        item = getItemForEvent(incidence);
+        /*
+				item = getItemForEvent(incidence);
         if (item) {
           delete item;
           mUidDict.remove( incidence->uid() );
           addIncidence( incidence );
         }
+				*/
         break;
       case KOGlobals::INCIDENCEDELETED:
-        item = getItemForEvent(incidence);
+        /*
+				item = getItemForEvent(incidence);
         if (item) {
           delete item;
         }
+				*/
         break;
       default:
         kdDebug(5850) << "KOListView::changeIncidenceDisplay(): Illegal action " << action << endl;
-    }*/
+    }
   }
 }

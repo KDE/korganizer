@@ -146,7 +146,7 @@ void KOEventEditor::setupGeneral()
   mGeneral->finishSetup();
 }
 
-void KOEventEditor::modified (int modification)
+void KOEventEditor::modified (int /*modification*/)
 {
   // Play dump, just reload the event. This dialog has become so complicated that
   // there is no point in trying to be smart here...

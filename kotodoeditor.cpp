@@ -335,7 +335,7 @@ int KOTodoEditor::msgItemDelete()
       i18n("KOrganizer Confirmation"),KGuiItem(i18n("Delete"),"editdelete"));
 }
 
-void KOTodoEditor::modified (int modification)
+void KOTodoEditor::modified (int /*modification*/)
 {
   // Play dump, just reload the todo. This dialog has become so complicated that
   // there is no point in trying to be smart here...

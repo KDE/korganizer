@@ -977,17 +977,12 @@ void CalPrintBase::drawSplitWeek( QPainter &p, const QDate &fd,
 
   mPrinter->setOrientation(KPrinter::Portrait);
 
-  if (KGlobal::locale()->weekStartsMonday()) {
-    // correct to monday
-    fromWeek = fd.addDays(-(fd.dayOfWeek()-1));
-    // correct to sunday
-    toWeek = td.addDays(7-fd.dayOfWeek());
-  } else {
-    // correct to sunday
-    fromWeek = fd.addDays(-(fd.dayOfWeek()%7));
-    // correct to saturday
-    toWeek = td.addDays(6-td.dayOfWeek());
-  }
+  // correct begin of week according to global weekStartDay setting
+  int weekdayCol = weekdayColumn( fd.dayOfWeek() );
+  fromWeek = fd.addDays( -weekdayCol );
+	// correct end of week 
+  weekdayCol = weekdayColumn( td.dayOfWeek() );
+	toWeek = td.addDays( 6-weekdayCol );
 
   fromDay = fd;
   curDay = fd;
@@ -1007,6 +1002,7 @@ void CalPrintBase::drawSplitWeek( QPainter &p, const QDate &fd,
 
   curWeek = fromWeek.addDays(6);
 
+  // TODO: Make this obey the global weekstart settings!!!
   int columnWidth = int( pageWidth / 4.5 );
   do {
     switch(curDay.dayOfWeek()%7){
@@ -1060,7 +1056,6 @@ void CalPrintBase::drawSplitHeaderRight( QPainter &p, const QDate &fd,
                                          const QDate &,
                                          int width, int )
 {
-  KLocale *local = KGlobal::locale();
   QFont font("helvetica", 18, QFont::Bold);
   QPen penA( black,0);
   QPen penB( black,4);
@@ -1068,12 +1063,14 @@ void CalPrintBase::drawSplitHeaderRight( QPainter &p, const QDate &fd,
   int lineSpacing = p.fontMetrics().lineSpacing();
   QString title;
   QString myOwner(mCalendar->getOwner());
+  const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
+	// TODO: Argh, this is untranslatable!!!
   if ( fd.month() == td.month() ) {
-    title = local->monthName(fd.month(), false) + ' ' + QString::number(fd.day()) + ' ' 
+    title = calSys->monthName(fd.month(), false) + ' ' + QString::number(fd.day()) + ' ' 
        + '-' + ' ' + QString::number(td.day());
   } else {
-    title = local->monthName(fd.month(), false) + ' ' + QString::number(fd.day()) + ' ' 
-       + '-' + ' ' + local->monthName(td.month(), false) + ' ' + QString::number(td.day());
+    title = calSys->monthName(fd.month(), false) + ' ' + QString::number(fd.day()) + ' ' 
+       + '-' + ' ' + calSys->monthName(td.month(), false) + ' ' + QString::number(td.day());
   }
 
 // Grrrrrrr!  why can't I set the font to a serif font?!?!?
@@ -1106,11 +1103,11 @@ void CalPrintBase::drawSplitDay( QPainter &p, const QDate &qd, int width,
   int offset = mHeaderHeight + mSubHeaderHeight + 10;
   Event::List eventList = mCalendar->events( qd, true );
   Event::List::Iterator it;
-  Event *currEvent;
-  KLocale *local = KGlobal::locale();
   QString dayName;
  
-  dayName = local->weekDayName(qd.dayOfWeek()) + ' ' + ' ' + QString::number(qd.day());
+  const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
+	// TODO: This is untranslatable
+  dayName = calSys->weekDayName(qd.dayOfWeek()) + ' ' + ' ' + QString::number(qd.day());
   p.setBrush(QBrush(black));
 // width+1 to make sure there's a continuous, black bar across the top.
   p.drawRect(offsetLeft, mHeaderHeight + 5, width +1, mSubHeaderHeight);
@@ -1162,7 +1159,7 @@ void CalPrintBase::drawSplitDay( QPainter &p, const QDate &qd, int width,
       startTime -= startHour;
       int startMinuteOff = (int) (minuteInc * 
       currEvent->dtStart().time().minute());
-      int endMinuteOff = (int) (minuteInc * currEvent->dtEnd().time().minute());
+//      int endMinuteOff = (int) (minuteInc * currEvent->dtEnd().time().minute());
       int cheight = (int) (minuteInc * 
                     currEvent->dtStart().secsTo(currEvent->dtEnd()) / 60 );
       p.drawRect(offsetLeft+2, offset+startMinuteOff+startTime*cellHeight, 
@@ -1174,7 +1171,7 @@ void CalPrintBase::drawSplitDay( QPainter &p, const QDate &qd, int width,
   p.setBrush(QBrush(NoBrush));
 }
 
-void CalPrintBase::drawSplitTimes( QPainter &p, int width, int timeWidth,
+void CalPrintBase::drawSplitTimes( QPainter &p, int width, int /*timeWidth*/,
                                    int height )
 {
   int startHour = KOPrefs::instance()->mDayBegins.time().hour();
