@@ -220,25 +220,22 @@ void KOEditorGeneral::disableAlarmEdit(bool disable)
 
 void KOEditorGeneral::enableAlarm( bool enable )
 {
-  alarmDisable( !enable );
+  enableAlarmEdit( enable );
 }
 
 void KOEditorGeneral::alarmDisable(bool disable)
 {
   if (!disable) {
-    mAlarmBell->show();
-    mAlarmButton->show();
-    mAlarmTimeEdit->show();
-    mAlarmSoundButton->show();
-    mAlarmProgramButton->show();
-    mAlarmIncrCombo->show();
+    mAlarmBell->setEnabled(true);
+    mAlarmButton->setEnabled(true);
   } else {
-    mAlarmBell->hide();
-    mAlarmButton->hide();
-    mAlarmTimeEdit->hide();
-    mAlarmSoundButton->hide();
-    mAlarmProgramButton->hide();
-    mAlarmIncrCombo->hide();
+    mAlarmBell->setEnabled(false);
+    mAlarmButton->setEnabled(false);
+    mAlarmButton->setChecked(false);
+    mAlarmTimeEdit->setEnabled(false);
+    mAlarmSoundButton->setEnabled(false);
+    mAlarmProgramButton->setEnabled(false);
+    mAlarmIncrCombo->setEnabled(false);
   }
 }
 
@@ -282,8 +279,21 @@ void KOEditorGeneral::readIncidence(Incidence *event)
   // organizer information
   mOwnerLabel->setText(i18n("Owner: ") + event->organizer());
 #endif
-
-  enableAlarmEdit( !event->doesFloat() );
+  
+  enableAlarmEdit( event->isAlarmEnabled() );
+  
+  if(!event->isAlarmEnabled()) {
+    // TODO: Implement a KPrefsComboItem to solve this in a clean way.
+    int alarmTime;
+    int a[] = { 1,5,10,15,30 };
+    int index = KOPrefs::instance()->mAlarmTime;
+    if (index < 0 || index > 4) {
+      alarmTime = 0;
+    } else {
+      alarmTime = a[index];
+    }
+    mAlarmTimeEdit->setText(QString::number(alarmTime));
+  }
 
   mSecrecyCombo->setCurrentItem(event->secrecy());
 

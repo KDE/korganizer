@@ -95,7 +95,7 @@ void KOEditorGeneralTodo::initTime(QWidget *parent,QBoxLayout *topLayout)
   mDueCheck = new QCheckBox(i18n("Due:"),timeBoxFrame);
   layoutTimeBox->addWidget(mDueCheck,0,0);
   connect(mDueCheck,SIGNAL(toggled(bool)),SLOT(enableDueEdit(bool)));
-  connect(mDueCheck,SIGNAL(toggled(bool)),SLOT(showAlarm(bool)));
+  connect(mDueCheck,SIGNAL(toggled(bool)),SLOT(showAlarm()));
   
   
   mDueDateEdit = new KDateEdit(timeBoxFrame);
@@ -120,7 +120,6 @@ void KOEditorGeneralTodo::initTime(QWidget *parent,QBoxLayout *topLayout)
   layoutTimeBox->addMultiCellWidget(mTimeButton,2,2,0,2);
 
   connect(mTimeButton,SIGNAL(toggled(bool)),SLOT(enableTimeEdits(bool)));
-  connect(mTimeButton,SIGNAL(toggled(bool)),SLOT(showAlarm(bool)));
   
   // some more layouting
   layoutTimeBox->setColStretch(3,1);
@@ -179,12 +178,19 @@ void KOEditorGeneralTodo::setDefaults(QDateTime due,bool allDay)
   KOEditorGeneral::setDefaults(allDay);
 
   mTimeButton->setChecked( !allDay );
+  if(mTimeButton->isChecked()) {
+    mTimeButton->setEnabled(true);
+  }
+  else {
+    mTimeButton->setEnabled(false);
+  }
+  
   enableTimeEdits( !allDay );
   
   mDueCheck->setChecked(false);
   enableDueEdit(false);
 
-  disableAlarmEdit(true);
+  alarmDisable(true);
   
   mStartCheck->setChecked(false);
   enableStartEdit(false);
@@ -213,7 +219,9 @@ void KOEditorGeneralTodo::readTodo(Todo *todo)
     mDueTimeEdit->setTime(todo->dtDue().time());
     mDueCheck->setChecked(true);
   } else {
-    disableAlarmEdit(true);
+    alarmDisable(true);
+    mDueDateEdit->setEnabled(false);
+    mDueTimeEdit->setEnabled(false);
     mDueDateEdit->setDate(QDate::currentDate());
     mDueTimeEdit->setTime(QTime::currentTime());
     mDueCheck->setChecked(false);
@@ -224,6 +232,8 @@ void KOEditorGeneralTodo::readTodo(Todo *todo)
     mStartTimeEdit->setTime(todo->dtStart().time());
     mStartCheck->setChecked(true);
   } else {
+    mStartDateEdit->setEnabled(false);
+    mStartTimeEdit->setEnabled(false);
     mStartDateEdit->setDate(QDate::currentDate());
     mStartTimeEdit->setTime(QTime::currentTime());
     mStartCheck->setChecked(false);
@@ -299,6 +309,14 @@ void KOEditorGeneralTodo::writeTodo(Todo *todo)
 void KOEditorGeneralTodo::enableDueEdit(bool enable)
 {
   mDueDateEdit->setEnabled( enable );
+
+  if(mDueCheck->isChecked() || mStartCheck->isChecked()) {
+    mTimeButton->setEnabled(true);
+  }
+  else {
+    mTimeButton->setEnabled(false);
+    mTimeButton->setChecked(false);
+  }
   
   if (enable) {
     mDueTimeEdit->setEnabled( mTimeButton->isChecked() );
@@ -311,6 +329,14 @@ void KOEditorGeneralTodo::enableStartEdit( bool enable )
 {
   mStartDateEdit->setEnabled( enable );
 
+  if(mDueCheck->isChecked() || mStartCheck->isChecked()) {
+    mTimeButton->setEnabled(true);
+  }
+  else {
+    mTimeButton->setEnabled(false);
+    mTimeButton->setChecked(false);
+  }
+
   if (enable) {
     mStartTimeEdit->setEnabled( mTimeButton->isChecked() );
   } else {
@@ -320,16 +346,21 @@ void KOEditorGeneralTodo::enableStartEdit( bool enable )
 
 void KOEditorGeneralTodo::enableTimeEdits(bool enable)
 {
-  mStartTimeEdit->setEnabled( enable );
-  mDueTimeEdit->setEnabled( enable );
+  if(mStartCheck->isChecked()) {
+    mStartTimeEdit->setEnabled( enable );
+  }
+  if(mDueCheck->isChecked()) {
+    mDueTimeEdit->setEnabled( enable );
+  }
 }
 
-void KOEditorGeneralTodo::showAlarm(bool show) {
-  if(show && mDueCheck->isChecked() && mTimeButton->isChecked()) {
-    disableAlarmEdit(false);
+void KOEditorGeneralTodo::showAlarm()
+{
+  if ( mDueCheck->isChecked() ) {
+    alarmDisable(false);
   }
   else {
-    disableAlarmEdit(true);
+    alarmDisable(true);
   }
 }
 
