@@ -51,15 +51,27 @@ int main(int argc,char **argv)
     }
   }
   
+  plugins = KOCore::self()->availablePrintPlugins();
+  for(it = plugins.begin(); it != plugins.end(); ++it) {
+    kdDebug(5850) << "Print plugin: " << (*it)->desktopEntryName() << " ("
+              << (*it)->name() << ")" << endl;
+    KOrg::PrintPlugin *p = KOCore::self()->loadPrintPlugin(*it);
+    if (!p) {
+      kdDebug(5850) << "Print plugin loading failed." << endl;
+    } else {
+      kdDebug(5850) << "PRINT PLUGIN INFO: " << p->info() << endl;
+    }
+  }
+  
   plugins = KOCore::self()->availableParts();
   for(it = plugins.begin(); it != plugins.end(); ++it) {
     kdDebug(5850) << "Part: " << (*it)->desktopEntryName() << " ("
               << (*it)->name() << ")" << endl;
     KOrg::Part *p = KOCore::self()->loadPart(*it,0);
     if (!p) {
-      kdDebug(5850) << "Plugin loading failed." << endl;
+      kdDebug(5850) << "Part loading failed." << endl;
     } else {
-      kdDebug(5850) << "PLUGIN INFO: " << p->info() << endl;
+      kdDebug(5850) << "PART INFO: " << p->info() << endl;
     }
   }
   
@@ -67,31 +79,12 @@ int main(int argc,char **argv)
   for(it = plugins.begin(); it != plugins.end(); ++it) {
     kdDebug(5850) << "CalendarDecoration: " << (*it)->desktopEntryName() << " ("
               << (*it)->name() << ")" << endl;
-#if 0
-    // FIXME: Update this to calendar decorations
-    KOrg::Part *p = KOCore::self()->loadPart(*it,0,0);
+    KOrg::CalendarDecoration *p = KOCore::self()->loadCalendarDecoration(*it);
     if (!p) {
-      kdDebug(5850) << "Plugin loading failed." << endl;
+      kdDebug(5850) << "Calendar decoration loading failed." << endl;
     } else {
-      kdDebug(5850) << "PLUGIN INFO: " << p->info() << endl;
+      kdDebug(5850) << "CALENDAR DECORATION INFO: " << p->info() << endl;
     }
-#endif
   }
 
-#if 0  
-  KOrg::TextDecoration::List tdl = KOCore::self()->textDecorations();
-  KOrg::TextDecoration *td = tdl.first();
-  while(td) {
-    kdDebug(5850) << "TEXT DECORATION INFO: " << td->info() << endl;
-    td = tdl.next();
-  }
-
-  KOrg::WidgetDecoration *moon = KOCore::self()->loadWidgetDecoration("moon");
-  if (moon) {
-    QWidget *wid = moon->daySmall(0,QDate::currentDate());
-    app.setMainWidget(wid);
-    wid->show();
-    app.exec();
-  }
-#endif
 }
