@@ -50,7 +50,7 @@
 #include "archivedialog.moc"
 
 ArchiveDialog::ArchiveDialog(Calendar *cal,QWidget *parent, const char *name)
-  : KDialogBase (Plain,i18n("Archive / Delete Past Appointments"),
+  : KDialogBase (Plain,i18n("Archive/Delete Past Appointments"),
                  User1|User2|Cancel,User1,parent,name,false,true,
                  i18n("Archive"),i18n("Delete"))
 {
