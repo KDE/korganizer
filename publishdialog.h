@@ -26,16 +26,18 @@
 #include <qlistview.h>
 #include <libkcal/attendee.h>
 
-#include "publishdialog_base.h"
+#include <kdialogbase.h>
 
 using namespace KCal;
 
-class PublishDialog : public PublishDialog_base
+class PublishDialog_base;
+
+class PublishDialog : public KDialogBase
 {
     Q_OBJECT
   public:
     PublishDialog(QWidget* parent=0,const char* name=0,
-                   bool modal=true,WFlags fl=0);
+                   bool modal=true );
     ~PublishDialog();
 
     void addAttendee(Attendee *attendee);
@@ -50,6 +52,8 @@ class PublishDialog : public PublishDialog_base
     void openAddressbook();
     void updateItem();
     void updateInput();
+  protected:
+    PublishDialog_base *mWidget;
 };
 
 #endif // OUTGOINGDIALOG_H

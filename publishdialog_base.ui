@@ -1,6 +1,6 @@
-<!DOCTYPE UI><UI version="3.1" stdsetdef="1">
+<!DOCTYPE UI><UI version="3.2" stdsetdef="1">
 <class>PublishDialog_base</class>
-<widget class="QDialog">
+<widget class="QWidget">
     <property name="name">
         <cstring>PublishDialog_base</cstring>
     </property>
@@ -12,12 +12,15 @@
             <height>379</height>
         </rect>
     </property>
+    <property name="caption">
+        <string>PublishDialog_base</string>
+    </property>
     <grid>
         <property name="name">
             <cstring>unnamed</cstring>
         </property>
         <property name="margin">
-            <number>11</number>
+            <number>0</number>
         </property>
         <property name="spacing">
             <number>6</number>
@@ -69,6 +72,9 @@
             <property name="name">
                 <cstring>mEmailLineEdit</cstring>
             </property>
+            <property name="text">
+                <string></string>
+            </property>
         </widget>
         <widget class="QLineEdit" row="4" column="1">
             <property name="name">
@@ -77,26 +83,35 @@
         </widget>
         <widget class="QPushButton" row="0" column="2">
             <property name="name">
-                <cstring>PushButton10</cstring>
+                <cstring>mNew</cstring>
             </property>
             <property name="text">
                 <string>&amp;New</string>
             </property>
+            <property name="accel">
+                <string>Alt+N</string>
+            </property>
         </widget>
         <widget class="QPushButton" row="2" column="2">
             <property name="name">
-                <cstring>PushButton12</cstring>
+                <cstring>mSelectAddressee</cstring>
             </property>
             <property name="text">
                 <string>Select &amp;Addressee...</string>
             </property>
+            <property name="accel">
+                <string>Alt+A</string>
+            </property>
         </widget>
         <widget class="QPushButton" row="1" column="2">
             <property name="name">
-                <cstring>PushButton11</cstring>
+                <cstring>mRemove</cstring>
             </property>
             <property name="text">
                 <string>&amp;Remove</string>
+            </property>
+            <property name="accel">
+                <string>Alt+R</string>
             </property>
         </widget>
         <spacer row="3" column="2" rowspan="3" colspan="1">
@@ -116,127 +131,15 @@
                 </size>
             </property>
         </spacer>
-        <widget class="Line" row="6" column="0" rowspan="1" colspan="3">
-            <property name="name">
-                <cstring>Line2</cstring>
-            </property>
-            <property name="frameShape">
-                <enum>HLine</enum>
-            </property>
-            <property name="frameShadow">
-                <enum>Sunken</enum>
-            </property>
-            <property name="orientation">
-                <enum>Horizontal</enum>
-            </property>
-        </widget>
-        <widget class="QLayoutWidget" row="7" column="0" rowspan="1" colspan="3">
-            <property name="name">
-                <cstring>layout95</cstring>
-            </property>
-            <hbox>
-                <property name="name">
-                    <cstring>unnamed</cstring>
-                </property>
-                <spacer>
-                    <property name="name">
-                        <cstring>Spacer17</cstring>
-                    </property>
-                    <property name="orientation">
-                        <enum>Horizontal</enum>
-                    </property>
-                    <property name="sizeType">
-                        <enum>Expanding</enum>
-                    </property>
-                    <property name="sizeHint">
-                        <size>
-                            <width>20</width>
-                            <height>20</height>
-                        </size>
-                    </property>
-                </spacer>
-                <widget class="QPushButton">
-                    <property name="name">
-                        <cstring>PushButton9</cstring>
-                    </property>
-                    <property name="text">
-                        <string>&amp;OK</string>
-                    </property>
-                    <property name="default">
-                        <bool>true</bool>
-                    </property>
-                </widget>
-                <widget class="QPushButton">
-                    <property name="name">
-                        <cstring>PushButton8</cstring>
-                    </property>
-                    <property name="text">
-                        <string>&amp;Cancel</string>
-                    </property>
-                </widget>
-            </hbox>
-        </widget>
     </grid>
 </widget>
-<connections>
-    <connection>
-        <sender>PushButton10</sender>
-        <signal>clicked()</signal>
-        <receiver>PublishDialog_base</receiver>
-        <slot>addItem()</slot>
-    </connection>
-    <connection>
-        <sender>PushButton11</sender>
-        <signal>clicked()</signal>
-        <receiver>PublishDialog_base</receiver>
-        <slot>removeItem()</slot>
-    </connection>
-    <connection>
-        <sender>PushButton12</sender>
-        <signal>clicked()</signal>
-        <receiver>PublishDialog_base</receiver>
-        <slot>openAddressbook()</slot>
-    </connection>
-    <connection>
-        <sender>PushButton9</sender>
-        <signal>clicked()</signal>
-        <receiver>PublishDialog_base</receiver>
-        <slot>accept()</slot>
-    </connection>
-    <connection>
-        <sender>mNameLineEdit</sender>
-        <signal>textChanged(const QString&amp;)</signal>
-        <receiver>PublishDialog_base</receiver>
-        <slot>updateItem()</slot>
-    </connection>
-    <connection>
-        <sender>mEmailLineEdit</sender>
-        <signal>textChanged(const QString&amp;)</signal>
-        <receiver>PublishDialog_base</receiver>
-        <slot>updateItem()</slot>
-    </connection>
-    <connection>
-        <sender>PushButton8</sender>
-        <signal>clicked()</signal>
-        <receiver>PublishDialog_base</receiver>
-        <slot>reject()</slot>
-    </connection>
-</connections>
 <tabstops>
     <tabstop>mAddressListView</tabstop>
     <tabstop>mNameLineEdit</tabstop>
     <tabstop>mEmailLineEdit</tabstop>
-    <tabstop>PushButton10</tabstop>
-    <tabstop>PushButton11</tabstop>
-    <tabstop>PushButton12</tabstop>
-    <tabstop>PushButton9</tabstop>
-    <tabstop>PushButton8</tabstop>
+    <tabstop>mNew</tabstop>
+    <tabstop>mRemove</tabstop>
+    <tabstop>mSelectAddressee</tabstop>
 </tabstops>
-<slots>
-    <slot access="protected">addItem()</slot>
-    <slot access="protected">removeItem()</slot>
-    <slot access="protected">openAddressbook()</slot>
-    <slot access="protected">updateItem()</slot>
-</slots>
 <layoutdefaults spacing="6" margin="11"/>
 </UI>
