@@ -28,7 +28,6 @@
 
 class FreeBusyUrlWidget;
 class KLineEdit;
-class KConfig;
 
 namespace KCal {
 class Attendee;
@@ -61,7 +60,6 @@ class FreeBusyUrlWidget : public QWidget
 
   private:
     KLineEdit *mUrlEdit;
-    KConfig *mConfig;
     KCal::Attendee *mAttendee;
 };
 

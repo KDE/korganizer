@@ -25,12 +25,12 @@
 #include "freebusyurldialog.h"
 
 #include <libkcal/attendee.h>
+#include <libkcal/freebusyurlstore.h>
 
 #include <klineedit.h>
 #include <klocale.h>
 #include <kdebug.h>
 #include <kstandarddirs.h>
-#include <kconfig.h>
 
 #include <qlayout.h>
 #include <qlabel.h>
@@ -71,33 +71,30 @@ FreeBusyUrlWidget::FreeBusyUrlWidget( KCal::Attendee *attendee, QWidget *parent,
 
   mUrlEdit = new KLineEdit( this );
   topLayout->addWidget( mUrlEdit );
-
-  QString configFile = locateLocal( "data", "korganizer/freebusyurls" );
-  mConfig = new KConfig( configFile );
 }
 
 FreeBusyUrlWidget::~FreeBusyUrlWidget()
 {
-  delete mConfig;
 }
 
 void FreeBusyUrlWidget::loadConfig()
 {
   kdDebug() << "FreeBusyUrlWidget::loadConfig()" << endl;
 
-  mConfig->setGroup( mAttendee->email() );
-  
-  mUrlEdit->setText( mConfig->readEntry( "url" ) );
+  QString url = KCal::FreeBusyUrlStore::self()->readUrl( mAttendee->email() );
+
+  mUrlEdit->setText( url );
 }
 
 void FreeBusyUrlWidget::saveConfig()
 {
   kdDebug() << "FreeBusyUrlWidget::saveConfig()" << endl;
 
-  mConfig->setGroup( mAttendee->email() );
+  QString url = mUrlEdit->text();
+  
+  KCal::FreeBusyUrlStore::self()->writeUrl( mAttendee->email(), url );
 
-  mConfig->writeEntry( "url", mUrlEdit->text() );
-  mConfig->sync();
+  KCal::FreeBusyUrlStore::self()->sync();
 }
 
 #include "freebusyurldialog.moc"
