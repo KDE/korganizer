@@ -32,6 +32,7 @@
 #include <qfile.h>
 
 #include <kglobal.h>
+#include <kdebug.h>
 #include <kiconloader.h>
 #include <kstddirs.h>
 #include <kstdaccel.h>
@@ -61,7 +62,7 @@ KOWindowList *KOrganizer::windowList = 0;
 KOrganizer::KOrganizer(const char *name) 
   : KMainWindow(0,name)
 {
-  qDebug("KOrganizer::KOrganizer()");
+  kdDebug() << "KOrganizer::KOrganizer()" << endl;
 
   mTempFile = 0;
   mActive = false;
@@ -105,19 +106,19 @@ KOrganizer::KOrganizer(const char *name)
   // Update state of paste action
   mCalendarView->checkClipboard();
   
-  qDebug("KOrganizer::KOrganizer() done");
+  kdDebug() << "KOrganizer::KOrganizer() done" << endl;
 }
 
 KOrganizer::~KOrganizer()
 {
-  qDebug("~KOrganizer()");
+  kdDebug() << "~KOrganizer()" << endl;
 
   if (mTempFile) delete mTempFile;
 
   // Take this window out of the window list.
   windowList->removeWindow(this);
 
-  qDebug("~KOrganizer() done");
+  kdDebug() << "~KOrganizer() done" << endl;
 }
 
 
@@ -147,7 +148,7 @@ void KOrganizer::readSettings()
 
 void KOrganizer::writeSettings()
 {
-  qDebug("KOrganizer::writeSettings");
+  kdDebug() << "KOrganizer::writeSettings" << endl;
 
   KConfig *config(kapp->config());
 
@@ -448,7 +449,7 @@ KURL KOrganizer::getSaveURL()
 
   url.setFileName(filename);
 
-  qDebug("KOrganizer::getSaveURL(): url: %s",url.url().latin1());
+  kdDebug() << "KOrganizer::getSaveURL(): url: " << url.url() << endl;
 
   return url;
 }
@@ -505,7 +506,7 @@ bool KOrganizer::queryExit()
 
 void KOrganizer::setTitle()
 {
-//  qDebug("KOrganizer::setTitle");
+//  kdDebug() << "KOrganizer::setTitle" << endl;
 
   QString tmpStr;
 
@@ -528,7 +529,7 @@ void KOrganizer::setTitle()
 
 void KOrganizer::checkAutoSave()
 {
-  qDebug("KOrganizer::checkAutoSave()");
+  kdDebug() << "KOrganizer::checkAutoSave()" << endl;
 
   // Don't save if auto save interval is zero
   if (KOPrefs::instance()->mAutoSaveInterval == 0) return;
@@ -543,7 +544,7 @@ void KOrganizer::checkAutoSave()
 // Configuration changed as a result of the options dialog.
 void KOrganizer::updateConfig()
 {
-  qDebug("KOrganizer::updateConfig()");
+  kdDebug() << "KOrganizer::updateConfig()" << endl;
 
   if (KOPrefs::instance()->mAutoSave && !mAutoSaveTimer->isActive()) {
     checkAutoSave();
@@ -580,7 +581,7 @@ void KOrganizer::configureToolbars()
 
 bool KOrganizer::openURL( const KURL &url )
 {
-  qDebug("KOrganizer::openURL()");
+  kdDebug() << "KOrganizer::openURL()" << endl;
   if (url.isMalformed()) return false;
   if (!closeURL()) return false;
   mURL = url;
@@ -598,7 +599,7 @@ bool KOrganizer::openURL( const KURL &url )
 
 bool KOrganizer::mergeURL( const KURL &url )
 {
-  qDebug("KOrganizer::mergeURL()");
+  kdDebug() << "KOrganizer::mergeURL()" << endl;
   if (url.isMalformed()) return false;
 
   QString tmpFile;
@@ -614,7 +615,7 @@ bool KOrganizer::mergeURL( const KURL &url )
 
 bool KOrganizer::closeURL()
 {
-  qDebug("KOrganizer::closeURL()");
+  kdDebug() << "KOrganizer::closeURL()" << endl;
 
   if (KOPrefs::instance()->mAutoSave && !mURL.isEmpty()) {
     // Save automatically, when auto save is enabled.  
@@ -656,14 +657,14 @@ bool KOrganizer::closeURL()
 bool KOrganizer::saveURL()
 {
   if (!mCalendarView->saveCalendar(mFile)) {
-    qDebug("KOrganizer::saveURL(): calendar view save failed.");
+    kdDebug() << "KOrganizer::saveURL(): calendar view save failed." << endl;
     return false;
   }
   
   if (mActive) {
-    qDebug("KOrganizer::saveURL(): Notify alarm daemon");
+    kdDebug() << "KOrganizer::saveURL(): Notify alarm daemon" << endl;
     if (!kapp->dcopClient()->send("alarmd","ad","reloadCal()","")) {
-      qDebug("KOrganizer::saveURL(): dcop send failed");
+      kdDebug() << "KOrganizer::saveURL(): dcop send failed" << endl;
     }
   }
 
@@ -687,7 +688,7 @@ bool KOrganizer::saveURL()
 bool KOrganizer::saveAsURL( const KURL & kurl )
 {
   if (kurl.isMalformed()) {
-    qDebug("KOrganizer::saveAsURL(): Malformed URL.");
+    kdDebug() << "KOrganizer::saveAsURL(): Malformed URL." << endl;
     return false;
   }
   mURL = kurl; // Store where to upload
@@ -709,9 +710,9 @@ bool KOrganizer::saveAsURL( const KURL & kurl )
     // otherwise, we already had a temp file
   }
   bool success = saveURL(); // Save local file and upload local file
-  qDebug("KOrganizer::saveAsURL() %s",mURL.prettyURL().latin1());
+  kdDebug() << "KOrganizer::saveAsURL() " << mURL.prettyURL() << endl;
   if (success) mRecent->addURL(mURL);
-  else qDebug("  failed");
+  else kdDebug() << "  failed" << endl;
   return success;
 }
 
@@ -736,7 +737,7 @@ void KOrganizer::makeActive()
     config->writeEntry("Active Calendar",mFile);
     config->sync();
     if (!kapp->dcopClient()->send("alarmd","ad","reloadCal()","")) {
-      qDebug("KOrganizer::saveURL(): dcop send failed");
+      kdDebug() << "KOrganizer::saveURL(): dcop send failed" << endl;
     }
     setActive();
     emit calendarActivated(this);
@@ -747,7 +748,7 @@ void KOrganizer::makeActive()
 
 void KOrganizer::dumpText(const QString &str)
 {
-  qDebug("KOrganizer::dumpText(): %s",str.latin1());
+  kdDebug() << "KOrganizer::dumpText(): " << str << endl;
 }
 
 void KOrganizer::toggleToolBars(bool toggle)
@@ -757,7 +758,7 @@ void KOrganizer::toggleToolBars(bool toggle)
     if (toggle) bar->show();
     else bar->hide();
   } else {
-    qDebug("KOrganizer::toggleToolBars(): Toolbar not found");
+    kdDebug() << "KOrganizer::toggleToolBars(): Toolbar not found" << endl;
   }
 }
 

@@ -16,6 +16,7 @@
 #include <qdatetime.h>
 
 #include <kapp.h>
+#include <kdebug.h>
 #include <klocale.h>
 #include <kglobal.h>
 #include <kfontdialog.h>
@@ -743,7 +744,7 @@ void KOOptionsDialog::readConfig()
 
 void KOOptionsDialog::writeConfig()
 {
-  qDebug("KOOptionsDialog::writeConfig()");
+  kdDebug() << "KOOptionsDialog::writeConfig()" << endl;
 
   KOPrefs::instance()->mBcc = mBccCheck->isChecked();
   KOPrefs::instance()->mAutoSave = mAutoSaveCheck->isChecked();
@@ -754,7 +755,7 @@ void KOOptionsDialog::writeConfig()
   KOPrefs::instance()->mEmail = mEmailEdit->text();
   KOPrefs::instance()->mAdditional = mAdditionalEdit->text();
   KOPrefs::instance()->mHoliday = *mHolidayList.at(mHolidayCombo->currentItem());
-  qDebug("%s", KOPrefs::instance()->mHoliday.latin1());
+  kdDebug() << KOPrefs::instance()->mHoliday << endl;
 
   KOPrefs::instance()->mTimeZone = mTimeZoneCombo->currentText();
   KOPrefs::instance()->mStartTime = mStartTimeSpin->value();

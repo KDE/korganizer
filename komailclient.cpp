@@ -126,8 +126,7 @@ bool KOMailClient::sendMail(const QString &from,const QString &to,
                             const QString &subject,const QString &body,
                             bool bcc)
 {
-  qDebug("KOMailClient::sendMail():\nFrom: %s\nTo: %s\nSubject: %s\nBody: \n%s",
-         from.latin1(),to.latin1(),subject.latin1(),body.latin1());
+  kdDebug() << "KOMailClient::sendMail():\nFrom: " << from << "\nTo: " << to << "\nSubject: " << subject << "\nBody: \n" << body << endl;
 
   bool needHeaders = true;
 

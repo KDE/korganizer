@@ -11,6 +11,7 @@
 
 #include <kstddirs.h>
 #include <kglobal.h>
+#include <kdebug.h>
 #include <kaboutdata.h>
 #include <kcmdlineargs.h>
 #include <klocale.h>
@@ -65,7 +66,7 @@ int main (int argc, char **argv)
     exit(0);
 
   KOrganizerApp app;
-  qDebug("app.exec");
+  kdDebug() << "app.exec" << endl;
   return app.exec();
-  qDebug("~app.exec");
+  kdDebug() << "~app.exec" << endl;
 }

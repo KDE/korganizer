@@ -7,6 +7,7 @@
 #include <qlayout.h>
 
 #include <kapp.h>
+#include <kdebug.h>
 #include <klocale.h>
 #include <kglobal.h>
 #include <kiconloader.h>
@@ -31,7 +32,7 @@ KDateNavigator::KDateNavigator(QWidget *parent,
   QGridLayout *topLayout = new QGridLayout(this,8,8);
 
   if (! startDate.isValid()) {
-    qDebug("KDateNavigator::KDateNavigator(): an invalid date was passed as a parameter!");
+    kdDebug() << "KDateNavigator::KDateNavigator(): an invalid date was passed as a parameter!" << endl;
     startDate = QDate::currentDate();
   }
 
@@ -347,7 +348,7 @@ const QDateList KDateNavigator::getSelected()
   for (tmpDate = selectedDates.first(); tmpDate;
        tmpDate = selectedDates.next()) {
     if (!tmpDate->isValid()) {
-      qDebug("Null or invalid date selected!!!");
+      kdDebug() << "Null or invalid date selected!!!" << endl;
       selectedDates.clear();
       selectedDates.append(new QDate(QDate::currentDate()));
       emit datesSelected(selectedDates);
@@ -480,7 +481,7 @@ void KDateNavigator::fixupSelectedDates(int, int)
   for (int i = 0; i < 42; i++) {
     if (buttons[i]->isSelected()) {
       if (! buttons[i]->date().isValid())
-        qDebug("KDateNavigator::fixupSelectedDates(): invalid date stored on buttons[%i]; ignoring", i);
+        kdDebug() << "KDateNavigator::fixupSelectedDates(): invalid date stored on buttons[" << i << "]; ignoring" << endl;
       else
         selectedDates.inSort(new QDate(buttons[i]->date()));
     }
@@ -501,7 +502,7 @@ void KDateNavigator::selectDates(const QDateList dateList)
       if (!it.current()->isValid()) {
         selectedDates.clear();
         selectedDates.append(new QDate(QDate::currentDate()));
-        qDebug("KDateNavigator::selectDates(const QDateList): an invalid date was passed as a parameter!");
+        kdDebug() << "KDateNavigator::selectDates(const QDateList): an invalid date was passed as a parameter!" << endl;
         emit datesSelected(selectedDates);
       }
     }
@@ -524,7 +525,7 @@ void KDateNavigator::selectDates(const QDateList dateList)
 void KDateNavigator::selectDates(QDate qd)
 {
   if (! qd.isValid()) {
-    qDebug("KDateNavigator::selectDates(QDate): an invalid date was passed as a parameter!");
+    kdDebug() << "KDateNavigator::selectDates(QDate): an invalid date was passed as a parameter!" << endl;
     qd = QDate::currentDate();
   }
 
@@ -546,7 +547,7 @@ void KDateNavigator::addSelection(QDate selDate, int index, bool ctrlPressed)
   int extraDays;
 
   if (! selDate.isValid()) {
-    qDebug("KDateNavigator::addSelection(): invalid date passed as a parameter!");
+    kdDebug() << "KDateNavigator::addSelection(): invalid date passed as a parameter!" << endl;
     return;
   }
 

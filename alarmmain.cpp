@@ -12,6 +12,7 @@
 */
 
 #include <stdlib.h>
+#include <kdebug.h>
 
 //#include <kglobal.h>
 //#include <kstddirs.h>
@@ -52,7 +53,7 @@ int main(int argc, char **argv)
     exit(0);
 
   AlarmApp app;
-  qDebug("alarmdaemon: app.exec()");
+  kdDebug() << "alarmdaemon: app.exec()" << endl;
   return app.exec();
-  qDebug("alarmdaemon: app.exec() done");
+  kdDebug() << "alarmdaemon: app.exec() done" << endl;
 }

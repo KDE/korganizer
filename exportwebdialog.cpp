@@ -19,6 +19,7 @@
 #include <qlabel.h>
 
 #include <klocale.h>
+#include <kdebug.h>
 #include <kfiledialog.h>
 #include <ktempfile.h>
 #include <kurl.h>
@@ -150,7 +151,7 @@ void ExportWebDialog::setupAdvancedPage()
 
 void ExportWebDialog::browseOutputFile()
 {
-//  qDebug("ExportWebDialog::browseOutputFile()");
+//  kdDebug() << "ExportWebDialog::browseOutputFile()" << endl;
 
   KURL u = KFileDialog::getSaveURL();
   if(!u.isEmpty()) mOutputFileEdit->setText(u.prettyURL());
@@ -162,18 +163,18 @@ void ExportWebDialog::browseOutputFile()
 
 void ExportWebDialog::exportWebPage()
 {
-  qDebug ("ExportWebDialog::exportWebPage()");
+  kdDebug() << "ExportWebDialog::exportWebPage()" << endl;
   KTempFile tmpFile;
-  qDebug ("ExportWebDialog::exportWebPage() tmpFile");
+  kdDebug() << "ExportWebDialog::exportWebPage() tmpFile" << endl;
 //  tmpFile.setAutoDelete(true);
   QTextStream *ts = tmpFile.textStream();
-  qDebug ("ExportWebDialog::exportWebPage() textStream");
+  kdDebug() << "ExportWebDialog::exportWebPage() textStream" << endl;
   
   // Write HTML header
   *ts << "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0 Transitional//EN\" ";
   *ts << "\"http://www.w3.org/TR/REC-html40/loose.dtd\">\n";
 
-  qDebug ("ExportWebDialog::exportWebPage() header");
+  kdDebug() << "ExportWebDialog::exportWebPage() header" << endl;
   
   *ts << "<HTML><HEAD>" << endl;
   *ts << "  <TITLE>" << i18n("KOrganizer To-Do List") << "</TITLE>\n";
@@ -195,7 +196,7 @@ void ExportWebDialog::exportWebPage()
   
   // Write Event List
   if (mCbEvent->isChecked()) {
-    qDebug ("ExportWebDialog::exportWebPage() evlist");
+    kdDebug() << "ExportWebDialog::exportWebPage() evlist" << endl;
     *ts << "<H1>" << i18n("KOrganizer Calendar") << "</H1>\n";
 
     // Write HTML page content
@@ -204,14 +205,14 @@ void ExportWebDialog::exportWebPage()
 
   // Write Todo List
   if (mCbTodo->isChecked()) {
-    qDebug ("ExportWebDialog::exportWebPage() todolist");
+    kdDebug() << "ExportWebDialog::exportWebPage() todolist" << endl;
     *ts << "<H1>" << i18n("KOrganizer To-Do List") << "</H1>\n";
 
     // Write HTML page content
     createHtmlTodoList(ts);
   }
 
-  qDebug ("ExportWebDialog::exportWebPage() trailer");
+  kdDebug() << "ExportWebDialog::exportWebPage() trailer" << endl;
 
   // Write KOrganizer trailer
   *ts << "<P>" << i18n("This page was created by <A HREF=\"http://"
@@ -228,26 +229,26 @@ void ExportWebDialog::exportWebPage()
   // Remember destination.
   KOPrefs::instance()->mHtmlExportFile = mOutputFileEdit->text();
 
-  qDebug ("ExportWebDialog::exportWebPage() move");
+  kdDebug() << "ExportWebDialog::exportWebPage() move" << endl;
   
   KIO::Job *job = KIO::move(src,dest);
   connect(job,SIGNAL(result(KIO::Job *)),SLOT(slotResult(KIO::Job *)));
-  qDebug ("ExportWebDialog::exportWebPage() done");
+  kdDebug() << "ExportWebDialog::exportWebPage() done" << endl;
 }
 
 void ExportWebDialog::slotResult(KIO::Job *job)
 {
-  qDebug("slotResult");
+  kdDebug() << "slotResult" << endl;
   int err = job->error();
   if (err)
   {
-    qDebug("Error %d: %s",err,job->errorString().latin1());
+    kdDebug() << "Error " << err << ": " << job->errorString() << endl;
     job->showErrorDialog();
   } else {
-    qDebug("No Error");
+    kdDebug() << "No Error" << endl;
     accept();
   }
-  qDebug("slotResult done");
+  kdDebug() << "slotResult done" << endl;
 }
 
 void ExportWebDialog::createHtmlEventList (QTextStream *ts)
@@ -273,7 +274,7 @@ void ExportWebDialog::createHtmlEventList (QTextStream *ts)
   QDate dt = mFromDate->getDate();
   for (dt = mFromDate->getDate(); dt <= mToDate->getDate();
        dt = dt.addDays(1)) {
-    qDebug("Getting events for %s",dt.toString().latin1());
+    kdDebug() << "Getting events for " << dt.toString() << endl;
     QList<KOEvent> events = mCalendar->getEventsForDate(dt,true);
     if (events.count()) {
       *ts << "  <TR><TD COLSPAN=" << QString::number(columns)
@@ -293,7 +294,7 @@ void ExportWebDialog::createHtmlEventList (QTextStream *ts)
 void ExportWebDialog::createHtmlEvent (QTextStream *ts, KOEvent *event,
                                        QDate date)
 {
-  qDebug("ExportWebDialog::createHtmlEvent()");
+  kdDebug() << "ExportWebDialog::createHtmlEvent()" << endl;
   *ts << "  <TR>\n";
 
   *ts << "    <TD CLASS=sum>\n";
@@ -388,7 +389,7 @@ void ExportWebDialog::createHtmlTodoList (QTextStream *ts)
 
 void ExportWebDialog::createHtmlTodo (QTextStream *ts,KOEvent *todo)
 {
-  qDebug("ExportWebDialog::createHtmlTodo()");
+  kdDebug() << "ExportWebDialog::createHtmlTodo()" << endl;
 
   bool completed = todo->getStatus() == KOEvent::COMPLETED;
   QList<KOEvent> relations = todo->getRelations();

@@ -32,6 +32,7 @@
 #include <qclipboard.h>
 
 #include <kglobal.h>
+#include <kdebug.h>
 #include <kiconloader.h>
 #include <kstddirs.h>
 #include <kstdaccel.h>
@@ -56,7 +57,7 @@
 CalendarView::CalendarView(QWidget *parent,const char *name) 
   : QWidget(parent,name)
 {
-  qDebug("CalendarView::CalendarView()");
+  kdDebug() << "CalendarView::CalendarView()" << endl;
 
   currentView = 0;
   todoView = 0;
@@ -121,7 +122,7 @@ CalendarView::CalendarView(QWidget *parent,const char *name)
   // List classnames of available views
   QObject *obj;
   for(obj=mCalendarViews.first();obj;obj=mCalendarViews.next())
-    qDebug("calViews: %s",obj->className());
+    kdDebug() << "calViews: " << obj->className() << endl;
 */  
 
   // set up printing object
@@ -151,12 +152,12 @@ CalendarView::CalendarView(QWidget *parent,const char *name)
   connect(QApplication::clipboard(),SIGNAL(dataChanged()),
           SLOT(checkClipboard()));
 
-  qDebug("CalendarView::CalendarView() done");
+  kdDebug() << "CalendarView::CalendarView() done" << endl;
 }
 
 CalendarView::~CalendarView()
 {
-  qDebug("~CalendarView()");
+  kdDebug() << "~CalendarView()" << endl;
   hide();
 
   // clean up our calender object
@@ -164,13 +165,13 @@ CalendarView::~CalendarView()
   delete mCalendar;
   mCalendar = 0;
 
-  qDebug("~CalendarView() done");
+  kdDebug() << "~CalendarView() done" << endl;
 }
 
 
 bool CalendarView::openCalendar(QString filename)
 {
-  qDebug("CalendarView::openCalendar()");
+  kdDebug() << "CalendarView::openCalendar()" << endl;
   if (initCalendar(filename)) {
     setModified(false);
     updateView();
@@ -183,7 +184,7 @@ bool CalendarView::openCalendar(QString filename)
 
 bool CalendarView::mergeCalendar(QString filename)
 {
-  qDebug("CalendarView::mergeCalendar()");
+  kdDebug() << "CalendarView::mergeCalendar()" << endl;
   if (mCalendar->load(filename)) {
     setModified(true);
     updateView();
@@ -196,7 +197,7 @@ bool CalendarView::mergeCalendar(QString filename)
 
 bool CalendarView::saveCalendar(QString filename)
 {
-  qDebug("CalendarView::saveCalendar(): %s",filename.latin1());
+  kdDebug() << "CalendarView::saveCalendar(): " << filename << endl;
   mCalendar->save(filename);
   
   // We should check for errors here.
@@ -208,7 +209,7 @@ bool CalendarView::saveCalendar(QString filename)
 
 void CalendarView::closeCalendar()
 {
-  qDebug("CalendarView::closeCalendar()");
+  kdDebug() << "CalendarView::closeCalendar()" << endl;
 
   // child windows no longer valid
   emit closingDown();
@@ -236,7 +237,7 @@ bool CalendarView::initCalendar(QString filename)
   // read the settings from the config file
   readSettings();
 
-  qDebug("CalendarView::initCalendar(): filename: %s",filename.latin1());
+  kdDebug() << "CalendarView::initCalendar(): filename: " << filename << endl;
   
   QApplication::setOverrideCursor(waitCursor);
 
@@ -259,7 +260,7 @@ bool CalendarView::initCalendar(QString filename)
 
 void CalendarView::readSettings()
 {
-//  qDebug("CalendarView::readSettings()");
+//  kdDebug() << "CalendarView::readSettings()" << endl;
 
   QString str;
 
@@ -308,7 +309,7 @@ void CalendarView::readCurrentView()
 
 void CalendarView::writeSettings()
 {
-//  qDebug("CalendarView::writeSettings");
+//  kdDebug() << "CalendarView::writeSettings" << endl;
 
   KConfig config(locateLocal("config", "korganizerrc")); 
 
@@ -470,7 +471,7 @@ void CalendarView::hookupSignals()
 
 void CalendarView::updateConfig()
 {
-  qDebug("CalendarView::updateConfig()");
+  kdDebug() << "CalendarView::updateConfig()" << endl;
   emit configChanged();
 }
 
@@ -486,7 +487,7 @@ void CalendarView::eventAdded(KOEvent *event)
 
 void CalendarView::eventToBeDeleted(KOEvent *)
 {
-  qDebug("CalendarView::eventToBeDeleted(): to be implemented");
+  kdDebug() << "CalendarView::eventToBeDeleted(): to be implemented" << endl;
 }
 
 void CalendarView::eventDeleted()
@@ -498,7 +499,7 @@ void CalendarView::eventDeleted()
 // total update mode, but they SHOULD be recoded to be more refresh-efficient.
 void CalendarView::changeEventDisplay(KOEvent *which, int action)
 {
-//  qDebug("CalendarView::changeEventDisplay");
+//  kdDebug() << "CalendarView::changeEventDisplay" << endl;
 
   dateNavigator->updateView();
   if (searchDlg)
@@ -590,7 +591,7 @@ void CalendarView::changeView(KOBaseView *view)
 
 void CalendarView::updateView(const QDateList selectedDates)
 {
-//  qDebug("CalendarView::updateView()");
+//  kdDebug() << "CalendarView::updateView()" << endl;
 
   QDateList tmpList(false);
   tmpList = selectedDates;
@@ -692,7 +693,7 @@ void CalendarView::edit_options()
 
 void CalendarView::newEvent()
 {
-  qDebug("CalendarView::newEvent()");
+  kdDebug() << "CalendarView::newEvent()" << endl;
   newEvent(QDate::currentDate());
 }
 
@@ -991,7 +992,7 @@ void CalendarView::deleteEvent(KOEvent *anEvent)
         tmpList = dateNavigator->getSelected();
         qd = *(tmpList.first());
         if (!qd.isValid()) {
-          qDebug("no date selected, or invalid date");
+          kdDebug() << "no date selected, or invalid date" << endl;
           qApp->beep();
           return;
         }
@@ -1156,7 +1157,7 @@ void CalendarView::print()
 
 void CalendarView::printPreview()
 {
-  qDebug("CalendarView::printPreview()");
+  kdDebug() << "CalendarView::printPreview()" << endl;
   
   QDateList tmpDateList(FALSE);
 
@@ -1181,7 +1182,7 @@ void CalendarView::eventUpdated(KOEvent *)
 
 void CalendarView::selectWeek(QDate weekstart)
 {
-//  qDebug("CalendarView::selectWeek(): %s",weekstart.toString().latin1());
+//  kdDebug() << "CalendarView::selectWeek(): " << weekstart.toString() << endl;
 
   QDateList week;
 
@@ -1236,17 +1237,17 @@ void CalendarView::emitEventsSelected()
 void CalendarView::checkClipboard()
 {
   if (VCalDrag::canDecode(QApplication::clipboard()->data())) {
-    qDebug("CalendarView::checkClipboard() true");
+    kdDebug() << "CalendarView::checkClipboard() true" << endl;
     emit pasteEnabled(true);
   } else {
-    qDebug("CalendarView::checkClipboard() false");
+    kdDebug() << "CalendarView::checkClipboard() false" << endl;
     emit pasteEnabled(false);
   }
 }
 
 void CalendarView::selectDates(const QDateList selectedDates)
 {
-//  qDebug("CalendarView::selectDates()");
+//  kdDebug() << "CalendarView::selectDates()" << endl;
   if (currentView) {
     updateView(selectedDates);
   } else {

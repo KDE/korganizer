@@ -4,6 +4,7 @@
 #include <qheader.h>
 
 #include <kapp.h>
+#include <kdebug.h>
 #include <klocale.h>
 #include <kglobal.h>
 #include <kiconloader.h>
@@ -75,7 +76,7 @@ KOTodoListView::KOTodoListView(CalObject *calendar,QWidget *parent,
 
 void KOTodoListView::contentsDragEnterEvent(QDragEnterEvent *e)
 {
-//  qDebug("KOTodoListView::contentsDragEnterEvent");
+//  kdDebug() << "KOTodoListView::contentsDragEnterEvent" << endl;
   if (!VCalDrag::canDecode(e)) {
     e->ignore();
     return;
@@ -87,7 +88,7 @@ void KOTodoListView::contentsDragEnterEvent(QDragEnterEvent *e)
 
 void KOTodoListView::contentsDragMoveEvent(QDragMoveEvent *e)
 {
-//  qDebug("KOTodoListView::contentsDragMoveEvent");
+//  kdDebug() << "KOTodoListView::contentsDragMoveEvent" << endl;
 
   if (!VCalDrag::canDecode(e)) {
     e->ignore();
@@ -99,7 +100,7 @@ void KOTodoListView::contentsDragMoveEvent(QDragMoveEvent *e)
 
 void KOTodoListView::contentsDragLeaveEvent(QDragLeaveEvent *)
 {
-//  qDebug("KOTodoListView::contentsDragLeaveEvent");
+//  kdDebug() << "KOTodoListView::contentsDragLeaveEvent" << endl;
 
   setCurrentItem(mOldCurrent);
   setSelected(mOldCurrent,true);
@@ -107,7 +108,7 @@ void KOTodoListView::contentsDragLeaveEvent(QDragLeaveEvent *)
 
 void KOTodoListView::contentsDropEvent(QDropEvent *e)
 {
-//  qDebug("KOTodoListView::contentsDropEvent");
+//  kdDebug() << "KOTodoListView::contentsDropEvent" << endl;
 
   if (!VCalDrag::canDecode(e)) {
     e->ignore();
@@ -127,7 +128,7 @@ void KOTodoListView::contentsDropEvent(QDropEvent *e)
     KOEvent *existingTodo = mCalendar->getTodo(todo->getVUID());
       
     if(existingTodo) {
-//      qDebug("Drop existing Todo");
+//      kdDebug() << "Drop existing Todo" << endl;
       KOEvent *to = destinationEvent;
       while(to) {
         if (to->getVUID() == todo->getVUID()) {
@@ -143,13 +144,13 @@ void KOTodoListView::contentsDropEvent(QDropEvent *e)
       emit todoDropped(todo);
       delete todo;
     } else {
-//      qDebug("Drop new Todo");
+//      kdDebug() << "Drop new Todo" << endl;
       todo->setRelatedTo(destinationEvent);
       mCalendar->addTodo(todo);
       emit todoDropped(todo);
     }
   } else {
-    qDebug("KOTodoListView::contentsDropEvent(): Todo from drop not decodable");
+    kdDebug() << "KOTodoListView::contentsDropEvent(): Todo from drop not decodable" << endl;
     e->ignore();
   }
 }
@@ -180,11 +181,11 @@ void KOTodoListView::contentsMouseMoveEvent(QMouseEvent* e)
     mMousePressed = false;
     QListViewItem *item = itemAt(contentsToViewport(mPressPos));
     if (item) {
-//      qDebug("Start Drag for item %s",item->text(0).latin1());
+//      kdDebug() << "Start Drag for item " << item->text(0) << endl;
       VCalDrag *vd = mCalendar->createDragTodo(
                           ((KOTodoViewItem *)item)->event(),viewport());
       if (vd->drag()) {
-        qDebug("KOTodoListView::contentsMouseMoveEvent(): Delete drag source");
+        kdDebug() << "KOTodoListView::contentsMouseMoveEvent(): Delete drag source" << endl;
       }
 /*
       QString source = fullPath(item);
@@ -266,25 +267,25 @@ KOTodoView::KOTodoView(CalObject *calendar,QWidget* parent,const char* name) :
 
 void KOTodoView::updateView()
 {
-//  qDebug("KOTodoView::updateView()");
+//  kdDebug() << "KOTodoView::updateView()" << endl;
   mTodoListView->clear();
 
   QList<KOEvent> todoList = mCalendar->getTodoList();
 
 /*
-  qDebug("KOTodoView::updateView(): Todo List:");
+  kdDebug() << "KOTodoView::updateView(): Todo List:" << endl;
   KOEvent *t;
   for(t = todoList.first(); t; t = todoList.next()) {
-    qDebug("  %s",t->getSummary().latin1());
+    kdDebug() << "  " << t->getSummary() << endl;
 
     if (t->getRelatedTo()) {
-      qDebug("      (related to %s)",t->getRelatedTo()->getSummary().latin1());
+      kdDebug() << "      (related to " << t->getRelatedTo()->getSummary() << ")" << endl;
     }
 
     QList<KOEvent> l = t->getRelations();
     KOEvent *c;
     for(c=l.first();c;c=l.next()) {
-      qDebug("    - relation: %s",c->getSummary().latin1());
+      kdDebug() << "    - relation: " << c->getSummary() << endl;
     }
   }
 */
@@ -304,21 +305,21 @@ void KOTodoView::updateView()
 QMap<KOEvent *,KOTodoViewItem *>::ConstIterator
   KOTodoView::insertTodoItem(KOEvent *todo)
 {
-//  qDebug("KOTodoView::insertTodoItem(): %s",todo->getSummary().latin1());
+//  kdDebug() << "KOTodoView::insertTodoItem(): " << todo->getSummary() << endl;
   KOEvent *relatedTodo = todo->getRelatedTo();
   if (relatedTodo) {
-//    qDebug("  has Related");
+//    kdDebug() << "  has Related" << endl;
     QMap<KOEvent *,KOTodoViewItem *>::ConstIterator itemIterator;
     itemIterator = mTodoMap.find(relatedTodo);
     if (itemIterator == mTodoMap.end()) {
-//      qDebug("    related not yet in list");
+//      kdDebug() << "    related not yet in list" << endl;
       itemIterator = insertTodoItem (relatedTodo);
     }
     KOTodoViewItem *todoItem = new KOTodoViewItem(*itemIterator,todo);
     todoItem->setOpen(true);
     return mTodoMap.insert(todo,todoItem);
   } else {
-//    qDebug("  no Related");
+//    kdDebug() << "  no Related" << endl;
     KOTodoViewItem *todoItem = new KOTodoViewItem(mTodoListView,todo);
     todoItem->setOpen(true);
     return mTodoMap.insert(todo,todoItem);

@@ -3,6 +3,7 @@
 #include <qstring.h>
 
 #include <kapp.h>
+#include <kdebug.h>
 #include <klocale.h>
 #include <kstddirs.h>
 #include <kconfig.h>
@@ -225,7 +226,7 @@ void KDateButton::dropEvent(QDropEvent *e)
       return;
 */    
     }
-//      qDebug("Drop new Event");
+//      kdDebug() << "Drop new Event" << endl;
     // Adjust date
     QDateTime start = event->getDtStart();
     QDateTime end = event->getDtEnd();
@@ -238,7 +239,7 @@ void KDateButton::dropEvent(QDropEvent *e)
 
     emit eventDropped(event);
   } else {
-    qDebug("KDateButton::dropEvent(): Event from drop not decodable");
+    kdDebug() << "KDateButton::dropEvent(): Event from drop not decodable" << endl;
     e->ignore();
   }
 }

@@ -8,6 +8,7 @@
 #include <ksimpleconfig.h>
 #include <kstddirs.h>
 #include <klocale.h>
+#include <kdebug.h>
 
 KOPrefs *KOPrefs::mInstance = 0;
 
@@ -32,7 +33,7 @@ KOPrefs::KOPrefs()
 
 KOPrefs::~KOPrefs()
 {
-  qDebug ("KOPrefs::~KOPrefs()");
+  kdDebug() << "KOPrefs::~KOPrefs()" << endl;
   delete mConfig;
   
   mInstance = 0;
@@ -177,7 +178,7 @@ void KOPrefs::readConfig()
 
 void KOPrefs::writeConfig()
 {
-//  qDebug("KOPrefs::writeConfig()");
+//  kdDebug() << "KOPrefs::writeConfig()" << endl;
 
   mConfig->setGroup("General");
   mConfig->writeEntry("Auto Save",mAutoSave);

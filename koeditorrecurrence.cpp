@@ -464,7 +464,7 @@ void KOEditorRecurrence::initExceptions()
 
 void KOEditorRecurrence::setEnabled(bool enabled)
 {
-//  qDebug("KOEditorRecurrence::setEnabled(): %s",enabled ? "on" : "off");
+//  kdDebug() << "KOEditorRecurrence::setEnabled(): " << (enabled ? "on" : "off") << endl;
 
   mEnabled = enabled;
 
@@ -621,7 +621,7 @@ void KOEditorRecurrence::setCheckedDays(QBitArray &rDays)
 
 void KOEditorRecurrence::setDateTimes(QDateTime start,QDateTime end)
 {
-//  qDebug ("KOEditorRecurrence::setDateTimes");
+//  kdDebug() << "KOEditorRecurrence::setDateTimes" << endl;
 
   currStartDateTime = start;
   currEndDateTime = end;

@@ -10,6 +10,7 @@
 #include <qtooltip.h>
 
 #include <kapp.h>
+#include <kdebug.h>
 #include <klocale.h>
 #include <kglobal.h>
 #include <kconfig.h>
@@ -239,7 +240,7 @@ void KSummaries::setDate(QDate qd)
 void KSummaries::itemHighlighted(int index)
 {
   if (index < 0)
-    qDebug("KSummaries::itemHighlighted(int) called with argument %d",index);
+    kdDebug() << "KSummaries::itemHighlighted(int) called with argument " << index << endl;
   else {
     itemIndex = index;
     emit daySelected(idx);
@@ -252,7 +253,7 @@ void KSummaries::itemSelected(int index)
     
     anEvent = currIdxs->find(index);
     if (!anEvent)
-      qDebug("error, event not found in dictionary");
+      kdDebug() << "error, event not found in dictionary" << endl;
     else
       emit editEventSignal(anEvent);
 }
@@ -632,7 +633,7 @@ void KOMonthView::selectDates(const QDateList dateList)
 
 void KOMonthView::selectEvents(QList<KOEvent>)
 {
-  qDebug("KOMonthView::selectEvents is not implemented yet.");
+  kdDebug() << "KOMonthView::selectEvents is not implemented yet." << endl;
 }
 
 void KOMonthView::changeEventDisplay(KOEvent *, int)
@@ -682,7 +683,7 @@ void KOMonthView::viewChanged()
   for(i=0, idx = selDateIdxs.first(); 
       i < selDateIdxs.count(), idx != 0;
       i++, idx = selDateIdxs.next()) {
-    //qDebug("selDateIdxs.count(): %d",selDateIdxs.count());
+    //kdDebug() << "selDateIdxs.count(): " << selDateIdxs.count() << endl;
     daySelected(*idx);
   }
 
@@ -776,9 +777,9 @@ void KOMonthView::processSelectionChange()
   QList<KOEvent> events = getSelected();
   if (events.count() > 0) {
     emit eventsSelected(true);
-//    qDebug("KOMonthView::processSelectionChange() true");
+//    kdDebug() << "KOMonthView::processSelectionChange() true" << endl;
   } else {
     emit eventsSelected(false);
-//    qDebug("KOMonthView::processSelectionChange() false");
+//    kdDebug() << "KOMonthView::processSelectionChange() false" << endl;
   }
 }

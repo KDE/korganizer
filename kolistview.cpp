@@ -9,6 +9,7 @@
 #include <qpopupmenu.h>
 
 #include <klocale.h>
+#include <kdebug.h>
 #include <kiconloader.h>
 
 #include "calobject.h"
@@ -166,7 +167,7 @@ inline void KOListView::hideDates()
 
 void KOListView::updateView()
 {
-  qDebug("KOListView::updateView() does nothing");
+  kdDebug() << "KOListView::updateView() does nothing" << endl;
 }
 
 void KOListView::selectDates(const QDateList dateList)
@@ -224,7 +225,7 @@ void KOListView::changeEventDisplay(KOEvent *event, int action)
       }
       break;
     default:
-      qDebug("KOListView::changeEventDisplay(): Illegal action %d",action);
+      kdDebug() << "KOListView::changeEventDisplay(): Illegal action " << action << endl;
   }
 }
 
@@ -232,7 +233,7 @@ KOListViewItem *KOListView::getItemForEvent(KOEvent *event)
 {
   KOListViewItem *item = (KOListViewItem *)mListView->firstChild();
   while (item) {
-//    qDebug ("Item %s found",item->text(0).latin1());
+//    kdDebug() << "Item " << item->text(0) << " found" << endl;
     if (item->event() == event) return item;
     item = (KOListViewItem *)item->nextSibling();
   }  

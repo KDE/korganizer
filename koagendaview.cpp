@@ -12,6 +12,7 @@
 #include <qtooltip.h>
 
 #include <kapp.h>
+#include <kdebug.h>
 #include <kglobal.h>
 #include <kstddirs.h>
 #include <kiconloader.h>
@@ -144,7 +145,7 @@ void TimeLabels::setAgenda(KOAgenda* agenda)
 /** This is called in response to repaint() */
 void TimeLabels::paintEvent(QPaintEvent*)
 {
-//  qDebug("paintevent...");
+//  kdDebug() << "paintevent..." << endl;
   // this is another hack!
 //  QPainter painter(this);
   //QString c
@@ -173,8 +174,7 @@ EventIndicator::~EventIndicator()
 
 void EventIndicator::drawContents(QPainter *p)
 {
-//  qDebug("======== top: %d  bottom %d  left %d  right %d",contentsRect().top(),
-//         contentsRect().bottom(),contentsRect().left(),contentsRect().right());
+//  kdDebug() << "======== top: " << contentsRect().top() << "  bottom " << //         contentsRect().bottom() << "  left " << contentsRect().left() << "  right " << contentsRect().right() << endl;
 
   int i;
   for(i=0;i<mColumns;++i) {
@@ -375,7 +375,7 @@ QList<KOEvent> KOAgendaView::getSelected()
 
 void KOAgendaView::updateView()
 {
-//  qDebug("KOAgendaView::updateView()");
+//  kdDebug() << "KOAgendaView::updateView()" << endl;
   fillAgenda();
 }
 
@@ -386,7 +386,7 @@ void KOAgendaView::updateView()
 */
 void KOAgendaView::updateConfig()
 {
-//  qDebug("KOAgendaView::updateConfig()");
+//  kdDebug() << "KOAgendaView::updateConfig()" << endl;
 
   // update config for children
   mTimeLabels->updateConfig();
@@ -412,7 +412,7 @@ void KOAgendaView::updateConfig()
 
 void KOAgendaView::updateEventDates(KOAgendaItem *item)
 {
-//  qDebug("updateEventDates %s",item->text().latin1());
+//  kdDebug() << "updateEventDates " << item->text() << endl;
   QDateTime startDt,endDt;
   QDate startDate;
 
@@ -444,7 +444,7 @@ void KOAgendaView::updateEventDates(KOAgendaItem *item)
 
 void KOAgendaView::selectDates(const QDateList list)
 {
-//  qDebug("KOAgendaView::selectDates");
+//  kdDebug() << "KOAgendaView::selectDates" << endl;
   
   mSelectedDates.clear();
   mSelectedDates = list;
@@ -478,7 +478,7 @@ void KOAgendaView::selectDates(const QDateList list)
 
 void KOAgendaView::selectEvents(QList<KOEvent>)
 {
-  qDebug("KOAgendaView::selectEvents() is not yet implemented");
+  kdDebug() << "KOAgendaView::selectEvents() is not yet implemented" << endl;
 }
 
 void KOAgendaView::setView(int view)
@@ -495,7 +495,7 @@ void KOAgendaView::setView(int view)
 
 void KOAgendaView::changeEventDisplay(KOEvent *, int)
 {
-//  qDebug("KOAgendaView::changeEventDisplay");
+//  kdDebug() << "KOAgendaView::changeEventDisplay" << endl;
   // this should be re-written to be MUCH smarter.  Right now we
   // are just playing dumb.
   fillAgenda();
@@ -580,7 +580,7 @@ void KOAgendaView::slotViewChange()
 
 void KOAgendaView::slotViewChange(int newView)
 {
-//  qDebug("KOAgendaView::slotViewChange(): %d",newView);
+//  kdDebug() << "KOAgendaView::slotViewChange(): " << newView << endl;
 
   int datenum, count;
 
@@ -660,8 +660,8 @@ void KOAgendaView::fillAgenda(const QDate &startDate)
 
 void KOAgendaView::fillAgenda()
 {
-//  qDebug("Fill Agenda beginning with date %s",mStartDate.toString().latin1());
-//  qDebug(" number of dates: %d",mSelectedDates.count());
+//  kdDebug() << "Fill Agenda beginning with date " << mStartDate.toString() << endl;
+//  kdDebug() << " number of dates: " << mSelectedDates.count() << endl;
 
 //  clearView();
 
@@ -688,12 +688,12 @@ void KOAgendaView::fillAgenda()
     unsigned int numEvent;
     for(numEvent=0;numEvent<dayEvents.count();++numEvent) {
       KOEvent *event = dayEvents.at(numEvent);
-//      qDebug(" Event: %s",event->getSummary().latin1());
+//      kdDebug() << " Event: " << event->getSummary() << endl;
 
       int beginX = currentDate.daysTo(event->getDtStart().date()) + curCol;
       int endX = currentDate.daysTo(event->getDtEnd().date()) + curCol;
 
-//      qDebug("  beginX: %d  endX: %d",beginX,endX);      
+//      kdDebug() << "  beginX: " << beginX << "  endX: " << endX << endl;
       
       if (event->doesFloat()) {
       	if (beginX <= 0 && curCol == 0) {     
@@ -726,7 +726,7 @@ void KOAgendaView::fillAgenda()
         if (endY > mMaxY[curCol]) mMaxY[curCol] = endY;
       }
     }
-//    if (numEvent == 0) qDebug(" No events");
+//    if (numEvent == 0) kdDebug() << " No events" << endl;
     
     currentDate = currentDate.addDays(1);
   }
@@ -738,12 +738,12 @@ void KOAgendaView::fillAgenda()
 
   emit eventsSelected(false);
 
-//  qDebug("Fill Agenda done");
+//  kdDebug() << "Fill Agenda done" << endl;
 }
 
 void KOAgendaView::clearView()
 {
-//  qDebug("ClearView");
+//  kdDebug() << "ClearView" << endl;
   mAllDayAgenda->clear();
   mAgenda->clear();
 }
@@ -807,6 +807,6 @@ void KOAgendaView::startDrag(KOEvent *event)
 {
   VCalDrag *vd = mCalendar->createDrag(event,this);
   if (vd->drag()) {
-    qDebug("KOTodoListView::contentsMouseMoveEvent(): Delete drag source");
+    kdDebug() << "KOTodoListView::contentsMouseMoveEvent(): Delete drag source" << endl;
   }
 }

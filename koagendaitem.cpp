@@ -105,7 +105,7 @@ void KOAgendaItem::updateIcons()
 */
 bool KOAgendaItem::eventFilter ( QObject *object, QEvent *e )
 {
-//  qDebug("KOAgendaItem::eventFilter");
+//  kdDebug() << "KOAgendaItem::eventFilter" << endl;
   if (e->type() == QEvent::MouseButtonPress ||
       e->type() == QEvent::MouseButtonDblClick ||
       e->type() == QEvent::MouseButtonRelease ||

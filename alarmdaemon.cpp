@@ -11,6 +11,7 @@
 #include <qtooltip.h>
 
 #include <kapp.h>
+#include <kdebug.h>
 #include <klocale.h>
 #include <kglobal.h>
 #include <ksimpleconfig.h>
@@ -73,7 +74,7 @@ AlarmDockWindow::~AlarmDockWindow()
 AlarmDaemon::AlarmDaemon(const char *fn, QObject *parent, const char *name)
   : QObject(parent, name), DCOPObject(this)
 {
-  qDebug("AlarmDaemon::AlarmDaemon()");
+  kdDebug() << "AlarmDaemon::AlarmDaemon()" << endl;
 
   docker = new AlarmDockWindow;
   docker->show();
@@ -118,7 +119,7 @@ void AlarmDaemon::reloadCal()
   config.setGroup("General");
   newFileName = config.readEntry("Active Calendar");
   
-  qDebug("AlarmDaemon::reloadCal(): '%s'",newFileName.latin1());
+  kdDebug() << "AlarmDaemon::reloadCal(): '" << newFileName << "'" << endl;
   
   calendar->load(newFileName);
 }
@@ -145,14 +146,14 @@ bool AlarmDaemon::process(const QCString &fun, const QByteArray &,
     replyType = "void";
     return true;
   } else {
-    qDebug("AlarmDaemon::process got unknown DCOP message.");
+    kdDebug() << "AlarmDaemon::process got unknown DCOP message." << endl;
     return false;
   }
 }
 
 void AlarmDaemon::suspend(int duration)
 {
-//  qDebug("AlarmDaemon::suspend() %d minutes",duration);
+//  kdDebug() << "AlarmDaemon::suspend() " << duration << " minutes" << endl;
 
   connect(mSuspendTimer,SIGNAL(timeout()),SLOT(showDialog()));
 

@@ -4,6 +4,7 @@
 
 #include <kmessagebox.h>
 #include <kglobal.h>
+#include <kdebug.h>
 #include <klocale.h>
 
 #include "ktimeedit.h" 
@@ -36,9 +37,9 @@ KTimeEdit::~KTimeEdit()
 
 QTime KTimeEdit::getTime()
 {
-  qDebug("KTimeEdit::getTime()");
+  kdDebug() << "KTimeEdit::getTime()" << endl;
   QTime time = KGlobal::locale()->readTime(currentText());
-  qDebug("KTimeEdit::getTime(): %s",time.toString().latin1());
+  kdDebug() << "KTimeEdit::getTime(): " << time.toString() << endl;
   return time;
 }
 
@@ -53,7 +54,7 @@ QSizePolicy  KTimeEdit::sizePolicy() const
 
 void KTimeEdit::setTime(QTime newTime)
 {
-  qDebug("KTimeEdit::setTime(): %s",newTime.toString().latin1());
+  kdDebug() << "KTimeEdit::setTime(): " << newTime.toString() << endl;
 
   mTime = newTime;
   updateDisp();

@@ -6,6 +6,7 @@
 #include <qpopupmenu.h>
 
 #include <klocale.h>
+#include <kdebug.h>
 #include <kiconloader.h>
 
 #include "calobject.h"
@@ -68,7 +69,7 @@ void KOBaseView::showEventPopup(QPopupMenu *popup,KOEvent *event)
 {
   mCurrentEvent = event;
   if (event) popup->popup(QCursor::pos());
-  else qDebug("KOBaseView::showEventPopup(): No event selected");
+  else kdDebug() << "KOBaseView::showEventPopup(): No event selected" << endl;
 }
 
 void KOBaseView::popupShow()

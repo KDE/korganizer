@@ -4,6 +4,7 @@
 
 #include <ksimpleconfig.h>
 #include <kcmdlineargs.h>
+#include <kdebug.h>
 
 #include "alarmdaemon.h"
 
@@ -23,7 +24,7 @@ AlarmApp::~AlarmApp()
 
 int AlarmApp::newInstance()
 {
-  qDebug("AlarmApp::newInstance()");
+  kdDebug() << "AlarmApp::newInstance()" << endl;
 
   // Check if we already have a running alarm daemon widget
   if (mAd) return 0;

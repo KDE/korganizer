@@ -4,6 +4,7 @@
 #include <stdio.h>
 
 #include <kapp.h>
+#include <kdebug.h>
 #include <klocale.h>
 #include <kstddirs.h>
 
@@ -107,9 +108,9 @@ const QString &KOEvent::getOrganizer() const
 
 void KOEvent::addAttendee(Attendee *a)
 {
-//  qDebug("KOEvent::addAttendee()");
+//  kdDebug() << "KOEvent::addAttendee()" << endl;
   if (ro) return;
-//  qDebug("KOEvent::addAttendee() weiter");
+//  kdDebug() << "KOEvent::addAttendee() weiter" << endl;
   if (a->name.left(7).upper() == "MAILTO:")
     a->name = a->name.remove(0,7);
 
@@ -365,7 +366,7 @@ void KOEvent::setStatus(const QString &statStr)
   else if (ss == "DELEGATED")
     status = DELEGATED;
   else
-    qDebug("error setting status, unknown status!");
+    kdDebug() << "error setting status, unknown status!" << endl;
 
   emit eventUpdated(this);
 }
@@ -423,7 +424,7 @@ void KOEvent::setSecrecy(const QString &secStr)
   else if (secStr == "CONFIDENTIAL")
     secrecy = CONFIDENTIAL;
   else
-    qDebug("Unknown secrecy value specified!");
+    kdDebug() << "Unknown secrecy value specified!" << endl;
 
   emit eventUpdated(this);
 }
@@ -816,7 +817,7 @@ bool KOEvent::recursOn(const QDate &qd) const
     break;
   default:
     // catch-all.  Should never get here.
-    qDebug("Control should never reach here in recursOn()!");
+    kdDebug() << "Control should never reach here in recursOn()!" << endl;
     return FALSE;
     break;
   } // case
@@ -1327,12 +1328,9 @@ void KOEvent::print(int style) const
   switch(style) {
   case ASCII:
     if (doesFloat())
-      qDebug("\t\t: %s", getSummary().data());
+      kdDebug() << "\t\t: " << getSummary().data() << endl;
     else
-      qDebug("\t%02d:%02d-%02d:%02d: %s",
-	     dtStart.time().hour(), dtStart.time().minute(),
-	     dtEnd.time().hour(), dtEnd.time().minute(),
-	     summary.data());
+      kdDebug() << "\t" << dtStart.time().hour() << ":" << dtStart.time().minute() << "-" << dtEnd.time().hour() << ":" << dtEnd.time().minute() << ": " << summary.data() << endl;
     break;
   case POSTSCRIPT:
     break;
@@ -1438,7 +1436,7 @@ void Attendee::setStatus(const char *s)
   else if (statStr== "DELEGATED")
     status = DELEGATED;
   else {
-    qDebug("error setting attendee status, unknown status!");
+    kdDebug() << "error setting attendee status, unknown status!" << endl;
     status = NEEDS_ACTION;
   }
 }

@@ -38,6 +38,7 @@
 #include <kdatepik.h>
 #include <kiconloader.h>
 #include <kapp.h>
+#include <kdebug.h>
 #include <klocale.h>
 #include <ktoolbarbutton.h>
 #include <kstddirs.h>
@@ -197,7 +198,7 @@ void KOEventEditor::slotOk()
 
 void KOEventEditor::slotUser1()
 {
-  qDebug("Delete event");
+  kdDebug() << "Delete event" << endl;
   if (mEvent) {
     emit eventToBeDeleted(mEvent);
     mCalendar->deleteEvent(mEvent);

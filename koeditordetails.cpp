@@ -10,6 +10,7 @@
 #include <qdatetime.h>
 
 #include <kapp.h>
+#include <kdebug.h>
 #include <klocale.h>
 #include <kglobal.h>
 #include <kiconloader.h>
@@ -283,7 +284,7 @@ void KOEditorDetails::attendeeListAction(QListViewItem *item)
 {
   if (!item) return;
 
-  qDebug("KOEditorDetails::attendeeListAction(): to be implemented");
+  kdDebug() << "KOEditorDetails::attendeeListAction(): to be implemented" << endl;
 
   return;
 
@@ -357,7 +358,7 @@ void KOEditorDetails::addNewAttendee()
     name = attendeeEdit->text();
     if (addrBook.init() == AddressBook::NoError) {
       if (addrBook.getEntryByName(name, entries, 1) == AddressBook::NoError) {
-	qDebug("positive match");
+	kdDebug() << "positive match" << endl;
 	// take first email address
 	if (!entries.front().emails.isEmpty() && 
 	    entries.front().emails.first().length()>0)
@@ -411,15 +412,15 @@ void KOEditorDetails::readEvent(KOEvent *event)
 
 void KOEditorDetails::writeEvent(KOEvent *event)
 {
-//  qDebug("KOEditorDetails::writeEvent()");
+//  kdDebug() << "KOEditorDetails::writeEvent()" << endl;
   event->clearAttendees();
   QListViewItem *item;
   AttendeeListItem *a;
   for (item = attendeeListBox->firstChild(); item;
        item = item->nextSibling()) {
     a = (AttendeeListItem *)item;
-//    qDebug("KOEditorDetails::writeEvent add");
-//    qDebug("  %s",a->attendee()->getName().latin1());
+//    kdDebug() << "KOEditorDetails::writeEvent add" << endl;
+//    kdDebug() << "  " << a->attendee()->getName() << endl;
     event->addAttendee(new Attendee(*(a->attendee())));
   }
 }
@@ -440,7 +441,7 @@ void KOEditorDetails::checkLineEdits()
 
 void KOEditorDetails::checkAttendeeSelection()
 {
-//  qDebug("KOEditorDetails::checkAttendeeSelection()");
+//  kdDebug() << "KOEditorDetails::checkAttendeeSelection()" << endl;
 
   if (attendeeListBox->selectedItem()) {
     removeAttendeeButton->setEnabled(true);

@@ -1,6 +1,7 @@
 // $Id$
 
 #include <klocale.h>
+#include <kdebug.h>
 #include <kiconloader.h>
 
 #include "koevent.h"
@@ -31,7 +32,7 @@ void KOEventPopupMenu::showEventPopup(KOEvent *event)
     }
     popup(QCursor::pos());
   } else {
-    qDebug("KOEventPopupMenu::showEventPopup(): No event selected");   
+    kdDebug() << "KOEventPopupMenu::showEventPopup(): No event selected" << endl;
   }
 }
 

@@ -2,6 +2,7 @@
 #include <kglobal.h>
 #include <kcmdlineargs.h>
 #include <kconfig.h>
+#include <kdebug.h>
 #include <dcopclient.h>
 
 #include "calobject.h"
@@ -79,14 +80,14 @@ void KOrganizerApp::startAlarmDaemon()
 
   // Force alarm daemon to load active calendar
   if (!dcopClient()->send("alarmd","ad","reloadCal()","")) {
-    qDebug("KOrganizerApp::startAlarmDaemon(): dcop send failed");
+    kdDebug() << "KOrganizerApp::startAlarmDaemon(): dcop send failed" << endl;
   }
 }
 
 
 int KOrganizerApp::newInstance()
 {
-  qDebug("KOApp::newInstance()");
+  kdDebug() << "KOApp::newInstance()" << endl;
 
   KCmdLineArgs *args = KCmdLineArgs::parsedArgs();
 
@@ -113,7 +114,7 @@ int KOrganizerApp::newInstance()
     processCalendar(file,numDays,true);
   }
   
-  qDebug("KOApp::newInstance() done");
+  kdDebug() << "KOApp::newInstance() done" << endl;
   return 0;
 }
 

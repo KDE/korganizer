@@ -24,11 +24,12 @@
 
 #include "kowindowlist.h"
 #include "kowindowlist.moc"
+#include <kdebug.h>
 
 KOWindowList::KOWindowList(const char *name) 
   : QObject(0,name)
 {
-  qDebug("KOWindowList::KOWindowList()");
+  kdDebug() << "KOWindowList::KOWindowList()" << endl;
 }
 
 KOWindowList::~KOWindowList()

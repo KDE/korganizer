@@ -6,6 +6,7 @@
 #include <qdatetime.h>
 
 #include <kapp.h>
+#include <kdebug.h>
 #include <klocale.h>
 #include <kurlrequester.h>
 #include <kmessagebox.h>
@@ -83,14 +84,14 @@ void ArchiveDialog::slotUser1()
   KTempFile tmpFile;
   tmpFile.setAutoDelete(true);
   if (!mCalendar->save(tmpFile.name())) {
-    qDebug("ArchiveDialog::slotUser1(): Can't save calendar to temp file");
+    kdDebug() << "ArchiveDialog::slotUser1(): Can't save calendar to temp file" << endl;
     return;
   }
 
   // Duplicate current calendar by loading in new calendar object
   CalObject archiveCalendar;
   if (!archiveCalendar.load(tmpFile.name())) {
-    qDebug("ArchiveDialog::slotUser1(): Can't load calendar from temp file");
+    kdDebug() << "ArchiveDialog::slotUser1(): Can't load calendar from temp file" << endl;
     return;
   }
 
@@ -109,22 +110,22 @@ void ArchiveDialog::slotUser1()
 
   if (KIO::NetAccess::exists(destUrl)) {
     if(!KIO::NetAccess::download(destUrl,archiveFile)) {
-      qDebug("ArchiveDialog::slotUser1(): Can't download archive file");
+      kdDebug() << "ArchiveDialog::slotUser1(): Can't download archive file" << endl;
       return;
     }
     // Merge with events to be archived.
     if (!archiveCalendar.load(archiveFile)) {
-      qDebug("ArchiveDialog::slotUser1(): Can't merge with archive file");
+      kdDebug() << "ArchiveDialog::slotUser1(): Can't merge with archive file" << endl;
       return;
     }
 /*    
     QList<KOEvent> es = archiveCalendar.getEvents(QDate(1800,1,1),
                                                   QDate(3000,1,1),
                                                   false);
-    qDebug("--Following events in archive calendar:");
+    kdDebug() << "--Following events in archive calendar:" << endl;
     KOEvent *e;
     for(e=es.first();e;e=es.next()) {
-      qDebug("-----Event: %s",e->getSummary().latin1());
+      kdDebug() << "-----Event: " << e->getSummary() << endl;
     }
 */
   } else {
