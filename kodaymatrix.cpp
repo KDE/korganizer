@@ -228,13 +228,13 @@ void KODayMatrix::updateView(QDate actdate)
       //kdDebug(5850) << "Shift of Selection1: " << mSelStart << " - " << mSelEnd << " -> " << tmp << "(" << offset << ")" << endl;
       // shift selection if new one would be visible at least partly !
 
-      	if (mSelStart+tmp < NUMDAYS && mSelEnd+tmp >= 0) {
-		// nested if is required for next X display pushed from a different month - correction required
-		// otherwise, for month forward and backward, it must be avoided
-                if( mSelStart > NUMDAYS || mSelStart < 0 )
-        	   mSelStart = mSelStart + tmp;
-                if( mSelEnd > NUMDAYS || mSelEnd < 0 )
-       			mSelEnd = mSelEnd + tmp;
+      if (mSelStart+tmp < NUMDAYS && mSelEnd+tmp >= 0) {
+        // nested if is required for next X display pushed from a different month - correction required
+        // otherwise, for month forward and backward, it must be avoided
+        if( mSelStart > NUMDAYS || mSelStart < 0 )
+          mSelStart = mSelStart + tmp;
+        if( mSelEnd > NUMDAYS || mSelEnd < 0 )
+          mSelEnd = mSelEnd + tmp;
       }
     }
 
@@ -246,7 +246,7 @@ void KODayMatrix::updateView(QDate actdate)
     recalculateToday();
   }
 
-    for(int i = 0; i < NUMDAYS; i++) {
+  for(int i = 0; i < NUMDAYS; i++) {
 
     // if events are set for the day then remember to draw it bold
     Event::List eventlist = mCalendar->events( days[ i ] );
@@ -269,8 +269,9 @@ void KODayMatrix::updateView(QDate actdate)
 #else
     QString holiStr = QString::null;
 #endif
-   if ( (KOGlobals::self()->calendarSystem()->dayOfWeek(days[i]) == KOGlobals::self()->calendarSystem()->weekDayOfPray()) ||
-        !holiStr.isEmpty()) {
+    if ( (KOGlobals::self()->calendarSystem()->dayOfWeek(days[i]) ==
+           KOGlobals::self()->calendarSystem()->weekDayOfPray()) ||
+         !holiStr.isEmpty()) {
       if (holiStr.isNull()) holiStr = "";
       mHolidays[i] = holiStr;
 
