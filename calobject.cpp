@@ -23,15 +23,14 @@
 #include <qfile.h>
 
 #include <kapp.h>
-#include <kglobal.h>
 #include <kstddirs.h>
 #include <klocale.h>
-#include <kconfig.h>
 #include <kglobal.h>
 #include <kiconloader.h>
 
 #include "vcaldrag.h"
 #include "qdatelist.h"
+#include "koprefs.h"
 
 #include "calobject.h"
 #include "calobject.moc"
@@ -53,25 +52,22 @@ CalObject::CalObject() : QObject(), recursCursor(recursList)
   // even that good of one at that.
   srandom(time(0L));
 
-  KConfig *config = new KConfig(locate("config","korganizerrc")); 
-    
   // user information...
   userId = getuid();
   pwent = getpwuid(userId);
-  config->setGroup("Personal Settings");
-  tmpStr = config->readEntry("user_name");
+  tmpStr = KOPrefs::instance()->mName;
   if (tmpStr.isEmpty()) {
     
     if (strlen(pwent->pw_gecos) > 0)
       setOwner(pwent->pw_gecos);
     else
       setOwner(pwent->pw_name);
-    config->writeEntry("user_name",getOwner().ascii());
+      KOPrefs::instance()->mName = getOwner();
   } else {
     setOwner(tmpStr);
   }
 
-  tmpStr = config->readEntry("user_email");
+  tmpStr = KOPrefs::instance()->mEmail;
   if (tmpStr.isEmpty()) {
     tmpStr = pwent->pw_name;
     tmpStr += "@";
@@ -95,17 +91,15 @@ CalObject::CalObject() : QObject(), recursCursor(recursList)
     tmpStr += "localhost";
 #endif
     setEmail(tmpStr);
-    config->writeEntry("user_email",tmpStr.ascii());
+    KOPrefs::instance()->mEmail = tmpStr;
   } else {
     setEmail(tmpStr);
   }
 
-  readHolidayFileName(config);
+  readHolidayFileName();
 
-  config->setGroup("Time & Date");
-
-  tmpStr = config->readEntry("Time Zone");
-  int dstSetting = config->readNumEntry("Daylight Savings", 0);
+  tmpStr = KOPrefs::instance()->mTimeZone;
+  int dstSetting = KOPrefs::instance()->mDaylightSavings;
   extern long int timezone;
   struct tm *now;
   time_t curtime;
@@ -121,21 +115,20 @@ CalObject::CalObject() : QObject(), recursCursor(recursList)
 
   // if no time zone was in the config file, write what we just discovered.
   if (tmpStr.isEmpty()) {
-    config->writeEntry("Time Zone", tzStr.ascii());
+    KOPrefs::instance()->mTimeZone = tzStr;
   }
   
   // if daylight savings has changed since last load time, we need
   // to rewrite these settings to the config file.
   if ((now->tm_isdst && !dstSetting) ||
       (!now->tm_isdst && dstSetting)) {
-    config->writeEntry("Time Zone", tzStr.ascii());
-    config->writeEntry("Daylight Savings", now->tm_isdst);
+    KOPrefs::instance()->mTimeZone = tzStr;
+    KOPrefs::instance()->mDaylightSavings = now->tm_isdst;
   }
   
   setTimeZone(tzStr.ascii());
 
-  // done with config object
-  delete config;
+  KOPrefs::instance()->writeConfig();
 
   recursList.setAutoDelete(TRUE);
   // solves the leak?
@@ -554,18 +547,15 @@ QString CalObject::getTimeZoneStr() const
 // don't ever call this unless a kapp exists!
 void CalObject::updateConfig()
 {
-  qDebug("CalObject::updateConfig()");
+//  qDebug("CalObject::updateConfig()");
 
   bool updateFlag = FALSE;
 
-  KConfig config(locate("config", "korganizerrc")); 
-
-  config.setGroup("Personal Settings");
-  ownerString = config.readEntry("user_name");
+  ownerString = KOPrefs::instance()->mName;
 
   // update events to new organizer (email address) 
   // if it has changed...
-  QString configEmail = config.readEntry("user_email");
+  QString configEmail = KOPrefs::instance()->mEmail;
 
   if (emailString != configEmail) {
     QString oldEmail = emailString;
@@ -591,20 +581,18 @@ void CalObject::updateConfig()
     }
   }
 
-  readHolidayFileName(&config);
+  readHolidayFileName();
 
-  config.setGroup("Time & Date");
-  setTimeZone(config.readEntry("Time Zone").ascii());
+  setTimeZone(KOPrefs::instance()->mTimeZone.latin1());
 
   if (updateFlag)
     emit calUpdated((KOEvent *) 0L);
 }
 
 
-void CalObject::readHolidayFileName(KConfig *config)
+void CalObject::readHolidayFileName()
 {
-  config->setGroup("Personal Settings");
-  QString holidays(config->readEntry("Holidays", "us"));
+  QString holidays(KOPrefs::instance()->mHoliday);
   if (holidays == "(none)") mHolidayfile = "";
   holidays = holidays.prepend("holiday_");
   mHolidayfile = locate("appdata",holidays);

@@ -207,7 +207,7 @@ protected:
   /** shows an error dialog box. */
   void parseError(const char *prop);
   /** Read name of holidayfile from config object */
-  void readHolidayFileName(KConfig *config);
+  void readHolidayFileName();
 
   /* variables */
   QWidget *topWidget;                     // topWidget this calendar belongs to

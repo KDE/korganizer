@@ -9,67 +9,54 @@
 class CalObject;
 
 class KDateButton: public QLabel {
-   Q_OBJECT
- public:
-   
-   enum { NoHilite, SelectHilite, EventHilite, TodayHilite,
-	  TodaySelectHilite, HolidayHilite, HolidaySelectHilite };
-   
-   enum { EVENTADDED, EVENTEDITED, EVENTDELETED };
+    Q_OBJECT
+  public:
+    KDateButton(QDate date, int index, CalObject *,
+	        QWidget *parent=0, const char *name=0);
+    ~KDateButton();
 
-   KDateButton(QDate date, int index, CalObject *,
-	       QWidget *parent=0, const char *name=0);
-   ~KDateButton();
-   QDate date();
-   void setItalics(bool ital = FALSE);
-   // This should be replaced by a set of functions to set attributes selected,
-   // event, holiday separately.
-   void setHiliteStyle(int HiliteStyle);
-   int  hiliteStyle();
-   bool isSelected() const { return selFlag; }
+    QDate date();
 
-   // static, for all date buttons
-   static void updateConfig();
+    void setItalic(bool italic=true);
+    void setEvent(bool event=true);
+    void setSelected(bool select=true);
+    void setToday(bool today=true);
+    void setHoliday(bool holiday=true);
 
- public slots:
-   void setDate(QDate newdate);
+    bool isSelected() const { return mSelected; }
 
- signals:
-   void selected(QDate, int, bool);
-   void updateMe(int);
+    void updateConfig();
 
- protected:
-   void mousePressEvent(QMouseEvent *);
-   void dragEnterEvent(QDragEnterEvent *);
-   void dragLeaveEvent(QDragLeaveEvent *);
-   void dropEvent(QDropEvent *);
+  public slots:
+    void setDate(QDate newdate);
 
- private:
-   bool selFlag;
-   int my_index;
-   QDate bt_Date;
-   CalObject *calendar;
-   int currHiliteStyle;
-   QFont myFont;
-   QPalette oldPalette;
+  signals:
+    void selected(QDate, int, bool);
+    void updateMe(int);
 
-   static QPalette my_OrigPalette;
-   static QPalette my_NormalPalette;
-   static QPalette my_HilitePalette;
-   static QPalette my_TodayPalette;
-   static QPalette my_TodaySelectPalette;
-   static QPalette my_EventPalette;
-   static QPalette my_HolidayPalette;
-   static QPalette my_HolidaySelectPalette;
-   static QColorGroup my_NormalGroup;
-   static QColorGroup my_DisabledGroup;
-   static QColorGroup my_HiliteGroup;
-   static QColorGroup my_HiDisabledGroup;
-   static QColorGroup my_TodayGroup;
-   static QColorGroup my_TodaySelectGroup;
-   static QColorGroup my_EventGroup;
-   static QColorGroup my_HolidayGroup;
-   static QColorGroup my_HolidaySelectGroup;
+  protected:
+    void mousePressEvent(QMouseEvent *);
+    void dragEnterEvent(QDragEnterEvent *);
+    void dragLeaveEvent(QDragLeaveEvent *);
+    void dropEvent(QDropEvent *);
+
+    void setColors();
+    void setBackColor(const QColor & color);
+    void setTextColor(const QColor & color);
+
+  private:
+    bool mSelected;
+    bool mEvent;
+    bool mToday;
+    bool mHoliday;
+    bool mItalic;
+
+    QColor mDefaultBackColor;
+    QColor mDefaultTextColor;
+
+    int my_index;
+    QDate bt_Date;
+    CalObject *calendar;
 };
 
 #endif // _KDPDATEBUTTON_H

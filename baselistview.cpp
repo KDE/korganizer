@@ -8,7 +8,6 @@
 #include <kapp.h>
 #include <klocale.h>
 #include <kglobal.h>
-#include <kconfig.h>
 #include <kiconloader.h>
 
 #include "baselistview.h"
@@ -19,8 +18,6 @@ BaseListView::BaseListView(CalObject *cal, QWidget *parent, const char *name)
 {
   timeAmPm = TRUE;
   toolTipList.setAutoDelete(TRUE);
-  
-  config = kapp->config();
   
   calendar = cal;
   clearTableFlags(Tbl_hScrollBar);
@@ -105,13 +102,13 @@ void BaseListView::updateView()
 
 void BaseListView::updateConfig()
 {
-  int fmt;
-  config->setGroup("Time & Date");
-  fmt = config->readNumEntry("Time Format", 1);
+  fmt = KOPrefs::instance()->mTimeFormat;
   timeAmPm = (fmt == 1);
 
-  config->setGroup("Fonts");
-  setTableFont(config->readFontEntry("List Font"));
+  // Is this used?
+//  config->setGroup("Fonts");
+//  setTableFont(config->readFontEntry("List Font"));
+
   updateView();
 }
 

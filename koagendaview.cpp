@@ -22,6 +22,8 @@
 #include <kglobal.h>
 #include <kstddirs.h>
 
+#include "koprefs.h"
+
 TimeLabels::TimeLabels(int rows,QWidget *parent,const char *name,WFlags f) :
   QScrollView(parent,name,f)
 {
@@ -136,9 +138,9 @@ void TimeLabels::setTimeFormat(int format)
 void TimeLabels::updateConfig(KConfig *config)
 {
   // set the font
-  config->setGroup("Fonts");
-  QFont font = config->readFontEntry("TimeBar Font");
-  setFont(font);
+//  config->setGroup("Fonts");
+//  QFont font = config->readFontEntry("TimeBar Font");
+  setFont(KOPrefs::instance()->mTimeBarFont);
 
   // set the time format
   config->setGroup("Time & Date");

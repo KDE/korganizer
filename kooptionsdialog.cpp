@@ -20,23 +20,17 @@
 #include <kfontdialog.h>
 #include <kstddirs.h>
 
+#include "koprefs.h"
+
 #include "kooptionsdialog.h"
 #include "kooptionsdialog.moc"
 
 //koConfig koconf;
 
-
-
-// The Preferences dialog reads and writes the config file to get and store the
-// settings. It would be better to maintain a object containing the preferences
-// settings in memory and do the file operations only when really necessary.
-
 KOOptionsDialog::KOOptionsDialog(QWidget *parent, char *name, bool modal) :
   KDialogBase(TreeList, i18n("Preferences"),Ok|Apply|Cancel|Default,Ok,parent,
               name,modal)
 {
-  mConfig = new KConfig(locate("config","korganizerrc"));
-  
   setupMainTab();
   setupTimeTab();
   setupFontsTab();
@@ -53,7 +47,6 @@ KOOptionsDialog::KOOptionsDialog(QWidget *parent, char *name, bool modal) :
 
 KOOptionsDialog::~KOOptionsDialog()
 {
-  delete mConfig;
 }
 
 
@@ -195,6 +188,8 @@ void KOOptionsDialog::setupFontsTab()
   QFrame *topFrame = addPage(i18n("Fonts"));
 
   QGridLayout *topLayout = new QGridLayout(topFrame,5,2);
+  topLayout->setSpacing(spacingHint());
+  topLayout->setMargin(marginHint());
 
   mTimeBarFont = new QLabel("12:34",topFrame);
   mTimeBarFont->setFrameStyle(QFrame::Panel|QFrame::Sunken);
@@ -255,6 +250,31 @@ void KOOptionsDialog::selectTimeBarFont()
 void KOOptionsDialog::setupColorsTab()
 {
   QFrame *topFrame = addPage(i18n("Colors"));
+
+  QGridLayout *topLayout = new QGridLayout(topFrame,5,2);
+  topLayout->setSpacing(spacingHint());
+  topLayout->setMargin(marginHint());
+
+  mHolidayColor = new QFrame(topFrame);
+  mHolidayColor->setFrameStyle(QFrame::Panel|QFrame::Plain);
+  topLayout->addWidget(mHolidayColor,0,0);
+
+  QPushButton *buttonHolidayColor = new QPushButton(i18n("Holiday Color"),
+                                                    topFrame);
+  topLayout->addWidget(buttonHolidayColor,0,1);
+  connect(buttonHolidayColor,SIGNAL(clicked()),SLOT(selectHolidayColor()));
+
+  mHighlightColor = new QFrame(topFrame);
+  mHighlightColor->setFrameStyle(QFrame::Panel|QFrame::Plain);
+  topLayout->addWidget(mHighlightColor,1,0);
+
+  QPushButton *buttonHighlightColor = new QPushButton(i18n("Highlight Color"),
+                                                    topFrame);
+  topLayout->addWidget(buttonHighlightColor,1,1);
+  connect(buttonHighlightColor,SIGNAL(clicked()),SLOT(selectHighlightColor()));
+
+  topLayout->setRowStretch(2,1);
+  
 
 // Disabled because color settings are not used. Has to be reimplemented.
 #if 0
@@ -328,17 +348,35 @@ void KOOptionsDialog::setupColorsTab()
 #endif
 }
 
+void KOOptionsDialog::selectHolidayColor()
+{
+  QColor myColor;
+  int result = KColorDialog::getColor( myColor );
+  if ( result == KColorDialog::Accepted ) {
+    mHolidayColor->setBackgroundColor(myColor);
+  }
+}
+
+void KOOptionsDialog::selectHighlightColor()
+{
+  QColor myColor;
+  int result = KColorDialog::getColor( myColor );
+  if ( result == KColorDialog::Accepted ) {
+    mHighlightColor->setBackgroundColor(myColor);
+  }
+}
+
 
 void KOOptionsDialog::setupPrinterTab()
 {
-  QFrame *topFrame = addPage(i18n("Printing"));
+  mPrinterTab = addPage(i18n("Printing"));
   
-  QGridLayout *topLayout = new QGridLayout(topFrame,5,2);
+  QGridLayout *topLayout = new QGridLayout(mPrinterTab,5,2);
   topLayout->setSpacing(spacingHint());
   topLayout->setMargin(marginHint());
 
-  topLayout->addWidget(new QLabel(i18n("Printer Name:"),topFrame),0,0);
-  mPrinterCombo = new QComboBox(topFrame);
+  topLayout->addWidget(new QLabel(i18n("Printer Name:"),mPrinterTab),0,0);
+  mPrinterCombo = new QComboBox(mPrinterTab);
   topLayout->addWidget(mPrinterCombo,0,1);
 
   QString prName;
@@ -367,7 +405,7 @@ void KOOptionsDialog::setupPrinterTab()
   }
 
   mPaperSizeGroup = new QButtonGroup(1,Horizontal,i18n("Paper Size:"),
-                                     topFrame);
+                                     mPrinterTab);
   (void)new QRadioButton(i18n("A4"),mPaperSizeGroup);
   (void)new QRadioButton(i18n("B5"),mPaperSizeGroup);
   (void)new QRadioButton(i18n("Letter"),mPaperSizeGroup);
@@ -377,14 +415,20 @@ void KOOptionsDialog::setupPrinterTab()
 
   mPaperOrientationGroup = new QButtonGroup(1,Horizontal,
                                             i18n("Paper Orientation:"),
-                                            topFrame);
+                                            mPrinterTab);
   (void)new QRadioButton(i18n("Portrait"),mPaperOrientationGroup);
   (void)new QRadioButton(i18n("Landscape"),mPaperOrientationGroup);
   topLayout->addMultiCellWidget(mPaperOrientationGroup,1,1,0,1);
 
-  topLayout->addWidget(new QLabel(i18n("Preview Program:"),topFrame),2,0);
-  mPrintPreviewEdit = new QLineEdit(topFrame);
+  topLayout->addWidget(new QLabel(i18n("Preview Program:"),mPrinterTab),2,0);
+  mPrintPreviewEdit = new QLineEdit(mPrinterTab);
   topLayout->addWidget(mPrintPreviewEdit,2,1);
+}
+
+
+void KOOptionsDialog::showPrinterTab()
+{
+  showPage(pageIndex(mPrinterTab));
 }
 
 
@@ -424,124 +468,94 @@ void KOOptionsDialog::toggleSystemColors( bool syscol )
 
 void KOOptionsDialog::setDefaults()
 {
-  // Default should be set a bit smarter, respecting username and locale
-  // settings for example.
-
-  mAutoSaveCheck->setChecked(false);
-  mConfirmCheck->setChecked(true);
-
-  mNameEdit->clear();
-  mEmailEdit->clear();
-  mAdditionalEdit->clear();
-  mHolidayCombo->setCurrentItem(0);
-  
-  mTimeFormatGroup->setButton(0);
-  mDateFormatGroup->setButton(0);
-  mTimeZoneCombo->setCurrentItem(0);
-  mStartTimeSpin->setValue(10);
-  mAlarmTimeCombo->setCurrentItem(0);
-  mWeekstartCheck->setChecked(true);
-
-  mDayBeginsSpin->setValue(8);
-  mHourSizeSlider->setValue(10);
-  mDailyRecurCheck->setChecked(true);
-
-  mTimeBarFont->setFont(QFont("helvetica",18));
-
-  mPrinterCombo->setCurrentItem(0);
-  mPaperSizeGroup->setButton(0);
-  mPaperOrientationGroup->setButton(0);
-  mPrintPreviewEdit->setText("gv");
+  KOPrefs::instance()->setDefaults();
+  readConfig();
 }
 
 
-void KOOptionsDialog::readConfig()
+void KOOptionsDialog::setCombo(QComboBox *combo,const QString & text)
 {
-  KConfig config(locate("config", "korganizerrc")); 
-
-  config.setGroup("General");
-  mAutoSaveCheck->setChecked(config.readBoolEntry("Auto Save",false));
-  mConfirmCheck->setChecked(config.readBoolEntry("Confirm Deletes",true));
-
-  config.setGroup("Personal Settings");
-  mNameEdit->setText(config.readEntry("user_name",""));
-  mEmailEdit->setText(config.readEntry("user_email",""));
-  mAdditionalEdit->setText(config.readEntry("Additional",""));
-
-  QString holiday = config.readEntry("Holidays","(none)");
   int i;
-  for(i=0;i<mHolidayCombo->count();++i) {
-    if (holiday == mHolidayCombo->text(i)) {
-      mHolidayCombo->setCurrentItem(i);
+  for(i=0;i<combo->count();++i) {
+    if (combo->text(i) == text) {
+      combo->setCurrentItem(i);
       break;
     }
   }
+}
+
+void KOOptionsDialog::readConfig()
+{
+  mAutoSaveCheck->setChecked(KOPrefs::instance()->mAutoSave);
+  mConfirmCheck->setChecked(KOPrefs::instance()->mConfirm);
+
+  mNameEdit->setText(KOPrefs::instance()->mName);
+  mEmailEdit->setText(KOPrefs::instance()->mEmail);
+  mAdditionalEdit->setText(KOPrefs::instance()->mAdditional);
+
+  setCombo(mHolidayCombo,KOPrefs::instance()->mHoliday);
   
-  config.setGroup("Time & Date");
-  mTimeFormatGroup->setButton(config.readNumEntry("Time Format",0));
-  mDateFormatGroup->setButton(config.readNumEntry("Date Format",0));
-  mTimeZoneCombo->setCurrentItem(config.readNumEntry("Time Zone",0));
-  mStartTimeSpin->setValue(config.readNumEntry("Default Start Time",10));
-  mAlarmTimeCombo->setCurrentItem(config.readNumEntry("Default Alarm Time",0));
-  mWeekstartCheck->setChecked(config.readBoolEntry("Week Starts Monday",true));
+  mTimeFormatGroup->setButton(KOPrefs::instance()->mTimeFormat);
+  mDateFormatGroup->setButton(KOPrefs::instance()->mDateFormat);
+  setCombo(mTimeZoneCombo,KOPrefs::instance()->mHoliday);
 
-  config.setGroup("Views");
-  mDayBeginsSpin->setValue(config.readNumEntry("Day Begins",8));
-  mHourSizeSlider->setValue(config.readNumEntry("Hour Size",10));
-  mDailyRecurCheck->setChecked(config.readBoolEntry("Show Daily Recurrences",true));
+  mStartTimeSpin->setValue(KOPrefs::instance()->mStartTime);
+  mAlarmTimeCombo->setCurrentItem(KOPrefs::instance()->mAlarmTime);
+  mWeekstartCheck->setChecked(KOPrefs::instance()->mWeekstart);
 
-  config.setGroup("Fonts");
-  mTimeBarFont->setFont(config.readFontEntry("TimeBar Font"));
+  mDayBeginsSpin->setValue(KOPrefs::instance()->mDayBegins);
+  mHourSizeSlider->setValue(KOPrefs::instance()->mHourSize);
+  mDailyRecurCheck->setChecked(KOPrefs::instance()->mDailyRecur);
 
-  config.setGroup("Printer");
-  mPrinterCombo->setCurrentItem(config.readNumEntry("Printer Name",0));
-  mPaperSizeGroup->setButton(config.readNumEntry("Paper Size",0));
-  mPaperOrientationGroup->setButton(config.readNumEntry("Paper Orientation",0));
-  mPrintPreviewEdit->setText(config.readEntry("Preview","gv"));
+  mTimeBarFont->setFont(KOPrefs::instance()->mTimeBarFont);
+
+  mHolidayColor->setBackgroundColor(KOPrefs::instance()->mHolidayColor);
+  mHighlightColor->setBackgroundColor(KOPrefs::instance()->mHighlightColor);
+
+  setCombo(mPrinterCombo,KOPrefs::instance()->mPrinter);
+
+  mPaperSizeGroup->setButton(KOPrefs::instance()->mPaperSize);
+  mPaperOrientationGroup->setButton(KOPrefs::instance()->mPaperOrientation);
+  mPrintPreviewEdit->setText(KOPrefs::instance()->mPrintPreview);
 }
 
 
 void KOOptionsDialog::writeConfig()
 {
-  KConfig config(locateLocal("config", "korganizerrc")); 
+  KOPrefs::instance()->mAutoSave = mAutoSaveCheck->isChecked();
+  KOPrefs::instance()->mConfirm = mConfirmCheck->isChecked();
 
-  config.setGroup("General");
-  config.writeEntry("Auto Save",mAutoSaveCheck->isChecked());
-  config.writeEntry("Confirm Deletes",mConfirmCheck->isChecked());
+  KOPrefs::instance()->mName = mNameEdit->text();
+  KOPrefs::instance()->mEmail = mEmailEdit->text();
+  KOPrefs::instance()->mAdditional = mAdditionalEdit->text();
+  KOPrefs::instance()->mHoliday = mHolidayCombo->currentText();
 
-  config.setGroup("Personal Settings");
-  config.writeEntry("user_name",mNameEdit->text());
-  config.writeEntry("user_email",mEmailEdit->text());
-  config.writeEntry("Additional",mAdditionalEdit->text());
-  config.writeEntry("Holidays",mHolidayCombo->currentText());
+  KOPrefs::instance()->mTimeFormat = 
+      mTimeFormatGroup->id(mTimeFormatGroup->selected());
+  KOPrefs::instance()->mDateFormat = 
+      mDateFormatGroup->id(mDateFormatGroup->selected());
+  KOPrefs::instance()->mTimeZone = mTimeZoneCombo->currentText();
+  KOPrefs::instance()->mStartTime = mStartTimeSpin->value();
+  KOPrefs::instance()->mAlarmTime = mAlarmTimeCombo->currentItem();
+  KOPrefs::instance()->mWeekstart = mWeekstartCheck->isChecked();
 
-  config.setGroup("Time & Date");
-  config.writeEntry("Time Format",
-      mTimeFormatGroup->id(mTimeFormatGroup->selected()));
-  config.writeEntry("Date Format",
-      mDateFormatGroup->id(mDateFormatGroup->selected()));
-  config.writeEntry("Time Zone",mTimeZoneCombo->currentItem());
-  config.writeEntry("Default Start Time",mStartTimeSpin->value());
-  config.writeEntry("Default Alarm Time",mAlarmTimeCombo->currentItem());
-  config.writeEntry("Week Starts Monday",mWeekstartCheck->isChecked());
+  KOPrefs::instance()->mDayBegins = mDayBeginsSpin->value();
+  KOPrefs::instance()->mHourSize = mHourSizeSlider->value();
+  KOPrefs::instance()->mDailyRecur = mDailyRecurCheck->isChecked();
 
-  config.setGroup("Views");
-  config.writeEntry("Day Begins",mDayBeginsSpin->value());
-  config.writeEntry("Hour Size",mHourSizeSlider->value());
-  config.writeEntry("Show Daily Recurrences",mDailyRecurCheck->isChecked());
+  KOPrefs::instance()->mTimeBarFont = mTimeBarFont->font();
 
-  config.setGroup("Fonts");
-  config.writeEntry("TimeBar Font",mTimeBarFont->font());
+  KOPrefs::instance()->mHolidayColor = mHolidayColor->backgroundColor();
+  KOPrefs::instance()->mHighlightColor = mHighlightColor->backgroundColor();
 
-  config.setGroup("Printer");
-  config.writeEntry("Printer Name",mPrinterCombo->currentItem());
-  config.writeEntry("Paper Size",
-      mPaperSizeGroup->id(mPaperSizeGroup->selected()));
-  config.writeEntry("Paper Orientation",
-      mPaperOrientationGroup->id(mPaperOrientationGroup->selected()));
-  config.writeEntry("Preview",mPrintPreviewEdit->text());
+  KOPrefs::instance()->mPrinter = mPrinterCombo->currentText();
+  KOPrefs::instance()->mPaperSize = 
+      mPaperSizeGroup->id(mPaperSizeGroup->selected());
+  KOPrefs::instance()->mPaperOrientation =
+      mPaperOrientationGroup->id(mPaperOrientationGroup->selected());
+  KOPrefs::instance()->mPrintPreview = mPrintPreviewEdit->text();
   
-  config.sync();
+  KOPrefs::instance()->writeConfig();
 }
 
 

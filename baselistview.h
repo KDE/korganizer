@@ -47,7 +47,6 @@ protected:
   /* overloaded for drag support */
   bool prepareForDrag(int, int, char **, int *, int *);
 
-  KConfig *config;
   QStrList makeEntries();      // make a list of rows from currEvents.
   virtual QString makeDisplayStr(KOEvent *anEvent);
   CalObject *calendar;          // pointer to calendar object

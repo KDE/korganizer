@@ -70,7 +70,6 @@ protected:
 				   in the widget corresponds to the
 				   stored time, FALSE otherwise. */
   bool timeAmPm;
-  KConfig *config;
 };
 
 #endif

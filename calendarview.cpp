@@ -51,6 +51,7 @@
 #include "kooptionsdialog.h"
 #include "koeventeditor.h"
 #include "kotodoeditor.h"
+#include "koprefs.h"
 
 #include "calendarview.h"
 #include "calendarview.moc"	
@@ -572,9 +573,6 @@ void CalendarView::updateView(const QDateList selectedDates)
   tmpList = selectedDates;
 
   int numView;
-  KConfig config(locate("config", "korganizerrc")); 
-  config.setGroup("Time & Date");
-  bool weekStartsMonday = config.readBoolEntry("Week Starts Monday", TRUE);
   QPixmap px;
 
   // if there are 5 dates and the first is a monday, we have a workweek.
@@ -584,7 +582,8 @@ void CalendarView::updateView(const QDateList selectedDates)
     numView = KOAgendaView::WORKWEEK;
   // if there are 7 dates and the first date is a monday, we have a regular week.
   } else if ((tmpList.count() == 7) &&
-	   (tmpList.first()->dayOfWeek() == (weekStartsMonday ? 1 : 7)) &&
+	   (tmpList.first()->dayOfWeek() ==
+           (KOPrefs::instance()->mWeekstart ? 1 : 7)) &&
 	   (tmpList.first()->daysTo(*tmpList.last()) == 6)) {
     numView = KOAgendaView::WEEK;
 
@@ -762,16 +761,10 @@ void CalendarView::appointment_new()
     to = from;
   }
 
-  KConfig config(locate("config", "korganizerrc")); 
-  config.setGroup("Time & Date");
-  QString confStr(config.readEntry("Default Start Time", "12:00"));
-  int pos = confStr.find(':');
-  if (pos >= 0)
-    confStr.truncate(pos);
-  int fmt = confStr.toUInt();
+  qDebug("StartTime: %d",KOPrefs::instance()->mStartTime);
 
-  newEvent(QDateTime(from, QTime(fmt,0,0)),
-	   QDateTime(to, QTime(fmt+1,0,0)));
+  newEvent(QDateTime(from, QTime(KOPrefs::instance()->mStartTime,0,0)),
+	   QDateTime(to, QTime(KOPrefs::instance()->mStartTime+1,0,0)));
 }
 
 void CalendarView::allday_new()
@@ -877,9 +870,7 @@ void CalendarView::action_deleteTodo()
   // disable deletion for now, because it causes a crash.
   return;
   
-  KConfig config(locate("config", "korganizerrc")); 
-  config.setGroup("General");
-  if (config.readBoolEntry("Confirm Deletes") == TRUE) {
+  if (KOPrefs::instance()->mConfirm) {
     switch(msgItemDelete()) {
     case 0: // OK
       mCalendar->deleteTodo(aTodo);
@@ -940,9 +931,7 @@ void CalendarView::deleteEvent(KOEvent *anEvent)
 
     } // switch
   } else {
-    KConfig config(locate("config", "korganizerrc")); 
-    config.setGroup("General");
-    if (config.readBoolEntry("Confirm Deletes") == TRUE) {
+    if (KOPrefs::instance()->mConfirm) {
       switch (msgItemDelete()) {
       case 0: // OK
         if (anEvent->getTodoStatus()) {

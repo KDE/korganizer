@@ -5,9 +5,10 @@
 #include <kapp.h>
 #include <klocale.h>
 #include <kglobal.h>
-#include <kconfig.h>
 #include <kiconloader.h>
 #include <kstddirs.h>
+
+#include "koprefs.h"
 
 #include "kdated.h"
 #include "kdated.moc"
@@ -39,13 +40,10 @@ KDateEdit::KDateEdit(QWidget *parent, const char *name)
 
   adjustSize();
   
-  connect(dateButton, SIGNAL(clicked()), 
-	  this, SLOT(toggleDatePicker()));
-  connect(datePicker, SIGNAL(dateSelected(QDate)),
-	  this, SLOT(setDate(QDate)));
-  connect(datePicker, SIGNAL(dateSelected(QDate)),
-	  datePicker, SLOT(hide()));
-
+  connect(dateButton,SIGNAL(clicked()),SLOT(toggleDatePicker()));
+  connect(datePicker,SIGNAL(dateSelected(QDate)),SLOT(setDate(QDate)));
+  connect(datePicker,SIGNAL(dateSelected(QDate)),SIGNAL(dateChanged(QDate)));
+  connect(datePicker,SIGNAL(dateSelected(QDate)),datePicker, SLOT(hide()));
 }
 
 KDateEdit::~KDateEdit()
@@ -74,7 +72,7 @@ void KDateEdit::setDate(QDate newDate)
       return;
 
   kfEdit->setDate(newDate, fmt);
-  emit dateChanged(newDate);
+//  emit dateChanged(newDate);
 }
 
 void KDateEdit::setEnabled(bool on)
@@ -101,9 +99,7 @@ QDate KDateEdit::getDate() const
 
 void KDateEdit::updateConfig()
 {
-  KConfig config(locate("config", "korganizerrc")); 
-  config.setGroup("Time & Date");
-  int dateFormat = config.readNumEntry("Date Format", 1);
+  int dateFormat = KOPrefs::instance()->mDateFormat;
 
   switch(dateFormat) {
   case 0: 

@@ -20,7 +20,6 @@
 #include <kapp.h>
 #include <klocale.h>
 #include <kglobal.h>
-#include <kconfig.h>
 #include <kiconloader.h>
 
 #include "optionsdlg.h"
@@ -105,7 +104,7 @@ void KOTodoListView::contentsDragLeaveEvent(QDragLeaveEvent *)
 
 void KOTodoListView::contentsDropEvent(QDropEvent *e)
 {
-  qDebug("KOTodoListView::contentsDropEvent");
+//  qDebug("KOTodoListView::contentsDropEvent");
 
   if (!VCalDrag::canDecode(e)) {
     e->ignore();
@@ -125,7 +124,7 @@ void KOTodoListView::contentsDropEvent(QDropEvent *e)
     KOEvent *existingTodo = mCalendar->getTodo(todo->getVUID());
       
     if(existingTodo) {
-      qDebug("Drop existing Todo");
+//      qDebug("Drop existing Todo");
       KOEvent *to = destinationEvent;
       while(to) {
         if (to->getVUID() == todo->getVUID()) {
@@ -140,7 +139,7 @@ void KOTodoListView::contentsDropEvent(QDropEvent *e)
       emit todoDropped(todo);
       delete todo;
     } else {
-      qDebug("Drop new Todo");
+//      qDebug("Drop new Todo");
       todo->setRelatedTo(destinationEvent);
       mCalendar->addTodo(todo);
       emit todoDropped(todo);
@@ -177,7 +176,7 @@ void KOTodoListView::contentsMouseMoveEvent(QMouseEvent* e)
     mMousePressed = false;
     QListViewItem *item = itemAt(contentsToViewport(mPressPos));
     if (item) {
-      qDebug("Start Drag for item %s",item->text(0).latin1());
+//      qDebug("Start Drag for item %s",item->text(0).latin1());
       VCalDrag *vd = mCalendar->createDragTodo(
                           ((KOTodoViewItem *)item)->event(),viewport());
       if (vd->drag()) {
@@ -261,6 +260,7 @@ void KOTodoView::updateView()
 
   QList<KOEvent> todoList = mCalendar->getTodoList();
 
+/*
   qDebug("KOTodoView::updateView(): Todo List:");
   KOEvent *t;
   for(t = todoList.first(); t; t = todoList.next()) {
@@ -276,6 +276,7 @@ void KOTodoView::updateView()
       qDebug("    - relation: %s",c->getSummary().latin1());
     }
   }
+*/
 
   // Put for each KOEvent a KOTodoViewItem in the list view. Don't rely on a
   // specific order of events. That means that we have to generate parent items
@@ -292,21 +293,21 @@ void KOTodoView::updateView()
 QMap<KOEvent *,KOTodoViewItem *>::ConstIterator
   KOTodoView::insertTodoItem(KOEvent *todo)
 {
-  qDebug("KOTodoView::insertTodoItem(): %s",todo->getSummary().latin1());
+//  qDebug("KOTodoView::insertTodoItem(): %s",todo->getSummary().latin1());
   KOEvent *relatedTodo = todo->getRelatedTo();
   if (relatedTodo) {
-    qDebug("  has Related");
+//    qDebug("  has Related");
     QMap<KOEvent *,KOTodoViewItem *>::ConstIterator itemIterator;
     itemIterator = mTodoMap.find(relatedTodo);
     if (itemIterator == mTodoMap.end()) {
-      qDebug("    related not yet in list");
+//      qDebug("    related not yet in list");
       itemIterator = insertTodoItem (relatedTodo);
     }
     KOTodoViewItem *todoItem = new KOTodoViewItem(*itemIterator,todo);
     todoItem->setOpen(true);
     return mTodoMap.insert(todo,todoItem);
   } else {
-    qDebug("  no Related");
+//    qDebug("  no Related");
     KOTodoViewItem *todoItem = new KOTodoViewItem(mTodoListView,todo);
     todoItem->setOpen(true);
     return mTodoMap.insert(todo,todoItem);

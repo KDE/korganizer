@@ -5,8 +5,9 @@
 
 #include <kapp.h>
 #include <klocale.h>
-#include <kconfig.h>
 #include <kstddirs.h>
+
+#include "koprefs.h"
 
 #include "koevent.h"
 #include "koevent.moc"
@@ -33,9 +34,7 @@ KOEvent::KOEvent()
   relatedTo = 0;
   lastModified = QDateTime::currentDateTime();
   
-  KConfig config(locate("config", "korganizerrc")); 
-  config.setGroup("Personal Settings");
-  organizer = config.readEntry("user_email");
+  organizer = KOPrefs::instance()->mName;
   if (organizer.isEmpty())
     organizer = "x-none";
   
@@ -673,9 +672,7 @@ inline void KOEvent::toggleAlarm()
     alarmRepeatCount = 0;
   } else {
     alarmRepeatCount = 1;
-    KConfig config(locate("config", "korganizerrc")); 
-    config.setGroup("Time & Date");
-    QString alarmStr(config.readEntry("Default Alarm Time", "15"));
+    QString alarmStr(QString::number(KOPrefs::instance()->mAlarmTime));
     int pos = alarmStr.find(' ');
     if (pos >= 0)
       alarmStr.truncate(pos);
@@ -1407,10 +1404,7 @@ int KOEvent::weekOfMonth(const QDate &qd) const
 
 void KOEvent::updateConfig() 
 {
-  KConfig config(locate("config", "korganizerrc")); 
-  config.setGroup("Time & Date");
-  
-  weekStartsMonday = config.readBoolEntry("Week Starts Monday", FALSE);
+  weekStartsMonday = KOPrefs::instance()->mWeekstart;
 }
 
 /******************************* ATTENDEE CLASS *****************************/

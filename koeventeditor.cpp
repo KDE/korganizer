@@ -39,13 +39,11 @@
 #include <kiconloader.h>
 #include <kapp.h>
 #include <klocale.h>
-#include <kconfig.h>
 #include <ktoolbarbutton.h>
 #include <kstddirs.h>
 
-//#include "qdatelist.h"
-//#include "misc.h"
 #include "catdlg.h"
+#include "koprefs.h"
 
 #include "koeventeditor.h"
 #include "koeventeditor.moc"
@@ -154,14 +152,7 @@ void KOEventEditor::newEvent( QDateTime from, QDateTime to, bool allDay )
 
 void KOEventEditor::slotDefault()
 {
-  KConfig config(locate("config", "korganizerrc")); 
-
-  config.setGroup("Time & Date");
-
-  QString confStr(config.readEntry("Default Start Time", "12:00"));
-  int pos = confStr.find(':');
-  if (pos >= 0) confStr.truncate(pos);
-  int fmt = confStr.toUInt();
+  int fmt = KOPrefs::instance()->mStartTime;
   
   QDateTime from(QDate::currentDate(), QTime(fmt,0,0));
   QDateTime to(QDate::currentDate(), QTime(fmt+1,0,0));

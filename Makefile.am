@@ -29,16 +29,14 @@ libkorganizer_la_SOURCES =  calobject.cpp catdlg.cpp \
 	ktimed.cpp main.cpp  \
 	searchdialog.cpp calendarview.cpp quickdialog.cpp \
 	calprinter.cpp kptbutton.cpp \
-	koarchivedlg.cpp optionsdlg.cpp kpropdlg.cpp kpropcheck.cpp \
-	kpropcombo.cpp kpropradio.cpp kpropfont.cpp \
-	kpropcolor.cpp kpropspin.cpp kproptext.cpp \
-	scanholiday.c parseholiday.c aboutdlg.cpp \
-	vcaldrag.cpp kpropgroup.cpp komailclient.cpp kotodoview.cpp \
+	koarchivedlg.cpp \
+	scanholiday.c parseholiday.c \
+	vcaldrag.cpp komailclient.cpp kotodoview.cpp \
 	dateedit.cpp datevalidator.cpp \
         kobaseview.cpp kolistview.cpp \
 	koapp.cpp exportwebdialog.cpp korganizer_part.cpp korganizer.cpp \
         kooptionsdialog.cpp koeventeditor.cpp koeditorwidgets.cpp \
-        kotodoeditor.cpp
+        kotodoeditor.cpp koprefs.cpp
 
 alarmd_SOURCES = alarmdaemon.cpp alarmmain.cpp calobject.cpp koevent.cpp \
 	scanholiday.c parseholiday.c vcaldrag.cpp
@@ -46,7 +44,7 @@ alarmd_SOURCES = alarmdaemon.cpp alarmmain.cpp calobject.cpp koevent.cpp \
 METASOURCES = AUTO
 
 noinst_HEADERS = komonthview.h misc.h calobject.h \
-	kpbutton.h optionsdlg.h catdlg.h koagendaview.h koagenda.h \
+	kpbutton.h catdlg.h koagendaview.h koagenda.h \
 	koagendaitem.h kptbutton.h \
 	quickdialog.h kdated.h ksellabel.h \
 	eventwidget.h kdatenav.h ksmalldaydisp.h \
@@ -54,15 +52,13 @@ noinst_HEADERS = komonthview.h misc.h calobject.h \
 	version.h koevent.h \
 	kdpquickevt.h \
 	searchdialog.h calprinter.h kptbutton.h \
-	koarchivedlg.h kpropdlg.h kpropcheck.h \
-	kpropcombo.h kpropradio.h kproptext.h kpropfont.h \
-	kpropcolor.h kpropspin.h parseholiday.h aboutdlg.h \
-	vcaldrag.h kpropgroup.h komailclient.h kotodoview.h \
+	koarchivedlg.h parseholiday.h \
+	vcaldrag.h komailclient.h kotodoview.h \
 	dateedit.h datevalidator.h \
         kobaseview.h kolistview.h \
 	alarmapp.h koapp.h exportwebdialog.h korganizer_part.h korganizer.h \
         kooptionsdialog.h koeventeditor.h koeditorwidgets.h \
-        kotodoeditor.h
+        kotodoeditor.h koprefs.h
 
 
 SUBDIRS = versit \

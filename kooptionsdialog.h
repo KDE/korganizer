@@ -9,7 +9,6 @@
 #include <qlined.h>
 #include <qcombo.h>
 #include <qchkbox.h>
-#include <kconfig.h>
 #include <qradiobt.h>
 #include <qpushbt.h>
 
@@ -30,7 +29,7 @@ public:
   ~KOOptionsDialog();
 
 public slots:
-  void showPrinterTab() { /*showPage(printerFrame);*/ };
+  void showPrinterTab();
   void setColorDefaults();
   void applyColorDefaults();
   void toggleSystemColors( bool );
@@ -55,6 +54,8 @@ protected slots:
   void slotOk();
   
   void selectTimeBarFont();
+  void selectHolidayColor();
+  void selectHighlightColor();
 
 protected:
   /** These methods create the page contents */
@@ -65,6 +66,8 @@ protected:
   void setupViewsTab();
   void setupDisplayTab();
   void setupPrinterTab();
+
+  void setCombo(QComboBox *,const QString &);
 
   /** Optionsdlg about to close */
 //  virtual void acceptConfig();
@@ -77,6 +80,8 @@ protected:
 
 	
 private:
+
+  QFrame *mPrinterTab;
   
   QFrame *personalFrame;
   QLineEdit *nameEdit;
@@ -98,10 +103,7 @@ private:
   QLabel *agendaFontLabel;
   QLabel *monthFontLabel;
 
-  KPropColor *color1,*color2,*color3,*color4,*color5,*color6,*color7,*color8,*color9;
-
-  /** pointer to config object */
-  KConfig *mConfig; 
+//  KPropColor *color1,*color2,*color3,*color4,*color5,*color6,*color7,*color8,*color9;
 
   // widgets holding preferences data
   QLineEdit *mNameEdit;
@@ -119,6 +121,9 @@ private:
   QCheckBox    *mWeekstartCheck;
 
   QLabel *mTimeBarFont;
+
+  QFrame *mHolidayColor;
+  QFrame *mHighlightColor;
 
   QSpinBox  *mDayBeginsSpin;
   QSlider   *mHourSizeSlider;

@@ -4,8 +4,9 @@
 
 #include <qkeycode.h>
 
-#include <kconfig.h>
 #include <kstddirs.h>
+
+#include "koprefs.h"
 
 #include "ktimed.h" 
 #include "ktimed.moc"
@@ -67,7 +68,6 @@ KTimeEdit::KTimeEdit(QWidget *parent, QTime qt, const char *name)
   : QComboBox(TRUE, parent, name)
 {
   timeAmPm = TRUE;
-  config = new KConfig(locate("config", "korganizerrc")); 
 
   setInsertionPolicy(NoInsertion);
 
@@ -83,7 +83,6 @@ KTimeEdit::KTimeEdit(QWidget *parent, QTime qt, const char *name)
 
 KTimeEdit::~KTimeEdit()
 {
-  delete config;
 }
 
 QTime KTimeEdit::getTime(bool &ok)
@@ -423,8 +422,7 @@ void KTimeEdit::validateEntry()
 
 void KTimeEdit::updateConfig()
 {
-  config->setGroup("Time & Date");
-  timeAmPm = (config->readNumEntry("Time Format", 1) ? TRUE : FALSE);
+  timeAmPm = KOPrefs::instance()->mTimeFormat;
   insertTimes();
   updateDisp();
 }

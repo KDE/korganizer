@@ -7,9 +7,10 @@
 #include <kapp.h>
 #include <klocale.h>
 #include <kglobal.h>
-#include <kconfig.h>
 #include <kiconloader.h>
 #include <kstddirs.h>
+
+#include "koprefs.h"
 
 #include "kdatenav.h"
 #include "kdatenav.moc"
@@ -168,9 +169,9 @@ KDateNavigator::KDateNavigator(QWidget *parent,
     connect(buttons[i], SIGNAL(updateMe(int)),
 	    SLOT(updateButton(int)));
     /*    if (index >= 0 && index <= daysInMonth - 1)
-      buttons[i]->setItalics(FALSE);
+      buttons[i]->setItalic(FALSE);
     else
-    buttons[i]->setItalics(TRUE);*/
+    buttons[i]->setItalic(TRUE);*/
   }
 
   // read settings from configuration file.
@@ -323,13 +324,13 @@ void KDateNavigator::updateConfig()
                                  i18n("Saturday")
                                };
 
-  KConfig config(locate("config", "korganizerrc")); 
+  showDailyRecurrences = KOPrefs::instance()->mDailyRecur;
 
-  config.setGroup("Views");
-  showDailyRecurrences = config.readBoolEntry("Show Daily Recurrences", FALSE);
+  QPalette heading_Palette(palette());
 
+/*  
   config.setGroup("Colors");
-  
+
   QColor hiliteColor(config.readColorEntry("List Color", &kapp->winStyleHighlightColor()));
   QPalette heading_Palette(palette());
 
@@ -340,13 +341,13 @@ void KDateNavigator::updateConfig()
                   palette().active().base(),
                   hiliteColor,
                   palette().active().base());
+*/
   
 // Temporarily disabled.
 //  heading_Palette.setActive(my_Group);
 //  heading_Palette.setInactive(my_Group);
  
-  config.setGroup("Time & Date");
-  weekStartsMonday = config.readBoolEntry("Week Starts Monday", FALSE);
+  weekStartsMonday = KOPrefs::instance()->mWeekstart;
   curHeaders = (weekStartsMonday ? monHeaders : sunHeaders);
   for(int i=0; i<7; i++) {
     // take the first letter of the day name to be the abbreviation
@@ -356,11 +357,10 @@ void KDateNavigator::updateConfig()
   }
   updateDates();
 
-  // call static config update function for all the date buttons,
-  // and then update them.
-  KDateButton::updateConfig();
-  for (int i = 0; i < 42; i++)
+  for (int i = 0; i < 42; i++) {
     updateButton(i);
+    buttons[i]->updateConfig();
+  }
 
   updateView();
 }
@@ -379,36 +379,26 @@ inline void KDateNavigator::updateButton(int i)
 
   //  index = i + (weekStartsMonday ? 1 : 0) - m_fstDayOfWk - nextLine;
   /*if (buttons[i]->date().month() == m_MthYr.month())
-    buttons[i]->setItalics(FALSE);
+    buttons[i]->setItalic(FALSE);
   else
-  buttons[i]->setItalics(TRUE);*/
+  buttons[i]->setItalic(TRUE);*/
 
-  // check calendar for events on this day, so that we can
-  // color it properly. Some care is taken to only change the
-  // coloring if necessary, to reduce flicker.
-  // must be processed at the beginning cause a day with some events
-  // shall render in bold, regardless the other hilite-action
+  // check calendar for events on this day
   if(calendar->numEvents(buttons[i]->date())) {
     if (!showDailyRecurrences &&
 	(calendar->numEvents(buttons[i]->date()) == 1) && 
 	 (calendar->getEventsForDate(buttons[i]->date()).first()->doesRecur() 
 	  == KOEvent::rDaily)) {
-      if(buttons[i]->hiliteStyle() != KDateButton::NoHilite) {
-        buttons[i]->setHiliteStyle(KDateButton::NoHilite);
-      }
+      buttons[i]->setEvent(false);
     } else {
-      if(buttons[i]->hiliteStyle() != KDateButton::EventHilite) {
-        buttons[i]->setHiliteStyle(KDateButton::EventHilite);
-      }
+      buttons[i]->setEvent(true);
     }
   } else {
-    if(buttons[i]->hiliteStyle() != KDateButton::NoHilite) {
-      buttons[i]->setHiliteStyle(KDateButton::NoHilite);
-    }
+    buttons[i]->setEvent(false);
   }
   
-  // check to see if this button is currently selected, because then
-  // it's coloring is simply the selected coloring.
+  // check to see if this button is currently selected
+  bool selected = false;
   for (QDate *tmpDate = selectedDates.first(); tmpDate;
        tmpDate = selectedDates.next()) {
 
@@ -432,42 +422,29 @@ inline void KDateNavigator::updateButton(int i)
 
     // if the current button's index is the same as that of one of the
     // selected dates, hilite this button.
-    if (index == i)
-      buttons[i]->setHiliteStyle(KDateButton::SelectHilite);
-
+    if (index == i) {
+      selected = true;
+    }
   }
+  buttons[i]->setSelected(selected);
 
+  // Calculate holidays. Sunday is also treated as holiday.
   if (!weekStartsMonday && (float(i)/7 == float(i/7)) ||
-      weekStartsMonday && (float(i-6)/7 == float((i-6)/7))) {
-    if (buttons[i]->hiliteStyle() == KDateButton::SelectHilite) {
-      buttons[i]->setHiliteStyle(KDateButton::HolidaySelectHilite);
-    } else { // it's a holiday, but not selected
-      buttons[i]->setHiliteStyle(KDateButton::HolidayHilite);
-    }
-  }
-
-  // FIXME: today overwrites holiday for now
-  // FIXME: the colorchanges makes it flicker
-  // if the current button is a holiday
-  if (!calendar->getHolidayForDate(buttons[i]->date()).isEmpty()) {
-    if (buttons[i]->hiliteStyle() == KDateButton::SelectHilite) {
-      buttons[i]->setHiliteStyle(KDateButton::HolidaySelectHilite);
-    } else { // it's a holiday, but not selected
-      buttons[i]->setHiliteStyle(KDateButton::HolidayHilite);
-    }
+      weekStartsMonday && (float(i-6)/7 == float((i-6)/7)) ||
+      !calendar->getHolidayForDate(buttons[i]->date()).isEmpty()) {
+    buttons[i]->setHoliday();
+  } else {
+    buttons[i]->setHoliday(false);
   }
   
   // if today is in the currently displayed month, hilight today. 
   if ((buttons[i]->date().year() == QDate::currentDate().year()) &&
       (buttons[i]->date().month() == QDate::currentDate().month()) &&
       (buttons[i]->date().day() == QDate::currentDate().day())) {
-    if (buttons[i]->hiliteStyle() == KDateButton::SelectHilite) {
-      buttons[i]->setHiliteStyle(KDateButton::TodaySelectHilite);
-    } else { // it's Today, but not selected
-      buttons[i]->setHiliteStyle(KDateButton::TodayHilite);
-    }
-    //return;
-  }   
+    buttons[i]->setToday();
+  } else {
+    buttons[i]->setToday(false);
+  }
 }
 
 void KDateNavigator::setShowWeekNums(bool enabled)

@@ -38,7 +38,6 @@
 #include <kiconloader.h>
 #include <kapp.h>
 #include <klocale.h>
-#include <kconfig.h>
 #include <ktoolbarbutton.h>
 #include <kstddirs.h>
 

@@ -13,11 +13,11 @@
 #include <qlayout.h>
 
 #include <klocale.h>
-#include <kconfig.h>
 #include <kstddirs.h>
 #include <kdated.h>
 
-#include <optionsdlg.h>
+#include "kooptionsdialog.h"
+#include "koprefs.h"
 
 #include "calprinter.h"
 #include "calprinter.moc"
@@ -47,14 +47,13 @@ CalPrinter::~CalPrinter()
 
 void CalPrinter::setupPrinter()
 {
-  OptionsDialog *optionsDlg;
-  optionsDlg = new OptionsDialog(i18n("Korganizer Configuration Options"));
+  KOOptionsDialog *optionsDlg = new KOOptionsDialog;
   optionsDlg->showPrinterTab();
   connect(optionsDlg, SIGNAL(configChanged()),
 	  parent, SLOT(updateConfig()));
-  connect(optionsDlg, SIGNAL(closed(QWidget *)), 
-	  parent, SLOT(cleanWindow(QWidget *)));
-  optionsDlg->exec();				   
+//  connect(optionsDlg, SIGNAL(closed(QWidget *)), 
+//	  parent, SLOT(cleanWindow(QWidget *)));
+  optionsDlg->show();				   
 } 
 
 void CalPrinter::preview(PrintType pt, const QDate &fd, const QDate &td)
@@ -108,9 +107,7 @@ void CalPrinter::doPreview(int pt, QDate fd, QDate td)
   printer->setOutputToFile(oldOutputToFile);
   printer->setOutputFileName(oldFileName.data());
   
-  KConfig config(locate("config", "korganizerrc")); 
-  config.setGroup("Printer");
-  previewProg = config.readEntry("Preview", "gv");
+  previewProg = KOPrefs::instance()->mPrinter;
 
   previewProc->clearArguments(); // clear out any old arguments
   *previewProc << previewProg.data(); // program name
@@ -163,18 +160,14 @@ void CalPrinter::doPrint(int pt, QDate fd, QDate td)
 
 void CalPrinter::updateConfig()
 {
-  KConfig config(locate("config", "korganizerrc")); 
-
-  config.setGroup("Printer");
-
   // printer name
-  QString pName = config.readEntry("Printer Name", "");
+  QString pName = KOPrefs::instance()->mPrinter;
   if (!pName.isEmpty())
-    printer->setPrinterName(pName.data());
+    printer->setPrinterName(pName);
 
   // paper size
   int val;
-  val = config.readNumEntry("Paper Size", 2);
+  val = KOPrefs::instance()->mPaperSize;
   switch(val) {
   case 0: printer->setPageSize(QPrinter::A4); break;
   case 1: printer->setPageSize(QPrinter::B5); break;
@@ -192,18 +185,10 @@ void CalPrinter::updateConfig()
     printer->setOrientation(QPrinter::Landscape);
   */
 
-  config.setGroup("Time & Date");
-  weekStartsMonday = config.readBoolEntry("Week Starts Monday", FALSE);
-  timeAmPm = (config.readNumEntry("Time Format", 1) ? TRUE : FALSE);
+  weekStartsMonday = KOPrefs::instance()->mWeekstart;
+  timeAmPm = (KOPrefs::instance()->mTimeFormat ? TRUE : FALSE);
 
-  config.setGroup("Views");
-  QString startStr(config.readEntry("Day Begins", "8:00"));
-  // handle case where old config files are in format "8" instead of "8:00".
-  int colonPos = startStr.find(':');
-  if (colonPos >= 0)
-    startStr.truncate(colonPos);
-  startHour = startStr.toUInt();
-
+  startHour = KOPrefs::instance()->mDayBegins;
 }
 
 void CalPrinter::printDay(const QDate &fd, const QDate &td)

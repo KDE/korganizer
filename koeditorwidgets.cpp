@@ -16,9 +16,9 @@
 #include <kstddirs.h>
 #include <kbuttonbox.h>
 #include <kabapi.h>
-#include <kconfig.h>
 
 #include "koevent.h"
+#include "koprefs.h"
 
 #include "koeditorwidgets.h"
 #include "koeditorwidgets.moc"
@@ -351,6 +351,9 @@ void KOEditorGeneralEvent::recurStuffEnable(bool enable)
 
 void KOEditorGeneralEvent::setDateTimes(QDateTime start, QDateTime end)
 {
+//  qDebug("KOEditorGeneralEvent::setDateTimes(): Start DateTime: %s",
+//         start.toString().latin1());
+
   startDateEdit->setDate(start.date());
   startTimeEdit->setTime(start.time());
   endDateEdit->setDate(end.date());
@@ -367,6 +370,8 @@ void KOEditorGeneralEvent::setCategories(QString str)
 
 void KOEditorGeneralEvent::startTimeChanged(QTime newtime, int wrapval)
 {
+//  qDebug("KOEditorGeneralEvent::startTimeChanged");
+
   int secsep;
 
   secsep = currStartDateTime.secsTo(currEndDateTime);
@@ -422,10 +427,7 @@ void KOEditorGeneralEvent::endDateChanged(QDate newdate)
 
 void KOEditorGeneralEvent::setDefaults(QDateTime from,QDateTime to,bool allDay)
 {
-  KConfig config(locate("config", "korganizerrc")); 
-
-  config.setGroup("Personal Settings");
-  ownerLabel->setText(i18n("Owner: ") + config.readEntry("user_name",""));
+  ownerLabel->setText(i18n("Owner: ") + KOPrefs::instance()->mName);
 
   noTimeButton->setChecked(allDay);
   timeStuffDisable(allDay);
@@ -436,8 +438,7 @@ void KOEditorGeneralEvent::setDefaults(QDateTime from,QDateTime to,bool allDay)
   recursButton->setChecked(false);
 //  recurStuffEnable(false);
 
-  config.setGroup("Time & Date");
-  QString alarmText(config.readEntry("Default Alarm Time", "15"));
+  QString alarmText(QString::number(KOPrefs::instance()->mAlarmTime));
   int pos = alarmText.find(' ');
   if (pos >= 0)
     alarmText.truncate(pos);
@@ -1634,6 +1635,8 @@ void KOEditorRecurrence::setCheckedDays(QBitArray &rDays)
 
 void KOEditorRecurrence::setDateTimes(QDateTime start,QDateTime end)
 {
+//  qDebug ("KOEditorRecurrence::setDateTimes");
+
   startTimeEdit->setTime(start.time());
   endTimeEdit->setTime(end.time());
 
@@ -2200,10 +2203,7 @@ void KOEditorGeneralTodo::setCategories(QString str)
 
 void KOEditorGeneralTodo::setDefaults(QDateTime due,bool allDay)
 {
-  KConfig config(locate("config", "korganizerrc")); 
-
-  config.setGroup("Personal Settings");
-  ownerLabel->setText(i18n("Owner: ") + config.readEntry("user_name",""));
+  ownerLabel->setText(i18n("Owner: ") + KOPrefs::instance()->mName);
 
   noTimeButton->setChecked(allDay);
   timeStuffDisable(allDay);
