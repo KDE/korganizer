@@ -680,15 +680,19 @@ void KOAgenda::startItemAction(const QPoint& viewportPos)
   mStartCellY = gy;
   mCurrentCellX = gx;
   mCurrentCellY = gy;
+  bool noResize = ( mActionItem->incidence()->type() == "Todo");
+
 
   if (mAllDayMode) {
     int gridDistanceX = (x - gx * mGridSpacingX);
     if (gridDistanceX < mResizeBorderWidth &&
-        mActionItem->cellX() == mCurrentCellX) {
+        mActionItem->cellX() == mCurrentCellX &&
+        !noResize ) {
       mActionType = RESIZELEFT;
       setCursor(sizeHorCursor);
     } else if ((mGridSpacingX - gridDistanceX) < mResizeBorderWidth &&
-               mActionItem->cellXWidth() == mCurrentCellX) {
+               mActionItem->cellXWidth() == mCurrentCellX &&
+               !noResize ) {
       mActionType = RESIZERIGHT;
       setCursor(sizeHorCursor);
     } else {
@@ -700,12 +704,14 @@ void KOAgenda::startItemAction(const QPoint& viewportPos)
     int gridDistanceY = (y - gy * mGridSpacingY);
     if (gridDistanceY < mResizeBorderWidth &&
         mActionItem->cellYTop() == mCurrentCellY &&
-        !mActionItem->firstMultiItem()) {
+        !mActionItem->firstMultiItem() &&
+        !noResize ) {
       mActionType = RESIZETOP;
       setCursor(sizeVerCursor);
     } else if ((mGridSpacingY - gridDistanceY) < mResizeBorderWidth &&
                mActionItem->cellYBottom() == mCurrentCellY &&
-               !mActionItem->lastMultiItem())  {
+               !mActionItem->lastMultiItem() &&
+               !noResize )  {
       mActionType = RESIZEBOTTOM;
       setCursor(sizeVerCursor);
     } else {
@@ -876,31 +882,37 @@ void KOAgenda::setNoActionCursor(KOAgendaItem *moveItem,const QPoint& viewportPo
 
   int x,y;
   viewportToContents(viewportPos.x(),viewportPos.y(),x,y);
-//  kdDebug(5850) << "contents: " << x << "," << y << "\n" << endl;
+//  kdDebug(5850) << "contents: " << x << "," << y << endl  << endl;
   int gx,gy;
   contentsToGrid(x,y,gx,gy);
+  bool noResize = (moveItem && moveItem->incidence() &&
+      moveItem->incidence()->type() == "Todo");
 
   // Change cursor to resize cursor if appropriate
   if (mAllDayMode) {
     int gridDistanceX = (x - gx * mGridSpacingX);
-    if (gridDistanceX < mResizeBorderWidth &&
-        moveItem->cellX() == gx) {
+    if ( !noResize &&
+         gridDistanceX < mResizeBorderWidth &&
+         moveItem->cellX() == gx ) {
       setCursor(sizeHorCursor);
-    } else if ((mGridSpacingX - gridDistanceX) < mResizeBorderWidth &&
-             moveItem->cellXWidth() == gx) {
+    } else if ( !noResize &&
+                (mGridSpacingX - gridDistanceX) < mResizeBorderWidth &&
+                moveItem->cellXWidth() == gx ) {
       setCursor(sizeHorCursor);
     } else {
       setCursor(arrowCursor);
     }
   } else {
     int gridDistanceY = (y - gy * mGridSpacingY);
-    if (gridDistanceY < mResizeBorderWidth &&
-        moveItem->cellYTop() == gy &&
-        !moveItem->firstMultiItem()) {
+    if ( !noResize &&
+         gridDistanceY < mResizeBorderWidth &&
+         moveItem->cellYTop() == gy &&
+         !moveItem->firstMultiItem() ) {
       setCursor(sizeVerCursor);
-    } else if ((mGridSpacingY - gridDistanceY) < mResizeBorderWidth &&
-               moveItem->cellYBottom() == gy &&
-               !moveItem->lastMultiItem()) {
+    } else if ( !noResize &&
+                (mGridSpacingY - gridDistanceY) < mResizeBorderWidth &&
+                moveItem->cellYBottom() == gy &&
+                !moveItem->lastMultiItem()) {
       setCursor(sizeVerCursor);
     } else {
       setCursor(arrowCursor);
@@ -911,7 +923,7 @@ void KOAgenda::setNoActionCursor(KOAgendaItem *moveItem,const QPoint& viewportPo
 
 /*
   Place item in cell and take care that multiple items using the same cell do
-  not overlap. This method is not yet optimal. It doesn´t use the maximum space
+  not overlap. This method is not yet optimal. It doesn't use the maximum space
   it can get in all cases.
   At the moment the method has a bug: When an item is placed only the sub cell
   widths of the items are changed, which are within the Y region the item to
