@@ -282,6 +282,8 @@ class ActionManager : public QObject, public KCalendarIface
     /** Get URL for saving. Opens FileDialog. */
     KURL getSaveURL();
 
+    void showStatusMessageOpen( const KURL &url, bool merge );
+
     void initCalendar( Calendar *cal );
 
   private slots:

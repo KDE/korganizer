@@ -727,33 +727,60 @@ bool ActionManager::openURL(const KURL &url,bool merge)
     return false;
   }
 
-  QString tmpFile;
-  if( KIO::NetAccess::download( url, tmpFile, view() ) ) {
-    kdDebug(5850) << "--- Downloaded to " << tmpFile << endl;
-    bool success = mCalendarView->openCalendar(tmpFile,merge);
-    if (merge) {
-      KIO::NetAccess::removeTempFile(tmpFile);
-      if (success)
-        mMainWindow->showStatusMessage(i18n("Merged calendar '%1'.").arg(url.prettyURL()));
+  if ( url.isLocalFile() ) {
+    mURL = url;
+    mFile = url.path();
+    if ( !KStandardDirs::exists( mFile ) ) {
+      mMainWindow->showStatusMessage( i18n("New calendar '%1'.")
+                                      .arg( url.prettyURL() ) );
+      mCalendarView->setModified();
     } else {
-      if (success) {
-        KIO::NetAccess::removeTempFile(mFile);
-        mURL = url;
-        mFile = tmpFile;
-        KConfig *config = KOGlobals::self()->config();
-        config->setGroup("General");
-        setTitle();
-        kdDebug(5850) << "-- Add recent URL: " << url.prettyURL() << endl;
-        if ( mRecent ) mRecent->addURL(url);
-        mMainWindow->showStatusMessage(i18n("Opened calendar '%1'.").arg(mURL.prettyURL()));
+      bool success = mCalendarView->openCalendar( mFile, merge );
+      if ( success ) {
+        showStatusMessageOpen( url, merge );
       }
     }
-    return success;
+    setTitle();
   } else {
-    QString msg;
-    msg = i18n("Cannot download calendar from '%1'.").arg(url.prettyURL());
-    KMessageBox::error(mCalendarView->topLevelWidget(),msg);
-    return false;
+    QString tmpFile;
+    if( KIO::NetAccess::download( url, tmpFile, view() ) ) {
+      kdDebug(5850) << "--- Downloaded to " << tmpFile << endl;
+      bool success = mCalendarView->openCalendar( tmpFile, merge );
+      if (merge) {
+        KIO::NetAccess::removeTempFile( tmpFile );
+        if ( success )
+          showStatusMessageOpen( url, merge );
+      } else {
+        if ( success ) {
+          KIO::NetAccess::removeTempFile( mFile );
+          mURL = url;
+          mFile = tmpFile;
+          KConfig *config = KOGlobals::self()->config();
+          config->setGroup( "General" );
+          setTitle();
+          kdDebug(5850) << "-- Add recent URL: " << url.prettyURL() << endl;
+          if ( mRecent ) mRecent->addURL( url );
+          showStatusMessageOpen( url, merge );
+        }
+      }
+      return success;
+    } else {
+      QString msg;
+      msg = i18n("Cannot download calendar from '%1'.").arg( url.prettyURL() );
+      KMessageBox::error( mCalendarView->topLevelWidget(), msg );
+      return false;
+    }
+  }
+}
+
+void ActionManager::showStatusMessageOpen( const KURL &url, bool merge )
+{
+  if ( merge ) {
+    mMainWindow->showStatusMessage( i18n("Merged calendar '%1'.")
+                                    .arg( url.prettyURL() ) );
+  } else {
+    mMainWindow->showStatusMessage( i18n("Opened calendar '%1'.")
+                                    .arg( url.prettyURL() ) );
   }
 }
 
