@@ -199,9 +199,6 @@ class KOrganizer : public KOrg::MainWindow, virtual public KOrganizerIface
     /** Open toolbar configuration dialog */
     void configureToolbars();
 
-    /** Save toolbar/statusbar options to disk */
-    void saveOptions();
-
     /** Configure key bindings */
     void editKeys();
     

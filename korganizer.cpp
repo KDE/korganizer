@@ -195,15 +195,19 @@ void KOrganizer::writeSettings()
 
   KConfig *config = kapp->config();
 
-  QString tmpStr;
   config->setGroup("KOrganizer Geometry");
 
   config->writeEntry("Width",width());
   config->writeEntry("Height",height());
 
+  mCalendarView->writeSettings();
+
+  config->setGroup("Settings");
+  config->writeEntry("Filter Visible",mFilterViewAction->isChecked());
+
   mRecent->saveEntries(config);
 
-  mCalendarView->writeSettings();
+  saveMainWindowSettings(config);
 
   config->sync();
 }
@@ -438,7 +442,6 @@ void KOrganizer::initActions()
                                 actionCollection());
   KStdAction::preferences(mCalendarView, SLOT(edit_options()),
                           actionCollection());
-  KStdAction::saveOptions(this, SLOT(saveOptions()), actionCollection());
   KStdAction::keyBindings(this, SLOT(editKeys()), actionCollection());
 
   (void)new KAction(i18n("Edit Categories"), 0,
@@ -1018,16 +1021,6 @@ void KOrganizer::slotNewToolbarConfig() // This is called when OK or Apply is cl
 void KOrganizer::editKeys()
 {
   KKeyDialog::configureKeys(actionCollection(),xmlFile(),true,this);
-}
-
-void KOrganizer::saveOptions()
-{
-  KConfig *config = kapp->config();
-
-  saveMainWindowSettings(config);
-
-  config->setGroup("Settings");
-  config->writeEntry("Filter Visible",mFilterViewAction->isChecked());
 }
 
 void KOrganizer::showTip()
