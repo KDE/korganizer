@@ -110,26 +110,24 @@ void KOEditorGeneralEvent::initTime(QWidget *parent,QBoxLayout *topLayout)
   mEndTimeEdit = new KTimeEdit(timeBoxFrame);
   layoutTimeBox->addWidget(mEndTimeEdit,1,3);
 
-  QHBox *flagsBox = new QHBox( timeBoxFrame );
+  QHBoxLayout *flagsBox = new QHBoxLayout( timeBoxFrame );
 
-  mRecursButton = new QCheckBox(i18n("Recurring event"),flagsBox);
+  mRecursButton = new QCheckBox(i18n("Recurring event"),timeBoxFrame);
+  flagsBox->addWidget(mRecursButton);
   connect(mRecursButton,SIGNAL(toggled(bool)),SIGNAL(recursChanged(bool)));
 #ifdef KORG_NORECURRENCE
   mRecursButton->hide();
 #endif
 
-  mNoTimeButton = new QCheckBox(i18n("No time associated"),flagsBox);
+  mNoTimeButton = new QCheckBox(i18n("No time associated"),timeBoxFrame);
+  flagsBox->addWidget(mNoTimeButton);
   connect(mNoTimeButton, SIGNAL(toggled(bool)),SLOT(dontAssociateTime(bool)));
 
-  layoutTimeBox->addMultiCellWidget(flagsBox,2,2,0,3);
-
+  layoutTimeBox->addMultiCellLayout(flagsBox,2,2,0,3);
 
   mDurationLabel = new QLabel(timeBoxFrame);
-  layoutTimeBox->addMultiCellWidget(mDurationLabel,3,3,0,3);
-
-  // add stretch space around duration label
-//  layoutTimeBox->setColStretch(4,1);
-//  layoutTimeBox->setColStretch(6,1);
+  flagsBox->addWidget(mDurationLabel,0,2);
+  
 
   // time widgets are checked if they contain a valid time
   connect(mStartTimeEdit, SIGNAL(timeChanged(QTime)),
