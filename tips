@@ -1,6 +1,7 @@
 <tip category="KOrganizer|General">
 <html>
 <p>...that you can synchronize your calendar data with the data on a Palm Pilot by using <a href="http://www.slac.com/pilone/kpilot_home">KPilot</a>?
+</p>
 </html>
 </tip>
 
@@ -8,73 +9,84 @@
 <html>
 <p>...that it is possible to show the current time in the calendar? Enable the Marcus Bains line in the dialog which appears after selecting <b>Settings</b>,
 <b>KOrganizer settings...</b> from the menu bar.
+</p>
 </html>
 </tip>
 
 <tip category="KOrganizer|General">
 <html>
 <p>...that KOrganizer supports Microsoft Exchange? Just enable the plugin <b>Microsoft&reg; Exchange 2000 plugin for KOrganizer</b> in the dialog <b>Configure Plugins...</b> from the <b>Settings</b> menu.
+</p>
 </html>
 </tip>
 
 <tip category="KOrganizer|General">
 <html>
 <p>...that you can select whether the week starts on Monday or on Sunday in the KDE Control Center? KOrganizer uses this setting. Look at Regional & Accessibility->Country/Region & Languages, then select the Time & Dates tab.
+</p>
 </html>
 </tip>
 
 <tip category="KOrganizer|General">
 <html>
 <p>...that you can edit to-dos quickly by right clicking on the property you wish to change; like the priority, the category or the date?
+</p>
 </html>
 </tip>
 
 <tip category="KOrganizer|General">
 <html>
 <p>...that you can view and edit a calendar from the shell with konsolekalendar? Run <b>konsolekalendar --help</b> for the available options.
+</p>
 </html>
 </tip>
 
 <tip category="KOrganizer|General">
 <html>
 <p>...that you can import birthdays from your address book? There is a resource available which connects the birthdays to your calendar; it is even possible to set a reminder for each event.
+</p>
 </html>
 </tip>
 
 <tip category="KOrganizer|General">
 <html>
 <p>...that you can store your calendar on an FTP server? Use the standard file dialog to save the calendar to a URL like <b>ftp://username@ftpserver/filename</b>. You can make your calendar active and load and save it as if it were local. Just make sure that no two KOrganizer applications are working on the same file, at the same time.
+</p>
 </html>
 </tip>
 
 <tip category="KOrganizer|General">
 <html>
 <p>...that you can create hierarchical to-dos by clicking with the right mouse button on an existing to-do and selecting <b>New Sub-to-do</b> from the context menu?
+</p>
 </html>
 </tip>
 
 <tip category="KOrganizer|General">
 <html>
 <p>...that a color can be assigned to each category? Events with a certain category will be shown in that color. You can assign these in the section <b>Colors</b> within the dialog which appears after selecting <b>Settings</b>, <b>KOrganizer settings...</b> from the menu bar.
+</p>
 </html>
 </tip>
 
 <tip category="KOrganizer|General">
 <html>
 <p>...that you can view and edit a calendar with Konqueror? Just click on the calendar file to make Konqueror open it.
+</p>
 </html>
 </tip>
-
 
 <tip category="KOrganizer|General">
 <html>
 <p>...that it is possible to add an attachment to an event? To do so, add a link to the <b>Attachments</b> tab within the <b>Edit Event</b> dialog.
+</p>
 </html>
 </tip>
 
 <tip category="KOrganizer|General">
 <html>
 <p>...that you can export your calendar to HTML? Check the plugin <b>Web export plugin for KOrganizer</b> in the dialog <b>Configure Plugins...</b> from the <b>Settings</b> menu. Now you can export your calendar with <b>File</b>, <b>Export</b>, <b>Export Web Page...</b> from the menu bar.
+</p>
 </html>
 </tip>
 
@@ -82,10 +94,12 @@
 <html>
 <p>...that you can purge completed to-dos in one step? Go to the <b>File</b> menu and choose <b>Purge Completed</b>.
 </html>
+</p>
 </tip>
 
 <tip category="KOrganizer|General">
 <html>
 <p>...that you can create a new sub-to-do by pasting a to-do while another one is selected?
+</p>
 </html>
 </tip>
