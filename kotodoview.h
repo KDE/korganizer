@@ -171,6 +171,9 @@ class KOTodoView : public KOrg::BaseView
 
     void itemStateChanged( QListViewItem * );
 
+    void setNewPercentageDelayed( KOTodoViewItem *item, int percentage );
+    void progressDelayedNewPercentage();
+
   signals:
     void unSubTodoSignal();
     void unAllSubTodoSignal();
@@ -217,6 +220,7 @@ class KOTodoView : public KOrg::BaseView
 
     QMap<Todo *,KOTodoViewItem *> mTodoMap;
     QPtrList<KOTodoViewItem> mItemsToDelete;
+    QValueList< QPair<KOTodoViewItem *, int> > mPercentChangedMap;
 
     DocPrefs *mDocPrefs;
     QString mCurrentDoc;
