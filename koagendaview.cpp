@@ -521,10 +521,10 @@ KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name) :
            SIGNAL( incidenceSelected( Incidence * ) ) );
 
   // rescheduling of todos by d'n'd
-  connect( mAgenda, SIGNAL(droppedToDo(Todo*,int,int,bool)),
-           SLOT(rescheduleTodo(Todo*,int,int,bool)) );
-  connect( mAllDayAgenda, SIGNAL(droppedToDo(Todo*,int,int,bool)),
-           SLOT(rescheduleTodo(Todo*,int,int,bool)) );
+  connect( mAgenda, SIGNAL( droppedToDo( Todo*, int, int, bool ) ),
+           SLOT( slotTodoDropped( Todo *, int, int, bool ) ) );
+  connect( mAllDayAgenda, SIGNAL( droppedToDo( Todo *, int, int, bool ) ),
+           SLOT( slotTodoDropped( Todo *, int, int, bool ) ) );
 }
 
 
@@ -1065,7 +1065,7 @@ void KOAgendaView::updateEventIndicatorBottom(int newY)
   mEventIndicatorBottom->update();
 }
 
-void KOAgendaView::rescheduleTodo( Todo *todo, int gx, int gy, bool allDay )
+void KOAgendaView::slotTodoDropped( Todo *todo, int gx, int gy, bool allDay )
 {
   if (gx<0 || gy<0) return;
   QDate day = mSelectedDates[gx];
