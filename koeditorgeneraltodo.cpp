@@ -218,7 +218,7 @@ void KOEditorGeneralTodo::setDefaults(QDateTime due,bool allDay)
   mStartTimeEdit->setTime(QTime::currentTime());
   mStartDateModified = false;
 
-  mPriorityCombo->setCurrentItem(0);
+  mPriorityCombo->setCurrentItem(5);
 
   mCompletedCombo->setCurrentItem(0);
 }
