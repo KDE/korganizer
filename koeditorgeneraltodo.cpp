@@ -164,7 +164,7 @@ void KOEditorGeneralTodo::initPriority(QWidget *parent, QBoxLayout *topLayout)
   topLayout->addWidget(priorityLabel);
 
   mPriorityCombo = new QComboBox(parent);
-  mPriorityCombo->insertItem(i18n("1 (Highest)"));
+  mPriorityCombo->insertItem(i18n("1 (highest)"));
   mPriorityCombo->insertItem(i18n("2"));
   mPriorityCombo->insertItem(i18n("3"));
   mPriorityCombo->insertItem(i18n("4"));
@@ -314,7 +314,7 @@ void KOEditorGeneralTodo::writeTodo(Todo *todo)
   // set completion state
   todo->setPercentComplete(mCompletedCombo->currentItem() * 10);
 
-  if (mCompletedCombo->currentItem() == 10 && mCompleted.isValid()) {    
+  if (mCompletedCombo->currentItem() == 10 && mCompleted.isValid()) {
     if (! alreadyComplete) emit todoCompleted( todo );
     else todo->setCompleted(mCompleted);
   }
@@ -435,25 +435,25 @@ void KOEditorGeneralTodo::completedChanged(int index)
 
 void KOEditorGeneralTodo::dateChanged()
 {
-  KLocale *l = KGlobal::locale();  
+  KLocale *l = KGlobal::locale();
   QString dateTimeStr = "";
-  
+
   if ( mStartCheck->isChecked() ) {
-    dateTimeStr += i18n("Start: %1").arg( 
+    dateTimeStr += i18n("Start: %1").arg(
                                      l->formatDate( mStartDateEdit->date() ) );
     if ( mTimeButton->isChecked() )
-      dateTimeStr += QString(" %1").arg( 
+      dateTimeStr += QString(" %1").arg(
                                    l->formatTime( mStartTimeEdit->getTime() ) );
   }
-  
+
   if ( mDueCheck->isChecked() ) {
-    dateTimeStr += i18n("   Due: %1").arg( 
+    dateTimeStr += i18n("   Due: %1").arg(
                                       l->formatDate( mDueDateEdit->date() ) );
     if ( mTimeButton->isChecked() )
-      dateTimeStr += QString(" %1").arg( 
+      dateTimeStr += QString(" %1").arg(
                                     l->formatTime( mDueTimeEdit->getTime() ) );
   }
-  
+
   emit dateTimeStrChanged( dateTimeStr );
 }
 

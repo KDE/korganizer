@@ -161,8 +161,8 @@ ResourceView::ResourceView( KCal::CalendarResources *calendar,
   topLayout->addWidget( buttonBox );
 
   mAddButton = new QPushButton( i18n("Add..."), buttonBox, "add" );
-  mDeleteButton = new QPushButton( i18n("Remove"), buttonBox, "del" );
   mEditButton = new QPushButton( i18n("Edit..."), buttonBox, "edit" );
+  mDeleteButton = new QPushButton( i18n("Remove"), buttonBox, "del" );
   mDeleteButton->setDisabled( true );
   mEditButton->setDisabled( true );
 
@@ -205,7 +205,7 @@ void ResourceView::emitResourcesChanged()
 
 void ResourceView::addResource()
 {
-  KCal::CalendarResourceManager *manager = mCalendar->resourceManager();  
+  KCal::CalendarResourceManager *manager = mCalendar->resourceManager();
 
   QStringList types = manager->resourceTypeNames();
   QStringList descs = manager->resourceTypeDescriptions();
@@ -377,7 +377,7 @@ void ResourceView::contextMenuRequested ( QListViewItem *i,
                                           const QPoint &pos, int )
 {
   ResourceItem *item = static_cast<ResourceItem *>( i );
-  
+
   QPopupMenu *menu = new QPopupMenu( this );
   connect( menu, SIGNAL( aboutToHide() ), menu, SLOT( deleteLater() ) );
   if ( item ) {
@@ -388,7 +388,7 @@ void ResourceView::contextMenuRequested ( QListViewItem *i,
                                    SLOT( saveResource() ) );
     menu->setItemEnabled( saveId, item->resource()->isActive() );
     menu->insertSeparator();
-    menu->insertItem( i18n("Show Info..."), this, SLOT( showInfo() ) );
+    menu->insertItem( i18n("Show Info"), this, SLOT( showInfo() ) );
     menu->insertItem( i18n("Edit..."), this, SLOT( editResource() ) );
     menu->insertItem( i18n("Remove"), this, SLOT( removeResource() ) );
     menu->insertSeparator();
@@ -402,7 +402,7 @@ void ResourceView::showInfo()
 {
   ResourceItem *item = currentItem();
   if ( !item ) return;
-  
+
   QString txt = infoText( item->resource() );
   KMessageBox::information( this, txt );
 }
@@ -411,7 +411,7 @@ void ResourceView::reloadResource()
 {
   ResourceItem *item = currentItem();
   if ( !item ) return;
-  
+
   ResourceCalendar *r = item->resource();
   r->load();
 }
@@ -420,7 +420,7 @@ void ResourceView::saveResource()
 {
   ResourceItem *item = currentItem();
   if ( !item ) return;
-  
+
   ResourceCalendar *r = item->resource();
   r->save();
 }
@@ -428,10 +428,10 @@ void ResourceView::saveResource()
 QString ResourceView::infoText( ResourceCalendar *r )
 {
   QString txt = "<qt>";
-  
+
   txt += "<b>" + r->resourceName() + "</b>";
   txt += "<br>";
-  
+
   KRES::Factory *factory = KRES::Factory::self( "calendar" );
   QString type = factory->typeName( r->type() );
   txt += i18n("Type: %1").arg( type );

@@ -145,7 +145,7 @@ void Exchange::upload()
     KMessageBox::information( 0L, i18n("Please select an appointment."), i18n("Exchange Plugin") );
     return;
   }
-  if ( KMessageBox::warningContinueCancel( 0L, i18n("Exchange Upload is EXPERIMENTAL, you may lose data on this appointment!"), i18n("Exchange Plugin") )
+  if ( KMessageBox::warningContinueCancel( 0L, i18n("Exchange Upload is EXPERIMENTAL, you may lose data on this appointment!"), i18n("Exchange Plugin"), i18n("&Upload") )
        == KMessageBox::Continue ) {
     kdDebug(5850) << "Trying to add appointment " << event->summary() << endl;
     int result = mClient->uploadSynchronous( event );
@@ -165,7 +165,7 @@ void Exchange::remove()
     return;
   }
 
-  if ( KMessageBox::warningContinueCancel( 0L, i18n("Exchange Delete is EXPERIMENTAL, if this is a recurring event it will delete all instances!"), i18n("Exchange Plugin") )
+  if ( KMessageBox::warningContinueCancel( 0L, i18n("Exchange Delete is EXPERIMENTAL, if this is a recurring event it will delete all instances!"), i18n("Exchange Plugin"), KGuiItem(i18n("&Delete"),"editdelete") )
        == KMessageBox::Continue ) {
     kdDebug(5850) << "Trying to delete appointment " << event->summary() << endl;
     int result = mClient->removeSynchronous( event );

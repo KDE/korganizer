@@ -121,6 +121,7 @@
 
   <group name="Views">
     <entry type="Int" key="Hour Size">
+      <label>Hour size</label>
       <default>10</default>
 			<min>4</min>
 			<max>30</max>
@@ -139,7 +140,7 @@
       <default>true</default>
     </entry>
     <entry type="Bool" name="ShowAllDayTodo">
-      <label>Display todos in day, week, and month views</label>
+      <label>Display todos in day, week and month views</label>
       <whatsthis>This option toggles the display of todos in the day, week, and month view. This comes in handy when you have a lot of (recurring) todos.</whatsthis>
       <default>true</default>
     </entry>
@@ -206,6 +207,7 @@
     </entry>
 
     <entry type="Int" key="Next X Days">
+      <label>Next x days</label>
       <default>3</default>
     </entry>
 
