@@ -35,7 +35,6 @@
 #include <korganizer/calendarviewbase.h>
 
 #include "kdatenav.h"
-#include "searchdialog.h"
 #include "koagendaview.h"
 #include "kolistview.h"
 #include "kotodoview.h"
@@ -44,17 +43,7 @@
 
 class QWidgetStack;
 class CalPrinter;
-class ExportWebDialog;
-class KOPrefsDialog;
-class ArchiveDialog;
-class OutgoingDialog;
-class IncomingDialog;
-class CategoryEditDialog;
 class KOFilterView;
-class FilterEditDialog;
-class KOEventEditor;
-class KOTodoEditor;
-class PluginDialog;
 class KOViewManager;
 class KODialogManager;
 class KOTodoView;
@@ -264,15 +253,12 @@ class CalendarView : public KOrg::CalendarViewBase
     void edit_options();
   
     /**
-     *functions for printing, previewing a print, and setting up printing
-     * parameters 
-     */
+      Functions for printing, previewing a print, and setting up printing
+      parameters.
+    */
     void print();
     void printSetup();
     void printPreview();
-  
-    /** Export calendar as web page */
-    void exportWeb();
   
     /** Export as iCalendar file */
     void exportICalendar();
@@ -280,12 +266,10 @@ class CalendarView : public KOrg::CalendarViewBase
     /** Export as vCalendar file */
     void exportVCalendar();
   
-  
     /**
-     *
-     * pop up an Appointment Dialog to make a new appointment. Uses date that
-     * is currently selected in the dateNavigator.
-     */
+      Pop up an Appointment Dialog to make a new appointment. Uses date that
+      is currently selected in the dateNavigator.
+    */
     void appointment_new();
     /** same as apptmnt_new, but sets "All Day Event" to true by default. */
     void allday_new();
@@ -441,14 +425,6 @@ class CalendarView : public KOrg::CalendarViewBase
     int mEventsSelected;
 
     KOTodoView *mTodoList;
-  
-    // dialogs
-    SearchDialog *mSearchDialog;
-    ExportWebDialog *mExportWebDialog;
-    ArchiveDialog *mArchiveDialog;
-    CategoryEditDialog *mCategoryEditDialog;
-    FilterEditDialog *mFilterEditDialog;
-    PluginDialog *mPluginDialog;
 };
 
 #endif

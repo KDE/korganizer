@@ -29,6 +29,14 @@
 #include "koeventeditor.h"
 #include "kotodoeditor.h"
 #include "categoryeditdialog.h"
+#include "searchdialog.h"
+#include "filtereditdialog.h"
+#ifndef KORG_NOPLUGINS
+#include "plugindialog.h"
+#endif
+#ifndef KORG_NOARCHIVE
+#include "archivedialog.h"
+#endif
 
 #include "kodialogmanager.h"
 #include "kodialogmanager.moc"
@@ -39,8 +47,12 @@ KODialogManager::KODialogManager( CalendarView *mainView ) :
   mOutgoingDialog = 0;
   mIncomingDialog = 0;
   mOptionsDialog = 0;
+  mSearchDialog = 0;
+  mArchiveDialog = 0;
+  mFilterEditDialog = 0;
+  mPluginDialog = 0;
 
-  mCategoryEditDialog = new CategoryEditDialog();
+  mCategoryEditDialog = new CategoryEditDialog(mMainView);
 }
 
 KODialogManager::~KODialogManager()
@@ -103,6 +115,63 @@ void KODialogManager::showCategoryEditDialog()
   mCategoryEditDialog->show();
 }
 
+void KODialogManager::showSearchDialog()
+{
+  if (!mSearchDialog) {
+    mSearchDialog = new SearchDialog(mMainView->calendar(),mMainView);
+    connect(mSearchDialog,SIGNAL(showEventSignal(Event *)),
+            mMainView,SLOT(showEvent(Event *)));
+    connect(mSearchDialog,SIGNAL(editEventSignal(Event *)),
+            mMainView,SLOT(editEvent(Event *)));
+    connect(mSearchDialog,SIGNAL(deleteEventSignal(Event *)),
+            mMainView, SLOT(deleteEvent(Event *)));
+    connect(mMainView,SIGNAL(closingDown()),mSearchDialog,SLOT(reject()));
+  }
+  // make sure the widget is on top again
+  mSearchDialog->show();
+  mSearchDialog->raise();
+}
+
+void KODialogManager::showArchiveDialog()
+{
+#ifndef KORG_NOARCHIVE
+  if (!mArchiveDialog) {
+    mArchiveDialog = new ArchiveDialog(mMainView->calendar(),mMainView);
+    connect(mArchiveDialog,SIGNAL(eventsDeleted()),
+            mMainView,SLOT(updateView()));
+  }
+  mArchiveDialog->show();
+  mArchiveDialog->raise();
+
+  // Workaround.
+  QApplication::restoreOverrideCursor();
+#endif
+}
+
+void KODialogManager::showFilterEditDialog(QPtrList<CalFilter> filters)
+{
+  if (!mFilterEditDialog) {
+    mFilterEditDialog = new FilterEditDialog(&filters,mMainView);
+    connect(mFilterEditDialog,SIGNAL(filterChanged()),
+            mMainView,SLOT(filterEdited()));
+  }
+  mFilterEditDialog->show();
+  mFilterEditDialog->raise();
+}
+
+void KODialogManager::showPluginDialog()
+{
+#ifndef KORG_NOPLUGINS
+  if (!mPluginDialog) {
+    mPluginDialog = new PluginDialog(mMainView);
+    connect(mPluginDialog,SIGNAL(configChanged()),
+            mMainView,SLOT(updateConfig()));
+  }
+  mPluginDialog->show();
+  mPluginDialog->raise();
+#endif
+}
+
 KOEventEditor *KODialogManager::getEventEditor()
 {
   KOEventEditor *eventEditor = new KOEventEditor(mMainView->calendar());
@@ -142,4 +211,9 @@ KOTodoEditor *KODialogManager::getTodoEditor()
   connect(mMainView,SIGNAL(closingDown()),todoEditor,SLOT(reject()));
 
   return todoEditor;
+}
+
+void KODialogManager::updateSearchDialog()
+{
+  if (mSearchDialog) mSearchDialog->updateView();
 }

@@ -22,6 +22,9 @@
 // $Id$
 
 #include <qobject.h>
+#include <qptrlist.h>
+
+#include <libkcal/calfilter.h>
 
 class CalendarView;
 class OutgoingDialog;
@@ -30,6 +33,10 @@ class KOPrefsDialog;
 class CategoryEditDialog;
 class KOEventEditor;
 class KOTodoEditor;
+class SearchDialog;
+class ArchiveDialog;
+class PluginDialog;
+class FilterEditDialog;
 
 using namespace KCal;
 
@@ -44,12 +51,14 @@ class KODialogManager : public QObject
     KODialogManager( CalendarView * );
     virtual ~KODialogManager();
 
-    OutgoingDialog *outgoingDialog();
-
     void showOptionsDialog();
     void showIncomingDialog();
     void showOutgoingDialog();
     void showCategoryEditDialog();
+    void showSearchDialog();
+    void showArchiveDialog();
+    void showFilterEditDialog(QPtrList<CalFilter> filters);
+    void showPluginDialog();
 
     /** Get an editor dialog for an Event. */
     KOEventEditor *getEventEditor();
@@ -57,6 +66,10 @@ class KODialogManager : public QObject
     /** Get an editor dialog for a Todo. */
     KOTodoEditor *getTodoEditor();
 
+    OutgoingDialog *outgoingDialog();
+
+    void updateSearchDialog();
+    
   private:
     void createOutgoingDialog();
 
@@ -66,6 +79,10 @@ class KODialogManager : public QObject
     IncomingDialog *mIncomingDialog;
     KOPrefsDialog *mOptionsDialog;
     CategoryEditDialog *mCategoryEditDialog;
+    SearchDialog *mSearchDialog;
+    ArchiveDialog *mArchiveDialog;
+    FilterEditDialog *mFilterEditDialog;
+    PluginDialog *mPluginDialog;
 };
 
 #endif

@@ -55,28 +55,18 @@
 #include <libkcal/calfilter.h>
 #include <libkcal/attendee.h>
 
-#ifndef KORG_NOARCHIVE
-#include "archivedialog.h"
-#endif
 #ifndef KORG_NOMAIL
 #include "komailclient.h"
 #endif
 #include "calprinter.h"
-//#include "exportwebdialog.h"
-#include "koprefsdialog.h"
 #include "koeventeditor.h"
 #include "kotodoeditor.h"
 #include "koprefs.h"
 #include "koeventviewerdialog.h"
 #include "publishdialog.h"
-#include "categoryeditdialog.h"
 #include "kofilterview.h"
-#include "filtereditdialog.h"
 #include "kowhatsnextview.h"
 #include "kojournalview.h"
-#ifndef KORG_NOPLUGINS
-#include "plugindialog.h"
-#endif
 #include "koglobals.h"
 #include "koviewmanager.h"
 #include "kodialogmanager.h"
@@ -113,12 +103,6 @@ CalendarView::CalendarView(QWidget *parent,const char *name)
   mReadOnly = false;
   mEventsSelected = true;
 
-  mSearchDialog = 0;
-  mArchiveDialog = 0;
-  mFilterEditDialog = 0;
-  mExportWebDialog = 0;
-  mPluginDialog = 0;
-  
   mCalPrinter = 0;
 
   // Create calendar object, which manages all calendar information associated
@@ -291,17 +275,7 @@ void CalendarView::closeCalendar()
 
 void CalendarView::archiveCalendar()
 {
-#ifndef KORG_NOARCHIVE
-  if (!mArchiveDialog) {
-    mArchiveDialog = new ArchiveDialog(mCalendar,this);
-    connect(mArchiveDialog,SIGNAL(eventsDeleted()),SLOT(updateView()));
-  }
-  mArchiveDialog->show();
-  mArchiveDialog->raise();
-
-  // Workaround.
-  QApplication::restoreOverrideCursor();
-#endif
+  mDialogManager->showArchiveDialog();
 }
 
 
@@ -495,8 +469,7 @@ void CalendarView::changeEventDisplay(Event *which, int action)
 //  kdDebug() << "CalendarView::changeEventDisplay" << endl;
 
   mDateNavigator->updateView();
-  if (mSearchDialog)
-    mSearchDialog->updateView();
+  mDialogManager->updateSearchDialog();
 
   if (which) {
     // If there is an event view visible update the display
@@ -881,19 +854,7 @@ bool CalendarView::deleteEvent(const QString &VUID)
 
 void CalendarView::action_search()
 {
-  if (!mSearchDialog) {
-    mSearchDialog = new SearchDialog(mCalendar,this);
-    connect(mSearchDialog,SIGNAL(showEventSignal(Event *)),
-	    SLOT(showEvent(Event *)));
-    connect(mSearchDialog,SIGNAL(editEventSignal(Event *)),
-	    SLOT(editEvent(Event *)));
-    connect(mSearchDialog,SIGNAL(deleteEventSignal(Event *)),
-	    SLOT(deleteEvent(Event *)));
-    connect(this,SIGNAL(closingDown()),mSearchDialog,SLOT(reject()));
-  }
-  // make sure the widget is on top again
-  mSearchDialog->show();
-  mSearchDialog->raise();
+  mDialogManager->showSearchDialog();
 }
 
 void CalendarView::action_mail()
@@ -1156,18 +1117,6 @@ void CalendarView::printPreview()
                              tmpDateList.last());
 }
 
-void CalendarView::exportWeb()
-{
-#if 0
-  if (!mExportWebDialog) {
-    mExportWebDialog = new ExportWebDialog(mCalendar);
-  }
-
-  mExportWebDialog->show();
-  mExportWebDialog->raise();
-#endif
-}
-
 void CalendarView::exportICalendar()
 {
   QString filename = KFileDialog::getSaveFileName("icalout.ics",i18n("*.ics|ICalendars"),this);
@@ -1290,15 +1239,9 @@ void CalendarView::editFilters()
   while(filter) {
     kdDebug() << " Filter: " << filter->name() << endl;
     filter = mFilters.next();
-  }  
-
-  if (!mFilterEditDialog) {
-    mFilterEditDialog = new FilterEditDialog(&mFilters,this);
-    connect(mFilterEditDialog,SIGNAL(filterChanged()),
-            SLOT(filterEdited()));
   }
-  mFilterEditDialog->show();
-  mFilterEditDialog->raise();
+
+  mDialogManager->showFilterEditDialog(mFilters);
 }
 
 void CalendarView::showFilter(bool visible)
@@ -1373,14 +1316,7 @@ void CalendarView::showIntro()
 
 void CalendarView::configurePlugins()
 {
-#ifndef KORG_NOPLUGINS
-  if (!mPluginDialog) {
-    mPluginDialog = new PluginDialog(this);
-    connect(mPluginDialog,SIGNAL(configChanged()),SLOT(updateConfig()));
-  }
-  mPluginDialog->show();
-  mPluginDialog->raise();
-#endif
+  mDialogManager->showPluginDialog();
 }
 
 QWidgetStack *CalendarView::viewStack()
