@@ -105,6 +105,7 @@ SUBDIRS = versit \
 	  holidays \
 	  sounds
 
+DISTCLEANFILES = scanholiday.c parseholiday.c
 
 datadir = $(kde_bindir)
 data_SCRIPTS = ical2vcal
