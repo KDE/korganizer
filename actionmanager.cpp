@@ -978,19 +978,28 @@ KURL ActionManager::getSaveURL()
 
 void ActionManager::saveProperties(KConfig *config)
 {
-  config->writePathEntry("Calendar",mURL.url());
+  config->writeEntry( "UseResourceCalendar", !mMainWindow->hasDocument() );
+  if ( mMainWindow->hasDocument() ) {
+    config->writePathEntry("Calendar",mURL.url());
+  }
 }
 
 void ActionManager::readProperties(KConfig *config)
 {
+  bool isResourceCalendar(
+    config->readBoolEntry( "UseResourceCalendar", true ) );
   QString calendarUrl = config->readPathEntry("Calendar");
-  if (!calendarUrl.isEmpty()) {
+
+  if (!isResourceCalendar && !calendarUrl.isEmpty()) {
     KURL u(calendarUrl);
     openURL(u);
-    KConfig *config = KOGlobals::config();
+    // Active calendars are no longer of any use, use ResourceCalendar instead
+/*    KConfig *config = KOGlobals::config();
     config->setGroup("General");
     QString active = config->readPathEntry("Active Calendar");
-    if (active == calendarUrl) setActive(true);
+    if (active == calendarUrl) setActive(true);*/
+  } else {
+    // TODO: Initialize a ResourceCalendar here
   }
 }
 
