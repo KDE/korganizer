@@ -119,14 +119,14 @@
     <Merge/>
   </ToolBar>
 
-  <ToolBar name="schedule_toolbar"><text>Schedule</text>
+  <ToolBar name="schedule_toolbar" hidden="true"><text>Schedule</text>
     <Action name="publish"/>
     <Action name="request"/>
     <Action name="reply"/>
     <Action name="addressbook"/>
   </ToolBar>
 
-  <ToolBar name="filter_toolbar"><text>Filter toolbar</text>
+  <ToolBar name="filter_toolbar" hidden="true"><text>Filter toolbar</text>
     <Action name="filter_label"/>
     <Action name="filter_select"/>
     <Action name="edit_filters"/>
