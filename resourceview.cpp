@@ -100,7 +100,10 @@ ResourceItem::ResourceItem( KCal::ResourceCalendar *resource,
 void ResourceItem::setGuiState()
 {
   mBlockStateChange = true;
-  setOn( mResource->isActive() );
+  if ( mIsSubresource )
+    setOn( mResource->subresourceActive( text( 0 ) ) );
+  else
+    setOn( mResource->isActive() );
   mBlockStateChange = false;
 }
 
@@ -236,7 +239,41 @@ void ResourceView::addResource()
 void ResourceView::addResourceItem( ResourceCalendar *resource )
 {
   new ResourceItem( resource, this, mListView );
+  connect( resource, SIGNAL( signalSubresourceAdded( ResourceCalendar *,
+                                                     const QString &,
+                                                     const QString & ) ),
+           this, SLOT( slotSubresourceAdded( ResourceCalendar *,
+                                             const QString &,
+                                             const QString & ) ) );
+  connect( resource, SIGNAL( signalSubresourceRemoved( ResourceCalendar *,
+                                                       const QString &,
+                                                       const QString & ) ),
+           this, SLOT( slotSubresourceRemoved( ResourceCalendar *,
+                                               const QString &,
+                                               const QString & ) ) );
   emitResourcesChanged();
+}
+
+// Add a new entry
+void ResourceView::slotSubresourceAdded( ResourceCalendar *calendar,
+                                         const QString &/*type*/,
+                                         const QString &resource )
+{
+  QListViewItem* i = mListView->findItem( calendar->resourceName(), 0 );
+  if ( !i )
+    // Not found
+    return;
+
+  ResourceItem* item = static_cast<ResourceItem*>( i );
+  ( void )new ResourceItem( calendar, resource, this, item );
+}
+
+// Remove an entry
+void ResourceView::slotSubresourceRemoved( ResourceCalendar */*calendar*/,
+                                           const QString &/*type*/,
+                                           const QString &resource )
+{
+  delete mListView->findItem( resource, 0 );
 }
 
 void ResourceView::updateResourceItem( ResourceCalendar *resource )
