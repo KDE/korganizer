@@ -83,10 +83,6 @@ KOPrefs::KOPrefs() :
   addItemInt("Default Alarm Time",&mAlarmTime,0);
   addItemInt("Daylight Savings",&mDaylightSavings,0);
 
-  KPrefs::setCurrentGroup("AlarmDaemon");
-
-  addItemBool("Autostart",&mAlarmdAutostart,true);
-
   KPrefs::setCurrentGroup("Calendar");
 
   addItemInt("Default Calendar Format",&mDefaultFormat,FormatICalendar);

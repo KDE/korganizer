@@ -93,8 +93,6 @@ class KOPrefs : public KPrefs
     int     mDefaultFormat;
     int     mMailClient;
 
-    bool    mAlarmdAutostart;
-  
     QString mTimeZone;
     QString mTimeZoneId;
     int     mStartTime;

@@ -185,11 +185,6 @@ void KOPrefsDialog::setupMainTab()
 
   topLayout->addMultiCellWidget(mailClientGroup->groupBox(),11,11,0,1);
 
-  KPrefsWidBool *alarmdAutostart =
-      addWidBool(i18n("Automatically Start Alarm Daemon on Login"),
-                 &(KOPrefs::instance()->mAlarmdAutostart),topFrame);
-  topLayout->addMultiCellWidget(alarmdAutostart->checkBox(),12,12,0,1);
-
   topLayout->setRowStretch(13,1);
 }
 
