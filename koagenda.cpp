@@ -561,13 +561,13 @@ bool KOAgenda::eventFilter_mouse(QObject *object, QMouseEvent *me)
     case QEvent::MouseMove:
       if (object != viewport()) {
         KOAgendaItem *moveItem = dynamic_cast<KOAgendaItem *>(object);
-        if (!moveItem->incidence()->isReadOnly() &&
+        if (moveItem && !moveItem->incidence()->isReadOnly() &&
             !moveItem->incidence()->recurrence()->doesRecur() )
           if (!mActionItem)
             setNoActionCursor(moveItem,viewportPos);
           else
             performItemAction(viewportPos);
-        } else {
+      } else {
           if ( mActionType == SELECT ) {
             performSelectAction( viewportPos );
           }
@@ -584,8 +584,10 @@ bool KOAgenda::eventFilter_mouse(QObject *object, QMouseEvent *me)
         emit newEventSignal(gx,gy);
       } else {
         KOAgendaItem *doubleClickedItem = dynamic_cast<KOAgendaItem *>(object);
-        selectItem(doubleClickedItem);
-        emit editIncidenceSignal(doubleClickedItem->incidence());
+        if (doubleClickedItem) {
+          selectItem(doubleClickedItem);
+          emit editIncidenceSignal(doubleClickedItem->incidence());
+        }
       }
       break;
 
