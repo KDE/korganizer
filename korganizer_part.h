@@ -99,7 +99,7 @@ class KOrganizerPart: public KParts::ReadOnlyPart,
     void startCompleted( KProcess * );
 
   private:
-    KCal::Calendar *mCalendar;    
+    KCal::Calendar *mCalendar;
     CalendarView *mWidget;
     ActionManager *mActionManager;
     KOrganizerBrowserExtension *mBrowserExtension;
@@ -114,17 +114,5 @@ class KOrganizerBrowserExtension : public KParts::BrowserExtension
     KOrganizerBrowserExtension(KOrganizerPart *parent);
     virtual ~KOrganizerBrowserExtension();
 };
-
-class KOStatusBarExtension : public KParts::StatusBarExtension
-{
-  public:
-    KOStatusBarExtension( KOrganizerPart *parent );
-
-    KMainWindow *mainWindow() const;
-
-  private:
-    KOrganizerPart *mParent;
-};
-
 
 #endif

@@ -46,6 +46,8 @@
 #include <kprocess.h>
 #include <ktempfile.h>
 
+#include <sidebarextension.h>
+
 #include <qapplication.h>
 #include <qfile.h>
 #include <qtimer.h>
@@ -121,9 +123,12 @@ KOrganizerPart::KOrganizerPart(QWidget *parentWidget, const char *widgetName,
 
   KGlobal::iconLoader()->addAppDir("korganizer");
 
-  mWidget = new CalendarView( mCalendar, canvas );
+  CalendarView *view = new CalendarView( mCalendar, canvas );
+  mWidget = view; 
   topLayout->addWidget( mWidget );
-
+  
+  new KParts::SideBarExtension(view->leftFrame(), this, "SBE");
+  
   mWidget->show();
 
   mActionManager = new ActionManager( this, mWidget, this, this );
