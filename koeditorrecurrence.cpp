@@ -652,6 +652,7 @@ void RecurrenceRangeWidget::setDefaults( const QDateTime &from  )
   mNoEndDateButton->setChecked( true );
 
   setDateTimes( from );
+  setEndDate( from.date() );
 }
 
 void RecurrenceRangeWidget::setDuration( int duration )
