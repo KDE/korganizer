@@ -1058,21 +1058,21 @@ void CalendarView::deleteTodo(Todo *todo)
     return;
   }
   if (KOPrefs::instance()->mConfirm && (!KOPrefs::instance()->mUseGroupwareCommunication ||
-					KOPrefs::instance()->email() == todo->organizer())) {
+                                        KOPrefs::instance()->email() == todo->organizer())) {
     switch (msgItemDelete()) {
       case KMessageBox::Continue: // OK
         if (!todo->relations().isEmpty()) {
           KMessageBox::sorry(this,i18n("Cannot delete To-Do which has children."),
                          i18n("Delete To-Do"));
         } else {
-	  bool doDelete = true;
-	  if( KOPrefs::instance()->mUseGroupwareCommunication ) {
-	    doDelete = KOGroupware::instance()->sendICalMessage( this, KCal::Scheduler::Cancel, todo, true );
-	  }
+          bool doDelete = true;
+          if( KOPrefs::instance()->mUseGroupwareCommunication ) {
+            doDelete = KOGroupware::instance()->sendICalMessage( this, KCal::Scheduler::Cancel, todo, true );
+          }
           if( doDelete ) {
-	    calendar()->deleteTodo(todo);
-	    todoDeleted( todo );
-	  }
+            calendar()->deleteTodo(todo);
+            todoDeleted( todo );
+          }
         }
         break;
     } // switch
@@ -1083,11 +1083,11 @@ void CalendarView::deleteTodo(Todo *todo)
     } else {
             bool doDelete = true;
       if( KOPrefs::instance()->mUseGroupwareCommunication ) {
-	doDelete = KOGroupware::instance()->sendICalMessage( this, KCal::Scheduler::Cancel, todo, true );
+        doDelete = KOGroupware::instance()->sendICalMessage( this, KCal::Scheduler::Cancel, todo, true );
       }
       if( doDelete ) {
-	calendar()->deleteTodo(todo);
-	todoDeleted( todo );
+        calendar()->deleteTodo(todo);
+        todoDeleted( todo );
       }
     }
   }
@@ -1126,15 +1126,15 @@ void CalendarView::deleteEvent(Event *anEvent)
       case KMessageBox::Continue:
         eventToBeDeleted( anEvent );
         if (anEvent->organizer()==KOPrefs::instance()->email() && anEvent->attendeeCount()>0
-	    && !KOPrefs::instance()->mUseGroupwareCommunication) {
+            && !KOPrefs::instance()->mUseGroupwareCommunication) {
           schedule(Scheduler::Cancel,anEvent);
-	} else if( KOPrefs::instance()->mUseGroupwareCommunication ) {
-	  doDelete = KOGroupware::instance()->sendICalMessage( this, KCal::Scheduler::Cancel, anEvent, true );
-	}
+        } else if( KOPrefs::instance()->mUseGroupwareCommunication ) {
+          doDelete = KOGroupware::instance()->sendICalMessage( this, KCal::Scheduler::Cancel, anEvent, true );
+        }
         if( doDelete ) {
-	  mCalendar->deleteEvent(anEvent);
-	  eventDeleted( anEvent );
-	}
+          mCalendar->deleteEvent(anEvent);
+          eventDeleted( anEvent );
+        }
         break;
 
 // Disabled because it does not work (doesn't seem to be true anymore)
@@ -1161,22 +1161,22 @@ void CalendarView::deleteEvent(Event *anEvent)
     }
   } else {
     if (KOPrefs::instance()->mConfirm && (!KOPrefs::instance()->mUseGroupwareCommunication ||
-					  KOPrefs::instance()->email() == anEvent->organizer())) {
+                                          KOPrefs::instance()->email() == anEvent->organizer())) {
       bool doDelete = true;
       switch (msgItemDelete()) {
         case KMessageBox::Continue: // OK
           eventToBeDeleted( anEvent );
           if ( anEvent->organizer() == KOPrefs::instance()->email() &&
                anEvent->attendeeCount() > 0 &&
-	       !KOPrefs::instance()->mUseGroupwareCommunication ) {
+               !KOPrefs::instance()->mUseGroupwareCommunication ) {
             schedule( Scheduler::Cancel,anEvent );
           } else if( KOPrefs::instance()->mUseGroupwareCommunication ) {
-	    doDelete = KOGroupware::instance()->sendICalMessage( this, KCal::Scheduler::Cancel, anEvent, true );
-	  }
+            doDelete = KOGroupware::instance()->sendICalMessage( this, KCal::Scheduler::Cancel, anEvent, true );
+          }
           if( doDelete ) {
-	    mCalendar->deleteEvent( anEvent );
-	    eventDeleted( anEvent );
-	  }
+            mCalendar->deleteEvent( anEvent );
+            eventDeleted( anEvent );
+          }
           break;
       }
     } else {
@@ -1184,14 +1184,14 @@ void CalendarView::deleteEvent(Event *anEvent)
       bool doDelete = true;
       if ( anEvent->organizer() == KOPrefs::instance()->email() &&
            anEvent->attendeeCount() > 0 &&
-	   !KOPrefs::instance()->mUseGroupwareCommunication ) {
+           !KOPrefs::instance()->mUseGroupwareCommunication ) {
         schedule(Scheduler::Cancel,anEvent);
       }else if( KOPrefs::instance()->mUseGroupwareCommunication ) {
-	doDelete = KOGroupware::instance()->sendICalMessage( this, KCal::Scheduler::Cancel, anEvent, true );
+        doDelete = KOGroupware::instance()->sendICalMessage( this, KCal::Scheduler::Cancel, anEvent, true );
       }
       if( doDelete ) {
-	mCalendar->deleteEvent( anEvent );
-	eventDeleted( anEvent );
+        mCalendar->deleteEvent( anEvent );
+        eventDeleted( anEvent );
       }
     }
   }
