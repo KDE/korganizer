@@ -66,6 +66,7 @@
 #include "kowhatsnextview.h"
 #include "kojournalview.h"
 #include "journal.h"
+
 #include "calendarview.h"
 #include "calendarview.moc"
 
@@ -118,7 +119,7 @@ CalendarView::CalendarView(QWidget *parent,const char *name)
 
   // Create calendar object, which manages all calendar information associated
   // with this calendar view window.
-  mCalendar = new CalendarLocal;
+  mCalendar = new CalendarLocal(KOPrefs::instance()->mTimeZoneId.local8Bit());
   mCalendar->setHoliday(KOPrefs::instance()->mHoliday);
   mCalendar->setEmail(KOPrefs::instance()->email());
   connect(mCalendar,SIGNAL(calUpdated(Incidence *)),
@@ -497,6 +498,8 @@ void CalendarView::updateConfig()
   emit configChanged();
 
   mCalendar->updateConfig();
+
+  mCalendar->setTimeZoneId(KOPrefs::instance()->mTimeZoneId.local8Bit());
 
   // To make the "fill window" configurations work
   raiseCurrentView();

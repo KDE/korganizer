@@ -1,12 +1,13 @@
 // $Id$
 
+#include <time.h>
+#include <unistd.h>
+
 #include <qdir.h>
 #include <qstring.h>
 #include <qfont.h>
 #include <qcolor.h>
 #include <qstringlist.h>
-
-#include "koprefs.h"
 
 #include <kconfig.h>
 #include <ksimpleconfig.h>
@@ -14,6 +15,8 @@
 #include <klocale.h>
 #include <kdebug.h>
 #include <kemailsettings.h>
+
+#include "koprefs.h"
 
 KOPrefs *KOPrefs::mInstance = 0;
 
@@ -52,6 +55,7 @@ KOPrefs::KOPrefs() :
   KPrefs::setCurrentGroup("Time & Date");
 
   addItemString("Time Zone",&mTimeZone,"+0000");
+  addItemString("TimeZoneId",&mTimeZoneId);
   addItemInt("Default Start Time",&mStartTime,10);
   addItemInt("Default Duration",&mDefaultDuration,2);
   addItemInt("Default Alarm Time",&mAlarmTime,0);
@@ -140,12 +144,35 @@ void KOPrefs::usrSetDefaults()
   mAgendaViewFont = mDefaultViewFont;
 
   setCategoryDefaults();
+  
+  setTimeZoneIdDefault();
 }
 
 void KOPrefs::fillMailDefaults()
 {
   if (mName.isEmpty()) mName = i18n("Anonymous");
   if (mEmail.isEmpty()) mEmail = i18n("nobody@nowhere");
+}
+
+void KOPrefs::setTimeZoneIdDefault()
+{
+  QString zone;
+
+  char zonefilebuf[100];
+  int len = readlink("/etc/localtime",zonefilebuf,100);
+  if (len > 0 && len < 100) {
+    zonefilebuf[len] = '\0';
+    zone = zonefilebuf;
+    zone = zone.mid(zone.find("zoneinfo/") + 9);
+  } else {
+    extern char *tzname[2];
+    tzset();
+    zone = tzname[0];
+  }
+  
+  kdDebug () << "----- time zone: " << zone << endl;
+
+  mTimeZoneId = zone;
 }
 
 void KOPrefs::setCategoryDefaults()
@@ -181,6 +208,10 @@ void KOPrefs::usrReadConfig()
   QStringList::Iterator it;
   for (it = mCustomCategories.begin();it != mCustomCategories.end();++it ) {
     setCategoryColor(*it,config()->readColorEntry(*it,&mDefaultCategoryColor));
+  }
+  
+  if (mTimeZoneId.isEmpty()) {
+    setTimeZoneIdDefault();
   }
 }
 

@@ -37,6 +37,7 @@ class KOPrefs : public KPrefs
 
   protected:
     void setCategoryDefaults();
+    void setTimeZoneIdDefault();
 
     /** Fill empty mail fields with default values. */
     void fillMailDefaults();
@@ -74,6 +75,7 @@ class KOPrefs : public KPrefs
     bool    mAlarmdAutostart;
   
     QString mTimeZone;
+    QString mTimeZoneId;
     int     mStartTime;
     int     mDefaultDuration;
     int     mAlarmTime;

@@ -180,24 +180,37 @@ void KOPrefsDialog::setupTimeTab()
   topLayout->setSpacing(spacingHint());
   topLayout->setMargin(marginHint());
 
-  //lukas: TODO - replace by human readable ones
-  const char *tzList[] = { "-1200", "-1130", "-1100", "-1030", "-1000",
-                           "-0930", "-0900", "-0830", "-0800", "-0730",
-                           "-0700", "-0630", "-0600", "-0530", "-0500",
-                           "-0430", "-0400", "-0330", "-0300", "-0230",
-                           "-0200", "-0130", "-0100", "-0030", "+0000",
-                           "+0030", "+0100", "+0130", "+0200", "+0230",
-                           "+0300", "+0330", "+0400", "+0430", "+0500",
-                           "+0530", "+0600", "+0630", "+0700", "+0730",
-                           "+0800", "+0830", "+0900", "+0930", "+1000",
-                           "+1030", "+1100", "+1130", "+1200", "+1230",
-                           "+1300", "+1330", "+1400", 0L };
 
   topLayout->addWidget(new QLabel(i18n("TimeZone:"),topFrame),0,0);
   mTimeZoneCombo = new QComboBox(topFrame);
-  mTimeZoneCombo->insertStrList(tzList);
   topLayout->addWidget(mTimeZoneCombo,0,1);
 
+  FILE *f;
+  char tempstring[101] = "Unknown";
+  char szCurrentlySet[101] = "Unknown";
+  QStrList list;
+
+  // read the currently set time zone
+  if((f = fopen("/etc/timezone", "r")) != NULL) {
+    // get the currently set timezone
+    fgets(szCurrentlySet, 100, f);
+    fclose(f);
+  }
+
+  mTimeZoneCombo->insertItem(i18n("[No selection]"));
+
+  // Read all system time zones
+  f = popen("grep -e  ^[^#] /usr/share/zoneinfo/zone.tab | cut -f 3","r");
+  if (!f) return;
+  while(fgets(tempstring, 100, f) != NULL) {
+    tempstring[strlen(tempstring)-1] = '\0';
+    list.inSort(tempstring);
+  }
+  pclose(f);
+
+  mTimeZoneCombo->insertStrList(&list);
+
+  
   topLayout->addWidget(new QLabel(i18n("Default Appointment Time:"),
                        topFrame),1,0);
   mStartTimeSpin = new QSpinBox(0,23,1,topFrame);
@@ -469,7 +482,7 @@ void KOPrefsDialog::usrReadConfig()
 
   setCombo(mHolidayCombo,KOPrefs::instance()->mHoliday, &mHolidayList);
 
-  setCombo(mTimeZoneCombo,KOPrefs::instance()->mTimeZone);
+  setCombo(mTimeZoneCombo,KOPrefs::instance()->mTimeZoneId);
 
   mStartTimeSpin->setValue(KOPrefs::instance()->mStartTime);
   mDefaultDurationSpin->setValue(KOPrefs::instance()->mDefaultDuration);
@@ -491,7 +504,7 @@ void KOPrefsDialog::usrWriteConfig()
   KOPrefs::instance()->mHoliday = *mHolidayList.at(mHolidayCombo->currentItem());
   kdDebug() << "Holiday: " << KOPrefs::instance()->mHoliday << endl;
 
-  KOPrefs::instance()->mTimeZone = mTimeZoneCombo->currentText();
+  KOPrefs::instance()->mTimeZoneId = mTimeZoneCombo->currentText();
 
   KOPrefs::instance()->mStartTime = mStartTimeSpin->value();
   KOPrefs::instance()->mDefaultDuration = mDefaultDurationSpin->value();
