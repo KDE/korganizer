@@ -298,7 +298,9 @@ void KOViewManager::connectTodoView( KOTodoView* todoView )
            mMainView, SLOT( todoAdded( Todo* ) ) );
   connect( todoView, SIGNAL( todoModifiedSignal( Todo *, Todo *, int ) ),
            mMainView, SLOT( todoModified( Todo *, Todo *, int ) ) );
-
+  connect( todoView, SIGNAL( recurTodo( Todo * ) ),
+           mMainView, SLOT( recurTodo( Todo * ) ) );
+  
   connect( mMainView, SIGNAL( configChanged() ),
            todoView, SLOT( updateConfig() ) );
 }

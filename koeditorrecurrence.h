@@ -36,7 +36,7 @@
 
 #include <kdialogbase.h>
 
-#include <libkcal/event.h>
+#include <libkcal/incidence.h>
 
 #include "ktimeedit.h"
 
@@ -268,9 +268,9 @@ class KOEditorRecurrence : public QWidget
     /** Set widgets to default values */
     void setDefaults( QDateTime from, QDateTime to, bool allday );
     /** Read event object and setup widgets accordingly */
-    void readEvent( Event * );
+    void readIncidence( Incidence * );
     /** Write event settings to event object */
-    void writeEvent( Event * );
+    void writeIncidence( Incidence * );
 
     /** Check if the input is valid. */
     bool validateInput();

@@ -249,6 +249,8 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     void newSubTodo( Todo * );
     /** Delete todo */
     void deleteTodo( Todo * );
+    
+    void recurTodo( Todo * );
 
     void newTodo( const QString & );
     void newTodo( const QString &summary, const QString &description,
@@ -256,7 +258,7 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
 
     /** This todo has been modified */
     void todoModified( Todo *, Todo *, int );
-
+    
     /**
       Check if clipboard contains vCalendar event. The signal pasteEnabled() is
       emitted as result.

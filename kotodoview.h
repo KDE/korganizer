@@ -186,6 +186,7 @@ class KOTodoView : public KOrg::BaseView
     {
       emit todoChanged( oldTodo, todo );
     }
+    void emitRecurSignal( Todo * );
 
   signals:
     void newTodoSignal();
@@ -195,6 +196,7 @@ class KOTodoView : public KOrg::BaseView
     void todoModifiedSignal( Todo *, Todo *, int );
     void todoChanged ( Todo*, Todo* );
     void todoAdded ( Todo* );
+    void recurTodo ( Todo * );
 
     void isModified( bool );
 

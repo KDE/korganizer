@@ -316,6 +316,8 @@ KOTodoEditor *KODialogManager::getTodoEditor()
            mMainView, SLOT( dialogClosing( Incidence * ) ) );
   connect( todoEditor, SIGNAL( editCanceled( Incidence * ) ),
            mMainView, SLOT( editCanceled( Incidence * ) ) );
+  connect( todoEditor, SIGNAL( recurTodo( Todo * ) ),
+           mMainView, SLOT( recurTodo( Todo *) ) ) ;
 
   connect( mMainView, SIGNAL( closingDown() ), todoEditor, SLOT( reject() ) );
 

@@ -28,6 +28,7 @@
 
 #include "koeditorgeneraltodo.h"
 #include "koeditordetails.h"
+#include "koeditorrecurrence.h"
 #include "koincidenceeditor.h"
 
 class QDateTime;
@@ -89,6 +90,7 @@ class KOTodoEditor : public KOIncidenceEditor
     void todoAdded( Todo * );
     void todoToBeDeleted( Todo * );
     void todoDeleted();
+    void recurTodo( Todo * );
 
   protected slots:
     void loadDefaults();
@@ -100,14 +102,16 @@ class KOTodoEditor : public KOIncidenceEditor
   protected:
     QString type() { return "ToDo"; }
     void setupGeneral();
+    void setupRecurrence();
     int msgItemDelete();
 
-  private:  
+  private:
     Todo *mTodo;
     
     Todo *mRelatedTodo;
 
     KOEditorGeneralTodo *mGeneral;
+    KOEditorRecurrence *mRecurrence;
 };
 
 #endif

@@ -42,8 +42,6 @@
 #include <kcalendarsystem.h>
 #include <kmessagebox.h>
 
-#include <libkcal/event.h>
-
 #include <libkdepim/kdateedit.h>
 
 #include "koprefs.h"
@@ -914,25 +912,27 @@ void KOEditorRecurrence::setDefaults( QDateTime from, QDateTime to, bool )
   mYearly->setByMonth( from.date().month() );
 }
 
-void KOEditorRecurrence::readEvent(Event *event)
+void KOEditorRecurrence::readIncidence(Incidence *incidence)
 {
+  if (!incidence) return;
+  
   QBitArray rDays( 7 );
   QPtrList<Recurrence::rMonthPos> rmp;
   QPtrList<int> rmd;
   int day = 0;
   int count = 0;
   int month = 0;
-  setDefaults( event->dtStart(), event->dtEnd(), event->doesFloat() );
+  setDefaults( incidence->dtStart(), incidence->dtEnd(), incidence->doesFloat() );
 
-  setDateTimes( event->dtStart(), event->dtEnd() );
+  setDateTimes( incidence->dtStart(), incidence->dtEnd() );
 
-  int recurs = event->doesRecur();
+  int recurs = incidence->doesRecur();
   int f = 0;
   Recurrence *r = 0;
 
   if ( recurs )
   {
-    r = event->recurrence();
+    r = incidence->recurrence();
     f = r->frequency();
   }
 
@@ -982,7 +982,7 @@ void KOEditorRecurrence::readEvent(Event *event)
       if ( rmd.first() ) {
         day = *rmd.first();
       } else {
-        day = event->dtStart().date().day();
+        day = incidence->dtStart().date().day();
       }
       mMonthly->setByDay( day );
 
@@ -995,7 +995,7 @@ void KOEditorRecurrence::readEvent(Event *event)
 
       rmd = r->yearNums();
       month = *rmd.first();
-      if ( month == event->dtStart().date().month() ) {
+      if ( month == incidence->dtStart().date().month() ) {
         mYearly->setByDay();
       } else {
         mYearly->setByMonth( month );
@@ -1010,26 +1010,26 @@ void KOEditorRecurrence::readEvent(Event *event)
   mRecurrenceChooser->setType( recurrenceType );
   showCurrentRule( recurrenceType );
 
-  mRecurrenceRange->setDateTimes( event->dtStart() );
+  mRecurrenceRange->setDateTimes( incidence->dtStart() );
 
-  if ( event->doesRecur() ) {
+  if ( incidence->doesRecur() ) {
     mRecurrenceRange->setDuration( r->duration() );
     if ( r->duration() == 0 ) mRecurrenceRange->setEndDate( r->endDate() );
   }
 
-  mExceptions->setDates( event->exDates() );
+  mExceptions->setDates( incidence->exDates() );
 }
 
-void KOEditorRecurrence::writeEvent( Event *event )
-{
+void KOEditorRecurrence::writeIncidence( Incidence *incidence )
+{  
   if ( !mEnabledCheck->isChecked() )
   {
-    if (event->doesRecur())
-        event->recurrence()->unsetRecurs();
+    if (incidence->doesRecur())
+        incidence->recurrence()->unsetRecurs();
     return;
   }
 
-  Recurrence *r = event->recurrence();
+  Recurrence *r = incidence->recurrence();
 
   // clear out any old settings;
   r->unsetRecurs();
@@ -1081,7 +1081,7 @@ void KOEditorRecurrence::writeEvent( Event *event )
       if ( mYearly->byMonth() ) {
           month = mYearly->month();
       } else {
-          month = event->dtStart().date().month();
+          month = incidence->dtStart().date().month();
       }
       if ( duration != 0 ) {
         r->setYearly( Recurrence::rYearlyMonth, freq, duration );
@@ -1092,7 +1092,7 @@ void KOEditorRecurrence::writeEvent( Event *event )
       r->addYearlyNum( month );
     }
 
-    event->setExDates( mExceptions->dates() );
+    incidence->setExDates( mExceptions->dates() );
 }
 
 void KOEditorRecurrence::setDateTimeStr( const QString &str )

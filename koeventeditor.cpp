@@ -341,7 +341,7 @@ void KOEventEditor::readEvent( Event *event, bool tmpl )
 {
   mGeneral->readEvent( event, tmpl );
   mDetails->readEvent( event );
-  mRecurrence->readEvent( event );
+  mRecurrence->readIncidence( event );
   mAttachments->readIncidence( event );
   if( mFreeBusy ) mFreeBusy->readEvent( event );
 
@@ -365,7 +365,7 @@ void KOEventEditor::writeEvent( Event *event )
     delete( ev );
   }
 
-  mRecurrence->writeEvent( event );
+  mRecurrence->writeIncidence( event );
 }
 
 bool KOEventEditor::validateInput()

@@ -414,7 +414,7 @@ bool KOEditorGeneralTodo::validateInput()
 
 void KOEditorGeneralTodo::completedChanged(int index)
 {
-  if (index == 5) {
+  if (index == 10) {
     mCompleted = QDateTime::currentDateTime();
   }
   setCompletedDate();

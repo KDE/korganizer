@@ -69,7 +69,10 @@ class KOEditorGeneralTodo : public KOEditorGeneral
 
     /** The todo has been modified externally */
     void modified (Todo*, int);
-
+  
+  signals:
+    void recurTodo( Todo * );
+    
   protected slots:
     void completedChanged(int);
 

@@ -60,7 +60,13 @@ void KOTodoEditor::init()
 {
   setupGeneral();
   setupAttendeesTab();
+  setupRecurrence();
   setupAttachmentsTab();
+
+  connect( mGeneral, SIGNAL( dateTimesChanged( QDateTime, QDateTime ) ),
+           mRecurrence, SLOT( setDateTimes( QDateTime, QDateTime ) ) );
+  connect( mGeneral, SIGNAL( dateTimeStrChanged( const QString & ) ),
+           mRecurrence, SLOT( setDateTimeStr( const QString & ) ) );
 }
 
 void KOTodoEditor::reload()
@@ -75,6 +81,8 @@ void KOTodoEditor::setupGeneral()
   connect(mGeneral,SIGNAL(openCategoryDialog()),mCategoryDialog,SLOT(show()));
   connect(mCategoryDialog, SIGNAL(categoriesSelected(const QString &)),
           mGeneral,SLOT(setCategories(const QString &)));
+  connect(mGeneral,SIGNAL(signalTodoRecur( Todo * )),
+                   SIGNAL( recurTodo( Todo * ) ) );
 
   if (KOPrefs::instance()->mCompactDialogs) {
     QFrame *topFrame = addPage(i18n("General"));
@@ -122,6 +130,16 @@ void KOTodoEditor::setupGeneral()
   }
 
   mGeneral->finishSetup();
+}
+
+void KOTodoEditor::setupRecurrence()
+{
+  QFrame *topFrame = addPage( i18n("Rec&urrence") );
+
+  QBoxLayout *topLayout = new QVBoxLayout( topFrame );
+
+  mRecurrence = new KOEditorRecurrence( topFrame );
+  topLayout->addWidget( mRecurrence );
 }
 
 void KOTodoEditor::editTodo(Todo *todo)
@@ -263,6 +281,7 @@ void KOTodoEditor::setDefaults( QDateTime due, Todo *relatedEvent, bool allDay )
     mGeneral->setDefaults( due, allDay );
   
   mDetails->setDefaults();
+  mRecurrence->setDefaults(QDate::currentDate(), due, false);
   mAttachments->setDefaults();
 }
 
@@ -270,6 +289,7 @@ void KOTodoEditor::readTodo( Todo *todo )
 {
   mGeneral->readTodo( todo );
   mDetails->readEvent( todo );
+  mRecurrence->readIncidence( todo );
   mAttachments->readIncidence( todo );
 
   // categories
@@ -282,6 +302,7 @@ void KOTodoEditor::writeTodo( Todo *todo )
 {
   mGeneral->writeTodo( todo );
   mDetails->writeEvent( todo );
+  mRecurrence->writeIncidence( todo );
   mAttachments->writeIncidence( todo );
 
   // set related event, i.e. parent to-do in this case.
@@ -293,6 +314,7 @@ void KOTodoEditor::writeTodo( Todo *todo )
 bool KOTodoEditor::validateInput()
 {
   if ( !mGeneral->validateInput() ) return false;
+  if ( !mRecurrence->validateInput() ) return false;
   if ( !mDetails->validateInput() ) return false;
   return true;
 }

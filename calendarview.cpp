@@ -1966,4 +1966,36 @@ void CalendarView::editCanceled( Incidence *i )
   mCalendar->endChange( i );
 }
 
+void CalendarView::recurTodo( Todo *todo )
+{
+  if (!todo) return;
+  
+  if ( todo->hasDueDate() && todo->doesRecur() ) {
+      Todo *copyTodo = new Todo( *todo );
+      copyTodo->recreate();
+      copyTodo->setPercentComplete(0);
+      
+      // find next date
+      if ( todo->dtDue() > QDateTime::currentDateTime() ) {
+        copyTodo->setDtDue( todo->recurrence()->getNextDateTime(
+                                                todo->dtDue() ) );
+      }
+      else {
+        copyTodo->setDtDue( todo->recurrence()->getNextDateTime(
+                                                QDateTime::currentDateTime()));
+      }
+      
+      // exception-handling (recurrence)
+      while ( !copyTodo->recursAt( copyTodo->dtDue() ) )
+        copyTodo->setDtDue( copyTodo->recurrence()->getNextDateTime( 
+                                                      copyTodo->dtDue() ) );
+      
+      mCalendar->addTodo( copyTodo );
+      todoAdded( copyTodo );
+  }
+  
+  todo->setCompleted( QDateTime::currentDateTime() );
+  // todoChanged() should be emitted by caller.
+}
+
 #include "calendarview.moc"

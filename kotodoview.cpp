@@ -734,7 +734,7 @@ void KOTodoView::setNewPercentage(int index)
     Todo *oldTodo = todo->clone();
 
     if (mPercentage[index] == 100) {
-      todo->setCompleted(QDateTime::currentDateTime());
+      emit recurTodo( todo );
     } else {
       todo->setCompleted(false);
     }
@@ -818,9 +818,8 @@ void KOTodoView::itemClicked(QListViewItem *item)
   int completed = todoItem->todo()->isCompleted();  // Completed or not?
 
   if (todoItem->isOn()) {
-    if (!completed) {
-      todoItem->todo()->setCompleted(QDateTime::currentDateTime());
-    }
+    if (!completed) 
+      emit recurTodo ( todoItem->todo() );
   } else {
     if (completed) {
       todoItem->todo()->setCompleted(false);
@@ -897,4 +896,9 @@ void KOTodoView::addQuickTodo()
   mQuickAdd->setText( QString::null );
   emit todoAdded( todo );
   updateView();
+}
+
+void KOTodoView::emitRecurSignal( Todo *todo )
+{
+  emit recurTodo( todo );
 }
