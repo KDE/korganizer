@@ -285,7 +285,10 @@ void TopWidget::readSettings()
     panner->setSizes(sizes);
   }
 
+// We currently don't use a status bar
+#if 0
   statusBarEnable = config->readBoolEntry("Status Bar", TRUE);
+#endif
 
   toolBarEnable = config->readBoolEntry("Tool Bar", TRUE);
 
@@ -361,9 +364,12 @@ void TopWidget::writeSettings()
 		 "true" : "false");
   config->writeEntry("Tool Bar", tmpStr);
 
+// We currently don't use a status bar
+#if 0
   tmpStr.sprintf("%s", optionsMenu->isItemChecked(statusBarMenuId) ?
 		 "true" : "false");
   config->writeEntry("Status Bar", tmpStr);
+#endif
 
   if (currentView) tmpStr = currentView->className();
   else tmpStr = "KOTodoView";  
@@ -561,9 +567,12 @@ void TopWidget::initMenus()
 				   SLOT(toggleToolBar()));
   optionsMenu->setItemChecked(toolBarMenuId, TRUE);
 
+// We currently don't use a status bar
+#if 0
   statusBarMenuId = optionsMenu->insertItem(i18n("Show St&atus Bar"), this,
 				   SLOT(toggleStatusBar()));
   optionsMenu->setItemChecked(statusBarMenuId, TRUE);
+#endif
 
   optionsMenu->insertSeparator();			  
   optionsMenu->insertItem(i18n("&Edit Options"), 

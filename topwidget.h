@@ -285,7 +285,11 @@ protected slots:
       optionsMenu->setItemChecked(toolBarMenuId,
 				  !optionsMenu->isItemChecked(toolBarMenuId));
     };
+
+// We currently don't use a status bar
+
   /** toggle the appearance of the statusBar. */
+/*
   void toggleStatusBar() 
     { 
       sb->enable(KStatusBar::Toggle);
@@ -293,6 +297,7 @@ protected slots:
       optionsMenu->setItemChecked(statusBarMenuId, 
 				  !optionsMenu->isItemChecked(statusBarMenuId));
     };
+*/
 
 protected:
   void initMenus();
