@@ -97,7 +97,6 @@ class KOProjectView : public KOrg::BaseView
     void showTodo();
     void editTodo();
     void deleteTodo();
-    void purgeCompleted();
     void itemClicked(QListViewItem *);
 */
 
