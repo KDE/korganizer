@@ -449,6 +449,20 @@ void KOAgenda::performSelectAction(QPoint viewportPos)
   int gx,gy;
   contentsToGrid(x,y,gx,gy);
 
+  QPoint clipperPos = clipper()->
+                      mapFromGlobal(viewport()->mapToGlobal(viewportPos));
+
+  // Scroll if cursor was moved to upper or lower end of agenda.
+  if (clipperPos.y() < mScrollBorderWidth) {
+    mScrollUpTimer.start(mScrollDelay);
+  } else if (visibleHeight() - clipperPos.y() <
+             mScrollBorderWidth) {
+    mScrollDownTimer.start(mScrollDelay);
+  } else {
+    mScrollUpTimer.stop();
+    mScrollDownTimer.stop();
+  }
+
   if ( gy > mCurrentCellY ) {
     mSelectionHeight = ( gy + 1 ) * mGridSpacingY - mSelectionYTop;
 
@@ -481,6 +495,8 @@ void KOAgenda::performSelectAction(QPoint viewportPos)
 void KOAgenda::endSelectAction()
 {
   mActionType = NOP;
+  mScrollUpTimer.stop();
+  mScrollDownTimer.stop();
 
   emit newEventSignal(mStartCellX,mStartCellY,mCurrentCellX,mCurrentCellY);
 }
