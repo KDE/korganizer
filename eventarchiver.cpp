@@ -87,10 +87,10 @@ void EventArchiver::run( Calendar* calendar, const QDate& limitDate, QWidget* wi
 
 
   switch ( KOPrefs::instance()->mArchiveAction ) {
-  case KOPrefs::deleteEvents:
+  case KOPrefs::actionDelete:
     deleteEvents( calendar, limitDate, widget, events, withGUI );
     break;
-  case KOPrefs::archiveEvents:
+  case KOPrefs::actionArchive:
     archiveEvents( calendar, limitDate, widget, events, withGUI );
     break;
   }

@@ -24,12 +24,12 @@
     </entry>
     <entry type="Enum" key="Archive Action">
       <label>What to do when archiving</label>
-      <default>archiveEvents</default>
+      <default>actionArchive</default>
       <choices>
-        <choice name="deleteEvents">
+        <choice name="actionDelete">
           <label>Delete old events</label>
         </choice>
-        <choice name="archiveEvents">
+        <choice name="actionArchive">
           <label>Archive old events to a separate file</label>
         </choice>
       </choices>

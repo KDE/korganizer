@@ -143,7 +143,7 @@ ArchiveDialog::ArchiveDialog(Calendar *cal,QWidget *parent, const char *name)
   // Load settings from KOPrefs
   mExpiryTimeNumInput->setValue( KOPrefs::instance()->mExpiryTime );
   mExpiryUnitsComboBox->setCurrentItem( KOPrefs::instance()->mExpiryUnit );
-  mDeleteCb->setChecked( KOPrefs::instance()->mArchiveAction == KOPrefs::deleteEvents );
+  mDeleteCb->setChecked( KOPrefs::instance()->mArchiveAction == KOPrefs::actionDelete );
 
   slotEnableUser1();
 
@@ -187,9 +187,9 @@ void ArchiveDialog::slotUser1()
   KOPrefs::instance()->mExpiryUnit = mExpiryUnitsComboBox->currentItem();
 
   if (mDeleteCb->isChecked()) {
-    KOPrefs::instance()->mArchiveAction = KOPrefs::deleteEvents;
+    KOPrefs::instance()->mArchiveAction = KOPrefs::actionDelete;
   } else {
-    KOPrefs::instance()->mArchiveAction = KOPrefs::archiveEvents;
+    KOPrefs::instance()->mArchiveAction = KOPrefs::actionArchive;
 
     // Get destination URL
     KURL destUrl( mArchiveFile->url() );
