@@ -4,21 +4,21 @@
   <kcfgfile name="korganizerrc"/>
 
   <group name="General">
-    <entry type="bool" key="Auto Save">
+    <entry type="Bool" key="Auto Save">
       <label>Enable automatic saving of calendar</label>
       <whatsthis>WhatsThis text for AutoSave option</whatsthis>
       <default>false</default>
     </entry>
-    <entry type="int" key="Auto Save Interval">
+    <entry type="Int" key="Auto Save Interval">
       <default>10</default>
     </entry>
-    <entry type="bool" key="Confirm Deletes" name="Confirm">
+    <entry type="Bool" key="Confirm Deletes" name="Confirm">
       <label>Confirm deletes</label>
       <default>true</default>
     </entry>
-    <entry type="QString" key="Archive File">
+    <entry type="String" key="Archive File">
     </entry>
-    <entry type="bool" key="Html With Save">
+    <entry type="Bool" key="Html With Save">
       <label>Export to HTML with every save</label>
       <default>false</default>
     </entry>
@@ -33,11 +33,11 @@
   </group>
 
   <group name="Personal Settings">
-    <entry type="bool" key="Bcc">
+    <entry type="Bool" key="Bcc">
       <label>Send copy to owner when mailing events</label>
       <default>false</default>
     </entry>
-    <entry type="bool" key="Use Control Center Email" name="EmailControlCenter">
+    <entry type="Bool" key="Use Control Center Email" name="EmailControlCenter">
       <label>Use email settings from Control Center</label>
       <default>false</default>
     </entry>
@@ -52,118 +52,118 @@
   </group>
 
   <group name="Time &amp; Date">
-    <entry type="QString" name="TimeZoneId">
+    <entry type="String" name="TimeZoneId">
     </entry>
-    <entry type="int" key="Default Start Time" name="StartTime">
+    <entry type="Int" key="Default Start Time" name="StartTime">
       <default>10</default>
     </entry>
-    <entry type="int" key="Default Duration">
+    <entry type="Int" key="Default Duration">
       <default>2</default>
     </entry>
-    <entry type="int" key="Default Alarm Time" name="AlarmTime">
+    <entry type="Int" key="Default Alarm Time" name="AlarmTime">
       <default>0</default>
     </entry>
   </group>
 
   <group name="Views">
-    <entry type="int" key="Hour Size">
+    <entry type="Int" key="Hour Size">
       <default>10</default>
     </entry>
-    <entry type="bool" key="Show Daily Recurrences" name="DailyRecur">
+    <entry type="Bool" key="Show Daily Recurrences" name="DailyRecur">
       <label>Show events that recur daily in date navigator</label>
       <default>true</default>
     </entry>
-    <entry type="bool" key="Show Weekly Recurrences" name="WeeklyRecur">
+    <entry type="Bool" key="Show Weekly Recurrences" name="WeeklyRecur">
       <label>Show events that recur weekly in date navigator</label>
       <default>true</default>
     </entry>
-    <entry type="bool" key="Enable ToolTips">
+    <entry type="Bool" key="Enable ToolTips">
       <label>Enable tooltips displaying summary of events</label>
       <default>false</default>
     </entry>
-    <entry type="bool" key="Enable MonthView ScrollBars" name="EnableMonthScroll">
+    <entry type="Bool" key="Enable MonthView ScrollBars" name="EnableMonthScroll">
       <label>Enable scrollbars in month view cells</label>
       <default>false</default>
     </entry>
-    <entry type="bool" name="SelectionStartsEditor">
+    <entry type="Bool" name="SelectionStartsEditor">
       <label>Time range selection in agenda view starts event editor</label>
       <default>false</default>
     </entry>
 
-    <entry type="bool" key="Marcus Bains shows seconds" name="MarcusBainsShowSeconds">
+    <entry type="Bool" key="Marcus Bains shows seconds" name="MarcusBainsShowSeconds">
       <label>Show seconds on Marcus Bains line</label>
       <default>false</default>
     </entry>
-    <entry type="bool" key="Show Marcus Bains" name="MarcusBainsEnabled">
+    <entry type="Bool" key="Show Marcus Bains" name="MarcusBainsEnabled">
       <label>Show Marcus Bains line</label>
       <default>false</default>
     </entry>
 
-    <entry type="int" key="Day Begins">
+    <entry type="Int" key="Day Begins">
       <label>Day begins at</label>
       <default>7</default>
     </entry>
 
-    <entry type="int" key="Working Hours Start">
+    <entry type="Int" key="Working Hours Start">
       <label>Daily starting hour</label>
       <default>8</default>
     </entry>
-    <entry type="int" key="Working Hours End">
+    <entry type="Int" key="Working Hours End">
       <label>Daily ending hour</label>
       <default>17</default>
     </entry>
-    <entry type="bool" key="Exclude Holidays">
+    <entry type="Bool" key="Exclude Holidays">
       <label>Exclude holidays</label>
       <default>true</default>
     </entry>
-    <entry type="bool" key="Exclude Saturdays">
+    <entry type="Bool" key="Exclude Saturdays">
       <label>Exclude Saturdays</label>
       <default>true</default>
     </entry>
 
-    <entry type="bool" key="Month View Uses Category Color">
+    <entry type="Bool" key="Month View Uses Category Color">
       <label>Month view uses category colors</label>
       <default>false</default>
     </entry>
 
-    <entry type="bool" key="Full View Month">
+    <entry type="Bool" key="Full View Month">
       <label>Month view uses full window</label>
       <default>false</default>
     </entry>
-    <entry type="bool" key="Full View Todo">
+    <entry type="Bool" key="Full View Todo">
       <label>To-do view uses full window</label>
       <default>true</default>
     </entry>
 
-    <entry type="bool" key="Quick Todo" name="EnableQuickTodo">
+    <entry type="Bool" key="Quick Todo" name="EnableQuickTodo">
       <default>true</default>
     </entry>
 
-    <entry type="int" key="Next X Days">
+    <entry type="Int" key="Next X Days">
       <default>3</default>
     </entry>
 
   </group>
 
   <group name="Layout">
-    <entry type="bool" key="CompactDialogs">
+    <entry type="Bool" key="CompactDialogs">
       <default>false</default>
     </entry>
-    <entry type="bool" key="VerticalScreen">
+    <entry type="Bool" key="VerticalScreen">
       <default>false</default>
     </entry>
   </group>
   
   <group name="KOrganizer Plugins">
-    <entry type="QStringList" name="SelectedPlugins">
+    <entry type="StringList" name="SelectedPlugins">
       <default>holidays,webexport</default>
     </entry>
   </group>
 
   <group name="Editors">
-    <entry type="QStringList" name="EventTemplates">
+    <entry type="StringList" name="EventTemplates">
     </entry>
-    <entry type="QStringList" name="TodoTemplates">
+    <entry type="StringList" name="TodoTemplates">
     </entry>
   </group>
 
@@ -176,7 +176,7 @@
       <default>IMIPKMail</default>
     </entry>
 
-    <entry type="QStringList" name="AdditionalMails">
+    <entry type="StringList" name="AdditionalMails">
     </entry>
 
     <entry type="Enum" name="IMIPSend">
@@ -217,46 +217,46 @@
   </group>
 
   <group name="Colors">
-    <entry type="QColor" key="Holiday Color">
+    <entry type="Color" key="Holiday Color">
       <label>Holiday color</label>
       <default>255, 100, 100</default>
     </entry>
-    <entry type="QColor" key="Highlight Color">
+    <entry type="Color" key="Highlight Color">
       <label>Highlight color</label>
       <default>100, 100, 255</default>
     </entry>
-    <entry type="QColor" key="Agenda Background Color" name="AgendaBgColor">
+    <entry type="Color" key="Agenda Background Color" name="AgendaBgColor">
       <label>Agenda view background color</label>
       <default>255, 255, 255</default>
     </entry>
-    <entry type="QColor" key="WorkingHours Color">
+    <entry type="Color" key="WorkingHours Color">
       <label>Working hours color</label>
       <default>225, 225, 255</default>
     </entry>
-    <entry type="QColor" key="Todo due today Color" name="TodoDueTodayColor">
+    <entry type="Color" key="Todo due today Color" name="TodoDueTodayColor">
       <label>Todo due today color</label>
       <default>255, 200, 50</default>
     </entry>
-    <entry type="QColor" key="Todo overdue Color" name="TodoOverdueColor">
+    <entry type="Color" key="Todo overdue Color" name="TodoOverdueColor">
       <label>Todo overdue color</label>
       <default>255, 100, 100</default>
     </entry>
-    <entry type="QColor" key="Event Color">
+    <entry type="Color" key="Event Color">
       <label>Default event color</label>
     </entry>
   </group>
 
   <group name="Fonts">
-    <entry type="QFont" key="TimeBar Font">
+    <entry type="Font" key="TimeBar Font">
       <label>Time bar</label>
     </entry>
-    <entry type="QFont" key="AgendaView Font">
+    <entry type="Font" key="AgendaView Font">
       <label>Agenda view</label>
     </entry>
-    <entry type="QFont" key="MarcusBains Font">
+    <entry type="Font" key="MarcusBains Font">
       <label>Marcus Bains line</label>
     </entry>
-    <entry type="QFont" key="MonthView Font">
+    <entry type="Font" key="MonthView Font">
       <label>Month view</label>
     </entry>
   </group>
