@@ -85,7 +85,7 @@ ResourceItem::ResourceItem( ResourceCalendar *resource, ResourceView *view,
                             KListView *parent )
   : QCheckListItem( parent, resource->resourceName(), CheckBox ),
     mResource( resource ), mView( view ), mBlockStateChange( false ),
-    mIsSubresource( false ), mResourceIdentifier( QString::null ), 
+    mIsSubresource( false ), mResourceIdentifier(),
     mSubItemsCreated( false )
 {
   setGuiState();
@@ -114,12 +114,11 @@ ResourceItem::ResourceItem( KCal::ResourceCalendar *resource,
                             const QString& sub, const QString& label,
                             ResourceView *view, ResourceItem* parent )
 
-  : QCheckListItem( parent, sub, CheckBox ), mResource( resource ),
+  : QCheckListItem( parent, label, CheckBox ), mResource( resource ),
     mView( view ), mBlockStateChange( false ), mIsSubresource( true ),
     mSubItemsCreated( false )
 {
   mResourceIdentifier = sub;
-  setText( 0, label );
   setGuiState();
 }
 
@@ -278,7 +277,7 @@ void ResourceView::addResourceItem( ResourceCalendar *resource )
                                                      const QString & ) ),
            SLOT( slotSubresourceAdded( ResourceCalendar *, const QString &,
                                        const QString & ) ) );
- 
+
   connect( resource, SIGNAL( signalSubresourceRemoved( ResourceCalendar *,
                                                        const QString &,
                                                        const QString & ) ),
