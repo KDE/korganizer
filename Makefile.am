@@ -2,7 +2,7 @@ SUBDIRS = printing . korgac pixmaps sounds plugins interfaces
 
 INCLUDES = \
   -I$(srcdir)/interfaces \
-  -I$(top_builddir)/libkdepim \
+  -I$(top_srcdir)/libkdepim \
   -I$(top_srcdir)/libemailfunctions \
   -I$(top_srcdir)/libkpimidentities \
   -I$(top_srcdir)/libkholidays \
