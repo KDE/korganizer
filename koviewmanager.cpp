@@ -104,6 +104,9 @@ void KOViewManager::writeSettings(KConfig *config)
   if (mListView) {
     mListView->writeSettings(config);
   }
+  if (mTodoView) {
+    mTodoView->saveLayout(config,"Todo View");
+  }
 }
 
 void KOViewManager::changeAgendaView( int newView )
@@ -341,6 +344,8 @@ void KOViewManager::showTodoView()
 
     connect( mMainView, SIGNAL( configChanged() ), mTodoView,
              SLOT( updateConfig() ) );
+    KConfig *config = KGlobal::config();
+    mTodoView->restoreLayout(config,"Todo View");
   }
 
   showView( mTodoView );
