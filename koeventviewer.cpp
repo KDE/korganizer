@@ -28,12 +28,12 @@
 #include <kdebug.h>
 #include <kiconloader.h>
 #include <krun.h>
-#include <dcopclient.h>
 #ifndef KORG_NOKABC
  #include <kabc/stdaddressbook.h>
 #endif
 
 #ifndef KORG_NODCOP
+#include <dcopclient.h>
 #include "korganizer.h"
 #endif
 
@@ -214,10 +214,11 @@ void KOEventViewer::formatAttendees(Incidence *event)
       mText += "<a href=\"uid:" + o.uid() + "\">";
       mText += o.formattedName();
       mText += "</a>\n";
+    } else {
+      mText.append(event->organizer());
     }
-		else mText.append(event->organizer());
 #else
-	  mText.append(event->organizer());
+    mText.append(event->organizer());
 #endif
     if (iconPath) {
       mText += " <a href=\"mailto:" + event->organizer() + "\">";

@@ -23,6 +23,7 @@
 
 #include <qfile.h>
 #include <qdir.h>
+#include <qtextstream.h>
 
 #include <kglobal.h>
 #include <klocale.h>

@@ -263,7 +263,7 @@ bool IncomingDialog::incomeCounter(ScheduleItemIn *item)
   eventViewer->exec();
   if (eventViewer->result()) {
     kdDebug() << "IncomingDialog::Counter:Accept" << endl;
-    int revision;
+    int revision = 0;
     if (even) {
       revision = even->revision();
       mCalendar->deleteEvent(even);
