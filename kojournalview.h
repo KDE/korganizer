@@ -63,6 +63,11 @@ class KOJournalView : public KOrg::BaseView
     void changeIncidenceDisplay( Incidence *, int );
     void setIncidenceChanger( IncidenceChangerBase *changer );
     void newJournal();
+  signals:
+    void flushEntries();
+    void setIncidenceChangerSignal( IncidenceChangerBase * );
+    void journalEdited( Journal* );
+    void journalDeleted( Journal* );
 
   protected:
     void clearEntries();
@@ -70,8 +75,8 @@ class KOJournalView : public KOrg::BaseView
   private:
     QScrollView *mSV;
     QVBox *mVBox;
-    JournalEntry::List mEntries;
-    DateList mSelectedDates;  // List of dates to be displayed
+    QMap<QDate, JournalDateEntry*> mEntries;
+//    DateList mSelectedDates;  // List of dates to be displayed
 };
 
 #endif

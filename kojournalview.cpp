@@ -41,14 +41,11 @@
 #include "kojournalview.h"
 #include "koglobals.h"
 using namespace KOrg;
-#include "kojournalview.moc"
 
 KOJournalView::KOJournalView(Calendar *calendar, QWidget *parent,
                        const char *name)
   : KOrg::BaseView(calendar, parent, name)
 {
-  mEntries.setAutoDelete( true );
-
   QVBoxLayout*topLayout = new QVBoxLayout( this );
   topLayout->setAutoAdd(true);
   mSV = new QScrollView( this, "JournalScrollView" );
@@ -57,6 +54,7 @@ KOJournalView::KOJournalView(Calendar *calendar, QWidget *parent,
   mVBox = new QVBox( mSV->viewport() );
   mSV->setVScrollBarMode( QScrollView::Auto );
   mSV->setHScrollBarMode( QScrollView::AlwaysOff );
+//  mVBox->setSpacing( 10 );
 }
 
 KOJournalView::~KOJournalView()
@@ -65,33 +63,42 @@ KOJournalView::~KOJournalView()
 
 void KOJournalView::appendJournal( Journal*journal, const QDate &dt)
 {
-//  kdDebug(5850) << "KOJournalView::appendJournal(): "<< journal<<endl;
-//  JournalEntry*j = new JournalEntry( calendar(), this );
-  JournalEntry*j = new JournalEntry( calendar(), mVBox );
-  if ( j ) {
-    j->show();
-    j->setJournal( journal );
-    j->setDate( dt );
-    j->setIncidenceChanger( mChanger );
+  JournalDateEntry *entry = 0;
+  if ( mEntries.contains( dt ) ) {
+    entry = mEntries[dt];
+  } else {
+    entry = new JournalDateEntry( calendar(), mVBox );
+    entry->setDate( dt );
+    entry->setIncidenceChanger( mChanger );
+    entry->show();
+    connect( this, SIGNAL(flushEntries()), entry, SIGNAL(flushEntries()) );
+    connect( this, SIGNAL(setIncidenceChangerSignal( IncidenceChangerBase * ) ),
+             entry, SLOT(setIncidenceChanger( IncidenceChangerBase * ) ) );
+    connect( this, SIGNAL( journalEdited( Journal* ) ),
+             entry, SLOT( journalEdited( Journal* ) ) );
+    connect( this, SIGNAL( journalDeleted( Journal* ) ),
+             entry, SLOT( journalDeleted( Journal* ) ) );
+    
+    connect( entry, SIGNAL( deleteIncidence( Incidence* ) ),
+             this, SIGNAL( deleteIncidenceSignal( Incidence* ) ) );
 
-    mEntries.append( j );
-    mSelectedDates.append( dt );
+    mEntries.insert( dt, entry );
+  }
+  
+  if ( entry && journal ) {
+    entry->addJournal( journal );
   }
 }
 
 int KOJournalView::currentDateCount()
 {
-  return mSelectedDates.size();
+  return mEntries.size();
 }
-
-/*void KOJournalView::resizeEvent( QResizeEvent *event )
-{
-//  mSV->setSize(
-}*/
 
 Incidence::List KOJournalView::selectedIncidences()
 {
   // We don't have a selection in the journal view.
+  // FIXME: The currently edited journal is the selected incidence...
   Incidence::List eventList;
   return eventList;
 }
@@ -99,21 +106,21 @@ Incidence::List KOJournalView::selectedIncidences()
 void KOJournalView::clearEntries()
 {
 //  kdDebug(5850)<<"KOJournalView::clearEntries()"<<endl;
-  JournalEntry::List::iterator it;
-  for (it=mEntries.begin(); it!=mEntries.end(); ++it ) {
-    delete (*it);
+  QMap<QDate, JournalDateEntry*>::Iterator it;
+  for ( it = mEntries.begin(); it != mEntries.end(); ++it ) {
+    delete (it.data());
   }
   mEntries.clear();
-  mSelectedDates.clear();
 }
 void KOJournalView::updateView()
 {
-  JournalEntry::List::iterator it;
+  QMap<QDate, JournalDateEntry*>::Iterator it;
   for ( it = mEntries.begin(); it != mEntries.end(); ++it ) {
-    if ( (*it) ) {
-      QDate dt((*it)->date());
-      //FIXME: use the first journal in the list for now
-      (*it)->setJournal( calendar()->journals( dt ).first() );
+    it.data()->clear();
+    Journal::List journals = calendar()->journals( it.key() );
+    Journal::List::Iterator it1;
+    for ( it1 = journals.begin(); it1 != journals.end(); ++it1 ) {
+      it.data()->addJournal( *it1 );
     }
   }
 }
@@ -121,10 +128,7 @@ void KOJournalView::updateView()
 void KOJournalView::flushView()
 {
 //  kdDebug(5850) << "KOJournalView::flushView(): "<< endl;
-  JournalEntry::List::iterator it;
-  for ( it = mEntries.begin(); it != mEntries.end(); ++it ) {
-    if (*it) (*it)->flushEntry();
-  }
+  emit flushEntries();
 }
 
 void KOJournalView::showDates(const QDate &start, const QDate &end)
@@ -139,8 +143,11 @@ void KOJournalView::showDates(const QDate &start, const QDate &end)
   for ( QDate d=start; d<=end; d=d.addDays(1) ) {
     jnls = calendar()->journals( d );
     for ( it = jnls.begin(); it != jnls.end(); ++it ) {
-      Journal *j = ( *it ) ;
-      appendJournal( j, d );
+      appendJournal( *it, d );
+    }
+    if ( jnls.count() < 1 ) {
+      // create an empty dateentry widget
+      appendJournal( 0, d );
     }
   }
 }
@@ -152,7 +159,7 @@ void KOJournalView::showIncidences( const Incidence::List &incidences )
   Incidence::List::const_iterator it;
   for ( it=incidences.constBegin(); it!=incidences.constEnd(); ++it) {
     if ((*it) && ( (*it)->type()=="Journal" ) ) {
-      Journal*j = (Journal*)(*it);
+      Journal*j = static_cast<Journal*>(*it);
       if ( j ) appendJournal( j, j->dtStart().date() );
     }
   }
@@ -165,25 +172,13 @@ void KOJournalView::changeIncidenceDisplay(Incidence *incidence, int action)
   if (journal) {
     switch(action) {
       case KOGlobals::INCIDENCEADDED:
-        //addIncidence( incidence );
+        appendJournal( journal, journal->dtStart().date() );
         break;
       case KOGlobals::INCIDENCEEDITED:
-        /*
-        item = getItemForEvent(incidence);
-        if (item) {
-          delete item;
-          mUidDict.remove( incidence->uid() );
-          addIncidence( incidence );
-        }
-        */
+        emit journalEdited( journal );
         break;
       case KOGlobals::INCIDENCEDELETED:
-        /*
-        item = getItemForEvent(incidence);
-        if (item) {
-          delete item;
-        }
-        */
+        emit journalDeleted( journal );
         break;
       default:
         kdDebug(5850) << "KOListView::changeIncidenceDisplay(): Illegal action " << action << endl;
@@ -194,13 +189,12 @@ void KOJournalView::changeIncidenceDisplay(Incidence *incidence, int action)
 void KOJournalView::setIncidenceChanger( IncidenceChangerBase *changer )
 {
   mChanger = changer;
-  JournalEntry::List::iterator it;
-  for ( it = mEntries.begin(); it != mEntries.end(); ++it ) {
-    if ( (*it) ) (*it)->setIncidenceChanger( changer );
-  }
+  emit setIncidenceChangerSignal( changer );
 }
 
 void KOJournalView::newJournal()
 {
   emit newJournalSignal( QDate::currentDate() );
 }
+
+#include "kojournalview.moc"

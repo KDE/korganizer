@@ -29,6 +29,8 @@
 #include <qvbox.h>
 
 class QLabel;
+class KActiveLabel;
+class KPushButton;
 class QCheckBox;
 class QGridLayout;
 class KLineEdit;
@@ -49,26 +51,30 @@ class JournalEntry : public QWidget {
   public:
     typedef ListBase<JournalEntry> List;
     
-    JournalEntry(Calendar *,QWidget *parent);
+    JournalEntry( Journal* j, QWidget *parent );
     virtual ~JournalEntry();
     
     void setJournal(Journal *);
     Journal *journal() const { return mJournal; }
 
-    void setDate(const QDate &);
     QDate date() const { return mDate; }
 
     void clear();
     void readJournal( Journal *j );
 
-    void flushEntry();
-    void setIncidenceChanger( IncidenceChangerBase *changer ) { mChanger = changer; }
-    
     bool isReadOnly() const { return mReadOnly; }
     void setReadOnly( bool readonly );
 
   protected slots:
     void setDirty();
+    void deleteItem();
+  public slots:
+    void setIncidenceChanger( IncidenceChangerBase *changer ) { mChanger = changer; }
+    void setDate(const QDate &);
+    void flushEntry();
+    
+  signals:
+    void deleteIncidence( Incidence * );
 
   protected:    
     void clearFields();
@@ -78,23 +84,63 @@ class JournalEntry : public QWidget {
     
   private:
     void writeJournalPrivate( Journal *j );
-    
-    Calendar *mCalendar;
+
     Journal *mJournal;
     QDate mDate;
     bool mReadOnly;
     
-    QLabel *mTitle;
     QLabel *mTitleLabel;
     KLineEdit *mTitleEdit;
     KTextEdit *mEditor;
     QCheckBox *mTimeCheck;
     KTimeEdit *mTimeEdit;
+    KPushButton *mDeleteButton;
     
     QGridLayout *mLayout;
 
     bool mDirty;
     IncidenceChangerBase *mChanger;
 };
+
+
+class JournalDateEntry : public QVBox {
+    Q_OBJECT
+  public:
+    typedef ListBase<JournalDateEntry> List;
+    
+    JournalDateEntry( Calendar *, QWidget *parent );
+    virtual ~JournalDateEntry();
+    
+    void addJournal( Journal * );
+    Journal::List journals() const;
+
+    void setDate( const QDate & );
+    QDate date() const { return mDate; }
+
+    void clear();
+
+    
+  signals:
+    void setIncidenceChangerSignal( IncidenceChangerBase *changer );
+    void setDateSignal( const QDate & );
+    void flushEntries();
+    void deleteIncidence( Incidence * );
+    
+  public slots:
+    void newJournal();
+    void setIncidenceChanger( IncidenceChangerBase *changer );
+    void journalEdited( Journal* );
+    void journalDeleted( Journal* );
+  
+  private:
+    Calendar *mCalendar;
+    QDate mDate;
+    QMap<Journal*,JournalEntry*> mEntries;
+
+    KActiveLabel *mTitle;
+    QWidget *mAddBar;
+    IncidenceChangerBase *mChanger;
+};
+
 
 #endif

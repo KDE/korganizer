@@ -29,6 +29,8 @@
 #include <qlayout.h>
 #include <qcheckbox.h>
 #include <qwhatsthis.h>
+#include <qtooltip.h>
+#include <qpushbutton.h>
 
 #include <kdebug.h>
 #include <kglobal.h>
@@ -36,6 +38,10 @@
 #include <ktextedit.h>
 #include <ktimeedit.h>
 #include <klineedit.h>
+#include <kactivelabel.h>
+#include <kstdguiitem.h>
+#include <kpushbutton.h>
+#include <kmessagebox.h>
 
 #include <libkcal/journal.h>
 #include <libkcal/calendar.h>
@@ -47,52 +53,168 @@
 #include "journalentry.h"
 #include "journalentry.moc"
 
-JournalEntry::JournalEntry( Calendar *calendar, QWidget *parent ) :
-  QWidget( parent )
+class JournalTitleLable : public KActiveLabel
+{
+public:
+  JournalTitleLable( QWidget *parent, const char *name=0 ) : KActiveLabel( parent, name ) {}
+  
+  void openLink( const QString &link ) {}
+};
+
+
+JournalDateEntry::JournalDateEntry( Calendar *calendar, QWidget *parent ) :
+  QVBox( parent ), mCalendar( calendar )
 {
 //kdDebug(5850)<<"JournalEntry::JournalEntry, parent="<<parent<<endl;
-  mCalendar = calendar;
-  mJournal = 0;
+  mChanger = 0;
+
+  mTitle = new JournalTitleLable( this );
+  mTitle->setMargin(2);
+  mTitle->setSizePolicy( QSizePolicy::Expanding, QSizePolicy::Fixed );
+  connect( mTitle, SIGNAL( linkClicked( const QString & ) ),
+           this, SLOT( newJournal() ) );
+}
+
+JournalDateEntry::~JournalDateEntry()
+{
+}
+
+void JournalDateEntry::setDate(const QDate &date)
+{
+  QString dtstring = i18n("<qt><center><b><i>%1</i></b>  "
+       "<font size=\"-1\"><a href=\"#\">[add Journal]</a></font></center></qt>")
+       .arg( KGlobal::locale()->formatDate(date) );
+
+  mTitle->setText( dtstring );
+  mDate = date;
+  emit setDateSignal( date );
+}
+
+void JournalDateEntry::clear()
+{
+  QValueList<JournalEntry*> values( mEntries.values() );
+  
+  QValueList<JournalEntry*>::Iterator it = values.begin();
+  for ( ; it != values.end(); ++it ) {
+    delete (*it);
+  }
+  mEntries.clear();
+}
+
+void JournalDateEntry::addJournal( Journal *j )
+{
+  QMap<Journal*,JournalEntry*>::Iterator pos = mEntries.find( j );
+  if ( pos != mEntries.end() ) return;
+  
+  JournalEntry *entry = new JournalEntry( j, this );
+  entry->show();
+  entry->setDate( mDate );
+  entry->setIncidenceChanger( mChanger );
+  
+  mEntries.insert( j, entry );
+  connect( this, SIGNAL( setIncidenceChangerSignal( IncidenceChangerBase * ) ),
+           entry, SLOT( setIncidenceChanger( IncidenceChangerBase * ) ) );
+  connect( this, SIGNAL( setDateSignal( const QDate & ) ),
+           entry, SLOT( setDate( const QDate & ) ) );
+  connect( this, SIGNAL( flushEntries() ), 
+           entry, SLOT( flushEntry() ) );
+  connect( entry, SIGNAL( deleteIncidence( Incidence* ) ),
+           this, SIGNAL( deleteIncidence( Incidence* ) ) );
+}
+
+Journal::List JournalDateEntry::journals() const
+{
+  QValueList<Journal*> jList( mEntries.keys() );
+  Journal::List l;
+  QValueList<Journal*>::Iterator it = jList.begin();
+  for ( ; it != jList.end(); ++it ) {
+    l.append( *it );
+  }
+  return l;
+}
+
+void JournalDateEntry::setIncidenceChanger( IncidenceChangerBase *changer ) 
+{
+  mChanger = changer;
+  emit setIncidenceChangerSignal( changer );
+}
+
+void JournalDateEntry::newJournal()
+{
+  Journal *j = new Journal();
+  j->setDtStart( QDateTime( mDate, QTime(0,0,0) ) );
+  if ( mCalendar->addIncidence( j ) ) {
+    addJournal( j );
+  } else {
+    delete j;
+  }
+}
+
+void JournalDateEntry::journalEdited( Journal *journal )
+{
+  QMap<Journal*,JournalEntry*>::Iterator pos = mEntries.find( journal );
+  if ( pos == mEntries.end() ) return;
+  
+  pos.data()->setJournal( journal );
+
+}
+void JournalDateEntry::journalDeleted( Journal *journal )
+{
+  QMap<Journal*,JournalEntry*>::Iterator pos = mEntries.find( journal );
+  if ( pos == mEntries.end() ) return;
+  
+  delete pos.data();
+}
+
+
+
+
+
+JournalEntry::JournalEntry( Journal* j, QWidget *parent ) :
+  QWidget( parent ), mJournal( j )
+{
+//kdDebug(5850)<<"JournalEntry::JournalEntry, parent="<<parent<<endl;
   mDirty = false;
   mChanger = 0;
   mReadOnly = false;
 
   mLayout = new QGridLayout( this );
   
-  mTitle = new QLabel(i18n("Title"),this);
-  QFont f = mTitle->font();
-  f.setBold( true );
-  f.setItalic( true );
-  mTitle->setFont( f );
-  mTitle->setMargin(2);
-  mTitle->setAlignment(AlignCenter);
-  mTitle->setSizePolicy( QSizePolicy::Expanding, QSizePolicy::Fixed );
-  mLayout->addMultiCellWidget( mTitle, 0, 0, 0, 3 );
-  
   QString whatsThis = i18n("Sets the Title of this journal.");
   
   mTitleLabel = new QLabel( i18n("&Title: "), this );
-  mLayout->addWidget( mTitleLabel, 1, 0 );
+  mLayout->addWidget( mTitleLabel, 0, 0 );
   mTitleEdit = new KLineEdit( this );
-  mLayout->addWidget( mTitleEdit, 1, 1 );
+  mLayout->addWidget( mTitleEdit, 0, 1 );
   mTitleLabel->setBuddy( mTitleEdit );
   
   QWhatsThis::add( mTitleLabel, whatsThis );
   QWhatsThis::add( mTitleEdit, whatsThis );
   
   mTimeCheck = new QCheckBox( i18n("Ti&me: "), this );
-  mLayout->addWidget( mTimeCheck, 1, 2 );
+  mLayout->addWidget( mTimeCheck, 0, 2 );
   mTimeEdit = new KTimeEdit( this );
-  mLayout->addWidget( mTimeEdit, 1, 3 );
+  mLayout->addWidget( mTimeEdit, 0, 3 );
   connect( mTimeCheck, SIGNAL(toggled(bool)),
            mTimeEdit, SLOT(setEnabled(bool)) );
   QWhatsThis::add( mTimeCheck, i18n("Determines whether this journal has also "
                                     "a time associated") );
   QWhatsThis::add( mTimeEdit, i18n( "Sets the time associated with this journal" ) );
   
+  mDeleteButton = new KPushButton( this );
+  QPixmap pix = KOGlobals::self()->smallIcon( "editdelete" );
+  mDeleteButton->setPixmap( pix );
+  mDeleteButton->setSizePolicy( QSizePolicy::Fixed, QSizePolicy::Fixed );
+  QToolTip::add( mDeleteButton, i18n("Delete this journal") );
+  QWhatsThis::add( mDeleteButton, i18n("Delete this journal") );
+  mLayout->addWidget( mDeleteButton, 0, 4 );
+  
+  connect( mDeleteButton, SIGNAL(pressed()), this, SLOT(deleteItem()) );
+  
+  
     
   mEditor = new KTextEdit(this);
-  mLayout->addMultiCellWidget( mEditor, 2, 3, 0, 3 );
+  mLayout->addMultiCellWidget( mEditor, 1, 2, 0, 4 );
   
   connect( mTitleEdit, SIGNAL(textChanged( const QString& )), SLOT(setDirty()) );
   connect( mTimeCheck, SIGNAL(toggled(bool)), SLOT(setDirty()) );
@@ -100,11 +222,27 @@ JournalEntry::JournalEntry( Calendar *calendar, QWidget *parent ) :
   connect( mEditor, SIGNAL(textChanged()), SLOT(setDirty()) );
   
   mEditor->installEventFilter(this);
+  
+  readJournal( mJournal );
+  mDirty = false;
 }
 
 JournalEntry::~JournalEntry()
 {
   writeJournal();
+}
+
+void JournalEntry::deleteItem()
+{
+/*  KMessageBox::ButtonCode *code = KMessageBox::warningContinueCancel(this,
+      i18n("The journal \"%1\" on %2 will be permanently deleted.")
+               .arg( mJournal->summary() )
+               .arg( mJournal->dtStartStr() ),
+      i18n("KOrganizer Confirmation"), KGuiItem( i18n("&Delete"), "editdelete" ) );
+  if ( code == KMessageBox::Yes ) {*/
+    if ( mJournal ) 
+      emit deleteIncidence( mJournal );
+//   }
 }
 
 void JournalEntry::setReadOnly( bool readonly ) 
@@ -114,36 +252,23 @@ void JournalEntry::setReadOnly( bool readonly )
   mEditor->setReadOnly( mReadOnly );
   mTimeCheck->setEnabled( !mReadOnly );
   mTimeEdit->setEnabled( !mReadOnly && mTimeCheck->isChecked() );
+  mDeleteButton->setEnabled( !mReadOnly );
 }
 
 
 void JournalEntry::setDate(const QDate &date)
 {
   writeJournal();
-  mTitle->setText(KGlobal::locale()->formatDate(date));
   mDate = date;
-}
-
-void JournalEntry::clearFields()
-{
-  mTitleEdit->clear();
-  mTimeCheck->setChecked( false );
-  mTimeEdit->setEnabled( false );
-  mEditor->clear();
-  
-  setReadOnly( false );
 }
 
 void JournalEntry::setJournal(Journal *journal)
 {
   writeJournal();
+  if ( !journal ) return;
 
   mJournal = journal;
-  if ( mJournal ) {
-    readJournal( journal );
-  } else {
-    clearFields();
-  }
+  readJournal( journal );
     
   mDirty = false;
 }
@@ -152,13 +277,6 @@ void JournalEntry::setDirty()
 {
   mDirty = true;
   kdDebug(5850) << "JournalEntry::setDirty()" << endl;
-}
-
-void JournalEntry::clear()
-{
-  mJournal = 0;
-  clearFields();
-  writeJournal();
 }
 
 bool JournalEntry::eventFilter( QObject *o, QEvent *e )
@@ -206,16 +324,7 @@ void JournalEntry::writeJournal()
     return;
   }
   bool newJournal = false;
- 
-  if ( mEditor->text().isEmpty() && mTitleEdit->text().isEmpty() ) {
-    if ( mJournal && mChanger ) { // delete the journal
-      mChanger->deleteIncidence( mJournal );
-    } 
-    mJournal = 0;
-    return;
-  }
 
-//  kdDebug(5850) << "JournalEntry::writeJournal()..." << endl;
   Journal *oldJournal = 0;
   
   if ( !mJournal ) {
