@@ -612,7 +612,7 @@ void CalPrintTodos::print( QPainter &p, int width, int height )
 //   }
 
   int count = 0;
-  for( int cprior = 1; cprior <= 6; cprior++ ) {
+  for( int cprior = 1; cprior <= 10; cprior++ ) {
     Todo::List::ConstIterator it;
     for( it = todoList.begin(); it != todoList.end(); ++it ) {
       Todo *currEvent = *it;
@@ -630,8 +630,8 @@ void CalPrintTodos::print( QPainter &p, int width, int height )
       // priority
       int priority = currEvent->priority();
       // 6 is the lowest priority (the unspecified one)
-      if ( ( priority != cprior ) ||
-           ( ( cprior == 6 ) && ( priority == 0 ) ) ) {
+      if ( ( priority != cprior ) &&
+           !( ( cprior == 10 ) && ( priority == 0 ) ) ) {
         continue;
       }
       count++;

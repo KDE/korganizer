@@ -13,6 +13,7 @@ INCLUDES = \
   -I$(top_srcdir)/kresources/remote \
   -I$(top_srcdir)/korganizer/printing \
   -I$(top_srcdir) \
+	-I$(top_builddir) \
   $(all_includes)
 
 bin_PROGRAMS = korganizer
@@ -195,5 +196,8 @@ kde_services_DATA = korganizer_configmain.desktop \
                     korganizer_configgroupautomation.desktop \
                     korganizer_configfreebusy.desktop \
                     webcal.protocol
+
+update_DATA = korganizer.upd
+updatedir = $(kde_datadir)/kconf_update
 
 include ../admin/Doxyfile.am

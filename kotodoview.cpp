@@ -402,7 +402,8 @@ KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent, const char* name)
 #endif
 
   mPriorityPopupMenu = new QPopupMenu( this );
-  for ( int i = 1; i <= 5; i++ ) {
+  mPriority[ mPriorityPopupMenu->insertItem( i18n("Unspecified priority", "unspecified") ) ] = 0;
+  for ( int i = 1; i <= 9; i++ ) {
     QString label = QString ("%1").arg( i );
     mPriority[ mPriorityPopupMenu->insertItem( label ) ] = i;
   }

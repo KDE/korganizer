@@ -106,7 +106,11 @@ void KOTodoViewItem::construct()
     setSortKey( KOTodoView::eRecurColumn, "1" );
   }
   else setSortKey( KOTodoView::eRecurColumn, "0" );
-  setText( KOTodoView::ePriorityColumn, QString::number(mTodo->priority()) );
+  if ( mTodo->priority()==0 ) {
+    setText( KOTodoView::ePriorityColumn, i18n("--") );
+  } else {
+    setText( KOTodoView::ePriorityColumn, QString::number(mTodo->priority()) );
+  }
   setText( KOTodoView::ePercentColumn, QString::number(mTodo->percentComplete()) );
   if ( mTodo->percentComplete()<100 ) {
     if (mTodo->isCompleted()) setSortKey( KOTodoView::ePercentColumn, QString::number(999) );

@@ -148,7 +148,7 @@ void KOWhatsNextView::updateView()
     }
     bool gotone = false;
     int priority = 1;
-    while (!gotone && priority<6) {
+    while (!gotone && priority<=9 ) {
       for( it = todos.begin(); it != todos.end(); ++it ) {
         Todo *todo = *it;
         if (!todo->isCompleted() && (todo->priority() == priority) ) {

@@ -164,11 +164,16 @@ void KOEditorGeneralTodo::initPriority(QWidget *parent, QBoxLayout *topLayout)
   topLayout->addWidget(priorityLabel);
 
   mPriorityCombo = new QComboBox(parent);
+  mPriorityCombo->insertItem(i18n("unspecified"));
   mPriorityCombo->insertItem(i18n("1 (highest)"));
   mPriorityCombo->insertItem(i18n("2"));
   mPriorityCombo->insertItem(i18n("3"));
   mPriorityCombo->insertItem(i18n("4"));
-  mPriorityCombo->insertItem(i18n("5 (lowest)"));
+  mPriorityCombo->insertItem(i18n("5 (medium)"));
+  mPriorityCombo->insertItem(i18n("6"));
+  mPriorityCombo->insertItem(i18n("7"));
+  mPriorityCombo->insertItem(i18n("8"));
+  mPriorityCombo->insertItem(i18n("9 (lowest)"));
   topLayout->addWidget(mPriorityCombo);
   priorityLabel->setBuddy( mPriorityCombo );
 }
@@ -213,7 +218,7 @@ void KOEditorGeneralTodo::setDefaults(QDateTime due,bool allDay)
   mStartTimeEdit->setTime(QTime::currentTime());
   mStartDateModified = false;
 
-  mPriorityCombo->setCurrentItem(2);
+  mPriorityCombo->setCurrentItem(0);
 
   mCompletedCombo->setCurrentItem(0);
 }
@@ -261,7 +266,7 @@ void KOEditorGeneralTodo::readTodo(Todo *todo)
   }
   setCompletedDate();
 
-  mPriorityCombo->setCurrentItem(todo->priority()-1);
+  mPriorityCombo->setCurrentItem( todo->priority() );
   mStartDateModified = false;
 }
 
@@ -323,7 +328,7 @@ void KOEditorGeneralTodo::writeTodo(Todo *todo)
       todo->setDtRecurrence( tmpDueDT );
   }
 
-  todo->setPriority(mPriorityCombo->currentItem()+1);
+  todo->setPriority( mPriorityCombo->currentItem() );
 
   // set completion state
   todo->setPercentComplete(mCompletedCombo->currentItem() * 10);
@@ -493,7 +498,7 @@ void KOEditorGeneralTodo::modified (Todo* todo, int modification)
 {
   switch (modification) {
   case KOGlobals::PRIORITY_MODIFIED:
-    mPriorityCombo->setCurrentItem(todo->priority()-1);
+    mPriorityCombo->setCurrentItem( todo->priority() );
     break;
   case KOGlobals::COMPLETION_MODIFIED:
     mCompletedCombo->setCurrentItem(todo->percentComplete() / 10);
