@@ -66,7 +66,7 @@ FilterEditDialog::FilterEditDialog( QPtrList<CalFilter> *filters,
 
   QPushButton *addButton = new QPushButton( i18n("Add Filter..."), mainWidget );
   connect( addButton, SIGNAL( clicked() ), SLOT( slotAdd() ) );
-  QWhatsThis::add( addButton, i18n( "Press this button to define a new filter. <i>Note:</i> You should select this filter in the combobox at the left first before you edit it's properties." ) );
+  QWhatsThis::add( addButton, i18n( "Press this button to define a new filter." ) );
 
   mRemoveButton = new QPushButton( i18n("Remove"), mainWidget );
   connect( mRemoveButton, SIGNAL( clicked() ), SLOT( slotRemove() ) );

@@ -6,22 +6,34 @@ Name[da]=Timespan-visning-plugin for KOrganizer
 Name[es]=Extensión de visor de Timespan para KOrganizer
 Name[et]=KOrganizeri perioodivaate plugin
 Name[fr]=Module d'affichage de planification pour KOrganizer
+Name[nl]=Tijdspanneplugin voor KOrganizer
 Name[pt]='Plugin' de Vista de Intervalo de Tempo para o KOrganizer
 Name[pt_BR]='Plugin' de Vista de Intervalo de Tempo para o KOrganizer
 Name[ru]=Диаграмма Ганта для KOrganizer
+Name[sr]=Прикључак KOrganizer-а за приказ временског распона
+Name[sr@Latn]=Прикључак KOrganizer-а за приказ временског распона
 Name[sv]=Tidsintervallvyinsticksprogram för Korganizer
+<<<<<<< timespanview.desktop
 Name[tr]=KOrganizer için Zaman Görünüm Eklentisi
+Comment=This plugin provides a timespan view for KOrganizer (like the to-do or month views). If you enable this plugin, you can switch to the timespan view and view your events like in a Gantt diagram.
+=======
+Name[tr]=KOrganizer için Zaman Dilimi Görünümü Eklentisi
+Name[uk]=Втулок перегляду періоду часу для KOrganizer
 Comment=This plugin provides a timespan view for korganizer (like the to-do or month views). If you enable this plugin, you can switch to the timespan view and view your events like in a Gantt diagram.
+>>>>>>> 1.21
 Comment[bg]=Приставката служи за преглед на събитията и задачите в зададен период от време.
 Comment[da]=Pluginnet sørger for en tidsintervalsvisning i Korganizer (som ligner gøremål eller månedsvisning). Hvis du aktiverer dette plugin kan du skifte til tidsintervalvisning og vise dine begivenheder som i et Gantt-diagram.
 Comment[es]=Esta extensión proporciona una vista de timespan para korganizer (como la vista de tareas pendientes o la mensual). Si activa esta extensión, puede pasar a la vista de timespan y ver sus eventos como un diagrama de Gantt.
 Comment[et]=See plugin lisab KOrganizerile perioodivaate (nagu ülesannete või kuuvaade). Selle lubamisel saab lülituda perioodivaatele ning näha oma sündmusi Gantti diagrammina.
 Comment[fr]=Ce module vous permet d'avoir une vue de KOrganizer qui affiche les évènements selon l'axe temporel. Si vous activez cette vue, vous verrez vos évènements comme un diagramme de Gantt.
+Comment[nl]=Deze plugin biedt een weergave voor KOrganizer (zoals de takenlijst en de maandweergave). Wanneer u deze plugin inschakelt kunt u kiezen voor een weergave waarin u uw evenementen in een Gantt-diagram kunt bekijken.
 Comment[pt]=Este 'plugin' oferece uma vista de distribuição temporal para o KOrganizer (como as vistas de itens por-fazer ou mensais). Se activar este 'plugin', poderá mudar para a vista de distribuição temporal e ver os seus eventos como num diagrama de Gantt.
 Comment[pt_BR]=Este 'plugin' oferece uma vista de distribuição temporal para o KOrganizer (como as vistas de itens por-fazer ou mensais). Se activar este 'plugin', poderá mudar para a vista de distribuição temporal e ver os seus eventos como num diagrama de Gantt.
 Comment[ru]=Этот модуль показывает диаграмму Ганта для органайзера KDE. Если вы подключите этот модуль, вы можете посмотреть ваши события в виде диаграммы Ганта.
-Comment[sv]=Insticksprogrammet tillhandahåller en tidsintervallvy i Korganizer (som liknar att-göra eller månadsvyn). Om du aktiverar insticksprogrammet kan du byta till idsintervallvyn och visa dina händelser som i ett Gantt-diagram.
-Comment[tr]=Bu eklenti korganizer için bir zaman aralıkları görünümünü temin eder (yapılacaklar ve ay görünümleri). Eğer bu eklenti etkinse, zaman aralıkları görünümünü ve Gant diagramın da olayları kullanabilirsiniz.
+Comment[sr]=Овај прикључак пружа приказ временског распона за KOrganizer (као месечни или прикази послова). Ако укључите овај прикључак, можете се пребацити на приказ временског распона и разгледати своје догађаје као у Гантовом дијаграму.
+Comment[sr@Latn]=Овај прикључак пружа приказ временског распона за KOrganizer (као месечни или прикази послова). Ако укључите овај прикључак, можете се пребацити на приказ временског распона и разгледати своје догађаје као у Гантовом дијаграму.
+Comment[sv]=Insticksprogrammet tillhandahåller en tidsintervallvy i Korganizer (som liknar uppgifts- eller månadsvyn). Om du aktiverar insticksprogrammet kan du byta till idsintervallvyn och visa dina händelser som i ett Gantt-diagram.
+Comment[tr]=Bu eklenti, KOrganizer için zaman dilimi görünümü sağlar (yapılacaklar listesi ya da aylık görünüm gibi). Eğer bu eklentiyi aktif hale getirirseniz, zaman dilimi görünümüne geçebilir ve olayları Gantt diyagramı şeklinde görüntüleyebilirsiniz.
 Type=Service
 ServiceTypes=KOrganizer/Part
 X-KDE-KOrganizer-HasSettings=false
