@@ -18,6 +18,12 @@
 #include <kiconloader.h>
 #include <klocale.h>
 
+extern "C" {
+#include <icalparser.h>
+#include <icalrestriction.h>
+}
+
+
 #include "qdatelist.h"
 #include "calobject.h"
 
