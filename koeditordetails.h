@@ -53,15 +53,11 @@ class KOEditorDetails : public QWidget
     /** Check if the input is valid. */
     bool validateInput();
 
-    /** Set spacing for layouts */
-    void setSpacing(int);
-
   public slots:
-    virtual void setEnabled(bool);
     void insertAttendee(Attendee *);
 
   protected slots:
-    void addNewAttendee(); 
+    void addNewAttendee();
     void updateAttendee();
     void removeAttendee();
     void attendeeListHilite(QListViewItem *);
@@ -70,42 +66,20 @@ class KOEditorDetails : public QWidget
     void checkLineEdits();
     void checkAttendeeSelection();
 
-  protected:
-    void initAttendee();
-    void initAttach();
-    void initMisc();
-
+  private:
     void clearAttendeeInput();
 
-    QGridLayout *topLayout;
+    QLineEdit *mNameEdit;
+    QLineEdit *mEmailEdit;
+    QListView *mListView;
+    QPushButton* mAddButton;
+    QPushButton* mModifyButton;
+    QPushButton* mRemoveButton;
+    QPushButton* mAddressBookButton;
+    QComboBox* mRoleCombo;
+    QCheckBox* mRsvpButton;
+    QComboBox* mStatusCombo;
 
-    QLabel* attendeeLabel;
-    QLineEdit *attendeeEdit;
-    QLineEdit *emailEdit;
-    QListView *attendeeListBox;
-    QPushButton* addAttendeeButton;
-    QPushButton* modifyAttendeeButton;
-    QPushButton* removeAttendeeButton;
-    QGroupBox* attachGroupBox;
-    QPushButton* attachFileButton;
-    QPushButton* removeFileButton;
-    QPushButton* saveFileAsButton;
-    QPushButton* addressBookButton;
-    QLabel* attendeeRoleLabel;
-    QComboBox* attendeeRoleCombo;
-    QCheckBox* attendeeRSVPButton;
-    QLabel* statusLabel;
-    QComboBox* statusCombo;
-    QLabel* locationLabel;
-    QLabel* priorityLabel;
-    QComboBox* priorityCombo;
-    QPushButton* resourceButton;
-    QLineEdit* resourcesEdit;
-    QLabel* transparencyLabel;
-    QLabel* transparencyAmountLabel;
-
-  private:
-    int mSpacing;
 };
 
 #endif
