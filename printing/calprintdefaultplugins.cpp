@@ -569,8 +569,8 @@ void CalPrintTodos::print( QPainter &p, int width, int height )
 {
   int pospriority = 10;
   int possummary = 60;
-  int poscomplete = width - 170;
-  int posdue = width - 85;
+  int posdue = width - 65; //was 85
+  int poscomplete = posdue - 70; //Complete column is to right of the Due column
   int lineSpacing = 15;
   int fontHeight = 10;
 
@@ -597,20 +597,22 @@ void CalPrintTodos::print( QPainter &p, int width, int height )
   outStr += i18n("Summary");
   p.drawText( possummary, mCurrentLinePos - 2, outStr );
 
+  if ( mIncludePercentComplete ) {
+    if ( !mIncludeDueDate ) //move Complete column to the right
+      poscomplete = posdue; //if not print the Due Date column
+    outStr.truncate( 0 );
+    outStr += i18n( "Complete" );
+    p.drawText( poscomplete, mCurrentLinePos - 2, outStr );
+  } else {
+    poscomplete = -1;
+  }
+
   if ( mIncludeDueDate ) {
     outStr.truncate( 0 );
     outStr += i18n("Due");
     p.drawText( posdue, mCurrentLinePos - 2, outStr );
   } else {
     posdue = -1;
-  }
-
-  if ( mIncludePercentComplete ) {
-    outStr.truncate( 0 );
-    outStr += i18n( "Complete" );
-    p.drawText( poscomplete, mCurrentLinePos - 2, outStr );
-  } else {
-    poscomplete = -1;
   }
 
   p.setFont( QFont( "helvetica", 10 ) );

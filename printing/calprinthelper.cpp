@@ -919,15 +919,15 @@ void CalPrintHelper::drawTodo( int &count, Todo *item, QPainter &p,
   bool showPercentComplete = posPercentComplete>=0;
   if ( showPercentComplete ) {
     int lwidth=24;
-    int lheight=18;
+    int lheight=12;
     //first, draw the progress bar
-    int progress = (int)(( (lwidth-6)*item->percentComplete())/100.0 + 0.5);
+    int progress = (int)(( lwidth*item->percentComplete())/100.0 + 0.5);
 
     p.setBrush( QBrush( Qt::NoBrush ) );
-    p.drawRect( posPercentComplete, y, lwidth, lheight );
+    p.drawRect( posPercentComplete, y+3, lwidth, lheight );
     if ( progress > 0 ) {
-      p.setBrush( QBrush( Qt::SolidPattern ) );
-      p.drawRect( posPercentComplete+3, y+3, progress, lheight-6 );
+      p.setBrush( QBrush( Qt::Dense5Pattern ) );
+      p.drawRect( posPercentComplete, y+3, progress, lheight );
     }
 
     //now, write the percentage
