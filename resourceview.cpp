@@ -28,7 +28,11 @@
 #include <klocale.h>
 #include <kdebug.h>
 #include <kglobal.h>
+#include <kmessagebox.h>
+#include <kresources/resource.h>
+#include <kresources/resourceconfigdlg.h>
 
+#include <qinputdialog.h>
 #include <qlayout.h>
 
 using namespace KCal;
@@ -66,6 +70,24 @@ ResourceView::ResourceView( KCal::CalendarResourceManager *manager,
   QBoxLayout *topLayout = new QVBoxLayout( this );
   topLayout->addWidget( mListView );
 
+  QBoxLayout *buttonLayout = new QHBoxLayout( this );
+
+  add = new QPushButton( QString("add"), this, "add" );
+  del = new QPushButton( QString("del"), this, "del" );
+  edit = new QPushButton( QString("edit"), this, "edit" );
+  del->setDisabled( true );
+  edit->setDisabled( true );
+  buttonLayout->addWidget( add );
+  buttonLayout->addWidget( del );
+  buttonLayout->addWidget( edit );
+  topLayout->addLayout( buttonLayout );
+
+  connect( mListView, SIGNAL(clicked(QListViewItem*)),
+           SLOT(currentChanged(QListViewItem*)) );
+  connect( add, SIGNAL(clicked()), SLOT(addResource()) );
+  connect( del, SIGNAL(clicked()), SLOT(removeResource()) );
+  connect( edit, SIGNAL(clicked()), SLOT(editResource()) );
+
   updateView();
 }
 
@@ -88,5 +110,86 @@ void ResourceView::emitResourcesChanged()
   emit resourcesChanged();
 }
 
+void ResourceView::addResource()
+{
+  kdDebug() << "ResourceView::addResource()" << endl;
+  QStringList types = mManager->resourceTypeNames();
+  bool ok = false;
+  QString type = QInputDialog::getItem( i18n( "Resource Configuration" ),
+      i18n( "Please select type of the new resource:" ), types, 0, false, &ok, this );
+  if ( !ok )
+    return;
+
+  // Create new resource
+  ResourceCalendar *resource = mManager->createResource( type );
+  if( !resource ) {
+    KMessageBox::error( this, i18n("Unable to create resource of type '%1'.")
+                              .arg( type ) );
+    return;
+  }
+
+  resource->setResourceName( type + "-resource" );
+
+  KRES::ResourceConfigDlg dlg( this, QString("calendar"), resource, "ResourceConfigDlg" );
+
+  if ( dlg.exec() ) {
+    mManager->add( resource );
+    ResourceItem *item = new ResourceItem( resource, this, mListView );
+  } else {
+    delete resource;
+    resource = 0;
+  }
+}
+
+void ResourceView::removeResource()
+{
+  QListViewItem *item = mListView->currentItem();
+  ResourceItem *rItem = static_cast<ResourceItem*>( item );
+
+  if ( !rItem )
+    return;
+
+  int km = KMessageBox::warningYesNo(this,
+        i18n("Do you really want to delete the resource")+ " '" +
+             rItem->resource()->resourceName() + "'?" );
+  if ( km == KMessageBox::No ) return;
+
+  if ( rItem->resource() == mManager->standardResource() ) {
+    KMessageBox::sorry( this, i18n( "You cannot remove your standard resource!" ) );
+    return;
+  }
+
+  mManager->remove( rItem->resource() );
+
+  mListView->takeItem( item );
+  delete item;
+
+}
+
+void ResourceView::editResource()
+{
+  QListViewItem *item = mListView->currentItem();
+  ResourceItem *rItem = static_cast<ResourceItem*>( item );
+  if ( !rItem )
+    return;
+
+  ResourceCalendar *resource = rItem->resource();
+
+  KRES::ResourceConfigDlg dlg( this, QString("calendar"), resource, "ResourceConfigDlg" );
+
+  if ( dlg.exec() ) {
+    rItem->setText( 0, resource->resourceName() );
+
+    mManager->resourceChanged( resource );
+  }
+}
+
+void ResourceView::currentChanged( QListViewItem *item)
+{
+  bool selected = true;
+  if ( !item ) selected = false;
+  del->setEnabled( selected );
+  edit->setEnabled( selected );
+}
 
 #include "resourceview.moc"

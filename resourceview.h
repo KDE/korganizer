@@ -31,6 +31,7 @@
 #include <klistview.h>
 
 #include <qwidget.h>
+#include <qpushbutton.h>
 
 class KListView;
 class ResourceView;
@@ -58,20 +59,27 @@ class ResourceView : public QWidget
 {
     Q_OBJECT
   public:
-    ResourceView( KCal::CalendarResourceManager *manager, QWidget *parent = 0, 
+    ResourceView( KCal::CalendarResourceManager *manager, QWidget *parent = 0,
 	          const char *name = 0);
     ~ResourceView();
 
     void updateView();
 
     void emitResourcesChanged();
-  
+
   signals:
     void resourcesChanged();
+
+  private slots:
+    void addResource();
+    void removeResource();
+    void editResource();
+    void currentChanged( QListViewItem* );
 
   private:
     KListView *mListView;
     KCal::CalendarResourceManager *mManager;
+    QPushButton *add, *del, *edit;
 };
 
 #endif
