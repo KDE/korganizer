@@ -62,7 +62,7 @@ KOrganizerApp::~KOrganizerApp()
 void KOrganizerApp::displayImminent( const KURL &url, int numdays )
 {
   if (!url.isLocalFile()) {
-    cout << i18n("Unable to handle remote calendar.").local8Bit() << endl;
+    cerr << i18n("Unable to handle remote calendar.").local8Bit() << endl;
     return;
   }
 
@@ -74,7 +74,7 @@ void KOrganizerApp::displayImminent( const KURL &url, int numdays )
   FileStorage storage( &cal, url.path() );
 
   if ( !storage.load() ) {
-    cout << i18n("Could not load calendar '%1'.").arg(url.path()).local8Bit()
+    cerr << i18n("Could not load calendar '%1'.").arg(url.path()).local8Bit()
          << endl;
     exit(0);
   }
