@@ -26,8 +26,6 @@
 
 #include "calendarview.h"
 #include "actionmanager.h"
-#include "koapp.h"
-#include "korganizer.h"
 #include "koglobals.h"
 #include "koprefs.h"
 
@@ -46,6 +44,7 @@
 #include <kconfig.h>
 #include <kprocess.h>
 #include <ktempfile.h>
+#include <kstatusbar.h>
 
 #include <sidebarextension.h>
 #include <infoextension.h>
@@ -180,26 +179,6 @@ void KOrganizerPart::slotChangeInfo( Incidence *incidence )
 
 void KOrganizerPart::saveCalendar()
 {
-  QPtrListIterator<KMainWindow> it(*KMainWindow::memberList);
-  KMainWindow *window = 0;
-  while ( ( window = it.current() ) != 0 ) {
-    ++it;
-    if ( window->inherits( "KOrganizer" ) ) {
-      KOrganizer *korg = dynamic_cast<KOrganizer*>( window );
-      if ( korg ) {
-        if ( !korg->actionManager()->view()->isModified() )
-	  continue;
-        if ( korg->actionManager()->url().isEmpty() ) {
-	  KTempFile tmp( locateLocal( "data", "korganizer/" ) );
-	  korg->actionManager()->saveAsURL( tmp.name() );
-        } else {
-	  korg->actionManager()->saveURL();
-        }
-        window->close( true );
-      }
-    }
-  }
-
   if ( mActionManager->view()->isModified() ) {
     if ( !mActionManager->url().isEmpty() ) {
       mActionManager->saveURL();
