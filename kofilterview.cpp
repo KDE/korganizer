@@ -1,6 +1,8 @@
 // $Id$
 
 #include <qcheckbox.h>
+#include <qcombobox.h>
+#include <qpushbutton.h>
 
 #include "calfilter.h"
 
@@ -10,14 +12,18 @@
  *  Constructs a KOFilterView which is a child of 'parent', with the 
  *  name 'name' and widget flags set to 'f' 
  */
-KOFilterView::KOFilterView(QWidget* parent,const char* name,
-                           WFlags fl )
+KOFilterView::KOFilterView(QList<CalFilter> *filterList,QWidget* parent,
+                           const char* name,WFlags fl )
   : KOFilterView_base(parent,name,fl)
 {
-  mFilter = new CalFilter;
+  mFilters = filterList;
+
+  connect(mSelectionCombo,SIGNAL(activated(int)),SIGNAL(filterChanged()));
+  connect(mEnabledCheck,SIGNAL(clicked()),SIGNAL(filterChanged()));
+  connect(mEditButton,SIGNAL(clicked()),SIGNAL(editFilters()));
 }
 
-/*  
+/*
  *  Destroys the object and frees any allocated resources
  */
 KOFilterView::~KOFilterView()
@@ -25,31 +31,26 @@ KOFilterView::~KOFilterView()
     // no need to delete child widgets, Qt does it all for us
 }
 
-void KOFilterView::updateFilter()
+bool KOFilterView::filtersEnabled()
 {
-  if (!mEnabledCheck->isChecked()) {
-    // Only emit filterChanged(), when enabled state has changed.
-    if (mFilter->isEnabled()) {
-      mFilter->setEnabled(false);
-      emit filterChanged(mFilter);
-    }
-    // If filter is disabled just return and don't check the filter settings.
-    return;
-  } else {
-    mFilter->setEnabled(true);
+  return mEnabledCheck->isChecked();
+}
+
+void KOFilterView::updateFilters()
+{
+  mSelectionCombo->clear();
+
+  CalFilter *filter = mFilters->first();
+  while(filter) {
+    mSelectionCombo->insertItem(filter->name());
+    filter = mFilters->next();
   }
+}
 
-  int inclusion = 0;
-  if (mInRecurringCheck->isChecked()) inclusion |= CalFilter::Recurring;
-  if (mInFloatingCheck->isChecked()) inclusion |= CalFilter::Floating;
-  mFilter->setInclusionCriteria(inclusion);
-
-  int exclusion = 0;
-  if (mExRecurringCheck->isChecked()) exclusion |= CalFilter::Recurring;
-  if (mExFloatingCheck->isChecked()) exclusion |= CalFilter::Floating;
-  mFilter->setExclusionCriteria(exclusion);
-  
-  emit filterChanged(mFilter);
+CalFilter *KOFilterView::selectedFilter()
+{
+  CalFilter *f = mFilters->at(mSelectionCombo->currentItem());
+  return f;
 }
 
 #include "kofilterview.moc"

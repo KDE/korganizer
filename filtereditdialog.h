@@ -9,6 +9,7 @@
 #include "calfilter.h"
 
 class QComboBox;
+class FilterEdit_base;
 
 /**
   * This is the class to add/edit a calendar filter.
@@ -28,18 +29,25 @@ class FilterEditDialog : public KDialogBase
     void updateFilterList();
 
   signals:
+    void filterChanged();
 
   protected slots:
     void slotDefault();
     void slotApply();
     void slotOk();
 
+    void slotAdd();
+    void filterSelected();
+
   protected:
+    void readFilter(CalFilter *);
+    void writeFilter(CalFilter *);
 
   private:
     QList<CalFilter> *mFilters;
 
     QComboBox *mSelectionCombo;
+    FilterEdit_base *mEditor;
 };
 
 #endif

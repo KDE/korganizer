@@ -14,7 +14,7 @@
 class CalFilter {
   public:
     CalFilter();
-    CalFilter(const QString &name) { setName(name); }
+    CalFilter(const QString &name);
     ~CalFilter();
     
     /**
@@ -25,6 +25,7 @@ class CalFilter {
       Return name of filter.
     */
     QString name() const { return mName; }
+//    QString name() const { return QString("buuuuh"); }
     
     /**
       Apply filter to eventlist, all events not matching filter criterias are

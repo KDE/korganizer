@@ -9,9 +9,14 @@
 
 CalFilter::CalFilter()
 {
-  mEnabled = false;
+  mEnabled = true;
   mInclusion = 0;
   mExclusion = 0;
+}
+
+CalFilter::CalFilter(const QString &name)
+{
+  mName = name;
 }
 
 CalFilter::~CalFilter()

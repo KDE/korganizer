@@ -11,7 +11,7 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>166</width>
+            <width>162</width>
             <height>206</height>
         </rect>
     </property>
@@ -41,12 +41,12 @@
                 <cstring>mCriteriaFrame</cstring>
             </property>
             <property stdset="1">
-                <name>frameShape</name>
-                <enum>StyledPanel</enum>
-            </property>
-            <property stdset="1">
                 <name>frameShadow</name>
                 <enum>Raised</enum>
+            </property>
+            <property stdset="1">
+                <name>frameShape</name>
+                <enum>StyledPanel</enum>
             </property>
             <property>
                 <name>layoutMargin</name>
@@ -157,30 +157,6 @@
     </vbox>
 </widget>
 <connections>
-    <connection>
-        <sender>mInRecurringCheck</sender>
-        <signal>toggled(bool)</signal>
-        <receiver>FilterEdit_base</receiver>
-        <slot>updateFilter()</slot>
-    </connection>
-    <connection>
-        <sender>mInFloatingCheck</sender>
-        <signal>toggled(bool)</signal>
-        <receiver>FilterEdit_base</receiver>
-        <slot>updateFilter()</slot>
-    </connection>
-    <connection>
-        <sender>mExRecurringCheck</sender>
-        <signal>toggled(bool)</signal>
-        <receiver>FilterEdit_base</receiver>
-        <slot>updateFilter()</slot>
-    </connection>
-    <connection>
-        <sender>mExFloatingCheck</sender>
-        <signal>toggled(bool)</signal>
-        <receiver>FilterEdit_base</receiver>
-        <slot>updateFilter()</slot>
-    </connection>
     <slot access="public">updateFilter()</slot>
 </connections>
 </UI>

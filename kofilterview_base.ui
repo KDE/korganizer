@@ -11,8 +11,8 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>170</width>
-            <height>299</height>
+            <width>166</width>
+            <height>122</height>
         </rect>
     </property>
     <property stdset="1">
@@ -28,11 +28,11 @@
     <vbox>
         <property stdset="1">
             <name>margin</name>
-            <number>0</number>
+            <number>2</number>
         </property>
         <property stdset="1">
             <name>spacing</name>
-            <number>0</number>
+            <number>2</number>
         </property>
         <widget>
             <class>QFrame</class>
@@ -41,12 +41,12 @@
                 <cstring>Frame11</cstring>
             </property>
             <property stdset="1">
-                <name>frameShape</name>
-                <enum>StyledPanel</enum>
-            </property>
-            <property stdset="1">
                 <name>frameShadow</name>
                 <enum>Raised</enum>
+            </property>
+            <property stdset="1">
+                <name>frameShape</name>
+                <enum>StyledPanel</enum>
             </property>
             <property>
                 <name>layoutMargin</name>
@@ -54,7 +54,7 @@
             <vbox>
                 <property stdset="1">
                     <name>margin</name>
-                    <number>8</number>
+                    <number>11</number>
                 </property>
                 <property stdset="1">
                     <name>spacing</name>
@@ -71,125 +71,12 @@
                         <string>Filter Enabled</string>
                     </property>
                 </widget>
-            </vbox>
-        </widget>
-        <widget>
-            <class>QFrame</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>mCriteriaFrame</cstring>
-            </property>
-            <property stdset="1">
-                <name>frameShape</name>
-                <enum>StyledPanel</enum>
-            </property>
-            <property stdset="1">
-                <name>frameShadow</name>
-                <enum>Raised</enum>
-            </property>
-            <property>
-                <name>layoutMargin</name>
-            </property>
-            <vbox>
-                <property stdset="1">
-                    <name>margin</name>
-                    <number>8</number>
-                </property>
-                <property stdset="1">
-                    <name>spacing</name>
-                    <number>6</number>
-                </property>
                 <widget>
-                    <class>QGroupBox</class>
+                    <class>QComboBox</class>
                     <property stdset="1">
                         <name>name</name>
-                        <cstring>GroupBox7</cstring>
+                        <cstring>mSelectionCombo</cstring>
                     </property>
-                    <property stdset="1">
-                        <name>title</name>
-                        <string>Include</string>
-                    </property>
-                    <property>
-                        <name>layoutMargin</name>
-                    </property>
-                    <vbox>
-                        <property stdset="1">
-                            <name>margin</name>
-                            <number>8</number>
-                        </property>
-                        <property stdset="1">
-                            <name>spacing</name>
-                            <number>6</number>
-                        </property>
-                        <widget>
-                            <class>QCheckBox</class>
-                            <property stdset="1">
-                                <name>name</name>
-                                <cstring>mInRecurringCheck</cstring>
-                            </property>
-                            <property stdset="1">
-                                <name>text</name>
-                                <string>Recurring</string>
-                            </property>
-                        </widget>
-                        <widget>
-                            <class>QCheckBox</class>
-                            <property stdset="1">
-                                <name>name</name>
-                                <cstring>mInFloatingCheck</cstring>
-                            </property>
-                            <property stdset="1">
-                                <name>text</name>
-                                <string>Floating</string>
-                            </property>
-                        </widget>
-                    </vbox>
-                </widget>
-                <widget>
-                    <class>QGroupBox</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>GroupBox8</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>title</name>
-                        <string>Exclude</string>
-                    </property>
-                    <property>
-                        <name>layoutMargin</name>
-                    </property>
-                    <vbox>
-                        <property stdset="1">
-                            <name>margin</name>
-                            <number>8</number>
-                        </property>
-                        <property stdset="1">
-                            <name>spacing</name>
-                            <number>6</number>
-                        </property>
-                        <widget>
-                            <class>QCheckBox</class>
-                            <property stdset="1">
-                                <name>name</name>
-                                <cstring>mExRecurringCheck</cstring>
-                            </property>
-                            <property stdset="1">
-                                <name>text</name>
-                                <string>Recurring</string>
-                            </property>
-                        </widget>
-                        <widget>
-                            <class>QCheckBox</class>
-                            <property stdset="1">
-                                <name>name</name>
-                                <cstring>mExFloatingCheck</cstring>
-                            </property>
-                            <property stdset="1">
-                                <name>text</name>
-                                <string>Floating</string>
-                            </property>
-                        </widget>
-                    </vbox>
                 </widget>
             </vbox>
         </widget>
@@ -209,30 +96,6 @@
 <connections>
     <connection>
         <sender>mEnabledCheck</sender>
-        <signal>toggled(bool)</signal>
-        <receiver>KOFilterView_base</receiver>
-        <slot>updateFilter()</slot>
-    </connection>
-    <connection>
-        <sender>mInRecurringCheck</sender>
-        <signal>toggled(bool)</signal>
-        <receiver>KOFilterView_base</receiver>
-        <slot>updateFilter()</slot>
-    </connection>
-    <connection>
-        <sender>mInFloatingCheck</sender>
-        <signal>toggled(bool)</signal>
-        <receiver>KOFilterView_base</receiver>
-        <slot>updateFilter()</slot>
-    </connection>
-    <connection>
-        <sender>mExRecurringCheck</sender>
-        <signal>toggled(bool)</signal>
-        <receiver>KOFilterView_base</receiver>
-        <slot>updateFilter()</slot>
-    </connection>
-    <connection>
-        <sender>mExFloatingCheck</sender>
         <signal>toggled(bool)</signal>
         <receiver>KOFilterView_base</receiver>
         <slot>updateFilter()</slot>

@@ -29,6 +29,8 @@
 #include <qlayout.h>
 #include <qpushbutton.h>
 #include <qcombobox.h>
+#include <qinputdialog.h>
+#include <qcheckbox.h>
 
 #include <kdebug.h>
 #include <klocale.h>
@@ -42,7 +44,7 @@
 FilterEditDialog::FilterEditDialog(QList<CalFilter> *filters,QWidget *parent,
                                    const char *name) :
   KDialogBase(parent,name,false,i18n("Edit Calendar Filters"),
-              Ok|Apply|Cancel|Default)
+              Ok|Apply|Cancel)
 {
   mFilters = filters;
 
@@ -50,16 +52,18 @@ FilterEditDialog::FilterEditDialog(QList<CalFilter> *filters,QWidget *parent,
   setMainWidget(mainWidget);
 
   mSelectionCombo = new QComboBox(mainWidget);
+  connect(mSelectionCombo,SIGNAL(activated(int)),SLOT(filterSelected()));  
   
   QPushButton *addButton = new QPushButton(i18n("Add Filter"),mainWidget);
+  connect(addButton,SIGNAL(clicked()),SLOT(slotAdd()));
   
-  FilterEdit_base *editor = new FilterEdit_base(mainWidget);
+  mEditor = new FilterEdit_base(mainWidget);
   
   QGridLayout *topLayout = new QGridLayout(mainWidget,2,2);
   topLayout->setSpacing(spacingHint());
   topLayout->addWidget(mSelectionCombo,0,0);
   topLayout->addWidget(addButton,0,1);
-  topLayout->addMultiCellWidget(editor,1,1,0,1);
+  topLayout->addMultiCellWidget(mEditor,1,1,0,1);
 
   // Clicking cancel exits the dialog without saving
   connect(this,SIGNAL(cancelClicked()),SLOT(reject()));
@@ -78,8 +82,11 @@ void FilterEditDialog::updateFilterList()
   CalFilter *filter = mFilters->first();
   while(filter) {
     mSelectionCombo->insertItem(filter->name());
-    filter=mFilters->next();
+    filter = mFilters->next();
   }
+  
+  CalFilter *f = mFilters->at(mSelectionCombo->currentItem());
+  readFilter(f);
 }
 
 
@@ -89,8 +96,57 @@ void FilterEditDialog::slotDefault()
 
 void FilterEditDialog::slotApply()
 {
+  CalFilter *f = mFilters->at(mSelectionCombo->currentItem());
+  writeFilter(f);
+  emit filterChanged();
 }
 
 void FilterEditDialog::slotOk()
 {
+  CalFilter *f = mFilters->at(mSelectionCombo->currentItem());
+  writeFilter(f);
+  emit filterChanged();
+  accept();
+}
+
+void FilterEditDialog::slotAdd()
+{
+  QString filterName = QInputDialog::getText(i18n("Add Filter"), i18n("Enter Filter Name"));
+  if (!filterName.isEmpty()) {
+    mFilters->append(new CalFilter(filterName));
+    updateFilterList();
+  }
+}
+
+void FilterEditDialog::filterSelected()
+{
+  CalFilter *f = mFilters->at(mSelectionCombo->currentItem());
+  kdDebug() << "Selected filter " << f->name() << endl;
+  readFilter(f);
+}
+
+void FilterEditDialog::readFilter(CalFilter *filter)
+{
+  int in = filter->inclusionCriteria();
+  
+  mEditor->mInRecurringCheck->setChecked(in & CalFilter::Recurring);
+  mEditor->mInFloatingCheck->setChecked(in & CalFilter::Floating);
+
+  int ex = filter->exclusionCriteria();
+  
+  mEditor->mExRecurringCheck->setChecked(ex & CalFilter::Recurring);
+  mEditor->mExFloatingCheck->setChecked(ex & CalFilter::Floating);
+}
+
+void FilterEditDialog::writeFilter(CalFilter *filter)
+{
+  int in = 0;
+  if (mEditor->mInRecurringCheck->isChecked()) in |= CalFilter::Recurring;
+  if (mEditor->mInFloatingCheck->isChecked()) in |= CalFilter::Floating;
+  filter->setInclusionCriteria(in);
+
+  int ex = 0;
+  if (mEditor->mExRecurringCheck->isChecked()) ex |= CalFilter::Recurring;
+  if (mEditor->mExFloatingCheck->isChecked()) ex |= CalFilter::Floating;
+  filter->setExclusionCriteria(ex);
 }
