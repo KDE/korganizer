@@ -39,12 +39,14 @@
 #include <kiconloader.h>
 #include <kdebug.h>
 #include <knumvalidator.h>
+#include <kcalendarsystem.h>
 
 #include <libkcal/event.h>
 
 #include <libkdepim/kdateedit.h>
 
 #include "koprefs.h"
+#include "koglobals.h"
 
 #include "koeditorrecurrence.h"
 #include "koeditorrecurrence.moc"
@@ -123,7 +125,8 @@ RecurWeekly::RecurWeekly( QWidget *parent, const char *name ) :
     // i is the nr of the combobox, not the day of week!
     // label=(i+weekStart+6)%7 + 1;
     // index in CheckBox array(=day): label-1
-    QString weekDayName = KGlobal::locale()->weekDayName(
+    const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
+    QString weekDayName = calSys->weekDayName(
       (i + weekStart + 6)%7 + 1, true );
     if ( KOPrefs::instance()->mCompactDialogs ) {
       weekDayName = weekDayName.left( 1 );
