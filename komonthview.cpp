@@ -826,8 +826,6 @@ void KOMonthView::changeIncidenceDisplayAdded( Incidence *incidence )
     date = todo->dtDue().date();
   }
 
-//  if ( !calendar()->filter()->filterIncidence( incidence ) )
-//    return;
   if ( incidence->doesRecur() ) {
      for ( uint i = 0; i < mCells.count(); i++ ) {
        if ( incidence->recursOn( mCells[i]->date() ) ) {
