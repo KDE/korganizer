@@ -140,7 +140,7 @@ class ActionManager : public QObject, public KCalendarIface
     bool eventReply( const QString& ical );
     /** Handle cancelling an event */
     bool cancelEvent( const QString& ical );
-    
+
     bool editIncidence( const QString& uid );
 
     //// Implementation of the DCOP interface
@@ -303,6 +303,8 @@ class ActionManager : public QObject, public KCalendarIface
     void showStatusMessageOpen( const KURL &url, bool merge );
 
     void initCalendar( Calendar *cal );
+
+    void exportToHTML();
 
     /**
       Return widget used as parent for dialogs and message boxes.
