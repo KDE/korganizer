@@ -129,6 +129,8 @@ class KOAgendaView : public KOEventView {
     void readSettings(KConfig *);
     void writeSettings(KConfig *);
 
+    void setContentsPos(int y);
+
   signals:
     void editEventSignal(Event *);  // From KOBaseView
     void showEventSignal(Event *);

@@ -16,7 +16,9 @@ KOEventViewerDialog::KOEventViewerDialog(QWidget *parent,const char *name)
   mEventViewer = new KOEventViewer(this);
   setMainWidget(mEventViewer);
 
+  // TODO: Set a sensible size (based on the content?).
   setMinimumSize(300,200);
+  resize(320,300);
 }
 
 KOEventViewerDialog::~KOEventViewerDialog()

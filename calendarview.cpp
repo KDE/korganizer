@@ -1043,7 +1043,7 @@ bool CalendarView::deleteEvent(const QString &VUID)
 void CalendarView::action_search()
 {
   if (!mSearchDialog) {
-    mSearchDialog = new SearchDialog(mCalendar);
+    mSearchDialog = new SearchDialog(mCalendar,this);
     connect(mSearchDialog,SIGNAL(showEventSignal(Event *)),
 	    SLOT(showEvent(Event *)));
     connect(mSearchDialog,SIGNAL(editEventSignal(Event *)),

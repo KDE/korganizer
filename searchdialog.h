@@ -20,7 +20,7 @@ class SearchDialog : public KDialogBase
 {
     Q_OBJECT
   public:
-    SearchDialog(Calendar *calendar);
+    SearchDialog(Calendar *calendar,QWidget *parent=0);
     virtual ~SearchDialog();
 
     void updateView();

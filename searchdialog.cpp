@@ -17,8 +17,8 @@
 #include "searchdialog.h"
 #include "searchdialog.moc"
 
-SearchDialog::SearchDialog(Calendar *calendar)
-  : KDialogBase(Plain,i18n("Find Events"),User1|Close,User1,0,0,false,false,
+SearchDialog::SearchDialog(Calendar *calendar,QWidget *parent)
+  : KDialogBase(Plain,i18n("Find Events"),User1|Close,User1,parent,0,false,false,
                 i18n("&Find"))
 {
   mCalendar = calendar;

@@ -280,9 +280,13 @@ KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name) :
   layoutTop->addWidget(mDayLabelsFrame);
   layoutTop->addWidget(mSplitterAgenda);
 
-  //connect signals and slots
+  // Scrolling
   connect(mAgenda->verticalScrollBar(),SIGNAL(valueChanged(int)),
           mTimeLabels, SLOT(positionChanged()));
+  connect(mTimeLabels->verticalScrollBar(),SIGNAL(valueChanged(int)),
+          SLOT(setContentsPos(int)));
+
+  // Create/Show/Edit/Delete Event
   connect(mAgenda,SIGNAL(newEventSignal(int,int)),
                   SLOT(newEvent(int,int)));
   connect(mAllDayAgenda,SIGNAL(newEventSignal(int,int)),
@@ -903,4 +907,9 @@ void KOAgendaView::setHolidayMasks()
   
   mAgenda->setHolidayMask(&mHolidayMask);
   mAllDayAgenda->setHolidayMask(&mHolidayMask);
+}
+
+void KOAgendaView::setContentsPos(int y)
+{
+  mAgenda->setContentsPos(0,y);
 }
