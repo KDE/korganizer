@@ -185,7 +185,8 @@ void KOTodoViewItem::stateChange(bool state)
 
 QPixmap KOTodoViewItem::progressImg(int progress)
 {
-  QPixmap img(64, 11, 16);
+  int w=64, h=11;
+  QPixmap img(w, h, 16);
   QPainter painter( &img );
 
   /* Check wether progress is in valid range */
@@ -193,17 +194,17 @@ QPixmap KOTodoViewItem::progressImg(int progress)
   else if (progress < 0) progress=0;
 
   /* Calculating the number of pixels to fill */
-  progress=(int) (((float)progress)/100 * 62 + 0.5);
+  progress=(int) (((float)progress)/100 * (w-2) + 0.5);
 
   /* White Background */
   painter.setPen( KGlobalSettings::textColor().rgb() );
   painter.setBrush( KGlobalSettings::baseColor().rgb() );
-  painter.drawRect( 0, 0, 64, 11 );
+  painter.drawRect( 0, 0, w, h );
 
+  /* Progress Bar */
   painter.setPen( Qt::NoPen );
   painter.setBrush( KGlobalSettings::highlightColor().rgb() );
-  // TODO_RK: do I need to subtract 1 from the w and h?
-  painter.drawRect( 1, 1, progress, 9 );
+  painter.drawRect( 1, 1, progress, h-2 );
   painter.end();
 
   return img;
