@@ -25,23 +25,16 @@
 
 #include <qdict.h>
 
-#include <libkdepim/kpimprefs.h>
+#include "koprefs_base.h"
 
 class KConfig;
 class QFont;
 class QColor;
 class QStringList;
 
-class KOPrefs : public KPimPrefs
+class KOPrefs : public KOPrefsBase
 {
   public:
-    enum { FormatVCalendar, FormatICalendar };
-    enum { MailClientKMail, MailClientSendmail };
-    enum { IMIPDummy, IMIPKMail };
-    enum { IMIPOutbox, IMIPdirectsend };
-    enum { neverAuto, addressbookAuto, selectedAuto };
-    enum { standardDestination, askDestination };
-
     virtual ~KOPrefs();
 
     /** Get instance of KOPrefs. It is made sure that there is only one
@@ -78,92 +71,19 @@ class KOPrefs : public KPimPrefs
     void setEmail(const QString &);
     QString email();
 
-    QString mAdditional;
-
-    bool    mEmailControlCenter;
-
-    bool    mBcc;
-    bool    mAutoSave;
-    int     mAutoSaveInterval;
-    bool    mConfirm;
-
-    bool    mEnableGroupScheduling;
-    bool    mEnableProjectView;
-
-    int     mDefaultFormat;
-    int     mMailClient;
-
-    QString mTimeZone;
-    QString mTimeZoneId;
-    int     mStartTime;
-    int     mDefaultDuration;
-    int     mAlarmTime;
-    int     mDaylightSavings;
-
-    int     mWorkingHoursStart;
-    int     mWorkingHoursEnd;
-    bool    mExcludeHolidays;
-    bool    mExcludeSaturdays;
-    bool    mMarcusBainsShowSeconds;
-
-    QFont   mTimeBarFont;
     QFont   mMonthViewFont;
-    QFont   mAgendaViewFont;
-    QFont   mMarcusBainsFont;
 
-    QColor  mHolidayColor;
-    QColor  mHighlightColor;
     QColor  mEventColor;
-    QColor  mAgendaBgColor;
-    QColor  mWorkingHoursColor;
-    QColor  mTodoDueTodayColor;
-    QColor  mTodoOverdueColor;
-
-    int     mDayBegins;
-    int     mHourSize;
-    bool    mDailyRecur;
-    bool    mWeeklyRecur;
-    bool    mEnableToolTips;
-    bool    mEnableMonthScroll;
-    bool    mFullViewMonth;
-    bool    mMonthViewUsesCategoryColor;
-    bool    mFullViewTodo;
-    bool    mMarcusBainsEnabled;
-    int     mNextXDays;
-    bool    mEnableQuickTodo;
-
-    bool    mCompactDialogs;
-    bool    mVerticalScreen;
 
     void setCategoryColor(QString cat,const QColor & color);
     QColor *categoryColor(QString cat);
 
-    QString mArchiveFile;
     QString mHtmlExportFile;
-    bool    mHtmlWithSave;
-
-    QStringList mSelectedPlugins;
-
-    int mIMIPScheduler;
-    int mIMIPSend;
-    QStringList mAdditionalMails;
-    int mIMIPAutoRefresh;
-    int mIMIPAutoInsertReply;
-    int mIMIPAutoInsertRequest;
-    int mIMIPAutoFreeBusy;
-    int mIMIPAutoFreeBusyReply;
-
-    QStringList mTodoTemplates;
-    QStringList mEventTemplates;
-
-    int mDestination;
 
   private:
     QDict<QColor> mCategoryColors;
     QColor mDefaultCategoryColor;
 
-    QFont mDefaultTimeBarFont;
-    QFont mDefaultViewFont;
     QFont mDefaultMonthViewFont;
 
     QString mName;

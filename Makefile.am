@@ -28,6 +28,11 @@ timezone_LDFLAGS = $(all_libraries) $(KDE_RPATH)
 timezone_LDADD   = libkorganizer.la $(LIB_KSYCOCA)
 timezone_SOURCES = timezone.cpp
 
+koprefs_base.cpp: $(srcdir)/koprefs.cfg $(top_builddir)/libkdepim/cfgc/cfgc
+	$(top_builddir)/libkdepim/cfgc/cfgc $(srcdir)/koprefs.cfg
+koprefs_base.h: $(srcdir)/koprefs.cfg $(top_builddir)/libkdepim/cfgc/cfgc
+	$(top_builddir)/libkdepim/cfgc/cfgc $(srcdir)/koprefs.cfg
+
 lib_LTLIBRARIES = libkorganizer.la
 
 libkorganizer_la_LDFLAGS = $(all_libraries) $(KDE_RPATH) -version-info 1:0
@@ -77,8 +82,8 @@ libkorganizer_la_SOURCES =  outgoingdialog_base.ui \
 	actionmanager.cpp resourceview.cpp \
         navigatorbar.cpp kogroupware.cpp \
 	kogroupwareincomingdialog_base.ui kogroupwareincomingdialog.cpp \
-        history.cpp
-
+        history.cpp \
+        koprefs_base.cpp
 
 METASOURCES = AUTO
 

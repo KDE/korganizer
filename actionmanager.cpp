@@ -967,13 +967,6 @@ KURL ActionManager::getSaveURL()
   if (e != ".vcs" && e != ".ics") {
     // Default save format is iCalendar
     filename += ".ics";
-#if 0
-    if (KOPrefs::instance()->mDefaultFormat == KOPrefs::FormatVCalendar) {
-      filename += ".vcs";
-    } else if (KOPrefs::instance()->mDefaultFormat == KOPrefs::FormatICalendar) {
-      filename += ".ics";
-    }
-#endif
   }
 
   url.setFileName(filename);
