@@ -70,7 +70,7 @@ KOEventEditor::KOEventEditor(CalObject *calendar) :
   connect(mGeneral,SIGNAL(dateTimeStrChanged(const QString &)),
           mRecurrence,SLOT(setDateTimeStr(const QString &)));
 
-  // Enable/Disabel recurrence tab
+  // Enable/Disable recurrence tab
   connect(mGeneral,SIGNAL(recursChanged(bool)),
           SLOT(enableRecurrence(bool)));
 

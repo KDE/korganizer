@@ -6,7 +6,7 @@
 #ifndef _CALFILTER_H
 #define _CALFILTER_H
 
-
+#include <qstring.h>
 #include <qlist.h>
 
 #include "koevent.h"
@@ -14,7 +14,17 @@
 class CalFilter {
   public:
     CalFilter();
+    CalFilter(const QString &name) { setName(name); }
     ~CalFilter();
+    
+    /**
+      Set name of filter.
+    */
+    void setName(const QString &name) { mName = name; }
+    /**
+      Return name of filter.
+    */
+    QString name() const { return mName; }
     
     /**
       Apply filter to eventlist, all events not matching filter criterias are
@@ -58,6 +68,8 @@ class CalFilter {
     int exclusionCriteria();
     
   private:
+    QString mName;
+
     int mExclusion;
     int mInclusion;
     

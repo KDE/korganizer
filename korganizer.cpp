@@ -396,6 +396,9 @@ void KOrganizer::initActions()
   (void)new KAction(i18n("Edit Categories"), 0,
                     mCalendarView,SLOT(editCategories()),
                     actionCollection(),"edit_categories");
+  (void)new KAction(i18n("Edit Filters"), 0,
+                    mCalendarView,SLOT(editFilters()),
+                    actionCollection(),"edit_filters");
   
   if (KOPrefs::instance()->mEnableGroupScheduling) {
     createGUI("korganizergsui.rc");

@@ -1,23 +1,23 @@
 <!DOCTYPE UI><UI>
-<class>KOFilterView_base</class>
+<class>FilterEdit_base</class>
 <widget>
     <class>QWidget</class>
     <property stdset="1">
         <name>name</name>
-        <cstring>KOFilterView_base</cstring>
+        <cstring>FilterEdit_base</cstring>
     </property>
     <property stdset="1">
         <name>geometry</name>
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>170</width>
-            <height>299</height>
+            <width>166</width>
+            <height>206</height>
         </rect>
     </property>
     <property stdset="1">
         <name>caption</name>
-        <string>Form2</string>
+        <string>FilterEditor</string>
     </property>
     <property>
         <name>layoutMargin</name>
@@ -34,45 +34,6 @@
             <name>spacing</name>
             <number>0</number>
         </property>
-        <widget>
-            <class>QFrame</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>Frame11</cstring>
-            </property>
-            <property stdset="1">
-                <name>frameShape</name>
-                <enum>StyledPanel</enum>
-            </property>
-            <property stdset="1">
-                <name>frameShadow</name>
-                <enum>Raised</enum>
-            </property>
-            <property>
-                <name>layoutMargin</name>
-            </property>
-            <vbox>
-                <property stdset="1">
-                    <name>margin</name>
-                    <number>8</number>
-                </property>
-                <property stdset="1">
-                    <name>spacing</name>
-                    <number>6</number>
-                </property>
-                <widget>
-                    <class>QCheckBox</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>mEnabledCheck</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>text</name>
-                        <string>Filter Enabled</string>
-                    </property>
-                </widget>
-            </vbox>
-        </widget>
         <widget>
             <class>QFrame</class>
             <property stdset="1">
@@ -193,48 +154,31 @@
                 </widget>
             </vbox>
         </widget>
-        <widget>
-            <class>QPushButton</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>mEditButton</cstring>
-            </property>
-            <property stdset="1">
-                <name>text</name>
-                <string>Edit Filters</string>
-            </property>
-        </widget>
     </vbox>
 </widget>
 <connections>
     <connection>
-        <sender>mEnabledCheck</sender>
-        <signal>toggled(bool)</signal>
-        <receiver>KOFilterView_base</receiver>
-        <slot>updateFilter()</slot>
-    </connection>
-    <connection>
         <sender>mInRecurringCheck</sender>
         <signal>toggled(bool)</signal>
-        <receiver>KOFilterView_base</receiver>
+        <receiver>FilterEdit_base</receiver>
         <slot>updateFilter()</slot>
     </connection>
     <connection>
         <sender>mInFloatingCheck</sender>
         <signal>toggled(bool)</signal>
-        <receiver>KOFilterView_base</receiver>
+        <receiver>FilterEdit_base</receiver>
         <slot>updateFilter()</slot>
     </connection>
     <connection>
         <sender>mExRecurringCheck</sender>
         <signal>toggled(bool)</signal>
-        <receiver>KOFilterView_base</receiver>
+        <receiver>FilterEdit_base</receiver>
         <slot>updateFilter()</slot>
     </connection>
     <connection>
         <sender>mExFloatingCheck</sender>
         <signal>toggled(bool)</signal>
-        <receiver>KOFilterView_base</receiver>
+        <receiver>FilterEdit_base</receiver>
         <slot>updateFilter()</slot>
     </connection>
     <slot access="public">updateFilter()</slot>

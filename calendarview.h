@@ -37,6 +37,7 @@ class IncomingDialog;
 class CategoryEditDialog;
 class KOFilterView;
 class KOProjectView;
+class FilterEditDialog;
 class KOWhatsNextView;
 
 /**
@@ -178,7 +179,13 @@ class CalendarView : public QWidget
   
     /** write current state to config file. */
     void writeSettings();
-  
+
+    /** read settings for calendar filters */
+    void readFilterSettings(KConfig *config);
+    
+    /** write settings for calendar filters */
+    void writeFilterSettings(KConfig *config);
+      
     /** passes on the message that an event has changed to the currently
      * activated view so that it can make appropriate display changes. */
     void changeEventDisplay(KOEvent *, int);
@@ -300,8 +307,10 @@ class CalendarView : public QWidget
     void schedule_declinecounter();
 
     void editCategories();
+    void editFilters();
 
     void showFilter(bool visible);
+    void updateFilter(CalFilter *);
       
   protected slots:
     /** Move the current view date to today */
@@ -372,6 +381,9 @@ class CalendarView : public QWidget
     // calendar object for this viewing instance
     CalObject      *mCalendar;
   
+    // Calendar filters
+    QList<CalFilter> mFilters;
+  
     // various housekeeping variables.
     bool            mModified;	   // flag indicating if calendar is modified
     bool            mReadOnly; // flag indicating if calendar is read-only
@@ -387,6 +399,7 @@ class CalendarView : public QWidget
     OutgoingDialog *mOutgoingDialog;
     IncomingDialog *mIncomingDialog;
     CategoryEditDialog *mCategoryEditDialog;
+    FilterEditDialog *mFilterEditDialog;
 };
 
 #endif // _CALENDARVIEW_H

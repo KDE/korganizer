@@ -2,7 +2,6 @@
 #define _KOEVENTEDITOR_H
 // 	$Id$	
 
-#include <ktmainwindow.h>
 #include <klineedit.h>
 #include <kdialogbase.h>
 

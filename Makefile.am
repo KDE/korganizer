@@ -61,6 +61,7 @@ libkorganizer_la_SOURCES =  outgoingdialog_base.ui \
         xQGanttBarView.cpp xQGanttListViewPort.cpp xQGanttBarViewPort.cpp \
         xQGanttBarViewPort_Events.cpp \
         korganizeriface.skel \
+        filtereditdialog.cpp filteredit_base.ui \
         kowhatsnextview.cpp
 
 alarmd_SOURCES = alarmdaemon.cpp alarmmain.cpp \

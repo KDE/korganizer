@@ -48,6 +48,7 @@ CalObject::CalObject()
   mFormat = new VCalFormat(this);
   mICalFormat = new ICalFormat(this);
 
+  // Setup default filter, which does nothing
   mFilter = new CalFilter;
   mFilter->setEnabled(false);
 
@@ -350,7 +351,6 @@ void CalObject::readHolidayFileName()
 
 void CalObject::setFilter(CalFilter *filter)
 {
-  delete mFilter;
   mFilter = filter;
 }
 

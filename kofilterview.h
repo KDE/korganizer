@@ -9,14 +9,14 @@ class KOFilterView : public KOFilterView_base
 {
     Q_OBJECT
   public:
-    KOFilterView(CalFilter *,QWidget* parent=0,const char* name=0, WFlags fl=0);
+    KOFilterView(QWidget* parent=0,const char* name=0, WFlags fl=0);
     ~KOFilterView();
 
   public slots:
     void updateFilter();
     
   signals:
-    void filterChanged();
+    void filterChanged(CalFilter *);
 
   private:
     CalFilter *mFilter;

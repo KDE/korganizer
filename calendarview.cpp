@@ -60,6 +60,7 @@
 #include "kofilterview.h"
 #include "calfilter.h"
 #include "koprojectview.h"
+#include "filtereditdialog.h"
 #include "kowhatsnextview.h"
 
 #include "calendarview.h"
@@ -81,8 +82,9 @@ CalendarView::CalendarView(QWidget *parent,const char *name)
   mReadOnly = false;
   mEventsSelected = true;
 
-  mSearchDialog = 0L;
+  mSearchDialog = 0;
   mArchiveDialog = 0;
+  mFilterEditDialog = 0;
 
 //  setMinimumSize(620,400);	// make sure we don't get resized too small...
 
@@ -124,10 +126,13 @@ CalendarView::CalendarView(QWidget *parent,const char *name)
 
   mTodoList   = new KOTodoView(mCalendar, mLeftFrame, "CalendarView::TodoList");
 
-  CalFilter *filter = new CalFilter;
-  mCalendar->setFilter(filter);
-  mFilterView = new KOFilterView(filter,mLeftFrame,"CalendarView::FilterView");
-  connect(mFilterView,SIGNAL(filterChanged()),SLOT(updateView()));
+  mFilters.setAutoDelete(true);
+  mFilters.append(new CalFilter("First Filter"));
+  mFilters.append(new CalFilter("Second Filter"));
+
+  mFilterView = new KOFilterView(mLeftFrame,"CalendarView::FilterView");
+  connect(mFilterView,SIGNAL(filterChanged(CalFilter *)),
+          SLOT(updateFilter(CalFilter *)));
   // Hide filter per default
   mFilterView->hide();
 
@@ -327,6 +332,8 @@ void CalendarView::readSettings()
   readCurrentView();
 
   mAgendaView->readSettings();
+
+  readFilterSettings(&config);
 }
 
 void CalendarView::readCurrentView()
@@ -372,7 +379,46 @@ void CalendarView::writeSettings()
 
   KOPrefs::instance()->writeConfig();
 
+  writeFilterSettings(&config);
+
   config.sync();
+}
+
+void CalendarView::readFilterSettings(KConfig *config)
+{
+  mFilters.clear();
+
+  config->setGroup("General");
+  QStringList filterList = config->readListEntry("CalendarFilters");
+
+  QStringList::ConstIterator it = filterList.begin();
+  QStringList::ConstIterator end = filterList.end();
+  while(it != end) {
+    CalFilter *filter;
+    filter = new CalFilter(*it);
+    config->setGroup("Filter_" + filter->name());
+    filter->setInclusionCriteria(config->readNumEntry("Inclusion",0));
+    filter->setExclusionCriteria(config->readNumEntry("Exclusion",0));
+    mFilters.append(filter);
+  
+    ++it;
+  }
+}
+
+void CalendarView::writeFilterSettings(KConfig *config)
+{
+  QStringList filterList;
+
+  CalFilter *filter = mFilters.first();
+  while(filter) {
+    filterList << filter->name();
+    config->setGroup("Filter_" + filter->name());
+    config->writeEntry("Inclusion",filter->inclusionCriteria());
+    config->writeEntry("Exclusion",filter->exclusionCriteria());
+    filter = mFilters.next();
+  }
+  config->setGroup("General");
+  config->writeEntry("CalendarFilters",filterList);
 }
 
 void CalendarView::goToday()
@@ -1440,8 +1486,25 @@ void CalendarView::editCategories()
   mCategoryEditDialog->show();
 }
 
+void CalendarView::editFilters()
+{
+  if (!mFilterEditDialog) {
+    mFilterEditDialog = new FilterEditDialog(&mFilters,this);
+//    connect(mFilterEditDialog,SIGNAL(filterUpdated()),
+//            SLOT(updateFilter()));
+  }
+  mFilterEditDialog->show();
+  mFilterEditDialog->raise();
+}
+
 void CalendarView::showFilter(bool visible)
 {
   if (visible) mFilterView->show();
   else mFilterView->hide();
+}
+
+void CalendarView::updateFilter(CalFilter *filter)
+{
+  mCalendar->setFilter(filter);
+  updateView();
 }

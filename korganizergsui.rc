@@ -60,6 +60,7 @@
       <Actionlist name="toolbartoggles" append="show_merge"/>
       <Action name="show_filter" append="show_merge"/>
       <Action name="edit_categories"/>
+      <Action name="edit_filters"/>
     </Menu>
   </MenuBar>
 
