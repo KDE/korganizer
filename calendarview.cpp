@@ -37,7 +37,6 @@
 #include <kfiledialog.h>
 #include <kmessagebox.h>
 
-#include "version.h"
 #include "koarchivedlg.h"
 #include "komailclient.h"
 #include "calprinter.h"

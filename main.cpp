@@ -16,6 +16,7 @@
 #include <klocale.h>
 
 #include "koapp.h"
+#include "version.h"
 
 KOrganizerApp *app;
 
@@ -33,15 +34,29 @@ static const KCmdLineOptions options[] =
 int main (int argc, char **argv)
 {
   KAboutData aboutData("korganizer",I18N_NOOP("KOrganizer"),
-                       "1.91",
-                       I18N_NOOP("A Personal Organizer for KDE"),
-                       KAboutData::License_GPL,
-                       "(c) 1997-1999, Preston Brown",0,
-                       "http://devel-home.kde.org/~korganiz");
-  aboutData.addAuthor("Cornelius Schumacher",I18N_NOOP("Maintainer"),
+      "1.91",I18N_NOOP("A Personal Organizer for KDE"),KAboutData::License_GPL,
+      "(c) 1997-1999, Preston Brown, (c) 2000, Cornelius Schumacher",0,
+      "http://devel-home.kde.org/~korganiz");
+  aboutData.addAuthor("Cornelius Schumacher",I18N_NOOP("Current Maintainer"),
                       "schumacher@kde.org");
   aboutData.addAuthor("Preston Brown",I18N_NOOP("Original Author"),
                       "pbrown@kde.org");
+  aboutData.addCredit("Richard Apodaca");                    
+  aboutData.addCredit("Laszlo Boloni");
+  aboutData.addCredit("Barry Benowitz");
+  aboutData.addCredit("Christopher Beard");
+  aboutData.addCredit("Ian Dawes");
+  aboutData.addCredit("Neil Hart");
+  aboutData.addCredit("Hans-Jürgen Husel");
+  aboutData.addCredit("Christian Kirsch");
+  aboutData.addCredit("Uwe Koloska");
+  aboutData.addCredit("Glen Parker");
+  aboutData.addCredit("Dan Pilone");
+  aboutData.addCredit("Roman Rohr");
+  aboutData.addCredit("Herwin Jan Steehouwer");
+  aboutData.addCredit("Nick Thompson");
+  aboutData.addCredit("Fester Zigterman");
+
 
   KCmdLineArgs::init( argc, argv, &aboutData );
   KCmdLineArgs::addCmdLineOptions( options );

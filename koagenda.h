@@ -99,6 +99,11 @@ class KOAgenda : public QScrollView
     /** Place agenda item in agenda and adjust other cells if necessary */
     void placeSubCells(KOAgendaItem *placeItem);
 
+    /** Process the keyevent, including the ignored keyevents of eventwidgets.
+     * Implements pgup/pgdn and cursor key navigation in the view.
+     */
+    void keyPressEvent( QKeyEvent * );
+
   private:
     void init();
     bool mAllDayMode;

@@ -21,14 +21,13 @@ alarmd_LDADD = versit/libversit.a $(LIB_KDEUI)
 
 # Which sources should be compiled for korganizer.
 libkorganizer_la_SOURCES =  calobject.cpp catdlg.cpp \
-	eventwidget.cpp \
 	koagendaview.cpp koagenda.cpp koagendaitem.cpp \
 	kdated.cpp kdatenav.cpp \
 	kdpdatebutton.cpp komonthview.cpp koevent.cpp kpbutton.cpp \
 	ksellabel.cpp \
 	ktimed.cpp main.cpp  \
-	searchdialog.cpp calendarview.cpp quickdialog.cpp \
-	calprinter.cpp kptbutton.cpp \
+	searchdialog.cpp calendarview.cpp \
+	calprinter.cpp \
 	koarchivedlg.cpp \
 	scanholiday.c parseholiday.c \
 	vcaldrag.cpp komailclient.cpp kotodoview.cpp \
@@ -46,14 +45,14 @@ alarmd_SOURCES = alarmdaemon.cpp alarmmain.cpp calobject.cpp koevent.cpp \
 
 METASOURCES = AUTO
 
-noinst_HEADERS = komonthview.h misc.h calobject.h \
+noinst_HEADERS = komonthview.h calobject.h \
 	kpbutton.h catdlg.h koagendaview.h koagenda.h \
-	koagendaitem.h kptbutton.h \
-	quickdialog.h kdated.h ksellabel.h \
-	eventwidget.h kdatenav.h ksmalldaydisp.h \
+	koagendaitem.h \
+	kdated.h ksellabel.h \
+	kdatenav.h ksmalldaydisp.h \
 	calendarview.h kdpdatebutton.h ktimed.h \
 	version.h koevent.h \
-	searchdialog.h calprinter.h kptbutton.h \
+	searchdialog.h calprinter.h \
 	koarchivedlg.h parseholiday.h \
 	vcaldrag.h komailclient.h kotodoview.h \
 	dateedit.h datevalidator.h \

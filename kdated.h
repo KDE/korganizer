@@ -16,7 +16,7 @@ public:
   KODatePicker(QWidget *parent = 0, QDate qd=QDate::currentDate())
     : KDatePicker(parent,qd)
   {
-    setWFlags(WStyle_Customize|WStyle_NoBorderEx|WStyle_StaysOnTop);
+    setWFlags(WType_Popup);
   }
 protected:
   virtual void focusOutEvent(QFocusEvent *) { hide(); }

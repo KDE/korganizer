@@ -8,8 +8,10 @@
 
 #include "komailclient.h"
 #include "komailclient.moc"
+
 #include <kconfig.h>
 #include <kdated.h>
+
 #include "version.h"
 
 MailMsgString::MailMsgString()

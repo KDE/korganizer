@@ -4,7 +4,6 @@
 #include <kconfig.h>
 #include <dcopclient.h>
 
-#include "version.h"
 #include "calobject.h"
 #include "korganizer.h"
 

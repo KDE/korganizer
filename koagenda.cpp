@@ -89,6 +89,10 @@ void KOAgenda::init()
 
   enableClipper(true);
 
+  // Grab key strokes for keyboard navigation of agenda. Seems to have no
+  // effect. Has to be fixed.
+  setFocusPolicy(WheelFocus);
+
   QObject::connect(&mScrollUpTimer,SIGNAL(timeout()),SLOT(scrollUp()));
   QObject::connect(&mScrollDownTimer,SIGNAL(timeout()),SLOT(scrollDown()));
 
@@ -831,5 +835,26 @@ void KOAgenda::checkScrollBoundaries(int v)
   if (yMax != mOldUpperScrollValue) {
     mOldUpperScrollValue = yMax;
     emit upperYChanged(yMax);
+  }
+}
+
+// This function seems never be called.
+void KOAgenda::keyPressEvent( QKeyEvent *kev )
+{
+  switch(kev->key()) {
+    case Key_PageDown:
+      verticalScrollBar()->addPage();
+      break;
+    case Key_PageUp:
+      verticalScrollBar()->subtractPage();
+      break;
+    case Key_Down:
+      verticalScrollBar()->addLine();
+      break;
+    case Key_Up:
+      verticalScrollBar()->subtractLine();
+      break;
+    default:
+      ;
   }
 }

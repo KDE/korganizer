@@ -26,10 +26,6 @@
 #include "alarmdaemon.h"
 #include "alarmdaemon.moc"
 
-#ifndef HAVE_BASENAME
-#include "basename.c"
-#endif
-
 AlarmDockWindow::AlarmDockWindow(QWidget *parent, const char *name)
   : KDockWindow(parent, name)
 {
