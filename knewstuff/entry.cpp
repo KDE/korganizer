@@ -161,7 +161,11 @@ void Entry::setPreview( const KURL &url, const QString &lang )
 
 KURL Entry::preview( const QString &lang ) const
 {
-  return mPayloadMap[ lang ];
+  KURL preview = mPreviewMap[ lang ];
+  if ( preview.isEmpty() && !mPreviewMap.isEmpty() ) {
+    preview = *(mPreviewMap.begin());
+  }
+  return preview;
 }
 
 
