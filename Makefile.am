@@ -146,7 +146,7 @@ META_INCLUDES = $(srcdir)/interfaces/korganizer
 
 messages: rc.cpp
 	$(PREPARETIPS) > tips.cc
-	$(XGETTEXT) *.cpp knewstuff/*.cpp plugins/*/*.cpp tips.cc -o $(podir)/korganizer.pot
+	$(XGETTEXT) *.cpp korgac/*.cpp knewstuff/*.cpp plugins/*/*.cpp tips.cc -o $(podir)/korganizer.pot
 	rm -f tips.cc
 
 include ../admin/Doxyfile.am

@@ -31,7 +31,4 @@ appdir = $(kde_appsdir)/.hidden
 
 KDE_ICON = AUTO
 
-#messages: rc.cpp
-#	$(XGETTEXT) *.cpp -o $(podir)/korgac.pot
-
 include ../../admin/Doxyfile.am
