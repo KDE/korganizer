@@ -52,7 +52,7 @@ AlarmDockWindow::AlarmDockWindow( const char *name )
   bool autostart = config->readBoolEntry( "Autostart", true );
   bool alarmsEnabled = config->readBoolEntry( "Enabled", true );
 
-  QString mName = i18n( "KOrganizer Reminder Daemon" );
+  QString mName = i18n( "KOrganizer Alarm Daemon" );
   setCaption( mName );
 
   // Set up icons
