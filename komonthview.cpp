@@ -595,7 +595,7 @@ void KOMonthView::printPreview(CalPrinter *calPrinter, const QDate &fd,
 
 void KOMonthView::updateConfig()
 {
-  mWeekStartsMonday = KGlobal::locale()->weekStartsMonday();
+  mWeekStartDay = KGlobal::locale()->weekStartDay();
 
   QFontMetrics fontmetric(mDayLabels[0]->font());
   mWidthLongDayLabel = 0;
@@ -616,14 +616,12 @@ void KOMonthView::updateDayLabels()
 {
   kdDebug(5850) << "KOMonthView::updateDayLabels()" << endl;
 
+  const KCalendarSystem*calsys=KOGlobals::self()->calendarSystem();
+  int currDay;
   for (int i = 0; i < 7; i++) {
-    if (mWeekStartsMonday) {
-      mDayLabels[i]->setText(KOGlobals::self()->calendarSystem()->weekDayName(i+1,mShortDayLabels));
-    } else {
-       if (i==0) mDayLabels[i]->setText(KOGlobals::self()->calendarSystem()->weekDayName(7,mShortDayLabels));
-       else mDayLabels[i]->setText(KOGlobals::self()->calendarSystem()->weekDayName(i,mShortDayLabels));
-
-    }
+    currDay = i+mWeekStartDay;
+    if (currDay>7) currDay-=7;
+    mDayLabels[i]->setText(calsys->weekDayName(currDay, mShortDayLabels) );
   }
 }
 
@@ -633,11 +631,9 @@ void KOMonthView::showDates(const QDate &start, const QDate &)
 
   mStartDate = start;
 
-  int startWeekDay = mWeekStartsMonday ? 1 : 7;
-
-   while( KOGlobals::self()->calendarSystem()->dayOfWeek(mStartDate) != startWeekDay ) {
-    mStartDate = mStartDate.addDays( -1 );
-  }
+  // correct begin of week
+  int weekdayCol=(mStartDate.dayOfWeek()+7-mWeekStartDay)%7;
+  mStartDate = mStartDate.addDays(-weekdayCol);
 
   bool primary = false;
   uint i;

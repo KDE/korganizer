@@ -1012,12 +1012,10 @@ void CalPrinter::drawSmallMonth(QPainter &p, const QDate &qd,
   QString tmpStr;
   KLocale *local = KGlobal::locale();
 
-  if (KGlobal::locale()->weekStartsMonday())
-    // correct to monday
-    monthDate2 = monthDate.addDays(-(monthDate.dayOfWeek()-1));
-  else
-    // correct to sunday
-    monthDate2 = monthDate.addDays(-(monthDate.dayOfWeek()%7));
+  // correct begin of week
+  int weekStartDay = KGlobal::locale()->weekStartDay();
+  int weekdayCol=(qd.dayOfWeek()+7-weekStartDay)%7;
+  monthDate2 = monthDate.addDays(-weekdayCol);
 
   // draw days of week
    p.setFont(QFont("helvetica", 8, QFont::Bold));
@@ -1035,18 +1033,16 @@ void CalPrinter::drawSmallMonth(QPainter &p, const QDate &qd,
   for (int row = 0; row < 5; row++) {
     for (int col = 0; col < 7; col++) {
       if (monthDate.month() != month)
-	break;
+        break;
       if (firstCol) {
-	firstCol = FALSE;
-	if (KGlobal::locale()->weekStartsMonday())
-	  col = monthDate.dayOfWeek() - 1;
-	else
-	  col = monthDate.dayOfWeek() % 7;
+        firstCol = FALSE;
+        int weekStartDay = KGlobal::locale()->weekStartDay();
+        col = (monthDate.dayOfWeek()+7-weekStartDay)%7;
       }
-      p.drawText(x+col*cellWidth,
-		 y+height/4+cellHeight+(row*cellHeight),
-		 cellWidth, cellHeight, AlignCenter,
-		 tmpStr.setNum(monthDate.day()));
+      p.drawText( x+col*cellWidth,
+                  y+height/4+cellHeight+(row*cellHeight),
+                  cellWidth, cellHeight, AlignCenter,
+                  tmpStr.setNum(monthDate.day()) );
       monthDate = monthDate.addDays(1);
     }
   }

@@ -203,7 +203,7 @@ class KOMonthView: public KOEventView
     int mDaysPerWeek;
     int mNumWeeks;
     int mNumCells;
-    bool mWeekStartsMonday;
+    int mWeekStartDay;
 
     QPtrVector<MonthViewCell> mCells;
     QPtrVector<QLabel> mDayLabels;
