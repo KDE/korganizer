@@ -586,16 +586,18 @@ void KOAgenda::performItemAction(QPoint viewportPos)
   // This starts a drag.
   if ( clipperPos.y() < 0 || clipperPos.y() > visibleHeight() ||
        clipperPos.x() < 0 || clipperPos.x() > visibleWidth() ) {
-    mScrollUpTimer.stop();
-    mScrollDownTimer.stop();
-    mActionItem->resetMove();
-    placeSubCells( mActionItem );
-    emit startDragSignal( mActionItem->itemEvent() );
-    setCursor( arrowCursor );
-    mActionItem = 0;
-    mActionType = NOP;
-    mItemMoved = 0;
-    return;
+    if ( mActionType == MOVE ) {
+      mScrollUpTimer.stop();
+      mScrollDownTimer.stop();
+      mActionItem->resetMove();
+      placeSubCells( mActionItem );
+      emit startDragSignal( mActionItem->itemEvent() );
+      setCursor( arrowCursor );
+      mActionItem = 0;
+      mActionType = NOP;
+      mItemMoved = 0;
+      return;
+    }
   } else {
     switch ( mActionType ) {
       case MOVE:
