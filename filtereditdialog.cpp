@@ -86,7 +86,7 @@ void FilterEditDialog::updateFilterList()
   }
   
   CalFilter *f = mFilters->at(mSelectionCombo->currentItem());
-  readFilter(f);
+  if (f) readFilter(f);
 }
 
 
@@ -122,7 +122,7 @@ void FilterEditDialog::filterSelected()
 {
   CalFilter *f = mFilters->at(mSelectionCombo->currentItem());
   kdDebug() << "Selected filter " << f->name() << endl;
-  readFilter(f);
+  if (f) readFilter(f);
 }
 
 void FilterEditDialog::readFilter(CalFilter *filter)
