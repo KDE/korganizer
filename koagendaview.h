@@ -134,6 +134,8 @@ class KOAgendaView : public KOBaseView {
     void newEvent(int gx,int gy);
     void newEventAllDay(int gx, int gy);
 
+    void startDrag(KOEvent *);
+
   signals:
     void editEventSignal(KOEvent *);  // From KOBaseView
     void showEventSignal(KOEvent *);

@@ -90,6 +90,11 @@ public:
   KOEvent();
   ~KOEvent();
 
+  /** Recreate event. The event is made a new unique event, but already stored
+  event information is preserved. Sets uniquie id, creation date, last
+  modification date and revision number. */
+  void recreate();
+
   /** sets the event to be read only or not */
   void setReadOnly(bool readonly) { ro = readonly; };
   /** returns the event's read only status */

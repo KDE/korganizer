@@ -6,6 +6,7 @@
 #include <klocale.h>
 #include <kstddirs.h>
 #include <kconfig.h>
+#include <kmessagebox.h>
 
 #include "vcaldrag.h"
 #include "calobject.h"
@@ -15,7 +16,7 @@
 #include "kdpdatebutton.moc"
 
 
-KDateButton::KDateButton(QDate date, int index, CalObject *_calendar,
+KDateButton::KDateButton(QDate date, int index, CalObject *calendar,
 			 QWidget *parent, const char *name)
   : QLabel(parent, name)
 {
@@ -28,17 +29,19 @@ KDateButton::KDateButton(QDate date, int index, CalObject *_calendar,
   mDefaultBackColor = palette().active().base();
   mDefaultTextColor = palette().active().foreground();
 
-  calendar = _calendar;
+  mCalendar = calendar;
 
   setFrameStyle(QFrame::Box|QFrame::Plain);
   setLineWidth(0);
   setAlignment(AlignCenter);
   my_index = index;
-  bt_Date = date;
+  mDate = date;
   QString tstr;
   tstr.setNum(date.day());
   setText(tstr);
   adjustSize();
+
+  setAcceptDrops(true);
 
   updateConfig();
 }
@@ -54,7 +57,7 @@ void KDateButton::updateConfig()
 
 inline QDate KDateButton::date()
 {
-  return bt_Date;
+  return mDate;
 }
 
 void KDateButton::setItalic(bool italic)
@@ -148,7 +151,7 @@ void KDateButton::setTextColor(const QColor & color)
 
 void KDateButton::setDate(QDate date)
 {
-  bt_Date = date;
+  mDate = date;
   QString tstr;
   tstr.setNum(date.day());
   setText(tstr);
@@ -160,19 +163,30 @@ void KDateButton::mousePressEvent(QMouseEvent *e)
 
   c = (e->state() & ControlButton);
   // do the actual work.... :)
-  emit selected(bt_Date, my_index, c);
+  emit selected(mDate, my_index, c);
 }
 
-void KDateButton::dragEnterEvent(QDragEnterEvent *de)
+void KDateButton::dragEnterEvent(QDragEnterEvent *e)
 {
-  if (VCalDrag::canDecode(de)) {
-    de->accept();
+  if (!VCalDrag::canDecode(e)) {
+    e->ignore();
+    return;
   }
-  
+
   // some visual feedback
 //  oldPalette = palette();
 //  setPalette(my_HilitePalette);
 //  update();
+}
+
+void KDateButton::dragMoveEvent(QDragMoveEvent *e)
+{
+  if (!VCalDrag::canDecode(e)) {
+    e->ignore();
+    return;
+  }
+
+  e->accept();
 }
 
 void KDateButton::dragLeaveEvent(QDragLeaveEvent */*dl*/)
@@ -181,43 +195,46 @@ void KDateButton::dragLeaveEvent(QDragLeaveEvent */*dl*/)
 //  update();
 }
 
-// some of this really doesn't belong here, but rather probably in calobject.
-// KOrganizer is starting to get messy.  Needs some major reorganization and
-// re-architecting after 1.0.
-void KDateButton::dropEvent(QDropEvent *de)
+
+void KDateButton::dropEvent(QDropEvent *e)
 {
-  VObject *vcal;
+  if (!VCalDrag::canDecode(e)) {
+    e->ignore();
+    return;
+  }
 
-  if (VCalDrag::decode(de, &vcal)) {
-    // note that vcal is destroyed in pasteEvent(), so we don't have to
-    // free it here.  No leak.
-    KOEvent *newEvent, *oldEvent;
+  KOEvent *event = mCalendar->createDrop(e);
 
-    VObjectIterator i;
-    VObject *curvo;
-    initPropIterator(&i, vcal);
-    
-    // we only take the first object.
-    do  {
-      curvo = nextVObject(&i);
-    } while (strcmp(vObjectName(curvo), VCEventProp) &&
-	     strcmp(vObjectName(curvo), VCTodoProp));
+  if (event) {
+    e->acceptAction();
 
-    if ((curvo = isAPropertyOf(curvo, VCUniqueStringProp))) {
-      char *s;
-      s = fakeCString(vObjectUStringZValue(curvo));
-      oldEvent = calendar->getEvent(s);
-      deleteStr(s);
-      if (oldEvent) {
-	if (oldEvent->doesRecur()) { // only add an exception if it recurs
-	  oldEvent->addExDate(bt_Date);
-	} else {
-	  calendar->deleteEvent(oldEvent); // do the full delete
-	}
-      }
+    KOEvent *existingEvent = mCalendar->getEvent(event->getVUID());
+      
+    if(existingEvent) {
+      // uniquify event
+      event->recreate();
+/*
+      KMessageBox::sorry(this,
+              i18n("Event already exists in this calendar."),
+              i18n("Drop Event"));
+      delete event;
+      return;
+*/    
     }
-    newEvent = calendar->pasteEvent(&bt_Date, (QTime *) 0L, vcal);
-    updateMe(my_index);
+//      qDebug("Drop new Event");
+    // Adjust date
+    QDateTime start = event->getDtStart();
+    QDateTime end = event->getDtEnd();
+    int duration = start.daysTo(end);
+    start.setDate(mDate);
+    end.setDate(mDate.addDays(duration));
+    event->setDtStart(start);
+    event->setDtEnd(end);
+    mCalendar->addEvent(event);
+
+    emit eventDropped(event);
+  } else {
+    qDebug("KDateButton::dropEvent(): Event from drop not decodable");
+    e->ignore();
   }
 }
-

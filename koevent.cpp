@@ -24,15 +24,9 @@ KOEvent::KOEvent()
   KOEvent::eventCount++;
   id = KOEvent::eventCount;
 
-  dateCreated = QDateTime::currentDateTime();
-  int hashTime = dateCreated.time().hour() + 
-    dateCreated.time().minute() + dateCreated.time().second() +
-    dateCreated.time().msec();
-  vUID.sprintf("KOrganizer - %li.%d",random(),hashTime);
+  recreate();
 
-  revisionNum = 0;
   relatedTo = 0;
-  lastModified = QDateTime::currentDateTime();
   
   organizer = KOPrefs::instance()->mEmail;
   if (organizer.isEmpty())
@@ -85,6 +79,20 @@ KOEvent::~KOEvent()
   if (getRelatedTo()) getRelatedTo()->removeRelation(this);
   
   KOEvent::eventCount--;
+}
+
+void KOEvent::recreate()
+{
+  dateCreated = QDateTime::currentDateTime();
+
+  int hashTime = dateCreated.time().hour() + 
+    dateCreated.time().minute() + dateCreated.time().second() +
+    dateCreated.time().msec();
+  vUID.sprintf("KOrganizer-%li.%d",KApplication::random(),hashTime);
+
+  revisionNum = 0;
+
+  lastModified = QDateTime::currentDateTime();
 }
 
 void KOEvent::setOrganizer(const QString &o)

@@ -33,10 +33,12 @@ class KDateButton: public QLabel {
   signals:
     void selected(QDate, int, bool);
     void updateMe(int);
+    void eventDropped(KOEvent *);
 
   protected:
     void mousePressEvent(QMouseEvent *);
     void dragEnterEvent(QDragEnterEvent *);
+    void dragMoveEvent(QDragMoveEvent *);
     void dragLeaveEvent(QDragLeaveEvent *);
     void dropEvent(QDropEvent *);
 
@@ -55,8 +57,8 @@ class KDateButton: public QLabel {
     QColor mDefaultTextColor;
 
     int my_index;
-    QDate bt_Date;
-    CalObject *calendar;
+    QDate mDate;
+    CalObject *mCalendar;
 };
 
 #endif // _KDPDATEBUTTON_H

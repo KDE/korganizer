@@ -1,6 +1,6 @@
 /* 	$Id$	 */
 
-#ifndef _KDATENAV_H 
+#ifndef _KDATENAV_H
 #define _KDATENAV_H
 
 #include <qframe.h>
@@ -33,6 +33,7 @@ class KDateNavigator: public QFrame {
    
  signals:
    void datesSelected(const QDateList);
+   void eventDropped(KOEvent *);
 
  protected slots:
    void goNextMonth();

@@ -64,6 +64,8 @@ public:
   VCalDrag *createDragTodo(KOEvent *selectedEv, QWidget *owner);
   /** Create Todo object from drop event */
   KOEvent *createDropTodo(QDropEvent *de);
+  /** Create Event object from drop event */
+  KOEvent *createDrop(QDropEvent *de);
 
   /** cut, copy, and paste operations follow. */
   void cutEvent(KOEvent *);

@@ -22,6 +22,7 @@
 #include "koagendaitem.h"
 #include "calobject.h"
 #include "calprinter.h"
+#include "vcaldrag.h"
 
 #include "koagendaview.h"
 #include "koagendaview.moc"
@@ -329,13 +330,19 @@ KOAgendaView::KOAgendaView(CalObject *cal,QWidget *parent,const char *name) :
   connect(mAgenda,SIGNAL(itemModified(KOAgendaItem *)),
                   SLOT(updateEventDates(KOAgendaItem *)));
   connect(mAllDayAgenda,SIGNAL(itemModified(KOAgendaItem *)),
-                                 SLOT(updateEventDates(KOAgendaItem *)));
+                        SLOT(updateEventDates(KOAgendaItem *)));
 
   // event indicator update
   connect(mAgenda,SIGNAL(lowerYChanged(int)),
           SLOT(updateEventIndicatorTop(int)));
   connect(mAgenda,SIGNAL(upperYChanged(int)),
           SLOT(updateEventIndicatorBottom(int)));
+
+  // drag signals
+  connect(mAgenda,SIGNAL(startDragSignal(KOEvent *)),
+          SLOT(startDrag(KOEvent *)));
+  connect(mAllDayAgenda,SIGNAL(startDragSignal(KOEvent *)),
+          SLOT(startDrag(KOEvent *)));
 }
 
 
@@ -810,4 +817,12 @@ void KOAgendaView::updateEventIndicatorBottom(int newY)
   }
 
   mEventIndicatorBottom->update();
+}
+
+void KOAgendaView::startDrag(KOEvent *event)
+{
+  VCalDrag *vd = mCalendar->createDrag(event,this);
+  if (vd->drag()) {
+    qDebug("KOTodoListView::contentsMouseMoveEvent(): Delete drag source");
+  }
 }

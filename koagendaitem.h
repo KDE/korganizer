@@ -37,6 +37,11 @@ class KOAgendaItem : public QFrame
     void setSubCell(int subCell);
     void setSubCells(int subCells);
 
+    /** Start movement */
+    void startMove();
+    /** Reset to original values */
+    void resetMove();
+
     void moveRelative(int dx,int dy);
     void expandTop(int dy);
     void expandBottom(int dy);
@@ -65,6 +70,11 @@ class KOAgendaItem : public QFrame
     int mCellYTop,mCellYBottom;
     int mSubCell;  // subcell number of this item
     int mSubCells;  // Total number of subcells in cell of this item
+
+    // Variables to remember start position
+    int mStartCellX;
+    int mStartCellXWidth;
+    int mStartCellYTop,mStartCellYBottom;
     
     // Multi item pointers
     KOAgendaItem *mFirstMultiItem;

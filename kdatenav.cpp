@@ -153,10 +153,8 @@ KDateNavigator::KDateNavigator(QWidget *parent,
             SLOT(addSelection(QDate, int, bool)));
     connect(buttons[i], SIGNAL(updateMe(int)),
 	    SLOT(updateButton(int)));
-    /*    if (index >= 0 && index <= daysInMonth - 1)
-      buttons[i]->setItalic(FALSE);
-    else
-    buttons[i]->setItalic(TRUE);*/
+    connect(buttons[i],SIGNAL(eventDropped(KOEvent *)),
+            SIGNAL(eventDropped(KOEvent *)));
   }
 
   // read settings from configuration file.

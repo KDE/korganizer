@@ -226,6 +226,7 @@ void KOAgenda::startItemAction(QPoint viewportPos)
       setCursor(sizeHorCursor);
     } else {
       mActionType = MOVE;
+      mActionItem->startMove();
       setCursor(sizeAllCursor);
     }
   } else {
@@ -242,6 +243,7 @@ void KOAgenda::startItemAction(QPoint viewportPos)
       setCursor(sizeVerCursor);
     } else {
       mActionType = MOVE;
+      mActionItem->startMove();
       setCursor(sizeAllCursor);
     }
   }
@@ -264,13 +266,18 @@ void KOAgenda::performItemAction(QPoint viewportPos)
                       mapFromGlobal(viewport()->mapToGlobal(viewportPos));
 
   // Cursor left active agenda area.
-  // This should trigger drag/drop mode, at the moment is only sets the
-  // cursor.
+  // This starts a drag.
   if (clipperPos.y() < 0 || clipperPos.y() > visibleHeight() ||
       clipperPos.x() < 0 || clipperPos.x() > visibleWidth()) {
-    setCursor(waitCursor);
     mScrollUpTimer.stop();
     mScrollDownTimer.stop();
+    mActionItem->resetMove();
+    placeSubCells(mActionItem);
+    emit startDragSignal(mActionItem->itemEvent());
+    setCursor(arrowCursor);
+    mActionItem = 0;
+    mActionType = NOP;
+    mItemMoved = 0;
     return;
   } else {
     switch (mActionType) {

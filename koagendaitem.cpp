@@ -38,6 +38,7 @@ KOAgendaItem::KOAgendaItem(KOEvent *event, QWidget *parent,
   setMouseTracking(true);
   setMultiItem(0,0,0);
 
+  startMove();
 /*
   QHBox *iconBox = new QHBox (this,"KOAgendaItem::iconBox");
 
@@ -177,6 +178,22 @@ void KOAgendaItem::setMultiItem(KOAgendaItem *first,KOAgendaItem *next,
   mFirstMultiItem = first;
   mNextMultiItem = next;
   mLastMultiItem = last;
+}
+
+void KOAgendaItem::startMove()
+{
+  mStartCellX = mCellX;
+  mStartCellXWidth = mCellXWidth;
+  mStartCellYTop = mCellYTop;
+  mStartCellYBottom = mCellYBottom;
+}
+
+void KOAgendaItem::resetMove()
+{
+  mCellX = mStartCellX;
+  mCellXWidth = mStartCellXWidth;
+  mCellYTop = mStartCellYTop;
+  mCellYBottom = mStartCellYBottom;
 }
 
 void KOAgendaItem::moveRelative(int dx, int dy)

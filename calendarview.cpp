@@ -27,7 +27,6 @@
 
 #include <qcursor.h>
 #include <qmultilineedit.h>
-#include <qmessagebox.h>
 #include <qtimer.h>
 #include <qwidgetstack.h>
 
@@ -36,6 +35,7 @@
 #include <kstddirs.h>
 #include <kstdaccel.h>
 #include <kfiledialog.h>
+#include <kmessagebox.h>
 
 #include "version.h"
 #include "koarchivedlg.h"
@@ -370,7 +370,9 @@ void CalendarView::hookupSignals()
 	  dateNavigator, SLOT(selectDates(const QDateList)));    
   connect(dateNavigator, SIGNAL(datesSelected(const QDateList)),
 	  this, SLOT(updateView(const QDateList)));
-    
+
+  connect(dateNavigator,SIGNAL(eventDropped(KOEvent *)),
+          SLOT(eventAdded(KOEvent *)));    
 
   // SIGNALS/SLOTS FOR LIST VIEW
   connect(listView, SIGNAL(showEventSignal(KOEvent *)),
@@ -604,16 +606,11 @@ void CalendarView::updateView()
 }
 
   
-
 int CalendarView::msgItemDelete()
 {
-  // returns:
-  //  0: "OK"
-  //  1: "Cancel"
-  return QMessageBox::warning(this,
-			      i18n("KOrganizer Confirmation"),
-			      i18n("This item will be permanently deleted."),
-			      i18n("&OK"), i18n("&Cancel"));
+  return KMessageBox::warningContinueCancel(this,
+      i18n("This item will be permanently deleted."),
+      i18n("KOrganizer Confirmation"),i18n("Delete"));
 }
 
 
@@ -880,13 +877,12 @@ void CalendarView::action_deleteTodo()
   
   if (KOPrefs::instance()->mConfirm) {
     switch(msgItemDelete()) {
-    case 0: // OK
-      mCalendar->deleteTodo(aTodo);
-      // If there would be a removeTodo() function in KOTodoView we would call
-      // it here... (before the mCalendar->deleteTodo call actually)
-      todoList2->updateView();
-      break;
-
+      case KMessageBox::Continue: // OK
+        mCalendar->deleteTodo(aTodo);
+        // If there would be a removeTodo() function in KOTodoView we would call
+        // it here... (before the mCalendar->deleteTodo call actually)
+        todoList2->updateView();
+        break;
     } // switch
   } else {
     mCalendar->deleteTodo(aTodo);
@@ -906,20 +902,19 @@ void CalendarView::deleteEvent(KOEvent *anEvent)
   // At the moment we don't handle recurrence for todos
   if (!anEvent->getTodoStatus() && anEvent->doesRecur()) {
 
-  switch ( QMessageBox::warning(this,
-				i18n("KOrganizer Confirmation"),
+  switch(KMessageBox::warningYesNoCancel(this,
 				i18n("This event recurs over multiple dates.\n"
 				     "Are you sure you want to delete the\n"
 				     "selected event, or just this instance?\n"),
-				i18n("&All"), i18n("&This"),
-				i18n("&Cancel"))) {
+				i18n("KOrganizer Confirmation"),
+				i18n("&All"), i18n("&This"))) {
 
-    case 0: // all
+    case KMessageBox::Yes: // all
       mCalendar->deleteEvent(anEvent);
       changeEventDisplay(anEvent, EVENTDELETED);
       break;
 
-    case 1: // just this one
+    case KMessageBox::No: // just this one
       {
         QDate qd;
         QDateList tmpList(FALSE);
@@ -941,15 +936,14 @@ void CalendarView::deleteEvent(KOEvent *anEvent)
   } else {
     if (KOPrefs::instance()->mConfirm) {
       switch (msgItemDelete()) {
-      case 0: // OK
-        if (anEvent->getTodoStatus()) {
-          mCalendar->deleteTodo(anEvent);
-        } else {
-          mCalendar->deleteEvent(anEvent);
-        }
-        changeEventDisplay(anEvent, EVENTDELETED);
-        break;
-
+        case KMessageBox::Continue: // OK
+          if (anEvent->getTodoStatus()) {
+            mCalendar->deleteTodo(anEvent);
+          } else {
+            mCalendar->deleteEvent(anEvent);
+          }
+          changeEventDisplay(anEvent, EVENTDELETED);
+          break;
       } // switch
     } else {
       mCalendar->deleteEvent(anEvent);
@@ -991,9 +985,8 @@ void CalendarView::action_mail()
     return;
   }
   if(anEvent->attendeeCount() == 0 ) {
-    qApp->beep();
-    QMessageBox::warning(this,i18n("KOrganizer error"),
-			 i18n("Can't generate mail:\n No attendees defined!\n"));
+    KMessageBox::sorry(this,
+                       i18n("Can't generate mail:\n No attendees defined!\n"));
     return;
   }
   mailobject.emailEvent(anEvent,this);

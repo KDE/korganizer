@@ -78,6 +78,8 @@ class KOAgenda : public QScrollView
     void lowerYChanged(int);
     void upperYChanged(int);
 
+    void startDragSignal(KOEvent *);
+
   protected:
     void drawContents(QPainter *p,int cx, int cy, int cw, int ch);        
     virtual void resizeEvent ( QResizeEvent * );
