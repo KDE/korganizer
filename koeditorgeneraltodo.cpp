@@ -101,8 +101,8 @@ void KOEditorGeneralTodo::initTime(QWidget *parent,QBoxLayout *topLayout)
 
   QFrame *timeBoxFrame = new QFrame(timeGroupBox);
   QWhatsThis::add( timeBoxFrame,
-		   i18n("Sets options for due and start dates and times "
-		        "for this to-do.") );
+                   i18n("Sets options for due and start dates and times "
+                        "for this to-do.") );
 
   QGridLayout *layoutTimeBox = new QGridLayout(timeBoxFrame,1,1);
   layoutTimeBox->setSpacing(topLayout->spacing());
@@ -124,7 +124,7 @@ void KOEditorGeneralTodo::initTime(QWidget *parent,QBoxLayout *topLayout)
 
   mDueTimeEdit = new KTimeEdit(timeBoxFrame);
   QWhatsThis::add( mDueTimeEdit,
-		   i18n("Sets the due time for this to-do.") );
+                   i18n("Sets the due time for this to-do.") );
   layoutTimeBox->addWidget(mDueTimeEdit,0,2);
   connect(mDueTimeEdit,SIGNAL(timeChanged( QTime )),SLOT(dateChanged()));
 
@@ -142,14 +142,14 @@ void KOEditorGeneralTodo::initTime(QWidget *parent,QBoxLayout *topLayout)
 
   mStartTimeEdit = new KTimeEdit(timeBoxFrame);
   QWhatsThis::add( mStartTimeEdit,
-		   i18n("Sets the start time for this to-do.") );
+                   i18n("Sets the start time for this to-do.") );
   layoutTimeBox->addWidget(mStartTimeEdit,1,2);
   connect(mStartTimeEdit,SIGNAL(timeChanged(QTime)),SLOT(startDateModified()));
 
   mTimeButton = new QCheckBox(i18n("Ti&me associated"),timeBoxFrame);
   QWhatsThis::add( mTimeButton,
-		   i18n("Sets whether or not this to-do's start and due dates "
-			"have times associated with them.") );
+                   i18n("Sets whether or not this to-do's start and due dates "
+                        "have times associated with them.") );
   layoutTimeBox->addMultiCellWidget(mTimeButton,2,2,0,2);
 
   connect(mTimeButton,SIGNAL(toggled(bool)),SLOT(enableTimeEdits(bool)));
@@ -163,7 +163,7 @@ void KOEditorGeneralTodo::initTime(QWidget *parent,QBoxLayout *topLayout)
 void KOEditorGeneralTodo::initCompletion(QWidget *parent, QBoxLayout *topLayout)
 {
   QString whatsThis = i18n("Sets the current completion status of this to-do "
-		  	   "as a percentage.");
+                           "as a percentage.");
   mCompletedCombo = new QComboBox(parent);
   QWhatsThis::add( mCompletedCombo, whatsThis );
   for (int i = 0; i <= 100; i+=10) {
@@ -177,16 +177,20 @@ void KOEditorGeneralTodo::initCompletion(QWidget *parent, QBoxLayout *topLayout)
   mCompletedLabel = new QLabel(i18n("co&mpleted"),parent);
   topLayout->addWidget(mCompletedLabel);
   mCompletedLabel->setBuddy( mCompletedCombo );
+  mCompletionDateEdit = new KDateEdit( parent );
+  topLayout->addWidget( mCompletionDateEdit );
+  mCompletionTimeEdit = new KTimeEdit( parent, QTime() );
+  topLayout->addWidget( mCompletionTimeEdit );
 }
 
 void KOEditorGeneralTodo::initPriority(QWidget *parent, QBoxLayout *topLayout)
 {
   QString whatsThis = i18n("Sets the priority of this to-do on a scale "
-  			   "from one to nine, with one being the highest "
-			   "priority, five being a medium priority, and "
-			   "nine being the lowest. In programs that have a "
-			   "different scale, the numbers will be adjusted "
-			   "to match the appropriate scale.");
+                           "from one to nine, with one being the highest "
+                           "priority, five being a medium priority, and "
+                           "nine being the lowest. In programs that have a "
+                           "different scale, the numbers will be adjusted "
+                           "to match the appropriate scale.");
   QLabel *priorityLabel = new QLabel(i18n("&Priority:"),parent);
   topLayout->addWidget(priorityLabel);
 
@@ -361,8 +365,16 @@ void KOEditorGeneralTodo::writeTodo(Todo *todo)
   todo->setPercentComplete(mCompletedCombo->currentItem() * 10);
 
   if (mCompletedCombo->currentItem() == 10 && mCompleted.isValid()) {
-    if (! mAlreadyComplete) todo->setCompleted( QDateTime::currentDateTime() );
-    else todo->setCompleted(mCompleted);
+    QDateTime completed( mCompletionDateEdit->date(),
+                         mCompletionTimeEdit->getTime() );
+    int difference = mCompleted.secsTo( completed );
+    if ( (difference < 60) && (difference > -60) && 
+         (completed.time().minute() == mCompleted.time().minute() ) ) {
+      // completion time wasn't changed substantially (only the seconds
+      // truncated, but that's an effect done by KTimeEdit automatically).
+      completed = mCompleted;
+    }
+    todo->setCompleted( completed );
   }
 }
 
@@ -514,10 +526,16 @@ void KOEditorGeneralTodo::startDateModified()
 void KOEditorGeneralTodo::setCompletedDate()
 {
   if (mCompletedCombo->currentItem() == 10 && mCompleted.isValid()) {
-    mCompletedLabel->setText(i18n("co&mpleted on %1")
-        .arg(KGlobal::locale()->formatDateTime(mCompleted)));
+    mCompletedLabel->setText(i18n("co&mpleted on"));
+//        .arg(KGlobal::locale()->formatDateTime(mCompleted)));
+    mCompletionDateEdit->show();
+    mCompletionTimeEdit->show();
+    mCompletionDateEdit->setDate( mCompleted.date() );
+    mCompletionTimeEdit->setTime( mCompleted.time() );
   } else {
     mCompletedLabel->setText(i18n("co&mpleted"));
+    mCompletionDateEdit->hide();
+    mCompletionTimeEdit->hide();
   }
 }
 
