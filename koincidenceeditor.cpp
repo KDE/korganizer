@@ -32,9 +32,9 @@
 #include <klocale.h>
 #include <kstandarddirs.h>
 #include <kmessagebox.h>
+#include <kinputdialog.h>
 
 #include <libkdepim/categoryselectdialog.h>
-#include <libkdepim/kinputdialog.h>
 
 #include <libkcal/calendarlocal.h>
 #include <libkcal/icalformat.h>
@@ -149,7 +149,8 @@ QString KOIncidenceEditor::loadTemplate( Calendar *cal, const QString &type,
 {
   bool ok = false;
   QString templateName = KInputDialog::getItem( i18n("Load Template"),
-      i18n("Select a template to load:"), templates, 0, &ok );
+      i18n("Select a template to load:"), templates, 0, false, &ok, this );
+
   if ( !ok || templateName.isEmpty() ) return QString::null;
 
   QString fileName = locateLocal( "data", "korganizer/templates/" + type + "/" +
