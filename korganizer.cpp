@@ -103,9 +103,9 @@ KOrganizer::KOrganizer( const char *name )
 
 //  statusBar()->insertFixedItem(i18n("Active"),ID_ACTIVE);
 
-  statusBar()->insertItem(i18n(" Incoming Messages: %1 ").arg(0),
+  statusBar()->insertItem(i18n(" Incoming messages: %1 ").arg(0),
                             ID_MESSAGES_IN);
-  statusBar()->insertItem(i18n(" Outgoing Messages: %2 ").arg(0),
+  statusBar()->insertItem(i18n(" Outgoing messages: %2 ").arg(0),
                             ID_MESSAGES_OUT);
   statusBar()->setItemAlignment(ID_MESSAGES_IN,AlignRight);
   statusBar()->setItemAlignment(ID_MESSAGES_OUT,AlignRight);
@@ -318,7 +318,7 @@ void KOrganizer::initActions()
   (void)new KAction(i18n("&Month"), "month", 0,
                     mCalendarView->viewManager(), SLOT(showMonthView()),
                     actionCollection(), "view_month");
-  (void)new KAction(i18n("&To-Do list"), "todo", 0,
+  (void)new KAction(i18n("&To-Do List"), "todo", 0,
                     mCalendarView->viewManager(), SLOT(showTodoView()),
                     actionCollection(), "view_todo");
   (void)new KAction(i18n("&Journal"), 0,
@@ -1203,13 +1203,13 @@ void KOrganizer::statusBarPressed(int id)
 
 void KOrganizer::setNumIncoming(int num)
 {
-  statusBar()->changeItem(i18n(" Incoming Messages: %1 ").arg(num),
+  statusBar()->changeItem(i18n(" Incoming messages: %1 ").arg(num),
                           ID_MESSAGES_IN);
 }
 
 void KOrganizer::setNumOutgoing(int num)
 {
-  statusBar()->changeItem(i18n(" Outgoing Messages: %1 ").arg(num),
+  statusBar()->changeItem(i18n(" Outgoing messages: %1 ").arg(num),
                           ID_MESSAGES_OUT);
 }
 

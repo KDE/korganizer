@@ -357,7 +357,7 @@ void KOEditorGeneralEvent::setDuration()
     if (hourdiff || minutediff){
       tmpStr = i18n("Duration: ");
       if (hourdiff){
-        catStr = i18n("1 Hour","%n Hours",hourdiff);
+        catStr = i18n("1 hour","%n hours",hourdiff);
         tmpStr.append(catStr);
       }
       if (hourdiff && minutediff){

@@ -260,7 +260,7 @@ void KOPrefsDialog::setupTimeTab()
   addWidBool(i18n("Exclude Saturdays"),
              &(KOPrefs::instance()->mExcludeSaturdays),workingHoursGroup);
 
-  KPrefsWidBool *marcusBainsShowSeconds = addWidBool(i18n("Show seconds on Marcus Bains Line"),
+  KPrefsWidBool *marcusBainsShowSeconds = addWidBool(i18n("Show seconds on Marcus Bains line"),
 	     &(KOPrefs::instance()->mMarcusBainsShowSeconds),
 	     topFrame);
   topLayout->addWidget(marcusBainsShowSeconds->checkBox(),5,0);
@@ -296,18 +296,18 @@ void KOPrefsDialog::setupViewsTab()
   nextDaysLayout->addWidget(mNextXDaysSpin);
 
   QGroupBox *hourSizeGroup = new QGroupBox(1,Horizontal,
-                                           i18n("Hour size in schedule view"),
+                                           i18n("Hour Size in Schedule View"),
                                            topFrame);
   mHourSizeSlider = new QSlider(4,30,1,10,Horizontal,hourSizeGroup);
   topLayout->addMultiCellWidget(hourSizeGroup,2,2,0,1);
 
   KPrefsWidBool *dailyRecur =
-    addWidBool(i18n("Show events that recur daily in Date Navigator"),
+    addWidBool(i18n("Show events that recur daily in date navigator"),
                &(KOPrefs::instance()->mDailyRecur),topFrame);
   topLayout->addWidget(dailyRecur->checkBox(),3,0);
 
   KPrefsWidBool *weeklyRecur =
-    addWidBool(i18n("Show events that recur weekly in Date Navigator"),
+    addWidBool(i18n("Show events that recur weekly in date navigator"),
                &(KOPrefs::instance()->mWeeklyRecur),topFrame);
   topLayout->addWidget(weeklyRecur->checkBox(),4,0);
 
@@ -332,7 +332,7 @@ void KOPrefsDialog::setupViewsTab()
   topLayout->addWidget(fullViewTodo->checkBox(),9,0);
 
   KPrefsWidBool *marcusBainsEnabled =
-      addWidBool(i18n("Show Marcus Bains line."),
+      addWidBool(i18n("Show Marcus Bains line"),
                  &(KOPrefs::instance()->mMarcusBainsEnabled),topFrame);
   topLayout->addWidget(marcusBainsEnabled->checkBox(),10,0);
   
@@ -356,13 +356,13 @@ void KOPrefsDialog::setupFontsTab()
   topLayout->addWidget(timeBarFont->button(),0,1);
 
   KPrefsWidFont *monthViewFont =
-      addWidFont(KGlobal::locale()->formatTime(QTime(12,34)) + " " + i18n("Event Text"),
+      addWidFont(KGlobal::locale()->formatTime(QTime(12,34)) + " " + i18n("Event text"),
                  i18n("Month View"),&(KOPrefs::instance()->mMonthViewFont),topFrame);
   topLayout->addWidget(monthViewFont->preview(),1,0);
   topLayout->addWidget(monthViewFont->button(),1,1);
 
   KPrefsWidFont *agendaViewFont =
-      addWidFont(i18n("Event Text"),i18n("Agenda View"),
+      addWidFont(i18n("Event text"),i18n("Agenda View"),
                  &(KOPrefs::instance()->mAgendaViewFont),topFrame);
   topLayout->addWidget(agendaViewFont->preview(),2,0);
   topLayout->addWidget(agendaViewFont->button(),2,1);

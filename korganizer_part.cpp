@@ -124,7 +124,7 @@ KOrganizerPart::KOrganizerPart(QWidget *parentWidget, const char *widgetName,
   (void)new KAction(i18n("&Month"), "month", 0,
                     widget, SLOT(showMonthView()),
                     actionCollection(), "view_month");
-  (void)new KAction(i18n("&To-Do list"), "todo", 0,
+  (void)new KAction(i18n("&To-Do List"), "todo", 0,
                     widget, SLOT(view_todolist()),
                     actionCollection(), "view_todo");
 

@@ -41,7 +41,7 @@ ConfigDialog::ConfigDialog(QWidget *parent)
   QFrame *topFrame = plainPage();
   QVBoxLayout *topLayout = new QVBoxLayout(topFrame,0,spacingHint());
 
-  QLabel *label = new QLabel(i18n("Please select a holiday set."),topFrame);
+  QLabel *label = new QLabel(i18n("Please select a holiday set:"),topFrame);
   topLayout->addWidget(label);
 
   mHolidayCombo = new QComboBox(topFrame);

@@ -295,11 +295,11 @@ KOTodoView::KOTodoView(Calendar *calendar,QWidget* parent,const char* name) :
 
 
   mItemPopupMenu = new QPopupMenu;
-  mItemPopupMenu->insertItem(i18n("Show..."), this,
+  mItemPopupMenu->insertItem(i18n("Show"), this,
                              SLOT (showTodo()));
   mItemPopupMenu->insertItem(i18n("Edit..."), this,
                              SLOT (editTodo()));
-  mItemPopupMenu->insertItem(SmallIconSet("editdelete"), i18n("Delete"), this,
+  mItemPopupMenu->insertItem(SmallIconSet("editdelete"), i18n("Delete..."), this,
                              SLOT (deleteTodo()));
   mItemPopupMenu->insertSeparator();
   mItemPopupMenu->insertItem(SmallIconSet("todo"), i18n("New To-Do..."), this,
