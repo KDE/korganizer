@@ -91,7 +91,8 @@ KOPrefs::KOPrefs() :
   addItemBool("Show Weekly Recurrences",&mWeeklyRecur,true);
   addItemBool("Enable ToolTips",&mEnableToolTips,false);
   addItemBool("Enable MonthView ScrollBars",&mEnableMonthScroll,false);
-  addItemBool("Marcus Bains shows seconds",&mMarcusBainsShowSeconds,true);
+  addItemBool("Marcus Bains shows seconds",&mMarcusBainsShowSeconds,false);
+  addItemBool("Show Marcus Bains",&mMarcusBainsEnabled,true);
 
   addItemInt("Day Begins",&mDayBegins,7);
   addItemInt("Working Hours Start",&mWorkingHoursStart,8);
