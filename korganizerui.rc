@@ -1,16 +1,20 @@
 <!DOCTYPE kpartgui>
-<kpartgui name="korganizer" version="26">
+<kpartgui name="korganizer" version="28">
 
   <MenuBar>
     <Menu name="file"><text>&amp;File</text>
       <Action name="print_setup" append="print_merge"/>
       <Menu name="import"><text>Import</text>
+        <Action name="downloadnewstuff"/>
+        <Separator/>
         <Merge/>
         <Action name="import_ical"/>
+        <Action name="merge_calendar"/>
       </Menu>
-      <Action name="merge_calendar"/>
       <Action name="file_archive"/>
       <Menu name="export"><text>Export</text>
+        <Action name="uploadnewstuff"/>
+        <Separator/>
         <Merge/>
         <Separator/>
         <Action name="export_icalendar"/>
@@ -79,9 +83,6 @@
     <Menu name="help"><text>&amp;Help</text>
       <Action name="show_intro"/>
       <Action name="help_tipofday"/>
-      <Separator/>
-      <Action name="downloadnewstuff"/>
-      <Action name="uploadnewstuff"/>
     </Menu>
   </MenuBar>
 

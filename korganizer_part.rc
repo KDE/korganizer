@@ -1,5 +1,5 @@
 <!DOCTYPE kpartgui>
-<kpartgui name="korganizer" version="27">
+<kpartgui name="korganizer" version="29">
 
   <MenuBar>
     <Menu name="file"><text>&amp;File</text>
@@ -17,12 +17,15 @@
       <Separator/>
       <Action name="plugins"/>
       <Menu name="import"><text>Import</text>
+        <Action name="downloadnewstuff"/>
         <Merge/>
         <Action name="import_ical"/>
+        <Action name="merge_calendar"/>
       </Menu>
-      <Action name="merge_calendar"/>
       <Action name="file_archive"/>
       <Menu name="export"><text>Export</text>
+        <Action name="uploadnewstuff"/>
+        <Separator/>
         <Merge/>
         <Separator/>
         <Action name="export_icalendar"/>
@@ -98,9 +101,6 @@
     </Menu>
     <Menu name="help"><text>&amp;Help</text>
       <Action name="show_intro"/>
-      <Separator/>
-      <Action name="downloadnewstuff"/>
-      <Action name="uploadnewstuff"/>
     </Menu>
   </MenuBar>
 
