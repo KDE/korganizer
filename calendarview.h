@@ -31,6 +31,7 @@
 #include <kfile.h>
 #include <korganizer/koeventviewer.h>
 #include <libkcal/scheduler.h>
+#include <kdepimmacros.h>
 
 #include <korganizer/calendarviewbase.h>
 
@@ -76,7 +77,7 @@ class CalendarViewExtension : public QWidget
   @short main calendar view widget
   @author Cornelius Schumacher
 */
-class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
+class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
 {
     Q_OBJECT
   public:

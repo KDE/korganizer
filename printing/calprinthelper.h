@@ -32,6 +32,7 @@
 #include <libkcal/calendar.h>
 #include <libkcal/event.h>
 #include <libkcal/todo.h>
+#include <kdepimmacros.h>
 
 class PrintCellItem;
 
@@ -47,7 +48,7 @@ class QWidget;
 
 using namespace KCal;
 
-class CalPrintHelper
+class KDE_EXPORT CalPrintHelper
 {
   public:
     /**

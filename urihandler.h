@@ -25,8 +25,9 @@
 #define URIHANDLER_H
 
 #include <qstring.h>
+#include <kdepimmacros.h>
 
-class UriHandler
+class KDE_EXPORT UriHandler
 {
   public:
     /**

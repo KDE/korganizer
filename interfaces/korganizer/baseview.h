@@ -29,6 +29,7 @@
 #include <klocale.h>
 #include <kdebug.h>
 #include <kmessagebox.h>
+#include <kdepimmacros.h>
 #include "korganizer/incidencechangerbase.h"
 
 #include <libkcal/event.h>
@@ -61,7 +62,7 @@ class CalPrinterBase
   @author Preston Brown, Cornelius Schumacher
   @see KOTodoView, KOEventView, KOListView, KOAgendaView, KOMonthView
 */
-class BaseView : public QWidget
+class KDE_EXPORT BaseView : public QWidget
 {
     Q_OBJECT
   public:

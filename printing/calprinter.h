@@ -31,6 +31,7 @@
 #include <kdialogbase.h>
 #include <korganizer/baseview.h>
 #include <korganizer/printplugin.h>
+#include <kdepimmacros.h>
 
 namespace KOrg {
 class CoreHelper;
@@ -52,7 +53,7 @@ class CalPrintHelper;
   different formats (day, week, month).  It also provides a way for setting
   up the printer and remembering these preferences.
 */
-class CalPrinter : public QObject, public KOrg::CalPrinterBase
+class KDE_EXPORT CalPrinter : public QObject, public KOrg::CalPrinterBase
 {
     Q_OBJECT
 

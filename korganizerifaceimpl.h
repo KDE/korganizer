@@ -34,11 +34,12 @@
 #include "korganizeriface.h"
 
 #include <qobject.h>
+#include <kdepimmacros.h>
 
 class ActionManager;
 
 
-class KOrganizerIfaceImpl : public QObject, virtual public KOrganizerIface {
+class KDE_EXPORT KOrganizerIfaceImpl : public QObject, virtual public KOrganizerIface {
 public:
   KOrganizerIfaceImpl( ActionManager* mActionManager,
                        QObject* parent=0, const char* name=0 );

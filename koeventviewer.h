@@ -25,6 +25,7 @@
 #define KOEVENTVIEWER_H
 
 #include <qtextbrowser.h>
+#include <kdepimmacros.h>
 
 #include <kconfig.h>
 namespace KCal {
@@ -38,7 +39,7 @@ using namespace KCal;
 /**
   Viewer widget for events.
 */
-class KOEventViewer : public QTextBrowser
+class KDE_EXPORT KOEventViewer : public QTextBrowser
 {
     Q_OBJECT
   public:

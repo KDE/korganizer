@@ -30,6 +30,7 @@
 #include <qobject.h>
 #include <kurl.h>
 #include <korganizer/part.h>
+#include <kdepimmacros.h>
 
 #include "kcalendariface.h"
 
@@ -70,7 +71,7 @@ using namespace KCal;
   actions are in one location.
   It also provides DCOP interface[s].
 */
-class ActionManager : public QObject, public KCalendarIface
+class KDE_EXPORT ActionManager : public QObject, public KCalendarIface
 {
     Q_OBJECT
   public:

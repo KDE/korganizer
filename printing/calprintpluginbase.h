@@ -30,6 +30,7 @@
 
 #include <qdatetime.h>
 #include <kprinter.h>
+#include <kdepimmacros.h>
 #include <libkcal/event.h>
 #include "korganizer/printplugin.h"
 #include "korganizer/corehelper.h"
@@ -49,7 +50,7 @@ using namespace KCal;
   Base class for KOrganizer printing classes. Each sub class represents one
   calendar print format.
 */
-class CalPrintPluginBase : public KOrg::PrintPlugin
+class KDE_EXPORT CalPrintPluginBase : public KOrg::PrintPlugin
 {
   public:
     /**

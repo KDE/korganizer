@@ -25,10 +25,11 @@
 #define KORG_ABOUTDATA_H
 
 #include <kaboutdata.h>
+#include <kdepimmacros.h>
 
 namespace KOrg {
 
-class AboutData : public KAboutData
+class KDE_EXPORT AboutData : public KAboutData
 {
   public:
     AboutData();

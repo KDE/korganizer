@@ -196,5 +196,6 @@ include ../admin/Doxyfile.am
 install-data-local: 
 	$(mkinstalldirs) $(DESTDIR)$(servicedir)
 	$(INSTALL_DATA) $(srcdir)/uninstall.desktop $(DESTDIR)$(kde_servicesdir)/korganizer_configgroupautomation.desktop
+	$(mkinstalldirs) $(DESTDIR)$(kde_servicesdir)/korganizer
 	$(INSTALL_DATA) $(srcdir)/uninstall.desktop $(DESTDIR)$(kde_servicesdir)/korganizer/webexport.desktop
 	$(INSTALL_DATA) $(srcdir)/uninstall.desktop $(DESTDIR)$(kde_servicesdir)/korganizer/holidays.desktop
