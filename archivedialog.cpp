@@ -119,7 +119,7 @@ ArchiveDialog::ArchiveDialog(Calendar *cal,QWidget *parent, const char *name)
   fileLayout->addWidget(l);
   mArchiveFile = new KURLRequester(KOPrefs::instance()->mArchiveFile,topFrame);
   mArchiveFile->setMode(KFile::File);
-  mArchiveFile->setFilter(i18n("*.vcs|vCalendar Files"));
+  mArchiveFile->setFilter(i18n("*.ics|iCalendar Files"));
   QWhatsThis::add(mArchiveFile,
     i18n("The path of the archive. The events will be added to the "
          "archive file, so any events that are already in the file "
