@@ -427,6 +427,9 @@ void KOAgendaView::createDayLabels()
 {
 //  kdDebug() << "KOAgendaView::createDayLabels()" << endl;
 
+  // ### Before deleting and recreating we could check if mSelectedDates changed...
+  // It would remove some flickering and gain speed (since this is called by
+  // each updateView() call)
   delete mDayLabels;
 
   mDayLabels = new QFrame (mDayLabelsFrame);
