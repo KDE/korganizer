@@ -30,6 +30,8 @@ class KOTimeSpanView : public KOEventView
     void changeEventDisplay(Event *, int);
 
   private:
+    void insertItems( const QDate &start, const QDate & end );
+
     TimeSpanView *mTimeSpanView;
 };
 

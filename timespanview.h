@@ -22,7 +22,22 @@ class TimeSpanView : public QWidget
     QValueList<int> splitterSizes();
     void setSplitterSizes( QValueList<int> );
     
+    void clear();
+    
     void setDateRange( const QDateTime &start, const QDateTime &end );
+    
+    QDateTime startDateTime();
+    QDateTime endDateTime();
+
+  public slots:
+    void updateView();
+
+    void zoomIn();
+    void zoomOut();
+    void centerView();
+    
+  signals:
+    void dateRangeChanged();
     
   private:
     QSplitter *mSplitter;

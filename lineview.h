@@ -15,6 +15,8 @@ class LineView : public QScrollView
     
     void addLine( int start, int end );
 
+    void clear();
+
   protected:
     void drawContents(QPainter* p, int cx, int cy, int cw, int ch);
 

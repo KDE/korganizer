@@ -17,45 +17,7 @@ KOTimeSpanView::KOTimeSpanView(Calendar *calendar, QWidget *parent,
   mTimeSpanView = new TimeSpanView( this );
   topLayout->addWidget( mTimeSpanView );
 
-  // Debug: Set some values manually
-
-#if 0
-  mTimeSpanView->setDateRange( QDateTime::currentDateTime(),
-                               QDateTime::currentDateTime().addDays( 6 ) );
-#else
-  mTimeSpanView->setDateRange( QDateTime( QDate( 2001, 11, 23 ),
-                                          QTime( 18, 0 ) ),
-                               QDateTime( QDate( 2001, 11, 29 ),
-                                          QTime( 6, 0 ) ) );
-#endif
-
-  Event *event = new Event;
-  event->setSummary( "Hallo" );
-  event->setDtStart( QDateTime::currentDateTime().addDays( 1 ) );
-  event->setDtEnd( QDateTime::currentDateTime().addDays( 2 ) );
-
-  mTimeSpanView->addItem( event );
-
-  event = new Event;
-  event->setSummary( "Dudelidei" );
-  event->setDtStart( QDateTime::currentDateTime().addDays( 1 ) );
-  event->setDtEnd( QDateTime::currentDateTime().addDays( 3 ) );
-
-  mTimeSpanView->addItem( event );
-
-  event = new Event;
-  event->setSummary( "Trumtum" );
-  event->setDtStart( QDateTime::currentDateTime().addDays( 2 ) );
-  event->setDtEnd( QDateTime::currentDateTime().addDays( 3 ) );
-
-  mTimeSpanView->addItem( event );
-  
-  event = new Event;
-  event->setSummary( "Exactly" );
-  event->setDtStart( QDateTime( QDate( 2001, 11, 24 ), QTime( 0, 0 ) ) );
-  event->setDtEnd( QDateTime( QDate( 2001, 11, 27 ), QTime( 12, 0 ) ) );
-
-  mTimeSpanView->addItem( event );
+  connect( mTimeSpanView, SIGNAL( dateRangeChanged() ), SLOT( updateView() ) );
 }
 
 KOTimeSpanView::~KOTimeSpanView()
@@ -108,10 +70,35 @@ QPtrList<Incidence> KOTimeSpanView::selectedIncidences()
 
 void KOTimeSpanView::updateView()
 {
+  insertItems( mTimeSpanView->startDateTime().date(),
+               mTimeSpanView->endDateTime().date() );
 }
 
 void KOTimeSpanView::showDates(const QDate &start, const QDate &end)
 {
+  QDate s = start.addDays( -2 );
+  QDate e = end.addDays( 2 );
+
+  insertItems( s, e );
+}
+
+void KOTimeSpanView::insertItems(const QDate &start, const QDate &end)
+{
+  mTimeSpanView->clear();
+  mTimeSpanView->setDateRange( start, end );
+
+  QPtrList<Event> events = calendar()->getEvents( start, end );
+  Event *event = events.first();
+  while( event ) {
+//    kdDebug() << "KOTimeSpanView::showDates() add event: " << event->summary()
+//              << endl;
+
+    mTimeSpanView->addItem( event );          
+
+    event = events.next();
+  }
+  
+  mTimeSpanView->updateView();
 }
 
 void KOTimeSpanView::showEvents(QPtrList<Event> eventList)

@@ -2,6 +2,7 @@
 #include <qlistview.h>
 #include <qlayout.h>
 #include <qheader.h>
+#include <qpushbutton.h>
 
 #include <klocale.h>
 #include <kdebug.h>
@@ -33,6 +34,20 @@ TimeSpanView::TimeSpanView( QWidget *parent, const char *name ) :
   mLineView = new LineView( rightPane );
   rightPaneLayout->addWidget( mLineView );
 
+  QBoxLayout *buttonLayout = new QHBoxLayout( rightPaneLayout );
+  
+  QPushButton *zoomInButton = new QPushButton( i18n("Zoom In"), rightPane );
+  connect( zoomInButton, SIGNAL( clicked() ), SLOT( zoomIn() ) );
+  buttonLayout->addWidget( zoomInButton );
+  
+  QPushButton *zoomOutButton = new QPushButton( i18n("Zoom Out"), rightPane );
+  connect( zoomOutButton, SIGNAL( clicked() ), SLOT( zoomOut() ) );
+  buttonLayout->addWidget( zoomOutButton );
+  
+  QPushButton *centerButton = new QPushButton( i18n("Center View"), rightPane );
+  connect( centerButton, SIGNAL( clicked() ), SLOT( centerView() ) );
+  buttonLayout->addWidget( centerButton );
+
   connect(mLineView->horizontalScrollBar(),SIGNAL(valueChanged(int)),
           mTimeLine,SLOT(setContentsPos(int)));
 }
@@ -58,20 +73,32 @@ void TimeSpanView::addItem( KCal::Event *event )
   QDateTime startDt = event->dtStart();
   QDateTime endDt = event->dtEnd();
 
-  kdDebug() << "TimeSpanView::addItem(): start: " << startDt.toString()
-            << "  end: " << endDt.toString() << endl;
+//  kdDebug() << "TimeSpanView::addItem(): start: " << startDt.toString()
+//            << "  end: " << endDt.toString() << endl;
 
   int startSecs = mStartDate.secsTo( startDt );
   int durationSecs = startDt.secsTo( endDt );
   
-  kdDebug() << "--- startSecs: " << startSecs << "  dur: " << durationSecs << endl;
+//  kdDebug() << "--- startSecs: " << startSecs << "  dur: " << durationSecs << endl;
 
   int startX = mStartDate.secsTo( startDt ) / mSecsPerPixel;
   int endX = startX + startDt.secsTo( endDt ) / mSecsPerPixel;
   
-  kdDebug() << "TimeSpanView::addItem(): s: " << startX << "  e: " << endX << endl;
+//  kdDebug() << "TimeSpanView::addItem(): s: " << startX << "  e: " << endX << endl;
   
   mLineView->addLine( startX, endX );
+}
+
+void TimeSpanView::clear()
+{
+  mList->clear();
+  mLineView->clear();
+}
+
+void TimeSpanView::updateView()
+{
+  mLineView->updateContents();
+  mTimeLine->updateContents();
 }
 
 void TimeSpanView::setDateRange( const QDateTime &start, const QDateTime &end )
@@ -82,4 +109,38 @@ void TimeSpanView::setDateRange( const QDateTime &start, const QDateTime &end )
   mTimeLine->setDateRange( start, end );
 
   mSecsPerPixel = mStartDate.secsTo( mEndDate ) / mLineView->pixelWidth();
+}
+
+QDateTime TimeSpanView::startDateTime()
+{
+  return mStartDate;
+}
+
+QDateTime TimeSpanView::endDateTime()
+{
+  return mEndDate;
+}
+
+void TimeSpanView::zoomIn()
+{
+  int span = mStartDate.daysTo( mEndDate );
+  setDateRange( mStartDate.addDays( span / 4 ), mEndDate.addDays( span / -4 ) );
+
+  emit dateRangeChanged();
+}
+
+void TimeSpanView::zoomOut()
+{
+  int span = mStartDate.daysTo( mEndDate );
+  setDateRange( mStartDate.addDays( span / -4 ), mEndDate.addDays( span / 4 ) );
+
+  emit dateRangeChanged();
+}
+
+void TimeSpanView::centerView()
+{
+  QScrollBar *scrollBar = mLineView->horizontalScrollBar();
+  int min = scrollBar->minValue();
+  int max = scrollBar->maxValue();
+  scrollBar->setValue( min + (max-min) / 2 );
 }

@@ -41,6 +41,12 @@ void LineView::addLine( int start, int end )
   mLines.append( new Line( count, start, end ) );
 }
 
+void LineView::clear()
+{
+  mLines.clear();
+  update();
+}
+
 void LineView::drawContents(QPainter* p, int cx, int cy, int cw, int ch)
 {
 //  kdDebug() << "LineView::drawContents()" << endl;
