@@ -1,7 +1,7 @@
 /*
     This file is part of KOrganizer.
     Copyright (c) 1997, 1998 Preston Brown
-    Copyright (c) 2000,2001 Cornelius Schumacher <schumacher@kde.org>
+    Copyright (c) 2000-2003 Cornelius Schumacher <schumacher@kde.org>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -144,25 +144,27 @@ void KOTodoEditor::loadDefaults()
 
 bool KOTodoEditor::processInput()
 {
-  if (!validateInput()) return false;
+  if ( !validateInput() ) return false;
 
-  Todo *todo = 0;
+  if ( mTodo ) {
+    Todo *oldTodo = mTodo->clone();
 
-  if (mTodo) todo = mTodo;
-  else {
-    todo = new Todo;
-    todo->setOrganizer(KOPrefs::instance()->email());
-  }
+    writeTodo( mTodo );
 
-  writeTodo(todo);
+    mTodo->setRevision( mTodo->revision() + 1 );
+    
+    emit todoChanged( oldTodo, mTodo );
 
-  if (mTodo) {
-    todo->setRevision(todo->revision()+1);
-    emit todoChanged(todo);
+    delete oldTodo;
   } else {
-    mCalendar->addTodo(todo);
-    mTodo = todo;
-    emit todoAdded(todo);
+    mTodo = new Todo;    
+    mTodo->setOrganizer( KOPrefs::instance()->email() );
+    
+    writeTodo( mTodo );
+    
+    mCalendar->addTodo( mTodo );
+    
+    emit todoAdded( mTodo );
   }
 
   return true;

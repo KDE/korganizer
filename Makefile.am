@@ -70,7 +70,9 @@ libkorganizer_la_SOURCES =  outgoingdialog_base.ui \
         kalarmdclient.cpp simplealarmclient.cpp \
 	actionmanager.cpp resourceview.cpp \
         navigatorbar.cpp kogroupware.cpp \
-	kogroupwareincomingdialog_base.ui kogroupwareincomingdialog.cpp
+	kogroupwareincomingdialog_base.ui kogroupwareincomingdialog.cpp \
+        history.cpp
+
 libkorganizer_la_COMPILE_FIRST = ../libkdepim/categoryselectdialog.h \
 	../kalarmd/alarmdaemoniface_stub.h
 

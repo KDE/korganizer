@@ -207,23 +207,23 @@ KOEventEditor *KODialogManager::getEventEditor()
   KOEventEditor *eventEditor = new KOEventEditor( mMainView->calendar(),
                                                   mMainView );
 
-  connect(eventEditor,SIGNAL(eventAdded(Event *)),
-          mMainView,SLOT(eventAdded(Event *)));
-  connect(eventEditor,SIGNAL(eventChanged(Event *)),
-          mMainView,SLOT(eventChanged(Event *)));
-  connect(eventEditor,SIGNAL(eventDeleted()),
-          mMainView,SLOT(eventDeleted()));
-  connect(eventEditor,SIGNAL(deleteAttendee(Incidence *)),
-          mMainView,SLOT(schedule_cancel(Incidence *)));
+  connect( eventEditor, SIGNAL( eventAdded( Event * ) ),
+           mMainView, SLOT( eventAdded( Event * ) ) );
+  connect( eventEditor, SIGNAL( eventChanged( Event *, Event * ) ),
+           mMainView, SLOT( eventChanged( Event *, Event * ) ) );
+  connect( eventEditor, SIGNAL( eventDeleted() ),
+           mMainView, SLOT( eventDeleted() ) );
+  connect( eventEditor, SIGNAL( deleteAttendee( Incidence * ) ),
+           mMainView, SLOT( schedule_cancel( Incidence * ) ) );
 
-  connect(mCategoryEditDialog,SIGNAL(categoryConfigChanged()),
-          eventEditor,SLOT(updateCategoryConfig()));
-  connect(eventEditor,SIGNAL(editCategories()),
-          mCategoryEditDialog,SLOT(show()));
-  connect(eventEditor,SIGNAL(dialogClose(Incidence*)),
-          mMainView,SLOT(dialogClosing(Incidence*)));
+  connect( mCategoryEditDialog, SIGNAL( categoryConfigChanged() ),
+           eventEditor, SLOT( updateCategoryConfig() ) );
+  connect( eventEditor, SIGNAL( editCategories() ),
+           mCategoryEditDialog, SLOT( show() ) );
+  connect( eventEditor, SIGNAL( dialogClose( Incidence * ) ),
+           mMainView, SLOT( dialogClosing( Incidence * ) ) );
 
-  connect(mMainView,SIGNAL(closingDown()),eventEditor,SLOT(reject()));
+  connect( mMainView, SIGNAL( closingDown() ), eventEditor, SLOT( reject() ) );
 
   return eventEditor;
 }
@@ -233,20 +233,21 @@ KOTodoEditor *KODialogManager::getTodoEditor()
   KOTodoEditor *todoEditor = new KOTodoEditor( mMainView->calendar(),
                                                mMainView );
 
-  connect(mCategoryEditDialog,SIGNAL(categoryConfigChanged()),
-          todoEditor,SLOT(updateCategoryConfig()));
-  connect(todoEditor,SIGNAL(editCategories()),mCategoryEditDialog,SLOT(show()));
+  connect( mCategoryEditDialog, SIGNAL( categoryConfigChanged() ),
+           todoEditor, SLOT( updateCategoryConfig() ) );
+  connect( todoEditor, SIGNAL( editCategories() ),
+           mCategoryEditDialog, SLOT( show() ) );
 
-  connect(todoEditor,SIGNAL(todoAdded(Todo *)),
-          mMainView,SLOT(updateTodoViews()));
-  connect(todoEditor,SIGNAL(todoChanged(Todo *)),
-          mMainView,SLOT(updateTodoViews()));
-  connect(todoEditor,SIGNAL(todoDeleted()),
-          mMainView,SLOT(updateTodoViews()));
-  connect(todoEditor,SIGNAL(dialogClose(Incidence*)),
-          mMainView,SLOT(dialogClosing(Incidence*)));
+  connect( todoEditor, SIGNAL( todoAdded( Todo * ) ),
+           mMainView, SLOT( todoAdded( Todo * ) ) );
+  connect( todoEditor, SIGNAL( todoChanged( Todo *, Todo * ) ),
+           mMainView, SLOT( todoChanged( Todo *, Todo * ) ) );
+  connect( todoEditor, SIGNAL( todoDeleted() ),
+           mMainView, SLOT( updateTodoViews() ) );
+  connect( todoEditor, SIGNAL( dialogClose( Incidence * ) ),
+           mMainView, SLOT( dialogClosing( Incidence * ) ) );
 
-  connect(mMainView,SIGNAL(closingDown()),todoEditor,SLOT(reject()));
+  connect( mMainView, SIGNAL( closingDown() ), todoEditor, SLOT( reject() ) );
 
   return todoEditor;
 }

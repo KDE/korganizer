@@ -1,6 +1,6 @@
 /*
     This file is part of KOrganizer.
-    Copyright (c) 2001,2002 Cornelius Schumacher <schumacher@kde.org>
+    Copyright (c) 2001, 2002, 2003 Cornelius Schumacher <schumacher@kde.org>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -181,25 +181,27 @@ void KOEventEditor::loadDefaults()
 
 bool KOEventEditor::processInput()
 {
-  if (!validateInput()) return false;
+  if ( !validateInput() ) return false;
 
-  Event *event = 0;
+  if ( mEvent ) {
+    Event *oldEvent = mEvent->clone();
 
-  if (mEvent) event = mEvent;
-  else {
-    event = new Event;
-    event->setOrganizer(KOPrefs::instance()->email());
-  }
+    writeEvent( mEvent );
 
-  writeEvent(event);
+    mEvent->setRevision( mEvent->revision() + 1 );
 
-  if (mEvent) {
-    event->setRevision(event->revision()+1);
-    emit eventChanged(event);
+    emit eventChanged( oldEvent, mEvent );
+
+    delete oldEvent;
   } else {
-    mCalendar->addEvent(event);
-    mEvent = event;
-    emit eventAdded(event);
+    mEvent = new Event;
+    mEvent->setOrganizer( KOPrefs::instance()->email() );
+
+    writeEvent( mEvent );
+
+    mCalendar->addEvent( mEvent );
+
+    emit eventAdded( mEvent );
   }
 
   return true;

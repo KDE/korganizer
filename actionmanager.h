@@ -245,6 +245,10 @@ class ActionManager : public QObject, public KCalendarIface
 
     void setTitle();
 
+    void updateUndoAction( const QString & );
+    
+    void updateRedoAction( const QString & );
+
   protected:
 
     /** Get URL for saving. Opens FileDialog. */
@@ -284,6 +288,9 @@ class ActionManager : public QObject, public KCalendarIface
     KAction *mNextXDays;
     KAction *mPublishEvent;
     KActionMenu *mPluginMenu;
+
+    KAction *mUndoAction;
+    KAction *mRedoAction;
 
     KXMLGUIClient *mGUIClient;
     KActionCollection *mACollection;

@@ -54,6 +54,7 @@
 #include "korganizer.h"
 #include "kprocess.h"
 #include "konewstuff.h"
+#include "history.h"
 
 
 KOWindowList *ActionManager::windowList = 0;
@@ -239,14 +240,18 @@ void ActionManager::initActions()
 	       mCalendarView, SLOT( purgeCompleted() ), mACollection,
 	       "purge_completed" );
 
+  KOrg::History *h = mCalendarView->history();
+
+  KAction *pasteAction;
+
   if ( mIsPart ) {
     // edit menu
     mCutAction = new KAction(i18n("Cu&t"), "editcut", CTRL+Key_X, mCalendarView,
 			     SLOT(edit_cut()), mACollection, "korganizer_cut");
     mCopyAction = new KAction(i18n("&Copy"), "editcopy", CTRL+Key_C, mCalendarView,
 			      SLOT(edit_copy()), mACollection, "korganizer_copy");
-    action = new KAction(i18n("&Paste"), "editpaste", CTRL+Key_V, mCalendarView,
-			 SLOT(edit_paste()), mACollection, "korganizer_paste");
+    pasteAction = new KAction(i18n("&Paste"), "editpaste", CTRL+Key_V, mCalendarView,
+	                      SLOT(edit_paste()), mACollection, "korganizer_paste");
   } else {
     mCutAction = KStdAction::cut(mCalendarView,SLOT(edit_cut()),
 				 mACollection);
@@ -254,13 +259,23 @@ void ActionManager::initActions()
     mCopyAction = KStdAction::copy(mCalendarView,SLOT(edit_copy()),
 				   mACollection);
 
-    action = KStdAction::paste(mCalendarView,SLOT(edit_paste()),
+    pasteAction = KStdAction::paste(mCalendarView,SLOT(edit_paste()),
 			       mACollection);
+
+    mUndoAction = KStdAction::undo( h, SLOT( undo() ), mACollection );
+    mRedoAction = KStdAction::redo( h, SLOT( redo() ), mACollection );
   }
 
-  action->setEnabled( false );
+  pasteAction->setEnabled( false );
   connect( mCalendarView, SIGNAL( pasteEnabled( bool ) ),
-           action, SLOT( setEnabled( bool ) ) );
+           pasteAction, SLOT( setEnabled( bool ) ) );
+
+  connect( h, SIGNAL( undoAvailable( const QString & ) ),
+           SLOT( updateUndoAction( const QString & ) ) );
+  connect( h, SIGNAL( redoAvailable( const QString & ) ),
+           SLOT( updateRedoAction( const QString & ) ) );
+  mUndoAction->setEnabled( false );
+  mRedoAction->setEnabled( false );
 
   mDeleteAction = new KAction(i18n("&Delete"),"editdelete",0,
                               mCalendarView,SLOT(appointment_delete()),
@@ -1207,7 +1222,7 @@ void ActionManager::setTitle()
   mMainWindow->setTitle();
 }
 
-KCalendarIface::ResourceRequestReply ActionManager::resourceRequest( const QValueList<QPair<QDateTime, QDateTime> >& busy,
+KCalendarIface::ResourceRequestReply ActionManager::resourceRequest( const QValueList<QPair<QDateTime, QDateTime> >&,
  const QCString& resource,
  const QString& vCalIn )
 {
@@ -1221,5 +1236,30 @@ void ActionManager::openEventEditor( QString text )
 {
   mCalendarView->newEvent( text );
 }
+
+void ActionManager::updateUndoAction( const QString &text )
+{
+  if ( text.isNull() ) {
+    mUndoAction->setEnabled( false );
+    mUndoAction->setText( i18n("Undo") );
+  } else {
+    mUndoAction->setEnabled( true );
+    if ( text.isEmpty() ) mUndoAction->setText( i18n("Undo") );
+    else mUndoAction->setText( i18n("Undo (%1)").arg( text ) );
+  }
+}
+
+void ActionManager::updateRedoAction( const QString &text )
+{
+  if ( text.isNull() ) {
+    mRedoAction->setEnabled( false );
+    mRedoAction->setText( i18n("Redo") );
+  } else {
+    mRedoAction->setEnabled( true );
+    if ( text.isEmpty() ) mRedoAction->setText( i18n("Redo") );
+    else mRedoAction->setText( i18n("Redo (%1)").arg( text ) );
+  }
+}
+
 
 #include "actionmanager.moc"

@@ -52,6 +52,8 @@ class NavigatorBar;
 
 namespace KCal { class FileStorage; }
 
+namespace KOrg { class History; }
+
 using namespace KCal;
 
 class CalendarViewExtension : public QWidget
@@ -92,6 +94,8 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     virtual ~CalendarView();
   
     Calendar *calendar() { return mCalendar; }
+
+    KOrg::History *history() { return mHistory; }
 
     KOViewManager *viewManager();
     KODialogManager *dialogManager();
@@ -267,10 +271,13 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
      * activated view so that it can make appropriate display changes. */
     void changeEventDisplay(Event *, int);
   
-    void eventAdded(Event *);
-    void eventChanged(Event *);
-    void eventToBeDeleted(Event *);
+    void eventAdded( Event * );
+    void eventChanged( Event *oldEvent, Event *newEvent );
+    void eventToBeDeleted( Event * );
     void eventDeleted();
+
+    void todoAdded( Todo * );
+    void todoChanged( Todo *oldTodo, Todo *newTodo );
   
     void updateView(const QDate &start, const QDate &end);
     void updateView();
@@ -428,6 +435,8 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
 
     void calendarModified( bool, Calendar * );
 
+    KOrg::History *mHistory;
+
     CalPrinter *mCalPrinter;
 
     QSplitter    *mPanner;
@@ -444,7 +453,7 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     QPtrList<CalendarViewExtension> mExtensions;
 
     // calendar object for this viewing instance
-    Calendar      *mCalendar;
+    Calendar *mCalendar;
 
     FileStorage *mStorage;
 

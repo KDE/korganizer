@@ -10,7 +10,7 @@
   Ian Dawes (iadawes@globalserve.net)
   Laszlo Boloni (boloni@cs.purdue.edu)
 
-  Copyright (c) 2000, 2001, 2002
+  Copyright (c) 2000, 2001, 2002, 2003
   Cornelius Schumacher <schumacher@kde.org>
 
   This program is free software; you can redistribute it and/or modify
@@ -94,6 +94,7 @@
 #include "datenavigator.h"
 #include "resourceview.h"
 #include "navigatorbar.h"
+#include "history.h"
 
 #include "calendarview.h"
 
@@ -106,11 +107,10 @@ CalendarView::CalendarView( Calendar *calendar,
 {
   kdDebug(5850) << "CalendarView::CalendarView( Calendar )" << endl;
 
-  init();
-}
+  mHistory = new History( calendar );
+  connect( mHistory, SIGNAL( undone() ), SLOT( updateView() ) );
+  connect( mHistory, SIGNAL( redone() ), SLOT( updateView() ) );
 
-void CalendarView::init()
-{
   mViewManager = new KOViewManager( this );
   mDialogManager = new KODialogManager( this );
 
@@ -559,24 +559,44 @@ void CalendarView::updateConfig()
 }
 
 
-void CalendarView::eventChanged(Event *event)
+void CalendarView::eventChanged( Event *oldEvent, Event *newEvent )
 {
-  changeEventDisplay(event,KOGlobals::EVENTEDITED);
+  changeEventDisplay( newEvent, KOGlobals::EVENTEDITED );
+
+  mHistory->recordEdit( oldEvent, newEvent );
 }
 
-void CalendarView::eventAdded(Event *event)
+void CalendarView::eventAdded( Event *event )
 {
-  changeEventDisplay(event,KOGlobals::EVENTADDED);
+  changeEventDisplay( event, KOGlobals::EVENTADDED );
+
+  mHistory->recordAdd( event );
 }
 
-void CalendarView::eventToBeDeleted(Event *)
+void CalendarView::eventToBeDeleted( Event * )
 {
-  kdDebug(5850) << "CalendarView::eventToBeDeleted(): to be implemented" << endl;
+  kdDebug(5850) << "CalendarView::eventToBeDeleted(): to be implemented"
+                << endl;
 }
 
 void CalendarView::eventDeleted()
 {
-  changeEventDisplay(0,KOGlobals::EVENTDELETED);
+  changeEventDisplay( 0, KOGlobals::EVENTDELETED );
+}
+
+
+void CalendarView::todoChanged( Todo *oldTodo, Todo *newTodo )
+{
+  updateTodoViews();
+  
+  mHistory->recordEdit( oldTodo, newTodo );
+}
+
+void CalendarView::todoAdded( Todo *todo )
+{
+  updateTodoViews();
+  
+  mHistory->recordAdd( todo );
 }
 
 
@@ -989,8 +1009,8 @@ void CalendarView::deleteEvent(Event *anEvent)
         changeEventDisplay(anEvent,KOGlobals::EVENTDELETED);
         break;
 
-// Disabled because it does not work
-//#if 0
+// Disabled because it does not work (doesn't seem to be true anymore)
+#if 1
       case KMessageBox::Yes: // just this one
         //QDate qd = mNavigator->selectedDates().first();
         //if (!qd.isValid()) {
@@ -1008,25 +1028,31 @@ void CalendarView::deleteEvent(Event *anEvent)
           changeEventDisplay(anEvent, KOGlobals::EVENTEDITED);
         }
         break;
-//#endif
-    } // switch
+#endif
+    }
   } else {
     if (KOPrefs::instance()->mConfirm) {
       switch (msgItemDelete()) {
         case KMessageBox::Continue: // OK
-          if (anEvent->organizer()==KOPrefs::instance()->email() && anEvent->attendeeCount()>0)
-	    schedule(Scheduler::Cancel,anEvent);
-          mCalendar->deleteEvent(anEvent);
-          changeEventDisplay(anEvent, KOGlobals::EVENTDELETED);
+          if ( anEvent->organizer() == KOPrefs::instance()->email() &&
+               anEvent->attendeeCount() > 0 ) {
+	    schedule( Scheduler::Cancel,anEvent );
+          }
+          mHistory->recordDelete( anEvent );
+          mCalendar->deleteEvent( anEvent );
+          changeEventDisplay( anEvent, KOGlobals::EVENTDELETED );
           break;
-      } // switch
+      }
     } else {
-      if (anEvent->organizer()==KOPrefs::instance()->email() && anEvent->attendeeCount()>0)
+      if ( anEvent->organizer() == KOPrefs::instance()->email() &&
+           anEvent->attendeeCount() > 0 ) {
         schedule(Scheduler::Cancel,anEvent);
-      mCalendar->deleteEvent(anEvent);
-      changeEventDisplay(anEvent, KOGlobals::EVENTDELETED);
+      }
+      mHistory->recordDelete( anEvent );
+      mCalendar->deleteEvent( anEvent );
+      changeEventDisplay( anEvent, KOGlobals::EVENTDELETED );
     }
-  } // if-else
+  }
 }
 
 bool CalendarView::deleteEvent(const QString &uid)

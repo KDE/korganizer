@@ -85,11 +85,11 @@ class KOEventEditor : public KOIncidenceEditor
     void writeEvent( Event * );
 
   signals:
-    void eventAdded(Event *);
-    void eventChanged(Event *);
-    void eventToBeDeleted(Event *);
+    void eventAdded( Event * );
+    void eventChanged( Event *oldEvent, Event *newEvent );
+    void eventToBeDeleted( Event * );
     void eventDeleted();
-    void deleteAttendee(Incidence *);
+    void deleteAttendee( Incidence * );
 
   protected slots:
     void loadDefaults();
