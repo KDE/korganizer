@@ -61,6 +61,9 @@ k_dcop:
 
     virtual void showTodoView() = 0;
     virtual void showEventView() = 0;
+
+    virtual void goDate( QDate date ) = 0;
+    virtual void goDate( QString date ) = 0;
 };
 
 inline QDataStream& operator<<( QDataStream& str, const KCalendarIface::ResourceRequestReply& reply )

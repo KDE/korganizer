@@ -152,6 +152,9 @@ class ActionManager : public QObject, public KCalendarIface
     void showTodoView();
     void showEventView();
 
+    void goDate( QDate );
+    void goDate( QString );
+
     QString localFileName();
 
     bool queryClose();

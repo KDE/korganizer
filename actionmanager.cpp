@@ -1297,6 +1297,16 @@ void ActionManager::showEventView()
   mCalendarView->viewManager()->showEventView();
 }
 
+void ActionManager::goDate( QDate date )
+{
+  mCalendarView->goDate( date );
+}
+
+void ActionManager::goDate( QString date )
+{
+  goDate( KGlobal::locale()->readDate(date) );
+}
+
 void ActionManager::updateUndoAction( const QString &text )
 {
   if ( text.isNull() ) {

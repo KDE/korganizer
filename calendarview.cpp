@@ -554,6 +554,11 @@ void CalendarView::writeFilterSettings(KConfig *config)
 }
 
 
+void CalendarView::goDate( const QDate& date )
+{
+  mNavigator->selectDate( date );
+}
+
 void CalendarView::goToday()
 {
   mNavigator->selectToday();

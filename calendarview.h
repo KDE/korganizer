@@ -394,6 +394,9 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
 
     void showIntro();
 
+    /** Move the current view date to the specified date */
+    void goDate( const QDate& date );
+
     /** Move the current view date to today */
     void goToday();
 
