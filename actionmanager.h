@@ -124,6 +124,8 @@ class ActionManager : public QObject, public KCalendarIface
 
     /** Handle incoming event scheduling */
     bool eventRequest( QString request, QCString receiver, QString ical );
+    /** Handle event replies */
+    bool eventReply( QString ical );
 
     //// Implementation of the DCOP interface
     virtual ResourceRequestReply resourceRequest( const QValueList<QPair<QDateTime, QDateTime> >& busy,

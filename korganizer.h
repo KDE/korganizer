@@ -120,6 +120,7 @@ class KOrganizer : public KParts::MainWindow, virtual public KOrganizerIface,
     virtual bool deleteEvent( QString uid );
 
     bool eventRequest( QString request, QCString receiver, QString ical );
+    bool eventReply( QString ical );
 
     virtual KXMLGUIFactory *mainGuiFactory() { return factory(); }
     virtual QWidget *topLevelWidget() { return this; }

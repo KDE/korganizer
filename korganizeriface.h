@@ -37,6 +37,7 @@ class KOrganizerIface : virtual public DCOPObject
 
     virtual bool eventRequest(QString request, QCString receiver,
                               QString ical) = 0;
+    virtual bool eventReply(QString ical) = 0;
 };
 
 #endif

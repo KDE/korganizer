@@ -98,8 +98,8 @@ public:
                                   bool& isFree,
                                   QDateTime& start, QDateTime& end );
 
-    // ANswer to invitation
-    bool incidenceAnswer( const QCString& sender, const QString& vCalIn, QString& vCalOut );
+    // Answer to invitation
+    bool incidenceAnswer( const QString& vCal );
 
     // END OF THE ACTUAL KM/KO API
 

@@ -398,57 +398,33 @@ void KOGroupware::incomingResourceRequest( const QValueList<QPair<QDateTime, QDa
 
 /*!
   This method is called when the user has invited people and is now
-  receiving the answers to the invitation. Returns the updated vCal
-  representing the whole incidence in the vCalOut parameter.
-
-  If returning false because of something going wrong, set vCalOut
-  to "false" to signal this to KMail.
+  receiving the answers to the invitation.
 */
-
-bool KOGroupware::incidenceAnswer( const QCString& /*sender*/,
-				   const QString& vCalIn,
-				   QString& vCalOut )
+bool KOGroupware::incidenceAnswer( const QString& vCal )
 {
-  vCalOut = "";
-
-  // Parse the event request into a ScheduleMessage; this needs to
-  // be done in any case.
-  KCal::ScheduleMessage *message = mFormat.parseScheduleMessage( mCalendar, vCalIn );
+  // Parse the event reply
+  KCal::ScheduleMessage *message = mFormat.parseScheduleMessage( mCalendar,
+								 vCal );
   if( !message ) {
     // a parse error of some sort
     KMessageBox::error( mView, i18n("<b>There was a problem parsing the iCal data:</b><br>%1")
 			.arg(mFormat.exception()->message()) );
-    vCalOut = "false";
     return false;
   }
 
   KCal::IncidenceBase* incidence = message->event();
 
-  // Enter the answer into the calendar. We just create a
-  // Scheduler, because all the code we need is already there. We
-  // take a MailScheduler, because we need a concrete one, but we
-  // really only want code from Scheduler.
+  // Enter the answer into the calendar.
   QString uid = incidence->uid();
   KCal::MailScheduler scheduler( mCalendar );
-  // TODO: Make this work
   if( !scheduler.acceptTransaction( incidence,
 				    (KCal::Scheduler::Method)message->method(),
-				    message->status()/*, sender*/ ) ) {
+				    message->status() ) ) {
     KMessageBox::error( mView, i18n("Scheduling failed") );
-    vCalOut = "false";
     return false;
   }
 
   mView->updateView();
-
-  // Find the calendar entry that corresponds to this uid.
-  if( Event* event = mCalendar->event( uid ) ) {
-    vCalOut = mFormat.createScheduleMessage( event, KCal::Scheduler::Reply );
-  } else if( Todo* todo = mCalendar->todo( uid ) )
-    vCalOut = mFormat.createScheduleMessage( todo, KCal::Scheduler::Reply );
-  else if( Journal* journal = mCalendar->journal( uid ) )
-    vCalOut = mFormat.createScheduleMessage( journal, KCal::Scheduler::Reply );
-
   return true;
 }
 

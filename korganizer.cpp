@@ -347,6 +347,11 @@ bool KOrganizer::eventRequest( QString request, QCString receiver,
   return mActionManager->eventRequest( request, receiver, ical );
 }
 
+bool KOrganizer::eventReply( QString ical )
+{
+  return mActionManager->eventReply( ical );
+}
+
 KOrg::CalendarViewBase *KOrganizer::view() const
 {
   return mActionManager->view();

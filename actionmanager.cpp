@@ -1152,6 +1152,12 @@ bool ActionManager::eventRequest(QString request, QCString receiver,
                                                        ical);
 }
 
+bool ActionManager::eventReply( QString ical )
+{
+  if( !KOGroupware::instance() ) return false;
+  return KOGroupware::instance()->incidenceAnswer( ical );
+}
+
 void ActionManager::configureDateTimeFinished(KProcess *proc)
 {
   delete proc;
