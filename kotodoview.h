@@ -115,6 +115,8 @@ class KOTodoView : public KOrg::BaseView
     void showDates(const QDate &start, const QDate &end);
     void showEvents(QPtrList<Event> eventList);
 
+    void clearSelection();
+
     void editItem(QListViewItem *item,const QPoint &,int);
     void showItem(QListViewItem *item,const QPoint &,int);
     void popupMenu(QListViewItem *item,const QPoint &,int);

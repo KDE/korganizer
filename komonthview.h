@@ -174,6 +174,8 @@ class KOMonthView: public KOEventView
 
     void changeEventDisplay(Event *, int);
 
+    void clearSelection();
+
     void showContextMenu( Incidence * );
 
     void setSelectedCell( MonthViewCell * );

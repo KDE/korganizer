@@ -137,6 +137,8 @@ class KOAgendaView : public KOEventView {
 
     void changeEventDisplay(Event *, int);
 
+    void clearSelection();
+
     void slotViewChange(int newView);
     void slotViewChange();
 

@@ -117,7 +117,7 @@ CalendarView::CalendarView(QWidget *parent,const char *name)
 
   mModified = false;
   mReadOnly = false;
-  mEventsSelected = false;
+  mSelectedIncidence = 0;
 
   mCalPrinter = 0;
 
@@ -220,10 +220,7 @@ CalendarView::CalendarView(QWidget *parent,const char *name)
   connect(QApplication::clipboard(),SIGNAL(dataChanged()),
           SLOT(checkClipboard()));
   connect( mTodoList,SIGNAL( incidenceSelected( Incidence * ) ),
-           SLOT( todoSelect( Incidence * ) ) );
-
-  connect( this, SIGNAL( incidenceSelected( Incidence * ) ),
-           SLOT( processIncidenceSelection( Incidence * ) ) );
+           SLOT( processTodoListSelection( Incidence * ) ) );
 
   kdDebug() << "CalendarView::CalendarView() done" << endl;
 }
@@ -1371,62 +1368,55 @@ void CalendarView::adaptNavigationUnits()
   }
 }
 
-// This function is temporarily needed until all views are moved to the
-// incidenceSelected() signal
+void CalendarView::processMainViewSelection( Incidence *incidence )
+{
+  if ( incidence ) mTodoList->clearSelection();
+  processIncidenceSelection( incidence );
+}
+
+void CalendarView::processTodoListSelection( Incidence *incidence )
+{
+  if ( incidence && mViewManager->currentView() ) {
+    mViewManager->currentView()->clearSelection();
+  }
+  processIncidenceSelection( incidence );
+}
+
 void CalendarView::processIncidenceSelection( Incidence *incidence )
 {
+  if ( incidence == mSelectedIncidence ) return;
+  
+  mSelectedIncidence = incidence;
+
+  emit incidenceSelected( mSelectedIncidence );
+
   if ( incidence && incidence->type() == "Event" ) {
-    processEventSelection( true );
-  } else {
-    processEventSelection( false );
-  }
-}
-
-void CalendarView::processEventSelection(bool selected)
-{
-  // Do nothing, if state hasn't changed
-// Disabled because initial state wasn't propagated correctly
-//  if (mEventsSelected == selected) return;
-
-  mEventsSelected = selected;
-  emit eventsSelected(mEventsSelected);
-
-  Event *event = 0;
-  if (mViewManager->currentView()) {
-    Incidence *incidence = mViewManager->currentView()->selectedIncidences().first();
-    if (mViewManager->currentView()->isEventView()) {
-      if ( incidence && incidence->type() == "Event" ) {
-        event = static_cast<Event *>(incidence);
-      }
-    }
-  }
-  if (event) {
-    if (event->organizer()==KOPrefs::instance()->email()) {
-      emit organizerEventsSelected(mEventsSelected);
-    }
-    else {
+    Event *event = static_cast<Event *>( incidence );
+    
+    if ( event->organizer() == KOPrefs::instance()->email() ) {
+      emit organizerEventsSelected( true );
+    } else {
       emit organizerEventsSelected(false);
     }
-
-    if (event->attendeeByMails(KOPrefs::instance()->mAdditionalMails,KOPrefs::instance()->email())) {
-//    if (event->attendeeByMail(KOPrefs::instance()->email())) {
-      emit groupEventsSelected(mEventsSelected);
-    }
-    else {
+    
+    if (event->attendeeByMails( KOPrefs::instance()->mAdditionalMails,
+                                KOPrefs::instance()->email() ) ) {
+      emit groupEventsSelected( true );
+    } else {
       emit groupEventsSelected(false);
     }
+  } else {
+    emit organizerEventsSelected(false);
+    emit groupEventsSelected(false);
   }
-  else {
-     emit organizerEventsSelected(false);
-     emit groupEventsSelected(false);
+
+  if  ( incidence && incidence->type() == "Todo" ) {
+    emit todoSelected( true );
+  } else {
+    emit todoSelected( false );
   }
 }
 
-void CalendarView::emitEventsSelected()
-{
-//  emit eventsSelected(mEventsSelected);
-  processEventSelection(mEventsSelected);
-}
 
 void CalendarView::checkClipboard()
 {
@@ -1593,15 +1583,6 @@ Todo *CalendarView::selectedTodo()
   }
 
   return 0;
-}
-
-void CalendarView::todoSelect( Incidence *incidence )
-{
-  if  ( incidence && incidence->type() == "Todo" ) {
-    emit todoSelected( true );
-  } else {
-    emit todoSelected( false );
-  }
 }
 
 void CalendarView::dialogClosing(Incidence *in)

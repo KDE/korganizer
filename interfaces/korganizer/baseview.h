@@ -161,6 +161,11 @@ class BaseView : public QWidget
     */
     virtual void updateConfig() {}
 
+    /**
+      Clear selection. The incidenceSelected signal is not emitted.
+    */
+    virtual void clearSelection() {}
+    
   signals:
     void incidenceSelected( Incidence * );
 

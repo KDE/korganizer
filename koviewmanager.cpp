@@ -147,7 +147,7 @@ void KOViewManager::showView(KOrg::BaseView *view)
   mCurrentView = view;
 
   raiseCurrentView();
-  mMainView->processEventSelection(false);
+  mMainView->processIncidenceSelection( 0 );
 
   mMainView->updateView();
 
@@ -203,7 +203,7 @@ void KOViewManager::showListView()
             mMainView, SLOT(deleteEvent(Event *)));
 
     connect( mListView, SIGNAL( incidenceSelected( Incidence * ) ),
-             mMainView, SIGNAL( incidenceSelected( Incidence * ) ) );
+             mMainView, SLOT( processMainViewSelection( Incidence * ) ) );
 
     connect(mMainView, SIGNAL(configChanged()), mListView, SLOT(updateConfig()));
   }
@@ -242,8 +242,9 @@ void KOViewManager::showAgendaView()
             mMainView, SLOT(showEvent(Event *)));
     connect(mAgendaView, SIGNAL(deleteEventSignal(Event *)),
             mMainView, SLOT(deleteEvent(Event *)));
-    connect(mAgendaView,SIGNAL(eventsSelected(bool)),
-            mMainView, SLOT(processEventSelection(bool)));
+
+    connect( mAgendaView, SIGNAL( incidenceSelected( Incidence * ) ),
+             mMainView, SLOT( processMainViewSelection( Incidence * ) ) );
 
     connect(mAgendaView, SIGNAL( toggleExpand() ),
             mMainView, SLOT( toggleExpand() ) );
@@ -296,8 +297,9 @@ void KOViewManager::showMonthView()
             mMainView, SLOT(editEvent(Event *)));
     connect(mMonthView, SIGNAL(deleteEventSignal(Event *)),
             mMainView, SLOT(deleteEvent(Event *)));
-    connect(mMonthView,SIGNAL(eventsSelected(bool)),
-            mMainView, SLOT(processEventSelection(bool)));
+
+    connect( mMonthView, SIGNAL( incidenceSelected( Incidence * ) ),
+             mMainView, SLOT( processMainViewSelection( Incidence * ) ) );
 
     connect(mMainView, SIGNAL(configChanged()), mMonthView, SLOT(updateConfig()));
   }
@@ -324,7 +326,7 @@ void KOViewManager::showTodoView()
             mMainView, SLOT(deleteTodo(Todo *)));
 
     connect( mTodoView, SIGNAL( incidenceSelected( Incidence * ) ),
-             mMainView, SIGNAL( incidenceSelected( Incidence * ) ) );
+             mMainView, SLOT( processMainViewSelection( Incidence * ) ) );
 
     connect(mMainView, SIGNAL(configChanged()), mTodoView, SLOT(updateConfig()));
   }

@@ -136,7 +136,7 @@ class KOAgenda : public QScrollView
     void deleteEventSignal(Event *event);
 
     void itemModified(KOAgendaItem *item);
-    void itemSelected(bool);
+    void incidenceSelected( Incidence * );
 
     void showEventPopupSignal(Event *);
 

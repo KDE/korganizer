@@ -85,13 +85,13 @@ void KOJournalView::showDates(const QDate &start, const QDate &)
   if (j) mEntry->setJournal(j);
   else mEntry->clear();
   
-//  emit eventsSelected(false);
+//  emit incidenceSelected( 0 );
 }
 
 void KOJournalView::showEvents(QPtrList<Event>)
 {
   // After new creation of list view no events are selected.
-//  emit eventsSelected(false);
+//  emit incidenceSelected( 0 );
 }
 
 void KOJournalView::changeEventDisplay(Event *, int /*action*/)

@@ -390,14 +390,14 @@ KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name) :
           SLOT(startDrag(Event *)));
 
   // synchronize selections
-  connect(mAgenda,SIGNAL(itemSelected(bool)),
-          mAllDayAgenda,SLOT(deselectItem()));
-  connect(mAllDayAgenda,SIGNAL(itemSelected(bool)),
-          mAgenda,SLOT(deselectItem()));
-  connect(mAgenda,SIGNAL(itemSelected(bool)),
-          SIGNAL(eventsSelected(bool)));
-  connect(mAllDayAgenda,SIGNAL(itemSelected(bool)),
-          SIGNAL(eventsSelected(bool)));
+  connect( mAgenda, SIGNAL( incidenceSelected( Incidence * ) ),
+           mAllDayAgenda, SLOT( deselectItem() ) );
+  connect( mAllDayAgenda, SIGNAL( incidenceSelected( Incidence * ) ),
+           mAgenda, SLOT( deselectItem() ) );
+  connect( mAgenda, SIGNAL( incidenceSelected( Incidence * ) ),
+           SIGNAL( incidenceSelected( Incidence * ) ) );
+  connect( mAllDayAgenda, SIGNAL( incidenceSelected( Incidence * ) ),
+           SIGNAL( incidenceSelected( Incidence * ) ) );
 }
 
 
@@ -845,7 +845,7 @@ void KOAgendaView::fillAgenda()
 //  mAgenda->viewport()->update();
 //  mAllDayAgenda->viewport()->update();
 
-  emit eventsSelected(false);
+  emit incidenceSelected( 0 );
 
 //  kdDebug() << "Fill Agenda done" << endl;
 }
@@ -1025,4 +1025,10 @@ void KOAgendaView::setExpandedButton( bool expanded )
   } else {
     mExpandButton->setPixmap( mNotExpandedPixmap );
   }
+}
+
+void KOAgendaView::clearSelection()
+{
+  mAgenda->deselectItem();
+  mAllDayAgenda->deselectItem();
 }

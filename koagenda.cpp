@@ -1199,12 +1199,12 @@ void KOAgenda::selectItem(KOAgendaItem *item)
   if (mSelectedItem == item) return;
   deselectItem();
   if (item == 0) {
-    emit itemSelected(false);
+    emit incidenceSelected( 0 );
     return;
   }
   mSelectedItem = item;
   mSelectedItem->select();
-  emit itemSelected(true);
+  emit incidenceSelected( mSelectedItem->itemEvent() );
 }
 
 // This function seems never be called.

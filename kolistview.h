@@ -119,6 +119,8 @@ class KOListView : public KOEventView
     virtual void showDates(const QDate &start, const QDate &end);
     virtual void showEvents(QPtrList<Event> eventList);
 
+    void clearSelection();
+
     void showDates();
     void hideDates();
 

@@ -129,9 +129,7 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     void changeNavStringPrev(const QString &);
     void changeNavStringNext(const QString &);
   
-    /** Emitted when state of events selection has changed. */
-    void eventsSelected(bool);
-   /** Emitted when state of events selection has changed and user is organizer*/
+    /** Emitted when state of events selection has changed and user is organizer*/
     void organizerEventsSelected(bool);
     /** Emitted when state of events selection has changed and user is attendee*/
     void groupEventsSelected(bool);
@@ -140,25 +138,26 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
       signal is emitted with 0 as argument.
     */
     void incidenceSelected( Incidence * );
+    /** Emitted, when a todoitem is selected or deselected. */
+    void todoSelected( bool );
 
-    /** Emitted, when clipboard content changes. Parameter indicates if paste
-     * is possible or not */
+    /**
+      Emitted, when clipboard content changes. Parameter indicates if paste
+      is possible or not.
+    */
     void pasteEnabled(bool);
     
-    /** Emitted, when the number of incoming messages has changed */
+    /** Emitted, when the number of incoming messages has changed. */
     void numIncomingChanged(int);
 
-    /** Emitted, when the number of outgoing messages has changed */
+    /** Emitted, when the number of outgoing messages has changed. */
     void numOutgoingChanged(int);
 
-    /** Send status message, which can e.g. be displayed in the status bar */
+    /** Send status message, which can e.g. be displayed in the status bar. */
     void statusMessage(const QString &);
     
     void calendarViewExpanded( bool );
-    
-    /** Emitted, when a todoitem is selected or deselected */
-    void todoSelected( bool );
-    
+        
   public slots:
     /** options dialog made a changed to the configuration. we catch this
      *  and notify all widgets which need to update their configuration. */
@@ -222,9 +221,7 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     void newSubTodo(Todo *);
     /** Delete todo */
     void deleteTodo(Todo *);
-    
-    //void eventsSelected(QPtrList<Event>);
-        
+            
     /** Check if clipboard contains vCalendar event. The signal pasteEnabled() is
      * emitted as result. */
     void checkClipboard();
@@ -373,11 +370,7 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     /** Move to the previous date(s) in the current view */
     void goPrevious();
 
-    void processEventSelection(bool selected);
-
     void toggleExpand();
-    
-    void todoSelect( Incidence * );
     
     void dialogClosing(Incidence *);
   
@@ -385,6 +378,12 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     void lookForIncomingMessages();
    /** Look for new messages in the outbox */
     void lookForOutgoingMessages();
+
+    void processMainViewSelection( Incidence * );
+    void processTodoListSelection( Incidence * );
+    
+    void processIncidenceSelection( Incidence * );
+    
   protected slots:
     /** Select a week to be displayed in the calendar view */
     void selectWeek(QDate weekstart);
@@ -392,15 +391,11 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     /** Select a view or adapt the current view to display the specified dates. */
     void selectDates(const DateList &);
   
-    void processIncidenceSelection( Incidence * );
-    
   public:
     // show a standard warning
     // returns KMsgBox::yesNoCancel()
     int msgCalModified();
   
-    void emitEventsSelected();
-
     /** Adapt navigation units correpsonding to step size of navigation of the
      * current view.
      */
@@ -448,7 +443,8 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     bool            mModified;	   // flag indicating if calendar is modified
     bool            mReadOnly; // flag indicating if calendar is read-only
     QDate mSaveSingleDate;
-    int mEventsSelected;
+
+    Incidence *mSelectedIncidence;
 
     KOTodoView *mTodoList;
     QMap<Incidence*,QDialog*> mDialogList;

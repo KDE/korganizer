@@ -482,7 +482,7 @@ KOMonthView::KOMonthView(Calendar *calendar, QWidget *parent, const char *name)
 
   updateConfig();
 
-  emit eventsSelected(false);
+  emit incidenceSelected( 0 );
 }
 
 KOMonthView::~KOMonthView()
@@ -650,18 +650,27 @@ void KOMonthView::setSelectedCell( MonthViewCell *cell )
   if ( mSelectedCell ) mSelectedCell->deselect();
   
   mSelectedCell = cell;
-  
-  emit eventsSelected( true );
+
+  if ( !mSelectedCell )
+    emit incidenceSelected( 0 );
+  else 
+    emit incidenceSelected( mSelectedCell->selectedIncidence() );
 }
 
 void KOMonthView::processSelectionChange()
 {
-  QPtrList<Incidence> events = selectedIncidences();
-  if (events.count() > 0) {
-    emit eventsSelected(true);
-//    kdDebug() << "KOMonthView::processSelectionChange() true" << endl;
+  QPtrList<Incidence> incidences = selectedIncidences();
+  if (incidences.count() > 0) {
+    emit incidenceSelected( incidences.first() );
   } else {
-    emit eventsSelected(false);
-//    kdDebug() << "KOMonthView::processSelectionChange() false" << endl;
+    emit incidenceSelected( 0 );
+  }
+}
+
+void KOMonthView::clearSelection()
+{
+  if ( mSelectedCell ) {
+    mSelectedCell->deselect();
+    mSelectedCell = 0;
   }
 }

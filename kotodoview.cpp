@@ -600,7 +600,7 @@ void KOTodoView::restoreLayout(KConfig *config, const QString &group)
 
 void KOTodoView::processSelectionChange()
 {
-  kdDebug() << "KOTodoView::processSelectionChange()" << endl;
+//  kdDebug() << "KOTodoView::processSelectionChange()" << endl;
 
   KOTodoViewItem *item =
     static_cast<KOTodoViewItem *>( mTodoListView->selectedItem() );
@@ -615,4 +615,9 @@ void KOTodoView::processSelectionChange()
 void KOTodoView::modified(bool b)
 {
   emit isModified(b);
+}
+
+void KOTodoView::clearSelection()
+{
+  mTodoListView->selectAll( false );
 }

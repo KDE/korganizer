@@ -139,12 +139,6 @@ class KOEventView : public KOrg::BaseView
      */
     void showEventSignal(Event *);
 
-    /**
-     * Emitted, when events are selected or deselected. The argument is true, if
-     * there are selected events and false if there are no selected events.
-     */
-    void eventsSelected(bool selected);
-
     //ET CVS MERGE !
     /**
      * Emitted when an event is moved using the mouse in an agenda

@@ -379,3 +379,8 @@ void KOListView::processSelectionChange()
     emit incidenceSelected( item->incidence() );
   }
 }
+
+void KOListView::clearSelection()
+{
+  mListView->selectAll( false );
+}

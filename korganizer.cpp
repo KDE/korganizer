@@ -137,9 +137,6 @@ KOrganizer::KOrganizer(const char *name)
   connect( mCalendarView, SIGNAL( incidenceSelected( Incidence * ) ),
            SLOT( processIncidenceSelection( Incidence * ) ) );
 
-  // Update state of event instance related actions
-  mCalendarView->emitEventsSelected();
-
   processIncidenceSelection( 0 );
 
   // Update state of paste action
@@ -269,24 +266,22 @@ void KOrganizer::initActions()
 
   // edit menu
 
-  action = KStdAction::cut(mCalendarView,SLOT(edit_cut()),actionCollection());
-  action->setEnabled(false);
-  connect(mCalendarView,SIGNAL(eventsSelected(bool)),
-          action,SLOT(setEnabled(bool)));
-  action = KStdAction::copy(mCalendarView,SLOT(edit_copy()),actionCollection());
-  action->setEnabled(false);
-  connect(mCalendarView,SIGNAL(eventsSelected(bool)),
-          action,SLOT(setEnabled(bool)));
+  mCutAction = KStdAction::cut(mCalendarView,SLOT(edit_cut()),
+                               actionCollection());
+
+  mCopyAction = KStdAction::copy(mCalendarView,SLOT(edit_copy()),
+                                 actionCollection());
+
   action = KStdAction::paste(mCalendarView,SLOT(edit_paste()),
                              actionCollection());
-  connect(mCalendarView,SIGNAL(pasteEnabled(bool)),
-          action,SLOT(setEnabled(bool)));
-  action = new KAction(i18n("&Delete"),"editdelete",0,
-                    mCalendarView,SLOT(appointment_delete()),
-                    actionCollection(), "edit_delete");
-  action->setEnabled(false);
-  connect(mCalendarView,SIGNAL(eventsSelected(bool)),
-          action,SLOT(setEnabled(bool)));
+  action->setEnabled( false );
+  connect( mCalendarView, SIGNAL( pasteEnabled( bool ) ),
+           action, SLOT( setEnabled( bool ) ) );
+
+  mDeleteAction = new KAction(i18n("&Delete"),"editdelete",0,
+                              mCalendarView,SLOT(appointment_delete()),
+                              actionCollection(), "edit_delete");
+
   KStdAction::find(mCalendarView->dialogManager(), SLOT(showSearchDialog()),
                    actionCollection());
 
@@ -358,34 +353,14 @@ void KOrganizer::initActions()
   (void)new KAction(i18n("T&ake over Calendar"), 0,
                     mCalendarView,SLOT(takeOverCalendar()),
                     actionCollection(), "takeover_calendar");
-#endif
 
   action = new KAction(i18n("&Mail Appointment"), "mail_generic", 0,
                     mCalendarView,SLOT(action_mail()),
                     actionCollection(), "mail_appointment");
   connect(mCalendarView,SIGNAL(eventsSelected(bool)),
           action,SLOT(setEnabled(bool)));
-
-#if 0
-  action = new KAction(i18n("Sh&ow Todo..."), 0,
-                    mCalendarView,SLOT(todo_show()),
-                    actionCollection(), "show_todo");
-  action->setEnabled(false);
-  connect(mCalendarView,SIGNAL(todoSelected(bool)),
-          action,SLOT(setEnabled(bool)));
-  action = new KAction(i18n("Ed&it Todo..."), 0,
-                    mCalendarView,SLOT(todo_edit()),
-                    actionCollection(), "edit_todo");
-  action->setEnabled(false);
-  connect(mCalendarView,SIGNAL(todoSelected(bool)),
-          action,SLOT(setEnabled(bool)));
-  action = new KAction(i18n("De&lete Todo..."), 0,
-                    mCalendarView,SLOT(todo_delete()),
-                    actionCollection(), "delete_todo");
-  action->setEnabled(false);
-  connect(mCalendarView,SIGNAL(todoSelected(bool)),
-          action,SLOT(setEnabled(bool)));
 #endif
+
   action = new KAction(i18n("&Make Sub-Todo independent"), 0,
                     mCalendarView,SLOT(todo_unsub()),
                     actionCollection(), "unsub_todo");
@@ -1251,7 +1226,7 @@ void KOrganizer::configureDateTimeFinished(KProcess *proc)
 
 void KOrganizer::processIncidenceSelection( Incidence *incidence )
 {
-  kdDebug() << "KOrganizer::processIncidenceSelection()" << endl;
+//  kdDebug() << "KOrganizer::processIncidenceSelection()" << endl;
   
   if ( !incidence ) {
     enableIncidenceActions( false );
@@ -1277,10 +1252,11 @@ void KOrganizer::processIncidenceSelection( Incidence *incidence )
 
 void KOrganizer::enableIncidenceActions( bool enabled )
 {
-  kdDebug() << "KOrganizer::enableIncidenceActions(): "
-            << ( enabled ? "yes" : "no" ) << endl;
-
   mShowIncidenceAction->setEnabled( enabled );
   mEditIncidenceAction->setEnabled( enabled );
   mDeleteIncidenceAction->setEnabled( enabled );
+
+  mCutAction->setEnabled( enabled );
+  mCopyAction->setEnabled( enabled );
+  mDeleteAction->setEnabled( enabled );
 }
