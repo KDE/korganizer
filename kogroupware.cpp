@@ -602,7 +602,7 @@ bool KOGroupware::sendICalMessage( QWidget* parent,
 {
   bool isOrganizer = KOPrefs::instance()->email() == incidence->organizer();
 
-  int rc;
+  int rc = 0;
   if( isOrganizer ) {
     // Figure out if there are other people involved in this incidence
     bool otherPeople = false;
