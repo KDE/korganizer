@@ -298,14 +298,6 @@ void KOViewManager::showMonthView()
   if (!mMonthView) {
     mMonthView = new KOMonthView(mMainView->calendar(), mMainView->viewStack(), "KOViewManager::MonthView");
     addView(mMonthView);
-
-    // SIGNALS/SLOTS FOR MONTH VIEW
-    connect(mMonthView, SIGNAL(newEventSignal(QDateTime)),
-            mMainView, SLOT(newEvent(QDateTime)));
-    connect(mMonthView, SIGNAL(newEventSignal(QDate)),
-            mMainView, SLOT(newEvent(QDate)));
-    connect(mMonthView, SIGNAL(newEventSignal()),
-            mMainView, SLOT(newEvent()));
   }
 
   showView(mMonthView);
