@@ -185,10 +185,7 @@ void KOGroupware::incomingDirChanged( const QString& path )
       }
     }
     scheduler.acceptTransaction( incidence, method, status );
-  } else if ( action.startsWith( "cancel" ) )
-    // @TODO: Could this be done like the others?
-    mCalendar->deleteIncidence( incidence );
-  else if ( action.startsWith( "reply" ) )
+  } else if ( action.startsWith( "cancel" ) || action.startsWith( "reply" ) )
     scheduler.acceptTransaction( incidence, method, status );
   else
     kdError(5850) << "Unknown incoming action " << action << endl;
@@ -565,11 +562,11 @@ bool KOGroupware::cancelIncidence( const QString& iCal )
   KCal::IncidenceBase* incidence = message->event();
 
   // Enter the answer into the calendar.
-  Event* event = mCalendar->event( incidence->uid() );
-  if( !event )
+  Incidence *inc = mCalendar->incidence( incidence->uid() );
+  if( !inc )
     return false;
 
-  mCalendar->deleteEvent( event );
+  mCalendar->deleteIncidence( inc );
   return true;
 }
 
