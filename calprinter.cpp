@@ -303,7 +303,7 @@ void CalPrinter::printMonth(const QDate &fd, const QDate &td)
 	       pageWidth, mHeaderHeight, Month);
     drawDaysOfWeek(p, curMonth, pageWidth, pageHeight);
     drawMonth(p, curMonth, pageWidth, pageHeight);
-    curMonth = curMonth.addDays(fromMonth.daysInMonth()+1);
+    curMonth = curMonth.addDays(curMonth.daysInMonth());
     if (curMonth <= toMonth)
       mPrinter->newPage();
   } while (curMonth <= toMonth);
