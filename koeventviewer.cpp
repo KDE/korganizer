@@ -126,6 +126,10 @@ void KOEventViewer::appendEvent(Event *event)
 {
   addTag("h1",event->summary());
   
+  if (!event->location().isEmpty()) {
+    addTag("b",i18n("Location: "));
+    mText.append(event->location()+"<br>");
+  }
   if (event->doesFloat()) {
     if (event->isMultiDay()) {
       mText.append(i18n("<b>From:</b> %1 <b>To:</b> %2")
@@ -165,6 +169,10 @@ void KOEventViewer::appendTodo(Todo *event)
 {
   addTag("h1",event->summary());
 
+  if (!event->location().isEmpty()) {
+    addTag("b",i18n("Location: "));
+    mText.append(event->location()+"<br>");
+  }
   if (event->hasDueDate()) {
     mText.append(i18n("<b>Due on:</b> %1").arg(event->dtDueStr()));
   }
