@@ -88,9 +88,9 @@ QComboBox *RecurBase::createWeekCountCombo( QWidget *parent, const char *name )
 {
   QComboBox *combo = new QComboBox( parent, name );
   QWhatsThis::add( combo,
-		   i18n("The number of the week from the beginning "
-		        "of the month on which this event or to-do "
-		        "should recur.") );
+                   i18n("The number of the week from the beginning "
+                        "of the month on which this event or to-do "
+                        "should recur.") );
   if ( !combo ) return 0;
   combo->insertItem( i18n("1st") );
   combo->insertItem( i18n("2nd") );
@@ -109,8 +109,8 @@ QComboBox *RecurBase::createWeekdayCombo( QWidget *parent, const char *name )
 {
   QComboBox *combo = new QComboBox( parent, name );
   QWhatsThis::add( combo,
-		   i18n("The weekday on which this event or to-do "
-		        "should recur.") );
+                   i18n("The weekday on which this event or to-do "
+                        "should recur.") );
   if ( !combo ) return 0;
   const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
   for( int i = 1; i <= 7; ++i ) {
@@ -123,8 +123,8 @@ QComboBox *RecurBase::createMonthNameCombo( QWidget *parent, const char *name )
 {
   QComboBox *combo = new QComboBox( parent, name );
   QWhatsThis::add( combo,
-		   i18n("The month during which this event or to-do "
-		        "should recur.") );
+                   i18n("The month during which this event or to-do "
+                        "should recur.") );
   if ( !combo ) return 0;
   const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
   for( int i = 1; i <= 12; ++i ) {
@@ -709,15 +709,15 @@ RecurrenceRangeWidget::RecurrenceRangeWidget( QWidget *parent,
 
   mEndDateButton = new QRadioButton( i18n("End &on:"), rangeBox );
   QWhatsThis::add( mEndDateButton,
-		   i18n("Sets the event or to-do to stop recurring on "
-			"a certain date.") );
+                   i18n("Sets the event or to-do to stop recurring on "
+                        "a certain date.") );
   rangeButtonGroup->insert( mEndDateButton );
   endDateLayout->addWidget( mEndDateButton );
 
   mEndDateEdit = new KDateEdit( rangeBox );
   QWhatsThis::add( mEndDateEdit,
-		   i18n("Date after which the event or to-do should stop "
-			"recurring") );
+                   i18n("Date after which the event or to-do should stop "
+                        "recurring") );
   endDateLayout->addWidget( mEndDateEdit );
 
   endDateLayout->addStretch( 1 );
@@ -835,8 +835,8 @@ RecurrenceChooser::RecurrenceChooser( QWidget *parent, const char *name ) :
   if ( KOPrefs::instance()->mCompactDialogs ) {
     mTypeCombo = new QComboBox( this );
     QWhatsThis::add( mTypeCombo,
-		     i18n("Sets the type of recurrence this event or to-do "
-			  "should have.") );
+                     i18n("Sets the type of recurrence this event or to-do "
+                          "should have.") );
     mTypeCombo->insertItem( i18n("Daily") );
     mTypeCombo->insertItem( i18n("Weekly") );
     mTypeCombo->insertItem( i18n("Monthly") );
@@ -854,20 +854,20 @@ RecurrenceChooser::RecurrenceChooser( QWidget *parent, const char *name ) :
 
     mDailyButton = new QRadioButton( i18n("&Daily"), ruleButtonGroup );
     QWhatsThis::add( mDailyButton,
-		     i18n("Sets the event or to-do to recur daily according "
-			  "to the specified rules.") );
+                     i18n("Sets the event or to-do to recur daily according "
+                          "to the specified rules.") );
     mWeeklyButton = new QRadioButton( i18n("&Weekly"), ruleButtonGroup );
     QWhatsThis::add( mWeeklyButton,
-		     i18n("Sets the event or to-do to recur weekly according "
-			  "to the specified rules.") );
+                     i18n("Sets the event or to-do to recur weekly according "
+                          "to the specified rules.") );
     mMonthlyButton = new QRadioButton( i18n("&Monthly"), ruleButtonGroup );
     QWhatsThis::add( mMonthlyButton,
-		     i18n("Sets the event or to-do to recur monthly according "
-			  "to the specified rules.") );
+                     i18n("Sets the event or to-do to recur monthly according "
+                          "to the specified rules.") );
     mYearlyButton = new QRadioButton( i18n("&Yearly"), ruleButtonGroup );
     QWhatsThis::add( mYearlyButton,
-		     i18n("Sets the event or to-do to recur yearly according "
-			  "to the specified rules.") );
+                     i18n("Sets the event or to-do to recur yearly according "
+                          "to the specified rules.") );
 
     connect( mDailyButton, SIGNAL( toggled( bool ) ),
              SLOT( emitChoice() ) );
@@ -930,8 +930,8 @@ KOEditorRecurrence::KOEditorRecurrence( QWidget* parent, const char *name ) :
 
   mEnabledCheck = new QCheckBox( i18n("&Enable recurrence"), this );
   QWhatsThis::add( mEnabledCheck,
-		   i18n("Enables recurrence for this event or to-do according "
-			"to the specified rules.") );
+                   i18n("Enables recurrence for this event or to-do according "
+                        "to the specified rules.") );
   connect( mEnabledCheck, SIGNAL( toggled( bool ) ),
            SLOT( setRecurrenceEnabled( bool ) ) );
   topLayout->addMultiCellWidget( mEnabledCheck, 0, 0, 0, 1 );
@@ -940,7 +940,7 @@ KOEditorRecurrence::KOEditorRecurrence( QWidget* parent, const char *name ) :
   mTimeGroupBox = new QGroupBox( 1, Horizontal, i18n("Appointment Time "),
                                  this );
   QWhatsThis::add( mTimeGroupBox,
-		   i18n("Displays appointment time information.") );
+                   i18n("Displays appointment time information.") );
   topLayout->addMultiCellWidget( mTimeGroupBox, 1, 1 , 0 , 1 );
 
   if ( KOPrefs::instance()->mCompactDialogs ) {
@@ -961,8 +961,8 @@ KOEditorRecurrence::KOEditorRecurrence( QWidget* parent, const char *name ) :
 
   mRuleBox = new QGroupBox( 1, orientation, i18n("Recurrence Rule"), this );
   QWhatsThis::add( mRuleBox,
-		   i18n("Options concerning the type of recurrence this event "
-			"or to-do should have.") );
+                   i18n("Options concerning the type of recurrence this event "
+                        "or to-do should have.") );
   if ( KOPrefs::instance()->mCompactDialogs ) {
     topLayout->addWidget( mRuleBox, 2, 0 );
   } else {
@@ -1001,8 +1001,8 @@ KOEditorRecurrence::KOEditorRecurrence( QWidget* parent, const char *name ) :
     mRecurrenceRangeButton = new QPushButton( i18n("Recurrence Range..."),
                                               this );
     QWhatsThis::add( mRecurrenceRangeButton,
-		     i18n("Options concerning the time range during which "
-			  "this event or to-do should recur.") );
+                     i18n("Options concerning the time range during which "
+                          "this event or to-do should recur.") );
     topLayout->addWidget( mRecurrenceRangeButton, 3, 0 );
     connect( mRecurrenceRangeButton, SIGNAL( clicked() ),
              SLOT( showRecurrenceRangeDialog() ) );
@@ -1018,8 +1018,8 @@ KOEditorRecurrence::KOEditorRecurrence( QWidget* parent, const char *name ) :
   } else {
     mRecurrenceRangeWidget = new RecurrenceRangeWidget( this );
     QWhatsThis::add( mRecurrenceRangeWidget,
-		     i18n("Options concerning the time range during which "
-			  "this event or to-do should recur.") );
+                     i18n("Options concerning the time range during which "
+                          "this event or to-do should recur.") );
     mRecurrenceRangeDialog = 0;
     mRecurrenceRange = mRecurrenceRangeWidget;
     mRecurrenceRangeButton = 0;

@@ -47,9 +47,9 @@ KOEditorAttachments::KOEditorAttachments( int spacing, QWidget *parent,
 
   mAttachments = new QListView( this );
   QWhatsThis::add( mAttachments,
-		   i18n("Displays a list of current items (files, mail, etc.) "
-		        "that have been associated with this event or to-do. "
-			"The URI column displays the location of the file.") );
+                   i18n("Displays a list of current items (files, mail, etc.) "
+                        "that have been associated with this event or to-do. "
+                        "The URI column displays the location of the file.") );
   mAttachments->addColumn( i18n("URI") );
   mAttachments->addColumn( i18n("MIME Type") );
   topLayout->addWidget( mAttachments );
@@ -60,30 +60,30 @@ KOEditorAttachments::KOEditorAttachments( int spacing, QWidget *parent,
 
   QPushButton *button = new QPushButton( i18n("&Add..."), this );
   QWhatsThis::add( button,
-		   i18n("Shows a dialog used to select an attachment "
-		   	"to add to this event or to-do.") );
+                   i18n("Shows a dialog used to select an attachment "
+                        "to add to this event or to-do.") );
   buttonLayout->addWidget( button );
   connect( button, SIGNAL( clicked() ), SLOT( slotAdd() ) );
 
   button = new QPushButton( i18n("&Edit..."), this );
   QWhatsThis::add( button,
-		   i18n("Shows a dialog used to edit the attachment "
-		   	"currently selected in the list above.") );
+                   i18n("Shows a dialog used to edit the attachment "
+                        "currently selected in the list above.") );
   buttonLayout->addWidget( button );
   connect( button, SIGNAL( clicked() ), SLOT( slotEdit() ) );
 
   button = new QPushButton( i18n("&Remove"), this );
   QWhatsThis::add( button,
-		   i18n("Removes the attachment selected in the list above "
-			"from this event or to-do.") );
+                   i18n("Removes the attachment selected in the list above "
+                        "from this event or to-do.") );
   buttonLayout->addWidget( button );
   connect( button, SIGNAL( clicked() ), SLOT( slotRemove() ) );
 
   button = new QPushButton( i18n("&Show"), this );
   QWhatsThis::add( button,
-		   i18n("Opens the attachment selected in the list above "
-		   	"in the viewer that is associated with it in your "
-			"KDE preferences.") );
+                   i18n("Opens the attachment selected in the list above "
+                        "in the viewer that is associated with it in your "
+                        "KDE preferences.") );
   buttonLayout->addWidget( button );
   connect( button, SIGNAL( clicked() ), SLOT( slotShow() ) );
 
