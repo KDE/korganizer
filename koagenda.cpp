@@ -23,6 +23,7 @@
     with any edition of Qt, and distribute the resulting executable,
     without including the source code for Qt in the source distribution.
 */
+#include <assert.h>
 
 #include <qintdict.h>
 #include <qdatetime.h>
@@ -194,6 +195,11 @@ QDate KOAgenda::selectedIncidenceDate() const
   return ( mSelectedItem ? mSelectedItem->itemDate() : QDate() );
 }
 
+const QString KOAgenda::lastSelectedUid() const
+{
+  return mSelectedUid;
+}
+
 
 void KOAgenda::init()
 {
@@ -231,6 +237,7 @@ void KOAgenda::init()
   mItemMoved = false;
 
   mSelectedItem = 0;
+  mSelectedUid = QString::null;
 
   setAcceptDrops( true );
   installEventFilter( this );
@@ -1755,6 +1762,8 @@ void KOAgenda::selectItem(KOAgendaItem *item)
   }
   mSelectedItem = item;
   mSelectedItem->select();
+  assert( mSelectedItem->incidence() );
+  mSelectedUid = mSelectedItem->incidence()->uid();
   emit incidenceSelected( mSelectedItem->incidence() );
 }
 

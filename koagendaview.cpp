@@ -1161,11 +1161,9 @@ void KOAgendaView::fillAgenda()
 {
   /* Remember the uids of the selected items. In case one of the
    * items was deleted and re-added, we want to reselect it. */
-  const QString &selectedAgendaUid = 
-    mAgenda->selectedIncidence()? mAgenda->selectedIncidence()->uid():QString::null;
-  const QString &selectedAllDayAgendaUid = 
-    mAllDayAgenda->selectedIncidence()? mAllDayAgenda->selectedIncidence()->uid():QString::null;
-  
+  const QString &selectedAgendaUid = mAgenda->lastSelectedUid();
+  const QString &selectedAllDayAgendaUid = mAllDayAgenda->lastSelectedUid();
+
   enableAgendaUpdate( true );
   clearView();
 
@@ -1209,11 +1207,11 @@ void KOAgendaView::fillAgenda()
       Event *event = *dayEvents.at(numEvent);
 //      kdDebug(5850) << " Event: " << event->summary() << endl;
       insertIncidence( event, currentDate, curCol );
-      if( event->uid() == selectedAgendaUid && !selectedAgendaUid.isEmpty() ) {
+      if( event->uid() == selectedAgendaUid && !selectedAgendaUid.isNull() ) {
         mAgenda->selectItemByUID( event->uid() );
         somethingReselected = true;
       }
-      if( event->uid() == selectedAllDayAgendaUid && !selectedAllDayAgendaUid.isEmpty() ) {
+      if( event->uid() == selectedAllDayAgendaUid && !selectedAllDayAgendaUid.isNull() ) {
         mAllDayAgenda->selectItemByUID( event->uid() );
         somethingReselected = true;
       }
