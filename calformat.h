@@ -45,10 +45,10 @@ class CalFormat {
     /** create an object to be used with the Xdnd Drag And Drop protocol. */
     virtual VCalDrag *createDrag(KOEvent *selectedEv, QWidget *owner) = 0;
     /** create an object to be used with the Xdnd Drag And Drop protocol. */
-    virtual VCalDrag *createDragTodo(KOEvent *selectedEv, QWidget *owner) = 0;
+    virtual VCalDrag *createDragTodo(Todo *selectedEv, QWidget *owner) = 0;
 
     /** Create Todo object from drop event */
-    virtual KOEvent *createDropTodo(QDropEvent *de) = 0;
+    virtual Todo *createDropTodo(QDropEvent *de) = 0;
     /** Create Event object from drop event */
     virtual KOEvent *createDrop(QDropEvent *de) = 0;
   

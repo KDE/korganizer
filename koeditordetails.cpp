@@ -400,7 +400,7 @@ void KOEditorDetails::setDefaults()
   attendeeRSVPButton->setChecked(true);
 }
 
-void KOEditorDetails::readEvent(KOEvent *event)
+void KOEditorDetails::readEvent(Incidence *event)
 {
   QList<Attendee> tmpAList = event->getAttendeeList();
   Attendee *a;
@@ -410,7 +410,7 @@ void KOEditorDetails::readEvent(KOEvent *event)
   //  Details->attachListBox->insertItem(i18n("Not implemented yet."));
 }
 
-void KOEditorDetails::writeEvent(KOEvent *event)
+void KOEditorDetails::writeEvent(Incidence *event)
 {
 //  kdDebug() << "KOEditorDetails::writeEvent()" << endl;
   event->clearAttendees();

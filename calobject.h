@@ -9,6 +9,8 @@
 #include <qlist.h>
 
 #include "koevent.h"
+#include "todo.h"
+
 #include "calformat.h"
 
 #define _TIME_ZONE "-0500" /* hardcoded, overridden in config file. */
@@ -61,9 +63,9 @@ class CalObject : public QObject {
     /** create an object to be used with the Xdnd Drag And Drop protocol. */
     VCalDrag *createDrag(KOEvent *selectedEv, QWidget *owner);
     /** create an object to be used with the Xdnd Drag And Drop protocol. */
-    VCalDrag *createDragTodo(KOEvent *selectedEv, QWidget *owner);
+    VCalDrag *createDragTodo(Todo *selectedEv, QWidget *owner);
     /** Create Todo object from drop event */
-    KOEvent *createDropTodo(QDropEvent *de);
+    Todo *createDropTodo(QDropEvent *de);
     /** Create Event object from drop event */
     KOEvent *createDrop(QDropEvent *de);
   
@@ -96,12 +98,6 @@ class CalObject : public QObject {
      * @param anEvent a pointer to the event to add
      */
     virtual void addEvent(KOEvent *anEvent) = 0;
-    /** deletes an event from this calendar. We could just use
-     * a unique ID to search for the event, but using the date too is faster.
-     * @param date the date upon which the event occurs.  
-     * @param eventId the unique ID attached to the event
-     */
-    virtual void deleteEvent(const QDate &date, int eventId) = 0;
     /** Delete event from calendar */
     virtual void deleteEvent(KOEvent *) = 0;
 
@@ -150,15 +146,17 @@ class CalObject : public QObject {
     virtual int numEvents(const QDate &qd) = 0;
   
     /** add a todo to the todolist. */
-    virtual void addTodo(KOEvent *todo) = 0;
+    virtual void addTodo(Todo *todo) = 0;
     /** remove a todo from the todolist. */
-    virtual void deleteTodo(KOEvent *) = 0;
-    virtual const QList<KOEvent> &getTodoList() const = 0;
+    virtual void deleteTodo(Todo *) = 0;
+    virtual const QList<Todo> &getTodoList() const = 0;
     /** searches todolist for an event with this unique string identifier,
       returns a pointer or null. */
-    virtual KOEvent *getTodo(const QString &UniqueStr) = 0;
+    virtual Todo *getTodo(const QString &UniqueStr) = 0;
     /** Returns list of todos due on the specified date */
-    virtual QList<KOEvent> getTodosForDate(const QDate & date) = 0;
+    virtual QList<Todo> getTodosForDate(const QDate & date) = 0;
+
+    void addIncidence(Incidence *);
   
     /** Enable/Disable dialogs shown by calendar class */  
     void showDialogs(bool d);
@@ -169,7 +167,7 @@ class CalObject : public QObject {
     void alarmSignal(QList<KOEvent> &);
     /** emitted whenever an event in the calendar changes.  Emits a pointer
       to the changed event. */
-    void calUpdated(KOEvent *);
+    void calUpdated(Incidence *);
   
   public slots:
     /** checks to see if any alarms are pending, and if so, returns a list

@@ -27,14 +27,14 @@ class xQGantt;
 */
 class KOProjectViewItem : public xQTask {
   public:
-    KOProjectViewItem(KOEvent *,xQTask* parentTask, const QString& text, 
+    KOProjectViewItem(Todo *,xQTask* parentTask, const QString& text, 
 	              const QDateTime& start, const QDateTime& end);
     ~KOProjectViewItem();
     
-    KOEvent *event();
+    Todo *event();
     
   private:
-    KOEvent *mEvent;
+    Todo *mEvent;
 };
 
 
@@ -51,7 +51,7 @@ class KOProjectView : public KOBaseView
     KOProjectView(CalObject *, QWidget* parent=0, const char* name=0 );
     ~KOProjectView() {}
 
-    QList<KOEvent> getSelected();
+    QList<Incidence> getSelected();
 
     /** Return number of shown dates. */
     int currentDateCount() { return 0; }
@@ -107,14 +107,14 @@ class KOProjectView : public KOBaseView
 
   private:
     void createMainTask();
-    xQTask *createTask(xQTask *,KOEvent *);
+    xQTask *createTask(xQTask *,Todo *);
   
     xQGantt *mGantt;
     xQTask *mMainTask;
 
-    QMap<KOEvent *,xQTask *>::ConstIterator insertTodoItem(KOEvent *todo);
+    QMap<Todo *,xQTask *>::ConstIterator insertTodoItem(Todo *todo);
 
-    QMap<KOEvent *,xQTask *> mTodoMap;
+    QMap<Todo *,xQTask *> mTodoMap;
 };
 
 #endif

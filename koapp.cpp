@@ -57,12 +57,13 @@ void KOrganizerApp::displayImminent(const QString &file,int numdays)
     }
 
     printf("---------------------------------------------------------------\n");
-    tmpList = cal->getTodosForDate(currDate);
+    QList<Todo> tmpList2 = cal->getTodosForDate(currDate);
+    Todo *currTodo;
     if (tmpList.count() > 0) {
-      for (currEvent = tmpList.first(); currEvent; currEvent = tmpList.next()) {
-        printf("%s",currEvent->getSummary().latin1());
-        if (!currEvent->doesFloat()) {
-          printf(" (%s)",currEvent->getDtDueStr().latin1());
+      for (currTodo = tmpList2.first(); currTodo; currTodo = tmpList2.next()) {
+        printf("%s",(const char *)currTodo->getSummary().local8Bit());
+        if (!currTodo->doesFloat()) {
+          printf(" (%s)",(const char *)currTodo->dtDueStr().local8Bit());
         }
         printf("\n");
       }

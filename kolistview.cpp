@@ -22,9 +22,6 @@
 ListItemVisitor::ListItemVisitor(KOListViewItem *item)
 {
   mItem = item;
-
-// TODO: Change type of event() to Incidence *
-//  mItem->event()->accept(*this);
 }
 
 ListItemVisitor::~ListItemVisitor()
@@ -33,8 +30,6 @@ ListItemVisitor::~ListItemVisitor()
 
 bool ListItemVisitor::visit(Event *e)
 {
-// TODO: move KOEvent functions to Event class
-#if 0
   mItem->setText(0,e->getSummary());
   mItem->setText(1,e->getDtStartDateStr());
   mItem->setText(2,e->getDtStartTimeStr());
@@ -44,14 +39,12 @@ bool ListItemVisitor::visit(Event *e)
   mItem->setText(6,e->doesRecur() ? i18n("Yes") : i18n("No"));
   mItem->setText(7,"---");
   mItem->setText(8,"---");
-#endif
+
   return true;
 }
 
 bool ListItemVisitor::visit(Todo *t)
 {
-// TODO: move KOEvent functions to Event class
-#if 0
   mItem->setText(0,i18n("Todo: %1").arg(t->getSummary()));
   mItem->setText(1,"---");
   mItem->setText(2,"---");
@@ -60,17 +53,17 @@ bool ListItemVisitor::visit(Todo *t)
   mItem->setText(5,"---");
   mItem->setText(6,"---");
   if (t->hasDueDate()) {
-    mItem->setText(7,t->getDtDueDateStr());
+    mItem->setText(7,t->dtDueDateStr());
     if (t->doesFloat()) {
       mItem->setText(8,"---");
     } else {
-      mItem->setText(8,t->getDtDueDateStr());
+      mItem->setText(8,t->dtDueDateStr());
     }
   } else {
     mItem->setText(7,"---");
     mItem->setText(8,"---");
   }
-#endif
+
   return true;
 }
 
@@ -80,9 +73,10 @@ bool ListItemVisitor::visit(Journal *)
 }
 
 
-KOListViewItem::KOListViewItem(QListView *parent, KOEvent *ev)
+KOListViewItem::KOListViewItem(QListView *parent, Incidence *ev)
   : QListViewItem(parent), mEvent(ev)
 {
+#if 0
   if (mEvent->getTodoStatus()) {
     setText(0,i18n("Todo: %1").arg(mEvent->getSummary()));
     setText(1,"---");
@@ -113,6 +107,7 @@ KOListViewItem::KOListViewItem(QListView *parent, KOEvent *ev)
     setText(7,"---");
     setText(8,"---");
   }
+#endif
 }
 
 
@@ -180,9 +175,9 @@ int KOListView::currentDateCount()
   return 0;
 }
 
-QList<KOEvent> KOListView::getSelected()
+QList<Incidence> KOListView::getSelected()
 {
-  QList<KOEvent> eventList;
+  QList<Incidence> eventList;
 
   QListViewItem *item = mListView->selectedItem();
   if (item) eventList.append(((KOListViewItem *)item)->event());
@@ -240,7 +235,7 @@ void KOListView::selectDates(const QDateList dateList)
   QDate *date;
   for(date = tmpList.first(); date; date = tmpList.next()) {
     addEvents(mCalendar->getEventsForDate(*date));
-    addEvents(mCalendar->getTodosForDate(*date));
+    addTodos(mCalendar->getTodosForDate(*date));
   }
   
   emit eventsSelected(false);
@@ -250,8 +245,24 @@ void KOListView::addEvents(QList<KOEvent> eventList)
 {
   KOEvent *ev;
   for(ev = eventList.first(); ev; ev = eventList.next()) {
-    new KOListViewItem(mListView,ev);
+    addIncidence(ev);
   }
+}
+
+void KOListView::addTodos(QList<Todo> eventList)
+{
+  Todo *ev;
+  for(ev = eventList.first(); ev; ev = eventList.next()) {
+    addIncidence(ev);
+  }
+}
+
+void KOListView::addIncidence(Incidence *incidence)
+{
+  KOListViewItem *item = new KOListViewItem(mListView,incidence);
+  ListItemVisitor v(item);
+  if (incidence->accept(v)) return;
+  else delete item;
 }
 
 void KOListView::selectEvents(QList<KOEvent> eventList)
@@ -296,19 +307,23 @@ KOListViewItem *KOListView::getItemForEvent(KOEvent *event)
 //    kdDebug() << "Item " << item->text(0) << " found" << endl;
     if (item->event() == event) return item;
     item = (KOListViewItem *)item->nextSibling();
-  }  
+  }
   return 0;
 }
 
 void KOListView::defaultItemAction(QListViewItem *item)
 {
-  defaultEventAction(((KOListViewItem *)item)->event());
+  KOEvent *event = dynamic_cast<KOEvent *>(((KOListViewItem *)item)->event());
+  if (event) defaultEventAction(event);
 }
 
 void KOListView::popupMenu(QListViewItem *item,const QPoint &,int)
 {
   mActiveItem = (KOListViewItem *)item;
-  if (mActiveItem) mPopupMenu->showEventPopup(mActiveItem->event());
+  if (mActiveItem) {
+    KOEvent *event = dynamic_cast<KOEvent *>(mActiveItem->event());
+    if (event) mPopupMenu->showEventPopup(event);
+  }
 }
 
 void KOListView::processSelectionChange()

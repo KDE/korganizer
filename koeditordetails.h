@@ -44,9 +44,9 @@ class KOEditorDetails : public QWidget
     /** Set widgets to default values */
     void setDefaults();
     /** Read event object and setup widgets accordingly */
-    void readEvent(KOEvent *);
+    void readEvent(Incidence *);
     /** Write event settings to event object */
-    void writeEvent(KOEvent *);
+    void writeEvent(Incidence *);
 
     /** Check if the input is valid. */
     bool validateInput();

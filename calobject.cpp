@@ -42,6 +42,17 @@ extern "C" {
   extern struct holiday holiday[366];
 };
 
+class AddIncidenceVisitor : public IncidenceVisitor {
+  public:
+    AddIncidenceVisitor(CalObject *calendar) : mCalendar(calendar) {}
+    
+    bool visit(KOEvent *e) { mCalendar->addEvent(e); return true; }
+    bool visit(Todo *t) { mCalendar->addTodo(t); return true; }
+
+  private:
+    CalObject *mCalendar;
+};
+
 CalObject::CalObject()
   : QObject()
 {
@@ -161,7 +172,7 @@ VCalDrag *CalObject::createDrag(KOEvent *selectedEv, QWidget *owner)
   return mFormat->createDrag(selectedEv,owner);
 }
 
-VCalDrag *CalObject::createDragTodo(KOEvent *selectedEv, QWidget *owner)
+VCalDrag *CalObject::createDragTodo(Todo *selectedEv, QWidget *owner)
 {
   return mFormat->createDragTodo(selectedEv,owner);
 }
@@ -171,7 +182,7 @@ KOEvent *CalObject::createDrop(QDropEvent *de)
   return mFormat->createDrop(de);
 }
 
-KOEvent *CalObject::createDropTodo(QDropEvent *de)
+Todo *CalObject::createDropTodo(QDropEvent *de)
 {
   kdDebug() << "CalObject::createDropTodo()" << endl;
   return mFormat->createDropTodo(de);
@@ -381,4 +392,12 @@ QList<KOEvent> CalObject::getEvents(const QDate &start,const QDate &end,
   QList<KOEvent> el = events(start,end,inclusive);
   mFilter->apply(&el);
   return el;
+}
+
+
+void CalObject::addIncidence(Incidence *i)
+{
+  AddIncidenceVisitor v(this);
+
+  i->accept(v);
 }

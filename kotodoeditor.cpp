@@ -94,13 +94,13 @@ void KOTodoEditor::setupDetailsTab()
   topLayout->addWidget(mDetails);
 }
 
-void KOTodoEditor::editTodo( KOEvent *todo, QDate)
+void KOTodoEditor::editTodo(Todo *todo, QDate)
 {
   mTodo = todo;
   readTodo(mTodo);
 }
 
-void KOTodoEditor::newTodo(QDateTime due,KOEvent *relatedTodo,bool allDay)
+void KOTodoEditor::newTodo(QDateTime due,Todo *relatedTodo,bool allDay)
 {
   mTodo = 0;
   setDefaults(due,relatedTodo,allDay);
@@ -117,10 +117,10 @@ bool KOTodoEditor::processInput()
 {
   if (!validateInput()) return false;
 
-  KOEvent *todo = 0;
+  Todo *todo = 0;
 
   if (mTodo) todo = mTodo;
-  else todo = new KOEvent;
+  else todo = new Todo;
   
   writeTodo(todo);
   
@@ -158,7 +158,7 @@ void KOTodoEditor::slotUser1()
   }
 }
 
-void KOTodoEditor::setDefaults(QDateTime due,KOEvent *relatedEvent,bool allDay)
+void KOTodoEditor::setDefaults(QDateTime due,Todo *relatedEvent,bool allDay)
 {
   mRelatedTodo = relatedEvent;
   
@@ -166,15 +166,15 @@ void KOTodoEditor::setDefaults(QDateTime due,KOEvent *relatedEvent,bool allDay)
   mDetails->setDefaults();
 }
 
-void KOTodoEditor::readTodo(KOEvent *event)
+void KOTodoEditor::readTodo(Todo *todo)
 {
-  mGeneral->readTodo(event);
-  mDetails->readEvent(event);
+  mGeneral->readTodo(todo);
+  mDetails->readEvent(todo);
 
   // We should handle read-only events here.
 }
 
-void KOTodoEditor::writeTodo(KOEvent *event)
+void KOTodoEditor::writeTodo(Todo *event)
 {
   mGeneral->writeTodo(event);
   mDetails->writeEvent(event);

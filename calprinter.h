@@ -28,7 +28,7 @@ class CalPrinter : public QObject
   Q_OBJECT
 
 public:
-  enum PrintType { Day, Week, Month, Todo };
+  enum PrintType { Day, Week, Month, Todolist };
   CalPrinter(QWidget *par, CalObject *cal);
   virtual ~CalPrinter();
 

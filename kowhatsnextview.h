@@ -23,7 +23,7 @@ class KOWhatsNextView : public KOBaseView
 
     virtual int maxDatesHint();
     virtual int currentDateCount();
-    virtual QList<KOEvent> getSelected();
+    virtual QList<Incidence> getSelected();
 
     virtual void printPreview(CalPrinter *calPrinter,
                               const QDate &, const QDate &);
@@ -37,7 +37,7 @@ class KOWhatsNextView : public KOBaseView
   
   protected:
     void appendEvent(KOEvent *);
-    void appendTodo(KOEvent *);
+    void appendTodo(Todo *);
   
   private:
     QTextView *mView;

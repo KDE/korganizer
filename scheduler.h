@@ -31,11 +31,11 @@ class ScheduleMessage {
       Create a scheduling message with method as defined in Scheduler::Method
       and a status.
     */
-    ScheduleMessage(KOEvent *,int method,icalclass status);
+    ScheduleMessage(Incidence *,int method,icalclass status);
     ~ScheduleMessage() {};
     
     /** Return event associated with this message. */
-    KOEvent *event() { return mEvent; }
+    Incidence *event() { return mEvent; }
     /** Return iTIP method associated with this message */
     int method() { return mMethod; }
     /** Return status of this message */
@@ -44,7 +44,7 @@ class ScheduleMessage {
     QString error() { return mError; }
 
   private:
-    KOEvent *mEvent;
+    Incidence *mEvent;
     int mMethod;
     icalclass mStatus;
     QString mError;
@@ -82,7 +82,7 @@ class Scheduler {
       iTIP message with the current calendar and specifies the action to be
       taken for this incidence.
     */
-    bool acceptTransaction(KOEvent *,icalclass status);
+    bool acceptTransaction(Incidence *,icalclass status);
 
     /** Return a human-readable name for a iTIP method. */
     static QString methodName(Method);

@@ -3,6 +3,7 @@
 #include <klocale.h>
 
 #include "koevent.h"
+#include "todo.h"
 
 #include "koeventviewer.h"
 #include "koeventviewer.moc"
@@ -62,29 +63,29 @@ void KOEventViewer::appendEvent(KOEvent *event)
   setText(mText);
 }
 
-void KOEventViewer::appendTodo(KOEvent *event)
+void KOEventViewer::appendTodo(Todo *event)
 {
   addTag("h1",event->getSummary());
   
   if (event->hasDueDate()) {
-    mText.append(i18n("<b>Due on:</b> %1").arg(event->getDtDueStr()));
+    mText.append(i18n("<b>Due on:</b> %1").arg(event->dtDueStr()));
   }
 
-  if (!event->getDescription().isEmpty()) addTag("p",event->getDescription());  
+  if (!event->getDescription().isEmpty()) addTag("p",event->description());  
 
   formatCategories(event);
   formatAttendees(event);
 
   mText.append(i18n("<p><b>Status:</b> %1<br><b>Priority:</b> %2</p>")
-               .arg(event->getStatusStr())
-               .arg(QString::number(event->getPriority())));
+               .arg(event->statusStr())
+               .arg(QString::number(event->priority())));
 
   formatReadOnly(event);
 
   setText(mText);
 }
 
-void KOEventViewer::formatCategories(KOEvent *event)
+void KOEventViewer::formatCategories(Incidence *event)
 {
   if (!event->getCategoriesStr().isEmpty()) {
     if (event->getCategories().count() == 1) {
@@ -96,7 +97,7 @@ void KOEventViewer::formatCategories(KOEvent *event)
   }
 }
 
-void KOEventViewer::formatAttendees(KOEvent *event)
+void KOEventViewer::formatAttendees(Incidence *event)
 {
   QList<Attendee> attendees = event->getAttendeeList();
   if (attendees.count()) {
@@ -112,7 +113,7 @@ void KOEventViewer::formatAttendees(KOEvent *event)
   }
 }
 
-void KOEventViewer::formatReadOnly(KOEvent *event)
+void KOEventViewer::formatReadOnly(Incidence *event)
 {
   if (event->isReadOnly()) {
     addTag("p","<em>(" + i18n("read-only") + ")</em>");
@@ -120,7 +121,7 @@ void KOEventViewer::formatReadOnly(KOEvent *event)
 }
 
 
-void KOEventViewer::setTodo(KOEvent *event)
+void KOEventViewer::setTodo(Todo *event)
 {
   clearEvents();
   appendTodo(event);

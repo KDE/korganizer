@@ -47,7 +47,7 @@ class KOBaseView : public QWidget
      * select a single event at a time, but some may be able to select
      * more than one.
      */
-    virtual QList<KOEvent> getSelected() = 0;
+    virtual QList<Incidence> getSelected() = 0;
   
     /**
      * Generate a print preview of this event view.

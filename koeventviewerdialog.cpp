@@ -28,7 +28,7 @@ void KOEventViewerDialog::setEvent(KOEvent *event)
   mEventViewer->setEvent(event);
 }
 
-void KOEventViewerDialog::setTodo(KOEvent *event)
+void KOEventViewerDialog::setTodo(Todo *event)
 {
   mEventViewer->setTodo(event);
 }

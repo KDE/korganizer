@@ -47,9 +47,9 @@ class VCalFormat : public CalFormat {
     /** create an object to be used with the Xdnd Drag And Drop protocol. */
     VCalDrag *createDrag(KOEvent *selectedEv, QWidget *owner);
     /** create an object to be used with the Xdnd Drag And Drop protocol. */
-    VCalDrag *createDragTodo(KOEvent *selectedEv, QWidget *owner);
+    VCalDrag *createDragTodo(Todo *selectedEv, QWidget *owner);
     /** Create Todo object from drop event */
-    KOEvent *createDropTodo(QDropEvent *de);
+    Todo *createDropTodo(QDropEvent *de);
     /** Create Event object from drop event */
     KOEvent *createDrop(QDropEvent *de);
   
@@ -60,11 +60,11 @@ class VCalFormat : public CalFormat {
     
   protected:
     /** translates a VObject of the TODO type into a KOEvent */
-    KOEvent *VTodoToEvent(VObject *vtodo);
+    Todo *VTodoToEvent(VObject *vtodo);
     /** translates a VObject into a KOEvent and returns a pointer to it. */
     KOEvent *VEventToEvent(VObject *vevent);
     /** translate a KOEvent into a VTodo-type VObject and return pointer */
-    VObject *eventToVTodo(const KOEvent *anEvent);
+    VObject *eventToVTodo(const Todo *anEvent);
     /** translate a KOEvent into a VObject and returns a pointer to it. */
     VObject* eventToVEvent(const KOEvent *anEvent);
 
@@ -90,7 +90,7 @@ class VCalFormat : public CalFormat {
   
   private:
     QList<KOEvent> mEventsRelate;           // events with relations
-    QList<KOEvent> mTodosRelate;             // todos with relations
+    QList<Todo> mTodosRelate;             // todos with relations
 };
 
 #endif

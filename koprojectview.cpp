@@ -18,7 +18,7 @@
 #include "koprojectview.h"
 #include "koprojectview.moc"
 
-KOProjectViewItem::KOProjectViewItem(KOEvent *event,xQTask* parentTask,
+KOProjectViewItem::KOProjectViewItem(Todo *event,xQTask* parentTask,
                                      const QString& text, 
 	                             const QDateTime& start,
                                      const QDateTime& end) :
@@ -31,7 +31,7 @@ KOProjectViewItem::~KOProjectViewItem()
 {
 }
 
-KOEvent *KOProjectViewItem::event()
+Todo *KOProjectViewItem::event()
 {
   return mEvent;
 }
@@ -164,7 +164,7 @@ void KOProjectView::updateView()
                              QDateTime(QDate(2000,10,31)) );
 #endif
 
-  QList<KOEvent> todoList = mCalendar->getTodoList();
+  QList<Todo> todoList = mCalendar->getTodoList();
 
 /*
   kdDebug() << "KOProjectView::updateView(): Todo List:" << endl;
@@ -188,7 +188,7 @@ void KOProjectView::updateView()
   // specific order of events. That means that we have to generate parent items
   // recursively for proper hierarchical display of Todos.
   mTodoMap.clear();
-  KOEvent *todo;
+  Todo *todo;
   for(todo = todoList.first(); todo; todo = todoList.next()) {
     if (!mTodoMap.contains(todo)) {
       insertTodoItem(todo);
@@ -196,14 +196,14 @@ void KOProjectView::updateView()
   }
 }
 
-QMap<KOEvent *,xQTask *>::ConstIterator
-    KOProjectView::insertTodoItem(KOEvent *todo)
+QMap<Todo *,xQTask *>::ConstIterator
+    KOProjectView::insertTodoItem(Todo *todo)
 {
 //  kdDebug() << "KOProjectView::insertTodoItem(): " << todo->getSummary() << endl;
-  KOEvent *relatedTodo = dynamic_cast<KOEvent *>(todo->getRelatedTo());
+  Todo *relatedTodo = dynamic_cast<Todo *>(todo->relatedTo());
   if (relatedTodo) {
 //    kdDebug() << "  has Related" << endl;
-    QMap<KOEvent *,xQTask *>::ConstIterator itemIterator;
+    QMap<Todo *,xQTask *>::ConstIterator itemIterator;
     itemIterator = mTodoMap.find(relatedTodo);
     if (itemIterator == mTodoMap.end()) {
 //      kdDebug() << "    related not yet in list" << endl;
@@ -218,32 +218,32 @@ QMap<KOEvent *,xQTask *>::ConstIterator
   }
 }
 
-xQTask *KOProjectView::createTask(xQTask *parent,KOEvent *todo)
+xQTask *KOProjectView::createTask(xQTask *parent,Todo *todo)
 {
   QDateTime startDt;
   QDateTime endDt;
 
   if (todo->hasStartDate() && !todo->hasDueDate()) {
     // start date but no due date
-    startDt = todo->getDtStart();
-    endDt = todo->getDtEnd();
+    startDt = todo->dtStart();
+    endDt = QDateTime::currentDateTime();
   } else if (!todo->hasStartDate() && todo->hasDueDate()) {
     // due date but no start date
-    startDt = todo->getDtDue();
-    endDt = todo->getDtDue();
+    startDt = todo->dtDue();
+    endDt = todo->dtDue();
   } else if (!todo->hasStartDate() || !todo->hasDueDate()) {
     startDt = QDateTime::currentDateTime();
     endDt = QDateTime::currentDateTime();
   } else {
-    startDt = todo->getDtStart();
-    endDt = todo->getDtDue();
+    startDt = todo->dtStart();
+    endDt = todo->dtDue();
   }
 
-  xQTask *task = new KOProjectViewItem(todo,parent,todo->getSummary(),startDt,
+  xQTask *task = new KOProjectViewItem(todo,parent,todo->summary(),startDt,
                                        endDt);
   connect(task,SIGNAL(changed(xQTask*, xQTask::Change)),
           SLOT(taskChanged(xQTask*,xQTask::Change)));
-  if (todo->getRelations().count() > 0) {
+  if (todo->relations().count() > 0) {
     task->setBrush(QBrush(QColor(240,240,240), QBrush::Dense4Pattern));
   }
 
@@ -255,9 +255,9 @@ void KOProjectView::updateConfig()
   // TODO: to be implemented.
 }
 
-QList<KOEvent> KOProjectView::getSelected()
+QList<Incidence> KOProjectView::getSelected()
 {
-  QList<KOEvent> selected;
+  QList<Incidence> selected;
 
 /*
   KOProjectViewItem *item = (KOProjectViewItem *)(mTodoListView->selectedItem());
@@ -285,7 +285,7 @@ void KOProjectView::selectEvents(QList<KOEvent>)
 void KOProjectView::printPreview(CalPrinter *calPrinter, const QDate &fd,
                               const QDate &td)
 {
-  calPrinter->preview(CalPrinter::Todo, fd, td);
+  calPrinter->preview(CalPrinter::Todolist, fd, td);
 }
 
 #if 0

@@ -41,6 +41,22 @@ class FilterEditDialog;
 class KOWhatsNextView;
 
 /**
+  This class provides the initialisation of a KOListViewItem for calendar
+  components using the IncidenceVisitor.
+*/
+class CreateEditorVisitor : public IncidenceVisitor
+{
+  public:
+    CreateEditorVisitor() {};
+    ~CreateEditorVisitor() {};
+    
+    bool visit(Event *);
+    bool visit(Todo *);
+    bool visit(Journal *);
+};
+
+
+/**
   This is the main calendar widget. It provides the different vies on t he
   calendar data as well as the date navigator. It also handles synchronisation
   of the different views and controls the different dialogs like preferences,
@@ -141,13 +157,17 @@ class CalendarView : public QWidget
     bool deleteEvent(const QString &VUID);
     /** Create a read-only viewer dialog for the supplied event */
     void showEvent(KOEvent *);
+
+    /** Create an editor dialog for a todo */
+    void editTodo(Todo *);
     /** Create a read-only viewer dialog for the supplied todo */
-    void showTodo(KOEvent *);
-    
+    void showTodo(Todo *);
     /** create new todo */
     void newTodo();
     /** create new todo with a parent todo */
-    void newSubTodo(KOEvent *);
+    void newSubTodo(Todo *);
+    /** Delete todo */
+    void deleteTodo(Todo *);
     
     //void eventsSelected(QList<KOEvent>);
     
@@ -282,7 +302,7 @@ class CalendarView : public QWidget
     /** set state of calendar to read-only */
     void setReadOnly(bool readOnly=true);
     
-    void eventUpdated(KOEvent *);
+    void eventUpdated(Incidence *);
   
     void view_whatsnext();
     void view_list();

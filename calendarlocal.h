@@ -41,12 +41,7 @@ class CalendarLocal : public CalObject {
     void close();
   
     void addEvent(KOEvent *anEvent);
-    /** deletes an event from this calendar. We could just use
-     * a unique ID to search for the event, but using the date too is faster.
-     * @param date the date upon which the event occurs.  
-     * @param eventId the unique ID attached to the event
-     */
-    void deleteEvent(const QDate &date, int eventId);
+    /** deletes an event from this calendar. */
     void deleteEvent(KOEvent *);
 
     /** retrieves an event on the basis of the unique string ID. */
@@ -72,15 +67,15 @@ class CalendarLocal : public CalObject {
     int numEvents(const QDate &qd);
   
     /** add a todo to the todolist. */
-    void addTodo(KOEvent *todo);
+    void addTodo(Todo *todo);
     /** remove a todo from the todolist. */
-    void deleteTodo(KOEvent *);
-    const QList<KOEvent> &getTodoList() const;
+    void deleteTodo(Todo *);
+    const QList<Todo> &getTodoList() const;
     /** searches todolist for an event with this unique string identifier,
       returns a pointer or null. */
-    KOEvent *getTodo(const QString &UniqueStr);
+    Todo *getTodo(const QString &UniqueStr);
     /** Returns list of todos due on the specified date */
-    QList<KOEvent> getTodosForDate(const QDate & date);
+    QList<Todo> getTodosForDate(const QDate & date);
   
   signals:
     /** emitted at regular intervals to indicate that the events in the
@@ -88,7 +83,7 @@ class CalendarLocal : public CalObject {
     void alarmSignal(QList<KOEvent> &);
     /** emitted whenever an event in the calendar changes.  Emits a pointer
       to the changed event. */
-    void calUpdated(KOEvent *);
+    void calUpdated(Incidence *);
   
   public slots:
     /** checks to see if any alarms are pending, and if so, returns a list
@@ -116,7 +111,7 @@ class CalendarLocal : public CalObject {
     QIntDict<QList<KOEvent> > *mCalDict;    // dictionary of lists of events.
     QList<KOEvent> mRecursList;             // list of repeating events.
   
-    QList<KOEvent> mTodoList;               // list of "todo" items.
+    QList<Todo> mTodoList;               // list of "todo" items.
   
     QDate *mOldestDate;
     QDate *mNewestDate;

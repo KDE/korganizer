@@ -18,19 +18,19 @@ class KOEventViewer : public QTextView {
     virtual ~KOEventViewer();
 
     void setEvent(KOEvent *event);
-    void setTodo(KOEvent *event);
+    void setTodo(Todo *event);
     
     void appendEvent(KOEvent *event);
-    void appendTodo(KOEvent *event);
+    void appendTodo(Todo *event);
     
     void clearEvents(bool now=false);
     
   protected:
     void addTag(const QString & tag,const QString & text);
 
-    void formatCategories(KOEvent *event);
-    void formatAttendees(KOEvent *event);
-    void formatReadOnly(KOEvent *event);
+    void formatCategories(Incidence *event);
+    void formatAttendees(Incidence *event);
+    void formatReadOnly(Incidence *event);
 
   private:
     QTextView *mEventTextView;

@@ -29,9 +29,9 @@ class KOEditorGeneralTodo : public QWidget
     /** Set widgets to default values */
     void setDefaults(QDateTime due,bool allDay);
     /** Read todo object and setup widgets accordingly */
-    void readTodo(KOEvent *);
+    void readTodo(Todo *);
     /** Write todo settings to event object */
-    void writeTodo(KOEvent *);
+    void writeTodo(Todo *);
 
     /** Check if the input is valid. */
     bool validateInput();

@@ -79,8 +79,8 @@ bool VCalFormat::save(const QString &fileName)
   addPropValue(vcal,VCVersionProp, _VCAL_VERSION);
 
   // TODO STUFF
-  QList<KOEvent> todoList = mCalendar->getTodoList();
-  QListIterator<KOEvent> qlt(todoList);
+  QList<Todo> todoList = mCalendar->getTodoList();
+  QListIterator<Todo> qlt(todoList);
   for (; qlt.current(); ++qlt) {
     vo = eventToVTodo(qlt.current());
     addVObjectProp(vcal, vo);
@@ -165,7 +165,7 @@ VCalDrag *VCalFormat::createDrag(KOEvent *selectedEv, QWidget *owner)
   return vcd;
 }
 
-VCalDrag *VCalFormat::createDragTodo(KOEvent *selectedEv, QWidget *owner)
+VCalDrag *VCalFormat::createDragTodo(Todo *selectedEv, QWidget *owner)
 {
   VObject *vcal, *vevent;
   QString tmpStr;
@@ -220,12 +220,12 @@ KOEvent *VCalFormat::createDrop(QDropEvent *de)
   return event;
 }
 
-KOEvent *VCalFormat::createDropTodo(QDropEvent *de)
+Todo *VCalFormat::createDropTodo(QDropEvent *de)
 {
   kdDebug() << "VCalFormat::createDropTodo()" << endl;
 
   VObject *vcal;
-  KOEvent *event = 0;
+  Todo *event = 0;
 
   if (VCalDrag::decode(de, &vcal)) {
     de->accept();
@@ -344,8 +344,10 @@ KOEvent *VCalFormat::pasteEvent(const QDate *newDate,
       kdDebug() << "found a VEvent with no DTSTART/DTEND! Skipping" << endl;
     }
   } else if (strcmp(vObjectName(curVO), VCTodoProp) == 0) {
-    anEvent = VTodoToEvent(curVO);
-    mCalendar->addTodo(anEvent);
+    kdDebug() << "Trying to paste a Todo." << endl;
+// TODO: check, if todos can be pasted
+//    Todo *aTodo = VTodoToEvent(curVO);
+//    mCalendar->addTodo(aTodo);
   } else {
     kdDebug() << "unknown event type in paste!!!" << endl;
   }
@@ -355,7 +357,7 @@ KOEvent *VCalFormat::pasteEvent(const QDate *newDate,
 }
 
 
-VObject *VCalFormat::eventToVTodo(const KOEvent *anEvent)
+VObject *VCalFormat::eventToVTodo(const Todo *anEvent)
 {
   VObject *vtodo;
   QString tmpStr;
@@ -365,7 +367,7 @@ VObject *VCalFormat::eventToVTodo(const KOEvent *anEvent)
 
   // due date
   if (anEvent->hasDueDate()) {
-    tmpStr = qDateTimeToISO(anEvent->getDtDue(),
+    tmpStr = qDateTimeToISO(anEvent->dtDue(),
                             !anEvent->doesFloat());
     addPropValue(vtodo, VCDueProp, tmpStr.latin1());
   }
@@ -436,7 +438,7 @@ VObject *VCalFormat::eventToVTodo(const KOEvent *anEvent)
     addPropValue(vtodo, VCSummaryProp, anEvent->getSummary().utf8());
 
   // status
-  addPropValue(vtodo, VCStatusProp, anEvent->getStatusStr().latin1());
+  addPropValue(vtodo, VCStatusProp, anEvent->statusStr().latin1());
 
   // priority
   tmpStr.sprintf("%i",anEvent->getPriority());
@@ -665,7 +667,8 @@ VObject* VCalFormat::eventToVEvent(const KOEvent *anEvent)
     addPropValue(vevent, VCSummaryProp, anEvent->getSummary().utf8());
 
   // status
-  addPropValue(vevent, VCStatusProp, anEvent->getStatusStr().latin1());
+// TODO: define Event status
+//  addPropValue(vevent, VCStatusProp, anEvent->statusStr().latin1());
   
   // secrecy
   addPropValue(vevent, VCClassProp, anEvent->getSecrecyStr().latin1());
@@ -751,14 +754,13 @@ VObject* VCalFormat::eventToVEvent(const KOEvent *anEvent)
   return vevent;
 }
 
-KOEvent *VCalFormat::VTodoToEvent(VObject *vtodo)
+Todo *VCalFormat::VTodoToEvent(VObject *vtodo)
 {
-  KOEvent *anEvent;
   VObject *vo;
   VObjectIterator voi;
   char *s;
 
-  anEvent = new KOEvent;
+  Todo *anEvent = new Todo;
   anEvent->setTodoStatus(TRUE);
 
   // creation date
@@ -1303,10 +1305,11 @@ KOEvent* VCalFormat::VEventToEvent(VObject *vevent)
   if ((vo = isAPropertyOf(vevent, VCStatusProp)) != 0) {
     QString tmpStr(s = fakeCString(vObjectUStringZValue(vo)));
     deleteStr(s);
-    anEvent->setStatus(tmpStr);
+// TODO: Define Event status
+//    anEvent->setStatus(tmpStr);
   }
   else
-    anEvent->setStatus("NEEDS ACTION");
+//    anEvent->setStatus("NEEDS ACTION");
 
   // secrecy
   if ((vo = isAPropertyOf(vevent, VCClassProp)) != 0) {
@@ -1630,8 +1633,8 @@ void VCalFormat::populate(VObject *vcal)
 	goto SKIP;
       }
     } else if (strcmp(vObjectName(curVO), VCTodoProp) == 0) {
-      anEvent = VTodoToEvent(curVO);
-      mCalendar->addTodo(anEvent);
+      Todo *aTodo = VTodoToEvent(curVO);
+      mCalendar->addTodo(aTodo);
     } else if ((strcmp(vObjectName(curVO), VCVersionProp) == 0) ||
 	       (strcmp(vObjectName(curVO), VCProdIdProp) == 0) ||
 	       (strcmp(vObjectName(curVO), VCTimeZoneProp) == 0)) {
@@ -1650,8 +1653,9 @@ void VCalFormat::populate(VObject *vcal)
   for ( ev=mEventsRelate.first(); ev != 0; ev=mEventsRelate.next() ) {
     ev->setRelatedTo(mCalendar->getEvent(ev->getRelatedToVUID()));
   }
-  for ( ev=mTodosRelate.first(); ev != 0; ev=mTodosRelate.next() ) {
-    ev->setRelatedTo(mCalendar->getTodo(ev->getRelatedToVUID()));
+  Todo *todo;
+  for ( todo=mTodosRelate.first(); todo != 0; todo=mTodosRelate.next() ) {
+    todo->setRelatedTo(mCalendar->getTodo(todo->getRelatedToVUID()));
   }
 }
 

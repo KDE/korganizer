@@ -15,7 +15,7 @@
 #include <qlistview.h>
 
 #include "calobject.h"
-#include "koevent.h"
+#include "todo.h"
 #include "kobaseview.h"
 
 /**
@@ -34,20 +34,20 @@ class KOTodoViewItem : public QCheckListItem
      * @param parent is the list view to which this item belongs.
      * @param ev is the event to have the item display information for.
      */
-    KOTodoViewItem(QListView *parent, KOEvent *ev);
-    KOTodoViewItem(KOTodoViewItem *parent, KOEvent *ev);
+    KOTodoViewItem(QListView *parent, Todo *ev);
+    KOTodoViewItem(KOTodoViewItem *parent, Todo *ev);
     virtual ~KOTodoViewItem() {}
 
     void construct();
 
-    KOEvent *event() { return mEvent; }
+    Todo *event() { return mEvent; }
 
   protected:
     void paintBranches(QPainter *p,const QColorGroup & cg,int w,int y,int h,
                        GUIStyle s);
 
   private:
-    KOEvent *mEvent;
+    Todo *mEvent;
 };
 
 
@@ -59,7 +59,7 @@ class KOTodoListView : public QListView
     virtual ~KOTodoListView() {}
 
   signals:
-    void todoDropped(KOEvent *);
+    void todoDropped(Todo *);
     
   protected:
     void contentsDragEnterEvent(QDragEnterEvent *);
@@ -94,7 +94,8 @@ class KOTodoView : public KOBaseView
     KOTodoView(CalObject *, QWidget* parent=0, const char* name=0 );
     ~KOTodoView() {}
 
-    QList<KOEvent> getSelected();
+    QList<Incidence> getSelected();
+    QList<Todo> selectedTodos();
 
     /** Return number of shown dates. TodoView does not show dates, */
     int currentDateCount() { return 0; }
@@ -134,22 +135,21 @@ class KOTodoView : public KOBaseView
     
   signals:
     void newTodoSignal();
-    void newSubTodoSignal(KOEvent *);
-    void showTodoSignal(KOEvent *);
+    void newSubTodoSignal(Todo *);
+    void showTodoSignal(Todo *);
 
-    void editEventSignal(KOEvent *);
-    void deleteEventSignal(KOEvent *);
+    void editTodoSignal(Todo *);
+    void deleteTodoSignal(Todo *);
 
   private:
-    QMap<KOEvent *,KOTodoViewItem *>::ConstIterator
-      insertTodoItem(KOEvent *todo);
+    QMap<Todo *,KOTodoViewItem *>::ConstIterator insertTodoItem(Todo *todo);
 
     KOTodoListView *mTodoListView;
     QPopupMenu *mItemPopupMenu;
     QPopupMenu *mPopupMenu;
     KOTodoViewItem *mActiveItem;
 
-    QMap<KOEvent *,KOTodoViewItem *> mTodoMap;
+    QMap<Todo *,KOTodoViewItem *> mTodoMap;
 };
 
 #endif

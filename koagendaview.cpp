@@ -381,9 +381,9 @@ int KOAgendaView::currentDateCount()
   return mSelectedDates.count();
 }
 
-QList<KOEvent> KOAgendaView::getSelected()
+QList<Incidence> KOAgendaView::getSelected()
 {
-  QList<KOEvent> selectedEvents;
+  QList<Incidence> selectedEvents;
   KOEvent *event;
 
   event = mAgenda->selectedEvent();

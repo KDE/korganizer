@@ -21,6 +21,7 @@
 
 #include "koprefsdialog.h"
 #include "koprefs.h"
+#include "todo.h"
 
 #include "calprinter.h"
 #include "calprinter.moc"
@@ -78,7 +79,7 @@ void CalPrinter::preview(PrintType pt, const QDate &fd, const QDate &td)
   case Month: 
     cpd->setPrintMonth();
     break;
-  case Todo: 
+  case Todolist: 
     cpd->setPrintTodo(); 
     break;
   }
@@ -100,7 +101,7 @@ void CalPrinter::doPreview(int pt, QDate fd, QDate td)
   case Month: 
     printMonth(fd, td);
     break;
-  case Todo:
+  case Todolist:
     printTodo(fd, td);
     break;
   }
@@ -132,7 +133,7 @@ void CalPrinter::print(PrintType pt, const QDate &fd, const QDate &td)
   case Month: 
     cpd->setPrintMonth();
     break;
-  case Todo: 
+  case Todolist: 
     cpd->setPrintTodo(); 
     break;
   }
@@ -154,7 +155,7 @@ void CalPrinter::doPrint(int pt, QDate fd, QDate td)
   case Month: 
     printMonth(fd, td);
     break;
-  case Todo: 
+  case Todolist: 
     printTodo(fd, td);
     break;
   }
@@ -313,7 +314,6 @@ void CalPrinter::printTodo(const QDate &fd, const QDate &td)
 {
   KLocale *local = KGlobal::locale();
   QPainter p;
-  QList<KOEvent> todoList;
 
   printer->setOrientation(QPrinter::Portrait);
 
@@ -328,9 +328,9 @@ void CalPrinter::printTodo(const QDate &fd, const QDate &td)
   int lineSpacing = 15;
   int fontHeight = 10;
 
-  drawHeader(p, fd, td, fd, pageWidth, headerHeight, Todo);
+  drawHeader(p, fd, td, fd, pageWidth, headerHeight, Todolist);
 
-  todoList = calendar->getTodoList();
+  QList<Todo> todoList = calendar->getTodoList();
   todoList.first();
   int count = 1;
   QString outStr;
@@ -357,9 +357,8 @@ void CalPrinter::printTodo(const QDate &fd, const QDate &td)
 
   fontHeight =  p.fontMetrics().height();
   for(int cprior = 1; cprior <= 6; cprior++) {
-    KOEvent *currEvent(todoList.first());
+    Todo *currEvent(todoList.first());
     while (currEvent != NULL) {
-      QDate due = currEvent->getDtEnd().date();
       QDate start = currEvent->getDtStart().date();
       // if it is not to start yet, skip.
       if ( (!start.isValid()) && (start >= td) ) {
@@ -386,12 +385,12 @@ void CalPrinter::printTodo(const QDate &fd, const QDate &td)
 		 outStr);
       // due
       if (currEvent->hasDueDate()){
-      outStr = local->formatDate(due);
-      p.drawText(posdue, (lineSpacing*count)+headerHeight,
+        outStr = local->formatDate(currEvent->dtDue().date());
+        p.drawText(posdue, (lineSpacing*count)+headerHeight,
 		 outStr);
       }
       // if terminated, cross it
-      int status = currEvent->getStatus();
+      int status = currEvent->status();
       if (status == KOEvent::COMPLETED) {
 	  p.drawLine( 5, (lineSpacing*count)+headerHeight-fontHeight/2 + 2, 
 		      pageWidth-5, (lineSpacing*count)+headerHeight-fontHeight/2 + 2);
@@ -427,7 +426,7 @@ void CalPrinter::drawHeader(QPainter &p, const QDate &fd, const QDate &td,
   //  title += myOwner;
 
   switch(pt) {
-  case Todo:
+  case Todolist:
     title +=  i18n("To-Do items:");
    
     p.drawText(5, lineSpacing,title);
@@ -452,7 +451,7 @@ void CalPrinter::drawHeader(QPainter &p, const QDate &fd, const QDate &td,
   
   // print previous month for month view, print current for todo, day and week
   switch (pt) {
-  case Todo:
+  case Todolist:
   case Week:
   case Day:
     drawSmallMonth(p, QDate(cd.addDays(-cd.day()+1)),
@@ -552,7 +551,7 @@ void CalPrinter::drawDayBox(QPainter &p, const QDate &qd,
 }
 
 void CalPrinter::drawDaysOfWeek(QPainter &p, const QDate &qd, 
-				int width, int height)
+				int width, int /*height*/)
 {	
   int offset=headerHeight+5;
   int cellWidth = width/7;
@@ -869,7 +868,7 @@ void CalPrintDialog::setPrintMonth()
 void CalPrintDialog::setPrintTodo()
 {
   typeGroup->setButton(3);
-  pt = CalPrinter::Todo;
+  pt = CalPrinter::Todolist;
 }
 
 void CalPrintDialog::accept()

@@ -120,8 +120,8 @@ bool ICalFormat::save(const QString &fileName)
   icalcomponent *component;
 
   // TODO STUFF
-  QList<KOEvent> todoList = mCalendar->getTodoList();
-  QListIterator<KOEvent> qlt(todoList);
+  QList<Todo> todoList = mCalendar->getTodoList();
+  QListIterator<Todo> qlt(todoList);
   for (; qlt.current(); ++qlt) {
     component = writeTodo(qlt.current());
     icalcomponent_add_component(calendar,component);
@@ -171,7 +171,7 @@ VCalDrag *ICalFormat::createDrag(KOEvent *selectedEv, QWidget *owner)
 #endif
 }
 
-VCalDrag *ICalFormat::createDragTodo(KOEvent *selectedEv, QWidget *owner)
+VCalDrag *ICalFormat::createDragTodo(Todo *selectedEv, QWidget *owner)
 {
   return 0;
 #if 0
@@ -232,7 +232,7 @@ KOEvent *ICalFormat::createDrop(QDropEvent *de)
 #endif
 }
 
-KOEvent *ICalFormat::createDropTodo(QDropEvent *de)
+Todo *ICalFormat::createDropTodo(QDropEvent *de)
 {
   return 0;
 #if 0
@@ -296,8 +296,7 @@ bool ICalFormat::copyEvent(KOEvent *selectedEv)
 #endif
 }
 
-KOEvent *ICalFormat::pasteEvent(const QDate *newDate, 
-				const QTime *newTime)
+KOEvent *ICalFormat::pasteEvent(const QDate *newDate,const QTime *newTime)
 {
   return 0;
 #if 0
@@ -372,7 +371,7 @@ KOEvent *ICalFormat::pasteEvent(const QDate *newDate,
 #endif
 }
 
-icalcomponent *ICalFormat::createScheduleComponent(KOEvent *incidence,
+icalcomponent *ICalFormat::createScheduleComponent(Incidence *incidence,
                                                    Scheduler::Method method)
 {
   icalcomponent *message = createCalendarComponent();
@@ -411,10 +410,14 @@ icalcomponent *ICalFormat::createScheduleComponent(KOEvent *incidence,
 
   icalcomponent_add_property(message,icalproperty_new_method(icalmethod));
 
-  if (incidence->getTodoStatus()) {
-    icalcomponent_add_component(message,writeTodo(incidence));
-  } else {
-    icalcomponent_add_component(message,writeEvent(incidence));
+  // TODO: check, if dynamic cast is required
+  Todo *todo = dynamic_cast<Todo *>(incidence);
+  if (todo) {
+    icalcomponent_add_component(message,writeTodo(todo));
+  }
+  KOEvent *event = dynamic_cast<KOEvent *>(incidence);
+  if (event) {
+    icalcomponent_add_component(message,writeEvent(event));
   }
 
   return message;
@@ -452,7 +455,7 @@ ScheduleMessage *ICalFormat::parseScheduleMessage(const QString &messageText)
   
   icalcomponent *c;
   
-  KOEvent *incidence = 0;
+  Incidence *incidence = 0;
   c = icalcomponent_get_first_component(message,ICAL_VEVENT_COMPONENT);
   if (c) {
     incidence = readEvent(c);
@@ -512,14 +515,18 @@ ScheduleMessage *ICalFormat::parseScheduleMessage(const QString &messageText)
   
   icalcomponent *calendarComponent = createCalendarComponent();
 
-  KOEvent *existingIncidence = mCalendar->getEvent(incidence->VUID());
+  Incidence *existingIncidence = mCalendar->getEvent(incidence->VUID());
   if (existingIncidence) {
-    if (existingIncidence->getTodoStatus()) {
+    // TODO: check, if dynamic cast is required
+    Todo *todo = dynamic_cast<Todo *>(existingIncidence);
+    if (todo) {
       icalcomponent_add_component(calendarComponent,
-                                  writeEvent(existingIncidence));
-    } else {
+                                  writeTodo(todo));
+    }
+    KOEvent *event = dynamic_cast<KOEvent *>(existingIncidence);
+    if (event) {
       icalcomponent_add_component(calendarComponent,
-                                  writeTodo(existingIncidence));
+                                  writeEvent(event));
     }
   } else {
     calendarComponent = 0;
@@ -534,7 +541,7 @@ ScheduleMessage *ICalFormat::parseScheduleMessage(const QString &messageText)
   return new ScheduleMessage(incidence,method,result);
 }
 
-icalcomponent *ICalFormat::writeTodo(KOEvent *todo)
+icalcomponent *ICalFormat::writeTodo(Todo *todo)
 {
   QString tmpStr;
   QStringList tmpStrList;
@@ -547,9 +554,9 @@ icalcomponent *ICalFormat::writeTodo(KOEvent *todo)
   if (todo->hasDueDate()) {
     icaltimetype due;
     if (todo->doesFloat()) {
-      due = writeICalDate(todo->getDtDue().date());
+      due = writeICalDate(todo->dtDue().date());
     } else {
-      due = writeICalDateTime(todo->getDtDue());
+      due = writeICalDateTime(todo->dtDue());
     }
     icalcomponent_add_property(vtodo,icalproperty_new_due(due));
   }
@@ -654,7 +661,7 @@ icalcomponent *ICalFormat::writeEvent(KOEvent *event)
   return vevent;
 }
 
-void ICalFormat::writeIncidence(icalcomponent *parent,KOEvent *incidence)
+void ICalFormat::writeIncidence(icalcomponent *parent,Incidence *incidence)
 {
   // creation date
   icalcomponent_add_property(parent,icalproperty_new_created(
@@ -790,7 +797,7 @@ void ICalFormat::writeIncidence(icalcomponent *parent,KOEvent *incidence)
 
 }
 
-icalproperty *writeRecurrenceRule(KOEvent *event)
+icalproperty *writeRecurrenceRule(Incidence *event)
 {
 #if 0
     // some more variables
@@ -883,12 +890,13 @@ icalproperty *writeRecurrenceRule(KOEvent *event)
 
   } // event repeats
 #endif
+  return 0;
 }
 
-KOEvent *ICalFormat::readTodo(icalcomponent *vtodo)
+Todo *ICalFormat::readTodo(icalcomponent *vtodo)
 {
-  KOEvent *todo = new KOEvent;
-  todo->setTodoStatus(true);
+  Todo *todo = new Todo;
+// OBSOLETE:  todo->setTodoStatus(true);
 
   readIncidence(vtodo,todo);
 
@@ -1133,7 +1141,7 @@ Attendee *ICalFormat::readAttendee(icalproperty *attendee)
   return a;
 }
 
-void ICalFormat::readIncidence(icalcomponent *parent,KOEvent *incidence)
+void ICalFormat::readIncidence(icalcomponent *parent,Incidence *incidence)
 {
   icalproperty *p = icalcomponent_get_first_property(parent,ICAL_ANY_PROPERTY);
 
@@ -1237,7 +1245,7 @@ void ICalFormat::readIncidence(icalcomponent *parent,KOEvent *incidence)
   incidence->setCategories(categories);
 }
 
-void ICalFormat::readRecurrenceRule(icalproperty *rrule,KOEvent *event)
+void ICalFormat::readRecurrenceRule(icalproperty *rrule,Incidence *event)
 {
 #if 0
   // repeat stuff
@@ -1613,7 +1621,7 @@ void ICalFormat::populate(icalcomponent *calendar)
   c = icalcomponent_get_first_component(calendar,ICAL_VTODO_COMPONENT);
   while (c) {
     kdDebug() << "----Todo found" << endl;
-    KOEvent *todo = readTodo(c);
+    Todo *todo = readTodo(c);
     if (!mCalendar->getTodo(todo->VUID())) mCalendar->addTodo(todo);
     c = icalcomponent_get_next_component(calendar,ICAL_VTODO_COMPONENT);
   }
@@ -1704,8 +1712,9 @@ void ICalFormat::populate(icalcomponent *calendar)
   for ( ev=mEventsRelate.first(); ev != 0; ev=mEventsRelate.next() ) {
     ev->setRelatedTo(mCalendar->getEvent(ev->getRelatedToVUID()));
   }
-  for ( ev=mTodosRelate.first(); ev != 0; ev=mTodosRelate.next() ) {
-    ev->setRelatedTo(mCalendar->getTodo(ev->getRelatedToVUID()));
+  Todo *todo;
+  for ( todo=mTodosRelate.first(); todo != 0; todo=mTodosRelate.next() ) {
+    todo->setRelatedTo(mCalendar->getTodo(todo->getRelatedToVUID()));
   }
 }
 

@@ -338,10 +338,10 @@ void ExportWebDialog::createHtmlEvent (QTextStream *ts, KOEvent *event,
 
 void ExportWebDialog::createHtmlTodoList (QTextStream *ts)
 {
-  KOEvent *ev,*subev;
+  Todo *ev,*subev;
   
-  QList<KOEvent> rawTodoList = mCalendar->getTodoList();
-  QList<KOEvent> todoList;
+  QList<Todo> rawTodoList = mCalendar->getTodoList();
+  QList<Todo> todoList;
 
   // Sort list by priorities. This is brute force and should be
   // replaced by a real sorting algorithm.
@@ -389,14 +389,14 @@ void ExportWebDialog::createHtmlTodoList (QTextStream *ts)
           << ev->VUID() << "\"><B>" << ev->summary() << "</B></A></TD>\n";
       *ts << "  </TR>\n";
       
-      QList<KOEvent> sortedList;
+      QList<Todo> sortedList;
       Incidence *ev2;
       // Sort list by priorities. This is brute force and should be
       // replaced by a real sorting algorithm.
       for (int i=1; i<=5; ++i) {
         for(ev2=relations.first();ev2;ev2=relations.next()) {
-          KOEvent *ev3 = dynamic_cast<KOEvent *>(ev2);
-          if (ev3 && ev3->getPriority() == i) sortedList.append(ev3);
+          Todo *ev3 = dynamic_cast<Todo *>(ev2);
+          if (ev3 && ev3->priority() == i) sortedList.append(ev3);
         }
       }
       
@@ -409,12 +409,12 @@ void ExportWebDialog::createHtmlTodoList (QTextStream *ts)
   *ts << "</TABLE>\n";
 }
 
-void ExportWebDialog::createHtmlTodo (QTextStream *ts,KOEvent *todo)
+void ExportWebDialog::createHtmlTodo (QTextStream *ts,Todo *todo)
 {
   kdDebug() << "ExportWebDialog::createHtmlTodo()" << endl;
 
-  bool completed = todo->getStatus() == KOEvent::COMPLETED;
-  QList<Incidence> relations = todo->getRelations();
+  bool completed = todo->status() == Incidence::COMPLETED;
+  QList<Incidence> relations = todo->relations();
 
   *ts << "<TR>\n";
 
@@ -438,7 +438,7 @@ void ExportWebDialog::createHtmlTodo (QTextStream *ts,KOEvent *todo)
   *ts << "  <TD";
   if (completed) *ts << " CLASS=done";
   *ts << ">\n";
-  *ts << "    " << todo->getPriority() << "\n";
+  *ts << "    " << todo->priority() << "\n";
   *ts << "  </TD>\n";
 
   *ts << "  <TD";
@@ -453,7 +453,7 @@ void ExportWebDialog::createHtmlTodo (QTextStream *ts,KOEvent *todo)
     if (completed) *ts << " CLASS=done";
     *ts << ">\n";
     if (todo->hasDueDate()) {
-      *ts << "    " << todo->getDtDueDateStr() << "\n";
+      *ts << "    " << todo->dtDueDateStr() << "\n";
     } else {
       *ts << "    &nbsp;\n";
     }
@@ -479,18 +479,18 @@ void ExportWebDialog::createHtmlTodo (QTextStream *ts,KOEvent *todo)
   *ts << "</TR>\n";
 }
 
-void ExportWebDialog::formatHtmlCategories (QTextStream *ts,KOEvent *event)
+void ExportWebDialog::formatHtmlCategories (QTextStream *ts,Incidence *event)
 {
   if (!event->getCategoriesStr().isEmpty()) {
-    *ts << "    " << event->getCategoriesStr() << "\n";
+    *ts << "    " << event->categoriesStr() << "\n";
   } else {
     *ts << "    &nbsp;\n";
   }
 }
 
-void ExportWebDialog::formatHtmlAttendees (QTextStream *ts,KOEvent *event)
+void ExportWebDialog::formatHtmlAttendees (QTextStream *ts,Incidence *event)
 {
-  QList<Attendee> attendees = event->getAttendeeList();
+  QList<Attendee> attendees = event->attendees();
   if (attendees.count()) {
     Attendee *a;
     for(a=attendees.first();a;a=attendees.next()) {

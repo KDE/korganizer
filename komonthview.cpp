@@ -211,20 +211,22 @@ void KSummaries::calUpdated()
   }
 
   // insert due todos
-  events=myCal->getTodosForDate(myDate);
-  for(anEvent = events.first(); anEvent; anEvent = events.next()) {
+  QList<Todo> todos=myCal->getTodosForDate(myDate);
+  Todo *todo;
+  for(todo = todos.first(); todo; todo = todos.next()) {
     sumString = "";
-    if (anEvent->hasDueDate()) {
-      if (!anEvent->doesFloat()) {
-        sumString += KGlobal::locale()->formatTime(anEvent->getDtDue().time());
+    if (todo->hasDueDate()) {
+      if (!todo->doesFloat()) {
+        sumString += KGlobal::locale()->formatTime(todo->dtDue().time());
         sumString += " ";
       }
     }
-    sumString += i18n("Todo: ") + anEvent->getSummary();
+    sumString += i18n("Todo: ") + todo->getSummary();
 
     elitem = new EventListBoxItem(sumString);
     insertItem(elitem);
-    currIdxs->insert(i++, anEvent);
+// TODO: check, how to index todos
+//    currIdxs->insert(i++, anEvent);
   }
 
   repaint();
@@ -439,9 +441,9 @@ int KOMonthView::currentDateCount()
   return 42;
 }
 
-QList<KOEvent> KOMonthView::getSelected()
+QList<Incidence> KOMonthView::getSelected()
 {
-  QList<KOEvent> selectedEvents;
+  QList<Incidence> selectedEvents;
 
   uint i;
   for(i=0; i<selDateIdxs.count(); ++i) {
@@ -790,12 +792,17 @@ void KOMonthView::newEventSlot(int index)
 
 void KOMonthView::doRightClickMenu()
 {
-  rightClickMenu->showEventPopup(getSelected().first());
+  KOEvent *event = dynamic_cast<KOEvent *>(getSelected().first());
+  if (event) {
+    rightClickMenu->showEventPopup(event);
+  } else {
+    kdDebug() << "MonthView::doRightClickMenu(): cast failed." << endl;
+  }
 }
 
 void KOMonthView::processSelectionChange()
 {
-  QList<KOEvent> events = getSelected();
+  QList<Incidence> events = getSelected();
   if (events.count() > 0) {
     emit eventsSelected(true);
 //    kdDebug() << "KOMonthView::processSelectionChange() true" << endl;

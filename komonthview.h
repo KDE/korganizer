@@ -1,6 +1,6 @@
 /* 	$Id$	 */
 
-#ifndef _KOMONTHVIEW_H 
+#ifndef _KOMONTHVIEW_H
 #define _KOMONTHVIEW_H
 
 #include <qlabel.h>
@@ -127,7 +127,7 @@ class KOMonthView: public KOEventView {
    virtual int currentDateCount();
 
    /** returns the currently selected events */
-   virtual QList<KOEvent> getSelected();
+   virtual QList<Incidence> getSelected();
 
    virtual void printPreview(CalPrinter *calPrinter,
                              const QDate &, const QDate &);

@@ -118,10 +118,7 @@ void KOEditorGeneralEvent::initTimeBox()
   noTimeButton->setText( i18n("No time associated") );
   layoutTimeBox->addMultiCellWidget(noTimeButton,2,2,2,3);
 
-  connect(noTimeButton, SIGNAL(toggled(bool)),SLOT(timeStuffDisable(bool)));
-  connect(noTimeButton, SIGNAL(toggled(bool)),SLOT(alarmStuffDisable(bool)));
-  connect(noTimeButton, SIGNAL(toggled(bool)),SIGNAL(allDayChanged(bool)));
-
+  connect(noTimeButton, SIGNAL(toggled(bool)),SLOT(dontAssociateTime(bool)));
 
   recursButton = new QCheckBox(timeBoxFrame);
   recursButton->setText(i18n("Recurring event"));
@@ -344,16 +341,21 @@ void KOEditorGeneralEvent::alarmStuffEnable(bool enable)
   alarmTimeEdit->setEnabled(enable);
   alarmSoundButton->setEnabled(enable);
   alarmProgramButton->setEnabled(enable);
+  alarmIncrCombo->setEnabled(enable);
 }
 
 void KOEditorGeneralEvent::alarmStuffDisable(bool disable)
 {
-  alarmTimeEdit->setEnabled(!disable);
-  alarmSoundButton->setEnabled(!disable);
-  alarmProgramButton->setEnabled(!disable);
+  alarmStuffEnable(!disable);
 }
 
-
+void KOEditorGeneralEvent::dontAssociateTime(bool noTime)
+{
+  timeStuffDisable(noTime);
+  //if(alarmButton->isChecked()) alarmStuffDisable(noTime);
+  allDayChanged(noTime);
+}
+		
 void KOEditorGeneralEvent::setDateTimes(QDateTime start, QDateTime end)
 {
   kdDebug() << "KOEditorGeneralEvent::setDateTimes(): Start DateTime: " << start.toString() << endl;

@@ -19,6 +19,7 @@
 
 #include "koevent.h"
 #include "koprefs.h"
+#include "todo.h"
 
 #include "koeditorgeneraltodo.h"
 #include "koeditorgeneraltodo.moc"
@@ -202,16 +203,16 @@ void KOEditorGeneralTodo::setDefaults(QDateTime due,bool allDay)
   mStartTimeEdit->setTime(QTime::currentTime());  
 }
 
-void KOEditorGeneralTodo::readTodo(KOEvent *todo)
+void KOEditorGeneralTodo::readTodo(Todo *todo)
 {
-  summaryEdit->setText(todo->getSummary());
-  descriptionEdit->setText(todo->getDescription());
+  summaryEdit->setText(todo->summary());
+  descriptionEdit->setText(todo->description());
   // organizer information
-  ownerLabel->setText(i18n("Owner: ") + todo->getOrganizer());
+  ownerLabel->setText(i18n("Owner: ") + todo->organizer());
 
   if (todo->hasDueDate()) {
-    mDueDateEdit->setDate(todo->getDtDue().date());
-    mDueTimeEdit->setTime(todo->getDtDue().time());
+    mDueDateEdit->setDate(todo->dtDue().date());
+    mDueTimeEdit->setTime(todo->dtDue().time());
     mNoDueCheck->setChecked(false);
   } else {
     mDueDateEdit->setDate(QDate::currentDate());
@@ -220,8 +221,8 @@ void KOEditorGeneralTodo::readTodo(KOEvent *todo)
   }
 
   if (todo->hasStartDate()) {
-    mStartDateEdit->setDate(todo->getDtStart().date());
-    mStartTimeEdit->setTime(todo->getDtStart().time());
+    mStartDateEdit->setDate(todo->dtStart().date());
+    mStartTimeEdit->setTime(todo->dtStart().time());
     mNoStartCheck->setChecked(false);
   } else {
     mStartDateEdit->setDate(QDate::currentDate());
@@ -231,17 +232,17 @@ void KOEditorGeneralTodo::readTodo(KOEvent *todo)
 
   noTimeButton->setChecked(todo->doesFloat());
 
-  if (todo->getStatusStr() == "NEEDS ACTION")
+  if (todo->statusStr() == "NEEDS ACTION")
     completedButton->setChecked(FALSE);
   else
     completedButton->setChecked(TRUE);
 
-  priorityCombo->setCurrentItem(todo->getPriority()-1);
+  priorityCombo->setCurrentItem(todo->priority()-1);
 
-  setCategories(todo->getCategoriesStr());
+  setCategories(todo->categoriesStr());
 }
 
-void KOEditorGeneralTodo::writeTodo(KOEvent *todo)
+void KOEditorGeneralTodo::writeTodo(Todo *todo)
 {
   todo->setSummary(summaryEdit->text());
   todo->setDescription(descriptionEdit->text());

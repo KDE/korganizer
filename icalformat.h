@@ -46,9 +46,9 @@ class ICalFormat : public CalFormat {
     /** create an object to be used with the Xdnd Drag And Drop protocol. */
     VCalDrag *createDrag(KOEvent *selectedEv, QWidget *owner);
     /** create an object to be used with the Xdnd Drag And Drop protocol. */
-    VCalDrag *createDragTodo(KOEvent *selectedEv, QWidget *owner);
+    VCalDrag *createDragTodo(Todo *selectedEv, QWidget *owner);
     /** Create Todo object from drop event */
-    KOEvent *createDropTodo(QDropEvent *de);
+    Todo *createDropTodo(QDropEvent *de);
     /** Create Event object from drop event */
     KOEvent *createDrop(QDropEvent *de);
   
@@ -63,17 +63,17 @@ class ICalFormat : public CalFormat {
   protected:
     void populate(icalfileset *fs);
 
-    icalcomponent *writeTodo(KOEvent *todo);
+    icalcomponent *writeTodo(Todo *todo);
     icalcomponent *writeEvent(KOEvent *event);
-    void writeIncidence(icalcomponent *parent,KOEvent *incidence);
+    void writeIncidence(icalcomponent *parent,Incidence *incidence);
     icalproperty *writeRecurrenceRule(KOEvent *event);
 
     QString extractErrorProperty(icalcomponent *);    
-    KOEvent *readTodo(icalcomponent *vtodo);
+    Todo *readTodo(icalcomponent *vtodo);
     KOEvent *readEvent(icalcomponent *vevent);
     Attendee *readAttendee(icalproperty *attendee);
-    void readIncidence(icalcomponent *parent,KOEvent *incidence);
-    void readRecurrenceRule(icalproperty *rrule,KOEvent *event);
+    void readIncidence(icalcomponent *parent,Incidence *incidence);
+    void readRecurrenceRule(icalproperty *rrule,Incidence *event);
 
     icaltimetype writeICalDate(const QDate &);
     icaltimetype writeICalDateTime(const QDateTime &);
@@ -81,14 +81,14 @@ class ICalFormat : public CalFormat {
     QDateTime readICalDateTime(icaltimetype);
     char *writeText(const QString &);
     icalcomponent *createCalendarComponent();
-    icalcomponent *createScheduleComponent(KOEvent *,Scheduler::Method);
+    icalcomponent *createScheduleComponent(Incidence *,Scheduler::Method);
 
     /** shows an error dialog box. */
     void parseError(const char *prop);
   
   private:
     QList<KOEvent> mEventsRelate;           // events with relations
-    QList<KOEvent> mTodosRelate;             // todos with relations
+    QList<Todo> mTodosRelate;             // todos with relations
 };
 
 #endif

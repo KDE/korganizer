@@ -19,6 +19,8 @@ class QLineEdit;
 class QTextStream;
 class KOEvent;
 class KConfig;
+class Todo;
+class Incidence;
 
 class ExportWebDialog : public KDialogBase
 {
@@ -45,11 +47,11 @@ class ExportWebDialog : public KDialogBase
 
     void createHtmlEventList (QTextStream *ts);
     void createHtmlTodoList (QTextStream *ts);
-    void createHtmlTodo (QTextStream *ts,KOEvent *todo);
+    void createHtmlTodo (QTextStream *ts,Todo *todo);
     void createHtmlEvent (QTextStream *ts,KOEvent *event,QDate date);
 
-    void formatHtmlCategories (QTextStream *ts,KOEvent *event);
-    void formatHtmlAttendees (QTextStream *ts,KOEvent *event);
+    void formatHtmlCategories (QTextStream *ts,Incidence *event);
+    void formatHtmlAttendees (QTextStream *ts,Incidence *event);
 
   private:
     CalObject *mCalendar;

@@ -19,6 +19,7 @@ KDateEdit::KDateEdit(QWidget *parent, const char *name)
 {
   mDateEdit = new QLineEdit(this);
   mDateEdit->setText(KGlobal::locale()->formatDate(QDate::currentDate(),true));
+  setFocusProxy(mDateEdit);
 
   QPixmap pixmap = SmallIcon("smallcal");
   mDateButton = new QPushButton(this);

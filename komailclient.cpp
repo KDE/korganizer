@@ -114,9 +114,11 @@ void KOMailClient::emailEvent(KOEvent *selectedEvent)
 
   if (!sent) return;  // no recips were in NEEDS_ACTION status - bail out
 
+#if 0
   // update the status on the event object
   if (selectedEvent->getStatus() == selectedEvent->NEEDS_ACTION)
     selectedEvent->setStatus(selectedEvent->SENT);
+#endif
   
   return;
 }

@@ -92,6 +92,7 @@ class Incidence : public QObject, public KORecurrence, public KOAlarm
     Attendee *getAttendee(const char *n) const;
     // TODO: Remove get from function name
     const QList<Attendee> &getAttendeeList() const { return mAttendees; };
+    const QList<Attendee> &attendees() const { return mAttendees; };
     int attendeeCount() const { return mAttendees.count(); };
 
     /** sets the event's lengthy description. */

@@ -8,22 +8,22 @@
 
 #include "incomingdialog_base.h"
 
-class KOEvent;
+class Incidence;
 class CalObject;
 
 class ScheduleItemIn : public QListViewItem
 {
   public:
-    ScheduleItemIn(QListView *parent,KOEvent *ev,Scheduler::Method method,
+    ScheduleItemIn(QListView *parent,Incidence *ev,Scheduler::Method method,
                    icalclass status);
     virtual ~ScheduleItemIn() {}
 
-    KOEvent *event() { return mEvent; }
+    Incidence *event() { return mEvent; }
     Scheduler::Method method() { return mMethod; }
     icalclass status() { return mStatus; }
 
   private:
-    KOEvent *mEvent;
+    Incidence *mEvent;
     Scheduler::Method mMethod;
     icalclass mStatus;
 };

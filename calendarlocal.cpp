@@ -144,7 +144,7 @@ void CalendarLocal::close()
 
 void CalendarLocal::addEvent(KOEvent *anEvent)
 {
-  anEvent->setTodoStatus(false);
+// OBSOLETE: anEvent->setTodoStatus(false);
   insertEvent(anEvent);
   // set event's read/write status  
   if (anEvent->getOrganizer() != getEmail())
@@ -154,8 +154,13 @@ void CalendarLocal::addEvent(KOEvent *anEvent)
   emit calUpdated(anEvent);
 }
 
-void CalendarLocal::deleteEvent(const QDate &date, int eventId)
+// probably not really efficient, but...it works for now.
+void CalendarLocal::deleteEvent(KOEvent *event)
 {
+  kdDebug() << "CalendarLocal::deleteEvent" << endl;
+  
+  QDate date(event->getDtStart().date());
+
   QList<KOEvent> *tmpList;
   KOEvent *anEvent;
   int extraDays, dayOffset;
@@ -167,7 +172,7 @@ void CalendarLocal::deleteEvent(const QDate &date, int eventId)
   if (tmpList) {
     for (anEvent = tmpList->first(); anEvent;
 	 anEvent = tmpList->next()) {
-      if (anEvent->getEventId() == eventId) {
+      if (anEvent == event) {
 	if (!anEvent->isMultiDay()) {
 	  tmpList->setAutoDelete(FALSE);
 	  tmpList->remove();
@@ -183,7 +188,7 @@ void CalendarLocal::deleteEvent(const QDate &date, int eventId)
 	    if (tmpList) {
 	      for (anEvent = tmpList->first(); anEvent;
 		   anEvent = tmpList->next()) {
-		if (anEvent->getEventId() == eventId)
+		if (anEvent == event)
 		  tmpList->remove();
 	      }
 	    }
@@ -197,7 +202,7 @@ void CalendarLocal::deleteEvent(const QDate &date, int eventId)
   }
   for (anEvent = mRecursList.first(); anEvent;
        anEvent = mRecursList.next()) {
-    if (anEvent->getEventId() == eventId) {
+    if (anEvent == event) {
       mRecursList.remove();
     }
   }
@@ -243,17 +248,8 @@ void CalendarLocal::deleteEvent(const QDate &date, int eventId)
       anEvent = mRecursList.next();
     }
   }
-}
 
-// probably not really efficient, but...it works for now.
-void CalendarLocal::deleteEvent(KOEvent *anEvent)
-{
-  kdDebug() << "CalendarLocal::deleteEvent" << endl;
-  
-  int id = anEvent->getEventId();
-  QDate startDate(anEvent->getDtStart().date());
 
-  deleteEvent(startDate, id);
   emit calUpdated(anEvent);
 }
 
@@ -284,16 +280,16 @@ KOEvent *CalendarLocal::getEvent(const QString &UniqueStr)
   return (KOEvent *) 0L;
 }
 
-void CalendarLocal::addTodo(KOEvent *todo)
+void CalendarLocal::addTodo(Todo *todo)
 {
-  todo->setTodoStatus(true);
+// OBSOLETE:  todo->setTodoStatus(true);
   mTodoList.append(todo);
   connect(todo, SIGNAL(eventUpdated(Incidence *)), this,
 	  SLOT(updateEvent(Incidence *)));
   emit calUpdated(todo);
 }
 
-void CalendarLocal::deleteTodo(KOEvent *todo)
+void CalendarLocal::deleteTodo(Todo *todo)
 {
   mTodoList.findRef(todo);
   mTodoList.remove();
@@ -301,29 +297,29 @@ void CalendarLocal::deleteTodo(KOEvent *todo)
 }
 
 
-const QList<KOEvent> &CalendarLocal::getTodoList() const
+const QList<Todo> &CalendarLocal::getTodoList() const
 {
   return mTodoList;
 }
 
-KOEvent *CalendarLocal::getTodo(const QString &UniqueStr)
+Todo *CalendarLocal::getTodo(const QString &UniqueStr)
 {
-  KOEvent *aTodo;
+  Todo *aTodo;
   for (aTodo = mTodoList.first(); aTodo;
        aTodo = mTodoList.next())
     if (aTodo->getVUID() == UniqueStr)
       return aTodo;
   // not found
-  return (KOEvent *) 0L;
+  return 0;
 }
 
-QList<KOEvent> CalendarLocal::getTodosForDate(const QDate & date)
+QList<Todo> CalendarLocal::getTodosForDate(const QDate & date)
 {
-  QList<KOEvent> todos;
+  QList<Todo> todos;
 
-  KOEvent *aTodo;
+  Todo *aTodo;
   for (aTodo = mTodoList.first();aTodo;aTodo = mTodoList.next()) {
-    if (aTodo->hasDueDate() && aTodo->getDtDue().date() == date) {
+    if (aTodo->hasDueDate() && aTodo->dtDue().date() == date) {
       todos.append(aTodo);
     }
   }
@@ -404,29 +400,19 @@ void CalendarLocal::checkAlarms()
 // after changes are made to an event, this should be called.
 void CalendarLocal::updateEvent(Incidence *incidence)
 {
-  KOEvent *anEvent = dynamic_cast<KOEvent *>(incidence);
-  if (!anEvent) {
-    kdDebug() << "CalendarLocal::updateEvent(): Error! Passed non-KOEvent"
-              << endl;
-    return;
-  }
-
-  QIntDictIterator<QList<KOEvent> > qdi(*mCalDict);
-  QList<KOEvent> *tmpList;
-
-  anEvent->setSyncStatus(KOEvent::SYNCMOD);
-  anEvent->setLastModified(QDateTime::currentDateTime());
+  incidence->setSyncStatus(KOEvent::SYNCMOD);
+  incidence->setLastModified(QDateTime::currentDateTime());
   // we should probably update the revision number here,
   // or internally in the KOEvent itself when certain things change.
   // need to verify with ical documentation.
 
   // handle sending the event to those attendees that need it.
   // mostly broken right now.
-  if (anEvent->attendeeCount()) {
+  if (incidence->attendeeCount()) {
     QList<Attendee> al;
     Attendee *a;
     
-    al = anEvent->getAttendeeList();
+    al = incidence->getAttendeeList();
     for (a = al.first(); a; a = al.next()) {
       if ((a->flag()) && (a->RSVP())) {
 	//kdDebug() << "send appointment to " << a->getName() << endl;
@@ -434,9 +420,16 @@ void CalendarLocal::updateEvent(Incidence *incidence)
       }
     }
   }
-      
-  // we don't need to do anything to Todo events.
-  if (anEvent->getTodoStatus() != TRUE) {
+
+  KOEvent *anEvent = dynamic_cast<KOEvent *>(incidence);
+  if (!anEvent) {
+//    kdDebug() << "CalendarLocal::updateEvent(): Warning! Passed non-KOEvent" << endl;
+  } else {
+    // we don't need to do anything to Todo events.
+ 
+    QIntDictIterator<QList<KOEvent> > qdi(*mCalDict);
+    QList<KOEvent> *tmpList;
+
     // the first thing we do is REMOVE all occurances of the event from 
     // both the dictionary and the recurrence list.  Then we reinsert it.
     // We don't bother about optimizations right now.
@@ -452,8 +445,8 @@ void CalendarLocal::updateEvent(Incidence *incidence)
     // ok the event is now GONE.  we want to re-insert it.
     insertEvent(anEvent);
   }
+
   emit calUpdated(anEvent);
-  return;  
 }
 
 // this function will take a VEvent and insert it into the event

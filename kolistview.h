@@ -27,13 +27,13 @@ public:
    * @param parent is the list view to which this item belongs.
    * @param ev is the event to have the item display information for.
    */
-  KOListViewItem(QListView *parent, KOEvent *ev);
+  KOListViewItem(QListView *parent, Incidence *ev);
   virtual ~KOListViewItem() {}
 
-  KOEvent *event() { return mEvent; }
+  Incidence *event() { return mEvent; }
 
 private:
-  KOEvent *mEvent;
+  Incidence *mEvent;
 };
 
 /**
@@ -66,46 +66,47 @@ class ListItemVisitor : public IncidenceVisitor
  */
 class KOListView : public KOEventView
 {
-  Q_OBJECT
+    Q_OBJECT
+  public:
+    KOListView(CalObject *calendar, QWidget *parent = 0, 
+	       const char *name = 0);
+    ~KOListView();
 
-public:
-  KOListView(CalObject *calendar, QWidget *parent = 0, 
-	     const char *name = 0);
-  ~KOListView();
+    virtual int maxDatesHint();
+    virtual int currentDateCount();
+    virtual QList<Incidence> getSelected();
 
-  virtual int maxDatesHint();
-  virtual int currentDateCount();
-  virtual QList<KOEvent> getSelected();
+    void showDates(bool show);
 
-  void showDates(bool show);
-
-  virtual void printPreview(CalPrinter *calPrinter,
-                            const QDate &, const QDate &);
+    virtual void printPreview(CalPrinter *calPrinter,
+                              const QDate &, const QDate &);
   
-public slots:
-  virtual void updateView();
-  virtual void selectDates(const QDateList dateList);
-  virtual void selectEvents(QList<KOEvent> eventList);
+  public slots:
+    virtual void updateView();
+    virtual void selectDates(const QDateList dateList);
+    virtual void selectEvents(QList<KOEvent> eventList);
 
-  void showDates();
-  void hideDates();
+    void showDates();
+    void hideDates();
 
-  void changeEventDisplay(KOEvent *, int);
+    void changeEventDisplay(KOEvent *, int);
   
-  void defaultItemAction(QListViewItem *item);
-  void popupMenu(QListViewItem *item,const QPoint &,int);
+    void defaultItemAction(QListViewItem *item);
+    void popupMenu(QListViewItem *item,const QPoint &,int);
 
-protected slots:
-  void processSelectionChange();
+  protected slots:
+    void processSelectionChange();
 
-protected:
-  void addEvents(QList<KOEvent> eventList);
-  KOListViewItem *getItemForEvent(KOEvent *event);
+  protected:
+    void addEvents(QList<KOEvent> eventList);
+    void addTodos(QList<Todo> eventList);
+    void addIncidence(Incidence *);
+    KOListViewItem *getItemForEvent(KOEvent *event);
 
-private:
-  QListView *mListView;
-  KOEventPopupMenu *mPopupMenu;
-  KOListViewItem *mActiveItem;
+  private:
+    QListView *mListView;
+    KOEventPopupMenu *mPopupMenu;
+    KOListViewItem *mActiveItem;
 };
 
 #endif

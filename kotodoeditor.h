@@ -27,22 +27,22 @@ class KOTodoEditor : public KDialogBase
      * Constructs a new appointment dialog.
      *
      */  
-    KOTodoEditor( CalObject *calendar);
+    KOTodoEditor(CalObject *calendar);
     virtual ~KOTodoEditor(void);
 
     /** Clear eventwin for new todo, and preset the dates and times with hint
      */
-    void newTodo(QDateTime due,KOEvent *relatedTodo=0,bool allDay=false);
+    void newTodo(QDateTime due,Todo *relatedTodo=0,bool allDay=false);
 
     /** Edit an existing todo. */
-    void editTodo( KOEvent *, QDate qd=QDate::currentDate());
+    void editTodo(Todo *, QDate qd=QDate::currentDate());
 
     /** Set widgets to default values */
-    void setDefaults(QDateTime due,KOEvent *relatedTodo,bool allDay);
+    void setDefaults(QDateTime due,Todo *relatedTodo,bool allDay);
     /** Read event object and setup widgets accordingly */
-    void readTodo(KOEvent *);
+    void readTodo(Todo *);
     /** Write event settings to event object */
-    void writeTodo(KOEvent *);
+    void writeTodo(Todo *);
 
     /** Check if the input is valid. */
     bool validateInput();
@@ -53,9 +53,9 @@ class KOTodoEditor : public KDialogBase
   public slots:
 
   signals:
-    void todoChanged(KOEvent *);
-    void todoAdded(KOEvent *);
-    void todoToBeDeleted(KOEvent *);
+    void todoChanged(Todo *);
+    void todoAdded(Todo *);
+    void todoToBeDeleted(Todo *);
     void todoDeleted();
 
     void categoryConfigChanged();
@@ -73,9 +73,9 @@ class KOTodoEditor : public KDialogBase
   private:
     CalObject *mCalendar;
   
-    KOEvent *mTodo;
+    Todo *mTodo;
     
-    KOEvent *mRelatedTodo;
+    Todo *mRelatedTodo;
 
     KOEditorGeneralTodo *mGeneral;
     KOEditorDetails     *mDetails;
@@ -84,5 +84,3 @@ class KOTodoEditor : public KDialogBase
 };
 
 #endif
-
-

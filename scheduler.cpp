@@ -8,7 +8,7 @@
 
 #include "scheduler.h"
 
-ScheduleMessage::ScheduleMessage(KOEvent *event,int method,icalclass status)
+ScheduleMessage::ScheduleMessage(Incidence *event,int method,icalclass status)
 {
   mEvent = event;
   mMethod = method;
@@ -26,18 +26,18 @@ Scheduler::~Scheduler()
 {
 }
 
-bool Scheduler::acceptTransaction(KOEvent *incidence,icalclass status)
+bool Scheduler::acceptTransaction(Incidence *incidence,icalclass status)
 {
   switch (status) {
     case ICAL_PUBLISH_NEW_CLASS:
-      if (!mCalendar->getEvent(incidence->getVUID())) {
-        mCalendar->addEvent(incidence);
+      if (!mCalendar->getEvent(incidence->VUID())) {
+        mCalendar->addIncidence(incidence);
       }
       return true;
     case ICAL_OBSOLETE_CLASS:
       return true;
     case ICAL_REQUEST_NEW_CLASS:
-      mCalendar->addEvent(incidence);
+      mCalendar->addIncidence(incidence);
       return true;
     default:
       return false;

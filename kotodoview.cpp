@@ -16,13 +16,13 @@
 #include "kotodoview.h"
 #include "kotodoview.moc"
 
-KOTodoViewItem::KOTodoViewItem(QListView *parent, KOEvent *ev)
+KOTodoViewItem::KOTodoViewItem(QListView *parent, Todo *ev)
   : QCheckListItem(parent,"",CheckBox), mEvent(ev)
 {
   construct();
 }
 
-KOTodoViewItem::KOTodoViewItem(KOTodoViewItem *parent, KOEvent *ev)
+KOTodoViewItem::KOTodoViewItem(KOTodoViewItem *parent, Todo *ev)
   : QCheckListItem(parent,"",CheckBox), mEvent(ev)
 {
   construct();
@@ -36,13 +36,13 @@ void KOTodoViewItem::paintBranches(QPainter *p,const QColorGroup & cg,int w,
 
 void KOTodoViewItem::construct()
 {
-  setOn(mEvent->getStatus() == KOEvent::NEEDS_ACTION ? false : true );
+  setOn(mEvent->status() == KOEvent::NEEDS_ACTION ? false : true );
   setText(0, mEvent->getSummary());
   setText(1, QString::number(mEvent->getPriority()));
   if (mEvent->hasDueDate()) {
-    setText(2, mEvent->getDtDueDateStr());
+    setText(2, mEvent->dtDueDateStr());
     if (mEvent->doesFloat()) setText(3,"");
-    else setText(3,mEvent->getDtDueTimeStr());
+    else setText(3,mEvent->dtDueTimeStr());
   } else {
     setText(2,"");
     setText(2,"");
@@ -116,17 +116,17 @@ void KOTodoListView::contentsDropEvent(QDropEvent *e)
     return;
   }
 
-  KOEvent *todo = mCalendar->createDropTodo(e);
+  Todo *todo = mCalendar->createDropTodo(e);
 
   if (todo) {
     e->acceptAction();
 
     KOTodoViewItem *destination =
         (KOTodoViewItem *)itemAt(contentsToViewport(e->pos()));
-    KOEvent *destinationEvent = 0;
+    Todo *destinationEvent = 0;
     if (destination) destinationEvent = destination->event();
     
-    KOEvent *existingTodo = mCalendar->getTodo(todo->getVUID());
+    Todo *existingTodo = mCalendar->getTodo(todo->getVUID());
       
     if(existingTodo) {
 //      kdDebug() << "Drop existing Todo" << endl;
@@ -275,7 +275,7 @@ KOTodoView::KOTodoView(CalObject *calendar,QWidget* parent,const char* name) :
                    this,SLOT(popupMenu(QListViewItem *,const QPoint &,int)));
   QObject::connect(mTodoListView,SIGNAL(clicked(QListViewItem *)),
                    this,SLOT(itemClicked(QListViewItem *)));
-  connect(mTodoListView,SIGNAL(todoDropped(KOEvent *)),SLOT(updateView()));
+  connect(mTodoListView,SIGNAL(todoDropped(Todo *)),SLOT(updateView()));
 }
 
 void KOTodoView::updateView()
@@ -283,7 +283,7 @@ void KOTodoView::updateView()
 //  kdDebug() << "KOTodoView::updateView()" << endl;
   mTodoListView->clear();
 
-  QList<KOEvent> todoList = mCalendar->getTodoList();
+  QList<Todo> todoList = mCalendar->getTodoList();
 
 /*
   kdDebug() << "KOTodoView::updateView(): Todo List:" << endl;
@@ -307,7 +307,7 @@ void KOTodoView::updateView()
   // specific order of events. That means that we have to generate parent items
   // recursively for proper hierarchical display of Todos.
   mTodoMap.clear();
-  KOEvent *todo;
+  Todo *todo;
   for(todo = todoList.first(); todo; todo = todoList.next()) {
     if (!mTodoMap.contains(todo)) {
       insertTodoItem(todo);
@@ -315,15 +315,16 @@ void KOTodoView::updateView()
   }
 }
 
-QMap<KOEvent *,KOTodoViewItem *>::ConstIterator
-  KOTodoView::insertTodoItem(KOEvent *todo)
+QMap<Todo *,KOTodoViewItem *>::ConstIterator
+  KOTodoView::insertTodoItem(Todo *todo)
 {
 //  kdDebug() << "KOTodoView::insertTodoItem(): " << todo->getSummary() << endl;
-  KOEvent *relatedTodo = dynamic_cast<KOEvent *>(todo->getRelatedTo());
+  // TODO: Check, if dynmaic cast is necessary
+  Todo *relatedTodo = dynamic_cast<Todo *>(todo->getRelatedTo());
 
   if (relatedTodo) {
 //    kdDebug() << "  has Related" << endl;
-    QMap<KOEvent *,KOTodoViewItem *>::ConstIterator itemIterator;
+    QMap<Todo *,KOTodoViewItem *>::ConstIterator itemIterator;
     itemIterator = mTodoMap.find(relatedTodo);
     if (itemIterator == mTodoMap.end()) {
 //      kdDebug() << "    related not yet in list" << endl;
@@ -346,9 +347,19 @@ void KOTodoView::updateConfig()
   // to be implemented.
 }
 
-QList<KOEvent> KOTodoView::getSelected()
+QList<Incidence> KOTodoView::getSelected()
 {
-  QList<KOEvent> selected;
+  QList<Incidence> selected;
+
+  KOTodoViewItem *item = (KOTodoViewItem *)(mTodoListView->selectedItem());
+  if (item) selected.append(item->event());
+
+  return selected;
+}
+
+QList<Todo> KOTodoView::selectedTodos()
+{
+  QList<Todo> selected;
 
   KOTodoViewItem *item = (KOTodoViewItem *)(mTodoListView->selectedItem());
   if (item) selected.append(item->event());
@@ -373,12 +384,12 @@ void KOTodoView::selectEvents(QList<KOEvent>)
 void KOTodoView::printPreview(CalPrinter *calPrinter, const QDate &fd,
                               const QDate &td)
 {
-  calPrinter->preview(CalPrinter::Todo, fd, td);
+  calPrinter->preview(CalPrinter::Todolist, fd, td);
 }
 
 void KOTodoView::editItem(QListViewItem *item)
 {
-  emit editEventSignal(((KOTodoViewItem *)item)->event());
+  emit editTodoSignal(((KOTodoViewItem *)item)->event());
 }
 
 void KOTodoView::showItem(QListViewItem *item)
@@ -408,7 +419,7 @@ void KOTodoView::newSubTodo()
 void KOTodoView::editTodo()
 {
   if (mActiveItem) {
-    emit editEventSignal(mActiveItem->event());
+    emit editTodoSignal(mActiveItem->event());
   }
 }
 
@@ -426,7 +437,7 @@ void KOTodoView::deleteTodo()
       KMessageBox::sorry(this,i18n("Cannot delete To-Do which has children."),
                          i18n("Delete To-Do"));
     } else {
-      emit deleteEventSignal(mActiveItem->event());
+      emit deleteTodoSignal(mActiveItem->event());
     }
   }
 }
@@ -437,11 +448,11 @@ void KOTodoView::purgeCompleted()
       i18n("Delete all completed todos?"),i18n("Purge Todos"),i18n("Purge"));
 
   if (result == KMessageBox::Continue) {
-    QList<KOEvent> todoCal = mCalendar->getTodoList();
+    QList<Todo> todoCal = mCalendar->getTodoList();
 
-    KOEvent *aTodo;
+    Todo *aTodo;
     for (aTodo = todoCal.first(); aTodo; aTodo = todoCal.next()) {
-    if (aTodo->getStatus() != KOEvent::NEEDS_ACTION)
+    if (aTodo->status() != KOEvent::NEEDS_ACTION)
       mCalendar->deleteTodo(aTodo);
     }
     updateView();
@@ -453,7 +464,7 @@ void KOTodoView::itemClicked(QListViewItem *item)
   if (!item) return;
 
   KOTodoViewItem *todoItem = (KOTodoViewItem *)item;
-  int status = todoItem->event()->getStatus();  // Completed or not?
+  int status = todoItem->event()->status();  // Completed or not?
   
   if (todoItem->isOn()) {
     if (status != KOEvent::COMPLETED) {

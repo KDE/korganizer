@@ -39,9 +39,9 @@ int KOWhatsNextView::currentDateCount()
   return 0;
 }
 
-QList<KOEvent> KOWhatsNextView::getSelected()
+QList<Incidence> KOWhatsNextView::getSelected()
 {
-  QList<KOEvent> eventList;
+  QList<Incidence> eventList;
 
   return eventList;
 }
@@ -71,16 +71,16 @@ void KOWhatsNextView::updateView()
     mText += i18n("</table>");
   }
 
-  events = mCalendar->getTodoList();
-  if (events.count() > 0) {  
+  QList<Todo> todos = mCalendar->getTodoList();
+  if (todos.count() > 0) {  
     mText += i18n("<h2>Todo:</h2>");
     mText += i18n("<table>");
-    KOEvent *ev = events.first();
+    Todo *ev = todos.first();
     while(ev) {
-      if (ev->getPriority() == 1 ||
-          (ev->hasDueDate() && ev->getDtDue().date() == QDate::currentDate()))
+      if (ev->priority() == 1 ||
+          (ev->hasDueDate() && ev->dtDue().date() == QDate::currentDate()))
         appendTodo(ev);
-      ev = events.next();
+      ev = todos.next();
     }
     mText += i18n("</table>");
   }
@@ -115,18 +115,18 @@ void KOWhatsNextView::appendEvent(KOEvent *ev)
 {
   mText += "<tr><td><b>";
   if (!ev->doesFloat()) {
-    mText += ev->getDtStartTimeStr() + " - " + ev->getDtEndTimeStr();
+    mText += ev->dtStartTimeStr() + " - " + ev->dtEndTimeStr();
   }
   mText += "</b></td><td>";
-  mText += ev->getSummary();
+  mText += ev->summary();
   mText += "</td></tr>";
 }
 
-void KOWhatsNextView::appendTodo(KOEvent *ev)
+void KOWhatsNextView::appendTodo(Todo *ev)
 {
   mText += "<tr><td><b>";
-  mText += QString::number(ev->getPriority());
+  mText += QString::number(ev->priority());
   mText += "</b></td><td>";
-  mText += ev->getSummary();
+  mText += ev->summary();
   mText += "</td></tr>";
 }

@@ -19,7 +19,7 @@ class KOEventViewerDialog : public KDialogBase {
     virtual ~KOEventViewerDialog();
 
     void setEvent(KOEvent *event);
-    void setTodo(KOEvent *event);
+    void setTodo(Todo *event);
     
   private:
     KOEventViewer *mEventViewer;
