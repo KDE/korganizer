@@ -127,11 +127,13 @@ void KOTodoViewItem::stateChange(bool state)
 {
   // do not change setting on startup
   if ( m_init ) return;
-  
+
   kdDebug(5850) << "State changed, modified " << state << endl;
   QString keyd = "==";
   QString keyt = "==";
-  
+
+  Todo*oldTodo = mTodo->clone();
+
   if (state) mTodo->setCompleted(state);
   else mTodo->setPercentComplete(0);
   if (isOn()!=state) {
@@ -157,7 +159,7 @@ void KOTodoViewItem::stateChange(bool state)
   QString priorityKey = QString::number( mTodo->priority() ) + keyd + keyt;
   if ( mTodo->isCompleted() ) setSortKey( 1, "1" + priorityKey );
   else setSortKey( 1, "0" + priorityKey );
-  
+
   setPixmap(2, progressImg(mTodo->percentComplete()));
   if (mTodo->percentComplete()<100) {
     if (mTodo->isCompleted()) setSortKey(2,QString::number(999));
@@ -175,7 +177,8 @@ void KOTodoViewItem::stateChange(bool state)
     myChild = myChild->nextSibling();
   }
   mTodoView->modified(true);
-  mTodoView->setTodoModified( mTodo );
+  mTodoView->setTodoModified( oldTodo, mTodo );
+  delete oldTodo;
 }
 
 QPixmap KOTodoViewItem::progressImg(int progress)
@@ -194,7 +197,7 @@ QPixmap KOTodoViewItem::progressImg(int progress)
 
   /* Calculating the number of pixels to fill */
   progress=(int) (((float)progress)/100 * 62 + 0.5);
-		      
+
   /* Drawing the border */
   for(x = 0; x < 64; x++) {
     img.setPixel(x, 0, KGlobalSettings::textColor().rgb());
@@ -270,7 +273,7 @@ void KOTodoViewItem::paintCell(QPainter *p, const QColorGroup &cg, int column, i
   if (mTodo->hasDueDate()) {
     if (mTodo->dtDue().date()==QDate::currentDate() &&
         !mTodo->isCompleted()) {
-      _cg.setColor(QColorGroup::Base, KOPrefs::instance()->mTodoDueTodayColor);    
+      _cg.setColor(QColorGroup::Base, KOPrefs::instance()->mTodoDueTodayColor);
     }
     if (mTodo->dtDue().date() < QDate::currentDate() &&
         !mTodo->isCompleted()) {
@@ -278,6 +281,6 @@ void KOTodoViewItem::paintCell(QPainter *p, const QColorGroup &cg, int column, i
     }
   }
 #endif
-  
+
   QCheckListItem::paintCell(p, _cg, column, width, alignment);
 }

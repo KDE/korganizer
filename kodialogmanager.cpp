@@ -248,8 +248,8 @@ KOEventEditor *KODialogManager::getEventEditor()
            mMainView, SLOT( eventAdded( Event * ) ) );
   connect( eventEditor, SIGNAL( eventChanged( Event *, Event * ) ),
            mMainView, SLOT( eventChanged( Event *, Event * ) ) );
-  connect( eventEditor, SIGNAL( eventDeleted() ),
-           mMainView, SLOT( eventDeleted() ) );
+  connect( eventEditor, SIGNAL( eventDeleted( Event * ) ),
+           mMainView, SLOT( eventDeleted( Event * ) ) );
   connect( eventEditor, SIGNAL( deleteAttendee( Incidence * ) ),
            mMainView, SLOT( schedule_cancel( Incidence * ) ) );
 

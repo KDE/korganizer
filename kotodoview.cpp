@@ -208,8 +208,12 @@ void KOTodoListView::contentsDropEvent(QDropEvent *e)
         }
         to = to->relatedTo();
       }
+      Todo*oldTodo = existingTodo->clone();
       existingTodo->setRelatedTo(destinationEvent);
+      // TODO_RK
       emit todoDropped(todo);
+      emit todoChanged( oldTodo, todo );
+      delete oldTodo;
       delete todo;
     } else {
 //      kdDebug(5850) << "Drop new Todo" << endl;
@@ -217,6 +221,7 @@ void KOTodoListView::contentsDropEvent(QDropEvent *e)
       mCalendar->addTodo(todo);
 
       emit todoDropped(todo);
+      emit todoAdded( todo );
     }
   }
   else {
@@ -465,6 +470,11 @@ KOTodoView::KOTodoView(Calendar *calendar,QWidget* parent,const char* name) :
            SLOT( processSelectionChange() ) );
   connect( mQuickAdd, SIGNAL( returnPressed () ),
            SLOT( addQuickTodo() ) );
+  connect( mTodoListView, SIGNAL( todoChanged( Todo*, Todo* ) ),
+           SIGNAL( todoChanged( Todo*, Todo* ) ) );
+  connect( mTodoListView, SIGNAL( todoAdded( Todo* ) ),
+           SIGNAL( todoAdded( Todo* ) ) );
+
 }
 
 KOTodoView::~KOTodoView()
@@ -680,23 +690,30 @@ void KOTodoView::deleteTodo()
 void KOTodoView::setNewPriority(int index)
 {
   if (mActiveItem && !mActiveItem->todo()->isReadOnly ()) {
-    mActiveItem->todo()->setPriority(mPriority[index]);
+    Todo*todo = mActiveItem->todo();
+    Todo*oldTodo = todo->clone();
+    todo->setPriority(mPriority[index]);
     mActiveItem->construct();
-    emit todoModifiedSignal (mActiveItem->todo(), KOGlobals::PRIORITY_MODIFIED);
+    emit todoModifiedSignal ( todo, oldTodo, KOGlobals::PRIORITY_MODIFIED);
+    delete oldTodo;
   }
 }
 
 void KOTodoView::setNewPercentage(int index)
 {
   if (mActiveItem && !mActiveItem->todo()->isReadOnly ()) {
+    Todo*todo = mActiveItem->todo();
+    Todo*oldTodo = todo->clone();
+
     if (mPercentage[index] == 100) {
-      mActiveItem->todo()->setCompleted(QDateTime::currentDateTime());
+      todo->setCompleted(QDateTime::currentDateTime());
     } else {
-      mActiveItem->todo()->setCompleted(false);
+      todo->setCompleted(false);
     }
-    mActiveItem->todo()->setPercentComplete(mPercentage[index]);
+    todo->setPercentComplete(mPercentage[index]);
     mActiveItem->construct();
-    emit todoModifiedSignal (mActiveItem->todo (), KOGlobals::COMPLETION_MODIFIED);
+    emit todoModifiedSignal( todo, oldTodo, KOGlobals::COMPLETION_MODIFIED);
+    delete oldTodo;
   }
 }
 
@@ -723,15 +740,18 @@ QPopupMenu * KOTodoView::getCategoryPopupMenu (KOTodoViewItem *todoItem)
 void KOTodoView::changedCategories(int index)
 {
   if (mActiveItem && !mActiveItem->todo()->isReadOnly ()) {
-    QStringList categories = mActiveItem->todo()->categories ();
+    Todo*todo = mActiveItem->todo();
+    Todo*oldTodo = todo->clone();
+    QStringList categories = todo->categories ();
     if (categories.find (mCategory[index]) != categories.end ())
       categories.remove (mCategory[index]);
     else
       categories.insert (categories.end(), mCategory[index]);
     categories.sort ();
-    mActiveItem->todo()->setCategories (categories);
+    todo->setCategories (categories);
     mActiveItem->construct();
-    emit todoModifiedSignal (mActiveItem->todo (), KOGlobals::CATEGORY_MODIFIED);
+    emit todoModifiedSignal( todo, oldTodo, KOGlobals::CATEGORY_MODIFIED);
+    delete oldTodo;
   }
 }
 
@@ -799,10 +819,7 @@ void KOTodoView::modified(bool b)
 {
   emit isModified(b);
 }
-void KOTodoView::setTodoModified( Todo* todo )
-{
-  emit todoModifiedSignal( todo, KOGlobals::UNKNOWN_MODIFIED );
-}
+
 void KOTodoView::clearSelection()
 {
   mTodoListView->selectAll( false );

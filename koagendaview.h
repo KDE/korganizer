@@ -192,8 +192,7 @@ class KOAgendaView : public KOEventView
 
   signals:
     void toggleExpand();
-
-    void eventChanged();
+    void incidenceChanged( Incidence*, Incidence* );
 
     void todoChanged( Todo*, Todo* );
     void todoDropped( Todo* );

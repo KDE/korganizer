@@ -202,8 +202,10 @@ void KOViewManager::showAgendaView()
 
     addView(mAgendaView);
 
-    connect( mAgendaView, SIGNAL( eventChanged() ),
+    connect( mAgendaView, SIGNAL( incidenceChanged( Incidence*, Incidence* ) ),
              mMainView, SLOT( updateUnmanagedViews() ) );
+    connect( mAgendaView, SIGNAL( incidenceChanged( Incidence*, Incidence* ) ),
+             mMainView, SLOT( incidenceChanged( Incidence*, Incidence* ) ) );
 
     // SIGNALS/SLOTS FOR DAY/WEEK VIEW
     connect( mAgendaView, SIGNAL( newEventSignal() ),
@@ -318,6 +320,10 @@ void KOViewManager::showTodoView()
              mMainView, SLOT( todo_unsub() ) );
     connect( mTodoView, SIGNAL( incidenceSelected( Incidence * ) ),
              mMainView, SLOT( processMainViewSelection( Incidence * ) ) );
+    connect( mTodoView, SIGNAL( todoChanged( Todo*, Todo* ) ),
+             mMainView, SLOT( todoChanged( Todo*, Todo* ) ) );
+    connect( mTodoView, SIGNAL( todoAdded( Todo*) ),
+             mMainView, SLOT( todoAdded( Todo* ) ) );
 
     connect( mMainView, SIGNAL( configChanged() ), mTodoView,
              SLOT( updateConfig() ) );
@@ -361,9 +367,11 @@ void KOViewManager::showEventView()
 
 Incidence *KOViewManager::currentSelection()
 {
-  if (!mCurrentView) return 0;
-  
-  return mCurrentView->selectedIncidences().first();
+  if ( !mCurrentView ) return 0;
+  Incidence::List incidenceList = mCurrentView->selectedIncidences();
+  if ( incidenceList.isEmpty() ) return 0;
+
+  return incidenceList.first();
 }
 
 QDate KOViewManager::currentSelectionDate()

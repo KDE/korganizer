@@ -63,7 +63,7 @@ class KOEventEditor : public KOIncidenceEditor
       Edit new event. Set summary and description from given text.
     */
     void newEvent( const QString & );
-    
+
     /**
       Edit an existing event.
     */
@@ -90,7 +90,7 @@ class KOEventEditor : public KOIncidenceEditor
     void eventAdded( Event * );
     void eventChanged( Event *oldEvent, Event *newEvent );
     void eventToBeDeleted( Event * );
-    void eventDeleted();
+    void eventDeleted( Event * );
     void deleteAttendee( Incidence * );
 
     void focusReceivedSignal();
@@ -114,7 +114,7 @@ class KOEventEditor : public KOIncidenceEditor
      * is not valid */
     bool processInput();
     int msgItemDelete();
-    
+
   private:
     Event *mEvent;
 

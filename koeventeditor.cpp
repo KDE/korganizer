@@ -220,7 +220,7 @@ void KOEventEditor::deleteEvent()
           emit eventToBeDeleted(mEvent);
           emit dialogClose(mEvent);
           mCalendar->deleteEvent(mEvent);
-          emit eventDeleted();
+          emit eventDeleted(mEvent);
           reject();
           break;
       }
@@ -229,7 +229,7 @@ void KOEventEditor::deleteEvent()
       emit eventToBeDeleted(mEvent);
       emit dialogClose(mEvent);
       mCalendar->deleteEvent(mEvent);
-      emit eventDeleted();
+      emit eventDeleted(mEvent);
       reject();
     }
   } else {

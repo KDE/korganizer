@@ -74,7 +74,7 @@ class CalendarViewExtension : public QWidget
   calendar data as well as the date navigator. It also handles synchronisation
   of the different views and controls the different dialogs like preferences,
   event editor, search dialog etc.
-  
+
   @short main calendar view widget
   @author Cornelius Schumacher
 */
@@ -92,7 +92,7 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     CalendarView( Calendar *calendar, QWidget *parent = 0,
                   const char *name = 0 );
     virtual ~CalendarView();
-  
+
     Calendar *calendar() { return mCalendar; }
 
     KOrg::History *history() { return mHistory; }
@@ -118,12 +118,16 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     */
     void addExtension( CalendarViewExtension::Factory * );
 
+    /** currentSelection() returns a pointer to the incidence selected in the current view */
     Incidence *currentSelection();
+    /** Return a pointer to the incidence selected in the current view. If there
+        is no selection, return the selected todo from the todo list on the left */
+    Incidence *selectedIncidence();
 
   signals:
-  
+
     /** when change is made to options dialog, the topwidget will catch this
-     *  and emit this signal which notifies all widgets which have registered 
+     *  and emit this signal which notifies all widgets which have registered
      *  for notification to update their settings. */
     void configChanged();
     /** emitted when the topwidget is closing down, so that any attached
@@ -131,17 +135,17 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     void closingDown();
     /** emitted right before we die */
     void closed(QWidget *);
-    
+
     /** Emitted when state of modified flag changes */
     void modifiedChanged(bool);
-  
+
     /** Emitted when state of read-only flag changes */
     void readOnlyChanged(bool);
-  
+
     /** Emitted when the unit of navigation changes */
     void changeNavStringPrev(const QString &);
     void changeNavStringNext(const QString &);
-  
+
     /** Emitted when state of events selection has changed and user is organizer*/
     void organizerEventsSelected(bool);
     /** Emitted when state of events selection has changed and user is attendee*/
@@ -159,7 +163,7 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
       is possible or not.
     */
     void pasteEnabled(bool);
-    
+
     /** Emitted, when the number of incoming messages has changed. */
     void numIncomingChanged(int);
 
@@ -168,16 +172,16 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
 
     /** Send status message, which can e.g. be displayed in the status bar. */
     void statusMessage(const QString &);
-    
+
     void calendarViewExpanded( bool );
-        
+
   public slots:
     /** options dialog made a changed to the configuration. we catch this
      *  and notify all widgets which need to update their configuration. */
     void updateConfig();
 
     /**
-      Load calendar from file \a filename. If \a merge is true, load 
+      Load calendar from file \a filename. If \a merge is true, load
       calendar into existing one, if it is false, clear calendar, before
       loading. Return true, if calendar could be successfully loaded.
     */
@@ -188,27 +192,27 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
       successfully saved.
     */
     bool saveCalendar(const QString& filename);
-  
+
     /**
       Close calendar. Clear calendar data and reset views to display an empty
       calendar.
     */
     void closeCalendar();
-  
+
     /** Archive old events of calendar */
     void archiveCalendar();
 
     void showIncidence();
     void editIncidence();
     void deleteIncidence();
-  
+
     /** create an editeventwin with supplied date/time, and if bool is true,
      * make the event take all day. */
     void newEvent(QDateTime, QDateTime, bool allDay = false);
     void newEvent(QDateTime fh);
     void newEvent(QDate dt);
     /** create new event without having a date hint. Takes current date as
-     default hint. */ 
+     default hint. */
     void newEvent();
     /**
       Create new Event from given string.
@@ -222,7 +226,7 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     void editIncidence(Incidence *);
     /** Delete the supplied incidence. It calls the correct deleteXXX method*/
     void deleteIncidence(Incidence *);
-    
+
     /** Create an editor for the supplied event. */
     void editEvent(Event *);
     /** Delete the supplied event. */
@@ -247,58 +251,63 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     void deleteTodo(Todo *);
 
     /** This todo has been modified */
-    void todoModified(Todo *, int);
-            
+    void todoModified(Todo *, Todo *, int);
+
     /** Check if clipboard contains vCalendar event. The signal pasteEnabled() is
      * emitted as result. */
     void checkClipboard();
-    
+
     /** using the KConfig associated with the kapp variable, read in the
-     * settings from the config file. 
+     * settings from the config file.
      */
     void readSettings();
-    
+
     /** write current state to config file. */
     void writeSettings();
 
     /** read settings for calendar filters */
     void readFilterSettings(KConfig *config);
-    
+
     /** write settings for calendar filters */
     void writeFilterSettings(KConfig *config);
 
     /** passes on the message that an event has changed to the currently
      * activated view so that it can make appropriate display changes. */
     void changeEventDisplay(Event *, int);
-  
+
+    void incidenceAdded( Incidence * );
+    void incidenceChanged( Incidence *oldEvent, Incidence *newEvent );
+    void incidenceDeleted( Incidence * );
+
     void eventAdded( Event * );
     void eventChanged( Event *oldEvent, Event *newEvent );
     void eventToBeDeleted( Event * );
-    void eventDeleted();
+    void eventDeleted( Event * );
 
     void todoAdded( Todo * );
     void todoChanged( Todo *oldTodo, Todo *newTodo );
-  
+    void todoDeleted( Todo * );
+
     void updateView(const QDate &start, const QDate &end);
     void updateView();
-  
+
     /** Full update of visible todo views */
     void updateTodoViews();
 
     void updateUnmanagedViews();
-  
+
     /** cut the current appointment to the clipboard */
     void edit_cut();
-  
+
     /** copy the current appointment(s) to the clipboard */
     void edit_copy();
 
     /** paste the current vobject(s) in the clipboard buffer into calendar */
     void edit_paste();
-  
+
     /** edit viewing and configuration options. */
     void edit_options();
-  
+
     /**
       Functions for printing, previewing a print, and setting up printing
       parameters.
@@ -309,10 +318,10 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
 
     /** Export as iCalendar file */
     void exportICalendar();
-  
+
     /** Export as vCalendar file */
     void exportVCalendar();
-  
+
     /** pop up a dialog to show an existing appointment. */
     void appointment_show();
     /**
@@ -339,7 +348,7 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
 
     /** Take ownership of all events in calendar. */
     void takeOverCalendar();
-  
+
     /** query whether or not the calendar is "dirty". */
     bool isModified();
     /** set the state of calendar. Modified means "dirty", i.e. needing a save. */
@@ -378,15 +387,15 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
 
     /** Move to the next date(s) in the current view */
     void goNext();
-  
+
     /** Move to the previous date(s) in the current view */
     void goPrevious();
 
     void toggleExpand();
     void showLeftFrame( bool show = true );
-    
+
     void dialogClosing(Incidence *);
-  
+
     /** Look for new messages in the inbox */
     void lookForIncomingMessages();
    /** Look for new messages in the outbox */
@@ -394,7 +403,7 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
 
     void processMainViewSelection( Incidence * );
     void processTodoListSelection( Incidence * );
-    
+
     void processIncidenceSelection( Incidence * );
 
     void purgeCompleted();
@@ -404,29 +413,29 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     void importQtopia( const QString &categoriesFile,
                        const QString &datebookFile,
                        const QString &tasklistFile );
-    
+
   protected slots:
     /** Select a view or adapt the current view to display the specified dates. */
     void showDates( const KCal::DateList & );
-  
+
   public:
     // show a standard warning
     // returns KMsgBox::yesNoCancel()
     int msgCalModified();
-  
+
     /** Adapt navigation units correpsonding to step size of navigation of the
      * current view.
      */
     void adaptNavigationUnits();
-    
+
     //Attendee* getYourAttendee(Event *event);
-  
+
   protected:
     void schedule(Scheduler::Method, Incidence *incidence = 0);
-    
+
     // returns KMsgBox::OKCandel()
     int msgItemDelete();
-  
+
     Todo *selectedTodo();
 
   private:
@@ -488,7 +497,7 @@ class CalendarViewVisitor : public Incidence::Visitor
       mView = view;
       return incidence->accept( *this );
     }
-    
+
   protected:
     CalendarView *mView;
 };
@@ -496,24 +505,24 @@ class CalendarViewVisitor : public Incidence::Visitor
 class ShowIncidenceVisitor : public CalendarViewVisitor
 {
   protected:
-    bool visit( Event *event ) { mView->showEvent( event ); return true; }  
-    bool visit( Todo *todo ) { mView->showTodo( todo ); return true; }  
+    bool visit( Event *event ) { mView->showEvent( event ); return true; }
+    bool visit( Todo *todo ) { mView->showTodo( todo ); return true; }
     bool visit( Journal * ) { return false; }
 };
 
 class EditIncidenceVisitor : public CalendarViewVisitor
 {
   protected:
-    bool visit( Event *event ) { mView->editEvent( event ); return true; }  
-    bool visit( Todo *todo ) { mView->editTodo( todo ); return true; }  
+    bool visit( Event *event ) { mView->editEvent( event ); return true; }
+    bool visit( Todo *todo ) { mView->editTodo( todo ); return true; }
     bool visit( Journal * ) { return false; }
 };
 
 class DeleteIncidenceVisitor : public CalendarViewVisitor
 {
   protected:
-    bool visit( Event *event ) { mView->deleteEvent( event ); return true; }  
-    bool visit( Todo *todo ) { mView->deleteTodo( todo ); return true; }  
+    bool visit( Event *event ) { mView->deleteEvent( event ); return true; }
+    bool visit( Todo *todo ) { mView->deleteTodo( todo ); return true; }
     bool visit( Journal * ) { return false; }
 };
 

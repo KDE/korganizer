@@ -80,6 +80,8 @@ class KOTodoListView : public KListView
 
   signals:
     void todoDropped(Todo *);
+    void todoChanged( Todo*, Todo* );
+    void todoAdded( Todo* );
 
   protected:
     virtual bool event(QEvent *);
@@ -178,6 +180,8 @@ class KOTodoView : public KOrg::BaseView
     void itemClicked(QListViewItem *);
     void itemStateChanged(QListViewItem *);
     void modified(bool);
+    void setTodoModified(Todo*oldTodo, Todo*todo) {
+      emit todoModifiedSignal( oldTodo, todo, KOGlobals::UNKNOWN_MODIFIED ); }
 
   signals:
     void newTodoSignal();
@@ -187,7 +191,9 @@ class KOTodoView : public KOrg::BaseView
 
     void editTodoSignal(Todo *);
     void deleteTodoSignal(Todo *);
-    void todoModifiedSignal (Todo *, int);
+    void todoModifiedSignal (Todo *, Todo *, int);
+    void todoChanged ( Todo*, Todo* );
+    void todoAdded ( Todo* );
 
     void isModified(bool);
 

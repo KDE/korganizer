@@ -252,13 +252,13 @@ CalendarView::CalendarView( Calendar *calendar,
            mDateNavigator, SLOT( updateConfig() ) );
 
   connect( mTodoList, SIGNAL( newTodoSignal() ),
-	   SLOT( newTodo() ) );
+           SLOT( newTodo() ) );
   connect( mTodoList, SIGNAL( newSubTodoSignal( Todo *) ),
-	   SLOT( newSubTodo( Todo * ) ) );
+           SLOT( newSubTodo( Todo * ) ) );
   connect( mTodoList, SIGNAL( editTodoSignal( Todo * ) ),
-	   SLOT( editTodo( Todo * ) ) );
+           SLOT( editTodo( Todo * ) ) );
   connect( mTodoList, SIGNAL( showTodoSignal( Todo * ) ),
-	   SLOT( showTodo( Todo *) ) );
+           SLOT( showTodo( Todo *) ) );
   connect( mTodoList, SIGNAL( deleteTodoSignal( Todo *) ),
            SLOT( deleteTodo( Todo *) ) );
   connect( this, SIGNAL( configChanged()), mTodoList, SLOT( updateConfig() ) );
@@ -266,8 +266,12 @@ CalendarView::CalendarView( Calendar *calendar,
            SLOT( purgeCompleted() ) );
   connect( mTodoList, SIGNAL( unSubTodoSignal() ),
            SLOT( todo_unsub() ) );
-  connect( mTodoList, SIGNAL( todoModifiedSignal( Todo *, int ) ),
-	   SLOT( todoModified( Todo *, int ) ) );
+  connect( mTodoList, SIGNAL( todoModifiedSignal( Todo *, Todo *, int ) ),
+           SLOT( todoModified( Todo *, Todo *, int ) ) );
+  connect( mTodoList, SIGNAL( todoChanged( Todo*, Todo* ) ),
+           SLOT( todoChanged( Todo *, Todo* ) ) );
+  connect( mTodoList, SIGNAL( todoAdded( Todo * ) ),
+           SLOT( todoAdded( Todo * ) ) );
 
   connect( mFilterView, SIGNAL( filterChanged() ), SLOT( updateFilter() ) );
   connect( mFilterView, SIGNAL( editFilters() ), SLOT( editFilters() ) );
@@ -572,18 +576,32 @@ void CalendarView::updateConfig()
 }
 
 
+void CalendarView::incidenceAdded( Incidence *incidence )
+{
+  mHistory->recordAdd( incidence );
+}
+
+void CalendarView::incidenceChanged( Incidence *oldIncidence, Incidence *newIncidence )
+{
+  mHistory->recordEdit( oldIncidence, newIncidence );
+}
+
+void CalendarView::incidenceDeleted( Incidence *incidence )
+{
+  mHistory->recordDelete( incidence );
+}
+
+
 void CalendarView::eventChanged( Event *oldEvent, Event *newEvent )
 {
   changeEventDisplay( newEvent, KOGlobals::EVENTEDITED );
-
-  mHistory->recordEdit( oldEvent, newEvent );
+  incidenceChanged( oldEvent, newEvent );
 }
 
 void CalendarView::eventAdded( Event *event )
 {
   changeEventDisplay( event, KOGlobals::EVENTADDED );
-
-  mHistory->recordAdd( event );
+  incidenceAdded( event );
 }
 
 void CalendarView::eventToBeDeleted( Event * )
@@ -592,24 +610,29 @@ void CalendarView::eventToBeDeleted( Event * )
                 << endl;
 }
 
-void CalendarView::eventDeleted()
+void CalendarView::eventDeleted( Event *event )
 {
-  changeEventDisplay( 0, KOGlobals::EVENTDELETED );
+  incidenceDeleted( event );
+  changeEventDisplay( event, KOGlobals::EVENTDELETED );
 }
 
 
 void CalendarView::todoChanged( Todo *oldTodo, Todo *newTodo )
 {
   updateTodoViews();
-
-  mHistory->recordEdit( oldTodo, newTodo );
+  incidenceChanged( oldTodo, newTodo );
 }
 
 void CalendarView::todoAdded( Todo *todo )
 {
   updateTodoViews();
+  incidenceAdded( todo );
+}
 
-  mHistory->recordAdd( todo );
+void CalendarView::todoDeleted( Todo *todo )
+{
+  updateTodoViews();
+  incidenceDeleted( todo );
 }
 
 
@@ -674,43 +697,44 @@ int CalendarView::msgItemDelete()
 
 void CalendarView::edit_cut()
 {
-  Event *anEvent=0;
+  Incidence *incidence = selectedIncidence();
 
-  Incidence *incidence = mViewManager->currentView()->selectedIncidences().first();
-
-  if (mViewManager->currentView()->isEventView()) {
-    if ( incidence && incidence->type() == "Event" ) {
-      anEvent = static_cast<Event *>(incidence);
-    }
-  }
-
-  if (!anEvent) {
+  if (!incidence) {
     KNotifyClient::beep();
     return;
   }
   DndFactory factory( mCalendar );
-  factory.cutEvent(anEvent);
-  changeEventDisplay(anEvent, KOGlobals::EVENTDELETED);
+  if ( incidence->type() == "Event" ) {
+    Event *anEvent = static_cast<Event *>(incidence);
+    factory.cutEvent(anEvent);
+    eventDeleted( anEvent );
+  } else if ( incidence->type() == "Todo" ) {
+    Todo *anTodo = static_cast<Todo *>(incidence);
+    factory.cutTodo( anTodo );
+    todoDeleted( anTodo );
+  } else {
+    KNotifyClient::beep();
+  }
 }
 
 void CalendarView::edit_copy()
 {
-  Event *anEvent=0;
+  Incidence *incidence = selectedIncidence();
 
-  Incidence *incidence = mViewManager->currentView()->selectedIncidences().first();
-
-  if (mViewManager->currentView()->isEventView()) {
-    if ( incidence && incidence->type() == "Event" ) {
-      anEvent = static_cast<Event *>(incidence);
-    }
-  }
-
-  if (!anEvent) {
+  if (!incidence) {
     KNotifyClient::beep();
     return;
   }
   DndFactory factory( mCalendar );
-  factory.copyEvent(anEvent);
+  if ( incidence->type() == "Event" ) {
+    Event *anEvent = static_cast<Event *>(incidence);
+    factory.copyEvent( anEvent );
+  } else if ( incidence->type() == "Todo" ) {
+    Todo *anTodo = static_cast<Todo *>(incidence);
+    factory.copyTodo( anTodo );
+  } else {
+    KNotifyClient::beep();
+  }
 }
 
 void CalendarView::edit_paste()
@@ -740,21 +764,30 @@ void CalendarView::edit_paste()
   }
 
   DndFactory factory( mCalendar );
-  Event *pastedEvent;
+  Incidence *pastedIncidence;
   if (time.isValid())
-    pastedEvent = factory.pasteEvent( date, &time );
+    pastedIncidence = factory.pasteIncidence( date, &time );
   else
-    pastedEvent = factory.pasteEvent( date );
-  // only use selected area if event is of the same type (all-day or non-all-day
-  // as the current selection is
-  if ( aView && endDT.isValid() && useEndTime ) {
-    if ( (pastedEvent->doesFloat() && aView->selectedIsAllDay()) ||
-         (!pastedEvent->doesFloat() && ! aView->selectedIsAllDay()) ) {
-      pastedEvent->setDtEnd(endDT);
-    }
-  }
+    pastedIncidence = factory.pasteIncidence( date );
+  if ( !pastedIncidence ) return;
 
-  changeEventDisplay( pastedEvent, KOGlobals::EVENTADDED );
+  if (pastedIncidence->type() == "Event" ) {
+
+    Event* pastedEvent = static_cast<Event*>(pastedIncidence);
+    // only use selected area if event is of the same type (all-day or non-all-day
+    // as the current selection is
+    if ( aView && endDT.isValid() && useEndTime ) {
+      if ( (pastedEvent->doesFloat() && aView->selectedIsAllDay()) ||
+           (!pastedEvent->doesFloat() && ! aView->selectedIsAllDay()) ) {
+        pastedEvent->setDtEnd(endDT);
+      }
+    }
+    eventAdded( pastedEvent );
+
+  } else if ( pastedIncidence->type() == "Todo" ) {
+    Todo* pastedTodo = static_cast<Todo*>(pastedIncidence);
+    todoAdded( pastedTodo );
+  }
 }
 
 void CalendarView::edit_options()
@@ -783,7 +816,7 @@ void CalendarView::newEvent()
   QDate date = mNavigator->selectedDates().first();
 
   newEvent( QDateTime( date, QTime( KOPrefs::instance()->mStartTime, 0, 0 ) ),
-	    QDateTime( date, QTime( KOPrefs::instance()->mStartTime +
+            QDateTime( date, QTime( KOPrefs::instance()->mStartTime +
                        KOPrefs::instance()->mDefaultDuration, 0, 0 ) ) );
 }
 
@@ -910,14 +943,14 @@ void CalendarView::showTodo(Todo *event)
   eventViewer->show();
 }
 
-void CalendarView::todoModified (Todo *event, int changed)
+void CalendarView::todoModified (Todo *event, Todo *oldEvent, int changed)
 {
   if (mDialogList.find (event) != mDialogList.end ()) {
     kdDebug(5850) << "Todo modified and open" << endl;
     KOTodoEditor* temp = (KOTodoEditor *) mDialogList[event];
     temp->modified (changed);
-
   }
+  if (oldEvent) todoChanged( oldEvent, event );
 
   mViewManager->updateView();
 }
@@ -987,9 +1020,12 @@ void CalendarView::todo_unsub()
   Todo *anTodo = selectedTodo();
   if (!anTodo) return;
   if (!anTodo->relatedTo()) return;
+  Todo *oldTodo = anTodo->clone();
   anTodo->relatedTo()->removeRelation(anTodo);
   anTodo->setRelatedTo(0);
   anTodo->setRelatedToUid("");
+  todoChanged( oldTodo, anTodo );
+  delete oldTodo;
   setModified(true);
   updateView();
 }
@@ -1008,7 +1044,9 @@ void CalendarView::deleteTodo(Todo *todo)
                          i18n("Delete To-Do"));
         } else {
           calendar()->deleteTodo(todo);
-          updateView();
+          todoDeleted( todo );
+          // TODO_RK: Needed?
+//          updateView();
         }
         break;
     } // switch
@@ -1018,7 +1056,9 @@ void CalendarView::deleteTodo(Todo *todo)
                          i18n("Delete To-Do"));
     } else {
       calendar()->deleteTodo(todo);
-      updateView();
+      todoDeleted( todo );
+      // TODO_RK: Needed?
+//      updateView();
     }
   }
 }
@@ -1053,10 +1093,12 @@ void CalendarView::deleteEvent(Event *anEvent)
     switch(km) {
 
       case KMessageBox::No: // Continue // all
+      case KMessageBox::Continue:
         if (anEvent->organizer()==KOPrefs::instance()->email() && anEvent->attendeeCount()>0)
           schedule(Scheduler::Cancel,anEvent);
+      // TODO_RK: move mCalendar->deleteEvent to deleteEvent?
         mCalendar->deleteEvent(anEvent);
-        changeEventDisplay(anEvent,KOGlobals::EVENTDELETED);
+        eventDeleted( anEvent );
         break;
 
 // Disabled because it does not work (doesn't seem to be true anymore)
@@ -1070,12 +1112,13 @@ void CalendarView::deleteEvent(Event *anEvent)
         //}
         //while (!anEvent->recursOn(qd)) qd = qd.addDays(1);
         if (itemDate!=QDate(1,1,1) || itemDate.isValid()) {
+          Event*oldEvent = anEvent->clone();
           anEvent->addExDate(itemDate);
           int duration = anEvent->recurrence()->duration();
           if ( duration > 0 ) {
             anEvent->recurrence()->setDuration( duration - 1 );
           }
-          changeEventDisplay(anEvent, KOGlobals::EVENTEDITED);
+          eventChanged( oldEvent, anEvent );
         }
         break;
 #endif
@@ -1086,11 +1129,10 @@ void CalendarView::deleteEvent(Event *anEvent)
         case KMessageBox::Continue: // OK
           if ( anEvent->organizer() == KOPrefs::instance()->email() &&
                anEvent->attendeeCount() > 0 ) {
-	    schedule( Scheduler::Cancel,anEvent );
+            schedule( Scheduler::Cancel,anEvent );
           }
-          mHistory->recordDelete( anEvent );
           mCalendar->deleteEvent( anEvent );
-          changeEventDisplay( anEvent, KOGlobals::EVENTDELETED );
+          eventDeleted( anEvent );
           break;
       }
     } else {
@@ -1098,9 +1140,8 @@ void CalendarView::deleteEvent(Event *anEvent)
            anEvent->attendeeCount() > 0 ) {
         schedule(Scheduler::Cancel,anEvent);
       }
-      mHistory->recordDelete( anEvent );
       mCalendar->deleteEvent( anEvent );
-      changeEventDisplay( anEvent, KOGlobals::EVENTDELETED );
+      eventDeleted( anEvent );
     }
   }
 }
@@ -1216,16 +1257,16 @@ void CalendarView::schedule_publish(Incidence *incidence)
       ev->registerObserver(0);
       ev->clearAttendees();
       if (!dlg->addMessage(ev,Scheduler::Publish,publishdlg->addresses())) {
-	delete(ev);
+        delete(ev);
       }
     } else {
       if ( todo ) {
-	Todo *ev = new Todo(*todo);
-	ev->registerObserver(0);
-	ev->clearAttendees();
-	if (!dlg->addMessage(ev,Scheduler::Publish,publishdlg->addresses())) {
-	  delete(ev);
-	}
+        Todo *ev = new Todo(*todo);
+        ev->registerObserver(0);
+        ev->clearAttendees();
+        if (!dlg->addMessage(ev,Scheduler::Publish,publishdlg->addresses())) {
+          delete(ev);
+        }
       }
     }
   }
@@ -1712,8 +1753,10 @@ Todo *CalendarView::selectedTodo()
   if ( incidence && incidence->type() == "Todo" ) {
     return static_cast<Todo *>( incidence );
   }
+  incidence = 0;
 
-  incidence = mTodoList->selectedIncidences().first();
+  Incidence::List selectedIncidences = mTodoList->selectedIncidences();
+  if ( !selectedIncidences.isEmpty() ) incidence = selectedIncidences.first();
   if ( incidence && incidence->type() == "Todo" ) {
     return static_cast<Todo *>( incidence );
   }
@@ -1726,34 +1769,30 @@ void CalendarView::dialogClosing(Incidence *in)
   mDialogList.remove(in);
 }
 
-void CalendarView::showIncidence()
+Incidence* CalendarView::selectedIncidence()
 {
   Incidence *incidence = currentSelection();
-  if ( !incidence ) incidence = mTodoList->selectedIncidences().first();
-  if ( incidence ) {
-    ShowIncidenceVisitor v;
-    v.act( incidence, this );
+  if ( !incidence ) {
+    Incidence::List selectedIncidences = mTodoList->selectedIncidences();
+    if ( !selectedIncidences.isEmpty() )
+      incidence = selectedIncidences.first();
   }
+  return incidence;
+}
+
+void CalendarView::showIncidence()
+{
+  showIncidence( selectedIncidence() );
 }
 
 void CalendarView::editIncidence()
 {
-  Incidence *incidence = currentSelection();
-  if ( !incidence ) incidence = mTodoList->selectedIncidences().first();
-  if ( incidence ) {
-    EditIncidenceVisitor v;
-    v.act( incidence, this );
-  }
+  editIncidence( selectedIncidence() );
 }
 
 void CalendarView::deleteIncidence()
 {
-  Incidence *incidence = currentSelection();
-  if ( !incidence ) incidence = mTodoList->selectedIncidences().first();
-  if ( incidence ) {
-    DeleteIncidenceVisitor v;
-    v.act( incidence, this );
-  }
+  deleteIncidence( selectedIncidence() );
 }
 
 void CalendarView::showIncidence(Incidence *incidence)

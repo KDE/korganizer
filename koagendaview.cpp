@@ -670,7 +670,11 @@ void KOAgendaView::updateEventDates(KOAgendaItem *item)
   }
   startDt.setDate(startDate);
 
-  if (item->incidence()->doesFloat()) {
+  Incidence*incidence = item->incidence();
+  if (!incidence) return;
+  Incidence*oldIncidence = incidence->clone();
+
+  if (incidence->doesFloat()) {
     endDt.setDate(startDate.addDays(item->cellWidth() - 1));
   } else {
     startDt.setTime(mAgenda->gyToTime(item->cellYTop()));
@@ -687,19 +691,19 @@ void KOAgendaView::updateEventDates(KOAgendaItem *item)
 //  kdDebug(5850) << "KOAgendaView::updateEventDates(): now setting dates" << endl;
 
 
-  if ( item->incidence()->type() == "Event" ) {
-    item->incidence()->setDtStart(startDt);
-    (static_cast<Event*>(item->incidence()))->setDtEnd(endDt);
-  } else if ( item->incidence()->type() == "Todo" ) {
-    (static_cast<Todo*>(item->incidence()))->setDtDue(endDt);
+  if ( incidence->type() == "Event" ) {
+    incidence->setDtStart(startDt);
+    (static_cast<Event*>(incidence))->setDtEnd(endDt);
+  } else if ( incidence->type() == "Todo" ) {
+    (static_cast<Todo*>(incidence))->setDtDue(endDt);
   }
 
-  item->incidence()->setRevision(item->incidence()->revision()+1);
+  incidence->setRevision(incidence->revision()+1);
   item->setItemDate(startDt.date());
   KOIncidenceToolTip::remove(item);
-  KOIncidenceToolTip::add( item, item->incidence(), KOAgendaItem::toolTipGroup() );
+  KOIncidenceToolTip::add( item, incidence, KOAgendaItem::toolTipGroup() );
 
-  emit eventChanged();
+  emit incidenceChanged( oldIncidence, incidence );
 
 //  kdDebug(5850) << "KOAgendaView::updateEventDates() done " << endl;
 }
