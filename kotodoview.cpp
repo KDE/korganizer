@@ -149,8 +149,9 @@ void KOTodoView::updateConfig()
 
 KOEvent *KOTodoView::getSelected()
 {
-  // to be implemented.
-  return 0;
+  KOTodoViewItem *item = (KOTodoViewItem *)(mTodoListView->selectedItem());
+  if (item) return item->event();
+  else return 0;
 }
 
 void KOTodoView::changeEventDisplay(KOEvent *, int)

@@ -1500,6 +1500,8 @@ void TopWidget::apptmnt_delete()
   deleteEvent(anEvent);
 }
 
+// Is this function needed anymore? It could just call the deleteTodo slot of
+// the KOTodoView, couldn't it?
 void TopWidget::action_deleteTodo()
 {
   KOEvent *aTodo;
@@ -1512,11 +1514,14 @@ void TopWidget::action_deleteTodo()
     return;
   }
   
+  // disable deletion for now, because it causes a crash.
+  return;
+  
   KConfig *config(kapp->config());
   config->setGroup("General");
   if (config->readBoolEntry("Confirm Deletes") == TRUE) {
     switch(msgItemDelete()) {
-    case 1: // OK
+    case 0: // OK
       calendar->deleteTodo(aTodo);
       todoList2->changeEventDisplay(aTodo, EVENTDELETED);
       break;
