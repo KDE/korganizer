@@ -114,6 +114,9 @@ FreeBusyManager::FreeBusyManager( QObject *parent, const char *name )
 void FreeBusyManager::setCalendar( KCal::Calendar *c )
 {
   mCalendar = c;
+  if ( mCalendar ) {
+    mFormat.setTimeZone( mCalendar->timeZoneId(), true );
+  }
 }
 
 KCal::FreeBusy *FreeBusyManager::ownerFreeBusy()
@@ -252,7 +255,7 @@ void FreeBusyManager::publishFreeBusy()
       if( at > 1 && fbname.length() > (uint)at ) {
 	fbname = fbname.left(at);
       }
-      targetURL.setPath( "/freebusy/" + fbname + ".vfb" );
+      targetURL.setPath( "/freebusy/" + fbname + ".ifb" );
       targetURL.setUser( KOPrefs::instance()->mPublishUserName );
       targetURL.setPass( KOPrefs::instance()->mPublishPassword );
     } else {
@@ -338,10 +341,13 @@ bool FreeBusyManager::processRetrieveQueue()
 
   KURL sourceURL = freeBusyUrl( email );
 
-  if ( !sourceURL.isValid() ) return false;
-
   kdDebug() << "FreeBusyManager::retrieveFreeBusy(): url: " << sourceURL.url()
             << endl;
+
+  if ( !sourceURL.isValid() ) {
+    kdDebug(5850) << "Invalid FB URL\n";
+    return false;
+  }
 
   FreeBusyDownloadJob *job = new FreeBusyDownloadJob( email, sourceURL, this,
                                                       "freebusy_download_job" );
@@ -362,6 +368,7 @@ void FreeBusyManager::cancelRetrieval()
 
 KURL FreeBusyManager::freeBusyUrl( const QString &email )
 {
+  // First check if there is a specific FB url for this email
   QString configFile = locateLocal( "data", "korganizer/freebusyurls" );
   KConfig cfg( configFile );
 
@@ -371,7 +378,10 @@ KURL FreeBusyManager::freeBusyUrl( const QString &email )
     return KURL( url );
   }
 
-  KURL sourceURL;
+  // None found. Check if we do automatic FB retrieving then
+  if ( !KOPrefs::instance()->mFreeBusyRetrieveAuto )
+    // No, so no FB list here
+    return KURL();
 
   // Sanity check: Don't download if it's not a correct email
   // address (this also avoids downloading for "(empty email)").
@@ -381,44 +391,18 @@ KURL FreeBusyManager::freeBusyUrl( const QString &email )
 
   // Cut off everything left of the @ sign to get the user name.
   QString emailName = email.left( emailpos );
-  QString emailHost = email.mid( emailpos + 1 );
 
-#if 0
-  // Put download string together
-  if( KOPrefs::instance()->mRetrieveKolab ) {
-    // we use Kolab
-    QString server;
-    if( KOPrefs::instance()->mRetrieveKolabServer == "%SERVER%" ||
-	KOPrefs::instance()->mRetrieveKolabServer.isEmpty() )
-      server = emailHost;
-    else
-      server = KOPrefs::instance()->mRetrieveKolabServer;
-
-    sourceURL.setProtocol( "webdavs" );
-    sourceURL.setHost( server );
-    sourceURL.setPass( KOPrefs::instance()->mRetrievePassword );
-    sourceURL.setUser( KOPrefs::instance()->mRetrieveUserName );
-    sourceURL.setPath( QString::fromLatin1( "/freebusy/" ) + emailName +
-		       QString::fromLatin1( ".vfb" ) );
-  } else {
-    // we use something else
-    QString anyurl = KOPrefs::instance()->mRetrieveAnyURL;
-    if( anyurl.contains( "%SERVER%" ) )
-      anyurl.replace( "%SERVER%", emailHost );
-    sourceURL = anyurl;
-  }
-#endif
-
+  // Build the URL
+  KURL sourceURL;
   sourceURL = KOPrefs::instance()->mFreeBusyRetrieveUrl;
 
-  if ( sourceURL.host() != emailHost ) {
-    kdDebug() << "FreeBusyManager::freeBusyUrl(): " << sourceURL.host()
-              << " doesn't match " << emailHost << ". Cancel retrieval."
-              << endl;
-    return KURL();
-  }
+  // Don't try to fetch free/busy data for users not on the specified servers
+  if ( sourceURL.host() != email.mid( emailpos + 1 ) ) return KURL();
 
-  sourceURL.setFileName( emailName + ".vfb" );
+  if ( KOPrefs::instance()->mFreeBusyFullDomainRetrieval )
+    sourceURL.setFileName( email + ".ifb" );
+  else
+    sourceURL.setFileName( emailName + ".ifb" );
   sourceURL.setUser( KOPrefs::instance()->mFreeBusyRetrieveUser );
   sourceURL.setPass( KOPrefs::instance()->mFreeBusyRetrievePassword );
 
