@@ -165,7 +165,8 @@ void CalPrinter::print(PrintType pt, const QDate &fd, const QDate &td)
 
 void CalPrinter::doPrint(int pt, QDate fd, QDate td)
 {
-  if (!mPrinter->setup(mParent)) return;
+  // FIXME: add a better caption to the Printingdialog
+  if (!mPrinter->setup(mParent, i18n("Print Calendar"))) return;
 
   switch(pt) {
     case Day: 
