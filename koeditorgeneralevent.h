@@ -94,8 +94,8 @@ class KOEditorGeneralEvent : public KOEditorGeneral
     QLabel                  *mEndDateLabel;
     KDateEdit               *mStartDateEdit;
     KDateEdit               *mEndDateEdit;
-    KTimeEdit               *mStartTimeEdit;
-    KTimeEdit               *mEndTimeEdit;
+    KOTimeEdit              *mStartTimeEdit;
+    KOTimeEdit              *mEndTimeEdit;
     QLabel                  *mDurationLabel;
     QCheckBox               *mNoTimeButton;
     QComboBox               *mFreeTimeCombo;

@@ -34,7 +34,6 @@
 #include <qlistview.h>
 #include <qradiobutton.h>
 
-#include "ktimeedit.h"
 #include "koeditorgeneral.h"
 #include "koglobals.h"
 
@@ -81,24 +80,24 @@ class KOEditorGeneralTodo : public KOEditorGeneral
     void enableStartEdit( bool enable );
     void enableTimeEdits( bool enable );
     void showAlarm();
-  
-  protected:  
+
+  protected:
     void setCompletedDate();
 
  private:
     KDateEdit               *mStartDateEdit;
-    KTimeEdit               *mStartTimeEdit;
+    KOTimeEdit               *mStartTimeEdit;
     QCheckBox               *mTimeButton;
     QCheckBox               *mDueCheck;
     KDateEdit               *mDueDateEdit;
-    KTimeEdit               *mDueTimeEdit;
+    KOTimeEdit               *mDueTimeEdit;
     QComboBox               *mCompletedCombo;
     QLabel                  *mCompletedLabel;
     QLabel                  *mPriorityLabel;
     QComboBox               *mPriorityCombo;
 
     QCheckBox               *mStartCheck;
-  
+
     QDateTime mCompleted;
 };
 

@@ -44,6 +44,7 @@
 #include <libkdepim/kdateedit.h>
 
 #include "koprefs.h"
+#include "ktimeedit.h"
 
 #include "koeditorgeneraltodo.h"
 #include "koeditorgeneraltodo.moc"
@@ -101,7 +102,7 @@ void KOEditorGeneralTodo::initTime(QWidget *parent,QBoxLayout *topLayout)
   mDueDateEdit = new KDateEdit(timeBoxFrame);
   layoutTimeBox->addWidget(mDueDateEdit,0,1);
 
-  mDueTimeEdit = new KTimeEdit(timeBoxFrame);
+  mDueTimeEdit = new KOTimeEdit(timeBoxFrame);
   layoutTimeBox->addWidget(mDueTimeEdit,0,2);
 
 
@@ -112,7 +113,7 @@ void KOEditorGeneralTodo::initTime(QWidget *parent,QBoxLayout *topLayout)
   mStartDateEdit = new KDateEdit(timeBoxFrame);
   layoutTimeBox->addWidget(mStartDateEdit,1,1);
 
-  mStartTimeEdit = new KTimeEdit(timeBoxFrame);
+  mStartTimeEdit = new KOTimeEdit(timeBoxFrame);
   layoutTimeBox->addWidget(mStartTimeEdit,1,2);
 
 

@@ -93,11 +93,11 @@ void KOEditorGeneralEvent::initTime(QWidget *parent,QBoxLayout *topLayout)
 
   mStartDateLabel = new QLabel(i18n("Start:"),timeBoxFrame);
   layoutTimeBox->addWidget(mStartDateLabel,0,0);
-  
+
   mStartDateEdit = new KDateEdit(timeBoxFrame);
   layoutTimeBox->addWidget(mStartDateEdit,0,1);
 
-  mStartTimeEdit = new KTimeEdit(timeBoxFrame);
+  mStartTimeEdit = new KOTimeEdit(timeBoxFrame);
   layoutTimeBox->addWidget(mStartTimeEdit,0,2);
 
 
@@ -107,7 +107,7 @@ void KOEditorGeneralEvent::initTime(QWidget *parent,QBoxLayout *topLayout)
   mEndDateEdit = new KDateEdit(timeBoxFrame);
   layoutTimeBox->addWidget(mEndDateEdit,1,1);
 
-  mEndTimeEdit = new KTimeEdit(timeBoxFrame);
+  mEndTimeEdit = new KOTimeEdit(timeBoxFrame);
   layoutTimeBox->addWidget(mEndTimeEdit,1,2);
 
   QHBoxLayout *flagsBox = new QHBoxLayout( timeBoxFrame );
@@ -162,7 +162,7 @@ void KOEditorGeneralEvent::dontAssociateTime(bool noTime)
   //if(alarmButton->isChecked()) alarmStuffDisable(noTime);
   allDayChanged(noTime);
 }
-		
+
 void KOEditorGeneralEvent::setDateTimes(QDateTime start, QDateTime end)
 {
 //  kdDebug() << "KOEditorGeneralEvent::setDateTimes(): Start DateTime: " << start.toString() << endl;
@@ -184,14 +184,14 @@ void KOEditorGeneralEvent::startTimeChanged(QTime newtime)
   kdDebug() << "KOEditorGeneralEvent::startTimeChanged() " << newtime.toString() << endl;
 
   int secsep = mCurrStartDateTime.secsTo(mCurrEndDateTime);
-  
+
   mCurrStartDateTime.setTime(newtime);
 
   // adjust end time so that the event has the same duration as before.
   mCurrEndDateTime = mCurrStartDateTime.addSecs(secsep);
   mEndTimeEdit->setTime(mCurrEndDateTime.time());
   mEndDateEdit->setDate(mCurrEndDateTime.date());
-  
+
   emit dateTimesChanged(mCurrStartDateTime,mCurrEndDateTime);
 }
 
@@ -207,16 +207,16 @@ void KOEditorGeneralEvent::endTimeChanged(QTime newtime)
     mEndTimeEdit->setTime(newdt.time());
   }
   mCurrEndDateTime = newdt;
-  
+
   emit dateTimesChanged(mCurrStartDateTime,mCurrEndDateTime);
 }
 
 void KOEditorGeneralEvent::startDateChanged(QDate newdate)
 {
   int daysep = mCurrStartDateTime.daysTo(mCurrEndDateTime);
-  
+
   mCurrStartDateTime.setDate(newdate);
-  
+
   // adjust end date so that the event has the same duration as before
   mCurrEndDateTime.setDate(mCurrStartDateTime.date().addDays(daysep));
   mEndDateEdit->setDate(mCurrEndDateTime.date());
@@ -265,7 +265,7 @@ void KOEditorGeneralEvent::readEvent( Event *event, bool tmpl )
     mFreeTimeCombo->setCurrentItem(1);
   // else it is implicitly 0 (i.e. busy)
 
-  readIncidence(event);  
+  readIncidence(event);
 }
 
 void KOEditorGeneralEvent::writeEvent(Event *event)
@@ -312,7 +312,7 @@ void KOEditorGeneralEvent::writeEvent(Event *event)
     tmpDT.setTime(tmpTime);
     event->setDtStart(tmpDT);
   } // check for float
-  
+
   event->setTransparency(mFreeTimeCombo->currentItem());
 
 //  kdDebug() << "KOEditorGeneralEvent::writeEvent() done" << endl;
@@ -329,7 +329,7 @@ void KOEditorGeneralEvent::setDuration()
     tmpStr.append(i18n("1 Day","%n Days",daydiff));
   } else {
     hourdiff = mCurrStartDateTime.date().daysTo(mCurrEndDateTime.date()) * 24;
-    hourdiff += mCurrEndDateTime.time().hour() - 
+    hourdiff += mCurrEndDateTime.time().hour() -
       mCurrStartDateTime.time().hour();
     minutediff = mCurrEndDateTime.time().minute() -
       mCurrStartDateTime.time().minute();
@@ -359,7 +359,7 @@ void KOEditorGeneralEvent::setDuration()
 void KOEditorGeneralEvent::emitDateTimeStr()
 {
   KLocale *l = KGlobal::locale();
-  
+
   QString from,to;
   if (mNoTimeButton->isChecked()) {
     from = l->formatDate(mCurrStartDateTime.date());
@@ -368,10 +368,10 @@ void KOEditorGeneralEvent::emitDateTimeStr()
     from = l->formatDateTime(mCurrStartDateTime);
     to = l->formatDateTime(mCurrEndDateTime);
   }
-  
+
   QString str = i18n("From: %1   To: %2   %3").arg(from).arg(to)
                 .arg(mDurationLabel->text());
-                 
+
   emit dateTimeStrChanged(str);
 }
 

@@ -31,66 +31,62 @@
 
 #include <kapplication.h>
 
-/** 
+/**
   This is a class that provides an easy, user friendly way to edit times.
   up/down/ increase or decrease time, respectively.
 
   @short Provides a way to edit times in a user-friendly manner.
   @author Preston Brown, Ian Dawes
 */
-class KTimeEdit : public QComboBox
+class KOTimeEdit : public QComboBox
 {
     Q_OBJECT
   public:
     /** constructs a new time edit. */
-    KTimeEdit(QWidget *parent=0, QTime qt=QTime(12,0), const char *name=0);
-  
-    virtual ~KTimeEdit();
+    KOTimeEdit(QWidget *parent=0, QTime qt=QTime(12,0), const char *name=0);
+
+    virtual ~KOTimeEdit();
 
     /**
-      Returns, if a time is selected.
+      Returns, if a time is selected. Can not return false anymore....
     */
-    bool hasTime();
-  
-    /** returns the time that is currently set in the timeLineEdit. */
-    QTime getTime();
+    bool hasTime() const;
 
-    /** returns the prefered size policy of the KTimeEdit */   
+    /** returns the time that is currently set in the timeLineEdit. */
+    QTime getTime() const;
+
+    /** returns the prefered size policy of the KOTimeEdit */
     QSizePolicy sizePolicy() const;
-  
+
     /** return true if input is a valid time and false if not */
-    bool inputIsValid();
-  
+    bool inputIsValid() const;
+
   signals:
     /**
       Emitted every time the time displayed changes. "newt" is the new
       time.
     */
     void timeChanged(QTime newt);
- 
+
   public slots:
     /** used to set the time which is displayed to a specific value. */
     void setTime(QTime qt);
 
-  protected slots: 
+  protected slots:
     void activ(int);
-    void hilit(int); 
+    void hilit(int);
     void changedText();
 
   protected:
+    virtual void keyPressEvent(QKeyEvent *qke);
     void addTime(QTime qt);
     void subTime(QTime qt);
-    void keyPressEvent(QKeyEvent *qke);
-    void validateEntry();
-    void updateSelection();
-  
-    QTime mTime;                   // the widget's displayed time.
-    bool current_display_valid;   /* TRUE if what is currently displayed
-				   in the widget corresponds to the
-				   stored time, FALSE otherwise. */
+    // Update the lineedit text from mTime
+    void updateText();
 
-  private:
-    QString mNoTimeString;
+private:
+    QTime mTime;                   // the widget's displayed time.
+    //QString mNoTimeString;
 };
 
 #endif
