@@ -9,7 +9,7 @@ kde_module_LTLIBRARIES = libkorg_birthdays.la
 libkorg_birthdays_la_SOURCES = birthdays.cpp birthdaysdialog.cpp 
 libkorg_birthdays_la_LDFLAGS = -module $(KDE_PLUGIN) $(KDE_RPATH) $(all_libraries)
 libkorg_birthdays_la_LIBADD = $(top_builddir)/korganizer/libkorganizer.la $(LIB_KPARTS) -lkutils
-libkorg_birthdays_la_COMPILE_FIRST = $(top_srcdir)/korganizer/koprefs.h
+libkorg_birthdays_la_COMPILE_FIRST = $(top_builddir)/korganizer/koprefs_base.h
 
 noinst_HEADERS = birthdays.h birthdaysdialog.h 
 

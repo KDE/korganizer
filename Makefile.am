@@ -15,7 +15,7 @@ bin_PROGRAMS = korganizer
 korganizer_LDFLAGS = $(all_libraries) $(KDE_RPATH)
 korganizer_LDADD   = libkorganizer.la
 korganizer_SOURCES = main.cpp korganizer.cpp koapp.cpp
-korganizer_COMPILE_FIRST = koprefs.h
+korganizer_COMPILE_FIRST = koprefs_base.h
 
 
 kde_module_LTLIBRARIES = kcm_korganizer.la libkorganizerpart.la
@@ -28,7 +28,7 @@ kcm_korganizer_la_LIBADD = libkorganizer.la $(top_builddir)/libkdepim/libkdepim.
 libkorganizerpart_la_LDFLAGS = -module $(KDE_PLUGIN) $(all_libraries)
 libkorganizerpart_la_LIBADD  = libkorganizer.la
 libkorganizerpart_la_SOURCES = korganizer_part.cpp
-libkorganizerpart_la_COMPILE_FIRST = publishdialog_base.h koprefs.h
+libkorganizerpart_la_COMPILE_FIRST = publishdialog_base.h koprefs_base.h
 
 
 check_PROGRAMS = korgplugins timezone
@@ -36,12 +36,12 @@ check_PROGRAMS = korgplugins timezone
 korgplugins_LDFLAGS = $(all_libraries) $(KDE_RPATH)
 korgplugins_LDADD   = libkorganizer.la $(LIB_KSYCOCA)
 korgplugins_SOURCES = korgplugins.cpp
-korgplugins_COMPILE_FIRST = koprefs.h
+korgplugins_COMPILE_FIRST = koprefs_base.h
 
 timezone_LDFLAGS = $(all_libraries) $(KDE_RPATH)
 timezone_LDADD   = libkorganizer.la $(LIB_KSYCOCA)
 timezone_SOURCES = timezone.cpp
-timezone_COMPILE_FIRST = koprefs.h
+timezone_COMPILE_FIRST = koprefs_base.h
 
 lib_LTLIBRARIES = libkorganizer.la libkorganizer_eventviewer.la
 
@@ -157,7 +157,6 @@ messages: rc.cpp
 	$(PREPARETIPS) > tips.cc
 	$(XGETTEXT) *.cpp korgac/*.cpp knewstuff/*.cpp plugins/*/*.cpp tips.cc -o $(podir)/korganizer.pot
 	rm -f tips.cc
-
 
 xdg_apps_DATA = korganizer.desktop
 

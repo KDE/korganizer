@@ -11,7 +11,7 @@ kde_module_LTLIBRARIES = libkorg_webexport.la
 libkorg_webexport_la_SOURCES = webexport.cpp exportwebdialog.cpp
 libkorg_webexport_la_LDFLAGS = -module $(KDE_PLUGIN) $(KDE_RPATH) $(all_libraries) 
 libkorg_webexport_la_LIBADD = $(top_builddir)/korganizer/libkorganizer.la $(LIB_KPARTS)
-libkorg_webexport_la_COMPILE_FIRST = $(top_srcdir)/korganizer/koprefs.h
+libkorg_webexport_la_COMPILE_FIRST = $(top_builddir)/korganizer/koprefs_base.h
 
 noinst_HEADERS = webexport.h exportwebdialog.h
 
