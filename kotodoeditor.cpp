@@ -268,7 +268,7 @@ bool KOTodoEditor::processInput()
     delete todo;
     delete oldTodo;
     return rc;
-  
+
   } else {
     mTodo = new Todo;
     mTodo->setOrganizer( KOPrefs::instance()->email() );
@@ -339,6 +339,8 @@ void KOTodoEditor::setDefaults( QDateTime due, Todo *relatedEvent, bool allDay )
     mCategoryDialog->setSelected( mRelatedTodo->categories() );
     if ( mRelatedTodo->hasDueDate() )
       mGeneral->setDefaults( mRelatedTodo->dtDue(), allDay );
+    else
+      mGeneral->setDefaults( due, allDay );
   }
   else
     mGeneral->setDefaults( due, allDay );
@@ -380,7 +382,7 @@ void KOTodoEditor::writeTodo( Todo *todo )
   if ( mRelatedTodo ) {
     todo->setRelatedTo( mRelatedTodo );
   }
-  
+
   cancelRemovedAttendees( todo );
 }
 
