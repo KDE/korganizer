@@ -625,6 +625,9 @@ void CalPrintTodos::print( QPainter &p, int width, int height )
 //   }
 
   bool skipDone = mTodoPrintType == TodosUnfinished;
+  if ( skipDone ) {
+    // FIXME: Remove all completed todos from the todoList
+  }
 
   int count = 0;
   for( int cprior = 1; cprior <= 10; cprior++ ) {
