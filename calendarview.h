@@ -321,14 +321,14 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     void eventUpdated(Incidence *);
   
     /* iTIP scheduling actions */  
-    void schedule_publish();
-    void schedule_request();
-    void schedule_refresh();
-    void schedule_cancel();
-    void schedule_add();
-    void schedule_reply();
-    void schedule_counter();
-    void schedule_declinecounter();
+    void schedule_publish(Incidence *incidence = 0);
+    void schedule_request(Incidence *incidence = 0);
+    void schedule_refresh(Incidence *incidence = 0);
+    void schedule_cancel(Incidence *incidence = 0);
+    void schedule_add(Incidence *incidence = 0);
+    void schedule_reply(Incidence *incidence = 0);
+    void schedule_counter(Incidence *incidence = 0);
+    void schedule_declinecounter(Incidence *incidence = 0);
 
     void editFilters();
 
@@ -374,7 +374,7 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     //Attendee* getYourAttendee(Event *event);
   
   protected:
-    void schedule(Scheduler::Method, Event *event = 0);
+    void schedule(Scheduler::Method, Incidence *incidence = 0);
     
     // returns KMsgBox::OKCandel()
     int msgItemDelete();

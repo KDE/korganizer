@@ -177,6 +177,11 @@ void KOEditorDetails::removeAttendee()
   AttendeeListItem *aItem = (AttendeeListItem *)mListView->selectedItem();
   if (!aItem) return;
 
+	Attendee *delA = new Attendee(aItem->attendee()->name(),aItem->attendee()->email(),
+	  aItem->attendee()->RSVP(),aItem->attendee()->status(),aItem->attendee()->role(),
+		aItem->attendee()->uid());
+  mdelAttendees.append(delA);
+
   delete aItem;
 
   updateAttendeeInput();
@@ -252,6 +257,14 @@ void KOEditorDetails::writeEvent(Incidence *event)
     a = (AttendeeListItem *)item;
     event->addAttendee(new Attendee(*(a->attendee())));
   }
+}
+
+Event *KOEditorDetails::cancelAttendeeEvent(Incidence *event){
+  event->clearAttendees();
+  Attendee * att;
+	for (att=mdelAttendees.first();att;att=mdelAttendees.next()) {
+	  event->addAttendee(new Attendee(*att));
+	}
 }
 
 bool KOEditorDetails::validateInput()

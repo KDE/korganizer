@@ -34,6 +34,7 @@
 #include <qmultilineedit.h>
 #include <qlistview.h>
 #include <qradiobutton.h>
+#include <qptrlist.h>
 
 #include <kapplication.h>
 
@@ -52,7 +53,7 @@ class AttendeeListItem : public QListViewItem
 
     Attendee *attendee() { return mAttendee; }
     void updateItem();
-    
+
   private:
     Attendee *mAttendee;
 };
@@ -71,13 +72,15 @@ class KOEditorDetails : public QWidget
     /** Write event settings to event object */
     void writeEvent(Incidence *);
 
+		/** return a clone of the event with attendees to be canceld*/
+    Event *cancelAttendeeEvent(Incidence *);
     /** Check if the input is valid. */
     bool validateInput();
 
   public slots:
     void insertAttendee(Attendee *);
 
-  protected slots:
+	protected slots:
     void addNewAttendee();
     void removeAttendee();
     void openAddressBook();
@@ -101,6 +104,8 @@ class KOEditorDetails : public QWidget
     QPushButton* mAddButton;
     QPushButton* mRemoveButton;
     QPushButton* mAddressBookButton;
+		
+		QPtrList<Attendee> mdelAttendees;
 
 };
 

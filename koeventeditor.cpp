@@ -248,6 +248,14 @@ void KOEventEditor::writeEvent(Event *event)
 {
   mGeneral->writeEvent(event);
   mDetails->writeEvent(event);
+	if (event->organizer()==KOPrefs::instance()->email()) {
+	  Event *ev = new Event(*event);
+	  mDetails->cancelAttendeeEvent(ev);
+    if (ev->attendeeCount()>0) {
+	    emit deleteAttendee(ev);
+		}
+	}
+
 #ifndef KORG_NORECURRENCE
   mRecurrence->writeEvent(event);
 #endif
@@ -262,3 +270,4 @@ bool KOEventEditor::validateInput()
 #endif
   return true;
 }
+

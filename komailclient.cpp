@@ -115,7 +115,7 @@ bool KOMailClient::send(const QString &from,const QString &to,
     else {
       command = KStandardDirs::findExe(QString::fromLatin1("mail"));
       if (command.isNull()) return false; // give up
-    
+
       command.append(QString::fromLatin1(" -s \x22"));
       command.append(subject);
       command.append(QString::fromLatin1("\x22"));
@@ -156,8 +156,10 @@ bool KOMailClient::send(const QString &from,const QString &to,
     pclose(fd);
   } else {
     if (!kapp->dcopClient()->isApplicationRegistered("kmail")) {
-      KMessageBox::error(0,i18n("No running instance of KMail found."));
-      return false;
+			if (KApplication::startServiceByDesktopName("kmail")) {
+        KMessageBox::error(0,i18n("No running instance of KMail found."));
+        return false;
+			}
     }
 
     if (attachment.isEmpty()) {
@@ -168,7 +170,6 @@ bool KOMailClient::send(const QString &from,const QString &to,
                              "attachment")) return false;
     }
   }
-
   return true;
 }
 

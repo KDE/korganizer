@@ -948,16 +948,20 @@ void CalendarView::action_mail()
 }
 
 
-void CalendarView::schedule_publish()
+void CalendarView::schedule_publish(Incidence *incidence)
 {
   Event *event = 0;
 
-  Incidence *incidence = mViewManager->currentView()->selectedIncidences().first();
-
-  if (mViewManager->currentView()->isEventView()) {
-    if ( incidence && incidence->type() == "Event" ) {
-      event = static_cast<Event *>(incidence);
-    }
+	if (incidence == 0) {
+    incidence = mViewManager->currentView()->selectedIncidences().first();
+//    if (mViewManager->currentView()->isEventView()) {
+//      if ( incidence && incidence->type() == "Event" ) {
+//        event = static_cast<Event *>(incidence);
+//      }
+//    }
+  }
+  if ( incidence && incidence->type() == "Event" ) {
+    event = static_cast<Event *>(incidence);
   }
 
   if (!event) {
@@ -984,51 +988,55 @@ void CalendarView::schedule_publish()
   delete publishdlg;
 }
 
-void CalendarView::schedule_request()
+void CalendarView::schedule_request(Incidence *incidence)
 {
-  schedule(Scheduler::Request);
+  schedule(Scheduler::Request,incidence);
 }
 
-void CalendarView::schedule_refresh()
+void CalendarView::schedule_refresh(Incidence *incidence)
 {
-  schedule(Scheduler::Refresh);
+  schedule(Scheduler::Refresh,incidence);
 }
 
-void CalendarView::schedule_cancel()
+void CalendarView::schedule_cancel(Incidence *incidence)
 {
-  schedule(Scheduler::Cancel);
+  schedule(Scheduler::Cancel,incidence);
 }
 
-void CalendarView::schedule_add()
+void CalendarView::schedule_add(Incidence *incidence)
 {
-  schedule(Scheduler::Add);
+  schedule(Scheduler::Add,incidence);
 }
 
-void CalendarView::schedule_reply()
+void CalendarView::schedule_reply(Incidence *incidence)
 {
-  schedule(Scheduler::Reply);
+  schedule(Scheduler::Reply,incidence);
 }
 
-void CalendarView::schedule_counter()
+void CalendarView::schedule_counter(Incidence *incidence)
 {
-  schedule(Scheduler::Counter);
+  schedule(Scheduler::Counter,incidence);
 }
 
-void CalendarView::schedule_declinecounter()
+void CalendarView::schedule_declinecounter(Incidence *incidence)
 {
-  schedule(Scheduler::Declinecounter);
+  schedule(Scheduler::Declinecounter,incidence);
 }
 
-void CalendarView::schedule(Scheduler::Method method, Event *event)
+void CalendarView::schedule(Scheduler::Method method, Incidence *incidence)
 {
-//  Event *event = 0;
-  if (event == 0) {
-    Incidence *incidence = mViewManager->currentView()->selectedIncidences().first();
-    if (mViewManager->currentView()->isEventView()) {
-      if ( incidence && incidence->type() == "Event" ) {
-        event = static_cast<Event *>(incidence);
-      }
-    }
+  Event *event = 0;
+
+	if (incidence == 0) {
+    incidence = mViewManager->currentView()->selectedIncidences().first();
+//    if (mViewManager->currentView()->isEventView()) {
+//      if ( incidence && incidence->type() == "Event" ) {
+//        event = static_cast<Event *>(incidence);
+//      }
+//    }
+  }
+  if ( incidence && incidence->type() == "Event" ) {
+    event = static_cast<Event *>(incidence);
   }
 
   if (!event) {
