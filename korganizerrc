@@ -2,7 +2,7 @@
 [Fonts]
 Schedule Font=helvetica,12,5,iso-8859-1,50,0
 Todo Font=helvetica,12,5,iso-8859-1,50,0
-TimeBar Font=helvetica,18,5,iso-8859-1,75,0
+TimeBar Font=helvetica,12,5,iso-8859-1,50,0
 List Font=helvetica,12,5,iso-8859-1,50,0
 Month Font=helvetica,10,5,iso-8859-1,50,0
 [Personal Settings]
