@@ -1,7 +1,6 @@
 [Desktop Entry]
 Encoding=UTF-8
 BinaryPattern=korganizer;
-Protocols=file;
 MimeType=text/calendar;text/x-vcalendar;
 Comment=Calendar and Scheduling Program
 Comment[da]=Kalender- og planlægningsprogram
