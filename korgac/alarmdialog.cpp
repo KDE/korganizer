@@ -183,11 +183,9 @@ void AlarmDialog::slotUser2()
 void AlarmDialog::show()
 {
   KDialogBase::show();
-  raise();
-  KWin::forceActiveWindow( winId() );
-  actionButton( KDialogBase::Ok )->setFocus();
+  KWin::setState( winId(), NET::KeepAbove );
+  KWin::setOnAllDesktops( winId(), true );
   eventNotification();
-// FIXME: go to foreground but don't steal focus
 }
 
 void AlarmDialog::eventNotification()
