@@ -118,7 +118,12 @@ void JournalEntry::writeJournal()
 
   if (!mDirty) return;
  
-  if (mEditor->text().isEmpty()) return;
+  if (mEditor->text().isEmpty()) {
+    mCalendar->deleteJournal( mJournal );
+    delete mJournal;
+    mJournal = 0L;
+    return;
+  }
 
 //  kdDebug(5850) << "JournalEntry::writeJournal()..." << endl;
   
