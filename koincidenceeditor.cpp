@@ -58,15 +58,19 @@ KOIncidenceEditor::KOIncidenceEditor( const QString &caption,
                  parent, 0, false, false ),
     mDetails( 0 ), mAttachments( 0 ), mAlarms( 0 )
 {
+  // Set this to be the group leader for all subdialogs - this means
+  // modal subdialogs will only affect this dialog, not the other windows
+  setWFlags( getWFlags() | WGroupLeader );
+
   mCalendar = calendar;
 
   setButtonText( Default, i18n("Load &Template...") );
-  setButtonWhatsThis( Default, 
+  setButtonWhatsThis( Default,
 		   i18n("Allows you to load a pre-saved "
 		  	"template for the event. You "
 			"can save this event or to-do as a "
 			"template by clicking 'Save as Template...'.") );
-  
+
   QString saveTemplateText;
   if ( KOPrefs::instance()->mCompactDialogs ) {
     showButton( User1, false );
@@ -156,8 +160,8 @@ void KOIncidenceEditor::slotCancel()
 void KOIncidenceEditor::cancelRemovedAttendees( Incidence *incidence )
 {
   if ( !incidence ) return;
-  
-  // cancelAttendeeEvent removes all attendees from the incidence, 
+
+  // cancelAttendeeEvent removes all attendees from the incidence,
   // and then only adds those that need to be cancelled (i.e. a mail needs to be sent to them).
   if ( KOPrefs::instance()->thatIsMe( incidence->organizer().email() ) ) {
     Incidence *ev = incidence->clone();
@@ -181,7 +185,7 @@ void KOIncidenceEditor::slotSaveTemplate()
   kdDebug(5850) << "KOIncidenceEditor::saveTemplate()" << endl;
   QString tp = type();
   QStringList templates;
-  
+
   if ( tp == "Event" ) {
     templates = KOPrefs::instance()->mEventTemplates;
   } else if( tp == "ToDo" ) {
@@ -191,16 +195,16 @@ void KOIncidenceEditor::slotSaveTemplate()
   }
   bool ok = false;
   QString templateName = KInputDialog::getItem( i18n("Save Template"),
-      i18n("Please enter a name for the template:"), templates, 
+      i18n("Please enter a name for the template:"), templates,
       -1, true, &ok, this );
   if ( ok && templateName.isEmpty() ) {
     KMessageBox::error( this, i18n("You did not give a valid template name, "
                                    "no template will be saved") );
     ok = false;
   }
-  
+
   if ( ok && templates.contains( templateName ) ) {
-    int res = KMessageBox::warningYesNo( this, 
+    int res = KMessageBox::warningYesNo( this,
                                          i18n("The selected template "
                                               "already exists. Overwrite it?"),
                                          i18n("Template Already Exists") );
@@ -208,10 +212,10 @@ void KOIncidenceEditor::slotSaveTemplate()
       ok = false;
     }
   }
-  
+
   if ( ok ) {
     saveTemplate( templateName );
-    
+
     // Add template to list of existing templates
     if ( !templates.contains( templateName ) ) {
       templates.append( templateName );
@@ -223,7 +227,7 @@ void KOIncidenceEditor::slotSaveTemplate()
         KOPrefs::instance()->mJournalTemplates = templates;
       }
     }
-    
+
   }
 }
 
@@ -284,7 +288,7 @@ void KOIncidenceEditor::setupDesignerTabs( const QString &type )
 
     KPIM::DesignerFields *wid = new KPIM::DesignerFields( *it, 0 );
     mDesignerFields.append( wid );
-   
+
     QFrame *topFrame = addPage( wid->title() );
 
     QBoxLayout *topLayout = new QVBoxLayout( topFrame );
@@ -305,7 +309,7 @@ class KCalStorage : public KPIM::DesignerFields::Storage
     QStringList keys()
     {
       QStringList keys;
-    
+
       QMap<QCString, QString> props = mIncidence->customProperties();
       QMap<QCString, QString>::ConstIterator it;
       for( it = props.begin(); it != props.end(); ++it ) {
@@ -315,20 +319,20 @@ class KCalStorage : public KPIM::DesignerFields::Storage
         if ( parts[ 2 ] != "KORGANIZER" ) continue;
         keys.append( parts[ 3 ] );
       }
-      
+
       return keys;
     }
-    
+
     QString read( const QString &key )
     {
       return mIncidence->customProperty( "KORGANIZER", key.utf8() );
     }
-    
+
     void write( const QString &key, const QString &value )
     {
       mIncidence->setCustomProperty( "KORGANIZER", key.utf8(), value );
     }
-  
+
   private:
     Incidence *mIncidence;
 };
@@ -340,7 +344,7 @@ void KOIncidenceEditor::readDesignerFields( Incidence *i )
   for( fields = mDesignerFields.first(); fields;
        fields = mDesignerFields.next() ) {
     fields->load( &storage );
-  }  
+  }
 }
 
 void KOIncidenceEditor::writeDesignerFields( Incidence *i )
@@ -353,7 +357,7 @@ void KOIncidenceEditor::writeDesignerFields( Incidence *i )
        fields = mDesignerFields.next() ) {
     kdDebug() << "Write Field " << fields->title() << endl;
     fields->save( &storage );
-  }  
+  }
 }
 
 #include "koincidenceeditor.moc"
