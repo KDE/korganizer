@@ -3,6 +3,7 @@
 */
 
 #include <qpopupmenu.h>
+#include <qcursor.h>
 
 #include <klocale.h>
 #include <kdebug.h>

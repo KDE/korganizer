@@ -2,6 +2,7 @@
 
 #include <qlayout.h>
 #include <qheader.h>
+#include <qcursor.h>
 
 #include <kapp.h>
 #include <kdebug.h>
@@ -29,9 +30,9 @@ KOTodoViewItem::KOTodoViewItem(KOTodoViewItem *parent, Todo *ev)
 }
 
 void KOTodoViewItem::paintBranches(QPainter *p,const QColorGroup & cg,int w,
-                                   int y,int h,GUIStyle s)
+                                   int y,int h)
 {
-  QListViewItem::paintBranches(p,cg,w,y,h,s);
+  QListViewItem::paintBranches(p,cg,w,y,h);
 }
 
 void KOTodoViewItem::construct()

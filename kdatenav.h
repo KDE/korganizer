@@ -11,6 +11,8 @@
 #include "calendar.h"
 #include "kdpdatebutton.h"
 
+class QPushButton;
+
 class KDateNavigator: public QFrame {
    Q_OBJECT
  public:

@@ -10,6 +10,7 @@
 #include <qfontmetrics.h>
 #include <qpopupmenu.h>
 #include <qtooltip.h>
+#include <qpainter.h>
 
 #include <kapp.h>
 #include <kdebug.h>

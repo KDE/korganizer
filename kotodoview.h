@@ -2,7 +2,7 @@
 #ifndef _KOTODOVIEW_H
 #define _KOTODOVIEW_H
 
-#include <qtableview.h>
+//#include <qttableview.h>
 #include <qfont.h>
 #include <qfontmetrics.h>
 #include <qlineedit.h>
@@ -43,8 +43,7 @@ class KOTodoViewItem : public QCheckListItem
     Todo *event() { return mEvent; }
 
   protected:
-    void paintBranches(QPainter *p,const QColorGroup & cg,int w,int y,int h,
-                       GUIStyle s);
+    void paintBranches(QPainter *p,const QColorGroup & cg,int w,int y,int h);
 
   private:
     Todo *mEvent;

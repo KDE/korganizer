@@ -16,6 +16,7 @@
 #include <qapplication.h>
 #include <qpopupmenu.h>
 #include <qcursor.h>
+#include <qpainter.h>
 
 /*
   Create an agenda widget with rows rows and columns columns.

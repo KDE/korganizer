@@ -3,7 +3,7 @@
 #define _KOPROJECTVIEW_H
 
 #include <qlist.h>
-#include <qtableview.h>
+//#include <qttableview.h>
 #include <qfontmetrics.h>
 
 #include <qmap.h>

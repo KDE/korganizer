@@ -7,6 +7,7 @@
 #include <qpainter.h>
 #include <qdrawutil.h>
 #include <qpalette.h>
+#include <qstyle.h>
 
 #include "ksellabel.h"
 #include "ksellabel.moc"
@@ -64,12 +65,12 @@ void KSelLabel::paintEvent(QPaintEvent *)
   p.eraseRect(cr);
   if(act) {
     QColor   fc;                            // fill color
-    if ( style().guiStyle() == WindowsStyle )
+    if ( style().styleHint(QStyle::SH_GUIStyle) == WindowsStyle )
       fc = QApplication::winStyleHighlightColor();
     else
       fc = colorGroup().text();
     p.fillRect(cr, fc );
-    p.setPen( style().guiStyle() == WindowsStyle ? white : colorGroup().base() );
+    p.setPen( style().styleHint(QStyle::SH_GUIStyle) == WindowsStyle ? white : colorGroup().base() );
     p.setBackgroundColor( fc );
   }
 
