@@ -619,6 +619,7 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
   QPainter p( this );
   const int ft = 2; // frame thickness for layout, see paintFrame()
   const int margin = 1 + ft; // frame + space between frame and content
+  bool isTodoOverdue = false;
 
   static const QPixmap alarmPxmp = KOGlobals::self()->smallIcon("bell");
   static const QPixmap recurPxmp = KOGlobals::self()->smallIcon("recur");
@@ -630,9 +631,10 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
   QColor bgColor;
   if ( (mIncidence->type() == "Todo") &&
        ( !((static_cast<Todo*>(mIncidence))->isCompleted()) &&
-         ((static_cast<Todo*>(mIncidence))->dtDue() < QDate::currentDate()) ) )
+         ((static_cast<Todo*>(mIncidence))->dtDue() < QDate::currentDate()) ) ) {
     bgColor = KOPrefs::instance()->mTodoOverdueColor;
-  else {
+    isTodoOverdue = true;
+  } else {
     QStringList categories = mIncidence->categories();
     QString cat = categories.first();
     if (cat.isEmpty())
@@ -654,6 +656,8 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
   int singleLineHeight = fm.boundingRect( mLabelText ).height();
 
   // case 1: do not draw text when not even a single line fits
+  // Don't do this any more, always try to print out the text. Even if
+  // it's just a few pixel, one can still guess the whole text from just four pixels' height!
   if ( //( singleLineHeight > height()-4 ) || // ignore margin, be gentle.. Even ignore 2 pixel outside the item
        ( width() < 16 ) ) {
     p.eraseRect( 0, 0, width(), height() );
@@ -719,10 +723,11 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
     th < (height() - 2 * ft - 2 - hlHeight);
   // case 3: enough for 2-5 lines, but not for the header.
   //         Also used for the middle days in multi-events
-  //         or all-day events
+  //         or all-day events, or overdue todo items
   if ( ((!completelyRenderable) && ((height() - (2 * margin)) <= (5 * singleLineHeight)) ) ||
        (isMultiItem() && mMultiItemInfo->mNextMultiItem && mMultiItemInfo->mFirstMultiItem) ||
-       mIncidence->doesFloat() ) {
+       mIncidence->doesFloat() ||
+       isTodoOverdue ) {
     int x = margin;
     int txtWidth = width() - margin - x;
     if (mIncidence->doesFloat() ) {
