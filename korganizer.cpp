@@ -70,7 +70,6 @@
 #include <dcopclient.h>
 #include <kprocess.h>
 #include <kwin.h>
-#include <kkeydialog.h>
 #include <ktip.h>
 #include <kstdguiitem.h>
 #include <kstatusbar.h>
@@ -127,8 +126,6 @@ void KOrganizer::init( bool document )
   mActionManager->init();
   connect( mActionManager, SIGNAL( actionNew( const KURL & ) ),
            SLOT( newMainWindow( const KURL & ) ) );
-  connect( mActionManager, SIGNAL( actionKeyBindings() ),
-           SLOT( configureKeyBindings() ) );
 
   mActionManager->loadParts();
 
@@ -375,9 +372,4 @@ void KOrganizer::setTitle()
 
   setCaption( title, !mCalendarView->isReadOnly() &&
                       mCalendarView->isModified() );
-}
-
-void KOrganizer::configureKeyBindings()
-{
-  KKeyDialog::configure( actionCollection(), this );
 }

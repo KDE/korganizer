@@ -44,6 +44,8 @@ class Part : public KParts::Part
     virtual ~Part() {}
 
     virtual QString info() = 0;
+    /** short name of the part, used as category in the keybindings dialog */
+    virtual QString shortInfo() = 0;
   
     MainWindow *mainWindow() { return mMainWindow; }
   

@@ -54,7 +54,6 @@
 #include <kprocess.h>
 #include <ktempfile.h>
 #include <kstatusbar.h>
-#include <kkeydialog.h>
 #include <kparts/genericfactory.h>
 
 #include <kparts/statusbarextension.h>
@@ -121,8 +120,6 @@ KOrganizerPart::KOrganizerPart( QWidget *parentWidget, const char *widgetName,
 
   mActionManager->init();
   mActionManager->readSettings();
-  connect( mActionManager, SIGNAL( actionKeyBindings() ),
-           SLOT( configureKeyBindings() ) );
 
   setXMLFile( "korganizer_part.rc" );
   mActionManager->loadParts();
@@ -209,12 +206,6 @@ bool KOrganizerPart::openFile()
   mView->show();
   return true;
 }
-
-void KOrganizerPart::configureKeyBindings()
-{
-  KKeyDialog::configure( actionCollection(), true );
-}
-
 
 KOrganizerBrowserExtension::KOrganizerBrowserExtension(KOrganizerPart *parent) :
   KParts::BrowserExtension(parent, "KOrganizerBrowserExtension")

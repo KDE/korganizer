@@ -80,6 +80,7 @@ class KOrganizerPart: public KParts::ReadOnlyPart,
     virtual KXMLGUIClient *mainGuiClient() { return this; }
     virtual QWidget *topLevelWidget();
     virtual ActionManager *actionManager();
+    virtual KActionCollection *getActionCollection() const { return actionCollection(); }
     virtual void showStatusMessage( const QString &message );
 
     void setTitle() {};
@@ -92,8 +93,6 @@ class KOrganizerPart: public KParts::ReadOnlyPart,
 
   protected slots:
     void startCompleted( KProcess * );
-
-    void configureKeyBindings();
 
   private:
     CalendarView *mView;

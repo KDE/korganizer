@@ -79,6 +79,7 @@ class KOrganizer : public KPartsMainWindow, public KOrgMainWindow
 
     KOrg::CalendarViewBase *view() const;
     ActionManager *actionManager() { return mActionManager; }
+    KActionCollection *getActionCollection() const { return actionCollection(); }
 
     /**
       Open calendar file from URL. Merge into current calendar, if \a merge is
@@ -124,8 +125,6 @@ class KOrganizer : public KPartsMainWindow, public KOrgMainWindow
     void setNumOutgoing( int );
 
     void newMainWindow( const KURL & );
-
-    void configureKeyBindings();
 
   protected:
     void initActions();

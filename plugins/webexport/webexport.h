@@ -31,6 +31,7 @@ class WebExport : public KOrg::Part {
     ~WebExport();
     
     QString info();
+    QString shortInfo();
 
   private slots:
     void exportWeb();

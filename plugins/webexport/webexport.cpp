@@ -53,7 +53,7 @@ WebExport::WebExport(KOrg::MainWindow *parent, const char *name) :
 {
   setInstance( new KInstance( "korganizer" ) );
 
-  new KAction(i18n("Export Web Page..."), "webexport", 0, this, SLOT(exportWeb()),
+  new KAction(i18n("Export &Web Page..."), "webexport", 0, this, SLOT(exportWeb()),
                    actionCollection(), "export_web");
 
   setXMLFile( "plugins/webexportui.rc" );
@@ -66,6 +66,11 @@ WebExport::~WebExport()
 QString WebExport::info()
 {
   return i18n("This plugin provides exporting of calendars as web pages.");
+}
+
+QString WebExport::shortInfo()
+{
+  return i18n("Web Export Plugin");
 }
 
 void WebExport::exportWeb()

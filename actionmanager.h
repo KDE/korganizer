@@ -135,7 +135,7 @@ class ActionManager : public QObject, public KCalendarIface
 
     /** Handle incoming event scheduling */
     bool eventRequest( const QString& request, const QString& receiver,
-		       const QString& ical );
+                       const QString& ical );
     /** Handle event replies */
     bool eventReply( const QString& ical );
     /** Handle cancelling an event */
@@ -169,17 +169,12 @@ class ActionManager : public QObject, public KCalendarIface
     QString localFileName();
 
     bool queryClose();
-
+    
   signals:
     /**
       Emitted when the "New" action is activated.
     */
     void actionNew( const KURL &url = KURL() );
-
-    /**
-      Emitted when the "Configure Key Bindings" action is activated.
-    */
-    void actionKeyBindings();
 
     /**
       When change is made to options dialog, the topwidget will catch this

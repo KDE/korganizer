@@ -30,6 +30,7 @@ class ProjectView : public KOrg::Part {
     ~ProjectView();
     
     QString info();
+    QString shortInfo();
 
   private slots:
     void showView();

@@ -36,10 +36,12 @@ using namespace KCal;
 class Exchange : public KOrg::Part {
     Q_OBJECT
   public:
-    Exchange( KOrg::MainWindow *, const char * );
+    Exchange( KOrg::MainWindow *, const char *name );
     ~Exchange();
 
     QString info();
+    // This method is used for the category of the key bindings
+    QString shortInfo();
 
   signals:
     void enableIncidenceActions( bool );

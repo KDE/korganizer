@@ -256,7 +256,7 @@ void ActionManager::initActions()
                     mACollection, "import_ical");
   (void)new KAction(i18n("&Merge Calendar..."), 0, this, SLOT(file_merge()),
                     mACollection, "merge_calendar");
-  (void)new KAction(i18n("Archive Old Entries..."), 0, this, SLOT(file_archive()),
+  (void)new KAction(i18n("Archive O&ld Entries..."), 0, this, SLOT(file_archive()),
                     mACollection, "file_archive");
 
   // Settings menu.
@@ -265,29 +265,29 @@ void ActionManager::initActions()
                     this,SLOT(configureDateTime()),
                     mACollection, "conf_datetime");
 
-  mFilterViewAction = new KToggleAction(i18n("Show Filter"),0,this,
+  mFilterViewAction = new KToggleAction(i18n("Show F&ilter"),0,this,
                                         SLOT(toggleFilterView()),
                                         mACollection,
                                         "show_filter");
 #if KDE_IS_VERSION(3,2,90)
-  mFilterViewAction->setCheckedState(i18n("Hide Filter"));
+  mFilterViewAction->setCheckedState(i18n("Hi&de Filter"));
 #endif
 
   KStdAction::tipOfDay( this, SLOT( showTip() ), mACollection,
                         "help_tipofday" );
 
-  new KAction( i18n("Get Hot New Stuff..."), 0, this,
+  new KAction( i18n("Get &Hot New Stuff..."), 0, this,
                SLOT( downloadNewStuff() ), mACollection,
                "downloadnewstuff" );
 
-  new KAction( i18n("Upload Hot New Stuff..."), 0, this,
+  new KAction( i18n("Upload &Hot New Stuff..."), 0, this,
                SLOT( uploadNewStuff() ), mACollection,
                "uploadnewstuff" );
 
-  (void)new KAction(i18n("iCalendar..."), 0,
+  (void)new KAction(i18n("&iCalendar..."), 0,
                     mCalendarView, SLOT(exportICalendar()),
                     mACollection, "export_icalendar");
-  (void)new KAction(i18n("vCalendar..."), 0,
+  (void)new KAction(i18n("&vCalendar..."), 0,
                     mCalendarView, SLOT(exportVCalendar()),
                     mACollection, "export_vcalendar");
 
@@ -313,7 +313,7 @@ void ActionManager::initActions()
   }
 #endif
 
-  new KAction( i18n("delete completed To-Dos","Purge Completed"), 0,
+  new KAction( i18n("delete completed To-Dos","Pur&ge Completed"), 0,
                mCalendarView, SLOT( purgeCompleted() ), mACollection,
                "purge_completed" );
 
@@ -441,23 +441,23 @@ void ActionManager::initActions()
 
   // Schedule menu.
 
-  (void)new KAction(i18n("Outgoing Messages"),0,
+  (void)new KAction(i18n("&Outgoing Messages"),0,
                     mCalendarView->dialogManager(),SLOT(showOutgoingDialog()),
                     mACollection,"outgoing");
-  (void)new KAction(i18n("Incoming Messages"),0,
+  (void)new KAction(i18n("&Incoming Messages"),0,
                     mCalendarView->dialogManager(),SLOT(showIncomingDialog()),
                     mACollection,"incoming");
-  mPublishEvent = new KAction(i18n("Publish..."),"mail_send",0,
+  mPublishEvent = new KAction(i18n("&Publish..."),"mail_send",0,
                        mCalendarView,SLOT(schedule_publish()),
                        mACollection,"publish");
   mPublishEvent->setEnabled(false);
-  action = new KAction(i18n("Request"),"mail_generic",0,
+  action = new KAction(i18n("Re&quest"),"mail_generic",0,
                        mCalendarView,SLOT(schedule_request()),
                        mACollection,"request");
   action->setEnabled(false);
   connect(mCalendarView,SIGNAL(organizerEventsSelected(bool)),
           action,SLOT(setEnabled(bool)));
-  action = new KAction(i18n("Refresh"),0,
+  action = new KAction(i18n("Re&fresh"),0,
                        mCalendarView,SLOT(schedule_refresh()),
                        mACollection,"refresh");
   action->setEnabled(false);
@@ -474,31 +474,31 @@ void ActionManager::initActions()
                        mACollection,"add");
   connect(mCalendarView,SIGNAL(eventsSelected(bool)),
           action,SLOT(setEnabled(bool)));
-*/  action = new KAction(i18n("Reply"),"mail_reply",0,
+*/  action = new KAction(i18n("&Reply"),"mail_reply",0,
                        mCalendarView,SLOT(schedule_reply()),
                        mACollection,"reply");
   action->setEnabled(false);
   connect(mCalendarView,SIGNAL(groupEventsSelected(bool)),
           action,SLOT(setEnabled(bool)));
-  action = new KAction(i18n("counter proposal","Counter"),0,
+  action = new KAction(i18n("counter proposal","Coun&ter"),0,
                        mCalendarView,SLOT(schedule_counter()),
                        mACollection,"counter");
   action->setEnabled(false);
   connect(mCalendarView,SIGNAL(groupEventsSelected(bool)),
           action,SLOT(setEnabled(bool)));
 
-  action = new KAction( i18n("Mail Free Busy Information"), 0,
+  action = new KAction( i18n("&Mail Free Busy Information"), 0,
                         mCalendarView, SLOT( mailFreeBusy() ),
                         mACollection, "mail_freebusy" );
   action->setEnabled( true );
 
-  action = new KAction( i18n("Upload Free Busy Information"), 0,
+  action = new KAction( i18n("&Upload Free Busy Information"), 0,
                         mCalendarView, SLOT( uploadFreeBusy() ),
                         mACollection, "upload_freebusy" );
   action->setEnabled( true );
 
   if ( !mIsPart ) {
-      action = new KAction(i18n("Addressbook"),"contents",0,
+      action = new KAction(i18n("&Addressbook"),"contents",0,
                            mCalendarView,SLOT(openAddressbook()),
                            mACollection,"addressbook");
   }
@@ -1305,9 +1305,16 @@ void ActionManager::enableIncidenceActions( bool enabled )
 
 void ActionManager::keyBindings()
 {
-  emit actionKeyBindings();
-}
+  KKeyDialog dlg( false, view() );
+  if ( mMainWindow ) 
+    dlg.insert( mMainWindow->getActionCollection() );
 
+  KOrg::Part *part;  
+  for ( part = mParts.first(); part; part = mParts.next() ) {
+    dlg.insert( part->actionCollection(), part->shortInfo() );
+  }
+  dlg.configure();
+}
 
 void ActionManager::loadParts()
 {

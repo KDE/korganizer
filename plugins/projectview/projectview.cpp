@@ -59,7 +59,7 @@ ProjectView::ProjectView(KOrg::MainWindow *parent, const char *name) :
 
   setXMLFile("plugins/projectviewui.rc");
 
-  new KAction(i18n("Project"), 0, this, SLOT(showView()),
+  new KAction(i18n("&Project"), 0, this, SLOT(showView()),
               actionCollection(), "view_project");
 }
 
@@ -70,6 +70,11 @@ ProjectView::~ProjectView()
 QString ProjectView::info()
 {
   return i18n("This plugin provides a Gantt diagram as project view.");
+}
+
+QString ProjectView::shortInfo()
+{
+  return i18n("Project View Plugin");
 }
 
 void ProjectView::showView()

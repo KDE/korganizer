@@ -15,14 +15,14 @@
       <Action name="korganizer_print"/>
       <Action name="korganizer_quickprint"/>
       <Separator/>
-      <Menu name="import"><text>Import</text>
+      <Menu name="import"><text>&amp;Import</text>
         <Action name="downloadnewstuff"/>
         <Merge/>
         <Action name="import_ical"/>
         <Action name="merge_calendar"/>
       </Menu>
       <Action name="file_archive"/>
-      <Menu name="export"><text>Export</text>
+      <Menu name="export"><text>&amp;Export</text>
         <Action name="uploadnewstuff"/>
         <Separator/>
         <Merge/>

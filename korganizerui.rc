@@ -4,14 +4,14 @@
   <MenuBar>
     <Menu name="file"><text>&amp;File</text>
       <Action name="print_setup" append="print_merge"/>
-      <Menu name="import"><text>Import</text>
+      <Menu name="import"><text>&amp;Import</text>
         <Action name="downloadnewstuff"/>
         <Separator/>
         <Merge/>
         <Action name="import_ical"/>
         <Action name="merge_calendar"/>
       </Menu>
-      <Menu name="export"><text>Export</text>
+      <Menu name="export"><text>&amp;Export</text>
         <Action name="uploadnewstuff"/>
         <Separator/>
         <Merge/>

@@ -74,10 +74,10 @@ Exchange::Exchange(KOrg::MainWindow *parent, const char *name) :
 
   setXMLFile("plugins/exchangeui.rc");
 
-  new KAction(i18n("Download..."), 0, this, SLOT(download()),
+  new KAction(i18n("&Download..."), 0, this, SLOT(download()),
               actionCollection(), "exchange_download");
 
-  KAction *action = new KAction(i18n("Upload Event..."), 0, this, SLOT(upload()),
+  KAction *action = new KAction(i18n("&Upload Event..."), 0, this, SLOT(upload()),
                                 actionCollection(), "exchange_upload");
   QObject::connect(mainWindow()->view(),SIGNAL(incidenceSelected(Incidence *)),
             this, SLOT(slotIncidenceSelected(Incidence *)));
@@ -85,13 +85,13 @@ Exchange::Exchange(KOrg::MainWindow *parent, const char *name) :
   QObject::connect(this,SIGNAL(enableIncidenceActions(bool)),
           action,SLOT(setEnabled(bool)));
 
-  action = new KAction(i18n("Delete Event"), 0, this, SLOT(remove()),
+  action = new KAction(i18n("De&lete Event"), 0, this, SLOT(remove()),
                                 actionCollection(), "exchange_delete");
   QObject::connect(this,SIGNAL(enableIncidenceActions(bool)),
           action,SLOT(setEnabled(bool)));
   action->setEnabled( false );
 
-  new KAction(i18n("Configure..."), 0, this, SLOT(configure()),
+  new KAction(i18n("&Configure..."), 0, this, SLOT(configure()),
               actionCollection(), "exchange_configure");
 
   connect( this, SIGNAL( calendarChanged() ), mainWindow()->view(), SLOT( updateView() ) );
@@ -107,6 +107,11 @@ Exchange::~Exchange()
 QString Exchange::info()
 {
   return i18n("This plugin imports and export calendar events from/to a Microsoft Exchange 2000 Server.");
+}
+
+QString Exchange::shortInfo()
+{
+  return i18n("Exchange Plugin");
 }
 
 void  Exchange::slotIncidenceSelected( Incidence *incidence )

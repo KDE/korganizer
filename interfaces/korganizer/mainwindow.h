@@ -74,6 +74,10 @@ class MainWindow
     */
     virtual ActionManager *actionManager() = 0;
     /**
+      Return actionCollection of this main window.
+    */
+    virtual KActionCollection *getActionCollection() const = 0;
+    /**
       Show status mesage in status bar.
     */
     virtual void showStatusMessage( const QString &message ) = 0;
