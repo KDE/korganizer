@@ -114,6 +114,9 @@ FreeBusyManager::FreeBusyManager( QObject *parent, const char *name )
 void FreeBusyManager::setCalendar( KCal::Calendar *c )
 {
   mCalendar = c;
+  if ( mCalendar ) {
+    mFormat.setTimeZone( mCalendar->timeZoneId(), true );
+  }
 }
 
 KCal::FreeBusy *FreeBusyManager::ownerFreeBusy()
