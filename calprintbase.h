@@ -347,6 +347,13 @@ class CalPrintBase : public QObject
                    int level, int x, int &y, int width, int &height,
                    int pageHeight, TodoParentStart *r = 0 );
 
+    void drawSplitWeek( QPainter &p, const QDate &fd, const QDate &td );
+    void drawSplitHeaderRight( QPainter &p, const QDate &fd, const QDate &td,
+	                       const QDate &cd, int width, int height );
+    void drawSplitDay( QPainter &p, const QDate &qd, int width, int height,
+                       int offsetLeft );
+    void drawSplitTimes( QPainter &p, int width, int timeWidth, int height );
+
     /** 
       Determines the column of the given weekday ( 1=Monday, 7=Sunday ), taking the 
       start of the week setting into account as given in kcontrol.

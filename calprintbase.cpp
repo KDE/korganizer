@@ -970,4 +970,245 @@ int CalPrintBase::weekdayColumn( int weekday )
   return ( weekday + 7 - KGlobal::locale()->weekStartDay() ) % 7;
 }
 
+void CalPrintBase::drawSplitWeek( QPainter &p, const QDate &fd,
+                                  const QDate &td )
+{
+  QDate curDay, fromDay, toDay, curWeek, fromWeek, toWeek;
+
+  mPrinter->setOrientation(KPrinter::Portrait);
+
+  if (KGlobal::locale()->weekStartsMonday()) {
+    // correct to monday
+    fromWeek = fd.addDays(-(fd.dayOfWeek()-1));
+    // correct to sunday
+    toWeek = td.addDays(7-fd.dayOfWeek());
+  } else {
+    // correct to sunday
+    fromWeek = fd.addDays(-(fd.dayOfWeek()%7));
+    // correct to saturday
+    toWeek = td.addDays(6-td.dayOfWeek());
+  }
+
+  fromDay = fd;
+  curDay = fd;
+  toDay = td;
+  p.begin(mPrinter);
+  p.setFont( QFont("Times") );
+  // the painter initially begins at 72 dpi per the Qt docs. 
+  int pageWidth = p.viewport().width();
+  int pageHeight = p.viewport().height();
+  int margin=0;
+  mHeaderHeight = 110;
+  mSubHeaderHeight = 20;
+
+  p.setViewport(margin, margin, 
+       p.viewport().width()-margin, 
+       p.viewport().height()-margin);
+
+  curWeek = fromWeek.addDays(6);
+
+  int columnWidth = int( pageWidth / 4.5 );
+  do {
+    switch(curDay.dayOfWeek()%7){
+      case 0:
+        drawSplitTimes( p, pageWidth, columnWidth, pageHeight );
+        drawSplitDay( p, curDay, columnWidth, pageHeight,
+                      int( columnWidth * 0.5 ) );
+        break;
+      case 1:
+        drawSplitDay( p, curDay, columnWidth, pageHeight,
+                      int( columnWidth * 1.5 ) );
+        break;
+      case 2:
+        drawSplitDay( p, curDay, columnWidth, pageHeight,
+                      int( columnWidth * 2.5 ) );
+        break;
+      case 3:
+        drawSplitDay( p, curDay, columnWidth, pageHeight,
+                      int( columnWidth * 3.5 ) );
+        mPrinter->newPage();
+        break;
+      case 4:
+        drawSplitTimes( p, int( pageWidth * ( 3.5/ 4.5 ) ), columnWidth,
+                        pageHeight );
+        drawSplitDay( p, curDay, columnWidth, pageHeight,
+                      int( columnWidth * 0.5 ) );
+        drawSplitHeaderRight( p, curWeek.addDays( -6 ), curWeek,
+                              curWeek, pageWidth, mHeaderHeight );
+        break;
+      case 5:
+        drawSplitDay( p, curDay, columnWidth, pageHeight,
+                      int( columnWidth * 1.5 ) );
+        break;
+      case 6:
+        drawSplitDay( p, curDay, columnWidth, pageHeight,
+                      int( columnWidth * 2.5 ) );
+        if ( curDay < toDay )
+          mPrinter->newPage();
+        curWeek = curWeek.addDays( 7 );
+        break;
+    }
+    curDay = curDay.addDays(1);
+
+  } while (curDay <= toDay);
+  
+  p.end();
+}
+
+void CalPrintBase::drawSplitHeaderRight( QPainter &p, const QDate &fd,
+                                         const QDate &td,
+                                         const QDate &,
+                                         int width, int )
+{
+  KLocale *local = KGlobal::locale();
+  QFont font("helvetica", 18, QFont::Bold);
+  QPen penA( black,0);
+  QPen penB( black,4);
+  p.setFont(font);
+  int lineSpacing = p.fontMetrics().lineSpacing();
+  QString title;
+  QString myOwner(mCalendar->getOwner());
+  if ( fd.month() == td.month() ) {
+    title = local->monthName(fd.month(), false) + ' ' + QString::number(fd.day()) + ' ' 
+       + '-' + ' ' + QString::number(td.day());
+  } else {
+    title = local->monthName(fd.month(), false) + ' ' + QString::number(fd.day()) + ' ' 
+       + '-' + ' ' + local->monthName(td.month(), false) + ' ' + QString::number(td.day());
+  }
+
+// Grrrrrrr!  why can't I set the font to a serif font?!?!?
+  QFont serifFont("Luxi Serif", 30);
+//  serifFont.setFamily("Serif");
+//  serifFont.setWeight(87);
+//  serifFont.setItalic(true);
+  p.setFont(serifFont);
+  QFontInfo info(p.font());
+
+  lineSpacing = p.fontMetrics().lineSpacing();
+  p.drawText(0, lineSpacing * 0, width, lineSpacing, AlignRight |AlignTop, title );
+
+  title.truncate(0);
+
+  p.setPen(penB );
+  p.drawLine(300, lineSpacing * 1, width, lineSpacing * 1);
+  p.setPen(penA );
+
+  p.setFont(QFont("Times", 20, QFont::Bold, TRUE));
+  title += QString::number(fd.year());
+  p.drawText(0, lineSpacing * 1, width, lineSpacing, AlignRight |AlignTop, title );
+}
+
+void CalPrintBase::drawSplitDay( QPainter &p, const QDate &qd, int width,
+                                 int height, int offsetLeft )
+{
+  int startHour = KOPrefs::instance()->mDayBegins.time().hour();
+  int endHour = 20;
+  int offset = mHeaderHeight + mSubHeaderHeight + 10;
+  Event::List eventList = mCalendar->events( qd, true );
+  Event::List::Iterator it;
+  Event *currEvent;
+  KLocale *local = KGlobal::locale();
+  QString dayName;
+ 
+  dayName = local->weekDayName(qd.dayOfWeek()) + ' ' + ' ' + QString::number(qd.day());
+  p.setBrush(QBrush(black));
+// width+1 to make sure there's a continuous, black bar across the top.
+  p.drawRect(offsetLeft, mHeaderHeight + 5, width +1, mSubHeaderHeight);
+  p.setPen( Qt::white);
+  p.setFont(QFont("helvetica", 10));
+  p.drawText(offsetLeft, mHeaderHeight + 5, 
+          width, mSubHeaderHeight, AlignHCenter | AlignVCenter,
+          dayName);
+
+  p.setPen( Qt::black);
+  p.setFont(QFont("helvetica", 14));
+  p.setBrush(QBrush(Dense7Pattern));
+  it = eventList.begin();
+  int allDays = 0;
+  while( it != eventList.end() ) {
+    Event *currEvent = *it;
+    if ( currEvent->doesFloat() ) {
+      p.drawRect( offsetLeft, offset, width, 35 );
+      p.drawText( offsetLeft + 5, offset + 10, width - 10, 30,
+                  AlignLeft | AlignTop, currEvent->summary() );
+      offset += 40;
+      allDays++;
+      it = eventList.remove( it );
+    } else {
+      ++it;
+    }
+  }
+  p.setBrush(QBrush());
+  int tmpEnd;
+  for ( it = eventList.begin(); it != eventList.end(); ++it ) {
+    Event *currEvent = *it;
+    tmpEnd = currEvent->dtEnd().time().hour();
+    if (currEvent->dtEnd().time().minute() > 0)
+      tmpEnd++;
+    if (tmpEnd > endHour) 
+      endHour = tmpEnd;
+  }
+  int hours = endHour - startHour;
+  int cellHeight = (height-offset) / hours; // hour increments.
+
+  p.setFont(QFont("helvetica", 14));
+  p.setBrush(QBrush(Dense7Pattern));
+  for ( it = eventList.begin(); it != eventList.end(); ++it ) {
+    Event *currEvent = *it;
+    int startTime = currEvent->dtStart().time().hour();
+    int endTime = currEvent->dtEnd().time().hour();
+    float minuteInc = cellHeight / 60.0;
+    if ((startTime >= startHour)  && (endTime <= (startHour + hours))) {
+      startTime -= startHour;
+      int startMinuteOff = (int) (minuteInc * 
+      currEvent->dtStart().time().minute());
+      int endMinuteOff = (int) (minuteInc * currEvent->dtEnd().time().minute());
+      int cheight = (int) (minuteInc * 
+                    currEvent->dtStart().secsTo(currEvent->dtEnd()) / 60 );
+      p.drawRect(offsetLeft+2, offset+startMinuteOff+startTime*cellHeight, 
+                 width-4, cheight);
+      p.drawText(offsetLeft+12, offset+startMinuteOff+startTime*cellHeight+5, width-24, 
+                 cheight-10, AlignHCenter | AlignTop, currEvent->summary());
+    }
+  }
+  p.setBrush(QBrush(NoBrush));
+}
+
+void CalPrintBase::drawSplitTimes( QPainter &p, int width, int timeWidth,
+                                   int height )
+{
+  int startHour = KOPrefs::instance()->mDayBegins.time().hour();
+  int endHour = 20;
+  int offset = mHeaderHeight + mSubHeaderHeight + 10;
+  int hours = endHour - startHour;
+  int cellHeight = (height-offset) / hours; // hour increments.
+
+  QString numStr;
+  for (int i = 0; i < hours; i++) {
+    p.drawLine(0, offset+i*cellHeight, width, offset+i*cellHeight);
+    p.drawLine(37, offset+i*cellHeight+(cellHeight/2),
+               75, offset+i*cellHeight+(cellHeight/2));
+
+    if ( !KGlobal::locale()->use12Clock() ) {
+      numStr.setNum(i+startHour);
+      if (cellHeight > 40) {
+        p.setFont(QFont("helvetica", 16, QFont::Bold));
+      } else {
+        p.setFont(QFont("helvetica", 14, QFont::Bold));
+      }
+      p.drawText(0, offset+i*cellHeight, 33, cellHeight/2,
+                 AlignTop|AlignRight, numStr);
+      p.setFont(QFont("helvetica", 12, QFont::Bold));
+      p.drawText(37, offset+i*cellHeight, 45, cellHeight/2,
+                 AlignTop | AlignLeft, "00");
+    } else {
+      QTime time( i + startHour, 0 );
+      numStr = KGlobal::locale()->formatTime( time );
+      p.setFont(QFont("helvetica", 12, QFont::Bold));
+      p.drawText(4, offset+i*cellHeight, 70, cellHeight/2,
+                 AlignTop|AlignLeft, numStr);
+    }
+  } 
+}
+
 #endif

@@ -80,7 +80,7 @@ class CalPrintWeek : public CalPrintBase
     virtual void setDateRange( const QDate& from, const QDate& to );
 
   protected:
-    enum eWeekPrintType { Filofax=0, Timetable} mWeekPrintType;
+    enum eWeekPrintType { Filofax=0, Timetable, SplitWeek } mWeekPrintType;
     QTime mStartTime, mEndTime;
     bool mIncludeTodos;
 };

@@ -116,7 +116,7 @@ void CalPrintDay::loadConfig()
     QDate dt;
     QTime tm1( KOPrefs::instance()->mDayBegins.time() );
     QDateTime startTm( dt, tm1  );
-    QDateTime endTm( dt, tm1.addSecs( 43200 ) );
+    QDateTime endTm( dt, tm1.addSecs( 12 * 60 * 60 ) );
     mStartTime = mConfig->readDateTimeEntry( "Start time", &startTm ).time();
     mEndTime = mConfig->readDateTimeEntry( "End time", &endTm ).time();
     mIncludeTodos = mConfig->readBoolEntry( "Include todos", false );
@@ -339,6 +339,10 @@ void CalPrintWeek::print( QPainter &p, int width, int height )
         if ( curWeek <= toWeek )
           mPrinter->newPage();
       } while ( curWeek <= toWeek );
+      break;
+
+    case SplitWeek:
+      drawSplitWeek( p, fromWeek, toWeek );
       break;
   }
 }

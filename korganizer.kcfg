@@ -63,12 +63,12 @@
   <group name="Time &amp; Date">
     <entry type="String" name="TimeZoneId">
     </entry>
-    <entry type="DateTime" key="Default Start Time" name="StartTime">
-		  <label>Default appointment time:</label>
+    <entry type="DateTime" name="StartTime">
+      <label>Default appointment time:</label>
       <default>QDateTime(QDate(), QTime(10,0))</default>
     </entry>
-    <entry type="DateTime" key="Default Duration">
-		  <label>Default duration of new appointment:</label>
+    <entry type="DateTime" name="DefaultDuration">
+      <label>Default duration of new appointment:</label>
       <default>QDateTime(QDate(), QTime(2,0))</default>
     </entry>
     <entry type="Int" key="Default Alarm Time" name="AlarmTime">
@@ -114,16 +114,16 @@
       <default>false</default>
     </entry>
 
-    <entry type="DateTime" key="Day Begins">
+    <entry type="DateTime" name="DayBegins">
       <label>Day begins at</label>
       <default>QDateTime(QDate(), QTime(7,0))</default>
     </entry>
 
-    <entry type="DateTime" key="Working Hours Start">
+    <entry type="DateTime" name="WorkingHoursStart">
       <label>Daily starting hour</label>
       <default>QDateTime(QDate(), QTime(8,0))</default>
     </entry>
-    <entry type="DateTime" key="Working Hours End">
+    <entry type="DateTime" name="WorkingHoursEnd">
       <label>Daily ending hour</label>
       <default>QDateTime(QDate(), QTime(17,0))</default>
     </entry>
