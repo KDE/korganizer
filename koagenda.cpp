@@ -127,16 +127,8 @@ void MarcusBains::updateLocation(bool recalculate)
 
   mTimeBox->setText(KGlobal::locale()->formatTime(tim, KOPrefs::instance()->mMarcusBainsShowSeconds));
   mTimeBox->adjustSize();
-  // the -2 below is there because there is a bug in this program
-  // somewhere, where the last column of this widget is a few pixels
-  // narrower than the other columns.
-  int offs = (today==agenda->columns()-1) ? -4 : 0;
-  // This is a general problem: The width as well as the height is calculated
-  // 2 pixels too large (or the other way round, the cell size is calculated
-  // without taking 2-pixel margins of the agenda into account)...
-// TODO_RK:
   agenda->moveChild(mTimeBox,
-                    (int)(x+agenda->gridSpacingX()-mTimeBox->width()+offs),
+                    (int)(x+agenda->gridSpacingX()-mTimeBox->width()-1),
                     y-mTimeBox->height());
   mTimeBox->raise();
   mTimeBox->setAutoMask(true);
@@ -239,7 +231,8 @@ void KOAgenda::init()
   installEventFilter(this);
   mItems.setAutoDelete(true);
 
-  resizeContents( (int)(mGridSpacingX * mColumns + 1) , (int)(mGridSpacingY * mRows + 1) );
+//  resizeContents( (int)(mGridSpacingX * mColumns + 1) , (int)(mGridSpacingY * mRows + 1) );
+  resizeContents( (int)(mGridSpacingX * mColumns) , (int)(mGridSpacingY * mRows) );
 
   viewport()->update();
   viewport()->setBackgroundMode(NoBackground);
@@ -754,6 +747,7 @@ void KOAgenda::performItemAction(const QPoint& viewportPos)
   if ( clipperPos.y() < 0 || clipperPos.y() > visibleHeight() ||
        clipperPos.x() < 0 || clipperPos.x() > visibleWidth() ) {
     if ( mActionType == MOVE ) {
+kdDebug(5850)<<"Resetting move"<<endl;
       mScrollUpTimer.stop();
       mScrollDownTimer.stop();
       mActionItem->resetMove();
@@ -814,7 +808,8 @@ void KOAgenda::performItemAction(const QPoint& viewportPos)
           moveItem->moveRelative( dx, 0 );
           changed=true;
         }
-        if ( moveItem==firstItem ) { // is the first item
+        // in agenda's all day view don't try to move multi items, since there are none
+        if ( moveItem==firstItem && !mAllDayMode ) { // is the first item
           int newY = dy+moveItem->cellYTop();
           // If event start moved earlier than 0:00, it starts the previous day
           if (newY<0) {
@@ -837,7 +832,6 @@ void KOAgenda::performItemAction(const QPoint& viewportPos)
             moveItem->prependMoveItem(newFirst);
             firstItem=newFirst;
           } else if ( newY>=rows() ) {
-            // TODO_RK
             // If event start is moved past 24:00, it starts the next day
             // erase current item (i.e. remove it from the multiItem list)
             firstItem = moveItem->nextMultiItem();
@@ -847,13 +841,13 @@ void KOAgenda::performItemAction(const QPoint& viewportPos)
             mActionItem->removeMoveItem(moveItem);
             moveItem=firstItem;
             // adjust next day's item
-            moveItem->expandTop( rows()-newY );
+            if (moveItem) moveItem->expandTop( rows()-newY );
           } else {
             moveItem->expandTop(dy);
           }
           changed=true;
         }
-        if (!moveItem->lastMultiItem()) { // is the last item
+        if ( !moveItem->lastMultiItem() && !mAllDayMode ) { // is the last item
           int newY = dy+moveItem->cellYBottom();
           if (newY<0) {
             // erase current item
@@ -1401,10 +1395,10 @@ void KOAgenda::resizeEvent ( QResizeEvent *ev )
 {
 //  kdDebug(5850) << "KOAgenda::resizeEvent" << endl;
   if (mAllDayMode) {
-    mGridSpacingX = width() / mColumns;
+    mGridSpacingX = (double)width() / (double)mColumns;
 //    kdDebug(5850) << "Frame " << frameWidth() << endl;
-    mGridSpacingY = height() - 2 * frameWidth() - 1;
-    resizeContents( (int)( mGridSpacingX * mColumns + 1 ), (int)mGridSpacingY + 1);
+    mGridSpacingY = height() - 2 * frameWidth();
+    resizeContents( (int)( mGridSpacingX * mColumns ), (int)(mGridSpacingY ));
 //    mGridSpacingY = height();
 //    resizeContents( mGridSpacingX * mColumns + 1 , mGridSpacingY * mRows + 1 );
 
@@ -1419,12 +1413,12 @@ void KOAgenda::resizeEvent ( QResizeEvent *ev )
                       (int)( item->subCell() * subCellWidth ) );
     }
   } else {
-    mGridSpacingX = (width() - verticalScrollBar()->width())/mColumns;
+    mGridSpacingX = (double)(width() - verticalScrollBar()->width() - 2 * frameWidth())/(double)mColumns;
     // make sure that there are not more than 24 per day
-    mGridSpacingY = (double)height()/(double)mRows;
+    mGridSpacingY = (double)(height() - 2 * frameWidth())/(double)mRows;
     if (mGridSpacingY<mDesiredGridSpacingY) mGridSpacingY=mDesiredGridSpacingY;
 
-    resizeContents( (int)( mGridSpacingX * mColumns + 1 ), (int)( mGridSpacingY * mRows + 1 ));
+    resizeContents( (int)( mGridSpacingX * mColumns ), (int)( mGridSpacingY * mRows ));
 
     KOAgendaItem *item;
     double subCellWidth;
