@@ -40,8 +40,6 @@ KOWindowList::~KOWindowList()
 void KOWindowList::addWindow(KOrg::MainWindow *korg)
 {
   mWindowList.append(korg);
-  connect(korg->actionManager(),SIGNAL(calendarActivated(KOrg::MainWindow *)),
-	  SLOT(deactivateCalendars(KOrg::MainWindow *)));
 }
 
 void KOWindowList::removeWindow(KOrg::MainWindow *korg)
