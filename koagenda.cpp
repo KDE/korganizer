@@ -359,12 +359,12 @@ bool KOAgenda::eventFilter_mouse(QObject *object, QMouseEvent *me)
           mActionItem = (KOAgendaItem *)object;
           if (mActionItem) {
             selectItem(mActionItem);
-            // XXX remove this line:
-            // mActionItem->itemEvent()->recurrence()->doesRecur()
-            if (!mActionItem->itemEvent()->isReadOnly())
-              startItemAction(viewportPos);
-            else
+            Event *event = mActionItem->itemEvent();
+            if ( event->isReadOnly() || event->recurrence()->doesRecur() ) {
               mActionItem = 0;
+            } else {
+              startItemAction(viewportPos);
+            }
           }
         }
       } else {
@@ -386,7 +386,8 @@ bool KOAgenda::eventFilter_mouse(QObject *object, QMouseEvent *me)
     case QEvent::MouseMove:
       if (object != viewport()) {
         KOAgendaItem *moveItem = (KOAgendaItem *)object;
-        if (!moveItem->itemEvent()->isReadOnly())
+        if (!moveItem->itemEvent()->isReadOnly() &&
+            !moveItem->itemEvent()->recurrence()->doesRecur() )
           if (!mActionItem)
             setNoActionCursor(moveItem,viewportPos);
           else
