@@ -49,6 +49,7 @@
 #include <libkcal/calendar.h>
 #include <libkcal/icaldrag.h>
 #include <libkcal/dndfactory.h>
+#include <libkcal/calfilter.h>
 
 #include <kcalendarsystem.h>
 
@@ -853,6 +854,8 @@ void KOAgendaView::insertEvent( Event *event, QDate curDate, int curCol )
 
 void KOAgendaView::changeEventDisplayAdded( Event *event )
 {
+  if ( !calendar()->filter()->filterEvent( event ) ) return;
+
   if ( !event->doesRecur() ) {
     // find a suitable date
     QDate f = mSelectedDates.first();
