@@ -250,11 +250,11 @@ KOrg::Part::List KOCore::loadParts( KOrg::MainWindow *parent )
                                selectedPlugins.end() ) {
       KOrg::Part *part = loadPart( *it, parent );
       if ( part ) {
-        if ( !parent->mainGuiFactory() ) {
-          kdError() << "KOCore::loadParts(): parent has no mainGuiFactory."
+        if ( !parent->mainGuiClient() ) {
+          kdError() << "KOCore::loadParts(): parent has no mainGuiClient."
                     << endl;
         } else {
-          parent->mainGuiFactory()->addClient( part );
+          parent->mainGuiClient()->insertChildClient( part );
           parts.append( part );
         }
       }
@@ -279,7 +279,7 @@ void KOCore::unloadParts( KOrg::MainWindow *parent, KOrg::Part::List &parts )
 {
   KOrg::Part *part;
   for( part = parts.first(); part; part = parts.next() ) {    
-    parent->mainGuiFactory()->removeClient( part );
+    parent->mainGuiClient()->removeChildClient( part );
     delete part;
   }
   parts.clear();
@@ -288,8 +288,15 @@ void KOCore::unloadParts( KOrg::MainWindow *parent, KOrg::Part::List &parts )
 KOrg::Part::List KOCore::reloadParts( KOrg::MainWindow *parent,
                                       KOrg::Part::List &parts )
 {
+  KXMLGUIFactory *factory = parent->mainGuiClient()->factory();
+  factory->removeClient( parent->mainGuiClient() );
+
   unloadParts( parent, parts );
-  return loadParts( parent );
+  KOrg::Part::List list = loadParts( parent );
+
+  factory->addClient( parent->mainGuiClient() );
+
+  return list;
 }
 
 void KOCore::reloadPlugins()

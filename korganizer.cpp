@@ -125,10 +125,10 @@ void KOrganizer::init( bool document )
   connect( mActionManager, SIGNAL( actionKeyBindings() ),
            SLOT( configureKeyBindings() ) );
 
+  mActionManager->loadParts();
+
   initActions();
   readSettings();
-
-//  initViews();
 
   statusBar()->insertItem( "", ID_GENERAL, 10 );
 
@@ -148,8 +148,6 @@ void KOrganizer::init( bool document )
 
   connect( mActionManager->view(), SIGNAL( statusMessage( const QString & ) ),
            SLOT( showStatusMessage( const QString & ) ) );
-
-  mActionManager->loadParts();
 
   setStandardToolBarMenuEnabled( true );
 

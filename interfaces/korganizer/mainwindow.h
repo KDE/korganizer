@@ -62,6 +62,10 @@ class MainWindow
     */
     virtual KXMLGUIFactory *mainGuiFactory() = 0;
     /**
+      Return XML GUI client of this main window.
+    */
+    virtual KXMLGUIClient *mainGuiClient() = 0;
+    /**
       Return widget whcih represents this main window.
     */
     virtual QWidget *topLevelWidget() = 0;

@@ -69,6 +69,7 @@ class KOrganizerPart: public KParts::ReadOnlyPart,
     virtual KURL getCurrentURL() const;
 
     virtual KXMLGUIFactory *mainGuiFactory() { return factory(); }
+    virtual KXMLGUIClient *mainGuiClient() { return this; }
     virtual QWidget *topLevelWidget();
     virtual ActionManager *actionManager();
     virtual void showStatusMessage( const QString &message );

@@ -127,6 +127,7 @@ class KOrganizer : public KPartsMainWindow, virtual public KOrganizerIface,
     bool eventReply( QString ical );
 
     virtual KXMLGUIFactory *mainGuiFactory() { return factory(); }
+    virtual KXMLGUIClient *mainGuiClient() { return this; }
     virtual QWidget *topLevelWidget() { return this; }
 
   public slots:

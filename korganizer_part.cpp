@@ -116,7 +116,7 @@ KOrganizerPart::KOrganizerPart( QWidget *parentWidget, const char *widgetName,
            SLOT( configureKeyBindings() ) );
 
   setXMLFile( "korganizer_part.rc" );
-  QTimer::singleShot( 0, mActionManager, SLOT( loadParts() ) );
+  mActionManager->loadParts();
 }
 
 KOrganizerPart::~KOrganizerPart()
