@@ -143,8 +143,49 @@ void Exchange::upload()
 
   kdDebug() << "Trying to add appointment " << m_currentUpload->summary() << endl;
 
-  tryExist();
+  findUid( m_currentUpload->uid() );
 }
+
+void Exchange::findUid( QString const& uid )
+{
+  QString query = 
+        "SELECT \"DAV:href\", \"urn:schemas:calendar:uid\"\r\n"
+        "FROM Scope('shallow traversal of \"\"')\r\n"
+        "WHERE \"urn:schemas:calendar:uid\" = '" + uid + "'\r\n";
+
+  kdDebug() << "Find uid query: " << endl << query << endl;
+  
+  KIO::DavJob* job = KIO::davSearch( getCalendarURL(), "DAV:", "sql", query, false );
+  connect(job, SIGNAL(result( KIO::Job * )), this, SLOT(slotFindUidResult(KIO::Job *)));
+}
+
+void Exchange::slotFindUidResult( KIO::Job * job )
+{
+  if ( job->error() ) {
+    job->showErrorDialog( 0L );
+    return;
+  }
+  QDomDocument& response = static_cast<KIO::DavJob *>( job )->response();
+
+  kdDebug() << "Search uid result: " << endl << response.toString() << endl;
+
+  QDomElement item = response.documentElement().firstChild().toElement();
+  QDomElement hrefElement = item.namedItem( "href" ).toElement();
+  if ( item.isNull() || hrefElement.isNull() ) {
+    // No appointment with this UID in exchange database
+    // Create a new filename for this appointment and store it there
+    tryExist();
+    return;
+  }
+  // The appointment is already in the exchange database
+  // Overwrite it with the new data
+  QString href = hrefElement.text();
+  KURL url(href);
+  url.setProtocol("webdav");
+  kdDebug() << "Found URL with identical uid: " << url.prettyURL() << endl;
+
+  startUpload( url );  
+}  
 
 void Exchange::tryExist()
 {
@@ -198,6 +239,11 @@ void Exchange::slotPropFindResult( KIO::Job *job )
   else
     url.addPath( m_currentUpload->summary() + "-" + QString::number( m_currentUploadNumber ) + ".EML" );
 
+  startUpload( url );
+}
+
+void Exchange::startUpload( KURL const& url )
+{
   Event* event = static_cast<Event *>( m_currentUpload );
   if ( ! event ) {
     kdDebug() << "ERROR: trying to upload a non-Event Incidence" << endl;
@@ -246,18 +292,6 @@ void Exchange::slotPropFindResult( KIO::Job *job )
 
   KIO::DavJob *job2 = KIO::davPropPatch( url, doc, false );
   connect( job2, SIGNAL( result( KIO::Job * ) ), this, SLOT( slotPatchResult( KIO::Job * ) ) );
-  /*
-  QByteArray args;
-  QDataStream stream( args, IO_WriteOnly );
-  stream << (int) 7 << url << (int) HTTPProtocol::DAV_PROPPATCH; //  << doc.toString();
-  KIO::TransferJob* job = new KIO::TransferJob( url, (int) KIO::CMD_SPECIAL, args, data, false );
-  connect( job, SIGNAL( result( KIO::Job * ) ), this, SLOT( slotTransferResult( KIO::Job * ) ) );
-  // connect( job, SIGNAL( dataReq( KIO::Job *, QByteArray& ) ), 
-  //		  this, SLOT( slotDataReq( KIO::Job *, QByteArray& ) ) );
-  // connect( job, SIGNAL(data(KIO::Job *, const QByteArray &)), this, SLOT(slotData(KIO::Job *, const QByteArray &)));
-  */ 
- 
-
 }
 
 void Exchange::slotPatchResult( KIO::Job* job )
@@ -266,63 +300,6 @@ void Exchange::slotPatchResult( KIO::Job* job )
   QDomDocument response = static_cast<KIO::DavJob *>( job )->response();
   kdDebug() << response.toString() << endl;
 }
-
-/*
-  ICalFormat *format = new ICalFormat();
-
-  kdDebug() << "Current appointment: " << putData << endl;
-
-  DwMessage msg;
-  DwHeaders& headers = msg.Headers();
-  headers.MessageId().CreateDefault();
-  headers.Date().FromCalendarTime(time(NULL));
-  headers.To().FromString( "janb@tbm.tudelft.nl" );
-  headers.From().FromString( "janpascal@vanbest.org" );
-  headers.Subject().FromString( "Test ppointment message" );
-
-  msg.Body().FromString( format->toString( current ).latin1() );
-
-  msg.Assemble();
-
-  kdDebug() << "Message: " << msg.AsString().c_str() << endl;
-
-  putData = msg.AsString().c_str();
-
-  KURL url = getCalendarURL();
-
-  url.addPath( "test-appointment-xkgjanr.EML" );
-
-  // No special permissions, no overwrite, no resume, no progress info
- 
-  KIO::TransferJob *job = KIO::put( url, -1, false, false, false ); 
-  // KIO::TransferJob *job = KIO::http_post( url, putData.utf8(), false ); 
-
-  job->addMetaData("davHeader", "Translate: f\r\nContent-Type: text/calendar\r\n" );
-  // job->addMetaData( "content-type", "Content-Type: text/calendar" );
-  connect( job, SIGNAL( result( KIO::Job * ) ), this, SLOT( slotTransferResult( KIO::Job * ) ) );
-  connect( job, SIGNAL( dataReq( KIO::Job *, QByteArray& ) ), 
-		  this, SLOT( slotDataReq( KIO::Job *, QByteArray& ) ) );
-
-
-
-  delete format;
-}
-
-*/
-/*
-void Exchange::slotDataReq( KIO::Job* job, QByteArray& data )
-{
-  kdDebug() << "Exchange::slotDataReq()" << endl;
-  if ( putData.isEmpty() ) {
-    data.truncate( 0 );
-  } else {
-    data = putData.utf8();
-    if ( data.size() )
-      data.truncate( data.size() - 1 );
-    putData = "";
-  } 
-}
-*/
 
 void Exchange::configure()
 {
@@ -425,44 +402,17 @@ void Exchange::download()
   startString.sprintf("%04i/%02i/%02i",start.year(),start.month(),start.day());
   QString endString;
   endString.sprintf("%04i/%02i/%02i",end.year(),end.month(),end.day());
-/*  
-  QString sql = 
-        "    SELECT &quot;DAV:href&quot;, &quot;urn:schemas:calendar:instancetype&quot;, &quot;urn:schemas:calendar:uid&quot;\r\n"
-        "    FROM Scope('shallow traversal of &quot;&quot;')\r\n"
-        "    WHERE &quot;urn:schemas:calendar:dtend&quot; > '" + startString + "'\r\n"
-        "    AND &quot;urn:schemas:calendar:dtstart&quot; &lt; '" + endString + "'";
-
-  QString query = "<searchrequest xmlns=\"DAV:\">\r\n"
-	  "  <sql xmlns=\"DAV:\">\r\n"
-	  + sql + "\r\n"
-	  "  </sql>\r\n"
-	  "</searchrequest>";
-*/
-
   QString sql = 
         "SELECT \"DAV:href\", \"urn:schemas:calendar:instancetype\", \"urn:schemas:calendar:uid\"\r\n"
         "FROM Scope('shallow traversal of \"\"')\r\n"
         "WHERE \"urn:schemas:calendar:dtend\" > '" + startString + "'\r\n"
         "AND \"urn:schemas:calendar:dtstart\" < '" + endString + "'";
-/*
-  QDomDocument doc;
-
-  QDomElement root = addElement( doc, doc, "DAV:", "searchrequest" );
-  addElement( doc, root, "DAV:", "sql", sql );
- 
-  QString query = doc.toString();
   
-  kdDebug() << query << endl;
-*/  
   kdDebug() << "Exchange download query: " << endl << sql << endl;
 
   emit startDownload();
 
-  // KIO::DavJob* job = new KIO::DavJob( baseURL, (int) HTTPProtocol::DAV_SEARCH, query, false );
   KIO::DavJob *job = KIO::davSearch( baseURL, "DAV:", "sql", sql, false );
-  // KIO::ListJob *job = KIO::listDir(baseURL, false);
-//  KIO::Scheduler::scheduleJob(job);
-//  connect(job, SIGNAL(entries( KIO::Job *, const KIO::UDSEntryList& )), this, SLOT(slotSearchEntries(KIO::Job *, const KIO::UDSEntryList&)));
   connect(job, SIGNAL(result( KIO::Job * )), this, SLOT(slotSearchResult(KIO::Job *)));
 }
 

@@ -32,6 +32,7 @@
 // #include <mimelib/string.h>
 
 // #include <mimelib/entity.h>
+#include <libkcal/event.h>
 #include <libkcal/icalformat.h>
 #include <libkcal/incidence.h>
 
@@ -66,6 +67,7 @@ class Exchange : public KOrg::Part {
     void slotData( KIO::Job *job, const QByteArray &data );
     void slotTransferResult( KIO::Job *job );
     void slotMasterEntries( KIO::Job *, const KIO::UDSEntryList& );
+    void slotFindUidResult( KIO::Job * );
 
   signals:
     void startDownload();
@@ -82,6 +84,8 @@ class Exchange : public KOrg::Part {
     void handleAppointments( const QDomDocument &, bool recurrence );
     void handleRecurrence( QString uid );
     void handlePart( DwEntity *part );
+    void startUpload( const KURL& url );
+    void findUid( QString const& uid );
     
     KURL baseURL;
     KCal::Calendar *calendar;
