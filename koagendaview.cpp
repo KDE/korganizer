@@ -477,6 +477,7 @@ KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name) :
                   SLOT(newEvent(int,int)));
   connect(mAgenda,SIGNAL(newEventSignal(int,int,int,int)),
                   SLOT(newEvent(int,int,int,int)));
+  connect(mAllDayAgenda,SIGNAL(newEventSignal()),SIGNAL(newEventSignal()));
   connect(mAllDayAgenda,SIGNAL(newEventSignal(int,int)),
                         SLOT(newEventAllDay(int,int)));
   connect(mAllDayAgenda,SIGNAL(newEventSignal(int,int,int,int)),
@@ -1302,9 +1303,11 @@ void KOAgendaView::showNewEventPopup()
 void KOAgendaView::setTypeAheadReceiver( QObject *o )
 {
   mAgenda->setTypeAheadReceiver( o );
+  mAllDayAgenda->setTypeAheadReceiver( o );
 }
 
 void KOAgendaView::finishTypeAhead()
 {
   mAgenda->finishTypeAhead();
+  mAllDayAgenda->finishTypeAhead();
 }
