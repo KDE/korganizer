@@ -170,7 +170,7 @@ void KOTodoViewItem::stateChange( bool state )
     setOn( mTodo->isCompleted() );
     return;
   }
-
+  
   kdDebug(5850) << "State changed, modified " << state << endl;
   mTodoView->setNewPercentage( this, state ? 100 : 0 );
 }
@@ -237,12 +237,6 @@ void KOTodoViewItem::paintCell(QPainter *p, const QColorGroup &cg, int column, i
         !mTodo->isCompleted()) {
       _cg.setColor(QColorGroup::Base, KOPrefs::instance()->mTodoOverdueColor);
       _cg.setColor(QColorGroup::Text, getTextColor(KOPrefs::instance()->mTodoOverdueColor));
-    }
-    if( mTodo->dtDue().date() == QDate::currentDate().addDays( 1 ) &&
-          !mTodo->isCompleted() )
-    {
-      _cg.setColor(QColorGroup::Base, KOPrefs::instance()->mTodoDueTomorrowColor);
-      _cg.setColor(QColorGroup::Text, getTextColor(KOPrefs::instance()->mTodoDueTomorrowColor));
     }
   }
 #endif

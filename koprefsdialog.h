@@ -38,7 +38,7 @@ class KPushButton;
 class QColor;
 class QListView;
 
-class KOPrefsDialogMain : public KPrefsModule
+class KDE_EXPORT KOPrefsDialogMain : public KPrefsModule
 {
     Q_OBJECT
   public:
@@ -59,7 +59,7 @@ class KOPrefsDialogMain : public KPrefsModule
     QSpinBox  *mAutoSaveIntervalSpin;
 };
 
-class KOPrefsDialogColors : public KPrefsModule
+class KDE_EXPORT KOPrefsDialogColors : public KPrefsModule
 {
     Q_OBJECT
   public:
@@ -89,7 +89,7 @@ class KOPrefsDialogColors : public KPrefsModule
     QStringList mResourceIdentifier;
 };
 
-class KOPrefsDialogGroupScheduling : public KPrefsModule
+class KDE_EXPORT KOPrefsDialogGroupScheduling : public KPrefsModule
 {
     Q_OBJECT
   public:
@@ -112,7 +112,7 @@ class KOPrefsDialogGroupScheduling : public KPrefsModule
 
 class KOGroupwarePrefsPage;
 
-class KOPrefsDialogGroupwareScheduling : public KPrefsModule
+class KDE_EXPORT KOPrefsDialogGroupwareScheduling : public KPrefsModule
 {
     Q_OBJECT
   public:
@@ -126,7 +126,7 @@ class KOPrefsDialogGroupwareScheduling : public KPrefsModule
     KOGroupwarePrefsPage* mGroupwarePage;
 };
 
-class KOPrefsDialogPlugins : public KPrefsModule
+class KDE_EXPORT KOPrefsDialogPlugins : public KPrefsModule
 {
     Q_OBJECT
   public:
@@ -145,7 +145,7 @@ class KOPrefsDialogPlugins : public KPrefsModule
     KPushButton *mConfigureButton;
 };
 
-class KOPrefsDesignerFields : public KPIM::KCMDesignerFields
+class KDE_EXPORT KOPrefsDesignerFields : public KPIM::KCMDesignerFields
 {
   public:
     KOPrefsDesignerFields( QWidget *parent = 0, const char *name = 0 );
