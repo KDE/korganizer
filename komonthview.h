@@ -166,14 +166,16 @@ class MonthViewCell : public QWidget
     void defaultAction( Incidence * );
     void newEventSignal( const QDate & );
 
+  public slots:
+    void select();
+
   protected:
+    void setFrameWidth();
     void resizeEvent( QResizeEvent * );
 
   protected slots:
     void defaultAction( QListBoxItem * );
     void contextMenu( QListBoxItem * );
-    void selection( QListBoxItem * );
-    void cellClicked( QListBoxItem * );
 
   private:
     class CreateItemVisitor;
@@ -272,6 +274,7 @@ class KOMonthView: public KOEventView
     MonthViewCell *mSelectedCell;
 
     KOEventPopupMenu *mEventContextMenu;
+    QLabel *mLabel;
 };
 
 #endif

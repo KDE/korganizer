@@ -189,7 +189,7 @@ void KNoScrollListBox::resizeEvent( QResizeEvent *e )
   QListBox::resizeEvent( e );
 }
 
-MonthViewItem::MonthViewItem( Incidence *incidence, const QDateTime &qd, 
+MonthViewItem::MonthViewItem( Incidence *incidence, const QDateTime &qd,
                               const QString & s ) : QListBoxItem()
 {
   setText( s );
@@ -221,8 +221,8 @@ void MonthViewItem::paint( QPainter *p )
 
   QColor bgColor = palette().color( QPalette::Normal,
             sel ? QColorGroup::Highlight : QColorGroup::Background );
-  int offset=0;        
-  if ( KOPrefs::instance()->monthViewUsesResourceColor() && 
+  int offset=0;
+  if ( KOPrefs::instance()->monthViewUsesResourceColor() &&
     mResourceColor.isValid() ) {
     p->setBackgroundColor( mResourceColor );
     p->eraseRect( 0, 0, listBox()->maxItemWidth(), height( listBox() ) );
@@ -325,10 +325,8 @@ MonthViewCell::MonthViewCell( KOMonthView *parent)
   connect( mItemList, SIGNAL( rightButtonPressed( QListBoxItem *,
                                                   const QPoint &) ),
            SLOT( contextMenu( QListBoxItem * ) ) );
-  connect( mItemList, SIGNAL( highlighted( QListBoxItem *) ),
-           SLOT( selection( QListBoxItem * ) ) );
   connect( mItemList, SIGNAL( clicked( QListBoxItem * ) ),
-           SLOT( cellClicked( QListBoxItem * ) ) );
+           SLOT( select() ) );
 }
 
 void MonthViewCell::setDate( const QDate &date )
@@ -337,11 +335,7 @@ void MonthViewCell::setDate( const QDate &date )
 
   mDate = date;
 
-  // show current day with a thicker frame
-  if ( mDate == QDate::currentDate() )
-    mItemList->setLineWidth( 3 );
-  else
-    mItemList->setLineWidth( 1 );
+  setFrameWidth();
 
   QString text;
   if ( KOGlobals::self()->calendarSystem()->day( date ) == 1 ) {
@@ -362,6 +356,15 @@ void MonthViewCell::setDate( const QDate &date )
 QDate MonthViewCell::date() const
 {
   return mDate;
+}
+
+void MonthViewCell::setFrameWidth()
+{
+  // show current day with a thicker frame
+  if ( mDate == QDate::currentDate() )
+    mItemList->setLineWidth( 3 );
+  else
+    mItemList->setLineWidth( 1 );
 }
 
 void MonthViewCell::setPrimary( bool primary )
@@ -431,7 +434,7 @@ void MonthViewCell::updateCell()
   }
 }
 
-class MonthViewCell::CreateItemVisitor : 
+class MonthViewCell::CreateItemVisitor :
       public IncidenceBase::Visitor
 {
   public:
@@ -494,7 +497,7 @@ class MonthViewCell::CreateItemVisitor :
     }
     bool visit( Todo *todo ) {
       QString text;
-      if ( !KOPrefs::instance()->showAllDayTodo() ) 
+      if ( !KOPrefs::instance()->showAllDayTodo() )
         return false;
       QDateTime dt( mDate );
       if ( todo->hasDueDate() && !todo->doesFloat() ) {
@@ -524,9 +527,9 @@ class MonthViewCell::CreateItemVisitor :
 void MonthViewCell::addIncidence( Incidence *incidence )
 {
   CreateItemVisitor v;
-  
+
   QColor resourceColor=KOPrefs::instance()->mEventColor;
-  
+
   CalendarResources *calendarRsc = dynamic_cast<CalendarResources*>( mCalendar );
   if ( calendarRsc ) {
     ResourceCalendar *rscCalendar = calendarRsc->resource( incidence );
@@ -534,7 +537,7 @@ void MonthViewCell::addIncidence( Incidence *incidence )
   }else{
     kdDebug(5850) << "MonthViewCell::addIncidence and mCalendar is not a CalendarResources" <<endl;
   }
-  
+
   if ( v.act( incidence, mDate, mStandardPalette ) ) {
     MonthViewItem *item = v.item();
     if ( item ) {
@@ -547,7 +550,7 @@ void MonthViewCell::addIncidence( Incidence *incidence )
       uint i = 0;
       int pos = -1;
       QDateTime dt( item->incidenceDateTime() );
-      
+
       while ( i < mItemList->count() && pos<0 ) {
         QListBoxItem *item = mItemList->item( i );
         MonthViewItem *mvitem = dynamic_cast<MonthViewItem*>( item );
@@ -650,9 +653,26 @@ QDate MonthViewCell::selectedIncidenceDate()
   return item->incidenceDateTime().date();
 }
 
+void MonthViewCell::select()
+{
+  // setSelectedCall will deselect currently selected cells
+  mMonthView->setSelectedCell( this );
+
+  if( KOPrefs::instance()->enableMonthScroll() )
+    enableScrollBars( true );
+
+  // don't mess up the cell when it represents today
+  if( mDate != QDate::currentDate() ) {
+    mItemList->setFrameStyle( QFrame::Sunken | QFrame::Panel );
+    mItemList->setLineWidth( 3 );
+  }
+}
+
 void MonthViewCell::deselect()
 {
   mItemList->clearSelection();
+  mItemList->setFrameStyle( QFrame::Plain | QFrame::Panel );
+  setFrameWidth();
 
   enableScrollBars( false );
 }
@@ -664,6 +684,8 @@ void MonthViewCell::resizeEvent ( QResizeEvent * )
 
 void MonthViewCell::defaultAction( QListBoxItem *item )
 {
+  select();
+
   if ( !item ) {
     emit newEventSignal( date() );
   } else {
@@ -673,14 +695,10 @@ void MonthViewCell::defaultAction( QListBoxItem *item )
   }
 }
 
-void MonthViewCell::cellClicked( QListBoxItem * )
-{
-  if( KOPrefs::instance()->enableMonthScroll() ) enableScrollBars( true );
-}
-
 void MonthViewCell::contextMenu( QListBoxItem *item )
 {
-  mMonthView->setSelectedCell( this );
+  select();
+
   if ( item ) {
     MonthViewItem *eventItem = static_cast<MonthViewItem *>( item );
     Incidence *incidence = eventItem->incidence();
@@ -691,12 +709,6 @@ void MonthViewCell::contextMenu( QListBoxItem *item )
   }
 }
 
-void MonthViewCell::selection( QListBoxItem *item )
-{
-  if ( !item ) return;
-
-  mMonthView->setSelectedCell( this );
-}
 
 KOMonthView::KOMonthView( Calendar *calendar, QWidget *parent, const char *name )
     : KOEventView( calendar, parent, name ),
@@ -707,11 +719,24 @@ KOMonthView::KOMonthView( Calendar *calendar, QWidget *parent, const char *name 
 
   QGridLayout *dayLayout = new QGridLayout( this );
 
+  QFont bfont = font();
+  bfont.setBold( true );
+
+  QFont mfont = bfont;
+  mfont.setPointSize( 20 );
+
+  // month name on top
+  mLabel = new QLabel( this );
+  mLabel->setFont( mfont );
+  mLabel->setAlignment( AlignCenter );
+  mLabel->setLineWidth( 0 );
+  mLabel->setFrameStyle( QFrame::Plain );
+
+  dayLayout->addMultiCellWidget( mLabel, 0, 0, 0, mDaysPerWeek );
+
   // create the day of the week labels (Sun, Mon, etc) and add them to
   // the layout.
   mDayLabels.resize( mDaysPerWeek );
-  QFont bfont = font();
-  bfont.setBold( true );
   int i;
   for( i = 0; i < mDaysPerWeek; i++ ) {
     QLabel *label = new QLabel( this );
@@ -722,7 +747,7 @@ KOMonthView::KOMonthView( Calendar *calendar, QWidget *parent, const char *name 
 
     mDayLabels.insert( i, label );
 
-    dayLayout->addWidget( label, 0, i );
+    dayLayout->addWidget( label, 1, i );
     dayLayout->addColSpacing( i, 10 );
     dayLayout->setColStretch( i, 1 );
   }
@@ -735,14 +760,14 @@ KOMonthView::KOMonthView( Calendar *calendar, QWidget *parent, const char *name 
       MonthViewCell *cell = new MonthViewCell( this );
       cell->setCalendar(calendar);
       mCells.insert( row * mDaysPerWeek + col, cell );
-      dayLayout->addWidget( cell, row + 1, col );
+      dayLayout->addWidget( cell, row + 2, col );
 
       connect( cell, SIGNAL( defaultAction( Incidence * ) ),
                SLOT( defaultAction( Incidence * ) ) );
       connect( cell, SIGNAL( newEventSignal( const QDate & ) ),
                SIGNAL( newEventSignal( const QDate & ) ) );
     }
-    dayLayout->setRowStretch( row + 1, 1 );
+    dayLayout->setRowStretch( row + 2, 1 );
   }
 
   mEventContextMenu = eventPopup();
@@ -839,25 +864,34 @@ void KOMonthView::showDates( const QDate &start, const QDate & )
 {
 //  kdDebug(5850) << "KOMonthView::showDates(): " << start.toString() << endl;
 
-  mStartDate = start;
+  const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
 
+  // show first day of month on top for readability issues
+  mStartDate = start.addDays( -start.day() + 1 );
   // correct begin of week
   int weekdayCol=( mStartDate.dayOfWeek() + 7 - mWeekStartDay ) % 7;
   mStartDate = mStartDate.addDays( -weekdayCol );
+
+  mLabel->setText( i18n( "monthname year", "%1 %2" )
+                   .arg( calSys->monthName( start ) )
+                   .arg( calSys->year( start ) ) );
 
   bool primary = false;
   uint i;
   for( i = 0; i < mCells.size(); ++i ) {
     QDate date = mStartDate.addDays( i );
-    if ( KOGlobals::self()->calendarSystem()->day( date ) == 1 ) {
+    if ( calSys->day( date ) == 1 ) {
       primary = !primary;
     }
+
     mCells[i]->setDate( date );
+    if( date == start )
+      mCells[i]->select();
 
     mCells[i]->setPrimary( primary );
 
-    if ( KOGlobals::self()->calendarSystem()->dayOfWeek( date ) ==
-         KOGlobals::self()->calendarSystem()->weekDayOfPray() ) {
+    if ( calSys->dayOfWeek( date ) ==
+         calSys->weekDayOfPray() ) {
       mCells[i]->setHoliday( true );
     } else {
       mCells[i]->setHoliday( false );
@@ -896,7 +930,7 @@ class KOMonthView::GetDateVisitor : public IncidenceBase::Visitor
       if ( todo->hasDueDate() ) {
         mDate = todo->dtDue().date();
         return true;
-      } else 
+      } else
         return false;
     }
     bool visit( Journal *journal ) {
@@ -913,7 +947,7 @@ void KOMonthView::changeIncidenceDisplayAdded( Incidence *incidence )
   Event *event = 0;
   Todo *todo = 0;
   QDate date;
-  
+
   // FIXME: use a visitor here
   if ( incidence->type() == "Event" ) {
     event = static_cast<Event *>( incidence );
