@@ -38,12 +38,8 @@ using namespace std;
 KNewStuffGeneric::KNewStuffGeneric( const QString &type, QWidget *parent )
   : KNewStuff( type, parent )
 {
-  QString file = locate( "data", "knewstuff/types" );
-
-  kdDebug() << "typedescription file: " << file << endl;
-
-  mConfig = new KConfig( file );
-  mConfig->setGroup( type );
+  mConfig = KGlobal::config();
+  mConfig->setGroup("KNewStuff");
 }
 
 KNewStuffGeneric::~KNewStuffGeneric()
