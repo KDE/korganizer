@@ -302,7 +302,7 @@ void KDateNavigator::updateView()
     // not just 1.
 
     //ET int dayOfYear = buttons[(i + 1) * 7 - 4]->date().dayOfYear();
-    int dayOfYear = KOGlobals::self()->calendarSystem()->daysInYear((daymatrix->getDate((i+1)*7-4)));
+    int dayOfYear = KOGlobals::self()->calendarSystem()->dayOfYear((daymatrix->getDate((i+1)*7-4)));
 
     if (dayOfYear % 7 != 0)
       weeknum.setNum(dayOfYear / 7 + 1);
