@@ -228,7 +228,7 @@ void KOEventViewer::formatAttendees(Incidence *event)
 #else
     mText.append(event->organizer());
 #endif
-    if (iconPath) {
+    if (!iconPath.isNull()) {
       mText += " <a href=\"mailto:" + event->organizer() + "\">";
       mText += "<IMG src=\"" + iconPath + "\">";
       mText += "</a>\n";
@@ -267,7 +267,7 @@ void KOEventViewer::formatAttendees(Incidence *event)
       kdDebug(5850) << "formatAttendees: uid = " << a->uid() << endl;
 
       if (!a->email().isEmpty()) {
-        if (iconPath) {
+        if (!iconPath.isNull()) {
           mText += "<a href=\"mailto:" + a->name() +" "+ "<" + a->email() + ">" + "\">";
           mText += "<IMG src=\"" + iconPath + "\">";
           mText += "</a>\n";

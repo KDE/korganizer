@@ -990,8 +990,8 @@ void CalendarView::deleteEvent(Event *anEvent)
       km = KMessageBox::warningYesNoCancel(this,
         i18n("This event recurs over multiple dates. "
              "Do you want to delete all it's recurrences, "
-             "or only the current one on "+
-             KGlobal::locale()->formatDate(itemDate)+"?"),
+             "or only the current one on %1?" )
+             .arg( KGlobal::locale()->formatDate(itemDate)),
              i18n("KOrganizer Confirmation"),i18n("Delete Current"),
              i18n("Delete All"));
     }

@@ -781,7 +781,7 @@ void CalPrinter::drawTTDayBox(QPainter &p, const QDate &qd,
   QString MultiDayStr; //string for storing Multi Day Events
   for (currEvent = eventList.first(); currEvent; currEvent = eventList.next()) {
       if (currEvent->doesFloat() || currEvent->isMultiDay()) {
-          if(MultiDayStr) MultiDayStr += ", ";
+          if(!MultiDayStr.isNull()) MultiDayStr += ", ";
           MultiDayStr += currEvent->summary(); // add MultiDayevent
           }
       else {

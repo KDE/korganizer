@@ -102,8 +102,7 @@ void Engine::slotNewStuffJobData( KIO::Job *job, const QByteArray &data )
 
   kdDebug(5850) << "===START===" << endl << data.data() << "===END===" << endl;
 
-  QString s = data;
-  mNewStuffJobData[ job ].append( s );
+  mNewStuffJobData[ job ].append( data );
 }
 
 void Engine::slotNewStuffJobResult( KIO::Job *job )
