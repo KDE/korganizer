@@ -65,6 +65,7 @@ void DownloadDialog::init(Engine *engine)
   resize(700, 400);
 
   m_engine = engine;
+  m_page = NULL;
 
   connect(this, SIGNAL(aboutToShowPage(QWidget*)), SLOT(slotPage(QWidget*)));
 
@@ -188,6 +189,8 @@ void DownloadDialog::addProvider(Provider *p)
 
   QPushButton *in = new QPushButton(i18n("Install"), frame);
   QPushButton *de = new QPushButton(i18n("Details"), frame);
+  in->setEnabled(false);
+  de->setEnabled(false);
 
   box->addSpacing(spacingHint());
   QVBoxLayout *vbox = new QVBoxLayout(box);
@@ -210,6 +213,9 @@ void DownloadDialog::addProvider(Provider *p)
   *v << lvtmp_r << lvtmp_d << lvtmp_l;
   m_map[frame] = v;
   m_rts[frame] = rt;
+  QValueList<QPushButton*> *vb = new QValueList<QPushButton*>;
+  *vb << in << de;
+  m_buttons[frame] = vb;
   m_providers[frame] = p;
 
   kdDebug() << "addProvider()/end; lvtmp_r = " << lvtmp_r << endl;
@@ -447,6 +453,12 @@ Entry *DownloadDialog::getEntry()
   else if(m_curtab == 2) m_entryitem = lv_l->currentItem();
   else return 0;
 
+  QPushButton *de, *in;
+  in = *(m_buttons[m_page]->at(0));
+  de = *(m_buttons[m_page]->at(1));
+  if(in) in->setEnabled(true);
+  if(de) de->setEnabled(true);
+
   m_entryname = m_entryitem->text(0);
 
   for(Entry *e = m_entries.first(); e; e = m_entries.next())
@@ -464,6 +476,8 @@ void DownloadDialog::slotPage(QWidget *w)
   kdDebug() << "changed widget!!!" << endl;
 
   if(m_map.find(w) == m_map.end()) return;
+
+  m_page = w;
 
   lv_r = *(m_map[w]->at(0));
   lv_d = *(m_map[w]->at(1));

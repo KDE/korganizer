@@ -94,10 +94,12 @@ class DownloadDialog : public KDialogBase
     QMap<QWidget*, QValueList<KListView*>* > m_map;
     QMap<QWidget*, Provider*> m_providers;
     QMap<QWidget*, QTextBrowser*> m_rts;
+    QMap<QWidget*, QValueList<QPushButton*>* > m_buttons;
     QMap<KIO::Job*, Provider*> m_jobs;
     QMap<KIO::Job*, QString> m_data;
     QString m_filter;
     Engine *m_engine;
+    QWidget *m_page;
 };
 
 }

@@ -264,6 +264,9 @@ void Engine::upload( Entry *entry )
 
   QString text = i18n("The files to be uploaded have been created at:\n");
   text.append( mUploadFile + "\n" );
+  if (!mPreviewFile.isEmpty()) {
+    text.append( mPreviewFile + "\n" );
+  }
   text.append( mUploadMetaFile + "\n" );
 
   QString caption = i18n("Upload files");
@@ -333,6 +336,29 @@ void Engine::slotUploadPayloadJobResult( KIO::Job *job )
 {
   if ( job->error() ) {
     kdDebug(5850) << "Error uploading new stuff payload." << endl;
+    job->showErrorDialog( mParentWidget );
+    return;
+  }
+
+  if (mPreviewFile.isEmpty()) {
+    slotUploadPreviewJobResult(job);
+    return;
+  }
+
+  QFileInfo fi( mPreviewFile );
+
+  KURL previewDestination = mUploadProvider->uploadUrl();
+  previewDestination.setFileName( fi.fileName() );
+
+  KIO::FileCopyJob *newJob = KIO::file_copy( mPreviewFile, previewDestination );
+  connect( newJob, SIGNAL( result( KIO::Job * ) ),
+           SLOT( slotUploadPreviewJobResult( KIO::Job * ) ) );
+}
+
+void Engine::slotUploadPreviewJobResult( KIO::Job *job )
+{
+  if ( job->error() ) {
+    kdDebug(5850) << "Error uploading new stuff preview." << endl;
     job->showErrorDialog( mParentWidget );
     return;
   }

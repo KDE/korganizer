@@ -67,6 +67,7 @@ class Engine : public QObject
     void slotDownloadJobResult( KIO::Job *job );
 
     void slotUploadPayloadJobResult( KIO::Job *job );
+    void slotUploadPreviewJobResult (KIO::Job *job );
     void slotUploadMetaJobResult( KIO::Job *job );
 
   protected:

@@ -32,7 +32,8 @@ knewstuff_DATA = types
 kde_conf_DATA = khotnewstuffrc
 
 knsdir = $(includedir)/knewstuff
-kns_HEADERS = downloaddialog.h engine.h entry.h ghns.h knewstuffgeneric.h knewstuff.h providerdialog.h provider.h testnewstuff.h uploaddialog.h
+kns_HEADERS = downloaddialog.h engine.h entry.h knewstuffgeneric.h knewstuff.h providerdialog.h provider.h uploaddialog.h
+noinst_HEADERS = testnewstuff.h ghns.h
 
 KDE_ICON=AUTO
 
