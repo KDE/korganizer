@@ -288,7 +288,7 @@
                                 <bool>false</bool>
                             </property>
                             <property name="text">
-                                <string>Send E-Mail</string>
+                                <string>Send Email</string>
                             </property>
                         </widget>
                         <spacer>
