@@ -105,85 +105,6 @@
 
 using namespace KOrg;
 
-class IncidenceActionVisitor : public Incidence::Visitor
-{
-  public:
-    IncidenceActionVisitor() : mView( 0 ), incidence1( 0 ) {}
-
-    bool act( Incidence *incidenceOld, Incidence *incidenceNew, CalendarView *view)
-    {
-      incidence1 = incidenceOld;
-      return act( incidenceNew, view );
-    }
-    bool act( Incidence *incidence, CalendarView *view )
-    {
-      mView = view;
-      return incidence->accept( *this );
-    }
-
-  protected:
-    CalendarView *mView;
-    Incidence *incidence1;
-};
-
-class IncidenceAddedVisitor : public IncidenceActionVisitor
-{
-  protected:
-    bool visitGeneral( Incidence *incidence ) {  
-      mView->setModified( true );
-      mView->history()->recordAdd( incidence );
-      mView->changeIncidenceDisplay( incidence, KOGlobals::INCIDENCEADDED );
-      return true;
-    }
-    bool visit( Event *event ) { return visitGeneral( event ); }
-    bool visit( Todo *todo ) { return visitGeneral( todo ); }
-    bool visit( Journal *journal ) { return visitGeneral( journal ); }
-};
-
-class IncidenceChangedVisitor : public IncidenceActionVisitor
-{
-  protected:
-    bool visitGeneral( Incidence *incidence ) {
-        mView->setModified( true );
-        mView->history()->recordEdit( incidence1, incidence );
-//        mView->calendar()->endChange( incidence );
-        mView->changeIncidenceDisplay( incidence, KOGlobals::INCIDENCEEDITED );
-        return true;
-    }
-
-    bool visit( Event *event ) { return visitGeneral( event ); }  
-    bool visit( Todo *todo ) { return visitGeneral( todo ); }  
-    bool visit( Journal *journal ) { return visitGeneral( journal ); }  
-};
-
-class IncidenceToBeDeletedVisitor : public IncidenceActionVisitor
-{
-  protected:
-    bool visitGeneral( Incidence *incidence ) {
-        mView->setModified( true );
-        mView->history()->recordDelete( incidence );
-//        mView->changeIncidenceDisplay( incidence, KOGlobals::INCIDENCEDELETED );
-        return true;
-    }
-
-    bool visit( Event *event ) { return visitGeneral( event ); }  
-    bool visit( Todo *todo ) { return visitGeneral( todo ); }  
-    bool visit( Journal *journal ) { return visitGeneral( journal ); }  
-};
-
-class IncidenceDeletedVisitor : public IncidenceActionVisitor
-{
-  protected:
-    bool visitGeneral( Incidence *incidence ) {
-      mView->changeIncidenceDisplay( incidence, KOGlobals::INCIDENCEDELETED );
-      return true;
-    }
-    bool visit( Event *event ) { return visitGeneral( event ); }  
-    bool visit( Todo *todo ) { return visitGeneral( todo ); }  
-    bool visit( Journal *journal ) { return visitGeneral( journal ); }  
-};
-
-
 
 CalendarView::CalendarView( QWidget *parent, const char *name )
   : CalendarViewBase( parent, name ),
@@ -396,6 +317,13 @@ KOViewManager *CalendarView::viewManager()
 KODialogManager *CalendarView::dialogManager()
 {
   return mDialogManager;
+}
+
+KOIncidenceEditor *CalendarView::editorDialog( Incidence *incidence )
+{
+  if (mDialogList.find(incidence) != mDialogList.end ()) 
+    return mDialogList[incidence];
+  else return 0;  
 }
 
 QDate CalendarView::startDate()
@@ -676,9 +604,9 @@ void CalendarView::updateConfig()
 
 void CalendarView::incidenceAdded( Incidence *incidence )
 {
-  IncidenceAddedVisitor v;
-  v.act( incidence, this );
-  // TODO_RK: Get rid of this call!
+  setModified( true );
+  history()->recordAdd( incidence );
+  changeIncidenceDisplay( incidence, KOGlobals::INCIDENCEADDED );
   updateUnmanagedViews();
 }
 
@@ -687,30 +615,38 @@ void CalendarView::incidenceChanged( Incidence *oldIncidence, Incidence *newInci
   incidenceChanged( oldIncidence, newIncidence, KOGlobals::UNKNOWN_MODIFIED );
 }
 
-// TODO_RK: Make sure a possibly open editor is updated (see CalendarView::todoModified )
 void CalendarView::incidenceChanged( Incidence *oldIncidence, Incidence *newIncidence, int /*what*/ )
 {
   // TODO_RK: Make use of the what flag, which indicates which parts of the incidence have changed!
-  IncidenceChangedVisitor v;
-  v.act( oldIncidence, newIncidence, this );
-  // TODO_RK: Get rid of this call!
+  KOIncidenceEditor *tmp = editorDialog( newIncidence );
+  if (tmp) {
+    kdDebug(5850) << "Incidence modified and open" << endl;
+    tmp->modified();
+  }
+  setModified( true );
+  history()->recordEdit( oldIncidence, newIncidence );
+//  calendar()->endChange( newIncidence );
+  changeIncidenceDisplay( newIncidence, KOGlobals::INCIDENCEEDITED );
   updateUnmanagedViews();
 }
 
 // TODO_RK: Make sure a possibly open editor is closed and the memory is freed
 void CalendarView::incidenceToBeDeleted( Incidence *incidence )
 {
-  IncidenceToBeDeletedVisitor v;
-  v.act( incidence, this );
-  // TODO_RK: Get rid of this call!
+  KOIncidenceEditor *tmp = editorDialog( incidence );
+  if (tmp) {
+    kdDebug(5850) << "Incidence to be deletd and open in editor" << endl;
+    tmp->delayedDestruct();
+  }
+  setModified( true );
+  history()->recordDelete( incidence );
+//  changeIncidenceDisplay( incidence, KOGlobals::INCIDENCEDELETED );
   updateUnmanagedViews();
 }
 
 void CalendarView::incidenceDeleted( Incidence *incidence )
 {
-  IncidenceDeletedVisitor v;
-  v.act( incidence, this );
-  // TODO_RK: Get rid of this call!
+  changeIncidenceDisplay( incidence, KOGlobals::INCIDENCEDELETED );
   updateUnmanagedViews();
 }
 
@@ -987,12 +923,12 @@ void CalendarView::editEvent( Event *event )
   kdDebug(5850) << "CalendarView::editEvent()" << endl;
 
   if ( !event ) return;
-
-  if ( mDialogList.find( event ) != mDialogList.end() ) {
+  KOIncidenceEditor*tmp = editorDialog( event );
+  if (tmp) {
     kdDebug(5850) << "CalendarView::editEvent() in List" << endl;
-    mDialogList[ event ]->reload();
-    mDialogList[ event ]->raise();
-    mDialogList[ event ]->show();
+    tmp->reload();
+    tmp->raise();
+    tmp->show();
     return;
   }
 
@@ -1009,7 +945,7 @@ void CalendarView::editEvent( Event *event )
   kdDebug(5850) << "CalendarView::editEvent() new EventEditor" << endl;
   KOEventEditor *eventEditor = mDialogManager->getEventEditor();
   mDialogList.insert( event, eventEditor );
-  eventEditor->editEvent( event );
+  eventEditor->editIncidence( event );
   eventEditor->show();
 }
 
@@ -1018,11 +954,12 @@ void CalendarView::editTodo( Todo *todo )
   if ( !todo ) return;
   kdDebug(5850) << "CalendarView::editTodo" << endl;
 
-  if ( mDialogList.find( todo ) != mDialogList.end() ) {
+  KOIncidenceEditor *tmp = editorDialog( todo );
+  if (tmp) {
     kdDebug(5850) << "Already in the list " << endl;
-    mDialogList[todo]->reload();
-    mDialogList[todo]->raise();
-    mDialogList[todo]->show();
+    tmp->reload();
+    tmp->raise();
+    tmp->show();
     return;
   }
 
@@ -1039,7 +976,7 @@ void CalendarView::editTodo( Todo *todo )
   KOTodoEditor *todoEditor = mDialogManager->getTodoEditor();
   kdDebug(5850) << "New editor" << endl;
   mDialogList.insert( todo, todoEditor );
-  todoEditor->editTodo( todo );
+  todoEditor->editIncidence( todo );
   todoEditor->show();
 }
 
@@ -1055,20 +992,6 @@ void CalendarView::showTodo(Todo *event)
   KOEventViewerDialog *eventViewer = new KOEventViewerDialog(this);
   eventViewer->setTodo(event);
   eventViewer->show();
-}
-
-// TODO_RK: what should we do with this? Merge it with the 3-argument incidenceModified method, 
-// and extend that method to update the editor, too.
-void CalendarView::todoModified (Todo *event, Todo *oldEvent, int changed)
-{
-  if (mDialogList.find (event) != mDialogList.end ()) {
-    kdDebug(5850) << "Todo modified and open" << endl;
-    KOTodoEditor* temp = (KOTodoEditor *) mDialogList[event];
-    temp->modified (changed);
-  }
-  if (oldEvent) incidenceChanged( oldEvent, event );
-
-  mViewManager->updateView();
 }
 
 void CalendarView::appointment_show()

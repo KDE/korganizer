@@ -748,9 +748,9 @@ void KOMonthView::showDates(const QDate &start, const QDate &)
   updateView();
 }
 
-void KOMonthView::showEvents( const Event::List & )
+void KOMonthView::showIncidences( const Incidence::List & )
 {
-  kdDebug(5850) << "KOMonthView::selectEvents is not implemented yet." << endl;
+  kdDebug(5850) << "KOMonthView::showIncidences( const Incidence::List & ) is not implemented yet." << endl;
 }
 
 void KOMonthView::changeIncidenceDisplay(Incidence *, int)

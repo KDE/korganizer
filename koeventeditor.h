@@ -56,7 +56,8 @@ class KOEventEditor : public KOIncidenceEditor
     virtual ~KOEventEditor(void);
 
     void init();
-
+    /** This event has been modified externally */
+    void modified (int change=0);
     void reload();
 
     /**
@@ -75,7 +76,7 @@ class KOEventEditor : public KOIncidenceEditor
     /**
       Edit an existing event.
     */
-    void editEvent( Event * );
+    void editIncidence( Incidence * );
 
     /**
       Set widgets to default values

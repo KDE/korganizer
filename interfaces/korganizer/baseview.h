@@ -59,7 +59,6 @@ class CalPrinterBase
   @author Preston Brown, Cornelius Schumacher
   @see KOTodoView, KOEventView, KOListView, KOAgendaView, KOMonthView
 */
-// TODO: Make some functions of KOrg::BaseView const
 class BaseView : public QWidget
 {
     Q_OBJECT
@@ -153,15 +152,13 @@ class BaseView : public QWidget
     */
     virtual void showDates( const QDate &start, const QDate &end ) = 0;
 
-    // FIXME: Add showIncidences() function and either remove showEvents()
-    // FIXME: function or add showTodos() and showJournals().
     /**
-      Show given events. Depending on the actual view it might not be possible to
+      Show given incidences. Depending on the actual view it might not be possible to
       show all given events.
 
       @param eventList a list of events to show.
     */
-    virtual void showEvents( const Event::List &eventList ) = 0;
+    virtual void showIncidences( const Incidence::List &eventList ) = 0;
 
     /**
       Updates the current display to reflect changes that may have happened

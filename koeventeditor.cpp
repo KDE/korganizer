@@ -95,6 +95,7 @@ void KOEventEditor::init()
 
 void KOEventEditor::reload()
 {
+kdDebug()<<"reloading event"<<endl;
   if ( mEvent ) readEvent( mEvent );
 }
 
@@ -145,6 +146,13 @@ void KOEventEditor::setupGeneral()
   mGeneral->finishSetup();
 }
 
+void KOEventEditor::modified (int modification)
+{
+  // Play dump, just reload the event. This dialog has become so complicated that
+  // there is no point in trying to be smart here...
+  reload();
+}
+
 void KOEventEditor::setupRecurrence()
 {
   QFrame *topFrame = addPage( i18n("Rec&urrence") );
@@ -162,12 +170,15 @@ void KOEventEditor::setupFreeBusy()
   ( new QVBoxLayout( frame ) )->addWidget( mFreeBusy );
 }
 
-void KOEventEditor::editEvent(Event *event)
+void KOEventEditor::editIncidence(Incidence *incidence)
 {
-  init();
+  Event*event = dynamic_cast<Event*>(incidence);
+  if (event) {
+    init();
 
-  mEvent = event;
-  readEvent(mEvent);
+    mEvent = event;
+    readEvent(mEvent);
+  }
 }
 
 void KOEventEditor::newEvent( QDateTime from, QDateTime to, bool allDay )
@@ -226,6 +237,7 @@ void KOEventEditor::loadDefaults()
   setDefaults(from,to,false);
 }
 
+// TODO_RK: make sure calendar()->endChange is called somewhere!
 bool KOEventEditor::processInput()
 {
   kdDebug(5850) << "KOEventEditor::processInput()" << endl;
@@ -333,6 +345,7 @@ void KOEventEditor::setDefaults( QDateTime from, QDateTime to, bool allDay )
 
 void KOEventEditor::readEvent( Event *event, bool tmpl )
 {
+kdDebug()<<"read event"<<endl;
   mGeneral->readEvent( event, tmpl );
   mDetails->readEvent( event );
   mRecurrence->readIncidence( event );

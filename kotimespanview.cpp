@@ -120,7 +120,7 @@ void KOTimeSpanView::insertItems(const QDate &start, const QDate &end)
   mTimeSpanView->updateView();
 }
 
-void KOTimeSpanView::showEvents( const Event::List & )
+void KOTimeSpanView::showIncidences( const Incidence::List & )
 {
 }
 

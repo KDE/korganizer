@@ -99,6 +99,7 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     QWidgetStack *viewStack();
     QWidget *leftFrame();
     NavigatorBar *navigatorBar();
+    KOIncidenceEditor *editorDialog( Incidence* );
 
     DateNavigator *dateNavigator();
 
@@ -254,9 +255,6 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     void newTodo( const QString &summary, const QString &description,
                   const QString &attachment );
 
-    /** This todo has been modified */
-    void todoModified( Todo *, Todo *, int );
-    
     /**
       Check if clipboard contains vCalendar event. The signal pasteEnabled() is
       emitted as result.

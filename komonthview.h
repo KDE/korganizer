@@ -204,7 +204,7 @@ class KOMonthView: public KOEventView
     virtual void updateView();
     virtual void updateConfig();
     virtual void showDates(const QDate &start, const QDate &end);
-    virtual void showEvents( const Event::List &eventList );
+    virtual void showIncidences( const Incidence::List & );
 
     void changeIncidenceDisplay(Incidence *, int);
 

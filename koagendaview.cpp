@@ -507,6 +507,12 @@ KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name) :
   connect(mAllDayAgenda,SIGNAL(deleteIncidenceSignal(Incidence *)),
                         SIGNAL(deleteIncidenceSignal(Incidence *)));
 
+  connect(mAgenda,SIGNAL(incidenceChanged(Incidence *, Incidence *)),
+                  SIGNAL(incidenceChanged(Incidence *, Incidence *)));
+  connect(mAllDayAgenda,SIGNAL(incidenceChanged(Incidence *, Incidence *)),
+                        SIGNAL(incidenceChanged(Incidence *, Incidence *)));
+
+
   connect(mAgenda,SIGNAL(itemModified(KOAgendaItem *)),
                   SLOT(updateEventDates(KOAgendaItem *)));
   connect(mAllDayAgenda,SIGNAL(itemModified(KOAgendaItem *)),
@@ -815,9 +821,9 @@ void KOAgendaView::showDates( const QDate &start, const QDate &end )
 }
 
 
-void KOAgendaView::showEvents( const Event::List & )
+void KOAgendaView::showIncidences( const Incidence::List & )
 {
-  kdDebug(5850) << "KOAgendaView::showEvents() is not yet implemented" << endl;
+  kdDebug(5850) << "KOAgendaView::showIncidences( const Incidence::List & ) is not yet implemented" << endl;
 }
 
 void KOAgendaView::insertEvent( Event *event, QDate curDate, int curCol )
@@ -917,30 +923,30 @@ void KOAgendaView::changeIncidenceDisplay(Incidence *incidence, int mode)
 
     case KOGlobals::INCIDENCEEDITED:    
 // TODO: Removing does not work, as it does not correctly reset the max nr. of conflicting items. Thus the items will sometimes not fill the whole width of the column. As a workaround, just recreate the whole view for now... */
-/*      event=dynamic_cast<Event*>(incidence);
+      event=dynamic_cast<Event*>(incidence);
       if ( event ) {
         if ( incidence->doesFloat() ) {
-          mAllDayAgenda->removeEvent( event );
+          mAllDayAgenda->updateEvent( event );
         } else {
-          mAgenda->removeEvent( event );
+          mAgenda->updateEvent( event );
         }
-        changeIncidenceDisplayAdded( event );
-      } else {*/
+//        changeIncidenceDisplayAdded( event );
+      } else {
         updateView();
-/*      }*/
+      }
       break;
     case KOGlobals::INCIDENCEDELETED:
 // TODO: Same as above, the items will not use the whole column width, as maxSubCells will not be decremented/reset correctly. Just update the whole view for now.
-/*      event=dynamic_cast<Event*>(incidence);
+      event=dynamic_cast<Event*>(incidence);
       if ( event ) {
         if ( incidence->doesFloat() ) {
           mAllDayAgenda->removeEvent( event );
         } else {
           mAgenda->removeEvent( event );
         }
-      } else {*/
+      } else {
         updateView();
-/*      }*/
+      }
       break;
 
     default:

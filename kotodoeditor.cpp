@@ -69,6 +69,7 @@ void KOTodoEditor::init()
 
 void KOTodoEditor::reload()
 {
+kdDebug()<<"reloading todo"<<endl;
   if ( mTodo ) readTodo( mTodo );
 }
 
@@ -144,12 +145,16 @@ void KOTodoEditor::setupRecurrence()
           mRecurrence, SLOT( setEnabled( bool ) ) );
 }
 
-void KOTodoEditor::editTodo(Todo *todo)
+void KOTodoEditor::editIncidence(Incidence *incidence)
 {
-  init();
-
-  mTodo = todo;
-  readTodo(mTodo);
+  Todo *todo=dynamic_cast<Todo*>(incidence);
+  if (todo) 
+  {
+    init();
+  
+    mTodo = todo;
+    readTodo(mTodo);
+  }
 }
 
 void KOTodoEditor::newTodo(QDateTime due,Todo *relatedTodo,bool allDay)
@@ -202,6 +207,7 @@ void KOTodoEditor::loadDefaults()
   setDefaults(QDateTime::currentDateTime().addDays(7),0,false);
 }
 
+// TODO_RK: make sure calendar()->endChange is called somewhere!
 bool KOTodoEditor::processInput()
 {
   if ( !validateInput() ) return false;
@@ -289,6 +295,7 @@ void KOTodoEditor::setDefaults( QDateTime due, Todo *relatedEvent, bool allDay )
 
 void KOTodoEditor::readTodo( Todo *todo )
 {
+kdDebug()<<"read todo"<<endl;
   mGeneral->readTodo( todo );
   mDetails->readEvent( todo );
   mRecurrence->readIncidence( todo );
@@ -330,11 +337,9 @@ int KOTodoEditor::msgItemDelete()
 
 void KOTodoEditor::modified (int modification)
 {
-  if (modification == KOGlobals::CATEGORY_MODIFIED ||
-      KOGlobals::UNKNOWN_MODIFIED == modification )
-    mCategoryDialog->setSelected (mTodo->categories ());
-  mGeneral->modified (mTodo, modification);
-
+  // Play dump, just reload the todo. This dialog has become so complicated that
+  // there is no point in trying to be smart here...
+  reload();
 }
 
 void KOTodoEditor::slotLoadTemplate()

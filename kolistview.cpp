@@ -188,11 +188,6 @@ KOListView::KOListView( Calendar *calendar, QWidget *parent,
 
   mPopupMenu = eventPopup();
 /*
-  mPopupMenu = new QPopupMenu;
-  mPopupMenu->insertItem(i18n("Edit Event"), this,
-                     SLOT (editEvent()));
-  mPopupMenu->insertItem(KOGlobals::self()->smallIcon("delete"), i18n("Delete Event"), this,
-                     SLOT (deleteEvent()));
   mPopupMenu->insertSeparator();
   mPopupMenu->insertItem(i18n("Show Dates"), this,
                       SLOT(showDates()));
@@ -296,28 +291,11 @@ void KOListView::showDates(const QDate &start, const QDate &end)
 
   QDate date = start;
   while( date <= end ) {
-    addEvents(calendar()->events(date));
-    addTodos(calendar()->todos(date));
+    addIncidences( calendar()->incidences(date) );
     date = date.addDays( 1 );
   }
 
   emit incidenceSelected( 0 );
-}
-
-void KOListView::addEvents( const Event::List &eventList )
-{
-  Event::List::ConstIterator it;
-  for( it = eventList.begin(); it != eventList.end(); ++it ) {
-    addIncidence( *it );
-  }
-}
-
-void KOListView::addTodos( const Todo::List &eventList )
-{
-  Todo::List::ConstIterator it;
-  for( it = eventList.begin(); it != eventList.end(); ++it ) {
-    addIncidence( *it );
-  }
 }
 
 void KOListView::addIncidences( const Incidence::List &incidenceList )
@@ -340,21 +318,11 @@ void KOListView::addIncidence(Incidence *incidence)
   else delete item;
 }
 
-void KOListView::showEvents( const Event::List &eventList )
+void KOListView::showIncidences( const Incidence::List &incidenceList )
 {
   clear();
 
-  addEvents( eventList );
-
-  // After new creation of list view no events are selected.
-  emit incidenceSelected( 0 );
-}
-
-void KOListView::showIncidences( const Incidence::List &eventList )
-{
-  clear();
-
-  addIncidences( eventList );
+  addIncidences( incidenceList );
 
   // After new creation of list view no events are selected.
   emit incidenceSelected( 0 );
@@ -410,13 +378,7 @@ void KOListView::popupMenu(QListViewItem *item,const QPoint &,int)
   if (mActiveItem) {
     Incidence *incidence = mActiveItem->data();
     mPopupMenu->showIncidencePopup(incidence);
-
-    /*
-    if ( incidence && incidence->type() == "Event" ) {
-      Event *event = static_cast<Event *>( incidence );
-      mPopupMenu->showEventPopup(event);
-    }
-    */
+    // TODO_RK: Use the todo RMB menu from the todo view for todo items!
   }
   else {
     showNewEventPopup();

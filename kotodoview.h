@@ -158,7 +158,7 @@ class KOTodoView : public KOrg::BaseView
     void changeIncidenceDisplay( Incidence *, int );
 
     void showDates( const QDate &start, const QDate &end );
-    void showEvents( const Event::List & );
+    void showIncidences( const Incidence::List & );
 
     void clearSelection();
 
@@ -193,8 +193,6 @@ class KOTodoView : public KOrg::BaseView
     void newSubTodoSignal( Todo * );
     void unSubTodoSignal();
 
-    // TODO_RK: Get rid of this signal!
-    void todoModifiedSignal( Todo *, Todo *, int );
     void recurTodo ( Todo * );
 
     void purgeCompletedSignal();

@@ -89,7 +89,7 @@ class KOListView : public KOEventView
     Q_OBJECT
   public:
     KOListView(Calendar *calendar, QWidget *parent = 0,
-	       const char *name = 0);
+               const char *name = 0);
     ~KOListView();
 
     virtual int maxDatesHint();
@@ -110,8 +110,7 @@ class KOListView : public KOEventView
   public slots:
     virtual void updateView();
     virtual void showDates( const QDate &start, const QDate &end );
-    virtual void showEvents( const Event::List & );
-    void showIncidences( const Incidence::List &eventList );
+    virtual void showIncidences( const Incidence::List &incidenceList );
 
     void clearSelection();
 
@@ -128,8 +127,6 @@ class KOListView : public KOEventView
     void processSelectionChange();
 
   protected:
-    void addEvents( const Event::List & );
-    void addTodos( const Todo::List & );
     void addIncidences( const Incidence::List & );
     void addIncidence(Incidence *);
     KOListViewItem *getItemForEvent(Incidence *incidence);

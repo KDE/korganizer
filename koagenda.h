@@ -98,6 +98,7 @@ class KOAgenda : public QScrollView
      *  Instead, they are queued in mItemsToDelete and later deleted by
      *  the slot deleteItemsToDelete() (called by QTimer::singleShot ) */
     void removeEvent( Event *event );
+    void updateEvent( Event *event );
 
     void changeColumns( int columns );
 
@@ -166,6 +167,7 @@ class KOAgenda : public QScrollView
 
     void itemModified( KOAgendaItem *item );
     void incidenceSelected( Incidence * );
+    void incidenceChanged( Incidence*, Incidence* );
 
     void lowerYChanged( int );
     void upperYChanged( int );

@@ -281,9 +281,9 @@ void KOProjectView::showDates(const QDate &, const QDate &)
   updateView();
 }
 
-void KOProjectView::showEvents( const Event::List & )
+void KOProjectView::showIncidences( const Incidence::List & )
 {
-  kdDebug(5850) << "KOProjectView::selectEvents(): not yet implemented" << endl;
+  kdDebug(5850) << "KOProjectView::showIncidences( const Incidence::List & ): not yet implemented" << endl;
 }
 
 #if 0

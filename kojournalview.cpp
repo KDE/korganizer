@@ -87,7 +87,7 @@ void KOJournalView::showDates(const QDate &start, const QDate &)
 //  emit incidenceSelected( 0 );
 }
 
-void KOJournalView::showEvents( const Event::List & )
+void KOJournalView::showIncidences( const Incidence::List & )
 {
   // After new creation of list view no events are selected.
 //  emit incidenceSelected( 0 );

@@ -53,11 +53,16 @@ class KOIncidenceEditor : public KDialogBase
 
     /** Initialize editor. This function creates the tab widgets. */
     virtual void init() = 0;
+    /** This incidence has been modified externally */
+    virtual void modified (int /*change*/=0) {}
 
     virtual void reload() = 0;
 
   public slots:
     void updateCategoryConfig();
+    /** Edit an existing todo. */
+    virtual void editIncidence(Incidence *) = 0;
+
 
   signals:
     void deleteAttendee( Incidence * );

@@ -614,9 +614,9 @@ void KOTodoView::showDates(const QDate &, const QDate &)
 {
 }
 
-void KOTodoView::showEvents( const Event::List & )
+void KOTodoView::showIncidences( const Incidence::List & )
 {
-  kdDebug(5850) << "KOTodoView::selectEvents(): not yet implemented" << endl;
+  kdDebug(5850) << "KOTodoView::showIncidences( const Incidence::List & ): not yet implemented" << endl;
 }
 
 void KOTodoView::printPreview(CalPrinter *calPrinter, const QDate &fd,

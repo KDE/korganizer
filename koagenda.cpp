@@ -1433,6 +1433,7 @@ void KOAgenda::insertMultiItem (Event *event,QDate qd,int XBegin,int XEnd,
 
 void KOAgenda::removeEvent ( Event *event )
 {
+  // TODO_RK: make sure the conflicting items are updated correctly
   KOAgendaItem *item = mItems.first();
   bool taken = false;
   // First find all items to be deleted and store them
@@ -1449,6 +1450,18 @@ void KOAgenda::removeEvent ( Event *event )
   while ( item ) {
     taken = removeAgendaItem( item );
     item = mItemsToRemove.next();
+  }
+}
+
+void KOAgenda::updateEvent ( Event *event )
+{
+// TODO_RK: Update the item, don't delete it and readd it...
+  KOAgendaItem *item = mItems.first();
+  while ( item && item->incidence()!=event ) {
+    item = mItems.next();
+  }
+  if (item) {
+// TODO_RK: update this agenda item  
   }
 }
 
@@ -1567,16 +1580,21 @@ void KOAgenda::popupAlarm()
     kdDebug(5850) << "KOAgenda::popupAlarm() called without having a clicked item" << endl;
     return;
   }
+  Incidence*incidence = mClickedItem->incidence();
+  Incidence*oldincidence = incidence->clone();
+  
 // TODO: deal correctly with multiple alarms
-  Alarm::List alarms = mClickedItem->incidence()->alarms();
+  Alarm::List alarms = incidence->alarms();
   Alarm::List::ConstIterator it;
   for( it = alarms.begin(); it != alarms.end(); ++it )
     (*it)->toggleAlarm();
   if (alarms.isEmpty()) {
     // Add an alarm if it didn't have one
-    Alarm*alm = mClickedItem->incidence()->newAlarm();
+    Alarm*alm = incidence->newAlarm();
     alm->setEnabled(true);
   }
+  emit incidenceChanged( oldincidence, incidence );
+  delete oldincidence;
 
   mClickedItem->updateIcons();
 }
@@ -1699,13 +1717,6 @@ void KOAgenda::setHolidayMask(QMemArray<bool> *mask)
 {
   mHolidayMask = mask;
 
-/*
-  kdDebug(5850) << "HolidayMask: ";
-  for(uint i=0;i<mask->count();++i) {
-    kdDebug(5850) << (mask->at(i) ? "*" : "o");
-  }
-  kdDebug(5850) << endl;
-*/
 }
 
 void KOAgenda::contentsMousePressEvent ( QMouseEvent *event )

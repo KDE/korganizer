@@ -66,7 +66,7 @@ class KOTodoEditor : public KOIncidenceEditor
                   const QString &attachment );
 
     /** Edit an existing todo. */
-    void editTodo(Todo *);
+    void editIncidence(Incidence *);
 
     /** Set widgets to default values */
     void setDefaults(QDateTime due,Todo *relatedTodo,bool allDay);
@@ -83,7 +83,7 @@ class KOTodoEditor : public KOIncidenceEditor
     void processCancel();
 
     /** This todo has been modified externally */
-    void modified (int);
+    void modified (int change=0);
 
   signals:
     void recurTodo( Todo * );
