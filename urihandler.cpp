@@ -86,7 +86,7 @@ bool UriHandler::process( const QString &uri )
     }
   }
   else {  // no special URI, let KDE handle it
-    KRun *run = new KRun(uri);
+    KRun *run = new KRun(KURL( uri ));
   }
 #endif
   

@@ -137,7 +137,7 @@ void ArchiveDialog::slotUser1()
   }
 
   // Get destination URL
-  KURL destUrl = mArchiveFile->url();
+  KURL destUrl ( mArchiveFile->url() );
   if ( !destUrl.isValid() ) {
     KMessageBox::sorry(this,i18n("The archive file name is not valid.\n"));
     return;

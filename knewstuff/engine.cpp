@@ -258,7 +258,7 @@ void Engine::upload( Entry *entry )
 
   QString lang = entry->langs().first();
   QFileInfo fi( mUploadFile );
-  entry->setPayload( fi.fileName(), lang );
+  entry->setPayload( KURL::fromPathOrURL( fi.fileName() ), lang );
 
   if ( !createMetaFile( entry ) ) return;
 
@@ -291,7 +291,7 @@ void Engine::upload( Entry *entry )
       KURL destination = mUploadProvider->uploadUrl();
       destination.setFileName( fi.fileName() );
 
-      KIO::FileCopyJob *job = KIO::file_copy( mUploadFile, destination );
+      KIO::FileCopyJob *job = KIO::file_copy( KURL::fromPathOrURL( mUploadFile ), destination );
       connect( job, SIGNAL( result( KIO::Job * ) ),
                SLOT( slotUploadPayloadJobResult( KIO::Job * ) ) );
     }
@@ -350,7 +350,7 @@ void Engine::slotUploadPayloadJobResult( KIO::Job *job )
   KURL previewDestination = mUploadProvider->uploadUrl();
   previewDestination.setFileName( fi.fileName() );
 
-  KIO::FileCopyJob *newJob = KIO::file_copy( mPreviewFile, previewDestination );
+  KIO::FileCopyJob *newJob = KIO::file_copy( KURL::fromPathOrURL( mPreviewFile ), previewDestination );
   connect( newJob, SIGNAL( result( KIO::Job * ) ),
            SLOT( slotUploadPreviewJobResult( KIO::Job * ) ) );
 }
@@ -368,7 +368,7 @@ void Engine::slotUploadPreviewJobResult( KIO::Job *job )
   KURL metaDestination = mUploadProvider->uploadUrl();
   metaDestination.setFileName( fi.fileName() );
 
-  KIO::FileCopyJob *newJob = KIO::file_copy( mUploadMetaFile, metaDestination );
+  KIO::FileCopyJob *newJob = KIO::file_copy( KURL::fromPathOrURL( mUploadMetaFile ), metaDestination );
   connect( newJob, SIGNAL( result( KIO::Job * ) ),
            SLOT( slotUploadMetaJobResult( KIO::Job * ) ) );
 }

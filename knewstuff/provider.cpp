@@ -169,7 +169,7 @@ void ProviderLoader::load( const QString &type )
 
   kdDebug(5850) << "ProviderLoader::load(): providersUrl: " << providersUrl << endl;
   
-  KIO::TransferJob *job = KIO::get( providersUrl );
+  KIO::TransferJob *job = KIO::get( KURL( providersUrl ) );
   connect( job, SIGNAL( result( KIO::Job * ) ),
            SLOT( slotJobResult( KIO::Job * ) ) );
   connect( job, SIGNAL( data( KIO::Job *, const QByteArray & ) ),

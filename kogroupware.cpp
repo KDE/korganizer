@@ -1102,7 +1102,7 @@ QString KOGroupware::msTNEFToVPart( const QByteArray& tnef )
         if( !s.isEmpty() )
           addressee.insertCustom( "KADDRESSBOOK", "X-Anniversary", s );
 
-        addressee.setUrl( sNamedProp( tnefMsg, MAPI_TAG_CONTACT_WEBPAGE ) );
+        addressee.setUrl( KURL( sNamedProp( tnefMsg, MAPI_TAG_CONTACT_WEBPAGE )  ) );
 
         // collect parts of Name entry
         addressee.setFamilyName( stringProp( tnefMsg, MAPI_TAG_PR_SURNAME ) );

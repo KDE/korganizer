@@ -223,11 +223,11 @@ void Entry::parseDomElement( const QDomElement &element )
     }
     if ( e.tagName() == "preview" ) {
       QString lang = e.attribute( "lang" );
-      setPreview( e.text().stripWhiteSpace(), lang );
+      setPreview( KURL( e.text().stripWhiteSpace() ), lang );
     }
     if ( e.tagName() == "payload" ) {
       QString lang = e.attribute( "lang" );
-      setPayload( e.text().stripWhiteSpace(), lang );
+      setPayload( KURL( e.text().stripWhiteSpace() ), lang );
     }
     if ( e.tagName() == "rating" ) setRating( e.text().toInt() );
     if ( e.tagName() == "downloads" ) setDownloads( e.text().toInt() );
