@@ -117,6 +117,13 @@ void KOAgendaItem::select( bool selected )
   update();
 }
 
+bool KOAgendaItem::setIncidence( Incidence *i )
+{
+  mIncidence = i;
+  updateIcons();
+  return true;
+}
+
 
 /*
   Return height of item in units of agenda cells
