@@ -316,7 +316,9 @@ void KOEditorGeneralEvent::writeEvent(Event *event)
     event->setDtStart(tmpDT);
   } // check for float
 
-  event->setTransparency(mFreeTimeCombo->currentItem());
+  event->setTransparency(mFreeTimeCombo->currentItem() > 0
+			 ? KCal::Event::Transparent
+			 : KCal::Event::Opaque);
 
 //  kdDebug() << "KOEditorGeneralEvent::writeEvent() done" << endl;
 }
