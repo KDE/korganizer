@@ -434,8 +434,18 @@ void CalPrinter::printTodo(const QDate &fd, const QDate &td)
   p.end();
 }
 
+class todoParentStart
+{
+public:
+  QRect mRect;
+  bool mSamePage;
+public:
+  todoParentStart(QRect pt=QRect(),bool page=true):mRect(pt),mSamePage(page) {}
+  ~todoParentStart() {}
+};
+
 void CalPrinter::drawTodo( int count, Todo * item, QPainter &p, bool &connect,
-                           int level, QRect *r )
+                           int level, todoParentStart *r )
 {
   QString outStr;
   KLocale *local = KGlobal::locale();
@@ -443,10 +453,16 @@ void CalPrinter::drawTodo( int count, Todo * item, QPainter &p, bool &connect,
   int pospriority = 10;
   int possummary = 60;
   int posdue = pageWidth - 85;  //+ indent;
-  int fontHeight = 10;
+//  int fontHeight = 10;
   int priority=item->priority();
   QRect rect;
-  QRect startpoint;
+  todoParentStart startpt;
+  // This list keeps all starting points of the parent todos so the connection
+  // lines of the tree can easily be drawn (needed if a new page is started)
+  static QPtrList<todoParentStart> startPoints;
+  if (level<1) {
+    startPoints.clear();
+  }
 
   // size of item
   outStr=item->summary();
@@ -455,20 +471,37 @@ void CalPrinter::drawTodo( int count, Todo * item, QPainter &p, bool &connect,
                         (posdue-(left + rect.width() + 5)),-1,WordBreak,outStr);
   if ( !item->description().isEmpty() ) {
     outStr = item->description();
-    rect = p.boundingRect(left+20, rect.bottom()+5, pageWidth-(left+10), -1,
-			  WordBreak, outStr);
+    rect = p.boundingRect( left+20, rect.bottom()+5, pageWidth-(left+10), -1,
+                           WordBreak, outStr );
   }
   // if too big make new page
   if ( rect.bottom() > p.viewport().height()) {
+    // first draw the connection lines from parent todos:
+    if (level > 0 && connect) {
+      todoParentStart*rct;
+      for ( rct = startPoints.first(); rct; rct = startPoints.next() ) {
+        int start;
+        int center = rct->mRect.left() + (rct->mRect.width()/2);
+        int to = p.viewport().bottom();
+
+        // draw either from start point of parent or from top of the page
+        if (rct->mSamePage)
+          start = rct->mRect.bottom() + 1;
+        else
+          start = p.viewport().top();
+        p.moveTo( center, start );
+        p.lineTo( center, to );
+        rct->mSamePage=false;
+      }
+    }
     mCurrentLinePos = 0;
     mPrinter->newPage();
-    connect = false;
   }
 
   // If this is a sub-item, r will not be 0, and we want the LH side of the priority line up
   //to the RH side of the parent item's priority
   if (r) {
-    pospriority = r->right() + 1;
+    pospriority = r->mRect.right() + 1;
   }
 
   // Priority
@@ -481,27 +514,40 @@ void CalPrinter::drawTodo( int count, Todo * item, QPainter &p, bool &connect,
     rect.setHeight(18);
     p.drawText(rect,AlignCenter, outStr);
     p.drawRect(rect);
-    startpoint = rect; //save for later
+    startpt.mRect = rect; //save for later
   }
 
   // Connect the dots
   if (level > 0 && connect) {
-    int center,bottom,to,endx;
-    center = r->left() + (r->width()/2);
-    bottom = r->bottom() + 1;
-    to = rect.top() + (rect.height()/2);
-    endx = rect.left();
+    int bottom;
+    int center( r->mRect.left() + (r->mRect.width()/2) );
+    if (r->mSamePage )
+      bottom = r->mRect.bottom() + 1;
+    else
+      bottom = p.viewport().top();
+    int to( rect.top() + (rect.height()/2) );
+    int endx( rect.left() );
     p.moveTo(center,bottom);
     p.lineTo(center,to);
     p.lineTo(endx,to);
   }
 
+  // if completed, use strike out font
+  QFont ft=p.font();
+  ft.setStrikeOut( item->isCompleted() );
+  p.setFont( ft );
+/*  if (item->isCompleted()) {
+    p.drawLine( 5, (mCurrentLinePos)-fontHeight/2 + 2,
+                    pageWidth-5, mCurrentLinePos-fontHeight/2 + 2);
+  }*/
   // summary
   outStr=item->summary();
   rect = p.boundingRect(left,rect.top(),
                         (posdue-(left + rect.width() + 5)),-1,WordBreak,outStr);
   QRect newrect;
-  p.drawText(rect,WordBreak,outStr,-1,&newrect);
+  p.drawText( rect, WordBreak, outStr, -1, &newrect );
+  ft.setStrikeOut(false);
+  p.setFont(ft);
 
   // due
   if (item->hasDueDate()) {
@@ -510,32 +556,26 @@ void CalPrinter::drawTodo( int count, Todo * item, QPainter &p, bool &connect,
     p.drawText(rect, mCurrentLinePos, outStr);
   }
 
-  // if terminated, cross it
-  if (item->isCompleted()) {
-    p.drawLine( 5, (mCurrentLinePos)-fontHeight/2 + 2,
-                    pageWidth-5, mCurrentLinePos-fontHeight/2 + 2);
-  }
-
   if ( !item->description().isEmpty() ) {
     mCurrentLinePos=newrect.bottom() + 5;
     outStr = item->description();
-    rect = p.boundingRect(left+20, mCurrentLinePos, pageWidth-(left+10), -1,
-			  WordBreak, outStr);
-    p.drawText(rect, WordBreak, outStr, -1, &newrect);
+    rect = p.boundingRect( left+20, mCurrentLinePos, pageWidth-(left+10), -1,
+                           WordBreak, outStr );
+    p.drawText( rect, WordBreak, outStr, -1, &newrect );
   }
 
   // Set the new line position
   mCurrentLinePos=newrect.bottom() + 10; //set the line position
 
   // If the item has subitems, we need to call ourselves recursively
-  bool conn = true;
   Incidence::List l = item->relations();
   Incidence::List::ConstIterator it;
+  startPoints.append( &startpt );
   for( it = l.begin(); it != l.end(); ++it ) {
-    drawTodo( count, static_cast<Todo *>( *it ), p, conn, level + 1,
-              &startpoint );
-    if ( !conn ) connect = false;
+    drawTodo( count, static_cast<Todo *>( *it ), p, connect, level + 1,
+              &startpt );
   }
+  startPoints.remove(&startpt);
 }
 
 
