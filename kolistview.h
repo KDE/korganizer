@@ -13,7 +13,7 @@
 #include "incidencevisitor.h"
 
 /**
- * This class provides a way of displaying a single KOEvent in a QListView.
+ * This class provides a way of displaying a single Event in a QListView.
  *
  * @author Preston Brown <pbrown@kde.org>
  * @see KOListView
@@ -84,12 +84,12 @@ class KOListView : public KOEventView
   public slots:
     virtual void updateView();
     virtual void selectDates(const QDateList dateList);
-    virtual void selectEvents(QList<KOEvent> eventList);
+    virtual void selectEvents(QList<Event> eventList);
 
     void showDates();
     void hideDates();
 
-    void changeEventDisplay(KOEvent *, int);
+    void changeEventDisplay(Event *, int);
   
     void defaultItemAction(QListViewItem *item);
     void popupMenu(QListViewItem *item,const QPoint &,int);
@@ -98,10 +98,10 @@ class KOListView : public KOEventView
     void processSelectionChange();
 
   protected:
-    void addEvents(QList<KOEvent> eventList);
+    void addEvents(QList<Event> eventList);
     void addTodos(QList<Todo> eventList);
     void addIncidence(Incidence *);
-    KOListViewItem *getItemForEvent(KOEvent *event);
+    KOListViewItem *getItemForEvent(Event *event);
 
   private:
     QListView *mListView;

@@ -31,7 +31,7 @@ void KOrganizerApp::displayImminent(const QString &file,int numdays)
   CalObject *cal = new CalendarLocal;
 
   QDate currDate(QDate::currentDate());
-  KOEvent *currEvent;
+  Event *currEvent;
 
   if (!cal->load(file)) {
     printf(i18n("Could not load calendar '%1'.\n").arg(file).local8Bit());
@@ -41,7 +41,7 @@ void KOrganizerApp::displayImminent(const QString &file,int numdays)
   for (int i = 1; i <= numdays; i++) {
     printf("%s\n",KGlobal::locale()->formatDate(currDate).latin1());
 
-    QList<KOEvent> tmpList(cal->getEventsForDate(currDate, TRUE));
+    QList<Event> tmpList(cal->getEventsForDate(currDate, TRUE));
     printf("---------------------------------------------------------------\n");
     if (tmpList.count() > 0) {
       for (currEvent = tmpList.first(); currEvent; currEvent = tmpList.next()) {

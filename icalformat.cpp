@@ -128,8 +128,8 @@ bool ICalFormat::save(const QString &fileName)
   }  
 
   // EVENT STUFF
-  QList<KOEvent> events = mCalendar->getAllEvents();
-  KOEvent *ev;
+  QList<Event> events = mCalendar->getAllEvents();
+  Event *ev;
   for(ev=events.first();ev;ev=events.next()) {
     component = writeEvent(ev);
     icalcomponent_add_component(calendar,component);
@@ -144,7 +144,7 @@ bool ICalFormat::save(const QString &fileName)
 }
 
 // Disabled until iCalendar drag and drop is implemented
-VCalDrag *ICalFormat::createDrag(KOEvent *selectedEv, QWidget *owner)
+VCalDrag *ICalFormat::createDrag(Event *selectedEv, QWidget *owner)
 {
   return 0;
 #if 0
@@ -198,12 +198,12 @@ VCalDrag *ICalFormat::createDragTodo(Todo *selectedEv, QWidget *owner)
 #endif
 }
 
-KOEvent *ICalFormat::createDrop(QDropEvent *de)
+Event *ICalFormat::createDrop(QDropEvent *de)
 {
   return 0;
 #if 0
   VObject *vcal;
-  KOEvent *event = 0;
+  Event *event = 0;
 
   if (VCalDrag::decode(de, &vcal)) {
     de->accept();
@@ -237,7 +237,7 @@ Todo *ICalFormat::createDropTodo(QDropEvent *de)
   return 0;
 #if 0
   VObject *vcal;
-  KOEvent *event = 0;
+  Event *event = 0;
 
   if (VCalDrag::decode(de, &vcal)) {
     de->accept();
@@ -266,7 +266,7 @@ Todo *ICalFormat::createDropTodo(QDropEvent *de)
 #endif
 }
 
-bool ICalFormat::copyEvent(KOEvent *selectedEv)
+bool ICalFormat::copyEvent(Event *selectedEv)
 {
   return false;
 #if 0
@@ -296,7 +296,7 @@ bool ICalFormat::copyEvent(KOEvent *selectedEv)
 #endif
 }
 
-KOEvent *ICalFormat::pasteEvent(const QDate *newDate,const QTime *newTime)
+Event *ICalFormat::pasteEvent(const QDate *newDate,const QTime *newTime)
 {
   return 0;
 #if 0
@@ -304,7 +304,7 @@ KOEvent *ICalFormat::pasteEvent(const QDate *newDate,const QTime *newTime)
   VObjectIterator i;
   int daysOffset;
 
-  KOEvent *anEvent = 0L;
+  Event *anEvent = 0L;
 
   QClipboard *cb = QApplication::clipboard();
   int bufsize;
@@ -415,7 +415,7 @@ icalcomponent *ICalFormat::createScheduleComponent(Incidence *incidence,
   if (todo) {
     icalcomponent_add_component(message,writeTodo(todo));
   }
-  KOEvent *event = dynamic_cast<KOEvent *>(incidence);
+  Event *event = dynamic_cast<Event *>(incidence);
   if (event) {
     icalcomponent_add_component(message,writeEvent(event));
   }
@@ -423,7 +423,7 @@ icalcomponent *ICalFormat::createScheduleComponent(Incidence *incidence,
   return message;
 }
 
-QString ICalFormat::createScheduleMessage(KOEvent *incidence,
+QString ICalFormat::createScheduleMessage(Event *incidence,
                                           Scheduler::Method method)
 {
   icalcomponent *message = createScheduleComponent(incidence,method);
@@ -523,7 +523,7 @@ ScheduleMessage *ICalFormat::parseScheduleMessage(const QString &messageText)
       icalcomponent_add_component(calendarComponent,
                                   writeTodo(todo));
     }
-    KOEvent *event = dynamic_cast<KOEvent *>(existingIncidence);
+    Event *event = dynamic_cast<Event *>(existingIncidence);
     if (event) {
       icalcomponent_add_component(calendarComponent,
                                   writeEvent(event));
@@ -564,7 +564,7 @@ icalcomponent *ICalFormat::writeTodo(Todo *todo)
   return vtodo;
 }
 
-icalcomponent *ICalFormat::writeEvent(KOEvent *event)
+icalcomponent *ICalFormat::writeEvent(Event *event)
 {
   QString tmpStr;
   QStringList tmpStrList;
@@ -706,7 +706,7 @@ void ICalFormat::writeIncidence(icalcomponent *parent,Incidence *incidence)
       } else if (curAttendee->getName().isEmpty() && 
 	         curAttendee->getEmail().isEmpty()) {
         attendee = "";
-	kdDebug() << "warning! this koevent has an attendee w/o name or email!"
+	kdDebug() << "warning! this Event has an attendee w/o name or email!"
                   << endl;
       } else {
         attendee = "";
@@ -801,26 +801,26 @@ icalproperty *writeRecurrenceRule(Incidence *event)
 {
 #if 0
     // some more variables
-    QList<KOEvent::rMonthPos> tmpPositions;
+    QList<Event::rMonthPos> tmpPositions;
     QList<int> tmpDays;
     int *tmpDay;
-    KOEvent::rMonthPos *tmpPos;
+    Event::rMonthPos *tmpPos;
     QString tmpStr2;
 
     switch(anEvent->doesRecur()) {
-    case KOEvent::rDaily:
+    case Event::rDaily:
       tmpStr.sprintf("D%i ",anEvent->rFreq);
 //      if (anEvent->rDuration > 0)
 //	tmpStr += "#";
       break;
-    case KOEvent::rWeekly:
+    case Event::rWeekly:
       tmpStr.sprintf("W%i ",anEvent->rFreq);
       for (int i = 0; i < 7; i++) {
 	if (anEvent->rDays.testBit(i))
 	  tmpStr += dayFromNum(i);
       }
       break;
-    case KOEvent::rMonthlyPos:
+    case Event::rMonthlyPos:
       tmpStr.sprintf("MP%i ", anEvent->rFreq);
       // write out all rMonthPos's
       tmpPositions = anEvent->rMonthPositions;
@@ -840,7 +840,7 @@ icalproperty *writeRecurrenceRule(Incidence *event)
 	}
       } // loop for all rMonthPos's
       break;
-    case KOEvent::rMonthlyDay:
+    case Event::rMonthlyDay:
       tmpStr.sprintf("MD%i ", anEvent->rFreq);
       // write out all rMonthDays;
       tmpDays = anEvent->rMonthDays;
@@ -851,7 +851,7 @@ icalproperty *writeRecurrenceRule(Incidence *event)
 	tmpStr += tmpStr2;
       }
       break;
-    case KOEvent::rYearlyMonth:
+    case Event::rYearlyMonth:
       tmpStr.sprintf("YM%i ", anEvent->rFreq);
       // write out all the rYearNums;
       tmpDays = anEvent->rYearNums;
@@ -862,7 +862,7 @@ icalproperty *writeRecurrenceRule(Incidence *event)
 	tmpStr += tmpStr2;
       }
       break;
-    case KOEvent::rYearlyDay:
+    case Event::rYearlyDay:
       tmpStr.sprintf("YD%i ", anEvent->rFreq);
       // write out all the rYearNums;
       tmpDays = anEvent->rYearNums;
@@ -942,9 +942,9 @@ Todo *ICalFormat::readTodo(icalcomponent *vtodo)
   return todo;
 }
 
-KOEvent *ICalFormat::readEvent(icalcomponent *vevent)
+Event *ICalFormat::readEvent(icalcomponent *vevent)
 {
-  KOEvent *event = new KOEvent;
+  Event *event = new Event;
   event->setFloats(false);
 
   readIncidence(vevent,event);  
@@ -1229,7 +1229,7 @@ void ICalFormat::readIncidence(icalcomponent *parent,Incidence *incidence)
     deleteStr(s);
   }
   else
-    incidence->setSyncStatus(KOEvent::SYNCMOD);
+    incidence->setSyncStatus(Event::SYNCMOD);
 #endif
 
       default:
@@ -1344,13 +1344,13 @@ void ICalFormat::readRecurrenceRule(icalproperty *rrule,Incidence *event)
       if (tmpStr.find('T', index) != -1) {
 	QDate rEndDate = (ISOToQDateTime(tmpStr.mid(index, tmpStr.length() - 
 						    index))).date();
-	anEvent->setRecursMonthly(KOEvent::rMonthlyPos, rFreq, rEndDate);
+	anEvent->setRecursMonthly(Event::rMonthlyPos, rFreq, rEndDate);
       } else {
 	int rDuration = tmpStr.mid(index, tmpStr.length()-index).toInt();
 	if (rDuration == 0)
-	  anEvent->setRecursMonthly(KOEvent::rMonthlyPos, rFreq, -1);
+	  anEvent->setRecursMonthly(Event::rMonthlyPos, rFreq, -1);
 	else
-	  anEvent->setRecursMonthly(KOEvent::rMonthlyPos, rFreq, rDuration);
+	  anEvent->setRecursMonthly(Event::rMonthlyPos, rFreq, rDuration);
       }
     }
 
@@ -1381,13 +1381,13 @@ void ICalFormat::readRecurrenceRule(icalproperty *rrule,Incidence *event)
       index = last; if (tmpStr.mid(index,1) == "#") index++;
       if (tmpStr.find('T', index) != -1) {
 	QDate rEndDate = (ISOToQDateTime(tmpStr.mid(index, tmpStr.length()-index))).date();
-	anEvent->setRecursMonthly(KOEvent::rMonthlyDay, rFreq, rEndDate);
+	anEvent->setRecursMonthly(Event::rMonthlyDay, rFreq, rEndDate);
       } else {
 	int rDuration = tmpStr.mid(index, tmpStr.length()-index).toInt();
 	if (rDuration == 0)
-	  anEvent->setRecursMonthly(KOEvent::rMonthlyDay, rFreq, -1);
+	  anEvent->setRecursMonthly(Event::rMonthlyDay, rFreq, -1);
 	else
-	  anEvent->setRecursMonthly(KOEvent::rMonthlyDay, rFreq, rDuration);
+	  anEvent->setRecursMonthly(Event::rMonthlyDay, rFreq, rDuration);
       }
     }
 
@@ -1415,13 +1415,13 @@ void ICalFormat::readRecurrenceRule(icalproperty *rrule,Incidence *event)
       index = last; if (tmpStr.mid(index,1) == "#") index++;
       if (tmpStr.find('T', index) != -1) {
 	QDate rEndDate = (ISOToQDateTime(tmpStr.mid(index, tmpStr.length()-index))).date();
-	anEvent->setRecursYearly(KOEvent::rYearlyMonth, rFreq, rEndDate);
+	anEvent->setRecursYearly(Event::rYearlyMonth, rFreq, rEndDate);
       } else {
 	int rDuration = tmpStr.mid(index, tmpStr.length()-index).toInt();
 	if (rDuration == 0)
-	  anEvent->setRecursYearly(KOEvent::rYearlyMonth, rFreq, -1);
+	  anEvent->setRecursYearly(Event::rYearlyMonth, rFreq, -1);
 	else
-	  anEvent->setRecursYearly(KOEvent::rYearlyMonth, rFreq, rDuration);
+	  anEvent->setRecursYearly(Event::rYearlyMonth, rFreq, rDuration);
       }
     }
 
@@ -1449,13 +1449,13 @@ void ICalFormat::readRecurrenceRule(icalproperty *rrule,Incidence *event)
       index = last; if (tmpStr.mid(index,1) == "#") index++;
       if (tmpStr.find('T', index) != -1) {
 	QDate rEndDate = (ISOToQDateTime(tmpStr.mid(index, tmpStr.length()-index))).date();
-	anEvent->setRecursYearly(KOEvent::rYearlyDay, rFreq, rEndDate);
+	anEvent->setRecursYearly(Event::rYearlyDay, rFreq, rEndDate);
       } else {
 	int rDuration = tmpStr.mid(index, tmpStr.length()-index).toInt();
 	if (rDuration == 0)
-	  anEvent->setRecursYearly(KOEvent::rYearlyDay, rFreq, -1);
+	  anEvent->setRecursYearly(Event::rYearlyDay, rFreq, -1);
 	else
-	  anEvent->setRecursYearly(KOEvent::rYearlyDay, rFreq, rDuration);
+	  anEvent->setRecursYearly(Event::rYearlyDay, rFreq, rDuration);
       }
     } else {
       kdDebug() << "we don't understand this type of recurrence!" << endl;
@@ -1553,7 +1553,7 @@ icalcomponent *ICalFormat::createCalendarComponent()
 void ICalFormat::populate(icalcomponent *calendar)
 {
   // this function will populate the caldict dictionary and other event 
-  // lists. It turns vevents into KOEvents and then inserts them.
+  // lists. It turns vevents into Events and then inserts them.
 
 // TODO: check for METHOD
 #if 0
@@ -1630,7 +1630,7 @@ void ICalFormat::populate(icalcomponent *calendar)
   c = icalcomponent_get_first_component(calendar,ICAL_VEVENT_COMPONENT);
   while (c) {
     kdDebug() << "----Event found" << endl;  
-    KOEvent *event = readEvent(c);
+    Event *event = readEvent(c);
     if (!mCalendar->getEvent(event->VUID())) mCalendar->addEvent(event);
     c = icalcomponent_get_next_component(calendar,ICAL_VEVENT_COMPONENT);
   }
@@ -1651,7 +1651,7 @@ void ICalFormat::populate(icalcomponent *calendar)
 	char *s;
 	s = fakeCString(vObjectUStringZValue(curVOProp));
 	// check to see if event was deleted by the kpilot conduit
-	if (atoi(s) == KOEvent::SYNCDEL) {
+	if (atoi(s) == Event::SYNCDEL) {
 	  deleteStr(s);
 	  kdDebug() << "skipping pilot-deleted event" << endl;
 	  goto SKIP;
@@ -1707,8 +1707,8 @@ void ICalFormat::populate(icalcomponent *calendar)
   } // while
 #endif
   
-  // Post-Process list of events with relations, put KOEvent objects in relation
-  KOEvent *ev;
+  // Post-Process list of events with relations, put Event objects in relation
+  Event *ev;
   for ( ev=mEventsRelate.first(); ev != 0; ev=mEventsRelate.next() ) {
     ev->setRelatedTo(mCalendar->getEvent(ev->getRelatedToVUID()));
   }

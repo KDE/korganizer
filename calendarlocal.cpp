@@ -42,7 +42,7 @@ CalendarLocal::CalendarLocal()
   // solves the leak?
   mTodoList.setAutoDelete(TRUE);
 
-  mCalDict = new QIntDict<QList<KOEvent> > (BIGPRIME);
+  mCalDict = new QIntDict<QList<Event> > (BIGPRIME);
   mCalDict->setAutoDelete(TRUE);
 }
 
@@ -102,15 +102,15 @@ bool CalendarLocal::save(const QString &fileName,CalFormat *format)
 
 void CalendarLocal::close()
 {
-  QIntDictIterator<QList<KOEvent> > qdi(*mCalDict);
-  QList<KOEvent> *tmpList;
+  QIntDictIterator<QList<Event> > qdi(*mCalDict);
+  QList<Event> *tmpList;
 
   // Delete non-recurring events
   qdi.toFirst();
   while (qdi.current()) {
     tmpList = qdi.current();
     QDate keyDate = keyToDate(qdi.currentKey());
-    KOEvent *ev;
+    Event *ev;
     for(ev = tmpList->first();ev;ev = tmpList->next()) {
 //      kdDebug() << "-----FIRST.  " << ev->getSummary() << endl;
 //      kdDebug() << "---------MUL: " << (ev->isMultiDay() ? "Ja" : "Nein") << endl;
@@ -142,7 +142,7 @@ void CalendarLocal::close()
 }
 
 
-void CalendarLocal::addEvent(KOEvent *anEvent)
+void CalendarLocal::addEvent(Event *anEvent)
 {
 // OBSOLETE: anEvent->setTodoStatus(false);
   insertEvent(anEvent);
@@ -155,14 +155,14 @@ void CalendarLocal::addEvent(KOEvent *anEvent)
 }
 
 // probably not really efficient, but...it works for now.
-void CalendarLocal::deleteEvent(KOEvent *event)
+void CalendarLocal::deleteEvent(Event *event)
 {
   kdDebug() << "CalendarLocal::deleteEvent" << endl;
   
   QDate date(event->getDtStart().date());
 
-  QList<KOEvent> *tmpList;
-  KOEvent *anEvent;
+  QList<Event> *tmpList;
+  Event *anEvent;
   int extraDays, dayOffset;
   QDate startDate, tmpDate;
 
@@ -254,11 +254,11 @@ void CalendarLocal::deleteEvent(KOEvent *event)
 }
 
 
-KOEvent *CalendarLocal::getEvent(const QString &UniqueStr)
+Event *CalendarLocal::getEvent(const QString &UniqueStr)
 {
-  QList<KOEvent> *eventList;
-  QIntDictIterator<QList<KOEvent> > dictIt(*mCalDict);
-  KOEvent *anEvent;
+  QList<Event> *eventList;
+  QIntDictIterator<QList<Event> > dictIt(*mCalDict);
+  Event *anEvent;
 
   while (dictIt.current()) {
     eventList = dictIt.current();
@@ -277,7 +277,7 @@ KOEvent *CalendarLocal::getEvent(const QString &UniqueStr)
     }
   }
   // catch-all.
-  return (KOEvent *) 0L;
+  return (Event *) 0L;
 }
 
 void CalendarLocal::addTodo(Todo *todo)
@@ -329,8 +329,8 @@ QList<Todo> CalendarLocal::getTodosForDate(const QDate & date)
 
 int CalendarLocal::numEvents(const QDate &qd)
 {
-  QList<KOEvent> *tmpList;
-  KOEvent *anEvent;
+  QList<Event> *tmpList;
+  Event *anEvent;
   int count = 0;
   int extraDays, i;
 
@@ -360,10 +360,10 @@ int CalendarLocal::numEvents(const QDate &qd)
 
 void CalendarLocal::checkAlarms()
 {
-  QList<KOEvent> alarmEvents;
-  QIntDictIterator<QList<KOEvent> > dictIt(*mCalDict);
-  QList<KOEvent> *tmpList;
-  KOEvent *anEvent;
+  QList<Event> alarmEvents;
+  QIntDictIterator<QList<Event> > dictIt(*mCalDict);
+  QList<Event> *tmpList;
+  Event *anEvent;
   QDateTime tmpDT;
 
   // this function has to look at every event in the whole database
@@ -400,10 +400,10 @@ void CalendarLocal::checkAlarms()
 // after changes are made to an event, this should be called.
 void CalendarLocal::updateEvent(Incidence *incidence)
 {
-  incidence->setSyncStatus(KOEvent::SYNCMOD);
+  incidence->setSyncStatus(Event::SYNCMOD);
   incidence->setLastModified(QDateTime::currentDateTime());
   // we should probably update the revision number here,
-  // or internally in the KOEvent itself when certain things change.
+  // or internally in the Event itself when certain things change.
   // need to verify with ical documentation.
 
   // handle sending the event to those attendees that need it.
@@ -421,14 +421,14 @@ void CalendarLocal::updateEvent(Incidence *incidence)
     }
   }
 
-  KOEvent *anEvent = dynamic_cast<KOEvent *>(incidence);
+  Event *anEvent = dynamic_cast<Event *>(incidence);
   if (!anEvent) {
-//    kdDebug() << "CalendarLocal::updateEvent(): Warning! Passed non-KOEvent" << endl;
+//    kdDebug() << "CalendarLocal::updateEvent(): Warning! Passed non-Event" << endl;
   } else {
     // we don't need to do anything to Todo events.
  
-    QIntDictIterator<QList<KOEvent> > qdi(*mCalDict);
-    QList<KOEvent> *tmpList;
+    QIntDictIterator<QList<Event> > qdi(*mCalDict);
+    QList<Event> *tmpList;
 
     // the first thing we do is REMOVE all occurances of the event from 
     // both the dictionary and the recurrence list.  Then we reinsert it.
@@ -452,11 +452,11 @@ void CalendarLocal::updateEvent(Incidence *incidence)
 // this function will take a VEvent and insert it into the event
 // dictionary for the CalendarLocal.  If there is no list of events for that
 // particular location in the dictionary, a new one will be created.
-void CalendarLocal::insertEvent(const KOEvent *anEvent)
+void CalendarLocal::insertEvent(const Event *anEvent)
 {
   long tmpKey;
   QString tmpDateStr;
-  QList<KOEvent> *eventList;
+  QList<Event> *eventList;
   int extraDays, dayCount;
 
   // initialize if they haven't been allocated yet;
@@ -487,7 +487,7 @@ void CalendarLocal::insertEvent(const KOEvent *anEvent)
 	eventList->append(anEvent);
       } else {
 	// no items under that date yet
-	eventList = new QList<KOEvent>;
+	eventList = new QList<Event>;
 	eventList->append(anEvent);
 	mCalDict->insert(tmpKey, eventList);
       }
@@ -532,11 +532,11 @@ QDate CalendarLocal::keyToDate(long int key)
 // taking a QDate, this function will look for an eventlist in the dict
 // with that date attached -
 // BL: an the returned list should be deleted!!!
-QList<KOEvent> CalendarLocal::eventsForDate(const QDate &qd, bool sorted)
+QList<Event> CalendarLocal::eventsForDate(const QDate &qd, bool sorted)
 {
-  QList<KOEvent> eventList;
-  QList<KOEvent> *tmpList;
-  KOEvent *anEvent;
+  QList<Event> eventList;
+  QList<Event> *tmpList;
+  Event *anEvent;
   tmpList = mCalDict->find(makeKey(qd));
   if (tmpList) {
     for (anEvent = tmpList->first(); anEvent;
@@ -563,7 +563,7 @@ QList<KOEvent> CalendarLocal::eventsForDate(const QDate &qd, bool sorted)
   }
   //  kdDebug() << "Sorting getEvents for date\n" << endl;
   // now, we have to sort it based on getDtStart.time()
-  QList<KOEvent> eventListSorted;
+  QList<Event> eventListSorted;
   for (anEvent = eventList.first(); anEvent; anEvent = eventList.next()) {
     if (!eventListSorted.isEmpty() &&
 	anEvent->getDtStart().time() < eventListSorted.at(0)->getDtStart().time()) {
@@ -585,12 +585,12 @@ QList<KOEvent> CalendarLocal::eventsForDate(const QDate &qd, bool sorted)
 }
 
 
-QList<KOEvent> CalendarLocal::events(const QDate &start,const QDate &end,
+QList<Event> CalendarLocal::events(const QDate &start,const QDate &end,
                                     bool inclusive)
 {
-  QIntDictIterator<QList<KOEvent> > qdi(*mCalDict);
-  QList<KOEvent> matchList, *tmpList, tmpList2;
-  KOEvent *ev = 0;
+  QIntDictIterator<QList<Event> > qdi(*mCalDict);
+  QList<Event> matchList, *tmpList, tmpList2;
+  Event *ev = 0;
 
   qdi.toFirst();
 
@@ -642,7 +642,7 @@ QList<KOEvent> CalendarLocal::events(const QDate &start,const QDate &end,
             found = true;
           }
         } else if (ev->getRecursDuration() > 0) {  // Duration set
-          // TODO: Calculate end date from duration. Should be done in KOEvent
+          // TODO: Calculate end date from duration. Should be done in Event
           // For now exclude all events with a duration.
         }
       }
@@ -658,7 +658,7 @@ QList<KOEvent> CalendarLocal::events(const QDate &start,const QDate &end,
             found = true;
           }
         } else {  // Duration set
-          // TODO: Calculate end date from duration. Should be done in KOEvent
+          // TODO: Calculate end date from duration. Should be done in Event
           // For now include all events with a duration.
           found = true;
         }
@@ -671,7 +671,7 @@ QList<KOEvent> CalendarLocal::events(const QDate &start,const QDate &end,
   return matchList;
 }
 
-QList<KOEvent> CalendarLocal::getAllEvents()
+QList<Event> CalendarLocal::getAllEvents()
 {
   return events(*mOldestDate,*mNewestDate);
 }
@@ -680,7 +680,7 @@ QList<KOEvent> CalendarLocal::getAllEvents()
 // taking a QDateTime, this function will look for an eventlist in the dict
 // with that date attached.
 // this list is dynamically allocated and SHOULD BE DELETED when done with!
-QList<KOEvent> CalendarLocal::eventsForDate(const QDateTime &qdt)
+QList<Event> CalendarLocal::eventsForDate(const QDateTime &qdt)
 {
   return eventsForDate(qdt.date());
 }

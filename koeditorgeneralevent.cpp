@@ -18,7 +18,7 @@
 #include <kmessagebox.h>
 #include <kfiledialog.h>
 
-#include "koevent.h"
+#include "event.h"
 #include "koprefs.h"
 
 #include "koeditorgeneralevent.h"
@@ -457,7 +457,7 @@ void KOEditorGeneralEvent::setDefaults(QDateTime from,QDateTime to,bool allDay)
   alarmStuffEnable(false);
 }
 
-void KOEditorGeneralEvent::readEvent(KOEvent *event)
+void KOEditorGeneralEvent::readEvent(Event *event)
 {
   QString tmpStr;
   QDateTime tmpDT;
@@ -522,7 +522,7 @@ void KOEditorGeneralEvent::readEvent(KOEvent *event)
   setCategories(event->getCategoriesStr());
 }
 
-void KOEditorGeneralEvent::writeEvent(KOEvent *event)
+void KOEditorGeneralEvent::writeEvent(Event *event)
 {
 //  kdDebug() << "KOEditorGeneralEvent::writeEvent()" << endl;
 

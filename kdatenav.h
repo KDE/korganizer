@@ -32,7 +32,7 @@ class KDateNavigator: public QFrame {
    
  signals:
    void datesSelected(const QDateList);
-   void eventDropped(KOEvent *);
+   void eventDropped(Event *);
    void weekClicked(QDate);
 
  protected slots:

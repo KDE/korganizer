@@ -9,7 +9,7 @@
 #include <dcopobject.h>
 
 #include "calobject.h"
-#include "koevent.h"
+#include "event.h"
 
 class AlarmDialog;
 
@@ -52,13 +52,13 @@ class AlarmDaemon : public QObject, DCOPObject {
 	         QCString &replyType, QByteArray &replyData);
 
   public slots:
-    void showAlarms(QList<KOEvent> &alarmEvents);
+    void showAlarms(QList<Event> &alarmEvents);
     void reloadCal();
     void suspend(int duration);
     void showDialog();
 
   signals:
-    void alarmSignal(QList<KOEvent> &);
+    void alarmSignal(QList<Event> &);
   
   private:
     AlarmDockWindow *docker;

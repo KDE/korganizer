@@ -7,7 +7,7 @@
  * (c) 1999 Preston Brown <pbrown@kde.org>
  */
 
-#include "koevent.h"
+#include "event.h"
 #include "koeventpopupmenu.h"
 #include "kobaseview.h"
 
@@ -66,13 +66,13 @@ class KOEventView : public KOBaseView
      * @param event event, which is to be manipulated by the menu actions
      * @param popup a popop menu created with eventPopup()
      */
-    void showEventPopup(QPopupMenu *popup,KOEvent *event);
+    void showEventPopup(QPopupMenu *popup,Event *event);
   
     /**
      * Perform the default action for an event. E.g. open the event editor, when
      * double-clicking an event in the agenda view.
      */
-    void defaultEventAction(KOEvent *event);
+    void defaultEventAction(Event *event);
     
   signals:
     /**
@@ -88,13 +88,13 @@ class KOEventView : public KOBaseView
      * some manner.  Doesn't make sense to connect to more than one 
      * receiver.
      */
-    void editEventSignal(KOEvent *);
+    void editEventSignal(Event *);
     /**
      * instructs the receiver to delete the event in some manner; some
      * possibilities include automatically, with a confirmation dialog
      * box, etc.  Doesn't make sense to connect to more than one receiver.
      */
-    void deleteEventSignal(KOEvent *);
+    void deleteEventSignal(Event *);
     /**
      * instructs the receiver to create a new event.  Doesn't make
      * sense to connect to more than one receiver.
@@ -110,7 +110,7 @@ class KOEventView : public KOBaseView
     /**
      * instructs the receiver to show the event in read-only mode.
      */
-    void showEventSignal(KOEvent *);
+    void showEventSignal(Event *);
   
     /**
      * Emitted, when events are selected or deselected. The argument is true, if
@@ -124,7 +124,7 @@ class KOEventView : public KOBaseView
     void popupDelete();
   
   protected:
-    KOEvent *mCurrentEvent;  // event selected e.g. for a context menu
+    Event *mCurrentEvent;  // event selected e.g. for a context menu
 };
 
 #endif

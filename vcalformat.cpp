@@ -87,23 +87,23 @@ bool VCalFormat::save(const QString &fileName)
   }
 
   // EVENT STUFF
-  QList<KOEvent> events = mCalendar->getAllEvents();
-  KOEvent *ev;
+  QList<Event> events = mCalendar->getAllEvents();
+  Event *ev;
   for(ev=events.first();ev;ev=events.next()) {
     vo = eventToVEvent(ev);
     addVObjectProp(vcal, vo);
   }
 
 #if 0  
-  QIntDictIterator<QList<KOEvent> > dictIt(*calDict);
+  QIntDictIterator<QList<Event> > dictIt(*calDict);
 
   while (dictIt.current()) {
-    QListIterator<KOEvent> listIt(*dictIt.current());
+    QListIterator<Event> listIt(*dictIt.current());
     while (listIt.current()) {
       // if the event is multi-day, we only want to save the
       // first instance that is in the dictionary
       if (listIt.current()->isMultiDay()) {
-	QList<KOEvent> *tmpList = calDict->find(makeKey(listIt.current()->getDtStart().date()));
+	QList<Event> *tmpList = calDict->find(makeKey(listIt.current()->getDtStart().date()));
 	if (dictIt.current() == tmpList) {
 	  vo = eventToVEvent(listIt.current());
 	  addVObjectProp(vcal, vo);
@@ -118,7 +118,7 @@ bool VCalFormat::save(const QString &fileName)
   }
 
   // put in events that recurs
-  QListIterator<KOEvent> qli(recursList);
+  QListIterator<Event> qli(recursList);
   for (; qli.current(); ++qli) {
     vo = eventToVEvent(qli.current());
     addVObjectProp(vcal, vo);
@@ -141,7 +141,7 @@ bool VCalFormat::save(const QString &fileName)
 }
 
 
-VCalDrag *VCalFormat::createDrag(KOEvent *selectedEv, QWidget *owner)
+VCalDrag *VCalFormat::createDrag(Event *selectedEv, QWidget *owner)
 {
   VObject *vcal, *vevent;
   QString tmpStr;
@@ -189,10 +189,10 @@ VCalDrag *VCalFormat::createDragTodo(Todo *selectedEv, QWidget *owner)
   return vcd;
 }
 
-KOEvent *VCalFormat::createDrop(QDropEvent *de)
+Event *VCalFormat::createDrop(QDropEvent *de)
 {
   VObject *vcal;
-  KOEvent *event = 0;
+  Event *event = 0;
 
   if (VCalDrag::decode(de, &vcal)) {
     de->accept();
@@ -253,7 +253,7 @@ Todo *VCalFormat::createDropTodo(QDropEvent *de)
   return event;
 }
 
-bool VCalFormat::copyEvent(KOEvent *selectedEv)
+bool VCalFormat::copyEvent(Event *selectedEv)
 {
   QClipboard *cb = QApplication::clipboard();
   VObject *vcal, *vevent;
@@ -281,14 +281,14 @@ bool VCalFormat::copyEvent(KOEvent *selectedEv)
   return TRUE;
 }
 
-KOEvent *VCalFormat::pasteEvent(const QDate *newDate, 
+Event *VCalFormat::pasteEvent(const QDate *newDate, 
 				const QTime *newTime)
 {
   VObject *vcal, *curVO, *curVOProp;
   VObjectIterator i;
   int daysOffset;
 
-  KOEvent *anEvent = 0L;
+  Event *anEvent = 0L;
 
   QClipboard *cb = QApplication::clipboard();
   int bufsize;
@@ -418,7 +418,7 @@ VObject *VCalFormat::eventToVTodo(const Todo *anEvent)
         tmpStr = "MAILTO: " + curAttendee->getName();
       else if (curAttendee->getName().isEmpty() && 
 	       curAttendee->getEmail().isEmpty())
-	kdDebug() << "warning! this koevent has an attendee w/o name or email!" << endl;
+	kdDebug() << "warning! this Event has an attendee w/o name or email!" << endl;
       VObject *aProp = addPropValue(vtodo, VCAttendeeProp, (const char *)tmpStr.utf8());
       addPropValue(aProp, VCRSVPProp, curAttendee->RSVP() ? "TRUE" : "FALSE");;
       addPropValue(aProp, VCStatusProp, curAttendee->getStatusStr().latin1());
@@ -481,7 +481,7 @@ VObject *VCalFormat::eventToVTodo(const Todo *anEvent)
   return vtodo;
 }
 
-VObject* VCalFormat::eventToVEvent(const KOEvent *anEvent)
+VObject* VCalFormat::eventToVEvent(const Event *anEvent)
 {
   VObject *vevent;
   QString tmpStr;
@@ -540,7 +540,7 @@ VObject* VCalFormat::eventToVEvent(const KOEvent *anEvent)
         tmpStr = "MAILTO: " + curAttendee->getName();
       else if (curAttendee->getName().isEmpty() && 
 	       curAttendee->getEmail().isEmpty())
-	kdDebug() << "warning! this koevent has an attendee w/o name or email!" << endl;
+	kdDebug() << "warning! this Event has an attendee w/o name or email!" << endl;
       VObject *aProp = addPropValue(vevent, VCAttendeeProp, (const char *)tmpStr.utf8());
       addPropValue(aProp, VCRSVPProp, curAttendee->RSVP() ? "TRUE" : "FALSE");;
       addPropValue(aProp, VCStatusProp, curAttendee->getStatusStr().latin1());
@@ -550,26 +550,26 @@ VObject* VCalFormat::eventToVEvent(const KOEvent *anEvent)
   // recurrence rule stuff
   if (anEvent->doesRecur()) {
     // some more variables
-    QList<KOEvent::rMonthPos> tmpPositions;
+    QList<Event::rMonthPos> tmpPositions;
     QList<int> tmpDays;
     int *tmpDay;
-    KOEvent::rMonthPos *tmpPos;
+    Event::rMonthPos *tmpPos;
     QString tmpStr2;
 
     switch(anEvent->doesRecur()) {
-    case KOEvent::rDaily:
+    case Event::rDaily:
       tmpStr.sprintf("D%i ",anEvent->rFreq);
 //      if (anEvent->rDuration > 0)
 //	tmpStr += "#";
       break;
-    case KOEvent::rWeekly:
+    case Event::rWeekly:
       tmpStr.sprintf("W%i ",anEvent->rFreq);
       for (int i = 0; i < 7; i++) {
 	if (anEvent->rDays.testBit(i))
 	  tmpStr += dayFromNum(i);
       }
       break;
-    case KOEvent::rMonthlyPos:
+    case Event::rMonthlyPos:
       tmpStr.sprintf("MP%i ", anEvent->rFreq);
       // write out all rMonthPos's
       tmpPositions = anEvent->rMonthPositions;
@@ -589,7 +589,7 @@ VObject* VCalFormat::eventToVEvent(const KOEvent *anEvent)
 	}
       } // loop for all rMonthPos's
       break;
-    case KOEvent::rMonthlyDay:
+    case Event::rMonthlyDay:
       tmpStr.sprintf("MD%i ", anEvent->rFreq);
       // write out all rMonthDays;
       tmpDays = anEvent->rMonthDays;
@@ -600,7 +600,7 @@ VObject* VCalFormat::eventToVEvent(const KOEvent *anEvent)
 	tmpStr += tmpStr2;
       }
       break;
-    case KOEvent::rYearlyMonth:
+    case Event::rYearlyMonth:
       tmpStr.sprintf("YM%i ", anEvent->rFreq);
       // write out all the rYearNums;
       tmpDays = anEvent->rYearNums;
@@ -611,7 +611,7 @@ VObject* VCalFormat::eventToVEvent(const KOEvent *anEvent)
 	tmpStr += tmpStr2;
       }
       break;
-    case KOEvent::rYearlyDay:
+    case Event::rYearlyDay:
       tmpStr.sprintf("YD%i ", anEvent->rFreq);
       // write out all the rYearNums;
       tmpDays = anEvent->rYearNums;
@@ -772,7 +772,7 @@ Todo *VCalFormat::VTodoToEvent(VObject *vtodo)
   // unique id
   vo = isAPropertyOf(vtodo, VCUniqueStringProp);
   // while the UID property is preferred, it is not required.  We'll use the
-  // default KOEvent UID if none is given.
+  // default Event UID if none is given.
   if (vo) {
     anEvent->setVUID(s = fakeCString(vObjectUStringZValue(vo)));
     deleteStr(s);
@@ -922,19 +922,19 @@ Todo *VCalFormat::VTodoToEvent(VObject *vtodo)
     deleteStr(s);
   }
   else
-    anEvent->setSyncStatus(KOEvent::SYNCMOD);
+    anEvent->setSyncStatus(Event::SYNCMOD);
 
   return anEvent;
 }
 
-KOEvent* VCalFormat::VEventToEvent(VObject *vevent)
+Event* VCalFormat::VEventToEvent(VObject *vevent)
 {
-  KOEvent *anEvent;
+  Event *anEvent;
   VObject *vo;
   VObjectIterator voi;
   char *s;
 
-  anEvent = new KOEvent;
+  anEvent = new Event;
   
   // creation date
   if ((vo = isAPropertyOf(vevent, VCDCreatedProp)) != 0) {
@@ -1148,13 +1148,13 @@ KOEvent* VCalFormat::VEventToEvent(VObject *vevent)
       if (tmpStr.find('T', index) != -1) {
 	QDate rEndDate = (ISOToQDateTime(tmpStr.mid(index, tmpStr.length() - 
 						    index))).date();
-	anEvent->setRecursMonthly(KOEvent::rMonthlyPos, rFreq, rEndDate);
+	anEvent->setRecursMonthly(Event::rMonthlyPos, rFreq, rEndDate);
       } else {
 	int rDuration = tmpStr.mid(index, tmpStr.length()-index).toInt();
 	if (rDuration == 0)
-	  anEvent->setRecursMonthly(KOEvent::rMonthlyPos, rFreq, -1);
+	  anEvent->setRecursMonthly(Event::rMonthlyPos, rFreq, -1);
 	else
-	  anEvent->setRecursMonthly(KOEvent::rMonthlyPos, rFreq, rDuration);
+	  anEvent->setRecursMonthly(Event::rMonthlyPos, rFreq, rDuration);
       }
     }
 
@@ -1185,13 +1185,13 @@ KOEvent* VCalFormat::VEventToEvent(VObject *vevent)
       index = last; if (tmpStr.mid(index,1) == "#") index++;
       if (tmpStr.find('T', index) != -1) {
 	QDate rEndDate = (ISOToQDateTime(tmpStr.mid(index, tmpStr.length()-index))).date();
-	anEvent->setRecursMonthly(KOEvent::rMonthlyDay, rFreq, rEndDate);
+	anEvent->setRecursMonthly(Event::rMonthlyDay, rFreq, rEndDate);
       } else {
 	int rDuration = tmpStr.mid(index, tmpStr.length()-index).toInt();
 	if (rDuration == 0)
-	  anEvent->setRecursMonthly(KOEvent::rMonthlyDay, rFreq, -1);
+	  anEvent->setRecursMonthly(Event::rMonthlyDay, rFreq, -1);
 	else
-	  anEvent->setRecursMonthly(KOEvent::rMonthlyDay, rFreq, rDuration);
+	  anEvent->setRecursMonthly(Event::rMonthlyDay, rFreq, rDuration);
       }
     }
 
@@ -1219,13 +1219,13 @@ KOEvent* VCalFormat::VEventToEvent(VObject *vevent)
       index = last; if (tmpStr.mid(index,1) == "#") index++;
       if (tmpStr.find('T', index) != -1) {
 	QDate rEndDate = (ISOToQDateTime(tmpStr.mid(index, tmpStr.length()-index))).date();
-	anEvent->setRecursYearly(KOEvent::rYearlyMonth, rFreq, rEndDate);
+	anEvent->setRecursYearly(Event::rYearlyMonth, rFreq, rEndDate);
       } else {
 	int rDuration = tmpStr.mid(index, tmpStr.length()-index).toInt();
 	if (rDuration == 0)
-	  anEvent->setRecursYearly(KOEvent::rYearlyMonth, rFreq, -1);
+	  anEvent->setRecursYearly(Event::rYearlyMonth, rFreq, -1);
 	else
-	  anEvent->setRecursYearly(KOEvent::rYearlyMonth, rFreq, rDuration);
+	  anEvent->setRecursYearly(Event::rYearlyMonth, rFreq, rDuration);
       }
     }
 
@@ -1253,13 +1253,13 @@ KOEvent* VCalFormat::VEventToEvent(VObject *vevent)
       index = last; if (tmpStr.mid(index,1) == "#") index++;
       if (tmpStr.find('T', index) != -1) {
 	QDate rEndDate = (ISOToQDateTime(tmpStr.mid(index, tmpStr.length()-index))).date();
-	anEvent->setRecursYearly(KOEvent::rYearlyDay, rFreq, rEndDate);
+	anEvent->setRecursYearly(Event::rYearlyDay, rFreq, rEndDate);
       } else {
 	int rDuration = tmpStr.mid(index, tmpStr.length()-index).toInt();
 	if (rDuration == 0)
-	  anEvent->setRecursYearly(KOEvent::rYearlyDay, rFreq, -1);
+	  anEvent->setRecursYearly(Event::rYearlyDay, rFreq, -1);
 	else
-	  anEvent->setRecursYearly(KOEvent::rYearlyDay, rFreq, rDuration);
+	  anEvent->setRecursYearly(Event::rYearlyDay, rFreq, rDuration);
       }
     } else {
       kdDebug() << "we don't understand this type of recurrence!" << endl;
@@ -1425,7 +1425,7 @@ KOEvent* VCalFormat::VEventToEvent(VObject *vevent)
     deleteStr(s);
   }
   else
-    anEvent->setSyncStatus(KOEvent::SYNCMOD);
+    anEvent->setSyncStatus(Event::SYNCMOD);
 
   return anEvent;
 }
@@ -1497,11 +1497,11 @@ QDateTime VCalFormat::ISOToQDateTime(const QString & dtStr)
 void VCalFormat::populate(VObject *vcal)
 {
   // this function will populate the caldict dictionary and other event 
-  // lists. It turns vevents into KOEvents and then inserts them.
+  // lists. It turns vevents into Events and then inserts them.
 
   VObjectIterator i;
   VObject *curVO, *curVOProp;
-  KOEvent *anEvent;
+  Event *anEvent;
 
   if ((curVO = isAPropertyOf(vcal, ICMethodProp)) != 0) {
     char *methodType = 0;
@@ -1566,7 +1566,7 @@ void VCalFormat::populate(VObject *vcal)
 	char *s;
 	s = fakeCString(vObjectUStringZValue(curVOProp));
 	// check to see if event was deleted by the kpilot conduit
-	if (atoi(s) == KOEvent::SYNCDEL) {
+	if (atoi(s) == Event::SYNCDEL) {
 	  deleteStr(s);
 	  kdDebug() << "skipping pilot-deleted event" << endl;
 	  goto SKIP;
@@ -1648,8 +1648,8 @@ void VCalFormat::populate(VObject *vcal)
     ;
   } // while
   
-  // Post-Process list of events with relations, put KOEvent objects in relation
-  KOEvent *ev;
+  // Post-Process list of events with relations, put Event objects in relation
+  Event *ev;
   for ( ev=mEventsRelate.first(); ev != 0; ev=mEventsRelate.next() ) {
     ev->setRelatedTo(mCalendar->getEvent(ev->getRelatedToVUID()));
   }

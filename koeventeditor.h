@@ -37,22 +37,22 @@ class KOEventEditor : public KDialogBase
     void newEvent( QDateTime from, QDateTime to, bool allDay = FALSE );
 
     /** Edit an existing event. */
-    void editEvent( KOEvent *, QDate qd=QDate::currentDate());
+    void editEvent( Event *, QDate qd=QDate::currentDate());
 
     /** Set widgets to default values */
     void setDefaults(QDateTime from,QDateTime to,bool allDay);
     /** Read event object and setup widgets accordingly */
-    void readEvent(KOEvent *);
+    void readEvent(Event *);
     /** Write event settings to event object */
-    void writeEvent(KOEvent *);
+    void writeEvent(Event *);
 
   public slots:
     void updateCategoryConfig();
 
   signals:
-    void eventAdded(KOEvent *);
-    void eventChanged(KOEvent *);
-    void eventToBeDeleted(KOEvent *);
+    void eventAdded(Event *);
+    void eventChanged(Event *);
+    void eventToBeDeleted(Event *);
     void eventDeleted();
 
     void categoryConfigChanged();
@@ -79,7 +79,7 @@ class KOEventEditor : public KDialogBase
   private:
     CalObject *mCalendar;
   
-    KOEvent *mEvent;
+    Event *mEvent;
 
     KOEditorGeneralEvent *mGeneral;
     KOEditorDetails      *mDetails;

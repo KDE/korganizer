@@ -23,22 +23,22 @@ class SearchDialog : public KDialogBase
     void updateView();
 
   public slots:
-    void changeEventDisplay(KOEvent *, int) { updateView(); } 
+    void changeEventDisplay(Event *, int) { updateView(); } 
 
   protected slots:
     void doSearch();
 
   signals:
-    void showEventSignal(KOEvent *);
-    void editEventSignal(KOEvent *);
-    void deleteEventSignal(KOEvent *);
+    void showEventSignal(Event *);
+    void editEventSignal(Event *);
+    void deleteEventSignal(Event *);
 
   private:
     void search(const QRegExp &);
 
     CalObject *mCalendar;
     
-    QList<KOEvent> mMatchedEvents;
+    QList<Event> mMatchedEvents;
     
     QLabel *searchLabel;
     QLineEdit *searchEdit;

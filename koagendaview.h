@@ -108,9 +108,9 @@ class KOAgendaView : public KOEventView {
     virtual void updateView();
     virtual void updateConfig();
     virtual void selectDates(const QDateList);
-    virtual void selectEvents(QList<KOEvent> eventList);
+    virtual void selectEvents(QList<Event> eventList);
 
-    void changeEventDisplay(KOEvent *, int);
+    void changeEventDisplay(Event *, int);
 
     void slotViewChange(int newView);
     void slotViewChange();
@@ -121,15 +121,15 @@ class KOAgendaView : public KOEventView {
     void newEvent(int gx,int gy);
     void newEventAllDay(int gx, int gy);
 
-    void startDrag(KOEvent *);
+    void startDrag(Event *);
 
     void readSettings();
     void writeSettings();
 
   signals:
-    void editEventSignal(KOEvent *);  // From KOBaseView
-    void showEventSignal(KOEvent *);
-    void deleteEventSignal(KOEvent *);  // From KOBaseView
+    void editEventSignal(Event *);  // From KOBaseView
+    void showEventSignal(Event *);
+    void deleteEventSignal(Event *);  // From KOBaseView
     void datesSelected(const QDateList);  // From KOBaseView
     void newEventSignal();  // From KOBaseView
     void newEventSignal(QDate);
@@ -162,8 +162,8 @@ class KOAgendaView : public KOEventView {
     /** Update event belonging to agenda item */
     void updateEventDates(KOAgendaItem *item);
 
-    void showAgendaPopup(KOEvent *event);
-    void showAllDayAgendaPopup(KOEvent *event);
+    void showAgendaPopup(Event *event);
+    void showAllDayAgendaPopup(Event *event);
 
     void updateEventIndicatorTop(int newY);
     void updateEventIndicatorBottom(int newY);

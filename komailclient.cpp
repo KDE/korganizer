@@ -11,7 +11,7 @@
 #include <kmessagebox.h>
 
 #include "version.h"
-#include "koevent.h"
+#include "event.h"
 #include "koprefs.h"
 
 #include "komailclient.h"
@@ -36,7 +36,7 @@ void MailMsgString::setAddressee(Attendee *newAddressee)
   }
 }
 
-void MailMsgString::buildTextMsg(KOEvent * selectedEvent)
+void MailMsgString::buildTextMsg(Event * selectedEvent)
 {
   QString CR = ("\n");
   QString recurrence[]= {"None","Daily","Weekly","Monthly Same Day",
@@ -87,7 +87,7 @@ KOMailClient::~KOMailClient()
 {
 }
 
-void KOMailClient::emailEvent(KOEvent *selectedEvent)
+void KOMailClient::emailEvent(Event *selectedEvent)
 {
   MailMsgString msg;
   msg.buildTextMsg(selectedEvent);

@@ -241,9 +241,9 @@ void KOListView::selectDates(const QDateList dateList)
   emit eventsSelected(false);
 }
 
-void KOListView::addEvents(QList<KOEvent> eventList)
+void KOListView::addEvents(QList<Event> eventList)
 {
-  KOEvent *ev;
+  Event *ev;
   for(ev = eventList.first(); ev; ev = eventList.next()) {
     addIncidence(ev);
   }
@@ -265,7 +265,7 @@ void KOListView::addIncidence(Incidence *incidence)
   else delete item;
 }
 
-void KOListView::selectEvents(QList<KOEvent> eventList)
+void KOListView::selectEvents(QList<Event> eventList)
 {
   mListView->clear();
   addEvents(eventList);
@@ -274,7 +274,7 @@ void KOListView::selectEvents(QList<KOEvent> eventList)
   emit eventsSelected(false);
 }
 
-void KOListView::changeEventDisplay(KOEvent *event, int action)
+void KOListView::changeEventDisplay(Event *event, int action)
 {
   KOListViewItem *item;
   
@@ -300,7 +300,7 @@ void KOListView::changeEventDisplay(KOEvent *event, int action)
   }
 }
 
-KOListViewItem *KOListView::getItemForEvent(KOEvent *event)
+KOListViewItem *KOListView::getItemForEvent(Event *event)
 {
   KOListViewItem *item = (KOListViewItem *)mListView->firstChild();
   while (item) {
@@ -313,7 +313,7 @@ KOListViewItem *KOListView::getItemForEvent(KOEvent *event)
 
 void KOListView::defaultItemAction(QListViewItem *item)
 {
-  KOEvent *event = dynamic_cast<KOEvent *>(((KOListViewItem *)item)->event());
+  Event *event = dynamic_cast<Event *>(((KOListViewItem *)item)->event());
   if (event) defaultEventAction(event);
 }
 
@@ -321,7 +321,7 @@ void KOListView::popupMenu(QListViewItem *item,const QPoint &,int)
 {
   mActiveItem = (KOListViewItem *)item;
   if (mActiveItem) {
-    KOEvent *event = dynamic_cast<KOEvent *>(mActiveItem->event());
+    Event *event = dynamic_cast<Event *>(mActiveItem->event());
     if (event) mPopupMenu->showEventPopup(event);
   }
 }

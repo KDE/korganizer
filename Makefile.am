@@ -36,7 +36,7 @@ libkorganizer_la_SOURCES =  outgoingdialog_base.ui \
         icalformat.cpp catdlg.cpp \
 	koagendaview.cpp koagenda.cpp koagendaitem.cpp \
 	kdateedit.cpp kdatenav.cpp \
-	kdpdatebutton.cpp komonthview.cpp koevent.cpp \
+	kdpdatebutton.cpp komonthview.cpp \
 	ksellabel.cpp \
 	ktimeedit.cpp main.cpp  \
 	searchdialog.cpp calendarview.cpp \
@@ -69,7 +69,6 @@ alarmd_SOURCES = alarmdaemon.cpp alarmmain.cpp \
         korecurrence.cpp koalarm.cpp \
         calobject.cpp calendarlocal.cpp \
         calformat.cpp vcalformat.cpp icalformat.cpp \
-        koevent.cpp \
 	vcaldrag.cpp koprefs.cpp alarmapp.cpp \
         alarmdialog.cpp koeventviewer.cpp kprefs.cpp koexceptions.cpp \
         scheduler.cpp calfilter.cpp \
@@ -82,9 +81,9 @@ noinst_HEADERS = komonthview.h \
 	catdlg.h koagendaview.h koagenda.h \
 	koagendaitem.h \
 	kdateedit.h ksellabel.h \
-	kdatenav.h ksmalldaydisp.h \
+	kdatenav.h \
 	calendarview.h kdpdatebutton.h ktimeedit.h \
-	version.h koevent.h \
+	version.h \
 	searchdialog.h calprinter.h \
 	koarchivedlg.h parseholiday.h \
 	vcaldrag.h komailclient.h kotodoview.h \

@@ -7,11 +7,12 @@
 #include <qdatetime.h>
 
 #include "koexceptions.h"
-#include "koevent.h"
+#include "event.h"
 
 #define _PRODUCT_ID "-//K Desktop Environment//NONSGML KOrganizer//EN"
 
 class VCalDrag;
+class CalObject;
 
 /**
   This is the base class for calendar formats. It provides an interface for the
@@ -43,19 +44,19 @@ class CalFormat {
     virtual bool save(const QString &fileName) = 0;
   
     /** create an object to be used with the Xdnd Drag And Drop protocol. */
-    virtual VCalDrag *createDrag(KOEvent *selectedEv, QWidget *owner) = 0;
+    virtual VCalDrag *createDrag(Event *selectedEv, QWidget *owner) = 0;
     /** create an object to be used with the Xdnd Drag And Drop protocol. */
     virtual VCalDrag *createDragTodo(Todo *selectedEv, QWidget *owner) = 0;
 
     /** Create Todo object from drop event */
     virtual Todo *createDropTodo(QDropEvent *de) = 0;
     /** Create Event object from drop event */
-    virtual KOEvent *createDrop(QDropEvent *de) = 0;
+    virtual Event *createDrop(QDropEvent *de) = 0;
   
     /** cut, copy, and paste operations follow. */
-    virtual bool copyEvent(KOEvent *) = 0;
+    virtual bool copyEvent(Event *) = 0;
     /** pastes the event and returns a pointer to the new event pasted. */
-    virtual KOEvent *pasteEvent(const QDate *, const QTime *newTime = 0L) = 0;
+    virtual Event *pasteEvent(const QDate *, const QTime *newTime = 0L) = 0;
     
     void showDialogs(bool);
 
@@ -85,8 +86,8 @@ class CalFormat {
     CalObject *mCalendar;
   
   private:
-    QList<KOEvent> mEventsRelate;           // events with relations
-    QList<KOEvent> mTodosRelate;            // todos with relations
+    QList<Event> mEventsRelate;           // events with relations
+    QList<Event> mTodosRelate;            // todos with relations
     
     KOErrorFormat *mException;
 };

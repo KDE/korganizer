@@ -140,7 +140,7 @@ void KOAgenda::changeColumns(int columns)
 }
 
 
-KOEvent *KOAgenda::selectedEvent()
+Event *KOAgenda::selectedEvent()
 {
   if (mSelectedItem) {
     return mSelectedItem->itemEvent();
@@ -674,7 +674,7 @@ void KOAgenda::setStartHour(int startHour)
 /*
   Insert KOAgendaItem into agenda.
 */
-KOAgendaItem *KOAgenda::insertItem (KOEvent *event,int X,int YTop,int YBottom)
+KOAgendaItem *KOAgenda::insertItem (Event *event,int X,int YTop,int YBottom)
 {
 //  kdDebug() << "KOAgenda::insertItem" << endl;
 
@@ -712,7 +712,7 @@ KOAgendaItem *KOAgenda::insertItem (KOEvent *event,int X,int YTop,int YBottom)
 /*
   Insert all-day KOAgendaItem into agenda.
 */
-KOAgendaItem *KOAgenda::insertAllDayItem (KOEvent *event,int XBegin,int XEnd)
+KOAgendaItem *KOAgenda::insertAllDayItem (Event *event,int XBegin,int XEnd)
 {
    if (!mAllDayMode) {
     kdDebug() << "KOAgenda: calling insertAllDayItem in non all-day mode is illegal." << endl;
@@ -739,7 +739,7 @@ KOAgendaItem *KOAgenda::insertAllDayItem (KOEvent *event,int XBegin,int XEnd)
 }
 
 
-void KOAgenda::insertMultiItem (KOEvent *event,int XBegin,int XEnd,
+void KOAgenda::insertMultiItem (Event *event,int XBegin,int XEnd,
                                 int YTop,int YBottom)
 {
   if (mAllDayMode) {

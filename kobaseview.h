@@ -10,7 +10,7 @@
 #include <qwidget.h>
 #include <qlist.h>
 
-#include "koevent.h"
+#include "event.h"
 
 class CalObject;
 class CalPrinter;
@@ -82,7 +82,7 @@ class KOBaseView : public QWidget
     /**
      * Updates the current display to reflect the changes to one particular event.
      */
-    virtual void changeEventDisplay(KOEvent *, int) = 0;
+    virtual void changeEventDisplay(Event *, int) = 0;
   
     /**
      * re-reads the KOrganizer configuration file and picks up relevant
@@ -102,7 +102,7 @@ class KOBaseView : public QWidget
      * Select events visible in the current display
      * @param eventList a list of events to select.
      */
-    virtual void selectEvents(QList<KOEvent> eventList) = 0;
+    virtual void selectEvents(QList<Event> eventList) = 0;
   
   protected:
     CalObject *mCalendar;

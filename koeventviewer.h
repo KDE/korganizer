@@ -8,7 +8,7 @@
 #include <qtextview.h>
 
 
-class KOEvent;
+class Event;
 
 
 class KOEventViewer : public QTextView {
@@ -17,10 +17,10 @@ class KOEventViewer : public QTextView {
     KOEventViewer(QWidget *parent=0,const char *name=0);
     virtual ~KOEventViewer();
 
-    void setEvent(KOEvent *event);
+    void setEvent(Event *event);
     void setTodo(Todo *event);
     
-    void appendEvent(KOEvent *event);
+    void appendEvent(Event *event);
     void appendTodo(Todo *event);
     
     void clearEvents(bool now=false);

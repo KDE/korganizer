@@ -19,7 +19,7 @@
 #include "kobaseview.h"
 
 /**
- * This class provides a way of displaying a single KOEvent of Todo-Type in a
+ * This class provides a way of displaying a single Event of Todo-Type in a
  * KTodoView.
  *
  * @author Cornelius Schumacher <schumacher@kde.org>
@@ -106,7 +106,7 @@ class KOTodoView : public KOBaseView
     void updateView();
     void updateConfig();
 
-    void changeEventDisplay(KOEvent *, int);
+    void changeEventDisplay(Event *, int);
   
     /**
      * selects the dates specified in the list.  If the view cannot support
@@ -120,7 +120,7 @@ class KOTodoView : public KOBaseView
      * Select events visible in the current display
      * @param eventList a list of events to select.
      */
-    void selectEvents(QList<KOEvent> eventList);
+    void selectEvents(QList<Event> eventList);
 
     void editItem(QListViewItem *item);
     void showItem(QListViewItem *item);

@@ -10,7 +10,7 @@
 
 class QPopupMenu;
 class QTime;
-class KOEvent;
+class Event;
 class KConfig;
 
 class KOAgenda : public QScrollView
@@ -23,7 +23,7 @@ class KOAgenda : public QScrollView
                const char * name=0, WFlags f=0 );
     virtual ~KOAgenda();
 
-    KOEvent *selectedEvent();
+    Event *selectedEvent();
 
     virtual bool eventFilter ( QObject *, QEvent * );   
 
@@ -35,9 +35,9 @@ class KOAgenda : public QScrollView
 
     void setStartHour(int startHour);
 
-    KOAgendaItem *insertItem (KOEvent *event,int X,int YTop,int YBottom);
-    KOAgendaItem *insertAllDayItem (KOEvent *event,int XBegin,int XEnd);
-    void insertMultiItem (KOEvent *event,int XBegin,int XEnd,
+    KOAgendaItem *insertItem (Event *event,int X,int YTop,int YBottom);
+    KOAgendaItem *insertAllDayItem (Event *event,int XBegin,int XEnd);
+    void insertMultiItem (Event *event,int XBegin,int XEnd,
                           int YTop,int YBottom);
 
     void changeColumns(int columns);
@@ -79,19 +79,19 @@ class KOAgenda : public QScrollView
   signals:
     void newEventSignal();
     void newEventSignal(int gx,int gy);
-    void editEventSignal(KOEvent *event);
-    void showEventSignal(KOEvent *event);
-    void deleteEventSignal(KOEvent *event);
+    void editEventSignal(Event *event);
+    void showEventSignal(Event *event);
+    void deleteEventSignal(Event *event);
 
     void itemModified(KOAgendaItem *item);
     void itemSelected(bool);
 
-    void showEventPopupSignal(KOEvent *);
+    void showEventPopupSignal(Event *);
 
     void lowerYChanged(int);
     void upperYChanged(int);
 
-    void startDragSignal(KOEvent *);
+    void startDragSignal(Event *);
 
   protected:
     void drawContents(QPainter *p,int cx, int cy, int cw, int ch);        

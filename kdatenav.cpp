@@ -154,8 +154,8 @@ KDateNavigator::KDateNavigator(QWidget *parent,
             SLOT(addSelection(QDate, int, bool)));
     connect(buttons[i], SIGNAL(updateMe(int)),
 	    SLOT(updateButton(int)));
-    connect(buttons[i],SIGNAL(eventDropped(KOEvent *)),
-            SIGNAL(eventDropped(KOEvent *)));
+    connect(buttons[i],SIGNAL(eventDropped(Event *)),
+            SIGNAL(eventDropped(Event *)));
   }
 
   // read settings from configuration file.
@@ -267,13 +267,13 @@ void KDateNavigator::updateButton(int i)
 
   // check calendar for events on this day
   bool hasEvents = false;
-  QList<KOEvent> events = mCalendar->getEventsForDate(buttons[i]->date());
-  KOEvent *event;
+  QList<Event> events = mCalendar->getEventsForDate(buttons[i]->date());
+  Event *event;
   for(event=events.first();event;event=events.next()) {
     ushort recurType = event->doesRecur();
-    if ((recurType == KOEvent::rNone) ||
-        (recurType == KOEvent::rDaily && KOPrefs::instance()->mDailyRecur) ||
-        (recurType == KOEvent::rWeekly && KOPrefs::instance()->mWeeklyRecur)) {
+    if ((recurType == Event::rNone) ||
+        (recurType == Event::rDaily && KOPrefs::instance()->mDailyRecur) ||
+        (recurType == Event::rWeekly && KOPrefs::instance()->mWeeklyRecur)) {
       hasEvents = true;
       break;
     }

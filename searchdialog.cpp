@@ -77,12 +77,12 @@ SearchDialog::SearchDialog(CalObject *calendar)
   connect(this,SIGNAL(user1Clicked()),SLOT(doSearch()));
 
   // Propagate edit and delete event signals from event list view
-  connect(listView,SIGNAL(showEventSignal(KOEvent *)),
-	  SIGNAL(showEventSignal(KOEvent *)));
-  connect(listView,SIGNAL(editEventSignal(KOEvent *)),
-	  SIGNAL(editEventSignal(KOEvent *)));
-  connect(listView,SIGNAL(deleteEventSignal(KOEvent *)),
-	  SIGNAL(deleteEventSignal(KOEvent *)));
+  connect(listView,SIGNAL(showEventSignal(Event *)),
+	  SIGNAL(showEventSignal(Event *)));
+  connect(listView,SIGNAL(editEventSignal(Event *)),
+	  SIGNAL(editEventSignal(Event *)));
+  connect(listView,SIGNAL(deleteEventSignal(Event *)),
+	  SIGNAL(deleteEventSignal(Event *)));
 }
 
 void SearchDialog::doSearch()
@@ -132,12 +132,12 @@ void SearchDialog::updateView()
 
 void SearchDialog::search(const QRegExp &re)
 {
-  QList<KOEvent> events = mCalendar->getEvents(mStartDate->getDate(),
+  QList<Event> events = mCalendar->getEvents(mStartDate->getDate(),
                                                mEndDate->getDate(),
                                                mInclusiveCheck->isChecked());
 
   mMatchedEvents.clear();
-  KOEvent *ev;
+  Event *ev;
   for(ev=events.first();ev;ev=events.next()) {
     if (mSummaryCheck->isChecked()) {
       if (re.match(ev->getSummary()) != -1) {

@@ -1,12 +1,12 @@
 // $Id$
 
-#include "koevent.h"
+#include "event.h"
 //#include "imipscheduler.h"
 #include "dummyscheduler.h"
 
 #include "outgoingdialog.h"
 
-ScheduleItemOut::ScheduleItemOut(QListView *parent,KOEvent *ev,
+ScheduleItemOut::ScheduleItemOut(QListView *parent,Event *ev,
                                  Scheduler::Method method,
                                  const QString &recipients)
   : QListViewItem(parent)
@@ -48,7 +48,7 @@ OutgoingDialog::~OutgoingDialog()
     // no need to delete child widgets, Qt does it all for us
 }
 
-bool OutgoingDialog::addMessage(KOEvent *incidence,Scheduler::Method method)
+bool OutgoingDialog::addMessage(Event *incidence,Scheduler::Method method)
 {
   if (method == Scheduler::Publish) return false;
 
@@ -59,7 +59,7 @@ bool OutgoingDialog::addMessage(KOEvent *incidence,Scheduler::Method method)
   return true;
 }
 
-bool OutgoingDialog::addMessage(KOEvent *incidence,Scheduler::Method method,
+bool OutgoingDialog::addMessage(Event *incidence,Scheduler::Method method,
                                 const QString &recipients)
 {
   if (method != Scheduler::Publish) return false;

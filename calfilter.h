@@ -9,7 +9,7 @@
 #include <qstring.h>
 #include <qlist.h>
 
-#include "koevent.h"
+#include "event.h"
 
 class CalFilter {
   public:
@@ -31,13 +31,13 @@ class CalFilter {
       Apply filter to eventlist, all events not matching filter criterias are
       removed from the list.
     */
-    void apply(QList<KOEvent> *eventlist);
+    void apply(QList<Event> *eventlist);
     
     /**
       Apply filter criteria on the specified event. Return true, if event passes
       criteria, otherwise return false.
     */
-    bool filterEvent(KOEvent *);
+    bool filterEvent(Event *);
     
     /**
       Enable or disable filter.

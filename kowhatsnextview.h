@@ -31,12 +31,12 @@ class KOWhatsNextView : public KOBaseView
   public slots:
     virtual void updateView();
     virtual void selectDates(const QDateList dateList);
-    virtual void selectEvents(QList<KOEvent> eventList);
+    virtual void selectEvents(QList<Event> eventList);
 
-    void changeEventDisplay(KOEvent *, int);
+    void changeEventDisplay(Event *, int);
   
   protected:
-    void appendEvent(KOEvent *);
+    void appendEvent(Event *);
     void appendTodo(Todo *);
   
   private:

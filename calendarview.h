@@ -149,14 +149,14 @@ class CalendarView : public QWidget
     void newEvent();
     
     /** create an editeventwin for the supplied event */
-    void editEvent(KOEvent *);
+    void editEvent(Event *);
     /** delete the supplied event */
-    void deleteEvent(KOEvent *);
+    void deleteEvent(Event *);
     /** delete the event with unique ID VUID. Returns false, if event wasn't
     found */
     bool deleteEvent(const QString &VUID);
     /** Create a read-only viewer dialog for the supplied event */
-    void showEvent(KOEvent *);
+    void showEvent(Event *);
 
     /** Create an editor dialog for a todo */
     void editTodo(Todo *);
@@ -169,7 +169,7 @@ class CalendarView : public QWidget
     /** Delete todo */
     void deleteTodo(Todo *);
     
-    //void eventsSelected(QList<KOEvent>);
+    //void eventsSelected(QList<Event>);
     
     /** change Agenda view */
     void changeAgendaView( int view );
@@ -208,11 +208,11 @@ class CalendarView : public QWidget
       
     /** passes on the message that an event has changed to the currently
      * activated view so that it can make appropriate display changes. */
-    void changeEventDisplay(KOEvent *, int);
+    void changeEventDisplay(Event *, int);
   
-    void eventAdded(KOEvent *);
-    void eventChanged(KOEvent *);
-    void eventToBeDeleted(KOEvent *);
+    void eventAdded(Event *);
+    void eventChanged(Event *);
+    void eventToBeDeleted(Event *);
     void eventDeleted();
   
     /** changes the view to be the currently selected view */

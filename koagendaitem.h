@@ -5,7 +5,7 @@
 #include <qframe.h>
 #include <qlabel.h>
 
-#include "koevent.h"
+#include "event.h"
 
 class QToolTipGroup;
 
@@ -19,7 +19,7 @@ class KOAgendaItem : public QFrame
 {
     Q_OBJECT
   public:
-    KOAgendaItem(KOEvent *event, QWidget *parent, const char *name=0,
+    KOAgendaItem(Event *event, QWidget *parent, const char *name=0,
                  WFlags f=0 );
 
     int cellX() { return mCellX; }
@@ -55,7 +55,7 @@ class KOAgendaItem : public QFrame
     KOAgendaItem *nextMultiItem() { return mNextMultiItem; }
     KOAgendaItem *lastMultiItem() { return mLastMultiItem; }
 
-    KOEvent *itemEvent() { return mEvent; }
+    Event *itemEvent() { return mEvent; }
 
     void setText ( const QString & text ) { mItemLabel->setText(text); }
     QString text () { return mItemLabel->text(); }
@@ -85,7 +85,7 @@ class KOAgendaItem : public QFrame
     KOAgendaItem *mNextMultiItem;
     KOAgendaItem *mLastMultiItem;
     
-    KOEvent *mEvent; // corresponding event
+    Event *mEvent; // corresponding event
     
     QLabel *mItemLabel;
     QLabel *mIconAlarm,*mIconRecur,*mIconReadonly;

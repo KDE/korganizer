@@ -40,22 +40,22 @@ class CalendarLocal : public CalObject {
     /** clears out the current calendar, freeing all used memory etc. etc. */
     void close();
   
-    void addEvent(KOEvent *anEvent);
+    void addEvent(Event *anEvent);
     /** deletes an event from this calendar. */
-    void deleteEvent(KOEvent *);
+    void deleteEvent(Event *);
 
     /** retrieves an event on the basis of the unique string ID. */
-    KOEvent *getEvent(const QString &UniqueStr);
+    Event *getEvent(const QString &UniqueStr);
     /** builds and then returns a list of all events that match for the
      * date specified. useful for dayView, etc. etc. */
-    QList<KOEvent> eventsForDate(const QDate &date, bool sorted = FALSE);
-    QList<KOEvent> eventsForDate(const QDateTime &qdt);
+    QList<Event> eventsForDate(const QDate &date, bool sorted = FALSE);
+    QList<Event> eventsForDate(const QDateTime &qdt);
     /** Get events in a range of dates. If inclusive is set to true, only events
      * are returned, which are completely included in the range. */
-    QList<KOEvent> events(const QDate &start,const QDate &end,
+    QList<Event> events(const QDate &start,const QDate &end,
                              bool inclusive=false);
     /** Return all events in calendar */
-    QList<KOEvent> getAllEvents();
+    QList<Event> getAllEvents();
   
     /*
      * returns a QString with the text of the holiday (if any) that falls
@@ -80,7 +80,7 @@ class CalendarLocal : public CalObject {
   signals:
     /** emitted at regular intervals to indicate that the events in the
       list have triggered an alarm. */
-    void alarmSignal(QList<KOEvent> &);
+    void alarmSignal(QList<Event> &);
     /** emitted whenever an event in the calendar changes.  Emits a pointer
       to the changed event. */
     void calUpdated(Incidence *);
@@ -91,14 +91,14 @@ class CalendarLocal : public CalObject {
     void checkAlarms();
    
   protected slots:
-    /** this method should be called whenever a KOEvent is modified directly
+    /** this method should be called whenever a Event is modified directly
      * via it's pointer.  It makes sure that the calObject is internally
      * consistent. */
     void updateEvent(Incidence *incidence);
   
   protected:
     /** inserts an event into its "proper place" in the calendar. */
-    void insertEvent(const KOEvent *anEvent);
+    void insertEvent(const Event *anEvent);
   
     /** on the basis of a QDateTime, forms a hash key for the dictionary. */
     long int makeKey(const QDateTime &dt);
@@ -108,8 +108,8 @@ class CalendarLocal : public CalObject {
     QDate keyToDate(long int key);
   
   private:
-    QIntDict<QList<KOEvent> > *mCalDict;    // dictionary of lists of events.
-    QList<KOEvent> mRecursList;             // list of repeating events.
+    QIntDict<QList<Event> > *mCalDict;    // dictionary of lists of events.
+    QList<Event> mRecursList;             // list of repeating events.
   
     QList<Todo> mTodoList;               // list of "todo" items.
   

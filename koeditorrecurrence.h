@@ -29,9 +29,9 @@ class KOEditorRecurrence : public QWidget
     /** Set widgets to default values */
     void setDefaults(QDateTime from,QDateTime to,bool allday);
     /** Read event object and setup widgets accordingly */
-    void readEvent(KOEvent *);
+    void readEvent(Event *);
     /** Write event settings to event object */
-    void writeEvent(KOEvent *);
+    void writeEvent(Event *);
 
     /** Check if the input is valid. */
     bool validateInput();

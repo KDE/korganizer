@@ -7,7 +7,7 @@
 
 #include <qpopupmenu.h>
 
-class KOEvent;
+class Event;
 
 class KOEventPopupMenu : public QPopupMenu {
     Q_OBJECT
@@ -20,7 +20,7 @@ class KOEventPopupMenu : public QPopupMenu {
 
 
   public slots:
-    void showEventPopup(KOEvent *);
+    void showEventPopup(Event *);
 
   protected slots:
     void popupShow();
@@ -28,12 +28,12 @@ class KOEventPopupMenu : public QPopupMenu {
     void popupDelete();
 
   signals:
-    void editEventSignal(KOEvent *);
-    void showEventSignal(KOEvent *);
-    void deleteEventSignal(KOEvent *);
+    void editEventSignal(Event *);
+    void showEventSignal(Event *);
+    void deleteEventSignal(Event *);
     
   private:
-    KOEvent *mCurrentEvent;
+    Event *mCurrentEvent;
     
     bool mHasAdditionalItems;
     QValueList<int> mEditOnlyItems;

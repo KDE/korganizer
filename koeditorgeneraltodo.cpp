@@ -17,7 +17,6 @@
 #include <kbuttonbox.h>
 #include <kmessagebox.h>
 
-#include "koevent.h"
 #include "koprefs.h"
 #include "todo.h"
 

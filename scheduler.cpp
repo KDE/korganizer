@@ -2,7 +2,7 @@
 
 #include <klocale.h>
 
-#include "koevent.h"
+#include "event.h"
 #include "icalformat.h"
 #include "calobject.h"
 

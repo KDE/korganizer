@@ -11,7 +11,7 @@
 /**
   This class implements the vCalendar format. It provides methods for
   loading/saving/converting vCalendar format data into the internal KOrganizer
-  representation as CalObject and KOEvents.
+  representation as CalObject and Events.
 
   @short vCalendar format implementation
   @author Preston Brown
@@ -45,28 +45,28 @@ class VCalFormat : public CalFormat {
     bool save(const QString &fileName);
   
     /** create an object to be used with the Xdnd Drag And Drop protocol. */
-    VCalDrag *createDrag(KOEvent *selectedEv, QWidget *owner);
+    VCalDrag *createDrag(Event *selectedEv, QWidget *owner);
     /** create an object to be used with the Xdnd Drag And Drop protocol. */
     VCalDrag *createDragTodo(Todo *selectedEv, QWidget *owner);
     /** Create Todo object from drop event */
     Todo *createDropTodo(QDropEvent *de);
     /** Create Event object from drop event */
-    KOEvent *createDrop(QDropEvent *de);
+    Event *createDrop(QDropEvent *de);
   
     /** cut, copy, and paste operations follow. */
-    bool copyEvent(KOEvent *);
+    bool copyEvent(Event *);
     /** pastes the event and returns a pointer to the new event pasted. */
-    KOEvent *pasteEvent(const QDate *, const QTime *newTime = 0L);
+    Event *pasteEvent(const QDate *, const QTime *newTime = 0L);
     
   protected:
-    /** translates a VObject of the TODO type into a KOEvent */
+    /** translates a VObject of the TODO type into a Event */
     Todo *VTodoToEvent(VObject *vtodo);
-    /** translates a VObject into a KOEvent and returns a pointer to it. */
-    KOEvent *VEventToEvent(VObject *vevent);
-    /** translate a KOEvent into a VTodo-type VObject and return pointer */
+    /** translates a VObject into a Event and returns a pointer to it. */
+    Event *VEventToEvent(VObject *vevent);
+    /** translate a Event into a VTodo-type VObject and return pointer */
     VObject *eventToVTodo(const Todo *anEvent);
-    /** translate a KOEvent into a VObject and returns a pointer to it. */
-    VObject* eventToVEvent(const KOEvent *anEvent);
+    /** translate a Event into a VObject and returns a pointer to it. */
+    VObject* eventToVEvent(const Event *anEvent);
 
     /** takes a QDate and returns a string in the format YYYYMMDDTHHMMSS */
     QString qDateToISO(const QDate &);
@@ -89,7 +89,7 @@ class VCalFormat : public CalFormat {
     void parseError(const char *prop);
   
   private:
-    QList<KOEvent> mEventsRelate;           // events with relations
+    QList<Event> mEventsRelate;           // events with relations
     QList<Todo> mTodosRelate;             // todos with relations
 };
 

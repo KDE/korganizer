@@ -105,8 +105,8 @@ AlarmDaemon::AlarmDaemon(const QString &fn, QObject *parent, const char *name)
 
   connect(alarmTimer, SIGNAL(timeout()),
     calendar, SLOT(checkAlarms()));
-  connect(calendar, SIGNAL(alarmSignal(QList<KOEvent> &)),
-    this, SLOT(showAlarms(QList<KOEvent> &)));
+  connect(calendar, SIGNAL(alarmSignal(QList<Event> &)),
+    this, SLOT(showAlarms(QList<Event> &)));
 
   // timeout every minute.
   alarmTimer->start(1000*60);
@@ -137,12 +137,12 @@ void AlarmDaemon::reloadCal()
   docker->addToolTip(fileName);
 }
 
-void AlarmDaemon::showAlarms(QList<KOEvent> &alarmEvents)
+void AlarmDaemon::showAlarms(QList<Event> &alarmEvents)
 {
   // leave immediately if alarms are off
   if (!docker->alarmsOn()) return;
 
-  KOEvent *anEvent;
+  Event *anEvent;
 
   for (anEvent = alarmEvents.first(); anEvent; anEvent = alarmEvents.next()) {
     mAlarmDialog->appendEvent(anEvent);

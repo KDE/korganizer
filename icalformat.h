@@ -17,7 +17,7 @@ extern "C" {
 /**
   This class implements the iCalendar format. It provides methods for
   loading/saving/converting iCalendar format data into the internal KOrganizer
-  representation as CalObject and KOEvents.
+  representation as CalObject and Events.
 
   @short iCalendar format implementation
   @author Cornelius Schumacher
@@ -44,33 +44,33 @@ class ICalFormat : public CalFormat {
     bool save(const QString &fileName);
   
     /** create an object to be used with the Xdnd Drag And Drop protocol. */
-    VCalDrag *createDrag(KOEvent *selectedEv, QWidget *owner);
+    VCalDrag *createDrag(Event *selectedEv, QWidget *owner);
     /** create an object to be used with the Xdnd Drag And Drop protocol. */
     VCalDrag *createDragTodo(Todo *selectedEv, QWidget *owner);
     /** Create Todo object from drop event */
     Todo *createDropTodo(QDropEvent *de);
     /** Create Event object from drop event */
-    KOEvent *createDrop(QDropEvent *de);
+    Event *createDrop(QDropEvent *de);
   
     /** cut, copy, and paste operations follow. */
-    bool copyEvent(KOEvent *);
+    bool copyEvent(Event *);
     /** pastes the event and returns a pointer to the new event pasted. */
-    KOEvent *pasteEvent(const QDate *, const QTime *newTime = 0L);
+    Event *pasteEvent(const QDate *, const QTime *newTime = 0L);
     
-    QString createScheduleMessage(KOEvent *,Scheduler::Method);
+    QString createScheduleMessage(Event *,Scheduler::Method);
     ScheduleMessage *parseScheduleMessage(const QString &);
     
   protected:
     void populate(icalfileset *fs);
 
     icalcomponent *writeTodo(Todo *todo);
-    icalcomponent *writeEvent(KOEvent *event);
+    icalcomponent *writeEvent(Event *event);
     void writeIncidence(icalcomponent *parent,Incidence *incidence);
-    icalproperty *writeRecurrenceRule(KOEvent *event);
+    icalproperty *writeRecurrenceRule(Event *event);
 
     QString extractErrorProperty(icalcomponent *);    
     Todo *readTodo(icalcomponent *vtodo);
-    KOEvent *readEvent(icalcomponent *vevent);
+    Event *readEvent(icalcomponent *vevent);
     Attendee *readAttendee(icalproperty *attendee);
     void readIncidence(icalcomponent *parent,Incidence *incidence);
     void readRecurrenceRule(icalproperty *rrule,Incidence *event);
@@ -87,7 +87,7 @@ class ICalFormat : public CalFormat {
     void parseError(const char *prop);
   
   private:
-    QList<KOEvent> mEventsRelate;           // events with relations
+    QList<Event> mEventsRelate;           // events with relations
     QList<Todo> mTodosRelate;             // todos with relations
 };
 

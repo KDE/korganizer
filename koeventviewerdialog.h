@@ -9,7 +9,7 @@
 
 #include <kdialogbase.h>
 
-class KOEvent;
+class Event;
 class KOEventViewer;
 
 class KOEventViewerDialog : public KDialogBase {
@@ -18,7 +18,7 @@ class KOEventViewerDialog : public KDialogBase {
     KOEventViewerDialog(QWidget *parent=0,const char *name=0);
     virtual ~KOEventViewerDialog();
 
-    void setEvent(KOEvent *event);
+    void setEvent(Event *event);
     void setTodo(Todo *event);
     
   private:

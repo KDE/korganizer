@@ -12,7 +12,7 @@ extern "C" {
   #include <icalss.h>
 }
 
-class KOEvent;
+class Event;
 class CalObject;
 class ICalFormat;
 
@@ -69,10 +69,10 @@ class Scheduler {
     virtual ~Scheduler();
     
     /** iTIP publish action */
-    virtual bool publish (KOEvent *incidence,const QString &recipients) = 0;
+    virtual bool publish (Event *incidence,const QString &recipients) = 0;
     /** Perform iTIP transaction on incidence. The method is specified as the
     method argumanet and can be any valid iTIP method. */
-    virtual bool performTransaction(KOEvent *incidence,Method method) = 0;
+    virtual bool performTransaction(Event *incidence,Method method) = 0;
     /** Retrieve incoming iTIP transactions */
     virtual QList<ScheduleMessage> retrieveTransactions() = 0;
 

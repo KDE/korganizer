@@ -123,11 +123,11 @@ class Incidence : public QObject, public KORecurrence, public KOAlarm
     QString getCategoriesStr() { return categoriesStr(); }
 
     /** point at some other event to which the event relates. This function should
-     *  only be used when constructing a calendar before the related KOEvent
+     *  only be used when constructing a calendar before the related Event
      *  exists. */
     void setRelatedToVUID(const QString &);
     /** what event does this one relate to? This function should
-     *  only be used when constructing a calendar before the related KOEvent
+     *  only be used when constructing a calendar before the related Event
      *  exists. */
     const QString &relatedToVUID() const;
     const QString &getRelatedToVUID() const { return relatedToVUID(); }

@@ -391,7 +391,7 @@ void CalPrinter::printTodo(const QDate &fd, const QDate &td)
       }
       // if terminated, cross it
       int status = currEvent->status();
-      if (status == KOEvent::COMPLETED) {
+      if (status == Event::COMPLETED) {
 	  p.drawLine( 5, (lineSpacing*count)+headerHeight-fontHeight/2 + 2, 
 		      pageWidth-5, (lineSpacing*count)+headerHeight-fontHeight/2 + 2);
       }
@@ -490,7 +490,7 @@ void CalPrinter::drawDayBox(QPainter &p, const QDate &qd,
 {
   KLocale *local = KGlobal::locale();
   QString dayNumStr;
-  QList<KOEvent> eventList;
+  QList<Event> eventList;
   QString ampm;
 
   QString hstring(calendar->getHolidayForDate(qd));
@@ -527,7 +527,7 @@ void CalPrinter::drawDayBox(QPainter &p, const QDate &qd,
   eventList.first();
   int count = 1;
   QString outStr;
-  KOEvent *currEvent(eventList.first());
+  Event *currEvent(eventList.first());
   p.setFont(QFont("helvetica", 8));
   int lineSpacing = p.fontMetrics().lineSpacing();
 
@@ -599,8 +599,8 @@ void CalPrinter::drawDay(QPainter &p, const QDate &qd, int width, int height)
   }
 
   p.setFont(QFont("helvetica", 14));
-  QList<KOEvent> eventList = calendar->getEventsForDate(qd, TRUE);
-  KOEvent *currEvent;
+  QList<Event> eventList = calendar->getEventsForDate(qd, TRUE);
+  Event *currEvent;
   p.setBrush(QBrush(Dense4Pattern));
   for (currEvent = eventList.first(); currEvent;
        currEvent = eventList.next()) {

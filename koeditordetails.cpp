@@ -18,7 +18,7 @@
 #include <kabapi.h>
 #include <kmessagebox.h>
 
-#include "koevent.h"
+#include "incidence.h"
 #include "koprefs.h"
 
 #include "koeditordetails.h"

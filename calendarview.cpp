@@ -497,16 +497,16 @@ void CalendarView::hookupSignals()
 
   connect(mDateNavigator,SIGNAL(weekClicked(QDate)),SLOT(selectWeek(QDate)));
 
-  connect(mDateNavigator,SIGNAL(eventDropped(KOEvent *)),
-          SLOT(eventAdded(KOEvent *)));
+  connect(mDateNavigator,SIGNAL(eventDropped(Event *)),
+          SLOT(eventAdded(Event *)));
 
   // SIGNALS/SLOTS FOR LIST VIEW
-  connect(mListView, SIGNAL(showEventSignal(KOEvent *)),
-	  this, SLOT(showEvent(KOEvent *)));
-  connect(mListView, SIGNAL(editEventSignal(KOEvent *)),
-	  this, SLOT(editEvent(KOEvent *)));
-  connect(mListView, SIGNAL(deleteEventSignal(KOEvent *)),
-	  this, SLOT(deleteEvent(KOEvent *)));
+  connect(mListView, SIGNAL(showEventSignal(Event *)),
+	  this, SLOT(showEvent(Event *)));
+  connect(mListView, SIGNAL(editEventSignal(Event *)),
+	  this, SLOT(editEvent(Event *)));
+  connect(mListView, SIGNAL(deleteEventSignal(Event *)),
+	  this, SLOT(deleteEvent(Event *)));
   connect(mListView,SIGNAL(eventsSelected(bool)),
           SLOT(processEventSelection(bool)));
 
@@ -517,24 +517,24 @@ void CalendarView::hookupSignals()
           this, SLOT(newEvent(QDate)));
 //  connect(mAgendaView,SIGNAL(newEventSignal()),
 //		this, SLOT(newEvent()));
-  connect(mAgendaView, SIGNAL(editEventSignal(KOEvent *)),
-	  this, SLOT(editEvent(KOEvent *)));
-  connect(mAgendaView, SIGNAL(showEventSignal(KOEvent *)),
-	  this, SLOT(showEvent(KOEvent *)));
-  connect(mAgendaView, SIGNAL(deleteEventSignal(KOEvent *)),
-	  this, SLOT(deleteEvent(KOEvent *)));
+  connect(mAgendaView, SIGNAL(editEventSignal(Event *)),
+	  this, SLOT(editEvent(Event *)));
+  connect(mAgendaView, SIGNAL(showEventSignal(Event *)),
+	  this, SLOT(showEvent(Event *)));
+  connect(mAgendaView, SIGNAL(deleteEventSignal(Event *)),
+	  this, SLOT(deleteEvent(Event *)));
   connect(mAgendaView,SIGNAL(eventsSelected(bool)),
           SLOT(processEventSelection(bool)));
 
   // SIGNALS/SLOTS FOR MONTH VIEW
-  connect(mMonthView, SIGNAL(showEventSignal(KOEvent *)),
-	  this, SLOT(showEvent(KOEvent *)));
+  connect(mMonthView, SIGNAL(showEventSignal(Event *)),
+	  this, SLOT(showEvent(Event *)));
   connect(mMonthView, SIGNAL(newEventSignal(QDate)),
 	  this, SLOT(newEvent(QDate)));
-  connect(mMonthView, SIGNAL(editEventSignal(KOEvent *)),
-	  this, SLOT(editEvent(KOEvent *)));
-  connect(mMonthView, SIGNAL(deleteEventSignal(KOEvent *)),
-	  this, SLOT(deleteEvent(KOEvent *)));
+  connect(mMonthView, SIGNAL(editEventSignal(Event *)),
+	  this, SLOT(editEvent(Event *)));
+  connect(mMonthView, SIGNAL(deleteEventSignal(Event *)),
+	  this, SLOT(deleteEvent(Event *)));
   connect(mMonthView,SIGNAL(eventsSelected(bool)),
           SLOT(processEventSelection(bool)));
 
@@ -587,17 +587,17 @@ void CalendarView::updateConfig()
   raiseCurrentView();
 }
 
-void CalendarView::eventChanged(KOEvent *event)
+void CalendarView::eventChanged(Event *event)
 {
   changeEventDisplay(event,EVENTEDITED);
 }
 
-void CalendarView::eventAdded(KOEvent *event)
+void CalendarView::eventAdded(Event *event)
 {
   changeEventDisplay(event,EVENTADDED);
 }
 
-void CalendarView::eventToBeDeleted(KOEvent *)
+void CalendarView::eventToBeDeleted(Event *)
 {
   kdDebug() << "CalendarView::eventToBeDeleted(): to be implemented" << endl;
 }
@@ -609,7 +609,7 @@ void CalendarView::eventDeleted()
 
 // most of the changeEventDisplays() right now just call the view's
 // total update mode, but they SHOULD be recoded to be more refresh-efficient.
-void CalendarView::changeEventDisplay(KOEvent *which, int action)
+void CalendarView::changeEventDisplay(Event *which, int action)
 {
 //  kdDebug() << "CalendarView::changeEventDisplay" << endl;
 
@@ -765,10 +765,10 @@ int CalendarView::msgItemDelete()
 
 void CalendarView::edit_cut()
 {
-  KOEvent *anEvent=0;
+  Event *anEvent=0;
 
   if (mCurrentView->isEventView()) {
-    anEvent = dynamic_cast<KOEvent *>((mCurrentView->getSelected()).first());
+    anEvent = dynamic_cast<Event *>((mCurrentView->getSelected()).first());
   }
 
   if (!anEvent) {
@@ -781,10 +781,10 @@ void CalendarView::edit_cut()
 
 void CalendarView::edit_copy()
 {
-  KOEvent *anEvent=0;
+  Event *anEvent=0;
 
   if (mCurrentView->isEventView()) {
-    anEvent = dynamic_cast<KOEvent *>((mCurrentView->getSelected()).first());
+    anEvent = dynamic_cast<Event *>((mCurrentView->getSelected()).first());
   }
 
   if (!anEvent) {
@@ -796,7 +796,7 @@ void CalendarView::edit_copy()
 
 void CalendarView::edit_paste()
 {
-  KOEvent *pastedEvent;
+  Event *pastedEvent;
   QDateList tmpList(FALSE);
 
   tmpList = mDateNavigator->getSelected();
@@ -838,7 +838,7 @@ void CalendarView::newEvent(QDateTime fromHint, QDateTime toHint)
   eventWin->newEvent(fromHint,toHint);
 
   // connect the win for changed events
-  connect(eventWin,SIGNAL(eventAdded(KOEvent *)),SLOT(eventAdded(KOEvent *)));
+  connect(eventWin,SIGNAL(eventAdded(Event *)),SLOT(eventAdded(Event *)));
   connect(mCategoryEditDialog,SIGNAL(categoryConfigChanged()),
           eventWin,SLOT(updateCategoryConfig()));
   connect(eventWin,SIGNAL(editCategories()),mCategoryEditDialog,SLOT(show()));
@@ -858,7 +858,7 @@ void CalendarView::newEvent(QDateTime fromHint, QDateTime toHint, bool allDay)
   eventWin->newEvent(fromHint,toHint,allDay);
 
   // connect the win for changed events
-  connect(eventWin,SIGNAL(eventAdded(KOEvent *)),SLOT(eventAdded(KOEvent *)));
+  connect(eventWin,SIGNAL(eventAdded(Event *)),SLOT(eventAdded(Event *)));
   connect(mCategoryEditDialog,SIGNAL(categoryConfigChanged()),
           eventWin,SLOT(updateCategoryConfig()));
   connect(eventWin,SIGNAL(editCategories()),mCategoryEditDialog,SLOT(show()));
@@ -875,7 +875,7 @@ void CalendarView::newTodo()
   todoWin->newTodo(QDateTime::currentDateTime().addDays(7),0,true);
 
   // connect the win for changed events
-  connect(todoWin,SIGNAL(todoAdded(KOEvent *)),SLOT(updateTodoViews()));
+  connect(todoWin,SIGNAL(todoAdded(Event *)),SLOT(updateTodoViews()));
   connect(todoWin,SIGNAL(categoryConfigChanged()),
           mOptionsDialog,SLOT(updateCategories()));
 
@@ -892,7 +892,7 @@ void CalendarView::newSubTodo(Todo *parentEvent)
   todoWin->newTodo(QDateTime::currentDateTime().addDays(7),parentEvent,true);
 
   // connect the win for changed events
-  connect(todoWin,SIGNAL(todoAdded(KOEvent *)),SLOT(updateTodoViews()));
+  connect(todoWin,SIGNAL(todoAdded(Event *)),SLOT(updateTodoViews()));
   connect(todoWin,SIGNAL(categoryConfigChanged()),
           mOptionsDialog,SLOT(updateCategories()));
 
@@ -943,7 +943,7 @@ void CalendarView::allday_new()
            QDateTime(to, QTime(12,0,0)), TRUE);
 }
 
-void CalendarView::editEvent(KOEvent *anEvent)
+void CalendarView::editEvent(Event *anEvent)
 {
   if(anEvent) {
     if (anEvent->isReadOnly()) {
@@ -960,8 +960,8 @@ void CalendarView::editEvent(KOEvent *anEvent)
     KOEventEditor *eventWin = new KOEventEditor(mCalendar );
     eventWin->editEvent(anEvent, qd);
     // connect the win for changed events
-    connect(eventWin,SIGNAL(eventChanged(KOEvent *)),
-            SLOT(eventChanged(KOEvent *)));
+    connect(eventWin,SIGNAL(eventChanged(Event *)),
+            SLOT(eventChanged(Event *)));
     connect(eventWin,SIGNAL(eventDeleted()),
             SLOT(eventDeleted()));
     connect(mCategoryEditDialog,SIGNAL(categoryConfigChanged()),
@@ -1008,7 +1008,7 @@ void CalendarView::editTodo(Todo *anEvent)
   }
 }
 
-void CalendarView::showEvent(KOEvent *event)
+void CalendarView::showEvent(Event *event)
 {
   KOEventViewerDialog *eventViewer = new KOEventViewerDialog(this);
   eventViewer->setEvent(event);
@@ -1024,10 +1024,10 @@ void CalendarView::showTodo(Todo *event)
 
 void CalendarView::appointment_show()
 {
-  KOEvent *anEvent = 0;
+  Event *anEvent = 0;
 
   if (mCurrentView->isEventView()) {
-    anEvent = dynamic_cast<KOEvent *>((mCurrentView->getSelected()).first());
+    anEvent = dynamic_cast<Event *>((mCurrentView->getSelected()).first());
   }
 
   if (!anEvent) {
@@ -1040,10 +1040,10 @@ void CalendarView::appointment_show()
 
 void CalendarView::appointment_edit()
 {
-  KOEvent *anEvent = 0;
+  Event *anEvent = 0;
 
   if (mCurrentView->isEventView()) {
-    anEvent = dynamic_cast<KOEvent *>((mCurrentView->getSelected()).first());
+    anEvent = dynamic_cast<Event *>((mCurrentView->getSelected()).first());
   }
 
   if (!anEvent) {
@@ -1056,10 +1056,10 @@ void CalendarView::appointment_edit()
 
 void CalendarView::appointment_delete()
 {
-  KOEvent *anEvent = 0;
+  Event *anEvent = 0;
 
   if (mCurrentView->isEventView()) {
-    anEvent = dynamic_cast<KOEvent *>((mCurrentView->getSelected()).first());
+    anEvent = dynamic_cast<Event *>((mCurrentView->getSelected()).first());
   }
 
   if (!anEvent) {
@@ -1123,7 +1123,7 @@ void CalendarView::deleteTodo(Todo *todo)
   }
 }
 
-void CalendarView::deleteEvent(KOEvent *anEvent)
+void CalendarView::deleteEvent(Event *anEvent)
 {
   if (!anEvent) {
     KNotifyClient::beep();
@@ -1177,7 +1177,7 @@ void CalendarView::deleteEvent(KOEvent *anEvent)
 
 bool CalendarView::deleteEvent(const QString &VUID)
 {
-    KOEvent *ev = mCalendar->getEvent(VUID);
+    Event *ev = mCalendar->getEvent(VUID);
     if (ev) {
         deleteEvent(ev);
         return true;
@@ -1192,12 +1192,12 @@ void CalendarView::action_search()
 {
   if (!mSearchDialog) {
     mSearchDialog = new SearchDialog(mCalendar);
-    connect(mSearchDialog,SIGNAL(showEventSignal(KOEvent *)),
-	    SLOT(showEvent(KOEvent *)));
-    connect(mSearchDialog,SIGNAL(editEventSignal(KOEvent *)),
-	    SLOT(editEvent(KOEvent *)));
-    connect(mSearchDialog,SIGNAL(deleteEventSignal(KOEvent *)),
-	    SLOT(deleteEvent(KOEvent *)));
+    connect(mSearchDialog,SIGNAL(showEventSignal(Event *)),
+	    SLOT(showEvent(Event *)));
+    connect(mSearchDialog,SIGNAL(editEventSignal(Event *)),
+	    SLOT(editEvent(Event *)));
+    connect(mSearchDialog,SIGNAL(deleteEventSignal(Event *)),
+	    SLOT(deleteEvent(Event *)));
     connect(this,SIGNAL(closingDown()),mSearchDialog,SLOT(reject()));
   }
   // make sure the widget is on top again
@@ -1209,9 +1209,9 @@ void CalendarView::action_mail()
 {
   KOMailClient mailobject;
 
-  KOEvent *anEvent = 0;
+  Event *anEvent = 0;
   if (mCurrentView->isEventView()) {
-    anEvent = dynamic_cast<KOEvent *>((mCurrentView->getSelected()).first());
+    anEvent = dynamic_cast<Event *>((mCurrentView->getSelected()).first());
   }
 
   if (!anEvent) {
@@ -1285,10 +1285,10 @@ void CalendarView::schedule_incoming()
 
 void CalendarView::schedule_publish()
 {
-  KOEvent *event = 0;
+  Event *event = 0;
 
   if (mCurrentView->isEventView()) {
-    event = dynamic_cast<KOEvent *>((mCurrentView->getSelected()).first());
+    event = dynamic_cast<Event *>((mCurrentView->getSelected()).first());
   }
 
   if (!event) {
@@ -1336,10 +1336,10 @@ void CalendarView::schedule_declinecounter()
 
 void CalendarView::schedule(Scheduler::Method method)
 {
-  KOEvent *event = 0;
+  Event *event = 0;
 
   if (mCurrentView->isEventView()) {
-    event = dynamic_cast<KOEvent *>((mCurrentView->getSelected()).first());
+    event = dynamic_cast<Event *>((mCurrentView->getSelected()).first());
   }
 
   if (!event) {

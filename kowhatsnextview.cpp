@@ -58,12 +58,12 @@ void KOWhatsNextView::updateView()
   mText = i18n("<h1>What's next?</h1>");
 
 
-  QList<KOEvent> events = mCalendar->getEvents(QDate::currentDate(),
+  QList<Event> events = mCalendar->getEvents(QDate::currentDate(),
                                                QDate::currentDate().addDays(1));
   if (events.count() > 0) {
     mText += i18n("<h2>Events:</h2>");
     mText += i18n("<table>");
-    KOEvent *ev = events.first();
+    Event *ev = events.first();
     while(ev) {
       appendEvent(ev);
       ev = events.next();
@@ -93,11 +93,11 @@ void KOWhatsNextView::selectDates(const QDateList dateList)
   updateView();
 }
 
-void KOWhatsNextView::selectEvents(QList<KOEvent> eventList)
+void KOWhatsNextView::selectEvents(QList<Event> eventList)
 {
 }
 
-void KOWhatsNextView::changeEventDisplay(KOEvent *event, int action)
+void KOWhatsNextView::changeEventDisplay(Event *event, int action)
 {
   switch(action) {
     case CalendarView::EVENTADDED:
@@ -111,7 +111,7 @@ void KOWhatsNextView::changeEventDisplay(KOEvent *event, int action)
   }
 }
 
-void KOWhatsNextView::appendEvent(KOEvent *ev)
+void KOWhatsNextView::appendEvent(Event *ev)
 {
   mText += "<tr><td><b>";
   if (!ev->doesFloat()) {

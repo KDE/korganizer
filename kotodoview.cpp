@@ -36,7 +36,7 @@ void KOTodoViewItem::paintBranches(QPainter *p,const QColorGroup & cg,int w,
 
 void KOTodoViewItem::construct()
 {
-  setOn(mEvent->status() == KOEvent::NEEDS_ACTION ? false : true );
+  setOn(mEvent->status() == Event::NEEDS_ACTION ? false : true );
   setText(0, mEvent->getSummary());
   setText(1, QString::number(mEvent->getPriority()));
   if (mEvent->hasDueDate()) {
@@ -287,7 +287,7 @@ void KOTodoView::updateView()
 
 /*
   kdDebug() << "KOTodoView::updateView(): Todo List:" << endl;
-  KOEvent *t;
+  Event *t;
   for(t = todoList.first(); t; t = todoList.next()) {
     kdDebug() << "  " << t->getSummary() << endl;
 
@@ -295,15 +295,15 @@ void KOTodoView::updateView()
       kdDebug() << "      (related to " << t->getRelatedTo()->getSummary() << ")" << endl;
     }
 
-    QList<KOEvent> l = t->getRelations();
-    KOEvent *c;
+    QList<Event> l = t->getRelations();
+    Event *c;
     for(c=l.first();c;c=l.next()) {
       kdDebug() << "    - relation: " << c->getSummary() << endl;
     }
   }
 */
 
-  // Put for each KOEvent a KOTodoViewItem in the list view. Don't rely on a
+  // Put for each Event a KOTodoViewItem in the list view. Don't rely on a
   // specific order of events. That means that we have to generate parent items
   // recursively for proper hierarchical display of Todos.
   mTodoMap.clear();
@@ -367,7 +367,7 @@ QList<Todo> KOTodoView::selectedTodos()
   return selected;
 }
 
-void KOTodoView::changeEventDisplay(KOEvent *, int)
+void KOTodoView::changeEventDisplay(Event *, int)
 {
   updateView();
 }
@@ -376,7 +376,7 @@ void KOTodoView::selectDates(const QDateList)
 {
 }
  
-void KOTodoView::selectEvents(QList<KOEvent>)
+void KOTodoView::selectEvents(QList<Event>)
 {
   kdDebug() << "KOTodoView::selectEvents(): not yet implemented" << endl;
 }
@@ -452,7 +452,7 @@ void KOTodoView::purgeCompleted()
 
     Todo *aTodo;
     for (aTodo = todoCal.first(); aTodo; aTodo = todoCal.next()) {
-    if (aTodo->status() != KOEvent::NEEDS_ACTION)
+    if (aTodo->status() != Event::NEEDS_ACTION)
       mCalendar->deleteTodo(aTodo);
     }
     updateView();
@@ -467,12 +467,12 @@ void KOTodoView::itemClicked(QListViewItem *item)
   int status = todoItem->event()->status();  // Completed or not?
   
   if (todoItem->isOn()) {
-    if (status != KOEvent::COMPLETED) {
-      todoItem->event()->setStatus(KOEvent::COMPLETED);
+    if (status != Event::COMPLETED) {
+      todoItem->event()->setStatus(Event::COMPLETED);
     }
   } else {
-    if (status != KOEvent::NEEDS_ACTION) {
-      todoItem->event()->setStatus(KOEvent::NEEDS_ACTION);
+    if (status != Event::NEEDS_ACTION) {
+      todoItem->event()->setStatus(Event::NEEDS_ACTION);
     }
   }   
 }

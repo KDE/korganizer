@@ -36,7 +36,7 @@ class KDateButton: public QLabel {
   signals:
     void selected(QDate, int, bool);
     void updateMe(int);
-    void eventDropped(KOEvent *);
+    void eventDropped(Event *);
 
   protected:
     void mousePressEvent(QMouseEvent *);

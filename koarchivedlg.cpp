@@ -18,7 +18,7 @@
 #include <klineedit.h>
 
 #include "kdateedit.h"
-#include "koevent.h"
+#include "event.h"
 #include "calobject.h"
 #include "calendarlocal.h"
 #include "koprefs.h"
@@ -73,7 +73,7 @@ void ArchiveDialog::slotUser1()
   }
   
   // Get events to be archived
-  QList<KOEvent> events = mCalendar->getEvents(QDate(1800,1,1),
+  QList<Event> events = mCalendar->getEvents(QDate(1800,1,1),
                                                mDateEdit->getDate(),true);
   if (events.count() == 0) {
     KMessageBox::sorry(this,i18n("There are no events before %1")
@@ -98,10 +98,10 @@ void ArchiveDialog::slotUser1()
 
   // Strip active events from calendar so that only events to be archived
   // remain.
-  QList<KOEvent> activeEvents = archiveCalendar.getEvents(mDateEdit->getDate(),
+  QList<Event> activeEvents = archiveCalendar.getEvents(mDateEdit->getDate(),
                                                           QDate(3000,1,1),
                                                           false);
-  KOEvent *ev;
+  Event *ev;
   for(ev=activeEvents.first();ev;ev=activeEvents.next()) {
     archiveCalendar.deleteEvent(ev);
   }
@@ -120,11 +120,11 @@ void ArchiveDialog::slotUser1()
       return;
     }
 /*    
-    QList<KOEvent> es = archiveCalendar.getEvents(QDate(1800,1,1),
+    QList<Event> es = archiveCalendar.getEvents(QDate(1800,1,1),
                                                   QDate(3000,1,1),
                                                   false);
     kdDebug() << "--Following events in archive calendar:" << endl;
-    KOEvent *e;
+    Event *e;
     for(e=es.first();e;e=es.next()) {
       kdDebug() << "-----Event: " << e->getSummary() << endl;
     }
@@ -165,7 +165,7 @@ void ArchiveDialog::slotUser1()
 // Delete old events
 void ArchiveDialog::slotUser2()
 {
-  QList<KOEvent> events = mCalendar->getEvents(QDate(1769,12,1),
+  QList<Event> events = mCalendar->getEvents(QDate(1769,12,1),
                                                mDateEdit->getDate(),true);
 
   if (events.count() == 0) {
@@ -175,7 +175,7 @@ void ArchiveDialog::slotUser2()
   }
 
   QStringList eventStrs;
-  KOEvent *ev;
+  Event *ev;
   for(ev=events.first();ev;ev=events.next()) {
     eventStrs.append(ev->getSummary());
   }

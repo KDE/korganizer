@@ -157,7 +157,7 @@ KSummaries::KSummaries(QWidget    *parent,
   myDate = qd;
 
   setFont(QFont("Helvetica", 10));
-  currIdxs = new QIntDict<KOEvent>(101); /* nobody should have more
+  currIdxs = new QIntDict<Event>(101); /* nobody should have more
                                              than 101 events on any
                                              given day. */
   connect(this, SIGNAL(highlighted(int)), this, SLOT(itemHighlighted(int)));
@@ -173,7 +173,7 @@ void KSummaries::calUpdated()
   clear();
   currIdxs->clear();
 
-  QList<KOEvent> events;
+  QList<Event> events;
 
   // 2nd arg is TRUE because we want the events to be sorted.
   events = myCal->getEventsForDate(myDate, TRUE);
@@ -182,7 +182,7 @@ void KSummaries::calUpdated()
   EventListBoxItem *elitem;
   QString sumString;
   unsigned int i = 0;
-  KOEvent *anEvent;
+  Event *anEvent;
   for(anEvent = events.first(); anEvent; anEvent = events.next()) {
     if (anEvent->isMultiDay()) {
       if (myDate == anEvent->getDtStart().date()) {
@@ -234,7 +234,7 @@ void KSummaries::calUpdated()
 //  kdDebug() << "KSummaries::calUpdated() done" << endl;  
 }
 
-KOEvent *KSummaries::getSelected()
+Event *KSummaries::getSelected()
 {
   if (currentItem() < 0) return 0;
   else return currIdxs->find(currentItem());
@@ -265,7 +265,7 @@ void KSummaries::itemHighlighted(int index)
 
 void KSummaries::itemSelected(int index)
 {
-    KOEvent *anEvent;
+    Event *anEvent;
     
     anEvent = currIdxs->find(index);
     if (!anEvent)
@@ -389,8 +389,8 @@ KOMonthView::KOMonthView(CalObject *cal,
         daySummaries[i]->setFrameStyle(QFrame::NoFrame);
         connect(daySummaries[i], SIGNAL(daySelected(int)),
                 this, SLOT(daySelected(int)));
-        connect(daySummaries[i], SIGNAL(editEventSignal(KOEvent *)),
-                this, SIGNAL(editEventSignal(KOEvent *)));
+        connect(daySummaries[i], SIGNAL(editEventSignal(Event *)),
+                this, SIGNAL(editEventSignal(Event *)));
         connect(daySummaries[i], SIGNAL(rightClick()),
                 this, SLOT(doRightClickMenu()));
 
@@ -447,7 +447,7 @@ QList<Incidence> KOMonthView::getSelected()
 
   uint i;
   for(i=0; i<selDateIdxs.count(); ++i) {
-    KOEvent *event = daySummaries[*selDateIdxs.at(i)]->getSelected();
+    Event *event = daySummaries[*selDateIdxs.at(i)]->getSelected();
     if (event) selectedEvents.append(event);
   }
   
@@ -464,7 +464,7 @@ QList<Incidence> KOMonthView::getSelected()
   if (which) {
     return daySummaries[which]->getSelected();
   } else {
-    return (KOEvent *) 0L;
+    return (Event *) 0L;
   }
 */
 }
@@ -654,12 +654,12 @@ void KOMonthView::selectDates(const QDateList dateList)
   viewChanged();
 }
 
-void KOMonthView::selectEvents(QList<KOEvent>)
+void KOMonthView::selectEvents(QList<Event>)
 {
   kdDebug() << "KOMonthView::selectEvents is not implemented yet." << endl;
 }
 
-void KOMonthView::changeEventDisplay(KOEvent *, int)
+void KOMonthView::changeEventDisplay(Event *, int)
 {
   // this should be re-written to be much more efficient, but this
   // quick-and-dirty-hack gets the job done for right now.
@@ -792,7 +792,7 @@ void KOMonthView::newEventSlot(int index)
 
 void KOMonthView::doRightClickMenu()
 {
-  KOEvent *event = dynamic_cast<KOEvent *>(getSelected().first());
+  Event *event = dynamic_cast<Event *>(getSelected().first());
   if (event) {
     rightClickMenu->showEventPopup(event);
   } else {

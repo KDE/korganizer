@@ -18,8 +18,8 @@ class IMIPScheduler : public Scheduler {
     IMIPScheduler(CalObject *);
     virtual ~IMIPScheduler();
     
-    bool publish (KOEvent *incidence,const QString &recipients);
-    bool performTransaction(KOEvent *incidence,Method method);
+    bool publish (Event *incidence,const QString &recipients);
+    bool performTransaction(Event *incidence,Method method);
     QList<ScheduleMessage> retrieveTransactions();
 };
 

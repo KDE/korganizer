@@ -14,7 +14,7 @@
 
 QToolTipGroup *KOAgendaItem::mToolTipGroup = 0;
 
-KOAgendaItem::KOAgendaItem(KOEvent *event, QWidget *parent,
+KOAgendaItem::KOAgendaItem(Event *event, QWidget *parent,
                            const char *name,WFlags) :
   QFrame( parent, name )
 {

@@ -4,7 +4,7 @@
 #include <kdebug.h>
 #include <kiconloader.h>
 
-#include "koevent.h"
+#include "event.h"
 
 #include "koeventpopupmenu.h"
 #include "koeventpopupmenu.moc"
@@ -20,7 +20,7 @@ KOEventPopupMenu::KOEventPopupMenu()
                                    this,SLOT(popupDelete())));
 }
 
-void KOEventPopupMenu::showEventPopup(KOEvent *event)
+void KOEventPopupMenu::showEventPopup(Event *event)
 {
   mCurrentEvent = event;
   

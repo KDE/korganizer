@@ -11,16 +11,16 @@
 class ScheduleItemOut : public QListViewItem
 {
   public:
-    ScheduleItemOut(QListView *parent,KOEvent *ev,Scheduler::Method method,
+    ScheduleItemOut(QListView *parent,Event *ev,Scheduler::Method method,
                  const QString &recipients=QString::null);
     virtual ~ScheduleItemOut() {}
 
-    KOEvent *event() { return mEvent; }
+    Event *event() { return mEvent; }
     Scheduler::Method method() { return mMethod; }
     QString recipients() { return mRecipients; }
 
   private:
-    KOEvent *mEvent;
+    Event *mEvent;
     Scheduler::Method mMethod;
     QString mRecipients;
 };
@@ -33,8 +33,8 @@ class OutgoingDialog : public OutgoingDialog_base
                    bool modal=false,WFlags fl=0);
     ~OutgoingDialog();
 
-    bool addMessage(KOEvent *,Scheduler::Method);
-    bool addMessage(KOEvent *,Scheduler::Method,const QString &recipients);
+    bool addMessage(Event *,Scheduler::Method);
+    bool addMessage(Event *,Scheduler::Method,const QString &recipients);
 
   signals:
     void numMessagesChanged(int);

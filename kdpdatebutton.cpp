@@ -225,12 +225,12 @@ void KDateButton::dropEvent(QDropEvent *e)
     return;
   }
 
-  KOEvent *event = mCalendar->createDrop(e);
+  Event *event = mCalendar->createDrop(e);
 
   if (event) {
     e->acceptAction();
 
-    KOEvent *existingEvent = mCalendar->getEvent(event->getVUID());
+    Event *existingEvent = mCalendar->getEvent(event->getVUID());
       
     if(existingEvent) {
       // uniquify event

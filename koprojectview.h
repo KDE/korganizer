@@ -15,7 +15,7 @@
 #include <qlistview.h>
 
 #include "calobject.h"
-#include "koevent.h"
+#include "event.h"
 #include "kobaseview.h"
 #include "xQTask.h"
 
@@ -23,7 +23,7 @@ class xQGantt;
 
 /**
   This class provides an item of the project view. It is a xQTask with
-  an additional KOEvent attribute.
+  an additional Event attribute.
 */
 class KOProjectViewItem : public xQTask {
   public:
@@ -62,7 +62,7 @@ class KOProjectView : public KOBaseView
     void updateView();
     void updateConfig();
 
-    void changeEventDisplay(KOEvent *, int);
+    void changeEventDisplay(Event *, int);
   
     /**
      * selects the dates specified in the list.  If the view cannot support
@@ -76,7 +76,7 @@ class KOProjectView : public KOBaseView
      * Select events visible in the current display
      * @param eventList a list of events to select.
      */
-    void selectEvents(QList<KOEvent> eventList);
+    void selectEvents(QList<Event> eventList);
 
 /*
     void editItem(QListViewItem *item);
@@ -99,11 +99,10 @@ class KOProjectView : public KOBaseView
   
   signals:
     void newTodoSignal();
-    void newSubTodoSignal(KOEvent *);
-    void showTodoSignal(KOEvent *);
-
-    void editEventSignal(KOEvent *);
-    void deleteEventSignal(KOEvent *);
+    void newSubTodoSignal(Todo *);
+    void showTodoSignal(Todo *);
+    void editTodoSignal(Todo *);
+    void deleteTodoSignal(Todo *);
 
   private:
     void createMainTask();

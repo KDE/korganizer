@@ -6,7 +6,7 @@
 #include <qobject.h>
 #include <qstring.h>
 
-class KOEvent;
+class Event;
 class Attendee;
 
 /**
@@ -26,7 +26,7 @@ class MailMsgString
     /**
      * Method to build a plain text (text/plain) message body
      */
-    void buildTextMsg(KOEvent *);
+    void buildTextMsg(Event *);
 
     /**
      * This method returns the body of a mail msg
@@ -46,7 +46,7 @@ class KOMailClient : public QObject
     virtual ~KOMailClient();
     
   public slots:
-    void emailEvent(KOEvent *);
+    void emailEvent(Event *);
 
   protected:
     /** Send mail with specified from, to and subject field and body as text. If

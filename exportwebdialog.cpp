@@ -277,13 +277,13 @@ void ExportWebDialog::createHtmlEventList (QTextStream *ts)
   for (dt = mFromDate->getDate(); dt <= mToDate->getDate();
        dt = dt.addDays(1)) {
     kdDebug() << "Getting events for " << dt.toString() << endl;
-    QList<KOEvent> events = mCalendar->getEventsForDate(dt,true);
+    QList<Event> events = mCalendar->getEventsForDate(dt,true);
     if (events.count()) {
       *ts << "  <TR><TD COLSPAN=" << QString::number(columns)
           << " CLASS=datehead><I>"
           << KGlobal::locale()->formatDate(dt)
           << "</I></TD></TR>\n";
-      KOEvent *ev;
+      Event *ev;
       for(ev = events.first(); ev; ev = events.next()) {
         createHtmlEvent(ts,ev,dt);
       }
@@ -293,7 +293,7 @@ void ExportWebDialog::createHtmlEventList (QTextStream *ts)
   *ts << "</TABLE>\n";  
 }
 
-void ExportWebDialog::createHtmlEvent (QTextStream *ts, KOEvent *event,
+void ExportWebDialog::createHtmlEvent (QTextStream *ts, Event *event,
                                        QDate date)
 {
   kdDebug() << "ExportWebDialog::createHtmlEvent()" << endl;

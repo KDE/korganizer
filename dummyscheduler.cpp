@@ -8,7 +8,7 @@
 
 #include <kdebug.h>
 
-#include "koevent.h"
+#include "event.h"
 #include "icalformat.h"
 
 #include "dummyscheduler.h"
@@ -22,7 +22,7 @@ DummyScheduler::~DummyScheduler()
 {
 }
 
-bool DummyScheduler::publish (KOEvent *incidence,const QString &recipients)
+bool DummyScheduler::publish (Event *incidence,const QString &recipients)
 {
   QString messageText = mFormat->createScheduleMessage(incidence,
                                                        Scheduler::Publish);
@@ -30,7 +30,7 @@ bool DummyScheduler::publish (KOEvent *incidence,const QString &recipients)
   return saveMessage(messageText);
 }
 
-bool DummyScheduler::performTransaction(KOEvent *incidence,Method method)
+bool DummyScheduler::performTransaction(Event *incidence,Method method)
 {
   QString messageText = mFormat->createScheduleMessage(incidence,method);
 

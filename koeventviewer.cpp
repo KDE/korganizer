@@ -2,7 +2,7 @@
 
 #include <klocale.h>
 
-#include "koevent.h"
+#include "event.h"
 #include "todo.h"
 
 #include "koeventviewer.h"
@@ -24,7 +24,7 @@ void KOEventViewer::addTag(const QString & tag,const QString & text)
   mText.append(str);
 }
 
-void KOEventViewer::appendEvent(KOEvent *event)
+void KOEventViewer::appendEvent(Event *event)
 {
   addTag("h1",event->getSummary());
   
@@ -127,7 +127,7 @@ void KOEventViewer::setTodo(Todo *event)
   appendTodo(event);
 }
 
-void KOEventViewer::setEvent(KOEvent *event)
+void KOEventViewer::setEvent(Event *event)
 {
   clearEvents();
   appendEvent(event);

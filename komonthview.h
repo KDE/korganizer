@@ -15,7 +15,7 @@
 
 #include "qdatelist.h"
 #include "calobject.h"
-#include "koevent.h"
+#include "event.h"
 #include "koeventview.h"
 #include "ksellabel.h" 
 
@@ -90,13 +90,13 @@ class KSummaries: public KNoScrollListBox {
   QDate getDate() { return(myDate); }
   void setDate(QDate);
   void calUpdated();
-  KOEvent *getSelected();
+  Event *getSelected();
   
   QSize minimumSizeHint() const;
 
  signals:
   void daySelected(int index);
-  void editEventSignal(KOEvent *);
+  void editEventSignal(Event *);
 
  protected slots:
   void itemHighlighted(int);
@@ -106,7 +106,7 @@ class KSummaries: public KNoScrollListBox {
    QDate               myDate;
    int                 idx, itemIndex;
    CalObject          *myCal;
-   QIntDict<KOEvent> *currIdxs; 
+   QIntDict<Event> *currIdxs; 
 };
 
 class KOMonthView: public KOEventView {
@@ -136,16 +136,16 @@ class KOMonthView: public KOEventView {
    virtual void updateView();
    virtual void updateConfig();
    virtual void selectDates(const QDateList);
-   virtual void selectEvents(QList<KOEvent> eventList);
+   virtual void selectEvents(QList<Event> eventList);
 
-   void changeEventDisplay(KOEvent *, int);
+   void changeEventDisplay(Event *, int);
 
  signals:
    void newEventSignal();  // From KOBaseView
    void newEventSignal(QDate);
    void newEventSignal(QDateTime, QDateTime);  // From KOBaseView
-   void editEventSignal(KOEvent *);  // From KOBaseView
-   void deleteEventSignal(KOEvent *);  // From KOBaseView
+   void editEventSignal(Event *);  // From KOBaseView
+   void deleteEventSignal(Event *);  // From KOBaseView
    void datesSelected(const QDateList);  // From KOBaseView
 
  protected slots:

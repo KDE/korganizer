@@ -9,7 +9,7 @@
 #include <kprocess.h>
 #include <kaudioplayer.h>
 
-#include "koevent.h"
+#include "event.h"
 
 #include "koeventviewer.h"
 
@@ -42,7 +42,7 @@ AlarmDialog::~AlarmDialog()
 {
 }
 
-void AlarmDialog::appendEvent(KOEvent *event)
+void AlarmDialog::appendEvent(Event *event)
 {
   mEventViewer->appendEvent(event);
   mEvents.append(event);
@@ -68,7 +68,7 @@ void AlarmDialog::slotUser1()
 
 void AlarmDialog::eventNotification()
 {
-  KOEvent *anEvent;
+  Event *anEvent;
 
   for (anEvent = mEvents.first(); anEvent;
       anEvent = mEvents.next()) {

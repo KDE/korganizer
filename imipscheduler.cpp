@@ -3,7 +3,7 @@
 // IMIPScheduler - iMIP implementation of iTIP methods
 //
 
-#include "koevent.h"
+#include "event.h"
 #include "icalformat.h"
 
 #include "imipscheduler.h"
@@ -17,12 +17,12 @@ IMIPScheduler::~IMIPScheduler()
 {
 }
 
-bool IMIPScheduler::publish (KOEvent *incidence,const QString &recipients)
+bool IMIPScheduler::publish (Event *incidence,const QString &recipients)
 {
   return false;
 }
 
-bool IMIPScheduler::performTransaction(KOEvent *incidence,Method method)
+bool IMIPScheduler::performTransaction(Event *incidence,Method method)
 {
   mFormat->createScheduleMessage(incidence,method);
 

@@ -141,7 +141,7 @@ void KOEventEditor::enableRecurrence(bool enable)
   mRecurrence->setEnabled(enable);
 }
 
-void KOEventEditor::editEvent(KOEvent *event,QDate)
+void KOEventEditor::editEvent(Event *event,QDate)
 {
   mEvent = event;
   readEvent(mEvent);
@@ -170,10 +170,10 @@ bool KOEventEditor::processInput()
 {
   if (!validateInput()) return false;
 
-  KOEvent *event = 0;
+  Event *event = 0;
 
   if (mEvent) event = mEvent;
-  else event = new KOEvent;
+  else event = new Event;
   
   writeEvent(event);
   
@@ -221,7 +221,7 @@ void KOEventEditor::setDefaults(QDateTime from, QDateTime to, bool allDay)
   enableRecurrence(false);
 }
 
-void KOEventEditor::readEvent(KOEvent *event)
+void KOEventEditor::readEvent(Event *event)
 {
   mGeneral->readEvent(event);
   mDetails->readEvent(event);
@@ -235,7 +235,7 @@ void KOEventEditor::readEvent(KOEvent *event)
   // We should handle read-only events here.
 }
 
-void KOEventEditor::writeEvent(KOEvent *event)
+void KOEventEditor::writeEvent(Event *event)
 {
   mGeneral->writeEvent(event);
   mDetails->writeEvent(event);

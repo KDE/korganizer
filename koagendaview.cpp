@@ -227,8 +227,8 @@ KOAgendaView::KOAgendaView(CalObject *cal,QWidget *parent,const char *name) :
 
   // Create event context menu for all day agenda
   mAllDayAgendaPopup = eventPopup();
-  connect(mAllDayAgenda,SIGNAL(showEventPopupSignal(KOEvent *)),
-          mAllDayAgendaPopup,SLOT(showEventPopup(KOEvent *)));
+  connect(mAllDayAgenda,SIGNAL(showEventPopupSignal(Event *)),
+          mAllDayAgendaPopup,SLOT(showEventPopup(Event *)));
 
   // Create agenda frame
   QWidget *agendaFrame = new QWidget(mSplitterAgenda);
@@ -258,8 +258,8 @@ KOAgendaView::KOAgendaView(CalObject *cal,QWidget *parent,const char *name) :
   mAgendaPopup->addAdditionalItem(QIconSet(SmallIcon("bell")),
                                   i18n("ToggleAlarm"),mAgenda,
                                   SLOT(popupAlarm()),true);
-  connect(mAgenda,SIGNAL(showEventPopupSignal(KOEvent *)),
-          mAgendaPopup,SLOT(showEventPopup(KOEvent *)));
+  connect(mAgenda,SIGNAL(showEventPopupSignal(Event *)),
+          mAgendaPopup,SLOT(showEventPopup(Event *)));
 
   // Create day name labels for agenda columns
   mDayLabelsFrame = new QHBox(this);
@@ -287,18 +287,18 @@ KOAgendaView::KOAgendaView(CalObject *cal,QWidget *parent,const char *name) :
                   SLOT(newEvent(int,int)));
   connect(mAllDayAgenda,SIGNAL(newEventSignal(int,int)),
                         SLOT(newEventAllDay(int,int)));
-  connect(mAgenda,SIGNAL(editEventSignal(KOEvent *)),
-                  SIGNAL(editEventSignal(KOEvent *)));
-  connect(mAllDayAgenda,SIGNAL(editEventSignal(KOEvent *)),
-                        SIGNAL(editEventSignal(KOEvent *)));
-  connect(mAgenda,SIGNAL(showEventSignal(KOEvent *)),
-                  SIGNAL(showEventSignal(KOEvent *)));
-  connect(mAllDayAgenda,SIGNAL(showEventSignal(KOEvent *)),
-                        SIGNAL(showEventSignal(KOEvent *)));
-  connect(mAgenda,SIGNAL(deleteEventSignal(KOEvent *)),
-                  SIGNAL(deleteEventSignal(KOEvent *)));
-  connect(mAllDayAgenda,SIGNAL(deleteEventSignal(KOEvent *)),
-                        SIGNAL(deleteEventSignal(KOEvent *)));
+  connect(mAgenda,SIGNAL(editEventSignal(Event *)),
+                  SIGNAL(editEventSignal(Event *)));
+  connect(mAllDayAgenda,SIGNAL(editEventSignal(Event *)),
+                        SIGNAL(editEventSignal(Event *)));
+  connect(mAgenda,SIGNAL(showEventSignal(Event *)),
+                  SIGNAL(showEventSignal(Event *)));
+  connect(mAllDayAgenda,SIGNAL(showEventSignal(Event *)),
+                        SIGNAL(showEventSignal(Event *)));
+  connect(mAgenda,SIGNAL(deleteEventSignal(Event *)),
+                  SIGNAL(deleteEventSignal(Event *)));
+  connect(mAllDayAgenda,SIGNAL(deleteEventSignal(Event *)),
+                        SIGNAL(deleteEventSignal(Event *)));
   connect(mAgenda,SIGNAL(itemModified(KOAgendaItem *)),
                   SLOT(updateEventDates(KOAgendaItem *)));
   connect(mAllDayAgenda,SIGNAL(itemModified(KOAgendaItem *)),
@@ -311,10 +311,10 @@ KOAgendaView::KOAgendaView(CalObject *cal,QWidget *parent,const char *name) :
           SLOT(updateEventIndicatorBottom(int)));
 
   // drag signals
-  connect(mAgenda,SIGNAL(startDragSignal(KOEvent *)),
-          SLOT(startDrag(KOEvent *)));
-  connect(mAllDayAgenda,SIGNAL(startDragSignal(KOEvent *)),
-          SLOT(startDrag(KOEvent *)));
+  connect(mAgenda,SIGNAL(startDragSignal(Event *)),
+          SLOT(startDrag(Event *)));
+  connect(mAllDayAgenda,SIGNAL(startDragSignal(Event *)),
+          SLOT(startDrag(Event *)));
 
   // synchronize selections
   connect(mAgenda,SIGNAL(itemSelected(bool)),
@@ -384,7 +384,7 @@ int KOAgendaView::currentDateCount()
 QList<Incidence> KOAgendaView::getSelected()
 {
   QList<Incidence> selectedEvents;
-  KOEvent *event;
+  Event *event;
 
   event = mAgenda->selectedEvent();
   if (event) selectedEvents.append(event);
@@ -506,7 +506,7 @@ void KOAgendaView::selectDates(const QDateList list)
 }
 
 
-void KOAgendaView::selectEvents(QList<KOEvent>)
+void KOAgendaView::selectEvents(QList<Event>)
 {
   kdDebug() << "KOAgendaView::selectEvents() is not yet implemented" << endl;
 }
@@ -523,7 +523,7 @@ void KOAgendaView::setView(int view)
     mViewType = DAY;
 }
 
-void KOAgendaView::changeEventDisplay(KOEvent *, int)
+void KOAgendaView::changeEventDisplay(Event *, int)
 {
 //  kdDebug() << "KOAgendaView::changeEventDisplay" << endl;
   // this should be re-written to be MUCH smarter.  Right now we
@@ -706,7 +706,7 @@ void KOAgendaView::fillAgenda()
   mMinY.resize(mSelectedDates.count());
   mMaxY.resize(mSelectedDates.count());
 
-  QList<KOEvent> dayEvents;
+  QList<Event> dayEvents;
   int curCol;  // current column of agenda, i.e. the X coordinate
   QDate currentDate = mStartDate;
   for(curCol=0;curCol<int(mSelectedDates.count());++curCol) {
@@ -721,7 +721,7 @@ void KOAgendaView::fillAgenda()
 
     unsigned int numEvent;
     for(numEvent=0;numEvent<dayEvents.count();++numEvent) {
-      KOEvent *event = dayEvents.at(numEvent);
+      Event *event = dayEvents.at(numEvent);
 //      kdDebug() << " Event: " << event->getSummary() << endl;
 
       int beginX = currentDate.daysTo(event->getDtStart().date()) + curCol;
@@ -809,12 +809,12 @@ void KOAgendaView::newEventAllDay(int gx, int )
   emit newEventSignal(mStartDate.addDays(gx));
 }
 
-void KOAgendaView::showAgendaPopup(KOEvent *event)
+void KOAgendaView::showAgendaPopup(Event *event)
 {
   showEventPopup(mAgendaPopup,event);
 }
 
-void KOAgendaView::showAllDayAgendaPopup(KOEvent *event)
+void KOAgendaView::showAllDayAgendaPopup(Event *event)
 {
   showEventPopup(mAllDayAgendaPopup,event);
 }
@@ -841,7 +841,7 @@ void KOAgendaView::updateEventIndicatorBottom(int newY)
   mEventIndicatorBottom->update();
 }
 
-void KOAgendaView::startDrag(KOEvent *event)
+void KOAgendaView::startDrag(Event *event)
 {
   VCalDrag *vd = mCalendar->createDrag(event,this);
   if (vd->drag()) {

@@ -127,7 +127,7 @@ KOProjectView::KOProjectView(CalObject *calendar,QWidget* parent,
                    this,SLOT(popupMenu(QListViewItem *,const QPoint &,int)));
   QObject::connect(mTodoListView,SIGNAL(clicked(QListViewItem *)),
                    this,SLOT(itemClicked(QListViewItem *)));
-  connect(mTodoListView,SIGNAL(todoDropped(KOEvent *)),SLOT(updateView()));
+  connect(mTodoListView,SIGNAL(todoDropped(Event *)),SLOT(updateView()));
 */
 }
 
@@ -168,7 +168,7 @@ void KOProjectView::updateView()
 
 /*
   kdDebug() << "KOProjectView::updateView(): Todo List:" << endl;
-  KOEvent *t;
+  Event *t;
   for(t = todoList.first(); t; t = todoList.next()) {
     kdDebug() << "  " << t->getSummary() << endl;
 
@@ -176,15 +176,15 @@ void KOProjectView::updateView()
       kdDebug() << "      (related to " << t->getRelatedTo()->getSummary() << ")" << endl;
     }
 
-    QList<KOEvent> l = t->getRelations();
-    KOEvent *c;
+    QList<Event> l = t->getRelations();
+    Event *c;
     for(c=l.first();c;c=l.next()) {
       kdDebug() << "    - relation: " << c->getSummary() << endl;
     }
   }
 */
 
-  // Put for each KOEvent a KOProjectViewItem in the list view. Don't rely on a
+  // Put for each Event a KOProjectViewItem in the list view. Don't rely on a
   // specific order of events. That means that we have to generate parent items
   // recursively for proper hierarchical display of Todos.
   mTodoMap.clear();
@@ -267,7 +267,7 @@ QList<Incidence> KOProjectView::getSelected()
   return selected;
 }
 
-void KOProjectView::changeEventDisplay(KOEvent *, int)
+void KOProjectView::changeEventDisplay(Event *, int)
 {
   updateView();
 }
@@ -277,7 +277,7 @@ void KOProjectView::selectDates(const QDateList)
   updateView();
 }
  
-void KOProjectView::selectEvents(QList<KOEvent>)
+void KOProjectView::selectEvents(QList<Event>)
 {
   kdDebug() << "KOProjectView::selectEvents(): not yet implemented" << endl;
 }
@@ -350,11 +350,11 @@ void KOProjectView::purgeCompleted()
       i18n("Delete all completed todos?"),i18n("Purge Todos"),i18n("Purge"));
 
   if (result == KMessageBox::Continue) {
-    QList<KOEvent> todoCal = mCalendar->getTodoList();
+    QList<Todo> todoCal = mCalendar->getTodoList();
 
-    KOEvent *aTodo;
+    Todo *aTodo;
     for (aTodo = todoCal.first(); aTodo; aTodo = todoCal.next()) {
-    if (aTodo->getStatus() != KOEvent::NEEDS_ACTION)
+    if (aTodo->getStatus() != Incidence::NEEDS_ACTION)
       mCalendar->deleteTodo(aTodo);
     }
     updateView();
@@ -369,12 +369,12 @@ void KOProjectView::itemClicked(QListViewItem *item)
   int status = todoItem->event()->getStatus();  // Completed or not?
   
   if (todoItem->isOn()) {
-    if (status != KOEvent::COMPLETED) {
-      todoItem->event()->setStatus(KOEvent::COMPLETED);
+    if (status != Event::COMPLETED) {
+      todoItem->event()->setStatus(Event::COMPLETED);
     }
   } else {
-    if (status != KOEvent::NEEDS_ACTION) {
-      todoItem->event()->setStatus(KOEvent::NEEDS_ACTION);
+    if (status != Event::NEEDS_ACTION) {
+      todoItem->event()->setStatus(Event::NEEDS_ACTION);
     }
   }
 }

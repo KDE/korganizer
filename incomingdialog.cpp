@@ -4,7 +4,7 @@
 
 #include <kdebug.h>
 
-#include "koevent.h"
+#include "incidence.h"
 #include "dummyscheduler.h"
 #include "calobject.h"
 

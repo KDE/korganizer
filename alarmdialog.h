@@ -7,7 +7,7 @@
 
 #include <kdialogbase.h>
 
-class KOEvent;
+class Event;
 class KOEventViewer;
 class QSpinBox;
 
@@ -17,7 +17,7 @@ class AlarmDialog : public KDialogBase {
     AlarmDialog(QWidget *parent=0,const char *name=0);
     virtual ~AlarmDialog();
 
-    void appendEvent(KOEvent *event);
+    void appendEvent(Event *event);
 
     void eventNotification();
 
@@ -33,7 +33,7 @@ class AlarmDialog : public KDialogBase {
   private:
     KOEventViewer *mEventViewer;
     
-    QList<KOEvent> mEvents;
+    QList<Event> mEvents;
 
     QSpinBox *mSuspendSpin;
 };

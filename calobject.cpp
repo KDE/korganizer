@@ -46,7 +46,7 @@ class AddIncidenceVisitor : public IncidenceVisitor {
   public:
     AddIncidenceVisitor(CalObject *calendar) : mCalendar(calendar) {}
     
-    bool visit(KOEvent *e) { mCalendar->addEvent(e); return true; }
+    bool visit(Event *e) { mCalendar->addEvent(e); return true; }
     bool visit(Todo *t) { mCalendar->addTodo(t); return true; }
 
   private:
@@ -167,7 +167,7 @@ ICalFormat *CalObject::iCalFormat()
   return mICalFormat;
 }
 
-VCalDrag *CalObject::createDrag(KOEvent *selectedEv, QWidget *owner)
+VCalDrag *CalObject::createDrag(Event *selectedEv, QWidget *owner)
 {
   return mFormat->createDrag(selectedEv,owner);
 }
@@ -177,7 +177,7 @@ VCalDrag *CalObject::createDragTodo(Todo *selectedEv, QWidget *owner)
   return mFormat->createDragTodo(selectedEv,owner);
 }
 
-KOEvent *CalObject::createDrop(QDropEvent *de)
+Event *CalObject::createDrop(QDropEvent *de)
 {
   return mFormat->createDrop(de);
 }
@@ -188,18 +188,18 @@ Todo *CalObject::createDropTodo(QDropEvent *de)
   return mFormat->createDropTodo(de);
 }
 
-void CalObject::cutEvent(KOEvent *selectedEv)
+void CalObject::cutEvent(Event *selectedEv)
 {
   if (copyEvent(selectedEv))
     deleteEvent(selectedEv);
 }
 
-bool CalObject::copyEvent(KOEvent *selectedEv)
+bool CalObject::copyEvent(Event *selectedEv)
 {
   return mFormat->copyEvent(selectedEv);
 }
 
-KOEvent *CalObject::pasteEvent(const QDate *newDate,const QTime *newTime)
+Event *CalObject::pasteEvent(const QDate *newDate,const QTime *newTime)
 {
   return mFormat->pasteEvent(newDate,newTime);
 }
@@ -301,7 +301,7 @@ void CalObject::updateConfig()
     QString oldEmail = mOwnerEmail;
     //    oldEmail.detach();
     mOwnerEmail = configEmail;
-    KOEvent *firstEvent, *currEvent;
+    Event *firstEvent, *currEvent;
     bool atFirst = TRUE;
 
     firstEvent = last();
@@ -326,7 +326,7 @@ void CalObject::updateConfig()
   setTimeZone(KOPrefs::instance()->mTimeZone.latin1());
 
   if (updateFlag)
-    emit calUpdated((KOEvent *) 0L);
+    emit calUpdated((Event *) 0L);
 }
 
 QString CalObject::getHolidayForDate(const QDate &qd)
@@ -372,24 +372,24 @@ CalFilter *CalObject::filter()
   return mFilter;
 }
 
-QList<KOEvent> CalObject::getEventsForDate(const QDate &date,bool sorted)
+QList<Event> CalObject::getEventsForDate(const QDate &date,bool sorted)
 {
-  QList<KOEvent> el = eventsForDate(date,sorted);
+  QList<Event> el = eventsForDate(date,sorted);
   mFilter->apply(&el);
   return el;
 }
 
-QList<KOEvent> CalObject::getEventsForDate(const QDateTime &qdt)
+QList<Event> CalObject::getEventsForDate(const QDateTime &qdt)
 {
-  QList<KOEvent> el = eventsForDate(qdt);
+  QList<Event> el = eventsForDate(qdt);
   mFilter->apply(&el);
   return el;
 }
 
-QList<KOEvent> CalObject::getEvents(const QDate &start,const QDate &end,
+QList<Event> CalObject::getEvents(const QDate &start,const QDate &end,
                                     bool inclusive)
 {
-  QList<KOEvent> el = events(start,end,inclusive);
+  QList<Event> el = events(start,end,inclusive);
   mFilter->apply(&el);
   return el;
 }

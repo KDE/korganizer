@@ -23,13 +23,13 @@ CalFilter::~CalFilter()
 {
 }
 
-void CalFilter::apply(QList<KOEvent> *eventlist)
+void CalFilter::apply(QList<Event> *eventlist)
 {
   if (!mEnabled) return;
 
 //  kdDebug() << "CalFilter::apply()" << endl;
 
-  KOEvent *event = eventlist->first();
+  Event *event = eventlist->first();
   while(event) {
     if (!filterEvent(event)) {
       eventlist->remove();
@@ -42,7 +42,7 @@ void CalFilter::apply(QList<KOEvent> *eventlist)
 //  kdDebug() << "CalFilter::apply() done" << endl;
 }
 
-bool CalFilter::filterEvent(KOEvent *event)
+bool CalFilter::filterEvent(Event *event)
 {
 //  kdDebug() << "CalFilter::filterEvent(): " << event->getSummary() << endl;
 

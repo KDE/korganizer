@@ -2,7 +2,7 @@
 
 #include <klocale.h>
 
-#include "koevent.h"
+#include "event.h"
 #include "koeventviewer.h"
 
 #include "koeventviewerdialog.h"
@@ -23,7 +23,7 @@ KOEventViewerDialog::~KOEventViewerDialog()
 {
 }
 
-void KOEventViewerDialog::setEvent(KOEvent *event)
+void KOEventViewerDialog::setEvent(Event *event)
 {
   mEventViewer->setEvent(event);
 }

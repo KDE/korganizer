@@ -8,7 +8,7 @@
 #include <qdatetime.h>
 #include <qlist.h>
 
-#include "koevent.h"
+#include "event.h"
 #include "todo.h"
 
 #include "calformat.h"
@@ -61,20 +61,20 @@ class CalObject : public QObject {
     virtual void close() = 0;
   
     /** create an object to be used with the Xdnd Drag And Drop protocol. */
-    VCalDrag *createDrag(KOEvent *selectedEv, QWidget *owner);
+    VCalDrag *createDrag(Event *selectedEv, QWidget *owner);
     /** create an object to be used with the Xdnd Drag And Drop protocol. */
     VCalDrag *createDragTodo(Todo *selectedEv, QWidget *owner);
     /** Create Todo object from drop event */
     Todo *createDropTodo(QDropEvent *de);
     /** Create Event object from drop event */
-    KOEvent *createDrop(QDropEvent *de);
+    Event *createDrop(QDropEvent *de);
   
     /** cut event to clipboard */
-    void cutEvent(KOEvent *);
+    void cutEvent(Event *);
     /** copy event to clipboard */
-    bool copyEvent(KOEvent *);
+    bool copyEvent(Event *);
     /** pastes the event and returns a pointer to the new event pasted. */
-    KOEvent *pasteEvent(const QDate *, const QTime *newTime = 0L);
+    Event *pasteEvent(const QDate *, const QTime *newTime = 0L);
   
     /** set the owner of the calendar.  Should be owner's full name. */
     const QString &getOwner() const;
@@ -94,37 +94,37 @@ class CalObject : public QObject {
     /* compute an ISO 8601 format string from the time zone. */
     QString getTimeZoneStr() const;
   
-    /** adds a KOEvent to this calendar object.
+    /** adds a Event to this calendar object.
      * @param anEvent a pointer to the event to add
      */
-    virtual void addEvent(KOEvent *anEvent) = 0;
+    virtual void addEvent(Event *anEvent) = 0;
     /** Delete event from calendar */
-    virtual void deleteEvent(KOEvent *) = 0;
+    virtual void deleteEvent(Event *) = 0;
 
     /** retrieves an event on the basis of the unique string ID. */
-    virtual KOEvent *getEvent(const QString &UniqueStr) = 0;
+    virtual Event *getEvent(const QString &UniqueStr) = 0;
     /**
       Builds and then returns a list of all events that match for the
       date specified. useful for dayView, etc. etc.
       The calendar filter is applied.
     */
-    QList<KOEvent> getEventsForDate(const QDate &date,bool sorted=false);
+    QList<Event> getEventsForDate(const QDate &date,bool sorted=false);
     /**
       Get events, which occur on the given date.
       The calendar filter is applied.
     */
-    QList<KOEvent> getEventsForDate(const QDateTime &qdt);
+    QList<Event> getEventsForDate(const QDateTime &qdt);
     /**
       Get events in a range of dates. If inclusive is set to true, only events
       are returned, which are completely included in the range.
       The calendar filter is applied.
     */
-    QList<KOEvent> getEvents(const QDate &start,const QDate &end,
+    QList<Event> getEvents(const QDate &start,const QDate &end,
                              bool inclusive=false);
     /**
       Return all events in calendar
     */
-    virtual QList<KOEvent> getAllEvents() = 0;
+    virtual QList<Event> getAllEvents() = 0;
   
     /**
       Set calendar filter, which filters events for the getEvents* functions.
@@ -164,7 +164,7 @@ class CalObject : public QObject {
   signals:
     /** emitted at regular intervals to indicate that the events in the
       list have triggered an alarm. */
-    void alarmSignal(QList<KOEvent> &);
+    void alarmSignal(QList<Event> &);
     /** emitted whenever an event in the calendar changes.  Emits a pointer
       to the changed event. */
     void calUpdated(Incidence *);
@@ -180,17 +180,17 @@ class CalObject : public QObject {
     /**
       Get events, which occur on the given date.
     */
-    virtual QList<KOEvent> eventsForDate(const QDate &date,
+    virtual QList<Event> eventsForDate(const QDate &date,
                                          bool sorted=false) = 0;
     /**
       Get events, which occur on the given date.
     */
-    virtual QList<KOEvent> eventsForDate(const QDateTime &qdt) = 0;
+    virtual QList<Event> eventsForDate(const QDateTime &qdt) = 0;
     /**
       Get events in a range of dates. If inclusive is set to true, only events
       are returned, which are completely included in the range.
     */
-    virtual QList<KOEvent> events(const QDate &start,const QDate &end,
+    virtual QList<Event> events(const QDate &start,const QDate &end,
                                   bool inclusive=false) = 0;
 
     /** Read name of holidayfile from config object */
