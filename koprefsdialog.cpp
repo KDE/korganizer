@@ -422,14 +422,14 @@ void KOPrefsDialog::setupColorsTab()
 
   // Todo due today color
   KPrefsWidColor *todoDueTodayColor =
-      addWidColor(i18n("Todo due today Color"),
+      addWidColor(i18n("Todo Due Today Color"),
                   &(KOPrefs::instance()->mTodoDueTodayColor),topFrame);
   topLayout->addWidget(todoDueTodayColor->preview(),5,0);
   topLayout->addWidget(todoDueTodayColor->button(),5,1);
   
   // Todo overdue color
   KPrefsWidColor *todoOverdueColor =
-      addWidColor(i18n("Todo overdue Color"),
+      addWidColor(i18n("Todo Overdue Color"),
                   &(KOPrefs::instance()->mTodoOverdueColor),topFrame);
   topLayout->addWidget(todoOverdueColor->preview(),6,0);
   topLayout->addWidget(todoOverdueColor->button(),6,1);
