@@ -42,7 +42,7 @@
 
 #include <libkdepim/kdateedit.h>
 
-
+#include "koprefs.h"
 #include "calprintplugins.h"
 #ifndef KORG_NOPRINTER
 
@@ -111,12 +111,10 @@ void CalPrintDay::setSettingsWidget()
 void CalPrintDay::loadConfig()
 {
   if ( mConfig ) {
-    // TODO_RK: Use global setting for day start
     QDate dt;
-    QTime tm1( 8, 0 );
-    QTime tm2( 18, 0 );
-    QDateTime startTm( dt, tm1 );
-    QDateTime endTm( dt, tm2 );
+    QTime tm1( KOPrefs::instance()->mDayBegins , 0 );
+    QDateTime startTm( dt, tm1  );
+    QDateTime endTm( dt, tm1.addSecs( 43200 ) );
     mStartTime = mConfig->readDateTimeEntry( "Start time", &startTm ).time();
     mEndTime = mConfig->readDateTimeEntry( "End time", &endTm ).time();
     mIncludeTodos = mConfig->readBoolEntry( "Include todos", false );
@@ -255,12 +253,10 @@ void CalPrintWeek::setSettingsWidget()
 void CalPrintWeek::loadConfig()
 {
   if ( mConfig ) {
-    // TODO_RK: Use global setting for day start
     QDate dt;
-    QTime tm1( 8, 0 );
-    QTime tm2( 18, 0 );
-    QDateTime startTm( dt, tm1 );
-    QDateTime endTm( dt, tm2 );
+    QTime tm1( KOPrefs::instance()->mDayBegins , 0 );
+    QDateTime startTm( dt, tm1  );
+    QDateTime endTm( dt, tm1.addSecs( 43200 ) );
     mStartTime = mConfig->readDateTimeEntry( "Start time", &startTm ).time();
     mEndTime = mConfig->readDateTimeEntry( "End time", &endTm ).time();
     mIncludeTodos = mConfig->readBoolEntry( "Include todos", false );
