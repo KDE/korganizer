@@ -129,9 +129,10 @@ void MarcusBains::updateLocation(bool recalculate)
 
   mTimeBox->setText(KGlobal::locale()->formatTime(tim, KOPrefs::instance()->mMarcusBainsShowSeconds));
   mTimeBox->adjustSize();
+  if (y-mTimeBox->height()>=0) y-=mTimeBox->height(); else y++;
   agenda->moveChild(mTimeBox,
                     (int)(x+agenda->gridSpacingX()-mTimeBox->width()-1),
-                    y-mTimeBox->height());
+                    y);
   mTimeBox->raise();
   mTimeBox->setAutoMask(true);
 
