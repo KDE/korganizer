@@ -131,9 +131,6 @@ class ResourceView : public CalendarViewExtension
     void currentChanged( QListViewItem* );
     void slotSubresourceAdded( ResourceCalendar *, const QString &,
                                const QString &resource,const QString& label );
-    // FIXME proko2: merge once we are back in head by porting imap resource
-    void slotSubresourceAdded( ResourceCalendar *, const QString &,
-                               const QString &resource );
 
     void slotSubresourceRemoved( ResourceCalendar *, const QString &,
                                  const QString & );
