@@ -588,14 +588,14 @@ void CalendarView::eventDeleted()
 void CalendarView::todoChanged( Todo *oldTodo, Todo *newTodo )
 {
   updateTodoViews();
-  
+
   mHistory->recordEdit( oldTodo, newTodo );
 }
 
 void CalendarView::todoAdded( Todo *todo )
 {
   updateTodoViews();
-  
+
   mHistory->recordAdd( todo );
 }
 
@@ -702,11 +702,29 @@ void CalendarView::edit_copy()
 
 void CalendarView::edit_paste()
 {
-  QDate date = mNavigator->selectedDates().first();
+// If in agenda view, use the selected time and date from there.
+// In all other cases, paste the event on the first day of the
+// selection in the day matrix on the left
+
+  QDate date;
+  // create an invalid time to check if we got a new time for the eevent
+  QTime time(-1,-1);
+
+  KOAgendaView *aView = mViewManager->agendaView();
+  if (aView && aView->selectionStart().isValid()) {
+      date = aView->selectionStart().date();
+      if (!aView->selectedIsAllDay())
+        time = aView->selectionStart().time();
+  } else {
+    date = mNavigator->selectedDates().first();
+  }
 
   DndFactory factory( mCalendar );
-  Event *pastedEvent = factory.pasteEvent( date );
-
+  Event *pastedEvent;
+  if (time.isValid())
+    pastedEvent = factory.pasteEvent( date, &time );
+  else
+    pastedEvent = factory.pasteEvent( date );
   changeEventDisplay( pastedEvent, KOGlobals::EVENTADDED );
 }
 
