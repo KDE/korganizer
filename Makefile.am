@@ -10,7 +10,8 @@ INCLUDES = \
   -I$(top_srcdir)/libkpimidentities \
   -I$(top_srcdir)/mimelib \
   -I$(top_srcdir)/ktnef \
-  -I$(top_srcdir)/certmanager/lib/ \
+  -I$(top_srcdir)/certmanager/lib \
+  -I$(top_srcdir)/kresources/remote \
   -I$(top_srcdir) \
   $(all_includes)
 
