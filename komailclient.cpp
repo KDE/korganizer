@@ -166,13 +166,13 @@ bool KOMailClient::sendMail(const QString &from,const QString &to,
     textComplete += QString::fromLatin1("To: ") + to + '\n';
     if (bcc) textComplete += QString::fromLatin1("Bcc: ") + from + '\n';
     textComplete += QString::fromLatin1("Subject: ") + subject + '\n';
-    textComplete += QString::fromLatin1("X-Mailer: KOrganier") + korgVersion +
+    textComplete += QString::fromLatin1("X-Mailer: KOrganizer") + korgVersion +
                     '\n';
   }
   textComplete += '\n'; // end of headers
   textComplete += body;
 
-  fwrite(textComplete.latin1(),textComplete.length(),1,fd);
+  fwrite(textComplete.local8Bit(),textComplete.length(),1,fd);
 
   pclose(fd);
 
