@@ -61,6 +61,7 @@
 #include "calprinter.h"
 #endif
 
+#include "koincidencetooltip.h"
 #include "koagendaview.h"
 #include "koagendaview.moc"
 
@@ -248,7 +249,7 @@ void EventIndicator::enableColumn(int column, bool enable)
 }
 
 
-
+#include <libkcal/incidence.h>
 
 ////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////
@@ -663,7 +664,8 @@ void KOAgendaView::updateEventDates(KOAgendaItem *item)
 
   item->incidence()->setRevision(item->incidence()->revision()+1);
   item->setItemDate(startDt.date());
-  item->generateToolTip();
+  KOIncidenceToolTip::remove(item);
+  KOIncidenceToolTip::add( item, item->incidence(), KOAgendaItem::toolTipGroup() );
 
   emit eventChanged();
 

@@ -36,6 +36,7 @@
 
 #include "koprefs.h"
 
+#include "koincidencetooltip.h"
 #include "koagendaitem.h"
 #include "koagendaitem.moc"
 
@@ -71,49 +72,8 @@ KOAgendaItem::KOAgendaItem(Incidence *incidence, QDate qd, QWidget *parent,
   mSelected = true;
   select(false);
 
-  generateToolTip();
+  KOIncidenceToolTip::add( this, incidence, toolTipGroup() );
   setAcceptDrops(true);
-}
-
-void KOAgendaItem::generateToolTip()
-{
-  QString tipText = "<qt><b>"+ mIncidence->summary().replace("\n", "<br>")+"</b>";
-
-  if ( !mIncidence->doesFloat() ) {
-    if ( mIncidence->type() == "Event" ) {
-      if ( (static_cast<Event*>(mIncidence))->isMultiDay() ) {
-        tipText += "<br>"+i18n("From: ")+mIncidence->dtStartStr();
-        tipText += "<br>"+i18n("To: ")+(static_cast<Event*>(mIncidence))->dtEndStr();
-      }
-      else {
-        tipText += "<br>"+i18n("Time: ")+mIncidence->dtStartTimeStr();
-        tipText += " - "+(static_cast<Event*>(mIncidence))->dtEndTimeStr();
-      }
-    }
-    else if ( mIncidence->type() == "Todo" ) {
-      tipText += "<br>"+i18n("Due: ")+ (static_cast<Todo*>(mIncidence))->dtDueTimeStr();
-    }
-  } else {
-    if ( mIncidence->type() == "Event" ) {
-      if ( (static_cast<Event*>(mIncidence))->isMultiDay() ) {
-        tipText += "<br>"+i18n("From: ")+mIncidence->dtStartDateStr();
-        tipText += "<br>"+i18n("To: ")+(static_cast<Event*>(mIncidence))->dtEndDateStr();
-      } else {
-        tipText += "<br>"+i18n("Date: ")+mIncidence->dtStartDateStr();
-      }
-    }
-  }
-
-
-  if (!mIncidence->location().isEmpty()) {
-    tipText += "<br>"+i18n("Location: ")+mIncidence->location().replace("\n", "<br>");
-  }
-  if (!mIncidence->description().isEmpty()) {
-    tipText += "<br><hr>" +mIncidence->description().replace("\n", "<br>");
-  }
-  tipText += "</qt>";
-  QToolTip::add(this,tipText,toolTipGroup(),"");
-
 }
 
 void KOAgendaItem::updateIcons()

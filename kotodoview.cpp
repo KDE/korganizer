@@ -42,6 +42,7 @@
 #endif
 #include "docprefs.h"
 
+#include "koincidencetooltip.h"
 #include "kotodoview.h"
 using namespace KOrg;
 #include "kotodoview.moc"
@@ -63,7 +64,7 @@ void KOTodoListViewToolTip::maybeTip( const QPoint & pos)
   KOTodoViewItem *i=(KOTodoViewItem *)todolist->itemAt(pos);
 
   /* Check wether a tooltip is necessary. */
-  if(i && col == 2)
+  if(i)// && col == 2)
   {
 
     /* Calculate the rectangle. */
@@ -73,7 +74,11 @@ void KOTodoListViewToolTip::maybeTip( const QPoint & pos)
     r.setRight(headerPos + todolist->header()->sectionSize(col));
 
     /* Show the tip */
-    tip(r, i18n("%1 %").arg(QString::number(i->todo()->percentComplete())));
+    QString tipText;
+    ToolTipVisitor v;
+    if (v.act(i->todo(), &tipText, true)) {
+      tip(r, tipText);
+    }
   }
 
 }
