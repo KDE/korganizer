@@ -48,9 +48,7 @@
 KDateNavigator::KDateNavigator( QWidget *parent, const char *name )
   : QFrame( parent, name )
 {
-  setFrameStyle( QFrame::NoFrame );
-
-  QGridLayout *topLayout = new QGridLayout( this, 8, 8 );
+  QGridLayout* topLayout = new QGridLayout( this, 8, 8 );
 
   mNavigatorBar = new NavigatorBar( this );
   topLayout->addMultiCellWidget( mNavigatorBar, 0, 0, 0, 7 );
@@ -84,8 +82,6 @@ KDateNavigator::KDateNavigator( QWidget *parent, const char *name )
   }
 
   mDayMatrix = new KODayMatrix( this, "KDateNavigator::dayMatrix" );
-  mDayMatrix->setFrameStyle( QFrame::Panel | QFrame::Sunken );
-  mDayMatrix->setLineWidth( 1 );
 
   connect( mDayMatrix, SIGNAL( selected( const KCal::DateList & ) ),
            SIGNAL( datesSelected( const KCal::DateList & ) ) );
