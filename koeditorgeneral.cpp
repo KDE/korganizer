@@ -152,6 +152,11 @@ void KOEditorGeneral::initAlarm(QWidget *parent,QBoxLayout *topLayout)
   QToolTip::add(mAlarmProgramButton, i18n("No program set"));
   connect(mAlarmProgramButton, SIGNAL(clicked()), SLOT(pickAlarmProgram()));
   alarmLayout->addWidget(mAlarmProgramButton);
+
+  if ( KOPrefs::instance()->mCompactDialogs ) {
+    mAlarmSoundButton->hide();
+    mAlarmProgramButton->hide();
+  }
 }
 
 void KOEditorGeneral::pickAlarmSound()

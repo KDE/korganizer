@@ -268,7 +268,10 @@ void KDateNavigator::updateConfig()
       if (i==0) day = 7;
       else day = i;
     }
-    headings[i]->setText( KOGlobals::self()->calendarSystem()->weekDayName(day, true) );
+    QString dayName = KOGlobals::self()->calendarSystem()->weekDayName( day,
+                                                                        true );
+    if ( KOPrefs::instance()->mCompactDialogs ) dayName = dayName.left( 1 );
+    headings[i]->setText( dayName );
   }
   updateDates();
   updateView();

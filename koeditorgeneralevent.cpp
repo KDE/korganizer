@@ -116,10 +116,14 @@ void KOEditorGeneralEvent::initTime(QWidget *parent,QBoxLayout *topLayout)
   flagsBox->addWidget(mNoTimeButton);
   connect(mNoTimeButton, SIGNAL(toggled(bool)),SLOT(dontAssociateTime(bool)));
 
-  mDurationLabel = new QLabel(timeBoxFrame);
-  flagsBox->addWidget(mDurationLabel,0,2);
+  mDurationLabel = new QLabel( timeBoxFrame );
+  if ( KOPrefs::instance()->mCompactDialogs ) {
+    layoutTimeBox->addMultiCellWidget( mDurationLabel, 3, 3, 0, 3 );
+  } else {
+    flagsBox->addWidget( mDurationLabel, 0, 2 );
+  }
 
-  layoutTimeBox->addMultiCellLayout(flagsBox,2,2,0,3);
+  layoutTimeBox->addMultiCellLayout( flagsBox, 2, 2, 0, 3 );
 
   // time widgets are checked if they contain a valid time
   connect(mStartTimeEdit, SIGNAL(timeChanged(QTime)),
