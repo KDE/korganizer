@@ -290,22 +290,6 @@ class KODayMatrix: public QFrame
     /** dynamic tooltip to handle mouse dependent tips for each day in the matrix. */
     DynamicTip* mToolTip;
 
-
-    /** default background color of the matrix. */
-    QColor    mDefaultBackColor;
-
-    /** default text color of the matrix. */
-    QColor    mDefaultTextColor;
-
-    /** default text color for days not in the actual month. */
-    QColor    mDefaultTextColorShaded;
-
-    /** default text color for holidays not in the actual month. */
-    QColor    mHolidayColorShaded;
-
-    /** text color for selected days. */
-    QColor    mSelectedDaysColor;
-
     /** default width of the frame drawn around today if it is visible in the matrix. */
     int       mTodayMarginWidth;
 

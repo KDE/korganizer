@@ -107,12 +107,6 @@ KODayMatrix::KODayMatrix( QWidget *parent, const char *name )
   mEvents = new int[ NUMDAYS ];
   mToolTip = new DynamicTip( this );
 
-  // set default values used for drawing the matrix
-  mDefaultBackColor = palette().active().base();
-  mDefaultTextColor = palette().active().foreground();
-  mDefaultTextColorShaded = getShadedColor( mDefaultTextColor );
-  mHolidayColorShaded = getShadedColor( KOPrefs::instance()->mHolidayColor );
-  mSelectedDaysColor = QColor( "white" );
   mTodayMarginWidth = 2;
   mSelEnd = mSelStart = NOSELECTION;
   setBackgroundMode( NoBackground );
@@ -510,12 +504,14 @@ void KODayMatrix::paintEvent( QPaintEvent * )
   int selw, selh;
   bool isRTL = KOGlobals::self()->reverseLayout();
 
+  QColorGroup cg = palette().active();
+
   p.begin(  &pm, this );
-  pm.fill( mDefaultBackColor );
+  pm.fill( cg.base() );
 
   // draw topleft frame
-  p.setPen(mDefaultTextColor);
-  p.drawRect(0, 0, sz.width()+1, sz.height()+1);
+  p.setPen( cg.mid() );
+  p.drawRect(0, 0, sz.width()-1, sz.height()-1);
   // don't paint over borders
   p.translate(1,1);
 
@@ -547,7 +543,9 @@ void KODayMatrix::paintEvent( QPaintEvent * )
   }
 
   // iterate over all days in the matrix and draw the day label in appropriate colors
-  QColor actcol = mDefaultTextColorShaded;
+  QColor textColor = cg.text();
+  QColor textColorShaded = getShadedColor( textColor );
+  QColor actcol = textColorShaded;
   p.setPen(actcol);
   QPen tmppen;
   for ( int i = 0; i < NUMDAYS; ++i ) {
@@ -556,10 +554,10 @@ void KODayMatrix::paintEvent( QPaintEvent * )
 
     // if it is the first day of a month switch color from normal to shaded and vice versa
     if ( KOGlobals::self()->calendarSystem()->day( mDays[i] ) == 1) {
-      if (actcol == mDefaultTextColorShaded) {
-        actcol = mDefaultTextColor;
+      if (actcol == textColorShaded) {
+        actcol = textColor;
       } else {
-        actcol = mDefaultTextColorShaded;
+        actcol = textColorShaded;
       }
       p.setPen(actcol);
     }
@@ -571,6 +569,7 @@ void KODayMatrix::paintEvent( QPaintEvent * )
 
     bool holiday = ! KOGlobals::self()->isWorkDay( mDays[ i ] );
 
+    QColor holidayColorShaded = getShadedColor( KOPrefs::instance()->mHolidayColor );
     // if today then draw rectangle around day
     if (mToday == i) {
       tmppen = p.pen();
@@ -579,10 +578,10 @@ void KODayMatrix::paintEvent( QPaintEvent * )
       mTodayPen.setWidth(mTodayMarginWidth);
       //draw red rectangle for holidays
       if (holiday) {
-        if (actcol == mDefaultTextColor) {
+        if (actcol == textColor) {
           mTodayPen.setColor(KOPrefs::instance()->mHolidayColor);
         } else {
-          mTodayPen.setColor(mHolidayColorShaded);
+          mTodayPen.setColor(holidayColorShaded);
         }
       }
       //draw gray rectangle for today if in selection
@@ -604,17 +603,17 @@ void KODayMatrix::paintEvent( QPaintEvent * )
 
     // if it is a holiday then use the default holiday color
     if (holiday) {
-      if (actcol == mDefaultTextColor) {
+      if (actcol == textColor) {
         p.setPen(KOPrefs::instance()->mHolidayColor);
       } else {
-        p.setPen(mHolidayColorShaded);
+        p.setPen(holidayColorShaded);
       }
     }
 
     // draw selected days with special color
     // DO NOT specially highlight holidays in selection !
     if (i >= mSelStart && i <= mSelEnd) {
-      p.setPen(mSelectedDaysColor);
+      p.setPen( QColor( "white" ) );
     }
 
     p.drawText(col*dwidth, row*dheight, dwidth, dheight,
