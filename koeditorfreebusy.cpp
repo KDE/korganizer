@@ -568,6 +568,8 @@ void KOEditorFreeBusy::reload()
 void KOEditorFreeBusy::editFreeBusyUrl( KDGanttViewItem *i )
 {
   FreeBusyItem *item = static_cast<FreeBusyItem *>( i );
+  if ( !item ) return;
+
   Attendee *attendee = item->attendee();
   
   FreeBusyUrlDialog dialog( attendee, this );
