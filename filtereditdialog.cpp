@@ -29,6 +29,7 @@
 #include <qcheckbox.h>
 #include <qradiobutton.h>
 #include <qlistbox.h>
+#include <qwhatsthis.h>
 
 #include <kdebug.h>
 #include <klocale.h>
