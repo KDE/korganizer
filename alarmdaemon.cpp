@@ -15,9 +15,9 @@
 #include <kglobal.h>
 #include <ksimpleconfig.h>
 #include <kiconloader.h>
-#include <kprocess.h>
 #include <kmessagebox.h>
 #include <knotifyclient.h>
+#include <krun.h>
 #include <kio/netaccess.h>
 
 //#include "config.h"
@@ -59,9 +59,8 @@ void AlarmDockWindow::mousePressEvent(QMouseEvent *e)
 {
   if (e->button() == LeftButton) {
     // start up a korganizer.
-    KProcess proc;
-    proc << "korganizer";
-    proc.start(KProcess::DontCare);
+    KURL::List noargs;
+    KRun::run("korganizer", noargs);
   } else
     KSystemTray::mousePressEvent(e);
 }
