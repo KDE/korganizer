@@ -28,7 +28,6 @@
 #include <qlayout.h>
 #include <qdatetime.h>
 
-#include <kdatepik.h>
 #include <kiconloader.h>
 #include <klocale.h>
 

@@ -29,7 +29,6 @@
 #include <qlayout.h>
 #include <qwidgetstack.h>
 
-#include <kdatepik.h>
 #include <kiconloader.h>
 #include <kdebug.h>
 #include <klocale.h>

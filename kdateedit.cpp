@@ -30,7 +30,7 @@
 #include <klocale.h>
 #include <kglobal.h>
 #include <kiconloader.h>
-#include <kdatepik.h>
+#include <kdatepicker.h>
 #include <knotifyclient.h>
 
 #include "kdateedit.h"
