@@ -66,44 +66,44 @@ libkorganizer_la_SOURCES =  outgoingdialog_base.ui \
 	datenavigator.cpp kdatenavigator.cpp \
 	komonthview.cpp \
 	searchdialog.cpp calendarview.cpp koviewmanager.cpp \
-        kodialogmanager.cpp \
+	kodialogmanager.cpp \
 	calprintdayconfig_base.ui calprintweekconfig_base.ui \
 	calprintmonthconfig_base.ui calprinttodoconfig_base.ui \
 	calprinter.cpp calprintbase.cpp calprintplugins.cpp \
 	archivedialog.cpp \
 	komailclient.cpp kotodoview.cpp kotodoviewitem.cpp \
-        kolistview.cpp \
-        koprefsdialog.cpp \
-        koincidenceeditor.cpp koeventeditor.cpp kotodoeditor.cpp \
-        koprefs.cpp kowindowlist.cpp \
-        koeditorgeneral.cpp \
-        koeditorgeneralevent.cpp koeditorgeneraltodo.cpp koeditordetails.cpp \
-        koeditorrecurrence.cpp koeditorattachments.cpp \
-        kogroupwareprefspage.ui koeventpopupmenu.cpp koeditorfreebusy.cpp \
-        outgoingdialog.cpp \
+	kolistview.cpp \
+	koprefsdialog.cpp \
+	koincidenceeditor.cpp koeventeditor.cpp kotodoeditor.cpp \
+	koprefs.cpp kowindowlist.cpp \
+	koeditorgeneral.cpp \
+	koeditorgeneralevent.cpp koeditorgeneraltodo.cpp koeditordetails.cpp \
+	koeditorrecurrence.cpp koeditorattachments.cpp \
+	kogroupwareprefspage.ui koeventpopupmenu.cpp koeditorfreebusy.cpp \
+	outgoingdialog.cpp \
 	incomingdialog_base.ui incomingdialog.cpp \
 	publishdialog_base.ui publishdialog.cpp \
-        koeventview.cpp \
-        kofilterview_base.ui kofilterview.cpp \
-        korganizeriface.skel kcalendariface.skel \
-        filtereditdialog.cpp filteredit_base.ui \
-        kowhatsnextview.cpp kocounterdialog.cpp \
-        kojournalview.cpp journalentry.cpp \
-        kocore.cpp plugindialog.cpp mailscheduler.cpp \
+	koeventview.cpp \
+	kofilterview_base.ui kofilterview.cpp \
+	korganizeriface.skel kcalendariface.skel \
+	filtereditdialog.cpp filteredit_base.ui \
+	kowhatsnextview.cpp kocounterdialog.cpp \
+	kojournalview.cpp journalentry.cpp \
+	kocore.cpp plugindialog.cpp mailscheduler.cpp \
 	kodaymatrix.cpp docprefs.cpp statusdialog.cpp\
-        kotimespanview.cpp timespanview.cpp lineview.cpp timeline.cpp \
-        koglobals.cpp konewstuff.cpp \
-        alarmclient.cpp \
+	kotimespanview.cpp timespanview.cpp lineview.cpp timeline.cpp \
+	koglobals.cpp konewstuff.cpp \
+	alarmclient.cpp \
 	actionmanager.cpp resourceview.cpp \
-        navigatorbar.cpp kogroupware.cpp \
+	navigatorbar.cpp kogroupware.cpp \
 	kogroupwareincomingdialog_base.ui kogroupwareincomingdialog.cpp \
-        history.cpp \
-        koprefs_base.kcfgc \
-        koincidencetooltip.cpp aboutdata.cpp \
-        cellitem.cpp \
-        resourceimportdialog.cpp \
+	history.cpp \
+	koprefs_base.kcfgc \
+	koincidencetooltip.cpp aboutdata.cpp \
+	cellitem.cpp \
+	resourceimportdialog.cpp \
 	korganizerifaceimpl.cpp \
-        freebusymanager.cpp freebusyurldialog.cpp
+	freebusymanager.cpp freebusyurldialog.cpp
 
 
 libkorganizer_eventviewer_la_LDFLAGS = $(all_libraries) $(KDE_RPATH) \
@@ -127,17 +127,17 @@ noinst_HEADERS = komonthview.h \
 	searchdialog.h calprinter.h calprintbase.h calprintplugins.h \
 	archivedialog.h \
 	komailclient.h kotodoview.h \
-        kolistview.h \
+	kolistview.h \
 	koapp.h korganizer_part.h korganizer.h \
-        koprefsdialog.h koeventeditor.h \
-        kotodoeditor.h koprefs.h koeventviewer.h \
-        kowindowlist.h kocounterdialog.h \
-        koeditorgeneralevent.h koeditorgeneraltodo.h koeditordetails.h \
-        koeditorrecurrence.h koeventviewerdialog.h koeventpopupmenu.h \
-        outgoingdialog.h incomingdialog.h publishdialog.h koeditorfreebusy.h \
-        koeventview.h statusdialog.h customlistviewitem.h \
-        alarmclient.h \
-        navigatorbar.h kogroupware.h kogroupwareincomingdialog.h \
+	koprefsdialog.h koeventeditor.h \
+	kotodoeditor.h koprefs.h koeventviewer.h \
+	kowindowlist.h kocounterdialog.h \
+	koeditorgeneralevent.h koeditorgeneraltodo.h koeditordetails.h \
+	koeditorrecurrence.h koeventviewerdialog.h koeventpopupmenu.h \
+	outgoingdialog.h incomingdialog.h publishdialog.h koeditorfreebusy.h \
+	koeventview.h statusdialog.h customlistviewitem.h \
+	alarmclient.h \
+	navigatorbar.h kogroupware.h kogroupwareincomingdialog.h \
 	koincidencetooltip.h korganizerifaceimpl.h
 
 tip_DATA = tips
