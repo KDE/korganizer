@@ -40,8 +40,10 @@ class ExportWebDialog : public KDialogBase
     void setupTodoPage();
     void setupAdvancedPage();
 
+    void createHtmlEventList (QTextStream *ts);
     void createHtmlTodoList (QTextStream *ts);
     void createHtmlTodo (QTextStream *ts,KOEvent *todo);
+    void createHtmlEvent (QTextStream *ts,KOEvent *event);
 
     CalObject *mCalendar;
   

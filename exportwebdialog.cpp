@@ -70,8 +70,6 @@ void ExportWebDialog::setupGeneralPage()
 //  new QRadioButton(i18n("Month"), typeGroup);
 
   mCbEvent = new QCheckBox(i18n("Event List"), typeGroup);
-  // Implement event export to enable this button
-  mCbEvent->setEnabled(false);  
   mCbTodo = new QCheckBox(i18n("To-Do List"), typeGroup);
   mCbTodo->setChecked(true);  
 
@@ -146,13 +144,18 @@ void ExportWebDialog::browseOutputFile()
 
 void ExportWebDialog::exportWebPage()
 {
+  qDebug ("ExportWebDialog::exportWebPage()");
   KTempFile tmpFile;
+  qDebug ("ExportWebDialog::exportWebPage() tmpFile");
 //  tmpFile.setAutoDelete(true);
   QTextStream *ts = tmpFile.textStream();
+  qDebug ("ExportWebDialog::exportWebPage() textStream");
   
   // Write HTML header
   *ts << "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0 Transitional//EN\" ";
   *ts << "\"http://www.w3.org/TR/REC-html40/loose.dtd\">\n";
+
+  qDebug ("ExportWebDialog::exportWebPage() header");
   
   *ts << "<HTML><HEAD>" << endl;
   *ts << "  <TITLE>KOrganizer To-Do List</TITLE>\n";
@@ -164,16 +167,33 @@ void ExportWebDialog::exportWebPage()
   *ts << "    td.sumdone { text-align:left; background-color:#ccc }\n";
   *ts << "    td.done { background-color:#ccc }\n";
   *ts << "    td.subhead { text-align:center; background-color:#ccf }\n";
+  *ts << "    td.datehead { text-align:center; background-color:#ccf }\n";
   *ts << "    td.space { background-color:white }\n";
   *ts <<   "</style>\n";
   *ts << "</HEAD><BODY>\n";
 
   // TO DO: Write KOrganizer header
-  // (Heading, Calendar-Owner, Calendar-Date, ...)  
-  *ts << "<H1>KOrganizer To-Do List</H1>\n";
+  // (Heading, Calendar-Owner, Calendar-Date, ...)
+  
+  // Write Event List
+  if (mCbEvent->isChecked()) {
+    qDebug ("ExportWebDialog::exportWebPage() evlist");
+    *ts << "<H1>KOrganizer Calendar</H1>\n";
 
-  // Write HTML page content
-  createHtmlTodoList(ts);
+    // Write HTML page content
+    createHtmlEventList(ts);
+  }
+
+  // Write Todo List
+  if (mCbTodo->isChecked()) {
+    qDebug ("ExportWebDialog::exportWebPage() todolist");
+    *ts << "<H1>KOrganizer To-Do List</H1>\n";
+
+    // Write HTML page content
+    createHtmlTodoList(ts);
+  }
+
+  qDebug ("ExportWebDialog::exportWebPage() trailer");
 
   // Write KOrganizer trailer
   *ts << "<P>This page was created by <A HREF=\"http://"
@@ -190,9 +210,12 @@ void ExportWebDialog::exportWebPage()
   QString destStr = mOutputFileEdit->text();
   KURL::encode(destStr);
   KURL dest(destStr);
+
+  qDebug ("ExportWebDialog::exportWebPage() move");
   
   KIO::Job *job = KIO::move(src,dest);
   connect(job,SIGNAL(result(KIO::Job *)),SLOT(slotResult(KIO::Job *)));
+  qDebug ("ExportWebDialog::exportWebPage() done");
 }
 
 void ExportWebDialog::slotResult(KIO::Job *job)
@@ -205,6 +228,55 @@ void ExportWebDialog::slotResult(KIO::Job *job)
   }
 }
 
+void ExportWebDialog::createHtmlEventList (QTextStream *ts)
+{
+  *ts << "<TABLE BORDER=0 CELLPADDING=3 CELLSPACING=3>\n";
+  *ts << "  <TR>\n";
+  *ts << "    <TH CLASS=sum>Task</TH>\n";
+  *ts << "    <TH>Start Time</TH>\n";
+  *ts << "    <TH>End Time</TH>\n";
+  *ts << "  </TR>\n";
+
+  QDate dt = mFromDate->getDate();
+  for (dt = mFromDate->getDate(); dt <= mToDate->getDate();
+       dt = dt.addDays(1)) {
+    qDebug("Getting events for %s",dt.toString().latin1());
+    QList<KOEvent> events = mCalendar->getEventsForDate(dt,true);
+    if (events.count()) {
+      *ts << "  <TR><TD COLSPAN=3 CLASS=datehead><I>" << dt.toString()
+          << "</I></TD></TR>\n";
+      KOEvent *ev;
+      for(ev = events.first(); ev; ev = events.next()) {
+        createHtmlEvent(ts,ev);
+      }
+    }
+  }
+  
+  *ts << "</TABLE>\n";  
+}
+
+void ExportWebDialog::createHtmlEvent (QTextStream *ts, KOEvent *event)
+{
+  qDebug("ExportWebDialog::createHtmlEvent()");
+  *ts << "  <TR>\n";
+
+  *ts << "    <TD CLASS=sum>\n";
+  *ts << "      <B>" << event->getSummary() << "</B>\n";
+  if (!event->getDescription().isEmpty()) {
+    *ts << "      <P>" << event->getDescription() << "</P>\n";
+  }
+  *ts << "    </TD>\n";
+
+  if (!event->doesFloat()) {
+    *ts << "    <TD>" << event->getDtStartTimeStr() << "</TD>\n";
+    *ts << "    <TD>" << event->getDtEndTimeStr() << "</TD>\n";
+  } else {
+    *ts << "    <TD>&nbsp;</TD><TD>&nbsp;</TD>\n";
+  }
+  
+  *ts << "  </TR>\n";
+}
+
 void ExportWebDialog::createHtmlTodoList (QTextStream *ts)
 {
   KOEvent *ev,*subev;
@@ -213,12 +285,13 @@ void ExportWebDialog::createHtmlTodoList (QTextStream *ts)
   
   *ts << "<TABLE BORDER=0 CELLPADDING=3 CELLSPACING=3>\n";
   *ts << "  <TR>\n";
-  *ts << "    <TH CLASS=sum>Task</TH> \n";
+  *ts << "    <TH CLASS=sum>Task</TH>\n";
   *ts << "    <TH>Priority</TH>\n";
   *ts << "    <TH>Status</TH>\n";
   if (mCbDueDates->isChecked()) {
     *ts << "    <TH>Due Date</TH>\n";
   }
+  *ts << "  </TR>\n";
 
   // Create top-level list.
   for(ev=todoList.first();ev;ev=todoList.next()) {
@@ -250,6 +323,8 @@ void ExportWebDialog::createHtmlTodoList (QTextStream *ts)
 
 void ExportWebDialog::createHtmlTodo (QTextStream *ts,KOEvent *todo)
 {
+  qDebug("ExportWebDialog::createHtmlTodo()");
+
   bool completed = todo->getStatus() == KOEvent::COMPLETED;
   QList<KOEvent> relations = todo->getRelations();
 
