@@ -375,7 +375,7 @@ void CalendarLocal::checkAlarms()
     tmpList = dictIt.current();
     for (anEvent = tmpList->first(); anEvent;
 	 anEvent = tmpList->next()) {
-      tmpDT = anEvent->alarm()->alarmTime();
+      tmpDT = anEvent->alarm()->time();
       if (tmpDT.date() == QDate::currentDate()) {
 	if ((tmpDT.time().hour() == QTime::currentTime().hour()) &&
 	    (tmpDT.time().minute() == QTime::currentTime().minute()))
@@ -386,7 +386,7 @@ void CalendarLocal::checkAlarms()
   }
   for (anEvent = mRecursList.first(); anEvent;
        anEvent = mRecursList.next()) {
-    tmpDT = anEvent->alarm()->alarmTime();
+    tmpDT = anEvent->alarm()->time();
     if(anEvent->recursOn(QDate::currentDate())) {
       if ((tmpDT.time().hour() == QTime::currentTime().hour()) &&
 	  (tmpDT.time().minute() == QTime::currentTime().minute()))

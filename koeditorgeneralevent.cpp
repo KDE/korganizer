@@ -462,10 +462,10 @@ void KOEditorGeneralEvent::readEvent(Event *event)
   mSecrecyCombo->setCurrentItem(event->secrecy());
 
   // set up alarm stuff
-  alarmButton->setChecked(event->alarm()->alarmRepeatCount());
+  alarmButton->setChecked(event->alarm()->repeatCount());
   if (alarmButton->isChecked()) {
     alarmStuffEnable(true);
-    tmpDT = event->alarm()->alarmTime();
+    tmpDT = event->alarm()->time();
     i = tmpDT.secsTo(currStartDateTime);
     i = i / 60; // make minutes
     if (i % 60 == 0) { // divides evenly into hours?
@@ -479,14 +479,14 @@ void KOEditorGeneralEvent::readEvent(Event *event)
 
     alarmTimeEdit->setText(QString::number(i));
 
-    if (!event->alarm()->programAlarmFile().isEmpty()) {
-      alarmProgram = event->alarm()->programAlarmFile();
+    if (!event->alarm()->programFile().isEmpty()) {
+      alarmProgram = event->alarm()->programFile();
       alarmProgramButton->setOn(true);
       QString dispStr = i18n("Running '%1'").arg(alarmProgram);
       QToolTip::add(alarmProgramButton, dispStr);
     }
-    if (!event->alarm()->audioAlarmFile().isEmpty()) {
-      alarmSound = event->alarm()->audioAlarmFile();
+    if (!event->alarm()->audioFile().isEmpty()) {
+      alarmSound = event->alarm()->audioFile();
       alarmSoundButton->setOn(true);
       QString dispStr = i18n("Playing '%1'").arg(alarmSound);
       QToolTip::add(alarmSoundButton, dispStr);
@@ -553,7 +553,7 @@ void KOEditorGeneralEvent::writeEvent(Event *event)
 
   // alarm stuff
   if (alarmButton->isChecked()) {
-    event->alarm()->setAlarmRepeatCount(1);
+    event->alarm()->setRepeatCount(1);
     tmpStr = alarmTimeEdit->text();
     j = tmpStr.toInt() * -60;
     if (alarmIncrCombo->currentItem() == 1)
@@ -563,19 +563,19 @@ void KOEditorGeneralEvent::writeEvent(Event *event)
 
     tmpDT = event->dtStart();
     tmpDT = tmpDT.addSecs(j);
-    event->alarm()->setAlarmTime(tmpDT);
+    event->alarm()->setTime(tmpDT);
     if (!alarmProgram.isEmpty() && alarmProgramButton->isOn())
-      event->alarm()->setProgramAlarmFile(alarmProgram);
+      event->alarm()->setProgramFile(alarmProgram);
     else
-      event->alarm()->setProgramAlarmFile("");
+      event->alarm()->setProgramFile("");
     if (!alarmSound.isEmpty() && alarmSoundButton->isOn())
-      event->alarm()->setAudioAlarmFile(alarmSound);
+      event->alarm()->setAudioFile(alarmSound);
     else
-      event->alarm()->setAudioAlarmFile("");
+      event->alarm()->setAudioFile("");
   } else {
-    event->alarm()->setAlarmRepeatCount(0);
-    event->alarm()->setProgramAlarmFile("");
-    event->alarm()->setAudioAlarmFile("");
+    event->alarm()->setRepeatCount(0);
+    event->alarm()->setProgramFile("");
+    event->alarm()->setAudioFile("");
   }
   
   // note, that if on the details tab the "Transparency" option is implemented,

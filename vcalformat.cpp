@@ -733,25 +733,25 @@ VObject* VCalFormat::eventToVEvent(const Event *anEvent)
     addPropValue(vevent, VCResourcesProp, tmpStr.latin1());
 
   // alarm stuff
-  if (anEvent->alarm()->alarmRepeatCount()) {
+  if (anEvent->alarm()->repeatCount()) {
     VObject *a = addProp(vevent, VCDAlarmProp);
-    tmpStr = qDateTimeToISO(anEvent->alarm()->alarmTime());
+    tmpStr = qDateTimeToISO(anEvent->alarm()->time());
     addPropValue(a, VCRunTimeProp, tmpStr.latin1());
     addPropValue(a, VCRepeatCountProp, "1");
     addPropValue(a, VCDisplayStringProp, "beep!");
-    if (!anEvent->alarm()->audioAlarmFile().isEmpty()) {
+    if (!anEvent->alarm()->audioFile().isEmpty()) {
       a = addProp(vevent, VCAAlarmProp);
       addPropValue(a, VCRunTimeProp, tmpStr.latin1());
       addPropValue(a, VCRepeatCountProp, "1");
       addPropValue(a, VCAudioContentProp,
-        (const char *)QFile::encodeName(anEvent->alarm()->audioAlarmFile()));
+        (const char *)QFile::encodeName(anEvent->alarm()->audioFile()));
     }
-    if (!anEvent->alarm()->programAlarmFile().isEmpty()) {
+    if (!anEvent->alarm()->programFile().isEmpty()) {
       a = addProp(vevent, VCPAlarmProp);
       addPropValue(a, VCRunTimeProp, tmpStr.latin1());
       addPropValue(a, VCRepeatCountProp, "1");
       addPropValue(a, VCProcedureNameProp,
-        (const char *)QFile::encodeName(anEvent->alarm()->programAlarmFile()));
+        (const char *)QFile::encodeName(anEvent->alarm()->programFile()));
     }
   }
 
@@ -1415,21 +1415,21 @@ Event* VCalFormat::VEventToEvent(VObject *vevent)
   if ((vo = isAPropertyOf(vevent, VCDAlarmProp))) {
     VObject *a;
     if ((a = isAPropertyOf(vo, VCRunTimeProp))) {
-      anEvent->alarm()->setAlarmTime(ISOToQDateTime(s = fakeCString(vObjectUStringZValue(a))));
+      anEvent->alarm()->setTime(ISOToQDateTime(s = fakeCString(vObjectUStringZValue(a))));
       deleteStr(s);
     }
-    anEvent->alarm()->setAlarmRepeatCount(1);
+    anEvent->alarm()->setRepeatCount(1);
     if ((vo = isAPropertyOf(vevent, VCPAlarmProp))) {
       if ((a = isAPropertyOf(vo, VCProcedureNameProp))) {
 	s = fakeCString(vObjectUStringZValue(a));
-	anEvent->alarm()->setProgramAlarmFile(QFile::decodeName(s));
+	anEvent->alarm()->setProgramFile(QFile::decodeName(s));
 	deleteStr(s);
       }
     }
     if ((vo = isAPropertyOf(vevent, VCAAlarmProp))) {
       if ((a = isAPropertyOf(vo, VCAudioContentProp))) {
 	s = fakeCString(vObjectUStringZValue(a));
-	anEvent->alarm()->setAudioAlarmFile(QFile::decodeName(s));
+	anEvent->alarm()->setAudioFile(QFile::decodeName(s));
 	deleteStr(s);
       }
     }

@@ -773,26 +773,15 @@ void ICalFormat::writeIncidence(icalcomponent *parent,Incidence *incidence)
   }
 
 // TODO: exdates
-#if 0
-  // exceptions to recurrence
-  QDateList dateList(FALSE);
-  dateList = anEvent->exDates();
-  QDate *tmpDate;
-  QString tmpStr2 = "";
-
-  for (tmpDate = dateList.first(); tmpDate; tmpDate = dateList.next()) {
-    tmpStr = qDateToISO(*tmpDate) + ";";
-    tmpStr2 += tmpStr;
+  QDateList dateList = incidence->exDates();
+  for(QDate *date = dateList.first(); date; date = dateList.next()) {
+    icalcomponent_add_property(parent,icalproperty_new_exdate(
+        writeICalDate(*date)));
   }
-  if (!tmpStr2.isEmpty()) {
-    tmpStr2.truncate(tmpStr2.length()-1);
-    addPropValue(vevent, VCExDateProp, tmpStr2.ascii());
-  }
-#endif
 
   // alarms
   KOAlarm *alarm = incidence->alarm();
-  if (alarm->alarmRepeatCount()) {
+  if (alarm->repeatCount()) {
     kdDebug() << "Write alarm for " << incidence->summary() << endl;
     icalcomponent_add_component(parent,writeAlarm(alarm));
   }
@@ -1065,36 +1054,30 @@ icalcomponent *ICalFormat::writeAlarm(KOAlarm *alarm)
 {
   icalcomponent *a = icalcomponent_new(ICAL_VALARM_COMPONENT);
   
-  icalcomponent_add_property(a,icalproperty_new_action("DISPLAY"));
-  icalcomponent_add_property(a,icalproperty_new_description("An Alarm"));
+  const char *action;
+  icalattachtype *attach;
+  
+  if (!alarm->programFile().isEmpty()) {
+    action = "PROCEDURE";
+    attach = icalattachtype_new();
+    icalattachtype_set_url(attach,QFile::encodeName(alarm->programFile()).data());
+    icalcomponent_add_property(a,icalproperty_new_attach(*attach));
+  } else if (!alarm->audioFile().isEmpty()) {
+    action = "AUDIO";
+    attach = icalattachtype_new();
+    icalattachtype_set_url(attach,QFile::encodeName(alarm->audioFile()).data());
+    icalcomponent_add_property(a,icalproperty_new_attach(*attach));
+  } else {
+    action = "DISPLAY";
+    icalcomponent_add_property(a,icalproperty_new_description("An Alarm"));
+  }
+  icalcomponent_add_property(a,icalproperty_new_action(action));
+
   icaltriggertype trigger;
-  trigger.time = writeICalDateTime(alarm->alarmTime());  
+  trigger.time = writeICalDateTime(alarm->time());
   icalcomponent_add_property(a,icalproperty_new_trigger(trigger));
 
   return a;
-  
-#if 0
-  // alarm stuff
-  if (anEvent->getAlarmRepeatCount()) {
-    VObject *a = addProp(vevent, VCDAlarmProp);
-    tmpStr = qDateTimeToISO(anEvent->getAlarmTime());
-    addPropValue(a, VCRunTimeProp, tmpStr.ascii());
-    addPropValue(a, VCRepeatCountProp, "1");
-    addPropValue(a, VCDisplayStringProp, "beep!");
-    if (!anEvent->getAudioAlarmFile().isEmpty()) {
-      a = addProp(vevent, VCAAlarmProp);
-      addPropValue(a, VCRunTimeProp, tmpStr.ascii());
-      addPropValue(a, VCRepeatCountProp, "1");
-      addPropValue(a, VCAudioContentProp, anEvent->getAudioAlarmFile().ascii());
-    }
-    if (!anEvent->getProgramAlarmFile().isEmpty()) {
-      a = addProp(vevent, VCPAlarmProp);
-      addPropValue(a, VCRunTimeProp, tmpStr.ascii());
-      addPropValue(a, VCRepeatCountProp, "1");
-      addPropValue(a, VCProcedureNameProp, anEvent->getProgramAlarmFile().ascii());
-    }
-  }
-#endif
 }
 
 Todo *ICalFormat::readTodo(icalcomponent *vtodo)
@@ -1106,7 +1089,7 @@ Todo *ICalFormat::readTodo(icalcomponent *vtodo)
   icalproperty *p = icalcomponent_get_first_property(vtodo,ICAL_ANY_PROPERTY);
 
   const char *text;
-  int intvalue;
+//  int intvalue;
   icaltimetype icaltime;
 
   QStringList categories;
@@ -1160,7 +1143,7 @@ Event *ICalFormat::readEvent(icalcomponent *vevent)
   icalproperty *p = icalcomponent_get_first_property(vevent,ICAL_ANY_PROPERTY);
 
   const char *text;
-  int intvalue;
+//  int intvalue;
   icaltimetype icaltime;
 
   QStringList categories;
@@ -1406,6 +1389,12 @@ void ICalFormat::readIncidence(icalcomponent *parent,Incidence *incidence)
         readRecurrenceRule(p,incidence);
         break;
 
+      case ICAL_EXDATE_PROPERTY:
+        icaltime = icalproperty_get_exdate(p);
+        incidence->addExDate(readICalDate(icaltime));
+        break;
+        
+
       case ICAL_X_PROPERTY:
         kdDebug() << "X Prop: " << icalproperty_get_name(p) << endl;
         if (strcmp(icalproperty_get_name(p),"X-PILOTID") == 0) {
@@ -1482,8 +1471,11 @@ void ICalFormat::readRecurrenceRule(icalproperty *rrule,Incidence *incidence)
       }
       break;
     case ICAL_WEEKLY_RECURRENCE:
+      kdDebug() << "WEEKLY_RECURRENCE" << endl;
       while((day = r.by_day[index++]) != ICAL_RECURRENCE_ARRAY_MAX) {
-        qba.setBit(day-1);
+        kdDebug() << " " << day << endl;
+        if (day == 1) qba.setBit(6);
+        else qba.setBit(day-2);
       }
       if (!icaltime_is_null_time(r.until)) {
         recur->setWeekly(r.interval,qba,readICalDate(r.until));
@@ -1780,25 +1772,84 @@ void ICalFormat::readAlarm(icalcomponent *alarm,Incidence *incidence)
 {
   kdDebug() << "Read alarm for " << incidence->summary() << endl;
 
+  icalproperty *p = icalcomponent_get_first_property(alarm,ICAL_ANY_PROPERTY);
+
+  icaltriggertype trigger;
+  icalattachtype attach;
+  
+  const char *action;
+  const char *text;
+
+  while (p) {
+    icalproperty_kind kind = icalproperty_isa(p);
+    switch (kind) {
+
+      case ICAL_ACTION_PROPERTY:
+        action = icalproperty_get_action(p);
+        break;
+
+      case ICAL_TRIGGER_PROPERTY:
+        trigger = icalproperty_get_trigger(p);
+        incidence->alarm()->setTime(readICalDateTime(trigger.time));
+        break;
+
+      case ICAL_DURATION_PROPERTY:
+        break;
+
+      case ICAL_REPEAT_PROPERTY:
+        break;
+
+      // Only in AUDIO and PROCEDURE alarms
+      case ICAL_ATTACH_PROPERTY:
+        // TODO: move reading the attachement after reading the action type
+        attach = icalproperty_get_attach(p);
+        incidence->alarm()->setAudioFile(QFile::decodeName(
+            icalattachtype_get_url(&attach)));
+        break;
+  
+      // Only in DISPLAY and EMAIL and PROCEDURE alarms
+      case ICAL_DESCRIPTION_PROPERTY:
+        text = icalproperty_get_description(p);
+        // TODO: introduce description of alarm
+        break;
+        
+      case ICAL_SUMMARY_PROPERTY:
+        break;
+        
+      // Only in EMAIL alarm
+      case ICAL_ATTENDEE_PROPERTY:
+        break;
+  
+      default:
+        break;
+    }
+
+    p = icalcomponent_get_next_property(alarm,ICAL_ANY_PROPERTY);
+  }
+
+  // TODO: check for consistency of alarm properties
+
+  incidence->alarm()->setRepeatCount(1);
+
 // TODO: read alarms
 #if 0
   /* alarm stuff */
   if ((vo = isAPropertyOf(vevent, VCDAlarmProp))) {
     VObject *a;
     if ((a = isAPropertyOf(vo, VCRunTimeProp))) {
-      anEvent->setAlarmTime(ISOToQDateTime(s = fakeCString(vObjectUStringZValue(a))));
+      anEvent->setTime(ISOToQDateTime(s = fakeCString(vObjectUStringZValue(a))));
       deleteStr(s);
     }
-    anEvent->setAlarmRepeatCount(1);
+    anEvent->setRepeatCount(1);
     if ((vo = isAPropertyOf(vevent, VCPAlarmProp))) {
       if ((a = isAPropertyOf(vo, VCProcedureNameProp))) {
-	anEvent->setProgramAlarmFile(s = fakeCString(vObjectUStringZValue(a)));
+	anEvent->setProgramFile(s = fakeCString(vObjectUStringZValue(a)));
 	deleteStr(s);
       }
     }
     if ((vo = isAPropertyOf(vevent, VCAAlarmProp))) {
       if ((a = isAPropertyOf(vo, VCAudioContentProp))) {
-	anEvent->setAudioAlarmFile(s = fakeCString(vObjectUStringZValue(a)));
+	anEvent->setAudioFile(s = fakeCString(vObjectUStringZValue(a)));
 	deleteStr(s);
       }
     }

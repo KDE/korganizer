@@ -28,86 +28,86 @@ KOAlarm::~KOAlarm()
 {
 }
 
-void KOAlarm::setAudioAlarmFile(const QString &audioAlarmFile)
+void KOAlarm::setAudioFile(const QString &audioAlarmFile)
 {
   if (mAlarmReadOnly) return;
   mAudioAlarmFile = audioAlarmFile;
   mParent->emitEventUpdated(mParent);
 }
 
-const QString &KOAlarm::audioAlarmFile() const
+const QString &KOAlarm::audioFile() const
 {
   return mAudioAlarmFile;
 }
 
-void KOAlarm::setProgramAlarmFile(const QString &programAlarmFile)
+void KOAlarm::setProgramFile(const QString &programAlarmFile)
 {
   if (mAlarmReadOnly) return;
   mProgramAlarmFile = programAlarmFile;
   mParent->emitEventUpdated(mParent);
 }
 
-const QString &KOAlarm::programAlarmFile() const
+const QString &KOAlarm::programFile() const
 {
   return mProgramAlarmFile;
 }
 
-void KOAlarm::setMailAlarmAddress(const QString &mailAlarmAddress)
+void KOAlarm::setMailAddress(const QString &mailAlarmAddress)
 {
   if (mAlarmReadOnly) return;
   mMailAlarmAddress = mailAlarmAddress;
   mParent->emitEventUpdated(mParent);
 }
 
-const QString &KOAlarm::mailAlarmAddress() const
+const QString &KOAlarm::mailAddress() const
 {
   return mMailAlarmAddress;
 }
 
-void KOAlarm::setAlarmText(const QString &alarmText)
+void KOAlarm::setText(const QString &alarmText)
 {
   if (mAlarmReadOnly) return;
   mAlarmText = alarmText;
   mParent->emitEventUpdated(mParent);
 }
 
-const QString &KOAlarm::alarmText() const
+const QString &KOAlarm::text() const
 {
   return mAlarmText;
 }
 
-void KOAlarm::setAlarmTime(const QDateTime &alarmTime)
+void KOAlarm::setTime(const QDateTime &alarmTime)
 {
   if (mAlarmReadOnly) return;
   mAlarmTime = alarmTime;
   mParent->emitEventUpdated(mParent);
 }
 
-const QDateTime &KOAlarm::alarmTime() const
+const QDateTime &KOAlarm::time() const
 {
   return mAlarmTime;
 }
 
-void KOAlarm::setAlarmSnoozeTime(int alarmSnoozeTime)
+void KOAlarm::setSnoozeTime(int alarmSnoozeTime)
 {
   if (mAlarmReadOnly) return;
   mAlarmSnoozeTime = alarmSnoozeTime;
   mParent->emitEventUpdated(mParent);
 }
 
-int KOAlarm::alarmSnoozeTime() const
+int KOAlarm::snoozeTime() const
 {
   return mAlarmSnoozeTime;
 }
 
-void KOAlarm::setAlarmRepeatCount(int alarmRepeatCount)
+void KOAlarm::setRepeatCount(int alarmRepeatCount)
 {
   if (mAlarmReadOnly) return;
   mAlarmRepeatCount = alarmRepeatCount;
   mParent->emitEventUpdated(mParent);
 }
 
-int KOAlarm::alarmRepeatCount() const
+int KOAlarm::repeatCount() const
 {
   return mAlarmRepeatCount;
 }

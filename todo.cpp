@@ -26,8 +26,8 @@ void Todo::setDtDue(const QDateTime &dtDue)
   int diffsecs = mDtDue.secsTo(dtDue);
 
   if (mReadOnly) return;
-  if (alarm()->alarmRepeatCount())
-    alarm()->setAlarmTime(alarm()->alarmTime().addSecs(diffsecs));
+  if (alarm()->repeatCount())
+    alarm()->setTime(alarm()->time().addSecs(diffsecs));
 
   mDtDue = dtDue;
   emit eventUpdated(this);

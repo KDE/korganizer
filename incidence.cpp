@@ -137,8 +137,8 @@ void Incidence::setDtStart(const QDateTime &dtStart)
   int diffsecs = mDtStart.secsTo(dtStart);
 
   if (mReadOnly) return;
-  if (alarm()->alarmRepeatCount())
-    alarm()->setAlarmTime(alarm()->alarmTime().addSecs(diffsecs));
+  if (alarm()->repeatCount())
+    alarm()->setTime(alarm()->time().addSecs(diffsecs));
 
   mDtStart = dtStart;
 

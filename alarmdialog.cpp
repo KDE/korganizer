@@ -72,14 +72,14 @@ void AlarmDialog::eventNotification()
 
   for (anEvent = mEvents.first(); anEvent;
       anEvent = mEvents.next()) {
-    if (!anEvent->alarm()->programAlarmFile().isEmpty()) {
+    if (!anEvent->alarm()->programFile().isEmpty()) {
       KProcess proc;
-      proc << anEvent->alarm()->programAlarmFile().latin1();
+      proc << anEvent->alarm()->programFile().latin1();
       proc.start(KProcess::DontCare);
     }
 
-    if (!anEvent->alarm()->audioAlarmFile().isEmpty()) {
-      KAudioPlayer::play(anEvent->alarm()->audioAlarmFile().latin1());
+    if (!anEvent->alarm()->audioFile().isEmpty()) {
+      KAudioPlayer::play(anEvent->alarm()->audioFile().latin1());
     }
   }
 }
