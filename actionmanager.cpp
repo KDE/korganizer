@@ -557,7 +557,7 @@ void ActionManager::initActions()
     mPluginMenu = 0;
   }
 
-  KConfig *config = KOGlobals::config();
+  KConfig *config = KOGlobals::self()->config();
   config->setGroup("Settings");
   mFilterViewAction->setChecked(config->readBoolEntry("Filter Visible",false));
   toggleFilterView();
@@ -568,7 +568,7 @@ void ActionManager::readSettings()
   // read settings from the KConfig, supplying reasonable
   // defaults where none are to be found
 
-  KConfig *config = KOGlobals::config();
+  KConfig *config = KOGlobals::self()->config();
   if ( mRecent ) mRecent->loadEntries( config );
   mCalendarView->readSettings();
 }
@@ -576,7 +576,7 @@ void ActionManager::readSettings()
 void ActionManager::writeSettings()
 {
   kdDebug(5850) << "ActionManager::writeSettings" << endl;
-  KConfig *config = KOGlobals::config();
+  KConfig *config = KOGlobals::self()->config();
   mCalendarView->writeSettings();
 
   config->setGroup( "Settings" );
@@ -760,7 +760,7 @@ bool ActionManager::openURL(const KURL &url,bool merge)
         KIO::NetAccess::removeTempFile(mFile);
         mURL = url;
         mFile = tmpFile;
-        KConfig *config = KOGlobals::config();
+        KConfig *config = KOGlobals::self()->config();
         config->setGroup("General");
         setTitle();
         kdDebug(5850) << "-- Add recent URL: " << url.prettyURL() << endl;
@@ -846,7 +846,7 @@ bool ActionManager::saveURL()
     mExport.setEmail( KOPrefs::instance()->email() );
     mExport.setFullName( KOPrefs::instance()->fullName() );
 
-    KConfig *cfg = KOGlobals::config();
+    KConfig *cfg = KOGlobals::self()->config();
     cfg->setGroup( "HtmlExport" );
 
     mExport.setMonthViewEnabled( cfg->readBoolEntry( "Month", false ) );
@@ -927,7 +927,7 @@ bool ActionManager::saveAsURL(const KURL &url)
     delete mTempFile;
     mTempFile = tempFile;
     KIO::NetAccess::removeTempFile(fileOrig);
-    KConfig *config = KOGlobals::config();
+    KConfig *config = KOGlobals::self()->config();
     config->setGroup("General");
     setTitle();
     if ( mRecent ) mRecent->addURL(mURL);

@@ -431,7 +431,7 @@ void CalendarView::readSettings()
   // read settings from the KConfig, supplying reasonable
   // defaults where none are to be found
 
-  KConfig *config = KOGlobals::config();
+  KConfig *config = KOGlobals::self()->config();
 
 #ifndef KORG_NOSPLITTER
   config->setGroup("KOrganizer Geometry");
@@ -464,7 +464,7 @@ void CalendarView::writeSettings()
 {
 //  kdDebug(5850) << "CalendarView::writeSettings" << endl;
 
-  KConfig *config = KOGlobals::config();
+  KConfig *config = KOGlobals::self()->config();
 
 #ifndef KORG_NOSPLITTER
   config->setGroup("KOrganizer Geometry");

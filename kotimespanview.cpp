@@ -26,7 +26,7 @@ KOTimeSpanView::~KOTimeSpanView()
 
 void KOTimeSpanView::readSettings()
 {
-  readSettings(KOGlobals::config());
+  readSettings(KOGlobals::self()->config());
 }
 
 void KOTimeSpanView::readSettings(KConfig *config)

@@ -177,7 +177,7 @@ void KOrganizer::readSettings()
   // read settings from the KConfig, supplying reasonable
   // defaults where none are to be found
 
-  KConfig *config = KOGlobals::config();
+  KConfig *config = KOGlobals::self()->config();
 
   config->setGroup( "KOrganizer Geometry" );
 
@@ -196,7 +196,7 @@ void KOrganizer::writeSettings()
 {
   kdDebug(5850) << "KOrganizer::writeSettings" << endl;
 
-  KConfig *config = KOGlobals::config();
+  KConfig *config = KOGlobals::self()->config();
 
   config->setGroup( "KOrganizer Geometry" );
   config->writeEntry( "Width",width() );
@@ -222,7 +222,7 @@ void KOrganizer::initActions()
   setXMLFile( "korganizerui.rc" );
   createGUI( 0 );
 
-  KConfig *config = KOGlobals::config();
+  KConfig *config = KOGlobals::self()->config();
 
   applyMainWindowSettings( config );
 
@@ -266,7 +266,7 @@ bool KOrganizer::queryExit()
 
 void KOrganizer::configureToolbars()
 {
-  saveMainWindowSettings( KOGlobals::config(), "MainWindow" );
+  saveMainWindowSettings( KOGlobals::self()->config(), "MainWindow" );
 
   KEditToolbar dlg( factory() );
   dlg.exec();

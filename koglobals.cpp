@@ -30,6 +30,7 @@
 #include <kstandarddirs.h>
 #include <kglobalsettings.h>
 #include <klocale.h>
+#include <kstaticdeleter.h>
 
 #include <kcalendarsystem.h>
 
@@ -46,36 +47,39 @@ class NopAlarmClient : public AlarmClient
 
 KOGlobals *KOGlobals::mSelf = 0;
 
+static KStaticDeleter<KOGlobals> koGlobalsDeleter;
+
 KOGlobals *KOGlobals::self()
 {
   if (!mSelf) {
-    mSelf = new KOGlobals;
+    koGlobalsDeleter.setObject( mSelf, new KOGlobals );
   }
-  
+
   return mSelf;
 }
 
 KOGlobals::KOGlobals()
 {
-  KConfig *cfg = KOGlobals::config();
+  mConfig = new KConfig( locateLocal( "config", "korganizerrc" ) );
+  mConfig->setGroup("General");
 
-  cfg->setGroup("General");
   mCalendarSystem = KGlobal::locale()->calendar();
 
   mAlarmClient = new AlarmClient;
 }
 
-KConfig* KOGlobals::config()
+KConfig* KOGlobals::config() const
 {
-  static KConfig *mConfig = 0;
-  if ( !mConfig )
-    mConfig = new KConfig( locateLocal( "config", "korganizerrc" ) );
   return mConfig;
 }
 
 KOGlobals::~KOGlobals()
 {
   delete mAlarmClient;
+  mAlarmClient = 0;
+
+  delete mConfig;
+  mConfig = 0;
 }
 
 const KCalendarSystem *KOGlobals::calendarSystem() const
@@ -106,7 +110,7 @@ void KOGlobals::fitDialogToScreen( QWidget *wid, bool force )
     h = desk.height() - 30;
     resized = true;
   }
-  
+
   if ( resized || force ) {
     wid->resize( w, h );
     wid->move( desk.x(), desk.y()+15 );

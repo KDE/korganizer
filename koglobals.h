@@ -32,12 +32,12 @@ class KOGlobals
 {
   public:
     static KOGlobals *self();
-  
+
     enum { EVENTADDED, EVENTEDITED, EVENTDELETED };  
     enum { PRIORITY_MODIFIED, COMPLETION_MODIFIED, CATEGORY_MODIFIED, UNKNOWN_MODIFIED };
 
     static void fitDialogToScreen( QWidget *widget, bool force=false );
-    static KConfig *config();
+    KConfig *config() const;
 
     static bool reverseLayout();
 
@@ -45,13 +45,15 @@ class KOGlobals
 
     AlarmClient *alarmClient() const;
 
+    ~KOGlobals();
+
   protected:
     KOGlobals();
-    ~KOGlobals();
-    
+
   private:
     static KOGlobals *mSelf;
-    
+    KConfig *mConfig;
+
     const KCalendarSystem *mCalendarSystem;    
     AlarmClient *mAlarmClient;
 };

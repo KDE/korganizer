@@ -1147,7 +1147,7 @@ void KOAgendaView::startDrag( Incidence *incidence )
 
 void KOAgendaView::readSettings()
 {
-  readSettings(KOGlobals::config());
+  readSettings(KOGlobals::self()->config());
 }
 
 void KOAgendaView::readSettings(KConfig *config)

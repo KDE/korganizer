@@ -69,7 +69,7 @@ ExportWebDialog::ExportWebDialog (Calendar *cal, QWidget *parent,
 {
   mExport = new HtmlExport(cal);
 
-  mConfig = KOGlobals::config();
+  mConfig = KOGlobals::self()->config();
 
   setupGeneralPage();
   setupEventPage();
@@ -192,7 +192,7 @@ void ExportWebDialog::setupAdvancedPage()
 
 void ExportWebDialog::loadSettings()
 {
-  KConfig *cfg = KOGlobals::config();
+  KConfig *cfg = KOGlobals::self()->config();
   cfg->setGroup( "HtmlExport" );
 
   mCbMonth->setChecked( cfg->readBoolEntry( "Month", false ) );
@@ -211,7 +211,7 @@ void ExportWebDialog::loadSettings()
 
 void ExportWebDialog::saveSettings()
 {
-  KConfig *cfg = KOGlobals::config();
+  KConfig *cfg = KOGlobals::self()->config();
   cfg->setGroup( "HtmlExport" );
 
   cfg->writeEntry( "Month", mCbMonth->isChecked() );

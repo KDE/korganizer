@@ -342,7 +342,7 @@ void KOViewManager::showTodoView()
     connect( mTodoView, SIGNAL( incidenceSelected( Incidence * ) ),
              mMainView, SLOT( processMainViewSelection( Incidence * ) ) );
 
-    KConfig *config = KOGlobals::config();
+    KConfig *config = KOGlobals::self()->config();
     mTodoView->restoreLayout( config, "Todo View" );
   }
 

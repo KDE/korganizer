@@ -315,7 +315,7 @@ KCal::CalendarResources *KOCore::calendarResources()
     KCal::CalendarResourceManager *manager = mCalendarResources->resourceManager();
 
     if ( manager->isEmpty() ) {
-      KConfig *config = KOGlobals::config();
+      KConfig *config = KOGlobals::self()->config();
       config->setGroup("General");
       QString fileName = config->readPathEntry( "Active Calendar" );
 
