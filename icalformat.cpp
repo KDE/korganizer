@@ -135,10 +135,15 @@ bool ICalFormat::save(const QString &fileName)
     icalcomponent_add_component(calendar,component);
   }
 
+  kdDebug() << "Now writing iCalendar file" << endl;
+
   // Write out iCalendar file
   icalfileset_mark(fs);
+  kdDebug() << "Now writing iCalendar file..1" << endl;
   icalfileset_commit(fs);
+  kdDebug() << "Now writing iCalendar file..2" << endl;
   icalfileset_free(fs);
+  kdDebug() << "Now writing iCalendar file..3" << endl;
 
   return true;
 }
@@ -597,32 +602,6 @@ icalcomponent *ICalFormat::writeEvent(Event *event)
   icalcomponent_add_property(vevent,icalproperty_new_dtstart(start));
   icalcomponent_add_property(vevent,icalproperty_new_dtend(end));
 
-// TODO: recurrence
-#if 0
-  // recurrence rule stuff
-  if (anEvent->doesRecur()) {
-    icalcomponent_add_property(vevent,writeRecurrencRule(event));
-  }
-#endif
-
-// TODO: exdates
-#if 0
-  // exceptions to recurrence
-  QDateList dateList(FALSE);
-  dateList = anEvent->exDates();
-  QDate *tmpDate;
-  QString tmpStr2 = "";
-
-  for (tmpDate = dateList.first(); tmpDate; tmpDate = dateList.next()) {
-    tmpStr = qDateToISO(*tmpDate) + ";";
-    tmpStr2 += tmpStr;
-  }
-  if (!tmpStr2.isEmpty()) {
-    tmpStr2.truncate(tmpStr2.length()-1);
-    addPropValue(vevent, VCExDateProp, tmpStr2.ascii());
-  }
-#endif
-
 // TODO: find correspondence to secrecy in iCal, DONE: it's CLASS
 // TODO: implement secrecy
   // secrecy
@@ -808,10 +787,211 @@ void ICalFormat::writeIncidence(icalcomponent *parent,Incidence *incidence)
   addPropValue(parent, KPilotStatusProp, tmpStr.ascii());
 #endif
 
+  // recurrence rule stuff
+  KORecurrence *recur = incidence->recurrence();
+  if (recur->doesRecur()) {
+    kdDebug() << "Write recurrence for " << incidence->summary() << endl;
+    icalcomponent_add_property(parent,writeRecurrenceRule(recur));
+  }
+
+// TODO: exdates
+#if 0
+  // exceptions to recurrence
+  QDateList dateList(FALSE);
+  dateList = anEvent->exDates();
+  QDate *tmpDate;
+  QString tmpStr2 = "";
+
+  for (tmpDate = dateList.first(); tmpDate; tmpDate = dateList.next()) {
+    tmpStr = qDateToISO(*tmpDate) + ";";
+    tmpStr2 += tmpStr;
+  }
+  if (!tmpStr2.isEmpty()) {
+    tmpStr2.truncate(tmpStr2.length()-1);
+    addPropValue(vevent, VCExDateProp, tmpStr2.ascii());
+  }
+#endif
+
 }
 
-icalproperty *writeRecurrenceRule(Incidence *event)
+icalproperty *ICalFormat::writeRecurrenceRule(KORecurrence *recur)
 {
+  kdDebug() << "ICalFormat::writeRecurrenceRule()" << endl;
+
+  icalrecurrencetype r;
+
+  icalrecurrencetype_clear(&r);
+
+/*
+  r.by_second[0] = ICAL_RECURRENCE_ARRAY_MAX;
+  r.by_minute[0] = ICAL_RECURRENCE_ARRAY_MAX;
+  r.by_hour[0] = ICAL_RECURRENCE_ARRAY_MAX;
+  r.by_day[0] = ICAL_RECURRENCE_ARRAY_MAX;
+  r.by_month_day[0] = ICAL_RECURRENCE_ARRAY_MAX;
+  r.by_year_day[0] = ICAL_RECURRENCE_ARRAY_MAX;
+  r.by_week_no[0] = ICAL_RECURRENCE_ARRAY_MAX;
+  r.by_month[0] = ICAL_RECURRENCE_ARRAY_MAX;
+  r.by_set_pos[0] = ICAL_RECURRENCE_ARRAY_MAX;
+
+  r.until = writeICalDate(QDate::currentDate());
+  r.count = 0;
+  r.interval = 0;
+  r.week_start = ICAL_NO_WEEKDAY;
+*/
+
+  int index = 0;
+
+  QList<KORecurrence::rMonthPos> tmpPositions;
+  QList<int> tmpDays;
+  int *tmpDay;
+  KORecurrence::rMonthPos *tmpPos;
+
+  switch(recur->doesRecur()) {
+    case KORecurrence::rDaily:
+      r.freq = ICAL_DAILY_RECURRENCE;
+#if 0
+      tmpStr.sprintf("D%i ",anEvent->rFreq);
+//      if (anEvent->rDuration > 0)
+//	tmpStr += "#";
+#endif
+      break;
+    case KORecurrence::rWeekly:
+      r.freq = ICAL_WEEKLY_RECURRENCE;
+      for (int i = 0; i < 7; i++) {
+	if (recur->days().testBit(i))
+          r.by_day[index++] = icalrecurrencetype_day_day_of_week(i+1);
+      }
+//      r.by_day[index] = ICAL_RECURRENCE_ARRAY_MAX;
+#if 0
+      tmpStr.sprintf("W%i ",anEvent->rFreq);
+      for (int i = 0; i < 7; i++) {
+	if (anEvent->rDays.testBit(i))
+	  tmpStr += dayFromNum(i);
+      }
+#endif
+      break;
+    case KORecurrence::rMonthlyPos:
+      r.freq = ICAL_MONTHLY_RECURRENCE;
+
+      tmpPositions = recur->monthPositions();
+      for (tmpPos = tmpPositions.first();
+	   tmpPos;
+	   tmpPos = tmpPositions.next()) {
+        r.by_month_day[index++] = tmpPos->rPos;
+      }
+//      r.by_month_day[index] = ICAL_RECURRENCE_ARRAY_MAX;
+#if 0
+      tmpStr.sprintf("MP%i ", anEvent->rFreq);
+      // write out all rMonthPos's
+      tmpPositions = anEvent->rMonthPositions;
+      for (tmpPos = tmpPositions.first();
+	   tmpPos;
+	   tmpPos = tmpPositions.next()) {
+	
+	tmpStr2.sprintf("%i", tmpPos->rPos);
+	if (tmpPos->negative)
+	  tmpStr2 += "- ";
+	else
+	  tmpStr2 += "+ ";
+	tmpStr += tmpStr2;
+	for (int i = 0; i < 7; i++) {
+	  if (tmpPos->rDays.testBit(i))
+	    tmpStr += dayFromNum(i);
+	}
+      } // loop for all rMonthPos's
+#endif
+      break;
+    case KORecurrence::rMonthlyDay:
+      r.freq = ICAL_MONTHLY_RECURRENCE;
+
+      tmpDays = recur->monthDays();
+      for (tmpDay = tmpDays.first();
+	   tmpDay;
+	   tmpDay = tmpDays.next()) {
+        r.by_day[index++] = icalrecurrencetype_day_position(*tmpDay + 1);
+      }
+//      r.by_day[index] = ICAL_RECURRENCE_ARRAY_MAX;
+#if 0    
+      tmpStr.sprintf("MD%i ", anEvent->rFreq);
+      // write out all rMonthDays;
+      tmpDays = anEvent->rMonthDays;
+      for (tmpDay = tmpDays.first();
+	   tmpDay;
+	   tmpDay = tmpDays.next()) {
+	tmpStr2.sprintf("%i ", *tmpDay);
+	tmpStr += tmpStr2;
+      }
+#endif
+      break;
+    case KORecurrence::rYearlyMonth:
+      r.freq = ICAL_YEARLY_RECURRENCE;
+
+      tmpDays = recur->yearNums();
+      for (tmpDay = tmpDays.first();
+	   tmpDay;
+	   tmpDay = tmpDays.next()) {
+//        r.by_set_pos[index++] = *tmpDay;
+      }
+//      r.by_set_pos[index] = ICAL_RECURRENCE_ARRAY_MAX;
+#if 0
+      tmpStr.sprintf("YM%i ", anEvent->rFreq);
+      // write out all the rYearNums;
+      tmpDays = anEvent->rYearNums;
+      for (tmpDay = tmpDays.first();
+	   tmpDay;
+	   tmpDay = tmpDays.next()) {
+	tmpStr2.sprintf("%i ", *tmpDay);
+	tmpStr += tmpStr2;
+      }
+#endif
+      break;
+    case KORecurrence::rYearlyDay:
+      r.freq = ICAL_YEARLY_RECURRENCE;
+
+      tmpDays = recur->yearNums();
+      for (tmpDay = tmpDays.first();
+	   tmpDay;
+	   tmpDay = tmpDays.next()) {
+        r.by_set_pos[index++] = *tmpDay;
+      }
+      r.by_set_pos[index] = ICAL_RECURRENCE_ARRAY_MAX;
+#if 0
+      tmpStr.sprintf("YD%i ", anEvent->rFreq);
+      // write out all the rYearNums;
+      tmpDays = anEvent->rYearNums;
+      for (tmpDay = tmpDays.first();
+	   tmpDay;
+	   tmpDay = tmpDays.next()) {
+	tmpStr2.sprintf("%i ", *tmpDay);
+	tmpStr += tmpStr2;
+      }
+#endif
+      break;
+    default:
+      r.freq = ICAL_NO_RECURRENCE;
+      kdDebug() << "ICalFormat::writeRecurrence(): no recurrence" << endl;
+      break;
+  }
+
+  r.interval = recur->frequency();
+
+  if (recur->duration() > 0) {
+    r.count = recur->duration();
+  } else if (recur->duration() == -1) {
+    r.count = 0;
+  } else {
+    r.until = writeICalDate(recur->endDate());
+  }
+
+  const char *str = icalrecurrencetype_as_string(&r);
+  if (str) {
+    kdDebug() << " String: " << str << endl;
+  } else {
+    kdDebug() << " No String" << endl;
+  }
+
+  return icalproperty_new_rrule(r);
+
 #if 0
     // some more variables
     QList<Event::rMonthPos> tmpPositions;
@@ -903,7 +1083,6 @@ icalproperty *writeRecurrenceRule(Incidence *event)
 
   } // event repeats
 #endif
-  return 0;
 }
 
 Todo *ICalFormat::readTodo(icalcomponent *vtodo)

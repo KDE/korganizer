@@ -194,6 +194,7 @@ void Incidence::addAttendee(Attendee *a)
   emit eventUpdated(this);
 }
 
+#if 0
 void Incidence::removeAttendee(Attendee *a)
 {
   if (mReadOnly) return;
@@ -212,13 +213,15 @@ void Incidence::removeAttendee(const char *n)
       break;
     }
 }
-    
+#endif
+
 void Incidence::clearAttendees()
 {
   if (mReadOnly) return;
   mAttendees.clear();
 }
 
+#if 0
 Attendee *Incidence::getAttendee(const char *n) const
 {
   QListIterator<Attendee> qli(mAttendees);
@@ -231,6 +234,7 @@ Attendee *Incidence::getAttendee(const char *n) const
   }
   return 0L;
 }
+#endif
 
 void Incidence::setDescription(const QString &description)
 {

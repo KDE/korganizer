@@ -18,7 +18,6 @@ class Incidence : public QObject
     Q_OBJECT
   public:
     /** enumeration for describing an event's secrecy. */
-    enum { PUBLIC = 0, PRIVATE = 1, CONFIDENTIAL = 2 };
     enum { SecrecyPublic = 0, SecrecyPrivate = 1, SecrecyConfidential = 2 };
 
     Incidence();
@@ -80,10 +79,10 @@ class Incidence : public QObject
 
     /** attendee stuff */
     void addAttendee(Attendee *a);
-    void removeAttendee(Attendee *a);
-    void removeAttendee(const char *n);
+//    void removeAttendee(Attendee *a);
+//    void removeAttendee(const char *n);
     void clearAttendees();
-    Attendee *getAttendee(const char *n) const;
+//    Attendee *getAttendee(const char *n) const;
     // TODO: Remove get from function name
     const QList<Attendee> &attendees() const { return mAttendees; };
     int attendeeCount() const { return mAttendees.count(); };

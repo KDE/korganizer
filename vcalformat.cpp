@@ -911,9 +911,9 @@ Todo *VCalFormat::VTodoToEvent(VObject *vtodo)
     anEvent->setHasStartDate(true);
   } else {
     anEvent->setHasStartDate(false);
-  }  
+  }
 
-  // related todo  
+  // related todo
   if ((vo = isAPropertyOf(vtodo, VCRelatedToProp)) != 0) {
     anEvent->setRelatedToVUID(s = fakeCString(vObjectUStringZValue(vo)));
     deleteStr(s);
@@ -977,12 +977,12 @@ Event* VCalFormat::VEventToEvent(VObject *vevent)
 
   // unique id
   vo = isAPropertyOf(vevent, VCUniqueStringProp);
-  if (!vo) {
-    parseError(VCUniqueStringProp);
-    return 0;
+  // while the UID property is preferred, it is not required.  We'll use the
+  // default Event UID if none is given.
+  if (vo) {
+    anEvent->setVUID(s = fakeCString(vObjectUStringZValue(vo)));
+    deleteStr(s);
   }
-  anEvent->setVUID(s = fakeCString(vObjectUStringZValue(vo)));
-  deleteStr(s);
 
   // revision
   // again NSCAL doesn't give us much to work with, so we improvise...
