@@ -230,6 +230,7 @@ void KOAgenda::init()
   setAcceptDrops( true );
   installEventFilter( this );
   mItems.setAutoDelete( true );
+  mItemsToDelete.setAutoDelete( true );
 
 //  resizeContents( (int)(mGridSpacingX * mColumns + 1) , (int)(mGridSpacingY * mRows + 1) );
   resizeContents( int( mGridSpacingX * mColumns ),
@@ -278,6 +279,7 @@ void KOAgenda::clear()
     removeChild(item);
   }
   mItems.clear();
+  mItemsToDelete.clear();
 
   mSelectedItem = 0;
 
@@ -1432,7 +1434,11 @@ void KOAgenda::removeEvent ( Event *event )
       item = item->nextMultiItem();
       QPtrList<KOAgendaItem> conflictItems = thisItem->conflictItems();
       removeChild( thisItem );
-      mItems.remove( thisItem );
+      int pos = mItems.find( thisItem );
+      if ( pos>=0 ) {
+        mItems.take( pos );
+      }
+      mItemsToDelete.append( thisItem );
 
       KOAgendaItem *confitem;
       for ( confitem = conflictItems.first(); confitem != 0;
@@ -1441,7 +1447,13 @@ void KOAgenda::removeEvent ( Event *event )
         if ( confitem != thisItem ) placeSubCells(confitem);
       }
     }
+    QTimer::singleShot( 0, this, SLOT( deleteItemsToDelete() ) );
   }
+}
+
+void KOAgenda::deleteItemsToDelete()
+{
+  mItemsToDelete.clear();
 }
 
 //QSizePolicy KOAgenda::sizePolicy() const

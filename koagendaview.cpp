@@ -821,6 +821,32 @@ void KOAgendaView::insertEvent( Event *event, QDate curDate, int curCol )
   }
 }
 
+void KOAgendaView::changeEventDisplayAdded( Event *event )
+{
+  if ( !event->doesRecur() ) {
+    // find a suitable date
+    QDate f = mSelectedDates.first();
+    QDate l = mSelectedDates.last();
+    QDate startDt = event->dtStart().date();
+    QDate endDt = event->dtEnd().date();
+    if ( startDt <= l ) {
+      if ( startDt >= f ) {
+        insertEvent( event, startDt );
+      } else if ( endDt >= f ) {
+        insertEvent( event, endDt );
+      }
+    }
+  } else {
+    DateList::ConstIterator dit;
+    QDate curDate;
+    for( dit = mSelectedDates.begin(); dit != mSelectedDates.end(); ++dit ) {
+      curDate = *dit;
+      if ( event->recursOn( curDate ) ) insertEvent( event, curDate );
+    }
+  }
+
+}
+
 void KOAgendaView::changeEventDisplay(Event *event, int mode)
 {
 //  kdDebug(5850) << "KOAgendaView::changeEventDisplay" << endl;
@@ -831,37 +857,17 @@ void KOAgendaView::changeEventDisplay(Event *event, int mode)
         // recreating everything even causes troubles: dropping to the day matrix
         // recreates the agenda items, but the evaluation is still in an agendaItems' code,
         // which was deleted in the mean time. Thus KOrg crashes...
-        if ( !event->doesRecur() ) {
-          // find a suitable date
-          QDate f = mSelectedDates.first();
-          QDate l = mSelectedDates.last();
-          QDate startDt = event->dtStart().date();
-          QDate endDt = event->dtEnd().date();
-          if ( startDt <= l ) {
-            if ( startDt >= f ) {
-              insertEvent( event, startDt );
-            } else if ( endDt >= f ) {
-              insertEvent( event, endDt );
-            }
-          }
-        } else {
-          DateList::ConstIterator dit;
-          QDate curDate;
-          for( dit = mSelectedDates.begin(); dit != mSelectedDates.end(); ++dit ) {
-            curDate = *dit;
-            if ( event->recursOn( curDate ) ) insertEvent( event, curDate );
-          }
-        }
+        changeEventDisplayAdded( event );
       }
       break;
 
     case KOGlobals::EVENTEDITED:
-/*      if ( event->doesFloat() ) {
-        mAllDayAgenda->changeEvent( event );
+      if ( event->doesFloat() ) {
+        mAllDayAgenda->removeEvent( event );
       } else {
-        mAgenda->changeEvent( event );
-      }*/
-      fillAgenda();
+        mAgenda->removeEvent( event );
+      }
+      changeEventDisplayAdded( event );
       break;
     case KOGlobals::EVENTDELETED:
       if ( event->doesFloat() ) {

@@ -93,7 +93,10 @@ class KOAgenda : public QScrollView
     void insertMultiItem ( Event *event, QDate qd, int XBegin, int XEnd,
                            int YTop, int YBottom );
 
-    // remove an event and all its multi-items from the agenda.
+    /** remove an event and all its multi-items from the agenda.
+     *  This function removes the items from the view, but doesn't delete them.
+     *  Instead, they are queued in mItemsToDelete and later deleted by
+     *  the slot deleteItemsToDelete() (called by QTimer::singleShot ) */
     void removeEvent ( Event *event );
 
     void changeColumns( int columns );
@@ -218,6 +221,10 @@ class KOAgenda : public QScrollView
 
     void emitNewEventForSelection();
 
+  protected slots:
+    /** delete the items that are queued for deletion */
+    void deleteItemsToDelete();
+
   private:
     void init();
     void marcus_bains();
@@ -289,6 +296,7 @@ class KOAgenda : public QScrollView
 
     // List of all Items contained in agenda
     QPtrList<KOAgendaItem> mItems;
+    QPtrList<KOAgendaItem> mItemsToDelete;
 
     QPopupMenu *mItemPopup; // Right mouse button popup menu for KOAgendaItems
 

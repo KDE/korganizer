@@ -174,7 +174,8 @@ class KOAgendaView : public KOEventView
     virtual void showNewEventPopup();
 
     void insertEvent( Event *event, QDate curDate, int curCol = -1 );
-    void changeEventDisplay(Event *, int);
+    void changeEventDisplayAdded( Event *event );
+    void changeEventDisplay( Event *event, int mode );
 
     void clearSelection();
 
