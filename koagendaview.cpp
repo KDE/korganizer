@@ -881,7 +881,8 @@ void KOAgendaView::insertIncidence( Incidence *incidence, QDate curDate, int cur
 
 void KOAgendaView::changeIncidenceDisplayAdded( Incidence *incidence )
 {
-  if ( !calendar()->filter()->filterIncidence( incidence ) )
+  if ( !calendar()->filter()->filterIncidence( incidence ) ||
+     ( incidence->type() == "Todo" && !KOPrefs::instance()->showAllDayTodo() ) )
     return;
 
   QDate f = mSelectedDates.first();
