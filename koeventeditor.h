@@ -114,7 +114,7 @@ class KOEventEditor : public KOIncidenceEditor
     QString type() { return "Event"; }
     void setupGeneral();
     void setupRecurrence();
-    void setupGanttTab();
+    void setupFreeBusy();
 
     /** Check if the input is valid. */
     bool validateInput();

@@ -46,9 +46,9 @@
 #include "koprefs.h"
 #include "koglobals.h"
 
-#include "koeditorgantt.h"
+#include "koeditorfreebusy.h"
+
 #include "koeditordetails.h"
-#include "koeditordetails.moc"
 
 template <>
 CustomListViewItem<class Attendee *>::~CustomListViewItem()
@@ -469,3 +469,5 @@ void KOEditorDetails::setFreeBusyWidget( KOEditorFreeBusy *v )
 {
   mFreeBusy = v;
 }
+
+#include "koeditordetails.moc"

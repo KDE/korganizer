@@ -43,7 +43,7 @@
 #include "kogroupware.h"
 #include "freebusymanager.h"
 
-#include "koeditorgantt.h"
+#include "koeditorfreebusy.h"
 
 
 // We can't use the CustomListViewItem base class, since we need a
@@ -550,4 +550,4 @@ void KOEditorFreeBusy::reload()
   // TODO: Reload all free/busy information
 }
 
-#include "koeditorgantt.moc"
+#include "koeditorfreebusy.moc"

@@ -41,7 +41,7 @@
 #include "koprefs.h"
 #include "koeditordetails.h"
 #include "koeditorattachments.h"
-#include "koeditorgantt.h"
+#include "koeditorfreebusy.h"
 #include "kogroupware.h"
 
 #include "koeventeditor.h"
@@ -63,7 +63,7 @@ void KOEventEditor::init()
   setupAttendeesTab();
   setupRecurrence();
   setupAttachmentsTab();
-  setupGanttTab();
+  setupFreeBusy();
   mDetails->setFreeBusyWidget( mFreeBusy );
 
   // Propagate date time settings to recurrence tab
@@ -152,7 +152,7 @@ void KOEventEditor::setupRecurrence()
   topLayout->addWidget( mRecurrence );
 }
 
-void KOEventEditor::setupGanttTab()
+void KOEventEditor::setupFreeBusy()
 {
   QFrame* frame = addPage( i18n("&Free/Busy") );
   mFreeBusy = new KOEditorFreeBusy( spacingHint(), frame );

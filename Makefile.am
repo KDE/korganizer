@@ -79,7 +79,7 @@ libkorganizer_la_SOURCES =  outgoingdialog_base.ui \
         koeditorgeneral.cpp \
         koeditorgeneralevent.cpp koeditorgeneraltodo.cpp koeditordetails.cpp \
         koeditorrecurrence.cpp koeditorattachments.cpp koeventviewerdialog.cpp \
-        kogroupwareprefspage.ui koeventpopupmenu.cpp koeditorgantt.cpp \
+        kogroupwareprefspage.ui koeventpopupmenu.cpp koeditorfreebusy.cpp \
         outgoingdialog.cpp \
 	incomingdialog_base.ui incomingdialog.cpp \
 	publishdialog_base.ui publishdialog.cpp \
@@ -134,7 +134,7 @@ noinst_HEADERS = komonthview.h \
         kowindowlist.h kocounterdialog.h \
         koeditorgeneralevent.h koeditorgeneraltodo.h koeditordetails.h \
         koeditorrecurrence.h koeventviewerdialog.h koeventpopupmenu.h \
-        outgoingdialog.h incomingdialog.h publishdialog.h koeditorgantt.h \
+        outgoingdialog.h incomingdialog.h publishdialog.h koeditorfreebusy.h \
         koeventview.h statusdialog.h customlistviewitem.h \
         alarmclient.h \
         navigatorbar.h kogroupware.h kogroupwareincomingdialog.h \
