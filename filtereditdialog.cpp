@@ -80,15 +80,23 @@ void FilterEditDialog::updateFilterList()
   mSelectionCombo->clear();
 
   CalFilter *filter = mFilters->first();
-  while(filter) {
-    mSelectionCombo->insertItem(filter->name());
-    filter = mFilters->next();
-  }
-  
-  CalFilter *f = mFilters->at(mSelectionCombo->currentItem());
-  if (f) readFilter(f);
-}
 
+  if (!filter) {
+    enableButtonOK(false);
+    enableButtonApply(false);
+  } else {
+    while(filter) {
+      mSelectionCombo->insertItem(filter->name());
+      filter = mFilters->next();
+    }
+  
+    CalFilter *f = mFilters->at(mSelectionCombo->currentItem());
+    if (f) readFilter(f);
+    
+    enableButtonOK(true);
+    enableButtonApply(true);
+  }
+}
 
 void FilterEditDialog::slotDefault()
 {

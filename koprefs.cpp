@@ -119,8 +119,7 @@ void KOPrefs::usrSetDefaults()
   KEMailSettings settings;
   mName = settings.getSetting(KEMailSettings::RealName);
   mEmail = settings.getSetting(KEMailSettings::RealName);
-  if (mName.isEmpty()) mName = i18n("Anonymous");
-  if (mEmail.isEmpty()) mEmail = i18n("nobody@nowhere");
+  fillMailDefaults();
   mBcc = false;
 
   mAdditional = "";
@@ -153,6 +152,12 @@ void KOPrefs::usrSetDefaults()
   mPrintPreview = "kghostview";
 
   setCategoryDefaults();
+}
+
+void KOPrefs::fillMailDefaults()
+{
+  if (mName.isEmpty()) mName = i18n("Anonymous");
+  if (mEmail.isEmpty()) mEmail = i18n("nobody@nowhere");
 }
 
 void KOPrefs::setCategoryDefaults()
@@ -189,6 +194,7 @@ void KOPrefs::usrReadConfig()
   mConfig->setGroup("Personal Settings");
   mName = mConfig->readEntry("user_name","");
   mEmail = mConfig->readEntry("user_email","");
+  fillMailDefaults();
   mAdditional = mConfig->readEntry("Additional","");
   mBcc = mConfig->readBoolEntry("Bcc",false);
 

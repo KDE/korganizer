@@ -38,6 +38,9 @@ class KOPrefs : public KPrefs
   protected:
     void setCategoryDefaults();
 
+    /** Fill empty mail fields with default values. */
+    void fillMailDefaults();
+
   private:
     /** Constructor disabled for public. Use instance() to create a KOPrefs
     object. */

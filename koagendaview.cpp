@@ -724,7 +724,7 @@ void KOAgendaView::fillAgenda()
     unsigned int numEvent;
     for(numEvent=0;numEvent<dayEvents.count();++numEvent) {
       Event *event = dayEvents.at(numEvent);
-//      kdDebug() << " Event: " << event->getSummary() << endl;
+//      kdDebug() << " Event: " << event->summary() << endl;
 
       int beginX = currentDate.daysTo(event->dtStart().date()) + curCol;
       int endX = currentDate.daysTo(event->dtEnd().date()) + curCol;
