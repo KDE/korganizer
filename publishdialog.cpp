@@ -102,15 +102,22 @@ void PublishDialog::removeItem()
 void PublishDialog::openAddressbook()
 {
 #ifndef KORG_NOKABC
-  KABC::Addressee a = KABC::AddresseeDialog::getAddressee(this);
+  KABC::Addressee::List addressList;
+  addressList = KABC::AddresseeDialog::getAddressees(this);
+  //KABC::Addressee a = KABC::AddresseeDialog::getAddressee(this);
+  KABC::Addressee a = addressList.first();
   if (!a.isEmpty()) {
-    mNameLineEdit->setEnabled(true);
-    mEmailLineEdit->setEnabled(true);
-    QListViewItem *item = new QListViewItem(mAddressListView);
-    mAddressListView->setSelected(item,true);
-    mNameLineEdit->setText(a.realName());
-    mEmailLineEdit->setText(a.preferredEmail());
-    mAddressListView->insertItem(item);
+    int i;
+    for (i=0;i<addressList.size();i++) {
+      a = addressList[i];
+      mNameLineEdit->setEnabled(true);
+      mEmailLineEdit->setEnabled(true);
+      QListViewItem *item = new QListViewItem(mAddressListView);
+      mAddressListView->setSelected(item,true);
+      mNameLineEdit->setText(a.realName());
+      mEmailLineEdit->setText(a.preferredEmail());
+      mAddressListView->insertItem(item);
+    }
   }
 #endif
 }

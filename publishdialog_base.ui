@@ -8,208 +8,226 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>426</width>
-            <height>418</height>
+            <width>390</width>
+            <height>417</height>
         </rect>
     </property>
     <property name="caption">
         <string>Form1</string>
     </property>
-    <widget class="QPushButton">
+    <grid>
         <property name="name">
-            <cstring>PushButton9</cstring>
+            <cstring>unnamed</cstring>
         </property>
-        <property name="geometry">
-            <rect>
-                <x>40</x>
-                <y>385</y>
-                <width>107</width>
-                <height>25</height>
-            </rect>
+        <property name="margin">
+            <number>11</number>
         </property>
-        <property name="text">
-            <string>Ok</string>
+        <property name="spacing">
+            <number>6</number>
         </property>
-        <property name="default">
-            <bool>true</bool>
-        </property>
-    </widget>
-    <widget class="QPushButton">
-        <property name="name">
-            <cstring>PushButton8</cstring>
-        </property>
-        <property name="geometry">
-            <rect>
-                <x>260</x>
-                <y>385</y>
-                <width>107</width>
-                <height>25</height>
-            </rect>
-        </property>
-        <property name="text">
-            <string>Cancel</string>
-        </property>
-    </widget>
-    <widget class="QFrame">
-        <property name="name">
-            <cstring>Frame3</cstring>
-        </property>
-        <property name="geometry">
-            <rect>
-                <x>5</x>
-                <y>5</y>
-                <width>415</width>
-                <height>370</height>
-            </rect>
-        </property>
-        <property name="frameShape">
-            <enum>StyledPanel</enum>
-        </property>
-        <property name="frameShadow">
-            <enum>Raised</enum>
-        </property>
-        <widget class="QListView">
-            <column>
-                <property name="text">
-                    <string>Name</string>
-                </property>
-                <property name="clickable">
-                    <bool>true</bool>
-                </property>
-                <property name="resizeable">
-                    <bool>true</bool>
-                </property>
-            </column>
-            <column>
-                <property name="text">
-                    <string>Email</string>
-                </property>
-                <property name="clickable">
-                    <bool>true</bool>
-                </property>
-                <property name="resizeable">
-                    <bool>true</bool>
-                </property>
-            </column>
+        <widget class="QPushButton" row="1" column="4">
             <property name="name">
-                <cstring>mAddressListView</cstring>
-            </property>
-            <property name="geometry">
-                <rect>
-                    <x>5</x>
-                    <y>5</y>
-                    <width>405</width>
-                    <height>270</height>
-                </rect>
-            </property>
-        </widget>
-        <widget class="QLabel">
-            <property name="name">
-                <cstring>TextLabel2</cstring>
-            </property>
-            <property name="geometry">
-                <rect>
-                    <x>20</x>
-                    <y>335</y>
-                    <width>40</width>
-                    <height>21</height>
-                </rect>
+                <cstring>PushButton8</cstring>
             </property>
             <property name="text">
-                <string>Email</string>
+                <string>Cancel</string>
             </property>
         </widget>
-        <widget class="QLabel">
+        <widget class="QPushButton" row="1" column="1">
             <property name="name">
-                <cstring>TextLabel1</cstring>
-            </property>
-            <property name="geometry">
-                <rect>
-                    <x>20</x>
-                    <y>295</y>
-                    <width>41</width>
-                    <height>21</height>
-                </rect>
+                <cstring>PushButton9</cstring>
             </property>
             <property name="text">
-                <string>Name</string>
+                <string>Ok</string>
+            </property>
+            <property name="default">
+                <bool>true</bool>
             </property>
         </widget>
-        <widget class="QPushButton">
+        <spacer row="1" column="5">
+            <property name="name" stdset="0">
+                <cstring>Spacer16</cstring>
+            </property>
+            <property name="orientation">
+                <enum>Horizontal</enum>
+            </property>
+            <property name="sizeType">
+                <enum>Expanding</enum>
+            </property>
+            <property name="sizeHint">
+                <size>
+                    <width>20</width>
+                    <height>20</height>
+                </size>
+            </property>
+        </spacer>
+        <spacer row="1" column="0">
+            <property name="name" stdset="0">
+                <cstring>Spacer17</cstring>
+            </property>
+            <property name="orientation">
+                <enum>Horizontal</enum>
+            </property>
+            <property name="sizeType">
+                <enum>Expanding</enum>
+            </property>
+            <property name="sizeHint">
+                <size>
+                    <width>20</width>
+                    <height>20</height>
+                </size>
+            </property>
+        </spacer>
+        <spacer row="1" column="2">
+            <property name="name" stdset="0">
+                <cstring>Spacer15</cstring>
+            </property>
+            <property name="orientation">
+                <enum>Horizontal</enum>
+            </property>
+            <property name="sizeType">
+                <enum>Expanding</enum>
+            </property>
+            <property name="sizeHint">
+                <size>
+                    <width>20</width>
+                    <height>20</height>
+                </size>
+            </property>
+        </spacer>
+        <spacer row="1" column="3">
+            <property name="name" stdset="0">
+                <cstring>Spacer18</cstring>
+            </property>
+            <property name="orientation">
+                <enum>Horizontal</enum>
+            </property>
+            <property name="sizeType">
+                <enum>Expanding</enum>
+            </property>
+            <property name="sizeHint">
+                <size>
+                    <width>20</width>
+                    <height>20</height>
+                </size>
+            </property>
+        </spacer>
+        <widget class="QFrame" row="0" column="0" rowspan="1" colspan="6">
             <property name="name">
-                <cstring>PushButton10</cstring>
+                <cstring>Frame3</cstring>
             </property>
-            <property name="geometry">
-                <rect>
-                    <x>290</x>
-                    <y>280</y>
-                    <width>117</width>
-                    <height>25</height>
-                </rect>
+            <property name="frameShape">
+                <enum>StyledPanel</enum>
             </property>
-            <property name="text">
-                <string>New</string>
+            <property name="frameShadow">
+                <enum>Raised</enum>
             </property>
+            <grid>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <property name="margin">
+                    <number>11</number>
+                </property>
+                <property name="spacing">
+                    <number>6</number>
+                </property>
+                <widget class="QListView" row="0" column="0" rowspan="1" colspan="2">
+                    <column>
+                        <property name="text">
+                            <string>Name</string>
+                        </property>
+                        <property name="clickable">
+                            <bool>true</bool>
+                        </property>
+                        <property name="resizeable">
+                            <bool>true</bool>
+                        </property>
+                    </column>
+                    <column>
+                        <property name="text">
+                            <string>Email</string>
+                        </property>
+                        <property name="clickable">
+                            <bool>true</bool>
+                        </property>
+                        <property name="resizeable">
+                            <bool>true</bool>
+                        </property>
+                    </column>
+                    <property name="name">
+                        <cstring>mAddressListView</cstring>
+                    </property>
+                </widget>
+                <widget class="QPushButton" row="1" column="1">
+                    <property name="name">
+                        <cstring>PushButton10</cstring>
+                    </property>
+                    <property name="text">
+                        <string>New</string>
+                    </property>
+                </widget>
+                <widget class="QPushButton" row="2" column="1">
+                    <property name="name">
+                        <cstring>PushButton11</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Remove</string>
+                    </property>
+                </widget>
+                <widget class="QPushButton" row="3" column="1">
+                    <property name="name">
+                        <cstring>PushButton12</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Addressbook</string>
+                    </property>
+                </widget>
+                <widget class="QLayoutWidget" row="1" column="0" rowspan="2" colspan="1">
+                    <property name="name">
+                        <cstring>Layout10</cstring>
+                    </property>
+                    <grid>
+                        <property name="name">
+                            <cstring>unnamed</cstring>
+                        </property>
+                        <property name="margin">
+                            <number>0</number>
+                        </property>
+                        <property name="spacing">
+                            <number>6</number>
+                        </property>
+                        <widget class="QLabel" row="0" column="0">
+                            <property name="name">
+                                <cstring>TextLabel1</cstring>
+                            </property>
+                            <property name="text">
+                                <string>Name</string>
+                            </property>
+                        </widget>
+                        <widget class="QLabel" row="1" column="0">
+                            <property name="name">
+                                <cstring>TextLabel2</cstring>
+                            </property>
+                            <property name="text">
+                                <string>Email</string>
+                            </property>
+                        </widget>
+                        <widget class="QLineEdit" row="1" column="1">
+                            <property name="name">
+                                <cstring>mEmailLineEdit</cstring>
+                            </property>
+                        </widget>
+                        <widget class="QLineEdit" row="0" column="1">
+                            <property name="name">
+                                <cstring>mNameLineEdit</cstring>
+                            </property>
+                        </widget>
+                    </grid>
+                </widget>
+            </grid>
         </widget>
-        <widget class="QPushButton">
-            <property name="name">
-                <cstring>PushButton11</cstring>
-            </property>
-            <property name="geometry">
-                <rect>
-                    <x>290</x>
-                    <y>310</y>
-                    <width>117</width>
-                    <height>25</height>
-                </rect>
-            </property>
-            <property name="text">
-                <string>Remove</string>
-            </property>
-        </widget>
-        <widget class="QPushButton">
-            <property name="name">
-                <cstring>PushButton12</cstring>
-            </property>
-            <property name="geometry">
-                <rect>
-                    <x>290</x>
-                    <y>340</y>
-                    <width>117</width>
-                    <height>25</height>
-                </rect>
-            </property>
-            <property name="text">
-                <string>Addressbook</string>
-            </property>
-        </widget>
-        <widget class="QLineEdit">
-            <property name="name">
-                <cstring>mNameLineEdit</cstring>
-            </property>
-            <property name="geometry">
-                <rect>
-                    <x>65</x>
-                    <y>290</y>
-                    <width>210</width>
-                    <height>27</height>
-                </rect>
-            </property>
-        </widget>
-        <widget class="QLineEdit">
-            <property name="name">
-                <cstring>mEmailLineEdit</cstring>
-            </property>
-            <property name="geometry">
-                <rect>
-                    <x>65</x>
-                    <y>330</y>
-                    <width>210</width>
-                    <height>27</height>
-                </rect>
-            </property>
-        </widget>
-    </widget>
+    </grid>
 </widget>
 <connections>
     <connection>
@@ -255,6 +273,9 @@
         <slot>updateItem()</slot>
     </connection>
 </connections>
+<includes>
+    <include location="local" impldecl="in implementation">publishdialog_base.ui.h</include>
+</includes>
 <slots>
     <slot access="protected">addItem()</slot>
     <slot access="protected">removeItem()</slot>
