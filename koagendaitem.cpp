@@ -379,9 +379,11 @@ void KOAgendaItem::resetMovePrivate()
       if ( mStartMoveInfo->mFirstMultiItem==0 && mStartMoveInfo->mLastMultiItem==0 ) {
         // it was a single-day event before we started the move. 
         delete mMultiItemInfo;
+        mMultiItemInfo = 0;
       }
     }
     delete mStartMoveInfo;
+    mStartMoveInfo = 0;
   }
   emit showAgendaItem( this );
   if ( nextMultiItem() ) {
