@@ -62,6 +62,7 @@ void KOTodoViewItem::paintBranches(QPainter *p,const QColorGroup & cg,int w,
 
 void KOTodoViewItem::construct()
 {
+  m_init = true;
   QString keyd = "==";
   QString keyt = "==";
 
@@ -118,10 +119,14 @@ void KOTodoViewItem::construct()
 #endif
 
   m_known = false;
+  m_init = false;
 }
 
 void KOTodoViewItem::stateChange(bool state)
 {
+  // do not change setting on startup
+  if ( m_init ) return;
+  
   kdDebug() << "State changed, modified " << state << endl;
   QString keyd = "==";
   QString keyt = "==";
