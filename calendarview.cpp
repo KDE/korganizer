@@ -124,6 +124,8 @@ CalendarView::CalendarView(QWidget *parent,const char *name)
   mCalendar->setOwner(KOPrefs::instance()->fullName());
   mCalendar->setEmail(KOPrefs::instance()->email());
 
+  mCalendar->registerObserver( this );
+
   // TODO: Make sure that view is updated, when calendar is changed.
 
   QBoxLayout *topLayout = new QVBoxLayout(this);
@@ -1374,4 +1376,9 @@ void CalendarView::toggleExpand()
     mLeftFrame->hide();
     emit calendarViewExpanded( true );
   }
+}
+
+void CalendarView::calendarModified( bool modified, Calendar * )
+{
+  setModified( modified );
 }

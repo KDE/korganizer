@@ -77,7 +77,7 @@ class CreateEditorVisitor : public Incidence::Visitor
   @author Cornelius Schumacher
   @version $Revision$
 */
-class CalendarView : public KOrg::CalendarViewBase
+class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
 {
     Q_OBJECT
   public:
@@ -380,6 +380,8 @@ class CalendarView : public KOrg::CalendarViewBase
   
   private:
     void createPrinter();
+
+    void calendarModified( bool, Calendar * );
 
     CalPrinter *mCalPrinter;
 
