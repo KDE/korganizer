@@ -268,8 +268,10 @@ KOTodoView::KOTodoView(Calendar *calendar,QWidget* parent,const char* name) :
   mTodoListView->addColumn(i18n("Due Time"));
   mTodoListView->setColumnAlignment(4,AlignHCenter);
   mTodoListView->addColumn(i18n("Categories"));
+#if 0
   mTodoListView->addColumn(i18n("Sort Id"));
   mTodoListView->setColumnAlignment(4,AlignHCenter);
+#endif
 
   mTodoListView->setMinimumHeight( 60 );
   mTodoListView->setItemsRenameable( TRUE );
@@ -281,8 +283,9 @@ KOTodoView::KOTodoView(Calendar *calendar,QWidget* parent,const char* name) :
   mTodoListView->setColumnWidthMode(3, QListView::Manual);
   mTodoListView->setColumnWidthMode(4, QListView::Manual);
   mTodoListView->setColumnWidthMode(5, QListView::Manual);
+#if 0
   mTodoListView->setColumnWidthMode(6, QListView::Manual);
-
+#endif
   
   mPriorityPopupMenu = new QPopupMenu(this);
   for (int i = 1; i <= 5; i++) {

@@ -102,6 +102,8 @@ void KOTodoViewItem::construct()
   else setSortKey(1,QString::number(mTodo->priority())+keyd+keyt);
 
   setText(5,mTodo->categoriesStr());
+
+#if 0
   // Find sort id in description. It's the text behind the last '#' character
   // found in the description. White spaces are removed from beginning and end
   // of sort id.
@@ -113,6 +115,8 @@ void KOTodoViewItem::construct()
     str.stripWhiteSpace();
     setText(6,str);
   }
+#endif
+
   m_known = false;
 }
 
