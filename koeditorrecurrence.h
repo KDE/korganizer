@@ -1,6 +1,6 @@
 /*
     This file is part of KOrganizer.
-    Copyright (c) 2000,2001,2002 Cornelius Schumacher <schumacher@kde.org>
+    Copyright (c) 2000-2003 Cornelius Schumacher <schumacher@kde.org>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -189,6 +189,71 @@ class ExceptionsDialog : public KDialogBase, public ExceptionsBase
     ExceptionsWidget *mExceptions;
 };
 
+class RecurrenceRangeBase
+{
+  public:
+    virtual void setDefaults( const QDateTime &from ) = 0;
+  
+    virtual void setDuration( int ) = 0;
+    virtual int duration() = 0;
+
+    virtual void setEndDate( const QDate & ) = 0;
+    virtual QDate endDate() = 0;
+
+    virtual void setDateTimes( const QDateTime &start,
+                               const QDateTime &end = QDateTime() ) = 0;
+};
+
+class RecurrenceRangeWidget : public QWidget, public RecurrenceRangeBase
+{
+    Q_OBJECT
+  public:
+    RecurrenceRangeWidget( QWidget *parent = 0, const char *name = 0 );
+
+    void setDefaults( const QDateTime &from );
+
+    void setDuration( int );
+    int duration();
+
+    void setEndDate( const QDate & );
+    QDate endDate();
+
+    void setDateTimes( const QDateTime &start,
+                       const QDateTime &end = QDateTime() );
+
+  protected slots:
+    void showCurrentRange();
+
+  private:
+    QGroupBox *mRangeGroupBox;
+    QLabel *mStartDateLabel;
+    QRadioButton *mNoEndDateButton;
+    QRadioButton *mEndDurationButton;
+    QSpinBox *mEndDurationEdit;
+    QRadioButton *mEndDateButton;
+    KDateEdit *mEndDateEdit;  
+};
+
+class RecurrenceRangeDialog : public KDialogBase, public RecurrenceRangeBase
+{
+  public:
+    RecurrenceRangeDialog( QWidget *parent = 0, const char *name = 0 );
+
+    void setDefaults( const QDateTime &from );
+
+    void setDuration( int );
+    int duration();
+
+    void setEndDate( const QDate & );
+    QDate endDate();
+
+    void setDateTimes( const QDateTime &start,
+                       const QDateTime &end = QDateTime() );
+    
+  private:
+    RecurrenceRangeWidget *mRecurrenceRangeWidget;
+};
+
 class KOEditorRecurrence : public QWidget
 {
     Q_OBJECT
@@ -218,8 +283,8 @@ class KOEditorRecurrence : public QWidget
   
   protected slots:
     void showCurrentRule( int );
-    void showCurrentRange();
     void showExceptionsDialog();
+    void showRecurrenceRangeDialog();
     
   private:
     QCheckBox *mEnabledCheck;
@@ -235,15 +300,12 @@ class KOEditorRecurrence : public QWidget
     RecurWeekly *mWeekly;
     RecurMonthly *mMonthly;
     RecurYearly *mYearly;
+
+    RecurrenceRangeBase *mRecurrenceRange;
+    RecurrenceRangeWidget *mRecurrenceRangeWidget;
+    RecurrenceRangeDialog *mRecurrenceRangeDialog;
+    QPushButton *mRecurrenceRangeButton;
     
-    QGroupBox *mRangeGroupBox;
-    QLabel *mStartDateLabel;
-    QRadioButton *mNoEndDateButton;
-    QRadioButton *mEndDurationButton;
-    QSpinBox *mEndDurationEdit;
-    QRadioButton *mEndDateButton;
-    KDateEdit *mEndDateEdit;
-  
     ExceptionsBase *mExceptions;
     ExceptionsDialog *mExceptionsDialog;
     ExceptionsWidget *mExceptionsWidget;

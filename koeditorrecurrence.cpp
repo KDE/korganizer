@@ -1,6 +1,6 @@
 /*
     This file is part of KOrganizer.
-    Copyright (c) 2000,2001,2002 Cornelius Schumacher <schumacher@kde.org>
+    Copyright (c) 2000-2003 Cornelius Schumacher <schumacher@kde.org>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -473,6 +473,158 @@ DateList ExceptionsDialog::dates()
   return mExceptions->dates();
 }
 
+///////////////////////// RecurrenceRangeWidget ///////////////////////////
+
+RecurrenceRangeWidget::RecurrenceRangeWidget( QWidget *parent,
+                                              const char *name )
+  : QWidget( parent, name )
+{
+  QBoxLayout *topLayout = new QVBoxLayout( this );
+
+  mRangeGroupBox = new QGroupBox( 1, Horizontal, i18n("Recurrence Range"),
+                                  this );
+  topLayout->addWidget( mRangeGroupBox );
+
+  QWidget *rangeBox = new QWidget( mRangeGroupBox );
+  QVBoxLayout *rangeLayout = new QVBoxLayout( rangeBox );
+  rangeLayout->setSpacing( KDialog::spacingHint() );
+
+  mStartDateLabel = new QLabel( i18n("Begin on:"), rangeBox );
+  rangeLayout->addWidget( mStartDateLabel );
+
+  QButtonGroup *rangeButtonGroup = new QButtonGroup;
+
+  mNoEndDateButton = new QRadioButton( i18n("No ending date"), rangeBox );
+  rangeButtonGroup->insert( mNoEndDateButton );
+  rangeLayout->addWidget( mNoEndDateButton );
+
+  QBoxLayout *durationLayout = new QHBoxLayout( rangeLayout );
+  durationLayout->setSpacing( KDialog::spacingHint() );
+
+  mEndDurationButton = new QRadioButton( i18n("End after"), rangeBox );
+  rangeButtonGroup->insert( mEndDurationButton );
+  durationLayout->addWidget( mEndDurationButton );
+  
+  mEndDurationEdit = new QSpinBox( 1, 9999, 1, rangeBox );
+  durationLayout->addWidget( mEndDurationEdit );
+
+  QLabel *endDurationLabel = new QLabel( i18n("occurrence(s)"), rangeBox );
+  durationLayout ->addWidget( endDurationLabel );
+
+  QBoxLayout *endDateLayout = new QHBoxLayout( rangeLayout );
+  endDateLayout->setSpacing( KDialog::spacingHint() );
+  
+  mEndDateButton = new QRadioButton( i18n("End by:"), rangeBox );
+  rangeButtonGroup->insert( mEndDateButton );
+  endDateLayout->addWidget( mEndDateButton );
+  
+  mEndDateEdit = new KDateEdit( rangeBox );
+  endDateLayout->addWidget( mEndDateEdit );
+
+  endDateLayout->addStretch( 1 );
+
+  connect( mNoEndDateButton, SIGNAL( toggled( bool ) ),
+           SLOT( showCurrentRange() ) );
+  connect( mEndDurationButton, SIGNAL( toggled( bool ) ),
+           SLOT( showCurrentRange() ) );
+  connect( mEndDateButton, SIGNAL( toggled( bool ) ),
+           SLOT( showCurrentRange() ) );
+}
+
+void RecurrenceRangeWidget::setDefaults( const QDateTime &from  )
+{
+  mNoEndDateButton->setChecked( true );
+
+  setDateTimes( from );
+}
+
+void RecurrenceRangeWidget::setDuration( int duration )
+{
+  if ( duration == -1 ) {
+    mNoEndDateButton->setChecked( true );
+  } else if ( duration == 0 ) {
+    mEndDateButton->setChecked( true );
+  } else {
+    mEndDurationButton->setChecked( true );
+    mEndDurationEdit->setValue( duration );
+  }
+}
+
+int RecurrenceRangeWidget::duration()
+{
+  if ( mNoEndDateButton->isChecked() ) {
+    return -1;
+  } else if ( mEndDurationButton->isChecked() ) {
+    return mEndDurationEdit->value();
+  } else {
+    return 0;
+  }
+}
+
+void RecurrenceRangeWidget::setEndDate( const QDate &date )
+{
+  mEndDateEdit->setDate( date );
+}
+
+QDate RecurrenceRangeWidget::endDate()
+{
+  return mEndDateEdit->date();
+}
+
+void RecurrenceRangeWidget::showCurrentRange()
+{
+  mEndDurationEdit->setEnabled( mEndDurationButton->isChecked() );
+  mEndDateEdit->setEnabled( mEndDateButton->isChecked() );
+}
+
+void RecurrenceRangeWidget::setDateTimes( const QDateTime &start,
+                                          const QDateTime & )
+{
+  mStartDateLabel->setText( i18n("Begins on: %1")
+      .arg( KGlobal::locale()->formatDate( start.date() ) ) );
+}
+
+///////////////////////// RecurrenceRangeDialog ///////////////////////////
+
+RecurrenceRangeDialog::RecurrenceRangeDialog( QWidget *parent,
+                                              const char *name ) :
+  KDialogBase( parent, name, true, i18n("Edit Recurrence Range"), Ok|Cancel )
+{
+  mRecurrenceRangeWidget = new RecurrenceRangeWidget( this );
+  setMainWidget( mRecurrenceRangeWidget );
+}
+
+void RecurrenceRangeDialog::setDefaults( const QDateTime &from )
+{
+  mRecurrenceRangeWidget->setDefaults( from );
+}
+
+void RecurrenceRangeDialog::setDuration( int duration )
+{
+  mRecurrenceRangeWidget->setDuration( duration );
+}
+
+int RecurrenceRangeDialog::duration()
+{
+  return mRecurrenceRangeWidget->duration();
+}
+
+void RecurrenceRangeDialog::setEndDate( const QDate &date )
+{
+  mRecurrenceRangeWidget->setEndDate( date );
+}
+
+QDate RecurrenceRangeDialog::endDate()
+{
+  return mRecurrenceRangeWidget->endDate();
+}
+
+void RecurrenceRangeDialog::setDateTimes( const QDateTime &start,
+                                          const QDateTime &end )
+{
+  mRecurrenceRangeWidget->setDateTimes( start, end );
+}
+
 //////////////////////////// RecurrenceChooser ////////////////////////
 
 RecurrenceChooser::RecurrenceChooser( QWidget *parent, const char *name ) :
@@ -619,58 +771,16 @@ KOEditorRecurrence::KOEditorRecurrence( QWidget* parent, const char *name ) :
 
   showCurrentRule( mRecurrenceChooser->type() );
 
-  mRangeGroupBox = new QGroupBox( 1, Horizontal, i18n("Recurrence Range"),
-                                  this );
-  topLayout->addWidget( mRangeGroupBox, 3, 0 );
-
-  QWidget *rangeBox = new QWidget( mRangeGroupBox );
-  QVBoxLayout *rangeLayout = new QVBoxLayout( rangeBox );
-  rangeLayout->setSpacing( KDialog::spacingHint() );
-
-  mStartDateLabel = new QLabel( i18n("Begin on:"), rangeBox );
-  rangeLayout->addWidget( mStartDateLabel );
-  if ( KOPrefs::instance()->mCompactDialogs ) mStartDateLabel->hide();
-
-  QButtonGroup *rangeButtonGroup = new QButtonGroup;
-
-  mNoEndDateButton = new QRadioButton( i18n("No ending date"), rangeBox );
-  rangeButtonGroup->insert( mNoEndDateButton );
-  rangeLayout->addWidget( mNoEndDateButton );
-
-  QBoxLayout *durationLayout = new QHBoxLayout( rangeLayout );
-  durationLayout->setSpacing( KDialog::spacingHint() );
-
-  mEndDurationButton = new QRadioButton( i18n("End after"), rangeBox );
-  rangeButtonGroup->insert( mEndDurationButton );
-  durationLayout->addWidget( mEndDurationButton );
-  
-  mEndDurationEdit = new QSpinBox( 1, 9999, 1, rangeBox );
-  durationLayout->addWidget( mEndDurationEdit );
-
-  QLabel *endDurationLabel = new QLabel( i18n("occurrence(s)"), rangeBox );
-  durationLayout ->addWidget( endDurationLabel );
-
-  QBoxLayout *endDateLayout = new QHBoxLayout( rangeLayout );
-  endDateLayout->setSpacing( KDialog::spacingHint() );
-  
-  mEndDateButton = new QRadioButton( i18n("End by:"), rangeBox );
-  rangeButtonGroup->insert( mEndDateButton );
-  endDateLayout->addWidget( mEndDateButton );
-  
-  mEndDateEdit = new KDateEdit( rangeBox );
-  endDateLayout->addWidget( mEndDateEdit );
-
-  endDateLayout->addStretch( 1 );
-
-  connect( mNoEndDateButton, SIGNAL( toggled( bool ) ),
-           SLOT( showCurrentRange() ) );
-  connect( mEndDurationButton, SIGNAL( toggled( bool ) ),
-           SLOT( showCurrentRange() ) );
-  connect( mEndDateButton, SIGNAL( toggled( bool ) ),
-           SLOT( showCurrentRange() ) );
-
-
   if ( KOPrefs::instance()->mCompactDialogs ) {
+    mRecurrenceRangeWidget = 0;
+    mRecurrenceRangeDialog = new RecurrenceRangeDialog( this );
+    mRecurrenceRange = mRecurrenceRangeDialog;
+    mRecurrenceRangeButton = new QPushButton( i18n("Recurrence Range..."),
+                                              this );
+    topLayout->addWidget( mRecurrenceRangeButton, 3, 0 );    
+    connect( mRecurrenceRangeButton, SIGNAL( clicked() ),
+             SLOT( showRecurrenceRangeDialog() ) );
+
     mExceptionsWidget = 0;
     mExceptionsDialog = new ExceptionsDialog( this );
     mExceptions = mExceptionsDialog;
@@ -678,7 +788,14 @@ KOEditorRecurrence::KOEditorRecurrence( QWidget* parent, const char *name ) :
     topLayout->addWidget( mExceptionsButton, 4, 0 );
     connect( mExceptionsButton, SIGNAL( clicked() ),
              SLOT( showExceptionsDialog() ) );
+
   } else {
+    mRecurrenceRangeWidget = new RecurrenceRangeWidget( this );
+    mRecurrenceRangeDialog = 0;
+    mRecurrenceRange = mRecurrenceRangeWidget;
+    mRecurrenceRangeButton = 0;
+    topLayout->addWidget( mRecurrenceRangeWidget, 3, 0 );
+
     mExceptionsWidget = new ExceptionsWidget( this );
     mExceptionsDialog = 0;
     mExceptions = mExceptionsWidget;
@@ -696,8 +813,8 @@ void KOEditorRecurrence::setEnabled( bool enabled )
 //  kdDebug() << "KOEditorRecurrence::setEnabled(): " << (enabled ? "on" : "off") << endl;
 
   mTimeGroupBox->setEnabled( enabled );
-  mRuleBox->setEnabled( enabled );
-  mRangeGroupBox->setEnabled( enabled );
+  if ( mRecurrenceRangeWidget ) mRecurrenceRangeWidget->setEnabled( enabled );
+  if ( mRecurrenceRangeButton ) mRecurrenceRangeButton->setEnabled( enabled );
   if ( mExceptionsWidget ) mExceptionsWidget->setEnabled( enabled );
   if ( mExceptionsButton ) mExceptionsButton->setEnabled( enabled );
 }
@@ -721,32 +838,22 @@ void KOEditorRecurrence::showCurrentRule( int current )
   }
 }
 
-void KOEditorRecurrence::showCurrentRange()
-{
-  mEndDurationEdit->setEnabled( mEndDurationButton->isChecked() );
-  mEndDateEdit->setEnabled( mEndDateButton->isChecked() );
-}
-
-void KOEditorRecurrence::setDateTimes( QDateTime start, QDateTime )
+void KOEditorRecurrence::setDateTimes( QDateTime start, QDateTime end )
 {
 //  kdDebug() << "KOEditorRecurrence::setDateTimes" << endl;
 
-  mStartDateLabel->setText( i18n("Begins on: %1")
-      .arg( KGlobal::locale()->formatDate( start.date() ) ) );
+  mRecurrenceRange->setDateTimes( start, end );
 }
 
 void KOEditorRecurrence::setDefaults( QDateTime from, QDateTime to, bool )
 {
   setDateTimes( from, to );
 
-  mStartDateLabel->setText( i18n("Begins on: %1")
-      .arg( KGlobal::locale()->formatDate(from.date() ) ) );
-
   bool enabled = false;
   mEnabledCheck->setChecked( enabled );
   setEnabled( enabled );
 
-  mNoEndDateButton->setChecked( true );
+  mRecurrenceRange->setDefaults( from );
 
   mRecurrenceChooser->setType( RecurrenceChooser::Weekly );
   showCurrentRule( mRecurrenceChooser->type() );
@@ -847,19 +954,11 @@ void KOEditorRecurrence::readEvent(Event *event)
   mRecurrenceChooser->setType( recurrenceType );
   showCurrentRule( recurrenceType );
 
-  mStartDateLabel->setText( i18n("Begins on: %1")
-      .arg( KGlobal::locale()->formatDate( event->dtStart().date() ) ) );
+  mRecurrenceRange->setDateTimes( event->dtStart() );
 
   if ( r->doesRecur() ) {
-    if ( r->duration() == -1 ) {
-      mNoEndDateButton->setChecked( true );
-    } else if ( r->duration() == 0 ) {
-      mEndDateButton->setChecked( true );
-      mEndDateEdit->setDate( r->endDate() );
-    } else {
-      mEndDurationButton->setChecked( true );
-      mEndDurationEdit->setValue( r->duration( ) );
-    }
+    mRecurrenceRange->setDuration( r->duration() );
+    if ( r->duration() == 0 ) mRecurrenceRange->setEndDate( r->endDate() );
   }
 
   mExceptions->setDates( event->exDates() );
@@ -873,17 +972,9 @@ void KOEditorRecurrence::writeEvent( Event *event )
   r->unsetRecurs();
 
   if ( mEnabledCheck->isChecked() ) {
-    int duration;
+    int duration = mRecurrenceRange->duration();
     QDate endDate;
-
-    if ( mNoEndDateButton->isChecked() ) {
-      duration = -1;
-    } else if ( mEndDurationButton->isChecked() ) {
-      duration = mEndDurationEdit->value();
-    } else {
-      duration = 0;
-      endDate = mEndDateEdit->date();
-    }
+    if ( duration == 0 ) endDate = mRecurrenceRange->endDate();
 
     int recurrenceType = mRecurrenceChooser->type();
 
@@ -960,4 +1051,16 @@ void KOEditorRecurrence::showExceptionsDialog()
   DateList dates = mExceptions->dates();
   int result = mExceptionsDialog->exec();
   if ( result == QDialog::Rejected ) mExceptions->setDates( dates );
+}
+
+void KOEditorRecurrence::showRecurrenceRangeDialog()
+{
+  int duration = mRecurrenceRange->duration();
+  QDate endDate = mRecurrenceRange->endDate();
+
+  int result = mRecurrenceRangeDialog->exec();
+  if ( result == QDialog::Rejected ) {
+    mRecurrenceRange->setDuration( duration );
+    mRecurrenceRange->setEndDate( endDate );
+  }
 }
