@@ -58,7 +58,7 @@ xQGanttBarViewPort::xQGanttBarViewPort(xQTask* maintask, QWidget* parent,
   recalc(); adjustSize();
 
   setFocusPolicy(QWidget::StrongFocus);
-  _mode = -1;
+  _mode = (xQGanttBarViewPort::Mode)-1;
 
 }
 
