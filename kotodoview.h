@@ -201,6 +201,7 @@ class KOTodoView : public KOrg::BaseView
     friend class KOTodoViewItem;
 
     QMap<Todo *,KOTodoViewItem *>::ConstIterator insertTodoItem( Todo *todo );
+    bool removeTodoItem( KOTodoViewItem *toodItem );
     void restoreItemState( QListViewItem * );
 
     KOTodoListView *mTodoListView;

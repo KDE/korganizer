@@ -587,6 +587,17 @@ QMap<Todo *,KOTodoViewItem *>::ConstIterator
   }
 }
 
+bool KOTodoView::removeTodoItem( KOTodoViewItem *todoItem )
+{
+  if ( todoItem ) {
+    Todo *todo = todoItem->todo();
+    if ( todo && mTodoMap.contains( todo ) ) {
+      mTodoMap.remove( todo );
+    }
+    delete todoItem;
+  } else 
+    return false;
+}
 
 void KOTodoView::updateConfig()
 {
@@ -615,17 +626,34 @@ Todo::List KOTodoView::selectedTodos()
   return selected;
 }
 
-void KOTodoView::changeIncidenceDisplay(Incidence *incidence, int)
+void KOTodoView::changeIncidenceDisplay(Incidence *incidence, int action)
 {
   // The todo view only displays todos, so exit on all other incidences
   if ( incidence->type() != "Todo" ) 
     return;
   Todo *todo = static_cast<Todo *>(incidence);
-  if ( todo && mTodoMap.contains( todo ) ) {
-    KOTodoViewItem *todoItem = mTodoMap[todo];
-	 if ( todoItem ) {
-	 	todoItem->construct();
-	 }
+  if ( todo ) {
+    KOTodoViewItem *todoItem = 0;
+    if ( mTodoMap.contains( todo ) ) {
+      todoItem = mTodoMap[todo];
+    }
+    switch ( action ) {
+      case KOGlobals::INCIDENCEADDED:
+      case KOGlobals::INCIDENCEEDITED:
+        // If it's already there, edit it, otherwise just add
+        if ( todoItem ) { 
+          todoItem->construct();
+        } else {
+          insertTodoItem( todo );
+        }
+        break;
+      case KOGlobals::INCIDENCEDELETED:
+        if ( todoItem ) {
+          // TODO: Delete the item from the listview
+          removeTodoItem( todoItem );
+        }
+        break;
+    }
   } else {
     // use a QTimer here, because when marking todos finished using
     // the checkbox, this slot gets called, but we cannot update the views
