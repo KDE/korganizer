@@ -279,6 +279,10 @@ QString KOMailClient::createBody(IncidenceBase *incidence)
     }
 
     body += i18n("Summary: %1").arg(selectedEvent->summary());
+    if (!selectedEvent->location().isEmpty()) {
+      body += CR;
+      body += i18n("Location: %1").arg(selectedEvent->location());
+    }
     if (!selectedEvent->doesFloat()) {
       body += CR;
       body += i18n("Start Date: %1").arg(selectedEvent->dtStartDateStr());
