@@ -562,8 +562,11 @@ void ActionManager::initActions()
   config->setGroup( "Settings" );
   mDateNavigatorShowAction->setChecked(
       config->readBoolEntry( "DateNavigatorVisible", true ) );
+  // if we are a kpart, then let's not show the todo in the left pane by
+  // default since there's also a Todo part and we'll assume they'll be
+  // using that as well, so let's not duplicate it (by default) here
   mTodoViewShowAction->setChecked(
-      config->readBoolEntry( "TodoViewVisible", true ) );
+      config->readBoolEntry( "TodoViewVisible", mIsPart ? false : true ) );
   mEventViewerShowAction->setChecked(
       config->readBoolEntry( "EventViewerVisible", true ) );
   mResourceViewShowAction->setChecked(
