@@ -13,6 +13,7 @@
 
 #include <qclipboard.h>
 #include <qdialog.h>
+#include <qfile.h>
 
 #include <kapp.h>
 #include <kdebug.h>
@@ -38,7 +39,7 @@ extern "C" {
   struct holiday {
     char            *string;        /* name of holiday, 0=not a holiday */
     unsigned short  dup;            /* reference count */
-  };   
+  };
   extern struct holiday holiday[366];
 };
 
@@ -350,11 +351,11 @@ QString Calendar::getHolidayForDate(const QDate &qd)
 
   if ((lastYear == 0) || (qd.year() != lastYear)) {
       lastYear = qd.year() - 1900; // silly parse_year takes 2 digit year...
-      parse_holidays(mHolidayfile.latin1(), lastYear, 0);
+      parse_holidays(QFile::encodeName(mHolidayfile), lastYear, 0);
   }
 
   if (holiday[qd.dayOfYear()-1].string) {
-    QString holidayname = QString(holiday[qd.dayOfYear()-1].string);
+    QString holidayname = QString::fromLocal8Bit(holiday[qd.dayOfYear()-1].string);
 //    kdDebug() << "Holi name: " << holidayname << endl;
     return(holidayname);
   } else {
