@@ -221,7 +221,6 @@ void KOViewManager::connectTodoView( KOTodoView* todoView )
 
 void KOViewManager::zoomInHorizontally() 
 {
-  // is better resend the signal?
   if( mAgendaView == mCurrentView ) mAgendaView->zoomInHorizontally();
 }
 void KOViewManager::zoomOutHorizontally()
@@ -278,6 +277,8 @@ void KOViewManager::showAgendaView()
     connect(mMainView, SIGNAL( calendarViewExpanded( bool ) ),
             mAgendaView, SLOT( setExpandedButton( bool ) ) );
 
+    connect( mAgendaView,SIGNAL( zoomViewHorizontally(const QDate &, int )),
+      mMainView->dateNavigator(),SLOT( selectDates( const QDate &, int ) ) );
     mAgendaView->readSettings();
   }
 
