@@ -225,11 +225,6 @@ void KOrganizerPart::addPluginAction( KAction *action )
   action->plug( mActionManager->pluginMenu()->popupMenu() );
 }
 
-void KOrganizerPart::setActive(bool active)
-{
-  mActionManager->setActive(active);
-}
-
 void KOrganizerPart::showStatusMessage( const QString &message )
 {
   KStatusBar *statusBar = mStatusBarExtension->statusBar();

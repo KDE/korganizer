@@ -60,10 +60,7 @@ class KOWindowList : public QObject
   public slots:
     void addWindow(KOrg::MainWindow *);
     void removeWindow(KOrg::MainWindow *);
-    
-    /** Deactivating all calendars despite the one given in the argument*/
-    void deactivateCalendars(KOrg::MainWindow *);
-    
+
   private:
     QPtrList<KOrg::MainWindow> mWindowList; // list of all existing KOrganizer instances
 };

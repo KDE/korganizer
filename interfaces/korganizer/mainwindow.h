@@ -68,10 +68,6 @@ class MainWindow
     */
     virtual ActionManager *actionManager() = 0;
     /**
-      ?
-    */
-    virtual void setActive(bool active) = 0;
-    /**
       Show status mesage in status bar.
     */
     virtual void showStatusMessage(const QString& message) = 0;

@@ -106,8 +106,6 @@ class ActionManager : public QObject, public KCalendarIface
     /** Handle incoming event scheduling */
     bool eventRequest(QString request, QCString receiver, QString ical);
 
-    bool isActive() { return mActive; }
-
     //// Implementation of the DCOP interface
     virtual ResourceRequestReply resourceRequest( const QValueList<QPair<QDateTime, QDateTime> >& busy,
                                                   const QCString& resource,
@@ -147,11 +145,6 @@ class ActionManager : public QObject, public KCalendarIface
     void closingDown();
 
     /**
-      Emitted when this calendar has been made active.
-    */
-    void calendarActivated( KOrg::MainWindow * );
-
-    /**
       Announce filter selection changes.
     */
     void filterActivated( int );
@@ -162,19 +155,6 @@ class ActionManager : public QObject, public KCalendarIface
       and notify all widgets which need to update their configuration.
     */
     void updateConfig();
-
-    /**
-      Sets the active state of the calendar belonging to this window. If a
-      calendar is active the alarm daemon checks and signals events for
-      alarm notification. The active calendar is loaded by default, when
-      starting KOrganizer.
-    */
-    void setActive(bool active=true);
-
-    /**
-      Make calendar active.
-    */
-    void makeActive();
 
     void processIncidenceSelection( Incidence * );
     void keyBindings();
@@ -250,7 +230,7 @@ class ActionManager : public QObject, public KCalendarIface
     void setTitle();
 
     void updateUndoAction( const QString & );
-    
+
     void updateRedoAction( const QString & );
 
   protected:
@@ -262,7 +242,6 @@ class ActionManager : public QObject, public KCalendarIface
     void dumpText(const QString &);  // only for debugging purposes
 
   private:
-    void writeActiveState();
     /** Create all the actions. */
     void initActions();
     void enableIncidenceActions( bool enable );
@@ -274,7 +253,6 @@ class ActionManager : public QObject, public KCalendarIface
 
     KTempFile *mTempFile;
     QTimer         *mAutoSaveTimer;   // used if calendar is to be autosaved
-    bool mActive;  // Indicates if this calendar is active (for alarm daemon)
 
     // list of all existing KOrganizer instances
     static KOWindowList *windowList;

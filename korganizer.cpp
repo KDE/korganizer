@@ -171,8 +171,6 @@ KOrganizer::KOrganizer( bool document, const char *name )
 
   statusBar()->insertItem("",ID_GENERAL,10);
 
-//  statusBar()->insertFixedItem(i18n("Active"),ID_ACTIVE);
-
   statusBar()->insertItem(i18n(" Incoming messages: %1 ").arg(0),
                             ID_MESSAGES_IN);
   statusBar()->insertItem(i18n(" Outgoing messages: %2 ").arg(0),
@@ -348,17 +346,6 @@ void KOrganizer::configureToolbars()
 void KOrganizer::slotNewToolbarConfig() // This is called when OK or Apply is clicked
 {
   plugActionList("toolbartoggles",mToolBarToggles);
-
-  if ( !mActionManager->url().isLocalFile() ) {
-    int result = KMessageBox::warningContinueCancel(this,
-      i18n("Your calendar is a remote file. Activating it can cause "
-           "synchronization problems leading to data loss.\n"
-           "Make sure that it is accessed by no more than one single "
-           "KOrganizer instance at the same time."),
-      i18n("Activating Calendar."),i18n("Activate Calendar"),"dontaskActivate",
-      true);
-    if (result == KMessageBox::Cancel) return;
-  }
 }
 
 void KOrganizer::toggleToolBars(bool toggle)
@@ -445,11 +432,6 @@ void KOrganizer::readProperties(KConfig *config)
   return mActionManager->readProperties(config);
 }
 
-void KOrganizer::setActive(bool active)
-{
-  mActionManager->setActive(active);
-}
-
 bool KOrganizer::deleteEvent(QString uid)
 {
   return mActionManager->deleteEvent( uid );
@@ -485,8 +467,6 @@ void KOrganizer::setTitle()
   if ( mCalendarView->isReadOnly() ) {
     title += " [" + i18n("read-only") + "]";
   }
-
-  if ( mActionManager->isActive() ) title += " [" + i18n("active") + "]";
 
   setCaption( title, !mCalendarView->isReadOnly() &&
                       mCalendarView->isModified() );

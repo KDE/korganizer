@@ -71,7 +71,6 @@ class KOrganizerPart: public KParts::ReadOnlyPart,
     virtual QWidget *topLevelWidget();
     virtual ActionManager *actionManager();
     virtual void addPluginAction( KAction* );
-    virtual void setActive(bool active);
     virtual void showStatusMessage(const QString& message);
 
     void setTitle() {};

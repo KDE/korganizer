@@ -79,9 +79,9 @@ class KOrganizer : public KParts::MainWindow, virtual public KOrganizerIface, pu
   public:
     /**
       Constructs a new main window.
-    
+
       @param document If true this window shows a calendar as document, if false
-                      the resource based backend is used. 
+                      the resource based backend is used.
       @param name     Qt internal widget name
     */
     KOrganizer( bool document = true, const char *name = 0 );
@@ -125,13 +125,6 @@ class KOrganizer : public KParts::MainWindow, virtual public KOrganizerIface, pu
     /** show status message */
     void showStatusMessage(const QString &);
 
-    /** Sets the active state of the calendar belonging to this window. If a
-      * calendar is active the alarm daemon checks and signals events for
-      * alarm notification. The active calendar is loaded by default, when
-      * starting KOrganizer.
-      */
-    void setActive(bool active=true);
-
     void slotConfigChanged();
 
   protected slots:
@@ -165,7 +158,7 @@ class KOrganizer : public KParts::MainWindow, virtual public KOrganizerIface, pu
     void slotNewToolbarConfig();
 
     void newMainWindow( const KURL & );
-    
+
     void configureKeyBindings();
 
   protected:

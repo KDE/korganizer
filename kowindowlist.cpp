@@ -27,7 +27,7 @@
 #include "kowindowlist.h"
 #include "kowindowlist.moc"
 
-KOWindowList::KOWindowList(const char *name) 
+KOWindowList::KOWindowList(const char *name)
   : QObject(0,name)
 {
   kdDebug(5850) << "KOWindowList::KOWindowList()" << endl;
@@ -62,12 +62,4 @@ KOrg::MainWindow* KOWindowList::findInstance(const KURL &url)
     if (inst->getCurrentURL()==url)
       return inst;
   return 0;
-}
-
-void KOWindowList::deactivateCalendars(KOrg::MainWindow *korg)
-{
-  KOrg::MainWindow *k;
-  for(k=mWindowList.first();k;k=mWindowList.next()) {
-    if (k != korg) k->setActive(false);
-  }
 }

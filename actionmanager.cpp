@@ -71,7 +71,6 @@ ActionManager::ActionManager( KXMLGUIClient *client, CalendarView *widget,
   mCalendarView = widget;
   mIsPart = isPart;
   mTempFile = 0;
-  mActive = false;
   mNewStuff = 0;
   mHtmlExportSync = false;
   mMainWindow = mainWindow;
@@ -181,9 +180,6 @@ void ActionManager::initActions()
                     mACollection, "merge_calendar");
   (void)new KAction(i18n("Archive Old Entries..."), 0, this, SLOT(file_archive()),
                     mACollection, "file_archive");
-
-  (void)new KAction(i18n("Make Active"),0,this,SLOT(makeActive()),
-                    mACollection,"make_active");
 
   // Settings menu.
 
@@ -683,8 +679,6 @@ void ActionManager::file_close()
   mURL="";
   mFile="";
 
-  setActive(false);
-
   setTitle();
 }
 
@@ -716,9 +710,6 @@ bool ActionManager::openURL(const KURL &url,bool merge)
         mFile = tmpFile;
         KConfig *config = KOGlobals::config();
         config->setGroup("General");
-        QString active = config->readPathEntry("Active Calendar");
-        if (KURL(active) == mURL) setActive(true);
-        else setActive(false);
         setTitle();
         kdDebug(5850) << "-- Add recent URL: " << url.prettyURL() << endl;
         mRecent->addURL(url);
@@ -771,7 +762,6 @@ bool ActionManager::saveURL()
     if (mURL.isLocalFile()) {
       mFile = mURL.path();
     }
-    writeActiveState();
     setTitle();
     mRecent->addURL(mURL);
   }
@@ -788,13 +778,6 @@ bool ActionManager::saveURL()
       QString msg = i18n("Cannot upload calendar to '%1'").arg(mURL.prettyURL());
       KMessageBox::error(mCalendarView->topLevelWidget(),msg);
       return false;
-    }
-  }
-
-  if (isActive()) {
-    kdDebug(5850) << "ActionManager::saveURL(): Notify alarm daemon" << endl;
-    if ( !KOGlobals::self()->alarmClient()->reloadCalendar( mURL.url() ) ) {
-      kdDebug(5850) << "ActionManager::saveUrl(): reloadCal call failed." << endl;
     }
   }
 
@@ -897,13 +880,6 @@ bool ActionManager::saveAsURL(const KURL &url)
     KIO::NetAccess::removeTempFile(fileOrig);
     KConfig *config = KOGlobals::config();
     config->setGroup("General");
-    QString active = config->readPathEntry("Active Calendar");
-    if (KURL(active) == mURL) {
-      setActive(true);
-      emit calendarActivated(mMainWindow);
-    } else {
-      setActive(false);
-    }
     setTitle();
     mRecent->addURL(mURL);
   } else {
@@ -995,11 +971,6 @@ void ActionManager::readProperties(KConfig *config)
   if (!isResourceCalendar && !calendarUrl.isEmpty()) {
     KURL u(calendarUrl);
     openURL(u);
-    // Active calendars are no longer of any use, use ResourceCalendar instead
-/*    KConfig *config = KOGlobals::config();
-    config->setGroup("General");
-    QString active = config->readPathEntry("Active Calendar");
-    if (active == calendarUrl) setActive(true);*/
   } else {
     // TODO: Initialize a ResourceCalendar here
   }
@@ -1069,51 +1040,6 @@ KOrg::MainWindow* ActionManager::findInstance(const KURL &url)
     return windowList->findInstance(url);
   else
     return 0;
-}
-
-void ActionManager::setActive(bool active)
-{
-  if (active == mActive) return;
-
-  mActive = active;
-  setTitle();
-}
-
-void ActionManager::makeActive()
-{
-  if (mURL.isEmpty()) {
-    KMessageBox::sorry(mCalendarView->topLevelWidget(),
-                       i18n("The calendar does not have a filename. "
-                            "Please save it before activating."));
-    return;
-  }
-
-  if (!mURL.isLocalFile()) {
-    int result = KMessageBox::warningContinueCancel(
-      mCalendarView->topLevelWidget(),
-      i18n("Your calendar is a remote file. Activating it can cause "
-           "synchronization problems leading to data loss.\n"
-           "Make sure that it is accessed by no more than one single "
-           "KOrganizer instance at the same time."),
-      i18n("Activating Calendar."),i18n("Activate Calendar"),"dontaskActivate",
-      true);
-    if (result == KMessageBox::Cancel) return;
-  }
-
-  writeActiveState();
-  if ( !KOGlobals::self()->alarmClient()->reloadCalendar( mURL.url() ) ) {
-    kdDebug(5850) << "ActionManager::makeActive(): dcop send failed" << endl;
-  }
-  setActive();
-  emit calendarActivated(mMainWindow);
-}
-
-void ActionManager::writeActiveState()
-{
-  KConfig *config = KOGlobals::config();
-  config->setGroup("General");
-  config->writePathEntry("Active Calendar",mURL.url());
-  config->sync();
 }
 
 void ActionManager::dumpText(const QString &str)
