@@ -84,7 +84,7 @@ void KOEditorAttachments::showAttachment( QListViewItem *item )
 void KOEditorAttachments::slotAdd()
 {
   QString uri = KInputDialog::getText( i18n("Add Attachment"),
-                                       i18n("Please put in URI of attachment."),
+                                       i18n("Please put in URI of attachment:"),
                                        QString::null, 0, this );
   if ( !uri.isEmpty() ) {
     new QListViewItem( mAttachments, uri );
@@ -95,9 +95,9 @@ void KOEditorAttachments::slotEdit()
 {
   QListViewItem *item = mAttachments->currentItem();
   if ( !item ) return;
-  
+
   QString uri = KInputDialog::getText( i18n("Edit Attachment"),
-                                       i18n("Please put in URI of attachment."),
+                                       i18n("Please put in URI of attachment:"),
                                        item->text( 0 ), 0, this );
 
   if ( !uri.isEmpty() ) item->setText( 0, uri );

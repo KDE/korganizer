@@ -211,7 +211,7 @@
           <label>If attendee is in addressbook</label>
         </choice>
         <choice name="selectedAuto">
-          <label>selected emails</label>
+          <label>Selected emails</label>
         </choice>
       </choices>
       <default>neverAuto</default>
@@ -237,31 +237,31 @@
 
   <group name="Colors">
     <entry type="Color" key="Holiday Color">
-      <label>Holiday color</label>
+      <label>Holiday color:</label>
       <default>255, 100, 100</default>
     </entry>
     <entry type="Color" key="Highlight Color">
-      <label>Highlight color</label>
+      <label>Highlight color:</label>
       <default>100, 100, 255</default>
     </entry>
     <entry type="Color" key="Agenda Background Color" name="AgendaBgColor">
-      <label>Agenda view background color</label>
+      <label>Agenda view background color:</label>
       <default>255, 255, 255</default>
     </entry>
     <entry type="Color" key="WorkingHours Color">
-      <label>Working hours color</label>
+      <label>Working hours color:</label>
       <default>225, 225, 255</default>
     </entry>
     <entry type="Color" key="Todo due today Color" name="TodoDueTodayColor">
-      <label>Todo due today color</label>
+      <label>Todo due today color:</label>
       <default>255, 200, 50</default>
     </entry>
     <entry type="Color" key="Todo overdue Color" name="TodoOverdueColor">
-      <label>Todo overdue color</label>
+      <label>Todo overdue color:</label>
       <default>255, 100, 100</default>
     </entry>
     <entry type="Color" key="Event Color">
-      <label>Default event color</label>
+      <label>Default event color:</label>
     </entry>
   </group>
 
