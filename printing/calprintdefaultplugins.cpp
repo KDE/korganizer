@@ -624,6 +624,8 @@ void CalPrintTodos::print( QPainter &p, int width, int height )
     todoList = mCalendar->todos();
 //   }
 
+  bool skipDone = mTodoPrintType == TodosUnfinished;
+
   int count = 0;
   for( int cprior = 1; cprior <= 10; cprior++ ) {
     Todo::List::ConstIterator it;
@@ -632,6 +634,12 @@ void CalPrintTodos::print( QPainter &p, int width, int height )
 
       // Filter out the subitems.
       if ( currEvent->relatedTo() ) {
+        continue;
+      }
+
+      // Filter out complete TOPLEVEL Todos.
+      // Complete sub-Todos will be filtered in the drawTodo() method.
+      if ( skipDone && currEvent->isCompleted() ) {
         continue;
       }
 
@@ -648,7 +656,7 @@ void CalPrintTodos::print( QPainter &p, int width, int height )
         continue;
       }
       count++;
-      mHelper->drawTodo( count, currEvent, p, mConnectSubTodos,
+      mHelper->drawTodo( count, currEvent, p, mConnectSubTodos, skipDone,
                          mIncludeDescription, pospriority, possummary, posdue,
                          poscomplete, 0, 0, mCurrentLinePos, width, height,
                          todoList );

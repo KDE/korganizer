@@ -119,10 +119,13 @@
                             <cstring>mPrintUnfinished</cstring>
                         </property>
                         <property name="enabled">
-                            <bool>false</bool>
+                            <bool>true</bool>
                         </property>
                         <property name="text">
                             <string>Print only &amp;unfinished items</string>
+                        </property>
+                        <property name="accel">
+                            <string>Alt+U</string>
                         </property>
                     </widget>
                     <widget class="QDateEdit" row="4" column="4">

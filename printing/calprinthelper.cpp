@@ -793,8 +793,8 @@ void CalPrintHelper::drawMonth(QPainter &p, const QDate &qd, bool weeknumbers,
 ///////////////////////////////////////////////////////////////////////////////
 
 void CalPrintHelper::drawTodo( int &count, Todo *item, QPainter &p,
-                               bool connectSubTodos, bool desc,
-                               int posPriority, int posSummary,
+                               bool connectSubTodos, bool skipDone,
+                               bool desc, int posPriority, int posSummary,
                                int posDueDt, int posPercentComplete,
                                int level, int x, int &y, int width,
                                int pageHeight, const Todo::List &todoList,
@@ -808,6 +808,11 @@ void CalPrintHelper::drawTodo( int &count, Todo *item, QPainter &p,
   if (posdue<0) posdue=x+width;
   QRect rect;
   TodoParentStart startpt;
+
+  // Skip this Todo if it is complete
+  if ( skipDone && item->isCompleted() )
+    return;
+
   // This list keeps all starting points of the parent todos so the connection
   // lines of the tree can easily be drawn (needed if a new page is started)
   static QPtrList<TodoParentStart> startPoints;
@@ -956,7 +961,7 @@ void CalPrintHelper::drawTodo( int &count, Todo *item, QPainter &p,
     // we need to compare manually with the complete filtered list!
     Todo* subtodo = dynamic_cast<Todo *>( *it );
     if (subtodo && todoList.contains( subtodo ) ) {
-      drawTodo( count, subtodo, p, connectSubTodos,
+      drawTodo( count, subtodo, p, connectSubTodos, skipDone,
           desc, posPriority, posSummary, posDueDt, posPercentComplete, level+1,
           x, y, width, pageHeight, todoList, &startpt);
     }
