@@ -196,7 +196,14 @@ void CalendarView::init()
   mTodoList = new KOTodoView(mCalendar, leftFrame, "todolist");
   mFilterView = new KOFilterView(&mFilters,leftFrame,"CalendarView::FilterView");
 
-  mRightFrame = new QWidgetStack(mainBox, "CalendarView::RightFrame");
+  QWidget *rightBox = new QWidget( mainBox );
+  QBoxLayout *rightLayout = new QVBoxLayout( rightBox );
+
+  mNavigatorBar = new NavigatorBar( rightBox );
+  rightLayout->addWidget( mNavigatorBar );
+
+  mRightFrame = new QWidgetStack( rightBox );
+  rightLayout->addWidget( mRightFrame );
 
   mLeftFrame = leftFrame;
 
