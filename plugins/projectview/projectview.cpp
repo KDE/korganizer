@@ -27,6 +27,7 @@
 #include <klocale.h>
 #include <kdebug.h>
 #include <kaction.h>
+#include <kglobal.h>
 
 //#include <korganizer/calendarviewbase.h">
 
@@ -47,6 +48,7 @@ class ProjectViewFactory : public KOrg::PartFactory {
 extern "C" {
   void *init_libkorg_projectview()
   {
+    KGlobal::locale()->insertCatalogue( "kgantt" );
     return (new ProjectViewFactory);
   }
 }

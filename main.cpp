@@ -55,6 +55,7 @@ int main ( int argc, char **argv )
 
   KGlobal::locale()->insertCatalogue( "libkcal" );
   KGlobal::locale()->insertCatalogue( "libkdepim" );
+  KGlobal::locale()->insertCatalogue( "kdgantt" );
   // This is a workaround for a session management problem with KUniqueApplication
   // The session ID gets reset before the restoration is called. This line makes
   // sure that the config object is created right away  (with the correct config
