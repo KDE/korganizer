@@ -281,6 +281,7 @@ void CalPrintWeek::saveConfig()
 KPrinter::Orientation CalPrintWeek::orientation()
 {
   if ( mWeekPrintType == Filofax ) return KPrinter::Portrait;
+  else if ( mWeekPrintType == SplitWeek ) return KPrinter::Portrait;
   else return KPrinter::Landscape;
 }
 
@@ -329,7 +330,7 @@ void CalPrintWeek::print( QPainter &p, int width, int height )
         QString line1( local->formatDate( curWeek.addDays( -6 ) ) );
         QString line2( local->formatDate( curWeek ) );
         int hh = int(mHeaderHeight * 2./3.);
-        drawHeader( p, i18n("date from - to", "%1 - %2").arg( line1 ).arg( line2 ),
+        drawHeader( p, i18n("date from - to", "%1 - %2\nWeek %3").arg( line1 ).arg( line2 ).arg( curWeek.weekNumber() ),
                     curWeek, QDate(), 0, 0, width, hh );
         drawTimeTable( p, fromWeek, curWeek,
                        mStartTime, mEndTime, 0, hh + 5,
@@ -342,7 +343,26 @@ void CalPrintWeek::print( QPainter &p, int width, int height )
       break;
 
     case SplitWeek:
-      drawSplitWeek( p, fromWeek, toWeek );
+      do {
+        QString line1( local->formatDate( curWeek.addDays( -6 ) ) );
+        QString line2( local->formatDate( curWeek ) );
+        QDate endLeft( fromWeek.addDays( 3 ) );
+        int hh = mHeaderHeight;
+        
+        drawTimeTable( p, fromWeek, endLeft,
+                       mStartTime, mEndTime, 0, hh + 5,
+                       width, height - hh - 5 );
+        mPrinter->newPage();
+        drawSplitHeaderRight( p, fromWeek, curWeek, QDate(), width, hh );
+        drawTimeTable( p, endLeft.addDays(1), curWeek,
+                       mStartTime, mEndTime, 0, hh + 5,
+                       (width-50)*3./4. + 50, height - hh - 5 );
+        
+        fromWeek = fromWeek.addDays( 7 );
+        curWeek = fromWeek.addDays( 6 );
+        if ( curWeek <= toWeek )
+          mPrinter->newPage();
+      } while ( curWeek <= toWeek );
       break;
   }
 }
