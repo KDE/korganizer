@@ -147,10 +147,6 @@ CalendarView::CalendarView(QWidget *parent,const char *name)
           SLOT(eventAdded(Event *)));
   connect(this, SIGNAL(configChanged()), mDateNavigator, SLOT(updateConfig()));
 
-  kdDebug() << "/// width: " << mDateNavigator->minimumSizeHint().width()
-            << "/// heigh: " << mDateNavigator->minimumSizeHint().height()
-            << endl;
-
   mTodoList = new KOTodoView(mCalendar, mLeftFrame, "CalendarView::TodoList");
   connect(mTodoList, SIGNAL(newTodoSignal()),
 	  this, SLOT(newTodo()));
