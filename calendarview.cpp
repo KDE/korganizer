@@ -886,9 +886,9 @@ void CalendarView::deleteEvent(Event *anEvent)
   } // if-else
 }
 
-bool CalendarView::deleteEvent(const QString &VUID)
+bool CalendarView::deleteEvent(const QString &uid)
 {
-    Event *ev = mCalendar->getEvent(VUID);
+    Event *ev = mCalendar->getEvent(uid);
     if (ev) {
         deleteEvent(ev);
         return true;

@@ -402,7 +402,7 @@ void KODayMatrix::dropEvent(QDropEvent *e)
   if (event) {
     e->acceptAction();
 
-    Event *existingEvent = mCalendar->getEvent(event->VUID());
+    Event *existingEvent = mCalendar->getEvent(event->uid());
 
     if(existingEvent) {
       // uniquify event

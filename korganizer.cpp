@@ -1178,9 +1178,9 @@ QString KOrganizer::getCurrentURLasString() const
   return mURL.url();
 }
 
-bool KOrganizer::deleteEvent(QString VUID)
+bool KOrganizer::deleteEvent(QString uid)
 {
-  return mCalendarView->deleteEvent(VUID);
+  return mCalendarView->deleteEvent(uid);
 }
 
 void KOrganizer::configureDateTimeFinished(KProcess *proc)

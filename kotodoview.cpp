@@ -116,13 +116,13 @@ void KOTodoListView::contentsDropEvent(QDropEvent *e)
     Todo *destinationEvent = 0;
     if (destination) destinationEvent = destination->event();
     
-    Todo *existingTodo = mCalendar->getTodo(todo->VUID());
+    Todo *existingTodo = mCalendar->getTodo(todo->uid());
       
     if(existingTodo) {
 //      kdDebug() << "Drop existing Todo" << endl;
       Incidence *to = destinationEvent;
       while(to) {
-        if (to->VUID() == todo->VUID()) {
+        if (to->uid() == todo->uid()) {
           KMessageBox::sorry(this,
               i18n("Cannot move To-Do to itself or a child of itself"),
               i18n("Drop To-Do"));
@@ -335,7 +335,7 @@ void KOTodoView::restoreItemState( QListViewItem *item )
 {
   while( item ) {
     KOTodoViewItem *todoItem = (KOTodoViewItem *)item;
-    todoItem->setOpen( mDocPrefs->readBoolEntry( todoItem->event()->VUID() ) );
+    todoItem->setOpen( mDocPrefs->readBoolEntry( todoItem->event()->uid() ) );
     if( item->childCount() > 0 ) restoreItemState( item->firstChild() );
     item = item->nextSibling();
   }
@@ -520,5 +520,5 @@ void KOTodoView::itemStateChanged( QListViewItem *item )
 
 //  kdDebug() << "KOTodoView::itemStateChanged(): " << todoItem->event()->summary() << endl;
 
-  if( mDocPrefs ) mDocPrefs->writeEntry( todoItem->event()->VUID(), todoItem->isOpen() );
+  if( mDocPrefs ) mDocPrefs->writeEntry( todoItem->event()->uid(), todoItem->isOpen() );
 }

@@ -184,14 +184,14 @@ class CalendarView : public KOrg::CalendarViewBase
      default hint. */ 
     void newEvent();
     
-    /** create an editeventwin for the supplied event */
+    /** Create an editor for the supplied event. */
     void editEvent(Event *);
-    /** delete the supplied event */
+    /** Delete the supplied event. */
     void deleteEvent(Event *);
-    /** delete the event with unique ID VUID. Returns false, if event wasn't
-    found */
-    bool deleteEvent(const QString &VUID);
-    /** Create a read-only viewer dialog for the supplied event */
+    /** Delete the event with the given unique ID. Returns false, if event wasn't
+    found. */
+    bool deleteEvent(const QString &uid);
+    /** Create a read-only viewer dialog for the supplied event. */
     void showEvent(Event *);
 
     /** Create an editor dialog for a todo */

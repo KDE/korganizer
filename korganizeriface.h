@@ -34,7 +34,7 @@ class KOrganizerIface : virtual public DCOPObject
     virtual bool saveURL() = 0;
     virtual bool saveAsURL(QString url) = 0;
     virtual QString getCurrentURLasString() const = 0;
-    virtual bool deleteEvent(QString VUID) = 0;
+    virtual bool deleteEvent(QString uid) = 0;
 };
 
 #endif

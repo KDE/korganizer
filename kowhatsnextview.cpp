@@ -195,21 +195,21 @@ void KOWhatsNextView::changeEventDisplay(Event *, int action)
 
 void KOWhatsNextView::appendEvent(Event *ev, bool reply)
 {
-  kdDebug() << "KOWhatsNextView::appendEvent(): " << ev->VUID() << endl;
+  kdDebug() << "KOWhatsNextView::appendEvent(): " << ev->uid() << endl;
 
   mText += "<tr><td><b>";
   if (!ev->doesFloat()) {
     if (reply) mText += "on " + ev->dtStartDateStr() + ": ";
     mText += ev->dtStartTimeStr() + " - " + ev->dtEndTimeStr();
   }
-  mText += "</b></td><td><a href=\"event:" + ev->VUID() + "\">";
+  mText += "</b></td><td><a href=\"event:" + ev->uid() + "\">";
   mText += ev->summary();
   mText += "</a></td></tr>\n";
 }
 
 void KOWhatsNextView::appendTodo(Todo *ev)
 {
-  mText += "<li><a href=\"todo:" + ev->VUID() + "\">";
+  mText += "<li><a href=\"todo:" + ev->uid() + "\">";
   mText += ev->summary();
   mText += "</a></li>\n";
 }

@@ -221,7 +221,7 @@ void IncomingDialog::showEvent(QListViewItem *item)
 
 bool IncomingDialog::incomeRefresh(ScheduleItemIn *item)
 {
-  Event *ev = mCalendar->getEvent(item->event()->VUID());
+  Event *ev = mCalendar->getEvent(item->event()->uid());
   if (ev) {
     //user interaction before??
     Event *event = new Event(*ev);
@@ -238,7 +238,7 @@ bool IncomingDialog::incomeCounter(ScheduleItemIn *item)
 {
   Event *counterevent = dynamic_cast<Event *>(((ScheduleItemIn *)item)->event());
 
-  Event *even = mCalendar->getEvent(item->event()->VUID());
+  Event *even = mCalendar->getEvent(item->event()->uid());
 
   KOCounterDialog *eventViewer = new KOCounterDialog(this);
   //eventViewer->addText(i18n("You received a counterevent<p>"));
@@ -262,7 +262,7 @@ bool IncomingDialog::incomeCounter(ScheduleItemIn *item)
       mCalendar->deleteEvent(even);
     }
     mCalendar->addIncidence(item->event());
-    even = mCalendar->getEvent(item->event()->VUID());
+    even = mCalendar->getEvent(item->event()->uid());
     if (even) {
       if (revision < even->revision())
         even->setRevision(even->revision()+1);
@@ -296,7 +296,7 @@ bool IncomingDialog::incomeCounter(ScheduleItemIn *item)
 
 bool IncomingDialog::incomeDeclineCounter(ScheduleItemIn *item)
 {
-  Event *even = mCalendar->getEvent(item->event()->VUID());
+  Event *even = mCalendar->getEvent(item->event()->uid());
   if (even) {
     mOutgoing->addMessage(even,Scheduler::Refresh);
     mScheduler->deleteTransaction(item->event());

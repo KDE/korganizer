@@ -112,8 +112,8 @@ class KOrganizer : public KOrg::MainWindow, virtual public KOrganizerIface
     void closeURL();
     /** Get current URL as QString */
     QString getCurrentURLasString() const;
-    /** Delete event with unique id VUID from current calendar */
-    virtual bool deleteEvent(QString VUID);
+    /** Delete event with the given unique id from current calendar. */
+    virtual bool deleteEvent(QString uid);
 
     bool isActive() { return mActive; }
 

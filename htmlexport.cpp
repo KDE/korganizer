@@ -314,9 +314,9 @@ void HtmlExport::createHtmlTodoList (QTextStream *ts)
       if (categoriesTodoEnabled()) ++columns;
       if (attendeesTodoEnabled()) ++columns;
       *ts << "\"" << QString::number(columns) << "\"";
-      *ts << "><A NAME=\"sub" << ev->VUID() << "\"></A>"
+      *ts << "><A NAME=\"sub" << ev->uid() << "\"></A>"
           << i18n("Sub-Tasks of: ") << "<A HREF=\"#"
-          << ev->VUID() << "\"><B>" << ev->summary() << "</B></A></TD>\n";
+          << ev->uid() << "\"><B>" << ev->summary() << "</B></A></TD>\n";
       *ts << "  </TR>\n";
       
       QPtrList<Todo> sortedList;
@@ -353,13 +353,13 @@ void HtmlExport::createHtmlTodo (QTextStream *ts,Todo *todo)
   *ts << "  <TD CLASS=sum";
   if (completed) *ts << "done";
   *ts << ">\n";
-  *ts << "    <A NAME=\"" << todo->VUID() << "\"></A>\n";
+  *ts << "    <A NAME=\"" << todo->uid() << "\"></A>\n";
   *ts << "    <B>" << todo->summary() << "</B>\n";
   if (!todo->description().isEmpty()) {
     *ts << "    <P>" << breakString(todo->description()) << "</P>\n";
   }
   if (relations.count()) {
-    *ts << "    <DIV ALIGN=right><A HREF=\"#sub" << todo->VUID()
+    *ts << "    <DIV ALIGN=right><A HREF=\"#sub" << todo->uid()
         << "\">" << i18n("Sub-Tasks") << "</A></DIV>\n";
   }
 
