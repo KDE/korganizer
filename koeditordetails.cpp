@@ -412,7 +412,9 @@ void KOEditorDetails::readEvent( Incidence *event )
     // mOrganizerCombo->setCurrentText( event->organizer() );
     for ( int i = 0 ; i < mOrganizerCombo->count(); ++i ) {
       QString itemTxt = KPIM::getEmailAddr( mOrganizerCombo->text( i ) );
-      if ( event->organizer() == itemTxt ) {
+      if ( KPIM::compareEmail( event->organizer(), itemTxt, false ) ) {
+        // Make sure we match the organizer setting completely
+        mOrganizerCombo->changeItem( event->organizer(), i );
         mOrganizerCombo->setCurrentItem( i );
         break;
       }
