@@ -55,9 +55,6 @@
                         <property name="text">
                             <string>Publish your free/&amp;busy information automatically</string>
                         </property>
-                        <property name="accel">
-                            <string>Alt+B</string>
-                        </property>
                     </widget>
                     <widget class="QLayoutWidget">
                         <property name="name">
@@ -170,9 +167,6 @@
                                 </property>
                                 <property name="text">
                                     <string>Re&amp;member password</string>
-                                </property>
-                                <property name="accel">
-                                    <string>Alt+M</string>
                                 </property>
                             </widget>
                             <widget class="QLabel" row="6" column="0">
@@ -288,9 +282,6 @@
                         <property name="text">
                             <string>Retrieve other peoples' &amp;free/busy information automatically</string>
                         </property>
-                        <property name="accel">
-                            <string>Alt+F</string>
-                        </property>
                     </widget>
                     <widget class="QButtonGroup">
                         <property name="name">
@@ -397,9 +388,6 @@
                                 </property>
                                 <property name="text">
                                     <string>Re&amp;member password</string>
-                                </property>
-                                <property name="accel">
-                                    <string>Alt+M</string>
                                 </property>
                             </widget>
                         </vbox>
