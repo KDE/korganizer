@@ -15,20 +15,10 @@ toolbar_DATA = listicon.xpm 5dayicon.xpm  dayicon.xpm agenda.xpm \
 	delete.xpm monthicon.xpm search.xpm checkedclipboard.xpm \
 	send.xpm findf.xpm todolist.xpm
 
-EXTRA_DIST = dayview.xpm   inverse_recur.xpm korganizer.xpm \
-	mini-korganizer.xpm alarmd.xpm alarmd-disabled.xpm
+EXTRA_DIST = dayview.xpm   inverse_recur.xpm alarmd.xpm alarmd-disabled.xpm
 
-icon_DATA = korganizer.xpm
-icondir = $(kde_icondir)
+KDE_ICON = korganizer
 
-install-data-local:
-	$(mkinstalldirs) $(kde_minidir)
-	$(INSTALL_DATA) $(srcdir)/mini-korganizer.xpm $(kde_minidir)/korganizer.xpm
-	$(INSTALL_DATA) $(srcdir)/alarmd.xpm $(kde_minidir)
-	$(INSTALL_DATA) $(srcdir)/alarmd-disabled.xpm $(kde_minidir)
-
-uninstall-local:
-	-rm -f $(kde_minidir)/korganizer.xpm
-	-rm -f $(kde_minidir)/alarmd.xpm
-	-rm -f $(kde_minidir)/alarmd-disabled.xpm
+mini_DATA = alarmd.xpm alarmd-disabled.xpm
+minidir = $(kde_icondir)/mini
 
