@@ -346,15 +346,15 @@ void KOEditorGeneral::readIncidence(Incidence *event)
       offset = alarm->startOffset().asSeconds();
     }
     offset = offset / -60; // make minutes
-    if (offset % 60 == 0) { // divides evenly into hours?
-      offset = offset / 60;
+    int useoffset = offset;
+    if (offset % (24*60) == 0) { // divides evenly into days?
+      useoffset = offset / (24*60);
+      mAlarmIncrCombo->setCurrentItem(2);
+    } else if (offset % 60 == 0) { // divides evenly into hours?
+      useoffset = offset / 60;
       mAlarmIncrCombo->setCurrentItem(1);
     }
-    if (offset % 24 == 0) { // divides evenly into days?
-      offset = offset / 24;
-      mAlarmIncrCombo->setCurrentItem(2);
-    }
-    mAlarmTimeEdit->setText(QString::number( offset ));
+    mAlarmTimeEdit->setText(QString::number( useoffset ));
 
     if (alarm->type() == Alarm::Procedure) {
       mAlarmProgram = alarm->programFile();
