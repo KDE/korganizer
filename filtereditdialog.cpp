@@ -224,6 +224,7 @@ void FilterEditDialog::writeFilter( CalFilter *filter )
   if ( mEditor->mCompletedCheck->isChecked() ) c |= CalFilter::HideCompleted;
   if ( mEditor->mRecurringCheck->isChecked() ) c |= CalFilter::HideRecurring;
   if ( mEditor->mCatShowCheck->isChecked() ) c |= CalFilter::ShowCategories;
+  if ( mEditor->mHideInactiveTodosCheck->isChecked() ) c |= CalFilter::HideInactiveTodos;
 
   filter->setCriteria( c );
 

@@ -139,6 +139,17 @@
                         <string>Hide completed to-dos</string>
                     </property>
                 </widget>
+                <widget>
+                    <class>QCheckBox</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>mHideInactiveTodosCheck</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>Hide inactive todos</string>
+                    </property>
+                </widget>
                 <spacer>
                     <property>
                         <name>name</name>
