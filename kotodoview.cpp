@@ -386,7 +386,6 @@ KOTodoView::KOTodoView(Calendar *calendar,QWidget* parent,const char* name) :
   mTodoListView->setMinimumHeight( 60 );
   mTodoListView->setItemsRenameable( true );
   mTodoListView->setRenameable( 0 );
-  mTodoListView->header()->setResizeEnabled(false, 2);
 
   mTodoListView->setColumnWidthMode(0, QListView::Manual);
   mTodoListView->setColumnWidthMode(1, QListView::Manual);

@@ -79,7 +79,6 @@ class KOTodoViewItem : public QCheckListItem
 #else
 #endif
   virtual void stateChange(bool);
-  QPixmap progressImg(int progress);
 
   private:
     Todo *mTodo;

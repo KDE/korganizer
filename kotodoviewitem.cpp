@@ -17,6 +17,8 @@
     Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 */
 
+#include <qpainter.h>
+
 #include <klocale.h>
 #include <kdebug.h>
 #include <qpainter.h>
@@ -71,7 +73,7 @@ void KOTodoViewItem::construct()
   setOn(mTodo->isCompleted());
   setText(0,mTodo->summary());
   setText(1,QString::number(mTodo->priority()));
-  setPixmap(2, progressImg(mTodo->percentComplete()));
+  setText(2,QString::number(mTodo->percentComplete()));
   if (mTodo->percentComplete()<100) {
     if (mTodo->isCompleted()) setSortKey(2,QString::number(999));
     else setSortKey(2,QString::number(mTodo->percentComplete()));
@@ -162,7 +164,7 @@ void KOTodoViewItem::stateChange(bool state)
   if ( mTodo->isCompleted() ) setSortKey( 1, "1" + priorityKey );
   else setSortKey( 1, "0" + priorityKey );
 
-  setPixmap(2, progressImg(mTodo->percentComplete()));
+  setText(2, QString::number(mTodo->percentComplete()));
   if (mTodo->percentComplete()<100) {
     if (mTodo->isCompleted()) setSortKey(2,QString::number(999));
     else setSortKey(2,QString::number(mTodo->percentComplete()));
@@ -181,33 +183,6 @@ void KOTodoViewItem::stateChange(bool state)
   mTodoView->modified(true);
   mTodoView->setTodoModified( oldTodo, mTodo );
   delete oldTodo;
-}
-
-QPixmap KOTodoViewItem::progressImg(int progress)
-{
-  int w=64, h=11;
-  QPixmap img(w, h, 16);
-  QPainter painter( &img );
-
-  /* Check wether progress is in valid range */
-  if(progress > 100) progress = 100;
-  else if (progress < 0) progress=0;
-
-  /* Calculating the number of pixels to fill */
-  progress=(int) (((float)progress)/100 * (w-2) + 0.5);
-
-  /* White Background */
-  painter.setPen( KGlobalSettings::textColor().rgb() );
-  painter.setBrush( KGlobalSettings::baseColor().rgb() );
-  painter.drawRect( 0, 0, w, h );
-
-  /* Progress Bar */
-  painter.setPen( Qt::NoPen );
-  painter.setBrush( KGlobalSettings::highlightColor().rgb() );
-  painter.drawRect( 1, 1, progress, h-2 );
-  painter.end();
-
-  return img;
 }
 
 bool KOTodoViewItem::isAlternate()
@@ -272,5 +247,28 @@ void KOTodoViewItem::paintCell(QPainter *p, const QColorGroup &cg, int column, i
   }
 #endif
 
-  QCheckListItem::paintCell(p, _cg, column, width, alignment);
+  // show the progess by a horizontal bar
+  if ( column == 2 ) {
+    p->save();
+    int progress = (int)(( (width-6)*mTodo->percentComplete())/100.0 + 0.5);
+
+    // Paint the parts of the progress bar and the visible background separately.
+    // This can reduce at least some flicker when resizing the column.
+    p->setPen( KGlobalSettings::textColor() );  //border
+    p->setBrush( Qt::NoBrush );
+//    p->setBrush( KGlobalSettings::baseColor() );  //filling
+    p->drawRect( 2, 2, width-4, height()-4);
+    p->fillRect( 3, 3, progress, height()-6,
+        KGlobalSettings::highlightColor() );
+    p->fillRect( 3+progress, 3, width-6-progress, height()-6,
+        KGlobalSettings::baseColor() );
+    p->fillRect( 0, 0, width, 2, _cg.base() );
+    p->fillRect( 0, 2, 2, height()-2, _cg.base() );
+    p->fillRect( 0, height()-2, width, 2, _cg.base() );
+    p->fillRect( width-2, 2, 2, height()-4, _cg.base() );
+
+    p->restore();
+  } else {
+    QCheckListItem::paintCell(p, _cg, column, width, alignment);
+  }
 }
