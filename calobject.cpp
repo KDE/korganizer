@@ -329,7 +329,7 @@ QString CalObject::getHolidayForDate(const QDate &qd)
 
   if ((lastYear == 0) || (qd.year() != lastYear)) {
       lastYear = qd.year() - 1900; // silly parse_year takes 2 digit year...
-//    parse_holidays(mHolidayfile.latin1(), lastYear, 0);
+      parse_holidays(mHolidayfile.latin1(), lastYear, 0);
   }
 
   if (holiday[qd.dayOfYear()-1].string) {

@@ -424,7 +424,19 @@ void KOPrefsDialog::setupViewsTab()
   topLayout->addWidget(workingHoursEnd->label(),7,0);
   topLayout->addWidget(workingHoursEnd->spinBox(),7,1);
 
-  topLayout->setRowStretch(8,1);
+  KPrefsWidBool *fullViewMonth =
+      new KPrefsWidBool(i18n("Month View uses full window"),
+                        &(KOPrefs::instance()->mFullViewMonth),this,
+                        topFrame);
+  topLayout->addWidget(fullViewMonth->checkBox(),8,0);
+
+  KPrefsWidBool *fullViewTodo =
+      new KPrefsWidBool(i18n("Todo View uses full window"),
+                        &(KOPrefs::instance()->mFullViewTodo),this,
+                        topFrame);
+  topLayout->addWidget(fullViewTodo->checkBox(),9,0);
+
+  topLayout->setRowStretch(10,1);
 }
 
 

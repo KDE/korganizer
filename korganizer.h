@@ -155,25 +155,19 @@ class KOrganizer : public KMainWindow
 
     void toggleToolBar();
 
-// We currently don't use a status bar
+    void toggleStatusBar();
 
-  /** toggle the appearance of the statusBar. */
-/*
-  void toggleStatusBar() 
-    {
-      sb->enable(KStatusBar::Toggle);
-      updateRects();
-      optionsMenu->setItemChecked(statusBarMenuId, 
-                                  !optionsMenu->isItemChecked(statusBarMenuId));
-    };
-*/
-
+    void statusBarPressed(int);
+    
     /** called by the autoSaveTimer to automatically save the calendar */
     void checkAutoSave();
 
     /** Sets title of window according to filename and modification state */
     void setTitle();
 
+    void setNumIncoming(int);
+    void setNumOutgoing(int);
+    
   protected:
     void initActions();
 
@@ -188,6 +182,7 @@ class KOrganizer : public KMainWindow
     /** Get URL for saving. Opens FileDialog. */
     KURL getSaveURL();
 
+  private:
     // variables
     CalendarView *mCalendarView;  // Main view widget
     KURL mURL;      // URL of calendar file
@@ -196,21 +191,23 @@ class KOrganizer : public KMainWindow
 
     KTempFile *mTempFile;
 
-//    KStatusBar  *sb;
+    QTimer         *mAutoSaveTimer;   // used if calendar is to be autosaved
+
+    bool mActive;  // Indicates if this calendar is active (for alarm daemon)
+
+    // list of all existing KOrganizer instances
+    static KOWindowList *windowList;
 
     // Actions
     KRecentFilesAction *mRecent;
 
-    QTimer         *mAutoSaveTimer;   // used if calendar is to be autosaved
-
-  private:
-    // list of all existing KOrganizer instances
-    static KOWindowList *windowList;
-
     QList<KAction> mToolBarToggles; // List of toolbar hiding toggle actions
     KToggleAction *mToolBarToggleAction;
 
-    bool mActive;  // Indicates if this calendar is active (for alarm daemon)
+    KToggleAction *mStatusBarAction;
+
+    // status bar ids
+    enum { ID_GENERAL, ID_MESSAGES_IN, ID_MESSAGES_OUT };
 
   private slots:
     void dumpText(const QString &);  // only for debugging purposes

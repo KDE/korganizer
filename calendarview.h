@@ -85,9 +85,15 @@ class CalendarView : public QWidget
     /** Emitted when state of events selection has changed. */
     void eventsSelected(bool);
   
-    /** Enabled, when clipboard content changes. Parameter indicates if paste
+    /** Emitted, when clipboard content changes. Parameter indicates if paste
      * is possible or not */
     void pasteEnabled(bool);
+    
+    /** Emitted, when the number of incoming messages has changed */
+    void numIncomingChanged(int);
+
+    /** Emitted, when the number of outgoing messages has changed */
+    void numOutgoingChanged(int);
     
   public slots:
     /** options dialog made a changed to the configuration. we catch this
@@ -327,6 +333,8 @@ class CalendarView : public QWidget
     void adaptNavigationUnits();
 
   private:
+    void raiseCurrentView();
+  
     CalPrinter *mCalPrinter;
   
     QSplitter    *mPanner;

@@ -39,6 +39,7 @@ class IncomingDialog : public IncomingDialog_base
 
   signals:
     void calendarUpdated();
+    void numMessagesChanged(int);
 
   protected slots:
     void retrieve();

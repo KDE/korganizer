@@ -88,7 +88,11 @@ CalendarView::CalendarView(QWidget *parent,const char *name)
   mCalendar->setTopwidget(this);
 
   mOutgoingDialog = new OutgoingDialog(mCalendar,this);
+  connect(mOutgoingDialog,SIGNAL(numMessagesChanged(int)),
+          SIGNAL(numOutgoingChanged(int)));
   mIncomingDialog = new IncomingDialog(mCalendar,this);
+  connect(mIncomingDialog,SIGNAL(numMessagesChanged(int)),
+          SIGNAL(numIncomingChanged(int)));
 
   mCategoryEditDialog = new CategoryEditDialog();
 
@@ -151,7 +155,7 @@ CalendarView::CalendarView(QWidget *parent,const char *name)
   // can happen when things get clicked.
   hookupSignals();
 
-  mRightFrame->raiseWidget(mCurrentView);
+  raiseCurrentView();
 
   goToday();
 
@@ -485,6 +489,8 @@ void CalendarView::updateConfig()
 {
   kdDebug() << "CalendarView::updateConfig()" << endl;
   emit configChanged();
+
+  raiseCurrentView();
 }
 
 void CalendarView::eventChanged(KOEvent *event)
@@ -588,12 +594,23 @@ void CalendarView::changeView(KOBaseView *view)
 
   mCurrentView = view;
 
-  mRightFrame->raiseWidget(mCurrentView);
+  raiseCurrentView();
   processEventSelection(false);
 
   updateView(mDateNavigator->getSelected());
 
   adaptNavigationUnits();
+}
+
+void CalendarView::raiseCurrentView()
+{
+  if ((KOPrefs::instance()->mFullViewMonth && mCurrentView == mMonthView) ||
+       KOPrefs::instance()->mFullViewTodo && mCurrentView == mTodoView) {
+    mLeftFrame->hide();
+  } else {
+    mLeftFrame->show();
+  }
+  mRightFrame->raiseWidget(mCurrentView);
 }
 
 void CalendarView::updateView(const QDateList selectedDates)

@@ -9,7 +9,7 @@
 THIS IS A DEVElOPMENT VERSION. SOME NOTES:
 
 KOrganizer now requires that you have libical 0.20d
-((ftp://ftp.softwarestudio.org/pub/studio2/libical-0.20d.tar.gz) installed.
+(ftp://ftp.softwarestudio.org/pub/studio2/libical-0.20d.tar.gz) installed.
 This will change in the future, but for now it's necessary to support the
 iCalendar format.
 

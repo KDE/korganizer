@@ -74,7 +74,7 @@
 #define AFTER		-2
 
 /**** Private forward declarations ****/
-extern int       yylex_ph(void);          /* external lexical analyzer */
+extern int       yylex(void);          /* external lexical analyzer */
 static void      yyerror(char *s);
 static time_t    date_to_time(int day, int month, int year, 
 			      int *wkday, int *julian, int *weeknum);
@@ -451,21 +451,21 @@ while (0)
 #define YYERRCODE	256
 
 #ifndef YYPURE
-#define YYLEX		yylex_ph()
+#define YYLEX		yylex()
 #endif
 
 #ifdef YYPURE
 #ifdef YYLSP_NEEDED
 #ifdef YYLEX_PARAM
-#define YYLEX		yylex_ph(&yylval, &yylloc, YYLEX_PARAM)
+#define YYLEX		yylex(&yylval, &yylloc, YYLEX_PARAM)
 #else
-#define YYLEX		yylex_ph(&yylval, &yylloc)
+#define YYLEX		yylex(&yylval, &yylloc)
 #endif
 #else /* not YYLSP_NEEDED */
 #ifdef YYLEX_PARAM
-#define YYLEX		yylex_ph(&yylval, YYLEX_PARAM)
+#define YYLEX		yylex(&yylval, YYLEX_PARAM)
 #else
-#define YYLEX		yylex_ph(&yylval)
+#define YYLEX		yylex(&yylval)
 #endif
 #endif /* not YYLSP_NEEDED */
 #endif
@@ -515,7 +515,7 @@ int yydebug;			/*  nonzero means print parse trace	*/
 
 /* Prevent warning if -Wstrict-prototypes.  */
 #ifdef __GNUC__
-YYPARSE_RETURN_TYPE yyparse_ph (void);
+YYPARSE_RETURN_TYPE yyparse (void);
 #endif
 
 #if __GNUC__ > 1		/* GNU C and GNU C++ define this.  */
@@ -579,7 +579,7 @@ __yy_memcpy (char *to, char *from, int count)
 #endif /* not YYPARSE_PARAM */
 
 YYPARSE_RETURN_TYPE
-yyparse_ph(YYPARSE_PARAM_ARG)
+yyparse(YYPARSE_PARAM_ARG)
      YYPARSE_PARAM_DECL
 {
   register int yystate;
@@ -1721,7 +1721,7 @@ char *parse_holidays(const char *holidays, int year, short force)
   if (!yyin) return(0);
   *errormsg = 0;
   yylineno = 0;
-  yyparse_ph();
+  yyparse();
   if (piped) pclose(yyin);
   else fclose(yyin);
   if (*errormsg) return(errormsg);

@@ -12,10 +12,6 @@
 extern "C" {
   #include <ical.h>
   #include <icalss.h>
-/*
-  #include "icalfileset.h"
-  #include "icalclassify.h"
-*/
 }
 
 /**

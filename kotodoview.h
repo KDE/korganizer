@@ -22,7 +22,7 @@
  * This class provides a way of displaying a single KOEvent of Todo-Type in a
  * KTodoView.
  *
- * @author Cornelius Schumacher <schumacher@asic.uni-heidelberg.de>
+ * @author Cornelius Schumacher <schumacher@kde.org>
  * @see KOTodoView
  */
 class KOTodoViewItem : public QCheckListItem

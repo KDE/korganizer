@@ -61,6 +61,7 @@ void IncomingDialog::retrieve()
               << "  method: " << Scheduler::methodName(method) << endl;
     new ScheduleItemIn(mMessageListView,event,method,status);
   }
+  emit numMessagesChanged(mMessageListView->childCount());
 }
 
 void IncomingDialog::acceptAllMessages()
@@ -89,6 +90,7 @@ bool IncomingDialog::acceptMessage(ScheduleItemIn *item)
 {
   if (mScheduler->acceptTransaction(item->event(),item->status())) {
     delete item;
+    emit numMessagesChanged(mMessageListView->childCount());
     return true;
   } else {
     kdDebug() << "IncomingDialog::acceptMessage(): Error!" << endl;
@@ -101,5 +103,6 @@ void IncomingDialog::rejectMessage()
   ScheduleItemIn *item = (ScheduleItemIn *)mMessageListView->selectedItem();
   if (item) {
     delete item;
+    emit numMessagesChanged(mMessageListView->childCount());
   }
 }

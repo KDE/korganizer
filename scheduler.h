@@ -10,10 +10,6 @@
 extern "C" {
   #include <ical.h>
   #include <icalss.h>
-/*
-  #include "icalrestriction.h"
-  #include "icalclassify.h"
-*/
 }
 
 class KOEvent;

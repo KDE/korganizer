@@ -77,6 +77,8 @@ class KOPrefs : public KPrefs
     bool    mEnableMonthScroll;
     int     mWorkingHoursStart;
     int     mWorkingHoursEnd;
+    bool    mFullViewMonth;
+    bool    mFullViewTodo;
 
     QString mPrinter;
     int     mPaperSize;

@@ -52,6 +52,9 @@ KOPrefs::KOPrefs() :
   addPrefsItem(new KPrefsItemInt("Day Begins",&mDayBegins,7));
   addPrefsItem(new KPrefsItemInt("Working Hours Start",&mWorkingHoursStart,8));
   addPrefsItem(new KPrefsItemInt("Working Hours End",&mWorkingHoursEnd,17));
+
+  addPrefsItem(new KPrefsItemBool("Full View Month",&mFullViewMonth,false));
+  addPrefsItem(new KPrefsItemBool("Full View Todo",&mFullViewTodo,true));
 }
 
 

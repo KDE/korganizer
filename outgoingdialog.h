@@ -36,6 +36,9 @@ class OutgoingDialog : public OutgoingDialog_base
     bool addMessage(KOEvent *,Scheduler::Method);
     bool addMessage(KOEvent *,Scheduler::Method,const QString &recipients);
 
+  signals:
+    void numMessagesChanged(int);
+
   protected slots:
     void send();
   

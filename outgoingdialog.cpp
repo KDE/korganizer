@@ -54,6 +54,8 @@ bool OutgoingDialog::addMessage(KOEvent *incidence,Scheduler::Method method)
 
   new ScheduleItemOut(mMessageListView,incidence,method);
 
+  emit numMessagesChanged(mMessageListView->childCount());
+
   return true;
 }
 
@@ -63,6 +65,8 @@ bool OutgoingDialog::addMessage(KOEvent *incidence,Scheduler::Method method,
   if (method != Scheduler::Publish) return false;
   
   new ScheduleItemOut(mMessageListView,incidence,method,recipients);
+
+  emit numMessagesChanged(mMessageListView->childCount());
 
   return true;
 }
@@ -81,4 +85,6 @@ void OutgoingDialog::send()
     item = (ScheduleItemOut *)(item->nextSibling());
     if (success) delete oldItem;
   }
+
+  emit numMessagesChanged(mMessageListView->childCount());
 }

@@ -82,11 +82,12 @@ KOrganizer::KOrganizer(const char *name)
 
   initActions();
 
-// We don't use a status bar up to now.
-#if 0
-  sb = new KStatusBar(this, "sb");
-  setStatusBar(sb);
-#endif
+  statusBar()->insertItem("",ID_GENERAL,10);
+  statusBar()->insertItem(i18n("Incoming Messages: %1").arg(0),ID_MESSAGES_IN);
+  statusBar()->insertItem(i18n("Outgoing Messages: %2").arg(0),ID_MESSAGES_OUT);
+  statusBar()->setItemAlignment(ID_MESSAGES_IN,AlignRight);
+  statusBar()->setItemAlignment(ID_MESSAGES_OUT,AlignRight);
+  connect(statusBar(),SIGNAL(pressed(int)),SLOT(statusBarPressed(int)));
 
   readSettings();
   mCalendarView->readSettings();
@@ -103,6 +104,11 @@ KOrganizer::KOrganizer(const char *name)
 
   connect(mCalendarView,SIGNAL(modifiedChanged(bool)),SLOT(setTitle()));
   connect(mCalendarView,SIGNAL(configChanged()),SLOT(updateConfig()));
+
+  connect(mCalendarView,SIGNAL(numIncomingChanged(int)),
+          SLOT(setNumIncoming(int)));
+  connect(mCalendarView,SIGNAL(numOutgoingChanged(int)),
+          SLOT(setNumOutgoing(int)));
 
   // Update state of event instance related actions
   mCalendarView->emitEventsSelected();
@@ -357,6 +363,9 @@ void KOrganizer::initActions()
                     actionCollection(), "conf_datetime");
 */
 
+  mStatusBarAction = KStdAction::showStatusbar(this,SLOT(toggleStatusBar()),
+                                               actionCollection());
+
   KStdAction::configureToolbars(this, SLOT(configureToolbars()),
                                 actionCollection());
   KStdAction::preferences(mCalendarView, SLOT(edit_options()),
@@ -371,6 +380,8 @@ void KOrganizer::initActions()
   createGUI();
 
   applyMainWindowSettings(kapp->config());
+
+  mStatusBarAction->setChecked(!statusBar()->isHidden());
 
   QListIterator<KToolBar> it = toolBarIterator();
   for ( ; it.current() ; ++it ) {
@@ -862,6 +873,15 @@ void KOrganizer::toggleToolBar()
   }
 }
 
+void KOrganizer::toggleStatusBar()
+{
+  bool show_statusbar = mStatusBarAction->isChecked();
+  if (show_statusbar)
+     statusBar()->show();
+  else
+     statusBar()->hide();
+}
+
 void KOrganizer::saveProperties(KConfig *config)
 {
   config->writeEntry("Calendar",mLastFile);
@@ -875,4 +895,22 @@ void KOrganizer::readProperties(KConfig *config)
     u.setPath(calendarUrl);
     openURL(u);
   }
+}
+
+void KOrganizer::statusBarPressed(int id)
+{
+  if (id == ID_MESSAGES_IN) mCalendarView->schedule_incoming();
+  else if (id == ID_MESSAGES_OUT) mCalendarView->schedule_outgoing();
+}
+
+void KOrganizer::setNumIncoming(int num)
+{
+  statusBar()->changeItem(i18n("Incoming Messages: %1").arg(num),
+                          ID_MESSAGES_IN);
+}
+
+void KOrganizer::setNumOutgoing(int num)
+{
+  statusBar()->changeItem(i18n("Outgoing Messages: %1").arg(num),
+                          ID_MESSAGES_OUT);
 }

@@ -57,7 +57,6 @@ void CategoryEditDialog::modify()
   if (!mEdit->text().isEmpty()) {
     if (mCategories->currentItem() >= 0) {
       mCategories->changeItem(mEdit->text(),mCategories->currentItem());
-      mEdit->setText("");
     }
   }
 }
