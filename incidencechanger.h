@@ -38,7 +38,7 @@ public:
   bool endChange( Incidence *incidence );
 
   bool addIncidence( Incidence *incidence );
-  bool changeIncidence( Incidence *newinc, Incidence *oldinc, int action = -1 );
+  bool changeIncidence( Incidence *oldinc, Incidence *newinc, int action = -1 );
   bool deleteIncidence( Incidence *incidence );
   
   bool cutIncidence( Incidence *incidence );
