@@ -1084,7 +1084,7 @@ void CalendarView::action_mail()
   }
   ICalFormat mForm;
   QString attachment = mForm.toString( &cal_tmp );
-  if (ev) delete(ev);
+  delete(ev);
 
   mailClient.mailAttendees(currentSelection(), attachment);
 

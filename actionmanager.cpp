@@ -128,7 +128,7 @@ ActionManager::~ActionManager()
    client->send("kaddressbook", "KAddressBookIface", "exit()",  noParamData);
   }
 
-  if (mTempFile) delete mTempFile;
+  delete mTempFile;
 
   // Take this window out of the window list.
   windowList->removeWindow(mMainWindow);
