@@ -5,7 +5,7 @@ SUBDIRS=
 METASOURCES = AUTO
 
 INCLUDES = -I$(top_srcdir)/korganizer/interfaces \
-   -I$(top_srcdir)/libkpimexchange -I$(top_builddir)/libkpimexchange \
+   -I$(top_srcdir)/libkpimexchange/core -I$(top_builddir)/libkpimexchange/core \
     $(all_includes)
  
 kde_module_LTLIBRARIES = libkorg_exchange.la
