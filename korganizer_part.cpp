@@ -120,6 +120,9 @@ KOrganizerPart::KOrganizerPart(QWidget *parentWidget, const char *widgetName,
   (void)new KAction(i18n("&Week"), "7days", 0,
                     widget, SLOT(showWeekView()),
                     actionCollection(), "view_week");
+  (void)new KAction(i18n("&Next X Days"), "nextXdays", 0,
+                    widget, SLOT(showNextXView()),
+                    actionCollection(), "view_nextx");
   (void)new KAction(i18n("&Month"), "month", 0,
                     widget, SLOT(showMonthView()),
                     actionCollection(), "view_month");

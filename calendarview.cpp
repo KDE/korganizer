@@ -197,7 +197,14 @@ CalendarView::CalendarView(QWidget *parent,const char *name)
 
   mMessageTimer = new QTimer();
   connect(mMessageTimer,SIGNAL(timeout()),SLOT(lookForIncomingMessages()));
-  //  mMessageTimer->start(10000,true);
+  mMidnightTimer = new QTimer();
+  connect(mMidnightTimer,SIGNAL(timeout()),SLOT(updateView()));
+  
+  QTime now = QTime::currentTime();
+  int secs = 0;
+  secs = now.hour()*60*60 + now.minute()*60 + now.second();
+  // timer for 1 second after midnoght
+  mMidnightTimer->start((24*60*60-secs)*1000+1000,true);
   // We should think about seperating startup settings and configuration change.
   updateConfig();
 

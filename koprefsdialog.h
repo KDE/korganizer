@@ -122,6 +122,7 @@ class KOPrefsDialog : public KPrefsDialog
     KURLRequester *mPrintPreviewEdit;
     
     QSpinBox  *mAutoCheckIntervalSpin;
+    QSpinBox  *mNextXDaysSpin;
 };
 
 #endif

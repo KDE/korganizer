@@ -133,6 +133,8 @@ void KOViewManager::changeAgendaView( int newView )
   case KOAgendaView::LIST:
     // we want to make sure that this is up to date.
     break;
+  case KOAgendaView::NEXTX:
+    break;
   }
   mAgendaView->slotViewChange( newView );
 
@@ -275,6 +277,12 @@ void KOViewManager::showWeekView()
 {
   showAgendaView();
   changeAgendaView(KOAgendaView::WEEK);
+}
+
+void KOViewManager::showNextXView()
+{
+  showAgendaView();
+  changeAgendaView(KOAgendaView::NEXTX);
 }
 
 void KOViewManager::showMonthView()

@@ -126,6 +126,8 @@ KOPrefs::KOPrefs() :
 
   addItemBool("Full View Month",&mFullViewMonth,false);
   addItemBool("Full View Todo",&mFullViewTodo,true);
+  
+  addItemInt("Next X Days",&mNextXDays,3);
 
   KPrefs::setCurrentGroup("Printer");
 

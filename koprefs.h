@@ -128,6 +128,7 @@ class KOPrefs : public KPrefs
     bool    mFullViewMonth;
     bool    mFullViewTodo;
     bool    mMarcusBainsEnabled;
+    int     mNextXDays;
    
     bool    mCompactDialogs;
     bool    mVerticalScreen;

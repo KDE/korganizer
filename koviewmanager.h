@@ -89,6 +89,7 @@ class KOViewManager : public QObject
     void showDayView();
     void showWorkWeekView();
     void showWeekView();
+    void showNextXView();
     void showMonthView();
     void showTodoView();
     void showJournalView();

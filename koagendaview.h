@@ -115,8 +115,9 @@ class KOAgendaView : public KOEventView {
 
     /** Agenda view types. DAY is a one day view, WORKWEEK is a 5 day view of a
     week, excluding the weekend, WEEK is a 7 day view of a complete week and
-    LIST is a view of an arbitrary number of days */
-    enum { DAY, WORKWEEK, WEEK, LIST };
+    LIST is a view of an arbitrary number of days, NEXTX show the next X days
+    beginning with today */
+    enum { DAY, WORKWEEK, WEEK, LIST, NEXTX };
 
     /** Set type of agenda view. See also the definitions above. */
     void setView( int ViewType );

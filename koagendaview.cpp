@@ -513,6 +513,14 @@ void KOAgendaView::updateConfig()
   mAgenda->updateConfig();
   mAllDayAgenda->updateConfig();
 
+  if ((mViewType==NEXTX) &&
+      (mSelectedDates.count()!=KOPrefs::instance()->mNextXDays)) {
+    int count;
+    QDate firstDate = mSelectedDates.first();
+    mSelectedDates.clear();
+    for( count = 0; count < KOPrefs::instance()->mNextXDays; count++ )
+      mSelectedDates.append(firstDate.addDays(count));
+  }
   // widget synchronization
   //TODO: find a better way, maybe signal/slot
   mTimeLabels->positionChanged();
@@ -604,6 +612,9 @@ void KOAgendaView::showDates( const QDate &start, const QDate &end )
   } else if (mSelectedDates.count() == 1) {
     setView(DAY);
 
+  } else if (((int)mSelectedDates.count() == KOPrefs::instance()->mNextXDays) &&
+             (mSelectedDates.first() == QDate::currentDate()) ) {
+    setView(NEXTX);
   } else {
     // for sanity, set viewtype to LIST for now...
     setView(LIST);
@@ -623,7 +634,7 @@ void KOAgendaView::setView(int view)
 {
   // change view type if valid
   if( mSelectedDates.count() ) {
-    if ((view >= DAY) && (view <= LIST))
+    if ((view >= DAY) && (view <= NEXTX))
       mViewType = view;
     else
       mViewType = DAY;
@@ -661,6 +672,9 @@ void KOAgendaView::shiftDates(int multiplier)
     case WORKWEEK:
     case LIST:
       shift = 7;
+      break;
+    case NEXTX:
+      shift = KOPrefs::instance()->mNextXDays;
       break;
     default:
       break;
@@ -741,6 +755,14 @@ void KOAgendaView::slotViewChange(int newView)
     */
     break;
 
+  case NEXTX:
+    firstDate = QDate::currentDate();
+    mSelectedDates.clear();
+    for( count = 0; count < KOPrefs::instance()->mNextXDays; count++ )
+      mSelectedDates.append(firstDate.addDays(count));
+  
+    break;
+  
   default:
     mSelectedDates.clear();
     mSelectedDates.append(QDate::currentDate());

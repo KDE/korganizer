@@ -32,6 +32,7 @@
       <Action name="view_day"/>
       <Action name="view_workweek"/>
       <Action name="view_week"/>
+      <Action name="view_nextx"/>
       <Action name="view_month"/>
       <Action name="view_todo"/>
       <Action name="view_journal"/>
@@ -95,6 +96,7 @@
     <Action name="view_day"/>
     <Action name="view_workweek"/>
     <Action name="view_week"/>
+    <Action name="view_nextx"/>
     <Action name="view_month"/>
     <Action name="view_todo"/>
   </ToolBar>

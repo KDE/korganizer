@@ -287,32 +287,39 @@ void KOPrefsDialog::setupViewsTab()
   dayBeginsLayout->addWidget(dayBegins->label());
   dayBeginsLayout->addStretch(1);
   dayBeginsLayout->addWidget(dayBegins->spinBox());
+  
+  QBoxLayout *nextDaysLayout = new QHBoxLayout;
+  topLayout->addLayout(nextDaysLayout,1,0);
+  nextDaysLayout->addWidget(new QLabel(i18n("Days to show in Next-X-Days view:"),topFrame));  
+  mNextXDaysSpin = new QSpinBox(1,14,1,topFrame);
+  nextDaysLayout->addStretch(1);
+  nextDaysLayout->addWidget(mNextXDaysSpin);
 
   QGroupBox *hourSizeGroup = new QGroupBox(1,Horizontal,
                                            i18n("Hour size in schedule view"),
                                            topFrame);
   mHourSizeSlider = new QSlider(4,30,1,10,Horizontal,hourSizeGroup);
-  topLayout->addMultiCellWidget(hourSizeGroup,1,1,0,1);
+  topLayout->addMultiCellWidget(hourSizeGroup,2,2,0,1);
 
   KPrefsWidBool *dailyRecur =
     addWidBool(i18n("Show events that recur daily in Date Navigator"),
                &(KOPrefs::instance()->mDailyRecur),topFrame);
-  topLayout->addWidget(dailyRecur->checkBox(),2,0);
+  topLayout->addWidget(dailyRecur->checkBox(),3,0);
 
   KPrefsWidBool *weeklyRecur =
     addWidBool(i18n("Show events that recur weekly in Date Navigator"),
                &(KOPrefs::instance()->mWeeklyRecur),topFrame);
-  topLayout->addWidget(weeklyRecur->checkBox(),3,0);
+  topLayout->addWidget(weeklyRecur->checkBox(),4,0);
 
   KPrefsWidBool *enableToolTips =
       addWidBool(i18n("Enable ToolTips displaying summary of events"),
                  &(KOPrefs::instance()->mEnableToolTips),topFrame);
-  topLayout->addWidget(enableToolTips->checkBox(),4,0);
+  topLayout->addWidget(enableToolTips->checkBox(),5,0);
 
   KPrefsWidBool *enableMonthScroll =
       addWidBool(i18n("Enable Scrollbars in Month View cells"),
                  &(KOPrefs::instance()->mEnableMonthScroll),topFrame);
-  topLayout->addWidget(enableMonthScroll->checkBox(),5,0);
+  topLayout->addWidget(enableMonthScroll->checkBox(),6,0);
 
   KPrefsWidBool *fullViewMonth =
       addWidBool(i18n("Month View uses full window"),
@@ -644,6 +651,7 @@ void KOPrefsDialog::usrReadConfig()
   mPrintPreviewEdit->lineEdit()->setText(KOPrefs::instance()->mPrintPreview);
 
   mAutoCheckIntervalSpin->setValue(KOPrefs::instance()->mIntervalCheckTime);
+  mNextXDaysSpin->setValue(KOPrefs::instance()->mNextXDays);
   mAMails->clear();
   for ( QStringList::Iterator it = KOPrefs::instance()->mAdditionalMails.begin();
             it != KOPrefs::instance()->mAdditionalMails.end(); ++it ) {
@@ -680,6 +688,8 @@ void KOPrefsDialog::usrWriteConfig()
 
   KOPrefs::instance()->mIntervalCheckTime = mAutoCheckIntervalSpin->value();
 
+  KOPrefs::instance()->mNextXDays = mNextXDaysSpin->value();
+  
   KOPrefs::instance()->mAdditionalMails.clear();
   QListViewItem *item;
   item = mAMails->firstChild();
