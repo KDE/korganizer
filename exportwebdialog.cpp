@@ -31,6 +31,7 @@
 #include "calobject.h"
 #include "kdateedit.h"
 #include "koprefs.h"
+#include "htmlexport.h"
 
 ExportWebDialog::ExportWebDialog (CalObject *cal, QWidget *parent,
                                   const char *name) :
@@ -39,6 +40,8 @@ ExportWebDialog::ExportWebDialog (CalObject *cal, QWidget *parent,
               i18n("Export")),
   mCalendar(cal)
 {
+  mExport = new HtmlExport(cal);
+
   setupGeneralPage();
   setupEventPage();
   setupTodoPage();
@@ -156,72 +159,24 @@ void ExportWebDialog::browseOutputFile()
 
   KURL u = KFileDialog::getSaveURL();
   if(!u.isEmpty()) mOutputFileEdit->setText(u.prettyURL());
-
-//  QString str = QFileDialog::getSaveFileName();
-//  if(!str.isEmpty())
-//    mOutputFileEdit->setText(str);
 }
 
 void ExportWebDialog::exportWebPage()
 {
-  kdDebug() << "ExportWebDialog::exportWebPage()" << endl;
+  mExport->setEventsEnabled(mCbEvent->isChecked());
+  mExport->setTodosEnabled(mCbTodo->isChecked());
+  mExport->setCategoriesEventEnabled(mCbCategoriesEvent->isChecked());
+  mExport->setAttendeesEventEnabled(mCbAttendeesEvent->isChecked());
+  mExport->setCategoriesTodoEnabled(mCbCategoriesTodo->isChecked());
+  mExport->setAttendeesTodoEnabled(mCbAttendeesTodo->isChecked());
+  mExport->setDueDateEnabled(mCbDueDates->isChecked());
+  mExport->setDateRange(mFromDate->getDate(),mToDate->getDate());
+
+  // Create temporary file
   KTempFile tmpFile;
-  kdDebug() << "ExportWebDialog::exportWebPage() tmpFile" << endl;
-//  tmpFile.setAutoDelete(true);
-  QTextStream *ts = tmpFile.textStream();
-  kdDebug() << "ExportWebDialog::exportWebPage() textStream" << endl;
 
-  // Write HTML header
-  *ts << "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0 Transitional//EN\" ";
-  *ts << "\"http://www.w3.org/TR/REC-html40/loose.dtd\">\n";
-
-  kdDebug() << "ExportWebDialog::exportWebPage() header" << endl;
-
-  *ts << "<HTML><HEAD>" << endl;
-  *ts << "  <META http-equiv=\"Content-Type\" content=\"text/html; charset=" + KGlobal::locale()->charset() +  "\">\n";
-  *ts << "  <TITLE>" << i18n("KOrganizer To-Do List") << "</TITLE>\n";
-  *ts << "  <style type=\"text/css\">\n";
-  *ts << "    body { background-color:white; color:black }\n";
-  *ts << "    td { text-align:center; background-color:#eee }\n";
-  *ts << "    th { text-align:center; background-color:#228; color:white }\n";
-  *ts << "    td.sum { text-align:left }\n";
-  *ts << "    td.sumdone { text-align:left; background-color:#ccc }\n";
-  *ts << "    td.done { background-color:#ccc }\n";
-  *ts << "    td.subhead { text-align:center; background-color:#ccf }\n";
-  *ts << "    td.datehead { text-align:center; background-color:#ccf }\n";
-  *ts << "    td.space { background-color:white }\n";
-  *ts <<   "</style>\n";
-  *ts << "</HEAD><BODY>\n";
-
-  // TO DO: Write KOrganizer header
-  // (Heading, Calendar-Owner, Calendar-Date, ...)
-
-  // Write Event List
-  if (mCbEvent->isChecked()) {
-    kdDebug() << "ExportWebDialog::exportWebPage() evlist" << endl;
-    *ts << "<H1>" << i18n("KOrganizer Calendar") << "</H1>\n";
-
-    // Write HTML page content
-    createHtmlEventList(ts);
-  }
-
-  // Write Todo List
-  if (mCbTodo->isChecked()) {
-    kdDebug() << "ExportWebDialog::exportWebPage() todolist" << endl;
-    *ts << "<H1>" << i18n("KOrganizer To-Do List") << "</H1>\n";
-
-    // Write HTML page content
-    createHtmlTodoList(ts);
-  }
-
-  kdDebug() << "ExportWebDialog::exportWebPage() trailer" << endl;
-
-  // Write KOrganizer trailer
-  *ts << "<P>" << i18n("This page was created by <A HREF=\"http://"
-        "korganizer.kde.org\">KOrganizer</A>") << "</P>\n";
-
-  // Write HTML trailer
-  *ts << "</BODY></HTML>\n";
+  // Save to temporary file
+  mExport->save(tmpFile.file());
 
   // Copy temporary file to final destination
   KURL src;
@@ -231,274 +186,21 @@ void ExportWebDialog::exportWebPage()
   // Remember destination.
   KOPrefs::instance()->mHtmlExportFile = mOutputFileEdit->text();
 
-  kdDebug() << "ExportWebDialog::exportWebPage() move" << endl;
-
   KIO::Job *job = KIO::move(src,dest);
   connect(job,SIGNAL(result(KIO::Job *)),SLOT(slotResult(KIO::Job *)));
-  kdDebug() << "ExportWebDialog::exportWebPage() done" << endl;
 }
 
 void ExportWebDialog::slotResult(KIO::Job *job)
 {
-  kdDebug() << "slotResult" << endl;
+//  kdDebug() << "slotResult" << endl;
   int err = job->error();
   if (err)
   {
-    kdDebug() << "Error " << err << ": " << job->errorString() << endl;
+//    kdDebug() << "Error " << err << ": " << job->errorString() << endl;
     job->showErrorDialog();
   } else {
-    kdDebug() << "No Error" << endl;
+//    kdDebug() << "No Error" << endl;
     accept();
   }
-  kdDebug() << "slotResult done" << endl;
-}
-
-void ExportWebDialog::createHtmlEventList (QTextStream *ts)
-{
-  *ts << "<TABLE BORDER=0 CELLPADDING=3 CELLSPACING=3>\n";
-  *ts << "  <TR>\n";
-  *ts << "    <TH CLASS=sum>" << i18n("Event") << "</TH>\n";
-  *ts << "    <TH>" << i18n("Start Time") << "</TH>\n";
-  *ts << "    <TH>" << i18n("End Time") << "</TH>\n";
-  if (mCbCategoriesEvent->isChecked()) {
-    *ts << "    <TH>" << i18n("Categories") << "</TH>\n";
-  }
-  if (mCbAttendeesEvent->isChecked()) {
-    *ts << "    <TH>" << i18n("Attendees") << "</TH>\n";
-  }
-
-  *ts << "  </TR>\n";
-
-  int columns = 3;
-  if (mCbCategoriesEvent->isChecked()) ++columns;
-  if (mCbAttendeesEvent->isChecked()) ++columns;
-
-  QDate dt = mFromDate->getDate();
-  for (dt = mFromDate->getDate(); dt <= mToDate->getDate();
-       dt = dt.addDays(1)) {
-    kdDebug() << "Getting events for " << dt.toString() << endl;
-    QList<Event> events = mCalendar->getEventsForDate(dt,true);
-    if (events.count()) {
-      *ts << "  <TR><TD COLSPAN=" << QString::number(columns)
-          << " CLASS=datehead><I>"
-          << KGlobal::locale()->formatDate(dt)
-          << "</I></TD></TR>\n";
-      Event *ev;
-      for(ev = events.first(); ev; ev = events.next()) {
-        createHtmlEvent(ts,ev,dt);
-      }
-    }
-  }
-  
-  *ts << "</TABLE>\n";  
-}
-
-void ExportWebDialog::createHtmlEvent (QTextStream *ts, Event *event,
-                                       QDate date)
-{
-  kdDebug() << "ExportWebDialog::createHtmlEvent()" << endl;
-  *ts << "  <TR>\n";
-
-  *ts << "    <TD CLASS=sum>\n";
-  *ts << "      <B>" << event->summary() << "</B>\n";
-  if (!event->description().isEmpty()) {
-    *ts << "      <P>" << event->description() << "</P>\n";
-  }
-  *ts << "    </TD>\n";
-
-  if (!event->doesFloat()) {
-    if (event->dtStart().date() == date) {
-      *ts << "    <TD>" << event->dtStartTimeStr() << "</TD>\n";
-    } else {
-      *ts << "    <TD>&nbsp;</TD>\n";
-    }
-    if (event->dtEnd().date() == date) {
-      *ts << "    <TD>" << event->dtEndTimeStr() << "</TD>\n";
-    } else {
-      *ts << "    <TD>&nbsp;</TD>\n";
-    }
-  } else {
-    *ts << "    <TD>&nbsp;</TD><TD>&nbsp;</TD>\n";
-  }
-  
-  if (mCbCategoriesTodo->isChecked()) {
-    *ts << "  <TD>\n";
-    formatHtmlCategories(ts,event);  
-    *ts << "  </TD>\n";  
-  }
-
-  if (mCbAttendeesTodo->isChecked()) {
-    *ts << "  <TD>\n";
-    formatHtmlAttendees(ts,event);
-    *ts << "  </TD>\n";
-  }
-  
-  *ts << "  </TR>\n";
-}
-
-void ExportWebDialog::createHtmlTodoList (QTextStream *ts)
-{
-  Todo *ev,*subev;
-  
-  QList<Todo> rawTodoList = mCalendar->getTodoList();
-  QList<Todo> todoList;
-
-  // Sort list by priorities. This is brute force and should be
-  // replaced by a real sorting algorithm.
-  for (int i=1; i<=5; ++i) {
-    for(ev=rawTodoList.first();ev;ev=rawTodoList.next()) {
-      if (ev->priority() == i) todoList.append(ev);
-    }
-  }
-  
-  *ts << "<TABLE BORDER=0 CELLPADDING=3 CELLSPACING=3>\n";
-  *ts << "  <TR>\n";
-  *ts << "    <TH CLASS=sum>" << i18n("Task") << "</TH>\n";
-  *ts << "    <TH>" << i18n("Priority") << "</TH>\n";
-  *ts << "    <TH>" << i18n("Status") << "</TH>\n";
-  if (mCbDueDates->isChecked()) {
-    *ts << "    <TH>" << i18n("Due Date") << "</TH>\n";
-  }
-  if (mCbCategoriesTodo->isChecked()) {
-    *ts << "    <TH>" << i18n("Categories") << "</TH>\n";
-  }
-  if (mCbAttendeesTodo->isChecked()) {
-    *ts << "    <TH>" << i18n("Attendees") << "</TH>\n";
-  }
-  *ts << "  </TR>\n";
-
-  // Create top-level list.
-  for(ev=todoList.first();ev;ev=todoList.next()) {
-    if (!ev->relatedTo()) createHtmlTodo(ts,ev);
-  }
-
-  // Create sub-level lists
-  for(ev=todoList.first();ev;ev=todoList.next()) {
-    QList<Incidence> relations = ev->relations();
-    if (relations.count()) {
-      // Generate sub-task list of event ev
-      *ts << "  <TR>\n";
-      *ts << "    <TD CLASS=subhead COLSPAN=";
-      int columns = 3;
-      if (mCbDueDates->isChecked()) ++columns;
-      if (mCbCategoriesTodo->isChecked()) ++columns;
-      if (mCbAttendeesTodo->isChecked()) ++columns;
-      *ts << "\"" << QString::number(columns) << "\"";
-      *ts << "><A NAME=\"sub" << ev->VUID() << "\"></A>"
-          << i18n("Sub-Tasks of: ") << "<A HREF=\"#"
-          << ev->VUID() << "\"><B>" << ev->summary() << "</B></A></TD>\n";
-      *ts << "  </TR>\n";
-      
-      QList<Todo> sortedList;
-      Incidence *ev2;
-      // Sort list by priorities. This is brute force and should be
-      // replaced by a real sorting algorithm.
-      for (int i=1; i<=5; ++i) {
-        for(ev2=relations.first();ev2;ev2=relations.next()) {
-          Todo *ev3 = dynamic_cast<Todo *>(ev2);
-          if (ev3 && ev3->priority() == i) sortedList.append(ev3);
-        }
-      }
-      
-      for(subev=sortedList.first();subev;subev=sortedList.next()) {
-        createHtmlTodo(ts,subev);
-      }
-    }
-  }
-
-  *ts << "</TABLE>\n";
-}
-
-void ExportWebDialog::createHtmlTodo (QTextStream *ts,Todo *todo)
-{
-  kdDebug() << "ExportWebDialog::createHtmlTodo()" << endl;
-
-  bool completed = todo->isCompleted();
-  QList<Incidence> relations = todo->relations();
-
-  *ts << "<TR>\n";
-
-  *ts << "  <TD CLASS=sum";
-  if (completed) *ts << "done";
-  *ts << ">\n";
-  *ts << "    <A NAME=\"" << todo->VUID() << "\"></A>\n";
-  *ts << "    <B>" << todo->summary() << "</B>\n";
-  if (!todo->description().isEmpty()) {
-    *ts << "    <P>" << todo->description() << "</P>\n";
-  }
-  if (relations.count()) {
-    *ts << "    <DIV ALIGN=right><A HREF=\"#sub" << todo->VUID()
-        << "\">" << i18n("Sub-Tasks") << "</A></DIV>\n";
-  }
-
-  *ts << "  </TD";
-  if (completed) *ts << " CLASS=done";
-  *ts << ">\n";
-
-  *ts << "  <TD";
-  if (completed) *ts << " CLASS=done";
-  *ts << ">\n";
-  *ts << "    " << todo->priority() << "\n";
-  *ts << "  </TD>\n";
-
-  *ts << "  <TD";
-  if (completed) *ts << " CLASS=done";
-  *ts << ">\n";
-  *ts << "    " << (completed ? i18n("not yet done","Done") : i18n("Open"))
-      << "\n";
-  *ts << "  </TD>\n";
-
-  if (mCbDueDates->isChecked()) {
-    *ts << "  <TD";
-    if (completed) *ts << " CLASS=done";
-    *ts << ">\n";
-    if (todo->hasDueDate()) {
-      *ts << "    " << todo->dtDueDateStr() << "\n";
-    } else {
-      *ts << "    &nbsp;\n";
-    }
-    *ts << "  </TD>\n";
-  }
-
-  if (mCbCategoriesTodo->isChecked()) {
-    *ts << "  <TD";
-    if (completed) *ts << " CLASS=done";
-    *ts << ">\n";
-    formatHtmlCategories(ts,todo);  
-    *ts << "  </TD>\n";  
-  }
-
-  if (mCbAttendeesTodo->isChecked()) {
-    *ts << "  <TD";
-    if (completed) *ts << " CLASS=done";
-    *ts << ">\n";
-    formatHtmlAttendees(ts,todo);
-    *ts << "  </TD>\n";
-  }
-
-  *ts << "</TR>\n";
-}
-
-void ExportWebDialog::formatHtmlCategories (QTextStream *ts,Incidence *event)
-{
-  if (!event->categoriesStr().isEmpty()) {
-    *ts << "    " << event->categoriesStr() << "\n";
-  } else {
-    *ts << "    &nbsp;\n";
-  }
-}
-
-void ExportWebDialog::formatHtmlAttendees (QTextStream *ts,Incidence *event)
-{
-  QList<Attendee> attendees = event->attendees();
-  if (attendees.count()) {
-    Attendee *a;
-    for(a=attendees.first();a;a=attendees.next()) {
-      *ts << "    " << a->getName();
-      if (!a->getEmail().isEmpty()) *ts << " &lt;" << a->getEmail() << "&gt;";
-      *ts << "<BR>" << "\n";
-    }
-  } else {
-    *ts << "    &nbsp;\n";
-  }
+//  kdDebug() << "slotResult done" << endl;
 }

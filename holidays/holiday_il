@@ -1,0 +1,28 @@
+:
+: Israeli holidays file for Korganizer
+: Author: Lior Chen <sliorc@t2.technion.ac.il>, 21/03/01
+: 
+: (Note that these holidays are only relevent for the current year).
+: 
+small "Fast: 10th of Tevet" on 5.1.01
+small "Tu BiShvat" on 8.02.01
+small "Fast: Ester" on 8.03.01
+small "Purim" on 9.3.01
+small "Passover" on 8.4.01
+small "Chol Hamoed" on 9.4.01 length 5
+small "2nd Passover" on 14.4.01
+small "Holocaust Rememberance day" on 19.4.01
+small "Memorial day for the IDF Soldiers" on 25.4.01
+small "Independence day" on 26.4.01
+small "Lag BaOmer" on 11.5.01
+small "Jerusalem day" on 21.5.01
+small "Shavuot" on 28.5.01
+small "Fast: 17th of Tamuz" on 08.07.01
+small "Fast: 9th of Av" on 29.07.01
+small "Rosh Hashana" on 18.9.01 length 2
+small "Fast: Gdalya" on 20.9.01
+small "Yom Kippur" on 27.9.01
+small "Succot" on 2.10.01
+small "Chol Hamoed Succot" on 3.10.01 length 6
+small "Simchat Torah" on 9.10.01
+

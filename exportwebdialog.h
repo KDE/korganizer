@@ -17,10 +17,8 @@ class QRadioButton;
 class QCheckBox;
 class QLineEdit;
 class QTextStream;
-class Event;
 class KConfig;
-class Todo;
-class Incidence;
+class HtmlExport;
 
 class ExportWebDialog : public KDialogBase
 {
@@ -45,16 +43,10 @@ class ExportWebDialog : public KDialogBase
     void setupTodoPage();
     void setupAdvancedPage();
 
-    void createHtmlEventList (QTextStream *ts);
-    void createHtmlTodoList (QTextStream *ts);
-    void createHtmlTodo (QTextStream *ts,Todo *todo);
-    void createHtmlEvent (QTextStream *ts,Event *event,QDate date);
-
-    void formatHtmlCategories (QTextStream *ts,Incidence *event);
-    void formatHtmlAttendees (QTextStream *ts,Incidence *event);
-
   private:
     CalObject *mCalendar;
+
+    HtmlExport *mExport;
 
     KConfig *mConfig;
   

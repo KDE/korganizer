@@ -46,7 +46,8 @@ libkorganizer_la_SOURCES =  outgoingdialog_base.ui \
 	koarchivedlg.cpp \
 	vcaldrag.cpp komailclient.cpp kotodoview.cpp \
         kobaseview.cpp kolistview.cpp \
-	koapp.cpp exportwebdialog.cpp korganizer_part.cpp korganizer.cpp \
+        exportwebdialog.cpp htmlexport.cpp \
+        koapp.cpp korganizer_part.cpp korganizer.cpp \
         kprefsdialog.cpp koprefsdialog.cpp koeventeditor.cpp \
         kotodoeditor.cpp koprefs.cpp koeventviewer.cpp kowindowlist.cpp \
         koeditorgeneralevent.cpp koeditorgeneraltodo.cpp koeditordetails.cpp \
