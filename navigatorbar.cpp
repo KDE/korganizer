@@ -56,15 +56,6 @@ void ActiveLabel::mouseReleaseEvent( QMouseEvent * )
 NavigatorBar::NavigatorBar( QWidget *parent, const char *name )
   : QWidget( parent, name ), mHasMinWidth( false )
 {
-  QBoxLayout *topLayout = new QHBoxLayout( this );
-
-  // Set up the control buttons and date label
-  mCtrlFrame = new QFrame( this );
-  mCtrlFrame->setFrameStyle( QFrame::Panel | QFrame::Raised );
-  mCtrlFrame->setLineWidth( 1 );
-
-  topLayout->addWidget( mCtrlFrame );
-
   QFont tfont = font();
   tfont.setPointSize( 10 );
   tfont.setBold( false );
@@ -73,45 +64,43 @@ NavigatorBar::NavigatorBar( QWidget *parent, const char *name )
 
   QPixmap pix;
   // Create backward navigation buttons
-  mPrevYear = new QPushButton( mCtrlFrame );
+  mPrevYear = new QPushButton( this );
   pix = KOGlobals::self()->smallIcon( isRTL ? "2rightarrow" : "2leftarrow" );
   mPrevYear->setPixmap( pix );
   mPrevYear->setSizePolicy( QSizePolicy::Fixed, QSizePolicy::Fixed );
   QToolTip::add( mPrevYear, i18n("Previous year") );
 
   pix = KOGlobals::self()->smallIcon( isRTL ? "1rightarrow" : "1leftarrow");
-  mPrevMonth = new QPushButton( mCtrlFrame );
+  mPrevMonth = new QPushButton( this );
   mPrevMonth->setPixmap( pix );
   mPrevMonth->setSizePolicy( QSizePolicy::Fixed, QSizePolicy::Fixed );
   QToolTip::add( mPrevMonth, i18n("Previous month") );
 
   // Create forward navigation buttons
   pix = KOGlobals::self()->smallIcon( isRTL ? "1leftarrow" : "1rightarrow");
-  mNextMonth = new QPushButton( mCtrlFrame );
+  mNextMonth = new QPushButton( this );
   mNextMonth->setPixmap( pix );
   mNextMonth->setSizePolicy( QSizePolicy::Fixed, QSizePolicy::Fixed );
   QToolTip::add( mNextMonth, i18n("Next month") );
 
   pix = KOGlobals::self()->smallIcon( isRTL ? "2leftarrow" : "2rightarrow");
-  mNextYear = new QPushButton( mCtrlFrame );
+  mNextYear = new QPushButton( this );
   mNextYear->setPixmap( pix );
   mNextYear->setSizePolicy( QSizePolicy::Fixed, QSizePolicy::Fixed );
   QToolTip::add( mNextYear, i18n("Next year") );
 
   // Create month name button
-  mMonth = new ActiveLabel( mCtrlFrame );
+  mMonth = new ActiveLabel( this );
   mMonth->setFont( tfont );
   mMonth->setAlignment( AlignCenter );
   mMonth->setMinimumHeight( mPrevYear->sizeHint().height() );
   QToolTip::add( mMonth, i18n("Select a month") );
 
   // set up control frame layout
-  QBoxLayout *ctrlLayout = new QHBoxLayout( mCtrlFrame, 1 );
+  QBoxLayout *ctrlLayout = new QHBoxLayout( this, 0, 4 );
   ctrlLayout->addWidget( mPrevYear, 3 );
   ctrlLayout->addWidget( mPrevMonth, 3 );
-  ctrlLayout->addSpacing( 2 );
   ctrlLayout->addWidget( mMonth, 3 );
-  ctrlLayout->addSpacing( 2 );
   ctrlLayout->addWidget( mNextMonth, 3 );
   ctrlLayout->addWidget( mNextYear, 3 );
 

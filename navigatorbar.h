@@ -69,9 +69,8 @@ class NavigatorBar: public QWidget
 
   private:
     bool mHasMinWidth;
-  
+
     QDate mDate;
-    QFrame *mCtrlFrame;
 
     QPushButton *mPrevYear;
     QPushButton *mPrevMonth;
