@@ -140,11 +140,6 @@ class KOrganizer : public KParts::MainWindow, virtual public KOrganizerIface, pu
     /** Open toolbar configuration dialog */
     void configureToolbars();
 
-    /** toggle the appearance of the tool bars. */
-    void toggleToolBars(bool);
-
-    void toggleToolBar();
-
     void toggleStatusBar();
 
     void statusBarPressed(int);
@@ -154,8 +149,6 @@ class KOrganizer : public KParts::MainWindow, virtual public KOrganizerIface, pu
 
     void setNumIncoming(int);
     void setNumOutgoing(int);
-
-    void slotNewToolbarConfig();
 
     void newMainWindow( const KURL & );
 
@@ -179,8 +172,6 @@ class KOrganizer : public KParts::MainWindow, virtual public KOrganizerIface, pu
     CalendarView *mCalendarView;  // Main view widget
     KOrg::Part::List mParts; // List of parts loaded
 
-    QPtrList<KAction> mToolBarToggles; // List of toolbar hiding toggle actions
-    KToggleAction *mToolBarToggleAction;
     KToggleAction *mStatusBarAction;
 
     // status bar ids

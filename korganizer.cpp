@@ -191,6 +191,8 @@ KOrganizer::KOrganizer( bool document, const char *name )
 
   mActionManager->loadParts();
   kdDebug(5850) << "KOrganizer::KOrganizer() done" << endl;
+
+  setStandardToolBarMenuEnabled( true );
 }
 
 KOrganizer::~KOrganizer()
@@ -268,17 +270,6 @@ void KOrganizer::initActions()
   applyMainWindowSettings(config);
 
   mStatusBarAction->setChecked(!statusBar()->isHidden());
-
-  QPtrListIterator<KToolBar> it = toolBarIterator();
-  for ( ; it.current() ; ++it ) {
-    KToggleAction *act = new KToggleAction(i18n("Show %1 Toolbar")
-                                           .arg((*it)->text()),0,
-                                           actionCollection(),(*it)->name());
-    connect( act,SIGNAL(toggled(bool)),SLOT(toggleToolBars(bool)));
-    act->setChecked(!(*it)->isHidden());
-    mToolBarToggles.append(act);
-  }
-  plugActionList("toolbartoggles",mToolBarToggles);
 }
 
 #if 0
@@ -340,34 +331,7 @@ void KOrganizer::configureToolbars()
   saveMainWindowSettings( KOGlobals::config(), "MainWindow" );
 
   KEditToolbar dlg(factory());
-  connect(&dlg,SIGNAL(newToolbarConfig()),this,SLOT(slotNewToolbarConfig()));
-
   dlg.exec();
-}
-
-void KOrganizer::slotNewToolbarConfig() // This is called when OK or Apply is clicked
-{
-  plugActionList("toolbartoggles",mToolBarToggles);
-}
-
-void KOrganizer::toggleToolBars(bool toggle)
-{
-  KToolBar *bar = toolBar(sender()->name());
-  if (bar) {
-    if (toggle) bar->show();
-    else bar->hide();
-  } else {
-    kdDebug(5850) << "KOrganizer::toggleToolBars(): Toolbar not found" << endl;
-  }
-}
-
-void KOrganizer::toggleToolBar()
-{
-  QPtrListIterator<KToolBar> it = toolBarIterator();
-  for ( ; it.current() ; ++it ) {
-    if (mToolBarToggleAction->isChecked()) (*it)->show();
-    else (*it)->hide();
-  }
 }
 
 void KOrganizer::toggleStatusBar()
