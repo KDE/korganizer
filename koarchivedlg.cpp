@@ -49,7 +49,7 @@ ArchiveDialog::ArchiveDialog(CalObject *cal,QWidget *parent, const char *name)
   (void)new QLabel(i18n("Archive file:"),fileBox);
   mArchiveFile = new KURLRequester (KOPrefs::instance()->mArchiveFile,fileBox);
   mArchiveFile->fileDialog()->setMode(KFile::File);
-  mArchiveFile->fileDialog()->setFilter("*vcs|vCalendar Files");
+  mArchiveFile->fileDialog()->setFilter(i18n("*.vcs|vCalendar Files"));
 }
 
 ArchiveDialog::~ArchiveDialog()
