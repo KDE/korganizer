@@ -952,67 +952,34 @@ void CalendarView::todoModified (Todo *event, Todo *oldEvent, int changed)
   }
   if (oldEvent) todoChanged( oldEvent, event );
 
-  mViewManager->updateView();
+//  mViewManager->updateView();
 }
 
 void CalendarView::appointment_show()
 {
-  Event *anEvent = 0;
-
-  Incidence *incidence = mViewManager->currentView()->selectedIncidences().first();
-
-  if (mViewManager->currentView()->isEventView()) {
-    if ( incidence && incidence->type() == "Event" ) {
-      anEvent = static_cast<Event *>(incidence);
-    }
-  }
-
-  if (!anEvent) {
+  Incidence *incidence = selectedIncidence();
+  if (incidence)
+    showIncidence( incidence );
+  else
     KNotifyClient::beep();
-    return;
-  }
-
-  showEvent(anEvent);
 }
 
 void CalendarView::appointment_edit()
 {
-  Event *anEvent = 0;
-
-  Incidence *incidence = mViewManager->currentView()->selectedIncidences().first();
-
-  if (mViewManager->currentView()->isEventView()) {
-    if ( incidence && incidence->type() == "Event" ) {
-      anEvent = static_cast<Event *>(incidence);
-    }
-  }
-
-  if (!anEvent) {
+  Incidence *incidence = selectedIncidence();
+  if (incidence)
+    editIncidence( incidence );
+  else
     KNotifyClient::beep();
-    return;
-  }
-
-  editEvent(anEvent);
 }
 
 void CalendarView::appointment_delete()
 {
-  Event *anEvent = 0;
-
-  Incidence *incidence = mViewManager->currentView()->selectedIncidences().first();
-
-  if (mViewManager->currentView()->isEventView()) {
-    if ( incidence && incidence->type() == "Event" ) {
-      anEvent = static_cast<Event *>(incidence);
-    }
-  }
-
-  if (!anEvent) {
+  Incidence *incidence = selectedIncidence();
+  if (incidence)
+    deleteIncidence( incidence );
+  else
     KNotifyClient::beep();
-    return;
-  }
-
-  deleteEvent(anEvent);
 }
 
 void CalendarView::todo_unsub()
@@ -1045,8 +1012,6 @@ void CalendarView::deleteTodo(Todo *todo)
         } else {
           calendar()->deleteTodo(todo);
           todoDeleted( todo );
-          // TODO_RK: Needed?
-//          updateView();
         }
         break;
     } // switch
@@ -1057,8 +1022,6 @@ void CalendarView::deleteTodo(Todo *todo)
     } else {
       calendar()->deleteTodo(todo);
       todoDeleted( todo );
-      // TODO_RK: Needed?
-//      updateView();
     }
   }
 }
@@ -1217,13 +1180,9 @@ void CalendarView::schedule_publish(Incidence *incidence)
 {
   Event *event = 0;
   Todo *todo = 0;
-  if (incidence == 0) {
-    Incidence::List inclist = mViewManager->currentView()->selectedIncidences();
-    if (!inclist.isEmpty()) incidence = inclist.first();
-    if (incidence == 0) {
-      incidence = mTodoList->selectedIncidences().first();
-    }
-  }
+  if (incidence == 0)
+    incidence = selectedIncidence();
+
   if ( incidence && incidence->type() == "Event" ) {
     event = static_cast<Event *>(incidence);
   } else {
@@ -1259,14 +1218,12 @@ void CalendarView::schedule_publish(Incidence *incidence)
       if (!dlg->addMessage(ev,Scheduler::Publish,publishdlg->addresses())) {
         delete(ev);
       }
-    } else {
-      if ( todo ) {
-        Todo *ev = new Todo(*todo);
-        ev->registerObserver(0);
-        ev->clearAttendees();
-        if (!dlg->addMessage(ev,Scheduler::Publish,publishdlg->addresses())) {
-          delete(ev);
-        }
+    } else  if ( todo ) {
+      Todo *ev = new Todo(*todo);
+      ev->registerObserver(0);
+      ev->clearAttendees();
+      if (!dlg->addMessage(ev,Scheduler::Publish,publishdlg->addresses())) {
+        delete(ev);
       }
     }
   }
@@ -1335,11 +1292,7 @@ void CalendarView::schedule(Scheduler::Method method, Incidence *incidence)
   Event *event = 0;
   Todo *todo = 0;
   if (incidence == 0) {
-    Incidence::List inclist = mViewManager->currentView()->selectedIncidences();
-    if (!inclist.isEmpty()) incidence = inclist.first();
-    if (incidence == 0) {
-      incidence = mTodoList->selectedIncidences().first();
-    }
+    incidence = selectedIncidence();
   }
   if ( incidence && incidence->type() == "Event" ) {
     event = static_cast<Event *>(incidence);
@@ -1381,8 +1334,8 @@ void CalendarView::schedule(Scheduler::Method method, Incidence *incidence)
       ev->addAttendee(menew,false);
     } else {
       if (to) {
-	todo->clearAttendees();
-	todo->addAttendee(menew,false);
+        todo->clearAttendees();
+        todo->addAttendee(menew,false);
       }
     }
   }
@@ -1390,6 +1343,7 @@ void CalendarView::schedule(Scheduler::Method method, Incidence *incidence)
   OutgoingDialog *dlg = mDialogManager->outgoingDialog();
   if (ev) {
     if ( !dlg->addMessage(ev,method) ) delete(ev);
+    if (to) delete(to);
   } else {
     if (to) {
       if ( !dlg->addMessage(to,method) ) delete(to);
