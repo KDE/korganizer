@@ -205,10 +205,16 @@ void KODayMatrix::updateView(QDate actdate)
       int tmp = actdate.daysTo(startdate);
       //kdDebug() << "Shift of Selection1: " << mSelStart << " - " << mSelEnd << " -> " << tmp << "(" << offset << ")" << endl;
       // shift selection if new one would be visible at least partly !
-      if (mSelStart+tmp < NUMDAYS && mSelEnd+tmp >= 0) {
-        mSelStart = mSelStart + tmp;
-        mSelEnd = mSelEnd + tmp;
-      }
+
+      	if (mSelStart+tmp < NUMDAYS && mSelEnd+tmp >= 0) {
+		// nested if is required for next X display pushed from a different month - correction requiered
+		// otherwise, for month forward and backward, it must be avoided
+                if( mSelStart > NUMDAYS || mSelStart < 0 )
+        	   mSelStart = mSelStart + tmp;
+                if( mSelEnd > NUMDAYS || mSelEnd < 0 )
+       			mSelEnd = mSelEnd + tmp;
+      }	
+
     }
 
     startdate = actdate;

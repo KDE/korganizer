@@ -381,6 +381,7 @@ void KDateNavigator::selectDates(const DateList& dateList)
     m_fstDayOfWk = dayone.dayOfWeek();
 
     daymatrix->setSelectedDaysFrom(*(dateList.begin()), *(--dateList.end()));
+
     updateDates();
     updateView();
   }

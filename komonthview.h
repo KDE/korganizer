@@ -35,6 +35,8 @@
 
 #include "koeventview.h"
 
+#include <calendarsystem/kcalendarsystem.h>
+
 class KNoScrollListBox: public QListBox
 {
     Q_OBJECT
@@ -84,8 +86,8 @@ class MonthViewItem: public QListBoxItem
     QPixmap mReplyPixmap;
 
     QPalette mPalette;
-    QDate mDate;    
-    
+    QDate mDate;
+
     Incidence *mIncidence;
 };
 
@@ -96,8 +98,8 @@ class MonthViewCell : public QWidget
 {
     Q_OBJECT
   public:
-    MonthViewCell( KOMonthView * );
-    
+    MonthViewCell( KOMonthView *, KCalendarSystem* calSys );
+
     void setDate( const QDate & );
     QDate date() const;
 
@@ -145,6 +147,8 @@ class MonthViewCell : public QWidget
     QSize mLabelSize;
     QPalette mHolidayPalette;
     QPalette mStandardPalette;
+    
+    KCalendarSystem* mCalendarSystem;
 };
 
 
@@ -152,7 +156,7 @@ class KOMonthView: public KOEventView
 {
     Q_OBJECT
   public:
-    KOMonthView(Calendar *cal, QWidget *parent = 0, const char *name = 0 );
+    KOMonthView(Calendar *cal, QWidget *parent = 0, const char *name = 0, KCalendarSystem* calSys = 0 );
     ~KOMonthView();
 
     /** Returns maximum number of days supported by the komonthview */
@@ -166,7 +170,7 @@ class KOMonthView: public KOEventView
 
     /** returns dates of the currently selected events */
     virtual DateList selectedDates();
-    
+
     virtual void printPreview(CalPrinter *calPrinter,
                               const QDate &, const QDate &);
 
@@ -192,13 +196,13 @@ class KOMonthView: public KOEventView
 
     void viewChanged();
     void updateDayLabels();
-   
+
   private:
     int mDaysPerWeek;
     int mNumWeeks;
     int mNumCells;
     bool mWeekStartsMonday;
-    
+
     QPtrVector<MonthViewCell> mCells;
     QPtrVector<QLabel> mDayLabels;
 
@@ -210,6 +214,8 @@ class KOMonthView: public KOEventView
     MonthViewCell *mSelectedCell;
 
     KOEventPopupMenu *mContextMenu;
+
+    KCalendarSystem* mCalendarSystem;
 };
 
 #endif

@@ -176,10 +176,13 @@ int MonthViewItem::width(const QListBox *lb) const
 }
 
 
-MonthViewCell::MonthViewCell( KOMonthView *parent )
+MonthViewCell::MonthViewCell( KOMonthView *parent, KCalendarSystem* calSys )
   : QWidget( parent ),
     mMonthView( parent )
 {
+
+  mCalendarSystem = calSys;
+
   QVBoxLayout *topLayout = new QVBoxLayout( this );
 
   mLabel = new QLabel( this );
@@ -194,7 +197,7 @@ MonthViewCell::MonthViewCell( KOMonthView *parent )
   topLayout->addWidget( mItemList );
 
   mLabel->raise();
-  
+
   mStandardPalette = palette();
 
   enableScrollBars( false );
@@ -219,16 +222,16 @@ void MonthViewCell::setDate( const QDate &date )
   mDate = date;
 
   QString text;
-  if ( date.day() == 1 ) {
-    text = KGlobal::locale()->monthName( date.month(), true ) + " ";
+   if ( mCalendarSystem->day( date ) == 1 ) {
+     text = mCalendarSystem->monthName( date, true ) + " ";
     QFontMetrics fm( mLabel->font() );
     mLabel->resize( mLabelSize + QSize( fm.width( text ), 0 ) );
   } else {
     mLabel->resize( mLabelSize );
   }
-  text += QString::number( mDate.day() );
+  text += QString::number( mCalendarSystem->day(mDate) );
   mLabel->setText( text );
-  
+
   resizeEvent( 0 );
 }
 
@@ -451,11 +454,13 @@ void MonthViewCell::selection( QListBoxItem *item )
   mMonthView->setSelectedCell( this );
 }
 
-KOMonthView::KOMonthView(Calendar *calendar, QWidget *parent, const char *name)
+KOMonthView::KOMonthView(Calendar *calendar, QWidget *parent, const char *name, KCalendarSystem* calSys )
     : KOEventView( calendar, parent, name ),
       mDaysPerWeek( 7 ), mNumWeeks( 6 ), mNumCells( mDaysPerWeek * mNumWeeks ),
       mShortDayLabels( false ), mWidthLongDayLabel( 0 ), mSelectedCell( 0 )
 {
+  mCalendarSystem = calSys;
+
   mCells.setAutoDelete( true );
 
   QGridLayout *dayLayout = new QGridLayout( this );
@@ -483,7 +488,7 @@ KOMonthView::KOMonthView(Calendar *calendar, QWidget *parent, const char *name)
   mCells.resize( mNumCells );
   for( row = 0; row < mNumWeeks; ++row ) {
     for( col = 0; col < mDaysPerWeek; ++col ) {
-      MonthViewCell *cell = new MonthViewCell( this );
+      MonthViewCell *cell = new MonthViewCell( this, mCalendarSystem );
       mCells.insert( row * mDaysPerWeek + col, cell );
       dayLayout->addWidget( cell, row + 1, col );
 
@@ -557,10 +562,10 @@ void KOMonthView::updateConfig()
   mWidthLongDayLabel = 0;
 
   for (int i = 0; i < 7; i++) {
-    int width = fontmetric.width(KGlobal::locale()->weekDayName(i+1));
+    int width = fontmetric.width(mCalendarSystem->weekDayName(i+1));
     if ( width > mWidthLongDayLabel ) mWidthLongDayLabel = width;
   }
-  
+
   updateDayLabels();
 
   for (uint i = 0; i < mCells.count(); ++i) {
@@ -574,10 +579,11 @@ void KOMonthView::updateDayLabels()
 
   for (int i = 0; i < 7; i++) {
     if (mWeekStartsMonday) {
-      mDayLabels[i]->setText(KGlobal::locale()->weekDayName(i+1,mShortDayLabels));
+      mDayLabels[i]->setText(mCalendarSystem->weekDayName(i+1,mShortDayLabels));
     } else {
-      if (i==0) mDayLabels[i]->setText(KGlobal::locale()->weekDayName(7,mShortDayLabels));
-      else mDayLabels[i]->setText(KGlobal::locale()->weekDayName(i,mShortDayLabels));
+       if (i==0) mDayLabels[i]->setText(mCalendarSystem->weekDayName(7,mShortDayLabels));
+       else mDayLabels[i]->setText(mCalendarSystem->weekDayName(i,mShortDayLabels));
+
     }
   }
 }
@@ -590,7 +596,7 @@ void KOMonthView::showDates(const QDate &start, const QDate &)
 
   int startWeekDay = mWeekStartsMonday ? 1 : 7;
 
-  while( mStartDate.dayOfWeek() != startWeekDay ) {
+   while( mCalendarSystem->dayOfTheWeek(mStartDate) != startWeekDay ) {
     mStartDate = mStartDate.addDays( -1 );
   }
 
@@ -598,12 +604,12 @@ void KOMonthView::showDates(const QDate &start, const QDate &)
   uint i;
   for( i = 0; i < mCells.size(); ++i ) {
     QDate date = mStartDate.addDays( i );
-    if ( date.day() == 1 ) {
+    if ( mCalendarSystem->day(date) == 1 ) {
       primary = !primary;
     }
     mCells[i]->setPrimary( primary );
 
-    if ( date.dayOfWeek() == 7 ) {
+    if ( mCalendarSystem->dayOfTheWeek(date) == 7 ) {
       mCells[i]->setHoliday( true );
     } else {
       mCells[i]->setHoliday( false );

@@ -187,7 +187,7 @@ void KOViewManager::showWhatsNextView()
                                          "KOViewManager::WhatsNextView");
     addView(mWhatsNextView);
   }
-  
+
   showView(mWhatsNextView);
 }
 
@@ -292,7 +292,7 @@ void KOViewManager::showNextXView()
 void KOViewManager::showMonthView()
 {
   if (!mMonthView) {
-    mMonthView = new KOMonthView(mMainView->calendar(), mMainView->viewStack(), "KOViewManager::MonthView");
+    mMonthView = new KOMonthView(mMainView->calendar(), mMainView->viewStack(), "KOViewManager::MonthView", mMainView->calendarSystem());
     addView(mMonthView);
 
     connect(mMonthView, SIGNAL(datesSelected(const DateList &)),
