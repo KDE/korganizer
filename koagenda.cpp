@@ -451,10 +451,10 @@ bool KOAgenda::eventFilter_key( QObject *, QKeyEvent *ke )
         if ( !mTypeAhead ) {
           mTypeAhead = true;
           if ( mSelectionHeight > 0 ) {
-            emit newEventSignal( mSelectionCellX, mSelectionYTop / mGridSpacingY,
+            emit newEventSignal( mSelectionCellX, (int)(mSelectionYTop / mGridSpacingY),
                                  mSelectionCellX,
-                                 ( mSelectionYTop + mSelectionHeight ) /
-                                 mGridSpacingY );
+                                 (int)( ( mSelectionYTop + mSelectionHeight ) /
+                                 mGridSpacingY ) );
           } else {
             emit newEventSignal();
           }
