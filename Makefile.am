@@ -9,6 +9,7 @@ INCLUDES = \
   -I$(top_srcdir)/libkdepim \
   -I$(top_srcdir)/mimelib \
   -I$(top_srcdir)/ktnef \
+  -I$(top_srcdir)/certmanager/lib/ \
   -I$(top_srcdir) \
   $(all_includes)
 
