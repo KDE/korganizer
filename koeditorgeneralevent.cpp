@@ -471,17 +471,20 @@ void KOEditorGeneralEvent::readEvent(Event *event)
   if (alarmButton->isChecked()) {
     alarmStuffEnable(true);
     tmpDT = event->alarm()->time();
-    i = tmpDT.secsTo(currStartDateTime);
-    i = i / 60; // make minutes
-    if (i % 60 == 0) { // divides evenly into hours?
-      i = i / 60;
-      alarmIncrCombo->setCurrentItem(1);
+    if (tmpDT.isValid()) {
+      i = tmpDT.secsTo(currStartDateTime);
+      i = i / 60; // make minutes
+      if (i % 60 == 0) { // divides evenly into hours?
+        i = i / 60;
+        alarmIncrCombo->setCurrentItem(1);
+      }
+      if (i % 24 == 0) { // divides evenly into days?
+        i = i / 24;
+        alarmIncrCombo->setCurrentItem(2);
+      }
+    } else {
+      i = 5;
     }
-    if (i % 24 == 0) { // divides evenly into days?
-      i = i / 24;
-      alarmIncrCombo->setCurrentItem(2);
-    }
-
     alarmTimeEdit->setText(QString::number(i));
 
     if (!event->alarm()->programFile().isEmpty()) {
