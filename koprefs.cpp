@@ -48,7 +48,7 @@ KOPrefs::KOPrefs() :
 
   KPrefsItem::setCurrentGroup("AlarmDaemon");
 
-  addPrefsItem(new KPrefsItemBool("Autostart",&mAlarmdAutostart,false));
+  addPrefsItem(new KPrefsItemBool("Autostart",&mAlarmdAutostart,true));
 
   KPrefsItem::setCurrentGroup("Calendar");
 
