@@ -90,10 +90,12 @@ NavigatorBar::NavigatorBar( const QDate & date, QWidget *parent, const char *nam
   int maxwidth = 0;
   QFontMetrics fm = mDateLabel->fontMetrics();
 
-  for( i = 1; i <= KOGlobals::self()->calendarSystem()->monthsInYear(date);
-      ++i ) {
-    int width = fm.width( KOGlobals::self()->calendarSystem()->monthName(i,
-        KOGlobals::self()->calendarSystem()->year(date) ) + " 2000" );
+  const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
+  for( i = 1; i <= calSys->monthsInYear(date); ++i ) {
+    QString dtstr(i18n("monthname year", "%1 %2"));
+    dtstr=dtstr.arg( calSys->monthName( i, calSys->year(date) ) )
+          .arg( calSys->year( date ) );
+    int width = fm.width( dtstr );
     if ( width > maxwidth ) maxwidth = width;
   }
   mDateLabel->setMinimumWidth( maxwidth );
@@ -128,8 +130,9 @@ void NavigatorBar::selectDates( const KCal::DateList &dateList )
     const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
 
     // compute the label at the top of the navigator
-    QString dtstr = calSys->monthName( date ) + " " +
-                    QString::number( calSys->year( date ) );
+    QString dtstr(i18n("monthname year", "%1 %2"));
+    dtstr=dtstr.arg( calSys->monthName( date ) )
+          .arg( calSys->year( date ) );
 
     mDateLabel->setText( dtstr );
   }
