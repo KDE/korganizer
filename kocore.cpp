@@ -331,7 +331,7 @@ KCal::CalendarResources *KOCore::calendarResources()
       QString resourceName;
       if ( fileName.isEmpty() ) {
         fileName = locateLocal( "data", "korganizer/std.ics" );
-        resourceName = i18n("Default KOrganizer resource");
+        resourceName = i18n("Default Calendar");
       } else {
         resourceName = i18n("Active Calendar");
       }
