@@ -52,6 +52,7 @@
 #include "kdateedit.h"
 #include "koprefs.h"
 #include "htmlexport.h"
+#include <qpushbutton.h>
 
 ExportWebDialog::ExportWebDialog (Calendar *cal, QWidget *parent,
                                   const char *name) :
