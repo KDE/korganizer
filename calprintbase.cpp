@@ -54,12 +54,14 @@ int CalPrintBase::mSubHeaderHeight=20;
 int CalPrintBase::mMargin=36;
 
 
-class CalPrintBase::todoParentStart
+class CalPrintBase::TodoParentStart
 {
   public:
+    TodoParentStart( QRect pt = QRect(), bool page = true )
+      : mRect( pt ), mSamePage( page ) {}
+
     QRect mRect;
     bool mSamePage;
-    todoParentStart(QRect pt=QRect(),bool page=true):mRect(pt),mSamePage(page) {}
 };
 
 
@@ -729,7 +731,7 @@ void CalPrintBase::drawMonth(QPainter &p, const QDate &qd, bool weeknumbers,
 void CalPrintBase::drawTodo( int &count, Todo * item, QPainter &p, bool connectSubTodos,
     bool desc, int pospriority, int possummary, int posDueDt, int level,
     int x, int &y, int width, int &height, int pageHeight,
-    todoParentStart *r )
+    TodoParentStart *r )
 {
   QString outStr;
   KLocale *local = KGlobal::locale();
@@ -738,10 +740,10 @@ void CalPrintBase::drawTodo( int &count, Todo * item, QPainter &p, bool connectS
   int posdue=posDueDt;
   if (posdue<0) posdue=x+width;
   QRect rect;
-  todoParentStart startpt;
+  TodoParentStart startpt;
   // This list keeps all starting points of the parent todos so the connection
   // lines of the tree can easily be drawn (needed if a new page is started)
-  static QPtrList<todoParentStart> startPoints;
+  static QPtrList<TodoParentStart> startPoints;
   if (level<1) {
     startPoints.clear();
   }
@@ -759,7 +761,7 @@ void CalPrintBase::drawTodo( int &count, Todo * item, QPainter &p, bool connectS
   if ( rect.bottom() > y+height) {
     // first draw the connection lines from parent todos:
     if (level > 0 && connectSubTodos) {
-      todoParentStart*rct;
+      TodoParentStart *rct;
       for ( rct = startPoints.first(); rct; rct = startPoints.next() ) {
         int start;
         int center = rct->mRect.left() + (rct->mRect.width()/2);
