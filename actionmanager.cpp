@@ -172,7 +172,7 @@ void ActionManager::createCalendarResources()
   // Construct the groupware object
   KOGroupware::create( mCalendarView, mCalendarResources );
 
-  ResourceViewFactory factory( manager, mCalendarView );
+  ResourceViewFactory factory( mCalendarResources, mCalendarView );
   mCalendarView->addExtension( &factory );
 
   connect( mCalendarResources, SIGNAL( calendarChanged() ),

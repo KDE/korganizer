@@ -28,6 +28,7 @@
 #include "calendarview.h"
 
 #include <libkcal/resourcecalendar.h>
+#include <libkcal/calendarresources.h>
 
 #include <klistview.h>
 
@@ -40,13 +41,13 @@ class ResourceView;
 class ResourceViewFactory : public CalendarViewExtension::Factory
 {
   public:
-    ResourceViewFactory( KCal::CalendarResourceManager *manager,
+    ResourceViewFactory( KCal::CalendarResources *calendar,
                          CalendarView *view );
 
     CalendarViewExtension *create( QWidget * );
 
   private:
-    KCal::CalendarResourceManager *mManager;
+    KCal::CalendarResources *mCalendar;
     CalendarView *mView;
 };
 
@@ -81,6 +82,9 @@ class ResourceView : public CalendarViewExtension
     void updateView();
 
     void emitResourcesChanged();
+
+  public slots:
+    void addResourceItem( ResourceCalendar * );
 
   signals:
     void resourcesChanged();

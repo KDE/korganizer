@@ -38,19 +38,21 @@
 
 using namespace KCal;
 
-ResourceViewFactory::ResourceViewFactory( KCal::CalendarResourceManager *manager,
+ResourceViewFactory::ResourceViewFactory( KCal::CalendarResources *calendar,
                                           CalendarView *view )
 {
-  mManager = manager;
+  mCalendar = calendar;
   mView = view;
 }
 
 CalendarViewExtension *ResourceViewFactory::create( QWidget *parent )
 {
-  ResourceView *view = new ResourceView( mManager, parent );
+  ResourceView *view = new ResourceView( mCalendar->resourceManager(), parent );
   view->updateView();
   QObject::connect( view, SIGNAL( resourcesChanged() ),
                     mView, SLOT( updateView() ) );
+  QObject::connect( mCalendar, SIGNAL( signalResourceAdded( ResourceCalendar * ) ),
+                    view, SLOT( addResourceItem( ResourceCalendar * ) ) );
 
   return view;
 }
@@ -117,7 +119,7 @@ void ResourceView::updateView()
 
   KCal::CalendarResourceManager::Iterator it;
   for( it = mManager->begin(); it != mManager->end(); ++it ) {
-    new ResourceItem(  (*it), this, mListView );
+    addResourceItem( *it );
   }
 }
 
@@ -145,18 +147,23 @@ void ResourceView::addResource()
     return;
   }
 
-  resource->setResourceName( type + "-resource" );
+  resource->setResourceName( i18n("%1 resource").arg( type ) );
 
   KRES::ConfigDialog dlg( this, QString("calendar"), resource,
                           "KRES::ConfigDialog" );
 
   if ( dlg.exec() ) {
     mManager->add( resource );
-    new ResourceItem( resource, this, mListView );
+    addResourceItem( resource );
   } else {
     delete resource;
     resource = 0;
   }
+}
+
+void ResourceView::addResourceItem( ResourceCalendar *resource )
+{
+  new ResourceItem( resource, this, mListView );
 }
 
 void ResourceView::removeResource()
@@ -182,7 +189,6 @@ void ResourceView::removeResource()
 
   mListView->takeItem( item );
   delete item;
-
 }
 
 void ResourceView::editResource()
@@ -200,7 +206,7 @@ void ResourceView::editResource()
   if ( dlg.exec() ) {
     rItem->setText( 0, resource->resourceName() );
 
-    mManager->resourceChanged( resource );
+    mManager->change( resource );
   }
 }
 
