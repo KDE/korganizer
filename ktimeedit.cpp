@@ -101,7 +101,7 @@ KOTimeEdit::KOTimeEdit(QWidget *parent, QTime qt, const char *name)
   updateText();
   setFocusPolicy(QWidget::StrongFocus);
 
-  connect(this, SIGNAL(activated(int)), this, SLOT(activ(int)));
+  connect(this, SIGNAL(activated(int)), this, SLOT(active(int)));
   connect(this, SIGNAL(highlighted(int)), this, SLOT(hilit(int)));
   connect(this,SIGNAL(textChanged(const QString&)),this,SLOT(changedText()));
 }
@@ -148,7 +148,7 @@ void KOTimeEdit::setTime(QTime newTime)
   }
 }
 
-void KOTimeEdit::activ(int i)
+void KOTimeEdit::active(int i)
 {
     // The last entry, 23:59, is a special case
     if( i == count() - 1 )

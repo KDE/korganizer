@@ -163,7 +163,7 @@ void NavigatorBar::selectMonth()
 
   if ( (month = popup->exec(mMonth->mapToGlobal(QPoint(0, 0)), calSys->month(mDate) - 1)) == -1 ) {
     delete popup;
-    return;  // cancelled
+    return;  // canceled
   }
 
   emit goMonth(month);

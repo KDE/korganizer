@@ -47,7 +47,7 @@ class Entry
     QString author() const;
     
     void setLicence( const QString & );
-    QString licence() const;
+    QString license() const;
 
     void setSummary( const QString &, const QString &lang = QString::null );
     QString summary( const QString &lang = QString::null ) const;

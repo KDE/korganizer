@@ -170,7 +170,7 @@ void KOWhatsNextView::updateView()
     mText += "</ul>\n";
   }
 
-  int replys = 0;
+  int replies = 0;
   events = calendar()->events(QDate::currentDate(), QDate(2975,12,6));
   Event::List::ConstIterator it2;
   for( it2 = events.begin(); it2 != events.end(); ++it2 ) {
@@ -178,7 +178,7 @@ void KOWhatsNextView::updateView()
     Attendee *me = ev->attendeeByMails(KOPrefs::instance()->mAdditionalMails,KOPrefs::instance()->email());
     if (me!=0) {
       if (me->status()==Attendee::NeedsAction && me->RSVP()) {
-        if (replys == 0) {
+        if (replies == 0) {
           mText += "<p></p>";
           kil.loadIcon("reply",KIcon::NoGroup,22,KIcon::DefaultState,ipath);
           mText += "<h2><img src=\"";
@@ -187,7 +187,7 @@ void KOWhatsNextView::updateView()
           mText += i18n("Events and To-Dos that need a reply:") + "</h2>\n";
           mText += "<table>\n";
         }
-        replys++;
+        replies++;
         appendEvent(ev,true);
       }
     }
@@ -199,7 +199,7 @@ void KOWhatsNextView::updateView()
     Attendee *me = to->attendeeByMails(KOPrefs::instance()->mAdditionalMails,KOPrefs::instance()->email());
     if (me!=0) {
       if (me->status()==Attendee::NeedsAction && me->RSVP()) {
-        if (replys == 0) {
+        if (replies == 0) {
           mText += "<p></p>";
           kil.loadIcon("reply",KIcon::NoGroup,22,KIcon::DefaultState,ipath);
           mText += "<h2><img src=\"";
@@ -208,13 +208,13 @@ void KOWhatsNextView::updateView()
           mText += i18n("Events and To-Dos that need a reply:") + "</h2>\n";
           mText += "<table>\n";
         }
-        replys++;
+        replies++;
         appendEvent(to);
       }
     }
-    kdDebug () << "check for todo-replys..." << endl;
+    kdDebug () << "check for todo-replies..." << endl;
   }
-  if (replys > 0 ) mText += "</table>\n";
+  if (replies > 0 ) mText += "</table>\n";
 
 
   mText += "</td></tr>\n</table>\n";

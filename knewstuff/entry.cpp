@@ -71,12 +71,12 @@ QString Entry::author() const
 }
 
 
-void Entry::setLicence( const QString &licence )
+void Entry::setLicence( const QString &license )
 {
-  mLicence = licence;
+  mLicence = license;
 }
 
-QString Entry::licence() const
+QString Entry::license() const
 {
   return mLicence;
 }
@@ -210,7 +210,7 @@ void Entry::parseDomElement( const QDomElement &element )
     QDomElement e = n.toElement();
     if ( e.tagName() == "name" ) setName( e.text().stripWhiteSpace() );
     if ( e.tagName() == "author" ) setAuthor( e.text().stripWhiteSpace() );
-    if ( e.tagName() == "licence" ) setLicence( e.text().stripWhiteSpace() );
+    if ( e.tagName() == "licence" ) setLicense( e.text().stripWhiteSpace() );
     if ( e.tagName() == "summary" ) {
       QString lang = e.attribute( "lang " );
       setSummary( e.text().stripWhiteSpace(), lang );
@@ -242,7 +242,7 @@ QDomElement Entry::createDomElement( QDomDocument &doc,
 
   addElement( doc, entry, "name", name() );
   addElement( doc, entry, "author", author() );
-  addElement( doc, entry, "licence", licence() );
+  addElement( doc, entry, "licence", license() );
   addElement( doc, entry, "version", version() );
   addElement( doc, entry, "release", QString::number( release() ) );
   addElement( doc, entry, "rating", QString::number( rating() ) );

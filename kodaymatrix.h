@@ -80,7 +80,7 @@ private:
  *  Cornelius thought this was a waste of memory and a lot of overhead.
  *  In addition the selection was not very intuitive so I decided to rewrite it using a QFrame
  *  that draws the labels and allows for dragging selection while maintaining nearly full
- *  compatibility in behaviour with its predecessor.
+ *  compatibility in behavior with its predecessor.
  *
  *  The following functionality has been changed:
  *
@@ -296,7 +296,7 @@ private:
     DynamicTip* mToolTip;
 
 
-    /** default background colour of the matrix. */
+    /** default background color of the matrix. */
     QColor    mDefaultBackColor;
 
     /** default text color of the matrix. */
@@ -314,7 +314,7 @@ private:
     /** default width of the frame drawn around today if it is visible in the matrix. */
     int       mTodayMarginWidth;
 
-    /** stores actual size of each day in the widget so that I dont need to ask this data
+    /** stores actual size of each day in the widget so that I don't need to ask this data
      *  on every repaint.
      */
     QRect     daysize;

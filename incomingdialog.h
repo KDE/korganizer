@@ -48,7 +48,7 @@ class ScheduleItemIn : public QListViewItem
 
 
 /**
-  This class provides the initialisation of a ScheduleItemIn for calendar
+  This class provides the initialization of a ScheduleItemIn for calendar
   components using the Incidence::Visitor.
 */
 class ScheduleItemVisitor : public Incidence::Visitor

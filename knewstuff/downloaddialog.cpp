@@ -293,7 +293,7 @@ void DownloadDialog::slotDetails()
 		"Summary: %9\n"
 		).arg(e->name()
 		).arg(e->author()
-		).arg(e->licence()
+		).arg(e->license()
 		).arg(e->version()
 		).arg(e->release()
 		).arg(e->rating()
@@ -386,13 +386,13 @@ void DownloadDialog::slotSelected()
 		if(!e->preview().isValid())
 		{
 			m_rt->setText(QString("<b>%1</b><br>%2<br>%3<br><br><i>%4</i><br>(%5)").arg(
-				e->name()).arg(e->author()).arg(e->releaseDate().toString()).arg(e->summary()).arg(e->licence()));
+				e->name()).arg(e->author()).arg(e->releaseDate().toString()).arg(e->summary()).arg(e->license()));
 		}
 		else
 		{
 			KIO::NetAccess::download(e->preview(), tmp);
 			m_rt->setText(QString("<b>%1</b><br>%2<br>%3<br><br><img src='%4'><br><i>%5</i><br>(%6)").arg(
-				e->name()).arg(e->author()).arg(e->releaseDate().toString()).arg(tmp).arg(e->summary()).arg(e->licence()));
+				e->name()).arg(e->author()).arg(e->releaseDate().toString()).arg(tmp).arg(e->summary()).arg(e->license()));
 		}
 	}
 }

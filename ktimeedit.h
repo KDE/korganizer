@@ -73,7 +73,7 @@ class KOTimeEdit : public QComboBox
     void setTime(QTime qt);
 
   protected slots:
-    void activ(int);
+    void active(int);
     void hilit(int);
     void changedText();
 
