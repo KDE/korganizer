@@ -905,8 +905,7 @@ void KOAgenda::endItemAction()
       placeItem = mActionItem;
     }
 
-    // Notify about change, so that agenda view can update the event data
-    emit itemModified( placeItem );
+    KOAgendaItem *modif = placeItem;
 
     QPtrList<KOAgendaItem> oldconflictItems = placeItem->conflictItems();
     KOAgendaItem *item;
@@ -918,6 +917,9 @@ void KOAgenda::endItemAction()
       placeSubCells( placeItem );
       placeItem = placeItem->nextMultiItem();
     }
+
+    // Notify about change, so that agenda view can update the event data
+    emit itemModified( modif );
   }
 
   mScrollUpTimer.stop();
@@ -1304,7 +1306,7 @@ KOAgendaItem *KOAgenda::insertItem( Incidence *event, QDate qd, int X, int YTop,
   }
 
   agendaItem->resize( int( ( X + 1 ) * mGridSpacingX ) -
-                      int( X * mGridSpacingX ), 
+                      int( X * mGridSpacingX ),
                       int( YTop * mGridSpacingY ) -
                       int( ( YBottom + 1 ) * mGridSpacingY ) );
   agendaItem->setCellXY( X, YTop, YBottom );
@@ -1463,7 +1465,7 @@ bool KOAgenda::removeAgendaItem( KOAgendaItem *item )
         confitem = conflictItems.next() ) {
     // the item itself is also in its own conflictItems list!
     if ( confitem != thisItem ) placeSubCells(confitem);
-    
+
   }
   mItemsToDelete.append( thisItem );
   QTimer::singleShot( 0, this, SLOT( deleteItemsToDelete() ) );
@@ -1551,7 +1553,7 @@ void KOAgenda::popupAlarm()
   }
   Incidence*incidence = mClickedItem->incidence();
   Incidence*oldincidence = incidence->clone();
-  
+
 // TODO: deal correctly with multiple alarms
   Alarm::List alarms = incidence->alarms();
   Alarm::List::ConstIterator it;
