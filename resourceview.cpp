@@ -123,7 +123,7 @@ void ResourceView::addResource()
   // Create new resource
   ResourceCalendar *resource = mManager->createResource( type );
   if( !resource ) {
-    KMessageBox::error( this, i18n("Unable to create resource of type '%1'.")
+    KMessageBox::error( this, i18n("<qt>Unable to create resource of type <b>%1</b>.</qt>")
                               .arg( type ) );
     return;
   }
@@ -149,9 +149,9 @@ void ResourceView::removeResource()
   if ( !rItem )
     return;
 
-  int km = KMessageBox::warningYesNo(this,
-        i18n("Do you really want to delete the resource")+ " '" +
-             rItem->resource()->resourceName() + "'?" );
+  int km = KMessageBox::warningYesNo( this,
+        i18n("<qt>Do you really want to delete the resource <b>%1</b>?</qt>")
+        .arg( rItem->resource()->resourceName() ) );
   if ( km == KMessageBox::No ) return;
 
   if ( rItem->resource() == mManager->standardResource() ) {
