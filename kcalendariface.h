@@ -52,30 +52,39 @@ class KCalendarIface : public DCOPObject
                          const QCString& resource,
                          const QString& vCalIn ) = 0;
 
-    virtual void openEventEditor( QString text ) = 0;
-    virtual void openEventEditor( QString summary, QString description,
-                                  QString attachment ) = 0;
-    virtual void openEventEditor( QString summary, QString description,
-                                  QString attachment, QStringList attendees ) = 0;
+    virtual void openEventEditor( const QString& text ) = 0;
+    virtual void openEventEditor( const QString& summary,
+                                  const QString& description,
+                                  const QString& attachment ) = 0;
+    virtual void openEventEditor( const QString& summary,
+                                  const QString& description,
+                                  const QString& attachment,
+                                  const QStringList& attendees ) = 0;
 
-    virtual void openTodoEditor( QString text ) = 0;
-    virtual void openTodoEditor( QString summary, QString description,
-                                 QString attachment ) = 0;
-    virtual void openTodoEditor( QString summary, QString description,
-                                 QString attachment, QStringList attendees ) = 0;
-    virtual void openJournalEditor( QDate date ) = 0;
-    virtual void openJournalEditor( QString text, QDate date ) = 0;
-    virtual void openJournalEditor( QString text ) = 0;
+    virtual void openTodoEditor( const QString& text ) = 0;
+    virtual void openTodoEditor( const QString& summary,
+                                 const QString& description,
+                                 const QString& attachment ) = 0;
+    virtual void openTodoEditor( const QString& summary,
+                                 const QString& description,
+                                 const QString& attachment,
+                                 const QStringList& attendees ) = 0;
+
+    virtual void openJournalEditor( const QDate& date ) = 0;
+    virtual void openJournalEditor( const QString& text,
+                                    const QDate& date ) = 0;
+    virtual void openJournalEditor( const QString& text ) = 0;
    //TODO:
-   // virtual void openJournalEditor( QString summary, QString description,
-   //                                 QString attachment ) = 0;
+   // virtual void openJournalEditor( const QString& summary,
+   //                                 const QString& description,
+   //                                 const QString& attachment ) = 0;
 
     virtual void showJournalView() = 0;
     virtual void showTodoView() = 0;
     virtual void showEventView() = 0;
 
-    virtual void goDate( QDate date ) = 0;
-    virtual void goDate( QString date ) = 0;
+    virtual void goDate( const QDate& date ) = 0;
+    virtual void goDate( const QString& date ) = 0;
 };
 
 inline QDataStream& operator<<( QDataStream& str, const KCalendarIface::ResourceRequestReply& reply )

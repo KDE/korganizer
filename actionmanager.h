@@ -147,31 +147,38 @@ class ActionManager : public QObject, public KCalendarIface
                                                   const QCString& resource,
                                                   const QString& vCalIn );
 
-    void openEventEditor( QString );
-    void openEventEditor( QString summary, QString description,
-                          QString attachment );
-    void openEventEditor( QString summary, QString description,
-                          QString attachment, QStringList attendees );
+    void openEventEditor( const QString& );
+    void openEventEditor( const QString& summary,
+                          const QString& description,
+                          const QString& attachment );
+    void openEventEditor( const QString& summary,
+                          const QString& description,
+                          const QString& attachment,
+                          const QStringList& attendees );
 
-    void openTodoEditor( QString );
-    void openTodoEditor( QString summary, QString description,
-                         QString attachment );
-    void openTodoEditor( QString summary, QString description,
-                         QString attachment, QStringList attendees );
+    void openTodoEditor( const QString& );
+    void openTodoEditor( const QString& summary,
+                         const QString& description,
+                         const QString& attachment );
+    void openTodoEditor( const QString& summary,
+                         const QString& description,
+                         const QString& attachment,
+                         const QStringList& attendees );
 
-    void openJournalEditor( QDate date );
-    void openJournalEditor( QString text, QDate date );
-    void openJournalEditor( QString text );
+    void openJournalEditor( const QDate& date );
+    void openJournalEditor( const QString& text, const QDate& date );
+    void openJournalEditor( const QString& text );
    //TODO:
-   // void openJournalEditor( QString summary, QString description,
-   //                         QString attachment );
+   // void openJournalEditor( const QString& summary,
+   //                         const QString& description,
+   //                         const QString& attachment );
 
     void showJournalView();
     void showTodoView();
     void showEventView();
 
-    void goDate( QDate );
-    void goDate( QString );
+    void goDate( const QDate& );
+    void goDate( const QString& );
 
     QString localFileName();
 
