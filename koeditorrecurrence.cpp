@@ -526,7 +526,7 @@ void KOEditorRecurrence::addException()
   QDate tmpDate;
 
   tmpDate = exceptionDateEdit->getDate();
-  exceptionList->insertItem(tmpDate.toString().data());
+  exceptionList->insertItem(KGlobal::locale()->formatDate(tmpDate));
 }
 
 void KOEditorRecurrence::changeException()
@@ -534,7 +534,7 @@ void KOEditorRecurrence::changeException()
   QDate tmpDate;
   tmpDate = exceptionDateEdit->getDate();
 
-  exceptionList->changeItem(tmpDate.toString().data(), 
+  exceptionList->changeItem(KGlobal::locale()->formatDate(tmpDate),
 			    exceptionList->currentItem());
 }
 
@@ -899,7 +899,7 @@ void KOEditorRecurrence::readEvent(KOEvent *event)
   exceptionDateEdit->setDate(QDate::currentDate());
   for (curDate = exDates.first(); curDate;
        curDate = exDates.next())
-    exceptionList->insertItem(curDate->toString().data());
+    exceptionList->insertItem(KGlobal::locale()->formatDate(*curDate));
 }
 
 void KOEditorRecurrence::writeEvent(KOEvent *event)

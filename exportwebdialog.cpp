@@ -247,7 +247,8 @@ void ExportWebDialog::createHtmlEventList (QTextStream *ts)
     qDebug("Getting events for %s",dt.toString().latin1());
     QList<KOEvent> events = mCalendar->getEventsForDate(dt,true);
     if (events.count()) {
-      *ts << "  <TR><TD COLSPAN=3 CLASS=datehead><I>" << dt.toString()
+      *ts << "  <TR><TD COLSPAN=3 CLASS=datehead><I>"
+          << KGlobal::locale()->formatDate(dt)
           << "</I></TD></TR>\n";
       KOEvent *ev;
       for(ev = events.first(); ev; ev = events.next()) {

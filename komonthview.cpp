@@ -373,8 +373,8 @@ KOMonthView::KOMonthView(CalObject *cal,
     dispLabel = new QLabel(this);
     dispLabel->setFrameStyle(QFrame::Panel|QFrame::Raised);
     dispLabel->setAlignment(AlignCenter);
-    QString tstring = (daySummaries[0]->getDate().toString()+" - "+
-                       daySummaries[41]->getDate().toString());
+    QString tstring = KGlobal::locale()->formatDate(daySummaries[0]->getDate())
+        + " - " + KGlobal::locale()->formatDate(daySummaries[41]->getDate());
     dispLabel->setText(tstring);
     dispLabel->setFont(bfont);
 
@@ -668,8 +668,8 @@ void KOMonthView::viewChanged()
       daySummaries[i]->setBackgroundMode(PaletteLight);
     }
   }
-  QString tstring = (daySummaries[0]->getDate().toString()+" - "+
-                     daySummaries[41]->getDate().toString());
+  QString tstring = KGlobal::locale()->formatDate(daySummaries[0]->getDate())
+       + " - " + KGlobal::locale()->formatDate(daySummaries[41]->getDate());
   dispLabel->setText(tstring);
   for(i=0, idx = selDateIdxs.first(); 
       i < selDateIdxs.count(), idx != 0;

@@ -494,6 +494,7 @@ void CalPrinter::drawDayBox(QPainter &p, const QDate &qd,
 
   QString hstring(calendar->getHolidayForDate(qd));
 
+  // This has to be localized
   if (fullDate) {
     int index;
     dayNumStr= qd.toString();

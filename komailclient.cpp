@@ -11,6 +11,8 @@
 
 #include <kconfig.h>
 #include <kdateedit.h>
+#include <kglobal.h>
+#include <klocale.h>
 
 #include "version.h"
 
@@ -131,7 +133,7 @@ QString * MailMsgString::getHeaders()
     Headers->append(Subject->data());
     Headers->append(CR);
     Headers->append(date);
-    Headers->append(theDate.toString());
+    Headers->append(KGlobal::locale()->formatDateTime(theDate));
     Headers->append(CR);
     Headers->append(xMailer->data());
     Headers->append(CR);

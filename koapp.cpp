@@ -33,7 +33,7 @@ void KOrganizerApp::displayImminent(const QString &file,int numdays)
 
   for (int i = 1; i <= numdays; i++) {
     QList<KOEvent> tmpList(cal->getEventsForDate(currDate, TRUE));
-    printf("%s\n",currDate.toString().data());
+    printf("%s\n",KGlobal::locale()->formatDate(currDate).latin1());
     printf("---------------------------------\n");
     if (tmpList.first())
       for (currEvent = tmpList.first(); currEvent; currEvent = tmpList.next())
