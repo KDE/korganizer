@@ -1,16 +1,28 @@
 [Desktop Entry]
 Encoding=UTF-8
-Exec=kcmshell korganizerconfiggreoupautomation
 Icon=personal
-Type=Application
-Terminal=0
+Type=Service
+ServiceTypes=KCModule
 
 X-KDE-ModuleType=Library
 X-KDE-Library=korganizer
 X-KDE-FactoryName=korganizerconfiggroupautomation
 X-KDE-HasReadOnlyMode=false
 X-KDE-ParentApp=korganizer
+X-KDE-ParentComponents=korganizer
 
 Name=Group Automation
+Name[ca]=Automatització de grups
+Name[da]=Gruppeautomation
+Name[ru]=Групповая работа
+Name[sr]=Аутоматизација група
 Comment=KOrganizer Group Automation Configuration
+Comment[ca]=Configuració de l'automatització de grups a KOrganizer
+Comment[da]=KOrganizer gruppeautomation indstilling
+Comment[ru]=Настройка групповой работы в органайзере KDE
+Comment[sr]=KOrganizer-ово подешавање аутоматизације група
 Keywords=korganizer,group,automation
+Keywords[ca]=korganizer,grup,automatització
+Keywords[da]=korganizer,gruppe,automation
+Keywords[ru]=korganizer,group,automation,групповая работа,органайзер
+Keywords[sr]=korganizer,group,automation,група,аутоматизација,планер

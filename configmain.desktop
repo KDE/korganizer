@@ -1,16 +1,28 @@
 [Desktop Entry]
 Encoding=UTF-8
-Exec=kcmshell korganizerconfigmain
 Icon=identity
-Type=Application
-Terminal=0
+Type=Service
+ServiceTypes=KCModule
 
 X-KDE-ModuleType=Library
 X-KDE-Library=korganizer
 X-KDE-FactoryName=korganizerconfigmain
 X-KDE-HasReadOnlyMode=false
 X-KDE-ParentApp=korganizer
+X-KDE-ParentComponents=korganizer
 
 Name=Personal
+Name[be]=Пэрсанальныя
+Name[da]=Personlig
+Name[ru]=Персональные настройки
+Name[sr]=Лично
 Comment=KOrganizer Main Configuration
+Comment[ca]=Configuració principal a KOrganizer
+Comment[da]=KOrganizer hovedindstilling
+Comment[ru]=Общие настройки органайзера KDE
+Comment[sr]=KOrganizer-ова главна подешавања
 Keywords=korganizer,main,personal
+Keywords[ca]=korganizer,principal,personal
+Keywords[da]=korganizer,hoved,personlig
+Keywords[ru]=korganizer,main,personal,почта,персональные настройки,органайзер
+Keywords[sr]=korganizer,main,personal,планер,главни,лични,лично

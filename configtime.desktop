@@ -1,16 +1,31 @@
 [Desktop Entry]
 Encoding=UTF-8
-Exec=kcmshell korganizerconfigtime
 Icon=clock
-Type=Application
-Terminal=0
+Type=Service
+ServiceTypes=KCModule
 
 X-KDE-ModuleType=Library
 X-KDE-Library=korganizer
 X-KDE-FactoryName=korganizerconfigtime
 X-KDE-HasReadOnlyMode=false
 X-KDE-ParentApp=korganizer
+X-KDE-ParentComponents=korganizer
 
 Name=Time & Date
+Name[be]=Час і дата
+Name[ca]=Hora i data
+Name[da]=Tid & Dato
+Name[ru]=Дата и время
+Name[sr]=Време и датум
 Comment=KOrganizer Time Configuration
+Comment[be]=Канфігурацыя часу "K Арганізатара"
+Comment[ca]=Configuració del temps a KOrganizer
+Comment[da]=KOrganizer tidsindstilling
+Comment[ru]=Настройка времени органайзера KDE
+Comment[sr]=KOrganizer-ово подешавање времена
 Keywords=korganizer,time
+Keywords[be]=K Арганізатар,час,korganizer,time
+Keywords[ca]=korganizer,temps
+Keywords[da]=korganizer,tid
+Keywords[ru]=korganizer,time,органайзер,время
+Keywords[sr]=korganizer,time,време,планер

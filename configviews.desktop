@@ -1,16 +1,31 @@
 [Desktop Entry]
 Encoding=UTF-8
-Exec=kcmshell korganizerconfigviews
 Icon=viewmag
-Type=Application
-Terminal=0
+Type=Service
+ServiceTypes=KCModule
 
 X-KDE-ModuleType=Library
 X-KDE-Library=korganizer
 X-KDE-FactoryName=korganizerconfigviews
 X-KDE-HasReadOnlyMode=false
 X-KDE-ParentApp=korganizer
+X-KDE-ParentComponents=korganizer
 
 Name=Views
+Name[be]=Выгляды
+Name[ca]=Vistes
+Name[da]=Visninger
+Name[ru]=Виды
+Name[sr]=Прикази
 Comment=KOrganizer View Configuration
+Comment[be]=Канфігурацыя выгляду "K Арганізатара"
+Comment[ca]=Configuració de la vista a KOrganizer
+Comment[da]=KOrganizer visningsindstilling
+Comment[ru]=Настройка видов органайзера KDE
+Comment[sr]=KOrganizer-ово подешавање приказа
 Keywords=korganizer,view
+Keywords[be]=K Арганізатар,выгляд,korganizer,view
+Keywords[ca]=korganizer,vista
+Keywords[da]=korganizer,visning
+Keywords[ru]=korganizer,view,органайзер,виды
+Keywords[sr]=korganizer,view,планер,приказ

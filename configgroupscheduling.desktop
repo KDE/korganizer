@@ -1,25 +1,28 @@
 [Desktop Entry]
 Encoding=UTF-8
-Exec=kcmshell korganizerconfiggroupscheduling
 Icon=personal
-Type=Application
-Terminal=0
+Type=Service
+ServiceTypes=KCModule
 
 X-KDE-ModuleType=Library
 X-KDE-Library=korganizer
 X-KDE-FactoryName=korganizerconfiggroupscheduling
 X-KDE-HasReadOnlyMode=false
 X-KDE-ParentApp=korganizer
+X-KDE-ParentComponents=korganizer
 
 Name=Group Scheduling
+Name[ca]=Planificació de grups
 Name[da]=Gruppeskemalægning
 Name[ru]=Расписание групп
 Name[sr]=Распоређивање група
 Comment=KOrganizer Group Scheduling Configuration
+Comment[ca]=Configuració de la planificació de grups a KOrganizer
 Comment[da]=KOrganizer gruppeskemalægning indstilling
 Comment[ru]=Настройка расписания групп органайзера KDE
 Comment[sr]=Календарски и групни распоређивачки програм
 Keywords=korganizer,group,scheduling
+Keywords[ca]=korganizer,grup,planificació
 Keywords[da]=korganizer,gruppe,skemalægning
 Keywords[ru]=korganizer,group,scheduling,расписание групп,органайзер
 Keywords[sr]=korganizer,group,scheduling,планер,група,распоред,распоређивање
