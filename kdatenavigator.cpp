@@ -81,7 +81,7 @@ KDateNavigator::KDateNavigator( QWidget *parent, Calendar *calendar,
 
   int i;
   QString generalFont = KGlobalSettings::generalFont().family();
-	  
+
   // Set up the heading fields.
   for( i = 0; i < 7; i++ ) {
     headings[i] = new QLabel(this);
@@ -114,6 +114,12 @@ KDateNavigator::KDateNavigator( QWidget *parent, Calendar *calendar,
 
   connect( daymatrix, SIGNAL( eventDropped( Event * ) ),
            SIGNAL( eventDropped( Event * ) ) );
+  connect( daymatrix, SIGNAL( eventDroppedMove( Event * , Event * ) ),
+           SIGNAL( eventDroppedMove( Event *, Event * ) ) );
+  connect( daymatrix, SIGNAL( todoDropped( Todo * ) ),
+           SIGNAL( todoDropped( Todo * ) ) );
+  connect( daymatrix, SIGNAL( todoDroppedMove( Todo * , Todo * ) ),
+           SIGNAL( todoDroppedMove( Todo *, Todo * ) ) );
 
   topLayout->addMultiCellWidget(daymatrix,2,7,1,7);
 

@@ -48,13 +48,13 @@ class KDateNavigator: public QFrame
     ~KDateNavigator();
 
     /** The DateNavigator automatically checks for
-    * the passage of midnight. If rollover type is 
+    * the passage of midnight. If rollover type is
     * set to None, no signals are emitted and no
-    * processing is done. With rollover set to 
+    * processing is done. With rollover set to
     * FollowDay, the day highlighter changes at
     * midnight and dayPassed() is emitted.
     * With FollowMonth, it has the same effect
-    * as FollowDay but also adjusts the month that is 
+    * as FollowDay but also adjusts the month that is
     * visible and emits monthPassed() when the month changes.
     */
     enum RolloverType { None, FollowDay, FollowMonth } ;
@@ -71,6 +71,9 @@ class KDateNavigator: public QFrame
   signals:
     void datesSelected( const KCal::DateList & );
     void eventDropped( Event * );
+    void eventDroppedMove(Event *, Event *);
+    void todoDropped( Todo * );
+    void todoDroppedMove(Todo *, Todo *);
     void weekClicked( const QDate &);
 
     void goPrevious();

@@ -156,8 +156,8 @@ public:
     * the values today (below) can take.
     */
     bool isTodayVisible() const { return today>=0; } ;
-    
-    /** If today is visible, then we can find out if today is 
+
+    /** If today is visible, then we can find out if today is
     * near the beginning or the end of the month.
     * This is dependent on today remaining the index
     * in the array of visible dates and going from
@@ -165,7 +165,7 @@ public:
     */
     bool isBeginningOfMonth() const { return today<=8; } ;
     bool isEndOfMonth() const { return today>=27; } ;
-        
+
 public slots:
     /** Recalculates all the flags of the days in the matrix like holidays or events
      *  on a day (Actually calls above method with the actual startdate).
@@ -173,11 +173,11 @@ public slots:
     void updateView();
 
     /**
-    * Calculate which square in the matrix should be 
+    * Calculate which square in the matrix should be
     * hilighted to indicate it's today.
     */
     void recalculateToday();
-    
+
 /*
     void setStartDate(QDate);
 */
@@ -196,6 +196,23 @@ signals:
      *  @param event the dropped calendar event
      */
     void eventDropped(Event *event);
+    /** emitted if the user has dropped an event inside the matrix and chose to move it instead of copy
+     *
+     *  @param oldevent the new calendar event
+     *  @param newevent the item that was moved
+     */
+    void eventDroppedMove(Event *oldevent, Event *newevent);
+    /** emitted if the user has dropped a todo inside the matrix and chose to move it instead of copy
+     *
+     *  @param oldtodo the new todo
+     *  @param newtodo the item that was moved
+     */
+    void todoDroppedMove( Todo *oldtodo, Todo *newtodo);
+    /** emitted if the user has dropped a todo inside the matrix
+     *
+     *  @param event the dropped todo item
+     */
+    void todoDropped(Todo *todo);
 
 protected:
 

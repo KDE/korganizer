@@ -238,8 +238,15 @@ CalendarView::CalendarView( Calendar *calendar,
 
   connect( mDateNavigator, SIGNAL( eventDropped( Event * ) ),
            SLOT( eventAdded( Event *) ) );
+  connect( mDateNavigator, SIGNAL( eventDroppedMove( Event *, Event * ) ),
+           SLOT( eventChanged( Event *, Event *) ) );
+  connect( mDateNavigator, SIGNAL( todoDropped( Todo * ) ),
+           SLOT( todoAdded( Todo *) ) );
+  connect( mDateNavigator, SIGNAL( todoDroppedMove( Todo *, Todo * ) ),
+           SLOT( todoChanged( Todo *, Todo *) ) );
 
-  connect(mDateNavigator,SIGNAL(dayPassed(QDate)),SLOT(updateView()));
+  connect( mDateNavigator, SIGNAL( dayPassed( QDate ) ),
+           SLOT( updateView() ) );
 
   connect( this, SIGNAL( configChanged() ),
            mDateNavigator, SLOT( updateConfig() ) );

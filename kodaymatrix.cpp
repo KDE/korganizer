@@ -29,6 +29,7 @@
 #include <kglobal.h>
 #include <kdebug.h>
 #include <klocale.h>
+#include <kiconloader.h>
 
 #include <libkcal/vcaldrag.h>
 #include <libkcal/icaldrag.h>
@@ -46,6 +47,14 @@
 
 #include "kodaymatrix.h"
 #include "kodaymatrix.moc"
+
+#ifndef NODND
+#include <qcursor.h>
+#include <kpopupmenu.h>
+#include <X11/Xlib.h>
+#undef KeyPress
+#undef None
+#endif
 
 // ============================================================================
 //  D Y N A M I C   T I P
@@ -187,7 +196,7 @@ void KODayMatrix::recalculateToday()
     for (int i=0; i<NUMDAYS; i++) {
       days[i] = startdate.addDays(i);
       daylbls[i] = QString::number( KOGlobals::self()->calendarSystem()->day( days[i] ));
-      
+
       // if today is in the currently displayed month, hilight today
       if (days[i].year() == QDate::currentDate().year() &&
           days[i].month() == QDate::currentDate().month() &&
@@ -226,7 +235,7 @@ void KODayMatrix::updateView(QDate actdate)
         	   mSelStart = mSelStart + tmp;
                 if( mSelEnd > NUMDAYS || mSelEnd < 0 )
        			mSelEnd = mSelEnd + tmp;
-      }	
+      }
     }
 
     startdate = actdate;
@@ -291,7 +300,7 @@ QString KODayMatrix::getHolidayLabel(int offset)
 
 int KODayMatrix::getDayIndexFrom(int x, int y)
 {
-  return 7*(y/daysize.height()) + (KOGlobals::self()->reverseLayout() ? 
+  return 7*(y/daysize.height()) + (KOGlobals::self()->reverseLayout() ?
             6 - x/daysize.width() : x/daysize.width());
 }
 
@@ -360,6 +369,15 @@ void KODayMatrix::mouseMoveEvent (QMouseEvent* e)
 //  D R A G ' N   D R O P   H A N D L I N G
 // ----------------------------------------------------------------------------
 
+//-----------------------------------------------------------------------------
+// Drag and Drop handling -- based on the Troll Tech dirview example
+
+enum {
+  DRAG_COPY = 0,
+  DRAG_MOVE = 1,
+  DRAG_CANCEL = 2
+};
+
 void KODayMatrix::dragEnterEvent(QDragEnterEvent *e)
 {
 #ifndef KORG_NODND
@@ -398,7 +416,7 @@ void KODayMatrix::dragLeaveEvent(QDragLeaveEvent * /*dl*/)
 void KODayMatrix::dropEvent(QDropEvent *e)
 {
 #ifndef KORG_NODND
-//  kdDebug(5850) << "KODayMatrix::dropEvent(e) begin" << endl;
+  kdDebug(5850) << "KODayMatrix::dropEvent(e) begin" << endl;
 
   if ( !ICalDrag::canDecode( e ) && !VCalDrag::canDecode( e ) ) {
     e->ignore();
@@ -407,40 +425,104 @@ void KODayMatrix::dropEvent(QDropEvent *e)
 
   DndFactory factory( mCalendar );
   Event *event = factory.createDrop(e);
+  Todo *todo = factory.createDropTodo(e);
+  if (!event && !todo) {
+    e->ignore();
+    return;
+  }
 
-  if (event) {
-    e->acceptAction();
+  Todo *existingTodo = 0L, *oldTodo=0;
+  Event *existingEvent = 0L, *oldEvent=0;
 
-    Event *existingEvent = mCalendar->event(event->uid());
+  // Find the incidence in the calendar, then we don't need the drag object any more
+  if (event) existingEvent = mCalendar->event(event->uid());
+  if (todo) existingTodo = mCalendar->todo(todo->uid());
 
-    if(existingEvent) {
-      // uniquify event
-      event->recreate();
-/*
-      KMessageBox::sorry(this,
-              i18n("Event already exists in this calendar."),
-              i18n("Drop Event"));
-      delete event;
-      return;
-*/
-    }
-//      kdDebug(5850) << "Drop new Event" << endl;
-    // Adjust date
-    QDateTime start = event->dtStart();
-    QDateTime end = event->dtEnd();
-    int duration = start.daysTo(end);
-    int idx = getDayIndexFrom(e->pos().x(), e->pos().y());
+  int action=DRAG_CANCEL;
 
-    start.setDate(days[idx]);
-    end.setDate(days[idx].addDays(duration));
+  int root_x, root_y, win_x, win_y;
+  uint keybstate;
+  Window rootw, childw;
+  XQueryPointer( qt_xdisplay(), qt_xrootwin(), &rootw, &childw,
+    &root_x, &root_y, &win_x, &win_y, &keybstate );
 
-    event->setDtStart(start);
-    event->setDtEnd(end);
-    mCalendar->addEvent(event);
-
-    emit eventDropped(event);
+  if ( keybstate & ControlMask ) {
+    action=DRAG_COPY;
+  } else if ( keybstate & ShiftMask ) {
+   action=DRAG_MOVE;
   } else {
-//    kdDebug(5850) << "KODayMatrix::dropEvent(): Event from drop not decodable" << endl;
+    KPopupMenu *menu = new KPopupMenu( this );
+    if ( existingEvent || existingTodo ) {
+      menu->insertItem( i18n("Move"), DRAG_MOVE, 0 );
+      if (existingEvent)
+        menu->insertItem( SmallIcon("editcopy"), i18n("Copy"), DRAG_COPY, 1 );
+    } else {
+      menu->insertItem( i18n("Add"), DRAG_MOVE, 0 );
+    }
+    menu->insertSeparator();
+    menu->insertItem( SmallIcon("cancel"), i18n("Cancel"), DRAG_CANCEL, 3 );
+    action = menu->exec( QCursor::pos(), 0 );
+  }
+
+  // When copying, clear the UID:
+  if ( action==DRAG_COPY ) {
+    if (todo) todo->recreate();
+    if (event) event->recreate();
+  } else {
+    if (existingEvent) oldEvent = existingEvent->clone();
+    if (event) delete event;
+    event = existingEvent;
+    if (existingTodo) oldTodo = existingTodo->clone();
+    if (todo) delete todo;
+    todo = existingTodo;
+  }
+
+  if ( action==DRAG_COPY  || action==DRAG_MOVE ) {
+    e->accept();
+    if (event) {
+      // Adjust date
+      QDateTime start = event->dtStart();
+      QDateTime end = event->dtEnd();
+      int duration = start.daysTo(end);
+      int idx = getDayIndexFrom(e->pos().x(), e->pos().y());
+
+      start.setDate(days[idx]);
+      end.setDate(days[idx].addDays(duration));
+
+      event->setDtStart(start);
+      event->setDtEnd(end);
+        // When moving, we don't need to insert  the item!
+      if (action!=DRAG_MOVE)
+        mCalendar->addEvent(event);
+
+      if ( oldEvent ) {
+        emit eventDroppedMove( oldEvent, event );
+      } else {
+        emit eventDropped( event );
+      }
+    } // end event
+    if (todo) {
+      // Adjust date
+      QDateTime due = todo->dtDue();
+      int idx = getDayIndexFrom(e->pos().x(), e->pos().y());
+      due.setDate(days[idx]);
+
+      todo->setDtDue(due);
+      todo->setHasDueDate(true);
+
+        // When moving, we don't need to insert  the item!
+      if ( action!=DRAG_MOVE )
+        mCalendar->addTodo( todo );
+
+      if ( oldTodo ) {
+        emit todoDroppedMove( oldTodo, todo );
+      } else {
+        emit todoDropped( todo );
+      }
+    } // end todo
+  } else { // cancel
+    if (todo) delete todo;
+    if (event) delete event;
     e->ignore();
   }
 #endif
