@@ -60,7 +60,7 @@ class ActionManager : public QObject
 
   public:
     ActionManager(KXMLGUIClient *client, CalendarView *widget,
-                  QObject *parent, KOrg::MainWindow *parent);
+                  QObject *parent, KOrg::MainWindow *mainWindow);
     virtual ~ActionManager();
 
     /** Peform initialization that requires this* to be full constructed */
