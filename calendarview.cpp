@@ -51,6 +51,7 @@
 #include <kfiledialog.h>
 #include <kmessagebox.h>
 #include <knotifyclient.h>
+#include <kconfig.h>
 
 #include <libkcal/vcaldrag.h>
 #include <libkcal/icalformat.h>

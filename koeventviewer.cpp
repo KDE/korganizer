@@ -19,18 +19,24 @@
 
 // $Id$
 
+#include <qcstring.h>
+
 #include <klocale.h>
-#include <kapp.h>
+#include <kapplication.h>
 #include <libkcal/event.h>
 #include <libkcal/todo.h>
 #include <kdebug.h>
 #include <kiconloader.h>
-#include "koeventviewer.h"
-#include "koeventviewer.moc"
 #include <krun.h>
 #include <dcopclient.h>
-#include <qcstring.h>
+
+#ifndef KORG_NODCOP
 #include "korganizer.h"
+#endif
+
+#include "koeventviewer.h"
+#include "koeventviewer.moc"
+
 KOEventViewer::KOEventViewer(QWidget *parent,const char *name)
   : QTextBrowser(parent,name)
 {
@@ -42,46 +48,47 @@ KOEventViewer::~KOEventViewer()
 
 void KOEventViewer::setSource(const QString& n)
 {
+#ifndef KORG_NODCOP
   kdDebug() << "KOEventViewer::setSource(): " << n << endl;
   QString tmpStr;
   if (n.startsWith("mailto:")) {
-    kapp->invokeMailer(n.mid(7),QString::null);
+    KApplication::kApplication()->invokeMailer(n.mid(7),QString::null);
     //emit showIncidence(n);
     return;
   } else if (n.startsWith("uid:")) {
-   DCOPClient *client = KApplication::kApplication()->dcopClient();
-   const QByteArray noParamData;
-   const QByteArray paramData;
-   QByteArray replyData;
-   QCString replyTypeStr;
-   #define PING_ABBROWSER (client->call("kaddressbook", "KAddressBookIface", "interfaces()",  noParamData, replyTypeStr, replyData))
-   bool foundAbbrowser = PING_ABBROWSER;
+    DCOPClient *client = KApplication::kApplication()->dcopClient();
+    const QByteArray noParamData;
+    const QByteArray paramData;
+    QByteArray replyData;
+    QCString replyTypeStr;
+    #define PING_ABBROWSER (client->call("kaddressbook", "KAddressBookIface", "interfaces()",  noParamData, replyTypeStr, replyData))
+    bool foundAbbrowser = PING_ABBROWSER;
 
-   if (foundAbbrowser)
-   {
-   //KAddressbook is already running, so just DCOP to it to bring up the contact editor
-   //client->send("kaddressbook","KAddressBookIface",
-   QDataStream arg(paramData, IO_WriteOnly);
-   arg << n.mid(6);
-   client->send("kaddressbook", "KAddressBookIface", "showContactEditor( QString )",  paramData);
-   return;
-   }  else {
-   /*KaddressBook is not already running.  Pass it the UID of the contact via the command line while starting it - its neater.
-   We start it without its main interface*/
-    KIconLoader* iconLoader = new KIconLoader();
-    QString iconPath = iconLoader->iconPath("go",KIcon::Small);
-    KOrganizer::setStartedKAddressBook(true);
-    tmpStr = "kaddressbook --editor-only --uid ";
-    tmpStr += n.mid(6);
-    bool result = KRun::runCommand(tmpStr,"KAddressBook",iconPath);
-    return;
-   }
+    if (foundAbbrowser) {
+      //KAddressbook is already running, so just DCOP to it to bring up the contact editor
+      //client->send("kaddressbook","KAddressBookIface",
+      QDataStream arg(paramData, IO_WriteOnly);
+      arg << n.mid(6);
+      client->send("kaddressbook", "KAddressBookIface", "showContactEditor( QString )",  paramData);
+      return;
+    } else {
+      /*
+        KaddressBook is not already running.  Pass it the UID of the contact via the command line while starting it - its neater.
+        We start it without its main interface
+      */
+      KIconLoader* iconLoader = new KIconLoader();
+      QString iconPath = iconLoader->iconPath("go",KIcon::Small);
+      KOrganizer::setStartedKAddressBook(true);
+      tmpStr = "kaddressbook --editor-only --uid ";
+      tmpStr += n.mid(6);
+      bool result = KRun::runCommand(tmpStr,"KAddressBook",iconPath);
+      return;
+    }
   } else {
     //QTextBrowser::setSource(n);
   }
+#endif
 }
-
-
 
 void KOEventViewer::addTag(const QString & tag,const QString & text)
 {
@@ -202,14 +209,13 @@ void KOEventViewer::formatAttendees(Incidence *event)
       kdDebug() << "formatAttendees: uid = " << a->uid() << endl;
 
       if (!a->email().isEmpty()) {
-      KIconLoader* iconLoader = new KIconLoader();
-      QString iconPath = iconLoader->iconPath("mail_generic",KIcon::Small);
-      if (iconPath)
-      {
-      mText += "<a href=\"mailto:" + a->name() +" "+ "<" + a->email() + ">" + "\">";
-      mText += "<IMG src=\"" + iconPath + "\">";
-      mText += "</a>\n";
-      }
+        KIconLoader* iconLoader = new KIconLoader();
+        QString iconPath = iconLoader->iconPath("mail_generic",KIcon::Small);
+        if (iconPath) {
+          mText += "<a href=\"mailto:" + a->name() +" "+ "<" + a->email() + ">" + "\">";
+          mText += "<IMG src=\"" + iconPath + "\">";
+          mText += "</a>\n";
+        }
       }
     }
     mText.append("</li></ul>");

@@ -226,6 +226,8 @@ bool OutgoingDialog::saveMessage(Incidence *incidence,Scheduler::Method method,
   *qts << "METHOD-BEGIN:" << endl << method << endl << ":METHOD-END" << endl;
   *qts << "RECIPIENTS-BEGIN:" << endl << recipients << endl << ":RECIPIENTS-END" << endl;
   mMessageMap[incidence]=ktfile.name();
+
+  return true;
 }
 
 bool OutgoingDialog::deleteMessage(Incidence *incidence)

@@ -38,6 +38,7 @@
 #include <kiconloader.h>
 #include <kdebug.h>
 #include <knumvalidator.h>
+
 #include <libkcal/event.h>
 
 #include "koprefs.h"
