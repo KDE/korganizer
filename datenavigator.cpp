@@ -238,7 +238,13 @@ void DateNavigator::selectMonth(int month)
   int weekDay = firstSelected.dayOfWeek();
 
   const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
-  calSys->setYMD( firstSelected, calSys->year(firstSelected), month, calSys->day(firstSelected) );
+  int day = calSys->day( firstSelected );
+  calSys->setYMD( firstSelected, calSys->year(firstSelected), month, 1 );
+  int days = calSys->daysInMonth( firstSelected );
+  // As day we use either the selected date, or if the month has less days
+  // than that, we use the max day of that month
+  if ( day > days ) day = days;
+  calSys->setYMD( firstSelected, calSys->year( firstSelected ), month, day );
 
   selectWeekByDay( weekDay, firstSelected );
 }
