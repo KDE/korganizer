@@ -306,7 +306,6 @@ void KOAlternateLabel::setText( const QString &text ) {
 KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name) :
   KOEventView (cal,parent,name)
 {
-  mStartHour = 8;
   mSelectedDates.append(QDate::currentDate());
 
   mLayoutDayLabels = 0;

@@ -43,6 +43,13 @@
 KOPrefs *KOPrefs::mInstance = 0;
 static KStaticDeleter<KOPrefs> insd;
 
+QColor getTextColor(const QColor &c)
+{
+  float luminance = (c.red() * 0.299) + (c.green() * 0.587) + (c.blue() * 0.114);
+  return (luminance > 128.0) ? QColor( 0, 0 ,0 ) : QColor( 255, 255 ,255 );
+}
+
+
 KOPrefs::KOPrefs() :
   KOPrefsBase()
 {

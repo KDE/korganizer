@@ -225,9 +225,6 @@ class KOAgendaView : public KOEventView {
     DateList mSelectedDates;  // List of dates to be displayed
     int mViewType;
 
-    bool mWeekStartsMonday;
-    int mStartHour;
-
     KOEventPopupMenu *mAgendaPopup;
     KOEventPopupMenu *mAllDayAgendaPopup;
     QPopupMenu *mNewEventPopup;

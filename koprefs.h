@@ -32,6 +32,9 @@ class QFont;
 class QColor;
 class QStringList;
 
+QColor getTextColor(const QColor &c);
+
+
 class KOPrefs : public KOPrefsBase
 {
   public:
