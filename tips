@@ -17,14 +17,14 @@ Marcus Bains line in the dialog which appears after selecting <b>Settings</b>,
 <html>
 <p>...that KOrganizer supports Microsoft Exchange? Just enable the plugin
 <b>Microsoft® Exchange 2000 plugin for KOrganizer</b> in the dialog
-<b>Configure Plugins...</b> from the <b>Settings</b>-menu.
+<b>Configure Plugins...</b> from the <b>Settings</b> menu.
 </html>
 </tip>
 
 <tip category="KOrganizer|General">
 <html>
 <p>...that you can select whether the week starts on Monday or on Sunday in the KDE
-Control Center? KOrganizer uses this setting. Look at Personalization -> Country &
+Control Center? KOrganizer uses this setting. Look at Personalization->Country &
 Languages, on the Time & Dates tab.
 </html>
 </tip>
@@ -32,7 +32,7 @@ Languages, on the Time & Dates tab.
 <tip category="KOrganizer|General">
 <html>
 <p>...that you can edit todo's quickly by right clicking on the property you
-wish to change, like the priority, the category or the date?
+wish to change; like the priority, the category or the date?
 </html>
 </tip>
 
@@ -45,7 +45,7 @@ konsolekalendar? Run <b>konsolekalendar --help</b> for the available options.
 
 <tip category="KOrganizer|General">
 <html>
-<p>...that you can import birthdays from your addressbook? There is a resource
+<p>...that you can import birthdays from your address book? There is a resource
 available which connects the birthdays to your calendar. It's even possible to
 set a reminder for each event.
 </html>
@@ -72,7 +72,7 @@ button on an existing To-Do and selecting <b>New Sub-To-Do</b> from the context 
 <html>
 <p>...that a color can be assigned to each category? Events with a certain
 category will be shown in that color. You can assign these in the section
-<b>Colors</b> of the dialog which appears after selecting <b>Settings</b>, 
+<b>Colors</b> within the dialog which appears after selecting <b>Settings</b>, 
 <b>KOrganizer settings...</b> from the menu bar.
 </html>
 </tip>
@@ -80,7 +80,7 @@ category will be shown in that color. You can assign these in the section
 <tip category="KOrganizer|General">
 <html>
 <p>...that you can view and edit a calendar with Konqueror? Just click on the
-calendar-file to make Konqueror open it.
+calendar file to make Konqueror open it.
 </html>
 </tip>
 
@@ -88,7 +88,7 @@ calendar-file to make Konqueror open it.
 <tip category="KOrganizer|General">
 <html>
 <p>...that it is possible to add an attachment to an event? To do so, add a link
-to the tab <b>Attachments</b> of the <b>Edit Event</b>-dialog.
+to the <b>Attachments</b> tab within the <b>Edit Event</b> dialog.
 </html>
 </tip>
 
@@ -96,7 +96,7 @@ to the tab <b>Attachments</b> of the <b>Edit Event</b>-dialog.
 <html>
 <p>...that you can export your calendar to HTML? Check the plugin
 <b>Web export plugin for KOrganizer</b> in the dialog <b>Configure
-Plugins...</b> from the <b>Settings</b>-menu. Now you can export your calendar
+Plugins...</b> from the <b>Settings</b> menu. Now you can export your calendar
 with <b>File</b>, <b>Export</b>, <b>Export Web Page...</b> from the menu bar.
 </html>
 </tip>
@@ -104,6 +104,6 @@ with <b>File</b>, <b>Export</b>, <b>Export Web Page...</b> from the menu bar.
 <tip category="KOrganizer|General">
 <html>
 <p>...that you can purge completed todo's in one step? Go to the
-<b>File</b>-menu and choose for <b>Purge Completed</b>.
+<b>File</b> menu and choose <b>Purge Completed</b>.
 </html>
 </tip>

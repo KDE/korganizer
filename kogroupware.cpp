@@ -344,7 +344,7 @@ QString KOGroupware::formatICal( const QString& iCal )
 
     case Attendee::Tentative:
       if( event ) {
-        html = i18n( "<h2>Sender tentatively accepts this"
+        html = i18n( "<h2>Sender tentatively accepts this "
                      "meeting invitation</h2>" );
         html += meetingDetails( incidence, event );
       } else {
