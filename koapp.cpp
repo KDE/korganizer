@@ -102,6 +102,8 @@ void KOrganizerApp::processCalendar(const QString & file,int numDays)
   } else {
     KOrganizer *korg = new KOrganizer("KOrganizer MainWindow");
     korg->show();
-    if (!file.isEmpty()) korg->openURL(KURL(file));
+    KURL url;
+    url.setPath(file);
+    if (!file.isEmpty()) korg->openURL(url);
   }
 }

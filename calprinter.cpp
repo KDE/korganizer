@@ -15,6 +15,7 @@
 #include <klocale.h>
 #include <kstddirs.h>
 #include <kdated.h>
+#include <kmessagebox.h>
 
 #include "kooptionsdialog.h"
 #include "koprefs.h"
@@ -98,7 +99,7 @@ void CalPrinter::doPreview(int pt, QDate fd, QDate td)
   case Month: 
     printMonth(fd, td);
     break;
-  case Todo: 
+  case Todo:
     printTodo(fd, td);
     break;
   }
@@ -107,12 +108,14 @@ void CalPrinter::doPreview(int pt, QDate fd, QDate td)
   printer->setOutputToFile(oldOutputToFile);
   printer->setOutputFileName(oldFileName.data());
   
-  previewProg = KOPrefs::instance()->mPrinter;
+  previewProg = KOPrefs::instance()->mPrintPreview;
 
   previewProc->clearArguments(); // clear out any old arguments
-  *previewProc << previewProg.data(); // program name
-  *previewProc << previewFileName.data(); // command line arguments
-  previewProc->start();
+  *previewProc << previewProg; // program name
+  *previewProc << previewFileName; // command line arguments
+  if (!previewProc->start()) {
+    KMessageBox::error(0,i18n("Could not start %1.").arg(previewProg));
+  }
 }
 
 void CalPrinter::print(PrintType pt, const QDate &fd, const QDate &td)
