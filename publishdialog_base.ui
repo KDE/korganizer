@@ -28,7 +28,7 @@
         <widget class="QListView" row="0" column="0" rowspan="1" colspan="7">
             <column>
                 <property name="text">
-                    <string>Name:</string>
+                    <string>Name</string>
                 </property>
                 <property name="clickable">
                     <bool>true</bool>
@@ -39,7 +39,7 @@
             </column>
             <column>
                 <property name="text">
-                    <string>Email:</string>
+                    <string>Email</string>
                 </property>
                 <property name="clickable">
                     <bool>true</bool>
@@ -71,7 +71,7 @@
                         <cstring>TextLabel1</cstring>
                     </property>
                     <property name="text">
-                        <string>Name</string>
+                        <string>Name:</string>
                     </property>
                 </widget>
                 <widget class="QLabel" row="1" column="0">
@@ -79,7 +79,7 @@
                         <cstring>TextLabel2</cstring>
                     </property>
                     <property name="text">
-                        <string>Email</string>
+                        <string>Email:</string>
                     </property>
                 </widget>
                 <widget class="QLineEdit" row="1" column="1">
@@ -122,7 +122,7 @@
             <property name="name">
                 <cstring>Line2</cstring>
             </property>
-            <property name="frameShape" stdset="0">
+            <property name="frameShape">
                 <enum>HLine</enum>
             </property>
             <property name="frameShadow">
@@ -137,14 +137,14 @@
                 <cstring>PushButton9</cstring>
             </property>
             <property name="text">
-                <string>Ok</string>
+                <string>&amp;Ok</string>
             </property>
             <property name="default">
                 <bool>true</bool>
             </property>
         </widget>
         <spacer row="5" column="0">
-            <property name="name" stdset="0">
+            <property name="name">
                 <cstring>Spacer17</cstring>
             </property>
             <property name="orientation">
@@ -153,15 +153,9 @@
             <property name="sizeType">
                 <enum>Expanding</enum>
             </property>
-            <property name="sizeHint">
-                <size>
-                    <width>20</width>
-                    <height>20</height>
-                </size>
-            </property>
         </spacer>
         <spacer row="5" column="2">
-            <property name="name" stdset="0">
+            <property name="name">
                 <cstring>Spacer15</cstring>
             </property>
             <property name="orientation">
@@ -170,15 +164,9 @@
             <property name="sizeType">
                 <enum>Expanding</enum>
             </property>
-            <property name="sizeHint">
-                <size>
-                    <width>20</width>
-                    <height>20</height>
-                </size>
-            </property>
         </spacer>
         <spacer row="5" column="3">
-            <property name="name" stdset="0">
+            <property name="name">
                 <cstring>Spacer18</cstring>
             </property>
             <property name="orientation">
@@ -187,23 +175,17 @@
             <property name="sizeType">
                 <enum>Expanding</enum>
             </property>
-            <property name="sizeHint">
-                <size>
-                    <width>20</width>
-                    <height>20</height>
-                </size>
-            </property>
         </spacer>
         <widget class="QPushButton" row="5" column="4" rowspan="1" colspan="2">
             <property name="name">
                 <cstring>PushButton8</cstring>
             </property>
             <property name="text">
-                <string>Cancel</string>
+                <string>&amp;Cancel</string>
             </property>
         </widget>
         <spacer row="5" column="6">
-            <property name="name" stdset="0">
+            <property name="name">
                 <cstring>Spacer5</cstring>
             </property>
             <property name="orientation">
@@ -211,12 +193,6 @@
             </property>
             <property name="sizeType">
                 <enum>Expanding</enum>
-            </property>
-            <property name="sizeHint">
-                <size>
-                    <width>20</width>
-                    <height>20</height>
-                </size>
             </property>
         </spacer>
     </grid>
