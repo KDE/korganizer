@@ -419,9 +419,9 @@ KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent, const char* name)
   mItemPopupMenu->insertItem( i18n("Make Sub-To-Do Independent"), this,
       SIGNAL( unSubTodoSignal() ), 0, POPUP_UNSUBTODO );
   mItemPopupMenu->insertSeparator();
-  mItemPopupMenu->insertItem( i18n("Copy to"), mDatePickerPopupMenu,
-                              POPUP_COPYTO, -1);
-  mItemPopupMenu->insertItem(i18n("Move to"), mDatePickerPopupMenu, -1, -1);
+  mItemPopupMenu->insertItem( i18n("Copy To"), mDatePickerPopupMenu,
+                              POPUP_COPYTO);
+  mItemPopupMenu->insertItem(i18n("Move To"), mDatePickerPopupMenu);
   mItemPopupMenu->insertSeparator();
   mItemPopupMenu->insertItem(i18n("delete completed To-Dos","Purge Completed"),
                              this, SLOT( purgeCompleted() ) );
