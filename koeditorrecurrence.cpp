@@ -229,6 +229,12 @@ RecurMonthly::RecurMonthly( QWidget *parent, const char *name ) :
   mByPosCountCombo->insertItem( i18n("3rd") );
   mByPosCountCombo->insertItem( i18n("4th") );
   mByPosCountCombo->insertItem( i18n("5th") );
+  mByPosCountCombo->insertItem( i18n("last") );
+  mByPosCountCombo->insertItem( i18n("2nd last") );
+  mByPosCountCombo->insertItem( i18n("3rd last") );
+  mByPosCountCombo->insertItem( i18n("4th last") );
+  mByPosCountCombo->insertItem( i18n("5th last") );
+
   buttonLayout->addWidget( mByPosCountCombo, 1, 1 );
 
   mByPosWeekdayCombo = new QComboBox( buttonGroup );
@@ -245,13 +251,17 @@ RecurMonthly::RecurMonthly( QWidget *parent, const char *name ) :
 void RecurMonthly::setByDay( int day )
 {
   mByDayRadio->setChecked( true );
-  mByDayCombo->setCurrentItem( day );
+  mByDayCombo->setCurrentItem( day-1 );
 }
 
 void RecurMonthly::setByPos( int count, int weekday )
 {
   mByPosRadio->setChecked( true );
-  mByPosCountCombo->setCurrentItem( count );
+  if (count>0)
+    mByPosCountCombo->setCurrentItem( count - 1 );
+  else
+    // negative weeks means counted from the end of month
+    mByPosCountCombo->setCurrentItem( -count + 4 );
   mByPosWeekdayCombo->setCurrentItem( weekday );
 }
 
@@ -272,7 +282,11 @@ int RecurMonthly::day()
 
 int RecurMonthly::count()
 {
-  return mByPosCountCombo->currentItem() + 1;
+  int pos=mByPosCountCombo->currentItem();
+  if (pos<=4) // positive  count
+    return pos+1;
+  else
+    return -pos+4;
 }
 
 int RecurMonthly::weekday()
@@ -914,9 +928,10 @@ void KOEditorRecurrence::readEvent(Event *event)
 
       rmp = r->monthPositions();
       if ( rmp.first()->negative )
-        count = 5 - rmp.first()->rPos - 1;
+        count=-rmp.first()->rPos;
       else
-        count = rmp.first()->rPos - 1;
+        // give the week as -5 to -1 and 1 to 5. the widget will do the rest
+        count = rmp.first()->rPos;
       day = 0;
       while ( !rmp.first()->rDays.testBit( day ) ) ++day;
       mMonthly->setByPos( count, day );
@@ -928,7 +943,7 @@ void KOEditorRecurrence::readEvent(Event *event)
       recurrenceType = RecurrenceChooser::Monthly;
 
       rmd = r->monthDays();
-      day = *rmd.first() - 1;
+      day = *rmd.first();
       mMonthly->setByDay( day );
 
       mMonthly->setFrequency( f );
