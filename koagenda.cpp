@@ -542,7 +542,7 @@ bool KOAgenda::eventFilter_wheel ( QObject *object, QWheelEvent *e )
       Qt::Horizontal );
     accepted=true;
   }
-  
+
   if  ( ( e->state() & ControlButton ) == ControlButton ){
     if ( object != viewport() ) {
       viewportPos = ( (QWidget *)object )->mapToParent( e->pos() );
@@ -580,16 +580,16 @@ bool KOAgenda::eventFilter_mouse(QObject *object, QMouseEvent *me)
                                            mClickedItem->itemDate() );
           }
         } else {
-          mActionItem = dynamic_cast<KOAgendaItem *>(object);
-          if (mActionItem) {
-            selectItem(mActionItem);
-            Incidence *incidence = mActionItem->incidence();
-// OLD_RK:            if ( incidence->isReadOnly() || incidence->doesRecur() ) {
+          KOAgendaItem* item = dynamic_cast<KOAgendaItem *>(object);
+          if (item) {
+            Incidence *incidence = item->incidence();
             if ( incidence->isReadOnly() ) {
               mActionItem = 0;
             } else {
+              mActionItem = item;
               startItemAction(viewportPos);
             }
+            selectItem(mActionItem);
           }
         }
       } else {
@@ -1608,7 +1608,7 @@ KOAgendaItem *KOAgenda::insertAllDayItem( Incidence *event, QDate qd,
     if ( resourceCalendar )
       resourceColor = *KOPrefs::instance()->resourceColor( resourceCalendar->identifier() );
     else
-      kdDebug(5850) << "KOAgenda:insertAllDayItem: resource of "<< event->summary() 
+      kdDebug(5850) << "KOAgenda:insertAllDayItem: resource of "<< event->summary()
         << " is null" << endl;
   }else{
     kdDebug(5850) << "KOAgenda:insertAllDayItem: mCalendar is not a CalendarResources" <<endl;
@@ -1668,7 +1668,7 @@ void KOAgenda::insertMultiItem (Event *event,QDate qd,int XBegin,int XEnd,
       else cellYBottom = rows() - 1;
       newtext = QString("(%1/%2): ").arg( count ).arg( width );
       newtext.append( event->summary() );
-      
+
       current = insertItem( event, qd, cellX, cellYTop, cellYBottom );
       current->setText( newtext );
       multiItems.append( current );
