@@ -17,6 +17,7 @@
 #include <kdateedit.h>
 #include <kmessagebox.h>
 #include <kapp.h>
+#include <kdebug.h>
 
 #include "koprefsdialog.h"
 #include "koprefs.h"
@@ -662,31 +663,27 @@ void CalPrinter::drawWeek(QPainter &p, const QDate &qd, int width, int height)
 void CalPrinter::drawMonth(QPainter &p, const QDate &qd,
 			   int width, int height)
 {
-  bool firstCol = TRUE;
+  int weekdayCol;
   int offset = headerHeight+5+subHeaderHeight;
   int cellWidth = width/7;
   int cellHeight = (height-offset) / 5;
   QDate monthDate(QDate(qd.year(), qd.month(), 1));
-  int month = monthDate.month();
-
-  for (int row = 0; row < 5; row++) {
+ 
+  if (KGlobal::locale()->weekStartsMonday())
+    weekdayCol = monthDate.dayOfWeek() - 1;
+  else
+    weekdayCol = monthDate.dayOfWeek() % 7;
+  monthDate = monthDate.addDays(-weekdayCol);
+ 
+  for (int row = 0; row < (weekdayCol + qd.daysInMonth() - 1 )/7 + 1; row++) {
     for (int col = 0; col < 7; col++) {
-      if (monthDate.month() != month)
-	break;
-      if (firstCol) {
-	firstCol = FALSE;
-	if (KGlobal::locale()->weekStartsMonday())
-	  col = monthDate.dayOfWeek() - 1;
-	else
-	  col = monthDate.dayOfWeek() % 7;
-      }
-      drawDayBox(p, monthDate, 
-		 col*cellWidth, offset+row*cellHeight,
-		 cellWidth, cellHeight);
+      drawDayBox(p, monthDate, col*cellWidth, offset+row*cellHeight,
+                 cellWidth, cellHeight);
       monthDate = monthDate.addDays(1);
     }
   }
 }
+
 
 void CalPrinter::drawSmallMonth(QPainter &p, const QDate &qd, 
 				int x, int y, int width, int height)

@@ -128,14 +128,6 @@ bool VCalFormat::save(const QString &fileName)
   }
 #endif
 
-  kdDebug() << "-----" << fileName << "-----" << endl;
-
-//  const char *encodedFileName = (const char *)fileName.latin1();
-
-  kdDebug() << "VCalFormat::save(): Write to file "
-            << (const char *)QFile::encodeName(fileName)
-            << endl;
-
   writeVObjectToFile(const_cast<char *>(
                        (const char *)QFile::encodeName(fileName)
                      ),vcal);
