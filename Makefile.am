@@ -51,7 +51,7 @@ libkorganizer_la_SOURCES =  outgoingdialog_base.ui \
         filtereditdialog.cpp filteredit_base.ui \
         kowhatsnextview.cpp \
         kojournalview.cpp journalentry.cpp \
-        kocore.cpp plugindialog.cpp
+        kocore.cpp plugindialog.cpp mailscheduler.cpp
 
 METASOURCES = AUTO
 

@@ -29,7 +29,7 @@ KOMailClient::~KOMailClient()
 {
 }
 
-bool KOMailClient::mailAttendees(Incidence *incidence)
+bool KOMailClient::mailAttendees(Incidence *incidence,const QString &attachment)
 {
   QList<Attendee> attendees = incidence->attendees();
   if (attendees.count() == 0) return false;
@@ -48,14 +48,16 @@ bool KOMailClient::mailAttendees(Incidence *incidence)
 
   bool bcc = KOPrefs::instance()->mBcc;
   
-  return send(from,to,subject,body,bcc);
+  return send(from,to,subject,body,bcc,attachment);
 }
 
 bool KOMailClient::send(const QString &from,const QString &to,
-                        const QString &subject,const QString &body,bool bcc)
+                        const QString &subject,const QString &body,bool bcc,
+                        const QString &attachment)
 {
   kdDebug() << "KOMailClient::sendMail():\nFrom: " << from << "\nTo: " << to
-            << "\nSubject: " << subject << "\nBody: \n" << body << endl;
+            << "\nSubject: " << subject << "\nBody: \n" << body
+            << "\nAttachment:\n" << attachment << endl;
 
   if (KOPrefs::instance()->mMailClient == KOPrefs::MailClientSendmail) {
     bool needHeaders = true;
@@ -111,7 +113,13 @@ bool KOMailClient::send(const QString &from,const QString &to,
       return false;
     }
 
-    if (!kMailOpenComposer(to,"",from,subject,body,0,KURL())) return false;
+    if (attachment.isEmpty()) {
+      if (!kMailOpenComposer(to,"",from,subject,body,0,KURL())) return false;
+    } else {
+      if (!kMailOpenComposer(to,"",from,subject,body,0,"cal.ics","7bit",
+                             attachment.utf8(),"text","calendar","method","publish",
+                             "attachment")) return false;
+    }
   }
 
   return true;
@@ -144,6 +152,46 @@ int KOMailClient::kMailOpenComposer(const QString& arg0,const QString& arg1,
     kdDebug() << "kMailOpenComposer() call failed." << endl;
   }
   return result;
+}
+
+int KOMailClient::kMailOpenComposer( const QString& arg0, const QString& arg1,
+                                     const QString& arg2, const QString& arg3,
+                                     const QString& arg4, int arg5, const QString& arg6,
+                                     const QCString& arg7, const QCString& arg8,
+                                     const QCString& arg9, const QCString& arg10,
+                                     const QCString& arg11, const QString& arg12,
+                                     const QCString& arg13 )
+{
+    int result = 0;
+
+    QByteArray data, replyData;
+    QCString replyType;
+    QDataStream arg( data, IO_WriteOnly );
+    arg << arg0;
+    arg << arg1;
+    arg << arg2;
+    arg << arg3;
+    arg << arg4;
+    arg << arg5;
+    arg << arg6;
+    arg << arg7;
+    arg << arg8;
+    arg << arg9;
+    arg << arg10;
+    arg << arg11;
+    arg << arg12;
+    arg << arg13;
+    if ( kapp->dcopClient()->call("kmail","KMailIface","openComposer(QString,QString,QString,QString,QString,int,QString,QCString,QCString,QCString,QCString,QCString,QString,QCString)", data, replyType, replyData ) ) {
+	if ( replyType == "int" ) {
+	    QDataStream _reply_stream( replyData, IO_ReadOnly );
+	    _reply_stream >> result;
+	} else {
+            kdDebug() << "kMailOpenComposer() call failed." << endl;
+	}
+    } else { 
+        kdDebug() << "kMailOpenComposer() call failed." << endl;
+    }
+    return result;
 }
 
 

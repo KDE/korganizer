@@ -50,6 +50,7 @@ KOPrefsDialog::KOPrefsDialog(QWidget *parent, char *name, bool modal) :
   setupColorsTab();
   setupViewsTab();
   setupPrinterTab();
+  setupGroupSchedulingTab();
 }
 
 
@@ -137,8 +138,8 @@ void KOPrefsDialog::setupMainTab()
   connect(mEnableProjectView->checkBox(),SIGNAL(clicked()),
           SLOT(warningProjectView()));
 
-  // Disable settings for experimental features
-//  mEnableGroupScheduling->checkBox()->hide();
+  // Can't be disabled anymore
+  mEnableGroupScheduling->checkBox()->hide();
 
   // Disable setting, because this feature now becomes stable
   mEnableProjectView->checkBox()->hide();
@@ -448,6 +449,26 @@ void KOPrefsDialog::setupPrinterTab()
   topLayout->addWidget(mPrintPreviewEdit,3,1);
 
   topLayout->setRowStretch(4,1);
+}
+
+void KOPrefsDialog::setupGroupSchedulingTab()
+{
+  QFrame *topFrame  = addPage(i18n("Group Scheduling"),0,
+                              DesktopIcon("personal",KIcon::SizeMedium));
+
+  QGridLayout *topLayout = new QGridLayout(topFrame,5,2);
+  topLayout->setSpacing(spacingHint());
+  topLayout->setMargin(marginHint());
+
+  KPrefsWidRadios *schedulerGroup =
+      addWidRadios(i18n("Scheduler"),&(KOPrefs::instance()->mIMIPScheduler),
+                   topFrame);
+  schedulerGroup->addRadio(i18n("Dummy"));
+  schedulerGroup->addRadio(i18n("Mail Client"));
+
+  topLayout->addMultiCellWidget(schedulerGroup->groupBox(),0,0,0,1);
+
+  topLayout->setRowStretch(1,1);
 }
 
 

@@ -52,6 +52,7 @@ class KOPrefsDialog : public KPrefsDialog
     void setupViewsTab();
     void setupDisplayTab();
     void setupPrinterTab();
+    void setupGroupSchedulingTab();
 
     void setCombo(QComboBox *combo,const QString & text, const QStringList *tags = 0);
 

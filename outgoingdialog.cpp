@@ -1,9 +1,13 @@
 // $Id$
 
+#include <kdebug.h>
+
 #include "event.h"
 //#include "imipscheduler.h"
 #include "dummyscheduler.h"
 
+#include "koprefs.h"
+#include "mailscheduler.h"
 #include "outgoingdialog.h"
 
 ScheduleItemOut::ScheduleItemOut(QListView *parent,Event *ev,
@@ -30,7 +34,13 @@ OutgoingDialog::OutgoingDialog(Calendar *calendar,QWidget* parent,
 {
   mCalendar = calendar;
   
-  mScheduler = new DummyScheduler(mCalendar);
+  if (KOPrefs::instance()->mIMIPScheduler == KOPrefs::IMIPDummy ) {
+    kdDebug() << "--- Dummy" << endl;
+    mScheduler = new DummyScheduler(mCalendar);
+  } else {
+    kdDebug() << "--- Mailer" << endl;
+    mScheduler = new MailScheduler(mCalendar);
+  }
 }
 
 OutgoingDialog::~OutgoingDialog()
@@ -77,4 +87,5 @@ void OutgoingDialog::send()
 
   emit numMessagesChanged(mMessageListView->childCount());
 }
+
 #include "outgoingdialog.moc"

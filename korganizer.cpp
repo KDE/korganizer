@@ -96,14 +96,12 @@ KOrganizer::KOrganizer(const char *name)
 
 //  statusBar()->insertFixedItem(i18n("Active"),ID_ACTIVE);
 
-  if (KOPrefs::instance()->mEnableGroupScheduling) {
-    statusBar()->insertItem(i18n("Incoming Messages: %1").arg(0),
+  statusBar()->insertItem(i18n(" Incoming Messages: %1 ").arg(0),
                             ID_MESSAGES_IN);
-    statusBar()->insertItem(i18n("Outgoing Messages: %2").arg(0),
+  statusBar()->insertItem(i18n(" Outgoing Messages: %2 ").arg(0),
                             ID_MESSAGES_OUT);
-    statusBar()->setItemAlignment(ID_MESSAGES_IN,AlignRight);
-    statusBar()->setItemAlignment(ID_MESSAGES_OUT,AlignRight);
-  }
+  statusBar()->setItemAlignment(ID_MESSAGES_IN,AlignRight);
+  statusBar()->setItemAlignment(ID_MESSAGES_OUT,AlignRight);
   connect(statusBar(),SIGNAL(pressed(int)),SLOT(statusBarPressed(int)));
 
   readSettings();
@@ -445,12 +443,7 @@ void KOrganizer::initActions()
   (void)new KAction(i18n("&Tip of the day..."), 0,
                     this, SLOT(showTip()), actionCollection(), "help_tipofday");
   
-  if (KOPrefs::instance()->mEnableGroupScheduling) {
-    KMainWindow::createGUI("korganizergsui.rc");
-  } else {  
-//    KMainWindow::createGUI();
-    setXMLFile("korganizerui.rc");
-  }
+  setXMLFile("korganizerui.rc");
 
   KConfig *config = kapp->config();
 
@@ -1111,13 +1104,13 @@ void KOrganizer::statusBarPressed(int id)
 
 void KOrganizer::setNumIncoming(int num)
 {
-  statusBar()->changeItem(i18n("Incoming Messages: %1").arg(num),
+  statusBar()->changeItem(i18n(" Incoming Messages: %1 ").arg(num),
                           ID_MESSAGES_IN);
 }
 
 void KOrganizer::setNumOutgoing(int num)
 {
-  statusBar()->changeItem(i18n("Outgoing Messages: %1").arg(num),
+  statusBar()->changeItem(i18n(" Outgoing Messages: %1 ").arg(num),
                           ID_MESSAGES_OUT);
 }
 

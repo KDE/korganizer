@@ -19,6 +19,7 @@ class KOPrefs : public KPrefs
   public:
     enum { FormatVCalendar, FormatICalendar };
     enum { MailClientKMail, MailClientSendmail };
+    enum { IMIPDummy, IMIPKMail };
   
     virtual ~KOPrefs();
   
@@ -116,6 +117,8 @@ class KOPrefs : public KPrefs
     QString mHtmlExportFile;
 
     QStringList mSelectedPlugins;
+
+    int mIMIPScheduler;
 
   private:
     QDict<QColor> mCategoryColors;
