@@ -238,7 +238,8 @@ int KOTodoEditor::msgItemDelete()
 
 void KOTodoEditor::modified (int modification)
 {
-  if (modification == KOGlobals::CATEGORY_MODIFIED)
+  if (modification == KOGlobals::CATEGORY_MODIFIED || 
+      KOGlobals::UNKNOWN_MODIFIED == modification )
     mCategoryDialog->setSelected (mTodo->categories ());
   mGeneral->modified (mTodo, modification);
 

@@ -141,7 +141,7 @@ void KOTodoListView::contentsDropEvent(QDropEvent *e)
       mCalendar->addTodo(todo);
       emit todoDropped(todo);
     }
-  } 
+  }
   else {
     QString text;
     if (QTextDrag::decode(e,text)) {
@@ -266,6 +266,9 @@ KOTodoView::KOTodoView(Calendar *calendar,QWidget* parent,const char* name) :
   mTodoListView->setColumnAlignment(4,AlignHCenter);
 
   mTodoListView->setMinimumHeight( 60 );
+  mTodoListView->setItemsRenameable( TRUE );
+  mTodoListView->setRenameable( 0 );
+  
 
   mPriorityPopupMenu = new QPopupMenu;
   for (int i = 1; i <= 5; i++) {
@@ -374,7 +377,7 @@ void KOTodoView::updateView()
       insertTodoItem(todo);
     }
   }
-  
+
   // Restore opened/closed state
   mTodoListView->blockSignals( true );
   if( mDocPrefs ) restoreItemState( mTodoListView->firstChild() );
@@ -410,10 +413,13 @@ QMap<Todo *,KOTodoViewItem *>::ConstIterator
 //      kdDebug() << "    related not yet in list" << endl;
       itemIterator = insertTodoItem (relatedTodo);
     }
+    // isn't this pretty stupid? We give one Todo  to the KOTodoViewItem
+    // and one into the map. Sure finding is more easy but why? -zecke
     KOTodoViewItem *todoItem = new KOTodoViewItem(*itemIterator,todo,this);
     return mTodoMap.insert(todo,todoItem);
   } else {
 //    kdDebug() << "  no Related" << endl;
+      // see above -zecke
     KOTodoViewItem *todoItem = new KOTodoViewItem(mTodoListView,todo,this);
     return mTodoMap.insert(todo,todoItem);
   }
@@ -566,8 +572,8 @@ QPopupMenu * KOTodoView::getCategoryPopupMenu (KOTodoViewItem *todoItem)
   QStringList checkedCategories = todoItem->todo()->categories ();
 
   tempMenu->setCheckable (true);
-  for (QStringList::Iterator it = KOPrefs::instance()->mCustomCategories.begin (); 
-       it != KOPrefs::instance()->mCustomCategories.end (); 
+  for (QStringList::Iterator it = KOPrefs::instance()->mCustomCategories.begin ();
+       it != KOPrefs::instance()->mCustomCategories.end ();
        ++it) {
     int index = tempMenu->insertItem (*it);
     mCategory[index] = *it;
@@ -583,7 +589,7 @@ void KOTodoView::changedCategories(int index)
 {
   if (mActiveItem && !mActiveItem->todo()->isReadOnly ()) {
     QStringList categories = mActiveItem->todo()->categories ();
-    if (categories.find (mCategory[index]) != categories.end ()) 
+    if (categories.find (mCategory[index]) != categories.end ())
       categories.remove (mCategory[index]);
     else
       categories.insert (categories.end(), mCategory[index]);
@@ -600,7 +606,7 @@ void KOTodoView::itemClicked(QListViewItem *item)
 
   KOTodoViewItem *todoItem = (KOTodoViewItem *)item;
   int completed = todoItem->todo()->isCompleted();  // Completed or not?
-  
+
   if (todoItem->isOn()) {
     if (!completed) {
       todoItem->todo()->setCompleted(QDateTime::currentDateTime());
@@ -658,7 +664,10 @@ void KOTodoView::modified(bool b)
 {
   emit isModified(b);
 }
-
+void KOTodoView::setTodoModified( Todo* todo ) 
+{
+  emit todoModifiedSignal( todo, KOGlobals::UNKNOWN_MODIFIED );
+}
 void KOTodoView::clearSelection()
 {
   mTodoListView->selectAll( false );

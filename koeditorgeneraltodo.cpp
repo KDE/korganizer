@@ -396,5 +396,9 @@ void KOEditorGeneralTodo::modified (Todo* todo, int modification)
   case KOGlobals::CATEGORY_MODIFIED:
     setCategories (todo->categoriesStr ());
     break;
+  case KOGlobals::UNKNOWN_MODIFIED: // fall through
+  default:
+    readTodo( todo );  
+    break;
   }
 }

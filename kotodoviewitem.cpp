@@ -20,6 +20,7 @@
 // $Id$
 
 #include <klocale.h>
+#include <kdebug.h>
 #include <iostream.h>
 #include "kotodoviewitem.h"
 #include "kotodoview.h"
@@ -119,6 +120,7 @@ void KOTodoViewItem::construct()
 
 void KOTodoViewItem::stateChange(bool state)
 {
+  kdDebug() << "State changed, modified " << state << endl;
   QString keyd = "==";
   QString keyt = "==";
   
@@ -163,6 +165,7 @@ void KOTodoViewItem::stateChange(bool state)
     myChild = myChild->nextSibling();
   }
   mTodoView->modified(true);
+  mTodoView->setTodoModified( mTodo );
 }
 
 bool KOTodoViewItem::isAlternate()

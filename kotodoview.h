@@ -162,6 +162,17 @@ class KOTodoView : public KOrg::BaseView
     void processSelectionChange();
 
   private:
+    /*
+     * the TodoEditor approach is rather unscaling in the long
+     * run.
+     * Korganizer keeps it in memory and we need to update
+     * 1. make KOTodoViewItem a QObject again?
+     * 2. add a public method for setting one todo modified?
+     * 3. add a private method for setting a todo modified + friend here?
+     *  -- zecke 2002-07-08
+     */
+    friend class KOTodoViewItem;
+    void setTodoModified( Todo* );
     QMap<Todo *,KOTodoViewItem *>::ConstIterator insertTodoItem(Todo *todo);
     void restoreItemState( QListViewItem * );
 

@@ -786,8 +786,10 @@ void CalendarView::editEvent( Event *event )
 void CalendarView::editTodo( Todo *todo )
 {
   if ( !todo ) return;
+  kdDebug() << "CalendarView::editTodo" << endl;
 
   if ( mDialogList.find( todo ) != mDialogList.end() ) {
+    kdDebug() << "Already in the list " << endl;
     mDialogList[todo]->raise();
     mDialogList[todo]->show();
     return;
@@ -799,6 +801,7 @@ void CalendarView::editTodo( Todo *todo )
   }
 
   KOTodoEditor *todoEditor = mDialogManager->getTodoEditor();
+  kdDebug() << "New editor" << endl;
   mDialogList.insert( todo, todoEditor );
   todoEditor->editTodo( todo );
   todoEditor->show();
@@ -821,6 +824,7 @@ void CalendarView::showTodo(Todo *event)
 void CalendarView::todoModified (Todo *event, int changed)
 {
   if (mDialogList.find (event) != mDialogList.end ()) {
+    kdDebug() << "Todo modified and open" << endl;
     KOTodoEditor* temp = (KOTodoEditor *) mDialogList[event];
     temp->modified (changed);
 
