@@ -783,13 +783,28 @@ void KOTodoView::popupMenu( QListViewItem *item, const QPoint &, int column )
           getCategoryPopupMenu( mActiveItem )->popup( QCursor::pos() );
           break;
         default:
-          mCopyPopupMenu->datePicker()->setDate( date );
-          mCopyPopupMenu->datePicker()->setDate( QDate::currentDate() );
-          mItemPopupMenu->setItemEnabled( ePopupUnSubTodo,
-                                          mActiveItem->todo()->relatedTo() );
-          mItemPopupMenu->setItemEnabled( ePopupUnAllSubTodo,
-                                          !mActiveItem->todo()->relations().isEmpty() );
-          mItemPopupMenu->popup( QCursor::pos() );
+          int left =  mTodoListView->header()
+                      ->sectionPos( mTodoListView->header()->mapToIndex( 0 ) );
+          int width =  mTodoListView->treeStepSize()
+                       * ( mActiveItem->depth()
+                           + ( mTodoListView->rootIsDecorated() ? 1 : 0) )
+                       + mTodoListView->itemMargin();
+          left += width; // left side of checkbox
+          int cbi_width = 20; // FIXME: compute actual size of CheckBoxIndicator (use QStyle?)
+          int right = left + cbi_width; // right side of checkbox
+
+          QPoint wp = QWidget::mapFromGlobal( QCursor::pos() );
+
+          if ( wp.x() > right ) {
+            // Popup menu ONLY if the mouse position is right of the checkbox.
+            mCopyPopupMenu->datePicker()->setDate( date );
+            mCopyPopupMenu->datePicker()->setDate( QDate::currentDate() );
+            mItemPopupMenu->setItemEnabled( ePopupUnSubTodo,
+                                            mActiveItem->todo()->relatedTo() );
+            mItemPopupMenu->setItemEnabled( ePopupUnAllSubTodo,
+                                            !mActiveItem->todo()->relations().isEmpty() );
+            mItemPopupMenu->popup( QCursor::pos() );
+          }
       }
     } else {
       mItemPopupMenu->popup( QCursor::pos() );
