@@ -244,6 +244,19 @@ void Engine::upload( Entry *entry )
 
   entry->setPayload( fi.fileName(), lang );
 
+  QDomDocument doc("knewstuff");
+  doc.appendChild( doc.createProcessingInstruction(
+                   "xml", "version=\"1.0\" encoding=\"UTF-8\"" ) );
+  QDomElement de = doc.createElement("knewstuff");
+  doc.appendChild( de );
+
+  de.appendChild( mUploadEntry->createDomElement( doc, de ) );
+  
+  kdDebug() << "--DOM START--" << endl << doc.toString()
+            << "--DOM_END--" << endl;
+
+  mUploadMetaData = doc.toString().utf8();
+
   KURL destination = mUploadProvider->uploadUrl();
   destination.setFileName( fi.fileName() );
 
@@ -276,18 +289,8 @@ void Engine::slotUploadMetaJobDataReq( KIO::Job *, QByteArray &data )
 {
   if ( mMetaUploaded ) return;
   
-  QDomDocument doc("knewstuff");
-  doc.appendChild( doc.createProcessingInstruction(
-                   "xml", "version=\"1.0\" encoding=\"UTF-8\"" ) );
-  QDomElement de = doc.createElement("knewstuff");
-  doc.appendChild( de );
-
-  de.appendChild( mUploadEntry->createDomElement( doc, de ) );
+  data = mUploadMetaData;
   
-  kdDebug() << "--DOM START--" << endl << doc.toString() << endl;
-
-  data = doc.toString().utf8();
-
   mMetaUploaded = true;
 }
 

@@ -50,6 +50,7 @@ class Provider
     void setUploadUrl( const KURL & );
     KURL uploadUrl() const;
 
+  protected:
     void parseDomElement( const QDomElement & );
 
     QDomElement createDomElement( QDomDocument &, QDomElement &parent );

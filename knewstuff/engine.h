@@ -85,6 +85,7 @@ class Engine : public QObject
     Entry *mUploadEntry;
 
     bool mMetaUploaded;
+    QCString mUploadMetaData;
 
     KNewStuff *mNewStuff;
 
