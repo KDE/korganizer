@@ -71,6 +71,8 @@ KOrganizerPart::KOrganizerPart(QWidget *parent, const char *name) :
 
   QVBoxLayout *topLayout = new QVBoxLayout(canvas);
 
+  KGlobal::iconLoader()->addAppDir("korganizer");
+
   widget = new CalendarView(canvas);
   topLayout->addWidget(widget);
 
@@ -79,10 +81,10 @@ KOrganizerPart::KOrganizerPart(QWidget *parent, const char *name) :
   (void)new KAction(i18n("&List"), "list", 0,
                     widget, SLOT(view_list()),
                     actionCollection(), "view_list");
-  (void)new KAction(i18n("&Day"), "day", 0,
+  (void)new KAction(i18n("&Day"), "1day", 0,
                     widget, SLOT(view_day()),
                     actionCollection(), "view_day");
-  (void)new KAction(i18n("W&ork Week"), "5day", 0,
+  (void)new KAction(i18n("W&ork Week"), "5days", 0,
                     widget, SLOT(view_workweek()),
                     actionCollection(), "view_workweek");
   (void)new KAction(i18n("&Week"), "7days", 0,
