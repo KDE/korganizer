@@ -53,14 +53,8 @@ public:
 
   bool editIncidence( QString uid );
   bool deleteEvent( QString uid );
-  bool eventRequest( QString request, QString receiver, QString iCal );
-  bool eventReply( QString iCal );
-  bool cancelEvent( QString iCal );
 
-  // These are supposed to be moved to the upcoming HTML
-  // body part formatter plugin
-  QString formatICal( QString iCal );
-  QString formatTNEF( QByteArray tnef );
+  // TODO: Move to a library
   QString msTNEFToVPart( QByteArray tnef );
 
 private:

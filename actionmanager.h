@@ -133,14 +133,6 @@ class ActionManager : public QObject, public KCalendarIface
     /** Delete event with the given unique id from current calendar. */
     virtual bool deleteEvent( const QString& uid );
 
-    /** Handle incoming event scheduling */
-    bool eventRequest( const QString& request, const QString& receiver,
-		       const QString& ical );
-    /** Handle event replies */
-    bool eventReply( const QString& ical );
-    /** Handle cancelling an event */
-    bool cancelEvent( const QString& ical );
-
     bool editIncidence( const QString& uid );
 
     //// Implementation of the DCOP interface

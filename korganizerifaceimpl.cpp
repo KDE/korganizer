@@ -86,34 +86,6 @@ bool KOrganizerIfaceImpl::editIncidence( QString uid )
   return mActionManager->editIncidence( uid );
 }
 
-bool KOrganizerIfaceImpl::eventRequest( QString request, QString receiver,
-                                        QString ical )
-{
-  return mActionManager->eventRequest( request, receiver, ical );
-}
-
-bool KOrganizerIfaceImpl::eventReply( QString ical )
-{
-  return mActionManager->eventReply( ical );
-}
-
-bool KOrganizerIfaceImpl::cancelEvent( QString ical )
-{
-  return mActionManager->cancelEvent( ical );
-}
-
-QString KOrganizerIfaceImpl::formatICal( QString iCal )
-{
-  if( !KOGroupware::instance() ) return QString();
-  return KOGroupware::instance()->formatICal( iCal );
-}
-
-QString KOrganizerIfaceImpl::formatTNEF( QByteArray tnef )
-{
-  if( !KOGroupware::instance() ) return QString();
-  return KOGroupware::instance()->formatTNEF( tnef );
-}
-
 QString KOrganizerIfaceImpl::msTNEFToVPart( QByteArray tnef )
 {
   if( !KOGroupware::instance() ) return QString();
