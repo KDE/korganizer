@@ -1084,7 +1084,7 @@ void KOAgenda::placeSubCells( KOAgendaItem *placeItem )
 #if 0
   kdDebug(5850) << "KOAgenda::placeSubCells()" << endl;
   if ( placeItem ) {
-    Event *event = placeItem->itemEvent();
+    Incidence *event = placeItem->incidence();
     if ( !event ) {
       kdDebug(5850) << "  event is 0" << endl;
     } else {
@@ -1111,6 +1111,7 @@ void KOAgenda::placeSubCells( KOAgendaItem *placeItem )
   for ( i = items.first(); i; i = items.next() ) {
     item = static_cast<KOAgendaItem *>( i );
     placeAgendaItem( item, newSubCellWidth );
+    item->addConflictItem( placeItem );
     placeItem->addConflictItem( item );
   }
   if ( items.isEmpty() )
@@ -1283,13 +1284,13 @@ KOAgendaItem *KOAgenda::insertItem (Incidence *event,QDate qd,int X,int YTop,int
   connect( agendaItem, SIGNAL( showAgendaItem( KOAgendaItem* ) ),
            this, SLOT( showAgendaItem( KOAgendaItem* ) ) );
 
-  int YSize = YBottom - YTop + 1;
-  if (YSize < 0) {
+  if ( YBottom<=YTop ) {
     kdDebug(5850) << "KOAgenda::insertItem(): Text: " << agendaItem->text() << " YSize<0" << endl;
-    YSize = 1;
+    YBottom = YTop;
   }
 
-  agendaItem->resize((int)mGridSpacingX, (int)( mGridSpacingY * YSize ));
+  agendaItem->resize( (int)( (X+1)*mGridSpacingX ) - (int)( X*mGridSpacingX ), 
+                      (int)( YTop*mGridSpacingY ) - (int)( (YBottom+1) * mGridSpacingY ) );
   agendaItem->setCellXY(X,YTop,YBottom);
   agendaItem->setCellXRight(X);
 
@@ -1436,18 +1437,15 @@ bool KOAgenda::removeAgendaItem( KOAgendaItem* item )
     mItems.take( pos );
     taken = true;
   }
-  pos = conflictItems.find( thisItem );
-  if ( pos>=0 ) {
-    conflictItems.take( pos );
-  }
-  mItemsToDelete.append( thisItem );
 
   KOAgendaItem *confitem;
   for ( confitem = conflictItems.first(); confitem != 0;
         confitem = conflictItems.next() ) {
     // the item itself is also in its own conflictItems list!
-    placeSubCells(confitem);
+    if ( confitem != thisItem ) placeSubCells(confitem);
+    
   }
+  mItemsToDelete.append( thisItem );
   QTimer::singleShot( 0, this, SLOT( deleteItemsToDelete() ) );
   return taken;
 }

@@ -867,20 +867,26 @@ void KOAgendaView::changeEventDisplay(Event *event, int mode)
       }
       break;
 
-    case KOGlobals::EVENTEDITED:
+    case KOGlobals::EVENTEDITED:    
+/* TODO: Removing does not work, as it does not correctly reset the max nr. of conflicting items. Thus the items will sometimes not fill the whole width of the column. As a workaround, just recreate the whole view for now... 
       if ( event->doesFloat() ) {
         mAllDayAgenda->removeEvent( event );
       } else {
         mAgenda->removeEvent( event );
       }
       changeEventDisplayAdded( event );
+*/
+      updateView();
       break;
     case KOGlobals::EVENTDELETED:
+/* TODO: Same as above, the items will not use the whole column width, as maxSubCells will not be decremented/reset correctly. Just update the whole view for now.
       if ( event->doesFloat() ) {
         mAllDayAgenda->removeEvent( event );
       } else {
         mAgenda->removeEvent( event );
       }
+*/
+      updateView();
       break;
 
     default:
