@@ -679,9 +679,10 @@ KOEditorRecurrence::KOEditorRecurrence( QWidget* parent, const char *name ) :
     connect( mExceptionsButton, SIGNAL( clicked() ),
              SLOT( showExceptionsDialog() ) );
   } else {
-    mExceptionsDialog = 0;
     mExceptionsWidget = new ExceptionsWidget( this );
+    mExceptionsDialog = 0;
     mExceptions = mExceptionsWidget;
+    mExceptionsButton = 0;
     topLayout->addWidget( mExceptionsWidget, 3, 1 );
   }
 }
