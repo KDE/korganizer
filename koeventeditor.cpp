@@ -28,6 +28,7 @@
 #include <qlayout.h>
 #include <qwidgetstack.h>
 
+#include <kabc/addressee.h>
 #include <kiconloader.h>
 #include <kdebug.h>
 #include <klocale.h>
@@ -40,12 +41,14 @@
 
 #include "koprefs.h"
 #include "koeditorgeneralevent.h"
+#include "koeditoralarms.h"
 #include "koeditorrecurrence.h"
 #include "koeditordetails.h"
 #include "koeditorattachments.h"
 #include "koeditorfreebusy.h"
 #include "kogroupware.h"
 #include "kodialogmanager.h"
+#include "incidencechanger.h"
 
 #include "koeventeditor.h"
 
@@ -63,10 +66,11 @@ KOEventEditor::~KOEventEditor()
 void KOEventEditor::init()
 {
   setupGeneral();
-  setupAttendeesTab();
+//  setupAlarmsTab();
   setupRecurrence();
-  setupAttachmentsTab();
+  setupAttendeesTab();
   setupFreeBusy();
+  setupAttachmentsTab();
   mDetails->setFreeBusyWidget( mFreeBusy );
 
   // Propagate date time settings to recurrence tab
@@ -95,7 +99,7 @@ void KOEventEditor::init()
 
 void KOEventEditor::reload()
 {
-  kdDebug() << "KOEventEditor::reload()" << endl;
+  kdDebug(5850) << "KOEventEditor::reload()" << endl;
 
   if ( mEvent ) readEvent( mEvent );
 }
@@ -174,10 +178,10 @@ void KOEventEditor::setupFreeBusy()
   topLayout->addWidget( mFreeBusy );
 }
 
-void KOEventEditor::editIncidence(Incidence *incidence)
+void KOEventEditor::editIncidence( Incidence *incidence )
 {
   Event*event = dynamic_cast<Event*>(incidence);
-  if (event) {
+  if ( event ) {
     init();
 
     mEvent = event;
@@ -230,6 +234,21 @@ void KOEventEditor::newEvent( const QString &summary,
   }
 }
 
+void KOEventEditor::newEvent( const QString &summary,
+                              const QString &description,
+                              const QString &attachment,
+                              const QStringList &attendees )
+{
+  newEvent( summary, description, attachment );
+
+  QStringList::ConstIterator it;
+  for ( it = attendees.begin(); it != attendees.end(); ++it ) {
+    QString name, email;
+    KABC::Addressee::parseEmailAddress( *it, name, email );
+    mDetails->insertAttendee( new Attendee( name, email ) );
+  }
+}
+
 void KOEventEditor::loadDefaults()
 {
   QTime defaultDuration( KOPrefs::instance()->mDefaultDuration.time() );
@@ -241,60 +260,39 @@ void KOEventEditor::loadDefaults()
   setDefaults(from,to,false);
 }
 
-// TODO_RK: make sure calendar()->endChange is called somewhere!
 bool KOEventEditor::processInput()
 {
   kdDebug(5850) << "KOEventEditor::processInput()" << endl;
 
-  if ( !validateInput() ) return false;
+  if ( !validateInput() || !mChanger ) return false;
 
   if ( mEvent ) {
     bool rc = true;
-    Event *event = mEvent->clone();
     Event *oldEvent = mEvent->clone();
+    Event *event = mEvent->clone();
+    
     kdDebug(5850) << "KOEventEditor::processInput() write event." << endl;
     writeEvent( event );
     kdDebug(5850) << "KOEventEditor::processInput() event written." << endl;
-
-    if( *mEvent == *event )
+    
+    if( *event == *mEvent )
       // Don't do anything
       kdDebug(5850) << "Event not changed\n";
     else {
       kdDebug(5850) << "Event changed\n";
-      int revision = event->revision();
-      event->setRevision( revision + 1 );
-      if( !KOPrefs::instance()->mUseGroupwareCommunication ||
-          KOGroupware::instance()->sendICalMessage( this,
-                                                    KCal::Scheduler::Request,
-                                                    event ) ) {
-        // Accept the event changes
-        writeEvent( mEvent );
-        mEvent->setRevision( revision + 1 );
-        emit incidenceChanged( oldEvent, mEvent );
-      } else {
-        // Revert the changes
-        event->setRevision( revision );
-        rc = false;
-      }
+      //IncidenceChanger::assignIncidence( mEvent, event );
+      writeEvent( mEvent );
+      mChanger->changeIncidence( oldEvent, mEvent );
     }
     delete event;
     delete oldEvent;
     return rc;
   } else {
     mEvent = new Event;
-    mEvent->setOrganizer( KOPrefs::instance()->email() );
+    mEvent->setOrganizer( Person( KOPrefs::instance()->fullName(), 
+                          KOPrefs::instance()->email() ) );
     writeEvent( mEvent );
-    if ( KOPrefs::instance()->mUseGroupwareCommunication ) {
-      if ( !KOGroupware::instance()->sendICalMessage( this,
-                                                      KCal::Scheduler::Request,
-                                                      mEvent ) ) {
-        kdError() << "sendIcalMessage failed." << endl;
-      }
-    }
-    if ( mCalendar->addEvent( mEvent ) ) {
-      emit incidenceAdded( mEvent );
-    } else {
-      KODialogManager::errorSaveEvent( this );
+    if ( !mChanger->addIncidence( mEvent ) ) {
       delete mEvent;
       mEvent = 0;
       return false;
@@ -308,11 +306,7 @@ bool KOEventEditor::processInput()
 
 void KOEventEditor::processCancel()
 {
-  kdDebug() << "KOEventEditor::processCancel()" << endl;
-
-  if ( mEvent ) {
-    emit editCanceled( mEvent );
-  }
+  kdDebug(5850) << "KOEventEditor::processCancel()" << endl;
 
   if ( mFreeBusy ) mFreeBusy->cancelReload();
 }
@@ -321,21 +315,10 @@ void KOEventEditor::deleteEvent()
 {
   kdDebug(5850) << "Delete event" << endl;
 
-  if (mEvent) {
-    bool groupwareCheck = KOPrefs::instance()->mConfirm &&
-          (!KOPrefs::instance()->mUseGroupwareCommunication ||
-           KOPrefs::instance()->thatIsMe( mEvent->organizer() ) );
-    if (!groupwareCheck || (msgItemDelete()==KMessageBox::Continue)) {
-      // Either no groupware check needed, or OK pressed
-      emit incidenceToBeDeleted(mEvent);
-      emit dialogClose(mEvent);
-      mCalendar->deleteEvent(mEvent);
-      emit incidenceDeleted(mEvent);
-      reject();
-    }
-  } else {
-    reject();
-  }
+  if ( mEvent )
+    emit deleteIncidenceSignal( mEvent );
+  emit dialogClose( mEvent );
+  reject();
 }
 
 void KOEventEditor::setDefaults( QDateTime from, QDateTime to, bool allDay )
@@ -358,6 +341,7 @@ void KOEventEditor::readEvent( Event *event, bool tmpl )
   mDetails->readEvent( event );
   mRecurrence->readIncidence( event );
   mAttachments->readIncidence( event );
+//  mAlarms->readIncidence( event );
   if( mFreeBusy ) { 
     mFreeBusy->readEvent( event );
     mFreeBusy->triggerReload();
@@ -373,17 +357,7 @@ void KOEventEditor::writeEvent( Event *event )
   mDetails->writeEvent( event );
   mAttachments->writeIncidence( event );
 
-  // cancelAttendeeEvent removes all attendees from the incidence, 
-  // and then only adds those that need to be cancelled.
-  if ( KOPrefs::instance()->thatIsMe( event->organizer() ) ) {
-    Event *ev = new Event( *event );
-    ev->registerObserver( 0 );
-    mDetails->cancelAttendeeEvent( ev );
-    if ( ev->attendeeCount() > 0 ) {
-      emit deleteAttendee( ev );
-    }
-    delete( ev );
-  }
+  cancelRemovedAttendees( event );
 
   mRecurrence->writeIncidence( event );
 }

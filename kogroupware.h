@@ -66,7 +66,8 @@ class KOGroupware : public QObject
          user presses Yes og or No.
     */
     bool sendICalMessage( QWidget* parent, KCal::Scheduler::Method method,
-                          Incidence* incidence, bool isDeleting = false );
+                          Incidence* incidence, bool isDeleting = false,
+                          bool statusChanged = false );
 
     // THIS IS THE ACTUAL KM/KO API
     enum EventState { Accepted, ConditionallyAccepted, Declined, Request };
@@ -97,7 +98,7 @@ class KOGroupware : public QObject
     QString formatICal( const QString& iCal );
     // Format a TNEF attachment to an HTML mail
     QString formatTNEF( const QByteArray& tnef );
-    // Transform a TNEF attachment to an iCal or vCard
+    // convert the TNEF attachment to a vCard or iCalendar part
     QString msTNEFToVPart( const QByteArray& tnef );
 
   private slots:
