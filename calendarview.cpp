@@ -631,7 +631,7 @@ void CalendarView::incidenceChanged( Incidence *oldIncidence,
 //  calendar()->endChange( newIncidence );
   changeIncidenceDisplay( newIncidence, KOGlobals::INCIDENCEEDITED );
   updateUnmanagedViews();
-  checkForFilteredChange( incidence );
+  checkForFilteredChange( newIncidence );
 }
 
 void CalendarView::incidenceToBeDeleted( Incidence *incidence )
@@ -658,7 +658,7 @@ void CalendarView::checkForFilteredChange( Incidence *incidence )
   if ( !mCalendar->filter()->filterIncidence( incidence ) ) {
     // Incidence is filtered and thus not shown in the view, tell the 
     // user so that he isn't surprised if his new event doesn't show up
-    KMessageBox::information( i18n("The incidence \"%1\" is filtered by your "
+    KMessageBox::information( this, i18n("The incidence \"%1\" is filtered by your "
                               "current filter rules, so it will be hidden and "
                               "not appear in the view.").arg( incidence->summary() ),
                               i18n("Filter applied"), "ChangedIncidenceFiltered" );
