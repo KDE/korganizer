@@ -44,6 +44,7 @@
 #include <klocale.h>
 #include <kconfig.h>
 #include <kglobal.h>
+#include <kglobalsettings.h>
 
 #include <libkcal/calendar.h>
 #include <libkcal/icaldrag.h>
@@ -375,7 +376,7 @@ KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name) :
 #ifndef KORG_NOSPLITTER
   mSplitterAgenda = new QSplitter(Vertical,this);
   topLayout->addWidget(mSplitterAgenda);
-  mSplitterAgenda->setOpaqueResize();
+  mSplitterAgenda->setOpaqueResize( KGlobalSettings::opaqueResize() );
 
   mAllDayFrame = new QHBox(mSplitterAgenda);
 
