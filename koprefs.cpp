@@ -245,16 +245,16 @@ void KOPrefs::usrWriteConfig()
 
 void KOPrefs::setCategoryColor(QString cat,const QColor & color)
 {
-  mCategoryColors.replace(cat,new QColor(color));
+  mCategoryColors.replace( cat, new QColor( color ) );
 }
 
 QColor *KOPrefs::categoryColor(QString cat)
 {
   QColor *color = 0;
 
-  if (!cat.isEmpty()) color = mCategoryColors[cat];
+  if ( !cat.isEmpty() ) color = mCategoryColors[ cat ];
 
-  if (color) return color;
+  if ( color ) return color;
   else return &mDefaultCategoryColor;
 }
 
