@@ -1988,10 +1988,14 @@ void CalendarView::recurTodo( Todo *todo )
   if ( ( todo->hasDueDate() && todo->doesRecur() ) &&
      ( duration == -1 || duration > 1 ||
      ( duration == 0 && endDate.isValid() && todo->dtDue() < endDate ) ) ) {
-
+    
       Todo *copyTodo = new Todo( *todo );
       copyTodo->recreate();
       copyTodo->setPercentComplete(0);
+      
+      int length = 0;
+      if (todo->hasStartDate())
+        length = todo->dtDue().daysTo( todo->dtStart() );
 
       // find next date
       if ( todo->dtDue() > QDateTime::currentDateTime() ) {
@@ -2010,6 +2014,8 @@ void CalendarView::recurTodo( Todo *todo )
         if ( duration > 1 )
           copyTodo->recurrence()->setDuration( duration - 1 );
       }
+      
+      copyTodo->setDtStart( copyTodo->dtDue().addDays( length ) );
 
       copyTodo->recurrence()->setRecurStart( copyTodo->dtDue() );
       if ( duration > 1 )
