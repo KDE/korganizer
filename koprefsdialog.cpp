@@ -534,6 +534,9 @@ void KOPrefsDialog::setupPrinterTab()
   (void)new QRadioButton(i18n("Landscape"),mPaperOrientationGroup);
   topLayout->addMultiCellWidget(mPaperOrientationGroup,2,2,0,1);
 
+  // CalPrinter doesn't allow to chose the orientation
+  mPaperOrientationGroup->hide();
+
   topLayout->addWidget(new QLabel(i18n("Preview Program:"),mPrinterTab),3,0);
   mPrintPreviewEdit = new KURLRequester(mPrinterTab);
   topLayout->addWidget(mPrintPreviewEdit,3,1);

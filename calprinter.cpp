@@ -28,142 +28,154 @@
 #include "calprinter.h"
 #include "calprinter.moc"
 
-CalPrinter::CalPrinter(QWidget *par, Calendar *cal)
+CalPrinter::CalPrinter(QWidget *parent, Calendar *calendar)
   : QObject(0L, "CalPrinter")
 {
-  calendar = cal;
-  parent = par;
-  printer = new KPrinter;
-  cpd = 0L;
-  previewProc = new KProcess;
-  connect(previewProc, SIGNAL(processExited(KProcess *)), 
-	  SLOT(previewCleanup()));
-  printer->setOrientation(KPrinter::Landscape);
+  mCalendar = calendar;
+  mParent = parent;
+  mPrinter = new KPrinter;
+  mPrintDialog = new CalPrintDialog(mPrinter,parent);
+  mPrinter->setOrientation(KPrinter::Landscape);
+
+  mPreviewFile = 0;
 
   updateConfig();
 }
 
 CalPrinter::~CalPrinter()
 {
-  delete printer;
-  delete previewProc;
+  delete mPrinter;
 }
 
 void CalPrinter::setupPrinter()
 {
-  KOPrefsDialog *optionsDlg = new KOPrefsDialog;
+  KOPrefsDialog *optionsDlg = new KOPrefsDialog(mParent);
   optionsDlg->readConfig();
   optionsDlg->showPrinterTab();
   connect(optionsDlg, SIGNAL(configChanged()),
-	  parent, SLOT(updateConfig()));
+	  mParent, SLOT(updateConfig()));
 //  connect(optionsDlg, SIGNAL(closed(QWidget *)), 
 //	  parent, SLOT(cleanWindow(QWidget *)));
   optionsDlg->show(); 
-} 
+}
 
 void CalPrinter::preview(PrintType pt, const QDate &fd, const QDate &td)
 {
-  KTempFile	tmpfn;
+  mPrintDialog->setPreview(true);
+  mPrintDialog->setRange(fd,td);
 
-  oldOutputToFile = printer->outputToFile();
-  oldFileName = printer->outputFileName();
-
-  printer->setOutputToFile(TRUE);
-  printer->setOutputFileName(tmpfn.name());
-
-  cpd = new CalPrintDialog(printer, TRUE, fd, td);
   switch(pt) {
-  case Day: 
-    cpd->setPrintDay();
-    break;
-  case Week: 
-    cpd->setPrintWeek();
-    break;
-  case Month: 
-    cpd->setPrintMonth();
-    break;
-  case Todolist: 
-    cpd->setPrintTodo(); 
-    break;
+    case Day: 
+      mPrintDialog->setPrintDay();
+      break;
+    case Week: 
+      mPrintDialog->setPrintWeek();
+      break;
+    case Month: 
+      mPrintDialog->setPrintMonth();
+      break;
+    case Todolist: 
+      mPrintDialog->setPrintTodo(); 
+      break;
   }
 
-  connect(cpd, SIGNAL(doneSignal(int, QDate, QDate)), 
-	  this, SLOT(doPreview(int, QDate, QDate)));
-  cpd->show();
+  if (mPrintDialog->exec() == QDialog::Accepted) {
+    doPreview(mPrintDialog->printType(),mPrintDialog->fromDate(),
+              mPrintDialog->toDate());
+  }
 }
 
 void CalPrinter::doPreview(int pt, QDate fd, QDate td)
 {
+  bool oldOutputToFile = mPrinter->outputToFile();
+  QString oldFileName = mPrinter->outputFileName();
+
+  mPreviewFile = new KTempFile;
+  mPreviewFile->setAutoDelete(true);
+  mPrinter->setOutputToFile(true);
+  mPrinter->setOutputFileName(mPreviewFile->name());
+
   switch(pt) {
-  case Day: 
-    printDay(fd, td);
-    break;
-  case Week: 
-    printWeek(fd, td);
-    break;
-  case Month: 
-    printMonth(fd, td);
-    break;
-  case Todolist:
-    printTodo(fd, td);
-    break;
+    case Day:
+      printDay(fd, td);
+      break;
+    case Week:
+      printWeek(fd, td);
+      break;
+    case Month:
+      printMonth(fd, td);
+      break;
+    case Todolist:
+      printTodo(fd, td);
+      break;
   }
-  // remove temporary file.
-  QString tmpfn = printer->outputFileName();
-  ::unlink(tmpfn.latin1());
-  
+
   // restore previous settings that were used before the preview.
-  printer->setOutputToFile(oldOutputToFile);
-  printer->setOutputFileName(oldFileName);
+  mPrinter->setOutputToFile(oldOutputToFile);
+  mPrinter->setOutputFileName(oldFileName);
   
-  previewProg = KOPrefs::instance()->mPrintPreview;
+  QString previewProg = KOPrefs::instance()->mPrintPreview;
+
+  KProcess *previewProc = new KProcess;
+  connect(previewProc, SIGNAL(processExited(KProcess *)), 
+	  SLOT(previewCleanup(KProcess *)));
 
   previewProc->clearArguments(); // clear out any old arguments
   *previewProc << previewProg; // program name
-  *previewProc << previewFileName; // command line arguments
+  *previewProc << mPreviewFile->name(); // command line arguments
   if (!previewProc->start()) {
     KMessageBox::error(0,i18n("Could not start %1.").arg(previewProg));
   }
 }
 
+void CalPrinter::previewCleanup(KProcess *process)
+{
+  delete process;
+  delete mPreviewFile;
+  mPreviewFile = 0;
+}
+
 void CalPrinter::print(PrintType pt, const QDate &fd, const QDate &td)
 {
-  cpd = new CalPrintDialog(printer, FALSE, fd, td);
+  mPrintDialog->setPreview(false);
+  mPrintDialog->setRange(fd,td);
+
   switch(pt) {
-  case Day: 
-    cpd->setPrintDay();
-    break;
-  case Week: 
-    cpd->setPrintWeek();
-    break;
-  case Month: 
-    cpd->setPrintMonth();
-    break;
-  case Todolist: 
-    cpd->setPrintTodo(); 
-    break;
+    case Day: 
+      mPrintDialog->setPrintDay();
+      break;
+    case Week: 
+      mPrintDialog->setPrintWeek();
+      break;
+    case Month: 
+      mPrintDialog->setPrintMonth();
+      break;
+    case Todolist: 
+      mPrintDialog->setPrintTodo();
+      break;
   }
 
-  connect(cpd, SIGNAL(doneSignal(int, QDate, QDate)), 
-	  this, SLOT(doPrint(int, QDate, QDate)));
-  cpd->show();
+  if (mPrintDialog->exec() == QDialog::Accepted) {
+    doPrint(mPrintDialog->printType(),mPrintDialog->fromDate(),
+            mPrintDialog->toDate());
+  }
 }
 
 void CalPrinter::doPrint(int pt, QDate fd, QDate td)
 {
   switch(pt) {
-  case Day: 
-    printDay(fd, td);
-    break;
-  case Week: 
-    printWeek(fd, td);
-    break;
-  case Month: 
-    printMonth(fd, td);
-    break;
-  case Todolist: 
-    printTodo(fd, td);
-    break;
+    case Day: 
+      printDay(fd, td);
+      break;
+    case Week: 
+      printWeek(fd, td);
+      break;
+    case Month: 
+      printMonth(fd, td);
+      break;
+    case Todolist: 
+      printTodo(fd, td);
+      break;
   }
 }
 
@@ -174,29 +186,29 @@ void CalPrinter::updateConfig()
   // printer name
   QString pName = KOPrefs::instance()->mPrinter;
   if (!pName.isEmpty())
-    printer->setPrinterName(pName);
+    mPrinter->setPrinterName(pName);
 
   // paper size
   int val;
   val = KOPrefs::instance()->mPaperSize;
   switch(val) {
-  case 0: printer->setPageSize(KPrinter::A4); break;
-  case 1: printer->setPageSize(KPrinter::B5); break;
-  case 2: printer->setPageSize(KPrinter::Letter); break;
-  case 3: printer->setPageSize(KPrinter::Legal); break;
-  case 4: printer->setPageSize(KPrinter::Executive); break;
+    case 0: mPrinter->setPageSize(KPrinter::A4); break;
+    case 1: mPrinter->setPageSize(KPrinter::B5); break;
+    case 2: mPrinter->setPageSize(KPrinter::Letter); break;
+    case 3: mPrinter->setPageSize(KPrinter::Legal); break;
+    case 4: mPrinter->setPageSize(KPrinter::Executive); break;
   }
  
   // paper orientation
   // ignored for now.
   /*  val = config->readNumEntry("Paper Orientation", 1);
   if (val == 0)
-    printer->setOrientation(KPrinter::Portrait);
+    mPrinter->setOrientation(KPrinter::Portrait);
   else 
-    printer->setOrientation(KPrinter::Landscape);
+    mPrinter->setOrientation(KPrinter::Landscape);
   */
 
-  startHour = KOPrefs::instance()->mDayBegins;
+  mStartHour = KOPrefs::instance()->mDayBegins;
 }
 
 void CalPrinter::printDay(const QDate &fd, const QDate &td)
@@ -204,31 +216,31 @@ void CalPrinter::printDay(const QDate &fd, const QDate &td)
   QPainter p;
   QDate curDay, fromDay, toDay;
 
-  printer->setOrientation(KPrinter::Portrait);
+  mPrinter->setOrientation(KPrinter::Portrait);
 
   fromDay = fd;
   curDay = fd;
   toDay = td;
 
-  p.begin(printer);
+  p.begin(mPrinter);
   // the painter initially begins at 72 dpi per the Qt docs. 
   // we want half-inch margins.
-  margin = 36;
+  int margin = 36;
   p.setViewport(margin, margin, 
 		p.viewport().width()-margin, 
 		p.viewport().height()-margin);
-  pageWidth = p.viewport().width();
-  pageHeight = p.viewport().height();
-  headerHeight = 72;
-  subHeaderHeight = 20;
+  int pageWidth = p.viewport().width();
+  int pageHeight = p.viewport().height();
+  mHeaderHeight = 72;
+  mSubHeaderHeight = 20;
 
   do {
     drawHeader(p, curDay,toDay,curDay,
-	       pageWidth, headerHeight, Day);
+	       pageWidth, mHeaderHeight, Day);
     drawDay(p, curDay, pageWidth, pageHeight);
     curDay = curDay.addDays(1);
     if (curDay <= toDay)
-      printer->newPage();
+      mPrinter->newPage();
   } while (curDay <= toDay);
   
   p.end();
@@ -239,7 +251,7 @@ void CalPrinter::printWeek(const QDate &fd, const QDate &td)
   QPainter p;
   QDate curWeek, fromWeek, toWeek;
 
-  printer->setOrientation(KPrinter::Portrait);
+  mPrinter->setOrientation(KPrinter::Portrait);
 
   if (KGlobal::locale()->weekStartsMonday()) {
     // correct to monday
@@ -253,27 +265,27 @@ void CalPrinter::printWeek(const QDate &fd, const QDate &td)
     toWeek = td.addDays(6-td.dayOfWeek());
   }
 
-  p.begin(printer);
+  p.begin(mPrinter);
   // the painter initially begins at 72 dpi per the Qt docs. 
   // we want half-inch margins.
-  margin = 36;
+  int margin = 36;
   p.setViewport(margin, margin, 
 		p.viewport().width()-margin, 
 		p.viewport().height()-margin);
-  pageWidth = p.viewport().width();
-  pageHeight = p.viewport().height();
-  headerHeight = 72;
-  subHeaderHeight = 20;
+  int pageWidth = p.viewport().width();
+  int pageHeight = p.viewport().height();
+  mHeaderHeight = 72;
+  mSubHeaderHeight = 20;
 
   curWeek = fromWeek.addDays(6);
   do {
      drawHeader(p, fd, td,
 	       curWeek,
-	       pageWidth, headerHeight, Week);
+	       pageWidth, mHeaderHeight, Week);
     drawWeek(p, curWeek, pageWidth, pageHeight);
     curWeek = curWeek.addDays(7);
     if (curWeek <= toWeek)
-      printer->newPage();
+      mPrinter->newPage();
   } while (curWeek <= toWeek);
   
   p.end();
@@ -284,33 +296,33 @@ void CalPrinter::printMonth(const QDate &fd, const QDate &td)
   QPainter p;
   QDate curMonth, fromMonth, toMonth;
 
-  printer->setOrientation(KPrinter::Landscape);
+  mPrinter->setOrientation(KPrinter::Landscape);
 
   fromMonth = fd.addDays(-(fd.day()-1));
   toMonth = td.addDays(td.daysInMonth()-td.day());
 
-  p.begin(printer);
+  p.begin(mPrinter);
   // the painter initially begins at 72 dpi per the Qt docs.
   // we want half-inch margins.
-  margin = 36;
+  int margin = 36;
   p.setViewport(margin, margin,
 		p.viewport().width()-margin,
 		p.viewport().height()-margin);
-  pageWidth = p.viewport().width();
-  pageHeight = p.viewport().height();
-  headerHeight = 72;
-  subHeaderHeight = 20;
+  int pageWidth = p.viewport().width();
+  int pageHeight = p.viewport().height();
+  mHeaderHeight = 72;
+  mSubHeaderHeight = 20;
 
   curMonth = fromMonth;
   do {
     drawHeader(p, fromMonth,
 	       toMonth, curMonth,
-	       pageWidth, headerHeight, Month);
+	       pageWidth, mHeaderHeight, Month);
     drawDaysOfWeek(p, curMonth, pageWidth, pageHeight);
     drawMonth(p, curMonth, pageWidth, pageHeight);
     curMonth = curMonth.addDays(fromMonth.daysInMonth());
     if (fromMonth <= toMonth)
-      printer->newPage();
+      mPrinter->newPage();
   } while (curMonth <= toMonth);
 
   p.end();
@@ -321,12 +333,12 @@ void CalPrinter::printTodo(const QDate &fd, const QDate &td)
   KLocale *local = KGlobal::locale();
   QPainter p;
 
-  printer->setOrientation(KPrinter::Portrait);
+  mPrinter->setOrientation(KPrinter::Portrait);
 
-  p.begin(printer);
-  pageWidth = p.viewport().width();
-  pageHeight = p.viewport().height();
-  headerHeight = pageHeight/7 - 20;
+  p.begin(mPrinter);
+  int pageWidth = p.viewport().width();
+  int pageHeight = p.viewport().height();
+  mHeaderHeight = pageHeight/7 - 20;
 
   int pospriority = 10;
   int possummary = 50;
@@ -334,9 +346,9 @@ void CalPrinter::printTodo(const QDate &fd, const QDate &td)
   int lineSpacing = 15;
   int fontHeight = 10;
 
-  drawHeader(p, fd, td, fd, pageWidth, headerHeight, Todolist);
+  drawHeader(p, fd, td, fd, pageWidth, mHeaderHeight, Todolist);
 
-  QList<Todo> todoList = calendar->getTodoList();
+  QList<Todo> todoList = mCalendar->getTodoList();
   todoList.first();
   int count = 1;
   QString outStr;
@@ -347,17 +359,17 @@ void CalPrinter::printTodo(const QDate &fd, const QDate &td)
   p.setFont(QFont("helvetica", 10, QFont::Bold));
   outStr += i18n("Priority");
   
-  p.drawText(pospriority, headerHeight - 2,
+  p.drawText(pospriority, mHeaderHeight - 2,
 	     outStr);
   outStr.truncate(0);
   outStr += i18n("Summary");
   
-  p.drawText(possummary, headerHeight - 2,
+  p.drawText(possummary, mHeaderHeight - 2,
 		 outStr);
   outStr.truncate(0);
   outStr += i18n("Due");
  
-  p.drawText(posdue,  headerHeight - 2,
+  p.drawText(posdue,  mHeaderHeight - 2,
 		 outStr);  
   p.setFont(QFont("helvetica", 10));
 
@@ -381,24 +393,24 @@ void CalPrinter::printTodo(const QDate &fd, const QDate &td)
       if (priority > 0) {
 	  outStr.setNum(priority);
 	 
-	  p.drawText(pospriority, (lineSpacing*count)+headerHeight,
+	  p.drawText(pospriority, (lineSpacing*count)+mHeaderHeight,
 		     outStr);
       }
       // summary
       outStr=currEvent->summary();
      
-      p.drawText(possummary, (lineSpacing*count)+headerHeight,
+      p.drawText(possummary, (lineSpacing*count)+mHeaderHeight,
 		 outStr);
       // due
       if (currEvent->hasDueDate()){
         outStr = local->formatDate(currEvent->dtDue().date());
-        p.drawText(posdue, (lineSpacing*count)+headerHeight,
+        p.drawText(posdue, (lineSpacing*count)+mHeaderHeight,
 		 outStr);
       }
       // if terminated, cross it
       if (currEvent->isCompleted()) {
-	  p.drawLine( 5, (lineSpacing*count)+headerHeight-fontHeight/2 + 2, 
-		      pageWidth-5, (lineSpacing*count)+headerHeight-fontHeight/2 + 2);
+	  p.drawLine( 5, (lineSpacing*count)+mHeaderHeight-fontHeight/2 + 2, 
+		      pageWidth-5, (lineSpacing*count)+mHeaderHeight-fontHeight/2 + 2);
       }
       currEvent = todoList.next();
       ++count;
@@ -425,7 +437,7 @@ void CalPrinter::drawHeader(QPainter &p, const QDate &fd, const QDate &td,
   p.setFont(font);
   int lineSpacing = p.fontMetrics().lineSpacing();
   QString title;
-  QString myOwner(calendar->getOwner());
+  QString myOwner(mCalendar->getOwner());
 
   //  title.sprintf("%s %d Schedule for ",qd.monthName(qd.month()),qd.year());
   //  title += myOwner;
@@ -498,7 +510,7 @@ void CalPrinter::drawDayBox(QPainter &p, const QDate &qd,
   QList<Event> eventList;
   QString ampm;
 
-  QString hstring(calendar->getHolidayForDate(qd));
+  QString hstring(mCalendar->getHolidayForDate(qd));
 
   // This has to be localized
   if (fullDate) {
@@ -516,19 +528,19 @@ void CalPrinter::drawDayBox(QPainter &p, const QDate &qd,
 
   p.drawRect(x, y, width, height);
   // p.fillRect(x+1, y+1, width-2,height, QBrush(Dense7Pattern));
-  p.drawRect(x, y, width, subHeaderHeight);
-  p.fillRect(x+1, y+1, width-2, subHeaderHeight-2, QBrush(Dense7Pattern));
+  p.drawRect(x, y, width, mSubHeaderHeight);
+  p.fillRect(x+1, y+1, width-2, mSubHeaderHeight-2, QBrush(Dense7Pattern));
   if (!hstring.isEmpty()) {
     p.setFont(QFont("helvetica", 8, QFont::Bold, TRUE));
 
-    p.drawText(x+5, y, width-25, subHeaderHeight, AlignLeft | AlignVCenter,
+    p.drawText(x+5, y, width-25, mSubHeaderHeight, AlignLeft | AlignVCenter,
 	       hstring);
   }
   p.setFont(QFont("helvetica", 10, QFont::Bold));
-  p.drawText(x+5, y, width-10, subHeaderHeight, AlignRight | AlignVCenter,
+  p.drawText(x+5, y, width-10, mSubHeaderHeight, AlignRight | AlignVCenter,
 	     dayNumStr);
 
-  eventList = calendar->getEventsForDate(qd, TRUE);
+  eventList = mCalendar->getEventsForDate(qd, TRUE);
   eventList.first();
   int count = 1;
   QString outStr;
@@ -558,9 +570,9 @@ void CalPrinter::drawDayBox(QPainter &p, const QDate &qd,
 void CalPrinter::drawDaysOfWeek(QPainter &p, const QDate &qd, 
 				int width, int /*height*/)
 {	
-  int offset=headerHeight+5;
+  int offset=mHeaderHeight+5;
   int cellWidth = width/7;
-  int cellHeight = subHeaderHeight;
+  int cellHeight = mSubHeaderHeight;
   QDate monthDate(QDate(qd.year(), qd.month(),1));
 
   if (KGlobal::locale()->weekStartsMonday())
@@ -580,7 +592,7 @@ void CalPrinter::drawDaysOfWeek(QPainter &p, const QDate &qd,
 
 void CalPrinter::drawDay(QPainter &p, const QDate &qd, int width, int height)
 {
-  int offset = headerHeight + 5;
+  int offset = mHeaderHeight + 5;
   int cellWidth = width-80;
   int cellHeight = (height-offset) / 12; // 12 hour increments.
 
@@ -589,7 +601,7 @@ void CalPrinter::drawDay(QPainter &p, const QDate &qd, int width, int height)
     p.drawRect(0, offset+i*cellHeight, 75, cellHeight);
     p.drawLine(37, offset+i*cellHeight+(cellHeight/2),
 	       75, offset+i*cellHeight+(cellHeight/2));
-    numStr.setNum(i+startHour);
+    numStr.setNum(i+mStartHour);
     p.setFont(QFont("helvetica", 20, QFont::Bold));
     p.drawText(0, offset+i*cellHeight, 33, cellHeight/2,
 	       AlignTop|AlignRight, numStr);
@@ -604,7 +616,7 @@ void CalPrinter::drawDay(QPainter &p, const QDate &qd, int width, int height)
   }
 
   p.setFont(QFont("helvetica", 14));
-  QList<Event> eventList = calendar->getEventsForDate(qd, TRUE);
+  QList<Event> eventList = mCalendar->getEventsForDate(qd, TRUE);
   Event *currEvent;
   p.setBrush(QBrush(Dense7Pattern));
   for (currEvent = eventList.first(); currEvent;
@@ -612,12 +624,12 @@ void CalPrinter::drawDay(QPainter &p, const QDate &qd, int width, int height)
     int startTime = currEvent->dtStart().time().hour();
     int endTime = currEvent->dtEnd().time().hour();
     float minuteInc = cellHeight / 60.0;
-    if ((startTime >= startHour)  && 
-	(endTime <= (startHour + 12))) {
-      startTime -= startHour;
+    if ((startTime >= mStartHour)  && 
+	(endTime <= (mStartHour + 12))) {
+      startTime -= mStartHour;
       int startMinuteOff = (int) (minuteInc * 
 	currEvent->dtStart().time().minute());
-      endTime -= startHour;
+      endTime -= mStartHour;
       int endMinuteOff = (int) (minuteInc * 
 	currEvent->dtEnd().time().minute());
       p.drawRect(80, offset+startMinuteOff+startTime*cellHeight, 
@@ -635,7 +647,7 @@ void CalPrinter::drawDay(QPainter &p, const QDate &qd, int width, int height)
 void CalPrinter::drawWeek(QPainter &p, const QDate &qd, int width, int height)
 {
   QDate weekDate = qd;
-  int offset = headerHeight+5;
+  int offset = mHeaderHeight+5;
   int cellWidth = width/2;
   int cellHeight = (height-offset)/3;
 
@@ -669,7 +681,7 @@ void CalPrinter::drawMonth(QPainter &p, const QDate &qd,
 			   int width, int height)
 {
   int weekdayCol;
-  int offset = headerHeight+5+subHeaderHeight;
+  int offset = mHeaderHeight+5+mSubHeaderHeight;
   int cellWidth = width/7;
   int cellHeight = (height-offset) / 5;
   QDate monthDate(QDate(qd.year(), qd.month(), 1));
@@ -693,8 +705,6 @@ void CalPrinter::drawMonth(QPainter &p, const QDate &qd,
 void CalPrinter::drawSmallMonth(QPainter &p, const QDate &qd,
 				int x, int y, int width, int height)
 {
-
-
   bool firstCol = TRUE;
   QDate monthDate(QDate(qd.year(), qd.month(), 1));
   QDate monthDate2;
@@ -752,12 +762,10 @@ void CalPrinter::drawSmallMonth(QPainter &p, const QDate &qd,
 
 /****************************************************************************/
 
-CalPrintDialog::CalPrintDialog(KPrinter *p, bool preview, const QDate &fd, 
-			       const QDate &td, QWidget *parent, 
-			       const char *name)
-  : QDialog(parent, name, FALSE)
+CalPrintDialog::CalPrintDialog(KPrinter *p, QWidget *parent, const char *name)
+  : QDialog(parent, name, true)
 {
-  printer = p;
+  mPrinter = p;
 
   setCaption(i18n("Print"));
   
@@ -770,43 +778,43 @@ CalPrintDialog::CalPrintDialog(KPrinter *p, bool preview, const QDate &fd,
   layout2->addSpacing(10);
   QHBoxLayout *subLayout2 = new QHBoxLayout();
   layout2->addLayout(subLayout2);
+
+  mFromDateEdit = new KDateEdit(rangeGroup);
+//  fromDated->setMinimumHeight(30);
+//  fromDated->setMinimumSize(fromDated->sizeHint());
+//  fromDated->setDate(fd);
+  subLayout2->addWidget(mFromDateEdit);
   
-  fromDated = new KDateEdit(rangeGroup);
-  fromDated->setMinimumHeight(30);
-  fromDated->setMinimumSize(fromDated->sizeHint());
-  fromDated->setDate(fd);
-  subLayout2->addWidget(fromDated);
-  
-  toDated = new KDateEdit(rangeGroup);
-  toDated->setMinimumSize(toDated->sizeHint());
-  toDated->setDate(td);
-  subLayout2->addWidget(toDated);
+  mToDateEdit = new KDateEdit(rangeGroup);
+//  mToDateEdit->setMinimumSize(mToDateEdit->sizeHint());
+//  mToDateEdit->setDate(td);
+  subLayout2->addWidget(mToDateEdit);
     
   layout->addWidget(rangeGroup);
   
-  typeGroup = new QButtonGroup(i18n("View Type"), this);
-  QVBoxLayout *layout3 = new QVBoxLayout(typeGroup, 10);
+  mTypeGroup = new QButtonGroup(i18n("View Type"), this);
+  QVBoxLayout *layout3 = new QVBoxLayout(mTypeGroup, 10);
   layout3->addSpacing(10);
   
   QRadioButton *rButt;
-  layout3->addWidget(rButt = new QRadioButton(i18n("Day"), typeGroup));
+  layout3->addWidget(rButt = new QRadioButton(i18n("Day"), mTypeGroup));
   rButt->setMinimumHeight(rButt->sizeHint().height()-5);
   connect(rButt,  SIGNAL(clicked()), this, SLOT(setPrintDay()));  
   //  rButt->setEnabled(FALSE);
  
-  layout3->addWidget(rButt = new QRadioButton(i18n("Week"), typeGroup));
+  layout3->addWidget(rButt = new QRadioButton(i18n("Week"), mTypeGroup));
   rButt->setMinimumHeight(rButt->sizeHint().height()-5);
   connect(rButt,  SIGNAL(clicked()), this, SLOT(setPrintWeek()));  
 
-  layout3->addWidget(rButt = new QRadioButton(i18n("Month"), typeGroup));
+  layout3->addWidget(rButt = new QRadioButton(i18n("Month"), mTypeGroup));
   rButt->setMinimumHeight(rButt->sizeHint().height()-5);
   connect(rButt,  SIGNAL(clicked()), this, SLOT(setPrintMonth()));  
 
-  layout3->addWidget(rButt = new QRadioButton(i18n("To-Do"), typeGroup));
+  layout3->addWidget(rButt = new QRadioButton(i18n("To-Do"), mTypeGroup));
   rButt->setMinimumHeight(rButt->sizeHint().height()-5);
   connect(rButt,  SIGNAL(clicked()), this, SLOT(setPrintTodo()));  
   
-  layout->addWidget(typeGroup);
+  layout->addWidget(mTypeGroup);
 
   KSeparator *hLine = new KSeparator( KSeparator::HLine, this);
   layout->addWidget(hLine);
@@ -814,20 +822,14 @@ CalPrintDialog::CalPrintDialog(KPrinter *p, bool preview, const QDate &fd,
   QHBoxLayout *subLayout = new QHBoxLayout();
   layout->addLayout(subLayout);
 
-  QPushButton *button = new QPushButton((preview ? i18n("&Preview")
-					 : i18n("&Print")), 
-					this);
-  connect(button, SIGNAL(clicked()),
-	  this, SLOT(accept()));
-  button->setDefault(TRUE);
-  button->setAutoDefault(TRUE);
-  button->setFixedSize(button->sizeHint());
-  subLayout->addWidget(button);
+  mOkButton = new QPushButton(this);
+  connect(mOkButton,SIGNAL(clicked()),SLOT(accept()));
+  mOkButton->setDefault(true);
+  mOkButton->setAutoDefault(true);
+  subLayout->addWidget(mOkButton);
 
-  button = new QPushButton(i18n("&Cancel"), this);
-  connect(button, SIGNAL(clicked()),
-	  this, SLOT(reject()));
-  button->setFixedSize(button->sizeHint());
+  QPushButton *button = new QPushButton(i18n("&Cancel"), this);
+  connect(button, SIGNAL(clicked()),SLOT(reject()));
   subLayout->addWidget(button);
 }
 
@@ -835,54 +837,52 @@ CalPrintDialog::~CalPrintDialog()
 {
 }
 
-inline QDate CalPrintDialog::getFrom() const
+void CalPrintDialog::setRange(const QDate &from, const QDate &to)
 {
-  return fromDated->getDate();
+  mFromDateEdit->setDate(from);
+  mToDateEdit->setDate(to);
 }
 
-inline QDate CalPrintDialog::getTo() const
+void CalPrintDialog::setPreview(bool preview)
 {
-  return toDated->getDate();
+  mOkButton->setText(preview ? i18n("&Preview") : i18n("&Print"));
 }
 
-inline const CalPrinter::PrintType CalPrintDialog::getPrintType() const
+QDate CalPrintDialog::fromDate() const
 {
-  return pt;
+  return mFromDateEdit->getDate();
+}
+
+QDate CalPrintDialog::toDate() const
+{
+  return mToDateEdit->getDate();
+}
+
+CalPrinter::PrintType CalPrintDialog::printType() const
+{
+  return mPrintType;
 }
 
 void CalPrintDialog::setPrintDay()
 {
-  typeGroup->setButton(0);
-  pt = CalPrinter::Day;
+  mTypeGroup->setButton(0);
+  mPrintType = CalPrinter::Day;
 }
 
 void CalPrintDialog::setPrintWeek()
 {
-  typeGroup->setButton(1);
-  pt = CalPrinter::Week;
+  mTypeGroup->setButton(1);
+  mPrintType = CalPrinter::Week;
 }
 
 void CalPrintDialog::setPrintMonth()
 {
-  typeGroup->setButton(2);
-  pt = CalPrinter::Month;
+  mTypeGroup->setButton(2);
+  mPrintType = CalPrinter::Month;
 }
 
 void CalPrintDialog::setPrintTodo()
 {
-  typeGroup->setButton(3);
-  pt = CalPrinter::Todolist;
-}
-
-void CalPrintDialog::accept()
-{
-  hide();
-  emit doneSignal(pt, fromDated->getDate(), toDated->getDate());
-  delete this;
-}
-
-void CalPrintDialog::reject()
-{
-  hide();
-  delete this;
+  mTypeGroup->setButton(3);
+  mPrintType = CalPrinter::Todolist;
 }

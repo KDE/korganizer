@@ -22,94 +22,89 @@
 class KDateEdit;
 class QButtonGroup;
 class CalPrintDialog;
+class KTempFile;
 
 using namespace KCal;
 
 class CalPrinter : public QObject
 {
-  Q_OBJECT
+    Q_OBJECT
+  public:
+    enum PrintType { Day, Week, Month, Todolist };
+    CalPrinter(QWidget *par, Calendar *cal);
+    virtual ~CalPrinter();
 
-public:
-  enum PrintType { Day, Week, Month, Todolist };
-  CalPrinter(QWidget *par, Calendar *cal);
-  virtual ~CalPrinter();
+    void setupPrinter();
+    void preview(PrintType pt, const QDate &fd, const QDate &td);
+    void print(PrintType pt, const QDate &fd, const QDate &td);
 
-  void setupPrinter();
-  void preview(PrintType pt, const QDate &fd, const QDate &td);
-  void print(PrintType pt, const QDate &fd, const QDate &td);
+  public slots:
+    void updateConfig();
+    void printDay(const QDate &fd, const QDate &td);
+    void printWeek(const QDate &fd, const QDate &td);
+    void printMonth(const QDate &fd, const QDate &td);
+    void printTodo(const QDate &fd, const QDate &td);
 
-public slots:
-  void updateConfig();
-  void printDay(const QDate &fd, const QDate &td);
-  void printWeek(const QDate &fd, const QDate &td);
-  void printMonth(const QDate &fd, const QDate &td);
-  void printTodo(const QDate &fd, const QDate &td);
-
-protected slots:
-  void doPreview(int, QDate, QDate);
-  void doPrint(int, QDate, QDate);
-  void previewCleanup() { unlink(QFile::encodeName(previewFileName)); };
+  private slots:
+    void doPreview(int, QDate, QDate);
+    void doPrint(int, QDate, QDate);
+    void previewCleanup(KProcess *);
  
-protected:
-  void drawHeader(QPainter &p, const QDate &fd, const QDate &td,
-		  const QDate &cd,
-		  int width, int height, PrintType pt = Month);
-  void drawDayBox(QPainter &p, const QDate &qd,
-		  int x, int y, int width, int height, 
-		  bool fullDate = FALSE);
+  private:
+    void drawHeader(QPainter &p, const QDate &fd, const QDate &td,
+	            const QDate &cd,
+	            int width, int height, PrintType pt = Month);
+    void drawDayBox(QPainter &p, const QDate &qd,
+                    int x, int y, int width, int height, 
+                    bool fullDate = FALSE);
 
-  void drawDay(QPainter &p, const QDate &qd, int width, int height);
-  void drawWeek(QPainter &p, const QDate &qd, int width, int height);
-  void drawMonth(QPainter &p, const QDate &qd, int width, int height);
-  void drawSmallMonth(QPainter &p, const QDate &qd, 
-		      int x, int y, int width, int height);
-  void drawDaysOfWeekBox(QPainter &p, const QDate &qd,
-			 int x, int y, int width, int height);
-  void drawDaysOfWeek(QPainter &p, const QDate &qd, int width, int height);
+    void drawDay(QPainter &p, const QDate &qd, int width, int height);
+    void drawWeek(QPainter &p, const QDate &qd, int width, int height);
+    void drawMonth(QPainter &p, const QDate &qd, int width, int height);
+    void drawSmallMonth(QPainter &p, const QDate &qd, 
+	                int x, int y, int width, int height);
+    void drawDaysOfWeekBox(QPainter &p, const QDate &qd,
+                           int x, int y, int width, int height);
+    void drawDaysOfWeek(QPainter &p, const QDate &qd, int width, int height);
 
-  KProcess    *previewProc;
-  KPrinter    *printer;
-  QString      previewProg, previewFileName;
-  Calendar   *calendar;
-  QWidget     *parent;
-  int margin, pageWidth, pageHeight, headerHeight, subHeaderHeight;
-  bool oldOutputToFile;
-  int startHour;
-  QString oldFileName;
-  CalPrintDialog *cpd;
+    KPrinter *mPrinter;
+    KTempFile *mPreviewFile;
+    Calendar *mCalendar;
+    QWidget *mParent;
+    int mHeaderHeight;
+    int mSubHeaderHeight;
+    int mStartHour;
+    CalPrintDialog *mPrintDialog;
 };
 
 class CalPrintDialog : public QDialog
 {
-  Q_OBJECT
+    Q_OBJECT
+  public:
+    CalPrintDialog(KPrinter *p, QWidget *parent=0, const char *name=0);
+    virtual ~CalPrintDialog();
 
-public:
-  CalPrintDialog(KPrinter *p, bool preview, const QDate &fd, 
-		 const QDate &td, QWidget *parent=0, const char *name=0);
-  virtual ~CalPrintDialog();
+    QDate fromDate() const;
+    QDate toDate() const;
+    CalPrinter::PrintType printType() const;
 
-  QDate getFrom() const;
-  QDate getTo() const;
-  const CalPrinter::PrintType getPrintType() const;
+    void setRange(const QDate &from, const QDate &to);
+    void setPreview(bool);
 
-public slots:
-  void setPrintDay();
-  void setPrintWeek();
-  void setPrintMonth();
-  void setPrintTodo();
+  public slots:
+    void setPrintDay();
+    void setPrintWeek();
+    void setPrintMonth();
+    void setPrintTodo();
 
-protected slots:
-  void accept();
-  void reject();
- 
-signals:
-  void doneSignal(int, QDate, QDate);
+  private:
+    KPrinter *mPrinter;
 
-protected:
-  QButtonGroup *typeGroup;
-  KPrinter *printer;
-  KDateEdit *fromDated, *toDated;
-  CalPrinter::PrintType pt;
+    QPushButton *mOkButton;
+    QButtonGroup *mTypeGroup;
+    KDateEdit *mFromDateEdit;
+    KDateEdit *mToDateEdit;
+    CalPrinter::PrintType mPrintType;
 };
 
 #endif // _CALPRINTER_H
