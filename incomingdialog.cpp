@@ -60,7 +60,7 @@ ScheduleItemIn::ScheduleItemIn(QListView *parent,IncidenceBase *ev,
   mIncidence = ev;
   mMethod = method;
   mStatus = status;
-  setText(6,Scheduler::methodName(mMethod)+" ");
+  setText(6,Scheduler::translatedMethodName(mMethod)+" ");
   setText(7,ScheduleMessage::statusName(status));
 }
 
@@ -440,7 +440,7 @@ bool IncomingDialog::automaticAction(ScheduleItemIn *item)
         // reply freebusy information
         if ( checkOrganizerInAddressbook(inc->organizer()) ) {
           incomeRequest(item);
-        }                
+        }
       } else return false;
     } else {
 
@@ -455,7 +455,7 @@ bool IncomingDialog::automaticAction(ScheduleItemIn *item)
           if ( KOPrefs::instance()->mIMIPAutoFreeBusy==KOPrefs::addressbookAuto ) {
             // insert freebusy information
             //if ( checkOrganizerInAddressbook(inc->organizer()) )
-          
+
           }
         } else return false;
       }

@@ -118,7 +118,7 @@ ScheduleItemOut::ScheduleItemOut(QListView *parent,IncidenceBase *ev,
 
 //  kdDebug() << "ScheduleItemOut: Setting the method" << endl;
   //Set the Method
-  setText(5,Scheduler::methodName(mMethod));
+  setText(5,Scheduler::translatedMethodName(mMethod));
 }
 
 OutgoingDialog::OutgoingDialog(Calendar *calendar,QWidget* parent,
