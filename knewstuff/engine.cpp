@@ -237,7 +237,7 @@ void Engine::upload( Entry *entry )
   uploadFile = locateLocal( "appdata", "upload/" + uploadFile );
 
   if ( !mNewStuff->createUploadFile( uploadFile ) ) {
-    KMessageBox::error( mParentWidget, i18n("Can't create file to upload.") );
+    KMessageBox::error( mParentWidget, i18n("Unable to create file to upload") );
     return;
   }
 

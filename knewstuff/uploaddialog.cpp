@@ -73,7 +73,7 @@ UploadDialog::UploadDialog( Engine *engine, QWidget *parent ) :
   mReleaseSpin->setMinValue( 1 );
   topLayout->addWidget( mReleaseSpin, 3, 1 );
 
-  QLabel *licenceLabel = new QLabel( i18n("Licence"), topPage );
+  QLabel *licenceLabel = new QLabel( i18n("License"), topPage );
   topLayout->addWidget( licenceLabel, 4, 0 );
   mLicenceCombo = new QComboBox( topPage );
   mLicenceCombo->setEditable( true );
