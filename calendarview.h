@@ -367,6 +367,8 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     void purgeCompleted();
 
     void slotCalendarChanged();
+
+    void importQtopia( const QString &fileName );
     
   protected slots:
     /** Select a view or adapt the current view to display the specified dates. */

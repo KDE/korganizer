@@ -65,6 +65,7 @@
 #include <libkcal/freebusy.h>
 #include <libkcal/filestorage.h>
 #include <libkcal/calendarresources.h>
+#include <libkcal/qtopiaformat.h>
 
 #ifndef KORG_NOMAIL
 #include "komailclient.h"
@@ -1746,6 +1747,13 @@ void CalendarView::slotCalendarChanged()
 NavigatorBar *CalendarView::navigatorBar()
 {
   return mNavigatorBar;
+}
+
+void CalendarView::importQtopia( const QString &fileName )
+{
+  QtopiaFormat qtopiaFormat;
+  qtopiaFormat.load( mCalendar, fileName );  
+  updateView();
 }
 
 #include "calendarview.moc"
