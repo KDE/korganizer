@@ -19,6 +19,66 @@
 #include "kolistview.h"
 #include "kolistview.moc"
 
+ListItemVisitor::ListItemVisitor(KOListViewItem *item)
+{
+  mItem = item;
+
+// TODO: Change type of event() to Incidence *
+//  mItem->event()->accept(*this);
+}
+
+ListItemVisitor::~ListItemVisitor()
+{
+}
+
+bool ListItemVisitor::visit(Event *e)
+{
+// TODO: move KOEvent functions to Event class
+#if 0
+  mItem->setText(0,e->getSummary());
+  mItem->setText(1,e->getDtStartDateStr());
+  mItem->setText(2,e->getDtStartTimeStr());
+  mItem->setText(3,e->getDtEndDateStr());
+  mItem->setText(4,e->getDtEndTimeStr());
+  mItem->setText(5,e->getAlarmRepeatCount() ? i18n("Yes") : i18n("No"));
+  mItem->setText(6,e->doesRecur() ? i18n("Yes") : i18n("No"));
+  mItem->setText(7,"---");
+  mItem->setText(8,"---");
+#endif
+  return true;
+}
+
+bool ListItemVisitor::visit(Todo *t)
+{
+// TODO: move KOEvent functions to Event class
+#if 0
+  mItem->setText(0,i18n("Todo: %1").arg(t->getSummary()));
+  mItem->setText(1,"---");
+  mItem->setText(2,"---");
+  mItem->setText(3,"---");
+  mItem->setText(4,"---");
+  mItem->setText(5,"---");
+  mItem->setText(6,"---");
+  if (t->hasDueDate()) {
+    mItem->setText(7,t->getDtDueDateStr());
+    if (t->doesFloat()) {
+      mItem->setText(8,"---");
+    } else {
+      mItem->setText(8,t->getDtDueDateStr());
+    }
+  } else {
+    mItem->setText(7,"---");
+    mItem->setText(8,"---");
+  }
+#endif
+  return true;
+}
+
+bool ListItemVisitor::visit(Journal *)
+{
+  return false;
+}
+
 
 KOListViewItem::KOListViewItem(QListView *parent, KOEvent *ev)
   : QListViewItem(parent), mEvent(ev)

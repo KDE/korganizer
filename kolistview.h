@@ -10,6 +10,7 @@
 #include <qlistview.h>
 
 #include "koeventview.h"
+#include "incidencevisitor.h"
 
 /**
  * This class provides a way of displaying a single KOEvent in a QListView.
@@ -33,6 +34,24 @@ public:
 
 private:
   KOEvent *mEvent;
+};
+
+/**
+  This class provides the initialisation of a KOListViewItem for calendar
+  components using the IncidenceVisitor.
+*/
+class ListItemVisitor : public IncidenceVisitor
+{
+  public:
+    ListItemVisitor(KOListViewItem *);
+    ~ListItemVisitor();
+    
+    bool visit(Event *);
+    bool visit(Todo *);
+    bool visit(Journal *);
+
+  private:
+    KOListViewItem *mItem;
 };
 
 /**

@@ -11,6 +11,7 @@
 #include "attendee.h"
 #include "korecurrence.h"
 #include "koalarm.h"
+#include "incidencevisitor.h"
 
 // TODO: remove all the getBlah() functions.
 // TODO: make KORecurrence and KOAlarm members instead of base classes
@@ -21,6 +22,8 @@ class Incidence : public QObject, public KORecurrence, public KOAlarm
   public:
     Incidence();
     ~Incidence();
+
+    virtual bool accept(IncidenceVisitor &) { return false; }
     
     /** Recreate event. The event is made a new unique event, but already stored
     event information is preserved. Sets uniquie id, creation date, last

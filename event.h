@@ -12,6 +12,8 @@ class Event : public Incidence
   public:
     Event();
     ~Event();
+    
+    bool accept(IncidenceVisitor &v) { return v.visit(this); }
 };
 
 #endif

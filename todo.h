@@ -12,6 +12,8 @@ class Todo : public Incidence
   public:
     Todo();
     ~Todo();
+
+    bool accept(IncidenceVisitor &v) { return v.visit(this); }
 };
 
 #endif

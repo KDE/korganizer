@@ -145,7 +145,7 @@ class CalendarView : public QWidget
     void showTodo(KOEvent *);
     
     /** create new todo */
-    void newTodo();  
+    void newTodo();
     /** create new todo with a parent todo */
     void newSubTodo(KOEvent *);
     
