@@ -236,9 +236,9 @@ void KOEditorGeneral::readIncidence(Incidence *event)
   mSecrecyCombo->setCurrentItem(event->secrecy());
 
   // set up alarm stuff
-  const Alarm* alarm;
-  for (QPtrListIterator<Alarm> it(event->alarms());
-       (alarm = it.current()) != 0;  ++it) {
+  QPtrList<Alarm> alarms = event->alarms();
+  Alarm* alarm;
+  for ( alarm = alarms.first(); alarm; alarm = alarms.next() ) {
     mAlarmButton->setChecked(alarm->enabled());
     if (mAlarmButton->isChecked()) {
       alarmStuffEnable(true);
@@ -297,10 +297,11 @@ void KOEditorGeneral::writeIncidence(Incidence *event)
   event->setSecrecy(mSecrecyCombo->currentItem());
 
   // alarm stuff
-  Alarm* alarm;
-  for (QPtrListIterator<Alarm> it(event->alarms());
-       (alarm = it.current()) != 0;  ++it) {
-    if (mAlarmButton->isChecked()) {
+  if (mAlarmButton->isChecked()) {
+    if (event->alarms().count() == 0) event->newAlarm();
+    QPtrList<Alarm> alarms = event->alarms();
+    Alarm *alarm;
+    for (alarm = alarms.first(); alarm; alarm = alarms.next() ) {
       alarm->setEnabled(true);
       tmpStr = mAlarmTimeEdit->text();
       j = tmpStr.toInt() * -60;
@@ -320,12 +321,15 @@ void KOEditorGeneral::writeIncidence(Incidence *event)
         alarm->setAudioFile(mAlarmSound);
       else
         alarm->setAudioFile("");
-    } else {
+// TODO: Deal with multiple alarms
+      break; // For now, stop after the first alarm
+    }
+  } else {
+    Alarm* alarm = event->alarms().first();
+    if ( alarm ) {
       alarm->setEnabled(false);
       alarm->setProgramFile("");
       alarm->setAudioFile("");
     }
-// TODO: Deal with multiple alarms
-    break; // For now, stop after the first alarm
   }
 }
