@@ -278,14 +278,14 @@ KOTodoView::KOTodoView(Calendar *calendar,QWidget* parent,const char* name) :
   mTodoListView->setColumnWidthMode(6, QListView::Manual);
 
   
-  mPriorityPopupMenu = new QPopupMenu;
+  mPriorityPopupMenu = new QPopupMenu(this);
   for (int i = 1; i <= 5; i++) {
     QString label = QString ("%1").arg (i);
     mPriority[mPriorityPopupMenu->insertItem (label)] = i;
   }
   connect (mPriorityPopupMenu, SIGNAL(activated (int)), SLOT (setNewPriority(int)));
 
-  mPercentageCompletedPopupMenu = new QPopupMenu;
+  mPercentageCompletedPopupMenu = new QPopupMenu(this);
   for (int i = 0; i <= 100; i+=20) {
     QString label = QString ("%1 %").arg (i);
     mPercentage[mPercentageCompletedPopupMenu->insertItem (label)] = i;
@@ -294,7 +294,7 @@ KOTodoView::KOTodoView(Calendar *calendar,QWidget* parent,const char* name) :
 
 
 
-  mItemPopupMenu = new QPopupMenu;
+  mItemPopupMenu = new QPopupMenu(this);
   mItemPopupMenu->insertItem(i18n("Show"), this,
                              SLOT (showTodo()));
   mItemPopupMenu->insertItem(i18n("Edit..."), this,
@@ -310,7 +310,7 @@ KOTodoView::KOTodoView(Calendar *calendar,QWidget* parent,const char* name) :
   mItemPopupMenu->insertItem(i18n("delete completed To-Dos","Purge Completed"),
                              this, SLOT( purgeCompleted() ) );
 
-  mPopupMenu = new QPopupMenu;
+  mPopupMenu = new QPopupMenu(this);
   mPopupMenu->insertItem(SmallIconSet("todo"), i18n("New To-Do"), this,
                          SLOT (newTodo()));
   mPopupMenu->insertItem(i18n("delete completed To-Dos","Purge Completed"),
@@ -578,7 +578,7 @@ void KOTodoView::setNewPercentage(int index)
 
 QPopupMenu * KOTodoView::getCategoryPopupMenu (KOTodoViewItem *todoItem)
 {
-  QPopupMenu* tempMenu = new QPopupMenu ();
+  QPopupMenu* tempMenu = new QPopupMenu (this);
   QStringList checkedCategories = todoItem->todo()->categories ();
 
   tempMenu->setCheckable (true);
