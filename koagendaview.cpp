@@ -1207,14 +1207,15 @@ void KOAgendaView::insertIncidence( Incidence *incidence, const QDate &curDate,
     return;
   }
 
-  if ( incidence->doesFloat() ) {
+  if ( todo && todo->isOverdue() ) {
+    mAllDayAgenda->insertAllDayItem( incidence, curDate, curCol, curCol );
+  } else if ( incidence->doesFloat() ) {
     if ( incidence->recurrence()->doesRecur() ) {
       mAllDayAgenda->insertAllDayItem( incidence, curDate, curCol, curCol );
     } else {
       // Insert multi-day events only on the first day, otherwise it will
       // appear multiple times
-      // overdue to-dos are floating, even if they have a time set!
-      if ( ( beginX <= 0 && curCol == 0 ) || beginX == curCol || todo ) {
+      if ( ( beginX <= 0 && curCol == 0 ) || beginX == curCol ) {
         mAllDayAgenda->insertAllDayItem( incidence, curDate, beginX, endX );
       }
     }
@@ -1489,17 +1490,14 @@ void KOAgendaView::slotTodoDropped( Todo *todo, const QPoint &gpos, bool allDay 
   QTime time = mAgenda->gyToTime( gpos.y() );
   QDateTime newTime( day, time );
 
-  // overdue tasks should always float
-  bool floats = todo->isOverdue() ? true : allDay;
-
   if ( todo ) {
-    Todo *existingTodo = calendar()->todo(todo->uid());
+    Todo *existingTodo = calendar()->todo( todo->uid() );
     if ( existingTodo ) {
       kdDebug(5850) << "Drop existing Todo" << endl;
       Todo *oldTodo = existingTodo->clone();
       if ( mChanger && mChanger->beginChange( existingTodo ) ) {
         existingTodo->setDtDue( newTime );
-        existingTodo->setFloats( floats );
+        existingTodo->setFloats( allDay );
         existingTodo->setHasDueDate( true );
         mChanger->changeIncidence( oldTodo, existingTodo );
         mChanger->endChange( existingTodo );
@@ -1511,8 +1509,8 @@ void KOAgendaView::slotTodoDropped( Todo *todo, const QPoint &gpos, bool allDay 
     } else {
       kdDebug(5850) << "Drop new Todo" << endl;
       todo->setDtDue( newTime );
-      todo->setFloats( floats );
-      existingTodo->setHasDueDate( true );
+      todo->setFloats( allDay );
+      todo->setHasDueDate( true );
       if ( !mChanger->addIncidence( todo ) ) {
         KODialogManager::errorSaveIncidence( this, todo );
       }
