@@ -107,17 +107,16 @@ KOGroupware::KOGroupware( CalendarView* view, KCal::Calendar* calendar )
   mCalendar = calendar;
 
   // Set up the dir watch of the three incoming dirs
-  const QString incomingDirName = locateLocal("data","korganizer/income");
   KDirWatch* watcher = KDirWatch::self();
-  watcher->addDir( incomingDirName + ".accepted" );
-  watcher->addDir( incomingDirName + ".cancel" );
-  watcher->addDir( incomingDirName + ".reply" );
+  watcher->addDir( locateLocal( "data", "korganizer/income.accepted/" ) );
+  watcher->addDir( locateLocal( "data", "korganizer/income.cancel/" ) );
+  watcher->addDir( locateLocal( "data", "korganizer/income.reply/" ) );
   connect( watcher, SIGNAL( dirty( const QString& ) ),
            this, SLOT( incomingDirChanged( const QString& ) ) );
   // Now set the ball rolling
-  incomingDirChanged( incomingDirName + ".accepted" );
-  incomingDirChanged( incomingDirName + ".cancel" );
-  incomingDirChanged( incomingDirName + ".reply" );
+  incomingDirChanged( locateLocal( "data", "korganizer/income.accepted/" ) );
+  incomingDirChanged( locateLocal( "data", "korganizer/income.cancel/" ) );
+  incomingDirChanged( locateLocal( "data", "korganizer/income.reply/" ) );
 }
 
 FreeBusyManager *KOGroupware::freeBusyManager()
@@ -134,11 +133,16 @@ FreeBusyManager *KOGroupware::freeBusyManager()
 
 void KOGroupware::incomingDirChanged( const QString& path )
 {
-  const QString incomingDirName = locateLocal("data","korganizer/income.");
-  if ( !path.startsWith( incomingDirName ) )
-    // Not our problem
+  const QString incomingDirName = locateLocal( "data","korganizer/" )
+                                  + "income.";
+  if ( !path.startsWith( incomingDirName ) ) {
+    kdDebug(5850) << "incomingDirChanged: Wrong dir " << path << endl;
     return;
-  const QString action = path.mid( incomingDirName.length() );
+  }
+  QString action = path.mid( incomingDirName.length() );
+  while ( action.length() > 0 && action[ action.length()-1 ] == '/' )
+    // Strip slashes at the end
+    action.truncate( action.length()-1 );
 
   // Handle accepted invitations
   QDir dir( path );
