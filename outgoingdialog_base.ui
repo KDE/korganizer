@@ -1,4 +1,4 @@
-<!DOCTYPE UI><UI version="3.0" stdsetdef="1">
+<!DOCTYPE UI><UI version="3.1" stdsetdef="1">
 <class>OutgoingDialog_base</class>
 <widget class="QDialog">
     <property name="name">
@@ -8,8 +8,8 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>621</width>
-            <height>237</height>
+            <width>582</width>
+            <height>274</height>
         </rect>
     </property>
     <property name="caption">
@@ -33,7 +33,7 @@
                 <property name="clickable">
                     <bool>true</bool>
                 </property>
-                <property name="resizeable">
+                <property name="resizable">
                     <bool>true</bool>
                 </property>
             </column>
@@ -44,7 +44,7 @@
                 <property name="clickable">
                     <bool>true</bool>
                 </property>
-                <property name="resizeable">
+                <property name="resizable">
                     <bool>true</bool>
                 </property>
             </column>
@@ -55,7 +55,7 @@
                 <property name="clickable">
                     <bool>true</bool>
                 </property>
-                <property name="resizeable">
+                <property name="resizable">
                     <bool>true</bool>
                 </property>
             </column>
@@ -66,7 +66,7 @@
                 <property name="clickable">
                     <bool>true</bool>
                 </property>
-                <property name="resizeable">
+                <property name="resizable">
                     <bool>true</bool>
                 </property>
             </column>
@@ -77,7 +77,7 @@
                 <property name="clickable">
                     <bool>true</bool>
                 </property>
-                <property name="resizeable">
+                <property name="resizable">
                     <bool>true</bool>
                 </property>
             </column>
@@ -88,7 +88,7 @@
                 <property name="clickable">
                     <bool>true</bool>
                 </property>
-                <property name="resizeable">
+                <property name="resizable">
                     <bool>true</bool>
                 </property>
             </column>
@@ -110,7 +110,7 @@
                 <cstring>PushButton5</cstring>
             </property>
             <property name="text">
-                <string>Send Messages</string>
+                <string>&amp;Send Messages</string>
             </property>
             <property name="default">
                 <bool>false</bool>
@@ -121,7 +121,7 @@
                 <cstring>PushButton7</cstring>
             </property>
             <property name="text">
-                <string>Remove</string>
+                <string>&amp;Remove</string>
             </property>
         </widget>
         <widget class="QPushButton" row="3" column="1">
@@ -129,14 +129,14 @@
                 <cstring>PushButton6</cstring>
             </property>
             <property name="text">
-                <string>Close</string>
+                <string>&amp;Close</string>
             </property>
             <property name="default">
                 <bool>true</bool>
             </property>
         </widget>
         <spacer row="2" column="1">
-            <property name="name" stdset="0">
+            <property name="name">
                 <cstring>Spacer2</cstring>
             </property>
             <property name="orientation">

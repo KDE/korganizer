@@ -1,4 +1,4 @@
-<!DOCTYPE UI><UI version="3.0" stdsetdef="1">
+<!DOCTYPE UI><UI version="3.1" stdsetdef="1">
 <class>IncomingDialog_base</class>
 <widget class="QDialog">
     <property name="name">
@@ -8,8 +8,8 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>617</width>
-            <height>273</height>
+            <width>525</width>
+            <height>262</height>
         </rect>
     </property>
     <property name="caption">
@@ -25,51 +25,147 @@
         <property name="spacing">
             <number>6</number>
         </property>
-        <widget class="QGroupBox" row="1" column="1">
-            <property name="name">
-                <cstring>GroupBox1</cstring>
-            </property>
-            <property name="title">
-                <string>Message</string>
-            </property>
-            <grid>
-                <property name="name">
-                    <cstring>unnamed</cstring>
-                </property>
-                <property name="margin">
-                    <number>11</number>
-                </property>
-                <property name="spacing">
-                    <number>6</number>
-                </property>
-                <widget class="QPushButton" row="1" column="0">
-                    <property name="name">
-                        <cstring>PushButton9</cstring>
-                    </property>
-                    <property name="text">
-                        <string>Reject</string>
-                    </property>
-                </widget>
-                <widget class="QPushButton" row="0" column="0">
-                    <property name="name">
-                        <cstring>PushButton8</cstring>
-                    </property>
-                    <property name="text">
-                        <string>Accept</string>
-                    </property>
-                </widget>
-            </grid>
-        </widget>
         <widget class="QPushButton" row="0" column="1">
             <property name="name">
                 <cstring>PushButton4</cstring>
             </property>
             <property name="text">
-                <string>Retrieve Messages</string>
+                <string>Retrieve &amp;Messages</string>
             </property>
         </widget>
-        <spacer row="3" column="1">
-            <property name="name" stdset="0">
+        <widget class="QPushButton" row="5" column="1">
+            <property name="name">
+                <cstring>PushButton7</cstring>
+            </property>
+            <property name="text">
+                <string>&amp;Close</string>
+            </property>
+            <property name="default">
+                <bool>true</bool>
+            </property>
+        </widget>
+        <widget class="QListView" row="0" column="0" rowspan="6" colspan="1">
+            <column>
+                <property name="text">
+                    <string>Summary</string>
+                </property>
+                <property name="clickable">
+                    <bool>true</bool>
+                </property>
+                <property name="resizable">
+                    <bool>true</bool>
+                </property>
+            </column>
+            <column>
+                <property name="text">
+                    <string>Start Date</string>
+                </property>
+                <property name="clickable">
+                    <bool>true</bool>
+                </property>
+                <property name="resizable">
+                    <bool>true</bool>
+                </property>
+            </column>
+            <column>
+                <property name="text">
+                    <string>Start Time</string>
+                </property>
+                <property name="clickable">
+                    <bool>true</bool>
+                </property>
+                <property name="resizable">
+                    <bool>true</bool>
+                </property>
+            </column>
+            <column>
+                <property name="text">
+                    <string>End Date</string>
+                </property>
+                <property name="clickable">
+                    <bool>true</bool>
+                </property>
+                <property name="resizable">
+                    <bool>true</bool>
+                </property>
+            </column>
+            <column>
+                <property name="text">
+                    <string>End Time</string>
+                </property>
+                <property name="clickable">
+                    <bool>true</bool>
+                </property>
+                <property name="resizable">
+                    <bool>true</bool>
+                </property>
+            </column>
+            <column>
+                <property name="text">
+                    <string>Organizer</string>
+                </property>
+                <property name="clickable">
+                    <bool>true</bool>
+                </property>
+                <property name="resizable">
+                    <bool>true</bool>
+                </property>
+            </column>
+            <column>
+                <property name="text">
+                    <string>Method</string>
+                </property>
+                <property name="clickable">
+                    <bool>true</bool>
+                </property>
+                <property name="resizable">
+                    <bool>true</bool>
+                </property>
+            </column>
+            <column>
+                <property name="text">
+                    <string>Status</string>
+                </property>
+                <property name="clickable">
+                    <bool>true</bool>
+                </property>
+                <property name="resizable">
+                    <bool>true</bool>
+                </property>
+            </column>
+            <property name="name">
+                <cstring>mMessageListView</cstring>
+            </property>
+            <property name="allColumnsShowFocus">
+                <bool>false</bool>
+            </property>
+        </widget>
+        <widget class="QPushButton" row="3" column="1">
+            <property name="name">
+                <cstring>PushButton7_2</cstring>
+            </property>
+            <property name="text">
+                <string>Accept A&amp;ll</string>
+            </property>
+        </widget>
+        <widget class="QPushButton" row="1" column="1">
+            <property name="name">
+                <cstring>PushButton8</cstring>
+            </property>
+            <property name="text">
+                <string>&amp;Accept</string>
+            </property>
+        </widget>
+        <widget class="QPushButton" row="2" column="1">
+            <property name="name">
+                <cstring>PushButton9</cstring>
+            </property>
+            <property name="text">
+                <string>&amp;Reject</string>
+            </property>
+        </widget>
+        <spacer row="4" column="1">
+            <property name="name">
                 <cstring>Spacer3</cstring>
             </property>
             <property name="orientation">
@@ -81,122 +177,10 @@
             <property name="sizeHint">
                 <size>
                     <width>20</width>
-                    <height>20</height>
+                    <height>70</height>
                 </size>
             </property>
         </spacer>
-        <widget class="QPushButton" row="4" column="1">
-            <property name="name">
-                <cstring>PushButton7</cstring>
-            </property>
-            <property name="text">
-                <string>Close</string>
-            </property>
-        </widget>
-        <widget class="QListView" row="0" column="0" rowspan="5" colspan="1">
-            <column>
-                <property name="text">
-                    <string>Summary</string>
-                </property>
-                <property name="clickable">
-                    <bool>true</bool>
-                </property>
-                <property name="resizeable">
-                    <bool>true</bool>
-                </property>
-            </column>
-            <column>
-                <property name="text">
-                    <string>Start Date</string>
-                </property>
-                <property name="clickable">
-                    <bool>true</bool>
-                </property>
-                <property name="resizeable">
-                    <bool>true</bool>
-                </property>
-            </column>
-            <column>
-                <property name="text">
-                    <string>Start Time</string>
-                </property>
-                <property name="clickable">
-                    <bool>true</bool>
-                </property>
-                <property name="resizeable">
-                    <bool>true</bool>
-                </property>
-            </column>
-            <column>
-                <property name="text">
-                    <string>End Date</string>
-                </property>
-                <property name="clickable">
-                    <bool>true</bool>
-                </property>
-                <property name="resizeable">
-                    <bool>true</bool>
-                </property>
-            </column>
-            <column>
-                <property name="text">
-                    <string>End Time</string>
-                </property>
-                <property name="clickable">
-                    <bool>true</bool>
-                </property>
-                <property name="resizeable">
-                    <bool>true</bool>
-                </property>
-            </column>
-            <column>
-                <property name="text">
-                    <string>Organizer</string>
-                </property>
-                <property name="clickable">
-                    <bool>true</bool>
-                </property>
-                <property name="resizeable">
-                    <bool>true</bool>
-                </property>
-            </column>
-            <column>
-                <property name="text">
-                    <string>Method</string>
-                </property>
-                <property name="clickable">
-                    <bool>true</bool>
-                </property>
-                <property name="resizeable">
-                    <bool>true</bool>
-                </property>
-            </column>
-            <column>
-                <property name="text">
-                    <string>Status</string>
-                </property>
-                <property name="clickable">
-                    <bool>true</bool>
-                </property>
-                <property name="resizeable">
-                    <bool>true</bool>
-                </property>
-            </column>
-            <property name="name">
-                <cstring>mMessageListView</cstring>
-            </property>
-            <property name="allColumnsShowFocus">
-                <bool>true</bool>
-            </property>
-        </widget>
-        <widget class="QPushButton" row="2" column="1">
-            <property name="name">
-                <cstring>PushButton7_2</cstring>
-            </property>
-            <property name="text">
-                <string>Accept All</string>
-            </property>
-        </widget>
     </grid>
 </widget>
 <connections>
@@ -218,22 +202,15 @@
         <receiver>IncomingDialog_base</receiver>
         <slot>acceptAllMessages()</slot>
     </connection>
-    <connection>
-        <sender>PushButton8</sender>
-        <signal>clicked()</signal>
-        <receiver>IncomingDialog_base</receiver>
-        <slot>acceptMessage()</slot>
-    </connection>
-    <connection>
-        <sender>PushButton9</sender>
-        <signal>clicked()</signal>
-        <receiver>IncomingDialog_base</receiver>
-        <slot>rejectMessage()</slot>
-    </connection>
 </connections>
-<includes>
-    <include location="local" impldecl="in implementation">incomingdialog_base.ui.h</include>
-</includes>
+<tabstops>
+    <tabstop>PushButton7</tabstop>
+    <tabstop>PushButton4</tabstop>
+    <tabstop>PushButton7_2</tabstop>
+    <tabstop>mMessageListView</tabstop>
+    <tabstop>PushButton8</tabstop>
+    <tabstop>PushButton9</tabstop>
+</tabstops>
 <slots>
     <slot access="protected">acceptAllMessages()</slot>
     <slot access="protected">acceptMessage()</slot>
