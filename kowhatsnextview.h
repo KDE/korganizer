@@ -69,8 +69,7 @@ class KOWhatsNextView : public KOrg::BaseView
   protected:
     void appendEvent( Incidence *, const QDateTime &start = QDateTime(), 
                       const QDateTime &end = QDateTime() );
-    void appendTodo( Incidence *, int );
-    Incidence*  findToplevelTodo( Incidence *todo);
+    void appendTodo( Incidence * );
 
   private slots:
     void showIncidence(const QString &);
