@@ -57,7 +57,7 @@ KOAgendaItem::KOAgendaItem( Incidence *incidence, QDate qd, QWidget *parent,
   QWidget( parent, name, f ), mIncidence( incidence ), mDate( qd ),
   mLabelText( mIncidence->summary() ), mIconAlarm( false ),
   mIconRecur( false ), mIconReadonly( false ), mIconReply( false ),
-  mIconGroup( false ), mIconOrganizer( false ),
+  mIconGroup( false ), mIconGroupTentative( false ), mIconOrganizer( false ),
   mMultiItemInfo( 0 ), mStartMoveInfo( 0 )
 {
   setBackgroundMode( Qt::NoBackground );
@@ -85,6 +85,7 @@ void KOAgendaItem::updateIcons()
     if ( KOPrefs::instance()->thatIsMe( mIncidence->organizer().email() ) ) {
       mIconReply = false;
       mIconGroup = false;
+      mIconGroupTentative = false;
       mIconOrganizer = true;
     } else {
       Attendee *me = mIncidence->attendeeByMails( KOPrefs::instance()->allEmails() );
@@ -92,15 +93,23 @@ void KOAgendaItem::updateIcons()
         if ( me->status() == Attendee::NeedsAction && me->RSVP() ) {
           mIconReply = true;
           mIconGroup = false;
+          mIconGroupTentative = false;
+          mIconOrganizer = false;
+        } else if ( me->status() == Attendee::Tentative ) {
+          mIconReply = false;
+          mIconGroup = false;
+          mIconGroupTentative = true;
           mIconOrganizer = false;
         } else {
           mIconReply = false;
           mIconGroup = true;
+          mIconGroupTentative = false;
           mIconOrganizer = false;
         }
       } else {
         mIconReply = false;
         mIconGroup = true;
+        mIconGroupTentative = false;
         mIconOrganizer = false;
       }
     }
@@ -658,6 +667,7 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
   static const QPixmap readonlyPxmp = KOGlobals::self()->smallIcon("readonlyevent");
   static const QPixmap replyPxmp = KOGlobals::self()->smallIcon("mail_reply");
   static const QPixmap groupPxmp = KOGlobals::self()->smallIcon("groupevent");
+  static const QPixmap groupPxmpTentative = KOGlobals::self()->smallIcon("groupeventtentative");
   static const QPixmap organizerPxmp = KOGlobals::self()->smallIcon("organizer");
 
   QColor bgColor;
@@ -803,6 +813,7 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
   conditionalPaint( &p, mIconReadonly, x, ft, readonlyPxmp );
   conditionalPaint( &p, mIconReply, x, ft, replyPxmp );
   conditionalPaint( &p, mIconGroup, x, ft, groupPxmp );
+  conditionalPaint( &p, mIconGroupTentative, x, ft, groupPxmpTentative );
   conditionalPaint( &p, mIconOrganizer, x, ft, organizerPxmp );
 
   QString headline;

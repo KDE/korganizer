@@ -171,7 +171,8 @@ class KOAgendaItem : public QWidget, public KOrg::CellItem
     QDate mDate; //date this events occurs (for recurrence)
     QString mLabelText;
     bool mIconAlarm, mIconRecur, mIconReadonly;
-    bool mIconReply, mIconGroup, mIconOrganizer;
+    bool mIconReply, mIconGroup, mIconGroupTentative;
+    bool mIconOrganizer;
 
     // Multi item pointers
     MultiItemInfo* mMultiItemInfo;
