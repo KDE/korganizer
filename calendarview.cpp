@@ -240,6 +240,7 @@ bool CalendarView::initCalendar(QString filename)
       // while failing to load, the calendar object could 
       // have become partially populated.  Cle1ar it out.
       mCalendar->close();
+      QApplication::restoreOverrideCursor();
       return false;
     }
   }

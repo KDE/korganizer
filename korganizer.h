@@ -149,6 +149,9 @@ class KOrganizer : public KTMainWindow
     /** called by the autoSaveTimer to automatically save the calendar */
     void checkAutoSave();
 
+    /** Sets title of window according to filename and modification state */
+    void setTitle();
+
   protected:
     void initActions();
 
@@ -158,9 +161,6 @@ class KOrganizer : public KTMainWindow
 
     /** query whether autoSave is set or not */
     bool autoSave() { return mAutoSave; };
-
-    /** Sets title of window according to filename and modification state */
-    void setTitle();
 
     /** Get URL for saving. Opens FileDialog. */
     KURL getSaveURL();

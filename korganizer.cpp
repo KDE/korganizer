@@ -91,7 +91,7 @@ KOrganizer::KOrganizer(QString filename, bool fnOverride, const char *name )
   }
 
   mURL = KURL();
-  mURL.setPath( mFile) ;
+  mURL.setPath( mFile);
 
   mCalendarView = new CalendarView(mFile,this,"KOrganizer::CalendarView");
   setView(mCalendarView);
@@ -115,6 +115,8 @@ KOrganizer::KOrganizer(QString filename, bool fnOverride, const char *name )
     mAutoSaveTimer->start(1000*60);
 
   setTitle();
+
+  connect(mCalendarView,SIGNAL(modifiedChanged(bool)),SLOT(setTitle()));
 
   qDebug("KOrganizer::KOrganizer() done");
 }
@@ -326,6 +328,7 @@ void KOrganizer::file_open()
   KURL url;
   QString defaultPath = locateLocal("appdata", "");
   url = KFileDialog::getOpenURL(defaultPath,"*.vcs",this);
+
   if (openURL(url)) {
     setTitle();
     mRecent->addURL(url);
@@ -436,8 +439,7 @@ KURL KOrganizer::getSaveURL()
 
   url.setFileName(filename);
 
-  qDebug("KOrganizer::getSaveURL(): url: %s",
-         url.url().latin1());
+  qDebug("KOrganizer::getSaveURL(): url: %s",url.url().latin1());
 
   return url;
 }
@@ -489,10 +491,8 @@ void KOrganizer::setTitle()
 
   QString tmpStr;
 
-  if (!mFile.isEmpty())
-    tmpStr = mFile.mid(mFile.findRev('/')+1, mFile.length());
-  else
-    tmpStr = i18n("New Calendar");
+  if (!mURL.isEmpty()) tmpStr = mURL.filename();
+  else tmpStr = i18n("New Calendar");
 
   // display the modified thing in the title
   // if auto-save is on, we only display it on new calender (no file name)
@@ -556,9 +556,12 @@ bool KOrganizer::openURL( const KURL &url )
   if (!closeURL()) return false;
   mURL = url;
   mFile = "";
-  if( KIO::NetAccess::download( mURL, mFile ) ) {
+  if(KIO::NetAccess::download(mURL,mFile)) {
     return mCalendarView->openCalendar(mFile);
   } else {
+    QString msg;
+    msg = i18n("Cannot download calendar from %1").arg(mURL.prettyURL());
+    KMessageBox::error(this,msg);
     return false;
   }
 }
@@ -567,13 +570,12 @@ bool KOrganizer::openURL( const KURL &url )
 bool KOrganizer::mergeURL( const KURL &url )
 {
   qDebug("KOrganizer::mergeURL()");
-  if ( url.isMalformed() )
-    return false;
+  if (url.isMalformed()) return false;
 
   QString tmpFile;
-  if( KIO::NetAccess::download( mURL, tmpFile ) ) {
+  if( KIO::NetAccess::download(mURL,tmpFile)) {
     bool success = mCalendarView->mergeCalendar(tmpFile);
-    KIO::NetAccess::removeTempFile( tmpFile );
+    KIO::NetAccess::removeTempFile(tmpFile);
     return success;
   } else {
     return false;
@@ -625,8 +627,9 @@ bool KOrganizer::saveURL()
       qDebug("KOrganizer::saveURL(): dcop send failed");
     }
   }
-  if (KIO::NetAccess::upload(mFile,mURL)) {
-    qDebug("KOrganizer::saveURL(): upload failed.");
+  if (!KIO::NetAccess::upload(mFile,mURL)) {
+    QString msg = i18n("Cannot upload calendar to %1").arg(mURL.prettyURL());
+    KMessageBox::error(this,msg);
     return false;
   }
 
