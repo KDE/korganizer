@@ -11,6 +11,7 @@
 #include <qpushbutton.h>
 #include <qradiobutton.h>
 #include <qlayout.h>
+#include <qrect.h>
 
 #include <klocale.h>
 #include <kstddirs.h>
@@ -332,8 +333,8 @@ void CalPrinter::printMonth(const QDate &fd, const QDate &td)
 
 void CalPrinter::printTodo(const QDate &fd, const QDate &td)
 {
-  KLocale *local = KGlobal::locale();
   QPainter p;
+
 
   mPrinter->setOrientation(KPrinter::Portrait);
 
@@ -343,12 +344,15 @@ void CalPrinter::printTodo(const QDate &fd, const QDate &td)
   mHeaderHeight = pageHeight/7 - 20;
 
   int pospriority = 10;
-  int possummary = 50;
-  int posdue = pageWidth - 100;
+  int possummary = 60;
+  int posdue = pageWidth - 85;
   int lineSpacing = 15;
   int fontHeight = 10;
 
   drawHeader(p, fd, td, fd, pageWidth, mHeaderHeight, Todolist);
+
+   mCurrentLinePos = mHeaderHeight + 5;
+   kdDebug() << "Header Height: " << mCurrentLinePos << endl;
 
   QList<Todo> todoList = mCalendar->getTodoList();
   todoList.first();
@@ -379,6 +383,13 @@ void CalPrinter::printTodo(const QDate &fd, const QDate &td)
   for(int cprior = 1; cprior <= 6; cprior++) {
     Todo *currEvent(todoList.first());
     while (currEvent != NULL) {
+
+                //Filter out the subitems.
+      if (currEvent->relatedTo()){
+            currEvent = todoList.next();
+            continue;
+        }
+
       QDate start = currEvent->dtStart().date();
       // if it is not to start yet, skip.
       if ( (!start.isValid()) && (start >= td) ) {
@@ -392,33 +403,91 @@ void CalPrinter::printTodo(const QDate &fd, const QDate &td)
 	currEvent = todoList.next();
 	continue;
       }
-      if (priority > 0) {
-	  outStr.setNum(priority);
-	 
-	  p.drawText(pospriority, (lineSpacing*count)+mHeaderHeight,
-		     outStr);
-      }
-      // summary
-      outStr=currEvent->summary();
-     
-      p.drawText(possummary, (lineSpacing*count)+mHeaderHeight,
-		 outStr);
-      // due
-      if (currEvent->hasDueDate()){
-        outStr = local->formatDate(currEvent->dtDue().date());
-        p.drawText(posdue, (lineSpacing*count)+mHeaderHeight,
-		 outStr);
-      }
-      // if terminated, cross it
-      if (currEvent->isCompleted()) {
-	  p.drawLine( 5, (lineSpacing*count)+mHeaderHeight-fontHeight/2 + 2, 
-		      pageWidth-5, (lineSpacing*count)+mHeaderHeight-fontHeight/2 + 2);
-      }
+
+      drawTodo(count,currEvent,p);
       currEvent = todoList.next();
       ++count;
     }
   }
   p.end();
+}
+
+void CalPrinter::drawTodo(int count, Todo * item, QPainter &p,int level=0,QRect *r=0)
+{
+  QString outStr;
+  KLocale *local = KGlobal::locale();
+  int pageWidth = p.viewport().width();
+  int pageHeight = p.viewport().height();
+  int pospriority = 10;
+  int possummary = 60;
+  int posdue = pageWidth - 85;  //+ indent;
+  int fontHeight = 10;
+  int priority=item->priority();
+  QRect rect;
+  QRect startpoint;
+
+  // If this is a sub-item, r will not be 0, and we want the LH side of the priority line up
+  //to the RH side of the parent item's priority
+  if(r) {
+      pospriority = r->right() + 1;
+  }
+
+  // Priority
+  if (priority > 0) {
+    outStr.setNum(priority);
+    rect = p.boundingRect(pospriority,mCurrentLinePos + 10,
+                          5,-1,AlignCenter,outStr);
+    // Make it a more reasonable size
+    rect.setWidth(18);
+    rect.setHeight(18);
+    p.drawText(rect,AlignCenter, outStr);
+    p.drawRect(rect);
+    startpoint = rect; //save for later
+  }
+
+  // Connect the dots
+  if (level > 0) {
+    int center,bottom,to,endx;
+    center = r->left() + (r->width()/2);
+    bottom = r->bottom() + 1;
+    to = rect.top() + (rect.height()/2);
+    endx = rect.left();
+    p.moveTo(center,bottom);
+    p.lineTo(center,to);
+    p.lineTo(endx,to);
+  }
+
+  // summary
+  outStr=item->summary();
+  int left = possummary+(level*10);
+  int width = (posdue-left) + 10;
+  rect = p.boundingRect(left,rect.top(),
+                        (posdue-(left + rect.width() + 5)),-1,WordBreak,outStr);
+  QRect newrect;
+  p.drawText(rect,WordBreak,outStr,-1,&newrect);
+   
+  // due
+  if (item->hasDueDate()) {
+    outStr = local->formatDate(item->dtDue().date(),true);
+    rect = p.boundingRect(posdue,mCurrentLinePos, mCurrentLinePos,-1,AlignTop|AlignLeft,outStr);
+    p.drawText(rect, mCurrentLinePos, outStr);
+  }
+
+  // if terminated, cross it
+  if (item->isCompleted()) {
+    p.drawLine( 5, (mCurrentLinePos)-fontHeight/2 + 2,
+                    pageWidth-5, mCurrentLinePos-fontHeight/2 + 2);
+  }
+
+  // Set the new line position
+  mCurrentLinePos=newrect.bottom() + 10; //set the line position
+
+  // If the item has subitems, we need to call ourselves recursively
+  QList<Incidence> l = item->relations();
+  Incidence *c;
+  for(c=l.first();c;c=l.next()) {
+    drawTodo(count, static_cast<Todo *> (c),p,level+1,&startpoint);
+  }
 }
 
 
