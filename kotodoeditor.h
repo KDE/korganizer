@@ -38,12 +38,12 @@ class KOTodoEditor : public KOIncidenceEditor
   public:
     /**
       Constructs a new todo editor.
-    */  
+    */
     KOTodoEditor( Calendar *calendar, QWidget *parent );
     virtual ~KOTodoEditor();
 
     void init();
-  
+
     void reload();
 
     /**
@@ -93,9 +93,9 @@ class KOTodoEditor : public KOIncidenceEditor
     void loadDefaults();
     void deleteTodo();
 
-    void slotLoadTemplate();  
+    void slotLoadTemplate();
     void saveTemplate( const QString & );
-  
+
   protected:
     QString type() { return "ToDo"; }
     void setupGeneral();
@@ -104,7 +104,7 @@ class KOTodoEditor : public KOIncidenceEditor
 
   private:
     Todo *mTodo;
-    
+
     Todo *mRelatedTodo;
 
     KOEditorGeneralTodo *mGeneral;

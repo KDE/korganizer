@@ -778,15 +778,13 @@ void KOTodoView::setNewDate(QDate date)
       dt.setTime( todo->dtDue().time() );
 
     Todo *oldTodo = todo->clone();
-    if ( !todo->hasDueDate() )
-      todo->setHasDueDate( true );
 
     if ( date.isNull() )
       todo->setHasDueDate( false );
+    else if ( !todo->hasDueDate() )
+      todo->setHasDueDate( true );
     todo->setDtDue( dt );
-
-    if ( todo->doesRecur() )
-      todo->recurrence()->setRecurStart( todo->dtDue() );
+    todo->setRevision( todo->revision() + 1 );
 
     mActiveItem->construct();
     emit incidenceChanged( oldTodo, todo, KOGlobals::DATE_MODIFIED );

@@ -868,7 +868,7 @@ void CalendarView::newEvent(QDate dt)
   QTime startTime = KOPrefs::instance()->mStartTime.time();
   QTime defaultDuration( KOPrefs::instance()->mDefaultDuration.time() );
   QTime endTime = startTime.addSecs( defaultDuration.hour()*3600 +
-     defaultDuration.minute()*60 + defaultDuration.second() );
+                  defaultDuration.minute()*60 + defaultDuration.second() );
   newEvent(QDateTime(dt, startTime),
            QDateTime(dt, endTime), true);
 }
@@ -2052,31 +2052,26 @@ void CalendarView::editCanceled( Incidence *i )
 void CalendarView::recurTodo( Todo *todo )
 {
   if (!todo) return;
-  Recurrence *r = todo->recurrence();
 
-  QDateTime endDateTime = r->endDateTime();
-  if ( ( todo->hasDueDate() && todo->doesRecur() ) &&
-     ( r->duration() == -1 ||
-     ( endDateTime.isValid() && todo->dtDue() < endDateTime ) ) ) {
+  if ( todo->doesRecur() ) {
+    Recurrence *r = todo->recurrence();
+    QDateTime endDateTime = r->endDateTime();
+    QDateTime nextDate = r->getNextDateTime( todo->dtDue() );
 
-      int length = 0;
-      if (todo->hasStartDate())
-        length = todo->dtDue().daysTo( todo->dtStart() );
-
-      do {
+    if ( ( r->duration() == -1 || ( nextDate.isValid() && endDateTime.isValid()
+                                    && nextDate <= endDateTime ) ) ) {
+      todo->setDtDue( nextDate );
+      while ( !todo->recursAt( todo->dtDue() ) ||
+               todo->dtDue() <= QDateTime::currentDateTime() ) {
         todo->setDtDue( r->getNextDateTime( todo->dtDue() ) );
-      } while ( !todo->recursAt( todo->dtDue() ) ||
-                 todo->dtDue() <= QDateTime::currentDateTime() );
+      }
 
-      // prevent setDtStart() from overwriting recurrence's startdate
-      QDateTime oldRecStartDate = r->recurStart();
-      todo->setDtStart( todo->dtDue().addDays( length ) );
-      r->setRecurStart( oldRecStartDate );
       todo->setCompleted( false );
+      todo->setRevision( todo->revision() + 1 );
 
       return;
+    }
   }
-
   todo->setCompleted( QDateTime::currentDateTime() );
   // incidenceChanged(todo) should be emitted by caller.
 }

@@ -121,15 +121,15 @@ void KOEditorGeneralTodo::initTime(QWidget *parent,QBoxLayout *topLayout)
   mStartCheck = new QCheckBox(i18n("Sta&rt:"),timeBoxFrame);
   layoutTimeBox->addWidget(mStartCheck,1,0);
   connect(mStartCheck,SIGNAL(toggled(bool)),SLOT(enableStartEdit(bool)));
-  connect(mStartCheck,SIGNAL(toggled(bool)),SLOT(dateChanged()));
+  connect(mStartCheck,SIGNAL(toggled(bool)),SLOT(startDateModified()));
 
   mStartDateEdit = new KDateEdit(timeBoxFrame);
   layoutTimeBox->addWidget(mStartDateEdit,1,1);
-  connect(mStartDateEdit,SIGNAL(dateChanged(QDate)),SLOT(dateChanged()));
+  connect(mStartDateEdit,SIGNAL(dateChanged(QDate)),SLOT(startDateModified()));
 
   mStartTimeEdit = new KTimeEdit(timeBoxFrame);
   layoutTimeBox->addWidget(mStartTimeEdit,1,2);
-  connect(mStartTimeEdit,SIGNAL(timeChanged(QTime)),SLOT(dateChanged()));
+  connect(mStartTimeEdit,SIGNAL(timeChanged(QTime)),SLOT(startDateModified()));
 
   mTimeButton = new QCheckBox(i18n("Ti&me associated"),timeBoxFrame);
   layoutTimeBox->addMultiCellWidget(mTimeButton,2,2,0,2);
@@ -211,6 +211,7 @@ void KOEditorGeneralTodo::setDefaults(QDateTime due,bool allDay)
 
   mStartDateEdit->setDate(QDate::currentDate());
   mStartTimeEdit->setTime(QTime::currentTime());
+  mStartDateModified = false;
 
   mPriorityCombo->setCurrentItem(2);
 
@@ -252,15 +253,16 @@ void KOEditorGeneralTodo::readTodo(Todo *todo)
 
   mTimeButton->setChecked( !todo->doesFloat() );
 
-  alreadyComplete = false;
+  mAlreadyComplete = false;
   mCompletedCombo->setCurrentItem(todo->percentComplete() / 10);
   if (todo->isCompleted() && todo->hasCompletedDate()) {
     mCompleted = todo->completed();
-    alreadyComplete = true;
+    mAlreadyComplete = true;
   }
   setCompletedDate();
 
   mPriorityCombo->setCurrentItem(todo->priority()-1);
+  mStartDateModified = false;
 }
 
 void KOEditorGeneralTodo::writeTodo(Todo *todo)
@@ -273,40 +275,52 @@ void KOEditorGeneralTodo::writeTodo(Todo *todo)
   todo->setHasDueDate(mDueCheck->isChecked());
   todo->setHasStartDate(mStartCheck->isChecked());
 
-  QDate tmpDate;
-  QTime tmpTime;
-  QDateTime tmpDT;
+  QDate tmpSDate, tmpDDate;
+  QTime tmpSTime, tmpDTime;
+  QDateTime tmpStartDT, tmpDueDT;
   if ( mTimeButton->isChecked() ) {
     todo->setFloats(false);
 
     // set due date/time
-    tmpDate = mDueDateEdit->date();
-    tmpTime = mDueTimeEdit->getTime();
-    tmpDT.setDate(tmpDate);
-    tmpDT.setTime(tmpTime);
-    todo->setDtDue(tmpDT);
+    tmpDDate = mDueDateEdit->date();
+    tmpDTime = mDueTimeEdit->getTime();
+    tmpDueDT.setDate(tmpDDate);
+    tmpDueDT.setTime(tmpDTime);
 
     // set start date/time
-    tmpDate = mStartDateEdit->date();
-    tmpTime = mStartTimeEdit->getTime();
-    tmpDT.setDate(tmpDate);
-    tmpDT.setTime(tmpTime);
-    todo->setDtStart(tmpDT);
+    if ( mStartCheck->isChecked() ) {
+      tmpSDate = mStartDateEdit->date();
+      tmpSTime = mStartTimeEdit->getTime();
+      tmpStartDT.setDate(tmpSDate);
+      tmpStartDT.setTime(tmpSTime);
+    } else {
+      tmpStartDT = tmpDueDT;
+    }
   } else {
     todo->setFloats(true);
 
     // need to change this.
-    tmpDate = mDueDateEdit->date();
-    tmpTime.setHMS(0,0,0);
-    tmpDT.setDate(tmpDate);
-    tmpDT.setTime(tmpTime);
-    todo->setDtDue(tmpDT);
+    tmpDDate = mDueDateEdit->date();
+    tmpDTime.setHMS(0,0,0);
+    tmpDueDT.setDate(tmpDDate);
+    tmpDueDT.setTime(tmpDTime);
 
-    tmpDate = mStartDateEdit->date();
-    tmpTime.setHMS(0,0,0);
-    tmpDT.setDate(tmpDate);
-    tmpDT.setTime(tmpTime);
-    todo->setDtStart(tmpDT);
+    if ( mStartCheck->isChecked() ) {
+      tmpSDate = mStartDateEdit->date();
+      tmpSTime.setHMS(0,0,0);
+      tmpStartDT.setDate(tmpSDate);
+      tmpStartDT.setTime(tmpSTime);
+    } else {
+      tmpStartDT = tmpDueDT;
+    }
+  }
+
+  if ( todo->doesRecur() && !mStartDateModified ) {
+    todo->setDtDue( tmpDueDT );
+  } else {
+      todo->setDtDue( tmpDueDT, true );
+      todo->setDtStart( tmpStartDT );
+      todo->setDtRecurrence( tmpDueDT );
   }
 
   todo->setPriority(mPriorityCombo->currentItem()+1);
@@ -315,7 +329,7 @@ void KOEditorGeneralTodo::writeTodo(Todo *todo)
   todo->setPercentComplete(mCompletedCombo->currentItem() * 10);
 
   if (mCompletedCombo->currentItem() == 10 && mCompleted.isValid()) {
-    if (! alreadyComplete) emit todoCompleted( todo );
+    if (! mAlreadyComplete) emit todoCompleted( todo );
     else todo->setCompleted(mCompleted);
   }
 }
@@ -455,6 +469,14 @@ void KOEditorGeneralTodo::dateChanged()
   }
 
   emit dateTimeStrChanged( dateTimeStr );
+  QDateTime endDt( mDueDateEdit->date(), mDueTimeEdit->getTime() );
+  emit signalDateTimeChanged( endDt, endDt );
+}
+
+void KOEditorGeneralTodo::startDateModified()
+{
+  mStartDateModified = true;
+  dateChanged();
 }
 
 void KOEditorGeneralTodo::setCompletedDate()

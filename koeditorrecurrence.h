@@ -47,7 +47,7 @@ class RecurBase : public QWidget
 {
   public:
     RecurBase( QWidget *parent = 0, const char *name = 0 );
-  
+
     void setFrequency( int );
     int frequency();
     // TODO: If we want to adjust the recurrence when the start/due date change,
@@ -55,12 +55,12 @@ class RecurBase : public QWidget
     void setDateTimes( QDateTime /*start*/, QDateTime /*end*/ ) {}
 
     QWidget *frequencyEdit();
-    
+
   protected:
     static QComboBox *createWeekCountCombo( QWidget *parent=0, const char *name=0 );
     static QComboBox *createWeekdayCombo( QWidget *parent=0, const char *name=0 );
     static QComboBox *createMonthNameCombo( QWidget *parent=0, const char *name=0 );
-    QBoxLayout *createFrequencySpinBar( QWidget *parent, QLayout *layout, 
+    QBoxLayout *createFrequencySpinBar( QWidget *parent, QLayout *layout,
     QString everyText, QString unitText );
 
   private:
@@ -77,10 +77,10 @@ class RecurWeekly : public RecurBase
 {
   public:
     RecurWeekly( QWidget *parent = 0, const char *name = 0 );
-  
+
     void setDays( const QBitArray & );
     QBitArray days();
-    
+
   private:
     QCheckBox *mDayBoxes[7];
 };
@@ -92,15 +92,15 @@ class RecurMonthly : public RecurBase
 
     void setByDay( int day );
     void setByPos( int count, int weekday );
-    
+
     bool byDay();
     bool byPos();
-    
+
     int day();
 
     int count();
     int weekday();
-    
+
   private:
     QRadioButton *mByDayRadio;
     QComboBox *mByDayCombo;
@@ -116,11 +116,11 @@ class RecurYearly : public RecurBase
     enum YearlyType { byDay, byPos, byMonth };
 
     RecurYearly( QWidget *parent = 0, const char *name = 0 );
-    
+
     void setByDay( int day );
     void setByPos( int count, int weekday, int month );
     void setByMonth( int day, int month );
-    
+
     YearlyType getType();
 
     int day();
@@ -128,20 +128,20 @@ class RecurYearly : public RecurBase
     int posWeekday();
     int posMonth();
     int monthDay();
-    int month();    
+    int month();
 
   private:
     QRadioButton *mByMonthRadio;
     QRadioButton *mByPosRadio;
     QRadioButton *mByDayRadio;
-    
+
     QSpinBox *mByMonthSpin;
     QComboBox *mByMonthCombo;
-    
+
     QComboBox *mByPosDayCombo;
     QComboBox *mByPosWeekdayCombo;
     QComboBox *mByPosMonthCombo;
-    
+
     QSpinBox *mByDaySpin;
 };
 
@@ -150,25 +150,25 @@ class RecurrenceChooser : public QWidget
     Q_OBJECT
   public:
     RecurrenceChooser( QWidget *parent = 0, const char *name = 0 );
-    
+
     enum { Daily, Weekly, Monthly, Yearly };
-    
+
     void setType( int );
     int type();
-    
+
   signals:
     void chosen( int );
 
   protected slots:
     void emitChoice();
-    
+
   private:
     QComboBox *mTypeCombo;
-    
+
     QRadioButton *mDailyButton;
     QRadioButton *mWeeklyButton;
     QRadioButton *mMonthlyButton;
-    QRadioButton *mYearlyButton;    
+    QRadioButton *mYearlyButton;
 };
 
 class ExceptionsBase
@@ -183,19 +183,19 @@ class ExceptionsWidget : public QWidget, public ExceptionsBase
     Q_OBJECT
   public:
     ExceptionsWidget( QWidget *parent = 0, const char *name = 0 );
-    
+
     void setDates( const DateList & );
     DateList dates();
-    
+
   protected slots:
     void addException();
     void changeException();
     void deleteException();
-    
+
   private:
     KDateEdit *mExceptionDateEdit;
     QListBox *mExceptionList;
-    DateList mExceptionDates;  
+    DateList mExceptionDates;
 };
 
 class ExceptionsDialog : public KDialogBase, public ExceptionsBase
@@ -214,7 +214,7 @@ class RecurrenceRangeBase
 {
   public:
     virtual void setDefaults( const QDateTime &from ) = 0;
-  
+
     virtual void setDuration( int ) = 0;
     virtual int duration() = 0;
 
@@ -252,7 +252,7 @@ class RecurrenceRangeWidget : public QWidget, public RecurrenceRangeBase
     QRadioButton *mEndDurationButton;
     QSpinBox *mEndDurationEdit;
     QRadioButton *mEndDateButton;
-    KDateEdit *mEndDateEdit;  
+    KDateEdit *mEndDateEdit;
 };
 
 class RecurrenceRangeDialog : public KDialogBase, public RecurrenceRangeBase
@@ -270,7 +270,7 @@ class RecurrenceRangeDialog : public KDialogBase, public RecurrenceRangeBase
 
     void setDateTimes( const QDateTime &start,
                        const QDateTime &end = QDateTime() );
-    
+
   private:
     RecurrenceRangeWidget *mRecurrenceRangeWidget;
 };
@@ -298,25 +298,25 @@ class KOEditorRecurrence : public QWidget
     void setRecurrenceEnabled( bool );
     void setDateTimes( QDateTime start, QDateTime end );
     void setDateTimeStr( const QString & );
-  
+
   signals:
     void dateTimesChanged( QDateTime start, QDateTime end );
-  
+
   protected slots:
     void showCurrentRule( int );
     void showExceptionsDialog();
     void showRecurrenceRangeDialog();
-    
+
   private:
     QCheckBox *mEnabledCheck;
-  
+
     QGroupBox *mTimeGroupBox;
     QLabel *mDateTimeLabel;
-  
+
     QGroupBox *mRuleBox;
     QWidgetStack *mRuleStack;
     RecurrenceChooser *mRecurrenceChooser;
-    
+
     RecurDaily *mDaily;
     RecurWeekly *mWeekly;
     RecurMonthly *mMonthly;
@@ -326,7 +326,7 @@ class KOEditorRecurrence : public QWidget
     RecurrenceRangeWidget *mRecurrenceRangeWidget;
     RecurrenceRangeDialog *mRecurrenceRangeDialog;
     QPushButton *mRecurrenceRangeButton;
-    
+
     ExceptionsBase *mExceptions;
     ExceptionsDialog *mExceptionsDialog;
     ExceptionsWidget *mExceptionsWidget;

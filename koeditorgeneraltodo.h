@@ -62,15 +62,17 @@ class KOEditorGeneralTodo : public KOEditorGeneral
 
     /** The todo has been modified externally */
     void modified (Todo*, int);
-  
+
   signals:
     void todoCompleted( Todo * );
     void dueDateEditToggle( bool );
     void dateTimeStrChanged( const QString & );
-    
+    void signalDateTimeChanged( QDateTime, QDateTime );
+
   protected slots:
     void completedChanged(int);
     void dateChanged();
+    void startDateModified();
 
     void enableDueEdit( bool enable );
     void enableStartEdit( bool enable );
@@ -81,8 +83,9 @@ class KOEditorGeneralTodo : public KOEditorGeneral
     void setCompletedDate();
 
  private:
-    bool                    alreadyComplete;
-   
+    bool                    mAlreadyComplete;
+    bool                    mStartDateModified;
+
     KDateEdit               *mStartDateEdit;
     KTimeEdit               *mStartTimeEdit;
     QCheckBox               *mTimeButton;

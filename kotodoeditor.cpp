@@ -72,6 +72,8 @@ void KOTodoEditor::init()
 
   connect( mGeneral, SIGNAL( dateTimeStrChanged( const QString & ) ),
            mRecurrence, SLOT( setDateTimeStr( const QString & ) ) );
+  connect( mGeneral, SIGNAL( signalDateTimeChanged( QDateTime, QDateTime ) ),
+           mRecurrence, SLOT( setDateTimes( QDateTime, QDateTime ) ) );
 }
 
 void KOTodoEditor::reload()
@@ -89,7 +91,6 @@ void KOTodoEditor::setupGeneral()
           mGeneral,SLOT(setCategories(const QString &)));
   connect(mGeneral,SIGNAL( todoCompleted( Todo * )),
                    SIGNAL( todoCompleted( Todo * ) ) );
-
 
   if (KOPrefs::instance()->mCompactDialogs) {
     QFrame *topFrame = addPage(i18n("General"));
@@ -290,6 +291,7 @@ bool KOTodoEditor::processInput()
     }
 
     emit incidenceAdded( mTodo );
+
   }
 
   return true;
@@ -346,13 +348,16 @@ void KOTodoEditor::setDefaults( QDateTime due, Todo *relatedEvent, bool allDay )
     mGeneral->setDefaults( due, allDay );
 
   mDetails->setDefaults();
-  mRecurrence->setDefaults(QDateTime::currentDateTime(), due, false);
+  if ( mTodo )
+    mRecurrence->setDefaults( mTodo->dtStart(), due, false );
+  else
+    mRecurrence->setDefaults( QDateTime::currentDateTime(), due, false );
   mAttachments->setDefaults();
 }
 
 void KOTodoEditor::readTodo( Todo *todo )
 {
-kdDebug()<<"read todo"<<endl;
+  kdDebug()<<"read todo"<<endl;
   mGeneral->readTodo( todo );
   mDetails->readEvent( todo );
   mRecurrence->readIncidence( todo );
@@ -364,19 +369,10 @@ kdDebug()<<"read todo"<<endl;
 
 void KOTodoEditor::writeTodo( Todo *todo )
 {
-  // prevent mGeneral overwriting startdate recurrence
-  Recurrence *r = todo->recurrence();
-  QDateTime oldRecStartDate;
-  if ( todo->doesRecur() )
-    oldRecStartDate = r->recurStart();
-
   mGeneral->writeTodo( todo );
   mDetails->writeEvent( todo );
   mRecurrence->writeIncidence( todo );
   mAttachments->writeIncidence( todo );
-
-  oldRecStartDate.isValid() ? r->setRecurStart( oldRecStartDate )
-                            : r->setRecurStart( todo->dtDue() );
 
   // set related event, i.e. parent to-do in this case.
   if ( mRelatedTodo ) {

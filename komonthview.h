@@ -191,7 +191,7 @@ class MonthViewCell : public QWidget
 /**
   The class KOMonthView represents the monthly view in KOrganizer.
   It holds several instances of the class MonthViewCell.
-  
+
   @short KOMonthview represents the montly view in KOrganizer.
   @see KOBaseView, KODayListView, MonthViewCell
 */
@@ -243,7 +243,7 @@ class KOMonthView: public KOEventView
 
     void viewChanged();
     void updateDayLabels();
-    
+
     /** @param date The date of the cell which should be returned.
     @return Pointer of monthcell with given date, otherwise 0 */
     MonthViewCell *lookupCellByDate( const QDate &date );
