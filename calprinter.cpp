@@ -283,11 +283,11 @@ void CalPrinter::printMonth(const QDate &fd, const QDate &td)
   toMonth = td.addDays(td.daysInMonth()-td.day());
 
   p.begin(printer);
-  // the painter initially begins at 72 dpi per the Qt docs. 
+  // the painter initially begins at 72 dpi per the Qt docs.
   // we want half-inch margins.
   margin = 36;
-  p.setViewport(margin, margin, 
-		p.viewport().width()-margin, 
+  p.setViewport(margin, margin,
+		p.viewport().width()-margin,
 		p.viewport().height()-margin);
   pageWidth = p.viewport().width();
   pageHeight = p.viewport().height();
@@ -296,7 +296,7 @@ void CalPrinter::printMonth(const QDate &fd, const QDate &td)
 
   curMonth = fromMonth;
   do {
-    drawHeader(p, fromMonth, 
+    drawHeader(p, fromMonth,
 	       toMonth, curMonth,
 	       pageWidth, headerHeight, Month);
     drawDaysOfWeek(p, curMonth, pageWidth, pageHeight);
@@ -305,7 +305,7 @@ void CalPrinter::printMonth(const QDate &fd, const QDate &td)
     if (fromMonth <= toMonth)
       printer->newPage();
   } while (curMonth <= toMonth);
-  
+
   p.end();
 }
 
@@ -458,7 +458,7 @@ void CalPrinter::drawHeader(QPainter &p, const QDate &fd, const QDate &td,
     drawSmallMonth(p, QDate(cd.addDays(-cd.day()+1)),
 		   width/2+5, 5, /*width/4-10*/100, height-10);
     break;
-    
+
     drawSmallMonth(p, QDate(cd.addDays(cd.daysInMonth()-cd.day()+1)),
   		 width/2+width/4+5, 5, /*width/4-10*/100, height-10);
   case Month:
@@ -475,18 +475,18 @@ void CalPrinter::drawDaysOfWeekBox(QPainter &p, const QDate &qd,
 				   int x, int y, int width, int height)
 {
   KLocale *local = KGlobal::locale();
-  
+
   p.setFont(QFont("helvetica", 10, QFont::Bold));
   p.drawRect(x, y, width, height);
   p.fillRect(x+1, y+1,
-             width-2, height-2, 
+             width-2, height-2,
              QBrush(Dense3Pattern));
   p.drawText(x+5, y, width-10, height, AlignCenter | AlignVCenter,
              local->weekDayName(qd.dayOfWeek()));
 }
 
 void CalPrinter::drawDayBox(QPainter &p, const QDate &qd,
-			    int x, int y, int width, int height, 
+			    int x, int y, int width, int height,
 			    bool fullDate)
 {
   KLocale *local = KGlobal::locale();
@@ -498,13 +498,14 @@ void CalPrinter::drawDayBox(QPainter &p, const QDate &qd,
 
   // This has to be localized
   if (fullDate) {
-    int index;
+    /*int index;
     dayNumStr= qd.toString();
     index = dayNumStr.find(' ');
     dayNumStr.remove(0, index);
     index = dayNumStr.findRev(' ');
-    dayNumStr.truncate(index);
-    dayNumStr = local->weekDayName(qd.dayOfWeek()) + dayNumStr;
+    dayNumStr.truncate(index);*/
+
+    dayNumStr = local->weekDayName(qd.dayOfWeek()) + ' ' + local->monthName(qd.month(), true) + ' ' + QString::number(qd.day());
   } else {
     dayNumStr = QString::number(qd.day());
   }
@@ -520,7 +521,7 @@ void CalPrinter::drawDayBox(QPainter &p, const QDate &qd,
 	       hstring);
   }
   p.setFont(QFont("helvetica", 10, QFont::Bold));
-  p.drawText(x+5, y, width-10, subHeaderHeight, AlignRight | AlignVCenter, 
+  p.drawText(x+5, y, width-10, subHeaderHeight, AlignRight | AlignVCenter,
 	     dayNumStr);
 
   eventList = calendar->getEventsForDate(qd, TRUE);
@@ -557,16 +558,16 @@ void CalPrinter::drawDaysOfWeek(QPainter &p, const QDate &qd,
   int cellWidth = width/7;
   int cellHeight = subHeaderHeight;
   QDate monthDate(QDate(qd.year(), qd.month(),1));
-  
+
   if (KGlobal::locale()->weekStartsMonday())
     // correct to monday
-    monthDate = monthDate.addDays(-(monthDate.dayOfWeek()-1)); 
+    monthDate = monthDate.addDays(-(monthDate.dayOfWeek()-1));
   else
     // correct to sunday
-    monthDate = monthDate.addDays(-(monthDate.dayOfWeek()%7)); 
+    monthDate = monthDate.addDays(-(monthDate.dayOfWeek()%7));
 
   for (int col = 0; col < 7; col++) {
-    drawDaysOfWeekBox(p, monthDate, 
+    drawDaysOfWeekBox(p, monthDate,
 		      col*cellWidth, offset,
 		      cellWidth, cellHeight);
     monthDate = monthDate.addDays(1);
@@ -576,13 +577,13 @@ void CalPrinter::drawDaysOfWeek(QPainter &p, const QDate &qd,
 void CalPrinter::drawDay(QPainter &p, const QDate &qd, int width, int height)
 {
   int offset = headerHeight + 5;
-  int cellWidth = width-80; 
+  int cellWidth = width-80;
   int cellHeight = (height-offset) / 12; // 12 hour increments.
-  
+
   QString numStr;
   for (int i = 0; i < 12; i++) {
     p.drawRect(0, offset+i*cellHeight, 75, cellHeight);
-    p.drawLine(37, offset+i*cellHeight+(cellHeight/2), 
+    p.drawLine(37, offset+i*cellHeight+(cellHeight/2),
 	       75, offset+i*cellHeight+(cellHeight/2));
     numStr.setNum(i+startHour);
     p.setFont(QFont("helvetica", 20, QFont::Bold));
@@ -591,7 +592,7 @@ void CalPrinter::drawDay(QPainter &p, const QDate &qd, int width, int height)
     p.setFont(QFont("helvetica", 14, QFont::Bold));
     p.drawText(37, offset+i*cellHeight, 45, cellHeight/2,
 	       AlignTop | AlignLeft, "00");
-    p.drawRect(80, offset+i*cellHeight, 
+    p.drawRect(80, offset+i*cellHeight,
 	       cellWidth, cellHeight);
     p.drawLine(80, offset+i*cellHeight+(cellHeight/2),
     	       cellWidth+80, offset+i*cellHeight+(cellHeight/2));
@@ -655,7 +656,7 @@ void CalPrinter::drawWeek(QPainter &p, const QDate &qd, int width, int height)
 	drawDayBox(p, weekDate, cellWidth, offset+2*cellHeight+(cellHeight/2),
 		   cellWidth, cellHeight/2, TRUE);
       else
-	drawDayBox(p, weekDate, cellWidth, offset+(i%3)*cellHeight, 
+	drawDayBox(p, weekDate, cellWidth, offset+(i%3)*cellHeight,
 		   cellWidth, cellHeight, TRUE);
   }
 }
@@ -668,13 +669,13 @@ void CalPrinter::drawMonth(QPainter &p, const QDate &qd,
   int cellWidth = width/7;
   int cellHeight = (height-offset) / 5;
   QDate monthDate(QDate(qd.year(), qd.month(), 1));
- 
+
   if (KGlobal::locale()->weekStartsMonday())
     weekdayCol = monthDate.dayOfWeek() - 1;
   else
     weekdayCol = monthDate.dayOfWeek() % 7;
   monthDate = monthDate.addDays(-weekdayCol);
- 
+
   for (int row = 0; row < (weekdayCol + qd.daysInMonth() - 1 )/7 + 1; row++) {
     for (int col = 0; col < 7; col++) {
       drawDayBox(p, monthDate, col*cellWidth, offset+row*cellHeight,
@@ -685,10 +686,10 @@ void CalPrinter::drawMonth(QPainter &p, const QDate &qd,
 }
 
 
-void CalPrinter::drawSmallMonth(QPainter &p, const QDate &qd, 
+void CalPrinter::drawSmallMonth(QPainter &p, const QDate &qd,
 				int x, int y, int width, int height)
 {
-  
+
 
   bool firstCol = TRUE;
   QDate monthDate(QDate(qd.year(), qd.month(), 1));
@@ -707,10 +708,10 @@ void CalPrinter::drawSmallMonth(QPainter &p, const QDate &qd,
 
   if (KGlobal::locale()->weekStartsMonday())
     // correct to monday
-    monthDate2 = monthDate.addDays(-(monthDate.dayOfWeek()-1)); 
+    monthDate2 = monthDate.addDays(-(monthDate.dayOfWeek()-1));
   else
     // correct to sunday
-    monthDate2 = monthDate.addDays(-(monthDate.dayOfWeek()%7)); 
+    monthDate2 = monthDate.addDays(-(monthDate.dayOfWeek()%7));
 
   // draw days of week
    p.setFont(QFont("helvetica", 8, QFont::Bold));
