@@ -282,17 +282,17 @@ KOMonthView::KOMonthView(CalObject *cal,
     cFrame->setFrameStyle(QFrame::Panel|QFrame::Raised);
     
     // Create navigation buttons
-    pixmap = loader->loadIcon("3uparrow");
+    pixmap = loader->loadIcon("3uparrow",KIcon::User);
     KONavButton *upYear = new KONavButton(pixmap,cFrame);    
-    pixmap = loader->loadIcon("2uparrow");
+    pixmap = loader->loadIcon("2uparrow",KIcon::User);
     KONavButton *upMonth = new KONavButton(pixmap, cFrame);
-    pixmap = loader->loadIcon("1uparrow");
+    pixmap = loader->loadIcon("1uparrow",KIcon::User);
     KONavButton *upWeek = new KONavButton(pixmap, cFrame);
-    pixmap = loader->loadIcon("1downarrow");
+    pixmap = loader->loadIcon("1downarrow",KIcon::User);
     KONavButton *downWeek = new KONavButton(pixmap, cFrame);    
-    pixmap = loader->loadIcon("2downarrow");
+    pixmap = loader->loadIcon("2downarrow",KIcon::User);
     KONavButton *downMonth = new KONavButton(pixmap, cFrame);    
-    pixmap = loader->loadIcon("3downarrow");
+    pixmap = loader->loadIcon("3downarrow",KIcon::User);
     KONavButton *downYear = new KONavButton(pixmap, cFrame);
 
     connect(upYear,    SIGNAL(clicked()), this, SLOT(goBackYear()));

@@ -17,8 +17,7 @@
 #include <kiconloader.h>
 #include <kwm.h>
 #include <kprocess.h>
-#include <mediatool.h>
-#include <kaudio.h>
+#include <kaudioplayer.h>
 
 #include "config.h"
 #ifdef HAVE_LIBGEN_H
@@ -140,8 +139,7 @@ void AlarmDaemon::showAlarms(QList<KOEvent> &alarmEvents)
     }
 
     if (!anEvent->getAudioAlarmFile().isEmpty()) {
-      KAudio audio;
-      audio.play(anEvent->getAudioAlarmFile().data());
+      KAudioPlayer::play(anEvent->getAudioAlarmFile().data());
     }
   }
 
