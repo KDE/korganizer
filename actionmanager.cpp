@@ -84,7 +84,8 @@ void ActionManager::ActionManager::init()
   if (!windowList) {
     windowList = new KOWindowList;
     // Show tip of the day, when the first calendar is shown.
-    QTimer::singleShot(0,this,SLOT(showTipOnStart()));
+    if (!mIsPart)
+      QTimer::singleShot(0,this,SLOT(showTipOnStart()));
   }
   //Note: We need this ActionManager to be fully constructed, and
   //parent() to have a valid reference to it before the following
