@@ -173,6 +173,7 @@ class KOAgendaView : public KOEventView
     virtual void showEvents( const Event::List & );
     virtual void showNewEventPopup();
 
+    void insertEvent( Event *event, QDate curDate, int curCol = -1 );
     void changeEventDisplay(Event *, int);
 
     void clearSelection();

@@ -773,12 +773,95 @@ void KOAgendaView::showEvents( const Event::List & )
   kdDebug(5850) << "KOAgendaView::showEvents() is not yet implemented" << endl;
 }
 
-void KOAgendaView::changeEventDisplay(Event *, int)
+void KOAgendaView::insertEvent( Event *event, QDate curDate, int curCol )
+{
+  if ( curCol<0 ) {
+    curCol = mSelectedDates.findIndex( curDate );
+  }
+  // The date for the event is not displayed, just ignore it
+  if ( curCol<0 || curCol>(int)mSelectedDates.size() )
+    return;
+
+  int beginX = curDate.daysTo( event->dtStart().date() ) + curCol;
+  int endX = curDate.daysTo( event->dtEnd().date() ) + curCol;
+
+  if ( event->doesFloat() ) {
+    if ( event->recurrence()->doesRecur() ) {
+      mAllDayAgenda->insertAllDayItem( event, curDate, curCol, curCol );
+    } else {
+      if ( beginX <= 0 && curCol == 0 ) {
+        mAllDayAgenda->insertAllDayItem( event, curDate, beginX, endX);
+      } else if (beginX == curCol) {
+        mAllDayAgenda->insertAllDayItem( event, curDate, beginX, endX );
+      }
+    }
+  } else if ( event->isMultiDay() ) {
+    int startY = mAgenda->timeToY( event->dtStart().time() );
+    int endY = mAgenda->timeToY( event->dtEnd().time() ) - 1;
+    if ( (beginX <= 0 && curCol == 0) || beginX == curCol ) {
+      mAgenda->insertMultiItem( event, curDate, beginX, endX, startY, endY );
+    }
+    if (beginX == curCol) {
+      mMaxY[curCol] = mAgenda->timeToY( QTime(23,59) );
+      if ( startY < mMinY[curCol] ) mMinY[curCol] = startY;
+    } else if (endX == curCol) {
+      mMinY[curCol] = mAgenda->timeToY( QTime(0,0) );
+      if ( endY > mMaxY[curCol] ) mMaxY[curCol] = endY;
+    } else {
+      mMinY[curCol] = mAgenda->timeToY( QTime(0,0) );
+      mMaxY[curCol] = mAgenda->timeToY( QTime(23,59) );
+    }
+  } else {
+    int startY = mAgenda->timeToY( event->dtStart().time() );
+    int endY = mAgenda->timeToY( event->dtEnd().time() ) - 1;
+    if ( endY < startY ) endY = startY;
+    mAgenda->insertItem( event, curDate, curCol, startY, endY );
+    if ( startY < mMinY[curCol] ) mMinY[curCol] = startY;
+    if ( endY > mMaxY[curCol] ) mMaxY[curCol] = endY;
+  }
+}
+
+void KOAgendaView::changeEventDisplay(Event *event, int mode)
 {
 //  kdDebug(5850) << "KOAgendaView::changeEventDisplay" << endl;
-  // this should be re-written to be MUCH smarter.  Right now we
+  // TODO: this should be re-written to be MUCH smarter.  Right now we
   // are just playing dumb.
-  fillAgenda();
+
+  switch (mode) {
+    case KOGlobals::EVENTADDED: {
+        //  Add an event. No need to recreate the whole view!
+        // recreating everything even causes troubles: dropping to the day matrix
+        // recreates the agenda items, but the evaluation is still in an agendaItems' code,
+        // which was deleted in the mean time. Thus KOrg crashes...
+        if ( !event->doesRecur() ) {
+          // TODO: find a suitable date
+          QDate f = mSelectedDates.first();
+          QDate l = mSelectedDates.last();
+          QDate startDt = event->dtStart().date();
+          QDate endDt = event->dtEnd().date();
+          if ( startDt <= l ) {
+            if ( startDt >= f ) {
+              insertEvent( event, startDt );
+            } else if ( endDt >= f ) {
+              insertEvent( event, endDt );
+            }
+          }
+        } else {
+          DateList::ConstIterator dit;
+          QDate curDate;
+          for( dit = mSelectedDates.begin(); dit != mSelectedDates.end(); ++dit ) {
+            curDate = *dit;
+            if ( event->recursOn( curDate ) ) insertEvent( event, curDate );
+          }
+        }
+      }
+      break;
+
+    case KOGlobals::EVENTEDITED:
+    case KOGlobals::EVENTDELETED:
+    default:
+      fillAgenda();
+  }
 }
 
 void KOAgendaView::fillAgenda(const QDate &)
@@ -803,7 +886,7 @@ void KOAgendaView::fillAgenda()
 
   Event::List dayEvents;
 
-  // ToDo items shall be displayed for the day they are due, but only showed today if they are already overdue.
+  // ToDo items shall be displayed for the day they are due, but only shown today if they are already overdue.
   // Therefore, get all of them.
   Todo::List todos  = calendar()->todos();
 
@@ -828,46 +911,7 @@ void KOAgendaView::fillAgenda()
     for(numEvent=0;numEvent<dayEvents.count();++numEvent) {
       Event *event = *dayEvents.at(numEvent);
 //      kdDebug(5850) << " Event: " << event->summary() << endl;
-
-      int beginX = currentDate.daysTo(event->dtStart().date()) + curCol;
-      int endX = currentDate.daysTo(event->dtEnd().date()) + curCol;
-
-//      kdDebug(5850) << "  beginX: " << beginX << "  endX: " << endX << endl;
-
-      if (event->doesFloat()) {
-        if (event->recurrence()->doesRecur()) {
-          mAllDayAgenda->insertAllDayItem(event,currentDate,curCol,curCol);
-        } else {
-          if (beginX <= 0 && curCol == 0) {
-            mAllDayAgenda->insertAllDayItem(event,currentDate,beginX,endX);
-          } else if (beginX == curCol) {
-            mAllDayAgenda->insertAllDayItem(event,currentDate,beginX,endX);
-          }
-        }
-      } else if (event->isMultiDay()) {
-        int startY = mAgenda->timeToY(event->dtStart().time());
-        int endY = mAgenda->timeToY(event->dtEnd().time()) - 1;
-        if ((beginX <= 0 && curCol == 0) || beginX == curCol) {
-          mAgenda->insertMultiItem(event,currentDate,beginX,endX,startY,endY);
-        }
-        if (beginX == curCol) {
-          mMaxY[curCol] = mAgenda->timeToY(QTime(23,59));
-          if (startY < mMinY[curCol]) mMinY[curCol] = startY;
-        } else if (endX == curCol) {
-          mMinY[curCol] = mAgenda->timeToY(QTime(0,0));
-          if (endY > mMaxY[curCol]) mMaxY[curCol] = endY;
-        } else {
-          mMinY[curCol] = mAgenda->timeToY(QTime(0,0));
-          mMaxY[curCol] = mAgenda->timeToY(QTime(23,59));
-        }
-      } else {
-        int startY = mAgenda->timeToY(event->dtStart().time());
-        int endY = mAgenda->timeToY(event->dtEnd().time()) - 1;
-        if (endY < startY) endY = startY;
-        mAgenda->insertItem(event,currentDate,curCol,startY,endY);
-        if (startY < mMinY[curCol]) mMinY[curCol] = startY;
-        if (endY > mMaxY[curCol]) mMaxY[curCol] = endY;
-      }
+      insertEvent( event, currentDate, curCol );
     }
 //    if (numEvent == 0) kdDebug(5850) << " No events" << endl;
 
