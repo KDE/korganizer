@@ -57,7 +57,7 @@ class JournalTitleLable : public KActiveLabel
 {
 public:
   JournalTitleLable( QWidget *parent, const char *name=0 ) : KActiveLabel( parent, name ) {}
-  
+
   void openLink( const QString &link ) {}
 };
 
@@ -81,9 +81,12 @@ JournalDateEntry::~JournalDateEntry()
 
 void JournalDateEntry::setDate(const QDate &date)
 {
-  QString dtstring = "<qt><center><b><i>%1</i></b>  "
-       "<font size=\"-1\"><a href=\"#\">" + i18n("[add Journal]") + "</a></font></center></qt>"
-       .arg( KGlobal::locale()->formatDate(date) );
+  QString dtstring = QString( "<qt><center><b><i>%1</i></b>  " )
+                     .arg( KGlobal::locale()->formatDate(date) );
+
+  dtstring += "<font size=\"-1\"><a href=\"#\">" +
+              i18n("[add Journal]") +
+              "</a></font></center></qt>";
 
   mTitle->setText( dtstring );
   mDate = date;
@@ -93,7 +96,7 @@ void JournalDateEntry::setDate(const QDate &date)
 void JournalDateEntry::clear()
 {
   QValueList<JournalEntry*> values( mEntries.values() );
-  
+
   QValueList<JournalEntry*>::Iterator it = values.begin();
   for ( ; it != values.end(); ++it ) {
     delete (*it);
@@ -105,18 +108,18 @@ void JournalDateEntry::addJournal( Journal *j )
 {
   QMap<Journal*,JournalEntry*>::Iterator pos = mEntries.find( j );
   if ( pos != mEntries.end() ) return;
-  
+
   JournalEntry *entry = new JournalEntry( j, this );
   entry->show();
   entry->setDate( mDate );
   entry->setIncidenceChanger( mChanger );
-  
+
   mEntries.insert( j, entry );
   connect( this, SIGNAL( setIncidenceChangerSignal( IncidenceChangerBase * ) ),
            entry, SLOT( setIncidenceChanger( IncidenceChangerBase * ) ) );
   connect( this, SIGNAL( setDateSignal( const QDate & ) ),
            entry, SLOT( setDate( const QDate & ) ) );
-  connect( this, SIGNAL( flushEntries() ), 
+  connect( this, SIGNAL( flushEntries() ),
            entry, SLOT( flushEntry() ) );
   connect( entry, SIGNAL( deleteIncidence( Incidence* ) ),
            this, SIGNAL( deleteIncidence( Incidence* ) ) );
@@ -133,7 +136,7 @@ Journal::List JournalDateEntry::journals() const
   return l;
 }
 
-void JournalDateEntry::setIncidenceChanger( IncidenceChangerBase *changer ) 
+void JournalDateEntry::setIncidenceChanger( IncidenceChangerBase *changer )
 {
   mChanger = changer;
   emit setIncidenceChangerSignal( changer );
@@ -154,7 +157,7 @@ void JournalDateEntry::journalEdited( Journal *journal )
 {
   QMap<Journal*,JournalEntry*>::Iterator pos = mEntries.find( journal );
   if ( pos == mEntries.end() ) return;
-  
+
   pos.data()->setJournal( journal );
 
 }
@@ -162,7 +165,7 @@ void JournalDateEntry::journalDeleted( Journal *journal )
 {
   QMap<Journal*,JournalEntry*>::Iterator pos = mEntries.find( journal );
   if ( pos == mEntries.end() ) return;
-  
+
   delete pos.data();
 }
 
@@ -179,18 +182,18 @@ JournalEntry::JournalEntry( Journal* j, QWidget *parent ) :
   mReadOnly = false;
 
   mLayout = new QGridLayout( this );
-  
+
   QString whatsThis = i18n("Sets the Title of this journal.");
-  
+
   mTitleLabel = new QLabel( i18n("&Title: "), this );
   mLayout->addWidget( mTitleLabel, 0, 0 );
   mTitleEdit = new KLineEdit( this );
   mLayout->addWidget( mTitleEdit, 0, 1 );
   mTitleLabel->setBuddy( mTitleEdit );
-  
+
   QWhatsThis::add( mTitleLabel, whatsThis );
   QWhatsThis::add( mTitleEdit, whatsThis );
-  
+
   mTimeCheck = new QCheckBox( i18n("Ti&me: "), this );
   mLayout->addWidget( mTimeCheck, 0, 2 );
   mTimeEdit = new KTimeEdit( this );
@@ -200,7 +203,7 @@ JournalEntry::JournalEntry( Journal* j, QWidget *parent ) :
   QWhatsThis::add( mTimeCheck, i18n("Determines whether this journal has also "
                                     "a time associated") );
   QWhatsThis::add( mTimeEdit, i18n( "Sets the time associated with this journal" ) );
-  
+
   mDeleteButton = new KPushButton( this );
   QPixmap pix = KOGlobals::self()->smallIcon( "editdelete" );
   mDeleteButton->setPixmap( pix );
@@ -208,21 +211,21 @@ JournalEntry::JournalEntry( Journal* j, QWidget *parent ) :
   QToolTip::add( mDeleteButton, i18n("Delete this journal") );
   QWhatsThis::add( mDeleteButton, i18n("Delete this journal") );
   mLayout->addWidget( mDeleteButton, 0, 4 );
-  
+
   connect( mDeleteButton, SIGNAL(pressed()), this, SLOT(deleteItem()) );
-  
-  
-    
+
+
+
   mEditor = new KTextEdit(this);
   mLayout->addMultiCellWidget( mEditor, 1, 2, 0, 4 );
-  
+
   connect( mTitleEdit, SIGNAL(textChanged( const QString& )), SLOT(setDirty()) );
   connect( mTimeCheck, SIGNAL(toggled(bool)), SLOT(setDirty()) );
   connect( mTimeEdit, SIGNAL(timeChanged(QTime)), SLOT(setDirty()) );
   connect( mEditor, SIGNAL(textChanged()), SLOT(setDirty()) );
-  
+
   mEditor->installEventFilter(this);
-  
+
   readJournal( mJournal );
   mDirty = false;
 }
@@ -240,14 +243,14 @@ void JournalEntry::deleteItem()
                .arg( mJournal->dtStartStr() ),
       i18n("KOrganizer Confirmation"), KGuiItem( i18n("&Delete"), "editdelete" ) );
   if ( code == KMessageBox::Yes ) {*/
-    if ( mJournal ) 
+    if ( mJournal )
       emit deleteIncidence( mJournal );
 //   }
 }
 
-void JournalEntry::setReadOnly( bool readonly ) 
+void JournalEntry::setReadOnly( bool readonly )
 {
-  mReadOnly = readonly; 
+  mReadOnly = readonly;
   mTitleEdit->setReadOnly( mReadOnly );
   mEditor->setReadOnly( mReadOnly );
   mTimeCheck->setEnabled( !mReadOnly );
@@ -269,7 +272,7 @@ void JournalEntry::setJournal(Journal *journal)
 
   mJournal = journal;
   readJournal( journal );
-    
+
   mDirty = false;
 }
 
@@ -283,10 +286,10 @@ bool JournalEntry::eventFilter( QObject *o, QEvent *e )
 {
 //  kdDebug(5850) << "JournalEntry::event received " << e->type() << endl;
 
-  if ( e->type() == QEvent::FocusOut || e->type() == QEvent::Hide || 
+  if ( e->type() == QEvent::FocusOut || e->type() == QEvent::Hide ||
        e->type() == QEvent::Close ) {
     writeJournal();
-  } 
+  }
   return QWidget::eventFilter( o, e );    // standard event processing
 }
 
@@ -305,7 +308,7 @@ void JournalEntry::readJournal( Journal *j )
   setReadOnly( mJournal->isReadOnly() );
 }
 
-void JournalEntry::writeJournalPrivate( Journal *j ) 
+void JournalEntry::writeJournalPrivate( Journal *j )
 {
   j->setSummary( mTitleEdit->text() );
   bool hasTime = mTimeCheck->isChecked();
@@ -326,7 +329,7 @@ void JournalEntry::writeJournal()
   bool newJournal = false;
 
   Journal *oldJournal = 0;
-  
+
   if ( !mJournal ) {
     newJournal = true;
     mJournal = new Journal;
@@ -344,13 +347,13 @@ void JournalEntry::writeJournal()
       mChanger->endChange( mJournal );
     }
     delete oldJournal;
-  } 
+  }
   mDirty = false;
 }
 
 void JournalEntry::flushEntry()
 {
   if (!mDirty) return;
-  
+
   writeJournal();
 }
