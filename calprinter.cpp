@@ -420,7 +420,7 @@ void CalPrinter::drawHeader(QPainter &p, const QDate &fd, const QDate &td,
   p.fillRect(1, 1, 
 	     width-2, 
 	     height-2, 
-	     QBrush(Dense4Pattern));
+	     QBrush(Dense7Pattern));
 
   p.setFont(font);
   int lineSpacing = p.fontMetrics().lineSpacing();
@@ -484,7 +484,7 @@ void CalPrinter::drawDaysOfWeekBox(QPainter &p, const QDate &qd,
   p.drawRect(x, y, width, height);
   p.fillRect(x+1, y+1,
              width-2, height-2,
-             QBrush(Dense3Pattern));
+             QBrush(Dense7Pattern));
   p.drawText(x+5, y, width-10, height, AlignCenter | AlignVCenter,
              local->weekDayName(qd.dayOfWeek()));
 }
@@ -515,9 +515,9 @@ void CalPrinter::drawDayBox(QPainter &p, const QDate &qd,
   }
 
   p.drawRect(x, y, width, height);
-  // p.fillRect(x+1, y+1, width-2,height, QBrush(Dense3Pattern));
+  // p.fillRect(x+1, y+1, width-2,height, QBrush(Dense7Pattern));
   p.drawRect(x, y, width, subHeaderHeight);
-  p.fillRect(x+1, y+1, width-2, subHeaderHeight-2, QBrush(Dense4Pattern));
+  p.fillRect(x+1, y+1, width-2, subHeaderHeight-2, QBrush(Dense7Pattern));
   if (!hstring.isEmpty()) {
     p.setFont(QFont("helvetica", 8, QFont::Bold, TRUE));
 
@@ -606,7 +606,7 @@ void CalPrinter::drawDay(QPainter &p, const QDate &qd, int width, int height)
   p.setFont(QFont("helvetica", 14));
   QList<Event> eventList = calendar->getEventsForDate(qd, TRUE);
   Event *currEvent;
-  p.setBrush(QBrush(Dense4Pattern));
+  p.setBrush(QBrush(Dense7Pattern));
   for (currEvent = eventList.first(); currEvent;
        currEvent = eventList.next()) {
     int startTime = currEvent->dtStart().time().hour();
