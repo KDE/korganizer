@@ -108,39 +108,54 @@ void CalPrinter::setDateRange( const QDate &fd, const QDate &td )
   }
 }
 
-void CalPrinter::print( PrintType type, const QDate &fd, const QDate &td )
+void CalPrinter::preview( PrintType type, const QDate &fd, const QDate &td )
 {
+  mPrintDialog->setPreview( true );
   mPrintDialog->setPrintType( int( type ) );
   setDateRange( fd, td );
 
   if ( mPrintDialog->exec() == QDialog::Accepted ) {
-    doPrint( mPrintDialog->selectedPlugin() );
+    doPrint( mPrintDialog->selectedPlugin(), true );
   }
 }
 
-void CalPrinter::doPrint( KOrg::PrintPlugin *selectedStyle )
+void CalPrinter::print( PrintType type, const QDate &fd, const QDate &td )
+{
+  mPrintDialog->setPreview( false );
+  mPrintDialog->setPrintType( int( type ) );
+  setDateRange( fd, td );
+
+  if ( mPrintDialog->exec() == QDialog::Accepted ) {
+    doPrint( mPrintDialog->selectedPlugin(), false );
+  }
+}
+
+void CalPrinter::doPrint( KOrg::PrintPlugin *selectedStyle, bool preview )
 {
   // FIXME: add a better caption to the Printingdialog
   if ( mHelper ) delete mHelper;
   mHelper = new CalPrintHelper( mPrinter, mCalendar, mConfig, mCoreHelper );
-
-  switch ( mPrintDialog->orientation() ) {
-    case eOrientPlugin:
-      mPrinter->setOrientation( selectedStyle->orientation());
-      break;
-    case eOrientPortrait:
-      mPrinter->setOrientation( KPrinter::Portrait );
-      break;
-    case eOrientLandscape:
-      mPrinter->setOrientation( KPrinter::Landscape );
-      break;
-    case eOrientPrinter:
-    default:
-      break;
+  mPrinter->setPreviewOnly( preview );
+  if ( preview || mPrinter->setup( mParent, i18n("Print Calendar") ) ) {
+    switch ( mPrintDialog->orientation() ) {
+      case eOrientPlugin:
+        mPrinter->setOrientation( selectedStyle->orientation());
+        break;
+      case eOrientPortrait:
+        mPrinter->setOrientation( KPrinter::Portrait );
+        break;
+      case eOrientLandscape:
+        mPrinter->setOrientation( KPrinter::Landscape );
+        break;
+      case eOrientPrinter:
+      default:
+        break;
+    }
+    selectedStyle->setKOrgCoreHelper( mCoreHelper );
+    selectedStyle->setCalPrintHelper( mHelper );
+    selectedStyle->doPrint();
   }
-  selectedStyle->setKOrgCoreHelper( mCoreHelper );
-  selectedStyle->setCalPrintHelper( mHelper );
-  selectedStyle->doPrint();
+  mPrinter->setPreviewOnly( false );
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -163,7 +178,6 @@ CalPrintDialog::CalPrintDialog( KOrg::PrintPlugin::List plugins, KPrinter *p,
   QHBox *printerLayout = new QHBox( page );
 
   mPrinterLabel = new QLabel( printerLayout );
-  setPrinterLabel();
   QPushButton *setupButton = new QPushButton( i18n("Setup P&rinter..."),
                                               printerLayout );
   setupButton->setSizePolicy( QSizePolicy(
@@ -232,14 +246,25 @@ void CalPrintDialog::setupPrinter()
   }
 }
 
+void CalPrintDialog::setPreview(bool preview)
+{
+#if KDE_IS_VERSION( 3, 1, 93 )
+  setButtonOK( preview ? i18n("&Preview") : KStdGuiItem::print() );
+#else
+  setButtonOKText( preview ? i18n("&Preview") : i18n("&Print...") );
+#endif
+  mPreviewText = preview ? i18n("<qt>Preview for printer <b>%1</b></qt>")
+      : i18n( "<qt>Printing on printer <b>%1</b></qt>");
+  setPrinterLabel();
+}
+
 void CalPrintDialog::setPrinterLabel()
 {
-  mPrinterLabel->setText( i18n( "<qt>Printing on printer <b>%1</b></qt>" ) );
   QString printerName( mPrinter->printerName() );
   if ( printerName.isEmpty() )
-    mPrinterLabel->setText( mPrinterLabel->text().arg( i18n("[Unconfigured]") ) );
+    mPrinterLabel->setText( mPreviewText.arg( i18n("[Unconfigured]") ) );
   else
-    mPrinterLabel->setText( mPrinterLabel->text().arg( printerName ) );
+    mPrinterLabel->setText( mPreviewText.arg( printerName ) );
 }
 
 void CalPrintDialog::setPrintType( int i )
