@@ -44,15 +44,16 @@
 #include "kalarmd/alarmdaemoniface_stub.h"
 
 #include "korganizer.h"
+#include "koprefs.h"
+#include "version.h"
 
 #include "koapp.h"
-#include "koprefs.h"
 #include "koapp.moc"
 
 KOrganizerApp::KOrganizerApp() : KUniqueApplication()
 {
-  CalFormat::setApplication("KOrganizer",
-      "-//K Desktop Environment//NONSGML KOrganizer 2.2//EN");
+  QString prodId = "-//K Desktop Environment//NONSGML KOrganizer %1//EN";
+  CalFormat::setApplication( "KOrganizer", prodId.arg( korgVersion ) );
 }
 
 KOrganizerApp::~KOrganizerApp()
