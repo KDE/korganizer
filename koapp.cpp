@@ -62,11 +62,7 @@ KOrganizerApp::~KOrganizerApp()
 int KOrganizerApp::newInstance()
 {
   kdDebug(5850) << "KOApp::newInstance()" << endl;
-
-  if ( isRestored() ) {
-    RESTORE( KOrganizer )
-    return 0;
-  }
+  if ( restoringSession()) return 0;
 
   KCmdLineArgs *args = KCmdLineArgs::parsedArgs();
 
