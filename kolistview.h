@@ -128,13 +128,14 @@ class KOListView : public KOEventView
   protected:
     void addIncidences( const Incidence::List & );
     void addIncidence(Incidence *);
-    KOListViewItem *getItemForEvent(Incidence *incidence);
+    KOListViewItem *getItemForIncidence(Incidence *incidence);
 
   private:
     KListView *mListView;
     KOEventPopupMenu *mPopupMenu;
     KOListViewItem *mActiveItem;
     QDict<Incidence> mUidDict;
+    DateList mSelectedDates;
 };
 
 #endif

@@ -117,8 +117,9 @@ bool ListItemVisitor::visit(Event *e)
 
 bool ListItemVisitor::visit(Todo *t)
 {
-  static const QPixmap todoPxmp = KOGlobals::self()->smallIcon("checkedbox");
-  mItem->setPixmap(0,todoPxmp);
+  static const QPixmap todoPxmp = KOGlobals::self()->smallIcon("todo");
+  static const QPixmap todoDonePxmp = KOGlobals::self()->smallIcon("checkedbox");
+  mItem->setPixmap(0, t->isCompleted() ? todoDonePxmp : todoPxmp );
   mItem->setText(0,t->summary());
   if ( t->isAlarmEnabled() ) {
     static const QPixmap alarmPxmp = KOGlobals::self()->smallIcon("bell");
@@ -127,7 +128,7 @@ bool ListItemVisitor::visit(Todo *t)
   }
   else
     mItem->setSortKey(1, "0");
-  
+
   if ( t->doesRecur() ) {
     static const QPixmap recurPxmp = KOGlobals::self()->smallIcon("recur");
     mItem->setPixmap(2,recurPxmp);
@@ -135,7 +136,7 @@ bool ListItemVisitor::visit(Todo *t)
   }
   else
     mItem->setSortKey(2, "0");
-  
+
   if (t->hasStartDate()) {
     mItem->setText(3,t->dtStartDateStr());
     mItem->setSortKey(3,t->dtStart().toString(Qt::ISODate));
@@ -148,7 +149,7 @@ bool ListItemVisitor::visit(Todo *t)
     mItem->setText(3,"---");
     mItem->setText(4,"---");
   }
-  
+
   if (t->hasDueDate()) {
     mItem->setText(5,t->dtDueDateStr());
     if (t->doesFloat()) {
@@ -226,6 +227,8 @@ KOListView::KOListView( Calendar *calendar, QWidget *parent,
   mListView->restoreLayout(KOGlobals::self()->config(),"KOListView Layout");
 
   new KOListViewToolTip( mListView->viewport(), mListView );
+
+  mSelectedDates.append( QDate::currentDate() );
 }
 
 KOListView::~KOListView()
@@ -240,7 +243,7 @@ int KOListView::maxDatesHint()
 
 int KOListView::currentDateCount()
 {
-  return 0;
+  return mSelectedDates.count();
 }
 
 Incidence::List KOListView::selectedIncidences()
@@ -255,8 +258,7 @@ Incidence::List KOListView::selectedIncidences()
 
 DateList KOListView::selectedDates()
 {
-  DateList eventList;
-  return eventList;
+  return mSelectedDates;
 }
 
 void KOListView::showDates(bool show)
@@ -308,6 +310,7 @@ void KOListView::showDates(const QDate &start, const QDate &end)
   QDate date = start;
   while( date <= end ) {
     addIncidences( calendar()->incidences(date) );
+    mSelectedDates.append( date );
     date = date.addDays( 1 );
   }
 
@@ -325,7 +328,7 @@ void KOListView::addIncidences( const Incidence::List &incidenceList )
 void KOListView::addIncidence(Incidence *incidence)
 {
   if ( mUidDict.find( incidence->uid() ) ) return;
-  
+
   mUidDict.insert( incidence->uid(), incidence );
 
   KOListViewItem *item = new KOListViewItem( incidence, mListView );
@@ -347,31 +350,43 @@ void KOListView::showIncidences( const Incidence::List &incidenceList )
 void KOListView::changeIncidenceDisplay(Incidence *incidence, int action)
 {
   KOListViewItem *item;
+  QDate f = mSelectedDates.first();
+  QDate l = mSelectedDates.last();
+
+  QDate date;
+  if ( incidence->type() == "Todo" )
+    date = static_cast<Todo *>(incidence)->dtDue().date();
+  else
+    date = incidence->dtStart().date();
 
   switch(action) {
-    case KOGlobals::INCIDENCEADDED:
-      addIncidence( incidence );
+    case KOGlobals::INCIDENCEADDED: {
+      if ( date >= f && date <= l )
+        addIncidence( incidence );
       break;
-    case KOGlobals::INCIDENCEEDITED:
-      item = getItemForEvent(incidence);
+    }
+    case KOGlobals::INCIDENCEEDITED: {
+      item = getItemForIncidence(incidence);
       if (item) {
         delete item;
         mUidDict.remove( incidence->uid() );
+      }
+      if ( date >= f && date <= l )
         addIncidence( incidence );
-      }
-      break;
-    case KOGlobals::INCIDENCEDELETED:
-      item = getItemForEvent(incidence);
-      if (item) {
+    }
+    break;
+    case KOGlobals::INCIDENCEDELETED: {
+      item = getItemForIncidence(incidence);
+      if (item)
         delete item;
-      }
       break;
+    }
     default:
       kdDebug(5850) << "KOListView::changeIncidenceDisplay(): Illegal action " << action << endl;
   }
 }
 
-KOListViewItem *KOListView::getItemForEvent(Incidence *incidence)
+KOListViewItem *KOListView::getItemForIncidence(Incidence *incidence)
 {
   KOListViewItem *item = (KOListViewItem *)mListView->firstChild();
   while (item) {
@@ -432,6 +447,7 @@ void KOListView::clearSelection()
 
 void KOListView::clear()
 {
+  mSelectedDates.clear();
   mListView->clear();
   mUidDict.clear();
 }
