@@ -354,6 +354,7 @@ void KODayMatrix::mouseReleaseEvent( QMouseEvent *e )
   }
 
   DateList daylist;
+  if ( mSelStart < 0 ) mSelStart = 0;
   for (int i = mSelStart; i <= mSelEnd; i++) {
     daylist.append(days[i]);
   }
