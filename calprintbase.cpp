@@ -34,6 +34,7 @@
 #include <klocale.h>
 #include <kdebug.h>
 #include <kconfig.h>
+#include <kcalendarsystem.h>
 #include <kprinter.h>
 
 #include <libkcal/todo.h>
@@ -41,6 +42,7 @@
 #include <libkcal/calendar.h>
 
 #include "koprefs.h"
+#include "koglobals.h"
 #ifndef KORG_NOPLUGINS
 #include "kocore.h"
 #endif
@@ -109,7 +111,6 @@ void setCategoryColors( QPainter &p, Incidence *incidence)
 CalPrintBase::CalPrintBase( KPrinter *printer, Calendar *cal, KConfig *cfg )
   : QObject(), mPrinter( printer ), mCalendar( cal ), mConfig( cfg )
 {
-//  mOrientation = KPrinter::Portrait;
 }
 
 CalPrintBase::~CalPrintBase()
@@ -143,7 +144,6 @@ void CalPrintBase::doPrint()
 {
   QPainter p;
 
-  mPrinter->setOrientation( orientation() );
   mPrinter->setColorMode( (mUseColors)?(KPrinter::Color):(KPrinter::GrayScale));
 
   p.begin(mPrinter);
@@ -169,8 +169,6 @@ void CalPrintBase::doLoadConfig()
     mFromDate = mConfig->readDateTimeEntry( "FromDate", &currDate ).date();
     mToDate = mConfig->readDateTimeEntry( "ToDate" ).date();
     mUseColors = mConfig->readBoolEntry( "UseColors", true );
-    mOrientation = (KPrinter::Orientation)(mConfig->readNumEntry(
-      "Printer orientation", orientation() ));
     loadConfig();
   } else {
     kdDebug(5850) << "No config available in loadConfig!!!!" << endl;
@@ -185,7 +183,6 @@ void CalPrintBase::doSaveConfig()
     mConfig->writeEntry( "FromDate", QDateTime( mFromDate ) );
     mConfig->writeEntry( "ToDate", QDateTime( mToDate ) );
     mConfig->writeEntry( "UseColors", mUseColors );
-    mConfig->writeEntry( "Printer orientation", mOrientation );
     mConfig->sync();
   } else {
     kdDebug(5850) << "No config available in saveConfig!!!!" << endl;
@@ -242,12 +239,12 @@ void CalPrintBase::drawSmallMonth(QPainter &p, const QDate &qd,
   // draw the title
   p.setFont(QFont("helvetica", 8, QFont::Bold));
   //  int lineSpacing = p.fontMetrics().lineSpacing();
-  p.drawText(x, y, width, height/4, AlignCenter, KGlobal::locale()->monthName(qd.month()));
+  const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
+  p.drawText(x, y, width, height/4, AlignCenter, calSys->monthName( qd ) );
 
   int cellWidth = width/7;
   int cellHeight = height/8;
   QString tmpStr;
-  KLocale *local = KGlobal::locale();
 
   // correct begin of week
   int weekdayCol = weekdayColumn( qd.dayOfWeek() );
@@ -257,7 +254,7 @@ void CalPrintBase::drawSmallMonth(QPainter &p, const QDate &qd,
    p.setFont(QFont("helvetica", 8, QFont::Bold));
   for (int col = 0; col < 7; col++) {
     // tmpStr.sprintf("%c",(const char*)monthDate2.dayName(monthDate2.dayOfWeek()));
-    tmpStr=local->weekDayName(monthDate2.dayOfWeek())[0].upper();
+    tmpStr=calSys->weekDayName( monthDate2 )[0].upper();
     p.drawText(x+col*cellWidth, y+height/4, cellWidth, cellHeight,
                AlignCenter, tmpStr);
     monthDate2 = monthDate2.addDays(1);
@@ -309,15 +306,15 @@ void CalPrintBase::drawDaysOfWeek(QPainter &p,
 void CalPrintBase::drawDaysOfWeekBox(QPainter &p, const QDate &qd,
     int x, int y, int width, int height)
 {
-  KLocale *local = KGlobal::locale();
+  const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
 
-  p.setFont(QFont("helvetica", 10, QFont::Bold));
-  p.drawRect(x, y, width, height);
-  p.fillRect(x+1, y+1,
-             width-2, height-2,
-             QBrush(Dense7Pattern));
-  p.drawText(x+5, y, width-10, height, AlignCenter | AlignVCenter,
-             local->weekDayName(qd.dayOfWeek()));
+  p.setFont( QFont( "helvetica", 10, QFont::Bold ) );
+  p.drawRect( x, y, width, height );
+  p.fillRect( x+1, y+1,
+              width-2, height-2,
+              QBrush( Dense7Pattern ) );
+  p.drawText( x+5, y, width-10, height, AlignCenter | AlignVCenter,
+             calSys->weekDayName( qd ) );
 }
 
 
@@ -332,19 +329,20 @@ void CalPrintBase::drawTimeLine(QPainter &p,
   float cellHeight=(60.*(float)minlen);
   float currY=y;
 
-  QTime curTime(fromTime);
-  QTime endTime(toTime);
-  if (fromTime.minute()>30) curTime = QTime(fromTime.hour()+1, 0, 0);
-  else if (fromTime.minute()>0) {
-    curTime = QTime(fromTime.hour(), 30, 0);
-    float yy=currY+minlen*(float)fromTime.secsTo(curTime)/60.;
-    p.drawLine( x+width/2, (int)yy, x+width, (int)yy);
-    curTime = QTime(fromTime.hour()+1, 0, 0);
+  QTime curTime( fromTime );
+  QTime endTime( toTime );
+  if ( fromTime.minute() > 30 )
+    curTime = QTime( fromTime.hour()+1, 0, 0 );
+  else if ( fromTime.minute() > 0 ) {
+    curTime = QTime( fromTime.hour(), 30, 0 );
+    float yy = currY + minlen*(float)fromTime.secsTo( curTime )/60.;
+    p.drawLine( x+width/2, (int)yy, x+width, (int)yy );
+    curTime = QTime( fromTime.hour()+1, 0, 0 );
   }
-  currY+=(fromTime.secsTo(curTime)*minlen/60);
+  currY += ( fromTime.secsTo(curTime)*minlen/60 );
 
-  while (curTime<endTime) {
-    p.drawLine(x, (int)currY, x+width, (int)currY);
+  while ( curTime < endTime ) {
+    p.drawLine( x, (int)currY, x+width, (int)currY );
     int newY=(int)(currY+cellHeight/2.);
     QString numStr;
     if (newY < y+height) {
@@ -585,9 +583,9 @@ void CalPrintBase::drawDayBox(QPainter &p, const QDate &qd,
     int x, int y, int width, int height,
     bool fullDate)
 {
-  KLocale *local = KGlobal::locale();
   QString dayNumStr;
   QString ampm;
+  const KLocale*local = KGlobal::locale();
 
 
   // This has to be localized
@@ -599,19 +597,20 @@ void CalPrintBase::drawDayBox(QPainter &p, const QDate &qd,
     index = dayNumStr.findRev(' ');
     dayNumStr.truncate(index);*/
 
+    const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
     dayNumStr = i18n("weekday month date", "%1 %2 %3")
-        .arg( local->weekDayName(qd.dayOfWeek()) )
-        .arg( local->monthName(qd.month(), true) )
+        .arg( calSys->weekDayName( qd ) )
+        .arg( calSys->monthName( qd ) )
         .arg( qd.day() );
 //    dayNumStr = local->formatDate(qd);
   } else {
-    dayNumStr = QString::number(qd.day());
+    dayNumStr = QString::number( qd.day() );
   }
 
-  p.drawRect(x, y, width, height);
-  // p.fillRect(x+1, y+1, width-2,height, QBrush(Dense7Pattern));
-  p.drawRect(x, y, width, mSubHeaderHeight);
-  p.fillRect(x+1, y+1, width-2, mSubHeaderHeight-2, QBrush(Dense7Pattern));
+  p.drawRect( x, y, width, height );
+  // p.fillRect( x+1, y+1, width-2,height, QBrush(Dense7Pattern) );
+  p.drawRect( x, y, width, mSubHeaderHeight );
+  p.fillRect( x+1, y+1, width-2, mSubHeaderHeight-2, QBrush(Dense7Pattern) );
   QString hstring;
 #ifndef KORG_NOPLUGINS
   hstring=KOCore::self()->holiday(qd);
@@ -795,8 +794,8 @@ void CalPrintBase::drawTodo( int &count, Todo * item, QPainter &p, bool connectS
     TodoParentStart *r )
 {
   QString outStr;
-  KLocale *local = KGlobal::locale();
 //  int fontHeight = 10;
+  const KLocale *local = KGlobal::locale();
   int priority=item->priority();
   int posdue=posDueDt;
   if (posdue<0) posdue=x+width;
@@ -850,16 +849,19 @@ void CalPrintBase::drawTodo( int &count, Todo * item, QPainter &p, bool connectS
   }
 
   // Priority
+  rect = p.boundingRect(pospriority, y + 10, 5, -1, AlignCenter, outStr);
+  outStr.setNum(priority);
+  // Make it a more reasonable size
+  rect.setWidth(18);
+  rect.setHeight(18);
   if ( priority > 0 && pospriority>=0 ) {
-    rect = p.boundingRect(pospriority, y + 10, 5, -1, AlignCenter, outStr);
-    outStr.setNum(priority);
-    // Make it a more reasonable size
-    rect.setWidth(18);
-    rect.setHeight(18);
     p.drawText(rect, AlignCenter, outStr);
-    p.drawRect(rect);
-  } else {
-    rect = QRect(pospriority, y+10, 0, 0);
+  }
+  p.drawRect(rect);
+  // cross out the rectangle for completed items
+  if ( item->isCompleted() ) {
+    p.drawLine( rect.topLeft(), rect.bottomRight() );
+    p.drawLine( rect.topRight(), rect.bottomLeft() );
   }
   startpt.mRect = rect; //save for later
 

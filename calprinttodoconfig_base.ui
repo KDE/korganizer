@@ -1,4 +1,4 @@
-<!DOCTYPE UI><UI version="3.1" stdsetdef="1">
+<!DOCTYPE UI><UI version="3.2" stdsetdef="1">
 <class>CalPrintTodoConfig_Base</class>
 <comment>Configuration page for the print day mode.</comment>
 <author>Reinhold Kainhofer &lt;reinhold@kainhofer.com&gt;</author>
@@ -11,7 +11,7 @@
             <x>0</x>
             <y>0</y>
             <width>437</width>
-            <height>377</height>
+            <height>379</height>
         </rect>
     </property>
     <property name="caption">
@@ -122,6 +122,9 @@
                     <property name="text">
                         <string>Print &amp;all todo items</string>
                     </property>
+                    <property name="accel">
+                        <string>Alt+A</string>
+                    </property>
                     <property name="checked">
                         <bool>true</bool>
                     </property>
@@ -136,16 +139,8 @@
                     <property name="text">
                         <string>Print only &amp;unfinished items</string>
                     </property>
-                </widget>
-                <widget class="QRadioButton" row="2" column="0" rowspan="1" colspan="5">
-                    <property name="name">
-                        <cstring>mPrintSelected</cstring>
-                    </property>
-                    <property name="enabled">
-                        <bool>false</bool>
-                    </property>
-                    <property name="text">
-                        <string>Only print &amp;selected todo item</string>
+                    <property name="accel">
+                        <string>Alt+U</string>
                     </property>
                 </widget>
                 <widget class="QDateEdit" row="4" column="4">
@@ -179,6 +174,9 @@
                     </property>
                     <property name="text">
                         <string>Only items due in the &amp;range:</string>
+                    </property>
+                    <property name="accel">
+                        <string>Alt+R</string>
                     </property>
                 </widget>
             </grid>

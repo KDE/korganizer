@@ -88,9 +88,12 @@ class CalPrintBase : public QObject
     virtual void doPrint();
 
     /**
-      Orientation of printout.
+      Orientation of printout. Default is Portrait. If your plugin wants
+      to use some other orientation as default (e.g. depending on some
+      config settings), implement this function in your subclass and
+      return the desired orientation.
     */
-    virtual KPrinter::Orientation orientation() { return mOrientation; }
+    virtual KPrinter::Orientation orientation() { return KPrinter::Portrait; }
 
     /**
       Load print format configuration from config file.
@@ -355,8 +358,6 @@ class CalPrintBase : public QObject
     Calendar *mCalendar;
     KConfig *mConfig;
     QWidget *mConfigWidget;
-
-    KPrinter::Orientation mOrientation;
 
   protected:
     // TODO_RK: move these to the appropriate subclasses or set them globally.

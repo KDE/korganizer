@@ -50,7 +50,7 @@ CalPrinter::CalPrinter( QWidget *parent, Calendar *calendar )
   mCalendar = calendar;
   mParent = parent;
   mPrinter = new KPrinter;
-  mPrinter->setOrientation( KPrinter::Landscape );
+  mPrinter->setOrientation( KPrinter::Portrait );
   mConfig = new KSimpleConfig( "korganizer_printing.rc" );
 
   init( mPrinter, calendar );
@@ -142,6 +142,31 @@ void CalPrinter::doPrint( CalPrintBase *selectedStyle, bool preview )
   // FIXME: add a better caption to the Printingdialog
   mPrinter->setPreviewOnly( preview );
   if ( mPrinter->setup( mParent, i18n("Print Calendar") ) ) {
+    switch ( mPrintOrientation ) {
+      case eOrientPlugin:
+        mPrinter->setOrientation( selectedStyle->orientation());
+        break;
+      case eOrientPortrait:
+        mPrinter->setOrientation( KPrinter::Portrait );
+kdDebug(5850)<<"Portrait"<<endl;
+        break;
+      case eOrientLandscape:
+kdDebug(5850)<<"Landscape"<<endl;
+        mPrinter->setOrientation( KPrinter::Landscape );
+        break;
+      case eOrientPrinter:
+      default:
+        break;
+    }
+kdDebug(5850)<<"mPrintOrientation="<<mPrintOrientation<<endl;
+kdDebug(5850)<<"mPrinter->orientation()="<<mPrinter->orientation()<<endl;
+kdDebug(5850)<<"OrientPlugin: "<<eOrientPlugin<<endl;
+kdDebug(5850)<<"eOrientPortrait: "<<eOrientPortrait<<endl;
+kdDebug(5850)<<"eOrientLandscape: "<<eOrientLandscape<<endl;
+kdDebug(5850)<<"eOrientPrinter: "<<eOrientPrinter<<endl;
+kdDebug(5850)<<endl;
+kdDebug(5850)<<"KPrinter::Portrait="<<KPrinter::Portrait<<endl;
+kdDebug(5850)<<"KPrinter::Landscape="<<KPrinter::Landscape<<endl;
     selectedStyle->doPrint();
   }
   mPrinter->setPreviewOnly( false );
@@ -272,12 +297,8 @@ CalPrintBase *CalPrintDialog::selectedPlugin()
 
 void CalPrintDialog::slotOk()
 {
-  int orientSel = mOrientationSelection->currentItem();
-  if ( orientSel == 1 ) {
-    // TODO: Set Portrait mode
-  } else if ( orientSel == 2 ) {
-    // TODO: Set Landscape  mode
-  }
+  mOrientation = (CalPrinter::ePrintOrientation)mOrientationSelection->currentItem();
+kdDebug(5850)<<"Printer::orientation()="<<mOrientation<<endl;
   KDialogBase::slotOk();
 }
 

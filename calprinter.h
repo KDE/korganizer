@@ -55,6 +55,14 @@ class QLabel;
 class CalPrinter : public QObject, public KOrg::CalPrinterBase
 {
     Q_OBJECT
+
+  public:
+    enum ePrintOrientation {
+      eOrientPlugin=0,
+      eOrientPrinter,
+      eOrientPortrait,
+      eOrientLandscape
+    } mPrintOrientation;
   public:
     /**
       \param par parent widget for dialogs
@@ -105,6 +113,7 @@ class CalPrintDialog : public KDialogBase
                     QWidget *parent = 0, const char *name = 0 );
     virtual ~CalPrintDialog();
     CalPrintBase *selectedPlugin();
+    CalPrinter::ePrintOrientation orientation() { return mOrientation; }
 
   public slots:
     void setPrintType( int );
@@ -123,6 +132,8 @@ class CalPrintDialog : public KDialogBase
     QLabel *mPrinterLabel;
     QString mPreviewText;
     QComboBox *mOrientationSelection;
+
+    CalPrinter::ePrintOrientation mOrientation;
 };
 
 #endif

@@ -94,6 +94,7 @@ class CalPrintMonth : public CalPrintBase
     virtual QString description() { return i18n("Print month"); }
     virtual QString longDescription() { return i18n("Prints all events of one month on one page"); }
     virtual QWidget *configWidget(QWidget*);
+    virtual KPrinter::Orientation orientation() { return KPrinter::Landscape; }
 
   public slots:
     void print(QPainter &p, int width, int height);
@@ -129,7 +130,7 @@ class CalPrintTodos : public CalPrintBase
     QString mPageTitle;
 
     enum eTodoPrintType {
-      TodosAll = 0, TodosUnfinished, TodosSelected, TodosDueRange
+      TodosAll = 0, TodosUnfinished, TodosDueRange
     } mTodoPrintType;
 
     bool mIncludeDescription;

@@ -36,6 +36,7 @@
 #include <kdebug.h>
 #include <kprinter.h>
 #include <kconfig.h>
+#include <kcalendarsystem.h>
 
 #include <libkcal/todo.h>
 #include <libkcal/calendar.h>
@@ -43,6 +44,7 @@
 #include <libkdepim/kdateedit.h>
 
 #include "koprefs.h"
+#include "koglobals.h"
 #include "calprintplugins.h"
 #ifndef KORG_NOPRINTER
 
@@ -350,7 +352,6 @@ void CalPrintWeek::print( QPainter &p, int width, int height )
 CalPrintMonth::CalPrintMonth( KPrinter *printer, Calendar *cal, KConfig *cfg )
   : CalPrintBase( printer, cal, cfg )
 {
-  mOrientation = KPrinter::Landscape;
 }
 
 CalPrintMonth::~CalPrintMonth()
@@ -433,7 +434,7 @@ void CalPrintMonth::print( QPainter &p, int width, int height )
   do {
     KLocale *local = KGlobal::locale();
     QString title( i18n("monthname year", "%1 %2") );
-    title = title.arg( local->monthName( curMonth.month() ) )
+    title = title.arg( KOGlobals::self()->calendarSystem()->monthName( curMonth ) )
                  .arg( curMonth.year() );
     QDate tmp( fromMonth );
     int weekdayCol = weekdayColumn( tmp.dayOfWeek() );
