@@ -302,7 +302,7 @@ void KDateNavigator::updateButton(int i)
 
   kdDebug() << "KDateNavigator::updateButton(" << i << ") !!!!!" << endl;
 
-/*ET
+#if 0
   int index;
   int extraDays;
   // If month begins on Monday and Monday is first day of week,
@@ -317,7 +317,7 @@ void KDateNavigator::updateButton(int i)
   /*if (buttons[i]->date().month() == m_MthYr.month())
     buttons[i]->setItalic(FALSE);
   else
-  buttons[i]->setItalic(TRUE);* /
+  buttons[i]->setItalic(TRUE);*/
 
   // check calendar for events on this day
   bool hasEvents = false;
@@ -390,7 +390,7 @@ void KDateNavigator::updateButton(int i)
   } else {
     buttons[i]->setToday(false);
   }
-*/
+#endif
 }
 
 void KDateNavigator::setShowWeekNums(bool enabled)
