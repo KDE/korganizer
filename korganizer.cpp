@@ -63,6 +63,7 @@
 #include "koprefs.h"
 #include "kocore.h"
 #include "konewstuff.h"
+#include "exportwebdialog.h"
 
 #include "korganizer.h"
 using namespace KOrg;
@@ -145,6 +146,8 @@ KOrganizer::KOrganizer( const char *name )
 
   mCalendarView->lookForOutgoingMessages();
   mCalendarView->lookForIncomingMessages();
+
+  mHtmlExportSync = false;
 
   kdDebug() << "KOrganizer::KOrganizer() done" << endl;
 }
@@ -833,6 +836,11 @@ bool KOrganizer::saveURL()
 
   showStatusMessage(i18n("Saved calendar '%1'.").arg(mURL.prettyURL()));
 
+  if (KOPrefs::instance()->mHtmlWithSave==true) {
+    ExportWebDialog *dlg = new ExportWebDialog(mCalendarView->calendar());
+    dlg->exportWebPage(mHtmlExportSync);
+  }
+  
   return true;
 }
 
@@ -894,6 +902,7 @@ bool KOrganizer::saveModifiedURL()
   // If calendar isn't modified do nothing.
   if (!mCalendarView->isModified()) return true;
 
+  mHtmlExportSync = true;
   if (KOPrefs::instance()->mAutoSave && !mURL.isEmpty()) {
     // Save automatically, when auto save is enabled.
     return saveURL();
@@ -914,7 +923,10 @@ bool KOrganizer::saveModifiedURL()
         return true;
       case KMessageBox::Cancel:
       default:
-        return false;
+	{
+	  mHtmlExportSync = false;
+          return false;
+	}
     }
   }
 }

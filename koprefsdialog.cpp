@@ -172,6 +172,11 @@ void KOPrefsDialog::setupMainTab()
 
   topLayout->addMultiCellWidget(mailClientGroup->groupBox(),11,11,0,1);
 
+  KPrefsWidBool *htmlsave =
+      addWidBool(i18n("Export to HTML with every save"),&(KOPrefs::instance()->mHtmlWithSave),
+                 topFrame);
+  topLayout->addMultiCellWidget(htmlsave->checkBox(),12,12,0,1);
+
   topLayout->setRowStretch(13,1);
 }
 

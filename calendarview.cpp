@@ -332,7 +332,7 @@ bool CalendarView::saveCalendar( QString filename )
   mStorage->setSaveFormat( new ICalFormat );
 
   bool success = mStorage->save();
-  
+
   if ( !success ) {
     return false;
   }

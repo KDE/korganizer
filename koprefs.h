@@ -137,6 +137,7 @@ class KOPrefs : public KPimPrefs
 
     QString mArchiveFile;
     QString mHtmlExportFile;
+    bool    mHtmlWithSave;
 
     QStringList mSelectedPlugins;
 

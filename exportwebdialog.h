@@ -52,7 +52,7 @@ class ExportWebDialog : public KDialogBase
     virtual ~ExportWebDialog();
 
   public slots:
-    void exportWebPage();
+    void exportWebPage(bool synchronous=false);
 
     void slotResult(KIO::Job *);
     void slotDataReq(KIO::Job *,QByteArray &data);

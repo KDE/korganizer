@@ -45,6 +45,9 @@
 #include <kconfig.h>
 #include <kglobal.h>
 #include <kurlrequester.h>
+#include <ktempfile.h>
+#include <kio/netaccess.h>
+#include <knotifyclient.h>
 
 #include <libkcal/calendar.h>
 
@@ -98,7 +101,7 @@ void ExportWebDialog::setupGeneralPage()
   mFromDate->setDate(QDate::currentDate());
 
   mToDate = new KDateEdit(rangeGroup);
-  mToDate->setDate(QDate::currentDate());
+  mToDate->setDate(QDate::currentDate().addMonths(1));
 
   QButtonGroup *typeGroup = new QVButtonGroup(i18n("View Type"),mGeneralPage);
   topLayout->addWidget(typeGroup);
@@ -228,7 +231,7 @@ void ExportWebDialog::saveSettings()
   cfg->sync();
 }
 
-void ExportWebDialog::exportWebPage()
+void ExportWebDialog::exportWebPage(bool synchronous)
 {
   saveSettings();
 
@@ -250,12 +253,26 @@ void ExportWebDialog::exportWebPage()
   // Remember destination.
   KOPrefs::instance()->mHtmlExportFile = mOutputFileEdit->lineEdit()->text();
 
-  mDataAvailable = true;
-
-  KIO::TransferJob *job = KIO::put(dest,-1,true,false);
-  connect(job,SIGNAL(dataReq(KIO::Job *,QByteArray &)),
-          SLOT(slotDataReq(KIO::Job *,QByteArray &)));
-  connect(job,SIGNAL(result(KIO::Job *)),SLOT(slotResult(KIO::Job *)));
+  if (synchronous) {
+    if (!dest.isLocalFile()) {
+      KTempFile tf;
+      QString tfile = tf.name();
+      tf.close();
+      mExport->save(tfile);
+      if (!KIO::NetAccess::upload (tfile, dest)) {
+	KNotifyClient::event ("Could not upload file.");
+      }
+      tf.unlink();
+    } else {
+      mExport->save(dest.path());
+    }
+  } else {
+    mDataAvailable = true;
+    KIO::TransferJob *job = KIO::put(dest,-1,true,false);
+    connect(job,SIGNAL(dataReq(KIO::Job *,QByteArray &)),
+	    SLOT(slotDataReq(KIO::Job *,QByteArray &)));
+    connect(job,SIGNAL(result(KIO::Job *)),SLOT(slotResult(KIO::Job *)));
+  }
 }
 
 void ExportWebDialog::slotResult(KIO::Job *job)

@@ -69,6 +69,7 @@ KOPrefs::KOPrefs() :
   addItemString("Archive File",&mArchiveFile);
   addItemString("Html Export File",&mHtmlExportFile,
       QDir::homeDirPath() + "/" + i18n("Default export file", "calendar.html"));
+  addItemBool("Html With Save",&mHtmlWithSave,false);
 
   KPrefs::setCurrentGroup("Personal Settings");
 

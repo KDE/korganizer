@@ -311,6 +311,10 @@ class KOrganizer : public KOrg::MainWindow, virtual public KOrganizerIface
     static bool startedKAddressBook; //whether we started KAddressBook ourselves
 
     KONewStuff *mNewStuff;
+
+    // if true then the html-export at savetime is synchonous (blocking)
+    // this is needed when saving while quiting
+    bool mHtmlExportSync;
 };
 
 #endif
