@@ -29,7 +29,7 @@
 
 #include <libkcal/calendarresources.h>
 #include <libkcal/resourcelocal.h>
-#include <libkcal/resourceremote.h>
+#include <kresources/remote/resourceremote.h>
 
 #include <klocale.h>
 
