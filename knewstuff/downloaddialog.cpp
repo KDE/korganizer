@@ -283,7 +283,7 @@ void DownloadDialog::addEntry(Entry *entry)
       slotPage(m_frame);
     }
   }*/
-
+  kapp->config()->setGroup("KNewStuffStatus");
   date = QDate::fromString(kapp->config()->readEntry(entry->name()));
   if(!date.isValid()) installed = 0;
   else if(date < entry->releaseDate()) installed = -1;
