@@ -118,6 +118,8 @@ class HtmlExport {
     QString breakString(const QString &text);
 
   private:
+    QString cleanChars(const QString &txt);
+  
     Calendar *mCalendar;
 
     bool mMonthViewEnabled;

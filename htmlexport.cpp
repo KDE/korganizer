@@ -24,6 +24,7 @@
 #include <qfile.h>
 #include <qtextstream.h>
 #include <qtextcodec.h>
+#include <qregexp.h> 
 
 #include <kglobal.h>
 #include <klocale.h>
@@ -257,9 +258,9 @@ void HtmlExport::createHtmlEvent (QTextStream *ts, Event *event,
   }
 
   *ts << "    <td class=\"sum\">\n";
-  *ts << "      <b>" << event->summary() << "</b>\n";
+  *ts << "      <b>" << cleanChars(event->summary()) << "</b>\n";
   if (withDescription && !event->description().isEmpty()) {
-    *ts << "      <p>" << breakString(event->description()) << "</p>\n";
+    *ts << "      <p>" << breakString(cleanChars(event->description())) << "</p>\n";
   }
   *ts << "    </td>\n";
 
@@ -342,7 +343,7 @@ void HtmlExport::createHtmlTodoList (QTextStream *ts)
       *ts << "\"" << QString::number(columns) << "\"";
       *ts << "><a name=\"sub" << ev->uid() << "\"></a>"
           << i18n("Sub-Tasks of: ") << "<a href=\"#"
-          << ev->uid() << "\"><b>" << ev->summary() << "</b></a></td>\n";
+          << ev->uid() << "\"><b>" << cleanChars(ev->summary()) << "</b></a></td>\n";
       *ts << "  </tr>\n";
 
       QPtrList<Todo> sortedList;
@@ -378,9 +379,9 @@ void HtmlExport::createHtmlTodo (QTextStream *ts,Todo *todo)
   if (completed) *ts << "done";
   *ts << ">\n";
   *ts << "    <a name=\"" << todo->uid() << "\"></a>\n";
-  *ts << "    <b>" << todo->summary() << "</b>\n";
+  *ts << "    <b>" << cleanChars(todo->summary()) << "</b>\n";
   if (!todo->description().isEmpty()) {
-    *ts << "    <p>" << breakString(todo->description()) << "</p>\n";
+    *ts << "    <p>" << breakString(cleanChars(todo->description())) << "</p>\n";
   }
   if (relations.count()) {
     *ts << "    <div align=\"right\"><a href=\"#sub" << todo->uid()
@@ -453,7 +454,7 @@ bool HtmlExport::checkSecrecy( Incidence *incidence )
 void HtmlExport::formatHtmlCategories (QTextStream *ts,Incidence *event)
 {
   if (!event->categoriesStr().isEmpty()) {
-    *ts << "    " << event->categoriesStr() << "\n";
+    *ts << "    " << cleanChars(event->categoriesStr()) << "\n";
   } else {
     *ts << "    &nbsp;\n";
   }
@@ -471,7 +472,7 @@ void HtmlExport::formatHtmlAttendees (QTextStream *ts,Incidence *event)
     KABC::Addressee o = addressList.first();
     if (!o.isEmpty() && addressList.size()<2) {
       *ts << "<a href=\"mailto:" << event->organizer() << "\">";
-      *ts << o.formattedName() << "</a>\n";
+      *ts << cleanChars(o.formattedName()) << "</a>\n";
     }
 		else *ts << event->organizer();
 #else
@@ -481,10 +482,11 @@ void HtmlExport::formatHtmlAttendees (QTextStream *ts,Incidence *event)
     Attendee *a;
     for(a=attendees.first();a;a=attendees.next()) {
       if (!a->email().isEmpty()) {
-				*ts << "<a href=\"mailto:" << a->email() << "\">" << a->name() << "</a>";
+				*ts << "<a href=\"mailto:" << a->email();
+				*ts << "\">" << cleanChars(a->name()) << "</a>";
 		  }
       else {
-			  *ts << "    " << a->name();
+			  *ts << "    " << cleanChars(a->name());
 		  }
       *ts << "<br />" << "\n";
     }
@@ -511,4 +513,24 @@ QString HtmlExport::breakString(const QString &text)
     }
     return out;
   }
+}
+
+QString HtmlExport::cleanChars(const QString &text)
+{
+  QString txt = text;
+  txt = txt.replace( QRegExp("&"), "&amp;" );
+  txt = txt.replace( QRegExp("<"), "&lt;" );
+  txt = txt.replace( QRegExp(">"), "&gt;" );
+  txt = txt.replace( QRegExp("\""), "&quot;" );
+  txt = txt.replace( QRegExp("ä"), "&auml;" );
+  txt = txt.replace( QRegExp("Ä"), "&Auml;" );
+  txt = txt.replace( QRegExp("ö"), "&ouml;" );
+  txt = txt.replace( QRegExp("Ö"), "&Ouml;" );
+  txt = txt.replace( QRegExp("ü"), "&uuml;" );
+  txt = txt.replace( QRegExp("Ü"), "&Uuml;" );
+  txt = txt.replace( QRegExp("ß"), "&szlig;" );
+  txt = txt.replace( QRegExp("¤"), "&euro;" );
+  txt = txt.replace( QRegExp("é"), "&eacute;" );
+
+  return txt;
 }
