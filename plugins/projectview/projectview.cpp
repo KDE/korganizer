@@ -60,8 +60,8 @@ ProjectView::ProjectView(KOrg::MainWindow *parent, const char *name) :
 
   setXMLFile("plugins/projectviewui.rc");
 	   
-  new KAction(i18n("Project"), 0, this, SLOT(showView()),
-              actionCollection(), "view_project");
+  parent->addPluginAction( new KAction(i18n("Project"), 0, this, SLOT(showView()),
+                           actionCollection(), "view_project") );
 }
 
 ProjectView::~ProjectView()

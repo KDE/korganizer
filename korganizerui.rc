@@ -1,5 +1,5 @@
 <!DOCTYPE kpartgui>
-<kpartgui name="korganizer" version="20">
+<kpartgui name="korganizer" version="24">
 
   <MenuBar>
     <Menu name="file"><text>&amp;File</text>
@@ -39,7 +39,7 @@
       <Separator/>
       <Action name="update"/>
     </Menu>
-    <Menu name="go_document">
+    <Menu name="go_document"><text>&amp;Go</text>
       <Action name="go_today"/>
     </Menu>
     <Menu name="actions"><text>&amp;Actions</text>

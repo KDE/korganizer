@@ -21,14 +21,29 @@
     without including the source code for Qt in the source distribution.
 */
 
+#include <qapplication.h>
+#include <qfile.h>
+#include <kpopupmenu.h>
+#include <qtimer.h>
 #include <kinstance.h>
 #include <klocale.h>
 #include <kaboutdata.h>
 #include <kiconloader.h>
 #include <kaction.h>
 #include <kdebug.h>
+#include <kpopupmenu.h>
+#include <kstandarddirs.h>
+#include <dcopclient.h>
+#include <kconfig.h>
+#include <kprocess.h>
+#include <ktempfile.h>
 
 #include "calendarview.h"
+#include "actionmanager.h"
+#include "koapp.h" // for static methods
+#include "korganizer.h"
+#include "koglobals.h"
+#include "kalarmd/alarmdaemoniface_stub.h"
 
 #include "korganizer_part.h"
 
@@ -106,33 +121,123 @@ KOrganizerPart::KOrganizerPart(QWidget *parentWidget, const char *widgetName,
 
   widget->show();
 
-  (void)new KAction(i18n("&List"), "list", 0,
-                    widget, SLOT(showListView()),
-                    actionCollection(), "view_list");
-  (void)new KAction(i18n("&Day"), "1day", 0,
-                    widget, SLOT(showDayView()),
-                    actionCollection(), "view_day");
-  (void)new KAction(i18n("W&ork Week"), "5days", 0,
-                    widget, SLOT(showWorkWeekView()),
-                    actionCollection(), "view_workweek");
-  (void)new KAction(i18n("&Week"), "7days", 0,
-                    widget, SLOT(showWeekView()),
-                    actionCollection(), "view_week");
-  (void)new KAction(i18n("&Next X Days"), "nextXdays", 0,
-                    widget, SLOT(showNextXView()),
-                    actionCollection(), "view_nextx");
-  (void)new KAction(i18n("&Month"), "month", 0,
-                    widget, SLOT(showMonthView()),
-                    actionCollection(), "view_month");
-  (void)new KAction(i18n("&To-Do List"), "todo", 0,
-                    widget, SLOT(view_todolist()),
-                    actionCollection(), "view_todo");
+  mam = new ActionManager( this, widget, this, this );
+  mam->init();
+  mam->readSettings();
+
+  KConfig *config = KOGlobals::config();
+  config->setGroup("General");
+  QString urlString = config->readEntry("Active Calendar");
+
+  // Force alarm daemon to load active calendar
+  if (!urlString.isEmpty()) {
+    KOrg::MainWindow *korg=ActionManager::findInstance(urlString);
+    if ((0 == korg) && (!urlString.isEmpty()))
+      mam->openURL(urlString);
+  } else {
+    QString location = locateLocal( "data", "korganizer/kontact.ics" );
+    mam->saveAsURL( location );
+    mam->makeActive();
+  }
 
   setXMLFile( "korganizer_part.rc" );
+  QTimer::singleShot(0, mam, SLOT(loadParts()));
 }
+
+void KOrganizerPart::startCompleted( KProcess* process ) {
+    delete process;
+}
+
+void KOrganizerPart::saveCalendar()
+{
+  QPtrListIterator<KMainWindow> it(*KMainWindow::memberList);
+  KMainWindow *window = 0;
+  while ((window = it.current()) != 0) {
+    ++it;
+    if (window->inherits("KOrganizer")) {
+      KOrganizer *korg = dynamic_cast<KOrganizer*>(window);
+      if (!korg->actionManager()->view()->isModified())
+	continue;
+      if (korg->actionManager()->getCurrentURL().isEmpty()) {
+	KTempFile tmp( locateLocal( "data", "korganizer/" ));
+	korg->actionManager()->saveAsURL( tmp.name() );
+      } else {
+	korg->actionManager()->saveURL();
+      }
+      window->close(true);
+    }
+  }
+
+  if (mam->view()->isModified()) {
+    if (!mam->getCurrentURL().isEmpty()) {
+      mam->saveURL();
+    } else {
+      QString location = locateLocal( "data", "korganizer/kontact.ics" );
+      mam->saveAsURL( location );
+    }
+  }
+  mam->writeSettings();
+  delete mam;
+}
+
+QWidget* KOrganizerPart::topLevelWidget()
+{
+  return widget->topLevelWidget();
+}
+
+ActionManager *KOrganizerPart::actionManager()
+{
+  return mam;
+}
+
+void KOrganizerPart::addPluginAction( KAction* action)
+{
+  action->plug( mam->pluginMenu()->popupMenu() );
+}
+
+void KOrganizerPart::setActive(bool active)
+{
+  mam->setActive(active);
+}
+
+KOrg::CalendarViewBase *KOrganizerPart::view() const
+{
+  return widget;
+}
+
+bool KOrganizerPart::openURL(const KURL &url, bool merge)
+{
+  return mam->openURL( url, merge );
+}
+
+bool KOrganizerPart::saveURL()
+{
+  return mam->saveURL();
+}
+
+bool KOrganizerPart::saveAsURL(const KURL & kurl)
+{
+  return mam->saveAsURL( kurl );
+}
+
+KURL KOrganizerPart::getCurrentURL() const
+{
+  return mam->getCurrentURL();
+}
+
+void KOrganizerPart::showStatusMessage(const QString& message)
+{
+  if (!parent() || !parent()->parent())
+    return;
+  KMainWindow *mainWin = dynamic_cast<KMainWindow*>(parent()->parent()); //yuck
+  if (mainWin && mainWin->statusBar())
+      mainWin->statusBar()->message( message );
+}
+
 
 KOrganizerPart::~KOrganizerPart()
 {
+  saveCalendar();
   closeURL();
 }
 
@@ -154,3 +259,5 @@ KOrganizerBrowserExtension::~KOrganizerBrowserExtension()
 
 using namespace KParts;
 #include "korganizer_part.moc"
+
+

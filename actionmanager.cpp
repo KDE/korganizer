@@ -57,8 +57,7 @@ bool ActionManager::startedKAddressBook = false;
 
 ActionManager::ActionManager(KXMLGUIClient *client, CalendarView *widget,
                              QObject *parent, KOrg::MainWindow *mainWindow)
-    : QObject(parent),
-      mAlarmDaemonIface("kalarmd","ad")
+    : QObject(parent)
 {
   mGUIClient = client;
   mACollection = mGUIClient->actionCollection();
@@ -530,7 +529,7 @@ void ActionManager::file_open()
 
   KOrg::MainWindow *korg=ActionManager::findInstance(url);
   if ((0 != korg)&&(korg != mMainWindow)) {
-    KWin::setActiveWindow(korg->tlw()->winId());
+    KWin::setActiveWindow(korg->topLevelWidget()->winId());
     return;
   }
 
@@ -553,7 +552,7 @@ void ActionManager::file_openRecent(const KURL& url)
   if (!url.isEmpty()) {
     KOrg::MainWindow *korg=ActionManager::findInstance(url);
     if ((0 != korg)&&(korg != mMainWindow)) {
-      KWin::setActiveWindow(korg->tlw()->winId());
+      KWin::setActiveWindow(korg->topLevelWidget()->winId());
       return;
     }
     openURL(url);
@@ -1047,8 +1046,7 @@ void ActionManager::makeActive()
   }
 
   writeActiveState();
-  mAlarmDaemonIface.reloadCal( "korgac", mURL.url() );
-  if ( !mAlarmDaemonIface.ok() ) {
+  if ( !KOGlobals::self()->alarmClient()->reloadCalendar( mURL ) ) {
     kdDebug() << "KOrganizer::makeActive(): dcop send failed" << endl;
   }
   setActive();

@@ -19,9 +19,15 @@
 */
 #ifndef KORG_MAINWINDOW_H
 #define KORG_MAINWINDOW_H
-// $Id$
 
-#include <kparts/mainwindow.h>
+#include <kxmlguiclient.h>
+
+#include <qwidget.h>
+
+class KActionCollection;
+class KAction;
+
+class ActionManager;
 
 namespace KOrg {
 
@@ -31,10 +37,10 @@ class CalendarViewBase;
   @short interface for korganizer main window
   @author Cornelius Schumacher
 */
-class MainWindow : public KParts::MainWindow
+class MainWindow
 {
   public:
-    MainWindow(const char *name) : KParts::MainWindow(0,name) {}
+    MainWindow() {};
     virtual ~MainWindow() {};
 
     virtual CalendarViewBase *view() const = 0;
@@ -48,6 +54,31 @@ class MainWindow : public KParts::MainWindow
 
     /** Get current URL */
     virtual KURL getCurrentURL() const = 0;
+
+    /**
+      Return XML GUI factory of this main window.
+    */
+    virtual KXMLGUIFactory *mainGuiFactory() = 0;
+    /**
+      Return widget whcih represents this main window.
+    */
+    virtual QWidget *topLevelWidget() = 0;
+    /**
+      Return ActionManager of this main window.
+    */
+    virtual ActionManager *actionManager() = 0;
+    /**
+      ?
+    */
+    virtual void setActive(bool active) = 0;
+    /**
+      Show status mesage in status bar.
+    */
+    virtual void showStatusMessage(const QString& message) = 0;
+    /**
+      Add action of plugin to main window.
+    */
+    virtual void addPluginAction( KAction* ) = 0;
 };
 
 }

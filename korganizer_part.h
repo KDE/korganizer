@@ -23,14 +23,18 @@
 #ifndef KORGANIZER_PART_H
 #define KORGANIZER_PART_H
 
+#include <kurl.h>
 #include <kparts/browserextension.h>
 #include <kparts/factory.h>
+#include <korganizer/mainwindow.h>
+#include <korganizer/calendarviewbase.h>
 
 class KInstance;
 class KAboutData;
 class KOrganizerBrowserExtension;
 
 class CalendarView;
+class ActionManager;
 
 class KOrganizerFactory : public KParts::Factory
 {
@@ -51,7 +55,8 @@ class KOrganizerFactory : public KParts::Factory
     static KAboutData *s_about;
 };
 
-class KOrganizerPart: public KParts::ReadOnlyPart
+class KOrganizerPart: public KParts::ReadOnlyPart,
+		      public KOrg::MainWindow
 {
     Q_OBJECT
   public:
@@ -59,11 +64,35 @@ class KOrganizerPart: public KParts::ReadOnlyPart
                    QObject *parent, const char *name);
     virtual ~KOrganizerPart();
 
+    virtual KOrg::CalendarViewBase *view() const;
+
+    /** Load calendar file from URL. Merge into current calendar, if \a merge is true. */
+    virtual bool openURL(const KURL &url,bool merge=false);
+    /** Save calendar file to URL of current calendar */
+    virtual bool saveURL();
+    /** Save calendar file to URL */
+    virtual bool saveAsURL(const KURL & kurl);
+
+    /** Get current URL */
+    virtual KURL getCurrentURL() const;
+
+    virtual KXMLGUIFactory *mainGuiFactory() { return factory(); }
+    virtual QWidget *topLevelWidget();
+    virtual ActionManager *actionManager();
+    virtual void addPluginAction( KAction* );
+    virtual void setActive(bool active);
+    virtual void showStatusMessage(const QString& message);
+
   protected:
     virtual bool openFile();
 
+  protected slots:
+    void saveCalendar();
+    void startCompleted( KProcess* );
+
   private:
     CalendarView *widget;
+    ActionManager *mam;
     KOrganizerBrowserExtension *m_extension;
 };
 

@@ -23,6 +23,7 @@
 
 #include <kdebug.h>
 
+#include "actionmanager.h"
 #include "kowindowlist.h"
 #include "kowindowlist.moc"
 
@@ -36,14 +37,14 @@ KOWindowList::~KOWindowList()
 {
 }
 
-void KOWindowList::addWindow(KOrganizer *korg)
+void KOWindowList::addWindow(KOrg::MainWindow *korg)
 {
   mWindowList.append(korg);
-  connect(korg,SIGNAL(calendarActivated(KOrganizer *)),
-          SLOT(deactivateCalendars(KOrganizer *)));
+  connect(korg->actionManager(),SIGNAL(calendarActivated(KOrg::MainWindow *)),
+	  SLOT(deactivateCalendars(KOrg::MainWindow *)));
 }
 
-void KOWindowList::removeWindow(KOrganizer *korg)
+void KOWindowList::removeWindow(KOrg::MainWindow *korg)
 {
   mWindowList.removeRef(korg);
 }
@@ -54,18 +55,18 @@ bool KOWindowList::lastInstance()
   else return false;
 }
 
-KOrganizer* KOWindowList::findInstance(const KURL &url)
+KOrg::MainWindow* KOWindowList::findInstance(const KURL &url)
 {
-  KOrganizer *inst;
+  KOrg::MainWindow *inst;
   for(inst=mWindowList.first();inst;inst=mWindowList.next())
     if (inst->getCurrentURL()==url)
       return inst;
   return 0;
 }
 
-void KOWindowList::deactivateCalendars(KOrganizer *korg)
+void KOWindowList::deactivateCalendars(KOrg::MainWindow *korg)
 {
-  KOrganizer *k;
+  KOrg::MainWindow *k;
   for(k=mWindowList.first();k;k=mWindowList.next()) {
     if (k != korg) k->setActive(false);
   }

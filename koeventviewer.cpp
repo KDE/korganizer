@@ -36,6 +36,7 @@
 #include "korganizer.h"
 #endif
 
+#include "actionmanager.h"
 #include "koeventviewer.h"
 #include "koeventviewer.moc"
 
@@ -80,7 +81,7 @@ void KOEventViewer::setSource(const QString& n)
       */
       KIconLoader* iconLoader = new KIconLoader();
       QString iconPath = iconLoader->iconPath("go",KIcon::Small);
-      KOrganizer::setStartedKAddressBook(true);
+      ActionManager::setStartedKAddressBook(true);
       tmpStr = "kaddressbook --editor-only --uid ";
       tmpStr += KProcess::quote(n.mid(6));
       KRun::runCommand(tmpStr,"KAddressBook",iconPath);

@@ -66,9 +66,11 @@ Birthdays::Birthdays(KOrg::MainWindow *parent, const char *name) :
 {
   setXMLFile("plugins/birthdaysui.rc");
 
-  new KAction(i18n("Import Birthdays..."), 0, this, SLOT(importBirthdays()),
-              actionCollection(), "import_birthdays");
-  mParent = parent;
+  parent->addPluginAction( new KAction( i18n("Import Birthdays..."), 0, this,
+                                        SLOT(importBirthdays()),
+				        actionCollection(),
+                                        "import_birthdays") );
+  mParent = parent->topLevelWidget();
 }
 
 Birthdays::~Birthdays()

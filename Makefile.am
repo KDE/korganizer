@@ -66,7 +66,8 @@ libkorganizer_la_SOURCES =  outgoingdialog_base.ui \
 	kodaymatrix.cpp docprefs.cpp statusdialog.cpp\
         kotimespanview.cpp timespanview.cpp lineview.cpp timeline.cpp \
         koglobals.cpp konewstuff.cpp savetemplatedialog.cpp \
-        kalarmdclient.cpp simplealarmclient.cpp
+        kalarmdclient.cpp simplealarmclient.cpp \
+	actionmanager.cpp
 
 METASOURCES = AUTO
 

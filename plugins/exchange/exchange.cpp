@@ -68,18 +68,19 @@ Exchange::Exchange(KOrg::MainWindow *parent, const char *name) :
 
   mAccount = new KPIM::ExchangeAccount( "Calendar/Exchange Plugin" );
   mClient = new KPIM::ExchangeClient( mAccount );
-  mClient->setWindow( parent );
+  mClient->setWindow( parent->topLevelWidget() );
 
   setXMLFile("plugins/exchangeui.rc");
 
-  new KAction(i18n("Download..."), 0, this, SLOT(download()),
-              actionCollection(), "exchange_download");
+  parent->addPluginAction( new KAction(i18n("Download..."), 0, this, SLOT(download()),
+              actionCollection(), "exchange_download"));
 
 //  new KAction(i18n("Test"), 0, this, SLOT(test()),
 //              actionCollection(), "exchange_test");
 
   KAction *action = new KAction(i18n("Upload Event..."), 0, this, SLOT(upload()),
                                 actionCollection(), "exchange_upload");
+  parent->addPluginAction( action );
   QObject::connect(mainWindow()->view(),SIGNAL(incidenceSelected(Incidence *)),
             this, SLOT(slotIncidenceSelected(Incidence *)));
   action->setEnabled( false );
@@ -89,16 +90,17 @@ Exchange::Exchange(KOrg::MainWindow *parent, const char *name) :
 
   action = new KAction(i18n("Delete Event"), 0, this, SLOT(remove()),
                                 actionCollection(), "exchange_delete");
+  parent->addPluginAction( action );
   QObject::connect(this,SIGNAL(enableIncidenceActions(bool)),
           action,SLOT(setEnabled(bool)));
   action->setEnabled( false );
 
-  new KAction(i18n("Configure..."), 0, this, SLOT(configure()),
-              actionCollection(), "exchange_configure");
+  parent->addPluginAction( new KAction(i18n("Configure..."), 0, this, SLOT(configure()),
+              actionCollection(), "exchange_configure") );
 
   connect( this, SIGNAL( calendarChanged() ), mainWindow()->view(), SLOT( updateView() ) );
   connect( this, SIGNAL( calendarChanged(const QDate &, const QDate &)),
-    mainWindow()->view(), SLOT(updateView(const QDate &, const QDate &)) );
+  mainWindow()->view(), SLOT(updateView(const QDate &, const QDate &)) );
 }
 
 Exchange::~Exchange()
@@ -221,9 +223,9 @@ void Exchange::showError( int error, const QString& moreInfo /* = QString::null 
 
   if ( error !=  KPIM::ExchangeClient::ResultOK ) {
     if ( moreInfo.isNull() )
-      KMessageBox::error( mainWindow(), errorText, i18n( "Exchange Plugin" ) );
+      KMessageBox::error( mainWindow()->topLevelWidget(), errorText, i18n( "Exchange Plugin" ) );
     else
-      KMessageBox::detailedError( mainWindow(), errorText, moreInfo, i18n( "Exchange Plugin" ) );
+      KMessageBox::detailedError( mainWindow()->topLevelWidget(), errorText, moreInfo, i18n( "Exchange Plugin" ) );
   }
 }
 

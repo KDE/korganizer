@@ -26,6 +26,7 @@
 #include <klibloader.h>
 #include <kdebug.h>
 #include <kconfig.h>
+#include <kxmlguifactory.h>
 
 #include <calendar/plugin.h>
 #include <korganizer/part.h>
@@ -33,6 +34,7 @@
 #include "koprefs.h"
 
 #include "kocore.h"
+#include "koglobals.h"
 
 KOCore *KOCore::mSelf = 0;
 
@@ -200,7 +202,7 @@ KOrg::Part::List KOCore::loadParts( KOrg::MainWindow *parent )
     if (selectedPlugins.find((*it)->desktopEntryName()) != selectedPlugins.end()) {
       KOrg::Part *part = loadPart(*it,parent);
       if ( part ) {
-        parent->guiFactory()->addClient( part );
+        parent->mainGuiFactory()->addClient( part );
         parts.append( part );
       }
     }
@@ -223,7 +225,7 @@ void KOCore::unloadParts( KOrg::MainWindow *parent, KOrg::Part::List& parts )
 {
   KOrg::Part *part;
   for( part=parts.first(); part; part=parts.next() ) {    
-    parent->guiFactory()->removeClient( part );
+    parent->mainGuiFactory()->removeClient( part );
     delete part;
   }
   parts.clear();

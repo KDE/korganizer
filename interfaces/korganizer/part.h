@@ -19,7 +19,6 @@
 */
 #ifndef KORG_PART_H
 #define KORG_PART_H
-// $Id$
 
 #include <qstring.h>
 
@@ -35,7 +34,7 @@ class Part : public KParts::Part {
     typedef QPtrList<Part> List;
 
     Part(MainWindow *parent, const char *name) :
-      KParts::Part(parent,name), mMainWindow(parent) {};
+      KParts::Part( parent->topLevelWidget(), name ), mMainWindow( parent ) {}
 
     virtual ~Part() {};
 

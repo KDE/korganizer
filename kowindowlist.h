@@ -53,19 +53,19 @@ class KOWindowList : public QObject
     bool lastInstance();
 
     /** Is there a instance with this URL? */
-    KOrganizer* findInstance(const KURL &url);
+    KOrg::MainWindow* findInstance(const KURL &url);
 
   signals:
 
   public slots:
-    void addWindow(KOrganizer *);
-    void removeWindow(KOrganizer *);
+    void addWindow(KOrg::MainWindow *);
+    void removeWindow(KOrg::MainWindow *);
     
     /** Deactivating all calendars despite the one given in the argument*/
-    void deactivateCalendars(KOrganizer *);
+    void deactivateCalendars(KOrg::MainWindow *);
     
   private:
-    QPtrList<KOrganizer> mWindowList; // list of all existing KOrganizer instances
+    QPtrList<KOrg::MainWindow> mWindowList; // list of all existing KOrganizer instances
 };
 
 #endif

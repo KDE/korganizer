@@ -42,6 +42,7 @@
 #include "version.h"
 #include "alarmclient.h"
 #include "koglobals.h"
+#include "actionmanager.h"
 
 #include "koapp.h"
 #include "koapp.moc"
@@ -160,18 +161,17 @@ void KOrganizerApp::processCalendar( const KURL &url, int numDays )
     if (isRestored()) {
       RESTORE(KOrganizer)
     } else {
-      KOrganizer *korg=KOrganizer::findInstance(url);
+      KOrg::MainWindow *korg=ActionManager::findInstance(url);
       if (0 == korg) {
-        korg = new KOrganizer( "KOrganizer MainWindow" ); 
-        korg->show();
-        
+        korg = new KOrganizer( "KOrganizer MainWindow" );
+        korg->topLevelWidget()->show();
+
         kdDebug() << "KOrganizerApp::processCalendar(): " << url.url() << endl;
-        
-        if (!url.isEmpty()) {
+
+        if (!url.isEmpty())
           korg->openURL(url);
-        }
       } else
-          KWin::setActiveWindow(korg->winId());
+          KWin::setActiveWindow(korg->topLevelWidget()->winId());
     }
   }
 }
