@@ -697,7 +697,7 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
 
   KWordWrap *ww = KWordWrap::formatText( fm,
                                          QRect(0, 0,
-                                         width() - (2 * margin), 0),
+                                         width() - (2 * margin), -1),
                                          0,
                                          mLabelText );
   int th = ww->boundingRect().height();
