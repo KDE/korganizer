@@ -67,7 +67,8 @@ KOrg::Plugin *KOCore::loadPlugin(KService::Ptr service)
   KOrg::PluginFactory *pluginFactory = dynamic_cast<KOrg::PluginFactory *>(factory);
   
   if (!pluginFactory) {
-    kdDebug() << "KOCore::loadPlugin(): Cast failed" << endl; 
+    kdDebug() << "KOCore::loadPlugin(): Cast to KOrg::PluginFactory failed" << endl; 
+    return 0;
   }
   
   return pluginFactory->create();
