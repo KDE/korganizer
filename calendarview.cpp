@@ -649,6 +649,16 @@ void CalendarView::edit_options()
 }
 
 
+void CalendarView::deleteIncidence()
+{
+  Incidence *incidence = currentSelection();
+  if ( incidence && incidence->type() == "Event" ) {
+    deleteEvent( static_cast<Event *>( incidence ) );
+  } else if ( incidence && incidence->type() == "Todo" ) {
+    deleteTodo( static_cast<Todo *>( incidence ) );
+  }
+}
+
 void CalendarView::newEvent()
 {
   kdDebug() << "CalendarView::newEvent()" << endl;
@@ -687,6 +697,12 @@ void CalendarView::newTodo()
   KOTodoEditor *todoEditor = mDialogManager->getTodoEditor();
   todoEditor->newTodo(QDateTime::currentDateTime().addDays(7),0,true);
   todoEditor->show();
+}
+
+void CalendarView::newSubTodo()
+{
+  Todo *todo = selectedTodo();
+  if ( todo ) newSubTodo( todo );
 }
 
 void CalendarView::newSubTodo(Todo *parentEvent)
@@ -1466,4 +1482,19 @@ void CalendarView::toggleExpand()
 void CalendarView::calendarModified( bool modified, Calendar * )
 {
   setModified( modified );
+}
+
+Todo *CalendarView::selectedTodo()
+{
+  Incidence *incidence = currentSelection();
+  if ( incidence && incidence->type() == "Todo" ) {
+    return static_cast<Todo *>( incidence );
+  }
+
+  incidence = mTodoList->selectedIncidences().first();
+  if ( incidence && incidence->type() == "Todo" ) {
+    return static_cast<Todo *>( incidence );
+  }
+
+  return 0;
 }

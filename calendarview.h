@@ -177,6 +177,8 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
   
     /** Archive old events of calendar */
     void archiveCalendar();
+
+    void deleteIncidence();
   
     /** create an editeventwin with supplied date/time, and if bool is true,
      * make the event take all day. */
@@ -204,6 +206,8 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     void showTodo(Todo *);
     /** create new todo */
     void newTodo();
+    /** create new todo with a parent todo */
+    void newSubTodo();
     /** create new todo with a parent todo */
     void newSubTodo(Todo *);
     /** Delete todo */
@@ -383,6 +387,8 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
   
     /** tell the alarm daemon that we have saved, and he needs to reread */
     void signalAlarmDaemon();
+  
+    Todo *selectedTodo();
   
   private:
     void createPrinter();

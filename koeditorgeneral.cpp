@@ -207,6 +207,11 @@ void KOEditorGeneral::disableAlarmEdit(bool disable)
   enableAlarmEdit( !disable );
 }
 
+void KOEditorGeneral::enableAlarm( bool enable )
+{
+  alarmDisable( !enable );
+}
+
 void KOEditorGeneral::alarmDisable(bool disable)
 {
   if (!disable) {
@@ -216,8 +221,7 @@ void KOEditorGeneral::alarmDisable(bool disable)
     mAlarmSoundButton->show();
     mAlarmProgramButton->show();
     mAlarmIncrCombo->show();
-  }
-  else {
+  } else {
     mAlarmBell->hide();
     mAlarmButton->hide();
     mAlarmTimeEdit->hide();

@@ -21,11 +21,8 @@ void KOGlobals::fitDialogToScreen( QWidget *wid, bool force )
   }
   
   if ( resized || force ) {
-    kdDebug() << "KOGlobals::fitDialogToScreen(): resize" << endl;
     wid->resize( w, h );
     wid->move( 0, 15 );
     if ( force ) wid->setFixedSize( w, h );
-  } else {
-    kdDebug() << "-- No Resize" << endl;
   }
 }

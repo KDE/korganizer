@@ -88,6 +88,7 @@ void KOEventEditor::setupGeneral()
     mGeneral->initTime(topFrame,topLayout);
 //    QBoxLayout *alarmLineLayout = new QHBoxLayout(topLayout);
     mGeneral->initAlarm(topFrame,topLayout);
+    mGeneral->enableAlarm( false );
     mGeneral->initCategories( topFrame, topLayout );
 
     topLayout->addStretch( 1 );

@@ -67,6 +67,8 @@ class KOEditorGeneral : public QObject
     /** Check if the input is valid. */
     bool validateInput() { return true; }
 
+    void enableAlarm( bool enable );
+
   public slots:
     void setCategories(const QString &);
 
