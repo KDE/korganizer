@@ -68,6 +68,7 @@ class Exchange : public KOrg::Part {
     void slotTransferResult( KIO::Job *job );
     void slotMasterEntries( KIO::Job *, const KIO::UDSEntryList& );
     void slotFindUidResult( KIO::Job * );
+    void slotTestResult( KIO::Job * );
 
   signals:
     void startDownload();

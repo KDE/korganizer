@@ -4,7 +4,9 @@ SUBDIRS=
 
 METASOURCES = AUTO
 
-INCLUDES = -I$(top_srcdir)/korganizer/interfaces $(all_includes)
+INCLUDES = -I$(top_srcdir)/korganizer/interfaces \
+    -I$(top_srcdir)/libical/src/libical -I$(top_srcdir)/libical/src/libicalss \
+    $(all_includes)
 
 kde_module_LTLIBRARIES = libkorg_exchange.la
 

@@ -58,6 +58,10 @@
 #include <kio/http.h>
 
 #include <libkcal/icalformat.h>
+#include <libkcal/icalformatimpl.h>
+extern "C" {
+  #include <ical.h>
+}
 
 #include "korganizer/korganizer.h"
 #include "korganizer/calendarview.h"
@@ -242,6 +246,43 @@ void Exchange::slotPropFindResult( KIO::Job *job )
   startUpload( url );
 }
 
+QString timezoneid( int offset ) {
+  switch ( offset ) {
+    case 0: return "0";
+    case -60: return "3";
+    case -120: return "5";
+    case -180: return "51";
+    case -210: return "25";
+    case -240: return "24"; // Abu Dhabi
+    case -270: return "48"; // Kabul
+    case -300: return "47"; // Islamabad
+    case -330: return "23"; // Bombay
+    case -360: return "46"; // Dhaka
+    case -420: return "22"; // Bangkok
+    case -480: return "45"; // Beijing
+    case -540: return "20"; // Tokyo
+    case -570: return "44"; // Darwin
+    case -600: return "18"; // Brisbane
+    case -660: return "41"; // Solomon Islands
+    case -720: return "17"; // Auckland
+    case 60: return "29"; // Azores
+    case 120: return "30"; // Mid Atlantic
+    case 180: return "8"; // Brasilia
+    case 210: return "28";  // Newfoundland
+    case 240: return "9"; // Atlantic time Canada
+    case 300: return "10"; // Eastern
+    case 360: return "11"; // Central time
+    case 420: return "12"; // Mountain time
+    case 480: return "13"; // Pacific time
+    case 540: return "14"; // Alaska time
+    case 600: return "15"; // Hawaii
+    case 660: return "16"; // Midway Island
+    case 720: return "39"; // Eniwetok
+    default: return "52"; // Invalid time zone
+  }
+}
+
+
 void Exchange::startUpload( KURL const& url )
 {
   Event* event = static_cast<Event *>( m_currentUpload );
@@ -280,14 +321,29 @@ void Exchange::startUpload( KURL const& url )
   //    2002-06-04T08:00:00.000Z" );
   addElement( doc, prop, "urn:schemas:calendar:", "dtend", 
       event->dtEnd().toString( "yyyy-MM-ddThh:mm:ss.zzz" ) + offsetString );
-  addElement( doc, prop, "urn:schemas:calendar:", "instancetype", "0" );
 //  addElement( doc, prop, "urn:schemas:calendar:", "meetingstatus", "confirmed" );
   addElement( doc, prop, "urn:schemas:httpmail:", "textdescription", event->description() );
   addElement( doc, prop, "urn:schemas:httpmail:", "subject", event->summary() );
   addElement( doc, prop, "urn:schemas:calendar:", "location", event->location() );
   // addElement( doc, prop, "urn:schemas:mailheader:", "subject", event->summary() );
   addElement( doc, prop, "urn:schemas:calendar:", "uid", event->uid() );
-  
+
+  KCal::Recurrence *recurrence = event->recurrence();
+  kdDebug() << "Recurrence->doesRecur(): " << recurrence->doesRecur() << endl;
+  if ( recurrence->doesRecur() != KCal::Recurrence::rNone ) {
+    addElement( doc, prop, "urn:schemas:calendar:", "instancetype", "1" );
+    ICalFormat *format = new ICalFormat();
+    QString recurstr = format->toString( recurrence );
+    // Strip leading "RRULE\n :" and whitespace
+    recurstr = recurstr.replace( QRegExp("^[A-Z]*[\\s]*:"), "").stripWhiteSpace();
+    kdDebug() << "Recurrence rule after replace: \"" << recurstr << "\"" << endl;
+    delete format;
+    QDomElement rrule = addElement( doc, prop, "urn:schemas:calendar:", "rrule" );
+    addElement( doc, rrule, "xml:", "v", recurstr );
+    addElement( doc, prop, "urn:schemas:calendar:", "timezoneid", timezoneid( tzOffset ) );
+  } else {
+    addElement( doc, prop, "urn:schemas:calendar:", "instancetype", "0" );
+  }
   kdDebug() << doc.toString() << endl;
 
   KIO::DavJob *job2 = KIO::davPropPatch( url, doc, false );
@@ -316,7 +372,7 @@ void Exchange::test()
   kdDebug() << "Entering test()" << endl;
   baseURL = KURL( "http://mail.tbm.tudelft.nl/janb/Calendar" );
   calendar = mainWindow()->view()->calendar();
-  KURL url( "webdav://mail.tbm.tudelft.nl/janb/Calendar/tb194 gr 3-2.EML" );
+  KURL url( "webdav://mail.tbm.tudelft.nl/janb/Calendar/TestTest.EML" );
 /*
   kdDebug() << "GET url: " << url.prettyURL() << endl;
     
@@ -326,22 +382,49 @@ void Exchange::test()
   connect( job2, SIGNAL(data(KIO::Job *, const QByteArray &)), this, SLOT(slotData(KIO::Job *, const QByteArray &)));
   connect( job2, SIGNAL( result ( KIO::Job * ) ), SLOT ( slotTransferResult( KIO:: Job * ) ) );
 */ 
-  QString query = "<D:sql>\r\n"
+/*
+  QString query = // "<D:sql>\r\n"
         "SELECT *\r\n" 
         "FROM Scope('shallow traversal of \"\"')\r\n"
-        "WHERE \"DAV:displayname\" = \"IWB.EML\"\r\n"
-        "</D:sql>\r\n";
+        "WHERE \"DAV:displayname\" = \"IWB.EML\"\r\n";
+        // "</D:sql>\r\n";
 
   kdDebug() << query << endl;
-  
-  KIO::ListJob *job = KIO::listDir(baseURL, true);
-//  KIO::Scheduler::scheduleJob(job);
-  job->addMetaData("davSearchQuery", query);
-  job->addMetaData( "davRequestResponse", "" );
-  connect(job, SIGNAL(entries( KIO::Job *, const KIO::UDSEntryList& )), this, SLOT(slotSearchEntries(KIO::Job *, const KIO::UDSEntryList&)));
+  KIO::DavJob* job = KIO::davSearch( baseURL, "DAV:", "sql", query, false );
+*/
+  QDomDocument doc;
+  QDomElement root = addElement( doc, doc, "DAV:", "propfind" );
+  addElement( doc, root, "DAV:", "allprop" );
+//  QDomElement prop = addElement( doc, root, "DAV:", "prop" );
+//  addElement( doc, prop, "urn:schemas:calendar:", "rrule" );
+//  addElement( doc, prop, "urn:schemas:calendar:", "uid" );
+//  addElement( doc, prop, "DAV:", "displayname" );
 
+
+  KIO::DavJob* job = KIO::davPropFind( url, doc, "0", false );
+  job->addMetaData( "errorPage", "false" );
+  connect(job, SIGNAL(result( KIO::Job * )), this, SLOT(slotTestResult(KIO::Job *)));
+ 
+//  KIO::ListJob *job = KIO::listDir(baseURL, true);
+//  KIO::Scheduler::scheduleJob(job);
+//  job->addMetaData("davSearchQuery", query);
+//  job->addMetaData( "davRequestResponse", "" );
+  /*
+  connect(job, SIGNAL(entries( KIO::Job *, const KIO::UDSEntryList& )), this, SLOT(slotSearchEntries(KIO::Job *, const KIO::UDSEntryList&)));
+*/
   }
 
+void Exchange::slotTestResult( KIO::Job * job )
+{
+  if ( job->error() ) {
+    job->showErrorDialog( 0L );
+    return;
+  }
+  QDomDocument& response = static_cast<KIO::DavJob *>( job )->response();
+
+  kdDebug() << "Test result: " << endl << response.toString() << endl;
+}
+ 
 void Exchange::test2()
 {
   kdDebug() << "Entering test2()" << endl;
@@ -566,14 +649,14 @@ void Exchange::handleAppointments( const QDomDocument& response, bool recurrence
   }
 }  
 
-
+/*
 void Exchange::slotSearchEntries( KIO::Job *job, const KIO::UDSEntryList& entries) {
   KURL url = static_cast<KIO::ListJob *>(job)->url();
   kdDebug() << "Entering slotSearchEntries for URL " << url.prettyURL() << endl;
   
   handleEntries( entries, true ); // handle entries with special handling for recurrence
 }
-
+*/
 void Exchange::handleRecurrence(QString uid) {
   kdDebug() << "Handling recurrence info for uid=" << uid << endl;
   QString query = // "<D:sql> "
@@ -599,13 +682,14 @@ void Exchange::handleRecurrence(QString uid) {
   // connect(job, SIGNAL(entries( KIO::Job *, const KIO::UDSEntryList& )), this, SLOT(slotMasterEntries(KIO::Job *, const KIO::UDSEntryList&)));
   connect(job, SIGNAL(result( KIO::Job * )), this, SLOT(slotMasterResult(KIO::Job *)));
 }
-
+/*
 void Exchange::slotMasterEntries( KIO::Job *job, const KIO::UDSEntryList& entries) {
   KURL url = static_cast<KIO::ListJob *>(job)->url();
   kdDebug() << "Entering slotMasterEntries for URL " << url.prettyURL() << endl;
   handleEntries( entries, false );
-}  
-  
+} 
+*/
+/*  
 void Exchange::handleEntries( const KIO::UDSEntryList& entries, bool recurrence ) {
   KIO::UDSEntryListConstIterator it = entries.begin();
   KIO::UDSEntryListConstIterator end = entries.end();
@@ -673,7 +757,7 @@ void Exchange::handleEntries( const KIO::UDSEntryList& entries, bool recurrence 
     connect( job2, SIGNAL( result ( KIO::Job * ) ), SLOT ( slotTransferResult( KIO:: Job * ) ) );
   }
 }
-
+*/
 void Exchange::slotData(KIO::Job *job, const QByteArray &data) {
   KURL url = static_cast<KIO::TransferJob *>(job)->url();
   kdDebug() << "Got data for " << url.prettyURL() << endl;
