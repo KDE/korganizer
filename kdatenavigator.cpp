@@ -109,7 +109,7 @@ KDateNavigator::KDateNavigator(QWidget *parent,Calendar *calendar,
   int maxwidth = 0;
   QFontMetrics fm = dateLabel->fontMetrics();
 
-  for(i=1;i<=12;++i) { 
+  for(i=1;i<=12;++i) {
     int width = fm.width( mCalendarSystem->monthName(i) + " 2000" );
     if (width > maxwidth) maxwidth = width;
   }
@@ -186,7 +186,7 @@ void KDateNavigator::updateDates()
 {
 
   // Find the first day of the week of the current month.
-  //int d1 = m_MthYr.day(); 
+  //int d1 = m_MthYr.day();
   int d1 = mCalendarSystem->day( m_MthYr );
   QDate dayone( m_MthYr.year(), m_MthYr.month(), m_MthYr.day() );
   int d2 = mCalendarSystem->day( dayone );
@@ -224,7 +224,7 @@ void KDateNavigator::updateView()
   setUpdatesEnabled(FALSE);
 
   // compute the label at the top of the navigator
-  QDate cT( m_MthYr.year(), m_MthYr.month(), m_MthYr.day() );  
+  QDate cT( m_MthYr.year(), m_MthYr.month(), m_MthYr.day() );
   QString dtstr = mCalendarSystem->monthName( cT ) + " " +
                   QString::number(mCalendarSystem->year( cT ) );
   dateLabel->setText(dtstr);
@@ -268,7 +268,7 @@ void KDateNavigator::updateConfig()
       if (i==0) day = 7;
       else day = i;
     }
-    headings[i]->setText( mCalendarSystem->weekDayName(day, true).left(1));
+    headings[i]->setText( mCalendarSystem->weekDayName(day, true) );
   }
   kdDebug() << "updateConfig() -> updateDates()" << endl;
   updateDates();
@@ -332,10 +332,10 @@ void KDateNavigator::goNextMonth()
 
   QDate tmp(m_MthYr.year(), m_MthYr.month(), m_MthYr.day());
   mCalendarSystem->nextMonthDate(tmp);
-  
+
   gotoYMD(tmp.year(), tmp.month(), tmp.day());
 
-  
+
 }
 
 void KDateNavigator::goPrevMonth()
@@ -345,7 +345,7 @@ void KDateNavigator::goPrevMonth()
   mCalendarSystem->previousMonthDate(tmp);
 
   gotoYMD(tmp.year(), tmp.month(), tmp.day());
-  
+
 }
 
 void KDateNavigator::goNextYear()
