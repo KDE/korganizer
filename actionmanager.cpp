@@ -523,7 +523,7 @@ void ActionManager::initActions()
 
 
   if ( mIsPart ) {
-    new KAction( i18n("&Configure KOrganizer..."),
+    new KAction( i18n("&Configure Calendar..."),
                  "configure", 0, mCalendarView,
                  SLOT( edit_options() ), mACollection,
                  "korganizer_configure" );

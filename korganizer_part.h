@@ -26,7 +26,6 @@
 #define KORGANIZER_PART_H
 
 #include <kurl.h>
-#include <kparts/browserextension.h>
 #include <kparts/part.h>
 
 #include <korganizer/mainwindow.h>
@@ -34,7 +33,6 @@
 
 class KInstance;
 class KAboutData;
-class KOrganizerBrowserExtension;
 class KProcess;
 
 class CalendarView;
@@ -97,21 +95,11 @@ class KOrganizerPart: public KParts::ReadOnlyPart,
   private:
     CalendarView *mView;
     ActionManager *mActionManager;
-    KOrganizerBrowserExtension *mBrowserExtension;
     KParts::StatusBarExtension *mStatusBarExtension;
     QWidget *mTopLevelWidget;
 
   signals:
     void textChanged( const QString & );
-};
-
-class KOrganizerBrowserExtension : public KParts::BrowserExtension
-{
-    Q_OBJECT
-    friend class KOrganizerPart;
-  public:
-    KOrganizerBrowserExtension( KOrganizerPart *parent );
-    virtual ~KOrganizerBrowserExtension();
 };
 
 #endif

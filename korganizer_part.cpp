@@ -100,7 +100,6 @@ KOrganizerPart::KOrganizerPart( QWidget *parentWidget, const char *widgetName,
     setHasDocument( true );
   }
 
-  mBrowserExtension = new KOrganizerBrowserExtension( this );
   mStatusBarExtension = new KParts::StatusBarExtension( this );
 
   setInstance( KOrganizerFactory::instance() );
@@ -241,16 +240,5 @@ void KOrganizerPart::setTitle()
 
   emit setWindowCaption( title );*/
 }
-
-KOrganizerBrowserExtension::KOrganizerBrowserExtension(KOrganizerPart *parent) :
-  KParts::BrowserExtension(parent, "KOrganizerBrowserExtension")
-{
-}
-
-KOrganizerBrowserExtension::~KOrganizerBrowserExtension()
-{
-}
-
-using namespace KParts;
 
 #include "korganizer_part.moc"
