@@ -176,7 +176,9 @@ void CalPrintDay::print( QPainter &p, int width, int height )
 
     y += mHelper->mHeaderHeight + 5;
     x = 80;
-    Event::List eventList = mCalendar->events( curDay, true );
+    Event::List eventList = mCalendar->events( curDay,
+                                               EventSortStartDate,
+                                               SortDirectionAscending );
 
     p.setFont( QFont( "helvetica", 12 ) );
     mHelper->drawAllDayBox( p, eventList, curDay, true, x, y, width - x, currHeight );

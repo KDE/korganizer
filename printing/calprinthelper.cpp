@@ -597,7 +597,9 @@ void CalPrintHelper::drawDayBox( QPainter &p, const QDate &qd,
   p.drawText( x + 5, y, width - 10, mSubHeaderHeight,
               Qt::AlignRight | Qt::AlignVCenter, dayNumStr);
 
-  Event::List eventList = mCalendar->events( qd, true );
+  Event::List eventList = mCalendar->events( qd,
+                                             EventSortStartDate,
+                                             SortDirectionAscending );
   QString text;
   p.setFont( QFont( "helvetica", 8 ) );
 
@@ -718,7 +720,9 @@ void CalPrintHelper::drawTimeTable(QPainter &p,
   // draw each day
   QDate curDate(fromDate);
   while (curDate<=toDate) {
-    Event::List eventList = mCalendar->events(curDate, true);
+    Event::List eventList = mCalendar->events(curDate,
+                                              EventSortStartDate,
+                                              SortDirectionAscending);
     drawAllDayBox( p, eventList, curDate, false, currX, currY, cellWidth, alldayHeight);
     drawAgendaDayBox( p, eventList, curDate, false, fromTime, toTime, currX,
       currY+alldayHeight, cellWidth, height-mSubHeaderHeight-alldayHeight );
