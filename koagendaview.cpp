@@ -181,7 +181,7 @@ int TimeLabels::minimumWidth() const
 
   int borderWidth = 4;
 
-  // the maximum width possible
+  // the minimum width possible
   int width = fm.width("88:88") + 2*borderWidth;
 
   return width;
@@ -443,7 +443,8 @@ KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name) :
                                   QSizePolicy::Fixed ) );
     connect( mExpandButton, SIGNAL( clicked() ), SIGNAL( toggleExpand() ) );
   } else {
-    new QLabel( i18n("All Day"), mDummyAllDayLeft );
+    QLabel *label = new QLabel( i18n("All Day"), mDummyAllDayLeft );
+    label->setAlignment( Qt::AlignRight | Qt::AlignVCenter );
   }
 
   mAllDayAgenda = new KOAgenda(1,mAllDayFrame);
@@ -898,14 +899,7 @@ void KOAgendaView::updateTimeBarWidth()
   int width;
 
   width = mDummyAllDayLeft->fontMetrics().width( i18n("All Day") );
-
-#if 0
-  if ( mDummyAllDayLeft->width() > mTimeLabels->width() ) {
-    width = mDummyAllDayLeft->width();
-  } else {
-    width = mTimeLabels->width();
-  }
-#endif
+  width = QMAX( width, mTimeLabels->width() );
 
   mDummyAllDayLeft->setFixedWidth( width );
   mTimeLabels->setFixedWidth( width );
