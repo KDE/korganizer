@@ -169,9 +169,10 @@ KDE_ICON = AUTO
 META_INCLUDES = $(srcdir)/interfaces/korganizer
 
 messages: rc.cpp
-	$(PREPARETIPS) > tips.cc
-	$(XGETTEXT) *.cpp *.h korgac/*.cpp plugins/*/*.cpp plugins/*/*/*.cpp printing/*.cpp tips.cc -o $(podir)/korganizer.pot
-	rm -f tips.cc
+	$(PREPARETIPS) > tips.cpp
+	$(EXTRACTRC) `find . -name "*.rc" -o -name "*.ui" -o -name "*.kcfg"` >> rc.cpp
+	$(XGETTEXT) `find . -name "*.cpp" -o -name "*.h"` -o $(podir)/korganizer.pot
+	rm -f tips.cpp
 
 xdg_apps_DATA = korganizer.desktop
 
