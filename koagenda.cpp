@@ -480,7 +480,7 @@ void KOAgenda::finishTypeAhead()
     }
   }
   mTypeAheadEvents.clear();
-  mTypeAhead = false;  
+  mTypeAhead = false;
 }
 
 bool KOAgenda::eventFilter_mouse(QObject *object, QMouseEvent *me)
@@ -1385,6 +1385,11 @@ void KOAgenda::popupAlarm()
   Alarm::List::ConstIterator it;
   for( it = alarms.begin(); it != alarms.end(); ++it )
     (*it)->toggleAlarm();
+  if (alarms.isEmpty()) {
+    // Add an alarm if it didn't have one
+    Alarm*alm = mClickedItem->incidence()->newAlarm();
+    alm->setEnabled(true);
+  }
 
   mClickedItem->updateIcons();
 }
