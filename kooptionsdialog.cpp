@@ -679,15 +679,13 @@ void KOOptionsDialog::setDefaults()
 }
 
 
-void KOOptionsDialog::setCombo(QComboBox *combo, const QString & text, const QStringList * tags)
+void KOOptionsDialog::setCombo(QComboBox *combo, const QString & text,
+                               const QStringList *tags)
 {
-  if (tags)
-  {
+  if (tags) {
     int i = tags->findIndex(text);
     combo->setCurrentItem(i);
-  }
-  else
-  {
+  } else {
     for(int i=0;i<combo->count();++i) {
       if (combo->text(i) == text) {
         combo->setCurrentItem(i);
@@ -710,7 +708,7 @@ void KOOptionsDialog::readConfig()
 
   setCombo(mHolidayCombo,KOPrefs::instance()->mHoliday, &mHolidayList);
   
-  setCombo(mTimeZoneCombo,KOPrefs::instance()->mHoliday);
+  setCombo(mTimeZoneCombo,KOPrefs::instance()->mTimeZone);
 
   mStartTimeSpin->setValue(KOPrefs::instance()->mStartTime);
   mDefaultDurationSpin->setValue(KOPrefs::instance()->mDefaultDuration);

@@ -699,12 +699,20 @@ void KOAgendaView::fillAgenda()
           mAllDayAgenda->insertAllDayItem(event,beginX,endX);
 	}
       } else if (event->isMultiDay()) {
+        int startY = mAgenda->timeToY(event->getDtStart().time());
+        int endY = mAgenda->timeToY(event->getDtEnd().time()) - 1;  
         if ((beginX <= 0 && curCol == 0) || beginX == curCol) {
-          int startY = mAgenda->timeToY(event->getDtStart().time());
-          int endY = mAgenda->timeToY(event->getDtEnd().time()) - 1;  
           mAgenda->insertMultiItem(event,beginX,endX,startY,endY);
+        }
+        if (beginX == curCol) {
+          mMaxY[curCol] = mAgenda->timeToY(QTime(23,59));
           if (startY < mMinY[curCol]) mMinY[curCol] = startY;
+        } else if (endX == curCol) {
+          mMinY[curCol] = mAgenda->timeToY(QTime(0,0));
           if (endY > mMaxY[curCol]) mMaxY[curCol] = endY;
+        } else {
+          mMinY[curCol] = mAgenda->timeToY(QTime(0,0));
+          mMaxY[curCol] = mAgenda->timeToY(QTime(23,59));
         }
       } else {
         int startY = mAgenda->timeToY(event->getDtStart().time());

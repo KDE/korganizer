@@ -170,6 +170,10 @@ class KOrganizer : public KMainWindow
     bool queryClose();
     bool queryExit();
 
+    /* Session management */
+    void saveProperties(KConfig *);
+    void readProperties(KConfig *);
+
     /** Get URL for saving. Opens FileDialog. */
     KURL getSaveURL();
 
@@ -177,6 +181,7 @@ class KOrganizer : public KMainWindow
     CalendarView *mCalendarView;  // Main view widget
     KURL mURL;      // URL of calendar file
     QString mFile;  // Local name of calendar file
+    QString mLastFile;  // File name of last local calendar loaded.
 
     KTempFile *mTempFile;
 

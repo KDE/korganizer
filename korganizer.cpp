@@ -453,7 +453,7 @@ void KOrganizer::file_save()
 void KOrganizer::file_close()
 {
   closeURL();
-
+  mLastFile = "";
   setTitle();
 }
 
@@ -591,7 +591,7 @@ bool KOrganizer::mergeURL( const KURL &url )
   if (url.isMalformed()) return false;
 
   QString tmpFile;
-  if( KIO::NetAccess::download(mURL,tmpFile)) {
+  if( KIO::NetAccess::download(url,tmpFile)) {
     bool success = mCalendarView->mergeCalendar(tmpFile);
     KIO::NetAccess::removeTempFile(tmpFile);
     return success;
@@ -631,6 +631,7 @@ bool KOrganizer::closeURL()
   }
 
   mCalendarView->closeCalendar();
+  if (mURL.isLocalFile()) mLastFile = mFile;
   mURL="";
   mFile="";
   
@@ -753,5 +754,24 @@ void KOrganizer::toggleToolBar()
   for ( ; it.current() ; ++it ) {
     if (mToolBarToggleAction->isChecked()) (*it)->show();
     else (*it)->hide();
+  }
+}
+
+void KOrganizer::saveProperties(KConfig *config)
+{
+  qDebug("KOrganizer::saveProperties()");
+  config->writeEntry("Calendar",mLastFile);
+  if (mURL.isLocalFile()) {
+    config->writeEntry("Calendar",mFile);
+  }
+}
+
+void KOrganizer::readProperties(KConfig *config)
+{
+  QString calendarUrl = config->readEntry("Calendar");
+  if (!calendarUrl.isEmpty()) {
+    KURL u;
+    u.setPath(calendarUrl);
+    openURL(u);
   }
 }

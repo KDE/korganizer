@@ -4,7 +4,7 @@
 #define _ALARMDAEMON_H
 
 #include <qlist.h>
-#include <kdockwindow.h>
+#include <ksystemtray.h>
 #include <kpopupmenu.h>
 #include <dcopobject.h>
 
@@ -13,7 +13,7 @@
 
 class AlarmDialog;
 
-class AlarmDockWindow : public KDockWindow
+class AlarmDockWindow : public KSystemTray
 {
     Q_OBJECT
   public:

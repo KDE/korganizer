@@ -99,6 +99,7 @@ CalObject::CalObject() : QObject(), recursCursor(recursList)
   readHolidayFileName();
 
   tmpStr = KOPrefs::instance()->mTimeZone;
+//  qDebug("CalObject::CalObject(): TimeZone: %s",tmpStr.latin1());
   int dstSetting = KOPrefs::instance()->mDaylightSavings;
   extern long int timezone;
   struct tm *now;
@@ -116,6 +117,8 @@ CalObject::CalObject() : QObject(), recursCursor(recursList)
   // if no time zone was in the config file, write what we just discovered.
   if (tmpStr.isEmpty()) {
     KOPrefs::instance()->mTimeZone = tzStr;
+  } else {
+    tzStr = tmpStr;
   }
   
   // if daylight savings has changed since last load time, we need
@@ -2847,6 +2850,9 @@ void CalObject::populate(VObject *vcal)
 	deleteStr(s);
 
 	if (getEvent(tmpStr)) {
+// Disable message boxes, because it hinders merging of calendars and does not
+// give a sensible advice anyway.
+#if 0
 	  if (dialogsOn)
 	    QMessageBox::warning(topWidget,
 				 i18n("KOrganizer: Possible Duplicate Event"),
@@ -2857,9 +2863,11 @@ void CalObject::populate(VObject *vcal)
 				      "duplicate UIDs\n"
 				      "and change them MANUALLY to be unique "
 				      "if you find any.\n").arg(tmpStr));
+#endif
 	  goto SKIP;
 	}
 	if (getTodo(tmpStr)) {
+#if 0
 	  if (dialogsOn)
 	    QMessageBox::warning(topWidget,
 				 i18n("KOrganizer: Possible Duplicate Event"),
@@ -2871,6 +2879,7 @@ void CalObject::populate(VObject *vcal)
 				      "and change them MANUALLY to be unique "
 				      "if you find any.\n").arg(tmpStr));
 	  
+#endif
 	  goto SKIP;
 	}
       }

@@ -47,7 +47,6 @@
 #include "kotodoeditor.h"
 #include "koprefs.h"
 #include "koeventviewerdialog.h"
-#include "koarchivedlg.h"
 #include "vcaldrag.h"
 
 #include "calendarview.h"
@@ -186,7 +185,7 @@ bool CalendarView::mergeCalendar(QString filename)
 {
   qDebug("CalendarView::mergeCalendar()");
   if (mCalendar->load(filename)) {
-    setModified(false);
+    setModified(true);
     updateView();
     return true;
   } else {
@@ -221,7 +220,10 @@ void CalendarView::closeCalendar()
 
 void CalendarView::archiveCalendar()
 {
-  if (!mArchiveDialog) mArchiveDialog = new ArchiveDialog(mCalendar,this);
+  if (!mArchiveDialog) {
+    mArchiveDialog = new ArchiveDialog(mCalendar,this);
+    connect(mArchiveDialog,SIGNAL(eventsDeleted()),SLOT(updateView()));
+  }
   mArchiveDialog->show();
   mArchiveDialog->raise();
   

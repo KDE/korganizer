@@ -123,13 +123,17 @@ void KOrganizerApp::processCalendar(const QString & file,int numDays,
   if (numDays > 0) {
     displayImminent(file,numDays);
   } else {
-    KOrganizer *korg = new KOrganizer("KOrganizer MainWindow");
-    KURL url;
-    url.setPath(file);
-    if (!file.isEmpty()) {
-      korg->openURL(url);
-      korg->setActive(active);
+    if (isRestored()) {
+      RESTORE(KOrganizer)
+    } else {
+      KOrganizer *korg = new KOrganizer("KOrganizer MainWindow");
+      KURL url;
+      url.setPath(file);
+      if (!file.isEmpty()) {
+        korg->openURL(url);
+        korg->setActive(active);
+      }
+      korg->show();
     }
-    korg->show();
   }
 }

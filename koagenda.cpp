@@ -167,7 +167,11 @@ bool KOAgenda::eventFilter ( QObject *object, QEvent *event )
 //            mItemPopup->popup(QCursor::pos());
           } else {
             mActionItem = (KOAgendaItem *)object;
-            startItemAction(viewportPos);
+            if (!mActionItem->itemEvent()->isReadOnly()) {
+              startItemAction(viewportPos);
+            } else {
+              mActionItem = 0;
+            }
           }
         } else {
           mActionItem = 0;
@@ -180,10 +184,12 @@ bool KOAgenda::eventFilter ( QObject *object, QEvent *event )
 	}
       } else if (me->type() == QEvent::MouseMove) {
 	KOAgendaItem *moveItem = (KOAgendaItem *)object;
-        if (!mActionItem) {
-      	  setNoActionCursor(moveItem,viewportPos);
-	} else {
-      	  performItemAction(viewportPos);
+        if (!moveItem->itemEvent()->isReadOnly()) {
+          if (!mActionItem) {
+      	    setNoActionCursor(moveItem,viewportPos);
+	  } else {
+            performItemAction(viewportPos);
+          }
 	}
       } else if (me->type() == QEvent::MouseButtonDblClick) {
         if (object == viewport()) {

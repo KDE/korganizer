@@ -2,10 +2,10 @@
 
 #include "config.h"
 
-#include <pwd.h>
-#include <sys/types.h>
-#include <unistd.h>
-#include <netdb.h>
+//#include <pwd.h>
+//#include <sys/types.h>
+//#include <unistd.h>
+//#include <netdb.h>
 
 #include "koprefs.h"
 
@@ -69,7 +69,7 @@ void KOPrefs::setDefaults()
   mAdditional = "";
   mHoliday = KGlobal::locale()->country();
   
-  mTimeZone = "";
+  mTimeZone = "+0000";
   mStartTime = 10;
   mDefaultDuration = 2;
   mAlarmTime = 0;
@@ -132,7 +132,7 @@ void KOPrefs::readConfig()
   mHoliday = mConfig->readEntry("Holidays", KGlobal::locale()->country());
   
   mConfig->setGroup("Time & Date");
-  mTimeZone = mConfig->readNumEntry("Time Zone",0);
+  mTimeZone = mConfig->readEntry("Time Zone","+0000");
   mStartTime = mConfig->readNumEntry("Default Start Time",10);
   mDefaultDuration = mConfig->readNumEntry("Default Duration",2);
   mAlarmTime = mConfig->readNumEntry("Default Alarm Time",0);

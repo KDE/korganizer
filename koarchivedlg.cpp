@@ -128,6 +128,7 @@ void ArchiveDialog::slotUser2()
     for(ev=events.first();ev;ev=events.next()) {
       mCalendar->deleteEvent(ev);
     }
+    emit eventsDeleted();
     accept();
   }
 }

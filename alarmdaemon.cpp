@@ -27,7 +27,7 @@
 #include "alarmdaemon.moc"
 
 AlarmDockWindow::AlarmDockWindow(QWidget *parent, const char *name)
-  : KDockWindow(parent, name)
+  : KSystemTray(parent, name)
 {
   dPixmap1 = KGlobal::iconLoader()->loadIcon("alarmd", 
 					     KIcon::User);
@@ -77,6 +77,8 @@ AlarmDaemon::AlarmDaemon(const char *fn, QObject *parent, const char *name)
   qDebug("AlarmDaemon::AlarmDaemon()");
 
   docker = new AlarmDockWindow;
+  docker->show();
+
   calendar = new CalObject;
   calendar->showDialogs(FALSE);
   fileName = fn;

@@ -14,6 +14,9 @@ class ArchiveDialog : public KDialogBase
     ArchiveDialog(CalObject *calendar,QWidget *parent=0, const char *name=0);
     virtual ~ArchiveDialog();
 
+  signals:
+    void eventsDeleted();
+
   protected slots:
     void slotUser1();
     void slotUser2();

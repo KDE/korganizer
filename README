@@ -2,11 +2,19 @@
                        | K   O R G A N I Z E R |
                        +-----------------------+
 
-                                 v1.91
+                                 v1.93
 
                  http://devel-home.kde.org/~korganiz
 
 QUICK NOTES ON WHAT'S NEW IN THIS RELEASE:
+
+* Beta-Release 1.93 (August 2000)
+
+  - More bug fixes
+
+* Beta-Release 1.92 (July 2000)
+
+  - A couple of bug fixes
 
 * Beta-Release 1.91 (June 2000)
 
@@ -61,7 +69,7 @@ CONTACT INFORMATION:
 
 We want your suggestions and comments! 
 
-Please mail them to the maintainer:
+Please mail them to the maintainer of KOrganizer:
 
 Cornelius Schumacher (schumacher@kde.org)
 

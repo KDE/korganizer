@@ -35,11 +35,9 @@ static const KCmdLineOptions options[] =
 int main(int argc, char **argv)
 {
   KAboutData aboutData("alarmd",I18N_NOOP("AlarmDaemon"),
-                       "1.91",
-                       I18N_NOOP("KOrganizer Alarm Daemon"),
-                       KAboutData::License_GPL,
-                       "(c) 1997-1999, Preston Brown",0,
-                       "http://devel-home.kde.org/~korganiz");
+      "1.93",I18N_NOOP("KOrganizer Alarm Daemon"),KAboutData::License_GPL,
+      "(c) 1997-1999 Preston Brown\n(c) 2000 Cornelius Schumacher",0,
+      "http://devel-home.kde.org/~korganiz");
   aboutData.addAuthor("Cornelius Schumacher",I18N_NOOP("Maintainer"),
                       "schumacher@kde.org");
   aboutData.addAuthor("Preston Brown",I18N_NOOP("Original Author"),
