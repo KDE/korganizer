@@ -27,6 +27,11 @@
 #include <qtooltip.h>
 #include <qmap.h>
 
+class QDragEnterEvent;
+class QDragMoveEvent;
+class QDragLeaveEvent;
+class QDropEvent;
+
 class KODayMatrix;
 
 class DynamicTip : public QToolTip

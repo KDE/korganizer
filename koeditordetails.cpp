@@ -249,7 +249,7 @@ bool KOEditorDetails::validateInput()
 void KOEditorDetails::updateAttendeeInput()
 {
   QListViewItem *item = mListView->selectedItem();
-  AttendeeListItem *aItem = dynamic_cast<AttendeeListItem *>( item );
+  AttendeeListItem *aItem = static_cast<AttendeeListItem *>( item );
   if (aItem) {
     fillAttendeeInput( aItem );
   } else {
@@ -301,7 +301,7 @@ void KOEditorDetails::updateAttendeeItem()
   if (mDisableItemUpdate) return;
 
   QListViewItem *item = mListView->selectedItem();
-  AttendeeListItem *aItem = dynamic_cast<AttendeeListItem *>( item );
+  AttendeeListItem *aItem = static_cast<AttendeeListItem *>( item );
   if ( !aItem ) return;
 
   Attendee *a = aItem->attendee();

@@ -24,7 +24,9 @@
 #include <qlabel.h>
 #include <qframe.h>
 #include <qlayout.h>
+#ifndef KORG_NOSPLITTER
 #include <qsplitter.h>
+#endif
 #include <qfont.h>
 #include <qfontmetrics.h>
 #include <qpopupmenu.h>
@@ -46,11 +48,12 @@
 #ifndef KORG_NOPLUGINS
 #include "kocore.h"
 #endif
-
 #include "koprefs.h"
 #include "koagenda.h"
 #include "koagendaitem.h"
+#ifndef KORG_NOPRINTER
 #include "calprinter.h"
+#endif
 
 #include "koagendaview.h"
 #include "koagendaview.moc"
@@ -245,12 +248,31 @@ KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name) :
   mDayLabelsFrame = 0;
   mDayLabels = 0;
 
+  QBoxLayout *topLayout = new QVBoxLayout(this);
+
+  // Create day name labels for agenda columns
+  mDayLabelsFrame = new QHBox(this);
+  topLayout->addWidget(mDayLabelsFrame);
+
   // Create agenda splitter
+#ifndef KORG_NOSPLITTER
   mSplitterAgenda = new QSplitter(Vertical,this);
+  topLayout->addWidget(mSplitterAgenda);
   mSplitterAgenda->setOpaqueResize();
+  
+  mAllDayFrame = new QHBox(mSplitterAgenda);
+
+  QWidget *agendaFrame = new QWidget(mSplitterAgenda);
+#else
+  QVBox *mainBox = new QVBox( this );
+  topLayout->addWidget( mainBox );
+  
+  mAllDayFrame = new QHBox(mainBox);
+
+  QWidget *agendaFrame = new QWidget(mainBox);
+#endif
 
   // Create all-day agenda widget
-  mAllDayFrame = new QHBox(mSplitterAgenda);
   mDummyAllDayLeft = new QWidget(mAllDayFrame);
   mAllDayAgenda = new KOAgenda(1,mAllDayFrame);
   QWidget *dummyAllDayRight = new QWidget(mAllDayFrame);
@@ -261,7 +283,6 @@ KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name) :
           mAllDayAgendaPopup,SLOT(showEventPopup(Event *)));
 
   // Create agenda frame
-  QWidget *agendaFrame = new QWidget(mSplitterAgenda);
   QGridLayout *agendaLayout = new QGridLayout(agendaFrame,3,3);
 //  QHBox *agendaFrame = new QHBox(splitterAgenda);
 
@@ -291,24 +312,18 @@ KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name) :
   connect(mAgenda,SIGNAL(showEventPopupSignal(Event *)),
           mAgendaPopup,SLOT(showEventPopup(Event *)));
 
-  // Create day name labels for agenda columns
-  mDayLabelsFrame = new QHBox(this);
-  createDayLabels();
-
   // make connections between dependent widgets
   mTimeLabels->setAgenda(mAgenda);
 
   // Update widgets to reflect user preferences
 //  updateConfig();
 
+  createDayLabels();
+
   // these blank widgets make the All Day Event box line up with the agenda
   dummyAllDayRight->setFixedWidth(mAgenda->verticalScrollBar()->width());
   dummyAgendaRight->setFixedWidth(mAgenda->verticalScrollBar()->width());
   mDummyAllDayLeft->setFixedWidth(mTimeLabels->width());
-
-  QBoxLayout *layoutTop = new QVBoxLayout(this);
-  layoutTop->addWidget(mDayLabelsFrame);
-  layoutTop->addWidget(mSplitterAgenda);
 
   // Scrolling
   connect(mAgenda->verticalScrollBar(),SIGNAL(valueChanged(int)),
@@ -815,10 +830,12 @@ void KOAgendaView::clearView()
 void KOAgendaView::printPreview(CalPrinter *calPrinter, const QDate &fd,
                                const QDate &td)
 {
+#ifndef KORG_NOPRINTER
   if (fd == td)
     calPrinter->preview(CalPrinter::Day, fd, td);
   else
     calPrinter->preview(CalPrinter::Week, fd, td);
+#endif
 }
 
 
@@ -877,11 +894,13 @@ void KOAgendaView::updateEventIndicatorBottom(int newY)
 
 void KOAgendaView::startDrag(Event *event)
 {
+#ifndef KORG_NODND
   DndFactory factory( calendar() );
   VCalDrag *vd = factory.createDrag(event,this);
   if (vd->drag()) {
     kdDebug() << "KOTodoListView::contentsMouseMoveEvent(): Delete drag source" << endl;
   }
+#endif
 }
 
 void KOAgendaView::readSettings()
@@ -895,10 +914,12 @@ void KOAgendaView::readSettings(KConfig *config)
 
   config->setGroup("Views");
 
+#ifndef KORG_NOSPLITTER
   QValueList<int> sizes = config->readIntListEntry("Separator AgendaView");
   if (sizes.count() == 2) {
     mSplitterAgenda->setSizes(sizes);
   }
+#endif
 
   slotViewChange(config->readNumEntry("Agenda View", KOAgendaView::WEEK));
 
@@ -911,8 +932,10 @@ void KOAgendaView::writeSettings(KConfig *config)
 
   config->setGroup("Views");
 
+#ifndef KORG_NOSPLITTER
   QValueList<int> list = mSplitterAgenda->sizes();
   config->writeEntry("Separator AgendaView",list);
+#endif
 
   config->writeEntry("Agenda View",currentView());
 }

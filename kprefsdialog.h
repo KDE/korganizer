@@ -20,6 +20,8 @@
 #define _KPREFSDIALOG_H
 // $Id$
 
+#include <qptrlist.h>
+
 #include <kdialogbase.h>
 
 class KPrefs;

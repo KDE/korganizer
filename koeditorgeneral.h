@@ -33,6 +33,8 @@
 
 #include <krestrictedline.h>
 
+#include <libkcal/incidence.h>
+
 #include "ktimeedit.h"
 #include "kdateedit.h"
 

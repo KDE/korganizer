@@ -326,6 +326,7 @@ void KODayMatrix::mouseMoveEvent (QMouseEvent* e)
 
 void KODayMatrix::dragEnterEvent(QDragEnterEvent *e)
 {
+#ifndef KORG_NODND
   if (!VCalDrag::canDecode(e)) {
     e->ignore();
     return;
@@ -335,26 +336,32 @@ void KODayMatrix::dragEnterEvent(QDragEnterEvent *e)
 //  oldPalette = palette();
 //  setPalette(my_HilitePalette);
 //  update();
+#endif
 }
 
 void KODayMatrix::dragMoveEvent(QDragMoveEvent *e)
 {
+#ifndef KORG_NODND
   if (!VCalDrag::canDecode(e)) {
     e->ignore();
     return;
   }
 
   e->accept();
+#endif
 }
 
 void KODayMatrix::dragLeaveEvent(QDragLeaveEvent */*dl*/)
 {
+#ifndef KORG_NODND
 //  setPalette(oldPalette);
 //  update();
+#endif
 }
 
 void KODayMatrix::dropEvent(QDropEvent *e)
 {
+#ifndef KORG_NODND
   kdDebug() << "KODayMatrix::dropEvent(e) begin" << endl;
 
   if (!VCalDrag::canDecode(e)) {
@@ -400,7 +407,7 @@ void KODayMatrix::dropEvent(QDropEvent *e)
     kdDebug() << "KODayMatrix::dropEvent(): Event from drop not decodable" << endl;
     e->ignore();
   }
-
+#endif
 }
 
 // ----------------------------------------------------------------------------

@@ -26,6 +26,8 @@
 #include <libkcal/event.h>
 
 class QToolTipGroup;
+class QDragEnterEvent;
+class QDropEvent;
 
 using namespace KCal;
 

@@ -226,7 +226,9 @@ void KOListView::showDates(bool show)
 void KOListView::printPreview(CalPrinter *calPrinter, const QDate &fd,
                                const QDate &td)
 {
+#ifndef KORG_NOPRINTER
   calPrinter->preview(CalPrinter::Day, fd, td);
+#endif
 }
 
 void KOListView::showDates()
@@ -330,7 +332,7 @@ KOListViewItem *KOListView::getItemForEvent(Event *event)
 
 void KOListView::defaultItemAction(QListViewItem *item)
 {
-  Event *event = dynamic_cast<Event *>(((KOListViewItem *)item)->event());
+  Event *event = static_cast<Event *>(((KOListViewItem *)item)->event());
   if (event) defaultEventAction(event);
 }
 
@@ -338,7 +340,7 @@ void KOListView::popupMenu(QListViewItem *item,const QPoint &,int)
 {
   mActiveItem = (KOListViewItem *)item;
   if (mActiveItem) {
-    Event *event = dynamic_cast<Event *>(mActiveItem->event());
+    Event *event = static_cast<Event *>(mActiveItem->event());
     if (event) mPopupMenu->showEventPopup(event);
   }
 }

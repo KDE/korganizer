@@ -32,7 +32,9 @@
 #include <libkcal/vcaldrag.h>
 #include <libkcal/dndfactory.h>
 
+#ifndef KORG_NOPRINTER
 #include "calprinter.h"
+#endif
 #include "docprefs.h"
 
 #include "kotodoview.h"
@@ -53,6 +55,7 @@ KOTodoListView::KOTodoListView(Calendar *calendar,QWidget *parent,
 
 void KOTodoListView::contentsDragEnterEvent(QDragEnterEvent *e)
 {
+#ifndef KORG_NODND
 //  kdDebug() << "KOTodoListView::contentsDragEnterEvent" << endl;
   if (!VCalDrag::canDecode(e)) {
     e->ignore();
@@ -60,11 +63,13 @@ void KOTodoListView::contentsDragEnterEvent(QDragEnterEvent *e)
   }
 
   mOldCurrent = currentItem();
+#endif
 }
 
 
 void KOTodoListView::contentsDragMoveEvent(QDragMoveEvent *e)
 {
+#ifndef KORG_NODND
 //  kdDebug() << "KOTodoListView::contentsDragMoveEvent" << endl;
 
   if (!VCalDrag::canDecode(e)) {
@@ -73,18 +78,22 @@ void KOTodoListView::contentsDragMoveEvent(QDragMoveEvent *e)
   }
 
   e->accept();
+#endif
 }
 
 void KOTodoListView::contentsDragLeaveEvent(QDragLeaveEvent *)
 {
+#ifndef KORG_NODND
 //  kdDebug() << "KOTodoListView::contentsDragLeaveEvent" << endl;
 
   setCurrentItem(mOldCurrent);
   setSelected(mOldCurrent,true);
+#endif
 }
 
 void KOTodoListView::contentsDropEvent(QDropEvent *e)
 {
+#ifndef KORG_NODND
 //  kdDebug() << "KOTodoListView::contentsDropEvent" << endl;
 
   if (!VCalDrag::canDecode(e)) {
@@ -131,6 +140,7 @@ void KOTodoListView::contentsDropEvent(QDropEvent *e)
     kdDebug() << "KOTodoListView::contentsDropEvent(): Todo from drop not decodable" << endl;
     e->ignore();
   }
+#endif
 }
 
 void KOTodoListView::contentsMousePressEvent(QMouseEvent* e)
@@ -153,6 +163,7 @@ void KOTodoListView::contentsMousePressEvent(QMouseEvent* e)
 
 void KOTodoListView::contentsMouseMoveEvent(QMouseEvent* e)
 {
+#ifndef KORG_NODND
   QListView::contentsMouseMoveEvent(e);
   if (mMousePressed && (mPressPos - e->pos()).manhattanLength() >
       QApplication::startDragDistance()) {
@@ -177,6 +188,7 @@ void KOTodoListView::contentsMouseMoveEvent(QMouseEvent* e)
 */
     }
   }
+#endif
 }
 
 void KOTodoListView::contentsMouseReleaseEvent(QMouseEvent *e)
@@ -329,9 +341,10 @@ QMap<Todo *,KOTodoViewItem *>::ConstIterator
 {
 //  kdDebug() << "KOTodoView::insertTodoItem(): " << todo->getSummary() << endl;
   // TODO: Check, if dynmaic cast is necessary
-  Todo *relatedTodo = dynamic_cast<Todo *>(todo->relatedTo());
+  Incidence *incidence = todo->relatedTo();
+  if (incidence && incidence->type() == "Todo") {
+    Todo *relatedTodo = static_cast<Todo *>(incidence);
 
-  if (relatedTodo) {
 //    kdDebug() << "  has Related" << endl;
     QMap<Todo *,KOTodoViewItem *>::ConstIterator itemIterator;
     itemIterator = mTodoMap.find(relatedTodo);
@@ -391,7 +404,9 @@ void KOTodoView::showEvents(QPtrList<Event>)
 void KOTodoView::printPreview(CalPrinter *calPrinter, const QDate &fd,
                               const QDate &td)
 {
+#ifndef KORG_NOPRINTER
   calPrinter->preview(CalPrinter::Todolist, fd, td);
+#endif
 }
 
 void KOTodoView::editItem(QListViewItem *item)

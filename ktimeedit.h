@@ -23,10 +23,10 @@
 #include <qevent.h>
 #include <qkeycode.h>
 #include <qstring.h>
-#include <kapplication.h>
+#include <qdatetime.h>
+#include <qcombobox.h>
 
-class QComboBox;
-class QDateTime;
+#include <kapplication.h>
 
 /** 
   This is a class that provides an easy, user friendly way to edit times.

@@ -31,7 +31,7 @@
 
 class KDateEdit;
 class QCheckBox;
-class KLineEdit;
+class QLineEdit;
 class QLabel;
 
 using namespace KCal;

@@ -31,8 +31,12 @@
 #include <qlistview.h>
 #include <qradiobutton.h>
 
+#include <libkcal/event.h>
+
 #include "ktimeedit.h"
 #include "kdateedit.h"
+
+class QWidgetStack;
 
 using namespace KCal;
 

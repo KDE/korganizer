@@ -286,15 +286,18 @@ QToolTipGroup *KOAgendaItem::toolTipGroup()
 
 void KOAgendaItem::dragEnterEvent( QDragEnterEvent *e )
 {
+#ifndef KORG_NODND
   if (!QTextDrag::canDecode(e)) {
     e->ignore();
     return;
   }
   e->accept();
+#endif
 }
 
 void KOAgendaItem::dropEvent( QDropEvent *e )
 {
+#ifndef KORG_NODND
   QString text;
   if(QTextDrag::decode(e,text))
   {
@@ -310,4 +313,5 @@ void KOAgendaItem::dropEvent( QDropEvent *e )
       }
     }
   }
+#endif
 }

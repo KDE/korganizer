@@ -35,7 +35,9 @@
 #include <kconfig.h>
 #include <kiconloader.h>
 
+#ifndef KORG_NOPRINTER
 #include "calprinter.h"
+#endif
 #include "koprefs.h"
 #ifndef KORG_NOPLUGINS
 #include "kocore.h"
@@ -475,7 +477,9 @@ QPtrList<Incidence> KOMonthView::selectedIncidences()
 void KOMonthView::printPreview(CalPrinter *calPrinter, const QDate &fd,
                                const QDate &td)
 {
+#ifndef KORG_NOPRINTER
   calPrinter->preview(CalPrinter::Month, fd, td);
+#endif
 }
 
 void KOMonthView::updateConfig()
@@ -784,8 +788,9 @@ void KOMonthView::newEventSlot(int index)
 
 void KOMonthView::doRightClickMenu()
 {
-  Event *event = dynamic_cast<Event *>(selectedIncidences().first());
-  if (event) {
+  Incidence *incidence = selectedIncidences().first();
+  if( incidence->type() == "Event" ) {
+    Event *event = static_cast<Event *>(incidence);
     rightClickMenu->showEventPopup(event);
   } else {
     kdDebug() << "MonthView::doRightClickMenu(): cast failed." << endl;

@@ -32,12 +32,18 @@
 
 #include <stdlib.h>
 
+#include <qapplication.h>
 #include <qcursor.h>
 #include <qmultilineedit.h>
 #include <qtimer.h>
 #include <qwidgetstack.h>
 #include <qclipboard.h>
 #include <qptrlist.h>
+#include <qclipboard.h>
+#include <qfile.h>
+#ifndef KORG_NOSPLITTER
+#include <qsplitter.h>
+#endif
 
 #include <kglobal.h>
 #include <kdebug.h>
@@ -59,7 +65,9 @@
 #ifndef KORG_NOMAIL
 #include "komailclient.h"
 #endif
+#ifndef KORG_NOPRINTER
 #include "calprinter.h"
+#endif
 #include "koeventeditor.h"
 #include "kotodoeditor.h"
 #include "koprefs.h"
@@ -108,6 +116,8 @@ CalendarView::CalendarView(QWidget *parent,const char *name)
 
   mCalPrinter = 0;
 
+  mFilters.setAutoDelete(true);
+
   // Create calendar object, which manages all calendar information associated
   // with this calendar view window.
   mCalendar = new CalendarLocal(KOPrefs::instance()->mTimeZoneId.local8Bit());
@@ -118,18 +128,40 @@ CalendarView::CalendarView(QWidget *parent,const char *name)
 
   QBoxLayout *topLayout = new QVBoxLayout(this);
 
+#ifndef KORG_NOSPLITTER
   // create the main layout frames.
   mPanner = new QSplitter(QSplitter::Horizontal,this,"CalendarView::Panner");
   topLayout->addWidget(mPanner);
 
-  mLeftFrame = new QSplitter(QSplitter::Vertical,mPanner,
+  mLeftSplitter = new QSplitter(QSplitter::Vertical,mPanner,
                             "CalendarView::LeftFrame");
-  mPanner->setResizeMode(mLeftFrame,QSplitter::KeepSize);
-  mRightFrame = new QWidgetStack(mPanner, "CalendarView::RightFrame");
+  mPanner->setResizeMode(mLeftSplitter,QSplitter::KeepSize);
 
-  mDateNavigator = new KDateNavigator(mLeftFrame, mCalendar, TRUE,
+  mDateNavigator = new KDateNavigator(mLeftSplitter, mCalendar, TRUE,
                         "CalendarView::DateNavigator", QDate::currentDate());
   mLeftFrame->setResizeMode(mDateNavigator,QSplitter::KeepSize);
+  mTodoList = new KOTodoView(mCalendar, mLeftSplitter, "todolist");
+  mFilterView = new KOFilterView(&mFilters,mLeftSplitter,"CalendarView::FilterView");
+
+  mRightFrame = new QWidgetStack(mPanner, "CalendarView::RightFrame");
+
+  mLeftFrame = mLeftSplitter;
+#else
+  QHBox *mainBox = new QHBox( this );
+  topLayout->addWidget( mainBox );
+
+  QVBox *leftFrame = new QVBox( mainBox );
+
+  mDateNavigator = new KDateNavigator(leftFrame, mCalendar, TRUE,
+                        "CalendarView::DateNavigator", QDate::currentDate());
+  mTodoList = new KOTodoView(mCalendar, leftFrame, "todolist");
+  mFilterView = new KOFilterView(&mFilters,leftFrame,"CalendarView::FilterView");
+
+  mRightFrame = new QWidgetStack(mainBox, "CalendarView::RightFrame");
+
+  mLeftFrame = leftFrame;
+#endif
+
   connect(mDateNavigator, SIGNAL(datesSelected(const DateList &)),
           SLOT(selectDates(const DateList &)));
   connect(mDateNavigator,SIGNAL(weekClicked(QDate)),SLOT(selectWeek(QDate)));
@@ -137,7 +169,6 @@ CalendarView::CalendarView(QWidget *parent,const char *name)
           SLOT(eventAdded(Event *)));
   connect(this, SIGNAL(configChanged()), mDateNavigator, SLOT(updateConfig()));
 
-  mTodoList = new KOTodoView(mCalendar, mLeftFrame, "todolist");
   connect(mTodoList, SIGNAL(newTodoSignal()),
 	  this, SLOT(newTodo()));
   connect(mTodoList, SIGNAL(newSubTodoSignal(Todo *)),
@@ -150,9 +181,6 @@ CalendarView::CalendarView(QWidget *parent,const char *name)
           this, SLOT(deleteTodo(Todo *)));
   connect(this, SIGNAL(configChanged()), mTodoList, SLOT(updateConfig()));
 
-  mFilters.setAutoDelete(true);
-
-  mFilterView = new KOFilterView(&mFilters,mLeftFrame,"CalendarView::FilterView");
   connect(mFilterView,SIGNAL(filterChanged()),SLOT(updateFilter()));
   connect(mFilterView,SIGNAL(editFilters()),SLOT(editFilters()));
   // Hide filter per default
@@ -209,10 +237,12 @@ QDate CalendarView::endDate()
 
 void CalendarView::createPrinter()
 {
+#ifndef KORG_NOPRINTER
   if (!mCalPrinter) {
     mCalPrinter = new CalPrinter(this, mCalendar);
     connect(this, SIGNAL(configChanged()), mCalPrinter, SLOT(updateConfig()));
   }
+#endif
 }
 
 
@@ -303,6 +333,7 @@ void CalendarView::readSettings()
 
   KConfig *config = KGlobal::config();
 
+#ifndef KORG_NOSPLITTER
   config->setGroup("KOrganizer Geometry");
 
   QValueList<int> sizes = config->readIntListEntry("Separator1");
@@ -314,8 +345,9 @@ void CalendarView::readSettings()
 
   sizes = config->readIntListEntry("Separator2");
   if (sizes.count() == 3) {
-    mLeftFrame->setSizes(sizes);
+    mLeftSplitter->setSizes(sizes);
   }
+#endif
 
   mViewManager->readSettings( config );
 
@@ -329,13 +361,15 @@ void CalendarView::writeSettings()
 
   KConfig *config = KGlobal::config();
 
+#ifndef KORG_NOSPLITTER
   config->setGroup("KOrganizer Geometry");
 
   QValueList<int> list = mPanner->sizes();
   config->writeEntry("Separator1",list);
 
-  list = mLeftFrame->sizes();
+  list = mLeftSplitter->sizes();
   config->writeEntry("Separator2",list);
+#endif
 
   mViewManager->writeSettings( config );
 
@@ -541,8 +575,12 @@ void CalendarView::edit_cut()
 {
   Event *anEvent=0;
 
+  Incidence *incidence = mViewManager->currentView()->selectedIncidences().first();
+
   if (mViewManager->currentView()->isEventView()) {
-    anEvent = dynamic_cast<Event *>((mViewManager->currentView()->selectedIncidences()).first());
+    if ( incidence && incidence->type() == "Event" ) {
+      anEvent = static_cast<Event *>(incidence);
+    }
   }
 
   if (!anEvent) {
@@ -558,8 +596,12 @@ void CalendarView::edit_copy()
 {
   Event *anEvent=0;
 
+  Incidence *incidence = mViewManager->currentView()->selectedIncidences().first();
+
   if (mViewManager->currentView()->isEventView()) {
-    anEvent = dynamic_cast<Event *>((mViewManager->currentView()->selectedIncidences()).first());
+    if ( incidence && incidence->type() == "Event" ) {
+      anEvent = static_cast<Event *>(incidence);
+    }
   }
 
   if (!anEvent) {
@@ -707,8 +749,12 @@ void CalendarView::appointment_show()
 {
   Event *anEvent = 0;
 
+  Incidence *incidence = mViewManager->currentView()->selectedIncidences().first();
+
   if (mViewManager->currentView()->isEventView()) {
-    anEvent = dynamic_cast<Event *>((mViewManager->currentView()->selectedIncidences()).first());
+    if ( incidence && incidence->type() == "Event" ) {
+      anEvent = static_cast<Event *>(incidence);
+    }
   }
 
   if (!anEvent) {
@@ -723,8 +769,12 @@ void CalendarView::appointment_edit()
 {
   Event *anEvent = 0;
 
+  Incidence *incidence = mViewManager->currentView()->selectedIncidences().first();
+
   if (mViewManager->currentView()->isEventView()) {
-    anEvent = dynamic_cast<Event *>((mViewManager->currentView()->selectedIncidences()).first());
+    if ( incidence && incidence->type() == "Event" ) {
+      anEvent = static_cast<Event *>(incidence);
+    }
   }
 
   if (!anEvent) {
@@ -739,8 +789,12 @@ void CalendarView::appointment_delete()
 {
   Event *anEvent = 0;
 
+  Incidence *incidence = mViewManager->currentView()->selectedIncidences().first();
+
   if (mViewManager->currentView()->isEventView()) {
-    anEvent = dynamic_cast<Event *>((mViewManager->currentView()->selectedIncidences()).first());
+    if ( incidence && incidence->type() == "Event" ) {
+      anEvent = static_cast<Event *>(incidence);
+    }
   }
 
   if (!anEvent) {
@@ -749,46 +803,6 @@ void CalendarView::appointment_delete()
   }
 
   deleteEvent(anEvent);
-}
-
-// Is this function needed anymore? It could just call the deleteTodo slot of
-// the KOTodoView, couldn't it?
-void CalendarView::action_deleteTodo()
-{
-  Todo *aTodo;
-  KOTodoView *todoList2 = (mViewManager->currentView()->isEventView() ?
-                           mTodoList :
-                           dynamic_cast<KOTodoView *>(mViewManager->currentView()));
-
-  if (!todoList2) {
-    KNotifyClient::beep();
-    return;
-  }
-
-  aTodo = (todoList2->selectedTodos()).first();
-  if (!aTodo) {
-    KNotifyClient::beep();
-    return;
-  }
-
-  // disable deletion for now, because it causes a crash.
-  return;
-
-  if (KOPrefs::instance()->mConfirm) {
-    switch(msgItemDelete()) {
-      case KMessageBox::Continue: // OK
-        mCalendar->deleteTodo(aTodo);
-        // If there would be a removeTodo() function in KOTodoView we would call
-        // it here... (before the mCalendar->deleteTodo call actually)
-        todoList2->updateView();
-        break;
-    } // switch
-  } else {
-    mCalendar->deleteTodo(aTodo);
-    // If there would be a removeTodo() function in KOTodoView we would call
-    // it here... (before the mCalendar->deleteTodo call actually)
-    todoList2->updateView();
-  }
 }
 
 void CalendarView::deleteTodo(Todo *todo)
@@ -917,8 +931,12 @@ void CalendarView::schedule_publish()
 {
   Event *event = 0;
 
+  Incidence *incidence = mViewManager->currentView()->selectedIncidences().first();
+
   if (mViewManager->currentView()->isEventView()) {
-    event = dynamic_cast<Event *>((mViewManager->currentView()->selectedIncidences()).first());
+    if ( incidence && incidence->type() == "Event" ) {
+      event = static_cast<Event *>(incidence);
+    }
   }
 
   if (!event) {
@@ -1000,8 +1018,12 @@ void CalendarView::schedule(Scheduler::Method method)
 {
   Event *event = 0;
 
+  Incidence *incidence = mViewManager->currentView()->selectedIncidences().first();
+
   if (mViewManager->currentView()->isEventView()) {
-    event = dynamic_cast<Event *>((mViewManager->currentView()->selectedIncidences()).first());
+    if ( incidence && incidence->type() == "Event" ) {
+      event = static_cast<Event *>(incidence);
+    }
   }
 
   if (!event) {
@@ -1085,22 +1107,27 @@ void CalendarView::signalAlarmDaemon()
 
 void CalendarView::printSetup()
 {
+#ifndef KORG_NOPRINTER
   createPrinter();
 
   mCalPrinter->setupPrinter();
+#endif
 }
 
 void CalendarView::print()
 {
+#ifndef KORG_NOPRINTER
   createPrinter();
 
   DateList tmpDateList = mDateNavigator->selectedDates();
   mCalPrinter->print(CalPrinter::Month,
 		     tmpDateList.first(), tmpDateList.last());
+#endif
 }
 
 void CalendarView::printPreview()
 {
+#ifndef KORG_NOPRINTER
   kdDebug() << "CalendarView::printPreview()" << endl;
 
   createPrinter();
@@ -1109,6 +1136,7 @@ void CalendarView::printPreview()
 
   mViewManager->currentView()->printPreview(mCalPrinter,tmpDateList.first(),
                              tmpDateList.last());
+#endif
 }
 
 void CalendarView::exportICalendar()
@@ -1201,6 +1229,7 @@ void CalendarView::emitEventsSelected()
 
 void CalendarView::checkClipboard()
 {
+#ifndef KORG_NODND
   if (VCalDrag::canDecode(QApplication::clipboard()->data())) {
     kdDebug() << "CalendarView::checkClipboard() true" << endl;
     emit pasteEnabled(true);
@@ -1208,6 +1237,7 @@ void CalendarView::checkClipboard()
     kdDebug() << "CalendarView::checkClipboard() false" << endl;
     emit pasteEnabled(false);
   }
+#endif
 }
 
 void CalendarView::selectDates(const DateList &selectedDates)

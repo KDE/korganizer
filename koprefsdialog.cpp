@@ -36,6 +36,7 @@
 #include <qcheckbox.h>
 #include <qradiobutton.h>
 #include <qpushbutton.h>
+#include <qstrlist.h>
 
 #include <kdebug.h>
 #include <klocale.h>

@@ -26,7 +26,6 @@
 #include <qwidget.h>
 #include <qptrlist.h>
 #include <qframe.h>
-#include <qsplitter.h>
 #include <qvbox.h>
 
 #include <libkcal/calendar.h>
@@ -38,6 +37,8 @@
 #include "kdatenav.h"
 
 class QWidgetStack;
+class QSplitter;
+
 class CalPrinter;
 class KOFilterView;
 class KOViewManager;
@@ -287,12 +288,6 @@ class CalendarView : public KOrg::CalendarViewBase
      */
     void appointment_delete();
   
-    /**
-     *
-     * deletes the currently selected todo item, if one is selected.
-     */
-    void action_deleteTodo();
-  
     /** mails the currently selected event to a particular user as a vCalendar 
       attachment. */
     void action_mail();
@@ -381,7 +376,8 @@ class CalendarView : public KOrg::CalendarViewBase
     CalPrinter *mCalPrinter;
 
     QSplitter    *mPanner;
-    QSplitter    *mLeftFrame;
+    QSplitter    *mLeftSplitter;
+    QWidget      *mLeftFrame;
     QWidgetStack *mRightFrame;
 
     KDateNavigator *mDateNavigator;       // widget showing small month view.

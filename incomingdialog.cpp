@@ -197,8 +197,9 @@ void IncomingDialog::rejectMessage()
 
 void IncomingDialog::showEvent(QListViewItem *item)
 {
-  Event *event = dynamic_cast<Event *>(((ScheduleItemIn *)item)->event());
-  if (event) {
+  Incidence *incidence = ((ScheduleItemIn *)item)->event();
+  if( incidence && incidence->type() == "Event" ) {
+    Event *event = static_cast<Event *>(incidence);
     KOEventViewerDialog *eventViewer = new KOEventViewerDialog(this);
     eventViewer->setEvent(event);
     eventViewer->show();

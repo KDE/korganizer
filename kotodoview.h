@@ -38,6 +38,11 @@
 
 #include "kotodoviewitem.h"
 
+class QDragEnterEvent;
+class QDragMoveEvent;
+class QDragLeaveEvent;
+class QDropEvent;
+
 class DocPrefs;
 
 class KOTodoListView : public QListView

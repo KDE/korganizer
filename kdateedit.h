@@ -21,6 +21,7 @@
 
 #include <qhbox.h>
 #include <qvbox.h>
+#include <qdatetime.h>
 
 class QLineEdit;
 class QPushButton;
