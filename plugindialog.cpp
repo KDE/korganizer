@@ -57,7 +57,7 @@ class PluginItem : public QCheckListItem {
 */
 PluginDialog::PluginDialog( QWidget *parent )
   : KDialogBase( Plain, i18n("Configure Plugins"), Ok | Cancel | User1, Ok,
-                 parent, 0, false, false, i18n("Configure...") )
+                 parent, 0, false, false, KGuiItem( i18n("Configure..."), "configure") )
 {
   QFrame *topFrame = plainPage();
   QVBoxLayout *topLayout = new QVBoxLayout( topFrame, 0, spacingHint() );

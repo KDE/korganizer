@@ -42,7 +42,7 @@
 
 SearchDialog::SearchDialog(Calendar *calendar,QWidget *parent)
   : KDialogBase(Plain,i18n("Find Events"),User1|Close,User1,parent,0,false,false,
-                i18n("&Find"))
+                KGuiItem( i18n("&Find"), "find") )
 {
   mCalendar = calendar;
 
@@ -69,7 +69,7 @@ SearchDialog::SearchDialog(Calendar *calendar,QWidget *parent)
   mJournalsCheck = new QCheckBox( i18n("&Journal entries"), itemsGroup );
   mEventsCheck->setChecked( true );
   mTodosCheck->setChecked( true );
-  
+
   // Date range
   QGroupBox *rangeGroup = new QGroupBox( 1, Horizontal, i18n( "Date Range" ),
                                         topFrame );
@@ -79,15 +79,15 @@ SearchDialog::SearchDialog(Calendar *calendar,QWidget *parent)
   QHBoxLayout *rangeLayout = new QHBoxLayout( rangeWidget, 0, spacingHint() );
 
   mStartDate = new KDateEdit( rangeWidget );
-  rangeLayout->addWidget( new QLabel( mStartDate, i18n("&From:"), rangeWidget ) );
+  rangeLayout->addWidget( new QLabel( mStartDate, i18n("Fr&om:"), rangeWidget ) );
   rangeLayout->addWidget( mStartDate );
-  
+
   mEndDate = new KDateEdit( rangeWidget );
   rangeLayout->addWidget( new QLabel( mEndDate, i18n("&To:"), rangeWidget ) );
   mEndDate->setDate( QDate::currentDate().addDays( 365 ) );
   rangeLayout->addWidget( mEndDate );
 
-  mInclusiveCheck = new QCheckBox( i18n("Events have to be &completely included"),
+  mInclusiveCheck = new QCheckBox( i18n("E&vents have to be completely included"),
                                   rangeGroup );
   mInclusiveCheck->setChecked( false );
   mIncludeUndatedTodos = new QCheckBox( i18n("Include todos &without due date"), rangeGroup );
@@ -101,7 +101,7 @@ SearchDialog::SearchDialog(Calendar *calendar,QWidget *parent)
   mSummaryCheck->setChecked( true );
   mDescriptionCheck = new QCheckBox( i18n("Desc&riptions"), subjectGroup );
   mCategoryCheck = new QCheckBox( i18n("Cate&gories"), subjectGroup );
-  
+
 
   // Results list view
   listView = new KOListView( mCalendar, topFrame );
@@ -177,28 +177,28 @@ void SearchDialog::search( const QRegExp &re )
 {
   QDate startDt = mStartDate->date();
   QDate endDt = mEndDate->date();
-  
+
   Event::List events = mCalendar->events( startDt, endDt,
                                           mInclusiveCheck->isChecked() );
   Todo::List todos;
-  if ( mIncludeUndatedTodos ) 
+  if ( mIncludeUndatedTodos )
     todos = mCalendar->todos();
   else {
-    QDate dt = startDt; 
+    QDate dt = startDt;
     while ( dt <= endDt ) {
       todos += mCalendar->todos( dt );
       dt = dt.addDays( 1 );
     }
   }
-  
-  Journal::List journals; 
-  QDate dt = startDt; 
+
+  Journal::List journals;
+  QDate dt = startDt;
   while ( dt <= endDt ) {
     Journal* j=mCalendar->journal( dt );
     if (j) journals.append( j );
     dt = dt.addDays( 1 );
   }
-  
+
   Incidence::List allIncidences = Calendar::mergeIncidenceList( events, todos, journals );
 
   mMatchedEvents.clear();

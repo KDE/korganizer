@@ -568,7 +568,7 @@ void CalendarView::goNext()
 {
   if (dynamic_cast<KOMonthView*>(mViewManager->currentView() ) )
     mNavigator->selectNextWeek();
-  else 
+  else
     mNavigator->selectNext();
 }
 
@@ -576,7 +576,7 @@ void CalendarView::goPrevious()
 {
   if (dynamic_cast<KOMonthView*>(mViewManager->currentView() ) )
     mNavigator->selectPreviousWeek();
-  else 
+  else
     mNavigator->selectPrevious();
 }
 
@@ -718,7 +718,7 @@ int CalendarView::msgItemDelete()
 {
   return KMessageBox::warningContinueCancel(this,
       i18n("This item will be permanently deleted."),
-      i18n("KOrganizer Confirmation"),i18n("Delete"));
+      i18n("KOrganizer Confirmation"),KGuiItem(i18n("Delete"),"editdelete"));
 }
 
 
@@ -831,11 +831,11 @@ void CalendarView::newEvent()
   QTime startTime = KOPrefs::instance()->mStartTime.time();
   QDateTime startDt( date, startTime );
   QTime defaultDuration( KOPrefs::instance()->mDefaultDuration.time() );
-  QTime endTime( startTime.addSecs( defaultDuration.hour()*3600 + 
+  QTime endTime( startTime.addSecs( defaultDuration.hour()*3600 +
      defaultDuration.minute()*60 + defaultDuration.second() ) );
   QDateTime endDt( date, endTime );
   bool allDay = false;
-  
+
   // let the current view change the default start/end datetime
   mViewManager->currentView()->eventDurationHint( startDt, endDt, allDay );
 
@@ -849,7 +849,7 @@ void CalendarView::newEvent()
 void CalendarView::newEvent(QDateTime fh)
 {
   QTime defaultDuration( KOPrefs::instance()->mDefaultDuration.time() );
-  QDateTime endTime = fh.addSecs( defaultDuration.hour()*3600 + 
+  QDateTime endTime = fh.addSecs( defaultDuration.hour()*3600 +
      defaultDuration.minute()*60 + defaultDuration.second() );
   newEvent( fh, endTime );
 }
@@ -1497,9 +1497,9 @@ void CalendarView::print()
   createPrinter();
 
   KOrg::BaseView *currentView = mViewManager->currentView();
-  
+
   CalPrinter::PrintType printType = CalPrinter::Month;
-  
+
   if ( currentView ) printType = currentView->printType();
 
   DateList tmpDateList = mNavigator->selectedDates();
@@ -1719,7 +1719,7 @@ void CalendarView::takeOverCalendar()
 {
   Incidence::List incidences = mCalendar->rawIncidences();
   Incidence::List::Iterator it;
-  
+
   for ( it = incidences.begin(); it != incidences.end(); it++ ) {
     (*it)->setOrganizer(KOPrefs::instance()->email());
     (*it)->recreate();

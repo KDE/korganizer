@@ -41,7 +41,7 @@
 #include "koprefs.h"
 #include "koeditorattachments.h"
 #include "kodialogmanager.h"
- 
+
 #include "kotodoeditor.h"
 
 KOTodoEditor::KOTodoEditor( Calendar *calendar, QWidget *parent ) :
@@ -164,7 +164,7 @@ void KOTodoEditor::newTodo( const QString &summary,
                               const QString &attachment )
 {
   init();
-  
+
   mTodo = 0;
 
   loadDefaults();
@@ -292,7 +292,7 @@ int KOTodoEditor::msgItemDelete()
 {
   return KMessageBox::warningContinueCancel(this,
       i18n("This item will be permanently deleted."),
-      i18n("KOrganizer Confirmation"),i18n("Delete"));
+      i18n("KOrganizer Confirmation"),KGuiItem(i18n("Delete"),"editdelete"));
 }
 
 void KOTodoEditor::modified (int modification)

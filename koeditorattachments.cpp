@@ -111,7 +111,7 @@ void KOEditorAttachments::slotRemove()
 
   if ( KMessageBox::warningContinueCancel(this,
         i18n("This item will be permanently deleted."),
-        i18n("KOrganizer Confirmation"),i18n("Delete")) == KMessageBox::Continue )
+        i18n("KOrganizer Confirmation"),KGuiItem(i18n("Delete"),"editdelete")) == KMessageBox::Continue )
     delete item;
 }
 

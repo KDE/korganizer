@@ -200,7 +200,7 @@ void KOEventEditor::newEvent( const QString &summary,
                               const QString &attachment )
 {
   init();
-  
+
   mEvent = 0;
 
   loadDefaults();
@@ -218,7 +218,7 @@ void KOEventEditor::loadDefaults()
   QTime defaultDuration( KOPrefs::instance()->mDefaultDuration.time() );
 
   QDateTime from(QDate::currentDate(), KOPrefs::instance()->mStartTime.time() );
-  QDateTime to( from.addSecs(defaultDuration.hour()*3600 + 
+  QDateTime to( from.addSecs(defaultDuration.hour()*3600 +
      defaultDuration.minute()*60 + defaultDuration.second()) );
 
   setDefaults(from,to,false);
@@ -333,7 +333,7 @@ void KOEventEditor::setDefaults( QDateTime from, QDateTime to, bool allDay )
           mFreeBusy->setDateTimes( from, to.addDays(1) );
       else
           mFreeBusy->setDateTimes( from, to );
-          
+
    }
 }
 
@@ -381,7 +381,7 @@ int KOEventEditor::msgItemDelete()
 {
   return KMessageBox::warningContinueCancel(this,
       i18n("This item will be permanently deleted."),
-      i18n("KOrganizer Confirmation"),i18n("Delete"));
+      i18n("KOrganizer Confirmation"),KGuiItem(i18n("Delete"),"editdelete"));
 }
 
 void KOEventEditor::slotLoadTemplate()

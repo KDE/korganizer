@@ -33,7 +33,7 @@
 #include <klocale.h>
 #include <kinputdialog.h>
 #include <kmessagebox.h>
-  
+
 #include <libkdepim/categoryselectdialog.h>
 
 #include "koprefs.h"
@@ -155,13 +155,13 @@ void FilterEditDialog::slotRemove()
   // We need at least a default filter object.
   if ( mFilters->count() <= 1 ) return;
 
-  int result = KMessageBox::questionYesNo( this,
-     i18n("This item will be permanently deleted.") );
-  
-  if ( result != KMessageBox::Yes ) {
+  int result = KMessageBox::warningContinueCancel( this,
+     i18n("This item will be permanently deleted."), i18n("Delete Confirmation"), KGuiItem(i18n("Delete"),"editdelete") );
+
+  if ( result != KMessageBox::Continue ) {
     return;
   }
-  
+
   mFilters->remove( currentItem );
   updateFilterList();
   emit filterChanged();
