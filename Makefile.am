@@ -113,3 +113,5 @@ messages: rc.cpp
 	$(PREPARETIPS) > tips.cc
 	$(XGETTEXT) *.cpp knewstuff/*.cpp plugins/*/*.cpp tips.cc -o $(podir)/korganizer.pot
 	rm -f tips.cc
+
+include ../admin/Doxyfile.am
