@@ -281,6 +281,8 @@ CalendarView::~CalendarView()
 {
   kdDebug(5850) << "~CalendarView()" << endl;
 
+  mCalendar->unregisterObserver( this );
+
   delete mDialogManager;
   delete mViewManager;
 
