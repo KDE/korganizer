@@ -539,8 +539,12 @@ void KOEditorRecurrence::setEnabled(bool enabled)
 void KOEditorRecurrence::addException()
 {
   QDate tmpDate = exceptionDateEdit->getDate();
-  exceptionList->insertItem(KGlobal::locale()->formatDate(tmpDate));
-  mExceptionDates.append(tmpDate);
+  QString date=KGlobal::locale()->formatDate(tmpDate);
+  if(!exceptionList->findItem(date))
+  {
+      exceptionList->insertItem(date);
+      mExceptionDates.append(tmpDate);
+  }
 }
 
 void KOEditorRecurrence::changeException()
