@@ -208,7 +208,7 @@ void KODayMatrix::recalculateToday()
       mToday = i;
     }
   }
-  // qDebug(QString("Today is visible at %1.").arg(today));
+  // kdDegug(5850) << "Today is visible at "<< today << "." << endl;
 }
 
 /* slot */ void KODayMatrix::updateView()
@@ -480,20 +480,21 @@ void KODayMatrix::dropEvent( QDropEvent *e )
     action = menu->exec( QCursor::pos(), 0 );
   }
 
-  // When copying, clear the UID:
-  if ( action == DRAG_COPY ) {
-    if ( todo ) todo->recreate();
-    if ( event ) event->recreate();
-  } else {
-    if ( existingEvent ) oldEvent = existingEvent->clone();
-    if ( event ) delete event;
-    event = existingEvent;
-    if ( existingTodo ) oldTodo = existingTodo->clone();
-    if ( todo ) delete todo;
-    todo = existingTodo;
-  }
-
   if ( action == DRAG_COPY  || action == DRAG_MOVE ) {
+  
+    // When copying, clear the UID:
+    if ( action == DRAG_COPY ) {
+      if ( todo ) todo->recreate();
+      if ( event ) event->recreate();
+    } else {
+      if ( existingEvent ) oldEvent = existingEvent->clone();
+      if ( event ) delete event;
+      event = existingEvent;
+      if ( existingTodo ) oldTodo = existingTodo->clone();
+      if ( todo ) delete todo;
+      todo = existingTodo;
+    }
+
     e->accept();
     if ( event ) {
       // Adjust date
@@ -509,7 +510,7 @@ void KODayMatrix::dropEvent( QDropEvent *e )
       event->setDtEnd( end );
       // When moving, we don't need to insert  the item!
       if ( action != DRAG_MOVE ) {
-        if ( !mCalendar->addEvent( event ) ) {
+        if ( !mCalendar->addIncidence( event ) ) {
           KODialogManager::errorSaveIncidence( this, event );
           return;
         }
@@ -532,7 +533,7 @@ void KODayMatrix::dropEvent( QDropEvent *e )
 
       // When moving, we don't need to insert  the item!
       if ( action != DRAG_MOVE ) {
-        if ( !mCalendar->addTodo( todo ) ) {
+        if ( !mCalendar->addIncidence( todo ) ) {
           KODialogManager::errorSaveIncidence( this, todo );
         }
       }
