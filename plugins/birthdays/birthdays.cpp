@@ -130,8 +130,8 @@ void Birthdays::importBirthdays()
       // Set the recurrence
       Recurrence *vRecurrence = ev->recurrence();
       vRecurrence->setRecurStart(birthdate);
-      vRecurrence->setYearly(Recurrence::rYearlyDay,1,-1);
-      vRecurrence->addYearlyNum(birthdate.date().dayOfYear());
+      vRecurrence->setYearly(Recurrence::rYearlyMonth,1,-1);
+      vRecurrence->addYearlyNum(birthdate.date().month());
 
       ev->clearAlarms();
       if (bd->mAlarm->isChecked()) {
