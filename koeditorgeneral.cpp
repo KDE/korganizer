@@ -191,7 +191,7 @@ void KOEditorGeneral::pickAlarmSound()
     QToolTip::add(mAlarmSoundButton, i18n("No sound set"));
   } else {
     QString fileName(KFileDialog::getOpenFileName(prefix,
-						  i18n("*.wav|Wav Files"), 0));
+                                                  i18n("*.wav|Wav Files"), 0));
     if (!fileName.isEmpty()) {
       mAlarmSound = fileName;
       QToolTip::remove(mAlarmSoundButton);

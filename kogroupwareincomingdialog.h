@@ -11,9 +11,9 @@ class KOGroupwareIncomingDialog : public KOGroupwareIncomingDialog_base
     Q_OBJECT
 
 public:
-    KOGroupwareIncomingDialog( KCal::Incidence*, QWidget* parent = 0, 
-			       const char* name = 0, bool modal = FALSE, 
-			       WFlags fl = 0 );
+    KOGroupwareIncomingDialog( KCal::Incidence*, QWidget* parent = 0,
+                               const char* name = 0, bool modal = FALSE,
+                               WFlags fl = 0 );
     ~KOGroupwareIncomingDialog();
 
     bool isAccepted() const { return mAccepted; }

@@ -12,10 +12,10 @@ class TimeLine : public QScrollView
     virtual ~TimeLine();
 
     void setDateRange( const QDateTime &start, const QDateTime &end );
-    
+
   public slots:
     void setContentsPos( int pos );
-    
+
   protected:
     void drawContents(QPainter* p, int cx, int cy, int cw, int ch);
 

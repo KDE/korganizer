@@ -46,8 +46,8 @@ class KOWhatsNextView : public KOrg::BaseView
 {
     Q_OBJECT
   public:
-    KOWhatsNextView(Calendar *calendar, QWidget *parent = 0, 
-	            const char *name = 0);
+    KOWhatsNextView(Calendar *calendar, QWidget *parent = 0,
+                    const char *name = 0);
     ~KOWhatsNextView();
 
     virtual int maxDatesHint();
@@ -56,18 +56,18 @@ class KOWhatsNextView : public KOrg::BaseView
     DateList selectedDates() { return DateList(); }
     virtual void printPreview(CalPrinter *calPrinter,
                               const QDate &, const QDate &);
-  
+
   public slots:
     virtual void updateView();
     virtual void showDates(const QDate &start, const QDate &end);
     virtual void showEvents( const Event::List & );
 
     void changeEventDisplay(Event *, int);
-  
+
   protected:
     void appendEvent(Incidence *, bool reply=false);
     void appendTodo(Incidence *);
-  
+
   private slots:
     void showIncidence(const QString &);
 
@@ -78,7 +78,7 @@ class KOWhatsNextView : public KOrg::BaseView
     QString mText;
 
     KOEventViewerDialog *mEventViewer;
-    
+
     Incidence::List mTodos;
 };
 

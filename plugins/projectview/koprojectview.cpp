@@ -47,7 +47,7 @@ using namespace KOrg;
 
 KOProjectViewItem::KOProjectViewItem(Todo *event,KGanttItem* parentTask,
                                      const QString& text,
-	                             const QDateTime& start,
+                                     const QDateTime& start,
                                      const QDateTime& end) :
   KGanttItem(parentTask,text,start,end)
 {

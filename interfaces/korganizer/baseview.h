@@ -49,15 +49,15 @@ namespace KOrg {
 
   @short Base class for calendar views
   @author Preston Brown, Cornelius Schumacher
-  @see KOTodoView, KOEventView, KOListView, KOAgendaView, KOMonthView  
+  @see KOTodoView, KOEventView, KOListView, KOAgendaView, KOMonthView
 */
 class BaseView : public QWidget
 {
     Q_OBJECT
   public:
     /**
-      Constructs a view. 
-     
+      Constructs a view.
+
       @param cal    Pointer to the calendar object from which events
                     will be retrieved for display.
       @param parent parent widget.
@@ -75,24 +75,24 @@ class BaseView : public QWidget
       Return calendar object of this view.
     */
     Calendar *calendar() { return mCalendar; }
-  
+
     /**
       @return a list of selected events.  Most views can probably only
       select a single event at a time, but some may be able to select
       more than one.
     */
     virtual Incidence::List selectedIncidences() = 0;
-  
+
     /**
       @return a list of the dates of selected events.  Most views can probably only
       select a single event at a time, but some may be able to select
       more than one.
     */
     virtual DateList selectedDates() = 0;
-    
+
     /**
       Generate a print preview of this event view.
-      
+
       @param calPrinter Calendar printer object used for printing
       @param fd from date
       @param td to date
@@ -102,22 +102,22 @@ class BaseView : public QWidget
   parameters. At the moment I just move the code from the topwidget to the
   individual views.
 */
-    virtual void printPreview(CalPrinter *, 
+    virtual void printPreview(CalPrinter *,
                               const QDate &, const QDate &)
     {
       KMessageBox::sorry(this, i18n("Unfortunately, we don't handle printing for\n"
-			            "that view yet.\n"));
+                                    "that view yet.\n"));
     }
-    
+
     /**
       Print this view.
-      
+
       @param calPrinter Calendar printer object used for printing
     */
     virtual void print(CalPrinter *)
     {
       KMessageBox::sorry(this, i18n("Unfortunately, we don't handle printing for\n"
-	                            "that view yet.\n"));
+                                    "that view yet.\n"));
     }
 
     /**
@@ -127,13 +127,13 @@ class BaseView : public QWidget
 
     /** Return if this view is a view for displaying events. */
     virtual bool isEventView() { return false; }
-    
+
   public slots:
     /**
       Show incidences for the given date range. The date range actually shown may be
       different from the requested range, depending on the particular requirements
       of the view.
-    
+
       @param start Start of date range.
       @param end   End of date range.
     */
@@ -152,17 +152,17 @@ class BaseView : public QWidget
       in the calendar since the last display refresh.
     */
     virtual void updateView() = 0;
-  
+
     /**
       Write all unsaved data back to calendar store.
     */
     virtual void flushView() {}
-  
+
     /**
       Updates the current display to reflect the changes to one particular event.
     */
     virtual void changeEventDisplay( Event *, int ) = 0;
-  
+
     /**
       Re-reads the KOrganizer configuration and picks up relevant
       changes which are applicable to the view.
@@ -173,7 +173,7 @@ class BaseView : public QWidget
       Clear selection. The incidenceSelected signal is not emitted.
     */
     virtual void clearSelection() {}
-    
+
   signals:
     void incidenceSelected( Incidence * );
 
@@ -181,5 +181,5 @@ class BaseView : public QWidget
     Calendar *mCalendar;
 };
 
-}  
+}
 #endif

@@ -99,7 +99,7 @@ void KOEventViewer::addTag(const QString & tag,const QString & text)
   QString str = "<" + tag + ">";
   QString tmpText=text;
   QString tmpStr=str;
-  if(number !=-1) 
+  if(number !=-1)
     {
       if (number > 0) {
         int pos=0;
@@ -125,7 +125,7 @@ void KOEventViewer::addTag(const QString & tag,const QString & text)
 void KOEventViewer::appendEvent(Event *event)
 {
   addTag("h1",event->summary());
-  
+
   if (!event->location().isEmpty()) {
     addTag("b",i18n("Location: "));
     mText.append(event->location()+"<br>");
@@ -249,9 +249,9 @@ void KOEventViewer::formatAttendees(Incidence *event)
           mText += o.formattedName();
           mText += "</a>\n";
         } else {
-	  mText += "<li>";
+          mText += "<li>";
           mText.append(a->email());
-	  mText += "\n";
+          mText += "\n";
         }
       } else {
         mText += "<li><a href=\"uid:" + a->uid() + "\">";

@@ -111,7 +111,7 @@ void KOWhatsNextView::updateView()
   KIconLoader kil("korganizer");
   QString *ipath = new QString();
   kil.loadIcon("korganizer",KIcon::NoGroup,32,KIcon::DefaultState,ipath);
-  
+
   mText = "<table width=\"100%\">\n";
   mText += "<tr bgcolor=\"#3679AD\"><td><h1>";
   mText += "<img src=\"";
@@ -119,14 +119,14 @@ void KOWhatsNextView::updateView()
   mText += "\">";
   mText += "<font color=\"white\"> " + i18n("What's next?") + "</font></h1>";
   mText += "</td></tr>\n<tr><td>";
-  
+
   Event::List events = calendar()->events( QDate::currentDate(), true );
   if (events.count() > 0) {
     mText += "<p></p>";
     kil.loadIcon("appointment",KIcon::NoGroup,22,KIcon::DefaultState,ipath);
     mText += "<h2><img src=\"";
     mText += *ipath;
-    mText += "\">";    
+    mText += "\">";
     mText += i18n("Events:") + "</h2>\n";
     mText += "<table>\n";
     Event::List::ConstIterator it;
@@ -152,17 +152,17 @@ void KOWhatsNextView::updateView()
     for( it = todos.begin(); it != todos.end(); ++it ) {
       Todo *todo = *it;
       if ( todo->hasDueDate() && todo->dtDue().date() == QDate::currentDate() )
-		  appendTodo(todo);
+                  appendTodo(todo);
     }
     bool gotone = false;
     int priority = 1;
     while (!gotone && priority<6) {
       for( it = todos.begin(); it != todos.end(); ++it ) {
         Todo *todo = *it;
-	if (!todo->isCompleted() && (todo->priority() == priority) ) {
+        if (!todo->isCompleted() && (todo->priority() == priority) ) {
           appendTodo(todo);
           gotone = true;
-	}
+        }
       }
       priority++;
       kdDebug(5850) << "adding the todos..." << endl;
@@ -183,7 +183,7 @@ void KOWhatsNextView::updateView()
           kil.loadIcon("reply",KIcon::NoGroup,22,KIcon::DefaultState,ipath);
           mText += "<h2><img src=\"";
           mText += *ipath;
-          mText += "\">";    
+          mText += "\">";
           mText += i18n("Events and To-Dos that need a reply:") + "</h2>\n";
           mText += "<table>\n";
         }
@@ -204,7 +204,7 @@ void KOWhatsNextView::updateView()
           kil.loadIcon("reply",KIcon::NoGroup,22,KIcon::DefaultState,ipath);
           mText += "<h2><img src=\"";
           mText += *ipath;
-          mText += "\">";    
+          mText += "\">";
           mText += i18n("Events and To-Dos that need a reply:") + "</h2>\n";
           mText += "<table>\n";
         }

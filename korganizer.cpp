@@ -89,7 +89,7 @@ KOrganizer::KOrganizer( bool document, const char *name )
 {
   kdDebug(5850) << "KOrganizer::KOrganizer()" << endl;
   KOCore::self()->setXMLGUIClient( this );
-//  setMinimumSize(600,400);	// make sure we don't get resized too small...
+//  setMinimumSize(600,400);  // make sure we don't get resized too small...
 
   // Create calendar object, which manages all calendar information associated
   // with this calendar view window.

@@ -39,11 +39,11 @@ using namespace KOrg;
 #include "kojournalview.moc"
 
 KOJournalView::KOJournalView(Calendar *calendar, QWidget *parent,
-		       const char *name)
+                       const char *name)
   : KOrg::BaseView(calendar, parent, name)
 {
   mEntry = new JournalEntry(calendar,this);
-  
+
   QBoxLayout *topLayout = new QVBoxLayout(this);
   topLayout->addWidget(mEntry);
 }
@@ -83,7 +83,7 @@ void KOJournalView::showDates(const QDate &start, const QDate &)
   Journal *j = calendar()->journal(start);
   if (j) mEntry->setJournal(j);
   else mEntry->clear();
-  
+
 //  emit incidenceSelected( 0 );
 }
 

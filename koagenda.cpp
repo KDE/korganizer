@@ -53,94 +53,95 @@
 MarcusBains::MarcusBains(KOAgenda *_agenda,const char *name)
     : QFrame(_agenda->viewport(),name), agenda(_agenda)
 {
-    setLineWidth(0);
-    setMargin(0);
-    setBackgroundColor(Qt::red);
-    minutes = new QTimer(this);
-    connect(minutes, SIGNAL(timeout()), this, SLOT(updateLocation()));
-    minutes->start(0, true);
+  setLineWidth(0);
+  setMargin(0);
+  setBackgroundColor(Qt::red);
+  minutes = new QTimer(this);
+  connect(minutes, SIGNAL(timeout()), this, SLOT(updateLocation()));
+  minutes->start(0, true);
 
-    mTimeBox = new QLabel(this);
-    mTimeBox->setAlignment(Qt::AlignRight | Qt::AlignBottom);
-    QPalette pal = mTimeBox->palette();
-    pal.setColor(QColorGroup::Foreground, Qt::red);
-    mTimeBox->setPalette(pal);
-    mTimeBox->setAutoMask(true);
+  mTimeBox = new QLabel(this);
+  mTimeBox->setAlignment(Qt::AlignRight | Qt::AlignBottom);
+  QPalette pal = mTimeBox->palette();
+  pal.setColor(QColorGroup::Foreground, Qt::red);
+  mTimeBox->setPalette(pal);
+  mTimeBox->setAutoMask(true);
 
-    agenda->addChild(mTimeBox);
+  agenda->addChild(mTimeBox);
 
-    oldToday = -1;
+  oldToday = -1;
 }
 
 MarcusBains::~MarcusBains()
 {
-    delete minutes;
+  delete minutes;
 }
 
 int MarcusBains::todayColumn()
 {
-    QDate currentDate = QDate::currentDate();
+  QDate currentDate = QDate::currentDate();
 
-    DateList dateList = agenda->dateList();
-    DateList::ConstIterator it;
-    int col = 0;
-    for(it = dateList.begin(); it != dateList.end(); ++it) {
-	if((*it) == currentDate)
-	    return KOGlobals::self()->reverseLayout() ?
-	                         agenda->columns() - 1 - col : col;
-        ++col;
-    }
+  DateList dateList = agenda->dateList();
+  DateList::ConstIterator it;
+  int col = 0;
+  for(it = dateList.begin(); it != dateList.end(); ++it) {
+    if((*it) == currentDate)
+      return KOGlobals::self()->reverseLayout() ?
+             agenda->columns() - 1 - col : col;
+      ++col;
+  }
 
-    return -1;
+  return -1;
 }
 
 void MarcusBains::updateLocation(bool recalculate)
 {
-    QTime tim = QTime::currentTime();
-    if((tim.hour() == 0) && (oldTime.hour()==23))
-        recalculate = true;
+  QTime tim = QTime::currentTime();
+  if((tim.hour() == 0) && (oldTime.hour()==23))
+    recalculate = true;
 
-    int mins = tim.hour()*60 + tim.minute();
-    int minutesPerCell = 24 * 60 / agenda->rows();
-    int y = (int)(mins*agenda->gridSpacingY()/minutesPerCell);
-    int today = recalculate ? todayColumn() : oldToday;
-    int x = (int)( agenda->gridSpacingX()*today );
-    bool disabled = !(KOPrefs::instance()->mMarcusBainsEnabled);
+  int mins = tim.hour()*60 + tim.minute();
+  int minutesPerCell = 24 * 60 / agenda->rows();
+  int y = (int)(mins*agenda->gridSpacingY()/minutesPerCell);
+  int today = recalculate ? todayColumn() : oldToday;
+  int x = (int)( agenda->gridSpacingX()*today );
+  bool disabled = !(KOPrefs::instance()->mMarcusBainsEnabled);
 
-    oldTime = tim;
-    oldToday = today;
+  oldTime = tim;
+  oldToday = today;
 
-    if(disabled || (today<0)) {
-        hide(); mTimeBox->hide();
-        return;
-    } else {
-        show(); mTimeBox->show();
-    }
+  if(disabled || (today<0)) {
+    hide(); mTimeBox->hide();
+    return;
+  } else {
+    show(); mTimeBox->show();
+  }
 
-    if(recalculate)
-        setFixedSize((int)(agenda->gridSpacingX()),1);
-    agenda->moveChild(this, x, y);
-    raise();
+  if(recalculate)
+    setFixedSize((int)(agenda->gridSpacingX()),1);
+  agenda->moveChild(this, x, y);
+  raise();
 
-    if(recalculate)
-        mTimeBox->setFont(KOPrefs::instance()->mMarcusBainsFont);
+  if(recalculate)
+    mTimeBox->setFont(KOPrefs::instance()->mMarcusBainsFont);
 
-    mTimeBox->setText(KGlobal::locale()->formatTime(tim, KOPrefs::instance()->mMarcusBainsShowSeconds));
-    mTimeBox->adjustSize();
-    // the -2 below is there because there is a bug in this program
-    // somewhere, where the last column of this widget is a few pixels
-    // narrower than the other columns.
-//    int offs = (today==agenda->columns()-1) ? -4 : 0;
-      // This is a general problem: The width as well as the height is calculated 2 pixels too large (or the other way round, the cell size is calculated without taking 2-pixel margins of the agenda into account)...
-int offs = 0;
+  mTimeBox->setText(KGlobal::locale()->formatTime(tim, KOPrefs::instance()->mMarcusBainsShowSeconds));
+  mTimeBox->adjustSize();
+  // the -2 below is there because there is a bug in this program
+  // somewhere, where the last column of this widget is a few pixels
+  // narrower than the other columns.
+  int offs = (today==agenda->columns()-1) ? -4 : 0;
+  // This is a general problem: The width as well as the height is calculated
+  // 2 pixels too large (or the other way round, the cell size is calculated
+  // without taking 2-pixel margins of the agenda into account)...
 // TODO_RK:
-    agenda->moveChild(mTimeBox,
-                      (int)(x+agenda->gridSpacingX()-mTimeBox->width()+offs),
-                      y-mTimeBox->height());
-    mTimeBox->raise();
-    mTimeBox->setAutoMask(true);
+  agenda->moveChild(mTimeBox,
+                    (int)(x+agenda->gridSpacingX()-mTimeBox->width()+offs),
+                    y-mTimeBox->height());
+  mTimeBox->raise();
+  mTimeBox->setAutoMask(true);
 
-    minutes->start(1000,true);
+  minutes->start(1000,true);
 }
 
 

@@ -45,7 +45,7 @@ namespace KCal {
 }
 
 class KOrganizerPart: public KParts::ReadOnlyPart,
-		      public KOrg::MainWindow
+                      public KOrg::MainWindow
 {
     Q_OBJECT
   public:

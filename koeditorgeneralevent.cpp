@@ -134,15 +134,15 @@ void KOEditorGeneralEvent::initTime(QWidget *parent,QBoxLayout *topLayout)
 
   // time widgets are checked if they contain a valid time
   connect(mStartTimeEdit, SIGNAL(timeChanged(QTime)),
-	  this, SLOT(startTimeChanged(QTime)));
+          this, SLOT(startTimeChanged(QTime)));
   connect(mEndTimeEdit, SIGNAL(timeChanged(QTime)),
-	  this, SLOT(endTimeChanged(QTime)));
+          this, SLOT(endTimeChanged(QTime)));
 
   // date widgets are checked if they contain a valid date
   connect(mStartDateEdit, SIGNAL(dateChanged(QDate)),
-	  this, SLOT(startDateChanged(QDate)));
+          this, SLOT(startDateChanged(QDate)));
   connect(mEndDateEdit, SIGNAL(dateChanged(QDate)),
-	  this, SLOT(endDateChanged(QDate)));
+          this, SLOT(endDateChanged(QDate)));
 }
 
 void KOEditorGeneralEvent::initClass(QWidget *parent,QBoxLayout *topLayout)
@@ -328,8 +328,8 @@ void KOEditorGeneralEvent::writeEvent(Event *event)
   } // check for float
 
   event->setTransparency(mFreeTimeCombo->currentItem() > 0
-			 ? KCal::Event::Transparent
-			 : KCal::Event::Opaque);
+                         ? KCal::Event::Transparent
+                         : KCal::Event::Opaque);
 
 //  kdDebug(5850) << "KOEditorGeneralEvent::writeEvent() done" << endl;
 }

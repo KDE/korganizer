@@ -325,7 +325,7 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     /** pop up a dialog to show an existing appointment. */
     void appointment_show();
     /**
-     * pop up an Appointment Dialog to edit an existing appointment.	Get
+     * pop up an Appointment Dialog to edit an existing appointment. Get
      * information on the appointment from the list of unique IDs that is
      * currently in the View, called currIds.
      */
@@ -476,7 +476,7 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     QPtrList<CalFilter> mFilters;
 
     // various housekeeping variables.
-    bool            mModified;	   // flag indicating if calendar is modified
+    bool            mModified; // flag indicating if calendar is modified
     bool            mReadOnly; // flag indicating if calendar is read-only
     QDate mSaveSingleDate;
 

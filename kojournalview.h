@@ -29,7 +29,7 @@ class JournalEntry;
 
 /**
  * This class provides a journal view.
- 
+
  * @short View for Journal components.
  * @author Cornelius Schumacher <schumacher@kde.org>
  * @see KOBaseView
@@ -38,8 +38,8 @@ class KOJournalView : public KOrg::BaseView
 {
     Q_OBJECT
   public:
-    KOJournalView( Calendar *calendar, QWidget *parent = 0, 
-	           const char *name = 0);
+    KOJournalView( Calendar *calendar, QWidget *parent = 0,
+                   const char *name = 0);
     ~KOJournalView();
 
     virtual int currentDateCount();
@@ -49,12 +49,12 @@ class KOJournalView : public KOrg::BaseView
   public slots:
     void updateView();
     void flushView();
-  
+
     void showDates( const QDate &start, const QDate &end );
     void showEvents( const Event::List & );
 
     void changeEventDisplay( Event *, int );
-  
+
   private:
     JournalEntry *mEntry;
 };

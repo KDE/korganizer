@@ -19,7 +19,7 @@
 */
 #ifndef KORGANIZERIFACE_H
 #define KORGANIZERIFACE_H
- 
+
 #include <dcopobject.h>
 #include <kurl.h>
 
@@ -36,7 +36,7 @@ class KOrganizerIface : virtual public DCOPObject
     virtual bool deleteEvent(QString uid) = 0;
 
     virtual bool eventRequest(QString request, QCString receiver,
-			      QString ical) = 0;
+                              QString ical) = 0;
 };
 
 #endif

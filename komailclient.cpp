@@ -174,10 +174,10 @@ bool KOMailClient::send(const QString &from,const QString &to,
     pclose(fd);
   } else {
     if (!kapp->dcopClient()->isApplicationRegistered("kmail")) {
-			if (KApplication::startServiceByDesktopName("kmail")) {
+                        if (KApplication::startServiceByDesktopName("kmail")) {
         KMessageBox::error(0,i18n("No running instance of KMail found."));
         return false;
-			}
+                        }
     }
 
     if (attachment.isEmpty()) {
@@ -188,7 +188,7 @@ bool KOMailClient::send(const QString &from,const QString &to,
       if (idx>=0) {
         idx = attachment.find(':',idx)+1;
         meth = attachment.mid(idx,attachment.find('\n',idx)-idx);
-	meth = meth.lower();
+        meth = meth.lower();
       } else {
         meth = "publish";
       }
@@ -257,12 +257,12 @@ int KOMailClient::kMailOpenComposer( const QString& arg0, const QString& arg1,
     arg << arg12;
     arg << arg13;
     if ( kapp->dcopClient()->call("kmail","KMailIface","openComposer(QString,QString,QString,QString,QString,int,QString,QCString,QCString,QCString,QCString,QCString,QString,QCString)", data, replyType, replyData ) ) {
-	if ( replyType == "int" ) {
-	    QDataStream _reply_stream( replyData, IO_ReadOnly );
-	    _reply_stream >> result;
-	} else {
+        if ( replyType == "int" ) {
+            QDataStream _reply_stream( replyData, IO_ReadOnly );
+            _reply_stream >> result;
+        } else {
             kdDebug(5850) << "kMailOpenComposer() call failed." << endl;
-	}
+        }
     } else {
         kdDebug(5850) << "kMailOpenComposer() call failed." << endl;
     }

@@ -13,7 +13,7 @@
 
   This program is distributed in the hope that it will be useful,
   but WITHOUT ANY WARRANTY; without even the implied warranty of
-  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.	See the
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.        See the
   GNU General Public License for more details.
 
   You should have received a copy of the GNU General Public License
@@ -97,8 +97,8 @@ KOGroupware::KOGroupware( CalendarView* view, KCal::Calendar* calendar )
 */
 
 bool KOGroupware::incomingEventRequest( const QString& request,
-					const QCString& receiver,
-					const QString& vCalIn )
+                                        const QCString& receiver,
+                                        const QString& vCalIn )
 {
   EventState state;
   if( request == "accept" )
@@ -115,17 +115,17 @@ bool KOGroupware::incomingEventRequest( const QString& request,
   // Parse the event request into a ScheduleMessage; this needs to
   // be done in any case.
   KCal::ScheduleMessage *message = mFormat.parseScheduleMessage( mCalendar,
-								 vCalIn );
+                                                                 vCalIn );
   if( message ) {
     kdDebug(5850) << "KOGroupware::incomingEventRequest: got message '"
-		  << vCalIn << "'" << endl;
+                  << vCalIn << "'" << endl;
   } else {
     QString errorMessage;
     if( mFormat.exception() ) {
       errorMessage = mFormat.exception()->message();
     }
     kdDebug(5850) << "KOGroupware::incomingEventRequest() Error parsing "
-		  << "message: " << errorMessage << endl;
+                  << "message: " << errorMessage << endl;
     // If the message was broken, there's nothing we can do.
     return false;
   }
@@ -167,8 +167,8 @@ bool KOGroupware::incomingEventRequest( const QString& request,
   if( state == Accepted || state == ConditionallyAccepted ) {
     KCal::MailScheduler scheduler( mCalendar );
     scheduler.acceptTransaction( event,
-				 (KCal::Scheduler::Method)message->method(),
-				 message->status() );
+                                 (KCal::Scheduler::Method)message->method(),
+                                 message->status() );
     mView->updateView();
   }
 
@@ -216,13 +216,13 @@ bool KOGroupware::incomingEventRequest( const QString& request,
     event->updated();
 
     newMyself = new KCal::Attendee( myself->name(),
-				    receiver.isEmpty() ?
-				    myself->email() :
-				    receiver,
-				    myself->RSVP(),
-				    myself->status(),
-				    myself->role(),
-				    myself->uid() );
+                                    receiver.isEmpty() ?
+                                    myself->email() :
+                                    receiver,
+                                    myself->RSVP(),
+                                    myself->status(),
+                                    myself->role(),
+                                    myself->uid() );
   }
 
   event->updated();
@@ -244,7 +244,7 @@ bool KOGroupware::incomingEventRequest( const QString& request,
 
   // Create the outgoing vCal
   QString messageText = mFormat.createScheduleMessage( newEvent,
-						       KCal::Scheduler::Reply );
+                                                       KCal::Scheduler::Reply );
   kdDebug(5850) << "Done" << endl;
   return true;
 }
@@ -354,7 +354,7 @@ void KOGroupware::incomingResourceRequest( const QValueList<QPair<QDateTime, QDa
 */
 
 bool KOGroupware::incidenceAnswer( const QCString& sender, const QString& vCalIn,
-				   QString& vCalOut )
+                                   QString& vCalOut )
 {
   vCalOut = "";
 
@@ -364,7 +364,7 @@ bool KOGroupware::incidenceAnswer( const QCString& sender, const QString& vCalIn
   if( !message ) {
     // a parse error of some sort
     KMessageBox::error( mView, i18n("<b>There was a problem parsing the iCal data:</b><br>%1")
-			.arg(mFormat.exception()->message()) );
+                        .arg(mFormat.exception()->message()) );
     vCalOut = "false";
     return false;
   }
@@ -380,7 +380,7 @@ bool KOGroupware::incidenceAnswer( const QCString& sender, const QString& vCalIn
 #if 0
   // TODO: Make this work
   if( !scheduler.acceptTransaction( incidence, (KCal::Scheduler::Method)message->method(),
-				    message->status(), sender ) ) {
+                                    message->status(), sender ) ) {
     KMessageBox::error( mView, i18n("Scheduling failed") );
     vCalOut = "false";
     return false;
@@ -410,8 +410,8 @@ QString KOGroupware::getFreeBusyString()
   freebusy.setOrganizer( KOPrefs::instance()->email() );
 
 //   kdDebug(5850) << "KOGroupware::publishFreeBusy(): startDate: "
-// 		<< KGlobal::locale()->formatDateTime( start ) << " End Date: "
-// 		<< KGlobal::locale()->formatDateTime( end ) << endl;
+//                 << KGlobal::locale()->formatDateTime( start ) << " End Date: "
+//                 << KGlobal::locale()->formatDateTime( end ) << endl;
 
   return mFormat.createScheduleMessage( &freebusy, Scheduler::Publish );
 }
@@ -432,14 +432,14 @@ void KOGroupware::publishFreeBusy()
   QString messageText = getFreeBusyString();
 
 //   kdDebug(5850) << "KOGroupware::publishFreeBusy(): message = " << messageText
-// 		<< endl;
+//                 << endl;
 
   // We need to massage the list a bit so that Outlook understands
   // it.
   messageText = messageText.replace( QRegExp( "ORGANIZER\\s*:MAILTO:" ), "ORGANIZER:" );
 
 //   kdDebug(5850) << "KOGroupware::publishFreeBusy(): message after massaging = " << messageText
-// 		<< endl;
+//                 << endl;
 
   QString emailHost = KOPrefs::instance()->email().mid( KOPrefs::instance()->email().find( '@' ) + 1 );
 
@@ -457,10 +457,10 @@ void KOGroupware::publishFreeBusy()
       // we use Kolab
       QString server;
       if( KOPrefs::instance()->mPublishKolabServer == "%SERVER%" ||
-	  KOPrefs::instance()->mPublishKolabServer.isEmpty() )
-	server = emailHost;
+          KOPrefs::instance()->mPublishKolabServer.isEmpty() )
+        server = emailHost;
       else
-	server = KOPrefs::instance()->mPublishKolabServer;
+        server = KOPrefs::instance()->mPublishKolabServer;
 
       targetURL.setProtocol( "webdavs" );
       targetURL.setHost( server );
@@ -476,7 +476,7 @@ void KOGroupware::publishFreeBusy()
 
     if( !KIO::NetAccess::upload( tempFile.name(), targetURL ) ) {
       KMessageBox::sorry( 0,
-			  i18n( "<qt>The software could not upload your free/busy list to the URL %1. There might be a problem with the access rights, or you specified an incorrect URL. The system said: <em>%2</em>.<br>Please check the URL or contact your system administrator.</qt>" ).arg( targetURL.url() ).arg( KIO::NetAccess::lastErrorString() ) );
+                          i18n( "<qt>The software could not upload your free/busy list to the URL %1. There might be a problem with the access rights, or you specified an incorrect URL. The system said: <em>%2</em>.<br>Please check the URL or contact your system administrator.</qt>" ).arg( targetURL.url() ).arg( KIO::NetAccess::lastErrorString() ) );
     }
   }
 }
@@ -487,9 +487,9 @@ FBDownloadJob::FBDownloadJob( const QString& email, const KURL& url, KOGroupware
 {
   KIO::Job* job = KIO::get( url, false, false );
   connect( job, SIGNAL( result( KIO::Job* ) ),
-	   this, SLOT( slotResult( KIO::Job* ) ) );
+           this, SLOT( slotResult( KIO::Job* ) ) );
   connect( job, SIGNAL( data( KIO::Job*, const QByteArray& ) ),
-	   this, SLOT( slotData( KIO::Job*, const QByteArray& ) ) );
+           this, SLOT( slotData( KIO::Job*, const QByteArray& ) ) );
 }
 
 FBDownloadJob::~FBDownloadJob()
@@ -539,7 +539,7 @@ bool KOGroupware::downloadFreeBusyData( const QString& email, QObject* receiver,
     // we use Kolab
     QString server;
     if( KOPrefs::instance()->mRetrieveKolabServer == "%SERVER%" ||
-	KOPrefs::instance()->mRetrieveKolabServer.isEmpty() )
+        KOPrefs::instance()->mRetrieveKolabServer.isEmpty() )
       server = emailHost;
     else
       server = KOPrefs::instance()->mRetrieveKolabServer;
@@ -549,7 +549,7 @@ bool KOGroupware::downloadFreeBusyData( const QString& email, QObject* receiver,
     sourceURL.setPass( KOPrefs::instance()->mRetrievePassword );
     sourceURL.setUser( KOPrefs::instance()->mRetrieveUserName );
     sourceURL.setPath( QString::fromLatin1( "/freebusy/" ) + emailName +
-		       QString::fromLatin1( ".vfb" ) );
+                       QString::fromLatin1( ".vfb" ) );
   } else {
     // we use something else
     QString anyurl = KOPrefs::instance()->mRetrieveAnyURL;
@@ -560,7 +560,7 @@ bool KOGroupware::downloadFreeBusyData( const QString& email, QObject* receiver,
 
   FBDownloadJob* job = new FBDownloadJob( email, sourceURL, this, "fb_download_job" );
   connect( job, SIGNAL( fbDownloaded( const QString&, FreeBusy*) ),
-	   receiver, member );
+           receiver, member );
 
   return true;
 }
@@ -571,7 +571,7 @@ KCal::FreeBusy* KOGroupware::parseFreeBusy( const QCString& data )
   KCal::FreeBusy* fb = 0;
   QString freeBusyVCal = QString::fromUtf8(data);
   KCal::ScheduleMessage *message = mFormat.parseScheduleMessage( mCalendar,
-								 freeBusyVCal );
+                                                                 freeBusyVCal );
   if( message ) {
     KCal::IncidenceBase* event = message->event();
     Q_ASSERT( event );
@@ -584,8 +584,8 @@ KCal::FreeBusy* KOGroupware::parseFreeBusy( const QCString& data )
       // code from Scheduler.
       KCal::MailScheduler scheduler( mCalendar );
       scheduler.acceptTransaction( event,
-				   (KCal::Scheduler::Method)message->method(),
-				   message->status() );
+                                   (KCal::Scheduler::Method)message->method(),
+                                   message->status() );
       fb = dynamic_cast<KCal::FreeBusy*>( event );
       Q_ASSERT( fb );
     }
@@ -601,8 +601,8 @@ KCal::FreeBusy* KOGroupware::parseFreeBusy( const QCString& data )
  * Return false means revert the changes
  */
 bool KOGroupware::sendICalMessage( QWidget* parent,
-				   KCal::Scheduler::Method method,
-				   Incidence* incidence, bool isDeleting )
+                                   KCal::Scheduler::Method method,
+                                   Incidence* incidence, bool isDeleting )
 {
   bool isOrganizer = KOPrefs::instance()->email() == incidence->organizer();
 
@@ -615,8 +615,8 @@ bool KOGroupware::sendICalMessage( QWidget* parent,
     for ( it = attendees.begin(); it != attendees.end(); ++it ) {
       // Don't send email to ourselves
       if( (*it)->email() != KOPrefs::instance()->email() ) {
-	otherPeople = true;
-	break;
+        otherPeople = true;
+        break;
       }
     }
     if( !otherPeople )
@@ -629,7 +629,7 @@ bool KOGroupware::sendICalMessage( QWidget* parent,
     else if( incidence->type() == "Journal" ) type = i18n("journal entry");
     else type = incidence->type();
     QString txt = i18n("This %1 includes other people. "
-		       "Should email be sent out to the attendees?").arg(type);
+                       "Should email be sent out to the attendees?").arg(type);
     rc = KMessageBox::questionYesNoCancel( parent, txt, i18n("Group scheduling email") );
   } else if( incidence->type() == "Todo" ) {
     if( method == Scheduler::Request )
@@ -645,12 +645,12 @@ bool KOGroupware::sendICalMessage( QWidget* parent,
     QString txt;
     if( isDeleting )
       txt = i18n("You are not the organizer of this event. "
-		 "Deleting it will bring your calendar out of sync "
-		 "with the organizers calendar. Do you really want to delete it?");
+                 "Deleting it will bring your calendar out of sync "
+                 "with the organizers calendar. Do you really want to delete it?");
     else
       txt = i18n("You are not the organizer of this event. "
-		 "Editing it will bring your calendar out of sync "
-		 "with the organizers calendar. Do you really want to edit it?");
+                 "Editing it will bring your calendar out of sync "
+                 "with the organizers calendar. Do you really want to edit it?");
     rc = KMessageBox::questionYesNo( parent, txt );
     return ( rc == KMessageBox::Yes );
   } else {

@@ -24,7 +24,7 @@ Parsha::~Parsha()
 
 QString
   Parsha::FindParshaName(int daynumber, int kvia, bool leap_p,
-			 bool israel_p)
+                         bool israel_p)
 {
 // The names of the Parshiot.
   parshiot_names <<
@@ -84,7 +84,7 @@ QString
     46, 47, 48, 49, 150,
   };
 
-  static unsigned const char Mon_long[] =	/* split */
+  static unsigned const char Mon_long[] =        /* split */
   { 51, 52, XX, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11,
     12, 13, 14, 15, 16, 17, 18, 19, 20, 121, 23, 24, XX, 25, 126,
     128, 30, 131, 33, XX, 34, 35, 36, 37, 138, 40, 141, 43, 44, 45,
@@ -179,7 +179,7 @@ QString
  * kvia and leap_p refer to the year type.
  */
 
-  int week = daynumber / 7;	// week of the year
+  int week = daynumber / 7;        // week of the year
   unsigned const char *array = NULL;
   int index;
 
@@ -188,86 +188,86 @@ QString
   // at daynumber %7.
   if (!leap_p)
       {
-	switch (daynumber % 7)
-	    {
-	    case 1:		/* RH was on a Saturday */
-	      if (kvia == 0)
-		array = Sat_short;
-	      else if (kvia == 2)
-		array = Sat_long;
-	      break;
-	    case 6:		/* RH was on a Monday */
-	      if (kvia == 0)
-		array = Mon_short;
-	      else if (kvia == 2)
-		array = israel_p ? Mon_long_Israel : Mon_long;
-	      break;
-	    case 5:		/* RH was on a Tueday */
-	      if (kvia == 1)
-		array = israel_p ? Tue_normal_Israel : Tue_normal;
-	      break;
-	    case 3:		/* RH was on a Thu */
-	      if (kvia == 1)
-		array = israel_p ? Thu_normal_Israel : Thu_normal;
-	      else if (kvia == 2)
-		array = Thu_long;
-	      break;
-	    }
+        switch (daynumber % 7)
+            {
+            case 1:                /* RH was on a Saturday */
+              if (kvia == 0)
+                array = Sat_short;
+              else if (kvia == 2)
+                array = Sat_long;
+              break;
+            case 6:                /* RH was on a Monday */
+              if (kvia == 0)
+                array = Mon_short;
+              else if (kvia == 2)
+                array = israel_p ? Mon_long_Israel : Mon_long;
+              break;
+            case 5:                /* RH was on a Tueday */
+              if (kvia == 1)
+                array = israel_p ? Tue_normal_Israel : Tue_normal;
+              break;
+            case 3:                /* RH was on a Thu */
+              if (kvia == 1)
+                array = israel_p ? Thu_normal_Israel : Thu_normal;
+              else if (kvia == 2)
+                array = Thu_long;
+              break;
+            }
       }
-  else				/* leap year */
+  else                                /* leap year */
     switch (daynumber % 7)
-	{
-	case 1:		/* RH was on a Sat */
-	  if (kvia == 0)
-	    array = Sat_short_leap;
-	  else if (kvia == 2)
-	    array = israel_p ? Sat_long_leap_Israel : Sat_long_leap;
-	  break;
-	case 6:		/* RH was on a Mon */
-	  if (kvia == 0)
-	    array = israel_p ? Mon_short_leap_Israel : Mon_short_leap;
-	  else if (kvia == 2)
-	    array = israel_p ? Mon_long_leap_Israel : Mon_long_leap;
-	  break;
-	case 5:		/* RH was on a Tue */
-	  if (kvia == 1)
-	    array =
-	      israel_p ? Tue_normal_leap_Israel : Tue_normal_leap;
-	  break;
-	case 3:		/* RH was on a Thu */
-	  if (kvia == 0)
-	    array = Thu_short_leap;
-	  else if (kvia == 2)
-	    array = Thu_long_leap;
-	  break;
+        {
+        case 1:                /* RH was on a Sat */
+          if (kvia == 0)
+            array = Sat_short_leap;
+          else if (kvia == 2)
+            array = israel_p ? Sat_long_leap_Israel : Sat_long_leap;
+          break;
+        case 6:                /* RH was on a Mon */
+          if (kvia == 0)
+            array = israel_p ? Mon_short_leap_Israel : Mon_short_leap;
+          else if (kvia == 2)
+            array = israel_p ? Mon_long_leap_Israel : Mon_long_leap;
+          break;
+        case 5:                /* RH was on a Tue */
+          if (kvia == 1)
+            array =
+              israel_p ? Tue_normal_leap_Israel : Tue_normal_leap;
+          break;
+        case 3:                /* RH was on a Thu */
+          if (kvia == 0)
+            array = Thu_short_leap;
+          else if (kvia == 2)
+            array = Thu_long_leap;
+          break;
 
-	}
+        }
 
   QString buffer;
 
   if (array == NULL)
     /* Something is terribly wrong. */
       {
-	buffer = "??Parsha??";
-	return buffer;
+        buffer = "??Parsha??";
+        return buffer;
       }
   index = array[week];
-  if (index == XX)		// no Parsha this week.
+  if (index == XX)                // no Parsha this week.
       {
-	buffer = "";
-	return buffer;
+        buffer = "";
+        return buffer;
       }
   else if (index < 100)
       {
-	buffer = parshiot_names[index];
-	return buffer;
+        buffer = parshiot_names[index];
+        return buffer;
       }
   else
-      {				// Create a double parsha
-	buffer =
-	  parshiot_names[index - 100] + "-" + parshiot_names[index -
-							     99];
-	return buffer;
+      {                                // Create a double parsha
+        buffer =
+          parshiot_names[index - 100] + "-" + parshiot_names[index -
+                                                             99];
+        return buffer;
 
       }
 }

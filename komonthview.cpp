@@ -196,8 +196,8 @@ void MonthViewItem::paint(QPainter *p)
   bool sel = selected();
 #endif
 
-  QColor bgColor = palette().color( QPalette::Normal,  \
-	    sel ? QColorGroup::Highlight : QColorGroup::Background );
+  QColor bgColor = palette().color( QPalette::Normal,
+            sel ? QColorGroup::Highlight : QColorGroup::Background );
   if (KOPrefs::instance()->monthViewUsesCategoryColor())
   {
     p->setBackgroundColor( bgColor );
@@ -225,7 +225,7 @@ void MonthViewItem::paint(QPainter *p)
   else
     yPos = pmheight/2 - fm.height()/2  + fm.ascent();
   QColor textColor = palette().color( QPalette::Normal, sel ? \
-	  QColorGroup::HighlightedText : QColorGroup::Text );
+          QColorGroup::HighlightedText : QColorGroup::Text );
   p->setPen( textColor );
 
   KWordWrap::drawFadeoutText(p, x, yPos, listBox()->width() - x, text());
@@ -234,7 +234,7 @@ void MonthViewItem::paint(QPainter *p)
 int MonthViewItem::height(const QListBox *lb) const
 {
   return QMAX( QMAX( mRecurPixmap.height(), mReplyPixmap.height() ),
-	       QMAX( mAlarmPixmap.height(), lb->fontMetrics().lineSpacing()+1) );
+               QMAX( mAlarmPixmap.height(), lb->fontMetrics().lineSpacing()+1) );
 }
 
 int MonthViewItem::width(const QListBox *lb) const

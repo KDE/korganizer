@@ -42,7 +42,7 @@ class ResourceViewFactory : public CalendarViewExtension::Factory
   public:
     ResourceViewFactory( KCal::CalendarResourceManager *manager,
                          CalendarView *view );
-    
+
     CalendarViewExtension *create( QWidget * );
 
   private:
@@ -75,7 +75,7 @@ class ResourceView : public CalendarViewExtension
     Q_OBJECT
   public:
     ResourceView( KCal::CalendarResourceManager *manager, QWidget *parent = 0,
-	          const char *name = 0);
+                  const char *name = 0);
     ~ResourceView();
 
     void updateView();

@@ -28,11 +28,11 @@
 
 KOCounterDialog::KOCounterDialog(QWidget *parent,const char *name)
   : KDialogBase(parent,name,false,i18n("Counter-event Viewer"),User1|User2,User1,
-		false,i18n("Decline"),i18n("Accept"))
+                false,i18n("Decline"),i18n("Accept"))
 {
   mEventViewer = new KOEventViewer(this);
   setMainWidget(mEventViewer);
-  
+
   connect(this,SIGNAL(user1Clicked()),this,SLOT(slotCancel()));
   connect(this,SIGNAL(user2Clicked()),this,SLOT(slotOk()));
 

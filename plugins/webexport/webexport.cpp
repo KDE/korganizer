@@ -57,7 +57,7 @@ WebExport::WebExport(KOrg::MainWindow *parent, const char *name) :
 //  setInstance( instance );
 
   setXMLFile("plugins/webexportui.rc");
-	   
+
   parent->addPluginAction( new KAction(i18n("Export Web Page..."), "webexport", 0, this, SLOT(exportWeb()),
                            actionCollection(), "export_web") );
 }

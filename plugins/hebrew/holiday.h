@@ -25,9 +25,9 @@ public:
   ~Holiday();
 
   static QStringList FindHoliday(int month, int day, int weekday,
-				 int kvia, bool leap_year_p,
-				 bool israel_p, int day_number,
-				 int year);
+                                 int kvia, bool leap_year_p,
+                                 bool israel_p, int day_number,
+                                 int year);
 
   static QString Sfirah(int);
 
@@ -38,7 +38,7 @@ public:
 private:
 
   static QStringList holidays;
-  static int HolidayFlags;	//supposed to be extern
+  static int HolidayFlags;        //supposed to be extern
 
 //parsha Parsha_lookup;
 };

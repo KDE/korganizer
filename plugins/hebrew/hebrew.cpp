@@ -54,7 +54,7 @@ QString Hebrew::shortText(const QDate & date)
   config.setGroup("Calendar/Hebrew Calendar Plugin");
   IsraelP =
     config.readBoolEntry("Israel",
-			 (KGlobal::locale()->country() == ".il"));
+                         (KGlobal::locale()->country() == ".il"));
   Holiday::ParshaP = config.readBoolEntry("Parsha", true);
   Holiday::CholP = config.readBoolEntry("Chol_HaMoed", true);
   Holiday::OmerP = config.readBoolEntry("Omer", true);
@@ -68,7 +68,7 @@ QString Hebrew::shortText(const QDate & date)
   struct DateResult result;
 
   Converter::SecularToHebrewConversion(year, month, day, /*0, */
-				       &result);
+                                       &result);
   int hebrew_day = result.day;
   int hebrew_month = result.month;
   int hebrew_year = result.year;
@@ -80,21 +80,21 @@ QString Hebrew::shortText(const QDate & date)
 
   QStringList holidays =
     Holiday::FindHoliday(hebrew_month, hebrew_day,
-			 hebrew_day_of_week + 1, hebrew_kvia,
-			 hebrew_leap_year_p, IsraelP,
-			 hebrew_day_number, hebrew_year);
+                         hebrew_day_of_week + 1, hebrew_kvia,
+                         hebrew_leap_year_p, IsraelP,
+                         hebrew_day_number, hebrew_year);
 
   label_text->setNum(hebrew_day);
   *label_text += " " + hebrew_month_name;
 
   if (holidays.count())
       {
-	int count = holidays.count();
+        int count = holidays.count();
 
-	for (int h = 0; h <= count; h++)
-	    {
-	      *label_text += "\n" + holidays[h];
-	    }
+        for (int h = 0; h <= count; h++)
+            {
+              *label_text += "\n" + holidays[h];
+            }
       }
 
   return *label_text;
@@ -108,7 +108,7 @@ QString Hebrew::info()
 
 void Hebrew::configure(QWidget * parent)
 {
-  ConfigDialog *dlg = new ConfigDialog(parent);	//parent?
+  ConfigDialog *dlg = new ConfigDialog(parent);        //parent?
 
   dlg->exec();
 }

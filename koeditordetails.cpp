@@ -308,11 +308,11 @@ void KOEditorDetails::addNewAttendee()
     name = mNameEdit->text();
     if (addrBook.init() == AddressBook::NoError) {
       if (addrBook.getEntryByName(name, entries, 1) == AddressBook::NoError) {
-	kdDebug(5850) << "positive match" << endl;
-	// take first email address
-	if (!entries.front().emails.isEmpty() &&
-	    entries.front().emails.first().length()>0)
-	  mEmailEdit->setText(entries.front().emails.first());
+        kdDebug(5850) << "positive match" << endl;
+        // take first email address
+        if (!entries.front().emails.isEmpty() &&
+            entries.front().emails.first().length()>0)
+          mEmailEdit->setText(entries.front().emails.first());
       }
     }
   }

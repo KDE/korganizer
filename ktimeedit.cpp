@@ -152,9 +152,9 @@ void KOTimeEdit::activ(int i)
 {
     // The last entry, 23:59, is a special case
     if( i == count() - 1 )
-	mTime = QTime( 23, 59, 0 );
+        mTime = QTime( 23, 59, 0 );
     else
-	mTime = QTime(0,0,0).addSecs(i*15*60);
+        mTime = QTime(0,0,0).addSecs(i*15*60);
     emit timeChanged(mTime);
 }
 

@@ -49,11 +49,11 @@ class SearchDialog : public KDialogBase
     void updateView();
 
   public slots:
-    void changeEventDisplay(Event *, int) { updateView(); } 
-  
+    void changeEventDisplay(Event *, int) { updateView(); }
+
   protected slots:
     void doSearch();
-    void searchTextChanged( const QString &_text );	
+    void searchTextChanged( const QString &_text );
 
   signals:
     void showIncidenceSignal(Incidence *);
@@ -64,16 +64,16 @@ class SearchDialog : public KDialogBase
     void search(const QRegExp &);
 
     Calendar *mCalendar;
-    
+
     Event::List mMatchedEvents;
-    
+
     QLabel *searchLabel;
     QLineEdit *searchEdit;
     KOListView *listView;
-    
+
     KDateEdit *mStartDate;
     KDateEdit *mEndDate;
-    
+
     QCheckBox *mInclusiveCheck;
     QCheckBox *mSummaryCheck;
     QCheckBox *mDescriptionCheck;

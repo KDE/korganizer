@@ -294,7 +294,7 @@ void KOTodoListView::contentsMouseMoveEvent(QMouseEvent* e)
         KURLDrag* ud = KURLDrag::newDrag(KURL::List(url), viewport());
         if ( ud->drag() )
           QMessageBox::information( this, "Drag source",
-				    QString("Delete ")+source, "Not implemented" );
+                                    QString("Delete ")+source, "Not implemented" );
 */
     }
   }

@@ -10,8 +10,8 @@ class KOTimeSpanView : public KOEventView
 {
     Q_OBJECT
   public:
-    KOTimeSpanView( Calendar *calendar, QWidget *parent = 0, 
-	            const char *name = 0 );
+    KOTimeSpanView( Calendar *calendar, QWidget *parent = 0,
+                    const char *name = 0 );
     ~KOTimeSpanView();
 
     virtual int maxDatesHint();

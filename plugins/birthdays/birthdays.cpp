@@ -68,7 +68,7 @@ Birthdays::Birthdays(KOrg::MainWindow *parent, const char *name) :
 
   parent->addPluginAction( new KAction( i18n("Import Birthdays..."), 0, this,
                                         SLOT(importBirthdays()),
-				        actionCollection(),
+                                        actionCollection(),
                                         "import_birthdays") );
   mParent = parent->topLevelWidget();
 }

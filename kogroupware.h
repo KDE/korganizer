@@ -13,7 +13,7 @@
 
   This program is distributed in the hope that it will be useful,
   but WITHOUT ANY WARRANTY; without even the implied warranty of
-  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.	See the
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
   GNU General Public License for more details.
 
   You should have received a copy of the GNU General Public License
@@ -68,12 +68,12 @@ public:
     static KOGroupware* create( CalendarView*, KCal::Calendar* );
     static KOGroupware* instance();
 
-    /** Send iCal messages after asking the user 
-	 Returns false if the user cancels the dialog, and true if the 
-	 user presses Yes og or No.
+    /** Send iCal messages after asking the user
+         Returns false if the user cancels the dialog, and true if the
+         user presses Yes og or No.
     */
     bool sendICalMessage( QWidget* parent, KCal::Scheduler::Method method,
-			  Incidence* incidence, bool isDeleting = false );
+                          Incidence* incidence, bool isDeleting = false );
 
     // THIS IS THE ACTUAL KM/KO API
     enum EventState { Accepted, ConditionallyAccepted, Declined, Request };
@@ -81,8 +81,8 @@ public:
     // Event initiated by somebody else, coming into KO from KM, returning
     // resulting state
     bool incomingEventRequest( const QString& request,
-			       const QCString& receiver,
-			       const QString& vCalIn );
+                               const QCString& receiver,
+                               const QString& vCalIn );
     void incomingResourceRequest( const QValueList<QPair<QDateTime, QDateTime> >& busy,
                                   const QCString& resource,
                                   const QString& vCalIn,
@@ -104,11 +104,11 @@ public:
     QString getFreeBusyString();
 
     /** KOrganizer downloads somebody else's free/busy list
-	The call is asynchronous, and upon download, the
-	receivers slot specified by member will be called.
-	The slot should be of type "member(const QString&, KCal::FreeBusy*)"
+        The call is asynchronous, and upon download, the
+        receivers slot specified by member will be called.
+        The slot should be of type "member(const QString&, KCal::FreeBusy*)"
 
-	Return true if a download is initiated, and false otherwise
+        Return true if a download is initiated, and false otherwise
     */
   /*KCal::FreeBusy**/ bool downloadFreeBusyData( const QString& email, QObject* receiver, const char* member );
     KCal::FreeBusy* parseFreeBusy( const QCString& data );

@@ -269,7 +269,7 @@ void ExportWebDialog::exportWebPage(bool synchronous)
       tf.close();
       mExport->save(tfile);
       if (!KIO::NetAccess::upload (tfile, dest)) {
-	KNotifyClient::event ("Could not upload file.");
+        KNotifyClient::event ("Could not upload file.");
       }
       tf.unlink();
     } else {
@@ -279,7 +279,7 @@ void ExportWebDialog::exportWebPage(bool synchronous)
     mDataAvailable = true;
     KIO::TransferJob *job = KIO::put(dest,-1,true,false);
     connect(job,SIGNAL(dataReq(KIO::Job *,QByteArray &)),
-	    SLOT(slotDataReq(KIO::Job *,QByteArray &)));
+            SLOT(slotDataReq(KIO::Job *,QByteArray &)));
     connect(job,SIGNAL(result(KIO::Job *)),SLOT(slotResult(KIO::Job *)));
   }
 }

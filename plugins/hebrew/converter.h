@@ -45,9 +45,9 @@ public:
   static long absolute_from_hebrew(int year, int month, int day);
 
   static void gregorian_from_absolute(long date, int *yearp,
-				      int *monthp, int *dayp);
+                                      int *monthp, int *dayp);
   static void hebrew_from_absolute(long date, int *yearp, int *monthp,
-				   int *dayp);
+                                   int *dayp);
 
   static int hebrew_months_in_year(int year);
   static int hebrew_month_length(int year, int month);
@@ -58,13 +58,13 @@ public:
   static int hebrew_year_length(int year);
 
   static void finish_up(long absolute, int hyear, int hmonth,
-			int syear, int smonth,
-			struct DateResult *result);
+                        int syear, int smonth,
+                        struct DateResult *result);
 
   static void SecularToHebrewConversion(int year, int month, int day,
-					struct DateResult *result);
+                                        struct DateResult *result);
   static void HebrewToSecularConversion(int year, int month, int day,
-					struct DateResult *result);
+                                        struct DateResult *result);
 
 private:
 

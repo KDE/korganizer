@@ -10,7 +10,7 @@
 
   This program is distributed in the hope that it will be useful,
   but WITHOUT ANY WARRANTY; without even the implied warranty of
-  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.	See the
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
   GNU General Public License for more details.
 
   You should have received a copy of the GNU General Public License
@@ -58,12 +58,12 @@ class KODialogManager : public QObject
 
     /** Get an editor dialog for an Event. */
     KOEventEditor *getEventEditor();
-    
+
     /** Get an editor dialog for a Todo. */
     KOTodoEditor *getTodoEditor();
 
     OutgoingDialog *outgoingDialog();
-    
+
     IncomingDialog *incomingDialog();
 
     void updateSearchDialog();
@@ -86,7 +86,7 @@ class KODialogManager : public QObject
     void createIncomingDialog();
 
     CalendarView *mMainView;
-    
+
     OutgoingDialog *mOutgoingDialog;
     IncomingDialog *mIncomingDialog;
     KCMultiDialog *mOptionsDialog;

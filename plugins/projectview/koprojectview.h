@@ -46,19 +46,19 @@ class QListView;
 */
 class KOProjectViewItem : public KGanttItem {
   public:
-    KOProjectViewItem(Todo *,KGanttItem* parentTask, const QString& text, 
-	              const QDateTime& start, const QDateTime& end);
+    KOProjectViewItem(Todo *,KGanttItem* parentTask, const QString& text,
+                      const QDateTime& start, const QDateTime& end);
     ~KOProjectViewItem();
-    
+
     Todo *event();
-    
+
   private:
     Todo *mEvent;
 };
 
 
 /**
- * This class provides a Gantt-like project view on todo items 
+ * This class provides a Gantt-like project view on todo items
  *
  * @short project view on todo items.
  * @author Cornelius Schumacher <schumacher@kde.org>
@@ -84,7 +84,7 @@ class KOProjectView : public KOrg::BaseView
     void updateConfig();
 
     void changeEventDisplay(Event *, int);
-  
+
     void showDates(const QDate &start, const QDate &end);
     void showEvents( const Event::List & );
 
@@ -100,13 +100,13 @@ class KOProjectView : public KOrg::BaseView
     void purgeCompleted();
     void itemClicked(QListViewItem *);
 */
-    
+
   protected slots:
-    void showModeMenu();  
+    void showModeMenu();
     void zoomIn();
     void zoomOut();
     void taskChanged(KGanttItem *task,KGanttItem::Change change);
-  
+
   signals:
     void newTodoSignal();
     void newSubTodoSignal(Todo *);
@@ -117,7 +117,7 @@ class KOProjectView : public KOrg::BaseView
   private:
     void createMainTask();
     KGanttItem *createTask(KGanttItem *,Todo *);
-  
+
     KGantt *mGantt;
     KGanttItem *mMainTask;
 

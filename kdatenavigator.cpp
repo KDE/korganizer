@@ -170,7 +170,7 @@ void KDateNavigator::passedMidnight()
        if (updateRollover==FollowMonth &&
            daymatrix->isEndOfMonth()) {
          goNextMonth();
-	 emitMonth=true;
+         emitMonth=true;
        }
     }
     daymatrix->recalculateToday();
@@ -195,7 +195,7 @@ void KDateNavigator::passedMidnight()
     int msecsWait = QMIN(480000,now.msecsTo(midnight)+2000);
 
     // qDebug(QString("Waiting %1 msec from %2 to %3.").arg(msecsWait)
-    //	.arg(now.toString()).arg(midnight.toString()));
+    //        .arg(now.toString()).arg(midnight.toString()));
 
     updateTimer->stop();
     updateTimer->start(msecsWait,true);

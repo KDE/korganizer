@@ -27,7 +27,7 @@
 #include <ksimpleconfig.h>
 
 ConfigDialog::ConfigDialog(QWidget * parent):KDialogBase(Plain, i18n("Configure Holidays"), Ok, Ok,
-	    parent)
+            parent)
 {
   QFrame *topFrame = plainPage();
   QVBoxLayout *topLayout =
@@ -62,9 +62,9 @@ void ConfigDialog::load()
 
   config.setGroup("Calendar/Hebrew Calendar Plugin");
   israel_box->setChecked(config.
-			 readBoolEntry("Israel",
-				       (KGlobal::locale()->
-					country() == ".il")));
+                         readBoolEntry("Israel",
+                                       (KGlobal::locale()->
+                                        country() == ".il")));
   parsha_box->setChecked(config.readBoolEntry("Parsha", true));
   chol_box->setChecked(config.readBoolEntry("Chol_HaMoed", true));
   omer_box->setChecked(config.readBoolEntry("Omer", true));

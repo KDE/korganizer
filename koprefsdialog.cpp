@@ -189,10 +189,10 @@ class KOPrefsDialogTime : public KPrefsModule
       : KPrefsModule( KOPrefs::instance(), parent, name )
     {
       QBoxLayout *topTopLayout = new QVBoxLayout( this );
-    
+
       QWidget *topFrame = new QWidget( this );
       topTopLayout->addWidget( topFrame );
-      
+
       QGridLayout *topLayout = new QGridLayout(topFrame,5,2);
       topLayout->setSpacing( KDialog::spacingHint() );
 
@@ -331,12 +331,12 @@ class KOPrefsDialogTime : public KPrefsModule
                  KOPrefs::instance()->mExcludeSaturdays,workingHoursGroup);
 
       KPrefsWidBool *marcusBainsShowSeconds = addWidBool(i18n("Show seconds on Marcus Bains line"),
-	         KOPrefs::instance()->mMarcusBainsShowSeconds,
-	         topFrame);
+                 KOPrefs::instance()->mMarcusBainsShowSeconds,
+                 topFrame);
       topLayout->addWidget(marcusBainsShowSeconds->checkBox(),5,0);
 
       topLayout->setRowStretch(6,1);
-    
+
       load();
     }
 
@@ -407,10 +407,10 @@ class KOPrefsDialogViews : public KPrefsModule
       : KPrefsModule( KOPrefs::instance(), parent, name )
     {
       QBoxLayout *topTopLayout = new QVBoxLayout( this );
-    
+
       QWidget *topFrame = new QWidget( this );
       topTopLayout->addWidget( topFrame );
-    
+
       QGridLayout *topLayout = new QGridLayout(topFrame,13,2);
       topLayout->setSpacing( KDialog::spacingHint() );
 
@@ -483,14 +483,14 @@ class KOPrefsDialogViews : public KPrefsModule
 
       load();
     }
-  
+
   protected:
     void usrReadConfig()
     {
       mHourSizeSlider->setValue(KOPrefs::instance()->mHourSize);
       mNextXDaysSpin->setValue(KOPrefs::instance()->mNextXDays);
     }
-    
+
     void usrWriteConfig()
     {
       KOPrefs::instance()->mHourSize = mHourSizeSlider->value();
@@ -518,10 +518,10 @@ class KOPrefsDialogFonts : public KPrefsModule
       : KPrefsModule( KOPrefs::instance(), parent, name )
     {
       QBoxLayout *topTopLayout = new QVBoxLayout( this );
-    
+
       QWidget *topFrame = new QWidget( this );
       topTopLayout->addWidget( topFrame );
-    
+
       QGridLayout *topLayout = new QGridLayout(topFrame,5,3);
       topLayout->setSpacing( KDialog::spacingHint() );
 
@@ -555,7 +555,7 @@ class KOPrefsDialogFonts : public KPrefsModule
 
       topLayout->setColStretch(1,1);
       topLayout->setRowStretch(4,1);
-    
+
       load();
     }
 };
@@ -697,15 +697,15 @@ class KOPrefsDialogPrinting : public KPrefsModule
       : KPrefsModule( KOPrefs::instance(), parent, name )
     {
       QBoxLayout *topTopLayout = new QVBoxLayout( this );
-    
+
       QWidget *topFrame = new QWidget( this );
       topTopLayout->addWidget( topFrame );
-    
+
       QGridLayout *topLayout = new QGridLayout( topFrame, 5, 2 );
       topLayout->setSpacing( KDialog::spacingHint() );
 
       topLayout->setRowStretch( 4, 1 );
-    
+
       load();
     }
 };
@@ -855,10 +855,10 @@ class KOPrefsDialogGroupAutomation : public KPrefsModule
       : KPrefsModule( KOPrefs::instance(), parent, name )
     {
       QBoxLayout *topTopLayout = new QVBoxLayout( this );
-    
+
       QWidget *topFrame = new QWidget( this );
       topTopLayout->addWidget( topFrame );
-    
+
       QGridLayout *topLayout = new QGridLayout(topFrame,6,1);
       topLayout->setSpacing( KDialog::spacingHint() );
 
@@ -903,7 +903,7 @@ class KOPrefsDialogGroupAutomation : public KPrefsModule
       topLayout->addMultiCellWidget(autoFreeBusyReplyGroup->groupBox(),4,4,0,0);
 
       topLayout->setRowStretch( 5, 1 );
-    
+
       load();
     }
 };

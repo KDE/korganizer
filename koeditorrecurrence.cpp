@@ -425,11 +425,11 @@ ExceptionsWidget::ExceptionsWidget( QWidget *parent, const char *name ) :
   boxLayout->setColStretch( 1, 3 );
 
   connect( addExceptionButton, SIGNAL( clicked() ),
-	   SLOT( addException() ) );
+           SLOT( addException() ) );
   connect( changeExceptionButton, SIGNAL( clicked() ),
-	   SLOT( changeException() ) );
+           SLOT( changeException() ) );
   connect( deleteExceptionButton, SIGNAL( clicked() ),
-	   SLOT( deleteException() ) );
+           SLOT( deleteException() ) );
 }
 
 void ExceptionsWidget::addException()
