@@ -59,6 +59,8 @@ Holidays::Holidays()
   QString holiday = kapp->config()->readEntry("Holidays");
 
   mHolidayFile = locate("appdata","holiday_" + holiday);
+
+  yearLast = 0;
 }
 
 Holidays::~Holidays()
@@ -83,13 +85,16 @@ void Holidays::configure(QWidget *parent)
 
 QString Holidays::getHoliday(const QDate &qd)
 {
-  static int lastYear = 0;
+  //static int lastYear = 0;
+  int lastYear = 0;
 
   if (mHolidayFile.isEmpty()) return QString::null;
 
-  if ((lastYear == 0) || (qd.year() != lastYear)) {
+  //if ((lastYear == 0) || (qd.year() != lastYear)) {
+  if ((yearLast == 0) || (qd.year() != yearLast)) {
+      yearLast = qd.year();
       lastYear = qd.year() - 1900; // silly parse_year takes 2 digit year...
-      parse_holidays(QFile::encodeName(mHolidayFile), lastYear, 0);
+      parse_holidays(QFile::encodeName(mHolidayFile), lastYear, 1);
   }
 
   if (holiday[qd.dayOfYear()-1].string) {

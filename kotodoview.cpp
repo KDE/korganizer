@@ -47,7 +47,7 @@ using namespace KOrg;
 
 KOTodoListView::KOTodoListView(Calendar *calendar,QWidget *parent,
                                const char *name) :
-  QListView(parent,name)
+  KListView(parent,name)
 {
   mCalendar = calendar;
 
@@ -232,7 +232,7 @@ void KOTodoListView::contentsMouseDoubleClickEvent(QMouseEvent *e)
 
   if (!item) return;
 
-  emit doubleClicked(item);
+  emit doubleClicked(item,vp,0);
 }
 
 /////////////////////////////////////////////////////////////////////////////
@@ -280,18 +280,18 @@ KOTodoView::KOTodoView(Calendar *calendar,QWidget* parent,const char* name) :
   mItemPopupMenu->insertSeparator();
   mItemPopupMenu->insertItem(i18n("delete completed To-Dos","Purge Completed"),
                              this,SLOT(purgeCompleted()));
-                       
+
   mPopupMenu = new QPopupMenu;
   mPopupMenu->insertItem(SmallIconSet("todo"), i18n("New To-Do"), this,
                          SLOT (newTodo()));
   mPopupMenu->insertItem(i18n("Purge Completed"), this,
                          SLOT(purgeCompleted()));
-  
+
   mDocPrefs = new DocPrefs( name );
-  
-  // Double clicking conflicts with opening/closing the subtree                   
-  QObject::connect(mTodoListView,SIGNAL(doubleClicked(QListViewItem *)),
-                   this,SLOT(editItem(QListViewItem *)));
+
+  // Double clicking conflicts with opening/closing the subtree
+  QObject::connect(mTodoListView,SIGNAL(doubleClicked(QListViewItem *,const QPoint &,int)),
+                   this,SLOT(editItem(QListViewItem *,const QPoint &,int)));
   QObject::connect(mTodoListView,SIGNAL(rightButtonClicked ( QListViewItem *,
                    const QPoint &, int )),
                    this,SLOT(popupMenu(QListViewItem *,const QPoint &,int)));
@@ -436,12 +436,12 @@ void KOTodoView::printPreview(CalPrinter *calPrinter, const QDate &fd,
 #endif
 }
 
-void KOTodoView::editItem(QListViewItem *item)
+void KOTodoView::editItem(QListViewItem *item,const QPoint &,int)
 {
   emit editTodoSignal(((KOTodoViewItem *)item)->event());
 }
 
-void KOTodoView::showItem(QListViewItem *item)
+void KOTodoView::showItem(QListViewItem *item,const QPoint &,int)
 {
   emit showTodoSignal(((KOTodoViewItem *)item)->event());
 }
@@ -543,3 +543,14 @@ void KOTodoView::itemStateChanged( QListViewItem *item )
 
   if( mDocPrefs ) mDocPrefs->writeEntry( todoItem->event()->uid(), todoItem->isOpen() );
 }
+
+void KOTodoView::saveLayout(KConfig *config, const QString &group) const
+{
+  mTodoListView->saveLayout(config,group);
+}
+
+void KOTodoView::restoreLayout(KConfig *config, const QString &group)
+{
+  mTodoListView->restoreLayout(config,group);
+}
+

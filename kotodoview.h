@@ -34,6 +34,7 @@
 #include <qlabel.h>
 #include <qmap.h>
 #include <qlistview.h>
+#include <klistview.h>
 
 #include <libkcal/calendar.h>
 #include <libkcal/todo.h>
@@ -49,7 +50,7 @@ class QDropEvent;
 
 class DocPrefs;
 
-class KOTodoListView : public QListView
+class KOTodoListView : public KListView
 {
     Q_OBJECT
   public:
@@ -58,13 +59,13 @@ class KOTodoListView : public QListView
 
   signals:
     void todoDropped(Todo *);
-    
+
   protected:
     void contentsDragEnterEvent(QDragEnterEvent *);
     void contentsDragMoveEvent(QDragMoveEvent *);
     void contentsDragLeaveEvent(QDragLeaveEvent *);
     void contentsDropEvent(QDropEvent *);
-  
+
     void contentsMousePressEvent(QMouseEvent *);
     void contentsMouseMoveEvent(QMouseEvent *);
     void contentsMouseReleaseEvent(QMouseEvent *);
@@ -72,7 +73,7 @@ class KOTodoListView : public QListView
 
   private:
     Calendar *mCalendar;
-  
+
     QPoint mPressPos;
     bool mMousePressed;
     QListViewItem *mOldCurrent;
@@ -81,7 +82,7 @@ class KOTodoListView : public QListView
 
 /**
   This class provides a multi-column list view of todo events.
- 
+
   @short multi-column list view of todo events.
   @author Cornelius Schumacher <schumacher@kde.org>
 */
@@ -101,18 +102,21 @@ class KOTodoView : public KOrg::BaseView
     void printPreview(CalPrinter *calPrinter, const QDate &fd, const QDate &td);
 
     void setDocumentId( const QString & );
+    
+    void saveLayout(KConfig *config, const QString &group) const;
+    void restoreLayout(KConfig *config, const QString &group);
 
   public slots:
     void updateView();
     void updateConfig();
 
     void changeEventDisplay(Event *, int);
-  
+
     void showDates(const QDate &start, const QDate &end);
     void showEvents(QPtrList<Event> eventList);
 
-    void editItem(QListViewItem *item);
-    void showItem(QListViewItem *item);
+    void editItem(QListViewItem *item,const QPoint &,int);
+    void showItem(QListViewItem *item,const QPoint &,int);
     void popupMenu(QListViewItem *item,const QPoint &,int);
     void newTodo();
     void newSubTodo();
@@ -121,9 +125,9 @@ class KOTodoView : public KOrg::BaseView
     void deleteTodo();
     void purgeCompleted();
     void itemClicked(QListViewItem *);
-    
+
     void itemStateChanged(QListViewItem *);
-    
+
   signals:
     void newTodoSignal();
     void newSubTodoSignal(Todo *);

@@ -201,7 +201,7 @@ void KOViewManager::showListView()
 
     connect(mMainView, SIGNAL(configChanged()), mListView, SLOT(updateConfig()));
   }
-  
+
   showView(mListView);
 }
 
@@ -336,7 +336,7 @@ void KOViewManager::showTimeSpanView()
     mTimeSpanView = new KOTimeSpanView(mMainView->calendar(),mMainView->viewStack(),
                                        "KOViewManager::TimeSpanView");
     addView(mTimeSpanView);
-    
+
     mTimeSpanView->readSettings();
   }
 

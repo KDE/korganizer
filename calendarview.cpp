@@ -370,6 +370,7 @@ void CalendarView::readSettings()
 #endif
 
   mViewManager->readSettings( config );
+  mTodoList->restoreLayout(config,QString("Todo Layout"));
 
   readFilterSettings(config);
 }
@@ -392,6 +393,7 @@ void CalendarView::writeSettings()
 #endif
 
   mViewManager->writeSettings( config );
+  mTodoList->saveLayout(config,QString("Todo Layout"));
 
   KOPrefs::instance()->writeConfig();
 

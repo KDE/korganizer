@@ -82,6 +82,7 @@ PluginDialog::PluginDialog(QWidget *parent)
   checkSelection();
   
   connect(this,SIGNAL(user1Clicked()),SLOT(configure()));
+  mMainView = dynamic_cast<CalendarView *>(parent);
 }
 
 PluginDialog::~PluginDialog()
@@ -99,13 +100,14 @@ void PluginDialog::slotOk()
     }
     item = (PluginItem *)item->nextSibling();
   }
-  
+
   KOPrefs::instance()->mSelectedPlugins = selectedPlugins;
-  KOCore::self()->reloadPlugins();
-  
-  accept();
-  
   emit configChanged();
+  KOCore::self()->reloadPlugins();
+  if (mMainView) mMainView->updateView();
+
+  accept();
+
 }
 
 void PluginDialog::configure()

@@ -41,6 +41,7 @@ class Holidays : public CalendarDecoration {
     
   private:
     QString mHolidayFile;
+    int yearLast;
 };
 
 #endif

@@ -27,6 +27,8 @@
 
 #include <kdialogbase.h>
 
+#include "calendarview.h"
+
 class PluginDialog : public KDialogBase
 {
     Q_OBJECT
@@ -46,6 +48,7 @@ class PluginDialog : public KDialogBase
 
   private:
     QListView *mListView;
+    CalendarView *mMainView;
 };
 
 #endif
