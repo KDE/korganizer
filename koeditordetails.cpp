@@ -532,6 +532,22 @@ void KOEditorDetails::updateAttendeeItem()
   QString name;
   QString email;
   KPIM::getNameAndMail(mNameEdit->text(), name, email);
+
+  bool myself = KOPrefs::instance()->thatIsMe( email );
+  bool iAmTheOrganizer = mOrganizerCombo &&
+    KOPrefs::instance()->thatIsMe( mOrganizerCombo->currentText() );
+  if ( iAmTheOrganizer ) {
+    if ( myself ) {
+      mStatusCombo->setCurrentItem( KCal::Attendee::Accepted );
+      mRsvpButton->setChecked( false );
+      mRsvpButton->setEnabled( false );
+    } else if ( KOPrefs::instance()->thatIsMe ( a->email() ) ) {
+      // this was me, but is no longer, reset
+      mStatusCombo->setCurrentItem( KCal::Attendee::NeedsAction );
+      mRsvpButton->setChecked( true );
+      mRsvpButton->setEnabled( true );
+    }
+  }
   a->setName( name );
   a->setUid( mUidEdit->text() );
   a->setEmail( email );
