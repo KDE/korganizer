@@ -29,9 +29,6 @@
 namespace KCal
 {
 class Incidence;
-class Event;
-class Todo;
-class Journal;
 }
 using namespace KCal;
 
@@ -48,34 +45,5 @@ class KOIncidenceToolTip : public QToolTip
     static void add ( QWidget * widget, Incidence *incidence,
         QToolTipGroup * group = 0, const QString & longText = "" );
 };
-
-class ToolTipVisitor : public Incidence::Visitor
-{
-  public:
-    ToolTipVisitor() : mRichText( true ),mTipText(0) {}
-
-    bool act( Incidence *incidence, QString* tipText, bool richText=true)
-    {
-      mTipText = tipText;
-      mRichText = richText;
-      return incidence ? incidence->accept( *this ) : false;
-    }
-
-  protected:
-    bool visit( Event *event );
-    bool visit( Todo *todo );
-    bool visit( Journal *journal );
-
-    QString dateRangeText( Event*event );
-    QString dateRangeText( Todo *todo );
-    QString dateRangeText( Journal *journal );
-
-    bool generateToolTip( Incidence* incidence, QString dtRangeText );
-
-  protected:
-    bool mRichText;
-    QString *mTipText;
-};
-
 
 #endif

@@ -45,6 +45,7 @@
 
 #include <kcalendarsystem.h>
 #include <libkcal/calfilter.h>
+#include <libkcal/incidenceformatter.h>
 
 #ifndef KORG_NOPRINTER
 #include "calprinter.h"
@@ -79,9 +80,8 @@ void KOMonthCellToolTip::maybeTip( const QPoint & pos )
     /* Calculate the rectangle. */
     r=eventlist->itemRect( it );
     /* Show the tip */
-    QString tipText;
-    ToolTipVisitor v;
-    if ( v.act( i->incidence(), &tipText, true ) ) {
+    QString tipText( IncidenceFormatter::toolTipString( i->incidence() ) );
+    if ( !tipText.isEmpty() ) {
       tip( r, tipText );
     }
   }

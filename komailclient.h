@@ -49,8 +49,6 @@ class KOMailClient
               const QString &body,bool bcc=false,
               const QString &attachment=QString::null);
 
-    QString createBody(IncidenceBase *incidence);
-
     int kMailOpenComposer(const QString& to, const QString& cc,
                           const QString& bcc, const QString& subject,
                           const QString& body, int hidden,

@@ -36,6 +36,7 @@
 
 #include <libkcal/event.h>
 #include <libkcal/todo.h>
+#include <libkcal/incidenceformatter.h>
 
 #include "version.h"
 #include "koprefs.h"
@@ -76,7 +77,7 @@ bool KOMailClient::mailAttendees(IncidenceBase *incidence,const QString &attachm
     subject = "Free Busy Object";
   }
 
-  QString body = createBody(incidence);
+  QString body = IncidenceFormatter::mailBodyString(incidence);
 
   bool bcc = KOPrefs::instance()->mBcc;
 
@@ -97,7 +98,7 @@ bool KOMailClient::mailOrganizer(IncidenceBase *incidence,const QString &attachm
     subject = "Free Busy Message";
   }
 
-  QString body = createBody(incidence);
+  QString body = IncidenceFormatter::mailBodyString(incidence);
 
   bool bcc = KOPrefs::instance()->mBcc;
 
@@ -115,7 +116,7 @@ bool KOMailClient::mailTo(IncidenceBase *incidence,const QString &recipients,
   } else {
     subject = "Free Busy Message";
   }
-  QString body = createBody(incidence);
+  QString body = IncidenceFormatter::mailBodyString(incidence);
   bool bcc = KOPrefs::instance()->mBcc;
   kdDebug () << "KOMailClient::mailTo " << recipients << endl;
   return send(from,recipients,subject,body,bcc,attachment);
@@ -293,131 +294,3 @@ int KOMailClient::kMailOpenComposer( const QString& arg0, const QString& arg1,
 }
 
 
-QString KOMailClient::createBody(IncidenceBase *incidence)
-{
-  QString CR = ("\n");
-
-  QString body;
-
-  // @TODO: use a visitor here
-  
-  // mailbody for Event
-  if (incidence->type()=="Event") {
-    Event *selectedEvent = static_cast<Event *>(incidence);
-    QString recurrence[]= {i18n("no recurrence", "None"),
-      i18n("Minutely"), i18n("Hourly"), i18n("Daily"),
-      i18n("Weekly"), i18n("Monthly Same Day"), i18n("Monthly Same Position"),
-      i18n("Yearly"), i18n("Yearly"), i18n("Yearly")};
-
-    if (!selectedEvent->organizer().isEmpty()) {
-      body += i18n("Organizer: %1").arg(selectedEvent->organizer());
-      body += CR;
-    }
-    body += i18n("Summary: %1").arg(selectedEvent->summary());
-    body += CR;
-    if (!selectedEvent->location().isEmpty()) {
-      body += i18n("Location: %1").arg(selectedEvent->location());
-      body += CR;
-    }
-    body += i18n("Start Date: %1").arg(selectedEvent->dtStartDateStr());
-    body += CR;
-    if (!selectedEvent->doesFloat()) {
-      body += i18n("Start Time: %1").arg(selectedEvent->dtStartTimeStr());
-      body += CR;
-    }
-    if ( selectedEvent->dtStart()!=selectedEvent->dtEnd() ) {
-      body += i18n("End Date: %1").arg(selectedEvent->dtEndDateStr());
-      body += CR;
-    }
-    if (!selectedEvent->doesFloat()) {
-      body += i18n("End Time: %1").arg(selectedEvent->dtEndTimeStr());
-      body += CR;
-    }
-    if (selectedEvent->doesRecur()) {
-      body += i18n("Recurs: %1")
-               .arg(recurrence[selectedEvent->recurrence()->doesRecur()]);
-      body += CR;
-/* @TODO: frequency
-      body += i18n("Frequency: %1")
-               .arg(recurrence[selectedEvent->recurrence()->frequency()]);
-      body += CR;
-*/
-      if (selectedEvent->recurrence()->duration() > 0 ) {
-        body += i18n ("Repeats %1 times")
-                 .arg(QString::number(selectedEvent->recurrence()->duration()));
-        body += CR;
-      } else {
-        if (selectedEvent->recurrence()->duration() != -1) {
-//          body += i18n("Repeat until: %1")
-          body += i18n("End Date: %1")
-                   .arg(selectedEvent->recurrence()->endDateStr());
-          body += CR;
-        } else {
-          body += i18n("Repeats forever");
-          body += CR;
-        }
-      }
-    }
-    QString details = selectedEvent->description();
-    if (!details.isEmpty()) {
-      body += i18n("Details:");
-      body += CR;
-      body += details;
-      body += CR;
-    }
-  }
-
-  // mailbody for Todo
-  if (incidence->type()=="Todo") {
-    Todo *selectedEvent = static_cast<Todo *>(incidence);
-    if (!selectedEvent->organizer().isEmpty()) {
-      body += i18n("Organizer: %1").arg(selectedEvent->organizer());
-      body += CR;
-    }
-    body += i18n("Summary: %1").arg(selectedEvent->summary());
-    body += CR;
-    if (!selectedEvent->location().isEmpty()) {
-      body += i18n("Location: %1").arg(selectedEvent->location());
-      body += CR;
-    }
-    if (selectedEvent->hasStartDate()) {
-      body += i18n("Start Date: %1").arg(selectedEvent->dtStartDateStr());
-      body += CR;
-      if (!selectedEvent->doesFloat()) {
-        body += i18n("Start Time: %1").arg(selectedEvent->dtStartTimeStr());
-        body += CR;
-      }
-    }
-    if (selectedEvent->hasDueDate()) {
-      body += i18n("Due Date: %1").arg(selectedEvent->dtDueDateStr());
-      body += CR;
-      if (!selectedEvent->doesFloat()) {
-        body += i18n("Due Time: %1").arg(selectedEvent->dtDueTimeStr());
-        body += CR;
-      }
-    }
-    QString details = selectedEvent->description();
-    if (!details.isEmpty()) {
-      body += i18n("Details:");
-      body += CR;
-      body += details;
-      body += CR;
-    }
-  }
-
-  // mailbody for FreeBusy
-  if(incidence->type()=="FreeBusy") {
-    body = i18n("This is a Free Busy Object");
-  }
-
-  // mailbody for Journal
-  if(incidence->type()=="Journal") {
-    Incidence *inc = static_cast<Incidence *>(incidence);
-    body = inc->summary();
-    body += CR;
-    body += inc->description();
-    body += CR;
-  }
-
-  return body;
-}

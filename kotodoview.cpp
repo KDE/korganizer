@@ -40,6 +40,7 @@
 #include <libkcal/calendarresources.h>
 #include <libkcal/resourcecalendar.h>
 #include <libkcal/calfilter.h>
+#include <libkcal/incidenceformatter.h>
 
 #include <libkdepim/clicklineedit.h>
 #include <libkdepim/kdatepickerpopup.h>
@@ -85,9 +86,8 @@ void KOTodoListViewToolTip::maybeTip( const QPoint & pos)
     r.setRight(headerPos + todolist->header()->sectionSize(col));
 
     /* Show the tip */
-    QString tipText;
-    ToolTipVisitor v;
-    if (v.act(i->todo(), &tipText, true)) {
+    QString tipText( IncidenceFormatter::toolTipString( i->todo() ) );;
+    if ( !tipText.isEmpty() ) {
       tip(r, tipText);
     }
   }

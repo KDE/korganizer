@@ -23,11 +23,8 @@
 */
 
 #include <libkcal/incidence.h>
-#include <libkcal/event.h>
-#include <libkcal/todo.h>
-#include <libkcal/journal.h>
+#include <libkcal/incidenceformatter.h>
 
-#include <klocale.h>
 #include "koincidencetooltip.h"
 
 /**
@@ -39,118 +36,6 @@ void KOIncidenceToolTip::add ( QWidget * widget, Incidence *incidence,
         QToolTipGroup * group, const QString & longText )
 {
   if ( !widget || !incidence ) return;
-  QString tipText;
-  ToolTipVisitor v;
-  v.act( incidence, &tipText, true );
-  QToolTip::add(widget, tipText, group, longText);
+  QToolTip::add(widget, IncidenceFormatter::toolTipString( incidence ), group, longText);
 }
 
-QString ToolTipVisitor::dateRangeText( Event*event )
-{
-  QString ret;
-  QString tmp;
-  if ( event->isMultiDay() ) {
-
-    tmp = "<br>" + i18n("Event start", "<i>From:</i>&nbsp;%1");
-    if (event->doesFloat())
-      ret += tmp.arg( event->dtStartDateStr().replace(" ", "&nbsp;") );
-    else
-      ret += tmp.arg( event->dtStartStr().replace(" ", "&nbsp;") );
-
-    tmp = "<br>" + i18n("<i>To:</i>&nbsp;%1");
-    if (event->doesFloat())
-      ret += tmp.arg( event->dtEndDateStr().replace(" ", "&nbsp;") );
-    else
-      ret += tmp.arg( event->dtEndStr().replace(" ", "&nbsp;") );
-
-  } else {
-
-    ret += "<br>"+i18n("<i>Date:</i>&nbsp;%1").
-        arg( event->dtStartDateStr().replace(" ", "&nbsp;") );
-    if ( !event->doesFloat() ) {
-      tmp = "<br>" + i18n("time range for event, &nbsp; to prevent ugly line breaks",
-        "<i>Time:</i>&nbsp;%1&nbsp;-&nbsp;%2").
-        arg( event->dtStartTimeStr().replace(" ", "&nbsp;") ).
-        arg( event->dtEndTimeStr().replace(" ", "&nbsp;") );
-      ret += tmp;
-    }
-
-  }
-  return ret;
-}
-
-QString ToolTipVisitor::dateRangeText( Todo*todo )
-{
-  QString ret;
-  bool floats( todo->doesFloat() );
-  if (todo->hasStartDate())
-    // No need to add <i> here. This is separated issue and each line
-    // is very visible on its own. On the other hand... Yes, I like it
-    // italics here :)
-    ret += "<br>" + i18n("<i>Start:</i>&nbsp;%1").arg(
-      (floats)
-        ?(todo->dtStartDateStr().replace(" ", "&nbsp;"))
-        :(todo->dtStartStr().replace(" ", "&nbsp;")) ) ;
-  if (todo->hasDueDate())
-    ret += "<br>" + i18n("<i>Due:</i>&nbsp;%1").arg(
-      (floats)
-        ?(todo->dtDueDateStr().replace(" ", "&nbsp;"))
-        :(todo->dtDueStr().replace(" ", "&nbsp;")) );
-  if (todo->isCompleted())
-    ret += "<br>" + i18n("<i>Completed:</i>&nbsp;%1").arg( todo->completedStr().replace(" ", "&nbsp;") );
-  else
-    ret += "<br>" + i18n("%1 % completed").arg(todo->percentComplete());
-
-  return ret;
-}
-
-QString ToolTipVisitor::dateRangeText( Journal*journal )
-{
-  QString ret;
-  if (journal->dtStart().isValid() ) {
-    ret += "<br>" + i18n("<i>Date:</i>&nbsp;%1").arg( journal->dtStartDateStr( false ) );
-  }
-  return ret;
-}
-
-
-bool ToolTipVisitor::visit( Event *event )
-{
-  QString dtRangeText( dateRangeText( event ) );
-  return generateToolTip( event, dtRangeText  );
-}
-
-bool ToolTipVisitor::visit( Todo *todo )
-{
-  QString dtRangeText( dateRangeText( todo ) );
-  return generateToolTip( todo, dtRangeText  );
-}
-
-bool ToolTipVisitor::visit( Journal *journal )
-{
-  QString dtRangeText( dateRangeText( journal ) );
-  return generateToolTip( journal, dtRangeText  );
-}
-
-bool ToolTipVisitor::generateToolTip( Incidence* incidence, QString dtRangeText )
-{
-  QString tipText = "<qt><b>"+ incidence->summary().replace("\n", "<br>")+"</b>";
-
-  tipText += dtRangeText;
-
-  if (!incidence->location().isEmpty()) {
-    // Put Location: in italics
-    tipText += "<br>"+i18n("<i>Location:</i>&nbsp;%1").
-      arg( incidence->location().replace("\n", "<br>") );
-  }
-  if (!incidence->description().isEmpty()) {
-    QString desc(incidence->description());
-    if (desc.length()>120) {
-      desc = desc.left(120) + "...";
-    }
-    tipText += "<br>----------<br>" + i18n("<i>Description:</i><br>") + desc.replace("\n", "<br>");
-  }
-  tipText += "</qt>";
-  *mTipText = tipText;
-  return true;
-}

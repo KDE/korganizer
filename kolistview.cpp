@@ -33,6 +33,7 @@
 #include <kglobal.h>
 
 #include <libkcal/calendar.h>
+#include <libkcal/incidenceformatter.h>
 
 #ifndef KORG_NOPRINTER
 #include "calprinter.h"
@@ -63,9 +64,8 @@ void KOListViewToolTip::maybeTip( const QPoint & pos)
     /* Calculate the rectangle. */
     r=eventlist->itemRect( it );
     /* Show the tip */
-    QString tipText;
-    ToolTipVisitor v;
-    if (v.act(i->data(), &tipText, true)) {
+    QString tipText( IncidenceFormatter::toolTipString( i->data() ) );
+    if ( !tipText.isEmpty() ) {
       tip(r, tipText);
     }
   }

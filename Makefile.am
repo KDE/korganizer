@@ -9,7 +9,6 @@ INCLUDES = \
   -I$(top_srcdir)/libkdepim \
   -I$(top_srcdir)/libkpimidentities \
   -I$(top_srcdir)/mimelib \
-  -I$(top_srcdir)/ktnef \
   -I$(top_srcdir)/certmanager/lib \
   -I$(top_srcdir)/kresources/remote \
   -I$(top_srcdir) \
@@ -61,7 +60,6 @@ libkorganizer_la_LIBADD  = $(LIB_KPARTS) $(LIB_KFILE) \
 	libkorganizer_calendar.la \
 	$(top_builddir)/kdgantt/libkdgantt.la \
 	$(KNEWSTUFF_LIB) \
-	$(top_builddir)/ktnef/lib/libktnef.la \
         $(top_builddir)/kresources/remote/libkcal_resourceremote.la
 libkorganizer_la_COMPILE_FIRST = kofilterview_base.ui \
 	outgoingdialog_base.ui \
