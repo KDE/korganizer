@@ -1411,7 +1411,7 @@ void KOAgenda::insertMultiItem (Event *event,QDate qd,int XBegin,int XEnd,
   marcus_bains();
 }
 
-void KOAgenda::removeEvent( Event *event )
+void KOAgenda::removeIncidence( Incidence *incidence )
 {
   // TODO_RK: make sure the conflicting items are updated correctly
 
@@ -1422,7 +1422,7 @@ void KOAgenda::removeEvent( Event *event )
 
   KOAgendaItem *item = mItems.first();
   while ( item ) {
-    if ( item->incidence() == event ) {
+    if ( item->incidence() == incidence ) {
       itemsToRemove.append( item );
     }
     item = mItems.next();

@@ -895,7 +895,6 @@ void KOAgendaView::changeIncidenceDisplayAdded( Incidence *incidence )
 void KOAgendaView::changeIncidenceDisplay( Incidence *incidence, int mode )
 {
   kdDebug(5850) << "KOAgendaView::changeIncidenceDisplay" << endl;
-  Event *event;
 
   switch ( mode ) {
     case KOGlobals::INCIDENCEADDED: {
@@ -903,46 +902,20 @@ void KOAgendaView::changeIncidenceDisplay( Incidence *incidence, int mode )
         // recreating everything even causes troubles: dropping to the day matrix
         // recreates the agenda items, but the evaluation is still in an agendaItems' code,
         // which was deleted in the mean time. Thus KOrg crashes...
-        changeIncidenceDisplayAdded( incidence );
-      }
+      changeIncidenceDisplayAdded( incidence );
       break;
-
+    }
     case KOGlobals::INCIDENCEEDITED:
+    case KOGlobals::INCIDENCEDELETED: {
 // TODO: Removing does not work, as it does not correctly reset the max nr. of conflicting items. Thus the items will sometimes not fill the whole width of the column. As a workaround, just recreate the whole view for now... */
-      event = dynamic_cast<Event *>( incidence );
-      if ( event ) {
-        if ( incidence->doesFloat() ) {
-          KOAgendaItem *item = mAllDayAgenda->findItem( event );
-          if ( item ) {
-            mAllDayAgenda->removeAgendaItem( item );
-            changeIncidenceDisplayAdded( incidence );
-          }
-        } else {
-          KOAgendaItem *item = mAgenda->findItem( event );
-          if ( item ) {
-            mAgenda->removeAgendaItem( item );
-            changeIncidenceDisplayAdded( incidence );
-          }
-        }
-//        changeIncidenceDisplayAdded( event );
-      } else {
-        updateView();
-      }
+      if ( incidence->doesFloat() )
+        mAllDayAgenda->removeIncidence( incidence );
+      else
+        mAgenda->removeIncidence( incidence );
+      if ( mode == KOGlobals::INCIDENCEEDITED )
+        changeIncidenceDisplayAdded( incidence );
       break;
-    case KOGlobals::INCIDENCEDELETED:
-// TODO: Same as above, the items will not use the whole column width, as maxSubCells will not be decremented/reset correctly. Just update the whole view for now.
-      event = dynamic_cast<Event*>( incidence );
-      if ( event ) {
-        if ( incidence->doesFloat() ) {
-          mAllDayAgenda->removeEvent( event );
-        } else {
-          mAgenda->removeEvent( event );
-        }
-      } else {
-        updateView();
-      }
-      break;
-
+    }
     default:
       updateView();
   }
