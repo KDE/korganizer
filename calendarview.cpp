@@ -953,7 +953,7 @@ void CalendarView::deleteEvent(Event *anEvent)
         //  return;
         //}
         //while (!anEvent->recursOn(qd)) qd = qd.addDays(1);
-        if (itemDate!=QDate::QDate(1,1,1) || itemDate.isValid()) {
+        if (itemDate!=QDate(1,1,1) || itemDate.isValid()) {
           anEvent->addExDate(itemDate);
           changeEventDisplay(anEvent, KOGlobals::EVENTEDITED);
         }

@@ -936,7 +936,7 @@ void KOAgendaView::newTimeSpanSelected(int gxStart, int gyStart,
                                    
 void KOAgendaView::deleteSelectedDateTime()
 {
-  mTimeSpanBegin.setDate(QDate::QDate());
-  mTimeSpanEnd.setDate(QDate::QDate());
+  mTimeSpanBegin.setDate(QDate());
+  mTimeSpanEnd.setDate(QDate());
   mTimeSpanInAllDay = false;
 }
