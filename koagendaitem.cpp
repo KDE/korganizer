@@ -609,8 +609,8 @@ void KOAgendaItem::paintTodoIcon( QPainter *p, int &x, int ft )
   if ( mIncidence->type() != "Todo" )
     return;
   bool b = ( static_cast<Todo *>( mIncidence ) )->isCompleted();
-  conditionalPaint( p, b, x, ft, todoPxmp );
-  conditionalPaint( p, !b, x, ft, completedPxmp );
+  conditionalPaint( p, !b, x, ft, todoPxmp );
+  conditionalPaint( p, b, x, ft, completedPxmp );
 }
 
 void KOAgendaItem::paintEvent( QPaintEvent * )
