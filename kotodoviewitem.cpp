@@ -99,8 +99,9 @@ void KOTodoViewItem::construct()
   setSortKey(3,keyd);
   setSortKey(4,keyt);
 
-  if (mTodo->isCompleted()) setSortKey(1,QString::number(9)+keyd+keyt);
-  else setSortKey(1,QString::number(mTodo->priority())+keyd+keyt);
+  QString priorityKey = QString::number( mTodo->priority() ) + keyd + keyt;
+  if ( mTodo->isCompleted() ) setSortKey( 1, "1" + priorityKey );
+  else setSortKey( 1, "0" + priorityKey );
 
   setText(5,mTodo->categoriesStr());
 
@@ -152,8 +153,10 @@ void KOTodoViewItem::stateChange(bool state)
       setSortKey(4,keyt);
     }
   }
-  if (mTodo->isCompleted()) setSortKey(1,QString::number(9)+keyd+keyt);
-  else setSortKey(1,QString::number(mTodo->priority())+keyd+keyt);
+
+  QString priorityKey = QString::number( mTodo->priority() ) + keyd + keyt;
+  if ( mTodo->isCompleted() ) setSortKey( 1, "1" + priorityKey );
+  else setSortKey( 1, "0" + priorityKey );
   
   setPixmap(2, progressImg(mTodo->percentComplete()));
   if (mTodo->percentComplete()<100) {
@@ -164,7 +167,7 @@ void KOTodoViewItem::stateChange(bool state)
     if (mTodo->isCompleted()) setSortKey(2,QString::number(999));
     else setSortKey(2,QString::number(99));
   }
-  QListViewItem * myChild = firstChild();
+  QListViewItem *myChild = firstChild();
   KOTodoViewItem *item;
   while( myChild ) {
     item = static_cast<KOTodoViewItem*>(myChild);
