@@ -41,16 +41,22 @@ bool UriHandler::process( const QString &uri )
 
 #ifndef KORG_NODCOP
   if ( uri.startsWith( "kmail:" ) ) {
-    int pos = uri.find( "/", 8 );
-    if ( pos > 8 ) {
-      QString messageId = uri.mid( 8, pos - 8 );
-      Q_UINT32 serialNumber = messageId.toUInt();
-      kdDebug(5850) << "SERIALNUMBERSTR: " << serialNumber << " MESSAGEID: "
-                << messageId << endl;
-      KMailIface_stub kmailIface( "kmail", "KMailIface" );
-      kmailIface.showMail( serialNumber, messageId );
-      return true;
-    }
+    // make sure kmail is running or the part is shown
+    KProcess proc;
+    proc << "kmail";
+    proc.start( KProcess::Block );
+
+    // parse string, show
+    int start = uri.find( ':' ) + 1;
+    int delimiter = uri.find( '/', start );
+    QString serialNumberStr = uri.mid( start, delimiter-start );
+    Q_UINT32 serialNumber = serialNumberStr.toUInt();
+    QString messageId = uri.mid( delimiter+1 );
+    kdDebug(5850) << "SERIALNUMBERSTR: " << serialNumberStr << " MESSAGEID: "
+      << messageId << endl;
+    KMailIface_stub kmailIface( "kmail", "KMailIface" );
+    kmailIface.showMail( serialNumber, messageId );
+    return true;
   } else if ( uri.startsWith( "mailto:" ) ) {
     KApplication::kApplication()->invokeMailer( uri.mid(7), QString::null );
     return true;
@@ -88,7 +94,7 @@ bool UriHandler::process( const QString &uri )
     }
   }
   else {  // no special URI, let KDE handle it
-    KRun *run = new KRun(KURL( uri ));
+    new KRun(KURL( uri ));
   }
 #endif
   
