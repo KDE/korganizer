@@ -122,6 +122,8 @@
   <group name="Views">
     <entry type="Int" key="Hour Size">
       <default>10</default>
+			<min>4</min>
+			<max>30</max>
     </entry>
     <entry type="Bool" key="Show Daily Recurrences" name="DailyRecur">
       <label>Show events that recur daily in date navigator</label>

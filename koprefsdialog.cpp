@@ -291,32 +291,37 @@ class KOPrefsDialogTime : public KPrefsModule
 
       mTimeZoneCombo->setCurrentItem(nCurrentlySet);
 
+      KPrefsWidTime *dayBegins =
+        addWidTime( KOPrefs::instance()->dayBeginsItem(), topFrame );
+      topLayout->addWidget( dayBegins->label(), 1, 0 );
+      topLayout->addWidget(dayBegins->timeEdit(), 1, 1 );
+      
       KPrefsWidTime *defaultTime =
             addWidTime( KOPrefs::instance()->startTimeItem(), topFrame );
-      topLayout->addWidget( defaultTime->label(), 1, 0);
-      topLayout->addWidget( defaultTime->timeEdit(), 1, 1);
+      topLayout->addWidget( defaultTime->label(), 2, 0);
+      topLayout->addWidget( defaultTime->timeEdit(), 2, 1);
 
       KPrefsWidTime *defaultDuration =
             addWidTime( KOPrefs::instance()->defaultDurationItem(), topFrame );
-      topLayout->addWidget( defaultDuration->label(), 2, 0);
-      topLayout->addWidget( defaultDuration->timeEdit(), 2, 1);
+      topLayout->addWidget( defaultDuration->label(), 3, 0);
+      topLayout->addWidget( defaultDuration->timeEdit(), 3, 1);
 
       QStringList alarmList;
       alarmList << i18n("1 minute") << i18n("5 minutes") << i18n("10 minutes")
                 << i18n("15 minutes") << i18n("30 minutes");
       topLayout->addWidget(new QLabel(i18n("Default alarm time:"),topFrame),
-                           3,0);
+                           4,0);
       mAlarmTimeCombo = new QComboBox(topFrame);
       connect( mAlarmTimeCombo, SIGNAL( activated( int ) ),
                SLOT( slotWidChanged() ) );
       mAlarmTimeCombo->insertStringList(alarmList);
-      topLayout->addWidget(mAlarmTimeCombo,3,1);
+      topLayout->addWidget(mAlarmTimeCombo,4,1);
 
 
       QGroupBox *workingHoursGroup = new QGroupBox(1,Horizontal,
                                                    i18n("Working Hours"),
                                                    topFrame);
-      topLayout->addMultiCellWidget(workingHoursGroup,4,4,0,1);
+      topLayout->addMultiCellWidget(workingHoursGroup,5,5,0,1);
 
       QHBox *workDaysBox = new QHBox( workingHoursGroup );
       // Respect start of week setting
@@ -343,8 +348,9 @@ class KOPrefsDialogTime : public KPrefsModule
 
       addWidBool( KOPrefs::instance()->excludeHolidaysItem(),
                   workingHoursGroup );
+      topLayout->addMultiCellWidget( workDaysBox, 6, 6, 0, 1 );
 
-      topLayout->setRowStretch(6,1);
+      topLayout->setRowStretch(7,1);
 
       load();
     }
@@ -425,105 +431,78 @@ class KOPrefsDialogViews : public KPrefsModule
       QWidget *topFrame = new QWidget( this );
       topTopLayout->addWidget( topFrame );
 
-      QGridLayout *topLayout = new QGridLayout(topFrame,13,2);
+      QBoxLayout *topLayout = new QVBoxLayout( topFrame );
       topLayout->setSpacing( KDialog::spacingHint() );
-
-      QBoxLayout *dayBeginsLayout = new QHBoxLayout;
-      topLayout->addLayout(dayBeginsLayout,0,0);
-
-      KPrefsWidTime *dayBegins =
-        addWidTime( KOPrefs::instance()->dayBeginsItem(),
-                    topFrame );
-      dayBeginsLayout->addWidget(dayBegins->label());
-      dayBeginsLayout->addStretch(1);
-      dayBeginsLayout->addWidget(dayBegins->timeEdit());
-
-      QBoxLayout *nextDaysLayout = new QHBoxLayout;
-      topLayout->addLayout(nextDaysLayout,1,0);
-      nextDaysLayout->addWidget(new QLabel(i18n("Days to show in Next-X-Days view:"),topFrame));
-      mNextXDaysSpin = new QSpinBox(2,14,1,topFrame);
-      connect( mNextXDaysSpin, SIGNAL( valueChanged( int ) ),
-               SLOT( slotWidChanged() ) );
-      nextDaysLayout->addStretch(1);
-      nextDaysLayout->addWidget(mNextXDaysSpin);
-
-      QGroupBox *hourSizeGroup = new QGroupBox(1,Horizontal,
-                                               i18n("Hour Size in Schedule View"),
-                                               topFrame);
-      mHourSizeSlider = new QSlider(4,30,1,10,Horizontal,hourSizeGroup);
-      connect( mHourSizeSlider, SIGNAL ( valueChanged( int ) ),
-               SLOT( slotWidChanged() ) );
-      topLayout->addMultiCellWidget(hourSizeGroup,2,2,0,1);
-
-      KPrefsWidBool *dailyRecur =
-        addWidBool( KOPrefs::instance()->dailyRecurItem(), topFrame );
-      topLayout->addWidget(dailyRecur->checkBox(),3,0);
-
-      KPrefsWidBool *weeklyRecur =
-        addWidBool( KOPrefs::instance()->weeklyRecurItem(), topFrame );
-      topLayout->addWidget(weeklyRecur->checkBox(),4,0);
 
       KPrefsWidBool *enableToolTips =
           addWidBool( KOPrefs::instance()->enableToolTipsItem(), topFrame );
-      topLayout->addWidget(enableToolTips->checkBox(),5,0);
+      topLayout->addWidget( enableToolTips->checkBox() );
 
-      KPrefsWidBool *showAllDayTodo =
+      KPrefsWidBool *showTodosAgenda =
           addWidBool( KOPrefs::instance()->showAllDayTodoItem(), topFrame );
-      topLayout->addWidget(showAllDayTodo->checkBox(),6,0);
+      topLayout->addWidget( showTodosAgenda->checkBox() );
 
-      KPrefsWidBool *enableMonthScroll =
-          addWidBool( KOPrefs::instance()->enableMonthScrollItem(), topFrame );
-      topLayout->addWidget(enableMonthScroll->checkBox(),7,0);
+      /*** Date Navigator Group ***/
+      QGroupBox *dateNavGroup = new QGroupBox( 1, Horizontal,
+                                               i18n("Date Navigator"),
+                                               topFrame );
+      addWidBool( KOPrefs::instance()->dailyRecurItem(), dateNavGroup );
+      addWidBool( KOPrefs::instance()->weeklyRecurItem(), dateNavGroup );
+      topLayout->addWidget( dateNavGroup );
 
-      KPrefsWidBool *fullViewMonth =
-          addWidBool( KOPrefs::instance()->fullViewMonthItem(), topFrame );
-      topLayout->addWidget(fullViewMonth->checkBox(),8,0);
 
-      KPrefsWidBool *coloredCategoriesInMonthView =
-          addWidBool( KOPrefs::instance()->monthViewUsesCategoryColorItem(),
-                      topFrame );
-      topLayout->addWidget(coloredCategoriesInMonthView->checkBox(),9,0);
-
-      KPrefsWidBool *fullViewTodo =
-          addWidBool( KOPrefs::instance()->fullViewTodoItem(), topFrame );
-      topLayout->addWidget(fullViewTodo->checkBox(),10,0);
-
+      /*** Agenda View Group ***/
+      QGroupBox *agendaGroup = new QGroupBox( 1, Horizontal,
+                                              i18n("Agenda View"),
+                                              topFrame );
+      
+      QHBox *hourSizeBox = new QHBox( agendaGroup );
+      KPrefsWidInt *hourSize = 
+          addWidInt( KOPrefs::instance()->hourSizeItem(), hourSizeBox );
+      hourSize->spinBox()->setSuffix(i18n("suffix in the hour size spin box", " pixel"));
+      new QWidget( hourSizeBox );
+      
+      QHBox *nextDaysBox = new QHBox( agendaGroup );
+      KPrefsWidInt *nextDays = 
+        addWidInt( KOPrefs::instance()->nextXDaysItem(), nextDaysBox );
+      nextDays->spinBox()->setSuffix(i18n("suffix in the N days spin box", " days"));
+      new QWidget( nextDaysBox );
+      
       KPrefsWidBool *marcusBainsEnabled =
-          addWidBool( KOPrefs::instance()->marcusBainsEnabledItem(), topFrame );
-      topLayout->addWidget(marcusBainsEnabled->checkBox(),11,0);
-
+          addWidBool( KOPrefs::instance()->marcusBainsEnabledItem(), agendaGroup );
+      
       KPrefsWidBool *marcusBainsShowSeconds =
-          addWidBool( KOPrefs::instance()->marcusBainsShowSecondsItem(), topFrame );
-      topLayout->addWidget(marcusBainsShowSeconds->checkBox(),12,0);
+          addWidBool( KOPrefs::instance()->marcusBainsShowSecondsItem(), agendaGroup );
       connect( marcusBainsEnabled->checkBox(), SIGNAL( toggled( bool ) ),
                marcusBainsShowSeconds->checkBox(), SLOT( setEnabled( bool ) ) );
+      
+      addWidBool( KOPrefs::instance()->selectionStartsEditorItem(), agendaGroup );
+      
+      topLayout->addWidget( agendaGroup );
+    
+    
+      /*** Month View Group ***/
+      QGroupBox *monthGroup = new QGroupBox( 1, Horizontal,
+                                             i18n("Month View"),
+                                             topFrame );
+      addWidBool( KOPrefs::instance()->enableMonthScrollItem(), monthGroup );
+      addWidBool( KOPrefs::instance()->fullViewMonthItem(), monthGroup );
+      addWidBool( KOPrefs::instance()->monthViewUsesCategoryColorItem(),
+                      monthGroup );
+      topLayout->addWidget( monthGroup );
 
-      KPrefsWidBool *selectionStartsEditor =
-          addWidBool( KOPrefs::instance()->selectionStartsEditorItem(),
-                      topFrame );
-      topLayout->addWidget(selectionStartsEditor->checkBox(),13,0);
+    
+      /*** Todo View Group ***/
+      QGroupBox *todoGroup = new QGroupBox( 1, Horizontal,
+                                            i18n("Todo View"),
+                                            topFrame );
+      addWidBool( KOPrefs::instance()->fullViewTodoItem(), todoGroup );
+      topLayout->addWidget( todoGroup );
 
-      topLayout->setRowStretch(11,1);
+      topLayout->addStretch( 1 );
 
       load();
     }
-
-  protected:
-    void usrReadConfig()
-    {
-      mHourSizeSlider->setValue(KOPrefs::instance()->mHourSize);
-      mNextXDaysSpin->setValue(KOPrefs::instance()->mNextXDays);
-    }
-
-    void usrWriteConfig()
-    {
-      KOPrefs::instance()->mHourSize = mHourSizeSlider->value();
-      KOPrefs::instance()->mNextXDays = mNextXDaysSpin->value();
-    }
-
-  private:
-    QSlider   *mHourSizeSlider;
-    QSpinBox  *mNextXDaysSpin;
 };
 
 extern "C"
