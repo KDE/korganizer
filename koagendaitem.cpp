@@ -70,9 +70,9 @@ KOAgendaItem::KOAgendaItem(Event *event, QWidget *parent,
 
   startMove();
 
-  mIconAlarm = new QLabel(this,"KOAgendaItem::IconAlarmLabel");    
-  mIconRecur = new QLabel(this,"KOAgendaItem::IconRecurLabel");    
-  mIconReadonly = new QLabel(this,"KOAgendaItem::IconReadonlyLabel");    
+  mIconAlarm = new QLabel(this,"KOAgendaItem::IconAlarmLabel");
+  mIconRecur = new QLabel(this,"KOAgendaItem::IconRecurLabel");
+  mIconReadonly = new QLabel(this,"KOAgendaItem::IconReadonlyLabel");
 
   mIconAlarm->installEventFilter(this);
   mIconRecur->installEventFilter(this);
@@ -95,7 +95,7 @@ KOAgendaItem::KOAgendaItem(Event *event, QWidget *parent,
 
   QBoxLayout *iconLayout = new QHBoxLayout;
   topLayout->addLayout(iconLayout);
-  
+
   iconLayout->addWidget(mIconAlarm);
   iconLayout->addWidget(mIconRecur);
   iconLayout->addWidget(mIconReadonly);
@@ -120,7 +120,7 @@ void KOAgendaItem::updateIcons()
   else mIconReadonly->hide();
   if (mEvent->recurrence()->doesRecur()) mIconRecur->show();
   else mIconRecur->hide();
-  if (mEvent->alarm()->enabled()) mIconAlarm->show();
+  if (mEvent->isAlarmEnabled()) mIconAlarm->show();
   else mIconAlarm->hide();
 }
 
@@ -134,7 +134,7 @@ void KOAgendaItem::select(bool selected)
     mItemLabel->setLineWidth(1);
   } else {
     mItemLabel->setFrameStyle(Panel|Plain);
-    mItemLabel->setLineWidth(0);   
+    mItemLabel->setLineWidth(0);
   }
 }
 
@@ -154,7 +154,7 @@ bool KOAgendaItem::eventFilter ( QObject *object, QEvent *e )
     QMouseEvent *me = (QMouseEvent *)e;
     QPoint itemPos = this->mapFromGlobal(((QWidget *)object)->
                                          mapToGlobal(me->pos()));
-    QMouseEvent returnEvent (e->type(),itemPos,me->button(),me->state()); 
+    QMouseEvent returnEvent (e->type(),itemPos,me->button(),me->state());
     return event(&returnEvent);
   } else {
     return false;

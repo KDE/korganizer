@@ -50,7 +50,7 @@ bool ListItemVisitor::visit(Event *e)
   mItem->setText(2,e->dtStartTimeStr());
   mItem->setText(3,e->dtEndDateStr());
   mItem->setText(4,e->dtEndTimeStr());
-  mItem->setText(5,e->alarm()->enabled() ? i18n("Yes") : i18n("No"));
+  mItem->setText(5,e->isAlarmEnabled() ? i18n("Yes") : i18n("No"));
   mItem->setText(6,e->recurrence()->doesRecur() ? i18n("Yes") : i18n("No"));
   mItem->setText(7,"---");
   mItem->setText(8,"---");
@@ -92,12 +92,12 @@ bool ListItemVisitor::visit(Todo *t)
   }
   mItem->setText(9,t->categoriesStr());
 
-  QString key; 
+  QString key;
   QDate d = t->dtDue().date();
   QTime tm = t->doesFloat() ? QTime(0,0) : t->dtDue().time();
   key.sprintf("%04d%02d%02d%02d%02d",d.year(),d.month(),d.day(),tm.hour(),tm.minute());
   mItem->setSortKey(7,key);
-  
+
   return true;
 }
 
@@ -169,7 +169,7 @@ KOListView::KOListView(Calendar *calendar, QWidget *parent,
   mPopupMenu->insertItem(i18n("Hide Dates"), this,
 		      SLOT(hideDates()));
 */
-  
+
   QObject::connect(mListView,SIGNAL(doubleClicked(QListViewItem *)),
                    this,SLOT(defaultItemAction(QListViewItem *)));
   QObject::connect(mListView,SIGNAL(rightButtonClicked ( QListViewItem *,
@@ -200,7 +200,7 @@ QPtrList<Incidence> KOListView::getSelected()
 
   QListViewItem *item = mListView->selectedItem();
   if (item) eventList.append(((KOListViewItem *)item)->event());
-  
+
   return eventList;
 }
 
@@ -208,7 +208,7 @@ void KOListView::showDates(bool show)
 {
   // Shouldn't we set it to a value greater 0? When showDates is called with
   // show == true at first, then the columnwidths are set to zero.
-  static int oldColWidth1 = 0; 
+  static int oldColWidth1 = 0;
   static int oldColWidth3 = 0;
 
   if (!show) {
@@ -219,7 +219,7 @@ void KOListView::showDates(bool show)
   } else {
     mListView->setColumnWidth(1, oldColWidth1);
     mListView->setColumnWidth(3, oldColWidth3);
-  } 
+  }
   mListView->repaint();
 }
 
@@ -256,7 +256,7 @@ void KOListView::selectDates(const QDateList dateList)
     addEvents(mCalendar->getEventsForDate(*date));
     addTodos(mCalendar->getTodosForDate(*date));
   }
-  
+
   emit eventsSelected(false);
 }
 
@@ -296,7 +296,7 @@ void KOListView::selectEvents(QPtrList<Event> eventList)
 void KOListView::changeEventDisplay(Event *event, int action)
 {
   KOListViewItem *item;
-  
+
   switch(action) {
     case KOGlobals::EVENTADDED:
       new KOListViewItem(mListView,event);

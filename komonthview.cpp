@@ -17,7 +17,7 @@
     Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 */
 
-// $Id$	
+// $Id$
 
 #include <qpopupmenu.h>
 #include <qfont.h>
@@ -52,12 +52,12 @@ KNoScrollListBox::KNoScrollListBox(QWidget *parent,const char *name)
 //		    Tbl_scrollLastHCell| Tbl_smoothHScrolling);
 }
 
-void KNoScrollListBox::keyPressEvent(QKeyEvent *e) 
+void KNoScrollListBox::keyPressEvent(QKeyEvent *e)
 {
   switch(e->key()) {
   case Key_Right:
     scrollBy(4,0);
-    break; 
+    break;
   case Key_Left:
     scrollBy(-4,0);
     break;
@@ -86,11 +86,11 @@ void KNoScrollListBox::keyPressEvent(QKeyEvent *e)
     emit shiftDown();
     break;
   default:
-    break; 
+    break;
   }
 }
 
-void KNoScrollListBox::keyReleaseEvent(QKeyEvent *e) 
+void KNoScrollListBox::keyReleaseEvent(QKeyEvent *e)
 {
   switch(e->key()) {
   case Key_Shift:
@@ -104,17 +104,17 @@ void KNoScrollListBox::keyReleaseEvent(QKeyEvent *e)
 void KNoScrollListBox::mousePressEvent(QMouseEvent *e)
 {
   QListBox::mousePressEvent(e);
-  
+
   if(e->button() == RightButton) {
     emit rightClick();
-  } 
+  }
 }
 
 
 EventListBoxItem::EventListBoxItem(const QString & s)
   : QListBoxItem()
-{ 
-  setText(s); 
+{
+  setText(s);
   alarmPxmp = SmallIcon("bell");
   recurPxmp = SmallIcon("recur");
   recur = false;
@@ -135,7 +135,7 @@ void EventListBoxItem::paint(QPainter *p)
   QFontMetrics fm = p->fontMetrics();
   int yPos;
   int pmheight = QMAX(recurPxmp.height(), alarmPxmp.height());
-  if(pmheight < fm.height()) 
+  if(pmheight < fm.height())
     yPos = fm.ascent() + fm.leading()/2;
   else
     yPos = pmheight/2 - fm.height()/2  + fm.ascent();
@@ -148,7 +148,7 @@ void EventListBoxItem::paint(QPainter *p)
 
 int EventListBoxItem::height(const QListBox *lb) const
 {
-  return QMAX(recurPxmp.height(), 
+  return QMAX(recurPxmp.height(),
 	      QMAX(alarmPxmp.height(), lb->fontMetrics().lineSpacing()+1));
 }
 
@@ -161,12 +161,12 @@ int EventListBoxItem::width(const QListBox *lb) const
   if(alarm) {
     x += alarmPxmp.width()+2;
   }
-  
+
   return(x + lb->fontMetrics().width(text())+1);
 }
 
 
-KSummaries::KSummaries(QWidget    *parent, 
+KSummaries::KSummaries(QWidget    *parent,
                        Calendar  *cal,
                        QDate       qd,
                        int         index,
@@ -189,7 +189,7 @@ KSummaries::KSummaries(QWidget    *parent,
 void KSummaries::calUpdated()
 {
 //  kdDebug() << "KSummaries::calUpdated()" << endl;
-  
+
   setBackgroundMode(PaletteBase);
   clear();
   currIdxs->clear();
@@ -226,7 +226,7 @@ void KSummaries::calUpdated()
 
     elitem = new EventListBoxItem(sumString);
     elitem->setRecur(anEvent->recurrence()->doesRecur());
-    elitem->setAlarm(anEvent->alarm()->enabled());
+    elitem->setAlarm(anEvent->isAlarmEnabled());
     insertItem(elitem);
     currIdxs->insert(i++, anEvent);
   }
@@ -252,7 +252,7 @@ void KSummaries::calUpdated()
 
   repaint();
 
-//  kdDebug() << "KSummaries::calUpdated() done" << endl;  
+//  kdDebug() << "KSummaries::calUpdated() done" << endl;
 }
 
 Event *KSummaries::getSelected()
@@ -287,7 +287,7 @@ void KSummaries::itemHighlighted(int index)
 void KSummaries::itemSelected(int index)
 {
     Event *anEvent;
-    
+
     anEvent = currIdxs->find(index);
     if (!anEvent)
       kdDebug() << "error, event not found in dictionary" << endl;
@@ -304,17 +304,17 @@ KOMonthView::KOMonthView(Calendar *cal,
     KIconLoader *loader = KGlobal::iconLoader();
     QPixmap pixmap;
     int i;
-    
+
     selDateIdxs.setAutoDelete(TRUE);
     selDates.setAutoDelete(TRUE);
-    
+
     // top layout of monthview
     QBoxLayout *topLayout = new QVBoxLayout(this);
-    
+
     // frame for day and navigation button frames
     QFrame *mainFrame = new QHBox(this,"monthview main frame");
     mainFrame->setFrameStyle(QFrame::WinPanel|QFrame::Sunken);
-    
+
     // frame for days
     QFrame *vFrame = new QFrame(mainFrame);
     vFrame->setFrameStyle(QFrame::NoFrame);
@@ -323,26 +323,26 @@ KOMonthView::KOMonthView(Calendar *cal,
     // frame for navigation buttons
     QVBox *cFrame = new QVBox(mainFrame);
     cFrame->setFrameStyle(QFrame::Panel|QFrame::Raised);
-    
+
     // Create navigation buttons
     pixmap = loader->loadIcon("3uparrow",KIcon::Small);
     KONavButton *upYear = new KONavButton(pixmap,cFrame);
-    QToolTip::add(upYear, i18n("Go back one year"));    
+    QToolTip::add(upYear, i18n("Go back one year"));
 
     pixmap = loader->loadIcon("2uparrow",KIcon::Small);
     KONavButton *upMonth = new KONavButton(pixmap, cFrame);
-    QToolTip::add(upMonth, i18n("Go back one month"));    
+    QToolTip::add(upMonth, i18n("Go back one month"));
 
     pixmap = loader->loadIcon("1uparrow",KIcon::Small);
     KONavButton *upWeek = new KONavButton(pixmap, cFrame);
     QToolTip::add(upWeek, i18n("Go back one week"));
 
     pixmap = loader->loadIcon("1downarrow",KIcon::Small);
-    KONavButton *downWeek = new KONavButton(pixmap, cFrame); 
-    QToolTip::add(downWeek, i18n("Go forward one week"));  
+    KONavButton *downWeek = new KONavButton(pixmap, cFrame);
+    QToolTip::add(downWeek, i18n("Go forward one week"));
 
     pixmap = loader->loadIcon("2downarrow",KIcon::Small);
-    KONavButton *downMonth = new KONavButton(pixmap, cFrame);    
+    KONavButton *downMonth = new KONavButton(pixmap, cFrame);
     QToolTip::add(downMonth, i18n("Go forward one month"));
 
     pixmap = loader->loadIcon("3downarrow",KIcon::Small);
@@ -360,13 +360,13 @@ KOMonthView::KOMonthView(Calendar *cal,
 
     QFont bfont = font();
     bfont.setBold(TRUE);
-    
+
     // make a 13 row, 7 column grid. 1 column for each day of the week,
     // one row for the headers and two rows
     // for each of 6 weeks (one for the day header and one for the
     // summaries.
     QGridLayout *dayLayout = new QGridLayout(vFrame, 19, 14);
-    
+
     // create the day of the week labels (Sun, Mon, etc) and add them to
     // the layout.
     shortdaynames = TRUE;
@@ -384,9 +384,9 @@ KOMonthView::KOMonthView(Calendar *cal,
         dayLayout->setColStretch(i*2+1, 0);
         dayLayout->addColSpacing(i*2+1, 1);
     }
-    
+
     QDate date = myDate;
-    
+
     // create the days, and add them to the layout.
     for(i=0; i < 42; i++, date = date.addDays(1)) {
         // text is irrelevant here, just needs to be something to set the
@@ -471,7 +471,7 @@ QPtrList<Incidence> KOMonthView::getSelected()
     Event *event = daySummaries[*selDateIdxs.at(i)]->getSelected();
     if (event) selectedEvents.append(event);
   }
-  
+
   return selectedEvents;
 
 /*
@@ -481,7 +481,7 @@ QPtrList<Incidence> KOMonthView::getSelected()
     which = 0;
   else
     which = *selDateIdxs.first();
-  
+
   if (which) {
     return daySummaries[which]->getSelected();
   } else {
@@ -499,7 +499,7 @@ void KOMonthView::printPreview(CalPrinter *calPrinter, const QDate &fd,
 void KOMonthView::updateConfig()
 {
   weekStartsMonday = KGlobal::locale()->weekStartsMonday();
-  
+
   for (int i = 0; i < 7; i++) {
     if (weekStartsMonday) {
       dayNames[i]->setText(KGlobal::locale()->weekDayName(i+1));
@@ -514,7 +514,7 @@ void KOMonthView::updateConfig()
                           KOPrefs::instance()->mHolidayColor);
   holidayPalette.setColor(QColorGroup::Text,
                           KOPrefs::instance()->mHolidayColor);
-    
+
   QFont newFont = KOPrefs::instance()->mMonthViewFont;
   newFont.setBold(false);
 
@@ -532,7 +532,7 @@ void KOMonthView::updateConfig()
       daySummaries[i]->setHScrollBarMode(QScrollView::AlwaysOff);
     }
   }
-  
+
   viewChanged();
 }
 
@@ -546,7 +546,7 @@ void KOMonthView::goBackYear()
     which = *selDateIdxs.first();
 
   QDate date = daySummaries[which]->getDate();
-  date.setYMD(date.year()-1, date.month(), date.day());  
+  date.setYMD(date.year()-1, date.month(), date.day());
   myDate = date.addDays(-(date.dayOfWeek()));
 
   while (!myDate.isValid())
@@ -565,7 +565,7 @@ void KOMonthView::goForwardYear()
   else
     which = *selDateIdxs.first();
   QDate date = daySummaries[which]->getDate();
-  date.setYMD(date.year()+1, date.month(), date.day());  
+  date.setYMD(date.year()+1, date.month(), date.day());
   myDate = date.addDays(-(date.dayOfWeek()));
   while (!myDate.isValid())
     myDate = myDate.addDays(-1);
@@ -583,12 +583,12 @@ void KOMonthView::goBackMonth()
     which = *selDateIdxs.first();
   QDate date = daySummaries[which]->getDate();
   if (date.month() == 1) {
-    date.setYMD(date.year()-1, 12, 1);  
+    date.setYMD(date.year()-1, 12, 1);
     myDate = date;
     //while (!myDate.isValid())
     //  myDate = myDate.addDays(-1);
   } else {
-    date.setYMD(date.year(), date.month()-1, date.day());  
+    date.setYMD(date.year(), date.month()-1, date.day());
     myDate = date.addDays(-(date.dayOfWeek()));
     while (!myDate.isValid())
       myDate = myDate.addDays(-1);
@@ -616,13 +616,13 @@ void KOMonthView::goForwardMonth()
     while (!myDate.isValid())
     myDate = myDate.addDays(-1);*/
   } else {
-      date.setYMD(date.year(), date.month()+1, date.day());  
+      date.setYMD(date.year(), date.month()+1, date.day());
       myDate = date.addDays(-(date.dayOfWeek()));
       while (!myDate.isValid())
               myDate = myDate.addDays(-1);
-  } 
+  }
   myDate = date.addDays(-(date.dayOfWeek()));
-  
+
   viewChanged();
   daySelected(myDate.daysTo(date));
 }
@@ -658,12 +658,12 @@ void KOMonthView::selectDates(const QDateList dateList)
   // selected.  bad news...
   /*unsigned int i;
   int *idx;
-  for(i=0, idx = selDateIdxs.first(); 
+  for(i=0, idx = selDateIdxs.first();
       i < selDateIdxs.count();
       i++, idx = selDateIdxs.next()) {
     if(daySummaries[*idx]->getDate() == qd) return;
-    }*/ 
-  
+    }*/
+
   // nope, go to the date.
   if(qd < myDate || qd > myDate.addDays(42)) {
     // the view has to change to accomodate this action.
@@ -726,7 +726,7 @@ void KOMonthView::viewChanged()
   QString tstring = KGlobal::locale()->formatDate(daySummaries[0]->getDate())
        + " - " + KGlobal::locale()->formatDate(daySummaries[41]->getDate());
   dispLabel->setText(tstring);
-  for(i=0, idx = selDateIdxs.first(); 
+  for(i=0, idx = selDateIdxs.first();
       i < selDateIdxs.count(), idx != 0;
       i++, idx = selDateIdxs.next()) {
     //kdDebug() << "selDateIdxs.count(): " << selDateIdxs.count() << endl;
@@ -798,7 +798,7 @@ void KOMonthView::daySelected(int index)
   dayHeaders[index]->setActivated(TRUE);
   daySummaries[index]->setFocus();  // calls daySelected
   selDateIdxs.append(new int(index));
-  
+
   dateList.setAutoDelete(TRUE);
   dateList.append(new QDate(daySummaries[index]->getDate()));
 

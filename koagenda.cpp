@@ -375,7 +375,7 @@ bool KOAgenda::eventFilter_mouse(QObject *object, QMouseEvent *me)
       emit editEventSignal(doubleClickedItem->itemEvent());
     }
     break;
-    
+
   default:
     break;
   }
@@ -1005,7 +1005,12 @@ void KOAgenda::popupAlarm()
     return;
   }
 
-  mClickedItem->itemEvent()->alarm()->toggleAlarm();
+// TODO: deal correctly with multiple alarms
+  Alarm* alarm;
+  for (QPtrListIterator<Alarm> it(mClickedItem->itemEvent()->alarms());
+       (alarm = it.current()) != 0;  ++it) {
+    alarm->toggleAlarm();
+  }
   mClickedItem->updateIcons();
 }
 

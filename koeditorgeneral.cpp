@@ -101,7 +101,7 @@ QBoxLayout *KOEditorGeneral::initDescription()
   mSecrecyCombo = new QComboBox(this);
   mSecrecyCombo->insertStringList(Incidence::secrecyList());
   detailsLayout->addWidget(mSecrecyCombo);
-  
+
   return descriptionLayout;
 }
 
@@ -121,7 +121,7 @@ QBoxLayout *KOEditorGeneral::initAlarm()
 				       "1234567890");
   mAlarmTimeEdit->setText("");
   alarmLayout->addWidget(mAlarmTimeEdit);
-  
+
   mAlarmIncrCombo = new QComboBox(false, this);
   mAlarmIncrCombo->insertItem(i18n("minute(s)"));
   mAlarmIncrCombo->insertItem(i18n("hour(s)"));
@@ -148,7 +148,7 @@ QBoxLayout *KOEditorGeneral::initAlarm()
 
 void KOEditorGeneral::pickAlarmSound()
 {
-  QString prefix = KGlobal::dirs()->findResourceDir("appdata", "sounds/alert.wav"); 
+  QString prefix = KGlobal::dirs()->findResourceDir("appdata", "sounds/alert.wav");
   if (!mAlarmSoundButton->isOn()) {
     mAlarmSound = "";
     QToolTip::remove(mAlarmSoundButton);
@@ -242,40 +242,46 @@ void KOEditorGeneral::readIncidence(Incidence *event)
   mSecrecyCombo->setCurrentItem(event->secrecy());
 
   // set up alarm stuff
-  mAlarmButton->setChecked(event->alarm()->enabled());
-  if (mAlarmButton->isChecked()) {
-    alarmStuffEnable(true);
-    tmpDT = event->alarm()->time();
-    if (tmpDT.isValid()) {
-      i = tmpDT.secsTo(event->dtStart());
-      i = i / 60; // make minutes
-      if (i % 60 == 0) { // divides evenly into hours?
-        i = i / 60;
-        mAlarmIncrCombo->setCurrentItem(1);
+  const Alarm* alarm;
+  for (QPtrListIterator<Alarm> it(event->alarms());
+       (alarm = it.current()) != 0;  ++it) {
+    mAlarmButton->setChecked(alarm->enabled());
+    if (mAlarmButton->isChecked()) {
+      alarmStuffEnable(true);
+      tmpDT = alarm->time();
+      if (tmpDT.isValid()) {
+        i = tmpDT.secsTo(event->dtStart());
+        i = i / 60; // make minutes
+        if (i % 60 == 0) { // divides evenly into hours?
+          i = i / 60;
+          mAlarmIncrCombo->setCurrentItem(1);
+        }
+        if (i % 24 == 0) { // divides evenly into days?
+          i = i / 24;
+          mAlarmIncrCombo->setCurrentItem(2);
+        }
+      } else {
+        i = 5;
       }
-      if (i % 24 == 0) { // divides evenly into days?
-        i = i / 24;
-        mAlarmIncrCombo->setCurrentItem(2);
+      mAlarmTimeEdit->setText(QString::number(i));
+
+      if (!alarm->programFile().isEmpty()) {
+        mAlarmProgram = alarm->programFile();
+        mAlarmProgramButton->setOn(true);
+        QString dispStr = i18n("Running '%1'").arg(mAlarmProgram);
+        QToolTip::add(mAlarmProgramButton, dispStr);
+      }
+      if (!alarm->audioFile().isEmpty()) {
+        mAlarmSound = alarm->audioFile();
+        mAlarmSoundButton->setOn(true);
+        QString dispStr = i18n("Playing '%1'").arg(mAlarmSound);
+        QToolTip::add(mAlarmSoundButton, dispStr);
       }
     } else {
-      i = 5;
+      alarmStuffEnable(false);
     }
-    mAlarmTimeEdit->setText(QString::number(i));
-
-    if (!event->alarm()->programFile().isEmpty()) {
-      mAlarmProgram = event->alarm()->programFile();
-      mAlarmProgramButton->setOn(true);
-      QString dispStr = i18n("Running '%1'").arg(mAlarmProgram);
-      QToolTip::add(mAlarmProgramButton, dispStr);
-    }
-    if (!event->alarm()->audioFile().isEmpty()) {
-      mAlarmSound = event->alarm()->audioFile();
-      mAlarmSoundButton->setOn(true);
-      QString dispStr = i18n("Playing '%1'").arg(mAlarmSound);
-      QToolTip::add(mAlarmSoundButton, dispStr);
-    }
-  } else {
-    alarmStuffEnable(false);
+// TODO: Deal with multiple alarms
+    break; // For now, stop after the first alarm
   }
 
   setCategories(event->categoriesStr());
@@ -295,31 +301,37 @@ void KOEditorGeneral::writeIncidence(Incidence *event)
   event->setDescription(mDescriptionEdit->text());
   event->setCategories(mCategoriesLabel->text());
   event->setSecrecy(mSecrecyCombo->currentItem());
-  
-  // alarm stuff
-  if (mAlarmButton->isChecked()) {
-    event->alarm()->setEnabled(true);
-    tmpStr = mAlarmTimeEdit->text();
-    j = tmpStr.toInt() * -60;
-    if (mAlarmIncrCombo->currentItem() == 1)
-      j = j * 60;
-    else if (mAlarmIncrCombo->currentItem() == 2)
-      j = j * (60 * 24);
 
-    tmpDT = event->dtStart();
-    tmpDT = tmpDT.addSecs(j);
-    event->alarm()->setTime(tmpDT);
-    if (!mAlarmProgram.isEmpty() && mAlarmProgramButton->isOn())
-      event->alarm()->setProgramFile(mAlarmProgram);
-    else
-      event->alarm()->setProgramFile("");
-    if (!mAlarmSound.isEmpty() && mAlarmSoundButton->isOn())
-      event->alarm()->setAudioFile(mAlarmSound);
-    else
-      event->alarm()->setAudioFile("");
-  } else {
-    event->alarm()->setEnabled(false);
-    event->alarm()->setProgramFile("");
-    event->alarm()->setAudioFile("");
+  // alarm stuff
+  Alarm* alarm;
+  for (QPtrListIterator<Alarm> it(event->alarms());
+       (alarm = it.current()) != 0;  ++it) {
+    if (mAlarmButton->isChecked()) {
+      alarm->setEnabled(true);
+      tmpStr = mAlarmTimeEdit->text();
+      j = tmpStr.toInt() * -60;
+      if (mAlarmIncrCombo->currentItem() == 1)
+        j = j * 60;
+      else if (mAlarmIncrCombo->currentItem() == 2)
+        j = j * (60 * 24);
+
+      tmpDT = event->dtStart();
+      tmpDT = tmpDT.addSecs(j);
+      alarm->setTime(tmpDT);
+      if (!mAlarmProgram.isEmpty() && mAlarmProgramButton->isOn())
+        alarm->setProgramFile(mAlarmProgram);
+      else
+        alarm->setProgramFile("");
+      if (!mAlarmSound.isEmpty() && mAlarmSoundButton->isOn())
+        alarm->setAudioFile(mAlarmSound);
+      else
+        alarm->setAudioFile("");
+    } else {
+      alarm->setEnabled(false);
+      alarm->setProgramFile("");
+      alarm->setAudioFile("");
+    }
+// TODO: Deal with multiple alarms
+    break; // For now, stop after the first alarm
   }
 }
