@@ -2,14 +2,20 @@
 
 #include <qlayout.h>
 #include <qtextview.h>
+#include <qtextcodec.h>
+#include <qfileinfo.h>
 
 #include <klocale.h>
 #include <kdebug.h>
 #include <kiconloader.h>
+//#include <khtml_part.h>
+#include <kstddirs.h>
+#include <kmessagebox.h>
 
 #include "calendar.h"
 #include "calprinter.h"
 #include "calendarview.h"
+#include "version.h"
 
 #include "kowhatsnextview.h"
 #include "kowhatsnextview.moc"
@@ -20,9 +26,11 @@ KOWhatsNextView::KOWhatsNextView(Calendar *calendar, QWidget *parent,
   : KOBaseView(calendar, parent, name)
 {
   mView = new QTextView(this);
+//  mViewer = new KHTMLPart(this);
 
   QBoxLayout *layoutTop = new QVBoxLayout(this);
   layoutTop->addWidget(mView);
+//  layoutTop->addWidget(mView->widget());
 }
 
 KOWhatsNextView::~KOWhatsNextView()
@@ -86,6 +94,12 @@ void KOWhatsNextView::updateView()
   }
 
   mView->setText(mText);
+  
+#if 0
+  mView->begin();
+  mView->write(mText);
+  mView->end();
+#endif
 }
 
 void KOWhatsNextView::selectDates(const QDateList dateList)
@@ -129,4 +143,116 @@ void KOWhatsNextView::appendTodo(Todo *ev)
   mText += "</b></td><td>";
   mText += ev->summary();
   mText += "</td></tr>";
+}
+
+void KOWhatsNextView::displayAboutPage()
+{
+#if 0
+  QString location = locate("data", "korganizer/about/main.html");
+  QString content = kFileToString(location);
+  mViewer->closeURL();
+  mViewer->begin(location);
+  QTextCodec *codec = QTextCodec::codecForName(KGlobal::locale()->charset());
+  if (codec) mViewer->setCharset(codec->name(), true);
+  else mViewer->setCharset(KGlobal::locale()->charset(), true);
+
+  QString info =
+    i18n("<h2>Welcome to KOrganizer %1</h2><p>KOrganizer is the personal "
+    "organizer of calendaring and scheduling information for the K "
+    "Desktop Environment. It is designed to be fully compatible with Internet "
+    "calendaring standards including vCalendar and iCalendar.</p>\n"
+    "<ul><li>KOrganizer has many powerful features which are described in the "
+    "<A HREF=\"%2\">documentation</A></li>\n"
+    "<li>You can find news and updates at the <A HREF=\"%3\">KOrganizer homepage"
+    "</A></li></ul>\n").arg(korgVersion)
+    .arg("help:korganizer")
+    .arg("http://korganizer.kde.org/") +
+    i18n("<p>Some of the new features in this release of KOrganizer include "
+    "(compared to KOrganizer 2.1, which is part of KDE 2.1):</p>\n"
+    "<ul>\n"
+    "<li>iCalendar support</li>\n"
+    "<li>Journal view</li>\n"
+    "<li>Project view</li>\n"
+    "</ul>\n");
+  info += i18n("<p>We hope that you will enjoy KOrganizer.</p>\n"
+    "<p>Thank you,</p>\n"
+    "<p>&nbsp; &nbsp; The KOrganizer Team</p>");
+  mViewer->write(content.arg(info));
+  mViewer->end();
+#endif
+}
+
+static void msgDialog(const QString &msg)
+{
+  KMessageBox::sorry(0, msg, i18n("File I/O Error"));
+}
+
+QString KOWhatsNextView::kFileToString(const QString &aFileName,bool aEnsureNL,
+                                       bool aVerbose)
+{
+  QCString result;
+  QFileInfo info(aFileName);
+  unsigned int readLen;
+  unsigned int len = info.size();
+  QFile file(aFileName);
+
+  //assert(aFileName!=NULL);
+  if( aFileName == NULL)
+    return "";
+
+  if (!info.exists())
+  {
+    if (aVerbose)
+      msgDialog(i18n("The specified file does not exist:\n%1").arg(aFileName));
+    return QString::null;
+  }
+  if (info.isDir())
+  {
+    if (aVerbose)
+      msgDialog(i18n("This is a directory and not a file:\n%1").arg(aFileName));
+    return QString::null;
+  }
+  if (!info.isReadable())
+  {
+    if (aVerbose)
+      msgDialog(i18n("You do not have read permissions "
+				   "to the file:\n%1").arg(aFileName));
+    return QString::null;
+  }
+  if (len <= 0) return QString::null;
+
+  if (!file.open(IO_Raw|IO_ReadOnly))
+  {
+    if (aVerbose) switch(file.status())
+    {
+    case IO_ReadError:
+      msgDialog(i18n("Could not read file:\n%1").arg(aFileName));
+      break;
+    case IO_OpenError:
+      msgDialog(i18n("Could not open file:\n%1").arg(aFileName));
+      break;
+    default:
+      msgDialog(i18n("Error while reading file:\n%1").arg(aFileName));
+    }
+    return QString::null;
+  }
+
+  result.resize(len + (int)aEnsureNL + 1);
+  readLen = file.readBlock(result.data(), len);
+  if (aEnsureNL && result[len-1]!='\n')
+  {
+    result[len++] = '\n';
+    readLen++;
+  }
+  result[len] = '\0';
+
+  if (readLen < len)
+  {
+    QString msg = i18n("Could only read %1 bytes of %2.")
+		.arg(readLen).arg(len);
+    msgDialog(msg);
+    return QString::null;
+  }
+
+  return result;
 }

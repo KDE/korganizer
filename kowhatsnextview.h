@@ -1,5 +1,5 @@
-#ifndef _KOWHATSNEXTVIEW_H
-#define _KOWHATSNEXTVIEW_H
+#ifndef KOWHATSNEXTVIEW_H
+#define KOWHATSNEXTVIEW_H
 // $Id$
 
 #include <qlistview.h>
@@ -7,6 +7,7 @@
 #include "kobaseview.h"
 
 class QTextView;
+//class KHTMLPart;
 
 /**
  * This class provides a view of the next events and todos
@@ -28,6 +29,8 @@ class KOWhatsNextView : public KOBaseView
     virtual void printPreview(CalPrinter *calPrinter,
                               const QDate &, const QDate &);
   
+    void displayAboutPage();
+  
   public slots:
     virtual void updateView();
     virtual void selectDates(const QDateList dateList);
@@ -40,6 +43,11 @@ class KOWhatsNextView : public KOBaseView
     void appendTodo(Todo *);
   
   private:
+    // Taken from kmail/kfileio
+    QString kFileToString(const QString &fileName, bool ensureNewline=TRUE,
+	                  bool withDialogs=TRUE);
+
+//    KHTMLPart *mView;
     QTextView *mView;
     QString mText;
 };

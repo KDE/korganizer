@@ -349,6 +349,8 @@ class CalendarView : public QWidget
     void showFilter(bool visible);
     void updateFilter();
     void filterEdited();
+
+    void showIntro();
       
   protected slots:
     /** Move the current view date to today */

@@ -1667,3 +1667,9 @@ void CalendarView::takeOverCalendar()
   
   updateView();
 }
+
+void CalendarView::showIntro()
+{
+  showWhatsNextView();
+  mWhatsNextView->displayAboutPage();
+}

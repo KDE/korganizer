@@ -5,8 +5,8 @@ bin_PROGRAMS = 	korganizer alarmd
 lib_LTLIBRARIES = libkorganizer.la
 
 libkorganizer_la_LDFLAGS = $(all_libraries) $(KDE_RPATH)
-libkorganizer_la_LIBADD  = $(LIB_KPARTS) -lkdeprint \
-                           $(LIB_KFILE) -lkab \
+libkorganizer_la_LIBADD  = $(LIB_KPARTS) $(LIB_KFILE) \
+                           -lkdeprint -lkab \
                            $(top_builddir)/kgantt/kgantt/libkgantt.la \
                            $(top_builddir)/libkcal/libkcal.la
                            
@@ -17,8 +17,7 @@ korganizer_SOURCES = main.cpp
 korganizer_LDADD   = libkorganizer.la
 
 alarmd_LDFLAGS = $(all_libraries) $(KDE_RPATH)
-alarmd_LDADD = $(LIB_KDEUI) \
-                           $(top_builddir)/libkcal/libkcal.la
+alarmd_LDADD = $(LIB_KDEUI) $(top_builddir)/libkcal/libkcal.la
 
 
 ########## FILES
@@ -82,8 +81,7 @@ noinst_HEADERS = komonthview.h \
         koeventview.h koprojectview.h
 
 
-SUBDIRS = pixmaps \
-	  sounds
+SUBDIRS = pixmaps sounds
 
 datadir = $(kde_bindir)
 data_SCRIPTS = ical2vcal

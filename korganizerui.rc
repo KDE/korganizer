@@ -54,6 +54,9 @@
       <Action name="edit_filters"/>
       <Action name="conf_datetime"/>
     </Menu>
+    <Menu name="help"><text>&amp;Help</text>
+      <Action name="show_intro"/>
+    </Menu>
   </MenuBar>
 
   <ToolBar name="mainToolBar"><text>Main</text>
