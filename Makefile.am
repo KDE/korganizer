@@ -3,6 +3,7 @@ KDE_OPTIONS = nofinal
 SUBDIRS = . pixmaps sounds plugins interfaces
 
 INCLUDES = -I$(srcdir)/interfaces -I$(top_srcdir) $(all_includes)
+AM_CPPFLAGS = -DLIBKCAL_BACK_COMPAT
 
 bin_PROGRAMS = korganizer
 
