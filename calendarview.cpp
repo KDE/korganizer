@@ -103,6 +103,7 @@
 #ifndef KORG_NOSPLITTER
 #include <qsplitter.h>
 #endif
+#include <qvbox.h>
 
 #include <stdlib.h>
 
@@ -151,14 +152,10 @@ CalendarView::CalendarView( QWidget *parent, const char *name )
   mFilterView = new KOFilterView( &mFilters, mLeftSplitter,
                                   "CalendarView::FilterView" );
 
-  QWidget *rightBox = new QWidget( mPanner );
-  QBoxLayout *rightLayout = new QVBoxLayout( rightBox );
-
+  QVBox *rightBox = new QVBox( mPanner );
   mNavigatorBar = new NavigatorBar( rightBox );
-  rightLayout->addWidget( mNavigatorBar );
-
   mRightFrame = new QWidgetStack( rightBox );
-  rightLayout->addWidget( mRightFrame, 1 );
+  rightBox->setStretchFactor( mRightFrame, 1 );
 
   mLeftFrame = mLeftSplitter;
 #else

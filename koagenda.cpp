@@ -238,7 +238,6 @@ void KOAgenda::init()
   mItems.setAutoDelete( true );
   mItemsToDelete.setAutoDelete( true );
 
-//  resizeContents( int(mGridSpacingX * mColumns + 1) , int(mGridSpacingY * mRows + 1) );
   resizeContents( int( mGridSpacingX * mColumns ),
                   int( mGridSpacingY * mRows ) );
 
@@ -1648,23 +1647,21 @@ void KOAgenda::resizeEvent ( QResizeEvent *ev )
 //  kdDebug(5850) << "KOAgenda::resizeEvent" << endl;
   double subCellWidth;
   KOAgendaItem *item;
+  QSize newSize( ev->size() );
   if (mAllDayMode) {
-    mGridSpacingX = double( width() - 2 * frameWidth() ) / (double)mColumns;
-//    kdDebug(5850) << "Frame " << frameWidth() << endl;
-    mGridSpacingY = height() - 2 * frameWidth();
-    resizeContents( int( mGridSpacingX * mColumns ), int( mGridSpacingY ) );
+    mGridSpacingX = double( newSize.width() - 2 * frameWidth() ) / (double)mColumns;
+    mGridSpacingY = newSize.height() - 2 * frameWidth();
 
     for ( item=mItems.first(); item != 0; item=mItems.next() ) {
       subCellWidth = calcSubCellWidth( item );
       placeAgendaItem( item, subCellWidth );
     }
   } else {
-    mGridSpacingX = double(width() - verticalScrollBar()->width() - 2 * frameWidth()) / double(mColumns);
+    mGridSpacingX = double( newSize.width() - verticalScrollBar()->width() - 2 * frameWidth()) / double(mColumns);
     // make sure that there are not more than 24 per day
-    mGridSpacingY = double(height() - 2 * frameWidth()) / double(mRows);
-    if ( mGridSpacingY < mDesiredGridSpacingY ) mGridSpacingY = mDesiredGridSpacingY;
-
-    resizeContents( int( mGridSpacingX * mColumns ), int( mGridSpacingY * mRows ));
+    mGridSpacingY = double(newSize.height() - 2 * frameWidth()) / double(mRows);
+    if ( mGridSpacingY < mDesiredGridSpacingY ) 
+      mGridSpacingY = mDesiredGridSpacingY;
 
     for ( item=mItems.first(); item != 0; item=mItems.next() ) {
       subCellWidth = calcSubCellWidth( item );
@@ -1678,7 +1675,6 @@ void KOAgenda::resizeEvent ( QResizeEvent *ev )
   marcus_bains();
 
   QScrollView::resizeEvent(ev);
-  viewport()->update();
 }
 
 
