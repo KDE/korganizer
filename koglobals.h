@@ -1,5 +1,5 @@
 #ifndef KORG_GLOBALS_H
-#define KORG_GLOABLS_H
+#define KORG_GLOBALS_H
 
 class KOGlobals
 {
