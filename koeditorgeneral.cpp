@@ -83,7 +83,10 @@ void KOEditorGeneral::initHeader(QWidget *parent,QBoxLayout *topLayout)
   headerLayout->addMultiCellWidget(mOwnerLabel,0,0,0,1);
 #endif
 
-  QLabel *summaryLabel = new QLabel(i18n("S&ummary:"),parent);
+  QLabel *summaryLabel = new QLabel(i18n("T&itle:"),parent);
+  QFont f = summaryLabel->font();
+  f.setBold(TRUE);
+  summaryLabel->setFont(f);
   headerLayout->addWidget(summaryLabel,1,0);
 
   mSummaryEdit = new FocusLineEdit(parent);
