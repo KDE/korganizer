@@ -511,25 +511,36 @@ void KOTodoView::purgeCompleted()
       i18n("Delete all completed To-Dos?"),i18n("Purge To-Dos"),i18n("Purge"));
 
   if (result == KMessageBox::Continue) {
-    QPtrList<Todo> todoCal = calendar()->getTodoList();
-
-    Todo *aTodo;
+    QPtrList<Todo> todoCal;
+    QPtrList<Incidence> rel;
+    Todo *aTodo, *rTodo;
+    Incidence *rIncidence;
     bool childDelete = false;
     bool deletedOne = true;
     while (deletedOne) {
+      todoCal.clear();
+      todoCal = calendar()->getTodoList();
       deletedOne = false;
       for (aTodo = todoCal.first(); aTodo; aTodo = todoCal.next()) {
-      if (aTodo->isCompleted())
-        if (!aTodo->relations().isEmpty()) {
-          childDelete = true;
-        } else {
-          calendar()->deleteTodo(aTodo);
-          deletedOne = true;
+        if (aTodo->isCompleted()) {
+          rel = aTodo->relations();
+          if (!rel.isEmpty()) {
+            for (rIncidence=rel.first(); rIncidence; rIncidence=rel.next()){
+              if (rIncidence->type()=="Todo") {
+                rTodo = static_cast<Todo*>(rIncidence);
+                if (!rTodo->isCompleted()) childDelete = true;
+              }
+            }
+          }
+          else {
+            calendar()->deleteTodo(aTodo);
+            deletedOne = true;
+          }
         }
       }
     }
     if (childDelete){
-      KMessageBox::sorry(this,i18n("Cannot purge To-Do which has children."),
+      KMessageBox::sorry(this,i18n("Cannot purge To-Do which has uncompleted children."),
                          i18n("Delete To-Do"));
     }
     updateView();
