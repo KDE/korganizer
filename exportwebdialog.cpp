@@ -45,7 +45,6 @@
 #include <kconfig.h>
 #include <koglobals.h>
 #include <kurlrequester.h>
-#include <ktempfile.h>
 #include <kio/netaccess.h>
 #include <knotifyclient.h>
 

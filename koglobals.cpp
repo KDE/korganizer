@@ -26,7 +26,6 @@
 #include <kdebug.h>
 #include <kglobal.h>
 #include <kconfig.h>
-#include <kconfig.h>
 #include <kstandarddirs.h>
 
 #include <calendarsystem/kcalendarsystem.h>

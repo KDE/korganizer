@@ -53,7 +53,6 @@
 #ifndef KORG_NOPLUGINS
 #include "kocore.h"
 #endif
-#include "koglobals.h"
 #include "koprefs.h"
 #include "koagenda.h"
 #include "koagendaitem.h"

@@ -37,7 +37,6 @@
 #include <qwidgetstack.h>
 #include <qclipboard.h>
 #include <qptrlist.h>
-#include <qclipboard.h>
 #include <qfile.h>
 #ifndef KORG_NOSPLITTER
 #include <qsplitter.h>

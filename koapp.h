@@ -24,7 +24,7 @@
 #ifndef KORGANIZERAPP_H
 #define KORGANIZERAPP_H
 
-#include <kuniqueapp.h>
+#include <kuniqueapplication.h>
 
 class KOrganizerApp : public KUniqueApplication
 {

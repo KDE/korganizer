@@ -33,7 +33,6 @@
 #include <qwidget.h>
 #include <qptrlist.h>
 #include <qtabdialog.h>
-#include <qframe.h>
 #include <qsplitter.h>
 
 #include <ktoolbar.h>

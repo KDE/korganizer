@@ -34,7 +34,6 @@
 #include <klocale.h>
 #include <kiconloader.h>
 #include <kmessagebox.h>
-#include <kdebug.h>
 #ifndef KORG_NOKABC
 #include <kabc/addresseedialog.h>
 #endif

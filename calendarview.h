@@ -28,7 +28,6 @@
 #include <qlayout.h>
 #include <qwidget.h>
 #include <qptrlist.h>
-#include <qframe.h>
 #include <qvbox.h>
 #include <qmap.h>
 
