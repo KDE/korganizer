@@ -77,10 +77,16 @@ void KOTodoViewItem::construct()
 
   setOn(mTodo->isCompleted());
   setText(0,mTodo->summary());
+  static const QPixmap recurPxmp = KOGlobals::self()->smallIcon("recur");
+  if (mTodo->doesRecur()) {
+    setPixmap(1,recurPxmp);
+    setSortKey(1, "1");
+  }
+  else setSortKey(1,"0");
   setText(2,QString::number(mTodo->priority()));
   setText(3,QString::number(mTodo->percentComplete()));
   if (mTodo->percentComplete()<100) {
-    if (mTodo->isCompleted()) setSortKey(2,QString::number(999));
+    if (mTodo->isCompleted()) setSortKey(3,QString::number(999));
     else setSortKey(3,QString::number(mTodo->percentComplete()));
   }
   else {
@@ -105,9 +111,6 @@ void KOTodoViewItem::construct()
     setText(4,"");
     setText(5,"");
   }
-  static const QPixmap recurPxmp = KOGlobals::self()->smallIcon("recur");
-  if (mTodo->doesRecur())
-    setPixmap(1,recurPxmp);
   setSortKey(4,keyd);
   setSortKey(5,keyt);
 
