@@ -2,23 +2,20 @@
 picsdir = $(kde_datadir)/korganizer/pics
 toolbardir = $(kde_datadir)/korganizer/toolbar
 
-pics_DATA = smallcal.xpm 1downarrow.xpm 1leftarrow.xpm 1rightarrow.xpm \
-	1uparrow.xpm 2downarrow.xpm 2leftarrow.xpm 2rightarrow.xpm \
-	2uparrow.xpm 3downarrow.xpm 3leftarrow.xpm 3rightarrow.xpm \
-	3uparrow.xpm checkmark.xpm checkedbox-mask.xpm checkedbox.xpm \
-	emptybox-mask.xpm emptybox.xpm bell.xpm recur.xpm \
-	runprog.xpm playsound.xpm knlogo1.gif smallclock.xpm mailappt.xpm \
-	nomailappt.xpm readonlyevent.xpm
+pics_DATA = smallcal.png 1downarrow.png 1leftarrow.png 1rightarrow.png \
+	1uparrow.png 2downarrow.png 2leftarrow.png 2rightarrow.png \
+	2uparrow.png 3downarrow.png 3leftarrow.png 3rightarrow.png \
+	3uparrow.png checkmark.png checkedbox-mask.png checkedbox.png \
+	emptybox-mask.png emptybox.png bell.png recur.png \
+	runprog.png playsound.png knlogo1.gif smallclock.png mailappt.png \
+	nomailappt.png readonlyevent.png alarmd.png alarmd-disabled.png
 
-toolbar_DATA = listicon.xpm 5dayicon.xpm  dayicon.xpm agenda.xpm \
-	weekicon.xpm todayicon.xpm newevent.xpm newrecurevent.xpm \
-	delete.xpm monthicon.xpm search.xpm checkedclipboard.xpm \
-	send.xpm findf.xpm todolist.xpm
+toolbar_DATA = listicon.png 5dayicon.png  dayicon.png agenda.png \
+	weekicon.png todayicon.png newevent.png newrecurevent.png \
+	delete.png monthicon.png search.png checkedclipboard.png \
+	send.png findf.png todolist.png
 
-EXTRA_DIST = dayview.xpm   inverse_recur.xpm alarmd.xpm alarmd-disabled.xpm
+EXTRA_DIST = dayview.png   inverse_recur.png alarmd.png alarmd-disabled.png
 
 KDE_ICON = korganizer
-
-mini_DATA = alarmd.xpm alarmd-disabled.xpm
-minidir = $(kde_icondir)/mini
 
