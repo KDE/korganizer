@@ -34,7 +34,7 @@ namespace KOrg {
 
 class IncidenceChangerBase : public QObject
 {
-Q_OBJECT;
+Q_OBJECT
 public:
   IncidenceChangerBase( Calendar*cal, QObject *parent = 0 ) : 
         QObject( parent ), mCalendar( cal ) {}

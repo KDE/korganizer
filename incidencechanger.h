@@ -28,7 +28,7 @@
 
 class IncidenceChanger : public KOrg::IncidenceChangerBase
 {
-Q_OBJECT;
+Q_OBJECT
 public:
   IncidenceChanger( Calendar*cal, QObject *parent ) : IncidenceChangerBase( cal, parent ) {}
   ~IncidenceChanger() {}
