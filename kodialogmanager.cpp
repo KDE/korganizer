@@ -37,9 +37,6 @@
 #include "kojournaleditor.h"
 #include "searchdialog.h"
 #include "filtereditdialog.h"
-#ifndef KORG_NOPLUGINS
-#include "plugindialog.h"
-#endif
 #ifndef KORG_NOARCHIVE
 #include "archivedialog.h"
 #endif
@@ -51,8 +48,38 @@
 #include "kodialogmanager.moc"
 
 
-// TODO: Handle KOEventViewerDialogs in dialog manager. Pass
+// FIXME: Handle KOEventViewerDialogs in dialog manager. Pass
 // KOPrefs::mCompactDialog.
+
+class KODialogManager::DialogManagerVisitor : public IncidenceBase::Visitor
+{
+  public:
+    DialogManagerVisitor() : mDialogManager( 0 ) {}
+
+    bool act( IncidenceBase *incidence, KODialogManager *manager )
+    {
+      mDialogManager = manager;
+      return incidence->accept( *this );
+    }
+
+  protected:
+    KODialogManager *mDialogManager;
+};
+
+class KODialogManager::EditorDialogVisitor : 
+      public KODialogManager::DialogManagerVisitor
+{
+  public: 
+    EditorDialogVisitor() : DialogManagerVisitor(), mEditor( 0 ) {}
+    KOIncidenceEditor *editor() const { return mEditor; }
+  protected:
+    bool visit( Event * ) { mEditor = mDialogManager->getEventEditor(); return mEditor; }
+    bool visit( Todo * ) { mEditor = mDialogManager->getTodoEditor(); return mEditor; }
+    bool visit( Journal * ) { mEditor = mDialogManager->getJournalEditor(); return mEditor; }
+  protected:
+    KOIncidenceEditor *mEditor;
+};
+
 
 KODialogManager::KODialogManager( CalendarView *mainView ) :
   QObject(), mMainView( mainView )
@@ -63,9 +90,10 @@ KODialogManager::KODialogManager( CalendarView *mainView ) :
   mSearchDialog = 0;
   mArchiveDialog = 0;
   mFilterEditDialog = 0;
-  mPluginDialog = 0;
 
-  mCategoryEditDialog = new KPIM::CategoryEditDialog(KOPrefs::instance(),mMainView);
+  mCategoryEditDialog = new KPIM::CategoryEditDialog( KOPrefs::instance(), mMainView );
+  connect( mainView, SIGNAL( categoriesChanged() ), 
+           mCategoryEditDialog, SLOT( reload() ) );
   KOGlobals::fitDialogToScreen( mCategoryEditDialog );
 }
 
@@ -79,24 +107,13 @@ KODialogManager::~KODialogManager()
   delete mArchiveDialog;
 #endif
   delete mFilterEditDialog;
-#ifndef KORG_NOPLUGINS
-  delete mPluginDialog;
-#endif
 }
 
-void KODialogManager::errorSaveEvent( QWidget *parent )
+void KODialogManager::errorSaveIncidence( QWidget *parent, Incidence *incidence )
 {
-  KMessageBox::sorry( parent, i18n("Unable to save event.") );
-}
-
-void KODialogManager::errorSaveTodo( QWidget *parent )
-{
-  KMessageBox::sorry( parent, i18n("Unable to save todo item.") );
-}
-
-void KODialogManager::errorSaveJournal( QWidget *parent )
-{
-  KMessageBox::sorry( parent, i18n("Unable to save journal entry.") );
+  KMessageBox::sorry( parent, i18n("Unable to save %1 \"%2\".")
+                      .arg( i18n( incidence->type() ) )
+                      .arg( incidence->summary() ) );
 }
 
 OutgoingDialog *KODialogManager::outgoingDialog()
@@ -134,7 +151,7 @@ void KODialogManager::showOptionsDialog()
              mMainView, SLOT( updateConfig() ) );
     connect( mOptionsDialog, SIGNAL( okClicked() ),
              mMainView, SLOT( updateConfig() ) );
-    // TODO Find a way to do this with KCMultiDialog
+    // @TODO Find a way to do this with KCMultiDialog
     connect(mCategoryEditDialog,SIGNAL(categoryConfigChanged()),
             mOptionsDialog,SLOT(updateCategories()));
 #endif
@@ -146,10 +163,10 @@ void KODialogManager::showOptionsDialog()
     modules.append( "korganizer_configviews.desktop" );
     modules.append( "korganizer_configfonts.desktop" );
     modules.append( "korganizer_configcolors.desktop" );
-    modules.append( "korganizer_configprinting.desktop" );
     modules.append( "korganizer_configgroupscheduling.desktop" );
     modules.append( "korganizer_configgroupautomation.desktop" );
     modules.append( "korganizer_configfreebusy.desktop" );
+    modules.append( "korganizer_configplugins.desktop" );
 
     // add them all
     QStringList::iterator mit;
@@ -249,17 +266,14 @@ void KODialogManager::showFilterEditDialog( QPtrList<CalFilter> *filters )
   mFilterEditDialog->raise();
 }
 
-void KODialogManager::showPluginDialog()
+KOIncidenceEditor *KODialogManager::getEditor( Incidence *incidence )
 {
-#ifndef KORG_NOPLUGINS
-  if (!mPluginDialog) {
-    mPluginDialog = new PluginDialog(mMainView);
-    connect(mPluginDialog,SIGNAL(configChanged()),
-            mMainView,SLOT(updateConfig()));
-  }
-  mPluginDialog->show();
-  mPluginDialog->raise();
-#endif
+  if ( !incidence ) return 0;
+  EditorDialogVisitor v;
+  if ( v.act( incidence, this ) ) {
+    return v.editor();
+  } else 
+    return 0;
 }
 
 KOEventEditor *KODialogManager::getEventEditor()
@@ -282,14 +296,8 @@ void KODialogManager::connectTypeAhead( KOEventEditor *editor,
 
 void KODialogManager::connectEditor( KOIncidenceEditor*editor )
 {
-  connect( editor, SIGNAL( incidenceAdded( Incidence * ) ),
-           mMainView, SLOT( incidenceAdded( Incidence * ) ) );
-  connect( editor, SIGNAL( incidenceChanged( Incidence *, Incidence * ) ),
-           mMainView, SLOT( incidenceChanged( Incidence *, Incidence * ) ) );
-  connect( editor, SIGNAL( incidenceToBeDeleted( Incidence * ) ),
-           mMainView, SLOT( incidenceToBeDeleted( Incidence * ) ) );
-  connect( editor, SIGNAL( incidenceDeleted( Incidence * ) ),
-           mMainView, SLOT( incidenceDeleted( Incidence * ) ) );
+/*  connect( editor, SIGNAL( deleteIncidenceSignal( Incidence * ) ),
+           mMainView, SLOT( deleteIncidence( Incidence * ) ) );*/
 
   connect( mCategoryEditDialog, SIGNAL( categoryConfigChanged() ),
            editor, SLOT( updateCategoryConfig() ) );
@@ -303,7 +311,7 @@ void KODialogManager::connectEditor( KOIncidenceEditor*editor )
   connect( mMainView, SIGNAL( closingDown() ), editor, SLOT( reject() ) );
 
   connect( editor, SIGNAL( deleteAttendee( Incidence * ) ),
-           mMainView, SLOT( schedule_cancel( Incidence * ) ) );
+           mMainView, SLOT( deleteAttendee( Incidence * ) ) );
 }
 
 KOTodoEditor *KODialogManager::getTodoEditor()
