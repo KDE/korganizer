@@ -34,7 +34,6 @@
 #include "koeditorrecurrence.h"
 #include "koincidenceeditor.h"
 
-class QWidgetStack;
 class SaveTemplateDialog;
 
 using namespace KCal;
@@ -90,7 +89,6 @@ class KOEventEditor : public KOIncidenceEditor
   protected slots:
     void loadDefaults();
     void deleteEvent();
-    void enableRecurrence(bool);
 
     void slotLoadTemplate();
     void slotSaveTemplate();
@@ -113,9 +111,6 @@ class KOEventEditor : public KOIncidenceEditor
 
     KOEditorGeneralEvent *mGeneral;
     KOEditorRecurrence   *mRecurrence;
-
-    QWidgetStack *mRecurrenceStack;
-    QLabel *mRecurrenceDisabled;
 };
 
 #endif

@@ -1,6 +1,6 @@
 /*
     This file is part of KOrganizer.
-    Copyright (c) 2000,2001 Cornelius Schumacher <schumacher@kde.org>
+    Copyright (c) 2000,2001,2002 Cornelius Schumacher <schumacher@kde.org>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -30,7 +30,10 @@
 #include <qwidgetstack.h>
 #include <qdatetime.h>
 #include <qlistbox.h>
+#include <qspinbox.h>
+#include <qcheckbox.h>
 
+#include <kdialog.h>
 #include <kglobal.h>
 #include <klocale.h>
 #include <kiconloader.h>
@@ -46,924 +49,755 @@
 #include "koeditorrecurrence.h"
 #include "koeditorrecurrence.moc"
 
+/////////////////////////// RecurBase ///////////////////////////////
 
-KOEditorRecurrence::KOEditorRecurrence(int spacing,QWidget* parent,
-                                       const char* name) :
-  QWidget( parent, name, 0 )
+RecurBase::RecurBase( QWidget *parent, const char *name ) :
+  QWidget( parent, name )
 {
-  mSpacing = spacing;
+  mFrequencyEdit = new QSpinBox( 1, 9999, 1, this );
+  mFrequencyEdit->setValue( 1 );
+}
 
-  mEnabled = false;
+QWidget *RecurBase::frequencyEdit()
+{
+  return mFrequencyEdit;
+}
 
-  initMain();
-  initExceptions();
+void RecurBase::setFrequency( int f )
+{
+  if ( f < 1 ) f = 1;
 
-  initLayout();
+  mFrequencyEdit->setValue( f );
+}
+
+int RecurBase::frequency()
+{
+  return mFrequencyEdit->value();
+}
+
+/////////////////////////// RecurDaily ///////////////////////////////
+
+RecurDaily::RecurDaily( QWidget *parent, const char *name ) :
+  RecurBase( parent, name )
+{
+  QBoxLayout *topLayout = new QHBoxLayout( this );
+  topLayout->setSpacing( KDialog::spacingHint() );
+
+  QLabel *preLabel = new QLabel( i18n("Recur every"), this );
+  topLayout->addWidget( preLabel );
+
+  topLayout->addWidget( frequencyEdit() );
+
+  QLabel *postLabel = new QLabel( i18n("day(s)"), this );
+  topLayout->addWidget( postLabel );
+}
+
+
+/////////////////////////// RecurWeekly ///////////////////////////////
+
+RecurWeekly::RecurWeekly( QWidget *parent, const char *name ) :
+  RecurBase( parent, name )
+{
+  QBoxLayout *topLayout = new QVBoxLayout( this );
+  topLayout->setSpacing( KDialog::spacingHint() );
+
+  topLayout->addStretch( 1 );
+
+  QBoxLayout *weeksLayout = new QHBoxLayout( topLayout );
+
+  QLabel *preLabel = new QLabel( i18n("Recur every"), this );
+  weeksLayout->addWidget( preLabel );
+
+  weeksLayout->addWidget( frequencyEdit() );
+
+  QLabel *postLabel = new QLabel( i18n("week(s) on:"), this );
+  weeksLayout->addWidget( postLabel );
+
+  QHBox *dayBox = new QHBox( this );
+  topLayout->addWidget( dayBox, 1, AlignVCenter );
+  // TODO: Create day checks boxes as array
+  // TODO: Respect start of week setting
+  mSundayBox    = new QCheckBox(i18n("Sun"), dayBox );
+  mMondayBox    = new QCheckBox(i18n("Mon"), dayBox );
+  mTuesdayBox   = new QCheckBox(i18n("Tue"), dayBox );
+  mWednesdayBox = new QCheckBox(i18n("Wed"), dayBox );
+  mThursdayBox  = new QCheckBox(i18n("Thu"), dayBox );
+  mFridayBox    = new QCheckBox(i18n("Fri"), dayBox );
+  mSaturdayBox  = new QCheckBox(i18n("Sat"), dayBox );
+
+  topLayout->addStretch( 1 );
+}
+
+void RecurWeekly::setDays( const QBitArray &days )
+{
+  mMondayBox->setChecked   ( days.testBit( 0 ) );
+  mTuesdayBox->setChecked  ( days.testBit( 1 ) );
+  mWednesdayBox->setChecked( days.testBit( 2 ) );
+  mThursdayBox->setChecked ( days.testBit( 3 ) );
+  mFridayBox->setChecked   ( days.testBit( 4 ) );
+  mSaturdayBox->setChecked ( days.testBit( 5 ) );
+  mSundayBox->setChecked   ( days.testBit( 6 ) );
+}
+
+QBitArray RecurWeekly::days()
+{
+  QBitArray days( 7 );
+  
+  days.setBit( 0, mMondayBox->isChecked() );
+  days.setBit( 1, mTuesdayBox->isChecked() );
+  days.setBit( 2, mWednesdayBox->isChecked() );
+  days.setBit( 3, mThursdayBox->isChecked() );
+  days.setBit( 4, mFridayBox->isChecked() );
+  days.setBit( 5, mSaturdayBox->isChecked() );
+  days.setBit( 6, mSundayBox->isChecked() );
+
+  return days;
+}
+
+/////////////////////////// RecurMonthly ///////////////////////////////
+
+RecurMonthly::RecurMonthly( QWidget *parent, const char *name ) :
+  RecurBase( parent, name )
+{
+  QBoxLayout *topLayout = new QHBoxLayout( this );
+  topLayout->setSpacing( KDialog::spacingHint() );
+
+  QButtonGroup *buttonGroup = new QButtonGroup( this );
+  buttonGroup->setFrameStyle( QFrame::NoFrame );
+  topLayout->addWidget( buttonGroup, 1, AlignVCenter );
+
+  QGridLayout *buttonLayout = new QGridLayout( buttonGroup, 3, 2 );
+  buttonLayout->setSpacing( KDialog::spacingHint() );
+
+  mByDayRadio = new QRadioButton( i18n("Recur on the"), buttonGroup );
+  buttonLayout->addWidget( mByDayRadio, 0, 0 );
+
+  mByDayCombo = new QComboBox( buttonGroup );
+  mByDayCombo->setSizeLimit( 7 );
+  mByDayCombo->insertItem( i18n("1st") );
+  mByDayCombo->insertItem( i18n("2nd") );
+  mByDayCombo->insertItem( i18n("3rd") );
+  mByDayCombo->insertItem( i18n("4th") );
+  mByDayCombo->insertItem( i18n("5th") );
+  mByDayCombo->insertItem( i18n("6th") );
+  mByDayCombo->insertItem( i18n("7th") );
+  mByDayCombo->insertItem( i18n("8th") );
+  mByDayCombo->insertItem( i18n("9th") );
+  mByDayCombo->insertItem( i18n("10th") );
+  mByDayCombo->insertItem( i18n("11th") );
+  mByDayCombo->insertItem( i18n("12th") );
+  mByDayCombo->insertItem( i18n("13th") );
+  mByDayCombo->insertItem( i18n("14th") );
+  mByDayCombo->insertItem( i18n("15th") );
+  mByDayCombo->insertItem( i18n("16th") );
+  mByDayCombo->insertItem( i18n("17th") );
+  mByDayCombo->insertItem( i18n("18th") );
+  mByDayCombo->insertItem( i18n("19th") );
+  mByDayCombo->insertItem( i18n("20th") );
+  mByDayCombo->insertItem( i18n("21st") );
+  mByDayCombo->insertItem( i18n("22nd") );
+  mByDayCombo->insertItem( i18n("23rd") );
+  mByDayCombo->insertItem( i18n("24th") );
+  mByDayCombo->insertItem( i18n("25th") );
+  mByDayCombo->insertItem( i18n("26th") );
+  mByDayCombo->insertItem( i18n("27th") );
+  mByDayCombo->insertItem( i18n("28th") );
+  mByDayCombo->insertItem( i18n("29th") );
+  mByDayCombo->insertItem( i18n("30th") );
+  mByDayCombo->insertItem( i18n("31st") );
+  buttonLayout->addWidget( mByDayCombo, 0, 1 );
+
+  QLabel *byDayLabel = new QLabel( i18n("day"), buttonGroup );
+  buttonLayout->addWidget( byDayLabel, 0, 2 );
+
+
+  mByPosRadio = new QRadioButton( i18n("Recur on the" ), buttonGroup);
+  buttonLayout->addWidget( mByPosRadio, 1, 0 );
+
+  mByPosCountCombo = new QComboBox( buttonGroup );
+  mByPosCountCombo->insertItem( i18n("1st") );
+  mByPosCountCombo->insertItem( i18n("2nd") );
+  mByPosCountCombo->insertItem( i18n("3rd") );
+  mByPosCountCombo->insertItem( i18n("4th") );
+  mByPosCountCombo->insertItem( i18n("5th") );
+  buttonLayout->addWidget( mByPosCountCombo, 1, 1 );
+
+  mByPosWeekdayCombo = new QComboBox( buttonGroup );
+  mByPosWeekdayCombo->insertItem( i18n("Monday") );
+  mByPosWeekdayCombo->insertItem( i18n("Tuesday") );
+  mByPosWeekdayCombo->insertItem( i18n("Wednesday") );
+  mByPosWeekdayCombo->insertItem( i18n("Thursday") );
+  mByPosWeekdayCombo->insertItem( i18n("Friday") );
+  mByPosWeekdayCombo->insertItem( i18n("Saturday") );
+  mByPosWeekdayCombo->insertItem( i18n("Sunday") );
+  buttonLayout->addWidget( mByPosWeekdayCombo, 1, 2 );
+
+  QLabel *preLabel = new QLabel( i18n("every"), this );
+  topLayout->addWidget( preLabel );
+
+  topLayout->addWidget( frequencyEdit() );
+
+  QLabel *postLabel = new QLabel( i18n("month(s)"), this );
+  topLayout->addWidget( postLabel );
+}
+
+void RecurMonthly::setByDay( int day )
+{
+  mByDayRadio->setChecked( true );
+  mByDayCombo->setCurrentItem( day );
+}
+
+void RecurMonthly::setByPos( int count, int weekday )
+{
+  mByPosRadio->setChecked( true );
+  mByPosCountCombo->setCurrentItem( count );
+  mByPosWeekdayCombo->setCurrentItem( weekday );
+}
+
+bool RecurMonthly::byDay()
+{
+  return mByDayRadio->isChecked();
+}
+
+bool RecurMonthly::byPos()
+{
+  return mByPosRadio->isChecked();
+}
+
+int RecurMonthly::day()
+{
+  return mByDayCombo->currentItem() + 1;
+}
+
+int RecurMonthly::count()
+{
+  return mByPosCountCombo->currentItem() + 1;
+}
+
+int RecurMonthly::weekday()
+{
+  return mByPosWeekdayCombo->currentItem();
+}
+
+/////////////////////////// RecurYearly ///////////////////////////////
+
+RecurYearly::RecurYearly( QWidget *parent, const char *name ) :
+  RecurBase( parent, name )
+{
+  QBoxLayout *topLayout = new QHBoxLayout( this );
+  topLayout->setSpacing( KDialog::spacingHint() );
+
+  QButtonGroup *buttonGroup = new QButtonGroup( this );
+  buttonGroup->setFrameStyle( QFrame::NoFrame );
+  topLayout->addWidget( buttonGroup, 1, AlignVCenter );
+
+  QGridLayout *buttonLayout = new QGridLayout( buttonGroup, 3, 2 );
+
+  mByMonthRadio = new QRadioButton( i18n("Recur in the month of"),
+                                    buttonGroup);
+  buttonLayout->addWidget( mByMonthRadio, 0, 0 );
+
+  mByMonthCombo = new QComboBox( buttonGroup );
+  mByMonthCombo->insertItem( i18n("January") );
+  mByMonthCombo->insertItem( i18n("February") );
+  mByMonthCombo->insertItem( i18n("March") );
+  mByMonthCombo->insertItem( i18n("April") );
+  mByMonthCombo->insertItem( i18n("May") );
+  mByMonthCombo->insertItem( i18n("June") );
+  mByMonthCombo->insertItem( i18n("July") );
+  mByMonthCombo->insertItem( i18n("August") );
+  mByMonthCombo->insertItem( i18n("September") );
+  mByMonthCombo->insertItem( i18n("October") );
+  mByMonthCombo->insertItem( i18n("November") );
+  mByMonthCombo->insertItem( i18n("December") );
+  buttonLayout->addWidget( mByMonthCombo, 0, 1 );
+
+  
+  buttonLayout->setRowStretch( 1, 1 );
+
+
+  mByDayRadio = new QRadioButton( i18n("Recur on this day"),
+                                  buttonGroup);
+  buttonLayout->addMultiCellWidget( mByDayRadio, 2, 2, 0, 1 );
+
+
+  QLabel *preLabel = new QLabel( i18n("every"), this );
+  topLayout->addWidget( preLabel );
+
+  topLayout->addWidget( frequencyEdit() );
+
+  QLabel *postLabel = new QLabel( i18n("year(s)"), this );
+  topLayout->addWidget( postLabel );
+}
+
+void RecurYearly::setByDay()
+{
+  mByDayRadio->setChecked( true );
+}
+
+void RecurYearly::setByMonth( int month )
+{
+  mByMonthRadio->setChecked( true );
+  mByMonthCombo->setCurrentItem( month - 1 );
+}
+
+bool RecurYearly::byMonth()
+{
+  return mByMonthRadio->isChecked();
+}
+
+bool RecurYearly::byDay()
+{
+  return mByDayRadio->isChecked();
+}
+
+int RecurYearly::month()
+{
+  return mByMonthCombo->currentItem() + 1;
+}
+
+//////////////////////////// ExceptionsWidget //////////////////////////
+
+ExceptionsWidget::ExceptionsWidget( QWidget *parent, const char *name ) :
+  QWidget( parent, name )
+{
+  QBoxLayout *topLayout = new QVBoxLayout( this );
+
+  QGroupBox *groupBox = new QGroupBox( 1, Horizontal, i18n("Exceptions"),
+                                       this );
+  topLayout->addWidget( groupBox );
+
+  QWidget *box = new QWidget( groupBox );
+
+  QGridLayout *boxLayout = new QGridLayout( box );
+
+  mExceptionDateEdit = new KDateEdit( box );
+  mExceptionDateEdit->setDate( QDate::currentDate() );
+  boxLayout->addWidget( mExceptionDateEdit, 0, 0 );
+
+  QPushButton *addExceptionButton = new QPushButton( i18n("Add"), box );
+  boxLayout->addWidget( addExceptionButton, 1, 0 );
+  QPushButton *changeExceptionButton = new QPushButton( i18n("Change"), box );
+  boxLayout->addWidget( changeExceptionButton, 2, 0 );
+  QPushButton *deleteExceptionButton = new QPushButton( i18n("Delete"), box );
+  boxLayout->addWidget( deleteExceptionButton, 3, 0 );
+
+  mExceptionList = new QListBox( box );
+  boxLayout->addMultiCellWidget( mExceptionList, 0, 3, 1, 1 );
+
+  boxLayout->setRowStretch( 4, 1 );
+  boxLayout->setColStretch( 1, 3 );
+
+  connect( addExceptionButton, SIGNAL( clicked() ),
+	   SLOT( addException() ) );
+  connect( changeExceptionButton, SIGNAL( clicked() ),
+	   SLOT( changeException() ) );
+  connect( deleteExceptionButton, SIGNAL( clicked() ),
+	   SLOT( deleteException() ) );
+}
+
+void ExceptionsWidget::addException()
+{
+  QDate date = mExceptionDateEdit->date();
+  QString dateStr = KGlobal::locale()->formatDate( date );
+  if( !mExceptionList->findItem( dateStr ) ) {
+    mExceptionDates.append( date );
+    mExceptionList->insertItem( dateStr );
+  }
+}
+
+void ExceptionsWidget::changeException()
+{
+  int pos = mExceptionList->currentItem();
+  if ( pos < 0 ) return;
+
+  QDate date = mExceptionDateEdit->date();
+  mExceptionDates[ pos ] = date;
+  mExceptionList->changeItem( KGlobal::locale()->formatDate( date ), pos );
+}
+
+void ExceptionsWidget::deleteException()
+{
+  int pos = mExceptionList->currentItem();
+  if ( pos < 0 ) return;
+
+  mExceptionDates.remove( mExceptionDates.at( pos ) );
+  mExceptionList->removeItem( pos );
+}
+
+void ExceptionsWidget::setDates( const DateList &dates )
+{
+  mExceptionList->clear();
+  mExceptionDates.clear();
+  DateList::ConstIterator dit;
+  for ( dit = dates.begin(); dit != dates.end(); ++dit ) {
+    mExceptionList->insertItem( KGlobal::locale()->formatDate(* dit ) );
+    mExceptionDates.append( *dit );
+  }
+}
+
+DateList ExceptionsWidget::dates()
+{
+  return mExceptionDates;
+}
+
+/////////////////////////////// Main Widget /////////////////////////////
+
+KOEditorRecurrence::KOEditorRecurrence( QWidget* parent, const char *name ) :
+  QWidget( parent, name )
+{
+  QGridLayout *topLayout = new QGridLayout( this );
+  topLayout->setSpacing( KDialog::spacingHint() );
+
+  mEnabledCheck = new QCheckBox( i18n("Enable Recurrence"), this );
+  connect( mEnabledCheck, SIGNAL( toggled( bool ) ),
+           SLOT( setEnabled( bool ) ) );
+  topLayout->addMultiCellWidget( mEnabledCheck, 0, 0, 0, 1 );
+
+
+  mTimeGroupBox = new QGroupBox( 1, Horizontal, i18n("Appointment Time "),
+                                 this );
+  topLayout->addMultiCellWidget( mTimeGroupBox, 1, 1 , 0 , 1 );
+
+//  QFrame *timeFrame = new QFrame( mTimeGroupBox );
+//  QBoxLayout *layoutTimeFrame = new QHBoxLayout( timeFrame );
+//  layoutTimeFrame->setSpacing( KDialog::spacingHint() );
+
+  mDateTimeLabel = new QLabel( mTimeGroupBox );
+//  mDateTimeLabel = new QLabel( timeFrame );
+//  layoutTimeFrame->addWidget( mDateTimeLabel );
+
+
+  mRuleBox = new QGroupBox( 1, Vertical, i18n("Recurrence Rule"), this );
+  topLayout->addMultiCellWidget( mRuleBox, 2, 2, 0, 1 );
+
+  QButtonGroup *ruleButtonGroup = new QButtonGroup( 1, Horizontal, mRuleBox );
+  ruleButtonGroup->setFrameStyle( QFrame::NoFrame );
+
+  mDailyButton = new QRadioButton( i18n("Daily"), ruleButtonGroup );
+  mWeeklyButton = new QRadioButton( i18n("Weekly"), ruleButtonGroup );
+  mMonthlyButton = new QRadioButton( i18n("Monthly"), ruleButtonGroup );
+  mYearlyButton = new QRadioButton( i18n("Yearly"), ruleButtonGroup );
+
+  QFrame *ruleSepFrame = new QFrame( mRuleBox );
+  ruleSepFrame->setFrameStyle( QFrame::VLine | QFrame::Sunken );
+
+  mRuleStack = new QWidgetStack( mRuleBox );
+
+  mDaily = new RecurDaily( mRuleStack );
+  mRuleStack->addWidget( mDaily, 0 );
+
+  mWeekly = new RecurWeekly( mRuleStack );
+  mRuleStack->addWidget( mWeekly, 0 );
+
+  mMonthly = new RecurMonthly( mRuleStack );
+  mRuleStack->addWidget( mMonthly, 0 );
+
+  mYearly = new RecurYearly( mRuleStack );
+  mRuleStack->addWidget( mYearly, 0 );
+
+  connect( mDailyButton, SIGNAL( toggled( bool ) ),
+           SLOT( showCurrentRule() ) );
+  connect( mWeeklyButton, SIGNAL( toggled( bool ) ),
+           SLOT( showCurrentRule() ) );
+  connect( mMonthlyButton, SIGNAL( toggled( bool ) ),
+           SLOT( showCurrentRule() ) );
+  connect( mYearlyButton, SIGNAL( toggled( bool ) ),
+           SLOT( showCurrentRule() ) );
+
+
+  mRangeGroupBox = new QGroupBox( 1, Horizontal, i18n("Recurrence Range"),
+                                  this );
+  topLayout->addWidget( mRangeGroupBox, 3, 0 );
+
+  QWidget *rangeBox = new QWidget( mRangeGroupBox );
+  QVBoxLayout *rangeLayout = new QVBoxLayout( rangeBox );
+  rangeLayout->setSpacing( KDialog::spacingHint() );
+
+  mStartDateLabel = new QLabel( i18n("Begin on:"), rangeBox );
+  rangeLayout->addWidget( mStartDateLabel );
+
+  QButtonGroup *rangeButtonGroup = new QButtonGroup;
+
+  mNoEndDateButton = new QRadioButton( i18n("No ending date"), rangeBox );
+  rangeButtonGroup->insert( mNoEndDateButton );
+  rangeLayout->addWidget( mNoEndDateButton );
+
+  QBoxLayout *durationLayout = new QHBoxLayout( rangeLayout );
+  durationLayout->setSpacing( KDialog::spacingHint() );
+
+  mEndDurationButton = new QRadioButton( i18n("End after"), rangeBox );
+  rangeButtonGroup->insert( mEndDurationButton );
+  durationLayout->addWidget( mEndDurationButton );
+  
+  mEndDurationEdit = new QSpinBox( 1, 9999, 1, rangeBox );
+  durationLayout->addWidget( mEndDurationEdit );
+
+  QLabel *endDurationLabel = new QLabel( i18n("occurrence(s)"), rangeBox );
+  durationLayout ->addWidget( endDurationLabel );
+
+  QBoxLayout *endDateLayout = new QHBoxLayout( rangeLayout );
+  endDateLayout->setSpacing( KDialog::spacingHint() );
+  
+  mEndDateButton = new QRadioButton( i18n("End by:"), rangeBox );
+  rangeButtonGroup->insert( mEndDateButton );
+  endDateLayout->addWidget( mEndDateButton );
+  
+  mEndDateEdit = new KDateEdit( rangeBox );
+  endDateLayout->addWidget( mEndDateEdit );
+
+  endDateLayout->addStretch( 1 );
+
+  connect( mNoEndDateButton, SIGNAL( toggled( bool ) ),
+           SLOT( showCurrentRange() ) );
+  connect( mEndDurationButton, SIGNAL( toggled( bool ) ),
+           SLOT( showCurrentRange() ) );
+  connect( mEndDateButton, SIGNAL( toggled( bool ) ),
+           SLOT( showCurrentRange() ) );
+
+
+  mExceptions = new ExceptionsWidget( this );
+  topLayout->addWidget( mExceptions, 3, 1 );
 }
 
 KOEditorRecurrence::~KOEditorRecurrence()
 {
 }
 
-void KOEditorRecurrence::initLayout()
-{
-  QGridLayout *layoutTop = new QGridLayout(this,1,1);
-  layoutTop->setSpacing(mSpacing);
-
-  layoutTop->addMultiCellWidget(timeGroupBox,0,0,0,1);
-  layoutTop->addMultiCellWidget(ruleGroupBox,1,1,0,1);
-  layoutTop->addWidget(rangeGroupBox,2,0);
-  layoutTop->addWidget(exceptionGroupBox,2,1);
-  layoutTop->setColStretch(1,1);
-}
-
-void KOEditorRecurrence::initMain()
-{
-  // Create the appointement time group box, which is
-  timeGroupBox = new QGroupBox( 1,QGroupBox::Horizontal,
-                                i18n("Appointment Time "),this, "User_2" );
-
-  QFrame *timeFrame = new QFrame(timeGroupBox,"timeFrame");
-  QBoxLayout *layoutTimeFrame = new QHBoxLayout(timeFrame);
-  layoutTimeFrame->setSpacing(mSpacing);
-
-  dateTimeLabel = new QLabel(timeFrame);
-  layoutTimeFrame->addWidget(dateTimeLabel);
-
-  // Create the recursion rule Group box. This will also hold the
-  // daily, weekly, monthly and yearly recursion rule frames which
-  // specify options individual to each of these distinct sections of
-  // the recursion rule. Note that each frame will be made visible by
-  // the selection of a radio button.
-  ruleGroupBox = new QGroupBox( 1,QGroupBox::Horizontal,
-                                i18n("Recurrence Rule"),this,
-				 "ruleGroupBox" );
-
-  ruleFrame = new QFrame(ruleGroupBox,"ruleFrame");
-  QBoxLayout *layoutRuleFrame = new QVBoxLayout(ruleFrame);
-
-  ruleButtonGroup = new QButtonGroup(1,Horizontal,ruleFrame);
-  ruleButtonGroup->setFrameStyle(QFrame::NoFrame);
-  dailyButton     = new QRadioButton(i18n("Daily"), ruleButtonGroup);
-  weeklyButton    = new QRadioButton(i18n("Weekly"), ruleButtonGroup);
-  monthlyButton   = new QRadioButton(i18n("Monthly"), ruleButtonGroup);
-  yearlyButton    = new QRadioButton(i18n("Yearly"), ruleButtonGroup);
-
-  ruleSepFrame = new QFrame(ruleFrame);
-  ruleSepFrame->setFrameStyle(QFrame::VLine|QFrame::Sunken);
-
-  initDaily();
-  initWeekly();
-  initMonthly();
-  initYearly();
-
-  ruleStack = new QWidgetStack(ruleFrame);
-  ruleStack->addWidget(dailyFrame,0);
-  ruleStack->addWidget(weeklyFrame,1);
-  ruleStack->addWidget(monthlyFrame,2);
-  ruleStack->addWidget(yearlyFrame,3);
-
-  QBoxLayout *layoutRule = new QHBoxLayout;
-  layoutRuleFrame->addLayout(layoutRule);
-  layoutRule->addWidget(ruleButtonGroup);
-  layoutRule->addWidget(ruleSepFrame);
-  layoutRule->addStretch(1);
-  layoutRule->addWidget(ruleStack);
-  layoutRule->addStretch(1);
-
-  advancedRuleButton = new QCheckBox(i18n("Enable Advanced Rule:"),
-                                     ruleFrame);
-  advancedRuleButton->setEnabled(false);
-
-  advancedRuleEdit = new QLineEdit(ruleFrame);
-  advancedRuleEdit->setText( "" );
-  advancedRuleEdit->setMaxLength( 32767 );
-  advancedRuleEdit->setEnabled(false);
-
-// Disable advanced rule input, because it is not used.
-  advancedRuleButton->hide();
-  advancedRuleEdit->hide();
-
-  QBoxLayout *layoutAdvancedRule = new QHBoxLayout;
-  layoutRuleFrame->addLayout(layoutAdvancedRule);
-  layoutAdvancedRule->addWidget(advancedRuleButton);
-  layoutAdvancedRule->addWidget(advancedRuleEdit);
-
-  connect(dailyButton, SIGNAL(toggled(bool)),
-	  this, SLOT(showDaily(bool)));
-  connect(weeklyButton, SIGNAL(toggled(bool)),
-	  this, SLOT(showWeekly(bool)));
-  connect(monthlyButton, SIGNAL(toggled(bool)),
-	  this, SLOT(showMonthly(bool)));
-  connect(yearlyButton, SIGNAL(toggled(bool)),
-	  this, SLOT(showYearly(bool)));
-
-  // Create the recursion range Group Box which contains the controls
-  // specific to determining how long the recursion is to last.
-  rangeGroupBox = new QGroupBox( 1,QGroupBox::Horizontal,
-                                 i18n("Recurrence Range"),this,
-				 "rangeGroupBox" );
-
-  rangeButtonGroup = new QButtonGroup( rangeGroupBox,"rangeButtonGroup");
-  rangeButtonGroup->setFrameStyle(QFrame::NoFrame);
-//  rangeButtonGroup->setExclusive(true);
-
-  startDateLabel = new QLabel(i18n("Begin on:"), rangeButtonGroup);
-//  startDateEdit = new KDateEdit(rangeButtonGroup);
-  noEndDateButton = new QRadioButton(i18n("No ending date"), rangeButtonGroup);
-  endDurationButton = new QRadioButton(i18n("End after"), rangeButtonGroup);
-  endDurationEdit = new QLineEdit(rangeButtonGroup);
-  endDurationEdit->setValidator(new KIntValidator(0,9999,endDurationEdit));
-  endDurationLabel = new QLabel(i18n("occurrence(s)"), rangeButtonGroup);
-  endDateButton = new QRadioButton(i18n("End by:"), rangeButtonGroup);
-  endDateEdit = new KDateEdit(rangeButtonGroup);
-
-  // Construct layout for recurrence range box
-  QBoxLayout *layoutRange = new QVBoxLayout(rangeButtonGroup,5);
-
-//  QBoxLayout *layoutStart = new QHBoxLayout;
-//  layoutRange->addLayout(layoutStart);
-//  layoutStart->addWidget(startDateLabel);
-//  layoutStart->addWidget(startDateEdit,AlignVCenter);
-
-  layoutRange->addWidget(startDateLabel);
-
-  layoutRange->addWidget(noEndDateButton);
-
-  QBoxLayout *layoutEndDuration = new QHBoxLayout;
-  layoutRange->addLayout(layoutEndDuration);
-  layoutEndDuration->addWidget(endDurationButton);
-  layoutEndDuration->addWidget(endDurationEdit);
-  layoutEndDuration->addWidget(endDurationLabel);
-
-  QBoxLayout *layoutEndDate = new QHBoxLayout;
-  layoutRange->addLayout(layoutEndDate);
-  layoutEndDate->addWidget(endDateButton);
-  layoutEndDate->addWidget(endDateEdit,AlignLeft);
-
-  layoutRange->addStretch(1);
-
-  connect(noEndDateButton, SIGNAL(toggled(bool)),
-	  this, SLOT(disableRange(bool)));
-  connect(endDurationButton, SIGNAL(toggled(bool)),
-	  this, SLOT(enableDurationRange(bool)));
-  connect(endDateButton, SIGNAL(toggled(bool)),
-	  this, SLOT(enableDateRange(bool)));
-}
-
-void KOEditorRecurrence::showDaily(bool on)
-{
-  if (on) ruleStack->raiseWidget(dailyFrame);
-}
-
-void KOEditorRecurrence::showWeekly(bool on)
-{
-  if (on) ruleStack->raiseWidget(weeklyFrame);
-}
-
-void KOEditorRecurrence::showMonthly(bool on)
-{
-  if (on) ruleStack->raiseWidget(monthlyFrame);
-}
-
-void KOEditorRecurrence::showYearly(bool on)
-{
-  if (on) ruleStack->raiseWidget(yearlyFrame);
-}
-
-void KOEditorRecurrence::disableRange(bool on)
-{
-  if (on) {
-    endDateEdit->setEnabled(false);
-    endDurationEdit->setEnabled(false);
-    endDurationLabel->setEnabled(false);
-    return;
-  }
-}
-
-void KOEditorRecurrence::enableDurationRange(bool on)
-{
-  if (on) {
-    endDurationEdit->setEnabled(true);
-    endDurationLabel->setEnabled(true);
-    endDateEdit->setEnabled(false);
-    return;
-  }
-}
-
-void KOEditorRecurrence::enableDateRange(bool on)
-{
-  if (on) {
-    endDateEdit->setEnabled(true);
-    endDurationEdit->setEnabled(false);
-    endDurationLabel->setEnabled(false);
-    return;
-  }
-}
-
-void KOEditorRecurrence::initDaily()
-{
-  dailyFrame = new QFrame(ruleFrame);
-  dailyFrame->setFrameStyle(QFrame::NoFrame);
-
-  everyNDays = new QLabel(i18n("Recur every"), dailyFrame);
-
-  nDaysEntry = new QLineEdit(dailyFrame);
-  nDaysEntry->setValidator(new KIntValidator(0,999,nDaysEntry));
-  nDaysEntry->setText( "1" );
-  nDaysEntry->setMaxLength( 3 );
-
-  nDaysLabel = new QLabel(i18n("day(s)"), dailyFrame);
-
-  QBoxLayout *layoutDaily = new QHBoxLayout(dailyFrame,10);
-  layoutDaily->addWidget(everyNDays);
-  layoutDaily->addWidget(nDaysEntry);
-  layoutDaily->addWidget(nDaysLabel);
-}
-
-void KOEditorRecurrence::initWeekly()
-{
-  weeklyFrame = new QFrame(ruleFrame);
-  weeklyFrame->setFrameStyle(QFrame::NoFrame);
-
-  everyNWeeks = new QLabel(i18n("Recur every"), weeklyFrame);
-
-  nWeeksEntry = new QLineEdit(weeklyFrame);
-  nWeeksEntry->setValidator(new KIntValidator(0,99,nWeeksEntry));
-  nWeeksEntry->setText("1");
-  nWeeksEntry->setMaxLength(2);
-
-  nWeeksLabel = new QLabel(i18n("week(s) on:"), weeklyFrame);
-
-  sundayBox    = new QCheckBox(i18n("Sun"), weeklyFrame);
-  mondayBox    = new QCheckBox(i18n("Mon"), weeklyFrame);
-  tuesdayBox   = new QCheckBox(i18n("Tue"), weeklyFrame);
-  wednesdayBox = new QCheckBox(i18n("Wed"), weeklyFrame);
-  thursdayBox  = new QCheckBox(i18n("Thu"), weeklyFrame);
-  fridayBox    = new QCheckBox(i18n("Fri"), weeklyFrame);
-  saturdayBox  = new QCheckBox(i18n("Sat"), weeklyFrame);
-
-  QBoxLayout *layoutWeekly = new QVBoxLayout(weeklyFrame,10);
-
-  QBoxLayout *layoutEveryN = new QHBoxLayout;
-  layoutWeekly->addLayout(layoutEveryN);
-  layoutEveryN->addWidget(everyNWeeks);
-  layoutEveryN->addWidget(nWeeksEntry);
-  layoutEveryN->addWidget(nWeeksLabel);
-
-  QBoxLayout *layoutDays = new QHBoxLayout;
-  layoutWeekly->addLayout(layoutDays);
-  layoutDays->addWidget(sundayBox);
-  layoutDays->addWidget(mondayBox);
-  layoutDays->addWidget(tuesdayBox);
-  layoutDays->addWidget(wednesdayBox);
-  layoutDays->addWidget(thursdayBox);
-  layoutDays->addWidget(fridayBox);
-  layoutDays->addWidget(saturdayBox);
-}
-
-void KOEditorRecurrence::initMonthly()
-{
-  monthlyFrame = new QVBox(ruleFrame);
-  monthlyFrame->setFrameStyle(QFrame::NoFrame);
-//  monthlyFrame->hide();
-
-  monthlyButtonGroup = new QButtonGroup(monthlyFrame);
-  monthlyButtonGroup->setFrameStyle(QFrame::NoFrame);
-
-  onNthDay          = new QRadioButton(i18n("Recur on the"), monthlyButtonGroup);
-  nthDayEntry       = new QComboBox(false, monthlyButtonGroup);
-  nthDayLabel       = new QLabel(i18n("day"), monthlyButtonGroup);
-
-  onNthTypeOfDay    = new QRadioButton(i18n("Recur on the"), monthlyButtonGroup);
-  nthNumberEntry    = new QComboBox(false, monthlyButtonGroup);
-  nthTypeOfDayEntry = new QComboBox(false, monthlyButtonGroup);
-
-  monthCommonLabel  = new QLabel(i18n("every"), monthlyButtonGroup);
-  nMonthsEntry      = new QLineEdit(monthlyButtonGroup);
-  nMonthsEntry->setValidator(new KIntValidator(0,999,nMonthsEntry));
-  nMonthsEntry->setText("1");
-  nMonthsLabel      = new QLabel(i18n("month(s)"), monthlyButtonGroup);
-
-  nthDayEntry->setSizeLimit( 7 );
-  nthDayEntry->insertItem( i18n("1st") );
-  nthDayEntry->insertItem( i18n("2nd") );
-  nthDayEntry->insertItem( i18n("3rd") );
-  nthDayEntry->insertItem( i18n("4th") );
-  nthDayEntry->insertItem( i18n("5th") );
-  nthDayEntry->insertItem( i18n("6th") );
-  nthDayEntry->insertItem( i18n("7th") );
-  nthDayEntry->insertItem( i18n("8th") );
-  nthDayEntry->insertItem( i18n("9th") );
-  nthDayEntry->insertItem( i18n("10th") );
-  nthDayEntry->insertItem( i18n("11th") );
-  nthDayEntry->insertItem( i18n("12th") );
-  nthDayEntry->insertItem( i18n("13th") );
-  nthDayEntry->insertItem( i18n("14th") );
-  nthDayEntry->insertItem( i18n("15th") );
-  nthDayEntry->insertItem( i18n("16th") );
-  nthDayEntry->insertItem( i18n("17th") );
-  nthDayEntry->insertItem( i18n("18th") );
-  nthDayEntry->insertItem( i18n("19th") );
-  nthDayEntry->insertItem( i18n("20th") );
-  nthDayEntry->insertItem( i18n("21st") );
-  nthDayEntry->insertItem( i18n("22nd") );
-  nthDayEntry->insertItem( i18n("23rd") );
-  nthDayEntry->insertItem( i18n("24th") );
-  nthDayEntry->insertItem( i18n("25th") );
-  nthDayEntry->insertItem( i18n("26th") );
-  nthDayEntry->insertItem( i18n("27th") );
-  nthDayEntry->insertItem( i18n("28th") );
-  nthDayEntry->insertItem( i18n("29th") );
-  nthDayEntry->insertItem( i18n("30th") );
-  nthDayEntry->insertItem( i18n("31st") );
-
-  nthNumberEntry->insertItem( i18n("1st") );
-  nthNumberEntry->insertItem( i18n("2nd") );
-  nthNumberEntry->insertItem( i18n("3rd") );
-  nthNumberEntry->insertItem( i18n("4th") );
-  nthNumberEntry->insertItem( i18n("5th") );
-
-  nthTypeOfDayEntry->insertItem( i18n("Monday") );
-  nthTypeOfDayEntry->insertItem( i18n("Tuesday") );
-  nthTypeOfDayEntry->insertItem( i18n("Wednesday") );
-  nthTypeOfDayEntry->insertItem( i18n("Thursday") );
-  nthTypeOfDayEntry->insertItem( i18n("Friday") );
-  nthTypeOfDayEntry->insertItem( i18n("Saturday") );
-  nthTypeOfDayEntry->insertItem( i18n("Sunday") );
-  nthTypeOfDayEntry->adjustSize();
-
-  // Construct layout for monthly recurrence rule
-  QGridLayout *layoutMonthly = new QGridLayout(monthlyButtonGroup,1,1,0,10);
-
-  layoutMonthly->addWidget(onNthDay,0,0);
-  layoutMonthly->addWidget(nthDayEntry,0,1);
-  layoutMonthly->addWidget(nthDayLabel,0,2);
-
-  layoutMonthly->addWidget(onNthTypeOfDay,1,0);
-  layoutMonthly->addWidget(nthNumberEntry,1,1);
-  layoutMonthly->addWidget(nthTypeOfDayEntry,1,2);
-
-  layoutMonthly->addMultiCellWidget(monthCommonLabel,0,1,3,3);
-  layoutMonthly->addMultiCellWidget(nMonthsEntry,0,1,4,4);
-  layoutMonthly->addMultiCellWidget(nMonthsLabel,0,1,5,5);
-}
-
-void KOEditorRecurrence::initYearly()
-{
-  yearlyFrame = new QVBox(ruleFrame);
-  yearlyFrame->setFrameStyle(QFrame::NoFrame);
-
-  yearlyButtonGroup = new QButtonGroup(yearlyFrame);
-  yearlyButtonGroup->setFrameStyle(QFrame::NoFrame);
-
-  yearMonthButton = new QRadioButton(i18n("Recur in the month of"),
-                                     yearlyButtonGroup);
-  yearMonthComboBox = new QComboBox(yearlyButtonGroup);
-
-  yearDayButton = new QRadioButton(i18n("Recur on this day"),
-                                   yearlyButtonGroup);
-
-  yearCommonLabel = new QLabel(i18n("every"), yearlyButtonGroup);
-  nYearsEntry = new QLineEdit(yearlyButtonGroup);
-  nYearsEntry->setValidator(new KIntValidator(0,999,nYearsEntry));
-  nYearsEntry->setMaxLength(3);
-  nYearsEntry->setText("1");
-  yearsLabel = new QLabel(i18n("year(s)"), yearlyButtonGroup);
-
-  yearMonthComboBox->insertItem(i18n("January"));
-  yearMonthComboBox->insertItem(i18n("February"));
-  yearMonthComboBox->insertItem(i18n("March"));
-  yearMonthComboBox->insertItem(i18n("April"));
-  yearMonthComboBox->insertItem(i18n("May"));
-  yearMonthComboBox->insertItem(i18n("June"));
-  yearMonthComboBox->insertItem(i18n("July"));
-  yearMonthComboBox->insertItem(i18n("August"));
-  yearMonthComboBox->insertItem(i18n("September"));
-  yearMonthComboBox->insertItem(i18n("October"));
-  yearMonthComboBox->insertItem(i18n("November"));
-  yearMonthComboBox->insertItem(i18n("December"));
-
-  //yearDayLineEdit = new QLineEdit(yearlyButtonGroup);
-
-  // Construct layout for yearly recurrence rule
-  QGridLayout *layoutYearly = new QGridLayout(yearlyButtonGroup,1,1,0,10);
-
-  layoutYearly->addWidget(yearMonthButton,0,0);
-  layoutYearly->addWidget(yearMonthComboBox,0,1);
-
-  layoutYearly->addWidget(yearDayButton,1,0);
-
-  layoutYearly->addMultiCellWidget(yearCommonLabel,0,1,3,3);
-  layoutYearly->addMultiCellWidget(nYearsEntry,0,1,4,4);
-  layoutYearly->addMultiCellWidget(yearsLabel,0,1,5,5);
-}
-
-void KOEditorRecurrence::initExceptions()
-{
-  // Create the exceptions group box, which holds controls for
-  // specifying dates which are exceptions to the rule specified on
-  // this tab.
-  exceptionGroupBox = new QGroupBox(1,QGroupBox::Horizontal,i18n("Exceptions"),
-                                    this,"execeptionGroupBox");
-
-  QFrame *exceptionFrame = new QFrame(exceptionGroupBox,"timeFrame");
-
-  exceptionDateEdit = new KDateEdit(exceptionFrame);
-  addExceptionButton = new QPushButton(i18n("Add"), exceptionFrame);
-  changeExceptionButton = new QPushButton(i18n("Change"), exceptionFrame);
-  deleteExceptionButton = new QPushButton(i18n("Delete"), exceptionFrame);
-  exceptionList = new QListBox(exceptionFrame);
-
-  QGridLayout *layoutExceptionFrame = new QGridLayout(exceptionFrame,1,1,0,5);
-  layoutExceptionFrame->addWidget(exceptionDateEdit,0,0);
-  layoutExceptionFrame->addWidget(addExceptionButton,1,0);
-  layoutExceptionFrame->addWidget(changeExceptionButton,2,0);
-  layoutExceptionFrame->addWidget(deleteExceptionButton,3,0);
-  layoutExceptionFrame->addMultiCellWidget(exceptionList,0,4,1,1);
-  layoutExceptionFrame->setRowStretch(4,1);
-  layoutExceptionFrame->setColStretch(1,3);
-
-  connect(addExceptionButton, SIGNAL(clicked()),
-	  this, SLOT(addException()));
-  connect(changeExceptionButton, SIGNAL(clicked()),
-	  this, SLOT(changeException()));
-  connect(deleteExceptionButton, SIGNAL(clicked()),
-	  this, SLOT(deleteException()));
-}
-
-void KOEditorRecurrence::setEnabled(bool enabled)
+void KOEditorRecurrence::setEnabled( bool enabled )
 {
 //  kdDebug() << "KOEditorRecurrence::setEnabled(): " << (enabled ? "on" : "off") << endl;
 
-  mEnabled = enabled;
-
-/*
-  nDaysEntry->setEnabled(enabled);
-  nWeeksEntry->setEnabled(enabled);
-  sundayBox->setEnabled(enabled);
-  mondayBox->setEnabled(enabled);
-  tuesdayBox->setEnabled(enabled);
-  wednesdayBox->setEnabled(enabled);
-  thursdayBox->setEnabled(enabled);
-  fridayBox->setEnabled(enabled);
-  saturdayBox->setEnabled(enabled);
-  onNthDay->setEnabled(enabled);
-  nthDayEntry->setEnabled(enabled);
-  onNthTypeOfDay->setEnabled(enabled);
-  nthNumberEntry->setEnabled(enabled);
-  nthTypeOfDayEntry->setEnabled(enabled);
-  nMonthsEntry->setEnabled(enabled);
-  yearMonthButton->setEnabled(enabled);
-  yearDayButton->setEnabled(enabled);
-  //  yearDayLineEdit->setEnabled(enabled);
-  nYearsEntry->setEnabled(enabled);
-  //  advancedRuleButton->setEnabled(enabled);
-  //  advancedRuleEdit->setEnabled(enabled);
-
-  startDateEdit->setEnabled(enabled);
-  noEndDateButton->setEnabled(enabled);
-  endDurationButton->setEnabled(enabled);
-  endDurationEdit->setEnabled(enabled);
-  endDateButton->setEnabled(enabled);
-  endDateEdit->setEnabled(enabled);
-  exceptionDateEdit->setEnabled(enabled);
-  addExceptionButton->setEnabled(enabled);
-  changeExceptionButton->setEnabled(enabled);
-  deleteExceptionButton->setEnabled(enabled);
-  //  exceptionDateButton->setEnabled(enabled);
-  exceptionList->setEnabled(enabled);
-*/
+  mTimeGroupBox->setEnabled( enabled );
+  mRuleBox->setEnabled( enabled );
+  mRangeGroupBox->setEnabled( enabled );
+  mExceptions->setEnabled( enabled );
 }
 
-void KOEditorRecurrence::addException()
+void KOEditorRecurrence::showCurrentRule()
 {
-  QDate tmpDate = exceptionDateEdit->date();
-  QString date=KGlobal::locale()->formatDate(tmpDate);
-  if(!exceptionList->findItem(date))
-  {
-      exceptionList->insertItem(date);
-      mExceptionDates.append(tmpDate);
-  }
+  if ( mDailyButton->isChecked() ) mRuleStack->raiseWidget( mDaily );
+  else if ( mWeeklyButton->isChecked() ) mRuleStack->raiseWidget( mWeekly );
+  else if ( mMonthlyButton->isChecked() ) mRuleStack->raiseWidget( mMonthly );
+  else mRuleStack->raiseWidget( mYearly );
 }
 
-void KOEditorRecurrence::changeException()
+void KOEditorRecurrence::showCurrentRange()
 {
-  int pos = exceptionList->currentItem();
-  if (pos < 0) return;
-
-  QDate tmpDate = exceptionDateEdit->date();
-  mExceptionDates[pos] = tmpDate;
-  exceptionList->changeItem(KGlobal::locale()->formatDate(tmpDate),pos);
+  mEndDurationEdit->setEnabled( mEndDurationButton->isChecked() );
+  mEndDateEdit->setEnabled( mEndDateButton->isChecked() );
 }
 
-void KOEditorRecurrence::deleteException()
-{
-  int pos = exceptionList->currentItem();
-  if (pos < 0) return;
-
-  mExceptionDates.remove( mExceptionDates.at(pos) );
-  exceptionList->removeItem(pos);
-}
-
-void KOEditorRecurrence::unsetAllCheckboxes()
-{
-  dailyButton->setChecked(false);
-  weeklyButton->setChecked(false);
-  monthlyButton->setChecked(false);
-  yearlyButton->setChecked(false);
-
-  onNthDay->setChecked(false);
-  onNthTypeOfDay->setChecked(false);
-  yearMonthButton->setChecked(false);
-  yearDayButton->setChecked(false);
-
-  mondayBox->setChecked(false);
-  tuesdayBox->setChecked(false);
-  wednesdayBox->setChecked(false);
-  thursdayBox->setChecked(false);
-  fridayBox->setChecked(false);
-  saturdayBox->setChecked(false);
-  sundayBox->setChecked(false);
-
-  endDateButton->setChecked(false);
-  noEndDateButton->setChecked(false);
-  endDurationButton->setChecked(false);
-}
-
-
-void KOEditorRecurrence::checkDay(int day)
-{
-  switch (day) {
-  case 1:
-    mondayBox->setChecked(true);
-    break;
-  case 2:
-    tuesdayBox->setChecked(true);
-    break;
-  case 3:
-    wednesdayBox->setChecked(true);
-    break;
-  case 4:
-    thursdayBox->setChecked(true);
-    break;
-  case 5:
-    fridayBox->setChecked(true);
-    break;
-  case 6:
-    saturdayBox->setChecked(true);
-    break;
-  case 7:
-    sundayBox->setChecked(true);
-    break;
-  }
-}
-
-void KOEditorRecurrence::getCheckedDays(QBitArray &rDays)
-{
-  rDays.fill(false);
-  if (mondayBox->isChecked())
-    rDays.setBit(0, 1);
-  if (tuesdayBox->isChecked())
-    rDays.setBit(1, 1);
-  if (wednesdayBox->isChecked())
-    rDays.setBit(2, 1);
-  if (thursdayBox->isChecked())
-    rDays.setBit(3, 1);
-  if (fridayBox->isChecked())
-    rDays.setBit(4, 1);
-  if (saturdayBox->isChecked())
-    rDays.setBit(5, 1);
-  if (sundayBox->isChecked())
-  rDays.setBit(6, 1);
-}
-
-void KOEditorRecurrence::setCheckedDays(QBitArray &rDays)
-{
-  if (rDays.testBit(0))
-    mondayBox->setChecked(true);
-  if (rDays.testBit(1))
-    tuesdayBox->setChecked(true);
-  if (rDays.testBit(2))
-    wednesdayBox->setChecked(true);
-  if (rDays.testBit(3))
-    thursdayBox->setChecked(true);
-  if (rDays.testBit(4))
-    fridayBox->setChecked(true);
-  if (rDays.testBit(5))
-    saturdayBox->setChecked(true);
-  if (rDays.testBit(6))
-    sundayBox->setChecked(true);
-}
-
-
-void KOEditorRecurrence::setDateTimes(QDateTime start,QDateTime end)
+void KOEditorRecurrence::setDateTimes( QDateTime start, QDateTime )
 {
 //  kdDebug() << "KOEditorRecurrence::setDateTimes" << endl;
 
-  currStartDateTime = start;
-  currEndDateTime = end;
-
-  startDateLabel->setText(i18n("Begins on: %1")
-      .arg(KGlobal::locale()->formatDate(start.date())));
+  mStartDateLabel->setText( i18n("Begins on: %1")
+      .arg( KGlobal::locale()->formatDate( start.date() ) ) );
 }
 
-
-void KOEditorRecurrence::setDefaults(QDateTime from, QDateTime to,bool)
+void KOEditorRecurrence::setDefaults( QDateTime from, QDateTime to, bool )
 {
-  // unset everything
-  unsetAllCheckboxes();
+  setDateTimes( from, to );
 
-  setDateTimes(from,to);
+  mStartDateLabel->setText( i18n("Begins on: %1")
+      .arg( KGlobal::locale()->formatDate(from.date() ) ) );
 
-  startDateLabel->setText(i18n("Begins on: %1")
-                          .arg(KGlobal::locale()->formatDate(from.date())));
+  bool enabled = false;
+  mEnabledCheck->setChecked( enabled );
+  setEnabled( enabled );
 
-  noEndDateButton->setChecked(true);
-  weeklyButton->setChecked(true);
+  mNoEndDateButton->setChecked( true );
+  mWeeklyButton->setChecked( true );
 
-  nDaysEntry->setText("1");
-  nWeeksEntry->setText("1");
+  mDaily->setFrequency( 1 );
 
-  checkDay(from.date().dayOfWeek());
-  onNthDay->setChecked(true);
-  nthDayEntry->setCurrentItem(from.date().day()-1);
-  nMonthsEntry->setText("1");
-  yearDayButton->setChecked(true);
-  nYearsEntry->setText("1");
+  mWeekly->setFrequency( 1 );
+  QBitArray days( 7 );
+  days.fill( 0 );
+  mWeekly->setDays( days );
+
+  mMonthly->setFrequency( 1 );
+  mMonthly->setByDay( from.date().day()-1 );
+
+  mYearly->setFrequency( 1 );
+  mYearly->setByDay();
 }
 
 void KOEditorRecurrence::readEvent(Event *event)
 {
-  QBitArray rDays;
+  QBitArray rDays( 7 );
   QPtrList<Recurrence::rMonthPos> rmp;
   QPtrList<int> rmd;
-  int i;
-  int month;
+  int day = 0;
+  int count = 0;
+  int month = 0;
 
-  setDateTimes(event->dtStart(),event->dtEnd());
+  setDateTimes( event->dtStart(), event->dtEnd() );
 
-  // unset everything
-  unsetAllCheckboxes();
-  switch (event->recurrence()->doesRecur()) {
-  case Recurrence::rNone:
-    break;
-  case Recurrence::rDaily:
-    dailyButton->setChecked(true);
-    nDaysEntry->setText(QString::number(event->recurrence()->frequency()));
-    break;
-  case Recurrence::rWeekly:
-    weeklyButton->setChecked(true);
-    nWeeksEntry->setText(QString::number(event->recurrence()->frequency()));
+  Recurrence *r = event->recurrence();
+  int f = r->frequency();
 
-    rDays = event->recurrence()->days();
-    setCheckedDays(rDays);
-    break;
-  case Recurrence::rMonthlyPos:
-    // we only handle one possibility in the list right now,
-    // so I have hardcoded calls with first().  If we make the GUI
-    // more extended, this can be changed.
-    monthlyButton->setChecked(true);
-    onNthTypeOfDay->setChecked(true);
-    rmp = event->recurrence()->monthPositions();
-    if (rmp.first()->negative)
-      i = 5 - rmp.first()->rPos - 1;
-    else
-      i = rmp.first()->rPos - 1;
-    nthNumberEntry->setCurrentItem(i);
-    i = 0;
-    while (!rmp.first()->rDays.testBit(i))
-      ++i;
-    nthTypeOfDayEntry->setCurrentItem(i);
-    nMonthsEntry->setText(QString::number(event->recurrence()->frequency()));
-    break;
-  case Recurrence::rMonthlyDay:
-    monthlyButton->setChecked(true);
-    onNthDay->setChecked(true);
-    rmd = event->recurrence()->monthDays();
-    i = *rmd.first() - 1;
-    nthDayEntry->setCurrentItem(i);
-    nMonthsEntry->setText(QString::number(event->recurrence()->frequency()));
-    break;
-  case Recurrence::rYearlyMonth:
-  case Recurrence::rYearlyDay:
-    yearlyButton->setChecked( true );
-    rmd = event->recurrence()->yearNums();
-    month = *rmd.first(); 
-    if ( month == event->dtStart().date().month() ) {
-      yearDayButton->setChecked( true );
+  int recurs = r->doesRecur();
+
+  mEnabledCheck->setChecked( recurs );
+  setEnabled( recurs );
+
+  switch ( recurs ) {
+    case Recurrence::rNone:
+      break;
+    case Recurrence::rDaily:
+      mDailyButton->setChecked( true );
+      mDaily->setFrequency( f );
+      break;
+    case Recurrence::rWeekly:
+      mWeeklyButton->setChecked( true );
+      mWeekly->setFrequency( f );
+      mWeekly->setDays( r->days() );
+      break;
+    case Recurrence::rMonthlyPos:
+      // we only handle one possibility in the list right now,
+      // so I have hardcoded calls with first().  If we make the GUI
+      // more extended, this can be changed.
+      mMonthlyButton->setChecked( true );
+
+      rmp = r->monthPositions();
+      if ( rmp.first()->negative )
+        count = 5 - rmp.first()->rPos - 1;
+      else
+        count = rmp.first()->rPos - 1;
+      day = 0;
+      while ( !rmp.first()->rDays.testBit( day ) ) ++day;
+      mMonthly->setByPos( count, day );
+
+      mMonthly->setFrequency( f );
+
+      break;
+    case Recurrence::rMonthlyDay:
+      mMonthlyButton->setChecked( true );
+
+      rmd = r->monthDays();
+      day = *rmd.first() - 1;
+      mMonthly->setByDay( day );
+
+      mMonthly->setFrequency( f );
+
+      break;
+    case Recurrence::rYearlyMonth:
+    case Recurrence::rYearlyDay:
+      mYearlyButton->setChecked( true );
+
+      rmd = r->yearNums();
+      month = *rmd.first(); 
+      if ( month == event->dtStart().date().month() ) {
+        mYearly->setByDay();
+      } else {
+        mYearly->setByMonth( month );
+      }
+
+      mYearly->setFrequency( f );
+      break;
+    default:
+      break;
+  }
+
+  mStartDateLabel->setText( i18n("Begins on: %1")
+      .arg( KGlobal::locale()->formatDate( event->dtStart().date() ) ) );
+
+  if ( r->doesRecur() ) {
+    if ( r->duration() == -1 ) {
+      mNoEndDateButton->setChecked( true );
+    } else if ( r->duration() == 0 ) {
+      mEndDateButton->setChecked( true );
+      mEndDateEdit->setDate( r->endDate() );
     } else {
-      yearMonthButton->setChecked( true );
-      yearMonthComboBox->setCurrentItem( month - 1 );
+      mEndDurationButton->setChecked( true );
+      mEndDurationEdit->setValue( r->duration( ) );
     }
-    nYearsEntry->setText(QString::number(event->recurrence()->frequency()));
-    break;
-  default:
-    break;
   }
 
-  startDateLabel->setText(i18n("Begins on: %1")
-      .arg(KGlobal::locale()->formatDate(event->dtStart().date())));
-
-  if (event->recurrence()->doesRecur()) {
-
-    // get range information
-    if (event->recurrence()->duration() == -1)
-      noEndDateButton->setChecked(true);
-    else if (event->recurrence()->duration() == 0) {
-      endDateButton->setChecked(true);
-      endDateEdit->setDate(event->recurrence()->endDate());
-    } else {
-      endDurationButton->setChecked(true);
-      endDurationEdit->setText(QString::number(event->recurrence()->duration()));
-    }
-  } else {
-    // the event doesn't recur, but we should provide some logical
-    // defaults in case they go and make it recur.
-    noEndDateButton->setChecked(true);
-    weeklyButton->setChecked(true);
-    nDaysEntry->setText("1");
-    nWeeksEntry->setText("1");
-    checkDay(currStartDateTime.date().dayOfWeek());
-    onNthDay->setChecked(true);
-    nthDayEntry->setCurrentItem(currStartDateTime.date().day()-1);
-    nMonthsEntry->setText("1");
-    yearDayButton->setChecked(true);
-    nYearsEntry->setText("1");
-  }
-
-  exceptionDateEdit->setDate(QDate::currentDate());
-
-  exceptionList->clear();
-  mExceptionDates.clear();
-  DateList exDates = event->exDates();
-  DateList::ConstIterator dit;
-  for (dit = exDates.begin(); dit != exDates.end(); ++dit ) {
-    exceptionList->insertItem(KGlobal::locale()->formatDate(*dit));
-    mExceptionDates.append(*dit);
-  }
+  mExceptions->setDates( event->exDates() );
 }
 
-void KOEditorRecurrence::writeEvent(Event *event)
+void KOEditorRecurrence::writeEvent( Event *event )
 {
-  // get recurrence information
-  // need a check to see if recurrence is enabled...
-  if (mEnabled) {
-    int rDuration;
-    QDate rEndDate;
-    QString tmpStr;
+  Recurrence *r = event->recurrence();
+    
+  // clear out any old settings;
+  r->unsetRecurs();
 
-    // clear out any old settings;
-    event->recurrence()->unsetRecurs();
+  if ( mEnabledCheck->isChecked() ) {
+    int duration;
+    QDate endDate;
 
-    // first get range information.  It is common to all types
-    // of recurring events.
-    if (noEndDateButton->isChecked()) {
-      rDuration = -1;
-    } else if (endDurationButton->isChecked()) {
-      tmpStr = endDurationEdit->text();
-      rDuration = tmpStr.toInt();
+    if ( mNoEndDateButton->isChecked() ) {
+      duration = -1;
+    } else if ( mEndDurationButton->isChecked() ) {
+      duration = mEndDurationEdit->value();
     } else {
-      rDuration = 0;
-      rEndDate = endDateEdit->date();
+      duration = 0;
+      endDate = mEndDateEdit->date();
     }
 
-    // check for daily recurrence
-    if (dailyButton->isChecked()) {
-      int rFreq;
+    if ( mDailyButton->isChecked() ) {
+      int freq = mDaily->frequency();
+      if ( duration != 0 ) r->setDaily( freq, duration );
+      else  r->setDaily( freq, endDate );
+    } else if ( mWeeklyButton->isChecked() ) {
+      int freq = mWeekly->frequency();
+      QBitArray days = mWeekly->days();
+      if ( duration != 0 ) r->setWeekly( freq, days, duration );
+      else r->setWeekly( freq, days, endDate );
+    } else if ( mMonthlyButton->isChecked() ) {
+      int freq = mMonthly->frequency();
+      if ( mMonthly->byPos() ) {
+        int pos = mMonthly->count();
 
-      tmpStr = nDaysEntry->text();
-      rFreq = tmpStr.toInt();
-      if (rFreq < 1) rFreq = 1;
-      if (rDuration != 0)
-	event->recurrence()->setDaily(rFreq, rDuration);
-      else
-	event->recurrence()->setDaily(rFreq, rEndDate);
-      // check for weekly recurrence
-    } else if (weeklyButton->isChecked()) {
-      int rFreq;
-      QBitArray rDays(7);
+        QBitArray days( 7 );
+        days.fill( false );
 
-      tmpStr = nWeeksEntry->text();
-      rFreq = tmpStr.toInt();
-      if (rFreq < 1) rFreq = 1;
-
-      getCheckedDays(rDays);
-
-      if (rDuration != 0)
-	event->recurrence()->setWeekly(rFreq, rDays, rDuration);
-      else
-	event->recurrence()->setWeekly(rFreq, rDays, rEndDate);
-    } else if (monthlyButton->isChecked()) {
-      if (onNthTypeOfDay->isChecked()) {
-	// it's by position
-	int rFreq, rPos;
-	QBitArray rDays(7);
-
-	tmpStr = nMonthsEntry->text();
-	rFreq = tmpStr.toInt();
-        if (rFreq < 1) rFreq = 1;
-	rDays.fill(false);
-	rPos = nthNumberEntry->currentItem() + 1;
-	rDays.setBit(nthTypeOfDayEntry->currentItem());
-	if (rDuration != 0)
-	  event->recurrence()->setMonthly(Recurrence::rMonthlyPos, rFreq, rDuration);
+        days.setBit( mMonthly->weekday() );
+        if ( duration != 0 )
+	  r->setMonthly( Recurrence::rMonthlyPos, freq, duration );
 	else
-	  event->recurrence()->setMonthly(Recurrence::rMonthlyPos, rFreq, rEndDate);
-	event->recurrence()->addMonthlyPos(rPos, rDays);
+	  r->setMonthly( Recurrence::rMonthlyPos, freq, endDate );
+        r->addMonthlyPos( pos, days );
       } else {
 	// it's by day
-	int rFreq;
-	short rDay;
+        int day = mMonthly->day();
 
-	tmpStr = nMonthsEntry->text();
-	rFreq = tmpStr.toInt();
-        if (rFreq < 1) rFreq = 1;
-
-	rDay = nthDayEntry->currentItem() + 1;
-
-	if (rDuration != 0)
-	  event->recurrence()->setMonthly(Recurrence::rMonthlyDay, rFreq, rDuration);
-	else
-	  event->recurrence()->setMonthly(Recurrence::rMonthlyDay, rFreq, rEndDate);
-	event->recurrence()->addMonthlyDay(rDay);
+        if ( duration != 0 ) {
+          r->setMonthly( Recurrence::rMonthlyDay, freq, duration );
+        } else {
+          r->setMonthly( Recurrence::rMonthlyDay, freq, endDate );
+        }
+        r->addMonthlyDay( day );
       }
-    } else if (yearlyButton->isChecked()) {
-      int rFreq = nYearsEntry->text().toInt();
-      if (rFreq < 1) rFreq = 1;
+    } else if ( mYearlyButton->isChecked() ) {
+      int freq = mYearly->frequency();
 
-      int rMonth;
-      if ( yearMonthButton->isChecked() ) {
-        rMonth = yearMonthComboBox->currentItem() + 1;
+      int month;
+      if ( mYearly->byMonth() ) {
+        month = mYearly->month();
       } else {
-        rMonth = event->dtStart().date().month();
+        month = event->dtStart().date().month();
       }
-      if ( rDuration != 0 ) {
-	event->recurrence()->setYearly( Recurrence::rYearlyMonth, rFreq,
-                                        rDuration );
+      if ( duration != 0 ) {
+	r->setYearly( Recurrence::rYearlyMonth, freq, duration );
       } else {
-	event->recurrence()->setYearly( Recurrence::rYearlyMonth, rFreq,
-                                        rEndDate );
+	r->setYearly( Recurrence::rYearlyMonth, freq, endDate );
       }
 
-      event->recurrence()->addYearlyNum( rMonth );
+      r->addYearlyNum( month );
     }
-  } else {
-    event->recurrence()->unsetRecurs();
+
+    event->setExDates( mExceptions->dates() );
   }
-
-  event->setExDates(mExceptionDates);
 }
 
-// obsolete
-#if 0
-QDate *KOEditorRecurrence::dateFromText(QString text)
+void KOEditorRecurrence::setDateTimeStr( const QString &str )
 {
-  QString tmpStr = text;
-  tmpStr.remove(0,4);
-  QString name = tmpStr.left(3);
-
-  int y, m, d;
-
-  name = name.upper();
-
-  y = tmpStr.right(4).toInt();
-  d = tmpStr.mid(4,2).toInt();
-  if (name == "JAN")
-    m = 1;
-  else if (name == "FEB")
-    m = 2;
-  else if (name == "MAR")
-    m = 3;
-  else if (name == "APR")
-    m = 4;
-  else if (name == "MAY")
-    m = 5;
-  else if (name == "JUN")
-    m = 6;
-  else if (name == "JUL")
-    m = 7;
-  else if (name == "AUG")
-    m = 8;
-  else if (name == "SEP")
-    m = 9;
-  else if (name == "OCT")
-    m = 10;
-  else if (name == "NOV")
-    m = 11;
-  else if (name == "DEC")
-    m = 12;
-  else
-    // should never get here!
-    m = 0;
-
-  return new QDate(y,m,d);
-}
-#endif
-
-void KOEditorRecurrence::setDateTimeStr(const QString &str)
-{
-  dateTimeLabel->setText(str);
+  mDateTimeLabel->setText( str );
 }
 
 bool KOEditorRecurrence::validateInput()

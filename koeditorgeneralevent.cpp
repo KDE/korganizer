@@ -62,18 +62,17 @@ KOEditorGeneralEvent::~KOEditorGeneralEvent()
 
 void KOEditorGeneralEvent::finishSetup()
 {
-  QWidget::setTabOrder(mSummaryEdit, mLocationEdit);
-  QWidget::setTabOrder(mLocationEdit, mStartDateEdit);
-  QWidget::setTabOrder(mStartDateEdit, mStartTimeEdit);
-  QWidget::setTabOrder(mStartTimeEdit, mEndDateEdit);
-  QWidget::setTabOrder(mEndDateEdit, mEndTimeEdit);
-  QWidget::setTabOrder(mEndTimeEdit, mRecursButton);
-  QWidget::setTabOrder(mRecursButton, mNoTimeButton);
-  QWidget::setTabOrder(mNoTimeButton, mAlarmButton);
-  QWidget::setTabOrder(mAlarmButton, mFreeTimeCombo);
-  QWidget::setTabOrder(mFreeTimeCombo, mCategoriesButton);
-  QWidget::setTabOrder(mCategoriesButton, mSecrecyCombo);
-  QWidget::setTabOrder(mSecrecyCombo, mDescriptionEdit);
+  QWidget::setTabOrder( mSummaryEdit, mLocationEdit );
+  QWidget::setTabOrder( mLocationEdit, mStartDateEdit );
+  QWidget::setTabOrder( mStartDateEdit, mStartTimeEdit );
+  QWidget::setTabOrder( mStartTimeEdit, mEndDateEdit );
+  QWidget::setTabOrder( mEndDateEdit, mEndTimeEdit );
+  QWidget::setTabOrder( mEndTimeEdit, mNoTimeButton );
+  QWidget::setTabOrder( mNoTimeButton, mAlarmButton );
+  QWidget::setTabOrder( mAlarmButton, mFreeTimeCombo );
+  QWidget::setTabOrder( mFreeTimeCombo, mCategoriesButton );
+  QWidget::setTabOrder( mCategoriesButton, mSecrecyCombo );
+  QWidget::setTabOrder( mSecrecyCombo, mDescriptionEdit );
 
   mSummaryEdit->setFocus();
 }
@@ -112,13 +111,6 @@ void KOEditorGeneralEvent::initTime(QWidget *parent,QBoxLayout *topLayout)
   layoutTimeBox->addWidget(mEndTimeEdit,1,2);
 
   QHBoxLayout *flagsBox = new QHBoxLayout( timeBoxFrame );
-
-  mRecursButton = new QCheckBox(i18n("Recurring event"),timeBoxFrame);
-  flagsBox->addWidget(mRecursButton);
-  connect(mRecursButton,SIGNAL(toggled(bool)),SIGNAL(recursChanged(bool)));
-#ifdef KORG_NORECURRENCE
-  mRecursButton->hide();
-#endif
 
   mNoTimeButton = new QCheckBox(i18n("No time associated"),timeBoxFrame);
   flagsBox->addWidget(mNoTimeButton);
@@ -255,8 +247,6 @@ void KOEditorGeneralEvent::setDefaults(QDateTime from,QDateTime to,bool allDay)
   timeStuffDisable(allDay);
 
   setDateTimes(from,to);
-
-  mRecursButton->setChecked(false);
 }
 
 void KOEditorGeneralEvent::readEvent( Event *event, bool tmpl )
@@ -270,8 +260,6 @@ void KOEditorGeneralEvent::readEvent( Event *event, bool tmpl )
 
     setDateTimes(event->dtStart(),event->dtEnd());
   }
-
-  mRecursButton->setChecked(event->recurrence()->doesRecur());
 
   if (event->transparency() > 0)
     mFreeTimeCombo->setCurrentItem(1);

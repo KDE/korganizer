@@ -87,7 +87,6 @@ class KOEditorGeneralEvent : public KOEditorGeneral
   signals:
     void dateTimesChanged(QDateTime start,QDateTime end);
     void allDayChanged(bool);
-    void recursChanged(bool);
     void dateTimeStrChanged(const QString &);
 
   private:
@@ -99,7 +98,6 @@ class KOEditorGeneralEvent : public KOEditorGeneral
     KTimeEdit               *mEndTimeEdit;
     QLabel                  *mDurationLabel;
     QCheckBox               *mNoTimeButton;
-    QCheckBox               *mRecursButton;
     QComboBox               *mFreeTimeCombo;
 
     // current start and end date and time

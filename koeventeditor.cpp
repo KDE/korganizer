@@ -55,7 +55,6 @@ void KOEventEditor::init()
 {
   setupGeneral();
   setupAttendeesTab();
-#ifndef KORG_NORECURRENCE
   setupRecurrence();
 
   // Propagate date time settings to recurrence tab
@@ -63,11 +62,6 @@ void KOEventEditor::init()
           mRecurrence,SLOT(setDateTimes(QDateTime,QDateTime)));
   connect(mGeneral,SIGNAL(dateTimeStrChanged(const QString &)),
           mRecurrence,SLOT(setDateTimeStr(const QString &)));
-
-  // Enable/Disable recurrence tab
-  connect(mGeneral,SIGNAL(recursChanged(bool)),
-          SLOT(enableRecurrence(bool)));
-#endif
 
   // Category dialog
   connect(mGeneral,SIGNAL(openCategoryDialog()),mCategoryDialog,SLOT(show()));
@@ -131,29 +125,12 @@ void KOEventEditor::setupGeneral()
 
 void KOEventEditor::setupRecurrence()
 {
-  QFrame *topFrame = addPage(i18n("Recurrence"));
+  QFrame *topFrame = addPage( i18n("Recurrence") );
 
-  QBoxLayout *topLayout = new QVBoxLayout(topFrame);  
+  QBoxLayout *topLayout = new QVBoxLayout( topFrame );
 
-  mRecurrenceStack = new QWidgetStack(topFrame);
-  topLayout->addWidget(mRecurrenceStack);
-
-  mRecurrence = new KOEditorRecurrence(spacingHint(),mRecurrenceStack);
-  mRecurrenceStack->addWidget(mRecurrence,0);
-  
-  mRecurrenceDisabled = new QLabel(
-      i18n("This event does not recur.\nEnable Recurrence in General Tab."),
-      mRecurrenceStack);
-  mRecurrenceDisabled->setAlignment(AlignCenter);
-  mRecurrenceStack->addWidget(mRecurrenceDisabled,1);
-}
-
-void KOEventEditor::enableRecurrence(bool enable)
-{
-  if (enable) mRecurrenceStack->raiseWidget(mRecurrence);
-  else mRecurrenceStack->raiseWidget(mRecurrenceDisabled);
-  
-  mRecurrence->setEnabled(enable);
+  mRecurrence = new KOEditorRecurrence( topFrame );
+  topLayout->addWidget( mRecurrence );
 }
 
 void KOEventEditor::editEvent(Event *event)
@@ -240,22 +217,14 @@ void KOEventEditor::setDefaults(QDateTime from, QDateTime to, bool allDay)
 {
   mGeneral->setDefaults(from,to,allDay);
   mDetails->setDefaults();
-#ifndef KORG_NORECURRENCE
   mRecurrence->setDefaults(from,to,allDay);
-
-  enableRecurrence(false);
-#endif
 }
 
 void KOEventEditor::readEvent( Event *event, bool tmpl )
 {
   mGeneral->readEvent( event, tmpl );
   mDetails->readEvent( event );
-#ifndef KORG_NORECURRENCE
   mRecurrence->readEvent( event );
-
-  enableRecurrence( event->recurrence()->doesRecur() );
-#endif
 
   // categories
   mCategoryDialog->setSelected( event->categories() );
@@ -276,18 +245,14 @@ void KOEventEditor::writeEvent(Event *event)
     delete(ev);
   }
 
-#ifndef KORG_NORECURRENCE
   mRecurrence->writeEvent(event);
-#endif
 }
 
 bool KOEventEditor::validateInput()
 {
   if (!mGeneral->validateInput()) return false;
   if (!mDetails->validateInput()) return false;
-#ifndef KORG_NORECURRENCE
   if (!mRecurrence->validateInput()) return false;
-#endif
   return true;
 }
 

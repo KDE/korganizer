@@ -1,6 +1,6 @@
 /*
     This file is part of KOrganizer.
-    Copyright (c) 2000,2001 Cornelius Schumacher <schumacher@kde.org>
+    Copyright (c) 2000,2001,2002 Cornelius Schumacher <schumacher@kde.org>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -39,158 +39,172 @@
 #include "ktimeedit.h"
 
 class QWidgetStack;
+class QSpinBox;
 
 class KDateEdit;
 
 using namespace KCal;
 
+class RecurBase : public QWidget
+{
+  public:
+    RecurBase( QWidget *parent = 0, const char *name = 0 );
+  
+    void setFrequency( int );
+    int frequency();
+
+    QWidget *frequencyEdit();
+
+  private:
+    QSpinBox *mFrequencyEdit;
+};
+
+class RecurDaily : public RecurBase
+{
+  public:
+    RecurDaily( QWidget *parent = 0, const char *name = 0 );
+};
+
+class RecurWeekly : public RecurBase
+{
+  public:
+    RecurWeekly( QWidget *parent = 0, const char *name = 0 );
+  
+    void setDays( const QBitArray & );
+    QBitArray days();
+    
+  private:
+    QCheckBox *mSundayBox;
+    QCheckBox *mMondayBox;
+    QCheckBox *mTuesdayBox;
+    QCheckBox *mWednesdayBox;
+    QCheckBox *mThursdayBox;
+    QCheckBox *mFridayBox;
+    QCheckBox *mSaturdayBox;
+};
+
+class RecurMonthly : public RecurBase
+{
+  public:
+    RecurMonthly( QWidget *parent = 0, const char *name = 0 );
+
+    void setByDay( int day );
+    void setByPos( int count, int weekday );
+    
+    bool byDay();
+    bool byPos();
+    
+    int day();
+
+    int count();
+    int weekday();
+    
+  private:
+    QRadioButton *mByDayRadio;
+    QComboBox *mByDayCombo;
+
+    QRadioButton *mByPosRadio;
+    QComboBox *mByPosCountCombo;
+    QComboBox *mByPosWeekdayCombo;
+};
+
+class RecurYearly : public RecurBase
+{
+  public:
+    RecurYearly( QWidget *parent = 0, const char *name = 0 );
+    
+    void setByDay();
+    void setByMonth( int month );
+    
+    bool byMonth();
+    bool byDay();
+
+    int month();
+    
+  private:
+    QRadioButton *mByMonthRadio;
+    QComboBox *mByMonthCombo;
+    
+    QRadioButton *mByDayRadio;
+};
+
+class ExceptionsWidget : public QWidget
+{
+    Q_OBJECT
+  public:
+    ExceptionsWidget( QWidget *parent = 0, const char *name = 0 );
+    
+    void setDates( const DateList & );
+    DateList dates();
+    
+  protected slots:
+    void addException();
+    void changeException();
+    void deleteException();
+    
+  private:
+    KDateEdit *mExceptionDateEdit;
+    QListBox *mExceptionList;
+    DateList mExceptionDates;  
+};
+
 class KOEditorRecurrence : public QWidget
 {
     Q_OBJECT
   public:
-    KOEditorRecurrence (int spacing=8,QWidget* parent=0,const char* name=0);
+    KOEditorRecurrence ( QWidget *parent = 0, const char *name = 0 );
     virtual ~KOEditorRecurrence();
 
     /** Set widgets to default values */
-    void setDefaults(QDateTime from,QDateTime to,bool allday);
+    void setDefaults( QDateTime from, QDateTime to, bool allday );
     /** Read event object and setup widgets accordingly */
-    void readEvent(Event *);
+    void readEvent( Event * );
     /** Write event settings to event object */
-    void writeEvent(Event *);
+    void writeEvent( Event * );
 
     /** Check if the input is valid. */
     bool validateInput();
 
   public slots:
-    virtual void setEnabled(bool);
-    void setDateTimes(QDateTime start,QDateTime end);
-    void setDateTimeStr(const QString &);
+    void setEnabled( bool );
+    void setDateTimes( QDateTime start, QDateTime end );
+    void setDateTimeStr( const QString & );
   
   signals:
-    void dateTimesChanged(QDateTime start,QDateTime end);
+    void dateTimesChanged( QDateTime start, QDateTime end );
   
   protected slots:
-    void showDaily(bool);
-    void showWeekly(bool);
-    void showMonthly(bool);
-    void showYearly(bool);
-    void disableRange(bool);
-    void enableDurationRange(bool);
-    void enableDateRange(bool);
-    void addException();
-    void changeException();
-    void deleteException();
-  
-  protected:
-    void unsetAllCheckboxes();
-    void checkDay(int day);
-    void getCheckedDays(QBitArray &rDays);
-    void setCheckedDays(QBitArray &rDays);
-  
-    void initMain();
-    void initDaily();
-    void initWeekly();
-    void initMonthly();
-    void initYearly();
-    void initExceptions();
-  
-    void initLayout();
+    void showCurrentRule();
+    void showCurrentRange();
 
   private:
-//    QDate *dateFromText(QString text);
+    QCheckBox *mEnabledCheck;
+  
+    QGroupBox *mTimeGroupBox;
+    QLabel *mDateTimeLabel;
+  
+    QGroupBox *mRuleBox;
+    QWidgetStack *mRuleStack;
     
-    /* stuff to hold the appointment time setting widgets. */
-    QGroupBox* timeGroupBox;
-    QLabel *dateTimeLabel;
-  
-    /* main rule box and choices. */
-    QGroupBox*    ruleGroupBox;
-    QFrame*       ruleFrame;
-    QWidgetStack* ruleStack;
-    QButtonGroup* ruleButtonGroup;
-    QRadioButton* dailyButton;
-    QRadioButton* weeklyButton;
-    QRadioButton* monthlyButton;
-    QRadioButton* yearlyButton;
+    QRadioButton *mDailyButton;
+    QRadioButton *mWeeklyButton;
+    QRadioButton *mMonthlyButton;
+    QRadioButton *mYearlyButton;
     
-    QFrame* ruleSepFrame;
+    RecurDaily *mDaily;
+    RecurWeekly *mWeekly;
+    RecurMonthly *mMonthly;
+    RecurYearly *mYearly;
     
-    /* daily rule choices */
-    QFrame*       dailyFrame;
-    QLabel*       everyNDays;
-    QLineEdit*    nDaysEntry;
-    QLabel*       nDaysLabel;
+    QGroupBox *mRangeGroupBox;
+    QLabel *mStartDateLabel;
+    QRadioButton *mNoEndDateButton;
+    QRadioButton *mEndDurationButton;
+    QSpinBox *mEndDurationEdit;
+    QRadioButton *mEndDateButton;
+    KDateEdit *mEndDateEdit;
   
-    /* weekly rule choices */
-    QFrame*       weeklyFrame;
-    QLabel*       everyNWeeks;
-    QLineEdit*    nWeeksEntry;
-    QLabel*       nWeeksLabel;
-    QCheckBox*    sundayBox;
-    QCheckBox*    mondayBox;
-    QCheckBox*    tuesdayBox;
-    QCheckBox*    wednesdayBox;
-    QCheckBox*    thursdayBox;
-    QCheckBox*    fridayBox;
-    QCheckBox*    saturdayBox;
-  
-    /* monthly rule choices */
-    QFrame*       monthlyFrame;
-    QButtonGroup* monthlyButtonGroup;
-    QRadioButton* onNthDay;
-    QComboBox*    nthDayEntry;
-    QLabel*       nthDayLabel;
-    QRadioButton* onNthTypeOfDay;
-    QComboBox*    nthNumberEntry;
-    QComboBox*    nthTypeOfDayEntry;
-    QLabel*       monthCommonLabel;
-    QLineEdit*    nMonthsEntry;
-    QLabel*       nMonthsLabel;
-    
-    /* yearly rule choices */
-    QFrame*       yearlyFrame;
-    QLabel       *yearCommonLabel;
-    QButtonGroup *yearlyButtonGroup;
-    QRadioButton *yearMonthButton;
-    QRadioButton *yearDayButton;
-    QComboBox    *yearMonthComboBox;
-    QLineEdit    *yearDayLineEdit;
-    QLineEdit    *nYearsEntry;
-    QLabel       *yearsLabel;
-
-    /* advanced rule choices */
-    QCheckBox* advancedRuleButton;
-    QLineEdit* advancedRuleEdit;
-  
-    /* range stuff */
-    QGroupBox*    rangeGroupBox;
-    QButtonGroup* rangeButtonGroup;
-    QLabel*       startDateLabel;
-//    KDateEdit*    startDateEdit;
-    QRadioButton* noEndDateButton;
-    QRadioButton* endDurationButton;
-    QLineEdit*    endDurationEdit;
-    QLabel*       endDurationLabel;
-    QRadioButton* endDateButton;
-    KDateEdit*    endDateEdit;
-  
-    /* exception stuff */
-    QGroupBox* exceptionGroupBox;
-    KDateEdit *exceptionDateEdit;
-    QPushButton* addExceptionButton;
-    QPushButton* changeExceptionButton;
-    QPushButton* deleteExceptionButton;
-    QPushButton* exceptionDateButton;
-    QListBox *exceptionList;
-    DateList mExceptionDates;
-
-    // current start and end date and time
-    QDateTime currStartDateTime;
-    QDateTime currEndDateTime;
-
-    bool mEnabled;
-
-    int mSpacing;
+    ExceptionsWidget *mExceptions;
 };
 
 #endif
