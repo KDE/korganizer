@@ -1,7 +1,7 @@
 # set the include path for X, qt and KDE, and versit library for vCalendar
 INCLUDES = -I$(top_srcdir)/kgantt/kgantt -I$(top_srcdir)/libkcal $(all_includes)
 
-bin_PROGRAMS = 	korganizer alarmd
+bin_PROGRAMS = 	korganizer
 lib_LTLIBRARIES = libkorganizer.la
 
 libkorganizer_la_LDFLAGS = $(all_libraries) $(KDE_RPATH)
@@ -15,9 +15,6 @@ libkorganizer_la_LDFLAGS = $(all_libraries) -version-info 1:0:0 -module
 korganizer_LDFLAGS = $(all_libraries) $(KDE_RPATH)
 korganizer_SOURCES = main.cpp
 korganizer_LDADD   = libkorganizer.la
-
-alarmd_LDFLAGS = $(all_libraries) $(KDE_RPATH)
-alarmd_LDADD = $(LIB_KDEUI) $(top_builddir)/libkcal/libkcal.la
 
 
 ########## FILES
@@ -53,10 +50,6 @@ libkorganizer_la_SOURCES =  outgoingdialog_base.ui \
         kowhatsnextview.cpp \
         kojournalview.cpp journalentry.cpp
 
-alarmd_SOURCES = alarmdaemon.cpp alarmmain.cpp \
-	koprefs.cpp alarmapp.cpp \
-        alarmdialog.cpp koeventviewer.cpp kprefs.cpp
-
 METASOURCES = AUTO
 
 noinst_HEADERS = komonthview.h \
@@ -70,10 +63,9 @@ noinst_HEADERS = komonthview.h \
 	koarchivedlg.h \
 	komailclient.h kotodoview.h \
         kobaseview.h kolistview.h \
-	alarmapp.h koapp.h exportwebdialog.h korganizer_part.h korganizer.h \
+	koapp.h exportwebdialog.h korganizer_part.h korganizer.h \
         kprefsdialog.h koprefsdialog.h koeventeditor.h \
-        kotodoeditor.h kprefs.h koprefs.h alarmdaemon.h koeventviewer.h \
-        alarmdialog.h \
+        kotodoeditor.h kprefs.h koprefs.h koeventviewer.h \
         kowindowlist.h \
         koeditorgeneralevent.h koeditorgeneraltodo.h koeditordetails.h \
         koeditorrecurrence.h koeventviewerdialog.h koeventpopupmenu.h \
@@ -82,9 +74,6 @@ noinst_HEADERS = komonthview.h \
 
 
 SUBDIRS = pixmaps sounds
-
-autostart_DATA = alarmd.desktop
-autostartdir = $(prefix)/share/autostart
 
 tip_DATA = tips
 tipdir = $(kde_datadir)/korganizer
@@ -106,6 +95,6 @@ part_DATA = korganizer_part.rc
 KDE_ICON = AUTO
 
 messages: rc.cpp
-	$(PREPARETIPS) > tips.cc
+	perl ./preparetips > tips.cc
 	$(XGETTEXT) *.cpp tips.cc -o $(podir)/korganizer.pot
 	rm -f tips.cc

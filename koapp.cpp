@@ -91,7 +91,7 @@ void KOrganizerApp::startAlarmDaemon()
   // Start alarmdaemon. It is a KUniqueApplication, that means it is
   // automatically made sure that there is only one instance of the alarm daemon
   // running.
-  QString execStr = locate("exe","alarmd");
+  QString execStr = locate("exe","kalarmd");
   system(execStr.latin1());
 
   kdDebug() << "Starting alarm daemon done" << endl;
@@ -111,11 +111,14 @@ int KOrganizerApp::newInstance()
   } else if (args->isSet("show")) {
     numDays = args->getOption("show").toInt();
   } else {
-    if (!dcopClient()->isApplicationRegistered("alarmd")) {
+    if (!dcopClient()->isApplicationRegistered("kalarmd")) {
       startAlarmDaemon();
     }
-    // Force alarm daemon to load active calendar
-    if (!dcopClient()->send("alarmd","ad","reloadCal()","")) {
+    // Register this application with the alarm daemon
+    QByteArray data;
+    QDataStream arg(data, IO_WriteOnly);
+    arg << QString("korganizer") << QString("KOrganizer") << QString() << (Q_INT8)0 << (Q_INT8)1;
+    if (!dcopClient()->send("kalarmd","ad","registerApp(QString,QString,QString,bool,bool)", data)) {
       kdDebug() << "KOrganizerApp::startAlarmDaemon(): dcop send failed" << endl;
     }
   }
@@ -129,6 +132,14 @@ int KOrganizerApp::newInstance()
   } else {
     KGlobal::config()->setGroup("General");
     QString urlString = KGlobal::config()->readEntry("Active Calendar");
+
+    // Force alarm daemon to load active calendar
+    QByteArray data;
+    QDataStream arg(data, IO_WriteOnly);
+    arg << QString("korganizer") << urlString;
+    if (!dcopClient()->send("kalarmd","ad","addCal(QString,QString)", data)) {
+      kdDebug() << "KOrganizerApp::newInstance(): dcop send failed" << endl;
+    }
 
     processCalendar(urlString,numDays,true);
   }

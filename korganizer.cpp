@@ -680,6 +680,14 @@ bool KOrganizer::saveURL()
         true);
     if (result != KMessageBox::Continue) return false;
 
+    // Tell the alarm daemon to stop monitoring the vCalendar file
+    QByteArray data;
+    QDataStream arg(data, IO_WriteOnly);
+    arg << mURL.url();
+    if (!kapp->dcopClient()->send("kalarmd","ad","removeCal(QString)", data)) {
+      kdDebug() << "KOrganizer::saveURL(): dcop send failed" << endl;
+    }
+
     QString filename = mURL.fileName();
     filename.replace(filename.length()-4,4,".ics");
     mURL.setFileName(filename);
@@ -706,7 +714,10 @@ bool KOrganizer::saveURL()
 
   if (isActive()) {
     kdDebug() << "KOrganizer::saveURL(): Notify alarm daemon" << endl;
-    if (!kapp->dcopClient()->send("alarmd","ad","reloadCal()","")) {
+    QByteArray data;
+    QDataStream arg(data, IO_WriteOnly);
+    arg << QString("korganizer") << mURL.url();
+    if (!kapp->dcopClient()->send("kalarmd","ad","reloadCal(QString,QString)", data)) {
       kdDebug() << "KOrganizer::saveURL(): dcop send failed" << endl;
     }
   }
@@ -1013,8 +1024,12 @@ void KOrganizer::makeActive()
   }
 
   writeActiveState();
-  if (!kapp->dcopClient()->send("alarmd","ad","reloadCal()","")) {
-    kdDebug() << "KOrganizer::saveURL(): dcop send failed" << endl;
+
+  QByteArray data;
+  QDataStream arg(data, IO_WriteOnly);
+  arg << QString("korganizer") << mURL.url();
+  if (!kapp->dcopClient()->send("kalarmd","ad","reloadCal(QString,QString)", data)) {
+    kdDebug() << "KOrganizer::makeActive(): dcop send failed" << endl;
   }
   setActive();
   emit calendarActivated(this);
