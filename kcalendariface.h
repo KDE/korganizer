@@ -32,10 +32,10 @@ typedef QPair<QDateTime, QDateTime> QDateTimePair;
 class KCalendarIface : public DCOPObject
 {
     K_DCOP
-public:
+  public:
     KCalendarIface() : DCOPObject("CalendarIface") {}
 
-k_dcop:
+  k_dcop:
 
     /**
      * ...
