@@ -1,34 +1,58 @@
 #! @PERL@
 #
-# This is the input filter for KOrganizer. It has to be set as "pipe through"
-# filter in KMail and will write all mails containing an iCalendar or vCalendar
-# attachement to the directory, where KOrganizer looks for incoming events.
+# This is the input filter for KOrganizer. 
+# If set as "pipe through" filter in KMail, it will write all mails 
+# containing an iCalendar or vCalendar attachment 
+# to the directory where KOrganizer looks for incoming events.
 
+require 5.006;
+local $^W = 1;
+use strict;
+
+# while we're looking through the message contents, 
+# keep an eye peeled for something to use as a unique id:
+# the Message-ID header is ideal for this.
+# if all else fails, we can use a random id, 
+# but that allows duplicate invites!
+
+my $id = rand;
+my $calactive = 0;
+my $data = "";
 while(<STDIN>) {
+  # TODO really print every line?
   print;
-  if (/BEGIN:VCALENDAR/) {
+  if (! $calactive and /BEGIN:VCALENDAR/) {
     $calactive = 1;
   }
   if ($calactive) {
     $data .= $_;
+  } else {
+    if (/Message-ID:\s+<([^>]+)>/) {
+      $id = $1;
+    }
   }
-  if (/END:VCALENDAR/) {
+  if ($calactive and /END:VCALENDAR/) {
     $calactive = 0;
     last;
   }
 }
 
-$outfile = `kde-config --localprefix`;
-chop $outfile;
-$outfile .= "share/apps/korganizer/income/";
-if ( !-e $outfile ) {
-  system("mkdir -p $outfile");
+if ( length($data) < 1 ) {
+  exit 0;
 }
 
-$outfile .= rand;
+my $outfile = `kde-config --localprefix`;
+chomp $outfile;
+$outfile .= "share/apps/korganizer/income/";
 
-if ( length($data) > 0 ) {
-  if (!open OUT,">$outfile") { print "Can't open outputfile '$outfile'\n"; exit; }
+if ( !-e $outfile ) {
+  system("mkdir -p $outfile") 
+    or die "could not create korganizer incoming path '$outfile': $!";
+}
+
+$outfile .= $id;
+open OUT, ">$outfile" or die "can't open outputfile '$outfile': $!";
     print OUT $data;
   close OUT;
-}
+
+# korganizerIn
