@@ -357,7 +357,8 @@ void KOAlternateLabel::setText( const QString &text ) {
 ////////////////////////////////////////////////////////////////////////////
 
 KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name) :
-  KOEventView (cal,parent,name), mAllowAgendaUpdate( true ), mUpdateItem( 0 )
+  KOEventView (cal,parent,name), mExpandButton( 0 ), mAllowAgendaUpdate( true ),
+  mUpdateItem( 0 )
 {
   mSelectedDates.append(QDate::currentDate());
 
@@ -367,12 +368,14 @@ KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name) :
 
   bool isRTL = KOGlobals::self()->reverseLayout();
 
-  if ( KOPrefs::instance()->mVerticalScreen ) {
-    mExpandedPixmap = KOGlobals::self()->smallIcon( "1downarrow" );
-    mNotExpandedPixmap = KOGlobals::self()->smallIcon( "1uparrow" );
-  } else {
-    mExpandedPixmap = KOGlobals::self()->smallIcon( isRTL ? "1leftarrow" : "1rightarrow" );
-    mNotExpandedPixmap = KOGlobals::self()->smallIcon( isRTL ? "1rightarrow" : "1leftarrow" );
+  if ( KOPrefs::instance()->compactDialogs() ) {
+    if ( KOPrefs::instance()->mVerticalScreen ) {
+      mExpandedPixmap = KOGlobals::self()->smallIcon( "1downarrow" );
+      mNotExpandedPixmap = KOGlobals::self()->smallIcon( "1uparrow" );
+    } else {
+      mExpandedPixmap = KOGlobals::self()->smallIcon( isRTL ? "1leftarrow" : "1rightarrow" );
+      mNotExpandedPixmap = KOGlobals::self()->smallIcon( isRTL ? "1rightarrow" : "1leftarrow" );
+    }
   }
 
   QBoxLayout *topLayout = new QVBoxLayout(this);
@@ -407,11 +410,15 @@ KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name) :
   // Create all-day agenda widget
   mDummyAllDayLeft = new QVBox( mAllDayFrame );
 
-  mExpandButton = new QPushButton(mDummyAllDayLeft);
-  mExpandButton->setPixmap( mNotExpandedPixmap );
-  mExpandButton->setSizePolicy( QSizePolicy( QSizePolicy::Fixed,
-                                QSizePolicy::Fixed ) );
-  connect( mExpandButton, SIGNAL( clicked() ), SIGNAL( toggleExpand() ) );
+  if ( KOPrefs::instance()->compactDialogs() ) {
+    mExpandButton = new QPushButton(mDummyAllDayLeft);
+    mExpandButton->setPixmap( mNotExpandedPixmap );
+    mExpandButton->setSizePolicy( QSizePolicy( QSizePolicy::Fixed,
+                                  QSizePolicy::Fixed ) );
+    connect( mExpandButton, SIGNAL( clicked() ), SIGNAL( toggleExpand() ) );
+  } else {
+    new QLabel( i18n("All Day"), mDummyAllDayLeft );
+  }
 
   mAllDayAgenda = new KOAgenda(1,mAllDayFrame);
   QWidget *dummyAllDayRight = new QWidget(mAllDayFrame);
@@ -455,7 +462,8 @@ KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name) :
   // these blank widgets make the All Day Event box line up with the agenda
   dummyAllDayRight->setFixedWidth(mAgenda->verticalScrollBar()->width());
   dummyAgendaRight->setFixedWidth(mAgenda->verticalScrollBar()->width());
-  mDummyAllDayLeft->setFixedWidth(mTimeLabels->width());
+  
+  updateTimeBarWidth();
 
   // Scrolling
   connect(mAgenda->verticalScrollBar(),SIGNAL(valueChanged(int)),
@@ -715,7 +723,7 @@ void KOAgendaView::updateConfig()
   // for some reason, this needs to be called explicitly
   mTimeLabels->repaint();
 
-  mDummyAllDayLeft->setFixedWidth(mTimeLabels->width());
+  updateTimeBarWidth();
 
   // ToolTips displaying summary of events
   KOAgendaItem::toolTipGroup()->setEnabled(KOPrefs::instance()
@@ -726,6 +734,24 @@ void KOAgendaView::updateConfig()
   createDayLabels();
 
   updateView();
+}
+
+void KOAgendaView::updateTimeBarWidth()
+{
+  int width;
+
+  width = mDummyAllDayLeft->fontMetrics().width( i18n("All Day") );
+
+#if 0
+  if ( mDummyAllDayLeft->width() > mTimeLabels->width() ) {
+    width = mDummyAllDayLeft->width();
+  } else {
+    width = mTimeLabels->width();
+  }
+#endif
+  
+  mDummyAllDayLeft->setFixedWidth( width );
+  mTimeLabels->setFixedWidth( width );
 }
 
 
@@ -1435,6 +1461,8 @@ void KOAgendaView::setContentsPos( int y )
 
 void KOAgendaView::setExpandedButton( bool expanded )
 {
+  if ( !mExpandButton ) return;
+
   if ( expanded ) {
     mExpandButton->setPixmap( mExpandedPixmap );
   } else {

@@ -226,6 +226,8 @@ class KOAgendaView : public KOEventView
     */
     void updateEventIndicators();
 
+    void updateTimeBarWidth();
+
   protected slots:
     /** Update event belonging to agenda item */
     void updateEventDates( KOAgendaItem *item );
