@@ -135,7 +135,6 @@ void ResourceItem::stateChange( bool active )
       }
     } else {
       mResource->save();
-      mResource->close();
     }
     mResource->setActive( toActivate );
 
@@ -254,6 +253,7 @@ void ResourceView::addResource()
 void ResourceView::addResourceItem( ResourceCalendar *resource )
 {
   new ResourceItem( resource, this, mListView );
+
   connect( resource, SIGNAL( signalSubresourceAdded( ResourceCalendar *,
                                                      const QString &,
                                                      const QString & ) ),
@@ -264,6 +264,10 @@ void ResourceView::addResourceItem( ResourceCalendar *resource )
                                                        const QString & ) ),
            SLOT( slotSubresourceRemoved( ResourceCalendar *, const QString &,
                                          const QString & ) ) );
+
+  connect( resource, SIGNAL( resourceSaved( ResourceCalendar * ) ),
+           SLOT( closeResource( ResourceCalendar * ) ) );
+
   emitResourcesChanged();
 }
 
@@ -287,6 +291,11 @@ void ResourceView::slotSubresourceRemoved( ResourceCalendar */*calendar*/,
                                            const QString &resource )
 {
   delete mListView->findItem( resource, 0 );
+}
+
+void ResourceView::closeResource( ResourceCalendar *r )
+{
+  r->close();
 }
 
 void ResourceView::updateResourceItem( ResourceCalendar *resource )
