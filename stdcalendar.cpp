@@ -41,11 +41,7 @@ StdCalendar *StdCalendar::mSelf = 0;
 StdCalendar *StdCalendar::self()
 {
   if ( !mSelf ) {
-#if 0
     selfDeleter.setObject( mSelf, new StdCalendar() );
-#else
-    mSelf = new StdCalendar();
-#endif
   }
   return mSelf;
 }
