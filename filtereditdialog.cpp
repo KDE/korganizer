@@ -33,6 +33,7 @@
 #include <klocale.h>
 #include <kinputdialog.h>
 #include <kmessagebox.h>
+#include <knuminput.h> 
 
 #include <libkcal/calfilter.h>
 #include <libkdepim/categoryselectdialog.h>
@@ -204,6 +205,7 @@ void FilterEditDialog::readFilter( CalFilter *filter )
   int c = filter->criteria();
 
   mEditor->mCompletedCheck->setChecked( c & CalFilter::HideCompleted );
+  mEditor->mCompletedTimeSpan->setValue( filter->completedTimeSpan() );
   mEditor->mRecurringCheck->setChecked( c & CalFilter::HideRecurring );
 
   if ( c & CalFilter::ShowCategories ) {
@@ -227,6 +229,7 @@ void FilterEditDialog::writeFilter( CalFilter *filter )
   if ( mEditor->mHideInactiveTodosCheck->isChecked() ) c |= CalFilter::HideInactiveTodos;
 
   filter->setCriteria( c );
+  filter->setCompletedTimeSpan( mEditor->mCompletedTimeSpan->value() );
 
   QStringList categoryList;
   for( uint i = 0; i < mEditor->mCatList->count(); ++i ) {

@@ -538,6 +538,7 @@ void CalendarView::readFilterSettings(KConfig *config)
     config->setGroup("Filter_" + (*it));
     filter->setCriteria(config->readNumEntry("Criteria",0));
     filter->setCategoryList(config->readListEntry("CategoryList"));
+    filter->setCompletedTimeSpan( config->readNumEntry( "HideTodoDays", 0 ) );
     mFilters.append(filter);
 
     ++it;
@@ -568,9 +569,10 @@ void CalendarView::writeFilterSettings(KConfig *config)
   while(filter) {
 //    kdDebug(5850) << " fn: " << filter->name() << endl;
     filterList << filter->name();
-    config->setGroup("Filter_" + filter->name());
-    config->writeEntry("Criteria",filter->criteria());
-    config->writeEntry("CategoryList",filter->categoryList());
+    config->setGroup( "Filter_" + filter->name() );
+    config->writeEntry( "Criteria", filter->criteria() );
+    config->writeEntry( "CategoryList", filter->categoryList() );
+    config->writeEntry( "HideTodoDays", filter->completedTimeSpan() );
     filter = mFilters.next();
   }
   config->setGroup("General");
