@@ -2,6 +2,7 @@
     This file is part of KOrganizer.
 
     Copyright (c) 2003 Cornelius Schumacher <schumacher@kde.org>
+    Copyright (c) 2005 Reinhold Kainhofer <reinhold@kainhofer.com>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -25,18 +26,64 @@
 #include "koeditorattachments.h"
 
 #include "urihandler.h"
+#include <libkcal/incidence.h>
 
 #include <klocale.h>
 #include <kdebug.h>
 #include <kurlrequesterdlg.h>
 #include <kmessagebox.h>
-#include <libkcal/incidence.h>
+#include <klistview.h>
 
 #include <qlayout.h>
 #include <qlistview.h>
 #include <qpushbutton.h>
 #include <qdragobject.h>
 #include <qwhatsthis.h>
+
+class AttachmentListItem : public KListViewItem
+{
+  public:
+    AttachmentListItem( KCal::Attachment*att, QListView *parent ) :
+        KListViewItem( parent )
+    {
+      if ( att ) {
+        mAttachment = new KCal::Attachment( *att );
+      } else {
+        mAttachment = new KCal::Attachment( QString::null );
+      }
+      readAttachment();
+    }
+    ~AttachmentListItem() { delete mAttachment; }
+    KCal::Attachment *attachment() const { return mAttachment; }
+
+    void setUri( const QString &uri )
+    {
+      mAttachment->setUri( uri );
+      readAttachment();
+    }
+    void setData( const char *base64 )
+    {
+      mAttachment->setData( base64 );
+      readAttachment();
+    }
+    void setMimeType( const QString &mime )
+    {
+      mAttachment->setMimeType( mime );
+      readAttachment();
+    }
+
+    void readAttachment()
+    {
+      if ( mAttachment->isUri() )
+        setText( 0, mAttachment->uri() );
+      else
+        setText( 0, i18n("[Binary data]") );
+      setText( 1, mAttachment->mimeType() );
+    }
+
+  private:
+    KCal::Attachment *mAttachment;
+};
 
 KOEditorAttachments::KOEditorAttachments( int spacing, QWidget *parent,
                                           const char *name )
@@ -45,7 +92,7 @@ KOEditorAttachments::KOEditorAttachments( int spacing, QWidget *parent,
   QBoxLayout *topLayout = new QVBoxLayout( this );
   topLayout->setSpacing( spacing );
 
-  mAttachments = new QListView( this );
+  mAttachments = new KListView( this );
   QWhatsThis::add( mAttachments,
                    i18n("Displays a list of current items (files, mail, etc.) "
                         "that have been associated with this event or to-do. "
@@ -103,14 +150,13 @@ void KOEditorAttachments::dropEvent( QDropEvent* event ) {
   int index;
 
   if ( QTextDrag::decode( event, text ) ) {
-    if ( ( index = text.contains( '\n', FALSE ) ) <= 1 )
-      new QListViewItem( mAttachments, text );
-    else {
-      QString *section;
+    if ( ( index = text.contains( '\n', FALSE ) ) <= 1 ) {
+      addAttachment( text );
+    } else {
+      QString section;
       for ( int num = 0; num < index; num++ ) {
-        section = new QString( text.section('\n', num, num ) );
-        new QListViewItem( mAttachments, *section );
-        delete section;
+        section = text.section('\n', num, num );
+        addAttachment( section );
       }
     }
   }
@@ -118,31 +164,44 @@ void KOEditorAttachments::dropEvent( QDropEvent* event ) {
 
 void KOEditorAttachments::showAttachment( QListViewItem *item )
 {
-  if ( !item ) return;
+  AttachmentListItem *attitem = static_cast<AttachmentListItem*>(item);
+  if ( !attitem || !attitem->attachment() ) return;
 
-  QString uri = item->text( 0 );
-
-  UriHandler::process( uri );
+  KCal::Attachment *att = attitem->attachment();
+  if ( att->isUri() ) {
+    QString uri = att->uri();
+    UriHandler::process( uri );
+  } else {
+    // FIXME: Handle binary attachments
+  }
 }
 
 void KOEditorAttachments::slotAdd()
 {
   KURL uri = KURLRequesterDlg::getURL( QString::null, 0,
                                        i18n("Add Attachment") );
+  // TODO: Implement adding binary attachments
   if ( !uri.isEmpty() ) {
-    new QListViewItem( mAttachments, uri.url() );
+    addAttachment( uri.url() );
   }
 }
 
 void KOEditorAttachments::slotEdit()
 {
   QListViewItem *item = mAttachments->currentItem();
-  if ( !item ) return;
+  AttachmentListItem *attitem = static_cast<AttachmentListItem*>(item);
+  if ( !attitem || !attitem->attachment() ) return;
 
-  KURL uri = KURLRequesterDlg::getURL( item->text( 0 ), 0,
-                                       i18n("Edit Attachment") );
+  KCal::Attachment *att = attitem->attachment();
+  if ( att->isUri() ) {
+    KURL uri = KURLRequesterDlg::getURL( att->uri(), 0,
+                                         i18n("Edit Attachment") );
 
-  if ( !uri.isEmpty() ) item->setText( 0, uri.url() );
+    if ( !uri.isEmpty() )
+      attitem->setUri( uri.url() );
+  } else {
+    // FIXME: Handle binary attachments
+  }
 }
 
 void KOEditorAttachments::slotRemove()
@@ -152,7 +211,7 @@ void KOEditorAttachments::slotRemove()
 
   if ( KMessageBox::warningContinueCancel(this,
         i18n("This item will be permanently deleted."),
-	i18n("KOrganizer Confirmation"),KStdGuiItem::del()) == KMessageBox::Continue )
+  i18n("KOrganizer Confirmation"),KStdGuiItem::del()) == KMessageBox::Continue )
     delete item;
 }
 
@@ -169,30 +228,38 @@ void KOEditorAttachments::setDefaults()
 void KOEditorAttachments::addAttachment( const QString &uri,
                                          const QString &mimeType )
 {
-  new QListViewItem( mAttachments, uri, mimeType );
+  AttachmentListItem *item = new AttachmentListItem( 0, mAttachments );
+  item->setUri( uri );
+  if ( !mimeType.isEmpty() ) item->setMimeType( mimeType );
 }
 
-void KOEditorAttachments::readIncidence( Incidence *i )
+
+void KOEditorAttachments::addAttachment( KCal::Attachment *attachment )
+{
+  new AttachmentListItem( attachment, mAttachments );
+}
+
+void KOEditorAttachments::readIncidence( KCal::Incidence *i )
 {
   mAttachments->clear();
 
-  Attachment::List attachments = i->attachments();
-  Attachment::List::ConstIterator it;
+  KCal::Attachment::List attachments = i->attachments();
+  KCal::Attachment::List::ConstIterator it;
   for( it = attachments.begin(); it != attachments.end(); ++it ) {
-    QString uri;
-    if ( (*it)->isUri() ) uri = (*it)->uri();
-    else uri = i18n("[Binary data]");
-    addAttachment( uri, (*it)->mimeType() );
+    addAttachment( (*it) );
   }
 }
 
-void KOEditorAttachments::writeIncidence( Incidence *i )
+void KOEditorAttachments::writeIncidence( KCal::Incidence *i )
 {
   i->clearAttachments();
 
   QListViewItem *item;
+  AttachmentListItem *attitem;
   for( item = mAttachments->firstChild(); item; item = item->nextSibling() ) {
-    i->addAttachment( new Attachment( item->text( 0 ), item->text( 1 ) ) );
+    attitem = static_cast<AttachmentListItem*>(item);
+    if ( attitem )
+      i->addAttachment( new KCal::Attachment( *(attitem->attachment() ) ) );
   }
 }
 

@@ -2,6 +2,7 @@
     This file is part of KOrganizer.
 
     Copyright (c) 2003 Cornelius Schumacher <schumacher@kde.org>
+    Copyright (c) 2005 Reinhold Kainhofer <reinhold@kainhofer.com>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -28,13 +29,11 @@
 
 namespace KCal {
 class Incidence;
+class Attachment;
 }
-using namespace KCal;
 
 class QListViewItem;
-class QListView;
-class QDragonEnterEvent;
-class QDropEvent;
+class KListView;
 
 class KOEditorAttachments : public QWidget
 {
@@ -46,13 +45,14 @@ class KOEditorAttachments : public QWidget
 
     void addAttachment( const QString &uri,
                         const QString &mimeType = QString::null );
+    void addAttachment( KCal::Attachment *attachment );
 
     /** Set widgets to default values */
     void setDefaults();
     /** Read event object and setup widgets accordingly */
-    void readIncidence( Incidence * );
+    void readIncidence( KCal::Incidence * );
     /** Write event settings to event object */
-    void writeIncidence( Incidence * );
+    void writeIncidence( KCal::Incidence * );
 
   protected slots:
     void showAttachment( QListViewItem *item );
@@ -64,7 +64,7 @@ class KOEditorAttachments : public QWidget
     void dropEvent( QDropEvent *event );
 
   private:
-    QListView *mAttachments;
+    KListView *mAttachments;
 };
 
 #endif
