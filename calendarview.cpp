@@ -321,9 +321,9 @@ KODialogManager *CalendarView::dialogManager()
 
 KOIncidenceEditor *CalendarView::editorDialog( Incidence *incidence )
 {
-  if (mDialogList.find(incidence) != mDialogList.end ()) 
+  if (mDialogList.find(incidence) != mDialogList.end ())
     return mDialogList[incidence];
-  else return 0;  
+  else return 0;
 }
 
 QDate CalendarView::startDate()
@@ -745,7 +745,7 @@ void CalendarView::edit_copy()
   } else {
     KNotifyClient::beep();
   }
-  
+
   // Clear selection to avoid accidental creation subtodo's.
   // 1) Left todolist
   mTodoList->clearSelection();
@@ -1923,8 +1923,7 @@ void CalendarView::recurTodo( Todo *todo )
 {
   if (!todo) return;
   Recurrence *r = todo->recurrence();
-  int duration = r->duration();
-  
+
   QDateTime endDateTime = r->endDateTime();
   if ( ( todo->hasDueDate() && todo->doesRecur() ) &&
      ( endDateTime.isValid() && todo->dtDue() < endDateTime ) ) {
@@ -1937,12 +1936,12 @@ void CalendarView::recurTodo( Todo *todo )
         todo->setDtDue( r->getNextDateTime( todo->dtDue() ) );
       } while ( !todo->recursAt( todo->dtDue() ) ||
                  todo->dtDue() <= QDateTime::currentDateTime() );
-      
+
       // prevent setDtStart() from overwriting recurrence's startdate
       QDateTime oldRecStartDate = r->recurStart();
       todo->setDtStart( todo->dtDue().addDays( length ) );
       r->setRecurStart( oldRecStartDate );
-      
+
       return;
   }
 
