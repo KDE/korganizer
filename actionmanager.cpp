@@ -252,6 +252,10 @@ void ActionManager::initActions()
 			      SLOT(edit_copy()), mACollection, "korganizer_copy");
     pasteAction = new KAction(i18n("&Paste"), "editpaste", CTRL+Key_V, mCalendarView,
 	                      SLOT(edit_paste()), mACollection, "korganizer_paste");
+    mUndoAction = new KAction( i18n("&Undo"), "undo", CTRL+Key_Z, h,
+                               SLOT( undo() ), mACollection, "korganizer_undo" );
+    mRedoAction = new KAction( i18n("Re&do"), "redo", CTRL+SHIFT+Key_Z, h,
+                               SLOT( redo() ), mACollection, "korganizer_redo" );
   } else {
     mCutAction = KStdAction::cut(mCalendarView,SLOT(edit_cut()),
 				 mACollection);

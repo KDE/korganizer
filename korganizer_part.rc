@@ -35,6 +35,8 @@
       <Action name="korganizer_close"/>
     </Menu>
     <Menu name="edit"><text>&amp;Edit</text>
+      <Action name="korganizer_undo"/>
+      <Action name="korganizer_redo"/>
       <Action name="edit_delete" append="edit_paste_merge"/>
       <Separator/>
       <Action name="korganizer_find"/>
