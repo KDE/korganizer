@@ -127,7 +127,7 @@
                 <cstring>groupBox1</cstring>
             </property>
             <property name="title">
-                <string>Print Incidences of Type:</string>
+                <string>Print Incidences of Type</string>
             </property>
             <hbox>
                 <property name="name">
@@ -146,7 +146,7 @@
                         <cstring>mTodos</cstring>
                     </property>
                     <property name="text">
-                        <string>&amp;To-Dos</string>
+                        <string>&amp;To-dos</string>
                     </property>
                 </widget>
                 <widget class="QCheckBox">

@@ -13,7 +13,7 @@
         </rect>
     </property>
     <property name="caption">
-        <string>A&amp;larms</string>
+        <string>Alarms</string>
     </property>
     <grid>
         <property name="name">
@@ -77,22 +77,22 @@
                         <widget class="QComboBox">
                             <item>
                                 <property name="text">
-                                    <string>before the start</string>
+                                    <string>Before the Start</string>
                                 </property>
                             </item>
                             <item>
                                 <property name="text">
-                                    <string>after the start</string>
+                                    <string>After the Start</string>
                                 </property>
                             </item>
                             <item>
                                 <property name="text">
-                                    <string>before the end</string>
+                                    <string>Before the End</string>
                                 </property>
                             </item>
                             <item>
                                 <property name="text">
-                                    <string>after the end</string>
+                                    <string>After the End</string>
                                 </property>
                             </item>
                             <property name="name">
