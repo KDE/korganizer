@@ -68,7 +68,7 @@
                     </property>
                     <property stdset="1">
                         <name>text</name>
-                        <string>Filter Enabled</string>
+                        <string>Filter enabled</string>
                     </property>
                 </widget>
                 <widget>

@@ -295,7 +295,7 @@ QString KOMailClient::createBody(IncidenceBase *incidence)
           body += CR;
         } else {
           if (selectedEvent->recurrence()->duration() != -1) {
-            body += i18n("End Date : %1")
+            body += i18n("End Date: %1")
                      .arg(selectedEvent->recurrence()->endDateStr());
             body += CR;
           } else {
@@ -304,7 +304,7 @@ QString KOMailClient::createBody(IncidenceBase *incidence)
           }
         }
       }
-      body += i18n("End Time : %1").arg(selectedEvent->dtEndTimeStr());
+      body += i18n("End Time: %1").arg(selectedEvent->dtEndTimeStr());
       body += CR;
       QString details = selectedEvent->description();
       if (!details.isEmpty()) {

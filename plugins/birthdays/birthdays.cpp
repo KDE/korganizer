@@ -66,7 +66,7 @@ Birthdays::Birthdays(KOrg::MainWindow *parent, const char *name) :
 {
   setXMLFile("plugins/birthdaysui.rc");
 
-  new KAction(i18n("Import birthdays"), 0, this, SLOT(importBirthdays()),
+  new KAction(i18n("Import Birthdays"), 0, this, SLOT(importBirthdays()),
               actionCollection(), "import_birthdays");
   mParent = parent;
 }
