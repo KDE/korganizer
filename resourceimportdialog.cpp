@@ -25,6 +25,7 @@
 #include "resourceimportdialog.h"
 
 #include "kocore.h"
+#include "koprefs.h"
 
 #include <libkcal/calendarresources.h>
 #include <libkcal/resourcelocal.h>
@@ -69,6 +70,7 @@ void ResourceImportDialog::slotOk()
   if ( url.isLocalFile() ) {
     kdDebug() << "Local Resource" << endl;
     resource = new KCal::ResourceLocal( mUrl );
+    resource->setTimeZoneId( KOPrefs::instance()->mTimeZoneId );
   } else {
     kdDebug() << "Remote Resource" << endl;
 //    resource = new KCal::ResourceRemote( url );
