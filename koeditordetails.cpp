@@ -188,7 +188,7 @@ KOEditorDetails::KOEditorDetails (int spacing,QWidget* parent,const char* name)
   attendeeLabel->setText(i18n("Na&me:"));
 
   mNameEdit = new KPIM::AddresseeLineEdit(this);
-  mNameEdit->setClickMessage(i18n("Click to add new appointee"));
+  mNameEdit->setClickMessage(i18n("Click to add a new attendee"));
   attendeeLabel->setBuddy( mNameEdit );
   mNameEdit->installEventFilter(this);
   connect(mNameEdit,SIGNAL(textChanged(const QString &)),
@@ -309,10 +309,11 @@ void KOEditorDetails::openAddressBook()
 
 void KOEditorDetails::addNewAttendee()
 {
-  Attendee *a = new Attendee("","");
+  Attendee *a = new Attendee(i18n("Firstname Lastname"),i18n("name@domain.com"));
   insertAttendee(a);
   // We don't want the hint again
   mNameEdit->setClickMessage("");
+  mNameEdit->selectAll();
 }
 
 
