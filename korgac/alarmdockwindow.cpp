@@ -52,6 +52,9 @@ AlarmDockWindow::AlarmDockWindow( const char *name )
   bool autostart = config->readBoolEntry( "Autostart", true );
   bool alarmsEnabled = config->readBoolEntry( "Enabled", true );
 
+  QString mName = i18n( "KOrganizer Reminder Daemon" );
+  setCaption( mName );
+
   // Set up icons
   KGlobal::iconLoader()->addAppDir( "korgac" );
   mPixmapEnabled  = loadIcon( "korgac" );
@@ -87,7 +90,7 @@ AlarmDockWindow::AlarmDockWindow( const char *name )
                       SLOT( closeAllWindows() ) );
   }
 
-  QToolTip::add(this, i18n( "KOrganizer Alarm Reminder" ) );
+  QToolTip::add(this, mName );
 
 
   connect( this, SIGNAL( quitSelected() ), SLOT( slotQuit() ) );
@@ -109,7 +112,7 @@ void AlarmDockWindow::slotUpdate( int reminders )
   }
   else
   {
-    QToolTip::add( this, i18n( "KOrganizer Alarm Reminder" ) );
+    QToolTip::add( this, mName );
     contextMenu()->setItemEnabled( mSuspendAll, false );
     contextMenu()->setItemEnabled( mDismissAll, false );
   }
