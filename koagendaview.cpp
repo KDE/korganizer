@@ -796,6 +796,8 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
     }
     td->setDtDue( endDt );
   }
+  // TODO: Adjusting the recurrence should really go to CalendarView so this 
+  // functionality will also be available in other views!
   Recurrence *recur = incidence->recurrence();
   if ( recur && (recur->doesRecur()!=Recurrence::rNone) && (daysOffset!=0) ) {
     switch ( recur->doesRecur() ) {
