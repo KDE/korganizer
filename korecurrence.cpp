@@ -468,11 +468,12 @@ const QList<int> &KORecurrence::yearNums() const
 
 void KORecurrence::addYearlyNum(short _rNum)
 {
-
   if (mRecurReadOnly) return;
+
   int *tmpNum = new int;
   *tmpNum = _rNum;
   rYearNums.append(tmpNum);
+  
   mParent->emitEventUpdated(mParent);
 }
 

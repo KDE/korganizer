@@ -1,6 +1,4 @@
-// Calendar class for KOrganizer
-// (c) 1998 Preston Brown
-// 	$Id$
+// $Id$
 
 #include "config.h"
 
@@ -42,7 +40,7 @@ ICalFormat::~ICalFormat()
 
 bool ICalFormat::load(const QString &fileName)
 {
-  kdDebug() << "ICalFormat::load()" << endl;
+  kdDebug() << "ICalFormat::load() " << fileName << endl;
 
   icalfileset *fs = icalfileset_new(writeText(fileName));
 
@@ -135,15 +133,15 @@ bool ICalFormat::save(const QString &fileName)
     icalcomponent_add_component(calendar,component);
   }
 
-  kdDebug() << "Now writing iCalendar file" << endl;
+//  kdDebug() << "Now writing iCalendar file" << endl;
 
   // Write out iCalendar file
   icalfileset_mark(fs);
-  kdDebug() << "Now writing iCalendar file..1" << endl;
+//  kdDebug() << "Now writing iCalendar file..1" << endl;
   icalfileset_commit(fs);
-  kdDebug() << "Now writing iCalendar file..2" << endl;
+//  kdDebug() << "Now writing iCalendar file..2" << endl;
   icalfileset_free(fs);
-  kdDebug() << "Now writing iCalendar file..3" << endl;
+//  kdDebug() << "Now writing iCalendar file..3" << endl;
 
   return true;
 }
@@ -623,26 +621,6 @@ icalcomponent *ICalFormat::writeEvent(Event *event)
   if (!tmpStr.isEmpty())
     addPropValue(vevent, VCResourcesProp, tmpStr.ascii());
 
-  // alarm stuff
-  if (anEvent->getAlarmRepeatCount()) {
-    VObject *a = addProp(vevent, VCDAlarmProp);
-    tmpStr = qDateTimeToISO(anEvent->getAlarmTime());
-    addPropValue(a, VCRunTimeProp, tmpStr.ascii());
-    addPropValue(a, VCRepeatCountProp, "1");
-    addPropValue(a, VCDisplayStringProp, "beep!");
-    if (!anEvent->getAudioAlarmFile().isEmpty()) {
-      a = addProp(vevent, VCAAlarmProp);
-      addPropValue(a, VCRunTimeProp, tmpStr.ascii());
-      addPropValue(a, VCRepeatCountProp, "1");
-      addPropValue(a, VCAudioContentProp, anEvent->getAudioAlarmFile().ascii());
-    }
-    if (!anEvent->getProgramAlarmFile().isEmpty()) {
-      a = addProp(vevent, VCPAlarmProp);
-      addPropValue(a, VCRunTimeProp, tmpStr.ascii());
-      addPropValue(a, VCRepeatCountProp, "1");
-      addPropValue(a, VCProcedureNameProp, anEvent->getProgramAlarmFile().ascii());
-    }
-  }
 #endif
 
 // TODO: transparency
@@ -812,6 +790,12 @@ void ICalFormat::writeIncidence(icalcomponent *parent,Incidence *incidence)
   }
 #endif
 
+  // alarms
+  KOAlarm *alarm = incidence->alarm();
+  if (alarm->alarmRepeatCount()) {
+    kdDebug() << "Write alarm for " << incidence->summary() << endl;
+    icalcomponent_add_component(parent,writeAlarm(alarm));
+  }
 }
 
 icalproperty *ICalFormat::writeRecurrenceRule(KORecurrence *recur)
@@ -822,29 +806,14 @@ icalproperty *ICalFormat::writeRecurrenceRule(KORecurrence *recur)
 
   icalrecurrencetype_clear(&r);
 
-/*
-  r.by_second[0] = ICAL_RECURRENCE_ARRAY_MAX;
-  r.by_minute[0] = ICAL_RECURRENCE_ARRAY_MAX;
-  r.by_hour[0] = ICAL_RECURRENCE_ARRAY_MAX;
-  r.by_day[0] = ICAL_RECURRENCE_ARRAY_MAX;
-  r.by_month_day[0] = ICAL_RECURRENCE_ARRAY_MAX;
-  r.by_year_day[0] = ICAL_RECURRENCE_ARRAY_MAX;
-  r.by_week_no[0] = ICAL_RECURRENCE_ARRAY_MAX;
-  r.by_month[0] = ICAL_RECURRENCE_ARRAY_MAX;
-  r.by_set_pos[0] = ICAL_RECURRENCE_ARRAY_MAX;
-
-  r.until = writeICalDate(QDate::currentDate());
-  r.count = 0;
-  r.interval = 0;
-  r.week_start = ICAL_NO_WEEKDAY;
-*/
-
   int index = 0;
+  int index2 = 0;
 
   QList<KORecurrence::rMonthPos> tmpPositions;
   QList<int> tmpDays;
   int *tmpDay;
   KORecurrence::rMonthPos *tmpPos;
+  int day;
 
   switch(recur->doesRecur()) {
     case KORecurrence::rDaily:
@@ -858,8 +827,11 @@ icalproperty *ICalFormat::writeRecurrenceRule(KORecurrence *recur)
     case KORecurrence::rWeekly:
       r.freq = ICAL_WEEKLY_RECURRENCE;
       for (int i = 0; i < 7; i++) {
-	if (recur->days().testBit(i))
-          r.by_day[index++] = icalrecurrencetype_day_day_of_week(i+1);
+	if (recur->days().testBit(i)) {
+          if (i == 6) day = 1;
+          else day = i + 2;
+          r.by_day[index++] = icalrecurrencetype_day_day_of_week(day);
+        }
       }
 //      r.by_day[index] = ICAL_RECURRENCE_ARRAY_MAX;
 #if 0
@@ -874,10 +846,14 @@ icalproperty *ICalFormat::writeRecurrenceRule(KORecurrence *recur)
       r.freq = ICAL_MONTHLY_RECURRENCE;
 
       tmpPositions = recur->monthPositions();
-      for (tmpPos = tmpPositions.first();
-	   tmpPos;
-	   tmpPos = tmpPositions.next()) {
-        r.by_month_day[index++] = tmpPos->rPos;
+      tmpPos = tmpPositions.first();
+      r.by_set_pos[index2++] = tmpPos->rPos;
+      for (int i = 0; i < 7; i++) {
+	if (tmpPos->rDays.testBit(i)) {
+          if (i == 6) day = 1;
+          else day = i + 2;
+          r.by_day[index++] = icalrecurrencetype_day_day_of_week(day);
+        }
       }
 //      r.by_month_day[index] = ICAL_RECURRENCE_ARRAY_MAX;
 #if 0
@@ -908,7 +884,7 @@ icalproperty *ICalFormat::writeRecurrenceRule(KORecurrence *recur)
       for (tmpDay = tmpDays.first();
 	   tmpDay;
 	   tmpDay = tmpDays.next()) {
-        r.by_day[index++] = icalrecurrencetype_day_position(*tmpDay + 1);
+        r.by_month_day[index++] = icalrecurrencetype_day_position(*tmpDay);
       }
 //      r.by_day[index] = ICAL_RECURRENCE_ARRAY_MAX;
 #if 0    
@@ -930,7 +906,7 @@ icalproperty *ICalFormat::writeRecurrenceRule(KORecurrence *recur)
       for (tmpDay = tmpDays.first();
 	   tmpDay;
 	   tmpDay = tmpDays.next()) {
-//        r.by_set_pos[index++] = *tmpDay;
+        r.by_month[index++] = *tmpDay;
       }
 //      r.by_set_pos[index] = ICAL_RECURRENCE_ARRAY_MAX;
 #if 0
@@ -952,9 +928,9 @@ icalproperty *ICalFormat::writeRecurrenceRule(KORecurrence *recur)
       for (tmpDay = tmpDays.first();
 	   tmpDay;
 	   tmpDay = tmpDays.next()) {
-        r.by_set_pos[index++] = *tmpDay;
+        r.by_year_day[index++] = *tmpDay;
       }
-      r.by_set_pos[index] = ICAL_RECURRENCE_ARRAY_MAX;
+//      r.by_year_day[index] = ICAL_RECURRENCE_ARRAY_MAX;
 #if 0
       tmpStr.sprintf("YD%i ", anEvent->rFreq);
       // write out all the rYearNums;
@@ -1085,6 +1061,42 @@ icalproperty *ICalFormat::writeRecurrenceRule(KORecurrence *recur)
 #endif
 }
 
+icalcomponent *ICalFormat::writeAlarm(KOAlarm *alarm)
+{
+  icalcomponent *a = icalcomponent_new(ICAL_VALARM_COMPONENT);
+  
+  icalcomponent_add_property(a,icalproperty_new_action("DISPLAY"));
+  icalcomponent_add_property(a,icalproperty_new_description("An Alarm"));
+  icaltriggertype trigger;
+  trigger.time = writeICalDateTime(alarm->alarmTime());  
+  icalcomponent_add_property(a,icalproperty_new_trigger(trigger));
+
+  return a;
+  
+#if 0
+  // alarm stuff
+  if (anEvent->getAlarmRepeatCount()) {
+    VObject *a = addProp(vevent, VCDAlarmProp);
+    tmpStr = qDateTimeToISO(anEvent->getAlarmTime());
+    addPropValue(a, VCRunTimeProp, tmpStr.ascii());
+    addPropValue(a, VCRepeatCountProp, "1");
+    addPropValue(a, VCDisplayStringProp, "beep!");
+    if (!anEvent->getAudioAlarmFile().isEmpty()) {
+      a = addProp(vevent, VCAAlarmProp);
+      addPropValue(a, VCRunTimeProp, tmpStr.ascii());
+      addPropValue(a, VCRepeatCountProp, "1");
+      addPropValue(a, VCAudioContentProp, anEvent->getAudioAlarmFile().ascii());
+    }
+    if (!anEvent->getProgramAlarmFile().isEmpty()) {
+      a = addProp(vevent, VCPAlarmProp);
+      addPropValue(a, VCRunTimeProp, tmpStr.ascii());
+      addPropValue(a, VCRepeatCountProp, "1");
+      addPropValue(a, VCProcedureNameProp, anEvent->getProgramAlarmFile().ascii());
+    }
+  }
+#endif
+}
+
 Todo *ICalFormat::readTodo(icalcomponent *vtodo)
 {
   Todo *todo = new Todo;
@@ -1187,10 +1199,6 @@ Event *ICalFormat::readEvent(icalcomponent *vevent)
     anEvent->setDtEnd(anEvent->dtStart());
 #endif
   
-      case ICAL_RRULE_PROPERTY:
-        readRecurrenceRule(p,event);
-        break;
-
 // TODO: exdates
 #if 0
   // recurrence exceptions
@@ -1235,31 +1243,6 @@ Event *ICalFormat::readEvent(icalcomponent *vevent)
       index1 = index2;
     }
     anEvent->setResources(tmpStrList);
-  }
-#endif
-
-// TODO: read alarms
-#if 0
-  /* alarm stuff */
-  if ((vo = isAPropertyOf(vevent, VCDAlarmProp))) {
-    VObject *a;
-    if ((a = isAPropertyOf(vo, VCRunTimeProp))) {
-      anEvent->setAlarmTime(ISOToQDateTime(s = fakeCString(vObjectUStringZValue(a))));
-      deleteStr(s);
-    }
-    anEvent->setAlarmRepeatCount(1);
-    if ((vo = isAPropertyOf(vevent, VCPAlarmProp))) {
-      if ((a = isAPropertyOf(vo, VCProcedureNameProp))) {
-	anEvent->setProgramAlarmFile(s = fakeCString(vObjectUStringZValue(a)));
-	deleteStr(s);
-      }
-    }
-    if ((vo = isAPropertyOf(vevent, VCAAlarmProp))) {
-      if ((a = isAPropertyOf(vo, VCAudioContentProp))) {
-	anEvent->setAudioAlarmFile(s = fakeCString(vObjectUStringZValue(a)));
-	deleteStr(s);
-      }
-    }
   }
 #endif
 
@@ -1410,6 +1393,10 @@ void ICalFormat::readIncidence(icalcomponent *parent,Incidence *incidence)
         categories.append(text);
         break;
 
+      case ICAL_RRULE_PROPERTY:
+        readRecurrenceRule(p,incidence);
+        break;
+
 // TODO:
 #if 0
   /* PILOT SYNC STUFF */
@@ -1439,10 +1426,118 @@ void ICalFormat::readIncidence(icalcomponent *parent,Incidence *incidence)
 
   // add categories
   incidence->setCategories(categories);
+
+  icalcomponent *alarm;
+  alarm = icalcomponent_get_first_component(parent,ICAL_VALARM_COMPONENT);
+  if (alarm) {
+    readAlarm(alarm,incidence);
+  }
 }
 
-void ICalFormat::readRecurrenceRule(icalproperty *rrule,Incidence *event)
+void ICalFormat::readRecurrenceRule(icalproperty *rrule,Incidence *incidence)
 {
+  kdDebug() << "Read recurrence for " << incidence->summary() << endl;
+
+  KORecurrence *recur = incidence->recurrence();
+  recur->unsetRecurs();
+
+  struct icalrecurrencetype r = icalproperty_get_rrule(rrule);
+
+  dumpIcalRecurrence(r);
+
+  int index = 0;
+  short day = 0;
+  QBitArray qba(7);
+
+  switch (r.freq) {
+    case ICAL_DAILY_RECURRENCE:
+      if (!icaltime_is_null_time(r.until)) {
+        recur->setDaily(r.interval,readICalDate(r.until));
+      } else {
+        if (r.count == 0)
+          recur->setDaily(r.interval,-1);
+        else
+          recur->setDaily(r.interval,r.count);
+      }
+      break;
+    case ICAL_WEEKLY_RECURRENCE:
+      while((day = r.by_day[index++]) != ICAL_RECURRENCE_ARRAY_MAX) {
+        qba.setBit(day-1);
+      }
+      if (!icaltime_is_null_time(r.until)) {
+        recur->setWeekly(r.interval,qba,readICalDate(r.until));
+      } else {
+        if (r.count == 0)
+          recur->setWeekly(r.interval,qba,-1);
+        else
+          recur->setWeekly(r.interval,qba,r.count);
+      }
+      break;
+    case ICAL_MONTHLY_RECURRENCE:
+      if (r.by_day[0] != ICAL_RECURRENCE_ARRAY_MAX) {
+        while((day = r.by_day[index++]) != ICAL_RECURRENCE_ARRAY_MAX) {
+          kdDebug() << "----a " << index << ": " << day << endl;
+          qba.setBit(day);
+        }
+        if (!icaltime_is_null_time(r.until)) {
+          recur->setMonthly(KORecurrence::rMonthlyPos,r.interval,
+                            readICalDate(r.until));
+        } else {
+          if (r.count == 0)
+            recur->setMonthly(KORecurrence::rMonthlyPos,r.interval,-1);
+          else
+            recur->setMonthly(KORecurrence::rMonthlyPos,r.interval,r.count);
+        }
+      } else if (r.by_month_day[0] != ICAL_RECURRENCE_ARRAY_MAX) {
+        while((day = r.by_month_day[index++]) != ICAL_RECURRENCE_ARRAY_MAX) {
+          kdDebug() << "----b " << day << endl;
+          recur->addMonthlyDay(day);
+        }
+        if (!icaltime_is_null_time(r.until)) {
+          recur->setMonthly(KORecurrence::rMonthlyDay,r.interval,
+                            readICalDate(r.until));
+        } else {
+          if (r.count == 0)
+            recur->setMonthly(KORecurrence::rMonthlyDay,r.interval,-1);
+          else
+            recur->setMonthly(KORecurrence::rMonthlyDay,r.interval,r.count);
+        }
+      }
+      break;
+    case ICAL_YEARLY_RECURRENCE:
+      if (r.by_year_day[0] != ICAL_RECURRENCE_ARRAY_MAX) {
+        while((day = r.by_year_day[index++]) != ICAL_RECURRENCE_ARRAY_MAX) {
+          recur->addYearlyNum(day);
+        }
+        if (!icaltime_is_null_time(r.until)) {
+          recur->setYearly(KORecurrence::rYearlyDay,r.interval,
+                            readICalDate(r.until));
+        } else {
+          if (r.count == 0)
+            recur->setYearly(KORecurrence::rYearlyDay,r.interval,-1);
+          else
+            recur->setYearly(KORecurrence::rYearlyDay,r.interval,r.count);
+        }
+      } if (r.by_month[0] != ICAL_RECURRENCE_ARRAY_MAX) {
+        while((day = r.by_month[index++]) != ICAL_RECURRENCE_ARRAY_MAX) {
+          recur->addYearlyNum(day);
+        }
+        if (!icaltime_is_null_time(r.until)) {
+          recur->setYearly(KORecurrence::rYearlyMonth,r.interval,
+                            readICalDate(r.until));
+        } else {
+          if (r.count == 0)
+            recur->setYearly(KORecurrence::rYearlyMonth,r.interval,-1);
+          else
+            recur->setYearly(KORecurrence::rYearlyMonth,r.interval,r.count);
+        }
+      }
+      break;
+    default:
+      kdDebug() << "Unknown type of recurrence: " << r.freq << endl;
+      break;
+  }
+
 #if 0
   // repeat stuff
   if ((vo = isAPropertyOf(vevent, VCRRuleProp)) != 0) {
@@ -1660,6 +1755,36 @@ void ICalFormat::readRecurrenceRule(icalproperty *rrule,Incidence *event)
 #endif
 }
 
+void ICalFormat::readAlarm(icalcomponent *alarm,Incidence *incidence)
+{
+  kdDebug() << "Read alarm for " << incidence->summary() << endl;
+
+// TODO: read alarms
+#if 0
+  /* alarm stuff */
+  if ((vo = isAPropertyOf(vevent, VCDAlarmProp))) {
+    VObject *a;
+    if ((a = isAPropertyOf(vo, VCRunTimeProp))) {
+      anEvent->setAlarmTime(ISOToQDateTime(s = fakeCString(vObjectUStringZValue(a))));
+      deleteStr(s);
+    }
+    anEvent->setAlarmRepeatCount(1);
+    if ((vo = isAPropertyOf(vevent, VCPAlarmProp))) {
+      if ((a = isAPropertyOf(vo, VCProcedureNameProp))) {
+	anEvent->setProgramAlarmFile(s = fakeCString(vObjectUStringZValue(a)));
+	deleteStr(s);
+      }
+    }
+    if ((vo = isAPropertyOf(vevent, VCAAlarmProp))) {
+      if ((a = isAPropertyOf(vo, VCAudioContentProp))) {
+	anEvent->setAudioAlarmFile(s = fakeCString(vObjectUStringZValue(a)));
+	deleteStr(s);
+      }
+    }
+  }
+#endif
+}
+
 icaltimetype ICalFormat::writeICalDate(const QDate &date)
 {
   icaltimetype t;
@@ -1668,9 +1793,15 @@ icaltimetype ICalFormat::writeICalDate(const QDate &date)
   t.month = date.month();
   t.day = date.day();
 
+  t.hour = 0;
+  t.minute = 0;
+  t.second = 0;
+
   t.is_date = 1;
   
   t.is_utc = 0;
+
+  t.zone = 0;
 
   return t;
 }
@@ -1690,6 +1821,8 @@ icaltimetype ICalFormat::writeICalDateTime(const QDateTime &datetime)
   t.is_date = 0;
 
   t.is_utc = 0;
+  
+  t.zone = 0;
   
   return t;
 }
@@ -1816,7 +1949,7 @@ void ICalFormat::populate(icalcomponent *calendar)
   // Iterate through all todos
   c = icalcomponent_get_first_component(calendar,ICAL_VTODO_COMPONENT);
   while (c) {
-//    kdDebug() << "----Todo found" << endl;
+    kdDebug() << "----Todo found" << endl;
     Todo *todo = readTodo(c);
     if (!mCalendar->getTodo(todo->VUID())) mCalendar->addTodo(todo);
     c = icalcomponent_get_next_component(calendar,ICAL_VTODO_COMPONENT);
@@ -1825,7 +1958,7 @@ void ICalFormat::populate(icalcomponent *calendar)
   // Iterate through all events
   c = icalcomponent_get_first_component(calendar,ICAL_VEVENT_COMPONENT);
   while (c) {
-//    kdDebug() << "----Event found" << endl;  
+    kdDebug() << "----Event found" << endl;  
     Event *event = readEvent(c);
     if (!mCalendar->getEvent(event->VUID())) mCalendar->addEvent(event);
     c = icalcomponent_get_next_component(calendar,ICAL_VEVENT_COMPONENT);
@@ -1945,4 +2078,50 @@ void ICalFormat::parseError(const char *prop)
                             "and try again, or load another file.\n")
                             .arg(prop),
                        i18n("KOrganizer: Error Parsing Calendar"));
+}
+
+void ICalFormat::dumpIcalRecurrence(icalrecurrencetype r)
+{
+  int i;
+  int index;
+
+  kdDebug() << " Freq: " << r.freq << endl;
+  kdDebug() << " Until: " << icaltime_as_ctime(r.until) << endl;
+  kdDebug() << " Count: " << r.count << endl;
+  index = 0;
+  if (r.by_day[0] != ICAL_RECURRENCE_ARRAY_MAX) {
+    QString out = " By Day: ";
+    while((i = r.by_day[index++]) != ICAL_RECURRENCE_ARRAY_MAX) {
+      out.append(QString::number(i) + " ");
+    }
+    kdDebug() << out << endl;
+  }
+  if (r.by_month_day[0] != ICAL_RECURRENCE_ARRAY_MAX) {
+    QString out = " By Month Day: ";
+    while((i = r.by_month_day[index++]) != ICAL_RECURRENCE_ARRAY_MAX) {
+      out.append(QString::number(i) + " ");
+    }
+    kdDebug() << out << endl;
+  }
+  if (r.by_year_day[0] != ICAL_RECURRENCE_ARRAY_MAX) {
+    QString out = " By Year Day: ";
+    while((i = r.by_year_day[index++]) != ICAL_RECURRENCE_ARRAY_MAX) {
+      out.append(QString::number(i) + " ");
+    }
+    kdDebug() << out << endl;
+  }
+  if (r.by_month[0] != ICAL_RECURRENCE_ARRAY_MAX) {
+    QString out = " By Month: ";
+    while((i = r.by_month[index++]) != ICAL_RECURRENCE_ARRAY_MAX) {
+      out.append(QString::number(i) + " ");
+    }
+    kdDebug() << out << endl;
+  }
+  if (r.by_set_pos[0] != ICAL_RECURRENCE_ARRAY_MAX) {
+    QString out = " By Set Pos: ";
+    while((i = r.by_set_pos[index++]) != ICAL_RECURRENCE_ARRAY_MAX) {
+      out.append(QString::number(i) + " ");
+    }
+    kdDebug() << out << endl;
+  }
 }
