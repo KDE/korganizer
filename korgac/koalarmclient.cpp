@@ -52,13 +52,12 @@ KOAlarmClient::KOAlarmClient( QObject *parent, const char *name )
   connect( mAlarmDialog, SIGNAL( suspendSignal( int ) ),
            SLOT( suspend( int ) ) );
 
-  mCalendar = new CalendarResources();
-
   KConfig c( locate( "config", "korganizerrc" ) );
   c.setGroup( "Time & Date" );
   QString tz = c.readEntry( "TimeZoneId" );
   kdDebug(5890) << "TimeZone: " << tz << endl;
-  mCalendar->setTimeZoneId( tz );
+
+  mCalendar = new CalendarResources( tz );
 
   connect( &mCheckTimer, SIGNAL( timeout() ), SLOT( checkAlarms() ) );
 
