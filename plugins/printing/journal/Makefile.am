@@ -1,4 +1,4 @@
-INCLUDES = -I$(top_srcdir)/korganizer/interfaces -I$(top_srcdir)/korganizer/printing -I$(top_builddir)/libkdepim -I$(top_srcdir) $(all_includes) 
+INCLUDES = -I$(top_srcdir)/korganizer/interfaces -I$(top_srcdir)/korganizer/printing -I$(top_srcdir) $(all_includes) 
 
 kde_module_LTLIBRARIES = libkorg_journalprint.la
 
