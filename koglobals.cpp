@@ -55,7 +55,7 @@ static KStaticDeleter<KOGlobals> koGlobalsDeleter;
 
 KOGlobals *KOGlobals::self()
 {
-  if (!mSelf) {
+  if ( !mSelf ) {
     koGlobalsDeleter.setObject( mSelf, new KOGlobals );
   }
 
@@ -65,10 +65,10 @@ KOGlobals *KOGlobals::self()
 KOGlobals::KOGlobals()
   : mHolidays(0)
 {
-  // Needed to distinguish from global KInstance 
+  // Needed to distinguish from global KInstance
   // in case we are a KPart
-  mOwnInstance = new KInstance("korganizer");
-  mOwnInstance->config()->setGroup("General");
+  mOwnInstance = new KInstance( "korganizer" );
+  mOwnInstance->config()->setGroup( "General" );
 
   mAlarmClient = new AlarmClient;
 }
@@ -100,15 +100,14 @@ void KOGlobals::fitDialogToScreen( QWidget *wid, bool force )
   bool resized = false;
 
   int w = wid->frameSize().width();
-  int h = wid->frameSize().height();  
+  int h = wid->frameSize().height();
 
-  QRect desk = KGlobalSettings::desktopGeometry(wid);
+  QRect desk = KGlobalSettings::desktopGeometry( wid );
   if ( w > desk.width() ) {
     w = desk.width();
     resized = true;
   }
-  // Yuck this hack is ugly.  Is the -30 really to circumvent the size of
-  // kicker?!
+  // FIXME: ugly hack.  Is the -30 really to circumvent the size of kicker?!
   if ( h > desk.height() - 30 ) {
     h = desk.height() - 30;
     resized = true;
@@ -130,14 +129,14 @@ bool KOGlobals::reverseLayout()
 #endif
 }
 
-QPixmap KOGlobals::smallIcon(const QString& name)
+QPixmap KOGlobals::smallIcon( const QString& name )
 {
-  return SmallIcon(name, mOwnInstance);
+  return SmallIcon( name, mOwnInstance );
 }
 
-QIconSet KOGlobals::smallIconSet(const QString& name, int size)
+QIconSet KOGlobals::smallIconSet( const QString& name, int size )
 {
-  return SmallIconSet(name, size, mOwnInstance);
+  return SmallIconSet( name, size, mOwnInstance );
 }
 
 QString KOGlobals::holiday( const QDate &date )
@@ -152,14 +151,15 @@ bool KOGlobals::isWorkDay( const QDate &date )
 
   bool nonWorkDay = ( mask & ( 1 << ( date.dayOfWeek() - 1 ) ) );
 
-  nonWorkDay = nonWorkDay ||
-               ( KOPrefs::instance()->mExcludeHolidays &&
-                 ( mHolidays && ( mHolidays->category( date ) == KHolidays::HOLIDAY ) ) );
+  nonWorkDay = nonWorkDay
+               || ( KOPrefs::instance()->mExcludeHolidays
+                    && ( mHolidays
+                         && ( mHolidays->category( date ) == KHolidays::HOLIDAY ) ) );
 
   return !nonWorkDay;
 }
 
-void KOGlobals::setHolidays(KHolidays *h)
+void KOGlobals::setHolidays( KHolidays *h )
 {
   delete mHolidays;
   mHolidays = h;

@@ -39,8 +39,8 @@ class KDE_EXPORT KOGlobals
   public:
     static KOGlobals *self();
 
-    enum { INCIDENCEADDED, INCIDENCEEDITED, INCIDENCEDELETED };  
-    enum { PRIORITY_MODIFIED, COMPLETION_MODIFIED, CATEGORY_MODIFIED, 
+    enum { INCIDENCEADDED, INCIDENCEEDITED, INCIDENCEDELETED };
+    enum { PRIORITY_MODIFIED, COMPLETION_MODIFIED, CATEGORY_MODIFIED,
            DATE_MODIFIED, RELATION_MODIFIED, ALARM_MODIFIED,
            DESCRIPTION_MODIFIED, SUMMARY_MODIFIED,
            UNKNOWN_MODIFIED };
@@ -56,17 +56,18 @@ class KDE_EXPORT KOGlobals
 
     ~KOGlobals();
 
-    QPixmap smallIcon(const QString& name);
-    QIconSet smallIconSet(const QString& name, int size = 0);
-    
+    QPixmap smallIcon( const QString& name );
+    QIconSet smallIconSet( const QString& name, int size = 0 );
+
     QString holiday( const QDate & );
     bool isWorkDay( const QDate & );
 
-    /** define which holidays the user wants to use
-      @param h a KHolidays object initialized with the desired locale
-      We capture this object, so you must not delete it
+    /**
+       Set which holidays the user wants to use.
+       @param h a KHolidays object initialized with the desired locale.
+       We capture this object, so you must not delete it.
     */
-    void setHolidays(KHolidays *h);
+    void setHolidays( KHolidays *h );
 
     /** return the KHolidays object or 0 if none has been defined
     */
@@ -81,7 +82,7 @@ class KDE_EXPORT KOGlobals
     KInstance *mOwnInstance;
 
     AlarmClient *mAlarmClient;
-    
+
     KHolidays *mHolidays;
 };
 
