@@ -32,6 +32,7 @@
 namespace KCal {
 class Calendar;
 }
+
 using namespace KCal;
 
 class CalPrintDay : public CalPrintBase
@@ -43,6 +44,7 @@ class CalPrintDay : public CalPrintBase
     virtual QString description() { return i18n("Print day"); }
     virtual QString longDescription() { return i18n("Prints all events of a single day on one page"); }
     virtual QWidget *configWidget( QWidget* );
+
   public slots:
     void print(QPainter &p, int width, int height);
     virtual void readSettingsWidget();
@@ -67,6 +69,7 @@ class CalPrintWeek : public CalPrintBase
     virtual QString longDescription() { return i18n("Prints all events of one week on one page"); }
     virtual QWidget *configWidget(QWidget*);
     virtual KPrinter::Orientation orientation();
+
   public slots:
     void print(QPainter &p, int width, int height);
     virtual void readSettingsWidget();
@@ -90,6 +93,7 @@ class CalPrintMonth : public CalPrintBase
     virtual QString description() { return i18n("Print month"); }
     virtual QString longDescription() { return i18n("Prints all events of one month on one page"); }
     virtual QWidget *configWidget(QWidget*);
+
   public slots:
     void print(QPainter &p, int width, int height);
     virtual void readSettingsWidget();
@@ -97,6 +101,7 @@ class CalPrintMonth : public CalPrintBase
     virtual void loadConfig();
     virtual void saveConfig();
     virtual void setDateRange( const QDate& from, const QDate& to );
+
   protected:
     bool mWeekNumbers;
     bool mIncludeTodos;
@@ -111,17 +116,21 @@ class CalPrintTodos : public CalPrintBase
     virtual QString description() { return i18n("Print todos"); }
     virtual QString longDescription() { return i18n("Prints all todos in a (tree-like) list"); }
     virtual QWidget *configWidget(QWidget*);
+
   public slots:
     void print(QPainter &p, int width, int height);
     virtual void readSettingsWidget();
     virtual void setSettingsWidget();
     virtual void loadConfig();
     virtual void saveConfig();
+
   protected:
     QString mPageTitle;
+
     enum eTodoPrintType {
-      TodosAll=0, TodosUnfinished, TodosSelected, TodosDueRange
+      TodosAll = 0, TodosUnfinished, TodosSelected, TodosDueRange
     } mTodoPrintType;
+
     bool mIncludeDescription;
     bool mIncludePriority;
     bool mIncludeDueDate;

@@ -43,15 +43,15 @@
 
 #include "calprintplugins.h"
 
-CalPrinter::CalPrinter(QWidget *parent, Calendar *calendar)
-  : QObject(0L, "CalPrinter")
+CalPrinter::CalPrinter( QWidget *parent, Calendar *calendar )
+  : QObject( 0, "CalPrinter" )
 {
   mCalendar = calendar;
   mParent = parent;
   mPrinter = new KPrinter;
-  mPrinter->setOrientation(KPrinter::Landscape);
-  mConfig=new KSimpleConfig("korganizer_printing.rc");
-  init(mPrinter, calendar);
+  mPrinter->setOrientation( KPrinter::Landscape );
+  mConfig = new KSimpleConfig( "korganizer_printing.rc" );
+  init( mPrinter, calendar );
 }
 
 CalPrinter::~CalPrinter()
@@ -60,30 +60,31 @@ CalPrinter::~CalPrinter()
   delete mPrinter;
 }
 
-void CalPrinter::init(KPrinter *printer, Calendar *calendar)
+void CalPrinter::init( KPrinter *printer, Calendar *calendar )
 {
-  mPrintPlugins.setAutoDelete(true);
+  mPrintPlugins.setAutoDelete( true );
   mPrintPlugins.append( new CalPrintDay( printer, calendar, mConfig ) );
   mPrintPlugins.append( new CalPrintWeek( printer, calendar, mConfig ) );
   mPrintPlugins.append( new CalPrintMonth( printer, calendar, mConfig ) );
   mPrintPlugins.append( new CalPrintTodos( printer, calendar, mConfig ) );
 
   // TODO_RK: Add a plugin interface here
-  mPrintDialog=new CalPrintDialog(mPrintPlugins, mPrinter, mParent);
+  mPrintDialog = new CalPrintDialog( mPrintPlugins, mPrinter, mParent );
 
-  CalPrintBase*plug = mPrintPlugins.first();
-  while (plug) {
-    connect( this, SIGNAL( setDateRangeSignal( const QDate&, const QDate& ) ),
-      plug, SLOT( setDateRange( const QDate&, const QDate& ) ) );
+  CalPrintBase *plug = mPrintPlugins.first();
+  while ( plug ) {
+    connect( this, SIGNAL( setDateRangeSignal( const QDate &, const QDate & ) ),
+             plug, SLOT( setDateRange( const QDate &, const QDate & ) ) );
     connect( this, SIGNAL( updateConfigSignal() ),
-      plug, SLOT( loadConfig() ) );
+             plug, SLOT( loadConfig() ) );
     connect( this, SIGNAL( writeConfigSignal() ),
-      plug, SLOT( saveConfig() ) );
-    connect( mPrintDialog, SIGNAL(okClicked()), plug, SLOT(readSettingsWidget()) );
+             plug, SLOT( saveConfig() ) );
+    connect( mPrintDialog, SIGNAL( okClicked() ),
+             plug, SLOT( readSettingsWidget() ) );
 
     plug->setSettingsWidget();
 
-    plug=mPrintPlugins.next();
+    plug = mPrintPlugins.next();
   }
 }
 
@@ -100,62 +101,63 @@ void CalPrinter::setupPrinter()
 #endif
 }
 
-void CalPrinter::setDateRange(const QDate&fd, const QDate&td)
+void CalPrinter::setDateRange( const QDate &fd, const QDate &td )
 {
-  emit setDateRangeSignal(fd, td);
+  emit setDateRangeSignal( fd, td );
 }
 
-void CalPrinter::preview(int type, const QDate &fd, const QDate &td)
+void CalPrinter::preview( int type, const QDate &fd, const QDate &td )
 {
-  mPrintDialog->setPreview(true);
-  mPrintDialog->setPrintType(type);
-  emit setDateRangeSignal(fd,td);
+  mPrintDialog->setPreview( true );
+  mPrintDialog->setPrintType( type );
+  emit setDateRangeSignal( fd, td );
 
-  if (mPrintDialog->exec() == QDialog::Accepted) {
+  if ( mPrintDialog->exec() == QDialog::Accepted ) {
     doPreview( mPrintDialog->selectedPlugin() );
   }
 }
 
-void CalPrinter::print(int type, const QDate &fd, const QDate &td)
+void CalPrinter::print( int type, const QDate &fd, const QDate &td )
 {
-  mPrintDialog->setPreview(false);
-  mPrintDialog->setPrintType(type);
-  emit setDateRangeSignal(fd,td);
+  mPrintDialog->setPreview( false );
+  mPrintDialog->setPrintType( type );
+  emit setDateRangeSignal( fd, td );
 
-  if (mPrintDialog->exec() == QDialog::Accepted) {
+  if ( mPrintDialog->exec() == QDialog::Accepted ) {
     doPrint( mPrintDialog->selectedPlugin() );
   }
 }
 
-void CalPrinter::forcePrint(int type, const QDate &fd, const QDate &td, bool preview)
+void CalPrinter::forcePrint( int type, const QDate &fd, const QDate &td,
+                             bool preview )
 {
-  if (type<0) return;
-  emit setDateRangeSignal(fd,td);
+  if ( type < 0 ) return;
+  emit setDateRangeSignal( fd, td );
 
-  if (preview)
-    mPrinter->setPreviewOnly(true);
+  if ( preview )
+    mPrinter->setPreviewOnly( true );
   else
-    if (!mPrinter->setup(mParent, i18n("Print Calendar"))) return;
+    if ( !mPrinter->setup( mParent, i18n("Print Calendar") ) ) return;
 
-  CalPrintBase* selectedStyle = mPrintPlugins.at(type);
-  if (selectedStyle) selectedStyle->doPrint();
+  CalPrintBase *selectedStyle = mPrintPlugins.at( type );
+  if ( selectedStyle ) selectedStyle->doPrint();
 
-  if (preview)
-    mPrinter->setPreviewOnly(false);
+  if ( preview )
+    mPrinter->setPreviewOnly( false );
 }
 
-void CalPrinter::doPreview(CalPrintBase*selectedStyle)
+void CalPrinter::doPreview( CalPrintBase *selectedStyle )
 {
-  mPrinter->setPreviewOnly(true);
+  mPrinter->setPreviewOnly( true );
   selectedStyle->doPrint();
   // restore previous settings that were used before the preview.
-  mPrinter->setPreviewOnly(false);
+  mPrinter->setPreviewOnly( false );
 }
 
-void CalPrinter::doPrint(CalPrintBase*selectedStyle)
+void CalPrinter::doPrint( CalPrintBase *selectedStyle )
 {
   // FIXME: add a better caption to the Printingdialog
-  if (!mPrinter->setup(mParent, i18n("Print Calendar"))) return;
+  if ( !mPrinter->setup( mParent, i18n("Print Calendar") ) ) return;
 
   selectedStyle->doPrint();
 }
@@ -170,27 +172,26 @@ void CalPrinter::updateConfig()
 
 /****************************************************************************/
 
-CalPrintDialog::CalPrintDialog(QPtrList<CalPrintBase> plugins, KPrinter *p,
-        QWidget *parent, const char *name)
-  : KDialogBase( parent, name, /*modal*/true, i18n("Print"),
-        KDialogBase::Ok|KDialogBase::Cancel),
-    mPrinter(p), mPrintPlugins(plugins)
+CalPrintDialog::CalPrintDialog( QPtrList<CalPrintBase> plugins, KPrinter *p,
+                                QWidget *parent, const char *name )
+  : KDialogBase( parent, name, /*modal*/true, i18n("Print"), Ok | Cancel ),
+    mPrinter( p ), mPrintPlugins( plugins )
 {
   QVBox *page = makeVBoxMainWidget();
 
   QHBox *printerLayout = new QHBox( page );
 
-  mPrinterLabel = new QLabel("", printerLayout);
-  QPushButton*setupButton = new QPushButton(i18n("&Setup Printer..."), printerLayout);
+  mPrinterLabel = new QLabel( printerLayout );
+  QPushButton *setupButton = new QPushButton( i18n("&Setup Printer..."),
+                                              printerLayout );
   setupButton->setSizePolicy( QSizePolicy(
       (QSizePolicy::SizeType)4, (QSizePolicy::SizeType)0,
       0, 0, setupButton->sizePolicy().hasHeightForWidth() ) );
 
-
   QSplitter *splitter = new QSplitter( page );
   splitter->setOrientation( QSplitter::Horizontal );
 
-  mTypeGroup = new QVButtonGroup(i18n("View Type"), splitter, "buttonGroup" );
+  mTypeGroup = new QVButtonGroup( i18n("View Type"), splitter, "buttonGroup" );
   // use the minimal width possible = max width of the radio buttons, not extensible
 /*  mTypeGroup->setSizePolicy( QSizePolicy( (QSizePolicy::SizeType)4,
     (QSizePolicy::SizeType)5, 0, 0,
@@ -204,36 +205,37 @@ CalPrintDialog::CalPrintDialog(QPtrList<CalPrintBase> plugins, KPrinter *p,
   mConfigArea = new QWidgetStack( splitterRight, "configWidgetStack" );
   splitterRightLayout->addMultiCellWidget( mConfigArea, 0,0, 0,1 );
 
-  QLabel *orientationLabel = new QLabel(i18n("Page &orientation:"), splitterRight, "orientationLabel" );
+  QLabel *orientationLabel = new QLabel( i18n("Page &orientation:"),
+                                         splitterRight, "orientationLabel" );
   splitterRightLayout->addWidget( orientationLabel, 1, 0 );
 
   mOrientationSelection = new QComboBox( splitterRight, "orientationCombo" );
-  mOrientationSelection->insertItem(i18n("Use default setting of printer"));
-  mOrientationSelection->insertItem(i18n("Use default setting of print style"));
-  mOrientationSelection->insertItem(i18n("Portrait"));
-  mOrientationSelection->insertItem(i18n("Landscape"));
+  mOrientationSelection->insertItem( i18n("Use default setting of printer") );
+  mOrientationSelection->insertItem( i18n("Use default setting of print style") );
+  mOrientationSelection->insertItem( i18n("Portrait") );
+  mOrientationSelection->insertItem( i18n("Landscape") );
   splitterRightLayout->addWidget( mOrientationSelection, 1, 1 );
 
-    // signals and slots connections
+  // signals and slots connections
   connect( setupButton, SIGNAL( clicked() ), SLOT( setupPrinter() ) );
   connect( mTypeGroup, SIGNAL( clicked( int ) ), SLOT( setPrintType( int ) ) );
 
-    // buddies
-  orientationLabel->setBuddy(mOrientationSelection);
+  // buddies
+  orientationLabel->setBuddy( mOrientationSelection );
 
   CalPrintBase *plug = mPrintPlugins.first();
-  QRadioButton *rButt;
+  QRadioButton *radioButton;
   int id = 0;
   while ( plug ) {
-    rButt = new QRadioButton( plug->description(), mTypeGroup );
-    mTypeGroup->insert( rButt, id );
-    rButt->setMinimumHeight( rButt->sizeHint().height() - 5 );
+    radioButton = new QRadioButton( plug->description(), mTypeGroup );
+    mTypeGroup->insert( radioButton, id );
+    radioButton->setMinimumHeight( radioButton->sizeHint().height() - 5 );
 
     mConfigArea->addWidget( plug->configWidget( mConfigArea ), id );
     connect( this, SIGNAL( applySettings() ), plug, SLOT( readSettingsWidget() ) );
     connect( this, SIGNAL( doSettings() ), plug, SLOT( setSettingsWidget() ) );
 
-    plug=mPrintPlugins.next();
+    plug = mPrintPlugins.next();
     id++;
   }
 
@@ -247,7 +249,7 @@ CalPrintDialog::~CalPrintDialog()
 
 void CalPrintDialog::setupPrinter()
 {
-  if (mPrinter->setup(this, i18n("Setup printer"))) {
+  if ( mPrinter->setup( this, i18n("Setup printer") ) ) {
     setPrinterLabel();
   }
 }
@@ -262,33 +264,33 @@ void CalPrintDialog::setPreview(bool preview)
 
 void CalPrintDialog::setPrinterLabel()
 {
-  QString printerName(mPrinter->printerName());
-  if (printerName.isEmpty())
-    mPrinterLabel->setText(mPreviewText.arg(i18n("[Unconfigured]")) );
+  QString printerName( mPrinter->printerName() );
+  if ( printerName.isEmpty() )
+    mPrinterLabel->setText( mPreviewText.arg( i18n("[Unconfigured]") ) );
   else
-    mPrinterLabel->setText(mPreviewText.arg( printerName ));
+    mPrinterLabel->setText( mPreviewText.arg( printerName ) );
 }
 
-void CalPrintDialog::setPrintType(int i)
+void CalPrintDialog::setPrintType( int i )
 {
-  mTypeGroup->setButton(i);
-  mConfigArea->raiseWidget(i);
+  mTypeGroup->setButton( i );
+  mConfigArea->raiseWidget( i );
 }
 
-CalPrintBase* CalPrintDialog::selectedPlugin()
+CalPrintBase *CalPrintDialog::selectedPlugin()
 {
-  int pos=mTypeGroup->id( mTypeGroup->selected() );
-  if (pos<0) return 0;
-  CalPrintBase* retval = mPrintPlugins.at( pos );
+  int pos = mTypeGroup->id( mTypeGroup->selected() );
+  if ( pos < 0 ) return 0;
+  CalPrintBase *retval = mPrintPlugins.at( pos );
   return retval;
 }
 
 void CalPrintDialog::slotOk()
 {
-  int orientSel=mOrientationSelection->currentItem();
-  if (orientSel==1) {
+  int orientSel = mOrientationSelection->currentItem();
+  if ( orientSel == 1 ) {
     // TODO: Set Portrait mode
-  } else if (orientSel==2) {
+  } else if ( orientSel == 2 ) {
     // TODO: Set Landscape  mode
   }
   KDialogBase::slotOk();

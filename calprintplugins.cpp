@@ -56,8 +56,8 @@
  *           Print Day
  **************************************************************/
 
-CalPrintDay::CalPrintDay(KPrinter *printer, Calendar *cal, KConfig *cfg)
-  :CalPrintBase(printer,cal,cfg)
+CalPrintDay::CalPrintDay( KPrinter *printer, Calendar *cal, KConfig *cfg )
+  : CalPrintBase( printer, cal, cfg )
 {
 }
 
@@ -65,7 +65,7 @@ CalPrintDay::~CalPrintDay()
 {
 }
 
-QWidget *CalPrintDay::configWidget( QWidget*w )
+QWidget *CalPrintDay::configWidget( QWidget *w )
 {
   mConfigWidget = new CalPrintDayConfig_Base( w );
   setSettingsWidget();
@@ -74,15 +74,15 @@ QWidget *CalPrintDay::configWidget( QWidget*w )
 
 void CalPrintDay::readSettingsWidget()
 {
-  CalPrintDayConfig_Base *cfg = dynamic_cast<CalPrintDayConfig_Base*>(mConfigWidget);
-  if (cfg) {
+  CalPrintDayConfig_Base *cfg =
+      dynamic_cast<CalPrintDayConfig_Base*>( mConfigWidget );
+  if ( cfg ) {
     mFromDate = cfg->mFromDate->date();
     mToDate = cfg->mToDate->date();
 
     mStartTime = cfg->mFromTime->time();
     mEndTime = cfg->mToTime->time();
     mIncludeAllEvents = cfg->mIncludeAllEvents->isChecked();
-
 
     mIncludeTodos = cfg->mIncludeTodos->isChecked();
     mUseColors = cfg->mColors->isChecked();
@@ -91,8 +91,9 @@ void CalPrintDay::readSettingsWidget()
 
 void CalPrintDay::setSettingsWidget()
 {
-  CalPrintDayConfig_Base *cfg = dynamic_cast<CalPrintDayConfig_Base*>(mConfigWidget);
-  if (cfg) {
+  CalPrintDayConfig_Base *cfg =
+      dynamic_cast<CalPrintDayConfig_Base*>( mConfigWidget );
+  if ( cfg ) {
     cfg->mFromDate->setDate( mFromDate );
     cfg->mToDate->setDate( mToDate );
 
@@ -107,14 +108,14 @@ void CalPrintDay::setSettingsWidget()
 
 void CalPrintDay::loadConfig()
 {
-  if (mConfig) {
-    KConfigGroupSaver saver(mConfig, description() );
+  if ( mConfig ) {
+    KConfigGroupSaver saver( mConfig, description() );
     CalPrintBase::loadConfig();
     // TODO_RK: Use global setting for day start
     QDate dt;
-    QTime tm1(8,0);
-    QTime tm2(18,0);
-    QDateTime startTm(dt, tm1);
+    QTime tm1( 8, 0 );
+    QTime tm2( 18, 0 );
+    QDateTime startTm( dt, tm1 );
     QDateTime endTm( dt, tm2 );
     mStartTime = mConfig->readDateTimeEntry( "Start time", &startTm ).time();
     mEndTime = mConfig->readDateTimeEntry( "End time", &endTm ).time();
@@ -123,11 +124,12 @@ void CalPrintDay::loadConfig()
   }
   setSettingsWidget();
 }
+
 void CalPrintDay::saveConfig()
 {
   readSettingsWidget();
-  if (mConfig) {
-    KConfigGroupSaver saver(mConfig, description() );
+  if ( mConfig ) {
+    KConfigGroupSaver saver( mConfig, description() );
     mConfig->writeEntry( "Start time", mStartTime );
     mConfig->writeEntry( "End time", mEndTime );
     mConfig->writeEntry( "Include todos", mIncludeTodos );
@@ -138,9 +140,10 @@ void CalPrintDay::saveConfig()
 
 void CalPrintDay::setDateRange( const QDate& from, const QDate& to )
 {
-  CalPrintBase::setDateRange(from, to);
-  CalPrintDayConfig_Base *cfg = dynamic_cast<CalPrintDayConfig_Base*>(mConfigWidget);
-  if (cfg) {
+  CalPrintBase::setDateRange( from, to );
+  CalPrintDayConfig_Base *cfg =
+      dynamic_cast<CalPrintDayConfig_Base*>( mConfigWidget );
+  if ( cfg ) {
     cfg->mFromDate->setDate( from );
     cfg->mToDate->setDate( to );
   }

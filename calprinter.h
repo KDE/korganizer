@@ -1,5 +1,6 @@
 /*
     This file is part of KOrganizer.
+
     Copyright (c) 1998 Preston Brown
 
     This program is free software; you can redistribute it and/or modify
@@ -53,28 +54,30 @@ class CalPrinter : public QObject
 {
     Q_OBJECT
   public:
-    CalPrinter(QWidget *par, Calendar *cal);
+    CalPrinter( QWidget *par, Calendar *cal );
     virtual ~CalPrinter();
 
-    enum { Day=0, Week, Month, Todolist};
-    virtual void init(KPrinter *printer, Calendar *calendar);
+    enum { Day = 0, Week, Month, Todolist };
+    virtual void init( KPrinter *printer, Calendar *calendar );
 
     void setupPrinter();
 
   public slots:
     void updateConfig();
-    void setDateRange(const QDate&, const QDate&);
+    void setDateRange( const QDate &, const QDate & );
 
   private slots:
-    void doPreview(CalPrintBase*selectedStyle);
-    void doPrint(CalPrintBase*selectedStyle);
+    void doPreview( CalPrintBase *selectedStyle );
+    void doPrint( CalPrintBase *selectedStyle );
+
   signals:
-    void setDateRangeSignal(const QDate&, const QDate&);
+    void setDateRangeSignal( const QDate &, const QDate & );
     void updateConfigSignal();
     void writeConfigSignal();
+
   public:
-    void preview( int type, const QDate &fd, const QDate &td);
-    void print( int type, const QDate &fd, const QDate &td);
+    void preview( int type, const QDate &fd, const QDate &td );
+    void print( int type, const QDate &fd, const QDate &td );
     void forcePrint( int type, const QDate &fd, const QDate &td, bool preview );
 
   protected:
@@ -93,14 +96,15 @@ class CalPrintDialog : public KDialogBase
 {
     Q_OBJECT
   public:
-    CalPrintDialog(QPtrList<CalPrintBase> plugins, KPrinter *p,
-        QWidget *parent=0, const char *name=0);
+    CalPrintDialog( QPtrList<CalPrintBase> plugins, KPrinter *p,
+                    QWidget *parent = 0, const char *name = 0 );
     virtual ~CalPrintDialog();
-    CalPrintBase* selectedPlugin();
+    CalPrintBase *selectedPlugin();
 
   public slots:
-    void setPrintType(int);
-    void setPreview(bool);
+    void setPrintType( int );
+    void setPreview( bool );
+
   protected slots:
     void slotOk();
     void setupPrinter();
@@ -109,7 +113,7 @@ class CalPrintDialog : public KDialogBase
   signals:
     /* sent to make the plugins apply the settings from the config widget */
     void applySettings();
-    /* sent to make the plugins applyt the correct settings to the config widget */
+    /* sent to make the plugins apply the correct settings to the config widget */
     void doSettings();
 
   private:
@@ -117,9 +121,11 @@ class CalPrintDialog : public KDialogBase
     QVButtonGroup *mTypeGroup;
     QWidgetStack *mConfigArea;
     QPtrList<CalPrintBase> mPrintPlugins;
-    QLabel*mPrinterLabel;
+    QLabel *mPrinterLabel;
     QString mPreviewText;
-    QComboBox*mOrientationSelection;
+    QComboBox *mOrientationSelection;
 };
+
 #endif
-#endif // _CALPRINTER_H
+
+#endif
