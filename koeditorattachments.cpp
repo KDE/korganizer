@@ -136,7 +136,7 @@ void KOEditorAttachments::addAttachment( const QString &uri,
   new QListViewItem( mAttachments, uri, mimeType );  
 }
 
-void KOEditorAttachments::readEvent( Incidence *i )
+void KOEditorAttachments::readIncidence( Incidence *i )
 {
   mAttachments->clear();
 
@@ -150,7 +150,7 @@ void KOEditorAttachments::readEvent( Incidence *i )
   }
 }
 
-void KOEditorAttachments::writeEvent( Incidence *i )
+void KOEditorAttachments::writeIncidence( Incidence *i )
 {
   i->clearAttachments();
 

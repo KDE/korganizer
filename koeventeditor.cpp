@@ -258,12 +258,12 @@ void KOEventEditor::deleteEvent()
   }
 }
 
-void KOEventEditor::setDefaults(QDateTime from, QDateTime to, bool allDay)
+void KOEventEditor::setDefaults( QDateTime from, QDateTime to, bool allDay )
 {
-  mGeneral->setDefaults(from,to,allDay);
+  mGeneral->setDefaults( from, to, allDay );
   mDetails->setDefaults();
   mAttachments->setDefaults();
-  mRecurrence->setDefaults(from,to,allDay);
+  mRecurrence->setDefaults( from, to, allDay );
 }
 
 void KOEventEditor::readEvent( Event *event, bool tmpl )
@@ -271,36 +271,36 @@ void KOEventEditor::readEvent( Event *event, bool tmpl )
   mGeneral->readEvent( event, tmpl );
   mDetails->readEvent( event );
   mRecurrence->readEvent( event );
-  mAttachments->readEvent( event );
+  mAttachments->readIncidence( event );
 
   // categories
   mCategoryDialog->setSelected( event->categories() );
 }
 
-void KOEventEditor::writeEvent(Event *event)
+void KOEventEditor::writeEvent( Event *event )
 {
   mGeneral->writeEvent( event );
   mDetails->writeEvent( event );
-  mAttachments->writeEvent( event );
+  mAttachments->writeIncidence( event );
 
   if ( event->organizer() == KOPrefs::instance()->email() ) {
     Event *ev = new Event( *event );
-    ev->registerObserver(0);
+    ev->registerObserver( 0 );
     mDetails->cancelAttendeeEvent( ev );
     if ( ev->attendeeCount() > 0 ) {
       emit deleteAttendee( ev );
     }
-    delete(ev);
+    delete( ev );
   }
 
-  mRecurrence->writeEvent(event);
+  mRecurrence->writeEvent( event );
 }
 
 bool KOEventEditor::validateInput()
 {
-  if (!mGeneral->validateInput()) return false;
-  if (!mDetails->validateInput()) return false;
-  if (!mRecurrence->validateInput()) return false;
+  if ( !mGeneral->validateInput() ) return false;
+  if ( !mDetails->validateInput() ) return false;
+  if ( !mRecurrence->validateInput() ) return false;
   return true;
 }
 

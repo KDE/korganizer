@@ -1,5 +1,6 @@
 /*
     This file is part of KOrganizer.
+
     Copyright (c) 1997, 1998 Preston Brown
     Copyright (c) 2000-2003 Cornelius Schumacher <schumacher@kde.org>
 
@@ -38,9 +39,9 @@
 #include <libkcal/resourcecalendar.h>
 
 #include "koprefs.h"
+#include "koeditorattachments.h"
 
 #include "kotodoeditor.h"
-#include "kotodoeditor.moc"
 
 KOTodoEditor::KOTodoEditor( Calendar *calendar, QWidget *parent ) :
   KOIncidenceEditor( i18n("Edit To-Do"), calendar, parent )
@@ -58,6 +59,7 @@ void KOTodoEditor::init()
 {
   setupGeneral();
   setupAttendeesTab();
+  setupAttachmentsTab();
 }
 
 void KOTodoEditor::reload()
@@ -196,40 +198,43 @@ void KOTodoEditor::deleteTodo()
   }
 }
 
-void KOTodoEditor::setDefaults(QDateTime due,Todo *relatedEvent,bool allDay)
+void KOTodoEditor::setDefaults( QDateTime due, Todo *relatedEvent, bool allDay )
 {
   mRelatedTodo = relatedEvent;
 
-  mGeneral->setDefaults(due,allDay);
+  mGeneral->setDefaults( due, allDay );
   mDetails->setDefaults();
+  mAttachments->setDefaults();
 }
 
-void KOTodoEditor::readTodo(Todo *todo)
+void KOTodoEditor::readTodo( Todo *todo )
 {
-  mGeneral->readTodo(todo);
-  mDetails->readEvent(todo);
+  mGeneral->readTodo( todo );
+  mDetails->readEvent( todo );
+  mAttachments->readIncidence( todo );
 
   // categories
-  mCategoryDialog->setSelected(todo->categories());
+  mCategoryDialog->setSelected( todo->categories() );
 
-  // We should handle read-only events here.
+  // TODO: We should handle read-only events here.
 }
 
-void KOTodoEditor::writeTodo(Todo *event)
+void KOTodoEditor::writeTodo( Todo *todo )
 {
-  mGeneral->writeTodo(event);
-  mDetails->writeEvent(event);
+  mGeneral->writeTodo( todo );
+  mDetails->writeEvent( todo );
+  mAttachments->writeIncidence( todo );
 
   // set related event, i.e. parent to-do in this case.
-  if (mRelatedTodo) {
-    event->setRelatedTo(mRelatedTodo);
+  if ( mRelatedTodo ) {
+    todo->setRelatedTo( mRelatedTodo );
   }
 }
 
 bool KOTodoEditor::validateInput()
 {
-  if (!mGeneral->validateInput()) return false;
-  if (!mDetails->validateInput()) return false;
+  if ( !mGeneral->validateInput() ) return false;
+  if ( !mDetails->validateInput() ) return false;
   return true;
 }
 
@@ -276,3 +281,5 @@ void KOTodoEditor::saveTemplate( const QString &templateName )
   writeTodo( todo );
   saveAsTemplate( todo, templateName );
 }
+
+#include "kotodoeditor.moc"

@@ -47,9 +47,9 @@ class KOEditorAttachments : public QWidget
     /** Set widgets to default values */
     void setDefaults();
     /** Read event object and setup widgets accordingly */
-    void readEvent( Incidence * );
+    void readIncidence( Incidence * );
     /** Write event settings to event object */
-    void writeEvent( Incidence * );
+    void writeIncidence( Incidence * );
 
   protected slots:
     void showAttachment( QListViewItem *item );
