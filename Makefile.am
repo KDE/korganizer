@@ -55,7 +55,8 @@ libkorganizer_la_SOURCES =  outgoingdialog_base.ui \
         kojournalview.cpp journalentry.cpp \
         kocore.cpp plugindialog.cpp mailscheduler.cpp \
 	kodaymatrix.cpp docprefs.cpp statusdialog.cpp\
-        kotimespanview.cpp timespanview.cpp lineview.cpp timeline.cpp
+        kotimespanview.cpp timespanview.cpp lineview.cpp timeline.cpp \
+        koglobals.cpp
 
 METASOURCES = AUTO
 

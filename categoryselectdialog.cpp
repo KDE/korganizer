@@ -30,6 +30,7 @@
 #include "categoryselectdialog.h"
 
 #include "koprefs.h"
+#include "koglobals.h"
 
 /* 
  *  Constructs a CategorySelectDialog which is a child of 'parent', with the 
@@ -44,6 +45,8 @@ CategorySelectDialog::CategorySelectDialog( QWidget* parent,  const char* name, 
   mCategories->header()->hide();
 
   setCategories();
+  
+  KOGlobals::fitDialogToScreen( this );
   
   connect(mButtonEdit,SIGNAL(clicked()),SIGNAL(editCategories()));
 }

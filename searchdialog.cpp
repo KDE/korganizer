@@ -34,6 +34,7 @@
 #include <kmessagebox.h>
 
 #include "kdateedit.h"
+#include "koglobals.h"
 
 #include "searchdialog.h"
 #include "searchdialog.moc"
@@ -69,10 +70,10 @@ SearchDialog::SearchDialog(Calendar *calendar,QWidget *parent)
   QWidget *rangeWidget = new QWidget(rangeGroup);
   QHBoxLayout *rangeLayout = new QHBoxLayout(rangeWidget,0,spacingHint());
 
-  rangeLayout->addWidget(new QLabel(i18n("Date range from"),rangeWidget));
+  rangeLayout->addWidget(new QLabel(i18n("From:"),rangeWidget));
   mStartDate = new KDateEdit(rangeWidget);
   rangeLayout->addWidget(mStartDate);
-  rangeLayout->addWidget(new QLabel(i18n("to"),rangeWidget));
+  rangeLayout->addWidget(new QLabel(i18n("To:"),rangeWidget));
   mEndDate = new KDateEdit(rangeWidget);
   mEndDate->setDate(QDate::currentDate().addDays(365));
   rangeLayout->addWidget(mEndDate);
@@ -95,6 +96,8 @@ SearchDialog::SearchDialog(Calendar *calendar,QWidget *parent)
   listView = new KOListView(mCalendar,topFrame);
   listView->showDates();
   layout->addWidget(listView);
+
+  KOGlobals::fitDialogToScreen( this, true );
 
   connect(this,SIGNAL(user1Clicked()),SLOT(doSearch()));
 

@@ -5,6 +5,8 @@ class KOGlobals
 {
   public:
     enum { EVENTADDED, EVENTEDITED, EVENTDELETED };  
+
+    static void fitDialogToScreen( QWidget *widget, bool force=false );
 };
 
 #endif

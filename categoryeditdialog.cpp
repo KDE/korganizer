@@ -28,7 +28,9 @@
 #include <qlistview.h>
 #include <qheader.h>
 #include <qpushbutton.h>
+
 #include "koprefs.h"
+#include "koglobals.h"
 
 #include "categoryeditdialog.h"
 
@@ -52,6 +54,8 @@ CategoryEditDialog::CategoryEditDialog( QWidget* parent,  const char* name, bool
     categoriesExist=true;
   }
 
+  KOGlobals::fitDialogToScreen( this );
+  
   connect(mCategories,SIGNAL(selectionChanged(QListViewItem *)),
           SLOT(editItem(QListViewItem *)));
   connect(mEdit,SIGNAL(textChanged ( const QString & )),this,SLOT(slotTextChanged(const QString &)));
