@@ -2,6 +2,7 @@
     This file is part of KOrganizer.
 
     Copyright (c) 2001 Cornelius Schumacher <schumacher@kde.org>
+    Copyright (C) 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -24,22 +25,24 @@
 
 #include "koeditordetails.h"
 
-#include <qtooltip.h>
-#include <qfiledialog.h>
-#include <qlayout.h>
-#include <qvbox.h>
 #include <qbuttongroup.h>
-#include <qvgroupbox.h>
-#include <qwidgetstack.h>
+#include <qcheckbox.h>
+#include <qcombobox.h>
 #include <qdatetime.h>
 #include <qdragobject.h>
-#include <qcombobox.h>
-#include <qlineedit.h>
-#include <qlabel.h>
-#include <qcheckbox.h>
-#include <qpushbutton.h>
+#include <qfiledialog.h>
 #include <qgroupbox.h>
+#include <qlabel.h>
+#include <qlayout.h>
+#include <qlineedit.h>
+#include <qpushbutton.h>
 #include <qradiobutton.h>
+#include <qregexp.h>
+#include <qtooltip.h>
+#include <qvbox.h>
+#include <qvgroupbox.h>
+#include <qwhatsthis.h>
+#include <qwidgetstack.h>
 
 #include <kdebug.h>
 #include <klocale.h>
@@ -54,7 +57,7 @@
 #include <kabc/stdaddressbook.h>
 #endif
 #include <libkdepim/kvcarddrag.h>
-#include <libkdepim/email.h>
+#include <libemailfunctions/email.h>
 
 #include <libkcal/incidence.h>
 
@@ -89,6 +92,7 @@ KOAttendeeListView::KOAttendeeListView ( QWidget *parent, const char *name )
 {
   setAcceptDrops( true );
   setAllColumnsShowFocus( true );
+  setSorting( -1 );
 }
 
 /** KOAttendeeListView is a child class of KListView  which supports
@@ -132,8 +136,8 @@ void KOAttendeeListView::addAttendee( const QString &newAttendee )
   kdDebug(5850) << " Email: " << newAttendee << endl;
   QString name;
   QString email;
-  KPIM::AddresseeLineEdit::getNameAndMail( newAttendee, name, email );
-  emit dropped( new Attendee( name, email ) );
+  KPIM::getNameAndMail( newAttendee, name, email );
+  emit dropped( new Attendee( name, email, true ) );
 }
 
 void KOAttendeeListView::contentsDropEvent( QDropEvent *e )
@@ -186,13 +190,35 @@ KOEditorDetails::KOEditorDetails( int spacing, QWidget *parent,
   // readEvent will delete it and set another label text instead, if the user
   // isn't the organizer.
   // Note that the i18n text below is duplicated in readEvent
+  QString whatsThis = i18n("Sets the identity corresponding to "
+		  	   "the organizer of this to-do or event. "
+			   "Identities can be set in the 'Personal' "
+			   "section of the KOrganizer configuration, or in the "
+			   "'Security & Privacy'->'Password & User Account' "
+			   "section of the KDE Control Center. In addition, "
+			   "identities are gathered from your KMail settings "
+			   "and from your address book. If you choose "
+			   "to set it globally for KDE in the Control Center, "
+			   "be sure to check 'Use email settings from "
+			   "Control Center' in the 'Personal' section of the "
+			   "KOrganizer configuration.");
   mOrganizerLabel = new QLabel( i18n( "Identity as organizer:" ),
                                 mOrganizerHBox );
   mOrganizerCombo = new QComboBox( mOrganizerHBox );
+  QWhatsThis::add( mOrganizerLabel, whatsThis );
+  QWhatsThis::add( mOrganizerCombo, whatsThis );
   fillOrganizerCombo();
   mOrganizerHBox->setStretchFactor( mOrganizerCombo, 100 );
 
   mListView = new KOAttendeeListView( this, "mListView" );
+  QWhatsThis::add( mListView,
+		   i18n("Displays information about current attendees. "
+		   	"To edit an attendee, select it in this list "
+			"and modify the values in the area below. "
+		   	"Clicking on a column title will sort the list "
+			"according to that column. The RSVP column "
+			"indicates whether or not a response is requested "
+			"from the attendee.") );
   mListView->addColumn( i18n("Name"), 200 );
   mListView->addColumn( i18n("Email"), 200 );
   mListView->addColumn( i18n("Role"), 60 );
@@ -210,10 +236,15 @@ KOEditorDetails::KOEditorDetails( int spacing, QWidget *parent,
            SLOT( insertAttendee( Attendee * ) ) );
 #endif
 
+  whatsThis = i18n("Edits the name of the attendee selected in the list "
+  		   "above, or adds a new attendee if there are no attendees"
+		   "in the list.");
   QLabel *attendeeLabel = new QLabel( this );
+  QWhatsThis::add( attendeeLabel, whatsThis );
   attendeeLabel->setText( i18n("Na&me:") );
 
   mNameEdit = new KPIM::AddresseeLineEdit( this );
+  QWhatsThis::add( mNameEdit, whatsThis );
   mNameEdit->setClickMessage( i18n("Click to add a new attendee") );
   attendeeLabel->setBuddy( mNameEdit );
   mNameEdit->installEventFilter( this );
@@ -223,25 +254,37 @@ KOEditorDetails::KOEditorDetails( int spacing, QWidget *parent,
   mUidEdit = new QLineEdit( 0 );
   mUidEdit->setText( "" );
 
+  whatsThis = i18n("Edits the role of the attendee selected "
+  		   "in the list above.");
   QLabel *attendeeRoleLabel = new QLabel( this );
+  QWhatsThis::add( attendeeRoleLabel, whatsThis );
   attendeeRoleLabel->setText( i18n("Ro&le:") );
 
   mRoleCombo = new QComboBox( false, this );
+  QWhatsThis::add( mRoleCombo, whatsThis );
   mRoleCombo->insertStringList( Attendee::roleList() );
   attendeeRoleLabel->setBuddy( mRoleCombo );
   connect( mRoleCombo, SIGNAL( activated( int ) ),
            SLOT( updateAttendeeItem() ) );
 
+  whatsThis = i18n("Edits the current attendance status of the attendee "
+  		   "selected in the list above.");
   QLabel *statusLabel = new QLabel( this );
+  QWhatsThis::add( statusLabel, whatsThis );
   statusLabel->setText( i18n("Stat&us:") );
 
   mStatusCombo = new QComboBox( false, this );
+  QWhatsThis::add( mStatusCombo, whatsThis );
   mStatusCombo->insertStringList( Attendee::statusList() );
   statusLabel->setBuddy( mStatusCombo );
   connect( mStatusCombo, SIGNAL( activated( int ) ),
            SLOT( updateAttendeeItem() ) );
 
   mRsvpButton = new QCheckBox( this );
+  QWhatsThis::add( mRsvpButton,
+		   i18n("Edits whether to send an email to the attendee "
+			"selected in the list above to request "
+			"a response concerning attendance.") );
   mRsvpButton->setText( i18n("Re&quest response") );
   connect( mRsvpButton, SIGNAL( clicked() ), SLOT( updateAttendeeItem() ) );
 
@@ -249,15 +292,29 @@ KOEditorDetails::KOEditorDetails( int spacing, QWidget *parent,
   QVBoxLayout *buttonLayout = new QVBoxLayout( buttonBox );
 
   QPushButton *newButton = new QPushButton( i18n("&New"), buttonBox );
+  QWhatsThis::add( newButton,
+		   i18n("Adds a new attendee to the list. Once the "
+		   	"attendee is added, you will be able to "
+			"edit the attendee's name, role, attendance "
+			"status, and whether or not the attendee is required "
+			"to respond to the invitation. To select an attendee "
+			"from your addressbook, click the 'Select Addressee' "
+			"button instead.") );
   buttonLayout->addWidget( newButton );
   connect( newButton, SIGNAL( clicked() ), SLOT( addNewAttendee() ) );
 
   mRemoveButton = new QPushButton( i18n("&Remove"), buttonBox );
+  QWhatsThis::add( mRemoveButton,
+		   i18n("Removes the attendee selected in "
+		   	"the list above.") );
   buttonLayout->addWidget( mRemoveButton );
   connect( mRemoveButton, SIGNAL( clicked() ), SLOT( removeAttendee() ) );
 
   mAddressBookButton = new QPushButton( i18n("Select Addressee..."),
                                         buttonBox );
+  QWhatsThis::add( mAddressBookButton,
+		   i18n("Opens your address book, allowing you to select "
+			"new attendees from it.") );
   buttonLayout->addWidget( mAddressBookButton );
   connect( mAddressBookButton, SIGNAL( clicked() ), SLOT( openAddressBook() ) );
 
@@ -330,12 +387,17 @@ void KOEditorDetails::openAddressBook()
           itr != aList.end(); ++itr ) {
       KABC::Addressee a = (*itr);
       bool myself = KOPrefs::instance()->thatIsMe( a.preferredEmail() );
+      bool sameAsOrganizer = mOrganizerCombo && 
+        KPIM::compareEmail( a.preferredEmail(), mOrganizerCombo->currentText(), false );
       KCal::Attendee::PartStat partStat;
-      if ( myself ) partStat = KCal::Attendee::Accepted;
-      else partStat = KCal::Attendee::NeedsAction;
+      if ( myself && sameAsOrganizer ) 
+        partStat = KCal::Attendee::Accepted;
+      else 
+        partStat = KCal::Attendee::NeedsAction;
       insertAttendee( new Attendee( a.realName(), a.preferredEmail(),
                                     !myself, partStat,
-                                    KCal::Attendee::ReqParticipant, a.uid() ) );
+                                    KCal::Attendee::ReqParticipant, a.uid() ),
+                      true );
     }
   }
   delete dia;
@@ -361,8 +423,8 @@ void KOEditorDetails::openAddressBook()
 void KOEditorDetails::addNewAttendee()
 {
   Attendee *a = new Attendee( i18n("Firstname Lastname"),
-                              i18n("name@domain.com") );
-  insertAttendee( a );
+                              i18n("name@domain.com"), true );
+  insertAttendee( a, false );
   // We don't want the hint again
   mNameEdit->setClickMessage( "" );
   mNameEdit->setFocus();
@@ -372,9 +434,16 @@ void KOEditorDetails::addNewAttendee()
 
 void KOEditorDetails::insertAttendee( Attendee *a )
 {
-  AttendeeListItem *item = new AttendeeListItem( a, mListView );
+  insertAttendee( a, true );
+}
+
+void KOEditorDetails::insertAttendee( Attendee *a, bool goodEmailAddress )
+{
+  // lastItem() is O(n), but for n very small that should be fine
+  AttendeeListItem *item = new AttendeeListItem( a, mListView,
+      static_cast<KListViewItem*>( mListView->lastItem() ) );
   mListView->setSelected( item, true );
-  if( mFreeBusy ) mFreeBusy->insertAttendee( a );
+  if( mFreeBusy ) mFreeBusy->insertAttendee( a, goodEmailAddress );
 }
 
 void KOEditorDetails::setDefaults()
@@ -397,32 +466,36 @@ void KOEditorDetails::readEvent( Incidence *event )
   Attendee::List al = event->attendees();
   Attendee::List::ConstIterator it;
   for( it = al.begin(); it != al.end(); ++it )
-    insertAttendee( new Attendee( **it ) );
+    insertAttendee( new Attendee( **it ), true );
 
   mListView->setSelected( mListView->firstChild(), true );
 
-  if ( KOPrefs::instance()->thatIsMe( event->organizer() ) ) {
+  if ( KOPrefs::instance()->thatIsMe( event->organizer().email() ) ) {
     if ( !mOrganizerCombo ) {
       mOrganizerCombo = new QComboBox( mOrganizerHBox );
       fillOrganizerCombo();
     }
     mOrganizerLabel->setText( i18n( "Identity as organizer:" ) );
 
-    // This might not be enough, if the combo as a full name too, hence the loop below
-    // mOrganizerCombo->setCurrentText( event->organizer() );
+    int found = -1;
+    QString fullOrganizer = event->organizer().fullName();
     for ( int i = 0 ; i < mOrganizerCombo->count(); ++i ) {
-      QString itemTxt = KPIM::getEmailAddr( mOrganizerCombo->text( i ) );
-      if ( event->organizer() == itemTxt ) {
+      if ( mOrganizerCombo->text( i ) == fullOrganizer ) {
+        found = i;
         mOrganizerCombo->setCurrentItem( i );
         break;
       }
+    }
+    if ( found < 0 ) {
+      mOrganizerCombo->insertItem( fullOrganizer, 0 );
+      mOrganizerCombo->setCurrentItem( 0 );
     }
   } else { // someone else is the organizer
     if ( mOrganizerCombo ) {
       delete mOrganizerCombo;
       mOrganizerCombo = 0;
     }
-    mOrganizerLabel->setText( i18n( "Organizer: %1" ).arg( event->organizer() ) );
+    mOrganizerLabel->setText( i18n( "Organizer: %1" ).arg( event->organizer().fullName() ) );
   }
 
   // Reinstate free/busy view updates
@@ -461,7 +534,6 @@ bool KOEditorDetails::validateInput()
 
 void KOEditorDetails::updateAttendeeInput()
 {
-
   setEnableAttendeeInput(!mNameEdit->text().isEmpty());
   QListViewItem *item = mListView->selectedItem();
   AttendeeListItem *aItem = static_cast<AttendeeListItem *>( item );
@@ -487,8 +559,14 @@ void KOEditorDetails::fillAttendeeInput( AttendeeListItem *aItem )
   Attendee *a = aItem->data();
   mDisableItemUpdate = true;
   QString name = a->name();
-  if (!a->email().isEmpty())
+  if (!a->email().isEmpty()) {
+    // Taken from KABC::Addressee::fullEmail
+    QRegExp needQuotes( "[^ 0-9A-Za-z\\x0080-\\xFFFF]" );
+    if ( name.find( needQuotes ) != -1 )
+      name = "\"" + name + "\" <" + a->email() + ">";
+    else
     name += " <" + a->email() + ">";
+  }
   mNameEdit->setText(name);
   mUidEdit->setText(a->uid());
   mRoleCombo->setCurrentItem(a->role());
@@ -522,7 +600,26 @@ void KOEditorDetails::updateAttendeeItem()
 
   QString name;
   QString email;
-  KPIM::AddresseeLineEdit::getNameAndMail(mNameEdit->text(), name, email);
+  KPIM::getNameAndMail(mNameEdit->text(), name, email);
+
+  bool iAmTheOrganizer = mOrganizerCombo &&
+    KOPrefs::instance()->thatIsMe( mOrganizerCombo->currentText() );
+  if ( iAmTheOrganizer ) {
+    bool myself =
+      KPIM::compareEmail( email, mOrganizerCombo->currentText(), false );
+    bool wasMyself = 
+      KPIM::compareEmail( a->email(), mOrganizerCombo->currentText(), false );
+    if ( myself ) {
+      mStatusCombo->setCurrentItem( KCal::Attendee::Accepted );
+      mRsvpButton->setChecked( false );
+      mRsvpButton->setEnabled( false );
+    } else if ( wasMyself ) {
+      // this was me, but is no longer, reset
+      mStatusCombo->setCurrentItem( KCal::Attendee::NeedsAction );
+      mRsvpButton->setChecked( true );
+      mRsvpButton->setEnabled( true );
+    }
+  }
   a->setName( name );
   a->setUid( mUidEdit->text() );
   a->setEmail( email );
@@ -543,7 +640,7 @@ void KOEditorDetails::fillOrganizerCombo()
   Q_ASSERT( mOrganizerCombo );
   // Get all emails from KOPrefs (coming from various places),
   // and insert them - removing duplicates
-  const QStringList lst = KOPrefs::instance()->allEmails();
+  const QStringList lst = KOPrefs::instance()->fullEmails();
   QStringList uniqueList;
   for( QStringList::ConstIterator it = lst.begin(); it != lst.end(); ++it ) {
     if ( uniqueList.find( *it ) == uniqueList.end() )
