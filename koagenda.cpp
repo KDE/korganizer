@@ -234,6 +234,7 @@ void KOAgenda::init()
 
   viewport()->update();
   viewport()->setBackgroundMode(NoBackground);
+  viewport()->setFocusPolicy(WheelFocus);
 
   setMinimumSize(30, mGridSpacingY + 1);
 //  setMaximumHeight(mGridSpacingY * mRows + 5);
