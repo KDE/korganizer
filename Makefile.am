@@ -27,7 +27,6 @@ libkorganizer_la_SOURCES =  outgoingdialog_base.ui \
 	koagendaview.cpp koagenda.cpp koagendaitem.cpp \
 	kdateedit.cpp kdatenav.cpp \
 	komonthview.cpp \
-	ksellabel.cpp \
 	ktimeedit.cpp main.cpp  \
 	searchdialog.cpp calendarview.cpp koviewmanager.cpp \
         kodialogmanager.cpp \
@@ -63,7 +62,7 @@ METASOURCES = AUTO
 noinst_HEADERS = komonthview.h \
 	koagendaview.h koagenda.h \
 	koagendaitem.h \
-	kdateedit.h ksellabel.h \
+	kdateedit.h \
 	kdatenav.h \
 	calendarview.h ktimeedit.h \
 	version.h \
