@@ -269,7 +269,7 @@ void Engine::upload( Entry *entry )
   }
   text.append( mUploadMetaFile + "\n" );
 
-  QString caption = i18n("Upload files");
+  QString caption = i18n("Upload Files");
 
   if ( mUploadProvider->noUpload() ) {
     KURL noUploadUrl = mUploadProvider->noUploadUrl();

@@ -78,7 +78,7 @@ NavigatorBar::NavigatorBar( QWidget *parent, const char *name )
   mMonth = new ActiveLabel( mCtrlFrame );
   mMonth->setFont( tfont );
   mMonth->setAlignment( AlignCenter );
-  QToolTip::add( mMonth, i18n("Select a Month") );
+  QToolTip::add( mMonth, i18n("Select a month") );
 
   QPixmap pix;
   // Create backward navigation buttons

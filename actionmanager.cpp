@@ -683,7 +683,7 @@ void ActionManager::file_import()
                                 "parsing your .calendar ical file, and had to "
                                 "discard them; please check to see that all "
                                 "your relevant data was correctly imported."),
-                                 i18n("ICal Import Successful With Warning"));
+                                 i18n("ICal Import Successful with Warning"));
   } else if (retVal == -1) {
     KMessageBox::error(dialogParent(),
                          i18n("KOrganizer encountered an error parsing your "

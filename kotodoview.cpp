@@ -213,7 +213,7 @@ void KOTodoListView::contentsDropEvent( QDropEvent *e )
       while(to) {
         if (to->uid() == todo->uid()) {
           KMessageBox::sorry(this,
-              i18n("Cannot move To-Do to itself or a child of itself"),
+              i18n("Cannot move To-Do to itself or a child of itself."),
               i18n("Drop To-Do"));
           delete todo;
           return;

@@ -109,7 +109,7 @@ void EventArchiver::deleteEvents( Calendar* calendar, const QDate& limitDate, QW
       widget, i18n("Delete all events before %1 without saving?\n"
                  "The following events will be deleted:")
       .arg(KGlobal::locale()->formatDate(limitDate)),eventStrs,
-      i18n("Delete old events"),i18n("&Delete"));
+      i18n("Delete Old Events"),i18n("&Delete"));
     if (result != KMessageBox::Continue)
       return;
   }

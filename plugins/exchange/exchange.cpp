@@ -142,7 +142,7 @@ void Exchange::upload()
   Event* event = static_cast<Event *> ( mainWindow()->view()->currentSelection() );
   if ( ! event )
   {
-    KMessageBox::information( 0L, i18n("Please select an appointment"), i18n("Exchange Plugin") );
+    KMessageBox::information( 0L, i18n("Please select an appointment."), i18n("Exchange Plugin") );
     return;
   }
   if ( KMessageBox::warningContinueCancel( 0L, i18n("Exchange Upload is EXPERIMENTAL, you may lose data on this appointment!"), i18n("Exchange Plugin") )
@@ -161,7 +161,7 @@ void Exchange::remove()
   Event* event = static_cast<Event *> ( mainWindow()->view()->currentSelection() );
   if ( ! event )
   {
-    KMessageBox::information( 0L, i18n("Please select an appointment"), i18n("Exchange Plugin") );
+    KMessageBox::information( 0L, i18n("Please select an appointment."), i18n("Exchange Plugin") );
     return;
   }
 

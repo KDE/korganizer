@@ -931,7 +931,7 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
     if ( recur->duration()==0 ) { // end by date
       recur->setEndDate( recur->endDate().addDays( daysOffset ) );
     }
-    KMessageBox::information( this, i18n("A recurring incidence was moved to a different day. The recurrence settings have been updated with that move. Please check them in the incidence editor."), i18n("Recurrence moved"), "RecurrenceMoveInAgendaWarning" );
+    KMessageBox::information( this, i18n("A recurring incidence was moved to a different day. The recurrence settings have been updated with that move. Please check them in the incidence editor."), i18n("Recurrence Moved"), "RecurrenceMoveInAgendaWarning" );
   }
 
   i->setRevision( i->revision() + 1 );

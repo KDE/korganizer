@@ -964,7 +964,7 @@ void KOAgenda::endItemAction()
               emit enableAgendaUpdate( true );
             } else {
               KMessageBox::sorry( this, i18n("Unable to add the exception item to the "
-                  "calendar. No change will be done."), i18n("Error occurred") );
+                  "calendar. No change will be done."), i18n("Error Occurred") );
             }
             delete oldInc;
             break; }
@@ -990,7 +990,7 @@ void KOAgenda::endItemAction()
               needItemUpdate = true;
             } else {
               KMessageBox::sorry( this, i18n("Unable to add the future items to the "
-                  "calendar. No change will be done."), i18n("Error occurred") );
+                  "calendar. No change will be done."), i18n("Error Occurred") );
             }
             delete oldInc;
             break; }

@@ -33,7 +33,7 @@
 #include "kocounterdialog.moc"
 
 KOCounterDialog::KOCounterDialog( QWidget *parent, const char *name )
-  : KDialogBase( parent, name, false, i18n("Counter-event Viewer"),
+  : KDialogBase( parent, name, false, i18n("Counter-Event Viewer"),
                  User1 | User2, User1, false, i18n("Decline"), i18n("Accept") )
 {
   mEventViewer = new KOEventViewer( this );

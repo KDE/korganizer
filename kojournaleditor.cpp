@@ -253,7 +253,7 @@ void KOJournalEditor::slotLoadTemplate()
   Journal::List journals = cal.journals();
   if ( journals.count() == 0 ) {
     KMessageBox::error( this,
-        i18n("Template '%1' does not contain a valid Journal.")
+        i18n("Template '%1' does not contain a valid journal.")
         .arg( templateName ) );
   } else {
     readJournal( journals.first() );

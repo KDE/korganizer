@@ -173,7 +173,7 @@ void KOIncidenceEditor::slotSaveTemplate()
     int res = KMessageBox::warningYesNo( this, 
                                          i18n("The selected template "
                                               "already exists. Overwrite it?"),
-                                         i18n("Template already exists") );
+                                         i18n("Template Already Exists") );
     if ( res == KMessageBox::No ) {
       ok = false;
     }
