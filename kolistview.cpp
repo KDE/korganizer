@@ -337,6 +337,7 @@ void KOListView::changeEventDisplay(Event *event, int action)
       item = getItemForEvent(event);
       if (item) {
         delete item;
+        mUidDict.remove( event->uid() );
         addIncidence( event );
       }
       break;
