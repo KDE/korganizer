@@ -198,6 +198,8 @@ MonthViewCell::MonthViewCell( KOMonthView *parent )
   
   mStandardPalette = palette();
 
+  enableScrollBars( false );
+
   updateConfig();
 
   connect( mItemList, SIGNAL( doubleClicked( QListBoxItem *) ),
@@ -351,8 +353,6 @@ void MonthViewCell::updateCell()
 
 void MonthViewCell::updateConfig()
 {
-  enableScrollBars( KOPrefs::instance()->mEnableMonthScroll );
-
   setFont( KOPrefs::instance()->mMonthViewFont );
 
   QFontMetrics fm( font() );
@@ -394,6 +394,8 @@ Incidence *MonthViewCell::selectedIncidence()
 void MonthViewCell::deselect()
 {
   mItemList->clearSelection();
+
+  enableScrollBars( false );
 }
 
 void MonthViewCell::resizeEvent ( QResizeEvent * )
@@ -416,6 +418,8 @@ void MonthViewCell::cellClicked( QListBoxItem *item )
     QDateTime dt( date(), QTime( KOPrefs::instance()->mStartTime, 0 ) );
     emit newEventSignal( dt );
   }
+
+  if( KOPrefs::instance()->mEnableMonthScroll ) enableScrollBars( true );
 }
 
 void MonthViewCell::contextMenu( QListBoxItem *item )
