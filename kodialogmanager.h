@@ -72,7 +72,7 @@ class KODialogManager : public QObject
     void showCategoryEditDialog();
     void showSearchDialog();
     void showArchiveDialog();
-    void showFilterEditDialog(QPtrList<CalFilter> filters);
+    void showFilterEditDialog(QPtrList<CalFilter> *filters);
     void showPluginDialog();
 
   private:

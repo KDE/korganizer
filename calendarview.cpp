@@ -1313,7 +1313,7 @@ void CalendarView::editFilters()
     filter = mFilters.next();
   }
 
-  mDialogManager->showFilterEditDialog(mFilters);
+  mDialogManager->showFilterEditDialog(&mFilters);
 }
 
 void CalendarView::showFilter(bool visible)
