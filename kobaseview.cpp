@@ -2,12 +2,12 @@
  $Id$
 */
 
-#include <qmessagebox.h>
 #include <qpopupmenu.h>
 
 #include <klocale.h>
 #include <kdebug.h>
 #include <kiconloader.h>
+#include <kmessagebox.h>
 
 #include "calobject.h"
 #include "calprinter.h"
@@ -32,15 +32,13 @@ KOBaseView::~KOBaseView()
 void KOBaseView::printPreview(CalPrinter *calPrinter, const QDate &,
                               const QDate &)
 {
-  QMessageBox::warning(this,i18n("KOrganizer error"),
-		       i18n("Unfortunately, we don't handle printing for\n"
+  KMessageBox::sorry(this, i18n("Unfortunately, we don't handle printing for\n"
 			    "that view yet.\n"));
 }
 
 void KOBaseView::print(CalPrinter *calPrinter)
 {
-  QMessageBox::warning(this,i18n("KOrganizer error"),
-                       i18n("Unfortunately, we don't handle printing for\n"
+  KMessageBox::sorry(this, i18n("Unfortunately, we don't handle printing for\n"
 			    "that view yet.\n"));
 }
 

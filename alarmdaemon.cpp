@@ -7,7 +7,6 @@
 #include <qtimer.h>
 #include <qdatetime.h>
 #include <qstring.h>
-#include <qmessagebox.h>
 #include <qtooltip.h>
 
 #include <kapp.h>
@@ -17,6 +16,7 @@
 #include <ksimpleconfig.h>
 #include <kiconloader.h>
 #include <kprocess.h>
+#include <kmessagebox.h>
 
 #include "config.h"
 #ifdef HAVE_LIBGEN_H
@@ -36,8 +36,8 @@ AlarmDockWindow::AlarmDockWindow(QWidget *parent, const char *name)
   dPixmap2 = BarIcon("alarmd_disabled");
 
   if (dPixmap1.isNull() || dPixmap2.isNull()) {
-    QMessageBox::warning(this, i18n("Alarm Monitor Error"),
-			 i18n("Can't load docking tray icon!"));
+    KMessageBox::sorry(this, i18n("Can't load docking tray icon!"),
+                             i18n("Alarm Monitor Error"));
   }
   setPixmap(dPixmap1);
 
