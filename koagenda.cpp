@@ -43,6 +43,9 @@
 #include "koagenda.h"
 #include "koagenda.moc"
 
+#include <libkcal/event.h>
+#include <libkcal/todo.h>
+
 ////////////////////////////////////////////////////////////////////////////
 MarcusBains::MarcusBains(KOAgenda *_agenda,const char *name)
     : QFrame(_agenda->viewport(),name), agenda(_agenda)
@@ -92,7 +95,7 @@ void MarcusBains::updateLocation(bool recalculate)
 {
     QTime tim = QTime::currentTime();
     if((tim.hour() == 0) && (oldTime.hour()==23))
-	recalculate = true;
+        recalculate = true;
 
     int mins = tim.hour()*60 + tim.minute();
     int minutesPerCell = 24 * 60 / agenda->rows();
@@ -105,19 +108,19 @@ void MarcusBains::updateLocation(bool recalculate)
     oldToday = today;
 
     if(disabled || (today<0)) {
-	hide(); mTimeBox->hide();
-	return;
+        hide(); mTimeBox->hide();
+        return;
     } else {
-	show(); mTimeBox->show();
+        show(); mTimeBox->show();
     }
 
     if(recalculate)
-	setFixedSize(agenda->gridSpacingX(),1);
+        setFixedSize(agenda->gridSpacingX(),1);
     agenda->moveChild(this, x, y);
     raise();
 
     if(recalculate)
-	mTimeBox->setFont(KOPrefs::instance()->mMarcusBainsFont);
+        mTimeBox->setFont(KOPrefs::instance()->mMarcusBainsFont);
 
     mTimeBox->setText(KGlobal::locale()->formatTime(tim, KOPrefs::instance()->mMarcusBainsShowSeconds));
     mTimeBox->adjustSize();
@@ -126,8 +129,8 @@ void MarcusBains::updateLocation(bool recalculate)
     // narrower than the other columns.
     int offs = (today==agenda->columns()-1) ? -4 : 0;
     agenda->moveChild(mTimeBox,
-		      x+agenda->gridSpacingX()-mTimeBox->width()+offs,
-		      y-mTimeBox->height());
+                      x+agenda->gridSpacingX()-mTimeBox->width()+offs,
+                      y-mTimeBox->height());
     mTimeBox->raise();
     mTimeBox->setAutoMask(true);
 
@@ -172,6 +175,18 @@ KOAgenda::KOAgenda(int columns,QWidget *parent,const char *name,WFlags f) :
 KOAgenda::~KOAgenda()
 {
     if(mMarcusBains) delete mMarcusBains;
+}
+
+
+Incidence *KOAgenda::selectedIncidence() const
+{
+  return (mSelectedItem ? mSelectedItem->incidence() : 0);
+}
+
+
+QDate KOAgenda::selectedIncidenceDate() const
+{
+  return (mSelectedItem ? mSelectedItem->itemDate() : QDate());
 }
 
 
@@ -291,25 +306,6 @@ void KOAgenda::changeColumns(int columns)
   QApplication::sendEvent( this, &event );
 }
 
-
-Event *KOAgenda::selectedEvent()
-{
-  if (mSelectedItem) {
-    return mSelectedItem->itemEvent();
-  } else {
-    return 0;
-  }
-}
-
-QDate KOAgenda::selectedEventDate()
-{
-  QDate qd;
-  if (mSelectedItem) {
-    qd = mSelectedItem->itemDate();
-  }
-  return qd;
-}
-
 /*
   This is the eventFilter function, which gets all events from the KOAgendaItems
   contained in the agenda. It has to handle moving and resizing for all items.
@@ -353,15 +349,15 @@ bool KOAgenda::eventFilter_mouse(QObject *object, QMouseEvent *me)
           mClickedItem = (KOAgendaItem *)object;
           if (mClickedItem) {
             selectItem(mClickedItem);
-            emit showEventPopupSignal(mClickedItem->itemEvent());
+            emit showIncidencePopupSignal(mClickedItem->incidence());
           }
     //            mItemPopup->popup(QCursor::pos());
         } else {
           mActionItem = (KOAgendaItem *)object;
           if (mActionItem) {
             selectItem(mActionItem);
-            Event *event = mActionItem->itemEvent();
-            if ( event->isReadOnly() || event->recurrence()->doesRecur() ) {
+            Incidence *incidence = mActionItem->incidence();
+            if ( incidence->isReadOnly() || incidence->recurrence()->doesRecur() ) {
               mActionItem = 0;
             } else {
               startItemAction(viewportPos);
@@ -387,8 +383,8 @@ bool KOAgenda::eventFilter_mouse(QObject *object, QMouseEvent *me)
     case QEvent::MouseMove:
       if (object != viewport()) {
         KOAgendaItem *moveItem = (KOAgendaItem *)object;
-        if (!moveItem->itemEvent()->isReadOnly() &&
-            !moveItem->itemEvent()->recurrence()->doesRecur() )
+        if (!moveItem->incidence()->isReadOnly() &&
+            !moveItem->incidence()->recurrence()->doesRecur() )
           if (!mActionItem)
             setNoActionCursor(moveItem,viewportPos);
           else
@@ -411,7 +407,7 @@ bool KOAgenda::eventFilter_mouse(QObject *object, QMouseEvent *me)
       } else {
         KOAgendaItem *doubleClickedItem = (KOAgendaItem *)object;
         selectItem(doubleClickedItem);
-        emit editEventSignal(doubleClickedItem->itemEvent());
+        emit editIncidenceSignal(doubleClickedItem->incidence());
       }
       break;
 
@@ -556,7 +552,7 @@ void KOAgenda::startItemAction(QPoint viewportPos)
       setCursor(sizeVerCursor);
     } else if ((mGridSpacingY - gridDistanceY) < mResizeBorderWidth &&
                mActionItem->cellYBottom() == mCurrentCellY &&
-	       !mActionItem->lastMultiItem())  {
+               !mActionItem->lastMultiItem())  {
       mActionType = RESIZEBOTTOM;
       setCursor(sizeVerCursor);
     } else {
@@ -592,7 +588,7 @@ void KOAgenda::performItemAction(QPoint viewportPos)
       mScrollDownTimer.stop();
       mActionItem->resetMove();
       placeSubCells( mActionItem );
-      emit startDragSignal( mActionItem->itemEvent() );
+      emit startDragSignal( mActionItem->incidence() );
       setCursor( arrowCursor );
       mActionItem = 0;
       mActionType = NOP;
@@ -645,7 +641,7 @@ void KOAgenda::performItemAction(QPoint viewportPos)
         int x,y;
         gridToContents(moveItem->cellX(),moveItem->cellYTop(),x,y);
         moveItem->resize(mGridSpacingX * moveItem->cellWidth(),
-	                 mGridSpacingY * moveItem->cellHeight());
+                         mGridSpacingY * moveItem->cellHeight());
         moveChild(moveItem,x,y);
         moveItem = moveItem->nextMultiItem();
       }
@@ -751,7 +747,7 @@ void KOAgenda::setNoActionCursor(KOAgendaItem *moveItem,QPoint viewportPos)
       setCursor(sizeVerCursor);
     } else if ((mGridSpacingY - gridDistanceY) < mResizeBorderWidth &&
                moveItem->cellYBottom() == gy &&
-	       !moveItem->lastMultiItem()) {
+               !moveItem->lastMultiItem()) {
       setCursor(sizeVerCursor);
     } else {
       setCursor(arrowCursor);
@@ -813,7 +809,7 @@ void KOAgenda::placeSubCells(KOAgendaItem *placeItem)
     for(i=0;i<maxSubCells;++i) {
       if (!subCellDict.find(i)) {
         placeItem->setSubCell(i);
-	break;
+        break;
       }
     }
     if (i == maxSubCells) {
@@ -1001,9 +997,9 @@ void KOAgenda::setStartHour(int startHour)
 /*
   Insert KOAgendaItem into agenda.
 */
-KOAgendaItem *KOAgenda::insertItem (Event *event,QDate qd,int X,int YTop,int YBottom)
+KOAgendaItem *KOAgenda::insertItem (Incidence *event,QDate qd,int X,int YTop,int YBottom)
 {
-//  kdDebug() << "KOAgenda::insertItem" << endl;
+  //kdDebug() << "KOAgenda::insertItem:" << event->summary() << "-" << qd.toString() << " ;top, bottom:" << YTop << "," << YBottom << endl;
 
   if (mAllDayMode) {
     kdDebug() << "KOAgenda: calling insertItem in all-day mode is illegal." << endl;
@@ -1041,7 +1037,7 @@ KOAgendaItem *KOAgenda::insertItem (Event *event,QDate qd,int X,int YTop,int YBo
 /*
   Insert all-day KOAgendaItem into agenda.
 */
-KOAgendaItem *KOAgenda::insertAllDayItem (Event *event,QDate qd,int XBegin,int XEnd)
+KOAgendaItem *KOAgenda::insertAllDayItem (Incidence *event,QDate qd,int XBegin,int XEnd)
 {
    if (!mAllDayMode) {
     kdDebug() << "KOAgenda: calling insertAllDayItem in non all-day mode is illegal." << endl;
@@ -1192,12 +1188,12 @@ void KOAgenda::scrollDown()
 void KOAgenda::popupAlarm()
 {
   if (!mClickedItem) {
-    kdDebug() << "KOAgenda::itemPopup() called without having a clicked item" << endl;
+    kdDebug() << "KOAgenda::popupAlarm() called without having a clicked item" << endl;
     return;
   }
 // TODO: deal correctly with multiple alarms
   Alarm* alarm;
-  QPtrList<Alarm> list(mClickedItem->itemEvent()->alarms());
+  QPtrList<Alarm> list(mClickedItem->incidence()->alarms());
   for(alarm=list.first();alarm;alarm=list.next())
       alarm->toggleAlarm();
 
@@ -1269,7 +1265,7 @@ void KOAgenda::selectItem(KOAgendaItem *item)
   }
   mSelectedItem = item;
   mSelectedItem->select();
-  emit incidenceSelected( mSelectedItem->itemEvent() );
+  emit incidenceSelected( mSelectedItem->incidence() );
 }
 
 // This function seems never be called.

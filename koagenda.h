@@ -28,8 +28,6 @@
 #include <qmemarray.h>
 #include <qguardedptr.h>
 
-#include <libkcal/event.h>
-
 #include "koagendaitem.h"
 
 class QPopupMenu;
@@ -37,6 +35,8 @@ class QTime;
 class KConfig;
 class QFrame;
 class KOAgenda;
+class KCal::Event;
+class KCal::Todo;
 
 using namespace KCal;
 
@@ -69,8 +69,8 @@ class KOAgenda : public QScrollView
                const char * name=0, WFlags f=0 );
     virtual ~KOAgenda();
 
-    Event *selectedEvent();
-    QDate selectedEventDate();
+    Incidence *selectedIncidence() const;
+    QDate selectedIncidenceDate() const;
 
     virtual bool eventFilter ( QObject *, QEvent * );
 
@@ -82,8 +82,8 @@ class KOAgenda : public QScrollView
 
     void setStartHour(int startHour);
 
-    KOAgendaItem *insertItem (Event *event,QDate qd,int X,int YTop,int YBottom);
-    KOAgendaItem *insertAllDayItem (Event *event,QDate qd,int XBegin,int XEnd);
+    KOAgendaItem *insertItem (Incidence *event,QDate qd,int X,int YTop,int YBottom);
+    KOAgendaItem *insertAllDayItem (Incidence *event,QDate qd,int XBegin,int XEnd);
     void insertMultiItem (Event *event,QDate qd,int XBegin,int XEnd,
                           int YTop,int YBottom);
 
@@ -134,19 +134,19 @@ class KOAgenda : public QScrollView
     void newEventSignal(int gxStart, int gyStart, int gxEnd, int gyEnd);
     void newTimeSpanSignal(int gxStart, int gyStart, int gxEnd, int gyEnd);
     void newStartSelectSignal();
-    void editEventSignal(Event *event);
-    void showEventSignal(Event *event);
-    void deleteEventSignal(Event *event);
+
+    void showIncidenceSignal(Incidence *);
+    void editIncidenceSignal(Incidence *);
+    void deleteIncidenceSignal(Incidence *);
+    void showIncidencePopupSignal(Incidence *);
 
     void itemModified(KOAgendaItem *item);
-    void incidenceSelected( Incidence * );
-
-    void showEventPopupSignal(Event *);
+    void incidenceSelected(Incidence *);
 
     void lowerYChanged(int);
     void upperYChanged(int);
 
-    void startDragSignal(Event *);
+    void startDragSignal(Incidence *);
 
   protected:
     void drawContents(QPainter *p,int cx, int cy, int cw, int ch);

@@ -182,9 +182,6 @@ class KOAgendaView : public KOEventView {
     /** Update event belonging to agenda item */
     void updateEventDates(KOAgendaItem *item);
 
-    void showAgendaPopup(Event *event);
-    void showAllDayAgendaPopup(Event *event);
-
     void updateEventIndicatorTop(int newY);
     void updateEventIndicatorBottom(int newY);
     

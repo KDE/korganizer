@@ -308,8 +308,8 @@ KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name) :
 
   // Create event context menu for all day agenda
   mAllDayAgendaPopup = eventPopup();
-  connect(mAllDayAgenda,SIGNAL(showEventPopupSignal(Event *)),
-          mAllDayAgendaPopup,SLOT(showEventPopup(Event *)));
+  connect(mAllDayAgenda,SIGNAL(showIncidencePopupSignal(Incidence *)),
+          mAllDayAgendaPopup,SLOT(showIncidencePopup(Incidence *)));
 
   // Create agenda frame
   QGridLayout *agendaLayout = new QGridLayout(agendaFrame,3,3);
@@ -338,8 +338,8 @@ KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name) :
   mAgendaPopup->addAdditionalItem(QIconSet(SmallIcon("bell")),
                                   i18n("Toggle Alarm"),mAgenda,
                                   SLOT(popupAlarm()),true);
-  connect(mAgenda,SIGNAL(showEventPopupSignal(Event *)),
-          mAgendaPopup,SLOT(showEventPopup(Event *)));
+  connect(mAgenda,SIGNAL(showIncidencePopupSignal(Incidence *)),
+          mAgendaPopup,SLOT(showIncidencePopup(Incidence *)));
 
   // make connections between dependent widgets
   mTimeLabels->setAgenda(mAgenda);
@@ -376,18 +376,19 @@ KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name) :
   connect(mAgenda,SIGNAL(newStartSelectSignal()),SLOT(updateView()));
   connect(mAllDayAgenda,SIGNAL(newStartSelectSignal()),SLOT(updateView()));
   
-  connect(mAgenda,SIGNAL(editEventSignal(Event *)),
-                  SIGNAL(editEventSignal(Event *)));
-  connect(mAllDayAgenda,SIGNAL(editEventSignal(Event *)),
-                        SIGNAL(editEventSignal(Event *)));
-  connect(mAgenda,SIGNAL(showEventSignal(Event *)),
-                  SIGNAL(showEventSignal(Event *)));
-  connect(mAllDayAgenda,SIGNAL(showEventSignal(Event *)),
-                        SIGNAL(showEventSignal(Event *)));
-  connect(mAgenda,SIGNAL(deleteEventSignal(Event *)),
-                  SIGNAL(deleteEventSignal(Event *)));
-  connect(mAllDayAgenda,SIGNAL(deleteEventSignal(Event *)),
-                        SIGNAL(deleteEventSignal(Event *)));
+  connect(mAgenda,SIGNAL(editIncidenceSignal(Incidence *)),
+                  SIGNAL(editIncidenceSignal(Incidence *)));
+  connect(mAllDayAgenda,SIGNAL(editIncidenceSignal(Incidence *)),
+                        SIGNAL(editIncidenceSignal(Incidence *)));
+  connect(mAgenda,SIGNAL(showIncidenceSignal(Incidence *)),
+                  SIGNAL(showIncidenceSignal(Incidence *)));
+  connect(mAllDayAgenda,SIGNAL(showIncidenceSignal(Incidence *)),
+                        SIGNAL(showIncidenceSignal(Incidence *)));
+  connect(mAgenda,SIGNAL(deleteIncidenceSignal(Incidence *)),
+                  SIGNAL(deleteIncidenceSignal(Incidence *)));
+  connect(mAllDayAgenda,SIGNAL(deleteIncidenceSignal(Incidence *)),
+                        SIGNAL(deleteIncidenceSignal(Incidence *)));
+
   connect(mAgenda,SIGNAL(itemModified(KOAgendaItem *)),
                   SLOT(updateEventDates(KOAgendaItem *)));
   connect(mAllDayAgenda,SIGNAL(itemModified(KOAgendaItem *)),
@@ -496,30 +497,30 @@ int KOAgendaView::currentDateCount()
 
 QPtrList<Incidence> KOAgendaView::selectedIncidences()
 {
-  QPtrList<Incidence> selectedEvents;
-  Event *event;
+  QPtrList<Incidence> selected;
+  Incidence *incidence;
 
-  event = mAgenda->selectedEvent();
-  if (event) selectedEvents.append(event);
+  incidence = mAgenda->selectedIncidence();
+  if (incidence) selected.append(incidence);
 
-  event = mAllDayAgenda->selectedEvent();
-  if (event) selectedEvents.append(event);
+  incidence = mAllDayAgenda->selectedIncidence();
+  if (incidence) selected.append(incidence);
 
-  return selectedEvents;
+  return selected;
 }
 
 DateList KOAgendaView::selectedDates()
 {
-  DateList selectedEventsDates;
+  DateList selected;
   QDate qd;
 
-  qd = mAgenda->selectedEventDate();
-  if (qd.isValid()) selectedEventsDates.append(qd);
+  qd = mAgenda->selectedIncidenceDate();
+  if (qd.isValid()) selected.append(qd);
 
-  qd = mAllDayAgenda->selectedEventDate();
-  if (qd.isValid()) selectedEventsDates.append(qd);
+  qd = mAllDayAgenda->selectedIncidenceDate();
+  if (qd.isValid()) selected.append(qd);
 
-  return selectedEventsDates;
+  return selected;
 }
 
 
@@ -578,7 +579,7 @@ void KOAgendaView::updateEventDates(KOAgendaItem *item)
   }
   startDt.setDate(startDate);
 
-  if (item->itemEvent()->doesFloat()) {
+  if (item->incidence()->doesFloat()) {
     endDt.setDate(startDate.addDays(item->cellWidth() - 1));
   } else {
     startDt.setTime(mAgenda->gyToTime(item->cellYTop()));
@@ -594,9 +595,15 @@ void KOAgendaView::updateEventDates(KOAgendaItem *item)
 
 //  kdDebug() << "KOAgendaView::updateEventDates(): now setting dates" << endl;
 
-  item->itemEvent()->setDtStart(startDt);
-  item->itemEvent()->setDtEnd(endDt);
-  item->itemEvent()->setRevision(item->itemEvent()->revision()+1);
+
+  if ( item->incidence()->type() == "Event" ) {
+    item->incidence()->setDtStart(startDt);
+    (static_cast<Event*>(item->incidence()))->setDtEnd(endDt);
+  } else if ( item->incidence()->type() == "Todo" ) {
+    (static_cast<Todo*>(item->incidence()))->setDtDue(endDt);
+  }
+
+  item->incidence()->setRevision(item->incidence()->revision()+1);
   item->setItemDate(startDt.date());
 
   emit eventChanged();
@@ -657,7 +664,13 @@ void KOAgendaView::fillAgenda()
 
   QPtrList<Event> dayEvents;
 
+  // ToDo items shall be displayed for the day they are due, but only showed today if they are already overdue.
+  // Therefore, get all of them.
+  QPtrList<Todo> todos  = calendar()->todos();
+
   mAgenda->setDateList(mSelectedDates);
+
+  QDate today = QDate::currentDate();
 
   DateList::ConstIterator dit;
   int curCol = 0;
@@ -718,6 +731,40 @@ void KOAgendaView::fillAgenda()
       }
     }
 //    if (numEvent == 0) kdDebug() << " No events" << endl;
+
+
+    // ---------- [display Todos --------------
+    unsigned int numTodo;
+    for (numTodo = 0; numTodo < todos.count(); ++numTodo) {
+      Todo *todo = todos.at(numTodo);
+
+      if ( ! todo->hasDueDate() ) continue;  // todo shall not be displayed if it has no date
+
+      // ToDo items shall be displayed for the day they are due, but only showed today if they are already overdue.
+      // Already completed items can be displayed on their original due date
+      bool overdue = (!todo->isCompleted()) && (todo->dtDue() < today);
+
+      if ( ((todo->dtDue().date() == currentDate) && !overdue) ||
+           ((currentDate == today) && overdue) )
+        if ( todo->doesFloat() || overdue ) {  // Todo has no due-time set or is already overdue
+          //kdDebug() << "todo without time:" << todo->dtDueDateStr() << ";" << todo->summary() << endl;
+
+          mAllDayAgenda->insertAllDayItem(todo, currentDate, curCol, curCol);
+        }
+        else {
+          //kdDebug() << "todo with time:" << todo->dtDueStr() << ";" << todo->summary() << endl;
+
+          int endY = mAgenda->timeToY(todo->dtDue().time()) - 1;
+          int startY = endY - 1;
+
+          mAgenda->insertItem(todo,currentDate,curCol,startY,endY);
+
+          if (startY < mMinY[curCol]) mMinY[curCol] = startY;
+          if (endY > mMaxY[curCol]) mMaxY[curCol] = endY;
+        }
+    }
+    // ---------- display Todos] --------------
+
     ++curCol;
   }
 
@@ -788,16 +835,6 @@ void KOAgendaView::newEventAllDay(int gx, int )
   QDate day = mSelectedDates[gx];
 
   emit newEventSignal(day);
-}
-
-void KOAgendaView::showAgendaPopup(Event *event)
-{
-  showEventPopup(mAgendaPopup,event);
-}
-
-void KOAgendaView::showAllDayAgendaPopup(Event *event)
-{
-  showEventPopup(mAllDayAgendaPopup,event);
 }
 
 void KOAgendaView::updateEventIndicatorTop(int newY)

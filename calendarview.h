@@ -193,6 +193,13 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
      default hint. */ 
     void newEvent();
     void newFloatingEvent();
+
+    /** Create a read-only viewer dialog for the supplied incidence. It calls the correct showXXX method*/
+    void showIncidence(Incidence *);
+    /** Create an editor for the supplied incidence. It calls the correct editXXX method*/
+    void editIncidence(Incidence *);
+    /** Delete the supplied incidence. It calls the correct deleteXXX method*/
+    void deleteIncidence(Incidence *);
     
     /** Create an editor for the supplied event. */
     void editEvent(Event *);

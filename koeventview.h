@@ -87,7 +87,7 @@ class KOEventView : public KOrg::BaseView
      * @param event event, which is to be manipulated by the menu actions
      * @param popup a popop menu created with eventPopup()
      */
-    void showEventPopup(QPopupMenu *popup,Event *event);
+    void showIncidencePopup(QPopupMenu *popup, Incidence *event);
 
     /**
      Perform the default action for an incidence, e.g. open the event editor,
@@ -104,18 +104,26 @@ class KOEventView : public KOrg::BaseView
      * selected dates has changed.
      */
     void datesSelected(const DateList);
+
+    /**
+     * instructs the receiver to show the incidence in read-only mode.
+     */
+    void showIncidenceSignal(Incidence *);
+
     /**   
-     * instructs the receiver to begin editing the event specified in
+     * instructs the receiver to begin editing the incidence specified in
      * some manner.  Doesn't make sense to connect to more than one 
      * receiver.
      */
-    void editEventSignal(Event *);
+    void editIncidenceSignal(Incidence *);
+
     /**
-     * instructs the receiver to delete the event in some manner; some
+     * instructs the receiver to delete the Incidence in some manner; some
      * possibilities include automatically, with a confirmation dialog
      * box, etc.  Doesn't make sense to connect to more than one receiver.
      */
-    void deleteEventSignal(Event *);
+    void deleteIncidenceSignal(Incidence *);
+
     /**
      * instructs the receiver to create a new event.  Doesn't make
      * sense to connect to more than one receiver.
@@ -138,11 +146,6 @@ class KOEventView : public KOrg::BaseView
      */
     void newEventSignal(QDateTime, QDateTime);
 
-    /**
-     * instructs the receiver to show the event in read-only mode.
-     */
-    void showEventSignal(Event *);
-
     //ET CVS MERGE !
     /**
      * Emitted when an event is moved using the mouse in an agenda
@@ -157,7 +160,7 @@ class KOEventView : public KOrg::BaseView
     void popupDelete();
 
   protected:
-    Event *mCurrentEvent;  // event selected e.g. for a context menu
+    Incidence *mCurrentIncidence;  // Incidence selected e.g. for a context menu
 };
 
 #endif

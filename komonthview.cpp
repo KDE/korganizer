@@ -692,12 +692,15 @@ void KOMonthView::resizeEvent(QResizeEvent *)
 
 void KOMonthView::showContextMenu( Incidence *incidence )
 {
+  mContextMenu->showIncidencePopup(incidence);
+  /*
   if( incidence && incidence->type() == "Event" ) {
     Event *event = static_cast<Event *>(incidence);
     mContextMenu->showEventPopup(event);
   } else {
     kdDebug() << "MonthView::showContextMenu(): cast failed." << endl;
   }
+  */
 }
 
 void KOMonthView::setSelectedCell( MonthViewCell *cell )

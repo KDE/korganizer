@@ -169,12 +169,12 @@ void KOViewManager::showListView()
     mListView = new KOListView(mMainView->calendar(), mMainView->viewStack(), "KOViewManager::ListView");
     addView(mListView);
 
-    connect(mListView, SIGNAL(showEventSignal(Event *)),
-            mMainView, SLOT(showEvent(Event *)));
-    connect(mListView, SIGNAL(editEventSignal(Event *)),
-            mMainView, SLOT(editEvent(Event *)));
-    connect(mListView, SIGNAL(deleteEventSignal(Event *)),
-            mMainView, SLOT(deleteEvent(Event *)));
+    connect(mListView, SIGNAL(showIncidenceSignal(Incidence *)),
+            mMainView, SLOT(showIncidence(Incidence *)));
+    connect(mListView, SIGNAL(editIncidenceSignal(Incidence *)),
+            mMainView, SLOT(editIncidence(Incidence *)));
+    connect(mListView, SIGNAL(deleteIncidenceSignal(Incidence *)),
+            mMainView, SLOT(deleteIncidence(Incidence *)));
 
     connect( mListView, SIGNAL( incidenceSelected( Incidence * ) ),
              mMainView, SLOT( processMainViewSelection( Incidence * ) ) );
@@ -189,7 +189,7 @@ void KOViewManager::showAgendaView()
 {
   if (!mAgendaView) {
     mAgendaView = new KOAgendaView(mMainView->calendar(), mMainView->viewStack(), "KOViewManager::AgendaView");
-					
+
     addView(mAgendaView);
 
     connect( mAgendaView, SIGNAL( eventChanged() ),
@@ -202,12 +202,13 @@ void KOViewManager::showAgendaView()
             mMainView, SLOT(newEvent(QDateTime,QDateTime)));
     connect(mAgendaView,SIGNAL(newEventSignal(QDate)),
             mMainView, SLOT(newEvent(QDate)));
-    connect(mAgendaView, SIGNAL(editEventSignal(Event *)),
-	    mMainView, SLOT(editEvent(Event *)));
-    connect(mAgendaView, SIGNAL(showEventSignal(Event *)),
-            mMainView, SLOT(showEvent(Event *)));
-    connect(mAgendaView, SIGNAL(deleteEventSignal(Event *)),
-            mMainView, SLOT(deleteEvent(Event *)));
+
+    connect(mAgendaView, SIGNAL(editIncidenceSignal(Incidence *)),
+            mMainView, SLOT(editIncidence(Incidence *)));
+    connect(mAgendaView, SIGNAL(showIncidenceSignal(Incidence *)),
+            mMainView, SLOT(showIncidence(Incidence *)));
+    connect(mAgendaView, SIGNAL(deleteIncidenceSignal(Incidence *)),
+            mMainView, SLOT(deleteIncidence(Incidence *)));
 
     connect( mAgendaView, SIGNAL( incidenceSelected( Incidence * ) ),
              mMainView, SLOT( processMainViewSelection( Incidence * ) ) );
@@ -257,14 +258,15 @@ void KOViewManager::showMonthView()
     addView(mMonthView);
 
     // SIGNALS/SLOTS FOR MONTH VIEW
-    connect(mMonthView, SIGNAL(showEventSignal(Event *)),
-            mMainView, SLOT(showEvent(Event *)));
     connect(mMonthView, SIGNAL(newEventSignal(QDateTime)),
             mMainView, SLOT(newEvent(QDateTime)));
-    connect(mMonthView, SIGNAL(editEventSignal(Event *)),
-            mMainView, SLOT(editEvent(Event *)));
-    connect(mMonthView, SIGNAL(deleteEventSignal(Event *)),
-            mMainView, SLOT(deleteEvent(Event *)));
+
+    connect(mMonthView, SIGNAL(showIncidenceSignal(Incidence *)),
+            mMainView, SLOT(showIncidence(Incidence *)));
+    connect(mMonthView, SIGNAL(editIncidenceSignal(Incidence *)),
+            mMainView, SLOT(editIncidence(Incidence *)));
+    connect(mMonthView, SIGNAL(deleteIncidenceSignal(Incidence *)),
+            mMainView, SLOT(deleteIncidence(Incidence *)));
 
     connect( mMonthView, SIGNAL( incidenceSelected( Incidence * ) ),
              mMainView, SLOT( processMainViewSelection( Incidence * ) ) );
@@ -302,7 +304,7 @@ void KOViewManager::showTodoView()
     connect( mMainView, SIGNAL( configChanged() ), mTodoView,
              SLOT( updateConfig() ) );
     connect( mTodoView, SIGNAL( todoModifiedSignal( Todo *, int ) ),
-	     mMainView, SLOT ( todoModified( Todo *, int ) ) );
+             mMainView, SLOT ( todoModified( Todo *, int ) ) );
 
     KConfig *config = KOGlobals::config();
     mTodoView->restoreLayout(config,"Todo View");

@@ -28,7 +28,7 @@
 
 #include <qpopupmenu.h>
 
-#include <libkcal/event.h>
+#include <libkcal/incidence.h>
 
 using namespace KCal;
 
@@ -43,7 +43,7 @@ class KOEventPopupMenu : public QPopupMenu {
 
 
   public slots:
-    void showEventPopup(Event *);
+    void showIncidencePopup(Incidence *);
 
   protected slots:
     void popupShow();
@@ -51,12 +51,12 @@ class KOEventPopupMenu : public QPopupMenu {
     void popupDelete();
 
   signals:
-    void editEventSignal(Event *);
-    void showEventSignal(Event *);
-    void deleteEventSignal(Event *);
+    void editIncidenceSignal(Incidence *);
+    void showIncidenceSignal(Incidence *);
+    void deleteIncidenceSignal(Incidence *);
     
   private:
-    Event *mCurrentEvent;
+    Incidence *mCurrentIncidence;
     
     bool mHasAdditionalItems;
     QValueList<int> mEditOnlyItems;

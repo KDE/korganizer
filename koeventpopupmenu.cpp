@@ -34,24 +34,24 @@
 
 KOEventPopupMenu::KOEventPopupMenu()
 {
-  mCurrentEvent = 0;
+  mCurrentIncidence = 0;
   mHasAdditionalItems = false;
 
   insertItem (i18n("&Show"),this,SLOT(popupShow()));
-  mEditOnlyItems.append(insertItem (i18n("edit event","&Edit..."),this,SLOT(popupEdit())));
+  mEditOnlyItems.append(insertItem (i18n("&Edit..."),this,SLOT(popupEdit())));
   mEditOnlyItems.append(insertItem (SmallIcon("editdelete"),i18n("&Delete"),
                                    this,SLOT(popupDelete())));
 }
 
-void KOEventPopupMenu::showEventPopup(Event *event)
+void KOEventPopupMenu::showIncidencePopup(Incidence *incidence)
 {
-  mCurrentEvent = event;
+  mCurrentIncidence = incidence;
   
-  if (mCurrentEvent) {
+  if (mCurrentIncidence) {
     // Enable/Disabled menu items only valid for editable events.
     QValueList<int>::Iterator it;
     for( it = mEditOnlyItems.begin(); it != mEditOnlyItems.end(); ++it ) {
-      setItemEnabled(*it,!mCurrentEvent->isReadOnly());
+      setItemEnabled(*it,!mCurrentIncidence->isReadOnly());
     }
     popup(QCursor::pos());
   } else {
@@ -73,15 +73,15 @@ void KOEventPopupMenu::addAdditionalItem(const QIconSet &icon,const QString &tex
 
 void KOEventPopupMenu::popupShow()
 {
-  if (mCurrentEvent) emit showEventSignal(mCurrentEvent);
+  if (mCurrentIncidence) emit showIncidenceSignal(mCurrentIncidence);
 }
 
 void KOEventPopupMenu::popupEdit()
 {
-  if (mCurrentEvent) emit editEventSignal(mCurrentEvent);
+  if (mCurrentIncidence) emit editIncidenceSignal(mCurrentIncidence);
 }
 
 void KOEventPopupMenu::popupDelete()
 {
-  if (mCurrentEvent) emit deleteEventSignal(mCurrentEvent);
+  if (mCurrentIncidence) emit deleteIncidenceSignal(mCurrentIncidence);
 }

@@ -340,10 +340,14 @@ void KOListView::popupMenu(QListViewItem *item,const QPoint &,int)
   mActiveItem = (KOListViewItem *)item;
   if (mActiveItem) {
     Incidence *incidence = mActiveItem->data();
+    mPopupMenu->showIncidencePopup(incidence);
+
+    /*
     if ( incidence && incidence->type() == "Event" ) {
       Event *event = static_cast<Event *>( incidence );
       mPopupMenu->showEventPopup(event);
     }
+    */
   }
 }
 

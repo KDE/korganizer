@@ -35,30 +35,60 @@
 #include "koagendaitem.h"
 #include "koagendaitem.moc"
 
+//--------------------------------------------------------------------------
+
 QToolTipGroup *KOAgendaItem::mToolTipGroup = 0;
 
-KOAgendaItem::KOAgendaItem(Event *event, QDate qd, QWidget *parent,
+//--------------------------------------------------------------------------
+
+KOAgendaItem::KOAgendaItem(Incidence *incidence, QDate qd, QWidget *parent,
                            const char *name,WFlags) :
-  QFrame( parent, name )
+  QFrame(parent, name), mIncidence(incidence), mDate(qd)
 {
   mFirstMultiItem = 0;
   mNextMultiItem = 0;
   mLastMultiItem = 0;
 
-  mEvent = event;
-  mDate = qd;
+  QHBox *box = 0;
 
-  QStringList categories = mEvent->categories();
-  QString cat = categories.first();
-  if (cat.isEmpty()) {
-    setPalette(QPalette(KOPrefs::instance()->mEventColor,
-                        KOPrefs::instance()->mEventColor));
-  } else {
-    setPalette(QPalette(*(KOPrefs::instance()->categoryColor(cat)),
-                        *(KOPrefs::instance()->categoryColor(cat))));
+  if ( incidence->type() == "Todo" )
+  {
+    static const QPixmap todoPxmp = SmallIcon("todo");
+    static const QPixmap completedPxmp = SmallIcon("checkedbox");
+
+    box = new QHBox(this);
+    QLabel *todoIcon = new QLabel(box);
+
+    if ( (static_cast<Todo*>(incidence))->isCompleted() )
+      todoIcon->setPixmap(completedPxmp);
+    else
+      todoIcon->setPixmap(todoPxmp);
+
+    todoIcon->setAlignment(AlignLeft|AlignTop);
+
+    mItemLabel = new QLabel(mIncidence->summary(),box,"KOAgendaItem::itemLabel");
+  }
+  else
+    mItemLabel = new QLabel(mIncidence->summary(),this,"KOAgendaItem::itemLabel");
+
+  // if a Todo item is overdue and not completed, always show it in overdue color
+  if ( (incidence->type() == "Todo") &&
+       ( !((static_cast<Todo*>(incidence))->isCompleted()) &&
+         ((static_cast<Todo*>(incidence))->dtDue() < QDate::currentDate()) ) )
+    setPalette(QPalette(KOPrefs::instance()->mTodoOverdueColor,
+                        KOPrefs::instance()->mTodoOverdueColor));
+  else {
+    QStringList categories = mIncidence->categories();
+    QString cat = categories.first();
+    if (cat.isEmpty()) {
+      setPalette(QPalette(KOPrefs::instance()->mEventColor,
+                          KOPrefs::instance()->mEventColor));
+    } else {
+      setPalette(QPalette(*(KOPrefs::instance()->categoryColor(cat)),
+                          *(KOPrefs::instance()->categoryColor(cat))));
+    }
   }
 
-  mItemLabel = new QLabel(mEvent->summary(),this,"KOAgendaItem::itemLabel");
   mItemLabel->setAlignment(AlignCenter|WordBreak);
   mItemLabel->setMouseTracking(true);
 
@@ -113,7 +143,10 @@ KOAgendaItem::KOAgendaItem(Event *event, QDate qd, QWidget *parent,
   mIconOrganizer->setPixmap(organizerPxmp);
 
   QVBoxLayout *topLayout = new QVBoxLayout(this,margin()+3);
-  topLayout->addWidget(mItemLabel,1);
+  if ( incidence->type() == "Todo" )
+    topLayout->addWidget(box, 1);
+  else
+    topLayout->addWidget(mItemLabel,1);
 
   QBoxLayout *iconLayout = new QHBoxLayout;
   topLayout->addLayout(iconLayout);
@@ -133,44 +166,52 @@ KOAgendaItem::KOAgendaItem(Event *event, QDate qd, QWidget *parent,
   select(false);
 
 //  QToolTip::add(this,mEvent->summary());
-  QString tipText = mEvent->summary();
-  if (!mEvent->doesFloat()) {
-    if (mEvent->isMultiDay()) {
-      tipText += "\n"+i18n("From: ")+mEvent->dtStartStr();
-      tipText += "\n"+i18n("To: ")+mEvent->dtEndStr();
+  QString tipText = mIncidence->summary();
+
+  if ( !mIncidence->doesFloat() )
+    if ( mIncidence->type() == "Event" ) {
+      if ( (static_cast<Event*>(mIncidence))->isMultiDay() ) {
+        tipText += "\n"+i18n("From: ")+mIncidence->dtStartStr();
+        tipText += "\n"+i18n("To: ")+(static_cast<Event*>(mIncidence))->dtEndStr();
+      }
+      else {
+        tipText += "\n"+i18n("Time: ")+mIncidence->dtStartTimeStr();
+        tipText += " - "+(static_cast<Event*>(mIncidence))->dtEndTimeStr();
+      }
     }
-    else {
-      tipText += "\n"+i18n("Time: ")+mEvent->dtStartTimeStr();
-      tipText += " - "+mEvent->dtEndTimeStr();
+    else if ( mIncidence->type() == "Todo" ) {
+      tipText += "\n"+i18n("Due: ")+ (static_cast<Todo*>(mIncidence))->dtDueTimeStr();
     }
-  }
-  if (!mEvent->location().isEmpty()) {
-    tipText += "\n"+i18n("Location: ")+mEvent->location();
+
+  if (!mIncidence->location().isEmpty()) {
+    tipText += "\n"+i18n("Location: ")+mIncidence->location();
   }
   //QToolTip::add(this,mEvent->summary(),toolTipGroup(),"");
   QToolTip::add(this,tipText,toolTipGroup(),"");
-  
+
   setAcceptDrops(true);
 }
 
 
 void KOAgendaItem::updateIcons()
 {
-  if (mEvent->isReadOnly()) mIconReadonly->show();
+  if (mIncidence->isReadOnly()) mIconReadonly->show();
   else mIconReadonly->hide();
-  if (mEvent->recurrence()->doesRecur()) mIconRecur->show();
+
+  if (mIncidence->recurrence()->doesRecur()) mIconRecur->show();
   else mIconRecur->hide();
-  if (mEvent->isAlarmEnabled()) mIconAlarm->show();
+
+  if (mIncidence->isAlarmEnabled()) mIconAlarm->show();
   else mIconAlarm->hide();
 
-  if (mEvent->attendeeCount()>0) {
-    if (mEvent->organizer() == KOPrefs::instance()->email()) {
+  if (mIncidence->attendeeCount()>0) {
+    if (mIncidence->organizer() == KOPrefs::instance()->email()) {
       mIconReply->hide();
       mIconGroup->hide();
       mIconOrganizer->show();
     }
     else {
-      Attendee *me = mEvent->attendeeByMails(KOPrefs::instance()->mAdditionalMails,KOPrefs::instance()->email());
+      Attendee *me = mIncidence->attendeeByMails(KOPrefs::instance()->mAdditionalMails,KOPrefs::instance()->email());
       if (me!=0) {
         if (me->status()==Attendee::NeedsAction && me->RSVP()) {
           mIconReply->show();
@@ -388,7 +429,7 @@ void KOAgendaItem::dropEvent( QDropEvent *e )
       QString name = (*it).left(pos);
       QString email = (*it).mid(pos);
       if (!email.isEmpty()) {
-        mEvent->addAttendee(new Attendee(name,email));
+        mIncidence->addAttendee(new Attendee(name,email));
       }
     }
   }

@@ -35,50 +35,66 @@
 using namespace KOrg;
 #include "koeventview.moc"
 
+//---------------------------------------------------------------------------
+
 KOEventView::KOEventView(Calendar *cal,QWidget *parent,const char *name)
   : KOrg::BaseView(cal,parent,name)
 {
 }
 
+//---------------------------------------------------------------------------
+
 KOEventView::~KOEventView()
 {
 }
+
+//---------------------------------------------------------------------------
 
 KOEventPopupMenu *KOEventView::eventPopup()
 {
   KOEventPopupMenu *eventPopup = new KOEventPopupMenu;
   
-  connect (eventPopup,SIGNAL(editEventSignal(Event *)),
-           SIGNAL(editEventSignal(Event *)));
-  connect (eventPopup,SIGNAL(showEventSignal(Event *)),
-           SIGNAL(showEventSignal(Event *)));
-  connect (eventPopup,SIGNAL(deleteEventSignal(Event *)),
-           SIGNAL(deleteEventSignal(Event *)));
+  connect(eventPopup,SIGNAL(editIncidenceSignal(Incidence *)),
+                     SIGNAL(editIncidenceSignal(Incidence *)));
+  connect(eventPopup,SIGNAL(showIncidenceSignal(Incidence *)),
+                     SIGNAL(showIncidenceSignal(Incidence *)));
+  connect(eventPopup,SIGNAL(deleteIncidenceSignal(Incidence *)),
+                     SIGNAL(deleteIncidenceSignal(Incidence *)));
 
   return eventPopup;
 }
 
-void KOEventView::showEventPopup(QPopupMenu *popup,Event *event)
+//---------------------------------------------------------------------------
+
+void KOEventView::showIncidencePopup(QPopupMenu *popup,Incidence *event)
 {
-  mCurrentEvent = event;
+  mCurrentIncidence = event;
   if (event) popup->popup(QCursor::pos());
   else kdDebug() << "KOEventView::showEventPopup(): No event selected" << endl;
 }
 
+//---------------------------------------------------------------------------
+
 void KOEventView::popupShow()
 {
-  emit showEventSignal(mCurrentEvent);
+  emit showIncidenceSignal(mCurrentIncidence);
 }
+
+//---------------------------------------------------------------------------
 
 void KOEventView::popupEdit()
 {
-  emit editEventSignal(mCurrentEvent);
+  emit editIncidenceSignal(mCurrentIncidence);
 }
+
+//---------------------------------------------------------------------------
 
 void KOEventView::popupDelete()
 {
-  emit deleteEventSignal(mCurrentEvent);
+  emit deleteIncidenceSignal(mCurrentIncidence);
 }
+
+//---------------------------------------------------------------------------
 
 void KOEventView::defaultAction( Incidence *incidence )
 {
@@ -88,12 +104,13 @@ void KOEventView::defaultAction( Incidence *incidence )
 
   kdDebug() << "  type: " << incidence->type() << endl;
 
-  if ( incidence->type() == "Event" ) {
-    Event *event = static_cast<Event *>( incidence );
-    if (event->isReadOnly()) emit showEventSignal(event);
-    else emit editEventSignal(event);
-  }
+  if ( incidence->isReadOnly() )
+    emit showIncidenceSignal(incidence);
+  else
+    emit editIncidenceSignal(incidence);
 }
+
+//---------------------------------------------------------------------------
 
 #include "baseview.moc"
 

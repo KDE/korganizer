@@ -23,7 +23,7 @@
 #include <qlabel.h>
 #include <qdatetime.h>
 
-#include <libkcal/event.h>
+#include <libkcal/incidence.h>
 
 class QToolTipGroup;
 class QDragEnterEvent;
@@ -41,7 +41,7 @@ class KOAgendaItem : public QFrame
 {
     Q_OBJECT
   public:
-    KOAgendaItem(Event *event, QDate qd, QWidget *parent, const char *name=0,
+    KOAgendaItem(Incidence *incidence, QDate qd, QWidget *parent, const char *name=0,
                  WFlags f=0 );
 
     int cellX() { return mCellX; }
@@ -77,7 +77,7 @@ class KOAgendaItem : public QFrame
     KOAgendaItem *nextMultiItem() { return mNextMultiItem; }
     KOAgendaItem *lastMultiItem() { return mLastMultiItem; }
 
-    Event *itemEvent() { return mEvent; }
+    Incidence *incidence() const { return mIncidence; }
     QDate itemDate() { return mDate; }
     
     /** Update the date of this item's occurence (not in the event) */ 
@@ -119,7 +119,7 @@ class KOAgendaItem : public QFrame
     KOAgendaItem *mNextMultiItem;
     KOAgendaItem *mLastMultiItem;
 
-    Event *mEvent; // corresponding event
+    Incidence *mIncidence; // corresponding event or todo
     QDate mDate; //date this events occurs (for recurrence)
 
     QLabel *mItemLabel;

@@ -1688,6 +1688,30 @@ void CalendarView::deleteIncidence()
   }
 }
 
+void CalendarView::showIncidence(Incidence *incidence)
+{
+  if ( incidence ) {
+    ShowIncidenceVisitor v;
+    v.act( incidence, this );
+  }
+}
+
+void CalendarView::editIncidence(Incidence *incidence)
+{
+  if ( incidence ) {
+    EditIncidenceVisitor v;
+    v.act( incidence, this );
+  }
+}
+
+void CalendarView::deleteIncidence(Incidence *incidence)
+{
+  if ( incidence ) {
+    DeleteIncidenceVisitor v;
+    v.act( incidence, this );
+  }
+}
+
 
 void CalendarView::lookForOutgoingMessages()
 {

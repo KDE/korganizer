@@ -393,23 +393,31 @@ bool KOEditorGeneralEvent::validateInput()
 
   if (!mNoTimeButton->isChecked()) {
     if (!mStartTimeEdit->inputIsValid()) {
-      KMessageBox::sorry(0,i18n("Please specify a valid start time."));
+      KMessageBox::sorry( 0,
+          i18n("Please specify a valid start time, for example '%1'.")
+          .arg( KGlobal::locale()->formatTime( QTime::currentTime() ) ) );
       return false;
     }
 
     if (!mEndTimeEdit->inputIsValid()) {
-      KMessageBox::sorry(0,i18n("Please specify a valid end time."));
+      KMessageBox::sorry( 0,
+          i18n("Please specify a valid end time, for example '%1'.")
+          .arg( KGlobal::locale()->formatTime( QTime::currentTime() ) ) );
       return false;
     }
   }
 
   if (!mStartDateEdit->inputIsValid()) {
-    KMessageBox::sorry(0,i18n("Please specify a valid start date."));
+    KMessageBox::sorry( 0,
+        i18n("Please specify a valid start date, for example '%1'.")
+        .arg( KGlobal::locale()->formatDate( QDate::currentDate() ) ) );
     return false;
   }
 
   if (!mEndDateEdit->inputIsValid()) {
-    KMessageBox::sorry(0,i18n("Please specify a valid end date."));
+    KMessageBox::sorry( 0,
+        i18n("Please specify a valid end date, for example '%1'.")
+        .arg( KGlobal::locale()->formatDate( QDate::currentDate() ) ) );
     return false;
   }
 
