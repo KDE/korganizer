@@ -67,7 +67,8 @@
 KOWindowList *KOrganizer::windowList = 0;
 
 KOrganizer::KOrganizer(const char *name)
-  : MainWindow(name), DCOPObject("KOrganizerIface")
+  : MainWindow(name), DCOPObject("KOrganizerIface"),
+    mAlarmDaemonIface("kalarmd","ad")
 {
   kdDebug() << "KOrganizer::KOrganizer()" << endl;
 
@@ -713,10 +714,8 @@ bool KOrganizer::saveURL()
     if (result != KMessageBox::Continue) return false;
 
     // Tell the alarm daemon to stop monitoring the vCalendar file
-    QByteArray data;
-    QDataStream arg(data, IO_WriteOnly);
-    arg << mURL.url();
-    if (!kapp->dcopClient()->send("kalarmd","ad","removeCal(QString)", data)) {
+    mAlarmDaemonIface.removeCal( mURL.url() );
+    if (!mAlarmDaemonIface.ok() ) {
       kdDebug() << "KOrganizer::saveURL(): dcop send failed" << endl;
     }
 
@@ -745,12 +744,10 @@ bool KOrganizer::saveURL()
   }
 
   if (isActive()) {
-    kdDebug() << "KOrganizer::saveURL(): Notify alarm daemon: " << mURL.url() << endl;
-    QByteArray data;
-    QDataStream arg(data, IO_WriteOnly);
-    arg << QString("korganizer") << mURL.url();
-    if (!kapp->dcopClient()->send("kalarmd","ad","reloadCal(QString,QString)", data)) {
-      kdDebug() << "KOrganizer::saveURL(): dcop send failed" << endl;
+    kdDebug() << "KOrganizer::saveURL(): Notify alarm daemon" << endl;
+    mAlarmDaemonIface.reloadCal("korganizer",mURL.url());
+    if (!mAlarmDaemonIface.ok()) {
+      kdDebug() << "KOrganizer::saveUrl(): reloadCal call failed." << endl;
     }
   }
 
@@ -1064,12 +1061,8 @@ void KOrganizer::makeActive()
 
   writeActiveState();
 
-  kdDebug() << "KOrganizer::saveURL(): Notify alarm daemon: " << mURL.url() << endl;
-
-  QByteArray data;
-  QDataStream arg(data, IO_WriteOnly);
-  arg << QString("korganizer") << mURL.url();
-  if (!kapp->dcopClient()->send("kalarmd","ad","reloadCal(QString,QString)", data)) {
+  mAlarmDaemonIface.reloadCal( "korganizer", mURL.url() );
+  if ( !mAlarmDaemonIface.ok() ) {
     kdDebug() << "KOrganizer::makeActive(): dcop send failed" << endl;
   }
   setActive();

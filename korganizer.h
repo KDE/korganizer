@@ -44,6 +44,8 @@
 
 #include <korganizer/mainwindow.h>
 
+#include "kalarmd/alarmdaemoniface_stub.h"
+
 #include "calendarview.h"
 #include "korganizeriface.h"
 
@@ -276,6 +278,8 @@ class KOrganizer : public KOrg::MainWindow, virtual public KOrganizerIface
 
     // status bar ids
     enum { ID_HISTORY, ID_GENERAL, ID_ACTIVE, ID_MESSAGES_IN, ID_MESSAGES_OUT };
+
+    AlarmDaemonIface_stub mAlarmDaemonIface;
 
   private slots:
     void dumpText(const QString &);  // only for debugging purposes

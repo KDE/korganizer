@@ -36,6 +36,8 @@
 
 #include <libkcal/calendarlocal.h>
 
+#include "kalarmd/alarmdaemoniface_stub.h"
+
 #include "korganizer.h"
 
 #include "koapp.h"
@@ -140,10 +142,9 @@ int KOrganizerApp::newInstance()
     }
     kdDebug() << "KOApp::newInstance() registerApp" << endl;
     // Register this application with the alarm daemon
-    QByteArray data;
-    QDataStream arg(data, IO_WriteOnly);
-    arg << QCString("korganizer") << QString("KOrganizer") << QCString() << (Q_INT8)0 << (Q_INT8)1;
-    if (!dcopClient()->send("kalarmd","ad","registerApp(QCString,QString,QCString,int,bool)", data)) {
+    AlarmDaemonIface_stub stub( "kalarmd", "ad" );
+    stub.registerApp( "korganizer", "KOrganizer", "", 0, true );
+    if( !stub.ok() ) {
       kdDebug() << "KOrganizerApp::newInstance(): dcop send failed" << endl;
     }
   }
@@ -159,12 +160,8 @@ int KOrganizerApp::newInstance()
     QString urlString = KGlobal::config()->readEntry("Active Calendar");
 
     // Force alarm daemon to load active calendar
-    QByteArray data;
-    QDataStream arg(data, IO_WriteOnly);
-    arg << QCString("korganizer") << urlString;
-    if (!dcopClient()->send("kalarmd","ad","addCal(QCString,QString)", data)) {
-      kdDebug() << "KOrganizerApp::newInstance(): dcop send failed" << endl;
-    }
+    AlarmDaemonIface_stub stub( "kalarmd", "ad" );
+    stub.addCal( "korganizer", urlString );
 
     processCalendar(urlString,numDays);
   }
