@@ -42,6 +42,7 @@
 #endif
 #include "koeventeditor.h"
 #include "kotodoeditor.h"
+#include "kojournaleditor.h"
 #include "koprefs.h"
 #include "koeventviewerdialog.h"
 #include "publishdialog.h"
@@ -1001,6 +1002,37 @@ void CalendarView::editTodo( Todo *todo )
   mDialogList.insert( todo, todoEditor );
   todoEditor->editIncidence( todo );
   todoEditor->show();
+}
+
+void CalendarView::editJournal( Journal *journal )
+{
+  if ( !journal ) return;
+  kdDebug(5850) << "CalendarView::editJournal" << endl;
+
+  KOIncidenceEditor *tmp = editorDialog( journal );
+  if ( tmp ) {
+    kdDebug(5850) << "Already in the list " << endl;
+    tmp->reload();
+    tmp->raise();
+    tmp->show();
+    return;
+  }
+
+  if ( journal->isReadOnly() ) {
+    showJournal( journal );
+    return;
+  }
+
+  if ( !mCalendar->beginChange( journal ) ) {
+    warningChangeFailed( journal );
+    return;
+  }
+
+  KOJournalEditor *journalEditor = mDialogManager->getJournalEditor();
+  kdDebug(5850) << "New editor" << endl;
+  mDialogList.insert( journal, journalEditor );
+  journalEditor->editIncidence( journal );
+  journalEditor->show();
 }
 
 void CalendarView::showEvent(Event *event)

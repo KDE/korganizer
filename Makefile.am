@@ -78,10 +78,11 @@ libkorganizer_la_SOURCES =  outgoingdialog_base.ui \
 	komailclient.cpp kotodoview.cpp kotodoviewitem.cpp \
 	kolistview.cpp \
 	koprefsdialog.cpp \
-	koincidenceeditor.cpp koeventeditor.cpp kotodoeditor.cpp \
+	koincidenceeditor.cpp koeventeditor.cpp kotodoeditor.cpp kojournaleditor.cpp\
 	koprefs.cpp kowindowlist.cpp \
 	koeditorgeneral.cpp \
-	koeditorgeneralevent.cpp koeditorgeneraltodo.cpp koeditordetails.cpp \
+	koeditorgeneralevent.cpp koeditorgeneraltodo.cpp koeditorgeneraljournal.cpp \
+	koeditordetails.cpp \
 	koeditorrecurrence.cpp koeditorattachments.cpp \
 	kogroupwareprefspage.ui koeventpopupmenu.cpp koeditorfreebusy.cpp \
 	outgoingdialog.cpp \

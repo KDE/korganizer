@@ -138,6 +138,8 @@ void KOIncidenceEditor::slotSaveTemplate()
     templates = KOPrefs::instance()->mEventTemplates;
   } else if( tp == "ToDo" ) {
     templates = KOPrefs::instance()->mTodoTemplates;
+  } else if ( tp == "Journal" ) {
+    templates = KOPrefs::instance()->mJournalTemplates;
   }
   bool ok = false;
   QString templateName = KInputDialog::getItem( i18n("Save Template"),
@@ -167,8 +169,10 @@ void KOIncidenceEditor::slotSaveTemplate()
       templates.append( templateName );
       if ( tp == "Event" ) {
         KOPrefs::instance()->mEventTemplates = templates;
-      } else if( tp == "ToDo" ) {
+      } else if ( tp == "ToDo" ) {
         KOPrefs::instance()->mTodoTemplates = templates;
+      } else if ( tp == "Journal" ) {
+        KOPrefs::instance()->mJournalTemplates = templates;
       }
     }
     

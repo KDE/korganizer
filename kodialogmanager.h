@@ -27,8 +27,7 @@
 #include <qobject.h>
 #include <qptrlist.h>
 
-#include <libkcal/calfilter.h>
-
+namespace KCal{class CalFilter; }
 class CalendarView;
 class OutgoingDialog;
 class IncomingDialog;
@@ -38,6 +37,7 @@ namespace KPIM { class CategoryEditDialog; }
 class KOIncidenceEditor;
 class KOEventEditor;
 class KOTodoEditor;
+class KOJournalEditor;
 class SearchDialog;
 class ArchiveDialog;
 class PluginDialog;
@@ -61,6 +61,8 @@ class KODialogManager : public QObject
     KOEventEditor *getEventEditor();
     /** Get an editor dialog for a Todo. */
     KOTodoEditor *getTodoEditor();
+    /** Get an editor dialog for a Journal. */
+    KOJournalEditor *getJournalEditor();
     void connectEditor( KOIncidenceEditor*editor );
 
     OutgoingDialog *outgoingDialog();

@@ -31,9 +31,10 @@
 #include "incomingdialog.h"
 #include "outgoingdialog.h"
 #include "koprefsdialog.h"
-#include "koeventeditor.h"
 #include "koprefs.h"
+#include "koeventeditor.h"
 #include "kotodoeditor.h"
+#include "kojournaleditor.h"
 #include "searchdialog.h"
 #include "filtereditdialog.h"
 #ifndef KORG_NOPLUGINS
@@ -301,9 +302,6 @@ void KODialogManager::connectEditor( KOIncidenceEditor*editor )
            mMainView, SLOT( editCanceled( Incidence * ) ) );
   connect( mMainView, SIGNAL( closingDown() ), editor, SLOT( reject() ) );
 
-  // TODO_RK: Check this. I'm afraid the deleteAttendee is emitted on wrong conditions.
-  // Also, we don't have the addresses of the deleted attendees available here!
-  // We should probably do this on the incidenceChanged signal.
   connect( editor, SIGNAL( deleteAttendee( Incidence * ) ),
            mMainView, SLOT( schedule_cancel( Incidence * ) ) );
 }
@@ -315,6 +313,13 @@ KOTodoEditor *KODialogManager::getTodoEditor()
   connect( todoEditor, SIGNAL( todoCompleted( Todo * ) ),
            mMainView, SLOT( recurTodo( Todo *) ) ) ;
   return todoEditor;
+}
+
+KOJournalEditor *KODialogManager::getJournalEditor()
+{
+  KOJournalEditor *journalEditor = new KOJournalEditor( mMainView->calendar(), mMainView );
+  connectEditor( journalEditor );
+  return journalEditor;
 }
 
 void KODialogManager::updateSearchDialog()
