@@ -241,7 +241,7 @@ void KOrganizer::initActions()
                     actionCollection(), "import_ical");
   (void)new KAction(i18n("&Merge Calendar..."), 0, this, SLOT(file_merge()),
                     actionCollection(), "merge_calendar");
-  (void)new KAction(i18n("Archive old Entries..."), 0, this, SLOT(file_archive()),
+  (void)new KAction(i18n("Archive Old Entries..."), 0, this, SLOT(file_archive()),
                     actionCollection(), "file_archive");
 
   (void)new KAction(i18n("iCalendar..."), 0,
