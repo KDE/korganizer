@@ -37,11 +37,12 @@
 #include <klocale.h>
 #include <kdebug.h>
 #include <kemailsettings.h>
+#include <kstaticdeleter.h>
 
 #include "koprefs.h"
 
 KOPrefs *KOPrefs::mInstance = 0;
-
+static KStaticDeleter<KOPrefs> insd;
 
 KOPrefs::KOPrefs() :
   KPrefs("korganizerrc")
@@ -145,17 +146,16 @@ KOPrefs::KOPrefs() :
 KOPrefs::~KOPrefs()
 {
   kdDebug() << "KOPrefs::~KOPrefs()" << endl;
-
-  delete mInstance;
-  mInstance = 0;
+  if (mInstance == this)
+      mInstance = insd.setObject(0);
 }
 
 
 KOPrefs *KOPrefs::instance()
 {
   if (!mInstance) {
-    mInstance = new KOPrefs();
-    mInstance->readConfig();
+      mInstance = insd.setObject(new KOPrefs());
+      mInstance->readConfig();
   }
 
   return mInstance;

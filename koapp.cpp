@@ -138,7 +138,8 @@ void KOrganizerApp::startAlarmClient()
   *proc << "--miniicon" <<  "korganizer";
   connect( proc, SIGNAL( processExited( KProcess * ) ),
            SLOT( startCompleted( KProcess * ) ) );
-  proc->start();
+  if (!proc->start())
+      delete proc;
 }
 
 void KOrganizerApp::startCompleted( KProcess *process )

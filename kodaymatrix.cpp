@@ -92,7 +92,7 @@ KODayMatrix::KODayMatrix(QWidget *parent, Calendar* calendar, QDate date, const 
   mHolidayColorShaded = getShadedColor(KOPrefs::instance()->mHolidayColor);
   mSelectedDaysColor = QColor("white");
   mTodayMarginWidth = 2;
-  mSelStart = NOSELECTION;
+  mSelEnd = mSelStart = NOSELECTION;
 
   setAcceptDrops(true);
 
