@@ -1078,6 +1078,8 @@ void KOPrefsDialogPlugins::selectionChanged( QListViewItem *i )
 
   mDescription->setText( item->service()->comment() );
   mConfigureButton->setEnabled( hasSettings );
+
+  slotWidChanged();
 }
 
 extern "C"
