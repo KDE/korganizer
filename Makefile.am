@@ -186,7 +186,6 @@ kde_services_DATA = korganizer_configmain.desktop \
                     korganizer_configfonts.desktop \
                     korganizer_configplugins.desktop \
                     korganizer_configgroupscheduling.desktop \
-                    korganizer_configgroupautomation.desktop \
                     korganizer_configfreebusy.desktop \
                     korganizer_configdesignerfields.desktop \
                     webcal.protocol
@@ -195,3 +194,9 @@ update_DATA = korganizer.upd
 updatedir = $(kde_datadir)/kconf_update
 
 include ../admin/Doxyfile.am
+
+install-data-local: 
+	$(mkinstalldirs) $(DESTDIR)$(servicedir)
+	$(INSTALL_DATA) $(srcdir)/uninstall.desktop $(DESTDIR)$(kde_servicesdir)/korganizer_configgroupautomation.desktop
+	$(INSTALL_DATA) $(srcdir)/uninstall.desktop $(DESTDIR)$(kde_servicesdir)/korganizer/webexport.desktop
+	$(INSTALL_DATA) $(srcdir)/uninstall.desktop $(DESTDIR)$(kde_servicesdir)/korganizer/holidays.desktop
