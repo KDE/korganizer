@@ -339,7 +339,7 @@ KURL FreeBusyManager::freeBusyUrl( const QString &email )
   cfg.setGroup( email );
   QString url = cfg.readEntry( "url" );
   if ( !url.isEmpty() ) {
-    return url;
+    return KURL( url );
   }
 
   KURL sourceURL;
