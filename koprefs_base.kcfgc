@@ -7,3 +7,5 @@ Inherits=KPimPrefs
 IncludeFiles=libkdepim/kpimprefs.h
 MemberVariables=public
 GlobalEnums=true
+ItemAccessors=true
+SetUserTexts=true
