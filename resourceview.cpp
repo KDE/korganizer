@@ -250,12 +250,11 @@ void ResourceView::addResource()
                           "KRES::ConfigDialog" );
 
   if ( dlg.exec() ) {
+    resource->setTimeZoneId( KOPrefs::instance()->mTimeZoneId );
     if ( resource->isActive() ) {
       resource->open();
       resource->load();
     }
-
-    resource->setTimeZoneId( KOPrefs::instance()->mTimeZoneId );
     manager->add( resource );
     addResourceItem( resource );
   } else {
