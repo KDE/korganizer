@@ -63,6 +63,7 @@ class ResourceItem : public QCheckListItem
                   ResourceView *view, ResourceItem* parent );
 
     KCal::ResourceCalendar *resource() { return mResource; }
+    const QString& resourceIdentifier() { return mResourceIdentifier; }
 
     void update();
 
@@ -76,7 +77,7 @@ class ResourceItem : public QCheckListItem
     ResourceView *mView;
     bool mBlockStateChange;
     bool mIsSubresource;
-    const QString mResourceIdentifier;
+    QString mResourceIdentifier;
 };
 
 /**
@@ -109,6 +110,7 @@ class ResourceView : public CalendarViewExtension
 
   protected:
     ResourceItem *findItem( ResourceCalendar * );
+    ResourceItem *findItemByIdentifier( const QString& id );
     ResourceItem *currentItem();
 
   protected slots:

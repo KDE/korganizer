@@ -85,7 +85,7 @@ ResourceItem::ResourceItem( ResourceCalendar *resource, ResourceView *view,
                             KListView *parent )
   : QCheckListItem( parent, resource->resourceName(), CheckBox ),
     mResource( resource ), mView( view ), mBlockStateChange( false ),
-    mIsSubresource( false ), mResourceIdentifier( 0 )
+    mIsSubresource( false ), mResourceIdentifier( QString::null )
    
 {
   setGuiState();
@@ -105,10 +105,12 @@ ResourceItem::ResourceItem( ResourceCalendar *resource, ResourceView *view,
 ResourceItem::ResourceItem( KCal::ResourceCalendar *resource,
                             const QString& sub, ResourceView *view,
                             ResourceItem* parent )
-  : QCheckListItem( parent, resource->labelForSubresource( sub ), CheckBox ), mResource( resource ),
-    mView( view ), mBlockStateChange( false ), mIsSubresource( true ),
-    mResourceIdentifier( sub )
+  : QCheckListItem( parent, sub, CheckBox ), mResource( resource ),
+    mView( view ), mBlockStateChange( false ), mIsSubresource( true )
 {
+  mResourceIdentifier = sub;
+  QString label = resource->labelForSubresource( mResourceIdentifier );
+  setText( 0, label );
   setGuiState();
 }
 
@@ -288,7 +290,7 @@ void ResourceView::slotSubresourceRemoved( ResourceCalendar */*calendar*/,
                                            const QString &/*type*/,
                                            const QString &resource )
 {
-  delete mListView->findItem( resource, 0 );
+  delete findItemByIdentifier( resource );
 }
 
 void ResourceView::closeResource( ResourceCalendar *r )
@@ -376,6 +378,19 @@ ResourceItem *ResourceView::findItem( ResourceCalendar *r )
   return i;
 }
 
+ResourceItem *ResourceView::findItemByIdentifier( const QString& id )
+{
+  QListViewItem *item;
+  ResourceItem *i = 0;
+  for( item = mListView->firstChild(); item; item = item->itemBelow() ) {
+    i = static_cast<ResourceItem *>( item );
+    if ( i->resourceIdentifier() == id )
+       return i;
+  }
+  return 0;
+}
+
+
 void ResourceView::contextMenuRequested ( QListViewItem *i,
                                           const QPoint &pos, int )
 {
@@ -395,7 +410,7 @@ void ResourceView::contextMenuRequested ( QListViewItem *i,
     menu->insertItem( i18n("Edit..."), this, SLOT( editResource() ) );
     menu->insertItem( i18n("Remove"), this, SLOT( removeResource() ) );
     menu->insertSeparator();
-  }
+ }
   menu->insertItem( i18n("Add..."), this, SLOT( addResource() ) );
 
   menu->popup( pos );
