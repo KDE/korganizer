@@ -325,9 +325,7 @@ KOrg::PrintPlugin::List KOCore::loadPrintPlugins()
 
   KTrader::OfferList plugins = availablePrintPlugins();
   KTrader::OfferList::ConstIterator it;
-kdDebug()<<"selectedPlugins: "<<selectedPlugins.join(",")<<endl;
   for( it = plugins.begin(); it != plugins.end(); ++it ) {
-kdDebug()<<"Loading Pring plugin: "<<(*it)->desktopEntryName()<<endl;  
     if ( selectedPlugins.find( (*it)->desktopEntryName() ) !=
                                selectedPlugins.end() ) {
       KOrg::PrintPlugin *part = loadPrintPlugin( *it );

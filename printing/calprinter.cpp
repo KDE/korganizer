@@ -58,7 +58,7 @@ CalPrinter::CalPrinter( QWidget *parent, Calendar *calendar, KOrg::CoreHelper *h
 
 CalPrinter::~CalPrinter()
 {
-  kdDebug() << "~CalPrinter()" << endl;
+  kdDebug(5850) << "~CalPrinter()" << endl;
 
   KOrg::PrintPlugin::List::Iterator it = mPrintPlugins.begin();
   for ( ; it != mPrintPlugins.end(); ++it ) {
@@ -90,7 +90,6 @@ void CalPrinter::init( KPrinter *printer, Calendar *calendar )
 
   KOrg::PrintPlugin::List::Iterator it = mPrintPlugins.begin();
   for ( ; it != mPrintPlugins.end(); ++it ) {
-kdDebug()<<"Print plugin loaded: "<<(*it)->description()<<endl;
     (*it)->setConfig( mConfig );
     (*it)->setCalendar( calendar );
     (*it)->setPrinter( printer );

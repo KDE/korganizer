@@ -95,7 +95,7 @@ void CalPrintWhatsNext::loadConfig()
 
 void CalPrintWhatsNext::saveConfig()
 {
-  kdDebug() << "CalPrintWhatsNext::saveConfig()" << endl;
+  kdDebug(5850) << "CalPrintWhatsNext::saveConfig()" << endl;
 
   readSettingsWidget();
   if ( mConfig ) {

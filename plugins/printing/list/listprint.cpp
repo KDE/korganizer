@@ -96,7 +96,7 @@ void CalPrintList::loadConfig()
 
 void CalPrintList::saveConfig()
 {
-  kdDebug() << "CalPrintList::saveConfig()" << endl;
+  kdDebug(5850) << "CalPrintList::saveConfig()" << endl;
 
   readSettingsWidget();
   if ( mConfig ) {
