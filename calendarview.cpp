@@ -573,7 +573,7 @@ void CalendarView::goToday()
 void CalendarView::goNext()
 {
   if (dynamic_cast<KOMonthView*>(mViewManager->currentView() ) )
-    mNavigator->selectNextWeek();
+    mNavigator->selectNextMonth();
   else
     mNavigator->selectNext();
 }
@@ -581,7 +581,7 @@ void CalendarView::goNext()
 void CalendarView::goPrevious()
 {
   if (dynamic_cast<KOMonthView*>(mViewManager->currentView() ) )
-    mNavigator->selectPreviousWeek();
+    mNavigator->selectPreviousMonth();
   else
     mNavigator->selectPrevious();
 }
@@ -1924,36 +1924,31 @@ void CalendarView::editCanceled( Incidence *i )
 void CalendarView::recurTodo( Todo *todo )
 {
   if (!todo) return;
-  int duration = todo->recurrence()->duration();
+  Recurrence *r = todo->recurrence();
+  int duration = r->duration();
   
-  QDateTime endDate = todo->recurrence()->endDateTime();
+  QDateTime endDate = r->endDateTime();
   if ( ( todo->hasDueDate() && todo->doesRecur() ) &&
      ( duration != 0 ||
      ( duration == 0 && endDate.isValid() && todo->dtDue() < endDate ) ) ) {
     
-      Todo *copyTodo = new Todo( *todo );
-      copyTodo->recreate();
-      copyTodo->setPercentComplete(0);
+      Todo *oldTodo = todo->clone();
       
       int length = 0;
       if (todo->hasStartDate())
         length = todo->dtDue().daysTo( todo->dtStart() );
 
-      // exception-handling (recurrence)
       do {
-        copyTodo->setDtDue( copyTodo->recurrence()->getNextDateTime( 
-                                                    copyTodo->dtDue() ) );
+        todo->setDtDue( r->getNextDateTime( todo->dtDue() ) );
         if ( duration > 1 )
-          copyTodo->recurrence()->setDuration( duration - 1 );
-      } while ( !copyTodo->recursAt( copyTodo->dtDue() ) ||
-                 copyTodo->dtDue() <= QDateTime::currentDateTime() );
+          r->setDuration( duration - 1 );
+      } while ( !todo->recursAt( todo->dtDue() ) ||
+                 todo->dtDue() <= QDateTime::currentDateTime() );
       
-      copyTodo->setDtStart( copyTodo->dtDue().addDays( length ) );
-
-      copyTodo->recurrence()->setRecurStart( copyTodo->dtDue() );
-
-      mCalendar->addTodo( copyTodo );
-      incidenceAdded( copyTodo );
+      todo->setDtStart( oldTodo->dtDue().addDays( length ) );
+      r->setRecurStart( todo->dtDue() );
+      
+      return;
   }
 
   todo->setCompleted( QDateTime::currentDateTime() );
