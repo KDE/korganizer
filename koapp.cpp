@@ -45,6 +45,7 @@
 #include "resourceimportdialog.h"
 
 #include "koapp.h"
+#include <kstartupinfo.h>
 
 using namespace std;
 
@@ -93,7 +94,7 @@ int KOrganizerApp::newInstance()
       korg->actionManager()->importResource( importUrl );
     }
   }
-  
+
   kdDebug(5850) << "KOApp::newInstance() done" << endl;
 
   return 0;
@@ -113,9 +114,14 @@ void KOrganizerApp::processCalendar( const KURL &url )
                   << "'" << endl;
 
     if ( hasDocument ) korg->openURL( url );
-  } else {
-    KWin::setActiveWindow( korg->topLevelWidget()->winId() );
   }
+  else
+    korg->topLevelWidget()->show();
+
+  // Handle window activation
+#if defined Q_WS_X11 && ! defined K_WS_QTONLY
+  KStartupInfo::setNewStartupId( korg->topLevelWidget(), startupId() );
+#endif
 }
 
 #include "koapp.moc"
