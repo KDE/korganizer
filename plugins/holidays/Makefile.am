@@ -19,11 +19,11 @@ servicedir  = $(kde_servicesdir)/korganizer
 service_DATA = holidays.desktop
 
 $(srcdir)/parseholiday.c: parseholiday.y
-	cd $(srcdir) && bison -p kcal -d -o parseholiday.c parseholiday.y
+	cd $(srcdir) && $(YACC) -p kcal -d -o parseholiday.c parseholiday.y
 
 $(srcdir)/parseholiday.h: parseholiday.y
-	cd $(srcdir) && bison -p kcal -d -o parseholiday.c parseholiday.y
+	cd $(srcdir) && $(YACC) -p kcal -d -o parseholiday.c parseholiday.y
 
 $(srcdir)/scanholiday.c: scanholiday.lex parseholiday.h
-	cd $(srcdir) && flex -Pkcal -B -oscanholiday.c scanholiday.lex
+	cd $(srcdir) && $(LEX) -Pkcal -B -oscanholiday.c scanholiday.lex
 
