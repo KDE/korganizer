@@ -39,10 +39,12 @@ private:
   void displayImminent(const QString & file,int numdays);
   /** Start alarm daemon from KDE binary directory */
   void startAlarmDaemon();
-  /** process calendar from file. If numDays is 0, open a new KOrganizer window,
+  /**
+    Process calendar from file. If numDays is 0, open a new KOrganizer window,
     if is is greater print events from corresponding number of dates to the
-    screen. If active is true the file is the active calendar. */
-  void processCalendar(const QString & file,int numDays,bool active=false);
+    screen.
+  */
+  void processCalendar(const QString & file,int numDays);
 };
 
 #endif

@@ -162,7 +162,7 @@ void KOProjectView::updateView()
                              QDateTime(QDate(2000,10,31)) );
 #endif
 
-  QPtrList<Todo> todoList = mCalendar->getTodoList();
+  QPtrList<Todo> todoList = calendar()->getTodoList();
 
 /*
   kdDebug() << "KOProjectView::updateView(): Todo List:" << endl;
@@ -253,7 +253,7 @@ void KOProjectView::updateConfig()
   // TODO: to be implemented.
 }
 
-QPtrList<Incidence> KOProjectView::getSelected()
+QPtrList<Incidence> KOProjectView::selectedIncidences()
 {
   QPtrList<Incidence> selected;
 
@@ -270,12 +270,12 @@ void KOProjectView::changeEventDisplay(Event *, int)
   updateView();
 }
 
-void KOProjectView::selectDates(const QDateList)
+void KOProjectView::showDates(const QDate &, const QDate &)
 {
   updateView();
 }
 
-void KOProjectView::selectEvents(QPtrList<Event>)
+void KOProjectView::showEvents(QPtrList<Event>)
 {
   kdDebug() << "KOProjectView::selectEvents(): not yet implemented" << endl;
 }
@@ -342,12 +342,12 @@ void KOProjectView::purgeCompleted()
       i18n("Delete all completed todos?"),i18n("Purge Todos"),i18n("Purge"));
 
   if (result == KMessageBox::Continue) {
-    QPtrList<Todo> todoCal = mCalendar->getTodoList();
+    QPtrList<Todo> todoCal = calendar()->getTodoList();
 
     Todo *aTodo;
     for (aTodo = todoCal.first(); aTodo; aTodo = todoCal.next()) {
     if (aTodo->isCompleted())
-      mCalendar->deleteTodo(aTodo);
+      calendar()->deleteTodo(aTodo);
     }
     updateView();
   }

@@ -112,7 +112,6 @@ CalendarView::CalendarView(QWidget *parent,const char *name)
   mAgendaView = 0;
   mMonthView = 0;
   mListView = 0;
-//  mProjectView = 0;
   mJournalView = 0;
   mTimeSpanView = 0;
 
@@ -130,8 +129,6 @@ CalendarView::CalendarView(QWidget *parent,const char *name)
   mPluginDialog = 0;
   
   mCalPrinter = 0;
-
-//  setMinimumSize(620,400);	// make sure we don't get resized too small...
 
   // Create calendar object, which manages all calendar information associated
   // with this calendar view window.
@@ -157,8 +154,8 @@ CalendarView::CalendarView(QWidget *parent,const char *name)
   mDateNavigator = new KDateNavigator(mLeftFrame, mCalendar, TRUE,
                         "CalendarView::DateNavigator", QDate::currentDate());
   mLeftFrame->setResizeMode(mDateNavigator,QSplitter::KeepSize);
-  connect(mDateNavigator, SIGNAL(datesSelected(const QDateList)),
-          SLOT(selectDates(const QDateList)));
+  connect(mDateNavigator, SIGNAL(datesSelected(const DateList &)),
+          SLOT(selectDates(const DateList &)));
   connect(mDateNavigator,SIGNAL(weekClicked(QDate)),SLOT(selectWeek(QDate)));
   connect(mDateNavigator,SIGNAL(eventDropped(Event *)),
           SLOT(eventAdded(Event *)));
@@ -201,29 +198,28 @@ CalendarView::CalendarView(QWidget *parent,const char *name)
 CalendarView::~CalendarView()
 {
   kdDebug() << "~CalendarView()" << endl;
-  hide();
 
   // clean up our calender object
   mCalendar->close();  // CS: This seems to cause a "Double QObject deletion"
   delete mCalendar;
-  mCalendar = 0;
 
   kdDebug() << "~CalendarView() done" << endl;
 }
 
 QDate CalendarView::startDate()
 {
-  QDateList dates = mDateNavigator->getSelected();
+  DateList dates = mDateNavigator->selectedDates();
 
-  return *dates.first();
+  return dates.first();
 }
 
 QDate CalendarView::endDate()
 {
-  QDateList dates = mDateNavigator->getSelected();
+  DateList dates = mDateNavigator->selectedDates();
 
-  return *dates.last();
+  return dates.last();
 }
+
 
 void CalendarView::createOptionsDialog()
 {
@@ -262,6 +258,7 @@ void CalendarView::createPrinter()
     connect(this, SIGNAL(configChanged()), mCalPrinter, SLOT(updateConfig()));
   }
 }
+
 
 bool CalendarView::openCalendar(QString filename, bool merge)
 {
@@ -348,6 +345,7 @@ void CalendarView::archiveCalendar()
 #endif
 }
 
+
 void CalendarView::readSettings()
 {
 //  kdDebug() << "CalendarView::readSettings()" << endl;
@@ -387,7 +385,6 @@ void CalendarView::readCurrentView(KConfig *config)
   if (view == "WhatsNext") showWhatsNextView();
   else if (view == "Month") showMonthView();
   else if (view == "List") showListView();
-//  else if (view == "Project") showProjectView();
   else if (view == "Journal") showJournalView();
   else if (view == "TimeSpan") showTimeSpanView();
   else showAgendaView();
@@ -401,14 +398,12 @@ void CalendarView::writeCurrentView(KConfig *config)
   if (mCurrentView == mWhatsNextView) view = "WhatsNext";
   else if (mCurrentView == mMonthView) view = "Month";
   else if (mCurrentView == mListView) view = "List";
-//  else if (mCurrentView == mProjectView) view = "Project";
   else if (mCurrentView == mJournalView) view = "Journal";
   else if (mCurrentView == mTimeSpanView) view = "TimeSpan";
   else view = "Agenda";
 
   config->writeEntry("Current View",view);
 }
-
 
 void CalendarView::writeSettings()
 {
@@ -496,14 +491,14 @@ void CalendarView::writeFilterSettings(KConfig *config)
   config->writeEntry("CalendarFilters",filterList);
 }
 
+
 void CalendarView::goToday()
 {
-  QDateList tmpList;
-  QDate today(QDate::currentDate());
-  tmpList.append(&today);
+  DateList tmpList;
+  tmpList.append(QDate::currentDate());
   mDateNavigator->selectDates(tmpList);
   mSaveSingleDate = QDate::currentDate();
-  updateView(mDateNavigator->getSelected());
+  updateView();
 }
 
 void CalendarView::goNext()
@@ -511,7 +506,7 @@ void CalendarView::goNext()
   // adapt this to work for other views
   if (mAgendaView) mAgendaView->slotNextDates();
   // this *appears* to work fine...
-  updateView(mDateNavigator->getSelected());
+  updateView();
 }
 
 void CalendarView::goPrevious()
@@ -519,7 +514,7 @@ void CalendarView::goPrevious()
   // adapt this to work for other views
   if (mAgendaView) mAgendaView->slotPrevDates();
   // this *appears* to work fine...
-  updateView(mDateNavigator->getSelected());
+  updateView();
 }
 
 void CalendarView::setupRollover()
@@ -548,6 +543,7 @@ void CalendarView::updateConfig()
   raiseCurrentView();
 }
 
+
 void CalendarView::eventChanged(Event *event)
 {
   changeEventDisplay(event,KOGlobals::EVENTEDITED);
@@ -567,6 +563,7 @@ void CalendarView::eventDeleted()
 {
   changeEventDisplay(0,KOGlobals::EVENTDELETED);
 }
+
 
 // most of the changeEventDisplays() right now just call the view's
 // total update mode, but they SHOULD be recoded to be more refresh-efficient.
@@ -590,6 +587,7 @@ void CalendarView::changeEventDisplay(Event *which, int action)
   }
 }
 
+
 void CalendarView::updateTodoViews()
 {
   kdDebug() << "CalendarView::updateTodoViews()" << endl;
@@ -606,11 +604,10 @@ void CalendarView::changeAgendaView( int newView )
 
   switch( newView ) {
   case KOAgendaView::DAY: {
-    QDateList tmpList(FALSE);
-    tmpList = mDateNavigator->getSelected();
-    if (mSaveSingleDate != *tmpList.first()) {
+    DateList tmpList = mDateNavigator->selectedDates();
+    if (mSaveSingleDate != tmpList.first()) {
       mDateNavigator->selectDates(mSaveSingleDate);
-      updateView(mDateNavigator->getSelected());
+      updateView();
     }
     break;
   }
@@ -630,23 +627,6 @@ void CalendarView::changeAgendaView( int newView )
   adaptNavigationUnits();
 }
 
-void CalendarView::nextAgendaView()
-{
-  if (!mAgendaView) return;
-
-  int view;
-
-  if( mCurrentView == mAgendaView ) {
-    view = mAgendaView->currentView() + 1;
-    if ((view >= KOAgendaView::DAY) && ( view < KOAgendaView::LIST))
-      changeAgendaView( view );
-    else
-      changeAgendaView( KOAgendaView::DAY );
-  } else {
-    changeAgendaView( mAgendaView->currentView() );
-    showView( mAgendaView );
-  }
-}
 
 void CalendarView::showView(KOrg::BaseView *view)
 {
@@ -657,7 +637,7 @@ void CalendarView::showView(KOrg::BaseView *view)
   raiseCurrentView();
   processEventSelection(false);
 
-  updateView(mDateNavigator->getSelected());
+  updateView();
 
   adaptNavigationUnits();
 }
@@ -673,35 +653,11 @@ void CalendarView::raiseCurrentView()
   mRightFrame->raiseWidget(mCurrentView);
 }
 
-void CalendarView::updateView(const QDateList selectedDates)
+void CalendarView::updateView(const QDate &start, const QDate &end)
 {
 //  kdDebug() << "CalendarView::updateView()" << endl;
 
-  QDateList tmpList(false);
-  tmpList = selectedDates;
-
-  int numView;
-
-  // if there are 5 dates and the first is a monday, we have a workweek.
-  if ((tmpList.count() == 5) &&
-      (tmpList.first()->dayOfWeek() == 1) &&
-      (tmpList.first()->daysTo(*tmpList.last()) == 4)) {
-    numView = KOAgendaView::WORKWEEK;
-  // if there are 7 dates and the first date is a monday, we have a regular week.
-  } else if ((tmpList.count() == 7) &&
-	   (tmpList.first()->dayOfWeek() ==
-           (KGlobal::locale()->weekStartsMonday() ? 1 : 7)) &&
-	   (tmpList.first()->daysTo(*tmpList.last()) == 6)) {
-    numView = KOAgendaView::WEEK;
-  } else if (tmpList.count() == 1) {
-    numView = KOAgendaView::DAY;
-    mSaveSingleDate = *tmpList.first();
-  } else {
-    // for sanity, set viewtype to LIST for now...
-    numView = KOAgendaView::LIST;
-  }
-
-  mCurrentView->selectDates(selectedDates);
+  mCurrentView->showDates(start, end);
 
   mTodoList->updateView();
   if (mTodoView) mTodoView->updateView();
@@ -710,12 +666,13 @@ void CalendarView::updateView(const QDateList selectedDates)
 void CalendarView::updateView()
 {
   // update the current view with the current dates from the date navigator
-  QDateList tmpList(FALSE); // we want a shallow copy
-  tmpList = mDateNavigator->getSelected();
+  DateList tmpList = mDateNavigator->selectedDates();
 
+#if 0
   // if no dates are supplied, we should refresh the mDateNavigator too...
   mDateNavigator->updateView();
-  updateView(tmpList);
+#endif
+  updateView( tmpList.first(), tmpList.last() );
 }
 
 
@@ -732,7 +689,7 @@ void CalendarView::edit_cut()
   Event *anEvent=0;
 
   if (mCurrentView->isEventView()) {
-    anEvent = dynamic_cast<Event *>((mCurrentView->getSelected()).first());
+    anEvent = dynamic_cast<Event *>((mCurrentView->selectedIncidences()).first());
   }
 
   if (!anEvent) {
@@ -748,7 +705,7 @@ void CalendarView::edit_copy()
   Event *anEvent=0;
 
   if (mCurrentView->isEventView()) {
-    anEvent = dynamic_cast<Event *>((mCurrentView->getSelected()).first());
+    anEvent = dynamic_cast<Event *>((mCurrentView->selectedIncidences()).first());
   }
 
   if (!anEvent) {
@@ -760,11 +717,9 @@ void CalendarView::edit_copy()
 
 void CalendarView::edit_paste()
 {
-  Event *pastedEvent;
-  QDateList tmpList(FALSE);
-
-  tmpList = mDateNavigator->getSelected();
-  pastedEvent = mCalendar->pasteEvent(tmpList.first());
+  QDate date = mDateNavigator->selectedDates().first();
+  
+  Event *pastedEvent = mCalendar->pasteEvent(date);
   changeEventDisplay(pastedEvent, KOGlobals::EVENTADDED);
 }
 
@@ -808,6 +763,7 @@ void CalendarView::newEvent(QDateTime fromHint, QDateTime toHint, bool allDay)
   eventEditor->show();
 }
 
+
 void CalendarView::newTodo()
 {
   KOTodoEditor *todoEditor = getTodoEditor();
@@ -824,18 +780,11 @@ void CalendarView::newSubTodo(Todo *parentEvent)
 
 void CalendarView::appointment_new()
 {
-  QDate from, to;
-
-  QDateList tmpList(FALSE);
-  tmpList = mDateNavigator->getSelected();
-  from = *tmpList.first();
-  to = *tmpList.last();
+  DateList tmpList = mDateNavigator->selectedDates();
+  QDate from = tmpList.first();
+  QDate to = tmpList.last();
 
   ASSERT(from.isValid());
-  if (!from.isValid()) { // mDateNavigator sometimes returns GARBAGE!
-    from = QDate::currentDate();
-    to = from;
-  }
 
   newEvent(QDateTime(from, QTime(KOPrefs::instance()->mStartTime,0,0)),
 	   QDateTime(to, QTime(KOPrefs::instance()->mStartTime +
@@ -844,23 +793,16 @@ void CalendarView::appointment_new()
 
 void CalendarView::allday_new()
 {
-
-  QDate from, to;
-  QDateList tmpList(FALSE);
-  tmpList = mDateNavigator->getSelected();
-
-  from = *tmpList.first();
-  to = *tmpList.last();
+  DateList tmpList = mDateNavigator->selectedDates();
+  QDate from = tmpList.first();
+  QDate to = tmpList.last();
 
   ASSERT(from.isValid());
-  if (!from.isValid()) {
-    from = QDate::currentDate();
-    to = from;
-  }
 
   newEvent(QDateTime(from, QTime(12,0,0)),
            QDateTime(to, QTime(12,0,0)), TRUE);
 }
+
 
 void CalendarView::editEvent(Event *anEvent)
 {
@@ -869,15 +811,8 @@ void CalendarView::editEvent(Event *anEvent)
       showEvent(anEvent);
       return;
     }
-
-    QDateList tmpList(FALSE);
-    QDate qd;
-
-    tmpList = mDateNavigator->getSelected();
-    qd = *tmpList.first();
-
     KOEventEditor *eventEditor = getEventEditor();
-    eventEditor->editEvent(anEvent,qd);
+    eventEditor->editEvent(anEvent);
     eventEditor->show();
   } else {
     KNotifyClient::beep();
@@ -892,14 +827,8 @@ void CalendarView::editTodo(Todo *todo)
       return;
     }
 
-    QDateList tmpList(FALSE);
-    QDate qd;
-
-    tmpList = mDateNavigator->getSelected();
-    qd = *tmpList.first();
-
     KOTodoEditor *todoEditor = getTodoEditor();
-    todoEditor->editTodo(todo,qd);
+    todoEditor->editTodo(todo);
     todoEditor->show();
   } else {
     KNotifyClient::beep();
@@ -925,7 +854,7 @@ void CalendarView::appointment_show()
   Event *anEvent = 0;
 
   if (mCurrentView->isEventView()) {
-    anEvent = dynamic_cast<Event *>((mCurrentView->getSelected()).first());
+    anEvent = dynamic_cast<Event *>((mCurrentView->selectedIncidences()).first());
   }
 
   if (!anEvent) {
@@ -941,7 +870,7 @@ void CalendarView::appointment_edit()
   Event *anEvent = 0;
 
   if (mCurrentView->isEventView()) {
-    anEvent = dynamic_cast<Event *>((mCurrentView->getSelected()).first());
+    anEvent = dynamic_cast<Event *>((mCurrentView->selectedIncidences()).first());
   }
 
   if (!anEvent) {
@@ -957,7 +886,7 @@ void CalendarView::appointment_delete()
   Event *anEvent = 0;
 
   if (mCurrentView->isEventView()) {
-    anEvent = dynamic_cast<Event *>((mCurrentView->getSelected()).first());
+    anEvent = dynamic_cast<Event *>((mCurrentView->selectedIncidences()).first());
   }
 
   if (!anEvent) {
@@ -1048,10 +977,7 @@ void CalendarView::deleteEvent(Event *anEvent)
 // Disabled because it does not work
 #if 0
       case KMessageBox::No: // just this one
-        QDate qd;
-        QDateList tmpList(FALSE);
-        tmpList = mDateNavigator->getSelected();
-        qd = *(tmpList.first());
+        QDate qd = mDateNavigator->selectedDates().first();
         if (!qd.isValid()) {
           kdDebug() << "no date selected, or invalid date" << endl;
           KNotifyClient::beep();
@@ -1131,7 +1057,7 @@ void CalendarView::action_mail()
 #if 0
   Event *anEvent = 0;
   if (mCurrentView->isEventView()) {
-    anEvent = dynamic_cast<Event *>((mCurrentView->getSelected()).first());
+    anEvent = dynamic_cast<Event *>((mCurrentView->selectedIncidences()).first());
   }
 
   if (!anEvent) {
@@ -1166,8 +1092,8 @@ void CalendarView::showListView()
     mListView = new KOListView(mCalendar, mRightFrame, "CalendarView::ListView");
     addView(mListView);
 
-    connect(mListView, SIGNAL(datesSelected(const QDateList)),
-	    mDateNavigator, SLOT(selectDates(const QDateList)));
+    connect(mListView, SIGNAL(datesSelected(const DateList &)),
+	    mDateNavigator, SLOT(selectDates(const DateList &)));
 
     connect(mListView, SIGNAL(showEventSignal(Event *)),
 	    this, SLOT(showEvent(Event *)));
@@ -1190,8 +1116,8 @@ void CalendarView::showAgendaView()
     mAgendaView = new KOAgendaView(mCalendar, mRightFrame, "CalendarView::AgendaView");
     addView(mAgendaView);
 
-    connect(mAgendaView, SIGNAL(datesSelected(const QDateList)),
-            mDateNavigator, SLOT(selectDates(const QDateList)));
+    connect(mAgendaView, SIGNAL(datesSelected(const DateList &)),
+            mDateNavigator, SLOT(selectDates(const DateList &)));
 
     // SIGNALS/SLOTS FOR DAY/WEEK VIEW
     connect(mAgendaView,SIGNAL(newEventSignal(QDateTime)),
@@ -1241,8 +1167,8 @@ void CalendarView::showMonthView()
     mMonthView = new KOMonthView(mCalendar, mRightFrame, "CalendarView::MonthView");
     addView(mMonthView);
 
-    connect(mMonthView, SIGNAL(datesSelected(const QDateList)),
-            mDateNavigator, SLOT(selectDates(const QDateList)));
+    connect(mMonthView, SIGNAL(datesSelected(const DateList &)),
+            mDateNavigator, SLOT(selectDates(const DateList &)));
 
     // SIGNALS/SLOTS FOR MONTH VIEW
     connect(mMonthView, SIGNAL(showEventSignal(Event *)),
@@ -1347,7 +1273,7 @@ void CalendarView::schedule_publish()
   Event *event = 0;
 
   if (mCurrentView->isEventView()) {
-    event = dynamic_cast<Event *>((mCurrentView->getSelected()).first());
+    event = dynamic_cast<Event *>((mCurrentView->selectedIncidences()).first());
   }
 
   if (!event) {
@@ -1411,7 +1337,7 @@ void CalendarView::schedule(Scheduler::Method method)
   Event *event = 0;
 
   if (mCurrentView->isEventView()) {
-    event = dynamic_cast<Event *>((mCurrentView->getSelected()).first());
+    event = dynamic_cast<Event *>((mCurrentView->selectedIncidences()).first());
   }
 
   if (!event) {
@@ -1483,11 +1409,9 @@ void CalendarView::print()
 {
   createPrinter();
 
-  QDateList tmpDateList(FALSE);
-
-  tmpDateList = mDateNavigator->getSelected();
+  DateList tmpDateList = mDateNavigator->selectedDates();
   mCalPrinter->print(CalPrinter::Month,
-		    *tmpDateList.first(), *tmpDateList.last());
+		     tmpDateList.first(), tmpDateList.last());
 }
 
 void CalendarView::printPreview()
@@ -1496,12 +1420,10 @@ void CalendarView::printPreview()
 
   createPrinter();
 
-  QDateList tmpDateList(FALSE);
+  DateList tmpDateList = mDateNavigator->selectedDates();
 
-  tmpDateList = mDateNavigator->getSelected();
-
-  mCurrentView->printPreview(mCalPrinter,*tmpDateList.first(),
-                            *tmpDateList.last());
+  mCurrentView->printPreview(mCalPrinter,tmpDateList.first(),
+                             tmpDateList.last());
 }
 
 void CalendarView::exportWeb()
@@ -1560,7 +1482,7 @@ void CalendarView::selectWeek(QDate weekstart)
 {
 //  kdDebug() << "CalendarView::selectWeek(): " << weekstart.toString() << endl;
 
-  QDateList week;
+  DateList week;
 
   int n = 7;
   if (mCurrentView->currentDateCount() == 5) n = 5;
@@ -1568,11 +1490,11 @@ void CalendarView::selectWeek(QDate weekstart)
   int i;
   for(i=0;i<n;++i) {
     QDate date = weekstart.addDays(i);
-    week.append(&date);
+    week.append(date);
   }
   mDateNavigator->selectDates(week);
 
-  updateView(week);
+  updateView( week.first(), week.last() );
 }
 
 void CalendarView::adaptNavigationUnits()
@@ -1615,11 +1537,11 @@ void CalendarView::checkClipboard()
   }
 }
 
-void CalendarView::selectDates(const QDateList selectedDates)
+void CalendarView::selectDates(const DateList &selectedDates)
 {
 //  kdDebug() << "CalendarView::selectDates()" << endl;
   if (mCurrentView->isEventView()) {
-    updateView(selectedDates);
+    updateView( selectedDates.first(), selectedDates.last() );
   } else {
     showAgendaView();
   }
@@ -1710,7 +1632,7 @@ Incidence *CalendarView::currentSelection()
 {
   if (!mCurrentView) return 0;
   
-  return mCurrentView->getSelected().first();
+  return mCurrentView->selectedIncidences().first();
 }
 
 void CalendarView::takeOverEvent()

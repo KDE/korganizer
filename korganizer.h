@@ -40,7 +40,6 @@
 #include <kmenubar.h>
 #include <kurl.h>
 
-#include <libkcal/qdatelist.h>
 #include <libkcal/calendar.h>
 
 #include <korganizer/mainwindow.h>

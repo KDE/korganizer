@@ -32,6 +32,7 @@ class TimeSpanView : public QWidget
     
     QDateTime mStartDate;
     QDateTime mEndDate;
+    int mSecsPerPixel;
 };
 
 #endif

@@ -103,8 +103,8 @@ class KOAgenda : public QScrollView
 
     void setHolidayMask(QMemArray<bool> *);
 
-    void setDateList(const QDateList &selectedDates);
-    const QDateList &dateList() const;
+    void setDateList(const DateList &selectedDates);
+    DateList dateList() const;
 
   public slots:
     void scrollUp();
@@ -205,7 +205,7 @@ class KOAgenda : public QScrollView
     int mWorkingHoursYBottom;
 
     // List of dates to be displayed
-    QDateList mSelectedDates;
+    DateList mSelectedDates;
 
     // The KOAgendaItem, which has been right-clicked last
     KOAgendaItem *mClickedItem;

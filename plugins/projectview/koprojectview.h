@@ -70,7 +70,7 @@ class KOProjectView : public KOrg::BaseView
     KOProjectView(Calendar *, QWidget* parent=0, const char* name=0 );
     ~KOProjectView() {}
 
-    QPtrList<Incidence> getSelected();
+    QPtrList<Incidence> selectedIncidences();
 
     /** Return number of shown dates. */
     int currentDateCount() { return 0; }
@@ -84,19 +84,8 @@ class KOProjectView : public KOrg::BaseView
 
     void changeEventDisplay(Event *, int);
   
-    /**
-     * selects the dates specified in the list.  If the view cannot support
-     * displaying all the dates requested, or it needs to change the dates
-     * in some manner, it may call @see datesSelected.
-     * @param dateList is the list of dates to try and select.
-     */
-    void selectDates(const QDateList dateList);
-  
-    /**
-     * Select events visible in the current display
-     * @param eventList a list of events to select.
-     */
-    void selectEvents(QPtrList<Event> eventList);
+    void showDates(const QDate &start, const QDate &end);
+    void showEvents(QPtrList<Event> eventList);
 
 /*
     void editItem(QListViewItem *item);

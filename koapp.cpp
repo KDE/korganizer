@@ -41,8 +41,8 @@
 
 KOrganizerApp::KOrganizerApp() : KUniqueApplication()
 {
-  CalFormat::setApplication("KOrganizer", "-//K Desktop Environment//NONSGML
-KOrganizer 2.2//EN");
+  CalFormat::setApplication("KOrganizer",
+      "-//K Desktop Environment//NONSGML KOrganizer 2.2//EN");
 }
 
 KOrganizerApp::~KOrganizerApp()
@@ -163,15 +163,14 @@ int KOrganizerApp::newInstance()
       kdDebug() << "KOrganizerApp::newInstance(): dcop send failed" << endl;
     }
 
-    processCalendar(urlString,numDays,true);
+    processCalendar(urlString,numDays);
   }
   
   kdDebug() << "KOApp::newInstance() done" << endl;
   return 0;
 }
 
-void KOrganizerApp::processCalendar(const QString &urlString,int numDays,
-                                    bool active)
+void KOrganizerApp::processCalendar(const QString &urlString,int numDays)
 {
   if (numDays > 0) {
     displayImminent(urlString,numDays);

@@ -56,7 +56,7 @@ QWidget *KOTodoEditor::setupGeneralTabWidget(QWidget *parent)
   return mGeneral;
 }
 
-void KOTodoEditor::editTodo(Todo *todo, QDate)
+void KOTodoEditor::editTodo(Todo *todo)
 {
   init();
 

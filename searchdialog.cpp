@@ -89,8 +89,6 @@ SearchDialog::SearchDialog(Calendar *calendar,QWidget *parent)
 
   // Results list view
   listView = new KOListView(mCalendar,topFrame);
-//  listView->setMinimumWidth(300);
-//  listView->setMinimumHeight(200);
   listView->showDates();
   layout->addWidget(listView);
 
@@ -105,9 +103,13 @@ SearchDialog::SearchDialog(Calendar *calendar,QWidget *parent)
 	  SIGNAL(deleteEventSignal(Event *)));
 }
 
+SearchDialog::~SearchDialog()
+{
+}
+
 void SearchDialog::searchTextChanged( const QString &_text )
 {
-    enableButton( KDialogBase::User1, !_text.isEmpty() );
+  enableButton( KDialogBase::User1, !_text.isEmpty() );
 }
 
 void SearchDialog::doSearch()
@@ -128,16 +130,12 @@ void SearchDialog::doSearch()
 
   search(re);
 
-  listView->selectEvents(mMatchedEvents);
+  listView->showEvents(mMatchedEvents);
 
   if (mMatchedEvents.count() == 0) {
     KMessageBox::information(this,
         i18n("No events were found matching your search expression."));
   }
-}
-
-SearchDialog::~SearchDialog()
-{
 }
 
 void SearchDialog::updateView()
@@ -152,7 +150,7 @@ void SearchDialog::updateView()
     mMatchedEvents.clear();
   }
 
-  listView->selectEvents(mMatchedEvents);
+  listView->showEvents(mMatchedEvents);
 }
 
 void SearchDialog::search(const QRegExp &re)

@@ -4,6 +4,7 @@
 #include <qheader.h>
 
 #include <klocale.h>
+#include <kdebug.h>
 
 #include "lineview.h"
 #include "timeline.h"
@@ -32,10 +33,6 @@ TimeSpanView::TimeSpanView( QWidget *parent, const char *name ) :
   mLineView = new LineView( rightPane );
   rightPaneLayout->addWidget( mLineView );
 
-  mLineView->addLine( 0, 10, 20 );
-  mLineView->addLine( 1, 10, 30 );
-  mLineView->addLine( 2, 20, 25 );
-
   connect(mLineView->horizontalScrollBar(),SIGNAL(valueChanged(int)),
           mTimeLine,SLOT(setContentsPos(int)));
 }
@@ -53,10 +50,28 @@ void TimeSpanView::setSplitterSizes( QValueList<int> sizes )
 {
   mSplitter->setSizes( sizes );
 }
-   
+
 void TimeSpanView::addItem( KCal::Event *event )
 {
   new QListViewItem( mList, event->summary() );
+  
+  QDateTime startDt = event->dtStart();
+  QDateTime endDt = event->dtEnd();
+
+  kdDebug() << "TimeSpanView::addItem(): start: " << startDt.toString()
+            << "  end: " << endDt.toString() << endl;
+
+  int startSecs = mStartDate.secsTo( startDt );
+  int durationSecs = startDt.secsTo( endDt );
+  
+  kdDebug() << "--- startSecs: " << startSecs << "  dur: " << durationSecs << endl;
+
+  int startX = mStartDate.secsTo( startDt ) / mSecsPerPixel;
+  int endX = startX + startDt.secsTo( endDt ) / mSecsPerPixel;
+  
+  kdDebug() << "TimeSpanView::addItem(): s: " << startX << "  e: " << endX << endl;
+  
+  mLineView->addLine( startX, endX );
 }
 
 void TimeSpanView::setDateRange( const QDateTime &start, const QDateTime &end )
@@ -65,4 +80,6 @@ void TimeSpanView::setDateRange( const QDateTime &start, const QDateTime &end )
   mEndDate = end;
   
   mTimeLine->setDateRange( start, end );
+
+  mSecsPerPixel = mStartDate.secsTo( mEndDate ) / mLineView->pixelWidth();
 }

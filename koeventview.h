@@ -1,5 +1,6 @@
 /*
     This file is part of KOrganizer.
+    Copyright (c) 1999 Preston Brown <pbrown@kde.org>
     Copyright (c) 2000,2001 Cornelius Schumacher <schumacher@kde.org>
 
     This program is free software; you can redistribute it and/or modify
@@ -19,11 +20,6 @@
 #ifndef _KOEVENTVIEW_H
 #define _KOEVENTVIEW_H
 // $Id$
-/*
- * KOEventView is the abstract base class of all calendar event views.
- * This file is part of the KOrganizer project.
- * (c) 1999 Preston Brown <pbrown@kde.org>
- */
 
 #include <libkcal/calendar.h>
 #include <libkcal/event.h>
@@ -89,7 +85,7 @@ class KOEventView : public KOrg::BaseView
      * @param popup a popop menu created with eventPopup()
      */
     void showEventPopup(QPopupMenu *popup,Event *event);
-  
+
     /**
      * Perform the default action for an event. E.g. open the event editor, when
      * double-clicking an event in the agenda view.
@@ -104,7 +100,7 @@ class KOEventView : public KOrg::BaseView
      * and any other objects that need to be aware that the list of 
      * selected dates has changed.
      */
-    void datesSelected(const QDateList);
+    void datesSelected(const DateList);
     /**   
      * instructs the receiver to begin editing the event specified in
      * some manner.  Doesn't make sense to connect to more than one 

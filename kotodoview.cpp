@@ -254,7 +254,7 @@ KOTodoView::KOTodoView(Calendar *calendar,QWidget* parent,const char* name) :
   title->setFrameStyle(QFrame::Panel|QFrame::Raised);
   topLayout->addWidget(title);
 
-  mTodoListView = new KOTodoListView(mCalendar,this);
+  mTodoListView = new KOTodoListView(calendar,this);
   topLayout->addWidget(mTodoListView);
 
   mTodoListView->setRootIsDecorated(true);
@@ -321,7 +321,7 @@ void KOTodoView::updateView()
 
   mTodoListView->clear();
 
-  QPtrList<Todo> todoList = mCalendar->getFilteredTodoList();
+  QPtrList<Todo> todoList = calendar()->getFilteredTodoList();
 
 /*
   kdDebug() << "KOTodoView::updateView(): Todo List:" << endl;
@@ -399,7 +399,7 @@ void KOTodoView::updateConfig()
   // to be implemented.
 }
 
-QPtrList<Incidence> KOTodoView::getSelected()
+QPtrList<Incidence> KOTodoView::selectedIncidences()
 {
   QPtrList<Incidence> selected;
 
@@ -424,11 +424,11 @@ void KOTodoView::changeEventDisplay(Event *, int)
   updateView();
 }
 
-void KOTodoView::selectDates(const QDateList)
+void KOTodoView::showDates(const QDate &, const QDate &)
 {
 }
- 
-void KOTodoView::selectEvents(QPtrList<Event>)
+
+void KOTodoView::showEvents(QPtrList<Event>)
 {
   kdDebug() << "KOTodoView::selectEvents(): not yet implemented" << endl;
 }
@@ -500,12 +500,12 @@ void KOTodoView::purgeCompleted()
       i18n("Delete all completed todos?"),i18n("Purge Todos"),i18n("Purge"));
 
   if (result == KMessageBox::Continue) {
-    QPtrList<Todo> todoCal = mCalendar->getTodoList();
+    QPtrList<Todo> todoCal = calendar()->getTodoList();
 
     Todo *aTodo;
     for (aTodo = todoCal.first(); aTodo; aTodo = todoCal.next()) {
     if (aTodo->isCompleted())
-      mCalendar->deleteTodo(aTodo);
+      calendar()->deleteTodo(aTodo);
     }
     updateView();
   }

@@ -25,6 +25,8 @@ class TimeLine : public QScrollView
 
     int mPixelWidth;
     int mDaySpacing;
+    int mDayOffset;
+    int mSecsPerPixel;
 };
 
 #endif

@@ -238,8 +238,7 @@ KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name) :
   KOEventView (cal,parent,name)
 {
   mStartHour = 8;
-  QDate today = QDate::currentDate();
-  mSelectedDates.append(&today);
+  mSelectedDates.append(QDate::currentDate());
 
   mLayoutDayLabels = 0;
   mDayLabelsFrame = 0;
@@ -376,16 +375,12 @@ void KOAgendaView::createDayLabels()
   mLayoutDayLabels = new QHBoxLayout(mDayLabels);
   mLayoutDayLabels->addSpacing(mTimeLabels->width());
 
-  QLabel *dayLabel;
-  unsigned int i;
-
-
-  for(QDateListIterator dit(mSelectedDates); dit.current(); ++dit)
-  {
-    QDate date = *dit.current();
+  DateList::ConstIterator dit;
+  for( dit = mSelectedDates.begin(); dit != mSelectedDates.end(); ++dit ) {
+    QDate date = *dit;
     QBoxLayout *dayLayout = new QVBoxLayout(mLayoutDayLabels);
 
-    dayLabel = new QLabel(mDayLabels);
+    QLabel *dayLabel = new QLabel(mDayLabels);
     QString str = QString("%1 %2")
         .arg(KGlobal::locale()->weekDayName(date.dayOfWeek(),true))
         .arg(date.day());
@@ -432,7 +427,7 @@ int KOAgendaView::currentDateCount()
   return mSelectedDates.count();
 }
 
-QPtrList<Incidence> KOAgendaView::getSelected()
+QPtrList<Incidence> KOAgendaView::selectedIncidences()
 {
   QPtrList<Incidence> selectedEvents;
   Event *event;
@@ -496,9 +491,9 @@ void KOAgendaView::updateEventDates(KOAgendaItem *item)
   QDate startDate;
 
   if (item->cellX() < 0) {
-    startDate = (*mSelectedDates.first()).addDays(item->cellX());
+    startDate = (mSelectedDates.first()).addDays(item->cellX());
   } else {
-    startDate = *mSelectedDates.at(item->cellX());
+    startDate = mSelectedDates[item->cellX()];
   }
   startDt.setDate(startDate);
 
@@ -525,24 +520,29 @@ void KOAgendaView::updateEventDates(KOAgendaItem *item)
 }
 
 
-void KOAgendaView::selectDates(const QDateList list)
+void KOAgendaView::showDates( const QDate &start, const QDate &end )
 {
 //  kdDebug() << "KOAgendaView::selectDates" << endl;
 
   mSelectedDates.clear();
-  mSelectedDates = list;
+  
+  QDate d = start;
+  while (d <= end) {
+    mSelectedDates.append(d);
+    d = d.addDays( 1 );
+  }
 
   // if there are 5 dates and the first is a monday, we have a workweek.
   if ((mSelectedDates.count() == 5) &&
-      (mSelectedDates.first()->dayOfWeek() == 1) &&
-      (mSelectedDates.first()->daysTo(*mSelectedDates.last()) == 4)) {
+      (mSelectedDates.first().dayOfWeek() == 1) &&
+      (mSelectedDates.first().daysTo(mSelectedDates.last()) == 4)) {
     setView(WORKWEEK);
 
   // if there are 7 dates and the first is a monday, we have a regular week.
   } else if ((mSelectedDates.count() == 7) &&
-             (mSelectedDates.first()->dayOfWeek() ==
+             (mSelectedDates.first().dayOfWeek() ==
 	     (KGlobal::locale()->weekStartsMonday() ? 1 : 7)) &&
-             (mSelectedDates.first()->daysTo(*mSelectedDates.last()) == 6)) {
+             (mSelectedDates.first().daysTo(mSelectedDates.last()) == 6)) {
     setView(WEEK);
 
   } else if (mSelectedDates.count() == 1) {
@@ -558,15 +558,15 @@ void KOAgendaView::selectDates(const QDateList list)
 }
 
 
-void KOAgendaView::selectEvents(QPtrList<Event>)
+void KOAgendaView::showEvents(QPtrList<Event>)
 {
-  kdDebug() << "KOAgendaView::selectEvents() is not yet implemented" << endl;
+  kdDebug() << "KOAgendaView::showEvents() is not yet implemented" << endl;
 }
 
 void KOAgendaView::setView(int view)
 {
   // change view type if valid
-  if( mSelectedDates.first() ) {
+  if( mSelectedDates.count() ) {
     if ((view >= DAY) && (view <= LIST))
       mViewType = view;
     else
@@ -598,21 +598,25 @@ void KOAgendaView::shiftDates(int multiplier)
   int shift = 0;
 
   switch( mViewType ) {
-  case DAY:
-    shift = 1;
-    break;
-  case WEEK:
-  case WORKWEEK:
-  case LIST:
-    shift = 7;
-    break;
-
+    case DAY:
+      shift = 1;
+      break;
+    case WEEK:
+    case WORKWEEK:
+    case LIST:
+      shift = 7;
+      break;
+    default:
+      break;
   }
 
-  for(QDateListIterator dit(mSelectedDates); dit.current(); ++dit)
-      *dit.current() = dit.current()->addDays(multiplier*shift);
-
+  DateList::Iterator it;
+  for( it = mSelectedDates.begin(); it != mSelectedDates.end(); ++it ) {
+    *it = (*it).addDays(multiplier*shift);
+  }
+  
   emit datesSelected(mSelectedDates);
+
   fillAgenda();
 }
 
@@ -627,13 +631,13 @@ void KOAgendaView::slotViewChange(int newView)
 {
   kdDebug() << "KOAgendaView::slotViewChange(): " << newView << endl;
 
-  int datenum, count;
-  QDate firstDate = *mSelectedDates.getFirst();
+  int count;
+  QDate firstDate = mSelectedDates.first();
 
   switch (newView) {
   case DAY:
     mSelectedDates.clear();
-    mSelectedDates.append(new QDate(firstDate));
+    mSelectedDates.append(firstDate);
     break;
 
   case WORKWEEK:
@@ -649,7 +653,7 @@ void KOAgendaView::slotViewChange(int newView)
 
     mSelectedDates.clear();
     for (count = 0; count < 5; count++)
-      mSelectedDates.append(new QDate(firstDate.addDays(count)));
+      mSelectedDates.append(firstDate.addDays(count));
     break;
 
   case WEEK:
@@ -665,7 +669,7 @@ void KOAgendaView::slotViewChange(int newView)
 
     mSelectedDates.clear();
     for( count = 0; count < 7; count++ )
-      mSelectedDates.append(new QDate(firstDate.addDays(count)));
+      mSelectedDates.append(firstDate.addDays(count));
 
     break;
 
@@ -683,7 +687,7 @@ void KOAgendaView::slotViewChange(int newView)
 
   default:
     mSelectedDates.clear();
-    mSelectedDates.append(new QDate(QDate::currentDate()));
+    mSelectedDates.append(QDate::currentDate());
     newView = DAY;
     break;
   }
@@ -699,7 +703,7 @@ void KOAgendaView::slotViewChange(int newView)
 //}
 
 
-void KOAgendaView::fillAgenda(const QDate &startDate)
+void KOAgendaView::fillAgenda(const QDate &)
 {
   fillAgenda();
 }
@@ -721,17 +725,17 @@ void KOAgendaView::fillAgenda()
   mMaxY.resize(mSelectedDates.count());
 
   QPtrList<Event> dayEvents;
-  int curCol;  // current column of agenda, i.e. the X coordinate
 
   mAgenda->setDateList(mSelectedDates);
 
-  QDateListIterator dit(mSelectedDates);
-  for(curCol=0; dit.current(); ++dit, ++curCol)  {
-    QDate currentDate = *dit.current();
+  DateList::ConstIterator dit;
+  int curCol = 0;
+  for( dit = mSelectedDates.begin(); dit != mSelectedDates.end(); ++dit ) {
+    QDate currentDate = *dit;
 //    kdDebug() << "KOAgendaView::fillAgenda(): " << currentDate.toString()
 //              << endl;
 
-    dayEvents = mCalendar->getEventsForDate(currentDate,false);
+    dayEvents = calendar()->getEventsForDate(currentDate,false);
 
     // Default values, which can never be reached
     mMinY[curCol] = mAgenda->timeToY(QTime(23,59)) + 1;
@@ -780,9 +784,10 @@ void KOAgendaView::fillAgenda()
 	mAgenda->insertItem(event,curCol,startY,endY);
         if (startY < mMinY[curCol]) mMinY[curCol] = startY;
         if (endY > mMaxY[curCol]) mMaxY[curCol] = endY;
-      }
+      }      
     }
 //    if (numEvent == 0) kdDebug() << " No events" << endl;
+    ++curCol;
   }
 
   mAgenda->checkScrollBoundaries();
@@ -814,20 +819,23 @@ void KOAgendaView::printPreview(CalPrinter *calPrinter, const QDate &fd,
 
 void KOAgendaView::newEvent(int gx, int gy)
 {
-    QDate *day = mSelectedDates.at(gx);
-    if(day == NULL) return;
+  if (!mSelectedDates.count()) return;
+  
+  QDate day = mSelectedDates[gx];
 
-    QTime time = mAgenda->gyToTime(gy);
-    QDateTime dt(*day,time);
-    emit newEventSignal(dt);
+  QTime time = mAgenda->gyToTime(gy);
+  QDateTime dt(day,time);
+
+  emit newEventSignal(dt);
 }
 
 void KOAgendaView::newEventAllDay(int gx, int )
 {
-    QDate *day = mSelectedDates.at(gx);
-    if(day == NULL) return;
+  if (!mSelectedDates.count()) return;
 
-    emit newEventSignal(*day);
+  QDate day = mSelectedDates[gx];
+
+  emit newEventSignal(day);
 }
 
 void KOAgendaView::showAgendaPopup(Event *event)
@@ -864,7 +872,7 @@ void KOAgendaView::updateEventIndicatorBottom(int newY)
 
 void KOAgendaView::startDrag(Event *event)
 {
-  VCalDrag *vd = mCalendar->createDrag(event,this);
+  VCalDrag *vd = calendar()->createDrag(event,this);
   if (vd->drag()) {
     kdDebug() << "KOTodoListView::contentsMouseMoveEvent(): Delete drag source" << endl;
   }
@@ -909,7 +917,7 @@ void KOAgendaView::setHolidayMasks()
 
   uint i;
   for(i=0;i<mSelectedDates.count();++i) {
-    QDate date = *(mSelectedDates.at(i));
+    QDate date = mSelectedDates[i];
     bool showSaturday = KOPrefs::instance()->mExcludeSaturdays && (date.dayOfWeek() == 6);
     bool showSunday = KOPrefs::instance()->mExcludeHolidays && (date.dayOfWeek() == 7);
 #ifndef KORG_NOPLUGINS

@@ -105,7 +105,7 @@ class KOAgendaView : public KOEventView {
     virtual int currentDateCount();
 
     /** returns the currently selected events */
-    virtual QPtrList<Incidence> getSelected();
+    virtual QPtrList<Incidence> selectedIncidences();
 
     /** Agenda view types. DAY is a one day view, WORKWEEK is a 5 day view of a
     week, excluding the weekend, WEEK is a 7 day view of a complete week and
@@ -126,8 +126,8 @@ class KOAgendaView : public KOEventView {
   public slots:
     virtual void updateView();
     virtual void updateConfig();
-    virtual void selectDates(const QDateList);
-    virtual void selectEvents(QPtrList<Event> eventList);
+    virtual void showDates(const QDate &start, const QDate &end);
+    virtual void showEvents(QPtrList<Event> eventList);
 
     void changeEventDisplay(Event *, int);
 
@@ -152,7 +152,7 @@ class KOAgendaView : public KOEventView {
     void editEventSignal(Event *);  // From KOBaseView
     void showEventSignal(Event *);
     void deleteEventSignal(Event *);  // From KOBaseView
-    void datesSelected(const QDateList);  // From KOBaseView
+    void datesSelected(const DateList &);  // From KOBaseView
     void newEventSignal();  // From KOBaseView
     void newEventSignal(QDate);
     void newEventSignal(QDateTime);
@@ -204,7 +204,7 @@ class KOAgendaView : public KOEventView {
     QWidget *mDummyAllDayLeft;
     QSplitter *mSplitterAgenda;
 
-    QDateList mSelectedDates;  // List of dates to be displayed
+    DateList mSelectedDates;  // List of dates to be displayed
     int mViewType;
 
     bool mWeekStartsMonday;

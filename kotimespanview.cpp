@@ -19,13 +19,41 @@ KOTimeSpanView::KOTimeSpanView(Calendar *calendar, QWidget *parent,
 
   // Debug: Set some values manually
 
+#if 0
   mTimeSpanView->setDateRange( QDateTime::currentDateTime(),
-                               QDateTime::currentDateTime().addDays( 4 ) );
+                               QDateTime::currentDateTime().addDays( 6 ) );
+#else
+  mTimeSpanView->setDateRange( QDateTime( QDate( 2001, 11, 23 ),
+                                          QTime( 18, 0 ) ),
+                               QDateTime( QDate( 2001, 11, 29 ),
+                                          QTime( 6, 0 ) ) );
+#endif
 
   Event *event = new Event;
   event->setSummary( "Hallo" );
-  event->setDtStart( QDate::currentDate() );
-  event->setDtEnd( QDate::currentDate().addDays( 1 ) );
+  event->setDtStart( QDateTime::currentDateTime().addDays( 1 ) );
+  event->setDtEnd( QDateTime::currentDateTime().addDays( 2 ) );
+
+  mTimeSpanView->addItem( event );
+
+  event = new Event;
+  event->setSummary( "Dudelidei" );
+  event->setDtStart( QDateTime::currentDateTime().addDays( 1 ) );
+  event->setDtEnd( QDateTime::currentDateTime().addDays( 3 ) );
+
+  mTimeSpanView->addItem( event );
+
+  event = new Event;
+  event->setSummary( "Trumtum" );
+  event->setDtStart( QDateTime::currentDateTime().addDays( 2 ) );
+  event->setDtEnd( QDateTime::currentDateTime().addDays( 3 ) );
+
+  mTimeSpanView->addItem( event );
+  
+  event = new Event;
+  event->setSummary( "Exactly" );
+  event->setDtStart( QDateTime( QDate( 2001, 11, 24 ), QTime( 0, 0 ) ) );
+  event->setDtEnd( QDateTime( QDate( 2001, 11, 27 ), QTime( 12, 0 ) ) );
 
   mTimeSpanView->addItem( event );
 }
@@ -71,7 +99,7 @@ int KOTimeSpanView::currentDateCount()
   return 0;
 }
 
-QPtrList<Incidence> KOTimeSpanView::getSelected()
+QPtrList<Incidence> KOTimeSpanView::selectedIncidences()
 {
   QPtrList<Incidence> selected;
   
@@ -82,11 +110,11 @@ void KOTimeSpanView::updateView()
 {
 }
 
-void KOTimeSpanView::selectDates(const QDateList dateList)
+void KOTimeSpanView::showDates(const QDate &start, const QDate &end)
 {
 }
 
-void KOTimeSpanView::selectEvents(QPtrList<Event> eventList)
+void KOTimeSpanView::showEvents(QPtrList<Event> eventList)
 {
 }
 

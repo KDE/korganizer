@@ -305,9 +305,6 @@ KOMonthView::KOMonthView(Calendar *cal,
     QPixmap pixmap;
     int i;
 
-    selDateIdxs.setAutoDelete(TRUE);
-    selDates.setAutoDelete(TRUE);
-
     // top layout of monthview
     QBoxLayout *topLayout = new QVBoxLayout(this);
 
@@ -406,7 +403,7 @@ KOMonthView::KOMonthView(Calendar *cal,
         connect(dayHeaders[i], SIGNAL(newEventSignal(int)),
                 this, SLOT(newEventSlot(int)));
 
-        daySummaries[i] = new KSummaries(vFrame, mCalendar, date, i);
+        daySummaries[i] = new KSummaries(vFrame, calendar(), date, i);
         daySummaries[i]->setFrameStyle(QFrame::NoFrame);
         connect(daySummaries[i], SIGNAL(daySelected(int)),
                 this, SLOT(daySelected(int)));
@@ -462,32 +459,17 @@ int KOMonthView::currentDateCount()
   return 42;
 }
 
-QPtrList<Incidence> KOMonthView::getSelected()
+QPtrList<Incidence> KOMonthView::selectedIncidences()
 {
   QPtrList<Incidence> selectedEvents;
 
   uint i;
   for(i=0; i<selDateIdxs.count(); ++i) {
-    Event *event = daySummaries[*selDateIdxs.at(i)]->getSelected();
+    Event *event = daySummaries[selDateIdxs[i]]->getSelected();
     if (event) selectedEvents.append(event);
   }
 
   return selectedEvents;
-
-/*
-  int which;
-
-  if (selDateIdxs.count() == 0)
-    which = 0;
-  else
-    which = *selDateIdxs.first();
-
-  if (which) {
-    return daySummaries[which]->getSelected();
-  } else {
-    return (Event *) 0L;
-  }
-*/
 }
 
 void KOMonthView::printPreview(CalPrinter *calPrinter, const QDate &fd,
@@ -543,7 +525,7 @@ void KOMonthView::goBackYear()
   if (selDateIdxs.count() == 0)
     which = 0;
   else
-    which = *selDateIdxs.first();
+    which = selDateIdxs.first();
 
   QDate date = daySummaries[which]->getDate();
   date.setYMD(date.year()-1, date.month(), date.day());
@@ -563,7 +545,7 @@ void KOMonthView::goForwardYear()
   if (selDateIdxs.count() == 0)
     which = 0;
   else
-    which = *selDateIdxs.first();
+    which = selDateIdxs.first();
   QDate date = daySummaries[which]->getDate();
   date.setYMD(date.year()+1, date.month(), date.day());
   myDate = date.addDays(-(date.dayOfWeek()));
@@ -580,7 +562,7 @@ void KOMonthView::goBackMonth()
   if (selDateIdxs.count() == 0)
     which = 0;
   else
-    which = *selDateIdxs.first();
+    which = selDateIdxs.first();
   QDate date = daySummaries[which]->getDate();
   if (date.month() == 1) {
     date.setYMD(date.year()-1, 12, 1);
@@ -605,7 +587,7 @@ void KOMonthView::goForwardMonth()
   if (selDateIdxs.count() == 0)
     which = 0;
   else
-    which = *selDateIdxs.first();
+    which = selDateIdxs.first();
   QDate date = daySummaries[which]->getDate();
   if (date.month() == 12) {
 
@@ -643,14 +625,9 @@ void KOMonthView::goForwardWeek()
   viewChanged();
 }
 
-void KOMonthView::selectDates(const QDateList dateList)
+void KOMonthView::showDates(const QDate &start, const QDate &)
 {
-  QDateList tmpList(FALSE);
-
-  tmpList = dateList;
-
-  QDate qd = *(tmpList.first());
-
+  QDate qd = start;
 
   // check to see if we're going to a currently selected date.
   // commented out because it is causing problems where the view isn't
@@ -675,7 +652,7 @@ void KOMonthView::selectDates(const QDateList dateList)
   viewChanged();
 }
 
-void KOMonthView::selectEvents(QPtrList<Event>)
+void KOMonthView::showEvents(QPtrList<Event>)
 {
   kdDebug() << "KOMonthView::selectEvents is not implemented yet." << endl;
 }
@@ -689,10 +666,9 @@ void KOMonthView::changeEventDisplay(Event *, int)
 
 void KOMonthView::viewChanged()
 {
-  unsigned int i;
-  int *idx;
   QDate date = myDate.addDays(weekStartsMonday ? 1 : 0);
 
+  unsigned int i;
   for(i=0; i<42; i++, date = date.addDays(1)) {
     QString daynum;
     daynum.setNum(date.day());
@@ -726,11 +702,9 @@ void KOMonthView::viewChanged()
   QString tstring = KGlobal::locale()->formatDate(daySummaries[0]->getDate())
        + " - " + KGlobal::locale()->formatDate(daySummaries[41]->getDate());
   dispLabel->setText(tstring);
-  for(i=0, idx = selDateIdxs.first();
-      i < selDateIdxs.count(), idx != 0;
-      i++, idx = selDateIdxs.next()) {
+  for(i=0; i < selDateIdxs.count(); i++) {
     //kdDebug() << "selDateIdxs.count(): " << selDateIdxs.count() << endl;
-    daySelected(*idx);
+    daySelected(selDateIdxs[i]);
   }
 
   processSelectionChange();
@@ -783,27 +757,22 @@ void KOMonthView::resizeEvent(QResizeEvent *)
 void KOMonthView::daySelected(int index)
 {
   unsigned int i;
-  int *idx;
-  QDateList dateList;
-
-  for(i=0, idx = selDateIdxs.first();
-      i < selDateIdxs.count();
-      i++, idx = selDateIdxs.next()) {
-    if(*idx != index) {
-      dayHeaders[*idx]->setActivated(FALSE);
-      daySummaries[*idx]->clearSelection();  // calls daySelected
+  for(i=0; i < selDateIdxs.count(); i++ ) {
+    int idx = selDateIdxs[i];
+    if(idx != index) {
+      dayHeaders[idx]->setActivated(FALSE);
+      daySummaries[idx]->clearSelection();  // calls daySelected
     }
   }
   selDateIdxs.clear();
   dayHeaders[index]->setActivated(TRUE);
   daySummaries[index]->setFocus();  // calls daySelected
-  selDateIdxs.append(new int(index));
+  selDateIdxs.append(index);
 
-  dateList.setAutoDelete(TRUE);
-  dateList.append(new QDate(daySummaries[index]->getDate()));
+  DateList dateList;
+  dateList.append(daySummaries[index]->getDate());
 
   emit datesSelected(dateList);
-  dateList.clear();
 
   processSelectionChange();
 }
@@ -815,7 +784,7 @@ void KOMonthView::newEventSlot(int index)
 
 void KOMonthView::doRightClickMenu()
 {
-  Event *event = dynamic_cast<Event *>(getSelected().first());
+  Event *event = dynamic_cast<Event *>(selectedIncidences().first());
   if (event) {
     rightClickMenu->showEventPopup(event);
   } else {
@@ -825,7 +794,7 @@ void KOMonthView::doRightClickMenu()
 
 void KOMonthView::processSelectionChange()
 {
-  QPtrList<Incidence> events = getSelected();
+  QPtrList<Incidence> events = selectedIncidences();
   if (events.count() > 0) {
     emit eventsSelected(true);
 //    kdDebug() << "KOMonthView::processSelectionChange() true" << endl;

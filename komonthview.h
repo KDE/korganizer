@@ -29,8 +29,8 @@
 #include <qlayout.h>
 #include <qintdict.h>
 #include <qpushbutton.h>
+#include <qvaluelist.h>
 
-#include <libkcal/qdatelist.h>
 #include <libkcal/calendar.h>
 #include <libkcal/event.h>
 
@@ -145,7 +145,7 @@ class KOMonthView: public KOEventView {
    virtual int currentDateCount();
 
    /** returns the currently selected events */
-   virtual QPtrList<Incidence> getSelected();
+   virtual QPtrList<Incidence> selectedIncidences();
 
    virtual void printPreview(CalPrinter *calPrinter,
                              const QDate &, const QDate &);
@@ -153,8 +153,8 @@ class KOMonthView: public KOEventView {
  public slots:
    virtual void updateView();
    virtual void updateConfig();
-   virtual void selectDates(const QDateList);
-   virtual void selectEvents(QPtrList<Event> eventList);
+   virtual void showDates(const QDate &start, const QDate &end);
+   virtual void showEvents(QPtrList<Event> eventList);
 
    void changeEventDisplay(Event *, int);
 
@@ -164,7 +164,7 @@ class KOMonthView: public KOEventView {
    void newEventSignal(QDateTime, QDateTime);  // From KOBaseView
    void editEventSignal(Event *);  // From KOBaseView
    void deleteEventSignal(Event *);  // From KOBaseView
-   void datesSelected(const QDateList);  // From KOBaseView
+   void datesSelected(const DateList);  // From KOBaseView
 
  protected slots:
    void resizeEvent(QResizeEvent *);
@@ -197,11 +197,10 @@ class KOMonthView: public KOEventView {
    KOEventPopupMenu *rightClickMenu;
 
    // state data.
-   QDate             myDate;
-   QDateList         selDates;
+   QDate            myDate;
    Calendar        *myCal;
-   QPtrList<int>        selDateIdxs;
-   QPalette          holidayPalette;
+   QValueList<int>  selDateIdxs;
+   QPalette         holidayPalette;
 };
 
 #endif

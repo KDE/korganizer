@@ -101,7 +101,7 @@ void KOEventEditor::enableRecurrence(bool enable)
   mRecurrence->setEnabled(enable);
 }
 
-void KOEventEditor::editEvent(Event *event,QDate)
+void KOEventEditor::editEvent(Event *event)
 {
   init();
 

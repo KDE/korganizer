@@ -85,7 +85,7 @@ bool ScheduleItemVisitor::visit(Event *e)
   return true;
 }
 
-bool ScheduleItemVisitor::visit(Todo *t)
+bool ScheduleItemVisitor::visit(Todo *)
 {
   return false;
 }

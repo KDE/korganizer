@@ -40,14 +40,14 @@ class KOJournalView : public KOrg::BaseView
     ~KOJournalView();
 
     virtual int currentDateCount();
-    virtual QPtrList<Incidence> getSelected();
+    virtual QPtrList<Incidence> selectedIncidences();
 
   public slots:
     void updateView();
     void flushView();
-    
-    void selectDates(const QDateList dateList);
-    void selectEvents(QPtrList<Event> eventList);
+  
+    void showDates( const QDate &start, const QDate &end );
+    void showEvents(QPtrList<Event> eventList);
 
     void changeEventDisplay(Event *, int);
   

@@ -53,7 +53,7 @@ int KOJournalView::currentDateCount()
   return 0;
 }
 
-QPtrList<Incidence> KOJournalView::getSelected()
+QPtrList<Incidence> KOJournalView::selectedIncidences()
 {
   QPtrList<Incidence> eventList;
 
@@ -70,35 +70,26 @@ void KOJournalView::flushView()
   mEntry->flushEntry();
 }
 
-void KOJournalView::selectDates(const QDateList dateList)
+void KOJournalView::showDates(const QDate &start, const QDate &)
 {
 //  kdDebug() << "KOJournalView::selectDates()" << endl;
 
-  QDateList dates = dateList;
+  mEntry->setDate(start);
 
-  if (dateList.count() == 0) {
-    kdDebug() << "KOJournalView::selectDates() called with empty list." << endl;
-    return;
-  }
-  
-  QDate date = *dates.first();
-
-  mEntry->setDate(date);
-
-  Journal *j = mCalendar->journal(date);
+  Journal *j = calendar()->journal(start);
   if (j) mEntry->setJournal(j);
   else mEntry->clear();
   
 //  emit eventsSelected(false);
 }
 
-void KOJournalView::selectEvents(QPtrList<Event> eventList)
+void KOJournalView::showEvents(QPtrList<Event>)
 {
   // After new creation of list view no events are selected.
 //  emit eventsSelected(false);
 }
 
-void KOJournalView::changeEventDisplay(Event *event, int action)
+void KOJournalView::changeEventDisplay(Event *, int /*action*/)
 {
   updateView();
 }

@@ -72,10 +72,14 @@ int MarcusBains::todayColumn()
 {
     QDate currentDate = QDate::currentDate();
 
-    QDateListIterator dit(agenda->dateList());
-    for(int col=0; dit.current(); ++col, ++dit)
-	if(*dit.current() == currentDate)
+    DateList dateList = agenda->dateList();
+    DateList::ConstIterator it;
+    int col = 0;
+    for(it = dateList.begin(); it != dateList.end(); ++it) {
+	if((*it) == currentDate)
 	    return col;
+        ++col;
+    }
 
     return -1;
 }
@@ -285,22 +289,20 @@ bool KOAgenda::eventFilter ( QObject *object, QEvent *event )
 {
 //  kdDebug() << "KOAgenda::eventFilter" << endl;
 
-  QMouseEvent *me = NULL;
-
   switch(event->type()) {
-  case QEvent::MouseButtonPress:
-  case QEvent::MouseButtonDblClick:
-  case QEvent::MouseButtonRelease:
-  case QEvent::MouseMove:
-    return eventFilter_mouse(object, static_cast<QMouseEvent *>(event));
+    case QEvent::MouseButtonPress:
+    case QEvent::MouseButtonDblClick:
+    case QEvent::MouseButtonRelease:
+    case QEvent::MouseMove:
+      return eventFilter_mouse(object, static_cast<QMouseEvent *>(event));
 
-  case (QEvent::Leave):
-    if (!mActionItem)
-      setCursor(arrowCursor);
-    return true;
+    case (QEvent::Leave):
+      if (!mActionItem)
+        setCursor(arrowCursor);
+      return true;
 
-  default:
-    return QScrollView::eventFilter(object,event);
+    default:
+      return QScrollView::eventFilter(object,event);
   }
 }
 
@@ -1113,12 +1115,12 @@ void KOAgenda::calculateWorkingHours()
 }
 
 
-
-const QDateList &KOAgenda::dateList() const
+DateList KOAgenda::dateList() const
 {
     return mSelectedDates;
 }
-void KOAgenda::setDateList(const QDateList &selectedDates)
+
+void KOAgenda::setDateList(const DateList &selectedDates)
 {
     mSelectedDates = selectedDates;
     marcus_bains();

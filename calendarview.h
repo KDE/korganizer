@@ -29,7 +29,6 @@
 #include <qsplitter.h>
 #include <qvbox.h>
 
-#include <libkcal/qdatelist.h>
 #include <libkcal/calendar.h>
 #include <libkcal/scheduler.h>
 
@@ -210,10 +209,7 @@ class CalendarView : public KOrg::CalendarViewBase
     
     /** change Agenda view */
     void changeAgendaView( int view );
-  
-    /** next Agenda view */
-    void nextAgendaView();
-  
+    
     /** Check if clipboard contains vCalendar event. The signal pasteEnabled() is
      * emitted as result. */
     void checkClipboard();
@@ -252,7 +248,7 @@ class CalendarView : public KOrg::CalendarViewBase
     void eventToBeDeleted(Event *);
     void eventDeleted();
   
-    void updateView(const QDateList);
+    void updateView(const QDate &start, const QDate &end);
     void updateView();
   
     /** Full update of visible todo views */
@@ -394,7 +390,7 @@ class CalendarView : public KOrg::CalendarViewBase
     void selectWeek(QDate weekstart);
   
     /** Select a view or adapt the current view to display the specified dates. */
-    void selectDates(const QDateList);
+    void selectDates(const DateList &);
   
     void processEventSelection(bool selected);
   

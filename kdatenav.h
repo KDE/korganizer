@@ -24,7 +24,6 @@
 #include <qdatetime.h>
 #include <qlabel.h>
 
-#include <libkcal/qdatelist.h>
 #include <libkcal/calendar.h>
 
 #include "kdpdatebutton.h"
@@ -40,12 +39,12 @@ class KDateNavigator: public QFrame {
 		  QDate date=QDate::currentDate());
    ~KDateNavigator();
 
-   const QDateList getSelected();
+   DateList selectedDates();
 
    void gotoYMD(int yr, int mth, int day);
    
  public slots:
-   void selectDates(const QDateList);
+   void selectDates(const DateList &);
    void selectDates(QDate);
    void addSelection(QDate, int, bool);
    void setShowWeekNums(bool enabled);
@@ -53,7 +52,7 @@ class KDateNavigator: public QFrame {
    void updateConfig();
    
  signals:
-   void datesSelected(const QDateList);
+   void datesSelected(const DateList &);
    void eventDropped(Event *);
    void weekClicked(QDate);
 
@@ -83,7 +82,7 @@ class KDateNavigator: public QFrame {
    QLabel *weeknos[7];
    KDateButton *buttons[42];
 
-   QDateList selectedDates;
+   DateList mSelectedDates;
    QDate m_MthYr;
    int m_fstDayOfWk;
    bool m_bShowWeekNums;

@@ -52,7 +52,7 @@ class KOEventEditor : public KOIncidenceEditor
     void newEvent( QDateTime from, QDateTime to, bool allDay = FALSE );
 
     /** Edit an existing event. */
-    void editEvent( Event *, QDate qd=QDate::currentDate());
+    void editEvent( Event * );
 
     /** Set widgets to default values */
     void setDefaults(QDateTime from,QDateTime to,bool allDay);

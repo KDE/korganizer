@@ -174,7 +174,7 @@ class KOEditorRecurrence : public QWidget
     QPushButton* deleteExceptionButton;
     QPushButton* exceptionDateButton;
     QListBox *exceptionList;
-    QPtrList<QDate> mExceptionDates;
+    DateList mExceptionDates;
 
     // current start and end date and time
     QDateTime currStartDateTime;

@@ -86,7 +86,7 @@ int KOWhatsNextView::currentDateCount()
   return 0;
 }
 
-QPtrList<Incidence> KOWhatsNextView::getSelected()
+QPtrList<Incidence> KOWhatsNextView::selectedIncidences()
 {
   QPtrList<Incidence> eventList;
 
@@ -104,8 +104,8 @@ void KOWhatsNextView::updateView()
 {
   mText = i18n("<h1>What's next?</h1>");
 
-  QPtrList<Event> events = mCalendar->getEvents(QDate::currentDate(),
-                                             QDate::currentDate());
+  QPtrList<Event> events = calendar()->getEvents(QDate::currentDate(),
+                                                 QDate::currentDate());
   if (events.count() > 0) {
     mText += i18n("<h2>Events:</h2>");
     mText += i18n("<table>");
@@ -119,7 +119,7 @@ void KOWhatsNextView::updateView()
     mText += i18n("</table>");
   }
 
-  QPtrList<Todo> todos = mCalendar->getTodoList();
+  QPtrList<Todo> todos = calendar()->getTodoList();
   if (todos.count() > 0) {  
     mText += i18n("<h2>Todo:</h2>");
     mText += i18n("<ul>");
@@ -136,16 +136,16 @@ void KOWhatsNextView::updateView()
   mView->setText(mText);
 }
 
-void KOWhatsNextView::selectDates(const QDateList dateList)
+void KOWhatsNextView::showDates(const QDate &, const QDate &)
 {
   updateView();
 }
 
-void KOWhatsNextView::selectEvents(QPtrList<Event> eventList)
+void KOWhatsNextView::showEvents(QPtrList<Event>)
 {
 }
 
-void KOWhatsNextView::changeEventDisplay(Event *event, int action)
+void KOWhatsNextView::changeEventDisplay(Event *, int action)
 {
   switch(action) {
     case KOGlobals::EVENTADDED:
@@ -188,11 +188,11 @@ void KOWhatsNextView::createEventViewer()
 void KOWhatsNextView::showIncidence(const QString &uid)
 {
   if (uid.startsWith("event:")) {
-    Event *event = mCalendar->getEvent(uid.mid(6));
+    Event *event = calendar()->getEvent(uid.mid(6));
     createEventViewer();
     mEventViewer->setEvent(event);
   } else if (uid.startsWith("todo:")) {
-    Todo *todo = mCalendar->getTodo(uid.mid(5));
+    Todo *todo = calendar()->getTodo(uid.mid(5));
     createEventViewer();
     mEventViewer->setTodo(todo);
   }

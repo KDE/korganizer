@@ -451,8 +451,6 @@ void KOEditorRecurrence::initYearly()
 
 void KOEditorRecurrence::initExceptions()
 {
-  mExceptionDates.setAutoDelete(true);
-
   // Create the exceptions group box, which holds controls for
   // specifying dates which are exceptions to the rule specified on
   // this tab.
@@ -532,7 +530,7 @@ void KOEditorRecurrence::addException()
 {
   QDate tmpDate = exceptionDateEdit->getDate();
   exceptionList->insertItem(KGlobal::locale()->formatDate(tmpDate));
-  mExceptionDates.append(new QDate(tmpDate));
+  mExceptionDates.append(tmpDate);
 }
 
 void KOEditorRecurrence::changeException()
@@ -541,8 +539,7 @@ void KOEditorRecurrence::changeException()
   if (pos < 0) return;
   
   QDate tmpDate = exceptionDateEdit->getDate();
-  mExceptionDates.remove(pos);
-  mExceptionDates.insert(pos,new QDate(tmpDate));
+  mExceptionDates[pos] = tmpDate;
   exceptionList->changeItem(KGlobal::locale()->formatDate(tmpDate),pos);
 }
 
@@ -551,7 +548,7 @@ void KOEditorRecurrence::deleteException()
   int pos = exceptionList->currentItem();
   if (pos < 0) return;
 
-  mExceptionDates.remove(pos);
+  mExceptionDates.remove( mExceptionDates.at(pos) );
   exceptionList->removeItem(pos);
 }
 
@@ -779,28 +776,24 @@ void KOEditorRecurrence::readEvent(Event *event)
     nYearsEntry->setText("1");
   }
 
-  QDateList exDates(false);
-  exDates = event->exDates();
-  QDate *curDate;
   exceptionDateEdit->setDate(QDate::currentDate());
-  for (curDate = exDates.first(); curDate;
-       curDate = exDates.next()) {
-    exceptionList->insertItem(KGlobal::locale()->formatDate(*curDate));
-    mExceptionDates.append(new QDate(*curDate));
+
+  DateList exDates = event->exDates();
+  DateList::ConstIterator dit;
+  for (dit = exDates.begin(); dit != exDates.end(); ++dit ) {
+    exceptionList->insertItem(KGlobal::locale()->formatDate(*dit));
+    mExceptionDates.append(*dit);
   }
 }
 
 void KOEditorRecurrence::writeEvent(Event *event)
 {
-  // temp. until something better happens.
-  QString tmpStr;
-  uint i;
-
   // get recurrence information
   // need a check to see if recurrence is enabled...
   if (mEnabled) {
     int rDuration;
     QDate rEndDate;
+    QString tmpStr;
     
     // clear out any old settings;
     event->recurrence()->unsetRecurs();
@@ -912,13 +905,7 @@ void KOEditorRecurrence::writeEvent(Event *event)
   } else
     event->recurrence()->unsetRecurs();
 
-  QDateList exDates;
-  for (i = 0; i < exceptionList->count(); i++) {
-    exDates.inSort(new QDate(*(mExceptionDates.at(i))));
-  }
-  
-  event->setExDates(exDates);
-  exDates.clear();
+  event->setExDates(mExceptionDates);
 }
 
 // obsolete

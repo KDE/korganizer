@@ -47,39 +47,48 @@ namespace KOrg {
   views of event data like the agenda or the month view.
 
   @short Base class for calendar views
-  @author Preston Brown
-  @see KOTodoView, KOEventView, KOListView, KOAgendaView, KOWeekView, KOMonthView  
+  @author Preston Brown, Cornelius Schumacher
+  @see KOTodoView, KOEventView, KOListView, KOAgendaView, KOMonthView  
 */
 class BaseView : public QWidget
 {
     Q_OBJECT
   public:
     /**
-     * Constructs a view. 
-     * @param cal is a pointer to the calendar object from which events
-     *        will be retrieved for display.
-     */
+      Constructs a view. 
+     
+      @param cal    Pointer to the calendar object from which events
+                    will be retrieved for display.
+      @param parent parent widget.
+      @param name   name of this widget.
+    */
     BaseView(Calendar *cal, QWidget *parent = 0, const char *name = 0) :
         QWidget(parent, name), mCalendar(cal) {}
 
     /**
-     * Destructor.  Views will do view-specific cleanups here.
-     */
+      Destructor.  Views will do view-specific cleanups here.
+    */
     virtual ~BaseView() {}
+
+    /**
+      Return calendar object of this view.
+    */
+    Calendar *calendar() { return mCalendar; }
   
     /**
-     * @return a list of selected events.  Most views can probably only
-     * select a single event at a time, but some may be able to select
-     * more than one.
-     */
-    virtual QPtrList<Incidence> getSelected() = 0;
+      @return a list of selected events.  Most views can probably only
+      select a single event at a time, but some may be able to select
+      more than one.
+    */
+    virtual QPtrList<Incidence> selectedIncidences() = 0;
   
     /**
-     * Generate a print preview of this event view.
-     * @param calPrinter Calendar printer object used for printing
-     * @param fd from date
-     * @param td to date
-     */
+      Generate a print preview of this event view.
+      
+      @param calPrinter Calendar printer object used for printing
+      @param fd from date
+      @param td to date
+    */
 /*
   The date parameters should be determined by the view itself and not given as
   parameters. At the moment I just move the code from the topwidget to the
@@ -93,28 +102,47 @@ class BaseView : public QWidget
     }
     
     /**
-     * Print this event view.
-     * @param calPrinter Calendar printer object used for printing
-     */
+      Print this view.
+      
+      @param calPrinter Calendar printer object used for printing
+    */
     virtual void print(CalPrinter *)
     {
       KMessageBox::sorry(this, i18n("Unfortunately, we don't handle printing for\n"
 	                            "that view yet.\n"));
     }
-  
+
     /**
-     * Return number of currently shown dates. A return value of 0 means no idea.
-     */
+      Return number of currently shown dates. A return value of 0 means no idea.
+    */
     virtual int currentDateCount() = 0;
 
-    /** Return if this view is an view for displaying events. */
+    /** Return if this view is a view for displaying events. */
     virtual bool isEventView() { return false; }
     
   public slots:
     /**
-     * Updates the current display to reflect changes that may have happened
-     * in the calendar since the last display refresh.
-     */
+      Show incidences for the given date range. The date range actually shown may be
+      different from the requested range, depending on the particular requirements
+      of the view.
+    
+      @param start Start of date range.
+      @param end   End of date range.
+    */
+    virtual void showDates( const QDate &start, const QDate &end ) = 0;
+
+    /**
+      Show given events. Depending on the actual view it might not be possible to
+      show all given events.
+
+      @param eventList a list of events to show.
+    */
+    virtual void showEvents(QPtrList<Event> eventList) = 0;
+
+    /**
+      Updates the current display to reflect changes that may have happened
+      in the calendar since the last display refresh.
+    */
     virtual void updateView() = 0;
   
     /**
@@ -123,31 +151,17 @@ class BaseView : public QWidget
     virtual void flushView() {}
   
     /**
-     * Updates the current display to reflect the changes to one particular event.
-     */
+      Updates the current display to reflect the changes to one particular event.
+    */
     virtual void changeEventDisplay(Event *, int) = 0;
   
     /**
-     * re-reads the KOrganizer configuration file and picks up relevant
-     * changes which are applicable to the view.
-     */
+      Re-reads the KOrganizer configuration and picks up relevant
+      changes which are applicable to the view.
+    */
     virtual void updateConfig() {}
-  
-    /**
-     * selects the dates specified in the list.  If the view cannot support
-     * displaying all the dates requested, or it needs to change the dates
-     * in some manner, it may call @see datesSelected.
-     * @param dateList is the list of dates to try and select.
-     */
-    virtual void selectDates(const QDateList dateList) = 0;
-  
-    /**
-     * Select events visible in the current display
-     * @param eventList a list of events to select.
-     */
-    virtual void selectEvents(QPtrList<Event> eventList) = 0;
 
-  protected:
+  private:
     Calendar *mCalendar;
 };
 

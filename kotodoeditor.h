@@ -48,7 +48,7 @@ class KOTodoEditor : public KOIncidenceEditor
     void newTodo(QDateTime due,Todo *relatedTodo=0,bool allDay=false);
 
     /** Edit an existing todo. */
-    void editTodo(Todo *, QDate qd=QDate::currentDate());
+    void editTodo(Todo *);
 
     /** Set widgets to default values */
     void setDefaults(QDateTime due,Todo *relatedTodo,bool allDay);
