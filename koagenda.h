@@ -79,6 +79,11 @@ class KOAgenda : public QScrollView
 
     Incidence *selectedIncidence() const;
     QDate selectedIncidenceDate() const;
+    /**
+     * Returns the uid of the last incidence that was selected. This
+     * persists across reloads and clear, so that if the same uid
+     * reappears, it can be reselected. */
+    const QString lastSelectedUid() const;
 
     virtual bool eventFilter ( QObject *, QEvent * );
 
@@ -328,6 +333,10 @@ class KOAgenda : public QScrollView
 
     // Currently selected item
     QGuardedPtr<KOAgendaItem> mSelectedItem;
+    // Uid of the last selected item. Used for reselecting in situations
+    // where the selected item points to a no longer valid incidence, for
+    // example during resource reload.
+    QString mSelectedUid;
 
     // The Marcus Bains Line widget.
     MarcusBains *mMarcusBains;
