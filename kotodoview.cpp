@@ -421,6 +421,10 @@ KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent, const char* name)
   }
   connect( mPercentageCompletedPopupMenu, SIGNAL( activated( int ) ),
            SLOT( setNewPercentage( int ) ) );
+  
+  mDatePickerPopupMenu = new KDatePickerPopup( QDate::currentDate(),0,0 );
+  connect( mDatePickerPopupMenu, SIGNAL( dateChanged( QDate )),
+           SLOT( setNewDate( QDate ) ) );
 
   mItemPopupMenu = new QPopupMenu(this);
   mItemPopupMenu->insertItem(i18n("Show"), this,
@@ -660,6 +664,17 @@ void KOTodoView::popupMenu( QListViewItem *item, const QPoint &, int column )
       case 2:
         mPercentageCompletedPopupMenu->popup( QCursor::pos () );
         break;
+      case 3:
+        if ( mActiveItem->todo()->hasDueDate () ) {
+          mDatePickerPopupMenu->DatePicker()->setDate( mActiveItem->todo()->dtDue().date() );
+          mDatePickerPopupMenu->popup( QCursor::pos () );
+        }
+        else {
+          mItemPopupMenu->setItemEnabled( POPUP_UNSUBTODO,
+                                          mActiveItem->todo()->relatedTo() );
+          mItemPopupMenu->popup( QCursor::pos() );
+        }
+        break;
       case 5:
         getCategoryPopupMenu(
             static_cast<KOTodoViewItem *>( item ) )->popup( QCursor::pos () );
@@ -713,8 +728,8 @@ void KOTodoView::deleteTodo()
 void KOTodoView::setNewPriority(int index)
 {
   if (mActiveItem && !mActiveItem->todo()->isReadOnly ()) {
-    Todo*todo = mActiveItem->todo();
-    Todo*oldTodo = todo->clone();
+    Todo *todo = mActiveItem->todo();
+    Todo *oldTodo = todo->clone();
     todo->setPriority(mPriority[index]);
     mActiveItem->construct();
     emit todoModifiedSignal ( todo, oldTodo, KOGlobals::PRIORITY_MODIFIED );
@@ -725,8 +740,8 @@ void KOTodoView::setNewPriority(int index)
 void KOTodoView::setNewPercentage(int index)
 {
   if ( mActiveItem && !mActiveItem->todo()->isReadOnly () ) {
-    Todo*todo = mActiveItem->todo();
-    Todo*oldTodo = todo->clone();
+    Todo *todo = mActiveItem->todo();
+    Todo *oldTodo = todo->clone();
 
     if (mPercentage[index] == 100) {
       todo->setCompleted(QDateTime::currentDateTime());
@@ -736,6 +751,20 @@ void KOTodoView::setNewPercentage(int index)
     todo->setPercentComplete(mPercentage[index]);
     mActiveItem->construct();
     emit todoModifiedSignal( todo, oldTodo, KOGlobals::COMPLETION_MODIFIED );
+    delete oldTodo;
+  }
+}
+
+void KOTodoView::setNewDate(QDate date)
+{   
+  if ( mActiveItem && !mActiveItem->todo()->isReadOnly () ) {
+    Todo *todo = mActiveItem->todo();
+    Todo *oldTodo = todo->clone();
+
+    todo->setDtDue( date );
+    
+    mActiveItem->construct();
+    emit todoModifiedSignal( todo, oldTodo, KOGlobals::DATE_MODIFIED );
     delete oldTodo;
   }
 }

@@ -43,6 +43,8 @@
 #include <libkcal/calendar.h>
 #include <libkcal/todo.h>
 
+#include <libkdepim/kdatepickerpopup.h>
+
 #include <korganizer/baseview.h>
 
 #include "kotodoviewitem.h"
@@ -183,6 +185,7 @@ class KOTodoView : public KOrg::BaseView
 
     void setNewPriority( int );
     void setNewPercentage( int );
+    void setNewDate( QDate );
     void changedCategories( int );
 
     void purgeCompleted();
@@ -237,6 +240,7 @@ class KOTodoView : public KOrg::BaseView
     QPopupMenu *mPriorityPopupMenu;
     QPopupMenu *mPercentageCompletedPopupMenu;
     QPopupMenu *mCategoryPopupMenu;
+    KDatePickerPopup *mDatePickerPopupMenu;
 
     QMap<int, int> mPercentage;
     QMap<int, int> mPriority;
