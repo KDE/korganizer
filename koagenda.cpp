@@ -111,11 +111,11 @@ void MarcusBains::updateLocation(bool recalculate)
   oldToday = today;
 
   if(disabled || (today<0)) {
-    hide(); 
+    hide();
     mTimeBox->hide();
     return;
   } else {
-    show(); 
+    show();
     mTimeBox->show();
   }
 
@@ -1099,9 +1099,9 @@ void KOAgenda::placeSubCells( KOAgendaItem *placeItem )
   QPtrList<KOrg::CellItem> cells;
   KOAgendaItem *item;
   for ( item = mItems.first(); item != 0; item = mItems.next() ) {
-    cells.append( item );  
+    cells.append( item );
   }
-  
+
   QPtrList<KOrg::CellItem> items = KOrg::CellItem::placeItem( cells,
                                                               placeItem );
 
@@ -1113,7 +1113,7 @@ void KOAgenda::placeSubCells( KOAgendaItem *placeItem )
     placeAgendaItem( item, newSubCellWidth );
     placeItem->addConflictItem( item );
   }
-  if ( items.isEmpty() ) 
+  if ( items.isEmpty() )
     placeAgendaItem( placeItem, newSubCellWidth );
   placeItem->update();
 }
@@ -1203,7 +1203,7 @@ void KOAgenda::drawContents(QPainter* p, int cx, int cy, int cw, int ch)
 void KOAgenda::contentsToGrid (int x, int y, int& gx, int& gy)
 {
   gx = (int)( KOGlobals::self()->reverseLayout() ?
-        mColumns - 1 - x/mGridSpacingX : x/mGridSpacingX );
+        mColumns - x/mGridSpacingX : x/mGridSpacingX );
   gy = (int)( y/mGridSpacingY );
 }
 
@@ -1213,7 +1213,7 @@ void KOAgenda::contentsToGrid (int x, int y, int& gx, int& gy)
 void KOAgenda::gridToContents (int gx, int gy, int& x, int& y)
 {
   x = (int)( KOGlobals::self()->reverseLayout() ?
-             (mColumns - 1 - gx)*mGridSpacingX : gx*mGridSpacingX );
+             (mColumns - gx)*mGridSpacingX : gx*mGridSpacingX );
   y = (int)( gy*mGridSpacingY );
 }
 
@@ -1278,9 +1278,9 @@ KOAgendaItem *KOAgenda::insertItem (Incidence *event,QDate qd,int X,int YTop,int
   }
 
   KOAgendaItem *agendaItem = new KOAgendaItem (event,qd,viewport());
-  connect( agendaItem, SIGNAL( removeAgendaItem( KOAgendaItem* ) ), 
+  connect( agendaItem, SIGNAL( removeAgendaItem( KOAgendaItem* ) ),
            this, SLOT( removeAgendaItem( KOAgendaItem* ) ) );
-  connect( agendaItem, SIGNAL( showAgendaItem( KOAgendaItem* ) ), 
+  connect( agendaItem, SIGNAL( showAgendaItem( KOAgendaItem* ) ),
            this, SLOT( showAgendaItem( KOAgendaItem* ) ) );
 
   int YSize = YBottom - YTop + 1;
@@ -1319,9 +1319,9 @@ KOAgendaItem *KOAgenda::insertAllDayItem (Incidence *event,QDate qd,int XBegin,i
   }
 
   KOAgendaItem *agendaItem = new KOAgendaItem (event,qd,viewport());
-  connect( agendaItem, SIGNAL( removeAgendaItem( KOAgendaItem* ) ), 
+  connect( agendaItem, SIGNAL( removeAgendaItem( KOAgendaItem* ) ),
            this, SLOT( removeAgendaItem( KOAgendaItem* ) ) );
-  connect( agendaItem, SIGNAL( showAgendaItem( KOAgendaItem* ) ), 
+  connect( agendaItem, SIGNAL( showAgendaItem( KOAgendaItem* ) ),
            this, SLOT( showAgendaItem( KOAgendaItem* ) ) );
 
   agendaItem->setCellXY(XBegin,0,0);
@@ -1396,7 +1396,7 @@ void KOAgenda::removeEvent ( Event *event )
 {
   KOAgendaItem *item = mItems.first();
   bool taken = false;
-  // First find all items to be deleted and store them 
+  // First find all items to be deleted and store them
   // in its own list. Otherwise removeAgendaItem will reset
   // the current position and mess this up.
   QPtrList<KOAgendaItem> mItemsToRemove;
@@ -1418,13 +1418,13 @@ void KOAgenda::showAgendaItem( KOAgendaItem* agendaItem )
   if ( !agendaItem ) return;
   agendaItem->hide();
   addChild( agendaItem );
-  if ( !mItems.containsRef( agendaItem ) ) 
+  if ( !mItems.containsRef( agendaItem ) )
     mItems.append( agendaItem );
   placeSubCells( agendaItem );
   agendaItem->show();
 }
 
-bool KOAgenda::removeAgendaItem( KOAgendaItem* item ) 
+bool KOAgenda::removeAgendaItem( KOAgendaItem* item )
 {
   // we found the item. Let's remove it and update the conflicts
   bool taken = false;
@@ -1460,10 +1460,10 @@ void KOAgenda::deleteItemsToDelete()
 //QSizePolicy KOAgenda::sizePolicy() const
 //{
   // Thought this would make the all-day event agenda minimum size and the
-  // normal agenda take the remaining space. But it doesn´t work. The QSplitter
-  // don´t seem to think that an Expanding widget needs more space than a
+  // normal agenda take the remaining space. But it doesnt work. The QSplitter
+  // dont seem to think that an Expanding widget needs more space than a
   // Preferred one.
-  // But it doesn´t hurt, so it stays.
+  // But it doesnt hurt, so it stays.
 //  if (mAllDayMode) {
 //    return QSizePolicy(QSizePolicy::Expanding,QSizePolicy::Preferred);
 //  } else {
