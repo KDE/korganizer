@@ -230,11 +230,8 @@ void KOrganizer::initActions()
                     actionCollection(), "update");
 
   // event handling menu
-  (void)new KAction(i18n("New &Appointment..."), UserIcon("newevent"), 0,
+  (void)new KAction(i18n("New E&vent..."), UserIcon("newevent"), 0,
                     mCalendarView,SLOT(appointment_new()),
-                    actionCollection(), "new_appointment");
-  (void)new KAction(i18n("New E&vent..."), 0,
-                    mCalendarView,SLOT(allday_new()),
                     actionCollection(), "new_event");
   (void)new KAction(i18n("New &To-Do..."), 0,
                     mCalendarView,SLOT(newTodo()),
