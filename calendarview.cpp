@@ -997,32 +997,31 @@ void CalendarView::appointment_delete()
 void CalendarView::todo_unsub()
 {
   Todo *anTodo = selectedTodo();
-  if ( !anTodo || !anTodo->relatedTo() ) return;
-  Todo *oldTodo = anTodo->clone();
-  if ( mChanger->beginChange( anTodo ) ) {
-    anTodo->relatedTo()->removeRelation(anTodo);
-    anTodo->setRelatedTo(0);
-    anTodo->setRelatedToUid("");
-    mChanger->changeIncidence( oldTodo, anTodo, KOGlobals::RELATION_MODIFIED );
-    mChanger->endChange( anTodo );
-    setModified(true);
+  if( todo_unsub (anTodo ) ) {
     updateView();
-  } else {
-    KMessageBox::sorry( this, i18n("Unable to turn sub-to-do into a top-level "
-                        "to-do, because it cannot be locked.") );
   }
-  delete oldTodo;
 }
 
-bool CalendarView::deleteTodo(Todo *todo)
+bool CalendarView::todo_unsub( Todo *todo )
 {
-  if ( todo && !todo->relations().isEmpty() ) {
-    KMessageBox::sorry( this, i18n("Cannot delete to-do which has children."),
-                        i18n("Delete To-do") );
-    return false;
+  bool status;
+  if ( !todo || !todo->relatedTo() ) return false;
+  Todo *oldTodo = todo->clone();
+  if ( mChanger->beginChange( todo ) ) {
+    todo->relatedTo()->removeRelation(todo);
+    todo->setRelatedTo(0);
+    todo->setRelatedToUid("");
+    mChanger->changeIncidence( todo, todo, KOGlobals::RELATION_MODIFIED );
+    mChanger->endChange( todo );
+    setModified(true);
+    status = true;
   } else {
-    return true;
+    KMessageBox::sorry( this, i18n("Unable to turn sub-to-do into a top-level "
+        "to-do, because it cannot be locked.") );
+    status = false;
   }
+  delete oldTodo;
+  return status;
 }
 
 bool CalendarView::deleteIncidence( const QString &uid )
@@ -1700,6 +1699,60 @@ bool CalendarView::editIncidence( Incidence *incidence )
   return true;
 }
 
+void CalendarView::deleteTodoIncidence ( Todo *todo )
+{
+  Todo *subtodo;
+  int i;
+  
+  if ( !todo ) return ;
+ 
+  // it a simple todo, ask and delete.
+  if (todo->relations().isEmpty() ) {
+    bool doDelete = true;
+    if (KOPrefs::instance()->mConfirm ) {
+      doDelete = ( msgItemDelete( todo ) == KMessageBox::Continue );
+    }
+    if ( doDelete )
+      mChanger->deleteIncidence( todo );
+    return;
+  }
+
+  /* Ok, this todo has sub-to-dos, ask what to do */
+  int km=KMessageBox::questionYesNoCancel( this,
+                                i18n("The incidence \"%1\" has sub-to-dos. "
+                                     "Do you want to delete just this item and "
+                                     "make all its sub-to-dos independent, or "
+                                     "delete the to-do with all its sub-to-dos?"
+                                ).arg( todo->summary() ),
+                                i18n("KOrganizer Confirmation"), 
+                                i18n("Delete only this "),
+                                i18n("Delete all"));
+  // Delete only the father
+  if( km == KMessageBox::Yes ) {
+    // do all sub-to-dos independents
+    for( i=todo->relations().count()-1; i>=0; i--) {
+      subtodo= static_cast<Todo*>(todo->relations()[i]);
+      todo_unsub( subtodo );
+    }
+    
+  } else if ( km == KMessageBox::No ) {
+    // Delete all 
+    // do all sub-to-dos independents
+    // we have to hide the delete confirmation for each itemDate
+    bool saveConfirm=KOPrefs::instance()->mConfirm;
+    KOPrefs::instance()->mConfirm = false;
+    
+    for( i=todo->relations().count()-1; i>=0; i--) {
+      subtodo= static_cast<Todo*>(todo->relations()[i]);
+      todo_unsub (subtodo);
+      deleteIncidence( subtodo );
+    }
+    //Restore the Confirm option
+    KOPrefs::instance()->mConfirm=saveConfirm;
+  }
+  mChanger->deleteIncidence( todo );
+}
+
 void CalendarView::deleteIncidence(Incidence *incidence)
 {
   if ( !incidence || !mChanger ) {
@@ -1722,7 +1775,13 @@ void CalendarView::deleteIncidence(Incidence *incidence)
   // e.g. todos with children cannot be deleted, so act(..) returns false
   if ( !v.act( incidence, this ) )
     return;
-
+  //If it is a todo, there are specific delete function 
+  
+  if ( incidence && incidence->type()=="Todo" ) {
+    deleteTodoIncidence( static_cast<Todo*>(incidence) );
+    return;
+  }
+  
   if ( incidence->doesRecur() ) {
     QDate itemDate = mViewManager->currentSelectionDate();
     kdDebug(5850) << "Recurrence-Date: " << itemDate.toString() << endl;
