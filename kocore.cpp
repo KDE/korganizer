@@ -325,6 +325,7 @@ KCal::CalendarResources *KOCore::calendarResources()
       kdDebug(5850) << "Using as default resource: '" << fileName << "'" << endl;
 
       KCal::ResourceCalendar *defaultResource = new KCal::ResourceLocal( fileName );
+      defaultResource->setTimeZoneId( KOPrefs::instance()->mTimeZoneId );
       defaultResource->setResourceName( resourceName );
 
       manager->add( defaultResource );
