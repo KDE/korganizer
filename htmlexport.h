@@ -41,7 +41,11 @@ class HtmlExport {
         mMonthViewEnabled(true),mEventsEnabled(false),mTodosEnabled(true),
         mCategoriesTodoEnabled(false),mAttendeesTodoEnabled(false),
         mCategoriesEventEnabled(false),mAttendeesEventEnabled(false),
-        mDueDateEnabled(false) {}
+        mDueDateEnabled(false),
+        mExcludePrivateEventEnabled(false),
+        mExcludeConfidentialEventEnabled(false),
+        mExcludePrivateTodoEnabled(false),
+        mExcludeConfidentialTodoEnabled(false) {}
     virtual ~HtmlExport() {};
 
     /**
@@ -68,13 +72,25 @@ class HtmlExport {
   
     void setAttendeesTodoEnabled(bool enable=true) { mAttendeesTodoEnabled = enable; }
     bool attendeesTodoEnabled() { return mAttendeesTodoEnabled; }
+
+    void setExcludePrivateTodoEnabled(bool enable=true) { mExcludePrivateTodoEnabled = enable; }
+    bool excludePrivateTodoEnabled() { return mExcludePrivateTodoEnabled; }
+
+    void setExcludeConfidentialTodoEnabled(bool enable=true) { mExcludeConfidentialTodoEnabled = enable; }
+    bool excludeConfidentialTodoEnabled() { return mExcludeConfidentialTodoEnabled; }
   
     void setCategoriesEventEnabled(bool enable=true) { mCategoriesEventEnabled = enable; }
     bool categoriesEventEnabled() { return mCategoriesEventEnabled; }
   
     void setAttendeesEventEnabled(bool enable=true) { mAttendeesEventEnabled = enable; }
     bool attendeesEventEnabled() { return mAttendeesEventEnabled; }
-  
+
+    void setExcludePrivateEventEnabled(bool enable=true) { mExcludePrivateEventEnabled = enable; }
+    bool excludePrivateEventEnabled() { return mExcludePrivateEventEnabled; }
+
+    void setExcludeConfidentialEventEnabled(bool enable=true) { mExcludeConfidentialEventEnabled = enable; }
+    bool excludeConfidentialEventEnabled() { return mExcludeConfidentialEventEnabled; }
+
     void setDueDateEnabled(bool enable=true) { mDueDateEnabled = enable; }
     bool dueDateEnabled() { return mDueDateEnabled; }
   
@@ -91,6 +107,9 @@ class HtmlExport {
     void createHtmlTodo (QTextStream *ts,Todo *todo);
     void createHtmlEvent (QTextStream *ts,Event *event,QDate date, bool withDescription = true);
 
+    bool checkSecrecyTodo (Todo *todo);
+    bool checkSecrecyEvent (Event *event);
+
     void formatHtmlCategories (QTextStream *ts,Incidence *event);
     void formatHtmlAttendees (QTextStream *ts,Incidence *event);
 
@@ -104,8 +123,12 @@ class HtmlExport {
     bool mTodosEnabled;
     bool mCategoriesTodoEnabled;
     bool mAttendeesTodoEnabled;
+    bool mExcludePrivateTodoEnabled;
+    bool mExcludeConfidentialTodoEnabled;
     bool mCategoriesEventEnabled;
     bool mAttendeesEventEnabled;
+    bool mExcludePrivateEventEnabled;
+    bool mExcludeConfidentialEventEnabled;
     bool mDueDateEnabled;
     
     QDate mFromDate;

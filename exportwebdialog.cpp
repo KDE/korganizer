@@ -135,6 +135,12 @@ void ExportWebDialog::setupTodoPage()
   
   mCbAttendeesTodo = new QCheckBox (i18n("Attendees"),mTodoPage);
   topLayout->addWidget(mCbAttendeesTodo);
+
+  mCbExcludePrivateTodo = new QCheckBox (i18n("Exclude Private"),mTodoPage);
+  topLayout->addWidget(mCbExcludePrivateTodo);
+
+  mCbExcludeConfidentialTodo = new QCheckBox (i18n("Exclude Confidential"),mTodoPage);
+  topLayout->addWidget(mCbExcludeConfidentialTodo);
   
   topLayout->addStretch(1);
 }
@@ -150,6 +156,12 @@ void ExportWebDialog::setupEventPage()
   
   mCbAttendeesEvent = new QCheckBox (i18n("Attendees"),mEventPage);
   topLayout->addWidget(mCbAttendeesEvent);
+
+  mCbExcludePrivateEvent = new QCheckBox (i18n("Exclude Private"),mEventPage);
+  topLayout->addWidget(mCbExcludePrivateEvent);
+
+  mCbExcludeConfidentialEvent = new QCheckBox (i18n("Exclude Confidential"),mEventPage);
+  topLayout->addWidget(mCbExcludeConfidentialEvent);
   
   topLayout->addStretch(1);
 }
@@ -189,8 +201,12 @@ void ExportWebDialog::exportWebPage()
   mExport->setTodosEnabled(mCbTodo->isChecked());
   mExport->setCategoriesEventEnabled(mCbCategoriesEvent->isChecked());
   mExport->setAttendeesEventEnabled(mCbAttendeesEvent->isChecked());
+  mExport->setExcludePrivateEventEnabled(mCbExcludePrivateEvent->isChecked());
+  mExport->setExcludeConfidentialEventEnabled(mCbExcludeConfidentialEvent->isChecked());
   mExport->setCategoriesTodoEnabled(mCbCategoriesTodo->isChecked());
   mExport->setAttendeesTodoEnabled(mCbAttendeesTodo->isChecked());
+  mExport->setExcludePrivateTodoEnabled(mCbExcludePrivateTodo->isChecked());
+  mExport->setExcludeConfidentialTodoEnabled(mCbExcludeConfidentialTodo->isChecked());
   mExport->setDueDateEnabled(mCbDueDates->isChecked());
   mExport->setDateRange(mFromDate->getDate(),mToDate->getDate());
 
