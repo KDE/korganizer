@@ -72,7 +72,7 @@ FreeBusyUrlWidget::FreeBusyUrlWidget( KCal::Attendee *attendee, QWidget *parent,
   mUrlEdit = new KLineEdit( this );
   topLayout->addWidget( mUrlEdit );
 
-  QString configFile = locateLocal( "appdata", "freebusyurls" );
+  QString configFile = locateLocal( "data", "korganizer/freebusyurls" );
   mConfig = new KConfig( configFile );
 }
 
