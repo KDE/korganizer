@@ -191,7 +191,7 @@ void KOTodoListView::contentsMouseMoveEvent(QMouseEvent* e)
       QString source = fullPath(item);
       if ( QFile::exists(source) ) {
         QUriDrag* ud = new QUriDrag(viewport());
-        ud->setUnicodeUris( source );
+        ud->setFilenames( source );
         if ( ud->drag() )
           QMessageBox::information( this, "Drag source",
 				    QString("Delete ")+source, "Not implemented" );
