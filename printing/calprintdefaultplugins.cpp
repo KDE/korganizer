@@ -512,6 +512,7 @@ void CalPrintTodos::readSettingsWidget()
     mIncludeDescription = cfg->mDescription->isChecked();
     mIncludePriority = cfg->mPriority->isChecked();
     mIncludeDueDate = cfg->mDueDate->isChecked();
+//TODO:    mIncludePercentComplete = cfg->mPercentComplete->isChecked();
     mConnectSubTodos = cfg->mConnectSubTodos->isChecked();
   }
 }
@@ -531,6 +532,7 @@ void CalPrintTodos::setSettingsWidget()
     cfg->mDescription->setChecked( mIncludeDescription );
     cfg->mPriority->setChecked( mIncludePriority );
     cfg->mDueDate->setChecked( mIncludeDueDate );
+//TODO:   cfg->mPercentComplete->setChecked( mIncludePercentComplete );
     cfg->mConnectSubTodos->setChecked( mConnectSubTodos );
   }
 }
@@ -543,6 +545,7 @@ void CalPrintTodos::loadConfig()
     mIncludeDescription = mConfig->readBoolEntry( "Include description", true );
     mIncludePriority = mConfig->readBoolEntry( "Include priority", true );
     mIncludeDueDate = mConfig->readBoolEntry( "Include due date", true );
+//TODO:    mIncludePercentComplete = mConfig->readBoolEntry( "Include percentage completed", true );
     mConnectSubTodos = mConfig->readBoolEntry( "Connect subtodos", true );
   }
   setSettingsWidget();
@@ -557,6 +560,7 @@ void CalPrintTodos::saveConfig()
     mConfig->writeEntry( "Include description", mIncludeDescription );
     mConfig->writeEntry( "Include priority", mIncludePriority );
     mConfig->writeEntry( "Include due date", mIncludeDueDate );
+//TODO:    mConfig->writeEntry( "Include percentage completed", mIncludePercentComplete );
     mConfig->writeEntry( "Connect subtodos", mConnectSubTodos );
   }
 }
@@ -623,10 +627,10 @@ void CalPrintTodos::print( QPainter &p, int width, int height )
       }
 
       QDate start = currEvent->dtStart().date();
-      // if it is not to start yet, skip.
-      if ( ( !start.isValid() ) && ( start >= mToDate ) ) {
-        continue;
-      }
+      // TODO: if it is not to start yet, skip.
+//      if ( ( !start.isValid() ) && ( start >= mToDate ) ) {
+//        continue;
+//      }
       // priority
       int priority = currEvent->priority();
       // 0 is the lowest priority (the unspecified one)
