@@ -10,8 +10,8 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>386</width>
-            <height>241</height>
+            <width>497</width>
+            <height>270</height>
         </rect>
     </property>
     <property name="caption">
@@ -46,7 +46,7 @@
                 <cstring>mDateRangeGroup</cstring>
             </property>
             <property name="title">
-                <string>Date and time range</string>
+                <string>Date &amp;&amp; Time Range</string>
             </property>
             <grid>
                 <property name="name">
@@ -134,7 +134,7 @@
                 <cstring>mPrintType</cstring>
             </property>
             <property name="title">
-                <string>Type of view</string>
+                <string>Type of View</string>
             </property>
             <grid>
                 <property name="name">
@@ -255,7 +255,7 @@
                 <bool>false</bool>
             </property>
             <property name="text">
-                <string>Include To&amp;dos that are due on the printed day(s)</string>
+                <string>Include to&amp;dos that are due on the printed day(s)</string>
             </property>
         </widget>
     </grid>
@@ -299,7 +299,6 @@
 </connections>
 <layoutdefaults spacing="6" margin="11"/>
 <includehints>
-    <includehint>qwidget.h</includehint>
     <includehint>kdateedit.h</includehint>
     <includehint>kdateedit.h</includehint>
 </includehints>

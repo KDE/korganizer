@@ -10,8 +10,8 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>351</width>
-            <height>313</height>
+            <width>437</width>
+            <height>377</height>
         </rect>
     </property>
     <property name="caption">
@@ -45,7 +45,7 @@
                 <cstring>mPriority</cstring>
             </property>
             <property name="text">
-                <string>Include &amp;Priority of the item</string>
+                <string>Include &amp;priority of the item</string>
             </property>
         </widget>
         <widget class="QButtonGroup" row="1" column="0" rowspan="1" colspan="2">
@@ -53,7 +53,7 @@
                 <cstring>mPrintType</cstring>
             </property>
             <property name="title">
-                <string>Items to print</string>
+                <string>Items to Print</string>
             </property>
             <grid>
                 <property name="name">
@@ -244,7 +244,4 @@
     </connection>
 </connections>
 <layoutdefaults spacing="6" margin="11"/>
-<includehints>
-    <includehint>qwidget.h</includehint>
-</includehints>
 </UI>

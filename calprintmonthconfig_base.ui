@@ -10,8 +10,8 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>390</width>
-            <height>158</height>
+            <width>496</width>
+            <height>168</height>
         </rect>
     </property>
     <property name="caption">
@@ -46,7 +46,7 @@
                 <cstring>mDateRangeGroup</cstring>
             </property>
             <property name="title">
-                <string>Date and time range</string>
+                <string>Date &amp;&amp; Time Range</string>
             </property>
             <grid>
                 <property name="name">
@@ -137,7 +137,7 @@
                 <bool>false</bool>
             </property>
             <property name="text">
-                <string>Include To&amp;dos that are due on the printed day(s)</string>
+                <string>Include to&amp;dos that are due on the printed day(s)</string>
             </property>
         </widget>
         <widget class="QCheckBox" row="1" column="0">
@@ -175,7 +175,6 @@
 </images>
 <layoutdefaults spacing="6" margin="11"/>
 <includehints>
-    <includehint>qwidget.h</includehint>
     <includehint>kdateedit.h</includehint>
     <includehint>kdateedit.h</includehint>
 </includehints>
