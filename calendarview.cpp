@@ -1321,7 +1321,7 @@ void CalendarView::exportICalendar()
 
 void CalendarView::exportVCalendar()
 {
-  if (mCalendar->journalList().count() > 0) {
+  if (mCalendar->journals().count() > 0) {
     int result = KMessageBox::warningContinueCancel(this,
         i18n("The journal entries can not be exported to a vCalendar file."),
         i18n("Data Loss Warning"),i18n("Proceed"),"dontaskVCalExport",
@@ -1523,7 +1523,7 @@ void CalendarView::takeOverCalendar()
     todos.at(i)->setReadOnly(false);
   }
 
-  QPtrList<Journal> journals = mCalendar->journalList();
+  QPtrList<Journal> journals = mCalendar->journals();
   for(uint i=0; i<journals.count(); ++i) {
     journals.at(i)->setOrganizer(KOPrefs::instance()->email());
     journals.at(i)->recreate();
