@@ -1670,6 +1670,5 @@ void CalendarView::takeOverCalendar()
 
 void CalendarView::showIntro()
 {
-  showWhatsNextView();
-  mWhatsNextView->displayAboutPage();
+  kdDebug() << "To be implemented." << endl;
 }

@@ -3,17 +3,27 @@
 // $Id$
 
 #include <qlistview.h>
+#include <qtextbrowser.h>
 
 #include "kobaseview.h"
 
-class QTextView;
-//class KHTMLPart;
+class KOEventViewerDialog;
+
+class WhatsNextTextBrowser : public QTextBrowser {
+    Q_OBJECT
+  public:
+    WhatsNextTextBrowser(QWidget *parent) : QTextBrowser(parent) {}
+
+    void setSource(const QString &);
+
+  signals:
+    void showIncidence(const QString &uid);
+};
+
 
 /**
- * This class provides a view of the next events and todos
- *
- * @author Cornelius Schumacher <schumacher@kde.org>
- */
+ This class provides a view of the next events and todos
+*/
 class KOWhatsNextView : public KOBaseView
 {
     Q_OBJECT
@@ -29,8 +39,6 @@ class KOWhatsNextView : public KOBaseView
     virtual void printPreview(CalPrinter *calPrinter,
                               const QDate &, const QDate &);
   
-    void displayAboutPage();
-  
   public slots:
     virtual void updateView();
     virtual void selectDates(const QDateList dateList);
@@ -42,14 +50,16 @@ class KOWhatsNextView : public KOBaseView
     void appendEvent(Event *);
     void appendTodo(Todo *);
   
+  private slots:
+    void showIncidence(const QString &);
+  
   private:
-    // Taken from kmail/kfileio
-    QString kFileToString(const QString &fileName, bool ensureNewline=TRUE,
-	                  bool withDialogs=TRUE);
-
-//    KHTMLPart *mView;
-    QTextView *mView;
+    void createEventViewer();
+  
+    QTextBrowser *mView;
     QString mText;
+    
+    KOEventViewerDialog *mEventViewer;
 };
 
 #endif

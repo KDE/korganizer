@@ -5,19 +5,18 @@
 #define _KOPREFSDIALOG_H
 
 #include <qframe.h>
-#include <qlineedit.h>
-#include <qcombobox.h>
-#include <qcheckbox.h>
-#include <qradiobutton.h>
-#include <qpushbutton.h>
-
 #include <kdialogbase.h>
 
 #include "kprefsdialog.h"
 
 class QSpinBox;
 class QSlider;
-
+class KURLRequester;
+class QComboBox;
+class QPushButton;
+class QRadioButton;
+class QLineEdit;
+class QCheckBox;
 
 /** Dialog to change the korganizer configuration.
   */
@@ -118,7 +117,7 @@ class KOPrefsDialog : public KPrefsDialog
     QComboBox    *mPrinterCombo;
     QButtonGroup *mPaperSizeGroup;
     QButtonGroup *mPaperOrientationGroup;
-    QLineEdit    *mPrintPreviewEdit;
+    KURLRequester *mPrintPreviewEdit;
 };
 
 #endif

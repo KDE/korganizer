@@ -936,6 +936,16 @@ void KOrganizer::makeActive()
                                  "Please save it before activating."));
     return;
   }
+  
+  if (!mURL.isLocalFile()) {
+    int result = KMessageBox::warningContinueCancel(this,
+      i18n("Your calendar is a remote file. Activating it can cause\n"
+           "synchronisation problems leading to data loss.\n"
+           "Make sure that it is accessed by no more than one single"
+           "KOrganizer instance at the same time."),
+      i18n("Activating Calendar."),i18n("Activate Calendar"),"dontaskActivateWarning",true);
+    if (result == KMessageBox::Cancel) return;
+  }
 
   KConfig *config(kapp->config());
   config->setGroup("General");
