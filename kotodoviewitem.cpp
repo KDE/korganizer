@@ -161,6 +161,8 @@ void KOTodoViewItem::stateChange(bool state)
   // do not change setting on startup or if no valid todo item is given
   if ( m_init || !mTodo ) return;
 
+  if ( mTodo->isReadOnly() ) return;
+
   kdDebug(5850) << "State changed, modified " << state << endl;
   QString keyd = "9";
 

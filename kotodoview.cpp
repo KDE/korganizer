@@ -751,7 +751,7 @@ void KOTodoView::showItem( QListViewItem *item, const QPoint &, int )
 void KOTodoView::popupMenu( QListViewItem *item, const QPoint &, int column )
 {
   mActiveItem = static_cast<KOTodoViewItem *>( item );
-  if ( item ) {
+  if ( mActiveItem && !mActiveItem->todo()->isReadOnly() ) {
     QDate date = mActiveItem->todo()->dtDue().date();
     if ( mActiveItem->todo()->hasDueDate () ) {
       mMovePopupMenu->datePicker()->setDate( date );
