@@ -510,6 +510,7 @@
 </connections>
 <includes>
     <include location="local" impldecl="in implementation">kogroupwareprefspage.ui.h</include>
+    <include location="global" impldecl="in declaration">kdepimmacros.h</include>
 </includes>
 <signals>
     <signal>changed()</signal>
