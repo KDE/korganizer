@@ -1,3 +1,5 @@
+#ifndef RESOURCEVIEW.CPP
+#define RESOURCEVIEW.CPP
 /*
     This file is part of KOrganizer.
 
@@ -41,8 +43,6 @@
 #include <qpushbutton.h>
 #include <qpopupmenu.h>
 
-#include "koprefs.h"
-
 using namespace KCal;
 
 ResourceViewFactory::ResourceViewFactory( KCal::CalendarResources *calendar,
@@ -85,7 +85,8 @@ ResourceItem::ResourceItem( ResourceCalendar *resource, ResourceView *view,
                             KListView *parent )
   : QCheckListItem( parent, resource->resourceName(), CheckBox ),
     mResource( resource ), mView( view ), mBlockStateChange( false ),
-    mIsSubresource( false )
+    mIsSubresource( false ), mResourceIdentifier( 0 )
+   
 {
   setGuiState();
 
@@ -104,8 +105,9 @@ ResourceItem::ResourceItem( ResourceCalendar *resource, ResourceView *view,
 ResourceItem::ResourceItem( KCal::ResourceCalendar *resource,
                             const QString& sub, ResourceView *view,
                             ResourceItem* parent )
-  : QCheckListItem( parent, sub, CheckBox ), mResource( resource ),
-    mView( view ), mBlockStateChange( false ), mIsSubresource( true )
+  : QCheckListItem( parent, resource->labelForSubresource( sub ), CheckBox ), mResource( resource ),
+    mView( view ), mBlockStateChange( false ), mIsSubresource( true ),
+    mResourceIdentifier( sub )
 {
   setGuiState();
 }
@@ -114,7 +116,7 @@ void ResourceItem::setGuiState()
 {
   mBlockStateChange = true;
   if ( mIsSubresource )
-    setOn( mResource->subresourceActive( text( 0 ) ) );
+    setOn( mResource->subresourceActive( mResourceIdentifier ) );
   else
     setOn( mResource->isActive() );
   mBlockStateChange = false;
@@ -125,7 +127,7 @@ void ResourceItem::stateChange( bool active )
   if ( mBlockStateChange ) return;
 
   if ( mIsSubresource ) {
-    mResource->setSubresourceActive( text( 0 ), active );
+    mResource->setSubresourceActive( mResourceIdentifier, active );
   } else {
     if ( active ) {
       if ( mResource->load() ) mResource->setActive( true );
@@ -233,12 +235,13 @@ void ResourceView::addResource()
                           "KRES::ConfigDialog" );
 
   if ( dlg.exec() ) {
-    resource->setTimeZoneId( KOPrefs::instance()->mTimeZoneId );
+    if ( resource->isActive() ) {
+      resource->open();
+      resource->load();
+    }
+
     manager->add( resource );
-    // we have to call resourceAdded manually, because for in-process changes
-    // the dcop signals are not connected, so the resource's signals would not
-    // be connected otherwise
-    mCalendar->resourceAdded( resource );
+    addResourceItem( resource );
   } else {
     delete resource;
     resource = 0;
@@ -444,3 +447,4 @@ void ResourceView::requestClose( ResourceCalendar *r )
 }
 
 #include "resourceview.moc"
+#endif // RESOURCEVIEW.CPP

@@ -76,6 +76,7 @@ class ResourceItem : public QCheckListItem
     ResourceView *mView;
     bool mBlockStateChange;
     bool mIsSubresource;
+    const QString mResourceIdentifier;
 };
 
 /**
