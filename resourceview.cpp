@@ -291,6 +291,7 @@ void ResourceView::slotSubresourceRemoved( ResourceCalendar */*calendar*/,
                                            const QString &resource )
 {
   delete findItemByIdentifier( resource );
+  emitResourcesChanged();
 }
 
 void ResourceView::closeResource( ResourceCalendar *r )
