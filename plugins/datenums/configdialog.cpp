@@ -34,14 +34,14 @@
 #include "configdialog.moc"
 
 ConfigDialog::ConfigDialog(QWidget *parent)
-  : KDialogBase(Plain,i18n("Configure day numbers"),Ok|Cancel,Ok,parent)
+  : KDialogBase(Plain,i18n("Configure Day Numbers"),Ok|Cancel,Ok,parent)
 {
   QFrame *topFrame = plainPage();
   QVBoxLayout *topLayout = new QVBoxLayout(topFrame,0,spacingHint());
 
 //  QLabel *label = new QLabel(i18n("Show date numbers:"),topFrame);
 //  topLayout->addWidget(label);
-  mDayNumGroup = new QVButtonGroup( i18n("Show Date Number:"), topFrame );
+  mDayNumGroup = new QVButtonGroup( i18n("Show Date Number"), topFrame );
 	topLayout->addWidget( mDayNumGroup );
 
 	new QRadioButton( i18n("Show day number"), mDayNumGroup );

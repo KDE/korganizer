@@ -1397,7 +1397,7 @@ bool ActionManager::saveResourceCalendar()
         i18n("Saving of '%1' failed. Check that the resource is "
              "properly configured.\nIgnore problem and continue without "
              "saving or cancel save?").arg( (*it)->resourceName() ),
-        i18n("Save Error"), i18n("Don't save") );
+        i18n("Save Error"), i18n("Don't Save") );
       if ( result == KMessageBox::Cancel ) return false;
     }
   }
