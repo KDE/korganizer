@@ -40,14 +40,12 @@ bool UriHandler::process( const QString &uri )
 
 #ifndef KORG_NODCOP
   if ( uri.startsWith( "kmail:" ) ) {
-    int pos = uri.find( "/" );
-    if ( pos > 5 ) {
-      QString serialNumberStr = uri.mid( 6, pos - 6 );
-      QString messageId = uri.mid( pos + 1 );
-      kdDebug() << "SERIALNUMBERSTR: " << serialNumberStr << " MESSAGEID: "
+    int pos = uri.find( "/", 8 );
+    if ( pos > 8 ) {
+      QString messageId = uri.mid( 8, pos - 8 );
+      Q_UINT32 serialNumber = messageId.toUInt();
+      kdDebug() << "SERIALNUMBERSTR: " << serialNumber << " MESSAGEID: "
                 << messageId << endl;
-      Q_UINT32 serialNumber = serialNumberStr.toUInt();
-      kdDebug() << "SERIALNUMBER: " << serialNumber << endl;
       KMailIface_stub kmailIface( "kmail", "KMailIface" );
       kmailIface.showMail( serialNumber, messageId );
       return true;
