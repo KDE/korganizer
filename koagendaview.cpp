@@ -335,7 +335,7 @@ void KOAgendaView::createDayLabels()
   for(i=0;i<mSelectedDates.count();++i) {
     date = mStartDate.addDays(i);
     dayLabel = new QLabel(mDayLabels);
-    dayLabel->setText(QString("%1 %2").arg(date.dayName(date.dayOfWeek()))
+    dayLabel->setText(QString("%1 %2").arg(KGlobal::locale()->weekDayName(date.dayOfWeek()))
                                       .arg(date.day()));
     dayLabel->setAlignment(QLabel::AlignHCenter);
     mLayoutDayLabels->addWidget(dayLabel,1);

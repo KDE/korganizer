@@ -700,7 +700,7 @@ void CalPrinter::drawSmallMonth(QPainter &p, const QDate &qd,
   // draw the title
   p.setFont(QFont("helvetica", 8, QFont::Bold));
   //  int lineSpacing = p.fontMetrics().lineSpacing();
-  p.drawText(x, y, width, height/4, AlignCenter, qd.monthName(qd.month()));
+  p.drawText(x, y, width, height/4, AlignCenter, KGlobal::locale()->monthName(qd.month()));
 
   int cellWidth = width/7;
   int cellHeight = height/8;

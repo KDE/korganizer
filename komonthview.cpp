@@ -352,7 +352,7 @@ KOMonthView::KOMonthView(CalObject *cal,
         daynum.setNum(date.day());
         if(date.day() == 1) {
             daynum.prepend(" ");
-            daynum.prepend(date.monthName(date.month()));
+            daynum.prepend(KGlobal::locale()->monthName(date.month(), true));
         }
         dayHeaders[i] = new KSelLabel(vFrame, daynum, i);
         dayHeaders[i]->setFont(bfont);
@@ -654,7 +654,7 @@ void KOMonthView::viewChanged()
     daynum.setNum(date.day());
     if(date.day() == 1) {
       daynum.prepend(" ");
-      daynum.prepend(date.monthName(date.month()));
+      daynum.prepend(KGlobal::locale()->monthName(date.month(), true));
     }
 
     // add holiday, if present
