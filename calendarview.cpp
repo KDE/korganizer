@@ -708,6 +708,7 @@ void CalendarView::changeIncidenceDisplay( Incidence *incidence, int action )
     // If there is an event view visible update the display
     mViewManager->currentView()->changeIncidenceDisplay( incidence, action );
     if ( mTodoList ) mTodoList->changeIncidenceDisplay( incidence, action );
+    mEventViewer->changeIncidenceDisplay( incidence, action );
   } else {
     mViewManager->currentView()->updateView();
     if ( mTodoList ) mTodoList->updateView();
@@ -1934,8 +1935,10 @@ void CalendarView::deleteIncidence(Incidence *incidence)
     if (KOPrefs::instance()->mConfirm ) {
       doDelete = ( msgItemDelete( incidence ) == KMessageBox::Continue );
     }
-    if ( doDelete )
+    if ( doDelete ) {
       mChanger->deleteIncidence( incidence );
+      processIncidenceSelection( 0 );
+    }
   }
 }
 

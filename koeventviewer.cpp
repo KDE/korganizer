@@ -29,10 +29,12 @@
 #include <libkcal/incidence.h>
 #include <libkcal/incidenceformatter.h>
 #include <kdebug.h>
+#include <koglobals.h>
 
 KOEventViewer::KOEventViewer( QWidget *parent, const char *name )
   : QTextBrowser( parent, name ), mDefaultText("")
 {
+  mIncidence = 0;
 }
 
 KOEventViewer::~KOEventViewer()
@@ -77,8 +79,13 @@ bool KOEventViewer::appendIncidence( Incidence *incidence )
 void KOEventViewer::setIncidence( Incidence *incidence )
 {
   clearEvents();
-  if( incidence ) appendIncidence( incidence );
-  else clearEvents(true);
+  if( incidence ) {
+    appendIncidence( incidence );
+    mIncidence = incidence;
+  } else {
+    clearEvents( true );
+    mIncidence = 0;
+  }
 }
 
 void KOEventViewer::clearEvents( bool now )
@@ -96,6 +103,22 @@ void KOEventViewer::addText( const QString &text )
 void KOEventViewer::setDefaultText( const QString &text )
 {
   mDefaultText = text;
+}
+
+void KOEventViewer::changeIncidenceDisplay( Incidence *incidence, int action )
+{
+  if ( mIncidence && ( incidence->uid() == mIncidence->uid() ) ) {
+    switch (action ) {
+      case KOGlobals::INCIDENCEEDITED:{
+        setIncidence( incidence );
+        break;
+      }
+      case KOGlobals::INCIDENCEDELETED: {
+        setIncidence( 0 );
+        break;
+      } 
+    }
+  }
 }
 
 #include "koeventviewer.moc"

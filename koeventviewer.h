@@ -78,7 +78,9 @@ class KOEventViewer : public QTextBrowser
       Show given incidence in viewer. Clear all previously shown incidences.
     */
     virtual void setIncidence( Incidence * );
+    void changeIncidenceDisplay( Incidence *incidence, int action );
   private:
+    Incidence *mIncidence;
     QTextBrowser *mEventTextView;
     QString mDefaultText;
     QString mText;
