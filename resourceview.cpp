@@ -142,9 +142,10 @@ void ResourceItem::stateChange( bool active )
     setOpen( toActivate && childCount() > 0 );
 
     setGuiState();
-  } else
+  } else {
     // Handle a subresource
     mResource->setSubresourceActive( text( 0 ), active );
+  }
 
   mView->emitResourcesChanged();
 }
