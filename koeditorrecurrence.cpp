@@ -248,7 +248,7 @@ RecurMonthly::RecurMonthly( QWidget *parent, const char *name ) :
   QWhatsThis::add( mByDayRadio,
                    i18n("Sets a specific day of the month on which "
                         "this event or to-do should recur.") );
-
+  
   buttonLayout->addWidget( mByDayRadio, 0, 0 );
 
   QString whatsThis = i18n("The day of the month on which this event or to-do "
@@ -296,8 +296,8 @@ RecurMonthly::RecurMonthly( QWidget *parent, const char *name ) :
 
   mByPosRadio = new QRadioButton( recurOnText, buttonGroup);
   QWhatsThis::add( mByPosRadio,
-       i18n("Sets a weekday and specific week in the month "
-      "on which this event or to-do should recur") );
+		   i18n("Sets a weekday and specific week in the month "
+			"on which this event or to-do should recur") );
   buttonLayout->addWidget( mByPosRadio, 1, 0 );
 
   mByPosCountCombo = createWeekCountCombo( buttonGroup );
@@ -381,13 +381,13 @@ RecurYearly::RecurYearly( QWidget *parent, const char *name ) :
   }
   mByMonthRadio = new QRadioButton( recurInMonthText, buttonGroup );
   QWhatsThis::add( mByMonthRadio,
-       i18n("Sets a specific day in a specific month on which "
-      "this event or to-do should recur.") );
+		   i18n("Sets a specific day in a specific month on which "
+			"this event or to-do should recur.") );
   monthLayout->addWidget( mByMonthRadio );
   mByMonthSpin = new QSpinBox( 1, 31, 1, buttonGroup );
   QWhatsThis::add( mByMonthSpin,
-       i18n("The day of the month on which this event or to-do "
-      "should recur.") );
+		   i18n("The day of the month on which this event or to-do "
+			"should recur.") );
   monthLayout->addWidget( mByMonthSpin );
   QLabel *ofLabel = new QLabel(
       i18n("part between XXX and YYY of 'Recur on day XXX of month YYY'", " &of "),
@@ -410,8 +410,8 @@ RecurYearly::RecurYearly( QWidget *parent, const char *name ) :
   }
   mByPosRadio = new QRadioButton( recurOnPosText, buttonGroup );
   QWhatsThis::add( mByPosRadio,
-       i18n("Sets a specific day in a specific week of a specific "
-      "month on which this event or to-do should recur.") );
+		   i18n("Sets a specific day in a specific week of a specific "
+			"month on which this event or to-do should recur.") );
   posLayout->addWidget( mByPosRadio );
 
   mByPosDayCombo = createWeekCountCombo( buttonGroup );
@@ -441,14 +441,14 @@ RecurYearly::RecurYearly( QWidget *parent, const char *name ) :
     recurOnDayText = i18n("Recur on &day #");
   }
   QString whatsThis = i18n("Sets a specific day within the year on which this "
-         "event or to-do should recur.");
+			   "event or to-do should recur.");
   mByDayRadio = new QRadioButton( recurOnDayText, buttonGroup );
   QWhatsThis::add( mByDayRadio, whatsThis );
   dayLayout->addWidget( mByDayRadio );
 
   mByDaySpin = new QSpinBox( 1, 366, 1, buttonGroup );
   QWhatsThis::add( mByDaySpin, whatsThis );
-
+  
   dayLayout->addWidget( mByDaySpin );
 
   QString ofTheYear( i18n("part after NNN of 'Recur on day #NNN of the year'", " of the &year"));
@@ -547,32 +547,32 @@ ExceptionsWidget::ExceptionsWidget( QWidget *parent, const char *name ) :
 
   mExceptionDateEdit = new KDateEdit( box );
   QWhatsThis::add( mExceptionDateEdit,
-       i18n("A date that should be considered an exception "
-      "to the recurrence rules for this event or to-do.") );
+		   i18n("A date that should be considered an exception "
+			"to the recurrence rules for this event or to-do.") );
   mExceptionDateEdit->setDate( QDate::currentDate() );
   boxLayout->addWidget( mExceptionDateEdit, 0, 0 );
 
   QPushButton *addExceptionButton = new QPushButton( i18n("&Add"), box );
   QWhatsThis::add( addExceptionButton,
-       i18n("Add this date as an exception "
-      "to the recurrence rules for this event or to-do.") );
+		   i18n("Add this date as an exception "
+			"to the recurrence rules for this event or to-do.") );
   boxLayout->addWidget( addExceptionButton, 1, 0 );
   QPushButton *changeExceptionButton = new QPushButton( i18n("&Change"), box );
   QWhatsThis::add( changeExceptionButton,
-       i18n("Replace the currently selected date with this date.") );
+		   i18n("Replace the currently selected date with this date.") );
   boxLayout->addWidget( changeExceptionButton, 2, 0 );
   QPushButton *deleteExceptionButton = new QPushButton( i18n("&Delete"), box );
   QWhatsThis::add( deleteExceptionButton,
-       i18n("Delete the currently selected date from the list of dates "
-            "that should be considered exceptions to the recurrence rules "
-            "for this event or to-do.") );
+		   i18n("Delete the currently selected date from the list of dates "
+		        "that should be considered exceptions to the recurrence rules "
+		        "for this event or to-do.") );
   boxLayout->addWidget( deleteExceptionButton, 3, 0 );
 
   mExceptionList = new QListBox( box );
   QWhatsThis::add( mExceptionList,
-       i18n("Displays current dates that are being considered "
-      "exceptions to the recurrence rules for this event "
-      "or to-do.") );
+		   i18n("Displays current dates that are being considered "
+			"exceptions to the recurrence rules for this event "
+			"or to-do.") );
   boxLayout->addMultiCellWidget( mExceptionList, 0, 3, 1, 1 );
 
   boxLayout->setRowStretch( 4, 1 );
@@ -661,8 +661,8 @@ RecurrenceRangeWidget::RecurrenceRangeWidget( QWidget *parent,
   mRangeGroupBox = new QGroupBox( 1, Horizontal, i18n("Recurrence Range"),
                                   this );
   QWhatsThis::add( mRangeGroupBox,
-       i18n("Sets a range for which these recurrence rules will "
-      "apply to this event or to-do.") );
+		   i18n("Sets a range for which these recurrence rules will "
+			"apply to this event or to-do.") );
   topLayout->addWidget( mRangeGroupBox );
 
   QWidget *rangeBox = new QWidget( mRangeGroupBox );
@@ -671,15 +671,15 @@ RecurrenceRangeWidget::RecurrenceRangeWidget( QWidget *parent,
 
   mStartDateLabel = new QLabel( i18n("Begin on:"), rangeBox );
   QWhatsThis::add( mStartDateLabel,
-       i18n("The date on which the recurrences for this event or to-do "
-      "should begin.") );
+		   i18n("The date on which the recurrences for this event or to-do "
+			"should begin.") );
   rangeLayout->addWidget( mStartDateLabel );
 
   QButtonGroup *rangeButtonGroup = new QButtonGroup;
 
   mNoEndDateButton = new QRadioButton( i18n("&No ending date"), rangeBox );
   QWhatsThis::add( mNoEndDateButton,
-       i18n("Sets the event or to-do to recur forever.") );
+		   i18n("Sets the event or to-do to recur forever.") );
   rangeButtonGroup->insert( mNoEndDateButton );
   rangeLayout->addWidget( mNoEndDateButton );
 
@@ -688,13 +688,13 @@ RecurrenceRangeWidget::RecurrenceRangeWidget( QWidget *parent,
 
   mEndDurationButton = new QRadioButton( i18n("End &after"), rangeBox );
   QWhatsThis::add( mEndDurationButton,
-       i18n("Sets the event or to-do to stop recurring after a "
-      "certain number of occurrences.") );
+		   i18n("Sets the event or to-do to stop recurring after a "
+			"certain number of occurrences.") );
   rangeButtonGroup->insert( mEndDurationButton );
   durationLayout->addWidget( mEndDurationButton );
 
   QString whatsThis = i18n("Number of times the event or to-do should recur "
-           "before stopping.");
+		  	   "before stopping.");
   mEndDurationEdit = new QSpinBox( 1, 9999, 1, rangeBox );
   QWhatsThis::add( mEndDurationEdit, whatsThis );
   durationLayout->addWidget( mEndDurationEdit );
@@ -733,7 +733,6 @@ RecurrenceRangeWidget::RecurrenceRangeWidget( QWidget *parent,
 void RecurrenceRangeWidget::setDefaults( const QDateTime &from  )
 {
   mNoEndDateButton->setChecked( true );
-  mRangeType = Infinite;
 
   setDateTimes( from );
   setEndDate( from.date() );
@@ -749,8 +748,6 @@ void RecurrenceRangeWidget::setDuration( int duration )
     mEndDurationButton->setChecked( true );
     mEndDurationEdit->setValue( duration );
   }
-
-  mRangeType = Duration;
 }
 
 int RecurrenceRangeWidget::duration()
@@ -767,14 +764,10 @@ int RecurrenceRangeWidget::duration()
 void RecurrenceRangeWidget::setEndDate( const QDate &date )
 {
   mEndDateEdit->setDate( date );
-  mRangeType = EndDate;
 }
 
 QDate RecurrenceRangeWidget::endDate()
 {
-  // TODO: It would be nice to calculate end date from this class, given a
-  //       start date and duration.
-
   return mEndDateEdit->date();
 }
 
@@ -782,13 +775,6 @@ void RecurrenceRangeWidget::showCurrentRange()
 {
   mEndDurationEdit->setEnabled( mEndDurationButton->isChecked() );
   mEndDateEdit->setEnabled( mEndDateButton->isChecked() );
-
-  if( mNoEndDateButton->isChecked() )
-    mRangeType = Infinite;
-  else if( mEndDurationButton->isChecked() )
-    mRangeType = Duration;
-  else if( mEndDateButton->isChecked() )
-    mRangeType = EndDate;
 }
 
 void RecurrenceRangeWidget::setDateTimes( const QDateTime &start,
@@ -796,11 +782,6 @@ void RecurrenceRangeWidget::setDateTimes( const QDateTime &start,
 {
   mStartDateLabel->setText( i18n("Begins on: %1")
       .arg( KGlobal::locale()->formatDate( start.date() ) ) );
-}
-
-int RecurrenceRangeWidget::rangeType()
-{
-  return mRangeType;
 }
 
 ///////////////////////// RecurrenceRangeDialog ///////////////////////////
@@ -1097,17 +1078,17 @@ void KOEditorRecurrence::setDateTimes( const QDateTime &start, const QDateTime &
   mWeekly->setDateTimes( start, end );
   mMonthly->setDateTimes( start, end );
   mYearly->setDateTimes( start, end );
-
+  
   // Now set the defaults for all unused types, use the start time for it
   bool enabled = mEnabledCheck->isChecked();
   int type = mRecurrenceChooser->type();
-
+  
   if ( !enabled || type != RecurrenceChooser::Weekly ) {
     QBitArray days( 7 );
     days.fill( 0 );
     days.setBit( (start.date().dayOfWeek()+6) % 7 );
     mWeekly->setDays( days );
-  }
+  } 
   if ( !enabled || type != RecurrenceChooser::Monthly ) {
     mMonthly->setByPos( ( start.date().day() - 1 ) / 7 + 1, start.date().dayOfWeek() - 1 );
     mMonthly->setByDay( start.date().day() );
@@ -1388,19 +1369,7 @@ void KOEditorRecurrence::writeIncidence( Incidence *incidence )
       }
     } // end "Yearly"
 
-    // Remove exception dates which are after end date recurrence
-    if( mRecurrenceRangeWidget->rangeType == mRecurrenceRangeWidget::EndDate ) {
-      DateList dates = mExceptions->dates();
-      DateList::Iterator it = dates.begin();
-
-      while( mRecurrenceRangeWidget->rangeType() ==  && it != dates.end() ) {
-        if( (*it) > mRecurrenceRange->endDate() )
-          it = dates.remove( it );
-        else
-          ++it;
-      }
-      incidence->setExDates( dates );
-    }
+    incidence->setExDates( mExceptions->dates() );
 }
 
 void KOEditorRecurrence::setDateTimeStr( const QString &str )
