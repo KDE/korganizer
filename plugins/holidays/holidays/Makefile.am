@@ -1,5 +1,5 @@
 
-holidaysdir = $(kde_datadir)/libkholidays
+holidaysdir = $(kde_datadir)/korganizer
 
 holidays_DATA = holiday_at holiday_au holiday_bavarian holiday_be holiday_ca  \
                 holiday_catalan holiday_co \
