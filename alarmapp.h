@@ -3,15 +3,19 @@
 
 #include <kuniqueapp.h>
 
+class AlarmDaemon;
+
 class AlarmApp : public KUniqueApplication
 {
-  Q_OBJECT
-public:
-  AlarmApp(int &argc, char **argv, const QCString &rAppName)
-    : KUniqueApplication(argc, argv, rAppName) {};
-  virtual ~AlarmApp() {};
+    Q_OBJECT
+  public:
+    AlarmApp();
+    virtual ~AlarmApp();
 
-  int newInstance(QValueList<QCString> params);
+    int newInstance();
+    
+  private:
+    AlarmDaemon *mAd;
 };
 
 #endif

@@ -5,9 +5,9 @@
 #include <unistd.h>
 
 #include <qtimer.h>
-#include <qdatetm.h>
+#include <qdatetime.h>
 #include <qstring.h>
-#include <qmsgbox.h>
+#include <qmessagebox.h>
 #include <qtooltip.h>
 
 #include <kapp.h>
@@ -15,7 +15,6 @@
 #include <kglobal.h>
 #include <ksimpleconfig.h>
 #include <kiconloader.h>
-#include <kwm.h>
 #include <kprocess.h>
 #include <kaudioplayer.h>
 
@@ -79,6 +78,8 @@ AlarmDockWindow::~AlarmDockWindow()
 AlarmDaemon::AlarmDaemon(const char *fn, QObject *parent, const char *name)
   : QObject(parent, name), DCOPObject(this)
 {
+  qDebug("AlarmDaemon::AlarmDaemon()");
+
   docker = new AlarmDockWindow;
   calendar = new CalObject;
   calendar->showDialogs(FALSE);
@@ -110,7 +111,10 @@ void AlarmDaemon::reloadCal()
 
   calendar->close();
   config.setGroup("General");
-  newFileName = config.readEntry("Current Calendar");
+  newFileName = config.readEntry("Active Calendar");
+  
+  qDebug("AlarmDaemon::reloadCal(): '%s'",newFileName.latin1());
+  
   calendar->load(newFileName.data());
 }
 
@@ -126,7 +130,7 @@ void AlarmDaemon::showAlarms(QList<KOEvent> &alarmEvents)
 
   tmpDT = alarmEvents.first()->getAlarmTime();
 
-  titleStr.sprintf(i18n("Alarm Monitor: %s\n"),tmpDT.toString().data());
+  titleStr.sprintf(i18n("Alarm Monitor: %s\n"),tmpDT.toString().latin1());
   messageStr += i18n("The following events triggered alarms:\n\n");
 
   for (anEvent = alarmEvents.first(); anEvent;
@@ -134,19 +138,17 @@ void AlarmDaemon::showAlarms(QList<KOEvent> &alarmEvents)
     messageStr += anEvent->getSummary() + "\n";
     if (!anEvent->getProgramAlarmFile().isEmpty()) {
       KProcess proc;
-      proc << anEvent->getProgramAlarmFile().data();
+      proc << anEvent->getProgramAlarmFile().latin1();
       proc.start(KProcess::DontCare);
     }
 
     if (!anEvent->getAudioAlarmFile().isEmpty()) {
-      KAudioPlayer::play(anEvent->getAudioAlarmFile().data());
+      KAudioPlayer::play(anEvent->getAudioAlarmFile().latin1());
     }
   }
 
   kapp->beep();
-  QMessageBox::information(0, titleStr.data(),
-        messageStr.data(),
-        QMessageBox::Ok | QMessageBox::Default);
+  QMessageBox::information(0,titleStr,messageStr);
 }
 
 bool AlarmDaemon::process(const QCString &fun, const QByteArray &data,

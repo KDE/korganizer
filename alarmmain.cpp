@@ -1,39 +1,59 @@
+// $Id$
+//
+// KOrganizer alarm daemon main program
+//
+
+/*
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <unistd.h>
 #include <signal.h>
+*/
 
-#include <kglobal.h>
-#include <kstddirs.h>
-#include <ksimpleconfig.h>
+#include <stdlib.h>
 
-#include "alarmdaemon.h"
-#include "alarmapp.moc"
+//#include <kglobal.h>
+//#include <kstddirs.h>
+//#include <ksimpleconfig.h>
 
-int AlarmApp::newInstance(QValueList<QCString> params)
+#include <klocale.h>
+#include <kcmdlineargs.h>
+#include <kaboutdata.h>
+
+#include "alarmapp.h"
+
+AlarmApp *app;
+
+static const KCmdLineOptions options[] =
 {
-  AlarmDaemon *ad;
+        {"+[calendar]", "A calendar file to load", 0},
+	{0,0,0}
+};
 
-  // if no filename is supplied, read from config file.
-  if (params.count() < 2) {
-    KSimpleConfig config("korganizerrc", true);
-    
-    config.setGroup("General");
-    QString newFileName = config.readEntry("Current Calendar");
-
-    // this is the docking widget
-    ad = new AlarmDaemon(newFileName.data(), 0, "ad");
-  } else
-    ad = new AlarmDaemon(params[1], 0, "ad");
-}
 
 int main(int argc, char **argv)
 {
-  if (!KUniqueApplication::start(argc, argv, "alarmd"))
+  KAboutData aboutData("alarmd",I18N_NOOP("AlarmDaemon"),
+                       "1.91",
+                       I18N_NOOP("KOrganizer Alarm Daemon"),
+                       KAboutData::License_GPL,
+                       "(c) 1997-1999, Preston Brown",0,
+                       "http://devel-home.kde.org/~korganiz");
+  aboutData.addAuthor("Cornelius Schumacher",I18N_NOOP("Maintainer"),
+                      "schumacher@kde.org");
+  aboutData.addAuthor("Preston Brown",I18N_NOOP("Original Author"),
+                      "pbrown@kde.org");
+
+  KCmdLineArgs::init(argc,argv,&aboutData);
+  KCmdLineArgs::addCmdLineOptions(options);
+  KUniqueApplication::addCmdLineOptions();
+  
+  if (!AlarmApp::start())
     exit(0);
 
-  KUniqueApplication app(argc, argv, "alarmd");
-  app.setTopWidget(new QWidget);
+  AlarmApp app;
+  qDebug("alarmdaemon: app.exec()");
   return app.exec();
+  qDebug("alarmdaemon: app.exec() done");
 }

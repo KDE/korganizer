@@ -72,7 +72,7 @@ int KOrganizerApp::newInstance()
   cal = new CalObject;
 
   KGlobal::config()->setGroup("General");
-  fn = KGlobal::config()->readEntry("Current Calendar");
+  fn = KGlobal::config()->readEntry("Active Calendar");
 
   KCmdLineArgs *args = KCmdLineArgs::parsedArgs();
 

@@ -25,13 +25,9 @@
   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 */
 
-#include <sys/types.h>
-#include <signal.h>
-
-#include <qfiledlg.h>
 #include <qcursor.h>
-#include <qmlined.h>
-#include <qmsgbox.h>
+#include <qmultilineedit.h>
+#include <qmessagebox.h>
 #include <qtimer.h>
 #include <qwidgetstack.h>
 
@@ -41,12 +37,10 @@
 #include <kstdaccel.h>
 #include <kfiledialog.h>
 
-#include "misc.h"
 #include "version.h"
 #include "koarchivedlg.h"
 #include "komailclient.h"
 #include "calprinter.h"
-#include "aboutdlg.h"
 #include "exportwebdialog.h"
 #include "kooptionsdialog.h"
 #include "koeventeditor.h"
@@ -56,8 +50,6 @@
 #include "calendarview.h"
 #include "calendarview.moc"	
 
-#define AGENDABUTTON 0x10
-#define NOACCEL 0
 
 CalendarView::CalendarView(QString filename, QWidget *parent, const char *name ) 
   : QWidget( parent, name )
@@ -702,7 +694,7 @@ void CalendarView::newEvent(QDateTime fromHint, QDateTime toHint, bool allDay)
           SLOT(eventAdded(KOEvent *)));
 
   connect(this, SIGNAL(closingDown()),
-	  eventWin, SLOT(cancel()));
+	  eventWin, SLOT(reject()));
 
   // show win
   eventWin->show();

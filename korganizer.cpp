@@ -47,8 +47,8 @@
 #include <ktempfile.h>
 #include <kio/netaccess.h>
 #include <kmessagebox.h>
+#include <dcopclient.h>
 
-#include "misc.h"
 #include "version.h"
 #include "koarchivedlg.h"
 #include "komailclient.h"
@@ -82,7 +82,7 @@ KOrganizer::KOrganizer(QString filename, bool fnOverride, const char *name )
   if (!fnOverride) {
     KConfig *config(kapp->config());
     config->setGroup("General");
-    QString str = config->readEntry("Current Calendar (2.0)");
+    QString str = config->readEntry("Active Calendar");
     if (!str.isEmpty() && QFile::exists(str))
       mFile = str;
   } else {
@@ -203,10 +203,7 @@ void KOrganizer::writeSettings()
   QString file;
   if (mURL.isLocalFile()) file = mFile;
 
-  // Write version number to prevent automatic loading and saving of a calendar
-  // written by a newer KOrganizer, because this can lead to the loss of
-  // information not processed by Korganizer 1.1.
-  config->writeEntry("Current Calendar (2.0)", file);
+  config->writeEntry("Active Calendar", file);
 
   mRecent->saveEntries(config);
 
@@ -621,6 +618,11 @@ bool KOrganizer::saveURL()
   if (!mCalendarView->saveCalendar(mFile)) {
     qDebug("KOrganizer::saveURL(): calendar view save failed.");
     return false;
+  } else {
+    qDebug("KOrganizer::saveURL(): Notify alarm daemon");
+    if (!kapp->dcopClient()->send("alarmd","ad","reloadCal()","")) {
+      qDebug("KOrganizer::saveURL(): dcop send failed");
+    }
   }
   if (KIO::NetAccess::upload(mFile,mURL)) {
     qDebug("KOrganizer::saveURL(): upload failed.");
