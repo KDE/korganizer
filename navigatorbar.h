@@ -26,7 +26,7 @@
 
 #include <libkcal/incidencebase.h>
 
-#include <qwidget.h>
+#include <qlabel.h>
 
 class QPushButton;
 class QFrame;
@@ -51,6 +51,8 @@ class NavigatorBar: public QWidget
   public:
     NavigatorBar( QWidget *parent = 0, const char *name = 0 );
     ~NavigatorBar();
+
+    void showButtons( bool left, bool right );
 
   public slots:
     void selectDates( const KCal::DateList & );

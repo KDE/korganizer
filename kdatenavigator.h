@@ -56,6 +56,8 @@ class KDateNavigator: public QFrame
 
     QSizePolicy sizePolicy () const;
 
+    NavigatorBar *navigatorBar() const { return mNavigatorBar; }
+
   public slots:
     void selectDates( const KCal::DateList & );
     void updateView();

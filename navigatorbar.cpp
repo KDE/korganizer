@@ -128,6 +128,26 @@ NavigatorBar::~NavigatorBar()
 {
 }
 
+void NavigatorBar::showButtons( bool left, bool right )
+{
+  if ( left ) {
+    mPrevYear->show();
+    mPrevMonth->show();
+  } else {
+    mPrevYear->hide();
+    mPrevMonth->hide();
+  }
+  
+  if ( right ) {
+    mNextYear->show();
+    mNextMonth->show();
+  } else {
+    mNextYear->hide();
+    mNextMonth->hide();
+  }
+  
+}
+
 void NavigatorBar::selectDates( const KCal::DateList &dateList )
 {
   if ( dateList.count() > 0 ) {

@@ -26,6 +26,7 @@
 #include <klocale.h>
 
 #include "koglobals.h"
+#include "navigatorbar.h"
 
 #include <kcalendarsystem.h>
 
@@ -176,13 +177,24 @@ void DateNavigatorContainer::resizeEvent( QResizeEvent * )
   
   int height = size().height() / verticalCount;
   int width = size().width() / horizontalCount;
+
+  NavigatorBar *bar = mNavigatorView->navigatorBar();
+  if ( horizontalCount > 1 ) bar->showButtons( true, false );
+  else bar->showButtons( true, true );
   
   mNavigatorView->setGeometry( 0, 0, width, height );
   for( uint i = 0; i < mExtraViews.count(); ++i ) {
     int x = ( i + 1 ) % horizontalCount;
     int y = ( i + 1 ) / horizontalCount;
 
-    mExtraViews.at( i )->setGeometry( x * width, y * height, width, height );
+    KDateNavigator *view = mExtraViews.at( i );
+    bar = view->navigatorBar();
+    if ( y > 0 ) bar->showButtons( false, false );
+    else {
+        if ( x + 1 == horizontalCount ) bar->showButtons( false, true );
+        else bar->showButtons( false, false );
+    }
+    view->setGeometry( x * width, y * height, width, height );
   }
 }
 
