@@ -50,7 +50,7 @@ libkorganizer_la_SOURCES =  outgoingdialog_base.ui \
         kofilterview_base.ui kofilterview.cpp \
         korganizeriface.skel \
         filtereditdialog.cpp filteredit_base.ui \
-        kowhatsnextview.cpp \
+        kowhatsnextview.cpp kocounterdialog.cpp \
         kojournalview.cpp journalentry.cpp \
         kocore.cpp plugindialog.cpp mailscheduler.cpp \
 	kodaymatrix.cpp docprefs.cpp statusdialog.cpp\
@@ -72,7 +72,7 @@ noinst_HEADERS = komonthview.h \
 	koapp.h exportwebdialog.h korganizer_part.h korganizer.h \
         kprefsdialog.h koprefsdialog.h koeventeditor.h \
         kotodoeditor.h kprefs.h koprefs.h koeventviewer.h \
-        kowindowlist.h \
+        kowindowlist.h kocounterdialog.h \
         koeditorgeneralevent.h koeditorgeneraltodo.h koeditordetails.h \
         koeditorrecurrence.h koeventviewerdialog.h koeventpopupmenu.h \
         outgoingdialog.h incomingdialog.h publishdialog.h \

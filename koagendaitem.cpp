@@ -15,10 +15,6 @@
     You should have received a copy of the GNU General Public License
     along with this program; if not, write to the Free Software
     Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-
-    As a special exception, permission is given to link this program
-    with any edition of Qt, and distribute the resulting executable,
-    without including the source code for Qt in the source distribution.
 */
 
 // $Id$
@@ -77,22 +73,37 @@ KOAgendaItem::KOAgendaItem(Event *event, QWidget *parent,
   mIconAlarm = new QLabel(this,"KOAgendaItem::IconAlarmLabel");
   mIconRecur = new QLabel(this,"KOAgendaItem::IconRecurLabel");
   mIconReadonly = new QLabel(this,"KOAgendaItem::IconReadonlyLabel");
+  mIconReply = new QLabel(this,"KOAgendaItem::IconReplyLabel");
+  mIconGroup = new QLabel(this,"KOAgendaItem::IconGroupLabel");
+  mIconOrganizer = new QLabel(this,"KOAgendaItem::IconOrganizerLabel");
 
   mIconAlarm->installEventFilter(this);
   mIconRecur->installEventFilter(this);
   mIconReadonly->installEventFilter(this);
+  mIconReply->installEventFilter(this);
+  mIconGroup->installEventFilter(this);
+  mIconOrganizer->installEventFilter(this);
 
   mIconAlarm->setMouseTracking(true);
   mIconRecur->setMouseTracking(true);
   mIconReadonly->setMouseTracking(true);
+  mIconReply->setMouseTracking(true);
+  mIconGroup->setMouseTracking(true);
+  mIconOrganizer->setMouseTracking(true);
 
   static const QPixmap alarmPxmp = SmallIcon("bell");
   static const QPixmap recurPxmp = SmallIcon("recur");
   static const QPixmap readonlyPxmp = SmallIcon("readonlyevent");
+  static const QPixmap replyPxmp = SmallIcon("mail_reply");
+  static const QPixmap groupPxmp = SmallIcon("groupevent");
+  static const QPixmap organizerPxmp = SmallIcon("organizer");
 
   mIconAlarm->setPixmap(alarmPxmp);
   mIconRecur->setPixmap(recurPxmp);
   mIconReadonly->setPixmap(readonlyPxmp);
+  mIconReply->setPixmap(replyPxmp);
+  mIconGroup->setPixmap(groupPxmp);
+  mIconOrganizer->setPixmap(organizerPxmp);
 
   QVBoxLayout *topLayout = new QVBoxLayout(this,margin()+3);
   topLayout->addWidget(mItemLabel,1);
@@ -103,6 +114,9 @@ KOAgendaItem::KOAgendaItem(Event *event, QWidget *parent,
   iconLayout->addWidget(mIconAlarm);
   iconLayout->addWidget(mIconRecur);
   iconLayout->addWidget(mIconReadonly);
+  iconLayout->addWidget(mIconReply);
+  iconLayout->addWidget(mIconGroup);
+  iconLayout->addWidget(mIconOrganizer);
   iconLayout->addStretch(1);
 
   updateIcons();
@@ -126,6 +140,39 @@ void KOAgendaItem::updateIcons()
   else mIconRecur->hide();
   if (mEvent->isAlarmEnabled()) mIconAlarm->show();
   else mIconAlarm->hide();
+
+  if (mEvent->attendeeCount()>0) {
+    if (mEvent->organizer() == KOPrefs::instance()->email()) {
+      mIconReply->hide();
+      mIconGroup->hide();
+      mIconOrganizer->show();
+    }
+    else {
+      Attendee *me = mEvent->attendeeByMail(KOPrefs::instance()->email());
+      if (me!=0) {
+        if (me->status()==Attendee::NeedsAction && me->RSVP()) {
+          mIconReply->show();
+          mIconGroup->hide();
+          mIconOrganizer->hide();
+        }
+        else {
+          mIconReply->hide();
+          mIconGroup->show();
+          mIconOrganizer->hide();
+        }
+      }
+      else {
+        mIconReply->hide();
+        mIconGroup->show();
+        mIconOrganizer->hide();
+      }
+    }
+  }
+  else {
+    mIconReply->hide();
+    mIconGroup->hide();
+    mIconOrganizer->hide();
+  }
 }
 
 

@@ -26,10 +26,6 @@
   You should have received a copy of the GNU General Public License
   along with this program; if not, write to the Free Software
   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-
-  As a special exception, permission is given to link this program
-  with any edition of Qt, and distribute the resulting executable,
-  without including the source code for Qt in the source distribution.
 */
 
 // $Id$
@@ -1015,22 +1011,6 @@ void CalendarView::schedule_declinecounter()
   schedule(Scheduler::Declinecounter);
 }
 
-/*Attendee* CalendarView::getYourAttendee(Event *event)
-{
-  QPtrList<Attendee> attendees = event->attendees();
-  Attendee *me = 0;
-  attendees.first();
-  while ( attendees.current()!=0 ) {
-    if (attendees.current()->email() == KOPrefs::instance()->email()) {
-      me = attendees.current();
-      attendees.last();
-    }
-    attendees.next();
-  }
- return me;
-}
-*/
-
 void CalendarView::schedule(Scheduler::Method method)
 {
   Event *event = 0;
@@ -1056,7 +1036,7 @@ void CalendarView::schedule(Scheduler::Method method)
       KMessageBox::sorry(this,i18n("Could not find your attendee entry. Please check the emails."));
       return;
     }
-    if (me->status()==Attendee::NeedsAction) {
+    if (me->status()==Attendee::NeedsAction && me->RSVP()) {
       StatusDialog *statdlg = new StatusDialog(this);
       if (!statdlg->exec()==QDialog::Accepted) return;
       me->setStatus( statdlg->status() );//Attendee::Accepted  );

@@ -17,48 +17,50 @@
     Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 */
 
-// $Id$
 
 #include <klocale.h>
 
 #include <libkcal/event.h>
 #include "koeventviewer.h"
 
-#include "koeventviewerdialog.h"
-#include "koeventviewerdialog.moc"
+#include "kocounterdialog.h"
+#include "kocounterdialog.moc"
 
-KOEventViewerDialog::KOEventViewerDialog(QWidget *parent,const char *name)
-  : KDialogBase(parent,name,false,i18n("Event Viewer"),Ok,Ok,false,
-                i18n("Edit"))
+KOCounterDialog::KOCounterDialog(QWidget *parent,const char *name)
+  : KDialogBase(parent,name,false,i18n("Counter-event Viewer"),User1|User2,User1,
+		false,i18n("Decline"),i18n("Accept"))
 {
   mEventViewer = new KOEventViewer(this);
   setMainWidget(mEventViewer);
+  
+  connect(this,SIGNAL(user1Clicked()),this,SLOT(slotCancel()));
+  connect(this,SIGNAL(user2Clicked()),this,SLOT(slotOk()));
 
   // TODO: Set a sensible size (based on the content?).
   setMinimumSize(300,200);
   resize(320,300);
 }
 
-KOEventViewerDialog::~KOEventViewerDialog()
+KOCounterDialog::~KOCounterDialog()
 {
 }
 
-void KOEventViewerDialog::setEvent(Event *event)
+void KOCounterDialog::setEvent(Event *event)
 {
   mEventViewer->setEvent(event);
 }
 
-void KOEventViewerDialog::addEvent(Event *event)
+void KOCounterDialog::addEvent(Event *event)
 {
   mEventViewer->addEvent(event);
 }
 
-void KOEventViewerDialog::setTodo(Todo *event)
+void KOCounterDialog::setTodo(Todo *event)
 {
   mEventViewer->setTodo(event);
 }
 
-void KOEventViewerDialog::addText(QString text)
+void KOCounterDialog::addText(QString text)
 {
   mEventViewer->addText(text);
 }

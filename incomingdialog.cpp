@@ -15,10 +15,6 @@
     You should have received a copy of the GNU General Public License
     along with this program; if not, write to the Free Software
     Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-
-    As a special exception, permission is given to link this program
-    with any edition of Qt, and distribute the resulting executable,
-    without including the source code for Qt in the source distribution.
 */
 
 // $Id$
@@ -43,6 +39,7 @@
 
 #include "incomingdialog.h"
 #include "koeventviewerdialog.h"
+#include "kocounterdialog.h"
 
 
 ScheduleItemIn::ScheduleItemIn(QListView *parent,Incidence *ev,
@@ -108,11 +105,12 @@ bool ScheduleItemVisitor::visit(Journal *)
  *  The dialog will by default be modeless, unless you set 'modal' to
  *  TRUE to construct a modal dialog.
  */
-IncomingDialog::IncomingDialog(Calendar *calendar,QWidget* parent,
-                               const char* name,bool modal,WFlags fl) :
+IncomingDialog::IncomingDialog(Calendar *calendar,OutgoingDialog *outgoing,
+                QWidget* parent,const char* name,bool modal,WFlags fl) :
   IncomingDialog_base(parent,name,modal,fl)
 {
   mCalendar = calendar;
+  mOutgoing = outgoing;
 #ifndef KORG_NOMAIL
   mScheduler = new MailScheduler(mCalendar);
   retrieve();
@@ -133,6 +131,11 @@ IncomingDialog::IncomingDialog(Calendar *calendar,QWidget* parent,
 IncomingDialog::~IncomingDialog()
 {
     // no need to delete child widgets, Qt does it all for us
+}
+
+void IncomingDialog::setOutgoingDialog(OutgoingDialog *outgoing)
+{
+  mOutgoing = outgoing;
 }
 
 void IncomingDialog::retrieve()
@@ -179,14 +182,20 @@ void IncomingDialog::acceptMessage()
 
 bool IncomingDialog::acceptMessage(ScheduleItemIn *item)
 {
-  if (mScheduler->acceptTransaction(item->event(),item->method(),item->status())) {
-    delete item;
-    emit numMessagesChanged(mMessageListView->childCount());
-    return true;
-  } else {
-    kdDebug() << "IncomingDialog::acceptMessage(): Error!" << endl;
-    return false;
+  switch (item->method()) {
+    case Scheduler::Refresh:
+        return incomeRefresh(item);
+        break;
+    case Scheduler::Counter:
+        return incomeCounter(item);
+        break;
+    case Scheduler::Declinecounter:
+        return incomeDeclineCounter(item);
+        break;
+    default:
+        return incomeDefault(item);
   }
+  return false;
 }
 
 void IncomingDialog::rejectMessage()
@@ -208,6 +217,111 @@ void IncomingDialog::showEvent(QListViewItem *item)
     eventViewer->setEvent(event);
     eventViewer->show();
   }
+}
+
+bool IncomingDialog::incomeRefresh(ScheduleItemIn *item)
+{
+  Event *ev = mCalendar->getEvent(item->event()->VUID());
+  if (ev) {
+    //user interaction before??
+    Event *event = new Event(*ev);
+    mOutgoing->addMessage(event,Scheduler::Request);
+    delete(event);
+    delete item;
+    emit numMessagesChanged(mMessageListView->childCount());
+    return true;
+  }
+  return false;
+}
+
+bool IncomingDialog::incomeCounter(ScheduleItemIn *item)
+{
+  Event *counterevent = dynamic_cast<Event *>(((ScheduleItemIn *)item)->event());
+
+  Event *even = mCalendar->getEvent(item->event()->VUID());
+
+  KOCounterDialog *eventViewer = new KOCounterDialog(this);
+  //eventViewer->addText(i18n("You received a counterevent<p>"));
+  //eventViewer->addText(i18n("<hr>"));
+  eventViewer->addText(i18n("<b>Counterevent:</b><p>"));
+  eventViewer->addEvent(counterevent);
+  eventViewer->addText(i18n("<hr>"));
+  eventViewer->addText(i18n("<b>Original event:</b><p>"));
+  if (even) eventViewer->addEvent(even);
+    else eventViewer->addText(i18n("A corresponding event is missing in your canlendar!"));
+  eventViewer->addText(i18n("<hr>"));
+  eventViewer->addText(i18n("If this counterevent is a good proprosal for your event, press 'Accept'. And all Attendees will get the new version of this event"));
+  eventViewer->show();
+
+  eventViewer->exec();
+  if (eventViewer->result()) {
+    kdDebug() << "IncomingDialog::Counter:Accept" << endl;
+    int revision;
+    if (even) {
+      revision = even->revision();
+      mCalendar->deleteEvent(even);
+    }
+    mCalendar->addIncidence(item->event());
+    even = mCalendar->getEvent(item->event()->VUID());
+    if (even) {
+      if (revision < even->revision())
+        even->setRevision(even->revision()+1);
+      else
+        even->setRevision(revision+1);
+      Event *ev = new Event(*even);
+      mOutgoing->addMessage(ev,Scheduler::Request);
+      delete(ev);
+    }
+    mScheduler->deleteTransaction(item->event());
+    delete item;
+    emit numMessagesChanged(mMessageListView->childCount());
+    return true;
+  }
+  else {
+    kdDebug() << "IncomingDialog::Counter:Decline" << endl;
+    //the counter-sender's email is missing...
+    //mOutgoing->addMessage(counterevent,Scheduler::Declinecounter);
+    //delete item;
+    //emit numMessagesChanged(mMessageListView->childCount());
+    mScheduler->deleteTransaction(item->event());
+    delete item;
+    emit numMessagesChanged(mMessageListView->childCount());
+    return true;
+  }
+  //mScheduler->deleteTransaction(item->event());
+  delete item;
+  emit numMessagesChanged(mMessageListView->childCount());
+  return false;
+}
+
+bool IncomingDialog::incomeDeclineCounter(ScheduleItemIn *item)
+{
+  Event *even = mCalendar->getEvent(item->event()->VUID());
+  if (even) {
+    mOutgoing->addMessage(even,Scheduler::Refresh);
+    mScheduler->deleteTransaction(item->event());
+    delete item;
+    emit numMessagesChanged(mMessageListView->childCount());
+    return true;
+  }
+  mScheduler->deleteTransaction(item->event());
+  delete item;
+  emit numMessagesChanged(mMessageListView->childCount());
+  return false;
+}
+
+bool IncomingDialog::incomeDefault(ScheduleItemIn *item)
+{
+  if (mScheduler->acceptTransaction(item->event(),item->method(),item->status())) {
+    delete item;
+    emit numMessagesChanged(mMessageListView->childCount());
+    return true;
+  }
+  else {
+    kdDebug() << "IncomingDialog::acceptMessage(): Error!" << endl;
+    return false;
+  }
+  return false;
 }
 
 #include "incomingdialog.moc"

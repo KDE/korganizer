@@ -15,10 +15,6 @@
     You should have received a copy of the GNU General Public License
     along with this program; if not, write to the Free Software
     Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-
-    As a special exception, permission is given to link this program
-    with any edition of Qt, and distribute the resulting executable,
-    without including the source code for Qt in the source distribution.
 */
 
 // $Id$
@@ -123,8 +119,10 @@ EventListBoxItem::EventListBoxItem(const QString & s)
   setText(s);
   alarmPxmp = SmallIcon("bell");
   recurPxmp = SmallIcon("recur");
+  replyPxmp = SmallIcon("mail_reply");
   recur = false;
   alarm = false;
+  reply = false;
 }
 
 void EventListBoxItem::paint(QPainter *p)
@@ -138,9 +136,13 @@ void EventListBoxItem::paint(QPainter *p)
     p->drawPixmap(x, 0, alarmPxmp);
     x += alarmPxmp.width()+2;
   }
+  if(reply) {
+    p->drawPixmap(x, 0, replyPxmp);
+    x += replyPxmp.width()+2;
+  }
   QFontMetrics fm = p->fontMetrics();
   int yPos;
-  int pmheight = QMAX(recurPxmp.height(), alarmPxmp.height());
+  int pmheight = QMAX(recurPxmp.height(), QMAX(alarmPxmp.height(),replyPxmp.height()) );
   if(pmheight < fm.height())
     yPos = fm.ascent() + fm.leading()/2;
   else
@@ -154,7 +156,8 @@ void EventListBoxItem::paint(QPainter *p)
 
 int EventListBoxItem::height(const QListBox *lb) const
 {
-  return QMAX(recurPxmp.height(),
+  return QMAX(
+        QMAX(recurPxmp.height(), replyPxmp.height()),
 	      QMAX(alarmPxmp.height(), lb->fontMetrics().lineSpacing()+1));
 }
 
@@ -166,6 +169,9 @@ int EventListBoxItem::width(const QListBox *lb) const
   }
   if(alarm) {
     x += alarmPxmp.width()+2;
+  }
+  if(reply) {
+    x += replyPxmp.width()+2;
   }
 
   return(x + lb->fontMetrics().width(text())+1);
@@ -233,6 +239,14 @@ void KSummaries::calUpdated()
     elitem = new EventListBoxItem(sumString);
     elitem->setRecur(anEvent->recurrence()->doesRecur());
     elitem->setAlarm(anEvent->isAlarmEnabled());
+
+    Attendee *me = anEvent->attendeeByMail(KOPrefs::instance()->email());
+    if (me!=0) {
+      if (me->status()==Attendee::NeedsAction && me->RSVP()) elitem->setReply(true);
+      else elitem->setReply(false);
+    }
+    else elitem->setReply(false);
+
     insertItem(elitem);
     currIdxs->insert(i++, anEvent);
   }

@@ -15,10 +15,6 @@
     You should have received a copy of the GNU General Public License
     along with this program; if not, write to the Free Software
     Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-
-    As a special exception, permission is given to link this program
-    with any edition of Qt, and distribute the resulting executable,
-    without including the source code for Qt in the source distribution.
 */
 
 // $Id$
@@ -41,6 +37,7 @@
 #include "calprinter.h"
 #endif
 #include "koglobals.h"
+#include "koprefs.h"
 #include "koeventviewerdialog.h"
 
 #include "kowhatsnextview.h"
@@ -132,6 +129,27 @@ void KOWhatsNextView::updateView()
     mText += i18n("</table>\n");
   }
 
+  events = calendar()->getEvents(QDate::currentDate(), QDate(2975,12,6));
+  if (events.count() > 0) {
+    int replys = 0;
+    Event *ev = events.first();
+    while(ev) {
+      Attendee *me = ev->attendeeByMail(KOPrefs::instance()->email());
+      if (me!=0) {
+        if (me->status()==Attendee::NeedsAction && me->RSVP()) {
+          if (replys == 0) {
+            mText += i18n("<p></p><h2>Events that need a reply:</h2>\n");
+            mText += i18n("<table>\n");
+          }
+          replys++;
+          appendEvent(ev,true);
+        }
+      }
+      ev = events.next();
+    }
+    if (replys > 0 ) mText += i18n("</table>\n");
+  }
+  
   QPtrList<Todo> todos = calendar()->getTodoList();
   if (todos.count() > 0) {
     mText += i18n("<h2>To-Do:</h2>\n");
@@ -175,12 +193,13 @@ void KOWhatsNextView::changeEventDisplay(Event *, int action)
   }
 }
 
-void KOWhatsNextView::appendEvent(Event *ev)
+void KOWhatsNextView::appendEvent(Event *ev, bool reply)
 {
   kdDebug() << "KOWhatsNextView::appendEvent(): " << ev->VUID() << endl;
 
   mText += "<tr><td><b>";
   if (!ev->doesFloat()) {
+    if (reply) mText += "on " + ev->dtStartDateStr() + ": ";
     mText += ev->dtStartTimeStr() + " - " + ev->dtEndTimeStr();
   }
   mText += "</b></td><td><a href=\"event:" + ev->VUID() + "\">";

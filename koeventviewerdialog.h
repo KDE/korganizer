@@ -15,10 +15,6 @@
     You should have received a copy of the GNU General Public License
     along with this program; if not, write to the Free Software
     Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-
-    As a special exception, permission is given to link this program
-    with any edition of Qt, and distribute the resulting executable,
-    without including the source code for Qt in the source distribution.
 */
 #ifndef KOEVENTVIEWERDIALOG_H
 #define KOEVENTVIEWERDIALOG_H
@@ -44,6 +40,7 @@ class KOEventViewerDialog : public KDialogBase {
     virtual ~KOEventViewerDialog();
 
     void setEvent(Event *event);
+    void addEvent(Event *event);
     void setTodo(Todo *event);
     void addText(QString text);
 

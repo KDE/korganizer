@@ -1,6 +1,6 @@
 /*
     This file is part of KOrganizer.
-    Copyright (c) 2001 Cornelius Schumacher <schumacher@kde.org>
+    Copyright (c) 2000, 2001 Cornelius Schumacher <schumacher@kde.org>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -16,50 +16,35 @@
     along with this program; if not, write to the Free Software
     Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 */
-#ifndef KOEVENTVIEWER_H
-#define KOEVENTVIEWER_H
-// $Id$
+#ifndef KOCOUNTERDIALOG_H
+#define KOCOUNTERDIALOG_H
 //
-// Viewer widget for events.
+// Viewer dialog for counter events.
 //
 
-#include <qtextbrowser.h>
+#include <qtextview.h>
+
+#include <kdialogbase.h>
 
 #include <libkcal/event.h>
 
 using namespace KCal;
 
-class KOEventViewer : public QTextBrowser {
+class KOEventViewer;
+
+class KOCounterDialog : public KDialogBase {
     Q_OBJECT
   public:
-    KOEventViewer(QWidget *parent=0,const char *name=0);
-    virtual ~KOEventViewer();
+    KOCounterDialog(QWidget *parent=0,const char *name=0);
+    virtual ~KOCounterDialog();
 
-    void setSource(const QString &);
     void setEvent(Event *event);
     void addEvent(Event *event);
     void setTodo(Todo *event);
-
-    void appendEvent(Event *event);
-    void appendTodo(Todo *event);
-    
-    void clearEvents(bool now=false);
-    
     void addText(QString text);
 
-  protected:
-    void addTag(const QString & tag,const QString & text);
-
-    void formatCategories(Incidence *event);
-    void formatAttendees(Incidence *event);
-    void formatReadOnly(Incidence *event);
-
   private:
-    QTextBrowser *mEventTextView;
-
-    QString mText;
-  signals:
-    void launchaddressbook(QString uid);    
+    KOEventViewer *mEventViewer;
 };
 
 #endif

@@ -15,10 +15,6 @@
     You should have received a copy of the GNU General Public License
     along with this program; if not, write to the Free Software
     Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-
-    As a special exception, permission is given to link this program
-    with any edition of Qt, and distribute the resulting executable,
-    without including the source code for Qt in the source distribution.
 */
 #ifndef KOAGENDAITEM_H
 #define KOAGENDAITEM_H
@@ -74,7 +70,7 @@ class KOAgendaItem : public QFrame
     void expandBottom(int dy);
     void expandLeft(int dx);
     void expandRight(int dx);
-        
+
     void setMultiItem(KOAgendaItem *first,KOAgendaItem *next,
                       KOAgendaItem *last);
     KOAgendaItem *firstMultiItem() { return mFirstMultiItem; }
@@ -86,7 +82,7 @@ class KOAgendaItem : public QFrame
     void setText ( const QString & text ) { mItemLabel->setText(text); }
     QString text () { return mItemLabel->text(); }
 
-    virtual bool eventFilter ( QObject *, QEvent * ); 
+    virtual bool eventFilter ( QObject *, QEvent * );
 
     static QToolTipGroup *toolTipGroup();
 
@@ -94,7 +90,7 @@ class KOAgendaItem : public QFrame
     void updateIcons();
     void select(bool=true);
 
-  protected:    
+  protected:
     void dragEnterEvent(QDragEnterEvent *e);
     void dropEvent(QDropEvent *e);
 
@@ -109,17 +105,18 @@ class KOAgendaItem : public QFrame
     int mStartCellX;
     int mStartCellXWidth;
     int mStartCellYTop,mStartCellYBottom;
-    
+
     // Multi item pointers
     KOAgendaItem *mFirstMultiItem;
     KOAgendaItem *mNextMultiItem;
     KOAgendaItem *mLastMultiItem;
-    
+
     Event *mEvent; // corresponding event
-    
+
     QLabel *mItemLabel;
     QLabel *mIconAlarm,*mIconRecur,*mIconReadonly;
-    
+    QLabel *mIconReply,*mIconGroup,*mIconOrganizer;
+
     static QToolTipGroup *mToolTipGroup;
 
     bool mSelected;

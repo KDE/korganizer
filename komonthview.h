@@ -15,10 +15,6 @@
     You should have received a copy of the GNU General Public License
     along with this program; if not, write to the Free Software
     Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-
-    As a special exception, permission is given to link this program
-    with any edition of Qt, and distribute the resulting executable,
-    without including the source code for Qt in the source distribution.
 */
 
 // $Id$
@@ -68,6 +64,8 @@ class EventListBoxItem: public QListBoxItem
     { recur = on; }
   void setAlarm(bool on)
     { alarm = on; }
+  void setReply(bool on)
+    { reply = on; }
   const QPalette &palette () const { return myPalette; };
   void setPalette(const QPalette &p) { myPalette = p; };
 
@@ -78,8 +76,10 @@ class EventListBoxItem: public QListBoxItem
  private:
   bool    recur;
   bool    alarm;
+  bool    reply;
   QPixmap alarmPxmp;
   QPixmap recurPxmp;
+  QPixmap replyPxmp;
   QPalette myPalette;
 };
 
