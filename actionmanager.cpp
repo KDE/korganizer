@@ -47,7 +47,7 @@
 #include <libkcal/calendarlocal.h>
 #include <libkcal/calendarresources.h>
 #include <libkcal/resourcelocal.h>
-#include <libkcal/resourceremote.h>
+#include <resourceremote.h>
 
 #include <dcopclient.h>
 #include <kaction.h>
