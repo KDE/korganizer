@@ -250,3 +250,8 @@ void KODialogManager::updateSearchDialog()
 {
   if (mSearchDialog) mSearchDialog->updateView();
 }
+
+void KODialogManager::setDocumentId( const QString &id )
+{
+  if (mOutgoingDialog) mOutgoingDialog->setDocumentId( id );
+}

@@ -317,6 +317,7 @@ bool CalendarView::openCalendar(QString filename, bool merge)
     else {
       setModified( false );
       mViewManager->setDocumentId( filename );
+      mDialogManager->setDocumentId( filename );
       mTodoList->setDocumentId( filename );
     }
     updateView();
@@ -744,6 +745,7 @@ void CalendarView::editEvent( Event *event )
   if ( !event ) return;
 
   if ( mDialogList.find( event ) != mDialogList.end() ) {
+    kdDebug() << "CalendarView::editEvent() in List" << endl;
     mDialogList[ event ]->reload();
     mDialogList[ event ]->raise();
     mDialogList[ event ]->show();
@@ -755,6 +757,7 @@ void CalendarView::editEvent( Event *event )
     return;
   }
   
+  kdDebug() << "CalendarView::editEvent() new EventEditor" << endl;
   KOEventEditor *eventEditor = mDialogManager->getEventEditor();
   mDialogList.insert( event, eventEditor );
   eventEditor->editEvent( event );

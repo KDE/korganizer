@@ -42,6 +42,7 @@
 #include "koprefs.h"
 #include "outgoingdialog.h"
 #include "koeventviewerdialog.h"
+#include "docprefs.h"
 
 ScheduleItemOut::ScheduleItemOut(QListView *parent,IncidenceBase *ev,
                                  Scheduler::Method method,
@@ -92,13 +93,13 @@ ScheduleItemOut::ScheduleItemOut(QListView *parent,IncidenceBase *ev,
     if (event->hasStartDate()) {
       setText(1,event->dtStartDateStr());
       if (!event->doesFloat()) {
-	setText(2,event->dtStartTimeStr());
+        setText(2,event->dtStartTimeStr());
       }
     }
     if (event->hasDueDate()) {
       setText(3,event->dtDueDateStr());
       if (!event->doesFloat()) {
-	setText(4,event->dtDueTimeStr());
+        setText(4,event->dtDueTimeStr());
       }
     }
   }
@@ -146,11 +147,14 @@ OutgoingDialog::OutgoingDialog(Calendar *calendar,QWidget* parent,
   mMessageListView->setColumnAlignment(4,AlignHCenter);
   QObject::connect(mMessageListView,SIGNAL(doubleClicked(QListViewItem *)),
                    this,SLOT(showEvent(QListViewItem *)));
+  mDocPrefs = new DocPrefs("groupschedule");
   loadMessages();
 }
 
 OutgoingDialog::~OutgoingDialog()
 {
+  kdDebug() << "OutgoingDialog::~OutgoingDialog()" << endl;  
+  delete mDocPrefs;
   delete mFormat;
 }
 
@@ -158,6 +162,14 @@ bool OutgoingDialog::addMessage(IncidenceBase *incidence,Scheduler::Method metho
 {
   kdDebug() << "Outgoing::addMessage" << "Method:" << method << endl;
   if (method == Scheduler::Publish) return false;
+  if( mDocPrefs ) {
+    if (method != Scheduler::Cancel) {
+      mDocPrefs->writeEntry( incidence->uid()+"-scheduled", true );
+    } else {
+      if (!mDocPrefs->readBoolEntry(incidence->uid()+"-scheduled") )
+        return true;
+    }
+  }
 
   if (KOPrefs::instance()->mIMIPSend == KOPrefs::IMIPOutbox) {
     new ScheduleItemOut(mMessageListView,incidence,method);
@@ -174,6 +186,14 @@ bool OutgoingDialog::addMessage(IncidenceBase *incidence,Scheduler::Method metho
                                 const QString &recipients)
 {
   //if (method != Scheduler::Publish) return false;
+  if( mDocPrefs ) {
+    if (method != Scheduler::Cancel) {
+      mDocPrefs->writeEntry( incidence->uid()+"-scheduled", true );
+    } else {
+      if (!mDocPrefs->readBoolEntry(incidence->uid()+"-scheduled") )
+        return true;
+    }
+  }
   if (KOPrefs::instance()->mIMIPSend == KOPrefs::IMIPOutbox) {
     new ScheduleItemOut(mMessageListView,incidence,method,recipients);
     saveMessage(incidence,method,recipients);
@@ -367,6 +387,11 @@ void OutgoingDialog::loadMessages()
     }
   }
   emit numMessagesChanged(mMessageListView->childCount());
+}
+
+void OutgoingDialog::setDocumentId( const QString &id )
+{
+  mDocPrefs->setDoc( id );
 }
 
 #include "outgoingdialog.moc"

@@ -29,6 +29,7 @@
 
 #include <libkcal/scheduler.h>
 
+#include "docprefs.h"
 #include "outgoingdialog_base.h"
 
 using namespace KCal;
@@ -60,6 +61,7 @@ class OutgoingDialog : public OutgoingDialog_base
 
     bool addMessage(IncidenceBase *,Scheduler::Method);
     bool addMessage(IncidenceBase *,Scheduler::Method,const QString &recipients);
+    void setDocumentId( const QString &id );
 
   public slots:
     void loadMessages();
@@ -80,6 +82,7 @@ class OutgoingDialog : public OutgoingDialog_base
     ICalFormat *mFormat;
     Scheduler *mScheduler;
     QMap<IncidenceBase*, QString> mMessageMap;
+    DocPrefs *mDocPrefs;
 };
 
 #endif // OUTGOINGDIALOG_H

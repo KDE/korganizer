@@ -65,6 +65,7 @@ class KODialogManager : public QObject
     IncomingDialog *incomingDialog();
 
     void updateSearchDialog();
+    void setDocumentId( const QString &id );
     
   public slots:
     void showOptionsDialog();
