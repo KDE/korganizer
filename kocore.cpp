@@ -69,7 +69,7 @@ KOrg::Plugin *KOCore::loadPlugin(KService::Ptr service)
   KOrg::PluginFactory *pluginFactory = dynamic_cast<KOrg::PluginFactory *>(factory);
   
   if (!pluginFactory) {
-    kdDebug() << "KOCore::loadPlugin(): Cast to KOrg::PluginFactory failed" << endl; 
+    kdDebug() << "KOCore::loadPlugin(): Cast to KOrg::PluginFactory failed" << endl;
     return 0;
   }
   
@@ -177,21 +177,55 @@ KOrg::CalendarDecoration::List KOCore::calendarDecorations()
   return mCalendarDecorations;
 }
 
-KOrg::Part::List KOCore::loadParts(KOrg::MainWindow *parent)
+KOrg::Part::List KOCore::loadParts( KOrg::MainWindow *parent )
 {
-  mParts.clear();
+  KOrg::Part::List parts;
+
+  QStringList selectedPlugins = KOPrefs::instance()->mSelectedPlugins;
+
   KTrader::OfferList plugins = availablePlugins("KOrganizer/Part");
   KTrader::OfferList::ConstIterator it;
   for(it = plugins.begin(); it != plugins.end(); ++it) {
-    mParts.append(loadPart(*it,parent));
+    if (selectedPlugins.find((*it)->desktopEntryName()) != selectedPlugins.end()) {
+      KOrg::Part *part = loadPart(*it,parent);
+      parent->guiFactory()->addClient( part );
+      parts.append( part );
+    }
   }
-  
-  return mParts;
+  return parts;
+}
+
+void KOCore::unloadPlugins()
+{
+  KOrg::CalendarDecoration *plugin;
+  for( plugin=mCalendarDecorations.first(); plugin; plugin=mCalendarDecorations.next() ) {    
+    delete plugin;
+  }
+  mCalendarDecorations.clear();
+  mCalendarDecorationsLoaded = false;
+}
+
+void KOCore::unloadParts( KOrg::MainWindow *parent, KOrg::Part::List& parts )
+{
+  KOrg::Part *part;
+  for( part=parts.first(); part; part=parts.next() ) {    
+    parent->guiFactory()->removeClient( part );
+    delete part;
+  }
+  parts.clear();
+}
+
+KOrg::Part::List KOCore::reloadParts( KOrg::MainWindow *parent, KOrg::Part::List& parts )
+{
+  unloadParts( parent, parts );
+  return loadParts( parent );
 }
 
 void KOCore::reloadPlugins()
 {
   mCalendarDecorationsLoaded = false;
+// Plugins should be unloaded, but e.g. komonthview keeps using the old ones
+  unloadPlugins();
   calendarDecorations();
 }
 

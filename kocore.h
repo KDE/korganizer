@@ -46,7 +46,21 @@ class KOCore {
     KOrg::CalendarDecoration::List calendarDecorations();
     KOrg::Part::List loadParts(KOrg::MainWindow *parent);
 
+    /**
+     * Unload the parts in &p parts for this main window. Clears
+     * parts.
+     */
+       
+    void unloadParts(KOrg::MainWindow *parent, KOrg::Part::List& parts);
+    void unloadPlugins();
+
     void reloadPlugins();
+
+    /**
+     * Unloads the parts from the main window. Loads the parts that
+     * are listed in KOPrefs and returns a list of these parts.
+     */
+    KOrg::Part::List reloadParts(KOrg::MainWindow *parent, KOrg::Part::List& parts);
 
     QString holiday( const QDate & );
 
@@ -59,8 +73,6 @@ class KOCore {
     KOrg::CalendarDecoration::List mCalendarDecorations;
     bool mCalendarDecorationsLoaded;
     
-    KOrg::Part::List mParts;
-
     KOrg::CalendarDecoration *mHolidays;
     bool mHolidaysLoaded;    
 };

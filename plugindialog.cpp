@@ -67,6 +67,7 @@ PluginDialog::PluginDialog(QWidget *parent)
   connect(mListView,SIGNAL(selectionChanged()),SLOT(checkSelection()));
 
   KTrader::OfferList plugins = KOCore::self()->availablePlugins("Calendar/Plugin");
+  plugins += KOCore::self()->availablePlugins("KOrganizer/Part");
   
   QStringList selectedPlugins = KOPrefs::instance()->mSelectedPlugins;
   
@@ -102,8 +103,7 @@ void PluginDialog::slotOk()
 
   KOPrefs::instance()->mSelectedPlugins = selectedPlugins;
   emit configChanged();
-  KOCore::self()->reloadPlugins();
-  if (mMainView) mMainView->updateView();
+  if ( mMainView ) mMainView->updateView();
 
   accept();
 
@@ -112,11 +112,17 @@ void PluginDialog::slotOk()
 void PluginDialog::configure()
 {
   PluginItem *item = (PluginItem *)mListView->selectedItem();
-  if (!item) return;
+  if ( !item ) return;
 
-  KOrg::Plugin *plugin = KOCore::self()->loadPlugin(item->service());
+  KOrg::Plugin *plugin = KOCore::self()->loadPlugin( item->service() );
 
-  if ( plugin ) plugin->configure(this);
+  if ( plugin ) {
+    plugin->configure( this );
+    delete plugin;
+  } else {
+    KMessageBox::sorry( this, i18n( "Sorry, cannot configure this plugin" ) );
+  }
+
 }
 
 void PluginDialog::checkSelection()

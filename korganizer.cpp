@@ -96,7 +96,7 @@ KOrganizer::KOrganizer( const char *name )
 
   initActions();
 
-  initParts();
+  mParts = KOCore::self()->loadParts( this );
 //  initViews();
 
   statusBar()->insertItem("",ID_GENERAL,10);
@@ -156,6 +156,9 @@ KOrganizer::~KOrganizer()
   kdDebug() << "~KOrganizer()" << endl;
 
   delete mNewStuff;
+
+  // Remove Part plugins
+  KOCore::self()->unloadParts( this, mParts );
 
   //close down KAddressBook if we started it
   if (KOrganizer::startedKAddressBook == true)
@@ -540,17 +543,6 @@ void KOrganizer::initActions()
     mToolBarToggles.append(act);
   }
   plugActionList("toolbartoggles",mToolBarToggles);
-}
-
-void KOrganizer::initParts()
-{
-  kdDebug() << "KOrganizer::initParts()" << endl;
-
-  KOrg::Part::List parts = KOCore::self()->loadParts(this);
-  KOrg::Part *it;
-  for( it=parts.first(); it; it=parts.next() ) {
-    guiFactory()->addClient(it);
-  }
 }
 
 #if 0
@@ -1051,6 +1043,9 @@ void KOrganizer::updateConfig()
   }
   if (!KOPrefs::instance()->mAutoSave) mAutoSaveTimer->stop();
   mNextXDays->setText(i18n("&Next Day", "&Next %n Days", KOPrefs::instance()->mNextXDays));
+
+  KOCore::self()->reloadPlugins();
+  mParts = KOCore::self()->reloadParts( this, mParts );
 }
 
 void KOrganizer::configureDateTime()

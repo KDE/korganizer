@@ -46,6 +46,7 @@
 #include <libkcal/calendar.h>
 
 #include <korganizer/mainwindow.h>
+#include <korganizer/part.h>
 
 #include "kalarmd/alarmdaemoniface_stub.h"
 
@@ -244,7 +245,6 @@ class KOrganizer : public KOrg::MainWindow, virtual public KOrganizerIface
         
   protected:
     void initActions();
-    void initParts();
 //    void initViews();
 
     /** supplied so that close events close calendar properly.*/
@@ -268,6 +268,7 @@ class KOrganizer : public KOrg::MainWindow, virtual public KOrganizerIface
   
     // variables
     CalendarView *mCalendarView;  // Main view widget
+    KOrg::Part::List mParts; // List of parts loaded
     KURL mURL;      // URL of calendar file
     QString mFile;  // Local name of calendar file
     QString mLastUrl;  // URL of last loaded calendar.
