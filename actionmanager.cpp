@@ -941,7 +941,6 @@ bool ActionManager::saveURL()
 
 void ActionManager::exportHTML()
 {
-kdDebug()<<"ActionManager::exportHTML, no arguments. Using default settings from config."<<endl;
   HTMLExportSettings settings( "KOrganizer" );
   // Manually read in the config, because parametrized kconfigxt objects don't
   // seem to load the config theirselves
@@ -962,7 +961,6 @@ kdDebug()<<"ActionManager::exportHTML, no arguments. Using default settings from
 
 void ActionManager::exportHTML( HTMLExportSettings *settings )
 {
-kdDebug()<<"ActionManager::exportHTML, settings given."<<endl;
   if ( !settings || settings->outputFile().isEmpty() )
     return;
   settings->setEMail( KOPrefs::instance()->email() );

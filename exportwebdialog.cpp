@@ -110,14 +110,12 @@ void ExportWebDialog::writeConfig()
 
 void ExportWebDialog::slotApply()
 {
-kdDebug()<<"ExportWebDialog::slotApply"<<endl;
   writeConfig();
   emit configChanged();
 }
 
 void ExportWebDialog::slotOk()
 {
-kdDebug()<<"ExportWebDialog::slotOk"<<endl;
   slotApply();
   emit exportHTML( mSettings );
   accept();
@@ -125,7 +123,7 @@ kdDebug()<<"ExportWebDialog::slotOk"<<endl;
 
 void ExportWebDialog::slotDefault()
 {
-  kdDebug() << "KPrefsDialog::slotDefault()" << endl;
+  kdDebug(5850) << "KPrefsDialog::slotDefault()" << endl;
 
   if (KMessageBox::warningContinueCancel(this,
       i18n("You are about to set all preferences to default values. All "
