@@ -48,13 +48,15 @@ class KNoScrollListBox: public QListBox
     void shiftUp();
     void rightClick();
 
-   protected slots:
+  protected slots:
+    void addToolTip(QListBoxItem *);
+    void removeToolTip();
     void keyPressEvent(QKeyEvent *);
     void keyReleaseEvent(QKeyEvent *);
     void mousePressEvent(QMouseEvent *);
     void resizeEvent(QResizeEvent *);
 
-   private:
+  private:
     bool mSqueezing;
 };
 
@@ -150,7 +152,7 @@ class MonthViewCell : public QWidget
     QSize mLabelSize;
     QPalette mHolidayPalette;
     QPalette mStandardPalette;
-
+    QPalette mTodayPalette;
 };
 
 

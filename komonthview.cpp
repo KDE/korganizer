@@ -53,6 +53,28 @@ KNoScrollListBox::KNoScrollListBox(QWidget *parent,const char *name)
   : QListBox(parent, name),
     mSqueezing(false)
 {
+  QPalette p = palette();
+  p.setColor( QColorGroup::Foreground,
+              KOPrefs::instance()->agendaBgColor().dark( 150 ) );
+  p.setColor( QColorGroup::Base,
+              KOPrefs::instance()->agendaBgColor() );
+  setPalette( p );
+
+  connect( this, SIGNAL( onItem( QListBoxItem* ) ),
+           this, SLOT( addToolTip( QListBoxItem* ) ) );
+  connect( this, SIGNAL( onViewport() ),
+           this, SLOT( removeToolTip() ) );
+}
+
+void KNoScrollListBox::addToolTip( QListBoxItem *item )
+{
+  QToolTip::remove( this );
+  QToolTip::add( this, item->text() );
+}
+
+void KNoScrollListBox::removeToolTip()
+{
+  QToolTip::remove( this );
 }
 
 void KNoScrollListBox::keyPressEvent(QKeyEvent *e)
@@ -150,7 +172,7 @@ void MonthViewItem::paint(QPainter *p)
 
   QColor bgColor = palette().color( QPalette::Normal,  \
 	    sel ? QColorGroup::Highlight : QColorGroup::Background );
-  if (KOPrefs::instance()->mMonthViewUsesCategoryColor)
+  if (KOPrefs::instance()->monthViewUsesCategoryColor())
   {
     p->setBackgroundColor( bgColor );
     p->eraseRect( 0, 0, listBox()->maxItemWidth(), height( listBox() ) );
@@ -177,7 +199,7 @@ void MonthViewItem::paint(QPainter *p)
   else
     yPos = pmheight/2 - fm.height()/2  + fm.ascent();
   QColor textColor = palette().color( QPalette::Normal, sel ? \
-	  QColorGroup::HighlightedText : QColorGroup::Foreground );
+	  QColorGroup::HighlightedText : QColorGroup::Text );
   p->setPen( textColor );
 
   KWordWrap::drawFadeoutText(p, x, yPos, listBox()->width() - x, text());
@@ -210,7 +232,6 @@ MonthViewCell::MonthViewCell( KOMonthView *parent)
   : QWidget( parent ),
     mMonthView( parent )
 {
-
   QVBoxLayout *topLayout = new QVBoxLayout( this );
 
   mLabel = new QLabel( this );
@@ -287,12 +308,6 @@ bool MonthViewCell::isPrimary() const
 void MonthViewCell::setHoliday( bool holiday )
 {
   mHoliday = holiday;
-
-  if ( holiday ) {
-    setPalette( mHolidayPalette );
-  } else {
-    setPalette( mStandardPalette );
-  }
 }
 
 void MonthViewCell::setHoliday( const QString &holiday )
@@ -307,16 +322,21 @@ void MonthViewCell::setHoliday( const QString &holiday )
 void MonthViewCell::updateCell()
 {
   if ( mDate == QDate::currentDate() ) {
-    mItemList->setLineWidth( 3 );
+    setPalette( mTodayPalette );
   } else {
-    mItemList->setLineWidth( 1 );
+    if ( mHoliday )
+      setPalette( mHolidayPalette );
+    else
+      setPalette( mStandardPalette );
   }
 
   mItemList->clear();
 
   if ( !mHolidayString.isEmpty() ) {
     MonthViewItem *item = new MonthViewItem( 0, mDate, mHolidayString );
-    item->setPalette( mHolidayPalette );
+    QPalette pal = mHolidayPalette;
+    pal.setColor( QColorGroup::Text, KOPrefs::instance()->holidayColor() );
+    item->setPalette( pal );
     mItemList->insertItem( item );
   }
 
@@ -345,7 +365,7 @@ void MonthViewCell::updateCell()
     }
 
     MonthViewItem *item = new MonthViewItem( event, mDate, text );
-    if (KOPrefs::instance()->mMonthViewUsesCategoryColor) {
+    if (KOPrefs::instance()->monthViewUsesCategoryColor()) {
       QStringList categories = event->categories();
       QString cat = categories.first();
       if (cat.isEmpty()) {
@@ -359,7 +379,7 @@ void MonthViewCell::updateCell()
     item->setRecur( event->recurrence()->doesRecur() );
     item->setAlarm( event->isAlarmEnabled() );
 
-    Attendee *me = event->attendeeByMails(KOPrefs::instance()->mAdditionalMails,
+    Attendee *me = event->attendeeByMails(KOPrefs::instance()->additionalMails(),
                                           KOPrefs::instance()->email());
     if ( me != 0 ) {
       if ( me->status() == Attendee::NeedsAction && me->RSVP())
@@ -403,10 +423,11 @@ void MonthViewCell::updateConfig()
                QSize( 2, 2 );
 
   mHolidayPalette = mStandardPalette;
-  mHolidayPalette.setColor(QColorGroup::Foreground,
-                           KOPrefs::instance()->mHolidayColor);
-  mHolidayPalette.setColor(QColorGroup::Text,
-                           KOPrefs::instance()->mHolidayColor);
+  mHolidayPalette.setColor(QColorGroup::Background,
+                           KOPrefs::instance()->holidayColor());
+  mTodayPalette = mStandardPalette;
+  mTodayPalette.setColor(QColorGroup::Background,
+                         KOPrefs::instance()->highlightColor().light());
   updateCell();
 }
 
@@ -472,11 +493,11 @@ void MonthViewCell::defaultAction( QListBoxItem *item )
 void MonthViewCell::cellClicked( QListBoxItem *item )
 {
   if ( item == 0 ) {
-    QDateTime dt( date(), QTime( KOPrefs::instance()->mStartTime, 0 ) );
+    QDateTime dt( date(), QTime( KOPrefs::instance()->startTime(), 0 ) );
     emit newEventSignal( dt );
   }
 
-  if( KOPrefs::instance()->mEnableMonthScroll ) enableScrollBars( true );
+  if( KOPrefs::instance()->enableMonthScroll() ) enableScrollBars( true );
 }
 
 void MonthViewCell::contextMenu( QListBoxItem *item )
