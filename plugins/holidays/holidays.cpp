@@ -82,6 +82,7 @@ void Holidays::configure(QWidget *parent)
 {
   ConfigDialog *dlg = new ConfigDialog(parent);
   dlg->exec();
+  delete dlg;
 }
 
 QString Holidays::getHoliday(const QDate &qd)
