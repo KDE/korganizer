@@ -143,6 +143,9 @@ void KOEventViewer::appendTodo( Todo *todo )
 
   mText.append( i18n("<p><i>%1 % completed</i></p>")
                      .arg( todo->percentComplete() ) );
+  
+  if ( todo->doesRecur() )
+    addTag( "p", "<em>" + i18n("This is a recurring todo.") + "</em>");
 
   formatReadOnly( todo );
   formatAttendees( todo );
