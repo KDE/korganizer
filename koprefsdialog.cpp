@@ -437,6 +437,8 @@ class KOPrefsDialogViews : public KPrefsModule
                                                i18n("Hour Size in Schedule View"),
                                                topFrame);
       mHourSizeSlider = new QSlider(4,30,1,10,Horizontal,hourSizeGroup);
+      connect (mHourSizeSlider, SIGNAL ( valueChanged( int ) ),
+      		SLOT( slotWidChanged() ) );
       topLayout->addMultiCellWidget(hourSizeGroup,2,2,0,1);
 
       KPrefsWidBool *dailyRecur =
