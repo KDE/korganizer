@@ -467,7 +467,7 @@ void KODayMatrix::paintEvent(QPaintEvent * pevent)
   p.fillRect(pevent->rect(), mDefaultBackColor);
   p.setPen(mDefaultTextColor);
   p.drawRect(0, 0, sz.width()+1, sz.height()+1);
-  // don't peint over borders
+  // don't paint over borders
   p.translate(1,1);
 
   // draw selected days with highlighted background color
