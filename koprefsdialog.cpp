@@ -64,6 +64,7 @@
 #include "kogroupwareprefspage.h"
 #include "ktimeedit.h"
 #include "koglobals.h"
+#include "uiextractor.h"
 
 
 KOPrefsDialogMain::KOPrefsDialogMain( QWidget *parent, const char *name )
@@ -324,7 +325,7 @@ class KOPrefsDialogTime : public KPrefsModule
       QGroupBox *workingHoursGroup = new QGroupBox(1,Horizontal,
                                                    i18n("Working Hours"),
                                                    topFrame);
-      topLayout->addMultiCellWidget(workingHoursGroup,5,5,0,1);
+      topLayout->addMultiCellWidget( workingHoursGroup, 5, 5, 0, 1 );
 
       QHBox *workDaysBox = new QHBox( workingHoursGroup );
       // Respect start of week setting
@@ -335,10 +336,9 @@ class KOPrefsDialogTime : public KPrefsModule
         if ( KOPrefs::instance()->mCompactDialogs ) {
           weekDayName = weekDayName.left( 1 );
         }
-        mWorkDays[ (i + weekStart + 6)%7 ] = new QCheckBox( weekDayName, workDaysBox );
-      }
-      for ( int i = 0; i < 7; ++i ) {
-        connect( mWorkDays[i], SIGNAL( stateChanged( int ) ),
+        int index = ( i + weekStart + 6 ) % 7;
+        mWorkDays[ index ] = new QCheckBox( weekDayName, workDaysBox );
+        connect( mWorkDays[ index ], SIGNAL( stateChanged( int ) ),
                SLOT( slotWidChanged() ) );
       }
 
@@ -351,7 +351,6 @@ class KOPrefsDialogTime : public KPrefsModule
 
       addWidBool( KOPrefs::instance()->excludeHolidaysItem(),
                   workingHoursGroup );
-      topLayout->addMultiCellWidget( workDaysBox, 6, 6, 0, 1 );
 
       topLayout->setRowStretch(7,1);
 
@@ -991,10 +990,10 @@ KOPrefsDialogPlugins::KOPrefsDialogPlugins( QWidget *parent, const char* name )
   mDescription->setAlignment( QLabel::NoAccel | QLabel::WordBreak | QLabel::AlignVCenter );
   mDescription->setFrameShape( QLabel::Panel );
   mDescription->setFrameShadow( QLabel::Sunken );
+  mDescription->setMinimumSize( QSize( 0, 55 ) );
   mDescription->setSizePolicy( 
          QSizePolicy( (QSizePolicy::SizeType)5, (QSizePolicy::SizeType)0, 
                       0, 0, mDescription->sizePolicy().hasHeightForWidth() ) );
-  mDescription->setMinimumSize( QSize( 0, 55 ) );
   topLayout->addWidget( mDescription );
  
 
@@ -1006,7 +1005,9 @@ KOPrefsDialogPlugins::KOPrefsDialogPlugins( QWidget *parent, const char* name )
   connect( mConfigureButton, SIGNAL( clicked() ), SLOT( configure() ) );
   
   connect( mListView, SIGNAL( selectionChanged( QListViewItem* ) ),
-           this, SLOT( selectionChanged( QListViewItem* ) ) );
+           SLOT( selectionChanged( QListViewItem* ) ) );
+  connect( mListView, SIGNAL( clicked( QListViewItem* ) ),
+           SLOT( slotWidChanged() ) );
 
   load();
 //  usrReadConfig();
