@@ -162,6 +162,8 @@ void CalendarView::init()
     mResourceView->updateView();
     connect( mResourceView, SIGNAL( resourcesChanged() ),
              SLOT( updateView() ) );
+  } else {
+    mResourceView = 0;
   }
 
   mRightFrame = new QWidgetStack(mPanner, "CalendarView::RightFrame");
@@ -412,7 +414,8 @@ void CalendarView::readSettings()
   mPanner->setSizes(sizes);
 
   sizes = config->readIntListEntry("Separator2");
-  if (sizes.count() == 3) {
+  if ( ( mResourceView && sizes.count() == 4 ) ||
+       ( !mResourceView && sizes.count() == 3 ) ) {
     mLeftSplitter->setSizes(sizes);
   }
 #endif
