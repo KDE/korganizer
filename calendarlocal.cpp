@@ -34,7 +34,7 @@
 #include "calendarlocal.moc"
 
 CalendarLocal::CalendarLocal()
-  : CalObject()
+  : Calendar()
 {
   mOldestDate = 0L;
   mNewestDate = 0L;

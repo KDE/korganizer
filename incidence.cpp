@@ -72,7 +72,7 @@ void Incidence::setReadOnly(bool readonly)
 void Incidence::setLastModified(const QDateTime &lm)
 {
   // DON'T! emit eventUpdated because we call this from
-  // CalObject::updateEvent().
+  // Calendar::updateEvent().
   mLastModified = lm;
 }
 

@@ -17,7 +17,7 @@ class KOWhatsNextView : public KOBaseView
 {
     Q_OBJECT
   public:
-    KOWhatsNextView(CalObject *calendar, QWidget *parent = 0, 
+    KOWhatsNextView(Calendar *calendar, QWidget *parent = 0, 
 	            const char *name = 0);
     ~KOWhatsNextView();
 

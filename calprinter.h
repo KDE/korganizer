@@ -1,5 +1,5 @@
 /*
- * CalPrinter is a class for printing CalObjects.  It can print in several
+ * CalPrinter is a class for printing Calendars.  It can print in several
  * different formats (day, week, month).  It also provides a way for setting
  * up the printer and remembering these preferences.
  *
@@ -17,7 +17,7 @@
 
 #include <kprocess.h>
 
-#include "calobject.h"
+#include "calendar.h"
 
 class KDateEdit;
 class QButtonGroup;
@@ -29,7 +29,7 @@ class CalPrinter : public QObject
 
 public:
   enum PrintType { Day, Week, Month, Todolist };
-  CalPrinter(QWidget *par, CalObject *cal);
+  CalPrinter(QWidget *par, Calendar *cal);
   virtual ~CalPrinter();
 
   void setupPrinter();
@@ -68,7 +68,7 @@ protected:
   KProcess    *previewProc;
   KPrinter    *printer;
   QString      previewProg, previewFileName;
-  CalObject   *calendar;
+  Calendar   *calendar;
   QWidget     *parent;
   int margin, pageWidth, pageHeight, headerHeight, subHeaderHeight;
   bool oldOutputToFile;

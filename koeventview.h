@@ -11,7 +11,7 @@
 #include "koeventpopupmenu.h"
 #include "kobaseview.h"
 
-class CalObject;
+class Calendar;
 class CalPrinter;
 
 /**
@@ -38,7 +38,7 @@ class KOEventView : public KOBaseView
      * @param cal is a pointer to the calendar object from which events
      *        will be retrieved for display.
      */
-    KOEventView(CalObject *cal,QWidget *parent=0,const char *name=0);
+    KOEventView(Calendar *cal,QWidget *parent=0,const char *name=0);
   
     /**
      * Destructor.  Views will do view-specific cleanups here.

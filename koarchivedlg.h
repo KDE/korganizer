@@ -5,13 +5,13 @@
 
 class KURLRequester;
 class KDateEdit;
-class CalObject;
+class Calendar;
 
 class ArchiveDialog : public KDialogBase
 {
     Q_OBJECT
   public:
-    ArchiveDialog(CalObject *calendar,QWidget *parent=0, const char *name=0);
+    ArchiveDialog(Calendar *calendar,QWidget *parent=0, const char *name=0);
     virtual ~ArchiveDialog();
 
   signals:
@@ -25,7 +25,7 @@ class ArchiveDialog : public KDialogBase
     KURLRequester *mArchiveFile;
     KDateEdit *mDateEdit;
     
-    CalObject *mCalendar;
+    Calendar *mCalendar;
 };
 
 #endif

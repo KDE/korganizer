@@ -8,7 +8,7 @@
 #include <kpopupmenu.h>
 #include <dcopobject.h>
 
-#include "calobject.h"
+#include "calendar.h"
 #include "event.h"
 
 class AlarmDialog;
@@ -62,7 +62,7 @@ class AlarmDaemon : public QObject, DCOPObject {
   
   private:
     AlarmDockWindow *docker;
-    CalObject *calendar;
+    Calendar *calendar;
     AlarmDialog *mAlarmDialog;
     QTimer *mSuspendTimer;
 };

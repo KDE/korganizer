@@ -15,7 +15,7 @@
 */
 class IMIPScheduler : public Scheduler {
   public:
-    IMIPScheduler(CalObject *);
+    IMIPScheduler(Calendar *);
     virtual ~IMIPScheduler();
     
     bool publish (Event *incidence,const QString &recipients);

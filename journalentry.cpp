@@ -11,12 +11,12 @@
 #include <klocale.h>
 
 #include "journal.h"
-#include "calobject.h"
+#include "calendar.h"
 
 #include "journalentry.h"
 #include "journalentry.moc"
 
-JournalEntry::JournalEntry(CalObject *calendar,QWidget *parent) :
+JournalEntry::JournalEntry(Calendar *calendar,QWidget *parent) :
   QFrame(parent)
 {
   mCalendar = calendar;

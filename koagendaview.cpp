@@ -22,7 +22,7 @@
 #include "koprefs.h"
 #include "koagenda.h"
 #include "koagendaitem.h"
-#include "calobject.h"
+#include "calendar.h"
 #include "calprinter.h"
 #include "vcaldrag.h"
 
@@ -205,7 +205,7 @@ void EventIndicator::enableColumn(int column, bool enable)
 ////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////
 
-KOAgendaView::KOAgendaView(CalObject *cal,QWidget *parent,const char *name) :
+KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name) :
   KOEventView (cal,parent,name)
 {
   mStartDate = QDate::currentDate();

@@ -46,7 +46,7 @@
 #include "kotodoeditor.h"
 #include "kotodoeditor.moc"
 
-KOTodoEditor::KOTodoEditor(CalObject *calendar) :
+KOTodoEditor::KOTodoEditor(Calendar *calendar) :
   KDialogBase(Tabbed,i18n("Edit To-Do"),Ok|Apply|Cancel|Default|User1,Ok,0,0,
               false,false,i18n("Delete"))
 {

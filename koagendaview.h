@@ -78,7 +78,7 @@ class EventIndicator : public QFrame {
 class KOAgendaView : public KOEventView {
     Q_OBJECT
   public:
-    KOAgendaView(CalObject *cal,QWidget *parent = 0,const char *name = 0);
+    KOAgendaView(Calendar *cal,QWidget *parent = 0,const char *name = 0);
     virtual ~KOAgendaView();
 
     /** Returns maximum number of days supported by the koagendaview */

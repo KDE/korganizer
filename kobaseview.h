@@ -12,7 +12,7 @@
 
 #include "event.h"
 
-class CalObject;
+class Calendar;
 class CalPrinter;
 
 /**
@@ -35,7 +35,7 @@ class KOBaseView : public QWidget
      * @param cal is a pointer to the calendar object from which events
      *        will be retrieved for display.
      */
-    KOBaseView(CalObject *cal, QWidget *parent = 0, const char *name = 0);
+    KOBaseView(Calendar *cal, QWidget *parent = 0, const char *name = 0);
 
     /**
      * Destructor.  Views will do view-specific cleanups here.
@@ -110,7 +110,7 @@ class KOBaseView : public QWidget
     virtual void selectEvents(QList<Event> eventList) = 0;
 
   protected:
-    CalObject *mCalendar;
+    Calendar *mCalendar;
 };
   
 #endif

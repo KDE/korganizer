@@ -12,7 +12,7 @@
 #define _PRODUCT_ID "-//K Desktop Environment//NONSGML KOrganizer//EN"
 
 class VCalDrag;
-class CalObject;
+class Calendar;
 
 /**
   This is the base class for calendar formats. It provides an interface for the
@@ -25,7 +25,7 @@ class CalObject;
 class CalFormat {
   public:
     /** Constructs a new format for the calendar given as argument. */
-    CalFormat(CalObject *);
+    CalFormat(Calendar *);
     virtual ~CalFormat();
 
     /** Associate a widget with this format */
@@ -83,7 +83,7 @@ class CalFormat {
     QWidget *mTopWidget;      // topWidget used for message boxes
     bool mEnableDialogs;      // display various GUI dialogs?
 
-    CalObject *mCalendar;
+    Calendar *mCalendar;
   
   private:
     QList<Event> mEventsRelate;           // events with relations

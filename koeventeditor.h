@@ -7,7 +7,7 @@
 
 #include <qdatetime.h>
 
-#include "calobject.h"
+#include "calendar.h"
 #include "koeditorgeneralevent.h"
 #include "koeditordetails.h"
 #include "koeditorrecurrence.h"
@@ -30,7 +30,7 @@ class KOEventEditor : public KDialogBase
      * Constructs a new appointment dialog.
      *
      */
-    KOEventEditor( CalObject *calendar);
+    KOEventEditor( Calendar *calendar);
     virtual ~KOEventEditor(void);
 
     /** Clear eventwin for new event, and preset the dates and times with hint */
@@ -77,7 +77,7 @@ class KOEventEditor : public KDialogBase
     bool processInput();
     
   private:
-    CalObject *mCalendar;
+    Calendar *mCalendar;
   
     Event *mEvent;
 

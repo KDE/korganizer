@@ -6,7 +6,7 @@
 #include <qintdict.h>
 #include <qmap.h>
 
-#include "calobject.h"
+#include "calendar.h"
 
 #define BIGPRIME 1031 /* should allow for at least 4 appointments 365 days/yr
 			 to be almost instantly fast. */
@@ -20,7 +20,7 @@
   * @author Preston Brown
   * @version $Revision$
   */
-class CalendarLocal : public CalObject {
+class CalendarLocal : public Calendar {
     Q_OBJECT
   public:
     /** constructs a new calendar, with variables initialized to sane values. */
@@ -102,7 +102,7 @@ class CalendarLocal : public CalObject {
    
   protected slots:
     /** this method should be called whenever a Event is modified directly
-     * via it's pointer.  It makes sure that the calObject is internally
+     * via it's pointer.  It makes sure that the calendar is internally
      * consistent. */
     void updateEvent(Incidence *incidence);
   

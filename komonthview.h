@@ -14,7 +14,7 @@
 #include <kapp.h>
 
 #include "qdatelist.h"
-#include "calobject.h"
+#include "calendar.h"
 #include "event.h"
 #include "koeventview.h"
 #include "ksellabel.h" 
@@ -82,7 +82,7 @@ class KSummaries: public KNoScrollListBox {
   Q_OBJECT
  public:
   KSummaries(QWidget    *parent, 
-	     CalObject  *calendar, 
+	     Calendar  *calendar, 
 	     QDate       qd       = QDate::currentDate(),
 	     int         index    = 0,
 	     const char *name     = 0);
@@ -105,14 +105,14 @@ class KSummaries: public KNoScrollListBox {
  private:
    QDate               myDate;
    int                 idx, itemIndex;
-   CalObject          *myCal;
+   Calendar          *myCal;
    QIntDict<Event> *currIdxs; 
 };
 
 class KOMonthView: public KOEventView {
    Q_OBJECT
  public:
-   KOMonthView(CalObject *cal,
+   KOMonthView(Calendar *cal,
 		QWidget    *parent   = 0, 
 		const char *name     = 0,
 		QDate       qd       = QDate::currentDate());
@@ -181,7 +181,7 @@ class KOMonthView: public KOEventView {
    // state data.
    QDate             myDate;
    QDateList         selDates;
-   CalObject        *myCal;
+   Calendar        *myCal;
    QList<int>        selDateIdxs;
    QPalette          holidayPalette;
 };

@@ -146,7 +146,7 @@ int EventListBoxItem::width(const QListBox *lb) const
 
 
 KSummaries::KSummaries(QWidget    *parent, 
-                       CalObject  *cal,
+                       Calendar  *cal,
                        QDate       qd,
                        int         index,
                        const char *name)
@@ -274,7 +274,7 @@ void KSummaries::itemSelected(int index)
       emit editEventSignal(anEvent);
 }
 
-KOMonthView::KOMonthView(CalObject *cal,
+KOMonthView::KOMonthView(Calendar *cal,
                            QWidget    *parent,
                            const char *name,
                            QDate       qd)

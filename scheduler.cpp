@@ -4,7 +4,7 @@
 
 #include "event.h"
 #include "icalformat.h"
-#include "calobject.h"
+#include "calendar.h"
 
 #include "scheduler.h"
 
@@ -16,7 +16,7 @@ ScheduleMessage::ScheduleMessage(Incidence *event,int method,icalclass status)
 }
 
 
-Scheduler::Scheduler(CalObject *calendar)
+Scheduler::Scheduler(Calendar *calendar)
 {
   mCalendar = calendar;
   mFormat = mCalendar->iCalFormat();

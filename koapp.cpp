@@ -28,7 +28,7 @@ KOrganizerApp::~KOrganizerApp()
 
 void KOrganizerApp::displayImminent(const QString &file,int numdays)
 {
-  CalObject *cal = new CalendarLocal;
+  Calendar *cal = new CalendarLocal;
 
   QDate currDate(QDate::currentDate());
   Event *currEvent;

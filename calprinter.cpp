@@ -26,7 +26,7 @@
 #include "calprinter.h"
 #include "calprinter.moc"
 
-CalPrinter::CalPrinter(QWidget *par, CalObject *cal)
+CalPrinter::CalPrinter(QWidget *par, Calendar *cal)
   : QObject(0L, "CalPrinter")
 {
   calendar = cal;

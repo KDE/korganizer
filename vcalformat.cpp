@@ -24,11 +24,11 @@
 #include "vcaldrag.h"
 #include "qdatelist.h"
 
-#include "calobject.h"
+#include "calendar.h"
 
 #include "vcalformat.h"
 
-VCalFormat::VCalFormat(CalObject *cal) :
+VCalFormat::VCalFormat(Calendar *cal) :
   CalFormat(cal)
 {
 }

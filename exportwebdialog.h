@@ -11,7 +11,7 @@
 #include <kdialogbase.h>
 #include <kio/job.h>
 
-class CalObject;
+class Calendar;
 class KDateEdit;
 class QRadioButton;
 class QCheckBox;
@@ -24,7 +24,7 @@ class ExportWebDialog : public KDialogBase
 {
     Q_OBJECT
   public:
-    ExportWebDialog(CalObject *cal, QWidget *parent=0, const char *name=0);
+    ExportWebDialog(Calendar *cal, QWidget *parent=0, const char *name=0);
     virtual ~ExportWebDialog();
 
   public slots:
@@ -44,7 +44,7 @@ class ExportWebDialog : public KDialogBase
     void setupAdvancedPage();
 
   private:
-    CalObject *mCalendar;
+    Calendar *mCalendar;
 
     HtmlExport *mExport;
 

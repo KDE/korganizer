@@ -19,7 +19,7 @@
 #include "kdatenav.moc"
 
 KDateNavigator::KDateNavigator(QWidget *parent, 
-			       CalObject *calendar, 
+			       Calendar *calendar, 
 			       bool show_week_nums,
 			       const char *name,
 			       QDate startDate)

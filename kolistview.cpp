@@ -12,7 +12,7 @@
 #include <kdebug.h>
 #include <kiconloader.h>
 
-#include "calobject.h"
+#include "calendar.h"
 #include "calprinter.h"
 #include "calendarview.h"
 
@@ -111,7 +111,7 @@ KOListViewItem::KOListViewItem(QListView *parent, Incidence *ev)
 }
 
 
-KOListView::KOListView(CalObject *calendar, QWidget *parent,
+KOListView::KOListView(Calendar *calendar, QWidget *parent,
 		       const char *name)
   : KOEventView(calendar, parent, name)
 {

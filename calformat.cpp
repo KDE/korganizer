@@ -7,7 +7,7 @@
 
 #include "calformat.h"
 
-CalFormat::CalFormat(CalObject *cal)
+CalFormat::CalFormat(Calendar *cal)
 {
   mCalendar = cal;
   

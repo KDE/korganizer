@@ -13,7 +13,7 @@ extern "C" {
 }
 
 class Event;
-class CalObject;
+class Calendar;
 class ICalFormat;
 
 /**
@@ -65,7 +65,7 @@ class Scheduler {
                   Declinecounter,NoMethod };
   
     /** Create scheduler for calendar specified as argument */
-    Scheduler(CalObject *calendar);
+    Scheduler(Calendar *calendar);
     virtual ~Scheduler();
     
     /** iTIP publish action */
@@ -90,7 +90,7 @@ class Scheduler {
     static QString statusName(icalclass status);
 
   protected:
-    CalObject *mCalendar;
+    Calendar *mCalendar;
     ICalFormat *mFormat;
 };
 

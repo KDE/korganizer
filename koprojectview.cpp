@@ -37,7 +37,7 @@ Todo *KOProjectViewItem::event()
 }
 
 
-KOProjectView::KOProjectView(CalObject *calendar,QWidget* parent,
+KOProjectView::KOProjectView(Calendar *calendar,QWidget* parent,
                              const char* name) :
   KOBaseView(calendar,parent,name)
 {

@@ -30,8 +30,8 @@
 #include "koexceptions.h"
 #include "calfilter.h"
 
-#include "calobject.h"
-#include "calobject.moc"
+#include "calendar.h"
+#include "calendar.moc"
 
 extern "C" {
   char *parse_holidays(const char *, int year, short force);
@@ -44,16 +44,16 @@ extern "C" {
 
 class AddIncidenceVisitor : public IncidenceVisitor {
   public:
-    AddIncidenceVisitor(CalObject *calendar) : mCalendar(calendar) {}
+    AddIncidenceVisitor(Calendar *calendar) : mCalendar(calendar) {}
     
     bool visit(Event *e) { mCalendar->addEvent(e); return true; }
     bool visit(Todo *t) { mCalendar->addTodo(t); return true; }
 
   private:
-    CalObject *mCalendar;
+    Calendar *mCalendar;
 };
 
-CalObject::CalObject()
+Calendar::Calendar()
   : QObject()
 {
   mDndFormat = new VCalFormat(this);
@@ -138,7 +138,7 @@ CalObject::CalObject()
   readHolidayFileName();
 
   tmpStr = KOPrefs::instance()->mTimeZone;
-//  kdDebug() << "CalObject::CalObject(): TimeZone: " << tmpStr << endl;
+//  kdDebug() << "Calendar::Calendar(): TimeZone: " << tmpStr << endl;
   int dstSetting = KOPrefs::instance()->mDaylightSavings;
   extern long int timezone;
   struct tm *now;
@@ -173,61 +173,61 @@ CalObject::CalObject()
   KOPrefs::instance()->writeConfig();
 }
 
-CalObject::~CalObject() 
+Calendar::~Calendar() 
 {
   delete mICalFormat;
   delete mDndFormat;
   delete mFormat;
 }
 
-ICalFormat *CalObject::iCalFormat()
+ICalFormat *Calendar::iCalFormat()
 {
   return mICalFormat;
 }
 
-VCalDrag *CalObject::createDrag(Event *selectedEv, QWidget *owner)
+VCalDrag *Calendar::createDrag(Event *selectedEv, QWidget *owner)
 {
   return mDndFormat->createDrag(selectedEv,owner);
 }
 
-VCalDrag *CalObject::createDragTodo(Todo *selectedEv, QWidget *owner)
+VCalDrag *Calendar::createDragTodo(Todo *selectedEv, QWidget *owner)
 {
   return mDndFormat->createDragTodo(selectedEv,owner);
 }
 
-Event *CalObject::createDrop(QDropEvent *de)
+Event *Calendar::createDrop(QDropEvent *de)
 {
   return mDndFormat->createDrop(de);
 }
 
-Todo *CalObject::createDropTodo(QDropEvent *de)
+Todo *Calendar::createDropTodo(QDropEvent *de)
 {
-  kdDebug() << "CalObject::createDropTodo()" << endl;
+  kdDebug() << "Calendar::createDropTodo()" << endl;
   return mDndFormat->createDropTodo(de);
 }
 
-void CalObject::cutEvent(Event *selectedEv)
+void Calendar::cutEvent(Event *selectedEv)
 {
   if (copyEvent(selectedEv))
     deleteEvent(selectedEv);
 }
 
-bool CalObject::copyEvent(Event *selectedEv)
+bool Calendar::copyEvent(Event *selectedEv)
 {
   return mDndFormat->copyEvent(selectedEv);
 }
 
-Event *CalObject::pasteEvent(const QDate *newDate,const QTime *newTime)
+Event *Calendar::pasteEvent(const QDate *newDate,const QTime *newTime)
 {
   return mDndFormat->pasteEvent(newDate,newTime);
 }
 
-const QString &CalObject::getOwner() const
+const QString &Calendar::getOwner() const
 {
   return mOwner;
 }
 
-void CalObject::setOwner(const QString &os)
+void Calendar::setOwner(const QString &os)
 {
   int i;
   // mOwner = os.ascii(); // to detach it
@@ -237,7 +237,7 @@ void CalObject::setOwner(const QString &os)
     mOwner = mOwner.left(i);
 }
 
-void CalObject::setTimeZone(const QString & tz)
+void Calendar::setTimeZone(const QString & tz)
 {
   bool neg = FALSE;
   int hours, minutes;
@@ -257,7 +257,7 @@ void CalObject::setTimeZone(const QString & tz)
     mTimeZone = -mTimeZone;
 }
 
-QString CalObject::getTimeZoneStr() const 
+QString Calendar::getTimeZoneStr() const 
 {
   QString tmpStr;
   int hours = abs(mTimeZone / 60);
@@ -270,40 +270,40 @@ QString CalObject::getTimeZoneStr() const
   return tmpStr;
 }
 
-void CalObject::setTopwidget(QWidget *topWidget)
+void Calendar::setTopwidget(QWidget *topWidget)
 {
   mTopWidget = topWidget;
 }
 
-const QString &CalObject::getEmail()
+const QString &Calendar::getEmail()
 {
   return mOwnerEmail;
 }
 
-void CalObject::setEmail(const QString &e)
+void Calendar::setEmail(const QString &e)
 {
   mOwnerEmail = e;
 }
 
-void CalObject::setTimeZone(int tz)
+void Calendar::setTimeZone(int tz)
 {
   mTimeZone = tz;
 }
 
-int CalObject::getTimeZone() const
+int Calendar::getTimeZone() const
 {
   return mTimeZone;
 }
 
-void CalObject::showDialogs(bool d)
+void Calendar::showDialogs(bool d)
 {
   mDialogsOn = d;
 }
 
 // don't ever call this unless a kapp exists!
-void CalObject::updateConfig()
+void Calendar::updateConfig()
 {
-//  kdDebug() << "CalObject::updateConfig()" << endl;
+//  kdDebug() << "Calendar::updateConfig()" << endl;
 
   bool updateFlag = FALSE;
   
@@ -326,7 +326,7 @@ void CalObject::updateConfig()
     // gotta skip over the first one, which is same as first. 
     // I know, bad coding.
     for (currEvent = prev(); currEvent; currEvent = prev()) {
-//      kdDebug() << "in calobject::updateConfig(), currEvent summary: " << currEvent->getSummary() << endl;
+//      kdDebug() << "in Calendar::updateConfig(), currEvent summary: " << currEvent->getSummary() << endl;
       if ((currEvent == firstEvent) && !atFirst) {
 	break;
       }
@@ -347,7 +347,7 @@ void CalObject::updateConfig()
     emit calUpdated((Event *) 0L);
 }
 
-QString CalObject::getHolidayForDate(const QDate &qd)
+QString Calendar::getHolidayForDate(const QDate &qd)
 {
   static int lastYear = 0;
 
@@ -370,7 +370,7 @@ QString CalObject::getHolidayForDate(const QDate &qd)
   }
 }
 
-void CalObject::readHolidayFileName()
+void Calendar::readHolidayFileName()
 {
   QString holidays(KOPrefs::instance()->mHoliday);
   if (holidays == "(none)") mHolidayfile = "";
@@ -380,31 +380,31 @@ void CalObject::readHolidayFileName()
 //  kdDebug() << "holifile: " << mHolidayfile << endl;
 }
 
-void CalObject::setFilter(CalFilter *filter)
+void Calendar::setFilter(CalFilter *filter)
 {
   mFilter = filter;
 }
 
-CalFilter *CalObject::filter()
+CalFilter *Calendar::filter()
 {
   return mFilter;
 }
 
-QList<Event> CalObject::getEventsForDate(const QDate &date,bool sorted)
+QList<Event> Calendar::getEventsForDate(const QDate &date,bool sorted)
 {
   QList<Event> el = eventsForDate(date,sorted);
   mFilter->apply(&el);
   return el;
 }
 
-QList<Event> CalObject::getEventsForDate(const QDateTime &qdt)
+QList<Event> Calendar::getEventsForDate(const QDateTime &qdt)
 {
   QList<Event> el = eventsForDate(qdt);
   mFilter->apply(&el);
   return el;
 }
 
-QList<Event> CalObject::getEvents(const QDate &start,const QDate &end,
+QList<Event> Calendar::getEvents(const QDate &start,const QDate &end,
                                     bool inclusive)
 {
   QList<Event> el = events(start,end,inclusive);
@@ -413,7 +413,7 @@ QList<Event> CalObject::getEvents(const QDate &start,const QDate &end,
 }
 
 
-void CalObject::addIncidence(Incidence *i)
+void Calendar::addIncidence(Incidence *i)
 {
   AddIncidenceVisitor v(this);
 

@@ -14,7 +14,7 @@
 #include <qmap.h>
 #include <qlistview.h>
 
-#include "calobject.h"
+#include "calendar.h"
 #include "event.h"
 #include "kobaseview.h"
 #include "KGanttItem.h"
@@ -48,7 +48,7 @@ class KOProjectView : public KOBaseView
 {
     Q_OBJECT
   public:
-    KOProjectView(CalObject *, QWidget* parent=0, const char* name=0 );
+    KOProjectView(Calendar *, QWidget* parent=0, const char* name=0 );
     ~KOProjectView() {}
 
     QList<Incidence> getSelected();

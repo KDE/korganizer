@@ -7,13 +7,13 @@
 #include <kiconloader.h>
 #include <kmessagebox.h>
 
-#include "calobject.h"
+#include "calendar.h"
 #include "calprinter.h"
 
 #include "kobaseview.h"
 #include "kobaseview.moc"
 
-KOBaseView::KOBaseView(CalObject *cal, QWidget *parent, const char *name)
+KOBaseView::KOBaseView(Calendar *cal, QWidget *parent, const char *name)
   : QWidget(parent, name), mCalendar(cal)
 {
 }

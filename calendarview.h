@@ -18,7 +18,7 @@
 #include <kmenubar.h>
 
 #include "qdatelist.h"
-#include "calobject.h"
+#include "calendar.h"
 #include "kdatenav.h"
 #include "koagendaview.h"
 #include "kolistview.h"
@@ -403,7 +403,7 @@ class CalendarView : public QWidget
     QList<KOBaseView> mCalendarViews;  // list of available calendar views
   
     // calendar object for this viewing instance
-    CalObject      *mCalendar;
+    Calendar      *mCalendar;
   
     // Calendar filters
     QList<CalFilter> mFilters;

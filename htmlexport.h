@@ -9,7 +9,7 @@
 class QFile;
 class QTextStream;
 
-class CalObject;
+class Calendar;
 class Incidence;
 class Todo;
 class Event;
@@ -20,7 +20,7 @@ class Event;
 class HtmlExport {
   public:
     /** Create new HTML exporter for calendar */
-    HtmlExport(CalObject *calendar) :
+    HtmlExport(Calendar *calendar) :
         mCalendar(calendar),
         mMonthViewEnabled(true),mEventsEnabled(false),mTodosEnabled(true),
         mCategoriesTodoEnabled(false),mAttendeesTodoEnabled(false),
@@ -79,7 +79,7 @@ class HtmlExport {
     void formatHtmlAttendees (QTextStream *ts,Incidence *event);
 
   private:
-    CalObject *mCalendar;
+    Calendar *mCalendar;
 
     bool mMonthViewEnabled;
     bool mEventsEnabled;

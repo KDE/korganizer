@@ -32,7 +32,7 @@ alarmd_LDADD = versit/libversit.la $(LIB_KDEUI) \
 
 # Which sources should be compiled for korganizer.
 libkorganizer_la_SOURCES =  outgoingdialog_base.ui \
-        calobject.cpp calendarlocal.cpp calformat.cpp vcalformat.cpp \
+        calendar.cpp calendarlocal.cpp calformat.cpp vcalformat.cpp \
         incidence.cpp journal.cpp todo.cpp event.cpp attendee.cpp \
         korecurrence.cpp koalarm.cpp \
         icalformat.cpp catdlg.cpp \
@@ -69,7 +69,7 @@ libkorganizer_la_SOURCES =  outgoingdialog_base.ui \
 alarmd_SOURCES = alarmdaemon.cpp alarmmain.cpp \
         incidence.cpp journal.cpp todo.cpp event.cpp attendee.cpp \
         korecurrence.cpp koalarm.cpp \
-        calobject.cpp calendarlocal.cpp \
+        calendar.cpp calendarlocal.cpp \
         calformat.cpp vcalformat.cpp icalformat.cpp \
 	vcaldrag.cpp koprefs.cpp alarmapp.cpp \
         alarmdialog.cpp koeventviewer.cpp kprefs.cpp koexceptions.cpp \
@@ -79,7 +79,7 @@ alarmd_SOURCES = alarmdaemon.cpp alarmmain.cpp \
 METASOURCES = AUTO
 
 noinst_HEADERS = komonthview.h \
-        calobject.h calendarlocal.h calformat.h vcalformat.h icalformat.h \
+        calendar.h calendarlocal.h calformat.h vcalformat.h icalformat.h \
 	catdlg.h koagendaview.h koagenda.h \
 	koagendaitem.h \
 	kdateedit.h ksellabel.h \

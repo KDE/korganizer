@@ -62,7 +62,7 @@ void KOTodoViewItem::construct()
 
 /////////////////////////////////////////////////////////////////////////////
 
-KOTodoListView::KOTodoListView(CalObject *calendar,QWidget *parent,
+KOTodoListView::KOTodoListView(Calendar *calendar,QWidget *parent,
                                const char *name) :
   QListView(parent,name)
 {
@@ -222,7 +222,7 @@ void KOTodoListView::contentsMouseDoubleClickEvent(QMouseEvent *e)
 
 /////////////////////////////////////////////////////////////////////////////
 
-KOTodoView::KOTodoView(CalObject *calendar,QWidget* parent,const char* name) :
+KOTodoView::KOTodoView(Calendar *calendar,QWidget* parent,const char* name) :
   KOBaseView(calendar,parent,name)
 {
   QBoxLayout *topLayout = new QVBoxLayout(this);

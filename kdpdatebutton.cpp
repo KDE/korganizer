@@ -10,14 +10,14 @@
 #include <kmessagebox.h>
 
 #include "vcaldrag.h"
-#include "calobject.h"
+#include "calendar.h"
 #include "koprefs.h"
 
 #include "kdpdatebutton.h"
 #include "kdpdatebutton.moc"
 
 
-KDateButton::KDateButton(QDate date, int index, CalObject *calendar,
+KDateButton::KDateButton(QDate date, int index, Calendar *calendar,
 			 QWidget *parent, const char *name)
   : QLabel(parent, name)
 {

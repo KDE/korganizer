@@ -14,7 +14,7 @@
 #include <qmap.h>
 #include <qlistview.h>
 
-#include "calobject.h"
+#include "calendar.h"
 #include "todo.h"
 #include "kobaseview.h"
 
@@ -55,7 +55,7 @@ class KOTodoListView : public QListView
 {
     Q_OBJECT
   public:
-    KOTodoListView(CalObject *,QWidget *parent=0,const char *name=0);
+    KOTodoListView(Calendar *,QWidget *parent=0,const char *name=0);
     virtual ~KOTodoListView() {}
 
   signals:
@@ -73,7 +73,7 @@ class KOTodoListView : public QListView
     void contentsMouseDoubleClickEvent(QMouseEvent *);
 
   private:
-    CalObject *mCalendar;
+    Calendar *mCalendar;
   
     QPoint mPressPos;
     bool mMousePressed;
@@ -91,7 +91,7 @@ class KOTodoView : public KOBaseView
 {
     Q_OBJECT
   public:
-    KOTodoView(CalObject *, QWidget* parent=0, const char* name=0 );
+    KOTodoView(Calendar *, QWidget* parent=0, const char* name=0 );
     ~KOTodoView() {}
 
     QList<Incidence> getSelected();

@@ -13,7 +13,7 @@
 
 #include "dummyscheduler.h"
 
-DummyScheduler::DummyScheduler(CalObject *calendar)
+DummyScheduler::DummyScheduler(Calendar *calendar)
   : Scheduler(calendar)
 {
 }

@@ -13,7 +13,7 @@
 */
 class DummyScheduler : public Scheduler {
   public:
-    DummyScheduler(CalObject *);
+    DummyScheduler(Calendar *);
     virtual ~DummyScheduler();
     
     bool publish (Event *incidence,const QString &recipients);

@@ -11,7 +11,7 @@
 /**
   This class implements the vCalendar format. It provides methods for
   loading/saving/converting vCalendar format data into the internal KOrganizer
-  representation as CalObject and Events.
+  representation as Calendar and Events.
 
   @short vCalendar format implementation
   @author Preston Brown
@@ -29,7 +29,7 @@
 class VCalFormat : public CalFormat {
   public:
     /** constructs a new calendar, with variables initialized to sane values. */
-    VCalFormat(CalObject *);
+    VCalFormat(Calendar *);
     virtual ~VCalFormat();
 
    /** loads a calendar on disk in vCalendar format into the current calendar.

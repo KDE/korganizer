@@ -30,7 +30,7 @@ ScheduleItemOut::ScheduleItemOut(QListView *parent,Event *ev,
  *  The dialog will by default be modeless, unless you set 'modal' to
  *  TRUE to construct a modal dialog.
  */
-OutgoingDialog::OutgoingDialog(CalObject *calendar,QWidget* parent,
+OutgoingDialog::OutgoingDialog(Calendar *calendar,QWidget* parent,
                                const char* name,bool modal,
                                WFlags fl)
     : OutgoingDialog_base(parent,name,modal,fl)

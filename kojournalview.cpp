@@ -9,14 +9,14 @@
 #include <kdebug.h>
 #include <kiconloader.h>
 
-#include "calobject.h"
+#include "calendar.h"
 #include "journalentry.h"
 
 #include "kojournalview.h"
 #include "kojournalview.moc"
 
 
-KOJournalView::KOJournalView(CalObject *calendar, QWidget *parent,
+KOJournalView::KOJournalView(Calendar *calendar, QWidget *parent,
 		       const char *name)
   : KOBaseView(calendar, parent, name)
 {

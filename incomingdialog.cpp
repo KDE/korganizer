@@ -6,7 +6,7 @@
 
 #include "incidence.h"
 #include "dummyscheduler.h"
-#include "calobject.h"
+#include "calendar.h"
 
 #include "incomingdialog.h"
 
@@ -31,7 +31,7 @@ ScheduleItemIn::ScheduleItemIn(QListView *parent,Incidence *ev,
  *  The dialog will by default be modeless, unless you set 'modal' to
  *  TRUE to construct a modal dialog.
  */
-IncomingDialog::IncomingDialog(CalObject *calendar,QWidget* parent,
+IncomingDialog::IncomingDialog(Calendar *calendar,QWidget* parent,
                                const char* name,bool modal,WFlags fl) :
   IncomingDialog_base(parent,name,modal,fl)
 {

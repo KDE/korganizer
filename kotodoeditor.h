@@ -6,7 +6,7 @@
 
 #include <qdatetime.h>
 
-#include "calobject.h"
+#include "calendar.h"
 #include "koeditorgeneraltodo.h"
 #include "koeditordetails.h"
 
@@ -27,7 +27,7 @@ class KOTodoEditor : public KDialogBase
      * Constructs a new appointment dialog.
      *
      */  
-    KOTodoEditor(CalObject *calendar);
+    KOTodoEditor(Calendar *calendar);
     virtual ~KOTodoEditor(void);
 
     /** Clear eventwin for new todo, and preset the dates and times with hint
@@ -71,7 +71,7 @@ class KOTodoEditor : public KDialogBase
     void setupDetailsTab();
 
   private:
-    CalObject *mCalendar;
+    Calendar *mCalendar;
   
     Todo *mTodo;
     

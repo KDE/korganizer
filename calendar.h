@@ -1,7 +1,6 @@
-/* 	$Id$	 */
-
-#ifndef _CALOBJECT_H
-#define _CALOBJECT_H
+#ifndef CALENDAR_H
+#define CALENDAR_H
+// $Id$
 
 #include <qobject.h>
 #include <qstring.h>
@@ -20,7 +19,6 @@ class VCalDrag;
 class ICalFormat;
 class CalFilter;
 
-// TODO: This class should be renamed to Calendar
 /**
   * This is the main "calendar" object class for KOrganizer.  It holds
   * information like all appointments/events, user information, etc. etc.
@@ -33,12 +31,12 @@ class CalFilter;
   * @author Preston Brown
   * @version $Revision$
   */
-class CalObject : public QObject {
+class Calendar : public QObject {
     Q_OBJECT
   public:
     /** constructs a new calendar, with variables initialized to sane values. */
-    CalObject();
-    virtual ~CalObject();
+    Calendar();
+    virtual ~Calendar();
 
     /** Return the iCalendar format class the calendar object uses. */
     ICalFormat *iCalFormat();
@@ -128,7 +126,7 @@ class CalObject : public QObject {
   
     /**
       Set calendar filter, which filters events for the getEvents* functions.
-      CalObject takes ownership of the filter.
+      Calendar takes ownership of the filter.
     */
     void setFilter(CalFilter *);
     /**

@@ -10,12 +10,12 @@ class QLabel;
 class QMultiLineEdit;
 
 class Journal;
-class CalObject;
+class Calendar;
 
 class JournalEntry : public QFrame {
     Q_OBJECT
   public:
-    JournalEntry(CalObject *,QWidget *parent);
+    JournalEntry(Calendar *,QWidget *parent);
     virtual ~JournalEntry();
     
     void setJournal(Journal *);
@@ -36,7 +36,7 @@ class JournalEntry : public QFrame {
     void writeJournal();
     
   private:
-    CalObject *mCalendar;
+    Calendar *mCalendar;
     Journal *mJournal;
     QDate mDate;
     

@@ -8,13 +8,13 @@
 #include <qlabel.h>
 
 #include "qdatelist.h"
-#include "calobject.h"
+#include "calendar.h"
 #include "kdpdatebutton.h"
 
 class KDateNavigator: public QFrame {
    Q_OBJECT
  public:
-   KDateNavigator(QWidget *parent=0, CalObject *calendar=0,
+   KDateNavigator(QWidget *parent=0, Calendar *calendar=0,
 		  bool show_week_numbers=FALSE,
 		  const char *name=0,
 		  QDate date=QDate::currentDate());
@@ -72,7 +72,7 @@ class KDateNavigator: public QFrame {
    int dayToIndex(int dayNum);
    void fixupSelectedDates(int yr, int mth);
 
-   CalObject *mCalendar;
+   Calendar *mCalendar;
 
    const QString *curHeaders;
 

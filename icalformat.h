@@ -17,7 +17,7 @@ extern "C" {
 /**
   This class implements the iCalendar format. It provides methods for
   loading/saving/converting iCalendar format data into the internal KOrganizer
-  representation as CalObject and Events.
+  representation as Calendar and Events.
 
   @short iCalendar format implementation
   @author Cornelius Schumacher
@@ -27,7 +27,7 @@ extern "C" {
 class ICalFormat : public CalFormat {
   public:
     /** Create new iCal format for calendar object */
-    ICalFormat(CalObject *);
+    ICalFormat(Calendar *);
     virtual ~ICalFormat();
 
     /**

@@ -50,7 +50,7 @@
 #include "koeventeditor.h"
 #include "koeventeditor.moc"
 
-KOEventEditor::KOEventEditor(CalObject *calendar) :
+KOEventEditor::KOEventEditor(Calendar *calendar) :
   KDialogBase(Tabbed,i18n("Edit Event"),Ok|Apply|Cancel|Default|User1,Ok,0,0,
               false,false,i18n("Delete"))
 {

@@ -19,14 +19,14 @@
 
 #include "kdateedit.h"
 #include "event.h"
-#include "calobject.h"
+#include "calendar.h"
 #include "calendarlocal.h"
 #include "koprefs.h"
 
 #include "koarchivedlg.h"
 #include "koarchivedlg.moc"
 
-ArchiveDialog::ArchiveDialog(CalObject *cal,QWidget *parent, const char *name)
+ArchiveDialog::ArchiveDialog(Calendar *cal,QWidget *parent, const char *name)
   : KDialogBase (Plain,i18n("Archive / Delete Past Appointments"),
                  User1|User2|Cancel,User1,parent,name,false,true,
                  i18n("Archive"),i18n("Delete"))

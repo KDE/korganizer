@@ -8,7 +8,7 @@
 #include <kdialogbase.h>
 
 #include "kolistview.h"
-#include "calobject.h"
+#include "calendar.h"
 
 class KDateEdit;
 class QCheckBox;
@@ -17,7 +17,7 @@ class SearchDialog : public KDialogBase
 {
     Q_OBJECT
   public:
-    SearchDialog(CalObject *calendar);
+    SearchDialog(Calendar *calendar);
     virtual ~SearchDialog();
 
     void updateView();
@@ -36,7 +36,7 @@ class SearchDialog : public KDialogBase
   private:
     void search(const QRegExp &);
 
-    CalObject *mCalendar;
+    Calendar *mCalendar;
     
     QList<Event> mMatchedEvents;
     

@@ -23,14 +23,14 @@ extern "C" {
 
 
 #include "qdatelist.h"
-#include "calobject.h"
+#include "calendar.h"
 #include "journal.h"
 
 #include "icalformat.h"
 
 #define _ICAL_VERSION "2.0"
 
-ICalFormat::ICalFormat(CalObject *cal) :
+ICalFormat::ICalFormat(Calendar *cal) :
   CalFormat(cal)
 {
 }

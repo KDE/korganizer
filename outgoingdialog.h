@@ -29,7 +29,7 @@ class OutgoingDialog : public OutgoingDialog_base
 { 
     Q_OBJECT
   public:
-    OutgoingDialog(CalObject *,QWidget* parent=0,const char* name=0,
+    OutgoingDialog(Calendar *,QWidget* parent=0,const char* name=0,
                    bool modal=false,WFlags fl=0);
     ~OutgoingDialog();
 
@@ -43,7 +43,7 @@ class OutgoingDialog : public OutgoingDialog_base
     void send();
   
   private:
-    CalObject *mCalendar;
+    Calendar *mCalendar;
     Scheduler *mScheduler;
 };
 

@@ -28,12 +28,12 @@
 #include <kconfig.h>
 #include <kglobal.h>
 
-#include "calobject.h"
+#include "calendar.h"
 #include "kdateedit.h"
 #include "koprefs.h"
 #include "htmlexport.h"
 
-ExportWebDialog::ExportWebDialog (CalObject *cal, QWidget *parent,
+ExportWebDialog::ExportWebDialog (Calendar *cal, QWidget *parent,
                                   const char *name) :
   KDialogBase(Tabbed,i18n("Export calendar as web page"),
               Help|Default|User1|Cancel,User1,parent,name,false,false,

@@ -7,7 +7,7 @@
 #include <kdebug.h>
 #include <kiconloader.h>
 
-#include "calobject.h"
+#include "calendar.h"
 #include "calprinter.h"
 #include "calendarview.h"
 
@@ -15,7 +15,7 @@
 #include "kowhatsnextview.moc"
 
 
-KOWhatsNextView::KOWhatsNextView(CalObject *calendar, QWidget *parent,
+KOWhatsNextView::KOWhatsNextView(Calendar *calendar, QWidget *parent,
                                  const char *name)
   : KOBaseView(calendar, parent, name)
 {

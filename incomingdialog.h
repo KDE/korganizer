@@ -9,7 +9,7 @@
 #include "incomingdialog_base.h"
 
 class Incidence;
-class CalObject;
+class Calendar;
 
 class ScheduleItemIn : public QListViewItem
 {
@@ -33,7 +33,7 @@ class IncomingDialog : public IncomingDialog_base
 { 
     Q_OBJECT
   public:
-    IncomingDialog(CalObject *calendar,QWidget* parent=0,const char* name=0,
+    IncomingDialog(Calendar *calendar,QWidget* parent=0,const char* name=0,
                    bool modal=false,WFlags fl=0);
     ~IncomingDialog();
 
@@ -51,7 +51,7 @@ class IncomingDialog : public IncomingDialog_base
     bool acceptMessage(ScheduleItemIn *item);
 
   private:
-    CalObject *mCalendar;
+    Calendar *mCalendar;
     Scheduler *mScheduler;
 };
 

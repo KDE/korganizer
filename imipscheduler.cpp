@@ -8,7 +8,7 @@
 
 #include "imipscheduler.h"
 
-IMIPScheduler::IMIPScheduler(CalObject *calendar)
+IMIPScheduler::IMIPScheduler(Calendar *calendar)
   : Scheduler(calendar)
 {
 }

@@ -9,7 +9,7 @@
 #include <klocale.h>
 #include <kdebug.h>
 
-#include "calobject.h"
+#include "calendar.h"
 #include "event.h"
 #include "todo.h"
 

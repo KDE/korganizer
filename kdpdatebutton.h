@@ -6,12 +6,12 @@
 #include <qdatetime.h>
 #include <qlabel.h>
 
-class CalObject;
+class Calendar;
 
 class KDateButton: public QLabel {
     Q_OBJECT
   public:
-    KDateButton(QDate date, int index, CalObject *,
+    KDateButton(QDate date, int index, Calendar *,
 	        QWidget *parent=0, const char *name=0);
     ~KDateButton();
 
@@ -68,7 +68,7 @@ class KDateButton: public QLabel {
 
     int my_index;
     QDate mDate;
-    CalObject *mCalendar;
+    Calendar *mCalendar;
 };
 
 #endif // _KDPDATEBUTTON_H

@@ -21,7 +21,7 @@
 #include "korganizeriface.h"
 
 #include "qdatelist.h"
-#include "calobject.h"
+#include "calendar.h"
 
 class CalendarView;
 class KTempFile;

@@ -9,13 +9,13 @@
 #include <kiconloader.h>
 #include <kmessagebox.h>
 
-#include "calobject.h"
+#include "calendar.h"
 #include "calprinter.h"
 
 #include "koeventview.h"
 #include "koeventview.moc"
 
-KOEventView::KOEventView(CalObject *cal,QWidget *parent,const char *name)
+KOEventView::KOEventView(Calendar *cal,QWidget *parent,const char *name)
   : KOBaseView(cal,parent,name)
 {
 }
