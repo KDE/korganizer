@@ -430,26 +430,32 @@ ResourceItem *ResourceView::findItemByIdentifier( const QString& id )
 void ResourceView::contextMenuRequested ( QListViewItem *i,
                                           const QPoint &pos, int )
 {
+  KCal::CalendarResourceManager *manager = mCalendar->resourceManager();
   ResourceItem *item = static_cast<ResourceItem *>( i );
 
   QPopupMenu *menu = new QPopupMenu( this );
   connect( menu, SIGNAL( aboutToHide() ), menu, SLOT( deleteLater() ) );
   if ( item ) {
-    int reloadId = menu->insertItem( i18n("Reload"), this,
+    int reloadId = menu->insertItem( i18n("Re&load"), this,
                                      SLOT( reloadResource() ) );
     menu->setItemEnabled( reloadId, item->resource()->isActive() );
-    int saveId = menu->insertItem( i18n("Save"), this,
+    int saveId = menu->insertItem( i18n("&Save"), this,
                                    SLOT( saveResource() ) );
     menu->setItemEnabled( saveId, item->resource()->isActive() );
     menu->insertSeparator();
-    menu->insertItem( i18n("Show Info"), this, SLOT( showInfo() ) );
+    menu->insertItem( i18n("Show &Info"), this, SLOT( showInfo() ) );
     if ( !item->isSubresource() ) {
-      menu->insertItem( i18n("Edit..."), this, SLOT( editResource() ) );
-      menu->insertItem( i18n("Remove"), this, SLOT( removeResource() ) );
+      menu->insertItem( i18n("&Edit..."), this, SLOT( editResource() ) );
+      menu->insertItem( i18n("&Remove"), this, SLOT( removeResource() ) );
     }
     menu->insertSeparator();
+    if ( item->resource() != manager->standardResource() ) {
+      menu->insertItem( i18n("Use as &Default Calendar"), this, 
+                        SLOT( setStandard() ) );
+      menu->insertSeparator();
+    }
  }
-  menu->insertItem( i18n("Add..."), this, SLOT( addResource() ) );
+  menu->insertItem( i18n("&Add..."), this, SLOT( addResource() ) );
 
   menu->popup( pos );
 }
@@ -479,6 +485,16 @@ void ResourceView::saveResource()
 
   ResourceCalendar *r = item->resource();
   r->save();
+}
+
+void ResourceView::setStandard()
+{
+  ResourceItem *item = currentItem();
+  if ( !item ) return;
+
+  ResourceCalendar *r = item->resource();
+  KCal::CalendarResourceManager *manager = mCalendar->resourceManager();
+  manager->setStandardResource( r );
 }
 
 void ResourceView::showButtons( bool visible )

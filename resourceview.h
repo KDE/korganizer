@@ -138,6 +138,8 @@ class ResourceView : public CalendarViewExtension
   
     void reloadResource();
     void saveResource();
+    
+    void setStandard();
 
   private:
     KListView *mListView;
