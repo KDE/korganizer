@@ -93,10 +93,10 @@ KOrganizer::KOrganizer( bool document, const char *name )
   // Create calendar object, which manages all calendar information associated
   // with this calendar view window.
   if ( mDocument ) {
-    mCalendar = new CalendarLocal(KOPrefs::instance()->mTimeZoneId.local8Bit());
+    mCalendar = new CalendarLocal(KOPrefs::instance()->mTimeZoneId);
     mCalendarView = new CalendarView( mCalendar, this, "KOrganizer::CalendarView" );
   } else {
-    CalendarResources *calendar = new CalendarResources( KOPrefs::instance()->mTimeZoneId.local8Bit() );
+    CalendarResources *calendar = new CalendarResources( KOPrefs::instance()->mTimeZoneId );
     mCalendar = calendar;
     setCaption( i18n("Calendar") );
   

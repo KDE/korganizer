@@ -129,7 +129,7 @@ KOrganizerPart::KOrganizerPart(QWidget *parentWidget, const char *widgetName,
 
   KGlobal::iconLoader()->addAppDir("korganizer");
 
-  mCalendar = new CalendarLocal(KOPrefs::instance()->mTimeZoneId.local8Bit());
+  mCalendar = new CalendarLocal(KOPrefs::instance()->mTimeZoneId);
 
   mWidget = new CalendarView( mCalendar, canvas );
   topLayout->addWidget( mWidget );

@@ -66,7 +66,7 @@ void KOrganizerApp::displayImminent( const KURL &url, int numdays )
     return;
   }
 
-  CalendarLocal cal( KOPrefs::instance()->mTimeZoneId.local8Bit() );
+  CalendarLocal cal( KOPrefs::instance()->mTimeZoneId );
 
   QDate currDate(QDate::currentDate());
   Event *currEvent;

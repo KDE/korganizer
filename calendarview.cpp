@@ -541,7 +541,7 @@ void CalendarView::updateConfig()
   kdDebug() << "CalendarView::updateConfig()" << endl;
   emit configChanged();
 
-  mCalendar->setTimeZoneId(KOPrefs::instance()->mTimeZoneId.local8Bit());
+  mCalendar->setTimeZoneId(KOPrefs::instance()->mTimeZoneId);
 
   // To make the "fill window" configurations work
   mViewManager->raiseCurrentView();

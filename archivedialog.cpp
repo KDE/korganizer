@@ -124,7 +124,7 @@ void ArchiveDialog::slotUser1()
   }
 
   // Duplicate current calendar by loading in new calendar object
-  CalendarLocal archiveCalendar( KOPrefs::instance()->mTimeZoneId.local8Bit() );
+  CalendarLocal archiveCalendar( KOPrefs::instance()->mTimeZoneId );
 
   FileStorage archiveStore( &archiveCalendar );
   archiveStore.setFileName( tmpFile.name() );
