@@ -46,7 +46,7 @@ class KOrganizerApp : public KUniqueApplication
 
   private:
     /** Print events for numDays days from calendar loaded from file to screen.*/
-    void displayImminent(const QString & file,int numdays);
+    void displayImminent( const KURL &url, int numdays );
     /** Start alarm daemon from KDE binary directory */
     void startAlarmDaemon();
     /** Start alarm client from KDE binary directory */
@@ -56,7 +56,7 @@ class KOrganizerApp : public KUniqueApplication
       if is is greater print events from corresponding number of dates to the
       screen.
     */
-    void processCalendar( const QString & file, int numDays ); 
+    void processCalendar( const KURL &url, int numDays ); 
 };
 
 #endif

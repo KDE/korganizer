@@ -60,9 +60,8 @@ KOrganizerApp::~KOrganizerApp()
 {
 }
 
-void KOrganizerApp::displayImminent(const QString &urlString,int numdays)
+void KOrganizerApp::displayImminent( const KURL &url, int numdays )
 {
-  KURL url(urlString);
   if (!url.isLocalFile()) {
     printf(i18n("Unable to handle remote calendar.\n").local8Bit());
     return;
@@ -183,7 +182,7 @@ int KOrganizerApp::newInstance()
   if (args->count() > 0) {
     int i;
     for(i=0;i<args->count();++i) {
-      processCalendar( args->arg(i), numDays ); 
+      processCalendar( args->url(i), numDays ); 
     }
   } else {
     KGlobal::config()->setGroup("General");
@@ -201,15 +200,14 @@ int KOrganizerApp::newInstance()
 }
 
 
-void KOrganizerApp::processCalendar( const QString &urlString, int numDays )
+void KOrganizerApp::processCalendar( const KURL &url, int numDays )
 {
   if (numDays > 0) {
-    displayImminent(urlString,numDays);
+    displayImminent( url, numDays );
   } else {
     if (isRestored()) {
       RESTORE(KOrganizer)
     } else {
-      KURL url(urlString);
       KOrganizer *korg=KOrganizer::findInstance(url);
       if (0 == korg) {
         korg = new KOrganizer( "KOrganizer MainWindow" ); 
