@@ -258,10 +258,23 @@ void KOPrefs::usrReadConfig()
   mEmail = config()->readEntry("user_email");
   fillMailDefaults();
 
+  // old category colors, ignore if they have the old default
+  // should be removed a few versions after 3.2...
   config()->setGroup("Category Colors");
+  QValueList<QColor> oldCategoryColors;
   QStringList::Iterator it;
   for (it = mCustomCategories.begin();it != mCustomCategories.end();++it ) {
-    setCategoryColor(*it,config()->readColorEntry(*it,&mDefaultCategoryColor));
+    QColor c = config()->readColorEntry(*it, &mDefaultCategoryColor);
+    oldCategoryColors.append( (c == QColor(196,196,196)) ?
+                              mDefaultCategoryColor : c);
+  }
+
+  // new category colors
+  config()->setGroup("Category Colors2");
+  QValueList<QColor>::Iterator it2;
+  for (it = mCustomCategories.begin(), it2 = oldCategoryColors.begin();
+       it != mCustomCategories.end(); ++it, ++it2 ) {
+    setCategoryColor(*it,config()->readColorEntry(*it, &*it2));
   }
 
   if (mTimeZoneId.isEmpty()) {
@@ -281,7 +294,7 @@ void KOPrefs::usrWriteConfig()
   config()->writeEntry("user_name",mName);
   config()->writeEntry("user_email",mEmail);
 
-  config()->setGroup("Category Colors");
+  config()->setGroup("Category Colors2");
   QDictIterator<QColor> it(mCategoryColors);
   while (it.current()) {
     config()->writeEntry(it.currentKey(),*(it.current()));
