@@ -187,3 +187,4 @@ void Exchange::test2()
 {
   kdDebug() << "Entering test2()" << endl;
 }
+#include "exchange.moc"

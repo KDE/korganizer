@@ -55,3 +55,4 @@ void ExchangeDialog::slotOk()
 {
   accept();
 }
+#include "exchangedialog.moc"

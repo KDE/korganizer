@@ -66,3 +66,4 @@ void ExchangeConfig::slotOk()
 
   accept();
 }
+#include "exchangeconfig.moc"
