@@ -55,13 +55,13 @@ void TimeLabels::drawContents(QPainter *p,int cx, int cy, int cw, int ch)
     p->drawLine(cx,y,cx+cw,y);
     hour.setNum(cell);
     suffix = "am";
-    debug(hour);
+//    debug(hour);
 
     // handle 24h and am/pm time formats
     switch (mTimeFormat)
     {
       // am/pm format
-      case 12:
+      case 1:
       {
         if (cell > 11) suffix = "pm";
         if (cell == 0) hour.setNum(12);
@@ -70,7 +70,7 @@ void TimeLabels::drawContents(QPainter *p,int cx, int cy, int cw, int ch)
       }
 
       // 24h time
-      case 24:
+      case 0:
       {
         suffix = ":00";
         break;
@@ -130,7 +130,8 @@ void TimeLabels::updateConfig(KConfig* config)
   // TODO: use the time format in config
   config->setGroup("Time & Date");
   int fmt = config->readNumEntry("Time Format", 1);
-  setTimeFormat(12);
+  // fmt = 0 for 24h, or 1 for am/pm
+  setTimeFormat(fmt);
 
   // update geometry restrictions based on new settings
   setFixedWidth(minimumWidth());
@@ -274,7 +275,7 @@ QList<KOEvent> KOAgendaView::getSelected()
 
 void KOAgendaView::updateView()
 {
-//  qDebug("KOAgendaView::updateView()");
+  qDebug("KOAgendaView::updateView()");
   fillAgenda();
 }
 

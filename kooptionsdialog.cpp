@@ -454,7 +454,15 @@ void KOOptionsDialog::readConfig()
   mNameEdit->setText(config.readEntry("user_name",""));
   mEmailEdit->setText(config.readEntry("user_email",""));
   mAdditionalEdit->setText(config.readEntry("Additional",""));
-  mHolidayCombo->setCurrentItem(config.readNumEntry("Holidays",0));
+
+  QString holiday = config.readEntry("Holidays","(none)");
+  int i;
+  for(i=0;i<mHolidayCombo->count();++i) {
+    if (holiday == mHolidayCombo->text(i)) {
+      mHolidayCombo->setCurrentItem(i);
+      break;
+    }
+  }
   
   config.setGroup("Time & Date");
   mTimeFormatGroup->setButton(config.readNumEntry("Time Format",0));
@@ -489,7 +497,7 @@ void KOOptionsDialog::writeConfig()
   config.writeEntry("user_name",mNameEdit->text());
   config.writeEntry("user_email",mEmailEdit->text());
   config.writeEntry("Additional",mAdditionalEdit->text());
-  config.writeEntry("Holidays",mHolidayCombo->currentItem());
+  config.writeEntry("Holidays",mHolidayCombo->currentText());
 
   config.setGroup("Time & Date");
   config.writeEntry("Time Format",

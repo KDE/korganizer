@@ -613,34 +613,17 @@ char *parse_holidays(const char *holidays, int year, short force)
       free(hp->string);
       hp->string      = 0;
       }*/
-  
-  kdedir = getenv("KDEDIR");
-  for (n=0; n < 2; n++) {
-    if (kdedir != NULL)
-      strcpy(buf,kdedir);
-    else
-      strcpy(buf,"/opt/kde");
-    strcat(buf,"/share/apps/korganizer/holiday_");
-    strcat(buf,holidays);
-    filename = resolve_tilde(n ? buf : 
-			     "~/.kde/share/apps/korganizer/holiday");
-    if (access(filename, R_OK))
-      continue;
-    
-    yyin = fopen(filename, "r");
-    if (!yyin)
-      continue;
-    *errormsg = 0;
-    yylineno = 0;
-    yyparse();
-    if (piped)
-      pclose(yyin);
-    else
-      fclose(yyin);
-    if (*errormsg)
-      return(errormsg);
-  }
+
+  filename = holidays;
+  if (access(filename, R_OK)) return(0);
+  yyin = fopen(filename, "r");
+  if (!yyin) return(0);
+  *errormsg = 0;
+  yylineno = 0;
+  yyparse();
+  if (piped) pclose(yyin);
+  else fclose(yyin);
+  if (*errormsg) return(errormsg);
+
   return(0);
 }
-
-

@@ -100,6 +100,8 @@ CalObject::CalObject() : QObject(), recursCursor(recursList)
     setEmail(tmpStr);
   }
 
+  readHolidayFileName(config);
+
   config->setGroup("Time & Date");
 
   tmpStr = config->readEntry("Time Zone");
@@ -498,6 +500,8 @@ QString CalObject::getTimeZoneStr() const
 // don't ever call this unless a kapp exists!
 void CalObject::updateConfig()
 {
+  qDebug("CalObject::updateConfig()");
+
   bool updateFlag = FALSE;
 
   KConfig config(locate("config", "korganizerrc")); 
@@ -533,11 +537,25 @@ void CalObject::updateConfig()
     }
   }
 
+  readHolidayFileName(&config);
+
   config.setGroup("Time & Date");
   setTimeZone(config.readEntry("Time Zone").ascii());
 
   if (updateFlag)
     emit calUpdated((KOEvent *) 0L);
+}
+
+
+void CalObject::readHolidayFileName(KConfig *config)
+{
+  config->setGroup("Personal Settings");
+  QString holidays(config->readEntry("Holidays", "us"));
+  if (holidays == "(none)") mHolidayfile = "";
+  holidays = holidays.prepend("holiday_");
+  mHolidayfile = locate("appdata",holidays);
+
+//  qDebug("holifile: %s",mHolidayfile.latin1());
 }
 
 void CalObject::addEvent(KOEvent *anEvent)
@@ -2207,31 +2225,24 @@ inline QList<KOEvent> CalObject::getEventsForDate(const QDateTime &qdt)
 QString CalObject::getHolidayForDate(const QDate &qd)
 {
   static int lastYear = 0;
-  KConfig config(locate("config", "korganizerrc")); 
-
-  config.setGroup("Personal Settings");
-  QString holidays(config.readEntry("Holidays", "us"));
-  if (holidays == "(none)")
-    return (QString(""));
 
 //  qDebug("CalObject::getHolidayForDate(): Holiday: %s",holidays.latin1());
 
-  // Disable parse_holiday() for now, because parse_holiday.y needs adaption to
-  // the KDE2 way of finding files and at the moment it crashes KOrganizer, when
-  // started as a KPart.
-  return QString("");
+  if (mHolidayfile.isEmpty()) return (QString(""));
 
   if ((lastYear == 0) || (qd.year() != lastYear)) {
       lastYear = qd.year() - 1900; // silly parse_year takes 2 digit year...
-    parse_holidays(holidays.ascii(), lastYear, 0);
+    parse_holidays(mHolidayfile.latin1(), lastYear, 0);
   }
 
   if (holiday[qd.dayOfYear()-1].string) {
-    return(QString(holiday[qd.dayOfYear()-1].string));
-  }
-
-  else
+    QString holidayname = QString(holiday[qd.dayOfYear()-1].string);
+//    qDebug("Holi name: %s",holidayname.latin1());
+    return(holidayname);
+  } else {
+//    qDebug("No holiday");
     return(QString(""));
+  }
 }
 
 void CalObject::updateCursors(KOEvent *dEvent)

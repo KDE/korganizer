@@ -22,6 +22,7 @@
 #define BIGPRIME 1031 /* should allow for at least 4 appointments 365 days/yr
 			 to be almost instantly fast. */
 
+class KConfig;
 class VCalDrag;
 
 /**
@@ -200,6 +201,8 @@ protected:
   void loadError(const QString &fileName);
   /** shows an error dialog box. */
   void parseError(const char *prop);
+  /** Read name of holidayfile from config object */
+  void readHolidayFileName(KConfig *config);
 
   /* variables */
   QWidget *topWidget;                     // topWidget this calendar belongs to
@@ -222,6 +225,8 @@ protected:
 private:
   QList<KOEvent> mEventsRelate;           // events with relations
   QList<KOEvent> mTodosRelate;             // todos with relations
+
+  QString mHolidayfile;  // name of file defining holidays
 };
 
 #ifdef __cplusplus

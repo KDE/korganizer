@@ -51,7 +51,6 @@
 #include "kooptionsdialog.h"
 #include "koeventeditor.h"
 #include "kotodoeditor.h"
-//#include "editeventwin.h"
 
 #include "calendarview.h"
 #include "calendarview.moc"	
@@ -340,7 +339,10 @@ void CalendarView::writeSettings()
 
 void CalendarView::goToday()
 {
-  dateNavigator->selectDates(QDate::currentDate());
+  QDateList tmpList;
+  QDate today(QDate::currentDate());
+  tmpList.append(&today);
+  dateNavigator->selectDates(tmpList);
   saveSingleDate = QDate::currentDate();
   updateView(dateNavigator->getSelected());
 }
@@ -454,6 +456,7 @@ void CalendarView::hookupSignals()
 
 void CalendarView::updateConfig()
 {
+  qDebug("CalendarView::updateConfig()");
   emit configChanged();
 }
 
@@ -565,8 +568,9 @@ void CalendarView::changeView(KOBaseView *view)
 
 void CalendarView::updateView(const QDateList selectedDates)
 {
-  QDateList tmpList(FALSE);
+  QDateList tmpList(false);
   tmpList = selectedDates;
+
   int numView;
   KConfig config(locate("config", "korganizerrc")); 
   config.setGroup("Time & Date");
