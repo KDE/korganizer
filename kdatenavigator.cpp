@@ -31,6 +31,7 @@
 #include <kdebug.h>
 #include <klocale.h>
 #include <kglobal.h>
+#include <kglobalsettings.h>
 
 #include "koglobals.h"
 #include "koprefs.h"
@@ -78,11 +79,12 @@ KDateNavigator::KDateNavigator( QWidget *parent, Calendar *calendar,
   m_fstDayOfWk = dayone.dayOfWeek();
 
   int i;
-
+  QString generalFont = KGlobalSettings::generalFont().family();
+	  
   // Set up the heading fields.
   for( i = 0; i < 7; i++ ) {
     headings[i] = new QLabel(this);
-    headings[i]->setFont(QFont("Arial", 10, QFont::Bold));
+    headings[i]->setFont(QFont(generalFont, 10, QFont::Bold));
     headings[i]->setAlignment(AlignCenter);
 
     topLayout->addWidget(headings[i],1,i+1);
@@ -92,7 +94,7 @@ KDateNavigator::KDateNavigator( QWidget *parent, Calendar *calendar,
   for( i = 0; i < 6; i++ ) {
     weeknos[i] = new QLabel(this);
     weeknos[i]->setAlignment(AlignCenter);
-    weeknos[i]->setFont(QFont("Arial", 10));
+    weeknos[i]->setFont(QFont(generalFont, 10));
     if(!show_week_nums) {
       weeknos[i]->hide();
     }
