@@ -51,6 +51,9 @@ class CalendarViewBase : public QWidget
 
     /** changes the view to be the currently selected view */
     virtual void showView(KOrg::BaseView *) = 0;
+
+  public slots:
+    virtual void updateView() = 0;
 };
 
 }
