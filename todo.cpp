@@ -12,6 +12,9 @@ Todo::Todo()
 
   mHasDueDate = false;
   mHasStartDate = false;
+  
+  mIsCompleted = false;
+  mHasCompletedDate = false;
 }
 
 Todo::~Todo()
@@ -78,7 +81,7 @@ void Todo::setHasStartDate(bool f)
   emit eventUpdated(this);
 }
 
-
+#if 0
 void Todo::setStatus(const QString &statStr)
 {
   if (mReadOnly) return;
@@ -149,4 +152,37 @@ QString Todo::statusStr() const
     break;
   }
   return QString("");
+}
+#endif
+
+bool Todo::isCompleted() const
+{
+  return mIsCompleted;
+}
+
+void Todo::setCompleted(bool completed)
+{
+  mIsCompleted = completed;
+}
+
+QDateTime Todo::completed() const
+{
+  return mCompleted;
+}
+
+QString Todo::completedStr() const
+{
+  return KGlobal::locale()->formatDateTime(mCompleted);
+}
+
+void Todo::setCompleted(const QDateTime &completed)
+{
+  mCompleted = completed;
+  setCompleted(true);
+  mHasCompletedDate = true;
+}
+
+bool Todo::hasCompletedDate() const
+{
+  return mHasCompletedDate;
 }

@@ -42,15 +42,29 @@ class Todo : public Incidence
     /** sets the event's status to the string specified.  The string
      * must be a recognized value for the status field, i.e. a string
      * equivalent of the possible status enumerations previously described. */
-    void setStatus(const QString &statStr);
+//    void setStatus(const QString &statStr);
     /** sets the event's status to the value specified.  See the enumeration
      * above for possible values. */
-    void setStatus(int);
+//    void setStatus(int);
     /** return the event's status. */
-    int status() const;
+//    int status() const;
     /** return the event's status in string format. */
-    QString statusStr() const;
+//    QString statusStr() const;
 
+    /// return, if this todo is completed
+    bool isCompleted() const;
+    /// set completed state of this todo
+    void setCompleted(bool);
+
+    /// return date and time when todo was completed
+    QDateTime completed() const;
+    QString completedStr() const;
+    /// set date and time of completion
+    void setCompleted(const QDateTime &completed);
+
+    /// Return true, if todo has a date associated with completion.
+    bool hasCompletedDate() const;
+    
   private:
 
     QDateTime mDtDue;                     // due date of todo
@@ -59,6 +73,10 @@ class Todo : public Incidence
     bool mHasStartDate;                  // if todo has associated start date
 
     int  mStatus;                         // confirmed/delegated/tentative/etc
+
+    bool mIsCompleted;
+    QDateTime mCompleted;
+    bool mHasCompletedDate;
 };
 
 #endif

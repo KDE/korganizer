@@ -390,8 +390,7 @@ void CalPrinter::printTodo(const QDate &fd, const QDate &td)
 		 outStr);
       }
       // if terminated, cross it
-      int status = currEvent->status();
-      if (status == Event::COMPLETED) {
+      if (currEvent->isCompleted()) {
 	  p.drawLine( 5, (lineSpacing*count)+headerHeight-fontHeight/2 + 2, 
 		      pageWidth-5, (lineSpacing*count)+headerHeight-fontHeight/2 + 2);
       }

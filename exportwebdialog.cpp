@@ -413,7 +413,7 @@ void ExportWebDialog::createHtmlTodo (QTextStream *ts,Todo *todo)
 {
   kdDebug() << "ExportWebDialog::createHtmlTodo()" << endl;
 
-  bool completed = todo->status() == Incidence::COMPLETED;
+  bool completed = todo->isCompleted();
   QList<Incidence> relations = todo->relations();
 
   *ts << "<TR>\n";

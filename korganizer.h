@@ -28,6 +28,7 @@ class KTempFile;
 class KRecentFilesAction;
 class KOWindowList;
 class KToggleAction;
+class KProcess;
 
 /**
  *
@@ -152,7 +153,7 @@ class KOrganizer : public KMainWindow, virtual public KOrganizerIface
     void file_quit();
 
     /** Open kcontrol module for configuring date and time formats */
-//    void configureDateTime();
+    void configureDateTime();
 
     /** Open toolbar configuration dialog */
     void configureToolbars();
@@ -184,6 +185,8 @@ class KOrganizer : public KMainWindow, virtual public KOrganizerIface
 
     void setNumIncoming(int);
     void setNumOutgoing(int);
+
+    void configureDateTimeFinished(KProcess *);
     
   protected:
     void initActions();

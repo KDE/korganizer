@@ -437,8 +437,16 @@ VObject *VCalFormat::eventToVTodo(const Todo *anEvent)
   if (!anEvent->summary().isEmpty())
     addPropValue(vtodo, VCSummaryProp, anEvent->summary().utf8());
 
+  // completed
   // status
-  addPropValue(vtodo, VCStatusProp, anEvent->statusStr().latin1());
+  // backward compatibility, KOrganizer used to interpret only these two values
+  addPropValue(vtodo, VCStatusProp, anEvent->isCompleted() ? "COMPLETED" :
+                                                             "NEEDS_ACTION");
+  // completion date
+  if (anEvent->hasCompletedDate()) {
+    tmpStr = qDateTimeToISO(anEvent->completed());
+    addPropValue(vtodo, VCCompletedProp, tmpStr.latin1());
+  }
 
   // priority
   tmpStr.sprintf("%i",anEvent->priority());
@@ -846,13 +854,25 @@ Todo *VCalFormat::VTodoToEvent(VObject *vtodo)
     deleteStr(s);
   }
   
-  // status
+  // completed
+  // was: status
   if ((vo = isAPropertyOf(vtodo, VCStatusProp)) != 0) {
-    anEvent->setStatus(s = fakeCString(vObjectUStringZValue(vo)));
+    s = fakeCString(vObjectUStringZValue(vo));
+    if (strcmp(s,"COMPLETED") == 0) {
+      anEvent->setCompleted(true);
+    } else {
+      anEvent->setCompleted(false);
+    }
     deleteStr(s);
   }
   else
-    anEvent->setStatus("NEEDS ACTION");
+    anEvent->setCompleted(false);
+
+  // completion date
+  if ((vo = isAPropertyOf(vtodo, VCCompletedProp)) != 0) {
+    anEvent->setCompleted(ISOToQDateTime(s = fakeCString(vObjectUStringZValue(vo))));
+    deleteStr(s);
+  }
   
   // priority
   if ((vo = isAPropertyOf(vtodo, VCPriorityProp))) {

@@ -110,6 +110,7 @@ void KOEditorGeneralTodo::initMisc()
 {
   completedButton = new QCheckBox(this, "CheckBox_10" );
   completedButton->setText( i18n("Completed") );
+  connect(completedButton,SIGNAL(clicked()),SLOT(completedClicked()));
 
   priorityLabel = new QLabel( this, "Label_3" );
   priorityLabel->setText( i18n("Priority:") );
@@ -231,10 +232,15 @@ void KOEditorGeneralTodo::readTodo(Todo *todo)
 
   noTimeButton->setChecked(todo->doesFloat());
 
-  if (todo->statusStr() == "NEEDS ACTION")
-    completedButton->setChecked(FALSE);
-  else
-    completedButton->setChecked(TRUE);
+  if (todo->isCompleted()) {
+    completedButton->setChecked(true);
+    if (todo->hasCompletedDate()) {
+      mCompleted = todo->completed();
+    }
+  } else {
+    completedButton->setChecked(false);
+  }
+  setCompletedDate();
 
   priorityCombo->setCurrentItem(todo->priority()-1);
 
@@ -289,10 +295,15 @@ void KOEditorGeneralTodo::writeTodo(Todo *todo)
   
   todo->setPriority(priorityCombo->currentItem()+1);
 
+  // set completion state
   if (completedButton->isChecked()) {
-    todo->setStatus(QString("COMPLETED"));
+    if (mCompleted.isValid()) {
+      todo->setCompleted(mCompleted);
+    } else {
+      todo->setCompleted(true);
+    }
   } else {
-    todo->setStatus(QString("NEEDS ACTION"));
+    todo->setCompleted(false);
   }
 }
 
@@ -395,4 +406,22 @@ bool KOEditorGeneralTodo::validateInput()
   }
 
   return true;
+}
+
+void KOEditorGeneralTodo::completedClicked()
+{
+  if (completedButton->isChecked()) {
+    mCompleted = QDateTime::currentDateTime();
+  }
+  setCompletedDate();
+}
+
+void KOEditorGeneralTodo::setCompletedDate()
+{
+  if (completedButton->isChecked() && mCompleted.isValid()) {
+    completedButton->setText(i18n("Completed on %1")
+        .arg(KGlobal::locale()->formatDateTime(mCompleted)));
+  } else {
+    completedButton->setText(i18n("Completed"));
+  }
 }

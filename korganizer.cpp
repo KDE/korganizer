@@ -63,7 +63,7 @@
 
 KOWindowList *KOrganizer::windowList = 0;
 
-KOrganizer::KOrganizer(const char *name) 
+KOrganizer::KOrganizer(const char *name)
   : KMainWindow(0,name), DCOPObject("KOrganizerIface")
 {
   kdDebug() << "KOrganizer::KOrganizer()" << endl;
@@ -372,11 +372,11 @@ void KOrganizer::initActions()
 //                                                 actionCollection());
 //  KStdAction::showStatusbar(this, SLOT(toggleStatusBar()), actionCollection());
 
-/*
+
   (void)new KAction(i18n("Configure &Date & Time..."), 0,
                     this,SLOT(configureDateTime()),
                     actionCollection(), "conf_datetime");
-*/
+
 
   mStatusBarAction = KStdAction::showStatusbar(this,SLOT(toggleStatusBar()),
                                                actionCollection());
@@ -673,18 +673,19 @@ void KOrganizer::updateConfig()
   if (!KOPrefs::instance()->mAutoSave) mAutoSaveTimer->stop();
 }
 
-/*
 void KOrganizer::configureDateTime()
 {
-  KProcess proc;
-  proc << "xeyes";
-//  proc << "kcmshell" << "Personalization/language";
-  if (!proc.start()) {
+  KProcess *proc = new KProcess;
+  *proc << "kcmshell" << "Personalization/language";
+
+  connect(proc,SIGNAL(processExited(KProcess *)),
+          SLOT(configureDateTimeFinished(KProcess *)));
+
+  if (!proc->start()) {
     KMessageBox::sorry(this,
         i18n("Couldn't start control module for date and time format"));
   }
 }
-*/
 
 void KOrganizer::configureToolbars()
 {
@@ -993,4 +994,9 @@ QString KOrganizer::getCurrentURLasString() const
 bool KOrganizer::deleteEvent(QString VUID)
 {
   return mCalendarView->deleteEvent(VUID);
+}
+
+void KOrganizer::configureDateTimeFinished(KProcess *proc)
+{
+  delete proc;
 }

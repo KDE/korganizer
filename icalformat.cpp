@@ -125,7 +125,7 @@ bool ICalFormat::save(const QString &fileName)
   for (; qlt.current(); ++qlt) {
     component = writeTodo(qlt.current());
     icalcomponent_add_component(calendar,component);
-  }  
+  }
 
   // EVENT STUFF
   QList<Event> events = mCalendar->getAllEvents();
@@ -560,6 +560,18 @@ icalcomponent *ICalFormat::writeTodo(Todo *todo)
     }
     icalcomponent_add_property(vtodo,icalproperty_new_due(due));
   }
+
+  // completion date
+  if (todo->isCompleted()) {
+    if (!todo->hasCompletedDate()) {
+      // If todo was created by KOrganizer <2.2 it has no correct completion
+      // date. Set it to now.
+      todo->setCompleted(QDateTime::currentDateTime());
+    }
+    icaltimetype completed = writeICalDateTime(todo->completed());
+    icalcomponent_add_property(vtodo,icalproperty_new_completed(completed));
+  }
+
   
   return vtodo;
 }
@@ -921,6 +933,11 @@ Todo *ICalFormat::readTodo(icalcomponent *vtodo)
           todo->setFloats(false);
         }
         todo->setHasDueDate(true);
+        break;
+
+      case ICAL_COMPLETED_PROPERTY:  // completion date
+        icaltime = icalproperty_get_completed(p);
+        todo->setCompleted(readICalDateTime(icaltime));
         break;
 
       case ICAL_RELATEDTO_PROPERTY:  // releated todo (parent)
@@ -1619,7 +1636,7 @@ void ICalFormat::populate(icalcomponent *calendar)
   // Iterate through all todos
   c = icalcomponent_get_first_component(calendar,ICAL_VTODO_COMPONENT);
   while (c) {
-    kdDebug() << "----Todo found" << endl;
+//    kdDebug() << "----Todo found" << endl;
     Todo *todo = readTodo(c);
     if (!mCalendar->getTodo(todo->VUID())) mCalendar->addTodo(todo);
     c = icalcomponent_get_next_component(calendar,ICAL_VTODO_COMPONENT);
@@ -1628,7 +1645,7 @@ void ICalFormat::populate(icalcomponent *calendar)
   // Iterate through all events
   c = icalcomponent_get_first_component(calendar,ICAL_VEVENT_COMPONENT);
   while (c) {
-    kdDebug() << "----Event found" << endl;  
+//    kdDebug() << "----Event found" << endl;  
     Event *event = readEvent(c);
     if (!mCalendar->getEvent(event->VUID())) mCalendar->addEvent(event);
     c = icalcomponent_get_next_component(calendar,ICAL_VEVENT_COMPONENT);

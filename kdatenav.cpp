@@ -232,7 +232,7 @@ void KDateNavigator::updateConfig()
     if (KGlobal::locale()->weekStartsMonday()) {
       day = i+1;
     } else {
-      if (i==8) day = 1;
+      if (i==0) day = 7;
       else day = i;
     }
     headings[i]->setText(KGlobal::locale()->weekDayName(day).left(1));

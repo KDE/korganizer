@@ -354,7 +354,7 @@ void KOProjectView::purgeCompleted()
 
     Todo *aTodo;
     for (aTodo = todoCal.first(); aTodo; aTodo = todoCal.next()) {
-    if (aTodo->getStatus() != Incidence::NEEDS_ACTION)
+    if (aTodo->isCompleted())
       mCalendar->deleteTodo(aTodo);
     }
     updateView();
@@ -366,15 +366,15 @@ void KOProjectView::itemClicked(QListViewItem *item)
   if (!item) return;
 
   KOProjectViewItem *todoItem = (KOProjectViewItem *)item;
-  int status = todoItem->event()->getStatus();  // Completed or not?
+  int completed = todoItem->event()->isCompleted();  // Completed or not?
   
   if (todoItem->isOn()) {
-    if (status != Event::COMPLETED) {
-      todoItem->event()->setStatus(Event::COMPLETED);
+    if (!completed) {
+      todoItem->event()->setCompleted(true);
     }
   } else {
-    if (status != Event::NEEDS_ACTION) {
-      todoItem->event()->setStatus(Event::NEEDS_ACTION);
+    if (completed) {
+      todoItem->event()->setCompleted(false);
     }
   }
 }

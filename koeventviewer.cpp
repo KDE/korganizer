@@ -76,9 +76,12 @@ void KOEventViewer::appendTodo(Todo *event)
   formatCategories(event);
   formatAttendees(event);
 
-  mText.append(i18n("<p><b>Status:</b> %1<br><b>Priority:</b> %2</p>")
-               .arg(event->statusStr())
+  mText.append(i18n("<p><b>Priority:</b> %2</p>")
                .arg(QString::number(event->priority())));
+
+  if (event->isCompleted()) {
+    mText.append(i18n("<p><i>Completed</i></p>"));
+  }
 
   formatReadOnly(event);
 

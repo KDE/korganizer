@@ -36,7 +36,7 @@ void KOTodoViewItem::paintBranches(QPainter *p,const QColorGroup & cg,int w,
 
 void KOTodoViewItem::construct()
 {
-  setOn(mEvent->status() == Event::NEEDS_ACTION ? false : true );
+  setOn(mEvent->isCompleted());
   setText(0, mEvent->summary());
   setText(1, QString::number(mEvent->priority()));
   if (mEvent->hasDueDate()) {
@@ -452,7 +452,7 @@ void KOTodoView::purgeCompleted()
 
     Todo *aTodo;
     for (aTodo = todoCal.first(); aTodo; aTodo = todoCal.next()) {
-    if (aTodo->status() != Event::NEEDS_ACTION)
+    if (aTodo->isCompleted())
       mCalendar->deleteTodo(aTodo);
     }
     updateView();
@@ -464,15 +464,15 @@ void KOTodoView::itemClicked(QListViewItem *item)
   if (!item) return;
 
   KOTodoViewItem *todoItem = (KOTodoViewItem *)item;
-  int status = todoItem->event()->status();  // Completed or not?
+  int completed = todoItem->event()->isCompleted();  // Completed or not?
   
   if (todoItem->isOn()) {
-    if (status != Event::COMPLETED) {
-      todoItem->event()->setStatus(Event::COMPLETED);
+    if (!completed) {
+      todoItem->event()->setCompleted(QDateTime::currentDateTime());
     }
   } else {
-    if (status != Event::NEEDS_ACTION) {
-      todoItem->event()->setStatus(Event::NEEDS_ACTION);
+    if (completed) {
+      todoItem->event()->setCompleted(false);
     }
-  }   
+  }
 }

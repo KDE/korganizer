@@ -47,11 +47,14 @@ class KOEditorGeneralTodo : public QWidget
     void timeStuffDisable(bool disable);
     void dueStuffDisable(bool disable);
     void startStuffDisable(bool disable);
+    void completedClicked();
 
   protected:
     void initMisc();
     void initLayout();
     void initTimeBox();
+    
+    void setCompletedDate();
 
   private:
     QGroupBox               *timeGroupBox;
@@ -84,9 +87,11 @@ class KOEditorGeneralTodo : public QWidget
 
     QCheckBox               *mNoStartCheck;
   
+
     // variables to hold stuff temporarily.
     QString alarmSound;
     QString alarmProgram;
+    QDateTime mCompleted;
 
     int mSpacing;
 };

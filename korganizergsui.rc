@@ -1,5 +1,5 @@
 <!DOCTYPE kpartgui>
-<kpartgui name="korganizer" version="6">
+<kpartgui name="korganizer" version="7">
 
   <MenuBar>
     <Menu name="file"><text>&amp;File</text>
@@ -61,6 +61,7 @@
       <Action name="show_filter" append="show_merge"/>
       <Action name="edit_categories"/>
       <Action name="edit_filters"/>
+      <Action name="conf_datetime"/>
     </Menu>
   </MenuBar>
 
