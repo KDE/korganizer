@@ -501,6 +501,12 @@
         <receiver>KOGroupwarePrefsPage</receiver>
         <slot>slotChanged()</slot>
     </connection>
+    <connection>
+        <sender>publishEnable</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>KOGroupwarePrefsPage</receiver>
+        <slot>slotChanged()</slot>
+    </connection>
 </connections>
 <includes>
     <include location="local" impldecl="in implementation">kogroupwareprefspage.ui.h</include>
