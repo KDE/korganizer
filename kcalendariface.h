@@ -27,6 +27,7 @@
 // in _stub.cpp and _skel.cpp files, to get the definition of the structs.
 #include "kcalendariface.h"
 
+typedef QPair<QDateTime, QDateTime> QDateTimePair;
 
 class KCalendarIface : public DCOPObject
 {
@@ -45,9 +46,10 @@ k_dcop:
         bool vCalOutOK; bool isFree;
         QDateTime start; QDateTime end;
     };
-    virtual KCalendarIface::ResourceRequestReply resourceRequest( const QValueList<QPair<QDateTime, QDateTime> >& busy,
-                                                  const QCString& resource,
-                                                  const QString& vCalIn ) = 0;
+    virtual KCalendarIface::ResourceRequestReply resourceRequest( 
+			 const QValueList< QDateTimePair >& busy,
+			 const QCString& resource,
+			 const QString& vCalIn ) = 0;
 
     virtual void openEventEditor( QString text ) = 0;
 };
