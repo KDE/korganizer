@@ -136,6 +136,10 @@ void ResourceItem::stateChange( bool active )
       }
       if ( !success ) {
         QString msg = mResource->errorMessage();
+        if ( msg.isEmpty() ) {
+          msg = i18n("Error loading calendar '%1'")
+                .arg( mResource->resourceName() );
+        }
         if ( !msg.isEmpty() ) mView->emitErrorMessage( msg );
         toActivate = false;
       }
