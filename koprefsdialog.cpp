@@ -215,7 +215,7 @@ void KOPrefsDialog::setupTimeTab()
   char tempstring[101] = "Unknown";
   QString sCurrentlySet(i18n("Unknown"));
   int nCurrentlySet = 0;
-  QStrList list;
+  QStringList list;
 
   // read the currently set time zone
 #if defined(USE_SOLARIS)       // MARCO
@@ -257,7 +257,7 @@ void KOPrefsDialog::setupTimeTab()
        while(fgets(buf, MAXPATHLEN - 1, f) != NULL)
          {
            buf[strlen(buf) - 1] = '\0';
-           list.inSort(buf);
+           list.append(buf);
          }
        pclose(f);
       }
@@ -267,13 +267,14 @@ void KOPrefsDialog::setupTimeTab()
   if (!f) return;
   while(fgets(tempstring, 100, f) != NULL) {
     tempstring[strlen(tempstring)-1] = '\0';
-    list.inSort(i18n(tempstring));
+    list.append(i18n(tempstring));
     tzonenames << tempstring;
   }
   pclose(f);
 #endif // !USE_SOLARIS
+  list.sort();
 
-  mTimeZoneCombo->insertStrList(&list);
+  mTimeZoneCombo->insertStringList(list);
 
     // find the currently set time zone and select it
   for (int i = 0; i < mTimeZoneCombo->count(); i++)
