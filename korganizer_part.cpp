@@ -45,6 +45,7 @@
 #include <kprocess.h>
 #include <ktempfile.h>
 #include <kstatusbar.h>
+#include <kkeydialog.h>
 
 #include <sidebarextension.h>
 #include <infoextension.h>
@@ -139,9 +140,11 @@ KOrganizerPart::KOrganizerPart(QWidget *parentWidget, const char *widgetName,
 
   mWidget->show();
 
-  mActionManager = new ActionManager( this, mWidget, this, this );
+  mActionManager = new ActionManager( this, mWidget, this, this, true );
   mActionManager->init();
   mActionManager->readSettings();
+  connect( mActionManager, SIGNAL( actionKeyBindings() ),
+           SLOT( configureKeyBindings() ) );
 
   KConfig *config = KOGlobals::config();
   config->setGroup("General");
@@ -254,6 +257,11 @@ bool KOrganizerPart::openFile()
   mWidget->openCalendar(m_file);
   mWidget->show();
   return true;
+}
+
+void KOrganizerPart::configureKeyBindings()
+{
+  KKeyDialog::configure( actionCollection(), true );
 }
 
 KOrganizerBrowserExtension::KOrganizerBrowserExtension(KOrganizerPart *parent) :

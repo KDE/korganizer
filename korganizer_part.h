@@ -102,6 +102,8 @@ class KOrganizerPart: public KParts::ReadOnlyPart,
     void saveCalendar();
     void startCompleted( KProcess * );
 
+    void configureKeyBindings();
+
   private:
     KCal::Calendar *mCalendar;
     CalendarView *mWidget;

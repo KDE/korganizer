@@ -1,5 +1,6 @@
 /*
   This file is part of KOrganizer.
+
   Copyright (c) 2002 Mike Pilone <mpilone@slac.com>
   Copyright (c) 2002 Don Sanders <sanders@kde.org>
 
@@ -55,14 +56,15 @@
 KOWindowList *ActionManager::windowList = 0;
 bool ActionManager::startedKAddressBook = false;
 
-ActionManager::ActionManager(KXMLGUIClient *client, CalendarView *widget,
-                             QObject *parent, KOrg::MainWindow *mainWindow)
+ActionManager::ActionManager( KXMLGUIClient *client, CalendarView *widget,
+                              QObject *parent, KOrg::MainWindow *mainWindow,
+                              bool isPart )
     : QObject(parent), KCalendarIface()
 {
   mGUIClient = client;
   mACollection = mGUIClient->actionCollection();
   mCalendarView = widget;
-  mIsPart = !parent->inherits( "KOrganizer" );
+  mIsPart = isPart;
   mTempFile = 0;
   mActive = false;
   mNewStuff = 0;
@@ -116,22 +118,20 @@ ActionManager::~ActionManager()
   delete mNewStuff;
 
   // Remove Part plugins
-  if (mPluginMenu)
-      mPluginMenu->popupMenu()->clear();
+  if ( mPluginMenu ) mPluginMenu->popupMenu()->clear();
   KOCore::self()->unloadParts( mMainWindow, mParts );
   //close down KAddressBook if we started it
-  if (ActionManager::startedKAddressBook == true)
-  {
-   kdDebug(5850) << "Closing down kaddressbook" << endl;
-   DCOPClient *client = KApplication::kApplication()->dcopClient();
-   const QByteArray noParamData;
-   client->send("kaddressbook", "KAddressBookIface", "exit()",  noParamData);
+  if ( ActionManager::startedKAddressBook == true ) {
+    kdDebug(5850) << "Closing down kaddressbook" << endl;
+    DCOPClient *client = KApplication::kApplication()->dcopClient();
+    const QByteArray noParamData;
+    client->send("kaddressbook", "KAddressBookIface", "exit()",  noParamData);
   }
 
   delete mTempFile;
 
   // Take this window out of the window list.
-  windowList->removeWindow(mMainWindow);
+  windowList->removeWindow( mMainWindow );
 
   delete mCalendarView;
 
@@ -143,7 +143,7 @@ void ActionManager::initActions()
   KAction *action;
 
   // File menu.
-  if (mIsPart) {
+  if ( mIsPart ) {
     new KAction(i18n("&New"), "filenew", CTRL+Key_N, this,
 		SLOT(file_new()), mACollection, "korganizer_openNew" );
     new KAction(i18n("&Open"), "fileopen", CTRL+Key_O, this,
@@ -236,7 +236,7 @@ void ActionManager::initActions()
 	       mCalendarView, SLOT( purgeCompleted() ), mACollection,
 	       "purge_completed" );
 
-  if (mIsPart) {
+  if ( mIsPart ) {
     // edit menu
     mCutAction = new KAction(i18n("Cu&t"), "editcut", CTRL+Key_X, mCalendarView,
 			     SLOT(edit_cut()), mACollection, "korganizer_cut");
@@ -263,7 +263,7 @@ void ActionManager::initActions()
                               mCalendarView,SLOT(appointment_delete()),
                               mACollection, "edit_delete");
 
-  if (mIsPart) {
+  if ( mIsPart ) {
     new KAction(i18n("&Find..."),"find",CTRL+Key_F,
 		mCalendarView->dialogManager(), SLOT(showSearchDialog()),
 		mACollection, "korganizer_find");
@@ -414,7 +414,7 @@ void ActionManager::initActions()
   connect(mCalendarView,SIGNAL(eventsSelected(bool)),
           action,SLOT(setEnabled(bool)));
 */
-  if (!mIsPart) {
+  if ( !mIsPart ) {
       action = new KAction(i18n("Addressbook"),"contents",0,
 			   mCalendarView,SLOT(openAddressbook()),
 			   mACollection,"addressbook");
@@ -447,7 +447,7 @@ void ActionManager::initActions()
 */
 
 
-  if (mIsPart) {
+  if ( mIsPart ) {
     new KAction( i18n("&Configure KOrganizer..."),
 		 "configure", 0, mCalendarView,
 		 SLOT(edit_options()), mACollection,
@@ -497,25 +497,24 @@ void ActionManager::readSettings()
   // defaults where none are to be found
 
   KConfig *config = KOGlobals::config();
-  mRecent->loadEntries(config);
+  mRecent->loadEntries( config );
   mCalendarView->readSettings();
 }
 
 void ActionManager::writeSettings()
 {
-  kdDebug(5850) << "KOrganizer::writeSettings" << endl;
+  kdDebug(5850) << "ActionManager::writeSettings" << endl;
   KConfig *config = KOGlobals::config();
   mCalendarView->writeSettings();
 
-  config->setGroup("Settings");
-  config->writeEntry("Filter Visible",mFilterViewAction->isChecked());
-  mRecent->saveEntries(config);
+  config->setGroup( "Settings" );
+  config->writeEntry( "Filter Visible", mFilterViewAction->isChecked() );
+  mRecent->saveEntries( config );
 }
 
 void ActionManager::file_new()
 {
-  // Make new KOrganizer window containing empty calendar
-  ( new KOrganizer( true ) )->show();
+  emit actionNew();
 }
 
 void ActionManager::file_open()
@@ -533,17 +532,12 @@ void ActionManager::file_open()
     return;
   }
 
-  kdDebug(5850) << "KOrganizer::file_open(): " << url.prettyURL() << endl;
+  kdDebug(5850) << "ActionManager::file_open(): " << url.prettyURL() << endl;
 
   if (!mCalendarView->isModified() && mFile.isEmpty()) {
     openURL(url);
   } else {
-    KOrganizer *korg = new KOrganizer( true );
-    if (korg->openURL(url)) {
-      korg->show();
-    } else {
-      delete korg;
-    }
+    emit actionNew( url );
   }
 }
 
@@ -672,14 +666,14 @@ void ActionManager::file_close()
 
 bool ActionManager::openURL(const KURL &url,bool merge)
 {
-  kdDebug(5850) << "KOrganizer::openURL()" << endl;
+  kdDebug(5850) << "ActionManager::openURL()" << endl;
 
   if (url.isEmpty()) {
-    kdDebug(5850) << "KOrganizer::openURL(): Error! Empty URL." << endl;
+    kdDebug(5850) << "ActionManager::openURL(): Error! Empty URL." << endl;
     return false;
   }
   if (url.isMalformed()) {
-    kdDebug(5850) << "KOrganizer::openURL(): Error! URL is malformed." << endl;
+    kdDebug(5850) << "ActionManager::openURL(): Error! URL is malformed." << endl;
     return false;
   }
 
@@ -718,7 +712,7 @@ bool ActionManager::openURL(const KURL &url,bool merge)
 
 void ActionManager::closeURL()
 {
-  kdDebug(5850) << "KOrganizer::closeURL()" << endl;
+  kdDebug(5850) << "ActionManager::closeURL()" << endl;
 
   file_close();
 }
@@ -744,7 +738,7 @@ bool ActionManager::saveURL()
 
     // Tell the alarm daemon to stop monitoring the vCalendar file
     if ( !KOGlobals::self()->alarmClient()->removeCalendar( mURL.url() ) ) {
-      kdDebug(5850) << "KOrganizer::saveURL(): dcop send failed" << endl;
+      kdDebug(5850) << "ActionManager::saveURL(): dcop send failed" << endl;
     }
 
     QString filename = mURL.fileName();
@@ -759,7 +753,7 @@ bool ActionManager::saveURL()
   }
 
   if (!mCalendarView->saveCalendar(mFile)) {
-    kdDebug(5850) << "KOrganizer::saveURL(): calendar view save failed." << endl;
+    kdDebug(5850) << "ActionManager::saveURL(): calendar view save failed." << endl;
     return false;
   } else {
     mCalendarView->setModified( false );
@@ -774,9 +768,9 @@ bool ActionManager::saveURL()
   }
 
   if (isActive()) {
-    kdDebug(5850) << "KOrganizer::saveURL(): Notify alarm daemon" << endl;
+    kdDebug(5850) << "ActionManager::saveURL(): Notify alarm daemon" << endl;
     if ( !KOGlobals::self()->alarmClient()->reloadCalendar( mURL.url() ) ) {
-      kdDebug(5850) << "KOrganizer::saveUrl(): reloadCal call failed." << endl;
+      kdDebug(5850) << "ActionManager::saveUrl(): reloadCal call failed." << endl;
     }
   }
 
@@ -788,7 +782,7 @@ bool ActionManager::saveURL()
 
   mMainWindow->showStatusMessage(i18n("Saved calendar '%1'.").arg(mURL.prettyURL()));
 
-  if (KOPrefs::instance()->mHtmlWithSave==true) {
+  if ( KOPrefs::instance()->mHtmlWithSave ) {
     ExportWebDialog *dlg = new ExportWebDialog(mCalendarView->calendar());
     dlg->exportWebPage(mHtmlExportSync);
   }
@@ -798,14 +792,14 @@ bool ActionManager::saveURL()
 
 bool ActionManager::saveAsURL(const KURL &url)
 {
-  kdDebug(5850) << "KOrganizer::saveAsURL() " << url.prettyURL() << endl;
+  kdDebug(5850) << "ActionManager::saveAsURL() " << url.prettyURL() << endl;
 
   if (url.isEmpty()) {
-    kdDebug(5850) << "KOrganizer::saveAsURL(): Empty URL." << endl;
+    kdDebug(5850) << "ActionManager::saveAsURL(): Empty URL." << endl;
     return false;
   }
   if (url.isMalformed()) {
-    kdDebug(5850) << "KOrganizer::saveAsURL(): Malformed URL." << endl;
+    kdDebug(5850) << "ActionManager::saveAsURL(): Malformed URL." << endl;
     return false;
   }
 
@@ -838,7 +832,7 @@ bool ActionManager::saveAsURL(const KURL &url)
     setTitle();
     mRecent->addURL(mURL);
   } else {
-    kdDebug(5850) << "KOrganizer::saveAsURL() failed" << endl;
+    kdDebug(5850) << "ActionManager::saveAsURL() failed" << endl;
     mURL = URLOrig;
     mFile = fileOrig;
     delete tempFile;
@@ -850,7 +844,7 @@ bool ActionManager::saveAsURL(const KURL &url)
 
 bool ActionManager::saveModifiedURL()
 {
-  kdDebug(5850) << "KOrganizer::saveModifiedURL()" << endl;
+  kdDebug(5850) << "ActionManager::saveModifiedURL()" << endl;
 
   // If calendar isn't modified do nothing.
   if (!mCalendarView->isModified()) return true;
@@ -911,7 +905,7 @@ KURL ActionManager::getSaveURL()
 
   url.setFileName(filename);
 
-  kdDebug(5850) << "KOrganizer::getSaveURL(): url: " << url.url() << endl;
+  kdDebug(5850) << "ActionManager::getSaveURL(): url: " << url.url() << endl;
 
   return url;
 }
@@ -936,7 +930,7 @@ void ActionManager::readProperties(KConfig *config)
 
 void ActionManager::checkAutoSave()
 {
-  kdDebug(5850) << "KOrganizer::checkAutoSave()" << endl;
+  kdDebug(5850) << "ActionManager::checkAutoSave()" << endl;
 
   // Don't save if auto save interval is zero
   if (KOPrefs::instance()->mAutoSaveInterval == 0) return;
@@ -951,7 +945,7 @@ void ActionManager::checkAutoSave()
 // Configuration changed as a result of the options dialog.
 void ActionManager::updateConfig()
 {
-  kdDebug(5850) << "KOrganizer::updateConfig()" << endl;
+  kdDebug(5850) << "ActionManager::updateConfig()" << endl;
 
   if (KOPrefs::instance()->mAutoSave && !mAutoSaveTimer->isActive()) {
     checkAutoSave();
@@ -1031,7 +1025,7 @@ void ActionManager::makeActive()
 
   writeActiveState();
   if ( !KOGlobals::self()->alarmClient()->reloadCalendar( mURL.url() ) ) {
-    kdDebug(5850) << "KOrganizer::makeActive(): dcop send failed" << endl;
+    kdDebug(5850) << "ActionManager::makeActive(): dcop send failed" << endl;
   }
   setActive();
   emit calendarActivated(mMainWindow);
@@ -1047,7 +1041,7 @@ void ActionManager::writeActiveState()
 
 void ActionManager::dumpText(const QString &str)
 {
-  kdDebug(5850) << "KOrganizer::dumpText(): " << str << endl;
+  kdDebug(5850) << "ActionManager::dumpText(): " << str << endl;
 }
 
 void ActionManager::toggleFilterView()
@@ -1088,7 +1082,7 @@ void ActionManager::configureDateTimeFinished(KProcess *proc)
 
 void ActionManager::downloadNewStuff()
 {
-  kdDebug(5850) << "KOrganizer::downloadNewStuff()" << endl;
+  kdDebug(5850) << "ActionManager::downloadNewStuff()" << endl;
 
   if ( !mNewStuff ) mNewStuff = new KONewStuff( mCalendarView );
   mNewStuff->download();
@@ -1107,7 +1101,7 @@ QString ActionManager::localFileName()
 
 void ActionManager::processIncidenceSelection( Incidence *incidence )
 {
-//  kdDebug(5850) << "KOrganizer::processIncidenceSelection()" << endl;
+//  kdDebug(5850) << "ActionManager::processIncidenceSelection()" << endl;
 
   if ( !incidence ) {
     enableIncidenceActions( false );
@@ -1145,20 +1139,13 @@ void ActionManager::enableIncidenceActions( bool enabled )
 
 void ActionManager::keyBindings()
 {
-  if (parent()->inherits("KOrganizer")) {
-    KOrganizer *korg = dynamic_cast<KOrganizer*>(parent());
-	if (korg)
-    	KKeyDialog::configureKeys(mACollection,korg->xmlFile(),true,korg);
-  } else {
-    KKeyDialog::configure( mACollection, true );
-  }
+  emit actionKeyBindings();
 }
 
 
 void ActionManager::loadParts()
 {
-  if (mPluginMenu)
-      mPluginMenu->popupMenu()->clear();
+  if ( mPluginMenu ) mPluginMenu->popupMenu()->clear();
   mParts = KOCore::self()->loadParts( mMainWindow );
 }
 

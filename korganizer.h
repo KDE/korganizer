@@ -162,6 +162,10 @@ class KOrganizer : public KParts::MainWindow, virtual public KOrganizerIface, pu
 
     void slotNewToolbarConfig();
 
+    void newMainWindow( const KURL & );
+    
+    void configureKeyBindings();
+
   protected:
     void initActions();
 //    void initViews();

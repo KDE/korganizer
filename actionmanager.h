@@ -1,10 +1,9 @@
-#ifndef ACTIONMANAGER_H
-#define ACTIONMANAGER_H
-
 /*
     This file is part of KOrganizer.
+
     Copyright (c) 2002 Mike Pilone <mpilone@slac.com>
     Copyright (c) 2002 Don Sanders <sanders@kde.org>
+    Copyright (c) 2003 Cornelius Schumacher <schumacher@kde.org>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -24,6 +23,8 @@
     with any edition of Qt, and distribute the resulting executable,
     without including the source code for Qt in the source distribution.
 */
+#ifndef KORG_ACTIONMANAGER_H
+#define KORG_ACTIONMANAGER_H
 
 #include <qobject.h>
 
@@ -58,11 +59,11 @@ using namespace KCal;
 */
 class ActionManager : public QObject, public KCalendarIface
 {
-  Q_OBJECT
-
+    Q_OBJECT
   public:
-    ActionManager(KXMLGUIClient *client, CalendarView *widget,
-                  QObject *parent, KOrg::MainWindow *mainWindow);
+    ActionManager( KXMLGUIClient *client, CalendarView *widget,
+                   QObject *parent, KOrg::MainWindow *mainWindow,
+                   bool isPart );
     virtual ~ActionManager();
 
     /** Peform initialization that requires this* to be full constructed */
@@ -116,47 +117,71 @@ class ActionManager : public QObject, public KCalendarIface
     KActionMenu *pluginMenu() { return mPluginMenu; }
 
   signals:
+    /**
+      Emitted when the "New" action is activated.
+    */
+    void actionNew( const KURL &url = KURL() );
 
-    /** when change is made to options dialog, the topwidget will catch this
-     *  and emit this signal which notifies all widgets which have registered
-     *  for notification to update their settings. */
+    /**
+      Emitted when the "Configure Key Bindings" action is activated.
+    */
+    void actionKeyBindings();
+
+    /**
+      When change is made to options dialog, the topwidget will catch this
+      and emit this signal which notifies all widgets which have registered
+      for notification to update their settings.
+    */
     void configChanged();
 
-    /** emitted when the topwidget is closing down, so that any attached
-        child windows can also close. */
+    /**
+      Emitted when the topwidget is closing down, so that any attached
+      child windows can also close.
+    */
     void closingDown();
 
-    /** emitted when this calendar has been made active */
-    void calendarActivated(KOrg::MainWindow *);
+    /**
+      Emitted when this calendar has been made active.
+    */
+    void calendarActivated( KOrg::MainWindow * );
 
-    /** Announce filter selection changes. */
-    void filterActivated(int);
+    /**
+      Announce filter selection changes.
+    */
+    void filterActivated( int );
 
   public slots:
-
-    /** options dialog made a changed to the configuration. we catch this
-     *  and notify all widgets which need to update their configuration. */
+    /**
+      Options dialog made a changed to the configuration. we catch this
+      and notify all widgets which need to update their configuration.
+    */
     void updateConfig();
 
-    /** Sets the active state of the calendar belonging to this window. If a
-      * calendar is active the alarm daemon checks and signals events for
-      * alarm notification. The active calendar is loaded by default, when
-      * starting KOrganizer.
-      */
+    /**
+      Sets the active state of the calendar belonging to this window. If a
+      calendar is active the alarm daemon checks and signals events for
+      alarm notification. The active calendar is loaded by default, when
+      starting KOrganizer.
+    */
     void setActive(bool active=true);
 
-    /** Make calendar active */
+    /**
+      Make calendar active.
+    */
     void makeActive();
 
     void processIncidenceSelection( Incidence * );
     void keyBindings();
 
-    /** using the KConfig associated with the kapp variable, read in the
-     * settings from the config file.
-     */
+    /**
+      Using the KConfig associated with the kapp variable, read in the
+      settings from the config file.
+    */
     void readSettings();
 
-    /** write current state to config file. */
+    /**
+      Write current state to config file.
+    */
     void writeSettings();
 
     /* Session management */

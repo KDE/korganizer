@@ -154,8 +154,13 @@ KOrganizer::KOrganizer( bool document, const char *name )
 
   setCentralWidget(mCalendarView);
 
-  mActionManager = new ActionManager(this, mCalendarView, this, this);
+  mActionManager = new ActionManager( this, mCalendarView, this, this, false );
   mActionManager->init();
+  connect( mActionManager, SIGNAL( actionNew( const KURL & ) ),
+           SLOT( newMainWindow( const KURL & ) ) );
+  connect( mActionManager, SIGNAL( actionKeyBindings() ),
+           SLOT( configureKeyBindings() ) );
+
   initActions();
   readSettings();
 
@@ -191,6 +196,19 @@ KOrganizer::~KOrganizer()
   delete mCalendar;
 }
 
+void KOrganizer::newMainWindow( const KURL &url )
+{
+  KOrganizer *korg = new KOrganizer( true );
+  if ( url.isValid() && !url.isEmpty() ) {
+    if ( korg->openURL( url ) ) {
+      korg->show();
+    } else {
+      delete korg;
+    }
+  } else {
+    korg->show();
+  }
+}
 
 void KOrganizer::readSettings()
 {
@@ -499,4 +517,9 @@ void KOrganizer::slotConfigChanged()
     else
       mCalendarResources->setStandardDestinationPolicy();
   }
+}
+
+void KOrganizer::configureKeyBindings()
+{
+  KKeyDialog::configureKeys( actionCollection(), xmlFile(), true, this );
 }
