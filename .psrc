@@ -1,8 +1,0 @@
-Insure++.CoverageMapData off
-
-Insure++.MallocReplace off
-Insure++.StdlibReplace off
-Insure++.ErrorFormat "\"%f\", line %l: %c"
-Insure++.Suppress BAD_DECL
-Insure++.Summarize leaks
-#Insure++.LeakSweep off

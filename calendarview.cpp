@@ -64,6 +64,7 @@
 #include "komessagebox.h"
 #include "exportwebdialog.h"
 #include "kocorehelper.h"
+#include "incidencechanger.h"
 
 #include <libkcal/vcaldrag.h>
 #include <libkcal/icaldrag.h>
@@ -112,7 +113,8 @@ using namespace KOrg;
 CalendarView::CalendarView( QWidget *parent, const char *name )
   : CalendarViewBase( parent, name ),
     mHistory( 0 ),
-    mCalendar( CalendarNull::self() )
+    mCalendar( CalendarNull::self() ),
+    mChanger( 0 )
 {
   kdDebug(5850) << "CalendarView::CalendarView( Calendar )" << endl;
 
@@ -237,10 +239,10 @@ CalendarView::CalendarView( QWidget *parent, const char *name )
   connect( mDateNavigator, SIGNAL( datesSelected( const KCal::DateList & ) ),
            mNavigator, SLOT( selectDates( const KCal::DateList & ) ) );
 
-  connect( mDateNavigator, SIGNAL( incidenceDropped( Incidence * ) ),
-           SLOT( incidenceAdded( Incidence * ) ) );
-  connect( mDateNavigator, SIGNAL( incidenceDroppedMove( Incidence *, Incidence * ) ),
-           SLOT( incidenceChanged( Incidence *, Incidence *) ) );
+  connect( mDateNavigator, SIGNAL(incidenceDropped(Incidence*, const QDate&)),
+           SLOT( addIncidenceOn( Incidence *, const QDate & ) ) );
+  connect( mDateNavigator, SIGNAL(incidenceDroppedMove(Incidence*,const QDate&)),
+           SLOT( moveIncidenceTo( Incidence *, const QDate & ) ) );
 
   connect( mDateChecker, SIGNAL( dayPassed( QDate ) ),
            mTodoList, SLOT( dayPassed( QDate ) ) );
@@ -293,6 +295,7 @@ CalendarView::~CalendarView()
 
 void CalendarView::setCalendar( Calendar *cal )
 {
+  kdDebug(5850)<<"CalendarView::setCalendar"<<endl;
   mCalendar = cal;
 
   delete mHistory;
@@ -300,11 +303,33 @@ void CalendarView::setCalendar( Calendar *cal )
   connect( mHistory, SIGNAL( undone() ), SLOT( updateView() ) );
   connect( mHistory, SIGNAL( redone() ), SLOT( updateView() ) );
 
+  if ( mChanger ) delete mChanger;
+  setIncidenceChanger( new IncidenceChanger( mCalendar, this ) );
+  
   mCalendar->registerObserver( this );
 
   mDateNavigator->setCalendar( mCalendar );
 
   mTodoList->setCalendar( mCalendar );
+}
+
+void CalendarView::setIncidenceChanger( IncidenceChangerBase *changer )
+{
+  mChanger = changer;
+  emit newIncidenceChanger( mChanger );
+  connect( mChanger, SIGNAL( incidenceAdded( Incidence* ) ),
+           this, SLOT( incidenceAdded( Incidence* ) ) );
+  connect( mChanger, SIGNAL( incidenceChanged( Incidence*, Incidence*, int ) ),
+           this, SLOT( incidenceChanged( Incidence*, Incidence*, int ) ) );
+  connect( mChanger, SIGNAL( incidenceChanged( Incidence*, Incidence* ) ),
+           this, SLOT( incidenceChanged( Incidence*, Incidence* ) ) );
+  connect( mChanger, SIGNAL( incidenceToBeDeleted( Incidence * ) ),
+           this, SLOT( incidenceToBeDeleted( Incidence * ) ) );
+  connect( mChanger, SIGNAL( incidenceDeleted( Incidence * ) ),
+           this, SLOT( incidenceDeleted( Incidence * ) ) );
+  
+  connect( mChanger, SIGNAL( schedule( KCal::Scheduler::Method, Incidence*) ),
+           this, SLOT( schedule( KCal::Scheduler::Method, Incidence*) ) );
 }
 
 Calendar *CalendarView::calendar()
@@ -615,7 +640,7 @@ void CalendarView::incidenceChanged( Incidence *oldIncidence,
 void CalendarView::incidenceChanged( Incidence *oldIncidence,
                                      Incidence *newIncidence, int what )
 {
-  // @TODO: Make use of the what flag, which indicates which parts of the incidence have changed!
+  // FIXME: Make use of the what flag, which indicates which parts of the incidence have changed!
   KOIncidenceEditor *tmp = editorDialog( newIncidence );
   if ( tmp ) {
     kdDebug(5850) << "Incidence modified and open" << endl;
@@ -623,7 +648,6 @@ void CalendarView::incidenceChanged( Incidence *oldIncidence,
   }
   setModified( true );
   history()->recordEdit( oldIncidence, newIncidence );
-//  calendar()->endChange( newIncidence );
   changeIncidenceDisplay( newIncidence, KOGlobals::INCIDENCEEDITED );
   updateUnmanagedViews();
   checkForFilteredChange( newIncidence );
@@ -719,14 +743,11 @@ void CalendarView::edit_cut()
 {
   Incidence *incidence = selectedIncidence();
 
-  if (!incidence) {
+  if ( !incidence || !mChanger ) {
     KNotifyClient::beep();
     return;
   }
-  DndFactory factory( mCalendar );
-  incidenceToBeDeleted( incidence );
-  factory.cutIncidence( incidence );
-  incidenceDeleted( incidence );
+  mChanger->cutIncidence( incidence );
 }
 
 void CalendarView::edit_copy()
@@ -777,7 +798,7 @@ void CalendarView::edit_paste()
     pastedIncidence = factory.pasteIncidence( date );
   if ( !pastedIncidence ) return;
 
-  // @TODO: use a visitor here
+  // FIXME: use a visitor here
   if (pastedIncidence->type() == "Event" ) {
 
     Event* pastedEvent = static_cast<Event*>(pastedIncidence);
@@ -789,14 +810,14 @@ void CalendarView::edit_paste()
         pastedEvent->setDtEnd(endDT);
       }
     }
-    incidenceAdded( pastedEvent );
+    mChanger->addIncidence( pastedEvent );
 
   } else if ( pastedIncidence->type() == "Todo" ) {
     Todo* pastedTodo = static_cast<Todo*>(pastedIncidence);
     Todo* _selectedTodo = selectedTodo();
     if ( _selectedTodo )
       pastedTodo->setRelatedTo( _selectedTodo );
-    incidenceAdded( pastedTodo );
+    mChanger->addIncidence( pastedTodo );
   }
 }
 
@@ -849,6 +870,7 @@ void CalendarView::newEvent(QDate dt)
 void CalendarView::newEvent( const QString &text )
 {
   KOEventEditor *eventEditor = mDialogManager->getEventEditor();
+  connectIncidenceEditor( eventEditor );
   eventEditor->newEvent( text );
   mDialogManager->connectTypeAhead( eventEditor, viewManager()->agendaView() );
   eventEditor->show();
@@ -858,6 +880,7 @@ void CalendarView::newEvent( const QString &summary, const QString &description,
                              const QString &attachment )
 {
   KOEventEditor *eventEditor = mDialogManager->getEventEditor();
+  connectIncidenceEditor( eventEditor );
   eventEditor->newEvent( summary, description, attachment );
   eventEditor->show();
 }
@@ -866,6 +889,7 @@ void CalendarView::newEvent( const QString &summary, const QString &description,
                              const QString &attachment, const QStringList &attendees )
 {
   KOEventEditor *eventEditor = mDialogManager->getEventEditor();
+  connectIncidenceEditor( eventEditor );
   eventEditor->newEvent( summary, description, attachment, attendees );
   eventEditor->show();
 }
@@ -873,6 +897,7 @@ void CalendarView::newEvent( const QString &summary, const QString &description,
 void CalendarView::newEvent(QDateTime fromHint, QDateTime toHint, bool allDay)
 {
   KOEventEditor *eventEditor = mDialogManager->getEventEditor();
+  connectIncidenceEditor( eventEditor );
   eventEditor->newEvent(fromHint,toHint,allDay);
   mDialogManager->connectTypeAhead( eventEditor, viewManager()->agendaView() );
   eventEditor->show();
@@ -881,6 +906,7 @@ void CalendarView::newEvent(QDateTime fromHint, QDateTime toHint, bool allDay)
 void CalendarView::newTodo( const QString &text )
 {
   KOTodoEditor *todoEditor = mDialogManager->getTodoEditor();
+  connectIncidenceEditor( todoEditor );
   todoEditor->newTodo( text );
   todoEditor->show();
 }
@@ -889,6 +915,7 @@ void CalendarView::newTodo( const QString &summary, const QString &description,
                              const QString &attachment )
 {
   KOTodoEditor *todoEditor = mDialogManager->getTodoEditor();
+  connectIncidenceEditor( todoEditor );
   todoEditor->newTodo( summary, description, attachment );
   todoEditor->show();
 }
@@ -897,6 +924,7 @@ void CalendarView::newTodo( const QString &summary, const QString &description,
                             const QString &attachment, const QStringList &attendees )
 {
   KOTodoEditor *todoEditor = mDialogManager->getTodoEditor();
+  connectIncidenceEditor( todoEditor );
   todoEditor->newTodo( summary, description, attachment, attendees );
   todoEditor->show();
 }
@@ -907,6 +935,7 @@ void CalendarView::newTodo()
   QDateTime dtDue;
   bool allday = true;
   KOTodoEditor *todoEditor = mDialogManager->getTodoEditor();
+  connectIncidenceEditor( todoEditor );
   if ( mViewManager->currentView()->isEventView() ) {
     dtDue.setDate( mNavigator->selectedDates().first() );
     QDateTime dtDummy = QDateTime::currentDateTime();
@@ -922,6 +951,7 @@ void CalendarView::newTodo()
 void CalendarView::newTodo( QDate date )
 {
   KOTodoEditor *todoEditor = mDialogManager->getTodoEditor();
+  connectIncidenceEditor( todoEditor );
   todoEditor->newTodo( QDateTime( date, QTime::currentTime() ), 0, true );
   todoEditor->show();
 }
@@ -935,6 +965,7 @@ void CalendarView::newSubTodo()
 void CalendarView::newSubTodo(Todo *parentEvent)
 {
   KOTodoEditor *todoEditor = mDialogManager->getTodoEditor();
+  connectIncidenceEditor( todoEditor );
   todoEditor->newTodo(QDateTime::currentDateTime().addDays(7),parentEvent,true);
   todoEditor->show();
 }
@@ -979,16 +1010,21 @@ void CalendarView::appointment_delete()
 void CalendarView::todo_unsub()
 {
   Todo *anTodo = selectedTodo();
-  if (!anTodo) return;
-  if (!anTodo->relatedTo()) return;
+  if ( !anTodo || !anTodo->relatedTo() ) return;
   Todo *oldTodo = anTodo->clone();
-  anTodo->relatedTo()->removeRelation(anTodo);
-  anTodo->setRelatedTo(0);
-  anTodo->setRelatedToUid("");
-  incidenceChanged( oldTodo, anTodo );
+  if ( mChanger->beginChange( anTodo ) ) {
+    anTodo->relatedTo()->removeRelation(anTodo);
+    anTodo->setRelatedTo(0);
+    anTodo->setRelatedToUid("");
+    mChanger->changeIncidence( oldTodo, anTodo, KOGlobals::RELATION_MODIFIED );
+    mChanger->endChange( anTodo );
+    setModified(true);
+    updateView();
+  } else {
+    KMessageBox::sorry( this, i18n("Unable to turn sub-to-do into a top-level "
+                        "to-do, because it cannot be locked.") );
+  }
   delete oldTodo;
-  setModified(true);
-  updateView();
 }
 
 bool CalendarView::deleteTodo(Todo *todo)
@@ -1017,13 +1053,17 @@ bool CalendarView::deleteIncidence( const QString &uid )
 
 void CalendarView::toggleAlarm( Incidence *incidence )
 {
-  if ( !incidence ) {
+  if ( !incidence || !mChanger ) {
     kdDebug(5850) << "CalendarView::toggleAlarm() called without having a clicked item" << endl;
     return;
   }
   Incidence*oldincidence = incidence->clone();
+  if ( !mChanger->beginChange( incidence ) ) {
+    kdDebug(5850) << "Unable to lock incidence " << endl;
+    delete oldincidence;
+    return;
+  }
 
-// @TODO: deal correctly with multiple alarms
   Alarm::List alarms = incidence->alarms();
   Alarm::List::ConstIterator it;
   for( it = alarms.begin(); it != alarms.end(); ++it )
@@ -1033,7 +1073,8 @@ void CalendarView::toggleAlarm( Incidence *incidence )
     Alarm*alm = incidence->newAlarm();
     alm->setEnabled(true);
   }
-  emit incidenceChanged( oldincidence, incidence );
+  mChanger->changeIncidence( oldincidence, incidence, KOGlobals::ALARM_MODIFIED );
+  mChanger->endChange( incidence );
   delete oldincidence;
 
 //  mClickedItem->updateIcons();
@@ -1041,33 +1082,56 @@ void CalendarView::toggleAlarm( Incidence *incidence )
 
 void CalendarView::dissociateOccurrence( Incidence *incidence, const QDate &date )
 {
-  Incidence* oldInc = incidence->clone();
-  Incidence* newInc = mCalendar->dissociateOccurrence( 
-    incidence, date, true );
+  if ( !incidence || !mChanger ) {
+    kdDebug(5850) << "CalendarView::toggleAlarm() called without having a clicked item" << endl;
+    return;
+  }
+  Incidence*oldincidence = incidence->clone();
+  if ( !mChanger->beginChange( incidence ) ) {
+    kdDebug(5850) << "Unable to lock incidence " << endl;
+    delete oldincidence;
+    return;
+  }
+
+  Incidence* newInc = mCalendar->dissociateOccurrence( incidence, date, true );
   if ( newInc ) {
     startMultiModify( i18n("Dissociate occurrence") );
-    incidenceChanged( oldInc, incidence );
-    incidenceAdded( newInc );
+    mChanger->changeIncidence( oldincidence, incidence );
+    mChanger->addIncidence( newInc );
     endMultiModify();
   } else {
     KMessageBox::sorry( this, i18n("Dissociating the occurrence failed."), 
       i18n("Dissociating failed") );
   }
+  mChanger->endChange( incidence );
+  delete oldincidence;
 }
+
 void CalendarView::dissociateFutureOccurrence( Incidence *incidence, const QDate &date )
 {
-  Incidence* oldInc = incidence->clone();
-  Incidence* newInc = mCalendar->dissociateOccurrence( 
-    incidence, date, false );
+  if ( !incidence || !mChanger ) {
+    kdDebug(5850) << "CalendarView::toggleAlarm() called without having a clicked item" << endl;
+    return;
+  }
+  Incidence*oldincidence = incidence->clone();
+  if ( !mChanger->beginChange( incidence ) ) {
+    kdDebug(5850) << "Unable to lock incidence " << endl;
+    delete oldincidence;
+    return;
+  }
+
+  Incidence* newInc = mCalendar->dissociateOccurrence( incidence, date, true );
   if ( newInc ) {
     startMultiModify( i18n("Dissociate future occurrences") );
-    incidenceChanged( oldInc, incidence );
-    incidenceAdded( newInc );
+    mChanger->changeIncidence( oldincidence, incidence );
+    mChanger->addIncidence( newInc );
     endMultiModify();
   } else {
     KMessageBox::sorry( this, i18n("Dissociating the future occurrences failed."), 
       i18n("Dissociating failed") );
   }
+  mChanger->endChange( incidence );
+  delete oldincidence;
 }
 
 
@@ -1514,9 +1578,11 @@ Todo *CalendarView::selectedTodo()
   return 0;
 }
 
-void CalendarView::dialogClosing(Incidence *in)
+void CalendarView::dialogClosing( Incidence *in )
 {
-  mDialogList.remove(in);
+  // FIXME: this doesn't work, because if it's a new incidence, it's not locked!
+  mChanger->endChange( in );
+  mDialogList.remove( in );
 }
 
 Incidence *CalendarView::currentSelection()
@@ -1567,7 +1633,7 @@ bool CalendarView::editIncidence( Incidence *incidence )
 {
   kdDebug(5850) << "CalendarView::editEvent()" << endl;
 
-  if ( !incidence ) {
+  if ( !incidence || !mChanger ) {
     KNotifyClient::beep();
     return false;
   }
@@ -1585,13 +1651,16 @@ bool CalendarView::editIncidence( Incidence *incidence )
     return true;
   }
 
-  if ( !mCalendar->beginChange( incidence ) ) {
+  if ( !mChanger->beginChange( incidence ) ) {
     warningChangeFailed( incidence );
+    showIncidence( incidence );
     return false;
   }
 
   kdDebug(5850) << "CalendarView::editIncidence() new IncidenceEditor" << endl;
   KOIncidenceEditor *incidenceEditor = mDialogManager->getEditor( incidence );
+  connectIncidenceEditor( incidenceEditor );
+
   mDialogList.insert( incidence, incidenceEditor );
   incidenceEditor->editIncidence( incidence );
   incidenceEditor->show();
@@ -1600,7 +1669,7 @@ bool CalendarView::editIncidence( Incidence *incidence )
 
 void CalendarView::deleteIncidence(Incidence *incidence)
 {
-  if ( !incidence ) {
+  if ( !incidence || !mChanger ) {
     KNotifyClient::beep();
     return;
   }
@@ -1614,7 +1683,7 @@ void CalendarView::deleteIncidence(Incidence *incidence)
     return;
   }
   
-  DeleteIncidenceVisitor v;
+  CanDeleteIncidenceVisitor v;
   // Let the visitor do special things for special incidence types.
   // e.g. todos with children cannot be deleted, so act(..) returns false
   if ( !v.act( incidence, this ) ) 
@@ -1642,80 +1711,48 @@ void CalendarView::deleteIncidence(Incidence *incidence)
              i18n("Delete &Future"),
              i18n("Delete &All"));
     }
-    bool doDelete = true;
     switch(km) {
       case KMessageBox::Ok: // Continue // all
       case KMessageBox::Continue:
-        if ( KOPrefs::instance()->thatIsMe( incidence->organizer().email() ) && incidence->attendeeCount()>0
-            && !KOPrefs::instance()->mUseGroupwareCommunication ) {
-          schedule( Scheduler::Cancel, incidence );
-        } else if( KOPrefs::instance()->mUseGroupwareCommunication ) {
-          doDelete = KOGroupware::instance()->sendICalMessage( this, KCal::Scheduler::Cancel, incidence, true );
-        }
-        if( doDelete ) {
-          incidenceToBeDeleted( incidence );
-          mCalendar->deleteIncidence( incidence );
-          incidenceDeleted( incidence );
-        }
+        mChanger->deleteIncidence( incidence );
         break;
 
       case KMessageBox::Yes: // just this one
-        // @TODO: Add groupware things
-        if ( itemDate.isValid()) {
-          Incidence*oldIncidence = incidence->clone();
+        if ( mChanger->beginChange( incidence ) ) {
+          Incidence *oldIncidence = incidence->clone();
           incidence->addExDate( itemDate );
-          incidenceChanged( oldIncidence, incidence );
+          mChanger->changeIncidence( oldIncidence, incidence );
+          mChanger->endChange( incidence );
+          delete oldIncidence;
         }
         break;
       case KMessageBox::No: // all future items
-        // @TODO: Add groupware things
-        Recurrence *recur = incidence->recurrence();
-        if ( recur ) {
-          Incidence*oldIncidence = incidence->clone();
+        if ( mChanger->beginChange( incidence ) ) {
+          Incidence *oldIncidence = incidence->clone();
+          Recurrence *recur = incidence->recurrence();
           recur->setEndDate( itemDate.addDays(-1) );
-          incidenceChanged( oldIncidence, incidence );
+          mChanger->changeIncidence( oldIncidence, incidence );
+          mChanger->endChange( incidence );
+          delete oldIncidence;
         }
         break;
     }
   } else {
-    bool userIsOrganizer = KOPrefs::instance()->thatIsMe( incidence->organizer().email() );
-    if (KOPrefs::instance()->mConfirm && (!KOPrefs::instance()->mUseGroupwareCommunication ||
-                                          userIsOrganizer)) {
-      bool doDelete = true;
-      switch ( msgItemDelete( incidence ) ) {
-        case KMessageBox::Continue: // OK
-          incidenceToBeDeleted( incidence );
-          if ( userIsOrganizer &&
-               incidence->attendeeCount() > 0 &&
-               !KOPrefs::instance()->mUseGroupwareCommunication ) {
-            schedule( Scheduler::Cancel, incidence );
-          } else if( KOPrefs::instance()->mUseGroupwareCommunication ) {
-            doDelete = KOGroupware::instance()->sendICalMessage( this, KCal::Scheduler::Cancel, incidence, true );
-          }
-          if( doDelete ) {
-            mCalendar->deleteIncidence( incidence );
-            incidenceDeleted( incidence );
-          }
-          break;
-      }
-    } else {
-      bool doDelete = true;
-      if ( userIsOrganizer &&
-           incidence->attendeeCount() > 0 &&
-           !KOPrefs::instance()->mUseGroupwareCommunication ) {
-        schedule( Scheduler::Cancel, incidence );
-      } else if ( KOPrefs::instance()->mUseGroupwareCommunication ) {
-        doDelete = KOGroupware::instance()->sendICalMessage( this, KCal::Scheduler::Cancel, incidence, true );
-      }
-      if( doDelete ) {
-        incidenceToBeDeleted( incidence );
-        mCalendar->deleteIncidence( incidence );
-        incidenceDeleted( incidence );
-      }
+    bool doDelete = true;
+    if (KOPrefs::instance()->mConfirm ) { 
+      doDelete = ( msgItemDelete( incidence ) == KMessageBox::Continue );
     }
+    if ( doDelete )
+      mChanger->deleteIncidence( incidence );
   }
 }
 
+void CalendarView::connectIncidenceEditor( KOIncidenceEditor *editor )
+{
+  connect( this, SIGNAL( newIncidenceChanger( IncidenceChangerBase* ) ), 
+           editor, SLOT( setIncidenceChanger( IncidenceChangerBase* ) ) );
+  editor->setIncidenceChanger( mChanger );
+}
 
 void CalendarView::lookForOutgoingMessages()
 {
@@ -1747,11 +1784,9 @@ bool CalendarView::purgeCompletedSubTodos( Todo* todo, bool &allPurged )
   
   if ( deleteThisTodo ) {
     if ( todo->isCompleted() ) {
-      incidenceToBeDeleted( todo );
-      calendar()->deleteIncidence( todo );
-      incidenceDeleted( todo );
-    }
-    else {
+      if ( !mChanger->deleteIncidence( todo ) ) 
+        allPurged = false;
+    } else {
       deleteThisTodo = false;
     }
   } else {
@@ -1866,6 +1901,93 @@ void CalendarView::updateCategories()
   KOPrefs::instance()->writeConfig();
   // Make the category editor update the list!
   emit categoriesChanged();
+}
+
+void CalendarView::addIncidenceOn( Incidence *incadd, const QDate &dt )
+{
+  if ( !incadd || !mChanger ) {
+    KMessageBox::sorry(this, i18n("Unable to copy the incidence to %1.")
+                       .arg( dt.toString() ), i18n("Copying failed") );
+    return;
+  }
+  Incidence *incidence = mCalendar->incidence( incadd->uid() );
+  if ( !incidence ) incidence = incadd;
+  // Create a copy of the incidence, since the incadd doesn't belong to us.
+  incidence = incidence->clone();
+  incidence->recreate();
+  
+  if ( incidence->type() == "Event" ) {
+    Event *event = static_cast<Event*>(incidence);
+    
+    // Adjust date
+    QDateTime start = event->dtStart();
+    QDateTime end = event->dtEnd();
+    
+    int duration = start.daysTo( end );
+    start.setDate( dt );
+    end.setDate( dt.addDays( duration ) );
+
+    event->setDtStart( start );
+    event->setDtEnd( end );
+    
+  } else if ( incidence->type() == "Todo" ) {
+    Todo *todo = static_cast<Todo*>(incidence);
+    QDateTime due = todo->dtDue();
+    due.setDate( dt );
+
+    todo->setDtDue( due );
+    todo->setHasDueDate( true );
+  }
+  
+  if ( !mChanger->addIncidence( incidence ) ) {
+    KODialogManager::errorSaveIncidence( this, incidence );
+    delete incidence;
+  }
+}
+
+void CalendarView::moveIncidenceTo( Incidence *incmove, const QDate &dt )
+{
+  if ( !incmove || !mChanger ) {
+    KMessageBox::sorry( this, i18n("Unable to move the incidence to  %1.")
+                        .arg( dt.toString() ), i18n("Moving failed") );
+    return;
+  }
+  Incidence *incidence = mCalendar->incidence( incmove->uid() );
+  if ( !incidence ) {
+    addIncidenceOn( incidence, dt );
+    return;
+  }
+  Incidence *oldIncidence = incidence->clone();
+  if ( !mChanger->beginChange( incidence ) ) {
+    delete oldIncidence;
+    return;
+  }
+  
+  if ( incidence->type() == "Event" ) {
+    Event *event = static_cast<Event*>(incidence);
+    
+    // Adjust date
+    QDateTime start = event->dtStart();
+    QDateTime end = event->dtEnd();
+    
+    int duration = start.daysTo( end );
+    start.setDate( dt );
+    end.setDate( dt.addDays( duration ) );
+
+    event->setDtStart( start );
+    event->setDtEnd( end );
+    
+  } else if ( incidence->type() == "Todo" ) {
+    Todo *todo = static_cast<Todo*>(incidence);
+    QDateTime due = todo->dtDue();
+    due.setDate( dt );
+
+    todo->setDtDue( due );
+    todo->setHasDueDate( true );
+  }
+  mChanger->changeIncidence( oldIncidence, incidence );
+  mChanger->endChange( incidence );
+  delete oldIncidence;
 }
 
 #include "calendarview.moc"

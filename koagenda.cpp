@@ -42,9 +42,11 @@
 #include "koprefs.h"
 #include "koglobals.h"
 #include "komessagebox.h"
+#include "incidencechanger.h"
 
 #include "koagenda.h"
 #include "koagenda.moc"
+#include <korganizer/baseview.h>
 
 #include <libkcal/event.h>
 #include <libkcal/todo.h>
@@ -152,7 +154,7 @@ void MarcusBains::updateLocation(bool recalculate)
 */
 KOAgenda::KOAgenda( int columns, int rows, int rowSize, QWidget *parent,
                     const char *name, WFlags f )
-  : QScrollView( parent, name, f )
+  : QScrollView( parent, name, f ), mChanger( 0 )
 {
   mColumns = columns;
   mRows = rows;
@@ -754,6 +756,7 @@ void KOAgenda::startItemAction(const QPoint& viewportPos)
     mActionType = isInResizeArea( mAllDayMode, pos, mActionItem );
   }
 
+  
   mActionItem->startMove();
   setActionCursor( mActionType, true );
 }
@@ -786,6 +789,8 @@ void KOAgenda::performItemAction(const QPoint& viewportPos)
       mActionItem = 0;
       mActionType = NOP;
       mItemMoved = false;
+      if ( mItemMoved && mChanger )
+        mChanger->endChange( mActionItem->incidence() );
       return;
     }
   } else {
@@ -805,7 +810,23 @@ void KOAgenda::performItemAction(const QPoint& viewportPos)
 
   // Move or resize item if necessary
   if ( mEndCell != gpos ) {
-    mItemMoved = true;
+    if ( !mItemMoved ) {
+      if ( !mChanger || !mChanger->beginChange( mActionItem->incidence() ) ) {
+        KMessageBox::information( this, i18n("Unable to lock incidence for "
+                             "modification. You cannot change make any changes."), 
+                             i18n("Locking failed"), "AgendaLockingFailed" );
+        mScrollUpTimer.stop();
+        mScrollDownTimer.stop();
+        mActionItem->resetMove();
+        placeSubCells( mActionItem );
+        setCursor( arrowCursor );
+        mActionItem = 0;
+        mActionType = NOP;
+        mItemMoved = false;
+        return;
+      }
+      mItemMoved = true;
+    }
     mActionItem->raise();
     if (mActionType == MOVE) {
       // Move all items belonging to a multi item
@@ -931,6 +952,7 @@ void KOAgenda::endItemAction()
   mScrollDownTimer.stop();
   setCursor( arrowCursor );
   bool multiModify = false;
+  // FIXME: do the cloning here...
 
   if ( mItemMoved ) {
     bool modify = true;
@@ -949,7 +971,7 @@ void KOAgenda::endItemAction()
         case KMessageBox::Yes: { // Just this occurence
             // Dissociate this occurence: 
             // create clone of event, set relation to old event, set cloned event 
-            // for mActionItem, add exception date to old event, emit incidenceChanged 
+            // for mActionItem, add exception date to old event, changeIncidence
             // for the old event, remove the recurrence from the new copy and then just 
             // go on with the newly adjusted mActionItem and let the usual code take 
             // care of the new time!
@@ -963,10 +985,10 @@ void KOAgenda::endItemAction()
             if ( newInc ) {
               // don't recreate items, they already have the correct position
               emit enableAgendaUpdate( false );
-              emit incidenceChanged( oldIncSaved, oldInc );
+              mChanger->changeIncidence( oldIncSaved, oldInc );
               mActionItem->setIncidence( newInc );
               mActionItem->dissociateFromMultiItem();
-              emit incidenceAdded( newInc );
+              mChanger->addIncidence( newInc );
               emit enableAgendaUpdate( true );
             } else {
               KMessageBox::sorry( this, i18n("Unable to add the exception item to the "
@@ -977,7 +999,7 @@ void KOAgenda::endItemAction()
         case KMessageBox::No/*Future*/: { // All future occurences
             // Dissociate this occurence: 
             // create clone of event, set relation to old event, set cloned event 
-            // for mActionItem, add recurrence end date to old event, emit incidenceChanged 
+            // for mActionItem, add recurrence end date to old event, changeIncidence
             // for the old event, adjust the recurrence for the new copy and then just 
             // go on with the newly adjusted mActionItem and let the usual code take 
             // care of the new time!
@@ -992,9 +1014,9 @@ void KOAgenda::endItemAction()
               emit enableAgendaUpdate( false );
               mActionItem->dissociateFromMultiItem();
               mActionItem->setIncidence( newInc );
-              emit incidenceAdded( newInc );
+              mChanger->addIncidence( newInc );
               emit enableAgendaUpdate( true );
-              emit incidenceChanged( oldIncSaved, oldInc );
+              mChanger->changeIncidence( oldIncSaved, oldInc );
             } else {
               KMessageBox::sorry( this, i18n("Unable to add the future items to the "
                   "calendar. No change will be done."), i18n("Error Occurred") );
@@ -1031,8 +1053,10 @@ void KOAgenda::endItemAction()
       // Notify about change, so that agenda view can update the event data
       emit itemModified( modif );
     }
+    // FIXME: If the change failed, we need to update the view!
+    mChanger->endChange( mActionItem->incidence() );
   }
-
+  
   mActionItem = 0;
   mActionType = NOP;
   mItemMoved = false;
@@ -1695,7 +1719,7 @@ void KOAgenda::scrollDown()
 */
 int KOAgenda::minimumWidth() const
 {
-  // @TODO:: develop a way to dynamically determine the minimum width
+  // FIXME:: develop a way to dynamically determine the minimum width
   int min = 100;
 
   return min;

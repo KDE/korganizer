@@ -29,6 +29,7 @@
 class QDateTime;
 
 namespace KPIM { class CategorySelectDialog; }
+namespace KOrg { class IncidenceChangerBase; }
 
 class KOEditorDetails;
 class KOEditorAttachments;
@@ -38,6 +39,7 @@ class Calendar;
 class Incidence;
 }
 using namespace KCal;
+using namespace KOrg;
 
 /**
   This is the base class for the calendar component editors.
@@ -64,6 +66,8 @@ class KOIncidenceEditor : public KDialogBase
     void updateCategoryConfig();
     /** Edit an existing todo. */
     virtual void editIncidence(Incidence *) = 0;
+    virtual void setIncidenceChanger( IncidenceChangerBase *changer ) { 
+        mChanger = changer; }
 
 
   signals:
@@ -73,8 +77,6 @@ class KOIncidenceEditor : public KDialogBase
     void dialogClose( Incidence * );
     void editCanceled( Incidence * );
 
-    void incidenceAdded( Incidence * );
-    void incidenceChanged( Incidence *oldTodo, Incidence *newTodo );
     void deleteIncidenceSignal( Incidence * );
 
   protected slots:
@@ -112,6 +114,7 @@ class KOIncidenceEditor : public KDialogBase
 
     KOEditorDetails *mDetails;
     KOEditorAttachments *mAttachments;
+    KOrg::IncidenceChangerBase *mChanger;
 };
 
 #endif

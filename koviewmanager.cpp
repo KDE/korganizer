@@ -35,7 +35,6 @@
 #include "kolistview.h"
 #include "kowhatsnextview.h"
 #include "kojournalview.h"
-#include "kotimespanview.h"
 #include "koprefs.h"
 #include "koglobals.h"
 #include "navigatorbar.h"
@@ -56,7 +55,6 @@ KOViewManager::KOViewManager( CalendarView *mainView ) :
   mMonthView = 0;
   mListView = 0;
   mJournalView = 0;
-  mTimeSpanView = 0;
 }
 
 KOViewManager::~KOViewManager()
@@ -78,7 +76,6 @@ void KOViewManager::readSettings(KConfig *config)
   else if (view == "Month") showMonthView();
   else if (view == "List") showListView();
   else if (view == "Journal") showJournalView();
-  else if (view == "TimeSpan") showTimeSpanView();
   else if (view == "Todo") showTodoView();
   else showAgendaView();
 }
@@ -92,7 +89,6 @@ void KOViewManager::writeSettings(KConfig *config)
   else if (mCurrentView == mMonthView) view = "Month";
   else if (mCurrentView == mListView) view = "List";
   else if (mCurrentView == mJournalView) view = "Journal";
-  else if (mCurrentView == mTimeSpanView) view = "TimeSpan";
   else if (mCurrentView == mTodoView) view = "Todo";
   else view = "Agenda";
 
@@ -100,9 +96,6 @@ void KOViewManager::writeSettings(KConfig *config)
 
   if (mAgendaView) {
     mAgendaView->writeSettings(config);
-  }
-  if (mTimeSpanView) {
-    mTimeSpanView->writeSettings(config);
   }
   if (mListView) {
     mListView->writeSettings(config);
@@ -203,22 +196,16 @@ void KOViewManager::connectView(KOrg::BaseView *view)
   connect(mMainView, SIGNAL(configChanged()), view, SLOT(updateConfig()));
 
   // Notifications about added, changed and deleted incidences
-  connect( view, SIGNAL( incidenceAdded( Incidence* ) ),
-           mMainView, SLOT( incidenceAdded( Incidence* ) ) );
-  connect( view, SIGNAL( incidenceChanged( Incidence*, Incidence* ) ),
-           mMainView, SLOT( incidenceChanged( Incidence*, Incidence* ) ) );
-  connect( view, SIGNAL( incidenceChanged( Incidence*, Incidence*, int ) ),
-           mMainView, SLOT( incidenceChanged( Incidence*, Incidence*, int ) ) );
-  connect( view, SIGNAL( incidenceToBeDeleted( Incidence* ) ),
-           mMainView, SLOT( incidenceToBeDeleted( Incidence* ) ) );
-  connect( view, SIGNAL( incidenceDeleted( Incidence* ) ),
-           mMainView, SLOT( incidenceDeleted( Incidence* ) ) );
   connect( mMainView, SIGNAL( dayPassed( QDate ) ),
            view, SLOT( dayPassed( QDate ) ) );
   connect( view, SIGNAL( startMultiModify( const QString & ) ),
            mMainView, SLOT( startMultiModify( const QString & ) ) );
   connect( view, SIGNAL( endMultiModify() ),
            mMainView, SLOT( endMultiModify() ) );
+           
+  connect( mMainView, SIGNAL( newIncidenceChanger( IncidenceChangerBase* ) ),
+           view, SLOT( setIncidenceChanger( IncidenceChangerBase * ) ) );
+  view->setIncidenceChanger( mMainView->incidenceChanger() );
 }
 
 void KOViewManager::connectTodoView( KOTodoView* todoView )
@@ -341,18 +328,6 @@ void KOViewManager::showJournalView()
   }
 
   showView(mJournalView);
-}
-
-void KOViewManager::showTimeSpanView()
-{
-  if (!mTimeSpanView) {
-    mTimeSpanView = new KOTimeSpanView(mMainView->calendar(),mMainView->viewStack(),
-                                       "KOViewManager::TimeSpanView");
-    addView(mTimeSpanView);
-    mTimeSpanView->readSettings();
-  }
-
-  showView(mTimeSpanView);
 }
 
 void KOViewManager::showEventView()

@@ -31,7 +31,6 @@ class CalendarView;
 class KOListView;
 class KOAgendaView;
 class KOMonthView;
-class KOTimeSpanView;
 class KOTodoView;
 class KOWhatsNextView;
 class KOJournalView;
@@ -90,7 +89,6 @@ class KOViewManager : public QObject
     void showMonthView();
     void showTodoView();
     void showJournalView();
-    void showTimeSpanView();
 
     void showEventView();
 
@@ -105,7 +103,6 @@ class KOViewManager : public QObject
     KOTodoView      *mTodoView;
     KOWhatsNextView *mWhatsNextView;
     KOJournalView   *mJournalView;
-    KOTimeSpanView  *mTimeSpanView;
 
     KOrg::BaseView *mCurrentView;
 

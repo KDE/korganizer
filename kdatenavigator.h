@@ -71,8 +71,8 @@ class KDateNavigator: public QFrame
 
   signals:
     void datesSelected( const KCal::DateList & );
-    void incidenceDropped( Incidence * );
-    void incidenceDroppedMove( Incidence *, Incidence * );
+    void incidenceDropped( Incidence *, const QDate & );
+    void incidenceDroppedMove( Incidence *, const QDate & );
     void weekClicked( const QDate &);
 
     void goPrevious();

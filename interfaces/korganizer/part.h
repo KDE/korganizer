@@ -39,7 +39,7 @@ class Part : public KParts::Part
     typedef QPtrList<Part> List;
 
     Part( MainWindow *parent, const char *name )
-      : KParts::Part( parent->topLevelWidget(), name ), mMainWindow( parent ) {}
+      : KParts::Part( parent?(parent->topLevelWidget()):0, name ), mMainWindow( parent ) {}
 
     virtual ~Part() {}
 

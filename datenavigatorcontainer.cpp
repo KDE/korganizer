@@ -53,10 +53,10 @@ void DateNavigatorContainer::connectNavigatorView( KDateNavigator *v )
 {
   connect( v, SIGNAL( datesSelected( const KCal::DateList & ) ),
            SIGNAL( datesSelected( const KCal::DateList & ) ) );
-  connect( v, SIGNAL( incidenceDropped( Incidence * ) ),
-           SIGNAL( incidenceDropped( Incidence * ) ) );
-  connect( v, SIGNAL( incidenceDroppedMove( Incidence *, Incidence * ) ),
-           SIGNAL( incidenceDroppedMove( Incidence *, Incidence * ) ) );
+  connect( v, SIGNAL( incidenceDropped( Incidence *, const QDate & ) ),
+           SIGNAL( incidenceDropped( Incidence *, const QDate & ) ) );
+  connect( v, SIGNAL( incidenceDroppedMove( Incidence *, const QDate & ) ),
+           SIGNAL( incidenceDroppedMove( Incidence *, const QDate & ) ) );
   connect( v, SIGNAL( weekClicked( const QDate & ) ),
            SIGNAL( weekClicked( const QDate & ) ) );
 

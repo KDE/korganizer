@@ -32,6 +32,7 @@
 
 #include <libkcal/journal.h>
 #include <libkcal/calendarlocal.h>
+#include <korganizer/baseview.h>
 
 #include <kmessagebox.h>
 #include <klocale.h>
@@ -129,7 +130,7 @@ void KOJournalEditor::newJournal( const QString &text, QDate date )
   loadDefaults();
 
   mGeneral->setDescription( text );
-	mGeneral->setDate( date );
+  mGeneral->setDate( date );
 }
 
 void KOJournalEditor::loadDefaults()
@@ -137,47 +138,31 @@ void KOJournalEditor::loadDefaults()
   setDefaults( QDate::currentDate() );
 }
 
-// @TODO: make sure calendar()->endChange is called somewhere!
 bool KOJournalEditor::processInput()
 {
   if ( !validateInput() ) return false;
 
   if ( mJournal ) {
     Journal *oldJournal = mJournal->clone();
-
     writeJournal( mJournal );
-
-    mJournal->setRevision( mJournal->revision() + 1 );
-
-    emit incidenceChanged( oldJournal, mJournal );
-
+    mChanger->changeIncidence( oldJournal, mJournal );
     delete oldJournal;
   } else {
     mJournal = new Journal;
-//    mJournal->setOrganizer( KOPrefs::instance()->email() );
     mJournal->setOrganizer( Person( KOPrefs::instance()->fullName(), 
                             KOPrefs::instance()->email() ) );
 
     writeJournal( mJournal );
 
-    if ( !mCalendar->addJournal( mJournal ) ) {
+    if ( !mChanger->addIncidence( mJournal ) ) {
       KODialogManager::errorSaveIncidence( this, mJournal );
       delete mJournal;
       mJournal = 0;
       return false;
     }
-
-    emit incidenceAdded( mJournal );
   }
 
   return true;
-}
-
-void KOJournalEditor::processCancel()
-{
-  if ( mJournal ) {
-    emit editCanceled( mJournal );
-  }
 }
 
 void KOJournalEditor::deleteJournal()

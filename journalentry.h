@@ -29,7 +29,10 @@
 
 class QLabel;
 class KTextEdit;
-
+namespace KOrg {
+class IncidenceChangerBase;
+}
+using namespace KOrg;
 namespace KCal {
   class Calendar; 
   class Journal;
@@ -54,14 +57,10 @@ class JournalEntry : public QVBox {
     void readJournal();
 
     void flushEntry();
+    void setIncidenceChanger( IncidenceChangerBase *changer ) { mChanger = changer; }
 
   protected slots:
     void setDirty();
-  signals:
-    void incidenceAdded( Incidence* );
-    void incidenceChanged( Incidence*, Incidence* );
-    void incidenceToBeDeleted( Incidence* );
-    void incidenceDeleted( Incidence* );
 
   protected:    
     bool eventFilter( QObject *o, QEvent *e );
@@ -77,6 +76,7 @@ class JournalEntry : public QVBox {
     KTextEdit *mEditor;
 
     bool mDirty;
+    IncidenceChangerBase *mChanger;
 };
 
 #endif

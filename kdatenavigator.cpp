@@ -92,10 +92,10 @@ KDateNavigator::KDateNavigator( QWidget *parent, const char *name )
   connect( mDayMatrix, SIGNAL( selected( const KCal::DateList & ) ),
            SIGNAL( datesSelected( const KCal::DateList & ) ) );
 
-  connect( mDayMatrix, SIGNAL( incidenceDropped( Incidence * ) ),
-           SIGNAL( incidenceDropped( Incidence * ) ) );
-  connect( mDayMatrix, SIGNAL( incidenceDroppedMove( Incidence * , Incidence * ) ),
-           SIGNAL( incidenceDroppedMove( Incidence *, Incidence * ) ) );
+  connect( mDayMatrix, SIGNAL( incidenceDropped( Incidence *, const QDate & ) ),
+           SIGNAL( incidenceDropped( Incidence *, const QDate & ) ) );
+  connect( mDayMatrix, SIGNAL( incidenceDroppedMove( Incidence * , const QDate & ) ),
+           SIGNAL( incidenceDroppedMove( Incidence *, const QDate & ) ) );
 
 
   topLayout->addMultiCellWidget( mDayMatrix, 2, 7, 1, 7 );

@@ -90,6 +90,9 @@ class KODialogManager : public QObject
     void createOutgoingDialog();
     void createIncomingDialog();
 
+    class DialogManagerVisitor;
+    class EditorDialogVisitor;
+    
     CalendarView *mMainView;
 
     OutgoingDialog *mOutgoingDialog;

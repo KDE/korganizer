@@ -126,14 +126,13 @@ bool ScheduleItemVisitor::visit( Todo *e )
 
 bool ScheduleItemVisitor::visit( Journal *j )
 {
-  // FIXME: Allow Journals in the schedule items...
   mItem->setText( 0, j->description().left(150) );
   mItem->setText( 1, j->dtStartDateStr() );
   if ( !j->doesFloat() ) {
     mItem->setText( 2, j->dtStartTimeStr() );
   }
   mItem->setText( 5, j->organizer().fullName() );
-  return false;
+  return true;
 }
 
 bool ScheduleItemVisitor::visit( FreeBusy *fb )

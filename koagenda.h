@@ -28,12 +28,18 @@
 #include <qguardedptr.h>
 #include <libkcal/incidencebase.h>
 
+
 class QPopupMenu;
 class QTime;
 class QLabel;
 class KConfig;
 class KOAgenda;
 class KOAgendaItem;
+
+using namespace KOrg;
+namespace KOrg {
+class IncidenceChangerBase;
+}
 
 using namespace KCal;
 namespace KCal {
@@ -128,7 +134,8 @@ class KOAgenda : public QScrollView
     QObject *typeAheadReceiver() const;
     void finishTypeAhead();
 
-    void setCalendar( Calendar*cal ) { mCalendar=cal; }
+    void setCalendar( Calendar*cal ) { mCalendar = cal; }
+    void setIncidenceChanger( IncidenceChangerBase *changer ) { kdDebug()<<"Agenda::setIncidenceChanger"<<endl;mChanger = changer; }
 
   public slots:
     void scrollUp();
@@ -169,8 +176,6 @@ class KOAgenda : public QScrollView
 
     void itemModified( KOAgendaItem *item );
     void incidenceSelected( Incidence * );
-    void incidenceChanged( Incidence*, Incidence* );
-    void incidenceAdded( Incidence* );
     void startMultiModify( const QString & );
     void endMultiModify();
 
@@ -340,6 +345,7 @@ class KOAgenda : public QScrollView
     QPtrList<QEvent> mTypeAheadEvents;
 
     bool mReturnPressed;
+    KOrg::IncidenceChangerBase *mChanger;
 };
 
 #endif // KOAGENDA_H

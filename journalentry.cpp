@@ -36,6 +36,8 @@
 #include <libkcal/calendar.h>
 
 #include "kodialogmanager.h"
+#include "incidencechanger.h"
+#include "koglobals.h"
 
 #include "journalentry.h"
 #include "journalentry.moc"
@@ -47,6 +49,7 @@ JournalEntry::JournalEntry(Calendar *calendar,QWidget *parent) :
   mCalendar = calendar;
   mJournal = 0;
   mDirty = false;
+  mChanger = 0;
 
   mTitleLabel = new QLabel(i18n("Title"),this);
   mTitleLabel->setMargin(2);
@@ -109,14 +112,15 @@ void JournalEntry::writeJournal()
 {
 //  kdDebug(5850) << "JournalEntry::writeJournal()" << endl;
 
-  if (!mDirty) return;
+  if ( !mDirty || !mChanger ) {
+    kdDebug(5850)<<"Journal either unchanged or no changer object available"<<endl;
+    return;
+  }
   bool newJournal = false;
  
-  if (mEditor->text().isEmpty() ) {
-    if (mJournal ) { // delete the journal
-      emit incidenceToBeDeleted( mJournal );
-      mCalendar->deleteJournal( mJournal );
-      emit incidenceDeleted( mJournal );
+  if ( mEditor->text().isEmpty() ) {
+    if ( mJournal && mChanger ) { // delete the journal
+      mChanger->deleteIncidence( mJournal );
     } 
     mJournal = 0;
     return;
@@ -124,27 +128,29 @@ void JournalEntry::writeJournal()
 
 //  kdDebug(5850) << "JournalEntry::writeJournal()..." << endl;
   
-  if (!mJournal) {
+  if ( !mJournal ) {
     newJournal = true;
     mJournal = new Journal;
     mJournal->setDtStart(QDateTime(mDate,QTime(0,0,0)));
-    if ( !mCalendar->addJournal( mJournal ) ) {
+    mJournal->setDescription(mEditor->text());
+    if ( !mChanger->addIncidence( mJournal ) ) {
       KODialogManager::errorSaveIncidence( this, mJournal );
       delete mJournal;
       mJournal = 0;
       return;
     }
-  }
-
-  Journal* oldJournal = mJournal->clone();
-  mJournal->setDescription(mEditor->text());
-  if (newJournal) {
-    emit incidenceAdded( mJournal );
+    
   } else {
-    emit incidenceChanged( oldJournal, mJournal );
+  
+    Journal* oldJournal = mJournal->clone();
+    if ( mChanger->beginChange( mJournal ) ) {
+      mJournal->setDescription( mEditor->text() );
+      mChanger->changeIncidence( oldJournal, mJournal, KOGlobals::DESCRIPTION_MODIFIED );
+      mChanger->endChange( mJournal );
+    }
     delete oldJournal;
-  }
-
+  } 
+  
   mDirty = false;
 }
 

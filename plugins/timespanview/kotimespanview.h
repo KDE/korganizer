@@ -27,7 +27,7 @@
 #include "koeventview.h"
 
 class KConfig;
-class TimeSpanView;
+class TimeSpanWidget;
 
 class KOTimeSpanView : public KOEventView
 {
@@ -43,7 +43,6 @@ class KOTimeSpanView : public KOEventView
     DateList selectedDates() { return DateList(); }
 
     void readSettings();
-    void readSettings( KConfig * );
     void writeSettings( KConfig * );
 
   public slots:
@@ -56,7 +55,7 @@ class KOTimeSpanView : public KOEventView
   private:
     void insertItems( const QDate &start, const QDate & end );
 
-    TimeSpanView *mTimeSpanView;
+    TimeSpanWidget *mTimeSpanWidget;
 };
 
 #endif

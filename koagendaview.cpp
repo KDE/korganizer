@@ -523,11 +523,6 @@ void KOAgendaView::connectAgenda( KOAgenda *agenda, QPopupMenu *popup,
   connect( agenda, SIGNAL( deleteIncidenceSignal( Incidence * ) ),
                    SIGNAL( deleteIncidenceSignal( Incidence * ) ) );
 
-  connect( agenda, SIGNAL( incidenceChanged( Incidence *, Incidence * ) ),
-                   SIGNAL( incidenceChanged( Incidence *, Incidence * ) ) );
-  connect( agenda, SIGNAL( incidenceAdded( Incidence * ) ),
-                   SIGNAL( incidenceAdded( Incidence * ) ) );
-
   connect( agenda, SIGNAL( startMultiModify( const QString & ) ),
                    SIGNAL( startMultiModify( const QString & ) ) );
   connect( agenda, SIGNAL( endMultiModify() ),
@@ -714,7 +709,7 @@ void KOAgendaView::updateConfig()
   mAllDayAgenda->updateConfig();
 
   // widget synchronization
-  // @TODO: find a better way, maybe signal/slot
+  // FIXME: find a better way, maybe signal/slot
   mTimeLabels->positionChanged();
 
   // for some reason, this needs to be called explicitly
@@ -776,7 +771,6 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
 
   Incidence *incidence = item->incidence();
   if ( !incidence ) return;
-  Incidence *oldIncidence = incidence->clone();
 
   QTime startTime(0,0,0), endTime(0,0,0);
   if ( incidence->doesFloat() ) {
@@ -792,36 +786,33 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
   }
 
 //  kdDebug(5850) << "KOAgendaView::updateEventDates(): now setting dates" << endl;
-  Incidence *i = incidence->clone();
-  // @TODO: use a visitor here
-  if ( i->type() == "Event" ) {
-    startDt = i->dtStart();
+  // FIXME: use a visitor here
+  if ( incidence->type() == "Event" ) {
+    startDt = incidence->dtStart();
     startDt = startDt.addDays( daysOffset );
     startDt.setTime( startTime );
     endDt = startDt.addDays( daysLength );
     endDt.setTime( endTime );
-    Event*ev = static_cast<Event*>(i);
-    if( i->dtStart() == startDt && ev->dtEnd() == endDt ) {
+    Event*ev = static_cast<Event*>(incidence);
+    if( incidence->dtStart() == startDt && ev->dtEnd() == endDt ) {
       // No change
-      delete i;
       return;
     }
-    i->setDtStart( startDt );
+    incidence->setDtStart( startDt );
     ev->setDtEnd( endDt );
-  } else if ( i->type() == "Todo" ) {
-    Todo *td = static_cast<Todo*>(i);
+  } else if ( incidence->type() == "Todo" ) {
+    Todo *td = static_cast<Todo*>(incidence);
     endDt = td->dtDue();
     endDt = endDt.addDays( daysOffset );
     endDt.setTime( endTime );
 
     if( td->dtDue() == endDt ) {
       // No change
-      delete i;
       return;
     }
     td->setDtDue( endDt );
   }
-  // @TODO: Adjusting the recurrence should really go to CalendarView so this
+  // FIXME: Adjusting the recurrence should really go to CalendarView so this
   // functionality will also be available in other views!
   Recurrence *recur = incidence->recurrence();
   if ( recur && (recur->doesRecur()!=Recurrence::rNone) && (daysOffset!=0) ) {
@@ -888,7 +879,7 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
               QDate endDt( recur->endDate() );
               QPtrList<Recurrence::rMonthPos> monthPos( recur->monthPositions() );
               if ( !monthPos.isEmpty() ) {
-          // @TODO: How shall I adapt the day x of week Y if we move the date across month borders???
+          // FIXME: How shall I adapt the day x of week Y if we move the date across month borders???
           // for now, just use the date of the moved item and assume the recurrence only occurs on that day.
           // That's fine for korganizer, but might mess up other organizers.
                 QBitArray rDays( 7 );
@@ -925,7 +916,7 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
                 } else {
                   recur->setMonthly( Recurrence::rMonthlyDay, freq, duration );
                 }
-        // @TODO: How shall I adapt the n-th day if we move the date across month borders???
+        // FIXME: How shall I adapt the n-th day if we move the date across month borders???
         // for now, just use the date of the moved item and assume the recurrence only occurs on that day.
         // That's fine for korganizer, but might mess up other organizers.
                 recur->addMonthlyDay( thisDate.day() );
@@ -964,43 +955,33 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
                               "RecurrenceMoveInAgendaWarning" );
   }
 
-  i->setRevision( i->revision() + 1 );
-  if( !KOPrefs::instance()->mUseGroupwareCommunication ||
-       KOGroupware::instance()->sendICalMessage( this, KCal::Scheduler::Request, i ) ) {
-    // @TODO: use a visitor here
-    if ( i->type() == "Event" ) {
-      incidence->setDtStart( startDt );
-      (static_cast<Event*>( incidence ) )->setDtEnd( endDt );
-    } else if ( i->type() == "Todo" ) {
-      (static_cast<Todo*>( incidence ) )->setDtDue( endDt );
-    }
-    incidence->setRevision( i->revision() );
-    item->setItemDate( startDt.date() );
+  // FIXME: use a visitor here
+  if ( incidence->type() == "Event" ) {
+    incidence->setDtStart( startDt );
+    (static_cast<Event*>( incidence ) )->setDtEnd( endDt );
+  } else if ( incidence->type() == "Todo" ) {
+    (static_cast<Todo*>( incidence ) )->setDtDue( endDt );
+  }
+  item->setItemDate( startDt.date() );
 
-    KOIncidenceToolTip::remove( item );
-    KOIncidenceToolTip::add( item, incidence, KOAgendaItem::toolTipGroup() );
+  KOIncidenceToolTip::remove( item );
+  KOIncidenceToolTip::add( item, incidence, KOAgendaItem::toolTipGroup() );
 
-    // don't update the agenda as the item already has the correct coordinates.
-    // an update would delete the current item and recreate it, but we are still
-    // using a pointer to that item! => CRASH
-    enableAgendaUpdate( false );
-    // We need to do this in a timer to make sure we are not deleting the item
-    // we are currently working on, which would lead to crashes
-    // Only the actually moved agenda item is already at the correct position and mustn't be
-    // recreated. All others have to!!!
-    if ( incidence->doesRecur() ) {
-      mUpdateItem = incidence;
-      QTimer::singleShot( 0, this, SLOT( doUpdateItem() ) );
-    }
-
-    emit incidenceChanged( oldIncidence, incidence );
-    enableAgendaUpdate( true );
-  } else {
-    updateView();
+  // don't update the agenda as the item already has the correct coordinates.
+  // an update would delete the current item and recreate it, but we are still
+  // using a pointer to that item! => CRASH
+  enableAgendaUpdate( false );
+  // We need to do this in a timer to make sure we are not deleting the item
+  // we are currently working on, which would lead to crashes
+  // Only the actually moved agenda item is already at the correct position and mustn't be
+  // recreated. All others have to!!!
+  if ( incidence->doesRecur() ) {
+    mUpdateItem = incidence;
+    QTimer::singleShot( 0, this, SLOT( doUpdateItem() ) );
   }
 
-  delete i;
-  delete oldIncidence;
+    enableAgendaUpdate( true );
+
 //  kdDebug(5850) << "KOAgendaView::updateEventDates() done " << endl;
 }
 
@@ -1039,7 +1020,7 @@ void KOAgendaView::showIncidences( const Incidence::List & )
 void KOAgendaView::insertIncidence( Incidence *incidence, QDate curDate,
                                     int curCol )
 {
-  // @TODO: Use a visitor here, or some other method to get rid of the dynamic_cast's
+  // FIXME: Use a visitor here, or some other method to get rid of the dynamic_cast's
   Event *event = dynamic_cast<Event *>( incidence );
   Todo  *todo  = dynamic_cast<Todo  *>( incidence );
 
@@ -1379,30 +1360,33 @@ void KOAgendaView::updateEventIndicatorBottom(int newY)
 
 void KOAgendaView::slotTodoDropped( Todo *todo, const QPoint &gpos, bool allDay )
 {
-  if (gpos.x()<0 || gpos.y()<0) return;
+  if ( gpos.x()<0 || gpos.y()<0 ) return;
   QDate day = mSelectedDates[gpos.x()];
-  QTime time = mAgenda->gyToTime(gpos.y());
-  QDateTime newTime(day, time);
+  QTime time = mAgenda->gyToTime( gpos.y() );
+  QDateTime newTime( day, time );
 
-  if (todo) {
+  if ( todo ) {
     Todo *existingTodo = calendar()->todo(todo->uid());
-    if(existingTodo) {
+    if ( existingTodo ) {
       kdDebug(5850) << "Drop existing Todo" << endl;
       Todo *oldTodo = existingTodo->clone();
-      existingTodo->setDtDue( newTime );
-      existingTodo->setFloats( allDay );
-      existingTodo->setHasDueDate( true );
-      existingTodo->setRevision( existingTodo->revision() + 1 );
-      emit incidenceChanged( oldTodo, existingTodo );
+      if ( mChanger && mChanger->beginChange( existingTodo ) ) {
+        existingTodo->setDtDue( newTime );
+        existingTodo->setFloats( allDay );
+        existingTodo->setHasDueDate( true );
+        mChanger->changeIncidence( oldTodo, existingTodo );
+        mChanger->endChange( existingTodo );
+      } else {
+        KMessageBox::sorry( this, i18n("Unable to modify this to-do item, "
+                            "because it cannot be locked.") );
+      }
       delete oldTodo;
     } else {
       kdDebug(5850) << "Drop new Todo" << endl;
       todo->setDtDue( newTime );
       todo->setFloats( allDay );
       existingTodo->setHasDueDate( true );
-      if ( calendar()->addTodo( todo ) ) {
-        emit incidenceAdded(todo);
-      } else {
+      if ( !mChanger->addIncidence( todo ) ) {
         KODialogManager::errorSaveIncidence( this, todo );
       }
     }
@@ -1548,4 +1532,11 @@ void KOAgendaView::updateEventIndicators()
   mMaxY = mAgenda->maxContentsY();
 
   mAgenda->checkScrollBoundaries();
+}
+
+void KOAgendaView::setIncidenceChanger( IncidenceChangerBase *changer ) 
+{ 
+  mChanger = changer;
+  mAgenda->setIncidenceChanger( changer );
+  mAllDayAgenda->setIncidenceChanger( changer );
 }

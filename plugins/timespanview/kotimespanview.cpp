@@ -25,8 +25,11 @@
 #include <qlayout.h>
 
 #include <kconfig.h>
+#include <kstandarddirs.h>
+#include <kconfig.h>
+#include <libkcal/calendar.h>
 
-#include "timespanview.h"
+#include "timespanwidget.h"
 #include "koglobals.h"
 
 #include "kotimespanview.h"
@@ -38,10 +41,10 @@ KOTimeSpanView::KOTimeSpanView(Calendar *calendar, QWidget *parent,
 {
   QBoxLayout *topLayout = new QVBoxLayout( this );
   
-  mTimeSpanView = new TimeSpanView( this );
-  topLayout->addWidget( mTimeSpanView );
+  mTimeSpanWidget = new TimeSpanWidget( this );
+  topLayout->addWidget( mTimeSpanWidget );
 
-  connect( mTimeSpanView, SIGNAL( dateRangeChanged() ), SLOT( updateView() ) );
+  connect( mTimeSpanWidget, SIGNAL( dateRangeChanged() ), SLOT( updateView() ) );
 }
 
 KOTimeSpanView::~KOTimeSpanView()
@@ -50,18 +53,15 @@ KOTimeSpanView::~KOTimeSpanView()
 
 void KOTimeSpanView::readSettings()
 {
-  readSettings(KOGlobals::self()->config());
-}
+  kdDebug(5850) << "KOTimeSpanView::readSettings()" << endl;
 
-void KOTimeSpanView::readSettings(KConfig *config)
-{
-//  kdDebug(5850) << "KOTimeSpanView::readSettings()" << endl;
+  //KConfig *config = kapp->config();
+  KConfig config( locateLocal( "config", "korganizerrc" ));
+  config.setGroup("Views");
 
-  config->setGroup("Views");
-
-  QValueList<int> sizes = config->readIntListEntry("Separator TimeSpanView");
+  QValueList<int> sizes = config.readIntListEntry("Separator TimeSpanView");
   if (sizes.count() == 2) {
-    mTimeSpanView->setSplitterSizes(sizes);
+    mTimeSpanWidget->setSplitterSizes(sizes);
   }
 }
 
@@ -71,7 +71,7 @@ void KOTimeSpanView::writeSettings(KConfig *config)
 
   config->setGroup("Views");
 
-  QValueList<int> list = mTimeSpanView->splitterSizes();
+  QValueList<int> list = mTimeSpanWidget->splitterSizes();
   config->writeEntry("Separator TimeSpanView",list);
 }
 
@@ -94,8 +94,8 @@ Incidence::List KOTimeSpanView::selectedIncidences()
 
 void KOTimeSpanView::updateView()
 {
-  insertItems( mTimeSpanView->startDateTime().date(),
-               mTimeSpanView->endDateTime().date() );
+  insertItems( mTimeSpanWidget->startDateTime().date(),
+               mTimeSpanWidget->endDateTime().date() );
 }
 
 void KOTimeSpanView::showDates(const QDate &start, const QDate &end)
@@ -108,16 +108,16 @@ void KOTimeSpanView::showDates(const QDate &start, const QDate &end)
 
 void KOTimeSpanView::insertItems(const QDate &start, const QDate &end)
 {
-  mTimeSpanView->clear();
-  mTimeSpanView->setDateRange( start, end );
+  mTimeSpanWidget->clear();
+  mTimeSpanWidget->setDateRange( start, end );
 
   Event::List events = calendar()->events( start, end );
   Event::List::ConstIterator it;
   for( it = events.begin(); it != events.end(); ++it ) {
-    mTimeSpanView->addItem( *it );
+    mTimeSpanWidget->addItem( *it );
   }
   
-  mTimeSpanView->updateView();
+  mTimeSpanWidget->updateView();
 }
 
 void KOTimeSpanView::showIncidences( const Incidence::List & )

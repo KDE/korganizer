@@ -241,5 +241,4 @@ QString KOIncidenceEditor::loadTemplate( Calendar *cal, const QString &type,
   return templateName;
 }
 
-
 #include "koincidenceeditor.moc"

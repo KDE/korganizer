@@ -632,7 +632,7 @@ bool KOGroupware::sendICalMessage( QWidget* parent,
     rc = KMessageBox::questionYesNo( parent, txt );
     return ( rc == KMessageBox::Yes );
   } else {
-    kdWarning(5850) << "Some unimplemented thing happened" << endl;
+    kdWarning(5850) << "Groupware messages for Journals are not implemented yet!" << endl;
     return true;
   }
 

@@ -47,8 +47,9 @@ class ResourceView;
 class NavigatorBar;
 class DateChecker;
 
-namespace KOrg { class History; }
+namespace KOrg { class History; class IncidenceChangerBase; }
 
+using namespace KOrg;
 using namespace KCal;
 
 class CalendarViewExtension : public QWidget
@@ -86,6 +87,29 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     CalendarView( QWidget *parent = 0, const char *name = 0 );
     virtual ~CalendarView();
 
+    
+    class CalendarViewVisitor : public IncidenceBase::Visitor
+    {
+      public:
+        CalendarViewVisitor() : mView( 0 ) {}
+        bool act( IncidenceBase *incidence, CalendarView *view )
+        {
+          mView = view;
+          return incidence->accept( *this );
+        }
+      protected:
+        CalendarView *mView;
+    };
+
+    class CanDeleteIncidenceVisitor : public CalendarViewVisitor
+    {
+      protected:
+        bool visit( Event *event ) { return mView->deleteEvent( event ); }
+        bool visit( Todo *todo ) { return mView->deleteTodo( todo ); }
+        bool visit( Journal *journal ) { return mView->deleteJournal( journal ); }
+    };
+
+
     void setCalendar( Calendar * );
     Calendar *calendar();
 
@@ -100,6 +124,7 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     DateNavigator *dateNavigator() const { return mNavigator; }
     
     KOIncidenceEditor *editorDialog( Incidence* ) const;
+    IncidenceChangerBase *incidenceChanger() const { return mChanger; }
 
     QDate startDate();
     QDate endDate();
@@ -183,6 +208,8 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     /** Emitted when auto-archiving options were modified */
     void autoArchivingSettingsModified();
 
+    void newIncidenceChanger( IncidenceChangerBase* );
+  
   public slots:
     /** options dialog made a changed to the configuration. we catch this
      *  and notify all widgets which need to update their configuration. */
@@ -218,6 +245,8 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     void editIncidence();
     bool editIncidence( const QString& uid );
     void deleteIncidence();
+    
+    void connectIncidenceEditor( KOIncidenceEditor * );
 
     /** create an editeventwin with supplied date/time, and if bool is true,
      * make the event take all day. */
@@ -441,6 +470,9 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
                        const QString &tasklistFile );
 
     void showErrorMessage( const QString & );
+    void schedule( KCal::Scheduler::Method, Incidence *incidence );
+    void addIncidenceOn( Incidence *, const QDate & );
+    void moveIncidenceTo( Incidence *, const QDate & );
 
   protected slots:
     /** Select a view or adapt the current view to display the specified dates. */
@@ -459,7 +491,7 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     //Attendee* getYourAttendee( Event *event );
 
   protected:
-    void schedule( Scheduler::Method, Incidence *incidence = 0 );
+    void setIncidenceChanger( IncidenceChangerBase *changer );
 
 //     // returns KMsgBox::OKCancel()
     int msgItemDelete( Incidence *incidence );
@@ -517,31 +549,11 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
 
     KOTodoView *mTodoList;
     QMap<Incidence*,KOIncidenceEditor*> mDialogList;
+    
+    KOrg::IncidenceChangerBase *mChanger;
 };
 
 
-class CalendarViewVisitor : public IncidenceBase::Visitor
-{
-  public:
-    CalendarViewVisitor() : mView( 0 ) {}
-
-    bool act( IncidenceBase *incidence, CalendarView *view )
-    {
-      mView = view;
-      return incidence->accept( *this );
-    }
-
-  protected:
-    CalendarView *mView;
-};
-
-class DeleteIncidenceVisitor : public CalendarViewVisitor
-{
-  protected:
-    bool visit( Event *event ) { return mView->deleteEvent( event ); }
-    bool visit( Todo *todo ) { return mView->deleteTodo( todo ); }
-    bool visit( Journal *journal ) { return mView->deleteJournal( journal ); }
-};
 
 
 #endif

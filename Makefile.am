@@ -66,7 +66,7 @@ libkorganizer_la_LIBADD  = $(LIB_KPARTS) $(LIB_KFILE) \
 	$(KNEWSTUFF_LIB) \
 	$(top_builddir)/kresources/remote/libkcal_resourceremote.la \
         $(top_builddir)/libemailfunctions/libemailfunctions.la
-libkorganizer_la_COMPILE_FIRST = koprefs_base.h kofilterview_base.ui \
+libkorganizer_la_COMPILE_FIRST = kofilterview_base.ui \
 	outgoingdialog_base.ui \
 	incomingdialog_base.ui \
 	kogroupwareprefspage.ui \
@@ -99,7 +99,7 @@ libkorganizer_la_SOURCES = komessagebox.cpp outgoingdialog_base.ui \
 	kojournalview.cpp journalentry.cpp \
 	kocore.cpp mailscheduler.cpp \
 	kodaymatrix.cpp docprefs.cpp statusdialog.cpp\
-	kotimespanview.cpp timespanview.cpp lineview.cpp timeline.cpp \
+	lineview.cpp timeline.cpp \
 	koglobals.cpp konewstuff.cpp \
 	alarmclient.cpp \
 	actionmanager.cpp resourceview.cpp \
@@ -112,7 +112,7 @@ libkorganizer_la_SOURCES = komessagebox.cpp outgoingdialog_base.ui \
 	korganizerifaceimpl.cpp \
 	freebusymanager.cpp freebusyurldialog.cpp \
 	eventarchiver.cpp koidentitymanager.cpp \
-	exportwebdialog.cpp kocorehelper.cpp
+	exportwebdialog.cpp kocorehelper.cpp incidencechanger.cpp
 
 
 libkorganizer_eventviewer_la_LDFLAGS = $(all_libraries) $(KDE_RPATH) \

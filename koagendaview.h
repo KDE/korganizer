@@ -198,6 +198,7 @@ class KOAgendaView : public KOEventView
     void slotTodoDropped( Todo *, const QPoint &, bool );
 
     void enableAgendaUpdate( bool enable );
+    void setIncidenceChanger( IncidenceChangerBase *changer );
 
   signals:
     void toggleExpand();

@@ -89,7 +89,6 @@ class KOJournalEditor : public KOIncidenceEditor
     /** Process user input and create or update event. Returns false if input
      * is not valid */
     bool processInput();
-    void processCancel();
 
     /** This Journal has been modified externally */
     void modified (int change=0);

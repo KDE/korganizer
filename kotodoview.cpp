@@ -94,7 +94,7 @@ void KOTodoListViewToolTip::maybeTip( const QPoint & pos)
 
 
 KOTodoListView::KOTodoListView( QWidget *parent, const char *name )
-  : KListView( parent, name ), mCalendar( 0 )
+  : KListView( parent, name ), mCalendar( 0 ), mChanger( 0 )
 {
   mOldCurrent = 0;
   mMousePressed = false;
@@ -183,9 +183,9 @@ void KOTodoListView::contentsDragLeaveEvent( QDragLeaveEvent * )
 void KOTodoListView::contentsDropEvent( QDropEvent *e )
 {
 #ifndef KORG_NODND
-//  kdDebug(5850) << "KOTodoListView::contentsDropEvent" << endl;
+  kdDebug(5850) << "KOTodoListView::contentsDropEvent" << endl;
 
-  if ( !mCalendar ||
+  if ( !mCalendar || !mChanger ||
        ( !ICalDrag::canDecode( e ) && !VCalDrag::canDecode( e ) &&
          !QTextDrag::canDecode( e ) ) ) {
     e->ignore();
@@ -195,7 +195,7 @@ void KOTodoListView::contentsDropEvent( QDropEvent *e )
   DndFactory factory( mCalendar );
   Todo *todo = factory.createDropTodo(e);
 
-  if (todo) {
+  if ( todo ) {
     e->acceptAction();
 
     KOTodoViewItem *destination =
@@ -205,8 +205,8 @@ void KOTodoListView::contentsDropEvent( QDropEvent *e )
 
     Todo *existingTodo = mCalendar->todo(todo->uid());
 
-    if(existingTodo) {
-//       kdDebug(5850) << "Drop existing Todo " << existingTodo << " onto " << destinationEvent << endl;
+    if( existingTodo ) {
+       kdDebug(5850) << "Drop existing Todo " << existingTodo << " onto " << destinationEvent << endl;
       Incidence *to = destinationEvent;
       while(to) {
         if (to->uid() == todo->uid()) {
@@ -219,20 +219,25 @@ void KOTodoListView::contentsDropEvent( QDropEvent *e )
         to = to->relatedTo();
       }
       Todo*oldTodo = existingTodo->clone();
-      existingTodo->setRelatedTo(destinationEvent);
-
-      emit incidenceChanged( oldTodo, existingTodo );
+      if ( mChanger->beginChange( existingTodo ) ) {
+        existingTodo->setRelatedTo( destinationEvent );
+        mChanger->changeIncidence( oldTodo, existingTodo, KOGlobals::RELATION_MODIFIED );
+        mChanger->endChange( existingTodo );
+kdDebug()<<"Incidence parent changed"<<endl;
+      } else {
+        KMessageBox::sorry( this, i18n("Unable to change to-do item's parent, "
+                            "because the to-do cannot be locked.") );
+      }
       delete oldTodo;
       delete todo;
     } else {
 //      kdDebug(5850) << "Drop new Todo" << endl;
       todo->setRelatedTo(destinationEvent);
-      if ( !mCalendar->addTodo( todo ) ) {
+      if ( !mChanger->addIncidence( todo ) ) {
         KODialogManager::errorSaveIncidence( this, todo );
+        delete todo;
         return;
       }
-
-      emit incidenceAdded( todo );
     }
   }
   else {
@@ -243,23 +248,29 @@ void KOTodoListView::contentsDropEvent( QDropEvent *e )
       e->ignore();
       kdDebug( 5850 ) << "KOTodoListView::contentsDropEvent(): Not dropped on a todo item" << endl;
       kdDebug( 5850 ) << "TODO: Create a new todo with the given data" << endl;
-      // @TODO: Create a new todo with the given text/contact/whatever
+      // FIXME: Create a new todo with the given text/contact/whatever
     } else if ( QTextDrag::decode(e, text) ) {
       //QListViewItem *qlvi = itemAt( contentsToViewport(e->pos()) );
       kdDebug(5850) << "Dropped : " << text << endl;
       QStringList emails = QStringList::split(",",text);
-      Todo*newtodo = todoi->todo();
-      Todo*oldtodo = newtodo->clone();
-      for(QStringList::ConstIterator it = emails.begin();it!=emails.end();++it) {
-        kdDebug(5850) << " Email: " << (*it) << endl;
-        int pos = (*it).find("<");
-        QString name = (*it).left(pos);
-        QString email = (*it).mid(pos);
-        if (!email.isEmpty() && todoi) {
-          newtodo->addAttendee(new Attendee(name,email));
+      Todo*todo = todoi->todo();
+      Todo*oldtodo = todo->clone();
+      if ( mChanger->beginChange( todo ) ) {
+        for(QStringList::ConstIterator it = emails.begin();it!=emails.end();++it) {
+          kdDebug(5850) << " Email: " << (*it) << endl;
+          int pos = (*it).find("<");
+          QString name = (*it).left(pos);
+          QString email = (*it).mid(pos);
+          if (!email.isEmpty() && todoi) {
+            todo->addAttendee( new Attendee( name, email ) );
+          }
         }
+        mChanger->changeIncidence( oldtodo, todo );
+        mChanger->endChange( todo );
+      } else {
+        KMessageBox::sorry( this, i18n("Unable to add attendees to the to-do item, "
+                            "because the to-do cannot be locked.") );
       }
-      emit incidenceChanged( oldtodo, newtodo );
     }
     else {
       kdDebug(5850) << "KOTodoListView::contentsDropEvent(): Todo from drop not decodable" << endl;
@@ -483,15 +494,6 @@ KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent, const char* name)
            SLOT( processSelectionChange() ) );
   connect( mQuickAdd, SIGNAL( returnPressed () ),
            SLOT( addQuickTodo() ) );
-
-  connect( mTodoListView, SIGNAL( incidenceAdded( Incidence* ) ),
-           SIGNAL( incidenceAdded( Incidence* ) ) );
-  connect( mTodoListView, SIGNAL( incidenceChanged( Incidence*, Incidence* ) ),
-           SIGNAL( incidenceChanged( Incidence*, Incidence* ) ) );
-  connect( mTodoListView, SIGNAL( incidenceToBeDeleted( Incidence* ) ),
-           SIGNAL( incidenceToBeDeleted( Incidence* ) ) );
-  connect( mTodoListView, SIGNAL( incidenceDeleted( Incidence* ) ),
-           SIGNAL( incidenceDeleted( Incidence* ) ) );
 }
 
 KOTodoView::~KOTodoView()
@@ -659,7 +661,7 @@ void KOTodoView::changeIncidenceDisplay(Incidence *incidence, int action)
       case KOGlobals::INCIDENCEADDED:
       case KOGlobals::INCIDENCEEDITED:
         // If it's already there, edit it, otherwise just add
-        if ( todoItem ) { 
+        if ( todoItem ) {
           if ( isFiltered ) {
             scheduleRemoveTodoItem( todoItem );
           } else {
@@ -802,12 +804,17 @@ void KOTodoView::deleteTodo()
 
 void KOTodoView::setNewPriority(int index)
 {
-  if (mActiveItem && !mActiveItem->todo()->isReadOnly ()) {
-    Todo *todo = mActiveItem->todo();
+kdDebug()<<"setNewPriority, changer="<<mChanger<<endl;
+  if ( !mActiveItem || !mChanger ) return;
+  Todo *todo = mActiveItem->todo();
+  if ( !todo->isReadOnly () && 
+       mChanger->beginChange( todo ) ) {
     Todo *oldTodo = todo->clone();
     todo->setPriority(mPriority[index]);
     mActiveItem->construct();
-    emit incidenceChanged( oldTodo, todo, KOGlobals::PRIORITY_MODIFIED );
+    
+    mChanger->changeIncidence( oldTodo, todo, KOGlobals::PRIORITY_MODIFIED );
+    mChanger->endChange( todo );
     delete oldTodo;
   }
 }
@@ -815,8 +822,11 @@ void KOTodoView::setNewPriority(int index)
 void KOTodoView::setNewPercentage( KOTodoViewItem *item, int percentage )
 {
   kdDebug(5850) << "KOTodoView::setNewPercentage( " << percentage << "), item = " << item << endl;
-  if ( item && !item->todo()->isReadOnly () ) {
-    Todo *todo = item->todo();
+  if ( !item || !mChanger  ) return;
+  Todo *todo = item->todo();
+  if ( !todo ) return;
+  
+  if ( !todo->isReadOnly () && mChanger->beginChange( todo ) ) {
     Todo *oldTodo = todo->clone();
 
 /*  Old code to make sub-items's percentage related to this one's:
@@ -830,26 +840,31 @@ void KOTodoView::setNewPercentage( KOTodoViewItem *item, int percentage )
     if ( percentage == 100 ) {
       emit todoCompleted( todo );
     } else {
-      todo->setCompleted(false);
+      todo->setCompleted( false );
     }
     todo->setPercentComplete( percentage );
     item->construct();
-    emit incidenceChanged( oldTodo, todo, KOGlobals::COMPLETION_MODIFIED );
+    mChanger->changeIncidence( oldTodo, todo, KOGlobals::COMPLETION_MODIFIED );
+    mChanger->endChange( todo );
     delete oldTodo;
   } else {
-    kdDebug(5850) << "No active item, or active item is read-only" << endl;
+    kdDebug(5850) << "No active item, active item is read-only, or locking failed" << endl;
   }
 }
 
-void KOTodoView::setNewPercentage(int index)
+void KOTodoView::setNewPercentage( int index )
 {
   setNewPercentage( mActiveItem, mPercentage[index] );
 }
 
-void KOTodoView::setNewDate(QDate date)
+void KOTodoView::setNewDate( QDate date )
 {
-  if ( mActiveItem && !mActiveItem->todo()->isReadOnly()) {
-    Todo *todo = mActiveItem->todo();
+  if ( !mActiveItem || !mChanger ) return;
+  Todo *todo = mActiveItem->todo();
+  if ( !todo ) return;
+  
+  if ( !todo->isReadOnly() && mChanger->beginChange( todo ) ) {
+    Todo *oldTodo = todo->clone();
 
     QDateTime dt;
     dt.setDate( date );
@@ -857,18 +872,18 @@ void KOTodoView::setNewDate(QDate date)
     if ( !todo->doesFloat() )
       dt.setTime( todo->dtDue().time() );
 
-    Todo *oldTodo = todo->clone();
-
     if ( date.isNull() )
       todo->setHasDueDate( false );
     else if ( !todo->hasDueDate() )
       todo->setHasDueDate( true );
     todo->setDtDue( dt );
-    todo->setRevision( todo->revision() + 1 );
 
     mActiveItem->construct();
-    emit incidenceChanged( oldTodo, todo, KOGlobals::DATE_MODIFIED );
+    mChanger->changeIncidence( oldTodo, todo, KOGlobals::COMPLETION_MODIFIED );
+    mChanger->endChange( todo );
     delete oldTodo;
+  } else {
+    kdDebug(5850) << "No active item, active item is read-only, or locking failed" << endl;
   }
 }
 
@@ -877,7 +892,7 @@ void KOTodoView::copyTodoToDate( QDate date )
   QDateTime dt;
   dt.setDate( date );
 
-  if ( mActiveItem ) {
+  if ( mActiveItem && mChanger ) {
     Todo *newTodo = mActiveItem->todo()->clone();
     newTodo->recreate();
 
@@ -889,9 +904,8 @@ void KOTodoView::copyTodoToDate( QDate date )
    // avoid forking
    if ( newTodo->doesRecur() )
      newTodo->recurrence()->unsetRecurs();
-
-   calendar()->addTodo( newTodo );
-   emit incidenceAdded( newTodo );
+   
+   mChanger->addIncidence( newTodo );
  }
 }
 
@@ -918,19 +932,26 @@ QPopupMenu *KOTodoView::getCategoryPopupMenu( KOTodoViewItem *todoItem )
 
 void KOTodoView::changedCategories(int index)
 {
-  if (mActiveItem && !mActiveItem->todo()->isReadOnly ()) {
-    Todo*todo = mActiveItem->todo();
-    Todo*oldTodo = todo->clone();
+  if ( !mActiveItem || !mChanger ) return;
+  Todo *todo = mActiveItem->todo();
+  if ( !todo ) return;
+  
+  if ( !todo->isReadOnly() && mChanger->beginChange( todo ) ) {
+    Todo *oldTodo = todo->clone();
+
     QStringList categories = todo->categories ();
-    if (categories.find (mCategory[index]) != categories.end ())
-      categories.remove (mCategory[index]);
+    if ( categories.find( mCategory[index] ) != categories.end() )
+      categories.remove( mCategory[index] );
     else
-      categories.insert (categories.end(), mCategory[index]);
-    categories.sort ();
-    todo->setCategories (categories);
+      categories.insert( categories.end(), mCategory[index] );
+    categories.sort();
+    todo->setCategories( categories );
     mActiveItem->construct();
-    emit incidenceChanged( oldTodo, todo, KOGlobals::CATEGORY_MODIFIED);
+    mChanger->changeIncidence( oldTodo, todo, KOGlobals::CATEGORY_MODIFIED );
+    mChanger->endChange( todo );
     delete oldTodo;
+  } else {
+    kdDebug(5850) << "No active item, active item is read-only, or locking failed" << endl;
   }
 }
 
@@ -992,16 +1013,22 @@ void KOTodoView::addQuickTodo()
   todo->setSummary( mQuickAdd->text() );
   todo->setOrganizer( Person( KOPrefs::instance()->fullName(), 
                       KOPrefs::instance()->email() ) );
-  if ( !calendar()->addTodo( todo ) ) {
+  if ( !mChanger->addIncidence( todo ) ) {
     KODialogManager::errorSaveIncidence( this, todo );
+    delete todo;
     return;
   }
   mQuickAdd->setText( QString::null );
-  emit incidenceAdded( todo );
-  updateView();
 }
 
 void KOTodoView::emitCompletedSignal( Todo *todo )
 {
   emit todoCompleted( todo );
+}
+
+void KOTodoView::setIncidenceChanger( IncidenceChangerBase *changer ) 
+{ 
+kdDebug()<<"KOTodoView::setIncidenceChanger("<<changer<<")"<<endl;
+  mChanger = changer;
+  mTodoListView->setIncidenceChanger( changer );
 }

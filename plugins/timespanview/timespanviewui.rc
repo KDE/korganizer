@@ -1,0 +1,15 @@
+<!DOCTYPE kpartgui>
+<kpartgui name="timespanview" version="2">
+
+  <MenuBar>
+    <Menu name="view">
+      <Action name="view_timespan"/>
+    </Menu>
+  </MenuBar>
+
+  <ToolBar name="korganizer_toolbar">
+    <Action name="view_timespan"/>
+  </ToolBar>
+
+</kpartgui>
+

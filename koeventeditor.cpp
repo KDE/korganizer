@@ -47,6 +47,7 @@
 #include "koeditorfreebusy.h"
 #include "kogroupware.h"
 #include "kodialogmanager.h"
+#include "incidencechanger.h"
 
 #include "koeventeditor.h"
 
@@ -175,10 +176,10 @@ void KOEventEditor::setupFreeBusy()
   topLayout->addWidget( mFreeBusy );
 }
 
-void KOEventEditor::editIncidence(Incidence *incidence)
+void KOEventEditor::editIncidence( Incidence *incidence )
 {
   Event*event = dynamic_cast<Event*>(incidence);
-  if (event) {
+  if ( event ) {
     init();
 
     mEvent = event;
@@ -257,41 +258,29 @@ void KOEventEditor::loadDefaults()
   setDefaults(from,to,false);
 }
 
-// @TODO: make sure calendar()->endChange is called somewhere!
 bool KOEventEditor::processInput()
 {
   kdDebug(5850) << "KOEventEditor::processInput()" << endl;
 
-  if ( !validateInput() ) return false;
+  if ( !validateInput() || !mChanger ) return false;
 
   if ( mEvent ) {
     bool rc = true;
-    Event *event = mEvent->clone();
     Event *oldEvent = mEvent->clone();
+    Event *event = mEvent->clone();
+    
     kdDebug(5850) << "KOEventEditor::processInput() write event." << endl;
     writeEvent( event );
     kdDebug(5850) << "KOEventEditor::processInput() event written." << endl;
-
-    if( *mEvent == *event )
+    
+    if( *event == *mEvent )
       // Don't do anything
       kdDebug(5850) << "Event not changed\n";
     else {
       kdDebug(5850) << "Event changed\n";
-      int revision = event->revision();
-      event->setRevision( revision + 1 );
-      if( !KOPrefs::instance()->mUseGroupwareCommunication ||
-          KOGroupware::instance()->sendICalMessage( this,
-                                                    KCal::Scheduler::Request,
-                                                    event ) ) {
-        // Accept the event changes
-        writeEvent( mEvent );
-        mEvent->setRevision( revision + 1 );
-        emit incidenceChanged( oldEvent, mEvent );
-      } else {
-        // Revert the changes
-        event->setRevision( revision );
-        rc = false;
-      }
+      //IncidenceChanger::assignIncidence( mEvent, event );
+      writeEvent( mEvent );
+      mChanger->changeIncidence( oldEvent, mEvent );
     }
     delete event;
     delete oldEvent;
@@ -301,17 +290,7 @@ bool KOEventEditor::processInput()
     mEvent->setOrganizer( Person( KOPrefs::instance()->fullName(), 
                           KOPrefs::instance()->email() ) );
     writeEvent( mEvent );
-    if ( KOPrefs::instance()->mUseGroupwareCommunication ) {
-      if ( !KOGroupware::instance()->sendICalMessage( this,
-                                                      KCal::Scheduler::Request,
-                                                      mEvent ) ) {
-        kdError() << "sendIcalMessage failed." << endl;
-      }
-    }
-    if ( mCalendar->addEvent( mEvent ) ) {
-      emit incidenceAdded( mEvent );
-    } else {
-      KODialogManager::errorSaveIncidence( this, mEvent );
+    if ( !mChanger->addIncidence( mEvent ) ) {
       delete mEvent;
       mEvent = 0;
       return false;
@@ -326,10 +305,6 @@ bool KOEventEditor::processInput()
 void KOEventEditor::processCancel()
 {
   kdDebug(5850) << "KOEventEditor::processCancel()" << endl;
-
-  if ( mEvent ) {
-    emit editCanceled( mEvent );
-  }
 
   if ( mFreeBusy ) mFreeBusy->cancelReload();
 }

@@ -21,8 +21,8 @@
     with any edition of Qt, and distribute the resulting executable,
     without including the source code for Qt in the source distribution.
 */
-#ifndef TIMESPANVIEW_H
-#define TIMESPANVIEW_H
+#ifndef TimeSpanWidget_H
+#define TimeSpanWidget_H
 
 #include <qwidget.h>
 
@@ -35,12 +35,12 @@ class QListView;
 class LineView;
 class TimeLine;
 
-class TimeSpanView : public QWidget
+class TimeSpanWidget : public QWidget
 {
     Q_OBJECT
   public:
-    TimeSpanView( QWidget *parent=0, const char *name=0 );
-    virtual ~TimeSpanView();
+    TimeSpanWidget( QWidget *parent=0, const char *name=0 );
+    virtual ~TimeSpanWidget();
     
     void addItem( KCal::Event * );
 

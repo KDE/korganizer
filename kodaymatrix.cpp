@@ -447,8 +447,8 @@ void KODayMatrix::dropEvent( QDropEvent *e )
     return;
   }
 
-  Todo *existingTodo = 0, *oldTodo = 0;
-  Event *existingEvent = 0, *oldEvent = 0;
+  Todo *existingTodo = 0;
+  Event *existingEvent = 0;
 
   // Find the incidence in the calendar, then we don't need the drag object any more
   if ( event ) existingEvent = mCalendar->event( event->uid() );
@@ -481,74 +481,19 @@ void KODayMatrix::dropEvent( QDropEvent *e )
   }
 
   if ( action == DRAG_COPY  || action == DRAG_MOVE ) {
-  
-    // When copying, clear the UID:
-    if ( action == DRAG_COPY ) {
-      if ( todo ) todo->recreate();
-      if ( event ) event->recreate();
-    } else {
-      if ( existingEvent ) oldEvent = existingEvent->clone();
-      if ( event ) delete event;
-      event = existingEvent;
-      if ( existingTodo ) oldTodo = existingTodo->clone();
-      if ( todo ) delete todo;
-      todo = existingTodo;
-    }
-
     e->accept();
-    if ( event ) {
-      // Adjust date
-      QDateTime start = event->dtStart();
-      QDateTime end = event->dtEnd();
-      int duration = start.daysTo( end );
-      int idx = getDayIndexFrom( e->pos().x(), e->pos().y() );
-
-      start.setDate( mDays[idx] );
-      end.setDate( mDays[idx].addDays( duration ) );
-
-      event->setDtStart( start );
-      event->setDtEnd( end );
-      // When moving, we don't need to insert  the item!
-      if ( action != DRAG_MOVE ) {
-        if ( !mCalendar->addIncidence( event ) ) {
-          KODialogManager::errorSaveIncidence( this, event );
-          return;
-        }
-      }
-
-      if ( oldEvent ) {
-        emit incidenceDroppedMove( oldEvent, event );
-      } else {
-        emit incidenceDropped( event );
-      }
+    int idx = getDayIndexFrom( e->pos().x(), e->pos().y() );
+    
+    if ( action == DRAG_COPY ) {
+      if ( event ) emit incidenceDropped( event, mDays[idx] );
+      if ( todo )  emit incidenceDropped( event, mDays[idx] );
+    } else if ( action == DRAG_MOVE ) {
+      if ( event ) emit incidenceDroppedMove( event, mDays[idx] );
+      if ( todo )  emit incidenceDroppedMove( event, mDays[idx] );
     }
-    if ( todo ) {
-      // Adjust date
-      QDateTime due = todo->dtDue();
-      int idx = getDayIndexFrom( e->pos().x(), e->pos().y() );
-      due.setDate( mDays[idx] );
-
-      todo->setDtDue( due );
-      todo->setHasDueDate( true );
-
-      // When moving, we don't need to insert  the item!
-      if ( action != DRAG_MOVE ) {
-        if ( !mCalendar->addIncidence( todo ) ) {
-          KODialogManager::errorSaveIncidence( this, todo );
-        }
-      }
-
-      if ( oldTodo ) {
-        emit incidenceDroppedMove( oldTodo, todo );
-      } else {
-        emit incidenceDropped( todo );
-      }
-    }
-  } else {
-    if ( todo ) delete todo;
-    if ( event ) delete event;
-    e->ignore();
   }
+  delete event;
+  delete todo;
 #endif
 }
 

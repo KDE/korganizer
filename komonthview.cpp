@@ -45,6 +45,7 @@
 
 #include <kcalendarsystem.h>
 #include <libkcal/calfilter.h>
+#include <libkcal/calendar.h>
 #include <libkcal/incidenceformatter.h>
 
 #include "koprefs.h"

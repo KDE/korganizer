@@ -71,10 +71,7 @@ void KOJournalView::appendJournal( Journal*journal, const QDate &dt)
     j->show();
     j->setJournal( journal );
     j->setDate( dt );
-    connect( j, SIGNAL( incidenceAdded( Incidence* )), SIGNAL( incidenceAdded( Incidence* )) );
-    connect( j, SIGNAL( incidenceChanged( Incidence*, Incidence* )), SIGNAL( incidenceChanged( Incidence*, Incidence* )) );
-    connect( j, SIGNAL( incidenceToBeDeleted( Incidence* )), SIGNAL( incidenceToBeDeleted( Incidence* )) );
-    connect( j, SIGNAL( incidenceDeleted( Incidence* )), SIGNAL( incidenceDeleted( Incidence* )) );
+    j->setIncidenceChanger( mChanger );
 
     mEntries.append( j );
     mSelectedDates.append( dt );
@@ -184,5 +181,14 @@ void KOJournalView::changeIncidenceDisplay(Incidence *incidence, int action)
       default:
         kdDebug(5850) << "KOListView::changeIncidenceDisplay(): Illegal action " << action << endl;
     }
+  }
+}
+
+void KOJournalView::setIncidenceChanger( IncidenceChangerBase *changer ) 
+{ 
+  mChanger = changer;
+  JournalEntry::List::iterator it;
+  for ( it = mEntries.begin(); it != mEntries.end(); ++it ) {
+    if ( (*it) ) (*it)->setIncidenceChanger( changer );
   }
 }

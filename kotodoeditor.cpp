@@ -43,6 +43,7 @@
 #include "koeditorattachments.h"
 #include "kogroupware.h"
 #include "kodialogmanager.h"
+#include "incidencechanger.h"
 
 #include "koeditorgeneraltodo.h"
 #include "koeditordetails.h"
@@ -230,40 +231,27 @@ void KOTodoEditor::loadDefaults()
   setDefaults(QDateTime::currentDateTime().addDays(7),0,false);
 }
 
-// @TODO: make sure calendar()->endChange is called somewhere!
 bool KOTodoEditor::processInput()
 {
   if ( !validateInput() ) return false;
 
   if ( mTodo ) {
     bool rc = true;
-    Todo *todo = mTodo->clone();
     Todo *oldTodo = mTodo->clone();
-
-    kdDebug(5850) << "KOTodoEditor::processInput() write todo." << endl;
+    Todo *todo = mTodo->clone();
+    
+    kdDebug(5850) << "KOTodoEditor::processInput() write event." << endl;
     writeTodo( todo );
     kdDebug(5850) << "KOTodoEditor::processInput() event written." << endl;
-
+    
     if( *mTodo == *todo )
       // Don't do anything
       kdDebug(5850) << "Todo not changed\n";
     else {
       kdDebug(5850) << "Todo changed\n";
-      int revision = todo->revision();
-      todo->setRevision( revision + 1 );
-      if( !KOPrefs::instance()->mUseGroupwareCommunication ||
-          KOGroupware::instance()->sendICalMessage( this,
-                                                    KCal::Scheduler::Request,
-                                                    todo ) ) {
-        // Accept the event changes
-        writeTodo( mTodo );
-        mTodo->setRevision( revision + 1 );
-        emit incidenceChanged( oldTodo, mTodo );
-      } else {
-        // Revert the changes
-        todo->setRevision( revision );
-        rc = false;
-      }
+      //IncidenceChanger::assignIncidence( mTodo, todo );
+      writeTodo( mTodo );
+      mChanger->changeIncidence( oldTodo, mTodo );
     }
     delete todo;
     delete oldTodo;
@@ -275,34 +263,16 @@ bool KOTodoEditor::processInput()
                          KOPrefs::instance()->email() ) );
 
     writeTodo( mTodo );
-    if ( KOPrefs::instance()->mUseGroupwareCommunication ) {
-      if ( !KOGroupware::instance()->sendICalMessage( this,
-                                                      KCal::Scheduler::Request,
-                                                      mTodo ) ) {
-        kdError() << "sendIcalMessage failed." << endl;
-      }
-    }
 
-    if ( !mCalendar->addIncidence( mTodo ) ) {
-      KODialogManager::errorSaveIncidence( this, mTodo );
+    if ( !mChanger->addIncidence( mTodo ) ) {
       delete mTodo;
       mTodo = 0;
       return false;
     }
-
-    emit incidenceAdded( mTodo );
-
   }
 
   return true;
 
-}
-
-void KOTodoEditor::processCancel()
-{
-  if ( mTodo ) {
-    emit editCanceled( mTodo );
-  }
 }
 
 void KOTodoEditor::deleteTodo()

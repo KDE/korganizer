@@ -442,7 +442,6 @@ void KOEditorDetails::writeEvent(Incidence *event)
     event->addAttendee(new Attendee(*(a->data())));
   }
   if ( mOrganizerCombo ) {
-    // FIXME: Don't take a string and split it up... Is there a better way?
     event->setOrganizer( mOrganizerCombo->currentText() );
   }
 }
@@ -464,7 +463,6 @@ bool KOEditorDetails::validateInput()
 
 void KOEditorDetails::updateAttendeeInput()
 {
-
   setEnableAttendeeInput(!mNameEdit->text().isEmpty());
   QListViewItem *item = mListView->selectedItem();
   AttendeeListItem *aItem = static_cast<AttendeeListItem *>( item );

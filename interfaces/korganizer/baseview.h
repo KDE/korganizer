@@ -2,6 +2,7 @@
     This file is part of the KOrganizer interfaces.
 
     Copyright (c) 1999,2001,2003 Cornelius Schumacher <schumacher@kde.org>
+		Copyright (C) 2004           Reinhold Kainhofer   <reinhold@kainhofer.com>
 
     This library is free software; you can redistribute it and/or
     modify it under the terms of the GNU Library General Public
@@ -28,12 +29,14 @@
 #include <klocale.h>
 #include <kdebug.h>
 #include <kmessagebox.h>
+#include "korganizer/incidencechangerbase.h"
 
 #include <libkcal/event.h>
-#include <libkcal/calendar.h>
+//#include <libkcal/calendar.h>
 
 using namespace KCal;
 
+namespace KCal { class Calendar; }
 class CalPrinter;
 
 namespace KOrg {
@@ -71,8 +74,9 @@ class BaseView : public QWidget
       @param parent parent widget.
       @param name   name of this widget.
     */
-    BaseView( Calendar *cal, QWidget *parent = 0, const char *name = 0 )
-      : QWidget( parent, name ), mCalendar( cal ) {}
+    BaseView( Calendar *cal, QWidget *parent = 0, 
+              const char *name = 0 )
+      : QWidget( parent, name ), mCalendar( cal ), mChanger( 0 ) {}
 
     /**
       Destructor.  Views will do view-specific cleanups here.
@@ -137,6 +141,11 @@ class BaseView : public QWidget
     */
     virtual void updateView() = 0;
     virtual void dayPassed( QDate ) { updateView(); }
+    
+    /** 
+      Assign a new incidence change helper object. 
+     */
+    virtual void setIncidenceChanger( IncidenceChangerBase *changer ) { kdDebug()<<"BaseView::setIncidenceChanger"<<endl;mChanger = changer; }
 
     /**
       Write all unsaved data back to calendar store.
@@ -197,12 +206,6 @@ class BaseView : public QWidget
         date to a new incidence */
     void dissociateFutureOccurrenceSignal( Incidence *, const QDate & );
 
-    void incidenceAdded( Incidence* );
-    void incidenceChanged( Incidence*, Incidence*, int );
-    void incidenceChanged( Incidence*, Incidence* );
-    void incidenceDeleted( Incidence* );
-    void incidenceToBeDeleted( Incidence* );
-
     void startMultiModify( const QString & );
     void endMultiModify();
 
@@ -233,6 +236,8 @@ class BaseView : public QWidget
 
   private:
     Calendar *mCalendar;
+  protected:
+    IncidenceChangerBase *mChanger;
 };
 
 }

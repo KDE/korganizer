@@ -888,15 +888,6 @@ extern "C"
   }
 }
 
-// FIXME: find replacement for showing printer tab
-#if 0
-void KOPrefsDialog::showPrinterTab()
-{
-  showPage(pageIndex(mPrinterTab));
-}
-#endif
-
-
 KOPrefsDialogGroupwareScheduling::KOPrefsDialogGroupwareScheduling( QWidget *parent, const char *name )
   : KPrefsModule( KOPrefs::instance(), parent, name )
 {

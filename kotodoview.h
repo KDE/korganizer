@@ -53,6 +53,7 @@ class Incidence;
 class Calendar;
 }
 using namespace KCal;
+using namespace KOrg;
 
 class KOTodoListViewToolTip : public QToolTip
 {
@@ -75,12 +76,7 @@ class KOTodoListView : public KListView
     ~KOTodoListView();
 
     void setCalendar( Calendar * );
-
-  signals:
-    void incidenceAdded( Incidence* );
-    void incidenceChanged( Incidence*, Incidence* );
-    void incidenceDeleted( Incidence* );
-    void incidenceToBeDeleted( Incidence* );
+    void setIncidenceChanger( IncidenceChangerBase *changer ) { mChanger = changer; }
 
   protected:
     virtual bool event( QEvent * );
@@ -97,6 +93,7 @@ class KOTodoListView : public KListView
 
   private:
     Calendar *mCalendar;
+    KOrg::IncidenceChangerBase *mChanger;
 
     QPoint mPressPos;
     bool mMousePressed;
@@ -136,6 +133,7 @@ class KOTodoView : public KOrg::BaseView
     void restoreLayout( KConfig *config, const QString &group );
     /** Create a popup menu to set categories */
     QPopupMenu *getCategoryPopupMenu( KOTodoViewItem *todoItem );
+    void setIncidenceChanger( IncidenceChangerBase *changer );
 
   public slots:
     void updateView();
@@ -170,10 +168,6 @@ class KOTodoView : public KOrg::BaseView
     void purgeCompleted();
 
     void itemStateChanged( QListViewItem * );
-    void setTodoModified( Todo *oldTodo, Todo *todo )
-    {
-      emit incidenceChanged( oldTodo, todo );
-    }
     void emitCompletedSignal( Todo * );
 
   signals:

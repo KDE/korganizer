@@ -386,9 +386,6 @@ void ActionManager::initActions()
   new KAction( i18n("&Journal"), "journal", 0,
                     mCalendarView->viewManager(), SLOT( showJournalView() ),
                     mACollection, "view_journal" );
-  new KAction( i18n("&Time Span"), "timespan", 0,
-                    mCalendarView->viewManager(), SLOT( showTimeSpanView() ),
-                    mACollection, "view_timespan" );
   new KAction( i18n("&Update"), 0,
                     mCalendarView, SLOT( updateView() ),
                     mACollection, "update" );

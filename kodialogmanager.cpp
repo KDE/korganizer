@@ -48,10 +48,10 @@
 #include "kodialogmanager.moc"
 
 
-// @TODO: Handle KOEventViewerDialogs in dialog manager. Pass
+// FIXME: Handle KOEventViewerDialogs in dialog manager. Pass
 // KOPrefs::mCompactDialog.
 
-class DialogManagerVisitor : public IncidenceBase::Visitor
+class KODialogManager::DialogManagerVisitor : public IncidenceBase::Visitor
 {
   public:
     DialogManagerVisitor() : mDialogManager( 0 ) {}
@@ -66,7 +66,8 @@ class DialogManagerVisitor : public IncidenceBase::Visitor
     KODialogManager *mDialogManager;
 };
 
-class EditorDialogVisitor : public DialogManagerVisitor
+class KODialogManager::EditorDialogVisitor : 
+      public KODialogManager::DialogManagerVisitor
 {
   public: 
     EditorDialogVisitor() : DialogManagerVisitor(), mEditor( 0 ) {}
@@ -295,12 +296,8 @@ void KODialogManager::connectTypeAhead( KOEventEditor *editor,
 
 void KODialogManager::connectEditor( KOIncidenceEditor*editor )
 {
-  connect( editor, SIGNAL( incidenceAdded( Incidence * ) ),
-           mMainView, SLOT( incidenceAdded( Incidence * ) ) );
-  connect( editor, SIGNAL( incidenceChanged( Incidence *, Incidence * ) ),
-           mMainView, SLOT( incidenceChanged( Incidence *, Incidence * ) ) );
-  connect( editor, SIGNAL( deleteIncidenceSignal( Incidence * ) ),
-           mMainView, SLOT( deleteIncidence( Incidence * ) ) );
+/*  connect( editor, SIGNAL( deleteIncidenceSignal( Incidence * ) ),
+           mMainView, SLOT( deleteIncidence( Incidence * ) ) );*/
 
   connect( mCategoryEditDialog, SIGNAL( categoryConfigChanged() ),
            editor, SLOT( updateCategoryConfig() ) );

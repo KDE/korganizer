@@ -60,6 +60,7 @@ class KOJournalView : public KOrg::BaseView
     void showIncidences( const Incidence::List &incidenceList );
 
     void changeIncidenceDisplay( Incidence *, int );
+    void setIncidenceChanger( IncidenceChangerBase *changer );
   protected:
     void clearEntries();
 
