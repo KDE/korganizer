@@ -15,7 +15,7 @@ KOException::~KOException()
 
 QString KOException::message()
 {
-  if (mMessage.isEmpty()) return "KOrganizer Error";
+  if (mMessage.isEmpty()) return i18n("KOrganizer Error");
   else return mMessage;
 }
     
