@@ -153,6 +153,8 @@ class BaseView : public QWidget
     */
     virtual void showDates( const QDate &start, const QDate &end ) = 0;
 
+    // FIXME: Add showIncidences() function and either remove showEvents()
+    // FIXME: function or add showTodos() and showJournals().
     /**
       Show given events. Depending on the actual view it might not be possible to
       show all given events.
