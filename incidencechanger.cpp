@@ -60,7 +60,7 @@ void IncidenceChanger::cancelAttendees( Incidence *incidence )
   if ( KOPrefs::instance()->mUseGroupwareCommunication ) {
     if ( KMessageBox::questionYesNo( 0, i18n("Some attendees were removed "
        "from the incidence. Shall cancel messages be sent to these attendees?"),
-       i18n( "Attendees removed" ) ) == KMessageBox::Yes ) {
+       i18n( "Attendees Removed" ) ) == KMessageBox::Yes ) {
       // don't use KOGroupware::sendICalMessage here, because that asks just
       // a very general question "Other people are involved, send message to
       // them?", which isn't helpful at all in this situation. Afterwards, it

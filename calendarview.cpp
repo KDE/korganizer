@@ -685,7 +685,7 @@ void CalendarView::checkForFilteredChange( Incidence *incidence )
     KMessageBox::information( this, i18n("The incidence \"%1\" is filtered by "
                  "your current filter rules, so it will be hidden and not "
                  "appear in the view.").arg( incidence->summary() ),
-                 i18n("Filter applied"), "ChangedIncidenceFiltered" );
+                 i18n("Filter Applied"), "ChangedIncidenceFiltered" );
   }
 }
 
@@ -1179,7 +1179,7 @@ void CalendarView::dissociateOccurrence( Incidence *incidence, const QDate &date
     endMultiModify();
   } else {
     KMessageBox::sorry( this, i18n("Dissociating the occurrence failed."),
-      i18n("Dissociating failed") );
+      i18n("Dissociating Failed") );
   }
   mChanger->endChange( incidence );
   delete oldincidence;
@@ -1206,7 +1206,7 @@ void CalendarView::dissociateFutureOccurrence( Incidence *incidence, const QDate
     endMultiModify();
   } else {
     KMessageBox::sorry( this, i18n("Dissociating the future occurrences failed."),
-      i18n("Dissociating failed") );
+      i18n("Dissociating Failed") );
   }
   mChanger->endChange( incidence );
   delete oldincidence;
@@ -1837,8 +1837,8 @@ void CalendarView::deleteTodoIncidence ( Todo *todo )
                                      "delete the to-do with all its sub-to-dos?"
                                 ).arg( todo->summary() ),
                                 i18n("KOrganizer Confirmation"),
-                                i18n("Delete only this"),
-                                i18n("Delete all"));
+                                i18n("Delete Only This"),
+                                i18n("Delete All"));
   startMultiModify( i18n("Deleting sub-to-dos" ) );
   // Delete only the father
   if( km == KMessageBox::Yes ) {
@@ -2063,7 +2063,7 @@ void CalendarView::addIncidenceOn( Incidence *incadd, const QDate &dt )
 {
   if ( !incadd || !mChanger ) {
     KMessageBox::sorry(this, i18n("Unable to copy the incidence to %1.")
-                       .arg( dt.toString() ), i18n("Copying failed") );
+                       .arg( dt.toString() ), i18n("Copying Failed") );
     return;
   }
   Incidence *incidence = mCalendar->incidence( incadd->uid() );
@@ -2105,7 +2105,7 @@ void CalendarView::moveIncidenceTo( Incidence *incmove, const QDate &dt )
 {
   if ( !incmove || !mChanger ) {
     KMessageBox::sorry( this, i18n("Unable to move the incidence to  %1.")
-                        .arg( dt.toString() ), i18n("Moving failed") );
+                        .arg( dt.toString() ), i18n("Moving Failed") );
     return;
   }
   Incidence *incidence = mCalendar->incidence( incmove->uid() );

@@ -4,7 +4,7 @@
   Requires the Qt and KDE widget libraries, available at no cost at
   http://www.trolltech.com and http://www.kde.org respectively
 
-  Copyright (c) 2002-2004 Klarälvdalens Datakonsult AB
+  Copyright (c) 2002-2004 Klarï¿½vdalens Datakonsult AB
         <info@klaralvdalens-datakonsult.se>
   Copyright (c) 2004 Cornelius Schumacher <schumacher@kde.org>
 
@@ -220,7 +220,7 @@ void FreeBusyManager::publishFreeBusy()
             "set it in KOrganizer's configuration dialog, on the \"Free/Busy\" page. "
             "<br>Contact your system administrator for the exact URL and the "
             "account details."
-            "</qt>" ), i18n("No Free/Busy upload URL") );
+            "</qt>" ), i18n("No Free/Busy Upload URL") );
     return;
   }
   targetURL.setUser( KOPrefs::instance()->mFreeBusyPublishUser );

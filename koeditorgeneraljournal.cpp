@@ -59,7 +59,7 @@ void KOEditorGeneralJournal::initTitle( QWidget *parent, QBoxLayout *topLayout )
 {
   QHBoxLayout *hbox = new QHBoxLayout( topLayout );
   
-  QString whatsThis = i18n("Sets the Title of this journal.");
+  QString whatsThis = i18n("Sets the title of this journal.");
   QLabel *summaryLabel = new QLabel( i18n("T&itle:"), parent );
   QWhatsThis::add( summaryLabel, whatsThis );
   QFont f = summaryLabel->font();

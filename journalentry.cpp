@@ -241,7 +241,7 @@ void JournalEntry::deleteItem()
       i18n("The journal \"%1\" on %2 will be permanently deleted.")
                .arg( mJournal->summary() )
                .arg( mJournal->dtStartStr() ),
-      i18n("KOrganizer Confirmation"), KGuiItem( i18n("&Delete"), "editdelete" ) );
+  i18n("KOrganizer Confirmation"), KStdGuiItem::del() );
   if ( code == KMessageBox::Yes ) {*/
     if ( mJournal )
       emit deleteIncidence( mJournal );

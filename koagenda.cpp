@@ -881,7 +881,7 @@ void KOAgenda::performItemAction(const QPoint& viewportPos)
       if ( !mChanger || !mChanger->beginChange( mActionItem->incidence() ) ) {
         KMessageBox::information( this, i18n("Unable to lock incidence for "
                              "modification. You cannot change make any changes."),
-                             i18n("Locking failed"), "AgendaLockingFailed" );
+                             i18n("Locking Failed"), "AgendaLockingFailed" );
         mScrollUpTimer.stop();
         mScrollDownTimer.stop();
         mActionItem->resetMove();
@@ -1028,8 +1028,8 @@ void KOAgenda::endItemAction()
           i18n("The item you try to change is a recurring item. Shall the changes "
                "be applied only to this single occurrence, only to the future items, "
                "or to all items in the recurrence?"),
-          i18n("Changing a recurring item"),
-          i18n("Only &this item"), i18n("Only &future items"), i18n("&All occurrences") );
+          i18n("Changing Recurring Item"),
+          i18n("Only &This Item"), i18n("Only &Future Items"), i18n("&All Occurrences") );
       switch ( res ) {
         case KMessageBox::Ok: // All occurences
             // Moving the whole sequene of events is handled by the itemModified below.

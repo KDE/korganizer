@@ -372,16 +372,15 @@ void ResourceView::removeResource()
   if ( !item ) return;
 
   int km = KMessageBox::warningContinueCancel( this,
-        i18n("<qt>Do you really want to remove the resource <b>%1</b>?</qt>")
-        .arg( item->text( 0 ) ), "",
-        KGuiItem( i18n("&Remove" ), "editdelete") );
+        i18n("<qt>Do you really want to delete the resource <b>%1</b>?</qt>")
+        .arg( item->text( 0 ) ), "", KStdGuiItem::del() );
   if ( km == KMessageBox::Cancel ) return;
 
 // Don't be so restricitve
 #if 0
   if ( item->resource() == mCalendar->resourceManager()->standardResource() ) {
     KMessageBox::sorry( this,
-                        i18n( "You cannot remove your standard resource." ) );
+                        i18n( "You cannot delete your standard resource." ) );
     return;
   }
 #endif
