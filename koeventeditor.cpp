@@ -190,6 +190,7 @@ bool KOEventEditor::processInput()
 void KOEventEditor::deleteEvent()
 {
   kdDebug() << "Delete event" << endl;
+
   if (mEvent) {
     if (KOPrefs::instance()->mConfirm) {
       switch (msgItemDelete()) {

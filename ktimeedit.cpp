@@ -219,7 +219,7 @@ void KOTimeEdit::keyPressEvent(QKeyEvent *qke)
 
 void KOTimeEdit::updateText()
 {
-  kdDebug(5850) << "KOTimeEdit::updateText() " << endl;
+//  kdDebug(5850) << "KOTimeEdit::updateText() " << endl;
   QString s = KGlobal::locale()->formatTime(mTime);
   // Set the text but without emitting signals, nor losing the cursor position
   QLineEdit *line = lineEdit();
@@ -229,7 +229,7 @@ void KOTimeEdit::updateText()
   line->setCursorPosition(pos);
   line->blockSignals(false);
 
-  kdDebug(5850) << "KOTimeEdit::updateText(): " << s << endl;
+//  kdDebug(5850) << "KOTimeEdit::updateText(): " << s << endl;
 
   if (!mTime.minute() % 15) {
     setCurrentItem((mTime.hour()*4)+(mTime.minute()/15));
