@@ -47,6 +47,7 @@
 #endif
 #include "koprefs.h"
 #include "koglobals.h"
+#include "kodialogmanager.h"
 
 #include "kodaymatrix.h"
 #include "kodaymatrix.moc"
@@ -511,8 +512,12 @@ void KODayMatrix::dropEvent( QDropEvent *e )
       event->setDtStart( start );
       event->setDtEnd( end );
       // When moving, we don't need to insert  the item!
-      if ( action != DRAG_MOVE )
-        mCalendar->addEvent( event );
+      if ( action != DRAG_MOVE ) {
+        if ( !mCalendar->addEvent( event ) ) {
+          KODialogManager::errorSaveEvent( this );
+          return;
+        }
+      }
 
       if ( oldEvent ) {
         emit eventDroppedMove( oldEvent, event );
@@ -530,8 +535,11 @@ void KODayMatrix::dropEvent( QDropEvent *e )
       todo->setHasDueDate( true );
 
       // When moving, we don't need to insert  the item!
-      if ( action != DRAG_MOVE )
-        mCalendar->addTodo( todo );
+      if ( action != DRAG_MOVE ) {
+        if ( !mCalendar->addTodo( todo ) ) {
+          KODialogManager::errorSaveTodo( this );
+        }
+      }
 
       if ( oldTodo ) {
         emit todoDroppedMove( oldTodo, todo );

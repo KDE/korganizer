@@ -40,7 +40,8 @@
 
 #include "koprefs.h"
 #include "koeditorattachments.h"
-
+#include "kodialogmanager.h"
+ 
 #include "kotodoeditor.h"
 
 KOTodoEditor::KOTodoEditor( Calendar *calendar, QWidget *parent ) :
@@ -201,7 +202,12 @@ bool KOTodoEditor::processInput()
 
     writeTodo( mTodo );
 
-    mCalendar->addTodo( mTodo );
+    if ( !mCalendar->addTodo( mTodo ) ) {
+      KODialogManager::errorSaveTodo( this );
+      delete mTodo;
+      mTodo = 0;
+      return false;
+    }
 
     emit todoAdded( mTodo );
   }

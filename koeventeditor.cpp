@@ -43,6 +43,7 @@
 #include "koeditorattachments.h"
 #include "koeditorfreebusy.h"
 #include "kogroupware.h"
+#include "kodialogmanager.h"
 
 #include "koeventeditor.h"
 
@@ -263,11 +264,17 @@ bool KOEventEditor::processInput()
     mEvent = new Event;
     mEvent->setOrganizer( KOPrefs::instance()->email() );
     writeEvent( mEvent );
-    if( (!KOPrefs::instance()->mUseGroupwareCommunication ||
-        KOGroupware::instance()->sendICalMessage( this, KCal::Scheduler::Request, mEvent ) ) &&
-        mCalendar->addEvent( mEvent ) ) {
+    if ( KOPrefs::instance()->mUseGroupwareCommunication ) {
+      if ( !KOGroupware::instance()->sendICalMessage( this,
+                                                      KCal::Scheduler::Request,
+                                                      mEvent ) ) {
+        kdError() << "sendIcalMessage failed." << endl;
+      }
+    }
+    if ( mCalendar->addEvent( mEvent ) ) {
       emit eventAdded( mEvent );
     } else {
+      KODialogManager::errorSaveEvent( this );
       delete mEvent;
       mEvent = 0;
       return false;

@@ -187,11 +187,14 @@ void ResourceView::removeResource()
         .arg( rItem->resource()->resourceName() ) );
   if ( km == KMessageBox::No ) return;
 
+// Don't be so restricitve
+#if 0
   if ( rItem->resource() == mManager->standardResource() ) {
     KMessageBox::sorry( this,
                         i18n( "You cannot remove your standard resource." ) );
     return;
   }
+#endif
 
   mManager->remove( rItem->resource() );
 

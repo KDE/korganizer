@@ -44,6 +44,7 @@
 #include "docprefs.h"
 
 #include "koincidencetooltip.h"
+#include "kodialogmanager.h"
 #include "kotodoview.h"
 #include "koglobals.h"
 using namespace KOrg;
@@ -222,7 +223,10 @@ void KOTodoListView::contentsDropEvent( QDropEvent *e )
     } else {
 //      kdDebug(5850) << "Drop new Todo" << endl;
       todo->setRelatedTo(destinationEvent);
-      mCalendar->addTodo(todo);
+      if ( !mCalendar->addTodo( todo ) ) {
+        KODialogManager::errorSaveTodo( this );
+        return;
+      }
 
       emit todoDropped(todo);
       emit todoAdded( todo );
@@ -855,7 +859,10 @@ void KOTodoView::addQuickTodo()
   Todo *todo = new Todo();
   todo->setSummary( mQuickAdd->text() );
   todo->setOrganizer( KOPrefs::instance()->email() );
-  calendar()->addTodo( todo );
+  if ( !calendar()->addTodo( todo ) ) {
+    KODialogManager::errorSaveTodo( this );
+    return;
+  }
   mQuickAdd->setText( QString::null );
   emit todoAdded( todo );
   updateView();

@@ -66,6 +66,8 @@
 
 #include "koincidencetooltip.h"
 #include "kogroupware.h"
+#include "kodialogmanager.h"
+
 #include "koagendaview.h"
 #include "koagendaview.moc"
 
@@ -1138,9 +1140,11 @@ void KOAgendaView::slotTodoDropped( Todo *todo, int gx, int gy, bool allDay )
       todo->setDtDue( newTime );
       todo->setFloats( allDay );
       existingTodo->setHasDueDate( true );
-      calendar()->addTodo( todo );
-
-      emit todoDropped(todo);
+      if ( calendar()->addTodo( todo ) ) {
+        emit todoDropped(todo);
+      } else {
+        KODialogManager::errorSaveTodo( this );
+      }
     }
   }
 }

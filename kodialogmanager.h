@@ -1,7 +1,7 @@
 /*
   This file is part of KOrganizer.
-  Copyright (c) 2001
-  Cornelius Schumacher <schumacher@kde.org>
+
+  Copyright (c) 2001,2004 Cornelius Schumacher <schumacher@kde.org>
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -70,6 +70,10 @@ class KODialogManager : public QObject
     void setDocumentId( const QString &id );
 
     void connectTypeAhead( KOEventEditor *editor, KOAgendaView *agenda );
+
+    static void errorSaveEvent( QWidget *parent );
+    static void errorSaveTodo( QWidget *parent );
+    static void errorSaveJournal( QWidget *parent );
 
   public slots:
     void showOptionsDialog();

@@ -78,6 +78,21 @@ KODialogManager::~KODialogManager()
 #endif
 }
 
+void KODialogManager::errorSaveEvent( QWidget *parent )
+{
+  KMessageBox::sorry( parent, i18n("Unable to save event.") );
+}
+
+void KODialogManager::errorSaveTodo( QWidget *parent )
+{
+  KMessageBox::sorry( parent, i18n("Unable to save todo item.") );
+}
+
+void KODialogManager::errorSaveJournal( QWidget *parent )
+{
+  KMessageBox::sorry( parent, i18n("Unable to save journal entry.") );
+}
+
 OutgoingDialog *KODialogManager::outgoingDialog()
 {
   createOutgoingDialog();
