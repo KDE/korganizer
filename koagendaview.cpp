@@ -834,7 +834,7 @@ void KOAgendaView::fillAgenda()
 	mAgenda->insertItem(event,curCol,startY,endY);
         if (startY < mMinY[curCol]) mMinY[curCol] = startY;
         if (endY > mMaxY[curCol]) mMaxY[curCol] = endY;
-      }      
+      }
     }
 //    if (numEvent == 0) kdDebug() << " No events" << endl;
     ++curCol;
