@@ -68,7 +68,8 @@ libkorganizer_la_SOURCES =  outgoingdialog_base.ui \
         koglobals.cpp konewstuff.cpp savetemplatedialog.cpp \
         kalarmdclient.cpp simplealarmclient.cpp \
 	actionmanager.cpp resourceview.cpp \
-        navigatorbar.cpp
+        navigatorbar.cpp kogroupware.cpp \
+	kogroupwareincomingdialog_base.ui kogroupwareincomingdialog.cpp
 
 METASOURCES = AUTO
 
@@ -91,7 +92,7 @@ noinst_HEADERS = komonthview.h \
         outgoingdialog.h incomingdialog.h publishdialog.h \
         koeventview.h statusdialog.h customlistviewitem.h \
         alarmclient.h kalarmdclient.h simplealarmclient.h \
-        navigatorbar.h
+        navigatorbar.h kogroupware.h kogroupwareincomingdialog.h
 
 tip_DATA = tips
 tipdir = $(kde_datadir)/korganizer
