@@ -97,6 +97,7 @@
 #include "navigatorbar.h"
 #include "history.h"
 #include "kogroupware.h"
+#include "freebusymanager.h"
 #include "komonthview.h"
 
 #include "calendarview.h"
@@ -820,25 +821,20 @@ void CalendarView::edit_options()
 void CalendarView::newEvent()
 {
   kdDebug() << "CalendarView::newEvent()" << endl;
-
-  // TODO: Replace this code by a common eventDurationHint of KOBaseView.
-  KOAgendaView *aView = mViewManager->agendaView();
-  if (aView) {
-    if (aView->selectionStart().isValid()) {
-      if (aView->selectedIsAllDay()) {
-        newEvent(aView->selectionStart(),aView->selectionEnd(),true);
-      } else {
-        newEvent(aView->selectionStart(),aView->selectionEnd());
-      }
-      return;
-    }
-  }
-
   QDate date = mNavigator->selectedDates().first();
+  QDateTime startDt( date, QTime( KOPrefs::instance()->mStartTime, 0, 0 ) );
+  QDateTime endDt( date, QTime( KOPrefs::instance()->mStartTime +
+                                KOPrefs::instance()->mDefaultDuration, 0, 0 ) );
+  bool allDay = false;
+  
+  // let the current view change the default start/end datetime
+  mViewManager->currentView()->eventDurationHint( startDt, endDt, allDay );
 
-  newEvent( QDateTime( date, QTime( KOPrefs::instance()->mStartTime, 0, 0 ) ),
-            QDateTime( date, QTime( KOPrefs::instance()->mStartTime +
-                       KOPrefs::instance()->mDefaultDuration, 0, 0 ) ) );
+  if ( allDay ) {
+    newEvent( startDt, endDt, true );
+  } else {
+    newEvent( startDt, endDt );
+  }
 }
 
 void CalendarView::newEvent(QDateTime fh)
@@ -1353,7 +1349,7 @@ void CalendarView::schedule_declinecounter(Incidence *incidence)
   schedule(Scheduler::Declinecounter,incidence);
 }
 
-void CalendarView::schedule_publish_freebusy(int daysToPublish)
+void CalendarView::mailFreeBusy( int daysToPublish )
 {
   QDateTime start = QDateTime::currentDateTime();
   QDateTime end = start.addDays(daysToPublish);
@@ -1373,6 +1369,11 @@ void CalendarView::schedule_publish_freebusy(int daysToPublish)
     }
   }
   delete publishdlg;
+}
+
+void CalendarView::uploadFreeBusy()
+{
+  KOGroupware::instance()->freeBusyManager()->publishFreeBusy();
 }
 
 void CalendarView::schedule(Scheduler::Method method, Incidence *incidence)

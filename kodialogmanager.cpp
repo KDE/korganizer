@@ -117,17 +117,15 @@ void KODialogManager::showOptionsDialog()
 
     QStringList modules;
 
-    modules.append( "configmain.desktop" );
-    modules.append( "configtime.desktop" );
-    modules.append( "configviews.desktop" );
-    modules.append( "configfonts.desktop" );
-    modules.append( "configcolors.desktop" );
-    modules.append( "configprinting.desktop" );
-    modules.append( "configgroupscheduling.desktop" );
-    modules.append( "configgroupautomation.desktop" );
-    // TODO: Remove this check
-    if( KOPrefs::instance()->mUseGroupwareCommunication )
-      modules.append( "configfreebusy.desktop" );
+    modules.append( "korganizer_configmain.desktop" );
+    modules.append( "korganizer_configtime.desktop" );
+    modules.append( "korganizer_configviews.desktop" );
+    modules.append( "korganizer_configfonts.desktop" );
+    modules.append( "korganizer_configcolors.desktop" );
+    modules.append( "korganizer_configprinting.desktop" );
+    modules.append( "korganizer_configgroupscheduling.desktop" );
+    modules.append( "korganizer_configgroupautomation.desktop" );
+    modules.append( "korganizer_configfreebusy.desktop" );
 
     // add them all
     QStringList::iterator mit;

@@ -187,6 +187,11 @@ class BaseView : public QWidget
       Clear selection. The incidenceSelected signal is not emitted.
     */
     virtual void clearSelection() {}
+    
+    /**
+      Set the default start/end date/time for new events. Return true if anything was changed
+    */
+    virtual bool eventDurationHint(QDateTime &startDt, QDateTime &endDt, bool &allDay) { return false; }
 
   signals:
     void incidenceSelected( Incidence * );

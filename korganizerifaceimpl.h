@@ -1,8 +1,6 @@
 /*
-    This file is part of KOrganizer.
-
-    Copyright (c) 2002-2004 Klarälvdalens Datakonsult AB
-        <info@klaralvdalens-datakonsult.se>
+    This file is part of KOrganizer
+    Copyright (c) 2004  Bo Thorsen <bo@sonofthor.dk>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -16,7 +14,7 @@
 
     You should have received a copy of the GNU General Public License
     along with this program; if not, write to the Free Software
-    Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
     In addition, as a special exception, the copyright holders give
     permission to link the code of this program with any edition of
@@ -28,37 +26,46 @@
     your version of the file, but you are not obligated to do so.  If
     you do not wish to do so, delete this exception statement from
     your version.
-*/
-#ifndef KOGROUPWAREINCOMINGDIALOG_H
-#define KOGROUPWAREINCOMINGDIALOG_H
+ */
 
-#include "kogroupwareincomingdialog_base.h"
+#ifndef KORGANIZER_SHARED_H
+#define KORGANIZER_SHARED_H
 
-namespace KCal { class Incidence; }
+#include "korganizeriface.h"
+
+#include <qobject.h>
+
+class ActionManager;
 
 
-class KOGroupwareIncomingDialog : public KOGroupwareIncomingDialog_base
-{
-    Q_OBJECT
-  public:
-    KOGroupwareIncomingDialog( KCal::Incidence*, QWidget* parent = 0,
-                               const char* name = 0, bool modal = false,
-                               WFlags fl = 0 );
-    ~KOGroupwareIncomingDialog();
+class KOrganizerIfaceImpl : public QObject, virtual public KOrganizerIface {
+public:
+  KOrganizerIfaceImpl( ActionManager* mActionManager,
+                       QObject* parent=0, const char* name=0 );
+  ~KOrganizerIfaceImpl();
 
-    bool isAccepted() const { return mAccepted; }
-    bool isConditionallyAccepted() const { return mConditionallyAccepted; }
-    bool isDeclined() const { return mDeclined; }
+  bool openURL( QString url );
+  bool mergeURL( QString url );
+  void closeURL();
+  bool saveURL();
+  bool saveAsURL( QString url );
+  QString getCurrentURLasString() const;
 
-  protected slots:
-    void slotAcceptEvent();
-    void slotAcceptEventConditionally();
-    void slotDeclineEvent();
+  bool deleteEvent( QString uid );
+  bool eventRequest( QString request, QString receiver, QString iCal );
+  bool eventReply( QString iCal );
+  bool cancelEvent( QString iCal );
 
-  private:
-    bool mAccepted;
-    bool mConditionallyAccepted;
-    bool mDeclined;
+  // These are supposed to be moved to the upcoming HTML
+  // body part formatter plugin
+  QString formatICal( QString iCal );
+  QString formatTNEF( QByteArray tnef );
+  QString msTNEFToVPart( QByteArray tnef );
+
+private:
+  ActionManager* mActionManager;
 };
 
-#endif
+
+#endif // KORGANIZER_SHARED_H
+

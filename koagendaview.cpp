@@ -483,10 +483,11 @@ KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name) :
                         SLOT(newTimeSpanSelected(int,int,int,int)));
   connect(mAllDayAgenda,SIGNAL(newTimeSpanSignal(int,int,int,int)),
                         SLOT(newTimeSpanSelectedAllDay(int,int,int,int)));
-  // No need to call updateView when just the selection changed. This prevents
-  // the whole agenda from being rebuild, and so reduces the flicker.
-//  connect(mAgenda,SIGNAL(newStartSelectSignal()),SLOT(updateView()));
-//  connect(mAllDayAgenda,SIGNAL(newStartSelectSignal()),SLOT(updateView()));
+
+  connect(mAgenda,SIGNAL(newStartSelectSignal()),
+          mAllDayAgenda,SLOT(clearSelection()));
+  connect(mAllDayAgenda,SIGNAL(newStartSelectSignal()),
+          mAgenda,SLOT(clearSelection()));
 
   connect(mAgenda,SIGNAL(editIncidenceSignal(Incidence *)),
                   SIGNAL(editIncidenceSignal(Incidence *)));
@@ -647,6 +648,16 @@ DateList KOAgendaView::selectedDates()
   if (qd.isValid()) selected.append(qd);
 
   return selected;
+}
+
+bool KOAgendaView::eventDurationHint(QDateTime &startDt, QDateTime &endDt, bool &allDay) {
+  if ( selectionStart().isValid() ) {
+    startDt = selectionStart();
+    endDt = selectionEnd();
+    allDay = selectedIsAllDay();
+    return true;
+  }
+  return false;
 }
 
 /** returns if only a single cell is selected, or a range of cells */
@@ -1228,14 +1239,16 @@ void KOAgendaView::clearSelection()
 void KOAgendaView::newTimeSpanSelectedAllDay(int gxStart, int gyStart,
                                        int gxEnd, int gyEnd)
 {
-  mTimeSpanInAllDay = true;
   newTimeSpanSelected(gxStart,gyStart,gxEnd,gyEnd);
+  mTimeSpanInAllDay = true;
 }
 
 void KOAgendaView::newTimeSpanSelected(int gxStart, int gyStart,
                                        int gxEnd, int gyEnd)
 {
   if (!mSelectedDates.count()) return;
+
+  mTimeSpanInAllDay = false;
 
   QDate dayStart = mSelectedDates[gxStart];
   QDate dayEnd = mSelectedDates[gxEnd];

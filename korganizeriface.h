@@ -21,7 +21,7 @@
 #define KORGANIZERIFACE_H
 
 #include <dcopobject.h>
-#include <kurl.h>
+
 
 class KOrganizerIface : virtual public DCOPObject
 {
@@ -35,9 +35,16 @@ class KOrganizerIface : virtual public DCOPObject
     virtual QString getCurrentURLasString() const = 0;
     virtual bool deleteEvent(QString uid) = 0;
 
-    virtual bool eventRequest(QString request, QCString receiver,
-                              QString ical) = 0;
-    virtual bool eventReply(QString ical) = 0;
+    virtual bool eventRequest(QString request, QString receiver,
+                              QString iCal) = 0;
+    virtual bool eventReply(QString iCal) = 0;
+    virtual bool cancelEvent(QString iCal) = 0;
+
+    // These are supposed to be moved to the upcoming HTML
+    // body part formatter plugin
+    virtual QString formatICal(QString iCal) = 0;
+    virtual QString formatTNEF(QByteArray tnef) = 0;
+    virtual QString msTNEFToVPart(QByteArray tnef) = 0;
 };
 
 #endif

@@ -450,6 +450,19 @@ void MonthViewCell::updateConfig()
   mLabelSize = fm.size( 0, "30" ) +
                QSize( mLabel->frameWidth() * 2, mLabel->frameWidth() * 2 ) +
                QSize( 2, 2 );
+//  mStandardPalette = mOriginalPalette;
+  QColor bg = mStandardPalette.color( QPalette::Active, QColorGroup::Background );
+  int h,s,v;
+  bg.getHsv( &h, &s, &v );
+  if ( date().month() %2 == 0 ) {
+    if ( v < 128 ) {
+      bg = bg.light( 125 );
+    } else {
+      bg = bg.dark( 125 );
+    }
+  }
+  setPaletteBackgroundColor(bg);
+//  mStandardPalette.setColor( QColorGroup::Background, bg);*/
 
   mHolidayPalette = mStandardPalette;
   mHolidayPalette.setColor(QColorGroup::Foreground,
@@ -532,6 +545,7 @@ void MonthViewCell::cellClicked( QListBoxItem * )
 
 void MonthViewCell::contextMenu( QListBoxItem *item )
 {
+  mMonthView->setSelectedCell( this );
   if ( item ) {
     MonthViewItem *eventItem = static_cast<MonthViewItem *>( item );
     Incidence *incidence = eventItem->incidence();
@@ -641,6 +655,16 @@ DateList KOMonthView::selectedDates()
   }
 
   return selected;
+}
+
+bool KOMonthView::eventDurationHint(QDateTime &startDt, QDateTime &endDt, bool &allDay) {
+  if ( mSelectedCell ) {
+    startDt.setDate( mSelectedCell->date() );
+    endDt.setDate( mSelectedCell->date() );
+    allDay = true;
+    return true;
+  }
+  return false;
 }
 
 void KOMonthView::printPreview(CalPrinter *calPrinter, const QDate &fd,

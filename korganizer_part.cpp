@@ -31,6 +31,7 @@
 #include "resourceview.h"
 #include "aboutdata.h"
 #include "kocore.h"
+#include "korganizerifaceimpl.h"
 
 #include "kalarmd/alarmdaemoniface_stub.h"
 
@@ -80,6 +81,7 @@ KOrganizerPart::KOrganizerPart( QWidget *parentWidget, const char *widgetName,
   mView = new CalendarView( canvas );
 
   mActionManager = new ActionManager( this, mView, this, this, true );
+  (void)new KOrganizerIfaceImpl( mActionManager, this, "IfaceImpl" );
 
   if ( pname == "kontact" ) {
     mActionManager->createCalendarResources();

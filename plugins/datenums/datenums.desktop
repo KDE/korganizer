@@ -52,4 +52,4 @@ Name[zh_TW]=Calendars 日期數字外掛程式
 Name[zu]=Izinamba zezinsuku zeplagi zamaKhalenda
 Type=Service
 ServiceTypes=Calendar/Plugin,Calendar/Decoration
-X-KDE-KOrganizer-HasSettings=false
+X-KDE-KOrganizer-HasSettings=true

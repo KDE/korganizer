@@ -120,10 +120,10 @@ KOPrefsDialogMain::KOPrefsDialogMain( QWidget *parent, const char *name )
   topLayout->addMultiCellWidget(mailClientGroup->groupBox(),11,11,0,1);
 
   // TODO: Readd this switch
-//   KPrefsWidBool *useGroupwareBool =
-//       addWidBool( KOPrefs::instance()->useGroupwareCommunicationItem(),
-// 		  topFrame );
-//   topLayout->addMultiCellWidget(useGroupwareBool->checkBox(),12,12,0,1);
+  KPrefsWidBool *useGroupwareBool =
+      addWidBool( KOPrefs::instance()->useGroupwareCommunicationItem(),
+		  topFrame );
+  topLayout->addMultiCellWidget(useGroupwareBool->checkBox(),12,12,0,1);
   // TODO: This radio button should only be available when KMail is chosen
 //   connect(thekmailradiobuttonupthere,SIGNAL(toggled(bool)),
 //           useGroupwareBool->checkBox(), SLOT(enabled(bool)));

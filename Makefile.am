@@ -7,6 +7,7 @@ INCLUDES = \
   -I$(srcdir)/kdgantt \
   -I$(top_srcdir)/libkdepim \
   -I$(top_srcdir)/mimelib \
+  -I$(top_srcdir)/ktnef \
   -I$(top_srcdir) \
   $(all_includes)
 
@@ -47,12 +48,13 @@ lib_LTLIBRARIES = libkorganizer.la libkorganizer_eventviewer.la
 
 libkorganizer_la_LDFLAGS = $(all_libraries) $(KDE_RPATH) -version-info 1:0
 libkorganizer_la_LIBADD  = $(LIB_KPARTS) $(LIB_KFILE) \
-                           -lkdeprint -lkabc -lkutils \
-                           $(top_builddir)/libkcal/libkcal.la \
-                           $(top_builddir)/libkdepim/libkdepim.la \
-                           libkorganizer_eventviewer.la \
-                           $(top_builddir)/kdgantt/libkdgantt.la \
-                           $(top_builddir)/korganizer/knewstuff/libknewstuff.la
+	-lkdeprint -lkabc -lkutils \
+	$(top_builddir)/libkcal/libkcal.la \
+	$(top_builddir)/libkdepim/libkdepim.la \
+	libkorganizer_eventviewer.la \
+	$(top_builddir)/kdgantt/libkdgantt.la \
+	$(top_builddir)/korganizer/knewstuff/libknewstuff.la \
+	$(top_builddir)/ktnef/lib/libktnef.la
 libkorganizer_la_COMPILE_FIRST = kofilterview_base.ui \
 	outgoingdialog_base.ui \
 	incomingdialog_base.ui \
@@ -99,7 +101,9 @@ libkorganizer_la_SOURCES =  outgoingdialog_base.ui \
         koprefs_base.kcfgc \
         koincidencetooltip.cpp aboutdata.cpp \
         cellitem.cpp \
-        resourceimportdialog.cpp
+        resourceimportdialog.cpp \
+	korganizerifaceimpl.cpp \
+        freebusymanager.cpp
 
 
 libkorganizer_eventviewer_la_LDFLAGS = $(all_libraries) $(KDE_RPATH) \
@@ -134,7 +138,7 @@ noinst_HEADERS = komonthview.h \
         koeventview.h statusdialog.h customlistviewitem.h \
         alarmclient.h \
         navigatorbar.h kogroupware.h kogroupwareincomingdialog.h \
-	koincidencetooltip.h
+	koincidencetooltip.h korganizerifaceimpl.h
 
 tip_DATA = tips
 tipdir = $(kde_datadir)/korganizer
@@ -142,7 +146,7 @@ tipdir = $(kde_datadir)/korganizer
 kde_bin_SCRIPTS = ical2vcal korganizerIn
 
 rcdir = $(kde_datadir)/korganizer
-rc_DATA = korganizerui.rc korganizergsui.rc
+rc_DATA = korganizerui.rc
 
 partdir   = $(kde_datadir)/korganizer
 part_DATA = korganizer_part.rc
@@ -162,10 +166,14 @@ xdg_apps_DATA = korganizer.desktop
 
 kde_kcfg_DATA = korganizer.kcfg
 
-kde_services_DATA =  configmain.desktop configtime.desktop \
-                     configviews.desktop configcolors.desktop \
-                     configfonts.desktop configgroupscheduling.desktop \
-                     configgroupautomation.desktop configfreebusy.desktop \
-                     webcal.protocol
+kde_services_DATA = korganizer_configmain.desktop \
+                    korganizer_configtime.desktop \
+                    korganizer_configviews.desktop \
+                    korganizer_configcolors.desktop \
+                    korganizer_configfonts.desktop \
+                    korganizer_configgroupscheduling.desktop \
+                    korganizer_configgroupautomation.desktop \
+                    korganizer_configfreebusy.desktop \
+                    webcal.protocol
 
 include ../admin/Doxyfile.am

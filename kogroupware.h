@@ -4,7 +4,8 @@
   Requires the Qt and KDE widget libraries, available at no cost at
   http://www.trolltech.com and http://www.kde.org respectively
 
-  Copyright (c) 2002 Klarälvdalens Datakonsult AB
+  Copyright (c) 2002-2004 Klarälvdalens Datakonsult AB
+        <info@klaralvdalens-datakonsult.se>
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -21,9 +22,16 @@
   Foundation, Inc., 59 Temple Place - Suite 330, Boston,
   MA  02111-1307, USA.
 
-  As a special exception, permission is given to link this program
-  with any edition of Qt, and distribute the resulting executable,
-  without including the source code for Qt in the source distribution.
+  In addition, as a special exception, the copyright holders give
+  permission to link the code of this program with any edition of
+  the Qt library by Trolltech AS, Norway (or with modified versions
+  of Qt that use the same license as Qt), and distribute linked
+  combinations including the two.  You must obey the GNU General
+  Public License in all respects for all of the code used other than
+  Qt.  If you modify this file, you may extend this exception to
+  your version of the file, but you are not obligated to do so.  If
+  you do not wish to do so, delete this exception statement from
+  your version.
 */
 
 #ifndef KOGROUPWARE_H
@@ -43,36 +51,16 @@ class Calendar;
 class Event;
 }
 class CalendarView;
-class KOGroupware;
-
-/**
- * Class for downloading FreeBusy Lists
- */
-class FBDownloadJob : public QObject {
-  Q_OBJECT
-public:
-  FBDownloadJob( const QString& email, const KURL& url, KOGroupware* kogroupware, const char* name = 0 );
-
-  virtual ~FBDownloadJob();
-protected slots:
-  void slotResult( KIO::Job* );
-  void slotData(  KIO::Job*, const QByteArray &data );
-signals:
-  void fbDownloaded( const QString&, FreeBusy*);
-
-private:
-  KOGroupware* mKogroupware;
-  QString  mEmail;
-
-  QCString mFBData;
-};
+class FreeBusyManager;
 
 class KOGroupware : public QObject
 {
-  Q_OBJECT
-public:
+    Q_OBJECT
+  public:
     static KOGroupware* create( CalendarView*, KCal::Calendar* );
     static KOGroupware* instance();
+
+    FreeBusyManager *freeBusyManager();
 
     /** Send iCal messages after asking the user
          Returns false if the user cancels the dialog, and true if the
@@ -87,7 +75,7 @@ public:
     // Event initiated by somebody else, coming into KO from KM, returning
     // resulting state
     bool incomingEventRequest( const QString& request,
-                               const QCString& receiver,
+                               const QString& receiver,
                                const QString& vCalIn );
     void incomingResourceRequest( const QValueList<QPair<QDateTime, QDateTime> >& busy,
                                   const QCString& resource,
@@ -101,32 +89,27 @@ public:
     // Answer to invitation
     bool incidenceAnswer( const QString& vCal );
 
-    // END OF THE ACTUAL KM/KO API
+    // Cancel an invitation
+    bool cancelIncidence( const QString& iCal );
 
-    // KOrganizer publishes the free/busy list
-    void publishFreeBusy();
+    // These are supposed to be moved to the upcoming HTML
+    // body part formatter plugin
+    // Format an iCal as an HTML file
+    QString formatICal( const QString& iCal );
+    // Format a TNEF attachment to an HTML mail
+    QString formatTNEF( const QByteArray& tnef );
+    // Transform a TNEF attachment to an iCal or vCard
+    QString msTNEFToVPart( const QByteArray& tnef );
 
-    // Get the free/busy list as a string
-    QString getFreeBusyString();
-
-    /** KOrganizer downloads somebody else's free/busy list
-        The call is asynchronous, and upon download, the
-        receivers slot specified by member will be called.
-        The slot should be of type "member(const QString&, KCal::FreeBusy*)"
-
-        Return true if a download is initiated, and false otherwise
-    */
-  /*KCal::FreeBusy**/ bool downloadFreeBusyData( const QString& email, QObject* receiver, const char* member );
-    KCal::FreeBusy* parseFreeBusy( const QCString& data );
-
-protected:
+  protected:
     KOGroupware( CalendarView*, KCal::Calendar* );
 
-private:
-    static KOGroupware* mInstance;
+  private:
+    static KOGroupware *mInstance;
     KCal::ICalFormat mFormat;
-    CalendarView* mView;
-    KCal::Calendar* mCalendar;
+    CalendarView *mView;
+    KCal::Calendar *mCalendar;
+    FreeBusyManager *mFreeBusyManager;
 };
 
 #endif

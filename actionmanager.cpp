@@ -475,16 +475,24 @@ void ActionManager::initActions()
   action->setEnabled(false);
   connect(mCalendarView,SIGNAL(groupEventsSelected(bool)),
           action,SLOT(setEnabled(bool)));
-  action = new KAction(i18n("Publish Free Busy Information"),0,
-                       mCalendarView,SLOT(schedule_publish_freebusy()),
-                       mACollection,"publish_freebusy");
-  action->setEnabled(true);
+
+  action = new KAction( i18n("Mail Free Busy Information"), 0,
+                        mCalendarView, SLOT( mailFreeBusy() ),
+                        mACollection, "mail_freebusy" );
+  action->setEnabled( true );
+
+  action = new KAction( i18n("Upload Free Busy Information"), 0,
+                        mCalendarView, SLOT( uploadFreeBusy() ),
+                        mACollection, "upload_freebusy" );
+  action->setEnabled( true );
+
 /*  action = new KAction(i18n("Decline Counter"),0,
                        mCalendarView,SLOT(schedule_declinecounter()),
                        mACollection,"declinecounter");
   connect(mCalendarView,SIGNAL(eventsSelected(bool)),
           action,SLOT(setEnabled(bool)));
 */
+
   if ( !mIsPart ) {
       action = new KAction(i18n("Addressbook"),"contents",0,
                            mCalendarView,SLOT(openAddressbook()),
@@ -1139,23 +1147,30 @@ QString ActionManager::getCurrentURLasString() const
   return mURL.url();
 }
 
-bool ActionManager::deleteEvent(QString uid)
+bool ActionManager::deleteEvent( const QString& uid )
 {
   return mCalendarView->deleteEvent(uid);
 }
 
-bool ActionManager::eventRequest(QString request, QCString receiver,
-                                 QString ical)
+bool ActionManager::eventRequest( const QString& request,
+				  const QString& receiver,
+				  const QString& ical)
 {
   if( !KOGroupware::instance() ) return false;
   return KOGroupware::instance()->incomingEventRequest(request, receiver,
                                                        ical);
 }
 
-bool ActionManager::eventReply( QString ical )
+bool ActionManager::eventReply( const QString& ical )
 {
   if( !KOGroupware::instance() ) return false;
   return KOGroupware::instance()->incidenceAnswer( ical );
+}
+
+bool ActionManager::cancelEvent( const QString& ical )
+{
+  if( !KOGroupware::instance() ) return false;
+  return KOGroupware::instance()->cancelIncidence( ical );
 }
 
 void ActionManager::configureDateTimeFinished(KProcess *proc)

@@ -40,6 +40,7 @@
 #include <kdebug.h>
 #include <knumvalidator.h>
 #include <kcalendarsystem.h>
+#include <kmessagebox.h>
 
 #include <libkcal/event.h>
 
@@ -876,6 +877,7 @@ void KOEditorRecurrence::setDateTimes( QDateTime start, QDateTime end )
 {
 //  kdDebug(5850) << "KOEditorRecurrence::setDateTimes" << endl;
 
+  mEventStartDt = start;
   mRecurrenceRange->setDateTimes( start, end );
   mDaily->setDateTimes( start, end );
   mWeekly->setDateTimes( start, end );
@@ -1100,7 +1102,16 @@ void KOEditorRecurrence::setDateTimeStr( const QString &str )
 
 bool KOEditorRecurrence::validateInput()
 {
-  // Check input here
+  // Check input here.
+  // Check if the recurrence (if set to end at a date) is scheduled to end before the event starts.
+  if ( mEnabledCheck->isChecked() && (mRecurrenceRange->duration()==0) && 
+       mEventStartDt.isValid() && ((mRecurrenceRange->endDate())<mEventStartDt.date()) ) {
+    KMessageBox::sorry( 0,
+      i18n("The end date '%1' of the recurrence has to be a before the start date '%2' of the event.")
+      .arg( KGlobal::locale()->formatDate( mRecurrenceRange->endDate() ) )
+      .arg( KGlobal::locale()->formatDate( mEventStartDt.date() ) ) );
+    return false;
+  }
 
   return true;
 }

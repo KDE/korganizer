@@ -28,19 +28,20 @@
 
 class QLabel;
 class KDGanttView;
-class GanttItem;
+class KDGanttViewItem;
+class FreeBusyItem;
 namespace KCal {
   class FreeBusy;
   class Attendee;
 };
 
 
-class KOEditorGantt : public QWidget
+class KOEditorFreeBusy : public QWidget
 {
     Q_OBJECT
   public:
-    KOEditorGantt( int spacing=8, QWidget* parent=0, const char* name=0 );
-    virtual ~KOEditorGantt();
+    KOEditorFreeBusy( int spacing=8, QWidget* parent=0, const char* name=0 );
+    virtual ~KOEditorFreeBusy();
 
     void setUpdateEnabled( bool enabled );
     bool updateEnabled() const;
@@ -58,7 +59,7 @@ class KOEditorGantt : public QWidget
   public slots:
     void slotInsertFreeBusy( const QString& email, KCal::FreeBusy* fb );
 
-    void setDateTimes(QDateTime, QDateTime );
+    void setDateTimes( QDateTime, QDateTime );
 
   protected slots:
     void slotUpdateGanttView( QDateTime, QDateTime );
@@ -67,12 +68,17 @@ class KOEditorGantt : public QWidget
     void slotZoomToTime();
     void slotPickDate();
 
+    void reload();
+
+  private slots:
+    void updateFreeBusyData( KDGanttViewItem * );
+
   private:
-    void updateFreeBusyData( KCal::Attendee* );
+    void updateFreeBusyData( KCal::Attendee * );
 
     bool findFreeSlot( QDateTime& dtFrom, QDateTime& dtTo );
     bool tryDate( QDateTime& tryFrom, QDateTime& tryTo );
-    bool tryDate( GanttItem* attendee,
+    bool tryDate( FreeBusyItem* attendee,
                   QDateTime& tryFrom, QDateTime& tryTo );
     void updateStatusSummary();
 

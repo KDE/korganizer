@@ -58,6 +58,8 @@ KOAlarmClient::KOAlarmClient( QObject *parent, const char *name )
   kdDebug(5890) << "TimeZone: " << tz << endl;
 
   mCalendar = new CalendarResources( tz );
+  mCalendar->readConfig();
+  mCalendar->load();
 
   connect( &mCheckTimer, SIGNAL( timeout() ), SLOT( checkAlarms() ) );
 
@@ -111,11 +113,11 @@ void KOAlarmClient::checkAlarms()
   cfg->sync();
 }
 
-void KOAlarmClient::suspend( int minutes )
+void KOAlarmClient::suspend( int seconds )
 {
 //  kdDebug(5890) << "KOAlarmClient::suspend() " << minutes << " minutes" << endl;
   connect( &mSuspendTimer, SIGNAL( timeout() ), SLOT( showAlarmDialog() ) );
-  mSuspendTimer.start( 1000 * 60 * minutes, true );
+  mSuspendTimer.start( 1000 * seconds, true );
 }
 
 void KOAlarmClient::showAlarmDialog()

@@ -43,6 +43,7 @@ AboutData::AboutData()
   addAuthor("Preston Brown",I18N_NOOP("Original Author"),
             "pbrown@kde.org");
   addCredit("Richard Apodaca");
+  addCredit("Jan-Pascal van Best");
   addCredit("Laszlo Boloni");
   addCredit("Barry Benowitz");
   addCredit("Christopher Beard");
@@ -51,15 +52,20 @@ AboutData::AboutData()
   addCredit("Neil Hart");
   addCredit("Declan Houlihan");
   addCredit("Hans-Jürgen Husel");
+  addCredit("Tim Jansen");
   addCredit("Reinhold Kainhofer");
   addCredit("Christian Kirsch");
+  addCredit("Tobias König");
+  addCredit("Martin Koller");
   addCredit("Uwe Koloska");
   addCredit("Glen Parker");
   addCredit("Dan Pilone");
   addCredit("Roman Rohr");
+  addCredit("Don Sanders");
   addCredit("Günter Schwann");
   addCredit("Herwin Jan Steehouwer");
   addCredit("Nick Thompson");
+  addCredit("Bo Thorsen");
   addCredit("Larry Wright");
   addCredit("Thomas Zander");
   addCredit("Fester Zigterman");

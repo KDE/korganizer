@@ -318,6 +318,8 @@ KCal::CalendarResources *KOCore::calendarResources()
 {
   if ( !mCalendarResources ) {
     mCalendarResources = new KCal::CalendarResources( KOPrefs::instance()->mTimeZoneId );
+    mCalendarResources->readConfig();
+    mCalendarResources->load();
 
     KCal::CalendarResourceManager *manager = mCalendarResources->resourceManager();
 

@@ -120,12 +120,15 @@ class ActionManager : public QObject, public KCalendarIface
     /** Get current URL as QString */
     QString getCurrentURLasString() const;
     /** Delete event with the given unique id from current calendar. */
-    virtual bool deleteEvent( QString uid );
+    virtual bool deleteEvent( const QString& uid );
 
     /** Handle incoming event scheduling */
-    bool eventRequest( QString request, QCString receiver, QString ical );
+    bool eventRequest( const QString& request, const QString& receiver,
+		       const QString& ical );
     /** Handle event replies */
-    bool eventReply( QString ical );
+    bool eventReply( const QString& ical );
+    /** Handle cancelling an event */
+    bool cancelEvent( const QString& ical );
 
     //// Implementation of the DCOP interface
     virtual ResourceRequestReply resourceRequest( const QValueList<QPair<QDateTime, QDateTime> >& busy,

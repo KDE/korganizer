@@ -633,6 +633,7 @@ void CalPrintBase::drawDayBox(QPainter &p, const QDate &qd,
     dayNumStr = QString::number( qd.day() );
   }
 
+  p.eraseRect( x, y, width, height );
   p.drawRect( x, y, width, height );
   // p.fillRect( x+1, y+1, width-2,height, QBrush(Dense7Pattern) );
   p.drawRect( x, y, width, mSubHeaderHeight );
@@ -776,6 +777,9 @@ void CalPrintBase::drawMonth(QPainter &p, const QDate &qd, bool weeknumbers,
   int yoffset = mSubHeaderHeight;
   int xoffset = 0;
   QDate monthDate(QDate(qd.year(), qd.month(), 1));
+  QDate monthFirst(monthDate);
+  QDate monthLast(monthDate.addMonths(1).addDays(-1));
+  
 
   int weekdayCol = weekdayColumn( monthDate.dayOfWeek() );
   monthDate = monthDate.addDays(-weekdayCol);
@@ -802,10 +806,21 @@ void CalPrintBase::drawMonth(QPainter &p, const QDate &qd, bool weeknumbers,
   drawDaysOfWeek( p, monthDate, monthDate.addDays(6), x+xoffset, y, width-xoffset, mSubHeaderHeight );
   int cellWidth = (width-xoffset) / 7;
 
+  QColor back = p.backgroundColor();
+  bool darkbg = false;
   for (int row = 0; row < rows; row++) {
     for (int col = 0; col < 7; col++) {
+      // show days from previous/next month with a grayed background
+      if ( (monthDate < monthFirst) || (monthDate > monthLast) ) {
+        p.setBackgroundColor( back.dark( 120 ) );
+        darkbg = true;
+      }
       drawDayBox(p, monthDate, x+xoffset+col*cellWidth, y+yoffset+row*cellHeight,
                  cellWidth, cellHeight);
+      if ( darkbg ) {
+        p.setBackgroundColor( back );
+        darkbg = false;
+      }
       monthDate = monthDate.addDays(1);
     }
   }

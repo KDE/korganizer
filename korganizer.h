@@ -51,7 +51,6 @@
 #include <kparts/mainwindow.h>
 
 #include "calendarview.h"
-#include "korganizeriface.h"
 
 class KTempFile;
 class KRecentFilesAction;
@@ -78,8 +77,7 @@ typedef KParts::MainWindow KPartsMainWindow;
   @short constructs a new main window for korganizer
   @author Preston Brown
 */
-class KOrganizer : public KPartsMainWindow, virtual public KOrganizerIface,
-                   public KOrgMainWindow
+class KOrganizer : public KPartsMainWindow, public KOrgMainWindow
 {
     Q_OBJECT
   public:
@@ -109,22 +107,6 @@ class KOrganizer : public KPartsMainWindow, virtual public KOrganizerIface,
     bool saveAsURL( const KURL & kurl );
     /** Get current URL */
     KURL getCurrentURL() const;
-
-    /** Open calendar file from URL */
-    bool openURL( QString url );
-    /** Open calendar file from URL */
-    bool mergeURL( QString url );
-    /** Save calendar file to URL */
-    bool saveAsURL( QString url );
-    /** Close calendar file opened from URL */
-    void closeURL();
-    /** Get current URL as QString */
-    QString getCurrentURLasString() const;
-    /** Delete event with the given unique id from current calendar. */
-    virtual bool deleteEvent( QString uid );
-
-    bool eventRequest( QString request, QCString receiver, QString ical );
-    bool eventReply( QString ical );
 
     virtual KXMLGUIFactory *mainGuiFactory() { return factory(); }
     virtual KXMLGUIClient *mainGuiClient() { return this; }

@@ -17,11 +17,12 @@
     Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 */
 
-// $Id$
-
 #include "datenums.h"
 #include "koglobals.h"
+#include <kconfig.h>
+#include <kstandarddirs.h>
 
+#include "configdialog.h"
 #include <kcalendarsystem.h>
 
 class DatenumsFactory : public CalendarDecorationFactory {
@@ -36,10 +37,37 @@ extern "C" {
   }
 }
 
+Datenums::Datenums()
+{
+  KConfig config( locateLocal( "config", "korganizerrc" ));
+  config.setGroup("Calendar/DateNum Plugin");
+  mDateNum = config.readNumEntry( "ShowDayNumbers", 0 );
+}
+
+void Datenums::configure(QWidget *parent)
+{
+  ConfigDialog *dlg = new ConfigDialog(parent);
+  dlg->exec();
+  delete dlg;
+}
+
 
 QString Datenums::shortText(const QDate &date)
 {
-  return QString::number(KOGlobals::self()->calendarSystem()->dayOfYear(date));
+  int doy = KOGlobals::self()->calendarSystem()->dayOfYear(date);
+  switch (mDateNum) {
+    case 1: // only days until end of year
+        return QString::number( KOGlobals::self()->calendarSystem()->daysInYear(date) - doy );
+        break;
+    case 2: // both day of year and days till end of year
+        return i18n("dayOfYear / daysTillEndOfYear", "%1 / %2").arg( doy )
+               .arg(KOGlobals::self()->calendarSystem()->daysInYear(date) - doy);
+        break;
+    case 0: // only day of year
+    default:
+        return QString::number( doy );
+  }
+  return QString::number( doy );
 }
 
 QString Datenums::info()

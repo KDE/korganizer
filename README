@@ -2,13 +2,94 @@
                        | K   O R G A N I Z E R |
                        +-----------------------+
 
-                            version pre3.2
+                            version 3.3 pre
 
                        http://korganizer.kde.org
 
-* Next release: 3.2 (January 2004)
+Next release: KDEPIM-3.3 (something like May 2004)
 
-QUICK NOTES ON WHAT'S NEW IN THIS RELEASE:
+QUICK NOTES ON WHAT'S NEW IN THE DIFFERENT VERSIONS:
+
+* Official 3.2 release (January 2004)
+
+  - New Features:
+    - Support for multiple calendars and todo lists. Korganizer can now
+      transparently merge calendar data from different files or other calendar
+      data sources for example calendars on the web. They can conveniently
+      activated, deactivated, added and removed from the graphical user
+      interface.
+    - Kontact integration. KOrganizer now is fully integrated with Kontact, the
+      complete KDE personal information management application. Within Kontact
+      some additional features are available like conversion of mails to events
+      or todos by drag and drop.
+    - New storage model: The notion of an active calendar was replaced by a
+      persistant calendar. The user doesn't have to take care of loading or
+      saving the calendar. Changes are immediately saved to disk. If the
+      calendar is changed externally it is automatically loaded and updated in
+      the view. A locking mechansim handles concurrent access to the calendar.
+    - Undo and Redo. KOrganizer now supports unlimited undo and redo.
+    - Todo integration with agenda view. Todos are shown in the week and day
+      views. Todos can be converted to events by dragging from the todo list and
+      dropping on the agenda view.
+    - Attachements for events and todos. References to web pages, local files or
+      mails can be attached to events and todos. The attached data can easily be
+      accessed by a single click from the event and todo views as well as the
+      summary view or the editors.
+    - Quick todo entry. A special input field allows to quickly create a todo
+      without needing to open an editor. This is especially handy for creating
+      multiple todos in a row.
+    - Quick event entry. There are several new ways to create events from the
+      agenda view: Per type-ahead events can be created by selecting a time
+      range and then simply starting to type. An editor will be opened and the
+      type text will be go into the summary input line. Optionally the event
+      editor can be opened when the time selection is finished and in addition
+      to the usual menu and toolbar entries there are key bindings and a context
+      menu to start the editor dialog.
+    - Plugin for Jewish calendar dates. When enabled this plugin shows the
+      Jewish calendar dates for each day in the calendar view.
+    - Improved print support. The print dialogs were rewritten. Printing now
+      supports colors and overlapping events.
+
+  - User interface polishing. The visual appearance of KOrganizer was improved
+    by a rewrite of the agenda view rendering and other enhancements like the
+    text fade-out when there isn't enough space to display the full text or the
+    graphical display of the completion state of todos. Many usability
+    improvements were incoreporated, like support for moving multi-day events in
+    the agenda view by dragging with the mouse, more complete and consistent key
+    bindings and context menus, better menu structure and more concise texts.
+    Some of these improvements were stimulated by external usability studies.
+
+  - Bug fixes. Countless bug fixes went into this version, one of them being a
+    fix for the session management which closes the, according to Bugzilla, most
+    hated bug of KOrganizer 3.1.
+
+  - Better performance. The speed of calendar loading and saving was
+    significantly improved and memory consumption of calendars was decreased.
+
+  - Architecture and framework:
+     - KOrganizer makes use of the KDE resource framework KResources which
+       provides uniform management of calendar, addressbook and similar
+       resources including generic ways to handle locking and change
+       notification. This also provides a plugin interface for adding resources
+       which makes it possible to easily extend Korganizer for example to access
+       groupware servers or other ways to store calendar data. 
+     - KOrganizer configuration is now based on KConfig XT. That means that
+       there is an abstract XML based description of the configuration which is
+       used for generating the needed code to access the configuration data and
+       serves as base for external configuration tools.
+     - Simplification of alarm daemon. KOrganizer doesn't use kalarmd anymore,
+       it only needs the korgac daemon which also rpovides the system tray icon
+       for being able to notify about alarms. Run control of the alarm daemon
+       also was simplified, it's now all done by the context menu of the system
+       tray icon and doesn't need the control center anymore.
+     - The configuration dialog is now based on kcontrol modules. This is a
+       prerequisite for integrating the configuration within Kontact.
+     - KMail now directly supports transfer of invitations and other calendar
+       attachments to KOrganizer. This supercedes the korganizerIn script
+       solution.
+     - Accessing the calendar from the command line is now exclusively handled
+       by a native command line application, konsolekalendar.
+
 
 * Official 3.1 release (January 2003)
 

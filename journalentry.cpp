@@ -93,6 +93,7 @@ Journal *JournalEntry::journal() const
 void JournalEntry::setDirty()
 {
   mDirty = true;
+  writeJournal();
 //  kdDebug(5850) << "JournalEntry::setDirty()" << endl;
 }
 
@@ -100,6 +101,7 @@ void JournalEntry::clear()
 {
   mJournal = 0;
   mEditor->setText("");
+  writeJournal();
 }
 
 bool JournalEntry::eventFilter( QObject *o, QEvent *e )

@@ -16,26 +16,29 @@
     along with this program; if not, write to the Free Software
     Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 */
-#ifndef KORG_DATENUMS_H
-#define KORG_DATENUMS_H
+#ifndef CONFIGDIALOG_H
+#define CONFIGDIALOG_H
 
-#include <qstring.h>
+#include <kdialogbase.h>
 
-#include <calendar/calendardecoration.h>
+class QButtonGroup;
 
-using namespace KOrg;
-
-class Datenums : public CalendarDecoration {
+class ConfigDialog : public KDialogBase
+{
+    Q_OBJECT
   public:
-    Datenums();
-    ~Datenums() {}
-    
-    void configure(QWidget *parent);
-    QString shortText(const QDate &);
-    
-    QString info();
+    ConfigDialog(QWidget *parent=0);
+    virtual ~ConfigDialog();
+
   protected:
-    int mDateNum;
+    void load();
+    void save();
+
+  protected slots:
+    void slotOk();
+
+  private:
+    QButtonGroup *mDayNumGroup;
 };
 
 #endif

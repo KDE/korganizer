@@ -162,7 +162,7 @@ void KOAttendeeListView::dropEvent( QDropEvent *e )
 
 
 KOEditorDetails::KOEditorDetails (int spacing,QWidget* parent,const char* name)
-  : QWidget( parent, name), mDisableItemUpdate( false ), mGantt( 0 )
+  : QWidget( parent, name), mDisableItemUpdate( false ), mFreeBusy( 0 )
 {
   QGridLayout *topLayout = new QGridLayout(this);
   topLayout->setSpacing(spacing);
@@ -281,7 +281,7 @@ void KOEditorDetails::removeAttendee()
     aItem->data()->uid());
   mdelAttendees.append(delA);
 
-  if( mGantt ) mGantt->removeAttendee( aItem->data() );
+  if ( mFreeBusy ) mFreeBusy->removeAttendee( aItem->data() );
   delete aItem;
 
   updateAttendeeInput();
@@ -293,7 +293,14 @@ void KOEditorDetails::openAddressBook()
 #ifndef KORG_NOKABC
   KABC::Addressee a = KABC::AddresseeDialog::getAddressee(this);
   if (!a.isEmpty()) {
-    insertAttendee( new Attendee( a.realName(), a.preferredEmail(),false,KCal::Attendee::NeedsAction,KCal::Attendee::ReqParticipant,a.uid()) );
+    // If this is myself, I don't want to get a response but instead
+    // assume I will be available
+    bool myself = a.preferredEmail() == KOPrefs::instance()->email();
+    KCal::Attendee::PartStat partStat =
+      myself ? KCal::Attendee::Accepted : KCal::Attendee::NeedsAction;
+    insertAttendee( new Attendee( a.realName(), a.preferredEmail(),
+                                  !myself, partStat,
+                                  KCal::Attendee::ReqParticipant, a.uid() ) );
   }
 #endif
 }
@@ -330,7 +337,7 @@ void KOEditorDetails::insertAttendee(Attendee *a)
 {
   AttendeeListItem *item = new AttendeeListItem(a,mListView);
   mListView->setSelected( item, true );
-  if( mGantt ) mGantt->insertAttendee( a );
+  if( mFreeBusy ) mFreeBusy->insertAttendee( a );
 }
 
 void KOEditorDetails::setDefaults()
@@ -340,12 +347,12 @@ void KOEditorDetails::setDefaults()
 
 void KOEditorDetails::readEvent(Incidence *event)
 {
-  // Stop flickering in the gantt view (not sure if this is necessary)
-  bool block;
-  if( mGantt ) {
-    block = mGantt->updateEnabled();
-    mGantt->setUpdateEnabled( false );
-    mGantt->clearAttendees();
+  // Stop flickering in the free/busy view (not sure if this is necessary)
+  bool block = false;
+  if( mFreeBusy ) {
+    block = mFreeBusy->updateEnabled();
+    mFreeBusy->setUpdateEnabled( false );
+    mFreeBusy->clearAttendees();
   }
 
   mListView->clear();
@@ -358,8 +365,8 @@ void KOEditorDetails::readEvent(Incidence *event)
   mListView->setSelected( mListView->firstChild(), true );
   mOrganizerLabel->setText(i18n("Organizer: %1").arg(event->organizer()));
 
-  // Reinstate Gantt view updates
-  if( mGantt ) mGantt->setUpdateEnabled( block );
+  // Reinstate free/busy view updates
+  if( mFreeBusy ) mFreeBusy->setUpdateEnabled( block );
 }
 
 void KOEditorDetails::writeEvent(Incidence *event)
@@ -455,10 +462,10 @@ void KOEditorDetails::updateAttendeeItem()
   a->setStatus( Attendee::PartStat( mStatusCombo->currentItem() ) );
   a->setRSVP( mRsvpButton->isChecked() );
   aItem->updateItem();
-  if( mGantt ) mGantt->updateAttendee( a );
+  if ( mFreeBusy ) mFreeBusy->updateAttendee( a );
 }
 
-void KOEditorDetails::setGanttWidget( KOEditorGantt* gantt )
+void KOEditorDetails::setFreeBusyWidget( KOEditorFreeBusy *v )
 {
-  mGantt = gantt;
+  mFreeBusy = v;
 }

@@ -47,7 +47,7 @@
 #include "koeventeditor.h"
 
 KOEventEditor::KOEventEditor( Calendar *calendar, QWidget *parent ) :
-  KOIncidenceEditor( i18n("Edit Event"), calendar, parent ), mGantt( 0 )
+  KOIncidenceEditor( i18n("Edit Event"), calendar, parent )
 {
   mEvent = 0;
 }
@@ -63,35 +63,31 @@ void KOEventEditor::init()
   setupAttendeesTab();
   setupRecurrence();
   setupAttachmentsTab();
-
-  if( KOPrefs::instance()->mUseGroupwareCommunication ) {
-    setupGanttTab();
-    mDetails->setGanttWidget( mGantt );
-  }
+  setupGanttTab();
+  mDetails->setFreeBusyWidget( mFreeBusy );
 
   // Propagate date time settings to recurrence tab
-  connect(mGeneral,SIGNAL(dateTimesChanged(QDateTime,QDateTime)),
-          mRecurrence,SLOT(setDateTimes(QDateTime,QDateTime)));
-  connect(mGeneral,SIGNAL(dateTimeStrChanged(const QString &)),
-          mRecurrence,SLOT(setDateTimeStr(const QString &)));
-  if( mGantt )
-    connect(mGantt,SIGNAL(dateTimesChanged(QDateTime,QDateTime)),
-	    mRecurrence,SLOT(setDateTimes(QDateTime,QDateTime)));
+  connect( mGeneral, SIGNAL( dateTimesChanged( QDateTime, QDateTime ) ),
+           mRecurrence, SLOT( setDateTimes( QDateTime, QDateTime ) ) );
+  connect( mGeneral, SIGNAL( dateTimeStrChanged( const QString & ) ),
+           mRecurrence, SLOT( setDateTimeStr( const QString & ) ) );
+  connect( mFreeBusy, SIGNAL( dateTimesChanged( QDateTime, QDateTime ) ),
+	   mRecurrence, SLOT( setDateTimes( QDateTime, QDateTime ) ) );
 
   // Propagate date time settings to gantt tab and back
-  if( mGantt ) {
-    connect(mGeneral,SIGNAL(dateTimesChanged(QDateTime,QDateTime)),
-	    mGantt,SLOT(setDateTimes(QDateTime,QDateTime)));
-    connect(mGantt,SIGNAL(dateTimesChanged(QDateTime,QDateTime)),
-	    mGeneral,SLOT(setDateTimes(QDateTime,QDateTime)));
-  }
+  connect( mGeneral, SIGNAL( dateTimesChanged( QDateTime, QDateTime ) ),
+	   mFreeBusy, SLOT( setDateTimes( QDateTime, QDateTime ) ) );
+  connect( mFreeBusy, SIGNAL( dateTimesChanged( QDateTime, QDateTime ) ),
+	   mGeneral, SLOT( setDateTimes( QDateTime, QDateTime ) ) );
 
   // Category dialog
-  connect(mGeneral,SIGNAL(openCategoryDialog()),mCategoryDialog,SLOT(show()));
-  connect(mCategoryDialog,SIGNAL(categoriesSelected(const QString &)),
-          mGeneral,SLOT(setCategories(const QString &)));
+  connect( mGeneral, SIGNAL( openCategoryDialog() ),
+           mCategoryDialog, SLOT( show() ) );
+  connect( mCategoryDialog, SIGNAL( categoriesSelected( const QString & ) ),
+           mGeneral, SLOT( setCategories( const QString & ) ) );
 
-  connect(mGeneral,SIGNAL(focusReceivedSignal()),SIGNAL(focusReceivedSignal()));
+  connect( mGeneral, SIGNAL( focusReceivedSignal() ),
+           SIGNAL( focusReceivedSignal() ) );
 }
 
 void KOEventEditor::reload()
@@ -158,9 +154,9 @@ void KOEventEditor::setupRecurrence()
 
 void KOEventEditor::setupGanttTab()
 {
-  QFrame* frame = addPage( i18n("&Gantt") );
-  mGantt = new KOEditorGantt( spacingHint(), frame );
-  ( new QVBoxLayout( frame ) )->addWidget( mGantt );
+  QFrame* frame = addPage( i18n("&Free/Busy") );
+  mFreeBusy = new KOEditorFreeBusy( spacingHint(), frame );
+  ( new QVBoxLayout( frame ) )->addWidget( mFreeBusy );
 }
 
 void KOEventEditor::editEvent(Event *event)
@@ -263,9 +259,9 @@ bool KOEventEditor::processInput()
     mEvent = new Event;
     mEvent->setOrganizer( KOPrefs::instance()->email() );
     writeEvent( mEvent );
-    if( !KOPrefs::instance()->mUseGroupwareCommunication ||
-	KOGroupware::instance()->sendICalMessage( this, KCal::Scheduler::Request, mEvent ) ) {
-      mCalendar->addEvent( mEvent );
+    if( (!KOPrefs::instance()->mUseGroupwareCommunication ||
+        KOGroupware::instance()->sendICalMessage( this, KCal::Scheduler::Request, mEvent ) ) &&
+        mCalendar->addEvent( mEvent ) ) {
       emit eventAdded( mEvent );
     } else {
       delete mEvent;
@@ -329,7 +325,7 @@ void KOEventEditor::readEvent( Event *event, bool tmpl )
   mDetails->readEvent( event );
   mRecurrence->readEvent( event );
   mAttachments->readIncidence( event );
-  if( mGantt ) mGantt->readEvent( event );
+  if( mFreeBusy ) mFreeBusy->readEvent( event );
 
   // categories
   mCategoryDialog->setSelected( event->categories() );

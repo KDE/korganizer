@@ -164,6 +164,7 @@ class MonthViewCell : public QWidget
     QListBox *mItemList;
 
     QSize mLabelSize;
+//    QPalette mOriginalPalette;
     QPalette mHolidayPalette;
     QPalette mStandardPalette;
     QPalette mTodayPalette;
@@ -188,6 +189,8 @@ class KOMonthView: public KOEventView
 
     /** returns dates of the currently selected events */
     virtual DateList selectedDates();
+
+    virtual bool eventDurationHint(QDateTime &startDt, QDateTime &endDt, bool &allDay);
 
     virtual void printPreview(CalPrinter *calPrinter,
                               const QDate &, const QDate &);
@@ -229,6 +232,7 @@ class KOMonthView: public KOEventView
     int mWidthLongDayLabel;
 
     QDate mStartDate;
+    QDate mSelectedDate;
 
     MonthViewCell *mSelectedCell;
 

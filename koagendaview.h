@@ -149,6 +149,9 @@ class KOAgendaView : public KOEventView
 
     /** returns the currently selected events */
     virtual DateList selectedDates();
+    
+    /** return the default start/end date/time for new events   */
+    virtual bool eventDurationHint(QDateTime &startDt, QDateTime &endDt, bool &allDay);
 
     /** Remove all events from view */
     void clearView();

@@ -55,9 +55,9 @@ class KOAlarmClient : public QObject, virtual public AlarmClientIface
   public slots:
     /**
       Schedule the alarm dialog for redisplay after a specified number of
-      minutes.
+      seconds.
     */
-    void suspend( int minutes );
+    void suspend( int seconds );
 
   protected slots:
     void showAlarmDialog();

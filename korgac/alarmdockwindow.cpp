@@ -80,6 +80,9 @@ AlarmDockWindow::AlarmDockWindow( const char *name )
     quit->disconnect( SIGNAL( activated() ), qApp,
                       SLOT( closeAllWindows() ) );
   }
+  
+  QToolTip::add(this, i18n("KOrganizer reminder daemon (korgac)") );
+
 
   connect( this, SIGNAL( quitSelected() ), SLOT( slotQuit() ) );
 }

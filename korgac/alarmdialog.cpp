@@ -28,12 +28,14 @@
 #include <qfile.h>
 #include <qspinbox.h>
 #include <qlayout.h>
+#include <qpushbutton.h>
 
 #include <klocale.h>
 #include <kprocess.h>
 #include <kaudioplayer.h>
 #include <kdebug.h>
 #include <knotifyclient.h>
+#include <kcombobox.h>
 
 #include <libkcal/event.h>
 
@@ -45,8 +47,8 @@
 AlarmDialog::AlarmDialog( QWidget *parent, const char *name )
   : KDialogBase( Plain, WType_TopLevel | WStyle_Customize | WStyle_StaysOnTop |
                  WStyle_DialogBorder,
-                 parent, name, false, i18n("Alarm"), Ok | User1 | User2, User2,
-                 false, i18n("Suspend") )
+                 parent, name, false, i18n("Alarm"), Ok | User1 | User2/* | User3*/, User2/*3*/,
+                 false, i18n("Suspend"), i18n("Edit...") )
 {
   QWidget *topBox = plainPage();
   
@@ -66,11 +68,20 @@ AlarmDialog::AlarmDialog( QWidget *parent, const char *name )
   suspendBox->setSpacing( spacingHint() );
   topLayout->addWidget( suspendBox );
 
-  new QLabel( i18n("Suspend duration (minutes):"), suspendBox );
+  new QLabel( i18n("Suspend duration:"), suspendBox );
   mSuspendSpin = new QSpinBox( 1, 60, 1, suspendBox );
   mSuspendSpin->setValue( 5 );  // default suspend duration
   
-  showButton( User2, false );
+  mSuspendUnit = new KComboBox( suspendBox );
+  mSuspendUnit->insertItem( i18n("minute(s)") );
+  mSuspendUnit->insertItem( i18n("hour(s)") );
+  mSuspendUnit->insertItem( i18n("day(s)") );
+  mSuspendUnit->insertItem( i18n("week(s)") );
+  
+  connect( mSuspendSpin, SIGNAL( valueChanged(int) ), actionButton(User1), SLOT( setFocus() ) );
+  connect( mSuspendUnit, SIGNAL( activated(int) ), actionButton(User1), SLOT( setFocus() ) );
+  
+  showButton( User2/*3*/, false );
   
   setMinimumSize( 300, 200 );
 }
@@ -106,7 +117,21 @@ void AlarmDialog::slotOk()
 
 void AlarmDialog::slotUser1()
 {
-  emit suspendSignal(mSuspendSpin->value());
+  int unit=1;
+  switch (mSuspendUnit->currentItem()) {
+    case 3: // weeks
+      unit *=  7;
+    case 2: // days
+      unit *= 24;
+    case 1: // hours
+      unit *= 60;
+    case 0: // minutes
+      unit *= 60;
+    default:
+      break;
+  }
+    
+  emit suspendSignal( unit * mSuspendSpin->value() );
   accept();
 }
 

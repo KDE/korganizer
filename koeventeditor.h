@@ -37,7 +37,7 @@
 
 class SaveTemplateDialog;
 
-class KOEditorGantt;
+class KOEditorFreeBusy;
 
 using namespace KCal;
 
@@ -129,7 +129,7 @@ class KOEventEditor : public KOIncidenceEditor
 
     KOEditorGeneralEvent *mGeneral;
     KOEditorRecurrence   *mRecurrence;
-    KOEditorGantt        *mGantt;
+    KOEditorFreeBusy     *mFreeBusy;
 };
 
 #endif

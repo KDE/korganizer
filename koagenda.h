@@ -111,8 +111,6 @@ class KOAgenda : public QScrollView
 
     void clear();
 
-    void clearSelection();
-
     /** Calculates the minimum width */
     virtual int minimumWidth() const;
     /** Update configuration from preference settings */
@@ -141,6 +139,9 @@ class KOAgenda : public QScrollView
 
     /** Deselect selected items. This function does not emit any signals. */
     void deselectItem();
+
+    void clearSelection();
+
     /**
       Select item. If the argument is 0, the currently selected item gets
       deselected. This function emits the itemSelected(bool) signal to inform
@@ -260,8 +261,8 @@ class KOAgenda : public QScrollView
     // Cells to store Move and Resize coordiantes
     int mStartCellX;
     int mStartCellY;
-    int mCurrentCellX;
-    int mCurrentCellY;
+    int mEndCellX;
+    int mEndCellY;
 
     // Working Hour coordiantes
     bool mWorkingHoursEnable;
@@ -271,8 +272,7 @@ class KOAgenda : public QScrollView
     // Selection
     QPoint mSelectionStartPoint;
     int mSelectionCellX;
-    int mSelectionYTop;
-    int mSelectionHeight;
+    int mSelectionCellY;
 
     // List of dates to be displayed
     DateList mSelectedDates;

@@ -312,6 +312,8 @@ class KOEditorRecurrence : public QWidget
     ExceptionsDialog *mExceptionsDialog;
     ExceptionsWidget *mExceptionsWidget;
     QPushButton *mExceptionsButton;
+		
+		QDateTime mEventStartDt;
 };
 
 #endif

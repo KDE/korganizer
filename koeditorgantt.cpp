@@ -41,23 +41,24 @@
 #include "koprefs.h"
 #include "koglobals.h"
 #include "kogroupware.h"
+#include "freebusymanager.h"
 
 #include "koeditorgantt.h"
 
 
 // We can't use the CustomListViewItem base class, since we need a
 // different inheritance hierarchy for supporting the Gantt view.
-class GanttItem : public KDGanttViewTaskItem
+class FreeBusyItem : public KDGanttViewTaskItem
 {
   public:
-    GanttItem( Attendee* data, KDGanttView *parent ) :
+    FreeBusyItem( Attendee* data, KDGanttView *parent ) :
       KDGanttViewTaskItem( parent ), mData( data )
     {
       Q_ASSERT( data );
       updateItem();
       setFreeBusyPeriods( 0 );
     }
-    ~GanttItem();
+    ~FreeBusyItem() {}
 
     void updateItem();
 
@@ -88,13 +89,7 @@ class GanttItem : public KDGanttViewTaskItem
     QMap<int,QString> mKeyMap;
 };
 
-
-
-GanttItem::~GanttItem()
-{
-}
-
-void GanttItem::updateItem()
+void FreeBusyItem::updateItem()
 {
   setListViewText(0,mData->name());
   setListViewText(1,mData->email());
@@ -108,7 +103,7 @@ void GanttItem::updateItem()
 
 
 // Set the free/busy periods for this attendee
-void GanttItem::setFreeBusyPeriods( FreeBusy* fb )
+void FreeBusyItem::setFreeBusyPeriods( FreeBusy* fb )
 {
   if( fb ) {
     // Clean out the old entries
@@ -134,7 +129,7 @@ void GanttItem::setFreeBusyPeriods( FreeBusy* fb )
 }
 
 
-KOEditorGantt::KOEditorGantt( int spacing, QWidget* parent, const char* name )
+KOEditorFreeBusy::KOEditorFreeBusy( int spacing, QWidget* parent, const char* name )
   : QWidget( parent, name )
 {
   QVBoxLayout* topLayout = new QVBoxLayout( this );
@@ -154,35 +149,41 @@ KOEditorGantt::KOEditorGantt( int spacing, QWidget* parent, const char* name )
   topLayout->addWidget( mStatusSummaryLabel );
 
   // The control panel for the gantt widget
-  QHBox* scaleHB = new QHBox( this );
-  topLayout->addWidget( scaleHB );
-  QLabel* scaleLA = new QLabel( i18n( "Scale: " ), scaleHB );
-  scaleLA->setAlignment( AlignRight | AlignVCenter );
-  scaleCombo = new QComboBox( scaleHB ); 
+  QBoxLayout *controlLayout = new QHBoxLayout( topLayout );
+
+  QLabel *label = new QLabel( i18n( "Scale: " ), this );
+  controlLayout->addWidget( label );
+
+  scaleCombo = new QComboBox( this ); 
   scaleCombo->insertItem( i18n( "Hour" ) );
   scaleCombo->insertItem( i18n( "Day" ) );
   scaleCombo->insertItem( i18n( "Week" ) );
   scaleCombo->insertItem( i18n( "Month" ) );
   scaleCombo->insertItem( i18n( "Automatic" ) );
   scaleCombo->setCurrentItem( 0 ); // start with "hour"
-  QLabel* dummy = new QLabel( scaleHB );
-  scaleHB->setStretchFactor( dummy, 2 );
-  QLabel* hFormatLA = new QLabel( i18n( "Hour format:" ), scaleHB );
-  hFormatLA->setAlignment( AlignRight | AlignVCenter );
-  dummy = new QLabel( scaleHB );
-  scaleHB->setStretchFactor( dummy, 2 );
-  QPushButton* centerPB = new QPushButton( i18n( "Center on Start" ), scaleHB );
-  connect( centerPB, SIGNAL( clicked() ), this, SLOT( slotCenterOnStart() ) );
-  dummy = new QLabel( scaleHB );
-  scaleHB->setStretchFactor( dummy, 2 );
-  QPushButton* zoomPB = new QPushButton( i18n( "Zoom to Fit" ), scaleHB );
-  connect( zoomPB, SIGNAL( clicked() ), this, SLOT( slotZoomToTime() ) );
-  dummy = new QLabel( scaleHB );
-  scaleHB->setStretchFactor( dummy, 2 );
-  QPushButton* pickPB = new QPushButton( i18n( "Pick Date" ), scaleHB );
-  connect( pickPB, SIGNAL( clicked() ), this, SLOT( slotPickDate() ) );
   connect( scaleCombo, SIGNAL( activated( int ) ),
-           this, SLOT( slotScaleChanged( int ) ) );
+           SLOT( slotScaleChanged( int ) ) );
+  controlLayout->addWidget( scaleCombo );
+
+  QPushButton *button = new QPushButton( i18n( "Center on Start" ), this );
+  connect( button, SIGNAL( clicked() ), SLOT( slotCenterOnStart() ) );
+  controlLayout->addWidget( button );
+
+  button = new QPushButton( i18n( "Zoom to Fit" ), this );
+  connect( button, SIGNAL( clicked() ), SLOT( slotZoomToTime() ) );
+  controlLayout->addWidget( button );
+
+  controlLayout->addStretch( 1 );
+
+  button = new QPushButton( i18n( "Pick Date" ), this );
+  connect( button, SIGNAL( clicked() ), SLOT( slotPickDate() ) );
+  controlLayout->addWidget( button );
+
+  controlLayout->addStretch( 1 );
+
+  button = new QPushButton( i18n("Reload"), this );
+  controlLayout->addWidget( button );
+  connect( button, SIGNAL( clicked() ), SLOT( reload() ) );
 
   mGanttView = new KDGanttView(this,"mGanttView");
   topLayout->addWidget( mGanttView );
@@ -198,13 +199,6 @@ KOEditorGantt::KOEditorGantt( int spacing, QWidget* parent, const char* name )
   }
   mGanttView->setHeaderVisible( true );
   mGanttView->setScale( KDGanttView::Hour );
-#if 0
-  // TODO: Do something about this ugly kroupware_branch hack
-  if ( !strcmp(QTextCodec::codecForLocale()->locale(),"de_DE@euro") ) {
-    mGanttView->setHourFormat( KDGanttView::Hour_24   );
-    hFormatCombo->setCurrentItem( 0 );
-  }
-#endif
   // Initially, show 15 days back and forth
   // set start to even hours, i.e. to 12:AM 0 Min 0 Sec
   QDateTime horizonStart = QDateTime( QDateTime::currentDateTime().addDays( -15 ).date() );
@@ -221,39 +215,39 @@ KOEditorGantt::KOEditorGantt( int spacing, QWidget* parent, const char* name )
   else
     mGanttView->setHourFormat( KDGanttView::Hour_24 );
 
-  connect( mGanttView, SIGNAL( lvItemDoubleClicked( KDGanttViewItem* ) ),
-           SLOT( updateFreeBusyData() ) );
+  connect( mGanttView, SIGNAL( lvItemDoubleClicked( KDGanttViewItem * ) ),
+           SLOT( updateFreeBusyData( KDGanttViewItem * ) ) );
 }
 
-KOEditorGantt::~KOEditorGantt()
+KOEditorFreeBusy::~KOEditorFreeBusy()
 {
 }
 
-void KOEditorGantt::removeAttendee( Attendee* attendee )
+void KOEditorFreeBusy::removeAttendee( Attendee* attendee )
 {
-  GanttItem *anItem =
-    static_cast<GanttItem*>( mGanttView->firstChild() );
+  FreeBusyItem *anItem =
+    static_cast<FreeBusyItem*>( mGanttView->firstChild() );
   while( anItem ) {
     if( anItem->data() == attendee ) {
       delete anItem;
       updateStatusSummary();
       break;
     }
-    anItem = static_cast<GanttItem*>( anItem->nextSibling() );
+    anItem = static_cast<FreeBusyItem*>( anItem->nextSibling() );
   }
 }
 
-void KOEditorGantt::insertAttendee( Attendee* attendee )
+void KOEditorFreeBusy::insertAttendee( Attendee* attendee )
 {
-  (void)new GanttItem( attendee, mGanttView );
+  (void)new FreeBusyItem( attendee, mGanttView );
   updateFreeBusyData( attendee );
   updateStatusSummary();
 }
 
-void KOEditorGantt::updateAttendee( Attendee* attendee )
+void KOEditorFreeBusy::updateAttendee( Attendee* attendee )
 {
-  GanttItem *anItem =
-    static_cast<GanttItem*>( mGanttView->firstChild() );
+  FreeBusyItem *anItem =
+    static_cast<FreeBusyItem*>( mGanttView->firstChild() );
   while( anItem ) {
     if( anItem->data() == attendee ) {
       anItem->updateItem();
@@ -261,34 +255,34 @@ void KOEditorGantt::updateAttendee( Attendee* attendee )
       updateStatusSummary();
       break;
     }
-    anItem = static_cast<GanttItem*>( anItem->nextSibling() );
+    anItem = static_cast<FreeBusyItem*>( anItem->nextSibling() );
   }
 }
 
-void KOEditorGantt::clearAttendees()
+void KOEditorFreeBusy::clearAttendees()
 {
   mGanttView->clear();
 }
 
 
-void KOEditorGantt::setUpdateEnabled( bool enabled )
+void KOEditorFreeBusy::setUpdateEnabled( bool enabled )
 {
   mGanttView->setUpdateEnabled( enabled );
 }
 
-bool KOEditorGantt::updateEnabled() const
+bool KOEditorFreeBusy::updateEnabled() const
 {
   return mGanttView->getUpdateEnabled();
 }
 
 
-void KOEditorGantt::readEvent( Event* event )
+void KOEditorFreeBusy::readEvent( Event* event )
 {
   setDateTimes( event->dtStart(), event->dtEnd() );
 }
 
 
-void KOEditorGantt::setDateTimes( QDateTime start, QDateTime end )
+void KOEditorFreeBusy::setDateTimes( QDateTime start, QDateTime end )
 {
   mDtStart = start;
   mDtEnd = end;
@@ -298,7 +292,7 @@ void KOEditorGantt::setDateTimes( QDateTime start, QDateTime end )
   mGanttView->setIntervalBackgroundColor( start, end, Qt::magenta );
 }
 
-void KOEditorGantt::slotScaleChanged( int newScale )
+void KOEditorFreeBusy::slotScaleChanged( int newScale )
 {
   // The +1 is for the Minute scale which we don't offer in the combo box.
   KDGanttView::Scale scale = static_cast<KDGanttView::Scale>( newScale+1 );
@@ -306,12 +300,12 @@ void KOEditorGantt::slotScaleChanged( int newScale )
   slotCenterOnStart();
 }
 
-void KOEditorGantt::slotCenterOnStart() 
+void KOEditorFreeBusy::slotCenterOnStart() 
 {
   mGanttView->centerTimeline( mDtStart );
 }
 
-void KOEditorGantt::slotZoomToTime() 
+void KOEditorFreeBusy::slotZoomToTime() 
 {
   bool block  = mGanttView->getUpdateEnabled();
   mGanttView->setUpdateEnabled( false );
@@ -323,29 +317,37 @@ void KOEditorGantt::slotZoomToTime()
   mGanttView->zoomToSelection( mDtStart, mDtEnd );
 }
 
+void KOEditorFreeBusy::updateFreeBusyData( KDGanttViewItem *item )
+{
+  FreeBusyItem *g = static_cast<FreeBusyItem *>( item );
+  updateFreeBusyData( g->data() );
+}
 
 /*!
   This slot is called when the user changes the email address of a
   participant. It downloads the free/busy data from the net and enters
   it into the Gantt view by means of the KOGroupware class.
 */
-void KOEditorGantt::updateFreeBusyData( Attendee* attendee )
+void KOEditorFreeBusy::updateFreeBusyData( Attendee* attendee )
 {
   if( KOGroupware::instance() && attendee->name() != "(EmptyName)" ) {
+    FreeBusyManager *m = KOGroupware::instance()->freeBusyManager();
     if( attendee->email() == KOPrefs::instance()->email() ) {
       // Don't download our own free-busy list from the net
-      QCString fbText = KOGroupware::instance()->getFreeBusyString().utf8();
-      slotInsertFreeBusy( attendee->email(),
-			  KOGroupware::instance()->parseFreeBusy( fbText ) );
-    } else
-      KOGroupware::instance()->downloadFreeBusyData( attendee->email(), this,
-						     SLOT( slotInsertFreeBusy( const QString&, FreeBusy* ) ) );
+      QCString fbText = m->getFreeBusyString().utf8();
+      slotInsertFreeBusy( attendee->email(), m->parseFreeBusy( fbText ) );
+    } else {
+      m->downloadFreeBusyData( attendee->email(), this,
+                               SLOT( slotInsertFreeBusy( const QString &,
+                                                         KCal::FreeBusy * ) ) );
+    }
   }
 }
 
 // Set the Free Busy list for everyone having this email address
 // If fb == 0, this disabled the free busy list for them
-void KOEditorGantt::slotInsertFreeBusy( const QString& email, FreeBusy* fb )
+void KOEditorFreeBusy::slotInsertFreeBusy( const QString& email,
+                                           KCal::FreeBusy* fb )
 {
   if( fb )
     fb->sortList();
@@ -353,7 +355,7 @@ void KOEditorGantt::slotInsertFreeBusy( const QString& email, FreeBusy* fb )
   mGanttView->setUpdateEnabled(false);
   for( KDGanttViewItem* it = mGanttView->firstChild(); it;
        it = it->nextSibling() ) {
-    GanttItem* item = static_cast<GanttItem*>( it );
+    FreeBusyItem* item = static_cast<FreeBusyItem*>( it );
     if( item->email() == email )
       item->setFreeBusyPeriods( fb );
   }
@@ -365,7 +367,7 @@ void KOEditorGantt::slotInsertFreeBusy( const QString& email, FreeBusy* fb )
   Centers the Gantt view to the date/time passed in.
 */
 
-void KOEditorGantt::slotUpdateGanttView( QDateTime dtFrom, QDateTime dtTo )
+void KOEditorFreeBusy::slotUpdateGanttView( QDateTime dtFrom, QDateTime dtTo )
 {
   bool block = mGanttView->getUpdateEnabled( );
   mGanttView->setUpdateEnabled( false );
@@ -382,7 +384,7 @@ void KOEditorGantt::slotUpdateGanttView( QDateTime dtFrom, QDateTime dtTo )
 /*!
   This slot is called when the user clicks the "Pick a date" button.
 */
-void KOEditorGantt::slotPickDate()
+void KOEditorFreeBusy::slotPickDate()
 {
   QDateTime start = mDtStart;
   QDateTime end = mDtEnd;
@@ -405,7 +407,7 @@ void KOEditorGantt::slotPickDate()
   Finds a free slot in the future which has at least the same size as
   the initial slot.
 */
-bool KOEditorGantt::findFreeSlot( QDateTime& dtFrom, QDateTime& dtTo )
+bool KOEditorFreeBusy::findFreeSlot( QDateTime& dtFrom, QDateTime& dtTo )
 {
   if( tryDate( dtFrom, dtTo ) )
     // Current time is acceptable
@@ -446,16 +448,16 @@ bool KOEditorGantt::findFreeSlot( QDateTime& dtFrom, QDateTime& dtTo )
   that participant. In other words, the returned slot does not have to
   be free for everybody else.
 */
-bool KOEditorGantt::tryDate( QDateTime& tryFrom, QDateTime& tryTo )
+bool KOEditorFreeBusy::tryDate( QDateTime& tryFrom, QDateTime& tryTo )
 {
-  GanttItem* currentItem = static_cast<GanttItem*>( mGanttView->firstChild() );
+  FreeBusyItem* currentItem = static_cast<FreeBusyItem*>( mGanttView->firstChild() );
   while( currentItem ) {
     if( !tryDate( currentItem, tryFrom, tryTo ) ) {
       // kdDebug(5850) << "++++date is not OK, new suggestion: " << tryFrom.toString() << " to " << tryTo.toString() << endl;
       return false;
     }
 
-    currentItem = static_cast<GanttItem*>( currentItem->nextSibling() );
+    currentItem = static_cast<FreeBusyItem*>( currentItem->nextSibling() );
   }
 
   return true;
@@ -468,7 +470,7 @@ bool KOEditorGantt::tryDate( QDateTime& tryFrom, QDateTime& tryTo )
   possible slot for this participant (not necessarily a slot that is
   available for all participants).
 */
-bool KOEditorGantt::tryDate( GanttItem* attendee,
+bool KOEditorFreeBusy::tryDate( FreeBusyItem* attendee,
                                QDateTime& tryFrom, QDateTime& tryTo )
 {
   // If we don't have any free/busy information, assume the
@@ -500,10 +502,10 @@ bool KOEditorGantt::tryDate( GanttItem* attendee,
   return true;
 }
 
-void KOEditorGantt::updateStatusSummary()
+void KOEditorFreeBusy::updateStatusSummary()
 {
-  GanttItem *aItem =
-    static_cast<GanttItem*>(mGanttView->firstChild());
+  FreeBusyItem *aItem =
+    static_cast<FreeBusyItem*>(mGanttView->firstChild());
   int total = 0;
   int accepted = 0;
   int tentative = 0;
@@ -527,7 +529,7 @@ void KOEditorGantt::updateStatusSummary()
       /* just to shut up the compiler */
       break;
     }
-    aItem = static_cast<GanttItem*>(aItem->nextSibling());
+    aItem = static_cast<FreeBusyItem*>(aItem->nextSibling());
   }
   if( total > 1 && mIsOrganizer ) {
     mStatusSummaryLabel->show();
@@ -539,6 +541,13 @@ void KOEditorGantt::updateStatusSummary()
     mStatusSummaryLabel->setText("");
   }
   mStatusSummaryLabel->adjustSize();
+}
+
+void KOEditorFreeBusy::reload()
+{
+  kdDebug() << "KOEditorFreeBusy::reload()" << endl;
+
+  // TODO: Reload all free/busy information
 }
 
 #include "koeditorgantt.moc"

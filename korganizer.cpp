@@ -43,7 +43,7 @@
 #include "koglobals.h"
 #include "alarmclient.h"
 #include "resourceview.h"
-#include "kogroupware.h"
+#include "korganizerifaceimpl.h"
 
 #include <korganizer/part.h>
 
@@ -84,8 +84,7 @@ using namespace KParts;
 using namespace KOrg;
 
 KOrganizer::KOrganizer( const char *name )
-  : DCOPObject( "KOrganizerIface" ),
-    KParts::MainWindow( 0, name ),
+  : KParts::MainWindow( 0, name ),
     KOrg::MainWindow()
 {
   kdDebug(5850) << "KOrganizer::KOrganizer()" << endl;
@@ -96,6 +95,7 @@ KOrganizer::KOrganizer( const char *name )
   setCentralWidget(mCalendarView);
 
   mActionManager = new ActionManager( this, mCalendarView, this, this, false );
+  (void)new KOrganizerIfaceImpl( mActionManager, this, "IfaceImpl" );
 }
 
 KOrganizer::~KOrganizer()
@@ -334,22 +334,6 @@ void KOrganizer::readProperties( KConfig *config )
   return mActionManager->readProperties( config );
 }
 
-bool KOrganizer::deleteEvent( QString uid )
-{
-  return mActionManager->deleteEvent( uid );
-}
-
-bool KOrganizer::eventRequest( QString request, QCString receiver,
-                               QString ical )
-{
-  return mActionManager->eventRequest( request, receiver, ical );
-}
-
-bool KOrganizer::eventReply( QString ical )
-{
-  return mActionManager->eventReply( ical );
-}
-
 KOrg::CalendarViewBase *KOrganizer::view() const
 {
   return mActionManager->view();
@@ -378,31 +362,6 @@ void KOrganizer::setTitle()
 
   setCaption( title, !mCalendarView->isReadOnly() &&
                       mCalendarView->isModified() );
-}
-
-QString KOrganizer::getCurrentURLasString() const
-{
-  return mActionManager->getCurrentURLasString();
-}
-
-void KOrganizer::closeURL()
-{
-  return mActionManager->closeURL();
-}
-
-bool KOrganizer::openURL( QString url )
-{
-  return mActionManager->openURL( url );
-}
-
-bool KOrganizer::mergeURL( QString url )
-{
-  return mActionManager->mergeURL( url );
-}
-
-bool KOrganizer::saveAsURL( QString url )
-{
-  return mActionManager->saveAsURL( url );
 }
 
 void KOrganizer::configureKeyBindings()

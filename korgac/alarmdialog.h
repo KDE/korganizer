@@ -35,6 +35,7 @@ using namespace KCal;
 
 class KOEventViewer;
 class QSpinBox;
+class KComboBox;
 
 class AlarmDialog : public KDialogBase {
     Q_OBJECT
@@ -63,6 +64,7 @@ class AlarmDialog : public KDialogBase {
     QPtrList<Incidence> mIncidences;
   
     QSpinBox *mSuspendSpin;
+    KComboBox *mSuspendUnit;
 };
 
 #endif

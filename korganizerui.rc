@@ -1,5 +1,5 @@
 <!DOCTYPE kpartgui>
-<kpartgui name="korganizer" version="28">
+<kpartgui name="korganizer" version="29">
 
   <MenuBar>
     <Menu name="file"><text>&amp;File</text>
@@ -71,7 +71,8 @@
       <Action name="cancel"/>
       <Action name="reply"/>
       <Action name="counter"/>
-      <Action name="publish_freebusy"/>
+      <Action name="mail_freebusy"/>
+      <Action name="upload_freebusy"/>
     </Menu>
     <Menu name="settings"><text>&amp;Settings</text>
       <Action name="show_filter" append="show_merge"/>
