@@ -60,7 +60,7 @@ void KDateButton::updateConfig()
   setColors();
 }
 
-inline QDate KDateButton::date()
+QDate KDateButton::date()
 {
   return mDate;
 }
