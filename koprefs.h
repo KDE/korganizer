@@ -67,6 +67,7 @@ class KOPrefs
     int     mDayBegins;
     int     mHourSize;
     bool    mDailyRecur;
+    bool    mWeeklyRecur;
 
     QString mPrinter;
     int     mPaperSize;
@@ -81,6 +82,8 @@ class KOPrefs
   private:
     QDict<QColor> mCategoryColors;
     QColor mDefaultCategoryColor;
+    QColor mDefaultHolidayColor;
+    QColor mDefaultHighlightColor;
 };
 
 #endif

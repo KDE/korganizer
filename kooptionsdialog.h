@@ -119,6 +119,7 @@ class KOOptionsDialog : public KDialogBase
     QSpinBox  *mDayBeginsSpin;
     QSlider   *mHourSizeSlider;
     QCheckBox *mDailyRecurCheck;
+    QCheckBox *mWeeklyRecurCheck;
 
     QComboBox    *mPrinterCombo;
     QButtonGroup *mPaperSizeGroup;

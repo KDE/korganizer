@@ -181,7 +181,12 @@ void KOOptionsDialog::setupViewsTab()
                     topFrame);
   topLayout->addWidget(mDailyRecurCheck,2,0);
   
-  topLayout->setRowStretch(3,1);
+  mWeeklyRecurCheck =
+      new QCheckBox(i18n("Show events that recur weekly in Date Navigator"),
+                    topFrame);
+  topLayout->addWidget(mWeeklyRecurCheck,3,0);
+  
+  topLayout->setRowStretch(4,1);
 }
 
 
@@ -406,6 +411,7 @@ void KOOptionsDialog::readConfig()
   mDayBeginsSpin->setValue(KOPrefs::instance()->mDayBegins);
   mHourSizeSlider->setValue(KOPrefs::instance()->mHourSize);
   mDailyRecurCheck->setChecked(KOPrefs::instance()->mDailyRecur);
+  mWeeklyRecurCheck->setChecked(KOPrefs::instance()->mWeeklyRecur);
 
   mTimeBarFont->setFont(KOPrefs::instance()->mTimeBarFont);
 
@@ -444,6 +450,7 @@ void KOOptionsDialog::writeConfig()
   KOPrefs::instance()->mDayBegins = mDayBeginsSpin->value();
   KOPrefs::instance()->mHourSize = mHourSizeSlider->value();
   KOPrefs::instance()->mDailyRecur = mDailyRecurCheck->isChecked();
+  KOPrefs::instance()->mWeeklyRecur = mWeeklyRecurCheck->isChecked();
 
   KOPrefs::instance()->mTimeBarFont = mTimeBarFont->font();
 

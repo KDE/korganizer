@@ -13,13 +13,13 @@
 class KODatePicker: public KDatePicker
 {
 public:
-  KODatePicker(QWidget *parent = 0, QDate qd=QDate::currentDate()) { 
-    KDatePicker(parent,qd);
-    setWFlags(WStyle_Customize|WStyle_NoBorder);
+  KODatePicker(QWidget *parent = 0, QDate qd=QDate::currentDate())
+    : KDatePicker(parent,qd)
+  {
+    setWFlags(WStyle_Customize|WStyle_NoBorderEx|WStyle_StaysOnTop);
   }
 protected:
-  virtual void focusOutEvent(QFocusEvent *)
-    { hide(); }
+  virtual void focusOutEvent(QFocusEvent *) { hide(); }
 };
 	      
 class KDateEdit : public QFrame

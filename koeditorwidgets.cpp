@@ -1550,6 +1550,7 @@ void KOEditorRecurrence::unsetAllCheckboxes()
   weeklyButton->setChecked(false);
   monthlyButton->setChecked(false);
   yearlyButton->setChecked(false);
+
   onNthDay->setChecked(false);
   onNthTypeOfDay->setChecked(false);
   yearMonthButton->setChecked(false);
@@ -1562,6 +1563,7 @@ void KOEditorRecurrence::unsetAllCheckboxes()
   fridayBox->setChecked(false);
   saturdayBox->setChecked(false);
   sundayBox->setChecked(false);
+
   endDateButton->setChecked(false);
   noEndDateButton->setChecked(false);
   endDurationButton->setChecked(false);
@@ -1761,16 +1763,18 @@ void KOEditorRecurrence::endDateChanged(QDate newdate)
 
 void KOEditorRecurrence::setDefaults(QDateTime from, QDateTime to,bool allDay)
 {
+  // unset everything
+  unsetAllCheckboxes();
+
   setDateTimes(from,to);
   setAllDay(allDay);
   
   noEndDateButton->setChecked(true);
   weeklyButton->setChecked(true);
+
   nDaysEntry->setText("1");
   nWeeksEntry->setText("1");
-  // unset everything
-  unsetAllCheckboxes();
-  // now get the right one for the start date
+
   checkDay(from.date().dayOfWeek());
   onNthDay->setChecked(true);
   nthDayEntry->setCurrentItem(from.date().day()-1);

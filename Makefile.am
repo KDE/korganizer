@@ -76,7 +76,7 @@ kdelnkdir = $(kde_appsdir)/Applications
 kdelnk_DATA = korganizer.desktop
 
 rcdir = $(kde_datadir)/korganizer
-rc_DATA = korganizer.rc
+rc_DATA = korganizerui.rc
 
 partdir   = $(kde_datadir)/korganizer
 part_DATA = korganizer_part.rc

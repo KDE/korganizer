@@ -19,7 +19,10 @@ KOPrefs *KOPrefs::mInstance = 0;
 KOPrefs::KOPrefs()
 {
   mCategoryColors.setAutoDelete(true);
-  mDefaultCategoryColor = QColor("gray");
+  
+  mDefaultCategoryColor  = QColor("gray");
+  mDefaultHolidayColor   = QColor("red");
+  mDefaultHighlightColor = QColor("blue");
 
   mConfig = new KConfig(locate("config","korganizerrc"));
   
@@ -93,11 +96,12 @@ void KOPrefs::setDefaults()
   mDayBegins = 8;
   mHourSize = 10;
   mDailyRecur = true;
+  mWeeklyRecur = true;
 
   mTimeBarFont = QFont("helvetica",18);
 
-  mHolidayColor = QColor("red");
-  mHighlightColor = QColor("blue");
+  mHolidayColor = mDefaultHolidayColor;
+  mHighlightColor = mDefaultHighlightColor;
 
   mPrinter = "";
   mPaperSize = 0;
@@ -151,13 +155,16 @@ void KOPrefs::readConfig()
   mDayBegins = mConfig->readNumEntry("Day Begins",8);
   mHourSize = mConfig->readNumEntry("Hour Size",10);
   mDailyRecur = mConfig->readBoolEntry("Show Daily Recurrences",true);
+  mWeeklyRecur = mConfig->readBoolEntry("Show Weekly Recurrences",true);
 
   mConfig->setGroup("Fonts");
   mTimeBarFont = mConfig->readFontEntry("TimeBar Font");
 
   mConfig->setGroup("Colors");
-  mHolidayColor = mConfig->readColorEntry("Holiday Color");
-  mHighlightColor = mConfig->readColorEntry("Highlight Color");
+  mHolidayColor = mConfig->readColorEntry("Holiday Color",
+                                          &mDefaultHolidayColor);
+  mHighlightColor = mConfig->readColorEntry("Highlight Color",
+                                            &mDefaultHighlightColor);
 
   mConfig->setGroup("Category Colors");
   QStringList::Iterator it;
@@ -201,6 +208,7 @@ void KOPrefs::writeConfig()
   mConfig->writeEntry("Day Begins",mDayBegins);
   mConfig->writeEntry("Hour Size",mHourSize);
   mConfig->writeEntry("Show Daily Recurrences",mDailyRecur);
+  mConfig->writeEntry("Show Weekly Recurrences",mWeeklyRecur);
 
   mConfig->setGroup("Fonts");
   mConfig->writeEntry("TimeBar Font",mTimeBarFont);

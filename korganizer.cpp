@@ -80,21 +80,6 @@ KOrganizer::KOrganizer(const char *name)
 
 //  setMinimumSize(600,400);	// make sure we don't get resized too small...
 
-/*
-  if (!fnOverride) {
-    KConfig *config(kapp->config());
-    config->setGroup("General");
-    QString str = config->readEntry("Active Calendar");
-    if (!str.isEmpty() && QFile::exists(str))
-      mFile = str;
-  } else {
-    mFile = filename;
-  }
-*/
-
-//  mURL = KURL();
-//  mURL.setPath( mFile);
-
   mCalendarView = new CalendarView(this,"KOrganizer::CalendarView");
   setView(mCalendarView);
 
@@ -178,6 +163,8 @@ void KOrganizer::readSettings()
 
 void KOrganizer::writeSettings()
 {
+  qDebug("KOrganizer::writeSettings");
+
   KConfig *config(kapp->config());
 
   QString tmpStr;
@@ -314,7 +301,7 @@ void KOrganizer::initActions()
   KStdAction::preferences(mCalendarView, SLOT(edit_options()),
                           actionCollection());
   
-  createGUI("korganizer.rc");
+  createGUI();
 }
 
 
@@ -420,7 +407,6 @@ void KOrganizer::file_saveas()
 
   if (saveAsURL(url)) {
     setTitle();
-    mRecent->addURL(url);
   }
 }
 
@@ -489,7 +475,7 @@ bool KOrganizer::queryExit()
 
 void KOrganizer::setTitle()
 {
-  qDebug("KOrganizer::setTitle");
+//  qDebug("KOrganizer::setTitle");
 
   QString tmpStr;
 
@@ -499,9 +485,7 @@ void KOrganizer::setTitle()
   // display the modified thing in the title
   // if auto-save is on, we only display it on new calender (no file name)
   if (mCalendarView->isModified() && (mFile.isEmpty() || !autoSave())) {
-    tmpStr += " (";
-    tmpStr += i18n("modified");
-    tmpStr += ")";
+    tmpStr += " (" + i18n("modified") + ")";
   }
 
   setCaption(tmpStr);
@@ -546,7 +530,7 @@ void KOrganizer::configureToolbars()
 
   if (dlg.exec())
   {
-    createGUI("korganizer.rc");
+    createGUI();
   }
 }
 
@@ -629,10 +613,13 @@ bool KOrganizer::saveURL()
       qDebug("KOrganizer::saveURL(): dcop send failed");
     }
   }
-  if (!KIO::NetAccess::upload(mFile,mURL)) {
-    QString msg = i18n("Cannot upload calendar to %1").arg(mURL.prettyURL());
-    KMessageBox::error(this,msg);
-    return false;
+
+  if (!mURL.isLocalFile()) {
+    if (!KIO::NetAccess::upload(mFile,mURL)) {
+      QString msg = i18n("Cannot upload calendar to %1").arg(mURL.prettyURL());
+      KMessageBox::error(this,msg);
+      return false;
+    }
   }
 
   // keep saves on a regular interval
@@ -668,5 +655,9 @@ bool KOrganizer::saveAsURL( const KURL & kurl )
     }
     // otherwise, we already had a temp file
   }
-  return saveURL(); // Save local file and upload local file
+  bool success = saveURL(); // Save local file and upload local file
+  qDebug("saveAsURL() %s",mURL.prettyURL().latin1());
+  if (success) mRecent->addURL(mURL);
+  else qDebug("  failed");
+  return success;
 }

@@ -21,6 +21,7 @@ KDateButton::KDateButton(QDate date, int index, CalObject *_calendar,
 {
   mSelected = false;
   mEvent = false;
+  mItalic = false;
   mToday = false;
   mHoliday = false;
 
@@ -60,11 +61,10 @@ void KDateButton::setItalic(bool italic)
 {
   if (mItalic == italic) return;
   mItalic = italic;
-  
+
   QFont myFont = font();
-  myFont.setItalic(mEvent);
+  myFont.setItalic(mItalic);
   setFont(myFont);
-  update();
 }
 
 void KDateButton::setEvent(bool event)

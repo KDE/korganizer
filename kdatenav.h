@@ -4,7 +4,7 @@
 #define _KDATENAV_H
 
 #include <qframe.h>
-#include <qdatetm.h>
+#include <qdatetime.h>
 #include <qlabel.h>
 
 #include "qdatelist.h"
@@ -19,8 +19,8 @@ class KDateNavigator: public QFrame {
 		  bool show_week_numbers=FALSE,
 		  const char *name=0,
 		  QDate date=QDate::currentDate());
-
    ~KDateNavigator();
+
    const QDateList getSelected();
 
  public slots:
@@ -39,7 +39,7 @@ class KDateNavigator: public QFrame {
    void goPrevMonth();
    void goNextYear();
    void goPrevYear();
-   inline void updateButton(int);
+   void updateButton(int);
 
  protected:
    void updateDates();
@@ -64,10 +64,9 @@ class KDateNavigator: public QFrame {
    int m_fstDayOfWk;
    bool m_bShowWeekNums;
    bool weekStartsMonday;
-   bool showDailyRecurrences;
 
    int dayNum(int row, int col);
-   inline int dayToIndex(int dayNum);
+   int dayToIndex(int dayNum);
    void fixupSelectedDates(int yr, int mth);
 
    CalObject *calendar;
@@ -80,6 +79,3 @@ class KDateNavigator: public QFrame {
 };
 
 #endif
-
-
-

@@ -35,8 +35,9 @@ KDateEdit::KDateEdit(QWidget *parent, const char *name)
   dateButton->setFixedWidth(30);
   dateButton->adjustSize();
 
-  datePicker = new KODatePicker(parent, QDate::currentDate());
+  datePicker = new KODatePicker(0, QDate::currentDate());
   datePicker->setFixedSize(200,200);
+  datePicker->hide();
 
   adjustSize();
   
@@ -127,10 +128,14 @@ void KDateEdit::toggleDatePicker()
   datePicker->setGeometry(tmpPoint.x()-207, tmpPoint.y(), 200, 200);
   if (kfEdit->date())
     datePicker->setDate(*kfEdit->date());
-  if (!visible)
+  if (!visible) {
+//    qDebug("------show");
     datePicker->show();
-  else
+    datePicker->raise();
+  } else {
+//    qDebug("------hide");
     datePicker->hide();
+  }
 }
 
 int KDateEdit::numFromMonthName(QString name) const
