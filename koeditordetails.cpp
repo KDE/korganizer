@@ -558,8 +558,14 @@ void KOEditorDetails::fillAttendeeInput( AttendeeListItem *aItem )
   Attendee *a = aItem->data();
   mDisableItemUpdate = true;
   QString name = a->name();
-  if (!a->email().isEmpty())
+  if (!a->email().isEmpty()) {
+    // Taken from KABC::Addressee::fullEmail
+    QRegExp needQuotes( "[^ 0-9A-Za-z\\x0080-\\xFFFF]" );
+    if ( name.find( needQuotes ) != -1 )
+      name = "\"" + name + "\" <" + a->email() + ">";
+    else
     name += " <" + a->email() + ">";
+  }
   mNameEdit->setText(name);
   mUidEdit->setText(a->uid());
   mRoleCombo->setCurrentItem(a->role());
