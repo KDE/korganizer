@@ -488,7 +488,9 @@ void KOAgenda::performSelectAction(QPoint viewportPos)
                      mGridSpacingX,
                      mSelectionHeight - ( gy - mCurrentCellY - 1 ) * mGridSpacingY );
 #else
-    repaintContents( mSelectionCellX * mGridSpacingX, mSelectionYTop,
+    repaintContents( (QApplication::reverseLayout() ?
+                     mColumns - 1 - mSelectionCellX : mSelectionCellX) *
+                     mGridSpacingX, mSelectionYTop,
                      mGridSpacingX, mSelectionHeight );
 #endif
 
@@ -498,7 +500,9 @@ void KOAgenda::performSelectAction(QPoint viewportPos)
       int selectionHeight = mSelectionHeight;
       mSelectionHeight = ( gy + 1 ) * mGridSpacingY - mSelectionYTop;
 
-      repaintContents( mSelectionCellX * mGridSpacingX, mSelectionYTop,
+      repaintContents( (QApplication::reverseLayout() ?
+                       mColumns - 1 - mSelectionCellX : mSelectionCellX) *
+                       mGridSpacingX, mSelectionYTop,
                        mGridSpacingX, selectionHeight );
     
       mCurrentCellY = gy;
@@ -888,7 +892,9 @@ void KOAgenda::drawContents(QPainter* p, int cx, int cy, int cw, int ch)
     }
   }
 
-  int selectionX = mSelectionCellX * mGridSpacingX;
+  int selectionX = QApplication::reverseLayout() ?
+                   (mColumns - 1 - mSelectionCellX) * mGridSpacingX : 
+                    mSelectionCellX * mGridSpacingX;
 
   // Draw selection
   if ( ( cx + cw ) >= selectionX && cx <= ( selectionX + mGridSpacingX ) &&
