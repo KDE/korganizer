@@ -119,7 +119,7 @@ void KOProjectView::readSettings()
   kdDebug(5850) << "KOProjectView::readSettings()" << endl;
 
   //KConfig *config = kapp->config();
-  KConfig config( locateLocal( "config", "korganizerrc" ));
+  KConfig config( "korganizerrc", true, false); // Open read-only, no kdeglobals
   config.setGroup("Views");
 
   QValueList<int> sizes = config.readIntListEntry("Separator ProjectView");

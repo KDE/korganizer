@@ -58,7 +58,7 @@ ConfigDialog::~ConfigDialog()
 
 void ConfigDialog::load()
 {
-  KConfig config( locateLocal( "config", "korganizerrc" ));
+  KConfig config( "korganizerrc", true, false); // Open read-only, no kdeglobals
   config.setGroup("Calendar/DateNum Plugin");
 	int datenum = config.readNumEntry( "ShowDayNumbers", 0 );
   mDayNumGroup->setButton( datenum );
@@ -66,8 +66,7 @@ void ConfigDialog::load()
 
 void ConfigDialog::save()
 {
-  KConfig config( locateLocal( "config", "korganizerrc" ));
-
+  KConfig config( "korganizerrc", false, false); // Open read-write, no kdeglobals
   config.setGroup("Calendar/DateNum Plugin");
   config.writeEntry("ShowDayNumbers", mDayNumGroup->selectedId() );
   config.sync();
