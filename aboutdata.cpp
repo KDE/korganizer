@@ -66,12 +66,12 @@ AboutData::AboutData()
   addCredit("Bram Schoenmakers");
   addCredit("Günter Schwann");
   addCredit("Herwin Jan Steehouwer");
+  addCredit("Mario Teijeiro");
   addCredit("Nick Thompson");
   addCredit("Bo Thorsen");
   addCredit("Larry Wright");
   addCredit("Thomas Zander");
   addCredit("Fester Zigterman");
-  addCredit("Mario Teijeiro");
 }
     
 AboutData *AboutData::self()
