@@ -394,13 +394,11 @@ QMap<Todo *,KOTodoViewItem *>::ConstIterator
 //      kdDebug() << "    related not yet in list" << endl;
       itemIterator = insertTodoItem (relatedTodo);
     }
-    KOTodoViewItem *todoItem = new KOTodoViewItem(*itemIterator,todo);
-    connect (todoItem,SIGNAL(isModified(bool)),this,SLOT(modified(bool)));
+    KOTodoViewItem *todoItem = new KOTodoViewItem(*itemIterator,todo,this);
     return mTodoMap.insert(todo,todoItem);
   } else {
 //    kdDebug() << "  no Related" << endl;
-    KOTodoViewItem *todoItem = new KOTodoViewItem(mTodoListView,todo);
-    connect (todoItem,SIGNAL(isModified(bool)),this,SLOT(modified(bool)));
+    KOTodoViewItem *todoItem = new KOTodoViewItem(mTodoListView,todo,this);
     return mTodoMap.insert(todo,todoItem);
   }
 }

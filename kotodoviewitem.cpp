@@ -24,16 +24,15 @@
 #include "kotodoviewitem.h"
 #include "kotodoview.h"
 #include "koprefs.h"
-#include "kotodoviewitem.moc"
 
-KOTodoViewItem::KOTodoViewItem( QListView *parent, Todo *todo )
-  : QCheckListItem( parent , "", CheckBox ), mTodo( todo )
+KOTodoViewItem::KOTodoViewItem( QListView *parent, Todo *todo, KOTodoView *kotodo)
+  : QCheckListItem( parent , "", CheckBox ), mTodo( todo ), mTodoView( kotodo )
 {
   construct();
 }
 
-KOTodoViewItem::KOTodoViewItem( KOTodoViewItem *parent, Todo *todo )
-  : QCheckListItem( parent, "", CheckBox ), mTodo( todo )
+KOTodoViewItem::KOTodoViewItem( KOTodoViewItem *parent, Todo *todo, KOTodoView *kotodo )
+  : QCheckListItem( parent, "", CheckBox ), mTodo( todo ), mTodoView( kotodo )
 {
   construct();
 }
@@ -163,7 +162,7 @@ void KOTodoViewItem::stateChange(bool state)
     item->stateChange(state);
     myChild = myChild->nextSibling();
   }
-  emit isModified(true);
+  mTodoView->modified(true);
 }
 
 bool KOTodoViewItem::isAlternate()

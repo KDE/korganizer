@@ -96,6 +96,10 @@ class KOTodoView : public KOrg::BaseView
 
     QPtrList<Incidence> selectedIncidences();
     QPtrList<Todo> selectedTodos();
+    
+    QValueList<QDate> selectedIncidencesDates()
+      {QValueList<QDate> q;
+       return q;}
 
     /** Return number of shown dates. TodoView does not show dates, */
     int currentDateCount() { return 0; }
@@ -131,6 +135,7 @@ class KOTodoView : public KOrg::BaseView
     
     void itemClicked(QListViewItem *);
     void itemStateChanged(QListViewItem *);
+    void modified(bool);
 
   signals:
     void newTodoSignal();
@@ -146,7 +151,6 @@ class KOTodoView : public KOrg::BaseView
 
   protected slots:
     void processSelectionChange();
-    void modified(bool);
 
   private:
     QMap<Todo *,KOTodoViewItem *>::ConstIterator insertTodoItem(Todo *todo);

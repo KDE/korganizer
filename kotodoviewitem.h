@@ -36,6 +36,8 @@
 
 using namespace KCal;
 
+class KOTodoView;
+
 /**
   This class provides a way of displaying a single Event of Todo-Type in a
   KTodoView.
@@ -43,9 +45,8 @@ using namespace KCal;
   @author Cornelius Schumacher <schumacher@kde.org>
   @see KOTodoView
 */
-class KOTodoViewItem : public QObject, public QCheckListItem
+class KOTodoViewItem : public QCheckListItem
 {
-    Q_OBJECT
   public:
     /**
       Constructor.
@@ -53,8 +54,8 @@ class KOTodoViewItem : public QObject, public QCheckListItem
       @param parent is the list view to which this item belongs.
       @param ev is the event to have the item display information for.
     */
-    KOTodoViewItem(QListView *parent, Todo *todo);
-    KOTodoViewItem(KOTodoViewItem *parent, Todo *todo);
+    KOTodoViewItem(QListView *parent, Todo *todo, KOTodoView *kotodo);
+    KOTodoViewItem(KOTodoViewItem *parent, Todo *todo, KOTodoView *kotodo);
     virtual ~KOTodoViewItem() {}
 
     void construct();
@@ -70,9 +71,6 @@ class KOTodoViewItem : public QObject, public QCheckListItem
     virtual void paintCell(QPainter *p, const QColorGroup &cg,
       int column, int width, int alignment);
 
-  signals:
-    void isModified(bool);
-
   protected:
 #if QT_VERSION >= 300
     void paintBranches(QPainter *p,const QColorGroup & cg,int w,int y,int h);
@@ -82,6 +80,7 @@ class KOTodoViewItem : public QObject, public QCheckListItem
 
   private:
     Todo *mTodo;
+    KOTodoView *mTodoView;
 
     QMap<int,QString> mKeyMap;
     uint m_odd : 1;
