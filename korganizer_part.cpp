@@ -160,11 +160,6 @@ ActionManager *KOrganizerPart::actionManager()
   return mActionManager;
 }
 
-void KOrganizerPart::addPluginAction( KAction *action )
-{
-  action->plug( mActionManager->pluginMenu()->popupMenu() );
-}
-
 void KOrganizerPart::showStatusMessage( const QString &message )
 {
   KStatusBar *statusBar = mStatusBarExtension->statusBar();

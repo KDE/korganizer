@@ -66,12 +66,13 @@ extern "C" {
 Birthdays::Birthdays(KOrg::MainWindow *parent, const char *name) :
   KOrg::Part(parent,name)
 {
+  setInstance( new KInstance( "korganizer" ) );
+
   setXMLFile("plugins/birthdaysui.rc");
 
-  parent->addPluginAction( new KAction( i18n("Import Birthdays..."), 0, this,
-                                        SLOT(importBirthdays()),
-                                        actionCollection(),
-                                        "import_birthdays") );
+  new KAction( i18n("Import Birthdays..."), 0, this, SLOT(importBirthdays()),
+               actionCollection(), "import_birthdays");
+
   mParent = parent->topLevelWidget();
 }
 

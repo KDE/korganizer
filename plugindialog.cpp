@@ -65,7 +65,6 @@ PluginDialog::PluginDialog( QWidget *parent )
   mListView = new QListView( topFrame );
   mListView->addColumn( i18n("Name") );
   topLayout->addWidget( mListView );
-  connect( mListView, SIGNAL( selectionChanged() ), SLOT( checkSelection() ) );
 
   buildList();
 

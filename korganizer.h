@@ -128,7 +128,6 @@ class KOrganizer : public KPartsMainWindow, virtual public KOrganizerIface,
 
     virtual KXMLGUIFactory *mainGuiFactory() { return factory(); }
     virtual QWidget *topLevelWidget() { return this; }
-    virtual void addPluginAction( KAction * ) {}
 
   public slots:
     /** show status message */

@@ -57,13 +57,12 @@ extern "C" {
 ProjectView::ProjectView(KOrg::MainWindow *parent, const char *name) :
   KOrg::Part(parent,name), mView(0)
 {
-//  KInstance * instance = new KInstance( "korganizer_part" );
-//  setInstance( instance );
+  setInstance( new KInstance( "korganizer" ) );
 
   setXMLFile("plugins/projectviewui.rc");
 
-  parent->addPluginAction( new KAction(i18n("Project"), 0, this, SLOT(showView()),
-                           actionCollection(), "view_project") );
+  new KAction(i18n("Project"), 0, this, SLOT(showView()),
+              actionCollection(), "view_project");
 }
 
 ProjectView::~ProjectView()

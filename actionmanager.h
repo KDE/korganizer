@@ -145,8 +145,6 @@ class ActionManager : public QObject, public KCalendarIface
 
     QString localFileName();
 
-    KActionMenu *pluginMenu() { return mPluginMenu; }
-
     bool queryClose();
 
   signals:
@@ -303,7 +301,6 @@ class ActionManager : public QObject, public KCalendarIface
     KAction *mDeleteAction;
     KAction *mNextXDays;
     KAction *mPublishEvent;
-    KActionMenu *mPluginMenu;
 
     KAction *mUndoAction;
     KAction *mRedoAction;

@@ -15,7 +15,6 @@
       <Action name="korganizer_print"/>
       <Action name="korganizer_quickprint"/>
       <Separator/>
-      <Action name="plugins"/>
       <Menu name="import"><text>Import</text>
         <Action name="downloadnewstuff"/>
         <Merge/>

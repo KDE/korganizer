@@ -64,6 +64,8 @@ extern "C" {
 Exchange::Exchange(KOrg::MainWindow *parent, const char *name) :
   KOrg::Part(parent,name)
 {
+  setInstance( new KInstance( "korganizer" ) );
+
   kdDebug(5850) << "Creating Exchange Plugin...\n";
 
   mAccount = new KPIM::ExchangeAccount( "Calendar/Exchange Plugin" );
@@ -72,31 +74,25 @@ Exchange::Exchange(KOrg::MainWindow *parent, const char *name) :
 
   setXMLFile("plugins/exchangeui.rc");
 
-  parent->addPluginAction( new KAction(i18n("Download..."), 0, this, SLOT(download()),
-              actionCollection(), "exchange_download"));
-
-//  new KAction(i18n("Test"), 0, this, SLOT(test()),
-//              actionCollection(), "exchange_test");
+  new KAction(i18n("Download..."), 0, this, SLOT(download()),
+              actionCollection(), "exchange_download");
 
   KAction *action = new KAction(i18n("Upload Event..."), 0, this, SLOT(upload()),
                                 actionCollection(), "exchange_upload");
-  parent->addPluginAction( action );
   QObject::connect(mainWindow()->view(),SIGNAL(incidenceSelected(Incidence *)),
             this, SLOT(slotIncidenceSelected(Incidence *)));
   action->setEnabled( false );
   QObject::connect(this,SIGNAL(enableIncidenceActions(bool)),
           action,SLOT(setEnabled(bool)));
-//          action,SLOT(setEnabled(bool)));
 
   action = new KAction(i18n("Delete Event"), 0, this, SLOT(remove()),
                                 actionCollection(), "exchange_delete");
-  parent->addPluginAction( action );
   QObject::connect(this,SIGNAL(enableIncidenceActions(bool)),
           action,SLOT(setEnabled(bool)));
   action->setEnabled( false );
 
-  parent->addPluginAction( new KAction(i18n("Configure..."), 0, this, SLOT(configure()),
-              actionCollection(), "exchange_configure") );
+  new KAction(i18n("Configure..."), 0, this, SLOT(configure()),
+              actionCollection(), "exchange_configure");
 
   connect( this, SIGNAL( calendarChanged() ), mainWindow()->view(), SLOT( updateView() ) );
   connect( this, SIGNAL( calendarChanged(const QDate &, const QDate &)),

@@ -73,10 +73,6 @@ class MainWindow
       Show status mesage in status bar.
     */
     virtual void showStatusMessage( const QString &message ) = 0;
-    /**
-      Add action of plugin to main window.
-    */
-    virtual void addPluginAction( KAction * ) = 0;
 
     /**
       Set window title.

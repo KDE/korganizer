@@ -85,7 +85,6 @@ ActionManager::~ActionManager()
   delete mNewStuff;
 
   // Remove Part plugins
-  if ( mPluginMenu ) mPluginMenu->popupMenu()->clear();
   KOCore::self()->unloadParts( mMainWindow, mParts );
 
   delete mTempFile;
@@ -550,12 +549,6 @@ void ActionManager::initActions()
                     mCalendarView,SLOT(showIntro()),
                     mACollection,"show_intro");
 #endif
-
-  if (mIsPart) {
-    mPluginMenu = new KActionMenu(i18n("Plugins"), 0, mACollection, "plugins" );
-  } else {
-    mPluginMenu = 0;
-  }
 
   KConfig *config = KOGlobals::self()->config();
   config->setGroup("Settings");
@@ -1060,7 +1053,6 @@ void ActionManager::updateConfig()
   mNextXDays->setText( i18n( "&Next Day", "&Next %n Days",
                              KOPrefs::instance()->mNextXDays ) );
 
-  if ( mPluginMenu ) mPluginMenu->popupMenu()->clear();
   KOCore::self()->reloadPlugins();
   mParts = KOCore::self()->reloadParts( mMainWindow, mParts );
 
@@ -1231,7 +1223,6 @@ void ActionManager::keyBindings()
 
 void ActionManager::loadParts()
 {
-  if ( mPluginMenu ) mPluginMenu->popupMenu()->clear();
   mParts = KOCore::self()->loadParts( mMainWindow );
 }
 

@@ -53,13 +53,12 @@ extern "C" {
 WebExport::WebExport(KOrg::MainWindow *parent, const char *name) :
   KOrg::Part(parent,name)
 {
-//  KInstance * instance = new KInstance( "korganizer_part" );
-//  setInstance( instance );
+  setInstance( new KInstance( "korganizer" ) );
 
-  setXMLFile("plugins/webexportui.rc");
+  new KAction(i18n("Export Web Page..."), "webexport", 0, this, SLOT(exportWeb()),
+                   actionCollection(), "export_web");
 
-  parent->addPluginAction( new KAction(i18n("Export Web Page..."), "webexport", 0, this, SLOT(exportWeb()),
-                           actionCollection(), "export_web") );
+  setXMLFile( "plugins/webexportui.rc" );
 }
 
 WebExport::~WebExport()
