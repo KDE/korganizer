@@ -32,7 +32,7 @@
           <label>Be asked which resource to use</label>
         </choice>
       </choices>
-      <default>standardDestination</default>
+      <default>askDestination</default>
     </entry>
   </group>
 
