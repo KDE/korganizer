@@ -62,9 +62,10 @@
       <Action name="update"/>
     </Menu>
     <Menu name="go_document"><text>&amp;Go</text>
+      <Action name="go_previous"/>
+      <Action name="go_next"/>
+      <Separator/>
       <Action name="go_today"/>
-      <Action name="go_previous_week"/>
-      <Action name="go_next_week"/>
     </Menu>
     <Menu name="actions"><text>&amp;Actions</text>
       <Action name="new_event"/>
@@ -112,8 +113,8 @@
 
   <ToolBar name="mainToolBar"><text>Main</text>
     <Action name="go_today"/>
-    <Action name="go_previous_week"/>
-    <Action name="go_next_week"/>
+    <Action name="go_previous"/>
+    <Action name="go_next"/>
     <Action name="mail_appointment"/>
     <Action name="new_event"/>
     <Action name="new_todo"/>

@@ -497,9 +497,10 @@ void ActionManager::initActions()
   (void)new KAction(i18n("Go to &Today"), "today", 0,
                     mCalendarView,SLOT(goToday()),
                     mACollection, "go_today");
+
   action = new KAction(i18n("Go &Backward"), isRTL ? "1rightarrow" : "1leftarrow", 0,
                        mCalendarView,SLOT(goPrevious()),
-                       mACollection, "go_previous_week");
+                       mACollection, "go_previous");
 
 // Changing the action text by setText makes the toolbar button disappear.
 // This has to be fixed first, before the connects below can be reenabled.
@@ -509,9 +510,11 @@ void ActionManager::initActions()
   connect(mCalendarView,SIGNAL(changeNavStringPrev(const QString &)),
           this,SLOT(dumpText(const QString &)));
 */
+
   action = new KAction(i18n("Go &Forward"), isRTL ? "1leftarrow" : "1rightarrow", 0,
                        mCalendarView,SLOT(goNext()),
-                       mACollection, "go_next_week");
+                       mACollection, "go_next");
+
 /*
   connect(mCalendarView,SIGNAL(changeNavStringNext(const QString &)),
           action,SLOT(setText(const QString &)));
