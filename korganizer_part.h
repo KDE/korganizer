@@ -27,7 +27,7 @@
 
 #include <kurl.h>
 #include <kparts/browserextension.h>
-#include <libkdepim/part.h>
+#include <kparts/part.h>
 
 #include <korganizer/mainwindow.h>
 
@@ -53,7 +53,7 @@ namespace KOrg {
 class CalendarViewBase;
 }
 
-class KOrganizerPart: public KPIM::Part,
+class KOrganizerPart: public KParts::ReadOnlyPart,
                       public KOrg::MainWindow
 {
     Q_OBJECT

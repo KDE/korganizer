@@ -71,7 +71,7 @@ K_EXPORT_COMPONENT_FACTORY( libkorganizerpart, KOrganizerFactory )
 KOrganizerPart::KOrganizerPart( QWidget *parentWidget, const char *widgetName,
                                 QObject *parent, const char *name,
                                 const QStringList & ) :
-  KPIM::Part(parent, name), mTopLevelWidget( parentWidget->topLevelWidget() )
+  KParts::ReadOnlyPart(parent, name), mTopLevelWidget( parentWidget->topLevelWidget() )
 {
   KGlobal::locale()->insertCatalogue( "libkcal" );
   KGlobal::locale()->insertCatalogue( "libkdepim" );
