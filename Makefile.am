@@ -17,7 +17,7 @@ korganizer_LDFLAGS = $(KDE_RPATH)
 korganizer_SOURCES = main.cpp
 korganizer_LDADD   = libkorganizer.la
 
-alarmd_LDADD =  versit/libversit.a $(LIB_KDEUI) $(LIB_MEDIATOOL)
+alarmd_LDADD =  versit/libversit.a $(LIB_KDEUI)
 
 ########## FILES
 
