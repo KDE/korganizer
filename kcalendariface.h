@@ -48,6 +48,8 @@ k_dcop:
     virtual KCalendarIface::ResourceRequestReply resourceRequest( const QValueList<QPair<QDateTime, QDateTime> >& busy,
                                                   const QCString& resource,
                                                   const QString& vCalIn ) = 0;
+
+    virtual void openEventEditor( QString text ) = 0;
 };
 
 inline QDataStream& operator<<( QDataStream& str, const KCalendarIface::ResourceRequestReply& reply )

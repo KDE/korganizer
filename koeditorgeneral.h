@@ -70,6 +70,9 @@ class KOEditorGeneral : public QObject
 
     void enableAlarm( bool enable );
 
+    void setSummary( const QString & );
+    void setDescription( const QString & );
+
   public slots:
     void setCategories(const QString &);
 

@@ -382,3 +382,13 @@ void KOEditorGeneral::writeIncidence(Incidence *event)
     }
   }
 }
+
+void KOEditorGeneral::setSummary( const QString &text )
+{
+  mSummaryEdit->setText( text );
+}
+
+void KOEditorGeneral::setDescription( const QString &text )
+{
+  mDescriptionEdit->setText( text );
+}

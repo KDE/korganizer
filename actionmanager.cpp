@@ -1217,4 +1217,9 @@ KCalendarIface::ResourceRequestReply ActionManager::resourceRequest( const QValu
     return reply;
 }
 
+void ActionManager::openEventEditor( QString text )
+{
+  mCalendarView->newEvent( text );
+}
+
 #include "actionmanager.moc"

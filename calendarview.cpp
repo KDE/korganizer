@@ -730,6 +730,13 @@ void CalendarView::newEvent(QDate dt)
            QDateTime(dt, QTime(0,0,0)), true);
 }
 
+void CalendarView::newEvent( const QString &text )
+{
+  KOEventEditor *eventEditor = mDialogManager->getEventEditor();
+  eventEditor->newEvent( text );
+  eventEditor->show();
+}
+
 void CalendarView::newEvent(QDateTime fromHint, QDateTime toHint, bool allDay)
 {
   KOEventEditor *eventEditor = mDialogManager->getEventEditor();

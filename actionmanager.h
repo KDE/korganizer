@@ -111,6 +111,8 @@ class ActionManager : public QObject, public KCalendarIface
                                                   const QCString& resource,
                                                   const QString& vCalIn );
 
+    void openEventEditor( QString );
+
 
     QString localFileName();
 

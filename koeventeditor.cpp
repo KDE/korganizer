@@ -149,6 +149,25 @@ void KOEventEditor::newEvent( QDateTime from, QDateTime to, bool allDay )
   setDefaults(from,to,allDay);
 }
 
+void KOEventEditor::newEvent( const QString &text )
+{
+  init();
+  
+  mEvent = 0;
+  
+  loadDefaults();
+  
+  mGeneral->setDescription( text );
+  
+  int pos = text.find( "\n" );
+  if ( pos > 0 ) {
+    mGeneral->setSummary( text.left( pos ) );
+    mGeneral->setDescription( text );
+  } else {
+    mGeneral->setSummary( text );
+  }
+}
+
 void KOEventEditor::loadDefaults()
 {
   int fmt = KOPrefs::instance()->mStartTime;

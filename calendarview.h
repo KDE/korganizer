@@ -206,6 +206,10 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     /** create new event without having a date hint. Takes current date as
      default hint. */ 
     void newEvent();
+    /**
+      Create new Event from given string.
+    */
+    void newEvent( const QString & );
     void newFloatingEvent();
 
     /** Create a read-only viewer dialog for the supplied incidence. It calls the correct showXXX method*/

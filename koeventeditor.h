@@ -60,6 +60,11 @@ class KOEventEditor : public KOIncidenceEditor
     */
     void newEvent( QDateTime from, QDateTime to, bool allDay = false );
     /**
+      Edit new event. Set summary and description from given text.
+    */
+    void newEvent( const QString & );
+    
+    /**
       Edit an existing event.
     */
     void editEvent( Event * );
