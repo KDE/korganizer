@@ -377,7 +377,7 @@ void KOEditorGeneral::writeIncidence(Incidence *event)
       break; // For now, stop after the first alarm
     }
   } else {
-    if ( event->alarms().size() > 0 ) {
+    if ( !event->alarms().isEmpty() ) {
       Alarm *alarm = event->alarms().first();
       alarm->setEnabled(false);
       alarm->setType(Alarm::Invalid);
