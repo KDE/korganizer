@@ -1,5 +1,5 @@
 <!DOCTYPE kpartgui>
-<kpartgui name="korganizer" version="17">
+<kpartgui name="korganizer" version="19">
 
   <MenuBar>
     <Menu name="file"><text>&amp;File</text>
@@ -80,6 +80,9 @@
     <Menu name="help"><text>&amp;Help</text>
       <Action name="show_intro"/>
       <Action name="help_tipofday"/>
+      <Separator/>
+      <Action name="downloadnewstuff"/>
+      <Action name="uploadnewstuff"/>
     </Menu>
   </MenuBar>
 

@@ -1,6 +1,6 @@
 KDE_OPTIONS = nofinal
 
-SUBDIRS = . pixmaps sounds plugins interfaces
+SUBDIRS = knewstuff . pixmaps sounds plugins interfaces
 
 INCLUDES = -I$(srcdir)/interfaces -I$(top_srcdir) $(all_includes)
 
@@ -29,7 +29,8 @@ libkorganizer_la_LDFLAGS = $(all_libraries) $(KDE_RPATH) -version-info 1:0
 libkorganizer_la_LIBADD  = $(LIB_KPARTS) $(LIB_KFILE) \
                            -lkdeprint -lkabc \
                            $(top_builddir)/libkcal/libkcal.la \
-                           $(top_builddir)/kalarmd/libkalarmd.la
+                           $(top_builddir)/kalarmd/libkalarmd.la \
+                           $(top_builddir)/korganizer/knewstuff/libknewstuff.la
 libkorganizer_la_SOURCES =  outgoingdialog_base.ui \
 	koagendaview.cpp koagenda.cpp koagendaitem.cpp \
 	kdateedit.cpp kdatenav.cpp \
@@ -63,7 +64,7 @@ libkorganizer_la_SOURCES =  outgoingdialog_base.ui \
         kocore.cpp plugindialog.cpp mailscheduler.cpp \
 	kodaymatrix.cpp docprefs.cpp statusdialog.cpp\
         kotimespanview.cpp timespanview.cpp lineview.cpp timeline.cpp \
-        koglobals.cpp
+        koglobals.cpp konewstuff.cpp
 
 METASOURCES = AUTO
 

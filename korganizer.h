@@ -27,7 +27,6 @@
 */
 #ifndef KORGANIZER_H
 #define KORGANIZER_H
-// $Id$
 
 #include <qframe.h>
 #include <qlayout.h>
@@ -58,6 +57,8 @@ class KRecentFilesAction;
 class KOWindowList;
 class KToggleAction;
 class KProcess;
+
+class KONewStuff;
 
 using namespace KCal;
 
@@ -116,6 +117,8 @@ class KOrganizer : public KOrg::MainWindow, virtual public KOrganizerIface
     virtual bool deleteEvent(QString uid);
 
     bool isActive() { return mActive; }
+
+    QString localFileName();
 
   signals:
 
@@ -210,6 +213,9 @@ class KOrganizer : public KOrg::MainWindow, virtual public KOrganizerIface
     
     void processIncidenceSelection( Incidence * );
     
+    void downloadNewStuff();
+    void uploadNewStuff();
+    
   protected slots:
 
     /** toggle the appearance of the tool bars. */
@@ -253,6 +259,9 @@ class KOrganizer : public KOrg::MainWindow, virtual public KOrganizerIface
     KURL getSaveURL();
 
     void enableIncidenceActions( bool enable );
+
+  private slots:
+    void dumpText(const QString &);  // only for debugging purposes
 
   private:
     void writeActiveState();
@@ -298,8 +307,7 @@ class KOrganizer : public KOrg::MainWindow, virtual public KOrganizerIface
 
     static bool startedKAddressBook; //whether we started KAddressBook ourselves
 
-  private slots:
-    void dumpText(const QString &);  // only for debugging purposes
+    KONewStuff *mNewStuff;
 };
 
 #endif

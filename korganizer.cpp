@@ -5,7 +5,7 @@
     Fester Zigterman (F.J.F.ZigtermanRustenburg@student.utwente.nl)
     Ian Dawes (iadawes@globalserve.net)
     Laszlo Boloni (boloni@cs.purdue.edu)
-    Copyright (c) 2000, 2001 Cornelius Schumacher <schumacher@kde.org>
+    Copyright (c) 2000, 2001, 2002 Cornelius Schumacher <schumacher@kde.org>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -25,8 +25,6 @@
     with any edition of Qt, and distribute the resulting executable,
     without including the source code for Qt in the source distribution.
 */
-
-// $Id$
 
 #include <stdlib.h>
 
@@ -63,6 +61,7 @@
 #include "kowindowlist.h"
 #include "koprefs.h"
 #include "kocore.h"
+#include "konewstuff.h"
 
 #include "korganizer.h"
 using namespace KOrg;
@@ -79,6 +78,7 @@ KOrganizer::KOrganizer(const char *name)
 
   mTempFile = 0;
   mActive = false;
+  mNewStuff = 0;
 
   // add this instance of the window to the static list.
   if (!windowList) {
@@ -153,6 +153,8 @@ bool KOrganizer::startedKAddressBook = false;
 KOrganizer::~KOrganizer()
 {
   kdDebug() << "~KOrganizer()" << endl;
+
+  delete mNewStuff;
   
   //close down KAddressBook if we started it
   if (KOrganizer::startedKAddressBook == true)
@@ -162,7 +164,6 @@ KOrganizer::~KOrganizer()
    const QByteArray noParamData;
    client->send("kaddressbook", "KAddressBookIface", "exit()",  noParamData);
   }
-
 
   if (mTempFile) delete mTempFile;
 
@@ -507,6 +508,14 @@ void KOrganizer::initActions()
 
   (void)new KAction(i18n("&Tip of the Day..."), 0,
                     this, SLOT(showTip()), actionCollection(), "help_tipofday");
+
+  new KAction( i18n("Get Hot New Stuff..."), 0, this,
+               SLOT( downloadNewStuff() ), actionCollection(),
+               "downloadnewstuff" );
+                 
+  new KAction( i18n("Upload Hot New Stuff..."), 0, this,
+               SLOT( uploadNewStuff() ), actionCollection(),
+               "uploadnewstuff" );
 
   setInstance( KGlobal::instance() );
   
@@ -1271,4 +1280,23 @@ void KOrganizer::enableIncidenceActions( bool enabled )
   mCutAction->setEnabled( enabled );
   mCopyAction->setEnabled( enabled );
   mDeleteAction->setEnabled( enabled );
+}
+
+void KOrganizer::downloadNewStuff()
+{
+  kdDebug() << "KOrganizer::downloadNewStuff()" << endl;
+
+  if ( !mNewStuff ) mNewStuff = new KONewStuff( this );
+  mNewStuff->download();
+}
+
+void KOrganizer::uploadNewStuff()
+{
+  if ( !mNewStuff ) mNewStuff = new KONewStuff( this );
+  mNewStuff->upload();
+}
+
+QString KOrganizer::localFileName()
+{
+  return mFile;
 }

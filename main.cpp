@@ -80,12 +80,12 @@ int main (int argc, char **argv)
   KCmdLineArgs::init( argc, argv, &aboutData );
   KCmdLineArgs::addCmdLineOptions( options );
   KUniqueApplication::addCmdLineOptions();
-  
+
   if (!KOrganizerApp::start())
     exit(0);
 
   KOrganizerApp app;
-  
+
   KGlobal::locale()->insertCatalogue("libkcal");
 
 //  kdDebug() << "app.exec" << endl;
