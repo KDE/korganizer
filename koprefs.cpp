@@ -52,7 +52,7 @@ KOPrefs::KOPrefs() :
   QColor defaultHighlightColor    = QColor("blue");
   QColor defaultAgendaBgColor     = QColor(128,128,128);
   QColor defaultWorkingHoursColor = QColor(160,160,160);
-  QColor defaultTodoDueTodayColor = QColor("blue");
+  QColor defaultTodoDueTodayColor = QColor(255,136,0);
   QColor defaultTodoOverdueColor  = QColor("red");
   
   mDefaultTimeBarFont = QFont("helvetica",12,QFont::Bold);
