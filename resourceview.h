@@ -123,6 +123,8 @@ class ResourceView : public CalendarViewExtension
     void contextMenuRequested ( QListViewItem *i, const QPoint &pos, int );
 
     void showInfo();
+  
+    void reloadResource();
 
   private:
     KListView *mListView;

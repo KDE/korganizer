@@ -378,6 +378,10 @@ void ResourceView::contextMenuRequested ( QListViewItem *i,
   QPopupMenu *menu = new QPopupMenu( this );
   connect( menu, SIGNAL( aboutToHide() ), menu, SLOT( deleteLater() ) );
   if ( item ) {
+    int reloadId = menu->insertItem( i18n("Reload"), this,
+                                     SLOT( reloadResource() ) );
+    menu->setItemEnabled( reloadId, item->resource()->isActive() );
+    menu->insertSeparator();
     menu->insertItem( i18n("Show Info..."), this, SLOT( showInfo() ) );
     menu->insertItem( i18n("Edit..."), this, SLOT( editResource() ) );
     menu->insertItem( i18n("Remove"), this, SLOT( removeResource() ) );
@@ -395,6 +399,15 @@ void ResourceView::showInfo()
   
   QString txt = infoText( item->resource() );
   KMessageBox::information( this, txt );
+}
+
+void ResourceView::reloadResource()
+{
+  ResourceItem *item = currentItem();
+  if ( !item ) return;
+  
+  ResourceCalendar *r = item->resource();
+  r->load();
 }
 
 QString ResourceView::infoText( ResourceCalendar *r )
