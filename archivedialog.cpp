@@ -210,11 +210,11 @@ void ArchiveDialog::slotUser2()
     eventStrs.append(ev->summary());
   }
 
-  int result = KMessageBox::questionYesNoList(this,
+  int result = KMessageBox::warningContinueCancelList(this,
       i18n("Delete all events before %1?\nThe following events will be deleted:")
       .arg(KGlobal::locale()->formatDate(mDateEdit->date())),eventStrs,
       i18n("Delete old events"),i18n("Delete"));
-  if (result == KMessageBox::Yes) {
+  if (result == KMessageBox::Continue) {
     for(ev=events.first();ev;ev=events.next()) {
       mCalendar->deleteEvent(ev);
     }

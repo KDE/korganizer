@@ -50,6 +50,7 @@
 #include <kwin.h>
 #include <kkeydialog.h>
 #include <ktip.h>
+#include <kstdguiitem.h>
 
 #include <korganizer/part.h>
 
@@ -907,7 +908,9 @@ bool KOrganizer::saveModifiedURL()
     return saveURL();
   } else {
     int result = KMessageBox::warningYesNoCancel(this,
-        i18n("The calendar has been modified.\nDo you want to save it?"));
+        i18n("The calendar has been modified.\nDo you want to save it?"),
+        QString::null,
+        KStdGuiItem::save(), KStdGuiItem::discard());
     switch(result) {
       case KMessageBox::Yes:
         if (mURL.isEmpty()) {
