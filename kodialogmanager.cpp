@@ -118,14 +118,14 @@ void KODialogManager::showOptionsDialog()
 
     QStringList modules;
 
-    modules.append( "PIM/korganizer/configmain.desktop" );
-    modules.append( "PIM/korganizer/configtime.desktop" );
-    modules.append( "PIM/korganizer/configviews.desktop" );
-    modules.append( "PIM/korganizer/configfonts.desktop" );
-    modules.append( "PIM/korganizer/configcolors.desktop" );
-    modules.append( "PIM/korganizer/configprinting.desktop" );
-    modules.append( "PIM/korganizer/configgroupscheduling.desktop" );
-    modules.append( "PIM/korganizer/configgroupautomation.desktop" );
+    modules.append( "configmain.desktop" );
+    modules.append( "configtime.desktop" );
+    modules.append( "configviews.desktop" );
+    modules.append( "configfonts.desktop" );
+    modules.append( "configcolors.desktop" );
+    modules.append( "configprinting.desktop" );
+    modules.append( "configgroupscheduling.desktop" );
+    modules.append( "configgroupautomation.desktop" );
 
     // add them all
     QStringList::iterator mit;
