@@ -1656,16 +1656,22 @@ void KOAgenda::insertMultiItem (Event *event,QDate qd,int XBegin,int XEnd,
   int count = 0;
   KOAgendaItem *current = 0;
   QPtrList<KOAgendaItem> multiItems;
+  int visibleCount = mSelectedDates.first().daysTo(mSelectedDates.last());
   for ( cellX = XBegin; cellX <= XEnd; ++cellX ) {
-    if ( cellX == XBegin ) cellYTop = YTop;
-    else cellYTop = 0;
-    if ( cellX == XEnd ) cellYBottom = YBottom;
-    else cellYBottom = rows() - 1;
-    newtext = QString("(%1/%2): ").arg( ++count ).arg( width );
-    newtext.append( event->summary() );
-    current = insertItem( event, qd, cellX, cellYTop, cellYBottom );
-    current->setText( newtext );
-    multiItems.append( current );
+    ++count;
+    //Only add the items that are visible.
+    if( cellX >=0 && cellX <= visibleCount ) {
+      if ( cellX == XBegin ) cellYTop = YTop;
+      else cellYTop = 0;
+      if ( cellX == XEnd ) cellYBottom = YBottom;
+      else cellYBottom = rows() - 1;
+      newtext = QString("(%1/%2): ").arg( count ).arg( width );
+      newtext.append( event->summary() );
+      
+      current = insertItem( event, qd, cellX, cellYTop, cellYBottom );
+      current->setText( newtext );
+      multiItems.append( current );
+    }
   }
 
   KOAgendaItem *next = 0;
