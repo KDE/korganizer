@@ -20,8 +20,29 @@ KOEventViewer::~KOEventViewer()
 
 void KOEventViewer::addTag(const QString & tag,const QString & text)
 {
-  QString str = "<" + tag + ">" + text + "</" + tag + ">";
-  mText.append(str);
+  int number=text.contains("\n");
+  QString str = "<" + tag + ">";
+  QString tmpText=text;
+  QString tmpStr=str;
+  if(number !=-1)  
+    {
+      int pos=0;
+      QString tmp;
+      for(int i=0;i<=number;i++)
+	{
+	  pos=tmpText.find("\n");
+	  tmp=tmpText.left(pos);
+	  tmpText=tmpText.right(tmpText.length()-pos-1);
+	  tmpStr+=tmp+"<br>";
+	}
+      tmpStr+="</" + tag + ">";
+      mText.append(tmpStr);
+    }
+  else
+    {
+      str += text + "</" + tag + ">";
+      mText.append(str);
+    }
 }
 
 void KOEventViewer::appendEvent(Event *event)
