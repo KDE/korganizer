@@ -936,11 +936,11 @@ void KOAgenda::endItemAction()
   if ( mItemMoved ) {
     bool modify = true;
     if ( mActionItem->incidence()->doesRecur() ) {
-      int res = KMessageBox::questionYesNoCancel( this,
+      int res = KMessageBox::questionYesNoCancel( this, 
           i18n("The item you try to change is a recurring item. Shall the changes "
                "be applied to all items in the recurrence, "/*"only the future items, "*/
-               "or just to this single occurrence?"),
-          i18n("Changing a recurring item"),
+               "or just to this single occurrence?"), 
+          i18n("Changing a recurring item"), 
           i18n("&All occurrences"), i18n("Only &this item") );
       switch ( res ) {
         case KMessageBox::Yes: // All occurences
@@ -948,17 +948,17 @@ void KOAgenda::endItemAction()
             modify = true;
             break;
         case KMessageBox::No: { // Just this occurence
-            // Dissociate this occurence:
-            // create clone of event, set relation to old event, set cloned event
-            // for mActionItem, add exception date to old event, emit incidenceChanged
-            // for the old event, remove the recurrence from the new copy and then just
-            // go on with the newly adjusted mActionItem and let the usual code take
+            // Dissociate this occurence: 
+            // create clone of event, set relation to old event, set cloned event 
+            // for mActionItem, add exception date to old event, emit incidenceChanged 
+            // for the old event, remove the recurrence from the new copy and then just 
+            // go on with the newly adjusted mActionItem and let the usual code take 
             // care of the new time!
             modify = true;
             multiModify = true;
             emit startMultiModify( i18n("Dissociate event from recurrence") );
             Incidence* oldInc = mActionItem->incidence()->clone();
-            Incidence* newInc = mCalendar->dissociateOccurrence(
+            Incidence* newInc = mCalendar->dissociateOccurrence( 
                 mActionItem->incidence(), mActionItem->itemDate() );
             if ( newInc ) {
               // don't recreate items, they already have the correct position
@@ -974,17 +974,17 @@ void KOAgenda::endItemAction()
             delete oldInc;
             break; }
         case KMessageBox::Continue/*Future*/: { // All future occurences
-            // Dissociate this occurence:
-            // create clone of event, set relation to old event, set cloned event
-            // for mActionItem, add recurrence end date to old event, emit incidenceChanged
-            // for the old event, adjust the recurrence for the new copy and then just
-            // go on with the newly adjusted mActionItem and let the usual code take
+            // Dissociate this occurence: 
+            // create clone of event, set relation to old event, set cloned event 
+            // for mActionItem, add recurrence end date to old event, emit incidenceChanged 
+            // for the old event, adjust the recurrence for the new copy and then just 
+            // go on with the newly adjusted mActionItem and let the usual code take 
             // care of the new time!
             modify = true;
             multiModify = true;
             emit startMultiModify( i18n("Split future recurrences") );
             Incidence* oldInc = mActionItem->incidence()->clone();
-            Incidence* newInc = mCalendar->dissociateOccurrence(
+            Incidence* newInc = mCalendar->dissociateOccurrence( 
                 mActionItem->incidence(), mActionItem->itemDate(), true );
             if ( newInc ) {
               emit incidenceChanged( oldInc, mActionItem->incidence() );

@@ -286,7 +286,7 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
                   const QString &attachment, const QStringList &attendees );
 
     void toggleAlarm( Incidence * );
-	 
+
     /**
       Check if clipboard contains vCalendar event. The signal pasteEnabled() is
       emitted as result.

@@ -214,11 +214,11 @@ class BaseView : public QWidget
      * box, etc.  Doesn't make sense to connect to more than one receiver.
      */
     void deleteIncidenceSignal(Incidence *);
-	 
-	 /** 
-	  * instructs the receiver to toggle the alarms of the Incidence.
-	  */
-	 void toggleAlarmSignal(Incidence *);
+ 
+    /** 
+     * instructs the receiver to toggle the alarms of the Incidence.
+     */
+    void toggleAlarmSignal(Incidence *);
 
     void incidenceAdded( Incidence* );
     void incidenceChanged( Incidence*, Incidence*, int );

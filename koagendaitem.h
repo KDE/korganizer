@@ -115,7 +115,7 @@ class KOAgendaItem : public QWidget, public KOrg::CellItem
     KOAgendaItem *prevMultiItem() const { return (mMultiItemInfo)?(mMultiItemInfo->mPrevMultiItem):0; }
     KOAgendaItem *nextMultiItem() const { return (mMultiItemInfo)?(mMultiItemInfo->mNextMultiItem):0; }
     KOAgendaItem *lastMultiItem() const { return (mMultiItemInfo)?(mMultiItemInfo->mLastMultiItem):0; }
-
+    
     bool setIncidence( Incidence * );
     Incidence *incidence() const { return mIncidence; }
     QDate itemDate() { return mDate; }
