@@ -209,6 +209,9 @@ void Engine::selectUploadProvider( Provider::List *providers )
   if ( !mProviderDialog ) {
     mProviderDialog = new ProviderDialog( this, mParentWidget );
   }
+
+  mProviderDialog->clear();
+  
   mProviderDialog->show();
   mProviderDialog->raise();
 
@@ -256,6 +259,17 @@ void Engine::upload( Entry *entry )
             << "--DOM_END--" << endl;
 
   mUploadMetaData = doc.toString().utf8();
+
+  if ( mUploadProvider->noUpload() ) {
+    KURL noUploadUrl = mUploadProvider->noUploadUrl();
+    if ( noUploadUrl.isEmpty() ) {
+      KMessageBox::sorry( mParentWidget,
+          i18n("The provider currently doesn't support upload.") );
+    } else {
+      kapp->invokeBrowser( noUploadUrl.url() );
+    }
+    return;
+  }
 
   KURL destination = mUploadProvider->uploadUrl();
   destination.setFileName( fi.fileName() );

@@ -15,20 +15,9 @@ class TestNewStuff : public KNewStuff
   public:
     TestNewStuff() : KNewStuff( "korganizer/calendar" ) {}
     
-    bool install( QString &fileName )
-    {
-      kdDebug() << "TestNewStuff::install(): " << fileName << endl;
-      return true;
-    }
+    bool install( QString &fileName );
     
-    QString createUploadFile()
-    {
-      QString fileName = "/tmp/" + KApplication::randomString( 5 );
-      QString cmd = "touch " + fileName;
-      system( cmd.latin1() );
-      kdDebug() << "TestNewStuff::createUploadFile(): " << fileName << endl;
-      return fileName;
-    }
+    QString createUploadFile();
 };
 
 class MyWidget : public QWidget

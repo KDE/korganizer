@@ -62,6 +62,11 @@ ProviderDialog::ProviderDialog( Engine *engine, QWidget *parent ) :
   topLayout->addWidget( mListView );
 }
 
+void ProviderDialog::clear()
+{
+  mListView->clear();
+}
+
 void ProviderDialog::addProvider( Provider *provider )
 {
   new ProviderItem( mListView, provider );

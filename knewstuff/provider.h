@@ -50,6 +50,12 @@ class Provider
     void setUploadUrl( const KURL & );
     KURL uploadUrl() const;
 
+    void setNoUploadUrl( const KURL & );
+    KURL noUploadUrl() const;
+
+    void setNoUpload( bool );
+    bool noUpload() const;
+
   protected:
     void parseDomElement( const QDomElement & );
 
@@ -59,6 +65,8 @@ class Provider
     QString mName;
     KURL mDownloadUrl;
     KURL mUploadUrl;
+    KURL mNoUploadUrl;
+    bool mNoUpload;
 };
 
 class ProviderLoader : public QObject

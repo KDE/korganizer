@@ -1,4 +1,8 @@
+#include <iostream>
+
 #include <qlayout.h>
+#include <qfile.h>
+#include <qtextstream.h>
 
 #include <kaboutdata.h>
 #include <kapplication.h>
@@ -9,6 +13,33 @@
 
 #include "testnewstuff.h"
 #include "testnewstuff.moc"
+
+using namespace std;
+
+bool TestNewStuff::install( QString &fileName )
+{
+  kdDebug() << "TestNewStuff::install(): " << fileName << endl;
+  QFile f( fileName );
+  if ( !f.open( IO_ReadOnly ) ) {
+    kdDebug() << "Error opening file." << endl;
+    return false;
+  }
+  QTextStream ts( &f );
+  kdDebug() << "--BEGIN-NEW_STUFF--" << endl;
+  cout << ts.read().utf8();
+  kdDebug() << "---END-NEW_STUFF---" << endl;
+  return true;
+}
+
+QString TestNewStuff::createUploadFile()
+{
+  QString fileName = "/tmp/" + KApplication::randomString( 5 );
+  QString cmd = "touch " + fileName;
+  system( cmd.latin1() );
+  kdDebug() << "TestNewStuff::createUploadFile(): " << fileName << endl;
+  return fileName;
+}
+
 
 MyWidget::MyWidget()
 {

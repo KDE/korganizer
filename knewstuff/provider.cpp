@@ -28,11 +28,11 @@
 
 using namespace KNS;
 
-Provider::Provider()
+Provider::Provider() : mNoUpload( false )
 {
 }
 
-Provider::Provider( const QDomElement &e )
+Provider::Provider( const QDomElement &e ) : mNoUpload( false )
 {
   parseDomElement( e );
 }
@@ -74,14 +74,44 @@ KURL Provider::uploadUrl() const
   return mUploadUrl;
 }
 
+
+void Provider::setNoUploadUrl( const KURL &url )
+{
+  mNoUploadUrl = url;
+}
+
+KURL Provider::noUploadUrl() const
+{
+  return mNoUploadUrl;
+}
+
+
+void Provider::setNoUpload( bool enabled )
+{
+  mNoUpload = enabled;
+}
+
+bool Provider::noUpload() const
+{
+  return mNoUpload;
+}
+
+
 void Provider::parseDomElement( const QDomElement &element )
 {
   if ( element.tagName() != "provider" ) return;
 
   setDownloadUrl( KURL( element.attribute("downloadurl") ) );
   setUploadUrl( KURL( element.attribute("uploadurl") ) );
+  setNoUploadUrl( KURL( element.attribute("nouploadurl") ) );
 
-  setName( element.text().stripWhiteSpace() );
+  QDomNode n;
+  for ( n = element.firstChild(); !n.isNull(); n = n.nextSibling() ) {
+    QDomElement p = n.toElement();
+    
+    if ( p.tagName() == "noupload" ) setNoUpload( true );
+    if ( p.tagName() == "title" ) setName( p.text().stripWhiteSpace() );
+  }
 }
 
 QDomElement Provider::createDomElement( QDomDocument &doc, QDomElement &parent )

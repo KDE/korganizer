@@ -35,6 +35,8 @@ class ProviderDialog : public KDialogBase
   public:
     ProviderDialog( Engine *, QWidget *parent );
     
+    void clear();
+    
     void addProvider( Provider * );
     
   protected slots:

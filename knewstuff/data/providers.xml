@@ -3,6 +3,6 @@
 <knewstuffproviders>
   <provider downloadurl="http://korganizer.kde.org/knewstuff/korganizer/calendar/knewstuff.xml"
             uploadurl="ftp://thereisnouploadserveryet">
-    KOrganizer Home Page
+    <title>KOrganizer Home Page</title>
   </provider>
 </knewstuffproviders>
