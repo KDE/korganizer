@@ -37,3 +37,10 @@ Key=Current Filter
 #
 Group=FilterView
 RemoveKey=FilterEnabled
+#
+#
+Id=korganizer_3.4_HolidayPlugin
+File=korganizerrc
+Group=Calendar/Holiday Plugin,Time & Date
+Key=Holidays
+RemoveGroup=Calendar/Holiday Plugin

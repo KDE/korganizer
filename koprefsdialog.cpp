@@ -39,6 +39,7 @@
 #include <qstrlist.h>
 #include <qlistview.h>
 #include <qtabwidget.h>
+#include <qwhatsthis.h>
 
 #include <kcolorbutton.h>
 #include <kdebug.h>
@@ -53,6 +54,8 @@
 #include <kocore.h>
 #include <libkcal/calendarresources.h>
 #include <kstandarddirs.h>
+#include <ksimpleconfig.h>
+#include <kholidays.h>
 
 #if defined(USE_SOLARIS)
 #include <sys/param.h>
@@ -69,7 +72,6 @@
 #include "koglobals.h"
 #include "stdcalendar.h"
 
-#include <kdepimmacros.h>
 
 KOPrefsDialogMain::KOPrefsDialogMain( QWidget *parent, const char *name )
   : KPrefsModule( KOPrefs::instance(), parent, name )
@@ -199,7 +201,7 @@ class KOPrefsDialogTime : public KPrefsModule
       QWidget *topFrame = new QWidget( this );
       topTopLayout->addWidget( topFrame );
 
-      QGridLayout *topLayout = new QGridLayout(topFrame,5,2);
+      QGridLayout *topLayout = new QGridLayout(topFrame,6,2);
       topLayout->setSpacing( KDialog::spacingHint() );
 
       QHBox *timeZoneBox = new QHBox( topFrame );
@@ -287,37 +289,85 @@ class KOPrefsDialogTime : public KPrefsModule
 
       mTimeZoneCombo->setCurrentItem(nCurrentlySet);
 
+      // holiday region selection
+      {
+        QHBox *holidayRegBox = new QHBox( topFrame );
+        topLayout->addMultiCellWidget( holidayRegBox, 1, 1, 0, 1 );
+
+        new QLabel( i18n("Use holiday region:"), holidayRegBox );
+        mHolidayCombo = new QComboBox( holidayRegBox );
+        connect( mHolidayCombo, SIGNAL( activated( int ) ),
+                 SLOT( slotWidChanged() ) );
+
+        QWhatsThis::add(mHolidayCombo,
+                        i18n("Here you can select from which region you want to use the holidays."
+                             " Defined holidays are shown as non working days in the"
+                             " date navigator, in the agenda, etc."));
+
+        QString currentHolidayName;
+        QStringList holidayList;
+        QStringList countryList = KHolidays::locations();
+        QStringList::ConstIterator it;
+
+        for ( it = countryList.begin(); it != countryList.end(); ++it ) {
+          QString countryFile = locate("locale","l10n/" + (*it) + "/entry.desktop");
+          QString regionName;
+          if (!countryFile.isEmpty()) {
+            KSimpleConfig cfg(countryFile);
+            cfg.setGroup("KCM Locale");
+            regionName = cfg.readEntry("Name");
+          }
+          if (regionName.isEmpty()) regionName = (*it);
+
+          holidayList << regionName;
+          mRegionMap[regionName] = (*it);  // store region name for writing to config file
+
+          if ( KOGlobals::self()->holidays() &&
+               ((*it) == KOGlobals::self()->holidays()->location()) ) currentHolidayName = regionName;
+        }
+        holidayList.sort();
+        holidayList.push_front( i18n("(None)") );  // be able to disable holidays at all
+
+        mHolidayCombo->insertStringList(holidayList);
+
+        for (int i=0; i < mHolidayCombo->count(); ++i)
+          if ( mHolidayCombo->text(i) == currentHolidayName ) {
+            mHolidayCombo->setCurrentItem(i);
+            break;
+          }
+      }
+
       KPrefsWidTime *dayBegins =
         addWidTime( KOPrefs::instance()->dayBeginsItem(), topFrame );
-      topLayout->addWidget( dayBegins->label(), 1, 0 );
-      topLayout->addWidget(dayBegins->timeEdit(), 1, 1 );
+      topLayout->addWidget( dayBegins->label(), 2, 0 );
+      topLayout->addWidget(dayBegins->timeEdit(), 2, 1 );
 
       KPrefsWidTime *defaultTime =
             addWidTime( KOPrefs::instance()->startTimeItem(), topFrame );
-      topLayout->addWidget( defaultTime->label(), 2, 0);
-      topLayout->addWidget( defaultTime->timeEdit(), 2, 1);
+      topLayout->addWidget( defaultTime->label(), 3, 0);
+      topLayout->addWidget( defaultTime->timeEdit(), 3, 1);
 
       KPrefsWidTime *defaultDuration =
             addWidTime( KOPrefs::instance()->defaultDurationItem(), topFrame );
-      topLayout->addWidget( defaultDuration->label(), 3, 0);
-      topLayout->addWidget( defaultDuration->timeEdit(), 3, 1);
+      topLayout->addWidget( defaultDuration->label(), 4, 0);
+      topLayout->addWidget( defaultDuration->timeEdit(), 4, 1);
 
       QStringList alarmList;
       alarmList << i18n("1 minute") << i18n("5 minutes") << i18n("10 minutes")
                 << i18n("15 minutes") << i18n("30 minutes");
       topLayout->addWidget(new QLabel(i18n("Default alarm time:"),topFrame),
-                           4,0);
+                           5,0);
       mAlarmTimeCombo = new QComboBox(topFrame);
       connect( mAlarmTimeCombo, SIGNAL( activated( int ) ),
                SLOT( slotWidChanged() ) );
       mAlarmTimeCombo->insertStringList(alarmList);
-      topLayout->addWidget(mAlarmTimeCombo,4,1);
+      topLayout->addWidget(mAlarmTimeCombo,5,1);
 
 
       QGroupBox *workingHoursGroup = new QGroupBox(1,Horizontal,
                                                    i18n("Working Hours"),
                                                    topFrame);
-      topLayout->addMultiCellWidget( workingHoursGroup, 5, 5, 0, 1 );
+      topLayout->addMultiCellWidget( workingHoursGroup, 6, 6, 0, 1 );
 
       QHBox *workDaysBox = new QHBox( workingHoursGroup );
       // Respect start of week setting
@@ -372,6 +422,10 @@ class KOPrefsDialogTime : public KPrefsModule
       else
         KOPrefs::instance()->mTimeZoneId = mTimeZoneCombo->currentText();
 
+      KOPrefs::instance()->mHolidays = ( mHolidayCombo->currentItem() == 0 ) ?  // (None)
+                                       QString::null :
+                                       mRegionMap[mHolidayCombo->currentText()];
+
       KOPrefs::instance()->mAlarmTime = mAlarmTimeCombo->currentItem();
       int mask = 0;
       for ( int i = 0; i < 7; ++i ) {
@@ -400,6 +454,8 @@ class KOPrefsDialogTime : public KPrefsModule
   private:
     QComboBox    *mTimeZoneCombo;
     QStringList   tzonenames;
+    QComboBox    *mHolidayCombo;
+    QMap<QString,QString> mRegionMap;
     QComboBox    *mAlarmTimeCombo;
     QCheckBox    *mWorkDays[7];
 };

@@ -51,9 +51,6 @@
 #include <libkcal/calendarresources.h>
 
 #include "koprefs.h"
-#ifndef KORG_NOPLUGINS
-#include "kocore.h"
-#endif
 #include "koglobals.h"
 #include "koincidencetooltip.h"
 #include "koeventpopupmenu.h"
@@ -377,7 +374,7 @@ void MonthViewCell::setPrimary( bool primary )
     mLabel->setBackgroundMode( PaletteBackground );
   }
 
-  mItemList->setBackground( mPrimary, KOCore::self()->isWorkDay( mDate ) );
+  mItemList->setBackground( mPrimary, KOGlobals::self()->isWorkDay( mDate ) );
 }
 
 bool MonthViewCell::isPrimary() const
@@ -612,7 +609,7 @@ void MonthViewCell::updateConfig()
                           KOPrefs::instance()->highlightColor() );
   updateCell();
 
-  mItemList->setBackground( mPrimary, KOCore::self()->isWorkDay( mDate ) );
+  mItemList->setBackground( mPrimary, KOGlobals::self()->isWorkDay( mDate ) );
 }
 
 void MonthViewCell::enableScrollBars( bool enabled )
@@ -866,11 +863,9 @@ void KOMonthView::showDates( const QDate &start, const QDate & )
       mCells[i]->setHoliday( false );
     }
 
-#ifndef KORG_NOPLUGINS
     // add holiday, if present
-    QString hstring( KOCore::self()->holiday( date ) );
+    QString hstring( KOGlobals::self()->holiday( date ) );
     mCells[i]->setHoliday( hstring );
-#endif
   }
 
   updateView();

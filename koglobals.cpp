@@ -34,10 +34,12 @@
 #include <kiconloader.h>
 
 #include <kcalendarsystem.h>
+#include <kholidays.h>
 
 #include "alarmclient.h"
 
 #include "koglobals.h"
+#include "koprefs.h"
 #include "korganizer_part.h"
 
 class NopAlarmClient : public AlarmClient
@@ -61,6 +63,7 @@ KOGlobals *KOGlobals::self()
 }
 
 KOGlobals::KOGlobals()
+  : mHolidays(0)
 {
   // Needed to distinguish from global KInstance 
   // in case we are a KPart
@@ -78,10 +81,8 @@ KConfig* KOGlobals::config() const
 KOGlobals::~KOGlobals()
 {
   delete mAlarmClient;
-  mAlarmClient = 0;
-
   delete mOwnInstance;
-  mOwnInstance = 0;
+  delete mHolidays;
 }
 
 const KCalendarSystem *KOGlobals::calendarSystem() const
@@ -137,4 +138,34 @@ QPixmap KOGlobals::smallIcon(const QString& name)
 QIconSet KOGlobals::smallIconSet(const QString& name, int size)
 {
   return SmallIconSet(name, size, mOwnInstance);
+}
+
+QString KOGlobals::holiday( const QDate &date )
+{
+  if ( mHolidays ) return mHolidays->shortText( date );
+  else return QString::null;
+}
+
+bool KOGlobals::isWorkDay( const QDate &date )
+{
+  int mask( ~( KOPrefs::instance()->mWorkWeekMask ) );
+
+  bool nonWorkDay = ( mask & ( 1 << ( date.dayOfWeek() - 1 ) ) );
+
+  nonWorkDay = nonWorkDay ||
+               ( KOPrefs::instance()->mExcludeHolidays &&
+                 ( mHolidays && ( mHolidays->category( date ) == KHolidays::HOLIDAY ) ) );
+
+  return !nonWorkDay;
+}
+
+void KOGlobals::setHolidays(KHolidays *h)
+{
+  delete mHolidays;
+  mHolidays = h;
+}
+
+KHolidays *KOGlobals::holidays() const
+{
+  return mHolidays;
 }

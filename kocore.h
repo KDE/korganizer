@@ -81,9 +81,6 @@ class KOCore
     KOrg::Part::List reloadParts( KOrg::MainWindow *parent,
                                   KOrg::Part::List &parts );
 
-    QString holiday( const QDate & );
-    bool isWorkDay( const QDate & );
-
     KPIM::IdentityManager* identityManager();
 
   protected:
@@ -97,8 +94,6 @@ class KOCore
 
     KOrg::CalendarDecoration::List mCalendarDecorations;
     bool mCalendarDecorationsLoaded;
-
-    KOrg::CalendarDecoration *mHolidays;
 
     QMap<QWidget*, KXMLGUIClient*> mXMLGUIClients;
 

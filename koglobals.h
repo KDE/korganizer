@@ -30,6 +30,7 @@ class AlarmClient;
 
 class KConfig;
 class KInstance;
+class KHolidays;
 
 class KOGlobals
 {
@@ -56,6 +57,19 @@ class KOGlobals
     QPixmap smallIcon(const QString& name);
     QIconSet smallIconSet(const QString& name, int size = 0);
     
+    QString holiday( const QDate & );
+    bool isWorkDay( const QDate & );
+
+    /** define which holidays the user wants to use
+      @param h a KHolidays object initialized with the desired locale
+      We capture this object, so you must not delete it
+    */
+    void setHolidays(KHolidays *h);
+
+    /** return the KHolidays object or 0 if none has been defined
+    */
+    KHolidays *holidays() const;
+
   protected:
     KOGlobals();
 
@@ -65,6 +79,8 @@ class KOGlobals
     KInstance *mOwnInstance;
 
     AlarmClient *mAlarmClient;
+    
+    KHolidays *mHolidays;
 };
 
 #endif

@@ -53,7 +53,7 @@ KOCore *KOCore::self()
 }
 
 KOCore::KOCore()
-  : mCalendarDecorationsLoaded( false ), mHolidays( 0 ), mIdentityManager( 0 )
+  : mCalendarDecorationsLoaded( false ), mIdentityManager( 0 )
 {
 }
 
@@ -282,7 +282,6 @@ KOrg::CalendarDecoration::List KOCore::calendarDecorations()
         if ( selectedPlugins.find( name ) != selectedPlugins.end() ) {
           KOrg::CalendarDecoration *d = loadCalendarDecoration(*it);
           mCalendarDecorations.append( d );
-          if ( name == "holidays" ) mHolidays = d;
         }
       }
     }
@@ -345,7 +344,6 @@ void KOCore::unloadPlugins()
   }
   mCalendarDecorations.clear();
   mCalendarDecorationsLoaded = false;
-  mHolidays = 0;
 }
 
 void KOCore::unloadParts( KOrg::MainWindow *parent, KOrg::Part::List &parts )
@@ -378,25 +376,6 @@ void KOCore::reloadPlugins()
 // Plugins should be unloaded, but e.g. komonthview keeps using the old ones
   unloadPlugins();
   calendarDecorations();
-}
-
-QString KOCore::holiday( const QDate &date )
-{
-  calendarDecorations();
-  if ( mHolidays ) return mHolidays->shortText( date );
-  else return QString::null;
-}
-
-bool KOCore::isWorkDay( const QDate &date )
-{
-  int mask( ~( KOPrefs::instance()->mWorkWeekMask ) );
-
-  bool nonWorkDay = ( mask & ( 1 << ( date.dayOfWeek() - 1 ) ) );
-
-  nonWorkDay = nonWorkDay || ( KOPrefs::instance()->mExcludeHolidays &&
-                               !holiday( date ).isEmpty() );
-
-  return !nonWorkDay;
 }
 
 KPIM::IdentityManager* KOCore::identityManager()

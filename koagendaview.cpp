@@ -47,6 +47,7 @@
 #include <kconfig.h>
 #include <kglobal.h>
 #include <kglobalsettings.h>
+#include <kholidays.h>
 
 #include <libkcal/calendar.h>
 #include <libkcal/icaldrag.h>
@@ -740,6 +741,18 @@ void KOAgendaView::createDayLabels()
       dayLabel->setFont(font);
     }
     dayLayout->addWidget(dayLabel);
+
+    // if a holiday region is selected, show the holiday name
+    if ( KOGlobals::self()->holidays() ) {
+      QString text = KOGlobals::self()->holidays()->shortText( date );
+      if ( !text.isEmpty() ) {
+        // use a KOAlternateLabel so when the text doesn't fit any more a tooltip is used
+        KOAlternateLabel*label = new KOAlternateLabel( text, text, QString::null, mDayLabels );
+        label->setMinimumWidth(1);
+        label->setAlignment(AlignCenter);
+        dayLayout->addWidget(label);
+      }
+    }
 
 #ifndef KORG_NOPLUGINS
     CalendarDecoration::List cds = KOCore::self()->calendarDecorations();
@@ -1558,12 +1571,12 @@ void KOAgendaView::setHolidayMasks()
   mHolidayMask.resize( mSelectedDates.count() + 1 );
 
   for( uint i = 0; i < mSelectedDates.count(); ++i ) {
-    mHolidayMask[i] = !KOCore::self()->isWorkDay( mSelectedDates[ i ] );
+    mHolidayMask[i] = !KOGlobals::self()->isWorkDay( mSelectedDates[ i ] );
   }
 
   // Store the information about the day before the visible area (needed for
   // overnight working hours) in the last bit of the mask:
-  bool showDay = !KOCore::self()->isWorkDay( mSelectedDates[ 0 ].addDays( -1 ) );
+  bool showDay = !KOGlobals::self()->isWorkDay( mSelectedDates[ 0 ].addDays( -1 ) );
   mHolidayMask[ mSelectedDates.count() ] = showDay;
 
   mAgenda->setHolidayMask( &mHolidayMask );

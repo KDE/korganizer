@@ -5,6 +5,7 @@ INCLUDES = \
   -I$(top_srcdir)/libkdepim \
   -I$(top_srcdir)/libemailfunctions \
   -I$(top_srcdir)/libkpimidentities \
+  -I$(top_srcdir)/libkholidays \
   -I$(top_srcdir)/mimelib \
   -I$(top_srcdir)/certmanager/lib \
   -I$(top_srcdir)/kresources/remote \
@@ -63,7 +64,8 @@ libkorganizer_la_LIBADD  = $(LIB_KPARTS) $(LIB_KFILE) $(LIB_KNEWSTUFF) \
 	printing/libkorg_stdprinting.la \
 	$(top_builddir)/kdgantt/libkdgantt.la \
 	$(top_builddir)/kresources/remote/libkcal_resourceremote.la \
-        $(top_builddir)/libemailfunctions/libemailfunctions.la
+        $(top_builddir)/libemailfunctions/libemailfunctions.la \
+        $(top_builddir)/libkholidays/libkholidays.la
 libkorganizer_la_COMPILE_FIRST = \
 	kogroupwareprefspage.ui \
 	$(top_srcdir)/libkdepim/categoryselectdialog.h

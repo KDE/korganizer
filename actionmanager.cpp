@@ -1021,8 +1021,8 @@ void ActionManager::exportHTML( HTMLExportSettings *settings )
   QDate cdate = settings->dateStart().date();
   QDate qd2 = settings->dateEnd().date();
   while ( cdate <= qd2 ) {
-    if ( !KOCore::self()->holiday( cdate ).isEmpty() )
-      mExport.addHoliday( cdate, KOCore::self()->holiday( cdate ) );
+    if ( !KOGlobals::self()->holiday( cdate ).isEmpty() )
+      mExport.addHoliday( cdate, KOGlobals::self()->holiday( cdate ) );
     cdate = cdate.addDays( 1 );
   }
 

@@ -43,9 +43,6 @@
 
 #include <kcalendarsystem.h>
 
-#ifndef KORG_NOPLUGINS
-#include "kocore.h"
-#endif
 #include "koprefs.h"
 #include "koglobals.h"
 #include "kodialogmanager.h"
@@ -255,11 +252,8 @@ void KODayMatrix::updateView( const QDate &actdate )
   updateEvents();
   for( int i = 0; i < NUMDAYS; i++ ) {
     //if it is a holy day then draw it red. Sundays are consider holidays, too
-#ifndef KORG_NOPLUGINS
-    QString holiStr = KOCore::self()->holiday( mDays[ i ] );
-#else
-    QString holiStr = QString::null;
-#endif
+    QString holiStr = KOGlobals::self()->holiday( mDays[ i ] );
+
     if ( ( KOGlobals::self()->calendarSystem()->dayOfWeek( mDays[ i ] ) ==
            KOGlobals::self()->calendarSystem()->weekDayOfPray() ) ||
          !holiStr.isEmpty() ) {
@@ -575,6 +569,8 @@ void KODayMatrix::paintEvent( QPaintEvent * )
       p.setPen(actcol);
     }
 
+    bool holiday = ! KOGlobals::self()->isWorkDay( mDays[ i ] );
+
     // if today then draw rectangle around day
     if (mToday == i) {
       tmppen = p.pen();
@@ -582,7 +578,7 @@ void KODayMatrix::paintEvent( QPaintEvent * )
 
       mTodayPen.setWidth(mTodayMarginWidth);
       //draw red rectangle for holidays
-      if (!mHolidays[i].isNull()) {
+      if (holiday) {
         if (actcol == mDefaultTextColor) {
           mTodayPen.setColor(KOPrefs::instance()->mHolidayColor);
         } else {
@@ -607,7 +603,7 @@ void KODayMatrix::paintEvent( QPaintEvent * )
     }
 
     // if it is a holiday then use the default holiday color
-    if (!mHolidays[i].isNull()) {
+    if (holiday) {
       if (actcol == mDefaultTextColor) {
         p.setPen(KOPrefs::instance()->mHolidayColor);
       } else {
@@ -625,7 +621,7 @@ void KODayMatrix::paintEvent( QPaintEvent * )
               Qt::AlignHCenter | Qt::AlignVCenter,  mDayLabels[i]);
 
     // reset color to actual color
-    if (!mHolidays[i].isNull()) {
+    if (holiday) {
       p.setPen(actcol);
     }
     // reset bold font to plain font

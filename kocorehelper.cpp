@@ -23,6 +23,7 @@
 
 #include "kocorehelper.h"
 #include "kocore.h"
+#include "koglobals.h"
 
 
 QColor KOCoreHelper::categoryColor( const QStringList &categories ) 
@@ -39,5 +40,5 @@ QColor KOCoreHelper::categoryColor( const QStringList &categories )
 
 QString KOCoreHelper::holidayString( const QDate &dt )
 {
-  return KOCore::self()->holiday( dt );
+  return KOGlobals::self()->holiday( dt );
 }

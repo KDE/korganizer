@@ -114,6 +114,13 @@
   <group name="Time &amp; Date">
     <entry type="String" name="TimeZoneId">
     </entry>
+    <entry type="String" name="Holidays">
+      <label>Use holiday region:</label>
+      <whatsthis>Here you can select from which region you want to use the holidays.
+                 Defined holidays are shown as non working days in the
+                 date navigator, in the agenda, etc.
+      </whatsthis>
+    </entry>
     <entry type="DateTime" name="StartTime">
       <label>Default appointment time</label>
       <whatsthis>Here you can enter the event's default time, used if you do not supply a start time.</whatsthis>

@@ -35,9 +35,6 @@
 #ifndef KORG_NOPRINTER
 #include "calprinter.h"
 #endif
-#ifndef KORG_NOPLUGINS
-#include "kocore.h"
-#endif
 #include "koeventeditor.h"
 #include "kotodoeditor.h"
 #include "kojournaleditor.h"
@@ -63,6 +60,7 @@
 #include "exportwebdialog.h"
 #include "kocorehelper.h"
 #include "incidencechanger.h"
+#include "kholidays.h"
 
 #include <libkcal/vcaldrag.h>
 #include <libkcal/icaldrag.h>
@@ -612,6 +610,8 @@ void CalendarView::goPrevious()
 void CalendarView::updateConfig()
 {
   kdDebug(5850) << "CalendarView::updateConfig()" << endl;
+
+  KOGlobals::self()->setHolidays(new KHolidays(KOPrefs::instance()->mHolidays));
 
   emit configChanged();
 
