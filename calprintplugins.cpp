@@ -182,7 +182,7 @@ void CalPrintDay::print( QPainter &p, int width, int height )
     x = 80;
     Event::List eventList = mCalendar->events( curDay, true );
 
-    p.setFont( QFont( "helvetica", 14 ) );
+    p.setFont( QFont( "helvetica", 12 ) );
     drawAllDayBox( p, eventList, curDay, true, x, y, width - x, currHeight );
     y += currHeight;
     drawAgendaDayBox( p, eventList, curDay, mIncludeAllEvents,
@@ -555,12 +555,12 @@ void CalPrintTodos::print( QPainter &p, int width, int height )
 
   int mCurrentLinePos = mHeaderHeight + 5;
   QString outStr;
+  QFont oldFont( p.font() );
 
-  p.setFont( QFont( "helvetica", 10 ) );
-  lineSpacing = p.fontMetrics().lineSpacing();
-  mCurrentLinePos += lineSpacing;
   // draw the headers
   p.setFont( QFont("helvetica", 10, QFont::Bold ) );
+  lineSpacing = p.fontMetrics().lineSpacing();
+  mCurrentLinePos += lineSpacing;
   if ( mIncludePriority ) {
     outStr += i18n("Priority");
     p.drawText( pospriority, mCurrentLinePos - 2, outStr);
@@ -621,6 +621,7 @@ void CalPrintTodos::print( QPainter &p, int width, int height )
                 0, mCurrentLinePos, width, height, todoList );
     }
   }
+  p.setFont( oldFont );
 }
 
 

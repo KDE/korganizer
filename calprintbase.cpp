@@ -243,10 +243,11 @@ void CalPrintBase::drawHeader( QPainter &p, QString title,
   }
 
   // Print the titles...
-  QFont font("helvetica", 18, QFont::Bold);
-  p.setFont(font);
+  QFont oldFont(p.font());
+  p.setFont( QFont("helvetica", 18, QFont::Bold) );
   QRect textRect( x+5, y+5, right-10-x, height-10 );
   p.drawText( textRect, Qt::AlignLeft | Qt::AlignTop | Qt::WordBreak, title );
+  p.setFont(oldFont);
 }
 
 
@@ -259,6 +260,7 @@ void CalPrintBase::drawSmallMonth(QPainter &p, const QDate &qd,
   int month = monthDate.month();
 
   // draw the title
+  QFont oldFont( p.font() );
   p.setFont(QFont("helvetica", 8, QFont::Bold));
   //  int lineSpacing = p.fontMetrics().lineSpacing();
   const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
@@ -300,6 +302,7 @@ void CalPrintBase::drawSmallMonth(QPainter &p, const QDate &qd,
       monthDate = monthDate.addDays(1);
     }
   }
+  p.setFont( oldFont );
 }
 
 
@@ -330,6 +333,7 @@ void CalPrintBase::drawDaysOfWeekBox(QPainter &p, const QDate &qd,
 {
   const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
 
+  QFont oldFont( p.font() );
   p.setFont( QFont( "helvetica", 10, QFont::Bold ) );
   p.drawRect( x, y, width, height );
   p.fillRect( x+1, y+1,
@@ -337,6 +341,7 @@ void CalPrintBase::drawDaysOfWeekBox(QPainter &p, const QDate &qd,
               QBrush( Dense7Pattern ) );
   p.drawText( x+5, y, width-10, height, AlignCenter | AlignVCenter,
              calSys->weekDayName( qd ) );
+  p.setFont( oldFont );
 }
 
 
@@ -368,6 +373,7 @@ void CalPrintBase::drawTimeLine(QPainter &p,
     int newY=(int)(currY+cellHeight/2.);
     QString numStr;
     if (newY < y+height) {
+      QFont oldFont( p.font() );
       p.drawLine(x+width/2, (int)newY, x+width, (int)newY);
       // draw the time:
       if ( !KGlobal::locale()->use12Clock() ) {
@@ -390,6 +396,7 @@ void CalPrintBase::drawTimeLine(QPainter &p,
                   AlignTop|AlignLeft, numStr);
       }
       currY+=cellHeight;
+    p.setFont( oldFont );
     } // enough space for half-hour line and time
     if (curTime.secsTo(endTime)>3600)
       curTime=curTime.addSecs(3600);
@@ -548,9 +555,10 @@ void CalPrintBase::drawAgendaDayBox( QPainter &p, Event::List &events,
     KOrg::CellItem::placeItem( cells, placeItem );
   }
 
-  QPen oldPen = p.pen();
-  QColor oldBgColor = p.backgroundColor();
-  QBrush oldBrush = p.brush();
+  QPen oldPen( p.pen() );
+  QColor oldBgColor( p.backgroundColor() );
+  QBrush oldBrush( p.brush() );
+  QFont oldFont( p.font() );
 
   p.setFont( QFont( "helvetica", 10 ) );
   p.setBrush( QBrush( Dense7Pattern ) );
@@ -565,8 +573,8 @@ void CalPrintBase::drawAgendaDayBox( QPainter &p, Event::List &events,
     p.setPen( oldPen );
     p.setBackgroundColor( oldBgColor );
   }
-  
-  p.setBrush( QBrush( NoBrush ) );
+  p.setFont( oldFont );
+//  p.setBrush( QBrush( NoBrush ) );
 }
 
 
@@ -599,9 +607,17 @@ void CalPrintBase::drawAgendaItem( PrintCellItem *item, QPainter &p,
     int currentX = x + item->subCell() * currentWidth;
 
     p.drawRect( currentX, currentyPos, currentWidth, eventLength );
-    p.drawText( currentX, currentyPos, currentWidth, eventLength,
-                AlignCenter | AlignVCenter | AlignJustify | WordBreak,
-                event->summary() );
+    int offset = 4;
+    // print the text vertically centered. If it doesn't fit inside the
+    // box, align it at the top so the beginning is visible
+    int flags = AlignLeft | WordBreak;
+    QRect bound = p.boundingRect ( currentX + offset, currentyPos,
+                                   currentWidth - 2 * offset, eventLength,
+                                   flags, event->summary() );
+    if ( bound.height() >= eventLength - 4 ) flags |= AlignTop;
+    else flags |= AlignVCenter;
+    p.drawText( currentX+offset, currentyPos+offset, currentWidth-2*offset,
+                eventLength-2*offset, flags, event->summary() );
   }
 }
 
@@ -642,6 +658,7 @@ void CalPrintBase::drawDayBox(QPainter &p, const QDate &qd,
 #ifndef KORG_NOPLUGINS
   hstring=KOCore::self()->holiday(qd);
 #endif
+  QFont oldFont( p.font() );
 
   if (!hstring.isEmpty()) {
     p.setFont( QFont( "helvetica", 8, QFont::Bold, true ) );
@@ -697,6 +714,7 @@ void CalPrintBase::drawDayBox(QPainter &p, const QDate &qd,
       textY+=lineSpacing;
     }
   }
+  p.setFont( oldFont );
 }
 
 
@@ -923,7 +941,7 @@ void CalPrintBase::drawTodo( int &count, Todo * item, QPainter &p, bool connectS
   }
 
   // if completed, use strike out font
-  QFont ft=p.font();
+  QFont ft( p.font() );
   ft.setStrikeOut( item->isCompleted() );
   p.setFont( ft );
   // summary
@@ -996,7 +1014,8 @@ void CalPrintBase::drawSplitWeek( QPainter &p, const QDate &fd,
   curDay = fd;
   toDay = td;
   p.begin(mPrinter);
-  p.setFont( QFont("Times") );
+//  QFont oldFont( p.font() );
+//  p.setFont( QFont("Times") );
   // the painter initially begins at 72 dpi per the Qt docs. 
   int pageWidth = p.viewport().width();
   int pageHeight = p.viewport().height();
@@ -1064,6 +1083,7 @@ void CalPrintBase::drawSplitHeaderRight( QPainter &p, const QDate &fd,
                                          const QDate &,
                                          int width, int )
 {
+  QFont oldFont( p.font() );
   QFont font("helvetica", 18, QFont::Bold);
   QPen penA( black,0);
   QPen penB( black,4);
@@ -1100,7 +1120,8 @@ void CalPrintBase::drawSplitHeaderRight( QPainter &p, const QDate &fd,
 
   p.setFont(QFont("Times", 20, QFont::Bold, TRUE));
   title += QString::number(fd.year());
-  p.drawText(0, lineSpacing * 1, width, lineSpacing, AlignRight |AlignTop, title );
+  p.drawText( 0, lineSpacing * 1, width, lineSpacing, AlignRight | AlignTop, title );
+  p.setFont( oldFont );
 }
 
 void CalPrintBase::drawSplitDay( QPainter &p, const QDate &qd, int width,
@@ -1118,6 +1139,7 @@ void CalPrintBase::drawSplitDay( QPainter &p, const QDate &qd, int width,
   dayName = calSys->weekDayName(qd.dayOfWeek()) + ' ' + ' ' + QString::number(qd.day());
   p.setBrush(QBrush(black));
 // width+1 to make sure there's a continuous, black bar across the top.
+  QFont oldFont( p.font() );
   p.drawRect(offsetLeft, mHeaderHeight + 5, width +1, mSubHeaderHeight);
   p.setPen( Qt::white);
   p.setFont(QFont("helvetica", 10));
@@ -1177,11 +1199,13 @@ void CalPrintBase::drawSplitDay( QPainter &p, const QDate &qd, int width,
     }
   }
   p.setBrush(QBrush(NoBrush));
+  p.setFont( oldFont );
 }
 
 void CalPrintBase::drawSplitTimes( QPainter &p, int width, int /*timeWidth*/,
                                    int height )
 {
+  QFont oldFont( p.font() );
   int startHour = KOPrefs::instance()->mDayBegins.time().hour();
   int endHour = 20;
   int offset = mHeaderHeight + mSubHeaderHeight + 10;
@@ -1214,6 +1238,7 @@ void CalPrintBase::drawSplitTimes( QPainter &p, int width, int /*timeWidth*/,
                  AlignTop|AlignLeft, numStr);
     }
   } 
+  p.setFont( oldFont );
 }
 
 #endif
