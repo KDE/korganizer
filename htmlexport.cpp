@@ -125,66 +125,71 @@ void HtmlExport::createHtmlMonthView(QTextStream *ts)
 
   QDate end(start.year(),start.month(),start.daysInMonth());
 
-  if (KGlobal::locale()->weekStartsMonday()) {
-    start = start.addDays(1 - start.dayOfWeek());
-  } else {
-    if (start.dayOfWeek() != 7) {
-      start = start.addDays(-start.dayOfWeek());
+  int startmonth = start.month();
+
+  while (end.month()<=toDate().month()) {
+    // Write header
+    *ts << "<h2>" << (i18n("month_year","%1 %2").arg(KGlobal::locale()->monthName(start.month()))
+        .arg(start.year())) << "</h2>\n";
+    if (KGlobal::locale()->weekStartsMonday()) {
+      start = start.addDays(1 - start.dayOfWeek());
+    } else {
+      if (start.dayOfWeek() != 7) {
+        start = start.addDays(-start.dayOfWeek());
+      }
     }
-  }
+    *ts << "<table border=1>\n";
 
-  // Write header
-  *ts << "<h2>" << (i18n("month_year","%1 %2").arg(KGlobal::locale()->monthName(fromDate().month()))
-      .arg(fromDate().year())) << "</h2>\n";
-  *ts << "<table border=1>\n";
-
-  // Write table header
-  *ts << "  <tr>";
-  for(int i=0; i<7; ++i) {
-    *ts << "<th>" << KGlobal::locale()->weekDayName(start.addDays(i).dayOfWeek()) << "</th>";
-  }
-  *ts << "</tr>\n";
-
-  // Write days
-  while (start <= end) {
-    *ts << "<tr>\n";
-    for(int i=0;i<7;++i) {
-      *ts << "<td valign=top><table border=0>\n";
-
-      QString holiday = KOCore::self()->holiday(start);
-
-      *ts << "<tr><td ";
-      if (!holiday.isEmpty() || start.dayOfWeek() == 7) *ts << "class=dateholiday";
-      else *ts << "class=date";
-      *ts << ">" << QString::number(start.day());
-
-      if (!holiday.isEmpty()) {
-        *ts << " <em>" << holiday << "</em>";
-      }
-      
-      *ts << "</td></tr>\n<tr><td valign=top>";
-      
-      QPtrList<Event> events = mCalendar->getEventsForDate(start,true);
-      if (events.count()) {
-        *ts << "<table>";
-        Event *ev;
-        for(ev = events.first(); ev; ev = events.next()) {
-	  if (checkSecrecyEvent(ev)) {
-	    createHtmlEvent(ts,ev,start,false);
-	  }
-	}
-	*ts << "</table>";
-      } else {
-	*ts << "&nbsp;";
-      }
-      
-      *ts << "</td></tr></table>\n";
-      start = start.addDays(1);
+    // Write table header
+    *ts << "  <tr>";
+    for(int i=0; i<7; ++i) {
+      *ts << "<th>" << KGlobal::locale()->weekDayName(start.addDays(i).dayOfWeek()) << "</th>";
     }
     *ts << "</tr>\n";
+
+    // Write days
+    while (start <= end) {
+      *ts << "<tr>\n";
+      for(int i=0;i<7;++i) {
+        *ts << "<td valign=top><table border=0>\n";
+
+        QString holiday = KOCore::self()->holiday(start);
+
+        *ts << "<tr><td ";
+        if (!holiday.isEmpty() || start.dayOfWeek() == 7) *ts << "class=dateholiday";
+        else *ts << "class=date";
+        *ts << ">" << QString::number(start.day());
+
+        if (!holiday.isEmpty()) {
+          *ts << " <em>" << holiday << "</em>";
+        }
+
+        *ts << "</td></tr>\n<tr><td valign=top>";
+
+        QPtrList<Event> events = mCalendar->getEventsForDate(start,true);
+        if (events.count()) {
+          *ts << "<table>";
+          Event *ev;
+          for(ev = events.first(); ev; ev = events.next()) {
+      if (checkSecrecyEvent(ev)) {
+        createHtmlEvent(ts,ev,start,false);
+      }
+    }
+    *ts << "</table>";
+        } else {
+    *ts << "&nbsp;";
+        }
+
+        *ts << "</td></tr></table>\n";
+        start = start.addDays(1);
+      }
+      *ts << "</tr>\n";
+    }
+    *ts << "</table>\n";
+    startmonth++;
+    start.setYMD(start.year(),startmonth,1);
+    end.setYMD(start.year(),start.month(),start.daysInMonth());
   }
-  
-  *ts << "</table>\n";
 }
 
 void HtmlExport::createHtmlEventList (QTextStream *ts)
