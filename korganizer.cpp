@@ -308,6 +308,7 @@ void KOrganizer::initActions()
                     actionCollection(), "edit_appointment");
   connect(mCalendarView,SIGNAL(eventsSelected(bool)),
           action,SLOT(setEnabled(bool)));
+#if 0
   action = new KAction(i18n("T&ake over Event"), 0,
                        mCalendarView,SLOT(takeOverEvent()),
                        actionCollection(), "takeover_event");
@@ -316,7 +317,7 @@ void KOrganizer::initActions()
   (void)new KAction(i18n("T&ake over Calendar"), 0,
                     mCalendarView,SLOT(takeOverCalendar()),
                     actionCollection(), "takeover_calendar");
-  
+#endif  
 
   KStdAction::find(mCalendarView, SLOT(action_search()), actionCollection());
 
