@@ -26,6 +26,8 @@
 
 #include <qdict.h>
 
+#include <kdepimmacros.h>
+
 #include "koprefs_base.h"
 
 class KConfig;
@@ -36,7 +38,7 @@ class QStringList;
 QColor getTextColor(const QColor &c);
 
 
-class KOPrefs : public KOPrefsBase
+class KDE_EXPORT KOPrefs : public KOPrefsBase
 {
   public:
     virtual ~KOPrefs();

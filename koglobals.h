@@ -23,6 +23,8 @@
 #ifndef KORG_GLOBALS_H
 #define KORG_GLOBALS_H
 
+#include <kdepimmacros.h>
+
 class QPixmap;
 class QIconSet;
 class KCalendarSystem;
@@ -32,7 +34,7 @@ class KConfig;
 class KInstance;
 class KHolidays;
 
-class KOGlobals
+class KDE_EXPORT KOGlobals
 {
   public:
     static KOGlobals *self();

@@ -29,11 +29,12 @@
 #include <korganizer/part.h>
 #include <korganizer/printplugin.h>
 
+#include <kdepimmacros.h>
 #include <ktrader.h>
 
 namespace KPIM { class IdentityManager; }
 
-class KOCore
+class KDE_EXPORT KOCore
 {
   public:
     ~KOCore();

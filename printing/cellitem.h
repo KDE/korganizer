@@ -27,9 +27,11 @@
 #include <qstring.h>
 #include <qptrlist.h>
 
+#include <kdepimmacros.h>
+
 namespace KOrg {
 
-class CellItem
+class KDE_EXPORT CellItem
 {
   public:
     CellItem()

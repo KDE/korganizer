@@ -25,7 +25,7 @@
 
 namespace KOrg {
 
-class StdCalendar : public KCal::CalendarResources
+class KDE_EXPORT StdCalendar : public KCal::CalendarResources
 {
   public:
     static StdCalendar *self();

@@ -517,5 +517,6 @@
 <slots>
     <slot>slotChanged()</slot>
 </slots>
+<exportmacro>KDE_EXPORT</exportmacro>
 <layoutdefaults spacing="6" margin="11"/>
 </UI>
