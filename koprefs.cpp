@@ -123,6 +123,7 @@ KOPrefs::KOPrefs() :
   addItemBool("Exclude Holidays",&mExcludeHolidays,true);
   addItemBool("Exclude Saturdays",&mExcludeSaturdays,true);
 
+  addItemBool("Month View Uses Category Color",&mMonthViewUsesCategoryColor,false);
   addItemBool("Full View Month",&mFullViewMonth,false);
   addItemBool("Full View Todo",&mFullViewTodo,true);
   

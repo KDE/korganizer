@@ -127,6 +127,12 @@ MonthViewItem::MonthViewItem( Incidence *incidence, QDate qd, const QString & s)
 
 void MonthViewItem::paint(QPainter *p)
 {
+  if (KOPrefs::instance()->mMonthViewUsesCategoryColor)
+  {
+    p->setBackgroundColor( palette().color( QPalette::Normal,  \
+	    isSelected() ? QColorGroup::Highlight : QColorGroup::Background ) );
+    p->eraseRect( 0, 0, listBox()->maxItemWidth(), height( listBox() ) );
+  }
   int x = 3;
   if ( mRecur ) {
     p->drawPixmap( x, 0, mRecurPixmap );
@@ -148,8 +154,8 @@ void MonthViewItem::paint(QPainter *p)
     yPos = fm.ascent() + fm.leading()/2;
   else
     yPos = pmheight/2 - fm.height()/2  + fm.ascent();
-
-  p->setPen( palette().color( QPalette::Normal, QColorGroup::Foreground ) );
+  p->setPen( palette().color( QPalette::Normal, isSelected() ? \
+	  QColorGroup::HighlightedText : QColorGroup::Foreground ) );
   p->drawText( x, yPos, text() );
 }
 
@@ -316,7 +322,17 @@ void MonthViewCell::updateCell()
     }
 
     MonthViewItem *item = new MonthViewItem( event, mDate, text );
-    item->setPalette( mStandardPalette );
+    if (KOPrefs::instance()->mMonthViewUsesCategoryColor) {    
+      QStringList categories = event->categories();
+      QString cat = categories.first();
+      if (cat.isEmpty()) {
+        item->setPalette(QPalette(KOPrefs::instance()->mEventColor, KOPrefs::instance()->mEventColor));
+      } else {
+        item->setPalette(QPalette(*(KOPrefs::instance()->categoryColor(cat)), *(KOPrefs::instance()->categoryColor(cat))));
+      }
+    } else {
+      item->setPalette( mStandardPalette );
+    }
     item->setRecur( event->recurrence()->doesRecur() );
     item->setAlarm( event->isAlarmEnabled() );
 
@@ -367,6 +383,7 @@ void MonthViewCell::updateConfig()
                            KOPrefs::instance()->mHolidayColor);
   mHolidayPalette.setColor(QColorGroup::Text,
                            KOPrefs::instance()->mHolidayColor);
+  updateCell();
 }
 
 void MonthViewCell::enableScrollBars( bool enabled )

@@ -329,7 +329,12 @@ void KOPrefsDialog::setupViewsTab()
   KPrefsWidBool *fullViewMonth =
       addWidBool(i18n("Month view uses full window"),
                  &(KOPrefs::instance()->mFullViewMonth),topFrame);
-  topLayout->addWidget(fullViewMonth->checkBox(),8,0);
+  topLayout->addWidget(fullViewMonth->checkBox(),7,0);
+  
+  KPrefsWidBool *coloredCategoriesInMonthView =
+      addWidBool(i18n("Month view uses category colors"),
+                 &(KOPrefs::instance()->mMonthViewUsesCategoryColor),topFrame);
+  topLayout->addWidget(coloredCategoriesInMonthView->checkBox(),8,0);
 
   KPrefsWidBool *fullViewTodo =
       addWidBool(i18n("To-do view uses full window"),

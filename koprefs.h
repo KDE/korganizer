@@ -125,6 +125,7 @@ class KOPrefs : public KPimPrefs
     bool    mEnableToolTips;
     bool    mEnableMonthScroll;
     bool    mFullViewMonth;
+    bool    mMonthViewUsesCategoryColor;    
     bool    mFullViewTodo;
     bool    mMarcusBainsEnabled;
     int     mNextXDays;
