@@ -706,11 +706,11 @@ void CalendarView::updateUnmanagedViews()
   mDateNavigator->updateDayMatrix();
 }
 
-int CalendarView::msgItemDelete()
+int CalendarView::msgItemDelete( Incidence *incidence )
 {
   return KMessageBox::warningContinueCancel(this,
-      i18n("This item will be permanently deleted."),
-      i18n("KOrganizer Confirmation"),KGuiItem(i18n("Delete"),"editdelete"));
+      i18n("The item \"%1\" will be permanently deleted.").arg( incidence->summary() ),
+      i18n("KOrganizer Confirmation"), KGuiItem(i18n("&Delete"),"editdelete"));
 }
 
 
@@ -1140,7 +1140,7 @@ void CalendarView::deleteTodo(Todo *todo)
   }
   if (KOPrefs::instance()->mConfirm && (!KOPrefs::instance()->mUseGroupwareCommunication ||
                                         KOPrefs::instance()->thatIsMe( todo->organizer() ))) {
-    switch (msgItemDelete()) {
+    switch ( msgItemDelete( todo ) ) {
       case KMessageBox::Continue: // OK
         if (!todo->relations().isEmpty()) {
           KMessageBox::sorry(this,i18n("Cannot delete To-Do which has children."),
@@ -1184,7 +1184,7 @@ void CalendarView::deleteJournal(Journal *journal)
   }
   if (KOPrefs::instance()->mConfirm && (!KOPrefs::instance()->mUseGroupwareCommunication ||
                                         KOPrefs::instance()->thatIsMe( journal->organizer() ))) {
-    switch (msgItemDelete()) {
+    switch ( msgItemDelete( journal ) ) {
       case KMessageBox::Continue: // OK
         bool doDelete = true;
         if( KOPrefs::instance()->mUseGroupwareCommunication ) {
@@ -1224,15 +1224,15 @@ void CalendarView::deleteEvent(Event *anEvent)
     if (!itemDate.isValid()) {
       kdDebug(5850) << "Date Not Valid" << endl;
       km = KMessageBox::warningContinueCancel(this,
-        i18n("This event recurs over multiple dates. "
+        i18n("The event \"%1\" recurs over multiple dates. "
              "Are you sure you want to delete this event "
-             "and all its recurrences?"),
+             "and all its recurrences?").arg( anEvent->summary() ),
              i18n("KOrganizer Confirmation"),i18n("Delete All"));
     } else {
       km = KMessageBox::warningYesNoCancel(this,
-        i18n("This event recurs over multiple dates. "
+        i18n("The event \"%1\" recurs over multiple dates. "
              "Do you want to delete all it's recurrences, "
-             "or only the current one on %1?" )
+             "or only the current one on %2?" ).arg( anEvent->summary() )
              .arg( KGlobal::locale()->formatDate(itemDate)),
              i18n("KOrganizer Confirmation"),i18n("Delete Current"),
              i18n("Delete All"));
@@ -1277,7 +1277,7 @@ void CalendarView::deleteEvent(Event *anEvent)
     if (KOPrefs::instance()->mConfirm && (!KOPrefs::instance()->mUseGroupwareCommunication ||
                                           userIsOrganizer)) {
       bool doDelete = true;
-      switch (msgItemDelete()) {
+      switch ( msgItemDelete( anEvent ) ) {
         case KMessageBox::Continue: // OK
           incidenceToBeDeleted( anEvent );
           if ( userIsOrganizer &&

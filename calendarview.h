@@ -474,8 +474,8 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
   protected:
     void schedule( Scheduler::Method, Incidence *incidence = 0 );
 
-    // returns KMsgBox::OKCandel()
-    int msgItemDelete();
+//     // returns KMsgBox::OKCancel()
+    int msgItemDelete( Incidence *incidence );
 
     Todo *selectedTodo();
 
