@@ -105,6 +105,9 @@ void KOTodoViewItem::construct()
     setText(3,"");
     setText(4,"");
   }
+  static const QPixmap recurPxmp = KOGlobals::self()->smallIcon("recur");
+  if (mTodo->doesRecur())
+    setPixmap(0,recurPxmp);
   setSortKey(3,keyd);
   setSortKey(4,keyt);
 
