@@ -32,7 +32,7 @@ class KTextEdit;
 
 namespace KCal {
   class Calendar; 
-	class Journal;
+  class Journal;
 }
 using namespace KCal;
 
@@ -53,6 +53,11 @@ class JournalEntry : public QFrame {
 
   protected slots:
     void setDirty();
+  signals:
+    void incidenceAdded( Incidence* );
+    void incidenceChanged( Incidence*, Incidence* );
+    void incidenceToBeDeleted( Incidence* );
+    void incidenceDeleted( Incidence* );
 
   protected:    
     bool eventFilter( QObject *o, QEvent *e );

@@ -43,6 +43,11 @@ KOJournalView::KOJournalView(Calendar *calendar, QWidget *parent,
   : KOrg::BaseView(calendar, parent, name)
 {
   mEntry = new JournalEntry(calendar,this);
+  connect( mEntry, SIGNAL( incidenceAdded( Incidence* )), SIGNAL( incidenceAdded( Incidence* )) );
+  connect( mEntry, SIGNAL( incidenceChanged( Incidence*, Incidence* )), SIGNAL( incidenceChanged( Incidence*, Incidence* )) );
+  connect( mEntry, SIGNAL( incidenceToBeDeleted( Incidence* )), SIGNAL( incidenceToBeDeleted( Incidence* )) );
+  connect( mEntry, SIGNAL( incidenceDeleted( Incidence* )), SIGNAL( incidenceDeleted( Incidence* )) );
+
 
   QBoxLayout *topLayout = new QVBoxLayout(this);
   topLayout->addWidget(mEntry);

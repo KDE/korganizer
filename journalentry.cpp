@@ -95,7 +95,6 @@ Journal *JournalEntry::journal() const
 void JournalEntry::setDirty()
 {
   mDirty = true;
-  writeJournal();
 //  kdDebug(5850) << "JournalEntry::setDirty()" << endl;
 }
 
@@ -121,10 +120,14 @@ void JournalEntry::writeJournal()
 //  kdDebug(5850) << "JournalEntry::writeJournal()" << endl;
 
   if (!mDirty) return;
+  bool newJournal = false;
  
-  if (mEditor->text().isEmpty()) {
-    mCalendar->deleteJournal( mJournal );
-    delete mJournal;
+  if (mEditor->text().isEmpty() ) {
+    if (mJournal ) { // delete the journal
+      emit incidenceToBeDeleted( mJournal );
+      mCalendar->deleteJournal( mJournal );
+      emit incidenceDeleted( mJournal );
+    } 
     mJournal = 0;
     return;
   }
@@ -132,6 +135,7 @@ void JournalEntry::writeJournal()
 //  kdDebug(5850) << "JournalEntry::writeJournal()..." << endl;
   
   if (!mJournal) {
+    newJournal = true;
     mJournal = new Journal;
     mJournal->setDtStart(QDateTime(mDate,QTime(0,0,0)));
     if ( !mCalendar->addJournal( mJournal ) ) {
@@ -142,7 +146,14 @@ void JournalEntry::writeJournal()
     }
   }
 
+  Journal* oldJournal = mJournal->clone();
   mJournal->setDescription(mEditor->text());
+  if (newJournal) {
+    emit incidenceAdded( mJournal );
+  } else {
+    emit incidenceChanged( oldJournal, mJournal );
+    delete oldJournal;
+  }
 
   mDirty = false;
 }
