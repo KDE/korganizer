@@ -98,8 +98,8 @@ AlarmDialog::~AlarmDialog()
 
 void AlarmDialog::setIncidence( Incidence *incidence )
 {
-  mEventViewer->appendIncidence( incidence );
-  mIncidence = incidence;
+  mIncidence = incidence->clone();
+  mEventViewer->appendIncidence( mIncidence );
 }
 
 void AlarmDialog::setRemindAt( QDateTime dt )
