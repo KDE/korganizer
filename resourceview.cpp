@@ -72,9 +72,9 @@ ResourceView::ResourceView( KCal::CalendarResourceManager *manager,
 
   QBoxLayout *buttonLayout = new QHBoxLayout( this );
 
-  add = new QPushButton( QString("add"), this, "add" );
-  del = new QPushButton( QString("del"), this, "del" );
-  edit = new QPushButton( QString("edit"), this, "edit" );
+  add = new QPushButton( i18n("Add"), this, "add" );
+  del = new QPushButton( i18n("Remove"), this, "del" );
+  edit = new QPushButton( i18n("Edit"), this, "edit" );
   del->setDisabled( true );
   edit->setDisabled( true );
   buttonLayout->addWidget( add );
