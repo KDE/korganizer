@@ -1,0 +1,31 @@
+#!/usr/bin/perl
+#
+# This is the input filter for KOrganizer. It has to be set as "pipe through"
+# filter in KMail and will write all mails containing an iCalendar or vCalendar
+# attachement to the directory, where KOrganizer looks for incoming events.
+
+while(<STDIN>) {
+  print;
+  if (/BEGIN:VCALENDAR/) {
+    $calactive = 1;
+  }
+  if ($calactive) {
+    $data .= $_;
+  }
+  if (/END:VCALENDAR/) {
+    $calactive = 0;
+  }
+}
+
+$outfile = `kde-config --localprefix`;
+chop $outfile;
+$outfile .= "share/apps/korganizer/income/";
+if ( !-e $outfile ) {
+  system("mkdir -p $outfile");
+}
+
+$outfile .= rand;
+
+if (!open OUT,">$outfile") { print "Can't open outputfile '$outfile'\n"; exit; }
+  print OUT $data;
+close OUT;

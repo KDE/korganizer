@@ -5,8 +5,9 @@
 #include <kdebug.h>
 
 #include <libkcal/incidence.h>
-#include <libkcal/dummyscheduler.h>
 #include <libkcal/calendar.h>
+
+#include "mailscheduler.h"
 
 #include "incomingdialog.h"
 
@@ -36,7 +37,7 @@ IncomingDialog::IncomingDialog(Calendar *calendar,QWidget* parent,
   IncomingDialog_base(parent,name,modal,fl)
 {
   mCalendar = calendar;
-  mScheduler = new DummyScheduler(mCalendar);
+  mScheduler = new MailScheduler(mCalendar);
 }
 
 /*  

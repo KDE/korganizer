@@ -250,8 +250,6 @@ bool KOAgenda::eventFilter ( QObject *object, QEvent *event )
     case QEvent::MouseButtonDblClick:
     case QEvent::MouseButtonRelease:
     case QEvent::MouseMove:
-      kdDebug() << "KOAgenda::eventFilter(): mouse event: " << event->type()
-                << " sender: " << object->className() << endl;
       me = (QMouseEvent *)event;
       if (object != viewport()) {
         viewportPos = ((QWidget *)object)->mapToParent(me->pos());
