@@ -64,7 +64,7 @@ void KOrganizerApp::displayImminent(const QString &urlString,int numdays)
 {
   KURL url(urlString);
   if (!url.isLocalFile()) {
-    printf(i18n("Sorry. Can't handle remote calendar.\n").local8Bit());
+    printf(i18n("Unable to handle remote calendar.\n").local8Bit());
     return;
   }
 
