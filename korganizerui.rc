@@ -42,10 +42,16 @@
     <Menu name="actions"><text>&amp;Actions</text>
       <Action name="new_event"/>
       <Action name="new_todo"/>
+      <Action name="new_subtodo"/>
       <Separator/>
       <Action name="show_appointment"/>
       <Action name="edit_appointment"/>
+      <Action name="delete_appointment"/>
       <Action name="mail_appointment"/>
+      <Separator/>
+      <Action name="show_todo"/>
+      <Action name="edit_todo"/>
+      <Action name="delete_todo"/>
     </Menu>
     <Menu name="schedule"><text>S&amp;chedule</text>
       <Action name="outgoing"/>

@@ -213,6 +213,8 @@ CalendarView::CalendarView(QWidget *parent,const char *name)
 
   connect(QApplication::clipboard(),SIGNAL(dataChanged()),
           SLOT(checkClipboard()));
+          
+  connect(mTodoList,SIGNAL(todoSelected(bool)),SLOT(todoSelect(bool)));
 
   kdDebug() << "CalendarView::CalendarView() done" << endl;
 }
@@ -843,6 +845,24 @@ void CalendarView::appointment_delete()
   }
 
   deleteEvent(anEvent);
+}
+
+void CalendarView::todo_show()
+{
+  Todo *anTodo = selectedTodo();
+  if (anTodo) showTodo(anTodo);
+}
+
+void CalendarView::todo_edit()
+{
+  Todo *anTodo = selectedTodo();
+  if (anTodo) editTodo(anTodo);
+}
+
+void CalendarView::todo_delete()
+{
+  Todo *anTodo = selectedTodo();
+  if (anTodo) deleteTodo(anTodo);
 }
 
 void CalendarView::deleteTodo(Todo *todo)
@@ -1497,4 +1517,9 @@ Todo *CalendarView::selectedTodo()
   }
 
   return 0;
+}
+
+void CalendarView::todoSelect(bool b)
+{
+  emit todoSelected(b);
 }

@@ -302,6 +302,14 @@ KOTodoView::KOTodoView(Calendar *calendar,QWidget* parent,const char* name) :
           SLOT(itemStateChanged(QListViewItem *)));
   connect(mTodoListView,SIGNAL(collapsed(QListViewItem *)),
           SLOT(itemStateChanged(QListViewItem *)));
+
+/*  connect(mTodoListView,SIGNAL(selectionChanged(QListViewItem *)),
+          SLOT(selectionChanged(QListViewItem *)));
+  connect(mTodoListView,SIGNAL(clicked(QListViewItem *)),
+          SLOT(selectionChanged(QListViewItem *)));*/
+  connect(mTodoListView,SIGNAL(pressed(QListViewItem *)),
+          SLOT(selectionChanged(QListViewItem *)));
+
 }
 
 KOTodoView::~KOTodoView()
@@ -311,7 +319,7 @@ KOTodoView::~KOTodoView()
 
 void KOTodoView::updateView()
 {
-//  kdDebug() << "KOTodoView::updateView()" << endl;
+  kdDebug() << "KOTodoView::updateView()" << endl;
 
   mTodoListView->clear();
 
@@ -350,6 +358,8 @@ void KOTodoView::updateView()
   mTodoListView->blockSignals( true );
   if( mDocPrefs ) restoreItemState( mTodoListView->firstChild() );
   mTodoListView->blockSignals( false );
+  if (mTodoListView->selectedItem()) emit todoSelected(true);
+  else emit todoSelected(false);
 }
 
 void KOTodoView::restoreItemState( QListViewItem *item )
@@ -399,6 +409,7 @@ QPtrList<Incidence> KOTodoView::selectedIncidences()
   QPtrList<Incidence> selected;
 
   KOTodoViewItem *item = (KOTodoViewItem *)(mTodoListView->selectedItem());
+//  if (!item) item = mActiveItem;
   if (item) selected.append(item->event());
 
   return selected;
@@ -409,6 +420,7 @@ QPtrList<Todo> KOTodoView::selectedTodos()
   QPtrList<Todo> selected;
 
   KOTodoViewItem *item = (KOTodoViewItem *)(mTodoListView->selectedItem());
+//  if (!item) item = mActiveItem;
   if (item) selected.append(item->event());
 
   return selected;
@@ -568,3 +580,14 @@ void KOTodoView::restoreLayout(KConfig *config, const QString &group)
   mTodoListView->restoreLayout(config,group);
 }
 
+void KOTodoView::selectionChanged(QListViewItem *item)
+{
+  if (item) {
+    kdDebug() << "KOTodoView::selectionChanged || TRUE" << endl;
+    emit todoSelected(true);
+  }
+  else {
+    kdDebug() << "KOTodoView::selectionChanged || FALSE" << endl;
+    emit todoSelected(false);
+  }
+}

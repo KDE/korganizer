@@ -151,6 +151,9 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     
     void calendarViewExpanded( bool );
     
+    /** Emitted, when a todoitem is selected or deselected */
+    void todoSelected( bool );
+    
   public slots:
     /** options dialog made a changed to the configuration. we catch this
      *  and notify all widgets which need to update their configuration. */
@@ -287,7 +290,7 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     void appointment_new();
     /** same as apptmnt_new, but sets "All Day Event" to true by default. */
     void allday_new();
-    
+
     /** pop up a dialog to show an existing appointment. */
     void appointment_show();
     /**
@@ -301,10 +304,17 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
      * View.
      */
     void appointment_delete();
-  
-    /** mails the currently selected event to a particular user as a vCalendar 
+
+    /** mails the currently selected event to a particular user as a vCalendar
       attachment. */
     void action_mail();
+
+    /** pop up a dialog to show an existing todo. */
+    void todo_show();
+    /** pop up a dialog to edit an existing todo. */
+    void todo_edit();
+    /* pop up dialog confirming deletion of currently selected todo */
+    void todo_delete();
 
     /** Take ownership of selected event. */
     void takeOverEvent();
@@ -356,6 +366,8 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     void processEventSelection(bool selected);
 
     void toggleExpand();
+    
+    void todoSelect(bool);
   
   protected slots:
     /** Select a week to be displayed in the calendar view */

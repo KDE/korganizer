@@ -136,6 +136,11 @@ class KOTodoView : public KOrg::BaseView
     void editTodoSignal(Todo *);
     void deleteTodoSignal(Todo *);
 
+    void todoSelected(bool);
+
+  private slots:
+    void selectionChanged(QListViewItem *);
+
   private:
     QMap<Todo *,KOTodoViewItem *>::ConstIterator insertTodoItem(Todo *todo);
     void restoreItemState( QListViewItem * );
