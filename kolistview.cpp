@@ -112,8 +112,8 @@ bool ListItemVisitor::visit(Todo *t)
   mItem->setText(2,"---");
   mItem->setText(3,"---");
   mItem->setText(4,"---");
-  mItem->setText(5,"---");
-  mItem->setText(6,"---");
+  mItem->setText(5,t->isAlarmEnabled() ? i18n("Yes") : i18n("No"));
+  mItem->setText(6,t->doesRecur() ? i18n("Yes") : i18n("No"));
   if (t->hasDueDate()) {
     mItem->setText(7,t->dtDueDateStr());
     if (t->doesFloat()) {
