@@ -63,8 +63,6 @@ void KOTodoEditor::init()
   setupRecurrence();
   setupAttachmentsTab();
 
-  connect( mGeneral, SIGNAL( dateTimesChanged( QDateTime, QDateTime ) ),
-           mRecurrence, SLOT( setDateTimes( QDateTime, QDateTime ) ) );
   connect( mGeneral, SIGNAL( dateTimeStrChanged( const QString & ) ),
            mRecurrence, SLOT( setDateTimeStr( const QString & ) ) );
 }

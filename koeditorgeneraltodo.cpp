@@ -102,30 +102,35 @@ void KOEditorGeneralTodo::initTime(QWidget *parent,QBoxLayout *topLayout)
   layoutTimeBox->addWidget(mDueCheck,0,0);
   connect(mDueCheck,SIGNAL(toggled(bool)),SLOT(enableDueEdit(bool)));
   connect(mDueCheck,SIGNAL(toggled(bool)),SLOT(showAlarm()));
-
+  connect(mDueCheck,SIGNAL(toggled(bool)),SIGNAL(dueDateEditToggle(bool)));
+  connect(mDueCheck,SIGNAL(toggled(bool)),SLOT(dateChanged()));
 
   mDueDateEdit = new KDateEdit(timeBoxFrame);
   layoutTimeBox->addWidget(mDueDateEdit,0,1);
+  connect(mDueDateEdit,SIGNAL(dateChanged(QDate)),SLOT(dateChanged()));
 
   mDueTimeEdit = new KTimeEdit(timeBoxFrame);
   layoutTimeBox->addWidget(mDueTimeEdit,0,2);
-
+  connect(mDueTimeEdit,SIGNAL(timeChanged()),SLOT(dateChanged()));
 
   mStartCheck = new QCheckBox(i18n("Sta&rt:"),timeBoxFrame);
   layoutTimeBox->addWidget(mStartCheck,1,0);
   connect(mStartCheck,SIGNAL(toggled(bool)),SLOT(enableStartEdit(bool)));
+  connect(mStartCheck,SIGNAL(toggled(bool)),SLOT(dateChanged()));
 
   mStartDateEdit = new KDateEdit(timeBoxFrame);
   layoutTimeBox->addWidget(mStartDateEdit,1,1);
+  connect(mStartDateEdit,SIGNAL(dateChanged(QDate)),SLOT(dateChanged()));
 
   mStartTimeEdit = new KTimeEdit(timeBoxFrame);
   layoutTimeBox->addWidget(mStartTimeEdit,1,2);
-
+  connect(mStartTimeEdit,SIGNAL(timeChanged(QTime)),SLOT(dateChanged()));
 
   mTimeButton = new QCheckBox(i18n("Ti&me associated"),timeBoxFrame);
   layoutTimeBox->addMultiCellWidget(mTimeButton,2,2,0,2);
 
   connect(mTimeButton,SIGNAL(toggled(bool)),SLOT(enableTimeEdits(bool)));
+  connect(mTimeButton,SIGNAL(toggled(bool)),SLOT(dateChanged()));
 
   // some more layouting
   layoutTimeBox->setColStretch(3,1);
@@ -313,7 +318,6 @@ void KOEditorGeneralTodo::writeTodo(Todo *todo)
 void KOEditorGeneralTodo::enableDueEdit(bool enable)
 {
   mDueDateEdit->setEnabled( enable );
-  emit dueDateEditToggle( enable );
 
   if(mDueCheck->isChecked() || mStartCheck->isChecked()) {
     mTimeButton->setEnabled(true);
@@ -422,6 +426,30 @@ void KOEditorGeneralTodo::completedChanged(int index)
     mCompleted = QDateTime::currentDateTime();
   }
   setCompletedDate();
+}
+
+void KOEditorGeneralTodo::dateChanged()
+{
+  KLocale *l = KGlobal::locale();  
+  QString dateTimeStr = "";
+  
+  if ( mStartCheck->isChecked() ) {
+    dateTimeStr += i18n("Start: %1").arg( 
+                                     l->formatDate( mStartDateEdit->date() ) );
+    if ( mTimeButton->isChecked() )
+      dateTimeStr += QString(" %1").arg( 
+                                   l->formatTime( mStartTimeEdit->getTime() ) );
+  }
+  
+  if ( mDueCheck->isChecked() ) {
+    dateTimeStr += i18n("   Due: %1").arg( 
+                                      l->formatDate( mDueDateEdit->date() ) );
+    if ( mTimeButton->isChecked() )
+      dateTimeStr += QString(" %1").arg( 
+                                    l->formatTime( mDueTimeEdit->getTime() ) );
+  }
+  
+  emit dateTimeStrChanged( dateTimeStr );
 }
 
 void KOEditorGeneralTodo::setCompletedDate()
