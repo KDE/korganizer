@@ -93,13 +93,8 @@ class KOAgenda : public QScrollView
     void insertMultiItem ( Event *event, QDate qd, int XBegin, int XEnd,
                            int YTop, int YBottom );
 
-    /**
-      Find item displaying given incidence. Return 0 if item wasn't found.
-    */
-    KOAgendaItem *findItem( Incidence * );
-
     /** remove an event and all its multi-items from the agenda.
-     *  This function removes the items from the view, but doesn't delete them.
+     *  This function removes the items from the view, but doesn't delete them immediately.
      *  Instead, they are queued in mItemsToDelete and later deleted by
      *  the slot deleteItemsToDelete() (called by QTimer::singleShot ) */
     void removeIncidence( Incidence *incidence );

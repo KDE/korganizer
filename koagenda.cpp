@@ -1707,12 +1707,3 @@ QObject *KOAgenda::typeAheadReceiver() const
 {
   return mTypeAheadReceiver;
 }
-
-KOAgendaItem *KOAgenda::findItem( Incidence *incidence )
-{
-  KOAgendaItem *item;
-  for( item = mItems.first(); item; item = mItems.next() ) {
-    if ( item->incidence() == incidence ) break;
-  }
-  return item;
-}
