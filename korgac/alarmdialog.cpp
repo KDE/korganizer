@@ -57,7 +57,7 @@ AlarmDialog::AlarmDialog( QWidget *parent, const char *name )
                  false, i18n("Suspend"), i18n("Edit...") )
 {
   QWidget *topBox = plainPage();
-  
+
   QBoxLayout *topLayout = new QVBoxLayout( topBox );
   topLayout->setSpacing( spacingHint() );
 
@@ -66,7 +66,7 @@ AlarmDialog::AlarmDialog( QWidget *parent, const char *name )
   topLayout->addWidget( label );
 
   mIncidences.setAutoDelete( true );
-  
+
   mEventViewer = new KOEventViewer( topBox );
   topLayout->addWidget( mEventViewer );
 
@@ -77,19 +77,19 @@ AlarmDialog::AlarmDialog( QWidget *parent, const char *name )
   new QLabel( i18n("Suspend duration:"), suspendBox );
   mSuspendSpin = new QSpinBox( 1, 9999, 1, suspendBox );
   mSuspendSpin->setValue( 5 );  // default suspend duration
-  
+
   mSuspendUnit = new KComboBox( suspendBox );
   mSuspendUnit->insertItem( i18n("minute(s)") );
   mSuspendUnit->insertItem( i18n("hour(s)") );
   mSuspendUnit->insertItem( i18n("day(s)") );
   mSuspendUnit->insertItem( i18n("week(s)") );
-  
+
   connect( mSuspendSpin, SIGNAL( valueChanged(int) ), actionButton(User1), SLOT( setFocus() ) );
   connect( mSuspendUnit, SIGNAL( activated(int) ), actionButton(User1), SLOT( setFocus() ) );
   connect( mSuspendUnit, SIGNAL( activated(int) ), actionButton(User2), SLOT( setFocus() ) );
-  
+
   // showButton( User2/*3*/, false );
-  
+
   setMinimumSize( 300, 200 );
 }
 
@@ -137,7 +137,7 @@ void AlarmDialog::slotUser1()
     default:
       break;
   }
-    
+
   emit suspendSignal( unit * mSuspendSpin->value() );
   accept();
 }
@@ -148,35 +148,35 @@ void AlarmDialog::slotUser2()
     if ( kapp->startServiceByDesktopName( "korganizer", QString::null ) )
       KMessageBox::error( 0, i18n("Could not start KOrganizer.") );
   }
-  
-  kapp->dcopClient()->send( "korganizer", "KOrganizerIface", 
+
+  kapp->dcopClient()->send( "korganizer", "KOrganizerIface",
                             "editIncidence(QString)",
                              mIncidences.first()->uid() );
-  
-  // get desktop # where korganizer (or kontact) runs 
+
+  // get desktop # where korganizer (or kontact) runs
   QByteArray replyData;
   QCString object, replyType;
   object = kapp->dcopClient()->isApplicationRegistered( "kontact" ) ?
            "kontact-mainwindow#1" : "KOrganizer MainWindow";
   if (!kapp->dcopClient()->call( "korganizer", object,
-                            "getWinID()", QByteArray(), replyType, replyData, true, -1 ) ) {
+                            "getWinID()", 0, replyType, replyData, true, -1 ) ) {
   }
-  
+
   if ( replyType == "int" ) {
     int desktop, window;
     QDataStream ds( replyData, IO_ReadOnly );
     ds >> window;
     desktop = KWin::windowInfo( window ).desktop();
-    
+
     if ( KWin::currentDesktop() == desktop ) {
       KWin::iconifyWindow( winId(), false );
     }
     else
       KWin::setCurrentDesktop( desktop );
-    
+
     KWin::activateWindow( KWin::transientFor( window ) );
   }
-  
+
 }
 
 void AlarmDialog::eventNotification()
@@ -202,7 +202,7 @@ void AlarmDialog::eventNotification()
       }
     }
   }
-  
+
   if ( !beeped ) {
     KNotifyClient::beep();
   }
