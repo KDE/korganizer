@@ -380,6 +380,12 @@
       <default>false</default>
     </entry>
 
+    <entry type="Bool" name="FreeBusyFullDomainRetrieval">
+      <label>Use full email address for retrieval</label>
+      <whatsthis>With this setting, you can change the filename that will be fetched from the server. Without this checked, it will download a free/busy file called user@domain.ifb, for example nn@kde.org.ifb. Without this set, it will download user.ifb, for example nn.ifb.</whatsthis>
+      <default>false</default>
+    </entry>
+
     <entry type="String" name="FreeBusyRetrieveUrl">
       <label>Free/Busy Retrieval URL</label>
     </entry>

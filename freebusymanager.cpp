@@ -338,10 +338,13 @@ bool FreeBusyManager::processRetrieveQueue()
 
   KURL sourceURL = freeBusyUrl( email );
 
-  if ( !sourceURL.isValid() ) return false;
-
   kdDebug() << "FreeBusyManager::retrieveFreeBusy(): url: " << sourceURL.url()
             << endl;
+
+  if ( !sourceURL.isValid() ) {
+    kdDebug(5850) << "Invalid FB URL\n";
+    return false;
+  }
 
   FreeBusyDownloadJob *job = new FreeBusyDownloadJob( email, sourceURL, this,
                                                       "freebusy_download_job" );
@@ -389,7 +392,10 @@ KURL FreeBusyManager::freeBusyUrl( const QString &email )
   // Build the URL
   KURL sourceURL;
   sourceURL = KOPrefs::instance()->mFreeBusyRetrieveUrl;
-  sourceURL.setFileName( emailName + ".ifb" );
+  if ( KOPrefs::instance()->mFreeBusyFullDomainRetrieval )
+    sourceURL.setFileName( email + ".ifb" );
+  else
+    sourceURL.setFileName( emailName + ".ifb" );
   sourceURL.setUser( KOPrefs::instance()->mFreeBusyRetrieveUser );
   sourceURL.setPass( KOPrefs::instance()->mFreeBusyRetrievePassword );
 

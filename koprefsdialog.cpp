@@ -295,7 +295,7 @@ class KOPrefsDialogTime : public KPrefsModule
         addWidTime( KOPrefs::instance()->dayBeginsItem(), topFrame );
       topLayout->addWidget( dayBegins->label(), 1, 0 );
       topLayout->addWidget(dayBegins->timeEdit(), 1, 1 );
-      
+
       KPrefsWidTime *defaultTime =
             addWidTime( KOPrefs::instance()->startTimeItem(), topFrame );
       topLayout->addWidget( defaultTime->label(), 2, 0);
@@ -455,32 +455,32 @@ class KOPrefsDialogViews : public KPrefsModule
       QGroupBox *agendaGroup = new QGroupBox( 1, Horizontal,
                                               i18n("Agenda View"),
                                               topFrame );
-      
+
       QHBox *hourSizeBox = new QHBox( agendaGroup );
-      KPrefsWidInt *hourSize = 
+      KPrefsWidInt *hourSize =
           addWidInt( KOPrefs::instance()->hourSizeItem(), hourSizeBox );
       hourSize->spinBox()->setSuffix(i18n("suffix in the hour size spin box", " pixel"));
       new QWidget( hourSizeBox );
-      
+
       QHBox *nextDaysBox = new QHBox( agendaGroup );
-      KPrefsWidInt *nextDays = 
+      KPrefsWidInt *nextDays =
         addWidInt( KOPrefs::instance()->nextXDaysItem(), nextDaysBox );
       nextDays->spinBox()->setSuffix(i18n("suffix in the N days spin box", " days"));
       new QWidget( nextDaysBox );
-      
+
       KPrefsWidBool *marcusBainsEnabled =
           addWidBool( KOPrefs::instance()->marcusBainsEnabledItem(), agendaGroup );
-      
+
       KPrefsWidBool *marcusBainsShowSeconds =
           addWidBool( KOPrefs::instance()->marcusBainsShowSecondsItem(), agendaGroup );
       connect( marcusBainsEnabled->checkBox(), SIGNAL( toggled( bool ) ),
                marcusBainsShowSeconds->checkBox(), SLOT( setEnabled( bool ) ) );
-      
+
       addWidBool( KOPrefs::instance()->selectionStartsEditorItem(), agendaGroup );
-      
+
       topLayout->addWidget( agendaGroup );
-    
-    
+
+
       /*** Month View Group ***/
       QGroupBox *monthGroup = new QGroupBox( 1, Horizontal,
                                              i18n("Month View"),
@@ -491,7 +491,7 @@ class KOPrefsDialogViews : public KPrefsModule
                       monthGroup );
       topLayout->addWidget( monthGroup );
 
-    
+
       /*** Todo View Group ***/
       QGroupBox *todoGroup = new QGroupBox( 1, Horizontal,
                                             i18n("Todo View"),
@@ -947,6 +947,7 @@ void KOPrefsDialogGroupwareScheduling::usrReadConfig()
   mGroupwarePage->publishSavePassword->setChecked( KOPrefs::instance()->mFreeBusyPublishSavePassword );
 
   mGroupwarePage->retrieveEnable->setChecked( KOPrefs::instance()->mFreeBusyRetrieveAuto );
+  mGroupwarePage->fullDomainRetrieval->setChecked( KOPrefs::instance()->mFreeBusyFullDomainRetrieval );
   mGroupwarePage->retrieveUrl->setText( KOPrefs::instance()->mFreeBusyRetrieveUrl );
   mGroupwarePage->retrieveUser->setText( KOPrefs::instance()->mFreeBusyRetrieveUser );
   mGroupwarePage->retrievePassword->setText( KOPrefs::instance()->mFreeBusyRetrievePassword );
@@ -965,6 +966,7 @@ void KOPrefsDialogGroupwareScheduling::usrWriteConfig()
   KOPrefs::instance()->mFreeBusyPublishSavePassword = mGroupwarePage->publishSavePassword->isChecked();
 
   KOPrefs::instance()->mFreeBusyRetrieveAuto = mGroupwarePage->retrieveEnable->isChecked();
+  KOPrefs::instance()->mFreeBusyFullDomainRetrieval = mGroupwarePage->fullDomainRetrieval->isChecked();
   KOPrefs::instance()->mFreeBusyRetrieveUrl = mGroupwarePage->retrieveUrl->text();
   KOPrefs::instance()->mFreeBusyRetrieveUser = mGroupwarePage->retrieveUser->text();
   KOPrefs::instance()->mFreeBusyRetrievePassword = mGroupwarePage->retrievePassword->text();
