@@ -7,6 +7,7 @@
 #include <qhbox.h>
 #include <qvbox.h>
 #include <qpushbutton.h>
+#include <qtooltip.h>
 
 #include <kapp.h>
 #include <klocale.h>
@@ -282,17 +283,28 @@ KOMonthView::KOMonthView(CalObject *cal,
     
     // Create navigation buttons
     pixmap = loader->loadIcon("3uparrow",KIcon::User);
-    KONavButton *upYear = new KONavButton(pixmap,cFrame);    
+    KONavButton *upYear = new KONavButton(pixmap,cFrame);
+    QToolTip::add(upYear, i18n("Go back one year"));    
+
     pixmap = loader->loadIcon("2uparrow",KIcon::User);
     KONavButton *upMonth = new KONavButton(pixmap, cFrame);
+    QToolTip::add(upMonth, i18n("Go back one month"));    
+
     pixmap = loader->loadIcon("1uparrow",KIcon::User);
     KONavButton *upWeek = new KONavButton(pixmap, cFrame);
+    QToolTip::add(upWeek, i18n("Go back one week"));
+
     pixmap = loader->loadIcon("1downarrow",KIcon::User);
-    KONavButton *downWeek = new KONavButton(pixmap, cFrame);    
+    KONavButton *downWeek = new KONavButton(pixmap, cFrame); 
+    QToolTip::add(downWeek, i18n("Go forward one week"));  
+
     pixmap = loader->loadIcon("2downarrow",KIcon::User);
     KONavButton *downMonth = new KONavButton(pixmap, cFrame);    
+    QToolTip::add(downMonth, i18n("Go forward one month"));
+
     pixmap = loader->loadIcon("3downarrow",KIcon::User);
     KONavButton *downYear = new KONavButton(pixmap, cFrame);
+    QToolTip::add(downYear, i18n("Go forward one year"));
 
     connect(upYear,    SIGNAL(clicked()), this, SLOT(goBackYear()));
     connect(upMonth,   SIGNAL(clicked()), this, SLOT(goBackMonth()));

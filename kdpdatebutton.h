@@ -27,6 +27,8 @@ class KDateButton: public QLabel {
 
     void updateConfig();
 
+    QSize sizeHint () const ;
+
   public slots:
     void setDate(QDate newdate);
 
@@ -55,6 +57,8 @@ class KDateButton: public QLabel {
 
     QColor mDefaultBackColor;
     QColor mDefaultTextColor;
+
+    int mTodayMarginWidth;
 
     int my_index;
     QDate mDate;

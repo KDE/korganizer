@@ -23,7 +23,7 @@ alarmd_LDADD = versit/libversit.la $(LIB_KDEUI)
 libkorganizer_la_SOURCES =  calobject.cpp catdlg.cpp \
 	koagendaview.cpp koagenda.cpp koagendaitem.cpp \
 	kdateedit.cpp kdatenav.cpp \
-	kdpdatebutton.cpp komonthview.cpp koevent.cpp kpbutton.cpp \
+	kdpdatebutton.cpp komonthview.cpp koevent.cpp \
 	ksellabel.cpp \
 	ktimeedit.cpp main.cpp  \
 	searchdialog.cpp calendarview.cpp \
@@ -45,7 +45,7 @@ alarmd_SOURCES = alarmdaemon.cpp alarmmain.cpp calobject.cpp koevent.cpp \
 METASOURCES = AUTO
 
 noinst_HEADERS = komonthview.h calobject.h \
-	kpbutton.h catdlg.h koagendaview.h koagenda.h \
+	catdlg.h koagendaview.h koagenda.h \
 	koagendaitem.h \
 	kdateedit.h ksellabel.h \
 	kdatenav.h ksmalldaydisp.h \

@@ -3,6 +3,8 @@
 #include <qstring.h>
 #include <qtooltip.h>
 #include <qkeycode.h>
+#include <qpushbutton.h>
+#include <qlayout.h>
 
 #include <kapp.h>
 #include <klocale.h>
@@ -22,15 +24,14 @@ KDateNavigator::KDateNavigator(QWidget *parent,
 			       QDate startDate)
   : QFrame(parent, name)
 {
-  QPixmap pixmap;
-  KDateNavigator::calendar = calendar;
-  int i;
+  mCalendar = calendar;
   
   setFrameStyle(QFrame::NoFrame);
-  setBackgroundMode(PaletteBase);
+
+  QGridLayout *topLayout = new QGridLayout(this,8,8);
 
   if (! startDate.isValid()) {
-    debug("KDateNavigator::KDateNavigator(): an invalid date was passed as a parameter!");
+    qDebug("KDateNavigator::KDateNavigator(): an invalid date was passed as a parameter!");
     startDate = QDate::currentDate();
   }
 
@@ -43,41 +44,57 @@ KDateNavigator::KDateNavigator(QWidget *parent,
   ctrlFrame = new QFrame(this, "KDateNavigator::CtrlFrame");
   ctrlFrame->setFrameStyle(QFrame::Panel|QFrame::Raised);
   ctrlFrame->setLineWidth(1);
+
+  topLayout->addMultiCellWidget(ctrlFrame,0,0,0,7);
   
   QFont tfont = font();
   tfont.setPointSize(10);
   tfont.setBold(FALSE);
 
-  KIconLoader *loader = KGlobal::iconLoader();
-
-  pixmap = loader->loadIcon("2leftarrow",KIcon::User);
-  prevYear  = new KPButton(pixmap, ctrlFrame);
-  prevYear->setFont(tfont);
-  prevYear->resize(16,16);
+  // Create backward navigation buttons
+  prevYear = new QPushButton(ctrlFrame);
+  prevYear->setPixmap(UserIcon("2leftarrow"));
   QToolTip::add(prevYear, i18n("Previous Year"));
 
-  pixmap = loader->loadIcon("1leftarrow",KIcon::User);
-  prevMonth = new KPButton(pixmap, ctrlFrame);
-  prevMonth->setFont(tfont);
-  prevMonth->setFixedSize(prevYear->size());
+  prevMonth = new QPushButton(ctrlFrame);
+  prevMonth->setPixmap(UserIcon("1leftarrow"));
   QToolTip::add(prevMonth, i18n("Previous Month"));
 
-  pixmap = loader->loadIcon("1rightarrow",KIcon::User);
-  nextMonth = new KPButton(pixmap, ctrlFrame);
-  nextMonth->setFont(tfont);
-  nextMonth->setFixedSize(prevYear->size());
+  // Create forward navigation buttons
+  nextMonth = new QPushButton(ctrlFrame);
+  nextMonth->setPixmap(UserIcon("1rightarrow"));
   QToolTip::add(nextMonth, i18n("Next Month"));
 
-  pixmap = loader->loadIcon("2rightarrow",KIcon::User);
-  nextYear  = new KPButton(pixmap, ctrlFrame);
-  nextYear->setFont(tfont);
-  nextYear->setFixedSize(prevYear->size());
+  nextYear = new QPushButton(ctrlFrame);
+  nextYear->setPixmap(UserIcon("2rightarrow"));
   QToolTip::add(nextYear, i18n("Next Year"));
-  
+
+  // Create month name label
   dateLabel = new QLabel(ctrlFrame);
   dateLabel->setFont(tfont);
   dateLabel->setAlignment(AlignCenter);
-  dateLabel->setFixedHeight(prevYear->height()-2);
+
+  // Set minimum width to width of widest month name label
+  int i;
+  int maxwidth = 0;
+  QFontMetrics fm = dateLabel->fontMetrics();
+  for(i=1;i<=12;++i) {
+    int width = fm.width(KGlobal::locale()->monthName(i) + " 2000");
+    if (width > maxwidth) maxwidth = width;
+  }
+  dateLabel->setMinimumWidth(maxwidth);
+
+  // set up control frame layout
+  QBoxLayout *ctrlLayout = new QHBoxLayout(ctrlFrame,1);
+  ctrlLayout->addWidget(prevYear,3);
+  ctrlLayout->addWidget(prevMonth,3);
+  ctrlLayout->addStretch(1);
+  ctrlLayout->addSpacing(4);
+  ctrlLayout->addWidget(dateLabel);
+  ctrlLayout->addSpacing(4);
+  ctrlLayout->addStretch(1);
+  ctrlLayout->addWidget(nextMonth,3);
+  ctrlLayout->addWidget(nextYear,3);
 
   connect(prevYear, SIGNAL(clicked()), this, SLOT(goPrevYear()));
   connect(prevMonth, SIGNAL(clicked()), this, SLOT(goPrevMonth()));
@@ -85,9 +102,10 @@ KDateNavigator::KDateNavigator(QWidget *parent,
   connect(nextYear, SIGNAL(clicked()), this, SLOT(goNextYear()));
 
   viewFrame = new QFrame(this, "KDateNavigator::ViewFrame");
-  viewFrame->setFrameStyle(QFrame::NoFrame);
-  viewFrame->setLineWidth(0);
-  //viewFrame->setBackgroundColor(PaletteBase);
+  viewFrame->setFrameStyle(QFrame::Panel|QFrame::Sunken);
+  viewFrame->setLineWidth(1);
+ 
+  topLayout->addMultiCellWidget(viewFrame,2,7,1,7);
 
   // get the day of the week on the first day
   QDate dayone(m_MthYr.year(), 
@@ -96,47 +114,23 @@ KDateNavigator::KDateNavigator(QWidget *parent,
 
   // Set up the heading fields.
   for(i=0; i<7; i++) {
-    headings[i] = new QLabel("", viewFrame);
+    headings[i] = new QLabel("",this);
     headings[i]->setFont(QFont("Arial", 10, QFont::Bold));
     headings[i]->setAlignment(AlignCenter);
+    
+    topLayout->addWidget(headings[i],1,i+1);
   }
 
-  headingSep = new QFrame(viewFrame, "KDateNavigator::HeadingSep");
-  headingSep->setFrameStyle(QFrame::HLine|QFrame::Plain);
-  headingSep->setLineWidth(1);
-  headingSep->setFixedHeight(1);
-
   // Create the weeknumber labels
-
-  QPalette wkno_Palette = palette();
-  QColorGroup my_Group = QColorGroup(palette().active().base(),
-				     palette().active().base(),
-				     palette().active().base(),
-				     palette().active().base(),
-				     palette().active().base(),
-				     palette().active().mid(),
-				     palette().active().base());
-
-// Temporarily disabled.
-//  wkno_Palette.setActive(my_Group);
-//  wkno_Palette.setInactive(my_Group);
-  
   for(i=0; i<7; i++) {
-    weeknos[i] = new QLabel(viewFrame);
-    weeknos[i]->setPalette(wkno_Palette);
-    weeknos[i]->setAlignment(AlignRight | AlignVCenter);
+    weeknos[i] = new QLabel(this);
+    weeknos[i]->setAlignment(AlignCenter);
     weeknos[i]->setFont(QFont("Arial", 10));
     if(!show_week_nums) {
       weeknos[i]->hide();
     }
-  }
-  weeknumSep = new QFrame(viewFrame, "KDateNavigator::WeeknumSep");
-  weeknumSep->setFrameStyle(QFrame::VLine|QFrame::Plain);
-  weeknumSep->setLineWidth(1);
-  weeknumSep->setFixedWidth(1);
-  weeknumSep->setBackgroundColor(PaletteMid);
-  if(!show_week_nums) {
-    weeknumSep->hide();
+    
+    topLayout->addWidget(weeknos[i],i+1,0);
   }
 
   // If month begins on Monday and Monday is first day of week,
@@ -145,10 +139,15 @@ KDateNavigator::KDateNavigator(QWidget *parent,
   int index = 0;
   //  int daysInMonth = m_MthYr.daysInMonth();
 
+  QGridLayout *dateLayout = new QGridLayout(viewFrame,6,7,1,0);
+
+  int row,col;
   for(i = 0; i < 42; i++) {
     index = i + (KGlobal::locale()->weekStartsMonday() ? 1 : 0) - m_fstDayOfWk - nextLine;
-    buttons[i] = new KDateButton(dayone.addDays(index), i, 
-				 calendar, viewFrame);
+    buttons[i] = new KDateButton(dayone.addDays(index),i,mCalendar,viewFrame);
+    row = i/7;
+    col = i-row*7;
+    dateLayout->addWidget(buttons[i],row,col);
     connect(buttons[i], SIGNAL(selected(QDate, int, bool)),
             SLOT(addSelection(QDate, int, bool)));
     connect(buttons[i], SIGNAL(updateMe(int)),
@@ -164,73 +163,8 @@ KDateNavigator::KDateNavigator(QWidget *parent,
 
 KDateNavigator::~KDateNavigator()
 {
-  // clean up widgets
-  delete prevMonth;
-  delete prevYear;
-  delete nextYear;
-  delete nextMonth;
-
-  selectedDates.clear();
 }
 
-void KDateNavigator::resizeEvent(QResizeEvent *e) 
-{
-  int column_width, row_height, i, start_x, wnos_width;
-  
-  setUpdatesEnabled(FALSE);
-  // these shouldn't be hardcoded, and they don't look "quite right..."
-  ctrlFrame->setFixedSize(e->size().width(), 18);
-  viewFrame->setFixedSize(e->size().width()+3, e->size().height() - 
-			  ctrlFrame->size().height() + 4);
-
-  ctrlFrame->move(0,0);
-
-  prevYear->move(5,1);
-  prevMonth->move(prevYear->geometry().topRight().x()+2, 1);
-  nextYear->move(ctrlFrame->width()-nextYear->width()-5, 1);
-  nextMonth->move(nextYear->geometry().topLeft().x()-nextMonth->width()-2, 1);
-  dateLabel->setFixedSize(ctrlFrame->width()-prevYear->width()*4-14,
-			  dateLabel->height());
-  dateLabel->move(ctrlFrame->width()/2-dateLabel->width()/2, 1);
-
-  viewFrame->move(0, ctrlFrame->size().height());
-
-  // 1 for the upper separator line and 2 for the lower margin
-  row_height = (viewFrame->height() - 4) / 7;
-  if(m_bShowWeekNums) {
-    weeknos[0]->setText("99");
-    wnos_width = weeknos[0]->sizeHint().width() + 1;
-    column_width = (viewFrame->width() - wnos_width) / 7;
-    start_x = wnos_width + 1;
-    // plus 1 for the line
-    weeknos[0]->setText(""); // clear it out;
-    weeknos[0]->setFixedSize(wnos_width + 1, row_height + 1);
-    weeknos[0]->move(0,0);
-    for(i = 1; i < 7; i++) {
-      weeknos[i]->setFixedSize(wnos_width, row_height);
-      weeknos[i]->move(0, i * row_height + 1);
-    }
-    weeknumSep->move(start_x-1, row_height+2);
-  } else {
-    column_width = (viewFrame->width())/7;
-    start_x = 0;
-  }
-  for(i=0; i<7; i++) {
-    headings[i]->setFixedSize(column_width, row_height);
-    headings[i]->move(start_x+i*column_width, 0);
-  }
-  for(i=0; i<42; i++) {
-    buttons[i]->setFixedSize(column_width, row_height);
-    buttons[i]->move(start_x+(i%7)*column_width,
-		     (i/7+1)*row_height+1);
-  }
-  headingSep->setFixedWidth(7*column_width);
-  headingSep->move(start_x, row_height);
-  weeknumSep->setFixedHeight(6*row_height);
-
-  setUpdatesEnabled(TRUE);
-  repaint();
-}
 
 void KDateNavigator::updateDates()
 {
@@ -256,8 +190,6 @@ void KDateNavigator::updateDates()
 
 void KDateNavigator::updateView()
 {
-  int i;
-
   setUpdatesEnabled(FALSE);
 
   // compute the label at the top of the navigator
@@ -265,6 +197,7 @@ void KDateNavigator::updateView()
                   QString::number(m_MthYr.year());
   dateLabel->setText(dtstr);
   
+  int i;
   for(i = 0; i < 42; i++) {
     updateButton(i);
   }
@@ -289,45 +222,16 @@ void KDateNavigator::updateView()
 
 void KDateNavigator::updateConfig()
 {
-  char sDay[2] = "*";
-  const QString monHeaders[] = { i18n("Monday"),    i18n("Tuesday"),
-                                 i18n("Wednesday"), i18n("Thursday"),
-                                 i18n("Friday"),    i18n("Saturday"),
-                                 i18n("Sunday")
-                               };
-  const QString sunHeaders[] = { i18n("Sunday"),    i18n("Monday"),
-                                 i18n("Tuesday"),   i18n("Wednesday"),
-                                 i18n("Thursday"),  i18n("Friday"),
-                                 i18n("Saturday")
-                               };
-
-  QPalette heading_Palette(palette());
-
-/*  
-  config.setGroup("Colors");
-
-  QColor hiliteColor(config.readColorEntry("List Color", &kapp->winStyleHighlightColor()));
-  QPalette heading_Palette(palette());
-
-  QColorGroup my_Group = QColorGroup(palette().active().base(),
-                  palette().active().base(),
-                  palette().active().base(),
-                  palette().active().base(),
-                  palette().active().base(),
-                  hiliteColor,
-                  palette().active().base());
-*/
-  
-// Temporarily disabled.
-//  heading_Palette.setActive(my_Group);
-//  heading_Palette.setInactive(my_Group);
- 
-  curHeaders = (KGlobal::locale()->weekStartsMonday() ? monHeaders : sunHeaders);
+  int day;
   for(int i=0; i<7; i++) {
     // take the first letter of the day name to be the abbreviation
-    sDay[0] = curHeaders[i][0];
-    headings[i]->setText(sDay);
-    headings[i]->setPalette(heading_Palette);
+    if (KGlobal::locale()->weekStartsMonday()) {
+      day = i+1;
+    } else {
+      if (i==8) day = 1;
+      else day = i;
+    }
+    headings[i]->setText(KGlobal::locale()->weekDayName(day).left(1));
   }
   updateDates();
 
@@ -349,7 +253,7 @@ void KDateNavigator::updateButton(int i)
   //  int daysInMonth = m_MthYr.daysInMonth();
 
   // check right away that a valid calendar is available.
-  ASSERT(calendar != 0);
+  ASSERT(mCalendar != 0);
 
   //  index = i + (KGlobal::locale()->weekStartsMonday() ? 1 : 0) - m_fstDayOfWk - nextLine;
   /*if (buttons[i]->date().month() == m_MthYr.month())
@@ -359,7 +263,7 @@ void KDateNavigator::updateButton(int i)
 
   // check calendar for events on this day
   bool hasEvents = false;
-  QList<KOEvent> events = calendar->getEventsForDate(buttons[i]->date());
+  QList<KOEvent> events = mCalendar->getEventsForDate(buttons[i]->date());
   KOEvent *event;
   for(event=events.first();event;event=events.next()) {
     ushort recurType = event->doesRecur();
@@ -407,7 +311,7 @@ void KDateNavigator::updateButton(int i)
   // Calculate holidays. Sunday is also treated as holiday.
   if (!KGlobal::locale()->weekStartsMonday() && (float(i)/7 == float(i/7)) ||
       KGlobal::locale()->weekStartsMonday() && (float(i-6)/7 == float((i-6)/7)) ||
-      !calendar->getHolidayForDate(buttons[i]->date()).isEmpty()) {
+      !mCalendar->getHolidayForDate(buttons[i]->date()).isEmpty()) {
     buttons[i]->setHoliday();
   } else {
     buttons[i]->setHoliday(false);
@@ -442,7 +346,7 @@ const QDateList KDateNavigator::getSelected()
   for (tmpDate = selectedDates.first(); tmpDate;
        tmpDate = selectedDates.next()) {
     if (!tmpDate->isValid()) {
-      debug("Null or invalid date selected!!!");
+      qDebug("Null or invalid date selected!!!");
       selectedDates.clear();
       selectedDates.append(new QDate(QDate::currentDate()));
       emit datesSelected(selectedDates);
@@ -575,7 +479,7 @@ void KDateNavigator::fixupSelectedDates(int, int)
   for (int i = 0; i < 42; i++) {
     if (buttons[i]->isSelected()) {
       if (! buttons[i]->date().isValid())
-        debug("KDateNavigator::fixupSelectedDates(): invalid date stored on buttons[%i]; ignoring", i);
+        qDebug("KDateNavigator::fixupSelectedDates(): invalid date stored on buttons[%i]; ignoring", i);
       else
         selectedDates.inSort(new QDate(buttons[i]->date()));
     }
@@ -596,7 +500,7 @@ void KDateNavigator::selectDates(const QDateList dateList)
       if (!it.current()->isValid()) {
         selectedDates.clear();
         selectedDates.append(new QDate(QDate::currentDate()));
-        debug("KDateNavigator::selectDates(const QDateList): an invalid date was passed as a parameter!");
+        qDebug("KDateNavigator::selectDates(const QDateList): an invalid date was passed as a parameter!");
         emit datesSelected(selectedDates);
       }
     }
@@ -619,7 +523,7 @@ void KDateNavigator::selectDates(const QDateList dateList)
 void KDateNavigator::selectDates(QDate qd)
 {
   if (! qd.isValid()) {
-    debug("KDateNavigator::selectDates(QDate): an invalid date was passed as a parameter!");
+    qDebug("KDateNavigator::selectDates(QDate): an invalid date was passed as a parameter!");
     qd = QDate::currentDate();
   }
 
@@ -641,7 +545,7 @@ void KDateNavigator::addSelection(QDate selDate, int index, bool ctrlPressed)
   int extraDays;
 
   if (! selDate.isValid()) {
-    debug("KDateNavigator::addSelection(): invalid date passed as a parameter!");
+    qDebug("KDateNavigator::addSelection(): invalid date passed as a parameter!");
     return;
   }
 

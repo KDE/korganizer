@@ -26,6 +26,10 @@ KDateButton::KDateButton(QDate date, int index, CalObject *calendar,
   mToday = false;
   mHoliday = false;
 
+  mTodayMarginWidth = 2;
+
+//  setBackgroundMode(PaletteBase);
+
   mDefaultBackColor = palette().active().base();
   mDefaultTextColor = palette().active().foreground();
 
@@ -94,7 +98,7 @@ void KDateButton::setToday(bool today)
   mToday = today;
   
   if (mToday) {
-    setLineWidth(2);
+    setLineWidth(mTodayMarginWidth);
   } else {
     setLineWidth(0);
   }
@@ -237,4 +241,17 @@ void KDateButton::dropEvent(QDropEvent *e)
     qDebug("KDateButton::dropEvent(): Event from drop not decodable");
     e->ignore();
   }
+}
+
+QSize KDateButton::sizeHint () const
+{
+  // Prefered size is independent of today margin or bold font as event
+  // indicator. Return a standard value based on font size and today margin.
+  // May not be perfect in all cases.
+  
+  QFontMetrics fm = fontMetrics();
+  QSize size = fm.size(SingleLine,"30");
+  int add = 2*mTodayMarginWidth + 1;
+  size += QSize(add,add);  
+  return size;
 }

@@ -275,10 +275,9 @@ protected:
   // avoid things being put under the toolbar
   QSplitter    *panner;
   QFrame       *mainFrame;
-  QFrame       *leftFrame;
+  QSplitter    *leftFrame;
   QWidgetStack *rightFrame;
 
-  QFrame         *dateNavFrame;
   KDateNavigator *dateNavigator;       // widget showing small month view.
 
   KOAgendaView   *agendaView;          // "week" view

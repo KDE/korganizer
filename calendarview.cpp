@@ -76,48 +76,39 @@ CalendarView::CalendarView(QWidget *parent,const char *name)
   QBoxLayout *topLayout = new QVBoxLayout(this);
 
   // create the main layout frames.
-  panner = new QSplitter(QSplitter::Horizontal, this, "CalendarView::Panner");
+  panner = new QSplitter(QSplitter::Horizontal,this,"CalendarView::Panner");
   topLayout->addWidget(panner);
 
-  leftFrame = new QFrame(panner, "CalendarView::LeftFrame");
+  leftFrame = new QSplitter(QSplitter::Vertical,panner,
+                            "CalendarView::LeftFrame");
+//  leftFrame = new QFrame(panner, "CalendarView::LeftFrame");
   rightFrame = new QWidgetStack(panner, "CalendarView::RightFrame");
 
   mOptionsDialog = new KOOptionsDialog(this);
   connect(mOptionsDialog, SIGNAL(configChanged()),
 	  this, SLOT(updateConfig()));
 
-  QVBoxLayout *layoutLeftFrame = new QVBoxLayout(leftFrame, 1, -1,
-						 "CalendarView::layoutLeftFrame");
-  dateNavFrame = new QFrame(leftFrame, "CalendarView::DateNavFrame");
-  dateNavFrame->setFrameStyle(QFrame::Panel|QFrame::Sunken);
-
-  dateNavigator = new KDateNavigator(dateNavFrame, mCalendar, TRUE,
+//  QVBoxLayout *layoutLeftFrame = new QVBoxLayout(leftFrame, 1, -1,
+//						 "CalendarView::layoutLeftFrame");
+  dateNavigator = new KDateNavigator(leftFrame, mCalendar, TRUE,
                         "CalendarView::DateNavigator", QDate::currentDate());
-  dateNavigator->move(2,2);
-  dateNavigator->resize(160, 150);
-
-  dateNavFrame->resize(dateNavigator->width()+4, dateNavigator->height()+4);
-  dateNavFrame->setMinimumSize(dateNavFrame->size());
-  dateNavFrame->setFixedHeight(dateNavigator->height());
-  
-  layoutLeftFrame->addWidget(dateNavFrame);
-  layoutLeftFrame->addSpacing(5);
+//  layoutLeftFrame->addWidget(dateNavigator);
 
 //  if (!filename.isEmpty()) initCalendar(filename);
 
-  // create the main data display views.
   todoList   = new KOTodoView(mCalendar, leftFrame, "CalendarView::TodoList");
-  layoutLeftFrame->addWidget(todoList);
+//  layoutLeftFrame->addWidget(todoList);
 
+  // create the main data display views.
   todoView   = new KOTodoView(mCalendar, rightFrame, "CalendarView::TodoView");
   rightFrame->addWidget(todoView,0);
 
   agendaView = new KOAgendaView(mCalendar, rightFrame, "CalendarView::AgendaView");
-  rightFrame->addWidget(agendaView,1);//  layout2->addWidget(agendaView);
+  rightFrame->addWidget(agendaView,1);
   mCalendarViews.append(agendaView);
 
   listView   = new KOListView(mCalendar, rightFrame, "CalendarView::ListView");
-  rightFrame->addWidget(listView,2);//  layout3->addWidget(listView);
+  rightFrame->addWidget(listView,2);
   mCalendarViews.append(listView);
 
   monthView = new KOMonthView(mCalendar, rightFrame, "CalendarView::MonthView");
@@ -125,6 +116,7 @@ CalendarView::CalendarView(QWidget *parent,const char *name)
   mCalendarViews.append(monthView);
 
   readCurrentView();
+
 /*
   // List classnames of available views
   QObject *obj;
@@ -263,9 +255,14 @@ void CalendarView::readSettings()
 
   config.setGroup("General");
 
-  QValueList<int> sizes = config.readIntListEntry("Separator");
+  QValueList<int> sizes = config.readIntListEntry("Separator1");
   if (sizes.count() == 2) {
     panner->setSizes(sizes);
+  }
+
+  sizes = config.readIntListEntry("Separator2");
+  if (sizes.count() == 2) {
+    leftFrame->setSizes(sizes);
   }
 
   // Set current view from Entry "Current View"
@@ -303,7 +300,10 @@ void CalendarView::writeSettings()
   config.setGroup("General");
 
   QValueList<int> list = panner->sizes();
-  config.writeEntry("Separator",list);
+  config.writeEntry("Separator1",list);
+
+  list = leftFrame->sizes();
+  config.writeEntry("Separator2",list);
 
   QString tmpStr;
   if (currentView) tmpStr = currentView->className();

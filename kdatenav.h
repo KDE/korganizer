@@ -9,7 +9,6 @@
 
 #include "qdatelist.h"
 #include "calobject.h"
-#include "kpbutton.h"
 #include "kdpdatebutton.h"
 
 class KDateNavigator: public QFrame {
@@ -44,14 +43,13 @@ class KDateNavigator: public QFrame {
 
  protected:
    void updateDates();
-   void resizeEvent(QResizeEvent *);
 
  private:
    QFrame   *ctrlFrame;
-   KPButton *prevYear;
-   KPButton *prevMonth;
-   KPButton *nextMonth;
-   KPButton *nextYear;
+   QPushButton *prevYear;
+   QPushButton *prevMonth;
+   QPushButton *nextMonth;
+   QPushButton *nextYear;
    QLabel *dateLabel;
    QFrame *viewFrame;
    QFrame *headingSep;
@@ -69,7 +67,7 @@ class KDateNavigator: public QFrame {
    int dayToIndex(int dayNum);
    void fixupSelectedDates(int yr, int mth);
 
-   CalObject *calendar;
+   CalObject *mCalendar;
 
    const QString *curHeaders;
 
