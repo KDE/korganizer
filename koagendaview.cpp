@@ -25,6 +25,7 @@
 TimeLabels::TimeLabels(int rows,QWidget *parent,const char *name,WFlags f) :
   QScrollView(parent,name,f)
 {
+  mTimeFormat = 0;
   mRows = rows;
 
   mCellHeight = 40;
@@ -42,8 +43,22 @@ void TimeLabels::setCellHeight(int height)
   mCellHeight = height;
 }
 
+/*
+  Optimization so that only the "dirty" portion of the scroll view
+  is redrawn.  Unfortunately, this is not called by default paintEvent() method.
+*/
 void TimeLabels::drawContents(QPainter *p,int cx, int cy, int cw, int ch)
 {
+  // bug:  the parameters cx, cy, cw, ch are the areas that need to be
+  //       redrawn, not the area of the widget.  unfortunately, this
+  //       code assumes the latter...
+
+  // now, for a workaround...
+  // these two assignments fix the weird redraw bug
+  cx = contentsX() + 2;
+  cw = contentsWidth() - 2;
+  // end of workaround
+
   int cell = ((int)(cy/mCellHeight));
   int y = cell * mCellHeight;
   QFontMetrics fm = fontMetrics();
@@ -55,7 +70,6 @@ void TimeLabels::drawContents(QPainter *p,int cx, int cy, int cw, int ch)
     p->drawLine(cx,y,cx+cw,y);
     hour.setNum(cell);
     suffix = "am";
-//    debug(hour);
 
     // handle 24h and am/pm time formats
     switch (mTimeFormat)
@@ -63,6 +77,7 @@ void TimeLabels::drawContents(QPainter *p,int cx, int cy, int cw, int ch)
       // am/pm format
       case 1:
       {
+        //debug("am/pm format");
         if (cell > 11) suffix = "pm";
         if (cell == 0) hour.setNum(12);
         if (cell > 12) hour.setNum(cell - 12);
@@ -72,6 +87,7 @@ void TimeLabels::drawContents(QPainter *p,int cx, int cy, int cw, int ch)
       // 24h time
       case 0:
       {
+        //debug("24h format");
         suffix = ":00";
         break;
       }
@@ -117,7 +133,7 @@ void TimeLabels::setTimeFormat(int format)
 }
 
 /** updates widget's internal state */
-void TimeLabels::updateConfig(KConfig* config)
+void TimeLabels::updateConfig(KConfig *config)
 {
   // set the font
   config->setGroup("Fonts");
@@ -147,6 +163,17 @@ void TimeLabels::setAgenda(KOAgenda* agenda)
   mAgenda = agenda;
 }
 
+
+/** This is called in response to repaint() */
+void TimeLabels::paintEvent(QPaintEvent*)
+{
+//  debug("paintevent...");
+  // this is another hack!
+//  QPainter painter(this);
+  //QString c
+  repaintContents(contentsX(), contentsY(), visibleWidth(), visibleHeight());
+}
+
 ////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////
@@ -157,8 +184,6 @@ KOAgendaView::KOAgendaView(CalObject *cal,QWidget *parent,const char *name) :
   mStartDate = QDate::currentDate();
   mWeekStartsMonday = true;
   mStartHour = 8;
-
-  mConfig = new KConfig(locate("config","korganizerrc"));
                          
   mLayoutDayLabels = 0;
   mDayLabelsFrame = 0;
@@ -225,7 +250,6 @@ KOAgendaView::KOAgendaView(CalObject *cal,QWidget *parent,const char *name) :
 
 KOAgendaView::~KOAgendaView()
 {
-  delete mConfig;
 }
 
 void KOAgendaView::createDayLabels()
@@ -272,7 +296,7 @@ QList<KOEvent> KOAgendaView::getSelected()
 
 void KOAgendaView::updateView()
 {
-  qDebug("KOAgendaView::updateView()");
+  qDebug("KOAgendaView::updateView()\n\n");
   fillAgenda();
 }
 
@@ -283,16 +307,23 @@ void KOAgendaView::updateView()
 */
 void KOAgendaView::updateConfig()
 {
+//  debug("KOAgendaView::updateConfig()");
+
+  KConfig config(locate("config","korganizerrc"));
+
   // update koagendaview members
-  mWeekStartsMonday = mConfig->readBoolEntry("Week Starts Monday", true);
+  mWeekStartsMonday = config.readBoolEntry("Week Starts Monday", true);
 
   // update config for children
-  mTimeLabels->updateConfig(mConfig);
-  mAgenda->updateConfig(mConfig);
+  mTimeLabels->updateConfig(&config);
+  mAgenda->updateConfig(&config);
 
   // widget synchronization
   //TODO: find a better way, maybe signal/slot
   mTimeLabels->positionChanged();
+
+  // for some reason, this needs to be called explicitly
+  mTimeLabels->repaint();
 }
 
 
@@ -637,5 +668,4 @@ void KOAgendaView::newEventAllDay(int gx, int )
 {
   emit newEventSignal(mStartDate.addDays(gx));
 }
-
 

@@ -41,10 +41,13 @@ class TimeLabels : public QScrollView {
     virtual int minimumWidth() const;
 
     /** updates widget's internal state */
-    void updateConfig(KConfig* config);
+    void updateConfig(KConfig *);
 
     /**  */
     void setAgenda(KOAgenda* agenda);
+
+    /**  */
+    virtual void paintEvent(QPaintEvent* e);
 
   public slots:
     /** update time label positions */
@@ -152,7 +155,6 @@ class KOAgendaView: public KOBaseView {
     QDateList mSelectedDates;  // List of dates to be displayed
     int mViewType;
 
-    KConfig *mConfig;
     bool mWeekStartsMonday;
     int mStartHour;
 };
