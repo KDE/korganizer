@@ -60,9 +60,13 @@ KODialogManager::~KODialogManager()
   delete mIncomingDialog;
   delete mOptionsDialog;
   delete mSearchDialog;
+#ifndef KORG_NOARCHIVE
   delete mArchiveDialog;
+#endif
   delete mFilterEditDialog;
+#ifndef KORG_NOPLUGINS
   delete mPluginDialog;
+#endif
 }
 
 OutgoingDialog *KODialogManager::outgoingDialog()

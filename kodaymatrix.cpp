@@ -34,14 +34,16 @@
 #include <libkcal/icaldrag.h>
 #include <libkcal/dndfactory.h>
 
-#include "koprefs.h"
-#include "kodaymatrix.h"
-#include "kodaymatrix.moc"
+#include <calendarsystem/kcalendarsystem.h>
 
 #ifndef KORG_NOPLUGINS
 #include "kocore.h"
 #endif
+#include "koprefs.h"
+#include "koglobals.h"
 
+#include "kodaymatrix.h"
+#include "kodaymatrix.moc"
 
 // ============================================================================
 //  D Y N A M I C   T I P
@@ -182,7 +184,7 @@ void KODayMatrix::recalculateToday()
     today = -1;
     for (int i=0; i<NUMDAYS; i++) {
       days[i] = startdate.addDays(i);
-      daylbls[i] = QString::number( KOCore::self()->calendarSystem()->day( days[i] ));
+      daylbls[i] = QString::number( KOGlobals::self()->calendarSystem()->day( days[i] ));
       
       // if today is in the currently displayed month, hilight today
       if (days[i].year() == QDate::currentDate().year() &&
@@ -256,7 +258,7 @@ void KODayMatrix::updateView(QDate actdate)
 #else
     QString holiStr = QString::null;
 #endif
-   if ( (KOCore::self()->calendarSystem()->dayOfTheWeek(days[i]) == KOCore::self()->calendarSystem()->weekDayOfPray()) ||
+   if ( (KOGlobals::self()->calendarSystem()->dayOfTheWeek(days[i]) == KOGlobals::self()->calendarSystem()->weekDayOfPray()) ||
         !holiStr.isEmpty()) {
       if (holiStr.isNull()) holiStr = "";
       mHolidays[i] = holiStr;
@@ -287,7 +289,7 @@ QString KODayMatrix::getHolidayLabel(int offset)
 
 int KODayMatrix::getDayIndexFrom(int x, int y)
 {
-  return 7*(y/daysize.height()) + (QApplication::reverseLayout() ? 
+  return 7*(y/daysize.height()) + (KOGlobals::self()->reverseLayout() ? 
             6 - x/daysize.width() : x/daysize.width());
 }
 
@@ -457,7 +459,7 @@ void KODayMatrix::paintEvent(QPaintEvent * pevent)
   int dwidth = daysize.width();
   int row,col;
   int selw, selh;
-  bool isRTL = QApplication::reverseLayout();
+  bool isRTL = KOGlobals::self()->reverseLayout();
 
   // draw background and topleft frame
   p.fillRect(pevent->rect(), mDefaultBackColor);
@@ -500,7 +502,7 @@ void KODayMatrix::paintEvent(QPaintEvent * pevent)
     col = isRTL ? 6-(i-row*7) : i-row*7;
 
     // if it is the first day of a month switch color from normal to shaded and vice versa
-    if ( KOCore::self()->calendarSystem()->day( days[i] ) == 1) {
+    if ( KOGlobals::self()->calendarSystem()->day( days[i] ) == 1) {
       if (actcol == mDefaultTextColorShaded) {
         actcol = mDefaultTextColor;
       } else {

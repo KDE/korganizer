@@ -32,6 +32,7 @@
 #include <qcombobox.h>
 #include <qlistview.h>
 #include <qradiobutton.h>
+#include <qlayout.h>
 
 #include <ktextedit.h>
 #include <krestrictedline.h>

@@ -111,7 +111,7 @@ void KOEditorGeneral::initDescription(QWidget *parent,QBoxLayout *topLayout)
   mDescriptionEdit->append("");
   mDescriptionEdit->setReadOnly(false);
   mDescriptionEdit->setOverwriteMode(false);
-  mDescriptionEdit->setWordWrap(QTextEdit::WidgetWidth);
+  mDescriptionEdit->setWordWrap( KTextEdit::WidgetWidth );
   topLayout->addWidget(mDescriptionEdit);
 }
 

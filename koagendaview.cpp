@@ -48,9 +48,12 @@
 #include <libkcal/icaldrag.h>
 #include <libkcal/dndfactory.h>
 
+#include <calendarsystem/kcalendarsystem.h>
+
 #ifndef KORG_NOPLUGINS
 #include "kocore.h"
 #endif
+#include "koglobals.h"
 #include "koprefs.h"
 #include "koagenda.h"
 #include "koagendaitem.h"
@@ -221,7 +224,7 @@ void EventIndicator::drawContents(QPainter *p)
   for(i=0;i<mColumns;++i) {
     if (mEnabled[i]) {
       int cellWidth = contentsRect().right()/mColumns;
-      int xOffset = QApplication::reverseLayout() ? 
+      int xOffset = KOGlobals::self()->reverseLayout() ? 
                (mColumns - 1 - i)*cellWidth + cellWidth/2 -mPixmap.width()/2 :
                i*cellWidth + cellWidth/2 -mPixmap.width()/2;
       p->drawPixmap(QPoint(xOffset,0),mPixmap);
@@ -257,7 +260,7 @@ KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name) :
   mDayLabelsFrame = 0;
   mDayLabels = 0;
 
-  bool isRTL = QApplication::reverseLayout();
+  bool isRTL = KOGlobals::self()->reverseLayout();
 
   if ( KOPrefs::instance()->mVerticalScreen ) {
     mExpandedPixmap = SmallIcon( "1downarrow" );
@@ -437,10 +440,10 @@ void KOAgendaView::createDayLabels()
 
     QLabel *dayLabel = new QLabel(mDayLabels);
 
-    int dW = KOCore::self()->calendarSystem()->dayOfTheWeek(date);
+    int dW = KOGlobals::self()->calendarSystem()->dayOfTheWeek(date);
     QString str = i18n( "short_weekday date (e.g. Mon 13)","%1 %2" )
-        .arg( KOCore::self()->calendarSystem()->weekDayName( dW, true ) )
-        .arg( KOCore::self()->calendarSystem()->day(date) );
+        .arg( KOGlobals::self()->calendarSystem()->weekDayName( dW, true ) )
+        .arg( KOGlobals::self()->calendarSystem()->day(date) );
 
     dayLabel->setText(str);
     dayLabel->setAlignment(QLabel::AlignHCenter);

@@ -172,6 +172,7 @@ void KOTodoViewItem::stateChange(bool state)
 
 bool KOTodoViewItem::isAlternate()
 {
+#ifndef KORG_NOLVALTERNATION
   KOTodoListView *lv = static_cast<KOTodoListView *>(listView());
   if (lv && lv->alternateBackground().isValid())
   {
@@ -208,11 +209,15 @@ bool KOTodoViewItem::isAlternate()
     return m_odd;
   }
   return false;
+#else
+  return false;
+#endif
 }
 
 void KOTodoViewItem::paintCell(QPainter *p, const QColorGroup &cg, int column, int width, int alignment)
 {
   QColorGroup _cg = cg;
+#ifndef KORG_NOLVALTERNATION
   if (isAlternate())
         _cg.setColor(QColorGroup::Base, static_cast< KOTodoListView* >(listView())->alternateBackground());
   if (mTodo->hasDueDate()) {
@@ -225,6 +230,7 @@ void KOTodoViewItem::paintCell(QPainter *p, const QColorGroup &cg, int column, i
       _cg.setColor(QColorGroup::Base, KOPrefs::instance()->mTodoOverdueColor);
     }
   }
+#endif
   
   QCheckListItem::paintCell(p, _cg, column, width, alignment);
 }

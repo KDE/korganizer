@@ -33,6 +33,8 @@
 #include <kconfig.h>
 #include <kiconloader.h>
 
+#include <calendarsystem/kcalendarsystem.h>
+
 #ifndef KORG_NOPRINTER
 #include "calprinter.h"
 #endif
@@ -40,6 +42,7 @@
 #ifndef KORG_NOPLUGINS
 #include "kocore.h"
 #endif
+#include "koglobals.h"
 
 #include "komonthview.h"
 #include "komonthview.moc"
@@ -127,10 +130,16 @@ MonthViewItem::MonthViewItem( Incidence *incidence, QDate qd, const QString & s)
 
 void MonthViewItem::paint(QPainter *p)
 {
+#if QT_VERSION >= 0x030000
+  bool sel = isSelected();
+#else
+  bool sel = selected();
+#endif    
+  
   if (KOPrefs::instance()->mMonthViewUsesCategoryColor)
   {
     p->setBackgroundColor( palette().color( QPalette::Normal,  \
-	    isSelected() ? QColorGroup::Highlight : QColorGroup::Background ) );
+	    sel ? QColorGroup::Highlight : QColorGroup::Background ) );
     p->eraseRect( 0, 0, listBox()->maxItemWidth(), height( listBox() ) );
   }
   int x = 3;
@@ -154,7 +163,7 @@ void MonthViewItem::paint(QPainter *p)
     yPos = fm.ascent() + fm.leading()/2;
   else
     yPos = pmheight/2 - fm.height()/2  + fm.ascent();
-  p->setPen( palette().color( QPalette::Normal, isSelected() ? \
+  p->setPen( palette().color( QPalette::Normal, sel ? \
 	  QColorGroup::HighlightedText : QColorGroup::Foreground ) );
   p->drawText( x, yPos, text() );
 }
@@ -226,14 +235,14 @@ void MonthViewCell::setDate( const QDate &date )
   mDate = date;
 
   QString text;
-   if ( KOCore::self()->calendarSystem()->day( date ) == 1 ) {
-     text = KOCore::self()->calendarSystem()->monthName( date, true ) + " ";
+   if ( KOGlobals::self()->calendarSystem()->day( date ) == 1 ) {
+     text = KOGlobals::self()->calendarSystem()->monthName( date, true ) + " ";
     QFontMetrics fm( mLabel->font() );
     mLabel->resize( mLabelSize + QSize( fm.width( text ), 0 ) );
   } else {
     mLabel->resize( mLabelSize );
   }
-  text += QString::number( KOCore::self()->calendarSystem()->day(mDate) );
+  text += QString::number( KOGlobals::self()->calendarSystem()->day(mDate) );
   mLabel->setText( text );
 
   resizeEvent( 0 );
@@ -575,7 +584,7 @@ void KOMonthView::updateConfig()
   mWidthLongDayLabel = 0;
 
   for (int i = 0; i < 7; i++) {
-    int width = fontmetric.width(KOCore::self()->calendarSystem()->weekDayName(i+1));
+    int width = fontmetric.width(KOGlobals::self()->calendarSystem()->weekDayName(i+1));
     if ( width > mWidthLongDayLabel ) mWidthLongDayLabel = width;
   }
 
@@ -592,10 +601,10 @@ void KOMonthView::updateDayLabels()
 
   for (int i = 0; i < 7; i++) {
     if (mWeekStartsMonday) {
-      mDayLabels[i]->setText(KOCore::self()->calendarSystem()->weekDayName(i+1,mShortDayLabels));
+      mDayLabels[i]->setText(KOGlobals::self()->calendarSystem()->weekDayName(i+1,mShortDayLabels));
     } else {
-       if (i==0) mDayLabels[i]->setText(KOCore::self()->calendarSystem()->weekDayName(7,mShortDayLabels));
-       else mDayLabels[i]->setText(KOCore::self()->calendarSystem()->weekDayName(i,mShortDayLabels));
+       if (i==0) mDayLabels[i]->setText(KOGlobals::self()->calendarSystem()->weekDayName(7,mShortDayLabels));
+       else mDayLabels[i]->setText(KOGlobals::self()->calendarSystem()->weekDayName(i,mShortDayLabels));
 
     }
   }
@@ -609,7 +618,7 @@ void KOMonthView::showDates(const QDate &start, const QDate &)
 
   int startWeekDay = mWeekStartsMonday ? 1 : 7;
 
-   while( KOCore::self()->calendarSystem()->dayOfTheWeek(mStartDate) != startWeekDay ) {
+   while( KOGlobals::self()->calendarSystem()->dayOfTheWeek(mStartDate) != startWeekDay ) {
     mStartDate = mStartDate.addDays( -1 );
   }
 
@@ -617,12 +626,12 @@ void KOMonthView::showDates(const QDate &start, const QDate &)
   uint i;
   for( i = 0; i < mCells.size(); ++i ) {
     QDate date = mStartDate.addDays( i );
-    if ( KOCore::self()->calendarSystem()->day(date) == 1 ) {
+    if ( KOGlobals::self()->calendarSystem()->day(date) == 1 ) {
       primary = !primary;
     }
     mCells[i]->setPrimary( primary );
 
-    if ( KOCore::self()->calendarSystem()->dayOfTheWeek(date) == KOCore::self()->calendarSystem()->weekDayOfPray() ) {
+    if ( KOGlobals::self()->calendarSystem()->dayOfTheWeek(date) == KOGlobals::self()->calendarSystem()->weekDayOfPray() ) {
       mCells[i]->setHoliday( true );
     } else {
       mCells[i]->setHoliday( false );

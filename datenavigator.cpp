@@ -23,11 +23,13 @@
 
 #include "datenavigator.h"
 
+#include "koglobals.h"
+
 #include <calendarsystem/kcalendarsystem.h>
 
-#include "kocore.h"
-
 #include <kdebug.h>
+#include <kglobal.h>
+#include <klocale.h>
 
 using namespace KCal;
 
@@ -110,7 +112,7 @@ void DateNavigator::selectWeek()
 
 void DateNavigator::selectWeek( const QDate &d )
 {
-  int dayOfWeek = KOCore::self()->calendarSystem()->dayOfTheWeek( d );
+  int dayOfWeek = KOGlobals::self()->calendarSystem()->dayOfTheWeek( d );
 
   int weekStart = KGlobal::locale()->weekStartDay();
 
@@ -130,7 +132,7 @@ void DateNavigator::selectWorkWeek()
 
 void DateNavigator::selectWorkWeek( const QDate &d )
 {
-  int dayOfWeek = KOCore::self()->calendarSystem()->dayOfTheWeek( d );
+  int dayOfWeek = KOGlobals::self()->calendarSystem()->dayOfTheWeek( d );
 
   QDate firstDate = d.addDays( 1 - dayOfWeek );
 
@@ -157,7 +159,7 @@ void DateNavigator::selectPreviousYear()
 {
   QDate firstSelected = mSelectedDates.first();
   int weekDay = firstSelected.dayOfWeek();
-  KOCore::self()->calendarSystem()->previousYearDate( firstSelected );
+  KOGlobals::self()->calendarSystem()->previousYearDate( firstSelected );
 
   selectWeekByDay( weekDay, firstSelected );
 }
@@ -166,7 +168,7 @@ void DateNavigator::selectPreviousMonth()
 {
   QDate firstSelected = mSelectedDates.first();
   int weekDay = firstSelected.dayOfWeek();
-  KOCore::self()->calendarSystem()->previousMonthDate( firstSelected );
+  KOGlobals::self()->calendarSystem()->previousMonthDate( firstSelected );
 
   selectWeekByDay( weekDay, firstSelected );
 }
@@ -176,7 +178,7 @@ void DateNavigator::selectNextMonth()
   QDate firstSelected = mSelectedDates.first();
   int weekDay = firstSelected.dayOfWeek();
 
-  KOCore::self()->calendarSystem()->nextMonthDate( firstSelected );
+  KOGlobals::self()->calendarSystem()->nextMonthDate( firstSelected );
 
   selectWeekByDay( weekDay, firstSelected );
 }
@@ -185,7 +187,7 @@ void DateNavigator::selectNextYear()
 {
   QDate firstSelected = mSelectedDates.first();
   int weekDay = firstSelected.dayOfWeek();
-  KOCore::self()->calendarSystem()->nextYearDate( firstSelected );
+  KOGlobals::self()->calendarSystem()->nextYearDate( firstSelected );
 
   selectWeekByDay( weekDay, firstSelected );
 }

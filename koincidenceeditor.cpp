@@ -27,7 +27,6 @@
 #include <qlayout.h>
 #include <qwidgetstack.h>
 #include <qdatetime.h>
-#include <qinputdialog.h>
 
 #include <kdebug.h>
 #include <klocale.h>
@@ -35,6 +34,8 @@
 #include <kmessagebox.h>
 
 #include <libkdepim/categoryselectdialog.h>
+#include <libkdepim/kinputdialog.h>
+
 #include <libkcal/calendarlocal.h>
 #include <libkcal/icalformat.h>
 
@@ -135,7 +136,7 @@ void KOIncidenceEditor::saveAsTemplate( Incidence *incidence,
 QString KOIncidenceEditor::loadTemplate( Calendar *cal, const QString &type,
                                          const QStringList &templates )
 {
-  QString templateName = QInputDialog::getItem( i18n("Load Template"),
+  QString templateName = KInputDialog::getItem( i18n("Load Template"),
       i18n("Select a template to load:"), templates, 0, false );
   if ( templateName.isEmpty() ) return QString::null;
 

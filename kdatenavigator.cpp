@@ -33,6 +33,7 @@
 #include <kglobal.h>
 #include <kiconloader.h>
 
+#include "koglobals.h"
 #include "koprefs.h"
 #ifndef KORG_NOPLUGINS
 #include "kocore.h"
@@ -75,7 +76,7 @@ KDateNavigator::KDateNavigator( QWidget *parent, Calendar *calendar,
   tfont.setPointSize(10);
   tfont.setBold(FALSE);
 
-  bool isRTL = QApplication::reverseLayout();
+  bool isRTL = KOGlobals::self()->reverseLayout();
 
   // Create backward navigation buttons
   prevYear = new QPushButton(ctrlFrame);
@@ -106,7 +107,7 @@ KDateNavigator::KDateNavigator( QWidget *parent, Calendar *calendar,
   QFontMetrics fm = dateLabel->fontMetrics();
 
   for(i=1;i<=12;++i) {
-    int width = fm.width( KOCore::self()->calendarSystem()->monthName(i) + " 2000" );
+    int width = fm.width( KOGlobals::self()->calendarSystem()->monthName(i) + " 2000" );
     if (width > maxwidth) maxwidth = width;
   }
   dateLabel->setMinimumWidth(maxwidth);
@@ -249,13 +250,13 @@ void KDateNavigator::passedMidnight()
 void KDateNavigator::updateDates()
 {
   // Find the first day of the week of the current month.
-  //int d1 = KOCore::self()->calendarSystem()->day( m_MthYr );
+  //int d1 = KOGlobals::self()->calendarSystem()->day( m_MthYr );
   QDate dayone( m_MthYr.year(), m_MthYr.month(), m_MthYr.day() );
-  int d2 = KOCore::self()->calendarSystem()->day( dayone );
+  int d2 = KOGlobals::self()->calendarSystem()->day( dayone );
   //int di = d1 - d2 + 1;
   dayone = dayone.addDays( -d2 + 1 );
 
-  int m_fstDayOfWkCalsys = KOCore::self()->calendarSystem()->dayOfTheWeek( dayone );
+  int m_fstDayOfWkCalsys = KOGlobals::self()->calendarSystem()->dayOfTheWeek( dayone );
 
   // If month begins on Monday and Monday is first day of week,
   // month should begin on second line. Sunday doesn't have this problem.
@@ -284,8 +285,8 @@ void KDateNavigator::updateView()
 
   // compute the label at the top of the navigator
   QDate cT( m_MthYr.year(), m_MthYr.month(), m_MthYr.day() );
-  QString dtstr = KOCore::self()->calendarSystem()->monthName( cT ) + " " +
-                  QString::number(KOCore::self()->calendarSystem()->year( cT ) );
+  QString dtstr = KOGlobals::self()->calendarSystem()->monthName( cT ) + " " +
+                  QString::number(KOGlobals::self()->calendarSystem()->year( cT ) );
   dateLabel->setText(dtstr);
 
   int i;
@@ -301,7 +302,7 @@ void KDateNavigator::updateView()
     // not just 1.
 
     //ET int dayOfYear = buttons[(i + 1) * 7 - 4]->date().dayOfYear();
-    int dayOfYear = KOCore::self()->calendarSystem()->numberOfDayInYear((daymatrix->getDate((i+1)*7-4)));
+    int dayOfYear = KOGlobals::self()->calendarSystem()->numberOfDayInYear((daymatrix->getDate((i+1)*7-4)));
 
     if (dayOfYear % 7 != 0)
       weeknum.setNum(dayOfYear / 7 + 1);
@@ -327,7 +328,7 @@ void KDateNavigator::updateConfig()
       if (i==0) day = 7;
       else day = i;
     }
-    headings[i]->setText( KOCore::self()->calendarSystem()->weekDayName(day, true) );
+    headings[i]->setText( KOGlobals::self()->calendarSystem()->weekDayName(day, true) );
   }
   kdDebug() << "updateConfig() -> updateDates()" << endl;
   updateDates();

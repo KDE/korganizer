@@ -26,6 +26,7 @@
 #include <qwidgetstack.h>
 
 #include <kconfig.h>
+#include <kglobal.h>
 
 #include "calendarview.h"
 #include "datenavigator.h"

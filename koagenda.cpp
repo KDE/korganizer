@@ -38,6 +38,7 @@
 
 #include "koagendaitem.h"
 #include "koprefs.h"
+#include "koglobals.h"
 
 #include "koagenda.h"
 #include "koagenda.moc"
@@ -79,7 +80,7 @@ int MarcusBains::todayColumn()
     int col = 0;
     for(it = dateList.begin(); it != dateList.end(); ++it) {
 	if((*it) == currentDate)
-	    return QApplication::reverseLayout() ?
+	    return KOGlobals::self()->reverseLayout() ?
 	                         agenda->columns() - 1 - col : col;
         ++col;
     }
@@ -487,7 +488,7 @@ void KOAgenda::performSelectAction(QPoint viewportPos)
                      mGridSpacingX,
                      mSelectionHeight - ( gy - mCurrentCellY - 1 ) * mGridSpacingY );
 #else
-    repaintContents( (QApplication::reverseLayout() ?
+    repaintContents( (KOGlobals::self()->reverseLayout() ?
                      mColumns - 1 - mSelectionCellX : mSelectionCellX) *
                      mGridSpacingX, mSelectionYTop,
                      mGridSpacingX, mSelectionHeight );
@@ -499,7 +500,7 @@ void KOAgenda::performSelectAction(QPoint viewportPos)
       int selectionHeight = mSelectionHeight;
       mSelectionHeight = ( gy + 1 ) * mGridSpacingY - mSelectionYTop;
 
-      repaintContents( (QApplication::reverseLayout() ?
+      repaintContents( (KOGlobals::self()->reverseLayout() ?
                        mColumns - 1 - mSelectionCellX : mSelectionCellX) *
                        mGridSpacingX, mSelectionYTop,
                        mGridSpacingX, selectionHeight );
@@ -884,11 +885,11 @@ void KOAgenda::drawContents(QPainter* p, int cx, int cy, int cw, int ch)
       while(gxStart <= gxEnd) {
         if (gxStart < int(mHolidayMask->count()) &&
             !mHolidayMask->at(gxStart)) {
-          int xStart = QApplication::reverseLayout() ?
+          int xStart = KOGlobals::self()->reverseLayout() ?
                                     (mColumns - 1 - gxStart)*mGridSpacingX :
                                      gxStart*mGridSpacingX;
           if (xStart < x1) xStart = x1;
-          int xEnd = QApplication::reverseLayout() ?
+          int xEnd = KOGlobals::self()->reverseLayout() ?
                                     (mColumns - gxStart)*mGridSpacingX-1 :
                                     (gxStart+1)*mGridSpacingX-1;
           if (xEnd > x2) xEnd = x2;
@@ -900,7 +901,7 @@ void KOAgenda::drawContents(QPainter* p, int cx, int cy, int cw, int ch)
     }
   }
 
-  int selectionX = QApplication::reverseLayout() ?
+  int selectionX = KOGlobals::self()->reverseLayout() ?
                    (mColumns - 1 - mSelectionCellX) * mGridSpacingX : 
                     mSelectionCellX * mGridSpacingX;
 
@@ -934,7 +935,7 @@ void KOAgenda::drawContents(QPainter* p, int cx, int cy, int cw, int ch)
 */
 void KOAgenda::contentsToGrid (int x, int y, int& gx, int& gy)
 {
-  gx = QApplication::reverseLayout() ? mColumns - 1 - x/mGridSpacingX :
+  gx = KOGlobals::self()->reverseLayout() ? mColumns - 1 - x/mGridSpacingX :
                                                         x/mGridSpacingX;
   gy = y/mGridSpacingY;
 }
@@ -944,7 +945,7 @@ void KOAgenda::contentsToGrid (int x, int y, int& gx, int& gy)
 */
 void KOAgenda::gridToContents (int gx, int gy, int& x, int& y)
 {
-  x = QApplication::reverseLayout() ? (mColumns - 1 - gx)*mGridSpacingX:
+  x = KOGlobals::self()->reverseLayout() ? (mColumns - 1 - gx)*mGridSpacingX:
                                                          gx*mGridSpacingX;
   y = gy*mGridSpacingY;
 }
@@ -1147,7 +1148,7 @@ void KOAgenda::resizeEvent ( QResizeEvent *ev )
     for ( item=mItems.first(); item != 0; item=mItems.next() ) {
       subCellWidth = mGridSpacingY / item->subCells();
       item->resize(mGridSpacingX * item->cellWidth(),subCellWidth);
-      moveChild(item,QApplication::reverseLayout() ?
+      moveChild(item,KOGlobals::self()->reverseLayout() ?
                      (mColumns - 1 - item->cellX()) * mGridSpacingX :
                       item->cellX() * mGridSpacingX,
                       item->subCell() * subCellWidth);
@@ -1161,7 +1162,7 @@ void KOAgenda::resizeEvent ( QResizeEvent *ev )
     for ( item=mItems.first(); item != 0; item=mItems.next() ) {
       subCellWidth = mGridSpacingX / item->subCells();
       item->resize(subCellWidth,item->height());
-      moveChild(item,(QApplication::reverseLayout() ?
+      moveChild(item,(KOGlobals::self()->reverseLayout() ?
                      (mColumns - 1 - item->cellX()) * mGridSpacingX :
                      item->cellX() * mGridSpacingX) +
                      item->subCell() * subCellWidth,childY(item));
