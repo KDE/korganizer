@@ -44,7 +44,7 @@ CategoryDialog::CategoryDialog(QWidget* parent,const char* name)
   subLayout->addLayout(subLayout2);
 
   subLayout2->addStretch();
-  midButtonBox = new KButtonBox(topWidget, KButtonBox::VERTICAL);
+  midButtonBox = new KButtonBox(topWidget, Vertical);
   addButton = midButtonBox->addButton(i18n("&Add >>"));
   connect(addButton, SIGNAL(clicked()), SLOT(addCat()));
   removeButton = midButtonBox->addButton(i18n("&Remove"));
