@@ -140,7 +140,7 @@ void KOTodoEditor::setupRecurrence()
 
   mRecurrence = new KOEditorRecurrence( topFrame );
   topLayout->addWidget( mRecurrence );
-  
+  mRecurrence->setEnabled( false );
   connect(mGeneral,SIGNAL(dueDateEditToggle( bool ) ),
           mRecurrence, SLOT( setEnabled( bool ) ) );
 }
