@@ -113,7 +113,11 @@ void KOEventViewer::appendEvent( Event *event )
   formatCategories( event );
 
   if ( event->doesRecur() ) {
-    addTag( "p", "<em>" + i18n("This is a recurring event.") + "</em>");
+    QDateTime dt = event->recurrence()->getNextDateTime(
+                                          QDateTime::currentDateTime() );
+    addTag( "p", "<em>" +
+      i18n("This is a recurring event. The next occurrence will be on %1").arg(
+      KGlobal::locale()->formatDateTime( dt, true ) ) + "</em>" );
   }
 
   formatReadOnly( event );
@@ -144,10 +148,14 @@ void KOEventViewer::appendTodo( Todo *todo )
 
   mText.append( i18n("<p><i>%1 % completed</i></p>")
                      .arg( todo->percentComplete() ) );
-  
-  if ( todo->doesRecur() )
-    addTag( "p", "<em>" + i18n("This is a recurring todo.") + "</em>");
 
+  if ( todo->doesRecur() ) {
+    QDateTime dt = todo->recurrence()->getNextDateTime(
+                                         QDateTime::currentDateTime() );
+    addTag( "p", "<em>" +
+      i18n("This is a recurring todo. The next occurrence will be on %1").arg(
+      KGlobal::locale()->formatDateTime( dt, true ) ) + "</em>" );
+  }
   formatReadOnly( todo );
   formatAttendees( todo );
   formatAttachments( todo );
@@ -278,7 +286,7 @@ void KOEventViewer::setEvent( Event *event )
   clearEvents();
   appendEvent( event );
 }
-  
+
 void KOEventViewer::setJournal( Journal *journal )
 {
   clearEvents();
