@@ -286,7 +286,7 @@ void KOrganizer::initActions()
 
   KStdAction::find(mCalendarView, SLOT(action_search()), actionCollection());
 
-  action = new KAction(i18n("&Mail Appointment"), "send", 0,
+  action = new KAction(i18n("&Mail Appointment"), "mail_generic", 0,
                     mCalendarView,SLOT(action_mail()),
                     actionCollection(), "mail_appointment");
   connect(mCalendarView,SIGNAL(eventsSelected(bool)),
@@ -484,8 +484,7 @@ void KOrganizer::file_import()
   QString progPath;
   char *tmpFn;
 
-  QString homeDir;
-  homeDir.sprintf("%s/.calendar",getenv("HOME"));
+  QString homeDir = QDir::homeDirPath() + QString::fromLatin1("/.calendar");
 		  
   if (!QFile::exists(homeDir)) {
     KMessageBox::error(this,
