@@ -1575,10 +1575,12 @@ void CalendarView::showFilter(bool visible)
 void CalendarView::updateFilter()
 {
   CalFilter *filter = mFilterView->selectedFilter();
-  if (mFilterView->filtersEnabled()) filter->setEnabled(true);
-  else filter->setEnabled(false);
-  mCalendar->setFilter(filter);
-  updateView();
+  if (filter) {
+    if (mFilterView->filtersEnabled()) filter->setEnabled(true);
+    else filter->setEnabled(false);
+    mCalendar->setFilter(filter);
+    updateView();
+  }
 }
 
 void CalendarView::filterEdited()
