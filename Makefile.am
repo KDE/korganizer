@@ -84,6 +84,7 @@ rc_DATA = korganizerui.rc
 partdir   = $(kde_datadir)/korganizer
 part_DATA = korganizer_part.rc
 
+KDE_ICON = AUTO
 
 messages: rc.cpp
 	$(XGETTEXT) *.cpp -o $(podir)/korganizer.pot
