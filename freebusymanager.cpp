@@ -252,7 +252,7 @@ void FreeBusyManager::publishFreeBusy()
       if( at > 1 && fbname.length() > (uint)at ) {
 	fbname = fbname.left(at);
       }
-      targetURL.setPath( "/freebusy/" + fbname + ".vfb" );
+      targetURL.setPath( "/freebusy/" + fbname + ".ifb" );
       targetURL.setUser( KOPrefs::instance()->mPublishUserName );
       targetURL.setPass( KOPrefs::instance()->mPublishPassword );
     } else {
@@ -399,7 +399,7 @@ KURL FreeBusyManager::freeBusyUrl( const QString &email )
     sourceURL.setPass( KOPrefs::instance()->mRetrievePassword );
     sourceURL.setUser( KOPrefs::instance()->mRetrieveUserName );
     sourceURL.setPath( QString::fromLatin1( "/freebusy/" ) + emailName +
-		       QString::fromLatin1( ".vfb" ) );
+		       QString::fromLatin1( ".ifb" ) );
   } else {
     // we use something else
     QString anyurl = KOPrefs::instance()->mRetrieveAnyURL;
@@ -418,7 +418,7 @@ KURL FreeBusyManager::freeBusyUrl( const QString &email )
     return KURL();
   }
 
-  sourceURL.setFileName( emailName + ".vfb" );
+  sourceURL.setFileName( emailName + ".ifb" );
   sourceURL.setUser( KOPrefs::instance()->mFreeBusyRetrieveUser );
   sourceURL.setPass( KOPrefs::instance()->mFreeBusyRetrievePassword );
 
