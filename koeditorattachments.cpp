@@ -50,7 +50,7 @@ KOEditorAttachments::KOEditorAttachments( int spacing, QWidget *parent,
            SLOT( showAttachment( QListViewItem * ) ) );
 
   QBoxLayout *buttonLayout = new QHBoxLayout( topLayout );
-  
+
   QPushButton *button = new QPushButton( i18n("Add..."), this );
   buttonLayout->addWidget( button );
   connect( button, SIGNAL( clicked() ), SLOT( slotAdd() ) );
@@ -66,6 +66,7 @@ KOEditorAttachments::KOEditorAttachments( int spacing, QWidget *parent,
   button = new QPushButton( i18n("Show"), this );
   buttonLayout->addWidget( button );
   connect( button, SIGNAL( clicked() ), SLOT( slotShow() ) );
+  connect( mAttachments, SIGNAL( doubleClicked ( QListViewItem *, const QPoint &, int ) ), this, SLOT( slotEdit() ) );
 }
 
 KOEditorAttachments::~KOEditorAttachments()
@@ -75,9 +76,9 @@ KOEditorAttachments::~KOEditorAttachments()
 void KOEditorAttachments::showAttachment( QListViewItem *item )
 {
   if ( !item ) return;
-  
+
   QString uri = item->text( 0 );
-  
+
   UriHandler::process( uri );
 }
 
@@ -122,7 +123,7 @@ void KOEditorAttachments::setDefaults()
 void KOEditorAttachments::addAttachment( const QString &uri,
                                          const QString &mimeType )
 {
-  new QListViewItem( mAttachments, uri, mimeType );  
+  new QListViewItem( mAttachments, uri, mimeType );
 }
 
 void KOEditorAttachments::readIncidence( Incidence *i )
