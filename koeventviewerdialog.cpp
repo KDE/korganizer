@@ -22,7 +22,9 @@
 #include <klocale.h>
 
 #include <libkcal/event.h>
+
 #include "koeventviewer.h"
+#include "koprefs.h"
 
 #include "koeventviewerdialog.h"
 #include "koeventviewerdialog.moc"
@@ -35,8 +37,13 @@ KOEventViewerDialog::KOEventViewerDialog(QWidget *parent,const char *name)
   setMainWidget(mEventViewer);
 
   // TODO: Set a sensible size (based on the content?).
-  setMinimumSize(300,200);
-  resize(320,300);
+  if ( KOPrefs::instance()->mCompactDialogs ) {
+    setFixedSize( 240,284 );
+    move( 0, 15 );
+  } else {
+    setMinimumSize(300,200);
+    resize(320,300);
+  }
 }
 
 KOEventViewerDialog::~KOEventViewerDialog()

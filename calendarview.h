@@ -313,12 +313,6 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
       attachment. */
     void action_mail();
 
-    /** pop up a dialog to show an existing todo. */
-    void todo_show();
-    /** pop up a dialog to edit an existing todo. */
-    void todo_edit();
-    /* pop up dialog confirming deletion of currently selected todo */
-    void todo_delete();
     /* frees a subtodo from it's relation */
     void todo_unsub();
 
@@ -383,6 +377,8 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     void processTodoListSelection( Incidence * );
     
     void processIncidenceSelection( Incidence * );
+
+    void purgeCompleted();
     
   protected slots:
     /** Select a week to be displayed in the calendar view */

@@ -1,5 +1,5 @@
 <!DOCTYPE kpartgui>
-<kpartgui name="korganizer" version="16">
+<kpartgui name="korganizer" version="17">
 
   <MenuBar>
     <Menu name="file"><text>&amp;File</text>
@@ -17,7 +17,9 @@
         <Action name="export_vcalendar"/>
       </Menu>
       <Separator/>
-      <Action name="addresbook"/>
+      <Action name="addressbook"/>
+      <Action name="purge_completed"/>
+      <Separator/>
       <Action name="make_active"/>
     </Menu>
     <Menu name="edit"><text>&amp;Edit</text>

@@ -309,29 +309,33 @@ void KOViewManager::showMonthView()
 
 void KOViewManager::showTodoView()
 {
-  if (!mTodoView) {
-    mTodoView = new KOTodoView(mMainView->calendar(), mMainView->viewStack(), "KOViewManager::TodoView");
-    addView(mTodoView);
+  if ( !mTodoView ) {
+    mTodoView = new KOTodoView( mMainView->calendar(), mMainView->viewStack(),
+                                "KOViewManager::TodoView" );
+    addView( mTodoView );
 
     // SIGNALS/SLOTS FOR TODO VIEW
-    connect(mTodoView, SIGNAL(newTodoSignal()),
-            mMainView, SLOT(newTodo()));
-    connect(mTodoView, SIGNAL(newSubTodoSignal(Todo *)),
-            mMainView, SLOT(newSubTodo(Todo *)));
-    connect(mTodoView, SIGNAL(showTodoSignal(Todo *)),
-            mMainView, SLOT(showTodo(Todo *)));
-    connect(mTodoView, SIGNAL(editTodoSignal(Todo *)),
-            mMainView, SLOT(editTodo(Todo *)));
-    connect(mTodoView, SIGNAL(deleteTodoSignal(Todo *)),
-            mMainView, SLOT(deleteTodo(Todo *)));
+    connect( mTodoView, SIGNAL( newTodoSignal() ),
+             mMainView, SLOT( newTodo() ) );
+    connect( mTodoView, SIGNAL( newSubTodoSignal( Todo * ) ),
+             mMainView, SLOT( newSubTodo( Todo *) ) );
+    connect( mTodoView, SIGNAL( showTodoSignal( Todo *) ),
+             mMainView, SLOT( showTodo( Todo * ) ) );
+    connect( mTodoView, SIGNAL( editTodoSignal( Todo * ) ),
+             mMainView, SLOT( editTodo( Todo * ) ) );
+    connect( mTodoView, SIGNAL( deleteTodoSignal( Todo * ) ),
+             mMainView, SLOT( deleteTodo( Todo * ) ) );
+    connect( mTodoView, SIGNAL( purgeCompletedSignal() ),
+             mMainView, SLOT( purgeCompleted() ) );
 
     connect( mTodoView, SIGNAL( incidenceSelected( Incidence * ) ),
              mMainView, SLOT( processMainViewSelection( Incidence * ) ) );
 
-    connect(mMainView, SIGNAL(configChanged()), mTodoView, SLOT(updateConfig()));
+    connect( mMainView, SIGNAL( configChanged() ), mTodoView,
+             SLOT( updateConfig() ) );
   }
 
-  showView(mTodoView);
+  showView( mTodoView );
 }
 
 void KOViewManager::showJournalView()

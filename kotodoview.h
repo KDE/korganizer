@@ -59,6 +59,7 @@ class KOTodoListView : public KListView
 
   signals:
     void todoDropped(Todo *);
+    void doubleClicked(QListViewItem *,const QPoint &,int);
 
   protected:
     void contentsDragEnterEvent(QDragEnterEvent *);
@@ -125,9 +126,10 @@ class KOTodoView : public KOrg::BaseView
     void showTodo();
     void editTodo();
     void deleteTodo();
+    
     void purgeCompleted();
+    
     void itemClicked(QListViewItem *);
-
     void itemStateChanged(QListViewItem *);
 
   signals:
@@ -139,6 +141,8 @@ class KOTodoView : public KOrg::BaseView
     void deleteTodoSignal(Todo *);
 
     void isModified(bool);
+
+    void purgeCompletedSignal();
 
   protected slots:
     void processSelectionChange();

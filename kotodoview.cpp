@@ -281,7 +281,7 @@ KOTodoView::KOTodoView(Calendar *calendar,QWidget* parent,const char* name) :
                              SLOT (newSubTodo()));
   mItemPopupMenu->insertSeparator();
   mItemPopupMenu->insertItem(i18n("delete completed To-Dos","Purge Completed"),
-                             this,SLOT(purgeCompleted()));
+                             this, SLOT( purgeCompleted() ) );
 
   mPopupMenu = new QPopupMenu;
   mPopupMenu->insertItem(SmallIconSet("todo"), i18n("New To-Do"), this,
@@ -510,47 +510,6 @@ void KOTodoView::deleteTodo()
   }
 }
 
-void KOTodoView::purgeCompleted()
-{
-  int result = KMessageBox::warningContinueCancel(this,
-      i18n("Delete all completed To-Dos?"),i18n("Purge To-Dos"),i18n("Purge"));
-
-  if (result == KMessageBox::Continue) {
-    QPtrList<Todo> todoCal;
-    QPtrList<Incidence> rel;
-    Todo *aTodo, *rTodo;
-    Incidence *rIncidence;
-    bool childDelete = false;
-    bool deletedOne = true;
-    while (deletedOne) {
-      todoCal.clear();
-      todoCal = calendar()->getTodoList();
-      deletedOne = false;
-      for (aTodo = todoCal.first(); aTodo; aTodo = todoCal.next()) {
-        if (aTodo->isCompleted()) {
-          rel = aTodo->relations();
-          if (!rel.isEmpty()) {
-            for (rIncidence=rel.first(); rIncidence; rIncidence=rel.next()){
-              if (rIncidence->type()=="Todo") {
-                rTodo = static_cast<Todo*>(rIncidence);
-                if (!rTodo->isCompleted()) childDelete = true;
-              }
-            }
-          }
-          else {
-            calendar()->deleteTodo(aTodo);
-            deletedOne = true;
-          }
-        }
-      }
-    }
-    if (childDelete){
-      KMessageBox::sorry(this,i18n("Cannot purge To-Do which has uncompleted children."),
-                         i18n("Delete To-Do"));
-    }
-    updateView();
-  }
-}
 
 void KOTodoView::itemClicked(QListViewItem *item)
 {
@@ -620,4 +579,9 @@ void KOTodoView::modified(bool b)
 void KOTodoView::clearSelection()
 {
   mTodoListView->selectAll( false );
+}
+
+void KOTodoView::purgeCompleted()
+{
+  emit purgeCompletedSignal();
 }

@@ -264,6 +264,10 @@ void KOrganizer::initActions()
   KStdAction::quit(this, SLOT(close()), actionCollection());
 
 
+  new KAction( i18n("delete completed To-Dos","Purge Completed"), 0,
+               mCalendarView, SLOT( purgeCompleted() ), actionCollection(),
+               "purge_completed" );
+
   // edit menu
 
   mCutAction = KStdAction::cut(mCalendarView,SLOT(edit_cut()),
@@ -429,7 +433,7 @@ void KOrganizer::initActions()
 */
   action = new KAction(i18n("Addressbook"),"contents",0,
                        mCalendarView,SLOT(openAddressbook()),
-                       actionCollection(),"addresbook");
+                       actionCollection(),"addressbook");
 
   // Navigation menu
 

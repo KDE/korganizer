@@ -875,24 +875,6 @@ void CalendarView::appointment_delete()
   deleteEvent(anEvent);
 }
 
-void CalendarView::todo_show()
-{
-  Todo *anTodo = selectedTodo();
-  if (anTodo) showTodo(anTodo);
-}
-
-void CalendarView::todo_edit()
-{
-  Todo *anTodo = selectedTodo();
-  if (anTodo) editTodo(anTodo);
-}
-
-void CalendarView::todo_delete()
-{
-  Todo *anTodo = selectedTodo();
-  if (anTodo) deleteTodo(anTodo);
-}
-
 void CalendarView::todo_unsub()
 {
   Todo *anTodo = selectedTodo();
@@ -1620,4 +1602,46 @@ void CalendarView::lookForIncomingMessages()
 {
   IncomingDialog *icd = mDialogManager->incomingDialog();
   icd->retrieve();
+}
+
+void CalendarView::purgeCompleted()
+{
+  int result = KMessageBox::warningContinueCancel(this,
+      i18n("Delete all completed To-Dos?"),i18n("Purge To-Dos"),i18n("Purge"));
+
+  if (result == KMessageBox::Continue) {
+    QPtrList<Todo> todoCal;
+    QPtrList<Incidence> rel;
+    Todo *aTodo, *rTodo;
+    Incidence *rIncidence;
+    bool childDelete = false;
+    bool deletedOne = true;
+    while (deletedOne) {
+      todoCal.clear();
+      todoCal = calendar()->getTodoList();
+      deletedOne = false;
+      for (aTodo = todoCal.first(); aTodo; aTodo = todoCal.next()) {
+        if (aTodo->isCompleted()) {
+          rel = aTodo->relations();
+          if (!rel.isEmpty()) {
+            for (rIncidence=rel.first(); rIncidence; rIncidence=rel.next()){
+              if (rIncidence->type()=="Todo") {
+                rTodo = static_cast<Todo*>(rIncidence);
+                if (!rTodo->isCompleted()) childDelete = true;
+              }
+            }
+          }
+          else {
+            calendar()->deleteTodo(aTodo);
+            deletedOne = true;
+          }
+        }
+      }
+    }
+    if (childDelete) {
+      KMessageBox::sorry(this,i18n("Cannot purge To-Do which has uncompleted children."),
+                         i18n("Delete To-Do"));
+    }
+    updateView();
+  }
 }
