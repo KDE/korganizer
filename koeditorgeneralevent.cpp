@@ -262,11 +262,11 @@ void KOEditorGeneralEvent::readEvent( Event *event, bool tmpl )
 {
   QString tmpStr;
 
+  mNoTimeButton->setChecked(event->doesFloat());
+  timeStuffDisable(event->doesFloat());
+
   if ( !tmpl ) {
     // the rest is for the events only
-    mNoTimeButton->setChecked(event->doesFloat());
-    timeStuffDisable(event->doesFloat());
-
     setDateTimes(event->dtStart(),event->dtEnd());
   }
 
