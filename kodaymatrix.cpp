@@ -125,8 +125,6 @@ QColor KODayMatrix::getShadedColor(QColor color)
 
 KODayMatrix::~KODayMatrix()
 {
-  qDebug(QString("Destroying a KODayMatrix @%1").arg((int)this));
-  
   delete [] days;
   delete [] daylbls;
   delete [] events;

@@ -191,8 +191,6 @@ KDateNavigator::~KDateNavigator()
 
 void KDateNavigator::passedMidnight()
 {
-    qDebug("Definitely past midnight.");
-    
     QDate today = QDate::currentDate();
 
     daymatrix->recalculateToday();
@@ -211,8 +209,6 @@ void KDateNavigator::passedMidnight()
 
 /* slot */ void KDateNavigator::possiblyPastMidnight()
 {
-  qDebug(QString("Possibly past midnight on %1").arg(QDate::currentDate().toString()));
-  
   if (lastDayChecked!=QDate::currentDate())
   {
     passedMidnight();
@@ -224,7 +220,7 @@ void KDateNavigator::passedMidnight()
   {
     QTime now = QTime::currentTime();
     QTime midnight = QTime(23,59,59);
-    int msecsWait = QMIN(4800,now.msecsTo(midnight)+2000);
+    int msecsWait = QMIN(480000,now.msecsTo(midnight)+2000);
     
     qDebug(QString("Waiting %1 msec from %2 to %3.").arg(msecsWait)
     	.arg(now.toString()).arg(midnight.toString()));
