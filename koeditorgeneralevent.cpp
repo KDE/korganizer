@@ -151,10 +151,10 @@ void KOEditorGeneralEvent::initTime(QWidget *parent,QBoxLayout *topLayout)
           this, SLOT(endTimeChanged(QTime)));
 
   // date widgets are checked if they contain a valid date
-  connect(mStartDateEdit, SIGNAL(dateChanged(QDate)),
-          this, SLOT(startDateChanged(QDate)));
-  connect(mEndDateEdit, SIGNAL(dateChanged(QDate)),
-          this, SLOT(endDateChanged(QDate)));
+  connect(mStartDateEdit, SIGNAL(dateChanged(const QDate&)),
+          this, SLOT(startDateChanged(const QDate&)));
+  connect(mEndDateEdit, SIGNAL(dateChanged(const QDate&)),
+          this, SLOT(endDateChanged(const QDate&)));
 }
 
 void KOEditorGeneralEvent::initClass(QWidget *parent,QBoxLayout *topLayout)
@@ -236,7 +236,7 @@ void KOEditorGeneralEvent::endTimeChanged( QTime newtime )
   emit dateTimesChanged(mCurrStartDateTime,mCurrEndDateTime);
 }
 
-void KOEditorGeneralEvent::startDateChanged( QDate newdate )
+void KOEditorGeneralEvent::startDateChanged( const QDate &newdate )
 {
   int daysep = mCurrStartDateTime.daysTo(mCurrEndDateTime);
 
@@ -249,7 +249,7 @@ void KOEditorGeneralEvent::startDateChanged( QDate newdate )
   emit dateTimesChanged(mCurrStartDateTime,mCurrEndDateTime);
 }
 
-void KOEditorGeneralEvent::endDateChanged( QDate newdate )
+void KOEditorGeneralEvent::endDateChanged( const QDate &newdate )
 {
   QDateTime newdt(newdate, mCurrEndDateTime.time());
 
@@ -435,14 +435,14 @@ bool KOEditorGeneralEvent::validateInput()
     }
   }
 
-  if (!mStartDateEdit->inputIsValid()) {
+  if (!mStartDateEdit->date().isValid()) {
     KMessageBox::sorry( 0,
         i18n("Please specify a valid start date, for example '%1'.")
         .arg( KGlobal::locale()->formatDate( QDate::currentDate() ) ) );
     return false;
   }
 
-  if (!mEndDateEdit->inputIsValid()) {
+  if (!mEndDateEdit->date().isValid()) {
     KMessageBox::sorry( 0,
         i18n("Please specify a valid end date, for example '%1'.")
         .arg( KGlobal::locale()->formatDate( QDate::currentDate() ) ) );

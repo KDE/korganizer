@@ -120,7 +120,7 @@ void KOEditorGeneralTodo::initTime(QWidget *parent,QBoxLayout *topLayout)
   mDueDateEdit = new KDateEdit(timeBoxFrame);
   QWhatsThis::add( mDueDateEdit, whatsThis );
   layoutTimeBox->addWidget(mDueDateEdit,0,1);
-  connect(mDueDateEdit,SIGNAL(dateChanged(QDate)),SLOT(dateChanged()));
+  connect(mDueDateEdit,SIGNAL(dateChanged(const QDate&)),SLOT(dateChanged()));
 
   mDueTimeEdit = new KTimeEdit(timeBoxFrame);
   QWhatsThis::add( mDueTimeEdit,
@@ -138,7 +138,7 @@ void KOEditorGeneralTodo::initTime(QWidget *parent,QBoxLayout *topLayout)
   mStartDateEdit = new KDateEdit(timeBoxFrame);
   QWhatsThis::add( mStartDateEdit, whatsThis );
   layoutTimeBox->addWidget(mStartDateEdit,1,1);
-  connect(mStartDateEdit,SIGNAL(dateChanged(QDate)),SLOT(startDateModified()));
+  connect(mStartDateEdit,SIGNAL(dateChanged(const QDate&)),SLOT(startDateModified()));
 
   mStartTimeEdit = new KTimeEdit(timeBoxFrame);
   QWhatsThis::add( mStartTimeEdit,
@@ -439,7 +439,7 @@ void KOEditorGeneralTodo::showAlarm()
 bool KOEditorGeneralTodo::validateInput()
 {
   if (mDueCheck->isChecked()) {
-    if (!mDueDateEdit->inputIsValid()) {
+    if (!mDueDateEdit->date().isValid()) {
       KMessageBox::sorry(0,i18n("Please specify a valid due date."));
       return false;
     }
@@ -452,7 +452,7 @@ bool KOEditorGeneralTodo::validateInput()
   }
 
   if (mStartCheck->isChecked()) {
-    if (!mStartDateEdit->inputIsValid()) {
+    if (!mStartDateEdit->date().isValid()) {
       KMessageBox::sorry(0,i18n("Please specify a valid start date."));
       return false;
     }

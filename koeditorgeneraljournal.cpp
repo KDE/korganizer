@@ -191,7 +191,7 @@ bool KOEditorGeneralJournal::validateInput()
 {
 //  kdDebug(5850) << "KOEditorGeneralJournal::validateInput()" << endl;
 
-  if (!mDateEdit->inputIsValid()) {
+  if (!mDateEdit->date().isValid()) {
     KMessageBox::sorry( 0,
         i18n("Please specify a valid date, for example '%1'.")
         .arg( KGlobal::locale()->formatDate( QDate::currentDate() ) ) );
