@@ -251,8 +251,17 @@ void KOTodoEditor::deleteTodo()
 void KOTodoEditor::setDefaults( QDateTime due, Todo *relatedEvent, bool allDay )
 {
   mRelatedTodo = relatedEvent;
-
-  mGeneral->setDefaults( due, allDay );
+  
+  // inherit some properties from parent todo
+  if ( mRelatedTodo ) {
+    mGeneral->setCategories( mRelatedTodo->categoriesStr() );
+    mCategoryDialog->setSelected( mRelatedTodo->categories() );
+    if ( mRelatedTodo->hasDueDate() )
+      mGeneral->setDefaults( mRelatedTodo->dtDue(), allDay ); 
+  }
+  else
+    mGeneral->setDefaults( due, allDay );
+  
   mDetails->setDefaults();
   mAttachments->setDefaults();
 }
