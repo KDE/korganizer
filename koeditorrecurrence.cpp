@@ -196,8 +196,8 @@ RecurWeekly::RecurWeekly( QWidget *parent, const char *name ) :
     }
     mDayBoxes[ (i + weekStart + 6)%7 ] = new QCheckBox( weekDayName, dayBox );
     QWhatsThis::add( mDayBoxes[ (i + weekStart + 6)%7 ],
-		     i18n("Day of the week on which this event or to-do "
-			  "should recur.") );
+                     i18n("Day of the week on which this event or to-do "
+                          "should recur.") );
   }
 
   topLayout->addStretch( 1 );
@@ -246,13 +246,13 @@ RecurMonthly::RecurMonthly( QWidget *parent, const char *name ) :
 
   mByDayRadio = new QRadioButton( recurOnText, buttonGroup );
   QWhatsThis::add( mByDayRadio,
-		   i18n("Sets a specific day of the month on which "
-		        "this event or to-do should recur.") );
+                   i18n("Sets a specific day of the month on which "
+                        "this event or to-do should recur.") );
   
   buttonLayout->addWidget( mByDayRadio, 0, 0 );
 
   QString whatsThis = i18n("The day of the month on which this event or to-do "
-			   "should recur.");
+                           "should recur.");
   mByDayCombo = new QComboBox( buttonGroup );
   QWhatsThis::add( mByDayCombo, whatsThis );
   mByDayCombo->setSizeLimit( 7 );
@@ -1078,6 +1078,27 @@ void KOEditorRecurrence::setDateTimes( QDateTime start, QDateTime end )
   mWeekly->setDateTimes( start, end );
   mMonthly->setDateTimes( start, end );
   mYearly->setDateTimes( start, end );
+  
+  // Now set the defaults for all unused types, use the start time for it
+  bool enabled = mEnabledCheck->isChecked();
+  int type = mRecurrenceChooser->type();
+  
+  if ( !enabled || type != RecurrenceChooser::Weekly ) {
+    QBitArray days( 7 );
+    days.fill( 0 );
+    days.setBit( (start.date().dayOfWeek()+6) % 7 );
+    mWeekly->setDays( days );
+  } 
+  if ( !enabled || type != RecurrenceChooser::Monthly ) {
+    mMonthly->setByPos( ( start.date().day() - 1 ) / 7 + 1, start.date().dayOfWeek() - 1 );
+    mMonthly->setByDay( start.date().day() );
+  }
+  if ( !enabled || type != RecurrenceChooser::Yearly ) {
+    mYearly->setByDay( start.date().dayOfYear() );
+    mYearly->setByPos( ( start.date().day() - 1 ) / 7 + 1,
+        start.date().dayOfWeek() - 1, start.date().month() );
+    mYearly->setByMonth( start.date().day(), start.date().month() );
+  }
 }
 
 void KOEditorRecurrence::setDefaults( QDateTime from, QDateTime to, bool )
