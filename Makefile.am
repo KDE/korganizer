@@ -129,8 +129,6 @@ tipdir = $(kde_datadir)/korganizer
 
 kde_bin_SCRIPTS = ical2vcal korganizerIn
 
-xdg_apps_DATA = korganizer.desktop
-
 rcdir = $(kde_datadir)/korganizer
 rc_DATA = korganizerui.rc korganizergsui.rc
 
@@ -151,7 +149,7 @@ messages: rc.cpp
 
 include ../admin/Doxyfile.am
 
-xdg_apps_DATA = configmain.desktop configtime.desktop \
+xdg_apps_DATA = korganizer.desktop configmain.desktop configtime.desktop \
                 configviews.desktop configcolors.desktop \
                 configfonts.desktop configgroupscheduling.desktop \
                 configgroupautomation.desktop
