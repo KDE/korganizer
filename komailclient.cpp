@@ -186,7 +186,7 @@ bool KOMailClient::send(const QString &from,const QString &to,
     }
 
     if (attachment.isEmpty()) {
-      if (!kMailOpenComposer(to,"",from,subject,body,0,KURL())) return false;
+      if (!kMailOpenComposer(to,"",bcc ? from : "",subject,body,0,KURL())) return false;
     } else {
       QString meth;
       int idx = attachment.find("METHOD");
@@ -197,7 +197,7 @@ bool KOMailClient::send(const QString &from,const QString &to,
       } else {
         meth = "publish";
       }
-      if (!kMailOpenComposer(to,"",from,subject,body,0,"cal.ics","7bit",
+      if (!kMailOpenComposer(to,"",bcc ? from : "",subject,body,0,"cal.ics","7bit",
                              attachment.utf8(),"text","calendar","method",meth,
                              "attachment","utf-8")) return false;
     }
