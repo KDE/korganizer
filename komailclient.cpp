@@ -57,11 +57,14 @@ bool KOMailClient::mailAttendees(IncidenceBase *incidence,const QString &attachm
   if (attendees.count() == 0) return false;
 
   const QString from = incidence->organizer().fullName();
+  const QString organizerEmail= incidence->organizer()->email();
   QStringList toList;
   for(uint i=0; i<attendees.count();++i) {
     const QString email = (*attendees.at(i))->email();
-    if( !KOPrefs::instance()->thatIsMe( email ) )
-      // Don't send a mail to ourselves
+    // In case we (as one of our identities) are the organizer we are sending this
+    // mail. We could also have added ourselves as an attendee, in which case we 
+    // don't want to send ourselves a notification mail.
+    if( organizerEmail !=  email )
       toList << email;
   }
   if( toList.count() == 0 )
