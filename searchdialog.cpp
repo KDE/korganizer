@@ -66,7 +66,7 @@ SearchDialog::SearchDialog(Calendar *calendar,QWidget *parent)
   QHButtonGroup *itemsGroup = new QHButtonGroup( i18n("Search For"), topFrame );
   layout->addWidget( itemsGroup );
   mEventsCheck = new QCheckBox( i18n("&Events"), itemsGroup );
-  mTodosCheck = new QCheckBox( i18n("To&dos"), itemsGroup );
+  mTodosCheck = new QCheckBox( i18n("To-&dos"), itemsGroup );
   mJournalsCheck = new QCheckBox( i18n("&Journal entries"), itemsGroup );
   mEventsCheck->setChecked( true );
   mTodosCheck->setChecked( true );

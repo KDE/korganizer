@@ -301,7 +301,7 @@ void ActionManager::initActions()
     KStdAction::print( mCalendarView, SLOT( print() ), mACollection );
   }
 
-  new KAction( i18n("delete completed To-Dos","Pur&ge Completed"), 0,
+  new KAction( i18n("delete completed To-dos","Pur&ge Completed"), 0,
                mCalendarView, SLOT( purgeCompleted() ), mACollection,
                "purge_completed" );
 
@@ -382,7 +382,7 @@ void ActionManager::initActions()
   new KAction( i18n("&Month"), "month", 0,
                     mCalendarView->viewManager(), SLOT( showMonthView() ),
                     mACollection, "view_month" );
-  new KAction( i18n("&To-Do List"), "todo", 0,
+  new KAction( i18n("&To-do List"), "todo", 0,
                     mCalendarView->viewManager(), SLOT( showTodoView() ),
                     mACollection, "view_todo" );
   new KAction( i18n("&Journal"), "journal", 0,
@@ -400,10 +400,10 @@ void ActionManager::initActions()
   new KAction( i18n("New E&vent..."), "appointment", 0,
                     mCalendarView,SLOT( newEvent() ),
                     mACollection, "new_event" );
-  new KAction( i18n("New &To-Do..."), "newtodo", 0,
+  new KAction( i18n("New &To-do..."), "newtodo", 0,
                     mCalendarView,SLOT( newTodo() ),
                     mACollection, "new_todo" );
-  action = new KAction( i18n("New Su&b-To-Do..."), 0,
+  action = new KAction( i18n("New Su&b-to-do..."), 0,
                     mCalendarView,SLOT( newSubTodo() ),
                     mACollection, "new_subtodo" );
   action->setEnabled( false );
@@ -420,7 +420,7 @@ void ActionManager::initActions()
                          mCalendarView,SLOT( deleteIncidence() ),
                          mACollection, "delete_incidence" );
 
-  action = new KAction( i18n("&Make Sub-To-Do Independent"), 0,
+  action = new KAction( i18n("&Make Sub-to-do Independent"), 0,
                     mCalendarView,SLOT( todo_unsub() ),
                     mACollection, "unsub_todo" );
   action->setEnabled( false );
@@ -925,7 +925,7 @@ void ActionManager::exportToHTML()
   KCal::HtmlExport mExport( mCalendarView->calendar() );
   
   mExport.setTitle( i18n("KOrganizer Calendar") );
-  mExport.setTitleTodo( i18n("KOrganizer To-Do List") );
+  mExport.setTitleTodo( i18n("KOrganizer To-do List") );
   mExport.setCredit( "KOrganizer", "http://korganizer.kde.org" );
   mExport.setEmail( KOPrefs::instance()->email() );
   mExport.setFullName( KOPrefs::instance()->fullName() );
@@ -1310,9 +1310,9 @@ class ActionStringsVisitor : public IncidenceBase::Visitor
       return true;
     }
     bool visit( Todo * ) {
-      if ( mShow ) mShow->setText( i18n("&Show To-Do") );
-      if ( mEdit ) mEdit->setText( i18n("&Edit To-Do...") );
-      if ( mDelete ) mDelete->setText( i18n("&Delete To-Do") );
+      if ( mShow ) mShow->setText( i18n("&Show To-do") );
+      if ( mEdit ) mEdit->setText( i18n("&Edit To-do...") );
+      if ( mDelete ) mDelete->setText( i18n("&Delete To-do") );
       return true;
     }
     bool visit( Journal * ) { return assignDefaultStrings(); }

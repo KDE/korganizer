@@ -52,7 +52,7 @@
 #include "kocore.h"
 
 KOTodoEditor::KOTodoEditor( Calendar *calendar, QWidget *parent ) :
-  KOIncidenceEditor( i18n("Edit To-Do"), calendar, parent )
+  KOIncidenceEditor( i18n("Edit To-do"), calendar, parent )
 {
   mTodo = 0;
   mRelatedTodo = 0;
@@ -399,7 +399,7 @@ void KOTodoEditor::slotLoadTemplate()
   Todo::List todos = cal.todos();
   if ( todos.count() == 0 ) {
     KMessageBox::error( this,
-        i18n("Template '%1' does not contain a valid todo.")
+        i18n("Template '%1' does not contain a valid to-do.")
         .arg( templateName ) );
   } else {
     readTodo( todos.first() );

@@ -997,8 +997,8 @@ void CalendarView::todo_unsub()
 bool CalendarView::deleteTodo(Todo *todo)
 {
   if ( todo && !todo->relations().isEmpty() ) {
-    KMessageBox::sorry( this, i18n("Cannot delete To-Do which has children."),
-                        i18n("Delete To-Do") );
+    KMessageBox::sorry( this, i18n("Cannot delete to-do which has children."),
+                        i18n("Delete To-do") );
     return false;
   } else {
     return true;
@@ -1765,11 +1765,11 @@ bool CalendarView::purgeCompletedSubTodos( Todo* todo, bool &allPurged )
 void CalendarView::purgeCompleted()
 {
   int result = KMessageBox::warningContinueCancel(this,
-      i18n("Delete all completed To-Dos?"),i18n("Purge To-Dos"),i18n("Purge"));
+      i18n("Delete all completed to-dos?"),i18n("Purge To-dos"),i18n("Purge"));
 
   if (result == KMessageBox::Continue) {
     bool allDeleted = true;
-    startMultiModify( i18n("Purging completed todos") );
+    startMultiModify( i18n("Purging completed to-dos") );
     Todo::List todos = calendar()->rawTodos();
     Todo::List rootTodos;
     Todo::List::ConstIterator it;
@@ -1784,8 +1784,8 @@ void CalendarView::purgeCompleted()
     }
     endMultiModify();
     if ( !allDeleted ) {
-      KMessageBox::information( this, i18n("Unable to purge Todo items with "
-                                "uncompleted children."), i18n("Delete To-Do"),
+      KMessageBox::information( this, i18n("Unable to purge to-do items with "
+                                "uncompleted children."), i18n("Delete To-do"),
                                 "UncompletedChildrenPurgeTodos" );
     }
   }
@@ -1811,8 +1811,8 @@ void CalendarView::importQtopia( const QString &categories,
 
 void CalendarView::warningChangeFailed( Incidence * )
 {
-  KMessageBox::sorry( this, i18n("Unable to edit incidence. "
-                                 "It's locked by another process.") );
+  KMessageBox::sorry( this, i18n("Unable to edit incidence: "
+                                 "it is locked by another process.") );
 }
 
 void CalendarView::editCanceled( Incidence *i )

@@ -632,7 +632,7 @@ void CalPrintHelper::drawDayBox( QPainter &p, const QDate &qd,
           text += " ";
         }
       }
-      text += i18n("To-Do: %1").arg(todo->summary());
+      text += i18n("To-do: %1").arg(todo->summary());
 
       p.drawText( x + 5, y + textY, width - 10, lineSpacing,
                   Qt::AlignLeft | Qt::AlignBottom, text );

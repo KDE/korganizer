@@ -138,7 +138,7 @@ void KOWhatsNextView::updateView()
     mText += "<h2><img src=\"";
     mText += *ipath;
     mText += "\">";
-    mText += i18n("To-Do:") + "</h2>\n";
+    mText += i18n("To-do:") + "</h2>\n";
     mText += "<ul>\n";
     Todo::List::ConstIterator it;
     for( it = todos.begin(); it != todos.end(); ++it ) {
@@ -176,7 +176,7 @@ void KOWhatsNextView::updateView()
           mText += "<h2><img src=\"";
           mText += *ipath;
           mText += "\">";
-          mText += i18n("Events and To-Dos that need a reply:") + "</h2>\n";
+          mText += i18n("Events and to-dos that need a reply:") + "</h2>\n";
           mText += "<table>\n";
         }
         replies++;
@@ -197,7 +197,7 @@ void KOWhatsNextView::updateView()
           mText += "<h2><img src=\"";
           mText += *ipath;
           mText += "\">";
-          mText += i18n("Events and To-Dos that need a reply:") + "</h2>\n";
+          mText += i18n("Events and to-dos that need a reply:") + "</h2>\n";
           mText += "<table>\n";
         }
         replies++;

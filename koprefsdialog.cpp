@@ -495,7 +495,7 @@ class KOPrefsDialogViews : public KPrefsModule
 
       /*** Todo View Group ***/
       QGroupBox *todoGroup = new QGroupBox( 1, Horizontal,
-                                            i18n("Todo View"),
+                                            i18n("To-do View"),
                                             topFrame );
       addWidBool( KOPrefs::instance()->fullViewTodoItem(), todoGroup );
       topLayout->addWidget( todoGroup );

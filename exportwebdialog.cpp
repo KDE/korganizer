@@ -136,7 +136,7 @@ void ExportWebDialog::slotTextChanged( const QString & _text)
 
 void ExportWebDialog::setupTodoPage()
 {
-  mTodoPage = addPage(i18n("To-Do"));
+  mTodoPage = addPage(i18n("To-do"));
 
   QVBoxLayout *topLayout = new QVBoxLayout(mTodoPage, 10);
 
