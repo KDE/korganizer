@@ -88,7 +88,7 @@ class CalPrinter : public QObject
     void drawDaysOfWeekBox(QPainter &p, const QDate &qd,
                            int x, int y, int width, int height);
     void drawDaysOfWeek(QPainter &p, const QDate &qd, int width, int height);
-    void drawTodo(int count, Todo *item,QPainter &p,int level=0, QRect *r=0);
+    void drawTodo(int count, Todo *item,QPainter &p,bool &connect, int level=0, QRect *r=0);
 
     KPrinter *mPrinter;
     Calendar *mCalendar;

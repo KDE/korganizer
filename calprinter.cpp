@@ -360,7 +360,6 @@ void CalPrinter::printTodo(const QDate &fd, const QDate &td)
 {
   QPainter p;
 
-
   mPrinter->setOrientation(KPrinter::Portrait);
 
   p.begin(mPrinter);
@@ -376,8 +375,8 @@ void CalPrinter::printTodo(const QDate &fd, const QDate &td)
 
   drawHeader(p, fd, td, fd, pageWidth, mHeaderHeight, Todolist);
 
-   mCurrentLinePos = mHeaderHeight + 5;
-   kdDebug() << "Header Height: " << mCurrentLinePos << endl;
+  mCurrentLinePos = mHeaderHeight + 5;
+  kdDebug() << "Header Height: " << mCurrentLinePos << endl;
 
   QPtrList<Todo> todoList = mCalendar->todos();
   todoList.first();
@@ -409,7 +408,7 @@ void CalPrinter::printTodo(const QDate &fd, const QDate &td)
     Todo *currEvent(todoList.first());
     while (currEvent != NULL) {
                 
-                //Filter out the subitems.
+      //Filter out the subitems.
       if (currEvent->relatedTo()){
             currEvent = todoList.next();
             continue;
@@ -428,8 +427,8 @@ void CalPrinter::printTodo(const QDate &fd, const QDate &td)
 	currEvent = todoList.next();
 	continue;
       }
-
-      drawTodo(count,currEvent,p);
+      bool connect = true;
+      drawTodo(count,currEvent,p,connect);
       currEvent = todoList.next();
       ++count;
     }
@@ -437,7 +436,8 @@ void CalPrinter::printTodo(const QDate &fd, const QDate &td)
   p.end();
 }
 
-void CalPrinter::drawTodo(int count, Todo * item, QPainter &p,int level,QRect *r)
+void CalPrinter::drawTodo(int count, Todo * item, QPainter &p, bool &connect,
+			  int level, QRect *r)
 {
   QString outStr;
   KLocale *local = KGlobal::locale();
@@ -450,16 +450,27 @@ void CalPrinter::drawTodo(int count, Todo * item, QPainter &p,int level,QRect *r
   QRect rect;
   QRect startpoint;
   
-  int lineEndHeight = mCurrentLinePos+p.fontMetrics().lineSpacing()+p.fontMetrics().height();
-  if ( lineEndHeight > p.viewport().height()) {
+  // size of item
+  outStr=item->summary();
+  int left = possummary+(level*10);
+  rect = p.boundingRect(left,mCurrentLinePos+18,
+                        (posdue-(left + rect.width() + 5)),-1,WordBreak,outStr);
+  if ( !item->description().isEmpty() ) {
+    outStr = item->description();
+    rect = p.boundingRect(left+20, rect.bottom()+5, pageWidth-(left+10), -1, 
+			  WordBreak, outStr);
+  }
+  // if too big make new page
+  if ( rect.bottom() > p.viewport().height()) {
     mCurrentLinePos = 0;
     mPrinter->newPage();
+    connect = false;
   }
 
   // If this is a sub-item, r will not be 0, and we want the LH side of the priority line up
   //to the RH side of the parent item's priority
-  if(r) {
-      pospriority = r->right() + 1;
+  if (r) {
+    pospriority = r->right() + 1;
   }
 
   // Priority
@@ -476,7 +487,7 @@ void CalPrinter::drawTodo(int count, Todo * item, QPainter &p,int level,QRect *r
   }
 
   // Connect the dots
-  if (level > 0) {
+  if (level > 0 && connect) {
     int center,bottom,to,endx;
     center = r->left() + (r->width()/2);
     bottom = r->bottom() + 1;
@@ -489,7 +500,6 @@ void CalPrinter::drawTodo(int count, Todo * item, QPainter &p,int level,QRect *r
 
   // summary
   outStr=item->summary();
-  int left = possummary+(level*10);
   rect = p.boundingRect(left,rect.top(),
                         (posdue-(left + rect.width() + 5)),-1,WordBreak,outStr);
   QRect newrect;
@@ -508,14 +518,25 @@ void CalPrinter::drawTodo(int count, Todo * item, QPainter &p,int level,QRect *r
                     pageWidth-5, mCurrentLinePos-fontHeight/2 + 2);
   }
 
+  if ( !item->description().isEmpty() ) {
+    mCurrentLinePos=newrect.bottom() + 5;
+    outStr = item->description();
+    rect = p.boundingRect(left+20, mCurrentLinePos, pageWidth-(left+10), -1, 
+			  WordBreak, outStr);
+    p.drawText(rect, WordBreak, outStr, -1, &newrect);
+  }
+
   // Set the new line position
   mCurrentLinePos=newrect.bottom() + 10; //set the line position
 
   // If the item has subitems, we need to call ourselves recursively
+  bool conn = true;
   QPtrList<Incidence> l = item->relations();
   Incidence *c;
   for(c=l.first();c;c=l.next()) {
-    drawTodo(count, static_cast<Todo *> (c),p,level+1,&startpoint);
+    drawTodo(count, static_cast<Todo *> (c),p,conn,level+1,&startpoint);
+    if ( !conn )
+      connect = false;
   }
 }
 
