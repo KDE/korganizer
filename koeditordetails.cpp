@@ -74,7 +74,6 @@ KOAttendeeListView::KOAttendeeListView (QWidget *parent, const char *name)
 {
   setAcceptDrops(true);
   setAllColumnsShowFocus(true);
-  setFullWidth(true);
 }
 
 /** KOAttendeeListView is a child class of KListView  which supports
@@ -168,11 +167,12 @@ KOEditorDetails::KOEditorDetails (int spacing,QWidget* parent,const char* name)
   mOrganizerLabel = new QLabel(i18n("Organizer: %1").arg(organizer),this);
 
   mListView = new KOAttendeeListView(this,"mListView");
-  mListView->addColumn(i18n("Name"),180);
-  mListView->addColumn(i18n("Email"),180);
+  mListView->addColumn(i18n("Name"),200);
+  mListView->addColumn(i18n("Email"),200);
   mListView->addColumn(i18n("Role"),60);
   mListView->addColumn(i18n("Status"),100);
   mListView->addColumn(i18n("RSVP"),35);
+  mListView->setResizeMode(QListView::LastColumn);
   if ( KOPrefs::instance()->mCompactDialogs ) {
     mListView->setFixedHeight(78);
   }
@@ -314,6 +314,7 @@ void KOEditorDetails::addNewAttendee()
   // We don't want the hint again
   mNameEdit->setClickMessage("");
   mNameEdit->selectAll();
+  mNameEdit->setFocus();
 }
 
 
