@@ -328,6 +328,7 @@ void KOQuickTodo::focusInEvent(QFocusEvent *ev)
 {
   if ( text()==i18n("Click to add a new Todo") )
     setText(QString::null);
+  setPaletteForegroundColor(parentWidget()->paletteForegroundColor());
   QLineEdit::focusInEvent(ev);
 }
 
@@ -336,12 +337,6 @@ void KOQuickTodo::focusOutEvent(QFocusEvent *ev)
   setText(i18n("Click to add a new Todo"));
   setPaletteForegroundColor(gray);
   QLineEdit::focusOutEvent(ev);
-}
-
-void KOQuickTodo::mousePressEvent(QMouseEvent *ev)
-{
-  setPaletteForegroundColor(parentWidget()->paletteForegroundColor());
-  QLineEdit::mousePressEvent(ev);
 }
 
 /////////////////////////////////////////////////////////////////////////////
