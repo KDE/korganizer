@@ -136,9 +136,14 @@ bool ListItemVisitor::visit(Todo *t)
   return true;
 }
 
-bool ListItemVisitor::visit(Journal *)
+bool ListItemVisitor::visit(Journal *t)
 {
-  return false;
+  // TODO: When the string freeze is over, use i18n("Journal: %1").arg(t->summary())
+//  mItem->setText( 0, i18n("Journal: %1").arg(t->description()) );
+  mItem->setText( 0, t->description() );
+  mItem->setText( 1, t->dtStartDateStr() );
+
+  return true;
 }
 
 KOListView::KOListView( Calendar *calendar, QWidget *parent,
