@@ -255,12 +255,13 @@ void KOTodoListView::contentsDropEvent( QDropEvent *e )
       //QListViewItem *qlvi = itemAt( contentsToViewport(e->pos()) );
       kdDebug(5850) << "Dropped : " << text << endl;
       Todo*todo = todoi->todo();
-      Todo*oldtodo = todo->clone();
-      if( text.startsWith( "file:" ) ) {
-        todo->addAttachment( new Attachment( text ) );
-      } else {
-        QStringList emails = KPIM::splitEmailAddrList( text );
-        if ( mChanger->beginChange( todo ) ) {
+      if( mChanger->beginChange( todo ) ) {
+        Todo*oldtodo = todo->clone();
+
+        if( text.startsWith( "file:" ) ) {
+          todo->addAttachment( new Attachment( text ) );
+        } else {
+          QStringList emails = KPIM::splitEmailAddrList( text );
           for(QStringList::ConstIterator it = emails.begin();it!=emails.end();++it) {
             kdDebug(5850) << " Email: " << (*it) << endl;
             int pos = (*it).find("<");
@@ -275,7 +276,7 @@ void KOTodoListView::contentsDropEvent( QDropEvent *e )
         mChanger->endChange( todo );
       } else {
         KMessageBox::sorry( this, i18n("Unable to add attendees to the to-do item, "
-                            "because the to-do cannot be locked.") );
+            "because the to-do cannot be locked.") );
       }
     }
     else {
