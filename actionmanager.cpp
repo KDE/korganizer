@@ -374,7 +374,7 @@ void ActionManager::initActions()
                     mCalendarView->viewManager(), SLOT(showTimeSpanView()),
                     mACollection, "view_timespan");
   (void)new KAction(i18n("&Update"), 0,
-                    mCalendarView, SLOT(update()),
+                    mCalendarView, SLOT( updateView() ),
                     mACollection, "update");
 
   // actions menu
