@@ -1,7 +1,6 @@
 [Desktop Entry]
 Encoding=UTF-8
 X-KDE-Library=libkorg_birthdays
-Name=Birthdays import plugin from kaddressbook for KOrganizer
-Name[de]=Geburtstag import von kadressbuch für KOrganizer
+Name=Birthdays import plugin from KAddressBook for KOrganizer
 Type=Service
 ServiceTypes=KOrganizer/Part
