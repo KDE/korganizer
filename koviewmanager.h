@@ -77,6 +77,7 @@ class KOViewManager : public QObject
     QDate currentSelectionDate();
 
     KOAgendaView *agendaView() const { return mAgendaView; }
+    KOTodoView   *todoView() const { return mTodoView; }
 
   public slots:
     void showWhatsNextView();
