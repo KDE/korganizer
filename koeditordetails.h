@@ -45,7 +45,7 @@ namespace KPIM {
 class AddresseeLineEdit;
 }
 
-typedef CustomListViewItem<Attendee *> AttendeeListItem;
+typedef CustomListViewItem<KCal::Attendee *> AttendeeListItem;
 
 
 /** KOAttendeeListView is a child class of KListView  which supports
