@@ -18,11 +18,12 @@
 #include <kprocess.h>
 #include <kmessagebox.h>
 #include <knotifyclient.h>
+#include <kio/netaccess.h>
 
-#include "config.h"
-#ifdef HAVE_LIBGEN_H
-#include <libgen.h>
-#endif
+//#include "config.h"
+//#ifdef HAVE_LIBGEN_H
+//#include <libgen.h>
+//#endif
 
 #include "alarmdialog.h"
 #include "calendarlocal.h"
@@ -81,42 +82,33 @@ void AlarmDockWindow::addToolTip(const QString &filename)
 
 ///////////////////////////////////////////////////////////////////////////////
 
-AlarmDaemon::AlarmDaemon(const QString &fn, QObject *parent, const char *name)
+AlarmDaemon::AlarmDaemon(QObject *parent, const char *name)
   : QObject(parent, name), DCOPObject(this)
 {
   kdDebug() << "AlarmDaemon::AlarmDaemon()" << endl;
 
-  docker = new AlarmDockWindow;
-  docker->show();
+  mDocker = new AlarmDockWindow;
+  mDocker->show();
 
-  calendar = new CalendarLocal;
-  calendar->showDialogs(FALSE);
+  mCalendar = new CalendarLocal;
+  mCalendar->showDialogs(FALSE);
 
   mAlarmDialog = new AlarmDialog;
   connect(mAlarmDialog,SIGNAL(suspendSignal(int)),SLOT(suspend(int)));
 
-  calendar->load(fn);
-
-  docker->addToolTip(fn);
-
   // set up the alarm timer
-  QTimer *alarmTimer = new QTimer(this);
+  mAlarmTimer = new QTimer(this);
   mSuspendTimer = new QTimer(this);
 
-  connect(alarmTimer, SIGNAL(timeout()),
-    calendar, SLOT(checkAlarms()));
-  connect(calendar, SIGNAL(alarmSignal(QList<Event> &)),
-    this, SLOT(showAlarms(QList<Event> &)));
-
-  // timeout every minute.
-  alarmTimer->start(1000*60);
-
+  connect(mAlarmTimer,SIGNAL(timeout()),mCalendar,SLOT(checkAlarms()));
+  connect(mCalendar, SIGNAL(alarmSignal(QList<Event> &)),
+          SLOT(showAlarms(QList<Event> &)));
 }
 
 AlarmDaemon::~AlarmDaemon()
 {
-  delete calendar;
-  delete docker;
+  delete mCalendar;
+  delete mDocker;
 }
 
 void AlarmDaemon::reloadCal()
@@ -126,21 +118,40 @@ void AlarmDaemon::reloadCal()
   mSuspendTimer->stop();
   mAlarmDialog->clearEvents();
 
-  calendar->close();
+  mCalendar->close();
   config.setGroup("General");
-  QString fileName = config.readEntry("Active Calendar");
+  QString urlString = config.readEntry("Active Calendar");
 
-  kdDebug() << "AlarmDaemon::reloadCal(): '" << fileName << "'" << endl;
+  kdDebug() << "AlarmDaemon::reloadCal(): '" << urlString << "'" << endl;
 
-  calendar->load(fileName);
+  KURL url(urlString);
 
-  docker->addToolTip(fileName);
+  QString tmpFile;
+  if(KIO::NetAccess::download(url,tmpFile)) {
+    kdDebug() << "--- Downloaded to " << tmpFile << endl;
+    bool success = mCalendar->load(tmpFile);
+    KIO::NetAccess::removeTempFile(tmpFile);
+    if (success) {
+      mDocker->addToolTip(url.prettyURL());
+      
+      // timeout every minute.
+      mAlarmTimer->start(1000*60);
+    } else {
+      kdDebug() << "Error loading calendar file '" << tmpFile << "'" << endl;
+      mDocker->addToolTip(i18n("No calendar loaded."));
+    }
+  } else {
+    QString msg;
+    msg = i18n("Cannot download calendar from %1.").arg(url.prettyURL());
+    KMessageBox::error(0,msg);
+    mDocker->addToolTip(i18n("No calendar loaded."));
+  }
 }
 
 void AlarmDaemon::showAlarms(QList<Event> &alarmEvents)
 {
   // leave immediately if alarms are off
-  if (!docker->alarmsOn()) return;
+  if (!mDocker->alarmsOn()) return;
 
   Event *anEvent;
 

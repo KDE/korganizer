@@ -10,6 +10,7 @@
 #include <kdebug.h>
 #include <dcopclient.h>
 #include <kwin.h>
+#include <kurl.h>
 
 #include "calendarlocal.h"
 #include "korganizer.h"
@@ -26,15 +27,21 @@ KOrganizerApp::~KOrganizerApp()
 {
 }
 
-void KOrganizerApp::displayImminent(const QString &file,int numdays)
+void KOrganizerApp::displayImminent(const QString &urlString,int numdays)
 {
+  KURL url(urlString);
+  if (!url.isLocalFile()) {
+    printf(i18n("Sorry. Can't handle remote calendar.\n").local8Bit());
+    return;
+  }
+
   Calendar *cal = new CalendarLocal;
 
   QDate currDate(QDate::currentDate());
   Event *currEvent;
 
-  if (!cal->load(file)) {
-    printf(i18n("Could not load calendar '%1'.\n").arg(file).local8Bit());
+  if (!cal->load(url.path())) {
+    printf(i18n("Could not load calendar '%1'.\n").arg(url.path()).local8Bit());
     exit(0);
   }
 
@@ -121,34 +128,32 @@ int KOrganizerApp::newInstance()
     }
   } else {
     KGlobal::config()->setGroup("General");
-    QString file = KGlobal::config()->readEntry("Active Calendar");
+    QString urlString = KGlobal::config()->readEntry("Active Calendar");
 
-    processCalendar(file,numDays,true);
+    processCalendar(urlString,numDays,true);
   }
   
   kdDebug() << "KOApp::newInstance() done" << endl;
   return 0;
 }
 
-void KOrganizerApp::processCalendar(const QString & file,int numDays,
+void KOrganizerApp::processCalendar(const QString &urlString,int numDays,
                                     bool active)
 {
   if (numDays > 0) {
-    displayImminent(file,numDays);
+    displayImminent(urlString,numDays);
   } else {
     if (isRestored()) {
       RESTORE(KOrganizer)
     } else {
-      KURL url;
-      url.setPath(file);
+      KURL url(urlString);
       KOrganizer *korg=KOrganizer::findInstance(url);
       if (0 == korg) {
         korg = new KOrganizer("KOrganizer MainWindow");
-        if (!file.isEmpty()) {
-          korg->openURL(url);
-          korg->setActive(active);
-        }
         korg->show();
+        if (!url.isEmpty()) {
+          korg->openURL(url);
+        }
       } else
           KWin::setActiveWindow(korg->winId());
     }

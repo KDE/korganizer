@@ -127,17 +127,24 @@ class CalendarView : public QWidget
     /** options dialog made a changed to the configuration. we catch this
      *  and notify all widgets which need to update their configuration. */
     void updateConfig();
-  
-    /** set calendar file to be displayed. */
-    bool openCalendar(QString filename);
-  
-    /** merge data from calendar file into currently displayed calendar. */
-    bool mergeCalendar(QString filename);
-  
-    /** Save calendar data to file. */
+
+    /**
+      Load calendar from file \a filename. If \a merge is true, load 
+      calendar into existing one, if it is false, clear calendar, before
+      loading. Return true, if calendar could be successfully loaded.
+    */
+    bool openCalendar(QString filename, bool merge=false);
+
+    /**
+      Save calendar data to file. Return true if calendar could be
+      successfully saved.
+    */
     bool saveCalendar(QString filename);
   
-    /** Close calendar */
+    /**
+      Close calendar. Clear calendar data and reset views to display an empty
+      calendar.
+    */
     void closeCalendar();
   
     /** Archive old events of calendar */
@@ -363,8 +370,6 @@ class CalendarView : public QWidget
     void emitEventsSelected();
   
   protected:
-    bool initCalendar(QString filename);
-  
     void schedule(Scheduler::Method);
     
     // returns KMsgBox::OKCandel()

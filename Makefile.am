@@ -1,7 +1,5 @@
 # set the include path for X, qt and KDE, and versit library for vCalendar
-INCLUDES= $(all_includes) \
-           -I$(top_srcdir)/kgantt/kgantt \
-           -I$(top_srcdir)/libkcal
+INCLUDES = -I$(top_srcdir)/kgantt/kgantt -I$(top_srcdir)/libkcal $(all_includes)
 
 bin_PROGRAMS = 	korganizer alarmd
 lib_LTLIBRARIES = libkorganizer.la

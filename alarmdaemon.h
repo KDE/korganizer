@@ -47,7 +47,7 @@ class AlarmDockWindow : public KSystemTray
 class AlarmDaemon : public QObject, DCOPObject {
     Q_OBJECT
   public:
-    AlarmDaemon(const QString &fn, QObject *parent = 0, const char *name = 0);
+    AlarmDaemon(QObject *parent = 0, const char *name = 0);
     virtual ~AlarmDaemon();
 
     bool process(const QCString &fun, const QByteArray &data,
@@ -63,9 +63,10 @@ class AlarmDaemon : public QObject, DCOPObject {
     void alarmSignal(QList<Event> &);
   
   private:
-    AlarmDockWindow *docker;
-    Calendar *calendar;
+    AlarmDockWindow *mDocker;
+    Calendar *mCalendar;
     AlarmDialog *mAlarmDialog;
+    QTimer *mAlarmTimer;
     QTimer *mSuspendTimer;
 };
 

@@ -10,7 +10,7 @@ class KOrganizerIface : virtual public DCOPObject
   k_dcop:
     virtual bool openURL(QString url) = 0;
     virtual bool mergeURL(QString url) = 0;
-    virtual bool closeURL() = 0;
+    virtual void closeURL() = 0;
     virtual bool saveURL() = 0;
     virtual bool saveAsURL(QString url) = 0;
     virtual QString getCurrentURLasString() const = 0;

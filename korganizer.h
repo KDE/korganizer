@@ -54,16 +54,19 @@ class KOrganizer : public KMainWindow, virtual public KOrganizerIface
     KOrganizer(const char *name=0);
     virtual ~KOrganizer();
 
-    /** Open calendar file from URL */
-    bool openURL(const KURL &url);
+    /**
+      Open calendar file from URL. Merge into current calendar, if \a merge is
+      true.
+    */
+    bool openURL(const KURL &url,bool merge=false);
     /** Merge calendar file from URL to current calendar */
     bool mergeURL(const KURL &url);
-    /** Close calendar file opened from URL */
-    bool closeURL();
     /** Save calendar file to URL of current calendar */
     bool saveURL();
     /** Save calendar file to URL */
     bool saveAsURL(const KURL & kurl);
+    /** Save calendar if it is modified by the user. Ask user what to do. */
+    bool saveModifiedURL();
     /** Get current URL */
     KURL getCurrentURL() const { return mURL; }
 
@@ -76,10 +79,14 @@ class KOrganizer : public KMainWindow, virtual public KOrganizerIface
     bool mergeURL(QString url);
     /** Save calendar file to URL */
     bool saveAsURL(QString url);
+    /** Close calendar file opened from URL */
+    void closeURL();
     /** Get current URL as QString */
     QString getCurrentURLasString() const;
     /** Delete event with unique id VUID from current calendar */
     virtual bool deleteEvent(QString VUID);
+
+    bool isActive() { return mActive; }
 
   signals:
 
@@ -209,7 +216,7 @@ class KOrganizer : public KMainWindow, virtual public KOrganizerIface
     CalendarView *mCalendarView;  // Main view widget
     KURL mURL;      // URL of calendar file
     QString mFile;  // Local name of calendar file
-    QString mLastFile;  // File name of last local calendar loaded.
+    QString mLastUrl;  // URL of last loaded calendar.
 
     KTempFile *mTempFile;
 

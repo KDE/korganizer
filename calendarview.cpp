@@ -230,33 +230,34 @@ void CalendarView::createPrinter()
   }
 }
 
-bool CalendarView::openCalendar(QString filename)
+bool CalendarView::openCalendar(QString filename, bool merge)
 {
-  kdDebug() << "CalendarView::openCalendar()" << endl;
-  if (initCalendar(filename)) {
-    setModified(false);
-    updateView();
-    emit statusMessage(i18n("Opened calendar %1").arg(filename));
-    return true;
-  } else {
+  kdDebug() << "CalendarView::openCalendar(): " << filename << endl;
+  
+  if (filename.isEmpty()) {
+    kdDebug() << "CalendarView::openCalendar(): Error! Empty filename." << endl;
     return false;
   }
-}
 
+  if (!QFile::exists(filename)) {
+    kdDebug() << "CalendarView::openCalendar(): Error! File '" << filename
+              << "' doesn't exist." << endl;
+  }
 
-bool CalendarView::mergeCalendar(QString filename)
-{
-  kdDebug() << "CalendarView::mergeCalendar()" << endl;
+  if (!merge) mCalendar->close();
+  
   if (mCalendar->load(filename)) {
-    setModified(true);
+    if (merge) setModified(true);
+    else setModified(false);
     updateView();
-    emit statusMessage(i18n("Merged calendar %1").arg(filename));
     return true;
   } else {
+    // while failing to load, the calendar object could
+    // have become partially populated.  Clear it out.
+    if (!merge) mCalendar->close();
     return false;
   }
 }
-
 
 bool CalendarView::saveCalendar(QString filename)
 {
@@ -266,13 +267,13 @@ bool CalendarView::saveCalendar(QString filename)
   mCurrentView->flushView();
 
   QString e = filename.right(4);
-  
+
   CalFormat *format;
   if (e == ".vcs") {
     format = new VCalFormat(mCalendar);
     if (mCalendar->journalList().count() > 0) {
       int result = KMessageBox::warningContinueCancel(this,
-          i18n("You will use your journal entries, if you proceed with saving"
+          i18n("You will lose your journal entries, if you proceed with saving"
                " in vCalendar format.\nUse 'Export iCalendar' to preserve the"
                " journal."),i18n("Data Loss Warning"),i18n("Proceed"));
       if (result != KMessageBox::Continue) return false;
@@ -281,13 +282,15 @@ bool CalendarView::saveCalendar(QString filename)
     format = new ICalFormat(mCalendar);
   }
 
-  mCalendar->save(filename,format);
-
-  // We should check for errors here.
+  bool success = mCalendar->save(filename,format);
+  
+  delete format;
+  
+  if (!success) {
+    return false;
+  }
 
   setModified(false);
-
-  emit statusMessage(i18n("Saved calendar %1").arg(filename));
 
   return true;
 }
@@ -316,33 +319,6 @@ void CalendarView::archiveCalendar()
   // Workaround.
   QApplication::restoreOverrideCursor();
 }
-
-bool CalendarView::initCalendar(QString filename)
-{
-  // read the settings from the config file
-  readSettings();
-
-  kdDebug() << "CalendarView::initCalendar(): filename: " << filename << endl;
-
-  QApplication::setOverrideCursor(waitCursor);
-
-  if (!filename.isEmpty()) {
-    setModified(false);
-    if (!(mCalendar->load(filename))) {
-      // while failing to load, the calendar object could
-      // have become partially populated.  Clear it out.
-      mCalendar->close();
-      
-      QApplication::restoreOverrideCursor();
-      return false;
-    }
-  }
-
-  QApplication::restoreOverrideCursor();
-
-  return true;
-}
-
 
 void CalendarView::readSettings()
 {
@@ -1450,6 +1426,7 @@ void CalendarView::exportICalendar()
 
   CalFormat *format = new ICalFormat(mCalendar);
   mCalendar->save(filename,format);
+  delete format;
 }
 
 void CalendarView::exportVCalendar()
@@ -1461,6 +1438,7 @@ void CalendarView::exportVCalendar()
 
   CalFormat *format = new VCalFormat(mCalendar);
   mCalendar->save(filename,format);
+  delete format;
 }
 
 void CalendarView::eventUpdated(Incidence *)

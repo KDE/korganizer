@@ -438,7 +438,6 @@ void KOrganizer::file_new()
   (new KOrganizer())->show();
 }
 
-
 void KOrganizer::file_open()
 {
   KURL url;
@@ -453,22 +452,19 @@ void KOrganizer::file_open()
     return;
   }
 
+  kdDebug() << "KOrganizer::file_open(): " << url.prettyURL() << endl;
+
   if (!mCalendarView->isModified() && mFile.isEmpty()) {
-    if (openURL(url)) {
-      setTitle();
-      mRecent->addURL(url);
-      setActive(false);
-    }
+    openURL(url);
   } else {
     KOrganizer *korg = new KOrganizer;
-    korg->show();
     if (korg->openURL(url)) {
-      korg->setTitle();
-      mRecent->addURL(url);
+      korg->show();
+    } else {
+      delete korg;
     }
   }
 }
-
 
 void KOrganizer::file_openRecent(const KURL& url)
 {
@@ -478,12 +474,9 @@ void KOrganizer::file_openRecent(const KURL& url)
       KWin::setActiveWindow(korg->winId());
       return;
     }
-    if (openURL(url)) {
-      setTitle();
-    }
+    openURL(url);
   }
 }
-
 
 void KOrganizer::file_import()
 {
@@ -507,7 +500,7 @@ void KOrganizer::file_import()
   
   if (retVal >= 0 && retVal <= 2) {
     // now we need to MERGE what is in the iCal to the current calendar.
-    mCalendarView->mergeCalendar(tmpfn.name());
+    mCalendarView->openCalendar(tmpfn.name(),1);
     if (!retVal)
       KMessageBox::information(this,
 			       i18n("KOrganizer succesfully imported and "
@@ -532,20 +525,17 @@ void KOrganizer::file_import()
   tmpfn.unlink();
 }
 
-
 void KOrganizer::file_merge()
 {
   KURL url = KFileDialog::getOpenURL(locateLocal("appdata", ""),
                                      i18n("*.vcs *.ics|Calendar files"),this);
-  mergeURL(url);
+  openURL(url,true);
 }
-
 
 void KOrganizer::file_archive()
 {
   mCalendarView->archiveCalendar();
 }
-
 
 void KOrganizer::file_saveas()
 {
@@ -553,8 +543,197 @@ void KOrganizer::file_saveas()
 
   if (url.isEmpty()) return;
 
-  if (saveAsURL(url)) {
+  saveAsURL(url);
+}
+
+void KOrganizer::file_save()
+{
+  if (mURL.isEmpty()) file_saveas();
+  else saveURL();
+}
+
+void KOrganizer::file_close()
+{
+  if (!saveModifiedURL()) return;
+
+  mCalendarView->closeCalendar();
+  KIO::NetAccess::removeTempFile(mFile);
+  mURL="";
+  mFile="";
+
+  setActive(false);
+  
+  setTitle();
+}
+
+void KOrganizer::file_quit()
+{
+  close();
+}
+
+
+bool KOrganizer::openURL(const KURL &url,bool merge)
+{
+  kdDebug() << "KOrganizer::openURL()" << endl;
+
+  if (url.isEmpty()) {
+    kdDebug() << "KOrganizer::openURL(): Error! Empty URL." << endl;
+    return false;
+  }
+  if (url.isMalformed()) {
+    kdDebug() << "KOrganizer::openURL(): Error! URL is malformed." << endl;
+    return false;
+  }
+
+  QString tmpFile;
+  if(KIO::NetAccess::download(url,tmpFile)) {
+    kdDebug() << "--- Downloaded to " << tmpFile << endl;
+    bool success = mCalendarView->openCalendar(tmpFile,merge);
+    if (merge) {
+      KIO::NetAccess::removeTempFile(tmpFile);
+      if (success) {
+        showStatusMessage(i18n("Merged calendar '%1'.").arg(url.prettyURL()));
+      }
+    } else {
+      if (success) {
+        KIO::NetAccess::removeTempFile(mFile);
+        mURL = url;
+        mFile = tmpFile;
+        KGlobal::config()->setGroup("General");
+        QString active = KGlobal::config()->readEntry("Active Calendar");
+        if (KURL(active) == mURL) setActive(true);
+        else setActive(false);
+        setTitle();
+        mRecent->addURL(url);
+        showStatusMessage(i18n("Opened calendar '%1'.").arg(mURL.prettyURL()));
+      }
+    }
+
+
+    return success;
+  } else {
+    QString msg;
+    msg = i18n("Cannot download calendar from %1.").arg(mURL.prettyURL());
+    KMessageBox::error(this,msg);
+    return false;
+  }
+}
+
+void KOrganizer::closeURL()
+{
+  kdDebug() << "KOrganizer::closeURL()" << endl;
+
+  file_close();
+}
+
+bool KOrganizer::saveURL()
+{
+  if (!mCalendarView->saveCalendar(mFile)) {
+    kdDebug() << "KOrganizer::saveURL(): calendar view save failed." << endl;
+    return false;
+  }
+
+  if (isActive()) {
+    kdDebug() << "KOrganizer::saveURL(): Notify alarm daemon" << endl;
+    if (!kapp->dcopClient()->send("alarmd","ad","reloadCal()","")) {
+      kdDebug() << "KOrganizer::saveURL(): dcop send failed" << endl;
+    }
+  }
+
+  if (!mURL.isLocalFile()) {
+    if (!KIO::NetAccess::upload(mFile,mURL)) {
+      QString msg = i18n("Cannot upload calendar to %1").arg(mURL.prettyURL());
+      KMessageBox::error(this,msg);
+      return false;
+    }
+  }
+
+  // keep saves on a regular interval
+  if (KOPrefs::instance()->mAutoSave) {
+    mAutoSaveTimer->stop();
+    mAutoSaveTimer->start(1000*60*KOPrefs::instance()->mAutoSaveInterval);
+  }
+
+  showStatusMessage(i18n("Saved calendar '%1'.").arg(mURL.prettyURL()));
+
+  return true;
+}
+
+bool KOrganizer::saveAsURL(const KURL &url)
+{
+  kdDebug() << "KOrganizer::saveAsURL() " << url.prettyURL() << endl;
+
+  if (url.isEmpty()) {
+    kdDebug() << "KOrganizer::saveAsURL(): Empty URL." << endl;
+    return false;
+  }
+  if (url.isMalformed()) {
+    kdDebug() << "KOrganizer::saveAsURL(): Malformed URL." << endl;
+    return false;
+  }
+
+  QString fileOrig = mFile;
+  KURL URLOrig = mURL;
+
+  KTempFile *tempFile = 0;
+  if (url.isLocalFile()) {
+    mFile = url.path();
+  } else {
+    tempFile = new KTempFile;
+    mFile = tempFile->name();
+  }
+  mURL = url;
+  
+  bool success = saveURL(); // Save local file and upload local file
+  if (success) {
+    mRecent->addURL(mURL);
+    mURL = url;
+    delete mTempFile;
+    mTempFile = tempFile;
+    KIO::NetAccess::removeTempFile(fileOrig);    
+    KGlobal::config()->setGroup("General");
+    QString active = KGlobal::config()->readEntry("Active Calendar");
+    if (KURL(active) == mURL) setActive(true);
+    else setActive(false);
     setTitle();
+  } else {
+    kdDebug() << "KOrganizer::saveAsURL() failed" << endl;
+    mURL = URLOrig;    
+    mFile = fileOrig;
+    delete tempFile;
+  }
+
+  return success;
+}
+
+
+bool KOrganizer::saveModifiedURL()
+{
+  kdDebug() << "KOrganizer::saveModifiedURL()" << endl;
+
+  // If calendar isn't modified do nothing.
+  if (!mCalendarView->isModified()) return true;
+
+  if (KOPrefs::instance()->mAutoSave && !mURL.isEmpty()) {
+    // Save automatically, when auto save is enabled.  
+    return saveURL();
+  } else {
+    int result = KMessageBox::warningYesNoCancel(this,
+        i18n("The calendar has been modified.\nDo you want to save it?"));
+    switch(result) {
+      case KMessageBox::Yes:
+        if (mURL.isEmpty()) {
+          KURL url = getSaveURL();
+          return saveAsURL(url);
+        } else {
+          return saveURL();
+        }
+      case KMessageBox::No:
+        return true;
+      case KMessageBox::Cancel:
+      default:
+        return false;
+    }
   }
 }
 
@@ -585,37 +764,16 @@ KURL KOrganizer::getSaveURL()
 }
 
 
-void KOrganizer::file_save()
-{
-  if (mURL.isEmpty()) file_saveas();
-  else saveURL();
-}
-
-
-void KOrganizer::file_close()
-{
-  closeURL();
-  mLastFile = "";
-  setTitle();
-}
-
-
-void KOrganizer::file_quit()
-{
-  close();
-}
-
-
 bool KOrganizer::queryClose()
 {
-  if (windowList->lastInstance() && !mActive && !mURL.isEmpty()) {
+  if (windowList->lastInstance() && !isActive() && !mURL.isEmpty()) {
     int result = KMessageBox::questionYesNo(this,i18n("Do you want to make this"
       " calendar active?\nThis means that it is monitored for alarms and loaded"
       " as default calendar."));
     if (result == KMessageBox::Yes) makeActive();
   }
 
-  bool success = closeURL();
+  bool success = saveModifiedURL();
 
   // Write configuration. I don't know if it really makes sense doing it this
   // way, when having opened multiple calendars in different CalendarViews.
@@ -623,7 +781,6 @@ bool KOrganizer::queryClose()
   
   return success;
 }
-
 
 bool KOrganizer::queryExit()
 {
@@ -634,19 +791,41 @@ bool KOrganizer::queryExit()
 }
 
 
+void KOrganizer::saveProperties(KConfig *config)
+{
+  config->writeEntry("Calendar",mURL.url());
+}
+
+void KOrganizer::readProperties(KConfig *config)
+{
+  QString calendarUrl = config->readEntry("Calendar");
+  if (!calendarUrl.isEmpty()) {
+    KURL u(calendarUrl);
+    openURL(u);
+
+    KGlobal::config()->setGroup("General");
+    QString active = KGlobal::config()->readEntry("Active Calendar");
+    if (active == calendarUrl) setActive(true);
+  }
+}
+
+
 void KOrganizer::setTitle()
 {
 //  kdDebug() << "KOrganizer::setTitle" << endl;
 
   QString tmpStr;
 
-  if (!mURL.isEmpty()) tmpStr = mURL.fileName();
+  if (!mURL.isEmpty()) {
+    if (mURL.isLocalFile()) tmpStr = mURL.fileName();
+    else tmpStr = mURL.prettyURL();
+  }
   else tmpStr = i18n("New Calendar");
 
   if (mCalendarView->isReadOnly())
     tmpStr += " [" + i18n("read-only") + "]";
 
-  if (mActive) tmpStr += " [" + i18n("active") + "]";
+  if (isActive()) tmpStr += " [" + i18n("active") + "]";
 
   setCaption(tmpStr,!mCalendarView->isReadOnly()&&mCalendarView->isModified());
 }
@@ -697,12 +876,15 @@ void KOrganizer::configureToolbars()
 {
   KEditToolbar dlg(actionCollection());
 
-  if (dlg.exec())
-  {
+  if (dlg.exec()) {
     createGUI();
-
     plugActionList("toolbartoggles",mToolBarToggles);
   }
+}
+
+void KOrganizer::editKeys()
+{
+  KKeyDialog::configureKeys(actionCollection(),xmlFile(),true,this);
 }
 
 void KOrganizer::saveOptions()
@@ -713,147 +895,6 @@ void KOrganizer::saveOptions()
 
   config->setGroup("Settings");
   config->writeEntry("Filter Visible",mFilterViewAction->isChecked());
-}
-
-bool KOrganizer::openURL( const KURL &url )
-{
-  kdDebug() << "KOrganizer::openURL()" << endl;
-  if (url.isMalformed()) return false;
-  if (!closeURL()) return false;
-  mURL = url;
-  mFile = "";
-  if(KIO::NetAccess::download(mURL,mFile)) {
-    return mCalendarView->openCalendar(mFile);
-  } else {
-    QString msg;
-    msg = i18n("Cannot download calendar from %1").arg(mURL.prettyURL());
-    KMessageBox::error(this,msg);
-    return false;
-  }
-}
-
-void KOrganizer::editKeys()
-{
-  KKeyDialog::configureKeys(actionCollection(),xmlFile(),true,this);
-}
-
-bool KOrganizer::mergeURL( const KURL &url )
-{
-  kdDebug() << "KOrganizer::mergeURL()" << endl;
-  if (url.isMalformed()) return false;
-
-  QString tmpFile;
-  if( KIO::NetAccess::download(url,tmpFile)) {
-    bool success = mCalendarView->mergeCalendar(tmpFile);
-    KIO::NetAccess::removeTempFile(tmpFile);
-    return success;
-  } else {
-    return false;
-  }
-}
-
-
-bool KOrganizer::closeURL()
-{
-  kdDebug() << "KOrganizer::closeURL()" << endl;
-
-  if (KOPrefs::instance()->mAutoSave && !mURL.isEmpty()) {
-    // Save automatically, when auto save is enabled.  
-    if (!saveURL()) return false;
-  } else {
-    if (mCalendarView->isModified()) {
-      int result = KMessageBox::warningYesNoCancel(0L,
-            i18n("The calendar has been modified.\nDo you want to save it?"));
-
-      switch(result) {
-        case KMessageBox::Yes :
-          if (mURL.isEmpty()) {
-            KURL url = getSaveURL();
-            if (url.isEmpty()) return false;
-            if (!saveAsURL(url)) return false;
-          }
-          if (!saveURL()) return false;
-          break;
-        case KMessageBox::No :
-          break;
-        default : // case KMessageBox::Cancel :
-          return false;
-      }
-    }
-  }
-
-  mCalendarView->closeCalendar();
-  if (mURL.isLocalFile()) mLastFile = mFile;
-  else mLastFile = "";
-  mURL="";
-  mFile="";
-  setActive(false);
-  
-  KIO::NetAccess::removeTempFile( mFile );
-
-  return true;
-}
-
-bool KOrganizer::saveURL()
-{
-  if (!mCalendarView->saveCalendar(mFile)) {
-    kdDebug() << "KOrganizer::saveURL(): calendar view save failed." << endl;
-    return false;
-  }
-  
-  if (mActive) {
-    kdDebug() << "KOrganizer::saveURL(): Notify alarm daemon" << endl;
-    if (!kapp->dcopClient()->send("alarmd","ad","reloadCal()","")) {
-      kdDebug() << "KOrganizer::saveURL(): dcop send failed" << endl;
-    }
-  }
-
-  if (!mURL.isLocalFile()) {
-    if (!KIO::NetAccess::upload(mFile,mURL)) {
-      QString msg = i18n("Cannot upload calendar to %1").arg(mURL.prettyURL());
-      KMessageBox::error(this,msg);
-      return false;
-    }
-  }
-
-  // keep saves on a regular interval
-  if (KOPrefs::instance()->mAutoSave) {
-    mAutoSaveTimer->stop();
-    mAutoSaveTimer->start(1000*60*KOPrefs::instance()->mAutoSaveInterval);
-  }
-
-  return true;
-}
-
-bool KOrganizer::saveAsURL( const KURL & kurl )
-{
-  if (kurl.isMalformed()) {
-    kdDebug() << "KOrganizer::saveAsURL(): Malformed URL." << endl;
-    return false;
-  }
-  mURL = kurl; // Store where to upload
-
-  // Local file
-  if ( mURL.isLocalFile() ) {
-    // get rid of a possible temp file first
-    if ( mTempFile ) {  // (happens if previous url was remote)
-      delete mTempFile;
-      mTempFile = 0;
-    }
-    mFile = mURL.path();
-  } else { // Remote file
-    // We haven't saved yet, or we did but locally - provide a temp file
-    if ( mFile.isEmpty() || !mTempFile ) {
-      mTempFile = new KTempFile;
-      mFile = mTempFile->name();
-    }
-    // otherwise, we already had a temp file
-  }
-  bool success = saveURL(); // Save local file and upload local file
-  kdDebug() << "KOrganizer::saveAsURL() " << mURL.prettyURL() << endl;
-  if (success) mRecent->addURL(mURL);
-  else kdDebug() << "  failed" << endl;
-  return success;
 }
 
 KOrganizer* KOrganizer::findInstance(const KURL &url)
@@ -874,25 +915,21 @@ void KOrganizer::setActive(bool active)
 
 void KOrganizer::makeActive()
 {
-  // Write only local Files to config file. This prevents loading of a remote
-  // file automatically on startup, which could block KOrganizer even before
-  // it has opened. Perhaps this is to strict...
   if (mURL.isEmpty()) {
     KMessageBox::sorry(this,i18n("The calendar does not have a filename. "
                                  "Please save it before activating."));
-  } else if (mURL.isLocalFile()) {
-    KConfig *config(kapp->config());
-    config->setGroup("General");
-    config->writeEntry("Active Calendar",mFile);
-    config->sync();
-    if (!kapp->dcopClient()->send("alarmd","ad","reloadCal()","")) {
-      kdDebug() << "KOrganizer::saveURL(): dcop send failed" << endl;
-    }
-    setActive();
-    emit calendarActivated(this);
-  } else {
-    KMessageBox::sorry(this,i18n("Only local files can be active calendars."));
+    return;
   }
+
+  KConfig *config(kapp->config());
+  config->setGroup("General");
+  config->writeEntry("Active Calendar",mURL.url());
+  config->sync();
+  if (!kapp->dcopClient()->send("alarmd","ad","reloadCal()","")) {
+    kdDebug() << "KOrganizer::saveURL(): dcop send failed" << endl;
+  }
+  setActive();
+  emit calendarActivated(this);
 }
 
 void KOrganizer::dumpText(const QString &str)
@@ -935,25 +972,6 @@ void KOrganizer::toggleFilterView()
   mCalendarView->showFilter(visible);
 }
 
-void KOrganizer::saveProperties(KConfig *config)
-{
-  config->writeEntry("Calendar",mLastFile);
-}
-
-void KOrganizer::readProperties(KConfig *config)
-{
-  QString calendarUrl = config->readEntry("Calendar");
-  if (!calendarUrl.isEmpty()) {
-    KURL u;
-    u.setPath(calendarUrl);
-    openURL(u);
-
-    KGlobal::config()->setGroup("General");
-    QString active = KGlobal::config()->readEntry("Active Calendar");
-    if (active == calendarUrl) setActive(true);
-  }
-}
-
 void KOrganizer::statusBarPressed(int id)
 {
   if (id == ID_MESSAGES_IN) mCalendarView->schedule_incoming();
@@ -984,7 +1002,7 @@ bool KOrganizer::openURL(QString url)
 
 bool KOrganizer::mergeURL(QString url)
 {
-  return mergeURL(KURL(url));
+  return openURL(KURL(url),true);
 }
 
 bool KOrganizer::saveAsURL(QString url)
