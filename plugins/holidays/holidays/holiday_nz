@@ -2,12 +2,15 @@
 : New Zealand holiday file. Copy to ~/.holiday
 :
 : Author: Miles Leonard-Taylor (m.leonardtaylor@irl.cri.nz)
-: 13 September 2000
+: 13 September 2000 (first version)
+: 24 September 2004 (update with spelling corrections)
+: Thanks to various people for pointing out all my spelling mistakes...
 
 : Holidays as defined by the government's "Holidays Acts, 1981-1991"
 : and the Visits and Ceremonial office of the Department of Internal Affairs
-: and also at http://www.nzir.dol.govt.nz/rights/leave/dates/2000.html
-:
+: and was also at http://www.nzir.dol.govt.nz/rights/leave/dates/2000.html
+: but now located under http://www.ers.dol.govt.nz/holidays_act_2003/dates/
+
 small "Christmas" weekend on december 25
 small "Boxing Day" weekend on december 26
 small "New Year's Day" weekend on january 1
@@ -28,11 +31,11 @@ small "St. Patrick's Day" on march 17
 small "Mother's Day" on second sunday in may
 small "Father's Day" on first sunday in september
 small "Halloween" on october 31
-small "Guy Falk's" on november 5
+small "Guy Fawkes" on november 5
 small "Melbourne Cup" on first tuesday in november 
 
 : Daylight Savings Reminders, defined by Internal Affairs
-small "Clocks Foward" on first sunday in october
+small "Clocks Forward" on first sunday in october
 small "Clocks Back" on third sunday in march
 
 : Additional Easter dates and other Solemneties, defined by Catholic Church
@@ -75,8 +78,8 @@ small "Taranaki Day" on second monday in march
 small "Hawkes Bay Day" on fourth monday in october minus 3 days
 : Wellington		22 January	Moves to nearest monday
 small "Wellington Day" on monday after 19 january
-: Malborough		1 November	Moves to first monday after Labour day
-small "Malborough Day" on fourth monday in october plus 7 days
+: Marlborough		1 November	Moves to first monday after Labour day
+small "Marlborough Day" on fourth monday in october plus 7 days
 : Nelson		1 February	Moves to nearest monday
 small "Nelson Day" on monday after 29 january
 : Canterbury		16 December	Moves to 2nd Fri after 1st Tues in Nov
@@ -90,5 +93,5 @@ small "Otago Day" on monday after 20 march
 : Southland		17 January	Moves to nearest monday
 small "Southland Day" on monday after 14 march
 : Chatham Islands	30 November	Moves to nearest monday
-small "Chatam's Day" on monday after 27 november
+small "Chatham's Day" on monday after 27 november
 
