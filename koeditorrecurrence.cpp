@@ -376,7 +376,7 @@ int RecurMonthly::day()
 {
   int day = mByDayCombo->currentItem();
   if ( day >= 31 ) day = 31-day-1;
-  else --day;
+  else ++day;
   return day;
 }
 
