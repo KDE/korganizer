@@ -584,6 +584,7 @@ void ActionManager::readSettings()
 void ActionManager::writeSettings()
 {
   kdDebug(5850) << "ActionManager::writeSettings" << endl;
+
   KConfig *config = KOGlobals::self()->config();
   mCalendarView->writeSettings();
 
@@ -594,6 +595,10 @@ void ActionManager::writeSettings()
                         mResourceButtonsAction->isChecked() );
   }
   if ( mRecent ) mRecent->saveEntries( config );
+
+  if ( mCalendarResources ) {
+    mCalendarResources->resourceManager()->writeConfig();
+  }
 }
 
 void ActionManager::file_new()
@@ -1411,7 +1416,6 @@ bool ActionManager::queryClose()
   if ( mCalendar ) {
     close = saveModifiedURL();
   } else if ( mCalendarResources ) {
-    mCalendarResources->resourceManager()->writeConfig();
     if ( !mIsClosing ) {
       kdDebug(5850) << "!mIsClosing" << endl;
       if ( !saveResourceCalendar() ) return false;
