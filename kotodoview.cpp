@@ -39,7 +39,7 @@ void KOTodoViewItem::construct()
   setOn(mEvent->isCompleted());
   setText(0,mEvent->summary());
   setText(1,QString::number(mEvent->priority()));
-  setText(2,QString::number(mEvent->percentComplete()));
+  setText(2,i18n("%1 %").arg(QString::number(mEvent->percentComplete())));
   if (mEvent->hasDueDate()) {
     setText(3, mEvent->dtDueDateStr());
     if (mEvent->doesFloat()) setText(3,"");
@@ -243,6 +243,7 @@ KOTodoView::KOTodoView(Calendar *calendar,QWidget* parent,const char* name) :
   mTodoListView->addColumn(i18n("Priority"));
   mTodoListView->setColumnAlignment(1,AlignHCenter);
   mTodoListView->addColumn(i18n("Complete"));
+  mTodoListView->setColumnAlignment(2,AlignRight);
   mTodoListView->addColumn(i18n("Due Date"));
   mTodoListView->addColumn(i18n("Due Time"));
   mTodoListView->addColumn(i18n("Categories"));

@@ -39,6 +39,7 @@ bool ListItemVisitor::visit(Event *e)
   mItem->setText(6,e->recurrence()->doesRecur() ? i18n("Yes") : i18n("No"));
   mItem->setText(7,"---");
   mItem->setText(8,"---");
+  mItem->setText(9,e->categoriesStr());
 
   QString key;
   QDate d = e->dtStart().date();
@@ -74,6 +75,7 @@ bool ListItemVisitor::visit(Todo *t)
     mItem->setText(7,"---");
     mItem->setText(8,"---");
   }
+  mItem->setText(9,t->categoriesStr());
 
   QString key; 
   QDate d = t->dtDue().date();
@@ -133,6 +135,8 @@ KOListView::KOListView(Calendar *calendar, QWidget *parent,
   mListView->setColumnAlignment(7,AlignHCenter);
   mListView->addColumn(i18n("Due Time"));
   mListView->setColumnAlignment(8,AlignHCenter);
+  mListView->addColumn(i18n("Categories"));
+  mListView->setColumnAlignment(9,AlignHCenter);
 
   QBoxLayout *layoutTop = new QVBoxLayout(this);
   layoutTop->addWidget(mListView);
