@@ -1,7 +1,7 @@
 KDE_FIND_PATH(perl, PERL, [],
-  [
-    AC_MSG_WARN([Couldn't find perl 5 or later. ical2vcal will not work.])    ],
-  [-e 'require 5.000;']
+	[
+	  AC_MSG_WARN([Couldn't find perl 5 or later. ical2vcal will not work.])		],
+	[-e 'require 5.000;']
 )
 
 AC_SUBST(PERL)
@@ -10,8 +10,8 @@ KDE_CHECK_STL
 AC_HEADER_DIRENT
 AC_HEADER_STDC
 AC_CHECK_HEADERS(fcntl.h sys/time.h unistd.h sys/select.h \
-  sys/ioctl.h sys/stropts.h malloc.h sys/sockio.h \
-  sys/m_wait.h sys/param.h libgen.h)
+	sys/ioctl.h sys/stropts.h malloc.h sys/sockio.h \
+	sys/m_wait.h sys/param.h libgen.h)
 AC_HEADER_TIME
 
 AC_LANG_C
