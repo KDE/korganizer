@@ -7,7 +7,7 @@ pics_DATA = smallcal.xpm 1downarrow.xpm 1leftarrow.xpm 1rightarrow.xpm \
 	2uparrow.xpm 3downarrow.xpm 3leftarrow.xpm 3rightarrow.xpm \
 	3uparrow.xpm checkmark.xpm checkedbox-mask.xpm checkedbox.xpm \
 	emptybox-mask.xpm emptybox.xpm bell.xpm recur.xpm \
-	runprog.xpm playsound.xpm knlogo1.gif
+	runprog.xpm playsound.xpm knlogo1.gif smallclock.xpm
 
 toolbar_DATA = listicon.xpm 5dayicon.xpm  dayicon.xpm agenda.xpm \
 	weekicon.xpm todayicon.xpm newevent.xpm newrecurevent.xpm \
