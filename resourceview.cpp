@@ -135,6 +135,7 @@ void ResourceItem::stateChange( bool active )
       }
     } else {
       mResource->save();
+      mView->requestClose( mResource );
     }
     mResource->setActive( toActivate );
 
@@ -295,7 +296,10 @@ void ResourceView::slotSubresourceRemoved( ResourceCalendar */*calendar*/,
 
 void ResourceView::closeResource( ResourceCalendar *r )
 {
-  r->close();
+  if ( mResourcesToClose.find( r ) >= 0 ) {
+    r->close();
+    mResourcesToClose.remove( r );
+  }
 }
 
 void ResourceView::updateResourceItem( ResourceCalendar *resource )
@@ -465,6 +469,11 @@ void ResourceView::showButtons( bool visible )
     mDeleteButton->hide();
     mEditButton->hide();
   }
+}
+
+void ResourceView::requestClose( ResourceCalendar *r )
+{
+  mResourcesToClose.append( r );
 }
 
 #include "resourceview.moc"

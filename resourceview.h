@@ -94,6 +94,8 @@ class ResourceView : public CalendarViewExtension
     void emitResourcesChanged();
     void emitErrorMessage( const QString & );
 
+    void requestClose( ResourceCalendar * );
+
     void showButtons( bool visible );
 
   public slots:
@@ -134,6 +136,7 @@ class ResourceView : public CalendarViewExtension
     QPushButton *mAddButton;
     QPushButton *mDeleteButton;
     QPushButton *mEditButton;
+    QPtrList<ResourceCalendar> mResourcesToClose;
 };
 
 #endif
