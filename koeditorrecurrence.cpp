@@ -538,7 +538,7 @@ void KOEditorRecurrence::setEnabled(bool enabled)
 
 void KOEditorRecurrence::addException()
 {
-  QDate tmpDate = exceptionDateEdit->getDate();
+  QDate tmpDate = exceptionDateEdit->date();
   QString date=KGlobal::locale()->formatDate(tmpDate);
   if(!exceptionList->findItem(date))
   {
@@ -552,7 +552,7 @@ void KOEditorRecurrence::changeException()
   int pos = exceptionList->currentItem();
   if (pos < 0) return;
 
-  QDate tmpDate = exceptionDateEdit->getDate();
+  QDate tmpDate = exceptionDateEdit->date();
   mExceptionDates[pos] = tmpDate;
   exceptionList->changeItem(KGlobal::locale()->formatDate(tmpDate),pos);
 }
@@ -821,7 +821,7 @@ void KOEditorRecurrence::writeEvent(Event *event)
       rDuration = tmpStr.toInt();
     } else {
       rDuration = 0;
-      rEndDate = endDateEdit->getDate();
+      rEndDate = endDateEdit->date();
     }
 
     // check for daily recurrence

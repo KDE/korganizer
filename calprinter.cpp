@@ -1136,12 +1136,12 @@ void CalPrintDialog::setPreview(bool preview)
 
 QDate CalPrintDialog::fromDate() const
 {
-  return mFromDateEdit->getDate();
+  return mFromDateEdit->date();
 }
 
 QDate CalPrintDialog::toDate() const
 {
-  return mToDateEdit->getDate();
+  return mToDateEdit->date();
 }
 
 CalPrinter::PrintType CalPrintDialog::printType() const

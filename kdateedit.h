@@ -29,9 +29,24 @@
 
 class QLineEdit;
 class QPushButton;
+class QObject;
+class QEvent;
 class KDatePicker;
 class KDateValidator;
 
+/** 
+* A date editing widget that consists of a line edit followed by
+* a small push button. The line edit contains the date in text form, 
+* and the push button will display a 'popup' style date picker.
+*
+* This widget also supports advanced features like allowing the user
+* to type in the day name to get the date. The following keywords
+* are supported (in the native language): tomorrow, yesturday, today,
+* monday, tuesday, wednesday, thursday, friday, saturday, sunday.
+*
+* @author Cornelius Schumacher <schumacher@kde.org>
+* @author Mike Pilone <mpilone@slac.com>
+*/
 class KDateEdit : public QHBox
 {
     Q_OBJECT
@@ -39,21 +54,61 @@ class KDateEdit : public QHBox
     KDateEdit(QWidget *parent=0, const char *name=0);
     virtual ~KDateEdit();
 
+    /** @return True if the date in the text edit is valid,
+    * false otherwise. This will not modify the display of the date,
+    * but only check for validity.
+    */
     bool inputIsValid();
-
+    
+    /** @return The date entered. This will not
+    * modify the display of the date, but only return it.
+    */
+    QDate date() const;
+    
+    /** Checks for a focus out event. The display of the date is updated
+    * to display the proper date when the focus leaves.
+    */
+    virtual bool eventFilter(QObject *o, QEvent *e);
+    
   signals:
+    /** This signal is emitted whenever the user modifies the date. This
+    * may not get emitted until the user presses enter in the line edit or
+    * focus leaves the widget (ie: the user confirms their selection).
+    */
     void dateChanged(QDate);
 
   public slots:
+    /** Sets the date.
+    *
+    * @param date The new date to display. This date must be valid or
+    * it will not be displayed.
+    */
     void setDate(QDate date);
-    QDate getDate() const;
+    
+    /** Sets the date edit to be enabled or disabled (grayed out)
+    * 
+    * @param on Enabled if true, disabled if false
+    */
     void setEnabled(bool on);
 
   protected slots:
     void toggleDatePicker();
     void lineEnterPressed();
- 
+    void textChanged(const QString &);
+    
   private:
+    /** Reads the text from the line edit. If the text is a keyword, the
+    * word will be translated to a date. If the text is not a keyword, the
+    * text will be interpreted as a date.
+    */
+    QDate readDate() const;
+    
+    /** Maps the text that the user can enter to the offset in days from
+    * today. For example, the text 'tomorrow' is mapped to +1.
+    */
+    QMap<QString, int> mKeywordMap;
+    bool mTextChanged;
+    
     QPushButton *mDateButton;
     QLineEdit *mDateEdit;
     KDatePicker *mDatePicker;

@@ -246,14 +246,14 @@ void KOEditorGeneralTodo::writeTodo(Todo *todo)
     todo->setFloats(false);
     
     // set due date/time
-    tmpDate = mDueDateEdit->getDate();
+    tmpDate = mDueDateEdit->date();
     tmpTime = mDueTimeEdit->getTime();
     tmpDT.setDate(tmpDate);
     tmpDT.setTime(tmpTime);
     todo->setDtDue(tmpDT);
 
     // set start date/time
-    tmpDate = mStartDateEdit->getDate();
+    tmpDate = mStartDateEdit->date();
     tmpTime = mStartTimeEdit->getTime();
     tmpDT.setDate(tmpDate);
     tmpDT.setTime(tmpTime);
@@ -262,13 +262,13 @@ void KOEditorGeneralTodo::writeTodo(Todo *todo)
     todo->setFloats(true);
 
     // need to change this.
-    tmpDate = mDueDateEdit->getDate();
+    tmpDate = mDueDateEdit->date();
     tmpTime.setHMS(0,0,0);
     tmpDT.setDate(tmpDate);
     tmpDT.setTime(tmpTime);
     todo->setDtDue(tmpDT);
     
-    tmpDate = mStartDateEdit->getDate();
+    tmpDate = mStartDateEdit->date();
     tmpTime.setHMS(0,0,0);
     tmpDT.setDate(tmpDate);
     tmpDT.setTime(tmpTime);
@@ -344,8 +344,8 @@ bool KOEditorGeneralTodo::validateInput()
   if (mStartCheck->isChecked() && mDueCheck->isChecked()) {
     QDateTime startDate;
     QDateTime dueDate;
-    startDate.setDate(mStartDateEdit->getDate());
-    dueDate.setDate(mDueDateEdit->getDate());
+    startDate.setDate(mStartDateEdit->date());
+    dueDate.setDate(mDueDateEdit->date());
     if (mTimeButton->isChecked()) {
       startDate.setTime(mStartTimeEdit->getTime());
       dueDate.setTime(mDueTimeEdit->getTime());

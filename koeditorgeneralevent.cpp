@@ -297,13 +297,13 @@ void KOEditorGeneralEvent::writeEvent(Event *event)
   if (mNoTimeButton->isChecked()) {
     event->setFloats(true);
     // need to change this.
-    tmpDate = mStartDateEdit->getDate();
+    tmpDate = mStartDateEdit->date();
     tmpTime.setHMS(0,0,0);
     tmpDT.setDate(tmpDate);
     tmpDT.setTime(tmpTime);
     event->setDtStart(tmpDT);
 
-    tmpDate = mEndDateEdit->getDate();
+    tmpDate = mEndDateEdit->date();
     tmpTime.setHMS(0,0,0);
     tmpDT.setDate(tmpDate);
     tmpDT.setTime(tmpTime);
@@ -312,14 +312,14 @@ void KOEditorGeneralEvent::writeEvent(Event *event)
     event->setFloats(false);
 
     // set date/time end
-    tmpDate = mEndDateEdit->getDate();
+    tmpDate = mEndDateEdit->date();
     tmpTime = mEndTimeEdit->getTime();
     tmpDT.setDate(tmpDate);
     tmpDT.setTime(tmpTime);
     event->setDtEnd(tmpDT);
 
     // set date/time start
-    tmpDate = mStartDateEdit->getDate();
+    tmpDate = mStartDateEdit->date();
     tmpTime = mStartTimeEdit->getTime();
     tmpDT.setDate(tmpDate);
     tmpDT.setTime(tmpTime);
@@ -415,8 +415,8 @@ bool KOEditorGeneralEvent::validateInput()
   }
 
   QDateTime startDt,endDt;
-  startDt.setDate(mStartDateEdit->getDate());
-  endDt.setDate(mEndDateEdit->getDate());
+  startDt.setDate(mStartDateEdit->date());
+  endDt.setDate(mEndDateEdit->date());
   if (!mNoTimeButton->isChecked()) {
     startDt.setTime(mStartTimeEdit->getTime());
     endDt.setTime(mEndTimeEdit->getTime());

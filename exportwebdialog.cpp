@@ -202,7 +202,7 @@ void ExportWebDialog::exportWebPage()
   mExport->setExcludePrivateTodoEnabled(mCbExcludePrivateTodo->isChecked());
   mExport->setExcludeConfidentialTodoEnabled(mCbExcludeConfidentialTodo->isChecked());
   mExport->setDueDateEnabled(mCbDueDates->isChecked());
-  mExport->setDateRange(mFromDate->getDate(),mToDate->getDate());
+  mExport->setDateRange(mFromDate->date(),mToDate->date());
 
   KURL dest(mOutputFileEdit->lineEdit()->text());
   // Remember destination.
