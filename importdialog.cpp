@@ -110,7 +110,7 @@ void ImportDialog::slotOk()
     emit openURL( mUrl, true );
   } else if ( mOpenButton->isChecked() ) {
     // emit a signal to the action manager to open mUrl in a separate window
-    emit openURL( mUrl, false );
+    emit newWindow( mUrl );
   } else {
     kdError() << "ImportDialog: internal error." << endl;
   }

@@ -50,7 +50,8 @@ class ImportDialog : public KDialogBase
   signals:
     void dialogFinished( ImportDialog * );
 	 void openURL( const KURL &, bool );
-
+    void newWindow( const KURL & );
+	 
   private:
     KURL mUrl;
 

@@ -642,7 +642,7 @@ void ActionManager::file_openRecent(const KURL& url)
 
 void ActionManager::file_import()
 {
-  // eventually, we will need a dialog box to select import type, etc.
+  // TODO: eventually, we will need a dialog box to select import type, etc.
   // for now, hard-coded to ical file, $HOME/.calendar.
   int retVal = -1;
   QString progPath;
@@ -1483,6 +1483,8 @@ void ActionManager::importCalendar( const KURL &url )
            SLOT( slotImportDialogFinished( ImportDialog * ) ) );
   connect( dialog, SIGNAL( openURL( const KURL &, bool ) ), 
            SLOT( openURL( const KURL &, bool ) ) );
+  connect( dialog, SIGNAL( newWindow( const KURL & ) ),
+           SIGNAL( actionNew( const KURL & ) ) );
 
   dialog->show();
 }
