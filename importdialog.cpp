@@ -24,17 +24,14 @@
 
 #include "importdialog.h"
 
-#include "kocore.h"
 #include "koprefs.h"
-#include "korganizer.h"
 #include "stdcalendar.h"
 
 #include <libkcal/calendarresources.h>
 #include <libkcal/resourcelocal.h>
-#include <resourceremote.h>
+#include <libkcal/resourceremote.h>
 
 #include <klocale.h>
-#include <kmessagebox.h>
 
 #include <qlabel.h>
 #include <qlayout.h>
@@ -79,6 +76,9 @@ void ImportDialog::slotOk()
   kdDebug() << "Adding resource for url '" << mUrl << "'" << endl;
 
   if ( mAddButton->isChecked() ) {
+    // TODO: This should be better done by the action manager
+	 // TODO: currently, the new resource does not show up in the 
+	 //       resource view. You have to restart korganizer first.
     CalendarResources *cr = KOrg::StdCalendar::self();
 
     CalendarResourceManager *manager = cr->resourceManager();
@@ -104,80 +104,20 @@ void ImportDialog::slotOk()
       resource->setResourceName( name );
       manager->add( resource );
     }
-
-    emit dialogFinished( this );
+  
   } else if ( mMergeButton->isChecked() ) {
-    mMergeResource = new ResourceRemote( mUrl );
-    mMergeResource->setTimeZoneId( KOPrefs::instance()->mTimeZoneId );
-    connect( mMergeResource, SIGNAL( resourceLoaded( ResourceCalendar * ) ),
-             SLOT( mergeResource( ResourceCalendar * ) ) );
-    connect( mMergeResource, SIGNAL( resourceLoadError( ResourceCalendar *,
-                                                        const QString &err ) ),
-             SLOT( showMergeError( ResourceCalendar *, const QString &err ) ) );
-    mMergeResource->open();
-    mMergeResource->load();
+    // emit a signal to action manager to merge mUrl into the current calendar
+    emit openURL( mUrl, true );
   } else if ( mOpenButton->isChecked() ) {
-    KOrganizer *korg = new KOrganizer;
-    korg->init( true );
-    korg->topLevelWidget()->show();
-    korg->openURL( mUrl );
-    emit dialogFinished( this );
+    // emit a signal to the action manager to open mUrl in a separate window
+    emit openURL( mUrl, false );
   } else {
     kdError() << "ImportDialog: internal error." << endl;
-    emit dialogFinished( this );
   }
   
+  emit dialogFinished( this );
   accept();
 }
 
-void ImportDialog::mergeResource( ResourceCalendar * )
-{
-  Calendar *cal = KOrg::StdCalendar::self();
-
-  Event::List events = mMergeResource->rawEvents();
-  Event::List::ConstIterator it;
-  for( it = events.begin(); it != events.end(); ++it ) {
-    Event *event = *it;
-    Event *existingEvent = cal->event( event->uid() );
-    if ( !existingEvent ) {
-      cal->addEvent( event->clone() );
-    } else {
-      *existingEvent = *event;
-    }
-  }
-  
-  Todo::List todos = mMergeResource->rawTodos();
-  Todo::List::ConstIterator it2;
-  for( it2 = todos.begin(); it2 != todos.end(); ++it2 ) {
-    Todo *todo = *it2;
-    Todo *existingTodo = cal->todo( todo->uid() );
-    if ( !existingTodo ) {
-      cal->addTodo( todo->clone() );
-    } else {
-      *existingTodo = *todo;
-    }
-  }
-  
-  Journal::List journals = mMergeResource->journals();
-  Journal::List::ConstIterator it3;
-  for( it3 = journals.begin(); it3 != journals.end(); ++it3 ) {
-    Journal *journal = *it3;
-    Journal *existingJournal = cal->journal( journal->uid() );
-    if ( !existingJournal ) {
-      cal->addJournal( journal->clone() );
-    } else {
-      *existingJournal = *journal;
-    }
-  }
-
-  emit dialogFinished( this );
-}
-
-void ImportDialog::showMergeError( ResourceCalendar *, const QString &err )
-{
-  KMessageBox::error( this, i18n("Error merging calendar: %1").arg( err ) );
-  
-  emit dialogFinished( this );
-}
 
 #include "importdialog.moc"

@@ -102,19 +102,19 @@ class ActionManager : public QObject, public KCalendarIface
     */
     bool saveResourceCalendar();
 
+  public slots:
     /**
       Open calendar file from URL. Merge into current calendar, if \a merge is
       true.
     */
     bool openURL( const KURL &url, bool merge = false );
-    /** Merge calendar file from URL to current calendar */
-    bool mergeURL( const KURL &url );
     /** Save calendar file to URL of current calendar */
     bool saveURL();
     /** Save calendar file to URL */
     bool saveAsURL( const KURL &kurl );
     /** Save calendar if it is modified by the user. Ask user what to do. */
     bool saveModifiedURL();
+  public:
     /** Get current URL */
     KURL url() const { return mURL; }
 

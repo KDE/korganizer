@@ -49,10 +49,7 @@ class ImportDialog : public KDialogBase
 
   signals:
     void dialogFinished( ImportDialog * );
-
-  protected slots:
-    void mergeResource( ResourceCalendar * );
-    void showMergeError( ResourceCalendar *, const QString &err );
+	 void openURL( const KURL &, bool );
 
   private:
     KURL mUrl;
@@ -60,8 +57,6 @@ class ImportDialog : public KDialogBase
     QRadioButton *mAddButton;
     QRadioButton *mMergeButton;
     QRadioButton *mOpenButton;
-
-    ResourceRemote *mMergeResource;
 };
 
 #endif
