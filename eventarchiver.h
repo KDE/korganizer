@@ -73,7 +73,7 @@ class EventArchiver : public QObject
     void eventsDeleted();
 
   private:
-    void run( Calendar* calendar, const QDate& limitDate, QWidget* widget, bool withGUI );
+    void run( Calendar* calendar, const QDate& limitDate, QWidget* widget, bool withGUI, bool errorIfNone );
 
     void deleteEvents( Calendar* calendar, const QDate& limitDate, QWidget* widget, const Event::List& events, bool withGUI );
     void archiveEvents( Calendar* calendar, const QDate& limitDate, QWidget* widget, const Event::List& events, bool withGUI );

@@ -206,6 +206,7 @@ void ArchiveDialog::slotUser1()
   if ( KOPrefs::instance()->mAutoArchive ) {
     archiver.runAuto( mCalendar, this, true /*with gui*/ );
     emit autoArchivingSettingsModified();
+    accept();
   }
   else
     archiver.runOnce( mCalendar, mDateEdit->date(), this );
@@ -214,5 +215,6 @@ void ArchiveDialog::slotUser1()
 void ArchiveDialog::slotEventsDeleted()
 {
   emit eventsDeleted();
-  accept();
+  if ( !KOPrefs::instance()->mAutoArchive )
+    accept();
 }

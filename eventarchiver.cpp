@@ -46,7 +46,7 @@ EventArchiver::~EventArchiver()
 
 void EventArchiver::runOnce( Calendar* calendar, const QDate& limitDate, QWidget* widget )
 {
-  run( calendar, limitDate, widget, true );
+  run( calendar, limitDate, widget, true, true );
 }
 
 void EventArchiver::runAuto( Calendar* calendar, QWidget* widget, bool withGUI )
@@ -66,10 +66,10 @@ void EventArchiver::runAuto( Calendar* calendar, QWidget* widget, bool withGUI )
   default:
     return;
   }
-  run( calendar, limitDate, widget, withGUI );
+  run( calendar, limitDate, widget, withGUI, false );
 }
 
-void EventArchiver::run( Calendar* calendar, const QDate& limitDate, QWidget* widget, bool withGUI )
+void EventArchiver::run( Calendar* calendar, const QDate& limitDate, QWidget* widget, bool withGUI, bool errorIfNone )
 {
   Event::List events = calendar->events(
     QDate( 1769, 12, 1 ),
@@ -79,7 +79,7 @@ void EventArchiver::run( Calendar* calendar, const QDate& limitDate, QWidget* wi
 
   kdDebug(5850) << "EventArchiver: archiving events before " << limitDate << " -> " << events.count() << " events found." << endl;
   if ( events.isEmpty() ) {
-    if ( withGUI )
+    if ( withGUI && errorIfNone )
       KMessageBox::sorry(widget, i18n("There are no events before %1")
                          .arg(KGlobal::locale()->formatDate(limitDate)));
     return;
