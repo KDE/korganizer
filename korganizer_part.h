@@ -37,7 +37,7 @@ class KOrganizerFactory : public KParts::Factory
     virtual ~KOrganizerFactory();
 
     virtual KParts::Part* createPartObject(QWidget *parentWidget, const char *name,
-    QObject* parent = 0, const char* name = 0,
+    QObject* parent = 0, const char* name1 = 0,
     const char* classname = "QObject",
     const QStringList &args = QStringList());
 
