@@ -12,6 +12,9 @@
             <height>255</height>
         </rect>
     </property>
+    <property name="caption">
+        <string>FilterEdit_base</string>
+    </property>
     <property name="layoutMargin" stdset="0">
     </property>
     <property name="layoutSpacing" stdset="0">
@@ -72,6 +75,12 @@
                             <property name="text">
                                 <string>Show all &amp;but selected</string>
                             </property>
+                            <property name="accel">
+                                <string>Alt+B</string>
+                            </property>
+                            <property name="whatsThis" stdset="0">
+                                <string>When this option is enabled, this filter will show all incidences which do &lt;i&gt;not&lt;/i&gt; contain the selected categories.</string>
+                            </property>
                         </widget>
                         <widget class="QRadioButton" row="0" column="0">
                             <property name="name">
@@ -79,6 +88,12 @@
                             </property>
                             <property name="text">
                                 <string>Show &amp;only selected</string>
+                            </property>
+                            <property name="accel">
+                                <string>Alt+O</string>
+                            </property>
+                            <property name="whatsThis" stdset="0">
+                                <string>When this option is enabled, this filter will show all incidences containing at least the selected incidences.</string>
                             </property>
                         </widget>
                         <widget class="QListBox" row="0" column="1" rowspan="3" colspan="1">
@@ -101,7 +116,13 @@
                         <cstring>mRecurringCheck</cstring>
                     </property>
                     <property name="text">
-                        <string>Hide &amp;recurring events</string>
+                        <string>Hide &amp;recurring incidences</string>
+                    </property>
+                    <property name="accel">
+                        <string>Alt+R</string>
+                    </property>
+                    <property name="whatsThis" stdset="0">
+                        <string>Select this option if you don't want to show recurring incidences in your views. Daily and weekly recurring incidences may take a lot of space, so it might be handy to hide them.</string>
                     </property>
                 </widget>
                 <widget class="QCheckBox" row="2" column="0" rowspan="1" colspan="4">
@@ -110,6 +131,9 @@
                     </property>
                     <property name="text">
                         <string>Hide co&amp;mpleted to-dos</string>
+                    </property>
+                    <property name="accel">
+                        <string>Alt+M</string>
                     </property>
                     <property name="whatsThis" stdset="0">
                         <string>If this box is checked, the filter will hide all to-do items from the list, that have been completed. Optionally, only items that have been completed a given number of days are hidden.</string>
@@ -121,6 +145,9 @@
                     </property>
                     <property name="text">
                         <string>Hide &amp;inactive to-dos</string>
+                    </property>
+                    <property name="accel">
+                        <string>Alt+I</string>
                     </property>
                     <property name="whatsThis" stdset="0">
                         <string>This option hides all to-dos from your list, where the start date has not been reached. (Note that the start date is not the due date of the to-do item.)</string>
@@ -190,6 +217,9 @@
                     <property name="buddy" stdset="0">
                         <cstring>mCompletedTimeSpan</cstring>
                     </property>
+                    <property name="whatsThis" stdset="0">
+                        <string>This option will allow you to select which completed to-dos should be hidden. When you choose &lt;i&gt;Immediately&lt;/i&gt;, it will hide the todo as soon as you check it. You can increase or decrease the number of days in the spinbox.</string>
+                    </property>
                 </widget>
                 <widget class="KIntNumInput" row="3" column="2">
                     <property name="name">
@@ -215,8 +245,6 @@
         </widget>
     </vbox>
 </widget>
-<customwidgets>
-</customwidgets>
 <connections>
     <connection>
         <sender>mCompletedCheck</sender>

@@ -34,7 +34,7 @@
 #include <klocale.h>
 #include <kinputdialog.h>
 #include <kmessagebox.h>
-#include <knuminput.h> 
+#include <knuminput.h>
 
 #include <libkcal/calfilter.h>
 #include <libkdepim/categoryselectdialog.h>
@@ -61,12 +61,15 @@ FilterEditDialog::FilterEditDialog( QPtrList<CalFilter> *filters,
   mSelectionCombo = new QComboBox( mainWidget );
   connect( mSelectionCombo, SIGNAL( activated( int ) ),
            SLOT( filterSelected() ) );
+  QWhatsThis::add( mSelectionCombo, i18n( "This combobox contains all defined filters. When you select a filter from this box you'll be able to edit it with the fields below." ) );
 
   QPushButton *addButton = new QPushButton( i18n("Add Filter..."), mainWidget );
   connect( addButton, SIGNAL( clicked() ), SLOT( slotAdd() ) );
+  QWhatsThis::add( addButton, i18n( "Press this button to define a new filter. <i>Note:</i> You should select this filter in the combobox at the left first before you edit it's properties." ) );
 
   mRemoveButton = new QPushButton( i18n("Remove"), mainWidget );
   connect( mRemoveButton, SIGNAL( clicked() ), SLOT( slotRemove() ) );
+  QWhatsThis::add( mRemoveButton, i18n( "Press this button to remove the currently active filter." ) );
 
   mEditor = new FilterEdit_base( mainWidget );
 
