@@ -133,7 +133,7 @@ void KOAttendeeListView::addAttendee( const QString &newAttendee )
   QString name;
   QString email;
   KPIM::getNameAndMail( newAttendee, name, email );
-  emit dropped( new Attendee( name, email ) );
+  emit dropped( new Attendee( name, email, true ) );
 }
 
 void KOAttendeeListView::contentsDropEvent( QDropEvent *e )
@@ -361,7 +361,7 @@ void KOEditorDetails::openAddressBook()
 void KOEditorDetails::addNewAttendee()
 {
   Attendee *a = new Attendee( i18n("Firstname Lastname"),
-                              i18n("name@domain.com") );
+                              i18n("name@domain.com"), true );
   insertAttendee( a );
   // We don't want the hint again
   mNameEdit->setClickMessage( "" );
