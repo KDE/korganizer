@@ -71,12 +71,6 @@ NavigatorBar::NavigatorBar( QWidget *parent, const char *name )
 
   bool isRTL = KOGlobals::self()->reverseLayout();
 
-  // Create month name button
-  mMonth = new ActiveLabel( mCtrlFrame );
-  mMonth->setFont( tfont );
-  mMonth->setAlignment( AlignCenter );
-  QToolTip::add( mMonth, i18n("Select a month") );
-
   QPixmap pix;
   // Create backward navigation buttons
   mPrevYear = new QPushButton( mCtrlFrame );
@@ -103,6 +97,13 @@ NavigatorBar::NavigatorBar( QWidget *parent, const char *name )
   mNextYear->setPixmap( pix );
   mNextYear->setSizePolicy( QSizePolicy::Fixed, QSizePolicy::Fixed );
   QToolTip::add( mNextYear, i18n("Next year") );
+
+  // Create month name button
+  mMonth = new ActiveLabel( mCtrlFrame );
+  mMonth->setFont( tfont );
+  mMonth->setAlignment( AlignCenter );
+  mMonth->setMinimumHeight( mPrevYear->sizeHint().height() );
+  QToolTip::add( mMonth, i18n("Select a month") );
 
   // set up control frame layout
   QBoxLayout *ctrlLayout = new QHBoxLayout( mCtrlFrame, 1 );
@@ -134,7 +135,7 @@ void NavigatorBar::showButtons( bool left, bool right )
     mPrevYear->hide();
     mPrevMonth->hide();
   }
-  
+
   if ( right ) {
     mNextYear->show();
     mNextMonth->show();
@@ -142,7 +143,7 @@ void NavigatorBar::showButtons( bool left, bool right )
     mNextYear->hide();
     mNextMonth->hide();
   }
-  
+
 }
 
 void NavigatorBar::selectDates( const KCal::DateList &dateList )
@@ -163,7 +164,7 @@ void NavigatorBar::selectDates( const KCal::DateList &dateList )
         if ( w > maxwidth ) maxwidth = w;
       }
       mMonth->setMinimumWidth( maxwidth );
-    
+
       mHasMinWidth = true;
     }
 

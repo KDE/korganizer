@@ -36,7 +36,7 @@
 
 DateNavigatorContainer::DateNavigatorContainer( QWidget *parent,
                                                 const char *name )
-  : QWidget( parent, name ), mCalendar( 0 ), 
+  : QWidget( parent, name ), mCalendar( 0 ),
     mHorizontalCount( 1 ), mVerticalCount( 1 )
 {
   mExtraViews.setAutoDelete( true );
@@ -176,16 +176,16 @@ void DateNavigatorContainer::resizeEvent( QResizeEvent * )
     mHorizontalCount = horizontalCount;
     mVerticalCount = verticalCount;
   }
-  
+
   int height = size().height() / verticalCount;
   int width = size().width() / horizontalCount;
 
   NavigatorBar *bar = mNavigatorView->navigatorBar();
   if ( horizontalCount > 1 ) bar->showButtons( true, false );
   else bar->showButtons( true, true );
-  
-  mNavigatorView->setGeometry( 
-      ( (KOGlobals::self()->reverseLayout())?(horizontalCount-1):0) * width, 
+
+  mNavigatorView->setGeometry(
+      ( (KOGlobals::self()->reverseLayout())?(horizontalCount-1):0) * width,
       0, width, height );
   for( uint i = 0; i < mExtraViews.count(); ++i ) {
     int x = ( i + 1 ) % horizontalCount;
@@ -198,8 +198,8 @@ void DateNavigatorContainer::resizeEvent( QResizeEvent * )
         if ( x + 1 == horizontalCount ) bar->showButtons( false, true );
         else bar->showButtons( false, false );
     }
-    view->setGeometry( 
-        ( (KOGlobals::self()->reverseLayout())?(horizontalCount-1-x):x) * width, 
+    view->setGeometry(
+        ( (KOGlobals::self()->reverseLayout())?(horizontalCount-1-x):x) * width,
         y * height, width, height );
   }
 }
