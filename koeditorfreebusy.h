@@ -92,7 +92,6 @@ class KOEditorFreeBusy : public QWidget
     void updateStatusSummary();
 
     KDGanttView *mGanttView;
-    QLabel *mOrganizerLabel;
     QLabel *mStatusSummaryLabel;
     bool mIsOrganizer;
     QComboBox *scaleCombo;
