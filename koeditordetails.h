@@ -48,6 +48,9 @@ class KOEditorDetails : public QWidget
     /** Write event settings to event object */
     void writeEvent(KOEvent *);
 
+    /** Check if the input is valid. */
+    bool validateInput();
+
     /** Set spacing for layouts */
     void setSpacing(int);
 

@@ -15,7 +15,7 @@
 #include <kiconloader.h>
 #include <kstddirs.h>
 #include <kbuttonbox.h>
-#include <kabapi.h>
+#include <kmessagebox.h>
 
 #include "koevent.h"
 #include "koprefs.h"
@@ -217,7 +217,6 @@ void KOEditorGeneralTodo::writeTodo(KOEvent *todo)
   QDate tmpDate;
   QTime tmpTime;
   QDateTime tmpDT;
-  bool ok;
   if (noTimeButton->isChecked()) {
     todo->setFloats(true);
 
@@ -232,7 +231,7 @@ void KOEditorGeneralTodo::writeTodo(KOEvent *todo)
     
     // set date/time start
     tmpDate = startDateEdit->getDate();
-    tmpTime = startTimeEdit->getTime(ok);
+    tmpTime = startTimeEdit->getTime();
     tmpDT.setDate(tmpDate);
     tmpDT.setTime(tmpTime);
     todo->setDtDue(tmpDT);
@@ -283,4 +282,16 @@ void KOEditorGeneralTodo::timeStuffDisable(bool disable)
   } else {
     startTimeEdit->show();
   }
+}
+
+bool KOEditorGeneralTodo::validateInput()
+{
+  if (!noTimeButton->isChecked()) {
+    if (!startTimeEdit->inputIsValid()) {
+      KMessageBox::sorry(this,"You must specify a valid time");
+      return false;
+    }
+  }
+
+  return true;
 }

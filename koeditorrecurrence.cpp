@@ -917,3 +917,10 @@ void KOEditorRecurrence::setDateTimeStr(const QString &str)
 {
   dateTimeLabel->setText(str);
 }
+
+bool KOEditorRecurrence::validateInput()
+{
+  // Check input here
+
+  return true;
+}

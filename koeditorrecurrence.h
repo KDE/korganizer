@@ -33,6 +33,9 @@ class KOEditorRecurrence : public QWidget
     /** Write event settings to event object */
     void writeEvent(KOEvent *);
 
+    /** Check if the input is valid. */
+    bool validateInput();
+
   public slots:
     virtual void setEnabled(bool);
     void setDateTimes(QDateTime start,QDateTime end);

@@ -30,10 +30,13 @@ public:
   virtual ~KTimeEdit();
   
   /** returns the time that is currently set in the timeLineEdit. */
-  QTime getTime(bool &ok);
+  QTime getTime();
 
   /** returns the prefered size policy of the KTimeEdit */   
   QSizePolicy sizePolicy() const;
+  
+  /** return true if input is a valid time and false if not */
+  bool inputIsValid();
   
 signals:
   /** emitted every time the time displayed changes. "newt" is the new

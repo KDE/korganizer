@@ -15,7 +15,7 @@
 #include <kiconloader.h>
 #include <kstddirs.h>
 #include <kbuttonbox.h>
-#include <kabapi.h>
+#include <kmessagebox.h>
 
 #include "koevent.h"
 #include "koprefs.h"
@@ -540,7 +540,6 @@ void KOEditorGeneralEvent::writeEvent(KOEvent *event)
 
   // temp. until something better happens.
   QString tmpStr;
-  bool ok;
   int j;
 
   event->setSummary(summaryEdit->text());
@@ -570,7 +569,7 @@ void KOEditorGeneralEvent::writeEvent(KOEvent *event)
     // set date/time end
     tmpDate = endDateEdit->getDate();
     qDebug("-----1");
-    tmpTime = endTimeEdit->getTime(ok);
+    tmpTime = endTimeEdit->getTime();
     qDebug("-----2");
     tmpDT.setDate(tmpDate);
     qDebug("-----3");
@@ -582,7 +581,7 @@ void KOEditorGeneralEvent::writeEvent(KOEvent *event)
 
     // set date/time start
     tmpDate = startDateEdit->getDate();
-    tmpTime = startTimeEdit->getTime(ok);
+    tmpTime = startTimeEdit->getTime();
     tmpDT.setDate(tmpDate);
     tmpDT.setTime(tmpTime);
     event->setDtStart(tmpDT);
@@ -668,7 +667,6 @@ void KOEditorGeneralEvent::setDuration()
   durationLabel->setText(tmpStr);
 }
 
-
 void KOEditorGeneralEvent::emitDateTimeStr()
 {
   KLocale *l = KGlobal::locale();
@@ -688,4 +686,34 @@ void KOEditorGeneralEvent::emitDateTimeStr()
 //                .arg(durationLabel->text());
                  
   emit dateTimeStrChanged(str);
+}
+
+bool KOEditorGeneralEvent::validateInput()
+{
+  qDebug("KOEditorGeneralEvent::validateInput()");
+
+  if (!noTimeButton->isChecked()) {
+    if (!startTimeEdit->inputIsValid()) {
+      KMessageBox::sorry(this,"You must specify a valid time");
+      return false;
+    }
+
+    if (!endTimeEdit->inputIsValid()) {
+      KMessageBox::sorry(this,"You must specify a valid time");
+      return false;
+    }
+  }
+
+  if (!startDateEdit->inputIsValid()) {
+    qDebug("--start date isn't valid");
+    kapp->beep();
+    return false;
+  }
+
+  if (!endDateEdit->inputIsValid()) {
+    kapp->beep();
+    return false;
+  }
+
+  return true;
 }

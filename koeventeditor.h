@@ -68,6 +68,12 @@ class KOEventEditor : public KDialogBase
     void setupGeneralTab();
     void setupDetailsTab();
     void setupRecurrenceTab();
+
+    /** Check if the input is valid. */
+    bool validateInput();
+    /** Process user input and create or update event. Returns false if input
+     * is not valid */
+    bool processInput();
     
   private:
     CalObject *mCalendar;

@@ -162,8 +162,10 @@ void KOEventEditor::slotDefault()
   setDefaults(from,to,false);
 }
 
-void KOEventEditor::slotApply()
+bool KOEventEditor::processInput()
 {
+  if (!validateInput()) return false;
+
   KOEvent *event = 0;
 
   if (mEvent) event = mEvent;
@@ -179,12 +181,18 @@ void KOEventEditor::slotApply()
     mEvent = event;
     emit eventAdded(event);
   }
+  
+  return true;
+}
+
+void KOEventEditor::slotApply()
+{
+  processInput();
 }
 
 void KOEventEditor::slotOk()
 {
-  slotApply();
-  accept();
+  if (processInput()) accept();
 }
 
 void KOEventEditor::slotUser1()
@@ -228,4 +236,12 @@ void KOEventEditor::writeEvent(KOEvent *event)
   mGeneral->writeEvent(event);
   mDetails->writeEvent(event);
   mRecurrence->writeEvent(event);
+}
+
+bool KOEventEditor::validateInput()
+{
+  if (!mGeneral->validateInput()) return false;
+  if (!mDetails->validateInput()) return false;
+  if (!mRecurrence->validateInput()) return false;
+  return true;
 }

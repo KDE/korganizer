@@ -33,6 +33,9 @@ class KOEditorGeneralTodo : public QWidget
     /** Write todo settings to event object */
     void writeTodo(KOEvent *);
 
+    /** Check if the input is valid. */
+    bool validateInput();
+
   public slots:
     void setCategories(QString);
 

@@ -34,11 +34,9 @@ KTimeEdit::~KTimeEdit()
 {
 }
 
-QTime KTimeEdit::getTime(bool &ok)
+QTime KTimeEdit::getTime()
 {
-  validateEntry();
-  ok = current_display_valid;
-  return mTime;
+  return KGlobal::locale()->readTime(currentText());
 }
 
 QSizePolicy  KTimeEdit::sizePolicy() const
@@ -100,7 +98,7 @@ void KTimeEdit::subTime(QTime qt)
   mTime.setHMS(h, m, 0);
   emit timeChanged(mTime);
   updateDisp();
-}                  
+}
 
 void KTimeEdit::keyPressEvent(QKeyEvent *qke)
 {
@@ -123,15 +121,19 @@ void KTimeEdit::keyPressEvent(QKeyEvent *qke)
 
 void KTimeEdit::validateEntry()
 {
+// Disabled because it does not make anything useful. Should probably try to fix
+// up invalid time input.
+/*
   QTime t = KGlobal::locale()->readTime(currentText());
 
   if (!t.isValid()) {
-    KMessageBox::sorry(this,"You must specify a valid time");
+//    KMessageBox::sorry(this,"You must specify a valid time");
     current_display_valid = false;
   } else {
     mTime = t;
     current_display_valid = true;
   }
+*/
 }
 
 void KTimeEdit::updateDisp() 
@@ -142,4 +144,11 @@ void KTimeEdit::updateDisp()
   if (!mTime.minute() % 15) {
     setCurrentItem((mTime.hour()*4)+(mTime.minute()/15));
   }
+}
+
+bool KTimeEdit::inputIsValid()
+{
+  QTime t = KGlobal::locale()->readTime(currentText());
+
+  return t.isValid();
 }

@@ -113,8 +113,10 @@ void KOTodoEditor::slotDefault()
   setDefaults(QDateTime::currentDateTime().addDays(7),0,false);
 }
 
-void KOTodoEditor::slotApply()
+bool KOTodoEditor::processInput()
 {
+  if (!validateInput()) return false;
+
   KOEvent *todo = 0;
 
   if (mTodo) todo = mTodo;
@@ -132,10 +134,14 @@ void KOTodoEditor::slotApply()
   }
 }
 
+void KOTodoEditor::slotApply()
+{
+  processInput();
+}
+
 void KOTodoEditor::slotOk()
 {
-  slotApply();
-  accept();
+  if (processInput()) accept();
 }
 
 void KOTodoEditor::slotUser1()
@@ -175,4 +181,11 @@ void KOTodoEditor::writeTodo(KOEvent *event)
   if (mRelatedTodo) {
     event->setRelatedTo(mRelatedTodo);
   }
+}
+
+bool KOTodoEditor::validateInput()
+{
+  if (!mGeneral->validateInput()) return false;
+  if (!mDetails->validateInput()) return false;
+  return true;  
 }

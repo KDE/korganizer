@@ -17,6 +17,8 @@ class KDateEdit : public QHBox
     KDateEdit(QWidget *parent=0, const char *name=0);
     virtual ~KDateEdit();
 
+    bool inputIsValid();
+
   signals:
     void dateChanged(QDate);
 

@@ -397,3 +397,8 @@ void KOEditorDetails::writeEvent(KOEvent *event)
   for (a = mAttendeeList.first(); a; a = mAttendeeList.next())
     event->addAttendee(new Attendee(*(a->attendee())));
 }
+
+bool KOEditorDetails::validateInput()
+{
+  return true;
+}

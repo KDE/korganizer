@@ -43,6 +43,12 @@ class KOTodoEditor : public KDialogBase
     /** Write event settings to event object */
     void writeTodo(KOEvent *);
 
+    /** Check if the input is valid. */
+    bool validateInput();
+    /** Process user input and create or update event. Returns false if input
+     * is not valid */
+    bool processInput();
+
   public slots:
 
   signals:

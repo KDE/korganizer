@@ -99,3 +99,13 @@ void KDateEdit::lineEnterPressed()
     kapp->beep();
   }
 }
+
+bool KDateEdit::inputIsValid()
+{
+  qDebug("KDateEdit::inputIsValid()");
+  QDate date = KGlobal::locale()->readDate(mDateEdit->text());
+  qDebug("KDateEdit::inputIsValid() result %s",date.isValid() ? "Valid" :
+                                                                "Invalid" );
+  qDebug("KDateEdit::inputIsValid() date: %s",date.toString().latin1());
+  return date.isValid();
+}
