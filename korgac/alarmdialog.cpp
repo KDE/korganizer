@@ -42,6 +42,7 @@
 #include <knotifyclient.h>
 #include <kcombobox.h>
 #include <kwin.h>
+#include <klockfile.h>
 
 #include <libkcal/event.h>
 
@@ -54,18 +55,16 @@ AlarmDialog::AlarmDialog( QWidget *parent, const char *name )
   : KDialogBase( Plain, WType_TopLevel | WStyle_Customize | WStyle_StaysOnTop |
                  WStyle_DialogBorder,
                  parent, name, false, i18n("Alarm"), Ok | User1 | User2/* | User3*/, Ok/*3*/,
-                 false, i18n("Suspend"), i18n("Edit...") )
+                 false, i18n("Suspend"), i18n("Edit...") ),
+                 mSuspendTimer(this)
 {
   QWidget *topBox = plainPage();
-
   QBoxLayout *topLayout = new QVBoxLayout( topBox );
   topLayout->setSpacing( spacingHint() );
 
   QLabel *label = new QLabel( i18n("The following events triggered alarms:"),
                               topBox );
   topLayout->addWidget( label );
-
-  mIncidences.setAutoDelete( true );
 
   mEventViewer = new KOEventViewer( topBox );
   topLayout->addWidget( mEventViewer );
@@ -97,27 +96,28 @@ AlarmDialog::~AlarmDialog()
 {
 }
 
-void AlarmDialog::appendIncidence( Incidence *incidence )
+void AlarmDialog::setIncidence( Incidence *incidence )
 {
   mEventViewer->appendIncidence( incidence );
-  mIncidences.append( incidence->clone() );
+  mIncidence = incidence;
 }
 
-void AlarmDialog::clearEvents()
+void AlarmDialog::setRemindAt( QDateTime dt )
 {
-  mEventViewer->clearEvents();
-
-  mIncidences.clear();
+  mRemindAt = dt;
 }
 
 void AlarmDialog::slotOk()
 {
-  clearEvents();
   accept();
+  emit finishedSignal( this );
 }
 
 void AlarmDialog::slotUser1()
 {
+  if ( !isVisible() )
+    return;
+
   int unit=1;
   switch (mSuspendUnit->currentItem()) {
     case 3: // weeks
@@ -132,8 +132,16 @@ void AlarmDialog::slotUser1()
       break;
   }
 
-  emit suspendSignal( unit * mSuspendSpin->value() );
+  setTimer( unit * mSuspendSpin->value() );
   accept();
+}
+
+void AlarmDialog::setTimer( int seconds )
+{
+  connect( &mSuspendTimer, SIGNAL( timeout() ), SLOT( show() ) );
+  mSuspendTimer.start( 1000 * seconds, true );
+  mRemindAt = QDateTime::currentDateTime();
+  mRemindAt = mRemindAt.addSecs( seconds );
 }
 
 void AlarmDialog::slotUser2()
@@ -145,7 +153,7 @@ void AlarmDialog::slotUser2()
 
   kapp->dcopClient()->send( "korganizer", "KOrganizerIface",
                             "editIncidence(QString)",
-                             mIncidences.first()->uid() );
+                             mIncidence->uid() );
 
   // get desktop # where korganizer (or kontact) runs
   QByteArray replyData;
@@ -170,30 +178,35 @@ void AlarmDialog::slotUser2()
 
     KWin::activateWindow( KWin::transientFor( window ) );
   }
+}
 
+void AlarmDialog::show()
+{
+  KDialogBase::show();
+  raise();
+  KWin::forceActiveWindow( winId() );
+  actionButton( KDialogBase::Ok )->setFocus();
+  eventNotification();
+// FIXME: go to foreground but don't steal focus
 }
 
 void AlarmDialog::eventNotification()
 {
   bool beeped = false;
-
-  Incidence *in;
-  for (in = mIncidences.first(); in; in = mIncidences.next()) {
-    Alarm::List alarms = in->alarms();
-    Alarm::List::ConstIterator it;
-    for ( it = alarms.begin(); it != alarms.end(); ++it ) {
-      Alarm *alarm = *it;
+  Alarm::List alarms = mIncidence->alarms();
+  Alarm::List::ConstIterator it;
+  for ( it = alarms.begin(); it != alarms.end(); ++it ) {
+    Alarm *alarm = *it;
 // FIXME: Check whether this should be done for all multiple alarms
-      if (alarm->type() == Alarm::Procedure) {
-        kdDebug(5890) << "Starting program: '" << alarm->programFile() << "'" << endl;
-        KProcess proc;
-        proc << QFile::encodeName(alarm->programFile());
-        proc.start(KProcess::DontCare);
-      }
-      else if (alarm->type() == Alarm::Audio) {
-        beeped = true;
-        KAudioPlayer::play(QFile::encodeName(alarm->audioFile()));
-      }
+    if (alarm->type() == Alarm::Procedure) {
+      kdDebug(5890) << "Starting program: '" << alarm->programFile() << "'" << endl;
+      KProcess proc;
+      proc << QFile::encodeName(alarm->programFile());
+      proc.start(KProcess::DontCare);
+    }
+    else if (alarm->type() == Alarm::Audio) {
+      beeped = true;
+      KAudioPlayer::play(QFile::encodeName(alarm->audioFile()));
     }
   }
 
@@ -201,3 +214,30 @@ void AlarmDialog::eventNotification()
     KNotifyClient::beep();
   }
 }
+
+void AlarmDialog::wakeUp()
+{
+  if ( mRemindAt <= QDateTime::currentDateTime() )
+    show();
+  else
+    setTimer( QDateTime::currentDateTime().secsTo( mRemindAt ) );
+}
+
+void AlarmDialog::slotSave()
+{
+  KConfig *config = kapp->config();
+  KLockFile::Ptr lock = config->lockFile();
+  if ( lock.data()->lock() != KLockFile::LockOK )
+    return;
+
+  config->setGroup( "General" );
+  int numReminders = config->readNumEntry("Reminders", 0);
+  config->writeEntry( "Reminders", ++numReminders );
+
+  config->setGroup( QString("Incidence-%1").arg(numReminders) );
+  config->writeEntry( "UID", mIncidence->uid() );
+  config->writeEntry( "RemindAt", mRemindAt );
+  config->sync();
+  lock.data()->unlock();
+}
+

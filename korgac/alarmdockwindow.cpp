@@ -23,6 +23,7 @@
 */
 
 #include "alarmdockwindow.h"
+#include "koalarmclient.h"
 
 #include <kapplication.h>
 #include <kdebug.h>
@@ -59,13 +60,18 @@ AlarmDockWindow::AlarmDockWindow( const char *name )
   setPixmap( alarmsEnabled ? mPixmapEnabled : mPixmapDisabled );
 
   // Set up the context menu
+  mSuspendAll = contextMenu()->insertItem( i18n("Suspend All"), this, SLOT( slotSuspendAll() ) );
+  mDismissAll = contextMenu()->insertItem( i18n("Dismiss All"), this, SLOT( slotDismissAll() ) );
+  contextMenu()->setItemEnabled( mSuspendAll, false );
+  contextMenu()->setItemEnabled( mDismissAll, false );
+
+  contextMenu()->insertSeparator();
   mAlarmsEnabledId = contextMenu()->insertItem( i18n("Alarms Enabled"),
                                                 this,
                                                 SLOT( toggleAlarmsEnabled() ) );
   mAutostartId = contextMenu()->insertItem( i18n("Start Alarm Client at Login"),
                                             this,
                                             SLOT( toggleAutostart() ) );
-  
   contextMenu()->setItemChecked( mAutostartId, autostart );
   contextMenu()->setItemChecked( mAlarmsEnabledId, alarmsEnabled );
 
@@ -80,8 +86,8 @@ AlarmDockWindow::AlarmDockWindow( const char *name )
     quit->disconnect( SIGNAL( activated() ), qApp,
                       SLOT( closeAllWindows() ) );
   }
-  
-  QToolTip::add(this, i18n("KOrganizer reminder daemon (korgac)") );
+
+  QToolTip::add(this, i18n( "KOrganizer Alarm Reminder" ) );
 
 
   connect( this, SIGNAL( quitSelected() ), SLOT( slotQuit() ) );
@@ -91,6 +97,23 @@ AlarmDockWindow::~AlarmDockWindow()
 {
 }
 
+void AlarmDockWindow::slotUpdate( int reminders )
+{
+  QToolTip::remove( this );
+  if ( reminders > 0 )
+  {
+    QToolTip::add( this, i18n( "There is 1 active reminder.",
+                   "There are %n active reminders.", reminders ) );
+    contextMenu()->setItemEnabled( mSuspendAll, true );
+    contextMenu()->setItemEnabled( mDismissAll, true );
+  }
+  else
+  {
+    QToolTip::add( this, i18n( "KOrganizer Alarm Reminder" ) );
+    contextMenu()->setItemEnabled( mSuspendAll, false );
+    contextMenu()->setItemEnabled( mDismissAll, false );
+  }
+}
 
 void AlarmDockWindow::toggleAlarmsEnabled()
 {
@@ -114,6 +137,15 @@ void AlarmDockWindow::toggleAutostart()
   enableAutostart( autostart );
 }
 
+void AlarmDockWindow::slotSuspendAll()
+{
+  emit suspendAllSignal();
+}
+
+void AlarmDockWindow::slotDismissAll()
+{
+  emit dismissAllSignal();
+}
 
 void AlarmDockWindow::enableAutostart( bool enable )
 {
@@ -149,7 +181,8 @@ void AlarmDockWindow::slotQuit()
   if ( result == KMessageBox::No ) autostart = false;
   enableAutostart( autostart );
 
-  if ( result != KMessageBox::Cancel ) kapp->quit();
+  if ( result != KMessageBox::Cancel )
+    emit quitSignal();
 }
 
 #include "alarmdockwindow.moc"

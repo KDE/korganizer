@@ -40,17 +40,16 @@
 #include <qpushbutton.h>
 
 KOAlarmClient::KOAlarmClient( QObject *parent, const char *name )
-  : DCOPObject( "ac" ), QObject( parent, name ),
-    mSuspendTimer( this )
+  : DCOPObject( "ac" ), QObject( parent, name )
 {
   kdDebug(5890) << "KOAlarmClient::KOAlarmClient()" << endl;
 
   mDocker = new AlarmDockWindow;
   mDocker->show();
-
-  mAlarmDialog = new AlarmDialog;
-  connect( mAlarmDialog, SIGNAL( suspendSignal( int ) ),
-           SLOT( suspend( int ) ) );
+  connect( this, SIGNAL( reminderCount( int ) ), mDocker, SLOT( slotUpdate( int ) ) );
+  connect( mDocker, SIGNAL( quitSignal() ), SLOT( slotQuit() ) );
+  connect( mDocker, SIGNAL( suspendAllSignal() ), SLOT( slotSuspendAll() ) );
+  connect( mDocker, SIGNAL( dismissAllSignal() ), SLOT( slotDismissAll() ) );
 
   KConfig c( locate( "config", "korganizerrc" ) );
   c.setGroup( "Time & Date" );
@@ -68,6 +67,24 @@ KOAlarmClient::KOAlarmClient( QObject *parent, const char *name )
   int interval = cfg->readNumEntry( "Interval", 60 );
   kdDebug(5890) << "KOAlarmClient check interval: " << interval << " seconds."
                 << endl;
+
+  // load reminders that were active when quitting
+  KConfig *config = kapp->config();
+  config->setGroup( "General" );
+  int numReminders = config->readNumEntry( "Reminders", 0 );
+  for ( int i=1; i<=numReminders; ++i )
+  {
+    QString group( QString( "Incidence-%1" ).arg( i ) );
+    config->setGroup( group );
+    QString uid = config->readEntry( "UID" );
+    QDateTime dt = config->readDateTimeEntry( "RemindAt" );
+    if ( !uid.isEmpty() )
+      createReminder( mCalendar->incidence( uid ), dt );
+    config->deleteGroup( group );
+  }
+  config->setGroup( "General" );
+  config->writeEntry( "Reminders", 0 );
+  config->sync();
 
   mCheckTimer.start( 1000 * interval );  // interval in seconds
 }
@@ -93,17 +110,12 @@ void KOAlarmClient::checkAlarms()
   kdDebug(5891) << "Check: " << from.toString() << " - " << to.toString() << endl;
 
   QValueList<Alarm *> alarms = mCalendar->alarms( from, to );
-  
-  bool newEvents = false;
+
   QValueList<Alarm *>::ConstIterator it;
   for( it = alarms.begin(); it != alarms.end(); ++it ) {
     kdDebug(5891) << "ALARM: " << (*it)->parent()->summary() << endl;
     Incidence *incidence = mCalendar->incidence( (*it)->parent()->uid() );
-    mAlarmDialog->appendIncidence( incidence );
-    newEvents = true;
-  }
-  if ( newEvents ) {
-    showAlarmDialog();
+    createReminder( incidence, QDateTime::currentDateTime() );
   }
 
   cfg->writeEntry( "CalendarsLastChecked", to );
@@ -111,26 +123,43 @@ void KOAlarmClient::checkAlarms()
   cfg->sync();
 }
 
-void KOAlarmClient::suspend( int seconds )
+void KOAlarmClient::createReminder( KCal::Incidence *incidence, QDateTime dt )
 {
-//  kdDebug(5890) << "KOAlarmClient::suspend() " << minutes << " minutes" << endl;
-  connect( &mSuspendTimer, SIGNAL( timeout() ), SLOT( showAlarmDialog() ) );
-  mSuspendTimer.start( 1000 * seconds, true );
+  AlarmDialog *dialog = new AlarmDialog();
+  dialog->setIncidence( incidence );
+  dialog->setRemindAt( dt );
+  mReminders.append( dialog );
+  connect( dialog, SIGNAL( finishedSignal( AlarmDialog *) ), SLOT( slotRemove( AlarmDialog *) ) );
+  connect( mDocker, SIGNAL( suspendAllSignal() ), dialog, SLOT( slotUser1() ) );
+  connect( mDocker, SIGNAL( dismissAllSignal() ), dialog, SLOT( slotOk() ) );
+  connect( this, SIGNAL( saveAllSignal() ), dialog, SLOT( slotSave() ) );
+  emit reminderCount( mReminders.count() );
+  dialog->wakeUp();
 }
 
-void KOAlarmClient::showAlarmDialog()
+void KOAlarmClient::slotQuit()
 {
-  mAlarmDialog->show();
-  mAlarmDialog->raise();
-  KWin::forceActiveWindow( mAlarmDialog->winId() );
-  mAlarmDialog->actionButton( KDialogBase::Ok )->setFocus();
-  mAlarmDialog->eventNotification();
+  emit saveAllSignal();
+  quit();
 }
 
 void KOAlarmClient::quit()
 {
   kdDebug(5890) << "KOAlarmClient::quit()" << endl;
   kapp->quit();
+}
+
+void KOAlarmClient::slotRemove( AlarmDialog *d )
+{
+  mReminders.remove( d );
+  delete d;
+  emit reminderCount( mReminders.count() );
+}
+
+bool KOAlarmClient::commitData( QSessionManager& )
+{
+  emit saveAllSignal();
+  return true;
 }
 
 void KOAlarmClient::forceAlarmCheck()
@@ -172,7 +201,7 @@ QStringList KOAlarmClient::dumpAlarms()
 
 void KOAlarmClient::debugShowDialog()
 {
-  showAlarmDialog();
+//   showAlarmDialog();
 }
 
 #include "koalarmclient.moc"

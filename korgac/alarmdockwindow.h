@@ -40,13 +40,21 @@ class AlarmDockWindow : public KSystemTray
   public slots:
     void toggleAlarmsEnabled();    
     void toggleAutostart();  
-  
+    void slotUpdate( int reminders );
+
+  signals:
+    void quitSignal();
+    void suspendAllSignal();
+    void dismissAllSignal();
+
   protected:
     void mousePressEvent( QMouseEvent * );
 //    void closeEvent( QCloseEvent * );
 
   protected slots:
     void slotQuit();
+    void slotSuspendAll();
+    void slotDismissAll();
 
   private:
     QPixmap mPixmapEnabled;
@@ -54,6 +62,8 @@ class AlarmDockWindow : public KSystemTray
 
     int mAlarmsEnabledId;
     int mAutostartId;
+    int mSuspendAll;
+    int mDismissAll;
 };
 
 #endif

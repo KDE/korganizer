@@ -25,6 +25,8 @@
 //
 // Alarm dialog.
 //
+#include <qtimer.h>
+#include <qdatetime.h>
 
 #include <kdialogbase.h>
 
@@ -43,27 +45,33 @@ class AlarmDialog : public KDialogBase {
     AlarmDialog( QWidget *parent = 0, const char *name = 0 );
     virtual ~AlarmDialog();
 
-    void appendIncidence( Incidence *incidence );
-  
-    void clearEvents();
-
+    void setIncidence( Incidence *incidence );
+    void setRemindAt( QDateTime dt );
     void eventNotification();
+    void wakeUp();
 
   public slots:
     void slotOk();
     void slotUser1();
     void slotUser2();
+    void slotSave();
+    void show();
 
   signals:
-    void suspendSignal(int duration);
+    void finishedSignal( AlarmDialog* );
 
   private:
+    bool startKOrganizer();
+    void setTimer( int seconds );
+
     KOEventViewer *mEventViewer;
 
-    QPtrList<Incidence> mIncidences;
-  
+    Incidence *mIncidence;
+
     QSpinBox *mSuspendSpin;
     KComboBox *mSuspendUnit;
+    QTimer mSuspendTimer;
+    QDateTime mRemindAt;
 };
 
 #endif

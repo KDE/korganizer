@@ -28,21 +28,27 @@
 
 #include "alarmclientiface.h"
 
+#include <kapplication.h>
+
 #include <qtimer.h>
 
 class AlarmDialog;
 class AlarmDockWindow;
+class QDateTime;
 
 namespace KCal {
 class CalendarResources;
+class Incidence;
 }
 
-class KOAlarmClient : public QObject, virtual public AlarmClientIface
+class KOAlarmClient : public QObject, virtual public AlarmClientIface, public KSessionManaged
 {
     Q_OBJECT
   public:
     KOAlarmClient( QObject *parent = 0, const char *name = 0 );
     ~KOAlarmClient();
+
+    bool commitData( QSessionManager & );
 
     // DCOP interface
     void quit();
@@ -53,20 +59,21 @@ class KOAlarmClient : public QObject, virtual public AlarmClientIface
     void debugShowDialog();
 
   public slots:
-    /**
-      Schedule the alarm dialog for redisplay after a specified number of
-      seconds.
-    */
-    void suspend( int seconds );
+    void slotRemove( AlarmDialog *d );
+    void slotQuit();
 
   protected slots:
-    void showAlarmDialog();
-    void checkAlarms();    
+    void checkAlarms();
+
+  signals:
+    void reminderCount( int );
+    void saveAllSignal();
 
   private:
+    void createReminder( KCal::Incidence *incidence, QDateTime dt );
+
     AlarmDockWindow *mDocker;  // the panel icon
-    AlarmDialog *mAlarmDialog;
-    QTimer mSuspendTimer;
+    QValueList<AlarmDialog *> mReminders;
 
     KCal::CalendarResources *mCalendar;
 
