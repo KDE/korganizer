@@ -333,7 +333,7 @@ bool FreeBusyManager::retrieveFreeBusy( const QString &email )
 
 KURL FreeBusyManager::freeBusyUrl( const QString &email )
 {
-  QString configFile = locateLocal( "appdata", "freebusyurls" );
+  QString configFile = locateLocal( "data", "korganizer/freebusyurls" );
   KConfig cfg( configFile );
 
   cfg.setGroup( email );
