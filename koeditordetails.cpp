@@ -235,6 +235,8 @@ void KOEditorDetails::setDefaults()
 
 void KOEditorDetails::readEvent(Incidence *event)
 {
+  mListView->clear();
+  mdelAttendees.clear();
   QPtrList<Attendee> tmpAList = event->attendees();
   Attendee *a;
   for (a = tmpAList.first(); a; a = tmpAList.next())
@@ -242,8 +244,6 @@ void KOEditorDetails::readEvent(Incidence *event)
 
   mListView->setSelected( mListView->firstChild(), true );
   mOrganizerLabel->setText(i18n("Organizer: %1").arg(event->organizer()));
-//	if (event->organizer()!=KOPrefs::instance()->email())
-//	  mOrganizerEdit->setReadOnly(true);
 }
 
 void KOEditorDetails::writeEvent(Incidence *event)
