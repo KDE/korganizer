@@ -91,7 +91,7 @@ part_DATA = korganizer_part.rc
 
 KDE_ICON = AUTO
 
-META_INCLUDES = interfaces/korganizer
+META_INCLUDES = $(srcdir)/interfaces/korganizer
 
 messages: rc.cpp
 	perl ./preparetips > tips.cc
