@@ -2,13 +2,13 @@
 
 INCLUDES = -I$(top_srcdir)/korganizer/interfaces $(all_includes)
 
-kde_module_LTLIBRARIES = libkorg_datenums.la
+kde_module_LTLIBRARIES = libkorg_hebrew.la
 
-libkorg_datenums_la_SOURCES = datenums.cpp
-libkorg_datenums_la_LDFLAGS = -module $(KDE_PLUGIN) $(KDE_RPATH) $(all_libraries) 
-libkorg_datenums_la_LIBADD = $(LIB_KDECORE)
+libkorg_hebrew_la_SOURCES = hebrew.cpp
+libkorg_hebrew_la_LDFLAGS = -module $(KDE_PLUGIN) $(KDE_RPATH) $(all_libraries) 
+libkorg_hebrew_la_LIBADD = $(LIB_KDECORE)
 
-noinst_HEADERS = datenums.h
+noinst_HEADERS = hebrew.h
 
 servicedir  = $(kde_servicesdir)/korganizer
-service_DATA = datenums.desktop
+service_DATA = hebrew.desktop
