@@ -54,7 +54,7 @@
 #include <libkcal/calfilter.h>
 
 #ifndef KORG_NOARCHIVE
-#include "koarchivedlg.h"
+#include "archivedialog.h"
 #endif
 #ifndef KORG_NOMAIL
 #include "komailclient.h"

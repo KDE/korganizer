@@ -28,7 +28,7 @@ libkorganizer_la_SOURCES =  outgoingdialog_base.ui \
 	ktimeedit.cpp main.cpp  \
 	searchdialog.cpp calendarview.cpp \
 	calprinter.cpp \
-	koarchivedlg.cpp \
+	archivedialog.cpp \
 	komailclient.cpp kotodoview.cpp \
         kolistview.cpp \
         exportwebdialog.cpp htmlexport.cpp \
@@ -62,7 +62,7 @@ noinst_HEADERS = komonthview.h \
 	calendarview.h kdpdatebutton.h ktimeedit.h \
 	version.h \
 	searchdialog.h calprinter.h \
-	koarchivedlg.h \
+	archivedialog.h \
 	komailclient.h kotodoview.h \
         kolistview.h \
 	koapp.h exportwebdialog.h korganizer_part.h korganizer.h \

@@ -43,8 +43,8 @@
 #include "kdateedit.h"
 #include "koprefs.h"
 
-#include "koarchivedlg.h"
-#include "koarchivedlg.moc"
+#include "archivedialog.h"
+#include "archivedialog.moc"
 
 ArchiveDialog::ArchiveDialog(Calendar *cal,QWidget *parent, const char *name)
   : KDialogBase (Plain,i18n("Archive / Delete Past Appointments"),
