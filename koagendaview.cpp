@@ -671,10 +671,17 @@ void KOAgendaView::zoomView( const int delta, const QPoint &pos,
       zoomInHorizontally( zoomDate );
   } else {
     // Vertical zoom
-    if ( delta > 0 ) 
+    QTime timePos = mAgenda->gyToTime(pos.y());
+    int oldHourSize=KOPrefs::instance()->mHourSize;
+    
+    QPoint posConstentsOld = mAgenda->gridToContents(pos);
+    if ( delta > 0 ) {
       zoomOutVertically();
-    else  
+    } else {
       zoomInVertically();
+    }
+    QPoint posConstentsNew = mAgenda->gridToContents(pos);
+    mAgenda->scrollBy( 0, posConstentsNew.y() - posConstentsOld.y() );
   }
 }
 
