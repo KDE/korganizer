@@ -180,7 +180,7 @@ void KOPrefsDialogMain::toggleEmailSettings( bool on )
 
 extern "C"
 {
-  KCModule *create_korganizerconfigmain( QWidget *parent, const char * )
+  KDE_EXPORT KCModule *create_korganizerconfigmain( QWidget *parent, const char * )
   {
     return new KOPrefsDialogMain( parent, "kcmkorganizermain" );
   }

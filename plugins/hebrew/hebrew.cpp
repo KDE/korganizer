@@ -40,7 +40,7 @@ public:
   }
 };
 
-K_EXPORT_COMPONENT_FACTORY( libkorg_hebrew, HebrewFactory );
+K_EXPORT_COMPONENT_FACTORY( libkorg_hebrew, HebrewFactory )
 
 
 QString Hebrew::shortText(const QDate & date)

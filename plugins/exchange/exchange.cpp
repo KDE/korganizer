@@ -54,7 +54,7 @@ class ExchangeFactory : public KOrg::PartFactory {
     }
 };
 
-K_EXPORT_COMPONENT_FACTORY( libkorg_exchange, ExchangeFactory );
+K_EXPORT_COMPONENT_FACTORY( libkorg_exchange, ExchangeFactory )
 
 Exchange::Exchange(KOrg::MainWindow *parent, const char *name) :
   KOrg::Part(parent,name)

@@ -30,7 +30,7 @@ class HolidaysFactory : public CalendarDecorationFactory {
     CalendarDecoration *create() { return new Holidays; }
 };
 
-K_EXPORT_COMPONENT_FACTORY( libkorg_holidays, HolidaysFactory );
+K_EXPORT_COMPONENT_FACTORY( libkorg_holidays, HolidaysFactory )
 
 
 Holidays::Holidays()
