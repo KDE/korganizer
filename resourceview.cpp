@@ -41,6 +41,8 @@
 #include <qpushbutton.h>
 #include <qpopupmenu.h>
 
+#include "koprefs.h"
+
 using namespace KCal;
 
 ResourceViewFactory::ResourceViewFactory( KCal::CalendarResources *calendar,
@@ -231,13 +233,12 @@ void ResourceView::addResource()
                           "KRES::ConfigDialog" );
 
   if ( dlg.exec() ) {
-    if ( resource->isActive() ) {
-      resource->open();
-      resource->load();
-    }
-
+    resource->setTimeZoneId( KOPrefs::instance()->mTimeZoneId );
     manager->add( resource );
-    addResourceItem( resource );
+    // we have to call resourceAdded manually, because for in-process changes
+    // the dcop signals are not connected, so the resource's signals would not
+    // be connected otherwise
+    mCalendar->resourceAdded( resource );
   } else {
     delete resource;
     resource = 0;

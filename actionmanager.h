@@ -103,6 +103,8 @@ class ActionManager : public QObject, public KCalendarIface
     bool saveResourceCalendar();
 
   public slots:
+    /** Add a new resource */
+    bool addResource( const KURL &mUrl );
     /**
       Open calendar file from URL. Merge into current calendar, if \a merge is
       true.
@@ -193,6 +195,9 @@ class ActionManager : public QObject, public KCalendarIface
       Announce filter selection changes.
     */
     void filterActivated( int );
+    
+    /** Indicates that a new resource was added */
+    void resourceAdded( ResourceCalendar * );
 
   public slots:
     /**

@@ -28,14 +28,8 @@
 
 #include <kurl.h>
 
-namespace KCal {
-class ResourceRemote;
-class ResourceCalendar;
-}
 
 class QRadioButton;
-
-using namespace KCal;
 
 class ImportDialog : public KDialogBase
 {
@@ -51,7 +45,7 @@ class ImportDialog : public KDialogBase
     void dialogFinished( ImportDialog * );
     void openURL( const KURL &, bool );
     void newWindow( const KURL & );
-    void resourceAdded( ResourceCalendar * );
+    void addResource( const KURL & );
  
   private:
     KURL mUrl;

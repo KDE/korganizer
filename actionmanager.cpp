@@ -47,6 +47,7 @@
 #include <libkcal/calendarlocal.h>
 #include <libkcal/calendarresources.h>
 #include <libkcal/resourcelocal.h>
+#include <libkcal/resourceremote.h>
 
 #include <dcopclient.h>
 #include <kaction.h>
@@ -821,6 +822,43 @@ bool ActionManager::openURL(const KURL &url,bool merge)
   return true;
 }
 
+bool ActionManager::addResource( const KURL &mUrl ) 
+{
+  CalendarResources *cr = KOrg::StdCalendar::self();
+  
+  CalendarResourceManager *manager = cr->resourceManager();
+
+  ResourceCalendar *resource = 0;
+
+  QString name;
+
+  kdDebug() << "URL: " << mUrl << endl;
+  if ( mUrl.isLocalFile() ) {
+    kdDebug() << "Local Resource" << endl;
+    resource = new ResourceLocal( mUrl.path() );
+    resource->setTimeZoneId( KOPrefs::instance()->mTimeZoneId );
+    name = mUrl.path();
+  } else {
+    kdDebug() << "Remote Resource" << endl;
+    resource = new ResourceRemote( mUrl );
+    resource->setTimeZoneId( KOPrefs::instance()->mTimeZoneId );
+    name = mUrl.prettyURL();
+    resource->setReadOnly( true );
+  }
+
+  if ( resource ) {
+    resource->setResourceName( name );
+    manager->add( resource );
+    // we have to call resourceAdded manually, because for in-process changes
+    // the dcop signals are not connected, so the resource's signals would not
+    // be connected otherwise
+    if (mCalendarResources) 
+      mCalendarResources->resourceAdded( resource );
+  }
+  return true;
+}
+
+
 void ActionManager::showStatusMessageOpen( const KURL &url, bool merge )
 {
   if ( merge ) {
@@ -1503,10 +1541,8 @@ void ActionManager::importCalendar( const KURL &url )
            SLOT( openURL( const KURL &, bool ) ) );
   connect( dialog, SIGNAL( newWindow( const KURL & ) ),
            SIGNAL( actionNew( const KURL & ) ) );
-  if ( mResourceView ) {
-    connect( dialog, SIGNAL( resourceAdded( ResourceCalendar * ) ),
-             mResourceView, SLOT( addResourceItem( ResourceCalendar * ) ) );
-  }
+  connect( dialog, SIGNAL( addResource( const KURL & ) ),
+           SLOT( addResource( const KURL & ) ) );
 
   dialog->show();
 }

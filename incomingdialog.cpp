@@ -157,7 +157,7 @@ IncomingDialog::IncomingDialog( Calendar *calendar, OutgoingDialog * outgoing,
   connect( mMessageListView, SIGNAL( doubleClicked( QListViewItem * ) ),
            SLOT( showEvent( QListViewItem * ) ) );
   connect( mMessageListView, SIGNAL( selectionChanged() ),
-	   SLOT( updateActions() ) );
+           SLOT( updateActions() ) );
   retrieve();
 }
 

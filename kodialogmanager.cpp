@@ -75,9 +75,9 @@ class EditorDialogVisitor : public DialogManagerVisitor
     EditorDialogVisitor() : DialogManagerVisitor(), mEditor( 0 ) {}
     KOIncidenceEditor *editor() const { return mEditor; }
   protected:
-    bool visit( Event *event ) { mEditor = mDialogManager->getEventEditor(); return mEditor; }
-    bool visit( Todo *todo ) { mEditor = mDialogManager->getTodoEditor(); return mEditor; }
-    bool visit( Journal *journal ) { mEditor = mDialogManager->getJournalEditor(); return mEditor; }
+    bool visit( Event * ) { mEditor = mDialogManager->getEventEditor(); return mEditor; }
+    bool visit( Todo * ) { mEditor = mDialogManager->getTodoEditor(); return mEditor; }
+    bool visit( Journal * ) { mEditor = mDialogManager->getJournalEditor(); return mEditor; }
   protected:
     KOIncidenceEditor *mEditor;
 };

@@ -76,37 +76,7 @@ void ImportDialog::slotOk()
   kdDebug() << "Adding resource for url '" << mUrl << "'" << endl;
 
   if ( mAddButton->isChecked() ) {
-    // @TODO: This should be better done by the action manager
-    // @TODO: currently, the new resource does not show up in the 
-    //        resource view. You have to restart korganizer first.
-    CalendarResources *cr = KOrg::StdCalendar::self();
-
-    CalendarResourceManager *manager = cr->resourceManager();
-
-    ResourceCalendar *resource = 0;
-
-    QString name;
-
-    kdDebug() << "URL: " << mUrl << endl;
-    if ( mUrl.isLocalFile() ) {
-      kdDebug() << "Local Resource" << endl;
-      resource = new ResourceLocal( mUrl.path() );
-      resource->setTimeZoneId( KOPrefs::instance()->mTimeZoneId );
-      name = mUrl.path();
-    } else {
-      kdDebug() << "Remote Resource" << endl;
-      resource = new ResourceRemote( mUrl );
-      resource->setTimeZoneId( KOPrefs::instance()->mTimeZoneId );
-      name = mUrl.prettyURL();
-      resource->setReadOnly( true );
-    }
-
-    if ( resource ) {
-      resource->setResourceName( name );
-      manager->add( resource );
-      emit resourceAdded( resource );
-    }
-  
+    emit addResource( mUrl );
   } else if ( mMergeButton->isChecked() ) {
     // emit a signal to action manager to merge mUrl into the current calendar
     emit openURL( mUrl, true );
