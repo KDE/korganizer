@@ -9,8 +9,9 @@
 
 #include <qlistview.h>
 
+#include <incidence.h>
+
 #include "koeventview.h"
-#include "incidencevisitor.h"
 
 using namespace KCal;
 
@@ -46,9 +47,9 @@ private:
 
 /**
   This class provides the initialisation of a KOListViewItem for calendar
-  components using the IncidenceVisitor.
+  components using the Incidence::Visitor.
 */
-class ListItemVisitor : public IncidenceVisitor
+class ListItemVisitor : public Incidence::Visitor
 {
   public:
     ListItemVisitor(KOListViewItem *);

@@ -50,7 +50,7 @@ using namespace KCal;
   This class provides the initialisation of a KOListViewItem for calendar
   components using the IncidenceVisitor.
 */
-class CreateEditorVisitor : public IncidenceVisitor
+class CreateEditorVisitor : public Incidence::Visitor
 {
   public:
     CreateEditorVisitor() {};
