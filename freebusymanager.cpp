@@ -130,7 +130,7 @@ QString FreeBusyManager::ownerFreeBusyAsString()
   QString result = freeBusyToIcal( freebusy );
 
   delete freebusy;
-  
+
   return result;
 }
 
@@ -259,9 +259,9 @@ void FreeBusyManager::publishFreeBusy()
 
     KURL src;
     src.setPath( tempFile.name() );
-    
+
     kdDebug() << "FreeBusyManager::publishFreeBusy(): " << targetURL << endl;
-    
+
     KIO::Job * job = KIO::file_copy( src, targetURL, -1,
                                      true /*overwrite*/,
                                      false /*don't resume*/,
@@ -371,7 +371,7 @@ KCal::FreeBusy *FreeBusyManager::iCalToFreeBusy( const QCString &data )
     } else {
       fb = dynamic_cast<KCal::FreeBusy *>( event );
       if ( fb ){
-        saveFreeBusy( fb, fb->organizer() );
+        storeFreeBusy( fb, fb->organizer() );
       } else {
         kdError() << "no freebusy" << endl;
       }
@@ -397,22 +397,22 @@ FreeBusy *FreeBusyManager::loadFreeBusy( const QString &email )
               << " doesn't exist." << endl;
     return 0;
   }
-  
+
   if ( !f.open( IO_ReadOnly ) ) {
     kdDebug() << "FreeBusyManager::loadFreeBusy() Unable to open file "
               << f.name() << endl;
     return 0;
   }
-  
+
   QTextStream ts( &f );
   QString str = ts.read();
 
-  return iCalToFreeBusy( str.utf8() );  
+  return iCalToFreeBusy( str.utf8() );
 }
 
-bool FreeBusyManager::saveFreeBusy( FreeBusy *freebusy, const QString &email )
+bool FreeBusyManager::storeFreeBusy( FreeBusy *freebusy, const QString &email )
 {
-  kdDebug() << "FreeBusyManager::saveFreeBusy(): " << email << endl;
+  kdDebug() << "FreeBusyManager::storeFreeBusy(): " << email << endl;
 
   QString fbd = freeBusyDir();
 
@@ -420,7 +420,7 @@ bool FreeBusyManager::saveFreeBusy( FreeBusy *freebusy, const QString &email )
   if ( !freeBusyDirectory.exists() ) {
     kdDebug() << "Directory " << fbd << " does not exist!" << endl;
     kdDebug() << "Creating directory: " << fbd << endl;
-    
+
     if( !freeBusyDirectory.mkdir( fbd, true ) ) {
       kdDebug() << "Could not create directory: " << fbd << endl;
       return false;
@@ -433,7 +433,7 @@ bool FreeBusyManager::saveFreeBusy( FreeBusy *freebusy, const QString &email )
   filename += ".ifb";
   QFile f( filename );
 
-  kdDebug() << "FreeBusyManager::saveFreeBusy(): filename: " << filename
+  kdDebug() << "FreeBusyManager::storeFreeBusy(): filename: " << filename
             << endl;
 
   freebusy->clearAttendees();
