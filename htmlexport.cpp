@@ -171,13 +171,13 @@ void HtmlExport::createHtmlMonthView(QTextStream *ts)
           *ts << "<table>";
           Event *ev;
           for(ev = events.first(); ev; ev = events.next()) {
-      if (checkSecrecyEvent(ev)) {
-        createHtmlEvent(ts,ev,start,false);
-      }
-    }
-    *ts << "</table>";
+            if ( checkSecrecy( ev ) ) {
+              createHtmlEvent(ts,ev,start,false);
+            }
+          }
+          *ts << "</table>";
         } else {
-    *ts << "&nbsp;";
+          *ts << "&nbsp;";
         }
 
         *ts << "</td></tr></table>\n";
@@ -222,7 +222,7 @@ void HtmlExport::createHtmlEventList (QTextStream *ts)
           << "</I></TD></TR>\n";
       Event *ev;
       for(ev = events.first(); ev; ev = events.next()) {
-	if (checkSecrecyEvent(ev)) {
+	if ( checkSecrecy( ev ) ) {
 	  createHtmlEvent(ts,ev,dt);
 	}
       }
@@ -300,7 +300,7 @@ void HtmlExport::createHtmlTodoList (QTextStream *ts)
   // replaced by a real sorting algorithm.
   for (int i=1; i<=5; ++i) {
     for(ev=rawTodoList.first();ev;ev=rawTodoList.next()) {
-      if (ev->priority()==i && checkSecrecyTodo(ev)) todoList.append(ev);
+      if (ev->priority()==i && checkSecrecy( ev )) todoList.append(ev);
     }
   }
 
@@ -431,31 +431,17 @@ void HtmlExport::createHtmlTodo (QTextStream *ts,Todo *todo)
   *ts << "</TR>\n";
 }
 
-bool HtmlExport::checkSecrecyTodo (Todo *todo)
+bool HtmlExport::checkSecrecy( Incidence *incidence )
 {
-  QString todoSecrecy = todo->secrecyStr();
-  if (todoSecrecy == "Public" || (!excludePrivateTodoEnabled() && !excludeConfidentialTodoEnabled())) {
+  int secrecy = incidence->secrecy();
+  if ( secrecy == Incidence::SecrecyPublic ) {
     return true;
   }
-  if (todoSecrecy == "Private" && !excludePrivateEventEnabled()) {
+  if ( secrecy == Incidence::SecrecyPrivate && !excludePrivateEventEnabled() ) {
     return true;
   }
-  if (todoSecrecy == "Confidential" && !excludeConfidentialEventEnabled()) {
-    return true;
-  }
-  return false;
-}
-
-bool HtmlExport::checkSecrecyEvent (Event *event)
-{
-  QString eventSecrecy = event->secrecyStr();
-  if (eventSecrecy == "Public" || (!excludePrivateEventEnabled() && !excludeConfidentialEventEnabled())) {
-    return true;
-  }
-  if (eventSecrecy == "Private" && !excludePrivateEventEnabled()) {
-    return true;
-  }
-  if (eventSecrecy == "Confidential" && !excludeConfidentialEventEnabled()) {
+  if ( secrecy == Incidence::SecrecyConfidential &&
+       !excludeConfidentialEventEnabled() ) {
     return true;
   }
   return false;

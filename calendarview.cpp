@@ -983,18 +983,18 @@ void CalendarView::action_mail()
     return;
   }
 
-	Calendar *cal_tmp = new CalendarLocal();
+  Calendar *cal_tmp = new CalendarLocal();
   Event *event = 0;
   Event *ev = 0;
   if ( incidence && incidence->type() == "Event" ) {
     event = static_cast<Event *>(incidence);
     ev = new Event(*event);
-  	cal_tmp->addEvent(ev);
+    cal_tmp->addEvent(ev);
   }
-	ICalFormat mForm(cal_tmp);
-	QString attachment = mForm.toString();
-	if (ev) delete(ev);
-	delete(cal_tmp);
+  ICalFormat mForm(cal_tmp);
+  QString attachment = mForm.toString();
+  if (ev) delete(ev);
+  delete(cal_tmp);
 
   mailClient.mailAttendees(currentSelection(), attachment);
 

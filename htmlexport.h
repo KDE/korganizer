@@ -111,8 +111,7 @@ class HtmlExport {
     void createHtmlTodo (QTextStream *ts,Todo *todo);
     void createHtmlEvent (QTextStream *ts,Event *event,QDate date, bool withDescription = true);
 
-    bool checkSecrecyTodo (Todo *todo);
-    bool checkSecrecyEvent (Event *event);
+    bool checkSecrecy( Incidence * );
 
     void formatHtmlCategories (QTextStream *ts,Incidence *event);
     void formatHtmlAttendees (QTextStream *ts,Incidence *event);
