@@ -117,8 +117,6 @@ KOrganizerPart::KOrganizerPart(QWidget *parentWidget, const char *widgetName,
   mBrowserExtension = new KOrganizerBrowserExtension(this);
   mStatusBarExtension = new KOStatusBarExtension(this);
 
-  mStatusBarExtension->mainWindow();
-
   KStatusBar *statusBar = mStatusBarExtension->statusBar();
   if ( !statusBar ) kdError() << "NO STATUSBAR" << endl;
 
