@@ -309,7 +309,7 @@ bool KOEditorFreeBusy::updateEnabled() const
 void KOEditorFreeBusy::readEvent( Event *event )
 {
   setDateTimes( event->dtStart(), event->dtEnd() );
-  mIsOrganizer = KOPrefs::instance()->thatIsMe( event->organizer() );
+  mIsOrganizer = KOPrefs::instance()->thatIsMe( event->organizer().email() );
   updateStatusSummary();
 }
 

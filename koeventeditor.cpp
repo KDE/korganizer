@@ -298,7 +298,8 @@ bool KOEventEditor::processInput()
     return rc;
   } else {
     mEvent = new Event;
-    mEvent->setOrganizer( KOPrefs::instance()->email() );
+    mEvent->setOrganizer( Person( KOPrefs::instance()->fullName(), 
+                          KOPrefs::instance()->email() ) );
     writeEvent( mEvent );
     if ( KOPrefs::instance()->mUseGroupwareCommunication ) {
       if ( !KOGroupware::instance()->sendICalMessage( this,

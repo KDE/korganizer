@@ -56,7 +56,7 @@ bool KOMailClient::mailAttendees(IncidenceBase *incidence,const QString &attachm
   Attendee::List attendees = incidence->attendees();
   if (attendees.count() == 0) return false;
 
-  const QString from = incidence->organizer();
+  const QString from = incidence->organizer().fullName();
   QStringList toList;
   for(uint i=0; i<attendees.count();++i) {
     const QString email = (*attendees.at(i))->email();
@@ -86,7 +86,7 @@ bool KOMailClient::mailAttendees(IncidenceBase *incidence,const QString &attachm
 
 bool KOMailClient::mailOrganizer(IncidenceBase *incidence,const QString &attachment)
 {
-  QString to = incidence->organizer();
+  QString to = incidence->organizer().fullName();
 
   QString from = KOPrefs::instance()->email();
 

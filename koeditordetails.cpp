@@ -401,7 +401,7 @@ void KOEditorDetails::readEvent( Incidence *event )
 
   mListView->setSelected( mListView->firstChild(), true );
 
-  if ( KOPrefs::instance()->thatIsMe( event->organizer() ) ) {
+  if ( KOPrefs::instance()->thatIsMe( event->organizer().email() ) ) {
     if ( !mOrganizerCombo ) {
       mOrganizerCombo = new QComboBox( mOrganizerHBox );
       fillOrganizerCombo();
@@ -409,12 +409,12 @@ void KOEditorDetails::readEvent( Incidence *event )
     mOrganizerLabel->setText( i18n( "Identity as organizer:" ) );
 
     // This might not be enough, if the combo as a full name too, hence the loop below
-    // mOrganizerCombo->setCurrentText( event->organizer() );
+    // mOrganizerCombo->setCurrentText( event->organizer().fullName() );
     for ( int i = 0 ; i < mOrganizerCombo->count(); ++i ) {
       QString itemTxt = KPIM::getEmailAddr( mOrganizerCombo->text( i ) );
-      if ( KPIM::compareEmail( event->organizer(), itemTxt, false ) ) {
+      if ( KPIM::compareEmail( event->organizer().email(), itemTxt, false ) ) {
         // Make sure we match the organizer setting completely
-        mOrganizerCombo->changeItem( event->organizer(), i );
+        mOrganizerCombo->changeItem( event->organizer().fullName(), i );
         mOrganizerCombo->setCurrentItem( i );
         break;
       }
@@ -424,7 +424,7 @@ void KOEditorDetails::readEvent( Incidence *event )
       delete mOrganizerCombo;
       mOrganizerCombo = 0;
     }
-    mOrganizerLabel->setText( i18n( "Organizer: %1" ).arg( event->organizer() ) );
+    mOrganizerLabel->setText( i18n( "Organizer: %1" ).arg( event->organizer().fullName() ) );
   }
 
   // Reinstate free/busy view updates
@@ -442,6 +442,7 @@ void KOEditorDetails::writeEvent(Incidence *event)
     event->addAttendee(new Attendee(*(a->data())));
   }
   if ( mOrganizerCombo ) {
+    // TODO: Don't take a string and split it up... Is there a better way?
     event->setOrganizer( mOrganizerCombo->currentText() );
   }
 }

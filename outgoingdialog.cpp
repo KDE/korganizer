@@ -278,7 +278,7 @@ void OutgoingDialog::showEvent( QListViewItem *qitem )
       break; }
     case Scheduler::Reply:
     case Scheduler::Counter: {
-      sendText += i18n("The organizer %1").arg( incidence->organizer() );
+      sendText += i18n("The organizer %1").arg( incidence->organizer().fullName() );
       break; }
     case Scheduler::NoMethod: {
       sendText += "";

@@ -313,7 +313,7 @@ void KOEditorGeneral::readIncidence(Incidence *event)
 
 #if 0
   // organizer information
-  mOwnerLabel->setText(i18n("Owner: ") + event->organizer());
+  mOwnerLabel->setText(i18n("Owner: ") + event->organizer().fullName() );
 #endif
 
   enableAlarmEdit( event->isAlarmEnabled() );

@@ -271,7 +271,8 @@ bool KOTodoEditor::processInput()
 
   } else {
     mTodo = new Todo;
-    mTodo->setOrganizer( KOPrefs::instance()->email() );
+    mTodo->setOrganizer( Person( KOPrefs::instance()->fullName(), 
+                         KOPrefs::instance()->email() ) );
 
     writeTodo( mTodo );
     if ( KOPrefs::instance()->mUseGroupwareCommunication ) {

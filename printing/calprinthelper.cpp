@@ -978,7 +978,7 @@ void CalPrintHelper::drawJournal( Journal * journal, QPainter &p, int x, int &y,
   p.drawLine( x + 3, y, x + width - 6, y );
   y += 5;
 
-  drawJournalField( p, i18n("Person: %1"), journal->organizer(), x, y, width, pageHeight );
+  drawJournalField( p, i18n("Person: %1"), journal->organizer().fullName(), x, y, width, pageHeight );
   drawJournalField( p, i18n("%1"), journal->description(), x, y, width, pageHeight );
   y += 10;
 }
