@@ -181,7 +181,7 @@ void IncomingDialog::retrieve()
     IncidenceBase *inc = message->event();
     Scheduler::Method method = (Scheduler::Method)message->method();
     ScheduleMessage::Status status = message->status();
-    
+
     ScheduleItemIn *item = new ScheduleItemIn(mMessageListView,inc,method,status);
     if(inc->type()!="FreeBusy") {
       Incidence *incidence = static_cast<Incidence *>(inc);
@@ -308,7 +308,7 @@ bool IncomingDialog::incomeCounter(ScheduleItemIn *item)
   eventViewer->addText("<hr>");
   eventViewer->addText(i18n("<b>Original event:</b><p>"));
   if (even) eventViewer->addEvent(even);
-  else eventViewer->addText(i18n("A corresponding event is missing in your calendar!"));
+  else eventViewer->addText(i18n("A corresponding event is missing in your calendar."));
   eventViewer->addText("<hr>");
   eventViewer->addText(i18n("If this counter-event is a good proposal for your event, press 'Accept'. All Attendees will then get the new version of this event"));
   eventViewer->show();
@@ -421,16 +421,16 @@ bool IncomingDialog::incomeRequest(ScheduleItemIn *item)
     freebusy->addAttendee(att);
 
     kdDebug(5850) << "calendarview: schedule_publish_freebusy: startDate: "
-      << KGlobal::locale()->formatDateTime( start ) << " End Date: " 
+      << KGlobal::locale()->formatDateTime( start ) << " End Date: "
       << KGlobal::locale()->formatDateTime( end ) << endl;
-  
+
     if (mOutgoing->addMessage(freebusy,Scheduler::Reply)) {
       delete item;
       emit numMessagesChanged(mMessageListView->childCount());
       delete(freebusy);
       return true;
     }
-    return false;     
+    return false;
   } else {
     return incomeDefault(item);
   }

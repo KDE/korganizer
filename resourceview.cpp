@@ -189,7 +189,7 @@ void ResourceView::removeResource()
 
   if ( rItem->resource() == mManager->standardResource() ) {
     KMessageBox::sorry( this,
-                        i18n( "You cannot remove your standard resource!" ) );
+                        i18n( "You cannot remove your standard resource." ) );
     return;
   }
 

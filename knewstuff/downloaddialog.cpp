@@ -47,14 +47,14 @@
 using namespace KNS;
 
 DownloadDialog::DownloadDialog(Engine *engine, QWidget *)
-: KDialogBase(KDialogBase::IconList, i18n("Get Hot New Stuff!"),
+: KDialogBase(KDialogBase::IconList, i18n("Get Hot New Stuff."),
   KDialogBase::Close, KDialogBase::Close)
 {
   init(engine);
 }
 
 DownloadDialog::DownloadDialog(QWidget *)
-: KDialogBase(KDialogBase::IconList, i18n("Get Hot New Stuff!"),
+: KDialogBase(KDialogBase::IconList, i18n("Get Hot New Stuff."),
   KDialogBase::Close, KDialogBase::Close)
 {
   init(0);
