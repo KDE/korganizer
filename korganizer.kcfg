@@ -153,7 +153,7 @@
     </entry>
 
     <entry type="DateTime" name="DayBegins">
-      <label>Day begins at</label>
+      <label>Day begins at:</label>
       <default>QDateTime(QDate(), QTime(7,0))</default>
     </entry>
 
