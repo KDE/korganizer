@@ -22,8 +22,8 @@ class KOCore {
     KOrg::WidgetDecoration *loadWidgetDecoration(KService::Ptr service);
     KOrg::WidgetDecoration *loadWidgetDecoration(const QString &);
 
-    KOrg::Part *loadPart(KService::Ptr,KCal::Calendar *,QWidget *parent);
-    KOrg::Part *loadPart(const QString &,KCal::Calendar *,QWidget *parent);
+    KOrg::Part *loadPart(KService::Ptr,CalendarView *,QWidget *parent);
+    KOrg::Part *loadPart(const QString &,CalendarView *,QWidget *parent);
 
     KOrg::TextDecoration::List textDecorations();
     KOrg::WidgetDecoration::List widgetDecorations();

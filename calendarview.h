@@ -85,7 +85,9 @@ class CalendarView : public QWidget
     virtual ~CalendarView();
   
     enum { EVENTADDED, EVENTEDITED, EVENTDELETED };
-  
+
+    Calendar *calendar() { return mCalendar; }
+
   signals:
   
     /** when change is made to options dialog, the topwidget will catch this

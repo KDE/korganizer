@@ -10,15 +10,16 @@
 #include <kaction.h>
 
 #include "exportwebdialog.h"
+#include "calendarview.h"
 
 #include "webexport.h"
 #include "webexport.moc"
 
 class WebExportFactory : public KOrg::PartFactory {
   public:
-    KOrg::Part *create(KCal::Calendar *calendar,QObject *parent, const char *name)
+    KOrg::Part *create(CalendarView *view,QObject *parent, const char *name)
     {
-      return new WebExport(calendar,parent,name);
+      return new WebExport(view,parent,name);
     }
 };
 
@@ -30,8 +31,8 @@ extern "C" {
 }
 
 
-WebExport::WebExport(Calendar *calendar,QObject *parent, const char *name) :
-  KOrg::Part(calendar,parent,name)
+WebExport::WebExport(CalendarView *view,QObject *parent, const char *name) :
+  KOrg::Part(view,parent,name)
 {
 //  KInstance * instance = new KInstance( "korganizer_part" );
 //  setInstance( instance );
@@ -53,6 +54,6 @@ QString WebExport::info()
 
 void WebExport::exportWeb()
 {
-  ExportWebDialog *dlg = new ExportWebDialog(calendar());
+  ExportWebDialog *dlg = new ExportWebDialog(view()->calendar());
   dlg->show();
 }

@@ -32,7 +32,7 @@ int main(int argc,char **argv)
   for(it = plugins.begin(); it != plugins.end(); ++it) {
     kdDebug() << "Part: " << (*it)->desktopEntryName() << " ("
               << (*it)->name() << ")" << endl;
-    KOrg::Part *p = KOCore::self()->loadPart(*it);
+    KOrg::Part *p = KOCore::self()->loadPart(*it,0,0);
     if (!p) {
       kdDebug() << "Plugin loading failed." << endl;
     } else {

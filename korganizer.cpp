@@ -477,7 +477,7 @@ void KOrganizer::initActions()
 void KOrganizer::initParts()
 {
   // TODO: get calendar pointer from somewhere
-  KOrg::Part *part = KOCore::self()->loadPart("webexport",0,this);
+  KOrg::Part *part = KOCore::self()->loadPart("webexport",mCalendarView,this);
   createGUI(part);
 }
 

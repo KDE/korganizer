@@ -9,7 +9,7 @@
 class WebExport : public KOrg::Part {
     Q_OBJECT
   public:
-    WebExport(KCal::Calendar *,QObject *, const char *);
+    WebExport(CalendarView *,QObject *, const char *);
     ~WebExport();
     
     QString info();

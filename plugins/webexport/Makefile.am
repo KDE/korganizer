@@ -2,13 +2,13 @@
 
 METASOURCES = AUTO
 
-INCLUDES = -I$(top_srcdir)/korganizer/interfaces -I$(top_srcdir)/libkcal $(all_includes)
+INCLUDES = -I$(top_srcdir)/korganizer/interfaces -I$(top_srcdir)/korganizer -I$(top_srcdir)/libkcal $(all_includes)
 
 kde_module_LTLIBRARIES = libkorg_webexport.la
 
-libkorg_webexport_la_SOURCES = webexport.cpp exportwebdialog.cpp htmlexport.cpp
+libkorg_webexport_la_SOURCES = webexport.cpp
 libkorg_webexport_la_LDFLAGS = -module $(KDE_PLUGIN) $(KDE_RPATH) $(all_libraries) 
-libkorg_webexport_la_LIBADD = $(LIB_KPARTS)
+libkorg_webexport_la_LIBADD = $(top_builddir)/korganizer/libkorganizer.la $(LIB_KPARTS)
 
 noinst_HEADERS = webexport.h
 

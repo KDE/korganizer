@@ -1,4 +1,4 @@
-SUBDIRS = pixmaps sounds plugins interfaces
+SUBDIRS = . pixmaps sounds plugins interfaces
 
 INCLUDES = -I$(top_srcdir)/kgantt/kgantt -I$(top_srcdir)/libkcal \
            -Iinterfaces $(all_includes)
