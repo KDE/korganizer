@@ -500,6 +500,9 @@ void MonthViewCell::addIncidence( Incidence *incidence )
     if ( item ) {
       item->setAlarm( incidence->isAlarmEnabled() );
       item->setRecur( incidence->doesRecur() );
+      // FIXME: Find the correct position (time-wise) to insert the item.
+      //        Currently, the items are displayed in "random" order instead of
+      //        chronologically sorted.
       mItemList->insertItem( item );
     }
   }
