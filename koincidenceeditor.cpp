@@ -28,6 +28,7 @@
 #include <qlayout.h>
 #include <qwidgetstack.h>
 #include <qdatetime.h>
+#include <qwhatsthis.h>
 
 #include <kdebug.h>
 #include <klocale.h>
@@ -59,7 +60,12 @@ KOIncidenceEditor::KOIncidenceEditor( const QString &caption,
   mCalendar = calendar;
 
   setButtonText( Default, i18n("Load &Template...") );
-
+  setButtonWhatsThis( Default, 
+		   i18n("Allows you to load a pre-saved "
+		  	"template for the event. You "
+			"can save this event or to-do as a "
+			"template by clicking 'Save as Template...'.") );
+  
   QString saveTemplateText;
   if ( KOPrefs::instance()->mCompactDialogs ) {
     showButton( User1, false );
@@ -68,6 +74,9 @@ KOIncidenceEditor::KOIncidenceEditor( const QString &caption,
     saveTemplateText = i18n("&Save as Template...");
   }
   setButtonText( User1, saveTemplateText );
+  setButtonWhatsThis( User1,
+		   i18n("Allows you to save the current settings as a template "
+			"which can later be loaded for other events.") );
 
   mCategoryDialog = new KPIM::CategorySelectDialog( KOPrefs::instance(), this );
   KOGlobals::fitDialogToScreen( mCategoryDialog );
@@ -88,6 +97,9 @@ KOIncidenceEditor::~KOIncidenceEditor()
 void KOIncidenceEditor::setupAttendeesTab()
 {
   QFrame *topFrame = addPage( i18n("Atte&ndees") );
+  QWhatsThis::add( topFrame,
+		    i18n("The Attendees tab allows you to Add or Remove "
+			 "Attendees to/from this event or to-do.") );
 
   QBoxLayout *topLayout = new QVBoxLayout( topFrame );
 
@@ -98,6 +110,10 @@ void KOIncidenceEditor::setupAttendeesTab()
 void KOIncidenceEditor::setupAttachmentsTab()
 {
   QFrame *topFrame = addPage( i18n("Attach&ments") );
+  QWhatsThis::add( topFrame,
+		    i18n("The Attachments tab allows you to add or remove "
+		    	 "files, emails, contacts, and other items "
+			 "associated with this event or to-do.") );
 
   QBoxLayout *topLayout = new QVBoxLayout( topFrame );
 

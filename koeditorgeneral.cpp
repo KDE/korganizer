@@ -35,6 +35,7 @@
 #include <qcheckbox.h>
 #include <qpushbutton.h>
 #include <qcombobox.h>
+#include <qwhatsthis.h>
 
 #include <kglobal.h>
 #include <kdebug.h>
@@ -93,22 +94,28 @@ void KOEditorGeneral::initHeader(QWidget *parent,QBoxLayout *topLayout)
   headerLayout->addMultiCellWidget(mOwnerLabel,0,0,0,1);
 #endif
 
+  QString whatsThis = i18n("Sets the Title of this event or to-do.");
   QLabel *summaryLabel = new QLabel(i18n("T&itle:"),parent);
+  QWhatsThis::add( summaryLabel, whatsThis );
   QFont f = summaryLabel->font();
   f.setBold( true );
   summaryLabel->setFont(f);
   headerLayout->addWidget(summaryLabel,1,0);
 
   mSummaryEdit = new FocusLineEdit(parent);
+  QWhatsThis::add( mSummaryEdit, whatsThis );
   connect( mSummaryEdit, SIGNAL( focusReceivedSignal() ),
            SIGNAL( focusReceivedSignal() ) );
   headerLayout->addWidget(mSummaryEdit,1,1);
   summaryLabel->setBuddy( mSummaryEdit );
 
+  whatsThis = i18n("Sets where the event or to-do will take place.");
   QLabel *locationLabel = new QLabel(i18n("&Location:"),parent);
+  QWhatsThis::add( locationLabel, whatsThis );
   headerLayout->addWidget(locationLabel,2,0);
 
   mLocationEdit = new QLineEdit(parent);
+  QWhatsThis::add( mLocationEdit, whatsThis );
   headerLayout->addWidget(mLocationEdit,2,1);
   locationLabel->setBuddy( mLocationEdit );
 }
@@ -117,12 +124,17 @@ void KOEditorGeneral::initCategories(QWidget *parent, QBoxLayout *topLayout)
 {
   QBoxLayout *categoriesLayout = new QHBoxLayout( topLayout );
 
+  QString whatsThis = i18n("Allows you to select the categories that this "
+		  	   "event or to-do belongs to.");
+  
   mCategoriesButton = new QPushButton(parent);
   mCategoriesButton->setText(i18n("Select Cate&gories..."));
+  QWhatsThis::add( mCategoriesButton, whatsThis );
   connect(mCategoriesButton,SIGNAL(clicked()),SIGNAL(openCategoryDialog()));
   categoriesLayout->addWidget(mCategoriesButton);
 
   mCategoriesLabel = new KSqueezedTextLabel(parent);
+  QWhatsThis::add( mCategoriesLabel, whatsThis );
   mCategoriesLabel->setFrameStyle(QFrame::Panel|QFrame::Sunken);
   categoriesLayout->addWidget(mCategoriesLabel,1);
 }
@@ -132,9 +144,18 @@ void KOEditorGeneral::initSecrecy(QWidget *parent, QBoxLayout *topLayout)
   QBoxLayout *secrecyLayout = new QHBoxLayout( topLayout );
 
   QLabel *secrecyLabel = new QLabel(i18n("Acc&ess:"),parent);
+  QString whatsThis = i18n("Sets whether the access to this event or to-do "
+  			   "is restricted. Please note that KOrganizer "
+			   "currently does not use this setting, so the "
+			   "implementation of the restrictions will depend "
+			   "on the groupware server. This means that events "
+			   "or to-dos marked as private or confidential may "
+			   "be visible to others.");
+  QWhatsThis::add( secrecyLabel, whatsThis );
   secrecyLayout->addWidget(secrecyLabel);
 
   mSecrecyCombo = new QComboBox(parent);
+  QWhatsThis::add( mSecrecyCombo, whatsThis );
   mSecrecyCombo->insertStringList(Incidence::secrecyList());
   secrecyLayout->addWidget(mSecrecyCombo);
   secrecyLabel->setBuddy( mSecrecyCombo );
@@ -143,6 +164,11 @@ void KOEditorGeneral::initSecrecy(QWidget *parent, QBoxLayout *topLayout)
 void KOEditorGeneral::initDescription(QWidget *parent,QBoxLayout *topLayout)
 {
   mDescriptionEdit = new KTextEdit(parent);
+  QWhatsThis::add( mDescriptionEdit,
+		   i18n("Sets the description for this event or to-do. This "
+			"will be displayed in a reminder if one is set, "
+			"as well as in a tooltip when you hover over the "
+			"event.") );
   mDescriptionEdit->append("");
   mDescriptionEdit->setReadOnly(false);
   mDescriptionEdit->setOverwriteMode(false);
@@ -160,15 +186,21 @@ void KOEditorGeneral::initAlarm(QWidget *parent,QBoxLayout *topLayout)
   alarmLayout->addWidget(mAlarmBell);
 
   mAlarmButton = new QCheckBox(i18n("&Reminder:"),parent);
+  QWhatsThis::add( mAlarmButton,
+		   i18n("Activates a reminder for this event or to-do.") );
   connect(mAlarmButton, SIGNAL(toggled(bool)), SLOT(enableAlarmEdit(bool)));
   alarmLayout->addWidget(mAlarmButton);
 
+  QString whatsThis = i18n("Sets how long before the event occurs "
+		  	   "the reminder will be triggered.");
   mAlarmTimeEdit = new KRestrictedLine(parent, "alarmTimeEdit",
                   "1234567890");
   mAlarmTimeEdit->setText("");
+  QWhatsThis::add( mAlarmTimeEdit, whatsThis );
   alarmLayout->addWidget(mAlarmTimeEdit);
 
   mAlarmIncrCombo = new QComboBox(false, parent);
+  QWhatsThis::add( mAlarmIncrCombo, whatsThis );
   mAlarmIncrCombo->insertItem(i18n("minute(s)"));
   mAlarmIncrCombo->insertItem(i18n("hour(s)"));
   mAlarmIncrCombo->insertItem(i18n("day(s)"));
@@ -176,6 +208,9 @@ void KOEditorGeneral::initAlarm(QWidget *parent,QBoxLayout *topLayout)
   alarmLayout->addWidget(mAlarmIncrCombo);
 
   mAlarmSoundButton = new QPushButton(parent);
+  QWhatsThis::add( mAlarmSoundButton,
+		   i18n("Sets a sound to play in conjunction with the popup "
+		        "dialog as a reminder.") );
   mAlarmSoundButton->setPixmap(KOGlobals::self()->smallIcon("playsound"));
   mAlarmSoundButton->setToggleButton(true);
   QToolTip::add(mAlarmSoundButton, i18n("No sound set"));
@@ -183,6 +218,9 @@ void KOEditorGeneral::initAlarm(QWidget *parent,QBoxLayout *topLayout)
   alarmLayout->addWidget(mAlarmSoundButton);
 
   mAlarmProgramButton = new QPushButton(parent);
+  QWhatsThis::add( mAlarmProgramButton,
+		   i18n("Sets a program to execute in conjunction with the "
+			"popup dialog.") );
   mAlarmProgramButton->setPixmap(KOGlobals::self()->smallIcon("runprog"));
   mAlarmProgramButton->setToggleButton(true);
   QToolTip::add(mAlarmProgramButton, i18n("No program set"));

@@ -32,6 +32,7 @@
 #include <qcheckbox.h>
 #include <qpushbutton.h>
 #include <qlabel.h>
+#include <qwhatsthis.h>
 
 #include <kglobal.h>
 #include <klocale.h>
@@ -98,12 +99,17 @@ void KOEditorGeneralTodo::initTime(QWidget *parent,QBoxLayout *topLayout)
   timeLayout->addWidget(timeGroupBox);
 
   QFrame *timeBoxFrame = new QFrame(timeGroupBox);
+  QWhatsThis::add( timeBoxFrame,
+		   i18n("Sets options for due and start dates and times "
+		        "for this to-do.") );
 
   QGridLayout *layoutTimeBox = new QGridLayout(timeBoxFrame,1,1);
   layoutTimeBox->setSpacing(topLayout->spacing());
 
 
+  QString whatsThis = i18n("Sets the due date for this to-do.");
   mDueCheck = new QCheckBox(i18n("&Due:"),timeBoxFrame);
+  QWhatsThis::add( mDueCheck, whatsThis );
   layoutTimeBox->addWidget(mDueCheck,0,0);
   connect(mDueCheck,SIGNAL(toggled(bool)),SLOT(enableDueEdit(bool)));
   connect(mDueCheck,SIGNAL(toggled(bool)),SLOT(showAlarm()));
@@ -111,27 +117,38 @@ void KOEditorGeneralTodo::initTime(QWidget *parent,QBoxLayout *topLayout)
   connect(mDueCheck,SIGNAL(toggled(bool)),SLOT(dateChanged()));
 
   mDueDateEdit = new KDateEdit(timeBoxFrame);
+  QWhatsThis::add( mDueDateEdit, whatsThis );
   layoutTimeBox->addWidget(mDueDateEdit,0,1);
   connect(mDueDateEdit,SIGNAL(dateChanged(QDate)),SLOT(dateChanged()));
 
   mDueTimeEdit = new KTimeEdit(timeBoxFrame);
+  QWhatsThis::add( mDueTimeEdit,
+		   i18n("Sets the due time for this to-do.") );
   layoutTimeBox->addWidget(mDueTimeEdit,0,2);
   connect(mDueTimeEdit,SIGNAL(timeChanged( QTime )),SLOT(dateChanged()));
 
+  whatsThis = i18n("Sets the start date for this to-do");
   mStartCheck = new QCheckBox(i18n("Sta&rt:"),timeBoxFrame);
+  QWhatsThis::add( mStartCheck, whatsThis );
   layoutTimeBox->addWidget(mStartCheck,1,0);
   connect(mStartCheck,SIGNAL(toggled(bool)),SLOT(enableStartEdit(bool)));
   connect(mStartCheck,SIGNAL(toggled(bool)),SLOT(startDateModified()));
 
   mStartDateEdit = new KDateEdit(timeBoxFrame);
+  QWhatsThis::add( mStartDateEdit, whatsThis );
   layoutTimeBox->addWidget(mStartDateEdit,1,1);
   connect(mStartDateEdit,SIGNAL(dateChanged(QDate)),SLOT(startDateModified()));
 
   mStartTimeEdit = new KTimeEdit(timeBoxFrame);
+  QWhatsThis::add( mStartTimeEdit,
+		   i18n("Sets the start time for this to-do.") );
   layoutTimeBox->addWidget(mStartTimeEdit,1,2);
   connect(mStartTimeEdit,SIGNAL(timeChanged(QTime)),SLOT(startDateModified()));
 
   mTimeButton = new QCheckBox(i18n("Ti&me associated"),timeBoxFrame);
+  QWhatsThis::add( mTimeButton,
+		   i18n("Sets whether or not this to-do'd start and due dates "
+			"have times associated with them.") );
   layoutTimeBox->addMultiCellWidget(mTimeButton,2,2,0,2);
 
   connect(mTimeButton,SIGNAL(toggled(bool)),SLOT(enableTimeEdits(bool)));
@@ -144,7 +161,10 @@ void KOEditorGeneralTodo::initTime(QWidget *parent,QBoxLayout *topLayout)
 
 void KOEditorGeneralTodo::initCompletion(QWidget *parent, QBoxLayout *topLayout)
 {
+  QString whatsThis = i18n("Sets the current completion status of this to-do "
+		  	   "as a percentage.");
   mCompletedCombo = new QComboBox(parent);
+  QWhatsThis::add( mCompletedCombo, whatsThis );
   for (int i = 0; i <= 100; i+=10) {
     // xgettext:no-c-format
     QString label = i18n("Percent complete", "%1 %").arg (i);
@@ -160,6 +180,12 @@ void KOEditorGeneralTodo::initCompletion(QWidget *parent, QBoxLayout *topLayout)
 
 void KOEditorGeneralTodo::initPriority(QWidget *parent, QBoxLayout *topLayout)
 {
+  QString whatsThis = i18n("Sets the priority of this to-do on a scale "
+  			   "from one to nine, with one being the higest "
+			   "priority, five being the medium priority, and "
+			   "nine being the lowest. In programs that have a "
+			   "different scale, the numbers will be adjusted "
+			   "to match the appropriate scale.");
   QLabel *priorityLabel = new QLabel(i18n("&Priority:"),parent);
   topLayout->addWidget(priorityLabel);
 

@@ -40,6 +40,7 @@
 #include <qpushbutton.h>
 #include <qgroupbox.h>
 #include <qradiobutton.h>
+#include <qwhatsthis.h>
 
 #include <kdebug.h>
 #include <klocale.h>
@@ -186,13 +187,35 @@ KOEditorDetails::KOEditorDetails( int spacing, QWidget *parent,
   // readEvent will delete it and set another label text instead, if the user
   // isn't the organizer.
   // Note that the i18n text below is duplicated in readEvent
+  QString whatsThis = i18n("Sets the identity corresponding to "
+		  	   "the organizer of this to-do or event. "
+			   "Identities can be set in the 'Personal' "
+			   "section of the KOrganizer configuration, or in the "
+			   "'Security & Privacy'->'Password & User Account' "
+			   "section of the KDE Control Center. In addition, "
+			   "identities are gathered from your KMail settings "
+			   "and from your address book. If you choose "
+			   "to set it globally for KDE in the Control Center, "
+			   "be sure to check 'Use email settings from "
+			   "Control Center' in the 'Personal' section of the "
+			   "KOrganizer configuration.");
   mOrganizerLabel = new QLabel( i18n( "Identity as organizer:" ),
                                 mOrganizerHBox );
   mOrganizerCombo = new QComboBox( mOrganizerHBox );
+  QWhatsThis::add( mOrganizerLabel, whatsThis );
+  QWhatsThis::add( mOrganizerCombo, whatsThis );
   fillOrganizerCombo();
   mOrganizerHBox->setStretchFactor( mOrganizerCombo, 100 );
 
   mListView = new KOAttendeeListView( this, "mListView" );
+  QWhatsThis::add( mListView,
+		   i18n("Displays information about current attendees. "
+		   	"To edit an attendee, select it in this list "
+			"and modify the values in the area below. "
+		   	"Clicking on a column title will sort the list "
+			"according to that column. The RSVP column "
+			"indicates whether or not a response is requested "
+			"from the attendee.") );
   mListView->addColumn( i18n("Name"), 200 );
   mListView->addColumn( i18n("Email"), 200 );
   mListView->addColumn( i18n("Role"), 60 );
@@ -210,10 +233,15 @@ KOEditorDetails::KOEditorDetails( int spacing, QWidget *parent,
            SLOT( insertAttendee( Attendee * ) ) );
 #endif
 
+  whatsThis = i18n("Edits the name of the attendee selected in the list "
+  		   "above, or adds a new attendee if there are no attendees"
+		   "in the list.");
   QLabel *attendeeLabel = new QLabel( this );
+  QWhatsThis::add( attendeeLabel, whatsThis );
   attendeeLabel->setText( i18n("Na&me:") );
 
   mNameEdit = new KPIM::AddresseeLineEdit( this );
+  QWhatsThis::add( mNameEdit, whatsThis );
   mNameEdit->setClickMessage( i18n("Click to add a new attendee") );
   attendeeLabel->setBuddy( mNameEdit );
   mNameEdit->installEventFilter( this );
@@ -223,25 +251,37 @@ KOEditorDetails::KOEditorDetails( int spacing, QWidget *parent,
   mUidEdit = new QLineEdit( 0 );
   mUidEdit->setText( "" );
 
+  whatsThis = i18n("Edits the role of the attendee selected "
+  		   "in the list above.");
   QLabel *attendeeRoleLabel = new QLabel( this );
+  QWhatsThis::add( attendeeRoleLabel, whatsThis );
   attendeeRoleLabel->setText( i18n("Ro&le:") );
 
   mRoleCombo = new QComboBox( false, this );
+  QWhatsThis::add( mRoleCombo, whatsThis );
   mRoleCombo->insertStringList( Attendee::roleList() );
   attendeeRoleLabel->setBuddy( mRoleCombo );
   connect( mRoleCombo, SIGNAL( activated( int ) ),
            SLOT( updateAttendeeItem() ) );
 
+  whatsThis = i18n("Edits the current attendance status of the attendee "
+  		   "selected in the list above.");
   QLabel *statusLabel = new QLabel( this );
+  QWhatsThis::add( statusLabel, whatsThis );
   statusLabel->setText( i18n("Stat&us:") );
 
   mStatusCombo = new QComboBox( false, this );
+  QWhatsThis::add( mStatusCombo, whatsThis );
   mStatusCombo->insertStringList( Attendee::statusList() );
   statusLabel->setBuddy( mStatusCombo );
   connect( mStatusCombo, SIGNAL( activated( int ) ),
            SLOT( updateAttendeeItem() ) );
 
   mRsvpButton = new QCheckBox( this );
+  QWhatsThis::add( mRsvpButton,
+		   i18n("Edits whether to send an email to the attendee "
+			"selected in the list above to request "
+			"a response concerning attendance.") );
   mRsvpButton->setText( i18n("Re&quest response") );
   connect( mRsvpButton, SIGNAL( clicked() ), SLOT( updateAttendeeItem() ) );
 
@@ -249,15 +289,29 @@ KOEditorDetails::KOEditorDetails( int spacing, QWidget *parent,
   QVBoxLayout *buttonLayout = new QVBoxLayout( buttonBox );
 
   QPushButton *newButton = new QPushButton( i18n("&New"), buttonBox );
+  QWhatsThis::add( newButton,
+		   i18n("Adds a new attendee to the list. Once the "
+		   	"attendee is added, you will be able to "
+			"edit the attendee's name, role, attendance "
+			"status, and whether or not the attendee is required "
+			"to respond to the invitation. To select an attendee "
+			"from your addressbook, click the 'Select Addressee'"
+			"button instead.") );
   buttonLayout->addWidget( newButton );
   connect( newButton, SIGNAL( clicked() ), SLOT( addNewAttendee() ) );
 
   mRemoveButton = new QPushButton( i18n("&Remove"), buttonBox );
+  QWhatsThis::add( mRemoveButton,
+		   i18n("Removes the attendee selected in "
+		   	"the list above.") );
   buttonLayout->addWidget( mRemoveButton );
   connect( mRemoveButton, SIGNAL( clicked() ), SLOT( removeAttendee() ) );
 
   mAddressBookButton = new QPushButton( i18n("Select Addressee..."),
                                         buttonBox );
+  QWhatsThis::add( mAddressBookButton,
+		   i18n("Opens your address book, allowing you to select "
+			"new attendees from it.") );
   buttonLayout->addWidget( mAddressBookButton );
   connect( mAddressBookButton, SIGNAL( clicked() ), SLOT( openAddressBook() ) );
 

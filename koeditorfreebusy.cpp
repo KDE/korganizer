@@ -27,6 +27,7 @@
 #include <qlabel.h>
 #include <qcombobox.h>
 #include <qpushbutton.h>
+#include <qwhatsthis.h>
 
 #include <kdebug.h>
 #include <klocale.h>
@@ -187,10 +188,19 @@ KOEditorFreeBusy::KOEditorFreeBusy( int spacing, QWidget *parent,
   // The control panel for the gantt widget
   QBoxLayout *controlLayout = new QHBoxLayout( topLayout );
 
+  QString whatsThis = i18n("Sets the zoom level on the Gantt chart. "
+  			   "'Hour' shows a range of several hours, "
+			   "'Day' shows a range of a few days, "
+			   "'Week' shows a range of a few months, "
+			   "and 'Month' shows a range of a few years, "
+			   "while 'Automatic' selects the range most "
+			   "appropriate for the current event or to-do.");
   QLabel *label = new QLabel( i18n( "Scale: " ), this );
+  QWhatsThis::add( label, whatsThis );
   controlLayout->addWidget( label );
 
-  scaleCombo = new QComboBox( this );
+  scaleCombo = new QComboBox( this ); 
+  QWhatsThis::add( scaleCombo, whatsThis );
   scaleCombo->insertItem( i18n( "Hour" ) );
   scaleCombo->insertItem( i18n( "Day" ) );
   scaleCombo->insertItem( i18n( "Week" ) );
@@ -202,26 +212,43 @@ KOEditorFreeBusy::KOEditorFreeBusy( int spacing, QWidget *parent,
   controlLayout->addWidget( scaleCombo );
 
   QPushButton *button = new QPushButton( i18n( "Center on Start" ), this );
+  QWhatsThis::add( button,
+		   i18n("Centers the Gantt chart on the start time "
+		        "and day of this event.") );
   connect( button, SIGNAL( clicked() ), SLOT( slotCenterOnStart() ) );
   controlLayout->addWidget( button );
 
   button = new QPushButton( i18n( "Zoom to Fit" ), this );
+  QWhatsThis::add( button,
+		   i18n("Zooms the Gantt chart so that you can see the "
+			"entire duration of the event on it.") );
   connect( button, SIGNAL( clicked() ), SLOT( slotZoomToTime() ) );
   controlLayout->addWidget( button );
 
   controlLayout->addStretch( 1 );
 
   button = new QPushButton( i18n( "Pick Date" ), this );
+  QWhatsThis::add( button,
+		   i18n("Moves the event to a date and time when all the "
+			"attendees are free.") );
   connect( button, SIGNAL( clicked() ), SLOT( slotPickDate() ) );
   controlLayout->addWidget( button );
 
   controlLayout->addStretch( 1 );
 
   button = new QPushButton( i18n("Reload"), this );
+  QWhatsThis::add( button,
+		   i18n("Reloads Free/Busy data for all attendees from "
+		   	"the corresponding servers.") );
   controlLayout->addWidget( button );
   connect( button, SIGNAL( clicked() ), SLOT( reload() ) );
 
   mGanttView = new KDGanttView( this, "mGanttView" );
+  QWhatsThis::add( mGanttView,
+		   i18n("Shows the free/busy status of all attendees. "
+		   	"Double-clicking on an attendees entry in the "
+			"list will allow you to enter the location of their "
+			"Free/Busy Information.") );
   topLayout->addWidget( mGanttView );
   // Remove the predefined "Task Name" column
   mGanttView->removeColumn( 0 );
@@ -439,7 +466,7 @@ void KOEditorFreeBusy::slotPickDate()
   if( success ) {
     if ( start == mDtStart && end == mDtEnd ) {
       KMessageBox::information( this,
-          i18n( "The meeting has already suitable start/end times." ),
+          i18n( "The meeting already has suitable start/end times." ),
           "MeetinTimeOKFreeBusy" );
     } else {
       emit dateTimesChanged( start, end );
