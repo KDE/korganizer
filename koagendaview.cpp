@@ -248,6 +248,55 @@ void EventIndicator::enableColumn(int column, bool enable)
 }
 
 
+
+
+////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
+
+
+KOAlternateLabel::KOAlternateLabel(QString shortlabel, QString longlabel,
+    QWidget *parent, const char *name )
+  : QLabel(parent, name), fullText(longlabel), shortText(shortlabel)
+{
+  setSizePolicy(QSizePolicy( QSizePolicy::Expanding, QSizePolicy::Fixed ));
+  squeezeTextToLabel();
+}
+
+KOAlternateLabel::~KOAlternateLabel() {}
+
+void KOAlternateLabel::squeezeTextToLabel() {
+  QFontMetrics fm(fontMetrics());
+  int labelWidth = size().width();
+  int textWidth = fm.width(fullText);
+  if (textWidth > labelWidth) {
+    QLabel::setText( shortText );
+    QToolTip::remove( this );
+    QToolTip::add( this, fullText );
+  } else {
+    QLabel::setText( fullText );
+    QToolTip::remove( this );
+    QToolTip::hide();
+  }
+}
+
+void KOAlternateLabel::resizeEvent( QResizeEvent * ) {
+  squeezeTextToLabel();
+}
+
+QSize KOAlternateLabel::minimumSizeHint() const
+{
+  QSize sh = QLabel::minimumSizeHint();
+  sh.setWidth(-1);
+  return sh;
+}
+
+void KOAlternateLabel::setText( const QString &text ) {
+  fullText = text;
+  squeezeTextToLabel();
+}
+
+
 ////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////
@@ -439,19 +488,24 @@ void KOAgendaView::createDayLabels()
   mLayoutDayLabels = new QHBoxLayout(mDayLabels);
   mLayoutDayLabels->addSpacing(mTimeLabels->width());
 
+  const KCalendarSystem*calsys=KOGlobals::self()->calendarSystem();
+
   DateList::ConstIterator dit;
   for( dit = mSelectedDates.begin(); dit != mSelectedDates.end(); ++dit ) {
     QDate date = *dit;
     QBoxLayout *dayLayout = new QVBoxLayout(mLayoutDayLabels);
+    mLayoutDayLabels->setStretchFactor(dayLayout, 1);
+//    dayLayout->setMinimumWidth(1);
 
-    QLabel *dayLabel = new QLabel(mDayLabels);
+    int dW = calsys->dayOfWeek(date);
+    QString longstr = i18n( "short_weekday date (e.g. Mon 13)","%1 %2" )
+        .arg( calsys->weekDayName( dW, true ) )
+        .arg( calsys->day(date) );
+    QString shortstr = QString::number(calsys->day(date));
 
-    int dW = KOGlobals::self()->calendarSystem()->dayOfWeek(date);
-    QString str = i18n( "short_weekday date (e.g. Mon 13)","%1 %2" )
-        .arg( KOGlobals::self()->calendarSystem()->weekDayName( dW, true ) )
-        .arg( KOGlobals::self()->calendarSystem()->day(date) );
-
-    dayLabel->setText(str);
+    KOAlternateLabel *dayLabel = new KOAlternateLabel(shortstr,
+      longstr, mDayLabels);
+    dayLabel->setMinimumWidth(1);
     dayLabel->setAlignment(QLabel::AlignHCenter);
     if (date == QDate::currentDate()) {
       QFont font = dayLabel->font();
@@ -466,7 +520,9 @@ void KOAgendaView::createDayLabels()
     for(it = cds.first(); it; it = cds.next()) {
       QString text = it->shortText( date );
       if ( !text.isEmpty() ) {
-        QLabel *label = new QLabel(text,mDayLabels);
+//        KSqueezedTextLabel *label = new KSqueezedTextLabel(text,mDayLabels);
+        QLabel*label = new QLabel(text, mDayLabels);
+        label->setMinimumWidth(1);
         label->setAlignment(AlignCenter);
         dayLayout->addWidget(label);
       }

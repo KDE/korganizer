@@ -28,6 +28,7 @@
 #include <qlayout.h>
 #include <qsplitter.h>
 #include <qmemarray.h>
+#include <qlabel.h>
 
 #include "koeventview.h"
 
@@ -97,6 +98,23 @@ class EventIndicator : public QFrame {
     QMemArray<bool> mEnabled;
 };
 
+class KOAlternateLabel : public QLabel {
+  Q_OBJECT
+public:
+  KOAlternateLabel(QString shortlabel, QString longlabel, QWidget *parent=0, const char *name=0 );
+  ~KOAlternateLabel();
+
+  virtual QSize minimumSizeHint() const;
+
+public slots:
+  void setText( const QString & );
+
+protected:
+  virtual void resizeEvent( QResizeEvent * );
+  virtual void squeezeTextToLabel();
+  QString fullText, shortText;
+};
+
 /**
   KOAgendaView is the agenda-like view used to display events in an one or
   multi-day view.
@@ -115,7 +133,7 @@ class KOAgendaView : public KOEventView {
 
     /** returns the currently selected events */
     virtual Incidence::List selectedIncidences();
-    
+
     /** returns the currently selected events */
     virtual DateList selectedDates();
 
@@ -124,10 +142,10 @@ class KOAgendaView : public KOEventView {
 
     virtual void printPreview(CalPrinter *calPrinter,
                               const QDate &, const QDate &);
-                              
-    /** start-datetime of selection */                          
+
+    /** start-datetime of selection */
     QDateTime selectionStart() {return mTimeSpanBegin;}
-    /** end-datetime of selection */                          
+    /** end-datetime of selection */
     QDateTime selectionEnd() {return mTimeSpanEnd;}
     /** returns true if selection is for whole day */
     bool selectedIsAllDay() {return mTimeSpanInAllDay;}
@@ -184,10 +202,10 @@ class KOAgendaView : public KOEventView {
 
     void updateEventIndicatorTop(int newY);
     void updateEventIndicatorBottom(int newY);
-    
-    /** Updates data for selected timespan */    
+
+    /** Updates data for selected timespan */
     void newTimeSpanSelected(int gxStart, int gyStart, int gxEnd, int gyEnd);
-    /** Updates data for selected timespan for all day event*/    
+    /** Updates data for selected timespan for all day event*/
     void newTimeSpanSelectedAllDay(int gxStart, int gyStart, int gxEnd, int gyEnd);
 
   private:
@@ -219,10 +237,10 @@ class KOAgendaView : public KOEventView {
     QMemArray<int> mMaxY;
 
     QMemArray<bool> mHolidayMask;
-    
+
     QPixmap mExpandedPixmap;
     QPixmap mNotExpandedPixmap;
-    
+
     QDateTime mTimeSpanBegin;
     QDateTime mTimeSpanEnd;
     bool mTimeSpanInAllDay;
