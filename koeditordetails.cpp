@@ -69,13 +69,13 @@
 #include "kocore.h"
 
 template <>
-CustomListViewItem<class Attendee *>::~CustomListViewItem()
+CustomListViewItem<KCal::Attendee *>::~CustomListViewItem()
 {
   delete mData;
 }
 
 template <>
-void CustomListViewItem<class Attendee *>::updateItem()
+void CustomListViewItem<KCal::Attendee *>::updateItem()
 {
   setText(0,mData->name());
   setText(1,mData->email());
