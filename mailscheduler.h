@@ -44,11 +44,10 @@ class MailScheduler : public IMIPScheduler {
     bool performTransaction(Event *incidence,Method method);
     QPtrList<ScheduleMessage> retrieveTransactions();
 
-  protected:
     bool deleteTransaction(Incidence *incidence);
 
   private:
-    QMap<QString, QString> mEventMap;
+    QMap<Incidence*, QString> mEventMap;
 };
 
 }

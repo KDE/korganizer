@@ -52,7 +52,7 @@ libkorganizer_la_SOURCES =  outgoingdialog_base.ui \
         kowhatsnextview.cpp \
         kojournalview.cpp journalentry.cpp \
         kocore.cpp plugindialog.cpp mailscheduler.cpp \
-        docprefs.cpp \
+        docprefs.cpp statusdialog.cpp\
         kotimespanview.cpp timespanview.cpp lineview.cpp timeline.cpp
 
 METASOURCES = AUTO
@@ -75,7 +75,7 @@ noinst_HEADERS = komonthview.h \
         koeditorgeneralevent.h koeditorgeneraltodo.h koeditordetails.h \
         koeditorrecurrence.h koeventviewerdialog.h koeventpopupmenu.h \
         outgoingdialog.h incomingdialog.h publishdialog.h \
-        koeventview.h
+        koeventview.h statusdialog.h
 
 tip_DATA = tips
 tipdir = $(kde_datadir)/korganizer

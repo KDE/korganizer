@@ -73,6 +73,8 @@
 #include "calendarview.h"
 #include "calendarview.moc"
 
+#include "statusdialog.h"
+
 bool CreateEditorVisitor::visit(Event *)
 {
   return false;
@@ -925,7 +927,10 @@ void CalendarView::schedule_publish()
   }
   if ( publishdlg->exec() == QDialog::Accepted ) {
     OutgoingDialog *dlg = mDialogManager->outgoingDialog();
-    dlg->addMessage(event,Scheduler::Publish,publishdlg->addresses());
+    Event *ev = new Event(*event);
+    if (!dlg->addMessage(ev,Scheduler::Publish,publishdlg->addresses())) {
+      delete(ev);
+    }
   }
   delete publishdlg;
 }
@@ -965,6 +970,22 @@ void CalendarView::schedule_declinecounter()
   schedule(Scheduler::Declinecounter);
 }
 
+/*Attendee* CalendarView::getYourAttendee(Event *event)
+{
+  QPtrList<Attendee> attendees = event->attendees();
+  Attendee *me = 0;
+  attendees.first();
+  while ( attendees.current()!=0 ) {
+    if (attendees.current()->email() == KOPrefs::instance()->email()) {
+      me = attendees.current();
+      attendees.last();
+    }
+    attendees.next();
+  }
+ return me;
+}
+*/
+
 void CalendarView::schedule(Scheduler::Method method)
 {
   Event *event = 0;
@@ -977,8 +998,29 @@ void CalendarView::schedule(Scheduler::Method method)
     KMessageBox::sorry(this,i18n("No event selected."));
     return;
   }
+
+  Event *ev = new Event(*event);
+
+  if (method == Scheduler::Reply ) {
+    Attendee *me = event->attendeeByMail(KOPrefs::instance()->email());
+    if (!me) {
+      KMessageBox::sorry(this,i18n("Could not find your attendee entry. Please check the emails."));
+      return;
+    }
+    if (me->status()==Attendee::NeedsAction) {
+      StatusDialog *statdlg = new StatusDialog(this);
+      if (!statdlg->exec()==QDialog::Accepted) return;
+      me->setStatus( statdlg->status() );//Attendee::Accepted  );
+      delete(statdlg);
+      me->setRSVP(false);
+    }
+    Attendee *menew = new Attendee(*me);
+    ev->clearAttendees();
+    ev->addAttendee(menew);
+  }
+
   OutgoingDialog *dlg = mDialogManager->outgoingDialog();
-  dlg->addMessage(event,method);
+  if ( !dlg->addMessage(ev,method) ) delete(ev);
 }
 
 void CalendarView::setModified(bool modified)

@@ -363,6 +363,8 @@ class CalendarView : public KOrg::CalendarViewBase
      * current view.
      */
     void adaptNavigationUnits();
+    
+    //Attendee* getYourAttendee(Event *event);
   
   protected:
     void schedule(Scheduler::Method);
@@ -375,30 +377,30 @@ class CalendarView : public KOrg::CalendarViewBase
   
   private:
     void createPrinter();
-  
+
     CalPrinter *mCalPrinter;
-  
+
     QSplitter    *mPanner;
     QSplitter    *mLeftFrame;
     QWidgetStack *mRightFrame;
-  
+
     KDateNavigator *mDateNavigator;       // widget showing small month view.
-    
+
     KOFilterView *mFilterView;
-    
+
     // calendar object for this viewing instance
     Calendar      *mCalendar;
 
     KOViewManager *mViewManager;
     KODialogManager *mDialogManager;
-  
+
     // Calendar filters
     QPtrList<CalFilter> mFilters;
-  
+
     // various housekeeping variables.
     bool            mModified;	   // flag indicating if calendar is modified
     bool            mReadOnly; // flag indicating if calendar is read-only
-    QDate mSaveSingleDate;                
+    QDate mSaveSingleDate;
     int mEventsSelected;
 
     KOTodoView *mTodoList;

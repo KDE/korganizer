@@ -129,6 +129,7 @@ bool OutgoingDialog::addMessage(Event *incidence,Scheduler::Method method,
 
 void OutgoingDialog::send()
 {
+  kdDebug() << "OutgoingDialog::send" << endl;
   ScheduleItemOut *item = (ScheduleItemOut *)(mMessageListView->firstChild());
   while(item) {
     bool success;
@@ -139,7 +140,10 @@ void OutgoingDialog::send()
     }
     ScheduleItemOut *oldItem = item;
     item = (ScheduleItemOut *)(item->nextSibling());
-    if (success) delete oldItem;
+    if (success) {
+      delete (oldItem->event());
+      delete oldItem;
+    }
   }
 
   emit numMessagesChanged(mMessageListView->childCount());
@@ -148,6 +152,7 @@ void OutgoingDialog::send()
 void OutgoingDialog::deleteItem()
 {
   ScheduleItemOut *item = (ScheduleItemOut *)(mMessageListView->selectedItem());
+  delete(item->event());
   mMessageListView->takeItem(item);
   emit numMessagesChanged(mMessageListView->childCount());
 }

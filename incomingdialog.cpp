@@ -20,7 +20,8 @@
 // $Id$
 
 #include <qlistview.h>
-//#include <qdatetime.h>
+#include <qfile.h>
+#include <qmap.h>
 
 #include <kglobal.h>
 #include <klocale.h>
@@ -144,8 +145,8 @@ void IncomingDialog::retrieve()
               << "  method: " << Scheduler::methodName(method) << endl;
     ScheduleItemIn *item = new ScheduleItemIn(mMessageListView,event,method,status);
     ScheduleItemVisitor v(item);
-    if (event->accept(v)) return;
-    else delete item;
+    if (!event->accept(v)) delete item;
+
   }
   emit numMessagesChanged(mMessageListView->childCount());
 }
@@ -174,7 +175,7 @@ void IncomingDialog::acceptMessage()
 
 bool IncomingDialog::acceptMessage(ScheduleItemIn *item)
 {
-  if (mScheduler->acceptTransaction(item->event(),item->status())) {
+  if (mScheduler->acceptTransaction(item->event(),item->method(),item->status())) {
     delete item;
     emit numMessagesChanged(mMessageListView->childCount());
     return true;
@@ -188,6 +189,7 @@ void IncomingDialog::rejectMessage()
 {
   ScheduleItemIn *item = (ScheduleItemIn *)mMessageListView->selectedItem();
   if (item) {
+    mScheduler->deleteTransaction(item->event());
     delete item;
     emit numMessagesChanged(mMessageListView->childCount());
   }

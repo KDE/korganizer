@@ -68,7 +68,8 @@ bool KOMailClient::mailAttendees(Incidence *incidence,const QString &attachment)
   return send(from,to,subject,body,bcc,attachment);
 }
 
-bool KOMailClient::mailTo(Incidence *incidence,const QString recipients,const QString &attachment=QString::null)
+bool KOMailClient::mailTo(Incidence *incidence,const QString recipients,
+                          const QString &attachment)
 {
   QString from = KOPrefs::instance()->email();
   QString subject = incidence->summary();

@@ -77,7 +77,14 @@ QPtrList<ScheduleMessage> MailScheduler::retrieveTransactions()
   QStringList::ConstIterator it;
   for(it = incoming.begin(); it != incoming.end(); ++it) {
     kdDebug() << "-- File: " << (*it) << endl;
+
     QFile f(incomingDirName + "/" + (*it));
+    bool inserted = false;
+    QMap<Incidence*, QString>::Iterator iter;
+    for ( iter = mEventMap.begin(); iter != mEventMap.end(); ++iter ) {
+      if (iter.data() == incomingDirName + "/" + (*it)) inserted = true;
+    }
+    if (!inserted) {
     if (!f.open(IO_ReadOnly)) {
       kdDebug() << "MailScheduler::retrieveTransactions(): Can't open file'"
                 << (*it) << "'" << endl;
@@ -89,7 +96,7 @@ QPtrList<ScheduleMessage> MailScheduler::retrieveTransactions()
         kdDebug() << "MailScheduler::retrieveTransactions: got message '"
                   << (*it) << "'" << endl;
         messageList.append(message);
-        mEventMap[message->event()->VUID()] = incomingDirName + "/" + (*it);
+        mEventMap[message->event()]=incomingDirName + "/" + (*it);
       } else {
         QString errorMessage;
         if (mFormat->exception()) {
@@ -100,14 +107,16 @@ QPtrList<ScheduleMessage> MailScheduler::retrieveTransactions()
       }
       f.close();
     }
+    }
   }
   return messageList;
 }
 
 bool MailScheduler::deleteTransaction(Incidence *incidence)
 {
-  QFile f( mEventMap[incidence->VUID()] );
+  QFile f( mEventMap[incidence] );
+  mEventMap.remove(incidence);
   if ( !f.exists() ) return false;
-  else 
+  else
     return f.remove();
 }
