@@ -1,12 +1,12 @@
 :
 : Romanian holiday file. Copy to ~/.holiday
 :
-: Author: Claudiu Costin <claudiuc@ADComm.pub.ro>
+: Author: Claudiu Costin <claudiuc@kde.org>
 :
-small	"Anul nou"		on 1.1.
+small	  "Anul nou"		on 1.1.
 small   "Sãrbãtoarea unirii"    on 24.1
 small   "Ziua mamei"            on 8.3
-small	"Ziua copilluui"        on 1.6
+small	  "Ziua copilului"        on 1.6
 small   "Ziua naþionalã"        on 30.12
 small   "Ziua Revoluþiei"       on 22.12
 red     "Crãciunul"             weekend on 25.12
@@ -16,6 +16,6 @@ small   "Ziua muncii"           on 1.5
 : relativ la Paºte
 small   "Floriile"              on easter minus 6 days
 red     "Paºtele"               weekend on easter
-small   "Înãlþarea Domnului"    on easter plus 40 zile
+small   "Înãlþarea Domnului"    on easter plus 40 days
 small   "Rusalii"               on easter plus 49 days
 
