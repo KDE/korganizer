@@ -293,6 +293,8 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     void todoChanged( Todo *oldTodo, Todo *newTodo );
     void todoDeleted( Todo * );
 
+    void editCanceled( Incidence * );
+
     void updateView( const QDate &start, const QDate &end );
     void updateView();
 
@@ -442,6 +444,8 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     int msgItemDelete();
 
     Todo *selectedTodo();
+
+    void warningChangeFailed( Incidence * );
 
   private:
     void init();

@@ -69,6 +69,7 @@ class KOTodoEditor : public KOIncidenceEditor
     /** Process user input and create or update event. Returns false if input
      * is not valid */
     bool processInput();
+    void processCancel();
 
     /** This todo has been modified externally */
     void modified (int);

@@ -591,6 +591,7 @@ void CalendarView::incidenceChanged( Incidence *oldIncidence, Incidence *newInci
 {
   setModified( true );
   mHistory->recordEdit( oldIncidence, newIncidence );
+  mCalendar->endChange( newIncidence );
 }
 
 void CalendarView::incidenceDeleted( Incidence *incidence )
@@ -917,6 +918,11 @@ void CalendarView::editEvent( Event *event )
     return;
   }
 
+  if ( !mCalendar->beginChange( event ) ) {
+    warningChangeFailed( event );
+    return;
+  }
+
   kdDebug(5850) << "CalendarView::editEvent() new EventEditor" << endl;
   KOEventEditor *eventEditor = mDialogManager->getEventEditor();
   mDialogList.insert( event, eventEditor );
@@ -939,6 +945,11 @@ void CalendarView::editTodo( Todo *todo )
 
   if ( todo->isReadOnly() ) {
     showTodo( todo );
+    return;
+  }
+
+  if ( !mCalendar->beginChange( todo ) ) {
+    warningChangeFailed( todo );
     return;
   }
 
@@ -1863,6 +1874,17 @@ void CalendarView::importQtopia( const QString &categories,
   if ( !datebook.isEmpty() ) qtopiaFormat.load( mCalendar, datebook );
   if ( !todolist.isEmpty() ) qtopiaFormat.load( mCalendar, todolist );
   updateView();
+}
+
+void CalendarView::warningChangeFailed( Incidence * )
+{
+  KMessageBox::sorry( this, i18n("Unable to edit incidence. "
+                                 "It's locked by another process.") );
+}
+
+void CalendarView::editCanceled( Incidence *i )
+{
+  mCalendar->endChange( i );
 }
 
 #include "calendarview.moc"

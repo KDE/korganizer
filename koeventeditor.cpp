@@ -230,6 +230,15 @@ bool KOEventEditor::processInput()
   return true;
 }
 
+void KOEventEditor::processCancel()
+{
+  kdDebug() << "KOEventEditor::processCancel()" << endl;
+
+  if ( mEvent ) {
+    emit editCanceled( mEvent );
+  }
+}
+
 void KOEventEditor::deleteEvent()
 {
   kdDebug(5850) << "Delete event" << endl;

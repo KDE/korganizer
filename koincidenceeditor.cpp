@@ -117,6 +117,7 @@ void KOIncidenceEditor::updateCategoryConfig()
 
 void KOIncidenceEditor::slotCancel()
 {
+  processCancel();
   reject();
 }
 

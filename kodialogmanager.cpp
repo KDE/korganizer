@@ -255,6 +255,8 @@ KOEventEditor *KODialogManager::getEventEditor()
            mMainView, SLOT( eventDeleted( Event * ) ) );
   connect( eventEditor, SIGNAL( deleteAttendee( Incidence * ) ),
            mMainView, SLOT( schedule_cancel( Incidence * ) ) );
+  connect( eventEditor, SIGNAL( editCanceled( Incidence * ) ),
+           mMainView, SLOT( editCanceled( Incidence * ) ) );
 
   connect( mCategoryEditDialog, SIGNAL( categoryConfigChanged() ),
            eventEditor, SLOT( updateCategoryConfig() ) );
@@ -296,6 +298,8 @@ KOTodoEditor *KODialogManager::getTodoEditor()
            mMainView, SLOT( updateTodoViews() ) );
   connect( todoEditor, SIGNAL( dialogClose( Incidence * ) ),
            mMainView, SLOT( dialogClosing( Incidence * ) ) );
+  connect( todoEditor, SIGNAL( editCanceled( Incidence * ) ),
+           mMainView, SLOT( editCanceled( Incidence * ) ) );
 
   connect( mMainView, SIGNAL( closingDown() ), todoEditor, SLOT( reject() ) );
 

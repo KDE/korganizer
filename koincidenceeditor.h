@@ -64,6 +64,7 @@ class KOIncidenceEditor : public KDialogBase
   signals:
     void editCategories();
     void dialogClose( Incidence * );
+    void editCanceled( Incidence * );
 
   protected slots:
     void slotApply();
@@ -89,6 +90,8 @@ class KOIncidenceEditor : public KDialogBase
       Process user input and create or update event. Returns false if input is invalid.
     */
     virtual bool processInput() { return false; }
+
+    virtual void processCancel() {}
 
     Calendar *mCalendar;
 

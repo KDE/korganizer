@@ -172,6 +172,13 @@ bool KOTodoEditor::processInput()
   return true;
 }
 
+void KOTodoEditor::processCancel()
+{
+  if ( mTodo ) {
+    emit editCanceled( mTodo );
+  }
+}
+
 void KOTodoEditor::deleteTodo()
 {
   if (mTodo) {
