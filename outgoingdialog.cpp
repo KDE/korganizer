@@ -110,6 +110,8 @@ OutgoingDialog::OutgoingDialog(Calendar *calendar,QWidget* parent,
 {
   mCalendar = calendar;
 
+  mFormat = new ICalFormat;
+
   if (KOPrefs::instance()->mIMIPScheduler == KOPrefs::IMIPDummy ) {
     kdDebug() << "--- Dummy" << endl;
     mScheduler = new DummyScheduler(mCalendar);
@@ -132,6 +134,7 @@ OutgoingDialog::OutgoingDialog(Calendar *calendar,QWidget* parent,
 
 OutgoingDialog::~OutgoingDialog()
 {
+  delete mFormat;
 }
 
 bool OutgoingDialog::addMessage(IncidenceBase *incidence,Scheduler::Method method)
@@ -249,7 +252,6 @@ void OutgoingDialog::showEvent(QListViewItem *qitem)
 bool OutgoingDialog::saveMessage(IncidenceBase *incidence,Scheduler::Method method,
           const QString &recipients)
 {
-  ICalFormat *mFormat = mCalendar->iCalFormat();
   KTempFile ktfile(locateLocal("data","korganizer/outgoing/"),"ics");
   QString messageText = mFormat->createScheduleMessage(incidence,method);
   QTextStream *qts = ktfile.textStream();
@@ -272,7 +274,6 @@ bool OutgoingDialog::deleteMessage(IncidenceBase *incidence)
 
 void OutgoingDialog::loadMessages()
 {
-  ICalFormat *mFormat = mCalendar->iCalFormat();
   Scheduler::Method method;
   QString recipients;
 

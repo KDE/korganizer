@@ -39,6 +39,7 @@
 
 #include <libkcal/calendarlocal.h>
 #include <libkcal/filestorage.h>
+#include <libkcal/calformat.h>
 
 #include "kalarmd/alarmdaemoniface_stub.h"
 

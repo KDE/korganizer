@@ -75,7 +75,9 @@ class OutgoingDialog : public OutgoingDialog_base
   private:
     bool saveMessage(IncidenceBase *,Scheduler::Method,const QString &recipients=0);
     bool deleteMessage(IncidenceBase *);
+
     Calendar *mCalendar;
+    ICalFormat *mFormat;
     Scheduler *mScheduler;
     QMap<IncidenceBase*, QString> mMessageMap;
 };
