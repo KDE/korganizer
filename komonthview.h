@@ -52,6 +52,10 @@ class KNoScrollListBox: public QListBox
     void keyPressEvent(QKeyEvent *);
     void keyReleaseEvent(QKeyEvent *);
     void mousePressEvent(QMouseEvent *);
+    void resizeEvent(QResizeEvent *);
+
+   private:
+    bool mSqueezing;
 };
 
 
@@ -122,7 +126,7 @@ class MonthViewCell : public QWidget
   signals:
     void defaultAction( Incidence * );
     void newEventSignal( QDateTime );
-    
+
   protected:
     void resizeEvent( QResizeEvent * );
 
@@ -131,22 +135,22 @@ class MonthViewCell : public QWidget
     void contextMenu( QListBoxItem * );
     void selection( QListBoxItem * );
     void cellClicked( QListBoxItem * );
-    
+
   private:
     KOMonthView *mMonthView;
-  
+
     QDate mDate;
     bool mPrimary;
     bool mHoliday;
     QString mHolidayString;
-    
+
     QLabel *mLabel;
     QListBox *mItemList;
-    
+
     QSize mLabelSize;
     QPalette mHolidayPalette;
     QPalette mStandardPalette;
-    
+
 };
 
 

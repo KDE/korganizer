@@ -48,7 +48,8 @@
 #include "komonthview.moc"
 
 KNoScrollListBox::KNoScrollListBox(QWidget *parent,const char *name)
-  : QListBox(parent, name)
+  : QListBox(parent, name),
+    mSqueezing(false)
 {
 }
 
@@ -110,6 +111,15 @@ void KNoScrollListBox::mousePressEvent(QMouseEvent *e)
   }
 }
 
+void KNoScrollListBox::resizeEvent(QResizeEvent *e)
+{
+  bool s = count() && ( maxItemWidth() > e->size().width() );
+  if (mSqueezing || s)
+    triggerUpdate(false);
+
+  mSqueezing = s;
+  QListBox::resizeEvent(e);
+}
 
 MonthViewItem::MonthViewItem( Incidence *incidence, QDate qd, const QString & s)
   : QListBoxItem()
@@ -128,18 +138,25 @@ MonthViewItem::MonthViewItem( Incidence *incidence, QDate qd, const QString & s)
   mReply = false;
 }
 
+static QColor mixColors(double p1, QColor c1, QColor c2) {
+  return QColor(int(c1.red() * p1 + c2.red() * (1.0-p1)),
+                int(c1.green() * p1 + c2.green() * (1.0-p1)),
+		int(c1.blue() * p1 + c2.blue() * (1.0-p1)));
+}
+
 void MonthViewItem::paint(QPainter *p)
 {
 #if QT_VERSION >= 0x030000
   bool sel = isSelected();
 #else
   bool sel = selected();
-#endif    
-  
+#endif
+
+  QColor bgColor = palette().color( QPalette::Normal,  \
+	    sel ? QColorGroup::Highlight : QColorGroup::Background );
   if (KOPrefs::instance()->mMonthViewUsesCategoryColor)
   {
-    p->setBackgroundColor( palette().color( QPalette::Normal,  \
-	    sel ? QColorGroup::Highlight : QColorGroup::Background ) );
+    p->setBackgroundColor( bgColor );
     p->eraseRect( 0, 0, listBox()->maxItemWidth(), height( listBox() ) );
   }
   int x = 3;
@@ -163,9 +180,45 @@ void MonthViewItem::paint(QPainter *p)
     yPos = fm.ascent() + fm.leading()/2;
   else
     yPos = pmheight/2 - fm.height()/2  + fm.ascent();
-  p->setPen( palette().color( QPalette::Normal, sel ? \
-	  QColorGroup::HighlightedText : QColorGroup::Foreground ) );
-  p->drawText( x, yPos, text() );
+  QColor textColor = palette().color( QPalette::Normal, sel ? \
+	  QColorGroup::HighlightedText : QColorGroup::Foreground );
+  p->setPen( textColor );
+
+  // try to fade out the text if it does not fit
+  QString t = text();
+  int maxW = listBox()->width() - x;
+  if ( ( fm.boundingRect( t ).width() > maxW ) && ( t.length() > 1 ) ) {
+    int wt;
+    int maxIterations = 25; // safety, usually needs <5, worst case <12
+    int offset = 1;
+    while ( maxIterations-- &&
+            ( ( wt = fm.boundingRect( t ).width() ) > maxW ) ) {
+      int approxW = ( t.length() * maxW / wt ) + offset;
+      if ( ( approxW < (int) t.length() ) &&
+           ( fm.boundingRect( t.left( approxW ) ).width() > maxW ) ) {
+        t = t.left( approxW );
+	offset = ( offset > 1 ) ? ( offset / 2) : 1;
+      }
+      else {
+	t = t.left( t.length() - 1 );
+	offset = ( approxW >= (int) t.length() ) ? 1 : (offset * 2);
+      }
+    }
+
+    if (t.length() > 3) {
+      p->drawText( x, yPos, t.left( t.length() - 3 ) );
+      x += fm.width( t.left( t.length() - 3 ) );
+    }
+    int n = QMIN( t.length(), 3);
+    for (int i = 0; i < n; i++) {
+      p->setPen( mixColors( 0.70 - i * 0.25, textColor, bgColor ) );
+      QString s( t.at( t.length() - n + i) );
+      p->drawText( x, yPos, s );
+      x += fm.width( s );
+    }
+  }
+  else
+    p->drawText( x, yPos, t );
 }
 
 int MonthViewItem::height(const QListBox *lb) const
@@ -187,7 +240,7 @@ int MonthViewItem::width(const QListBox *lb) const
     x += mReplyPixmap.width()+2;
   }
 
-  return( x + lb->fontMetrics().width( text() ) + 1 );
+  return( x + lb->fontMetrics().boundingRect( text() ).width() + 1 );
 }
 
 
@@ -304,7 +357,7 @@ void MonthViewCell::updateCell()
     item->setPalette( mHolidayPalette );
     mItemList->insertItem( item );
   }
-  
+
   QPtrList<Event> events = mMonthView->calendar()->events( mDate, true );
   Event *event;
   for( event = events.first(); event; event = events.next() ) {
@@ -329,7 +382,7 @@ void MonthViewCell::updateCell()
     }
 
     MonthViewItem *item = new MonthViewItem( event, mDate, text );
-    if (KOPrefs::instance()->mMonthViewUsesCategoryColor) {    
+    if (KOPrefs::instance()->mMonthViewUsesCategoryColor) {
       QStringList categories = event->categories();
       QString cat = categories.first();
       if (cat.isEmpty()) {
@@ -408,12 +461,12 @@ Incidence *MonthViewCell::selectedIncidence()
 {
   int index = mItemList->currentItem();
   if ( index < 0 ) return 0;
-  
+
   MonthViewItem *item =
       static_cast<MonthViewItem *>( mItemList->item( index ) );
 
   if ( !item ) return 0;
-  
+
   return item->incidence();
 }
 
@@ -422,12 +475,12 @@ QDate MonthViewCell::selectedIncidenceDate()
   QDate qd;
   int index = mItemList->currentItem();
   if ( index < 0 ) return qd;
-  
+
   MonthViewItem *item =
       static_cast<MonthViewItem *>( mItemList->item( index ) );
 
   if ( !item ) return qd;
-  
+
   return item->incidenceDate();
 }
 
@@ -465,7 +518,7 @@ void MonthViewCell::cellClicked( QListBoxItem *item )
 void MonthViewCell::contextMenu( QListBoxItem *item )
 {
   if ( !item ) return;
-  
+
   MonthViewItem *eventItem = static_cast<MonthViewItem *>( item );
   Incidence *incidence = eventItem->incidence();
   if ( incidence ) mMonthView->showContextMenu( incidence );
@@ -708,12 +761,12 @@ void KOMonthView::setSelectedCell( MonthViewCell *cell )
   if ( cell == mSelectedCell ) return;
 
   if ( mSelectedCell ) mSelectedCell->deselect();
-  
+
   mSelectedCell = cell;
 
   if ( !mSelectedCell )
     emit incidenceSelected( 0 );
-  else 
+  else
     emit incidenceSelected( mSelectedCell->selectedIncidence() );
 }
 
