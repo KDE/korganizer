@@ -52,6 +52,9 @@ k_dcop:
 			 const QString& vCalIn ) = 0;
 
     virtual void openEventEditor( QString text ) = 0;
+
+    virtual void showTodoView() = 0;
+    virtual void showEventView() = 0;
 };
 
 inline QDataStream& operator<<( QDataStream& str, const KCalendarIface::ResourceRequestReply& reply )

@@ -1250,6 +1250,16 @@ void ActionManager::openEventEditor( QString text )
   mCalendarView->newEvent( text );
 }
 
+void ActionManager::showTodoView()
+{
+  mCalendarView->viewManager()->showTodoView();
+}
+
+void ActionManager::showEventView()
+{
+  mCalendarView->viewManager()->showWeekView();
+}
+
 void ActionManager::updateUndoAction( const QString &text )
 {
   if ( text.isNull() ) {

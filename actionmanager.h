@@ -115,6 +115,8 @@ class ActionManager : public QObject, public KCalendarIface
 
     void openEventEditor( QString );
 
+    void showTodoView();
+    void showEventView();
 
     QString localFileName();
 
