@@ -35,6 +35,7 @@ class QDragEnterEvent;
 class QDragMoveEvent;
 class QDragLeaveEvent;
 class QDropEvent;
+class QTimer;
 
 class KODayMatrix;
 
@@ -130,11 +131,6 @@ public:
      */
     void updateView(QDate actdate);
 
-    /** Recalculates all the flags of the days in the matrix like holidays or events
-     *  on a day (Actually calls above method with the actual startdate).
-     */
-    void updateView();
-
     /** returns the QDate object associated with day indexed by the
      *  supplied offset.
      */
@@ -156,9 +152,14 @@ public:
      */
     void setSelectedDaysFrom(const QDate& start, const QDate& end);
 
-/*
-public slots:
 
+public slots:
+    /** Recalculates all the flags of the days in the matrix like holidays or events
+     *  on a day (Actually calls above method with the actual startdate).
+     */
+    void updateView();
+
+/*
     void setStartDate(QDate);
 */
 
@@ -283,6 +284,11 @@ private:
     QRect     daysize;
 
     KCalendarSystem* mCalendarSystem;
+
+    /** used to update the day view periodically, in particular every 
+    * midnight to move the "today" rectangle.
+    */
+    QTimer *updateTimer;
 };
 
 #endif

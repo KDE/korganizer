@@ -25,6 +25,7 @@
 #include <qevent.h>
 #include <qpainter.h>
 #include <qptrlist.h>
+#include <qtimer.h>
 
 #include <kglobal.h>
 #include <kdebug.h>
@@ -105,6 +106,11 @@ KODayMatrix::KODayMatrix(QWidget *parent, Calendar* calendar, QDate date, const 
   mSelEnd = mSelStart = NOSELECTION;
 
   setAcceptDrops(true);
+
+  // Set up the update timer now; updateView will start it.
+  updateTimer = new QTimer(this);
+  QObject::connect(updateTimer,SIGNAL(timeout()),
+    this,SLOT(updateView()));
 
   updateView(date);
 }
@@ -207,7 +213,7 @@ void KODayMatrix::updateView(QDate actdate)
       // shift selection if new one would be visible at least partly !
 
       	if (mSelStart+tmp < NUMDAYS && mSelEnd+tmp >= 0) {
-		// nested if is required for next X display pushed from a different month - correction requiered
+		// nested if is required for next X display pushed from a different month - correction required
 		// otherwise, for month forward and backward, it must be avoided
                 if( mSelStart > NUMDAYS || mSelStart < 0 )
         	   mSelStart = mSelStart + tmp;
@@ -268,6 +274,17 @@ void KODayMatrix::updateView(QDate actdate)
     } else {
       mHolidays[i] = QString::null;
     }
+  }
+
+  // Set the timer to go off 1 second after midnight
+  if (updateTimer)
+  {
+    QTime now = QTime::currentTime();
+    QTime midnight = QTime(23,59,59);
+    int msecsWait = QMIN(480000,now.msecsTo(midnight)+2000);
+
+    updateTimer->stop();
+    updateTimer->start(msecsWait,true);
   }
 }
 
