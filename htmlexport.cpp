@@ -54,8 +54,7 @@ bool HtmlExport::save(const QString &fileName)
 
 bool HtmlExport::save(QTextStream *ts)
 {
-
-  ts->setEncoding(QTextStream::Locale);
+  ts->setEncoding(QTextStream::UnicodeUTF8);
 
   // Write HTML header
   *ts << "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" ";
@@ -63,7 +62,7 @@ bool HtmlExport::save(QTextStream *ts)
 
   *ts << "<html><head>" << endl;
   *ts << "  <meta http-equiv=\"Content-Type\" content=\"text/html; charset=";
-  *ts << QTextCodec::codecForLocale()->mimeName() << "\" />\n";
+  *ts << "\"UTF-8\" />\n";
   *ts << "  <title>" << i18n("KOrganizer To-Do List") << "</title>\n";
   *ts << "  <style type=\"text/css\">\n";
   *ts << "    body { background-color:white; color:black }\n";
