@@ -629,7 +629,7 @@ void CalPrintTodos::print( QPainter &p, int width, int height )
       }
       // priority
       int priority = currEvent->priority();
-      // 6 is the lowest priority (the unspecified one)
+      // 0 is the lowest priority (the unspecified one)
       if ( ( priority != cprior ) &&
            !( ( cprior == 10 ) && ( priority == 0 ) ) ) {
         continue;
