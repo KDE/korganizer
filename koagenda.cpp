@@ -755,9 +755,7 @@ void KOAgenda::startItemAction(const QPoint& viewportPos)
     mActionType = isInResizeArea( mAllDayMode, pos, mActionItem );
   }
 
-  if ( mActionType==MOVE ) {
-    mActionItem->startMove();
-  };
+  mActionItem->startMove();
   setActionCursor( mActionType, true );
 }
 
@@ -934,7 +932,6 @@ void KOAgenda::endItemAction()
   mScrollDownTimer.stop();
   setCursor( arrowCursor );
   bool multiModify = false;
-  bool needItemUpdate = false;
 
   if ( mItemMoved ) {
     bool modify = true;
@@ -949,7 +946,6 @@ void KOAgenda::endItemAction()
         case KMessageBox::Yes: // All occurences
             // Moving the whole sequene of events is handled by the itemModified below.
             modify = true;
-            needItemUpdate = true;
             break;
         case KMessageBox::No: { // Just this occurence
             // Dissociate this occurence: 
@@ -996,7 +992,6 @@ void KOAgenda::endItemAction()
               mActionItem->setIncidence( newInc );
               emit incidenceAdded( newInc );
               emit enableAgendaUpdate( true );
-              needItemUpdate = true;
             } else {
               KMessageBox::sorry( this, i18n("Unable to add the future items to the "
                   "calendar. No change will be done."), i18n("Error Occurred") );
@@ -1011,9 +1006,7 @@ void KOAgenda::endItemAction()
     }
     
     if ( modify ) {
-      if ( mActionType == MOVE ) {
-        mActionItem->endMove();
-      }
+      mActionItem->endMove();
       KOAgendaItem *placeItem = mActionItem->firstMultiItem();
       if  ( !placeItem ) {
         placeItem = mActionItem;
