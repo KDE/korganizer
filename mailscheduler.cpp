@@ -97,7 +97,8 @@ QPtrList<ScheduleMessage> MailScheduler::retrieveTransactions()
     } else {
       QTextStream t(&f);
       QString messageString = t.read();
-      ScheduleMessage *message = mFormat->parseScheduleMessage(messageString);
+      ScheduleMessage *message = mFormat->parseScheduleMessage( mCalendar,
+                                                                messageString );
       if (message) {
         kdDebug() << "MailScheduler::retrieveTransactions: got message '"
                   << (*it) << "'" << endl;

@@ -28,8 +28,6 @@
   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 */
 
-// $Id$
-
 #include <stdlib.h>
 
 #include <qapplication.h>
@@ -308,7 +306,7 @@ bool CalendarView::saveCalendar(QString filename)
   // Store back all unsaved data into calendar object
   mViewManager->currentView()->flushView();
 
-  CalFormat *format = new ICalFormat(mCalendar);
+  CalFormat *format = new ICalFormat;
 
   bool success = mCalendar->save(filename,format);
   
@@ -991,8 +989,8 @@ void CalendarView::action_mail()
     ev = new Event(*event);
     cal_tmp->addEvent(ev);
   }
-  ICalFormat mForm(cal_tmp);
-  QString attachment = mForm.toString();
+  ICalFormat mForm;
+  QString attachment = mForm.toString( cal_tmp );
   if (ev) delete(ev);
   delete(cal_tmp);
 
@@ -1266,7 +1264,7 @@ void CalendarView::exportICalendar()
   // Force correct extension
   if (filename.right(4) != ".ics") filename += ".ics";
 
-  CalFormat *format = new ICalFormat(mCalendar);
+  CalFormat *format = new ICalFormat;
   mCalendar->save(filename,format);
   delete format;
 }
@@ -1286,7 +1284,7 @@ void CalendarView::exportVCalendar()
   // Force correct extension
   if (filename.right(4) != ".vcs") filename += ".vcs";
 
-  CalFormat *format = new VCalFormat(mCalendar);
+  CalFormat *format = new VCalFormat;
   mCalendar->save(filename,format);
   delete format;
 }

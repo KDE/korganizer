@@ -297,7 +297,8 @@ void OutgoingDialog::loadMessages()
     } else {
       QTextStream t(&f);
       QString messageString = t.read();
-      ScheduleMessage *message = mFormat->parseScheduleMessage(messageString);
+      ScheduleMessage *message = mFormat->parseScheduleMessage(mCalendar,
+                                                               messageString);
       int begin_pos = messageString.find("METHOD-BEGIN:");
       begin_pos = messageString.find('\n',begin_pos)+1;
       QString meth = messageString.mid(begin_pos,1);
