@@ -65,9 +65,6 @@ public:
 	    const char *name=0, bool fnOverride = TRUE);
   virtual ~TopWidget(void);
 
-  /** supplied so that close events call file_close()/file_close() properly.*/
-  bool queryClose();
-
   // public variables
   static QList<TopWidget> windowList;
 
@@ -321,6 +318,10 @@ protected:
 
   /** tell the alarm daemon that we have saved, and he needs to reread */
   void signalAlarmDaemon();
+
+  /** supplied so that close events call file_close()/file_close() properly.*/
+  bool queryClose();
+  bool queryExit();
 
   // variables
 

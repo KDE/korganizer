@@ -1202,47 +1202,14 @@ int TopWidget::file_saveas()
   if (calendar->autoSave()) {
     autoSaveTimer->stop();
     autoSaveTimer->start(1000*60);
-  } 
+  }
 
   return 0;
 }
 
 void TopWidget::file_close()
 {
-  // a better place to put this?
-  // this seems a little weird though - should we really do this???
-  if( windowList.count() > 1 ) {
-    file_quit();
-    return;
-  }
-
-  int       whattodo = 0; // the same as button numbers from QMessageBox return
-
-  if (isModified() && (fileName.isEmpty() || !calendar->autoSave())) {
-    whattodo = msgCalModified();
-  } else if (isModified()) {
-    whattodo = 0; // save if for sure
-  } else {
-    whattodo = 1; // go ahead and just open a new one
-  }
-
-  switch (whattodo) {
-  case 0: // save ("Yes")
-    if (file_save())
-      return;
-
-  case 1: // open ("No", or wasn't modified)
-    // child windows no longer valid
-    emit closingDown();
-    calendar->close();
-    fileName = "";
-    unsetModified();
-    updateView();
-    set_title();
-
-    break;
-
-  } // switch
+  close();
 }
 
 int TopWidget::file_save()
@@ -1267,39 +1234,12 @@ int TopWidget::file_save()
 
 void TopWidget::file_quit()
 {
-  int       whattodo = 0; // the same as button numbers from QMessageBox return
-
-  if (isModified() && (fileName.isEmpty() || !calendar->autoSave())) {
-    whattodo = msgCalModified();
-  } else if (isModified()) {
-    whattodo = 0; // save if for sure
-  } else {
-    whattodo = 1; // go ahead and just open a new one
+  // Close all open windows. Make sure that this widget is closed as last.
+  TopWidget *tw;
+  for(tw = windowList.first(); tw; tw = windowList.next()) {
+    if (tw != this) tw->close();
   }
-
-  switch (whattodo) {
-  case 0: // save ("Yes")
-    if (file_save())
-      return;
-
-  case 1: // open ("No", or wasn't modified)
-    // child windows no longer valid
-    emit closingDown();
-    calendar->close();
-
-    if (windowList.count() == 1) {
-      writeSettings();
-
-      delete this;
-
-      kapp->quit();
-    } else {
-      delete this;
-    }
-
-    break;
-
-  } // switch
+  close();
 }
 
 void TopWidget::edit_cut()
@@ -1835,9 +1775,48 @@ void TopWidget::set_title()
 
 bool TopWidget::queryClose()
 {
-// Closing KOrganizer is broken. file_quit, file_close, query_close and whatever
-// else is concerned, has to be rewritten in a consistent way.
-//  file_quit();
+  int whattodo = 0; // the same as button numbers from QMessageBox return
+
+  if (isModified() && (fileName.isEmpty() || !calendar->autoSave())) {
+    whattodo = msgCalModified();
+  } else if (isModified()) {
+    whattodo = 0; // save if for sure
+  } else {
+    whattodo = 1; // go ahead and just open a new one
+  }
+
+  switch (whattodo) {
+    case 0: // save ("Yes")
+      if (file_save()) {
+        return true;
+      } else {
+        qDebug("TopWidget::queryClose(): file_save() failed");
+        return false;
+      }
+      break;
+
+    case 1: // open ("No", or wasn't modified)
+      // child windows no longer valid
+      emit closingDown();
+      calendar->close();
+      fileName = "";
+      unsetModified();
+      updateView();
+      set_title();
+      return true;
+      break;
+
+    case 2: // cancel
+      return false;
+
+  } // switch
+
+  return false;
+}
+
+bool TopWidget::queryExit()
+{
+  writeSettings();
   return true;
 }
 
