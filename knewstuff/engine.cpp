@@ -100,9 +100,7 @@ void Engine::slotNewStuffJobData( KIO::Job *job, const QByteArray &data )
 
   kdDebug(5850) << "Engine:slotNewStuffJobData()" << endl;
 
-  QCString str( data.size() + 1 );
-  str = data;
-  str.at( data.size() ) = '\0';
+  QCString str( data, data.size() + 1 );
 
   mNewStuffJobData[ job ].append( QString::fromUtf8( str ) );
 }
