@@ -141,7 +141,7 @@ void Birthdays::importBirthdays()
         Alarm* vAlarm = ev->newAlarm();
         vAlarm->setText(summary);
         vAlarm->setTime(birthdate);
-        vAlarm->setOffset(-1440 * bd->mAlarmTimeEdit->text().toInt());
+        vAlarm->setStartOffset(-1440 * bd->mAlarmTimeEdit->text().toInt());
         vAlarm->setEnabled(true);
       }
 
