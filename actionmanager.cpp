@@ -176,7 +176,7 @@ void ActionManager::createCalendarResources()
   kdDebug(5850) << "CalendarResources used by KOrganizer:" << endl;
   CalendarResourceManager::Iterator it;
   for( it = manager->begin(); it != manager->end(); ++it ) {
-    kdDebug() << "  " << (*it)->resourceName() << endl;
+    kdDebug(5850) << "  " << (*it)->resourceName() << endl;
 //    (*it)->dump();
   }
 
@@ -832,14 +832,14 @@ bool ActionManager::addResource( const KURL &mUrl )
 
   QString name;
 
-  kdDebug() << "URL: " << mUrl << endl;
+  kdDebug(5850) << "URL: " << mUrl << endl;
   if ( mUrl.isLocalFile() ) {
-    kdDebug() << "Local Resource" << endl;
+    kdDebug(5850) << "Local Resource" << endl;
     resource = new ResourceLocal( mUrl.path() );
     resource->setTimeZoneId( KOPrefs::instance()->mTimeZoneId );
     name = mUrl.path();
   } else {
-    kdDebug() << "Remote Resource" << endl;
+    kdDebug(5850) << "Remote Resource" << endl;
     resource = new ResourceRemote( mUrl );
     resource->setTimeZoneId( KOPrefs::instance()->mTimeZoneId );
     name = mUrl.prettyURL();
@@ -1027,6 +1027,7 @@ bool ActionManager::saveAsURL(const KURL &url)
     setTitle();
     if ( mRecent ) mRecent->addURL(mURL);
   } else {
+    KMessageBox::sorry( dialogParent(), i18n("Unable to save calendar to the file %1.").arg( mFile ), i18n("Error") );
     kdDebug(5850) << "ActionManager::saveAsURL() failed" << endl;
     mURL = URLOrig;
     mFile = fileOrig;
@@ -1100,7 +1101,7 @@ KURL ActionManager::getSaveURL()
 
 void ActionManager::saveProperties(KConfig *config)
 {
-  kdDebug() << "ActionManager::saveProperties" << endl;
+  kdDebug(5850) << "ActionManager::saveProperties" << endl;
 
   config->writeEntry( "UseResourceCalendar", !mMainWindow->hasDocument() );
   if ( mMainWindow->hasDocument() ) {
@@ -1110,7 +1111,7 @@ void ActionManager::saveProperties(KConfig *config)
 
 void ActionManager::readProperties(KConfig *config)
 {
-  kdDebug() << "ActionManager::readProperties" << endl;
+  kdDebug(5850) << "ActionManager::readProperties" << endl;
 
   bool isResourceCalendar(
     config->readBoolEntry( "UseResourceCalendar", true ) );
@@ -1223,7 +1224,7 @@ void ActionManager::toggleResourceButtons()
 {
   bool visible = mResourceButtonsAction->isChecked();
 
-  kdDebug() << "RESOURCE VIEW " << int( mResourceView ) << endl;
+  kdDebug(5850) << "RESOURCE VIEW " << int( mResourceView ) << endl;
 
   if ( mResourceView ) mResourceView->showButtons( visible );
 }
@@ -1303,6 +1304,44 @@ QString ActionManager::localFileName()
   return mFile;
 }
 
+class ActionStringsVisitor : public Incidence::Visitor
+{
+  public:
+    ActionStringsVisitor() : mShow(0), mEdit(0), mDelete(0) {}
+
+    bool act( Incidence *incidence, KAction *show, KAction *edit, KAction *del )
+    {
+      mShow = show;
+      mEdit = edit;
+      mDelete = del;
+      return incidence->accept( *this );
+    }
+
+  protected:
+    bool visit( Event * ) {
+      if ( mShow ) mShow->setText( i18n("&Show Event") );
+      if ( mEdit ) mEdit->setText( i18n("&Edit Event...") );
+      if ( mDelete ) mDelete->setText( i18n("&Delete Event") );
+      return true;
+    }
+    bool visit( Todo * ) {
+      if ( mShow ) mShow->setText( i18n("&Show To-Do") );
+      if ( mEdit ) mEdit->setText( i18n("&Edit To-Do...") );
+      if ( mDelete ) mDelete->setText( i18n("&Delete To-Do") );
+      return true;
+    }
+    bool visit( Journal * ) {
+      if ( mShow ) mShow->setText( i18n("&Show") );
+      if ( mEdit ) mEdit->setText( i18n("&Edit...") );
+      if ( mDelete ) mDelete->setText( i18n("&Delete") );
+      return true;
+    }
+  protected:
+    KAction *mShow;
+    KAction *mEdit;
+    KAction *mDelete;
+};
+
 void ActionManager::processIncidenceSelection( Incidence *incidence )
 {
 //  kdDebug(5850) << "ActionManager::processIncidenceSelection()" << endl;
@@ -1313,21 +1352,13 @@ void ActionManager::processIncidenceSelection( Incidence *incidence )
   }
 
   enableIncidenceActions( true );
-
-  // @TODO: use a visitor here
-  if ( incidence->type() == "Event" ) {
-    mShowIncidenceAction->setText( i18n("&Show Event") );
-    mEditIncidenceAction->setText( i18n("&Edit Event...") );
-    mDeleteIncidenceAction->setText( i18n("&Delete Event") );
-  } else if ( incidence->type() == "Todo" ) {
-    mShowIncidenceAction->setText( i18n("&Show To-Do") );
-    mEditIncidenceAction->setText( i18n("&Edit To-Do...") );
-    mDeleteIncidenceAction->setText( i18n("&Delete To-Do") );
-  } else {
+  
+  ActionStringsVisitor v;
+  if ( !v.act( incidence, mShowIncidenceAction, mEditIncidenceAction, mDeleteIncidenceAction ) ) {
     mShowIncidenceAction->setText( i18n("&Show") );
     mEditIncidenceAction->setText( i18n("&Edit...") );
     mDeleteIncidenceAction->setText( i18n("&Delete") );
- }
+	}
 }
 
 void ActionManager::enableIncidenceActions( bool enabled )
@@ -1455,12 +1486,23 @@ void ActionManager::updateRedoAction( const QString &text )
 
 bool ActionManager::queryClose()
 {
-  kdDebug() << "ActionManager::queryClose()" << endl;
+  kdDebug(5850) << "ActionManager::queryClose()" << endl;
 
   bool close = true;
 
   if ( mCalendar ) {
-    close = saveModifiedURL();
+    int res = KMessageBox::questionYesNoCancel( dialogParent(), 
+      i18n("The calendar contains unsaved changes. Do you want to save them before exiting?") );
+    // Exit on yes and no, don't exit on cancel. If saving fails, ask for exiting.
+    if ( res == KMessageBox::Yes ) {
+      close = saveModifiedURL();
+      if ( !close ) {
+        int res1 = KMessageBox::questionYesNo( dialogParent(), i18n("Unable to save the calendar. Do you still want to close this window?") );
+        close = ( res1 == KMessageBox::Yes );
+      }
+    } else {
+      close = ( res == KMessageBox::No );
+    }
   } else if ( mCalendarResources ) {
     if ( !mIsClosing ) {
       kdDebug(5850) << "!mIsClosing" << endl;
