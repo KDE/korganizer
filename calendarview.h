@@ -6,7 +6,7 @@
 #include <qframe.h>
 #include <qlayout.h>
 #include <qwidget.h>
-#include <qlist.h>
+#include <qptrlist.h>
 #include <qframe.h>
 #include <qsplitter.h>
 #include <qvbox.h>
@@ -187,7 +187,7 @@ class CalendarView : public QWidget
     /** Delete todo */
     void deleteTodo(Todo *);
     
-    //void eventsSelected(QList<Event>);
+    //void eventsSelected(QPtrList<Event>);
     
     /** change Agenda view */
     void changeAgendaView( int view );
@@ -443,7 +443,7 @@ class CalendarView : public QWidget
     Calendar      *mCalendar;
   
     // Calendar filters
-    QList<CalFilter> mFilters;
+    QPtrList<CalFilter> mFilters;
   
     // various housekeeping variables.
     bool            mModified;	   // flag indicating if calendar is modified

@@ -45,7 +45,7 @@ class KOWindowList : public QObject
     void deactivateCalendars(KOrganizer *);
     
   private:
-    QList<KOrganizer> mWindowList; // list of all existing KOrganizer instances
+    QPtrList<KOrganizer> mWindowList; // list of all existing KOrganizer instances
 };
 
 #endif // _KOWINDOWLIST_H

@@ -22,14 +22,14 @@ class KOJournalView : public KOBaseView
     ~KOJournalView();
 
     virtual int currentDateCount();
-    virtual QList<Incidence> getSelected();
+    virtual QPtrList<Incidence> getSelected();
 
   public slots:
     void updateView();
     void flushView();
     
     void selectDates(const QDateList dateList);
-    void selectEvents(QList<Event> eventList);
+    void selectEvents(QPtrList<Event> eventList);
 
     void changeEventDisplay(Event *, int);
   

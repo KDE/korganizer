@@ -266,7 +266,7 @@ void KDateNavigator::updateButton(int i)
 
   // check calendar for events on this day
   bool hasEvents = false;
-  QList<Event> events = mCalendar->getEventsForDate(buttons[i]->date());
+  QPtrList<Event> events = mCalendar->getEventsForDate(buttons[i]->date());
   Event *event;
   for(event=events.first();event;event=events.next()) {
     ushort recurType = event->recurrence()->doesRecur();
@@ -452,7 +452,7 @@ void KDateNavigator::selectDates(const QDateList dateList)
     selectedDates = dateList;
   
     // check to see if these dates are valid.
-    QListIterator<QDate> it(dateList);
+    QPtrListIterator<QDate> it(dateList);
     for (; it.current(); ++it) {
       if (!it.current()->isValid()) {
         selectedDates.clear();

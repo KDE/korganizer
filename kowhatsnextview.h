@@ -35,7 +35,7 @@ class KOWhatsNextView : public KOBaseView
 
     virtual int maxDatesHint();
     virtual int currentDateCount();
-    virtual QList<Incidence> getSelected();
+    virtual QPtrList<Incidence> getSelected();
 
     virtual void printPreview(CalPrinter *calPrinter,
                               const QDate &, const QDate &);
@@ -43,7 +43,7 @@ class KOWhatsNextView : public KOBaseView
   public slots:
     virtual void updateView();
     virtual void selectDates(const QDateList dateList);
-    virtual void selectEvents(QList<Event> eventList);
+    virtual void selectEvents(QPtrList<Event> eventList);
 
     void changeEventDisplay(Event *, int);
   

@@ -8,7 +8,7 @@
  */
 
 #include <qwidget.h>
-#include <qlist.h>
+#include <qptrlist.h>
 
 #include "event.h"
 #include "calendar.h"
@@ -49,7 +49,7 @@ class KOBaseView : public QWidget
      * select a single event at a time, but some may be able to select
      * more than one.
      */
-    virtual QList<Incidence> getSelected() = 0;
+    virtual QPtrList<Incidence> getSelected() = 0;
   
     /**
      * Generate a print preview of this event view.
@@ -109,7 +109,7 @@ class KOBaseView : public QWidget
      * Select events visible in the current display
      * @param eventList a list of events to select.
      */
-    virtual void selectEvents(QList<Event> eventList) = 0;
+    virtual void selectEvents(QPtrList<Event> eventList) = 0;
 
   protected:
     Calendar *mCalendar;

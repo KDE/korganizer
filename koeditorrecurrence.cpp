@@ -668,8 +668,8 @@ void KOEditorRecurrence::setDefaults(QDateTime from, QDateTime to,bool)
 void KOEditorRecurrence::readEvent(Event *event)
 {
   QBitArray rDays;
-  QList<KORecurrence::rMonthPos> rmp;
-  QList<int> rmd;
+  QPtrList<KORecurrence::rMonthPos> rmp;
+  QPtrList<int> rmd;
   int i;
 
   setDateTimes(event->dtStart(),event->dtEnd());

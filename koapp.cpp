@@ -48,7 +48,7 @@ void KOrganizerApp::displayImminent(const QString &urlString,int numdays)
   for (int i = 1; i <= numdays; i++) {
     printf("%s\n",(const char *)KGlobal::locale()->formatDate(currDate).local8Bit());
 
-    QList<Event> tmpList(cal->getEventsForDate(currDate, TRUE));
+    QPtrList<Event> tmpList(cal->getEventsForDate(currDate, TRUE));
     printf("---------------------------------------------------------------\n");
     if (tmpList.count() > 0) {
       for (currEvent = tmpList.first(); currEvent; currEvent = tmpList.next()) {
@@ -64,7 +64,7 @@ void KOrganizerApp::displayImminent(const QString &urlString,int numdays)
     }
 
     printf("---------------------------------------------------------------\n");
-    QList<Todo> tmpList2 = cal->getTodosForDate(currDate);
+    QPtrList<Todo> tmpList2 = cal->getTodosForDate(currDate);
     Todo *currTodo;
     if (tmpList.count() > 0) {
       for (currTodo = tmpList2.first(); currTodo; currTodo = tmpList2.next()) {

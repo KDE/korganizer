@@ -459,7 +459,7 @@ void KOrganizer::initActions()
 
   mStatusBarAction->setChecked(!statusBar()->isHidden());
 
-  QListIterator<KToolBar> it = toolBarIterator();
+  QPtrListIterator<KToolBar> it = toolBarIterator();
   for ( ; it.current() ; ++it ) {
     KToggleAction *act = new KToggleAction(i18n("Show %1 Toolbar")
                                            .arg((*it)->text()),0,
@@ -1086,7 +1086,7 @@ void KOrganizer::toggleToolBars(bool toggle)
 
 void KOrganizer::toggleToolBar()
 {
-  QListIterator<KToolBar> it = toolBarIterator();
+  QPtrListIterator<KToolBar> it = toolBarIterator();
   for ( ; it.current() ; ++it ) {
     if (mToolBarToggleAction->isChecked()) (*it)->show();
     else (*it)->hide();

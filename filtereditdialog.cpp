@@ -43,7 +43,7 @@
 #include "filtereditdialog.h"
 #include "filtereditdialog.moc"
 
-FilterEditDialog::FilterEditDialog(QList<CalFilter> *filters,QWidget *parent,
+FilterEditDialog::FilterEditDialog(QPtrList<CalFilter> *filters,QWidget *parent,
                                    const char *name) :
   KDialogBase(parent,name,false,i18n("Edit Calendar Filters"),
               Ok|Apply|Cancel)

@@ -289,7 +289,7 @@ void KOTodoView::updateView()
 //  kdDebug() << "KOTodoView::updateView()" << endl;
   mTodoListView->clear();
 
-  QList<Todo> todoList = mCalendar->getFilteredTodoList();
+  QPtrList<Todo> todoList = mCalendar->getFilteredTodoList();
 
 /*
   kdDebug() << "KOTodoView::updateView(): Todo List:" << endl;
@@ -301,7 +301,7 @@ void KOTodoView::updateView()
       kdDebug() << "      (related to " << t->getRelatedTo()->getSummary() << ")" << endl;
     }
 
-    QList<Event> l = t->getRelations();
+    QPtrList<Event> l = t->getRelations();
     Event *c;
     for(c=l.first();c;c=l.next()) {
       kdDebug() << "    - relation: " << c->getSummary() << endl;
@@ -353,9 +353,9 @@ void KOTodoView::updateConfig()
   // to be implemented.
 }
 
-QList<Incidence> KOTodoView::getSelected()
+QPtrList<Incidence> KOTodoView::getSelected()
 {
-  QList<Incidence> selected;
+  QPtrList<Incidence> selected;
 
   KOTodoViewItem *item = (KOTodoViewItem *)(mTodoListView->selectedItem());
   if (item) selected.append(item->event());
@@ -363,9 +363,9 @@ QList<Incidence> KOTodoView::getSelected()
   return selected;
 }
 
-QList<Todo> KOTodoView::selectedTodos()
+QPtrList<Todo> KOTodoView::selectedTodos()
 {
-  QList<Todo> selected;
+  QPtrList<Todo> selected;
 
   KOTodoViewItem *item = (KOTodoViewItem *)(mTodoListView->selectedItem());
   if (item) selected.append(item->event());
@@ -382,7 +382,7 @@ void KOTodoView::selectDates(const QDateList)
 {
 }
  
-void KOTodoView::selectEvents(QList<Event>)
+void KOTodoView::selectEvents(QPtrList<Event>)
 {
   kdDebug() << "KOTodoView::selectEvents(): not yet implemented" << endl;
 }
@@ -454,7 +454,7 @@ void KOTodoView::purgeCompleted()
       i18n("Delete all completed todos?"),i18n("Purge Todos"),i18n("Purge"));
 
   if (result == KMessageBox::Continue) {
-    QList<Todo> todoCal = mCalendar->getTodoList();
+    QPtrList<Todo> todoCal = mCalendar->getTodoList();
 
     Todo *aTodo;
     for (aTodo = todoCal.first(); aTodo; aTodo = todoCal.next()) {

@@ -3,7 +3,7 @@
 // $Id$
 // (C) 2000,2001 by Cornelius Schumacher
 
-#include <qlist.h>
+#include <qptrlist.h>
 #include <qcolor.h>
 #include <qfont.h>
 #include <qstringlist.h>
@@ -263,7 +263,7 @@ class KPrefs {
 
     KConfig *mConfig;  // pointer to KConfig object
 
-    QList<KPrefsItem> mItems;
+    QPtrList<KPrefsItem> mItems;
 };
 
 #endif

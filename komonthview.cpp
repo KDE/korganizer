@@ -175,7 +175,7 @@ void KSummaries::calUpdated()
   clear();
   currIdxs->clear();
 
-  QList<Event> events;
+  QPtrList<Event> events;
 
   // 2nd arg is TRUE because we want the events to be sorted.
   events = myCal->getEventsForDate(myDate, TRUE);
@@ -213,7 +213,7 @@ void KSummaries::calUpdated()
   }
 
   // insert due todos
-  QList<Todo> todos=myCal->getTodosForDate(myDate);
+  QPtrList<Todo> todos=myCal->getTodosForDate(myDate);
   Todo *todo;
   for(todo = todos.first(); todo; todo = todos.next()) {
     sumString = "";
@@ -443,9 +443,9 @@ int KOMonthView::currentDateCount()
   return 42;
 }
 
-QList<Incidence> KOMonthView::getSelected()
+QPtrList<Incidence> KOMonthView::getSelected()
 {
-  QList<Incidence> selectedEvents;
+  QPtrList<Incidence> selectedEvents;
 
   uint i;
   for(i=0; i<selDateIdxs.count(); ++i) {
@@ -656,7 +656,7 @@ void KOMonthView::selectDates(const QDateList dateList)
   viewChanged();
 }
 
-void KOMonthView::selectEvents(QList<Event>)
+void KOMonthView::selectEvents(QPtrList<Event>)
 {
   kdDebug() << "KOMonthView::selectEvents is not implemented yet." << endl;
 }
@@ -804,7 +804,7 @@ void KOMonthView::doRightClickMenu()
 
 void KOMonthView::processSelectionChange()
 {
-  QList<Incidence> events = getSelected();
+  QPtrList<Incidence> events = getSelected();
   if (events.count() > 0) {
     emit eventsSelected(true);
 //    kdDebug() << "KOMonthView::processSelectionChange() true" << endl;

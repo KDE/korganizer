@@ -12,7 +12,7 @@
  *  Constructs a KOFilterView which is a child of 'parent', with the 
  *  name 'name' and widget flags set to 'f' 
  */
-KOFilterView::KOFilterView(QList<CalFilter> *filterList,QWidget* parent,
+KOFilterView::KOFilterView(QPtrList<CalFilter> *filterList,QWidget* parent,
                            const char* name,WFlags fl )
   : KOFilterView_base(parent,name,fl)
 {

@@ -1670,21 +1670,21 @@ void CalendarView::takeOverCalendar()
 {
   // TODO: Create Calendar::allIncidences() function and use it here
 
-  QList<Event> events = mCalendar->getAllEvents();  
+  QPtrList<Event> events = mCalendar->getAllEvents();  
   for(uint i=0; i<events.count(); ++i) {
     events.at(i)->setOrganizer(KOPrefs::instance()->email());
     events.at(i)->recreate();
     events.at(i)->setReadOnly(false);
   }
   
-  QList<Todo> todos = mCalendar->getTodoList();
+  QPtrList<Todo> todos = mCalendar->getTodoList();
   for(uint i=0; i<todos.count(); ++i) {
     todos.at(i)->setOrganizer(KOPrefs::instance()->email());
     todos.at(i)->recreate();
     todos.at(i)->setReadOnly(false);
   }
   
-  QList<Journal> journals = mCalendar->journalList();
+  QPtrList<Journal> journals = mCalendar->journalList();
   for(uint i=0; i<journals.count(); ++i) {
     journals.at(i)->setOrganizer(KOPrefs::instance()->email());
     journals.at(i)->recreate();

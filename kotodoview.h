@@ -6,7 +6,7 @@
 #include <qfont.h>
 #include <qfontmetrics.h>
 #include <qlineedit.h>
-#include <qlist.h>
+#include <qptrlist.h>
 #include <qstrlist.h>
 #include <qlistbox.h>
 #include <qpopupmenu.h>
@@ -93,8 +93,8 @@ class KOTodoView : public KOBaseView
     KOTodoView(Calendar *, QWidget* parent=0, const char* name=0 );
     ~KOTodoView() {}
 
-    QList<Incidence> getSelected();
-    QList<Todo> selectedTodos();
+    QPtrList<Incidence> getSelected();
+    QPtrList<Todo> selectedTodos();
 
     /** Return number of shown dates. TodoView does not show dates, */
     int currentDateCount() { return 0; }
@@ -119,7 +119,7 @@ class KOTodoView : public KOBaseView
      * Select events visible in the current display
      * @param eventList a list of events to select.
      */
-    void selectEvents(QList<Event> eventList);
+    void selectEvents(QPtrList<Event> eventList);
 
     void editItem(QListViewItem *item);
     void showItem(QListViewItem *item);

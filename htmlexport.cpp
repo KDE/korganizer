@@ -132,7 +132,7 @@ void HtmlExport::createHtmlMonthView(QTextStream *ts)
       
       *ts << "</td></tr>\n<tr><td valign=top>";
       
-      QList<Event> events = mCalendar->getEventsForDate(start,true);
+      QPtrList<Event> events = mCalendar->getEventsForDate(start,true);
       if (events.count()) {
         *ts << "<table>";
         Event *ev;
@@ -175,7 +175,7 @@ void HtmlExport::createHtmlEventList (QTextStream *ts)
 
   for (QDate dt = fromDate(); dt <= toDate(); dt = dt.addDays(1)) {
     kdDebug() << "Getting events for " << dt.toString() << endl;
-    QList<Event> events = mCalendar->getEventsForDate(dt,true);
+    QPtrList<Event> events = mCalendar->getEventsForDate(dt,true);
     if (events.count()) {
       *ts << "  <TR><TD COLSPAN=" << QString::number(columns)
           << " CLASS=datehead><I>"
@@ -238,8 +238,8 @@ void HtmlExport::createHtmlTodoList (QTextStream *ts)
 {
   Todo *ev,*subev;
   
-  QList<Todo> rawTodoList = mCalendar->getTodoList();
-  QList<Todo> todoList;
+  QPtrList<Todo> rawTodoList = mCalendar->getTodoList();
+  QPtrList<Todo> todoList;
 
   // Sort list by priorities. This is brute force and should be
   // replaced by a real sorting algorithm.
@@ -272,7 +272,7 @@ void HtmlExport::createHtmlTodoList (QTextStream *ts)
 
   // Create sub-level lists
   for(ev=todoList.first();ev;ev=todoList.next()) {
-    QList<Incidence> relations = ev->relations();
+    QPtrList<Incidence> relations = ev->relations();
     if (relations.count()) {
       // Generate sub-task list of event ev
       *ts << "  <TR>\n";
@@ -287,7 +287,7 @@ void HtmlExport::createHtmlTodoList (QTextStream *ts)
           << ev->VUID() << "\"><B>" << ev->summary() << "</B></A></TD>\n";
       *ts << "  </TR>\n";
       
-      QList<Todo> sortedList;
+      QPtrList<Todo> sortedList;
       Incidence *ev2;
       // Sort list by priorities. This is brute force and should be
       // replaced by a real sorting algorithm.
@@ -312,7 +312,7 @@ void HtmlExport::createHtmlTodo (QTextStream *ts,Todo *todo)
   kdDebug() << "HtmlExport::createHtmlTodo()" << endl;
 
   bool completed = todo->isCompleted();
-  QList<Incidence> relations = todo->relations();
+  QPtrList<Incidence> relations = todo->relations();
 
   *ts << "<TR>\n";
 
@@ -387,7 +387,7 @@ void HtmlExport::formatHtmlCategories (QTextStream *ts,Incidence *event)
 
 void HtmlExport::formatHtmlAttendees (QTextStream *ts,Incidence *event)
 {
-  QList<Attendee> attendees = event->attendees();
+  QPtrList<Attendee> attendees = event->attendees();
   if (attendees.count()) {
     Attendee *a;
     for(a=attendees.first();a;a=attendees.next()) {

@@ -403,9 +403,9 @@ int KOAgendaView::currentDateCount()
   return mSelectedDates.count();
 }
 
-QList<Incidence> KOAgendaView::getSelected()
+QPtrList<Incidence> KOAgendaView::getSelected()
 {
-  QList<Incidence> selectedEvents;
+  QPtrList<Incidence> selectedEvents;
   Event *event;
 
   event = mAgenda->selectedEvent();
@@ -530,7 +530,7 @@ void KOAgendaView::selectDates(const QDateList list)
 }
 
 
-void KOAgendaView::selectEvents(QList<Event>)
+void KOAgendaView::selectEvents(QPtrList<Event>)
 {
   kdDebug() << "KOAgendaView::selectEvents() is not yet implemented" << endl;
 }
@@ -732,7 +732,7 @@ void KOAgendaView::fillAgenda()
   mMinY.resize(mSelectedDates.count());
   mMaxY.resize(mSelectedDates.count());
 
-  QList<Event> dayEvents;
+  QPtrList<Event> dayEvents;
   int curCol;  // current column of agenda, i.e. the X coordinate
   QDate currentDate = mStartDate;
 

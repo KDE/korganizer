@@ -11,7 +11,7 @@ class KOFilterView : public KOFilterView_base
 {
     Q_OBJECT
   public:
-    KOFilterView(QList<CalFilter> *filterList,QWidget* parent=0,const char* name=0, WFlags fl=0);
+    KOFilterView(QPtrList<CalFilter> *filterList,QWidget* parent=0,const char* name=0, WFlags fl=0);
     ~KOFilterView();
 
     void updateFilters();
@@ -24,7 +24,7 @@ class KOFilterView : public KOFilterView_base
     void editFilters();
     
   private:
-    QList<CalFilter> *mFilters;
+    QPtrList<CalFilter> *mFilters;
 };
 
 #endif // KOFILTERVIEW_H

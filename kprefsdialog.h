@@ -403,7 +403,7 @@ class KPrefsDialog : public KDialogBase
   private:
     KPrefs *mPrefs;
 
-    QList<KPrefsWid> mPrefsWids;
+    QPtrList<KPrefsWid> mPrefsWids;
 };
 
 #endif

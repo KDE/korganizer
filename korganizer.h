@@ -6,7 +6,7 @@
 #include <qframe.h>
 #include <qlayout.h>
 #include <qwidget.h>
-#include <qlist.h>
+#include <qptrlist.h>
 #include <qtabdialog.h>
 #include <qframe.h>
 #include <qsplitter.h>
@@ -246,7 +246,7 @@ class KOrganizer : public KParts::MainWindow, virtual public KOrganizerIface
     // Actions
     KRecentFilesAction *mRecent;
 
-    QList<KAction> mToolBarToggles; // List of toolbar hiding toggle actions
+    QPtrList<KAction> mToolBarToggles; // List of toolbar hiding toggle actions
     KToggleAction *mToolBarToggleAction;
 
     KToggleAction *mStatusBarAction;

@@ -72,7 +72,7 @@ class EventIndicator : public QFrame {
     QBoxLayout *mTopLayout;
     Location mLocation;
     QPixmap mPixmap;
-    QArray<bool> mEnabled;
+    QMemArray<bool> mEnabled;
 };
 
 class KOAgendaView : public KOEventView {
@@ -88,7 +88,7 @@ class KOAgendaView : public KOEventView {
     virtual int currentDateCount();
 
     /** returns the currently selected events */
-    virtual QList<Incidence> getSelected();
+    virtual QPtrList<Incidence> getSelected();
 
     /** Agenda view types. DAY is a one day view, WORKWEEK is a 5 day view of a
     week, excluding the weekend, WEEK is a 7 day view of a complete week and
@@ -110,7 +110,7 @@ class KOAgendaView : public KOEventView {
     virtual void updateView();
     virtual void updateConfig();
     virtual void selectDates(const QDateList);
-    virtual void selectEvents(QList<Event> eventList);
+    virtual void selectEvents(QPtrList<Event> eventList);
 
     void changeEventDisplay(Event *, int);
 
@@ -195,10 +195,10 @@ class KOAgendaView : public KOEventView {
     EventIndicator *mEventIndicatorTop;
     EventIndicator *mEventIndicatorBottom;
     
-    QArray<int> mMinY;
-    QArray<int> mMaxY;
+    QMemArray<int> mMinY;
+    QMemArray<int> mMaxY;
     
-    QArray<bool> mHolidayMask;
+    QMemArray<bool> mHolidayMask;
 };
 
 #endif  // KOAGENDAVIEW_H

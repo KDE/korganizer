@@ -2,7 +2,7 @@
 #define _FILTEREDITDIALOG_H
 // 	$Id$	
 
-#include <qlist.h>
+#include <qptrlist.h>
 
 #include <kdialogbase.h>
 
@@ -24,7 +24,7 @@ class FilterEditDialog : public KDialogBase
 {
     Q_OBJECT
   public:
-    FilterEditDialog(QList<CalFilter> *,QWidget *parent=0, const char *name=0);
+    FilterEditDialog(QPtrList<CalFilter> *,QWidget *parent=0, const char *name=0);
     virtual ~FilterEditDialog();
 
   public slots:
@@ -48,7 +48,7 @@ class FilterEditDialog : public KDialogBase
     void writeFilter(CalFilter *);
 
   private:
-    QList<CalFilter> *mFilters;
+    QPtrList<CalFilter> *mFilters;
 
     QComboBox *mSelectionCombo;
     FilterEdit_base *mEditor;

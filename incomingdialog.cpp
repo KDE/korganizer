@@ -49,7 +49,7 @@ IncomingDialog::~IncomingDialog()
 
 void IncomingDialog::retrieve()
 {
-  QList <ScheduleMessage> messages = mScheduler->retrieveTransactions();
+  QPtrList <ScheduleMessage> messages = mScheduler->retrieveTransactions();
 
   ScheduleMessage *message;
   for(message = messages.first();message;message = messages.next()) {

@@ -127,7 +127,7 @@ class KOMonthView: public KOEventView {
    virtual int currentDateCount();
 
    /** returns the currently selected events */
-   virtual QList<Incidence> getSelected();
+   virtual QPtrList<Incidence> getSelected();
 
    virtual void printPreview(CalPrinter *calPrinter,
                              const QDate &, const QDate &);
@@ -136,7 +136,7 @@ class KOMonthView: public KOEventView {
    virtual void updateView();
    virtual void updateConfig();
    virtual void selectDates(const QDateList);
-   virtual void selectEvents(QList<Event> eventList);
+   virtual void selectEvents(QPtrList<Event> eventList);
 
    void changeEventDisplay(Event *, int);
 
@@ -182,7 +182,7 @@ class KOMonthView: public KOEventView {
    QDate             myDate;
    QDateList         selDates;
    Calendar        *myCal;
-   QList<int>        selDateIdxs;
+   QPtrList<int>        selDateIdxs;
    QPalette          holidayPalette;
 };
 

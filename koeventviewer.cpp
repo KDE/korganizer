@@ -122,7 +122,7 @@ void KOEventViewer::formatCategories(Incidence *event)
 
 void KOEventViewer::formatAttendees(Incidence *event)
 {
-  QList<Attendee> attendees = event->attendees();
+  QPtrList<Attendee> attendees = event->attendees();
   if (attendees.count()) {
     addTag("h2",i18n("Attendees"));
     Attendee *a;

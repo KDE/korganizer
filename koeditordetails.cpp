@@ -285,7 +285,7 @@ void KOEditorDetails::setDefaults()
 
 void KOEditorDetails::readEvent(Incidence *event)
 {
-  QList<Attendee> tmpAList = event->attendees();
+  QPtrList<Attendee> tmpAList = event->attendees();
   Attendee *a;
   for (a = tmpAList.first(); a; a = tmpAList.next())
     insertAttendee(new Attendee(*a));

@@ -73,7 +73,7 @@ void ArchiveDialog::slotUser1()
   }
   
   // Get events to be archived
-  QList<Event> events = mCalendar->getEvents(QDate(1800,1,1),
+  QPtrList<Event> events = mCalendar->getEvents(QDate(1800,1,1),
                                              mDateEdit->getDate().addDays(-1),true);
   if (events.count() == 0) {
     KMessageBox::sorry(this,i18n("There are no events before %1")
@@ -98,7 +98,7 @@ void ArchiveDialog::slotUser1()
 
   // Strip active events from calendar so that only events to be archived
   // remain.
-  QList<Event> activeEvents = archiveCalendar.getEvents(mDateEdit->getDate(),
+  QPtrList<Event> activeEvents = archiveCalendar.getEvents(mDateEdit->getDate(),
                                                           QDate(3000,1,1),
                                                           false);
   Event *ev;
@@ -120,7 +120,7 @@ void ArchiveDialog::slotUser1()
       return;
     }
 /*    
-    QList<Event> es = archiveCalendar.getEvents(QDate(1800,1,1),
+    QPtrList<Event> es = archiveCalendar.getEvents(QDate(1800,1,1),
                                                   QDate(3000,1,1),
                                                   false);
     kdDebug() << "--Following events in archive calendar:" << endl;
@@ -165,7 +165,7 @@ void ArchiveDialog::slotUser1()
 // Delete old events
 void ArchiveDialog::slotUser2()
 {
-  QList<Event> events = mCalendar->getEvents(QDate(1769,12,1),
+  QPtrList<Event> events = mCalendar->getEvents(QDate(1769,12,1),
                                              mDateEdit->getDate().addDays(-1),true);
 
   if (events.count() == 0) {

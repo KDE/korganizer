@@ -4,7 +4,7 @@
 
 #include <qscrollview.h>
 #include <qtimer.h>
-#include <qarray.h>
+#include <qmemarray.h>
 
 #include <event.h>
 
@@ -80,7 +80,7 @@ class KOAgenda : public QScrollView
 
     void checkScrollBoundaries();
 
-    void setHolidayMask(QArray<bool> *);
+    void setHolidayMask(QMemArray<bool> *);
 
     void setTodayColumn(int col);
     int todayColumn() const;
@@ -203,14 +203,14 @@ class KOAgenda : public QScrollView
     bool mItemMoved;
     
     // List of all Items contained in agenda
-    QList<KOAgendaItem> mItems;
+    QPtrList<KOAgendaItem> mItems;
 
     QPopupMenu *mItemPopup; // Right mouse button popup menu for KOAgendaItems
 
     int mOldLowerScrollValue;
     int mOldUpperScrollValue;
 
-    QArray<bool> *mHolidayMask;
+    QMemArray<bool> *mHolidayMask;
 };
 
 #endif // KOAGENDA_H

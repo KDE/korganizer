@@ -66,9 +66,9 @@ int KOWhatsNextView::currentDateCount()
   return 0;
 }
 
-QList<Incidence> KOWhatsNextView::getSelected()
+QPtrList<Incidence> KOWhatsNextView::getSelected()
 {
-  QList<Incidence> eventList;
+  QPtrList<Incidence> eventList;
 
   return eventList;
 }
@@ -84,7 +84,7 @@ void KOWhatsNextView::updateView()
 {
   mText = i18n("<h1>What's next?</h1>");
 
-  QList<Event> events = mCalendar->getEvents(QDate::currentDate(),
+  QPtrList<Event> events = mCalendar->getEvents(QDate::currentDate(),
                                              QDate::currentDate());
   if (events.count() > 0) {
     mText += i18n("<h2>Events:</h2>");
@@ -99,7 +99,7 @@ void KOWhatsNextView::updateView()
     mText += i18n("</table>");
   }
 
-  QList<Todo> todos = mCalendar->getTodoList();
+  QPtrList<Todo> todos = mCalendar->getTodoList();
   if (todos.count() > 0) {  
     mText += i18n("<h2>Todo:</h2>");
     mText += i18n("<ul>");
@@ -121,7 +121,7 @@ void KOWhatsNextView::selectDates(const QDateList dateList)
   updateView();
 }
 
-void KOWhatsNextView::selectEvents(QList<Event> eventList)
+void KOWhatsNextView::selectEvents(QPtrList<Event> eventList)
 {
 }
 

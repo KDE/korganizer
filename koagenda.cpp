@@ -573,7 +573,7 @@ void KOAgenda::setNoActionCursor(KOAgendaItem *moveItem,QPoint viewportPos)
 */
 void KOAgenda::placeSubCells(KOAgendaItem *placeItem)
 {
-  QList<KOAgendaItem> conflictItems;
+  QPtrList<KOAgendaItem> conflictItems;
   int maxSubCells = 0;
   QIntDict<KOAgendaItem> subCellDict(5);
   
@@ -841,7 +841,7 @@ void KOAgenda::insertMultiItem (Event *event,int XBegin,int XEnd,
   int width = XEnd - XBegin + 1;
   int count = 0;
   KOAgendaItem *current = 0;
-  QList<KOAgendaItem> multiItems;
+  QPtrList<KOAgendaItem> multiItems;
   for (cellX = XBegin;cellX <= XEnd;++cellX) {
     if (cellX == XBegin) cellYTop = YTop;
     else cellYTop = 0;
@@ -1069,7 +1069,7 @@ void KOAgenda::setTodayColumn(int col)
     marcus_bains();
 }
 
-void KOAgenda::setHolidayMask(QArray<bool> *mask)
+void KOAgenda::setHolidayMask(QMemArray<bool> *mask)
 {
   mHolidayMask = mask;
 

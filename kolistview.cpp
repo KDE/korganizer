@@ -179,9 +179,9 @@ int KOListView::currentDateCount()
   return 0;
 }
 
-QList<Incidence> KOListView::getSelected()
+QPtrList<Incidence> KOListView::getSelected()
 {
-  QList<Incidence> eventList;
+  QPtrList<Incidence> eventList;
 
   QListViewItem *item = mListView->selectedItem();
   if (item) eventList.append(((KOListViewItem *)item)->event());
@@ -245,7 +245,7 @@ void KOListView::selectDates(const QDateList dateList)
   emit eventsSelected(false);
 }
 
-void KOListView::addEvents(QList<Event> eventList)
+void KOListView::addEvents(QPtrList<Event> eventList)
 {
   Event *ev;
   for(ev = eventList.first(); ev; ev = eventList.next()) {
@@ -253,7 +253,7 @@ void KOListView::addEvents(QList<Event> eventList)
   }
 }
 
-void KOListView::addTodos(QList<Todo> eventList)
+void KOListView::addTodos(QPtrList<Todo> eventList)
 {
   Todo *ev;
   for(ev = eventList.first(); ev; ev = eventList.next()) {
@@ -269,7 +269,7 @@ void KOListView::addIncidence(Incidence *incidence)
   else delete item;
 }
 
-void KOListView::selectEvents(QList<Event> eventList)
+void KOListView::selectEvents(QPtrList<Event> eventList)
 {
   mListView->clear();
   addEvents(eventList);

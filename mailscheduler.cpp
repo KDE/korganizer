@@ -39,9 +39,9 @@ bool MailScheduler::performTransaction(Event *incidence,Method method)
   return mailer.mailAttendees(incidence,messageText);
 }
 
-QList<ScheduleMessage> MailScheduler::retrieveTransactions()
+QPtrList<ScheduleMessage> MailScheduler::retrieveTransactions()
 {
-  QList<ScheduleMessage> messageList;
+  QPtrList<ScheduleMessage> messageList;
 
   return messageList;
 }

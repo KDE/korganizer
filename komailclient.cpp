@@ -31,7 +31,7 @@ KOMailClient::~KOMailClient()
 
 bool KOMailClient::mailAttendees(Incidence *incidence,const QString &attachment)
 {
-  QList<Attendee> attendees = incidence->attendees();
+  QPtrList<Attendee> attendees = incidence->attendees();
   if (attendees.count() == 0) return false;
 
   QString to;

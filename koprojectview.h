@@ -2,7 +2,7 @@
 #ifndef _KOPROJECTVIEW_H
 #define _KOPROJECTVIEW_H
 
-#include <qlist.h>
+#include <qptrlist.h>
 //#include <qttableview.h>
 #include <qfontmetrics.h>
 
@@ -52,7 +52,7 @@ class KOProjectView : public KOBaseView
     KOProjectView(Calendar *, QWidget* parent=0, const char* name=0 );
     ~KOProjectView() {}
 
-    QList<Incidence> getSelected();
+    QPtrList<Incidence> getSelected();
 
     /** Return number of shown dates. */
     int currentDateCount() { return 0; }
@@ -80,7 +80,7 @@ class KOProjectView : public KOBaseView
      * Select events visible in the current display
      * @param eventList a list of events to select.
      */
-    void selectEvents(QList<Event> eventList);
+    void selectEvents(QPtrList<Event> eventList);
 
 /*
     void editItem(QListViewItem *item);

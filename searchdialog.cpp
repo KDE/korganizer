@@ -140,7 +140,7 @@ void SearchDialog::updateView()
 
 void SearchDialog::search(const QRegExp &re)
 {
-  QList<Event> events = mCalendar->getEvents(mStartDate->getDate(),
+  QPtrList<Event> events = mCalendar->getEvents(mStartDate->getDate(),
                                                mEndDate->getDate(),
                                                mInclusiveCheck->isChecked());
 

@@ -330,7 +330,7 @@ void CalPrinter::printTodo(const QDate &fd, const QDate &td)
    mCurrentLinePos = mHeaderHeight + 5;
    kdDebug() << "Header Height: " << mCurrentLinePos << endl;
 
-  QList<Todo> todoList = mCalendar->getTodoList();
+  QPtrList<Todo> todoList = mCalendar->getTodoList();
   todoList.first();
   int count = 1;
   QString outStr;
@@ -459,7 +459,7 @@ void CalPrinter::drawTodo(int count, Todo * item, QPainter &p,int level,QRect *r
   mCurrentLinePos=newrect.bottom() + 10; //set the line position
 
   // If the item has subitems, we need to call ourselves recursively
-  QList<Incidence> l = item->relations();
+  QPtrList<Incidence> l = item->relations();
   Incidence *c;
   for(c=l.first();c;c=l.next()) {
     drawTodo(count, static_cast<Todo *> (c),p,level+1,&startpoint);
@@ -563,7 +563,7 @@ void CalPrinter::drawDayBox(QPainter &p, const QDate &qd,
 {
   KLocale *local = KGlobal::locale();
   QString dayNumStr;
-  QList<Event> eventList;
+  QPtrList<Event> eventList;
   QString ampm;
 
   QString hstring(KOCore::self()->holiday(qd));
@@ -672,7 +672,7 @@ void CalPrinter::drawDay(QPainter &p, const QDate &qd, int width, int height)
   }
 
   p.setFont(QFont("helvetica", 14));
-  QList<Event> eventList = mCalendar->getEventsForDate(qd, TRUE);
+  QPtrList<Event> eventList = mCalendar->getEventsForDate(qd, TRUE);
   Event *currEvent;
   p.setBrush(QBrush(Dense7Pattern));
   for (currEvent = eventList.first(); currEvent;
