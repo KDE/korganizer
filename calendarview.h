@@ -360,10 +360,6 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
      */
     void appointment_delete();
 
-    /** mails the currently selected event to a particular user as a vCalendar
-      attachment. */
-    void action_mail();
-
     /* frees a subtodo from it's relation */
     void todo_unsub();
 

@@ -24,18 +24,16 @@
 #ifndef _CALPRINTER_H
 #define _CALPRINTER_H
 
-// #define KORG_NOPRINTER
-
 #ifndef KORG_NOPRINTER
 
 #include <qptrlist.h>
-
 #include <kdialogbase.h>
-
 #include <korganizer/baseview.h>
+#include <korganizer/printplugin.h>
 
-#include "calprintbase.h"
-
+namespace KOrg {
+class CoreHelper;
+}
 using namespace KCal;
 
 class QVButtonGroup;
@@ -45,6 +43,7 @@ class CalPrintDialog;
 class KConfig;
 class QComboBox;
 class QLabel;
+class CalPrintHelper;
 
 
 /**
@@ -68,12 +67,10 @@ class CalPrinter : public QObject, public KOrg::CalPrinterBase
       \param par parent widget for dialogs
       \param cal calendar to be printed
     */
-    CalPrinter( QWidget *par, Calendar *cal );
+    CalPrinter( QWidget *par, Calendar *cal, KOrg::CoreHelper *helper );
     virtual ~CalPrinter();
 
     void init( KPrinter *printer, Calendar *calendar );
-
-    void setupPrinter();
 
     /**
       Set date range to be printed.
@@ -87,21 +84,26 @@ class CalPrinter : public QObject, public KOrg::CalPrinterBase
     void updateConfig();
 
   private slots:
-    void doPrint( CalPrintBase *selectedStyle, bool preview );
+    void doPrint( KOrg::PrintPlugin *selectedStyle, bool preview );
 
   public:
     void preview( PrintType type, const QDate &fd, const QDate &td );
     void print( PrintType type, const QDate &fd, const QDate &td );
 
+    KPrinter *printer() const;
+    Calendar *calendar() const;
+    KConfig *config() const;
+
   protected:
-    QPtrList<CalPrintBase> mPrintPlugins;
+    KOrg::PrintPlugin::List mPrintPlugins;
 
   private:
     KPrinter *mPrinter;
     Calendar *mCalendar;
     QWidget *mParent;
     KConfig *mConfig;
-
+    KOrg::CoreHelper *mCoreHelper;
+    CalPrintHelper *mHelper;
     CalPrintDialog *mPrintDialog;
 };
 
@@ -109,10 +111,10 @@ class CalPrintDialog : public KDialogBase
 {
     Q_OBJECT
   public:
-    CalPrintDialog( QPtrList<CalPrintBase> plugins, KPrinter *p,
+    CalPrintDialog( KOrg::PrintPlugin::List plugins, KPrinter *p,
                     QWidget *parent = 0, const char *name = 0 );
     virtual ~CalPrintDialog();
-    CalPrintBase *selectedPlugin();
+    KOrg::PrintPlugin *selectedPlugin();
     CalPrinter::ePrintOrientation orientation() { return mOrientation; }
 
   public slots:
@@ -128,7 +130,7 @@ class CalPrintDialog : public KDialogBase
     KPrinter *mPrinter;
     QVButtonGroup *mTypeGroup;
     QWidgetStack *mConfigArea;
-    QPtrList<CalPrintBase> mPrintPlugins;
+    KOrg::PrintPlugin::List mPrintPlugins;
     QLabel *mPrinterLabel;
     QString mPreviewText;
     QComboBox *mOrientationSelection;

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Encoding=UTF-8
+X-KDE-Library=libkorg_journalprint
+Name=Journal print style
+Comment=This journal allows you to print out journal entries (diary entries).
+Type=Service
+ServiceTypes=Calendar/Plugin,KOrganizer/PrintPlugin
+X-KDE-KOrganizer-HasSettings=false

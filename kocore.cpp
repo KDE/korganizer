@@ -90,6 +90,12 @@ KTrader::OfferList KOCore::availableParts()
                            KOrg::Part::interfaceVersion() );
 }
 
+KTrader::OfferList KOCore::availablePrintPlugins()
+{
+  return availablePlugins( KOrg::PrintPlugin::serviceType(),
+                           KOrg::PrintPlugin::interfaceVersion() );
+}
+
 KOrg::Plugin *KOCore::loadPlugin( KService::Ptr service )
 {
   kdDebug(5850) << "loadPlugin: library: " << service->library() << endl;
@@ -190,6 +196,33 @@ KOrg::Part *KOCore::loadPart( KService::Ptr service, KOrg::MainWindow *parent )
   return pluginFactory->create( parent );
 }
 
+KOrg::PrintPlugin *KOCore::loadPrintPlugin( KService::Ptr service )
+{
+  kdDebug(5850) << "loadPart: print plugin in library: " << service->library() << endl;
+
+  if ( !service->hasServiceType( KOrg::PrintPlugin::serviceType() ) ) {
+    return 0;
+  }
+
+  KLibFactory *factory = KLibLoader::self()->factory(
+      service->library().latin1() );
+
+  if ( !factory ) {
+    kdDebug(5850) << "KOCore::loadPrintPlugin(): Factory creation failed" << endl;
+    return 0;
+  }
+
+  KOrg::PrintPluginFactory *pluginFactory =
+      static_cast<KOrg::PrintPluginFactory *>( factory );
+
+  if ( !pluginFactory ) {
+    kdDebug(5850) << "KOCore::loadPrintPlugins(): Cast failed" << endl;
+    return 0;
+  }
+
+  return pluginFactory->create();
+}
+
 void KOCore::addXMLGUIClient( QWidget *wdg, KXMLGUIClient *guiclient )
 {
   mXMLGUIClients.insert( wdg, guiclient );
@@ -217,6 +250,18 @@ KOrg::Part *KOCore::loadPart( const QString &name, KOrg::MainWindow *parent )
   for( it = list.begin(); it != list.end(); ++it ) {
     if ( (*it)->desktopEntryName() == name ) {
       return loadPart( *it, parent );
+    }
+  }
+  return 0;
+}
+
+KOrg::PrintPlugin *KOCore::loadPrintPlugin( const QString &name )
+{
+  KTrader::OfferList list = availablePrintPlugins();
+  KTrader::OfferList::ConstIterator it;
+  for( it = list.begin(); it != list.end(); ++it ) {
+    if ( (*it)->desktopEntryName() == name ) {
+      return loadPrintPlugin( *it );
     }
   }
   return 0;
@@ -270,6 +315,26 @@ KOrg::Part::List KOCore::loadParts( KOrg::MainWindow *parent )
     }
   }
   return parts;
+}
+
+KOrg::PrintPlugin::List KOCore::loadPrintPlugins()
+{
+  KOrg::PrintPlugin::List loadedPlugins;
+
+  QStringList selectedPlugins = KOPrefs::instance()->mSelectedPlugins;
+
+  KTrader::OfferList plugins = availablePrintPlugins();
+  KTrader::OfferList::ConstIterator it;
+kdDebug()<<"selectedPlugins: "<<selectedPlugins.join(",")<<endl;
+  for( it = plugins.begin(); it != plugins.end(); ++it ) {
+kdDebug()<<"Loading Pring plugin: "<<(*it)->desktopEntryName()<<endl;  
+    if ( selectedPlugins.find( (*it)->desktopEntryName() ) !=
+                               selectedPlugins.end() ) {
+      KOrg::PrintPlugin *part = loadPrintPlugin( *it );
+      if ( part ) loadedPlugins.append( part );
+    }
+  }
+  return loadedPlugins;
 }
 
 void KOCore::unloadPlugins()

@@ -2,7 +2,7 @@ if include_knewstuff
 knewstuff_SUBDIR=knewstuff
 endif
 
-SUBDIRS = $(knewstuff_SUBDIR) . korgac pixmaps sounds plugins interfaces
+SUBDIRS = $(knewstuff_SUBDIR) printing . korgac pixmaps sounds plugins interfaces
 
 INCLUDES = \
   -I$(srcdir)/interfaces \
@@ -11,6 +11,7 @@ INCLUDES = \
   -I$(top_srcdir)/mimelib \
   -I$(top_srcdir)/certmanager/lib \
   -I$(top_srcdir)/kresources/remote \
+  -I$(top_srcdir)/korganizer/printing \
   -I$(top_srcdir) \
   $(all_includes)
 
@@ -28,6 +29,7 @@ kcm_korganizer_la_SOURCES = koprefsdialog.cpp
 kcm_korganizer_la_LDFLAGS = $(all_libraries) -module -avoid-version -no-undefined
 kcm_korganizer_la_LIBADD = libkorganizer.la $(top_builddir)/libkdepim/libkdepim.la \
   $(LIB_KDECORE)
+kcm_korganizer_la_COMPILE_FIRST = koprefs_base.h 	kogroupwareprefspage.h
 
 libkorganizerpart_la_LDFLAGS = -module $(KDE_PLUGIN) $(all_libraries)
 libkorganizerpart_la_LIBADD  = libkorganizer.la
@@ -58,10 +60,12 @@ libkorganizer_la_LIBADD  = $(LIB_KPARTS) $(LIB_KFILE) \
 	$(top_builddir)/libkdepim/libkdepim.la \
 	libkorganizer_eventviewer.la \
 	libkorganizer_calendar.la \
+	printing/libkocorehelper.la \
+	printing/libkorg_stdprinting.la \
 	$(top_builddir)/kdgantt/libkdgantt.la \
 	$(KNEWSTUFF_LIB) \
 	$(top_builddir)/kresources/remote/libkcal_resourceremote.la
-libkorganizer_la_COMPILE_FIRST = kofilterview_base.ui \
+libkorganizer_la_COMPILE_FIRST = koprefs_base.h kofilterview_base.ui \
 	outgoingdialog_base.ui \
 	incomingdialog_base.ui \
 	kogroupwareprefspage.ui \
@@ -73,13 +77,9 @@ libkorganizer_la_SOURCES = komessagebox.cpp outgoingdialog_base.ui \
 	komonthview.cpp \
 	searchdialog.cpp calendarview.cpp koviewmanager.cpp \
 	kodialogmanager.cpp \
-	calprintdayconfig_base.ui calprintweekconfig_base.ui \
-	calprintmonthconfig_base.ui calprinttodoconfig_base.ui \
-	calprinter.cpp calprintbase.cpp calprintplugins.cpp \
 	archivedialog.cpp \
 	komailclient.cpp kotodoview.cpp kotodoviewitem.cpp \
 	kolistview.cpp \
-	koprefsdialog.cpp \
 	koincidenceeditor.cpp koeventeditor.cpp kotodoeditor.cpp kojournaleditor.cpp\
 	koprefs.cpp kowindowlist.cpp \
 	koeditorgeneral.cpp \
@@ -107,12 +107,11 @@ libkorganizer_la_SOURCES = komessagebox.cpp outgoingdialog_base.ui \
 	history.cpp \
 	koprefs_base.kcfgc \
 	koincidencetooltip.cpp aboutdata.cpp \
-	cellitem.cpp \
 	importdialog.cpp \
 	korganizerifaceimpl.cpp \
 	freebusymanager.cpp freebusyurldialog.cpp \
 	eventarchiver.cpp koidentitymanager.cpp \
-	exportwebdialog.cpp
+	exportwebdialog.cpp kocorehelper.cpp
 
 
 libkorganizer_eventviewer_la_LDFLAGS = $(all_libraries) $(KDE_RPATH) \
@@ -129,6 +128,7 @@ libkorganizer_calendar_la_LIBADD  = $(LIB_KPARTS) \
                                     $(top_builddir)/libkcal/libkcal.la
 libkorganizer_calendar_la_SOURCES = stdcalendar.cpp
 
+
 kmailIface_DIR = $(top_srcdir)/kmail
 kmailIface_DCOPIDLNG = true
 
@@ -140,7 +140,7 @@ noinst_HEADERS = komonthview.h \
 	kdatenavigator.h \
 	calendarview.h \
 	version.h \
-	searchdialog.h calprinter.h calprintbase.h calprintplugins.h \
+	searchdialog.h \
 	archivedialog.h \
 	komailclient.h kotodoview.h \
 	kolistview.h \

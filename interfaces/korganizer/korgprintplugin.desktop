@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=ServiceType
+X-KDE-ServiceType=KOrganizer/PrintPlugin
+Comment=KOrganizer Part
+Comment[xx]=xxKOrganizer Partxx
+
+[PropertyDef::X-KDE-KOrganizer-HasSettings]
+Type=bool
+
+[PropertyDef::X-KDE-PluginInterfaceVersion]
+Type=int

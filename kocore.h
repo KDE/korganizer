@@ -26,6 +26,7 @@
 
 #include <calendar/calendardecoration.h>
 #include <korganizer/part.h>
+#include <korganizer/printplugin.h>
 
 #include <ktrader.h>
 
@@ -41,6 +42,7 @@ class KOCore
     KTrader::OfferList availablePlugins();
     KTrader::OfferList availableCalendarDecorations();
     KTrader::OfferList availableParts();
+    KTrader::OfferList availablePrintPlugins();
 
     KOrg::Plugin *loadPlugin( KService::Ptr service );
     KOrg::Plugin *loadPlugin( const QString & );
@@ -50,8 +52,12 @@ class KOCore
 
     KOrg::Part *loadPart( KService::Ptr, KOrg::MainWindow *parent );
     KOrg::Part *loadPart( const QString &, KOrg::MainWindow *parent );
+    
+    KOrg::PrintPlugin *loadPrintPlugin( KService::Ptr service );
+    KOrg::PrintPlugin *loadPrintPlugin( const QString & );
 
     KOrg::CalendarDecoration::List calendarDecorations();
+    KOrg::PrintPlugin::List loadPrintPlugins();
     KOrg::Part::List loadParts( KOrg::MainWindow *parent );
 
     void addXMLGUIClient( QWidget*, KXMLGUIClient *guiclient );

@@ -22,12 +22,12 @@
     with any edition of Qt, and distribute the resulting executable,
     without including the source code for Qt in the source distribution.
 */
-#ifndef CALPRINTPLUGINS_H
-#define CALPRINTPLUGINS_H
+#ifndef CALPRINTDEFAULTPLUGINS_H
+#define CALPRINTDEFAULTPLUGINS_H
 
 
 #include <klocale.h>
-#include "calprintbase.h"
+#include "calprintpluginbase.h"
 
 #ifndef KORG_NOPRINTER
 namespace KCal {
@@ -36,17 +36,16 @@ class Calendar;
 
 using namespace KCal;
 
-class CalPrintDay : public CalPrintBase
+class CalPrintDay : public CalPrintPluginBase
 {
-    Q_OBJECT
   public:
-    CalPrintDay(KPrinter *printer, Calendar *cal, KConfig *cfg);
+    CalPrintDay();
     virtual ~CalPrintDay();
     virtual QString description() { return i18n("Print day"); }
-    virtual QString longDescription() { return i18n("Prints all events of a single day on one page"); }
-    virtual QWidget *configWidget( QWidget* );
+    virtual QString info() { return i18n("Prints all events of a single day on one page"); }
+    virtual QWidget *createConfigWidget( QWidget* );
 
-  public slots:
+  public:
     void print(QPainter &p, int width, int height);
     virtual void readSettingsWidget();
     virtual void setSettingsWidget();
@@ -60,18 +59,17 @@ class CalPrintDay : public CalPrintBase
     bool mIncludeAllEvents;
 };
 
-class CalPrintWeek : public CalPrintBase
+class CalPrintWeek : public CalPrintPluginBase
 {
-    Q_OBJECT
   public:
-    CalPrintWeek(KPrinter *printer, Calendar *cal, KConfig *cfg);
+    CalPrintWeek();
     virtual ~CalPrintWeek();
     virtual QString description() { return i18n("Print week"); }
-    virtual QString longDescription() { return i18n("Prints all events of one week on one page"); }
-    virtual QWidget *configWidget(QWidget*);
+    virtual QString info() { return i18n("Prints all events of one week on one page"); }
+    virtual QWidget *createConfigWidget(QWidget*);
     virtual KPrinter::Orientation orientation();
 
-  public slots:
+  public:
     void print(QPainter &p, int width, int height);
     virtual void readSettingsWidget();
     virtual void setSettingsWidget();
@@ -85,18 +83,17 @@ class CalPrintWeek : public CalPrintBase
     bool mIncludeTodos;
 };
 
-class CalPrintMonth : public CalPrintBase
+class CalPrintMonth : public CalPrintPluginBase
 {
-    Q_OBJECT
   public:
-    CalPrintMonth(KPrinter *printer, Calendar *cal, KConfig *cfg);
+    CalPrintMonth();
     virtual ~CalPrintMonth();
     virtual QString description() { return i18n("Print month"); }
-    virtual QString longDescription() { return i18n("Prints all events of one month on one page"); }
-    virtual QWidget *configWidget(QWidget*);
+    virtual QString info() { return i18n("Prints all events of one month on one page"); }
+    virtual QWidget *createConfigWidget(QWidget*);
     virtual KPrinter::Orientation orientation() { return KPrinter::Landscape; }
 
-  public slots:
+  public:
     void print(QPainter &p, int width, int height);
     virtual void readSettingsWidget();
     virtual void setSettingsWidget();
@@ -109,17 +106,16 @@ class CalPrintMonth : public CalPrintBase
     bool mIncludeTodos;
 };
 
-class CalPrintTodos : public CalPrintBase
+class CalPrintTodos : public CalPrintPluginBase
 {
-    Q_OBJECT
   public:
-    CalPrintTodos(KPrinter *printer, Calendar *cal, KConfig *cfg);
+    CalPrintTodos();
     virtual ~CalPrintTodos();
     virtual QString description() { return i18n("Print todos"); }
-    virtual QString longDescription() { return i18n("Prints all todos in a (tree-like) list"); }
-    virtual QWidget *configWidget(QWidget*);
+    virtual QString info() { return i18n("Prints all todos in a (tree-like) list"); }
+    virtual QWidget *createConfigWidget(QWidget*);
 
-  public slots:
+  public:
     void print(QPainter &p, int width, int height);
     virtual void readSettingsWidget();
     virtual void setSettingsWidget();

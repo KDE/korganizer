@@ -31,9 +31,6 @@
 
 #include "calendarview.h"
 
-#ifndef KORG_NOMAIL
-#include "komailclient.h"
-#endif
 #ifndef KORG_NOPRINTER
 #include "calprinter.h"
 #endif
@@ -66,6 +63,7 @@
 #include "datechecker.h"
 #include "komessagebox.h"
 #include "exportwebdialog.h"
+#include "kocorehelper.h"
 
 #include <libkcal/vcaldrag.h>
 #include <libkcal/icaldrag.h>
@@ -265,7 +263,7 @@ CalendarView::CalendarView( QWidget *parent, const char *name )
   // Hide filter per default
   mFilterView->hide();
 
-  KDirWatch *messageWatch = new KDirWatch();
+  KDirWatch *messageWatch = new KDirWatch( this );
   messageWatch->addDir( locateLocal( "data", "korganizer/income/" ) );
   connect( messageWatch, SIGNAL( dirty( const QString & ) ),
            SLOT( lookForIncomingMessages() ) );
@@ -344,7 +342,7 @@ void CalendarView::createPrinter()
 {
 #ifndef KORG_NOPRINTER
   if (!mCalPrinter) {
-    mCalPrinter = new CalPrinter(this, mCalendar);
+    mCalPrinter = new CalPrinter( this, mCalendar, new KOCoreHelper() );
     connect(this, SIGNAL(configChanged()), mCalPrinter, SLOT(updateConfig()));
   }
 #endif
@@ -1078,39 +1076,6 @@ void CalendarView::dissociateFutureOccurrence( Incidence *incidence, const QDate
 
 /*****************************************************************************/
 
-void CalendarView::action_mail()
-{
-#ifndef KORG_NOMAIL
-  KOMailClient mailClient;
-
-  Incidence *incidence = currentSelection();
-
-  if (!incidence) {
-    KMessageBox::information( this, i18n("Cannot generate mail:\nNo "
-                              "event selected."), "MailNoEventSelected" );
-    return;
-  }
-  if(incidence->attendeeCount() == 0 ) {
-    KMessageBox::information( this, i18n("Cannot generate mail:\nNo "
-                              "attendees defined.\n"), "MailNoAttendees" );
-    return;
-  }
-
-  CalendarLocal cal_tmp;
-  Incidence *inc_tmp;
-  if ( incidence ) {
-    inc_tmp = incidence->clone();
-    cal_tmp.addIncidence( inc_tmp );
-  }
-  ICalFormat mForm;
-  QString attachment = mForm.toString( &cal_tmp );
-  delete( inc_tmp );
-
-  mailClient.mailAttendees( currentSelection(), attachment);
-
-#endif
-}
-
 
 void CalendarView::schedule_publish(Incidence *incidence)
 {
@@ -1695,6 +1660,7 @@ void CalendarView::deleteIncidence(Incidence *incidence)
         break;
 
       case KMessageBox::Yes: // just this one
+        // @TODO: Add groupware things
         if ( itemDate.isValid()) {
           Incidence*oldIncidence = incidence->clone();
           incidence->addExDate( itemDate );
@@ -1702,6 +1668,7 @@ void CalendarView::deleteIncidence(Incidence *incidence)
         }
         break;
       case KMessageBox::No: // all future items
+        // @TODO: Add groupware things
         Recurrence *recur = incidence->recurrence();
         if ( recur ) {
           Incidence*oldIncidence = incidence->clone();

@@ -24,6 +24,8 @@
     without including the source code for Qt in the source distribution.
 */
 
+#ifndef KORG_NOPRINTER
+
 #include <qpainter.h>
 #include <qdatetimeedit.h>
 #include <qdatetime.h>
@@ -43,12 +45,9 @@
 
 #include <libkdepim/kdateedit.h>
 
-#include "koprefs.h"
-#include "koglobals.h"
-#include "calprintplugins.h"
-#ifndef KORG_NOPRINTER
-
-#include "calprintplugins.moc"
+#include "calprinthelper.h"
+#include "calprintpluginbase.h"
+#include "calprintdefaultplugins.h"
 
 #include "calprintdayconfig_base.h"
 #include "calprintweekconfig_base.h"
@@ -60,8 +59,7 @@
  *           Print Day
  **************************************************************/
 
-CalPrintDay::CalPrintDay( KPrinter *printer, Calendar *cal, KConfig *cfg )
-  : CalPrintBase( printer, cal, cfg )
+CalPrintDay::CalPrintDay() : CalPrintPluginBase()
 {
 }
 
@@ -69,11 +67,9 @@ CalPrintDay::~CalPrintDay()
 {
 }
 
-QWidget *CalPrintDay::configWidget( QWidget *w )
+QWidget *CalPrintDay::createConfigWidget( QWidget *w )
 {
-  mConfigWidget = new CalPrintDayConfig_Base( w );
-  setSettingsWidget();
-  return mConfigWidget;
+  return new CalPrintDayConfig_Base( w );
 }
 
 void CalPrintDay::readSettingsWidget()
@@ -114,8 +110,8 @@ void CalPrintDay::loadConfig()
 {
   if ( mConfig ) {
     QDate dt;
-    QTime tm1( KOPrefs::instance()->mDayBegins.time() );
-    QDateTime startTm( dt, tm1  );
+    QTime tm1( mCoreHelper->dayStart() );
+    QDateTime startTm( dt, tm1 );
     QDateTime endTm( dt, tm1.addSecs( 12 * 60 * 60 ) );
     mStartTime = mConfig->readDateTimeEntry( "Start time", &startTm ).time();
     mEndTime = mConfig->readDateTimeEntry( "End time", &endTm ).time();
@@ -127,7 +123,7 @@ void CalPrintDay::loadConfig()
 
 void CalPrintDay::saveConfig()
 {
-  kdDebug(5850) << "CalPrintDay::saveConfig()" << endl;
+  kdDebug() << "CalPrintDay::saveConfig()" << endl;
 
   readSettingsWidget();
   if ( mConfig ) {
@@ -140,7 +136,7 @@ void CalPrintDay::saveConfig()
 
 void CalPrintDay::setDateRange( const QDate& from, const QDate& to )
 {
-  CalPrintBase::setDateRange( from, to );
+  CalPrintPluginBase::setDateRange( from, to );
   CalPrintDayConfig_Base *cfg =
       dynamic_cast<CalPrintDayConfig_Base*>( mConfigWidget );
   if ( cfg ) {
@@ -175,19 +171,19 @@ void CalPrintDay::print( QPainter &p, int width, int height )
     }
 
     KLocale *local = KGlobal::locale();
-    drawHeader( p, local->formatDate( curDay, false ),
-                curDay, QDate(), 0, 0, width, mHeaderHeight );
+    mHelper->drawHeader( p, local->formatDate( curDay, false ),
+                curDay, QDate(), 0, 0, width, mHelper->mHeaderHeight );
 
-    y += mHeaderHeight + 5;
+    y += mHelper->mHeaderHeight + 5;
     x = 80;
     Event::List eventList = mCalendar->events( curDay, true );
 
     p.setFont( QFont( "helvetica", 12 ) );
-    drawAllDayBox( p, eventList, curDay, true, x, y, width - x, currHeight );
+    mHelper->drawAllDayBox( p, eventList, curDay, true, x, y, width - x, currHeight );
     y += currHeight;
-    drawAgendaDayBox( p, eventList, curDay, mIncludeAllEvents,
+    mHelper->drawAgendaDayBox( p, eventList, curDay, mIncludeAllEvents,
                       curStartTime, curEndTime, x, y, width - x, height - y );
-    drawTimeLine( p, curStartTime, curEndTime, 0, y, x - 5, height - y );
+    mHelper->drawTimeLine( p, curStartTime, curEndTime, 0, y, x - 5, height - y );
     curDay = curDay.addDays( 1 );
     if ( curDay <= mToDate ) mPrinter->newPage();
   } while ( curDay <= mToDate );
@@ -199,8 +195,7 @@ void CalPrintDay::print( QPainter &p, int width, int height )
  *           Print Week
  **************************************************************/
 
-CalPrintWeek::CalPrintWeek(KPrinter *printer, Calendar *cal, KConfig *cfg)
-  :CalPrintBase(printer,cal,cfg)
+CalPrintWeek::CalPrintWeek() : CalPrintPluginBase()
 {
 }
 
@@ -208,11 +203,9 @@ CalPrintWeek::~CalPrintWeek()
 {
 }
 
-QWidget *CalPrintWeek::configWidget( QWidget *w )
+QWidget *CalPrintWeek::createConfigWidget( QWidget *w )
 {
-  mConfigWidget = new CalPrintWeekConfig_Base( w );
-  setSettingsWidget();
-  return mConfigWidget;
+  return new CalPrintWeekConfig_Base( w );
 }
 
 void CalPrintWeek::readSettingsWidget()
@@ -256,7 +249,7 @@ void CalPrintWeek::loadConfig()
 {
   if ( mConfig ) {
     QDate dt;
-    QTime tm1( KOPrefs::instance()->mDayBegins.time() );
+    QTime tm1( mCoreHelper->dayStart() );
     QDateTime startTm( dt, tm1  );
     QDateTime endTm( dt, tm1.addSecs( 43200 ) );
     mStartTime = mConfig->readDateTimeEntry( "Start time", &startTm ).time();
@@ -287,7 +280,7 @@ KPrinter::Orientation CalPrintWeek::orientation()
 
 void CalPrintWeek::setDateRange( const QDate &from, const QDate &to )
 {
-  CalPrintBase::setDateRange( from, to );
+  CalPrintPluginBase::setDateRange( from, to );
   CalPrintWeekConfig_Base *cfg =
       dynamic_cast<CalPrintWeekConfig_Base*>( mConfigWidget );
   if ( cfg ) {
@@ -301,9 +294,9 @@ void CalPrintWeek::print( QPainter &p, int width, int height )
   QDate curWeek, fromWeek, toWeek;
 
   // correct begin and end to first and last day of week
-  int weekdayCol = weekdayColumn( mFromDate.dayOfWeek() );
+  int weekdayCol = mHelper->weekdayColumn( mFromDate.dayOfWeek() );
   fromWeek = mFromDate.addDays( -weekdayCol );
-  weekdayCol = weekdayColumn( mFromDate.dayOfWeek() );
+  weekdayCol = mHelper->weekdayColumn( mFromDate.dayOfWeek() );
   toWeek = mToDate.addDays( 6 - weekdayCol );
 
   curWeek = fromWeek.addDays( 6 );
@@ -314,10 +307,10 @@ void CalPrintWeek::print( QPainter &p, int width, int height )
       do {
         QString line1( local->formatDate( curWeek.addDays( -6 ) ) );
         QString line2( local->formatDate( curWeek ) );
-        drawHeader( p, line1 + "\n" + line2, curWeek.addDays( -6 ), QDate(),
-                    0, 0, width, mHeaderHeight );
-        int top = mHeaderHeight + 10;
-        drawWeek( p, curWeek, 0, top, width, height - top );
+        mHelper->drawHeader( p, line1 + "\n" + line2, curWeek.addDays( -6 ), QDate(),
+                    0, 0, width, mHelper->mHeaderHeight );
+        int top = mHelper->mHeaderHeight + 10;
+        mHelper->drawWeek( p, curWeek, 0, top, width, height - top );
         curWeek = curWeek.addDays( 7 );
         if ( curWeek <= toWeek )
           mPrinter->newPage();
@@ -329,10 +322,13 @@ void CalPrintWeek::print( QPainter &p, int width, int height )
       do {
         QString line1( local->formatDate( curWeek.addDays( -6 ) ) );
         QString line2( local->formatDate( curWeek ) );
-        int hh = int(mHeaderHeight * 2./3.);
-        drawHeader( p, i18n("date from - to", "%1 - %2\nWeek %3").arg( line1 ).arg( line2 ).arg( curWeek.weekNumber() ),
-                    curWeek, QDate(), 0, 0, width, hh );
-        drawTimeTable( p, fromWeek, curWeek,
+        int hh = int(mHelper->mHeaderHeight * 2./3.);
+        mHelper->drawHeader( p, i18n("date from - to", "%1 - %2\nWeek %3")
+                             .arg( line1 )
+                             .arg( line2 )
+                             .arg( curWeek.weekNumber() ),
+                             curWeek, QDate(), 0, 0, width, hh );
+        mHelper->drawTimeTable( p, fromWeek, curWeek,
                        mStartTime, mEndTime, 0, hh + 5,
                        width, height - hh - 5 );
         fromWeek = fromWeek.addDays( 7 );
@@ -347,14 +343,14 @@ void CalPrintWeek::print( QPainter &p, int width, int height )
         QString line1( local->formatDate( curWeek.addDays( -6 ) ) );
         QString line2( local->formatDate( curWeek ) );
         QDate endLeft( fromWeek.addDays( 3 ) );
-        int hh = mHeaderHeight;
+        int hh = mHelper->mHeaderHeight;
         
-        drawTimeTable( p, fromWeek, endLeft,
+        mHelper->drawTimeTable( p, fromWeek, endLeft,
                        mStartTime, mEndTime, 0, hh + 5,
                        width, height - hh - 5 );
         mPrinter->newPage();
-        drawSplitHeaderRight( p, fromWeek, curWeek, QDate(), width, hh );
-        drawTimeTable( p, endLeft.addDays( 1 ), curWeek,
+        mHelper->drawSplitHeaderRight( p, fromWeek, curWeek, QDate(), width, hh );
+        mHelper->drawTimeTable( p, endLeft.addDays( 1 ), curWeek,
                        mStartTime, mEndTime, 0, hh + 5,
                        int( ( width - 50 ) * 3. / 4. + 50 ), height - hh - 5 );
         
@@ -374,8 +370,7 @@ void CalPrintWeek::print( QPainter &p, int width, int height )
  *           Print Month
  **************************************************************/
 
-CalPrintMonth::CalPrintMonth( KPrinter *printer, Calendar *cal, KConfig *cfg )
-  : CalPrintBase( printer, cal, cfg )
+CalPrintMonth::CalPrintMonth() : CalPrintPluginBase()
 {
 }
 
@@ -383,10 +378,9 @@ CalPrintMonth::~CalPrintMonth()
 {
 }
 
-QWidget *CalPrintMonth::configWidget( QWidget *w )
+QWidget *CalPrintMonth::createConfigWidget( QWidget *w )
 {
-  mConfigWidget = new CalPrintMonthConfig_Base( w );
-  return mConfigWidget;
+  return new CalPrintMonthConfig_Base( w );
 }
 
 void CalPrintMonth::readSettingsWidget()
@@ -439,7 +433,7 @@ void CalPrintMonth::saveConfig()
 
 void CalPrintMonth::setDateRange( const QDate &from, const QDate &to )
 {
-  CalPrintBase::setDateRange( from, to );
+  CalPrintPluginBase::setDateRange( from, to );
   CalPrintMonthConfig_Base *cfg =
       dynamic_cast<CalPrintMonthConfig_Base *>( mConfigWidget );
   if ( cfg ) {
@@ -456,19 +450,20 @@ void CalPrintMonth::print( QPainter &p, int width, int height )
   toMonth = mToDate.addDays( mToDate.daysInMonth() - mToDate.day() );
 
   curMonth = fromMonth;
+  const KCalendarSystem *calSys = mHelper->calendarSystem();
   do {
     QString title( i18n("monthname year", "%1 %2") );
-    title = title.arg( KOGlobals::self()->calendarSystem()->monthName( curMonth ) )
+    title = title.arg( calSys->monthName( curMonth ) )
                  .arg( curMonth.year() );
     QDate tmp( fromMonth );
-    int weekdayCol = weekdayColumn( tmp.dayOfWeek() );
+    int weekdayCol = mHelper->weekdayColumn( tmp.dayOfWeek() );
     tmp = tmp.addDays( -weekdayCol );
 
-    drawHeader( p, title,
+    mHelper->drawHeader( p, title,
                 curMonth.addMonths( -1 ), curMonth.addMonths( 1 ),
-                0, 0, width, mHeaderHeight );
-    drawMonth( p, curMonth, mWeekNumbers, 0, mHeaderHeight + 5,
-               width, height - mHeaderHeight - 5 );
+                0, 0, width, mHelper->mHeaderHeight );
+    mHelper->drawMonth( p, curMonth, mWeekNumbers, 0, mHelper->mHeaderHeight + 5,
+               width, height - mHelper->mHeaderHeight - 5 );
     curMonth = curMonth.addDays( curMonth.daysInMonth() );
     if ( curMonth <= toMonth ) mPrinter->newPage();
   } while ( curMonth <= toMonth );
@@ -482,8 +477,7 @@ void CalPrintMonth::print( QPainter &p, int width, int height )
  *           Print Todos
  **************************************************************/
 
-CalPrintTodos::CalPrintTodos( KPrinter *printer, Calendar *cal, KConfig *cfg )
-  : CalPrintBase( printer, cal, cfg )
+CalPrintTodos::CalPrintTodos() : CalPrintPluginBase()
 {
 }
 
@@ -491,10 +485,9 @@ CalPrintTodos::~CalPrintTodos()
 {
 }
 
-QWidget *CalPrintTodos::configWidget( QWidget *w )
+QWidget *CalPrintTodos::createConfigWidget( QWidget *w )
 {
-  mConfigWidget = new CalPrintTodoConfig_Base( w );
-  return mConfigWidget;
+  return new CalPrintTodoConfig_Base( w );
 }
 
 void CalPrintTodos::readSettingsWidget()
@@ -570,10 +563,10 @@ void CalPrintTodos::print( QPainter &p, int width, int height )
   int lineSpacing = 15;
   int fontHeight = 10;
 
-  drawHeader( p, mPageTitle, mFromDate, QDate(),
-              0, 0, width, mHeaderHeight );
+  mHelper->drawHeader( p, mPageTitle, mFromDate, QDate(),
+              0, 0, width, mHelper->mHeaderHeight );
 
-  int mCurrentLinePos = mHeaderHeight + 5;
+  int mCurrentLinePos = mHelper->mHeaderHeight + 5;
   QString outStr;
   QFont oldFont( p.font() );
 
@@ -607,7 +600,7 @@ void CalPrintTodos::print( QPainter &p, int width, int height )
 
   Todo::List todoList;
 //   if (mTodoPrintType==TodosSelected) {
-//     todoList.append(selectedTodoo);
+//     todoList.append( selectedTodo );
 //   } else {
     todoList = mCalendar->todos();
 //   }
@@ -636,7 +629,7 @@ void CalPrintTodos::print( QPainter &p, int width, int height )
         continue;
       }
       count++;
-      drawTodo( count, currEvent, p, mConnectSubTodos,
+      mHelper->drawTodo( count, currEvent, p, mConnectSubTodos,
                 mIncludeDescription, pospriority, possummary, posdue, 0,
                 0, mCurrentLinePos, width, height, todoList );
     }

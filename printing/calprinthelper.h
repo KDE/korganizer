@@ -24,31 +24,30 @@
 */
 #ifndef CALPRINTBASE_H
 #define CALPRINTBASE_H
-// #define KORG_NOPRINTER
 
 #ifndef KORG_NOPRINTER
 
 #include <qdatetime.h>
 #include <kprinter.h>
 #include <libkcal/event.h>
+#include <libkcal/todo.h>
 
 class PrintCellItem;
 
 namespace KCal {
 class Calendar;
 class Todo;
+class Event;
+}
+namespace KOrg {
+class CoreHelper;
 }
 class QWidget;
 
 using namespace KCal;
 
-/**
-  Base class for KOrganizer printing classes. Each sub class represents one
-  calendar print format.
-*/
-class CalPrintBase : public QObject
+class CalPrintHelper
 {
-    Q_OBJECT
   public:
     /**
       Constructor
@@ -57,87 +56,25 @@ class CalPrintBase : public QObject
       \param cal Calendar to be printed.
       \param cfg KConfig object for reading/writing printing configuration
     */
-    CalPrintBase( KPrinter *pr, Calendar *cal, KConfig *cfg );
-    virtual ~CalPrintBase();
+    CalPrintHelper( KPrinter *pr, Calendar *cal, KConfig *cfg, KOrg::CoreHelper *corehelper );
+    virtual ~CalPrintHelper();
+    
+    bool useColors() const { return mUseColors; }
+    void setUseColors( bool useColors ) { mUseColors = useColors; }
 
-    /**
-      Returns short description of print format.
+  public:
+    Event *holiday( const QDate &dt );
+    /** 
+      Determines the column of the given weekday ( 1=Monday, 7=Sunday ), taking the 
+      start of the week setting into account as given in kcontrol.
+      \param weekday Index of the weekday 
     */
-    virtual QString description() = 0;
-    /**
-      Returns long description of print format.
-    */
-    virtual QString longDescription() = 0;
+    static int weekdayColumn( int weekday );
+    void setCategoryColors( QPainter &p, Incidence *incidence );
+    
+    void setCalendarSystem( const KCalendarSystem *calsys ) { mCalSys = calsys; }
+    const KCalendarSystem *calendarSystem() const { return mCalSys; }
 
-    /**
-      Returns widget for configuring the print format.
-    */
-    virtual QWidget *configWidget( QWidget * );
-
-    /**
-      Actually do the printing.
-      
-      \param p QPainter the print result is painted to
-      \param width Width of printable area
-      \param height Height of printable area
-    */
-    virtual void print( QPainter &p, int width, int height ) = 0;
-    /**
-      Start printing.
-    */
-    virtual void doPrint();
-
-    /**
-      Orientation of printout. Default is Portrait. If your plugin wants
-      to use some other orientation as default (e.g. depending on some
-      config settings), implement this function in your subclass and
-      return the desired orientation.
-    */
-    virtual KPrinter::Orientation orientation() { return KPrinter::Portrait; }
-
-    /**
-      Load print format configuration from config file.
-    */
-    virtual void loadConfig() = 0;
-    /**
-      Write print format configuration to config file.
-    */
-    virtual void saveConfig() = 0;
-
-    /**
-      Load complete config. This also calls loadConfig() of the derived class.
-    */
-    void doLoadConfig();
-    /**
-      Save complete config. This also calls saveConfig() of the derived class.
-    */
-    void doSaveConfig();
-          
-
-  public slots:
-    /**
-      Read settings from configuration widget and apply them to current object.
-    */
-    virtual void readSettingsWidget() {}
-    /**
-      Set configuration widget to reflect settings of current object.
-    */
-    virtual void setSettingsWidget() {}
-
-    /**
-      Set date range which should be printed.
-    */
-    virtual void setDateRange( const QDate &from, const QDate &to )
-    {
-      mFromDate = from;
-      mToDate = to;
-    }
-
-  protected:
-    int weekdayColumn( int weekday );
-
-    QDate mFromDate;
-    QDate mToDate;
     bool mUseColors;
 
   public:
@@ -146,7 +83,7 @@ class CalPrintBase : public QObject
     */
     class TodoParentStart;
 
-  protected:
+  public:
     /** 
       Draw the gray header bar of the printout to the QPainter. 
       It prints the given text and optionally one or two small
@@ -275,7 +212,7 @@ class CalPrintBase : public QObject
                       date string or just a short.
     */
     void drawDayBox( QPainter &p, const QDate &qd,
-                     int x, int y, int width, int height,
+                     int x, int y, int width, int height, 
                      bool fullDate = false );
     /**
       Draw the week (filofax) table of the week containing the date qd. The first 
@@ -345,26 +282,37 @@ class CalPrintBase : public QObject
                    int level, int x, int &y, int width, int pageHeight, 
                    const Todo::List &todoList, TodoParentStart *r = 0 );
 
+    /**
+      Draws single journal item.
+      \param item The item to be printed. 
+      \param p QPainter of the printout
+      \param x x-coordinate of the upper left coordinate of the first item
+      \param y y-coordinate of the upper left coordinate of the first item
+      \param width width of the whole list
+      \param pageHeight Total height allowed for the list on a page. If an item 
+                   would be below that line, a new page is started.
+    */
+    void drawJournal( Journal * journal, QPainter &p, int x, int &y, 
+                      int width, int pageHeight );
+    void drawJournalField( QPainter &p, QString field, QString text, 
+                           int x, int &y, int width, int pageHeight );
+    
     void drawSplitHeaderRight( QPainter &p, const QDate &fd, const QDate &td,
                                const QDate &cd, int width, int height );
 
-    /** 
-      Determines the column of the given weekday ( 1=Monday, 7=Sunday ), taking the 
-      start of the week setting into account as given in kcontrol.
-      \param weekday Index of the weekday 
-    */
-    int weekDayColumn( int weekday );
 
+  protected:
     KPrinter *mPrinter;
     Calendar *mCalendar;
     KConfig *mConfig;
-    QWidget *mConfigWidget;
+    const KCalendarSystem *mCalSys;
+    KOrg::CoreHelper *mCoreHelper;
 
-  protected:
-    // @TODO: move these to the appropriate subclasses or set them globally.
-    static int mSubHeaderHeight;
-    static int mHeaderHeight;
-    static int mMargin;
+  public:
+    // TODO_RK: move these to the appropriate subclasses or set them globally.
+    int mHeaderHeight;
+    int mSubHeaderHeight;
+    int mMargin;
 };
 
 #endif
