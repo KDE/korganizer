@@ -812,9 +812,10 @@ void CalPrinter::drawDay(QPainter &p, const QDate &qd, int width, int height)
   p.setFont(QFont("helvetica", 14));
   p.setBrush(QBrush(Dense7Pattern));
   it = eventList.begin();
-  Event *currEvent = *it;
+  Event *currEvent =0L;
   int allDays = 0;
-  while( currEvent ) {
+  while( it!=eventList.end() ) {
+    currEvent=*it;
     if ( currEvent->doesFloat() ) {
       p.drawRect(20, offset, width-25, 35);
       p.drawText(30, offset+10, width-40, 30, AlignLeft | AlignTop,
@@ -825,7 +826,6 @@ void CalPrinter::drawDay(QPainter &p, const QDate &qd, int width, int height)
     } else {
       ++it;
     }
-    currEvent = *it;
   }
   startHour += (allDays/2);
   p.setBrush(QBrush());
