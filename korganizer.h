@@ -84,7 +84,7 @@ class KOrganizer : public KParts::MainWindow, virtual public KOrganizerIface, pu
                       the resource based backend is used. 
       @param name     Qt internal widget name
     */
-    KOrganizer( bool document, const char *name = 0 );
+    KOrganizer( bool document = true, const char *name = 0 );
     virtual ~KOrganizer();
 
     KOrg::CalendarViewBase *view() const;

@@ -167,7 +167,7 @@ void KOrganizerApp::processCalendar( const KURL &url, int numDays )
     displayImminent( url, numDays );
   } else {
     if (isRestored()) {
-      RESTORE( KOrganizer( true ) )
+      RESTORE( KOrganizer )
     } else {
       KOrg::MainWindow *korg=ActionManager::findInstance(url);
       if (0 == korg) {
