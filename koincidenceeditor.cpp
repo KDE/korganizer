@@ -54,6 +54,10 @@ KOIncidenceEditor::KOIncidenceEditor( const QString &caption,
                  parent, 0, false, false ),
     mDetails( 0 ), mAttachments( 0 )
 {
+  // Set this to be the group leader for all subdialogs - this means
+  // modal subdialogs will only affect this dialog, not the other windows
+  setWFlags( getWFlags() | WGroupLeader );
+
   mCalendar = calendar;
 
   setButtonText( Default, i18n("Load &Template...") );
@@ -127,8 +131,8 @@ void KOIncidenceEditor::slotCancel()
 void KOIncidenceEditor::cancelRemovedAttendees( Incidence *incidence )
 {
   if ( !incidence ) return;
-  
-  // cancelAttendeeEvent removes all attendees from the incidence, 
+
+  // cancelAttendeeEvent removes all attendees from the incidence,
   // and then only adds those that need to be cancelled (i.e. a mail needs to be sent to them).
   if ( KOPrefs::instance()->thatIsMe( incidence->organizer().email() ) ) {
     Incidence *ev = incidence->clone();
@@ -161,16 +165,16 @@ void KOIncidenceEditor::slotSaveTemplate()
   }
   bool ok = false;
   QString templateName = KInputDialog::getItem( i18n("Save Template"),
-      i18n("Please enter a name for the template:"), templates, 
+      i18n("Please enter a name for the template:"), templates,
       -1, true, &ok, this );
   if ( ok && templateName.isEmpty() ) {
     KMessageBox::error( this, i18n("You did not give a valid template name, "
                                    "no template will be saved") );
     ok = false;
   }
-  
+
   if ( ok && templates.contains( templateName ) ) {
-    int res = KMessageBox::warningYesNo( this, 
+    int res = KMessageBox::warningYesNo( this,
                                          i18n("The selected template "
                                               "already exists. Overwrite it?"),
                                          i18n("Template Already Exists") );
@@ -178,10 +182,10 @@ void KOIncidenceEditor::slotSaveTemplate()
       ok = false;
     }
   }
-  
+
   if ( ok ) {
     saveTemplate( templateName );
-    
+
     // Add template to list of existing templates
     if ( !templates.contains( templateName ) ) {
       templates.append( templateName );
@@ -193,7 +197,7 @@ void KOIncidenceEditor::slotSaveTemplate()
         KOPrefs::instance()->mJournalTemplates = templates;
       }
     }
-    
+
   }
 }
 
