@@ -24,10 +24,8 @@ void KOEventViewer::addTag(const QString & tag,const QString & text)
   mText.append(str);
 }
 
-void KOEventViewer::setEvent(KOEvent *event)
+void KOEventViewer::appendEvent(KOEvent *event)
 {
-  mText = "";
-
   addTag("h1",event->getSummary());
   
   if (event->doesFloat()) {
@@ -74,6 +72,17 @@ void KOEventViewer::setTodo(KOEvent *event)
   setText(mText);
 }
 
+void KOEventViewer::setEvent(KOEvent *event)
+{
+  clearEvents();
+  appendEvent(event);
+}
+
+void KOEventViewer::clearEvents(bool now)
+{
+  mText = "";
+  if(now) setText(mText);
+}
 
 KOEventViewerDialog::KOEventViewerDialog(QWidget *parent,const char *name)
   : KDialogBase(parent,name,false,i18n("Event Viewer"),Ok,Ok,false,

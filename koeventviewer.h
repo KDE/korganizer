@@ -21,6 +21,10 @@ class KOEventViewer : public QTextView {
     void setEvent(KOEvent *event);
     void setTodo(KOEvent *event);
     
+    void appendEvent(KOEvent *event);
+    
+    void clearEvents(bool now=false);
+    
   protected:
     void addTag(const QString & tag,const QString & text);
 

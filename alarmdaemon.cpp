@@ -15,13 +15,13 @@
 #include <kglobal.h>
 #include <ksimpleconfig.h>
 #include <kiconloader.h>
-#include <kprocess.h>
-#include <kaudioplayer.h>
 
 #include "config.h"
 #ifdef HAVE_LIBGEN_H
 #include <libgen.h>
 #endif
+
+#include "alarmdialog.h"
 
 #include "alarmdaemon.h"
 #include "alarmdaemon.moc"
@@ -85,6 +85,9 @@ AlarmDaemon::AlarmDaemon(const char *fn, QObject *parent, const char *name)
   calendar->showDialogs(FALSE);
   fileName = fn;
 
+  mAlarmDialog = new AlarmDialog;
+  connect(mAlarmDialog,SIGNAL(suspendSignal(int)),SLOT(suspend(int)));
+
   calendar->load(fileName);
 
   // set up the alarm timer
@@ -120,39 +123,20 @@ void AlarmDaemon::reloadCal()
 
 void AlarmDaemon::showAlarms(QList<KOEvent> &alarmEvents)
 {
-  KOEvent *anEvent;
-  QString messageStr, titleStr;
-  QDateTime tmpDT;
-
   // leave immediately if alarms are off
-  if (!docker->alarmsOn())
-    return;
+  if (!docker->alarmsOn()) return;
 
-  tmpDT = alarmEvents.first()->getAlarmTime();
+  KOEvent *anEvent;
 
-  titleStr.sprintf(i18n("Alarm Monitor: %s\n"),tmpDT.toString().latin1());
-  messageStr += i18n("The following events triggered alarms:\n\n");
-
-  for (anEvent = alarmEvents.first(); anEvent;
-      anEvent = alarmEvents.next()) {
-    messageStr += anEvent->getSummary() + "\n";
-    if (!anEvent->getProgramAlarmFile().isEmpty()) {
-      KProcess proc;
-      proc << anEvent->getProgramAlarmFile().latin1();
-      proc.start(KProcess::DontCare);
-    }
-
-    if (!anEvent->getAudioAlarmFile().isEmpty()) {
-      KAudioPlayer::play(anEvent->getAudioAlarmFile().latin1());
-    }
+  for (anEvent = alarmEvents.first(); anEvent; anEvent = alarmEvents.next()) {
+    mAlarmDialog->appendEvent(anEvent);
   }
 
-  kapp->beep();
-  QMessageBox::information(0,titleStr,messageStr);
+  showDialog();
 }
 
-bool AlarmDaemon::process(const QCString &fun, const QByteArray &data,
-			  QCString &replyType, QByteArray &replyData)
+bool AlarmDaemon::process(const QCString &fun, const QByteArray &,
+			  QCString &replyType, QByteArray &)
 {
   if (fun == "reloadCal()") {
     reloadCal();
@@ -162,4 +146,21 @@ bool AlarmDaemon::process(const QCString &fun, const QByteArray &data,
     qDebug("AlarmDaemon::process got unknown DCOP message.");
     return false;
   }
+}
+
+void AlarmDaemon::suspend(int duration)
+{
+//  qDebug("AlarmDaemon::suspend() %d minutes",duration);
+
+  QTimer *suspendTimer = new QTimer(this);
+  connect(suspendTimer,SIGNAL(timeout()),SLOT(showDialog()));
+
+  suspendTimer->start(1000*60*duration,true);
+}
+
+void AlarmDaemon::showDialog()
+{
+  kapp->beep();
+  mAlarmDialog->show();
+  mAlarmDialog->eventNotification();
 }
