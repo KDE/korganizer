@@ -171,8 +171,12 @@ void ProviderLoader::slotJobData( KIO::Job *, const QByteArray &data )
   kdDebug(5850) << "ProviderLoader::slotJobData()" << endl;
 
   if ( data.size() == 0 ) return;
-  
-  mJobData.append( data );
+
+  QCString str( data.size() + 1 );
+  str = data;
+  str.at( data.size() ) = '\0';
+
+  mJobData.append( QString::fromUtf8( str ) );
 }
 
 void ProviderLoader::slotJobResult( KIO::Job *job )
@@ -185,7 +189,7 @@ void ProviderLoader::slotJobResult( KIO::Job *job )
             << endl;
 
   QDomDocument doc;
-  if ( !doc.setContent( QString::fromUtf8( mJobData ) ) ) {
+  if ( !doc.setContent( mJobData ) ) {
     KMessageBox::error( mParentWidget, i18n("Error parsing providers list.") );
     return;
   }

@@ -77,7 +77,7 @@ class Engine : public QObject
   
     ProviderLoader *mProviderLoader;
   
-    QMap<KIO::Job *,QCString> mNewStuffJobData;
+    QMap<KIO::Job *,QString> mNewStuffJobData;
     
     QPtrList<Entry> mNewStuffList;
     

@@ -87,7 +87,7 @@ class ProviderLoader : public QObject
   private:
     QWidget *mParentWidget;
     
-    QCString mJobData;
+    QString mJobData;
     
     Provider::List mProviders;
 };

@@ -100,9 +100,11 @@ void Engine::slotNewStuffJobData( KIO::Job *job, const QByteArray &data )
 
   kdDebug(5850) << "Engine:slotNewStuffJobData()" << endl;
 
-  kdDebug(5850) << "===START===" << endl << data.data() << "===END===" << endl;
+  QCString str( data.size() + 1 );
+  str = data;
+  str.at( data.size() ) = '\0';
 
-  mNewStuffJobData[ job ].append( data );
+  mNewStuffJobData[ job ].append( QString::fromUtf8( str ) );
 }
 
 void Engine::slotNewStuffJobResult( KIO::Job *job )
@@ -111,7 +113,7 @@ void Engine::slotNewStuffJobResult( KIO::Job *job )
     kdDebug(5850) << "Error downloading new stuff descriptions." << endl;
     job->showErrorDialog( mParentWidget );
   } else {
-    QString knewstuffDoc = QString::fromUtf8( mNewStuffJobData[ job ] );
+    QString knewstuffDoc = mNewStuffJobData[ job ];
 
     kdDebug(5850) << "---START---" << endl << knewstuffDoc << "---END---" << endl;
 
