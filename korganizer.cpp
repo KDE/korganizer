@@ -324,7 +324,7 @@ void KOrganizer::initActions()
   (void)new KAction(i18n("New &To-Do..."), "newtodo", 0,
                     mCalendarView,SLOT(newTodo()),
                     actionCollection(), "new_todo");
-  action = new KAction(i18n("New Sub- To-Do..."), 0,
+  action = new KAction(i18n("New Su&b- To-Do..."), 0,
                     mCalendarView,SLOT(newSubTodo()),
                     actionCollection(), "new_subtodo");
   action->setEnabled(false);
@@ -343,7 +343,7 @@ void KOrganizer::initActions()
   action->setEnabled(false);
   connect(mCalendarView,SIGNAL(eventsSelected(bool)),
           action,SLOT(setEnabled(bool)));
-  action = new KAction(i18n("Delete Appointment..."), 0,
+  action = new KAction(i18n("&Delete Appointment..."), 0,
                     mCalendarView,SLOT(appointment_delete()),
                     actionCollection(), "delete_appointment");
   action->setEnabled(false);
@@ -366,21 +366,27 @@ void KOrganizer::initActions()
   connect(mCalendarView,SIGNAL(eventsSelected(bool)),
           action,SLOT(setEnabled(bool)));
 
-  action = new KAction(i18n("Show Todo..."), 0,
+  action = new KAction(i18n("Sh&ow Todo..."), 0,
                     mCalendarView,SLOT(todo_show()),
                     actionCollection(), "show_todo");
   action->setEnabled(false);
   connect(mCalendarView,SIGNAL(todoSelected(bool)),
           action,SLOT(setEnabled(bool)));
-  action = new KAction(i18n("Edit Todo..."), 0,
+  action = new KAction(i18n("Ed&it Todo..."), 0,
                     mCalendarView,SLOT(todo_edit()),
                     actionCollection(), "edit_todo");
   action->setEnabled(false);
   connect(mCalendarView,SIGNAL(todoSelected(bool)),
           action,SLOT(setEnabled(bool)));
-  action = new KAction(i18n("Delete Todo..."), 0,
+  action = new KAction(i18n("De&lete Todo..."), 0,
                     mCalendarView,SLOT(todo_delete()),
                     actionCollection(), "delete_todo");
+  action->setEnabled(false);
+  connect(mCalendarView,SIGNAL(todoSelected(bool)),
+          action,SLOT(setEnabled(bool)));
+  action = new KAction(i18n("&Make Sub-Todo independent"), 0,
+                    mCalendarView,SLOT(todo_unsub()),
+                    actionCollection(), "unsub_todo");
   action->setEnabled(false);
   connect(mCalendarView,SIGNAL(todoSelected(bool)),
           action,SLOT(setEnabled(bool)));

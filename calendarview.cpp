@@ -876,6 +876,18 @@ void CalendarView::todo_delete()
   if (anTodo) deleteTodo(anTodo);
 }
 
+void CalendarView::todo_unsub()
+{
+  Todo *anTodo = selectedTodo();
+  if (!anTodo) return;
+  if (!anTodo->relatedTo()) return;
+  anTodo->relatedTo()->removeRelation(anTodo);
+  anTodo->setRelatedTo(0);
+  anTodo->setRelatedToUid("");
+  setModified(true);
+  updateView();
+}
+
 void CalendarView::deleteTodo(Todo *todo)
 {
   if (!todo) {

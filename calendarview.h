@@ -316,6 +316,8 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     void todo_edit();
     /* pop up dialog confirming deletion of currently selected todo */
     void todo_delete();
+    /* frees a subtodo from it's relation */
+    void todo_unsub();
 
     /** Take ownership of selected event. */
     void takeOverEvent();
