@@ -95,6 +95,7 @@ class IncomingDialog : public IncomingDialog_base
     bool incomeCounter(ScheduleItemIn *item);
     bool incomeDeclineCounter(ScheduleItemIn *item);
     bool incomeAdd(ScheduleItemIn *item);
+    bool incomeRequest(ScheduleItemIn *item);
     bool incomeDefault(ScheduleItemIn *item);
     bool automaticAction(ScheduleItemIn *item);
 

@@ -1149,10 +1149,10 @@ void CalendarView::schedule_declinecounter(Incidence *incidence)
   schedule(Scheduler::Declinecounter,incidence);
 }
 
-void CalendarView::schedule_publish_freebusy()
+void CalendarView::schedule_publish_freebusy(int daysToPublish)
 {
   QDateTime start = QDateTime::currentDateTime();
-  QDateTime end = start.addDays(30);
+  QDateTime end = start.addDays(daysToPublish);
 
   FreeBusy *freebusy = new FreeBusy(mCalendar, start, end);
   freebusy->setOrganizer(KOPrefs::instance()->email());

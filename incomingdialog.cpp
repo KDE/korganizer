@@ -215,6 +215,9 @@ bool IncomingDialog::acceptMessage(ScheduleItemIn *item)
     case Scheduler::Add:
         return incomeAdd(item);
         break;
+    case Scheduler::Request:
+        return incomeRequest(item);
+        break;
     default:
         return incomeDefault(item);
   }
@@ -375,6 +378,37 @@ bool IncomingDialog::incomeDefault(ScheduleItemIn *item)
   return false;
 }
 
+bool IncomingDialog::incomeRequest(ScheduleItemIn *item)
+{
+  if (item->event()->type()=="FreeBusy") {
+    //handel freebusy request
+    IncidenceBase *inc = item->event();
+    QDateTime start = inc->dtStart();
+    QDateTime end = start.addDays(inc->duration()/86400);
+
+    FreeBusy *freebusy = new FreeBusy(mCalendar, start, end);
+    freebusy->setOrganizer(inc->organizer());
+    Attendee *att = new Attendee(KOPrefs::instance()->fullName(),
+                               KOPrefs::instance()->email());
+    freebusy->addAttendee(att);
+
+    kdDebug() << "calendarview: schedule_publish_freebusy: startDate: "
+      << KGlobal::locale()->formatDateTime( start ) << " End Date: " 
+      << KGlobal::locale()->formatDateTime( end ) << endl;
+  
+    if (mOutgoing->addMessage(freebusy,Scheduler::Reply)) {
+      delete item;
+      emit numMessagesChanged(mMessageListView->childCount());
+      delete(freebusy);
+      return true;
+    }
+    return false;     
+  } else {
+    return incomeDefault(item);
+  }
+  return false;
+}
+
 bool IncomingDialog::automaticAction(ScheduleItemIn *item)
 {
   bool autoAction = false;
@@ -385,8 +419,9 @@ bool IncomingDialog::automaticAction(ScheduleItemIn *item)
     if ( method==Scheduler::Request ) {
       if ( KOPrefs::instance()->mIMIPAutoFreeBusy==KOPrefs::addressbookAuto ) {
         // reply freebusy information
-        // if ( checkOrganizerInAddressbook(inc->organizer()) );
-      
+        if ( checkOrganizerInAddressbook(inc->organizer()) ) {
+          incomeRequest(item);
+        }                
       } else return false;
     } else {
 
