@@ -14,9 +14,6 @@
             <height>459</height>
         </rect>
     </property>
-    <property name="caption">
-        <string>CalPrintTodoConfig_Base</string>
-    </property>
     <grid>
         <property name="name">
             <cstring>unnamed</cstring>
@@ -61,9 +58,6 @@
                     <property name="text">
                         <string>Print &amp;all to-dos</string>
                     </property>
-                    <property name="accel">
-                        <string>Alt+A</string>
-                    </property>
                     <property name="checked">
                         <bool>true</bool>
                     </property>
@@ -78,9 +72,6 @@
                     <property name="text">
                         <string>Print &amp;unfinished to-dos only</string>
                     </property>
-                    <property name="accel">
-                        <string>Alt+U</string>
-                    </property>
                 </widget>
                 <widget class="QRadioButton">
                     <property name="name">
@@ -91,9 +82,6 @@
                     </property>
                     <property name="text">
                         <string>Print only to-dos due in the &amp;range:</string>
-                    </property>
-                    <property name="accel">
-                        <string>Alt+R</string>
                     </property>
                 </widget>
                 <widget class="QLayoutWidget">
@@ -235,9 +223,6 @@
                     <property name="text">
                         <string>&amp;Priority</string>
                     </property>
-                    <property name="accel">
-                        <string>Alt+P</string>
-                    </property>
                     <property name="checked">
                         <bool>true</bool>
                     </property>
@@ -248,9 +233,6 @@
                     </property>
                     <property name="text">
                         <string>&amp;Description</string>
-                    </property>
-                    <property name="accel">
-                        <string>Alt+D</string>
                     </property>
                     <property name="checked">
                         <bool>true</bool>
@@ -276,9 +258,6 @@
                     </property>
                     <property name="text">
                         <string>Per&amp;centage completed</string>
-                    </property>
-                    <property name="accel">
-                        <string>Alt+C</string>
                     </property>
                     <property name="checked">
                         <bool>true</bool>
@@ -403,9 +382,6 @@
                 <property name="text">
                     <string>Strike &amp;out completed to-do summaries</string>
                 </property>
-                <property name="accel">
-                    <string>Alt+O</string>
-                </property>
                 <property name="checked">
                     <bool>true</bool>
                 </property>
@@ -424,9 +400,6 @@
                 </property>
                 <property name="text">
                     <string>Co&amp;nnect sub-to-dos with its parent</string>
-                </property>
-                <property name="accel">
-                    <string>Alt+N</string>
                 </property>
                 <property name="checked">
                     <bool>true</bool>

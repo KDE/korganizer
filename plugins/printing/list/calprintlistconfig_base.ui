@@ -140,9 +140,6 @@
                     <property name="text">
                         <string>&amp;Events</string>
                     </property>
-                    <property name="accel">
-                        <string>Alt+E</string>
-                    </property>
                 </widget>
                 <widget class="QCheckBox">
                     <property name="name">
@@ -151,9 +148,6 @@
                     <property name="text">
                         <string>&amp;To-Dos</string>
                     </property>
-                    <property name="accel">
-                        <string>Alt+T</string>
-                    </property>
                 </widget>
                 <widget class="QCheckBox">
                     <property name="name">
@@ -161,9 +155,6 @@
                     </property>
                     <property name="text">
                         <string>&amp;Journals</string>
-                    </property>
-                    <property name="accel">
-                        <string>Alt+J</string>
                     </property>
                 </widget>
             </hbox>
