@@ -94,8 +94,8 @@ ArchiveDialog::ArchiveDialog(Calendar *cal,QWidget *parent, const char *name)
   mAutoArchiveRB = new QRadioButton(i18n("Automaticall&y archive events older than:"), autoArchiveHBox);
   radioBG->insert(mAutoArchiveRB);
   QWhatsThis::add(mAutoArchiveRB,
-    i18n("If this feature is enabled, KOrganizer will regularly check if events have to be archived. "
-         "This means you won't need to use this dialog box again, except to change the settings."));
+    i18n("If this feature is enabled, KOrganizer will regularly check if events have to be archived; "
+         "this means you will not need to use this dialog box again, except to change the settings."));
 
   mExpiryTimeNumInput = new KIntNumInput(autoArchiveHBox);
   mExpiryTimeNumInput->setRange(1, 500, 1, false);
