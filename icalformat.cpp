@@ -338,11 +338,7 @@ KOEvent *ICalFormat::pasteEvent(const QDate *newDate,
       // if we pasted an event that was the result of a copy in our
       // own calendar, now we have duplicate UID strings.  Need to generate
       // a new one for this new event.
-      int hashTime = QTime::currentTime().hour() + 
-	QTime::currentTime().minute() + QTime::currentTime().second() +
-	QTime::currentTime().msec();
-      QString uidStr;
-      uidStr.sprintf("KOrganizer-%li.%d",KApplication::random(),hashTime);
+      QString uidStr = createUniqueId();
       if (mCalendar->getEvent(anEvent->getVUID()))
 	anEvent->setVUID(uidStr.ascii());
 

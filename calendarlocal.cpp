@@ -4,13 +4,6 @@
 
 #include "config.h"
 
-#include <pwd.h>
-#include <sys/types.h>
-#include <unistd.h>
-#include <netdb.h>
-#include <time.h>
-#include <stdlib.h>
-
 #include <qdatetm.h>
 #include <qstring.h>
 #include <qlist.h>
@@ -37,21 +30,6 @@
 
 #include "calendarlocal.h"
 #include "calendarlocal.moc"
-
-#if 0
-#ifdef __cplusplus
-extern "C" {
-#endif
-char *parse_holidays(const char *, int year, short force);
-struct holiday {
-  char            *string;        /* name of holiday, 0=not a holiday */
-  unsigned short  dup;            /* reference count */
-};   
-extern struct holiday holiday[366];
-#if __cplusplus
-};
-#endif
-#endif
 
 CalendarLocal::CalendarLocal()
   : CalObject(), mRecursCursor(mRecursList)

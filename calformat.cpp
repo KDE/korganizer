@@ -2,6 +2,7 @@
 
 #include <klocale.h>
 #include <kmessagebox.h>
+#include <kapp.h>
 
 #include "calformat.h"
 
@@ -59,4 +60,15 @@ void CalFormat::setException(KOErrorFormat *exception)
 KOErrorFormat *CalFormat::exception()
 {
   return mException;
+}
+
+QString CalFormat::createUniqueId()
+{
+  int hashTime = QTime::currentTime().hour() + 
+                 QTime::currentTime().minute() + QTime::currentTime().second() +
+                 QTime::currentTime().msec();
+  QString uidStr = QString("KOrganizer-%1.%2")
+                           .arg(KApplication::random())
+                           .arg(hashTime);
+  return uidStr;
 }

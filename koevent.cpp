@@ -9,6 +9,7 @@
 #include <kstddirs.h>
 
 #include "koprefs.h"
+#include "calformat.h"
 
 #include "koevent.h"
 #include "koevent.moc"
@@ -84,10 +85,7 @@ void KOEvent::recreate()
 {
   dateCreated = QDateTime::currentDateTime();
 
-  int hashTime = dateCreated.time().hour() + 
-    dateCreated.time().minute() + dateCreated.time().second() +
-    dateCreated.time().msec();
-  vUID.sprintf("KOrganizer-%li.%d",KApplication::random(),hashTime);
+  vUID = CalFormat::createUniqueId();
 
   revisionNum = 0;
 

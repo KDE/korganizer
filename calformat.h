@@ -66,6 +66,8 @@ class CalFormat {
       error that occured.
     */
     KOErrorFormat *exception();
+
+    static QString createUniqueId();
   
   protected:  
     /** shows an error dialog box. */
