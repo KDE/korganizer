@@ -179,6 +179,55 @@ void TimeLabels::paintEvent(QPaintEvent*)
 }
 
 ////////////////////////////////////////////////////////////////////////////
+
+EventIndicator::EventIndicator(Location loc,QWidget *parent,const char *name)
+  : QFrame(parent,name)
+{
+  mColumns = 1;
+  mTopBox = 0;
+  mLocation = loc;
+  mTopLayout = 0;
+
+  if (mLocation == Top) mPixmap = UserIcon("1uparrow");
+  else mPixmap = UserIcon("1downarrow");
+
+  setMinimumHeight(mPixmap.height());
+}
+
+EventIndicator::~EventIndicator()
+{
+}
+
+void EventIndicator::drawContents(QPainter *p)
+{
+//  qDebug("======== top: %d  bottom %d  left %d  right %d",contentsRect().top(),
+//         contentsRect().bottom(),contentsRect().left(),contentsRect().right());
+
+  int i;
+  for(i=0;i<mColumns;++i) {
+    if (mEnabled[i]) {
+      int cellWidth = contentsRect().right()/mColumns;
+      int xOffset = i*cellWidth + cellWidth/2 -mPixmap.width()/2;
+      p->drawPixmap(QPoint(xOffset,0),mPixmap);
+    }
+  }
+}
+
+void EventIndicator::changeColumns(int columns)
+{
+  mColumns = columns;
+  mEnabled.resize(mColumns);
+
+  update();
+}
+
+void EventIndicator::enableColumn(int column, bool enable)
+{
+  mEnabled[column] = enable;
+}
+
+
+////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////
 
@@ -209,13 +258,27 @@ KOAgendaView::KOAgendaView(CalObject *cal,QWidget *parent,const char *name) :
           SLOT(showAllDayAgendaPopup(KOEvent *)));
 
   // Create agenda frame
-  QHBox *agendaFrame = new QHBox(splitterAgenda);
+  QWidget *agendaFrame = new QWidget(splitterAgenda);
+  QGridLayout *agendaLayout = new QGridLayout(agendaFrame,3,3);
+//  QHBox *agendaFrame = new QHBox(splitterAgenda);
+
+  // create event indicator bars
+  mEventIndicatorTop = new EventIndicator(EventIndicator::Top,agendaFrame);
+  agendaLayout->addWidget(mEventIndicatorTop,0,1);
+  mEventIndicatorBottom = new EventIndicator(EventIndicator::Bottom,
+                                             agendaFrame);
+  agendaLayout->addWidget(mEventIndicatorBottom,2,1);
+  QWidget *dummyAgendaRight = new QWidget(agendaFrame);
+  agendaLayout->addWidget(dummyAgendaRight,0,2);
 
   // Create time labels
   mTimeLabels = new TimeLabels(24,agendaFrame);
+  agendaLayout->addWidget(mTimeLabels,1,0);
 
   // Create agenda
   mAgenda = new KOAgenda(1,48,20,agendaFrame);
+  agendaLayout->addMultiCellWidget(mAgenda,1,1,1,2);
+  agendaLayout->setColStretch(1,1);
 
   // Create event context menu for agenda
   mAgendaPopup = eventPopup();
@@ -237,6 +300,7 @@ KOAgendaView::KOAgendaView(CalObject *cal,QWidget *parent,const char *name) :
 
   // these blank widgets make the All Day Event box line up with the agenda
   dummyAllDayRight->setFixedWidth(mAgenda->verticalScrollBar()->width());
+  dummyAgendaRight->setFixedWidth(mAgenda->verticalScrollBar()->width());
   mDummyAllDayLeft->setFixedWidth(mTimeLabels->width());
 
   QBoxLayout *layoutTop = new QVBoxLayout(this);
@@ -244,28 +308,34 @@ KOAgendaView::KOAgendaView(CalObject *cal,QWidget *parent,const char *name) :
   layoutTop->addWidget(splitterAgenda);
 
   //connect signals and slots
-  QObject::connect(mAgenda->verticalScrollBar(),SIGNAL(valueChanged(int)),
-                   mTimeLabels, SLOT(positionChanged()));
-  QObject::connect(mAgenda,SIGNAL(newEventSignal(int,int)),
-                           SLOT(newEvent(int,int)));
-  QObject::connect(mAllDayAgenda,SIGNAL(newEventSignal(int,int)),
-                                 SLOT(newEventAllDay(int,int)));
-  QObject::connect(mAgenda,SIGNAL(editEventSignal(KOEvent *)),
-                           SIGNAL(editEventSignal(KOEvent *)));
-  QObject::connect(mAllDayAgenda,SIGNAL(editEventSignal(KOEvent *)),
-                                 SIGNAL(editEventSignal(KOEvent *)));
-  QObject::connect(mAgenda,SIGNAL(showEventSignal(KOEvent *)),
-                           SIGNAL(showEventSignal(KOEvent *)));
-  QObject::connect(mAllDayAgenda,SIGNAL(showEventSignal(KOEvent *)),
-                                 SIGNAL(showEventSignal(KOEvent *)));
-  QObject::connect(mAgenda,SIGNAL(deleteEventSignal(KOEvent *)),
-                           SIGNAL(deleteEventSignal(KOEvent *)));
-  QObject::connect(mAllDayAgenda,SIGNAL(deleteEventSignal(KOEvent *)),
-                                 SIGNAL(deleteEventSignal(KOEvent *)));
-  QObject::connect(mAgenda,SIGNAL(itemModified(KOAgendaItem *)),
-                           SLOT(updateEventDates(KOAgendaItem *)));
-  QObject::connect(mAllDayAgenda,SIGNAL(itemModified(KOAgendaItem *)),
+  connect(mAgenda->verticalScrollBar(),SIGNAL(valueChanged(int)),
+          mTimeLabels, SLOT(positionChanged()));
+  connect(mAgenda,SIGNAL(newEventSignal(int,int)),
+                  SLOT(newEvent(int,int)));
+  connect(mAllDayAgenda,SIGNAL(newEventSignal(int,int)),
+                        SLOT(newEventAllDay(int,int)));
+  connect(mAgenda,SIGNAL(editEventSignal(KOEvent *)),
+                  SIGNAL(editEventSignal(KOEvent *)));
+  connect(mAllDayAgenda,SIGNAL(editEventSignal(KOEvent *)),
+                        SIGNAL(editEventSignal(KOEvent *)));
+  connect(mAgenda,SIGNAL(showEventSignal(KOEvent *)),
+                  SIGNAL(showEventSignal(KOEvent *)));
+  connect(mAllDayAgenda,SIGNAL(showEventSignal(KOEvent *)),
+                        SIGNAL(showEventSignal(KOEvent *)));
+  connect(mAgenda,SIGNAL(deleteEventSignal(KOEvent *)),
+                  SIGNAL(deleteEventSignal(KOEvent *)));
+  connect(mAllDayAgenda,SIGNAL(deleteEventSignal(KOEvent *)),
+                        SIGNAL(deleteEventSignal(KOEvent *)));
+  connect(mAgenda,SIGNAL(itemModified(KOAgendaItem *)),
+                  SLOT(updateEventDates(KOAgendaItem *)));
+  connect(mAllDayAgenda,SIGNAL(itemModified(KOAgendaItem *)),
                                  SLOT(updateEventDates(KOAgendaItem *)));
+
+  // event indicator update
+  connect(mAgenda,SIGNAL(lowerYChanged(int)),
+          SLOT(updateEventIndicatorTop(int)));
+  connect(mAgenda,SIGNAL(upperYChanged(int)),
+          SLOT(updateEventIndicatorBottom(int)));
 }
 
 
@@ -317,7 +387,7 @@ QList<KOEvent> KOAgendaView::getSelected()
 
 void KOAgendaView::updateView()
 {
-  qDebug("KOAgendaView::updateView()\n\n");
+  qDebug("KOAgendaView::updateView()");
   fillAgenda();
 }
 
@@ -425,7 +495,7 @@ void KOAgendaView::selectDates(const QDateList list)
 }
 
 
-void KOAgendaView::selectEvents(QList<KOEvent> eventList)
+void KOAgendaView::selectEvents(QList<KOEvent>)
 {
   qDebug("KOAgendaView::selectEvents() is not yet implemented");
 }
@@ -613,21 +683,31 @@ void KOAgendaView::fillAgenda()
 //  qDebug(" number of dates: %d",mSelectedDates.count());
 
 //  clearView();
+
   mAllDayAgenda->changeColumns(mSelectedDates.count());
   mAgenda->changeColumns(mSelectedDates.count());
+  mEventIndicatorTop->changeColumns(mSelectedDates.count());
+  mEventIndicatorBottom->changeColumns(mSelectedDates.count());
 
   createDayLabels();
+
+  mMinY.resize(mSelectedDates.count());
+  mMaxY.resize(mSelectedDates.count());
 
   QList<KOEvent> dayEvents;
   int curCol;  // current column of agenda, i.e. the X coordinate
   QDate currentDate = mStartDate;
   for(curCol=0;curCol<int(mSelectedDates.count());++curCol) {
-    dayEvents = mCalendar->getEventsForDate(currentDate,false);    
+    dayEvents = mCalendar->getEventsForDate(currentDate,false);
+
+    // Default values, which can never be reached
+    mMinY[curCol] = mAgenda->timeToY(QTime(23,59)) + 1;
+    mMaxY[curCol] = mAgenda->timeToY(QTime(0,0)) - 1;
 
     unsigned int numEvent;
     for(numEvent=0;numEvent<dayEvents.count();++numEvent) {
       KOEvent *event = dayEvents.at(numEvent);
-//      qDebug(" Event: %s",event->getSummary().latin1());      
+//      qDebug(" Event: %s",event->getSummary().latin1());
 
       int beginX = currentDate.daysTo(event->getDtStart().date()) + curCol;
       int endX = currentDate.daysTo(event->getDtEnd().date()) + curCol;
@@ -644,19 +724,25 @@ void KOAgendaView::fillAgenda()
         if ((beginX <= 0 && curCol == 0) || beginX == curCol) {
           int startY = mAgenda->timeToY(event->getDtStart().time());
           int endY = mAgenda->timeToY(event->getDtEnd().time()) - 1;  
-          mAgenda->insertMultiItem(event,beginX,endX,startY,endY);          
+          mAgenda->insertMultiItem(event,beginX,endX,startY,endY);
+          if (startY < mMinY[curCol]) mMinY[curCol] = startY;
+          if (endY > mMaxY[curCol]) mMaxY[curCol] = endY;
         }
       } else {
         int startY = mAgenda->timeToY(event->getDtStart().time());
         int endY = mAgenda->timeToY(event->getDtEnd().time()) - 1;
 	if (endY < startY) endY = startY;
 	mAgenda->insertItem(event,curCol,startY,endY);
+        if (startY < mMinY[curCol]) mMinY[curCol] = startY;
+        if (endY > mMaxY[curCol]) mMaxY[curCol] = endY;
       }
     }
 //    if (numEvent == 0) qDebug(" No events");
     
     currentDate = currentDate.addDays(1);
   }
+
+  mAgenda->checkScrollBoundaries();
 
 //  mAgenda->viewport()->update();
 //  mAllDayAgenda->viewport()->update();
@@ -702,4 +788,26 @@ void KOAgendaView::showAgendaPopup(KOEvent *event)
 void KOAgendaView::showAllDayAgendaPopup(KOEvent *event)
 {
   showEventPopup(mAllDayAgendaPopup,event);
+}
+
+void KOAgendaView::updateEventIndicatorTop(int newY)
+{
+  uint i;
+  for(i=0;i<mMinY.size();++i) {
+    if (newY >= mMinY[i]) mEventIndicatorTop->enableColumn(i,true);
+    else mEventIndicatorTop->enableColumn(i,false);
+  }
+  
+  mEventIndicatorTop->update();
+}
+
+void KOAgendaView::updateEventIndicatorBottom(int newY)
+{
+  uint i;
+  for(i=0;i<mMaxY.size();++i) {
+    if (newY <= mMaxY[i]) mEventIndicatorBottom->enableColumn(i,true);
+    else mEventIndicatorBottom->enableColumn(i,false);
+  }
+
+  mEventIndicatorBottom->update();
 }

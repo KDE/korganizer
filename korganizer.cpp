@@ -408,7 +408,7 @@ KURL KOrganizer::getSaveURL()
 
   if(filename.length() >= 3) {
     QString e = filename.right(4);
-    // Extension ending in '.vcs' or anything else '.???' is cool.
+    // Extension ending in '.vcs' or anything else '.xxx' is cool.
     if(e != ".vcs" && e.right(1) != ".")
     // Otherwise, force the default extension.
     filename += ".vcs";

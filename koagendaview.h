@@ -68,7 +68,30 @@ class TimeLabels : public QScrollView {
     KOAgenda* mAgenda;
 };
 
-class KOAgendaView: public KOBaseView {
+class EventIndicator : public QFrame {
+    Q_OBJECT
+  public:
+    enum Location { Top, Bottom };
+    EventIndicator(Location loc=Top,QWidget *parent=0,const char *name=0);
+    virtual ~EventIndicator();
+    
+    void changeColumns(int columns);
+
+    void enableColumn(int column, bool enable);
+
+  protected:
+    void drawContents(QPainter *);
+    
+  private:
+    int mColumns;
+    QHBox *mTopBox;
+    QBoxLayout *mTopLayout;
+    Location mLocation;
+    QPixmap mPixmap;
+    QArray<bool> mEnabled;
+};
+
+class KOAgendaView : public KOBaseView {
     Q_OBJECT
   public:
     KOAgendaView(CalObject *cal,QWidget *parent = 0,const char *name = 0);
@@ -145,6 +168,9 @@ class KOAgendaView: public KOBaseView {
     void showAgendaPopup(KOEvent *event);
     void showAllDayAgendaPopup(KOEvent *event);
 
+    void updateEventIndicatorTop(int newY);
+    void updateEventIndicatorBottom(int newY);
+
   private:
     // view widgets
     QFrame *mDayLabels;
@@ -165,6 +191,12 @@ class KOAgendaView: public KOBaseView {
 
     QPopupMenu *mAgendaPopup;
     QPopupMenu *mAllDayAgendaPopup;
+
+    EventIndicator *mEventIndicatorTop;
+    EventIndicator *mEventIndicatorBottom;
+    
+    QArray<int> mMinY;
+    QArray<int> mMaxY;
 };
 
 #endif  // KOAGENDAVIEW_H

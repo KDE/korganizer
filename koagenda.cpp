@@ -96,6 +96,9 @@ void KOAgenda::init()
   mStartCellY = 0;
   mCurrentCellX = 0;
   mCurrentCellY = 0;
+
+  mOldLowerScrollValue = -1;
+  mOldUpperScrollValue = -1;
   
   mClickedItem = 0;
   
@@ -116,6 +119,9 @@ void KOAgenda::init()
   // controlled in a way that the contents horizontally always fits. Then it is
   // not necessary to turn off the scrollbar.
   setHScrollBarMode(AlwaysOff);
+  
+  connect(verticalScrollBar(),SIGNAL(valueChanged(int)),
+          SLOT(checkScrollBoundaries(int)));
 }
 
 /*
@@ -537,7 +543,7 @@ void KOAgenda::gridToContents (int gx, int gy, int& x, int& y)
 /*
   Return Y coordinate corresponding to time. Coordinates are rounded to fit into
   the grid.
-*/  
+*/
 int KOAgenda::timeToY(const QTime &time)
 {
 //  qDebug("Time: %s",time.toString().latin1());
@@ -740,8 +746,10 @@ void KOAgenda::resizeEvent ( QResizeEvent *ev )
                 item->subCell() * subCellWidth,childY(item));
     }
   }
+
+  checkScrollBoundaries();
   
-  viewport()->update();    
+  viewport()->update();
   QScrollView::resizeEvent(ev);
 }
 
@@ -791,4 +799,30 @@ void KOAgenda::updateConfig(KConfig* config)
     startStr.truncate(colonPos);
   int mStartHour = startStr.toUInt();
   setStartHour(mStartHour);
+}
+
+void KOAgenda::checkScrollBoundaries()
+{
+  // Invalidate old values to force update
+  mOldLowerScrollValue = -1;
+  mOldUpperScrollValue = -1;
+
+  checkScrollBoundaries(verticalScrollBar()->value());
+}
+
+void KOAgenda::checkScrollBoundaries(int v)
+{
+  int yMin = v/mGridSpacingY;
+  int yMax = (v+visibleHeight())/mGridSpacingY;
+
+//  qDebug("--- yMin: %d  yMax: %d",yMin,yMax);
+
+  if (yMin != mOldLowerScrollValue) {
+    mOldLowerScrollValue = yMin;
+    emit lowerYChanged(yMin);
+  }
+  if (yMax != mOldUpperScrollValue) {
+    mOldUpperScrollValue = yMax;
+    emit upperYChanged(yMax);
+  }
 }

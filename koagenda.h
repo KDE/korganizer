@@ -54,11 +54,15 @@ class KOAgenda : public QScrollView
     /**  */
     void updateConfig(KConfig* config);
 
+    void checkScrollBoundaries();
+
   public slots:
     void scrollUp();
     void scrollDown();
 
     void popupAlarm();
+
+    void checkScrollBoundaries(int);
         
   signals:
     void newEventSignal();
@@ -70,6 +74,9 @@ class KOAgenda : public QScrollView
     void itemModified(KOAgendaItem *item);
 
     void showEventPopupSignal(KOEvent *);
+
+    void lowerYChanged(int);
+    void upperYChanged(int);
 
   protected:
     void drawContents(QPainter *p,int cx, int cy, int cw, int ch);        
@@ -136,6 +143,9 @@ class KOAgenda : public QScrollView
     QList<KOAgendaItem> mItems;
 
     QPopupMenu *mItemPopup; // Right mouse button popup menu for KOAgendaItems
+
+    int mOldLowerScrollValue;
+    int mOldUpperScrollValue;
 };
 
 #endif // KOAGENDA_H
