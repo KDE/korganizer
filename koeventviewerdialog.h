@@ -15,12 +15,13 @@
     You should have received a copy of the GNU General Public License
     along with this program; if not, write to the Free Software
     Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+
+    As a special exception, permission is given to link this program
+    with any edition of Qt, and distribute the resulting executable,
+    without including the source code for Qt in the source distribution.
 */
 #ifndef KOEVENTVIEWERDIALOG_H
 #define KOEVENTVIEWERDIALOG_H
-//
-// Viewer dialog for events.
-//
 
 #include <qtextview.h>
 
@@ -32,7 +33,11 @@ using namespace KCal;
 
 class KOEventViewer;
 
-class KOEventViewerDialog : public KDialogBase {
+/**
+  Viewer dialog for events.
+*/
+class KOEventViewerDialog : public KDialogBase
+{
     Q_OBJECT
   public:
     KOEventViewerDialog(QWidget *parent=0,const char *name=0);
