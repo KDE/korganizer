@@ -40,6 +40,9 @@ class KCal::Event;
 class KCal::Todo;
 
 using namespace KCal;
+namespace KCal {
+class Calendar;
+}
 
 class MarcusBains : public QFrame {
     Q_OBJECT
@@ -118,6 +121,8 @@ class KOAgenda : public QScrollView
     QObject *typeAheadReceiver() const;
     void finishTypeAhead();
 
+    void setCalendar( Calendar*cal ) { mCalendar=cal; }
+
   public slots:
     void scrollUp();
     void scrollDown();
@@ -153,6 +158,7 @@ class KOAgenda : public QScrollView
     void upperYChanged(int);
 
     void startDragSignal(Incidence *);
+    void droppedToDo( Todo*todo, int gx, int gy, bool allDay );
 
   protected:
     void drawContents(QPainter *p,int cx, int cy, int cw, int ch);
@@ -162,6 +168,9 @@ class KOAgenda : public QScrollView
     virtual bool eventFilter_mouse ( QObject *, QMouseEvent * );
     /** Handles key events. Called from eventFilter */
     virtual bool eventFilter_key ( QObject *, QKeyEvent * );
+
+    /** Handles drag and drop events. Called from eventFilter */
+    virtual bool eventFilter_drag( QObject *, QDropEvent * );
 
     /** Start selecting time span. */
     void startSelectAction(const QPoint& viewportPos);
@@ -200,6 +209,9 @@ class KOAgenda : public QScrollView
     void init();
     void marcus_bains();
     bool mAllDayMode;
+
+    // We need the calendar for drag'n'drop
+    Calendar*mCalendar;
 
     // Width and height of agenda cells
     int mGridSpacingX;

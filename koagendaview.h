@@ -185,10 +185,16 @@ class KOAgendaView : public KOEventView
 
     void finishTypeAhead();
 
+    /** reschedule the todo  to the given x- and y- coordinates. Fourth parameter determines all-day (no time  specified */
+    void rescheduleTodo( Todo*, int, int, bool );
+
   signals:
     void toggleExpand();
 
     void eventChanged();
+
+    void todoChanged( Todo*, Todo* );
+    void todoDropped( Todo* );
 
   protected:
     /** Fill agenda beginning with date startDate */

@@ -45,6 +45,9 @@
 
 #include <libkcal/event.h>
 #include <libkcal/todo.h>
+#include <libkcal/dndfactory.h>
+#include <libkcal/icaldrag.h>
+#include <libkcal/vcaldrag.h>
 
 ////////////////////////////////////////////////////////////////////////////
 MarcusBains::MarcusBains(KOAgenda *_agenda,const char *name)
@@ -228,6 +231,8 @@ void KOAgenda::init()
 
   mSelectedItem = 0;
 
+  setAcceptDrops(true);
+  installEventFilter(this);
   mItems.setAutoDelete(true);
 
   resizeContents( mGridSpacingX * mColumns + 1 , mGridSpacingY * mRows + 1 );
@@ -335,9 +340,84 @@ bool KOAgenda::eventFilter ( QObject *object, QEvent *event )
         setCursor( arrowCursor );
       return true;
 
+#ifndef KORG_NODND
+    case QEvent::DragEnter:
+    case QEvent::DragMove:
+    case QEvent::DragLeave:
+    case QEvent::Drop:
+ //   case QEvent::DragResponse:
+      return eventFilter_drag(object, static_cast<QDropEvent*>(event));
+#endif
+
     default:
       return QScrollView::eventFilter( object, event );
   }
+}
+
+bool KOAgenda::eventFilter_drag(QObject *object, QDropEvent *de)
+{
+#ifndef KORG_NODND
+  QPoint viewportPos;
+  if (object != viewport() && object != this ) {
+    viewportPos = ((QWidget *)object)->mapToParent(de->pos());
+  } else {
+    viewportPos = de->pos();
+  }
+
+  switch (de->type())  {
+    case QEvent::DragEnter:
+    case QEvent::DragMove:
+      if ( ICalDrag::canDecode( de ) || VCalDrag::canDecode( de ) ) {
+
+        DndFactory factory( mCalendar );
+        Todo *todo = factory.createDropTodo( de );
+        if (todo) {
+          de->accept();
+          delete todo;
+        } else {
+          de->ignore();
+        }
+        return true;
+      } else return false;
+      break;
+    case QEvent::DragLeave:
+      return false;
+      break;
+    case QEvent::Drop:
+      {
+        if ( !ICalDrag::canDecode( de ) && !VCalDrag::canDecode( de ) ) {
+          return false;
+        }
+
+        DndFactory factory( mCalendar );
+        Todo *todo = factory.createDropTodo( de );
+
+        if ( todo ) {
+          de->acceptAction();
+          int x, y;
+          // FIXME: This is a bad hack, as the viewportToContents seems to be off by
+          // 2000 (which is the left upper corner of the viewport). It works correctly
+          // for agendaItems.
+          if ( object == this  ) {
+            x=viewportPos.x()+contentsX();
+            y=viewportPos.y()+contentsY();
+          } else {
+            viewportToContents( viewportPos.x(), viewportPos.y(), x, y );
+          }
+          int gx, gy;
+          contentsToGrid( x, y, gx, gy );
+          emit droppedToDo( todo, gx, gy, mAllDayMode );
+          return true;
+        }
+      }
+      break;
+
+    case QEvent::DragResponse:
+    default: break;
+  }
+#endif
+
+  return false;
 }
 
 bool KOAgenda::eventFilter_key( QObject *, QKeyEvent *ke )

@@ -409,6 +409,9 @@ KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name) :
   dummyAgendaRight->setFixedWidth(mAgenda->verticalScrollBar()->width());
   mDummyAllDayLeft->setFixedWidth(mTimeLabels->width());
 
+  mAllDayAgenda->setCalendar( calendar() );
+  mAgenda->setCalendar( calendar() );
+
   // Scrolling
   connect(mAgenda->verticalScrollBar(),SIGNAL(valueChanged(int)),
           mTimeLabels, SLOT(positionChanged()));
@@ -471,6 +474,12 @@ KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name) :
            SIGNAL( incidenceSelected( Incidence * ) ) );
   connect( mAllDayAgenda, SIGNAL( incidenceSelected( Incidence * ) ),
            SIGNAL( incidenceSelected( Incidence * ) ) );
+
+  // rescheduling of todos by d'n'd
+  connect( mAgenda, SIGNAL(droppedToDo(Todo*,int,int,bool)),
+           SLOT(rescheduleTodo(Todo*,int,int,bool)) );
+  connect( mAllDayAgenda, SIGNAL(droppedToDo(Todo*,int,int,bool)),
+           SLOT(rescheduleTodo(Todo*,int,int,bool)) );
 }
 
 
@@ -922,6 +931,36 @@ void KOAgendaView::updateEventIndicatorBottom(int newY)
   }
 
   mEventIndicatorBottom->update();
+}
+
+void KOAgendaView::rescheduleTodo( Todo*todo, int gx, int gy, bool allDay )
+{
+  if (gx<0 || gy<0) return;
+  QDate day = mSelectedDates[gx];
+  QTime time = mAgenda->gyToTime(gy);
+  QDateTime newTime(day, time);
+
+  if (todo) {
+    Todo *existingTodo = mCalendar->todo(todo->uid());
+    if(existingTodo) {
+      kdDebug(5850) << "Drop existing Todo" << endl;
+      Todo *oldTodo = existingTodo->clone();
+      existingTodo->setDtDue( newTime );
+      existingTodo->setFloats( allDay );
+      existingTodo->setHasDueDate( true );
+      existingTodo->setRevision( existingTodo->revision() + 1 );
+      emit todoChanged( oldTodo, existingTodo );
+      delete oldTodo;
+    } else {
+      kdDebug(5850) << "Drop new Todo" << endl;
+      todo->setDtDue( newTime );
+      todo->setFloats( allDay );
+      existingTodo->setHasDueDate( true );
+      mCalendar->addTodo( todo );
+
+      emit todoDropped(todo);
+    }
+  }
 }
 
 void KOAgendaView::startDrag( Incidence *incidence )

@@ -230,6 +230,11 @@ void KOViewManager::showAgendaView()
     connect(mMainView, SIGNAL( calendarViewExpanded( bool ) ),
             mAgendaView, SLOT( setExpandedButton( bool ) ) );
 
+    connect(mAgendaView, SIGNAL( todoChanged( Todo *, Todo* ) ),
+            mMainView, SLOT( todoChanged( Todo *, Todo * ) ) );
+    connect(mAgendaView, SIGNAL( todoDropped( Todo* ) ),
+            mMainView, SLOT( todoAdded( Todo* ) ) );
+
     connect(mMainView, SIGNAL(configChanged()), mAgendaView, SLOT(updateConfig()));
 
     mAgendaView->readSettings();
