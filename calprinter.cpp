@@ -253,7 +253,7 @@ void CalPrintDialog::setupPrinter()
 
 void CalPrintDialog::setPreview(bool preview)
 {
-  setButtonOKText( preview ? i18n("&Preview") : i18n("&Print...") );
+  setButtonOK( preview ? i18n("&Preview") : i18n("&Print...") );
   mPreviewText = preview ? i18n("<qt>Preview for printer <b>%1</b></qt>")
       : i18n( "<qt>Printing on printer <b>%1</b></qt>");
   setPrinterLabel();
