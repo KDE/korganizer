@@ -27,6 +27,7 @@ Name[ta]=நாள்காட்டிக்கான விடுமுறை 
 Name[tg]=Рӯзҳои истироҳат
 Name[xx]=xxHoliday Plugin for Calendarsxx
 Name[zh_CN]=日历的节假日插件
+Comment=Adds holiday names to the top of the agenda view and marks these days as holidays (i.e. no work time). You can select from a large number of countries.
 Type=Service
 ServiceTypes=Calendar/Plugin,Calendar/Decoration
 X-KDE-KOrganizer-HasSettings=true

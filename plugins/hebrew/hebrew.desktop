@@ -27,6 +27,7 @@ Name[ta]=ஜூவிஷ் நாள்காட்டி சொருகுப
 Name[tg]=Тақвимоти яҳудӣ
 Name[xx]=xxJewish Calendar Pluginxx
 Name[zh_CN]=犹太教日历插件
+Comment=Shows all dates in korganizer also in the Jewish calendar system.
 Type=Service
 ServiceTypes=Calendar/Plugin,Calendar/Decoration
 X-KDE-KOrganizer-HasSettings=true

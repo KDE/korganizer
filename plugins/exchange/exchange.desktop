@@ -28,6 +28,7 @@ Name[ta]=கேஅமைப்பாளருக்கான மைக்ரோ�
 Name[tg]=Дастрасӣ ба Microsoft Exchange 2000
 Name[xx]=xxMicrosoft Exchange 2000 Plugin for KOrganizerxx
 Name[zh_CN]=KOrganizer 的 Microsoft Exchange 2000 插件
+Comment=This plugin allows korganizer users to work with Microsoft Exchange 2000 groupware servers. 
 Type=Service
 ServiceTypes=KOrganizer/Part
 X-KDE-KOrganizer-HasSettings=false

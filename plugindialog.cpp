@@ -67,6 +67,15 @@ PluginDialog::PluginDialog( QWidget *parent )
   mListView = new QListView( topFrame );
   mListView->addColumn( i18n("Name") );
   topLayout->addWidget( mListView );
+  
+  mDescription = new QLabel( topFrame );
+  mDescription->setAlignment( QLabel::NoAccel | QLabel::WordBreak | QLabel::AlignVCenter );
+  mDescription->setFrameShape( QLabel::Panel );
+  mDescription->setFrameShadow( QLabel::Sunken );
+  mDescription->setSizePolicy( QSizePolicy( (QSizePolicy::SizeType)5, (QSizePolicy::SizeType)0, 0, 0, mDescription->sizePolicy().hasHeightForWidth() ) );
+  mDescription->setMinimumSize( QSize( 0, 55 ) );
+  topLayout->addWidget( mDescription );
+
 
   buildList();
 
@@ -147,6 +156,7 @@ void PluginDialog::selectionChanged( QListViewItem *i )
   PluginItem *item = dynamic_cast<PluginItem*>( i );
   if ( !item ) {
     enableButton( User1, false );
+    mDescription->setText( QString::null );
     return;
   }
 
@@ -156,6 +166,7 @@ void PluginDialog::selectionChanged( QListViewItem *i )
   if ( variant.isValid() )
     hasSettings = variant.toBool();
 
+  mDescription->setText( item->service()->comment() );
   enableButton( User1, hasSettings );
 }
 

@@ -27,6 +27,7 @@ Name[ta]=கேஅமைப்பாளருக்கான இணைய ஏற
 Name[tg]=Содирот ба намуди саҳифаи веб
 Name[xx]=xxWeb Export Plugin for KOrganizerxx
 Name[zh_CN]=KOrganizer 的网页导出插件
+Comment=Provides web export functionality to KOrganizer. If this plugin is enabled, there will be a menuitem "File->Export->Export Web Page...", where the current calendar can be exported as a html page.
 Type=Service
 ServiceTypes=KOrganizer/Part
 X-KDE-KOrganizer-HasSettings=false

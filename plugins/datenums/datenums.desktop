@@ -25,6 +25,7 @@ Name[sv]=Datuminsticksprogram för kalendrar
 Name[tg]=Санаҳои тақвим
 Name[xx]=xxDate Numbers Plugin for Calendarsxx
 Name[zh_CN]=日历的日期数字插件
+Comment=For each day this plugin shows its daynumber of the year at the top of the agenda view. For example, February 1 is day 32 of the year. 
 Type=Service
 ServiceTypes=Calendar/Plugin,Calendar/Decoration
 X-KDE-KOrganizer-HasSettings=true

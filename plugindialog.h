@@ -27,6 +27,7 @@
 
 class CalendarView;
 class QListView;
+class QLabel;
 
 class PluginDialog : public KDialogBase
 {
@@ -49,6 +50,7 @@ class PluginDialog : public KDialogBase
     void buildList();
     QListView *mListView;
     CalendarView *mMainView;
+    QLabel *mDescription;
 };
 
 #endif

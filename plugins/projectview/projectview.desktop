@@ -54,6 +54,7 @@ Name[xx]=xxProject View Plugin for KOrganizerxx
 Name[zh_CN]=KOrganizer 的项目查看插件
 Name[zh_TW]=KOrganizer 專案檢視外掛程式
 Name[zu]=Project Khombisa Iplagi ye KUmgqugquzeli
+Comment=This plugin provides a project planning view for korganizer (like the todo or month views). If you enable this plugin, you can switch to the project view and view your todo list like in a project planner.
 Type=Service
 ServiceTypes=KOrganizer/Part
 X-KDE-KOrganizer-HasSettings=false
