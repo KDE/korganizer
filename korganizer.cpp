@@ -83,22 +83,40 @@ using namespace KParts;
 #include "korganizer.moc"
 using namespace KOrg;
 
-KOrganizer::KOrganizer( bool document, const char *name )
+KOrganizer::KOrganizer( const char *name )
   : DCOPObject( "KOrganizerIface" ),
     KParts::MainWindow( 0, name ),
-    KOrg::MainWindow( document ),
+    KOrg::MainWindow(),
     mIsClosing( false )
 {
   kdDebug(5850) << "KOrganizer::KOrganizer()" << endl;
   KOCore::self()->setXMLGUIClient( this );
 //  setMinimumSize(600,400);  // make sure we don't get resized too small...
 
+  mCalendarView = new CalendarView( this, "KOrganizer::CalendarView" );
+  setCentralWidget(mCalendarView);
+
+  mActionManager = new ActionManager( this, mCalendarView, this, this, false );
+}
+
+KOrganizer::~KOrganizer()
+{
+  delete mActionManager;
+  delete mCalendar;
+}
+
+void KOrganizer::init( bool document )
+{
+  kdDebug() << "KOrganizer::init() "
+            << ( document ? "hasDocument" : "resources" ) << endl;
+
+  setHasDocument( document );
+
   // Create calendar object, which manages all calendar information associated
   // with this calendar view window.
   if ( hasDocument() ) {
     mCalendar = new CalendarLocal(KOPrefs::instance()->mTimeZoneId);
     mCalendarResources = 0;
-    mCalendarView = new CalendarView( this, "KOrganizer::CalendarView" );
     mCalendarView->setCalendar( mCalendar );
     mCalendarView->readSettings();
   } else {
@@ -138,7 +156,6 @@ KOrganizer::KOrganizer( bool document, const char *name )
       (*it)->dump();
     }
 
-    mCalendarView = new CalendarView( this, "KOrganizer::CalendarView" );
     mCalendarView->setCalendar( mCalendarResources );
     mCalendarView->readSettings();
 
@@ -160,9 +177,6 @@ KOrganizer::KOrganizer( bool document, const char *name )
   // setting fullName and email do not really count as modifying the calendar
   mCalendarView->setModified(false);
 
-  setCentralWidget(mCalendarView);
-
-  mActionManager = new ActionManager( this, mCalendarView, this, this, false );
   mActionManager->init();
   connect( mActionManager, SIGNAL( actionNew( const KURL & ) ),
            SLOT( newMainWindow( const KURL & ) ) );
@@ -199,22 +213,18 @@ KOrganizer::KOrganizer( bool document, const char *name )
   setStandardToolBarMenuEnabled( true );
 }
 
-KOrganizer::~KOrganizer()
-{
-  delete mActionManager;
-  delete mCalendar;
-}
-
 void KOrganizer::newMainWindow( const KURL &url )
 {
-  KOrganizer *korg = new KOrganizer( true );
+  KOrganizer *korg = new KOrganizer();
   if ( url.isValid() && !url.isEmpty() ) {
+    korg->init( true );
     if ( korg->openURL( url ) ) {
       korg->show();
     } else {
       delete korg;
     }
   } else {
+    korg->init( false );
     korg->show();
   }
 }
@@ -302,7 +312,7 @@ bool KOrganizer::queryClose()
     if ( !mIsClosing ) {
       kdDebug(5850) << "!mIsClosing" << endl;
       mCalendar->save();
-      hide();
+      // TODO: Put main window into a state indicating final saving.
       mIsClosing = true;
       connect( mCalendar, SIGNAL( calendarSaved() ), SLOT( close() ) );
     }

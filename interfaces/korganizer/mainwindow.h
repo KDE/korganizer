@@ -40,8 +40,10 @@ class CalendarViewBase;
 class MainWindow
 {
   public:
-    MainWindow( bool document = true ) : mDocument( document ) {}
+    MainWindow() : mDocument( true ) {}
     virtual ~MainWindow() {}
+
+    virtual void init( bool hasDocument ) { qDebug("INIT"); Q_UNUSED( hasDocument ); }
 
     virtual CalendarViewBase *view() const = 0;
 
@@ -81,6 +83,7 @@ class MainWindow
     */
     virtual void setTitle() = 0;
 
+    void setHasDocument( bool d ) { mDocument = d; } 
     bool hasDocument() const { return mDocument; }
 
   private:

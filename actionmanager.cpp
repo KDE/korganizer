@@ -956,6 +956,8 @@ KURL ActionManager::getSaveURL()
 
 void ActionManager::saveProperties(KConfig *config)
 {
+  kdDebug() << "ActionManager::saveProperties" << endl;
+
   config->writeEntry( "UseResourceCalendar", !mMainWindow->hasDocument() );
   if ( mMainWindow->hasDocument() ) {
     config->writePathEntry("Calendar",mURL.url());
@@ -964,15 +966,18 @@ void ActionManager::saveProperties(KConfig *config)
 
 void ActionManager::readProperties(KConfig *config)
 {
+  kdDebug() << "ActionManager::readProperties" << endl;
+
   bool isResourceCalendar(
     config->readBoolEntry( "UseResourceCalendar", true ) );
   QString calendarUrl = config->readPathEntry("Calendar");
 
   if (!isResourceCalendar && !calendarUrl.isEmpty()) {
+    mMainWindow->init( true );
     KURL u(calendarUrl);
     openURL(u);
   } else {
-    // TODO: Initialize a ResourceCalendar here
+    mMainWindow->init( false );
   }
 }
 

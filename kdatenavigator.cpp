@@ -213,10 +213,10 @@ void KDateNavigator::updateDates()
   // If month begins on Monday and Monday is first day of week,
   // month should begin on second line. Sunday doesn't have this problem.
   int nextLine = ( ( m_fstDayOfWkCalsys == 1) &&
-                   ( KGlobal::locale()->weekStartsMonday() == 1 ) ) ? 7 : 0;
+                   ( KGlobal::locale()->weekStartDay() == 1 ) ) ? 7 : 0;
 
   // update the matrix dates
-  int index = (KGlobal::locale()->weekStartsMonday() ? 1 : 0) - m_fstDayOfWkCalsys - nextLine;
+  int index = (KGlobal::locale()->weekStartDay() == 1 ? 1 : 0) - m_fstDayOfWkCalsys - nextLine;
 
 
   mDayMatrix->updateView(dayone.addDays(index));
@@ -268,7 +268,7 @@ void KDateNavigator::updateConfig()
   int day;
   for(int i=0; i<7; i++) {
     // take the first letter of the day name to be the abbreviation
-    if (KGlobal::locale()->weekStartsMonday()) {
+    if ( KGlobal::locale()->weekStartDay() == 1 ) {
       day = i+1;
     } else {
       if (i==0) day = 7;
@@ -332,11 +332,11 @@ int KDateNavigator::dayToIndex( int dayNum )
   int row, col;
 
   row = ( dayNum + m_fstDayOfWk - 1 -
-          ( KGlobal::locale()->weekStartsMonday() ? 1 : 0 ) ) / 7;
-  if ( KGlobal::locale()->weekStartsMonday() && ( m_fstDayOfWk == 1 ) )
+          ( KGlobal::locale()->weekStartDay() == 1 ? 1 : 0 ) ) / 7;
+  if ( KGlobal::locale()->weekStartDay() == 1 && ( m_fstDayOfWk == 1 ) )
     row++;
   col = ( dayNum + m_fstDayOfWk - 1 -
-          ( KGlobal::locale()->weekStartsMonday() ? 1 : 0 ) ) % 7;
+          ( KGlobal::locale()->weekStartDay() == 1 ? 1 : 0 ) ) % 7;
   return row * 7 + col;
 }
 

@@ -1,7 +1,8 @@
 /*
     This file is part of KOrganizer.
+
     Copyright (c) 1999 Preston Brown
-    Copyright (c) 2000,2001 Cornelius Schumacher <schumacher@kde.org>
+    Copyright (c) 2000,2001,2003 Cornelius Schumacher <schumacher@kde.org>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -176,7 +177,8 @@ void KOrganizerApp::processCalendar( const KURL &url, int numDays )
       KOrg::MainWindow *korg=ActionManager::findInstance(url);
       if (0 == korg) {
         bool hasDocument = !url.isEmpty();
-        korg = new KOrganizer( hasDocument, "KOrganizer MainWindow" );
+        korg = new KOrganizer( "KOrganizer MainWindow" );
+        korg->init( hasDocument );
         korg->topLevelWidget()->show();
 
         kdDebug(5850) << "KOrganizerApp::processCalendar(): '" << url.url()
