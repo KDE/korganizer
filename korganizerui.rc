@@ -116,6 +116,7 @@
 
   <Menu name="rmb_selection_popup">
     <Action name="new_event"/>
+    <Action name="new_todo"/>
     <Merge/>
   </Menu>
 
