@@ -438,18 +438,9 @@ KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name) :
   mAgendaPopup->addAdditionalItem(QIconSet(KOGlobals::self()->smallIcon("bell")),
                                   i18n("Toggle Alarm"),mAgenda,
                                   SLOT(popupAlarm()),true);
-  connect(mAgenda,SIGNAL(showIncidencePopupSignal(Incidence *)),
-          mAgendaPopup,SLOT(showIncidencePopup(Incidence *)));
 
   // Create event context menu for all day agenda
   mAllDayAgendaPopup = eventPopup();
-  connect(mAllDayAgenda,SIGNAL(showIncidencePopupSignal(Incidence *)),
-          mAllDayAgendaPopup,SLOT(showIncidencePopup(Incidence *)));
-
-  connect(mAgenda,SIGNAL(showNewEventPopupSignal()),
-          this, SLOT(showNewEventPopup()));
-  connect(mAllDayAgenda,SIGNAL(showNewEventPopupSignal()),
-          this, SLOT(showNewEventPopup()));
 
   // make connections between dependent widgets
   mTimeLabels->setAgenda(mAgenda);
@@ -464,87 +455,34 @@ KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name) :
   dummyAgendaRight->setFixedWidth(mAgenda->verticalScrollBar()->width());
   mDummyAllDayLeft->setFixedWidth(mTimeLabels->width());
 
-  mAllDayAgenda->setCalendar( calendar() );
-  mAgenda->setCalendar( calendar() );
-
   // Scrolling
   connect(mAgenda->verticalScrollBar(),SIGNAL(valueChanged(int)),
           mTimeLabels, SLOT(positionChanged()));
   connect(mTimeLabels->verticalScrollBar(),SIGNAL(valueChanged(int)),
           SLOT(setContentsPos(int)));
 
-  // Create/Show/Edit/Delete Event
-  connect(mAgenda,SIGNAL(newEventSignal()),SIGNAL(newEventSignal()));
+  // Create Events, depends on type of agenda
   connect(mAgenda,SIGNAL(newEventSignal(const QPoint &)),
                   SLOT(newEvent(const QPoint &)));
-  connect(mAgenda,SIGNAL(newEventSignal(const QPoint &, const QPoint &)),
-                  SLOT(newEvent(const QPoint &, const QPoint &)));
-  connect(mAllDayAgenda,SIGNAL(newEventSignal()),SIGNAL(newEventSignal()));
   connect(mAllDayAgenda,SIGNAL(newEventSignal(const QPoint &)),
                         SLOT(newEventAllDay(const QPoint &)));
+  connect(mAgenda,SIGNAL(newEventSignal(const QPoint &, const QPoint &)),
+                  SLOT(newEvent(const QPoint &, const QPoint &)));
   connect(mAllDayAgenda,SIGNAL(newEventSignal(const QPoint &, const QPoint &)),
                         SLOT(newEventAllDay(const QPoint &)));
   connect(mAgenda,SIGNAL(newTimeSpanSignal(const QPoint &, const QPoint &)),
                         SLOT(newTimeSpanSelected(const QPoint &, const QPoint &)));
   connect(mAllDayAgenda,SIGNAL(newTimeSpanSignal(const QPoint &, const QPoint &)),
                         SLOT(newTimeSpanSelectedAllDay(const QPoint &, const QPoint &)));
-
-  connect(mAgenda,SIGNAL(newStartSelectSignal()),
-          mAllDayAgenda,SLOT(clearSelection()));
-  connect(mAllDayAgenda,SIGNAL(newStartSelectSignal()),
-          mAgenda,SLOT(clearSelection()));
-
-  connect(mAgenda,SIGNAL(editIncidenceSignal(Incidence *)),
-                  SIGNAL(editIncidenceSignal(Incidence *)));
-  connect(mAllDayAgenda,SIGNAL(editIncidenceSignal(Incidence *)),
-                        SIGNAL(editIncidenceSignal(Incidence *)));
-  connect(mAgenda,SIGNAL(showIncidenceSignal(Incidence *)),
-                  SIGNAL(showIncidenceSignal(Incidence *)));
-  connect(mAllDayAgenda,SIGNAL(showIncidenceSignal(Incidence *)),
-                        SIGNAL(showIncidenceSignal(Incidence *)));
-  connect(mAgenda,SIGNAL(deleteIncidenceSignal(Incidence *)),
-                  SIGNAL(deleteIncidenceSignal(Incidence *)));
-  connect(mAllDayAgenda,SIGNAL(deleteIncidenceSignal(Incidence *)),
-                        SIGNAL(deleteIncidenceSignal(Incidence *)));
-
-  connect(mAgenda,SIGNAL(incidenceChanged(Incidence *, Incidence *)),
-                  SIGNAL(incidenceChanged(Incidence *, Incidence *)));
-  connect(mAllDayAgenda,SIGNAL(incidenceChanged(Incidence *, Incidence *)),
-                        SIGNAL(incidenceChanged(Incidence *, Incidence *)));
-
-
-  connect(mAgenda,SIGNAL(itemModified(KOAgendaItem *)),
-                  SLOT(updateEventDates(KOAgendaItem *)));
-  connect(mAllDayAgenda,SIGNAL(itemModified(KOAgendaItem *)),
-                        SLOT(updateEventDates(KOAgendaItem *)));
-
+  
   // event indicator update
   connect(mAgenda,SIGNAL(lowerYChanged(int)),
           SLOT(updateEventIndicatorTop(int)));
   connect(mAgenda,SIGNAL(upperYChanged(int)),
           SLOT(updateEventIndicatorBottom(int)));
 
-  // drag signals
-  connect( mAgenda, SIGNAL( startDragSignal( Incidence * ) ),
-           SLOT( startDrag( Incidence * ) ) );
-  connect( mAllDayAgenda, SIGNAL( startDragSignal( Incidence * ) ),
-           SLOT( startDrag( Incidence * ) ) );
-
-  // synchronize selections
-  connect( mAgenda, SIGNAL( incidenceSelected( Incidence * ) ),
-           mAllDayAgenda, SLOT( deselectItem() ) );
-  connect( mAllDayAgenda, SIGNAL( incidenceSelected( Incidence * ) ),
-           mAgenda, SLOT( deselectItem() ) );
-  connect( mAgenda, SIGNAL( incidenceSelected( Incidence * ) ),
-           SIGNAL( incidenceSelected( Incidence * ) ) );
-  connect( mAllDayAgenda, SIGNAL( incidenceSelected( Incidence * ) ),
-           SIGNAL( incidenceSelected( Incidence * ) ) );
-
-  // rescheduling of todos by d'n'd
-  connect( mAgenda, SIGNAL( droppedToDo( Todo*, const QPoint&, bool ) ),
-           SLOT( slotTodoDropped( Todo *, const QPoint&, bool ) ) );
-  connect( mAllDayAgenda, SIGNAL( droppedToDo( Todo *, const QPoint&, bool ) ),
-           SLOT( slotTodoDropped( Todo *, const QPoint&, bool ) ) );
+  connectAgenda( mAgenda, mAgendaPopup, mAllDayAgenda );
+  connectAgenda( mAllDayAgenda, mAllDayAgendaPopup, mAgenda);
 }
 
 
@@ -553,6 +491,50 @@ KOAgendaView::~KOAgendaView()
   delete mAgendaPopup;
   delete mAllDayAgendaPopup;
 }
+
+void KOAgendaView::connectAgenda( KOAgenda*agenda, QPopupMenu*popup, KOAgenda* otherAgenda )
+{
+  connect(agenda,SIGNAL(showIncidencePopupSignal(Incidence *)),
+          popup,SLOT(showIncidencePopup(Incidence *)));
+
+  connect(agenda,SIGNAL(showNewEventPopupSignal()),
+          this, SLOT(showNewEventPopup()));
+
+  agenda->setCalendar( calendar() );
+  
+  // Create/Show/Edit/Delete Event
+  connect(agenda,SIGNAL(newEventSignal()),SIGNAL(newEventSignal()));
+  
+  connect(agenda,SIGNAL(newStartSelectSignal()),
+          otherAgenda,SLOT(clearSelection()));
+
+  connect(agenda,SIGNAL(editIncidenceSignal(Incidence *)),
+                 SIGNAL(editIncidenceSignal(Incidence *)));
+  connect(agenda,SIGNAL(showIncidenceSignal(Incidence *)),
+                 SIGNAL(showIncidenceSignal(Incidence *)));
+  connect(agenda,SIGNAL(deleteIncidenceSignal(Incidence *)),
+                 SIGNAL(deleteIncidenceSignal(Incidence *)));
+
+  connect(agenda,SIGNAL(incidenceChanged(Incidence *, Incidence *)),
+                 SIGNAL(incidenceChanged(Incidence *, Incidence *)));
+
+  connect(agenda,SIGNAL(itemModified(KOAgendaItem *)),
+                 SLOT(updateEventDates(KOAgendaItem *)));
+
+  // drag signals
+  connect( agenda, SIGNAL( startDragSignal( Incidence * ) ),
+           SLOT( startDrag( Incidence * ) ) );
+
+  // synchronize selections
+  connect( agenda, SIGNAL( incidenceSelected( Incidence * ) ),
+           otherAgenda, SLOT( deselectItem() ) );
+  connect( agenda, SIGNAL( incidenceSelected( Incidence * ) ),
+           SIGNAL( incidenceSelected( Incidence * ) ) );
+
+  // rescheduling of todos by d'n'd
+  connect( agenda, SIGNAL( droppedToDo( Todo*, const QPoint&, bool ) ),
+           SLOT( slotTodoDropped( Todo *, const QPoint&, bool ) ) );
+} 
 
 void KOAgendaView::createDayLabels()
 {

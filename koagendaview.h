@@ -215,6 +215,8 @@ class KOAgendaView : public KOEventView
 
     /** Fill agenda using the current set value for the start date */
     void fillAgenda();
+    
+    void connectAgenda( KOAgenda*agenda, QPopupMenu*popup, KOAgenda* otherAgenda );
 
     /** Create labels for the selected dates. */
     void createDayLabels();
