@@ -21,8 +21,9 @@ void AlarmClient::startAlarmDaemon()
   // Start alarmdaemon. It is a KUniqueApplication, that means it is
   // automatically made sure that there is only one instance of the alarm daemon
   // running.
-  QString execStr = locate( "exe", "kalarmd" );
-  system( QFile::encodeName( execStr ) );
+  KProcess proc;
+  proc << "kalarmd";
+  proc.start(KProcess::Block, KProcess::NoCommunication);
 }
 
 void AlarmClient::startAlarmClient()
