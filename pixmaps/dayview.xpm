@@ -1,0 +1,32 @@
+/* XPM */
+static char * mini_kdayplan_xpm[] = {
+/* width height num_colors chars_per_pixel */
+"16 16 10 1",
+/* colors */
+" 	c none",
+".	c #f898c8",
+"X	c #f86460",
+"o	c #f8fc00",
+"O	c black",
+"+	c #f83060",
+"@	c #989898",
+"#	c white",
+"$	c #f80000",
+"%	c #c80000",
+/* pixels */
+"   .  X.  .o  . ",
+"   Xo o O. X Xo ",
+"    o  +@@@  o  ",
+" Xo   O@#@@.   X",
+"  X  +@@@##@@ .X",
+"X   O@#@##@#@.  ",
+"oo +@#@##@#X.@@ ",
+"  O@@@##@#.$X#@@",
+" +@#@##@#.#@#@O.",
+" @O@##@#@#@#@OX.",
+" .%O#@###@#@O+. ",
+"  .%O#@#@#@O+.  ",
+"   X+O###@O+.   ",
+"    X%O#@O+.    ",
+"     X%OO+.     ",
+"      X++.      "};
