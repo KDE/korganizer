@@ -85,7 +85,7 @@ class KOTodoListView : public QListView
  * This class provides a multi-column list view of todo events.
  *
  * @short multi-column list view of todo events.
- * @author Cornelius Schumacher <schumacher@asic.uni-heidelberg.de>
+ * @author Cornelius Schumacher <schumacher@kde.org>
  */
 class KOTodoView : public KOBaseView
 {

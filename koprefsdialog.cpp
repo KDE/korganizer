@@ -367,8 +367,41 @@ void KOPrefsDialog::setupTimeTab()
   mAlarmTimeCombo = new QComboBox(topFrame);
   mAlarmTimeCombo->insertStringList(alarmList);
   topLayout->addWidget(mAlarmTimeCombo,3,1);
-  
-  topLayout->setRowStretch(4,1);
+
+  QGroupBox *workingHoursGroup = new QGroupBox(1,Horizontal,
+                                               i18n("Working Hours"),
+                                               topFrame);
+  topLayout->addMultiCellWidget(workingHoursGroup,4,4,0,1);
+
+  QHBox *workStartBox = new QHBox(workingHoursGroup);
+  KPrefsWidTime *workingHoursStart =
+    new KPrefsWidTime(i18n("Daily Starting Hour:"),
+                      &(KOPrefs::instance()->mWorkingHoursStart),
+                      this,workStartBox);
+//  topLayout->addWidget(workingHoursStart->label(),6,0);
+//  topLayout->addWidget(workingHoursStart->spinBox(),6,1);
+
+  QHBox *workEndBox = new QHBox(workingHoursGroup);
+  KPrefsWidTime *workingHoursEnd =
+    new KPrefsWidTime(i18n("Daily Ending Hour:"),
+                      &(KOPrefs::instance()->mWorkingHoursEnd),
+                      this,workEndBox);
+//  topLayout->addWidget(workingHoursEnd->label(),7,0);
+//  topLayout->addWidget(workingHoursEnd->spinBox(),7,1);
+
+  KPrefsWidBool *excludeHolidays =
+      new KPrefsWidBool(i18n("Exclude Holidays"),
+                        &(KOPrefs::instance()->mExcludeHolidays),this,
+                        workingHoursGroup);
+//  topLayout->addWidget(fullViewMonth->checkBox(),8,0);
+
+  KPrefsWidBool *excludeSaturdays =
+      new KPrefsWidBool(i18n("Exclude Saturdays"),
+                        &(KOPrefs::instance()->mExcludeSaturdays),this,
+                        workingHoursGroup);
+//  topLayout->addWidget(fullViewMonth->checkBox(),8,0);
+
+  topLayout->setRowStretch(5,1);
 }
 
 
@@ -417,20 +450,6 @@ void KOPrefsDialog::setupViewsTab()
                         topFrame);
   topLayout->addWidget(enableMonthScroll->checkBox(),5,0);
   
-  KPrefsWidTime *workingHoursStart =
-    new KPrefsWidTime(i18n("Working Hours start at:"),
-                      &(KOPrefs::instance()->mWorkingHoursStart),
-                      this,topFrame);                    
-  topLayout->addWidget(workingHoursStart->label(),6,0);
-  topLayout->addWidget(workingHoursStart->spinBox(),6,1);
-
-  KPrefsWidTime *workingHoursEnd =
-    new KPrefsWidTime(i18n("Working Hours end at:"),
-                      &(KOPrefs::instance()->mWorkingHoursEnd),
-                      this,topFrame);                    
-  topLayout->addWidget(workingHoursEnd->label(),7,0);
-  topLayout->addWidget(workingHoursEnd->spinBox(),7,1);
-
   KPrefsWidBool *fullViewMonth =
       new KPrefsWidBool(i18n("Month View uses full window"),
                         &(KOPrefs::instance()->mFullViewMonth),this,

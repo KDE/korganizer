@@ -61,6 +61,11 @@ class KOPrefs : public KPrefs
     int     mAlarmTime;
     int     mDaylightSavings;
 
+    int     mWorkingHoursStart;
+    int     mWorkingHoursEnd;
+    bool    mExcludeHolidays;
+    bool    mExcludeSaturdays;
+
     QFont   mTimeBarFont;
     QFont   mMonthViewFont;
     QFont   mAgendaViewFont;
@@ -77,8 +82,6 @@ class KOPrefs : public KPrefs
     bool    mWeeklyRecur;
     bool    mEnableToolTips;
     bool    mEnableMonthScroll;
-    int     mWorkingHoursStart;
-    int     mWorkingHoursEnd;
     bool    mFullViewMonth;
     bool    mFullViewTodo;
 

@@ -47,7 +47,7 @@ AlarmDockWindow::AlarmDockWindow(QWidget *parent, const char *name)
 				   this, SLOT(toggleAlarmsEnabled()));
   contextMenu()->setItemChecked(itemId, TRUE);
 
-  QToolTip::add(this, i18n("Appointment Alarm Monitor"));
+//  QToolTip::add(this, i18n("Appointment Alarm Monitor"));
 }
 
 AlarmDockWindow::~AlarmDockWindow()
@@ -65,9 +65,18 @@ void AlarmDockWindow::mousePressEvent(QMouseEvent *e)
     KSystemTray::mousePressEvent(e);
 }
 
-void AlarmDockWindow::closeEvent(QCloseEvent *e)
+void AlarmDockWindow::closeEvent(QCloseEvent *)
 {
   kapp->quit();
+}
+
+void AlarmDockWindow::addToolTip(const QString &filename)
+{
+  QString txt = i18n("KOrganizer Alarm Monitor");
+
+  if (!filename.isEmpty()) txt += "\n" + filename;
+
+  QToolTip::add(this,txt);
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -87,6 +96,8 @@ AlarmDaemon::AlarmDaemon(const QString &fn, QObject *parent, const char *name)
   connect(mAlarmDialog,SIGNAL(suspendSignal(int)),SLOT(suspend(int)));
 
   calendar->load(fn);
+
+  docker->addToolTip(fn);
 
   // set up the alarm timer
   QTimer *alarmTimer = new QTimer(this);
@@ -122,6 +133,8 @@ void AlarmDaemon::reloadCal()
   kdDebug() << "AlarmDaemon::reloadCal(): '" << fileName << "'" << endl;
 
   calendar->load(fileName);
+
+  docker->addToolTip(fileName);
 }
 
 void AlarmDaemon::showAlarms(QList<KOEvent> &alarmEvents)

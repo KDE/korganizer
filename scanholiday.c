@@ -262,6 +262,9 @@ static void yy_flex_free YY_PROTO(( void * ));
 
 #define YY_AT_BOL() (yy_current_buffer->yy_at_bol)
 
+
+#define yywrap() 1
+#define YY_SKIP_YYWRAP
 typedef unsigned char YY_CHAR;
 FILE *yyin = (FILE *) 0, *yyout = (FILE *) 0;
 typedef int yy_state_type;
@@ -525,9 +528,6 @@ char *yytext;
 #line 2 "scanholiday.lex"
 #include <string.h>
 #include "parseholiday.h"
-
-#undef yywrap
-int yywrap(void) { return(1); }
 #line 532 "scanholiday.c"
 
 /* Macros after this point can all be overridden by user definitions in
@@ -682,7 +682,7 @@ YY_DECL
 	register char *yy_cp, *yy_bp;
 	register int yy_act;
 
-#line 9 "scanholiday.lex"
+#line 8 "scanholiday.lex"
 
 
 #line 689 "scanholiday.c"
@@ -767,329 +767,329 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 11 "scanholiday.lex"
+#line 10 "scanholiday.lex"
 ;
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 12 "scanholiday.lex"
+#line 11 "scanholiday.lex"
 ;
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 13 "scanholiday.lex"
+#line 12 "scanholiday.lex"
 ;
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 14 "scanholiday.lex"
+#line 13 "scanholiday.lex"
 { return(*yytext); }
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 16 "scanholiday.lex"
+#line 15 "scanholiday.lex"
 { yylval.ival =   1; return(MONTH); }
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 17 "scanholiday.lex"
+#line 16 "scanholiday.lex"
 { yylval.ival =   2; return(MONTH); }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 18 "scanholiday.lex"
+#line 17 "scanholiday.lex"
 { yylval.ival =   3; return(MONTH); }
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 19 "scanholiday.lex"
+#line 18 "scanholiday.lex"
 { yylval.ival =   4; return(MONTH); }
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 20 "scanholiday.lex"
+#line 19 "scanholiday.lex"
 { yylval.ival =   5; return(MONTH); }
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 21 "scanholiday.lex"
+#line 20 "scanholiday.lex"
 { yylval.ival =   6; return(MONTH); }
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 22 "scanholiday.lex"
+#line 21 "scanholiday.lex"
 { yylval.ival =   7; return(MONTH); }
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 23 "scanholiday.lex"
+#line 22 "scanholiday.lex"
 { yylval.ival =   8; return(MONTH); }
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 24 "scanholiday.lex"
+#line 23 "scanholiday.lex"
 { yylval.ival =   9; return(MONTH); }
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 25 "scanholiday.lex"
+#line 24 "scanholiday.lex"
 { yylval.ival =  10; return(MONTH); }
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 26 "scanholiday.lex"
+#line 25 "scanholiday.lex"
 { yylval.ival =  11; return(MONTH); }
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 27 "scanholiday.lex"
+#line 26 "scanholiday.lex"
 { yylval.ival =  12; return(MONTH); }
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 29 "scanholiday.lex"
+#line 28 "scanholiday.lex"
 { yylval.ival =   1; return(WDAY); }
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 30 "scanholiday.lex"
+#line 29 "scanholiday.lex"
 { yylval.ival =   2; return(WDAY); }
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 31 "scanholiday.lex"
+#line 30 "scanholiday.lex"
 { yylval.ival =   3; return(WDAY); }
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 32 "scanholiday.lex"
+#line 31 "scanholiday.lex"
 { yylval.ival =   4; return(WDAY); }
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 33 "scanholiday.lex"
+#line 32 "scanholiday.lex"
 { yylval.ival =   5; return(WDAY); }
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 34 "scanholiday.lex"
+#line 33 "scanholiday.lex"
 { yylval.ival =   6; return(WDAY); }
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 35 "scanholiday.lex"
+#line 34 "scanholiday.lex"
 { yylval.ival =   7; return(WDAY); }
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 37 "scanholiday.lex"
+#line 36 "scanholiday.lex"
 { yylval.ival =   1; return(NUMBER); }
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 38 "scanholiday.lex"
+#line 37 "scanholiday.lex"
 { yylval.ival =   2; return(NUMBER); }
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 39 "scanholiday.lex"
+#line 38 "scanholiday.lex"
 { yylval.ival =   3; return(NUMBER); }
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 40 "scanholiday.lex"
+#line 39 "scanholiday.lex"
 { yylval.ival =   4; return(NUMBER); }
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 41 "scanholiday.lex"
+#line 40 "scanholiday.lex"
 { yylval.ival =   5; return(NUMBER); }
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 42 "scanholiday.lex"
+#line 41 "scanholiday.lex"
 { yylval.ival = 999; return(NUMBER); }
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 43 "scanholiday.lex"
+#line 42 "scanholiday.lex"
 { yylval.ival =   0; return(NUMBER); }
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 45 "scanholiday.lex"
+#line 44 "scanholiday.lex"
 { yylval.ival =  -1; return(NUMBER); }
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 46 "scanholiday.lex"
+#line 45 "scanholiday.lex"
 { yylval.ival =  -2; return(NUMBER); }
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 48 "scanholiday.lex"
+#line 47 "scanholiday.lex"
 { yylval.ival = atoi(yytext); return(NUMBER); }
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 50 "scanholiday.lex"
+#line 49 "scanholiday.lex"
 { yylval.sval = strdup(yytext+1);
 				  yylval.sval[strlen(yylval.sval)-1] = 0;
 				  return(STRING); }
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 54 "scanholiday.lex"
+#line 53 "scanholiday.lex"
 ;
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 55 "scanholiday.lex"
+#line 54 "scanholiday.lex"
 ;
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
-#line 56 "scanholiday.lex"
+#line 55 "scanholiday.lex"
 ;
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 57 "scanholiday.lex"
+#line 56 "scanholiday.lex"
 ;
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 58 "scanholiday.lex"
+#line 57 "scanholiday.lex"
 { return(IN);    }
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
-#line 59 "scanholiday.lex"
+#line 58 "scanholiday.lex"
 { return(PLUS);  }
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
-#line 60 "scanholiday.lex"
+#line 59 "scanholiday.lex"
 { return(MINUS); }
 	YY_BREAK
 case 42:
 YY_RULE_SETUP
-#line 61 "scanholiday.lex"
+#line 60 "scanholiday.lex"
 { return(SMALL); }
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
-#line 62 "scanholiday.lex"
+#line 61 "scanholiday.lex"
 { return(CYEAR);  }
 	YY_BREAK
 case 44:
 YY_RULE_SETUP
-#line 63 "scanholiday.lex"
+#line 62 "scanholiday.lex"
 { return(LEAPYEAR); }
 	YY_BREAK
 case 45:
 YY_RULE_SETUP
-#line 64 "scanholiday.lex"
+#line 63 "scanholiday.lex"
 { return(EASTER); }
 	YY_BREAK
 case 46:
 YY_RULE_SETUP
-#line 65 "scanholiday.lex"
+#line 64 "scanholiday.lex"
 { return(LENGTH); }
 	YY_BREAK
 case 47:
 YY_RULE_SETUP
-#line 67 "scanholiday.lex"
+#line 66 "scanholiday.lex"
 { yylval.ival = 1; return(COLOR); }
 	YY_BREAK
 case 48:
 YY_RULE_SETUP
-#line 68 "scanholiday.lex"
+#line 67 "scanholiday.lex"
 { yylval.ival = 2; return(COLOR); }
 	YY_BREAK
 case 49:
 YY_RULE_SETUP
-#line 69 "scanholiday.lex"
+#line 68 "scanholiday.lex"
 { yylval.ival = 3; return(COLOR); }
 	YY_BREAK
 case 50:
 YY_RULE_SETUP
-#line 70 "scanholiday.lex"
+#line 69 "scanholiday.lex"
 { yylval.ival = 4; return(COLOR); }
 	YY_BREAK
 case 51:
 YY_RULE_SETUP
-#line 71 "scanholiday.lex"
+#line 70 "scanholiday.lex"
 { yylval.ival = 5; return(COLOR); }
 	YY_BREAK
 case 52:
 YY_RULE_SETUP
-#line 72 "scanholiday.lex"
+#line 71 "scanholiday.lex"
 { yylval.ival = 6; return(COLOR); }
 	YY_BREAK
 case 53:
 YY_RULE_SETUP
-#line 73 "scanholiday.lex"
+#line 72 "scanholiday.lex"
 { yylval.ival = 7; return(COLOR); }
 	YY_BREAK
 case 54:
 YY_RULE_SETUP
-#line 74 "scanholiday.lex"
+#line 73 "scanholiday.lex"
 { yylval.ival = 8; return(COLOR); }
 	YY_BREAK
 case 55:
 YY_RULE_SETUP
-#line 75 "scanholiday.lex"
+#line 74 "scanholiday.lex"
 { yylval.ival = 9; return(COLOR); }
 	YY_BREAK
 case 56:
 YY_RULE_SETUP
-#line 77 "scanholiday.lex"
+#line 76 "scanholiday.lex"
 { return(EQ); }
 	YY_BREAK
 case 57:
 YY_RULE_SETUP
-#line 78 "scanholiday.lex"
+#line 77 "scanholiday.lex"
 { return(NE); }
 	YY_BREAK
 case 58:
 YY_RULE_SETUP
-#line 79 "scanholiday.lex"
+#line 78 "scanholiday.lex"
 { return(LE); }
 	YY_BREAK
 case 59:
 YY_RULE_SETUP
-#line 80 "scanholiday.lex"
+#line 79 "scanholiday.lex"
 { return(GE); }
 	YY_BREAK
 case 60:
 YY_RULE_SETUP
-#line 81 "scanholiday.lex"
+#line 80 "scanholiday.lex"
 { return(LT); }
 	YY_BREAK
 case 61:
 YY_RULE_SETUP
-#line 82 "scanholiday.lex"
+#line 81 "scanholiday.lex"
 { return(GT); }
 	YY_BREAK
 case 62:
 YY_RULE_SETUP
-#line 83 "scanholiday.lex"
+#line 82 "scanholiday.lex"
 { return(AND);}
 	YY_BREAK
 case 63:
 YY_RULE_SETUP
-#line 84 "scanholiday.lex"
+#line 83 "scanholiday.lex"
 { return(OR); }
 	YY_BREAK
 case 64:
 YY_RULE_SETUP
-#line 86 "scanholiday.lex"
+#line 85 "scanholiday.lex"
 { printf("holiday: bad char: %s \n", yytext); }
 	YY_BREAK
 case 65:
 YY_RULE_SETUP
-#line 88 "scanholiday.lex"
+#line 87 "scanholiday.lex"
 ECHO;
 	YY_BREAK
 #line 1096 "scanholiday.c"
@@ -1981,5 +1981,5 @@ int main()
 	return 0;
 	}
 #endif
-#line 88 "scanholiday.lex"
+#line 87 "scanholiday.lex"
 

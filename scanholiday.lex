@@ -1,10 +1,9 @@
 %{
 #include <string.h>
 #include "parseholiday.h"
-
-#undef yywrap
-int yywrap(void) { return(1); }
 %}
+
+%option noyywrap
 
 %%
 

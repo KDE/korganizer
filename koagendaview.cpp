@@ -424,6 +424,8 @@ void KOAgendaView::updateConfig()
   KOAgendaItem::toolTipGroup()->setEnabled(KOPrefs::instance()
                                            ->mEnableToolTips);
 
+  setHolidayMasks();
+
   updateView();
 }
 
@@ -694,6 +696,7 @@ void KOAgendaView::fillAgenda()
   mEventIndicatorBottom->changeColumns(mSelectedDates.count());
 
   createDayLabels();
+  setHolidayMasks();
 
   mMinY.resize(mSelectedDates.count());
   mMaxY.resize(mSelectedDates.count());
@@ -861,4 +864,26 @@ void KOAgendaView::writeSettings()
     
   QValueList<int> list = mSplitterAgenda->sizes();
   config->writeEntry("Separator AgendaView",list);
+}
+
+void KOAgendaView::setHolidayMasks()
+{
+  mHolidayMask.resize(mSelectedDates.count());
+
+  uint i;
+  for(i=0;i<mSelectedDates.count();++i) {
+    QDate date = *(mSelectedDates.at(i));
+    if ((KOPrefs::instance()->mExcludeSaturdays &&
+         date.dayOfWeek() == 6) ||
+        (KOPrefs::instance()->mExcludeHolidays && 
+         (!mCalendar->getHolidayForDate(date).isEmpty() ||
+          date.dayOfWeek() == 7))) {
+      mHolidayMask[i] = true;
+    } else {
+      mHolidayMask[i] = false;
+    }
+  }
+  
+  mAgenda->setHolidayMask(&mHolidayMask);
+  mAllDayAgenda->setHolidayMask(&mHolidayMask);
 }

@@ -4,6 +4,7 @@
 
 #include <qscrollview.h>
 #include <qtimer.h>
+#include <qarray.h>
 
 #include "koagendaitem.h"
 
@@ -57,6 +58,8 @@ class KOAgenda : public QScrollView
     void updateConfig();
 
     void checkScrollBoundaries();
+
+    void setHolidayMask(QArray<bool> *);
 
   public slots:
     void scrollUp();
@@ -173,6 +176,8 @@ class KOAgenda : public QScrollView
 
     int mOldLowerScrollValue;
     int mOldUpperScrollValue;
+
+    QArray<bool> *mHolidayMask;
 };
 
 #endif // KOAGENDA_H

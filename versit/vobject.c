@@ -972,6 +972,11 @@ typedef struct OFile {
     int fail:1;
     } OFile;
 
+
+// vCalendar files need crlf linebreaks. The disabled functions didn't provide
+// that.
+#if 0
+
 static void appendsOFile(OFile *fp, const char *s)
 {
     int slen;
@@ -1027,6 +1032,55 @@ stuff:
 	fp->fail = 1;
 	}
 }
+
+#else
+
+static void appendcOFile_(OFile *fp, char c)
+{
+    if (fp->fail) return;
+    if (fp->fp) {
+	fputc(c,fp->fp);
+	}
+    else {
+stuff:
+	if (fp->len+1 < fp->limit) {
+	    fp->s[fp->len] = c;
+	    fp->len++;
+	    return;
+	    }
+	else if (fp->alloc) {
+	    fp->limit = fp->limit + OFILE_REALLOC_SIZE;
+	    fp->s = realloc(fp->s,fp->limit);
+	    if (fp->s) goto stuff;
+	    }
+	if (fp->alloc)
+	    free(fp->s);
+	fp->s = 0;
+	fp->fail = 1;
+	}
+}
+
+static void appendcOFile(OFile *fp, char c)
+{
+    if (c == '\n') {
+	/* write out as <CR><LF> */
+	appendcOFile_(fp,0xd);
+	appendcOFile_(fp,0xa);
+	}
+    else
+	appendcOFile_(fp,c);
+}
+
+static void appendsOFile(OFile *fp, const char *s)
+{
+    int i, slen;
+    slen  = strlen(s);
+    for (i=0; i<slen; i++) {
+	appendcOFile(fp,s[i]);
+	}
+}
+
+#endif
 
 static void initOFile(OFile *fp, FILE *ofp)
 {

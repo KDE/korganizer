@@ -6,15 +6,6 @@
 #ifndef KOAGENDAVIEW_H 
 #define KOAGENDAVIEW_H
 
-//#include <qlabel.h>
-//include <qframe.h>
-//#include <qdatetm.h>
-//#include <qlistbox.h>
-//#include <qlayout.h>
-//#include <qintdict.h>
-
-//#include <kapp.h>
-
 #include "koeventview.h"
 
 #include <qscrollview.h>
@@ -56,10 +47,6 @@ class TimeLabels : public QScrollView {
   private:
     int mRows;
     int mCellHeight;
-
-    /** 12 = am/pm
-        24 = military time */
-    int mTimeFormat;
 
     /**  */
     KOAgenda* mAgenda;
@@ -162,6 +149,11 @@ class KOAgendaView : public KOEventView {
     /** Set type of agenda view. See also the definitions above. */
     void setView( int ViewType );
 
+    /**
+      Set the masks on the agenda widgets indicating, which days are holidays.
+    */
+    void setHolidayMasks();
+
   protected slots:
 
     /** Move TimeLabels, so that its positions correspond to the agenda. */
@@ -203,6 +195,8 @@ class KOAgendaView : public KOEventView {
     
     QArray<int> mMinY;
     QArray<int> mMaxY;
+    
+    QArray<bool> mHolidayMask;
 };
 
 #endif  // KOAGENDAVIEW_H

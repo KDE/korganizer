@@ -22,6 +22,8 @@ class AlarmDockWindow : public KSystemTray
 
     bool alarmsOn() { return contextMenu()->isItemChecked(itemId); }
 
+    void addToolTip(const QString &);
+
   protected:
     void mousePressEvent(QMouseEvent *);
     void closeEvent(QCloseEvent *e);

@@ -563,22 +563,36 @@ void KOAgenda::placeSubCells(KOAgendaItem *placeItem)
 */
 void KOAgenda::drawContents(QPainter* p, int cx, int cy, int cw, int ch)
 {
+  // Highlight working hours
   if (mWorkingHoursEnable) {
     int x1 = cx;
     int y1 = mWorkingHoursYTop;
     if (y1 < cy) y1 = cy;
     int x2 = cx+cw-1;
-  //  int x2 = mGridSpacingX * 5 - 1;
-  //  if (x2 > cx+cw-1) x2 = cx + cw - 1;
+    //  int x2 = mGridSpacingX * 5 - 1;
+    //  if (x2 > cx+cw-1) x2 = cx + cw - 1;
     int y2 = mWorkingHoursYBottom;
     if (y2 > cy+ch-1) y2=cy+ch-1;
 
     if (x2 >= x1 && y2 >= y1) {
-      p->fillRect(x1,y1,x2-x1+1,y2-y1+1,
-                  KOPrefs::instance()->mWorkingHoursColor);
+      int gxStart = x1/mGridSpacingX;
+      int gxEnd = x2/mGridSpacingX;
+      while(gxStart <= gxEnd) {
+        if (gxStart < int(mHolidayMask->count()) &&
+            !mHolidayMask->at(gxStart)) {
+          int xStart = gxStart*mGridSpacingX;
+          if (xStart < x1) xStart = x1;
+          int xEnd = (gxStart+1)*mGridSpacingX-1;
+          if (xEnd > x2) xEnd = x2;
+          p->fillRect(xStart,y1,xEnd-xStart+1,y2-y1+1,
+                      KOPrefs::instance()->mWorkingHoursColor);
+        }
+        ++gxStart;
+      }
     }
   }
-        
+
+  // Draw horizontal lines of grid        
   //  kdDebug() << "drawContents cx: " << cx << " cy: " << cy << " cw: " << cw << " ch: " << ch << endl;
   int x = ((int)(cx/mGridSpacingX))*mGridSpacingX;
   while (x < cx + cw) {
@@ -586,6 +600,7 @@ void KOAgenda::drawContents(QPainter* p, int cx, int cy, int cw, int ch)
     x+=mGridSpacingX;
   }
 
+  // Draw vertical lines of grid
   int y = ((int)(cy/mGridSpacingY))*mGridSpacingY;
   while (y < cy + ch) {
 //    kdDebug() << " y: " << y << endl;
@@ -942,4 +957,17 @@ void KOAgenda::calculateWorkingHours()
                       KOPrefs::instance()->mWorkingHoursStart * 2;
   mWorkingHoursYBottom = mGridSpacingY *
                          KOPrefs::instance()->mWorkingHoursEnd * 2 - 1;
+}
+
+void KOAgenda::setHolidayMask(QArray<bool> *mask)
+{
+  mHolidayMask = mask;
+
+/*  
+  kdDebug() << "HolidayMask: ";
+  for(uint i=0;i<mask->count();++i) {
+    kdDebug() << (mask->at(i) ? "*" : "o");
+  }
+  kdDebug() << endl;
+*/
 }

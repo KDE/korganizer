@@ -51,7 +51,8 @@ libkorganizer_la_SOURCES =  outgoingdialog_base.ui \
         scheduler.cpp imipscheduler.cpp dummyscheduler.cpp \
         koeventview.cpp categoryselectdialog_base.ui categoryselectdialog.cpp \
         categoryeditdialog_base.ui categoryeditdialog.cpp calfilter.cpp \
-        kofilterview_base.ui kofilterview.cpp 
+        kofilterview_base.ui kofilterview.cpp \
+        scanholiday.c parseholiday.c
 
 alarmd_SOURCES = alarmdaemon.cpp alarmmain.cpp \
         calobject.cpp calendarlocal.cpp \
@@ -59,9 +60,8 @@ alarmd_SOURCES = alarmdaemon.cpp alarmmain.cpp \
         koevent.cpp \
 	vcaldrag.cpp koprefs.cpp alarmapp.cpp \
         alarmdialog.cpp koeventviewer.cpp kprefs.cpp koexceptions.cpp \
-        scheduler.cpp calfilter.cpp
-
-# removed scanholiday.c parseholiday.c because of conflicts with libical
+        scheduler.cpp calfilter.cpp \
+        scanholiday.c parseholiday.c
 
 METASOURCES = AUTO
 

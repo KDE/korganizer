@@ -33,20 +33,14 @@
 #include "calobject.h"
 #include "calobject.moc"
 
-#if 0
-#ifdef __cplusplus
 extern "C" {
-#endif
-char *parse_holidays(const char *, int year, short force);
-struct holiday {
-  char            *string;        /* name of holiday, 0=not a holiday */
-  unsigned short  dup;            /* reference count */
-};   
-extern struct holiday holiday[366];
-#if __cplusplus
+  char *parse_holidays(const char *, int year, short force);
+  struct holiday {
+    char            *string;        /* name of holiday, 0=not a holiday */
+    unsigned short  dup;            /* reference count */
+  };   
+  extern struct holiday holiday[366];
 };
-#endif
-#endif
 
 CalObject::CalObject()
   : QObject()
@@ -323,8 +317,6 @@ void CalObject::updateConfig()
 
 QString CalObject::getHolidayForDate(const QDate &qd)
 {
-  return "";
-#if 0
   static int lastYear = 0;
 
 //  kdDebug() << "CalendarLocal::getHolidayForDate(): Holiday: " << holidays << endl;
@@ -344,7 +336,6 @@ QString CalObject::getHolidayForDate(const QDate &qd)
 //    kdDebug() << "No holiday" << endl;
     return(QString(""));
   }
-#endif
 }
 
 void CalObject::readHolidayFileName()

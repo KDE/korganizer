@@ -12,10 +12,10 @@
 #include "alarmapp.moc"
 
 
-AlarmApp::AlarmApp()
-  : KUniqueApplication()
+AlarmApp::AlarmApp() :
+  KUniqueApplication(),
+  mAd(0)
 {
-  mAd = 0;
 }
 
 AlarmApp::~AlarmApp()
