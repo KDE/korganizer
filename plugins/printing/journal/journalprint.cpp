@@ -127,7 +127,6 @@ void CalPrintJournal::print( QPainter &p, int width, int height )
   mHelper->drawHeader( p, i18n("Journal entries"), QDate(), QDate(), 0, 0, width, mHelper->mHeaderHeight/2 );
   y = mHelper->mHeaderHeight/2 + 15;
 
-  // FIXME: Sort the list of journals
   Journal::List::Iterator it = journals.begin();
   for ( ; it != journals.end(); ++it ) {
     mHelper->drawJournal( *it, p, x, y, width, height );
