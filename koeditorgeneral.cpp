@@ -403,12 +403,13 @@ void KOEditorGeneral::writeIncidence(Incidence *event)
         j = j * (60 * 24);
       alarm->setStartOffset( j );
 
-      if (!mAlarmProgram.isEmpty() && mAlarmProgramButton->isOn())
-        alarm->setProcedureAlarm(mAlarmProgram);
       if (!mAlarmSound.isEmpty() && mAlarmSoundButton->isOn())
         alarm->setAudioAlarm(mAlarmSound);
       else
         alarm->setDisplayAlarm(QString::null);
+      // TODO: Make sure all alarm options are correctly set and don't erase other options!
+      if (!mAlarmProgram.isEmpty() && mAlarmProgramButton->isOn())
+        alarm->setProcedureAlarm(mAlarmProgram);
 
 // TODO: Deal with multiple alarms
       break; // For now, stop after the first alarm
