@@ -31,23 +31,29 @@ class ExportWebDialog : public KDialogBase
 
     void browseOutputFile();
     void slotResult(KIO::Job *);
+
   protected slots:
  
   signals:
 
   protected:
     void setupGeneralPage();
+    void setupEventPage();
     void setupTodoPage();
     void setupAdvancedPage();
 
     void createHtmlEventList (QTextStream *ts);
     void createHtmlTodoList (QTextStream *ts);
     void createHtmlTodo (QTextStream *ts,KOEvent *todo);
-    void createHtmlEvent (QTextStream *ts,KOEvent *event);
+    void createHtmlEvent (QTextStream *ts,KOEvent *event,QDate date);
+
+    void formatHtmlCategories (QTextStream *ts,KOEvent *event);
+    void formatHtmlAttendees (QTextStream *ts,KOEvent *event);
 
     CalObject *mCalendar;
   
     QFrame *mGeneralPage;
+    QFrame *mEventPage;
     QFrame *mTodoPage;
     QFrame *mAdvancedPage;
   
@@ -56,10 +62,12 @@ class ExportWebDialog : public KDialogBase
     QCheckBox *mCbEvent;
     QCheckBox *mCbTodo;
     QCheckBox *mCbDueDates;
-    QCheckBox *mCbAttendees;
+    QCheckBox *mCbCategoriesTodo;
+    QCheckBox *mCbCategoriesEvent;
+    QCheckBox *mCbAttendeesTodo;
+    QCheckBox *mCbAttendeesEvent;
     QCheckBox *mCbHtmlFragment;
     QLineEdit *mOutputFileEdit;
-
 };
 
 #endif // _EXPORTWEBDIALOG_H

@@ -1176,6 +1176,8 @@ VObject *CalObject::eventToVTodo(const KOEvent *anEvent)
   // summary
   if (!anEvent->getSummary().isEmpty())
     addPropValue(vtodo, VCSummaryProp, anEvent->getSummary().ascii());
+
+  // status
   addPropValue(vtodo, VCStatusProp, anEvent->getStatusStr().ascii());
 
   // priority

@@ -45,7 +45,7 @@
 #include "koeventeditor.h"
 #include "kotodoeditor.h"
 #include "koprefs.h"
-#include "koeventviewer.h"
+#include "koeventviewerdialog.h"
 
 #include "calendarview.h"
 #include "calendarview.moc"

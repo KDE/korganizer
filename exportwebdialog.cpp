@@ -35,6 +35,7 @@ ExportWebDialog::ExportWebDialog (CalObject *cal, QWidget *parent,
   mCalendar(cal)
 {
   setupGeneralPage();
+  setupEventPage();
   setupTodoPage();
   setupAdvancedPage();
   
@@ -98,8 +99,26 @@ void ExportWebDialog::setupTodoPage()
   mCbDueDates = new QCheckBox (i18n("Due Dates"),mTodoPage);
   topLayout->addWidget(mCbDueDates);
   
-  mCbAttendees = new QCheckBox (i18n("Attendees"),mTodoPage);
-  topLayout->addWidget(mCbAttendees);
+  mCbCategoriesTodo = new QCheckBox (i18n("Categories"),mTodoPage);
+  topLayout->addWidget(mCbCategoriesTodo);
+  
+  mCbAttendeesTodo = new QCheckBox (i18n("Attendees"),mTodoPage);
+  topLayout->addWidget(mCbAttendeesTodo);
+  
+  topLayout->addStretch(1);
+}
+
+void ExportWebDialog::setupEventPage()
+{
+  mEventPage = addPage(i18n("Event"));
+  
+  QVBoxLayout *topLayout = new QVBoxLayout(mEventPage, 10);
+  
+  mCbCategoriesEvent = new QCheckBox (i18n("Categories"),mEventPage);
+  topLayout->addWidget(mCbCategoriesEvent);
+  
+  mCbAttendeesEvent = new QCheckBox (i18n("Attendees"),mEventPage);
+  topLayout->addWidget(mCbAttendeesEvent);
   
   topLayout->addStretch(1);
 }
@@ -213,10 +232,13 @@ void ExportWebDialog::exportWebPage()
 void ExportWebDialog::slotResult(KIO::Job *job)
 {
   qDebug("slotResult");
-  if (job->error())
+  int err = job->error();
+  if (err)
   {
+    qDebug("Error %d: %s",err,job->errorString().latin1());
     job->showErrorDialog();
   } else {
+    qDebug("No Error");
     accept();
   }
   qDebug("slotResult done");
@@ -226,10 +248,21 @@ void ExportWebDialog::createHtmlEventList (QTextStream *ts)
 {
   *ts << "<TABLE BORDER=0 CELLPADDING=3 CELLSPACING=3>\n";
   *ts << "  <TR>\n";
-  *ts << "    <TH CLASS=sum>" << i18n("Task") << "</TH>\n";
+  *ts << "    <TH CLASS=sum>" << i18n("Event") << "</TH>\n";
   *ts << "    <TH>" << i18n("Start Time") << "</TH>\n";
   *ts << "    <TH>" << i18n("End Time") << "</TH>\n";
+  if (mCbCategoriesEvent->isChecked()) {
+    *ts << "    <TH>" << i18n("Categories") << "</TH>\n";
+  }
+  if (mCbAttendeesEvent->isChecked()) {
+    *ts << "    <TH>" << i18n("Attendees") << "</TH>\n";
+  }
+
   *ts << "  </TR>\n";
+
+  int columns = 3;
+  if (mCbCategoriesEvent->isChecked()) ++columns;
+  if (mCbAttendeesEvent->isChecked()) ++columns;
 
   QDate dt = mFromDate->getDate();
   for (dt = mFromDate->getDate(); dt <= mToDate->getDate();
@@ -237,12 +270,13 @@ void ExportWebDialog::createHtmlEventList (QTextStream *ts)
     qDebug("Getting events for %s",dt.toString().latin1());
     QList<KOEvent> events = mCalendar->getEventsForDate(dt,true);
     if (events.count()) {
-      *ts << "  <TR><TD COLSPAN=3 CLASS=datehead><I>"
+      *ts << "  <TR><TD COLSPAN=" << QString::number(columns)
+          << " CLASS=datehead><I>"
           << KGlobal::locale()->formatDate(dt)
           << "</I></TD></TR>\n";
       KOEvent *ev;
       for(ev = events.first(); ev; ev = events.next()) {
-        createHtmlEvent(ts,ev);
+        createHtmlEvent(ts,ev,dt);
       }
     }
   }
@@ -250,7 +284,8 @@ void ExportWebDialog::createHtmlEventList (QTextStream *ts)
   *ts << "</TABLE>\n";  
 }
 
-void ExportWebDialog::createHtmlEvent (QTextStream *ts, KOEvent *event)
+void ExportWebDialog::createHtmlEvent (QTextStream *ts, KOEvent *event,
+                                       QDate date)
 {
   qDebug("ExportWebDialog::createHtmlEvent()");
   *ts << "  <TR>\n";
@@ -263,10 +298,30 @@ void ExportWebDialog::createHtmlEvent (QTextStream *ts, KOEvent *event)
   *ts << "    </TD>\n";
 
   if (!event->doesFloat()) {
-    *ts << "    <TD>" << event->getDtStartTimeStr() << "</TD>\n";
-    *ts << "    <TD>" << event->getDtEndTimeStr() << "</TD>\n";
+    if (event->getDtStart().date() == date) {
+      *ts << "    <TD>" << event->getDtStartTimeStr() << "</TD>\n";
+    } else {
+      *ts << "    <TD>&nbsp;</TD>\n";
+    }
+    if (event->getDtEnd().date() == date) {
+      *ts << "    <TD>" << event->getDtEndTimeStr() << "</TD>\n";
+    } else {
+      *ts << "    <TD>&nbsp;</TD>\n";
+    }
   } else {
     *ts << "    <TD>&nbsp;</TD><TD>&nbsp;</TD>\n";
+  }
+  
+  if (mCbCategoriesTodo->isChecked()) {
+    *ts << "  <TD>\n";
+    formatHtmlCategories(ts,event);  
+    *ts << "  </TD>\n";  
+  }
+
+  if (mCbAttendeesTodo->isChecked()) {
+    *ts << "  <TD>\n";
+    formatHtmlAttendees(ts,event);
+    *ts << "  </TD>\n";
   }
   
   *ts << "  </TR>\n";
@@ -286,7 +341,10 @@ void ExportWebDialog::createHtmlTodoList (QTextStream *ts)
   if (mCbDueDates->isChecked()) {
     *ts << "    <TH>" << i18n("Due Date") << "</TH>\n";
   }
-  if (mCbAttendees->isChecked()) {
+  if (mCbCategoriesTodo->isChecked()) {
+    *ts << "    <TH>" << i18n("Categories") << "</TH>\n";
+  }
+  if (mCbAttendeesTodo->isChecked()) {
     *ts << "    <TH>" << i18n("Attendees") << "</TH>\n";
   }
   *ts << "  </TR>\n";
@@ -305,7 +363,8 @@ void ExportWebDialog::createHtmlTodoList (QTextStream *ts)
       *ts << "    <TD CLASS=subhead COLSPAN=";
       int columns = 3;
       if (mCbDueDates->isChecked()) ++columns;
-      if (mCbAttendees->isChecked()) ++columns;
+      if (mCbCategoriesTodo->isChecked()) ++columns;
+      if (mCbAttendeesTodo->isChecked()) ++columns;
       *ts << "\"" << QString::number(columns) << "\"";
       *ts << "><A NAME=\"sub" << ev->getVUID() << "\"></A>"
           << i18n("Sub-Tasks of: ") << "<A HREF=\"#"
@@ -372,25 +431,45 @@ void ExportWebDialog::createHtmlTodo (QTextStream *ts,KOEvent *todo)
     *ts << "  </TD>\n";
   }
 
-  if (mCbAttendees->isChecked()) {
+  if (mCbCategoriesTodo->isChecked()) {
     *ts << "  <TD";
     if (completed) *ts << " CLASS=done";
     *ts << ">\n";
-  
-    QList<Attendee> attendees = todo->getAttendeeList();
-    if (attendees.count()) {
-      Attendee *a;
-      for(a=attendees.first();a;a=attendees.next()) {
-        *ts << "    " << a->getName();
-        if (!a->getEmail().isEmpty()) *ts << " &lt;" << a->getEmail() << "&gt;";
-        *ts << "<BR>" << "\n";
-      }
-    } else {
-      *ts << "    &nbsp;\n";
-    }
+    formatHtmlCategories(ts,todo);  
+    *ts << "  </TD>\n";  
+  }
 
+  if (mCbAttendeesTodo->isChecked()) {
+    *ts << "  <TD";
+    if (completed) *ts << " CLASS=done";
+    *ts << ">\n";
+    formatHtmlAttendees(ts,todo);
     *ts << "  </TD>\n";
   }
 
   *ts << "</TR>\n";
+}
+
+void ExportWebDialog::formatHtmlCategories (QTextStream *ts,KOEvent *event)
+{
+  if (!event->getCategoriesStr().isEmpty()) {
+    *ts << "    " << event->getCategoriesStr() << "\n";
+  } else {
+    *ts << "    &nbsp;\n";
+  }
+}
+
+void ExportWebDialog::formatHtmlAttendees (QTextStream *ts,KOEvent *event)
+{
+  QList<Attendee> attendees = event->getAttendeeList();
+  if (attendees.count()) {
+    Attendee *a;
+    for(a=attendees.first();a;a=attendees.next()) {
+      *ts << "    " << a->getName();
+      if (!a->getEmail().isEmpty()) *ts << " &lt;" << a->getEmail() << "&gt;";
+      *ts << "<BR>" << "\n";
+    }
+  } else {
+    *ts << "    &nbsp;\n";
+  }
 }

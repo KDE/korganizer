@@ -11,7 +11,6 @@
 KOEventViewer::KOEventViewer(QWidget *parent,const char *name)
   : QTextView(parent,name)
 {
-//  setTextFormat(PlainText);
 }
 
 KOEventViewer::~KOEventViewer()
@@ -30,46 +29,89 @@ void KOEventViewer::appendEvent(KOEvent *event)
   
   if (event->doesFloat()) {
     if (event->isMultiDay()) {
-      addTag("b",i18n("From: "));
-      mText.append(event->getDtStartDateStr());
-      addTag("b",i18n(" To: "));
-      mText.append(event->getDtEndDateStr());
+      mText.append(i18n("<b>From:</b> %1 <b>To:</b> %2")
+                   .arg(event->getDtStartDateStr())
+                   .arg(event->getDtEndDateStr()));
     } else {
-      addTag("b","On: ");
-      mText.append(event->getDtStartDateStr());
+      mText.append(i18n("<b>On:</b> %1").arg(event->getDtStartDateStr()));
     }
   } else {
     if (event->isMultiDay()) {
-      addTag("b",i18n("From: "));
-      mText.append(event->getDtStartDateStr() + " ");
-      mText.append(event->getDtStartTimeStr());
-      addTag("b",i18n(" To: "));
-      mText.append(event->getDtEndDateStr() + " ");
-      mText.append(event->getDtEndTimeStr());
+      mText.append(i18n("<b>From:</b> %1 <b>To:</b> %2")
+                   .arg(event->getDtStartStr())
+                   .arg(event->getDtEndStr()));
     } else {
-      addTag("b","On: ");
-      mText.append(event->getDtStartDateStr());
-      addTag("b",i18n(" From: "));
-      mText.append(event->getDtStartTimeStr());
-      addTag("b",i18n(" To: "));
-      mText.append(event->getDtEndTimeStr());
+      mText.append(i18n("<b>On:</b> %1 <b>From:</b> %2 <b>To:</b> %3")
+                   .arg(event->getDtStartDateStr())
+                   .arg(event->getDtStartTimeStr())
+                   .arg(event->getDtEndTimeStr()));
     }
   }
 
   if (!event->getDescription().isEmpty()) addTag("p",event->getDescription());
 
+  formatCategories(event);
+  formatAttendees(event);
+
+  if (event->doesRecur()) {
+    addTag("p","<em>" + i18n("This is a recurring event.") + "</em>");
+  }
+
   setText(mText);
+}
+
+void KOEventViewer::appendTodo(KOEvent *event)
+{
+  if (!event->getDescription().isEmpty()) addTag("p",event->getDescription());  
+
+  if (event->hasDueDate()) {
+    mText.append(i18n("<b>Due on:</b> %1").arg(event->getDtDueStr()));
+  }
+
+  addTag("h1",event->getSummary());
+  
+  formatCategories(event);
+  formatAttendees(event);
+
+  mText.append(i18n("<p><b>Status:</b> %1<br><b>Priority:</b> %2</p>")
+               .arg(event->getStatusStr())
+               .arg(QString::number(event->getPriority())));
+
+  setText(mText);
+}
+
+void KOEventViewer::formatCategories(KOEvent *event)
+{
+  if (!event->getCategoriesStr().isEmpty()) {
+    if (event->getCategories().count() == 1) {
+      addTag("h2",i18n("Category"));
+    } else {
+      addTag("h2",i18n("Categories"));
+    }
+    addTag("p",event->getCategoriesStr());
+  }
+}
+
+void KOEventViewer::formatAttendees(KOEvent *event)
+{
+  QList<Attendee> attendees = event->getAttendeeList();
+  if (attendees.count()) {
+    addTag("h2",i18n("Attendees"));
+    Attendee *a;
+    mText.append("<ul>");
+    for(a=attendees.first();a;a=attendees.next()) {
+      QString str = a->getName();
+      if (!a->getEmail().isEmpty()) str += " &lt;" + a->getEmail() + "&gt;";
+      addTag("li",str);
+    }
+    mText.append("</ul>");
+  }
 }
 
 void KOEventViewer::setTodo(KOEvent *event)
 {
-  mText = "";
-
-  addTag("h1",event->getSummary());
-  
-  if (!event->getDescription().isEmpty()) addTag("p",event->getDescription());  
-
-  setText(mText);
+  clearEvents();
+  appendTodo(event);
 }
 
 void KOEventViewer::setEvent(KOEvent *event)
@@ -81,29 +123,5 @@ void KOEventViewer::setEvent(KOEvent *event)
 void KOEventViewer::clearEvents(bool now)
 {
   mText = "";
-  if(now) setText(mText);
-}
-
-KOEventViewerDialog::KOEventViewerDialog(QWidget *parent,const char *name)
-  : KDialogBase(parent,name,false,i18n("Event Viewer"),Ok,Ok,false,
-                i18n("Edit"))
-{
-  mEventViewer = new KOEventViewer(this);
-  setMainWidget(mEventViewer);
-
-  setMinimumSize(300,200);
-}
-
-KOEventViewerDialog::~KOEventViewerDialog()
-{
-}
-
-void KOEventViewerDialog::setEvent(KOEvent *event)
-{
-  mEventViewer->setEvent(event);
-}
-
-void KOEventViewerDialog::setTodo(KOEvent *event)
-{
-  mEventViewer->setTodo(event);
+  if (now) setText(mText);
 }

@@ -1,8 +1,8 @@
 // 	$Id$	
 // EVENT CLASS
 
-#ifndef _KDPEVENT_H
-#define _KDPEVENT_H
+#ifndef _KOEVENT_H
+#define _KOEVENT_H
 
 #include <qobject.h>
 #include <qdatetm.h>

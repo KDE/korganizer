@@ -2,12 +2,11 @@
 #define KOEVENTVIEWER_H
 // $Id$
 //
-// Viewer widget and dialog for events.
+// Viewer widget for events.
 //
 
 #include <qtextview.h>
 
-#include <kdialogbase.h>
 
 class KOEvent;
 
@@ -22,29 +21,20 @@ class KOEventViewer : public QTextView {
     void setTodo(KOEvent *event);
     
     void appendEvent(KOEvent *event);
+    void appendTodo(KOEvent *event);
     
     void clearEvents(bool now=false);
     
   protected:
     void addTag(const QString & tag,const QString & text);
 
+    void formatCategories(KOEvent *event);
+    void formatAttendees(KOEvent *event);
+
   private:
     QTextView *mEventTextView;
 
     QString mText;    
-};
-
-class KOEventViewerDialog : public KDialogBase {
-    Q_OBJECT
-  public:
-    KOEventViewerDialog(QWidget *parent=0,const char *name=0);
-    virtual ~KOEventViewerDialog();
-
-    void setEvent(KOEvent *event);
-    void setTodo(KOEvent *event);
-    
-  private:
-    KOEventViewer *mEventViewer;
 };
 
 #endif
