@@ -80,6 +80,10 @@ class KOPrefs : public KOPrefsBase
 
     QString mHtmlExportFile;
 
+    // Groupware passwords
+    QString mPublishPassword;
+    QString mRetrievePassword;
+
   private:
     QDict<QColor> mCategoryColors;
     QColor mDefaultCategoryColor;

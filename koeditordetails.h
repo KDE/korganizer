@@ -43,6 +43,7 @@
 #include "customlistviewitem.h"
 
 class KDateEdit;
+class KOEditorGantt;
 
 using namespace KCal;
 
@@ -91,6 +92,9 @@ class KOEditorDetails : public QWidget
     /** Check if the input is valid. */
     bool validateInput();
 
+    /** Set the gantt view */
+    void setGanttWidget( KOEditorGantt* );
+
   public slots:
     void insertAttendee(Attendee *);
 
@@ -121,6 +125,8 @@ class KOEditorDetails : public QWidget
     QPushButton* mAddressBookButton;
 
     QPtrList<Attendee> mdelAttendees;
+
+    KOEditorGantt* mGantt;
 };
 
 #endif

@@ -1,0 +1,737 @@
+<!DOCTYPE UI><UI version="3.2" stdsetdef="1">
+<class>KOGroupwarePrefsPage</class>
+<widget class="QWidget">
+    <property name="name">
+        <cstring>KOGroupwarePrefsPage</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>496</width>
+            <height>531</height>
+        </rect>
+    </property>
+    <property name="caption">
+        <string>Form1</string>
+    </property>
+    <vbox>
+        <property name="name">
+            <cstring>unnamed</cstring>
+        </property>
+        <widget class="QTabWidget">
+            <property name="name">
+                <cstring>groupwareTab</cstring>
+            </property>
+            <property name="enabled">
+                <bool>true</bool>
+            </property>
+            <widget class="QWidget">
+                <property name="name">
+                    <cstring>tab</cstring>
+                </property>
+                <attribute name="title">
+                    <string>&amp;Publish</string>
+                </attribute>
+                <vbox>
+                    <property name="name">
+                        <cstring>unnamed</cstring>
+                    </property>
+                    <widget class="QFrame">
+                        <property name="name">
+                            <cstring>publishFrame</cstring>
+                        </property>
+                        <property name="enabled">
+                            <bool>true</bool>
+                        </property>
+                        <property name="frameShape">
+                            <enum>StyledPanel</enum>
+                        </property>
+                        <property name="frameShadow">
+                            <enum>Plain</enum>
+                        </property>
+                        <property name="lineWidth">
+                            <number>0</number>
+                        </property>
+                        <grid>
+                            <property name="name">
+                                <cstring>unnamed</cstring>
+                            </property>
+                            <property name="margin">
+                                <number>0</number>
+                            </property>
+                            <widget class="QButtonGroup" row="3" column="0">
+                                <property name="name">
+                                    <cstring>ButtonGroup2</cstring>
+                                </property>
+                                <property name="title">
+                                    <string>Server information</string>
+                                </property>
+                                <grid>
+                                    <property name="name">
+                                        <cstring>unnamed</cstring>
+                                    </property>
+                                    <widget class="QRadioButton" row="0" column="0" rowspan="1" colspan="2">
+                                        <property name="name">
+                                            <cstring>publishKolabRB</cstring>
+                                        </property>
+                                        <property name="text">
+                                            <string>Publish to a &amp;Kolab server:</string>
+                                        </property>
+                                        <property name="accel">
+                                            <string>Alt+K</string>
+                                        </property>
+                                        <property name="checked">
+                                            <bool>true</bool>
+                                        </property>
+                                    </widget>
+                                    <widget class="QLineEdit" row="1" column="1">
+                                        <property name="name">
+                                            <cstring>kolabServerNameED</cstring>
+                                        </property>
+                                        <property name="minimumSize">
+                                            <size>
+                                                <width>120</width>
+                                                <height>0</height>
+                                            </size>
+                                        </property>
+                                    </widget>
+                                    <widget class="QLineEdit" row="3" column="1">
+                                        <property name="name">
+                                            <cstring>anyServerURLED</cstring>
+                                        </property>
+                                        <property name="enabled">
+                                            <bool>false</bool>
+                                        </property>
+                                    </widget>
+                                    <widget class="QRadioButton" row="2" column="0" rowspan="1" colspan="2">
+                                        <property name="name">
+                                            <cstring>publishAnyServerRB</cstring>
+                                        </property>
+                                        <property name="text">
+                                            <string>Publish to &amp;any server:</string>
+                                        </property>
+                                        <property name="accel">
+                                            <string>Alt+A</string>
+                                        </property>
+                                    </widget>
+                                    <widget class="QLabel" row="1" column="0">
+                                        <property name="name">
+                                            <cstring>TextLabel5</cstring>
+                                        </property>
+                                        <property name="text">
+                                            <string>&amp;Server name:</string>
+                                        </property>
+                                        <property name="buddy" stdset="0">
+                                            <cstring>kolabServerNameED</cstring>
+                                        </property>
+                                    </widget>
+                                    <widget class="QCheckBox" row="7" column="0" rowspan="1" colspan="2">
+                                        <property name="name">
+                                            <cstring>publishPasswordCB</cstring>
+                                        </property>
+                                        <property name="text">
+                                            <string>Re&amp;member password</string>
+                                        </property>
+                                        <property name="accel">
+                                            <string>Alt+M</string>
+                                        </property>
+                                    </widget>
+                                    <widget class="QLabel" row="6" column="0">
+                                        <property name="name">
+                                            <cstring>textLabel2</cstring>
+                                        </property>
+                                        <property name="text">
+                                            <string>Pass&amp;word:</string>
+                                        </property>
+                                        <property name="buddy" stdset="0">
+                                            <cstring>publishPasswordED</cstring>
+                                        </property>
+                                    </widget>
+                                    <widget class="QLineEdit" row="6" column="1">
+                                        <property name="name">
+                                            <cstring>publishPasswordED</cstring>
+                                        </property>
+                                        <property name="echoMode">
+                                            <enum>Password</enum>
+                                        </property>
+                                    </widget>
+                                    <widget class="QLineEdit" row="5" column="1">
+                                        <property name="name">
+                                            <cstring>publishUserNameED</cstring>
+                                        </property>
+                                        <property name="minimumSize">
+                                            <size>
+                                                <width>120</width>
+                                                <height>0</height>
+                                            </size>
+                                        </property>
+                                    </widget>
+                                    <widget class="QLabel" row="5" column="0">
+                                        <property name="name">
+                                            <cstring>TextLabel6</cstring>
+                                        </property>
+                                        <property name="text">
+                                            <string>Us&amp;er name:</string>
+                                        </property>
+                                        <property name="buddy" stdset="0">
+                                            <cstring>publishUserNameED</cstring>
+                                        </property>
+                                    </widget>
+                                    <widget class="QFrame" row="4" column="0" rowspan="1" colspan="2">
+                                        <property name="name">
+                                            <cstring>frame5</cstring>
+                                        </property>
+                                        <property name="frameShape">
+                                            <enum>HLine</enum>
+                                        </property>
+                                        <property name="frameShadow">
+                                            <enum>Sunken</enum>
+                                        </property>
+                                    </widget>
+                                    <widget class="QLabel" row="3" column="0">
+                                        <property name="name">
+                                            <cstring>TextLabel7</cstring>
+                                        </property>
+                                        <property name="text">
+                                            <string>Server UR&amp;L:</string>
+                                        </property>
+                                        <property name="buddy" stdset="0">
+                                            <cstring>anyServerURLED</cstring>
+                                        </property>
+                                    </widget>
+                                </grid>
+                            </widget>
+                            <widget class="QLabel" row="0" column="0">
+                                <property name="name">
+                                    <cstring>TextLabel1</cstring>
+                                </property>
+                                <property name="text">
+                                    <string>By publishing Free/Busy information, you allow others to take your calendar into account when inviting you for a meeting. Only the times you have already busy are published, not why they are busy.</string>
+                                </property>
+                                <property name="alignment">
+                                    <set>WordBreak|AlignVCenter</set>
+                                </property>
+                            </widget>
+                            <widget class="QLayoutWidget" row="2" column="0">
+                                <property name="name">
+                                    <cstring>Layout16</cstring>
+                                </property>
+                                <hbox>
+                                    <property name="name">
+                                        <cstring>unnamed</cstring>
+                                    </property>
+                                    <widget class="QLabel">
+                                        <property name="name">
+                                            <cstring>TextLabel3</cstring>
+                                        </property>
+                                        <property name="text">
+                                            <string>P&amp;ublish</string>
+                                        </property>
+                                        <property name="buddy" stdset="0">
+                                            <cstring>publishDaysSB</cstring>
+                                        </property>
+                                    </widget>
+                                    <widget class="QSpinBox">
+                                        <property name="name">
+                                            <cstring>publishDaysSB</cstring>
+                                        </property>
+                                        <property name="maxValue">
+                                            <number>366</number>
+                                        </property>
+                                        <property name="minValue">
+                                            <number>1</number>
+                                        </property>
+                                        <property name="value">
+                                            <number>60</number>
+                                        </property>
+                                    </widget>
+                                    <widget class="QLabel">
+                                        <property name="name">
+                                            <cstring>TextLabel4</cstring>
+                                        </property>
+                                        <property name="text">
+                                            <string>days of free/busy information</string>
+                                        </property>
+                                    </widget>
+                                    <spacer>
+                                        <property name="name">
+                                            <cstring>Spacer3</cstring>
+                                        </property>
+                                        <property name="orientation">
+                                            <enum>Horizontal</enum>
+                                        </property>
+                                        <property name="sizeType">
+                                            <enum>Expanding</enum>
+                                        </property>
+                                        <property name="sizeHint">
+                                            <size>
+                                                <width>20</width>
+                                                <height>20</height>
+                                            </size>
+                                        </property>
+                                    </spacer>
+                                </hbox>
+                            </widget>
+                            <widget class="QButtonGroup" row="1" column="0">
+                                <property name="name">
+                                    <cstring>buttonGroup3</cstring>
+                                </property>
+                                <property name="title">
+                                    <string>Publish method</string>
+                                </property>
+                                <property name="toolTip" stdset="0">
+                                    <string>&lt;p&gt;If you set this to automatic upload, you can set delay to 0, to force uploading immediately after changes.&lt;/p&gt;&lt;p&gt;If you set a delay, you can always choose manual uploading to override the delay.&lt;/p&gt;</string>
+                                </property>
+                                <vbox>
+                                    <property name="name">
+                                        <cstring>unnamed</cstring>
+                                    </property>
+                                    <widget class="QRadioButton">
+                                        <property name="name">
+                                            <cstring>publishManualRB</cstring>
+                                        </property>
+                                        <property name="text">
+                                            <string>Publish your &amp;free/busy list manually</string>
+                                        </property>
+                                        <property name="accel">
+                                            <string>Alt+F</string>
+                                        </property>
+                                    </widget>
+                                    <widget class="QRadioButton">
+                                        <property name="name">
+                                            <cstring>publishAutoRB</cstring>
+                                        </property>
+                                        <property name="text">
+                                            <string>Publish your free/&amp;busy information automatically</string>
+                                        </property>
+                                        <property name="checked">
+                                            <bool>true</bool>
+                                        </property>
+                                    </widget>
+                                    <widget class="QLayoutWidget">
+                                        <property name="name">
+                                            <cstring>layout8</cstring>
+                                        </property>
+                                        <hbox>
+                                            <property name="name">
+                                                <cstring>unnamed</cstring>
+                                            </property>
+                                            <widget class="QLabel">
+                                                <property name="name">
+                                                    <cstring>publishDelayLabel</cstring>
+                                                </property>
+                                                <property name="text">
+                                                    <string>Minimum &amp;time between uploads (in minutes)</string>
+                                                </property>
+                                                <property name="buddy" stdset="0">
+                                                    <cstring>publishDelaySB</cstring>
+                                                </property>
+                                            </widget>
+                                            <widget class="QSpinBox">
+                                                <property name="name">
+                                                    <cstring>publishDelaySB</cstring>
+                                                </property>
+                                            </widget>
+                                        </hbox>
+                                    </widget>
+                                </vbox>
+                            </widget>
+                        </grid>
+                    </widget>
+                </vbox>
+            </widget>
+            <widget class="QWidget">
+                <property name="name">
+                    <cstring>tab</cstring>
+                </property>
+                <attribute name="title">
+                    <string>&amp;Retrieve</string>
+                </attribute>
+                <vbox>
+                    <property name="name">
+                        <cstring>unnamed</cstring>
+                    </property>
+                    <widget class="QFrame">
+                        <property name="name">
+                            <cstring>retrieveFrame</cstring>
+                        </property>
+                        <property name="frameShape">
+                            <enum>StyledPanel</enum>
+                        </property>
+                        <property name="frameShadow">
+                            <enum>Plain</enum>
+                        </property>
+                        <property name="lineWidth">
+                            <number>0</number>
+                        </property>
+                        <vbox>
+                            <property name="name">
+                                <cstring>unnamed</cstring>
+                            </property>
+                            <property name="margin">
+                                <number>0</number>
+                            </property>
+                            <widget class="QLabel">
+                                <property name="name">
+                                    <cstring>TextLabel2</cstring>
+                                </property>
+                                <property name="text">
+                                    <string>By retrieving Free/Busy information that others have published, you can take their calendar into account when inviting them to a meeting.</string>
+                                </property>
+                                <property name="alignment">
+                                    <set>WordBreak|AlignVCenter</set>
+                                </property>
+                            </widget>
+                            <widget class="QCheckBox">
+                                <property name="name">
+                                    <cstring>retrieveCB</cstring>
+                                </property>
+                                <property name="text">
+                                    <string>Retrieve other peoples' &amp;free/busy information</string>
+                                </property>
+                            </widget>
+                            <widget class="QButtonGroup">
+                                <property name="name">
+                                    <cstring>ButtonGroup2_2</cstring>
+                                </property>
+                                <property name="title">
+                                    <string>Server information</string>
+                                </property>
+                                <vbox>
+                                    <property name="name">
+                                        <cstring>unnamed</cstring>
+                                    </property>
+                                    <widget class="QRadioButton">
+                                        <property name="name">
+                                            <cstring>retrieveKolabRB</cstring>
+                                        </property>
+                                        <property name="text">
+                                            <string>Retrieve from a &amp;Kolab server:</string>
+                                        </property>
+                                        <property name="checked">
+                                            <bool>true</bool>
+                                        </property>
+                                    </widget>
+                                    <widget class="QLayoutWidget">
+                                        <property name="name">
+                                            <cstring>Layout9_2</cstring>
+                                        </property>
+                                        <hbox>
+                                            <property name="name">
+                                                <cstring>unnamed</cstring>
+                                            </property>
+                                            <widget class="QLabel">
+                                                <property name="name">
+                                                    <cstring>TextLabel5_2</cstring>
+                                                </property>
+                                                <property name="text">
+                                                    <string>&amp;Server name:</string>
+                                                </property>
+                                                <property name="buddy" stdset="0">
+                                                    <cstring>kolabServerNameED</cstring>
+                                                </property>
+                                            </widget>
+                                            <widget class="QLineEdit">
+                                                <property name="name">
+                                                    <cstring>retrieveKolabServerNameED</cstring>
+                                                </property>
+                                                <property name="minimumSize">
+                                                    <size>
+                                                        <width>80</width>
+                                                        <height>0</height>
+                                                    </size>
+                                                </property>
+                                            </widget>
+                                        </hbox>
+                                    </widget>
+                                    <widget class="QRadioButton">
+                                        <property name="name">
+                                            <cstring>retrieveAnyServerRB</cstring>
+                                        </property>
+                                        <property name="text">
+                                            <string>Retrieve from &amp;any server:</string>
+                                        </property>
+                                    </widget>
+                                    <widget class="QLayoutWidget">
+                                        <property name="name">
+                                            <cstring>Layout7_2</cstring>
+                                        </property>
+                                        <hbox>
+                                            <property name="name">
+                                                <cstring>unnamed</cstring>
+                                            </property>
+                                            <widget class="QLabel">
+                                                <property name="name">
+                                                    <cstring>TextLabel7_2</cstring>
+                                                </property>
+                                                <property name="text">
+                                                    <string>Server UR&amp;L:</string>
+                                                </property>
+                                                <property name="buddy" stdset="0">
+                                                    <cstring>anyServerURLED</cstring>
+                                                </property>
+                                            </widget>
+                                            <widget class="QLineEdit">
+                                                <property name="name">
+                                                    <cstring>retrieveAnyServerURLED</cstring>
+                                                </property>
+                                                <property name="enabled">
+                                                    <bool>false</bool>
+                                                </property>
+                                            </widget>
+                                        </hbox>
+                                    </widget>
+                                    <widget class="QFrame">
+                                        <property name="name">
+                                            <cstring>frame7</cstring>
+                                        </property>
+                                        <property name="frameShape">
+                                            <enum>HLine</enum>
+                                        </property>
+                                        <property name="frameShadow">
+                                            <enum>Sunken</enum>
+                                        </property>
+                                    </widget>
+                                    <widget class="QLayoutWidget">
+                                        <property name="name">
+                                            <cstring>layout13</cstring>
+                                        </property>
+                                        <grid>
+                                            <property name="name">
+                                                <cstring>unnamed</cstring>
+                                            </property>
+                                            <widget class="QLineEdit" row="0" column="1">
+                                                <property name="name">
+                                                    <cstring>retrieveUserNameED</cstring>
+                                                </property>
+                                            </widget>
+                                            <widget class="QLabel" row="0" column="0">
+                                                <property name="name">
+                                                    <cstring>textLabel3</cstring>
+                                                </property>
+                                                <property name="text">
+                                                    <string>Us&amp;er Name:</string>
+                                                </property>
+                                                <property name="buddy" stdset="0">
+                                                    <cstring>retrieveUserNameED</cstring>
+                                                </property>
+                                            </widget>
+                                            <widget class="QLabel" row="1" column="0">
+                                                <property name="name">
+                                                    <cstring>textLabel4</cstring>
+                                                </property>
+                                                <property name="text">
+                                                    <string>Pass&amp;word:</string>
+                                                </property>
+                                                <property name="buddy" stdset="0">
+                                                    <cstring>retrievePasswordED</cstring>
+                                                </property>
+                                            </widget>
+                                            <widget class="QLineEdit" row="1" column="1">
+                                                <property name="name">
+                                                    <cstring>retrievePasswordED</cstring>
+                                                </property>
+                                                <property name="echoMode">
+                                                    <enum>Password</enum>
+                                                </property>
+                                            </widget>
+                                        </grid>
+                                    </widget>
+                                    <widget class="QCheckBox">
+                                        <property name="name">
+                                            <cstring>retrievePasswordCB</cstring>
+                                        </property>
+                                        <property name="enabled">
+                                            <bool>true</bool>
+                                        </property>
+                                        <property name="text">
+                                            <string>Re&amp;member Password</string>
+                                        </property>
+                                        <property name="accel">
+                                            <string>Alt+M</string>
+                                        </property>
+                                    </widget>
+                                </vbox>
+                            </widget>
+                            <spacer>
+                                <property name="name">
+                                    <cstring>spacer2</cstring>
+                                </property>
+                                <property name="orientation">
+                                    <enum>Vertical</enum>
+                                </property>
+                                <property name="sizeType">
+                                    <enum>Expanding</enum>
+                                </property>
+                                <property name="sizeHint">
+                                    <size>
+                                        <width>16</width>
+                                        <height>40</height>
+                                    </size>
+                                </property>
+                            </spacer>
+                        </vbox>
+                    </widget>
+                </vbox>
+            </widget>
+        </widget>
+    </vbox>
+</widget>
+<connections>
+    <connection>
+        <sender>publishKolabRB</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>kolabServerNameED</receiver>
+        <slot>setEnabled(bool)</slot>
+    </connection>
+    <connection>
+        <sender>publishAnyServerRB</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>anyServerURLED</receiver>
+        <slot>setEnabled(bool)</slot>
+    </connection>
+    <connection>
+        <sender>retrieveKolabRB</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>retrieveKolabServerNameED</receiver>
+        <slot>setEnabled(bool)</slot>
+    </connection>
+    <connection>
+        <sender>retrieveAnyServerRB</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>retrieveAnyServerURLED</receiver>
+        <slot>setEnabled(bool)</slot>
+    </connection>
+    <connection>
+        <sender>publishAutoRB</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>publishDelaySB</receiver>
+        <slot>setEnabled(bool)</slot>
+    </connection>
+    <connection>
+        <sender>publishManualRB</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>KOGroupwarePrefsPage</receiver>
+        <slot>slotChanged()</slot>
+    </connection>
+    <connection>
+        <sender>publishAutoRB</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>KOGroupwarePrefsPage</receiver>
+        <slot>slotChanged()</slot>
+    </connection>
+    <connection>
+        <sender>publishDaysSB</sender>
+        <signal>valueChanged(int)</signal>
+        <receiver>KOGroupwarePrefsPage</receiver>
+        <slot>slotChanged()</slot>
+    </connection>
+    <connection>
+        <sender>publishKolabRB</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>KOGroupwarePrefsPage</receiver>
+        <slot>slotChanged()</slot>
+    </connection>
+    <connection>
+        <sender>kolabServerNameED</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>KOGroupwarePrefsPage</receiver>
+        <slot>slotChanged()</slot>
+    </connection>
+    <connection>
+        <sender>publishAnyServerRB</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>KOGroupwarePrefsPage</receiver>
+        <slot>slotChanged()</slot>
+    </connection>
+    <connection>
+        <sender>anyServerURLED</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>KOGroupwarePrefsPage</receiver>
+        <slot>slotChanged()</slot>
+    </connection>
+    <connection>
+        <sender>publishUserNameED</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>KOGroupwarePrefsPage</receiver>
+        <slot>slotChanged()</slot>
+    </connection>
+    <connection>
+        <sender>publishPasswordED</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>KOGroupwarePrefsPage</receiver>
+        <slot>slotChanged()</slot>
+    </connection>
+    <connection>
+        <sender>publishPasswordCB</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>KOGroupwarePrefsPage</receiver>
+        <slot>slotChanged()</slot>
+    </connection>
+    <connection>
+        <sender>retrieveCB</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>KOGroupwarePrefsPage</receiver>
+        <slot>slotChanged()</slot>
+    </connection>
+    <connection>
+        <sender>retrieveKolabRB</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>KOGroupwarePrefsPage</receiver>
+        <slot>slotChanged()</slot>
+    </connection>
+    <connection>
+        <sender>retrieveKolabServerNameED</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>KOGroupwarePrefsPage</receiver>
+        <slot>slotChanged()</slot>
+    </connection>
+    <connection>
+        <sender>retrieveAnyServerRB</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>KOGroupwarePrefsPage</receiver>
+        <slot>slotChanged()</slot>
+    </connection>
+    <connection>
+        <sender>retrieveUserNameED</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>KOGroupwarePrefsPage</receiver>
+        <slot>slotChanged()</slot>
+    </connection>
+    <connection>
+        <sender>retrievePasswordED</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>KOGroupwarePrefsPage</receiver>
+        <slot>slotChanged()</slot>
+    </connection>
+    <connection>
+        <sender>retrievePasswordCB</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>KOGroupwarePrefsPage</receiver>
+        <slot>slotChanged()</slot>
+    </connection>
+    <connection>
+        <sender>publishDelaySB</sender>
+        <signal>valueChanged(int)</signal>
+        <receiver>KOGroupwarePrefsPage</receiver>
+        <slot>slotChanged()</slot>
+    </connection>
+    <connection>
+        <sender>retrieveAnyServerURLED</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>KOGroupwarePrefsPage</receiver>
+        <slot>slotChanged()</slot>
+    </connection>
+</connections>
+<includes>
+    <include location="local" impldecl="in implementation">kogroupwareprefspage.ui.h</include>
+</includes>
+<signals>
+    <signal>changed()</signal>
+</signals>
+<slots>
+    <slot>slotChanged()</slot>
+</slots>
+<layoutdefaults spacing="6" margin="11"/>
+</UI>

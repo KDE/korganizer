@@ -46,10 +46,12 @@ libkorganizer_la_LIBADD  = $(LIB_KPARTS) $(LIB_KFILE) \
                            $(top_builddir)/libkcal/libkcal.la \
                            $(top_builddir)/libkdepim/libkdepim.la \
                            libkorganizer_eventviewer.la \
+                           $(top_builddir)/kdgantt/libkdgantt.la \
                            $(top_builddir)/korganizer/knewstuff/libknewstuff.la
 libkorganizer_la_COMPILE_FIRST = kofilterview_base.ui \
 	outgoingdialog_base.ui \
 	incomingdialog_base.ui \
+	kogroupwareprefspage.ui \
 	../libkdepim/categoryselectdialog.h
 libkorganizer_la_SOURCES =  outgoingdialog_base.ui \
 	koagendaview.cpp koagenda.cpp koagendaitem.cpp \
@@ -70,7 +72,7 @@ libkorganizer_la_SOURCES =  outgoingdialog_base.ui \
         koeditorgeneral.cpp \
         koeditorgeneralevent.cpp koeditorgeneraltodo.cpp koeditordetails.cpp \
         koeditorrecurrence.cpp koeditorattachments.cpp koeventviewerdialog.cpp \
-        koeventpopupmenu.cpp \
+        kogroupwareprefspage.ui koeventpopupmenu.cpp koeditorgantt.cpp \
         outgoingdialog.cpp \
 	incomingdialog_base.ui incomingdialog.cpp \
 	publishdialog_base.ui publishdialog.cpp \
@@ -123,7 +125,7 @@ noinst_HEADERS = komonthview.h \
         kowindowlist.h kocounterdialog.h \
         koeditorgeneralevent.h koeditorgeneraltodo.h koeditordetails.h \
         koeditorrecurrence.h koeventviewerdialog.h koeventpopupmenu.h \
-        outgoingdialog.h incomingdialog.h publishdialog.h \
+        outgoingdialog.h incomingdialog.h publishdialog.h koeditorgantt.h \
         koeventview.h statusdialog.h customlistviewitem.h \
         alarmclient.h \
         navigatorbar.h kogroupware.h kogroupwareincomingdialog.h \
@@ -159,6 +161,7 @@ kde_kcfg_DATA = korganizer.kcfg
 kde_services_DATA =  configmain.desktop configtime.desktop \
                      configviews.desktop configcolors.desktop \
                      configfonts.desktop configgroupscheduling.desktop \
-                     configgroupautomation.desktop webcal.protocol
+                     configgroupautomation.desktop configfreebusy.desktop \
+                     webcal.protocol
 
 include ../admin/Doxyfile.am

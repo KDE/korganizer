@@ -38,6 +38,7 @@
 #include <kdebug.h>
 #include <kemailsettings.h>
 #include <kstaticdeleter.h>
+#include <kstringhandler.h>
 
 #include "koprefs.h"
 
@@ -101,6 +102,9 @@ void KOPrefs::usrSetDefaults()
   mMonthViewFont = mDefaultMonthViewFont;
 
   setTimeZoneIdDefault();
+
+  mRememberPublishPw = false;
+  mRememberRetrievePw = false;
 
   KPimPrefs::usrSetDefaults();
 }
@@ -182,6 +186,12 @@ void KOPrefs::usrReadConfig()
     setTimeZoneIdDefault();
   }
 
+  config()->setGroup("Groupware");
+  if( mRememberPublishPw )
+    mPublishPassword = KStringHandler::obscure( config()->readEntry( "Publish Server Password" ) );
+  if( mRememberRetrievePw )
+    mRetrievePassword = KStringHandler::obscure( config()->readEntry( "Retrieve Server Password" ) );
+
   KPimPrefs::usrReadConfig();
 }
 
@@ -201,6 +211,16 @@ void KOPrefs::usrWriteConfig()
     config()->writeEntry(it.currentKey(),*(it.current()));
     ++it;
   }
+
+  config()->setGroup( "Groupware" );
+  if( mRememberPublishPw )
+    config()->writeEntry( "Publish Server Password", KStringHandler::obscure( mPublishPassword ) );
+  else
+    config()->deleteEntry( "Publish Server Password" );
+  if( mRememberRetrievePw )
+    config()->writeEntry( "Retrieve Server Password", KStringHandler::obscure( mRetrievePassword ) );
+  else
+    config()->deleteEntry( "Retrieve Server Password" );
 
   KPimPrefs::usrWriteConfig();
 }

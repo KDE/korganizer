@@ -64,6 +64,7 @@
 #endif
 
 #include "koincidencetooltip.h"
+#include "kogroupware.h"
 #include "koagendaview.h"
 #include "koagendaview.moc"
 
@@ -737,22 +738,45 @@ void KOAgendaView::updateEventDates(KOAgendaItem *item)
   }
 
 //  kdDebug(5850) << "KOAgendaView::updateEventDates(): now setting dates" << endl;
-
-
-  if ( incidence->type() == "Event" ) {
-    incidence->setDtStart(startDt);
-    (static_cast<Event*>(incidence))->setDtEnd(endDt);
-  } else if ( incidence->type() == "Todo" ) {
-    (static_cast<Todo*>(incidence))->setDtDue(endDt);
+  Incidence *i = incidence->clone();
+  if ( i->type() == "Event" ) {
+    if( i->dtStart() == startDt && static_cast<Event*>(i)->dtEnd() == endDt ) {
+      // No change
+      delete i;
+      return;
+    }
+    i->setDtStart(startDt);
+    (static_cast<Event*>(i))->setDtEnd(endDt);
+  } else if ( i->type() == "Todo" ) {
+    if( static_cast<Todo*>(i)->dtDue() == endDt ) {
+      // No change
+      delete i;
+      return;
+    }
+    (static_cast<Todo*>(i))->setDtDue(endDt);
   }
 
-  incidence->setRevision(incidence->revision()+1);
-  item->setItemDate(startDt.date());
-  KOIncidenceToolTip::remove(item);
-  KOIncidenceToolTip::add( item, incidence, KOAgendaItem::toolTipGroup() );
+  i->setRevision(i->revision()+1);
+  if( !KOPrefs::instance()->mUseGroupwareCommunication ||
+      KOGroupware::instance()->sendICalMessage( this, KCal::Scheduler::Request, i ) ) {
+    if ( i->type() == "Event" ) {
+      incidence->setDtStart(startDt);
+      (static_cast<Event*>(incidence))->setDtEnd(endDt);
+    } else if ( i->type() == "Todo" ) {
+      (static_cast<Todo*>(incidence))->setDtDue(endDt);
+    }
+    incidence->setRevision(i->revision());
+    item->setItemDate(startDt.date());
 
-  emit incidenceChanged( oldIncidence, incidence );
+    KOIncidenceToolTip::remove(item);
+    KOIncidenceToolTip::add( item, incidence, KOAgendaItem::toolTipGroup() );
 
+    emit incidenceChanged( oldIncidence, incidence );
+  } else
+    /*updateView()*/;
+
+  delete i;
+  delete oldIncidence;
 //  kdDebug(5850) << "KOAgendaView::updateEventDates() done " << endl;
 }
 

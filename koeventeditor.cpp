@@ -41,11 +41,13 @@
 #include "koprefs.h"
 #include "koeditordetails.h"
 #include "koeditorattachments.h"
+#include "koeditorgantt.h"
+#include "kogroupware.h"
 
 #include "koeventeditor.h"
 
 KOEventEditor::KOEventEditor( Calendar *calendar, QWidget *parent ) :
-  KOIncidenceEditor( i18n("Edit Event"), calendar, parent )
+  KOIncidenceEditor( i18n("Edit Event"), calendar, parent ), mGantt( 0 )
 {
   mEvent = 0;
 }
@@ -62,11 +64,27 @@ void KOEventEditor::init()
   setupRecurrence();
   setupAttachmentsTab();
 
+  if( KOPrefs::instance()->mUseGroupwareCommunication ) {
+    setupGanttTab();
+    mDetails->setGanttWidget( mGantt );
+  }
+
   // Propagate date time settings to recurrence tab
   connect(mGeneral,SIGNAL(dateTimesChanged(QDateTime,QDateTime)),
           mRecurrence,SLOT(setDateTimes(QDateTime,QDateTime)));
   connect(mGeneral,SIGNAL(dateTimeStrChanged(const QString &)),
           mRecurrence,SLOT(setDateTimeStr(const QString &)));
+  if( mGantt )
+    connect(mGantt,SIGNAL(dateTimesChanged(QDateTime,QDateTime)),
+	    mRecurrence,SLOT(setDateTimes(QDateTime,QDateTime)));
+
+  // Propagate date time settings to gantt tab and back
+  if( mGantt ) {
+    connect(mGeneral,SIGNAL(dateTimesChanged(QDateTime,QDateTime)),
+	    mGantt,SLOT(setDateTimes(QDateTime,QDateTime)));
+    connect(mGantt,SIGNAL(dateTimesChanged(QDateTime,QDateTime)),
+	    mGeneral,SLOT(setDateTimes(QDateTime,QDateTime)));
+  }
 
   // Category dialog
   connect(mGeneral,SIGNAL(openCategoryDialog()),mCategoryDialog,SLOT(show()));
@@ -138,6 +156,13 @@ void KOEventEditor::setupRecurrence()
   topLayout->addWidget( mRecurrence );
 }
 
+void KOEventEditor::setupGanttTab()
+{
+  QFrame* frame = addPage( i18n("&Gantt") );
+  mGantt = new KOEditorGantt( spacingHint(), frame );
+  ( new QVBoxLayout( frame ) )->addWidget( mGantt );
+}
+
 void KOEventEditor::editEvent(Event *event)
 {
   init();
@@ -207,24 +232,46 @@ bool KOEventEditor::processInput()
   if ( !validateInput() ) return false;
 
   if ( mEvent ) {
+    bool rc = true;
+    Event *event = mEvent->clone();
     Event *oldEvent = mEvent->clone();
+    writeEvent( event );
 
-    writeEvent( mEvent );
-
-    mEvent->setRevision( mEvent->revision() + 1 );
-
-    emit eventChanged( oldEvent, mEvent );
-
-    delete oldEvent;
+    if( *mEvent == *event )
+      // Don't do anything
+      kdDebug(5850) << "Event not changed\n";
+    else {
+      kdDebug(5850) << "Event changed\n";
+      int revision = event->revision();
+      event->setRevision( revision + 1 );
+      if( !KOPrefs::instance()->mUseGroupwareCommunication ||
+	  KOGroupware::instance()->sendICalMessage( this, KCal::Scheduler::Request, event ) )
+      {
+	// Accept the event changes
+	writeEvent( mEvent );
+	mEvent->setRevision( revision + 1 );
+	emit eventChanged( oldEvent, mEvent );
+      } else {
+	// Revert the changes
+	event->setRevision( revision );
+	rc = false;
+      }
+    }
+    delete event;
+    return rc;
   } else {
     mEvent = new Event;
     mEvent->setOrganizer( KOPrefs::instance()->email() );
-
     writeEvent( mEvent );
-
-    mCalendar->addEvent( mEvent );
-
-    emit eventAdded( mEvent );
+    if( !KOPrefs::instance()->mUseGroupwareCommunication ||
+	KOGroupware::instance()->sendICalMessage( this, KCal::Scheduler::Request, mEvent ) ) {
+      mCalendar->addEvent( mEvent );
+      emit eventAdded( mEvent );
+    } else {
+      delete mEvent;
+      mEvent = 0;
+      return false;
+    }
   }
 
   return true;
@@ -244,7 +291,8 @@ void KOEventEditor::deleteEvent()
   kdDebug(5850) << "Delete event" << endl;
 
   if (mEvent) {
-    if (KOPrefs::instance()->mConfirm) {
+    if (KOPrefs::instance()->mConfirm && (!KOPrefs::instance()->mUseGroupwareCommunication ||
+					  KOPrefs::instance()->email() == mEvent->organizer())) {
       switch (msgItemDelete()) {
         case KMessageBox::Continue: // OK
           emit eventToBeDeleted(mEvent);
@@ -281,6 +329,7 @@ void KOEventEditor::readEvent( Event *event, bool tmpl )
   mDetails->readEvent( event );
   mRecurrence->readEvent( event );
   mAttachments->readIncidence( event );
+  if( mGantt ) mGantt->readEvent( event );
 
   // categories
   mCategoryDialog->setSelected( event->categories() );
@@ -310,6 +359,7 @@ bool KOEventEditor::validateInput()
   if ( !mGeneral->validateInput() ) return false;
   if ( !mDetails->validateInput() ) return false;
   if ( !mRecurrence->validateInput() ) return false;
+
   return true;
 }
 

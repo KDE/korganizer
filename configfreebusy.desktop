@@ -1,0 +1,17 @@
+[Desktop Entry]
+Encoding=UTF-8
+Icon=personal
+Type=Service
+ServiceTypes=KCModule
+
+X-KDE-ModuleType=Library
+X-KDE-Library=korganizer
+X-KDE-FactoryName=korganizerconfigfreebusy
+X-KDE-HasReadOnlyMode=false
+X-KDE-ParentApp=korganizer
+X-KDE-ParentComponents=korganizer,kontact_korganizerplugin
+X-KDE-CfgDlgHierarchy=KOrganizer
+
+Name=Free/Busy
+Comment=KOrganizer Free/Busy Configuration
+Keywords=korganizer,freebusy,scheduling

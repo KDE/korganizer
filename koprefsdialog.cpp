@@ -33,9 +33,11 @@
 #include <qhbox.h>
 #include <qspinbox.h>
 #include <qcheckbox.h>
+#include <qradiobutton.h>
 #include <qpushbutton.h>
 #include <qstrlist.h>
 #include <qlistview.h>
+#include <qtabwidget.h>
 
 #include <kcolorbutton.h>
 #include <kdebug.h>
@@ -55,6 +57,8 @@
 #include "koprefs.h"
 
 #include "koprefsdialog.h"
+#include "kogroupwareprefspage.h"
+
 
 KOPrefsDialogMain::KOPrefsDialogMain( QWidget *parent, const char *name )
   : KPrefsModule( KOPrefs::instance(), parent, name )
@@ -115,17 +119,26 @@ KOPrefsDialogMain::KOPrefsDialogMain( QWidget *parent, const char *name )
       addWidRadios( KOPrefs::instance()->mailClientItem(), topFrame );
   topLayout->addMultiCellWidget(mailClientGroup->groupBox(),11,11,0,1);
 
+  // TODO: Readd this switch
+//   KPrefsWidBool *useGroupwareBool =
+//       addWidBool( KOPrefs::instance()->useGroupwareCommunicationItem(),
+// 		  topFrame );
+//   topLayout->addMultiCellWidget(useGroupwareBool->checkBox(),12,12,0,1);
+  // TODO: This radio button should only be available when KMail is chosen
+//   connect(thekmailradiobuttonupthere,SIGNAL(toggled(bool)),
+//           useGroupwareBool->checkBox(), SLOT(enabled(bool)));
+
   KPrefsWidBool *htmlsave =
       addWidBool( KOPrefs::instance()->htmlWithSaveItem(),
                   topFrame );
-  topLayout->addMultiCellWidget(htmlsave->checkBox(),12,12,0,1);
+  topLayout->addMultiCellWidget(htmlsave->checkBox(),13,13,0,1);
 
   KPrefsWidRadios *destinationGroup =
       addWidRadios( KOPrefs::instance()->destinationItem(),
                    topFrame);
-  topLayout->addMultiCellWidget(destinationGroup->groupBox(),13,13,0,1);
+  topLayout->addMultiCellWidget(destinationGroup->groupBox(),14,14,0,1);
 
-  topLayout->setRowStretch(14,1);
+  topLayout->setRowStretch(15,1);
 
   load();
 }
@@ -908,5 +921,69 @@ void KOPrefsDialog::showPrinterTab()
   showPage(pageIndex(mPrinterTab));
 }
 #endif
+
+
+KOPrefsDialogGroupwareScheduling::KOPrefsDialogGroupwareScheduling( QWidget *parent, const char *name )
+  : KPrefsModule( KOPrefs::instance(), parent, name )
+{
+  mGroupwarePage = new KOGroupwarePrefsPage( this );
+  connect( mGroupwarePage, SIGNAL( changed() ), SLOT( slotWidChanged() ) );
+  ( new QVBoxLayout( this ) )->addWidget( mGroupwarePage );
+
+  load();
+}
+
+void KOPrefsDialogGroupwareScheduling::usrReadConfig()
+{
+  mGroupwarePage->publishManualRB->setChecked( !KOPrefs::instance()->mAutoPublish );
+  mGroupwarePage->publishAutoRB->setChecked( KOPrefs::instance()->mAutoPublish );
+  mGroupwarePage->publishDelaySB->setValue( KOPrefs::instance()->mPublishDelay );
+  mGroupwarePage->publishDaysSB->setValue( KOPrefs::instance()->mPublishFreeBusyDays );
+  mGroupwarePage->publishKolabRB->setChecked( KOPrefs::instance()->mPublishKolab );
+  mGroupwarePage->kolabServerNameED->setText( KOPrefs::instance()->mPublishKolabServer );
+  mGroupwarePage->publishUserNameED->setText( KOPrefs::instance()->mPublishUserName );
+  mGroupwarePage->publishAnyServerRB->setChecked( !KOPrefs::instance()->mPublishKolab );
+  mGroupwarePage->publishPasswordED->setText( KOPrefs::instance()->mPublishPassword );
+  mGroupwarePage->publishPasswordCB->setChecked( KOPrefs::instance()->mRememberPublishPw );
+  mGroupwarePage->anyServerURLED->setText( KOPrefs::instance()->mPublishAnyURL );
+  mGroupwarePage->retrieveCB->setChecked( KOPrefs::instance()->mRetrieveFreeBusy );
+  mGroupwarePage->retrieveKolabRB->setChecked( KOPrefs::instance()->mRetrieveKolab );
+  mGroupwarePage->retrieveKolabServerNameED->setText( KOPrefs::instance()->mRetrieveKolabServer );
+  mGroupwarePage->retrieveAnyServerRB->setChecked( !KOPrefs::instance()->mRetrieveKolab );
+  mGroupwarePage->retrieveAnyServerURLED->setText( KOPrefs::instance()->mRetrieveAnyURL );
+  mGroupwarePage->retrieveUserNameED->setText( KOPrefs::instance()->mRetrieveUserName );
+  mGroupwarePage->retrievePasswordED->setText( KOPrefs::instance()->mRetrievePassword );
+  mGroupwarePage->retrievePasswordCB->setChecked( KOPrefs::instance()->mRememberRetrievePw );
+}
+
+void KOPrefsDialogGroupwareScheduling::usrWriteConfig()
+{
+  KOPrefs::instance()->mAutoPublish = mGroupwarePage->publishAutoRB->isChecked();
+  KOPrefs::instance()->mPublishDelay = mGroupwarePage->publishDelaySB->value();
+  KOPrefs::instance()->mPublishFreeBusyDays = mGroupwarePage->publishDaysSB->value();
+  KOPrefs::instance()->mPublishKolab = mGroupwarePage->publishKolabRB->isChecked();
+  KOPrefs::instance()->mPublishKolabServer = mGroupwarePage->kolabServerNameED->text();
+  KOPrefs::instance()->mPublishUserName = mGroupwarePage->publishUserNameED->text();
+  KOPrefs::instance()->mPublishAnyURL = mGroupwarePage->anyServerURLED->text();
+  KOPrefs::instance()->mPublishPassword = mGroupwarePage->publishPasswordED->text();
+  KOPrefs::instance()->mRememberPublishPw = mGroupwarePage->publishPasswordCB->isChecked();
+  KOPrefs::instance()->mRetrieveFreeBusy = mGroupwarePage->retrieveCB->isChecked();
+  KOPrefs::instance()->mRetrieveKolab = mGroupwarePage->retrieveKolabRB->isChecked();
+  KOPrefs::instance()->mRetrieveKolabServer = mGroupwarePage->retrieveKolabServerNameED->text();
+  KOPrefs::instance()->mRetrieveAnyURL = mGroupwarePage->retrieveAnyServerURLED->text();
+  KOPrefs::instance()->mRetrieveUserName = mGroupwarePage->retrieveUserNameED->text();
+  KOPrefs::instance()->mRetrievePassword = mGroupwarePage->retrievePasswordED->text();
+  KOPrefs::instance()->mRememberRetrievePw = mGroupwarePage->retrievePasswordCB->isChecked();
+}
+
+extern "C"
+{
+  KCModule *create_korganizerconfigfreebusy( QWidget *parent, const char * )
+  {
+    return new KOPrefsDialogGroupwareScheduling( parent,
+						 "kcmkorganizerfreebusy" );
+  }
+}
+
 
 #include "koprefsdialog.moc"

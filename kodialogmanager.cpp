@@ -125,6 +125,9 @@ void KODialogManager::showOptionsDialog()
     modules.append( "configprinting.desktop" );
     modules.append( "configgroupscheduling.desktop" );
     modules.append( "configgroupautomation.desktop" );
+    // TODO: Remove this check
+    if( KOPrefs::instance()->mUseGroupwareCommunication )
+      modules.append( "configfreebusy.desktop" );
 
     // add them all
     QStringList::iterator mit;

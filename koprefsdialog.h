@@ -98,4 +98,20 @@ class KOPrefsDialogGroupScheduling : public KPrefsModule
     QLineEdit *aEmailsEdit;
 };
 
+class KOGroupwarePrefsPage;
+
+class KOPrefsDialogGroupwareScheduling : public KPrefsModule
+{
+    Q_OBJECT
+  public:
+    KOPrefsDialogGroupwareScheduling( QWidget *parent, const char *name );
+
+  protected:
+    void usrReadConfig();
+    void usrWriteConfig();
+
+  private:
+    KOGroupwarePrefsPage* mGroupwarePage;
+};
+
 #endif

@@ -37,6 +37,8 @@
 
 class SaveTemplateDialog;
 
+class KOEditorGantt;
+
 using namespace KCal;
 
 /**
@@ -112,6 +114,7 @@ class KOEventEditor : public KOIncidenceEditor
     QString type() { return "Event"; }
     void setupGeneral();
     void setupRecurrence();
+    void setupGanttTab();
 
     /** Check if the input is valid. */
     bool validateInput();
@@ -126,6 +129,7 @@ class KOEventEditor : public KOIncidenceEditor
 
     KOEditorGeneralEvent *mGeneral;
     KOEditorRecurrence   *mRecurrence;
+    KOEditorGantt        *mGantt;
 };
 
 #endif

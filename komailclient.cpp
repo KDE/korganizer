@@ -55,13 +55,18 @@ bool KOMailClient::mailAttendees(IncidenceBase *incidence,const QString &attachm
   Attendee::List attendees = incidence->attendees();
   if (attendees.count() == 0) return false;
 
-  QString to;
-  for(uint i=0; i<attendees.count();++i) {
-    to += (*attendees.at(i))->email();
-    if (i != attendees.count()-1) to += ", ";
-  }
-
   QString from = KOPrefs::instance()->email();
+  QStringList toList;
+  for(uint i=0; i<attendees.count();++i) {
+    QString email = (*attendees.at(i))->email();
+    if( email != from )
+      // Don't send a mail to ourselves
+      toList << email;
+  }
+  if( toList.count() == 0 )
+    // Not really to be called a groupware meeting, eh
+    return false;
+  QString to = toList.join( ", " );
 
   QString subject;
   if(incidence->type()!="FreeBusy") {

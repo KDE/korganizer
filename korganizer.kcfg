@@ -184,6 +184,9 @@
       </choices>
       <default>IMIPKMail</default>
     </entry>
+    <entry type="Bool" key="Use Groupware Communication">
+      <default>false</default>
+    </entry>
 
     <entry type="StringList" name="AdditionalMails">
     </entry>
@@ -280,4 +283,42 @@
     </entry>
   </group>
 
+  <group name="Freebusy">
+    <entry type="Bool" key="Automatic FreeBusy lists publishing" name="AutoPublish">
+      <default>true</default>
+    </entry>
+    <entry type="Int" key="Auto Publish Delay" name="PublishDelay">
+      <default>5</default>
+    </entry>
+    <entry type="Int" key="Publish FreeBusy Days">
+      <default>60</default>
+    </entry>
+    <entry type="Bool" key="Publish To Kolab Server" name="PublishKolab">
+      <default>true</default>
+    </entry>
+    <entry type="String" key="Publish to Kolab server name" name="PublishKolabServer">
+    </entry>
+    <entry type="String" key="Publish User Name">
+    </entry>
+    <entry type="String" key="Publish To Any Server URL" name="PublishAnyURL">
+    </entry>
+    <entry type="Bool" key="Remember Publish Password" name="RememberPublishPw">
+      <default>false</default>
+    </entry>
+    <entry type="Bool" key="Retrieve Freebusy Lists" name="RetrieveFreeBusy">
+      <default>true</default>
+    </entry>
+    <entry type="Bool" key="Retrieve From Kolab Server" name="RetrieveKolab">
+      <default>true</default>
+    </entry>
+    <entry type="String" key="Retrieve From Kolab Server Name" name="RetrieveKolabServer">
+    </entry>
+    <entry type="String" key="Retrieve From Any Server URL" name="RetrieveAnyURL">
+    </entry>
+    <entry type="String" key="Retrieve User Name">
+    </entry>
+    <entry type="Bool" key="Remember Retrieve Password" name="RememberRetrievePw">
+      <default>false</default>
+    </entry>
+  </group>
 </kcfg>
