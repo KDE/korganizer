@@ -319,18 +319,20 @@ KOTodoView::KOTodoView(Calendar *calendar,QWidget* parent,const char* name) :
   mDocPrefs = new DocPrefs( name );
 
   // Double clicking conflicts with opening/closing the subtree
-  QObject::connect(mTodoListView,SIGNAL(doubleClicked(QListViewItem *,const QPoint &,int)),
-                   this,SLOT(editItem(QListViewItem *,const QPoint &,int)));
-  QObject::connect(mTodoListView,SIGNAL(rightButtonClicked ( QListViewItem *,
-                   const QPoint &, int )),
-                   this,SLOT(popupMenu(QListViewItem *,const QPoint &,int)));
-  QObject::connect(mTodoListView,SIGNAL(clicked(QListViewItem *)),
-                   this,SLOT(itemClicked(QListViewItem *)));
-  connect(mTodoListView,SIGNAL(todoDropped(Todo *)),SLOT(updateView()));
-  connect(mTodoListView,SIGNAL(expanded(QListViewItem *)),
-          SLOT(itemStateChanged(QListViewItem *)));
-  connect(mTodoListView,SIGNAL(collapsed(QListViewItem *)),
-          SLOT(itemStateChanged(QListViewItem *)));
+  connect( mTodoListView, SIGNAL( doubleClicked( QListViewItem *,
+                                                 const QPoint &, int) ),
+           SLOT( editItem( QListViewItem *, const QPoint &, int) ) );
+  connect( mTodoListView, SIGNAL( contextMenuRequested( QListViewItem *,
+                                                        const QPoint &, int ) ),
+           SLOT( popupMenu( QListViewItem *, const QPoint &, int ) ) );
+  connect( mTodoListView, SIGNAL( clicked( QListViewItem * ) ),
+           SLOT( itemClicked( QListViewItem * ) ) );
+  connect( mTodoListView, SIGNAL( todoDropped( Todo * ) ),
+           SLOT( updateView() ) );
+  connect( mTodoListView, SIGNAL( expanded( QListViewItem * ) ),
+           SLOT( itemStateChanged( QListViewItem * ) ) );
+  connect( mTodoListView, SIGNAL( collapsed( QListViewItem * ) ),
+           SLOT( itemStateChanged( QListViewItem * ) ) );
 
 #if 0
   connect(mTodoListView,SIGNAL(selectionChanged(QListViewItem *)),
