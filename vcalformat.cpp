@@ -412,16 +412,16 @@ VObject *VCalFormat::eventToVTodo(const KOEvent *anEvent)
       curAttendee = ai.current();
       if (!curAttendee->getEmail().isEmpty() && 
 	  !curAttendee->getName().isEmpty())
-        tmpStr = "MAILTO:" + curAttendee->getName().utf8() + " <" +
-                 curAttendee->getEmail().latin1() + ">";
+        tmpStr = "MAILTO:" + curAttendee->getName() + " <" +
+                 curAttendee->getEmail() + ">";
       else if (curAttendee->getName().isEmpty())
         tmpStr = "MAILTO: " + curAttendee->getEmail();
       else if (curAttendee->getEmail().isEmpty())
-        tmpStr = "MAILTO: " + curAttendee->getName().utf8();
+        tmpStr = "MAILTO: " + curAttendee->getName();
       else if (curAttendee->getName().isEmpty() && 
 	       curAttendee->getEmail().isEmpty())
 	kdDebug() << "warning! this koevent has an attendee w/o name or email!" << endl;
-      VObject *aProp = addPropValue(vtodo, VCAttendeeProp, tmpStr.latin1());
+      VObject *aProp = addPropValue(vtodo, VCAttendeeProp, (const char *)tmpStr.utf8());
       addPropValue(aProp, VCRSVPProp, curAttendee->RSVP() ? "TRUE" : "FALSE");;
       addPropValue(aProp, VCStatusProp, curAttendee->getStatusStr().latin1());
     }
@@ -521,9 +521,9 @@ VObject* VCalFormat::eventToVEvent(const KOEvent *anEvent)
   addPropValue(vevent, VCLastModifiedProp, tmpStr.latin1());
 
   // attendee and organizer stuff
-  tmpStr = "MAILTO:" + anEvent->getOrganizer().utf8();
+  tmpStr = "MAILTO:" + anEvent->getOrganizer();
   addPropValue(vevent, ICOrganizerProp,
-	       tmpStr.latin1());
+	       tmpStr.utf8());
 
   if (anEvent->attendeeCount() != 0) {
     QList<Attendee> al = anEvent->getAttendeeList();
@@ -534,16 +534,16 @@ VObject* VCalFormat::eventToVEvent(const KOEvent *anEvent)
       curAttendee = ai.current();
       if (!curAttendee->getEmail().isEmpty() && 
 	  !curAttendee->getName().isEmpty())
-        tmpStr = "MAILTO:" + curAttendee->getName().utf8() + " <" +
-                 curAttendee->getEmail().latin1() + ">";
+        tmpStr = "MAILTO:" + curAttendee->getName() + " <" +
+                 curAttendee->getEmail() + ">";
       else if (curAttendee->getName().isEmpty())
         tmpStr = "MAILTO: " + curAttendee->getEmail();
       else if (curAttendee->getEmail().isEmpty())
-        tmpStr = "MAILTO: " + curAttendee->getName().utf8();
+        tmpStr = "MAILTO: " + curAttendee->getName();
       else if (curAttendee->getName().isEmpty() && 
 	       curAttendee->getEmail().isEmpty())
 	kdDebug() << "warning! this koevent has an attendee w/o name or email!" << endl;
-      VObject *aProp = addPropValue(vevent, VCAttendeeProp, tmpStr.latin1());
+      VObject *aProp = addPropValue(vevent, VCAttendeeProp, (const char *)tmpStr.utf8());
       addPropValue(aProp, VCRSVPProp, curAttendee->RSVP() ? "TRUE" : "FALSE");;
       addPropValue(aProp, VCStatusProp, curAttendee->getStatusStr().latin1());
     }
@@ -812,7 +812,7 @@ KOEvent *VCalFormat::VTodoToEvent(VObject *vtodo)
       int emailPos1, emailPos2;
       if ((emailPos1 = tmpStr.find('<')) > 0) {
 	// both email address and name
-	emailPos2 = tmpStr.find('>');
+	emailPos2 = tmpStr.findRev('>');
 	a = new Attendee(tmpStr.left(emailPos1 - 1),
 			 tmpStr.mid(emailPos1 + 1, 
 				    emailPos2 - (emailPos1 + 1)));
@@ -994,7 +994,7 @@ KOEvent* VCalFormat::VEventToEvent(VObject *vevent)
       int emailPos1, emailPos2;
       if ((emailPos1 = tmpStr.find('<')) > 0) {
 	// both email address and name
-	emailPos2 = tmpStr.find('>');
+	emailPos2 = tmpStr.findRev('>');
 	a = new Attendee(tmpStr.left(emailPos1 - 1),
 			 tmpStr.mid(emailPos1 + 1, 
 				    emailPos2 - (emailPos1 + 1)));

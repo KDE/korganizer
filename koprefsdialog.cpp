@@ -326,8 +326,8 @@ void KOPrefsDialog::setupMainTab()
           SLOT(warningProjectView()));
 
   // Disable settings for experimental features
-  mEnableGroupScheduling->checkBox()->hide();
-  mEnableProjectView->checkBox()->hide();
+//  mEnableGroupScheduling->checkBox()->hide();
+//  mEnableProjectView->checkBox()->hide();
 
   topLayout->setRowStretch(9,1);
 }

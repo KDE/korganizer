@@ -75,6 +75,8 @@ class KOrganizer : public KMainWindow, virtual public KOrganizerIface
     bool saveAsURL(QString url);
     /** Get current URL as QString */
     QString getCurrentURLasString() const;
+    /** Delete event with unique id VUID from current calendar */
+    virtual bool deleteEvent(QString VUID);
 
   signals:
 

@@ -134,6 +134,9 @@ class CalendarView : public QWidget
     void editEvent(KOEvent *);
     /** delete the supplied event */
     void deleteEvent(KOEvent *);
+    /** delete the event with unique ID VUID. Returns false, if event wasn't
+    found */
+    bool deleteEvent(const QString &VUID);
     /** Create a read-only viewer dialog for the supplied event */
     void showEvent(KOEvent *);
     /** Create a read-only viewer dialog for the supplied todo */

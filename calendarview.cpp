@@ -1076,6 +1076,17 @@ void CalendarView::deleteEvent(KOEvent *anEvent)
   } // if-else
 }
 
+bool CalendarView::deleteEvent(const QString &VUID)
+{
+    KOEvent *ev = mCalendar->getEvent(VUID);
+    if (ev) {
+        deleteEvent(ev);
+        return true;
+    } else {
+        return false;
+    }
+}
+
 /*****************************************************************************/
 
 void CalendarView::action_search()

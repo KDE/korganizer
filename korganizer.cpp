@@ -984,3 +984,8 @@ QString KOrganizer::getCurrentURLasString() const
 {
   return mURL.url();
 }
+
+bool KOrganizer::deleteEvent(QString VUID)
+{
+  return mCalendarView->deleteEvent(VUID);
+}
