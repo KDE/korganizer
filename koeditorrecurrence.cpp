@@ -1258,7 +1258,7 @@ bool KOEditorRecurrence::validateInput()
   if ( mEnabledCheck->isChecked() && (mRecurrenceRange->duration()==0) &&
        mEventStartDt.isValid() && ((mRecurrenceRange->endDate())<mEventStartDt.date()) ) {
     KMessageBox::sorry( 0,
-      i18n("The end date '%1' of the recurrence must be before the start date '%2' of the event.")
+      i18n("The end date '%1' of the recurrence must be after the start date '%2' of the event.")
       .arg( KGlobal::locale()->formatDate( mRecurrenceRange->endDate() ) )
       .arg( KGlobal::locale()->formatDate( mEventStartDt.date() ) ) );
     return false;
