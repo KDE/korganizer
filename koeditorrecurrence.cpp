@@ -248,9 +248,10 @@ RecurMonthly::RecurMonthly( QWidget *parent, const char *name ) :
 
   buttonLayout->addWidget( mByPosCountCombo, 1, 1 );
 
+  const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
   mByPosWeekdayCombo = new QComboBox( buttonGroup );
   for( int i = 1; i <= 7; ++i ) {
-    mByPosWeekdayCombo->insertItem( KGlobal::locale()->weekDayName( i ) );
+    mByPosWeekdayCombo->insertItem( calSys->weekDayName( i ) );
   }
   buttonLayout->addWidget( mByPosWeekdayCombo, 1, 2 );
 }
@@ -336,9 +337,12 @@ RecurYearly::RecurYearly( QWidget *parent, const char *name ) :
   mByMonthRadio = new QRadioButton( recurInMonthText, buttonGroup);
   buttonLayout->addWidget( mByMonthRadio, 0, 0 );
 
+  const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
   mByMonthCombo = new QComboBox( buttonGroup );
   for( int i = 1; i <= 12; ++i ) {
-    mByMonthCombo->insertItem( KGlobal::locale()->monthName( i ) );
+    // use an arbitrary year, we just need the month name...
+    QDate dt( 1, i, 2005 );
+    mByMonthCombo->insertItem( calSys->monthName( dt ) );
   }
   buttonLayout->addWidget( mByMonthCombo, 0, 1 );
 
