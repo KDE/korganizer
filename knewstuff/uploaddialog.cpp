@@ -30,6 +30,7 @@
 #include <klocale.h>
 #include <kdebug.h>
 #include <kurlrequester.h>
+#include <kmessagebox.h>
 
 #include "engine.h"
 #include "entry.h"
@@ -105,6 +106,11 @@ UploadDialog::~UploadDialog()
 
 void UploadDialog::slotOk()
 {
+  if ( mNameEdit->text().isEmpty() ) {
+    KMessageBox::error( this, i18n("Please put in a name.") );
+    return;
+  }
+
   Entry *entry = new Entry;
 
   mEntryList.append( entry );
