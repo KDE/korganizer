@@ -445,7 +445,7 @@ bool KOAgenda::eventFilter_key( QObject *, QKeyEvent *ke )
   }
 
   // Ignore all input that does not produce any output
-  if ( ke->type() == QEvent::KeyPress && ke->text().isEmpty() ) return false;
+  if ( ke->text().isEmpty() ) return false;
 
   if ( ke->type() == QEvent::KeyPress || ke->type() == QEvent::KeyRelease ) {
     switch ( ke->key() ) {
