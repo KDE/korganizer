@@ -1,3 +1,5 @@
+KDE_OPTIONS = nofinal
+
 SUBDIRS = . pixmaps sounds plugins interfaces
 
 INCLUDES = -I$(srcdir)/interfaces -I$(top_srcdir) $(all_includes)
