@@ -22,16 +22,16 @@
 
 #include <qstring.h>
 
-#include <calendar/textdecoration.h>
+#include <calendar/calendardecoration.h>
 
 using namespace KOrg;
 
-class Holidays : public TextDecoration {
+class Holidays : public CalendarDecoration {
   public:
     Holidays();
     ~Holidays();
     
-    QString dayShort(const QDate &);
+    QString shortText(const QDate &);
     
     QString info();
 

@@ -47,7 +47,7 @@ KOCore *KOCore::self()
 }
 
 KOCore::KOCore() :
-  mTextDecorationsLoaded(false), mWidgetDecorationsLoaded(false),
+  mCalendarDecorationsLoaded(false),
   mPartsLoaded(false), mHolidaysLoaded(false)
 {
 }
@@ -90,57 +90,35 @@ KOrg::Plugin *KOCore::loadPlugin(const QString &name)
   return 0;
 }
 
-KOrg::TextDecoration *KOCore::loadTextDecoration(KService::Ptr service)
+KOrg::CalendarDecoration *KOCore::loadCalendarDecoration(KService::Ptr service)
 {
-  kdDebug() << "loadTextDecoration: library: " << service->library() << endl;
+  kdDebug() << "loadCalendarDecoration: library: " << service->library() << endl;
 
   KLibFactory *factory = KLibLoader::self()->factory(service->library());
 
   if (!factory) {
-    kdDebug() << "KOCore::loadTextDecoration(): Factory creation failed" << endl;
+    kdDebug() << "KOCore::loadCalendarDecoration(): Factory creation failed" << endl;
     return 0;
   }
   
-  KOrg::TextDecorationFactory *pluginFactory =
-      dynamic_cast<KOrg::TextDecorationFactory *>(factory);
+  KOrg::CalendarDecorationFactory *pluginFactory =
+      dynamic_cast<KOrg::CalendarDecorationFactory *>(factory);
   
   if (!pluginFactory) {
-    kdDebug() << "KOCore::loadTextDecoration(): Cast failed" << endl;
+    kdDebug() << "KOCore::loadCalendarDecoration(): Cast failed" << endl;
     return 0;
   }
   
   return pluginFactory->create();
 }
 
-KOrg::WidgetDecoration *KOCore::loadWidgetDecoration(KService::Ptr service)
+KOrg::CalendarDecoration *KOCore::loadCalendarDecoration(const QString &name)
 {
-  kdDebug() << "loadWidgetDecoration: library: " << service->library() << endl;
-
-  KLibFactory *factory = KLibLoader::self()->factory(service->library());
-
-  if (!factory) {
-    kdDebug() << "KOCore::loadWidgetDecoration(): Factory creation failed" << endl;
-    return 0;
-  }
-  
-  KOrg::WidgetDecorationFactory *pluginFactory =
-      dynamic_cast<KOrg::WidgetDecorationFactory *>(factory);
-  
-  if (!pluginFactory) {
-    kdDebug() << "KOCore::loadWidgetDecoration(): Cast failed" << endl;
-    return 0;
-  }
-  
-  return pluginFactory->create();
-}
-
-KOrg::WidgetDecoration *KOCore::loadWidgetDecoration(const QString &name)
-{
-  KTrader::OfferList list = availablePlugins("Calendar/WidgetDecoration");
+  KTrader::OfferList list = availablePlugins("Calendar/Decoration");
   KTrader::OfferList::ConstIterator it;
   for(it = list.begin(); it != list.end(); ++it) {
     if ((*it)->desktopEntryName() == name) {
-      return loadWidgetDecoration(*it);
+      return loadCalendarDecoration(*it);
     }
   }
   return 0;  
@@ -180,46 +158,25 @@ KOrg::Part *KOCore::loadPart(const QString &name,KOrg::MainWindow *parent)
   return 0;  
 }
 
-KOrg::TextDecoration::List KOCore::textDecorations()
+KOrg::CalendarDecoration::List KOCore::calendarDecorations()
 {
-  if (!mTextDecorationsLoaded) {
+  if (!mCalendarDecorationsLoaded) {
     QStringList selectedPlugins = KOPrefs::instance()->mSelectedPlugins;
 
-    mTextDecorations.clear();
-    KTrader::OfferList plugins = availablePlugins("Calendar/TextDecoration");
+    mCalendarDecorations.clear();
+    KTrader::OfferList plugins = availablePlugins("Calendar/Decoration");
     KTrader::OfferList::ConstIterator it;
     for(it = plugins.begin(); it != plugins.end(); ++it) {
-      if ((*it)->hasServiceType("Calendar/TextDecoration")) {
+      if ((*it)->hasServiceType("Calendar/Decoration")) {
         if (selectedPlugins.find((*it)->desktopEntryName()) != selectedPlugins.end()) {
-          mTextDecorations.append(loadTextDecoration(*it));
+          mCalendarDecorations.append(loadCalendarDecoration(*it));
         }
       }
     }
-    mTextDecorationsLoaded = true;
+    mCalendarDecorationsLoaded = true;
   }
   
-  return mTextDecorations;
-}
-
-KOrg::WidgetDecoration::List KOCore::widgetDecorations()
-{
-  if (!mWidgetDecorationsLoaded) {
-    QStringList selectedPlugins = KOPrefs::instance()->mSelectedPlugins;
-
-    mWidgetDecorations.clear();
-    KTrader::OfferList plugins = availablePlugins("Calendar/WidgetDecoration");
-    KTrader::OfferList::ConstIterator it;
-    for(it = plugins.begin(); it != plugins.end(); ++it) {
-      if ((*it)->hasServiceType("Calendar/WidgetDecoration")) {
-        if (selectedPlugins.find((*it)->desktopEntryName()) != selectedPlugins.end()) {
-          mWidgetDecorations.append(loadWidgetDecoration(*it));
-        }
-      }
-    }
-    mWidgetDecorationsLoaded = true;
-  }
-  
-  return mWidgetDecorations;
+  return mCalendarDecorations;
 }
 
 KOrg::Part::List KOCore::parts(KOrg::MainWindow *parent)
@@ -239,21 +196,19 @@ KOrg::Part::List KOCore::parts(KOrg::MainWindow *parent)
 
 void KOCore::reloadPlugins()
 {
-  mTextDecorationsLoaded = false;
-  mWidgetDecorationsLoaded = false;
-  textDecorations();
-  widgetDecorations();
+  mCalendarDecorationsLoaded = false;
+  calendarDecorations();
 }
 
 QString KOCore::holiday(const QDate &date)
 {
   if (!mHolidaysLoaded) {
-    mHolidays = dynamic_cast<KOrg::TextDecoration *>(loadPlugin("holidays"));
+    mHolidays = dynamic_cast<KOrg::CalendarDecoration *>(loadPlugin("holidays"));
     mHolidaysLoaded = true;
   }
   
   if (mHolidays)
-    return mHolidays->dayShort(date);
+    return mHolidays->shortText(date);
   else
     return QString::null;
 }

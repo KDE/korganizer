@@ -26,8 +26,7 @@
 
 #include <ktrader.h>
 
-#include <calendar/textdecoration.h>
-#include <calendar/widgetdecoration.h>
+#include <calendar/calendardecoration.h>
 #include <korganizer/part.h>
 
 class KOCore {
@@ -39,16 +38,13 @@ class KOCore {
     KOrg::Plugin *loadPlugin(KService::Ptr service);
     KOrg::Plugin *loadPlugin(const QString &);
     
-    KOrg::TextDecoration *loadTextDecoration(KService::Ptr service);
-
-    KOrg::WidgetDecoration *loadWidgetDecoration(KService::Ptr service);
-    KOrg::WidgetDecoration *loadWidgetDecoration(const QString &);
+    KOrg::CalendarDecoration *loadCalendarDecoration(KService::Ptr service);
+    KOrg::CalendarDecoration *loadCalendarDecoration(const QString &);
 
     KOrg::Part *loadPart(KService::Ptr,KOrg::MainWindow *parent);
     KOrg::Part *loadPart(const QString &,KOrg::MainWindow *parent);
 
-    KOrg::TextDecoration::List textDecorations();
-    KOrg::WidgetDecoration::List widgetDecorations();
+    KOrg::CalendarDecoration::List calendarDecorations();
     KOrg::Part::List parts(KOrg::MainWindow *parent);
 
     void reloadPlugins();
@@ -61,16 +57,13 @@ class KOCore {
   private:
     static KOCore *mSelf;
     
-    KOrg::TextDecoration::List mTextDecorations;
-    bool mTextDecorationsLoaded;
-    
-    KOrg::WidgetDecoration::List mWidgetDecorations;
-    bool mWidgetDecorationsLoaded;
+    KOrg::CalendarDecoration::List mCalendarDecorations;
+    bool mCalendarDecorationsLoaded;
     
     KOrg::Part::List mParts;
     bool mPartsLoaded;
 
-    KOrg::TextDecoration *mHolidays;
+    KOrg::CalendarDecoration *mHolidays;
     bool mHolidaysLoaded;    
 };
 

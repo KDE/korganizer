@@ -1,5 +1,26 @@
 [Desktop Entry]
 X-KDE-Library=libkorg_holidays
 Name=Holiday plugin for Calendars
+Name[ar]=ملحق العطل للتقويم
+Name[az]=Təqvim üçün bayram əlavəsi
+Name[bs]=Dodatak za kalendar - praznici
+Name[da]=Helligdage-indstik for kalendere
+Name[de]=Ferien-Plugin für Kalender
+Name[es]=Plugin de vacaciones para Calendar
+Name[eu]=Calendars-erako oporretako plugina
+Name[fr]=Module de vacances pour les agendas
+Name[he]=תוסף חגים ללוחות שנה
+Name[hu]=Szabadságnyilvántartó bővítőmodul naptárakhoz
+Name[is]=Frídaga- og helgidagaviðbót við dagatalið
+Name[lv]=Brīvdienu iespraudnis Kalendāriem
+Name[nl]=Vakantieplugin voor kalenders
+Name[pt]='Plugin' de feriados para o Calendário
+Name[pt_BR]=Plugin de feriados para Calendários
+Name[sk]=Modul sviatkov pre Calendars
+Name[sl]=Vstavek za počitnice za Koledar
+Name[sv]=Semesterinsticksprogram för kalendrar
+Name[xh]=Iplagi efakiweyo yeHolide zee Calendar
+Name[xx]=xx
+Name[zu]=Eyeholide iplagi yamaKhalenda
 Type=Service
-ServiceTypes=Calendar/Plugin,Calendar/TextDecoration
+ServiceTypes=Calendar/Plugin,Calendar/Decoration

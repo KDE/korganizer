@@ -29,9 +29,9 @@
 
 #include "holidays.h"
 
-class HolidaysFactory : public TextDecorationFactory {
+class HolidaysFactory : public CalendarDecorationFactory {
   public:
-    TextDecoration *create() { return new Holidays; }
+    CalendarDecoration *create() { return new Holidays; }
 };
 
 extern "C" {
@@ -65,7 +65,7 @@ Holidays::~Holidays()
 {
 }
 
-QString Holidays::dayShort(const QDate &date)
+QString Holidays::shortText(const QDate &date)
 {
   return getHoliday(date);
 }

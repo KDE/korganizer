@@ -21,9 +21,9 @@
 
 #include "datenums.h"
 
-class DatenumsFactory : public TextDecorationFactory {
+class DatenumsFactory : public CalendarDecorationFactory {
   public:
-    TextDecoration *create() { return new Datenums; }
+    CalendarDecoration *create() { return new Datenums; }
 };
 
 extern "C" {
@@ -34,18 +34,9 @@ extern "C" {
 }
 
 
-QString Datenums::dayShort(const QDate &date)
+QString Datenums::shortText(const QDate &date)
 {
   return QString::number(date.dayOfYear());
-}
-
-QString Datenums::weekShort(const QDate &date)
-{
-  int weekNumber = date.dayOfYear() % 7;
-
-  // TODO: Consider the rule about week counting at the beginning of the year
-
-  return QString::number(weekNumber);
 }
 
 QString Datenums::info()

@@ -22,17 +22,16 @@
 
 #include <qstring.h>
 
-#include <calendar/textdecoration.h>
+#include <calendar/calendardecoration.h>
 
 using namespace KOrg;
 
-class Datenums : public TextDecoration {
+class Datenums : public CalendarDecoration {
   public:
     Datenums() {}
     ~Datenums() {}
     
-    QString dayShort(const QDate &);
-    QString weekShort(const QDate &);
+    QString shortText(const QDate &);
     
     QString info();
 };

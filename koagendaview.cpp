@@ -430,20 +430,23 @@ void KOAgendaView::createDayLabels()
     dayLayout->addWidget(dayLabel);
 
 #ifndef KORG_NOPLUGINS
-    TextDecoration::List tds = KOCore::self()->textDecorations();
-    TextDecoration *it;
-    for(it = tds.first(); it; it = tds.next()) {
-      QLabel *label = new QLabel(it->dayShort(date),mDayLabels);
-      label->setAlignment(AlignCenter);
-      dayLayout->addWidget(label);
+    CalendarDecoration::List cds = KOCore::self()->calendarDecorations();
+    CalendarDecoration *it;
+    for(it = cds.first(); it; it = cds.next()) {
+      QString text = it->shortText( date );
+      if ( !text.isEmpty() ) {
+        QLabel *label = new QLabel(text,mDayLabels);
+        label->setAlignment(AlignCenter);
+        dayLayout->addWidget(label);
+      }
     }
 
-    WidgetDecoration::List wds = KOCore::self()->widgetDecorations();
-    WidgetDecoration *itw;
-    for(itw = wds.first(); itw; itw = wds.next()) {
-      QWidget *wid = itw->daySmall(mDayLabels,date);
+    for(it = cds.first(); it; it = cds.next()) {
+      QWidget *wid = it->smallWidget(mDayLabels,date);
+      if ( wid ) {
 //      wid->setHeight(20);
-      dayLayout->addWidget(wid);
+        dayLayout->addWidget(wid);
+      }
     }
 #endif
   }
