@@ -187,9 +187,9 @@ class KOAgendaView : public KOEventView
 
     void clearSelection();
 
-    void newEvent( int gx, int gy );
-    void newEvent( int gxStart, int gyStart, int gxEnd, int gyEnd );
-    void newEventAllDay( int gx, int gy );
+    void newEvent( const QPoint &pos );
+    void newEvent( const QPoint &start, const QPoint &end );
+    void newEventAllDay( const QPoint &pos );
 
     void startDrag( Incidence * );
 
@@ -203,8 +203,8 @@ class KOAgendaView : public KOEventView
 
     void finishTypeAhead();
 
-    /** reschedule the todo  to the given x- and y- coordinates. Fourth parameter determines all-day (no time  specified */
-    void slotTodoDropped( Todo *, int, int, bool );
+    /** reschedule the todo  to the given x- and y- coordinates. Third parameter determines all-day (no time  specified */
+    void slotTodoDropped( Todo *, const QPoint &, bool );
 
   signals:
     void toggleExpand();
@@ -232,10 +232,9 @@ class KOAgendaView : public KOEventView
     void updateEventIndicatorBottom( int newY );
 
     /** Updates data for selected timespan */
-    void newTimeSpanSelected( int gxStart, int gyStart, int gxEnd, int gyEnd );
+    void newTimeSpanSelected( const QPoint &start, const QPoint &end );
     /** Updates data for selected timespan for all day event*/
-    void newTimeSpanSelectedAllDay( int gxStart, int gyStart,
-                                    int gxEnd, int gyEnd);
+    void newTimeSpanSelectedAllDay( const QPoint &start, const QPoint &end );
 
   private:
     // view widgets

@@ -475,19 +475,19 @@ KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name) :
 
   // Create/Show/Edit/Delete Event
   connect(mAgenda,SIGNAL(newEventSignal()),SIGNAL(newEventSignal()));
-  connect(mAgenda,SIGNAL(newEventSignal(int,int)),
-                  SLOT(newEvent(int,int)));
-  connect(mAgenda,SIGNAL(newEventSignal(int,int,int,int)),
-                  SLOT(newEvent(int,int,int,int)));
+  connect(mAgenda,SIGNAL(newEventSignal(const QPoint &)),
+                  SLOT(newEvent(const QPoint &)));
+  connect(mAgenda,SIGNAL(newEventSignal(const QPoint &, const QPoint &)),
+                  SLOT(newEvent(const QPoint &, const QPoint &)));
   connect(mAllDayAgenda,SIGNAL(newEventSignal()),SIGNAL(newEventSignal()));
-  connect(mAllDayAgenda,SIGNAL(newEventSignal(int,int)),
-                        SLOT(newEventAllDay(int,int)));
-  connect(mAllDayAgenda,SIGNAL(newEventSignal(int,int,int,int)),
-                        SLOT(newEventAllDay(int,int)));
-  connect(mAgenda,SIGNAL(newTimeSpanSignal(int,int,int,int)),
-                        SLOT(newTimeSpanSelected(int,int,int,int)));
-  connect(mAllDayAgenda,SIGNAL(newTimeSpanSignal(int,int,int,int)),
-                        SLOT(newTimeSpanSelectedAllDay(int,int,int,int)));
+  connect(mAllDayAgenda,SIGNAL(newEventSignal(const QPoint &)),
+                        SLOT(newEventAllDay(const QPoint &)));
+  connect(mAllDayAgenda,SIGNAL(newEventSignal(const QPoint &, const QPoint &)),
+                        SLOT(newEventAllDay(const QPoint &)));
+  connect(mAgenda,SIGNAL(newTimeSpanSignal(const QPoint &, const QPoint &)),
+                        SLOT(newTimeSpanSelected(const QPoint &, const QPoint &)));
+  connect(mAllDayAgenda,SIGNAL(newTimeSpanSignal(const QPoint &, const QPoint &)),
+                        SLOT(newTimeSpanSelectedAllDay(const QPoint &, const QPoint &)));
 
   connect(mAgenda,SIGNAL(newStartSelectSignal()),
           mAllDayAgenda,SLOT(clearSelection()));
@@ -541,10 +541,10 @@ KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name) :
            SIGNAL( incidenceSelected( Incidence * ) ) );
 
   // rescheduling of todos by d'n'd
-  connect( mAgenda, SIGNAL( droppedToDo( Todo*, int, int, bool ) ),
-           SLOT( slotTodoDropped( Todo *, int, int, bool ) ) );
-  connect( mAllDayAgenda, SIGNAL( droppedToDo( Todo *, int, int, bool ) ),
-           SLOT( slotTodoDropped( Todo *, int, int, bool ) ) );
+  connect( mAgenda, SIGNAL( droppedToDo( Todo*, const QPoint&, bool ) ),
+           SLOT( slotTodoDropped( Todo *, const QPoint&, bool ) ) );
+  connect( mAllDayAgenda, SIGNAL( droppedToDo( Todo *, const QPoint&, bool ) ),
+           SLOT( slotTodoDropped( Todo *, const QPoint&, bool ) ) );
 }
 
 
@@ -1081,27 +1081,27 @@ CalPrinter::PrintType KOAgendaView::printType()
   else return CalPrinter::Week;
 }
 
-void KOAgendaView::newEvent(int gx, int gy)
+void KOAgendaView::newEvent( const QPoint &pos)
 {
   if (!mSelectedDates.count()) return;
 
-  QDate day = mSelectedDates[gx];
+  QDate day = mSelectedDates[pos.x()];
 
-  QTime time = mAgenda->gyToTime(gy);
+  QTime time = mAgenda->gyToTime(pos.y());
   QDateTime dt(day,time);
 
   emit newEventSignal(dt);
 }
 
-void KOAgendaView::newEvent(int gxStart, int gyStart, int gxEnd, int gyEnd)
+void KOAgendaView::newEvent(const QPoint &start, const QPoint &end)
 {
   if (!mSelectedDates.count()) return;
 
-  QDate dayStart = mSelectedDates[gxStart];
-  QDate dayEnd = mSelectedDates[gxEnd];
+  QDate dayStart = mSelectedDates[start.x()];
+  QDate dayEnd = mSelectedDates[end.x()];
 
-  QTime timeStart = mAgenda->gyToTime(gyStart);
-  QTime timeEnd = mAgenda->gyToTime( gyEnd + 1 );
+  QTime timeStart = mAgenda->gyToTime( start.y() );
+  QTime timeEnd = mAgenda->gyToTime( end.y() + 1 );
 
   QDateTime dtStart(dayStart,timeStart);
   QDateTime dtEnd(dayEnd,timeEnd);
@@ -1109,11 +1109,11 @@ void KOAgendaView::newEvent(int gxStart, int gyStart, int gxEnd, int gyEnd)
   emit newEventSignal(dtStart,dtEnd);
 }
 
-void KOAgendaView::newEventAllDay(int gx, int )
+void KOAgendaView::newEventAllDay( const QPoint &start )
 {
   if (!mSelectedDates.count()) return;
 
-  QDate day = mSelectedDates[gx];
+  QDate day = mSelectedDates[start.x()];
 
   emit newEventSignal(day);
 }
@@ -1140,11 +1140,11 @@ void KOAgendaView::updateEventIndicatorBottom(int newY)
   mEventIndicatorBottom->update();
 }
 
-void KOAgendaView::slotTodoDropped( Todo *todo, int gx, int gy, bool allDay )
+void KOAgendaView::slotTodoDropped( Todo *todo, const QPoint &gpos, bool allDay )
 {
-  if (gx<0 || gy<0) return;
-  QDate day = mSelectedDates[gx];
-  QTime time = mAgenda->gyToTime(gy);
+  if (gpos.x()<0 || gpos.y()<0) return;
+  QDate day = mSelectedDates[gpos.x()];
+  QTime time = mAgenda->gyToTime(gpos.y());
   QDateTime newTime(day, time);
 
   if (todo) {
@@ -1269,25 +1269,23 @@ void KOAgendaView::clearSelection()
   mAllDayAgenda->deselectItem();
 }
 
-void KOAgendaView::newTimeSpanSelectedAllDay(int gxStart, int gyStart,
-                                       int gxEnd, int gyEnd)
+void KOAgendaView::newTimeSpanSelectedAllDay( const QPoint &start, const QPoint &end )
 {
-  newTimeSpanSelected(gxStart,gyStart,gxEnd,gyEnd);
+  newTimeSpanSelected( start, end );
   mTimeSpanInAllDay = true;
 }
 
-void KOAgendaView::newTimeSpanSelected(int gxStart, int gyStart,
-                                       int gxEnd, int gyEnd)
+void KOAgendaView::newTimeSpanSelected( const QPoint &start, const QPoint &end )
 {
   if (!mSelectedDates.count()) return;
 
   mTimeSpanInAllDay = false;
 
-  QDate dayStart = mSelectedDates[gxStart];
-  QDate dayEnd = mSelectedDates[gxEnd];
+  QDate dayStart = mSelectedDates[start.x()];
+  QDate dayEnd = mSelectedDates[end.x()];
 
-  QTime timeStart = mAgenda->gyToTime(gyStart);
-  QTime timeEnd = mAgenda->gyToTime( gyEnd + 1 );
+  QTime timeStart = mAgenda->gyToTime(start.y());
+  QTime timeEnd = mAgenda->gyToTime( end.y() + 1 );
 
   QDateTime dtStart(dayStart,timeStart);
   QDateTime dtEnd(dayEnd,timeEnd);

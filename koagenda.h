@@ -78,8 +78,8 @@ class KOAgenda : public QScrollView
 
     virtual bool eventFilter ( QObject *, QEvent * );
 
-    void contentsToGrid ( int x, int y, int &gx, int &gy );
-    void gridToContents ( int gx, int gy, int &x, int &y );
+    QPoint contentsToGrid ( const QPoint &pos ) const;
+    QPoint gridToContents ( const QPoint &gpos ) const;
 
     int timeToY ( const QTime &time );
     QTime gyToTime ( int y );
@@ -154,9 +154,9 @@ class KOAgenda : public QScrollView
 
   signals:
     void newEventSignal();
-    void newEventSignal( int gx, int gy );
-    void newEventSignal( int gxStart, int gyStart, int gxEnd, int gyEnd );
-    void newTimeSpanSignal( int gxStart, int gyStart, int gxEnd, int gyEnd );
+    void newEventSignal( const QPoint &pos );
+    void newEventSignal( const QPoint &start, const QPoint &end );
+    void newTimeSpanSignal( const QPoint &, const QPoint & );
     void newStartSelectSignal();
 
     void showIncidenceSignal( Incidence * );
@@ -173,7 +173,7 @@ class KOAgenda : public QScrollView
     void upperYChanged( int );
 
     void startDragSignal(Incidence *);
-    void droppedToDo( Todo*todo, int gx, int gy, bool allDay );
+    void droppedToDo( Todo*todo, const QPoint &gpos, bool allDay );
 
   protected:
     void drawContents( QPainter *p, int cx, int cy, int cw, int ch );
@@ -261,10 +261,8 @@ class KOAgenda : public QScrollView
     int mRows;
 
     // Cells to store Move and Resize coordiantes
-    int mStartCellX;
-    int mStartCellY;
-    int mEndCellX;
-    int mEndCellY;
+    QPoint mStartCell;
+    QPoint mEndCell;
 
     // Working Hour coordiantes
     bool mWorkingHoursEnable;
@@ -274,8 +272,7 @@ class KOAgenda : public QScrollView
 
     // Selection
     QPoint mSelectionStartPoint;
-    int mSelectionCellX;
-    int mSelectionCellY;
+    QPoint mSelectionCell;
 
     // List of dates to be displayed
     DateList mSelectedDates;
