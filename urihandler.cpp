@@ -67,7 +67,9 @@ bool UriHandler::process( const QString &uri )
       //client->send("kaddressbook","KAddressBookIface",
       QDataStream arg( paramData, IO_WriteOnly );
       arg << uri.mid( 6 );
+#if KDE_IS_VERSION( 3, 2, 90 )
       kapp->updateRemoteUserTimestamp("kaddressbook");
+#endif
       client->send( "kaddressbook", "KAddressBookIface",
                     "showContactEditor( QString )", paramData );
       return true;
