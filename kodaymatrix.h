@@ -70,6 +70,7 @@ private:
     KODayMatrix* matrix;
 };
 
+#include <calendarsystem/kcalendarsystem.h>
 #include <libkcal/calendar.h>
 
 using namespace KCal;
@@ -114,7 +115,7 @@ public:
      *              assumed that this date is the first week day to be shown in the matrix.
      *  @param name name of the widget
      */
-    KODayMatrix(QWidget *parent, Calendar* calendar, QDate date, const char *name);
+    KODayMatrix(QWidget *parent, Calendar* calendar, QDate date, const char *name, KCalendarSystem* calSys);
 
     /** destructor that deallocates all dynamically allocated private members.
      */
@@ -280,6 +281,8 @@ private:
      *  on every repaint.
      */
     QRect     daysize;
+
+    KCalendarSystem* mCalendarSystem;
 };
 
 #endif

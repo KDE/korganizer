@@ -79,7 +79,7 @@ class KOrganizer : public KOrg::MainWindow, virtual public KOrganizerIface
      *
      * @param name Qt internal widget name
      */
-    KOrganizer(const char *name=0);
+    KOrganizer( const char *name=0 );
     virtual ~KOrganizer();
 
     KOrg::CalendarViewBase *view() const { return mCalendarView; }

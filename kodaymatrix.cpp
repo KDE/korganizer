@@ -37,6 +37,8 @@
 #include "kodaymatrix.h"
 #include "kodaymatrix.moc"
 
+#include <calendarsystem/kcalendarsystem.h>
+
 #ifndef KORG_NOPLUGINS
 #include "kocore.h"
 #endif
@@ -81,10 +83,11 @@ void DynamicTip::maybeTip( const QPoint &pos )
 const int KODayMatrix::NOSELECTION = -1000;
 const int KODayMatrix::NUMDAYS = 42;
 
-KODayMatrix::KODayMatrix(QWidget *parent, Calendar* calendar, QDate date, const char *name) :
+KODayMatrix::KODayMatrix(QWidget *parent, Calendar* calendar, QDate date, const char *name, KCalendarSystem* calSys) :
   QFrame(parent, name)
 {
   mCalendar = calendar;
+  mCalendarSystem = calSys;
 
   // initialize dynamic arrays
   days = new QDate[NUMDAYS];
@@ -190,15 +193,17 @@ void KODayMatrix::updateView(QDate actdate)
   // of the first day to be shown
   if (actdate != startdate) {
     // calculation is from Cornelius
-    int fstDayOfWk = actdate.dayOfWeek();
+    int fstDayOfWk = mCalendarSystem->dayOfTheWeek( actdate );
+    
     int nextLine = ((fstDayOfWk == 1) && (KGlobal::locale()->weekStartsMonday() == 1)) ? 7 : 0;
     int offset = (KGlobal::locale()->weekStartsMonday() ? 1 : 0) - fstDayOfWk - nextLine;
+
     // reset index of selection according to shift of starting date from startdate to actdate
     if (mSelStart != NOSELECTION) {
       int tmp = actdate.daysTo(startdate);
       kdDebug() << "Shift of Selection1: " << mSelStart << " - " << mSelEnd << " -> " << tmp << "(" << offset << ")" << endl;
-
       // shift selection if new one would be visible at least partly !
+
       if (mSelStart+tmp < NUMDAYS && mSelEnd+tmp >= 0) {
         mSelStart = mSelStart + tmp;
         mSelEnd = mSelEnd + tmp;
@@ -216,10 +221,9 @@ void KODayMatrix::updateView(QDate actdate)
   }
 
   for(int i = 0; i < NUMDAYS; i++) {
-
-    if (daychanged) {
+    if (daychanged) {    
       days[i] = startdate.addDays(i);
-      daylbls[i] = QString::number(days[i].day());
+      daylbls[i] = QString::number( mCalendarSystem->getDay( days[i] ));
 
       // if today is in the currently displayed month, hilight today
       if (days[i].year() == QDate::currentDate().year() &&
@@ -228,7 +232,6 @@ void KODayMatrix::updateView(QDate actdate)
         today = i;
       }
     }
-
 
     // if events are set for the day then remember to draw it bold
     QPtrList<Event> eventlist = mCalendar->getEventsForDate(days[i]);
@@ -496,7 +499,7 @@ void KODayMatrix::paintEvent(QPaintEvent * pevent)
     col = isRTL ? 6-(i-row*7) : i-row*7;
 
     // if it is the first day of a month switch color from normal to shaded and vice versa
-    if (days[i].day() == 1) {
+    if ( mCalendarSystem->getDay( days[i] ) == 1) {
       if (actcol == mDefaultTextColorShaded) {
         actcol = mDefaultTextColor;
       } else {

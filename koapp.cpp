@@ -22,8 +22,6 @@
     without including the source code for Qt in the source distribution.
 */
 
-// $Id$
-
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -148,13 +146,12 @@ void KOrganizerApp::startCompleted( KProcess *process )
   delete process;
 }
 
-
 int KOrganizerApp::newInstance()
 {
   kdDebug() << "KOApp::newInstance()" << endl;
 
   KCmdLineArgs *args = KCmdLineArgs::parsedArgs();
-
+  
   // process command line options
   int numDays = 0;
   if (args->isSet("list")) {
@@ -182,7 +179,7 @@ int KOrganizerApp::newInstance()
   if (args->count() > 0) {
     int i;
     for(i=0;i<args->count();++i) {
-      processCalendar(args->arg(i),numDays);
+      processCalendar( args->arg(i), numDays ); 
     }
   } else {
     KGlobal::config()->setGroup("General");
@@ -192,14 +189,15 @@ int KOrganizerApp::newInstance()
     AlarmDaemonIface_stub stub( "kalarmd", "ad" );
     stub.addCal( "korgac", urlString );
 
-    processCalendar(urlString,numDays);
+    processCalendar( urlString, numDays ); 
   }
   
   kdDebug() << "KOApp::newInstance() done" << endl;
   return 0;
 }
 
-void KOrganizerApp::processCalendar(const QString &urlString,int numDays)
+
+void KOrganizerApp::processCalendar( const QString &urlString, int numDays )
 {
   if (numDays > 0) {
     displayImminent(urlString,numDays);
@@ -210,7 +208,7 @@ void KOrganizerApp::processCalendar(const QString &urlString,int numDays)
       KURL url(urlString);
       KOrganizer *korg=KOrganizer::findInstance(url);
       if (0 == korg) {
-        korg = new KOrganizer("KOrganizer MainWindow");
+        korg = new KOrganizer( "KOrganizer MainWindow" ); 
         korg->show();
         
         kdDebug() << "KOrganizerApp::processCalendar(): " << url.url() << endl;

@@ -39,15 +39,23 @@
 #include "kocore.h"
 #endif
 
+#include <calendarsystem/kcalendarsystem.h>
+
 #include "kdatenav.h"
 #include "kdatenav.moc"
 
 KDateNavigator::KDateNavigator(QWidget *parent,Calendar *calendar,
                                bool show_week_nums,const char *name,
-                               QDate startDate)
+                               QDate startDate, KCalendarSystem* calSys)
   : QFrame(parent, name)
 {
   mCalendar = calendar;
+
+  if ( calSys ) {
+    mCalendarSystem = calSys;
+  } else {
+    mCalendarSystem = KCalendarSystemFactory::create();
+  }
 
   setFrameStyle(QFrame::NoFrame);
 
@@ -102,8 +110,9 @@ KDateNavigator::KDateNavigator(QWidget *parent,Calendar *calendar,
   int i;
   int maxwidth = 0;
   QFontMetrics fm = dateLabel->fontMetrics();
-  for(i=1;i<=12;++i) {
-    int width = fm.width(KGlobal::locale()->monthName(i) + " 2000");
+
+  for(i=1;i<=12;++i) { 
+    int width = fm.width( mCalendarSystem->getMonthName(i) + " 2000" );
     if (width > maxwidth) maxwidth = width;
   }
   dateLabel->setMinimumWidth(maxwidth);
@@ -151,14 +160,8 @@ KDateNavigator::KDateNavigator(QWidget *parent,Calendar *calendar,
     topLayout->addWidget(weeknos[i],i+2,0);
   }
 
-  // If month begins on Monday and Monday is first day of week,
-  // month should begin on second line. Sunday doesn't have this problem.
-  int nextLine = ((m_fstDayOfWk == 1) && (KGlobal::locale()->weekStartsMonday() == 1)) ? 7 : 0;
-  int index = 0;
-  //  int daysInMonth = m_MthYr.daysInMonth();
-
-  //QDate startday = dayone.addDays((KGlobal::locale()->weekStartsMonday() ? 1 : 0) - m_fstDayOfWk - nextLine);
-  daymatrix = new KODayMatrix(this, mCalendar, dayone, "KDateNavigator::DayMatrix");
+  daymatrix = new KODayMatrix( this, mCalendar, dayone,
+                               "KDateNavigator::DayMatrix", mCalendarSystem );
   daymatrix->setFrameStyle(QFrame::Panel|QFrame::Sunken);
   daymatrix->setLineWidth(1);
 
@@ -183,17 +186,22 @@ KDateNavigator::~KDateNavigator()
 
 void KDateNavigator::updateDates()
 {
-  int index;
-
   // If month begins on Monday and Monday is first day of week,
   // month should begin on second line. Sunday doesn't have this problem.
-  int nextLine = ((m_fstDayOfWk == 1) && (KGlobal::locale()->weekStartsMonday() == 1)) ? 7 : 0;
+  int nextLine = ( ( m_fstDayOfWk == 1) &&
+                   ( KGlobal::locale()->weekStartsMonday() == 1 ) ) ? 7 : 0;
 
-  //find the first day of the week of the current month.
-  QDate dayone(m_MthYr.year(), m_MthYr.month(), 1);
+  // Find the first day of the week of the current month.
+  int d1 = m_MthYr.day(); 
+  QDate dayone( m_MthYr.year(), m_MthYr.month(), m_MthYr.day() );
+  int d2 = mCalendarSystem->getDay( dayone );
+  int di = d1 - d2 + 1;
+  dayone = dayone.addDays( -d2 + 1 );
 
+  int m_fstDayOfWkCalsys = mCalendarSystem->dayOfTheWeek( dayone );
   // update the matrix dates
-  index = (KGlobal::locale()->weekStartsMonday() ? 1 : 0) - m_fstDayOfWk - nextLine;
+  int index = (KGlobal::locale()->weekStartsMonday() ? 1 : 0) - m_fstDayOfWkCalsys - nextLine;
+  
   daymatrix->updateView(dayone.addDays(index));
 //each updateDates is followed by an updateView -> repaint is issued there !
 //  daymatrix->repaint();
@@ -214,8 +222,9 @@ void KDateNavigator::updateView()
   setUpdatesEnabled(FALSE);
 
   // compute the label at the top of the navigator
-  QString dtstr = KGlobal::locale()->monthName(m_MthYr.month()) + " " +
-                  QString::number(m_MthYr.year());
+  QDate cT( m_MthYr.year(), m_MthYr.month(), m_MthYr.day() );  
+  QString dtstr = mCalendarSystem->getMonth( cT ) + " " +
+                  QString::number(mCalendarSystem->getYear( cT ) );
   dateLabel->setText(dtstr);
 
   int i;
@@ -231,7 +240,8 @@ void KDateNavigator::updateView()
     // not just 1.
 
     //ET int dayOfYear = buttons[(i + 1) * 7 - 4]->date().dayOfYear();
-    int dayOfYear = daymatrix->getDate((i+1)*7-4).dayOfYear();
+    int dayOfYear = mCalendarSystem->numberOfDayInYear((daymatrix->getDate((i+1)*7-4)));
+
     if (dayOfYear % 7 != 0)
       weeknum.setNum(dayOfYear / 7 + 1);
     else
@@ -256,7 +266,7 @@ void KDateNavigator::updateConfig()
       if (i==0) day = 7;
       else day = i;
     }
-    headings[i]->setText(KGlobal::locale()->weekDayName(day).left(1));
+    headings[i]->setText( mCalendarSystem->wDayName(day).left(1));
   }
   kdDebug() << "updateConfig() -> updateDates()" << endl;
   updateDates();
@@ -317,38 +327,39 @@ void KDateNavigator::gotoYMD(int yr, int mth, int day)
 
 void KDateNavigator::goNextMonth()
 {
-  int yr, mth, day;
 
-  // calculate yr, mth and day for the next month, wrapping if
-  // necessary.
-  yr  = m_MthYr.month() < 12 ? m_MthYr.year() : m_MthYr.year()+1;
-  mth = m_MthYr.month() < 12 ? m_MthYr.month()+1 : 1;
-  day = m_MthYr.day();
+  QDate tmp(m_MthYr.year(), m_MthYr.month(), m_MthYr.day());
+  mCalendarSystem->getNextMonthDate(tmp);
+  
+  gotoYMD(tmp.year(), tmp.month(), tmp.day());
 
-  gotoYMD(yr,mth,day);
+  
 }
 
 void KDateNavigator::goPrevMonth()
 {
-  int yr, mth, day;
 
-  // calculate yr, mth and day for the next month, wrapping if
-  // necessary.
-  yr  = m_MthYr.month() > 1 ? m_MthYr.year() : m_MthYr.year()-1;
-  mth = m_MthYr.month() > 1 ? m_MthYr.month()-1 : 12;
-  day = m_MthYr.day();
+  QDate tmp(m_MthYr.year(), m_MthYr.month(), m_MthYr.day());
+  mCalendarSystem->getPreviousMonthDate(tmp);
 
-  gotoYMD(yr,mth,day);
+  gotoYMD(tmp.year(), tmp.month(), tmp.day());
+  
 }
 
 void KDateNavigator::goNextYear()
 {
-  gotoYMD(m_MthYr.year()+1, m_MthYr.month(), m_MthYr.day());
+  QDate tmp(m_MthYr.year(), m_MthYr.month(), m_MthYr.day());
+  mCalendarSystem->getNextYearDate(tmp);
+
+  gotoYMD(tmp.year(), tmp.month(), tmp.day());
 }
 
 void KDateNavigator::goPrevYear()
 {
-  gotoYMD(m_MthYr.year()-1, m_MthYr.month(), m_MthYr.day());
+  QDate tmp(m_MthYr.year(), m_MthYr.month(), m_MthYr.day());
+  mCalendarSystem->getPreviousYearDate(tmp);
+
+  gotoYMD(tmp.year(), tmp.month(), tmp.day());
 }
 
 

@@ -70,7 +70,7 @@ using namespace KOrg;
 
 KOWindowList *KOrganizer::windowList = 0;
 
-KOrganizer::KOrganizer(const char *name)
+KOrganizer::KOrganizer( const char *name ) 
   : MainWindow(name), DCOPObject("KOrganizerIface"),
     mAlarmDaemonIface("kalarmd","ad")
 {
@@ -90,7 +90,7 @@ KOrganizer::KOrganizer(const char *name)
 
 //  setMinimumSize(600,400);	// make sure we don't get resized too small...
 
-  mCalendarView = new CalendarView(this,"KOrganizer::CalendarView");
+  mCalendarView = new CalendarView( this, "KOrganizer::CalendarView" ); 
   setCentralWidget(mCalendarView);
 
   initActions();

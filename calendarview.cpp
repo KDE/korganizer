@@ -52,6 +52,8 @@
 #include <kconfig.h>
 #include <krun.h>
 
+#include <calendarsystem/kcalendarsystem.h>
+
 #include <libkcal/vcaldrag.h>
 #include <libkcal/icalformat.h>
 #include <libkcal/vcalformat.h>
@@ -77,7 +79,6 @@
 #include "kofilterview.h"
 #include "koglobals.h"
 #include "koviewmanager.h"
-//ET WORKAROUND
 #include "koagendaview.h"
 #include "kodialogmanager.h"
 #include "outgoingdialog.h"
@@ -88,11 +89,16 @@
 using namespace KOrg;
 #include "calendarview.moc"
 
-
-CalendarView::CalendarView(QWidget *parent,const char *name)
+CalendarView::CalendarView( QWidget *parent, const char *name ) 
   : CalendarViewBase(parent,name)
 {
   kdDebug() << "CalendarView::CalendarView()" << endl;
+
+  KGlobal::config()->setGroup("General");
+  QString calSystem = KGlobal::config()->readEntry( "CalendarSystem",
+                                                    "gregorian");
+
+  mCalendarSystem = KCalendarSystemFactory::create( calSystem ); 
 
   mViewManager = new KOViewManager( this );
   mDialogManager = new KODialogManager( this );
@@ -127,7 +133,7 @@ CalendarView::CalendarView(QWidget *parent,const char *name)
   mPanner->setResizeMode(mLeftSplitter,QSplitter::KeepSize);
 
   mDateNavigator = new KDateNavigator(mLeftSplitter, mCalendar, TRUE,
-                        "CalendarView::DateNavigator", QDate::currentDate());
+                        "CalendarView::DateNavigator", QDate::currentDate(), mCalendarSystem ); 
   mLeftSplitter->setResizeMode(mDateNavigator,QSplitter::KeepSize);
   mTodoList = new KOTodoView(mCalendar, mLeftSplitter, "todolist");
   mFilterView = new KOFilterView(&mFilters,mLeftSplitter,"CalendarView::FilterView");
@@ -150,7 +156,7 @@ CalendarView::CalendarView(QWidget *parent,const char *name)
   topLayout->addWidget( mainBox );
 
   mDateNavigator = new KDateNavigator(leftFrame, mCalendar, TRUE,
-                        "CalendarView::DateNavigator", QDate::currentDate());
+                        "CalendarView::DateNavigator", QDate::currentDate(), mCalendarSystem); 
   mTodoList = new KOTodoView(mCalendar, leftFrame, "todolist");
   mFilterView = new KOFilterView(&mFilters,leftFrame,"CalendarView::FilterView");
 

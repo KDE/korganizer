@@ -23,7 +23,6 @@
 */
 #ifndef CALENDARVIEW_H
 #define CALENDARVIEW_H
-// $Id$
 
 #include <qframe.h>
 #include <qlayout.h>
@@ -44,6 +43,8 @@
 class QWidgetStack;
 class QSplitter;
 
+class KCalendarSystem;
+
 class CalPrinter;
 class KOFilterView;
 class KOViewManager;
@@ -60,7 +61,6 @@ using namespace KCal;
   
   @short main calendar view widget
   @author Cornelius Schumacher
-  @version $Revision$
 */
 class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
 {
@@ -71,7 +71,7 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
       @param parent parent window
       @param name Qt internal widget object name
     */
-    CalendarView(QWidget *parent=0, const char *name=0 );
+    CalendarView( QWidget *parent = 0, const char *name = 0 ); 
     virtual ~CalendarView();
   
     Calendar *calendar() { return mCalendar; }
@@ -413,6 +413,8 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
 
     // calendar object for this viewing instance
     Calendar      *mCalendar;
+
+    KCalendarSystem *mCalendarSystem;
 
     KOViewManager *mViewManager;
     KODialogManager *mDialogManager;

@@ -20,9 +20,8 @@
     with any edition of Qt, and distribute the resulting executable,
     without including the source code for Qt in the source distribution.
 */
-#ifndef _KDATENAV_H
-#define _KDATENAV_H
-// $Id$
+#ifndef KDATENAVIGATOR_H
+#define KDATENAVIGATOR_H
 
 #include <qframe.h>
 #include <qdatetime.h>
@@ -34,13 +33,16 @@
 
 class QPushButton;
 
-class KDateNavigator: public QFrame {
+class KCalendarSystem;
+
+class KDateNavigator: public QFrame
+{
    Q_OBJECT
  public:
-   KDateNavigator(QWidget *parent=0, Calendar *calendar=0,
-		  bool show_week_numbers=FALSE,
-		  const char *name=0,
-		  QDate date=QDate::currentDate());
+   KDateNavigator( QWidget *parent = 0, Calendar *calendar = 0,
+                   bool show_week_numbers = false, const char *name = 0,
+                   QDate date = QDate::currentDate(),
+                   KCalendarSystem *calSys = 0 );
    ~KDateNavigator();
 
    DateList selectedDates();
@@ -98,6 +100,7 @@ class KDateNavigator: public QFrame {
    int dayToIndex(int dayNum);
 
    Calendar *mCalendar;
+   KCalendarSystem *mCalendarSystem; 
 
    const QString *curHeaders;
 
