@@ -234,11 +234,11 @@ KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name) :
 {
   mStartDate = QDate::currentDate();
   mStartHour = 8;
-                         
+
   mLayoutDayLabels = 0;
   mDayLabelsFrame = 0;
   mDayLabels = 0;
-  
+
   // Create agenda splitter
   mSplitterAgenda = new QSplitter(Vertical,this);
   mSplitterAgenda->setOpaqueResize();
@@ -369,7 +369,7 @@ void KOAgendaView::createDayLabels()
   mDayLabels = new QFrame (mDayLabelsFrame);
   mLayoutDayLabels = new QHBoxLayout(mDayLabels);
   mLayoutDayLabels->addSpacing(mTimeLabels->width());
-  
+
   QLabel *dayLabel;
   unsigned int i;
   QDate date;
@@ -377,7 +377,7 @@ void KOAgendaView::createDayLabels()
     QBoxLayout *dayLayout = new QVBoxLayout(mLayoutDayLabels);
 
     date = mStartDate.addDays(i);
-    
+
     dayLabel = new QLabel(mDayLabels);
     QString str = QString("%1 %2")
         .arg(KGlobal::locale()->weekDayName(date.dayOfWeek(),true))
@@ -398,7 +398,7 @@ void KOAgendaView::createDayLabels()
       label->setAlignment(AlignCenter);
       dayLayout->addWidget(label);
     }
-    
+
     WidgetDecoration::List wds = KOCore::self()->widgetDecorations();
     WidgetDecoration *itw;
     for(itw = wds.first(); itw; itw = wds.next()) {
@@ -407,7 +407,7 @@ void KOAgendaView::createDayLabels()
       dayLayout->addWidget(wid);
     }
   }
-  
+
   mLayoutDayLabels->addSpacing(mAgenda->verticalScrollBar()->width());
   mDayLabels->show();
 }
@@ -432,7 +432,7 @@ QPtrList<Incidence> KOAgendaView::getSelected()
   if (event) selectedEvents.append(event);
 
   event = mAllDayAgenda->selectedEvent();
-  if (event) selectedEvents.append(event);  
+  if (event) selectedEvents.append(event);
 
   return selectedEvents;
 }
@@ -492,7 +492,7 @@ void KOAgendaView::updateEventDates(KOAgendaItem *item)
     startDate = *mSelectedDates.at(item->cellX());
   }
   startDt.setDate(startDate);
-  
+
   if (item->itemEvent()->doesFloat()) {
     endDt.setDate(startDate.addDays(item->cellWidth() - 1));
   } else {
@@ -506,7 +506,7 @@ void KOAgendaView::updateEventDates(KOAgendaItem *item)
       endDt.setDate(startDate);
     }
   }
-  
+
 //  kdDebug() << "updateEventDates(): now setting dates" << endl;
 
   item->itemEvent()->setDtStart(startDt);
@@ -519,7 +519,7 @@ void KOAgendaView::updateEventDates(KOAgendaItem *item)
 void KOAgendaView::selectDates(const QDateList list)
 {
 //  kdDebug() << "KOAgendaView::selectDates" << endl;
-  
+
   mSelectedDates.clear();
   mSelectedDates = list;
   mStartDate = *mSelectedDates.first();
@@ -529,7 +529,7 @@ void KOAgendaView::selectDates(const QDateList list)
       (mSelectedDates.first()->dayOfWeek() == 1) &&
       (mSelectedDates.first()->daysTo(*mSelectedDates.last()) == 4)) {
     setView(WORKWEEK);
-    
+
   // if there are 7 dates and the first is a monday, we have a regular week.
   } else if ((mSelectedDates.count() == 7) &&
              (mSelectedDates.first()->dayOfWeek() ==
@@ -561,7 +561,7 @@ void KOAgendaView::setView(int view)
   if( mSelectedDates.first() ) {
     if ((view >= DAY) && (view <= LIST))
       mViewType = view;
-    else 
+    else
       mViewType = DAY;
   } else
     mViewType = DAY;
@@ -757,14 +757,11 @@ void KOAgendaView::fillAgenda()
   QDate currentDate = mStartDate;
 
 
-  mAgenda->setTodayColumn(-1);
+  mAgenda->setDateList(mSelectedDates);
+
   for(curCol=0;curCol<int(mSelectedDates.count());++curCol) {
 //    kdDebug() << "KOAgendaView::fillAgenda(): " << currentDate.toString()
 //              << endl;
-
-    if(currentDate == QDate::currentDate())
-	mAgenda->setTodayColumn(curCol);
-
 
     dayEvents = mCalendar->getEventsForDate(currentDate,false);
 
@@ -781,12 +778,12 @@ void KOAgendaView::fillAgenda()
       int endX = currentDate.daysTo(event->dtEnd().date()) + curCol;
 
 //      kdDebug() << "  beginX: " << beginX << "  endX: " << endX << endl;
-      
+
       if (event->doesFloat()) {
         if (event->recurrence()->doesRecur()) {
           mAllDayAgenda->insertAllDayItem(event,curCol,curCol);
         } else {
-          if (beginX <= 0 && curCol == 0) {     
+          if (beginX <= 0 && curCol == 0) {
             mAllDayAgenda->insertAllDayItem(event,beginX,endX);
           } else if (beginX == curCol) {
             mAllDayAgenda->insertAllDayItem(event,beginX,endX);
@@ -794,7 +791,7 @@ void KOAgendaView::fillAgenda()
         }
       } else if (event->isMultiDay()) {
         int startY = mAgenda->timeToY(event->dtStart().time());
-        int endY = mAgenda->timeToY(event->dtEnd().time()) - 1;  
+        int endY = mAgenda->timeToY(event->dtEnd().time()) - 1;
         if ((beginX <= 0 && curCol == 0) || beginX == curCol) {
           mAgenda->insertMultiItem(event,beginX,endX,startY,endY);
         }
@@ -818,7 +815,7 @@ void KOAgendaView::fillAgenda()
       }
     }
 //    if (numEvent == 0) kdDebug() << " No events" << endl;
-    
+
     currentDate = currentDate.addDays(1);
   }
 
@@ -879,7 +876,7 @@ void KOAgendaView::updateEventIndicatorTop(int newY)
     if (newY >= mMinY[i]) mEventIndicatorTop->enableColumn(i,true);
     else mEventIndicatorTop->enableColumn(i,false);
   }
-  
+
   mEventIndicatorTop->update();
 }
 
@@ -913,7 +910,7 @@ void KOAgendaView::readSettings(KConfig *config)
 //  kdDebug() << "KOAgendaView::readSettings()" << endl;
 
   config->setGroup("Views");
-    
+
   QValueList<int> sizes = config->readIntListEntry("Separator AgendaView");
   if (sizes.count() == 2) {
     mSplitterAgenda->setSizes(sizes);
@@ -927,7 +924,7 @@ void KOAgendaView::writeSettings(KConfig *config)
 //  kdDebug() << "KOAgendaView::writeSettings()" << endl;
 
   config->setGroup("Views");
-    
+
   QValueList<int> list = mSplitterAgenda->sizes();
   config->writeEntry("Separator AgendaView",list);
 
@@ -943,7 +940,7 @@ void KOAgendaView::setHolidayMasks()
     QDate date = *(mSelectedDates.at(i));
     if ((KOPrefs::instance()->mExcludeSaturdays &&
          date.dayOfWeek() == 6) ||
-        (KOPrefs::instance()->mExcludeHolidays && 
+        (KOPrefs::instance()->mExcludeHolidays &&
          (!KOCore::self()->holiday(date).isEmpty() ||
           date.dayOfWeek() == 7))) {
       mHolidayMask[i] = true;
@@ -951,7 +948,7 @@ void KOAgendaView::setHolidayMasks()
       mHolidayMask[i] = false;
     }
   }
-  
+
   mAgenda->setHolidayMask(&mHolidayMask);
   mAllDayAgenda->setHolidayMask(&mHolidayMask);
 }

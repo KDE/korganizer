@@ -43,12 +43,15 @@ class MarcusBains : public QFrame {
     virtual ~MarcusBains();
 
   public slots:
-    void updateLocation();
+    void updateLocation(bool recalculate=false);
 
   private:
+    int todayColumn();
     QTimer *minutes;
     QLabel *mTimeBox;
     KOAgenda *agenda;
+    QTime oldTime;
+    int oldToday;
 };
 
 
@@ -64,7 +67,7 @@ class KOAgenda : public QScrollView
 
     Event *selectedEvent();
 
-    virtual bool eventFilter ( QObject *, QEvent * );   
+    virtual bool eventFilter ( QObject *, QEvent * );
 
     void contentsToGrid (int x, int y, int& gx, int& gy);
     void gridToContents (int gx, int gy, int& x, int& y);
@@ -80,10 +83,10 @@ class KOAgenda : public QScrollView
                           int YTop,int YBottom);
 
     void changeColumns(int columns);
-    
+
     int columns() { return mColumns; }
     int rows() { return mRows; }
-    
+
     int gridSpacingX() const { return mGridSpacingX; }
     int gridSpacingY() const { return mGridSpacingY; }
 
@@ -100,8 +103,8 @@ class KOAgenda : public QScrollView
 
     void setHolidayMask(QMemArray<bool> *);
 
-    void setTodayColumn(int col);
-    int todayColumn() const;
+    void setDateList(const QDateList &selectedDates);
+    const QDateList &dateList() const;
 
   public slots:
     void scrollUp();
@@ -110,14 +113,14 @@ class KOAgenda : public QScrollView
     void popupAlarm();
 
     void checkScrollBoundaries(int);
-    
+
     /** Deselect selected items. This function does not emit any signals. */
     void deselectItem();
     /** Select item. If the argument is 0, the currently selected item gets
      deselected. This function emits the itemSelected(bool) signal to inform
      about selection/deseelction of events. */
     void selectItem(KOAgendaItem *);
-    
+
   signals:
     void newEventSignal();
     void newEventSignal(int gx,int gy);
@@ -136,12 +139,12 @@ class KOAgenda : public QScrollView
     void startDragSignal(Event *);
 
   protected:
-    void drawContents(QPainter *p,int cx, int cy, int cw, int ch);        
+    void drawContents(QPainter *p,int cx, int cy, int cw, int ch);
     virtual void resizeEvent ( QResizeEvent * );
 
     /** Start moving/resizing agenda item */
     void startItemAction(QPoint viewportPos);
-    
+
     /** Move/resize agenda item */
     void performItemAction(QPoint viewportPos);
 
@@ -162,12 +165,12 @@ class KOAgenda : public QScrollView
     void calculateWorkingHours();
 
     virtual void contentsMousePressEvent ( QMouseEvent * );
-    
+
   private:
     void init();
     void marcus_bains();
     bool mAllDayMode;
-  
+
     // Width and height of agenda cells
     int mGridSpacingX;
     int mGridSpacingY;
@@ -197,14 +200,14 @@ class KOAgenda : public QScrollView
     bool mWorkingHoursEnable;
     int mWorkingHoursYTop;
     int mWorkingHoursYBottom;
-    
-    // The column representing today.
-    int mTodayColumn;
+
+    // List of dates to be displayed
+    QDateList mSelectedDates;
 
     // The KOAgendaItem, which has been right-clicked last
     KOAgendaItem *mClickedItem;
 
-    // The KOAgendaItem, which is being moved/resized    
+    // The KOAgendaItem, which is being moved/resized
     KOAgendaItem *mActionItem;
 
     // Currently selected item
@@ -216,10 +219,10 @@ class KOAgenda : public QScrollView
     enum MouseActionType {NOP,MOVE,RESIZETOP,RESIZEBOTTOM,RESIZELEFT,
                           RESIZERIGHT};
 
-    MouseActionType mActionType;    
-    
+    MouseActionType mActionType;
+
     bool mItemMoved;
-    
+
     // List of all Items contained in agenda
     QPtrList<KOAgendaItem> mItems;
 
