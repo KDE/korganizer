@@ -72,7 +72,7 @@ class Todo : public Incidence
     bool mHasDueDate;                    // if todo has associated due date
     bool mHasStartDate;                  // if todo has associated start date
 
-    int  mStatus;                         // confirmed/delegated/tentative/etc
+//    int  mStatus;                         // confirmed/delegated/tentative/etc
 
     bool mIsCompleted;
     QDateTime mCompleted;

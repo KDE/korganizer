@@ -8,7 +8,7 @@
 
 Todo::Todo()
 {
-  mStatus = TENTATIVE;
+//  mStatus = TENTATIVE;
 
   mHasDueDate = false;
   mHasStartDate = false;
