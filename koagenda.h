@@ -156,6 +156,8 @@ class KOAgenda : public QScrollView
 
     /** Handles mouse events. Called from eventFilter */
     virtual bool eventFilter_mouse ( QObject *, QMouseEvent * );
+    /** Handles key events. Called from eventFilter */
+    virtual bool eventFilter_key ( QObject *, QKeyEvent * );
 
     /** Start selecting time span. */
     void startSelectAction(const QPoint& viewportPos);

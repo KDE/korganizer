@@ -314,25 +314,44 @@ void KOAgenda::changeColumns(int columns)
 */
 bool KOAgenda::eventFilter ( QObject *object, QEvent *event )
 {
-//  kdDebug(5850) << "KOAgenda::eventFilter" << endl;
+//  kdDebug(5850) << "KOAgenda::eventFilter() " << int( event->type() ) << endl;
 
-  switch(event->type()) {
+  switch( event->type() ) {
     case QEvent::MouseButtonPress:
     case QEvent::MouseButtonDblClick:
     case QEvent::MouseButtonRelease:
     case QEvent::MouseMove:
-      return eventFilter_mouse(object, static_cast<QMouseEvent *>(event));
+      return eventFilter_mouse( object, static_cast<QMouseEvent *>( event ) );
 
-    case (QEvent::Leave):
-      if (!mActionItem)
-        setCursor(arrowCursor);
+    case QEvent::KeyPress:
+    case QEvent::KeyRelease:
+      return eventFilter_key( object, static_cast<QKeyEvent *>( event ) );
+
+    case ( QEvent::Leave ):
+      if ( !mActionItem )
+        setCursor( arrowCursor );
       return true;
 
     default:
-      return QScrollView::eventFilter(object,event);
+      return QScrollView::eventFilter( object, event );
   }
 }
 
+bool KOAgenda::eventFilter_key( QObject *object, QKeyEvent *ke )
+{
+  Q_UNUSED( object );
+
+  kdDebug() << "KOAgenda::eventFilter_key()" << endl;
+#if 0
+  if ( ke->type() == QEvent::KeyPress ) {
+    emit newEventSignal(2,4);
+    return true;
+  }
+#else
+  Q_UNUSED( ke );
+#endif
+  return false;
+}
 
 bool KOAgenda::eventFilter_mouse(QObject *object, QMouseEvent *me)
 {
