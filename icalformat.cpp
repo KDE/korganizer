@@ -53,20 +53,15 @@ bool ICalFormat::load(const QString &fileName)
     return false;
   }
 
-    kdDebug() << "tick1" << endl;
-
   // Get first VCALENDAR component.
   // TODO: Handle more than one VCALENDAR or non-VCALENDAR top components
   icalcomponent *calendar;
   calendar = icalfileset_get_first_component(fs);
 
-    kdDebug() << "tick2" << endl;
-
   while(calendar) {
     if (icalcomponent_isa(calendar) == ICAL_VCALENDAR_COMPONENT) break;
     calendar = icalfileset_get_next_component(fs);
   }
-    kdDebug() << "tick3" << endl;
 
   if (!calendar) {
     kdDebug("ICalFormat::load(): No VCALENDAR component found");
@@ -75,14 +70,11 @@ bool ICalFormat::load(const QString &fileName)
   }
 
 //  kdDebug() << "Error: " << icalerror_perror() << endl;
-    kdDebug() << "tick3" << endl;
 
   // put all vobjects into their proper places
   bool success = populate(calendar);
-    kdDebug() << "tick4" << endl;
 
   icalfileset_free(fs);
-    kdDebug() << "tick5" << endl;
 
   return success;
 }
@@ -1068,14 +1060,20 @@ icalcomponent *ICalFormat::writeAlarm(KOAlarm *alarm)
   
   if (!alarm->programFile().isEmpty()) {
     action = ICAL_ACTION_PROCEDURE;
+// The attachement crashes this function. Find the cause and reenable the code
+// later.
+#if 0
     attach = icalattachtype_new();
     icalattachtype_set_url(attach,QFile::encodeName(alarm->programFile()).data());
     icalcomponent_add_property(a,icalproperty_new_attach(*attach));
+#endif
   } else if (!alarm->audioFile().isEmpty()) {
     action = ICAL_ACTION_AUDIO;
+#if 0
     attach = icalattachtype_new();
     icalattachtype_set_url(attach,QFile::encodeName(alarm->audioFile()).data());
     icalcomponent_add_property(a,icalproperty_new_attach(*attach));
+#endif
   } else {
     action = ICAL_ACTION_DISPLAY;
     icalcomponent_add_property(a,icalproperty_new_description("An Alarm"));

@@ -79,15 +79,20 @@ bool CalendarLocal::load(const QString &fileName)
   bool success = mFormat->load(fileName);
 
   if (!success) {
-    kdDebug() << "---Error: " << mFormat->exception()->errorCode() << endl;
-    if (mFormat->exception()->errorCode() == KOErrorFormat::CalVersion1) {
-      // Expected non vCalendar file, but detected vCalendar
-      kdDebug() << "CalendarLocal::load() Fallback to VCalFormat" << endl;
-      delete mFormat;
-      mFormat = new VCalFormat(this);
-      return mFormat->load(fileName);
+    if (mFormat->exception()) {
+      kdDebug() << "---Error: " << mFormat->exception()->errorCode() << endl;
+      if (mFormat->exception()->errorCode() == KOErrorFormat::CalVersion1) {
+        // Expected non vCalendar file, but detected vCalendar
+        kdDebug() << "CalendarLocal::load() Fallback to VCalFormat" << endl;
+        delete mFormat;
+        mFormat = new VCalFormat(this);
+        return mFormat->load(fileName);
+      }
+      return false;
+    } else {
+      kdDebug() << "No exception set" << endl;
+      return false;
     }
-    return false;
   } else {
     kdDebug() << "---Success" << endl;
   }
