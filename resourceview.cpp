@@ -41,6 +41,8 @@
 #include <qpushbutton.h>
 #include <qpopupmenu.h>
 
+#include "koprefs.h"
+
 using namespace KCal;
 
 ResourceViewFactory::ResourceViewFactory( KCal::CalendarResources *calendar,
@@ -51,14 +53,12 @@ ResourceViewFactory::ResourceViewFactory( KCal::CalendarResources *calendar,
 
 CalendarViewExtension *ResourceViewFactory::create( QWidget *parent )
 {
-  mResourceView = new ResourceView( mCalendar->resourceManager(),
-                                                  parent );
+  mResourceView = new ResourceView( mCalendar, parent );
 
   QObject::connect( mResourceView, SIGNAL( resourcesChanged() ),
                     mView, SLOT( updateView() ) );
-  QObject::connect( mResourceView,
-                    SIGNAL( signalErrorMessage( const QString & ) ),
-                    mView, SLOT( showErrorMessage( const QString & ) ) );
+  QObject::connect( mResourceView, SIGNAL( resourcesChanged() ),
+                    mView, SLOT( updateCategories() ) );
 
   QObject::connect( mCalendar,
                     SIGNAL( signalResourceAdded( ResourceCalendar * ) ),
@@ -68,6 +68,10 @@ CalendarViewExtension *ResourceViewFactory::create( QWidget *parent )
                     SIGNAL( signalResourceModified( ResourceCalendar * ) ),
                     mResourceView,
                     SLOT( updateResourceItem( ResourceCalendar * ) ) );
+  QObject::connect( mCalendar, SIGNAL( signalResourceAdded( ResourceCalendar * ) ),
+                    mView, SLOT( updateCategories() ) );
+  QObject::connect( mCalendar, SIGNAL( signalResourceModified( ResourceCalendar * ) ),
+                    mView, SLOT( updateCategories() ) );
 
   return mResourceView;
 }
@@ -120,31 +124,20 @@ void ResourceItem::stateChange( bool active )
 {
   if ( mBlockStateChange ) return;
 
-  if ( !mIsSubresource ) {
-    // Handle a full resource
-    bool toActivate = active;
+  if ( mIsSubresource ) {
+    mResource->setSubresourceActive( text( 0 ), active );
+  } else {
     if ( active ) {
-      bool success = mResource->open();
-      if ( success ) {
-        success = mResource->load();
-      }
-      if ( !success ) {
-        QString msg = mResource->errorMessage();
-        if ( !msg.isEmpty() ) mView->emitErrorMessage( msg );
-        toActivate = false;
-      }
+      if ( mResource->load() ) mResource->setActive( true );
     } else {
-      mResource->save();
-      mResource->close();
+      if ( mResource->save() ) mResource->setActive( false );
+      mView->requestClose( mResource );
     }
-    mResource->setActive( toActivate );
 
-    setOpen( toActivate && childCount() > 0 );
+    setOpen( mResource->isActive() && childCount() > 0 );
 
     setGuiState();
-  } else
-    // Handle a subresource
-    mResource->setSubresourceActive( text( 0 ), active );
+  }
 
   mView->emitResourcesChanged();
 }
@@ -154,10 +147,9 @@ void ResourceItem::update()
   setGuiState();
 }
 
-ResourceView::ResourceView( KCal::CalendarResourceManager *manager,
+ResourceView::ResourceView( KCal::CalendarResources *calendar,
                             QWidget *parent, const char *name )
-  : CalendarViewExtension( parent, name ),
-    mManager( manager )
+  : CalendarViewExtension( parent, name ), mCalendar( calendar )
 {
   QBoxLayout *topLayout = new QVBoxLayout( this );
 
@@ -170,8 +162,8 @@ ResourceView::ResourceView( KCal::CalendarResourceManager *manager,
   topLayout->addWidget( buttonBox );
 
   mAddButton = new QPushButton( i18n("Add..."), buttonBox, "add" );
-  mDeleteButton = new QPushButton( i18n("Remove"), buttonBox, "del" );
   mEditButton = new QPushButton( i18n("Edit..."), buttonBox, "edit" );
+  mDeleteButton = new QPushButton( i18n("Remove"), buttonBox, "del" );
   mDeleteButton->setDisabled( true );
   mEditButton->setDisabled( true );
 
@@ -199,8 +191,10 @@ void ResourceView::updateView()
 {
   mListView->clear();
 
+  KCal::CalendarResourceManager *manager = mCalendar->resourceManager();
+
   KCal::CalendarResourceManager::Iterator it;
-  for( it = mManager->begin(); it != mManager->end(); ++it ) {
+  for( it = manager->begin(); it != manager->end(); ++it ) {
     addResourceItem( *it );
   }
 }
@@ -212,8 +206,10 @@ void ResourceView::emitResourcesChanged()
 
 void ResourceView::addResource()
 {
-  QStringList types = mManager->resourceTypeNames();
-  QStringList descs = mManager->resourceTypeDescriptions();
+  KCal::CalendarResourceManager *manager = mCalendar->resourceManager();
+
+  QStringList types = manager->resourceTypeNames();
+  QStringList descs = manager->resourceTypeDescriptions();
   bool ok = false;
   QString desc = KInputDialog::getItem( i18n( "Resource Configuration" ),
       i18n( "Please select type of the new resource:" ), descs, 0, false, &ok,
@@ -224,7 +220,7 @@ void ResourceView::addResource()
   QString type = types[ descs.findIndex( desc ) ];
 
   // Create new resource
-  ResourceCalendar *resource = mManager->createResource( type );
+  ResourceCalendar *resource = manager->createResource( type );
   if( !resource ) {
     KMessageBox::error( this, i18n("<qt>Unable to create resource of type <b>%1</b>.</qt>")
                               .arg( type ) );
@@ -237,13 +233,12 @@ void ResourceView::addResource()
                           "KRES::ConfigDialog" );
 
   if ( dlg.exec() ) {
-    if ( resource->isActive() ) {
-      resource->open();
-      resource->load();
-    }
-
-    mManager->add( resource );
-    addResourceItem( resource );
+    resource->setTimeZoneId( KOPrefs::instance()->mTimeZoneId );
+    manager->add( resource );
+    // we have to call resourceAdded manually, because for in-process changes
+    // the dcop signals are not connected, so the resource's signals would not
+    // be connected otherwise
+    mCalendar->resourceAdded( resource );
   } else {
     delete resource;
     resource = 0;
@@ -253,6 +248,7 @@ void ResourceView::addResource()
 void ResourceView::addResourceItem( ResourceCalendar *resource )
 {
   new ResourceItem( resource, this, mListView );
+
   connect( resource, SIGNAL( signalSubresourceAdded( ResourceCalendar *,
                                                      const QString &,
                                                      const QString & ) ),
@@ -263,6 +259,10 @@ void ResourceView::addResourceItem( ResourceCalendar *resource )
                                                        const QString & ) ),
            SLOT( slotSubresourceRemoved( ResourceCalendar *, const QString &,
                                          const QString & ) ) );
+
+  connect( resource, SIGNAL( resourceSaved( ResourceCalendar * ) ),
+           SLOT( closeResource( ResourceCalendar * ) ) );
+
   emitResourcesChanged();
 }
 
@@ -286,6 +286,14 @@ void ResourceView::slotSubresourceRemoved( ResourceCalendar */*calendar*/,
                                            const QString &resource )
 {
   delete mListView->findItem( resource, 0 );
+}
+
+void ResourceView::closeResource( ResourceCalendar *r )
+{
+  if ( mResourcesToClose.find( r ) >= 0 ) {
+    r->close();
+    mResourcesToClose.remove( r );
+  }
 }
 
 void ResourceView::updateResourceItem( ResourceCalendar *resource )
@@ -316,14 +324,14 @@ void ResourceView::removeResource()
 
 // Don't be so restricitve
 #if 0
-  if ( item->resource() == mManager->standardResource() ) {
+  if ( item->resource() == mCalendar->resourceManager()->standardResource() ) {
     KMessageBox::sorry( this,
                         i18n( "You cannot remove your standard resource." ) );
     return;
   }
 #endif
 
-  mManager->remove( item->resource() );
+  mCalendar->resourceManager()->remove( item->resource() );
 
   mListView->takeItem( item );
   delete item;
@@ -342,7 +350,7 @@ void ResourceView::editResource()
   if ( dlg.exec() ) {
     item->setText( 0, resource->resourceName() );
 
-    mManager->change( resource );
+    mCalendar->resourceManager()->change( resource );
   }
 }
 
@@ -352,11 +360,6 @@ void ResourceView::currentChanged( QListViewItem *item)
   if ( !item ) selected = false;
   mDeleteButton->setEnabled( selected );
   mEditButton->setEnabled( selected );
-}
-
-void ResourceView::emitErrorMessage( const QString &msg )
-{
-  emit signalErrorMessage( msg );
 }
 
 ResourceItem *ResourceView::findItem( ResourceCalendar *r )
@@ -374,7 +377,7 @@ void ResourceView::contextMenuRequested ( QListViewItem *i,
                                           const QPoint &pos, int )
 {
   ResourceItem *item = static_cast<ResourceItem *>( i );
-  
+
   QPopupMenu *menu = new QPopupMenu( this );
   connect( menu, SIGNAL( aboutToHide() ), menu, SLOT( deleteLater() ) );
   if ( item ) {
@@ -385,7 +388,7 @@ void ResourceView::contextMenuRequested ( QListViewItem *i,
                                    SLOT( saveResource() ) );
     menu->setItemEnabled( saveId, item->resource()->isActive() );
     menu->insertSeparator();
-    menu->insertItem( i18n("Show Info..."), this, SLOT( showInfo() ) );
+    menu->insertItem( i18n("Show Info"), this, SLOT( showInfo() ) );
     menu->insertItem( i18n("Edit..."), this, SLOT( editResource() ) );
     menu->insertItem( i18n("Remove"), this, SLOT( removeResource() ) );
     menu->insertSeparator();
@@ -399,8 +402,8 @@ void ResourceView::showInfo()
 {
   ResourceItem *item = currentItem();
   if ( !item ) return;
-  
-  QString txt = infoText( item->resource() );
+
+  QString txt = "<qt>" + item->resource()->infoText() + "</qt>";
   KMessageBox::information( this, txt );
 }
 
@@ -408,7 +411,7 @@ void ResourceView::reloadResource()
 {
   ResourceItem *item = currentItem();
   if ( !item ) return;
-  
+
   ResourceCalendar *r = item->resource();
   r->load();
 }
@@ -417,31 +420,9 @@ void ResourceView::saveResource()
 {
   ResourceItem *item = currentItem();
   if ( !item ) return;
-  
+
   ResourceCalendar *r = item->resource();
   r->save();
-}
-
-QString ResourceView::infoText( ResourceCalendar *r )
-{
-  QString txt = "<qt>";
-  
-  txt += "<b>" + r->resourceName() + "</b>";
-  txt += "<br>";
-  
-  KRES::Factory *factory = KRES::Factory::self( "calendar" );
-  QString type = factory->typeName( r->type() );
-  txt += i18n("Type: %1").arg( type );
-
-  if ( r->type() == "remote" ) {
-    txt += "<br>";
-    ResourceRemote *remote = static_cast<ResourceRemote *>( r );
-    txt += i18n("URL: %1").arg( remote->downloadUrl().prettyURL() );
-  }
-
-  txt += "</qt>";
-
-  return txt;
 }
 
 void ResourceView::showButtons( bool visible )
@@ -455,6 +436,11 @@ void ResourceView::showButtons( bool visible )
     mDeleteButton->hide();
     mEditButton->hide();
   }
+}
+
+void ResourceView::requestClose( ResourceCalendar *r )
+{
+  mResourcesToClose.append( r );
 }
 
 #include "resourceview.moc"
