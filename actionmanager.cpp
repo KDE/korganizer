@@ -160,7 +160,8 @@ void ActionManager::createCalendarResources()
   kdDebug(5850) << "CalendarResources used by KOrganizer:" << endl;
   CalendarResourceManager::Iterator it;
   for( it = manager->begin(); it != manager->end(); ++it ) {
-    (*it)->dump();
+    kdDebug() << "  " << (*it)->resourceName() << endl;
+//    (*it)->dump();
   }
 
   setDestinationPolicy();
