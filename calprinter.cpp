@@ -843,23 +843,32 @@ void CalPrinter::drawDay(QPainter &p, const QDate &qd, int width, int height)
   int cellHeight = (height-offset) / hours; // hour increments.
   int cellWidth = width-80;
 
-  // TODO: Use KLocale::formatTime() to print time.
   QString numStr;
   for (int i = 0; i < hours; i++) {
     p.drawRect(0, offset+i*cellHeight, 75, cellHeight);
     p.drawLine(37, offset+i*cellHeight+(cellHeight/2),
                75, offset+i*cellHeight+(cellHeight/2));
-    numStr.setNum(i+startHour);
-    if (cellHeight > 40) {
-      p.setFont(QFont("helvetica", 20, QFont::Bold));
+
+    if ( !KGlobal::locale()->use12Clock() ) {
+      numStr.setNum(i+startHour);
+      if (cellHeight > 40) {
+        p.setFont(QFont("helvetica", 20, QFont::Bold));
+      } else {
+        p.setFont(QFont("helvetica", 16, QFont::Bold));
+      }
+      p.drawText(0, offset+i*cellHeight, 33, cellHeight/2,
+                 AlignTop|AlignRight, numStr);
+      p.setFont(QFont("helvetica", 14, QFont::Bold));
+      p.drawText(37, offset+i*cellHeight, 45, cellHeight/2,
+                 AlignTop | AlignLeft, "00");
     } else {
-      p.setFont(QFont("helvetica", 16, QFont::Bold));
+      QTime time( i + startHour, 0 );
+      numStr = KGlobal::locale()->formatTime( time );
+      p.setFont(QFont("helvetica", 14, QFont::Bold));
+      p.drawText(4, offset+i*cellHeight, 70, cellHeight/2,
+                 AlignTop|AlignLeft, numStr);
     }
-    p.drawText(0, offset+i*cellHeight, 33, cellHeight/2,
-               AlignTop|AlignRight, numStr);
-    p.setFont(QFont("helvetica", 14, QFont::Bold));
-    p.drawText(37, offset+i*cellHeight, 45, cellHeight/2,
-               AlignTop | AlignLeft, "00");
+
     p.drawRect(80, offset+i*cellHeight,cellWidth, cellHeight);
     p.drawLine(80, offset+i*cellHeight+(cellHeight/2),
                cellWidth+80, offset+i*cellHeight+(cellHeight/2));
