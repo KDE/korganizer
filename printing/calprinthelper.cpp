@@ -804,10 +804,13 @@ void CalPrintHelper::drawTodo( int &count, Todo *item, QPainter &p,
 //  int fontHeight = 10;
   const KLocale *local = KGlobal::locale();
   int priority=item->priority();
-  int posdue=posDueDt;
-  if (posdue<0) posdue=x+width;
   QRect rect;
   TodoParentStart startpt;
+
+  // Compute the right hand side of the item box
+  int rhs = posPercentComplete;
+  if ( rhs < 0 ) rhs = posDueDt; //not printing percent completed
+  if ( rhs < 0 ) rhs = x+width;  //not printing due dates either
 
   // Skip this Todo if it is complete
   if ( skipDone && item->isCompleted() )
@@ -823,7 +826,7 @@ void CalPrintHelper::drawTodo( int &count, Todo *item, QPainter &p,
   // size of item
   outStr=item->summary();
   int left = posSummary+(level*10);
-  rect = p.boundingRect(left, y, (posdue-left-5),-1, Qt::WordBreak, outStr);
+  rect = p.boundingRect(left, y, (rhs-left-5),-1, Qt::WordBreak, outStr);
   if ( !item->description().isEmpty() && desc ) {
     outStr = item->description();
     rect = p.boundingRect( left+20, rect.bottom()+5, width-(left+10-x), -1,
@@ -900,7 +903,7 @@ void CalPrintHelper::drawTodo( int &count, Todo *item, QPainter &p,
   p.setFont( ft );
   // summary
   outStr=item->summary();
-  rect = p.boundingRect( left, rect.top(), (posdue-(left + rect.width() + 5)),
+  rect = p.boundingRect( left, rect.top(), (rhs-(left + rect.width() + 5)),
     -1, Qt::WordBreak, outStr);
   QRect newrect;
   p.drawText( rect, Qt::WordBreak, outStr, -1, &newrect );
@@ -910,7 +913,7 @@ void CalPrintHelper::drawTodo( int &count, Todo *item, QPainter &p,
   // due
   if ( item->hasDueDate() && posDueDt>=0 ) {
     outStr = local->formatDate(item->dtDue().date(),true);
-    rect = p.boundingRect( posdue, y, x + width, -1,
+    rect = p.boundingRect( posDueDt, y, x + width, -1,
                            Qt::AlignTop | Qt::AlignLeft, outStr );
     p.drawText( rect, Qt::AlignTop | Qt::AlignLeft, outStr );
   }
