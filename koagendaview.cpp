@@ -711,10 +711,10 @@ void KOAgendaView::updateEventDates(KOAgendaItem *item)
   QDateTime startDt,endDt;
   QDate startDate;
 
-  if (item->cellX() < 0) {
-    startDate = (mSelectedDates.first()).addDays(item->cellX());
+  if (item->cellXLeft() < 0) {
+    startDate = (mSelectedDates.first()).addDays(item->cellXLeft());
   } else {
-    startDate = mSelectedDates[item->cellX()];
+    startDate = mSelectedDates[item->cellXLeft()];
   }
   startDt.setDate(startDate);
 
@@ -729,7 +729,7 @@ void KOAgendaView::updateEventDates(KOAgendaItem *item)
     if (item->lastMultiItem()) {
       endDt.setTime(mAgenda->gyToTime(item->lastMultiItem()->cellYBottom()+1));
       endDt.setDate(startDate.
-                    addDays(item->lastMultiItem()->cellX() - item->cellX()));
+                    addDays(item->lastMultiItem()->cellXLeft() - item->cellXLeft()));
     } else {
       endDt.setTime(mAgenda->gyToTime(item->cellYBottom()+1));
       endDt.setDate(startDate);
@@ -855,7 +855,7 @@ void KOAgendaView::changeEventDisplayAdded( Event *event )
 
 void KOAgendaView::changeEventDisplay(Event *event, int mode)
 {
-//  kdDebug(5850) << "KOAgendaView::changeEventDisplay" << endl;
+  kdDebug(5850) << "KOAgendaView::changeEventDisplay" << endl;
 
   switch (mode) {
     case KOGlobals::EVENTADDED: {

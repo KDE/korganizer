@@ -62,7 +62,7 @@ KOAgendaItem::KOAgendaItem( Incidence *incidence, QDate qd, QWidget *parent,
   setBackgroundMode( Qt::NoBackground );
 
   setCellXY( 0, 0, 1 );
-  setCellXWidth( 0 );
+  setCellXRight( 0 );
   setMouseTracking( true );
 
   updateIcons();
@@ -130,7 +130,7 @@ int KOAgendaItem::cellHeight() const
 */
 int KOAgendaItem::cellWidth() const
 {
-  return mCellXWidth - mCellX + 1;
+  return mCellXRight - mCellXLeft + 1;
 }
 
 void KOAgendaItem::setItemDate( QDate qd )
@@ -140,20 +140,20 @@ void KOAgendaItem::setItemDate( QDate qd )
 
 void KOAgendaItem::setCellXY( int X, int YTop, int YBottom )
 {
-  mCellX = X;
+  mCellXLeft = X;
   mCellYTop = YTop;
   mCellYBottom = YBottom;
 }
 
-void KOAgendaItem::setCellXWidth( int xwidth )
+void KOAgendaItem::setCellXRight( int xright )
 {
-  mCellXWidth = xwidth;
+  mCellXRight = xright;
 }
 
 void KOAgendaItem::setCellX( int XLeft, int XRight )
 {
-  mCellX = XLeft;
-  mCellXWidth = XRight;
+  mCellXLeft = XLeft;
+  mCellXRight = XRight;
 }
 
 void KOAgendaItem::setCellY( int YTop, int YBottom )
@@ -297,8 +297,8 @@ void KOAgendaItem::startMove()
 void KOAgendaItem::startMovePrivate()
 {
   mStartMoveInfo = new MultiItemInfo;
-  mStartMoveInfo->mStartCellX = mCellX;
-  mStartMoveInfo->mStartCellXWidth = mCellXWidth;
+  mStartMoveInfo->mStartCellXLeft = mCellXLeft;
+  mStartMoveInfo->mStartCellXRight = mCellXRight;
   mStartMoveInfo->mStartCellYTop = mCellYTop;
   mStartMoveInfo->mStartCellYBottom = mCellYBottom;
   if (mMultiItemInfo) {
@@ -332,8 +332,8 @@ void KOAgendaItem::resetMove()
 void KOAgendaItem::resetMovePrivate()
 {
   if (mStartMoveInfo) {
-    mCellX = mStartMoveInfo->mStartCellX;
-    mCellXWidth = mStartMoveInfo->mStartCellXWidth;
+    mCellXLeft = mStartMoveInfo->mStartCellXLeft;
+    mCellXRight = mStartMoveInfo->mStartCellXRight;
     mCellYTop = mStartMoveInfo->mStartCellYTop;
     mCellYBottom = mStartMoveInfo->mStartCellYBottom;
 
@@ -433,12 +433,12 @@ void KOAgendaItem::endMovePrivate()
 
 void KOAgendaItem::moveRelative(int dx, int dy)
 {
-  int newX = cellX() + dx;
-  int newXWidth = cellXWidth() + dx;
+  int newXLeft = cellXLeft() + dx;
+  int newXRight = cellXRight() + dx;
   int newYTop = cellYTop() + dy;
   int newYBottom = cellYBottom() + dy;
-  setCellXY(newX,newYTop,newYBottom);
-  setCellXWidth(newXWidth);
+  setCellXY(newXLeft,newYTop,newYBottom);
+  setCellXRight(newXRight);
 }
 
 void KOAgendaItem::expandTop(int dy)
@@ -459,18 +459,18 @@ void KOAgendaItem::expandBottom(int dy)
 
 void KOAgendaItem::expandLeft(int dx)
 {
-  int newX = cellX() + dx;
-  int newXWidth = cellXWidth();
-  if (newX > newXWidth) newX = newXWidth;
-  setCellX(newX,newXWidth);
+  int newXLeft = cellXLeft() + dx;
+  int newXRight = cellXRight();
+  if ( newXLeft > newXRight ) newXLeft = newXRight;
+  setCellX( newXLeft, newXRight );
 }
 
 void KOAgendaItem::expandRight(int dx)
 {
-  int newX = cellX();
-  int newXWidth = cellXWidth() + dx;
-  if (newXWidth < newX) newXWidth = newX;
-  setCellX(newX,newXWidth);
+  int newXLeft = cellXLeft();
+  int newXRight = cellXRight() + dx;
+  if ( newXRight < newXLeft ) newXRight = newXLeft;
+  setCellX( newXLeft, newXRight );
 }
 
 QToolTipGroup *KOAgendaItem::toolTipGroup()
@@ -570,8 +570,8 @@ bool KOAgendaItem::overlaps( KOrg::CellItem *o ) const
 {
   KOAgendaItem *other = static_cast<KOAgendaItem *>( o );
 
-  if ( cellX() <= other->cellXWidth() &&
-       cellXWidth() >= other->cellX() ) {
+  if ( cellXLeft() <= other->cellXRight() &&
+       cellXRight() >= other->cellXLeft() ) {
     if ( ( cellYTop() <= other->cellYBottom() ) &&
          ( cellYBottom() >= other->cellYTop() ) ) {
       return true;

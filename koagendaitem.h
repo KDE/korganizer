@@ -40,9 +40,8 @@ class KOAgendaItem;
 
 struct MultiItemInfo
 {
-  int mStartCellX;
-  int mStartCellXWidth;
-  int mStartCellYTop,mStartCellYBottom;
+  int mStartCellXLeft, mStartCellXRight;
+  int mStartCellYTop, mStartCellYBottom;
   KOAgendaItem *mFirstMultiItem;
   KOAgendaItem *mPrevMultiItem;
   KOAgendaItem *mNextMultiItem;
@@ -78,8 +77,8 @@ class KOAgendaItem : public QWidget, public KOrg::CellItem
     KOAgendaItem(Incidence *incidence, QDate qd, QWidget *parent, const char *name=0,
                  WFlags f=0 );
 
-    int cellX() const { return mCellX; }
-    int cellXWidth() const { return mCellXWidth; }
+    int cellXLeft() const { return mCellXLeft; }
+    int cellXRight() const { return mCellXRight; }
     int cellYTop() const { return mCellYTop; }
     int cellYBottom() const { return mCellYBottom; }
     int cellHeight() const;
@@ -88,7 +87,7 @@ class KOAgendaItem : public QWidget, public KOrg::CellItem
     void setCellXY(int X, int YTop, int YBottom);
     void setCellY(int YTop, int YBottom);
     void setCellX(int XLeft, int XRight);
-    void setCellXWidth(int xwidth);
+    void setCellXRight(int xright);
 
     /** Start movement */
     void startMove();
@@ -160,9 +159,8 @@ class KOAgendaItem : public QWidget, public KOrg::CellItem
 
 
   private:
-    int mCellX;
-    int mCellXWidth;
-    int mCellYTop,mCellYBottom;
+    int mCellXLeft, mCellXRight;
+    int mCellYTop, mCellYBottom;
     int mSubCell;  // subcell number of this item
     int mSubCells;  // Total number of subcells in cell of this item
 
