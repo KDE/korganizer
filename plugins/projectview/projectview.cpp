@@ -33,6 +33,7 @@
 #include "koprojectview.h"
 
 #include "projectview.h"
+using namespace KOrg;
 #include "projectview.moc"
 
 class ProjectViewFactory : public KOrg::PartFactory {

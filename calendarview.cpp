@@ -83,6 +83,7 @@
 #include "outgoingdialog.h"
 
 #include "calendarview.h"
+using namespace KOrg;
 #include "calendarview.moc"
 
 #include "statusdialog.h"

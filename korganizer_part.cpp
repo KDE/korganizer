@@ -150,4 +150,6 @@ KOrganizerBrowserExtension::KOrganizerBrowserExtension(KOrganizerPart *parent) :
 KOrganizerBrowserExtension::~KOrganizerBrowserExtension()
 {
 }
+
+using namespace KParts;
 #include "korganizer_part.moc"

@@ -36,6 +36,7 @@
 #include "calprinter.h"
 
 #include "koeventview.h"
+using namespace KOrg;
 #include "koeventview.moc"
 
 KOEventView::KOEventView(Calendar *cal,QWidget *parent,const char *name)

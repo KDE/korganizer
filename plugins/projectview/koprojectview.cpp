@@ -43,6 +43,7 @@
 #include "KGantt.h"
 
 #include "koprojectview.h"
+using namespace KOrg;
 #include "koprojectview.moc"
 
 KOProjectViewItem::KOProjectViewItem(Todo *event,KGanttItem* parentTask,

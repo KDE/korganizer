@@ -42,6 +42,7 @@
 #include "docprefs.h"
 
 #include "kotodoview.h"
+using namespace KOrg;
 #include "kotodoview.moc"
 
 KOTodoListView::KOTodoListView(Calendar *calendar,QWidget *parent,

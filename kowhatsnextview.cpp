@@ -41,6 +41,7 @@
 #include "koeventviewerdialog.h"
 
 #include "kowhatsnextview.h"
+using namespace KOrg;
 #include "kowhatsnextview.moc"
 
 void WhatsNextTextBrowser::setSource(const QString& n)

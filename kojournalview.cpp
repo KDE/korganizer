@@ -36,6 +36,7 @@
 #include "journalentry.h"
 
 #include "kojournalview.h"
+using namespace KOrg;
 #include "kojournalview.moc"
 
 KOJournalView::KOJournalView(Calendar *calendar, QWidget *parent,

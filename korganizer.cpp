@@ -65,6 +65,7 @@
 #include "kocore.h"
 
 #include "korganizer.h"
+using namespace KOrg;
 #include "korganizer.moc"
 
 
