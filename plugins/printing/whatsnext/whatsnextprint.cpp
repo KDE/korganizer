@@ -45,12 +45,7 @@ class WhatsNextPrintFactory : public KOrg::PrintPluginFactory {
     KOrg::PrintPlugin *create() { return new CalPrintWhatsNext; }
 };
 
-extern "C" {
-  void *init_libkorg_whatsnextprint()
-  {
-    return (new WhatsNextPrintFactory);
-  }
-}
+K_EXPORT_COMPONENT_FACTORY( libkorg_whatsnextprint, WhatsNextPrintFactory )
 
 
 /**************************************************************

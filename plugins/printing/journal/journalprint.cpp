@@ -44,12 +44,7 @@ class JournalPrintFactory : public KOrg::PrintPluginFactory {
     KOrg::PrintPlugin *create() { return new CalPrintJournal; }
 };
 
-extern "C" {
-  void *init_libkorg_journalprint()
-  {
-    return (new JournalPrintFactory);
-  }
-}
+K_EXPORT_COMPONENT_FACTORY( libkorg_journalprint, JournalPrintFactory )
 
 
 /**************************************************************

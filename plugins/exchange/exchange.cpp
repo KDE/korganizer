@@ -48,18 +48,13 @@ class ExchangeFactory : public KOrg::PartFactory {
   public:
     KOrg::Part *create(KOrg::MainWindow *parent, const char *name)
     {
+      kdDebug(5850) << "Registering Exchange Plugin...\n";
+      KGlobal::locale()->insertCatalogue("libkpimexchange");
       return new Exchange(parent,name);
     }
 };
 
-extern "C" {
-  void *init_libkorg_exchange()
-  {
-    kdDebug(5850) << "Registering Exchange Plugin...\n";
-    KGlobal::locale()->insertCatalogue("libkpimexchange");
-    return (new ExchangeFactory);
-  }
-}
+K_EXPORT_COMPONENT_FACTORY( libkorg_exchange, ExchangeFactory );
 
 Exchange::Exchange(KOrg::MainWindow *parent, const char *name) :
   KOrg::Part(parent,name)

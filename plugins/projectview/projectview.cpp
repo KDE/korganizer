@@ -27,8 +27,6 @@
 #include <kaction.h>
 #include <kglobal.h>
 
-//#include <korganizer/calendarviewbase.h">
-
 #include "koprojectview.h"
 
 #include "projectview.h"
@@ -39,17 +37,12 @@ class ProjectViewFactory : public KOrg::PartFactory {
   public:
     KOrg::Part *create(KOrg::MainWindow *parent, const char *name)
     {
+      KGlobal::locale()->insertCatalogue( "kgantt" );
       return new ProjectView(parent,name);
     }
 };
 
-extern "C" {
-  void *init_libkorg_projectview()
-  {
-    KGlobal::locale()->insertCatalogue( "kgantt" );
-    return (new ProjectViewFactory);
-  }
-}
+K_EXPORT_COMPONENT_FACTORY( libkorg_projectview, ProjectViewFactory )
 
 
 ProjectView::ProjectView(KOrg::MainWindow *parent, const char *name) :

@@ -34,12 +34,7 @@ class HolidaysFactory : public CalendarDecorationFactory {
     CalendarDecoration *create() { return new Holidays; }
 };
 
-extern "C" {
-  void *init_libkorg_holidays()
-  {
-    return (new HolidaysFactory);
-  }
-}
+K_EXPORT_COMPONENT_FACTORY( libkorg_holidays, HolidaysFactory );
 
 
 extern "C" {

@@ -27,8 +27,6 @@
 #include <kaction.h>
 #include <kglobal.h>
 
-//#include <korganizer/calendarviewbase.h">
-
 #include "kotimespanview.h"
 
 #include "timespanview.h"
@@ -43,12 +41,7 @@ class TimespanViewFactory : public KOrg::PartFactory {
     }
 };
 
-extern "C" {
-  void *init_libkorg_timespanview()
-  {
-    return ( new TimespanViewFactory );
-  }
-}
+K_EXPORT_COMPONENT_FACTORY( libkorg_timespanview, TimespanViewFactory )
 
 
 TimespanView::TimespanView(KOrg::MainWindow *parent, const char *name) :

@@ -30,12 +30,8 @@ class DatenumsFactory : public CalendarDecorationFactory {
     CalendarDecoration *create() { return new Datenums; }
 };
 
-extern "C" {
-  void *init_libkorg_datenums()
-  {
-    return (new DatenumsFactory);
-  }
-}
+K_EXPORT_COMPONENT_FACTORY( libkorg_datenums, DatenumsFactory )
+
 
 Datenums::Datenums()
 {

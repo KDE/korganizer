@@ -40,13 +40,8 @@ public:
   }
 };
 
-extern "C"
-{
-  void *init_libkorg_hebrew()
-  {
-    return (new HebrewFactory);
-  }
-}
+K_EXPORT_COMPONENT_FACTORY( libkorg_hebrew, HebrewFactory );
+
 
 QString Hebrew::shortText(const QDate & date)
 {
