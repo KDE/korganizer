@@ -286,7 +286,7 @@ KOTodoView::KOTodoView(Calendar *calendar,QWidget* parent,const char* name) :
                          SLOT (newTodo()));
   mPopupMenu->insertItem(i18n("delete completed To-Dos","Purge Completed"),
                          this, SLOT(purgeCompleted()));
-  
+
   mDocPrefs = new DocPrefs( name );
 
   // Double clicking conflicts with opening/closing the subtree
@@ -319,7 +319,7 @@ KOTodoView::~KOTodoView()
 
 void KOTodoView::updateView()
 {
-  kdDebug() << "KOTodoView::updateView()" << endl;
+//  kdDebug() << "KOTodoView::updateView()" << endl;
 
   mTodoListView->clear();
 
@@ -583,11 +583,11 @@ void KOTodoView::restoreLayout(KConfig *config, const QString &group)
 void KOTodoView::selectionChanged(QListViewItem *item)
 {
   if (item) {
-    kdDebug() << "KOTodoView::selectionChanged || TRUE" << endl;
+//    kdDebug() << "KOTodoView::selectionChanged || TRUE" << endl;
     emit todoSelected(true);
   }
   else {
-    kdDebug() << "KOTodoView::selectionChanged || FALSE" << endl;
+//    kdDebug() << "KOTodoView::selectionChanged || FALSE" << endl;
     emit todoSelected(false);
   }
 }

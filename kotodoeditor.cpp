@@ -30,6 +30,7 @@
 
 #include <kiconloader.h>
 #include <klocale.h>
+#include <kmessagebox.h>
 
 #include "categoryselectdialog.h"
 #include "koprefs.h"
@@ -161,10 +162,22 @@ bool KOTodoEditor::processInput()
 void KOTodoEditor::slotUser1()
 {
   if (mTodo) {
-    emit todoToBeDeleted(mTodo);
-    mCalendar->deleteTodo(mTodo);
-    emit todoDeleted();
-    reject();
+    if (KOPrefs::instance()->mConfirm) {
+      switch (msgItemDelete()) {
+        case KMessageBox::Continue: // OK
+          emit todoToBeDeleted(mTodo);
+          mCalendar->deleteTodo(mTodo);
+          emit todoDeleted();
+          reject();
+          break;
+      }
+    }
+    else {
+      emit todoToBeDeleted(mTodo);
+      mCalendar->deleteTodo(mTodo);
+      emit todoDeleted();
+      reject();
+    }
   } else {
     reject();
   }
@@ -206,3 +219,11 @@ bool KOTodoEditor::validateInput()
   if (!mDetails->validateInput()) return false;
   return true;
 }
+
+int KOTodoEditor::msgItemDelete()
+{
+  return KMessageBox::warningContinueCancel(this,
+      i18n("This item will be permanently deleted."),
+      i18n("KOrganizer Confirmation"),i18n("Delete"));
+}
+

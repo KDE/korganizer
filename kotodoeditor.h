@@ -81,6 +81,7 @@ class KOTodoEditor : public KOIncidenceEditor
   
   protected:
     void setupGeneral();
+    int msgItemDelete();
 
   private:  
     Todo *mTodo;

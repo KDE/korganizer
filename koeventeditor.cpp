@@ -32,6 +32,7 @@
 #include <kiconloader.h>
 #include <kdebug.h>
 #include <klocale.h>
+#include <kmessagebox.h>
 
 #include "koprefs.h"
 #include "categoryselectdialog.h"
@@ -210,10 +211,22 @@ void KOEventEditor::slotUser1()
 {
   kdDebug() << "Delete event" << endl;
   if (mEvent) {
-    emit eventToBeDeleted(mEvent);
-    mCalendar->deleteEvent(mEvent);
-    emit eventDeleted();
-    reject();
+    if (KOPrefs::instance()->mConfirm) {
+      switch (msgItemDelete()) {
+        case KMessageBox::Continue: // OK
+          emit eventToBeDeleted(mEvent);
+          mCalendar->deleteEvent(mEvent);
+          emit eventDeleted();
+          reject();
+          break;
+      }//switch
+    }
+    else {
+      emit eventToBeDeleted(mEvent);
+      mCalendar->deleteEvent(mEvent);
+      emit eventDeleted();
+      reject();
+    }
   } else {
     reject();
   }
@@ -269,5 +282,12 @@ bool KOEventEditor::validateInput()
   if (!mRecurrence->validateInput()) return false;
 #endif
   return true;
+}
+
+int KOEventEditor::msgItemDelete()
+{
+  return KMessageBox::warningContinueCancel(this,
+      i18n("This item will be permanently deleted."),
+      i18n("KOrganizer Confirmation"),i18n("Delete"));
 }
 
