@@ -101,7 +101,7 @@ void Birthdays::importBirthdays()
     if ( (*it).birthday().date().isValid() ) {
       kdDebug() << "found a birthday " << (*it).birthday().toString() << endl;
 
-      summary = (*it).formattedName() + i18n("'s birthday");
+      summary = i18n("%1's birthday").arg( (*it).formattedName() );
       birthdate = (*it).birthday();
 
       Event *ev = 0;
