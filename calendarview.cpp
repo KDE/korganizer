@@ -1220,13 +1220,13 @@ void CalendarView::schedule(Scheduler::Method method, Incidence *incidence)
   Todo *to = 0;
   if (todo) to = new Todo(*todo);
 
-  if (method == Scheduler::Reply ) {
+  if (method == Scheduler::Reply || method == Scheduler::Refresh) {
     Attendee *me = incidence->attendeeByMails(KOPrefs::instance()->mAdditionalMails,KOPrefs::instance()->email());
     if (!me) {
       KMessageBox::sorry(this,i18n("Could not find your attendee entry. Please check the emails."));
       return;
     }
-    if (me->status()==Attendee::NeedsAction && me->RSVP()) {
+    if (me->status()==Attendee::NeedsAction && me->RSVP() && method==Scheduler::Reply) {
       StatusDialog *statdlg = new StatusDialog(this);
       if (!statdlg->exec()==QDialog::Accepted) return;
       me->setStatus( statdlg->status() );

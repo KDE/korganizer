@@ -262,9 +262,13 @@ bool IncomingDialog::incomeRefresh(ScheduleItemIn *item)
   Event *ev = mCalendar->event(item->event()->uid());
   if (ev) {
     //user interaction before??
-    Event *event = new Event(*ev);
-    mOutgoing->addMessage(event,Scheduler::Request);
-    delete(event);
+    Attendee *att;
+    QPtrList<Attendee> attlist = ev->attendees();
+    for (att=attlist.first(); att; att=attlist.next()) {
+      Event *event = new Event(*ev);
+      mOutgoing->addMessage(event,Scheduler::Request,att->email());
+      delete(event);
+    }
     mScheduler->deleteTransaction(item->event());
     delete item;
     emit numMessagesChanged(mMessageListView->childCount());

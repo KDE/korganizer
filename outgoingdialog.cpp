@@ -173,14 +173,14 @@ bool OutgoingDialog::addMessage(IncidenceBase *incidence,Scheduler::Method metho
 bool OutgoingDialog::addMessage(IncidenceBase *incidence,Scheduler::Method method,
                                 const QString &recipients)
 {
-  if (method != Scheduler::Publish) return false;
+  //if (method != Scheduler::Publish) return false;
   if (KOPrefs::instance()->mIMIPSend == KOPrefs::IMIPOutbox) {
     new ScheduleItemOut(mMessageListView,incidence,method,recipients);
     saveMessage(incidence,method,recipients);
     emit numMessagesChanged(mMessageListView->childCount());
   }
   else {
-    mScheduler->publish(incidence,recipients);
+    mScheduler->performTransaction(incidence,method,recipients);
   }
   return true;
 }

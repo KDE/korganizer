@@ -55,6 +55,20 @@ bool MailScheduler::publish (IncidenceBase *incidence,const QString &recipients)
   return mailer.mailTo(incidence,recipients,messageText);
 }
 
+bool MailScheduler::performTransaction(IncidenceBase *incidence,Method method,const QString &recipients)
+{
+  QString messageText = mFormat->createScheduleMessage(incidence,method);
+
+  KOMailClient mailer;
+//  kdDebug () << "MailScheduler::performTransaction"  << endl;
+  if (method==Request || method==Cancel || method==Add || method==Declinecounter) {
+    return mailer.mailTo(incidence,recipients,messageText);
+  }
+  else {
+    return mailer.mailTo(incidence,recipients,messageText);
+  }
+}
+
 bool MailScheduler::performTransaction(IncidenceBase *incidence,Method method)
 {
   QString messageText = mFormat->createScheduleMessage(incidence,method);
