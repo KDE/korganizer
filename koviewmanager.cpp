@@ -115,12 +115,13 @@ void KOViewManager::showView(KOrg::BaseView *view)
 {
   if( view == mCurrentView ) return;
 
+  mCurrentView = view;
+
   if ( mCurrentView && mCurrentView->isEventView() ) {
     mLastEventView = mCurrentView;
   }
 
   if ( mAgendaView ) mAgendaView->deleteSelectedDateTime();
-  mCurrentView = view;
 
   raiseCurrentView();
   mMainView->processIncidenceSelection( 0 );
