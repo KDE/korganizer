@@ -25,7 +25,7 @@
 //
 // Widget showing one Journal entry
 
-#include <qframe.h>
+#include <qvbox.h>
 
 class QLabel;
 class KTextEdit;
@@ -36,18 +36,22 @@ namespace KCal {
 }
 using namespace KCal;
 
-class JournalEntry : public QFrame {
+class JournalEntry : public QVBox {
     Q_OBJECT
   public:
+    typedef ListBase<JournalEntry> List;
+    
     JournalEntry(Calendar *,QWidget *parent);
     virtual ~JournalEntry();
     
     void setJournal(Journal *);
-    Journal *journal() const;
+    Journal *journal() const { return mJournal; }
 
     void setDate(const QDate &);
+    QDate date() const { return mDate; }
 
     void clear();
+    void readJournal();
 
     void flushEntry();
 

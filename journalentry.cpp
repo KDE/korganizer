@@ -33,8 +33,7 @@
 #include <ktextedit.h>
 
 #include <libkcal/journal.h>
-#include <libkcal/calendarresources.h>
-#include <libkcal/resourcecalendar.h>
+#include <libkcal/calendar.h>
 
 #include "kodialogmanager.h"
 
@@ -42,8 +41,9 @@
 #include "journalentry.moc"
 
 JournalEntry::JournalEntry(Calendar *calendar,QWidget *parent) :
-  QFrame(parent)
+  QVBox(parent)
 {
+kdDebug(5850)<<"JournalEntry::JournalEntry, parent="<<parent<<endl;
   mCalendar = calendar;
   mJournal = 0;
   mDirty = false;
@@ -55,10 +55,6 @@ JournalEntry::JournalEntry(Calendar *calendar,QWidget *parent) :
   mEditor = new KTextEdit(this);
   connect(mEditor,SIGNAL(textChanged()),SLOT(setDirty()));
   
-  QBoxLayout *topLayout = new QVBoxLayout(this);
-  topLayout->addWidget(mTitleLabel);
-  topLayout->addWidget(mEditor);
-  
   mEditor->installEventFilter(this);
 }
 
@@ -69,10 +65,7 @@ JournalEntry::~JournalEntry()
 void JournalEntry::setDate(const QDate &date)
 {
   writeJournal();
-
   mTitleLabel->setText(KGlobal::locale()->formatDate(date));
-
-  
   mDate = date;
 }
 
@@ -81,15 +74,10 @@ void JournalEntry::setJournal(Journal *journal)
   writeJournal();
 
   mJournal = journal;
-  
-  mEditor->setText(mJournal->description());
-
+  if (mJournal) 
+    mEditor->setText(mJournal->description());
+  else mEditor->clear();
   mDirty = false;
-}
-
-Journal *JournalEntry::journal() const
-{
-  return mJournal;
 }
 
 void JournalEntry::setDirty()

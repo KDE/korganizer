@@ -24,14 +24,16 @@
 #define KOJOURNALVIEW_H
 
 #include <korganizer/baseview.h>
+#include "journalentry.h"
 
 class JournalEntry;
+class QVBox;
 
 /**
  * This class provides a journal view.
 
  * @short View for Journal components.
- * @author Cornelius Schumacher <schumacher@kde.org>
+ * @author Cornelius Schumacher <schumacher@kde.org>, Reinhold Kainhofer <reinhold@kainhofer.com>
  * @see KOBaseView
  */
 class KOJournalView : public KOrg::BaseView
@@ -45,6 +47,7 @@ class KOJournalView : public KOrg::BaseView
     virtual int currentDateCount();
     virtual Incidence::List selectedIncidences();
     DateList selectedDates() { return DateList(); }
+    void appendJournal( Journal*journal, const QDate &dt);
 
   public slots:
     void updateView();
@@ -54,9 +57,13 @@ class KOJournalView : public KOrg::BaseView
     void showIncidences( const Incidence::List & );
 
     void changeIncidenceDisplay( Incidence *, int );
+  protected:
+    void clearEntries();
 
   private:
-    JournalEntry *mEntry;
+    QBoxLayout *mTopLayout;
+    JournalEntry::List mEntries;
+    DateList mSelectedDates;  // List of dates to be displayed
 };
 
 #endif
