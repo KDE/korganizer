@@ -16,6 +16,8 @@
 #include <kstddirs.h>
 #include <kbuttonbox.h>
 #include <kmessagebox.h>
+#include <kfiledialog.h>
+#include <kdebug.h>
 
 #include "koprefs.h"
 #include "todo.h"
@@ -30,8 +32,8 @@ KOEditorGeneralTodo::KOEditorGeneralTodo(int spacing,QWidget* parent,
   mSpacing = spacing;
 
   initTimeBox();
+  initAlarmBox(); 
   initMisc();
-
   initLayout();
 
   QWidget::setTabOrder(summaryEdit, completedCombo);
@@ -39,7 +41,10 @@ KOEditorGeneralTodo::KOEditorGeneralTodo(int spacing,QWidget* parent,
   QWidget::setTabOrder(priorityCombo, descriptionEdit);
   QWidget::setTabOrder(descriptionEdit, categoriesButton);
   QWidget::setTabOrder(categoriesButton, mSecrecyCombo);
+  QWidget::setTabOrder(mSecrecyCombo, alarmButton);
+  
   summaryEdit->setFocus();
+
 }
 
 KOEditorGeneralTodo::~KOEditorGeneralTodo()
@@ -154,6 +159,49 @@ void KOEditorGeneralTodo::initMisc()
   categoriesLabel->setFrameStyle(QFrame::Panel|QFrame::Sunken);
 }
 
+void KOEditorGeneralTodo::initAlarmBox()
+{
+  QPixmap pixmap;
+
+  alarmBell = new QLabel(this);
+  alarmBell->setPixmap(SmallIcon("bell"));
+
+  alarmButton = new QCheckBox( this, "CheckBox_2" );
+  alarmButton->setText( i18n("Reminder:") );
+
+  alarmTimeEdit = new KRestrictedLine( this, "alarmTimeEdit",
+				       "1234567890");
+  alarmTimeEdit->setText("");
+
+  alarmIncrCombo = new QComboBox(false, this);
+  alarmIncrCombo->insertItem(i18n("minute(s)"));
+  alarmIncrCombo->insertItem(i18n("hour(s)"));
+  alarmIncrCombo->insertItem(i18n("day(s)"));
+  alarmIncrCombo->setMinimumHeight(20);
+
+  alarmSoundButton = new QPushButton( this, "PushButton_4" );
+  pixmap = SmallIcon("playsound");
+  //  alarmSoundButton->setText( i18n("WAV") );
+  alarmSoundButton->setPixmap(pixmap);
+  alarmSoundButton->setToggleButton(true);
+  QToolTip::add(alarmSoundButton, i18n("No sound set"));
+
+  alarmProgramButton = new QPushButton( this, "PushButton_5" );
+  pixmap = SmallIcon("runprog");
+  //  alarmProgramButton->setText( i18n("PROG") );
+  alarmProgramButton->setPixmap(pixmap);
+  alarmProgramButton->setToggleButton(true);
+  QToolTip::add(alarmProgramButton, i18n("No program set"));
+
+  connect(alarmButton, SIGNAL(toggled(bool)),
+	  this, SLOT(alarmStuffEnable(bool)));
+
+  connect(alarmSoundButton, SIGNAL(clicked()),
+	  this, SLOT(pickAlarmSound()));
+  connect(alarmProgramButton, SIGNAL(clicked()),
+	  this, SLOT(pickAlarmProgram()));
+}
+
 void KOEditorGeneralTodo::initLayout()
 {
   QBoxLayout *layoutTop = new QVBoxLayout(this);
@@ -175,15 +223,82 @@ void KOEditorGeneralTodo::initLayout()
   layoutCompletion->addStretch();
   layoutCompletion->addWidget(priorityLabel);
   layoutCompletion->addWidget(priorityCombo);
-  
-  layoutTop->addWidget(descriptionEdit);
-  
+
+  QBoxLayout *layoutAlarmLine = new QHBoxLayout;
+  layoutTop->addLayout(layoutAlarmLine);
+
+  QBoxLayout *layoutAlarmBox = new QHBoxLayout;
+  layoutAlarmLine->addLayout(layoutAlarmBox);
+  layoutAlarmBox->addWidget(alarmBell);
+  layoutAlarmBox->addWidget(alarmButton);
+  layoutAlarmBox->addWidget(alarmTimeEdit);
+  layoutAlarmBox->addWidget(alarmIncrCombo);
+  layoutAlarmBox->addWidget(alarmSoundButton);
+  layoutAlarmBox->addWidget(alarmProgramButton);
+
+  layoutAlarmLine->addStretch(1);
+
+  layoutTop->addWidget(descriptionEdit,1);
+
   QBoxLayout *layoutCategories = new QHBoxLayout;
   layoutTop->addLayout(layoutCategories);
   layoutCategories->addWidget(categoriesButton);
   layoutCategories->addWidget(categoriesLabel,1);
   layoutCategories->addWidget(mSecrecyLabel);
   layoutCategories->addWidget(mSecrecyCombo);
+}
+
+void KOEditorGeneralTodo::pickAlarmSound()
+{
+  QString prefix = KGlobal::dirs()->findResourceDir("appdata", "sounds/alert.wav"); 
+  if (!alarmSoundButton->isOn()) {
+    alarmSound = "";
+    QToolTip::remove(alarmSoundButton);
+    QToolTip::add(alarmSoundButton, i18n("No sound set"));
+  } else {
+    QString fileName(KFileDialog::getOpenFileName(prefix,
+						  i18n("*.wav|Wav Files"), this));
+    if (!fileName.isEmpty()) {
+      alarmSound = fileName;
+      QToolTip::remove(alarmSoundButton);
+      QString dispStr = i18n("Playing '%1'").arg(fileName);
+      QToolTip::add(alarmSoundButton, dispStr);
+    }
+  }
+  if (alarmSound.isEmpty())
+    alarmSoundButton->setOn(false);
+}
+
+void KOEditorGeneralTodo::pickAlarmProgram()
+{
+  if (!alarmProgramButton->isOn()) {
+    alarmProgram = "";
+    QToolTip::remove(alarmProgramButton);
+    QToolTip::add(alarmProgramButton, i18n("No program set"));
+  } else {
+    QString fileName(KFileDialog::getOpenFileName(QString::null, QString::null, this));
+    if (!fileName.isEmpty()) {
+      alarmProgram = fileName;
+      QToolTip::remove(alarmProgramButton);
+      QString dispStr = i18n("Running '%1'").arg(fileName);
+      QToolTip::add(alarmProgramButton, dispStr);
+    }
+  }
+  if (alarmProgram.isEmpty())
+    alarmProgramButton->setOn(false);
+}
+
+void KOEditorGeneralTodo::alarmStuffEnable(bool enable)
+{
+  alarmTimeEdit->setEnabled(enable);
+  alarmSoundButton->setEnabled(enable);
+  alarmProgramButton->setEnabled(enable);
+  alarmIncrCombo->setEnabled(enable);
+}
+
+void KOEditorGeneralTodo::alarmStuffDisable(bool disable)
+{
+  alarmStuffEnable(!disable);
 }
 
 void KOEditorGeneralTodo::setCategories(const QString &str)
@@ -197,6 +312,7 @@ void KOEditorGeneralTodo::setDefaults(QDateTime due,bool allDay)
 
   noTimeButton->setChecked(allDay);
   timeStuffDisable(allDay);
+  alarmStuffDisable(allDay);
   
   mNoDueCheck->setChecked(true);
   dueStuffDisable(true);
@@ -213,18 +329,36 @@ void KOEditorGeneralTodo::setDefaults(QDateTime due,bool allDay)
   mSecrecyCombo->setCurrentItem(Incidence::SecrecyPublic);
 
   priorityCombo->setCurrentItem(2);
-
+  
   completedCombo->setCurrentItem(0);
+
+  // TODO: Implement a KPrefsComboItem to solve this in a clean way.
+  int alarmTime;
+  int a[] = { 1,5,10,15,30 };
+  int index = KOPrefs::instance()->mAlarmTime;
+  if (index < 0 || index > 4) {
+    alarmTime = 0;
+  } else {
+    alarmTime = a[index];
+  }
+  alarmTimeEdit->setText(QString::number(alarmTime));
+  alarmStuffEnable(false);
+
+  mSecrecyCombo->setCurrentItem(Incidence::SecrecyPublic);
 }
 
 void KOEditorGeneralTodo::readTodo(Todo *todo)
 {
+  QDateTime tmpDT, dueDT;
+  int i;
+  
   summaryEdit->setText(todo->summary());
   descriptionEdit->setText(todo->description());
   // organizer information
   ownerLabel->setText(i18n("Owner: ") + todo->organizer());
 
   if (todo->hasDueDate()) {
+    dueDT = todo->dtDue();
     mDueDateEdit->setDate(todo->dtDue().date());
     mDueTimeEdit->setTime(todo->dtDue().time());
     mNoDueCheck->setChecked(false);
@@ -257,10 +391,52 @@ void KOEditorGeneralTodo::readTodo(Todo *todo)
   setCategories(todo->categoriesStr());
 
   mSecrecyCombo->setCurrentItem(todo->secrecy());
+
+  // set up alarm stuff  
+  alarmButton->setChecked(todo->alarm()->enabled());
+  if (alarmButton->isChecked()) {
+    alarmStuffEnable(true);
+    tmpDT = todo->alarm()->time();
+    if (tmpDT.isValid()) {
+      i = tmpDT.secsTo(dueDT);
+      i = i / 60; // make minutes
+      if (i % 60 == 0) { // divides evenly into hours?
+	i = i / 60;
+	alarmIncrCombo->setCurrentItem(1);
+      }
+      if (i % 24 == 0) { // divides evenly into days?
+	i = i / 24;
+	alarmIncrCombo->setCurrentItem(2);
+      }
+    } else {
+      i = 5;
+    }
+    alarmTimeEdit->setText(QString::number(i));
+    
+    if (!todo->alarm()->programFile().isEmpty()) {
+      alarmProgram = todo->alarm()->programFile();
+      alarmProgramButton->setOn(true);
+      QString dispStr = i18n("Running '%1'").arg(alarmProgram);
+      QToolTip::add(alarmProgramButton, dispStr);
+    }
+    if (!todo->alarm()->audioFile().isEmpty()) {
+      alarmSound = todo->alarm()->audioFile();
+      alarmSoundButton->setOn(true);
+      QString dispStr = i18n("Playing '%1'").arg(alarmSound);
+      QToolTip::add(alarmSoundButton, dispStr);
+    }
+  }
+  else {
+    alarmStuffEnable(false);
+  }
 }
 
 void KOEditorGeneralTodo::writeTodo(Todo *todo)
 {
+  // temp. until something better happens.
+  QString tmpStr;
+  int j;
+  
   todo->setSummary(summaryEdit->text());
   todo->setDescription(descriptionEdit->text());
   todo->setCategories(categoriesLabel->text());
@@ -281,7 +457,7 @@ void KOEditorGeneralTodo::writeTodo(Todo *todo)
     tmpDT.setDate(tmpDate);
     tmpDT.setTime(tmpTime);
     todo->setDtDue(tmpDT);
-
+    
     tmpDate = mStartDateEdit->getDate();
     tmpTime.setHMS(0,0,0);
     tmpDT.setDate(tmpDate);
@@ -313,6 +489,38 @@ void KOEditorGeneralTodo::writeTodo(Todo *todo)
   if (completedCombo->currentItem() == 5 && mCompleted.isValid()) {
     todo->setCompleted(mCompleted);
   }
+
+  // alarm stuff
+  if (alarmButton->isChecked()) {
+    todo->alarm()->setEnabled(true);
+    tmpStr = alarmTimeEdit->text();
+    j = tmpStr.toInt() * -60;
+    if (alarmIncrCombo->currentItem() == 1)
+      j = j * 60;
+    else if (alarmIncrCombo->currentItem() == 2)
+      j = j * (60 * 24);
+
+    tmpDT = todo->dtDue();
+    tmpDT = tmpDT.addSecs(j);
+    todo->alarm()->setTime(tmpDT);
+    if (!alarmProgram.isEmpty() && alarmProgramButton->isOn())
+      todo->alarm()->setProgramFile(alarmProgram);
+    else
+      todo->alarm()->setProgramFile("");
+    if (!alarmSound.isEmpty() && alarmSoundButton->isOn())
+      todo->alarm()->setAudioFile(alarmSound);
+    else
+      todo->alarm()->setAudioFile("");
+  } else {
+    todo->alarm()->setEnabled(false);
+    todo->alarm()->setProgramFile("");
+    todo->alarm()->setAudioFile("");
+  }
+
+  // note, that if on the details tab the "Transparency" option is implemented,
+  // we will have to change this to suit.
+  //todo->setTransparency(freeTimeCombo->currentItem());
+  
 }
 
 void KOEditorGeneralTodo::dueStuffDisable(bool disable)

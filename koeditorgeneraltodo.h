@@ -50,14 +50,20 @@ class KOEditorGeneralTodo : public QWidget
     void startStuffDisable(bool disable);
     void completedChanged(int);
 
+    void alarmStuffEnable(bool enable);
+    void alarmStuffDisable(bool disable);
+    void pickAlarmSound();
+    void pickAlarmProgram();
+
   protected:
     void initMisc();
     void initLayout();
     void initTimeBox();
-    
+    void initAlarmBox();
+  
     void setCompletedDate();
 
-  private:
+ private:
     QGroupBox               *timeGroupBox;
     QLabel                  *summaryLabel;
     QLineEdit               *summaryEdit;
@@ -77,6 +83,13 @@ class KOEditorGeneralTodo : public QWidget
 
     QPushButton             *categoriesButton;
     QLabel                  *categoriesLabel;
+
+    QLabel                  *alarmBell;
+    QCheckBox               *alarmButton;
+    KRestrictedLine         *alarmTimeEdit;
+    QPushButton             *alarmSoundButton;
+    QPushButton             *alarmProgramButton;
+    QComboBox               *alarmIncrCombo;
 
     // variables for the todo stuff
     QCheckBox               *mNoDueCheck;

@@ -8,6 +8,8 @@
 #include <kdialogbase.h>
 
 #include <event.h>
+#include <todo.h>
+#include <incidence.h>
 
 using namespace KCal;
 
@@ -22,9 +24,17 @@ class AlarmDialog : public KDialogBase {
 
     void appendEvent(Event *event);
 
-    void eventNotification();
+  //void eventNotification();
 
     void clearEvents();
+
+    void incidenceNotification();
+  
+    void appendTodo(Todo *todo);
+
+  //void todoNotification();
+
+    void clearTodos();
 
   public slots:
     void slotOk();
@@ -39,6 +49,11 @@ class AlarmDialog : public KDialogBase {
     QList<Event> mEvents;
 
     QSpinBox *mSuspendSpin;
+
+    QList<Todo> mTodos;
+
+    QList<Incidence> mIncidence;
+  
 };
 
 #endif

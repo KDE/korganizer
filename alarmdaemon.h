@@ -10,6 +10,7 @@
 
 #include "calendar.h"
 #include "event.h"
+#include "todo.h"
 
 class AlarmDialog;
 
@@ -55,12 +56,15 @@ class AlarmDaemon : public QObject, DCOPObject {
 
   public slots:
     void showAlarms(QList<Event> &alarmEvents);
+    void showTodoAlarms(QList<Todo> &alarmTodos);
     void reloadCal();
     void suspend(int duration);
     void showDialog();
-
+    
+  
   signals:
     void alarmSignal(QList<Event> &);
+    void alarmTSignal(QList<Todo> &);
   
   private:
     AlarmDockWindow *mDocker;

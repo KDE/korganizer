@@ -58,11 +58,10 @@ AlarmDockWindow::~AlarmDockWindow()
 void AlarmDockWindow::mousePressEvent(QMouseEvent *e)
 {
   if (e->button() == LeftButton) {
-    // start up a korganizer.
-    KURL::List noargs;
-    KRun::run("korganizer", noargs);
-  } else
+    kapp->startServiceByDesktopName("korganizer", QString::null);
+  } else {
     KSystemTray::mousePressEvent(e);
+  }
 }
 
 void AlarmDockWindow::closeEvent(QCloseEvent *)
@@ -102,6 +101,8 @@ AlarmDaemon::AlarmDaemon(QObject *parent, const char *name)
   connect(mAlarmTimer,SIGNAL(timeout()),mCalendar,SLOT(checkAlarms()));
   connect(mCalendar, SIGNAL(alarmSignal(QList<Event> &)),
           SLOT(showAlarms(QList<Event> &)));
+  connect(mCalendar, SIGNAL(alarmSignal(QList<Todo> &)),
+          SLOT(showTodoAlarms(QList<Todo> &)));
 }
 
 AlarmDaemon::~AlarmDaemon()
@@ -160,6 +161,20 @@ void AlarmDaemon::showAlarms(QList<Event> &alarmEvents)
   for (anEvent = alarmEvents.first(); anEvent; anEvent = alarmEvents.next()) {
     mAlarmDialog->appendEvent(anEvent);
   }
+  
+  showDialog();
+}
+
+void AlarmDaemon::showTodoAlarms(QList<Todo> &alarmTodos)
+{
+  // leave immediately if alarms are off
+  if (!mDocker->alarmsOn()) return;
+
+  Todo *aTodo;
+
+  for (aTodo = alarmTodos.first(); aTodo; aTodo = alarmTodos.next()) {
+    mAlarmDialog->appendTodo(aTodo);
+  }
 
   showDialog();
 }
@@ -179,7 +194,7 @@ bool AlarmDaemon::process(const QCString &fun, const QByteArray &,
 
 void AlarmDaemon::suspend(int duration)
 {
-//  kdDebug() << "AlarmDaemon::suspend() " << duration << " minutes" << endl;
+  //kdDebug() << "AlarmDaemon::suspend() " << duration << " minutes" << endl;
 
   connect(mSuspendTimer,SIGNAL(timeout()),SLOT(showDialog()));
 
@@ -188,7 +203,8 @@ void AlarmDaemon::suspend(int duration)
 
 void AlarmDaemon::showDialog()
 {
+  kdDebug() << "Entered alarmDaemon::showDialog" << endl;
   KNotifyClient::beep();
   mAlarmDialog->show();
-  mAlarmDialog->eventNotification();
+  mAlarmDialog->incidenceNotification();
 }

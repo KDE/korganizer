@@ -8,6 +8,7 @@
 #include <klocale.h>
 #include <kprocess.h>
 #include <kaudioplayer.h>
+#include <kdebug.h>
 
 #include "event.h"
 
@@ -57,6 +58,7 @@ void AlarmDialog::clearEvents()
 void AlarmDialog::slotOk()
 {
   clearEvents();
+  clearTodos();
   accept();
 }
 
@@ -66,7 +68,25 @@ void AlarmDialog::slotUser1()
   accept();
 }
 
-void AlarmDialog::eventNotification()
+void AlarmDialog::incidenceNotification()
+{
+  Incidence *anIncidence;
+
+  for (anIncidence = mIncidence.first(); anIncidence;
+      anIncidence = mIncidence.next()) {
+    if (!anIncidence->alarm()->programFile().isEmpty()) {
+      KProcess proc;
+      proc << anIncidence->alarm()->programFile().latin1();
+      proc.start(KProcess::DontCare);
+    }
+
+    if (!anIncidence->alarm()->audioFile().isEmpty()) {
+      KAudioPlayer::play(anIncidence->alarm()->audioFile().latin1());
+    }
+  }
+}
+
+/*void AlarmDialog::eventNotification()
 {
   Event *anEvent;
 
@@ -82,4 +102,34 @@ void AlarmDialog::eventNotification()
       KAudioPlayer::play(anEvent->alarm()->audioFile().latin1());
     }
   }
+}*/
+
+void AlarmDialog::appendTodo(Todo *todo)
+{
+  mEventViewer->appendTodo(todo);
+  mTodos.append(todo);
 }
+
+void AlarmDialog::clearTodos()
+{
+  mEventViewer->clearEvents();
+  mTodos.clear();
+}
+
+/*void AlarmDialog::todoNotification()
+{
+  Todo *aTodo;
+
+  for (aTodo = mTodos.first(); aTodo;
+      aTodo = mTodos.next()) {
+    if (!aTodo->alarm()->programFile().isEmpty()) {
+      KProcess proc;
+      proc << aTodo->alarm()->programFile().latin1();
+      proc.start(KProcess::DontCare);
+    }
+
+    if (!aTodo->alarm()->audioFile().isEmpty()) {
+      KAudioPlayer::play(aTodo->alarm()->audioFile().latin1());
+    }
+  }
+}*/
