@@ -23,6 +23,11 @@ class CalendarViewBase : public QWidget
   
     virtual KCal::Calendar *calendar() = 0;
 
+    virtual QDate startDate() = 0;
+    virtual QDate endDate() = 0;
+
+    virtual Incidence *currentSelection() = 0;
+
     virtual void addView(KOrg::BaseView *) = 0;
 
     /** changes the view to be the currently selected view */
