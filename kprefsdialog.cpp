@@ -108,7 +108,7 @@ QPushButton *KPrefsWidColor::button()
 
 void KPrefsWidColor::selectColor()
 {
-  QColor myColor;
+  QColor myColor(mPreview->backgroundColor());
   int result = KColorDialog::getColor(myColor);
   if (result == KColorDialog::Accepted) {
     mPreview->setBackgroundColor(myColor);

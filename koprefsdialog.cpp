@@ -611,7 +611,7 @@ void KOPrefsDialog::setupColorsTab()
 
 void KOPrefsDialog::selectCategoryColor()
 {
-  QColor myColor;
+  QColor myColor(mCategoryColor->backgroundColor());
   int result = KColorDialog::getColor( myColor );
   if ( result == KColorDialog::Accepted ) {
     mCategoryColor->setBackgroundColor(myColor);
