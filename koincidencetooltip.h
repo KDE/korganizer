@@ -58,7 +58,7 @@ class ToolTipVisitor : public Incidence::Visitor
     {
       mTipText = tipText;
       mRichText = richText;
-      return incidence->accept( *this );
+      return incidence ? incidence->accept( *this ) : false;
     }
 
   protected:
