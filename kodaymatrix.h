@@ -200,12 +200,13 @@ class KODayMatrix: public QFrame
     /** emitted if the user has dropped an incidence (event or todo) inside the matrix
      *
      *  @param incidence the dropped calendar incidence
+     *  @param dt QDate that has been selected
      */
     void incidenceDropped( Incidence *incidence, const QDate &dt );
     /** emitted if the user has dropped an event inside the matrix and chose to move it instead of copy
      *
      *  @param oldincidence the new calendar incidence
-     *  @param newincidence the incidence that was moved
+     *  @param dt QDate that has been selected
      */
     void incidenceDroppedMove( Incidence *oldincidence, const QDate &dt );
 
