@@ -57,6 +57,7 @@ class ExportWebDialog : public KDialogBase
   
     // Widgets containing export parameters
     KDateEdit *mFromDate,*mToDate;
+    QCheckBox *mCbMonth;
     QCheckBox *mCbEvent;
     QCheckBox *mCbTodo;
     QCheckBox *mCbDueDates;

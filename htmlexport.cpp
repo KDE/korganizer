@@ -45,16 +45,25 @@ bool HtmlExport::save(QFile *file)
   ts << "    td.subhead { text-align:center; background-color:#ccf }\n";
   ts << "    td.datehead { text-align:center; background-color:#ccf }\n";
   ts << "    td.space { background-color:white }\n";
+  ts << "    td.date { text-align:left }\n";
+  ts << "    td.dateholiday { text-align:left; color:red }\n";
   ts <<   "</style>\n";
   ts << "</HEAD><BODY>\n";
 
   // TO DO: Write KOrganizer header
   // (Heading, Calendar-Owner, Calendar-Date, ...)
 
+  if (eventsEnabled() || monthViewEnabled()) {
+    ts << "<H1>" << i18n("KOrganizer Calendar") << "</H1>\n";
+  }
+
+  // Write Month View
+  if (monthViewEnabled()) {
+    createHtmlMonthView(&ts);
+  }
+
   // Write Event List
   if (eventsEnabled()) {
-    ts << "<H1>" << i18n("KOrganizer Calendar") << "</H1>\n";
-
     // Write HTML page content
     createHtmlEventList(&ts);
   }
@@ -75,6 +84,70 @@ bool HtmlExport::save(QFile *file)
   ts << "</BODY></HTML>\n";
 
   return true;
+}
+
+void HtmlExport::createHtmlMonthView(QTextStream *ts)
+{
+  QDate start = fromDate();
+  start.setYMD(start.year(),start.month(),1);  // go back to first day in month
+  if (KGlobal::locale()->weekStartsMonday()) {
+    start = start.addDays(1 - start.dayOfWeek());
+  } else {
+    if (start.dayOfWeek() != 7) {
+      start = start.addDays(-start.dayOfWeek());
+    }
+  }
+
+  // Write header
+  *ts << "<h2>" << (i18n("month_year","%1 %2").arg(KGlobal::locale()->monthName(fromDate().month()))
+      .arg(fromDate().year())) << "</h2>\n";
+  *ts << "<table border=1>\n";
+
+  // Write table header
+  *ts << "  <tr>";
+  for(int i=0; i<7; ++i) {
+    *ts << "<th>" << KGlobal::locale()->weekDayName(start.addDays(i).dayOfWeek()) << "</th>";
+  }
+  *ts << "</tr>\n";
+  
+  // Write days
+  while ((start.month() <= fromDate().month())) {
+    *ts << "<tr>\n";
+    for(int i=0;i<7;++i) {
+      *ts << "<td valign=top><table border=0>\n";
+
+      QString holiday = mCalendar->getHolidayForDate(start);
+
+      *ts << "<tr><td ";
+      if (!holiday.isEmpty() || start.dayOfWeek() == 7) *ts << "class=dateholiday";
+      else *ts << "class=date";
+      *ts << ">" << QString::number(start.day());
+
+      if (!holiday.isEmpty()) {
+        *ts << " <em>" << holiday << "</em>";
+      }
+      
+      *ts << "</td></tr>\n<tr><td valign=top>";
+      
+      QList<Event> events = mCalendar->getEventsForDate(start,true);
+      if (events.count()) {
+        *ts << "<table>";
+        Event *ev;
+        for(ev = events.first(); ev; ev = events.next()) {
+          createHtmlEvent(ts,ev,start,false);
+        }
+        *ts << "</table>";
+      } else {
+        *ts << "&nbsp;";
+      }
+
+      *ts << "</td></tr></table>\n";
+      start = start.addDays(1);
+    }
+    *ts << "</tr>\n";
+  }
+  
+  *ts << "</table>\n";
 }
 
 void HtmlExport::createHtmlEventList (QTextStream *ts)
@@ -116,32 +189,32 @@ void HtmlExport::createHtmlEventList (QTextStream *ts)
 }
 
 void HtmlExport::createHtmlEvent (QTextStream *ts, Event *event,
-                                       QDate date)
+                                       QDate date,bool withDescription)
 {
   kdDebug() << "HtmlExport::createHtmlEvent()" << endl;
   *ts << "  <TR>\n";
 
-  *ts << "    <TD CLASS=sum>\n";
-  *ts << "      <B>" << event->summary() << "</B>\n";
-  if (!event->description().isEmpty()) {
-    *ts << "      <P>" << event->description() << "</P>\n";
-  }
-  *ts << "    </TD>\n";
-
   if (!event->doesFloat()) {
     if (event->dtStart().date() == date) {
-      *ts << "    <TD>" << event->dtStartTimeStr() << "</TD>\n";
+      *ts << "    <TD valign=top>" << event->dtStartTimeStr() << "</TD>\n";
     } else {
       *ts << "    <TD>&nbsp;</TD>\n";
     }
-    if (event->dtEnd().date() == date) {
-      *ts << "    <TD>" << event->dtEndTimeStr() << "</TD>\n";
+    if ((event->dtEnd().date() == date) && (event->dtStart() != event->dtEnd())) {
+      *ts << "    <TD valign=top>" << event->dtEndTimeStr() << "</TD>\n";
     } else {
       *ts << "    <TD>&nbsp;</TD>\n";
     }
   } else {
     *ts << "    <TD>&nbsp;</TD><TD>&nbsp;</TD>\n";
   }
+
+  *ts << "    <TD CLASS=sum>\n";
+  *ts << "      <B>" << event->summary() << "</B>\n";
+  if (withDescription && !event->description().isEmpty()) {
+    *ts << "      <P>" << event->description() << "</P>\n";
+  }
+  *ts << "    </TD>\n";
   
   if (categoriesEventEnabled()) {
     *ts << "  <TD>\n";

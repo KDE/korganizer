@@ -79,8 +79,7 @@ void ExportWebDialog::setupGeneralPage()
   // shortly.
 //  new QRadioButton(i18n("Day"), typeGroup);
 //  new QRadioButton(i18n("Week"), typeGroup);
-//  new QRadioButton(i18n("Month"), typeGroup);
-
+  mCbMonth = new QCheckBox(i18n("Month"), typeGroup);
   mCbEvent = new QCheckBox(i18n("Event List"), typeGroup);
   mCbTodo = new QCheckBox(i18n("To-Do List"), typeGroup);
   mCbTodo->setChecked(true);
@@ -163,6 +162,7 @@ void ExportWebDialog::browseOutputFile()
 
 void ExportWebDialog::exportWebPage()
 {
+  mExport->setMonthViewEnabled(mCbMonth->isChecked());
   mExport->setEventsEnabled(mCbEvent->isChecked());
   mExport->setTodosEnabled(mCbTodo->isChecked());
   mExport->setCategoriesEventEnabled(mCbCategoriesEvent->isChecked());

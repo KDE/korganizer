@@ -20,7 +20,9 @@ class Event;
 class HtmlExport {
   public:
     /** Create new HTML exporter for calendar */
-    HtmlExport(CalObject *calendar) : mCalendar(calendar),mEventsEnabled(false),mTodosEnabled(true),
+    HtmlExport(CalObject *calendar) :
+        mCalendar(calendar),
+        mMonthViewEnabled(true),mEventsEnabled(false),mTodosEnabled(true),
         mCategoriesTodoEnabled(false),mAttendeesTodoEnabled(false),
         mCategoriesEventEnabled(false),mAttendeesEventEnabled(false),
         mDueDateEnabled(false) {}
@@ -35,6 +37,9 @@ class HtmlExport {
       writes out calendar to file. The QFile has to already be opened for writing.
     */
     bool save(QFile *);
+
+    void setMonthViewEnabled(bool enable=true) { mMonthViewEnabled = enable; }
+    bool monthViewEnabled() { return mMonthViewEnabled; }
 
     void setEventsEnabled(bool enable=true) { mEventsEnabled = enable; }
     bool eventsEnabled() { return mEventsEnabled; }
@@ -62,11 +67,13 @@ class HtmlExport {
     QDate toDate() { return mToDate; }
   
   protected:
-  
+
+    void createHtmlMonthView (QTextStream *ts);  
     void createHtmlEventList (QTextStream *ts);
     void createHtmlTodoList (QTextStream *ts);
+
     void createHtmlTodo (QTextStream *ts,Todo *todo);
-    void createHtmlEvent (QTextStream *ts,Event *event,QDate date);
+    void createHtmlEvent (QTextStream *ts,Event *event,QDate date, bool withDescription = true);
 
     void formatHtmlCategories (QTextStream *ts,Incidence *event);
     void formatHtmlAttendees (QTextStream *ts,Incidence *event);
@@ -74,6 +81,7 @@ class HtmlExport {
   private:
     CalObject *mCalendar;
 
+    bool mMonthViewEnabled;
     bool mEventsEnabled;
     bool mTodosEnabled;
     bool mCategoriesTodoEnabled;
