@@ -2065,15 +2065,6 @@ void CalendarView::recurTodo( Todo *todo )
 
       do {
         todo->setDtDue( r->getNextDateTime( todo->dtDue() ) );
-        // TODO: This works around a bug in libkcal, which returns an invalid
-        //       date if the recurrence frequency is >1.
-        //       It makes KOrganizer hang in this loop. Remove this check
-        //       after the bug has been fixed!
-        if ( !todo->dtDue().isValid() ) {
-          kdDebug(5850) << "Unable to find next recursion date." << endl;
-          todo->setDtDue( QDateTime::currentDateTime() );
-          return;
-        }
       } while ( !todo->recursAt( todo->dtDue() ) ||
                  todo->dtDue() <= QDateTime::currentDateTime() );
 
