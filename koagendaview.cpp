@@ -141,7 +141,7 @@ void TimeLabels::drawContents(QPainter *p,int cx, int cy, int cw, int ch)
     // center and draw the time label
     QRect r( cx, (int)y+3, visWidth-4, (int)(y+cellHeight-3) );
     p->drawText ( r, Qt::AlignHCenter | Qt::AlignTop | Qt::SingleLine, fullTime );
-    
+
     // increment indices
     y += cellHeight;
     cell++;
@@ -474,7 +474,7 @@ KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name) :
                         SLOT(newTimeSpanSelected(const QPoint &, const QPoint &)));
   connect(mAllDayAgenda,SIGNAL(newTimeSpanSignal(const QPoint &, const QPoint &)),
                         SLOT(newTimeSpanSelectedAllDay(const QPoint &, const QPoint &)));
-  
+
   // event indicator update
   connect(mAgenda,SIGNAL(lowerYChanged(int)),
           SLOT(updateEventIndicatorTop(int)));
@@ -502,10 +502,10 @@ void KOAgendaView::connectAgenda( KOAgenda *agenda, QPopupMenu *popup,
            SLOT( showNewEventPopup() ) );
 
   agenda->setCalendar( calendar() );
-  
+
   // Create/Show/Edit/Delete Event
   connect( agenda, SIGNAL( newEventSignal() ), SIGNAL( newEventSignal() ) );
-  
+
   connect( agenda, SIGNAL( newStartSelectSignal() ),
            otherAgenda, SLOT( clearSelection() ) );
 
@@ -535,7 +535,7 @@ void KOAgendaView::connectAgenda( KOAgenda *agenda, QPopupMenu *popup,
   // rescheduling of todos by d'n'd
   connect( agenda, SIGNAL( droppedToDo( Todo *, const QPoint &, bool ) ),
            SLOT( slotTodoDropped( Todo *, const QPoint &, bool ) ) );
-} 
+}
 
 void KOAgendaView::createDayLabels()
 {
@@ -782,7 +782,7 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
 
 //    emit incidenceChanged( oldIncidence, incidence );
   } else {
-    /*updateView()*/;
+    updateView();
   }
 
   delete i;
@@ -866,7 +866,7 @@ void KOAgendaView::changeIncidenceDisplayAdded( Incidence *incidence )
   // TODO: the agenda view also displays Todos, so check for them, too!!!
   Event *event = dynamic_cast<Event *>(incidence);
   if (!event) return;
-  
+
   if ( !calendar()->filter()->filterIncidence( event ) ) return;
 
   if ( !event->doesRecur() ) {
@@ -1191,18 +1191,18 @@ void KOAgendaView::setHolidayMasks()
   bool showDay;
   int mask(~(KOPrefs::instance()->mWorkWeekMask));
   QDate date;
-  
+
   for(i=0;i<mSelectedDates.count();++i) {
     QDate date = mSelectedDates[i];
     showDay = (mask & (1<<(date.dayOfWeek()-1)) );
-    
+
 #ifndef KORG_NOPLUGINS
     showDay = showDay || ( KOPrefs::instance()->mExcludeHolidays &&
                           !KOCore::self()->holiday(date).isEmpty() );
 #endif
     mHolidayMask[i] = showDay;
   }
-  // Store the information about the day before the visible area (needed for 
+  // Store the information about the day before the visible area (needed for
   // overnight working hours) in the last bit of the mask:
   date = mSelectedDates[0].addDays(-1);
   showDay = (mask & (1<<(date.dayOfWeek()-1)) );
