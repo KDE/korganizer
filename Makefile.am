@@ -70,6 +70,8 @@ libkorganizer_la_SOURCES =  outgoingdialog_base.ui \
 	actionmanager.cpp resourceview.cpp \
         navigatorbar.cpp kogroupware.cpp \
 	kogroupwareincomingdialog_base.ui kogroupwareincomingdialog.cpp
+libkorganizer_la_COMPILE_FIRST = ../libkdepim/categoryselectdialog_base.h
+korganizer_part.lo: ../kalarmd/alarmdaemoniface_stub.h
 
 METASOURCES = AUTO
 
