@@ -97,7 +97,6 @@ class KSummaries: public KNoScrollListBox {
   QDate getDate() { return(myDate); }
   void setDate(QDate);
   void calUpdated();
-  void setAmPm(bool ampm) { timeAmPm = ampm; };
   KOEvent *getSelected() { return currIdxs->find(itemIndex); };
 
   QSize minimumSizeHint() const;
@@ -114,9 +113,7 @@ class KSummaries: public KNoScrollListBox {
    QDate               myDate;
    int                 idx, itemIndex;
    CalObject          *myCal;
-   QList<KOEvent>    events;
    QIntDict<KOEvent> *currIdxs; 
-   bool                timeAmPm;
 };
 
 class KOMonthView: public KOBaseView {

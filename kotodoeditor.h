@@ -7,13 +7,8 @@
 #include <qdatetime.h>
 
 #include "calobject.h"
-#include "koeditorwidgets.h"
-//#include "eventwingeneral.h"
-//#include "eventwindetails.h"
-//#include "eventwinrecur.h"
-//#include "catdlg.h"
-//#include "kptbutton.h"
-//#include "eventwin.h"
+#include "koeditorgeneraltodo.h"
+#include "koeditordetails.h"
 
 
 /**

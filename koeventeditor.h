@@ -9,7 +9,9 @@
 #include <qdatetime.h>
 
 #include "calobject.h"
-#include "koeditorwidgets.h"
+#include "koeditorgeneralevent.h"
+#include "koeditordetails.h"
+#include "koeditorrecurrence.h"
 
 class CategoryDialog;
 class QWidgetStack;

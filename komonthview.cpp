@@ -84,6 +84,8 @@ EventListBoxItem::EventListBoxItem(const char *s)
   setText(s); 
   alarmPxmp = UserIcon("bell");
   recurPxmp = UserIcon("recur");
+  recur = false;
+  alarm = false;
 }
 
 void EventListBoxItem::paint(QPainter *p)
@@ -152,67 +154,64 @@ KSummaries::KSummaries(QWidget    *parent,
 
 void KSummaries::calUpdated()
 {
-  EventListBoxItem *elitem;
-  QString sumstring, ampm, tmpstring;
-  KOEvent *anEvent;
-  QTime t1;
-  int h;
-  unsigned int i;
-
   setAutoUpdate(FALSE);
   setBackgroundMode(PaletteBase);
   clear();
   currIdxs->clear();
+
+  QList<KOEvent> events;
+
   // 2nd arg is TRUE because we want the events to be sorted.
   events = myCal->getEventsForDate(myDate, TRUE);
 
   // add new listitems if neccessary.
-  for(i = 0, anEvent = events.first();
-      anEvent != 0; i++, anEvent = events.next()) {
-    t1 = anEvent->getDtStart().time();
-    h = t1.hour();
-    if(h == 0) {
-      h = 12;
-      ampm = "a";
-    } else if(h > 11) {
-      ampm = "p";
-      if(h != 12) {
-        h -= 12;
-      }
-    } else {
-      ampm = "a";
-    }
+  EventListBoxItem *elitem;
+  QString sumString;
+  unsigned int i = 0;
+  KOEvent *anEvent;
+  for(anEvent = events.first(); anEvent; anEvent = events.next()) {
     if (anEvent->isMultiDay()) {
       if (myDate == anEvent->getDtStart().date()) {
-        sumstring.sprintf("(---- %s", anEvent->getSummary().data());
+        sumString = "(---- " + anEvent->getSummary();
       } else if (myDate == anEvent->getDtEnd().date()) {
-        sumstring.sprintf("%s ----)", anEvent->getSummary().data());
+        sumString = anEvent->getSummary() + " ----)";
       } else if (!(anEvent->getDtStart().date().daysTo(myDate) % 7)) {
-        sumstring.sprintf("---- %s ----", anEvent->getSummary().data());
+        sumString = "---- " + anEvent->getSummary() + "----";
       } else {
-        sumstring.sprintf("----------------");
+        sumString = "----------------";
       }
     } else {
       if (anEvent->doesFloat())
-        sumstring = anEvent->getSummary();
+        sumString = anEvent->getSummary();
       else {
-        if (timeAmPm) {
-          sumstring.sprintf("%2d:%02d%s %s", h, t1.minute(), ampm.data(),
-                            anEvent->getSummary().data());
-        } else {
-          sumstring.sprintf("%2d:%02d %s", t1.hour(), t1.minute(),
-                            anEvent->getSummary().data());
-        }
+        sumString = KGlobal::locale()->formatTime(anEvent->getDtStart().time());
+        sumString += anEvent->getSummary();
       }
     }
 
-    //    sumstring.detach();
-    elitem = new EventListBoxItem(sumstring);
+    elitem = new EventListBoxItem(sumString);
     elitem->setRecur(anEvent->doesRecur());
     elitem->setAlarm(anEvent->getAlarmRepeatCount() > 0);
     insertItem(elitem);
-    currIdxs->insert(i, anEvent);
+    currIdxs->insert(i++, anEvent);
   }
+
+  // insert due todos
+  events=myCal->getTodosForDate(myDate);
+  for(anEvent = events.first(); anEvent; anEvent = events.next()) {
+    sumString = "";
+    if (anEvent->hasDueDate()) {
+      if (!anEvent->doesFloat()) {
+        sumString += KGlobal::locale()->formatTime(anEvent->getDtDue().time());
+      }
+    }
+    sumString += i18n("Todo: ") + anEvent->getSummary();
+
+    elitem = new EventListBoxItem(sumString);
+    insertItem(elitem);
+    currIdxs->insert(i++, anEvent);
+  }
+
   setAutoUpdate(TRUE);
   repaint();
 }
@@ -233,8 +232,7 @@ void KSummaries::setDate(QDate qd)
 void KSummaries::itemHighlighted(int index)
 {
   if (index < 0)
-    qDebug("KSummaries::itemHighlighted(int) called with argument %d",
-           index);
+    qDebug("KSummaries::itemHighlighted(int) called with argument %d",index);
   else {
     itemIndex = index;
     emit daySelected(idx);
@@ -466,9 +464,6 @@ void KOMonthView::updateConfig()
                                     palette().normal().base());
   holidayPalette.setNormal(myGroup);
   
-  for (int i = 0; i < 42; i++)
-    daySummaries[i]->setAmPm(fmt);
-
   for (int i = 0; i < 7; i++)
     dayNames[i]->setText((weekStartsMonday ? longDayNames2[i] :
                           longDayNames[i]));
@@ -627,7 +622,7 @@ void KOMonthView::selectDates(const QDateList dateList)
   viewChanged();
 }
 
-void KOMonthView::selectEvents(QList<KOEvent> eventList)
+void KOMonthView::selectEvents(QList<KOEvent>)
 {
   qDebug("KOMonthView::selectEvents is not implemented yet.");
 }

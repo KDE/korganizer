@@ -827,6 +827,20 @@ KOEvent *CalObject::getTodo(const QString &UniqueStr)
   return (KOEvent *) 0L;
 }
 
+QList<KOEvent> CalObject::getTodosForDate(const QDate & date)
+{
+  QList<KOEvent> todos;
+
+  KOEvent *aTodo;
+  for (aTodo = todoList.first();aTodo;aTodo = todoList.next()) {
+    if (aTodo->hasDueDate() && aTodo->getDtDue().date() == date) {
+      todos.append(aTodo);
+    }
+  }
+  
+  return todos;
+}
+
 KOEvent *CalObject::first()
 {
   if (!oldestDate || !newestDate)

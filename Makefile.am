@@ -35,8 +35,10 @@ libkorganizer_la_SOURCES =  calobject.cpp catdlg.cpp \
 	dateedit.cpp datevalidator.cpp \
         kobaseview.cpp kolistview.cpp \
 	koapp.cpp exportwebdialog.cpp korganizer_part.cpp korganizer.cpp \
-        kooptionsdialog.cpp koeventeditor.cpp koeditorwidgets.cpp \
-        kotodoeditor.cpp koprefs.cpp koeventviewer.cpp kowindowlist.cpp
+        kooptionsdialog.cpp koeventeditor.cpp \
+        kotodoeditor.cpp koprefs.cpp koeventviewer.cpp kowindowlist.cpp \
+        koeditorgeneralevent.cpp koeditorgeneraltodo.cpp koeditordetails.cpp \
+        koeditorrecurrence.cpp
 
 alarmd_SOURCES = alarmdaemon.cpp alarmmain.cpp calobject.cpp koevent.cpp \
 	scanholiday.c parseholiday.c vcaldrag.cpp koprefs.cpp alarmapp.cpp \
@@ -57,9 +59,11 @@ noinst_HEADERS = komonthview.h misc.h calobject.h \
 	dateedit.h datevalidator.h \
         kobaseview.h kolistview.h \
 	alarmapp.h koapp.h exportwebdialog.h korganizer_part.h korganizer.h \
-        kooptionsdialog.h koeventeditor.h koeditorwidgets.h \
+        kooptionsdialog.h koeventeditor.h \
         kotodoeditor.h koprefs.h alarmdaemon.h koeventviewer.h alarmdialog.h \
-        kowindowlist.h
+        kowindowlist.h \
+        koeditorgeneralevent.h koeditorgeneraltodo.h koeditordetails.h \
+        koeditorrecurrence.h
 
 
 SUBDIRS = versit \

@@ -22,13 +22,36 @@
 KOListViewItem::KOListViewItem(QListView *parent, KOEvent *ev)
   : QListViewItem(parent), mEvent(ev)
 {
-  setText(0, mEvent->getSummary());
-  setText(1, mEvent->getDtStart().date().toString());
-  setText(2, mEvent->getDtStart().time().toString());
-  setText(3, mEvent->getDtEnd().date().toString());
-  setText(4, mEvent->getDtEnd().time().toString());
-  setText(5, mEvent->getAlarmRepeatCount() ? "Yes" : "No");
-  setText(6, mEvent->doesRecur() ? "Yes" : "No");
+  if (mEvent->getTodoStatus()) {
+    setText(0,i18n("Todo: %1").arg(mEvent->getSummary()));
+    setText(1,"---");
+    setText(2,"---");
+    setText(3,"---");
+    setText(4,"---");
+    setText(5,"---");
+    setText(6,"---");
+    if (mEvent->hasDueDate()) {
+      setText(7,mEvent->getDtDue().date().toString());
+      if (mEvent->doesFloat()) {
+        setText(8,"---");
+      } else {
+        setText(8,mEvent->getDtDue().date().toString());
+      }
+    } else {
+      setText(7,"---");
+      setText(8,"---");
+    }
+  } else {
+    setText(0, mEvent->getSummary());
+    setText(1,mEvent->getDtStart().date().toString());
+    setText(2,mEvent->getDtStart().time().toString());
+    setText(3,mEvent->getDtEnd().date().toString());
+    setText(4,mEvent->getDtEnd().time().toString());
+    setText(5,mEvent->getAlarmRepeatCount() ? i18n("Yes") : i18n("No"));
+    setText(6,mEvent->doesRecur() ? i18n("Yes") : i18n("No"));
+    setText(7,"---");
+    setText(8,"---");
+  }
 }
 
 
@@ -39,13 +62,15 @@ KOListView::KOListView(CalObject *calendar, QWidget *parent,
   mActiveItem = 0;
 
   mListView = new QListView(this);
-  mListView->addColumn("Summary");
-  mListView->addColumn("Start Date");
-  mListView->addColumn("Start Time");
-  mListView->addColumn("End Date");
-  mListView->addColumn("End Time");
-  mListView->addColumn("Alarm"); // alarm set?
-  mListView->addColumn("Recurs"); // recurs?
+  mListView->addColumn(i18n("Summary"));
+  mListView->addColumn(i18n("Start Date"));
+  mListView->addColumn(i18n("Start Time"));
+  mListView->addColumn(i18n("End Date"));
+  mListView->addColumn(i18n("End Time"));
+  mListView->addColumn(i18n("Alarm")); // alarm set?
+  mListView->addColumn(i18n("Recurs")); // recurs?
+  mListView->addColumn(i18n("Due Date"));
+  mListView->addColumn(i18n("Due Time"));
 
   QBoxLayout *layoutTop = new QVBoxLayout(this);
   layoutTop->addWidget(mListView);
@@ -137,6 +162,7 @@ void KOListView::selectDates(const QDateList dateList)
   QDate *date;
   for(date = tmpList.first(); date; date = tmpList.next()) {
     addEvents(mCalendar->getEventsForDate(*date));
+    addEvents(mCalendar->getTodosForDate(*date));
   }
 }
 

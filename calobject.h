@@ -131,6 +131,8 @@ public:
   /** searches todolist for an event with this unique string identifier,
     returns a pointer or null. */
   KOEvent *getTodo(const QString &UniqueStr);
+  /** Returns list of todos due on the specified date */
+  QList<KOEvent> getTodosForDate(const QDate & date);
 
   /** traversal methods */
   KOEvent *first();

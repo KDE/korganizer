@@ -815,16 +815,22 @@ void CalendarView::editEvent(KOEvent *anEvent)
 
 void CalendarView::showEvent(KOEvent *event)
 {
-  KOEventViewerDialog *eventViewer = new KOEventViewerDialog(this);
-  eventViewer->setEvent(event);
-  eventViewer->show();
+  if (event->getTodoStatus()) showTodo(event);
+  else {
+    KOEventViewerDialog *eventViewer = new KOEventViewerDialog(this);
+    eventViewer->setEvent(event);
+    eventViewer->show();
+  }
 }
 
 void CalendarView::showTodo(KOEvent *event)
 {
-  KOEventViewerDialog *eventViewer = new KOEventViewerDialog(this);
-  eventViewer->setTodo(event);
-  eventViewer->show();
+  if (!event->getTodoStatus()) showEvent(event);
+  else {
+    KOEventViewerDialog *eventViewer = new KOEventViewerDialog(this);
+    eventViewer->setTodo(event);
+    eventViewer->show();
+  }
 }
 
 void CalendarView::appointment_edit()

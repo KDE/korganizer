@@ -1,36 +1,40 @@
 // 	$Id$	
 
-#include <qmessagebox.h>
-#include <qslider.h>
-#include <qlined.h>
-#include <qlistbox.h>
-#include <qpixmap.h>
-#include <qlistview.h>
+#include <qtooltip.h>
+#include <qfiledialog.h>
+#include <qlayout.h>
+#include <qvbox.h>
+#include <qbuttongroup.h>
+#include <qvgroupbox.h>
+#include <qwidgetstack.h>
+#include <qdatetime.h>
 
 #include <kapp.h>
 #include <klocale.h>
 #include <kglobal.h>
-#include <kbuttonbox.h>
 #include <kiconloader.h>
+#include <kstddirs.h>
+#include <kbuttonbox.h>
 #include <kabapi.h>
 
-#include "eventwindetails.h"
-#include "eventwindetails.moc"
+#include "koevent.h"
+#include "koprefs.h"
+
+#include "koeditordetails.h"
+#include "koeditordetails.moc"
 
 
 AttendeeListItem::AttendeeListItem(Attendee *a, QListView *parent) :
   QListViewItem(parent)
 {
-  mAttendee = new Attendee (*a);
+  mAttendee = new Attendee(*a);
   updateItem();
 }
-
 
 AttendeeListItem::~AttendeeListItem()
 {
   delete mAttendee;
 }
-
 
 void AttendeeListItem::updateItem()
 {
@@ -42,33 +46,30 @@ void AttendeeListItem::updateItem()
 //  setText(4,(mAttendee->RSVP() && !mAttendee->getEmail().isEmpty()) ?
 //            "Y" : "N");
   if (mAttendee->RSVP() && !mAttendee->getEmail().isEmpty())
-    setPixmap(4,BarIcon("mailappt"));
+    setPixmap(4,UserIcon("mailappt"));
   else
-    setPixmap(4,BarIcon("nomailappt"));
+    setPixmap(4,UserIcon("nomailappt"));
 }
 
 
-EventWinDetails::EventWinDetails (QWidget* parent, const char* name, bool todo)
-  : QFrame( parent, name, 0 )
+KOEditorDetails::KOEditorDetails (int spacing,QWidget* parent,const char* name)
+  : QWidget( parent, name)
 {
-  isTodo = todo;
+  mSpacing = spacing;
 
-  topLayout = new QVBoxLayout(this, 5);
+  topLayout = new QVBoxLayout(this);
+  topLayout->setSpacing(mSpacing);
 
   initAttendee();
   //initAttach();
   initMisc();
 }
 
-void EventWinDetails::initAttendee()
+void KOEditorDetails::initAttendee()
 {
-  attendeeGroupBox = new QGroupBox(this);
-  attendeeGroupBox->setTitle(i18n("Attendee Information"));
+  attendeeGroupBox = new QGroupBox(1,Horizontal,i18n("Attendee Information"),
+                                   this);
   topLayout->addWidget(attendeeGroupBox);
-
-  QVBoxLayout *layout = new QVBoxLayout(attendeeGroupBox, 10);
-
-  layout->addSpacing(10); // top caption needs some space
 
   attendeeListBox = new QListView( attendeeGroupBox, "attendeeListBox" );
   attendeeListBox->addColumn(i18n("Name"),180);
@@ -76,65 +77,44 @@ void EventWinDetails::initAttendee()
   attendeeListBox->addColumn(i18n("Role"),60);
   attendeeListBox->addColumn(i18n("Status"),100);
   attendeeListBox->addColumn(i18n("RSVP"),35);
-  attendeeListBox->setMinimumSize(QSize(400, 100));
-  layout->addWidget(attendeeListBox);
 
   connect(attendeeListBox, SIGNAL(clicked(QListViewItem *)),
 	  this, SLOT(attendeeListHilite(QListViewItem *)));
   connect(attendeeListBox, SIGNAL(doubleClicked(QListViewItem *)),
 	  this, SLOT(attendeeListAction(QListViewItem *)));
 
-  QHBoxLayout *subLayout = new QHBoxLayout();
-  layout->addLayout(subLayout);
+  QHBox *nameBox = new QHBox(attendeeGroupBox);
 
-  attendeeLabel = new QLabel(attendeeGroupBox);
+  attendeeLabel = new QLabel(nameBox);
   attendeeLabel->setText(i18n("Attendee Name:"));
-  attendeeLabel->setFixedWidth(attendeeLabel->sizeHint().width());
-  attendeeLabel->setMinimumHeight(attendeeLabel->sizeHint().height());
-  subLayout->addWidget(attendeeLabel);
 
-  attendeeEdit = new QLineEdit(attendeeGroupBox);
-  attendeeEdit->setMinimumWidth(attendeeEdit->sizeHint().width());
-  attendeeEdit->setFixedHeight(attendeeEdit->sizeHint().height());
+  attendeeEdit = new QLineEdit(nameBox);
   attendeeEdit->setText( "" );
-  subLayout->addWidget(attendeeEdit);
 
-  QLabel *emailLabel = new QLabel(attendeeGroupBox);
+  QLabel *emailLabel = new QLabel(nameBox);
   emailLabel->setText(i18n("Email Address:"));
-  emailLabel->setFixedWidth(emailLabel->sizeHint().width());
-  emailLabel->setMinimumHeight(emailLabel->sizeHint().height());
-  subLayout->addWidget(emailLabel);
   
-  emailEdit = new QLineEdit(attendeeGroupBox);
-  emailEdit->setMinimumWidth(emailEdit->sizeHint().width());
-  emailEdit->setFixedHeight(emailEdit->sizeHint().height());
+  emailEdit = new QLineEdit(nameBox);
   emailEdit->setText("");
-  subLayout->addWidget(emailEdit);
 
-  subLayout = new QHBoxLayout();
-  layout->addLayout(subLayout);
+
+  QHBox *roleBox = new QHBox(attendeeGroupBox);
   
-  attendeeRoleLabel = new QLabel(attendeeGroupBox);
+  attendeeRoleLabel = new QLabel(roleBox);
   attendeeRoleLabel->setText(i18n("Role:"));
-  attendeeRoleLabel->setMinimumSize(attendeeRoleLabel->sizeHint());
-  attendeeRoleLabel->setAlignment(AlignVCenter|AlignRight);
-  subLayout->addWidget(attendeeRoleLabel);
+//  attendeeRoleLabel->setAlignment(AlignVCenter|AlignRight);
 
-  attendeeRoleCombo = new QComboBox(FALSE, attendeeGroupBox);
+  attendeeRoleCombo = new QComboBox(false,roleBox);
   attendeeRoleCombo->insertItem( i18n("Attendee") );
   attendeeRoleCombo->insertItem( i18n("Organizer") );
   attendeeRoleCombo->insertItem( i18n("Owner") );
   attendeeRoleCombo->insertItem( i18n("Delegate") );
-  attendeeRoleCombo->setFixedSize(attendeeRoleCombo->sizeHint());
-  subLayout->addWidget(attendeeRoleCombo);
 
-  statusLabel = new QLabel(attendeeGroupBox);
+  statusLabel = new QLabel(roleBox);
   statusLabel->setText( i18n("Status:") );
-  statusLabel->setMinimumSize(statusLabel->sizeHint());
-  statusLabel->setAlignment(AlignVCenter|AlignRight);
-  subLayout->addWidget(statusLabel);
+//  statusLabel->setAlignment(AlignVCenter|AlignRight);
 
-  statusCombo = new QComboBox( FALSE, attendeeGroupBox);
+  statusCombo = new QComboBox(false,roleBox);
   statusCombo->insertItem( i18n("Needs Action") );
   statusCombo->insertItem( i18n("Accepted") );
   statusCombo->insertItem( i18n("Sent") );
@@ -143,15 +123,11 @@ void EventWinDetails::initAttendee()
   statusCombo->insertItem( i18n("Declined") );
   statusCombo->insertItem( i18n("Completed") );
   statusCombo->insertItem( i18n("Delegated") );
-  statusCombo->setFixedSize(statusCombo->sizeHint());
-  subLayout->addWidget(statusCombo);
 
-  subLayout->addStretch();
+//  subLayout->addStretch();
 
-  attendeeRSVPButton = new QCheckBox(attendeeGroupBox);
+  attendeeRSVPButton = new QCheckBox(roleBox);
   attendeeRSVPButton->setText(i18n("Request Response"));
-  attendeeRSVPButton->setFixedSize(attendeeRSVPButton->sizeHint());
-  subLayout->addWidget(attendeeRSVPButton);
 
   KButtonBox *buttonBox = new KButtonBox(attendeeGroupBox);
 
@@ -170,97 +146,70 @@ void EventWinDetails::initAttendee()
   removeAttendeeButton = buttonBox->addButton(i18n("&Remove"));
   connect(removeAttendeeButton, SIGNAL(clicked()),
 	  this, SLOT(removeAttendee()));
-  buttonBox->layout();
+//  buttonBox->layout();
 
-  layout->addWidget(buttonBox);
+//  layout->addWidget(buttonBox);
 }
     
-void EventWinDetails::initAttach()
+void KOEditorDetails::initAttach()
 {
 /*
   attachGroupBox = new QGroupBox( this, "User_2" );
   attachGroupBox->setGeometry( 10, 190, 580, 100 );
   attachGroupBox->setMinimumSize( 10, 10 );
   attachGroupBox->setMaximumSize( 32767, 32767 );
-  attachGroupBox->setEnabled(FALSE);
+  attachGroupBox->setEnabled(false);
 
   attachFileButton = new QPushButton( this, "PushButton_3" );
   attachFileButton->setGeometry( 20, 200, 100, 20 );
   attachFileButton->setMinimumSize( 10, 10 );
   attachFileButton->setMaximumSize( 32767, 32767 );
   attachFileButton->setText( i18n("Attach...") );
-  attachFileButton->setEnabled(FALSE);
+  attachFileButton->setEnabled(false);
 
   removeFileButton = new QPushButton( this, "PushButton_4" );
   removeFileButton->setGeometry( 20, 260, 100, 20 );
   removeFileButton->setMinimumSize( 10, 10 );
   removeFileButton->setMaximumSize( 32767, 32767 );
   removeFileButton->setText( i18n("Remove") );
-  removeFileButton->setEnabled(FALSE);
+  removeFileButton->setEnabled(false);
 
   attachListBox = new KTabListBox( this, "ListBox_2" );
   attachListBox->setGeometry( 140, 200, 440, 80 );
   attachListBox->setMinimumSize( 10, 10 );
   attachListBox->setMaximumSize( 32767, 32767 );
-  attachListBox->setEnabled(FALSE);
+  attachListBox->setEnabled(false);
 
   saveFileAsButton = new QPushButton( this, "PushButton_5" );
   saveFileAsButton->setGeometry( 20, 230, 100, 20 );
   saveFileAsButton->setMinimumSize( 10, 10 );
   saveFileAsButton->setMaximumSize( 32767, 32767 );
   saveFileAsButton->setText( i18n("Save As...") );
-  saveFileAsButton->setEnabled(FALSE);
+  saveFileAsButton->setEnabled(false);
 */
 }
 
-void EventWinDetails::initMisc()
+void KOEditorDetails::initMisc()
 {
-
-  QGroupBox *groupBox = new QGroupBox(this);
+  QGroupBox *groupBox = new QGroupBox(1,Horizontal,this);
   topLayout->addWidget(groupBox);
 
-  QVBoxLayout *layout = new QVBoxLayout(groupBox, 10);
-  
-  QHBoxLayout *subLayout = new QHBoxLayout();
-  layout->addLayout(subLayout);
+  QHBox *catBox = new QHBox(groupBox);
 
-  categoriesButton = new QPushButton(groupBox);
+  categoriesButton = new QPushButton(catBox);
   categoriesButton->setText(i18n("Categories..."));
-  categoriesButton->setFixedSize(categoriesButton->sizeHint());
-  subLayout->addWidget(categoriesButton);
+  connect(categoriesButton,SIGNAL(clicked()),SIGNAL(openCategoryDialog()));
 
-  categoriesLabel = new QLabel(groupBox);
+  categoriesLabel = new QLabel(catBox);
   categoriesLabel->setFrameStyle(QFrame::Panel|QFrame::Sunken);
   categoriesLabel->setText( "" );
-  categoriesLabel->setMinimumSize(categoriesLabel->sizeHint());
-  subLayout->addWidget(categoriesLabel);
 
   /*  locationLabel = new QLabel(groupBox);
   locationLabel->setText( i18n("Location:") );
   locationLabel->setFixedSize(locationLabel->sizeHint());
   layout->addWidget(locationLabel);*/
 
-  subLayout = new QHBoxLayout();
-  layout->addLayout(subLayout);
 
-  priorityLabel = new QLabel(groupBox);
-  priorityLabel->setText( i18n("Priority:") );
-  priorityLabel->setMinimumWidth(priorityLabel->sizeHint().width());
-  priorityLabel->setFixedHeight(priorityLabel->sizeHint().height());
-  subLayout->addWidget(priorityLabel);
-
-  priorityCombo = new QComboBox( FALSE, groupBox);
-  priorityCombo->insertItem( i18n("Low (1)") );
-  priorityCombo->insertItem( i18n("Normal (2)") );
-  priorityCombo->insertItem( i18n("High (3)") );
-  priorityCombo->insertItem( i18n("Maximum (4)") );
-  priorityCombo->setFixedSize(priorityCombo->sizeHint());
-  connect(priorityCombo, SIGNAL(activated(int)),
-    this, SLOT(setModified()));
-  subLayout->addWidget(priorityCombo);
-
-  subLayout->addStretch();
-  
   /*  subLayout = new QHBoxLayout();
   layout->addLayout(subLayout);
 
@@ -288,13 +237,11 @@ void EventWinDetails::initMisc()
   subLayout->addWidget(transparencyAmountLabel);*/
 }
 
-
-EventWinDetails::~EventWinDetails()
+KOEditorDetails::~KOEditorDetails()
 {
 }
 
-
-void EventWinDetails::setEnabled(bool enabled)
+void KOEditorDetails::setEnabled(bool enabled)
 {
 // This doesn't correspond to the available widgets at the moment
 /*
@@ -311,13 +258,12 @@ void EventWinDetails::setEnabled(bool enabled)
   attendeeRoleCombo->setEnabled(enabled);
   //  attendeeRSVPButton->setEnabled(enabled);
   statusCombo->setEnabled(enabled);
-  priorityCombo->setEnabled(enabled);
   resourceButton->setEnabled(enabled);
   resourcesEdit->setEnabled(enabled);
 */
 }
 
-void EventWinDetails::removeAttendee()
+void KOEditorDetails::removeAttendee()
 {
   AttendeeListItem *aItem = (AttendeeListItem *)attendeeListBox->currentItem();
   if (!aItem) return;
@@ -325,7 +271,7 @@ void EventWinDetails::removeAttendee()
   delete aItem;
 }
 
-void EventWinDetails::attendeeListHilite(QListViewItem *item)
+void KOEditorDetails::attendeeListHilite(QListViewItem *item)
 {
   Attendee *a = ((AttendeeListItem *)item)->attendee(); 
 
@@ -336,7 +282,7 @@ void EventWinDetails::attendeeListHilite(QListViewItem *item)
   attendeeRSVPButton->setChecked(a->RSVP());
 }
 
-void EventWinDetails::attendeeListAction(QListViewItem *item)
+void KOEditorDetails::attendeeListAction(QListViewItem *item)
 {
   return;
 
@@ -353,7 +299,7 @@ void EventWinDetails::attendeeListAction(QListViewItem *item)
     }*/
 }
 
-void EventWinDetails::openAddressBook()
+void KOEditorDetails::openAddressBook()
 {
   KabAPI addrDialog(this);
 
@@ -373,8 +319,7 @@ void EventWinDetails::openAddressBook()
 
       // take first email address
       if (!entry.emails.isEmpty() && entry.emails.first().length()>0)
-      	emailEdit->setText(entry.emails.first());
-      
+      	emailEdit->setText(entry.emails.first());      
     } else {
       QMessageBox::warning(this, i18n("KOrganizer Error"),
 			   i18n("Error getting entry from address book."));
@@ -383,7 +328,7 @@ void EventWinDetails::openAddressBook()
 }
 
 
-void EventWinDetails::updateAttendee()
+void KOEditorDetails::updateAttendee()
 {
   AttendeeListItem *aItem = (AttendeeListItem *)attendeeListBox->currentItem();
   if (!aItem) return;
@@ -392,7 +337,7 @@ void EventWinDetails::updateAttendee()
   addNewAttendee();
 }
 
-void EventWinDetails::addNewAttendee()
+void KOEditorDetails::addNewAttendee()
 {
   // don;t do anything on a blank name
   if (QString(attendeeEdit->text()).stripWhiteSpace().isEmpty())
@@ -423,25 +368,58 @@ void EventWinDetails::addNewAttendee()
   a->setEmail(emailEdit->text());
   a->setRole(attendeeRoleCombo->currentItem());
   a->setStatus(statusCombo->currentItem());
-  a->setRSVP(attendeeRSVPButton->isChecked() ? TRUE : FALSE);
+  a->setRSVP(attendeeRSVPButton->isChecked() ? true : false);
 
   insertAttendee(a);
-  setModified();
 
   // zero everything out for a new one
   attendeeEdit->setText("");
   emailEdit->setText("");
   attendeeRoleCombo->setCurrentItem(0);
   statusCombo->setCurrentItem(0);
-  attendeeRSVPButton->setChecked(TRUE);
+  attendeeRSVPButton->setChecked(true);
 }
 
-void EventWinDetails::insertAttendee(Attendee *a)
+void KOEditorDetails::insertAttendee(Attendee *a)
 {
   mAttendeeList.append(new AttendeeListItem(a,attendeeListBox));
 }
 
-void EventWinDetails::setModified()
+void KOEditorDetails::setCategories(QString str)
 {
-  emit modifiedEvent();
+  categoriesLabel->setText(str);
+}
+
+void KOEditorDetails::setDefaults()
+{
+  attendeeRSVPButton->setChecked(true);
+}
+
+void KOEditorDetails::readEvent(KOEvent *event)
+{
+  // attendee information
+  // first remove whatever might be here
+  mAttendeeList.clear();
+  QList<Attendee> tmpAList = event->getAttendeeList();
+  Attendee *a;
+  for (a = tmpAList.first(); a; a = tmpAList.next())
+    insertAttendee(new Attendee (*a));
+
+  //  Details->attachListBox->insertItem(i18n("Not implemented yet."));
+  
+  // set the status combobox
+  statusCombo->setCurrentItem(event->getStatus());
+
+  setCategories(event->getCategoriesStr());
+}
+
+void KOEditorDetails::writeEvent(KOEvent *event)
+{
+  event->clearAttendees();
+  unsigned int i;
+  for (i = 0; i < mAttendeeList.count(); i++)
+    event->addAttendee(new Attendee(*(mAttendeeList.at(i)->attendee())));
+
+  // we should remove this.
+  event->setStatus(statusCombo->currentItem());
 }
