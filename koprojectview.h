@@ -17,17 +17,17 @@
 #include "calobject.h"
 #include "event.h"
 #include "kobaseview.h"
-#include "xQTask.h"
+#include "KGanttItem.h"
 
-class xQGantt;
+class KGantt;
 
 /**
   This class provides an item of the project view. It is a xQTask with
   an additional Event attribute.
 */
-class KOProjectViewItem : public xQTask {
+class KOProjectViewItem : public KGanttItem {
   public:
-    KOProjectViewItem(Todo *,xQTask* parentTask, const QString& text, 
+    KOProjectViewItem(Todo *,KGanttItem* parentTask, const QString& text, 
 	              const QDateTime& start, const QDateTime& end);
     ~KOProjectViewItem();
     
@@ -95,7 +95,7 @@ class KOProjectView : public KOBaseView
     void showModeMenu();  
     void zoomIn();
     void zoomOut();
-    void taskChanged(xQTask *task,xQTask::Change change);
+    void taskChanged(KGanttItem *task,KGanttItem::Change change);
   
   signals:
     void newTodoSignal();
@@ -106,14 +106,14 @@ class KOProjectView : public KOBaseView
 
   private:
     void createMainTask();
-    xQTask *createTask(xQTask *,Todo *);
+    KGanttItem *createTask(KGanttItem *,Todo *);
   
-    xQGantt *mGantt;
-    xQTask *mMainTask;
+    KGantt *mGantt;
+    KGanttItem *mMainTask;
 
-    QMap<Todo *,xQTask *>::ConstIterator insertTodoItem(Todo *todo);
+    QMap<Todo *,KGanttItem *>::ConstIterator insertTodoItem(Todo *todo);
 
-    QMap<Todo *,xQTask *> mTodoMap;
+    QMap<Todo *,KGanttItem *> mTodoMap;
 };
 
 #endif

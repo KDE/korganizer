@@ -13,16 +13,16 @@
 
 #include "vcaldrag.h"
 #include "calprinter.h"
-#include "xQGantt.h"
+#include "KGantt.h"
 
 #include "koprojectview.h"
 #include "koprojectview.moc"
 
-KOProjectViewItem::KOProjectViewItem(Todo *event,xQTask* parentTask,
+KOProjectViewItem::KOProjectViewItem(Todo *event,KGanttItem* parentTask,
                                      const QString& text, 
 	                             const QDateTime& start,
                                      const QDateTime& end) :
-  xQTask(parentTask,text,start,end)
+  KGanttItem(parentTask,text,start,end)
 {
   mEvent = event;
 }
@@ -59,7 +59,7 @@ KOProjectView::KOProjectView(CalObject *calendar,QWidget* parent,
   connect(zoomOut,SIGNAL(clicked()),SLOT(zoomOut()));
 
   // Externally controlled zooming is not possible with the current API of
-  // xQGantt.
+  // KGantt.
   zoomIn->hide();
   zoomOut->hide();
 
@@ -69,7 +69,7 @@ KOProjectView::KOProjectView(CalObject *calendar,QWidget* parent,
 
   createMainTask();
 
-  mGantt = new xQGantt(mMainTask,this);
+  mGantt = new KGantt(mMainTask,this);
   topLayout->addWidget(mGantt,1);
 
 #if 0
@@ -133,12 +133,12 @@ KOProjectView::KOProjectView(CalObject *calendar,QWidget* parent,
 
 void KOProjectView::createMainTask()
 {
-  mMainTask = new xQTask(0,"main task",
+  mMainTask = new KGanttItem(0,"main task",
                          QDateTime::currentDateTime(),
                          QDateTime::currentDateTime());
-  mMainTask->setMode(xQTask::Rubberband);
-  mMainTask->setStyle(xQTask::DrawBorder | xQTask::DrawText |
-                      xQTask::DrawHandle);
+  mMainTask->setMode(KGanttItem::Rubberband);
+  mMainTask->setStyle(KGanttItem::DrawBorder | KGanttItem::DrawText |
+                      KGanttItem::DrawHandle);
 }
 
 void KOProjectView::updateView()
@@ -146,20 +146,20 @@ void KOProjectView::updateView()
   kdDebug() << "KOProjectView::updateView()" << endl;
 
   // Clear Gantt view
-  QList<xQTask> subs = mMainTask->getSubTasks();
-  xQTask *t=subs.first();
+  QList<KGanttItem> subs = mMainTask->getSubItems();
+  KGanttItem *t=subs.first();
   while(t) {
-    xQTask *nt=subs.next();
+    KGanttItem *nt=subs.next();
     delete t;
     t = nt;
   }
 
 #if 0
-  xQTask* t1 = new xQTask(mGantt->getMainTask(), "task 1, no subtasks", 
+  KGanttItem* t1 = new KGanttItem(mGantt->getMainTask(), "task 1, no subtasks", 
                              QDateTime::currentDateTime().addDays(10),
                              QDateTime::currentDateTime().addDays(20) );
 
-  xQTask* t2 = new xQTask(mGantt->getMainTask(), "task 2, subtasks, no rubberband", 
+  KGanttItem* t2 = new KGanttItem(mGantt->getMainTask(), "task 2, subtasks, no rubberband", 
                              QDateTime(QDate(2000,10,1)),
                              QDateTime(QDate(2000,10,31)) );
 #endif
@@ -196,29 +196,29 @@ void KOProjectView::updateView()
   }
 }
 
-QMap<Todo *,xQTask *>::ConstIterator
+QMap<Todo *,KGanttItem *>::ConstIterator
     KOProjectView::insertTodoItem(Todo *todo)
 {
 //  kdDebug() << "KOProjectView::insertTodoItem(): " << todo->getSummary() << endl;
   Todo *relatedTodo = dynamic_cast<Todo *>(todo->relatedTo());
   if (relatedTodo) {
 //    kdDebug() << "  has Related" << endl;
-    QMap<Todo *,xQTask *>::ConstIterator itemIterator;
+    QMap<Todo *,KGanttItem *>::ConstIterator itemIterator;
     itemIterator = mTodoMap.find(relatedTodo);
     if (itemIterator == mTodoMap.end()) {
 //      kdDebug() << "    related not yet in list" << endl;
       itemIterator = insertTodoItem (relatedTodo);
     }
-    xQTask *task = createTask(*itemIterator,todo);
+    KGanttItem *task = createTask(*itemIterator,todo);
     return mTodoMap.insert(todo,task);
   } else {
 //    kdDebug() << "  no Related" << endl;
-    xQTask *task = createTask(mMainTask,todo);
+    KGanttItem *task = createTask(mMainTask,todo);
     return mTodoMap.insert(todo,task);
   }
 }
 
-xQTask *KOProjectView::createTask(xQTask *parent,Todo *todo)
+KGanttItem *KOProjectView::createTask(KGanttItem *parent,Todo *todo)
 {
   QDateTime startDt;
   QDateTime endDt;
@@ -239,10 +239,10 @@ xQTask *KOProjectView::createTask(xQTask *parent,Todo *todo)
     endDt = todo->dtDue();
   }
 
-  xQTask *task = new KOProjectViewItem(todo,parent,todo->summary(),startDt,
+  KGanttItem *task = new KOProjectViewItem(todo,parent,todo->summary(),startDt,
                                        endDt);
-  connect(task,SIGNAL(changed(xQTask*, xQTask::Change)),
-          SLOT(taskChanged(xQTask*,xQTask::Change)));
+  connect(task,SIGNAL(changed(KGanttItem*, KGanttItem::Change)),
+          SLOT(taskChanged(KGanttItem*,KGanttItem::Change)));
   if (todo->relations().count() > 0) {
     task->setBrush(QBrush(QColor(240,240,240), QBrush::Dense4Pattern));
   }
@@ -385,15 +385,15 @@ void KOProjectView::showModeMenu()
   mGantt->menu()->popup(QCursor::pos());  
 }
 
-void KOProjectView::taskChanged(xQTask *task,xQTask::Change change)
+void KOProjectView::taskChanged(KGanttItem *task,KGanttItem::Change change)
 {
   if (task == mMainTask) return;
 
   KOProjectViewItem *item = (KOProjectViewItem *)task;
 
-  if (change == xQTask::StartChanged) {
+  if (change == KGanttItem::StartChanged) {
     item->event()->setDtStart(task->getStart());
-  } else if (change == xQTask::EndChanged) {
+  } else if (change == KGanttItem::EndChanged) {
     item->event()->setDtDue(task->getEnd());
   }
 }

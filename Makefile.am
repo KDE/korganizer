@@ -3,6 +3,7 @@ INCLUDES= $(all_includes) \
 	   -I$(srcdir)/versit \
            -I$(top_srcdir)/libical/src/libical \
            -I$(top_srcdir)/libical/src/libicalss \
+           -I$(top_srcdir)/kgantt/kgantt \
 	   -I$(top_builddir)/libical/src/libical \
 	   -I$(top_builddir)/libical/src/libicalss
 
@@ -13,7 +14,8 @@ libkorganizer_la_LDFLAGS = $(all_libraries) $(KDE_RPATH)
 libkorganizer_la_LIBADD  = -lkparts \
                            versit/libversit.la $(LIB_KFILE) -lkab \
                            $(top_builddir)/libical/src/libical/libical.la \
-                           $(top_builddir)/libical/src/libicalss/libicalss.la
+                           $(top_builddir)/libical/src/libicalss/libicalss.la \
+                           $(top_builddir)/kgantt/kgantt/libkgantt.la
 libkorganizer_la_LDFLAGS = $(all_libraries) -version-info 1:0:0 -module
 
 korganizer_LDFLAGS = $(all_libraries) $(KDE_RPATH)
@@ -57,9 +59,7 @@ libkorganizer_la_SOURCES =  outgoingdialog_base.ui \
         categoryeditdialog_base.ui categoryeditdialog.cpp calfilter.cpp \
         kofilterview_base.ui kofilterview.cpp \
         scanholiday.c parseholiday.c \
-        koprojectview.cpp xQGantt.cpp xQTask.cpp xQGanttListView.cpp \
-        xQGanttBarView.cpp xQGanttListViewPort.cpp xQGanttBarViewPort.cpp \
-        xQGanttBarViewPort_Events.cpp \
+        koprojectview.cpp \
         korganizeriface.skel \
         filtereditdialog.cpp filteredit_base.ui \
         kowhatsnextview.cpp
@@ -96,8 +96,7 @@ noinst_HEADERS = komonthview.h \
         koeditorgeneralevent.h koeditorgeneraltodo.h koeditordetails.h \
         koeditorrecurrence.h koeventviewerdialog.h koeventpopupmenu.h \
         koexceptions.h outgoingdialog.h incomingdialog.h \
-        koeventview.h calfilter.h koprojectview.h \
-        xQGantt.h xQTask.h
+        koeventview.h calfilter.h koprojectview.h
 
 
 SUBDIRS = versit \
