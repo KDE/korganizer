@@ -46,6 +46,7 @@
 #include <dcopclient.h>
 #include <kprocess.h>
 #include <kwin.h>
+#include <kkeydialog.h>
 
 #include "komailclient.h"
 #include "calprinter.h"
@@ -302,8 +303,12 @@ void KOrganizer::initActions()
                                 actionCollection());
   KStdAction::preferences(mCalendarView, SLOT(edit_options()),
                           actionCollection());
+  KStdAction::saveOptions(this, SLOT(saveOptions()), actionCollection());
+  KStdAction::keyBindings(this, SLOT(editKeys()), actionCollection());
   
   createGUI();
+
+  applyMainWindowSettings(kapp->config());
 
   QListIterator<KToolBar> it = toolBarIterator();
   for ( ; it.current() ; ++it ) {
@@ -311,7 +316,7 @@ void KOrganizer::initActions()
                                            .arg((*it)->text()),0,
                                            actionCollection(),(*it)->name());
     connect( act,SIGNAL(toggled(bool)),SLOT(toggleToolBars(bool)));
-    act->setChecked(true);
+    act->setChecked(!(*it)->isHidden());
     mToolBarToggles.append(act);
   }
   plugActionList("toolbartoggles",mToolBarToggles);
@@ -584,6 +589,10 @@ void KOrganizer::configureToolbars()
   }
 }
 
+void KOrganizer::saveOptions()
+{
+  saveMainWindowSettings(kapp->config());
+}
 
 bool KOrganizer::openURL( const KURL &url )
 {
@@ -602,6 +611,10 @@ bool KOrganizer::openURL( const KURL &url )
   }
 }
 
+void KOrganizer::editKeys()
+{
+  KKeyDialog::configureKeys(actionCollection(),xmlFile(),true,this);
+}
 
 bool KOrganizer::mergeURL( const KURL &url )
 {

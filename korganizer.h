@@ -142,6 +142,12 @@ class KOrganizer : public KMainWindow
     /** Open toolbar configuration dialog */
     void configureToolbars();
 
+    /** Save toolbar/statusbar options to disk */
+    void saveOptions();
+
+    /** Configure key bindings */
+    void editKeys();
+    
   protected slots:
 
     /** toggle the appearance of the tool bars. */
