@@ -145,13 +145,13 @@ CalendarView::CalendarView( QWidget *parent, const char *name )
 
   mDateNavigator = new DateNavigatorContainer( mLeftSplitter,
                                                "CalendarView::DateNavigator" );
-                                               
+
 //  mLeftSplitter->setResizeMode( mDateNavigator, QSplitter::Stretch );
   mLeftSplitter->setCollapsible( mDateNavigator, true );
   mTodoList = new KOTodoView( CalendarNull::self(), mLeftSplitter, "todolist" );
 
   mEventViewer = new KOEventViewer( mLeftSplitter,"EventViewer" );
-  
+
   QVBox *rightBox = new QVBox( mPanner );
   mNavigatorBar = new NavigatorBar( rightBox );
   mRightFrame = new QWidgetStack( rightBox );
@@ -178,7 +178,7 @@ CalendarView::CalendarView( QWidget *parent, const char *name )
   mTodoList = new KOTodoView( CalendarNull::self(), leftFrame, "todolist" );
 
   mEventViewer = new KOEventViewer ( leftFrame, "EventViewer" );
-  
+
   QWidget *rightBox = new QWidget( mainBox );
   QBoxLayout *rightLayout = new QVBoxLayout( rightBox );
 
@@ -254,16 +254,16 @@ CalendarView::CalendarView( QWidget *parent, const char *name )
 
   connect( this, SIGNAL( incidenceSelected(Incidence *) ),
            mEventViewer, SLOT ( setIncidence (Incidence *) ) );
-  
-  //TODO: do a pretty Summary, 
+
+  //TODO: do a pretty Summary,
   QString s;
   s = i18n( "<p><em>No incidence selected</em></p>"
-           "<p>If you select an event or todo in korganizer's main view, "
+           "<p>If you select an event or todo in KOrganizer's main view, "
            "you will see a preview of that item here.</p>");
 
   mEventViewer->setDefaultText( s );
   mEventViewer->setIncidence( 0 );
-  
+
   mViewManager->connectTodoView( mTodoList );
   mViewManager->connectView( mTodoList );
 
@@ -899,7 +899,7 @@ void CalendarView::newEvent( const QString &summary, const QString &description,
   eventEditor->show();
 }
 
-void CalendarView::newEvent( const QDateTime &fromHint, const QDateTime &toHint, 
+void CalendarView::newEvent( const QDateTime &fromHint, const QDateTime &toHint,
                              bool allDay)
 {
   KOEventEditor *eventEditor = mDialogManager->getEventEditor();

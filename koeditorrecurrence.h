@@ -230,6 +230,8 @@ class RecurrenceRangeWidget : public QWidget, public RecurrenceRangeBase
 {
     Q_OBJECT
   public:
+    enum{ Infinite, Duration, EndDate };
+
     RecurrenceRangeWidget( QWidget *parent = 0, const char *name = 0 );
 
     void setDefaults( const QDateTime &from );
@@ -243,6 +245,9 @@ class RecurrenceRangeWidget : public QWidget, public RecurrenceRangeBase
     void setDateTimes( const QDateTime &start,
                        const QDateTime &end = QDateTime() );
 
+    /** Returns which recurrence option is selected. */
+    int rangeType();
+
   protected slots:
     void showCurrentRange();
 
@@ -254,6 +259,7 @@ class RecurrenceRangeWidget : public QWidget, public RecurrenceRangeBase
     QSpinBox *mEndDurationEdit;
     QRadioButton *mEndDateButton;
     KDateEdit *mEndDateEdit;
+    int mRangeType; // stores which option is selected.
 };
 
 class RecurrenceRangeDialog : public KDialogBase, public RecurrenceRangeBase
