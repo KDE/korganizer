@@ -71,8 +71,8 @@ class CalPrintBase::TodoParentStart
 class PrintCellItem : public KOrg::CellItem
 {
   public:
-    PrintCellItem( Event *event )
-      : mEvent( event )
+    PrintCellItem( Event *event, const QDate &day )
+      : mEvent( event ), mDay( day )
     {
     }
   
@@ -84,12 +84,34 @@ class PrintCellItem : public KOrg::CellItem
     {
       PrintCellItem *other = static_cast<PrintCellItem *>( o );
 
-      return !( other->event()->dtStart() >= event()->dtEnd() ||
-                other->event()->dtEnd() <= event()->dtStart() );
+      QDateTime start = event()->dtStart();
+      QDateTime end = event()->dtEnd();
+      if ( event()->doesRecur() ) {
+        start.setDate( mDay );
+        end.setDate( mDay );
+      }
+      QDateTime otherStart = other->event()->dtStart();
+      QDateTime otherEnd = other->event()->dtEnd();
+      if ( other->event()->doesRecur() ) {
+        otherStart.setDate( mDay );
+        otherEnd.setDate( mDay );
+      }
+
+#if 0
+      kdDebug() << "PrintCellItem::overlaps() " << event()->summary()
+                << " <-> " << other->event()->summary() << endl;
+      kdDebug() << "  start     : " << start.toString() << endl;
+      kdDebug() << "  end       : " << end.toString() << endl;
+      kdDebug() << "  otherStart: " << otherStart.toString() << endl;
+      kdDebug() << "  otherEnd  : " << otherEnd.toString() << endl;
+#endif
+      
+      return !( otherStart >= end || otherEnd <= start );
     }
     
   private:
     Event *mEvent;
+    QDate mDay;
 };
 
 void setCategoryColors( QPainter &p, Incidence *incidence)
@@ -513,7 +535,7 @@ void CalPrintBase::drawAgendaDayBox( QPainter &p, Event::List &events,
 
   Event::List::ConstIterator itEvents;
   for( itEvents = events.begin(); itEvents != events.end(); ++itEvents ) {
-    cells.append( new PrintCellItem( *itEvents ) );
+    cells.append( new PrintCellItem( *itEvents, qd ) );
   }
 
   QPtrListIterator<KOrg::CellItem> it1( cells );
