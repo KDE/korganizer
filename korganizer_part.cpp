@@ -29,6 +29,7 @@
 #include "koglobals.h"
 #include "koprefs.h"
 #include "resourceview.h"
+#include "aboutdata.h"
 
 #include "kalarmd/alarmdaemoniface_stub.h"
 
@@ -50,6 +51,7 @@
 #include <ktempfile.h>
 #include <kstatusbar.h>
 #include <kkeydialog.h>
+#include <kparts/genericfactory.h>
 
 #include <sidebarextension.h>
 #include <infoextension.h>
@@ -58,60 +60,12 @@
 #include <qfile.h>
 #include <qtimer.h>
 
-extern "C"
-{
-  /**
-   * This function is the 'main' function of this part.  It takes
-   * the form 'void *init_lib<library name>()  It always returns a
-   * new factory object
-   */
-  void *init_libkorganizerpart()
-  {
-    return new KOrganizerFactory;
-  }
-}
+typedef KParts::GenericFactory< KOrganizerPart > KOrganizerFactory;
+K_EXPORT_COMPONENT_FACTORY( libkorganizerpart, KOrganizerFactory )
 
-/**
-* We need one static instance of the factory for our C 'main'
-* function
-*/
-KInstance *KOrganizerFactory::s_instance = 0;
-KAboutData *KOrganizerFactory::s_about = 0;
-
-KOrganizerFactory::KOrganizerFactory()
-{
-}
-
-KOrganizerFactory::~KOrganizerFactory()
-{
-  delete s_instance;
-  s_instance = 0;
-  delete s_about;
-}
-
-KParts::Part *KOrganizerFactory::createPartObject(QWidget *parentWidget, const char *widgetName,
-                                   QObject *parent, const char *name,
-                                   const char*,const QStringList& )
-{
-  KParts::Part *obj = new KOrganizerPart(parentWidget, widgetName, parent, name );
-  return obj;
-}
-
-KInstance *KOrganizerFactory::instance()
-{
-  if ( !s_instance ) {
-    s_about = new KAboutData("korganizer", I18N_NOOP("KOrganizer"),"1.99");
-    s_instance = new KInstance(s_about);
-  }
-
-  kdDebug(5850) << "KOrganizerFactory::instance(): Name: " <<
-               s_instance->instanceName() << endl;
-
-  return s_instance;
-}
-
-KOrganizerPart::KOrganizerPart(QWidget *parentWidget, const char *widgetName,
-                               QObject *parent, const char *name) :
+KOrganizerPart::KOrganizerPart( QWidget *parentWidget, const char *widgetName,
+                                QObject *parent, const char *name,
+                                const QStringList & ) :
   KParts::ReadOnlyPart(parent, name)
 {
   QString pname( name );
@@ -216,6 +170,11 @@ KOrganizerPart::KOrganizerPart(QWidget *parentWidget, const char *widgetName,
 
   setXMLFile( "korganizer_part.rc" );
   QTimer::singleShot(0, mActionManager, SLOT(loadParts()));
+}
+
+KAboutData *KOrganizerPart::createAboutData()
+{
+  return KOrg::AboutData::self();
 }
 
 void KOrganizerPart::startCompleted( KProcess* process )

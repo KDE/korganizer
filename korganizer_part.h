@@ -44,33 +44,16 @@ namespace KCal {
   class Calendar;
 }
 
-class KOrganizerFactory : public KParts::Factory
-{
-    Q_OBJECT
-  public:
-    KOrganizerFactory();
-    virtual ~KOrganizerFactory();
-
-    virtual KParts::Part* createPartObject(QWidget *parentWidget, const char *name,
-    QObject* parent = 0, const char* name1 = 0,
-    const char* classname = "QObject",
-    const QStringList &args = QStringList());
-
-    static KInstance *instance();
-
-  private:
-    static KInstance *s_instance;
-    static KAboutData *s_about;
-};
-
 class KOrganizerPart: public KParts::ReadOnlyPart,
 		      public KOrg::MainWindow
 {
     Q_OBJECT
   public:
     KOrganizerPart(QWidget *parentWidget, const char *widgetName,
-                   QObject *parent, const char *name);
+                   QObject *parent, const char *name, const QStringList & );
     virtual ~KOrganizerPart();
+
+    static KAboutData *createAboutData();
 
     virtual KOrg::CalendarViewBase *view() const;
 
