@@ -32,6 +32,7 @@
 #include <kurl.h>
 #include <kapplication.h>
 #include <dcopclient.h>
+#include <kprocess.h>
 
 #include <libkcal/event.h>
 #include <libkcal/todo.h>
@@ -133,17 +134,16 @@ bool KOMailClient::send(const QString &from,const QString &to,
       command = KStandardDirs::findExe(QString::fromLatin1("mail"));
       if (command.isNull()) return false; // give up
 
-      command.append(QString::fromLatin1(" -s \x22"));
-      command.append(subject);
-      command.append(QString::fromLatin1("\x22"));
+      command.append(QString::fromLatin1(" -s "));
+      command.append(KProcess::quote(subject));
 
       if (bcc) {
         command.append(QString::fromLatin1(" -b "));
-        command.append(from);
+        command.append(KProcess::quote(from));
       }
 
       command.append(" ");
-      command.append(to);
+      command.append(KProcess::quote(to));
 
       needHeaders = false;
     }
