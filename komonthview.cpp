@@ -340,14 +340,16 @@ void MonthViewCell::setDate( const QDate &date )
   mDate = date;
 
   QString text;
-   if ( KOGlobals::self()->calendarSystem()->day( date ) == 1 ) {
-     text = KOGlobals::self()->calendarSystem()->monthName( date, true ) + " ";
+  if ( KOGlobals::self()->calendarSystem()->day( date ) == 1 ) {
+    text = i18n("'Month day' for month view cells", "%1 %2")
+        .arg( KOGlobals::self()->calendarSystem()->monthName( date, true ) )
+        .arg( KOGlobals::self()->calendarSystem()->day(mDate) );
     QFontMetrics fm( mLabel->font() );
     mLabel->resize( mLabelSize + QSize( fm.width( text ), 0 ) );
   } else {
     mLabel->resize( mLabelSize );
+    text = QString::number( KOGlobals::self()->calendarSystem()->day(mDate) );
   }
-  text += QString::number( KOGlobals::self()->calendarSystem()->day(mDate) );
   mLabel->setText( text );
 
   resizeEvent( 0 );
