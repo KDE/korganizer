@@ -58,6 +58,7 @@
 #include <X11/Xlib.h>
 #undef KeyPress
 #undef None
+#undef Status
 #endif
 
 // ============================================================================
