@@ -26,6 +26,4 @@ SUBDIRS = pixmaps
 autostart_DATA = korgac.desktop
 autostartdir = $(datadir)/autostart
 
-KDE_ICON = AUTO
-
 include ../../admin/Doxyfile.am
