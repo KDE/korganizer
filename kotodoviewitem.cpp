@@ -62,7 +62,7 @@ int KOTodoViewItem::compare( QListViewItem *i, int col, bool ascending ) const
       if ( ikey.isEmpty() ) // i has not due date set, but this has
         if ( ascending ) return -1;
         else return 1;
-      else 
+      else
         return QCheckListItem::compare( i, col, ascending );
     }
   } else return QCheckListItem::compare( i, col, ascending );
@@ -116,7 +116,7 @@ void KOTodoViewItem::construct()
     if (mTodo->isCompleted()) setSortKey( ePercentColumn, QString::number(999) );
     else setSortKey( ePercentColumn, QString::number(99) );
   }
-  
+
   if (mTodo->hasDueDate()) {
     QString dtStr = mTodo->dtDueDateStr();
     QString keyt = "";
@@ -129,6 +129,7 @@ void KOTodoViewItem::construct()
     keyd = "";
     setText( eDueDateColumn, "" );
   }
+  keyd += QString::number( mTodo->priority() );
   setSortKey( eDueDateColumn, keyd );
 
   QString priorityKey = QString::number( mTodo->priority() ) + keyd;
@@ -282,7 +283,7 @@ void KOTodoViewItem::paintCell(QPainter *p, const QColorGroup &cg, int column, i
     p->setPen( KGlobalSettings::textColor() );  //border
     p->setBrush( KGlobalSettings::baseColor() );  //filling
     p->drawRect( 2, 2, width-4, height()-4);
-    p->fillRect( 3, 3, progress, height()-6, 
+    p->fillRect( 3, 3, progress, height()-6,
         KGlobalSettings::highlightColor() );
     p->restore();
   } else {
