@@ -163,7 +163,7 @@ void KOProjectView::updateView()
                              QDateTime(QDate(2000,10,31)) );
 #endif
 
-  QPtrList<Todo> todoList = calendar()->getTodoList();
+  QPtrList<Todo> todoList = calendar()->todos();
 
 /*
   kdDebug() << "KOProjectView::updateView(): Todo List:" << endl;

@@ -115,7 +115,7 @@ void KOTodoListView::contentsDropEvent(QDropEvent *e)
     Todo *destinationEvent = 0;
     if (destination) destinationEvent = destination->todo();
 
-    Todo *existingTodo = mCalendar->getTodo(todo->uid());
+    Todo *existingTodo = mCalendar->todo(todo->uid());
 
     if(existingTodo) {
 //      kdDebug() << "Drop existing Todo" << endl;
@@ -355,7 +355,7 @@ void KOTodoView::updateView()
 
   mTodoListView->clear();
 
-  QPtrList<Todo> todoList = calendar()->getFilteredTodoList();
+  QPtrList<Todo> todoList = calendar()->todos();
 
 /*
   kdDebug() << "KOTodoView::updateView(): Todo List:" << endl;

@@ -283,7 +283,7 @@ void HtmlExport::createHtmlTodoList (QTextStream *ts)
 {
   Todo *ev,*subev;
 
-  QPtrList<Todo> rawTodoList = mCalendar->getFilteredTodoList();
+  QPtrList<Todo> rawTodoList = mCalendar->todos();
   QPtrList<Todo> todoList;
 
   ev = rawTodoList.first();

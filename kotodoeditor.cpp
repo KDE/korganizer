@@ -257,7 +257,7 @@ void KOTodoEditor::slotLoadTemplate()
     return;
   }
 
-  QPtrList<Todo> todos = cal.getTodoList();
+  QPtrList<Todo> todos = cal.todos();
   todo = todos.first();
   if ( !todo ) {
     KMessageBox::error( this,

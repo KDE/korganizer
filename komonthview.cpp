@@ -331,7 +331,7 @@ void MonthViewCell::updateCell()
   }
 
   // insert due todos
-  QPtrList<Todo> todos = mMonthView->calendar()->getTodosForDate( mDate );
+  QPtrList<Todo> todos = mMonthView->calendar()->todos( mDate );
   Todo *todo;
   for(todo = todos.first(); todo; todo = todos.next()) {
     QString text;

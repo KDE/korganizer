@@ -379,7 +379,7 @@ void CalPrinter::printTodo(const QDate &fd, const QDate &td)
    mCurrentLinePos = mHeaderHeight + 5;
    kdDebug() << "Header Height: " << mCurrentLinePos << endl;
 
-  QPtrList<Todo> todoList = mCalendar->getTodoList();
+  QPtrList<Todo> todoList = mCalendar->todos();
   todoList.first();
   int count = 1;
   QString outStr;

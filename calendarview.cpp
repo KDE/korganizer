@@ -1516,7 +1516,7 @@ void CalendarView::takeOverCalendar()
     events.at(i)->setReadOnly(false);
   }
 
-  QPtrList<Todo> todos = mCalendar->getTodoList();
+  QPtrList<Todo> todos = mCalendar->todos();
   for(uint i=0; i<todos.count(); ++i) {
     todos.at(i)->setOrganizer(KOPrefs::instance()->email());
     todos.at(i)->recreate();
@@ -1661,7 +1661,7 @@ void CalendarView::purgeCompleted()
     bool deletedOne = true;
     while (deletedOne) {
       todoCal.clear();
-      todoCal = calendar()->getTodoList();
+      todoCal = calendar()->todos();
       deletedOne = false;
       for (aTodo = todoCal.first(); aTodo; aTodo = todoCal.next()) {
         if (aTodo->isCompleted()) {

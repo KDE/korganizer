@@ -95,7 +95,7 @@ void KOrganizerApp::displayImminent(const QString &urlString,int numdays)
     }
 
     printf("---------------------------------------------------------------\n");
-    QPtrList<Todo> tmpList2 = cal->getTodosForDate(currDate);
+    QPtrList<Todo> tmpList2 = cal->todos(currDate);
     Todo *currTodo;
     if (tmpList.count() > 0) {
       for (currTodo = tmpList2.first(); currTodo; currTodo = tmpList2.next()) {

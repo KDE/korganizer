@@ -245,7 +245,7 @@ void KOListView::showDates(const QDate &start, const QDate &end)
   QDate date = start;
   while( date <= end ) {
     addEvents(calendar()->getEventsForDate(date));
-    addTodos(calendar()->getTodosForDate(date));
+    addTodos(calendar()->todos(date));
     date = date.addDays( 1 );
   }
 

@@ -166,7 +166,7 @@ void KOWhatsNextView::updateView()
     if (replys > 0 ) mText += i18n("</table>\n");
   }
 
-  QPtrList<Todo> todos = calendar()->getTodoList();
+  QPtrList<Todo> todos = calendar()->todos();
   if (todos.count() > 0) {
     kil.loadIcon("todo",KIcon::NoGroup,22,KIcon::DefaultState,ipath);
     mText += i18n("<h2><img src=\"");
@@ -252,7 +252,7 @@ void KOWhatsNextView::showIncidence(const QString &uid)
     createEventViewer();
     mEventViewer->setEvent(event);
   } else if (uid.startsWith("todo://")) {
-    Todo *todo = calendar()->getTodo(uid.mid(7));
+    Todo *todo = calendar()->todo(uid.mid(7));
     if (!todo) return;
     createEventViewer();
     mEventViewer->setTodo(todo);
