@@ -274,12 +274,12 @@ void KOPrefsDialog::setupViewsTab()
   QFrame *topFrame = addPage(i18n("Views"),0,
                              DesktopIcon("viewmag",KIcon::SizeMedium));
 
-  QGridLayout *topLayout = new QGridLayout(topFrame,5,2);
+  QGridLayout *topLayout = new QGridLayout(topFrame,13,2);
   topLayout->setSpacing(spacingHint());
   topLayout->setMargin(marginHint());
 
   QBoxLayout *dayBeginsLayout = new QHBoxLayout;
-  topLayout->addLayout(dayBeginsLayout,1,0);
+  topLayout->addLayout(dayBeginsLayout,0,0);
 
   KPrefsWidTime *dayBegins =
     addWidTime(i18n("Day begins at:"),&(KOPrefs::instance()->mDayBegins),
@@ -288,14 +288,11 @@ void KOPrefsDialog::setupViewsTab()
   dayBeginsLayout->addStretch(1);
   dayBeginsLayout->addWidget(dayBegins->spinBox());
 
-// TODO: make hour size work
   QGroupBox *hourSizeGroup = new QGroupBox(1,Horizontal,
                                            i18n("Hour size in schedule view"),
                                            topFrame);
-  mHourSizeSlider = new QSlider(0,100,5,10,Horizontal,hourSizeGroup);
+  mHourSizeSlider = new QSlider(4,30,1,10,Horizontal,hourSizeGroup);
   topLayout->addMultiCellWidget(hourSizeGroup,1,1,0,1);
-// Disable hour size setting because it is not used. Has to be fixed.
-  hourSizeGroup->hide();
 
   KPrefsWidBool *dailyRecur =
     addWidBool(i18n("Show events that recur daily in Date Navigator"),
@@ -331,7 +328,7 @@ void KOPrefsDialog::setupViewsTab()
       addWidBool(i18n("Show Marcus Bains line."),
                  &(KOPrefs::instance()->mMarcusBainsEnabled),topFrame);
   topLayout->addWidget(marcusBainsEnabled->checkBox(),10,0);
-
+  
   QBoxLayout *printLayout = new QHBoxLayout;
   topLayout->addLayout(printLayout,11,0);
   printLayout->addWidget(new QLabel(i18n("Print Preview Program:"),topFrame));

@@ -1185,6 +1185,8 @@ void KOAgenda::updateConfig()
 {
   viewport()->setBackgroundColor(KOPrefs::instance()->mAgendaBgColor);
 
+  mGridSpacingY = KOPrefs::instance()->mHourSize;
+  
   calculateWorkingHours();
 
   marcus_bains();

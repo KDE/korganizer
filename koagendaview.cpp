@@ -70,7 +70,7 @@ TimeLabels::TimeLabels(int rows,QWidget *parent,const char *name,WFlags f) :
 {
   mRows = rows;
 
-  mCellHeight = 40;
+  mCellHeight = KOPrefs::instance()->mHourSize*4;
 
   enableClipper(true);
 
@@ -165,6 +165,10 @@ void TimeLabels::updateConfig()
 
   // update geometry restrictions based on new settings
   setFixedWidth(minimumWidth());
+  
+  // update HourSize
+  mCellHeight = KOPrefs::instance()->mHourSize*4;
+  resizeContents(50,mRows * mCellHeight);
 }
 
 /** update time label positions */
@@ -324,7 +328,7 @@ KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name) :
   agendaLayout->addWidget(mTimeLabels,1,0);
 
   // Create agenda
-  mAgenda = new KOAgenda(1,96,10,agendaFrame);
+  mAgenda = new KOAgenda(1,96,KOPrefs::instance()->mHourSize,agendaFrame);
   agendaLayout->addMultiCellWidget(mAgenda,1,1,1,2);
   agendaLayout->setColStretch(1,1);
 
