@@ -114,7 +114,7 @@ void KOrganizerApp::processCalendar( const KURL &url )
 
     if ( hasDocument ) korg->openURL( url );
   } else {
-    KWin::setActiveWindow( korg->topLevelWidget()->winId() );
+    KWin::activateWindow( korg->topLevelWidget()->winId() );
   }
 }
 
