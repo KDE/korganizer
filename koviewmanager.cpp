@@ -354,7 +354,11 @@ QDate KOViewManager::currentSelectionDate()
 
 void KOViewManager::addView(KOrg::BaseView *view)
 {
-  mMainView->viewStack()->addWidget(view);
+#if QT_VERSION >= 300
+  mMainView->viewStack()->addWidget( view );
+#else
+  mMainView->viewStack()->addWidget( view, 1 );
+#endif
 }
 
 void KOViewManager::setDocumentId( const QString &id )
