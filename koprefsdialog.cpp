@@ -526,17 +526,10 @@ class KOPrefsDialogFonts : public KPrefsModule
       topLayout->addWidget(timeBarFont->preview(),0,1);
       topLayout->addWidget(timeBarFont->button(),0,2);
 
-#if 0
       KPrefsWidFont *monthViewFont =
-          addWidFont(KGlobal::locale()->formatTime(QTime(12,34)) + " " + i18n("Event text"),
-                     i18n("Month view:"),KOPrefs::instance()->mMonthViewFont,topFrame);
-#else
-      // TODO: Create entry for month view font in kcfg file.
-      KPrefsWidFont *monthViewFont =
-          addWidFont( KOPrefs::instance()->agendaViewFontItem(), topFrame,
+          addWidFont( KOPrefs::instance()->monthViewFontItem(), topFrame,
                       KGlobal::locale()->formatTime(QTime(12,34)) + " " +
                       i18n("Event text") );
-#endif
 
       topLayout->addWidget(monthViewFont->label(),1,0);
       topLayout->addWidget(monthViewFont->preview(),1,1);
@@ -595,16 +588,8 @@ KOPrefsDialogColors::KOPrefsDialogColors( QWidget *parent, const char *name )
   topLayout->addWidget(highlightColor->label(),1,0);
   topLayout->addWidget(highlightColor->button(),1,1);
 
-  // Event color
-#if 0
   KPrefsWidColor *eventColor =
-      addWidColor(i18n("Default event color:"),
-                  KOPrefs::instance()->mEventColor,topFrame);
-#else
-  // TODO: Cretae default event color entry in kcfg file.
-  KPrefsWidColor *eventColor =
-      addWidColor( KOPrefs::instance()->highlightColorItem(), topFrame );
-#endif
+      addWidColor( KOPrefs::instance()->eventColorItem(), topFrame );
   topLayout->addWidget(eventColor->label(),2,0);
   topLayout->addWidget(eventColor->button(),2,1);
 

@@ -1,5 +1,6 @@
 /*
     This file is part of KOrganizer.
+
     Copyright (c) 2001,2003 Cornelius Schumacher <schumacher@kde.org>
 
     This program is free software; you can redistribute it and/or modify
@@ -66,13 +67,8 @@ KOPrefs::KOPrefs() :
   addItemPath("Html Export File","Html Export File",mHtmlExportFile,
       QDir::homeDirPath() + "/" + i18n("Default export file", "calendar.html"));
 
-  KConfigSkeleton::setCurrentGroup("Fonts");
-
-  addItemFont("MonthView Font","MonthView Font",mMonthViewFont, mDefaultMonthViewFont);
-
-  KConfigSkeleton::setCurrentGroup("Colors");
-
-  addItemColor("Event Color","Event Color",mEventColor,mDefaultCategoryColor);
+  monthViewFontItem()->setDefaultValue( mDefaultMonthViewFont );
+  eventColorItem()->setDefaultValue( mDefaultCategoryColor );
 }
 
 

@@ -241,6 +241,9 @@
       <label>Todo overdue color</label>
       <default>255, 100, 100</default>
     </entry>
+    <entry type="QColor" key="Event Color">
+      <label>Default event color</label>
+    </entry>
   </group>
 
   <group name="Fonts">
@@ -252,6 +255,9 @@
     </entry>
     <entry type="QFont" key="MarcusBains Font">
       <label>Marcus Bains line</label>
+    </entry>
+    <entry type="QFont" key="MonthView Font">
+      <label>Month view</label>
     </entry>
   </group>
 

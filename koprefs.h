@@ -75,10 +75,6 @@ class KOPrefs : public KOPrefsBase
     void setEmail( const QString & );
     QString email();
 
-    QFont   mMonthViewFont;
-
-    QColor  mEventColor;
-
     void setCategoryColor( QString cat, const QColor &color );
     QColor *categoryColor( QString cat );
 
