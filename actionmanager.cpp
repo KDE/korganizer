@@ -536,28 +536,28 @@ void ActionManager::initActions()
                             mACollection );
     KStdAction::keyBindings( this, SLOT( keyBindings() ), mACollection );
   }
-  
-  mDateNavigatorShowAction= new KToggleAction ( i18n("Show DateNavigator"), 0, 
+
+  mDateNavigatorShowAction= new KToggleAction ( i18n("Show Date Navigator"), 0,
                       this,
                       SLOT( toggleDateNavigator() ),
-                      mACollection, 
+                      mACollection,
                       "show_datenavigator" );
-  mTodoViewShowAction= new KToggleAction ( i18n("Show Todo View"), 0, 
+  mTodoViewShowAction= new KToggleAction ( i18n("Show Todo View"), 0,
                       this,
                       SLOT( toggleTodoView() ),
-                      mACollection, 
+                      mACollection,
                       "show_todoview" );
-  mEventViewerShowAction= new KToggleAction ( i18n("Show Event Viewer"), 0, 
+  mEventViewerShowAction= new KToggleAction ( i18n("Show Event Viewer"), 0,
                       this,
                       SLOT( toggleEventViewer() ),
-                      mACollection, 
+                      mACollection,
                       "show_eventviewer" );
-  mResourceViewShowAction= new KToggleAction ( i18n("Show Resource View"), 0, 
+  mResourceViewShowAction= new KToggleAction ( i18n("Show Resource View"), 0,
                       this,
                       SLOT( toggleResourceView() ),
-                      mACollection, 
+                      mACollection,
                       "show_resourceview" );
-  
+
   KConfig *config = KOGlobals::self()->config();
   config->setGroup( "Settings" );
   mDateNavigatorShowAction->setChecked(
@@ -568,12 +568,12 @@ void ActionManager::initActions()
       config->readBoolEntry( "EventViewerVisible", true ) );
   mResourceViewShowAction->setChecked(
       config->readBoolEntry( "ResourceViewVisible", true ) );
-      
+
   toggleDateNavigator();
   toggleTodoView();
   toggleEventViewer();
   toggleResourceView();
-      
+
   new KAction( i18n("Edit C&ategories..."), 0,
                     mCalendarView->dialogManager(),
                     SLOT( showCategoryEditDialog() ),
@@ -643,7 +643,7 @@ void ActionManager::writeSettings()
     config->writeEntry( "EventViewerVisible",
                         mEventViewerShowAction->isChecked() );
   }
-  
+
   if ( mRecent ) mRecent->saveEntries( config );
 
   config->sync();
