@@ -43,11 +43,13 @@ class KalarmdClient : public QObject, public AlarmClient
     
     void startDaemon();
 
-    bool addCalendar( const KURL & );
+    bool setCalendars( const QStringList & );
 
-    bool removeCalendar( const KURL & );
+    bool addCalendar( const QString & );
 
-    bool reloadCalendar( const KURL & );
+    bool removeCalendar( const QString & );
+
+    bool reloadCalendar( const QString & );
 
   private slots:
     void startCompleted( KProcess * );

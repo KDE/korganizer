@@ -20,7 +20,8 @@
 #ifndef ALARMCLIENT_H
 #define ALARMCLIENT_H
 
-#include <kurl.h>
+#include <qstring.h>
+#include <qstringlist.h>
 
 /**
   This class provides the abstract interface for communicating with the alarm
@@ -36,19 +37,24 @@ class AlarmClient
     virtual void startDaemon() = 0;
 
     /**
+      Set the list of monitored calendars. Deletes previous settings.
+    */
+    virtual bool setCalendars( const QStringList & ) = 0;
+
+    /**
       Add calendar for monitoring by alarm daemon.
     */
-    virtual bool addCalendar( const KURL & ) = 0;
+    virtual bool addCalendar( const QString & ) = 0;
     
     /**
       Remove calendar from monitoring by alarm daemon.
     */
-    virtual bool removeCalendar( const KURL & ) = 0;
+    virtual bool removeCalendar( const QString & ) = 0;
 
     /**
       Reload calendar at URL.
     */
-    virtual bool reloadCalendar( const KURL & ) = 0;    
+    virtual bool reloadCalendar( const QString & ) = 0;    
 };
 
 #endif

@@ -33,16 +33,25 @@ class KProcess;
 class SimpleAlarmClient : public AlarmClient
 {
   public:  
+    SimpleAlarmClient();
+    virtual ~SimpleAlarmClient();
+
     /**
       Start alarm daemon.
     */
     void startDaemon();
 
-    bool addCalendar( const KURL & );
+    bool setCalendars( const QStringList & );
 
-    bool removeCalendar( const KURL & );
+    bool addCalendar( const QString & );
 
-    bool reloadCalendar( const KURL & );
+    bool removeCalendar( const QString & );
+
+    bool reloadCalendar( const QString & );
+
+  private:
+    QString mCalendarsFile;
+    KProcess *mProcess;
 };
 
 #endif

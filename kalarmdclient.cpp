@@ -78,21 +78,26 @@ void KalarmdClient::startCompleted( KProcess* process )
   }
 }
 
-bool KalarmdClient::addCalendar( const KURL &url )
+bool KalarmdClient::setCalendars( const QStringList & )
 {
-  mAlarmDaemonIface.addCal( "korgac", url.url() );
+  return false;
+}
+
+bool KalarmdClient::addCalendar( const QString &url )
+{
+  mAlarmDaemonIface.addCal( "korgac", url );
   return mAlarmDaemonIface.ok();
 }
 
-bool KalarmdClient::removeCalendar( const KURL &url )
+bool KalarmdClient::removeCalendar( const QString &url )
 {
-  mAlarmDaemonIface.removeCal( url.url() );
+  mAlarmDaemonIface.removeCal( url );
   return mAlarmDaemonIface.ok();
 }
 
-bool KalarmdClient::reloadCalendar( const KURL &url )
+bool KalarmdClient::reloadCalendar( const QString &url )
 {
-  mAlarmDaemonIface.reloadCal( "korgac", url.url() );
+  mAlarmDaemonIface.reloadCal( "korgac", url );
   return mAlarmDaemonIface.ok();
 }
 

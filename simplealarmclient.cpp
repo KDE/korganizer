@@ -1,6 +1,6 @@
 /*
     This file is part of KOrganizer.
-    Copyright (c) 2002 Cornelius Schumacher <schumacher@kde.org>
+    Copyright (c) 2002,2003 Cornelius Schumacher <schumacher@kde.org>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -24,22 +24,80 @@
 #include "simplealarmclient.h"
 
 #include <kprocess.h>
+#include <kdebug.h>
+#include <kstandarddirs.h>
+
+#include <qfile.h>
+#include <qtextstream.h>
+
+SimpleAlarmClient::SimpleAlarmClient()
+  : mProcess( 0 )
+{
+  mCalendarsFile = locateLocal( "data", "simplealarmdaemon/calendars" );
+
+  kdDebug() << "SimpleAlarmClient(): file: " << mCalendarsFile << endl;
+}
+
+SimpleAlarmClient::~SimpleAlarmClient()
+{
+  delete mProcess;
+}
 
 void SimpleAlarmClient::startDaemon()
 {
+  kdDebug() << "SimpleAlarmClient::startDaemon()" << endl;
+
+  if ( !mProcess ) {
+    mProcess = new KProcess;
+    *mProcess << "simplealarmdaemon";
+    mProcess->start();
+  }
 }
 
-bool SimpleAlarmClient::addCalendar( const KURL & )
+bool SimpleAlarmClient::setCalendars( const QStringList &calendars )
 {
-  return false;
+  QFile f( mCalendarsFile );
+  if ( !f.open( IO_WriteOnly ) ) return false;
+  QTextStream ts( &f );
+  QStringList::ConstIterator it;
+  for ( it = calendars.begin(); it != calendars.end(); ++it ) {
+    ts << *it << "\n";
+  }
+  f.close();
+  
+  return true;
 }
 
-bool SimpleAlarmClient::removeCalendar( const KURL & )
+bool SimpleAlarmClient::addCalendar( const QString &calendar )
 {
-  return false;
+  QFile f( mCalendarsFile );
+  if ( !f.open( IO_WriteOnly | IO_Append ) ) return false;
+  QTextStream ts( &f );
+  ts << calendar << "\n";
+  f.close();
+
+  return true;
 }
 
-bool SimpleAlarmClient::reloadCalendar( const KURL & )
+bool SimpleAlarmClient::removeCalendar( const QString &calendar )
 {
-  return false;
+  QStringList calendars;
+
+  QFile f( mCalendarsFile );
+  if ( !f.open( IO_ReadOnly ) ) return false;
+  QTextStream ts( &f );
+  bool found = false;
+  QString line;
+  while ( !( line = ts.readLine() ).isNull() ) {
+    if ( line != calendar ) calendars.append( line );
+    else found = true;
+  }
+
+  if ( found ) return setCalendars( calendars );
+  else return true;
+}
+
+bool SimpleAlarmClient::reloadCalendar( const QString & )
+{
+  return true;
 }

@@ -41,10 +41,11 @@
 class NopAlarmClient : public AlarmClient
 {
   public:
-    void startDaemon(){}
-    bool addCalendar( const KURL & ) { return false; }
-    bool removeCalendar( const KURL & ) { return false; }
-    bool reloadCalendar( const KURL & ) { return false; }
+    void startDaemon() {}
+    bool setCalendars( const QStringList & ) { return false; }
+    bool addCalendar( const QString & ) { return false; }
+    bool removeCalendar( const QString & ) { return false; }
+    bool reloadCalendar( const QString & ) { return false; }
 };
 
 KOGlobals *KOGlobals::mSelf = 0;

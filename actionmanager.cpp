@@ -736,7 +736,7 @@ bool ActionManager::saveURL()
     if (result != KMessageBox::Continue) return false;
 
     // Tell the alarm daemon to stop monitoring the vCalendar file
-    if ( !KOGlobals::self()->alarmClient()->removeCalendar( mURL ) ) {
+    if ( !KOGlobals::self()->alarmClient()->removeCalendar( mURL.url() ) ) {
       kdDebug() << "KOrganizer::saveURL(): dcop send failed" << endl;
     }
 
@@ -768,7 +768,7 @@ bool ActionManager::saveURL()
 
   if (isActive()) {
     kdDebug() << "KOrganizer::saveURL(): Notify alarm daemon" << endl;
-    if ( !KOGlobals::self()->alarmClient()->reloadCalendar( mURL ) ) {
+    if ( !KOGlobals::self()->alarmClient()->reloadCalendar( mURL.url() ) ) {
       kdDebug() << "KOrganizer::saveUrl(): reloadCal call failed." << endl;
     }
   }
@@ -1023,7 +1023,7 @@ void ActionManager::makeActive()
   }
 
   writeActiveState();
-  if ( !KOGlobals::self()->alarmClient()->reloadCalendar( mURL ) ) {
+  if ( !KOGlobals::self()->alarmClient()->reloadCalendar( mURL.url() ) ) {
     kdDebug() << "KOrganizer::makeActive(): dcop send failed" << endl;
   }
   setActive();
