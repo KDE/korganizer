@@ -21,7 +21,7 @@
     without including the source code for Qt in the source distribution.
 */
 
-// $Id$	
+// $Id$
 
 #include <qtooltip.h>
 #include <qfiledialog.h>
@@ -37,7 +37,7 @@
 #include <klocale.h>
 #include <kiconloader.h>
 #include <kdebug.h>
-
+#include <knumvalidator.h>
 #include <libkcal/event.h>
 
 #include "koprefs.h"
@@ -61,14 +61,14 @@ KOEditorRecurrence::KOEditorRecurrence(int spacing,QWidget* parent,
 }
 
 KOEditorRecurrence::~KOEditorRecurrence()
-{  
+{
 }
 
 void KOEditorRecurrence::initLayout()
 {
   QGridLayout *layoutTop = new QGridLayout(this,1,1);
   layoutTop->setSpacing(mSpacing);
-  
+
   layoutTop->addMultiCellWidget(timeGroupBox,0,0,0,1);
   layoutTop->addMultiCellWidget(ruleGroupBox,1,1,0,1);
   layoutTop->addWidget(rangeGroupBox,2,0);
@@ -78,7 +78,7 @@ void KOEditorRecurrence::initLayout()
 
 void KOEditorRecurrence::initMain()
 {
-  // Create the appointement time group box, which is 
+  // Create the appointement time group box, which is
   timeGroupBox = new QGroupBox( 1,QGroupBox::Horizontal,
                                 i18n("Appointment Time "),this, "User_2" );
 
@@ -88,7 +88,7 @@ void KOEditorRecurrence::initMain()
 
   dateTimeLabel = new QLabel(timeFrame);
   layoutTimeFrame->addWidget(dateTimeLabel);
-  
+
   // Create the recursion rule Group box. This will also hold the
   // daily, weekly, monthly and yearly recursion rule frames which
   // specify options individual to each of these distinct sections of
@@ -148,11 +148,11 @@ void KOEditorRecurrence::initMain()
   layoutAdvancedRule->addWidget(advancedRuleButton);
   layoutAdvancedRule->addWidget(advancedRuleEdit);
 
-  connect(dailyButton, SIGNAL(toggled(bool)), 
+  connect(dailyButton, SIGNAL(toggled(bool)),
 	  this, SLOT(showDaily(bool)));
-  connect(weeklyButton, SIGNAL(toggled(bool)), 
+  connect(weeklyButton, SIGNAL(toggled(bool)),
 	  this, SLOT(showWeekly(bool)));
-  connect(monthlyButton, SIGNAL(toggled(bool)), 
+  connect(monthlyButton, SIGNAL(toggled(bool)),
 	  this, SLOT(showMonthly(bool)));
   connect(yearlyButton, SIGNAL(toggled(bool)),
 	  this, SLOT(showYearly(bool)));
@@ -172,13 +172,14 @@ void KOEditorRecurrence::initMain()
   noEndDateButton = new QRadioButton(i18n("No Ending Date"), rangeButtonGroup);
   endDurationButton = new QRadioButton(i18n("End after"), rangeButtonGroup);
   endDurationEdit = new QLineEdit(rangeButtonGroup);
+  endDurationEdit->setValidator(new KIntValidator(0,9999,endDurationEdit));
   endDurationLabel = new QLabel(i18n("occurrence(s)"), rangeButtonGroup);
   endDateButton = new QRadioButton(i18n("End by:"), rangeButtonGroup);
   endDateEdit = new KDateEdit(rangeButtonGroup);
 
   // Construct layout for recurrence range box
   QBoxLayout *layoutRange = new QVBoxLayout(rangeButtonGroup,5);
-    
+
 //  QBoxLayout *layoutStart = new QHBoxLayout;
 //  layoutRange->addLayout(layoutStart);
 //  layoutStart->addWidget(startDateLabel);
@@ -187,7 +188,7 @@ void KOEditorRecurrence::initMain()
   layoutRange->addWidget(startDateLabel);
 
   layoutRange->addWidget(noEndDateButton);
-  
+
   QBoxLayout *layoutEndDuration = new QHBoxLayout;
   layoutRange->addLayout(layoutEndDuration);
   layoutEndDuration->addWidget(endDurationButton);
@@ -198,9 +199,9 @@ void KOEditorRecurrence::initMain()
   layoutRange->addLayout(layoutEndDate);
   layoutEndDate->addWidget(endDateButton);
   layoutEndDate->addWidget(endDateEdit,AlignLeft);
-  
+
   layoutRange->addStretch(1);
-  
+
   connect(noEndDateButton, SIGNAL(toggled(bool)),
 	  this, SLOT(disableRange(bool)));
   connect(endDurationButton, SIGNAL(toggled(bool)),
@@ -267,6 +268,7 @@ void KOEditorRecurrence::initDaily()
   everyNDays = new QLabel(i18n("Recur every"), dailyFrame);
 
   nDaysEntry = new QLineEdit(dailyFrame);
+  nDaysEntry->setValidator(new KIntValidator(0,999,nDaysEntry));
   nDaysEntry->setText( "1" );
   nDaysEntry->setMaxLength( 3 );
 
@@ -286,6 +288,7 @@ void KOEditorRecurrence::initWeekly()
   everyNWeeks = new QLabel(i18n("Recur every"), weeklyFrame);
 
   nWeeksEntry = new QLineEdit(weeklyFrame);
+  nWeeksEntry->setValidator(new KIntValidator(0,99,nWeeksEntry));
   nWeeksEntry->setText("1");
   nWeeksEntry->setMaxLength(2);
 
@@ -306,7 +309,7 @@ void KOEditorRecurrence::initWeekly()
   layoutEveryN->addWidget(everyNWeeks);
   layoutEveryN->addWidget(nWeeksEntry);
   layoutEveryN->addWidget(nWeeksLabel);
-  
+
   QBoxLayout *layoutDays = new QHBoxLayout;
   layoutWeekly->addLayout(layoutDays);
   layoutDays->addWidget(sundayBox);
@@ -337,19 +340,20 @@ void KOEditorRecurrence::initMonthly()
 
   monthCommonLabel  = new QLabel(i18n("every"), monthlyButtonGroup);
   nMonthsEntry      = new QLineEdit(monthlyButtonGroup);
+  nMonthsEntry->setValidator(new KIntValidator(0,999,nMonthsEntry));
   nMonthsEntry->setText("1");
   nMonthsLabel      = new QLabel(i18n("month(s)"), monthlyButtonGroup);
 
   nthDayEntry->setSizeLimit( 7 );
-  nthDayEntry->insertItem( i18n("1st") ); 
-  nthDayEntry->insertItem( i18n("2nd") ); 
-  nthDayEntry->insertItem( i18n("3rd") ); 
-  nthDayEntry->insertItem( i18n("4th") ); 
-  nthDayEntry->insertItem( i18n("5th") ); 
-  nthDayEntry->insertItem( i18n("6th") ); 
-  nthDayEntry->insertItem( i18n("7th") ); 
-  nthDayEntry->insertItem( i18n("8th") ); 
-  nthDayEntry->insertItem( i18n("9th") ); 
+  nthDayEntry->insertItem( i18n("1st") );
+  nthDayEntry->insertItem( i18n("2nd") );
+  nthDayEntry->insertItem( i18n("3rd") );
+  nthDayEntry->insertItem( i18n("4th") );
+  nthDayEntry->insertItem( i18n("5th") );
+  nthDayEntry->insertItem( i18n("6th") );
+  nthDayEntry->insertItem( i18n("7th") );
+  nthDayEntry->insertItem( i18n("8th") );
+  nthDayEntry->insertItem( i18n("9th") );
   nthDayEntry->insertItem( i18n("10th") );
   nthDayEntry->insertItem( i18n("11th") );
   nthDayEntry->insertItem( i18n("12th") );
@@ -373,32 +377,32 @@ void KOEditorRecurrence::initMonthly()
   nthDayEntry->insertItem( i18n("30th") );
   nthDayEntry->insertItem( i18n("31st") );
 
-  nthNumberEntry->insertItem( i18n("1st") ); 
+  nthNumberEntry->insertItem( i18n("1st") );
   nthNumberEntry->insertItem( i18n("2nd") );
-  nthNumberEntry->insertItem( i18n("3rd") ); 
+  nthNumberEntry->insertItem( i18n("3rd") );
   nthNumberEntry->insertItem( i18n("4th") );
-  nthNumberEntry->insertItem( i18n("5th") ); 
+  nthNumberEntry->insertItem( i18n("5th") );
 
-  nthTypeOfDayEntry->insertItem( i18n("Monday") );  
-  nthTypeOfDayEntry->insertItem( i18n("Tuesday") ); 
+  nthTypeOfDayEntry->insertItem( i18n("Monday") );
+  nthTypeOfDayEntry->insertItem( i18n("Tuesday") );
   nthTypeOfDayEntry->insertItem( i18n("Wednesday") );
   nthTypeOfDayEntry->insertItem( i18n("Thursday") );
-  nthTypeOfDayEntry->insertItem( i18n("Friday") );  
+  nthTypeOfDayEntry->insertItem( i18n("Friday") );
   nthTypeOfDayEntry->insertItem( i18n("Saturday") );
-  nthTypeOfDayEntry->insertItem( i18n("Sunday") );  
+  nthTypeOfDayEntry->insertItem( i18n("Sunday") );
   nthTypeOfDayEntry->adjustSize();
 
   // Construct layout for monthly recurrence rule
   QGridLayout *layoutMonthly = new QGridLayout(monthlyButtonGroup,1,1,0,10);
- 
+
   layoutMonthly->addWidget(onNthDay,0,0);
   layoutMonthly->addWidget(nthDayEntry,0,1);
   layoutMonthly->addWidget(nthDayLabel,0,2);
- 
+
   layoutMonthly->addWidget(onNthTypeOfDay,1,0);
   layoutMonthly->addWidget(nthNumberEntry,1,1);
   layoutMonthly->addWidget(nthTypeOfDayEntry,1,2);
-  
+
   layoutMonthly->addMultiCellWidget(monthCommonLabel,0,1,3,3);
   layoutMonthly->addMultiCellWidget(nMonthsEntry,0,1,4,4);
   layoutMonthly->addMultiCellWidget(nMonthsLabel,0,1,5,5);
@@ -411,7 +415,7 @@ void KOEditorRecurrence::initYearly()
 
   yearlyButtonGroup = new QButtonGroup(yearlyFrame);
   yearlyButtonGroup->setFrameStyle(QFrame::NoFrame);
-  
+
   yearMonthButton = new QRadioButton(i18n("Recur in the month of"),
                                      yearlyButtonGroup);
   yearMonthComboBox = new QComboBox(yearlyButtonGroup);
@@ -421,6 +425,7 @@ void KOEditorRecurrence::initYearly()
 
   yearCommonLabel = new QLabel(i18n("every"), yearlyButtonGroup);
   nYearsEntry = new QLineEdit(yearlyButtonGroup);
+  nYearsEntry->setValidator(new KIntValidator(0,999,nYearsEntry));
   nYearsEntry->setMaxLength(3);
   nYearsEntry->setText("1");
   yearsLabel = new QLabel(i18n("year(s)"), yearlyButtonGroup);
@@ -442,12 +447,12 @@ void KOEditorRecurrence::initYearly()
 
   // Construct layout for yearly recurrence rule
   QGridLayout *layoutYearly = new QGridLayout(yearlyButtonGroup,1,1,0,10);
- 
+
   layoutYearly->addWidget(yearMonthButton,0,0);
   layoutYearly->addWidget(yearMonthComboBox,0,1);
 
   layoutYearly->addWidget(yearDayButton,1,0);
- 
+
   layoutYearly->addMultiCellWidget(yearCommonLabel,0,1,3,3);
   layoutYearly->addMultiCellWidget(nYearsEntry,0,1,4,4);
   layoutYearly->addMultiCellWidget(yearsLabel,0,1,5,5);
@@ -514,7 +519,7 @@ void KOEditorRecurrence::setEnabled(bool enabled)
   nYearsEntry->setEnabled(enabled);
   //  advancedRuleButton->setEnabled(enabled);
   //  advancedRuleEdit->setEnabled(enabled);
-  
+
   startDateEdit->setEnabled(enabled);
   noEndDateButton->setEnabled(enabled);
   endDurationButton->setEnabled(enabled);
@@ -541,7 +546,7 @@ void KOEditorRecurrence::changeException()
 {
   int pos = exceptionList->currentItem();
   if (pos < 0) return;
-  
+
   QDate tmpDate = exceptionDateEdit->getDate();
   mExceptionDates[pos] = tmpDate;
   exceptionList->changeItem(KGlobal::locale()->formatDate(tmpDate),pos);
@@ -625,7 +630,7 @@ void KOEditorRecurrence::getCheckedDays(QBitArray &rDays)
   if (saturdayBox->isChecked())
     rDays.setBit(5, 1);
   if (sundayBox->isChecked())
-  rDays.setBit(6, 1);    
+  rDays.setBit(6, 1);
 }
 
 void KOEditorRecurrence::setCheckedDays(QBitArray &rDays)
@@ -653,9 +658,9 @@ void KOEditorRecurrence::setDateTimes(QDateTime start,QDateTime end)
 
   currStartDateTime = start;
   currEndDateTime = end;
-  
+
   startDateLabel->setText(i18n("Begins On: %1")
-      .arg(KGlobal::locale()->formatDate(start.date()))); 
+      .arg(KGlobal::locale()->formatDate(start.date())));
 }
 
 
@@ -668,7 +673,7 @@ void KOEditorRecurrence::setDefaults(QDateTime from, QDateTime to,bool)
 
   startDateLabel->setText(i18n("Begins On: %1")
                           .arg(KGlobal::locale()->formatDate(from.date())));
-  
+
   noEndDateButton->setChecked(true);
   weeklyButton->setChecked(true);
 
@@ -704,7 +709,7 @@ void KOEditorRecurrence::readEvent(Event *event)
   case Recurrence::rWeekly:
     weeklyButton->setChecked(true);
     nWeeksEntry->setText(QString::number(event->recurrence()->frequency()));
-    
+
     rDays = event->recurrence()->days();
     setCheckedDays(rDays);
     break;
@@ -798,7 +803,7 @@ void KOEditorRecurrence::writeEvent(Event *event)
     int rDuration;
     QDate rEndDate;
     QString tmpStr;
-    
+
     // clear out any old settings;
     event->recurrence()->unsetRecurs();
 
@@ -817,7 +822,7 @@ void KOEditorRecurrence::writeEvent(Event *event)
     // check for daily recurrence
     if (dailyButton->isChecked()) {
       int rFreq;
-      
+
       tmpStr = nDaysEntry->text();
       rFreq = tmpStr.toInt();
       if (rFreq < 1) rFreq = 1;
@@ -829,13 +834,13 @@ void KOEditorRecurrence::writeEvent(Event *event)
     } else if (weeklyButton->isChecked()) {
       int rFreq;
       QBitArray rDays(7);
-      
+
       tmpStr = nWeeksEntry->text();
       rFreq = tmpStr.toInt();
       if (rFreq < 1) rFreq = 1;
 
       getCheckedDays(rDays);
-      
+
       if (rDuration != 0)
 	event->recurrence()->setWeekly(rFreq, rDays, rDuration);
       else
@@ -845,7 +850,7 @@ void KOEditorRecurrence::writeEvent(Event *event)
 	// it's by position
 	int rFreq, rPos;
 	QBitArray rDays(7);
-	
+
 	tmpStr = nMonthsEntry->text();
 	rFreq = tmpStr.toInt();
         if (rFreq < 1) rFreq = 1;
@@ -861,7 +866,7 @@ void KOEditorRecurrence::writeEvent(Event *event)
 	// it's by day
 	int rFreq;
 	short rDay;
-	
+
 	tmpStr = nMonthsEntry->text();
 	rFreq = tmpStr.toInt();
         if (rFreq < 1) rFreq = 1;
@@ -895,7 +900,7 @@ void KOEditorRecurrence::writeEvent(Event *event)
 	tmpStr = nYearsEntry->text();
 	rFreq = tmpStr.toInt();
         if (rFreq < 1) rFreq = 1;
-	
+
 	//tmpStr = Recurrence->yearDayLineEdit->text();
 	rDay = event->dtStart().date().dayOfYear();
 
@@ -952,8 +957,8 @@ QDate *KOEditorRecurrence::dateFromText(QString text)
     m = 12;
   else
     // should never get here!
-    m = 0;  
-  
+    m = 0;
+
   return new QDate(y,m,d);
 }
 #endif
