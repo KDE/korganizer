@@ -31,7 +31,9 @@
 
 #include <kcalendarsystem.h>
 
+#ifndef KORG_NOKALARMD
 #include "kalarmdclient.h"
+#endif
 #include "simplealarmclient.h"
 
 #include "koglobals.h"
@@ -65,10 +67,12 @@ KOGlobals::KOGlobals()
 
   cfg->setGroup("AlarmDaemon");
   QString alarmClient = cfg->readEntry( "Daemon", "kalarmd" );
-  if ( alarmClient == "kalarmd" ) {
-    mAlarmClient = new KalarmdClient;
-  } else if ( alarmClient == "simple" ) {
+  if ( alarmClient == "simple" ) {
     mAlarmClient = new SimpleAlarmClient;
+#ifndef KORG_NOKALARMD
+  } else if ( alarmClient == "kalarmd" ) {
+    mAlarmClient = new KalarmdClient;
+#endif
   } else {
     mAlarmClient = new NopAlarmClient;
   }
