@@ -102,12 +102,14 @@ KOGroupware::KOGroupware( CalendarView* view, KCal::Calendar* calendar )
   // Set up the dir watch of the three incoming dirs
   KDirWatch* watcher = KDirWatch::self();
   watcher->addDir( locateLocal( "data", "korganizer/income.accepted/" ) );
+  watcher->addDir( locateLocal( "data", "korganizer/income.tentative/" ) );
   watcher->addDir( locateLocal( "data", "korganizer/income.cancel/" ) );
   watcher->addDir( locateLocal( "data", "korganizer/income.reply/" ) );
   connect( watcher, SIGNAL( dirty( const QString& ) ),
            this, SLOT( incomingDirChanged( const QString& ) ) );
   // Now set the ball rolling
   incomingDirChanged( locateLocal( "data", "korganizer/income.accepted/" ) );
+  incomingDirChanged( locateLocal( "data", "korganizer/income.tentative/" ) );
   incomingDirChanged( locateLocal( "data", "korganizer/income.cancel/" ) );
   incomingDirChanged( locateLocal( "data", "korganizer/income.reply/" ) );
 }
@@ -180,6 +182,18 @@ void KOGroupware::incomingDirChanged( const QString& path )
     for ( it = attendees.begin(); it != attendees.end(); ++it ) {
       if( (*it)->email() == receiver ) {
         (*it)->setStatus( KCal::Attendee::Accepted );
+        (*it)->setRSVP(false);
+        break;
+      }
+    }
+    scheduler.acceptTransaction( incidence, method, status );
+  } else if ( action.startsWith( "tentative" ) ) {
+    // Find myself and set to answered and tentative
+    KCal::Attendee::List attendees = incidence->attendees();
+    KCal::Attendee::List::ConstIterator it;
+    for ( it = attendees.begin(); it != attendees.end(); ++it ) {
+      if( (*it)->email() == receiver ) {
+        (*it)->setStatus( KCal::Attendee::Tentative );
         (*it)->setRSVP(false);
         break;
       }
