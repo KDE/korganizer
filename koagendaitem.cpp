@@ -252,7 +252,6 @@ KOAgendaItem* KOAgendaItem::removeMoveItem(KOAgendaItem* e)
     KOAgendaItem *last = mMultiItemInfo->mLastMultiItem;
     if (!first) first = this;
     if (!last) last = this;
-    // TODO: if e==last...
     if ( first==e ) {
       first = first->nextMultiItem();
       first->setMultiItem( 0, 0, first->nextMultiItem(), first->lastMultiItem() );
