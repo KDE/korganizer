@@ -26,6 +26,7 @@
 #include <kdebug.h>
 #include <kiconloader.h>
 #include <krun.h>
+#include <kprocess.h>
 #ifndef KORG_NOKABC
  #include <kabc/stdaddressbook.h>
 #endif
