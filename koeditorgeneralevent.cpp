@@ -145,6 +145,7 @@ void KOEditorGeneralEvent::initClass(QWidget *parent,QBoxLayout *topLayout)
   mFreeTimeCombo->insertItem(i18n("Busy"));
   mFreeTimeCombo->insertItem(i18n("Free"));
   classLayout->addWidget(mFreeTimeCombo);
+  mFreeTimeCombo->setEnabled(false);
 }
 
 void KOEditorGeneralEvent::timeStuffDisable(bool disable)
