@@ -152,6 +152,11 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
         the connected slots enables/disables the corresponding menu items */
     void todoSelected( bool );
     void subtodoSelected( bool );
+    
+    /** Emitted, when a day changed (i.e. korganizer was running at midnight).
+        The argument is the new date */
+    void dayPassed( QDate );
+
 
     /**
       Emitted, when clipboard content changes. Parameter indicates if paste

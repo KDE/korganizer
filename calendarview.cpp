@@ -245,8 +245,12 @@ CalendarView::CalendarView( QWidget *parent, const char *name )
            SLOT( incidenceChanged( Incidence *, Incidence *) ) );
 
   connect( mDateNavigator, SIGNAL( dayPassed( QDate ) ),
-           SLOT( updateView() ) );
-
+           mTodoList, SLOT( dayPassed( QDate ) ) );
+  connect( mDateNavigator, SIGNAL( dayPassed( QDate ) ),
+           this, SIGNAL( dayPassed( QDate ) ) );
+  connect( mDateNavigator, SIGNAL( dayPassed( QDate ) ),
+           mDateNavigator, SLOT( updateView() ) );
+     
   connect( this, SIGNAL( configChanged() ),
            mDateNavigator, SLOT( updateConfig() ) );
 

@@ -163,7 +163,7 @@ void KDateNavigator::passedMidnight()
   if ( today.month() != lastDayChecked.month() ) {
      if ( updateRollover == FollowMonth &&
          mDayMatrix->isEndOfMonth() ) {
-       goNextMonth();
+//       goNextMonth();
        emitMonth = true;
      }
   }

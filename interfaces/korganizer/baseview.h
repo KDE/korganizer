@@ -165,6 +165,7 @@ class BaseView : public QWidget
       in the calendar since the last display refresh.
     */
     virtual void updateView() = 0;
+    virtual void dayPassed( QDate ) { updateView(); }
 
     /**
       Write all unsaved data back to calendar store.

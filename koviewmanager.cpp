@@ -206,6 +206,8 @@ void KOViewManager::connectView(KOrg::BaseView *view)
            mMainView, SLOT( incidenceToBeDeleted( Incidence* ) ) );
   connect( view, SIGNAL( incidenceDeleted( Incidence* ) ),
            mMainView, SLOT( incidenceDeleted( Incidence* ) ) );
+  connect( mMainView, SIGNAL( dayPassed( QDate ) ),
+           view, SLOT( dayPassed( QDate ) ) );
 }
 
 void KOViewManager::connectTodoView( KOTodoView* todoView )
