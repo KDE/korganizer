@@ -441,6 +441,7 @@ void MonthViewCell::updateCell()
     text += i18n("To-Do: %1").arg(todo->summary());
 
     MonthViewItem *item = new MonthViewItem( todo, mDate, text );
+    item->setRecur( todo->doesRecur() );
     item->setPalette( mStandardPalette );
 
     mItemList->insertItem( item );
