@@ -291,11 +291,15 @@ void KOPrefsDialog::setupViewsTab()
   topLayout->setSpacing(spacingHint());
   topLayout->setMargin(marginHint());
 
+  QBoxLayout *dayBeginsLayout = new QHBoxLayout;
+  topLayout->addLayout(dayBeginsLayout,1,0);
+
   KPrefsWidTime *dayBegins =
     addWidTime(i18n("Day begins at:"),&(KOPrefs::instance()->mDayBegins),
                topFrame);
-  topLayout->addWidget(dayBegins->label(),0,0);
-  topLayout->addWidget(dayBegins->spinBox(),0,1);
+  dayBeginsLayout->addWidget(dayBegins->label());
+  dayBeginsLayout->addStretch(1);
+  dayBeginsLayout->addWidget(dayBegins->spinBox());
 
 // TODO: make hour size work
   QGroupBox *hourSizeGroup = new QGroupBox(1,Horizontal,
