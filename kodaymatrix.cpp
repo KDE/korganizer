@@ -353,8 +353,8 @@ void KODayMatrix::mouseReleaseEvent( QMouseEvent *e )
 
   DateList daylist;
   if ( mSelStart < 0 ) mSelStart = 0;
-  for (int i = mSelStart; i <= mSelEnd; i++) {
-    daylist.append(mDays[i]);
+  for ( int i = mSelStart; i <= mSelEnd; ++i ) {
+    daylist.append( mDays[i] );
   }
   emit selected((const DateList)daylist);
 }
@@ -555,7 +555,7 @@ void KODayMatrix::paintEvent( QPaintEvent * )
   QColor actcol = mDefaultTextColorShaded;
   p.setPen(actcol);
   QPen tmppen;
-  for(int i = 0; i < NUMDAYS; i++) {
+  for ( int i = 0; i < NUMDAYS; ++i ) {
     row = i/7;
     col = isRTL ? 6-(i-row*7) : i-row*7;
 

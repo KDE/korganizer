@@ -99,7 +99,7 @@ KOProjectView::KOProjectView(Calendar *calendar,QWidget* parent,
   mGantt->addHoliday(2001, 10, 3);
   mGantt->addHoliday(2000, 12, 24);
 
-  for(int i=1; i<7; i++)
+  for(int i=1; i<7; ++i)
     mGantt->addHoliday(2001, 1, i);
 #endif
 }

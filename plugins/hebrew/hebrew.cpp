@@ -93,7 +93,7 @@ QString Hebrew::shortText(const QDate & date)
       {
         int count = holidays.count();
 
-        for (int h = 0; h <= count; h++)
+        for (int h = 0; h <= count; ++h)
             {
               *label_text += "\n" + holidays[h];
             }

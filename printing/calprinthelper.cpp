@@ -197,7 +197,7 @@ void CalPrintHelper::drawSmallMonth(QPainter &p, const QDate &qd,
   monthDate2 = monthDate.addDays( -weekdayCol );
 
   // draw days of week
-  for (int col = 0; col < 7; col++) {
+  for (int col = 0; col < 7; ++col) {
     // tmpStr.sprintf("%c",(const char*)monthDate2.dayName(monthDate2.dayOfWeek()));
     tmpStr=mCalSys->weekDayName( monthDate2 )[0].upper();
     p.drawText( x + col*cellWidth, y + height/4, cellWidth, cellHeight,
@@ -755,7 +755,7 @@ void CalPrintHelper::drawMonth(QPainter &p, const QDate &qd, bool weeknumbers,
     p.setFont(newFont);
     xoffset += 14;
     QDate weekDate(monthDate);
-    for (int row = 0; row<rows; row++) {
+    for (int row = 0; row<rows; ++row ) {
       int calWeek = weekDate.weekNumber();
       QRect rc( x, y + yoffset + cellHeight*row, xoffset - 1, cellHeight );
       p.drawText( rc, Qt::AlignRight | Qt::AlignVCenter,
@@ -771,8 +771,8 @@ void CalPrintHelper::drawMonth(QPainter &p, const QDate &qd, bool weeknumbers,
 
   QColor back = p.backgroundColor();
   bool darkbg = false;
-  for (int row = 0; row < rows; row++) {
-    for (int col = 0; col < 7; col++) {
+  for ( int row = 0; row < rows; ++row ) {
+    for ( int col = 0; col < 7; ++col ) {
       // show days from previous/next month with a grayed background
       if ( (monthDate < monthFirst) || (monthDate > monthLast) ) {
         p.setBackgroundColor( back.dark( 120 ) );

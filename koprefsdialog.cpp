@@ -287,7 +287,7 @@ class KOPrefsDialogTime : public KPrefsModule
       mTimeZoneCombo->insertStringList(list);
 
         // find the currently set time zone and select it
-      for (int i = 0; i < mTimeZoneCombo->count(); i++)
+      for ( int i = 0; i < mTimeZoneCombo->count(); ++i )
         {
           if (mTimeZoneCombo->text(i) == sCurrentlySet)
             {
@@ -375,7 +375,7 @@ class KOPrefsDialogTime : public KPrefsModule
     {
       // Find untranslated selected zone
       QStringList::Iterator tz;
-      for (tz = tzonenames.begin(); tz != tzonenames.end(); tz++)
+      for ( tz = tzonenames.begin(); tz != tzonenames.end(); ++tz )
         if (mTimeZoneCombo->currentText() == i18n((*tz).utf8()))
           break;
       if (tz != tzonenames.end())

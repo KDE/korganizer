@@ -797,7 +797,7 @@ void KOMonthView::updateConfig()
   QFontMetrics fontmetric( mDayLabels[0]->font() );
   mWidthLongDayLabel = 0;
 
-  for (int i = 0; i < 7; i++) {
+  for ( int i = 0; i < 7; ++i ) {
     int width =
         fontmetric.width( KOGlobals::self()->calendarSystem()->weekDayName( i + 1 ) );
     if ( width > mWidthLongDayLabel ) mWidthLongDayLabel = width;

@@ -51,14 +51,14 @@ long Converter::absolute_from_hebrew(int year, int month, int day)
       {
         int months = hebrew_months_in_year(year);
 
-        for (i = 7; i <= months; i++)
+        for (i = 7; i <= months; ++i)
           sum += hebrew_month_length(year, i);
-        for (i = 1; i < month; i++)
+        for (i = 1; i < month; ++i)
           sum += hebrew_month_length(year, i);
       }
   else
       {
-        for (i = 7; i < month; i++)
+        for (i = 7; i < month; ++i)
           sum += hebrew_month_length(year, i);
       }
   return sum;
@@ -72,11 +72,11 @@ void
   int year, month, day;
 
   for (year = date / 366;
-       date >= absolute_from_gregorian(year + 1, 1, 1); year++) ;
+       date >= absolute_from_gregorian(year + 1, 1, 1); ++year) ;
   for (month = 1;
        (month <= 11)
        && (date >= absolute_from_gregorian(year, 1 + month, 1));
-       month++) ;
+       ++month ) ;
   day = 1 + date - absolute_from_gregorian(year, month, 1);
   *yearp = year;
   *monthp = month;
@@ -242,10 +242,10 @@ long Converter::hebrew_elapsed_days(int year)
   static long saved_value[MEMORY];
   int i;
 
-  for (i = 0; i < MEMORY; i++)
+  for (i = 0; i < MEMORY; ++i)
     if (year == saved_year[i])
       return saved_value[i];
-  for (i = 0; i < MEMORY; i++)
+  for (i = 0; i < MEMORY; ++i)
     saved_year[i] = saved_year[1 + i], saved_value[i] =
       saved_value[1 + i];
   saved_year[MEMORY - 1] = year;

@@ -88,7 +88,7 @@ void DownloadDialog::load()
 void DownloadDialog::clear()
 {
   QMap<QWidget*, QValueList<KListView*>* >::Iterator it;
-  for(it = m_map.begin(); it != m_map.end(); it++)
+  for(it = m_map.begin(); it != m_map.end(); ++it)
   {
     QValueList<KListView*> *v = it.data();
     kdDebug(5850) << "clear listviews in " << v << endl;
