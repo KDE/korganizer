@@ -65,6 +65,8 @@
 #include <kconfig.h>
 #include <dcopclient.h>
 #include <dcopref.h>
+#include <kstandarddirs.h>
+#include <kdirwatch.h>
 
 #include <qfile.h>
 #include <qbuffer.h>
@@ -74,6 +76,7 @@
 
 #include <stdlib.h>
 #include <time.h>
+#include <qdir.h>
 
 FreeBusyManager *KOGroupware::mFreeBusyManager = 0;
 
@@ -100,6 +103,19 @@ KOGroupware::KOGroupware( CalendarView* view, KCal::Calendar* calendar )
 {
   mView = view;
   mCalendar = calendar;
+
+  // Set up the dir watch of the three incoming dirs
+  const QString incomingDirName = locateLocal("data","korganizer/income");
+  KDirWatch* watcher = KDirWatch::self();
+  watcher->addDir( incomingDirName + ".accepted" );
+  watcher->addDir( incomingDirName + ".cancel" );
+  watcher->addDir( incomingDirName + ".reply" );
+  connect( watcher, SIGNAL( dirty( const QString& ) ),
+           this, SLOT( incomingDirChanged( const QString& ) ) );
+  // Now set the ball rolling
+  incomingDirChanged( incomingDirName + ".accepted" );
+  incomingDirChanged( incomingDirName + ".cancel" );
+  incomingDirChanged( incomingDirName + ".reply" );
 }
 
 FreeBusyManager *KOGroupware::freeBusyManager()
@@ -114,6 +130,60 @@ FreeBusyManager *KOGroupware::freeBusyManager()
   return mFreeBusyManager;
 }
 
+void KOGroupware::incomingDirChanged( const QString& path )
+{
+  const QString incomingDirName = locateLocal("data","korganizer/income.");
+  if ( !path.startsWith( incomingDirName ) )
+    // Not our problem
+    return;
+  const QString action = path.mid( incomingDirName.length() );
+
+  // Handle accepted invitations
+  QDir dir( path );
+  QStringList files = dir.entryList( QDir::Files );
+  if ( files.count() == 0 )
+    // No more files here
+    return;
+
+  // Read the file and remove it
+  QFile f( path + "/" + files[0] );
+  if (!f.open(IO_ReadOnly)) {
+    kdError(5850) << "Can't open file '" << files[0] << "'" << endl;
+    return;
+  }
+  QTextStream t(&f);
+  t.setEncoding( QTextStream::UnicodeUTF8 );
+  QString iCal = t.read();
+
+  ScheduleMessage *message = mFormat.parseScheduleMessage( mCalendar, iCal );
+  if ( !message ) {
+    QString errorMessage;
+    if (mFormat.exception())
+      errorMessage = "\nError message: " + mFormat.exception()->message();
+    kdDebug(5850) << "MailScheduler::retrieveTransactions() Error parsing"
+                  << errorMessage << endl;
+    f.close();
+    return;
+  } else
+    f.remove();
+
+  KCal::Scheduler::Method method =
+    static_cast<KCal::Scheduler::Method>( message->method() );
+  KCal::ScheduleMessage::Status status = message->status();
+  KCal::Incidence* incidence =
+    dynamic_cast<KCal::Incidence*>( message->event() );
+  KCal::MailScheduler scheduler( mCalendar );
+  if ( action.startsWith( "accepted" ) )
+    scheduler.acceptTransaction( incidence, method, status );
+  else if ( action.startsWith( "cancel" ) )
+    // TODO: Could this be done like the others?
+    delete mCalendar->incidence( incidence->uid() );
+  else if ( action.startsWith( "reply" ) )
+    scheduler.acceptTransaction( incidence, method, status );
+  else
+    kdError(5850) << "***** Unknown action " << action << endl;
+  mView->updateView();
+}
 
 static void vPartMicroParser( const QString& str, QString& s )
 {

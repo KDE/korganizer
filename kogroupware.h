@@ -101,6 +101,10 @@ class KOGroupware : public QObject
     // Transform a TNEF attachment to an iCal or vCard
     QString msTNEFToVPart( const QByteArray& tnef );
 
+  private slots:
+    /** Handle iCals given by KMail. */
+    void incomingDirChanged( const QString& path );
+
   protected:
     KOGroupware( CalendarView*, KCal::Calendar* );
 
