@@ -1286,7 +1286,11 @@ void KOAgenda::setStartTime( QTime startHour )
 KOAgendaItem *KOAgenda::insertItem( Incidence *event, QDate qd, int X, int YTop,
                                     int YBottom )
 {
-  kdDebug(5850) << "KOAgenda::insertItem:" << event->summary() << "-" << qd.toString() << " ;top, bottom:" << YTop << "," << YBottom << endl;
+#if 0
+  kdDebug(5850) << "KOAgenda::insertItem:" << event->summary() << "-"
+                << qd.toString() << " ;top, bottom:" << YTop << "," << YBottom
+                << endl;
+#endif
 
   if ( mAllDayMode ) {
     kdDebug(5850) << "KOAgenda: calling insertItem in all-day mode is illegal." << endl;
