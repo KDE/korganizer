@@ -42,10 +42,14 @@ QValidator::State DateValidator::translateToDate(QString &str, QDate &dat)
   return stat;
 }
 
-QValidator::State DateValidator::validate(QString &str, int &cursor) const {
-  DateDescription dummy;
+QValidator::State DateValidator::validate(QString &str, int &cursor) const
+{
+  // This function should probably do something more useful.
+
+  //DateDescription dummy;
   //  return parsedate(str,cursor,dummy);
-  return 0;
+  //return 0;
+  return Invalid;
 }
 
 
