@@ -7,7 +7,7 @@
     Ian Dawes (iadawes@globalserve.net)
     Laszlo Boloni (boloni@cs.purdue.edu)
 
-    Copyright (c) 2000, 2001, 2002, 2003
+    Copyright (c) 2000, 2001, 2002, 2003, 2004
     Cornelius Schumacher <schumacher@kde.org>
 
     This program is free software; you can redistribute it and/or modify
@@ -29,45 +29,7 @@
     without including the source code for Qt in the source distribution.
 */
 
-#include <stdlib.h>
-
-#include <qapplication.h>
-#include <qclipboard.h>
-#include <qcursor.h>
-#include <qmultilineedit.h>
-#include <qtimer.h>
-#include <qwidgetstack.h>
-#include <qptrlist.h>
-#include <qfile.h>
-#ifndef KORG_NOSPLITTER
-#include <qsplitter.h>
-#endif
-
-#include <kglobal.h>
-#include <kdebug.h>
-#include <kstandarddirs.h>
-#include <kfiledialog.h>
-#include <kmessagebox.h>
-#include <knotifyclient.h>
-#include <kconfig.h>
-#include <krun.h>
-#include <kdirwatch.h>
-
-#include <libkcal/vcaldrag.h>
-#include <libkcal/icaldrag.h>
-#include <libkcal/icalformat.h>
-#include <libkcal/vcalformat.h>
-#include <libkcal/scheduler.h>
-#include <libkcal/calendarlocal.h>
-#include <libkcal/journal.h>
-#include <libkcal/calfilter.h>
-#include <libkcal/attendee.h>
-#include <libkcal/dndfactory.h>
-#include <libkcal/freebusy.h>
-#include <libkcal/filestorage.h>
-#include <libkcal/calendarresources.h>
-#include <libkcal/qtopiaformat.h>
-#include <libkcal/calendarnull.h>
+#include "calendarview.h"
 
 #ifndef KORG_NOMAIL
 #include "komailclient.h"
@@ -91,7 +53,7 @@
 #include "outgoingdialog.h"
 #include "incomingdialog.h"
 #include "statusdialog.h"
-#include "kdatenavigator.h"
+#include "datenavigatorcontainer.h"
 #include "kotodoview.h"
 #include "datenavigator.h"
 #include "resourceview.h"
@@ -100,11 +62,49 @@
 #include "kogroupware.h"
 #include "freebusymanager.h"
 #include "komonthview.h"
+#include "datechecker.h"
 
-#include "calendarview.h"
+#include <libkcal/vcaldrag.h>
+#include <libkcal/icaldrag.h>
+#include <libkcal/icalformat.h>
+#include <libkcal/vcalformat.h>
+#include <libkcal/scheduler.h>
+#include <libkcal/calendarlocal.h>
+#include <libkcal/journal.h>
+#include <libkcal/calfilter.h>
+#include <libkcal/attendee.h>
+#include <libkcal/dndfactory.h>
+#include <libkcal/freebusy.h>
+#include <libkcal/filestorage.h>
+#include <libkcal/calendarresources.h>
+#include <libkcal/qtopiaformat.h>
+#include <libkcal/calendarnull.h>
+
+#include <kglobal.h>
+#include <kdebug.h>
+#include <kstandarddirs.h>
+#include <kfiledialog.h>
+#include <kmessagebox.h>
+#include <knotifyclient.h>
+#include <kconfig.h>
+#include <krun.h>
+#include <kdirwatch.h>
+
+#include <qapplication.h>
+#include <qclipboard.h>
+#include <qcursor.h>
+#include <qmultilineedit.h>
+#include <qtimer.h>
+#include <qwidgetstack.h>
+#include <qptrlist.h>
+#include <qfile.h>
+#ifndef KORG_NOSPLITTER
+#include <qsplitter.h>
+#endif
+
+#include <stdlib.h>
 
 using namespace KOrg;
-
 
 CalendarView::CalendarView( QWidget *parent, const char *name )
   : CalendarViewBase( parent, name ),
@@ -129,6 +129,7 @@ CalendarView::CalendarView( QWidget *parent, const char *name )
   // TODO: Make sure that view is updated, when calendar is changed.
 
   mNavigator = new DateNavigator( this );
+  mDateChecker = new DateChecker( this );
 
   QBoxLayout *topLayout = new QVBoxLayout( this );
 
@@ -140,12 +141,11 @@ CalendarView::CalendarView( QWidget *parent, const char *name )
 
   mLeftSplitter = new QSplitter( QSplitter::Vertical, mPanner,
                                  "CalendarView::LeftFrame" );
-  mPanner->setResizeMode( mLeftSplitter, QSplitter::KeepSize );
+//  mPanner->setResizeMode( mLeftSplitter, QSplitter::Stretch );
 
-  mDateNavigator = new KDateNavigator( mLeftSplitter, true,
-                                       "CalendarView::DateNavigator",
-                                       QDate::currentDate() );
-  mLeftSplitter->setResizeMode( mDateNavigator, QSplitter::KeepSize );
+  mDateNavigator = new DateNavigatorContainer( mLeftSplitter,
+                                               "CalendarView::DateNavigator" );
+//  mLeftSplitter->setResizeMode( mDateNavigator, QSplitter::FollowSizeHint );
   mTodoList = new KOTodoView( CalendarNull::self(), mLeftSplitter, "todolist" );
   mFilterView = new KOFilterView( &mFilters, mLeftSplitter,
                                   "CalendarView::FilterView" );
@@ -153,7 +153,7 @@ CalendarView::CalendarView( QWidget *parent, const char *name )
   QWidget *rightBox = new QWidget( mPanner );
   QBoxLayout *rightLayout = new QVBoxLayout( rightBox );
 
-  mNavigatorBar = new NavigatorBar( QDate::currentDate(), rightBox );
+  mNavigatorBar = new NavigatorBar( rightBox );
   rightLayout->addWidget( mNavigatorBar );
 
   mRightFrame = new QWidgetStack( rightBox );
@@ -244,12 +244,12 @@ CalendarView::CalendarView( QWidget *parent, const char *name )
   connect( mDateNavigator, SIGNAL( incidenceDroppedMove( Incidence *, Incidence * ) ),
            SLOT( incidenceChanged( Incidence *, Incidence *) ) );
 
-  connect( mDateNavigator, SIGNAL( dayPassed( QDate ) ),
+  connect( mDateChecker, SIGNAL( dayPassed( QDate ) ),
            mTodoList, SLOT( dayPassed( QDate ) ) );
-  connect( mDateNavigator, SIGNAL( dayPassed( QDate ) ),
-           this, SIGNAL( dayPassed( QDate ) ) );
-  connect( mDateNavigator, SIGNAL( dayPassed( QDate ) ),
-           mDateNavigator, SLOT( updateView() ) );
+  connect( mDateChecker, SIGNAL( dayPassed( QDate ) ),
+           SIGNAL( dayPassed( QDate ) ) );
+  connect( mDateChecker, SIGNAL( dayPassed( QDate ) ),
+           mDateNavigator, SLOT( updateToday() ) );
 
   connect( this, SIGNAL( configChanged() ),
            mDateNavigator, SLOT( updateConfig() ) );

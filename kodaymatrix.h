@@ -112,7 +112,7 @@ class KODayMatrix: public QFrame
      *              assumed that this date is the first week day to be shown in the matrix.
      *  @param name name of the widget
      */
-    KODayMatrix( QWidget *parent, QDate date, const char *name );
+    KODayMatrix( QWidget *parent, const char *name );
 
     /** destructor that deallocates all dynamically allocated private members.
      */
@@ -160,11 +160,15 @@ class KODayMatrix: public QFrame
      */
     void setSelectedDaysFrom( const QDate &start, const QDate &end );
 
+    /**
+      Clear all selections.
+    */
+    void clearSelection();
 
     /** Is today visible in the view? Keep this in sync with
     * the values today (below) can take.
     */
-    bool isTodayVisible() const { return today >= 0; }
+    bool isTodayVisible() const { return mToday >= 0; }
 
     /** If today is visible, then we can find out if today is
     * near the beginning or the end of the month.
@@ -172,8 +176,8 @@ class KODayMatrix: public QFrame
     * in the array of visible dates and going from
     * top left (0) to bottom right (41).
     */
-    bool isBeginningOfMonth() const { return today <= 8; }
-    bool isEndOfMonth() const { return today >= 27; }
+    bool isBeginningOfMonth() const { return mToday <= 8; }
+    bool isEndOfMonth() const { return mToday >= 27; }
 
   public slots:
     /** Recalculates all the flags of the days in the matrix like holidays or events
@@ -186,10 +190,6 @@ class KODayMatrix: public QFrame
     * hilighted to indicate it's today.
     */
     void recalculateToday();
-
-/*
-    void setStartDate(QDate);
-*/
 
   signals:
     /** emitted if the user selects a block of days with the mouse by dragging a rectangle
@@ -253,14 +253,14 @@ class KODayMatrix: public QFrame
     Calendar  *mCalendar;
 
     /** starting date of the matrix */
-    QDate     startdate;
+    QDate     mStartDate;
 
     /** array of day labels to optimeize drawing performance. */
-    QString   *daylbls;
+    QString   *mDayLabels;
 
     /** array of days displayed to reduce memory consumption by
         subsequently calling QDate::addDays(). */
-    QDate     *days;
+    QDate     *mDays;
 
     /** array of storing the number of events on a given day.
       *  used for drawing a bold font if there is at least one event on that day.
@@ -271,7 +271,7 @@ class KODayMatrix: public QFrame
     QMap<int,QString>  mHolidays;
 
     /** indey of today or -1 if today is not visible in the matrix. */
-    int       today;
+    int       mToday;
 
     /** index of day where dragged selection was initiated.
         used to detect "negative" timely selections */
@@ -312,7 +312,7 @@ class KODayMatrix: public QFrame
     /** stores actual size of each day in the widget so that I don't need to ask this data
      *  on every repaint.
      */
-    QRect     daysize;
+    QRect     mDaySize;
 };
 
 #endif

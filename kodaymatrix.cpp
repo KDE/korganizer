@@ -99,12 +99,12 @@ void DynamicTip::maybeTip( const QPoint &pos )
 const int KODayMatrix::NOSELECTION = -1000;
 const int KODayMatrix::NUMDAYS = 42;
 
-KODayMatrix::KODayMatrix( QWidget *parent, QDate date, const char *name )
+KODayMatrix::KODayMatrix( QWidget *parent, const char *name )
   : QFrame( parent, name ), mCalendar( 0 )
 {
   // initialize dynamic arrays
-  days = new QDate[ NUMDAYS ];
-  daylbls = new QString[ NUMDAYS ];
+  mDays = new QDate[ NUMDAYS ];
+  mDayLabels = new QString[ NUMDAYS ];
   mEvents = new int[ NUMDAYS ];
   mToolTip = new DynamicTip( this );
 
@@ -116,8 +116,6 @@ KODayMatrix::KODayMatrix( QWidget *parent, QDate date, const char *name )
   mSelectedDaysColor = QColor( "white" );
   mTodayMarginWidth = 2;
   mSelEnd = mSelStart = NOSELECTION;
-
-  updateView( date );
 }
 
 void KODayMatrix::setCalendar( Calendar *cal )
@@ -145,18 +143,11 @@ QColor KODayMatrix::getShadedColor( QColor color )
 
 KODayMatrix::~KODayMatrix()
 {
-  delete [] days;
-  delete [] daylbls;
+  delete [] mDays;
+  delete [] mDayLabels;
   delete [] mEvents;
   delete mToolTip;
 }
-
-/*
-void KODayMatrix::setStartDate(QDate start)
-{
-  updateView(start);
-}
-*/
 
 void KODayMatrix::addSelectedDaysTo( DateList &selDays )
 {
@@ -166,50 +157,54 @@ void KODayMatrix::addSelectedDaysTo( DateList &selDays )
     return;
   }
 
-  //cope with selection being out of matrix limits at top (< 0)
+  // cope with selection being out of matrix limits at top (< 0)
   int i0 = mSelStart;
   if ( i0 < 0 ) {
     for ( int i = i0; i < 0; i++ ) {
-      selDays.append( days[ 0 ].addDays( i ) );
+      selDays.append( mDays[ 0 ].addDays( i ) );
     }
     i0 = 0;
   }
 
-  //cope with selection being out of matrix limits at bottom (> NUMDAYS-1)
+  // cope with selection being out of matrix limits at bottom (> NUMDAYS-1)
   if ( mSelEnd > NUMDAYS-1 ) {
     for ( int i = i0; i <= NUMDAYS - 1; i++ ) {
-      selDays.append( days[ i ] );
+      selDays.append( mDays[ i ] );
     }
     for ( int i = NUMDAYS; i < mSelEnd; i++ ) {
-      selDays.append( days[ 0 ].addDays( i ) );
+      selDays.append( mDays[ 0 ].addDays( i ) );
     }
   } else {
     // apply normal routine to selection being entirely within matrix limits
     for ( int i = i0; i <= mSelEnd; i++ ) {
-      selDays.append( days[ i ] );
+      selDays.append( mDays[ i ] );
     }
   }
 }
 
 void KODayMatrix::setSelectedDaysFrom( const QDate &start, const QDate &end )
 {
-  mSelStart = startdate.daysTo( start );
-  mSelEnd = startdate.daysTo( end );
+  mSelStart = mStartDate.daysTo( start );
+  mSelEnd = mStartDate.daysTo( end );
 }
 
+void KODayMatrix::clearSelection()
+{
+  mSelEnd = mSelStart = NOSELECTION;
+}
 
 void KODayMatrix::recalculateToday()
 {
-  today = -1;
+  mToday = -1;
   for ( int i = 0; i < NUMDAYS; i++ ) {
-    days[ i ] = startdate.addDays( i );
-    daylbls[ i ] = QString::number( KOGlobals::self()->calendarSystem()->day( days[i] ));
+    mDays[ i ] = mStartDate.addDays( i );
+    mDayLabels[ i ] = QString::number( KOGlobals::self()->calendarSystem()->day( mDays[i] ));
 
     // if today is in the currently displayed month, hilight today
-    if ( days[ i ].year() == QDate::currentDate().year() &&
-         days[ i ].month() == QDate::currentDate().month() &&
-         days[ i ].day() == QDate::currentDate().day() ) {
-      today = i;
+    if ( mDays[ i ].year() == QDate::currentDate().year() &&
+         mDays[ i ].month() == QDate::currentDate().month() &&
+         mDays[ i ].day() == QDate::currentDate().day() ) {
+      mToday = i;
     }
   }
   // qDebug(QString("Today is visible at %1.").arg(today));
@@ -217,7 +212,7 @@ void KODayMatrix::recalculateToday()
 
 /* slot */ void KODayMatrix::updateView()
 {
-  updateView( startdate );
+  updateView( mStartDate );
 }
 
 void KODayMatrix::updateView( QDate actdate )
@@ -229,10 +224,10 @@ void KODayMatrix::updateView( QDate actdate )
 
   // if a new startdate is to be set then apply Cornelius's calculation
   // of the first day to be shown
-  if ( actdate != startdate ) {
+  if ( actdate != mStartDate ) {
     // reset index of selection according to shift of starting date from startdate to actdate
     if ( mSelStart != NOSELECTION ) {
-      int tmp = actdate.daysTo( startdate );
+      int tmp = actdate.daysTo( mStartDate );
       //kdDebug(5850) << "Shift of Selection1: " << mSelStart << " - " << mSelEnd << " -> " << tmp << "(" << offset << ")" << endl;
       // shift selection if new one would be visible at least partly !
 
@@ -246,7 +241,7 @@ void KODayMatrix::updateView( QDate actdate )
       }
     }
 
-    startdate = actdate;
+    mStartDate = actdate;
     daychanged = true;
   }
 
@@ -258,11 +253,11 @@ void KODayMatrix::updateView( QDate actdate )
   for( int i = 0; i < NUMDAYS; i++ ) {
     //if it is a holy day then draw it red. Sundays are consider holidays, too
 #ifndef KORG_NOPLUGINS
-    QString holiStr = KOCore::self()->holiday( days[ i ] );
+    QString holiStr = KOCore::self()->holiday( mDays[ i ] );
 #else
     QString holiStr = QString::null;
 #endif
-    if ( ( KOGlobals::self()->calendarSystem()->dayOfWeek( days[ i ] ) ==
+    if ( ( KOGlobals::self()->calendarSystem()->dayOfWeek( mDays[ i ] ) ==
            KOGlobals::self()->calendarSystem()->weekDayOfPray() ) ||
          !holiStr.isEmpty() ) {
       if ( holiStr.isNull() ) holiStr = "";
@@ -279,7 +274,7 @@ void KODayMatrix::updateEvents()
 
   for( int i = 0; i < NUMDAYS; i++ ) {
     // if events are set for the day then remember to draw it bold
-    Event::List eventlist = mCalendar->events( days[ i ] );
+    Event::List eventlist = mCalendar->events( mDays[ i ] );
     int numEvents = eventlist.count();
     Event::List::ConstIterator it;
     for( it = eventlist.begin(); it != eventlist.end(); ++it ) {
@@ -301,9 +296,9 @@ const QDate& KODayMatrix::getDate( int offset )
 {
   if ( offset < 0 || offset > NUMDAYS - 1 ) {
     kdDebug(5850) << "Wrong offset (" << offset << ") in KODayMatrix::getDate(int)" << endl;
-    return days[ 0 ];
+    return mDays[ 0 ];
   }
-  return days[ offset ];
+  return mDays[ offset ];
 }
 
 QString KODayMatrix::getHolidayLabel( int offset )
@@ -317,9 +312,9 @@ QString KODayMatrix::getHolidayLabel( int offset )
 
 int KODayMatrix::getDayIndexFrom( int x, int y )
 {
-  return 7 * ( y / daysize.height() ) +
+  return 7 * ( y / mDaySize.height() ) +
          ( KOGlobals::self()->reverseLayout() ?
-           6 - x / daysize.width() : x / daysize.width() );
+           6 - x / mDaySize.width() : x / mDaySize.width() );
 }
 
 // ----------------------------------------------------------------------------
@@ -357,7 +352,7 @@ void KODayMatrix::mouseReleaseEvent( QMouseEvent *e )
   DateList daylist;
   if ( mSelStart < 0 ) mSelStart = 0;
   for (int i = mSelStart; i <= mSelEnd; i++) {
-    daylist.append(days[i]);
+    daylist.append(mDays[i]);
   }
   emit selected((const DateList)daylist);
 }
@@ -506,8 +501,8 @@ void KODayMatrix::dropEvent( QDropEvent *e )
       int duration = start.daysTo( end );
       int idx = getDayIndexFrom( e->pos().x(), e->pos().y() );
 
-      start.setDate( days[idx] );
-      end.setDate( days[idx].addDays( duration ) );
+      start.setDate( mDays[idx] );
+      end.setDate( mDays[idx].addDays( duration ) );
 
       event->setDtStart( start );
       event->setDtEnd( end );
@@ -529,7 +524,7 @@ void KODayMatrix::dropEvent( QDropEvent *e )
       // Adjust date
       QDateTime due = todo->dtDue();
       int idx = getDayIndexFrom( e->pos().x(), e->pos().y() );
-      due.setDate( days[idx] );
+      due.setDate( mDays[idx] );
 
       todo->setDtDue( due );
       todo->setHasDueDate( true );
@@ -566,8 +561,8 @@ void KODayMatrix::paintEvent( QPaintEvent *pevent )
   QPainter p(this);
 
   QRect sz = frameRect();
-  int dheight = daysize.height();
-  int dwidth = daysize.width();
+  int dheight = mDaySize.height();
+  int dwidth = mDaySize.width();
   int row,col;
   int selw, selh;
   bool isRTL = KOGlobals::self()->reverseLayout();
@@ -615,7 +610,7 @@ void KODayMatrix::paintEvent( QPaintEvent *pevent )
     col = isRTL ? 6-(i-row*7) : i-row*7;
 
     // if it is the first day of a month switch color from normal to shaded and vice versa
-    if ( KOGlobals::self()->calendarSystem()->day( days[i] ) == 1) {
+    if ( KOGlobals::self()->calendarSystem()->day( mDays[i] ) == 1) {
       if (actcol == mDefaultTextColorShaded) {
         actcol = mDefaultTextColor;
       } else {
@@ -630,7 +625,7 @@ void KODayMatrix::paintEvent( QPaintEvent *pevent )
     }
 
     // if today then draw rectangle around day
-    if (today == i) {
+    if (mToday == i) {
       tmppen = p.pen();
       QPen mTodayPen(p.pen());
 
@@ -676,7 +671,7 @@ void KODayMatrix::paintEvent( QPaintEvent *pevent )
     }
 
     p.drawText(col*dwidth, row*dheight, dwidth, dheight,
-              Qt::AlignHCenter | Qt::AlignVCenter,  daylbls[i]);
+              Qt::AlignHCenter | Qt::AlignVCenter,  mDayLabels[i]);
 
     // reset color to actual color
     if (!mHolidays[i].isNull()) {
@@ -698,6 +693,6 @@ void KODayMatrix::paintEvent( QPaintEvent *pevent )
 void KODayMatrix::resizeEvent( QResizeEvent * )
 {
   QRect sz = frameRect();
-  daysize.setHeight( sz.height() * 7 / NUMDAYS );
-  daysize.setWidth( sz.width() / 7 );
+  mDaySize.setHeight( sz.height() * 7 / NUMDAYS );
+  mDaySize.setWidth( sz.width() / 7 );
 }

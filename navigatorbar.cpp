@@ -56,8 +56,8 @@ void ActiveLabel::mouseReleaseEvent( QMouseEvent * )
 }
 
 
-NavigatorBar::NavigatorBar( const QDate & date, QWidget *parent, const char *name )
-  : QWidget( parent, name ), mDate(date)
+NavigatorBar::NavigatorBar( QWidget *parent, const char *name )
+  : QWidget( parent, name ), mHasMinWidth( false )
 {
   QBoxLayout *topLayout = new QHBoxLayout( this );
 
@@ -79,17 +79,6 @@ NavigatorBar::NavigatorBar( const QDate & date, QWidget *parent, const char *nam
   mMonth->setFont( tfont );
   mMonth->setAlignment( AlignCenter );
   QToolTip::add( mMonth, i18n("Select a Month") );
-
-  // Set minimum width to width of widest month name label
-  int i;
-  int maxwidth = 0;
-
-  const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
-  for( i = 1; i <= calSys->monthsInYear(date); ++i ) {
-    int w = QFontMetrics(tfont).width( QString("%1 8888").arg(calSys->monthName( i, calSys->year(date) )) );
-    if ( w > maxwidth ) maxwidth = w;
-  }
-  mMonth->setMinimumWidth( maxwidth );
 
   QPixmap pix;
   // Create backward navigation buttons
@@ -141,13 +130,29 @@ NavigatorBar::~NavigatorBar()
 
 void NavigatorBar::selectDates( const KCal::DateList &dateList )
 {
-  if (dateList.count() > 0) {
+  if ( dateList.count() > 0 ) {
     mDate = dateList.first();
 
     const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
 
+    if ( !mHasMinWidth ) {
+      // Set minimum width to width of widest month name label
+      int i;
+      int maxwidth = 0;
+
+      for( i = 1; i <= calSys->monthsInYear( mDate ); ++i ) {
+        int w = QFontMetrics( mMonth->font() ).width( QString("%1 8888")
+            .arg( calSys->monthName( i, calSys->year( mDate ) ) ) );
+        if ( w > maxwidth ) maxwidth = w;
+      }
+      mMonth->setMinimumWidth( maxwidth );
+    
+      mHasMinWidth = true;
+    }
+
     // compute the label at the top of the navigator
-    mMonth->setText( QString("%1 %2").arg(calSys->monthName( mDate )).arg(calSys->year(mDate)) );
+    mMonth->setText( QString("%1 %2").arg( calSys->monthName( mDate ) )
+                                     .arg( calSys->year( mDate ) ) );
   }
 }
 

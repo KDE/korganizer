@@ -1,7 +1,7 @@
 /*
     This file is part of KOrganizer.
 
-    Copyright (c) 2000,2001,2003 Cornelius Schumacher <schumacher@kde.org>
+    Copyright (c) 2000,2001,2003,2004 Cornelius Schumacher <schumacher@kde.org>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -40,11 +40,12 @@ class KOFilterView;
 class KOViewManager;
 class KODialogManager;
 class KOTodoView;
-class KDateNavigator;
+class DateNavigatorContainer;
 class DateNavigator;
 class KOIncidenceEditor;
 class ResourceView;
 class NavigatorBar;
+class DateChecker;
 
 namespace KOrg { class History; }
 
@@ -483,7 +484,7 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
 
     NavigatorBar *mNavigatorBar;
 
-    KDateNavigator *mDateNavigator;
+    DateNavigatorContainer *mDateNavigator;
 
     KOFilterView *mFilterView;
 
@@ -492,6 +493,7 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     Calendar *mCalendar;
 
     DateNavigator *mNavigator;
+    DateChecker *mDateChecker;
 
     KOViewManager *mViewManager;
     KODialogManager *mDialogManager;

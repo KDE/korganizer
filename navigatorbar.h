@@ -49,7 +49,7 @@ class NavigatorBar: public QWidget
 {
     Q_OBJECT
   public:
-    NavigatorBar( const QDate & date, QWidget *parent = 0, const char *name = 0 );
+    NavigatorBar( QWidget *parent = 0, const char *name = 0 );
     ~NavigatorBar();
 
   public slots:
@@ -66,6 +66,8 @@ class NavigatorBar: public QWidget
     void selectMonth();
 
   private:
+    bool mHasMinWidth;
+  
     QDate mDate;
     QFrame *mCtrlFrame;
 

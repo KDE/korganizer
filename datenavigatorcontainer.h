@@ -1,7 +1,7 @@
 /*
     This file is part of KOrganizer.
 
-    Copyright (c) 2001,2003 Cornelius Schumacher <schumacher@kde.org>
+    Copyright (c) 2004 Cornelius Schumacher <schumacher@kde.org>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -21,8 +21,8 @@
     with any edition of Qt, and distribute the resulting executable,
     without including the source code for Qt in the source distribution.
 */
-#ifndef KDATENAVIGATOR_H
-#define KDATENAVIGATOR_H
+#ifndef DATENAVIGATORCONTAINER_H
+#define DATENAVIGATORCONTAINER_H
 
 #include <qframe.h>
 #include <qdatetime.h>
@@ -30,31 +30,22 @@
 
 #include <libkcal/calendar.h>
 
-#include "kodaymatrix.h"
+#include "kdatenavigator.h"
 
-class QPushButton;
-
-class KCalendarSystem;
-
-class NavigatorBar;
-
-class KDateNavigator: public QFrame
+class DateNavigatorContainer: public QWidget
 {
     Q_OBJECT
   public:
-    KDateNavigator( QWidget *parent = 0, const char *name = 0 );
-    ~KDateNavigator();
+    DateNavigatorContainer( QWidget *parent = 0, const char *name = 0 );
+    ~DateNavigatorContainer();
 
     /**
       Associate date navigator with a calendar. It is used by KODayMatrix.
     */
     void setCalendar( Calendar * );
 
-    void setBaseDate( const QDate & );
-
-    KCal::DateList selectedDates() const { return mSelectedDates; }
-
-    QSizePolicy sizePolicy () const;
+    QSize minimumSizeHint() const;
+    QSize sizeHint() const;
 
   public slots:
     void selectDates( const KCal::DateList & );
@@ -80,34 +71,21 @@ class KDateNavigator: public QFrame
     void goMonth( int month );
 
   protected:
-    void updateDates();
+    void resizeEvent( QResizeEvent * );
 
-    void wheelEvent( QWheelEvent * );
-
-    bool eventFilter( QObject *,QEvent * );
-
-    void setShowWeekNums( bool enabled );
+    void setBaseDates();
+    void connectNavigatorView( KDateNavigator *v );
 
   private:
-    NavigatorBar *mNavigatorBar;
+    QGridLayout *mTopLayout;
+    KDateNavigator *mNavigatorView;
 
-    QFrame *headingSep;
-    QFrame *weeknumSep;
-    QLabel *headings[ 7 ];
-    QLabel *weeknos[ 7 ];
+    KCal::Calendar *mCalendar;
 
-    KODayMatrix *mDayMatrix;
+    QPtrList<KDateNavigator> mExtraViews;
 
-    KCal::DateList mSelectedDates;
-    QDate mBaseDate;
-
-    KCalendarSystem *mCalendarSystem;
-
-    const QString *curHeaders;
-
-    // Disabling copy constructor and assignment operator
-    KDateNavigator( const KDateNavigator & );
-    KDateNavigator &operator=( const KDateNavigator & );
+    int mHorizontalCount;
+    int mVerticalCount;
 };
 
 #endif
