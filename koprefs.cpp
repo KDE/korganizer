@@ -196,7 +196,6 @@ void KOPrefs::setTimeZoneIdDefault()
     zone = zonefilebuf;
     zone = zone.mid(zone.find("zoneinfo/") + 9);
   } else {
-    extern char *tzname[2];
     tzset();
     zone = tzname[0];
   }
