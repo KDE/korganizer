@@ -142,7 +142,7 @@ void CalPrinter::doPrint( CalPrintBase *selectedStyle, bool preview )
 {
   // FIXME: add a better caption to the Printingdialog
   mPrinter->setPreviewOnly( preview );
-  if ( mPrinter->setup( mParent, i18n("Print Calendar") ) ) {
+  if ( preview || mPrinter->setup( mParent, i18n("Print Calendar") ) ) {
     switch ( mPrintDialog->orientation() ) {
       case eOrientPlugin:
         mPrinter->setOrientation( selectedStyle->orientation());
