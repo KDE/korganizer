@@ -28,7 +28,7 @@
 #include <libkcal/calendar.h>
 
 #include "koeditordetails.h"
-#include "savetemplatedialog.h"
+//#include "savetemplatedialog.h"
 
 class QDateTime;
 namespace KPIM { class CategorySelectDialog; }
@@ -72,9 +72,9 @@ class KOIncidenceEditor : public KDialogBase
     virtual void saveTemplate( const QString & ) = 0;
 
   protected:
+    virtual QString type() { return QString::null; }
+    
     void setupAttendeesTab();
-
-    void createSaveTemplateDialog( SaveTemplateDialog::IncidenceType );
 
     QString loadTemplate( Calendar *cal, const QString &type,
                           const QStringList &templates );
@@ -90,9 +90,6 @@ class KOIncidenceEditor : public KDialogBase
     KPIM::CategorySelectDialog *mCategoryDialog;
 
     KOEditorDetails *mDetails;
-
-  private:
-    SaveTemplateDialog *mSaveTemplateDialog;
 };
 
 #endif

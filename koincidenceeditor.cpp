@@ -48,8 +48,7 @@
 KOIncidenceEditor::KOIncidenceEditor( const QString &caption,
                                       Calendar *calendar, QWidget *parent ) :
   KDialogBase( Tabbed, caption, Ok | Apply | Cancel | Default | User1, Ok,
-               parent, 0, false, false ),
-  mSaveTemplateDialog( 0 )
+               parent, 0, false, false )
 {
   mCalendar = calendar;
 
@@ -116,17 +115,47 @@ void KOIncidenceEditor::slotLoadTemplate()
 void KOIncidenceEditor::slotSaveTemplate()
 {
   kdDebug(5850) << "KOIncidenceEditor::saveTemplate()" << endl;
-}
-
-void KOIncidenceEditor::createSaveTemplateDialog( SaveTemplateDialog::IncidenceType type )
-{
-  if ( !mSaveTemplateDialog ) {
-    mSaveTemplateDialog = new SaveTemplateDialog( type, this );
-    connect( mSaveTemplateDialog, SIGNAL( templateSelected( const QString & ) ),
-             SLOT( saveTemplate( const QString & ) ) );
+  QString tp = type();
+  QStringList templates;
+  if ( tp == "Event" ) {
+    templates = KOPrefs::instance()->mEventTemplates;
+  } else if( tp == "ToDo" ) {
+    templates = KOPrefs::instance()->mTodoTemplates;
   }
-  mSaveTemplateDialog->show();
-  mSaveTemplateDialog->raise();
+  bool ok = false;
+  QString templateName = KInputDialog::getItem( i18n("Save Template"),
+      i18n("Please enter a name for the template:"), templates, 
+      -1, true, &ok, this );
+  if ( ok && templateName.isEmpty() ) {
+    KMessageBox::error( this, i18n("You did not give a valid template name, "
+                                   "no template will be saved") );
+    ok = false;
+  }
+  
+  if ( ok && templates.contains( templateName ) ) {
+    int res = KMessageBox::warningYesNo( this, 
+                                         i18n("The selected template "
+                                              "already exists. Overwrite it?"),
+                                         i18n("Template already exists") );
+    if ( res == KMessageBox::No ) {
+      ok = false;
+    }
+  }
+  
+  if ( ok ) {
+    saveTemplate( templateName );
+    
+    // Add template to list of existing templates
+    if ( !templates.contains( templateName ) ) {
+      templates.append( templateName );
+      if ( tp == "Event" ) {
+        KOPrefs::instance()->mEventTemplates = templates;
+      } else if( tp == "ToDo" ) {
+        KOPrefs::instance()->mTodoTemplates = templates;
+      }
+    }
+    
+  }
 }
 
 void KOIncidenceEditor::saveAsTemplate( Incidence *incidence,

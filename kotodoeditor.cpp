@@ -270,11 +270,6 @@ void KOTodoEditor::slotLoadTemplate()
   }
 }
 
-void KOTodoEditor::slotSaveTemplate()
-{
-  createSaveTemplateDialog( SaveTemplateDialog::TodoType );
-}
-
 void KOTodoEditor::saveTemplate( const QString &templateName )
 {
   Todo *todo = new Todo;

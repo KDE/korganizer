@@ -309,11 +309,6 @@ void KOEventEditor::slotLoadTemplate()
   }
 }
 
-void KOEventEditor::slotSaveTemplate()
-{
-  createSaveTemplateDialog( SaveTemplateDialog::EventType );
-}
-
 void KOEventEditor::saveTemplate( const QString &templateName )
 {
   Event *event = new Event;

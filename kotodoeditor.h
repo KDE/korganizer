@@ -84,10 +84,10 @@ class KOTodoEditor : public KOIncidenceEditor
     void deleteTodo();
 
     void slotLoadTemplate();  
-    void slotSaveTemplate();
     void saveTemplate( const QString & );
   
   protected:
+    QString type() { return "ToDo"; }
     void setupGeneral();
     int msgItemDelete();
 

@@ -90,7 +90,7 @@ libkorganizer_la_SOURCES =  outgoingdialog_base.ui \
         kocore.cpp plugindialog.cpp mailscheduler.cpp \
 	kodaymatrix.cpp docprefs.cpp statusdialog.cpp\
         kotimespanview.cpp timespanview.cpp lineview.cpp timeline.cpp \
-        koglobals.cpp konewstuff.cpp savetemplatedialog.cpp \
+        koglobals.cpp konewstuff.cpp \
         kalarmdclient.cpp simplealarmclient.cpp \
 	actionmanager.cpp resourceview.cpp \
         navigatorbar.cpp kogroupware.cpp \

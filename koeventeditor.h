@@ -100,11 +100,11 @@ class KOEventEditor : public KOIncidenceEditor
     void deleteEvent();
 
     void slotLoadTemplate();
-    void slotSaveTemplate();
 
     void saveTemplate( const QString & );
 
   protected:
+    QString type() { return "Event"; }
     void setupGeneral();
     void setupRecurrence();
 
