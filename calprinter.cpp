@@ -222,7 +222,7 @@ void CalPrinter::printDay(const QDate &fd, const QDate &td)
     drawHeader(p, local->formatDate(curDay,false),
                curDay, QDate(),
                pageWidth, mHeaderHeight);
-//    drawDay(p, curDay, pageWidth, pageHeight);
+    drawDay(p, curDay, pageWidth, pageHeight);
     curDay = curDay.addDays(1);
     if (curDay <= toDay)
       mPrinter->newPage();
