@@ -127,12 +127,11 @@
       <label>Daily ending hour</label>
       <default>QDateTime(QDate(), QTime(17,0))</default>
     </entry>
+    <entry type="Int" key="Work Week Mask" name="WorkWeekMask">
+      <default>31</default>
+    </entry>
     <entry type="Bool" key="Exclude Holidays">
       <label>Exclude holidays</label>
-      <default>true</default>
-    </entry>
-    <entry type="Bool" key="Exclude Saturdays">
-      <label>Exclude Saturdays</label>
       <default>true</default>
     </entry>
 

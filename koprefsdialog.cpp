@@ -46,6 +46,7 @@
 #include <kmessagebox.h>
 #include <kiconloader.h>
 #include <kemailsettings.h>
+#include <kcalendarsystem.h> 
 
 #if defined(USE_SOLARIS)
 #include <sys/param.h>
@@ -59,6 +60,7 @@
 #include "koprefsdialog.h"
 #include "kogroupwareprefspage.h"
 #include "ktimeedit.h"
+#include "koglobals.h"
 
 
 KOPrefsDialogMain::KOPrefsDialogMain( QWidget *parent, const char *name )
@@ -314,17 +316,30 @@ class KOPrefsDialogTime : public KPrefsModule
                                                    topFrame);
       topLayout->addMultiCellWidget(workingHoursGroup,4,4,0,1);
 
+      QHBox *workDaysBox = new QHBox( workingHoursGroup );
+      // Respect start of week setting
+      int weekStart=KGlobal::locale()->weekStartDay();
+      for ( int i = 0; i < 7; ++i ) {
+        const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
+        QString weekDayName = calSys->weekDayName( (i + weekStart + 6)%7 + 1, true );
+        if ( KOPrefs::instance()->mCompactDialogs ) {
+          weekDayName = weekDayName.left( 1 );
+        }
+        mWorkDays[ (i + weekStart + 6)%7 ] = new QCheckBox( weekDayName, workDaysBox );
+      }
+      for ( int i = 0; i < 7; ++i ) {
+        connect( mWorkDays[i], SIGNAL( stateChanged( int ) ),
+               SLOT( slotWidChanged() ) );
+      }
+
       QHBox *workStartBox = new QHBox(workingHoursGroup);
       addWidTime( KOPrefs::instance()->workingHoursStartItem(), workStartBox );
 
       QHBox *workEndBox = new QHBox(workingHoursGroup);
-
       addWidTime( KOPrefs::instance()->workingHoursEndItem(), workEndBox );
 
-      addWidBool( KOPrefs::instance()->excludeHolidaysItem(),
-                  workingHoursGroup );
 
-      addWidBool( KOPrefs::instance()->excludeSaturdaysItem(),
+      addWidBool( KOPrefs::instance()->excludeHolidaysItem(),
                   workingHoursGroup );
 
       topLayout->setRowStretch(6,1);
@@ -338,6 +353,9 @@ class KOPrefsDialogTime : public KPrefsModule
       setCombo(mTimeZoneCombo,i18n(KOPrefs::instance()->mTimeZoneId.utf8()));
 
       mAlarmTimeCombo->setCurrentItem(KOPrefs::instance()->mAlarmTime);
+      for ( int i = 0; i < 7; ++i ) {
+        mWorkDays[i]->setChecked( (1<<i) & (KOPrefs::instance()->mWorkWeekMask) );
+      }
     }
 
     void usrWriteConfig()
@@ -353,6 +371,12 @@ class KOPrefsDialogTime : public KPrefsModule
         KOPrefs::instance()->mTimeZoneId = mTimeZoneCombo->currentText();
 
       KOPrefs::instance()->mAlarmTime = mAlarmTimeCombo->currentItem();
+      int mask = 0;
+      for ( int i = 0; i < 7; ++i ) {
+        if (mWorkDays[i]->isChecked()) mask = mask | (1<<i);
+      }
+      KOPrefs::instance()->mWorkWeekMask = mask;
+      KOPrefs::instance()->writeConfig();
     }
 
     void setCombo( QComboBox *combo, const QString &text,
@@ -373,10 +397,9 @@ class KOPrefsDialogTime : public KPrefsModule
 
   private:
     QComboBox    *mTimeZoneCombo;
-    QStringList  tzonenames;
-/*    KOTimeEdit   *mStartTimeSpin;
-    KOTimeEdit   *mDefaultDurationEdit;*/
+    QStringList   tzonenames;
     QComboBox    *mAlarmTimeCombo;
+    QCheckBox    *mWorkDays[7];
 };
 
 extern "C"

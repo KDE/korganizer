@@ -1112,27 +1112,35 @@ void KOAgenda::drawContents(QPainter* p, int cx, int cy, int cw, int ch)
   if (mWorkingHoursEnable) {
     int x1 = cx;
     int y1 = mWorkingHoursYTop;
-    if (y1 < cy) y1 = cy;
     int x2 = cx+cw-1;
     int y2 = mWorkingHoursYBottom;
-    if (y2 > cy+ch-1) y2=cy+ch-1;
-
-    if (x2 >= x1 && y2 >= y1) {
+    if (x2 >= x1 /*&& y2 >= y1*/) {
       int gxStart = (int)(x1/mGridSpacingX);
       int gxEnd = (int)(x2/mGridSpacingX);
       while(gxStart <= gxEnd) {
-        if (gxStart < int(mHolidayMask->count()) &&
-            !mHolidayMask->at(gxStart)) {
-          int xStart = (int)( KOGlobals::self()->reverseLayout() ?
-                                    (mColumns - 1 - gxStart)*mGridSpacingX :
-                              gxStart*mGridSpacingX );
-          if (xStart < x1) xStart = x1;
-          int xEnd = (int)( KOGlobals::self()->reverseLayout() ?
-                                    (mColumns - gxStart)*mGridSpacingX-1 :
-                            (gxStart+1)*mGridSpacingX-1 );
-          if (xEnd > x2) xEnd = x2;
-          dbp.fillRect(xStart,y1,xEnd-xStart+1,y2-y1+1,
-                      KOPrefs::instance()->mWorkingHoursColor);
+        int xStart = (int)( KOGlobals::self()->reverseLayout() ?
+                            (mColumns - 1 - gxStart)*mGridSpacingX :
+                            gxStart*mGridSpacingX );
+        if (xStart < x1) xStart = x1;
+        int xEnd = (int)( KOGlobals::self()->reverseLayout() ?
+                          (mColumns - gxStart)*mGridSpacingX-1 :
+                          (gxStart+1)*mGridSpacingX-1 );
+        if (xEnd > x2) xEnd = x2;
+        if ( y2 < y1 ) {
+          if ( ( (gxStart==0) && !mHolidayMask->at(mHolidayMask->count()-1) ) ||
+               ( (gxStart>0) && (gxStart<int(mHolidayMask->count())) && (!mHolidayMask->at(gxStart-1) ) ) ) {
+            if (y2>cy) dbp.fillRect(xStart, cy, xEnd-xStart+1, y2-cy+1, KOPrefs::instance()->mWorkingHoursColor);
+          }
+          if ( (gxStart < int(mHolidayMask->count()-1)) && (!mHolidayMask->at(gxStart)) ) {
+            if (y1<cy+ch-1) dbp.fillRect(xStart,y1+1,xEnd-xStart+1,cy+ch-y1-1,
+                        KOPrefs::instance()->mWorkingHoursColor);
+          }
+        } else {
+          // last entry in holiday mask denotes the previous day not visible (needed for overnight shifts)
+          if (gxStart < int(mHolidayMask->count()-1) && !mHolidayMask->at(gxStart)) {
+            dbp.fillRect(xStart,y1,xEnd-xStart+1,y2-y1+1,
+                        KOPrefs::instance()->mWorkingHoursColor);
+          }
         }
         ++gxStart;
       }
