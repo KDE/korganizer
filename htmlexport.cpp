@@ -154,9 +154,9 @@ void HtmlExport::createHtmlEventList (QTextStream *ts)
 {
   *ts << "<TABLE BORDER=0 CELLPADDING=3 CELLSPACING=3>\n";
   *ts << "  <TR>\n";
-  *ts << "    <TH CLASS=sum>" << i18n("Event") << "</TH>\n";
-  *ts << "    <TH>" << i18n("Start Time") << "</TH>\n";
+  *ts << "    <TH CLASS=sum>" << i18n("Start Time") << "</TH>\n";
   *ts << "    <TH>" << i18n("End Time") << "</TH>\n";
+  *ts << "    <TH>" << i18n("Event") << "</TH>\n";
   if (categoriesEventEnabled()) {
     *ts << "    <TH>" << i18n("Categories") << "</TH>\n";
   }
@@ -195,15 +195,15 @@ void HtmlExport::createHtmlEvent (QTextStream *ts, Event *event,
   *ts << "  <TR>\n";
 
   if (!event->doesFloat()) {
-    if (event->dtStart().date() == date) {
+    if (event->isMultiDay() && (event->dtStart().date() != date)) {
+      *ts << "    <TD>&nbsp;</TD>\n";
+    } else {
       *ts << "    <TD valign=top>" << event->dtStartTimeStr() << "</TD>\n";
-    } else {
-      *ts << "    <TD>&nbsp;</TD>\n";
     }
-    if ((event->dtEnd().date() == date) && (event->dtStart() != event->dtEnd())) {
-      *ts << "    <TD valign=top>" << event->dtEndTimeStr() << "</TD>\n";
-    } else {
+    if (event->isMultiDay() && (event->dtEnd().date() != date)) {
       *ts << "    <TD>&nbsp;</TD>\n";
+    } else {
+      *ts << "    <TD valign=top>" << event->dtEndTimeStr() << "</TD>\n";
     }
   } else {
     *ts << "    <TD>&nbsp;</TD><TD>&nbsp;</TD>\n";
