@@ -251,12 +251,7 @@ void ResourceView::addResource()
 
   if ( dlg.exec() ) {
     resource->setTimeZoneId( KOPrefs::instance()->mTimeZoneId );
-    if ( resource->isActive() ) {
-      resource->open();
-      resource->load();
-    }
     manager->add( resource );
-    addResourceItem( resource );
     // we have to call resourceAdded manually, because for in-process changes
     // the dcop signals are not connected, so the resource's signals would not
     // be connected otherwise
