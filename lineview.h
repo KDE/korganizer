@@ -6,6 +6,7 @@
 
 class LineView : public QScrollView
 {
+    Q_OBJECT
   public:
     LineView( QWidget *parent = 0, const char *name = 0 );
     virtual ~LineView();

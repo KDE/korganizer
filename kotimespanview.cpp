@@ -17,6 +17,11 @@ KOTimeSpanView::KOTimeSpanView(Calendar *calendar, QWidget *parent,
   mTimeSpanView = new TimeSpanView( this );
   topLayout->addWidget( mTimeSpanView );
 
+  // Debug: Set some values manually
+
+  mTimeSpanView->setDateRange( QDateTime::currentDateTime(),
+                               QDateTime::currentDateTime().addDays( 4 ) );
+
   Event *event = new Event;
   event->setSummary( "Hallo" );
   event->setDtStart( QDate::currentDate() );

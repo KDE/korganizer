@@ -8,6 +8,7 @@
 class QSplitter;
 class QListView;
 class LineView;
+class TimeLine;
 
 class TimeSpanView : public QWidget
 {
@@ -21,10 +22,16 @@ class TimeSpanView : public QWidget
     QValueList<int> splitterSizes();
     void setSplitterSizes( QValueList<int> );
     
+    void setDateRange( const QDateTime &start, const QDateTime &end );
+    
   private:
     QSplitter *mSplitter;
     QListView *mList;
+    TimeLine *mTimeLine;
     LineView *mLineView;
+    
+    QDateTime mStartDate;
+    QDateTime mEndDate;
 };
 
 #endif

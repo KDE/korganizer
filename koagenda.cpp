@@ -732,7 +732,7 @@ void KOAgenda::drawContents(QPainter* p, int cx, int cy, int cw, int ch)
     }
   }
 
-  // Draw horizontal lines of grid
+  // Draw vertical lines of grid
   //  kdDebug() << "drawContents cx: " << cx << " cy: " << cy << " cw: " << cw << " ch: " << ch << endl;
   int x = ((int)(cx/mGridSpacingX))*mGridSpacingX;
   while (x < cx + cw) {
@@ -740,7 +740,7 @@ void KOAgenda::drawContents(QPainter* p, int cx, int cy, int cw, int ch)
     x+=mGridSpacingX;
   }
 
-  // Draw vertical lines of grid
+  // Draw horizontal lines of grid
   int y = ((int)(cy/mGridSpacingY))*mGridSpacingY;
   while (y < cy + ch) {
 //    kdDebug() << " y: " << y << endl;

@@ -69,6 +69,8 @@ TimeLabels::TimeLabels(int rows,QWidget *parent,const char *name,WFlags f) :
   setVScrollBarMode(AlwaysOff);
 
   resizeContents(50,mRows * mCellHeight);
+
+  viewport()->setBackgroundMode( PaletteBackground );
 }
 
 void TimeLabels::setCellHeight(int height)
