@@ -198,6 +198,7 @@ void KOEditorGeneral::initAlarm(QWidget *parent,QBoxLayout *topLayout)
 void KOEditorGeneral::pickAlarmSound()
 {
   QString prefix = KGlobal::dirs()->findResourceDir("data", "korganizer/sounds/alert.wav");
+  prefix += "/korganizer/sounds/alert.wav";
   if (!mAlarmSoundButton->isOn()) {
     mAlarmSound = "";
     QToolTip::remove(mAlarmSoundButton);
