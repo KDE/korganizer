@@ -62,6 +62,8 @@ class KDateNavigator: public QFrame
    void datesSelected(const DateList &);
    void eventDropped(Event *);
    void weekClicked(QDate);
+   void goNext();
+   void goPrevious();
 
  protected slots:
 
@@ -76,6 +78,8 @@ class KDateNavigator: public QFrame
  protected:
    void updateDates();
 
+   void wheelEvent (QWheelEvent *);   
+   
    bool eventFilter (QObject *,QEvent *);
 
  private:

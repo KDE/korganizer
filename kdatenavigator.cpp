@@ -428,6 +428,14 @@ int KDateNavigator::dayToIndex(int dayNum)
   return row * 7 + col;
 }
 
+void KDateNavigator::wheelEvent (QWheelEvent *e)
+{
+  if(e->delta()>0) emit goPrevious();
+  else emit goNext();
+
+  e->accept();
+}
+
 bool KDateNavigator::eventFilter (QObject *o,QEvent *e)
 {
   if (e->type() == QEvent::MouseButtonPress) {

@@ -181,6 +181,8 @@ CalendarView::CalendarView( QWidget *parent, const char *name )
   connect(mDateNavigator,SIGNAL(weekClicked(QDate)),SLOT(selectWeek(QDate)));
   connect(mDateNavigator,SIGNAL(eventDropped(Event *)),
           SLOT(eventAdded(Event *)));
+  connect(mDateNavigator,SIGNAL(goNext()),SLOT(goNext()));
+  connect(mDateNavigator,SIGNAL(goPrevious()),SLOT(goPrevious()));
   connect(this, SIGNAL(configChanged()), mDateNavigator, SLOT(updateConfig()));
 
   connect(mTodoList, SIGNAL(newTodoSignal()),
