@@ -97,6 +97,7 @@ void CategoryDialog::addCat()
         KOPrefs::instance()->mCustomCategories.end()) {
       KOPrefs::instance()->mCustomCategories.append(catText);
       catListBox->insertItem(catText);
+      emit categoryConfigChanged();
     }
     catEdit->setText("");
   } else {
@@ -123,6 +124,7 @@ void CategoryDialog::removeCat()
   if (catListBox->currentItem() >= 0) {
     KOPrefs::instance()->mCustomCategories.remove(catListBox->currentText());
     catListBox->removeItem(catListBox->currentItem());
+    emit categoryConfigChanged();
   }
 }
 

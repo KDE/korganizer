@@ -17,39 +17,42 @@ class KOEvent;
 
 class Attendee
 {
-  friend KOEvent;
-
-public:
-  enum { NEEDS_ACTION = 0, ACCEPTED = 1, SENT = 2, TENTATIVE = 3,
-	 CONFIRMED = 4, DECLINED = 5, COMPLETED = 6, DELEGATED = 7 };
-  // used to tell whether we have need to mail this person or not.
-  bool flag;
-  Attendee(const char *n, const char *e = 0L,
-	   bool _rsvp=FALSE, int s = NEEDS_ACTION, int r = 0);
-  Attendee(const Attendee &);
-  virtual ~Attendee();
-  void setName(const char *n) { name = n; }
-  void setName(const QString &n) { name = n; }
-  const QString &getName() const { return name; }
-  void setEmail(const char *e) { email = e; }
-  void setEmail(const QString e) { email = e; }
-  const QString &getEmail() const { return email; }
-  void setRole(int r) { role = r; }
-  int getRole() const { return role; }
-  QString getRoleStr() const;
-  void setStatus(int s) { status = s; }
-  void setStatus(const char *s);
-  int getStatus() const { return status; }
-  QString getStatusStr() const;
-  void setRSVP(bool r) { rsvp = r; }
-  void setRSVP(const char *r);
-  bool RSVP() const { return rsvp; }
-
-private:
-  bool rsvp;
-  int role, status;
-  QString name, email;
-
+    friend KOEvent;
+  public:
+    enum { NEEDS_ACTION = 0, ACCEPTED = 1, SENT = 2, TENTATIVE = 3,
+	   CONFIRMED = 4, DECLINED = 5, COMPLETED = 6, DELEGATED = 7 };
+    // used to tell whether we have need to mail this person or not.
+    bool flag;
+    Attendee(const char *n, const char *e = 0L,
+             bool _rsvp=FALSE, int s = NEEDS_ACTION, int r = 0);
+//    Attendee(const Attendee &);
+    virtual ~Attendee();
+  
+    void setName(const char *n) { name = n; }
+    void setName(const QString &n) { name = n; }
+    QString getName() const { return name; }
+  
+    void setEmail(const char *e) { email = e; }
+    void setEmail(const QString e) { email = e; }
+    QString getEmail() const { return email; }
+  
+    void setRole(int r) { role = r; }
+    int getRole() const { return role; }
+    QString getRoleStr() const;
+  
+    void setStatus(int s) { status = s; }
+    void setStatus(const char *s);
+    int getStatus() const { return status; }
+    QString getStatusStr() const;
+  
+    void setRSVP(bool r) { rsvp = r; }
+    void setRSVP(const char *r);
+    bool RSVP() const { return rsvp; }
+  
+  private:
+    bool rsvp;
+    int role, status;
+    QString name, email;
 };
 
 /** This is a class which contains all the information necessary about a single

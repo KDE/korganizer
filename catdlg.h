@@ -31,6 +31,7 @@ protected slots:
 
 signals:
   void categoriesSelected(QString);
+  void categoryConfigChanged();
 
 protected:
   QListBox* catListBox, *selCatListBox;

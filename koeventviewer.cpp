@@ -62,14 +62,14 @@ void KOEventViewer::appendEvent(KOEvent *event)
 
 void KOEventViewer::appendTodo(KOEvent *event)
 {
-  if (!event->getDescription().isEmpty()) addTag("p",event->getDescription());  
-
+  addTag("h1",event->getSummary());
+  
   if (event->hasDueDate()) {
     mText.append(i18n("<b>Due on:</b> %1").arg(event->getDtDueStr()));
   }
 
-  addTag("h1",event->getSummary());
-  
+  if (!event->getDescription().isEmpty()) addTag("p",event->getDescription());  
+
   formatCategories(event);
   formatAttendees(event);
 

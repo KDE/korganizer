@@ -1403,15 +1403,17 @@ Attendee::Attendee(const char *n, const char *e, bool _rsvp, int s, int r)
   role = r;
 }
 
+#if 0
 Attendee::Attendee(const Attendee &a)
 {
   flag = a.flag;
   rsvp = a.rsvp;
-  name = a.name.copy();
-  email = a.email.copy();
+  name = a.name;
+  email = a.email;
   status = a.status;
   role = a.role;
 }
+#endif
 
 Attendee::~Attendee()
 {
@@ -1442,7 +1444,7 @@ void Attendee::setStatus(const char *s)
   else if (statStr== "DELEGATED")
     status = DELEGATED;
   else {
-    debug("error setting attendee status, unknown status!");
+    qDebug("error setting attendee status, unknown status!");
     status = NEEDS_ACTION;
   }
 }

@@ -390,15 +390,19 @@ void KOTodoView::deleteTodo()
 
 void KOTodoView::purgeCompleted()
 {
-  QList<KOEvent> todoCal = mCalendar->getTodoList();
+  int result = KMessageBox::warningContinueCancel(this,
+      i18n("Delete all completed todos?"),i18n("Purge Todos"),i18n("Purge"));
 
-  KOEvent *aTodo;
-  for (aTodo = todoCal.first(); aTodo; aTodo = todoCal.next())
-  {
+  if (result == KMessageBox::Continue) {
+    QList<KOEvent> todoCal = mCalendar->getTodoList();
+
+    KOEvent *aTodo;
+    for (aTodo = todoCal.first(); aTodo; aTodo = todoCal.next()) {
     if (aTodo->getStatus() != KOEvent::NEEDS_ACTION)
       mCalendar->deleteTodo(aTodo);
+    }
+    updateView();
   }
-  updateView();
 }
 
 void KOTodoView::itemClicked(QListViewItem *item)

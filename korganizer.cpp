@@ -50,6 +50,7 @@
 #include "exportwebdialog.h"
 #include "calendarview.h"
 #include "kowindowlist.h"
+#include "koprefs.h"
 
 #include "korganizer.h"
 #include "korganizer.moc"
@@ -64,7 +65,6 @@ KOrganizer::KOrganizer(const char *name)
 
   mTempFile = 0;
 
-  mAutoSave = false;
   mActive = false;
 
   // add this instance of the window to the static list.
@@ -89,14 +89,16 @@ KOrganizer::KOrganizer(const char *name)
 
   // set up autoSaving stuff
   mAutoSaveTimer = new QTimer(this);
-  connect(mAutoSaveTimer, SIGNAL(timeout()),
-	  this, SLOT(checkAutoSave()));
-  if (autoSave())
-    mAutoSaveTimer->start(1000*60);
+  connect(mAutoSaveTimer,SIGNAL(timeout()),SLOT(checkAutoSave()));
+  if (KOPrefs::instance()->mAutoSave && 
+      KOPrefs::instance()->mAutoSaveInterval > 0) {
+    mAutoSaveTimer->start(1000*60*KOPrefs::instance()->mAutoSaveInterval);
+  }
 
   setTitle();
 
   connect(mCalendarView,SIGNAL(modifiedChanged(bool)),SLOT(setTitle()));
+  connect(mCalendarView,SIGNAL(configChanged()),SLOT(updateConfig()));
 
   qDebug("KOrganizer::KOrganizer() done");
 }
@@ -107,8 +109,6 @@ KOrganizer::~KOrganizer()
 
   if (mTempFile) delete mTempFile;
 
-//  hide();
-
   // Take this window out of the window list.
   windowList->removeWindow(this);
 
@@ -118,8 +118,6 @@ KOrganizer::~KOrganizer()
 
 void KOrganizer::readSettings()
 {
-  QString str;
-
   // read settings from the KConfig, supplying reasonable
   // defaults where none are to be found
 
@@ -130,22 +128,9 @@ void KOrganizer::readSettings()
 	
   config->setGroup("General");
 
-  str = config->readEntry("Width");
-  if (!str.isEmpty())
-    windowWidth = str.toInt();
-  str = config->readEntry("Height");
-  if (!str.isEmpty())
-    windowHeight = str.toInt();
-  this->resize(windowWidth, windowHeight);
-
-// We currently don't use a status bar
-#if 0
-  statusBarEnable = config->readBoolEntry("Status Bar", TRUE);
-#endif
-
-//  toolBarEnable = config->readBoolEntry("Tool Bar", TRUE);
-
-  mAutoSave = config->readBoolEntry("Auto Save", FALSE);
+  windowWidth = config->readNumEntry("Width");
+  windowHeight = config->readNumEntry("Height");
+  resize(windowWidth,windowHeight);
 
   mRecent->loadEntries(config);
 
@@ -164,24 +149,8 @@ void KOrganizer::writeSettings()
   QString tmpStr;
   config->setGroup("General");
 
-  tmpStr.sprintf("%d", this->width() );
-  config->writeEntry("Width",	tmpStr);
-	
-  tmpStr.sprintf("%d", this->height() );
-  config->writeEntry("Height",	tmpStr);
-
-/*
-  tmpStr.sprintf("%s", optionsMenu->isItemChecked(toolBarMenuId) ? 
-		 "true" : "false");
-  config->writeEntry("Tool Bar", tmpStr);
-*/
-
-// We currently don't use a status bar
-#if 0
-  tmpStr.sprintf("%s", optionsMenu->isItemChecked(statusBarMenuId) ?
-		 "true" : "false");
-  config->writeEntry("Status Bar", tmpStr);
-#endif
+  config->writeEntry("Width",width());
+  config->writeEntry("Height",height());
 
   mRecent->saveEntries(config);
 
@@ -502,10 +471,13 @@ void KOrganizer::setTitle()
   if (!mURL.isEmpty()) tmpStr = mURL.fileName();
   else tmpStr = i18n("New Calendar");
 
-  // display the modified thing in the title
-  // if auto-save is on, we only display it on new calender (no file name)
-  if (mCalendarView->isModified() && (mFile.isEmpty() || !autoSave())) {
-    tmpStr += " (" + i18n("modified") + ")";
+  if (mCalendarView->isReadOnly()) {
+    tmpStr += " (" + i18n("read-only") + ")";
+  } else {
+    // display the modified thing in the title
+    if (mCalendarView->isModified()) {
+      tmpStr += " (" + i18n("modified") + ")";
+    }
   }
 
   if (mActive) tmpStr += " [" + i18n("active") + "]";
@@ -515,30 +487,30 @@ void KOrganizer::setTitle()
 
 void KOrganizer::checkAutoSave()
 {
-// to be reimplemented.
-/*
-  // has this calendar been saved before? 
-  if (autoSave() && !mFile.isEmpty()) {
-    add_recent_file(mFile);
-    mCalendarView->saveCalendar(mFile);
+  qDebug("KOrganizer::checkAutoSave()");
+
+  // Don't save if auto save interval is zero
+  if (KOPrefs::instance()->mAutoSaveInterval == 0) return;
+
+  // has this calendar been saved before? If yes automatically save it.
+  if (KOPrefs::instance()->mAutoSave && !mURL.isEmpty()) {
+    saveURL();
   }
-*/
 }
 
 
 // Configuration changed as a result of the options dialog.
-// I wanted to break this up, in order to avoid inefficiency 
-// introduced as we were ALWAYS updating configuration
-// in multiple widgets regardless of changed in information.
 void KOrganizer::updateConfig()
 {
-  emit configChanged();
-  readSettings(); // this is the best way to assure that we have them back
-  if (autoSave() && !mAutoSaveTimer->isActive()) {
+  qDebug("KOrganizer::updateConfig()");
+
+  if (KOPrefs::instance()->mAutoSave && !mAutoSaveTimer->isActive()) {
     checkAutoSave();
-    mAutoSaveTimer->start(1000*60);
+    if (KOPrefs::instance()->mAutoSaveInterval > 0) {
+      mAutoSaveTimer->start(1000*60*KOPrefs::instance()->mAutoSaveInterval);
+    }
   }
-  if (!autoSave()) mAutoSaveTimer->stop();
+  if (!KOPrefs::instance()->mAutoSave) mAutoSaveTimer->stop();
 }
 
 /*
@@ -602,24 +574,29 @@ bool KOrganizer::mergeURL( const KURL &url )
 bool KOrganizer::closeURL()
 {
   qDebug("KOrganizer::closeURL()");
-  if (mCalendarView->isModified())
-  {
-    int result = KMessageBox::warningYesNoCancel(0L,
+
+  if (KOPrefs::instance()->mAutoSave && !mURL.isEmpty()) {
+    // Save automatically, when auto save is enabled.  
+    if (!saveURL()) return false;
+  } else {
+    if (mCalendarView->isModified()) {
+      int result = KMessageBox::warningYesNoCancel(0L,
             i18n("The calendar has been modified.\nDo you want to save it?"));
 
-    switch(result) {
-    case KMessageBox::Yes :
-      if (mURL.isEmpty()) {
-        KURL url = getSaveURL();
-        if (url.isEmpty()) return false;
-        if (!saveAsURL(url)) return false;
+      switch(result) {
+        case KMessageBox::Yes :
+          if (mURL.isEmpty()) {
+            KURL url = getSaveURL();
+            if (url.isEmpty()) return false;
+            if (!saveAsURL(url)) return false;
+          }
+          if (!saveURL()) return false;
+          break;
+        case KMessageBox::No :
+          break;
+        default : // case KMessageBox::Cancel :
+          return false;
       }
-      if (!saveURL()) return false;
-      break;
-    case KMessageBox::No :
-      break;
-    default : // case KMessageBox::Cancel :
-      return false;
     }
   }
 
@@ -655,9 +632,9 @@ bool KOrganizer::saveURL()
   }
 
   // keep saves on a regular interval
-  if (autoSave()) {
+  if (KOPrefs::instance()->mAutoSave) {
     mAutoSaveTimer->stop();
-    mAutoSaveTimer->start(1000*60);
+    mAutoSaveTimer->start(1000*60*KOPrefs::instance()->mAutoSaveInterval);
   }
 
   return true;

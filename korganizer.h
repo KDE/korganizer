@@ -173,9 +173,6 @@ class KOrganizer : public KTMainWindow
     bool queryClose();
     bool queryExit();
 
-    /** query whether autoSave is set or not */
-    bool autoSave() { return mAutoSave; };
-
     /** Get URL for saving. Opens FileDialog. */
     KURL getSaveURL();
 
@@ -190,9 +187,6 @@ class KOrganizer : public KTMainWindow
 
     // Actions
     KRecentFilesAction *mRecent;
-
-    // configuration settings
-    bool mAutoSave;  // Auto-Save calendar on close
 
     QTimer         *mAutoSaveTimer;   // used if calendar is to be autosaved
 

@@ -272,8 +272,14 @@ void KOOptionsDialog::setupMainTab()
   
   mAutoSaveCheck = new QCheckBox(i18n("Auto-save Calendar"),topFrame);
   topLayout->addMultiCellWidget(mAutoSaveCheck,3,3,0,1);
+
+  topLayout->addWidget(new QLabel(i18n("Auto-save interval in minutes:"),
+                       topFrame),4,0);
+  mAutoSaveIntervalSpin = new QSpinBox(0,500,1,topFrame);
+  topLayout->addWidget(mAutoSaveIntervalSpin,4,1);
+
   mConfirmCheck = new QCheckBox(i18n("Confirm Deletes"),topFrame);
-  topLayout->addMultiCellWidget(mConfirmCheck,4,4,0,1);
+  topLayout->addMultiCellWidget(mConfirmCheck,5,5,0,1);
 
   mHolidayList << QString::null;
   QStringList countryList = KGlobal::dirs()->findAllResources("data", "korganizer/holiday_*", false, true);
@@ -282,13 +288,13 @@ void KOOptionsDialog::setupMainTab()
         ++it )
     mHolidayList << (*it).mid((*it).findRev('_') + 1);
 
-  topLayout->addWidget(new QLabel(i18n("Holidays:"),topFrame),5,0);
+  topLayout->addWidget(new QLabel(i18n("Holidays:"),topFrame),6,0);
   mHolidayCombo = new QComboBox(topFrame);
   mHolidayCombo->insertStringList(mHolidayList);
 
-  topLayout->addWidget(mHolidayCombo,5,1);
+  topLayout->addWidget(mHolidayCombo,6,1);
 
-  topLayout->setRowStretch(6,1);
+  topLayout->setRowStretch(7,1);
 }
 
 
@@ -641,6 +647,7 @@ void KOOptionsDialog::setCombo(QComboBox *combo, const QString & text, const QSt
 void KOOptionsDialog::readConfig()
 {
   mAutoSaveCheck->setChecked(KOPrefs::instance()->mAutoSave);
+  mAutoSaveIntervalSpin->setValue(KOPrefs::instance()->mAutoSaveInterval);
   mConfirmCheck->setChecked(KOPrefs::instance()->mConfirm);
 
   mNameEdit->setText(KOPrefs::instance()->mName);
@@ -681,6 +688,7 @@ void KOOptionsDialog::writeConfig()
   qDebug("KOOptionsDialog::writeConfig()");
 
   KOPrefs::instance()->mAutoSave = mAutoSaveCheck->isChecked();
+  KOPrefs::instance()->mAutoSaveInterval = mAutoSaveIntervalSpin->value();
   KOPrefs::instance()->mConfirm = mConfirmCheck->isChecked();
 
   KOPrefs::instance()->mName = mNameEdit->text();
@@ -731,7 +739,6 @@ void KOOptionsDialog::slotApply()
   emit configChanged();
 }
 
-
 void KOOptionsDialog::slotOk()
 {
   slotApply();
@@ -745,4 +752,12 @@ void KOOptionsDialog::slotDefault()
       "custom modifications will be lost."),i18n("Setting Default Preferences"),
       i18n("Continue"))
     == KMessageBox::Continue) setDefaults(); 
+}
+
+
+void KOOptionsDialog::updateCategories()
+{
+  mCategoryCombo->clear();
+  mCategoryCombo->insertStringList(KOPrefs::instance()->mCustomCategories);  
+  updateCategoryColor();
 }

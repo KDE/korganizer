@@ -47,8 +47,10 @@ class KOPrefs
     QString mName;
     QString mEmail;
     QString mAdditional;
+    bool    mBcc;
     QString mHoliday;
     bool    mAutoSave;
+    int     mAutoSaveInterval;
     bool    mConfirm;
   
     QString mTimeZone;

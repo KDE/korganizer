@@ -73,8 +73,10 @@ KOEventEditor::KOEventEditor(CalObject *calendar) :
 
   // Category dialog
   connect(mGeneral,SIGNAL(openCategoryDialog()),mCategoryDialog,SLOT(show()));
-  connect(mCategoryDialog, SIGNAL(categoriesSelected(QString)),
+  connect(mCategoryDialog,SIGNAL(categoriesSelected(QString)),
           mGeneral,SLOT(setCategories(QString)));
+  connect(mCategoryDialog,SIGNAL(categoryConfigChanged()),
+          SIGNAL(categoryConfigChanged()));
 
   // Clicking cancel exits the dialog without saving
   connect(this,SIGNAL(cancelClicked()),SLOT(reject()));

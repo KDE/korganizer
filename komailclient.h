@@ -1,64 +1,58 @@
-// The interface for komailclient class
+// The interface for KOMailClient class
 // $Id$
-#ifndef _KOMAILCLIENT_H
-#define _KOMAILCLIENT_H
+#ifndef _KOMailClient_H
+#define _KOMailClient_H
 
-#define COMMA ","
-#define XMAILER "X-Mailer: KOrganizer "
-#define SUBJECT Meeting Notification
+#include <qobject.h>
+#include <qstring.h>
 
-#include "koevent.h"
-#include "calobject.h"
+class KOEvent;
+class Attendee;
 
 /**
  * A Class to maintain the Mailing Headers
  */
 class MailMsgString 
 {
- public:
+  public:
     MailMsgString();
     virtual ~MailMsgString();
-    void addAddressee(Attendee *);
-    void addFrom(const char *);
+
+    /** Set addresse of mail */
+    void setAddressee(Attendee *);
+    /** Return addresse of mail message. */
+    QString addressee() { return mAddressee; }
+
     /**
      * Method to build a plain text (text/plain) message body
      */
     void buildTextMsg(KOEvent *);
-    /**
-     * This method returns the Headers in a QString object.
-     */
-    QString * getHeaders();
+
     /**
      * This method returns the body of a mail msg
      */
-    QString * getBody() { return textString; }
+    QString body() { return mBody; }
 
-    public slots:
-
- protected:
-    int numberOfAddresses;
-    QString * xMailer;
-    QString * Addressee;
-    QString * From;
-    QString * Subject;
-    QString * Headers;
-    QString * textString;
+  private:
+    QString mAddressee;
+    QString mBody;
 };
 
-class KoMailClient :  public QObject
+class KOMailClient : public QObject
 {
     Q_OBJECT
-
-public:
-    KoMailClient(CalObject *cal);
-    virtual ~KoMailClient();
+  public:
+    KOMailClient();
+    virtual ~KOMailClient();
     
-public slots:
-    void emailEvent(KOEvent *,QWidget *);
+  public slots:
+    void emailEvent(KOEvent *);
 
-protected:
-
-    CalObject * calendar;
+  protected:
+    /** Send mail with specified from, to and subject field and body as text. If
+     * bcc is set, send a blind carbon copy to the sender from */
+    bool sendMail(const QString &from,const QString &to,const QString &subject,
+                  const QString &body,bool bcc=false);
 };
 
 #endif

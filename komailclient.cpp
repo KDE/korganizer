@@ -1,220 +1,181 @@
-
 // A barebones mail client designed to grow as we need it
 // Copyright (c) 1998 Barry D Benowitz
 // $Id$
 
 #include <unistd.h>
-#include <qmsgbox.h>
+#include <stdio.h>
+
+#include <klocale.h>
+#include <kstddirs.h>
+#include <kdebug.h>
+#include <kmessagebox.h>
+
+#include "version.h"
+#include "koevent.h"
+#include "koprefs.h"
 
 #include "komailclient.h"
 #include "komailclient.moc"
 
-#include <kconfig.h>
-#include <kdateedit.h>
-#include <kglobal.h>
-#include <klocale.h>
-
-#include "version.h"
 
 MailMsgString::MailMsgString()
 {
-    numberOfAddresses=0;
-    xMailer = new QString(XMAILER);
-    xMailer->append(korgVersion);
-    Addressee= new QString("To:   ");
-    From = new QString("From: ");
-
-    Subject = new QString("Subject: NOTICE OF MEETING");
-    Headers = new QString();
-    textString = new QString();	
 }
 
 MailMsgString::~MailMsgString()
 {
-    delete xMailer;
-    delete Addressee;
-    delete From;
-    delete Subject;
-    delete Headers;
-    delete textString;
 }
 
-void MailMsgString::addAddressee(Attendee *newAddressee)
+void MailMsgString::setAddressee(Attendee *newAddressee)
 {
-    if(numberOfAddresses != 0){
-	Addressee->append(COMMA);
-    }
-
-    QString addr;
-    addr = newAddressee->getEmail().copy();
-    if (!newAddressee->getName().isEmpty()) {
-      addr.prepend(" <");
-      addr.append(">");
-      addr.prepend(newAddressee->getName().data());
-    }
-    Addressee->append(addr.data());
-    numberOfAddresses++;
-}
-
-void MailMsgString::addFrom(const char  * from)
-{
-    From->append(from);
+  mAddressee = newAddressee->getEmail();
+  if (!newAddressee->getName().isEmpty()) {
+    mAddressee.prepend(" <");
+    mAddressee.append(">");
+    mAddressee.prepend(newAddressee->getName().data());
+  }
 }
 
 void MailMsgString::buildTextMsg(KOEvent * selectedEvent)
 {
-    QString CR;
-    QString recurrence[]= {"None","Daily","Weekly","Monthly Same Day","Monthly Same Position","Yearly","Yearly"};
-	
-    CR.sprintf("\n");
-    
-    if (selectedEvent->getOrganizer() != "") {
-	textString->append("Organizer: ");
-	textString->append(selectedEvent->getOrganizer());
-	textString->append(CR);
-    }
-
-    if (selectedEvent->doesFloat())
-	textString->sprintf("\nSummary: %s",
-			    selectedEvent->getSummary().data());
-    else {
-	textString->append(CR);
-	textString->append("Summary: ");
-	textString->append(selectedEvent->getSummary());
-	textString->append(CR);
-	textString->append("Start Date: ");
-	textString->append(selectedEvent->getDtStartDateStr());
-	textString->append(CR);
-	textString->append("Start Time: ");
-	textString->append(selectedEvent->getDtStartTimeStr());
-	textString->append(CR);
-	if(selectedEvent->doesRecur()){
-	    textString->append("Recurs: ");
-	    debug("%d",selectedEvent->getRecursFrequency());
-	    textString->append(recurrence[selectedEvent->getRecursFrequency()]);
-	    textString->append(CR);
-	    if(selectedEvent->getRecursDuration() > 0 ){
-		textString->append("Repeats ");
-		QString tmpStr;
-		tmpStr.setNum(selectedEvent->getRecursDuration());
-		textString->append(tmpStr);
-		textString->append(" times");
-		textString->append(CR);
-	   
-	    }else {
-		if(selectedEvent->getRecursDuration() != -1){
-		    textString->append("End Date  :");
-		    textString->append(selectedEvent->getRecursEndDateStr());
-		    textString->append(CR);
-		}else {
-		    textString->append("Repeats forever");
-		    textString->append(CR);
-		}
-	    }
-	}
-	textString->append("End Time  : ");
-	textString->append(selectedEvent->getDtEndTimeStr());
-	textString->append(CR);
-	
-    } 
-}
-
-QString * MailMsgString::getHeaders()
-{
-    QString CR,date;
-    QDateTime theDate(QDate::currentDate(),QTime::currentTime());
-    CR.sprintf("\n");
-    date.sprintf("Date: ");
-
-    Headers->append(Addressee->data());
-    Headers->append(CR);
-    Headers->append(From->data());
-    Headers->append(CR);
-    Headers->append(Subject->data());
-    Headers->append(CR);
-    Headers->append(date);
-    Headers->append(KGlobal::locale()->formatDateTime(theDate));
-    Headers->append(CR);
-    Headers->append(xMailer->data());
-    Headers->append(CR);
+  QString CR = ("\n");
+  QString recurrence[]= {"None","Daily","Weekly","Monthly Same Day",
+                         "Monthly Same Position","Yearly","Yearly"};
   
+  if (selectedEvent->getOrganizer() != "") {
+    mBody += i18n("Organizer: %1").arg(selectedEvent->getOrganizer());
+    mBody += CR;
+  }
 
-    return Headers;
-}
-
-KoMailClient::KoMailClient(CalObject *cal)
-{   
-    calendar = cal;
-}
-
-KoMailClient::~KoMailClient()
-{
-}
-
-void KoMailClient::emailEvent(KOEvent *selectedEvent,QWidget * parent)
-{
-#include <stdio.h>
-    FILE *sendMail;;
-    int numAttendees=0;
-    QString sender;
-    MailMsgString headers;
-    QList<Attendee> Participants;
-    QListIterator<Attendee> it(Participants);
-    bool      dirty = false;
-
-//
-// Generate List of Addressees
-    Participants=selectedEvent->getAttendeeList();
-    it.toFirst();
-    for(;numAttendees < selectedEvent->attendeeCount();numAttendees++){
-        if (it.current()->getStatus() == it.current()->NEEDS_ACTION) {
-          headers.addAddressee(it.current());
-          dirty = true;
+  mBody += i18n("Summary: %1").arg(selectedEvent->getSummary());
+  if (!selectedEvent->doesFloat()) {
+    mBody += CR;
+    mBody += i18n("Start Date: %1").arg(selectedEvent->getDtStartDateStr());
+    mBody += CR;
+    mBody += i18n("Start Time: %1").arg(selectedEvent->getDtStartTimeStr());
+    mBody += CR;
+    if (selectedEvent->doesRecur()) {
+      mBody += i18n("Recurs: %1")
+               .arg(recurrence[selectedEvent->getRecursFrequency()]);
+      mBody += CR;
+      if (selectedEvent->getRecursDuration() > 0 ) {
+        mBody += i18n ("Repeats %1 times")
+                 .arg(QString::number(selectedEvent->getRecursDuration()));
+        mBody += CR;
+      } else {
+        if (selectedEvent->getRecursDuration() != -1) {
+          mBody += i18n("End Date : %1")
+                   .arg(selectedEvent->getRecursEndDateStr());
+          mBody += CR;
+        } else {
+          mBody += i18n("Repeats forever");
+          mBody += CR;
         }
+      }
+    }
+    mBody += i18n("End Time : %1").arg(selectedEvent->getDtEndTimeStr());
+    mBody += CR;
+  } 
+}
 
-        ++it;	
+
+KOMailClient::KOMailClient()
+{   
+}
+
+KOMailClient::~KOMailClient()
+{
+}
+
+void KOMailClient::emailEvent(KOEvent *selectedEvent)
+{
+  MailMsgString msg;
+  msg.buildTextMsg(selectedEvent);
+
+  bool sent = false;
+
+  // Generate List of Addressees
+  QList<Attendee> participants = selectedEvent->getAttendeeList();
+  Attendee *a;
+  for (a = participants.first();a;a=participants.next()) {
+    if (a->getStatus() == Attendee::NEEDS_ACTION) {
+      msg.setAddressee(a);
+      if (!sendMail(KOPrefs::instance()->mEmail,msg.addressee(),
+                    selectedEvent->getSummary(),msg.body(),
+                    KOPrefs::instance()->mBcc)) {
+        KMessageBox::error(0,i18n("Mail delivery to %1 failed.")
+                             .arg(msg.addressee()));
+      } else {
+        sent = true;
+        a->setStatus(Attendee::SENT);
+      }
+    }
+  }
+
+  if (!sent) return;  // no recips were in NEEDS_ACTION status - bail out
+
+  // update the status on the event object
+  if (selectedEvent->getStatus() == selectedEvent->NEEDS_ACTION)
+    selectedEvent->setStatus(selectedEvent->SENT);
+  
+  return;
+}
+
+
+bool KOMailClient::sendMail(const QString &from,const QString &to,
+                            const QString &subject,const QString &body,
+                            bool bcc)
+{
+  qDebug("KOMailClient::sendMail():\nFrom: %s\nTo: %s\nSubject: %s\nBody: \n%s",
+         from.latin1(),to.latin1(),subject.latin1(),body.latin1());
+
+  bool needHeaders = true;
+
+  QString command = KStandardDirs::findExe(QString::fromLatin1("sendmail"),
+      QString::fromLatin1("/sbin:/usr/sbin:/usr/lib"));
+  if (!command.isNull()) command += QString::fromLatin1(" -oi -t");
+  else {
+    command = KStandardDirs::findExe(QString::fromLatin1("mail"));
+    if (command.isNull()) return false; // give up
+    
+    command.append(QString::fromLatin1(" -s \x22"));
+    command.append(subject);
+    command.append(QString::fromLatin1("\x22"));
+
+    if (bcc) {
+      command.append(QString::fromLatin1(" -b "));
+      command.append(from);
     }
 
-    if (! dirty)
-        return;  // no recips were in NEEDS_ACTION status - bail out
+    command.append(" ");
+    command.append(to);
 
-    sender=calendar->getEmail();
-    headers.addFrom(sender.data());// Apptmt always from Owner
-//    debug("%s",headers.getHeaders()->data());
-    headers.buildTextMsg(selectedEvent);
-//    debug("%s",headers.getBody());
+    needHeaders = false;
+  }
 
-    // something needs to be done about this...
-    // maybe just needs to be user configurable
-    sendMail = popen("sendmail -t","w"); // doesn't work unless you're root (?)
-    if( sendMail == NULL ){
-	debug("Can't fork sendmail!");
-	return;
-    }
-    ::fprintf(sendMail,"%s%s\n.\n",headers.getHeaders()->data(), 
-	    headers.getBody()->data());
-    ::pclose(sendMail);
+  FILE * fd = popen(command.local8Bit(),"w");
+  if (!fd)
+  {
+    kdError() << "Unable to open a pipe to " << command << endl;
+    return false;
+  }
 
-    if (selectedEvent->isReadOnly())
-        return;
+  QString textComplete;
+  if (needHeaders)
+  {
+    textComplete += QString::fromLatin1("From: ") + from + '\n';
+    textComplete += QString::fromLatin1("To: ") + to + '\n';
+    if (bcc) textComplete += QString::fromLatin1("Bcc: ") + from + '\n';
+    textComplete += QString::fromLatin1("Subject: ") + subject + '\n';
+    textComplete += QString::fromLatin1("X-Mailer: KOrganier") + korgVersion +
+                    '\n';
+  }
+  textComplete += '\n'; // end of headers
+  textComplete += body;
 
-    // at this point we assume that all recipiants have been notified.
-    // so set all the recip status and event status to SENT.
-    // then set the dirty bit(s)
+  fwrite(textComplete.latin1(),textComplete.length(),1,fd);
 
-    // update the status on all attendees to SENT
-    it.toFirst();
-    numAttendees = 0;
-    for(;numAttendees < selectedEvent->attendeeCount();numAttendees++){
-        if (it.current()->getStatus() == it.current()->NEEDS_ACTION)
-          it.current()->setStatus(it.current()->SENT);
+  pclose(fd);
 
-        ++it;	
-    }
-
-    // update the status on the event object
-    if (selectedEvent->getStatus() == selectedEvent->NEEDS_ACTION)
-      selectedEvent->setStatus(selectedEvent->SENT);
-
-    return;
+  return true;
 }

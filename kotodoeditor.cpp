@@ -62,6 +62,8 @@ KOTodoEditor::KOTodoEditor(CalObject *calendar) :
   connect(mGeneral,SIGNAL(openCategoryDialog()),mCategoryDialog,SLOT(show()));
   connect(mCategoryDialog, SIGNAL(categoriesSelected(QString)),
           mGeneral,SLOT(setCategories(QString)));
+  connect(mCategoryDialog,SIGNAL(categoryConfigChanged()),
+          SIGNAL(categoryConfigChanged()));
 
   connect(this,SIGNAL(cancelClicked()),SLOT(reject()));
 }

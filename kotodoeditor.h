@@ -51,6 +51,8 @@ class KOTodoEditor : public KDialogBase
     void todoToBeDeleted(KOEvent *);
     void todoDeleted();
 
+    void categoryConfigChanged();
+
   protected slots:
     void slotDefault();
     void slotApply();

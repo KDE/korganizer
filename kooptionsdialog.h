@@ -39,6 +39,9 @@ class KOOptionsDialog : public KDialogBase
     /** Write preferences to config file */
     void writeConfig();
 
+    /** Update controls for categories */
+    void updateCategories();
+
   signals:
     void configChanged();
 
@@ -99,6 +102,7 @@ class KOOptionsDialog : public KDialogBase
     QLineEdit *mEmailEdit;
     QLineEdit *mAdditionalEdit;
     QCheckBox *mAutoSaveCheck;
+    QSpinBox  *mAutoSaveIntervalSpin;
     QCheckBox *mConfirmCheck;
     QComboBox *mHolidayCombo;
     QStringList mHolidayList;

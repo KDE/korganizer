@@ -56,12 +56,14 @@ void KOPrefs::setDefaults()
   // settings for example.
 
   mAutoSave = false;
+  mAutoSaveInterval = 10;
   mConfirm = true;
 
   KSimpleConfig config( QString::fromLatin1("emaildefaults"), false );
   config.setGroup("UserInfo");
   mName = config.readEntry( "FullName", i18n("Anonymous") );
   mEmail = config.readEntry( "EmailAddress", i18n("nobody@nowhere") );
+  mBcc = false;
 
   mAdditional = "";
   mHoliday = KGlobal::locale()->country();
@@ -113,6 +115,7 @@ void KOPrefs::readConfig()
 {
   mConfig->setGroup("General");
   mAutoSave = mConfig->readBoolEntry("Auto Save",false);
+  mAutoSaveInterval = mConfig->readNumEntry("Auto Save Interval",10);
   mConfirm = mConfig->readBoolEntry("Confirm Deletes",true);
   mCustomCategories = mConfig->readListEntry("Custom Categories");
   if (mCustomCategories.isEmpty()) setCategoryDefaults();
@@ -121,6 +124,7 @@ void KOPrefs::readConfig()
   mName = mConfig->readEntry("user_name","");
   mEmail = mConfig->readEntry("user_email","");
   mAdditional = mConfig->readEntry("Additional","");
+  mBcc = mConfig->readBoolEntry("Bcc",false);
 
   mHoliday = mConfig->readEntry("Holidays", KGlobal::locale()->country());
   
@@ -171,6 +175,7 @@ void KOPrefs::writeConfig()
 
   mConfig->setGroup("General");
   mConfig->writeEntry("Auto Save",mAutoSave);
+  mConfig->writeEntry("Auto Save Interval",mAutoSaveInterval);
   mConfig->writeEntry("Confirm Deletes",mConfirm);
   mConfig->writeEntry("Custom Categories",mCustomCategories);
 
@@ -178,6 +183,7 @@ void KOPrefs::writeConfig()
   mConfig->writeEntry("user_name",mName);
   mConfig->writeEntry("user_email",mEmail);
   mConfig->writeEntry("Additional",mAdditional);
+  mConfig->writeEntry("Bcc",mBcc);
   mConfig->writeEntry("Holidays",mHoliday);
 
   mConfig->setGroup("Time & Date");

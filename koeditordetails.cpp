@@ -28,7 +28,7 @@
 AttendeeListItem::AttendeeListItem(Attendee *a, QListView *parent) :
   QListViewItem(parent)
 {
-  mAttendee = new Attendee(*a);
+  mAttendee = a;
   updateItem();
 }
 
@@ -385,21 +385,15 @@ void KOEditorDetails::readEvent(KOEvent *event)
   QList<Attendee> tmpAList = event->getAttendeeList();
   Attendee *a;
   for (a = tmpAList.first(); a; a = tmpAList.next())
-    insertAttendee(new Attendee (*a));
+    insertAttendee(a);
 
   //  Details->attachListBox->insertItem(i18n("Not implemented yet."));
-  
-  // set the status combobox
-  statusCombo->setCurrentItem(event->getStatus());
 }
 
 void KOEditorDetails::writeEvent(KOEvent *event)
 {
   event->clearAttendees();
-  unsigned int i;
-  for (i = 0; i < mAttendeeList.count(); i++)
-    event->addAttendee(new Attendee(*(mAttendeeList.at(i)->attendee())));
-
-  // we should remove this.
-  event->setStatus(statusCombo->currentItem());
+  AttendeeListItem *a;
+  for (a = mAttendeeList.first(); a; a = mAttendeeList.next())
+    event->addAttendee(new Attendee(*(a->attendee())));
 }

@@ -55,6 +55,8 @@ class KOEventEditor : public KDialogBase
     void eventToBeDeleted(KOEvent *);
     void eventDeleted();
 
+    void categoryConfigChanged();
+
   protected slots:
     void slotDefault();
     void slotApply();

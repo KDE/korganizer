@@ -73,6 +73,9 @@ signals:
   /** Emitted when state of modified flag changes */
   void modifiedChanged(bool);
 
+  /** Emitted when state of read-only flag changes */
+  void readOnlyChanged(bool);
+
   /** Emitted when the unit of navigation changes */
   void changeNavStringPrev(const QString &);
   void changeNavStringNext(const QString &);
@@ -232,6 +235,11 @@ public slots:
   /** set the state of calendar. Modified means "dirty", i.e. needing a save. */
   void setModified(bool modified=true);
 
+  /** query if the calendar is read-only. */
+  bool isReadOnly();
+  /** set state of calendar to read-only */
+  void setReadOnly(bool readOnly=true);
+  
   void eventUpdated(KOEvent *);
 
   void view_list();
@@ -307,6 +315,7 @@ protected:
 
   // various housekeeping variables.
   bool            mModified;	   // flag indicating if calendar is modified
+  bool            mReadOnly; // flag indicating if calendar is read-only
   QDate saveSingleDate;                
 
   // dialogs

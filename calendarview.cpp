@@ -63,6 +63,7 @@ CalendarView::CalendarView(QWidget *parent,const char *name)
   listView = 0;
 
   mModified=false;
+  mReadOnly = false;
   
   searchDlg = 0L;
   setMinimumSize(620,400);	// make sure we don't get resized too small...
@@ -81,23 +82,17 @@ CalendarView::CalendarView(QWidget *parent,const char *name)
 
   leftFrame = new QSplitter(QSplitter::Vertical,panner,
                             "CalendarView::LeftFrame");
-//  leftFrame = new QFrame(panner, "CalendarView::LeftFrame");
   rightFrame = new QWidgetStack(panner, "CalendarView::RightFrame");
 
   mOptionsDialog = new KOOptionsDialog(this);
-  connect(mOptionsDialog, SIGNAL(configChanged()),
-	  this, SLOT(updateConfig()));
+  connect(mOptionsDialog,SIGNAL(configChanged()),SLOT(updateConfig()));
 
-//  QVBoxLayout *layoutLeftFrame = new QVBoxLayout(leftFrame, 1, -1,
-//						 "CalendarView::layoutLeftFrame");
   dateNavigator = new KDateNavigator(leftFrame, mCalendar, TRUE,
                         "CalendarView::DateNavigator", QDate::currentDate());
-//  layoutLeftFrame->addWidget(dateNavigator);
 
 //  if (!filename.isEmpty()) initCalendar(filename);
 
   todoList   = new KOTodoView(mCalendar, leftFrame, "CalendarView::TodoList");
-//  layoutLeftFrame->addWidget(todoList);
 
   // create the main data display views.
   todoView   = new KOTodoView(mCalendar, rightFrame, "CalendarView::TodoView");
@@ -688,14 +683,14 @@ void CalendarView::newEvent(QDateTime fromHint, QDateTime toHint)
   KOEventEditor *eventWin = new KOEventEditor(mCalendar);
 
   // put in date hint
-  eventWin->newEvent(fromHint, toHint);
+  eventWin->newEvent(fromHint,toHint);
 
   // connect the win for changed events
-  connect(eventWin,SIGNAL(eventAdded(KOEvent *)),
-          SLOT(eventAdded(KOEvent *)));
+  connect(eventWin,SIGNAL(eventAdded(KOEvent *)),SLOT(eventAdded(KOEvent *)));
+  connect(eventWin,SIGNAL(categoryConfigChanged()),
+          mOptionsDialog,SLOT(updateCategories()));
 
-  connect(this, SIGNAL(closingDown()),
-	  eventWin, SLOT(reject()));
+  connect(this,SIGNAL(closingDown()),eventWin,SLOT(reject()));
 
   // show win
   eventWin->show();
@@ -707,14 +702,14 @@ void CalendarView::newEvent(QDateTime fromHint, QDateTime toHint, bool allDay)
   KOEventEditor *eventWin = new KOEventEditor(mCalendar);
 
   // put in date hint
-  eventWin->newEvent(fromHint, toHint, allDay);
+  eventWin->newEvent(fromHint,toHint,allDay);
 
   // connect the win for changed events
-  connect(eventWin,SIGNAL(eventAdded(KOEvent *)),
-          SLOT(eventAdded(KOEvent *)));
+  connect(eventWin,SIGNAL(eventAdded(KOEvent *)),SLOT(eventAdded(KOEvent *)));
+  connect(eventWin,SIGNAL(categoryConfigChanged()),
+          mOptionsDialog,SLOT(updateCategories()));
 
-  connect(this, SIGNAL(closingDown()),
-	  eventWin, SLOT(reject()));
+  connect(this,SIGNAL(closingDown()),eventWin,SLOT(reject()));
 
   // show win
   eventWin->show();
@@ -727,6 +722,8 @@ void CalendarView::newTodo()
 
   // connect the win for changed events
   connect(todoWin,SIGNAL(todoAdded(KOEvent *)),SLOT(updateTodoViews()));
+  connect(todoWin,SIGNAL(categoryConfigChanged()),
+          mOptionsDialog,SLOT(updateCategories()));
 
   connect(this, SIGNAL(closingDown()),
 	  todoWin, SLOT(reject()));
@@ -742,6 +739,8 @@ void CalendarView::newSubTodo(KOEvent *parentEvent)
 
   // connect the win for changed events
   connect(todoWin,SIGNAL(todoAdded(KOEvent *)),SLOT(updateTodoViews()));
+  connect(todoWin,SIGNAL(categoryConfigChanged()),
+          mOptionsDialog,SLOT(updateCategories()));
 
   connect(this, SIGNAL(closingDown()),
 	  todoWin, SLOT(reject()));
@@ -809,6 +808,8 @@ void CalendarView::editEvent(KOEvent *anEvent)
               SLOT(updateTodoViews()));
       connect(eventWin,SIGNAL(todoDeleted()),
               SLOT(updateTodoViews()));
+      connect(eventWin,SIGNAL(categoryConfigChanged()),
+              mOptionsDialog,SLOT(updateCategories()));
       connect(this, SIGNAL(closingDown()),
               eventWin, SLOT(reject()));
       eventWin->show();
@@ -820,6 +821,8 @@ void CalendarView::editEvent(KOEvent *anEvent)
               SLOT(eventChanged(KOEvent *)));
       connect(eventWin,SIGNAL(eventDeleted()),
               SLOT(eventDeleted()));
+      connect(eventWin,SIGNAL(categoryConfigChanged()),
+              mOptionsDialog,SLOT(updateCategories()));
       connect(this, SIGNAL(closingDown()),
               eventWin, SLOT(reject()));
       eventWin->show();
@@ -987,28 +990,27 @@ void CalendarView::action_search()
 	      searchDlg, SLOT(cancel()));
   }
   // make sure the widget is on top again
-  searchDlg->hide();
-  searchDlg->show();
-  
+  searchDlg->raise();
 }
 
 void CalendarView::action_mail()
 {
-  KOEvent *anEvent=0;
-  KoMailClient mailobject(mCalendar);
+  KOMailClient mailobject;
 
+  KOEvent *anEvent = 0;
   if (currentView) anEvent = (currentView->getSelected()).first();
 
   if (!anEvent) {
-    qApp->beep();
+    KMessageBox::sorry(this,i18n("Can't generate mail:\nNo event selected."));
     return;
   }
   if(anEvent->attendeeCount() == 0 ) {
     KMessageBox::sorry(this,
-                       i18n("Can't generate mail:\n No attendees defined!\n"));
+                       i18n("Can't generate mail:\nNo attendees defined.\n"));
     return;
   }
-  mailobject.emailEvent(anEvent,this);
+
+  mailobject.emailEvent(anEvent);
 }
 
 
@@ -1050,6 +1052,19 @@ void CalendarView::setModified(bool modified)
   if (mModified != modified) {
     mModified = modified;
     emit modifiedChanged(mModified);
+  }
+}
+
+bool CalendarView::isReadOnly()
+{
+  return mReadOnly;
+}
+
+void CalendarView::setReadOnly(bool readOnly)
+{
+  if (mReadOnly != readOnly) {
+    mReadOnly = readOnly;
+    emit readOnlyChanged(mReadOnly);
   }
 }
 
