@@ -52,6 +52,7 @@ class ImportDialog : public KDialogBase
 
   protected slots:
     void mergeResource( ResourceCalendar * );
+    void showMergeError( ResourceCalendar *, const QString &err );
 
   private:
     KURL mUrl;

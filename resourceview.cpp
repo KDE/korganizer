@@ -126,14 +126,13 @@ void ResourceItem::stateChange( bool active )
     mResource->setSubresourceActive( text( 0 ), active );
   } else {
     if ( active ) {
-      mResource->setActive( mView->calendar()->loadResource( mResource ) );
+      if ( mResource->load() ) mResource->setActive( true );
     } else {
-      mView->calendar()->saveResource( mResource );
+      if ( mResource->save() ) mResource->setActive( false );
       mView->requestClose( mResource );
-      mResource->setActive( false );
     }
 
-    setOpen( active && childCount() > 0 );
+    setOpen( mResource->isActive() && childCount() > 0 );
 
     setGuiState();
   }

@@ -34,6 +34,7 @@
 #include <resourceremote.h>
 
 #include <klocale.h>
+#include <kmessagebox.h>
 
 #include <qlabel.h>
 #include <qlayout.h>
@@ -110,6 +111,9 @@ void ImportDialog::slotOk()
     mMergeResource->setTimeZoneId( KOPrefs::instance()->mTimeZoneId );
     connect( mMergeResource, SIGNAL( resourceLoaded( ResourceCalendar * ) ),
              SLOT( mergeResource( ResourceCalendar * ) ) );
+    connect( mMergeResource, SIGNAL( resourceLoadError( ResourceCalendar *,
+                                                        const QString &err ) ),
+             SLOT( showMergeError( ResourceCalendar *, const QString &err ) ) );
     mMergeResource->open();
     mMergeResource->load();
   } else if ( mOpenButton->isChecked() ) {
@@ -166,6 +170,13 @@ void ImportDialog::mergeResource( ResourceCalendar * )
     }
   }
 
+  emit dialogFinished( this );
+}
+
+void ImportDialog::showMergeError( ResourceCalendar *, const QString &err )
+{
+  KMessageBox::error( this, i18n("Error merging calendar: %1").arg( err ) );
+  
   emit dialogFinished( this );
 }
 
