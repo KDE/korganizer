@@ -429,7 +429,7 @@ bool KOAgenda::eventFilter_drag( QObject *object, QDropEvent *de )
 
 bool KOAgenda::eventFilter_key( QObject *, QKeyEvent *ke )
 {
-//  kdDebug(5850) << "KOAgenda::eventFilter_key() " << ke->type() << endl;
+  // kdDebug(5850) << "KOAgenda::eventFilter_key() " << ke->type() << endl;
 
   // If Return is pressed bring up an editor for the current selected time span.
   if ( ke->key() == Key_Return ) {
@@ -446,7 +446,7 @@ bool KOAgenda::eventFilter_key( QObject *, QKeyEvent *ke )
   }
 
   // Ignore all input that does not produce any output
-  if ( ke->text().isEmpty() ) return false;
+  if ( ke->type() == QEvent::KeyPress && ke->text().isEmpty() ) return false;
 
   if ( ke->type() == QEvent::KeyPress || ke->type() == QEvent::KeyRelease ) {
     switch ( ke->key() ) {
@@ -477,9 +477,8 @@ bool KOAgenda::eventFilter_key( QObject *, QKeyEvent *ke )
         if ( !mTypeAhead ) {
           mTypeAhead = true;
           emitNewEventForSelection();
-          return true;
         }
-        break;
+        return true;
     }
   }
   return false;
@@ -497,7 +496,7 @@ void KOAgenda::finishTypeAhead()
     for( QEvent *e = mTypeAheadEvents.first(); e;
          e = mTypeAheadEvents.next() ) {
 //      kdDebug(5850) << "postEvent() " << int( typeAheadReceiver() ) << endl;
-      QApplication::postEvent( typeAheadReceiver(), e );
+      QApplication::sendEvent( typeAheadReceiver(), e );
     }
   }
   mTypeAheadEvents.clear();
