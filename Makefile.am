@@ -84,7 +84,7 @@ rcdir = $(kde_datadir)/korganizer
 rc_DATA = korganizer.rc
 
 messages: rc.cpp
-	$(XGETTEXT) rc.cpp $(korganizer_SOURCES) -o $(podir)/korganizer.pot
+	$(XGETTEXT) *.cpp -o $(podir)/korganizer.pot
 
 $(srcdir)/parseholiday.c: parseholiday.y
 	cd $(srcdir) && bison -d -o parseholiday.c parseholiday.y
