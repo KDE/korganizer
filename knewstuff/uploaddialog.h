@@ -71,6 +71,7 @@ class UploadDialog : public KDialogBase
 
   protected slots:
     void slotOk();
+  void nameChanged( const QString &);
 
   private:
     Engine *mEngine;

@@ -53,9 +53,10 @@ UploadDialog::UploadDialog( Engine *engine, QWidget *parent ) :
   topLayout->setSpacing( spacingHint() );
 
   QLabel *nameLabel = new QLabel( i18n("Name:"), topPage );
-  topLayout->addWidget( nameLabel, 0, 0 );  
+  topLayout->addWidget( nameLabel, 0, 0 );
   mNameEdit = new QLineEdit( topPage );
   topLayout->addWidget( mNameEdit, 0, 1 );
+  connect( mNameEdit, SIGNAL(textChanged ( const QString & ) ),SLOT( nameChanged( const QString & ) ) );
 
   QLabel *authorLabel = new QLabel( i18n("Author:"), topPage );
   topLayout->addWidget( authorLabel, 1, 0 );
@@ -63,12 +64,12 @@ UploadDialog::UploadDialog( Engine *engine, QWidget *parent ) :
   topLayout->addWidget( mAuthorEdit, 1, 1 );
 
   QLabel *versionLabel = new QLabel( i18n("Version:"), topPage );
-  topLayout->addWidget( versionLabel, 2, 0 );  
+  topLayout->addWidget( versionLabel, 2, 0 );
   mVersionEdit = new QLineEdit( topPage );
   topLayout->addWidget( mVersionEdit, 2, 1 );
 
   QLabel *releaseLabel = new QLabel( i18n("Release:"), topPage );
-  topLayout->addWidget( releaseLabel, 3, 0 );  
+  topLayout->addWidget( releaseLabel, 3, 0 );
   mReleaseSpin = new QSpinBox( topPage );
   mReleaseSpin->setMinValue( 1 );
   topLayout->addWidget( mReleaseSpin, 3, 1 );
@@ -97,11 +98,18 @@ UploadDialog::UploadDialog( Engine *engine, QWidget *parent ) :
   topLayout->addMultiCellWidget( summaryLabel, 7, 7, 0, 1 );
   mSummaryEdit = new KTextEdit( topPage );
   topLayout->addMultiCellWidget( mSummaryEdit, 8, 8, 0, 1 );
+
+  nameChanged( mNameEdit->text() );
 }
 
 UploadDialog::~UploadDialog()
 {
   mEntryList.clear();
+}
+
+void UploadDialog::nameChanged( const QString &_text )
+{
+  enableButtonOK( !_text.isEmpty() );
 }
 
 void UploadDialog::slotOk()
