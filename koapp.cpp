@@ -41,7 +41,8 @@
 
 KOrganizerApp::KOrganizerApp() : KUniqueApplication()
 {
-  CalFormat::setApplication("KOrganizer");
+  CalFormat::setApplication("KOrganizer", "-//K Desktop Environment//NONSGML
+KOrganizer 2.2//EN");
 }
 
 KOrganizerApp::~KOrganizerApp()
