@@ -186,7 +186,7 @@ void CalPrintDay::print(QPainter &p, int width, int height)
     if (curDay <= mToDate)
       mPrinter->newPage();
   } while (curDay <= mToDate);
-};
+}
 
 
 

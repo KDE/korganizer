@@ -133,7 +133,7 @@ void CalPrintBase::doPrint()
   print(p, pageWidth, pageHeight);
 
   p.end();
-};
+}
 
 void CalPrintBase::loadConfig()
 {
