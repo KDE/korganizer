@@ -50,9 +50,18 @@ class RecurBase : public QWidget
   
     void setFrequency( int );
     int frequency();
+    // TODO: If we want to adjust the recurrence when the start/due date change,
+    // we need to reimplement this method in the derived classes!
     void setDateTimes( QDateTime /*start*/, QDateTime /*end*/ ) {}
 
     QWidget *frequencyEdit();
+    
+  protected:
+    static QComboBox *createWeekCountCombo( QWidget *parent=0, const char *name=0 );
+    static QComboBox *createWeekdayCombo( QWidget *parent=0, const char *name=0 );
+    static QComboBox *createMonthNameCombo( QWidget *parent=0, const char *name=0 );
+    QBoxLayout *createFrequencySpinBar( QWidget *parent, QLayout *layout, 
+    QString everyText, QString unitText );
 
   private:
     QSpinBox *mFrequencyEdit;
@@ -104,22 +113,36 @@ class RecurMonthly : public RecurBase
 class RecurYearly : public RecurBase
 {
   public:
-    RecurYearly( QWidget *parent = 0, const char *name = 0 );
-    void setDateTimes( QDateTime start, QDateTime end );
-    
-    void setByDay();
-    void setByMonth( int month );
-    
-    bool byMonth();
-    bool byDay();
+    enum YearlyType { byDay, byPos, byMonth };
 
-    int month();
+    RecurYearly( QWidget *parent = 0, const char *name = 0 );
     
+    void setByDay( int day );
+    void setByPos( int count, int weekday, int month );
+    void setByMonth( int day, int month );
+    
+    YearlyType getType();
+
+    int day();
+    int posCount();
+    int posWeekday();
+    int posMonth();
+    int monthDay();
+    int month();    
+
   private:
     QRadioButton *mByMonthRadio;
+    QRadioButton *mByPosRadio;
+    QRadioButton *mByDayRadio;
+    
+    QSpinBox *mByMonthSpin;
     QComboBox *mByMonthCombo;
     
-    QRadioButton *mByDayRadio;
+    QComboBox *mByPosDayCombo;
+    QComboBox *mByPosWeekdayCombo;
+    QComboBox *mByPosMonthCombo;
+    
+    QSpinBox *mByDaySpin;
 };
 
 class RecurrenceChooser : public QWidget

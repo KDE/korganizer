@@ -82,22 +82,73 @@ int RecurBase::frequency()
   return mFrequencyEdit->value();
 }
 
+QComboBox *RecurBase::createWeekCountCombo( QWidget *parent, const char *name )
+{
+  QComboBox *combo = new QComboBox( parent, name );
+  if ( !combo ) return 0;
+  combo->insertItem( i18n("1st") );
+  combo->insertItem( i18n("2nd") );
+  combo->insertItem( i18n("3rd") );
+  combo->insertItem( i18n("4th") );
+  combo->insertItem( i18n("5th") );
+  combo->insertItem( i18n("Last") );
+  combo->insertItem( i18n("2nd Last") );
+  combo->insertItem( i18n("3rd Last") );
+  combo->insertItem( i18n("4th Last") );
+  combo->insertItem( i18n("5th Last") );
+  return combo;
+}
+
+QComboBox *RecurBase::createWeekdayCombo( QWidget *parent, const char *name )
+{
+  QComboBox *combo = new QComboBox( parent, name );
+  if ( !combo ) return 0;
+  const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
+  for( int i = 1; i <= 7; ++i ) {
+    combo->insertItem( calSys->weekDayName( i ) );
+  }
+  return combo;
+}
+
+QComboBox *RecurBase::createMonthNameCombo( QWidget *parent, const char *name )
+{
+  QComboBox *combo = new QComboBox( parent, name );
+  if ( !combo ) return 0;
+  const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
+  for( int i = 1; i <= 12; ++i ) {
+    // use an arbitrary year, we just need the month name...
+    QDate dt( 2005, i, 1 );
+    combo->insertItem( calSys->monthName( dt ) );
+  }
+  return combo;
+}
+
+QBoxLayout *RecurBase::createFrequencySpinBar( QWidget *parent, QLayout *layout, 
+    QString everyText, QString unitText )
+{
+  QBoxLayout *freqLayout = new QHBoxLayout( layout );
+
+  QLabel *preLabel = new QLabel( everyText, parent );
+  freqLayout->addWidget( preLabel );
+
+  freqLayout->addWidget( frequencyEdit() );
+  preLabel->setBuddy( frequencyEdit() );
+
+  QLabel *postLabel = new QLabel( unitText, parent );
+  freqLayout->addWidget( postLabel );
+  freqLayout->addStretch();
+  return freqLayout;
+}
+
 /////////////////////////// RecurDaily ///////////////////////////////
 
 RecurDaily::RecurDaily( QWidget *parent, const char *name ) :
   RecurBase( parent, name )
 {
-  QBoxLayout *topLayout = new QHBoxLayout( this );
+  QBoxLayout *topLayout = new QVBoxLayout( this );
   topLayout->setSpacing( KDialog::spacingHint() );
-
-  QLabel *preLabel = new QLabel( i18n("&Recur every"), this );
-  topLayout->addWidget( preLabel );
-
-  topLayout->addWidget( frequencyEdit() );
-  preLabel->setBuddy( frequencyEdit() );
-
-  QLabel *postLabel = new QLabel( i18n("day(s)"), this );
-  topLayout->addWidget( postLabel );
+  
+  createFrequencySpinBar( this, topLayout, i18n("&Recur every"), i18n("day(s)") );
 }
 
 
@@ -109,19 +160,10 @@ RecurWeekly::RecurWeekly( QWidget *parent, const char *name ) :
   QBoxLayout *topLayout = new QVBoxLayout( this );
   topLayout->setSpacing( KDialog::spacingHint() );
 
-  topLayout->addStretch( 1 );
+//  topLayout->addStretch( 1 );
 
-  QBoxLayout *weeksLayout = new QHBoxLayout( topLayout );
-
-  QLabel *preLabel = new QLabel( i18n("&Recur every"), this );
-  weeksLayout->addWidget( preLabel );
-
-  weeksLayout->addWidget( frequencyEdit() );
-  preLabel->setBuddy( frequencyEdit() );
-
-  QLabel *postLabel = new QLabel( i18n("week(s) on:"), this );
-  weeksLayout->addWidget( postLabel );
-
+  createFrequencySpinBar( this, topLayout, i18n("&Recur every"), i18n("week(s) on:") );
+  
   QHBox *dayBox = new QHBox( this );
   topLayout->addWidget( dayBox, 1, AlignVCenter );
   // Respect start of week setting
@@ -168,18 +210,7 @@ RecurMonthly::RecurMonthly( QWidget *parent, const char *name ) :
   QBoxLayout *topLayout = new QVBoxLayout( this );
   topLayout->setSpacing( KDialog::spacingHint() );
 
-
-  QBoxLayout *freqLayout = new QHBoxLayout( topLayout );
-
-  QLabel *preLabel = new QLabel( i18n("every"), this );
-  freqLayout->addWidget( preLabel );
-
-  freqLayout->addWidget( frequencyEdit() );
-  preLabel->setBuddy( frequencyEdit() );
-
-  QLabel *postLabel = new QLabel( i18n("month(s)"), this );
-  freqLayout->addWidget( postLabel );
-
+  createFrequencySpinBar( this, topLayout, i18n("&Recur every"), i18n("month(s)") );
 
   QButtonGroup *buttonGroup = new QButtonGroup( this );
   buttonGroup->setFrameStyle( QFrame::NoFrame );
@@ -239,25 +270,10 @@ RecurMonthly::RecurMonthly( QWidget *parent, const char *name ) :
   mByPosRadio = new QRadioButton( recurOnText, buttonGroup);
   buttonLayout->addWidget( mByPosRadio, 1, 0 );
 
-  mByPosCountCombo = new QComboBox( buttonGroup );
-  mByPosCountCombo->insertItem( i18n("1st") );
-  mByPosCountCombo->insertItem( i18n("2nd") );
-  mByPosCountCombo->insertItem( i18n("3rd") );
-  mByPosCountCombo->insertItem( i18n("4th") );
-  mByPosCountCombo->insertItem( i18n("5th") );
-  mByPosCountCombo->insertItem( i18n("Last") );
-  mByPosCountCombo->insertItem( i18n("2nd Last") );
-  mByPosCountCombo->insertItem( i18n("3rd Last") );
-  mByPosCountCombo->insertItem( i18n("4th Last") );
-  mByPosCountCombo->insertItem( i18n("5th Last") );
-
+  mByPosCountCombo = createWeekCountCombo( buttonGroup );
   buttonLayout->addWidget( mByPosCountCombo, 1, 1 );
 
-  const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
-  mByPosWeekdayCombo = new QComboBox( buttonGroup );
-  for( int i = 1; i <= 7; ++i ) {
-    mByPosWeekdayCombo->insertItem( calSys->weekDayName( i ) );
-  }
+  mByPosWeekdayCombo = createWeekdayCombo( buttonGroup );
   buttonLayout->addWidget( mByPosWeekdayCombo, 1, 2 );
 }
 
@@ -315,95 +331,157 @@ RecurYearly::RecurYearly( QWidget *parent, const char *name ) :
   QBoxLayout *topLayout = new QVBoxLayout( this );
   topLayout->setSpacing( KDialog::spacingHint() );
 
-
-  QBoxLayout *freqLayout = new QHBoxLayout( topLayout );
-
-  QLabel *preLabel = new QLabel( i18n("&every"), this );
-  freqLayout->addWidget( preLabel );
-
-  freqLayout->addWidget( frequencyEdit() );
-  preLabel->setBuddy( frequencyEdit() );
-
-  QLabel *postLabel = new QLabel( i18n("year(s)"), this );
-  freqLayout->addWidget( postLabel );
+  createFrequencySpinBar( this, topLayout, i18n("&Recur every"), i18n("year(s)") );
 
 
   QButtonGroup *buttonGroup = new QButtonGroup( this );
   buttonGroup->setFrameStyle( QFrame::NoFrame );
   topLayout->addWidget( buttonGroup, 1, AlignVCenter );
 
-  QGridLayout *buttonLayout = new QGridLayout( buttonGroup, 3, 2 );
+  QBoxLayout *buttonLayout = new QVBoxLayout( buttonGroup );
+ 
+   
+  /* YearlyMonth (day n of Month Y) */
+  QBoxLayout *monthLayout = new QHBoxLayout( buttonLayout );
+  QString recurInMonthText( 
+      i18n("part before XXX of 'Recur on day XXX of month YYY'", 
+      "&Recur on day "));
+  if ( KOPrefs::instance()->mCompactDialogs ) {
+    recurInMonthText = i18n("&Day ");
+  }
+  mByMonthRadio = new QRadioButton( recurInMonthText, buttonGroup );
+  monthLayout->addWidget( mByMonthRadio );
+  mByMonthSpin = new QSpinBox( 1, 31, 1, buttonGroup );
+  monthLayout->addWidget( mByMonthSpin );
+  QLabel *ofLabel = new QLabel( 
+      i18n("part between XXX and YYY of 'Recur on day XXX of month YYY'", " &of "), 
+      buttonGroup );
+  monthLayout->addWidget( ofLabel );
 
-  QString recurInMonthText;
+  mByMonthCombo = createMonthNameCombo( buttonGroup );
+  monthLayout->addWidget( mByMonthCombo );
+  ofLabel->setBuddy( mByMonthCombo );
+  
+  monthLayout->addStretch( 1 );
+
+
+  /* YearlyPos (weekday X of week N of month Y) */
+  QBoxLayout *posLayout = new QHBoxLayout( buttonLayout );
+  QString recurOnPosText( i18n("Part before XXX in 'Recur on NNN. WEEKDAY of MONTH', short version", "&On" ) );
   if ( !KOPrefs::instance()->mCompactDialogs ) {
-    recurInMonthText = i18n("&Recur in the month of");
+    recurOnPosText = i18n("Part before XXX in 'Recur on NNN. WEEKDAY of MONTH'", "&On the" );
   }
+  mByPosRadio = new QRadioButton( recurOnPosText, buttonGroup );
+  posLayout->addWidget( mByPosRadio );
+  
+  mByPosDayCombo = createWeekCountCombo( buttonGroup );
+  posLayout->addWidget( mByPosDayCombo );
 
-  mByMonthRadio = new QRadioButton( recurInMonthText, buttonGroup);
-  buttonLayout->addWidget( mByMonthRadio, 0, 0 );
+  mByPosWeekdayCombo = createWeekdayCombo( buttonGroup );
+  posLayout->addWidget( mByPosWeekdayCombo );
+  
+  ofLabel = new QLabel( 
+      i18n("part between WEEKDAY and MONTH in 'Recur on NNN. WEEKDAY of MONTH'", " o&f "),
+      buttonGroup );
+  posLayout->addWidget( ofLabel );
+    
+  mByPosMonthCombo  = createMonthNameCombo( buttonGroup );
+  posLayout->addWidget( mByPosMonthCombo );
+  ofLabel->setBuddy( mByPosMonthCombo );
+  
+  posLayout->addStretch( 1 );
 
-  const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
-  mByMonthCombo = new QComboBox( buttonGroup );
-  for( int i = 1; i <= 12; ++i ) {
-    // use an arbitrary year, we just need the month name...
-    QDate dt( 2005, i, 1 );
-    mByMonthCombo->insertItem( calSys->monthName( dt ) );
-  }
-  buttonLayout->addWidget( mByMonthCombo, 0, 1 );
-
-
-  buttonLayout->setRowStretch( 1, 1 );
-
+  
+  /* YearlyDay (day N of the year) */
+  QBoxLayout *dayLayout = new QHBoxLayout( buttonLayout );
   QString recurOnDayText;
   if ( KOPrefs::instance()->mCompactDialogs ) {
-    recurOnDayText = i18n("This day");
+    recurOnDayText = i18n("Day #");
   } else {
-    recurOnDayText = i18n("Recur on this &day");
+    recurOnDayText = i18n("Recur on &day #");
   }
-
-  mByDayRadio = new QRadioButton( recurOnDayText, buttonGroup);
-  buttonLayout->addMultiCellWidget( mByDayRadio, 2, 2, 0, 1 );
-}
-
-void RecurYearly::setDateTimes( QDateTime start, QDateTime ) 
-{
-  QString recurOnDayText;
+  mByDayRadio = new QRadioButton( recurOnDayText, buttonGroup );
+  dayLayout->addWidget( mByDayRadio );
+  
+  mByDaySpin = new QSpinBox( 1, 366, 1, buttonGroup );
+  dayLayout->addWidget( mByDaySpin );
+  
+  QString ofTheYear( i18n("part after NNN of 'Recur on day #NNN of the year'", " of the &year"));
   if ( KOPrefs::instance()->mCompactDialogs ) {
-    mByDayRadio->setText( i18n("This day") );
-  } else {
-    mByDayRadio->setText( i18n("Recur on &day %1 of the year").
-        arg( start.date().dayOfYear() ) );
+    ofTheYear = i18n("part after NNN of 'Recur on day #NNN of the year', short version", 
+        " of the year");
   }
-//  mByMonthCombo->setCurrentItem( start.date().month() + 1 );  
-  if ( !KOPrefs::instance()->mCompactDialogs ) {
-    mByMonthRadio->setText( i18n("&Recur on day %1 of ").arg( start.date().day() ) );
-  }
+  ofLabel = new QLabel( ofTheYear, buttonGroup );
+  dayLayout->addWidget( ofLabel );
+  ofLabel->setBuddy( mByDaySpin );
+  
+  dayLayout->addStretch( 1 );
 }
 
-void RecurYearly::setByDay()
+void RecurYearly::setByDay( int day )
 {
   mByDayRadio->setChecked( true );
+  mByDaySpin->setValue( day );
 }
 
-void RecurYearly::setByMonth( int month )
+void RecurYearly::setByPos( int count, int weekday, int month )
+{
+  mByPosRadio->setChecked( true );
+  if ( count > 0 )
+    mByPosDayCombo->setCurrentItem( count - 1 );
+  else 
+    mByPosDayCombo->setCurrentItem( -count + 4 );
+  mByPosWeekdayCombo->setCurrentItem( weekday );
+  mByPosMonthCombo->setCurrentItem( month-1 );
+}
+
+void RecurYearly::setByMonth( int day, int month )
 {
   mByMonthRadio->setChecked( true );
+  mByMonthSpin->setValue( day );
   mByMonthCombo->setCurrentItem( month - 1 );
 }
 
-bool RecurYearly::byMonth()
+RecurYearly::YearlyType RecurYearly::getType()
 {
-  return mByMonthRadio->isChecked();
+  if ( mByMonthRadio->isChecked() ) return byMonth;
+  if ( mByPosRadio->isChecked() ) return byPos;
+  if ( mByDayRadio->isChecked() ) return byDay;
+  return byMonth;
 }
 
-bool RecurYearly::byDay()
+int RecurYearly::monthDay()
 {
-  return mByDayRadio->isChecked();
+  return mByMonthSpin->value();
 }
 
 int RecurYearly::month()
 {
   return mByMonthCombo->currentItem() + 1;
+}
+
+int RecurYearly::posCount()
+{
+  int pos = mByPosDayCombo->currentItem();
+  if ( pos <= 4 ) // positive  count
+    return pos + 1;
+  else
+    return -pos + 4;
+}
+
+int RecurYearly::posWeekday()
+{
+  return mByPosWeekdayCombo->currentItem();
+}
+
+int RecurYearly::posMonth()
+{
+  return mByPosMonthCombo->currentItem() + 1;
+}
+
+int RecurYearly::day()
+{
+  return mByDaySpin->value();
 }
 
 //////////////////////////// ExceptionsWidget //////////////////////////
@@ -911,11 +989,14 @@ void KOEditorRecurrence::setDefaults( QDateTime from, QDateTime to, bool )
   mWeekly->setDays( days );
 
   mMonthly->setFrequency( 1 );
-  mMonthly->setByPos( from.date().day()/7 + 1, from.date().dayOfWeek() );
+  mMonthly->setByPos( ( from.date().day() - 1 ) / 7 + 1, from.date().dayOfWeek() - 1 );
   mMonthly->setByDay( from.date().day() );
 
   mYearly->setFrequency( 1 );
-  mYearly->setByMonth( from.date().month() );
+  mYearly->setByDay( from.date().dayOfYear() );
+  mYearly->setByPos( ( from.date().day() - 1 ) / 7 + 1, 
+      from.date().dayOfWeek() - 1, from.date().month() );
+  mYearly->setByMonth( from.date().day(), from.date().month() );
 }
 
 void KOEditorRecurrence::readIncidence(Incidence *incidence)
@@ -995,17 +1076,55 @@ void KOEditorRecurrence::readIncidence(Incidence *incidence)
       mMonthly->setFrequency( f );
 
       break;
-    case Recurrence::rYearlyMonth:
+    case Recurrence::rYearlyMonth: {
+      recurrenceType = RecurrenceChooser::Yearly;
+      rmd = r->monthDays();
+      if ( rmd.first() ) {
+        day = *rmd.first();
+      } else {
+        day = incidence->dtStart().date().day();
+      }
+      QValueList<int> monthlist;
+      QValueList<int> leaplist;
+      r->getYearlyMonthMonths( day, monthlist, leaplist );
+      if ( !monthlist.isEmpty() ) {
+        mYearly->setByMonth( day, monthlist.first() );
+      }
+      mYearly->setFrequency( f );
+      break; }
+    case Recurrence::rYearlyPos: {
+      recurrenceType = RecurrenceChooser::Yearly;
+      rmd = r->yearNums();
+      if ( rmd.first() ) {
+        month = *rmd.first();
+      } else {
+        month = incidence->dtStart().date().month();
+      }
+      
+      QPtrList<Recurrence::rMonthPos> monthPos( r->yearMonthPositions() );
+      if ( monthPos.first() ) {
+        Recurrence::rMonthPos *mp = monthPos.first();
+        count = mp->rPos;
+        if ( mp->negative ) count = -count;
+        QBitArray days( mp->rDays );
+        day = -1;
+        for ( int i=6; i>=0; i-- ) {
+          if ( days.testBit(i) ) day = i;
+        }
+        if ( day == -1 ) 
+          day = incidence->dtStart().date().dayOfWeek();
+      } else {
+        count = ( incidence->dtStart().date().day() - 1 ) / 7; 
+        day = incidence->dtStart().date().dayOfWeek();
+      }
+      mYearly->setByPos( count, day, month );
+      mYearly->setFrequency( f );
+      break; }
     case Recurrence::rYearlyDay:
       recurrenceType = RecurrenceChooser::Yearly;
-
       rmd = r->yearNums();
-      month = *rmd.first();
-      if ( month == incidence->dtStart().date().month() ) {
-        mYearly->setByDay();
-      } else {
-        mYearly->setByMonth( month );
-      }
+      day = *rmd.first();
+      mYearly->setByDay( day );
 
       mYearly->setFrequency( f );
       break;
@@ -1071,32 +1190,47 @@ void KOEditorRecurrence::writeIncidence( Incidence *incidence )
           r->addMonthlyPos( pos, days );
       } else {
           // it's by day
-          int day = mMonthly->day();
-
           if ( duration != 0 ) {
               r->setMonthly( Recurrence::rMonthlyDay, freq, duration );
           } else {
               r->setMonthly( Recurrence::rMonthlyDay, freq, endDate );
           }
-          r->addMonthlyDay( day );
+          r->addMonthlyDay( mMonthly->day() );
       }
   } else if ( recurrenceType == RecurrenceChooser::Yearly ) {
       int freq = mYearly->frequency();
-
-      int month;
-      if ( mYearly->byMonth() ) {
-          month = mYearly->month();
-      } else {
-          month = incidence->dtStart().date().month();
-      }
-      if ( duration != 0 ) {
-        r->setYearly( Recurrence::rYearlyMonth, freq, duration );
-      } else {
-        r->setYearly( Recurrence::rYearlyMonth, freq, endDate );
-      }
-
-      r->addYearlyNum( month );
-    }
+      
+      switch ( mYearly->getType() ) {
+        case RecurYearly::byMonth: 
+          if ( duration != 0 ) {
+              r->setYearlyByDate( mYearly->monthDay(), r->feb29YearlyType(), freq, duration );
+          } else {
+              r->setYearlyByDate( mYearly->monthDay(), r->feb29YearlyType(), freq, endDate );
+          }
+          r->addYearlyNum( mYearly->month() );
+          break;
+        case RecurYearly::byPos:  {
+          if ( duration != 0 ) {
+              r->setYearly( Recurrence::rYearlyPos, freq, duration );
+          } else {
+              r->setYearly( Recurrence::rYearlyPos, freq, endDate );
+          }
+          r->addYearlyNum( mYearly->posMonth() );
+          QBitArray days( 7 );
+          days.fill( false );
+          days.setBit( mYearly->posWeekday() );
+          r->addYearlyMonthPos( mYearly->posCount(), days );
+          break; }
+        case RecurYearly::byDay: 
+          if ( duration != 0 ) {
+              r->setYearly( Recurrence::rYearlyDay, freq, duration );
+          } else {
+              r->setYearly( Recurrence::rYearlyDay, freq, endDate );
+          }
+          r->addYearlyNum( mYearly->day() );
+          break;
+      } 
+    } // end "Yearly"
     
     incidence->setExDates( mExceptions->dates() );
 }
