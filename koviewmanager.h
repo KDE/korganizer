@@ -66,6 +66,7 @@ class KOViewManager : public QObject
 
     void setDocumentId( const QString & );
 
+    void updateView();
     void updateView( const QDate &start, const QDate &end );
 
     void raiseCurrentView();

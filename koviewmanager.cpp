@@ -142,6 +142,11 @@ void KOViewManager::raiseCurrentView()
   mMainView->viewStack()->raiseWidget(mCurrentView);
 }
 
+void KOViewManager::updateView()
+{
+  if ( mCurrentView ) mCurrentView->updateView();
+}
+
 void KOViewManager::updateView(const QDate &start, const QDate &end)
 {
 //  kdDebug() << "KOViewManager::updateView()" << endl;
