@@ -31,6 +31,7 @@
 class KPrefs;
 class KPrefsDialog;
 
+class KColorButton;
 class QCheckBox;
 class QLabel;
 class QSpinBox;
@@ -154,25 +155,22 @@ class KPrefsWidColor : public QObject, public KPrefsWid
     ~KPrefsWidColor();
     
     /**
-      Return QFrame used as preview field.
+      Return QLabel for the button
     */
-    QFrame *preview();
+    QLabel *label();
     /**
       Return button opening the color dialog.
     */
-    QPushButton *button();
+    KColorButton *button();
     
     void readConfig();
     void writeConfig();
-
-  protected slots:
-    void selectColor();
     
   private:
     QColor *mReference;
     
-    QFrame *mPreview;
-    QPushButton *mButton;
+    QLabel *mLabel;
+    KColorButton *mButton;
 };
 
 /**

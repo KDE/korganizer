@@ -42,6 +42,7 @@
 #include <qpushbutton.h>
 #include <qstrlist.h>
 
+#include <kcolorbutton.h>
 #include <kdebug.h>
 #include <klocale.h>
 #include <kglobal.h>
@@ -91,21 +92,22 @@ void KOPrefsDialog::setupMainTab()
   topLayout->setSpacing(spacingHint());
   topLayout->setMargin(marginHint());
 
-
-  topLayout->addWidget(new QLabel(i18n("Your name:"),topFrame),0,0);
-  mNameEdit = new QLineEdit(topFrame);
-  topLayout->addWidget(mNameEdit,0,1);
-
-  topLayout->addWidget(new QLabel(i18n("Email address:"),topFrame),1,0);
-  mEmailEdit = new QLineEdit(topFrame);
-  topLayout->addWidget(mEmailEdit,1,1);
-
   KPrefsWidBool *emailControlCenter =
-      addWidBool(i18n("Use Email settings from Control Center"),
+      addWidBool(i18n("&Use Email settings from Control Center"),
                  &(KOPrefs::instance()->mEmailControlCenter),topFrame);
-  topLayout->addMultiCellWidget(emailControlCenter->checkBox(),3,3,0,1);
+  topLayout->addMultiCellWidget(emailControlCenter->checkBox(),0,0,0,1);
   connect(emailControlCenter->checkBox(),SIGNAL(toggled(bool)),
           SLOT(toggleEmailSettings(bool)));
+
+  mNameEdit = new QLineEdit(topFrame);
+  mNameLabel = new QLabel(mNameEdit, i18n("Full &name:"), topFrame);
+  topLayout->addWidget(mNameLabel,1,0);
+  topLayout->addWidget(mNameEdit,1,1);
+
+  mEmailEdit = new QLineEdit(topFrame);
+  mEmailLabel = new QLabel(mEmailEdit, i18n("E&mail address:"),topFrame);
+  topLayout->addWidget(mEmailLabel,2,0);
+  topLayout->addWidget(mEmailEdit,2,1);
 
   KPrefsWidBool *bcc =
       addWidBool(i18n("Send copy to owner when mailing events"),
@@ -123,25 +125,25 @@ void KOPrefsDialog::setupMainTab()
   QHBox *intervalBox = new QHBox(autoSaveGroup);
   intervalBox->setSpacing(spacingHint());
 
-  (void)new QLabel(i18n("Save interval in minutes:"),intervalBox);
+  QLabel *autoSaveIntervalLabel = new QLabel(i18n("Save &interval in minutes:"),intervalBox);
   mAutoSaveIntervalSpin = new QSpinBox(0,500,1,intervalBox);
-
+  autoSaveIntervalLabel->setBuddy(mAutoSaveIntervalSpin);
 
   KPrefsWidBool *confirmCheck =
-      addWidBool(i18n("Confirm Deletes"),&(KOPrefs::instance()->mConfirm),
+      addWidBool(i18n("Confirm &deletes"),&(KOPrefs::instance()->mConfirm),
                  topFrame);
   topLayout->addMultiCellWidget(confirmCheck->checkBox(),7,7,0,1);
 
 
   mEnableGroupScheduling =
-      addWidBool(i18n("Enable Group Scheduling"),
+      addWidBool(i18n("Enable group scheduling"),
                  &(KOPrefs::instance()->mEnableGroupScheduling),topFrame);
   topLayout->addWidget(mEnableGroupScheduling->checkBox(),8,0);
   connect(mEnableGroupScheduling->checkBox(),SIGNAL(clicked()),
           SLOT(warningGroupScheduling()));
 
   mEnableProjectView =
-      addWidBool(i18n("Enable Project View"),
+      addWidBool(i18n("Enable project view"),
                  &(KOPrefs::instance()->mEnableProjectView),topFrame);
   topLayout->addWidget(mEnableProjectView->checkBox(),9,0);
   connect(mEnableProjectView->checkBox(),SIGNAL(clicked()),
@@ -217,7 +219,7 @@ void KOPrefsDialog::setupTimeTab()
   mTimeZoneCombo->insertStrList(&list);
 
   
-  topLayout->addWidget(new QLabel(i18n("Default Appointment Time:"),
+  topLayout->addWidget(new QLabel(i18n("Default appointment time:"),
                        topFrame),1,0);
   mStartTimeSpin = new QSpinBox(0,23,1,topFrame);
   mStartTimeSpin->setSuffix(":00");
@@ -232,7 +234,7 @@ void KOPrefsDialog::setupTimeTab()
   QStringList alarmList;
   alarmList << i18n("1 minute") << i18n("5 minutes") << i18n("10 minutes")
             << i18n("15 minutes") << i18n("30 minutes");
-  topLayout->addWidget(new QLabel(i18n("Default Alarm Time:"),topFrame),
+  topLayout->addWidget(new QLabel(i18n("Default alarm time:"),topFrame),
                        3,0);
   mAlarmTimeCombo = new QComboBox(topFrame);
   mAlarmTimeCombo->insertStringList(alarmList);
@@ -246,15 +248,15 @@ void KOPrefsDialog::setupTimeTab()
 
   QHBox *workStartBox = new QHBox(workingHoursGroup);
 
-  addWidTime(i18n("Daily Starting Hour:"),
+  addWidTime(i18n("Daily starting hour:"),
              &(KOPrefs::instance()->mWorkingHoursStart),workStartBox);
 
   QHBox *workEndBox = new QHBox(workingHoursGroup);
 
-  addWidTime(i18n("Daily Ending Hour:"),
+  addWidTime(i18n("Daily ending hour:"),
              &(KOPrefs::instance()->mWorkingHoursEnd),workEndBox);
 
-  addWidBool(i18n("Exclude Holidays"),
+  addWidBool(i18n("Exclude holidays"),
              &(KOPrefs::instance()->mExcludeHolidays),workingHoursGroup);
 
   addWidBool(i18n("Exclude Saturdays"),
@@ -394,51 +396,51 @@ void KOPrefsDialog::setupColorsTab()
 
   // Holiday Color
   KPrefsWidColor *holidayColor =
-      addWidColor(i18n("Holiday Color"),
+      addWidColor(i18n("Holiday color:"),
                   &(KOPrefs::instance()->mHolidayColor),topFrame);
-  topLayout->addWidget(holidayColor->preview(),0,0);
+  topLayout->addWidget(holidayColor->label(),0,0);
   topLayout->addWidget(holidayColor->button(),0,1);
 
   // Highlight Color
   KPrefsWidColor *highlightColor =
-      addWidColor(i18n("Highlight Color"),
+      addWidColor(i18n("Highlight color:"),
                   &(KOPrefs::instance()->mHighlightColor),topFrame);
-  topLayout->addWidget(highlightColor->preview(),1,0);
+  topLayout->addWidget(highlightColor->label(),1,0);
   topLayout->addWidget(highlightColor->button(),1,1);
 
   // Event color
   KPrefsWidColor *eventColor =
-      addWidColor(i18n("Default Event Color"),
+      addWidColor(i18n("Default event color:"),
                   &(KOPrefs::instance()->mEventColor),topFrame);
-  topLayout->addWidget(eventColor->preview(),2,0);
+  topLayout->addWidget(eventColor->label(),2,0);
   topLayout->addWidget(eventColor->button(),2,1);
 
   // agenda view background color
   KPrefsWidColor *agendaBgColor =
-      addWidColor(i18n("Agenda View Background Color"),
+      addWidColor(i18n("Agenda view background color:"),
                   &(KOPrefs::instance()->mAgendaBgColor),topFrame);
-  topLayout->addWidget(agendaBgColor->preview(),3,0);
+  topLayout->addWidget(agendaBgColor->label(),3,0);
   topLayout->addWidget(agendaBgColor->button(),3,1);
 
   // working hours color
   KPrefsWidColor *workingHoursColor =
-      addWidColor(i18n("Working Hours Color"),
+      addWidColor(i18n("Working hours color:"),
                   &(KOPrefs::instance()->mWorkingHoursColor),topFrame);
-  topLayout->addWidget(workingHoursColor->preview(),4,0);
+  topLayout->addWidget(workingHoursColor->label(),4,0);
   topLayout->addWidget(workingHoursColor->button(),4,1);
 
   // Todo due today color
   KPrefsWidColor *todoDueTodayColor =
-      addWidColor(i18n("Todo Due Today Color"),
+      addWidColor(i18n("Todo due today color:"),
                   &(KOPrefs::instance()->mTodoDueTodayColor),topFrame);
-  topLayout->addWidget(todoDueTodayColor->preview(),5,0);
+  topLayout->addWidget(todoDueTodayColor->label(),5,0);
   topLayout->addWidget(todoDueTodayColor->button(),5,1);
   
   // Todo overdue color
   KPrefsWidColor *todoOverdueColor =
-      addWidColor(i18n("Todo Overdue Color"),
+      addWidColor(i18n("Todo overdue color:"),
                   &(KOPrefs::instance()->mTodoOverdueColor),topFrame);
-  topLayout->addWidget(todoOverdueColor->preview(),6,0);
+  topLayout->addWidget(todoOverdueColor->label(),6,0);
   topLayout->addWidget(todoOverdueColor->button(),6,1);
   
   // categories colors
@@ -450,28 +452,16 @@ void KOPrefsDialog::setupColorsTab()
   mCategoryCombo->insertStringList(KOPrefs::instance()->mCustomCategories);
   connect(mCategoryCombo,SIGNAL(activated(int)),SLOT(updateCategoryColor()));
 
-  QHBox *categoryBox = new QHBox(categoryGroup);
-  categoryBox->setSpacing(spacingHint());
-
-  mCategoryColor = new QFrame(categoryBox);
-  mCategoryColor->setFrameStyle(QFrame::Panel|QFrame::Plain);
-
-  QPushButton *categoryButton = new QPushButton(i18n("Select Color"),
-                                                categoryBox);
-  connect(categoryButton,SIGNAL(clicked()),SLOT(selectCategoryColor()));
+  mCategoryButton = new KColorButton(categoryGroup);
+  connect(mCategoryButton,SIGNAL(changed(const QColor &)),SLOT(setCategoryColor()));
   updateCategoryColor();
 
   topLayout->setRowStretch(8,1);
 }
 
-void KOPrefsDialog::selectCategoryColor()
+void KOPrefsDialog::setCategoryColor()
 {
-  QColor myColor(mCategoryColor->backgroundColor());
-  int result = KColorDialog::getColor( myColor );
-  if ( result == KColorDialog::Accepted ) {
-    mCategoryColor->setBackgroundColor(myColor);
-    mCategoryDict.insert(mCategoryCombo->currentText(),new QColor(myColor));
-  }
+  mCategoryDict.insert(mCategoryCombo->currentText(), new QColor(mCategoryButton->color()));
 }
 
 void KOPrefsDialog::updateCategoryColor()
@@ -482,7 +472,7 @@ void KOPrefsDialog::updateCategoryColor()
     color = KOPrefs::instance()->categoryColor(cat);
   }
   if (color) {
-    mCategoryColor->setBackgroundColor(*color);
+    mCategoryButton->setColor(*color);
   }
 }
 
@@ -512,7 +502,7 @@ void KOPrefsDialog::setupGroupSchedulingTab()
   topLayout->setMargin(marginHint());
 
   KPrefsWidRadios *schedulerGroup =
-      addWidRadios(i18n("Scheduler mail client"),&(KOPrefs::instance()->mIMIPScheduler),
+      addWidRadios(i18n("Scheduler Mail Client"),&(KOPrefs::instance()->mIMIPScheduler),
                    topFrame);
   schedulerGroup->addRadio(i18n("Dummy"));
   schedulerGroup->addRadio(i18n("Mail Client"));
@@ -522,8 +512,8 @@ void KOPrefsDialog::setupGroupSchedulingTab()
   KPrefsWidRadios *sendGroup =
       addWidRadios(i18n("Scheduler mails should be"),&(KOPrefs::instance()->mIMIPSend),
                    topFrame);
-  sendGroup->addRadio(i18n("send to outbox"));
-  sendGroup->addRadio(i18n("send directly"));
+  sendGroup->addRadio(i18n("Send to outbox"));
+  sendGroup->addRadio(i18n("Send directly"));
 
   topLayout->addMultiCellWidget(sendGroup->groupBox(),1,1,0,1);
 
@@ -736,6 +726,8 @@ void KOPrefsDialog::toggleEmailSettings(bool on)
   if (on) {
     mEmailEdit->setEnabled(false);
     mNameEdit->setEnabled(false);
+    mEmailLabel->setEnabled(false);
+    mNameLabel->setEnabled(false);
 
     KEMailSettings settings;
     mNameEdit->setText(settings.getSetting(KEMailSettings::RealName));
@@ -743,6 +735,8 @@ void KOPrefsDialog::toggleEmailSettings(bool on)
   } else {
     mEmailEdit->setEnabled(true);
     mNameEdit->setEnabled(true);
+    mEmailLabel->setEnabled(true);
+    mNameLabel->setEnabled(true);
   }
 }
 

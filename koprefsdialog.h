@@ -33,6 +33,7 @@
 
 #include "kprefsdialog.h"
 
+class KColorButton;
 class QSpinBox;
 class QSlider;
 class KURLRequester;
@@ -56,7 +57,7 @@ class KOPrefsDialog : public KPrefsDialog
     void updateCategories();
 
   protected slots:
-    void selectCategoryColor();
+    void setCategoryColor();
     void updateCategoryColor();
 
     void warningExperimental(bool on);
@@ -103,6 +104,8 @@ class KOPrefsDialog : public KPrefsDialog
     // widgets holding preferences data
     QLineEdit *mNameEdit;
     QLineEdit *mEmailEdit;
+    QLabel *mNameLabel;
+    QLabel *mEmailLabel;
     QLineEdit *mAdditionalEdit;
     QSpinBox  *mAutoSaveIntervalSpin;
     QListView *mAMails;
@@ -113,8 +116,8 @@ class KOPrefsDialog : public KPrefsDialog
     QSpinBox     *mDefaultDurationSpin;
     QComboBox    *mAlarmTimeCombo;
 
-    QFrame        *mCategoryColor;
     QComboBox     *mCategoryCombo;
+    KColorButton  *mCategoryButton;
     QDict<QColor> mCategoryDict;
 
     QSlider   *mHourSizeSlider;

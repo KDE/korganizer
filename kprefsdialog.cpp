@@ -42,6 +42,7 @@
 #include <qradiobutton.h>
 #include <qpushbutton.h>
 
+#include <kcolorbutton.h>
 #include <kdebug.h>
 #include <klocale.h>
 #include <kglobal.h>
@@ -84,11 +85,8 @@ KPrefsWidColor::KPrefsWidColor(const QString &text,QColor *reference,
 {
   mReference = reference;
 
-  mPreview = new QFrame(parent);
-  mPreview->setFrameStyle(QFrame::Panel|QFrame::Plain);
-
-  mButton = new QPushButton(text,parent);
-  connect(mButton,SIGNAL(clicked()),SLOT(selectColor()));
+  mButton = new KColorButton(parent);
+  mLabel = new QLabel(mButton, text, parent);
 }
 
 KPrefsWidColor::~KPrefsWidColor()
@@ -98,33 +96,23 @@ KPrefsWidColor::~KPrefsWidColor()
 
 void KPrefsWidColor::readConfig()
 {
-  mPreview->setBackgroundColor(*mReference);
+  mButton->setColor(*mReference);
 }
 
 void KPrefsWidColor::writeConfig()
 {
-  *mReference = mPreview->backgroundColor();
+  *mReference = mButton->color();
 }
 
-QFrame *KPrefsWidColor::preview()
+QLabel *KPrefsWidColor::label()
 {
-  return mPreview;
+  return mLabel;
 }
 
-QPushButton *KPrefsWidColor::button()
+KColorButton *KPrefsWidColor::button()
 {
   return mButton;
 }
-
-void KPrefsWidColor::selectColor()
-{
-  QColor myColor(mPreview->backgroundColor());
-  int result = KColorDialog::getColor(myColor);
-  if (result == KColorDialog::Accepted) {
-    mPreview->setBackgroundColor(myColor);
-  }
-}
-
 
 KPrefsWidFont::KPrefsWidFont(const QString &sampleText,const QString &buttonText,
                              QFont *reference,QWidget *parent)
