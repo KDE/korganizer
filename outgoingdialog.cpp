@@ -53,7 +53,7 @@ ScheduleItemOut::ScheduleItemOut(QListView *parent,IncidenceBase *ev,
   mMethod = method;
   mRecipients = recipients;
 
-  kdDebug() << "ScheduleItemOut: setting the summary" << endl;
+//  kdDebug() << "ScheduleItemOut: setting the summary" << endl;
   //Set the summary
   if(ev->type() != "FreeBusy") {
     Incidence *incidence = static_cast<Incidence *>(ev);
@@ -62,7 +62,7 @@ ScheduleItemOut::ScheduleItemOut(QListView *parent,IncidenceBase *ev,
     setText(0,i18n("Free Busy Object"));
   }
 
-  kdDebug() << "ScheduleItemOut: checking if the object is an event" << endl;
+//  kdDebug() << "ScheduleItemOut: checking if the object is an event" << endl;
   //If the object is an event
   if(ev->type()=="Event") {
     Event *event = static_cast<Event *>(ev);
@@ -104,7 +104,7 @@ ScheduleItemOut::ScheduleItemOut(QListView *parent,IncidenceBase *ev,
     }
   }
 
-  kdDebug() << "ScheduleItemOut: checking if the object is a FreeBusy object" << endl;
+//  kdDebug() << "ScheduleItemOut: checking if the object is a FreeBusy object" << endl;
   //If the object is a freebusy object
   if(ev->type() == "FreeBusy") {
     FreeBusy *freebusy = static_cast<FreeBusy *>(ev);
@@ -116,7 +116,7 @@ ScheduleItemOut::ScheduleItemOut(QListView *parent,IncidenceBase *ev,
     setText(4,KGlobal::locale()->formatTime( freebusy->dtEnd().time() ) );
   }
 
-  kdDebug() << "ScheduleItemOut: Setting the method" << endl;
+//  kdDebug() << "ScheduleItemOut: Setting the method" << endl;
   //Set the Method
   setText(5,Scheduler::methodName(mMethod));
 }
@@ -131,11 +131,9 @@ OutgoingDialog::OutgoingDialog(Calendar *calendar,QWidget* parent,
   mFormat = new ICalFormat;
 
   if (KOPrefs::instance()->mIMIPScheduler == KOPrefs::IMIPDummy ) {
-    kdDebug() << "--- Dummy" << endl;
     mScheduler = new DummyScheduler(mCalendar);
   } else {
 #ifndef KORG_NOMAIL
-    kdDebug() << "--- Mailer" << endl;
     mScheduler = new MailScheduler(mCalendar);
 #else
     mScheduler = new DummyScheduler(mCalendar);
@@ -153,7 +151,6 @@ OutgoingDialog::OutgoingDialog(Calendar *calendar,QWidget* parent,
 
 OutgoingDialog::~OutgoingDialog()
 {
-  kdDebug() << "OutgoingDialog::~OutgoingDialog()" << endl;  
   delete mDocPrefs;
   delete mFormat;
 }

@@ -330,10 +330,7 @@ void KDateNavigator::updateConfig()
     }
     headings[i]->setText( KOGlobals::self()->calendarSystem()->weekDayName(day, true) );
   }
-  kdDebug() << "updateConfig() -> updateDates()" << endl;
   updateDates();
-
-  kdDebug() << "updateConfig() -> updateView()" << endl;
   updateView();
 }
 

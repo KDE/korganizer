@@ -56,6 +56,8 @@
 
 #include <libkcal/calendarlocal.h>
 #include <libkcal/calendarresources.h>
+#include <libkcal/resourcecalendar.h>
+#include <libkcal/resourcelocal.h>
 
 #include "komailclient.h"
 #include "calprinter.h"
@@ -92,8 +94,35 @@ KOrganizer::KOrganizer( bool document, const char *name )
   if ( mDocument ) {
     mCalendar = new CalendarLocal(KOPrefs::instance()->mTimeZoneId.local8Bit());
   } else {
-    mCalendar = new CalendarResources( KOPrefs::instance()->mTimeZoneId.local8Bit() );
+    CalendarResources *calendar = new CalendarResources( KOPrefs::instance()->mTimeZoneId.local8Bit() );
+    mCalendar = calendar;
     setCaption( i18n("Calendar") );
+  
+    CalendarResourceManager *manager = calendar->resourceManager();
+
+    if ( manager->isEmpty() ) {
+      KConfig *config = KOGlobals::config();
+      config->setGroup("General");
+      QString fileName = config->readEntry( "Active Calendar" );
+
+      if ( fileName.isEmpty() ) {
+        fileName = locateLocal( "appdata", "std.ics" );
+      }
+    
+      kdDebug() << "Using as default resource: '" << fileName << "'" << endl;
+    
+      ResourceCalendar *defaultResource = new ResourceLocal( fileName );
+      defaultResource->setResourceName( i18n("Default KOrganizer resource") );
+
+      manager->add( defaultResource );
+      manager->setStandardResource( defaultResource );
+    }
+    
+    kdDebug() << "CalendarResources used by KOrganizer:" << endl;
+    CalendarResourceManager::Iterator it;
+    for( it = manager->begin(); it != manager->end(); ++it ) {
+      (*it)->dump();
+    }
   }
 
   mCalendar->setOwner( KOPrefs::instance()->fullName() );
