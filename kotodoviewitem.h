@@ -64,7 +64,7 @@ class KOTodoViewItem : public QCheckListItem
     void setSortKey(int column,const QString &key);
     
     bool isAlternate();
-
+    int compare( QListViewItem *i, int col, bool ascending ) const;
     virtual void paintCell(QPainter *p, const QColorGroup &cg,
       int column, int width, int alignment);
 
@@ -74,6 +74,16 @@ class KOTodoViewItem : public QCheckListItem
 #else
 #endif
   virtual void stateChange(bool);
+  enum {
+    eSummaryColumn=0,
+    eRecurColumn=1,
+    ePriorityColumn=2,
+    ePercentColumn=3,
+    eDueDateColumn=4,
+    eCategoriesColumn=5,
+    eDescriptionColumn=6
+  };
+    
 
   private:
     Todo *mTodo;
