@@ -61,6 +61,9 @@ class KOTodoListView;
 
 class DocPrefs;
 
+namespace KPIM {
+  class ClickLineEdit;
+}
 
 class KOTodoListViewToolTip : public QToolTip
 {
@@ -109,21 +112,6 @@ class KOTodoListView : public KListView
     bool mMousePressed;
     QListViewItem *mOldCurrent;
     KOTodoListViewToolTip *tooltip;
-};
-
-
-/**
-  This is the line-edit on top of the todoview for fast addition of new todos
-*/
-class KOQuickTodo : public QLineEdit
-{
-    Q_OBJECT
-  public:
-    KOQuickTodo( QWidget *parent = 0 );
-
-  protected:
-    void focusInEvent( QFocusEvent *ev );
-    void focusOutEvent( QFocusEvent *ev );
 };
 
 
@@ -252,7 +240,7 @@ class KOTodoView : public KOrg::BaseView
 
     DocPrefs *mDocPrefs;
     QString mCurrentDoc;
-    KOQuickTodo *mQuickAdd;
+    KPIM::ClickLineEdit *mQuickAdd;
 
     static const int POPUP_UNSUBTODO;
 };

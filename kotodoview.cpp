@@ -38,6 +38,8 @@
 #include <libkcal/calendarresources.h>
 #include <libkcal/resourcecalendar.h>
 
+#include <libkdepim/clicklineedit.h>
+
 #ifndef KORG_NOPRINTER
 #include "calprinter.h"
 #endif
@@ -330,31 +332,6 @@ void KOTodoListView::contentsMouseDoubleClickEvent(QMouseEvent *e)
 
 /////////////////////////////////////////////////////////////////////////////
 
-KOQuickTodo::KOQuickTodo(QWidget *parent) :
-  QLineEdit(parent)
-{
-  setText(i18n("Click to add a new Todo"));
-  setPaletteForegroundColor(gray);
-}
-
-void KOQuickTodo::focusInEvent(QFocusEvent *ev)
-{
-  if ( text()==i18n("Click to add a new Todo") )
-    setText(QString::null);
-  setPaletteForegroundColor(parentWidget()->paletteForegroundColor());
-  QLineEdit::focusInEvent(ev);
-}
-
-void KOQuickTodo::focusOutEvent(QFocusEvent *ev)
-{
-  if ( text().isEmpty() ) 
-	  setText(i18n("Click to add a new Todo"));
-  setPaletteForegroundColor(gray);
-  QLineEdit::focusOutEvent(ev);
-}
-
-/////////////////////////////////////////////////////////////////////////////
-
 KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent, const char* name)
   : KOrg::BaseView( calendar, parent, name )
 {
@@ -364,7 +341,7 @@ KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent, const char* name)
   title->setFrameStyle( QFrame::Panel | QFrame::Raised );
   topLayout->addWidget( title );
 
-  mQuickAdd = new KOQuickTodo( this );
+  mQuickAdd = new KPIM::ClickLineEdit( this, i18n( "Click to add a new Todo" ) );
   topLayout->addWidget( mQuickAdd );
 
   if ( !KOPrefs::instance()->mEnableQuickTodo ) mQuickAdd->hide();
