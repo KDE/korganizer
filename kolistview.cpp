@@ -13,7 +13,7 @@
 
 #include "calobject.h"
 #include "calprinter.h"
-#include "korganizer.h"
+#include "calendarview.h"
 
 #include "kolistview.h"
 #include "kolistview.moc"
@@ -156,17 +156,17 @@ void KOListView::changeEventDisplay(KOEvent *event, int action)
   KOListViewItem *item;
   
   switch(action) {
-    case KOrganizer::EVENTADDED:
+    case CalendarView::EVENTADDED:
       new KOListViewItem(mListView,event);
       break;
-    case KOrganizer::EVENTEDITED:
+    case CalendarView::EVENTEDITED:
       item = getItemForEvent(event);
       if (item) {
         delete item;
         new KOListViewItem(mListView,event);
       }
       break;
-    case KOrganizer::EVENTDELETED:
+    case CalendarView::EVENTDELETED:
       item = getItemForEvent(event);
       if (item) {
         delete item;

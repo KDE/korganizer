@@ -2,6 +2,7 @@
 #include <kglobal.h>
 #include <kcmdlineargs.h>
 #include <kconfig.h>
+#include <dcopclient.h>
 
 #include "version.h"
 #include "calobject.h"
@@ -15,28 +16,19 @@ KOrganizerApp::KOrganizerApp() : KUniqueApplication()
 {
 }
 
-KOrganizerApp::KOrganizerApp(int &argc, char **argv, const QCString &rAppName)
-  : KUniqueApplication(argc, argv, rAppName)
-{
-}
-
 KOrganizerApp::~KOrganizerApp()
 {
 }
 
-// display items that are imminent over the next several days as listed
-void KOrganizerApp::displayImminent(int numdays)
+void KOrganizerApp::displayImminent(const QString &file,int numdays)
 {
+  CalObject *cal = new CalObject;
+
   QDate currDate(QDate::currentDate());
   KOEvent *currEvent;
 
-  if (fn.isEmpty()) {
-    printf(i18n("No default calendar, and none was specified on the command line.\n"));
-    exit(0);
-  }
-
-  if (!cal->load(fn)) {
-    printf(i18n("Error reading from default calendar.\n"));
+  if (!cal->load(file)) {
+    printf(i18n("Could not load calendar '%1'.\n").arg(file));
     exit(0);
   }
 
@@ -57,50 +49,59 @@ void KOrganizerApp::displayImminent(int numdays)
 
 void KOrganizerApp::startAlarmDaemon()
 {
-  QString execStr = locate("exe", "alarmd");
-
-  if (!fn.isEmpty())
-    execStr += " " + fn;
-
+  // Start alarmdaemon. It is a KUniqueApplication, that means it is
+  // automatically made sure that there is only one instance of the alarm daemon
+  // running.
+  QString execStr = locate("exe","alarmd");
   system(execStr.latin1());
+
+  // Force alarm daemon to load active calendar
+  if (!dcopClient()->send("alarmd","ad","reloadCal()","")) {
+    qDebug("KOrganizerApp::startAlarmDaemon(): dcop send failed");
+  }
 }
+
 
 int KOrganizerApp::newInstance()
 {
   qDebug("KOApp::newInstance()");
 
-  cal = new CalObject;
-
-  KGlobal::config()->setGroup("General");
-  fn = KGlobal::config()->readEntry("Active Calendar");
-
   KCmdLineArgs *args = KCmdLineArgs::parsedArgs();
 
-  // If a filename was given as argument load this as calendar.
-  // We should add the option to load multiple calendars with one command.
-  if (args->count() > 0) {
-    fn = args->arg(0);
-  }
-
   // process command line options
+  int numDays = 0;
   if (args->isSet("list")) {
-    displayImminent(1);
+    numDays = 1;
   } else if (args->isSet("show")) {
-    int numDays = args->getOption("show").toInt();
-    displayImminent(numDays);
+    numDays = args->getOption("show").toInt();
   } else {
-    // always try to start the alarm daemon. IT will take care of itself
-    // if there is no calendar to work on yet. we may or may not have a
-    // calendar filename to work with.
     startAlarmDaemon();
-
-    // Important: fn is a QCString, while the TopWidget constructor takes
-    // a QString. There is no QString( const QCString& ) constructor.
-    // It compiles, but we get a null-string with a length of MAXINT ;(
-    (new KOrganizer(QString::fromLocal8Bit( (const char*) fn),false,
-                    "KOrganizer MainWindow"))->show();
   }
 
+  // If filenames was given as argument load this as calendars, one per window.
+  if (args->count() > 0) {
+    int i;
+    for(i=0;i<args->count();++i) {
+      processCalendar(args->arg(i),numDays);
+    }
+  } else {
+    KGlobal::config()->setGroup("General");
+    QString file = KGlobal::config()->readEntry("Active Calendar");
+
+    processCalendar(file,numDays);
+  }
+  
   qDebug("KOApp::newInstance() done");
   return 0;
+}
+
+void KOrganizerApp::processCalendar(const QString & file,int numDays)
+{
+  if (numDays > 0) {
+    displayImminent(file,numDays);
+  } else {
+    KOrganizer *korg = new KOrganizer("KOrganizer MainWindow");
+    korg->show();
+    if (!file.isEmpty()) korg->openURL(KURL(file));
+  }
 }

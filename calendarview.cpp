@@ -49,11 +49,11 @@
 #include "koeventviewer.h"
 
 #include "calendarview.h"
-#include "calendarview.moc"	
+#include "calendarview.moc"
 
 
-CalendarView::CalendarView(QString filename, QWidget *parent, const char *name ) 
-  : QWidget( parent, name )
+CalendarView::CalendarView(QWidget *parent,const char *name) 
+  : QWidget(parent,name)
 {
   qDebug("CalendarView::CalendarView()");
 
@@ -68,7 +68,7 @@ CalendarView::CalendarView(QString filename, QWidget *parent, const char *name )
   searchDlg = 0L;
 //  setMinimumSize(600,400);	// make sure we don't get resized too small...
 
-  // Create calendar object, which contains all calendar information associated
+  // Create calendar object, which manages all calendar information associated
   // with this calendar view window.
   mCalendar = new CalObject;
 
@@ -104,7 +104,7 @@ CalendarView::CalendarView(QString filename, QWidget *parent, const char *name )
   layoutLeftFrame->addWidget(dateNavFrame);
   layoutLeftFrame->addSpacing(5);
 
-  if (!filename.isEmpty()) initCalendar(filename);
+//  if (!filename.isEmpty()) initCalendar(filename);
 
   // create the main data display views.
   todoList   = new KOTodoView(mCalendar, leftFrame, "CalendarView::TodoList");
@@ -1090,33 +1090,8 @@ void CalendarView::printPreview()
 
   if (currentView) currentView->printPreview(calPrinter,*tmpDateList.first(),
                                              *tmpDateList.last());
-  else calPrinter->print(CalPrinter::Todo,
-                         *tmpDateList.first(), *tmpDateList.last());
-
-/*
-  switch(viewMode) {
-  case AGENDAVIEW:
-    if (tmpDateList.count() == 1)
-      calPrinter->preview(CalPrinter::Day,
-			  *tmpDateList.first(), *tmpDateList.last());
-    else if (tmpDateList.count() <= 7)
-      calPrinter->preview(CalPrinter::Week,
-			  *tmpDateList.first(), *tmpDateList.last());
-    else
-      calPrinter->preview(CalPrinter::Month,
-			  *tmpDateList.first(), *tmpDateList.last());
-    break;
-  case LISTVIEW:
-    calPrinter->preview(CalPrinter::Day,
-			*tmpDateList.first(), *tmpDateList.last());
-    break;
-  case MONTHVIEW:
-  default:
-    calPrinter->preview(CalPrinter::Month, 
-			*tmpDateList.first(), *tmpDateList.last());
-    break;
-  }
-*/
+  else calPrinter->preview(CalPrinter::Todo,
+                           *tmpDateList.first(), *tmpDateList.last());
 }
 
 void CalendarView::exportWeb()

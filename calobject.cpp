@@ -152,14 +152,12 @@ CalObject::~CalObject()
 
 bool CalObject::load(const QString &fileName)
 {
-
-  VObject *vcal = 0L;
-  const char *fn = fileName.ascii();
-
   // do we want to silently accept this, or make some noise?  Dunno...
   // it is a semantical thing vs. a practical thing.
-  if (fileName.isEmpty())
-    return TRUE;
+  if (fileName.isEmpty()) return false;
+
+  VObject *vcal = 0L;
+  const char *fn = fileName.latin1();
 
   // this is not necessarily only 1 vcal.  Could be many vcals, or include
   // a vcard...

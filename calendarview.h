@@ -7,7 +7,6 @@
 #include <qlayout.h>
 #include <qwidget.h>
 #include <qlist.h>
-#include <qtabdlg.h>
 #include <qframe.h>
 #include <qsplitter.h>
 #include <qvbox.h>
@@ -21,17 +20,13 @@
 #include "qdatelist.h"
 #include "calobject.h"
 #include "kdatenav.h"
-//#include "eventwin.h"
-//#include "editeventwin.h"
-//#include "todoeventwin.h"
 #include "koagendaview.h"
-//#include "listview.h"
 #include "kolistview.h"
 #include "kotodoview.h"
 #include "komonthview.h"
-#include "optionsdlg.h"
 #include "searchdialog.h"
 
+class QWidgetStack;
 class CalPrinter;
 class ExportWebDialog;
 class KOOptionsDialog;
@@ -54,19 +49,13 @@ public:
    *
    * Constructs a new main window.
    *
-   * @param cal is a newly allocated calendar passed from the main program
-   * @param parent this should usually be 0, unless it is a child win (when?)
-   * @param name this is the name of the window to display in the titlebar
-   * @param fnOverride specifies whether if the filename given is empty,
-   * KOrg. will try to obtain a filename from the config file instead of 
-   * starting up with an empty calendar.
+   * @param parent parent window
+   * @param name Qt internal widget object name
    *
    */
-  CalendarView(QString filename="", QWidget *parent=0, const char *name=0 );
+  CalendarView(QWidget *parent=0, const char *name=0 );
   virtual ~CalendarView();
 
-  // View Types in enum
-  enum { AGENDAVIEW, LISTVIEW, MONTHVIEW, TODOVIEW };
   enum { EVENTADDED, EVENTEDITED, EVENTDELETED };
 
 signals:

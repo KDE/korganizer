@@ -65,8 +65,8 @@
 
 QList<KOrganizer> *KOrganizer::windowList = 0;
 
-KOrganizer::KOrganizer(QString filename, bool fnOverride, const char *name ) 
-  : KTMainWindow( name )
+KOrganizer::KOrganizer(const char *name) 
+  : KTMainWindow(name)
 {
   qDebug("KOrganizer::KOrganizer()");
 
@@ -80,6 +80,7 @@ KOrganizer::KOrganizer(QString filename, bool fnOverride, const char *name )
 
 //  setMinimumSize(600,400);	// make sure we don't get resized too small...
 
+/*
   if (!fnOverride) {
     KConfig *config(kapp->config());
     config->setGroup("General");
@@ -89,11 +90,12 @@ KOrganizer::KOrganizer(QString filename, bool fnOverride, const char *name )
   } else {
     mFile = filename;
   }
+*/
 
-  mURL = KURL();
-  mURL.setPath( mFile);
+//  mURL = KURL();
+//  mURL.setPath( mFile);
 
-  mCalendarView = new CalendarView(mFile,this,"KOrganizer::CalendarView");
+  mCalendarView = new CalendarView(this,"KOrganizer::CalendarView");
   setView(mCalendarView);
 
   initActions();
@@ -319,7 +321,7 @@ void KOrganizer::initActions()
 void KOrganizer::file_new()
 {
   // Make new KOrganizer window containing empty calendar
-  (new KOrganizer("",true))->show();
+  (new KOrganizer())->show();
 }
 
 

@@ -52,15 +52,22 @@ class KOrganizer : public KTMainWindow
      * starting up with an empty calendar.
      *
      */
-    KOrganizer(QString filename="", bool fnOverride=true, const char *name=0);
+    KOrganizer(const char *name=0);
     virtual ~KOrganizer();
 
-    // public variables
+    // list of all existing KOrganizer instances
     static QList<KOrganizer> *windowList;
 
-    // View Types in enum
-    enum { AGENDAVIEW, LISTVIEW, MONTHVIEW, TODOVIEW };
-    enum { EVENTADDED, EVENTEDITED, EVENTDELETED };
+    /** Open calendar file from URL */
+    bool openURL(const KURL &url);
+    /** Merge calendar file from URL to current calendar */
+    bool mergeURL(const KURL &url);
+    /** Close calendar file opened from URL */
+    bool closeURL();
+    /** Save calendar file to URL of current calendar */
+    bool saveURL();
+    /** Save calendar file to URL */
+    bool saveAsURL(const KURL & kurl);
 
   signals:
 
@@ -124,7 +131,7 @@ class KOrganizer : public KTMainWindow
 
   protected slots:
 
-    /** toggle the appearance of the menuBar. */
+    /** toggle the appearance of the tool bar. */
     void toggleToolBar() 
     { 
       if(toolBar()->isVisible())
@@ -165,16 +172,6 @@ class KOrganizer : public KTMainWindow
     /** Get URL for saving. Opens FileDialog. */
     KURL getSaveURL();
 
-    /** Open calendar file from URL */
-    bool openURL(const KURL &url);
-    /** Merge calendar file from URL to current calendar */
-    bool mergeURL(const KURL &url);
-    /** Close calendar file opened from URL */
-    bool closeURL();
-    /** Save calendar file to URL of current calendar */
-    bool saveURL();
-    /** Save calendar file to URL */
-    bool saveAsURL(const KURL & kurl);
 
     // variables
     CalendarView *mCalendarView;  // Main view widget

@@ -53,7 +53,7 @@ void CalPrinter::setupPrinter()
 	  parent, SLOT(updateConfig()));
 //  connect(optionsDlg, SIGNAL(closed(QWidget *)), 
 //	  parent, SLOT(cleanWindow(QWidget *)));
-  optionsDlg->show();				   
+  optionsDlg->show(); 
 } 
 
 void CalPrinter::preview(PrintType pt, const QDate &fd, const QDate &td)

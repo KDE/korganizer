@@ -70,7 +70,7 @@ KOrganizerPart::KOrganizerPart(QWidget *parent, const char *name) :
 
   QVBoxLayout *topLayout = new QVBoxLayout(canvas);
 
-  widget = new CalendarView("",canvas);
+  widget = new CalendarView(canvas);
   topLayout->addWidget(widget);
 
   widget->show();
