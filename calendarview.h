@@ -214,6 +214,8 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
       Create new Event from given string.
     */
     void newEvent( const QString & );
+    void newEvent( const QString &summary, const QString &description,
+                   const QString &attachment );
     void newFloatingEvent();
 
     /** Create a read-only viewer dialog for the supplied incidence. It calls the correct showXXX method*/

@@ -132,6 +132,8 @@ class ActionManager : public QObject, public KCalendarIface
                                                   const QString& vCalIn );
 
     void openEventEditor( QString );
+    void openEventEditor( QString summary, QString description,
+                          QString attachment );
 
     void showTodoView();
     void showEventView();

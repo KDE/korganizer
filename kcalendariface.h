@@ -52,6 +52,8 @@ k_dcop:
                          const QString& vCalIn ) = 0;
 
     virtual void openEventEditor( QString text ) = 0;
+    virtual void openEventEditor( QString summary, QString description,
+                                  QString attachment ) = 0;
 
     virtual void showTodoView() = 0;
     virtual void showEventView() = 0;

@@ -41,9 +41,9 @@
 
 #include "koprefs.h"
 #include "koglobals.h"
+#include "kmailIface_stub.h"
 
 #include "koincidenceeditor.h"
-#include "koincidenceeditor.moc"
 
 KOIncidenceEditor::KOIncidenceEditor( const QString &caption,
                                       Calendar *calendar, QWidget *parent ) :
@@ -85,6 +85,20 @@ void KOIncidenceEditor::setupAttendeesTab()
 
   mDetails = new KOEditorDetails(spacingHint(),topFrame);
   topLayout->addWidget(mDetails);
+}
+
+void KOIncidenceEditor::setupAttachmentsTab()
+{
+  QFrame *topFrame = addPage( i18n("Attachments") );
+
+  QBoxLayout *topLayout = new QVBoxLayout( topFrame );
+
+  mAttachments = new QListView( topFrame );
+  mAttachments->addColumn( i18n("URI") );
+  mAttachments->addColumn( i18n("MIME Type") );
+  topLayout->addWidget( mAttachments );
+  connect( mAttachments, SIGNAL( doubleClicked( QListViewItem * ) ),
+           SLOT( slotAttachmentDoubleClicked( QListViewItem * ) ) );
 }
 
 void KOIncidenceEditor::slotApply()
@@ -200,3 +214,26 @@ QString KOIncidenceEditor::loadTemplate( Calendar *cal, const QString &type,
 
   return templateName;
 }
+
+void KOIncidenceEditor::slotAttachmentDoubleClicked( QListViewItem *item )
+{
+  if ( !item ) return;
+  
+  QString uri = item->text( 0 );
+  
+  if ( uri.startsWith( "kmail:" ) ) {
+    int pos = uri.find( "/" );
+    if ( pos > 5 ) {
+      QString serialNumberStr = uri.mid( 6, pos - 6 );
+      QString messageId = uri.mid( pos + 1 );
+      kdDebug() << "SERIALNUMBERSTR: " << serialNumberStr << " MESSAGEID: "
+                << messageId << endl;
+      Q_UINT32 serialNumber = serialNumberStr.toUInt();
+      kdDebug() << "SERIALNUMBER: " << serialNumber << endl;
+      KMailIface_stub kmailIface( "kmail", "KMailIface" );
+      kmailIface.showMail( serialNumber, messageId );
+    }
+  }
+}
+
+#include "koincidenceeditor.moc"

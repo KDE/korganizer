@@ -1254,6 +1254,12 @@ void ActionManager::openEventEditor( QString text )
   mCalendarView->newEvent( text );
 }
 
+void ActionManager::openEventEditor( QString summary, QString description,
+                                     QString attachment )
+{
+  mCalendarView->newEvent( summary, description, attachment );
+}
+
 void ActionManager::showTodoView()
 {
   mCalendarView->viewManager()->showTodoView();

@@ -1,6 +1,7 @@
 /*
     This file is part of KOrganizer.
-    Copyright (c) 2001 Cornelius Schumacher <schumacher@kde.org>
+
+    Copyright (c) 2001,2003 Cornelius Schumacher <schumacher@kde.org>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -20,8 +21,8 @@
     with any edition of Qt, and distribute the resulting executable,
     without including the source code for Qt in the source distribution.
 */
-#ifndef _KOEVENTEDITOR_H
-#define _KOEVENTEDITOR_H
+#ifndef KOEVENTEDITOR_H
+#define KOEVENTEDITOR_H
 
 #include <kdialogbase.h>
 
@@ -63,7 +64,11 @@ class KOEventEditor : public KOIncidenceEditor
       Edit new event. Set summary and description from given text.
     */
     void newEvent( const QString & );
-
+    /**
+      Edit new event.
+    */
+    void newEvent( const QString &summary, const QString &description,
+                   const QString &attachment );
     /**
       Edit an existing event.
     */

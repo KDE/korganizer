@@ -852,6 +852,14 @@ void CalendarView::newEvent( const QString &text )
   eventEditor->show();
 }
 
+void CalendarView::newEvent( const QString &summary, const QString &description,
+                             const QString &attachment )
+{
+  KOEventEditor *eventEditor = mDialogManager->getEventEditor();
+  eventEditor->newEvent( summary, description, attachment );
+  eventEditor->show();
+}
+
 void CalendarView::newEvent(QDateTime fromHint, QDateTime toHint, bool allDay)
 {
   KOEventEditor *eventEditor = mDialogManager->getEventEditor();

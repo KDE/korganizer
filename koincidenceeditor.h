@@ -71,10 +71,13 @@ class KOIncidenceEditor : public KDialogBase
     
     virtual void saveTemplate( const QString & ) = 0;
 
+    void slotAttachmentDoubleClicked( QListViewItem * );
+
   protected:
     virtual QString type() { return QString::null; }
     
     void setupAttendeesTab();
+    void setupAttachmentsTab();
 
     QString loadTemplate( Calendar *cal, const QString &type,
                           const QStringList &templates );
@@ -90,6 +93,8 @@ class KOIncidenceEditor : public KDialogBase
     KPIM::CategorySelectDialog *mCategoryDialog;
 
     KOEditorDetails *mDetails;
+
+    QListView *mAttachments;
 };
 
 #endif

@@ -1,5 +1,6 @@
 /*
     This file is part of KOrganizer.
+
     Copyright (c) 2001, 2002, 2003 Cornelius Schumacher <schumacher@kde.org>
 
     This program is free software; you can redistribute it and/or modify
@@ -40,7 +41,6 @@
 #include "koprefs.h"
 
 #include "koeventeditor.h"
-#include "koeventeditor.moc"
 
 KOEventEditor::KOEventEditor( Calendar *calendar, QWidget *parent ) :
   KOIncidenceEditor( i18n("Edit Event"), calendar, parent )
@@ -58,6 +58,7 @@ void KOEventEditor::init()
   setupGeneral();
   setupAttendeesTab();
   setupRecurrence();
+  setupAttachmentsTab();
 
   // Propagate date time settings to recurrence tab
   connect(mGeneral,SIGNAL(dateTimesChanged(QDateTime,QDateTime)),
@@ -170,6 +171,24 @@ void KOEventEditor::newEvent( const QString &text )
   }
 }
 
+void KOEventEditor::newEvent( const QString &summary,
+                              const QString &description,
+                              const QString &attachment )
+{
+  init();
+  
+  mEvent = 0;
+
+  loadDefaults();
+
+  mGeneral->setSummary( summary );
+  mGeneral->setDescription( description );
+
+  if ( !attachment.isEmpty() ) {
+    new QListViewItem( mAttachments, attachment );
+  }
+}
+
 void KOEventEditor::loadDefaults()
 {
   int fmt = KOPrefs::instance()->mStartTime;
@@ -250,6 +269,16 @@ void KOEventEditor::readEvent( Event *event, bool tmpl )
   mDetails->readEvent( event );
   mRecurrence->readEvent( event );
 
+  // TODO: Move attachement handling to own class
+  Attachment::List attachments = event->attachments();
+  Attachment *a;
+  for( a = attachments.first(); a; a = attachments.next() ) {
+    QString uri;
+    if ( a->isURI() ) uri = a->uri();
+    else uri = i18n("[Binary data]");
+    new QListViewItem( mAttachments, uri, a->mimeType() );
+  }
+
   // categories
   mCategoryDialog->setSelected( event->categories() );
 }
@@ -320,3 +349,5 @@ QObject *KOEventEditor::typeAheadReceiver() const
 {
   return mGeneral->typeAheadReceiver();
 }
+
+#include "koeventeditor.moc"
