@@ -218,7 +218,9 @@ EventIndicator::~EventIndicator()
 
 void EventIndicator::drawContents(QPainter *p)
 {
-//  kdDebug() << "======== top: " << contentsRect().top() << "  bottom " << //         contentsRect().bottom() << "  left " << contentsRect().left() << "  right " << contentsRect().right() << endl;
+//  kdDebug() << "======== top: " << contentsRect().top() << "  bottom "
+//         << contentsRect().bottom() << "  left " << contentsRect().left()
+//         << "  right " << contentsRect().right() << endl;
 
   int i;
   for(i=0;i<mColumns;++i) {

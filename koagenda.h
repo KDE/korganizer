@@ -156,25 +156,25 @@ class KOAgenda : public QScrollView
     virtual bool eventFilter_mouse ( QObject *, QMouseEvent * );
 
     /** Start selecting time span. */
-    void startSelectAction(QPoint viewportPos);
+    void startSelectAction(const QPoint& viewportPos);
 
     /** Select time span. */
-    void performSelectAction(QPoint viewportPos);
+    void performSelectAction(const QPoint& viewportPos);
 
     /** Emd selecting time span. */
     void endSelectAction();
 
     /** Start moving/resizing agenda item */
-    void startItemAction(QPoint viewportPos);
+    void startItemAction(const QPoint& viewportPos);
 
     /** Move/resize agenda item */
-    void performItemAction(QPoint viewportPos);
+    void performItemAction(const QPoint& viewportPos);
 
     /** End moving/resizing agenda item */
     void endItemAction();
 
     /** Set cursor, when no item action is in progress */
-    void setNoActionCursor(KOAgendaItem *moveItem,QPoint viewportPos);
+    void setNoActionCursor(KOAgendaItem *moveItem,const QPoint& viewportPos);
 
     /** Place agenda item in agenda and adjust other cells if necessary */
     void placeSubCells(KOAgendaItem *placeItem);

@@ -174,7 +174,7 @@ KOAgenda::KOAgenda(int columns,QWidget *parent,const char *name,WFlags f) :
 
 KOAgenda::~KOAgenda()
 {
-    if(mMarcusBains) delete mMarcusBains;
+  delete mMarcusBains;
 }
 
 
@@ -233,6 +233,7 @@ void KOAgenda::init()
   resizeContents( mGridSpacingX * mColumns + 1 , mGridSpacingY * mRows + 1 );
 
   viewport()->update();
+  viewport()->setBackgroundMode(NoBackground);
 
   setMinimumSize(30, mGridSpacingY + 1);
 //  setMaximumHeight(mGridSpacingY * mRows + 5);
@@ -418,7 +419,7 @@ bool KOAgenda::eventFilter_mouse(QObject *object, QMouseEvent *me)
   return true;
 }
 
-void KOAgenda::startSelectAction(QPoint viewportPos)
+void KOAgenda::startSelectAction(const QPoint& viewportPos)
 {
   emit newStartSelectSignal();
 
@@ -453,7 +454,7 @@ void KOAgenda::startSelectAction(QPoint viewportPos)
                    mGridSpacingX, mSelectionHeight );
 }
 
-void KOAgenda::performSelectAction(QPoint viewportPos)
+void KOAgenda::performSelectAction(const QPoint& viewportPos)
 {
   int x,y;
   viewportToContents(viewportPos.x(),viewportPos.y(),x,y);
@@ -516,7 +517,7 @@ void KOAgenda::endSelectAction()
   emit newTimeSpanSignal(mStartCellX,mStartCellY,mCurrentCellX,mCurrentCellY);
 }
 
-void KOAgenda::startItemAction(QPoint viewportPos)
+void KOAgenda::startItemAction(const QPoint& viewportPos)
 {
   int x,y;
   viewportToContents(viewportPos.x(),viewportPos.y(),x,y);
@@ -563,7 +564,7 @@ void KOAgenda::startItemAction(QPoint viewportPos)
   }
 }
 
-void KOAgenda::performItemAction(QPoint viewportPos)
+void KOAgenda::performItemAction(const QPoint& viewportPos)
 {
 //  kdDebug() << "viewportPos: " << viewportPos.x() << "," << viewportPos.y() << endl;
 //  QPoint point = viewport()->mapToGlobal(viewportPos);
@@ -713,7 +714,7 @@ void KOAgenda::endItemAction()
 //  kdDebug() << "KOAgenda::endItemAction() done" << endl;
 }
 
-void KOAgenda::setNoActionCursor(KOAgendaItem *moveItem,QPoint viewportPos)
+void KOAgenda::setNoActionCursor(KOAgendaItem *moveItem,const QPoint& viewportPos)
 {
 //  kdDebug() << "viewportPos: " << viewportPos.x() << "," << viewportPos.y() << endl;
 //  QPoint point = viewport()->mapToGlobal(viewportPos);
@@ -861,6 +862,12 @@ void KOAgenda::placeSubCells(KOAgendaItem *placeItem)
 */
 void KOAgenda::drawContents(QPainter* p, int cx, int cy, int cw, int ch)
 {
+
+  QPixmap db(cw, ch);
+  db.fill(KOPrefs::instance()->mAgendaBgColor);
+  QPainter dbp(&db);
+  dbp.translate(-cx,-cy);
+
 //  kdDebug() << "KOAgenda::drawContents()" << endl;
   int lGridSpacingY = mGridSpacingY*2;
   
@@ -889,7 +896,7 @@ void KOAgenda::drawContents(QPainter* p, int cx, int cy, int cw, int ch)
                                     (mColumns - gxStart)*mGridSpacingX-1 :
                                     (gxStart+1)*mGridSpacingX-1;
           if (xEnd > x2) xEnd = x2;
-          p->fillRect(xStart,y1,xEnd-xStart+1,y2-y1+1,
+          dbp.fillRect(xStart,y1,xEnd-xStart+1,y2-y1+1,
                       KOPrefs::instance()->mWorkingHoursColor);
         }
         ++gxStart;
@@ -905,7 +912,7 @@ void KOAgenda::drawContents(QPainter* p, int cx, int cy, int cw, int ch)
   if ( ( cx + cw ) >= selectionX && cx <= ( selectionX + mGridSpacingX ) &&
        ( cy + ch ) >= mSelectionYTop && cy <= ( mSelectionYTop + mSelectionHeight ) ) {
     // TODO: paint only part within cx,cy,cw,ch
-    p->fillRect( selectionX, mSelectionYTop, mGridSpacingX,
+    dbp.fillRect( selectionX, mSelectionYTop, mGridSpacingX,
                  mSelectionHeight, KOPrefs::instance()->mHighlightColor );
   }
 
@@ -913,7 +920,7 @@ void KOAgenda::drawContents(QPainter* p, int cx, int cy, int cw, int ch)
   //  kdDebug() << "drawContents cx: " << cx << " cy: " << cy << " cw: " << cw << " ch: " << ch << endl;
   int x = ((int)(cx/mGridSpacingX))*mGridSpacingX;
   while (x < cx + cw) {
-    p->drawLine(x,cy,x,cy+ch);
+    dbp.drawLine(x,cy,x,cy+ch);
     x+=mGridSpacingX;
   }
 
@@ -921,9 +928,10 @@ void KOAgenda::drawContents(QPainter* p, int cx, int cy, int cw, int ch)
   int y = ((int)(cy/lGridSpacingY))*lGridSpacingY;
   while (y < cy + ch) {
 //    kdDebug() << " y: " << y << endl;
-    p->drawLine(cx,y,cx+cw,y);
+    dbp.drawLine(cx,y,cx+cw,y);
     y+=lGridSpacingY;
   }
+  p->drawPixmap(cx,cy, db);
 }
 
 /*
@@ -1213,10 +1221,8 @@ int KOAgenda::minimumWidth() const
 
 void KOAgenda::updateConfig()
 {
-  viewport()->setBackgroundColor(KOPrefs::instance()->mAgendaBgColor);
-
   mGridSpacingY = KOPrefs::instance()->mHourSize;
-  
+
   calculateWorkingHours();
 
   marcus_bains();
