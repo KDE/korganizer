@@ -98,3 +98,6 @@ void KOEventView::defaultAction( Incidence *incidence )
     else emit editEventSignal(event);
   }
 }
+
+#include "baseview.moc"
+
