@@ -34,7 +34,7 @@ static const KCmdLineOptions options[] =
 int main (int argc, char **argv)
 {
   KAboutData aboutData("korganizer",I18N_NOOP("KOrganizer"),
-      "2.2pre",I18N_NOOP("A Personal Organizer for KDE"),KAboutData::License_GPL,
+      korgVersion,I18N_NOOP("A Personal Organizer for KDE"),KAboutData::License_GPL,
       "(c) 1997-1999 Preston Brown\n(c) 2000-2001 Cornelius Schumacher",0,
       "http://korganizer.kde.org");
   aboutData.addAuthor("Cornelius Schumacher",I18N_NOOP("Current Maintainer"),

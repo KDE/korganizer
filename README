@@ -2,17 +2,24 @@
                        | K   O R G A N I Z E R |
                        +-----------------------+
 
-                            version pre2.2
+                            version 2.2 alpha 1
 
                        http://korganizer.kde.org
 
-THIS IS A DEVELOPMENT VERSION. SOME NOTES:
-
-libical is now included in kdepim. See kdepim/README.libical for more
-information.
-
 QUICK NOTES ON WHAT'S NEW IN THIS RELEASE:
 
+* Alpha 1 release of version 2.2 (April 2001)
+
+  This release is mainly to try out some new technologies and get some
+  feedback after major reorganisation of the code.
+  
+  What's new:
+  - Switch to iCalendar as default file format
+  - "What's next" view
+  - Journal feature
+  - Project view
+  - HTML export of month view
+  
 * Official 2.1 release (February 2001)
 
   - Highlighting of working hours
