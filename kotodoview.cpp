@@ -210,8 +210,8 @@ void KOTodoListView::contentsDropEvent(QDropEvent *e)
       }
       Todo*oldTodo = existingTodo->clone();
       existingTodo->setRelatedTo(destinationEvent);
-      // TODO_RK
-      emit todoDropped(todo);
+
+      emit todoDropped( todo );
       emit todoChanged( oldTodo, todo );
       delete oldTodo;
       delete todo;

@@ -1048,7 +1048,6 @@ void CalendarView::deleteEvent(Event *anEvent)
       case KMessageBox::Continue:
         if (anEvent->organizer()==KOPrefs::instance()->email() && anEvent->attendeeCount()>0)
           schedule(Scheduler::Cancel,anEvent);
-      // TODO_RK: move mCalendar->deleteEvent to deleteEvent?
         mCalendar->deleteEvent(anEvent);
         eventDeleted( anEvent );
         break;

@@ -131,6 +131,7 @@ void MarcusBains::updateLocation(bool recalculate)
     // somewhere, where the last column of this widget is a few pixels
     // narrower than the other columns.
 //    int offs = (today==agenda->columns()-1) ? -4 : 0;
+      // This is a general problem: The width as well as the height is calculated 2 pixels too large (or the other way round, the cell size is calculated without taking 2-pixel margins of the agenda into account)...
 int offs = 0;
 // TODO_RK:
     agenda->moveChild(mTimeBox,
