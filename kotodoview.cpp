@@ -1011,6 +1011,22 @@ void KOTodoView::itemStateChanged( QListViewItem *item )
   if( mDocPrefs ) mDocPrefs->writeEntry( todoItem->todo()->uid(), todoItem->isOpen() );
 }
 
+void KOTodoView::setNewPercentageDelayed( KOTodoViewItem *item, int percentage )
+{
+  mPercentChangedMap.append( qMakePair( item, percentage ) );
+
+  QTimer::singleShot( 0, this, SLOT( progressDelayedNewPercentage() ) );
+}
+
+void KOTodoView::progressDelayedNewPercentage()
+{
+  QValueList< QPair< KOTodoViewItem *, int> >::Iterator it;
+  for ( it = mPercentChangedMap.begin(); it != mPercentChangedMap.end(); ++it )
+    setNewPercentage( (*it).first, (*it).second );
+
+  mPercentChangedMap.clear();
+}
+
 void KOTodoView::saveLayout(KConfig *config, const QString &group) const
 {
   mTodoListView->saveLayout(config,group);
