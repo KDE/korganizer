@@ -610,7 +610,7 @@ void KOAgendaView::slotViewChange()
 
 void KOAgendaView::slotViewChange(int newView)
 {
-//  kdDebug() << "KOAgendaView::slotViewChange(): " << newView << endl;
+  kdDebug() << "KOAgendaView::slotViewChange(): " << newView << endl;
 
   int datenum, count;
 
@@ -690,8 +690,10 @@ void KOAgendaView::fillAgenda(const QDate &startDate)
 
 void KOAgendaView::fillAgenda()
 {
-//  kdDebug() << "Fill Agenda beginning with date " << mStartDate.toString() << endl;
-//  kdDebug() << " number of dates: " << mSelectedDates.count() << endl;
+#if 0
+  kdDebug() << "Fill Agenda beginning with date " << mStartDate.toString() << endl;
+  kdDebug() << " number of dates: " << mSelectedDates.count() << endl;
+#endif
 
 //  clearView();
 
@@ -852,10 +854,13 @@ void KOAgendaView::startDrag(Event *event)
 void KOAgendaView::readSettings()
 {
   readSettings(kapp->config());
+  updateConfig();
 }
 
 void KOAgendaView::readSettings(KConfig *config)
 {
+//  kdDebug() << "KOAgendaView::readSettings()" << endl;
+
   config->setGroup("Views");
     
   QValueList<int> sizes = config->readIntListEntry("Separator AgendaView");
@@ -863,11 +868,13 @@ void KOAgendaView::readSettings(KConfig *config)
     mSplitterAgenda->setSizes(sizes);
   }
 
-  setView(config->readNumEntry("Agenda View", KOAgendaView::WEEK));
+  slotViewChange(config->readNumEntry("Agenda View", KOAgendaView::WEEK));
 }
 
 void KOAgendaView::writeSettings(KConfig *config)
 {
+//  kdDebug() << "KOAgendaView::writeSettings()" << endl;
+
   config->setGroup("Views");
     
   QValueList<int> list = mSplitterAgenda->sizes();

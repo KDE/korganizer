@@ -164,10 +164,10 @@ CalendarView::CalendarView(QWidget *parent,const char *name)
   mFilterView->hide();
 
   readSettings();
-  goToday();
 
   setupRollover();
 
+  // We should think about seperating startup settings and configuration change.
   updateConfig();
 
   connect(QApplication::clipboard(),SIGNAL(dataChanged()),
@@ -516,6 +516,7 @@ void CalendarView::updateConfig()
   kdDebug() << "CalendarView::updateConfig()" << endl;
   emit configChanged();
 
+  // To make the "fill window" configurations work
   raiseCurrentView();
 }
 
