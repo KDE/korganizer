@@ -37,6 +37,7 @@
 KOEventPopupMenu::KOEventPopupMenu()
 {
   mCurrentIncidence = 0;
+  mCurrentDate = QDate();
   mHasAdditionalItems = false;
 
   insertItem (i18n("&Show"),this,SLOT(popupShow()));
@@ -49,9 +50,10 @@ KOEventPopupMenu::KOEventPopupMenu()
                                      SLOT( popupAlarm() ) ) );
 }
 
-void KOEventPopupMenu::showIncidencePopup(Incidence *incidence)
+void KOEventPopupMenu::showIncidencePopup( Incidence *incidence, QDate qd )
 {
   mCurrentIncidence = incidence;
+  mCurrentDate = qd;
   
   if (mCurrentIncidence) {
     // Enable/Disabled menu items only valid for editable events.

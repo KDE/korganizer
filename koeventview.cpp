@@ -89,15 +89,6 @@ QPopupMenu *KOEventView::newEventPopup()
 }
 //---------------------------------------------------------------------------
 
-void KOEventView::showIncidencePopup(QPopupMenu *popup,Incidence *event)
-{
-  mCurrentIncidence = event;
-  if (event) popup->popup(QCursor::pos());
-  else kdDebug(5850) << "KOEventView::showEventPopup(): No event selected" << endl;
-}
-
-//---------------------------------------------------------------------------
-
 void KOEventView::popupShow()
 {
   emit showIncidenceSignal(mCurrentIncidence);

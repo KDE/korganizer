@@ -27,6 +27,7 @@
 //
 
 #include <qpopupmenu.h>
+#include <qdatetime.h>
 
 namespace KCal { 
 class Incidence; 
@@ -44,7 +45,7 @@ class KOEventPopupMenu : public QPopupMenu {
 
 
   public slots:
-    void showIncidencePopup(Incidence *);
+    void showIncidencePopup( Incidence *, QDate );
 
   protected slots:
     void popupShow();
@@ -60,6 +61,7 @@ class KOEventPopupMenu : public QPopupMenu {
     
   private:
     Incidence *mCurrentIncidence;
+    QDate mCurrentDate;
     
     bool mHasAdditionalItems;
     QValueList<int> mEditOnlyItems;

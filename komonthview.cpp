@@ -609,7 +609,7 @@ void MonthViewCell::contextMenu( QListBoxItem *item )
   if ( item ) {
     MonthViewItem *eventItem = static_cast<MonthViewItem *>( item );
     Incidence *incidence = eventItem->incidence();
-    if ( incidence ) mMonthView->showEventContextMenu( incidence );
+    if ( incidence ) mMonthView->showEventContextMenu( incidence, date() );
   }
   else {
     mMonthView->showGeneralContextMenu();
@@ -899,9 +899,9 @@ void KOMonthView::resizeEvent( QResizeEvent * )
   }
 }
 
-void KOMonthView::showEventContextMenu( Incidence *incidence )
+void KOMonthView::showEventContextMenu( Incidence *incidence, QDate qd )
 {
-  mEventContextMenu->showIncidencePopup( incidence );
+  mEventContextMenu->showIncidencePopup( incidence, qd );
   /*
   if( incidence && incidence->type() == "Event" ) {
     Event *event = static_cast<Event *>(incidence);

@@ -89,13 +89,6 @@ class KOEventView : public KOrg::BaseView
     bool isEventView() { return true; }
   
   public slots:
-  
-    /**
-     * Show context menu for event.
-     * @param event event, which is to be manipulated by the menu actions
-     * @param popup a popop menu created with eventPopup()
-     */
-    void showIncidencePopup(QPopupMenu *popup, Incidence *event);
 
     /**
      Perform the default action for an incidence, e.g. open the event editor,
