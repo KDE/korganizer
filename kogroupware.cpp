@@ -134,6 +134,8 @@ void KOGroupware::incomingDirChanged( const QString& path )
   QString receiver = KPIM::getEmailAddr( t.readLine() );
   QString iCal = t.read();
 
+  f.remove();
+
   ScheduleMessage *message = mFormat.parseScheduleMessage( mCalendar, iCal );
   if ( !message ) {
     QString errorMessage;
@@ -141,10 +143,11 @@ void KOGroupware::incomingDirChanged( const QString& path )
       errorMessage = "\nError message: " + mFormat.exception()->message();
     kdDebug(5850) << "MailScheduler::retrieveTransactions() Error parsing"
                   << errorMessage << endl;
-    f.close();
+    KMessageBox::detailedError( mView, 
+        i18n("Error while processing an invitation or update."),
+        errorMessage );
     return;
-  } else
-    f.remove();
+  }
 
   KCal::Scheduler::Method method =
     static_cast<KCal::Scheduler::Method>( message->method() );
