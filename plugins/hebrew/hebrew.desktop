@@ -37,4 +37,4 @@ Name[xx]=xxJewish calendar pluginxx
 Name[zh_CN]=犹太教日历插件
 Type=Service
 ServiceTypes=Calendar/Plugin,Calendar/Decoration
-X-KDE-KOrganizer-HasSettings=false
+X-KDE-KOrganizer-HasSettings=true
