@@ -80,7 +80,11 @@ KOGroupware::KOGroupware( CalendarView* view, KCal::CalendarResources* cal )
   // being all done loading and start the scheduling after that. Even
   // better fix would be that we would be able to locate the resource
   // an event is saved in even though the resource is deactivated
-  QTimer::singleShot( 60000, this, SLOT( slotStartScheduling() ) );
+  //QTimer::singleShot( 60000, this, SLOT( slotStartScheduling() ) );
+
+  // It could be that the hack ^ is not needed after all. Test that for
+  // a while. *sigh* - experimenting programming is bad
+  slotStartScheduling();
 }
 
 FreeBusyManager *KOGroupware::freeBusyManager()
