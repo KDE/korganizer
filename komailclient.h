@@ -6,8 +6,9 @@
 #include <qobject.h>
 #include <qstring.h>
 
-class Event;
-class Attendee;
+#include <event.h>
+
+using namespace KCal;
 
 /**
  * A Class to maintain the Mailing Headers

@@ -30,6 +30,8 @@ class KOWindowList;
 class KToggleAction;
 class KProcess;
 
+using namespace KCal;
+
 /**
  *
  * This is the main class for KOrganizer. It extends the KDE KMainWindow.

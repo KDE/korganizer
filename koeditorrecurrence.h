@@ -19,6 +19,8 @@
 #include "ktimeedit.h"
 #include "kdateedit.h"
 
+using namespace KCal;
+
 class KOEditorRecurrence : public QWidget
 {
     Q_OBJECT

@@ -15,6 +15,8 @@
 class CategorySelectDialog;
 class QWidgetStack;
 
+using namespace KCal;
+
 /**
   * This is the class to add/edit a new appointment.
   *

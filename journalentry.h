@@ -6,11 +6,12 @@
 
 #include <qframe.h>
 
+#include <calendar.h>
+
 class QLabel;
 class QMultiLineEdit;
 
-class Journal;
-class Calendar;
+using namespace KCal;
 
 class JournalEntry : public QFrame {
     Q_OBJECT

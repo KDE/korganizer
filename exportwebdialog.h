@@ -11,7 +11,10 @@
 #include <kdialogbase.h>
 #include <kio/job.h>
 
-class Calendar;
+#include <calendar.h>
+
+using namespace KCal;
+
 class KDateEdit;
 class QRadioButton;
 class QCheckBox;

@@ -9,6 +9,8 @@
 
 class QToolTipGroup;
 
+using namespace KCal;
+
 /*
   The KOAgendaItem has to make sure that it receives all mouse events, which are
   to be used for dragging and resizing. That means it has to be installed as

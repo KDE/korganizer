@@ -4,12 +4,12 @@
 
 #include <qlistview.h>
 
-#include "scheduler.h"
+#include <calendar.h>
+#include <scheduler.h>
 
 #include "incomingdialog_base.h"
 
-class Incidence;
-class Calendar;
+using namespace KCal;
 
 class ScheduleItemIn : public QListViewItem
 {

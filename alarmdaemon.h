@@ -13,6 +13,8 @@
 
 class AlarmDialog;
 
+using namespace KCal;
+
 class AlarmDockWindow : public KSystemTray
 {
     Q_OBJECT

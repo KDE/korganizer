@@ -1,21 +1,17 @@
 # set the include path for X, qt and KDE, and versit library for vCalendar
 INCLUDES= $(all_includes) \
-	   -I$(srcdir)/versit \
-           -I$(top_srcdir)/libical/src/libical \
-           -I$(top_srcdir)/libical/src/libicalss \
            -I$(top_srcdir)/kgantt/kgantt \
-	   -I$(top_builddir)/libical/src/libical \
-	   -I$(top_builddir)/libical/src/libicalss
+           -I$(top_srcdir)/libkcal
 
 bin_PROGRAMS = 	korganizer alarmd
 lib_LTLIBRARIES = libkorganizer.la
 
 libkorganizer_la_LDFLAGS = $(all_libraries) $(KDE_RPATH)
 libkorganizer_la_LIBADD  = $(LIB_KPARTS) -lkdeprint \
-                           versit/libversit.la $(LIB_KFILE) -lkab \
-                           $(top_builddir)/libical/src/libical/libical.la \
-                           $(top_builddir)/libical/src/libicalss/libicalss.la \
-                           $(top_builddir)/kgantt/kgantt/libkgantt.la
+                           $(LIB_KFILE) -lkab \
+                           $(top_builddir)/kgantt/kgantt/libkgantt.la \
+                           $(top_builddir)/libkcal/libkcal.la
+                           
 libkorganizer_la_LDFLAGS = $(all_libraries) -version-info 1:0:0 -module
 
 korganizer_LDFLAGS = $(all_libraries) $(KDE_RPATH)
@@ -23,19 +19,15 @@ korganizer_SOURCES = main.cpp
 korganizer_LDADD   = libkorganizer.la
 
 alarmd_LDFLAGS = $(all_libraries) $(KDE_RPATH)
-alarmd_LDADD = versit/libversit.la $(LIB_KDEUI) \
-               $(top_builddir)/libical/src/libical/libical.la \
-               $(top_builddir)/libical/src/libicalss/libicalss.la
+alarmd_LDADD = $(LIB_KDEUI) \
+                           $(top_builddir)/libkcal/libkcal.la
 
 
 ########## FILES
 
 # Which sources should be compiled for korganizer.
 libkorganizer_la_SOURCES =  outgoingdialog_base.ui \
-        calendar.cpp calendarlocal.cpp calformat.cpp vcalformat.cpp \
-        incidence.cpp journal.cpp todo.cpp event.cpp attendee.cpp \
-        korecurrence.cpp koalarm.cpp \
-        icalformat.cpp catdlg.cpp \
+        catdlg.cpp \
 	koagendaview.cpp koagenda.cpp koagendaitem.cpp \
 	kdateedit.cpp kdatenav.cpp \
 	kdpdatebutton.cpp komonthview.cpp \
@@ -44,7 +36,7 @@ libkorganizer_la_SOURCES =  outgoingdialog_base.ui \
 	searchdialog.cpp calendarview.cpp \
 	calprinter.cpp \
 	koarchivedlg.cpp \
-	vcaldrag.cpp komailclient.cpp kotodoview.cpp \
+	komailclient.cpp kotodoview.cpp \
         kobaseview.cpp kolistview.cpp \
         exportwebdialog.cpp htmlexport.cpp \
         koapp.cpp korganizer_part.cpp korganizer.cpp \
@@ -52,14 +44,12 @@ libkorganizer_la_SOURCES =  outgoingdialog_base.ui \
         kotodoeditor.cpp koprefs.cpp koeventviewer.cpp kowindowlist.cpp \
         koeditorgeneralevent.cpp koeditorgeneraltodo.cpp koeditordetails.cpp \
         koeditorrecurrence.cpp koeventviewerdialog.cpp \
-        koeventpopupmenu.cpp kprefs.cpp koexceptions.cpp \
+        koeventpopupmenu.cpp kprefs.cpp \
         outgoingdialog.cpp \
         incomingdialog_base.ui incomingdialog.cpp \
-        scheduler.cpp imipscheduler.cpp dummyscheduler.cpp \
         koeventview.cpp categoryselectdialog_base.ui categoryselectdialog.cpp \
-        categoryeditdialog_base.ui categoryeditdialog.cpp calfilter.cpp \
+        categoryeditdialog_base.ui categoryeditdialog.cpp \
         kofilterview_base.ui kofilterview.cpp \
-        scanholiday.c parseholiday.c \
         koprojectview.cpp \
         korganizeriface.skel \
         filtereditdialog.cpp filteredit_base.ui \
@@ -67,19 +57,12 @@ libkorganizer_la_SOURCES =  outgoingdialog_base.ui \
         kojournalview.cpp journalentry.cpp
 
 alarmd_SOURCES = alarmdaemon.cpp alarmmain.cpp \
-        incidence.cpp journal.cpp todo.cpp event.cpp attendee.cpp \
-        korecurrence.cpp koalarm.cpp \
-        calendar.cpp calendarlocal.cpp \
-        calformat.cpp vcalformat.cpp icalformat.cpp \
-	vcaldrag.cpp koprefs.cpp alarmapp.cpp \
-        alarmdialog.cpp koeventviewer.cpp kprefs.cpp koexceptions.cpp \
-        scheduler.cpp calfilter.cpp \
-        scanholiday.c parseholiday.c
+	koprefs.cpp alarmapp.cpp \
+        alarmdialog.cpp koeventviewer.cpp kprefs.cpp
 
 METASOURCES = AUTO
 
 noinst_HEADERS = komonthview.h \
-        calendar.h calendarlocal.h calformat.h vcalformat.h icalformat.h \
 	catdlg.h koagendaview.h koagenda.h \
 	koagendaitem.h \
 	kdateedit.h ksellabel.h \
@@ -87,8 +70,8 @@ noinst_HEADERS = komonthview.h \
 	calendarview.h kdpdatebutton.h ktimeedit.h \
 	version.h \
 	searchdialog.h calprinter.h \
-	koarchivedlg.h parseholiday.h \
-	vcaldrag.h komailclient.h kotodoview.h \
+	koarchivedlg.h \
+	komailclient.h kotodoview.h \
         kobaseview.h kolistview.h \
 	alarmapp.h koapp.h exportwebdialog.h korganizer_part.h korganizer.h \
         kprefsdialog.h koprefsdialog.h koeventeditor.h \
@@ -97,16 +80,12 @@ noinst_HEADERS = komonthview.h \
         kowindowlist.h \
         koeditorgeneralevent.h koeditorgeneraltodo.h koeditordetails.h \
         koeditorrecurrence.h koeventviewerdialog.h koeventpopupmenu.h \
-        koexceptions.h outgoingdialog.h incomingdialog.h \
-        koeventview.h calfilter.h koprojectview.h
+        outgoingdialog.h incomingdialog.h \
+        koeventview.h koprojectview.h
 
 
-SUBDIRS = versit \
-	  pixmaps \
-	  holidays \
+SUBDIRS = pixmaps \
 	  sounds
-
-DISTCLEANFILES = scanholiday.c parseholiday.c
 
 datadir = $(kde_bindir)
 data_SCRIPTS = ical2vcal
@@ -126,13 +105,3 @@ KDE_ICON = AUTO
 
 messages: rc.cpp
 	$(XGETTEXT) *.cpp -o $(podir)/korganizer.pot
-
-$(srcdir)/parseholiday.c: parseholiday.y
-	cd $(srcdir) && bison -d -o parseholiday.c parseholiday.y
-
-$(srcdir)/parseholiday.h: parseholiday.y
-	cd $(srcdir) && bison -d -o parseholiday.c parseholiday.y
-
-$(srcdir)/scanholiday.c: scanholiday.lex parseholiday.h
-	cd $(srcdir) && flex -B -oscanholiday.c scanholiday.lex
-

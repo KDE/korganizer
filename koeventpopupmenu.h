@@ -7,7 +7,9 @@
 
 #include <qpopupmenu.h>
 
-class Event;
+#include <event.h>
+
+using namespace KCal;
 
 class KOEventPopupMenu : public QPopupMenu {
     Q_OBJECT

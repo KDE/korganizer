@@ -7,9 +7,9 @@
 
 #include <qtextview.h>
 
+#include <event.h>
 
-class Event;
-
+using namespace KCal;
 
 class KOEventViewer : public QTextView {
     Q_OBJECT

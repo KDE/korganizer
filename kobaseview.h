@@ -11,8 +11,10 @@
 #include <qlist.h>
 
 #include "event.h"
+#include "calendar.h"
 
-class Calendar;
+using namespace KCal;
+
 class CalPrinter;
 
 /**

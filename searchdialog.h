@@ -13,6 +13,8 @@
 class KDateEdit;
 class QCheckBox;
 
+using namespace KCal;
+
 class SearchDialog : public KDialogBase
 {
     Q_OBJECT

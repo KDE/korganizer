@@ -7,7 +7,10 @@
 
 #include <kdialogbase.h>
 
-class Event;
+#include <event.h>
+
+using namespace KCal;
+
 class KOEventViewer;
 class QSpinBox;
 

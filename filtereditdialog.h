@@ -6,10 +6,12 @@
 
 #include <kdialogbase.h>
 
-#include "calfilter.h"
+#include <calfilter.h>
 
 class QComboBox;
 class FilterEdit_base;
+
+using namespace KCal;
 
 /**
   * This is the class to add/edit a calendar filter.

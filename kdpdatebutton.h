@@ -6,7 +6,9 @@
 #include <qdatetime.h>
 #include <qlabel.h>
 
-class Calendar;
+#include <calendar.h>
+
+using namespace KCal;
 
 class KDateButton: public QLabel {
     Q_OBJECT

@@ -6,12 +6,15 @@
 #include <qtimer.h>
 #include <qarray.h>
 
+#include <event.h>
+
 #include "koagendaitem.h"
 
 class QPopupMenu;
 class QTime;
-class Event;
 class KConfig;
+
+using namespace KCal;
 
 class KOAgenda : public QScrollView
 {

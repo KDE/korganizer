@@ -19,6 +19,8 @@
 #include "ktimeedit.h"
 #include "kdateedit.h"
 
+using namespace KCal;
+
 class KOEditorGeneralEvent : public QWidget
 {
     Q_OBJECT

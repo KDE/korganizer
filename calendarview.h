@@ -41,6 +41,8 @@ class FilterEditDialog;
 class KOWhatsNextView;
 class KOJournalView;
 
+using namespace KCal;
+
 /**
   This class provides the initialisation of a KOListViewItem for calendar
   components using the IncidenceVisitor.

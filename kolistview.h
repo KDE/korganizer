@@ -12,6 +12,8 @@
 #include "koeventview.h"
 #include "incidencevisitor.h"
 
+using namespace KCal;
+
 /**
  * This class provides a way of displaying a single Event in a QListView.
  *

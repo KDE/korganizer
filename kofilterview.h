@@ -3,7 +3,9 @@
 
 #include "kofilterview_base.h"
 
-class CalFilter;
+#include <calfilter.h>
+
+using namespace KCal;
 
 class KOFilterView : public KOFilterView_base
 {

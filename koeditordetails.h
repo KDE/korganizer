@@ -16,10 +16,12 @@
 #include <kapp.h>
 #include <krestrictedline.h>
 
+#include <event.h>
+
 #include "ktimeedit.h"
 #include "kdateedit.h"
 
-class Attendee;
+using namespace KCal;
 
 class AttendeeListItem : public QListViewItem
 {

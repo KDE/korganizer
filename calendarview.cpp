@@ -25,6 +25,8 @@
   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 */
 
+#include <stdlib.h>
+
 #include <qcursor.h>
 #include <qmultilineedit.h>
 #include <qtimer.h>
@@ -117,7 +119,7 @@ CalendarView::CalendarView(QWidget *parent,const char *name)
   // Create calendar object, which manages all calendar information associated
   // with this calendar view window.
   mCalendar = new CalendarLocal;
-  connect(this, SIGNAL(configChanged()), mCalendar, SLOT(updateConfig()));
+  mCalendar->setHoliday(KOPrefs::instance()->mHoliday);
   connect(mCalendar,SIGNAL(calUpdated(Incidence *)),
           SLOT(eventUpdated(Incidence *)));
 
@@ -515,6 +517,8 @@ void CalendarView::updateConfig()
 {
   kdDebug() << "CalendarView::updateConfig()" << endl;
   emit configChanged();
+
+  mCalendar->updateConfig();
 
   // To make the "fill window" configurations work
   raiseCurrentView();
@@ -1442,6 +1446,7 @@ bool CalendarView::isModified()
   return mModified;
 }
 
+// TODO: Check, if this function is still needed
 void CalendarView::signalAlarmDaemon()
 {
   QFile pidFile;

@@ -6,13 +6,12 @@
 #include <qstring.h>
 #include <qdatetime.h>
 
+#include <calendar.h>
+
 class QFile;
 class QTextStream;
 
-class Calendar;
-class Incidence;
-class Todo;
-class Event;
+using namespace KCal;
 
 /**
   This class provides the functions to export a calendar as a HTML page.

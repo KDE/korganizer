@@ -23,6 +23,8 @@ class KDateEdit;
 class QButtonGroup;
 class CalPrintDialog;
 
+using namespace KCal;
+
 class CalPrinter : public QObject
 {
   Q_OBJECT

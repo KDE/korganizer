@@ -8,6 +8,8 @@
 
 #include "outgoingdialog_base.h"
 
+using namespace KCal;
+
 class ScheduleItemOut : public QListViewItem
 {
   public:

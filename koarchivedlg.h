@@ -3,9 +3,12 @@
 
 #include <kdialogbase.h>
 
+#include <calendar.h>
+
+using namespace KCal;
+
 class KURLRequester;
 class KDateEdit;
-class Calendar;
 
 class ArchiveDialog : public KDialogBase
 {
