@@ -42,6 +42,7 @@
 #include <libkcal/resourcecalendar.h>
 #include <libkcal/calfilter.h>
 #include <libkcal/incidenceformatter.h>
+#include <libkcal/journal.h>
 
 #include <libkdepim/clicklineedit.h>
 #include <libkdepim/kdatepickerpopup.h>
@@ -859,6 +860,25 @@ void KOTodoView::setNewPercentage( KOTodoViewItem *item, int percentage )
       myChild = myChild->nextSibling();
     }*/
     if ( percentage == 100 ) {
+      if ( KOPrefs::instance()->recordTodosInJournals() ) {
+        QString text = i18n( "Todo completed: %1" ).arg( todo->summary() );
+        Journal *journal = calendar()->journal( QDate::currentDate() );
+        mChanger->beginChange( journal );
+        if( !journal ) {
+          journal = new Journal();
+          journal->setDtStart( QDateTime::currentDateTime() );
+          journal->setDescription( text );
+          mChanger->addIncidence( journal );
+        } else {
+          Journal *oldJournal = journal->clone();
+          journal->setDescription( journal->description().append( '\n' + text ) );
+          mChanger->changeIncidence( oldJournal,
+                                     journal, KOGlobals::DESCRIPTION_MODIFIED );
+          delete oldJournal;
+        }
+        mChanger->endChange( journal );
+      }
+
       todo->setCompleted( QDateTime::currentDateTime() );
       // If the todo does recur, it doesn't get set as completed. However, the
       // item is still checked. Uncheck it again.
