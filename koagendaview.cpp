@@ -585,6 +585,7 @@ void KOAgendaView::zoomOutVertically( )
   }
 }
 
+// FIXME: Don't have two zoomInHorizontally, but use a default value for the date.
 void KOAgendaView::zoomInHorizontally( )
 {
   QDate date=mAgenda->selectedIncidenceDate();
@@ -603,6 +604,7 @@ void KOAgendaView::zoomInHorizontally( )
   }
 }
 
+// FIXME: Don't have two zoomOutHorizontally, but use a default value for the date.
 void KOAgendaView::zoomOutHorizontally( ) 
 {
   QDate date=mAgenda->selectedIncidenceDate();
