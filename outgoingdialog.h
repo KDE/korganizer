@@ -25,6 +25,8 @@
 // $Id$
 
 #include <qlistview.h>
+#include <qmap.h>
+#include <qstring.h>
 
 #include <libkcal/scheduler.h>
 
@@ -69,8 +71,12 @@ class OutgoingDialog : public OutgoingDialog_base
     void showEvent(QListViewItem *);
 
   private:
+    bool saveMessage(Incidence *,Scheduler::Method,const QString &recipients=0);
+    bool deleteMessage(Incidence *);
+    void loadMessages();
     Calendar *mCalendar;
     Scheduler *mScheduler;
+    QMap<Incidence*, QString> mMessageMap;
 };
 
 #endif // OUTGOINGDIALOG_H

@@ -21,12 +21,19 @@
 
 #include <kdebug.h>
 
+#include <qfile.h>
+#include <qdir.h>
+
 #include <kglobal.h>
 #include <klocale.h>
+#include <ktempfile.h>
+#include <kstandarddirs.h>
 
 #include <libkcal/event.h>
 //#include <libkcal/imipscheduler.h>
 #include <libkcal/dummyscheduler.h>
+#include <libkcal/icalformat.h>
+#include <libkcal/calendar.h>
 
 #ifndef KORG_NOMAIL
 #include "mailscheduler.h"
@@ -92,6 +99,7 @@ OutgoingDialog::OutgoingDialog(Calendar *calendar,QWidget* parent,
   mMessageListView->setColumnAlignment(4,AlignHCenter);
   QObject::connect(mMessageListView,SIGNAL(doubleClicked(QListViewItem *)),
                    this,SLOT(showEvent(QListViewItem *)));
+  loadMessages();
 }
 
 OutgoingDialog::~OutgoingDialog()
@@ -104,6 +112,7 @@ bool OutgoingDialog::addMessage(Event *incidence,Scheduler::Method method)
 
   if (KOPrefs::instance()->mIMIPSend == KOPrefs::IMIPOutbox) {
     new ScheduleItemOut(mMessageListView,incidence,method);
+    saveMessage(incidence,method);
     emit numMessagesChanged(mMessageListView->childCount());
   }
   else {
@@ -118,6 +127,7 @@ bool OutgoingDialog::addMessage(Event *incidence,Scheduler::Method method,
   if (method != Scheduler::Publish) return false;
   if (KOPrefs::instance()->mIMIPSend == KOPrefs::IMIPOutbox) {
     new ScheduleItemOut(mMessageListView,incidence,method,recipients);
+    saveMessage(incidence,method,recipients);
     emit numMessagesChanged(mMessageListView->childCount());
   }
   else {
@@ -140,6 +150,7 @@ void OutgoingDialog::send()
     ScheduleItemOut *oldItem = item;
     item = (ScheduleItemOut *)(item->nextSibling());
     if (success) {
+      deleteMessage(oldItem->event());
       delete (oldItem->event());
       delete oldItem;
     }
@@ -153,6 +164,7 @@ void OutgoingDialog::deleteItem()
   ScheduleItemOut *item = (ScheduleItemOut *)(mMessageListView->selectedItem());
   if(!item)
       return;
+  deleteMessage(item->event());
   delete(item->event());
   mMessageListView->takeItem(item);
   emit numMessagesChanged(mMessageListView->childCount());
@@ -200,6 +212,99 @@ void OutgoingDialog::showEvent(QListViewItem *qitem)
     }
     eventViewer->addText(sendText);
     eventViewer->show();
+  }
+}
+
+bool OutgoingDialog::saveMessage(Incidence *incidence,Scheduler::Method method,
+          const QString &recipients)
+{
+  ICalFormat *mFormat = mCalendar->iCalFormat();
+  KTempFile ktfile(locateLocal("data","korganizer/outgoing/"),"ics");
+  QString messageText = mFormat->createScheduleMessage(incidence,method);
+  QTextStream *qts = ktfile.textStream();
+  *qts << messageText;
+  *qts << "METHOD-BEGIN:" << endl << method << endl << ":METHOD-END" << endl;
+  *qts << "RECIPIENTS-BEGIN:" << endl << recipients << endl << ":RECIPIENTS-END" << endl;
+  mMessageMap[incidence]=ktfile.name();
+}
+
+bool OutgoingDialog::deleteMessage(Incidence *incidence)
+{
+  QFile f( mMessageMap[incidence] );
+  mMessageMap.remove(incidence);
+  if ( !f.exists() ) return false;
+  else
+    return f.remove();
+}
+
+void OutgoingDialog::loadMessages()
+{
+  ICalFormat *mFormat = mCalendar->iCalFormat();
+  Scheduler::Method method;
+  QString recipients;
+
+  QString outgoingDirName = locateLocal("appdata","outgoing");
+  QDir outgoingDir(outgoingDirName);
+  QStringList outgoing = outgoingDir.entryList(QDir::Files);
+  QStringList::ConstIterator it;
+  for(it = outgoing.begin(); it != outgoing.end(); ++it) {
+    kdDebug() << "-- File: " << (*it) << endl;
+    QFile f(outgoingDirName + "/" + (*it));
+    bool inserted = false;
+    QMap<Incidence*, QString>::Iterator iter;
+    for ( iter = mMessageMap.begin(); iter != mMessageMap.end(); ++iter ) {
+      if (iter.data() == outgoingDirName + "/" + (*it)) inserted = true;
+    }
+    if (!inserted) {
+    if (!f.open(IO_ReadOnly)) {
+      kdDebug() << "OutgoingDialog::loadMessage(): Can't open file'"
+                << (*it) << "'" << endl;
+    } else {
+      QTextStream t(&f);
+      QString messageString = t.read();
+      ScheduleMessage *message = mFormat->parseScheduleMessage(messageString);
+      int begin_pos = messageString.find("METHOD-BEGIN:");
+      begin_pos = messageString.find('\n',begin_pos)+1;
+      QString meth = messageString.mid(begin_pos,1);
+      switch (meth.toInt()) {
+        case 0:method=Scheduler::Publish; break;
+        case 1:method=Scheduler::Request; break;
+        case 2:method=Scheduler::Refresh; break;
+        case 3:method=Scheduler::Cancel; break;
+        case 4:method=Scheduler::Add; break;
+        case 5:method=Scheduler::Reply; break;
+        case 6:method=Scheduler::Counter; break;
+        case 7:method=Scheduler::Declinecounter; break;
+        default :method=Scheduler::NoMethod; break;
+      }
+      begin_pos = messageString.find("RECIPIENTS-BEGIN:");
+      begin_pos = messageString.find('\n',begin_pos)+1;
+      int end_pos = messageString.find(":RECIPIENTS-END",begin_pos)-1;
+      recipients = messageString.mid(begin_pos, end_pos-begin_pos);
+      kdDebug() << "Outgoing::loadMessage(): Recipients: " << recipients << endl;
+
+      if (message) {
+        kdDebug() << "OutgoingDialog::loadMessage(): got message '"
+                  << (*it) << "'" << endl;
+        Event *ev=0;
+        if (message->event()->type()="Event") {
+          ev = static_cast<Event *>(message->event());
+        }
+        new ScheduleItemOut(mMessageListView,ev,method,recipients);
+        emit numMessagesChanged(mMessageListView->childCount());
+
+        mMessageMap[message->event()]=outgoingDirName + "/" + (*it);
+      } else {
+        QString errorMessage;
+        if (mFormat->exception()) {
+          errorMessage = mFormat->exception()->message();
+        }
+        kdDebug() << "OutgoingDialog::loadMessage(): Error parsing "
+                     "message: " << errorMessage << endl;
+      }
+      f.close();
+    }
+    }
   }
 }
 

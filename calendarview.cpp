@@ -981,6 +981,7 @@ void CalendarView::schedule_publish(Incidence *incidence)
   if ( publishdlg->exec() == QDialog::Accepted ) {
     OutgoingDialog *dlg = mDialogManager->outgoingDialog();
     Event *ev = new Event(*event);
+    ev->clearAttendees();
     if (!dlg->addMessage(ev,Scheduler::Publish,publishdlg->addresses())) {
       delete(ev);
     }
