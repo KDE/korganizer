@@ -406,7 +406,7 @@ void KOrganizer::initActions()
 //  KStdAction::showStatusbar(this, SLOT(toggleStatusBar()), actionCollection());
 
 
-  (void)new KAction(i18n("Configure &Date & Time..."), 0,
+  (void)new KAction(i18n("Configure &Date && Time..."), 0,
                     this,SLOT(configureDateTime()),
                     actionCollection(), "conf_datetime");
 
