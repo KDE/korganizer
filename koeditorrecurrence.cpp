@@ -813,6 +813,7 @@ void KOEditorRecurrence::setEnabled( bool enabled )
 //  kdDebug(5850) << "KOEditorRecurrence::setEnabled(): " << (enabled ? "on" : "off") << endl;
 
   mTimeGroupBox->setEnabled( enabled );
+  mRuleBox->setEnabled( enabled );
   if ( mRecurrenceRangeWidget ) mRecurrenceRangeWidget->setEnabled( enabled );
   if ( mRecurrenceRangeButton ) mRecurrenceRangeButton->setEnabled( enabled );
   if ( mExceptionsWidget ) mExceptionsWidget->setEnabled( enabled );
