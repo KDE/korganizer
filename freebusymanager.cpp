@@ -399,7 +399,7 @@ KURL FreeBusyManager::freeBusyUrl( const QString &email )
     return KURL( url );
   }
   // Try with the url configurated by preferred email in kaddressbook
-  KABC::Addressee::List list= KABC::StdAddressBook::self()->findByEmail( email );
+  KABC::Addressee::List list= KABC::StdAddressBook::self( true )->findByEmail( email );
   KABC::Addressee::List::Iterator it;
   QString pref;
   for ( it = list.begin(); it != list.end(); ++it ) {
@@ -458,6 +458,7 @@ KURL FreeBusyManager::freeBusyUrl( const QString &email )
 KCal::FreeBusy *FreeBusyManager::iCalToFreeBusy( const QCString &data )
 {
   kdDebug(5850) << "FreeBusyManager::iCalToFreeBusy()" << endl;
+  kdDebug(5850) << data << endl;
 
   QString freeBusyVCal = QString::fromUtf8( data );
   KCal::FreeBusy *fb = mFormat.parseFreeBusy( freeBusyVCal );
