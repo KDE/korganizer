@@ -567,7 +567,7 @@ void KOTodoView::setNewPriority(int index)
 {
   if (mActiveItem && !mActiveItem->todo()->isReadOnly ()) {
     mActiveItem->todo()->setPriority(mPriority[index]);
-    mActiveItem->setText (1, QString ("%1").arg (mPriority[index]));
+    mActiveItem->construct();
     emit todoModifiedSignal (mActiveItem->todo(), KOGlobals::PRIORITY_MODIFIED);
   }
 }
@@ -577,13 +577,11 @@ void KOTodoView::setNewPercentage(int index)
   if (mActiveItem && !mActiveItem->todo()->isReadOnly ()) {
     if (mPercentage[index] == 100) {
       mActiveItem->todo()->setCompleted(QDateTime::currentDateTime());
-      mActiveItem->setOn (true);
     } else {
       mActiveItem->todo()->setCompleted(false);
-      mActiveItem->setOn (false);
     }
     mActiveItem->todo()->setPercentComplete(mPercentage[index]);
-    mActiveItem->setText (2, QString ("%1 %").arg (mPercentage[index]));
+    mActiveItem->construct();
     emit todoModifiedSignal (mActiveItem->todo (), KOGlobals::COMPLETION_MODIFIED);
   }
 }
@@ -618,7 +616,7 @@ void KOTodoView::changedCategories(int index)
       categories.insert (categories.end(), mCategory[index]);
     categories.sort ();
     mActiveItem->todo()->setCategories (categories);
-    mActiveItem->setText(5, mActiveItem->todo()->categoriesStr());
+    mActiveItem->construct();
     emit todoModifiedSignal (mActiveItem->todo (), KOGlobals::CATEGORY_MODIFIED);
   }
 }
