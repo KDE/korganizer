@@ -205,11 +205,6 @@ class KDE_EXPORT ActionManager : public QObject, public KCalendarIface
     */
     void closingDown();
 
-    /**
-      Announce filter selection changes.
-    */
-    void filterActivated( int );
-
     /** Indicates that a new resource was added */
     void resourceAdded( ResourceCalendar * );
 

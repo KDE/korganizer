@@ -127,6 +127,7 @@ KOrganizerPart::KOrganizerPart( QWidget *parentWidget, const char *widgetName,
   // If korganizer is run as part inside kontact, the alarmdaemon
   // is not started by KOrganizerApp, so we have to start it here.
   KOGlobals::self()->alarmClient()->startDaemon();
+  setTitle();
 }
 
 KOrganizerPart::~KOrganizerPart()
@@ -208,6 +209,37 @@ bool KOrganizerPart::openFile()
   mView->openCalendar( m_file );
   mView->show();
   return true;
+}
+
+// FIXME: This is copied verbatim from the KOrganizer class. Move it to the common base class!
+void KOrganizerPart::setTitle()
+{
+//  kdDebug(5850) << "KOrganizer::setTitle" << endl;
+// FIXME: Inside kontact we want to have different titles depending on the
+//        type of view (calendar, to-do, journal). How can I add the filter
+//        name in that case?
+/*
+  QString title;
+  if ( !hasDocument() ) {
+    title = i18n("Calendar");
+  } else {
+    KURL url = mActionManager->url();
+
+    if ( !url.isEmpty() ) {
+      if ( url.isLocalFile() ) title = url.fileName();
+      else title = url.prettyURL();
+    } else {
+      title = i18n("New Calendar");
+    }
+
+    if ( mView->isReadOnly() ) {
+      title += " [" + i18n("read-only") + "]";
+    }
+  }
+
+  title += " - <" + mView->currentFilterName() + "> ";
+
+  emit setWindowCaption( title );*/
 }
 
 KOrganizerBrowserExtension::KOrganizerBrowserExtension(KOrganizerPart *parent) :

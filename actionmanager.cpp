@@ -592,13 +592,13 @@ void ActionManager::initActions()
                   mACollection, "filter_select" );
   mFilterAction->setEditable( false );
   connect( mFilterAction, SIGNAL( activated(int) ),
-           this, SIGNAL( filterActivated( int ) ) );
+           mCalendarView, SLOT( filterActivated( int ) ) );
   connect( mCalendarView, SIGNAL( newFilterListSignal( const QStringList & ) ),
            mFilterAction, SLOT( setItems( const QStringList & ) ) );
   connect( mCalendarView, SIGNAL( selectFilterSignal( int ) ),
            mFilterAction, SLOT( setCurrentItem( int ) ) );
-  connect( this, SIGNAL( filterActivated( int ) ),
-           mCalendarView, SLOT( filterActivated( int ) ) );
+  connect( mCalendarView, SIGNAL( filterChanged() ),
+           this, SLOT( setTitle() ) );
 #if 0
   new KAction( i18n("Show Intro Page"), 0,
                     mCalendarView,SLOT( showIntro() ),

@@ -578,6 +578,8 @@ void CalendarView::writeFilterSettings( KConfig *config )
   config->writeEntry( "CalendarFilters", filterList );
   if ( mCurrentFilter ) {
     config->writeEntry( "Current Filter", mCurrentFilter->name() );
+  } else {
+    config->writeEntry( "Current Filter", QString::null );
   }
 }
 
@@ -1588,6 +1590,14 @@ void CalendarView::filterActivated( int filterNo )
     mCalendar->setFilter( mCurrentFilter );
     updateView();
   }
+  emit filterChanged();
+}
+
+QString CalendarView::currentFilterName() const
+{
+  if ( mCurrentFilter) {
+    return mCurrentFilter->name();
+  } else return i18n("No filter");
 }
 
 void CalendarView::takeOverEvent()

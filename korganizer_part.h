@@ -83,7 +83,7 @@ class KOrganizerPart: public KParts::ReadOnlyPart,
     virtual KActionCollection *getActionCollection() const { return actionCollection(); }
     virtual void showStatusMessage( const QString &message );
 
-    void setTitle() {};
+    void setTitle();
 
   public slots:
     void slotChangeInfo( Incidence * );

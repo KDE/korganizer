@@ -147,6 +147,8 @@ class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::
     /** Return a pointer to the incidence selected in the current view. If there
         is no selection, return the selected todo from the todo list on the left */
     Incidence *selectedIncidence();
+    /** Returns the name of the current filter */
+    QString currentFilterName() const;
 
   signals:
     /** when change is made to options dialog, the topwidget will catch this
@@ -215,6 +217,7 @@ class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::
 
     void newFilterListSignal( const QStringList & );
     void selectFilterSignal( int );
+    void filterChanged();
     
   public slots:
     /** options dialog made a changed to the configuration. we catch this

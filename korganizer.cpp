@@ -126,7 +126,6 @@ void KOrganizer::init( bool document )
     mActionManager->createCalendarLocal();
   } else {
     mActionManager->createCalendarResources();
-    setCaption( i18n("Calendar") );
   }
 
   mActionManager->init();
@@ -156,6 +155,7 @@ void KOrganizer::init( bool document )
            SLOT( showStatusMessage( const QString & ) ) );
 
   setStandardToolBarMenuEnabled( true );
+  setTitle();
 
   kdDebug(5850) << "KOrganizer::KOrganizer() done" << endl;
 }
@@ -308,22 +308,25 @@ void KOrganizer::setTitle()
 {
 //  kdDebug(5850) << "KOrganizer::setTitle" << endl;
 
-  if ( !hasDocument() ) return;
-
   QString title;
-
-  KURL url = mActionManager->url();
-
-  if ( !url.isEmpty() ) {
-    if ( url.isLocalFile() ) title = url.fileName();
-    else title = url.prettyURL();
+  if ( !hasDocument() ) {
+    title = i18n("Calendar");
   } else {
-    title = i18n("New Calendar");
+    KURL url = mActionManager->url();
+
+    if ( !url.isEmpty() ) {
+      if ( url.isLocalFile() ) title = url.fileName();
+      else title = url.prettyURL();
+    } else {
+      title = i18n("New Calendar");
+    }
+
+    if ( mCalendarView->isReadOnly() ) {
+      title += " [" + i18n("read-only") + "]";
+    }
   }
 
-  if ( mCalendarView->isReadOnly() ) {
-    title += " [" + i18n("read-only") + "]";
-  }
+  title += " - <" + mCalendarView->currentFilterName() + "> ";
 
   setCaption( title, !mCalendarView->isReadOnly() &&
                       mCalendarView->isModified() );
