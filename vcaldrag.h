@@ -16,7 +16,7 @@ class VCalDrag : public QStoredDrag {
     ~VCalDrag() {};
 
     static bool canDecode(QMimeSource *);
-    static bool decode(QDropEvent *e, VObject **vcal);
+    static bool decode(QMimeSource *e, VObject **vcal);
 };
 
 #endif

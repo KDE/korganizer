@@ -350,6 +350,7 @@ KOEvent *CalObject::createDrop(QDropEvent *de)
   KOEvent *event = 0;
 
   if (VCalDrag::decode(de, &vcal)) {
+    de->accept();
     VObjectIterator i;
     VObject *curvo;
     initPropIterator(&i, vcal);
@@ -380,6 +381,7 @@ KOEvent *CalObject::createDropTodo(QDropEvent *de)
   KOEvent *event = 0;
 
   if (VCalDrag::decode(de, &vcal)) {
+    de->accept();
     VObjectIterator i;
     VObject *curvo;
     initPropIterator(&i, vcal);
@@ -415,7 +417,6 @@ bool CalObject::copyEvent(KOEvent *selectedEv)
   QClipboard *cb = QApplication::clipboard();
   VObject *vcal, *vevent;
   QString tmpStr;
-  char *buf;
 
   vcal = newVObject(VCCalProp);
 
@@ -429,15 +430,12 @@ bool CalObject::copyEvent(KOEvent *selectedEv)
 
   addVObjectProp(vcal, vevent);
 
-  buf = writeMemVObject(0, 0, vcal);
+  // paste to clipboard
+  cb->setData(new VCalDrag(vcal));
   
   // free memory associated with vCalendar stuff
   cleanVObject(vcal);
   
-  // paste to clipboard, then clear temp. buffer
-  cb->setText(buf);
-  delete buf;
-  buf = 0L;
 
   return TRUE;
 }
@@ -457,29 +455,17 @@ KOEvent *CalObject::pasteEvent(const QDate *newDate,
     const char * buf;
     buf = cb->text().ascii();
     bufsize = strlen(buf);
-    
-    if (qstrncmp("BEGIN:VCALENDAR", buf, strlen("BEGIN:VCALENDAR")) ) {
-      if (dialogsOn)
+
+    if (!VCalDrag::decode(cb->data(),&vcal)) {
+      if (dialogsOn) {
 	KMessageBox::sorry(topWidget, 
 			      i18n("An error has occurred parsing the "
 				   "contents of the clipboard.\nYou can "
 				   "only paste a valid vCalendar into "
 				   "KOrganizer.\n"));
-      return 0;
-    }
-    
-    vcal = Parse_MIME(buf, bufsize);
-    
-    if (vcal == 0)
-      if ((curVO = isAPropertyOf(vcal, VCCalProp)) == 0) {
-	if (dialogsOn)
-	  KMessageBox::sorry(topWidget,
-				i18n("An error has occurred parsing the "
-				     "contents of the clipboard.\nYou can "
-				     "only paste a valid vCalendar into "
-				     "KOrganizer.\n"));
-	return 0;
+        return 0;
       }
+    }  
   } else {
     vcal = vc;
   }
@@ -506,7 +492,7 @@ KOEvent *CalObject::pasteEvent(const QDate *newDate,
 	QTime::currentTime().minute() + QTime::currentTime().second() +
 	QTime::currentTime().msec();
       QString uidStr;
-      uidStr.sprintf("KOrganizer - %li.%d",KApplication::random(),hashTime);
+      uidStr.sprintf("KOrganizer-%li.%d",KApplication::random(),hashTime);
       if (getEvent(anEvent->getVUID()))
 	anEvent->setVUID(uidStr.ascii());
 
