@@ -178,25 +178,42 @@ void SearchDialog::search( const QRegExp &re )
   QDate startDt = mStartDate->date();
   QDate endDt = mEndDate->date();
 
-  Event::List events = mCalendar->events( startDt, endDt,
-                                          mInclusiveCheck->isChecked() );
+  Event::List events;
+  if (mEventsCheck->isChecked()) {
+    events = mCalendar->events( startDt, endDt, mInclusiveCheck->isChecked() );
+  }
   Todo::List todos;
-  if ( mIncludeUndatedTodos )
-    todos = mCalendar->todos();
-  else {
-    QDate dt = startDt;
-    while ( dt <= endDt ) {
-      todos += mCalendar->todos( dt );
-      dt = dt.addDays( 1 );
+  if (mTodosCheck->isChecked()) {
+    if ( mIncludeUndatedTodos->isChecked() ) {
+      Todo::List alltodos = mCalendar->todos();
+      Todo::List::iterator it;
+      Todo *todo;
+      for (it=alltodos.begin(); it!=alltodos.end(); ++it) {
+        todo = *it;
+        if ( (!todo->hasStartDate() && !todo->hasDueDate() ) || // undated
+             ( todo->hasStartDate() && (todo->dtStart()>=startDt) && (todo->dtStart()<=endDt) ) || // start dt in range
+             ( todo->hasDueDate() && (todo->dtDue().date()>=startDt) && (todo->dtDue()<=endDt) ) || // due dt in range
+             ( todo->hasCompletedDate() && (todo->completed().date()>=startDt) && (todo->completed()<=endDt) ) ) { // completed dt in range
+          todos.append( todo );
+        }
+      } 
+    } else {
+      QDate dt = startDt;
+      while ( dt <= endDt ) {
+        todos += mCalendar->todos( dt );
+        dt = dt.addDays( 1 );
+      }
     }
   }
 
   Journal::List journals;
-  QDate dt = startDt;
-  while ( dt <= endDt ) {
-    Journal* j=mCalendar->journal( dt );
-    if (j) journals.append( j );
-    dt = dt.addDays( 1 );
+  if (mJournalsCheck->isChecked()) {
+    QDate dt = startDt;
+    while ( dt <= endDt ) {
+      Journal* j=mCalendar->journal( dt );
+      if (j) journals.append( j );
+      dt = dt.addDays( 1 );
+    }
   }
 
   Incidence::List allIncidences = Calendar::mergeIncidenceList( events, todos, journals );
