@@ -520,6 +520,8 @@ KOMonthView::KOMonthView(Calendar *calendar, QWidget *parent, const char *name)
     mDayLabels.insert( i, label );
 
     dayLayout->addWidget( label, 0, i );
+    dayLayout->addColSpacing( i, 10 );
+    dayLayout->setColStretch( i, 1 );
   }
 
   int row, col;
