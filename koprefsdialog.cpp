@@ -680,16 +680,22 @@ KOPrefsDialogColors::KOPrefsDialogColors( QWidget *parent, const char *name )
   topLayout->addWidget(todoDueTodayColor->label(),5,0);
   topLayout->addWidget(todoDueTodayColor->button(),5,1);
 
+    // Todo due tomorrow color
+  KPrefsWidColor *todoDueTomorrowColor =
+      addWidColor( KOPrefs::instance()->todoDueTomorrowColorItem(), topFrame );
+  topLayout->addWidget(todoDueTomorrowColor->label(),6,0);
+  topLayout->addWidget(todoDueTomorrowColor->button(),6,1);
+
   // Todo overdue color
   KPrefsWidColor *todoOverdueColor =
       addWidColor( KOPrefs::instance()->todoOverdueColorItem(), topFrame );
-  topLayout->addWidget(todoOverdueColor->label(),6,0);
-  topLayout->addWidget(todoOverdueColor->button(),6,1);
+  topLayout->addWidget(todoOverdueColor->label(),7,0);
+  topLayout->addWidget(todoOverdueColor->button(),7,1);
 
   // categories colors
   QGroupBox *categoryGroup = new QGroupBox(1,Horizontal,i18n("Categories"),
                                            topFrame);
-  topLayout->addMultiCellWidget(categoryGroup,7,7,0,1);
+  topLayout->addMultiCellWidget(categoryGroup,8,8,0,1);
 
   mCategoryCombo = new QComboBox(categoryGroup);
   mCategoryCombo->insertStringList(KOPrefs::instance()->mCustomCategories);
@@ -702,7 +708,7 @@ KOPrefsDialogColors::KOPrefsDialogColors( QWidget *parent, const char *name )
   // resources colors
   QGroupBox *resourceGroup = new QGroupBox(1,Horizontal,i18n("Resources"),
                                            topFrame);
-  topLayout->addMultiCellWidget(resourceGroup,8,8,0,1);
+  topLayout->addMultiCellWidget(resourceGroup,9,9,0,1);
 
   mResourceCombo = new QComboBox(resourceGroup);
 
@@ -712,7 +718,7 @@ KOPrefsDialogColors::KOPrefsDialogColors( QWidget *parent, const char *name )
   connect(mResourceButton,SIGNAL(changed(const QColor &)),SLOT(setResourceColor()));
   updateResources();
 
-  topLayout->setRowStretch(9,1);
+  topLayout->setRowStretch(10,1);
 
   load();
 }

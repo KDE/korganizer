@@ -87,10 +87,9 @@ class KDE_EXPORT CalPrinter : public QObject, public KOrg::CalPrinterBase
     void updateConfig();
 
   private slots:
-    void doPrint( KOrg::PrintPlugin *selectedStyle, bool preview );
+    void doPrint( KOrg::PrintPlugin *selectedStyle );
 
   public:
-    void preview( PrintType type, const QDate &fd, const QDate &td );
     void print( PrintType type, const QDate &fd, const QDate &td );
 
     KPrinter *printer() const;
@@ -122,7 +121,6 @@ class CalPrintDialog : public KDialogBase
 
   public slots:
     void setPrintType( int );
-    void setPreview( bool );
 
   protected slots:
     void slotOk();
@@ -135,7 +133,6 @@ class CalPrintDialog : public KDialogBase
     QWidgetStack *mConfigArea;
     KOrg::PrintPlugin::List mPrintPlugins;
     QLabel *mPrinterLabel;
-    QString mPreviewText;
     QComboBox *mOrientationSelection;
 
     CalPrinter::ePrintOrientation mOrientation;

@@ -557,32 +557,40 @@ void KOAgendaItem::dropEvent( QDropEvent *e )
 {
 #ifndef KORG_NODND
   QString text;
-  QString vcards;
+
+  bool decoded = QTextDrag::decode( e, text );
+  if( decoded && text.startsWith( "file:" ) ) {
+    mIncidence->addAttachment( new Attachment( text ) );
+    return;
+  }
 
 #ifndef KORG_NOKABC
-  if ( KVCardDrag::decode( e, vcards ) ) {
-    KABC::VCardConverter converter;
+  QString vcards;
+  KABC::VCardConverter converter;
 
-    KABC::Addressee::List list = converter.parseVCards( vcards );
-    KABC::Addressee::List::Iterator it;
-    for ( it = list.begin(); it != list.end(); ++it ) {
-      QString em( (*it).fullEmail() );
-      if (em.isEmpty()) {
-        em=(*it).realName();
-      }
-      addAttendee( em );
+  KVCardDrag::decode( e, vcards );
+  KABC::Addressee::List list = converter.parseVCards( vcards );
+  KABC::Addressee::List::Iterator it;
+  for ( it = list.begin(); it != list.end(); ++it ) {
+    QString em( (*it).fullEmail() );
+    if (em.isEmpty()) {
+      em=(*it).realName();
     }
-  } else
-#endif
-  if( QTextDrag::decode( e, text ) ) {
+    addAttendee( em );
+  }
+#else
+  if( decoded ) {
     kdDebug(5850) << "Dropped : " << text << endl;
+
     QStringList emails = QStringList::split( ",", text );
     for( QStringList::ConstIterator it = emails.begin(); it != emails.end();
-         ++it ) {
-      addAttendee( *it );
+        ++it ) {
+        addAttendee( *it );
     }
   }
-#endif
+#endif // KORG_NOKABC
+
+#endif // KORG_NODND
 }
 
 
@@ -791,7 +799,7 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
     p.eraseRect( 0, 0, width(), height() );
     paintTodoIcon( &p, x, ft );
     paintFrame( &p, frameColor );
-    //kdDebug() << "SIZES for " << mLabelText <<  ": " << width() << " :: " << txtWidth << endl; 
+    //kdDebug() << "SIZES for " << mLabelText <<  ": " << width() << " :: " << txtWidth << endl;
     ww->drawText( &p, x, margin, Qt::AlignHCenter | KWordWrap::FadeOut );
     delete ww;
     return;

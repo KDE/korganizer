@@ -313,6 +313,12 @@
       <label>To-do due today color</label>
       <default>255, 200, 50</default>
     </entry>
+
+    <entry type="Color" key="Todo due tomorrow Color" name="TodoDueTomorrowColor">
+      <label>To-do due tomorrow color</label>
+      <default>255, 255, 255</default>
+    </entry>
+
     <entry type="Color" key="Todo overdue Color" name="TodoOverdueColor">
       <label>To-do overdue color</label>
       <default>255, 100, 100</default>
