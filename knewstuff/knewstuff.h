@@ -30,35 +30,39 @@ class Entry;
 }
 
 /**
-  This class provides the functionality to download and upload "new stuff".
-
-  Applications have to subclass KNewStuff, implement the pure virtual functions
-  and link to against libknewstuff.
-
-  By calling download() the download process is started which means that a list
-  of "providers" is fetched from a "master server", information about new stuff
-  is collected from the providers and presented to the user. Selected entries
-  get downloaded and installed to the application. The required functions to
-  install new stuff are provided by implementing install(). The location where
-  the downloaded files are stored can be customized by reimplementing
-  downloadDestination().
-
-  By calling upload() the upload process is started which means the user has to
-  select a provider from the list fetched from the master server and to put in
-  infomration about the entry to be uploaded. Then the file to be uploaded is
-  fetched from the application by calling createUploadFile() and transfered to
-  the upload destination specified in the provider list.
-*/
+ * @short This class provides the functionality to download and upload "new stuff".
+ *
+ * Applications have to subclass KNewStuff, implement the pure virtual functions
+ * and link to against libknewstuff.
+ *
+ * By calling download() the download process is started which means that a list
+ * of "providers" is fetched from a "master server", information about new stuff
+ * is collected from the providers and presented to the user. Selected entries
+ * get downloaded and installed to the application. The required functions to
+ * install new stuff are provided by implementing install(). The location where
+ * the downloaded files are stored can be customized by reimplementing
+ * downloadDestination().
+ *
+ * By calling upload() the upload process is started which means the user has to
+ * select a provider from the list fetched from the master server and to put in
+ * infomration about the entry to be uploaded. Then the file to be uploaded is
+ * fetched from the application by calling createUploadFile() and transfered to
+ * the upload destination specified in the provider list.
+ *
+ * @author Cornelius Schumacher (schumacher@kde.org)
+ * \par Maintainer:
+ * Josef Spillner (spillner@kde.org)
+ */
 class KNewStuff
 {
   public:
     /**
       Constructor.
 
-      @param type Type of data to be handled, should be something like
-                  korganizer/calendar, kword/template, kdesktop/wallpaper.
-      @param parentWidget Parent widget of dialogs opened by the KNewStuff
-                          engine.
+      @param type type of data to be handled, should be something like
+                  korganizer/calendar, kword/template, kdesktop/wallpaper
+      @param parentWidget parent widget of dialogs opened by the KNewStuff
+                          engine
     */
     KNewStuff( const QString &type, QWidget *parentWidget = 0 );
     virtual ~KNewStuff();
@@ -97,7 +101,7 @@ class KNewStuff
       The function returns true, when the installation
       was successful and false if were errors.
 
-      @param fileName Name of downloaded file.
+      @param fileName name of downloaded file
     */
     virtual bool install( const QString &fileName ) = 0;
     /**
@@ -106,8 +110,8 @@ class KNewStuff
       constraint is that the corresponding install() implementation is able to
       use the file.
 
-      @param fileName Name of the file to be written.
-      @return true on success, false on error.
+      @param fileName name of the file to be written
+      @return @c true on success, @c false on error.
     */
     virtual bool createUploadFile( const QString &fileName ) = 0;
 

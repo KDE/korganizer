@@ -38,11 +38,16 @@ class UploadDialog;
 class ProviderDialog;
 
 /**
-* Central class combining all possible KNewStuff operations.
-* In most cases, Engine objects are built and used internally.
-* Using this class explicitely does however give fine-grained control about the
-* upload and download operations.
-*/
+ * @short Central class combining all possible KNewStuff operations.
+ *
+ * In most cases, Engine objects are built and used internally.
+ * Using this class explicitely does however give fine-grained control about the
+ * upload and download operations.
+ *
+ * @author Cornelius Schumacher (schumacher@kde.org)
+ * \par Maintainer:
+ * Josef Spillner (spillner@kde.org)
+ */
 class Engine : public QObject
 {
     Q_OBJECT
@@ -50,11 +55,11 @@ class Engine : public QObject
     /**
       Constructor.
 
-      @param newStuff KNewStuff object.
-      @param type Hotstuff data type such as "korganizer/calendar".
-      @param parentWidget The parent window.
+      @param newStuff a KNewStuff object
+      @param type the Hotstuff data type such as "korganizer/calendar"
+      @param parentWidget the parent window
     */
-    Engine( KNewStuff *, const QString &, QWidget *parentWidget = 0 );
+    Engine( KNewStuff *newStuff, const QString &type, QWidget *parentWidget = 0 );
 
     /**
       Destructor.
@@ -64,14 +69,14 @@ class Engine : public QObject
     /**
       Returns the previously set data type.
 
-      @return Hotstuff data type.
+      @return the Hotstuff data type
     */
     QString type() const { return mType; }
 
     /**
       Returns the previously set parent widget.
 
-      @return Parent widget.
+      @return parent widget
     */
     QWidget *parentWidget() const { return mParentWidget; }
 
@@ -85,32 +90,32 @@ class Engine : public QObject
       Initiates the upload process, invoking the provider selection dialog
       and the file upload dialog.
 
-      @param fileName Name of the payload data file.
-      @param previewName Name of the preview image file.
+      @param fileName name of the payload data file
+      @param previewName name of the preview image file
     */
     void upload( const QString &fileName = QString::null, const QString &previewName = QString::null );
 
     /**
       Downloads the specified data file.
 
-      @param entry Hotstuff data object.
+      @param entry the Hotstuff data object to be downloaded
     */
-    void download( Entry * );
+    void download( Entry *entry );
 
     /**
       Asynchronous lookup of provider information such as upload and
       download locations, icon etc.
 
-      @param provider Hotstuff provider.
+      @param provider the Hotstuff provider to request information from
     */
-    void requestMetaInformation( Provider * );
+    void requestMetaInformation( Provider *provider );
 
     /**
       Uploads the specified data file to the provider-dependent location.
 
-      @param entry Hotstuff data object.
+      @param entry the Hotstuff data object to be uploaded
     */
-    void upload( Entry * );
+    void upload( Entry *entry );
 
   protected slots:
     void getMetaInformation( Provider::List *providers );

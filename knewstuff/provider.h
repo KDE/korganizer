@@ -33,10 +33,15 @@ namespace KIO { class Job; }
 namespace KNS {
 
 /**
- * KNewStuff provider container.
+ * @short KNewStuff provider container.
+ *
  * This class provides accessors for the provider object.
  * as used by KNewStuff.
  * It should probably not be used directly by the application.
+ *
+ * @author Cornelius Schumacher (schumacher@kde.org)
+ * \par Maintainer:
+ * Josef Spillner (spillner@kde.org)
  */
 class Provider
 {
@@ -66,7 +71,7 @@ class Provider
     /**
      * Retrieves the common name of the provider.
      *
-     * @return Provider name
+     * @return provider name
      */
     QString name() const;
 
@@ -78,7 +83,7 @@ class Provider
     /**
      * Retrieves the download URL.
      *
-     * @return Download URL
+     * @return download URL
      */
     KURL downloadUrl() const;
 
@@ -90,13 +95,15 @@ class Provider
     /**
      * Retrieves the upload URL.
      *
-     * @return Upload URL
+     * @return upload URL
      */
     KURL uploadUrl() const;
 
     /**
      * Sets the URL where a user is led if the provider does not support
-     * uploads (@see setNoUpload).
+     * uploads.
+     *
+     * @see setNoUpload
      */
     void setNoUploadUrl( const KURL & );
 
@@ -104,7 +111,7 @@ class Provider
      * Retrieves the URL where a user is led if the provider does not
      * support uploads.
      *
-     * @return Website URL
+     * @return website URL
      */
     KURL noUploadUrl() const;
 
@@ -116,7 +123,7 @@ class Provider
     /**
      * Query whether provider supports uploads.
      *
-     * @return Upload support status
+     * @return upload support status
      */
     bool noUpload() const;
 
@@ -130,7 +137,7 @@ class Provider
     /**
      * Retrieves the icon URL for this provider.
      *
-     * @return Icon URL.
+     * @return icon URL
      */
     KURL icon() const;
 
@@ -161,7 +168,7 @@ class ProviderLoader : public QObject
     /**
      * Constructor.
      *
-     * @param parentWidget The parent widget
+     * @param parentWidget the parent widget
      */
     ProviderLoader( QWidget *parentWidget );
 
@@ -169,7 +176,7 @@ class ProviderLoader : public QObject
      * Starts asynchronously loading the list of providers of the
      * specified type.
      *
-     * @param type Data type such as 'kdesktop/wallpaper'.
+     * @param type data type such as 'kdesktop/wallpaper'.
      */
     void load( const QString &type );
 

@@ -42,13 +42,18 @@ class Provider;
 class Engine;
 
 /**
-* Common download dialog for data browsing and installation.
-* It provides an easy-to-use convenience method named open() which does all
-* the work, unless a more complex operation is needed.
-* \code
-* KNewStuff::DownloadDialog::open("kdesktop/wallpapers");
-* \endcode
-*/
+ * @short Common download dialog for data browsing and installation.
+ *
+ * It provides an easy-to-use convenience method named open() which does all
+ * the work, unless a more complex operation is needed.
+ * \code
+ * KNewStuff::DownloadDialog::open("kdesktop/wallpapers");
+ * \endcode
+ *
+ * @author Josef Spillner (spillner@kde.org)
+ * \par Maintainer:
+ * Josef Spillner (spillner@kde.org)
+ */
 class DownloadDialog : public KDialogBase
 {
     Q_OBJECT
@@ -56,9 +61,9 @@ class DownloadDialog : public KDialogBase
     /**
       Constructor.
 
-      @param engine A pre-built engine object, or NULL if the download
-                    dialog should create an engine on its own.
-      @param parent The parent window.
+      @param engine a pre-built engine object, or NULL if the download
+                    dialog should create an engine on its own
+      @param parent the parent window
     */
     DownloadDialog(Engine *engine, QWidget *parent = 0);
 
@@ -66,7 +71,7 @@ class DownloadDialog : public KDialogBase
       Alternative constructor.
       Always uses an internal engine.
 
-      @param parent The parent window.
+      @param parent the parent window
     */
     DownloadDialog(QWidget *parent = 0);
 
@@ -78,7 +83,7 @@ class DownloadDialog : public KDialogBase
     /**
       Restricts the display of available data to a certain data type.
 
-      @param type A data type such as "korganizer/calendar".
+      @param type a Hotstuff data type such as "korganizer/calendar"
     */
     void setType(QString type);
 
@@ -92,7 +97,7 @@ class DownloadDialog : public KDialogBase
       Adds another provider to the download dialog.
       This is normally done internally.
 
-      @param p Hotstuff provider object.
+      @param p the Hotstuff provider to be added
     */
     void addProvider(Provider *p);
 
@@ -100,7 +105,7 @@ class DownloadDialog : public KDialogBase
       Adds an additional entry to the current provider.
       This is normally done internally.
 
-      @param entry Hotstuff data entry.
+      @param entry a Hotstuff data entry to be added
     */
     void addEntry(Entry *entry);
 
@@ -116,7 +121,7 @@ class DownloadDialog : public KDialogBase
       @see setType()
       @see load()
 
-      @param type A data type such as "korganizer/calendar".
+      @param type a data type such as "korganizer/calendar"
     */
     static void open(QString type);
 
@@ -124,7 +129,7 @@ class DownloadDialog : public KDialogBase
     /**
       Availability of the provider list.
 
-      @param list List of Hotstuff providers.
+      @param list list of Hotstuff providers
     */
     void slotProviders(Provider::List *list);
 

@@ -30,11 +30,16 @@ class Provider;
 class Engine;
 
 /**
-* Dialog displaying a list of Hotstuff providers.
-* This is normally used in the process of uploading data, thus limiting the
-* list to providers which support uploads.
-* One of the providers is then chosen by the user for further operation.
-*/
+ * @short Dialog displaying a list of Hotstuff providers.
+ *
+ * This is normally used in the process of uploading data, thus limiting the
+ * list to providers which support uploads.
+ * One of the providers is then chosen by the user for further operation.
+ *
+ * @author Cornelius Schumacher (schumacher@kde.org)
+ * \par Maintainer:
+ * Josef Spillner (spillner@kde.org)
+ */
 class ProviderDialog : public KDialogBase
 {
     Q_OBJECT
@@ -42,8 +47,8 @@ class ProviderDialog : public KDialogBase
     /**
       Constructor.
 
-      @param engine Hotstuff engine object.
-      @param parent The parent window.
+      @param engine a KNewStuff engine object
+      @param parent the parent window
     */
     ProviderDialog( Engine *engine, QWidget *parent );
 

@@ -31,11 +31,16 @@
 namespace KNS {
 
 /**
-* KNewStuff data entry container.
-* This class provides accessor methods to the data objects
-* as used by KNewStuff.
-* It should probably not be used directly by the application.
-*/
+ * @short KNewStuff data entry container.
+ *
+ * This class provides accessor methods to the data objects
+ * as used by KNewStuff.
+ * It should probably not be used directly by the application.
+ *
+ * @author Cornelius Schumacher (schumacher@kde.org)
+ * \par Maintainer:
+ * Josef Spillner (spillner@kde.org)
+ */
 class Entry
 {
   public:
@@ -58,7 +63,7 @@ class Entry
     /**
      * Retrieve the name of the data object.
      *
-     * @return Object name
+     * @return object name
      */
     QString name() const;
 
@@ -70,7 +75,7 @@ class Entry
     /**
      * Retrieve the type of the data object.
      *
-     * @return Object type
+     * @return object type
      */
     QString type() const;
 
@@ -82,7 +87,7 @@ class Entry
     /**
      * Retrieve the author's name of the object.
      *
-     * @return Object author
+     * @return object author
      */
     QString author() const;
 
@@ -94,7 +99,7 @@ class Entry
     /**
      * Retrieve the license name of the object.
      *
-     * @return Object license
+     * @return object license
      */
     QString license() const;
 
@@ -106,8 +111,8 @@ class Entry
     /**
      * Retrieve a short description about the object.
      *
-     * @param lang Preferred language, or QString::null for KDE default
-     * @return Object description
+     * @param lang preferred language, or QString::null for KDE default
+     * @return object description
      */
     QString summary( const QString &lang = QString::null ) const;
 
@@ -119,7 +124,7 @@ class Entry
     /**
      * Retrieve the version string of the object.
      *
-     * @return Object version
+     * @return object version
      */
     QString version() const;
 
@@ -132,7 +137,7 @@ class Entry
     /**
      * Retrieve the release number of the object
      *
-     * @return Object release
+     * @return object release
      */
     int release() const;
 
@@ -144,20 +149,20 @@ class Entry
     /**
      * Retrieve the date of the object's publication.
      *
-     * @return Object release date
+     * @return object release date
      */
     QDate releaseDate() const;
 
     /**
      * Sets the object's file.
      */
-    void setPayload( const KURL &, const QString &lan = QString::null );
+    void setPayload( const KURL &, const QString &lang = QString::null );
 
     /**
      * Retrieve the file name of the object.
      *
-     * @param lang Preferred language, or QString::null for KDE default
-     * @return Object filename
+     * @param lang preferred language, or QString::null for KDE default
+     * @return object filename
      */
     KURL payload( const QString &lang = QString::null ) const;
 
@@ -165,13 +170,13 @@ class Entry
      * Sets the object's preview file, if available. This should be a
      * picture file.
      */
-    void setPreview( const KURL &, const QString &lan = QString::null );
+    void setPreview( const KURL &, const QString &lang = QString::null );
 
     /**
      * Retrieve the file name of an image containing a preview of the object.
      *
-     * @param lang Preferred language, or QString::null for KDE default
-     * @return Object preview filename
+     * @param lang preferred language, or QString::null for KDE default
+     * @return object preview filename
      */
     KURL preview( const QString &lang = QString::null ) const;
 
@@ -186,7 +191,7 @@ class Entry
      * Retrieve the rating for the object, which has been determined by its
      * users and thus might change over time.
      *
-     * @return Object rating
+     * @return object rating
      */
     int rating();
 
@@ -201,13 +206,13 @@ class Entry
      * Retrieve the download count for the object, which has been determined
      * by its hosting sites and thus might change over time.
      *
-     * @return Object download count
+     * @return object download count
      */
     int downloads();
 
     /**
      * Return the full name for the meta information. It is constructed as
-     * <name>-<version>-<release>.
+     * name-version-release.
      */
     QString fullName();
 
