@@ -85,7 +85,7 @@ libkorganizer_la_SOURCES = komessagebox.cpp outgoingdialog_base.ui \
 	koprefs.cpp kowindowlist.cpp \
 	koeditorgeneral.cpp \
 	koeditorgeneralevent.cpp koeditorgeneraltodo.cpp koeditorgeneraljournal.cpp \
-	koeditordetails.cpp \
+	koeditordetails.cpp koeditoralarms_base.ui koeditoralarms.cpp \
 	koeditorrecurrence.cpp koeditorattachments.cpp \
 	kogroupwareprefspage.ui koeventpopupmenu.cpp koeditorfreebusy.cpp \
 	outgoingdialog.cpp \

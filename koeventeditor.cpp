@@ -41,6 +41,7 @@
 
 #include "koprefs.h"
 #include "koeditorgeneralevent.h"
+#include "koeditoralarms.h"
 #include "koeditorrecurrence.h"
 #include "koeditordetails.h"
 #include "koeditorattachments.h"
@@ -65,10 +66,11 @@ KOEventEditor::~KOEventEditor()
 void KOEventEditor::init()
 {
   setupGeneral();
-  setupAttendeesTab();
+//  setupAlarmsTab();
   setupRecurrence();
-  setupAttachmentsTab();
+  setupAttendeesTab();
   setupFreeBusy();
+  setupAttachmentsTab();
   mDetails->setFreeBusyWidget( mFreeBusy );
 
   // Propagate date time settings to recurrence tab
@@ -339,6 +341,7 @@ void KOEventEditor::readEvent( Event *event, bool tmpl )
   mDetails->readEvent( event );
   mRecurrence->readIncidence( event );
   mAttachments->readIncidence( event );
+  mAlarms->readIncidence( event );
   if( mFreeBusy ) { 
     mFreeBusy->readEvent( event );
     mFreeBusy->triggerReload();

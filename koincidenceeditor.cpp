@@ -45,6 +45,7 @@
 #include "koglobals.h"
 #include "koeditordetails.h"
 #include "koeditorattachments.h"
+#include "koeditoralarms.h"
 
 #include "koincidenceeditor.h"
 
@@ -52,7 +53,7 @@ KOIncidenceEditor::KOIncidenceEditor( const QString &caption,
                                       Calendar *calendar, QWidget *parent )
   : KDialogBase( Tabbed, caption, Ok | Apply | Cancel | Default | User1, Ok,
                  parent, 0, false, false ),
-    mDetails( 0 ), mAttachments( 0 )
+    mDetails( 0 ), mAttachments( 0 ), mAlarms( 0 )
 {
   mCalendar = calendar;
 
@@ -101,6 +102,16 @@ void KOIncidenceEditor::setupAttachmentsTab()
 
   mAttachments = new KOEditorAttachments( spacingHint(), topFrame );
   topLayout->addWidget( mAttachments );
+}
+
+void KOIncidenceEditor::setupAlarmsTab()
+{
+  QFrame *topFrame = addPage( i18n("Re&minders") );
+
+  QBoxLayout *topLayout = new QVBoxLayout( topFrame );
+
+  mAlarms = new KOEditorAlarms( spacingHint(), topFrame );
+  topLayout->addWidget( mAlarms );
 }
 
 void KOIncidenceEditor::slotApply()

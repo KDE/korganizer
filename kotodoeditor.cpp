@@ -48,6 +48,7 @@
 #include "koeditorgeneraltodo.h"
 #include "koeditordetails.h"
 #include "koeditorrecurrence.h"
+#include "koeditoralarms.h"
 
 #include "kotodoeditor.h"
 #include "kocore.h"
@@ -67,8 +68,9 @@ KOTodoEditor::~KOTodoEditor()
 void KOTodoEditor::init()
 {
   setupGeneral();
-  setupAttendeesTab();
+//  setupAlarmsTab();
   setupRecurrence();
+  setupAttendeesTab();
   setupAttachmentsTab();
 
   connect( mGeneral, SIGNAL( dateTimeStrChanged( const QString & ) ),
@@ -312,6 +314,7 @@ void KOTodoEditor::readTodo( Todo *todo )
   kdDebug(5850)<<"read todo"<<endl;
   mGeneral->readTodo( todo );
   mDetails->readEvent( todo );
+  mAlarms->readIncidence( todo );
   mRecurrence->readIncidence( todo );
   mAttachments->readIncidence( todo );
 
