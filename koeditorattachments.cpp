@@ -35,6 +35,7 @@
 #include <qlayout.h>
 #include <qlistview.h>
 #include <qpushbutton.h>
+#include <qdragobject.h>
 #include <qwhatsthis.h>
 
 KOEditorAttachments::KOEditorAttachments( int spacing, QWidget *parent,
@@ -85,10 +86,34 @@ KOEditorAttachments::KOEditorAttachments( int spacing, QWidget *parent,
 			"KDE preferences.") );
   buttonLayout->addWidget( button );
   connect( button, SIGNAL( clicked() ), SLOT( slotShow() ) );
+
+  setAcceptDrops( TRUE );
 }
 
 KOEditorAttachments::~KOEditorAttachments()
 {
+}
+
+void KOEditorAttachments::dragEnterEvent( QDragEnterEvent* event ) {
+  event->accept( QTextDrag::canDecode( event ) );
+}
+
+void KOEditorAttachments::dropEvent( QDropEvent* event ) {
+  QString text;
+  int index;
+
+  if ( QTextDrag::decode( event, text ) ) {
+    if ( ( index = text.contains( '\n', FALSE ) ) <= 1 )
+      new QListViewItem( mAttachments, text );
+    else {
+      QString *section;
+      for ( int num = 0; num < index; num++ ) {
+        section = new QString( text.section('\n', num, num ) );
+        new QListViewItem( mAttachments, *section );
+        delete section;
+      }
+    }
+  }
 }
 
 void KOEditorAttachments::showAttachment( QListViewItem *item )

@@ -33,6 +33,8 @@ using namespace KCal;
 
 class QListViewItem;
 class QListView;
+class QDragonEnterEvent;
+class QDropEvent;
 
 class KOEditorAttachments : public QWidget
 {
@@ -58,6 +60,8 @@ class KOEditorAttachments : public QWidget
     void slotEdit();
     void slotRemove();
     void slotShow();
+    void dragEnterEvent( QDragEnterEvent *event );
+    void dropEvent( QDropEvent *event );
 
   private:
     QListView *mAttachments;
