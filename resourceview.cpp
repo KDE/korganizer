@@ -74,9 +74,9 @@ ResourceItem::ResourceItem( ResourceCalendar *resource, ResourceView *view,
 {
   setGuiState();
 
-  QStringList subresources = mResource->subresources();
+  const QStringList subresources = mResource->subresources();
   kdDebug(5850) << "Subresources: " << subresources << endl;
-  if ( subresources.count() > 0 ) {
+  if ( !subresources.isEmpty() ) {
     setOpen( true );
     setExpandable( true );
     // This resource has subresources
