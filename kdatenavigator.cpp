@@ -189,20 +189,21 @@ void KDateNavigator::updateView()
   mDayMatrix->updateView();
 
   // set the week numbers.
+  const KCalendarSystem *calsys = KOGlobals::self()->calendarSystem();
   for( i = 0; i < 6; i++ ) {
+    // Use QDate's weekNumber method to determine the week number!
+    QDate dtStart = mDayMatrix->getDate( i * 7 );
+    QDate dtEnd = mDayMatrix->getDate( ( i + 1 ) * 7 - 1 );
+    int weeknumstart = calsys->weekNumber( dtStart );
+    int weeknumend = calsys->weekNumber( dtEnd );
     QString weeknum;
-    // remember, according to ISO 8601, the first week of the year is the
-    // first week that contains a thursday.  Thus we must subtract off 4,
-    // not just 1.
-
-    //ET int dayOfYear = buttons[(i + 1) * 7 - 4]->date().dayOfYear();
-    int dayOfYear = KOGlobals::self()->calendarSystem()->dayOfYear(
-        ( mDayMatrix->getDate( ( i + 1 ) * 7 - 4 ) ) );
-
-    if ( dayOfYear % 7 != 0 )
-      weeknum.setNum( dayOfYear / 7 + 1 );
-    else
-      weeknum.setNum( dayOfYear / 7 );
+    
+    if ( weeknumstart != weeknumend ) {
+      weeknum = i18n("start/end week number of line in date picker", "%1/%2")
+                .arg( weeknumstart ).arg( weeknumend );
+    } else {
+      weeknum.setNum( weeknumstart );
+    }
     weeknos[i]->setText( weeknum );
   }
 
