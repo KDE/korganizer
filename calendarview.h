@@ -535,8 +535,8 @@ class EditIncidenceVisitor : public CalendarViewVisitor
 class DeleteIncidenceVisitor : public CalendarViewVisitor
 {
   protected:
-    bool visit( Event *event ) { return mView->deleteEvent( event ); }
-    bool visit( Todo *todo ) { return mView->deleteTodo( todo ); }
+    bool visit( Event *event ) { mView->deleteEvent( event ); return true; }
+    bool visit( Todo *todo ) { mView->deleteTodo( todo ); return true; }
     bool visit( Journal * ) { return false; }
 };
 
