@@ -695,7 +695,6 @@ void KOTodoView::changeIncidenceDisplay(Incidence *incidence, int action)
             insertTodoItem( todo );
           }
         }
-        mTodoListView->sort();
         break;
       case KOGlobals::INCIDENCEDELETED:
         if ( todoItem ) {

@@ -48,7 +48,7 @@ using namespace KCal;
 
 
 /**
- *  Small helper class to dynamically show tooltips inside the day matrix.
+ *  small helper class to dynamically show tooltips inside the day matrix.
  *  This class asks the day matrix object for a appropriate label which
  *  is in our special case the name of the holiday or null if this day is no holiday.
  */
