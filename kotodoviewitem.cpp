@@ -35,6 +35,21 @@ KOTodoViewItem::KOTodoViewItem(KOTodoViewItem *parent, Todo *ev)
   construct();
 }
 
+QString KOTodoViewItem::key(int column,bool) const
+{
+  QMap<int,QString>::ConstIterator it = mKeyMap.find(column);
+  if (it == mKeyMap.end()) {
+    return text(column);
+  } else {
+    return *it;
+  }
+}
+
+void KOTodoViewItem::setSortKey(int column,const QString &key)
+{
+  mKeyMap.insert(column,key);
+}
+
 #if QT_VERSION >= 300
 void KOTodoViewItem::paintBranches(QPainter *p,const QColorGroup & cg,int w,
                                    int y,int h)
@@ -46,14 +61,24 @@ void KOTodoViewItem::paintBranches(QPainter *p,const QColorGroup & cg,int w,
 
 void KOTodoViewItem::construct()
 {
+  QString key;
+
   setOn(mEvent->isCompleted());
   setText(0,mEvent->summary());
   setText(1,QString::number(mEvent->priority()));
   setText(2,i18n("%1 %").arg(QString::number(mEvent->percentComplete())));
   if (mEvent->hasDueDate()) {
     setText(3, mEvent->dtDueDateStr());
+    QDate d = mEvent->dtDue().date();
+    key.sprintf("%04d%02d%02d",d.year(),d.month(),d.day());
+    setSortKey(3,key);
     if (mEvent->doesFloat()) setText(4,"");
-    else setText(4,mEvent->dtDueTimeStr());
+    else {
+      setText(4,mEvent->dtDueTimeStr());
+      QTime t = mEvent->dtDue().time();
+      key.sprintf("%02d%02d",t.hour(),t.minute());
+      setSortKey(4,key);
+    }
   } else {
     setText(3,"");
     setText(4,"");

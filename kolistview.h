@@ -34,6 +34,7 @@
 
 using namespace KCal;
 
+
 /**
   This class provides a way of displaying a single Event in a QListView.
  

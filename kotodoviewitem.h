@@ -60,6 +60,10 @@ class KOTodoViewItem : public QCheckListItem
 
     Todo *event() { return mEvent; }
 
+    QString key(int, bool) const;
+
+    void setSortKey(int column,const QString &key);
+
   protected:
 #if QT_VERSION >= 300
     void paintBranches(QPainter *p,const QColorGroup & cg,int w,int y,int h);
@@ -68,6 +72,8 @@ class KOTodoViewItem : public QCheckListItem
 
   private:
     Todo *mEvent;
+
+    QMap<int,QString> mKeyMap;
 };
 
 #endif
