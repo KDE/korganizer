@@ -36,18 +36,6 @@ KOEditorRecurrence::KOEditorRecurrence(int spacing,QWidget* parent,
   initExceptions();
 
   initLayout();
-
-  // time widgets on General and Recurrence tab are synchronized
-  connect(startTimeEdit, SIGNAL(timeChanged(QTime)),
-	  this, SLOT(startTimeChanged(QTime)));
-  connect(endTimeEdit, SIGNAL(timeChanged(QTime)),
-	  this, SLOT(endTimeChanged(QTime)));
-
-  // date widgets on General and Recurrence tab are synchronized
-  connect(startDateEdit, SIGNAL(dateChanged(QDate)),
-	  this, SLOT(startDateChanged(QDate)));
-  connect(endDateEdit, SIGNAL(dateChanged(QDate)),
-	  this, SLOT(endDateChanged(QDate)));
 }
 
 KOEditorRecurrence::~KOEditorRecurrence()
@@ -74,24 +62,10 @@ void KOEditorRecurrence::initMain()
   QFrame *timeFrame = new QFrame(timeGroupBox,"timeFrame");
   QBoxLayout *layoutTimeFrame = new QHBoxLayout(timeFrame);
   layoutTimeFrame->setSpacing(mSpacing);
+
+  dateTimeLabel = new QLabel(timeFrame);
+  layoutTimeFrame->addWidget(dateTimeLabel);
   
-  startLabel    = new QLabel(i18n("Start:  "), timeFrame);
-  endLabel      = new QLabel(i18n("End:  "), timeFrame);
-
-  startTimeEdit = new KTimeEdit(timeFrame);
-  endTimeEdit   = new KTimeEdit(timeFrame);
-  durationLabel = new QLabel(timeFrame);
-
-  layoutTimeFrame->addWidget(startLabel);
-  layoutTimeFrame->addWidget(startTimeEdit);
-  layoutTimeFrame->addSpacing(10);
-  layoutTimeFrame->addWidget(endLabel);
-  layoutTimeFrame->addWidget(endTimeEdit);
-  layoutTimeFrame->addSpacing(10);
-  layoutTimeFrame->addWidget(durationLabel);
-  layoutTimeFrame->addStretch(1);
-
-
   // Create the recursion rule Group box. This will also hold the
   // daily, weekly, monthly and yearly recursion rule frames which
   // specify options individual to each of these distinct sections of
@@ -547,23 +521,6 @@ void KOEditorRecurrence::deleteException()
   exceptionList->removeItem(exceptionList->currentItem());
 }
 
-void KOEditorRecurrence::timeStuffDisable(bool disable)
-{
-  if (disable) {
-    startTimeEdit->hide();
-    startLabel->hide();
-    endTimeEdit->hide();
-    endLabel->hide();
-    durationLabel->hide();
-  } else {
-    startTimeEdit->show();
-    startLabel->show();
-    endTimeEdit->show();
-    endLabel->show();
-    durationLabel->show();
-  }
-}
-
 void KOEditorRecurrence::unsetAllCheckboxes()
 {
   dailyButton->setChecked(false);
@@ -659,135 +616,17 @@ void KOEditorRecurrence::setDateTimes(QDateTime start,QDateTime end)
 {
 //  qDebug ("KOEditorRecurrence::setDateTimes");
 
-  startTimeEdit->setTime(start.time());
-  endTimeEdit->setTime(end.time());
-
-  startDateEdit->setDate(start.date());
-  if (end.date() > endDateEdit->getDate()) endDateEdit->setDate(end.date());
-
   currStartDateTime = start;
   currEndDateTime = end;
-  
-  setDuration();
 }
 
-void KOEditorRecurrence::setAllDay(bool allDay)
-{
-  mAllDay = allDay;
-  
-  timeStuffDisable(allDay);  
-}
 
-void KOEditorRecurrence::setDuration()
-{
-  QString tmpStr, catStr;
-  int hourdiff, minutediff;
-
-  if (mAllDay) {
-    tmpStr.sprintf((const char*)i18n("Duration: all day"));
-  } else {
-    hourdiff = currStartDateTime.date().daysTo(currEndDateTime.date()) * 24;
-    hourdiff += currEndDateTime.time().hour() - 
-      currStartDateTime.time().hour();
-    minutediff = currEndDateTime.time().minute() -
-      currStartDateTime.time().minute();
-    // If minutediff is negative, "borrow" 60 minutes from hourdiff
-    if (minutediff < 0 && hourdiff > 0) {
-      hourdiff -= 1;
-      minutediff += 60;
-    }
-    if (hourdiff || minutediff){
-      tmpStr.sprintf((const char*)i18n("Duration: "));
-      if (hourdiff){
-        if (hourdiff > 1)
-          catStr.sprintf((const char*)i18n("%i hours"), hourdiff);
-        else if (hourdiff == 1)
-            catStr.sprintf((const char*)i18n("%i hour"), hourdiff);
-        tmpStr.append(catStr);
-      }
-      if (hourdiff && minutediff){
-        catStr.sprintf((const char*)i18n(", "));
-        tmpStr += catStr;
-      }
-      if (minutediff){
-        if (minutediff > 1)
-          catStr.sprintf((const char*)i18n("%i minutes"), minutediff);
-        else if (minutediff == 1)
-          catStr.sprintf((const char*)i18n("%i minute"), minutediff);
-        tmpStr += catStr;
-      }
-    } else tmpStr = "";
-  }
-  durationLabel->setText(tmpStr);
-  durationLabel->adjustSize();
-}
-
-void KOEditorRecurrence::startTimeChanged(QTime newtime)
-{
-  int secsep = currStartDateTime.secsTo(currEndDateTime);
-  
-  currStartDateTime.setTime(newtime);
-
-  // adjust end time so that the event has the same duration as before.
-  currEndDateTime = currStartDateTime.addSecs(secsep);
-  endTimeEdit->setTime(currEndDateTime.time());
-  
-  emit dateTimesChanged(currStartDateTime,currEndDateTime);
-}
-
-void KOEditorRecurrence::endTimeChanged(QTime newtime)
-{
-  QDateTime newdt(currEndDateTime.date(), newtime);
-
-  if(newdt < currStartDateTime) {
-    // oops, can't let that happen.
-    newdt = currStartDateTime;
-    endTimeEdit->setTime(newdt.time());
-  }
-  currEndDateTime = newdt;
-
-  setDuration();
-  
-  emit dateTimesChanged(currStartDateTime,currEndDateTime);
-}
-
-void KOEditorRecurrence::startDateChanged(QDate newdate)
-{
-  int daysep = currStartDateTime.daysTo(currEndDateTime);
-  
-  currStartDateTime.setDate(newdate);
-
-  // adjust end date so that the event has the same duration as before
-  currEndDateTime.setDate(currStartDateTime.date().addDays(daysep));
-  endDateEdit->setDate(currEndDateTime.date());
-
-  emit dateTimesChanged(currStartDateTime,currEndDateTime);
-}
-
-void KOEditorRecurrence::endDateChanged(QDate newdate)
-{
-  QDateTime newdt(newdate, currEndDateTime.time());
-
-  if(newdt < currStartDateTime) {
-    // oops, we can't let that happen.
-    newdt = currStartDateTime;
-    endTimeEdit->setTime(newdt.time());
-  }
-  
-  endDateEdit->setDate(newdt.date());  
-
-  setDuration();
-
-  emit dateTimesChanged(currStartDateTime,currEndDateTime);
-}
-
-void KOEditorRecurrence::setDefaults(QDateTime from, QDateTime to,bool allDay)
+void KOEditorRecurrence::setDefaults(QDateTime from, QDateTime to,bool)
 {
   // unset everything
   unsetAllCheckboxes();
 
   setDateTimes(from,to);
-  setAllDay(allDay);
   
   noEndDateButton->setChecked(true);
   weeklyButton->setChecked(true);
@@ -893,7 +732,6 @@ void KOEditorRecurrence::readEvent(KOEvent *event)
     nthDayEntry->setCurrentItem(currStartDateTime.date().day()-1);
     nMonthsEntry->setText("1");
     yearDayButton->setChecked(true);
-//    mpStr.sprintf("%i",currStartDateTime.date().dayOfYear());
     nYearsEntry->setText("1");
   }
 
@@ -1071,4 +909,9 @@ QDate *KOEditorRecurrence::dateFromText(QString text)
     m = 0;  
   
   return new QDate(y,m,d);
+}
+
+void KOEditorRecurrence::setDateTimeStr(const QString &str)
+{
+  dateTimeLabel->setText(str);
 }

@@ -53,6 +53,7 @@ class KOPrefs
   
     QString mTimeZone;
     int     mStartTime;
+    int     mDefaultDuration;
     int     mAlarmTime;
     int     mDaylightSavings;
 

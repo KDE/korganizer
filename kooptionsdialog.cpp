@@ -324,18 +324,22 @@ void KOOptionsDialog::setupTimeTab()
   mStartTimeSpin->setSuffix(":00");
   topLayout->addWidget(mStartTimeSpin,1,1);
 
-  QStringList alarmList;
-  
+  topLayout->addWidget(new QLabel(i18n("Default duration of new appointment:"),
+                       topFrame),2,0);
+  mDefaultDurationSpin = new QSpinBox(0,23,1,topFrame);
+  mDefaultDurationSpin->setSuffix(":00");
+  topLayout->addWidget(mDefaultDurationSpin,1,1);
+
+  QStringList alarmList;  
   alarmList << i18n("1 minute") << i18n("5 minutes") << i18n("10 minutes")
             << i18n("15 minutes") << i18n("30 minutes");
-
   topLayout->addWidget(new QLabel(i18n("Default Alarm Time:"),topFrame),
-                       2,0);
+                       3,0);
   mAlarmTimeCombo = new QComboBox(topFrame);
   mAlarmTimeCombo->insertStringList(alarmList);
-  topLayout->addWidget(mAlarmTimeCombo,2,1);
+  topLayout->addWidget(mAlarmTimeCombo,3,1);
   
-  topLayout->setRowStretch(3,1);
+  topLayout->setRowStretch(4,1);
 }
 
 
@@ -648,6 +652,7 @@ void KOOptionsDialog::readConfig()
   setCombo(mTimeZoneCombo,KOPrefs::instance()->mHoliday);
 
   mStartTimeSpin->setValue(KOPrefs::instance()->mStartTime);
+  mDefaultDurationSpin->setValue(KOPrefs::instance()->mDefaultDuration);
   mAlarmTimeCombo->setCurrentItem(KOPrefs::instance()->mAlarmTime);
 
   mDayBeginsSpin->setValue(KOPrefs::instance()->mDayBegins);
@@ -686,6 +691,7 @@ void KOOptionsDialog::writeConfig()
 
   KOPrefs::instance()->mTimeZone = mTimeZoneCombo->currentText();
   KOPrefs::instance()->mStartTime = mStartTimeSpin->value();
+  KOPrefs::instance()->mDefaultDuration = mDefaultDurationSpin->value();
   KOPrefs::instance()->mAlarmTime = mAlarmTimeCombo->currentItem();
 
   KOPrefs::instance()->mDayBegins = mDayBeginsSpin->value();

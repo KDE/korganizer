@@ -105,6 +105,7 @@ class KOOptionsDialog : public KDialogBase
   
     QComboBox    *mTimeZoneCombo;
     QSpinBox     *mStartTimeSpin;
+    QSpinBox     *mDefaultDurationSpin;
     QComboBox    *mAlarmTimeCombo;
 
     QLabel *mTimeBarFont;

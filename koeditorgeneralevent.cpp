@@ -50,20 +50,22 @@ KOEditorGeneralEvent::KOEditorGeneralEvent(int spacing,QWidget* parent,
 
   summaryEdit->setFocus();
 
-  // time widgets on General and Recurrence tab are synchronized
+  // time widgets are checked if they conatin a valid time
   connect(startTimeEdit, SIGNAL(timeChanged(QTime)),
 	  this, SLOT(startTimeChanged(QTime)));
   connect(endTimeEdit, SIGNAL(timeChanged(QTime)),
 	  this, SLOT(endTimeChanged(QTime)));
 
-  // date widgets on General and Recurrence tab are synchronized
+  // date widgets are checked if they conatin a valid date
   connect(startDateEdit, SIGNAL(dateChanged(QDate)),
 	  this, SLOT(startDateChanged(QDate)));
   connect(endDateEdit, SIGNAL(dateChanged(QDate)),
 	  this, SLOT(endDateChanged(QDate)));
 
-  // recursion on/off
-  connect(this,SIGNAL(recursChanged(bool)),SLOT(recurStuffEnable(bool)));
+  connect(this,SIGNAL(dateTimesChanged(QDateTime,QDateTime)),
+          SLOT(setDuration()));
+  connect(this,SIGNAL(dateTimesChanged(QDateTime,QDateTime)),
+          SLOT(emitDateTimeStr()));
 }
 
 KOEditorGeneralEvent::~KOEditorGeneralEvent()
@@ -95,15 +97,6 @@ void KOEditorGeneralEvent::initTimeBox()
   startTimeEdit = new KTimeEdit(timeBoxFrame);
   layoutTimeBox->addWidget(startTimeEdit,0,3);
 
-
-  noTimeButton = new QCheckBox(timeBoxFrame, "CheckBox_1" );
-  noTimeButton->setText( i18n("No time associated") );
-  layoutTimeBox->addWidget(noTimeButton,0,5);
-
-  connect(noTimeButton, SIGNAL(toggled(bool)),SLOT(timeStuffDisable(bool)));
-  connect(noTimeButton, SIGNAL(toggled(bool)),SLOT(alarmStuffDisable(bool)));
-  connect(noTimeButton, SIGNAL(toggled(bool)),SIGNAL(allDayChanged(bool)));
-
   
   endDateLabel = new QLabel( timeBoxFrame, "Label_3" );
   endDateLabel->setText( i18n("End Date:") );
@@ -120,33 +113,41 @@ void KOEditorGeneralEvent::initTimeBox()
   layoutTimeBox->addWidget(endTimeEdit,1,3);
 
 
+  noTimeButton = new QCheckBox(timeBoxFrame, "CheckBox_1" );
+  noTimeButton->setText( i18n("No time associated") );
+  layoutTimeBox->addMultiCellWidget(noTimeButton,2,2,2,3);
+
+  connect(noTimeButton, SIGNAL(toggled(bool)),SLOT(timeStuffDisable(bool)));
+  connect(noTimeButton, SIGNAL(toggled(bool)),SLOT(alarmStuffDisable(bool)));
+  connect(noTimeButton, SIGNAL(toggled(bool)),SIGNAL(allDayChanged(bool)));
+
+
   recursButton = new QCheckBox(timeBoxFrame);
   recursButton->setText(i18n("Recurring event"));
-  layoutTimeBox->addWidget(recursButton,1,5);
+  layoutTimeBox->addMultiCellWidget(recursButton,2,2,0,1);
 
   QObject::connect(recursButton,SIGNAL(toggled(bool)),
                    SIGNAL(recursChanged(bool)));
 
-  // add stretch space between date/time edits and checkboxes
+  durationLabel = new QLabel(timeBoxFrame);
+  layoutTimeBox->addMultiCellWidget(durationLabel,0,1,5,5);
+
+  // add stretch space around duration label
   layoutTimeBox->setColStretch(4,1);
+  layoutTimeBox->setColStretch(6,1);
 }
 
 void KOEditorGeneralEvent::initMisc()
 {
   summaryLabel = new QLabel( this, "Label_1" );
   summaryLabel->setText( i18n("Summary:") );
-//  summaryLabel->setAlignment( 289 );
-//  summaryLabel->setMargin( -1 );
 
   summaryEdit = new QLineEdit( this, "LineEdit_1" );
 
   freeTimeLabel = new QLabel( this, "Label_6" );
   freeTimeLabel->setText( i18n("Show Time As:") );
-//  freeTimeLabel->setAlignment( 289 );
-//  freeTimeLabel->setMargin( -1 );
 
   freeTimeCombo = new QComboBox( false, this, "ComboBox_1" );
-//  freeTimeCombo->setSizeLimit( 10 );  // that's the default value anyway
   freeTimeCombo->insertItem( i18n("Busy") );
   freeTimeCombo->insertItem( i18n("Free") );
 
@@ -154,11 +155,10 @@ void KOEditorGeneralEvent::initMisc()
   descriptionEdit->insertLine( "" );
   descriptionEdit->setReadOnly( false );
   descriptionEdit->setOverwriteMode( false );
+  descriptionEdit->setWordWrap(QMultiLineEdit::WidgetWidth);
 
   ownerLabel = new QLabel( this, "Label_7" );
   ownerLabel->setText( i18n("Owner:") );
-//  ownerLabel->setAlignment( 289 );
-//  ownerLabel->setMargin( -1 );
 
   privateButton = new QCheckBox( this, "CheckBox_3" );
   privateButton->setText( i18n("Private") );
@@ -338,6 +338,8 @@ void KOEditorGeneralEvent::timeStuffDisable(bool disable)
     startTimeEdit->show();
     endTimeEdit->show();
   }
+  setDuration();
+  emitDateTimeStr();
 }
 
 void KOEditorGeneralEvent::alarmStuffEnable(bool enable)
@@ -354,6 +356,7 @@ void KOEditorGeneralEvent::alarmStuffDisable(bool disable)
   alarmProgramButton->setEnabled(!disable);
 }
 
+// This is probably not used anymore
 void KOEditorGeneralEvent::recurStuffEnable(bool enable)
 {
   if (enable) {
@@ -381,6 +384,9 @@ void KOEditorGeneralEvent::setDateTimes(QDateTime start, QDateTime end)
 
   currStartDateTime = start;
   currEndDateTime = end;
+
+  setDuration();
+  emitDateTimeStr();
 }
 
 void KOEditorGeneralEvent::setCategories(QString str)
@@ -617,4 +623,70 @@ void KOEditorGeneralEvent::writeEvent(KOEvent *event)
   // note, that if on the details tab the "Transparency" option is implemented,
   // we will have to change this to suit.
   event->setTransparency(freeTimeCombo->currentItem());
+}
+
+void KOEditorGeneralEvent::setDuration()
+{
+  QString tmpStr, catStr;
+  int hourdiff, minutediff;
+
+  if (noTimeButton->isChecked()) {
+    int daydiff = currStartDateTime.date().daysTo(currEndDateTime.date()) + 1;
+    if (daydiff == 1) tmpStr = i18n("Duration: 1 day");
+    else tmpStr = i18n("Duration: %1 days").arg(daydiff);
+  } else {
+    hourdiff = currStartDateTime.date().daysTo(currEndDateTime.date()) * 24;
+    hourdiff += currEndDateTime.time().hour() - 
+      currStartDateTime.time().hour();
+    minutediff = currEndDateTime.time().minute() -
+      currStartDateTime.time().minute();
+    // If minutediff is negative, "borrow" 60 minutes from hourdiff
+    if (minutediff < 0 && hourdiff > 0) {
+      hourdiff -= 1;
+      minutediff += 60;
+    }
+    if (hourdiff || minutediff){
+      tmpStr = i18n("Duration: ");
+      if (hourdiff){
+        if (hourdiff > 1)
+          catStr = i18n("%1 hours").arg(QString::number(hourdiff));
+        else if (hourdiff == 1)
+          catStr = i18n("%1 hour").arg(QString::number(hourdiff));
+        tmpStr.append(catStr);
+      }
+      if (hourdiff && minutediff){
+        tmpStr += i18n(", ");
+      }
+      if (minutediff){
+        if (minutediff > 1)
+          catStr = i18n("%1 minutes").arg(QString::number(minutediff));
+        else if (minutediff == 1)
+          catStr = i18n("%1 minute").arg(QString::number(minutediff));
+        tmpStr += catStr;
+      }
+    } else tmpStr = "";
+  }
+  durationLabel->setText(tmpStr);
+}
+
+
+void KOEditorGeneralEvent::emitDateTimeStr()
+{
+  KLocale *l = KGlobal::locale();
+  
+  QString from,to;
+  if (noTimeButton->isChecked()) {
+    from = l->formatDate(currStartDateTime.date());
+    to = l->formatDate(currEndDateTime.date());
+  } else {
+    from = l->formatDateTime(currStartDateTime);
+    to = l->formatDateTime(currEndDateTime);
+  }
+  
+  QString str = i18n("From: %1   To: %2   %3").arg(from).arg(to)
+                .arg(durationLabel->text());
+//  QString str = i18n("<b>From:</b> %1  <b>To:</b> %2, %3").arg(from).arg(to)
+//                .arg(durationLabel->text());
+                 
+  emit dateTimeStrChanged(str);
 }

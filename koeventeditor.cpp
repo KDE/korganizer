@@ -61,26 +61,22 @@ KOEventEditor::KOEventEditor(CalObject *calendar) :
   setupDetailsTab();
   setupRecurrenceTab();
 
+  // Propagate date time settings to recurrence tab
   connect(mGeneral,SIGNAL(dateTimesChanged(QDateTime,QDateTime)),
           mRecurrence,SLOT(setDateTimes(QDateTime,QDateTime)));
-  connect(mGeneral,SIGNAL(allDayChanged(bool)),
-          mRecurrence,SLOT(setAllDay(bool)));
+  connect(mGeneral,SIGNAL(dateTimeStrChanged(const QString &)),
+          mRecurrence,SLOT(setDateTimeStr(const QString &)));
 
-  connect(mRecurrence,SIGNAL(dateTimesChanged(QDateTime,QDateTime)),
-          mGeneral,SLOT(setDateTimes(QDateTime,QDateTime)));
-
+  // Enable/Disabel recurrence tab
   connect(mGeneral,SIGNAL(recursChanged(bool)),
           SLOT(enableRecurrence(bool)));
-  connect(mGeneral,SIGNAL(recursChanged(bool)),
-          mRecurrence,SLOT(setEnabled(bool)));
 
+  // Category dialog
   connect(mGeneral,SIGNAL(openCategoryDialog()),mCategoryDialog,SLOT(show()));
-  connect(mDetails,SIGNAL(openCategoryDialog()),mCategoryDialog,SLOT(show()));
   connect(mCategoryDialog, SIGNAL(categoriesSelected(QString)),
           mGeneral,SLOT(setCategories(QString)));
-  connect(mCategoryDialog, SIGNAL(categoriesSelected(QString)),
-          mDetails,SLOT(setCategories(QString)));
 
+  // Clicking cancel exits the dialog without saving
   connect(this,SIGNAL(cancelClicked()),SLOT(reject()));
 }
 
@@ -102,7 +98,7 @@ void KOEventEditor::setupGeneralTab()
 
 void KOEventEditor::setupDetailsTab()
 {
-  QFrame *topFrame = addPage(i18n("Details"));
+  QFrame *topFrame = addPage(i18n("Attendees"));
 
   QBoxLayout *topLayout = new QVBoxLayout(topFrame);  
   topLayout->setMargin(marginHint());
@@ -124,8 +120,9 @@ void KOEventEditor::setupRecurrenceTab()
   mRecurrence = new KOEditorRecurrence(spacingHint(),mRecurrenceStack);
   mRecurrenceStack->addWidget(mRecurrence,0);
   
-  mRecurrenceDisabled = new QLabel(i18n("This event does not recur."),
-                                   mRecurrenceStack);
+  mRecurrenceDisabled = new QLabel(
+      i18n("This event does not recur.\nEnable Recurrence in General Tab."),
+      mRecurrenceStack);
   mRecurrenceDisabled->setAlignment(AlignCenter);
   mRecurrenceStack->addWidget(mRecurrenceDisabled,1);
 }
@@ -155,7 +152,8 @@ void KOEventEditor::slotDefault()
   int fmt = KOPrefs::instance()->mStartTime;
   
   QDateTime from(QDate::currentDate(), QTime(fmt,0,0));
-  QDateTime to(QDate::currentDate(), QTime(fmt+1,0,0));
+  QDateTime to(QDate::currentDate(),
+               QTime(fmt+KOPrefs::instance()->mDefaultDuration,0,0));
 
   setDefaults(from,to,false);
 }

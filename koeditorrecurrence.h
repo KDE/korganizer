@@ -36,7 +36,7 @@ class KOEditorRecurrence : public QWidget
   public slots:
     virtual void setEnabled(bool);
     void setDateTimes(QDateTime start,QDateTime end);
-    void setAllDay(bool allDay);
+    void setDateTimeStr(const QString &);
   
   signals:
     void dateTimesChanged(QDateTime start,QDateTime end);
@@ -52,12 +52,6 @@ class KOEditorRecurrence : public QWidget
     void addException();
     void changeException();
     void deleteException();
-    void timeStuffDisable(bool);
-
-    void startTimeChanged(QTime);
-    void startDateChanged(QDate);
-    void endTimeChanged(QTime);
-    void endDateChanged(QDate);
   
   protected:
     void unsetAllCheckboxes();
@@ -74,18 +68,12 @@ class KOEditorRecurrence : public QWidget
   
     void initLayout();
 
-    void setDuration();
-
   private:
     QDate *dateFromText(QString text);
     
     /* stuff to hold the appointment time setting widgets. */
     QGroupBox* timeGroupBox;
-    QLabel* startLabel;
-    QLabel* endLabel;
-    KTimeEdit* startTimeEdit;
-    KTimeEdit* endTimeEdit;
-    QLabel *durationLabel;
+    QLabel *dateTimeLabel;
   
     /* main rule box and choices. */
     QGroupBox*    ruleGroupBox;
@@ -166,8 +154,6 @@ class KOEditorRecurrence : public QWidget
     QPushButton* deleteExceptionButton;
     QPushButton* exceptionDateButton;
     QListBox *exceptionList;
-
-    bool mAllDay;
 
     // current start and end date and time
     QDateTime currStartDateTime;

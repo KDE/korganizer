@@ -54,7 +54,6 @@ class KOEditorDetails : public QWidget
   public slots:
     virtual void setEnabled(bool);
     void insertAttendee(Attendee *);
-    void setCategories(QString);
 
   protected slots:
     void addNewAttendee(); 
@@ -64,9 +63,6 @@ class KOEditorDetails : public QWidget
     void attendeeListAction(QListViewItem *);
     void openAddressBook();
 
-  signals:
-    void openCategoryDialog();
-    
   protected:
     void initAttendee();
     void initAttach();
@@ -74,7 +70,6 @@ class KOEditorDetails : public QWidget
 
     QVBoxLayout *topLayout;
 
-    QGroupBox* attendeeGroupBox;
     QLabel* attendeeLabel;
     QLineEdit *attendeeEdit;
     QLineEdit *emailEdit;
@@ -86,8 +81,6 @@ class KOEditorDetails : public QWidget
     QPushButton* removeFileButton;
     QPushButton* saveFileAsButton;
     QPushButton* addressBookButton;
-    QPushButton* categoriesButton;
-    QLabel* categoriesLabel;
     QLabel* attendeeRoleLabel;
     QComboBox* attendeeRoleCombo;
     QCheckBox* attendeeRSVPButton;

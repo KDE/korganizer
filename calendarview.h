@@ -98,12 +98,12 @@ public slots:
    * make the event take all day. */
   void newEvent(QDateTime, QDateTime);
   void newEvent(QDateTime, QDateTime, bool allDay);
-  void newEvent(QDateTime fh) { newEvent(fh,QDateTime(fh.addSecs(3600))); };
-  void newEvent(QDate dt) { newEvent(QDateTime(dt, QTime(0,0,0)),
-	   		    QDateTime(dt, QTime(0,0,0)), TRUE); };
+  void newEvent(QDateTime fh);
+  void newEvent(QDate dt);
   /** create new event without having a date hint. Takes current date as
    default hint. */ 
   void newEvent();
+  
   /** create an editeventwin for the supplied event */
   void editEvent(KOEvent *);
   /** delete the supplied event */

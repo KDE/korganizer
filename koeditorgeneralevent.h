@@ -39,6 +39,7 @@ class KOEditorGeneralEvent : public QWidget
   public slots:
     void setDateTimes(QDateTime start, QDateTime end);
     void setCategories(QString);
+    void setDuration();
 
   protected slots:
 
@@ -55,11 +56,14 @@ class KOEditorGeneralEvent : public QWidget
     void endTimeChanged(QTime);
     void endDateChanged(QDate);
 
+    void emitDateTimeStr();
+
   signals:
     void dateTimesChanged(QDateTime start,QDateTime end);
     void allDayChanged(bool);
     void recursChanged(bool);
     void openCategoryDialog();
+    void dateTimeStrChanged(const QString &);
 
   protected:
     void initMisc();
@@ -80,6 +84,7 @@ class KOEditorGeneralEvent : public QWidget
     KDateEdit               *endDateEdit;
     KTimeEdit               *startTimeEdit;
     KTimeEdit               *endTimeEdit;
+    QLabel                  *durationLabel;
     QCheckBox               *noTimeButton;
     QCheckBox               *recursButton;
     QLabel                  *alarmBell;

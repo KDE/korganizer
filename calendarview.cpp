@@ -670,6 +670,18 @@ void CalendarView::newEvent()
   newEvent(QDate::currentDate());
 }
 
+void CalendarView::newEvent(QDateTime fh)
+{
+  newEvent(fh,
+           QDateTime(fh.addSecs(3600*KOPrefs::instance()->mDefaultDuration)));
+}
+
+void CalendarView::newEvent(QDate dt)
+{
+  newEvent(QDateTime(dt, QTime(0,0,0)),
+           QDateTime(dt, QTime(0,0,0)), TRUE);
+}
+
 void CalendarView::newEvent(QDateTime fromHint, QDateTime toHint)
 {
   // create empty event win
@@ -756,7 +768,8 @@ void CalendarView::appointment_new()
   qDebug("StartTime: %d",KOPrefs::instance()->mStartTime);
 
   newEvent(QDateTime(from, QTime(KOPrefs::instance()->mStartTime,0,0)),
-	   QDateTime(to, QTime(KOPrefs::instance()->mStartTime+1,0,0)));
+	   QDateTime(to, QTime(KOPrefs::instance()->mStartTime +
+                     KOPrefs::instance()->mDefaultDuration,0,0)));
 }
 
 void CalendarView::allday_new()

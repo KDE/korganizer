@@ -61,13 +61,14 @@ void KOPrefs::setDefaults()
   KSimpleConfig config( QString::fromLatin1("emaildefaults"), false );
   config.setGroup("UserInfo");
   mName = config.readEntry( "FullName", i18n("Anonymous") );
-  mEmail = config.readEntry( "EmailAddress" );
+  mEmail = config.readEntry( "EmailAddress", i18n("nobody@nowhere") );
 
   mAdditional = "";
   mHoliday = KGlobal::locale()->country();
   
   mTimeZone = "";
   mStartTime = 10;
+  mDefaultDuration = 2;
   mAlarmTime = 0;
   mDaylightSavings = 0;
 

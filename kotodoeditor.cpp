@@ -60,11 +60,8 @@ KOTodoEditor::KOTodoEditor(CalObject *calendar) :
   setupDetailsTab();
 
   connect(mGeneral,SIGNAL(openCategoryDialog()),mCategoryDialog,SLOT(show()));
-  connect(mDetails,SIGNAL(openCategoryDialog()),mCategoryDialog,SLOT(show()));
   connect(mCategoryDialog, SIGNAL(categoriesSelected(QString)),
           mGeneral,SLOT(setCategories(QString)));
-  connect(mCategoryDialog, SIGNAL(categoriesSelected(QString)),
-          mDetails,SLOT(setCategories(QString)));
 
   connect(this,SIGNAL(cancelClicked()),SLOT(reject()));
 }
@@ -86,7 +83,7 @@ void KOTodoEditor::setupGeneralTab()
 
 void KOTodoEditor::setupDetailsTab()
 {
-  QFrame *topFrame = addPage(i18n("Details"));
+  QFrame *topFrame = addPage(i18n("Attendees"));
 
   QBoxLayout *topLayout = new QVBoxLayout(topFrame);  
   topLayout->setMargin(marginHint());

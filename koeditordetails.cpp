@@ -44,8 +44,6 @@ void AttendeeListItem::updateItem()
                                                  " ");
   setText(2,mAttendee->getRoleStr());
   setText(3,mAttendee->getStatusStr());
-//  setText(4,(mAttendee->RSVP() && !mAttendee->getEmail().isEmpty()) ?
-//            "Y" : "N");
   if (mAttendee->RSVP() && !mAttendee->getEmail().isEmpty())
     setPixmap(4,UserIcon("mailappt"));
   else
@@ -62,30 +60,30 @@ KOEditorDetails::KOEditorDetails (int spacing,QWidget* parent,const char* name)
   topLayout->setSpacing(mSpacing);
 
   initAttendee();
+// Disabled because the features associated with htis controls aren't
+// implemented.
   //initAttach();
-  initMisc();
+  //initMisc();
 }
 
 void KOEditorDetails::initAttendee()
 {
-  attendeeGroupBox = new QGroupBox(1,Horizontal,i18n("Attendee Information"),
-                                   this);
-  topLayout->addWidget(attendeeGroupBox);
-
-  attendeeListBox = new QListView(attendeeGroupBox,"attendeeListBox");
+  attendeeListBox = new QListView(this,"attendeeListBox");
   attendeeListBox->addColumn(i18n("Name"),180);
   attendeeListBox->addColumn(i18n("Email"),180);
   attendeeListBox->addColumn(i18n("Role"),60);
   attendeeListBox->addColumn(i18n("Status"),100);
   attendeeListBox->addColumn(i18n("RSVP"),35);
+  topLayout->addWidget(attendeeListBox);
 
   connect(attendeeListBox, SIGNAL(clicked(QListViewItem *)),
 	  this, SLOT(attendeeListHilite(QListViewItem *)));
   connect(attendeeListBox, SIGNAL(doubleClicked(QListViewItem *)),
 	  this, SLOT(attendeeListAction(QListViewItem *)));
 
-  QHBox *nameBox = new QHBox(attendeeGroupBox);
+  QHBox *nameBox = new QHBox(this);
   nameBox->setSpacing(mSpacing);
+  topLayout->addWidget(nameBox);
 
   attendeeLabel = new QLabel(nameBox);
   attendeeLabel->setText(i18n("Attendee Name:"));
@@ -99,14 +97,14 @@ void KOEditorDetails::initAttendee()
   emailEdit = new QLineEdit(nameBox);
   emailEdit->setText("");
 
-  QWidget *roleBox = new QWidget(attendeeGroupBox);
+  QWidget *roleBox = new QWidget(this);
+  topLayout->addWidget(roleBox);
   QBoxLayout *roleLayout = new QHBoxLayout(roleBox);
   
   attendeeRoleLabel = new QLabel(roleBox);
   attendeeRoleLabel->setText(i18n("Role:"));
   roleLayout->addWidget(attendeeRoleLabel);
   roleLayout->addSpacing(mSpacing);
-//  attendeeRoleLabel->setAlignment(AlignVCenter|AlignRight);
 
   attendeeRoleCombo = new QComboBox(false,roleBox);
   attendeeRoleCombo->insertItem( i18n("Attendee") );
@@ -119,7 +117,6 @@ void KOEditorDetails::initAttendee()
 
   statusLabel = new QLabel(roleBox);
   statusLabel->setText( i18n("Status:") );
-//  statusLabel->setAlignment(AlignVCenter|AlignRight);
   roleLayout->addWidget(statusLabel);
   roleLayout->addSpacing(mSpacing);
 
@@ -140,8 +137,8 @@ void KOEditorDetails::initAttendee()
   attendeeRSVPButton->setText(i18n("Request Response"));
   roleLayout->addWidget(attendeeRSVPButton);
 
-
-  KButtonBox *buttonBox = new KButtonBox(attendeeGroupBox);
+  KButtonBox *buttonBox = new KButtonBox(this);
+  topLayout->addWidget(buttonBox);
 
   addAttendeeButton = buttonBox->addButton(i18n("&Add"));
   connect(addAttendeeButton,SIGNAL(clicked()),SLOT(addNewAttendee()));
@@ -196,19 +193,6 @@ void KOEditorDetails::initAttach()
 
 void KOEditorDetails::initMisc()
 {
-  QGroupBox *groupBox = new QGroupBox(1,Horizontal,this);
-  topLayout->addWidget(groupBox);
-
-  QHBox *catBox = new QHBox(groupBox);
-
-  categoriesButton = new QPushButton(catBox);
-  categoriesButton->setText(i18n("Categories..."));
-  connect(categoriesButton,SIGNAL(clicked()),SIGNAL(openCategoryDialog()));
-
-  categoriesLabel = new QLabel(catBox);
-  categoriesLabel->setFrameStyle(QFrame::Panel|QFrame::Sunken);
-  categoriesLabel->setText( "" );
-
   /*  locationLabel = new QLabel(groupBox);
   locationLabel->setText( i18n("Location:") );
   locationLabel->setFixedSize(locationLabel->sizeHint());
@@ -246,7 +230,7 @@ KOEditorDetails::~KOEditorDetails()
 {
 }
 
-void KOEditorDetails::setEnabled(bool enabled)
+void KOEditorDetails::setEnabled(bool)
 {
 // This doesn't correspond to the available widgets at the moment
 /*
@@ -257,8 +241,6 @@ void KOEditorDetails::setEnabled(bool enabled)
   saveFileAsButton->setEnabled(enabled);
   addressBookButton->setEnabled(enabled);
 */
-  categoriesButton->setEnabled(enabled);
-  categoriesLabel->setEnabled(enabled);
 /*
   attendeeRoleCombo->setEnabled(enabled);
   //  attendeeRSVPButton->setEnabled(enabled);
@@ -289,6 +271,8 @@ void KOEditorDetails::attendeeListHilite(QListViewItem *item)
 
 void KOEditorDetails::attendeeListAction(QListViewItem *item)
 {
+  qDebug("KOEditorDetails::attendeeListAction(): to be implemented");
+
   return;
 
   /*  switch (col) {
@@ -388,11 +372,6 @@ void KOEditorDetails::insertAttendee(Attendee *a)
   mAttendeeList.append(new AttendeeListItem(a,attendeeListBox));
 }
 
-void KOEditorDetails::setCategories(QString str)
-{
-  categoriesLabel->setText(str);
-}
-
 void KOEditorDetails::setDefaults()
 {
   attendeeRSVPButton->setChecked(true);
@@ -412,8 +391,6 @@ void KOEditorDetails::readEvent(KOEvent *event)
   
   // set the status combobox
   statusCombo->setCurrentItem(event->getStatus());
-
-  setCategories(event->getCategoriesStr());
 }
 
 void KOEditorDetails::writeEvent(KOEvent *event)
