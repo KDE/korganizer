@@ -69,7 +69,6 @@
 #include "koprefs.h"
 #include "kocore.h"
 #include "konewstuff.h"
-#include "exportwebdialog.h"
 #include "actionmanager.h"
 #include "koglobals.h"
 #include "alarmclient.h"
