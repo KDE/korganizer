@@ -108,8 +108,8 @@ void ExportWebDialog::setupGeneralPage()
 //  new QRadioButton(i18n("Day"), typeGroup);
 //  new QRadioButton(i18n("Week"), typeGroup);
   mCbMonth = new QCheckBox(i18n("Month"), typeGroup);
-  mCbEvent = new QCheckBox(i18n("Event List"), typeGroup);
-  mCbTodo = new QCheckBox(i18n("To-Do List"), typeGroup);
+  mCbEvent = new QCheckBox(i18n("Event list"), typeGroup);
+  mCbTodo = new QCheckBox(i18n("To-Do list"), typeGroup);
   mCbTodo->setChecked(true);
 
   QGroupBox *destGroup = new QVGroupBox(i18n("Destination"),mGeneralPage);
@@ -129,7 +129,7 @@ void ExportWebDialog::setupTodoPage()
 
   QVBoxLayout *topLayout = new QVBoxLayout(mTodoPage, 10);
 
-  mCbDueDates = new QCheckBox (i18n("Due Dates"),mTodoPage);
+  mCbDueDates = new QCheckBox (i18n("Due dates"),mTodoPage);
   topLayout->addWidget(mCbDueDates);
 
   mCbCategoriesTodo = new QCheckBox (i18n("Categories"),mTodoPage);
@@ -138,10 +138,10 @@ void ExportWebDialog::setupTodoPage()
   mCbAttendeesTodo = new QCheckBox (i18n("Attendees"),mTodoPage);
   topLayout->addWidget(mCbAttendeesTodo);
 
-  mCbExcludePrivateTodo = new QCheckBox (i18n("Exclude Private"),mTodoPage);
+  mCbExcludePrivateTodo = new QCheckBox (i18n("Exclude private"),mTodoPage);
   topLayout->addWidget(mCbExcludePrivateTodo);
 
-  mCbExcludeConfidentialTodo = new QCheckBox (i18n("Exclude Confidential"),mTodoPage);
+  mCbExcludeConfidentialTodo = new QCheckBox (i18n("Exclude confidential"),mTodoPage);
   topLayout->addWidget(mCbExcludeConfidentialTodo);
 
   topLayout->addStretch(1);

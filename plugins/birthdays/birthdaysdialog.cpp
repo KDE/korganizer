@@ -27,7 +27,7 @@
 #include "birthdaysdialog.moc"
 
 BirthdaysDialog::BirthdaysDialog(QWidget *parent) :
-  KDialogBase(Plain,i18n("Import birthdays from KAddressBook"),User1|Cancel,
+  KDialogBase(Plain,i18n("Import Birthdays From KAddressBook"),User1|Cancel,
               User1,parent,"bimport",true,true,i18n("Import"))
 {
   setMaximumSize(350,200);
