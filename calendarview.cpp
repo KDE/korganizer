@@ -56,6 +56,8 @@
 #include "scheduler.h"
 #include "calendarlocal.h"
 #include "categoryeditdialog.h"
+#include "kofilterview.h"
+#include "calfilter.h"
 
 #include "calendarview.h"
 #include "calendarview.moc"
@@ -79,7 +81,7 @@ CalendarView::CalendarView(QWidget *parent,const char *name)
   mSearchDialog = 0L;
   mArchiveDialog = 0;
 
-  setMinimumSize(620,400);	// make sure we don't get resized too small...
+//  setMinimumSize(620,400);	// make sure we don't get resized too small...
 
   // Create calendar object, which manages all calendar information associated
   // with this calendar view window.
@@ -118,6 +120,11 @@ CalendarView::CalendarView(QWidget *parent,const char *name)
 //  if (!filename.isEmpty()) initCalendar(filename);
 
   mTodoList   = new KOTodoView(mCalendar, mLeftFrame, "CalendarView::TodoList");
+
+  CalFilter *filter = new CalFilter;
+  mCalendar->setFilter(filter);
+  mFilterView = new KOFilterView(filter,mLeftFrame,"CalendarView::FilterView");
+  connect(mFilterView,SIGNAL(filterChanged()),SLOT(updateView()));
 
   // create the main data display views.
   mTodoView   = new KOTodoView(mCalendar, mRightFrame, "CalendarView::TodoView");
@@ -293,7 +300,7 @@ void CalendarView::readSettings()
   }
 
   sizes = config.readIntListEntry("Separator2");
-  if (sizes.count() == 2) {
+  if (sizes.count() == 3) {
     mLeftFrame->setSizes(sizes);
   }
 
@@ -634,15 +641,12 @@ void CalendarView::updateView(const QDateList selectedDates)
            (KGlobal::locale()->weekStartsMonday() ? 1 : 7)) &&
 	   (tmpList.first()->daysTo(*tmpList.last()) == 6)) {
     numView = KOAgendaView::WEEK;
-
   } else if (tmpList.count() == 1) {
     numView = KOAgendaView::DAY;
     mSaveSingleDate = *tmpList.first();
-
   } else {
     // for sanity, set viewtype to LIST for now...
     numView = KOAgendaView::LIST;
-
   }
 
   mCurrentView->selectDates(selectedDates);
@@ -1394,4 +1398,10 @@ void CalendarView::selectDates(const QDateList selectedDates)
 void CalendarView::editCategories()
 {
   mCategoryEditDialog->show();
+}
+
+void CalendarView::showFilter(bool visible)
+{
+  if (visible) mFilterView->show();
+  else mFilterView->hide();
 }

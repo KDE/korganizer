@@ -48,6 +48,7 @@ KOEvent::KOEvent()
 
   floats = TRUE; // whether or not the event has a time attached.
   mHasDueDate = false;
+  mHasStartDate = false;
 
   alarmSnoozeTime = 5;
   alarmRepeatCount = 0; // alarm disabled
@@ -304,6 +305,18 @@ void KOEvent::setHasDueDate(bool f)
 {
   if (ro) return;
   mHasDueDate = f;
+  emit eventUpdated(this);
+}
+
+bool KOEvent::hasStartDate() const
+{
+  return mHasStartDate;
+}
+
+void KOEvent::setHasStartDate(bool f)
+{
+  if (ro) return;
+  mHasStartDate = f;
   emit eventUpdated(this);
 }
 

@@ -279,7 +279,7 @@ void CalendarLocal::deleteEvent(KOEvent *anEvent)
 
 KOEvent *CalendarLocal::getEvent(const QDate &date, int eventId)
 {
-  QList<KOEvent> tmpList(getEventsForDate(date));
+  QList<KOEvent> tmpList(eventsForDate(date));
   KOEvent *anEvent = 0;
 
   for (anEvent = tmpList.first(); anEvent; anEvent = tmpList.next()) {
@@ -896,7 +896,7 @@ QDate CalendarLocal::keyToDate(long int key)
 // taking a QDate, this function will look for an eventlist in the dict
 // with that date attached -
 // BL: an the returned list should be deleted!!!
-QList<KOEvent> CalendarLocal::getEventsForDate(const QDate &qd, bool sorted)
+QList<KOEvent> CalendarLocal::eventsForDate(const QDate &qd, bool sorted)
 {
   QList<KOEvent> eventList;
   QList<KOEvent> *tmpList;
@@ -951,7 +951,7 @@ QList<KOEvent> CalendarLocal::getEventsForDate(const QDate &qd, bool sorted)
 }
 
 
-QList<KOEvent> CalendarLocal::getEvents(const QDate &start,const QDate &end,
+QList<KOEvent> CalendarLocal::events(const QDate &start,const QDate &end,
                                     bool inclusive)
 {
   QIntDictIterator<QList<KOEvent> > qdi(*mCalDict);
@@ -1039,16 +1039,16 @@ QList<KOEvent> CalendarLocal::getEvents(const QDate &start,const QDate &end,
 
 QList<KOEvent> CalendarLocal::getAllEvents()
 {
-  return getEvents(*mOldestDate,*mNewestDate);
+  return events(*mOldestDate,*mNewestDate);
 }
 
 
 // taking a QDateTime, this function will look for an eventlist in the dict
 // with that date attached.
 // this list is dynamically allocated and SHOULD BE DELETED when done with!
-QList<KOEvent> CalendarLocal::getEventsForDate(const QDateTime &qdt)
+QList<KOEvent> CalendarLocal::eventsForDate(const QDateTime &qdt)
 {
-  return getEventsForDate(qdt.date());
+  return eventsForDate(qdt.date());
 }
 
 void CalendarLocal::updateCursors(KOEvent *dEvent)
@@ -1086,7 +1086,7 @@ void CalendarLocal::updateCursors(KOEvent *dEvent)
     }
   }
 
-  // the little shit is in the recurrence list, or nonexistent.
+  // it is in the recurrence list, or nonexistent.
   if (!mRecursCursor.current())
     // there's nothing in the recurrence list...
     return;

@@ -2,7 +2,7 @@
 /****************************************************************************
 ** Form implementation generated from reading ui file './outgoingdialog_base.ui'
 **
-** Created: Sat Nov 4 13:58:55 2000
+** Created: Fri Nov 17 11:22:20 2000
 **      by:  The User Interface Compiler (uic)
 **
 ** WARNING! All changes made in this file will be lost!

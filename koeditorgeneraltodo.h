@@ -46,6 +46,7 @@ class KOEditorGeneralTodo : public QWidget
     virtual void setEnabled(bool);
     void timeStuffDisable(bool disable);
     void dueStuffDisable(bool disable);
+    void startStuffDisable(bool disable);
 
   protected:
     void initMisc();
@@ -56,11 +57,11 @@ class KOEditorGeneralTodo : public QWidget
     QGroupBox               *timeGroupBox;
     QLabel                  *summaryLabel;
     QLineEdit               *summaryEdit;
-    QLabel                  *startLabel;
+    QLabel                  *mStartLabel;
     QLabel                  *endLabel;
-    KDateEdit               *startDateEdit;
+    KDateEdit               *mStartDateEdit;
     KDateEdit               *endDateEdit;
-    KTimeEdit               *startTimeEdit;
+    KTimeEdit               *mStartTimeEdit;
     KTimeEdit               *endTimeEdit;
     QCheckBox               *noTimeButton;
     QLabel                  *freeTimeLabel;
@@ -70,12 +71,18 @@ class KOEditorGeneralTodo : public QWidget
     QCheckBox               *privateButton;
     QPushButton             *categoriesButton;
     QLabel                  *categoriesLabel;
-  
+
     // variables for the todo stuff
-    QCheckBox               *noDueButton;
+    QCheckBox               *mNoDueCheck;
+    QLabel                  *mDueLabel;
+    KDateEdit               *mDueDateEdit;
+    KTimeEdit               *mDueTimeEdit;
+    
     QCheckBox               *completedButton;
     QLabel                  *priorityLabel;
     QComboBox               *priorityCombo;
+
+    QCheckBox               *mNoStartCheck;
   
     // variables to hold stuff temporarily.
     QString alarmSound;

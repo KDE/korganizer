@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Form interface generated from reading ui file './outgoingdialog_base.ui'
 **
-** Created: Tue Oct 31 03:34:16 2000
+** Created: Fri Nov 17 11:01:30 2000
 **      by:  The User Interface Compiler (uic)
 **
 ** WARNING! All changes made in this file will be lost!

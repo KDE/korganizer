@@ -187,6 +187,11 @@ public:
   /** sets the event's hasDueDate value. */
   void setHasDueDate(bool f);
 
+  /** returns TRUE or FALSE depending on whether the todo has a start date */
+  bool hasStartDate() const;
+  /** sets the event's hasStartDate value. */
+  void setHasStartDate(bool f);
+
   /** sets the event's lengthy description. */
   void setDescription(const QString &description);
   /** sets the event's lengthy description. */
@@ -489,6 +494,7 @@ protected:
   QDateTime dtDue;                     // due date of todo
   
   bool mHasDueDate;                    // if todo has associated due date
+  bool mHasStartDate;                  // if todo has associated start date
 
   QString description;                 // a detailed description of the event
   QString summary;                     // summary of event

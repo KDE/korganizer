@@ -58,11 +58,11 @@ class CalendarLocal : public CalObject {
     KOEvent *getEvent(const QString &UniqueStr);
     /** builds and then returns a list of all events that match for the
      * date specified. useful for dayView, etc. etc. */
-    QList<KOEvent> getEventsForDate(const QDate &date, bool sorted = FALSE);
-    QList<KOEvent> getEventsForDate(const QDateTime &qdt);
+    QList<KOEvent> eventsForDate(const QDate &date, bool sorted = FALSE);
+    QList<KOEvent> eventsForDate(const QDateTime &qdt);
     /** Get events in a range of dates. If inclusive is set to true, only events
      * are returned, which are completely included in the range. */
-    QList<KOEvent> getEvents(const QDate &start,const QDate &end,
+    QList<KOEvent> events(const QDate &start,const QDate &end,
                              bool inclusive=false);
     /** Return all events in calendar */
     QList<KOEvent> getAllEvents();

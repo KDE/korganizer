@@ -35,6 +35,7 @@ class ArchiveDialog;
 class OutgoingDialog;
 class IncomingDialog;
 class CategoryEditDialog;
+class KOFilterView;
 
 /**
   This is the main calendar widget. It provides the different vies on t he
@@ -289,6 +290,8 @@ class CalendarView : public QWidget
     void schedule_declinecounter();
 
     void editCategories();
+
+    void showFilter(bool visible);
       
   protected slots:
     /** Move the current view date to today */
@@ -342,6 +345,8 @@ class CalendarView : public QWidget
     QWidgetStack *mRightFrame;
   
     KDateNavigator *mDateNavigator;       // widget showing small month view.
+    
+    KOFilterView *mFilterView;
   
     KOAgendaView   *mAgendaView;          // "week" view
     KOListView     *mListView;            // "list/day" view

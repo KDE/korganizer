@@ -139,13 +139,10 @@ void KOrganizer::readSettings()
 
   KConfig *config(kapp->config());
 
-  int windowWidth = 600;
-  int windowHeight = 400;
-	
   config->setGroup("General");
 
-  windowWidth = config->readNumEntry("Width");
-  windowHeight = config->readNumEntry("Height");
+  int windowWidth = config->readNumEntry("Width",600);
+  int windowHeight = config->readNumEntry("Height",400);
   resize(windowWidth,windowHeight);
 
   mRecent->loadEntries(config);
@@ -366,6 +363,11 @@ void KOrganizer::initActions()
   mStatusBarAction = KStdAction::showStatusbar(this,SLOT(toggleStatusBar()),
                                                actionCollection());
 
+  mFilterViewAction = new KToggleAction(i18n("Show Filter"),0,this,
+                                        SLOT(toggleFilterView()),
+                                        actionCollection(),
+                                        "show_filter");
+
   KStdAction::configureToolbars(this, SLOT(configureToolbars()),
                                 actionCollection());
   KStdAction::preferences(mCalendarView, SLOT(edit_options()),
@@ -379,7 +381,13 @@ void KOrganizer::initActions()
   
   createGUI();
 
-  applyMainWindowSettings(kapp->config());
+  KConfig *config = kapp->config();
+
+  applyMainWindowSettings(config);
+
+  config->setGroup("Settings");
+  mFilterViewAction->setChecked(config->readBoolEntry("Filter Visible",false));
+  toggleFilterView();
 
   mStatusBarAction->setChecked(!statusBar()->isHidden());
 
@@ -666,7 +674,12 @@ void KOrganizer::configureToolbars()
 
 void KOrganizer::saveOptions()
 {
-  saveMainWindowSettings(kapp->config());
+  KConfig *config = kapp->config();
+
+  saveMainWindowSettings(config);
+
+  config->setGroup("Settings");
+  config->writeEntry("Filter Visible",mFilterViewAction->isChecked());
 }
 
 bool KOrganizer::openURL( const KURL &url )
@@ -836,6 +849,7 @@ void KOrganizer::makeActive()
                                  "Please save it before activating."));
   } else if (mURL.isLocalFile()) {
     KConfig *config(kapp->config());
+    config->setGroup("General");
     config->writeEntry("Active Calendar",mFile);
     config->sync();
     if (!kapp->dcopClient()->send("alarmd","ad","reloadCal()","")) {
@@ -880,6 +894,12 @@ void KOrganizer::toggleStatusBar()
      statusBar()->show();
   else
      statusBar()->hide();
+}
+
+void KOrganizer::toggleFilterView()
+{
+  bool visible = mFilterViewAction->isChecked();
+  mCalendarView->showFilter(visible);
 }
 
 void KOrganizer::saveProperties(KConfig *config)

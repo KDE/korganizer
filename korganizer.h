@@ -157,6 +157,8 @@ class KOrganizer : public KMainWindow
 
     void toggleStatusBar();
 
+    void toggleFilterView();
+
     void statusBarPressed(int);
     
     /** called by the autoSaveTimer to automatically save the calendar */
@@ -205,6 +207,7 @@ class KOrganizer : public KMainWindow
     KToggleAction *mToolBarToggleAction;
 
     KToggleAction *mStatusBarAction;
+    KToggleAction *mFilterViewAction;
 
     // status bar ids
     enum { ID_GENERAL, ID_MESSAGES_IN, ID_MESSAGES_OUT };

@@ -54,8 +54,9 @@
       <Action name="declinecounter"/>
     </Menu>
     <Menu name="settings"><text>&amp;Settings</text>
-      <Action name="edit_categories"/>
       <Actionlist name="toolbartoggles" append="show_merge"/>
+      <Action name="show_filter" append="show_merge"/>
+      <Action name="edit_categories"/>
     </Menu>
   </MenuBar>
 

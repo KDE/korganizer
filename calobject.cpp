@@ -28,6 +28,7 @@
 #include "vcalformat.h"
 #include "icalformat.h"
 #include "koexceptions.h"
+#include "calfilter.h"
 
 #include "calobject.h"
 #include "calobject.moc"
@@ -52,6 +53,9 @@ CalObject::CalObject()
 {
   mFormat = new VCalFormat(this);
   mICalFormat = new ICalFormat(this);
+
+  mFilter = new CalFilter;
+  mFilter->setEnabled(false);
 
   struct passwd *pwent;
   uid_t userId;
@@ -351,4 +355,37 @@ void CalObject::readHolidayFileName()
   mHolidayfile = locate("appdata",holidays);
 
 //  kdDebug() << "holifile: " << mHolidayfile << endl;
+}
+
+void CalObject::setFilter(CalFilter *filter)
+{
+  delete mFilter;
+  mFilter = filter;
+}
+
+CalFilter *CalObject::filter()
+{
+  return mFilter;
+}
+
+QList<KOEvent> CalObject::getEventsForDate(const QDate &date,bool sorted)
+{
+  QList<KOEvent> el = eventsForDate(date,sorted);
+  mFilter->apply(&el);
+  return el;
+}
+
+QList<KOEvent> CalObject::getEventsForDate(const QDateTime &qdt)
+{
+  QList<KOEvent> el = eventsForDate(qdt);
+  mFilter->apply(&el);
+  return el;
+}
+
+QList<KOEvent> CalObject::getEvents(const QDate &start,const QDate &end,
+                                    bool inclusive)
+{
+  QList<KOEvent> el = events(start,end,inclusive);
+  mFilter->apply(&el);
+  return el;
 }

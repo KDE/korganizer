@@ -16,6 +16,7 @@
 class KConfig;
 class VCalDrag;
 class ICalFormat;
+class CalFilter;
 
 // TODO: This class should be renamed to Calendar
 /**
@@ -103,25 +104,48 @@ class CalObject : public QObject {
     virtual void deleteEvent(const QDate &date, int eventId) = 0;
     /** Delete event from calendar */
     virtual void deleteEvent(KOEvent *) = 0;
-    /** retrieves an event from the calendar, based on a date and an evenId.
-     * faster than specifying an eventId alone. 
-     */
+
+    /**
+      retrieves an event from the calendar, based on a date and an evenId.
+      faster than specifying an eventId alone.
+    */
     virtual KOEvent *getEvent(const QDate &date, int eventId) = 0;
     /** retrieves an event from the calendar on the basis of ID alone. */
     virtual KOEvent *getEvent(int eventId) = 0;
     /** retrieves an event on the basis of the unique string ID. */
     virtual KOEvent *getEvent(const QString &UniqueStr) = 0;
-    /** builds and then returns a list of all events that match for the
-     * date specified. useful for dayView, etc. etc. */
-    virtual QList<KOEvent> getEventsForDate(const QDate &date, bool sorted = FALSE) = 0;
-    /** Get events, which occur on the given date */
-    virtual QList<KOEvent> getEventsForDate(const QDateTime &qdt) = 0;
-    /** Get events in a range of dates. If inclusive is set to true, only events
-     * are returned, which are completely included in the range. */
-    virtual QList<KOEvent> getEvents(const QDate &start,const QDate &end,
-                             bool inclusive=false) = 0;
-    /** Return all events in calendar */
+    /**
+      Builds and then returns a list of all events that match for the
+      date specified. useful for dayView, etc. etc.
+      The calendar filter is applied.
+    */
+    QList<KOEvent> getEventsForDate(const QDate &date,bool sorted=false);
+    /**
+      Get events, which occur on the given date.
+      The calendar filter is applied.
+    */
+    QList<KOEvent> getEventsForDate(const QDateTime &qdt);
+    /**
+      Get events in a range of dates. If inclusive is set to true, only events
+      are returned, which are completely included in the range.
+      The calendar filter is applied.
+    */
+    QList<KOEvent> getEvents(const QDate &start,const QDate &end,
+                             bool inclusive=false);
+    /**
+      Return all events in calendar
+    */
     virtual QList<KOEvent> getAllEvents() = 0;
+  
+    /**
+      Set calendar filter, which filters events for the getEvents* functions.
+      CalObject takes ownership of the filter.
+    */
+    void setFilter(CalFilter *);
+    /**
+      Return calendar filter.
+    */
+    CalFilter *filter();
   
     /*
      * returns a QString with the text of the holiday (if any) that falls
@@ -174,6 +198,22 @@ class CalObject : public QObject {
     void updateConfig();
    
   protected:
+    /**
+      Get events, which occur on the given date.
+    */
+    virtual QList<KOEvent> eventsForDate(const QDate &date,
+                                         bool sorted=false) = 0;
+    /**
+      Get events, which occur on the given date.
+    */
+    virtual QList<KOEvent> eventsForDate(const QDateTime &qdt) = 0;
+    /**
+      Get events in a range of dates. If inclusive is set to true, only events
+      are returned, which are completely included in the range.
+    */
+    virtual QList<KOEvent> events(const QDate &start,const QDate &end,
+                                  bool inclusive=false) = 0;
+
     /** Read name of holidayfile from config object */
     void readHolidayFileName();
   
@@ -187,6 +227,8 @@ class CalObject : public QObject {
     QString mOwnerEmail;   // email address of the owner
     int mTimeZone;         // timezone OFFSET from GMT (MINUTES)
     bool mDialogsOn;       // display various GUI dialogs?
+
+    CalFilter *mFilter;
 };
   
 #endif

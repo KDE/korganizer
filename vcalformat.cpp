@@ -378,6 +378,13 @@ VObject *VCalFormat::eventToVTodo(const KOEvent *anEvent)
     addPropValue(vtodo, VCDueProp, tmpStr.ascii());
   }
 
+  // start date
+  if (anEvent->hasStartDate()) {
+    tmpStr = qDateTimeToISO(anEvent->getDtStart(),
+	                    !anEvent->doesFloat());
+    addPropValue(vtodo, VCDTstartProp, tmpStr.ascii());
+  }
+
   // creation date
   tmpStr = qDateTimeToISO(anEvent->dateCreated);
   addPropValue(vtodo, VCDCreatedProp, tmpStr.ascii());
@@ -863,6 +870,16 @@ KOEvent *VCalFormat::VTodoToEvent(VObject *vtodo)
   } else {
     anEvent->setHasDueDate(false);
   }
+
+  // start time
+  if ((vo = isAPropertyOf(vtodo, VCDTstartProp)) != 0) {
+    anEvent->setDtStart(ISOToQDateTime(s = fakeCString(vObjectUStringZValue(vo))));
+    //    kdDebug() << "s is " << //	  s << ", ISO is " << ISOToQDateTime(s = fakeCString(vObjectUStringZValue(vo))).toString() << endl;
+    deleteStr(s);
+    anEvent->setHasStartDate(true);
+  } else {
+    anEvent->setHasStartDate(false);
+  }  
 
   // related todo  
   if ((vo = isAPropertyOf(vtodo, VCRelatedToProp)) != 0) {
