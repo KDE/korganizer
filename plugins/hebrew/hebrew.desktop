@@ -2,5 +2,9 @@
 Encoding=UTF-8
 X-KDE-Library=libkorg_hebrew
 Name=Jewish calendar plugin
+Name[es]=Plugin de calendario judío
+Name[hu]=Bővítőmodul a zsidó naptár kezeléséhez
+Name[sk]=Plugin Židovského kalendára
+Name[zh_CN]=犹太教日历插件
 Type=Service
 ServiceTypes=Calendar/Plugin,Calendar/Decoration
