@@ -1707,3 +1707,8 @@ void CalendarView::purgeCompleted()
     updateView();
   }
 }
+
+void CalendarView::slotCalendarChanged()
+{
+  kdDebug() << "CalendarView::slotCalendarChanged()" << endl;
+}

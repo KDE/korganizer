@@ -363,6 +363,8 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     void processIncidenceSelection( Incidence * );
 
     void purgeCompleted();
+
+    void slotCalendarChanged();
     
   protected slots:
     /** Select a view or adapt the current view to display the specified dates. */

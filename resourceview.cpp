@@ -43,8 +43,15 @@ ResourceItem::ResourceItem( ResourceCalendar *resource, ResourceView *view,
 
 void ResourceItem::stateChange( bool active )
 {
-  mResource->open();
+  if ( active ) {
+    mResource->open();
+    mResource->load();
+  } else {
+    mResource->sync();
+    mResource->close();
+  }
   mResource->setActive( active );
+
   mView->emitResourcesChanged();
 }
 

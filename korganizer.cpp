@@ -130,6 +130,11 @@ KOrganizer::KOrganizer( bool document, const char *name )
     }
 
     mCalendarView = new CalendarView( calendar, this, "KOrganizer::CalendarView" );
+
+    connect( calendar, SIGNAL( calendarChanged() ),
+             mCalendarView, SLOT( updateView() ) );
+    connect( calendar, SIGNAL( calendarChanged() ),
+             mCalendarView, SLOT( slotCalendarChanged() ) );
   }
 
   mCalendar->setOwner( KOPrefs::instance()->fullName() );
