@@ -61,7 +61,7 @@ void History::redo()
 {
   Entry *entry = mRedoEntry.current();
   if ( !entry ) return;
-  
+
   emit undoAvailable( entry->text() );
 
   entry->redo();
@@ -69,7 +69,7 @@ void History::redo()
 
   mUndoEntry = mRedoEntry;
   ++mRedoEntry;
-  
+
   entry = mRedoEntry.current();
   if ( entry ) emit redoAvailable( entry->text() );
   else emit redoAvailable( QString::null );
@@ -194,14 +194,16 @@ History::EntryEdit::~EntryEdit()
 void History::EntryEdit::undo()
 {
   Incidence *incidence = mCalendar->incidence( mNewIncidence->uid() );
-  mCalendar->deleteIncidence( incidence );
+  if ( incidence )
+      mCalendar->deleteIncidence( incidence );
   mCalendar->addIncidence( mOldIncidence->clone() );
 }
 
 void History::EntryEdit::redo()
 {
   Incidence *incidence = mCalendar->incidence( mOldIncidence->uid() );
-  mCalendar->deleteIncidence( incidence );
+  if ( incidence )
+      mCalendar->deleteIncidence( incidence );
   mCalendar->addIncidence( mNewIncidence->clone() );
 }
 
