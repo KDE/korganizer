@@ -101,7 +101,7 @@ void KOPrefs::usrSetDefaults()
 
   KEMailSettings settings;
   mName = settings.getSetting(KEMailSettings::RealName);
-  mEmail = settings.getSetting(KEMailSettings::RealName);
+  mEmail = settings.getSetting(KEMailSettings::EmailAddress);
   fillMailDefaults();
 
   mMonthViewFont = mDefaultMonthViewFont;
