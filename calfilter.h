@@ -3,6 +3,10 @@
 // CalFilter - filter for calendar items
 //
 
+#ifndef _CALFILTER_H
+#define _CALFILTER_H
+
+
 #include <qlist.h>
 
 #include "koevent.h"
@@ -59,3 +63,6 @@ class CalFilter {
     
     bool mEnabled;
 };
+
+
+#endif /*  _CALFILTER_H  */
