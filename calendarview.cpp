@@ -54,6 +54,7 @@
 #include <kdirwatch.h>
 
 #include <libkcal/vcaldrag.h>
+#include <libkcal/icaldrag.h>
 #include <libkcal/icalformat.h>
 #include <libkcal/vcalformat.h>
 #include <libkcal/scheduler.h>
@@ -646,8 +647,9 @@ void CalendarView::edit_paste()
   QDate date = mNavigator->selectedDates().first();
 
   DndFactory factory( mCalendar );
-  Event *pastedEvent = factory.pasteEvent(date);
-  changeEventDisplay(pastedEvent, KOGlobals::EVENTADDED);
+  Event *pastedEvent = factory.pasteEvent( date );
+
+  changeEventDisplay( pastedEvent, KOGlobals::EVENTADDED );
 }
 
 void CalendarView::edit_options()
@@ -1439,7 +1441,7 @@ void CalendarView::processIncidenceSelection( Incidence *incidence )
 void CalendarView::checkClipboard()
 {
 #ifndef KORG_NODND
-  if (VCalDrag::canDecode(QApplication::clipboard()->data())) {
+  if (ICalDrag::canDecode(QApplication::clipboard()->data())) {
     kdDebug() << "CalendarView::checkClipboard() true" << endl;
     emit pasteEnabled(true);
   } else {
