@@ -36,6 +36,7 @@
 #include "koincidenceeditor.h"
 
 class QWidgetStack;
+class SaveTemplateDialog;
 
 using namespace KCal;
 
@@ -56,18 +57,29 @@ class KOEventEditor : public KOIncidenceEditor
 
     void reload();
 
-    /** Clear eventwin for new event, and preset the dates and times with hint */
-    void newEvent( QDateTime from, QDateTime to, bool allDay = FALSE );
-
-    /** Edit an existing event. */
+    /**
+      Clear eventwin for new event, and preset the dates and times with hint
+    */
+    void newEvent( QDateTime from, QDateTime to, bool allDay = false );
+    /**
+      Edit an existing event.
+    */
     void editEvent( Event * );
 
-    /** Set widgets to default values */
-    void setDefaults(QDateTime from,QDateTime to,bool allDay);
-    /** Read event object and setup widgets accordingly */
-    void readEvent(Event *);
-    /** Write event settings to event object */
-    void writeEvent(Event *);
+    /**
+      Set widgets to default values
+    */
+    void setDefaults( QDateTime from, QDateTime to, bool allDay );
+
+    /**
+      Read event object and setup widgets accordingly. If tmpl is true, the
+      event is read as template, i.e. the time and date information isn't set.
+    */
+    void readEvent( Event *, bool tmpl = false );
+    /**
+      Write event settings to event object
+    */
+    void writeEvent( Event * );
 
   signals:
     void eventAdded(Event *);
@@ -76,11 +88,15 @@ class KOEventEditor : public KOIncidenceEditor
     void eventDeleted();
     void deleteAttendee(Incidence *);
 
-
   protected slots:
-    void slotDefault();
-    void slotUser1();
+    void loadDefaults();
+    void deleteEvent();
     void enableRecurrence(bool);
+
+    void slotLoadTemplate();
+    void slotSaveTemplate();
+
+    void saveTemplate( const QString & );
 
   protected:
     void setupGeneral();

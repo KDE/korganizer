@@ -264,15 +264,17 @@ void KOEditorGeneralEvent::setDefaults(QDateTime from,QDateTime to,bool allDay)
   mRecursButton->setChecked(false);
 }
 
-void KOEditorGeneralEvent::readEvent(Event *event)
+void KOEditorGeneralEvent::readEvent( Event *event, bool tmpl )
 {
   QString tmpStr;
 
-  // the rest is for the events only
-  mNoTimeButton->setChecked(event->doesFloat());
-  timeStuffDisable(event->doesFloat());
+  if ( !tmpl ) {
+    // the rest is for the events only
+    mNoTimeButton->setChecked(event->doesFloat());
+    timeStuffDisable(event->doesFloat());
 
-  setDateTimes(event->dtStart(),event->dtEnd());
+    setDateTimes(event->dtStart(),event->dtEnd());
+  }
 
   mRecursButton->setChecked(event->recurrence()->doesRecur());
 

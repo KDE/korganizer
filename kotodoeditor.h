@@ -23,7 +23,6 @@
 */
 #ifndef _KOTODOEDITOR_H
 #define _KOTODOEDITOR_H
-// $Id$	
 
 #include <libkcal/calendar.h>
 
@@ -81,8 +80,12 @@ class KOTodoEditor : public KOIncidenceEditor
     void todoDeleted();
 
   protected slots:
-    void slotDefault();
-    void slotUser1();
+    void loadDefaults();
+    void deleteTodo();
+
+    void slotLoadTemplate();  
+    void slotSaveTemplate();
+    void saveTemplate( const QString & );
   
   protected:
     void setupGeneral();

@@ -58,8 +58,11 @@ class KOEditorGeneralEvent : public KOEditorGeneral
 
     /** Set widgets to default values */
     void setDefaults(QDateTime from,QDateTime to,bool allDay);
-    /** Read event object and setup widgets accordingly */
-    void readEvent(Event *);
+    /**
+      Read event object and setup widgets accordingly. If templ is true, the
+      event is read as template, i.e. the time and date information isn't set.
+    */
+    void readEvent( Event *, bool tmpl = false );
     /** Write event settings to event object */
     void writeEvent(Event *);
 

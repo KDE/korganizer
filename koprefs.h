@@ -151,6 +151,9 @@ class KOPrefs : public KPimPrefs
     int mIMIPAutoFreeBusy;
     int mIMIPAutoFreeBusyReply;
 
+    QStringList mTodoTemplates;
+    QStringList mEventTemplates;
+
   private:
     QDict<QColor> mCategoryColors;
     QColor mDefaultCategoryColor;

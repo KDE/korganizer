@@ -21,9 +21,8 @@
     with any edition of Qt, and distribute the resulting executable,
     without including the source code for Qt in the source distribution.
 */
-#ifndef _SEARCHDIALOG_H
-#define _SEARCHDIALOG_H
-// $Id$
+#ifndef SEARCHDIALOG_H
+#define SEARCHDIALOG_H
 
 #include <qregexp.h>
 
@@ -54,7 +53,8 @@ class SearchDialog : public KDialogBase
   
   protected slots:
     void doSearch();
-  void searchTextChanged( const QString &_text );	
+    void searchTextChanged( const QString &_text );	
+
   signals:
     void showEventSignal(Event *);
     void editEventSignal(Event *);

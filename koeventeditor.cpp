@@ -21,8 +21,6 @@
     without including the source code for Qt in the source distribution.
 */
 
-// $Id$
-
 #include <qtooltip.h>
 #include <qframe.h>
 #include <qpixmap.h>
@@ -34,8 +32,10 @@
 #include <klocale.h>
 #include <kmessagebox.h>
 
-#include "koprefs.h"
 #include <libkdepim/categoryselectdialog.h>
+#include <libkcal/calendarlocal.h>
+
+#include "koprefs.h"
 
 #include "koeventeditor.h"
 #include "koeventeditor.moc"
@@ -172,11 +172,9 @@ void KOEventEditor::newEvent( QDateTime from, QDateTime to, bool allDay )
 
   mEvent = 0;
   setDefaults(from,to,allDay);
-
-  enableButton(User1,false);
 }
 
-void KOEventEditor::slotDefault()
+void KOEventEditor::loadDefaults()
 {
   int fmt = KOPrefs::instance()->mStartTime;
   
@@ -213,7 +211,7 @@ bool KOEventEditor::processInput()
   return true;
 }
 
-void KOEventEditor::slotUser1()
+void KOEventEditor::deleteEvent()
 {
   kdDebug() << "Delete event" << endl;
   if (mEvent) {
@@ -251,18 +249,18 @@ void KOEventEditor::setDefaults(QDateTime from, QDateTime to, bool allDay)
 #endif
 }
 
-void KOEventEditor::readEvent(Event *event)
+void KOEventEditor::readEvent( Event *event, bool tmpl )
 {
-  mGeneral->readEvent(event);
-  mDetails->readEvent(event);
+  mGeneral->readEvent( event, tmpl );
+  mDetails->readEvent( event );
 #ifndef KORG_NORECURRENCE
-  mRecurrence->readEvent(event);
+  mRecurrence->readEvent( event );
 
-  enableRecurrence(event->recurrence()->doesRecur());
+  enableRecurrence( event->recurrence()->doesRecur() );
 #endif
 
   // categories
-  mCategoryDialog->setSelected(event->categories());
+  mCategoryDialog->setSelected( event->categories() );
 }
 
 void KOEventEditor::writeEvent(Event *event)
@@ -302,3 +300,37 @@ int KOEventEditor::msgItemDelete()
       i18n("KOrganizer Confirmation"),i18n("Delete"));
 }
 
+void KOEventEditor::slotLoadTemplate()
+{
+  CalendarLocal cal;
+  Event *event = new Event;
+  QString templateName = loadTemplate( &cal, event->type(),
+                                       KOPrefs::instance()->mEventTemplates );
+  delete event;
+  if ( templateName.isEmpty() ) {
+    return;
+  }
+
+  QPtrList<Event> events = cal.getAllEvents();
+  event = events.first();
+  if ( !event ) {
+    KMessageBox::error( this,
+        i18n("Template does not contain a valid Event.")
+        .arg( templateName ) );
+  } else {
+    kdDebug() << "KOEventEditor::slotLoadTemplate(): readTemplate" << endl;
+    readEvent( event, true );
+  }
+}
+
+void KOEventEditor::slotSaveTemplate()
+{
+  createSaveTemplateDialog( SaveTemplateDialog::EventType );
+}
+
+void KOEventEditor::saveTemplate( const QString &templateName )
+{
+  Event *event = new Event;
+  writeEvent( event );
+  saveAsTemplate( event, templateName );
+}

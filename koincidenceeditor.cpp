@@ -21,19 +21,22 @@
     without including the source code for Qt in the source distribution.
 */
 
-// $Id$
-
 #include <qtooltip.h>
 #include <qframe.h>
 #include <qpixmap.h>
 #include <qlayout.h>
 #include <qwidgetstack.h>
 #include <qdatetime.h>
+#include <qinputdialog.h>
 
 #include <kdebug.h>
 #include <klocale.h>
+#include <kstandarddirs.h>
+#include <kmessagebox.h>
 
 #include <libkdepim/categoryselectdialog.h>
+#include <libkcal/calendarlocal.h>
+#include <libkcal/icalformat.h>
 
 #include "koprefs.h"
 
@@ -43,16 +46,19 @@
 KOIncidenceEditor::KOIncidenceEditor( const QString &caption, 
                                       Calendar *calendar, QWidget *parent ) :
   KDialogBase( Tabbed, caption, Ok | Apply | Cancel | Default | User1, Ok,
-               parent, 0, false, false, i18n("Delete") )
+               parent, 0, false, false, i18n("Save as Template...") ),
+  mSaveTemplateDialog( 0 )
 {
   mCalendar = calendar;
+
+  setButtonText( Default, i18n("Template...") );
 
   mCategoryDialog = new CategorySelectDialog( KOPrefs::instance(), this );
 
   connect(mCategoryDialog,SIGNAL(editCategories()),SIGNAL(editCategories()));
 
-  // Clicking cancel exits the dialog without saving
-  connect(this,SIGNAL(cancelClicked()),SLOT(slotCancel()));
+  connect( this, SIGNAL( defaultClicked() ), SLOT( slotLoadTemplate() ) );
+  connect( this, SIGNAL( user1Clicked() ), SLOT( slotSaveTemplate() ) );
 }
 
 KOIncidenceEditor::~KOIncidenceEditor()
@@ -89,4 +95,66 @@ void KOIncidenceEditor::updateCategoryConfig()
 void KOIncidenceEditor::slotCancel()
 {
   reject();
+}
+
+void KOIncidenceEditor::slotLoadTemplate()
+{
+  kdDebug() << "KOIncidenceEditor::loadTemplate()" << endl;
+}
+
+void KOIncidenceEditor::slotSaveTemplate()
+{
+  kdDebug() << "KOIncidenceEditor::saveTemplate()" << endl;
+}
+
+void KOIncidenceEditor::createSaveTemplateDialog( SaveTemplateDialog::IncidenceType type )
+{
+  if ( !mSaveTemplateDialog ) {
+    mSaveTemplateDialog = new SaveTemplateDialog( type, this );
+    connect( mSaveTemplateDialog, SIGNAL( templateSelected( const QString & ) ),
+             SLOT( saveTemplate( const QString & ) ) );
+  }
+  mSaveTemplateDialog->show();
+  mSaveTemplateDialog->raise();
+}
+
+void KOIncidenceEditor::saveAsTemplate( Incidence *incidence,
+                                        const QString &templateName )
+{
+  if ( !incidence || templateName.isEmpty() ) return;
+
+  QString fileName = "templates/" + incidence->type();
+  fileName.append( "/" + templateName );
+  fileName = locateLocal( "appdata", fileName );
+
+  CalendarLocal cal;
+  cal.addIncidence( incidence );
+  ICalFormat format;
+  format.save( &cal, fileName );
+}
+
+QString KOIncidenceEditor::loadTemplate( Calendar *cal, const QString &type,
+                                      const QStringList &templates )
+{
+  QString templateName = QInputDialog::getItem( i18n("Load Template"),
+      i18n("Select a template to load."), templates );
+  if ( templateName.isEmpty() ) return QString::null;
+
+  QString fileName = locateLocal( "appdata", "templates/" + type + "/" +
+                                  templateName );
+
+  if ( fileName.isEmpty() ) {
+    KMessageBox::error( this, i18n("Can't find template '%1'.")
+                              .arg( fileName ) );
+    return QString::null;
+  } else {
+    ICalFormat format;
+    if ( !format.load( cal, fileName ) ) {
+      KMessageBox::error( this, i18n("Error loading template file '%1'.")
+                                .arg( fileName ) );
+      return QString::null;
+    }
+  }
+
+  return templateName;
 }

@@ -152,6 +152,11 @@ KOPrefs::KOPrefs() :
   addItemInt("IMIP auto insert reply",&mIMIPAutoInsertReply,neverAuto);
   addItemInt("IMIP auto FreeBusy",&mIMIPAutoFreeBusy,neverAuto);
   addItemInt("IMIP auto save FreeBusy",&mIMIPAutoFreeBusyReply,neverAuto);
+
+  KPrefs::setCurrentGroup( "Editors" );
+  
+  addItemStringList( "EventTemplates", &mEventTemplates );
+  addItemStringList( "TodoTemplates", &mTodoTemplates );
 }
 
 

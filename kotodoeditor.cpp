@@ -33,6 +33,7 @@
 #include <kmessagebox.h>
 
 #include <libkdepim/categoryselectdialog.h>
+#include <libkcal/calendarlocal.h>
 
 #include "koprefs.h"
 
@@ -133,11 +134,9 @@ void KOTodoEditor::newTodo(QDateTime due,Todo *relatedTodo,bool allDay)
 
   mTodo = 0;
   setDefaults(due,relatedTodo,allDay);
-
-  enableButton(User1,false);
 }
 
-void KOTodoEditor::slotDefault()
+void KOTodoEditor::loadDefaults()
 {
   setDefaults(QDateTime::currentDateTime().addDays(7),0,false);
 }
@@ -168,7 +167,7 @@ bool KOTodoEditor::processInput()
   return true;
 }
 
-void KOTodoEditor::slotUser1()
+void KOTodoEditor::deleteTodo()
 {
   if (mTodo) {
     if (KOPrefs::instance()->mConfirm) {
@@ -245,4 +244,38 @@ void KOTodoEditor::modified (int modification)
     mCategoryDialog->setSelected (mTodo->categories ());
   mGeneral->modified (mTodo, modification);
 
+}
+
+void KOTodoEditor::slotLoadTemplate()
+{
+  CalendarLocal cal;
+  Todo *todo = new Todo;
+  QString templateName = loadTemplate( &cal, todo->type(),
+                                       KOPrefs::instance()->mTodoTemplates );
+  delete todo;
+  if ( templateName.isEmpty() ) {
+    return;
+  }
+
+  QPtrList<Todo> todos = cal.getTodoList();
+  todo = todos.first();
+  if ( !todo ) {
+    KMessageBox::error( this,
+        i18n("Template '%1' does not contain a valid Todo.")
+        .arg( templateName ) );
+  } else {
+    readTodo( todo );
+  }
+}
+
+void KOTodoEditor::slotSaveTemplate()
+{
+  createSaveTemplateDialog( SaveTemplateDialog::TodoType );
+}
+
+void KOTodoEditor::saveTemplate( const QString &templateName )
+{
+  Todo *todo = new Todo;
+  writeTodo( todo );
+  saveAsTemplate( todo, templateName );
 }

@@ -22,13 +22,13 @@
 */
 #ifndef KOINCIDENCEEDITOR_H
 #define KOINCIDENCEEDITOR_H
-// $Id$	
 
 #include <kdialogbase.h>
 
 #include <libkcal/calendar.h>
 
 #include "koeditordetails.h"
+#include "savetemplatedialog.h"
 
 class QDateTime;
 class CategorySelectDialog;
@@ -66,8 +66,19 @@ class KOIncidenceEditor : public KDialogBase
     void slotOk();
     void slotCancel();
 
+    virtual void slotLoadTemplate();
+    virtual void slotSaveTemplate();
+    
+    virtual void saveTemplate( const QString & ) = 0;
+
   protected:
     void setupAttendeesTab();
+
+    void createSaveTemplateDialog( SaveTemplateDialog::IncidenceType );
+
+    QString loadTemplate( Calendar *cal, const QString &type,
+                          const QStringList &templates );
+    void saveAsTemplate( Incidence *, const QString &name );
 
     /**
       Process user input and create or update event. Returns false if input is invalid.
@@ -79,6 +90,9 @@ class KOIncidenceEditor : public KDialogBase
     CategorySelectDialog *mCategoryDialog;
 
     KOEditorDetails *mDetails;
+
+  private:
+    SaveTemplateDialog *mSaveTemplateDialog;
 };
 
 #endif
