@@ -252,21 +252,12 @@ void KOTodoViewItem::paintCell(QPainter *p, const QColorGroup &cg, int column, i
     p->save();
     int progress = (int)(( (width-6)*mTodo->percentComplete())/100.0 + 0.5);
 
-    // Paint the parts of the progress bar and the visible background separately.
-    // This can reduce at least some flicker when resizing the column.
+    p->fillRect( 0, 0, width, height(), _cg.base() ); // background
     p->setPen( KGlobalSettings::textColor() );  //border
-    p->setBrush( Qt::NoBrush );
-//    p->setBrush( KGlobalSettings::baseColor() );  //filling
+    p->setBrush( KGlobalSettings::baseColor() );  //filling
     p->drawRect( 2, 2, width-4, height()-4);
-    p->fillRect( 3, 3, progress, height()-6,
+    p->fillRect( 3, 3, progress, height()-6, 
         KGlobalSettings::highlightColor() );
-    p->fillRect( 3+progress, 3, width-6-progress, height()-6,
-        KGlobalSettings::baseColor() );
-    p->fillRect( 0, 0, width, 2, _cg.base() );
-    p->fillRect( 0, 2, 2, height()-2, _cg.base() );
-    p->fillRect( 0, height()-2, width, 2, _cg.base() );
-    p->fillRect( width-2, 2, 2, height()-4, _cg.base() );
-
     p->restore();
   } else {
     QCheckListItem::paintCell(p, _cg, column, width, alignment);
