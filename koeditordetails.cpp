@@ -1,4 +1,4 @@
-// 	$Id$	
+// 	$Id$
 
 #include <qtooltip.h>
 #include <qfiledialog.h>
@@ -98,11 +98,11 @@ void KOEditorDetails::initAttendee()
   QLabel *emailLabel = new QLabel(this);
   emailLabel->setText(i18n("Email Address:"));
   topLayout->addWidget(emailLabel,2,0);
-  
+
   emailEdit = new QLineEdit(this);
   emailEdit->setText("");
   topLayout->addMultiCellWidget(emailEdit,2,2,1,4);
-  
+
   attendeeRoleLabel = new QLabel(this);
   attendeeRoleLabel->setText(i18n("Role:"));
   topLayout->addWidget(attendeeRoleLabel,3,0);
@@ -157,7 +157,7 @@ void KOEditorDetails::initAttendee()
   buttonLayout->addWidget(addressBookButton);
   connect(addressBookButton,SIGNAL(clicked()),SLOT(openAddressBook()));
 }
-    
+
 void KOEditorDetails::initAttach()
 {
 /*
@@ -271,7 +271,7 @@ void KOEditorDetails::attendeeListHilite(QListViewItem *item)
 {
   if (!item) return;
 
-  Attendee *a = ((AttendeeListItem *)item)->attendee(); 
+  Attendee *a = ((AttendeeListItem *)item)->attendee();
 
   attendeeEdit->setText(a->getName());
   emailEdit->setText(a->getEmail());
@@ -354,13 +354,13 @@ void KOEditorDetails::addNewAttendee()
   if (QString(emailEdit->text()).stripWhiteSpace().isEmpty()) {
     KabAPI addrBook;
     QString name;
-    list<AddressBook::Entry> entries;
+    std::list<AddressBook::Entry> entries;
     name = attendeeEdit->text();
     if (addrBook.init() == AddressBook::NoError) {
       if (addrBook.getEntryByName(name, entries, 1) == AddressBook::NoError) {
 	kdDebug() << "positive match" << endl;
 	// take first email address
-	if (!entries.front().emails.isEmpty() && 
+	if (!entries.front().emails.isEmpty() &&
 	    entries.front().emails.first().length()>0)
 	  emailEdit->setText(entries.front().emails.first());
       }

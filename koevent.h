@@ -1,4 +1,4 @@
-// 	$Id$	
+// 	$Id$
 // EVENT CLASS
 
 #ifndef _KOEVENT_H
@@ -18,7 +18,7 @@ class VCalFormat;
 
 class Attendee
 {
-    friend KOEvent;
+    friend class KOEvent;
   public:
     enum { NEEDS_ACTION = 0, ACCEPTED = 1, SENT = 2, TENTATIVE = 3,
 	   CONFIRMED = 4, DECLINED = 5, COMPLETED = 6, DELEGATED = 7 };
@@ -28,28 +28,28 @@ class Attendee
              bool _rsvp=FALSE, int s = NEEDS_ACTION, int r = 0);
 //    Attendee(const Attendee &);
     virtual ~Attendee();
-  
+
     void setName(const char *n) { name = n; }
     void setName(const QString &n) { name = n; }
     QString getName() const { return name; }
-  
+
     void setEmail(const char *e) { email = e; }
     void setEmail(const QString e) { email = e; }
     QString getEmail() const { return email; }
-  
+
     void setRole(int r) { role = r; }
     int getRole() const { return role; }
     QString getRoleStr() const;
-  
+
     void setStatus(int s) { status = s; }
     void setStatus(const char *s);
     int getStatus() const { return status; }
     QString getStatusStr() const;
-  
+
     void setRSVP(bool r) { rsvp = r; }
     void setRSVP(const char *r);
     bool RSVP() const { return rsvp; }
-  
+
   private:
     bool rsvp;
     int role, status;
@@ -57,7 +57,7 @@ class Attendee
 };
 
 /** This is a class which contains all the information necessary about a single
- * event, or an event that occurs multiple times through recurrence 
+ * event, or an event that occurs multiple times through recurrence
  * information. Methods provide access to the data, which is as fully
  * encapsulated as possible.
  *
@@ -69,7 +69,7 @@ class KOEvent : public QObject {
   Q_OBJECT
 
 //  friend CalObject;
-  friend VCalFormat;
+  friend class VCalFormat;
 public:
   /** number of events created */
   static int eventCount;
@@ -128,10 +128,10 @@ public:
   void setDtStart(const QString &dtStartStr);
   /** returns an event's starting date/time as a QDateTime. */
   const QDateTime &getDtStart() const;
-  /** returns an event's starting time as a string formatted according to the 
+  /** returns an event's starting time as a string formatted according to the
    users locale settings */
   QString getDtStartTimeStr() const;
-  /** returns an event's starting date as a string formatted according to the 
+  /** returns an event's starting date as a string formatted according to the
    users locale settings */
   QString getDtStartDateStr(bool shortfmt=true) const;
   /** returns an event's starting date and time as a string formatted according
@@ -148,10 +148,10 @@ public:
   void setDtDue(const QString &dtDueStr);
   /** returns an event's Due date/time as a QDateTime. */
   const QDateTime &getDtDue() const;
-  /** returns an event's due time as a string formatted according to the 
+  /** returns an event's due time as a string formatted according to the
    users locale settings */
   QString getDtDueTimeStr() const;
-  /** returns an event's due date as a string formatted according to the 
+  /** returns an event's due date as a string formatted according to the
    users locale settings */
   QString getDtDueDateStr(bool shortfmt=true) const;
   /** returns an event's due date and time as a string formatted according
@@ -166,10 +166,10 @@ public:
   void setDtEnd(const QString &dtEndStr);
   /** returns an event's ending date/time as a QDateTime. */
   const QDateTime &getDtEnd() const;
-  /** returns an event's end time as a string formatted according to the 
+  /** returns an event's end time as a string formatted according to the
    users locale settings */
   QString getDtEndTimeStr() const;
-  /** returns an event's end date as a string formatted according to the 
+  /** returns an event's end date as a string formatted according to the
    users locale settings */
   QString getDtEndDateStr(bool shortfmt=true) const;
   /** returns an event's end date and time as a string formatted according
@@ -295,7 +295,7 @@ public:
   /** toggles the value of alarm to be either on or off.
       set's the alarm time to be x minutes before dtStart time. */
   void toggleAlarm();
-    
+
   /** set the event's priority, 0 is undefined, 1 highest (decreasing order) */
   void setPriority(int priority);
   /** get the event's priority */
@@ -328,7 +328,7 @@ public:
   void setEventId(int id);
   /** return the internal identifier for the event */
   int getEventId() const;
-  
+
   /** set the unique text string for the event */
   void setVUID(const char *);
   /** get the unique text string for the event */
@@ -374,7 +374,7 @@ public:
    * return the date on which recurrences end.  Only set currently
    * if a duration is NOT set.  We should compute it from the duration
    * if the duration, and not a specific end date is set, but this is
-   * functionality is not complete at the moment. 
+   * functionality is not complete at the moment.
    */
   const QDate &getRecursEndDate() const;
   /** Returns a string representing the recurrence end date in the format
@@ -439,7 +439,7 @@ public:
   enum { SYNCNONE = 0, SYNCMOD = 1, SYNCDEL = 3 };
   void setPilotId(int id);
   int getPilotId() const;
-  
+
   void setSyncStatus(int stat);
   int getSyncStatus() const;
 
@@ -452,7 +452,7 @@ public:
 
 signals:
   void eventUpdated(KOEvent *);
-  
+
 protected:
   bool recursDaily(const QDate &) const;
   bool recursWeekly(const QDate &) const;
@@ -474,7 +474,7 @@ protected:
 
   int revisionNum;                     // how many times it has been modified.
                                        // Note that as per
-				       // the iCalendar spec, we only bump 
+				       // the iCalendar spec, we only bump
                                        // this when DTSTART,
 				       // DTEND, RDATE, RRULE, EXDATE
                                        // EXRULE are changed.
@@ -489,10 +489,10 @@ protected:
                                        // only end time or start time
                                        // take up "no space".
 
-  bool floats;			       // floating means date without time				      
+  bool floats;			       // floating means date without time
 
   QDateTime dtDue;                     // due date of todo
-  
+
   bool mHasDueDate;                    // if todo has associated due date
   bool mHasStartDate;                  // if todo has associated start date
 
@@ -528,10 +528,10 @@ protected:
   short recurs;                        // should be one of the enums.
 
   QBitArray rDays;                     // array of days during week it recurs
-  
+
   QList<rMonthPos> rMonthPositions;    // list of positions during a month
                                        // on which an event recurs
-					    
+
   QList<int> rMonthDays;               // list of days during a month on
                                        // which the event recurs
 
@@ -543,7 +543,7 @@ protected:
   // one of the following must be specified
   int rDuration;                       // num times to Recur, -1 = infin.
   QDate rEndDate;                      // date on which to end Recurring
-  
+
   QDateList exDates;                   // exceptions to recurrence rules
 
   bool isTodo;                         // true if this is a "todo"
