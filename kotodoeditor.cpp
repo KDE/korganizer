@@ -74,12 +74,16 @@ QWidget *KOTodoEditor::setupGeneralTabWidget(QWidget *parent)
 
 void KOTodoEditor::editTodo(Todo *todo, QDate)
 {
+  init();
+
   mTodo = todo;
   readTodo(mTodo);
 }
 
 void KOTodoEditor::newTodo(QDateTime due,Todo *relatedTodo,bool allDay)
 {
+  init();
+
   mTodo = 0;
   setDefaults(due,relatedTodo,allDay);
 

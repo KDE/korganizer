@@ -26,9 +26,11 @@ class KOIncidenceEditor : public KDialogBase
     KOIncidenceEditor(const QString &caption,Calendar *calendar);
     virtual ~KOIncidenceEditor(void);
 
+    /** Initialize editor. This function creates the tab widgets. */
+    void init();
+
   public slots:
     void updateCategoryConfig();
-    void polish();
 
   signals:
     void editCategories();

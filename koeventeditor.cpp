@@ -90,12 +90,16 @@ void KOEventEditor::enableRecurrence(bool enable)
 
 void KOEventEditor::editEvent(Event *event,QDate)
 {
+  init();
+
   mEvent = event;
   readEvent(mEvent);
 }
 
 void KOEventEditor::newEvent( QDateTime from, QDateTime to, bool allDay )
 {
+  init();
+
   mEvent = 0;
   setDefaults(from,to,allDay);
 

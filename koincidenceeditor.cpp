@@ -41,13 +41,11 @@ KOIncidenceEditor::~KOIncidenceEditor()
   delete mCategoryDialog;
 }
 
-void KOIncidenceEditor::polish()
+void KOIncidenceEditor::init()
 {
   setupGeneralTab();
   setupDetailsTab();
   setupCustomTabs();
-
-  KDialogBase::polish();
 }
 
 void KOIncidenceEditor::setupGeneralTab()
