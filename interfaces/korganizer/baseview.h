@@ -145,7 +145,7 @@ class BaseView : public QWidget
     /** 
       Assign a new incidence change helper object. 
      */
-    virtual void setIncidenceChanger( IncidenceChangerBase *changer ) { kdDebug()<<"BaseView::setIncidenceChanger"<<endl;mChanger = changer; }
+    virtual void setIncidenceChanger( IncidenceChangerBase *changer ) { mChanger = changer; }
 
     /**
       Write all unsaved data back to calendar store.
