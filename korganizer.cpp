@@ -585,23 +585,23 @@ void KOrganizer::file_import()
     if (!retVal)
       KMessageBox::information(this,
 			       i18n("KOrganizer succesfully imported and "
-				    "merged your\n.calendar file from ical "
-				    "into the currently\nopened calendar.\n"));
+				    "merged your .calendar file from ical "
+				    "into the currently opened calendar."));
     else
       KMessageBox::information(this,
-			   i18n("KOrganizer encountered some unknown fields while\n"
-				"parsing your .calendar ical file, and had to\n"
-				"discard them.  Please check to see that all\n"
-				"your relevant data was correctly imported.\n"),
+			   i18n("KOrganizer encountered some unknown fields while "
+				"parsing your .calendar ical file, and had to "
+				"discard them.  Please check to see that all "
+				"your relevant data was correctly imported."),
                                  i18n("ICal Import Successful With Warning"));
   } else if (retVal == -1) {
     KMessageBox::error(this,
-			 i18n("KOrganizer encountered some error parsing your\n"
-			      ".calendar file from ical.  Import has failed.\n"));
+			 i18n("KOrganizer encountered some error parsing your "
+			      ".calendar file from ical.  Import has failed."));
   } else if (retVal == -2) {
     KMessageBox::error(this,
-			 i18n("KOrganizer doesn't think that your .calendar\n"
-			      "file is a valid ical calendar. Import has failed.\n"));
+			 i18n("KOrganizer doesn't think that your .calendar "
+			      "file is a valid ical calendar. Import has failed."));
   }
   tmpfn.unlink();
 }
@@ -723,7 +723,7 @@ bool KOrganizer::saveURL()
 
   if (ext == ".vcs") {
     int result = KMessageBox::warningContinueCancel(this,
-        i18n("Your calendar will be saved in iCalendar format.Use\n"
+        i18n("Your calendar will be saved in iCalendar format.Use "
               "'Export vCalendar' to save in vCalendar format."),
         i18n("Format Conversion"),i18n("Proceed"),"dontaskFormatConversion",
         true);
@@ -1066,9 +1066,9 @@ void KOrganizer::makeActive()
   
   if (!mURL.isLocalFile()) {
     int result = KMessageBox::warningContinueCancel(this,
-      i18n("Your calendar is a remote file. Activating it can cause\n"
+      i18n("Your calendar is a remote file. Activating it can cause "
            "synchronization problems leading to data loss.\n"
-           "Make sure that it is accessed by no more than one single\n"
+           "Make sure that it is accessed by no more than one single "
            "KOrganizer instance at the same time."),
       i18n("Activating Calendar."),i18n("Activate Calendar"),"dontaskActivate",
       true);

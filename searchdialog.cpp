@@ -125,9 +125,9 @@ void SearchDialog::doSearch()
   re.setPattern(searchEdit->text());
   if (!re.isValid()) {
     KMessageBox::sorry(this,
-                       i18n("Invalid search expression, cannot perform\n"
-                            "the search. Please enter a search expression\n"
-                            "using the wildcard characters '*' and '?'\n"
+                       i18n("Invalid search expression, cannot perform "
+                            "the search. Please enter a search expression "
+                            "using the wildcard characters '*' and '?' "
                             "where needed."));
     return;
   }
