@@ -10,11 +10,15 @@ korganizer_LDFLAGS = $(all_libraries) $(KDE_RPATH)
 korganizer_LDADD   = libkorganizer.la
 korganizer_SOURCES = main.cpp
 
-check_PROGRAMS = korgplugins
+check_PROGRAMS = korgplugins timezone
 
 korgplugins_LDFLAGS = $(all_libraries) $(KDE_RPATH)
 korgplugins_LDADD   = libkorganizer.la $(LIB_KSYCOCA)
 korgplugins_SOURCES = korgplugins.cpp
+
+timezone_LDFLAGS = $(all_libraries) $(KDE_RPATH)
+timezone_LDADD   = libkorganizer.la $(LIB_KSYCOCA)
+timezone_SOURCES = timezone.cpp
 
 lib_LTLIBRARIES = libkorganizer.la
 

@@ -53,7 +53,8 @@ int main(int argc,char **argv)
     }
 #endif
   }
-  
+
+#if 0  
   KOrg::TextDecoration::List tdl = KOCore::self()->textDecorations();
   KOrg::TextDecoration *td = tdl.first();
   while(td) {
@@ -68,4 +69,5 @@ int main(int argc,char **argv)
     wid->show();
     app.exec();
   }
+#endif
 }
