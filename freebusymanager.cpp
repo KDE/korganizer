@@ -321,6 +321,8 @@ bool FreeBusyManager::retrieveFreeBusy( const QString &email )
 
   KURL sourceURL = freeBusyUrl( email );
 
+  if ( !sourceURL.isValid() ) return false;
+
   kdDebug() << "FreeBusyManager::retrieveFreeBusy(): url: " << sourceURL.url()
             << endl;
 
