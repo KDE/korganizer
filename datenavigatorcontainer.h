@@ -24,7 +24,7 @@
 #ifndef DATENAVIGATORCONTAINER_H
 #define DATENAVIGATORCONTAINER_H
 
-#include "kdatenavigator.h"
+class KDateNavigator;
 
 class DateNavigatorContainer: public QWidget
 {

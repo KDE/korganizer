@@ -26,6 +26,7 @@
 #include "knewstuff/knewstuff.h"
 
 class KOrganizer;
+class CalendarView;
 
 class KONewStuff : public KNewStuff
 {

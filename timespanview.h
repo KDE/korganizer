@@ -26,7 +26,9 @@
 
 #include <qwidget.h>
 
-#include <libkcal/event.h>
+namespace KCal {
+class Event;
+}
 
 class QSplitter;
 class QListView;

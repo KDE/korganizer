@@ -26,15 +26,15 @@
 
 #include "cellitem.h"
 
-#include <libkcal/incidence.h>
-
-#include <qframe.h>
 #include <qdatetime.h>
 
 class QToolTipGroup;
 class QDragEnterEvent;
 class QDropEvent;
 
+namespace KCal {
+class Incidence;
+}
 using namespace KCal;
 class KOAgendaItem;
 

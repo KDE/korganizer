@@ -44,6 +44,7 @@
 #endif
 #include "koviewmanager.h"
 #include "koagendaview.h"
+#include "koglobals.h"
 
 #include "kodialogmanager.h"
 #include "kodialogmanager.moc"

@@ -32,6 +32,11 @@
 #include <qlistbox.h>
 #include <qspinbox.h>
 #include <qcheckbox.h>
+#include <qgroupbox.h>
+#include <qwidgetstack.h>
+#include <qradiobutton.h>
+#include <qlabel.h>
+#include <qpushbutton.h>
 
 #include <kdialog.h>
 #include <kglobal.h>

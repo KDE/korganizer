@@ -24,46 +24,35 @@
 #ifndef KOTODOVIEW_H
 #define KOTODOVIEW_H
 
-#include <qfont.h>
-#include <qfontmetrics.h>
-#include <qlineedit.h>
-#include <qptrlist.h>
-#include <qlistbox.h>
-#include <qpopupmenu.h>
-#include <qlabel.h>
 #include <qmap.h>
-#include <qtimer.h>
-#include <qevent.h>
 #include <qtooltip.h>
-#include <qpoint.h>
-#include <qrect.h>
 
 #include <klistview.h>
 
-#include <libkcal/calendar.h>
 #include <libkcal/todo.h>
-
-#include <libkdepim/kdatepickerpopup.h>
-
 #include <korganizer/baseview.h>
-
-#include "kotodoviewitem.h"
-#include "koprefs.h"
-#include "koglobals.h"
 #include "calprinter.h"
 
 class QDragEnterEvent;
 class QDragMoveEvent;
 class QDragLeaveEvent;
 class QDropEvent;
+class QPopupMenu;
 
 class KOTodoListView;
+class KOTodoViewItem;
+class KDatePickerPopup;
 
 class DocPrefs;
 
 namespace KPIM {
   class ClickLineEdit;
 }
+namespace KCal {
+class Incidence;
+class Calendar;
+}
+using namespace KCal;
 
 class KOTodoListViewToolTip : public QToolTip
 {

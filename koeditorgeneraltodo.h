@@ -23,24 +23,17 @@
 #ifndef _KOEDITORGENERALTODO_H
 #define _KOEDITORGENERALTODO_H
 
-#include <qframe.h>
-#include <qlabel.h>
-#include <qcheckbox.h>
-#include <qpushbutton.h>
-#include <qgroupbox.h>
-#include <qlineedit.h>
-#include <qcombobox.h>
-#include <qmultilineedit.h>
-#include <qlistview.h>
-#include <qradiobutton.h>
-
 #include "koeditorgeneral.h"
-#include "koglobals.h"
+#include <qdatetime.h>
 
 class KRestrictedLine;
 
 class KDateEdit;
+class KTimeEdit;
 
+namespace KCal {
+class Todo;
+}
 using namespace KCal;
 
 class KOEditorGeneralTodo : public KOEditorGeneral

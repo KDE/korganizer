@@ -67,7 +67,7 @@ libkorganizer_la_COMPILE_FIRST = kofilterview_base.ui \
 libkorganizer_la_SOURCES =  outgoingdialog_base.ui \
 	koagendaview.cpp koagenda.cpp koagendaitem.cpp \
 	datenavigator.cpp kdatenavigator.cpp datenavigatorcontainer.cpp \
-        datechecker.cpp \
+	datechecker.cpp \
 	komonthview.cpp \
 	searchdialog.cpp calendarview.cpp koviewmanager.cpp \
 	kodialogmanager.cpp \

@@ -55,6 +55,8 @@
 #include <kkeydialog.h>
 #include <kparts/genericfactory.h>
 
+#include <kparts/statusbarextension.h>
+
 #include <sidebarextension.h>
 #include <infoextension.h>
 

@@ -28,14 +28,16 @@
 
 #include <kdialogbase.h>
 
-#include <libkcal/calendar.h>
+#include <libkcal/incidence.h>
 
-#include "kolistview.h"
-
+namespace KCal {
+class Calendar;
+}
 class KDateEdit;
 class QCheckBox;
 class QLineEdit;
 class QLabel;
+class KOListView;
 
 using namespace KCal;
 

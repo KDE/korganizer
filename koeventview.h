@@ -24,16 +24,19 @@
 #ifndef _KOEVENTVIEW_H
 #define _KOEVENTVIEW_H
 
-#include <libkcal/calendar.h>
-#include <libkcal/event.h>
+#include <libkcal/incidencebase.h>
 
 #include <korganizer/baseview.h>
 
-#include "koeventpopupmenu.h"
 
+namespace KCal {
+class Incidence;
+}
 using namespace KCal;
 
+class KOEventPopupMenu;
 class CalPrinter;
+class QPopupMenu;
 
 /**
   KOEventView is the abstract base class from which all other

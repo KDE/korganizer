@@ -23,11 +23,10 @@
 #ifndef PUBLISHDIALOG_H
 #define PUBLISHDIALOG_H
 
-#include <qlistview.h>
-#include <libkcal/attendee.h>
-
 #include <kdialogbase.h>
-
+namespace KCal {
+class Attendee;
+}
 using namespace KCal;
 
 class PublishDialog_base;

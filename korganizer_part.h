@@ -26,10 +26,10 @@
 
 #include <kurl.h>
 #include <kparts/browserextension.h>
-#include <kparts/statusbarextension.h>
-#include <kparts/factory.h>
+//#include <kparts/statusbarextension.h>
+//#include <kparts/factory.h>
 #include <korganizer/mainwindow.h>
-#include <korganizer/calendarviewbase.h>
+//#include <korganizer/calendarviewbase.h>
 
 
 class KInstance;
@@ -43,6 +43,14 @@ class ActionManager;
 namespace KCal {
   class CalendarResources;
   class Calendar;
+  class Incidence;
+}
+using namespace KCal;
+namespace KParts {
+class StatusBarExtension;
+}
+namespace KOrg {
+class CalendarViewBase;
 }
 
 class KOrganizerPart: public KParts::ReadOnlyPart,

@@ -49,6 +49,7 @@
 #include <kabc/addresseedialog.h>
 #include <kabc/vcardconverter.h>
 #include <libkdepim/addressesdialog.h>
+#include <libkdepim/addresseelineedit.h>
 #include <kabc/distributionlist.h>
 #include <kabc/stdaddressbook.h>
 #endif

@@ -24,12 +24,14 @@
 #include <qlineedit.h>
 #include <qpushbutton.h>
 #include <kdebug.h>
+#include <qlistview.h>
 
 #include <kglobal.h>
 #include <klocale.h>
 #ifndef KORG_NOKABC
 #include <kabc/addresseedialog.h>
 #endif
+#include <libkcal/attendee.h>
 
 #include "koprefs.h"
 #include "publishdialog.h"

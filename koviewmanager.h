@@ -26,8 +26,6 @@
 
 #include <qobject.h>
 
-#include <korganizer/baseview.h>
-
 class CalendarView;
 
 class KOListView;
@@ -38,6 +36,7 @@ class KOTodoView;
 class KOWhatsNextView;
 class KOJournalView;
 
+namespace KOrg { class BaseView; }
 using namespace KCal;
 
 /**

@@ -23,11 +23,10 @@
 #ifndef PLUGINDIALOG_H
 #define PLUGINDIALOG_H
 
-#include <qlistview.h>
-
 #include <kdialogbase.h>
 
-#include "calendarview.h"
+class CalendarView;
+class QListView;
 
 class PluginDialog : public KDialogBase
 {

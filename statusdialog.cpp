@@ -25,6 +25,7 @@
 #include <qlabel.h>
 #include <qstringlist.h>
 #include <qlayout.h>
+#include <qcombobox.h>
 
 #include <kdebug.h>
 #include <klocale.h>

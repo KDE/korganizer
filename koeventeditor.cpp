@@ -252,7 +252,6 @@ bool KOEventEditor::processInput()
     bool rc = true;
     Event *event = mEvent->clone();
     Event *oldEvent = mEvent->clone();
-    // TODO_RK: Why do we write the event here, and then later once again?
     kdDebug(5850) << "KOEventEditor::processInput() write event." << endl;
     writeEvent( event );
     kdDebug(5850) << "KOEventEditor::processInput() event written." << endl;
@@ -278,8 +277,8 @@ bool KOEventEditor::processInput()
         rc = false;
       }
     }
-    // TODO: do we need to delete oldEvent?
     delete event;
+    delete oldEvent;
     return rc;
   } else {
     mEvent = new Event;
@@ -374,10 +373,8 @@ void KOEventEditor::writeEvent( Event *event )
   mDetails->writeEvent( event );
   mAttachments->writeIncidence( event );
 
-  // TODO_RK: What the heck does this do??? Isn't this completely wrong?
-  // cancelDttendee Event really deletes the removed attendees from the event,
-  // so the event might have less attendeed, even 0 attendees afterwards. So the
-  // check for attendeeCount is inappropriate here
+  // cancelAttendeeEvent removes all attendees from the incidence, 
+  // and then only adds those that need to be cancelled.
   if ( KOPrefs::instance()->thatIsMe( event->organizer() ) ) {
     Event *ev = new Event( *event );
     ev->registerObserver( 0 );

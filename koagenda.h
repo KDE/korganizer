@@ -24,18 +24,16 @@
 #define KOAGENDA_H
 
 #include <qscrollview.h>
-#include <qlabel.h>
 #include <qtimer.h>
-#include <qmemarray.h>
 #include <qguardedptr.h>
-
-#include "koagendaitem.h"
+#include <libkcal/incidencebase.h>
 
 class QPopupMenu;
 class QTime;
+class QLabel;
 class KConfig;
-class QFrame;
 class KOAgenda;
+class KOAgendaItem;
 
 using namespace KCal;
 namespace KCal {

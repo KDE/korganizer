@@ -19,13 +19,12 @@
 #ifndef STATUSDIALOG_H
 #define STATUSDIALOG_H
 
-#include <qcombobox.h>
-
 #include <kdialog.h>
 
 #include <libkcal/attendee.h>
-
 using namespace KCal;
+
+class QComboBox;
 
 class StatusDialog : public KDialog
 {

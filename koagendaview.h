@@ -25,17 +25,12 @@
 #define KOAGENDAVIEW_H
 
 #include <qscrollview.h>
-#include <qdatetime.h>
-#include <qlayout.h>
-#include <qsplitter.h>
-#include <qmemarray.h>
 #include <qlabel.h>
 
-#include "koeventview.h"
 #include "calprinter.h"
+#include "koeventview.h"
 
 class QHBox;
-class QFrame;
 class QPushButton;
 
 class KOAgenda;

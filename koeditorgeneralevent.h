@@ -23,25 +23,19 @@
 #ifndef _KOEDITORGENERALEVENT_H
 #define _KOEDITORGENERALEVENT_H
 
-#include <qframe.h>
-#include <qlabel.h>
-#include <qcheckbox.h>
-#include <qpushbutton.h>
-#include <qgroupbox.h>
-#include <qlineedit.h>
-#include <qcombobox.h>
-#include <qmultilineedit.h>
-#include <qlistview.h>
-#include <qradiobutton.h>
-
-#include <krestrictedline.h>
-
 #include "koeditorgeneral.h"
+#include <qdatetime.h>
 
-#include "ktimeedit.h"
-
+class QLabel;
 class KDateEdit;
+class KTimeEdit;
+class QCheckBox;
+class QComboBox;
+class QBoxLayout;
 
+namespace KCal {
+class Event;
+}
 using namespace KCal;
 
 class KOEditorGeneralEvent : public KOEditorGeneral
@@ -57,37 +51,37 @@ class KOEditorGeneralEvent : public KOEditorGeneral
     void finishSetup();
 
     /** Set widgets to default values */
-    void setDefaults(QDateTime from,QDateTime to,bool allDay);
+    void setDefaults( QDateTime from, QDateTime to, bool allDay );
     /**
       Read event object and setup widgets accordingly. If templ is true, the
       event is read as template, i.e. the time and date information isn't set.
     */
     void readEvent( Event *, bool tmpl = false );
     /** Write event settings to event object */
-    void writeEvent(Event *);
+    void writeEvent( Event * );
 
     /** Check if the input is valid. */
     bool validateInput();
 
   public slots:
-    void setDateTimes(QDateTime start, QDateTime end);
+    void setDateTimes( QDateTime start, QDateTime end );
     void setDuration();
 
   protected slots:
-    void timeStuffDisable(bool disable);
-    void dontAssociateTime(bool noTime);
+    void timeStuffDisable( bool disable );
+    void dontAssociateTime( bool noTime );
 
-    void startTimeChanged(QTime);
-    void startDateChanged(QDate);
-    void endTimeChanged(QTime);
-    void endDateChanged(QDate);
+    void startTimeChanged( QTime );
+    void startDateChanged( QDate );
+    void endTimeChanged( QTime );
+    void endDateChanged( QDate );
 
     void emitDateTimeStr();
 
   signals:
     void allDayChanged(bool);
-    void dateTimeStrChanged(const QString &);
-    void dateTimesChanged(QDateTime start,QDateTime end);
+    void dateTimeStrChanged( const QString & );
+    void dateTimesChanged( QDateTime start, QDateTime end );
 
   private:
     QLabel                  *mStartDateLabel;

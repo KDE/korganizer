@@ -38,9 +38,8 @@
 #define KOGROUPWARE_H
 
 #include <libkcal/icalformat.h>
-#include <libkcal/freebusy.h>
+#include <libkcal/scheduler.h>
 #include <qstring.h>
-#include <qobject.h>
 
 #include <kio/job.h>
 

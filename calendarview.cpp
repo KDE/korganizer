@@ -98,6 +98,7 @@
 #include <qwidgetstack.h>
 #include <qptrlist.h>
 #include <qfile.h>
+#include <qlayout.h>
 #ifndef KORG_NOSPLITTER
 #include <qsplitter.h>
 #endif
@@ -125,8 +126,6 @@ CalendarView::CalendarView( QWidget *parent, const char *name )
   mFilters.setAutoDelete( true );
 
   mExtensions.setAutoDelete( true );
-
-  // TODO: Make sure that view is updated, when calendar is changed.
 
   mNavigator = new DateNavigator( this );
   mDateChecker = new DateChecker( this );
@@ -273,7 +272,7 @@ CalendarView::CalendarView( QWidget *parent, const char *name )
 
   connect( QApplication::clipboard(), SIGNAL( dataChanged() ),
            SLOT( checkClipboard() ) );
-  // TODO_RK: do this in connectView oder connectTodoView!
+  
   connect( mTodoList, SIGNAL( incidenceSelected( Incidence * ) ),
            SLOT( processTodoListSelection( Incidence * ) ) );
   disconnect( mTodoList, SIGNAL( incidenceSelected( Incidence * ) ),

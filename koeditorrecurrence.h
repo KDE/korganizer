@@ -23,28 +23,24 @@
 #ifndef _KOEDITORRECURRENCE_H
 #define _KOEDITORRECURRENCE_H
 
-#include <qframe.h>
-#include <qlabel.h>
-#include <qcheckbox.h>
-#include <qpushbutton.h>
-#include <qgroupbox.h>
-#include <qlineedit.h>
-#include <qcombobox.h>
-#include <qmultilineedit.h>
-#include <qlistview.h>
-#include <qradiobutton.h>
+#include <qdatetime.h>
+#include <qwidget.h>
+#include <qbitarray.h>
 
 #include <kdialogbase.h>
 
-#include <libkcal/incidence.h>
-
-#include "ktimeedit.h"
+#include <libkcal/incidencebase.h>
 
 class QWidgetStack;
 class QSpinBox;
+class QRadioButton;
+class QGroupBox;
+class QCheckBox;
 
 class KDateEdit;
-
+namespace KCal {
+class Incidence;
+}
 using namespace KCal;
 
 class RecurBase : public QWidget
@@ -312,8 +308,8 @@ class KOEditorRecurrence : public QWidget
     ExceptionsDialog *mExceptionsDialog;
     ExceptionsWidget *mExceptionsWidget;
     QPushButton *mExceptionsButton;
-		
-		QDateTime mEventStartDt;
+
+    QDateTime mEventStartDt;
 };
 
 #endif

@@ -38,7 +38,9 @@
 #include "calprinter.h"
 #endif
 #include "koglobals.h"
+#include "koprefs.h"
 #include "koincidencetooltip.h"
+#include "koeventpopupmenu.h"
 
 #include "kolistview.h"
 #include "kolistview.moc"
@@ -409,7 +411,6 @@ void KOListView::popupMenu(QListViewItem *item,const QPoint &,int)
   if (mActiveItem) {
     Incidence *incidence = mActiveItem->data();
     mPopupMenu->showIncidencePopup(incidence);
-    // TODO_RK: Use the todo RMB menu from the todo view for todo items!
   }
   else {
     showNewEventPopup();

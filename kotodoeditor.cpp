@@ -42,6 +42,10 @@
 #include "koeditorattachments.h"
 #include "kodialogmanager.h"
 
+#include "koeditorgeneraltodo.h"
+#include "koeditordetails.h"
+#include "koeditorrecurrence.h"
+
 #include "kotodoeditor.h"
 #include "kocore.h"
 
@@ -305,8 +309,6 @@ kdDebug()<<"read todo"<<endl;
 
   // categories
   mCategoryDialog->setSelected( todo->categories() );
-
-  // TODO: We should handle read-only events here.
 }
 
 void KOTodoEditor::writeTodo( Todo *todo )

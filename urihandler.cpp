@@ -31,6 +31,7 @@
 
 #include <kiconloader.h>
 #include <krun.h>
+#include <kapplication.h>
 #include <kprocess.h>
 #include <kdebug.h>
 

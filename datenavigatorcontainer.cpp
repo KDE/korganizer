@@ -27,6 +27,7 @@
 
 #include "koglobals.h"
 #include "navigatorbar.h"
+#include "kdatenavigator.h"
 
 #include <kcalendarsystem.h>
 

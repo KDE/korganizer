@@ -30,11 +30,13 @@
 #include <qpopupmenu.h>
 #include <qcursor.h>
 #include <qpainter.h>
+#include <qlabel.h>
 
 #include <kdebug.h>
 #include <klocale.h>
 #include <kiconloader.h>
 #include <kglobal.h>
+#include <kmessagebox.h>
 
 #include "koagendaitem.h"
 #include "koprefs.h"
@@ -48,6 +50,7 @@
 #include <libkcal/dndfactory.h>
 #include <libkcal/icaldrag.h>
 #include <libkcal/vcaldrag.h>
+#include <libkcal/calendar.h>
 
 ////////////////////////////////////////////////////////////////////////////
 MarcusBains::MarcusBains(KOAgenda *_agenda,const char *name)
@@ -1497,20 +1500,20 @@ void KOAgenda::deleteItemsToDelete()
   mItemsToDelete.clear();
 }
 
-//QSizePolicy KOAgenda::sizePolicy() const
-//{
+/*QSizePolicy KOAgenda::sizePolicy() const
+{
   // Thought this would make the all-day event agenda minimum size and the
   // normal agenda take the remaining space. But it doesnt work. The QSplitter
   // dont seem to think that an Expanding widget needs more space than a
   // Preferred one.
   // But it doesnt hurt, so it stays.
-//  if (mAllDayMode) {
-//    return QSizePolicy(QSizePolicy::Expanding,QSizePolicy::Preferred);
-//  } else {
-//    return QSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
-//  }
-//}
-
+  if (mAllDayMode) {
+    return QSizePolicy(QSizePolicy::Expanding,QSizePolicy::Preferred);
+  } else {
+    return QSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
+  }
+}
+*/
 
 /*
   Overridden from QScrollView to provide proper resizing of KOAgendaItems.

@@ -24,12 +24,6 @@
 #ifndef KOEVENTEDITOR_H
 #define KOEVENTEDITOR_H
 
-#include <kdialogbase.h>
-
-#include <qdatetime.h>
-
-#include <libkcal/calendar.h>
-
 #include "koincidenceeditor.h"
 
 class KOEditorGeneralEvent;
@@ -40,6 +34,10 @@ class SaveTemplateDialog;
 
 class KOEditorFreeBusy;
 
+namespace KCal {
+class Calendar;
+class Event;
+}
 using namespace KCal;
 
 /**

@@ -23,27 +23,22 @@
 #ifndef KOEDITORGENERAL_H
 #define KOEDITORGENERAL_H
 
-#include <qframe.h>
-#include <qlabel.h>
-#include <qcheckbox.h>
-#include <qpushbutton.h>
-#include <qgroupbox.h>
 #include <qlineedit.h>
-#include <qcombobox.h>
-#include <qlistview.h>
-#include <qradiobutton.h>
-#include <qlayout.h>
 
-#include <ktextedit.h>
-#include <krestrictedline.h>
-
-#include <libkcal/incidence.h>
-
-#include "ktimeedit.h"
-
-class KDateEdit;
+class QWidget;
+class QBoxLayout;
+class QLineEdit;
+class QLabel;
+class QCheckBox;
+class KRestrictedLine;
+class QPushButton;
+class QComboBox;
+class KTextEdit;
 class KSqueezedTextLabel;
 
+namespace KCal {
+class Incidence;
+}
 using namespace KCal;
 
 class FocusLineEdit : public QLineEdit

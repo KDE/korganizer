@@ -25,6 +25,8 @@
 #include <qlayout.h>
 #include <qheader.h>
 #include <qcursor.h>
+#include <qlabel.h>
+#include <qtimer.h>
 
 #include <kdebug.h>
 #include <klocale.h>
@@ -39,6 +41,7 @@
 #include <libkcal/resourcecalendar.h>
 
 #include <libkdepim/clicklineedit.h>
+#include <libkdepim/kdatepickerpopup.h>
 
 #ifndef KORG_NOPRINTER
 #include "calprinter.h"
@@ -48,8 +51,10 @@
 #include "koincidencetooltip.h"
 #include "kodialogmanager.h"
 #include "kotodoview.h"
+#include "koprefs.h"
 #include "koglobals.h"
 using namespace KOrg;
+#include "kotodoviewitem.h"
 #include "kotodoview.moc"
 
 const int KOTodoView::POPUP_UNSUBTODO=1234;
@@ -558,10 +563,10 @@ QMap<Todo *,KOTodoViewItem *>::ConstIterator
   KOTodoView::insertTodoItem(Todo *todo)
 {
 //  kdDebug(5850) << "KOTodoView::insertTodoItem(): " << todo->getSummary() << endl;
-  // TODO: Check, if dynmaic cast is necessary
   Incidence *incidence = todo->relatedTo();
   if (incidence && incidence->type() == "Todo") {
-    Todo *relatedTodo = static_cast<Todo *>(incidence);
+    // Use dynamic_cast, because in the future the related item might also be an event
+    Todo *relatedTodo = dynamic_cast<Todo *>(incidence);
 
 //    kdDebug(5850) << "  has Related" << endl;
     QMap<Todo *,KOTodoViewItem *>::ConstIterator itemIterator;

@@ -24,23 +24,13 @@
 #ifndef KOTODOVIEWITEM_H
 #define KOTODOVIEWITEM_H
 
-#include <qfont.h>
-#include <qfontmetrics.h>
-#include <qlineedit.h>
-#include <qptrlist.h>
-#include <qstrlist.h>
-#include <qlistbox.h>
-#include <qpopupmenu.h>
-#include <qlabel.h>
 #include <qmap.h>
 #include <qlistview.h>
-#include <qpixmap.h>
-#include <qimage.h>
-#include <kglobalsettings.h>
+#include <qpalette.h>
 
-#include <libkcal/calendar.h>
-#include <libkcal/todo.h>
-
+namespace KCal {
+class Todo;
+}
 using namespace KCal;
 
 class KOTodoView;

@@ -24,14 +24,15 @@
 #ifndef KOEDITORATTACHMENTS_H
 #define KOEDITORATTACHMENTS_H
 
-#include <qpushbutton.h>
-#include <klistview.h>
+#include <qwidget.h>
 
-#include <kapplication.h>
-
-#include <libkcal/event.h>
-
+namespace KCal {
+class Incidence;
+}
 using namespace KCal;
+
+class QListViewItem;
+class QListView;
 
 class KOEditorAttachments : public QWidget
 {

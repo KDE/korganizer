@@ -41,6 +41,7 @@
 #include <kwin.h>
 #include <knotifyclient.h>
 #include <kstdguiitem.h>
+#include <kdeversion.h>
 
 #include <libkcal/htmlexport.h>
 #include <libkcal/calendarlocal.h>

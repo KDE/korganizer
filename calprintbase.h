@@ -28,7 +28,6 @@
 
 #ifndef KORG_NOPRINTER
 
-#include <qwidget.h>
 #include <qdatetime.h>
 #include <kprinter.h>
 #include <libkcal/event.h>
@@ -39,6 +38,7 @@ namespace KCal {
 class Calendar;
 class Todo;
 }
+class QWidget;
 
 using namespace KCal;
 

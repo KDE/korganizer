@@ -28,6 +28,10 @@
 #include <qvgroupbox.h>
 #include <qwidgetstack.h>
 #include <qdatetime.h>
+#include <qlabel.h>
+#include <qcheckbox.h>
+#include <qcombobox.h>
+#include <qpushbutton.h>
 
 #include <kdebug.h>
 #include <kglobal.h>
@@ -36,9 +40,12 @@
 #include <kmessagebox.h>
 #include <kfiledialog.h>
 #include <kstandarddirs.h>
+#include <krestrictedline.h>
+#include <ktextedit.h>
 
 #include <libkcal/event.h>
 
+#include "ktimeedit.h"
 #include <libkdepim/kdateedit.h>
 
 #include "koprefs.h"

@@ -39,6 +39,7 @@
 #ifndef KORG_NOPLUGINS
 #include "kocore.h"
 #endif
+#include "kodaymatrix.h"
 
 #include <kcalendarsystem.h>
 

@@ -30,27 +30,11 @@
 #ifndef KORGANIZER_H
 #define KORGANIZER_H
 
-#include <qframe.h>
-#include <qlayout.h>
-#include <qwidget.h>
-#include <qptrlist.h>
-#include <qtabdialog.h>
-#include <qsplitter.h>
-
-#include <ktoolbar.h>
-#include <kapplication.h>
-#include <klocale.h>
-#include <kstatusbar.h>
-#include <kmenubar.h>
 #include <kurl.h>
-
-#include <libkcal/calendar.h>
 
 #include <korganizer/mainwindow.h>
 #include <korganizer/part.h>
 #include <kparts/mainwindow.h>
-
-#include "calendarview.h"
 
 class KTempFile;
 class KRecentFilesAction;

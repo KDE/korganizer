@@ -25,20 +25,9 @@
 #ifndef _KOMONTHVIEW_H
 #define _KOMONTHVIEW_H
 
-#include <qlabel.h>
-#include <qframe.h>
-#include <qdatetime.h>
 #include <qlistbox.h>
-#include <qlayout.h>
-#include <qintdict.h>
-#include <qpushbutton.h>
-#include <qvaluelist.h>
 #include <qptrvector.h>
 #include <qtooltip.h>
-
-#include <libkcal/calendar.h>
-#include <libkcal/event.h>
-
 #include "koeventview.h"
 
 class KNoScrollListBox;

@@ -26,10 +26,10 @@
 
 #include <qstring.h>
 
-#include <libkcal/incidence.h>
-
 class KURL;
-
+namespace KCal {
+class IncidenceBase;
+}
 using namespace KCal;
 
 class KOMailClient

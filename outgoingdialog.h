@@ -24,14 +24,15 @@
 #define OUTGOINGDIALOG_H
 
 #include <qlistview.h>
-#include <qmap.h>
-#include <qstring.h>
+//#include <qmap.h>
+//#include <qstring.h>
 
 #include <libkcal/scheduler.h>
 
-#include "docprefs.h"
+//#include "docprefs.h"
 #include "outgoingdialog_base.h"
 
+class DocPrefs;
 using namespace KCal;
 
 class ScheduleItemOut : public QListViewItem

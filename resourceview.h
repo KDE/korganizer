@@ -24,19 +24,18 @@
 #ifndef KORG_RESOURCEVIEW_H
 #define KORG_RESOURCEVIEW_H
 
-#include "customlistviewitem.h"
 #include "calendarview.h"
 
 #include <libkcal/resourcecalendar.h>
-#include <libkcal/calendarresources.h>
+#include <qlistview.h>
 
-#include <klistview.h>
-
-#include <qwidget.h>
-#include <qpushbutton.h>
-
+namespace KCal {
+class CalendarResources;
+}
+using namespace KCal;
 class KListView;
 class ResourceView;
+class QPushButton;
 
 class ResourceViewFactory : public CalendarViewExtension::Factory
 {

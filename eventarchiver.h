@@ -26,7 +26,6 @@
 
 #include <qobject.h>
 #include <qdatetime.h>
-#include <kurl.h>
 #include <libkcal/event.h>
 
 namespace KCal {

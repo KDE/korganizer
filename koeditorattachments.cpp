@@ -24,13 +24,13 @@
 
 #include "koeditorattachments.h"
 
-#include "kocore.h"
 #include "urihandler.h"
 
 #include <klocale.h>
 #include <kdebug.h>
 #include <kurlrequesterdlg.h>
 #include <kmessagebox.h>
+#include <libkcal/incidence.h>
 
 #include <qlayout.h>
 #include <qlistview.h>

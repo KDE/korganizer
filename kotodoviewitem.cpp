@@ -32,6 +32,7 @@
 #include "kotodoviewitem.h"
 #include "kotodoview.h"
 #include "koprefs.h"
+#include "koglobals.h"
 
 KOTodoViewItem::KOTodoViewItem( QListView *parent, Todo *todo, KOTodoView *kotodo)
   : QCheckListItem( parent , "", CheckBox ), mTodo( todo ), mTodoView( kotodo )

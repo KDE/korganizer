@@ -36,6 +36,7 @@
 
 #include "koglobals.h"
 #include "koprefs.h"
+#include "kolistview.h"
 
 #include "searchdialog.h"
 #include "searchdialog.moc"

@@ -29,6 +29,7 @@
 
 #include "korganizer.h"
 #include "koprefs.h"
+#include "calendarview.h"
 
 #include "konewstuff.h"
 

@@ -283,6 +283,7 @@ bool IncomingDialog::incomeRefresh(ScheduleItemIn *item)
     for( it = attList.begin(); it != attList.end(); ++it ) {
       // TODO: Why do we clone the event here?
       Event *event = new Event( *ev );
+      // TODO_RK: I don't understand why we use the mOutgoing here?
       mOutgoing->addMessage( event, Scheduler::Request, (*it)->email() );
       delete event;
     }

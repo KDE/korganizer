@@ -36,6 +36,8 @@
 
 #include "kocore.h"
 #include "koeventview.h"
+#include "koeventpopupmenu.h"
+
 using namespace KOrg;
 #include "koeventview.moc"
 

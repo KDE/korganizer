@@ -24,12 +24,12 @@
 #ifndef KOCOUNTERDIALOG_H
 #define KOCOUNTERDIALOG_H
 
-#include <qtextview.h>
-
 #include <kdialogbase.h>
 
-#include <libkcal/event.h>
-
+namespace KCal {
+class Event;
+class Todo;
+}
 using namespace KCal;
 
 class KOEventViewer;

@@ -28,8 +28,9 @@
 
 #include <qpopupmenu.h>
 
-#include <libkcal/incidence.h>
-
+namespace KCal { 
+class Incidence; 
+}
 using namespace KCal;
 
 class KOEventPopupMenu : public QPopupMenu {

@@ -26,7 +26,9 @@
 
 #include <qobject.h>
 
-#include "korganizer.h"
+namespace KOrg {
+class MainWindow;
+}
 
 class KURL;
 

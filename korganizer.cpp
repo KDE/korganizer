@@ -71,12 +71,14 @@
 #include <kkeydialog.h>
 #include <ktip.h>
 #include <kstdguiitem.h>
+#include <kstatusbar.h>
 
 #include <qcursor.h>
 #include <qtimer.h>
 #include <qvbox.h>
 #include <qfile.h>
 #include <qlabel.h>
+#include <qlayout.h>
 
 #include <stdlib.h>
 

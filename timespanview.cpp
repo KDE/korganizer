@@ -31,6 +31,8 @@
 #include <klocale.h>
 #include <kdebug.h>
 
+#include <libkcal/event.h>
+
 #include "lineview.h"
 #include "timeline.h"
 

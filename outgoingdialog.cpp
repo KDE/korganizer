@@ -51,6 +51,7 @@
 #include "docprefs.h"
 #include "kogroupware.h"
 #include "freebusymanager.h"
+#include "docprefs.h"
 
 ScheduleItemOut::ScheduleItemOut(QListView *parent,IncidenceBase *ev,
                                  Scheduler::Method method,

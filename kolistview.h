@@ -24,16 +24,11 @@
 #ifndef _KOLISTVIEW_H
 #define _KOLISTVIEW_H
 
-#include <qlistview.h>
-#include <qmap.h>
 #include <qdict.h>
 #include <qtooltip.h>
 
-#include <klistview.h>
-
 #include <libkcal/incidence.h>
 
-#include "koprefs.h"
 #include "koeventview.h"
 #include "customlistviewitem.h"
 

@@ -24,15 +24,11 @@
 #ifndef _KOTODOEDITOR_H
 #define _KOTODOEDITOR_H
 
-#include <libkcal/calendar.h>
-
-#include "koeditorgeneraltodo.h"
-#include "koeditordetails.h"
-#include "koeditorrecurrence.h"
 #include "koincidenceeditor.h"
 
 class QDateTime;
-
+class KOEditorGeneralTodo;
+class KOEditorRecurrence;
 /**
   This class provides a dialog for editing a Todo.
 */

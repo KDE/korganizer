@@ -27,9 +27,8 @@
 
 #include "kofilterview_base.h"
 
-#include <libkcal/calfilter.h>
-
 using namespace KCal;
+class KCal::CalFilter;
 
 class KOFilterView : public KOFilterView_base
 {

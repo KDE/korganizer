@@ -25,13 +25,10 @@
 #ifndef KODAYMATRIX_H
 #define KODAYMATRIX_H
 
-#include <libkcal/calendar.h>
+#include <libkcal/incidencebase.h>
 
-#include <qstring.h>
 #include <qframe.h>
 #include <qcolor.h>
-#include <qpen.h>
-#include <qdatetime.h>
 #include <qtooltip.h>
 #include <qmap.h>
 
@@ -42,6 +39,10 @@ class QDropEvent;
 
 class KODayMatrix;
 
+namespace KCal { 
+class Incidence;
+class Calendar;
+}
 using namespace KCal;
 
 
@@ -84,7 +85,7 @@ class DynamicTip : public QToolTip
  *  The following functionality has been changed:
  *
  *  o when shifting events in the agenda view from one day to another the day matrix is updated now
- *  o TODO ET dragging an event to the matrix will MOVE not COPY the event to the new date.
+ *  o dragging an event to the matrix will MOVE not COPY the event to the new date.
  *  o no support for Ctrl+click to create groups of dates
  *    (This has not really been supported in the predecessor. It was not very intuitive nor was it
  *     user friendly.)

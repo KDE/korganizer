@@ -21,6 +21,7 @@
     without including the source code for Qt in the source distribution.
 */
 
+
 #include <qwidget.h>
 #include <qtooltip.h>
 #include <qlayout.h>
@@ -29,6 +30,11 @@
 #include <qvgroupbox.h>
 #include <qwidgetstack.h>
 #include <qdatetime.h>
+#include <qlineedit.h>
+#include <qlabel.h>
+#include <qcheckbox.h>
+#include <qpushbutton.h>
+#include <qcombobox.h>
 
 #include <kglobal.h>
 #include <kdebug.h>
@@ -38,6 +44,8 @@
 #include <kfiledialog.h>
 #include <ksqueezedtextlabel.h>
 #include <kstandarddirs.h>
+#include <ktextedit.h>
+#include <krestrictedline.h>
 
 #include <libkcal/todo.h>
 #include <libkcal/event.h>

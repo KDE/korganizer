@@ -37,6 +37,7 @@
 #include "kojournalview.h"
 #include "kotimespanview.h"
 #include "koprefs.h"
+#include "koglobals.h"
 #include "navigatorbar.h"
 
 #include "koviewmanager.h"

@@ -24,14 +24,7 @@
 #ifndef URIHANDLER_H
 #define URIHANDLER_H
 
-#include <qpushbutton.h>
-#include <klistview.h>
-
-#include <kapplication.h>
-
-#include <libkcal/event.h>
-
-using namespace KCal;
+#include <qstring.h>
 
 class UriHandler
 {

@@ -33,6 +33,8 @@
 #include <qpainter.h>
 #include <qcursor.h>
 #include <qlistbox.h>
+#include <qlayout.h>
+#include <qlabel.h>
 
 #include <kdebug.h>
 #include <klocale.h>
@@ -53,6 +55,7 @@
 #endif
 #include "koglobals.h"
 #include "koincidencetooltip.h"
+#include "koeventpopupmenu.h"
 
 #include "komonthview.h"
 #include "komonthview.moc"

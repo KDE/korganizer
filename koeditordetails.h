@@ -24,12 +24,6 @@
 #define _KOEDITORDETAILS_H
 
 #include <klistview.h>
-#include <qptrlist.h>
-
-#include <libkcal/event.h>
-#include <libkdepim/addresseelineedit.h>
-
-#include "ktimeedit.h"
 #include "customlistviewitem.h"
 
 class QPushButton;
@@ -41,7 +35,15 @@ class QHBox;
 class KDateEdit;
 class KOEditorFreeBusy;
 
+namespace KCal {
+class Attendee;
+class Incidence;
+}
 using namespace KCal;
+    
+namespace KPIM {
+class AddresseeLineEdit;
+}
 
 typedef CustomListViewItem<Attendee *> AttendeeListItem;
 

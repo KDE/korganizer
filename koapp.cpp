@@ -45,6 +45,7 @@
 #include "actionmanager.h"
 #include "resourceimportdialog.h"
 #include "kocore.h"
+#include "calendarview.h"
 
 #include "koapp.h"
 #include <kstartupinfo.h>

@@ -33,8 +33,10 @@
 #include <kmessagebox.h>
 #include <ktrader.h>
 
+
 #include "kocore.h"
 #include "koprefs.h"
+#include "calendarview.h"
 
 #include "plugindialog.h"
 

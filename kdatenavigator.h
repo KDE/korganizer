@@ -26,17 +26,21 @@
 
 #include <qframe.h>
 #include <qdatetime.h>
-#include <qlabel.h>
 
-#include <libkcal/calendar.h>
-
-#include "kodaymatrix.h"
+#include <libkcal/incidencebase.h>
 
 class QPushButton;
+class QLabel;
 
 class KCalendarSystem;
-
+namespace KCal {
+class Calendar;
+class Incidence;
+}
 class NavigatorBar;
+using namespace KCal;
+
+class KODayMatrix;
 
 class KDateNavigator: public QFrame
 {

@@ -32,10 +32,12 @@
 #include <kresources/resource.h>
 #include <kresources/configdialog.h>
 #include <kinputdialog.h>
+#include <libkcal/calendarresources.h>
 
 #include <qhbox.h>
 #include <qlayout.h>
 #include <qlabel.h>
+#include <qpushbutton.h>
 
 using namespace KCal;
 

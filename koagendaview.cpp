@@ -67,6 +67,7 @@
 #include "koincidencetooltip.h"
 #include "kogroupware.h"
 #include "kodialogmanager.h"
+#include "koeventpopupmenu.h"
 
 #include "koagendaview.h"
 #include "koagendaview.moc"
@@ -155,7 +156,6 @@ int TimeLabels::minimumWidth() const
 {
   QFontMetrics fm = fontMetrics();
 
-  //TODO: calculate this value
   int borderWidth = 4;
 
   // the maximum width possible
@@ -462,24 +462,24 @@ KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name) :
           SLOT(setContentsPos(int)));
 
   // Create Events, depends on type of agenda
-  connect(mAgenda,SIGNAL(newEventSignal(const QPoint &)),
-                  SLOT(newEvent(const QPoint &)));
-  connect(mAllDayAgenda,SIGNAL(newEventSignal(const QPoint &)),
-                        SLOT(newEventAllDay(const QPoint &)));
-  connect(mAgenda,SIGNAL(newEventSignal(const QPoint &, const QPoint &)),
-                  SLOT(newEvent(const QPoint &, const QPoint &)));
-  connect(mAllDayAgenda,SIGNAL(newEventSignal(const QPoint &, const QPoint &)),
-                        SLOT(newEventAllDay(const QPoint &)));
-  connect(mAgenda,SIGNAL(newTimeSpanSignal(const QPoint &, const QPoint &)),
-                        SLOT(newTimeSpanSelected(const QPoint &, const QPoint &)));
-  connect(mAllDayAgenda,SIGNAL(newTimeSpanSignal(const QPoint &, const QPoint &)),
-                        SLOT(newTimeSpanSelectedAllDay(const QPoint &, const QPoint &)));
+  connect( mAgenda, SIGNAL(newEventSignal(const QPoint &)),
+                    SLOT(newEvent(const QPoint &)));
+  connect( mAllDayAgenda, SIGNAL(newEventSignal(const QPoint &)),
+                          SLOT(newEventAllDay(const QPoint &)));
+  connect( mAgenda, SIGNAL(newEventSignal(const QPoint &, const QPoint &)),
+                    SLOT(newEvent(const QPoint &, const QPoint &)));
+  connect( mAllDayAgenda, SIGNAL(newEventSignal(const QPoint &, const QPoint &)),
+                          SLOT(newEventAllDay(const QPoint &)));
+  connect( mAgenda, SIGNAL(newTimeSpanSignal(const QPoint &, const QPoint &)),
+                    SLOT(newTimeSpanSelected(const QPoint &, const QPoint &)));
+  connect( mAllDayAgenda, SIGNAL(newTimeSpanSignal(const QPoint &, const QPoint &)),
+                          SLOT(newTimeSpanSelectedAllDay(const QPoint &, const QPoint &)));
 
   // event indicator update
-  connect(mAgenda,SIGNAL(lowerYChanged(int)),
-          SLOT(updateEventIndicatorTop(int)));
-  connect(mAgenda,SIGNAL(upperYChanged(int)),
-          SLOT(updateEventIndicatorBottom(int)));
+  connect( mAgenda, SIGNAL(lowerYChanged(int)),
+                    SLOT(updateEventIndicatorTop(int)));
+  connect( mAgenda, SIGNAL(upperYChanged(int)),
+                    SLOT(updateEventIndicatorBottom(int)));
 
   connectAgenda( mAgenda, mAgendaPopup, mAllDayAgenda );
   connectAgenda( mAllDayAgenda, mAllDayAgendaPopup, mAgenda);
@@ -814,10 +814,11 @@ void KOAgendaView::showIncidences( const Incidence::List & )
   kdDebug(5850) << "KOAgendaView::showIncidences( const Incidence::List & ) is not yet implemented" << endl;
 }
 
-void KOAgendaView::insertIncidence( Incidence *incidence, QDate curDate, int curCol )
+void KOAgendaView::insertIncidence( Incidence *incidence, QDate curDate,
+                                    int curCol )
 {
-  Event *event = dynamic_cast<Event *>(incidence);
-  Todo  *todo  = dynamic_cast<Todo  *>(incidence);
+  Event *event = dynamic_cast<Event *>( incidence );
+  Todo  *todo  = dynamic_cast<Todo  *>( incidence );
 
   if ( curCol < 0 ) {
     curCol = mSelectedDates.findIndex( curDate );
@@ -831,10 +832,11 @@ void KOAgendaView::insertIncidence( Incidence *incidence, QDate curDate, int cur
   if ( event ) {
     beginX = curDate.daysTo( incidence->dtStart().date() ) + curCol;
     endX = curDate.daysTo( event->dtEnd().date() ) + curCol;
-  }
-  if ( todo ) {
+  } else if ( todo ) {
     beginX = curDate.daysTo( todo->dtDue().date() ) + curCol;
     endX = beginX;
+  } else {
+    return;
   }
 
   if ( incidence->doesFloat() ) {
