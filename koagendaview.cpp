@@ -232,8 +232,9 @@ void EventIndicator::enableColumn(int column, bool enable)
 KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name) :
   KOEventView (cal,parent,name)
 {
-  mStartDate = QDate::currentDate();
   mStartHour = 8;
+  QDate today = QDate::currentDate();
+  mSelectedDates.append(&today);
 
   mLayoutDayLabels = 0;
   mDayLabelsFrame = 0;
@@ -523,7 +524,6 @@ void KOAgendaView::selectDates(const QDateList list)
 
   mSelectedDates.clear();
   mSelectedDates = list;
-  mStartDate = *mSelectedDates.first();
 
   // if there are 5 dates and the first is a monday, we have a workweek.
   if ((mSelectedDates.count() == 5) &&
@@ -578,69 +578,33 @@ void KOAgendaView::changeEventDisplay(Event *, int)
 
 void KOAgendaView::slotPrevDates()
 {
-  int datenum, count;
-
-  switch( mViewType ) {
-  case DAY:
-    mStartDate = mStartDate.addDays(-1);
-    mSelectedDates.clear();
-    mSelectedDates.append(new QDate(mStartDate));
-    break;
-  case WORKWEEK:
-    mStartDate = mStartDate.addDays(-7);
-    mSelectedDates.clear();
-    for (count = 0; count < 5; count++)
-      mSelectedDates.append(new QDate(mStartDate.addDays(count)));
-    break;
-  case WEEK:
-    mStartDate = mStartDate.addDays(-7);
-    mSelectedDates.clear();
-    for( count = 0; count < 7; count++ )
-      mSelectedDates.append(new QDate(mStartDate.addDays(count)));
-    break;
-  case LIST:
-    datenum = mSelectedDates.count();
-    mStartDate = mStartDate.addDays( -datenum );
-    mSelectedDates.clear();
-    for (count = 0; count < datenum; count++)
-      mSelectedDates.append(new QDate(mStartDate.addDays(count)));
-    break;
-  }
-  emit datesSelected(mSelectedDates);
-  setView(mViewType);
-  fillAgenda();
+  shiftDates(-1);
 }
 
 void KOAgendaView::slotNextDates()
 {
-  int datenum, count;
+  shiftDates(+1);
+}
 
-  switch(mViewType) {
+void KOAgendaView::shiftDates(int multiplier)
+{
+  int shift = 0;
+
+  switch( mViewType ) {
   case DAY:
-    mStartDate = mStartDate.addDays(1);
-    mSelectedDates.clear();
-    mSelectedDates.append(new QDate(mStartDate));
-    break;
-  case WORKWEEK:
-    mStartDate = mStartDate.addDays(7);
-    mSelectedDates.clear();
-    for (count = 0; count < 5; count++)
-      mSelectedDates.append(new QDate(mStartDate.addDays(count)));
+    shift = 1;
     break;
   case WEEK:
-    mStartDate = mStartDate.addDays(7);
-    mSelectedDates.clear();
-    for( count = 0; count < 7; count++ )
-      mSelectedDates.append(new QDate(mStartDate.addDays(count)));
-    break;
+  case WORKWEEK:
   case LIST:
-    datenum = mSelectedDates.count();
-    mStartDate = mSelectedDates.last()->addDays(1);
-    mSelectedDates.clear();
-    for (count = 0; count < datenum; count++)
-      mSelectedDates.append(new QDate(mStartDate.addDays(count)));
+    shift = 7;
     break;
+
   }
+
+  for(QDateListIterator dit(mSelectedDates); dit.current(); ++dit)
+      *dit.current() = dit.current()->addDays(multiplier*shift);
+
   emit datesSelected(mSelectedDates);
   setView(mViewType);
   fillAgenda();
@@ -658,54 +622,57 @@ void KOAgendaView::slotViewChange(int newView)
   kdDebug() << "KOAgendaView::slotViewChange(): " << newView << endl;
 
   int datenum, count;
+  QDate firstDate = *mSelectedDates.getFirst();
 
   switch (newView) {
   case DAY:
     mSelectedDates.clear();
-    mSelectedDates.append(new QDate(mStartDate));
-
+    mSelectedDates.append(new QDate(firstDate));
     break;
 
   case WORKWEEK:
     // find monday for this week
-    if (mStartDate.dayOfWeek() == 7) {
+    if (firstDate.dayOfWeek() == 7) {
       if (KGlobal::locale()->weekStartsMonday())
-        mStartDate = mStartDate.addDays(-6);
+        firstDate = firstDate.addDays(-6);
       else
-        mStartDate = mStartDate.addDays(1);
-    } else if (mStartDate.dayOfWeek() > 1) {
-      mStartDate = mStartDate.addDays(mStartDate.dayOfWeek() * -1 + 1);
+        firstDate = firstDate.addDays(1);
+    } else if (firstDate.dayOfWeek() > 1) {
+      firstDate = firstDate.addDays(firstDate.dayOfWeek() * -1 + 1);
     }
 
     mSelectedDates.clear();
     for (count = 0; count < 5; count++)
-      mSelectedDates.append(new QDate(mStartDate.addDays(count)));
-
+      mSelectedDates.append(new QDate(firstDate.addDays(count)));
     break;
 
   case WEEK:
     // find the beginning of this week (could be monday or sunday)
-    if (mStartDate.dayOfWeek() == 7) {
+    if (firstDate.dayOfWeek() == 7) {
       if (KGlobal::locale()->weekStartsMonday())
-        mStartDate = mStartDate.addDays(-6);
+        firstDate = firstDate.addDays(-6);
     } else if (KGlobal::locale()->weekStartsMonday()) {
-      mStartDate = mStartDate.addDays(mStartDate.dayOfWeek() * -1 + 1);
+      firstDate = firstDate.addDays(firstDate.dayOfWeek() * -1 + 1);
     } else {
-      mStartDate = mStartDate.addDays(mStartDate.dayOfWeek() * -1);
+      firstDate = firstDate.addDays(firstDate.dayOfWeek() * -1);
     }
 
     mSelectedDates.clear();
     for( count = 0; count < 7; count++ )
-      mSelectedDates.append(new QDate(mStartDate.addDays(count)));
+      mSelectedDates.append(new QDate(firstDate.addDays(count)));
 
     break;
 
   case LIST:
-    datenum = mSelectedDates.count();
+    /* Is this unnecessary? I believe the mSelectedDates is already
+       correctly set and does not need to be reset like this. --ali@mit.edu
+    */
+    /*
+      datenum = mSelectedDates.count();
     mSelectedDates.clear();
     for (count = 0; count < datenum; count++)
       mSelectedDates.append(new QDate(mStartDate.addDays(count)));
-
+    */
     break;
 
   default:
@@ -728,18 +695,12 @@ void KOAgendaView::slotViewChange(int newView)
 
 void KOAgendaView::fillAgenda(const QDate &startDate)
 {
-  mStartDate = startDate;
   fillAgenda();
 }
 
 
 void KOAgendaView::fillAgenda()
 {
-#if 0
-  kdDebug() << "Fill Agenda beginning with date " << mStartDate.toString() << endl;
-  kdDebug() << " number of dates: " << mSelectedDates.count() << endl;
-#endif
-
 //  clearView();
 
   mAllDayAgenda->changeColumns(mSelectedDates.count());

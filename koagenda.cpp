@@ -85,7 +85,6 @@ void MarcusBains::updateLocation(bool recalculate=false)
     if((tim.hour() == 0) && (oldTime.hour()==23))
 	recalculate = true;
 
-
     int mins = tim.hour()*60 + tim.minute();
     int minutesPerCell = 24 * 60 / agenda->rows();
     int y = mins*agenda->gridSpacingY()/minutesPerCell;

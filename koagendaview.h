@@ -16,7 +16,7 @@
     along with this program; if not, write to the Free Software
     Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 */
-#ifndef KOAGENDAVIEW_H 
+#ifndef KOAGENDAVIEW_H
 #define KOAGENDAVIEW_H
 // $Id$
 //
@@ -39,7 +39,7 @@ class TimeLabels : public QScrollView {
     Q_OBJECT
   public:
     TimeLabels(int rows,QWidget *parent=0,const char *name=0,WFlags f=0);
-    
+
     void setCellHeight(int height);
 
     /** Calculates the minimum width */
@@ -57,10 +57,10 @@ class TimeLabels : public QScrollView {
   public slots:
     /** update time label positions */
     void positionChanged();
-    
+
   protected:
     void drawContents(QPainter *p,int cx, int cy, int cw, int ch);
-    
+
   private:
     int mRows;
     int mCellHeight;
@@ -75,14 +75,14 @@ class EventIndicator : public QFrame {
     enum Location { Top, Bottom };
     EventIndicator(Location loc=Top,QWidget *parent=0,const char *name=0);
     virtual ~EventIndicator();
-    
+
     void changeColumns(int columns);
 
     void enableColumn(int column, bool enable);
 
   protected:
     void drawContents(QPainter *);
-    
+
   private:
     int mColumns;
     QHBox *mTopBox;
@@ -122,7 +122,7 @@ class KOAgendaView : public KOEventView {
 
     virtual void printPreview(CalPrinter *calPrinter,
                               const QDate &, const QDate &);
-    
+
   public slots:
     virtual void updateView();
     virtual void updateConfig();
@@ -161,7 +161,7 @@ class KOAgendaView : public KOEventView {
   protected:
     /** Fill agenda beginning with date startDate */
     void fillAgenda(const QDate &startDate);
-    
+
     /** Fill agenda using the current set value for the start date */
     void fillAgenda();
 
@@ -173,11 +173,16 @@ class KOAgendaView : public KOEventView {
     */
     void setHolidayMasks();
 
+    /** Displays the next set of dates by going forward, (mul = +1),
+	or backwards (mul = -1).
+    */
+    void shiftDates(int multiplier);
+
   protected slots:
 
     /** Move TimeLabels, so that its positions correspond to the agenda. */
     //void adjustTimeLabels();
-    
+
     /** Update event belonging to agenda item */
     void updateEventDates(KOAgendaItem *item);
 
@@ -199,7 +204,6 @@ class KOAgendaView : public KOEventView {
     QWidget *mDummyAllDayLeft;
     QSplitter *mSplitterAgenda;
 
-    QDate mStartDate;  // Date of first event displayed
     QDateList mSelectedDates;  // List of dates to be displayed
     int mViewType;
 
@@ -211,10 +215,10 @@ class KOAgendaView : public KOEventView {
 
     EventIndicator *mEventIndicatorTop;
     EventIndicator *mEventIndicatorBottom;
-    
+
     QMemArray<int> mMinY;
     QMemArray<int> mMaxY;
-    
+
     QMemArray<bool> mHolidayMask;
 };
 
