@@ -347,7 +347,8 @@ void KOQuickTodo::focusInEvent(QFocusEvent *ev)
 
 void KOQuickTodo::focusOutEvent(QFocusEvent *ev)
 {
-  setText(i18n("Click to add a new Todo"));
+  if ( text().isEmpty() ) 
+	  setText(i18n("Click to add a new Todo"));
   setPaletteForegroundColor(gray);
   QLineEdit::focusOutEvent(ev);
 }
