@@ -1222,27 +1222,6 @@ bool ActionManager::deleteEvent( const QString& uid )
   return mCalendarView->deleteEvent(uid);
 }
 
-bool ActionManager::eventRequest( const QString& request,
-				  const QString& receiver,
-				  const QString& ical)
-{
-  if( !KOGroupware::instance() ) return false;
-  return KOGroupware::instance()->incomingEventRequest(request, receiver,
-                                                       ical);
-}
-
-bool ActionManager::eventReply( const QString& ical )
-{
-  if( !KOGroupware::instance() ) return false;
-  return KOGroupware::instance()->incidenceAnswer( ical );
-}
-
-bool ActionManager::cancelEvent( const QString& ical )
-{
-  if( !KOGroupware::instance() ) return false;
-  return KOGroupware::instance()->cancelIncidence( ical );
-}
-
 void ActionManager::configureDateTimeFinished(KProcess *proc)
 {
   delete proc;
