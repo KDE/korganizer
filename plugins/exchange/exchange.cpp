@@ -139,7 +139,7 @@ void Exchange::upload()
 {
   kdDebug(5850) << "Called Exchange::upload()" << endl;
 
-  Event* event = static_cast<Event *> ( mainWindow()->view()->currentSelection() );
+  Event* event = dynamic_cast<Event *> ( mainWindow()->view()->currentSelection() );
   if ( ! event )
   {
     KMessageBox::information( 0L, i18n("Please select an appointment."), i18n("Exchange Plugin") );
@@ -158,7 +158,7 @@ void Exchange::remove()
 {
   kdDebug(5850) << "Called Exchange::remove()" << endl;
 
-  Event* event = static_cast<Event *> ( mainWindow()->view()->currentSelection() );
+  Event* event = dynamic_cast<Event *> ( mainWindow()->view()->currentSelection() );
   if ( ! event )
   {
     KMessageBox::information( 0L, i18n("Please select an appointment."), i18n("Exchange Plugin") );
