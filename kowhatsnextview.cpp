@@ -151,7 +151,7 @@ void KOWhatsNextView::updateView()
     Todo::List::ConstIterator it;
     for( it = todos.begin(); it != todos.end(); ++it ) {
       Todo *todo = *it;
-      if ( todo->hasDueDate() && todo->dtDue().date() == QDate::currentDate() )
+      if ( !todo->isCompleted() && todo->hasDueDate() && todo->dtDue().date() == QDate::currentDate() )
                   appendTodo(todo);
     }
     bool gotone = false;
