@@ -151,6 +151,136 @@ static void string2HTML( QString& str ) {
   str.replace( "\\,", "," );
 }
 
+static QString meetingDetails( Incidence* incidence, Event* event )
+{
+  // Meeting details are formatted into an HTML table
+
+  QString html;
+
+  QString sSummary = i18n( "Summary unspecified" );
+  if ( incidence ) {
+    if ( ! incidence->summary().isEmpty() ) {
+      sSummary = incidence->summary();
+      string2HTML( sSummary );
+    }
+  }
+
+  QString sLocation = i18n( "Location unspecified" );
+  if ( incidence ) {
+    if ( ! incidence->location().isEmpty() ) {
+      sLocation = incidence->location();
+      string2HTML( sLocation );
+    }
+  }
+
+  QString dir = ( QApplication::reverseLayout() ? "rtl" : "ltr" );
+  html = QString("<div dir=\"%1\">\n").arg(dir);
+
+  html += "<table border=\"0\" cellpadding=\"1\" cellspacing=\"1\">\n";
+
+  // Meeting Summary Row
+  html += "<tr>";
+  html += "<td>" + i18n( "What:" ) + "</td>";
+  html += "<td>" + sSummary + "</td>";
+  html += "</tr>\n";
+
+  // Meeting Location Row
+  html += "<tr>";
+  html += "<td>" + i18n( "Where:" ) + "</td>";
+  html += "<td>" + sLocation + "</td>";
+  html += "</tr>\n";
+
+  // Meeting Start Time Row
+  html += "<tr>";
+  html += "<td>" + i18n( "Start Time:" ) + "</td>";
+  html += "<td>";
+  if ( ! event->doesFloat() ) {
+    html +=  i18n("%1: Start Date, %2: Start Time", "%1 %2")
+             .arg( event->dtStartDateStr(), event->dtStartTimeStr() );
+  } else {
+    html += i18n("%1: Start Date", "%1 (time unspecified)")
+            .arg( event->dtStartDateStr() );
+  }
+  html += "</td>";
+  html += "</tr>\n";
+
+  // Meeting End Time Row
+  html += "<tr>";
+  html += "<td>" + i18n( "End Time:" ) + "</td>";
+  html += "<td>";
+  if ( event->hasEndDate() ) {
+    if ( ! event->doesFloat() ) {
+      html +=  i18n("%1: End Date, %2: End Time", "%1 %2")
+               .arg( event->dtEndDateStr(), event->dtEndTimeStr() );
+    } else {
+      html += i18n("%1: End Date", "%1 (time unspecified)")
+              .arg( event->dtEndDateStr() );
+    }
+  } else {
+    html += i18n( "Unspecified" );
+  }
+  html += "</td>";
+  html += "</tr>\n";
+
+  // Meeting Duration Row
+  if ( !event->doesFloat() && event->hasEndDate() ) {
+    html += "<tr>";
+    QTime sDuration, t;
+    int secs = event->dtStart().secsTo( event->dtEnd() );
+    t = sDuration.addSecs( secs );
+    html += "<td>" + i18n( "Duration:" ) + "</td>";
+    html += "<td>";
+    if ( t.hour() > 0 ) {
+      html += i18n( "1 hour ", "%n hours ", t.hour() );
+    }
+    if ( t.minute() > 0 ) {
+      html += i18n( "1 minute ", "%n minutes ",  t.minute() );
+    }
+    html += "</td>";
+    html += "</tr>\n";
+  }
+
+  html += "</table>\n";
+  html += "</div>\n";
+
+  return html;
+}
+
+static QString taskDetails( Incidence* incidence )
+{
+  // Task details are formatted into an HTML table
+
+  QString html;
+
+  QString sSummary = i18n( "Summary unspecified" );
+  QString sDescr = i18n( "Description unspecified" );
+  if ( incidence ) {
+    if ( ! incidence->summary().isEmpty() ) {
+      sSummary = incidence->summary();
+    }
+    if ( ! incidence->description().isEmpty() ) {
+      sDescr = incidence->description();
+    }
+  }
+  html = "<table border=\"0\" cellpadding=\"1\" cellspacing=\"1\">\n";
+
+  // Task Summary Row
+  html += "<tr>";
+  html += "<td>" + i18n( "Summary:" ) + "</td>";
+  html += "<td>" + sSummary + "</td>";
+  html += "</tr>\n";
+
+  // Task Description Row
+  html += "<tr>";
+  html += "<td>" + i18n( "Description:" ) + "</td>";
+  html += "<td>" + sDescr + "</td>";
+  html += "</tr>\n";
+
+  html += "</table>\n";
+
+  return html;
+}
+
 QString KOGroupware::formatICal( const QString& iCal )
 {
   KCal::CalendarLocal cl;
@@ -173,18 +303,6 @@ QString KOGroupware::formatICal( const QString& iCal )
   else
     incidence = todo = cl.todos().first();
 
-  QString sLocation = incidence->location();
-  if( sLocation.isEmpty() )
-    sLocation = i18n( "some unknown location" );
-  string2HTML( sLocation );
-  QString sDtEnd, sDtStart;
-  if( event ) {
-    sDtEnd = event->dtEndTimeStr();
-    sDtStart = event->dtStartTimeStr();
-  }
-  QString sSummary = incidence->summary();
-  QString sDescr = incidence->description();
-
   // TODO: Actually the scheduler needs to do this:
   QString sMethod; // = incidence->method();
   // TODO: This is a temporary workaround to get the method
@@ -192,18 +310,16 @@ QString KOGroupware::formatICal( const QString& iCal )
   vPartMicroParser( iCal, sMethod );
   sMethod = sMethod.lower();
 
-  kdDebug(5850) << "Event stuff: " << sLocation << ", " << sDtEnd << ", "
-                << sDtStart << ", " << sDescr << ", " << sMethod << endl;
-
   // First make the text of the message
   QString html;
   if( sMethod == "request" ) {
-    if( event )
-      html = i18n( "You have been invited to a meeting." )
-        + "<br>" + i18n( "The meeting will take place in %1 from %2 to %3." )
-        .arg( sLocation ).arg( sDtStart ).arg( sDtEnd );
-    else
-      html = i18n( "You have been assigned a task:<br>%1" ).arg( sSummary );
+    if( event ) {
+      html = i18n( "<h2>You have been invited to this meeting</h2>" );
+      html += meetingDetails( incidence, event );
+    } else {
+      html = i18n( "<h2>You have been assigned this task</h2>" );
+      html += taskDetails( incidence );
+    }
   } else if( sMethod == "reply" ) {
     Attendee::List attendees = incidence->attendees();
     if( attendees.count() == 0 ) {
@@ -217,48 +333,53 @@ QString KOGroupware::formatICal( const QString& iCal )
 
     switch( attendee->status() ) {
     case Attendee::Accepted:
-      if( event )
-        html = i18n( "Sender <b>accepts</b> the invitation to "
-                     "meet in %1<br>from %2 to %3." )
-          .arg( sLocation ).arg( sDtStart ).arg( sDtEnd );
-      else
-        html = i18n( "Sender <b>accepts</b> the task <b>%1</b>." )
-          .arg( sSummary );
+      if( event ) {
+        html = i18n( "<h2>Sender accepts this meeting invitation</h2>" );
+        html += meetingDetails( incidence, event );
+      } else {
+        html = i18n( "<h2>Sender accepts this task</h2>" );
+        html += taskDetails( incidence );
+      }
       break;
 
     case Attendee::Tentative:
-      if( event )
-        html = i18n( "Sender <b>tentatively accepts</b> the "
-                     "invitation to meet in %1<br>from %2 to %3." )
-          .arg( sLocation ).arg( sDtStart ).arg( sDtEnd );
-      else
-        html = i18n( "Sender <b>tentatively accepts</b> the task <b>%1</b>." )
-          .arg( sSummary );
+      if( event ) {
+        html = i18n( "<h2>Sender tentatively accepts this"
+                     "meeting invitation</h2>" );
+        html += meetingDetails( incidence, event );
+      } else {
+        html = i18n( "<h2>Sender tentatively accepts this task</h2>" );
+        html += taskDetails( incidence );
+      }
       break;
 
     case Attendee::Declined:
-      if( event )
-        html = i18n( "Sender <b>declines</b> the invitation to meet "
-                     "in %1<br>from %2 to %3." )
-          .arg( sLocation ).arg( sDtStart ).arg( sDtEnd );
-      else
-        html = i18n( "Sender <b>declines</b> the task %1." ).arg( sSummary );
+      if( event ) {
+        html = i18n( "<h2>Sender declines this meeting invitation</h2>" );
+        html += meetingDetails( incidence, event );
+      } else {
+        html = i18n( "<h2>Sender declines this task</h2>" );
+        html += taskDetails( incidence );
+      }
       break;
 
     default:
-      if( event )
-        html =
-          i18n( "This is an unknown reply to the event in %1 from %2 to %3" )
-          .arg( sLocation ).arg( sDtStart ).arg( sDtEnd );
-      else
-        html = i18n( "This is an unknown reply to the task %1" )
-          .arg( sSummary );
+      if( event ) {
+        html = i18n( "<h2>Unknown response to this meeting invitation</h2>" );
+        html += meetingDetails( incidence, event );
+      } else {
+        html = i18n( "<h2>Unknown response to this task</h2>" );
+        html += taskDetails( incidence );
+      }
     }
   } else if( sMethod == "cancel" ) {
-    if( event )
-      html = i18n( "The event %1 was canceled" ).arg( sSummary );
-    else
-      html = i18n( "The task %1 was canceled" ).arg( sSummary );
+    if( event ) {
+      html = i18n( "<h2>This meeting has been canceled</h2>" );
+      html += meetingDetails( incidence, event );
+    } else {
+      html = i18n( "<h2>This task was canceled</h2>" );
+      html += taskDetails( incidence );
+    }
   }
 
   // Add the groupware URLs
@@ -296,6 +417,7 @@ QString KOGroupware::formatICal( const QString& iCal )
   }
   html += "</b></a></td></tr></table>";
 
+  QString sDescr = incidence->description();
   if( ( sMethod == "request" || sMethod == "cancel" ) && !sDescr.isEmpty() ) {
     string2HTML( sDescr );
     html += "<br>&nbsp;<br>&nbsp;<br><u>" + i18n("Description:")
