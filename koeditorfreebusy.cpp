@@ -169,7 +169,7 @@ KOEditorFreeBusy::KOEditorFreeBusy( int spacing, QWidget *parent,
   QLabel *label = new QLabel( i18n( "Scale: " ), this );
   controlLayout->addWidget( label );
 
-  scaleCombo = new QComboBox( this ); 
+  scaleCombo = new QComboBox( this );
   scaleCombo->insertItem( i18n( "Hour" ) );
   scaleCombo->insertItem( i18n( "Day" ) );
   scaleCombo->insertItem( i18n( "Week" ) );
@@ -235,8 +235,6 @@ KOEditorFreeBusy::KOEditorFreeBusy( int spacing, QWidget *parent,
                                                       const QDateTime & ) ),
            mGanttView, SLOT( zoomToSelection( const QDateTime &,
                                               const  QDateTime & ) ) );
-//  connect( mGanttView, SIGNAL( lvItemDoubleClicked( KDGanttViewItem * ) ),
-//           SLOT( updateFreeBusyData( KDGanttViewItem * ) ) );
   connect( mGanttView, SIGNAL( lvItemDoubleClicked( KDGanttViewItem * ) ),
            SLOT( editFreeBusyUrl( KDGanttViewItem * ) ) );
 
@@ -327,20 +325,14 @@ void KOEditorFreeBusy::slotScaleChanged( int newScale )
   slotCenterOnStart();
 }
 
-void KOEditorFreeBusy::slotCenterOnStart() 
+void KOEditorFreeBusy::slotCenterOnStart()
 {
   mGanttView->centerTimeline( mDtStart );
 }
 
-void KOEditorFreeBusy::slotZoomToTime() 
+void KOEditorFreeBusy::slotZoomToTime()
 {
   mGanttView->zoomToFit();
-}
-
-void KOEditorFreeBusy::updateFreeBusyData( KDGanttViewItem *item )
-{
-  FreeBusyItem *g = static_cast<FreeBusyItem *>( item );
-  updateFreeBusyData( g->attendee() );
 }
 
 void KOEditorFreeBusy::updateFreeBusyData( Attendee *attendee )
@@ -386,7 +378,7 @@ void KOEditorFreeBusy::slotUpdateGanttView( QDateTime dtFrom, QDateTime dtTo )
   mGanttView->setHorizonStart( horizonStart  );
   mGanttView->setHorizonEnd( dtTo.addDays( 15 ) );
   mGanttView->clearBackgroundColor();
-  mGanttView->setIntervalBackgroundColor( dtFrom, dtTo, Qt::magenta ); 
+  mGanttView->setIntervalBackgroundColor( dtFrom, dtTo, Qt::magenta );
   mGanttView->setUpdateEnabled( block );
   mGanttView->centerTimelineAfterShow( dtFrom );
 }
@@ -411,7 +403,7 @@ void KOEditorFreeBusy::slotPickDate()
       slotUpdateGanttView( start, end );
       KMessageBox::information( this,
           i18n( "The meeting has been moved to\nStart: %1\nEnd: %2." )
-          .arg( start.toString() ).arg( end.toString() ), 
+          .arg( start.toString() ).arg( end.toString() ),
           "MeetingMovedFreeBusy" );
     }
   } else
@@ -586,7 +578,7 @@ void KOEditorFreeBusy::editFreeBusyUrl( KDGanttViewItem *i )
   if ( !item ) return;
 
   Attendee *attendee = item->attendee();
-  
+
   FreeBusyUrlDialog dialog( attendee, this );
   dialog.exec();
 }

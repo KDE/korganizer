@@ -79,9 +79,6 @@ class KOEditorFreeBusy : public QWidget
 
     void reload();
 
-  private slots:
-    void updateFreeBusyData( KDGanttViewItem * );
-
   private:
     void updateFreeBusyData( KCal::Attendee * );
 
