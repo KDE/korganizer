@@ -63,6 +63,8 @@ class KNoScrollListBox: public QListBox
     KNoScrollListBox(QWidget *parent=0, const char *name=0);
     ~KNoScrollListBox() {}
 
+    void setPrimary( bool primary );
+
   signals:
     void shiftDown();
     void shiftUp();
@@ -188,7 +190,7 @@ class MonthViewCell : public QWidget
     QString mHolidayString;
 
     QLabel *mLabel;
-    QListBox *mItemList;
+    KNoScrollListBox *mItemList;
 
     QSize mLabelSize;
 //    QPalette mOriginalPalette;

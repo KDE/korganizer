@@ -94,6 +94,17 @@ KNoScrollListBox::KNoScrollListBox( QWidget *parent, const char *name )
   setPalette( pal );
 }
 
+void KNoScrollListBox::setPrimary( bool primary )
+{
+  QPalette pal = palette();
+  if ( primary ) {
+    pal.setColor( QColorGroup::Base, KOPrefs::instance()->agendaBgColor() );
+  } else {
+    pal.setColor( QColorGroup::Base, KOPrefs::instance()->agendaBgColor().dark( 115 ) );
+  }
+  setPalette( pal );  
+}
+
 void KNoScrollListBox::keyPressEvent( QKeyEvent *e )
 {
   switch( e->key() ) {
@@ -339,6 +350,8 @@ void MonthViewCell::setPrimary( bool primary )
   } else {
     mLabel->setBackgroundMode( PaletteBackground );
   }
+  
+  mItemList->setPrimary( mPrimary );
 }
 
 bool MonthViewCell::isPrimary() const
@@ -496,7 +509,7 @@ void MonthViewCell::updateConfig()
       bg = bg.dark( 125 );
     }
   }
-  setPaletteBackgroundColor(bg);
+  setPaletteBackgroundColor( bg );
 //  mStandardPalette.setColor( QColorGroup::Background, bg);*/
 
   mHolidayPalette = mStandardPalette;
@@ -510,6 +523,8 @@ void MonthViewCell::updateConfig()
   mTodayPalette.setColor( QColorGroup::Text,
                           KOPrefs::instance()->highlightColor() );
   updateCell();
+
+  mItemList->setPrimary( mPrimary );
 }
 
 void MonthViewCell::enableScrollBars( bool enabled )
