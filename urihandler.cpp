@@ -41,6 +41,8 @@ bool UriHandler::process( const QString &uri )
 
 #ifndef KORG_NODCOP
   if ( uri.startsWith( "kmail:" ) ) {
+    // make sure kmail is running or the part is shown
+    kapp->startServiceByDesktopPath("kmail");
     int pos = uri.find( "/", 8 );
     if ( pos > 8 ) {
       QString messageId = uri.mid( 8, pos - 8 );
