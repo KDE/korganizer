@@ -85,9 +85,6 @@ class KOTodoEditor : public KOIncidenceEditor
     /** This todo has been modified externally */
     void modified (int change=0);
 
-  signals:
-    void todoCompleted( Todo * );
-
   protected slots:
     void loadDefaults();
     void deleteTodo();
