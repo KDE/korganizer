@@ -144,7 +144,7 @@ QString KOIncidenceEditor::loadTemplate( Calendar *cal, const QString &type,
                                   templateName );
 
   if ( fileName.isEmpty() ) {
-    KMessageBox::error( this, i18n("Can't find template '%1'.")
+    KMessageBox::error( this, i18n("Unable to find template '%1'.")
                               .arg( fileName ) );
     return QString::null;
   } else {
