@@ -410,80 +410,99 @@ void MonthViewCell::updateCell()
   }
 }
 
-void MonthViewCell::addIncidence( Incidence *incidence )
+class CreateMonthViewItemVisitor : public Incidence::Visitor
 {
-  QString text;
-  MonthViewItem *item = 0;
-  // @TODO: use a visitor here
-  if ( incidence->type() == "Event" ) {
-    Event *event = static_cast<Event *>(incidence);
-    if (event->isMultiDay()) {
-      if (mDate == event->dtStart().date()) {
-        text = "(-- " + event->summary();
-      } else if (mDate == event->dtEnd().date()) {
-        text = event->summary() + " --)";
-      } else if (!(event->dtStart().date().daysTo(mDate) % 7)) {
-        text = "-- " + event->summary() + " --";
-      } else {
-        text = "----------------";
-      }
-    } else {
-      if (event->doesFloat())
-        text = event->summary();
-      else {
-        text = KGlobal::locale()->formatTime(event->dtStart().time());
-        text += " " + event->summary();
-      }
+  public:
+    CreateMonthViewItemVisitor() : mItem(0) {}
+
+    bool act( Incidence *incidence, QDate date, QPalette stdPal )
+    {
+      mItem = 0;
+      mDate = date;
+      mStandardPalette = stdPal;
+      return incidence->accept( *this );
     }
+    MonthViewItem *item() const { return mItem; }
 
-    item = new MonthViewItem( event, mDate, text );
-    if (KOPrefs::instance()->monthViewUsesCategoryColor()) {
-      QStringList categories = event->categories();
-      QString cat = categories.first();
-      if (cat.isEmpty()) {
-        item->setPalette(QPalette(KOPrefs::instance()->mEventColor, KOPrefs::instance()->mEventColor));
+  protected:
+    bool visit( Event *event ) {
+      QString text;
+      if ( event->isMultiDay() ) {
+        if (mDate == event->dtStart().date()) {
+          text = "(-- " + event->summary();
+        } else if (mDate == event->dtEnd().date()) {
+          text = event->summary() + " --)";
+        } else if (!(event->dtStart().date().daysTo(mDate) % 7)) {
+          text = "-- " + event->summary() + " --";
+        } else {
+          text = "----------------";
+        }
       } else {
-        item->setPalette(QPalette(*(KOPrefs::instance()->categoryColor(cat)), *(KOPrefs::instance()->categoryColor(cat))));
+        if (event->doesFloat())
+          text = event->summary();
+        else {
+          text = KGlobal::locale()->formatTime(event->dtStart().time());
+          text += " " + event->summary();
+        }
       }
-    } else {
-      item->setPalette( mStandardPalette );
+
+      mItem = new MonthViewItem( event, mDate, text );
+      if (KOPrefs::instance()->monthViewUsesCategoryColor()) {
+        QStringList categories = event->categories();
+        QString cat = categories.first();
+        if (cat.isEmpty()) {
+          mItem->setPalette(QPalette(KOPrefs::instance()->mEventColor, KOPrefs::instance()->mEventColor));
+        } else {
+          mItem->setPalette(QPalette(*(KOPrefs::instance()->categoryColor(cat)), *(KOPrefs::instance()->categoryColor(cat))));
+        }
+      } else {
+        mItem->setPalette( mStandardPalette );
+      }
+
+      Attendee *me = event->attendeeByMails( KOPrefs::instance()->allEmails() );
+      if ( me != 0 ) {
+        mItem->setReply( me->status() == Attendee::NeedsAction && me->RSVP() );
+      } else
+        mItem->setReply(false);
+      return true;
     }
-
-    Attendee *me = event->attendeeByMails( KOPrefs::instance()->allEmails() );
-    if ( me != 0 ) {
-      if ( me->status() == Attendee::NeedsAction && me->RSVP())
-        item->setReply(true);
-      else
-        item->setReply(false);
-    } else
-      item->setReply(false);
-  }
-
-  if ( incidence->type() == "Todo" &&
-       KOPrefs::instance()->showAllDayTodo() ) {
-    Todo *todo = static_cast<Todo *>(incidence);
-    if (todo->hasDueDate()) {
-      if (!todo->doesFloat()) {
-        text += KGlobal::locale()->formatTime(todo->dtDue().time());
+    bool visit( Todo *todo ) {
+      QString text;
+      if ( !KOPrefs::instance()->showAllDayTodo() ) 
+        return false;
+      if ( todo->hasDueDate() && !todo->doesFloat() ) {
+        text += KGlobal::locale()->formatTime( todo->dtDue().time() );
         text += " ";
       }
-    }
-    text += todo->summary();
+      text += todo->summary();
 
-    item = new MonthViewItem( todo, mDate, text );
-    if ( todo->doesRecur() ) {
-      mDate < todo->dtDue().date() ?
-      item->setTodoDone( true ) : item->setTodo( true );
+      mItem = new MonthViewItem( todo, mDate, text );
+      if ( todo->doesRecur() ) {
+        mDate < todo->dtDue().date() ?
+        mItem->setTodoDone( true ) : mItem->setTodo( true );
+      }
+      else
+        todo->isCompleted() ? mItem->setTodoDone( true ) : mItem->setTodo( true );
+      mItem->setPalette( mStandardPalette );
+      return true;
     }
-    else
-      todo->isCompleted() ? item->setTodoDone( true ) : item->setTodo( true );
-    item->setPalette( mStandardPalette );
-  }
+  protected:
+    MonthViewItem *mItem;
+    QDate mDate;
+    QPalette mStandardPalette;
+};
 
-  if ( item ) {
-    item->setAlarm( incidence->isAlarmEnabled() );
-    item->setRecur( incidence->doesRecur() );
-    mItemList->insertItem( item );
+
+void MonthViewCell::addIncidence( Incidence *incidence )
+{
+  CreateMonthViewItemVisitor v;
+  if ( v.act( incidence, mDate, mStandardPalette ) ) {
+    MonthViewItem *item = v.item();
+    if ( item ) {
+      item->setAlarm( incidence->isAlarmEnabled() );
+      item->setRecur( incidence->doesRecur() );
+      mItemList->insertItem( item );
+    }
   }
 }
 
@@ -811,12 +830,43 @@ void KOMonthView::showIncidences( const Incidence::List & )
   kdDebug(5850) << "KOMonthView::showIncidences( const Incidence::List & ) is not implemented yet." << endl;
 }
 
+class MonthViewDateVisitor : public Incidence::Visitor
+{
+  public:
+    MonthViewDateVisitor() {}
+
+    bool act( Incidence *incidence )
+    {
+      return incidence->accept( *this );
+    }
+    QDate date() const { return mDate; }
+
+  protected:
+    bool visit( Event *event ) {
+      mDate = event->dtStart().date();
+      return true;
+    }
+    bool visit( Todo *todo ) {
+      if ( todo->hasDueDate() ) {
+        mDate = todo->dtDue().date();
+        return true;
+      } else 
+        return false;
+    }
+    bool visit( Journal *journal ) {
+      return true;
+    }
+  protected:
+    QDate mDate;
+};
+
 void KOMonthView::changeIncidenceDisplayAdded( Incidence *incidence )
 {
   MonthViewCell *mvc;
   Event *event = 0;
   Todo *todo = 0;
   QDate date;
+  
   // @TODO: use a visitor here
   if ( incidence->type() == "Event" ) {
     event = static_cast<Event *>( incidence );
