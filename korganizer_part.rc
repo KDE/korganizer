@@ -104,7 +104,7 @@
     </Menu>
     <Menu name="settings"><text>&amp;Settings</text>
       <Action name="show_filter" append="show_merge"/>
-      <Menu name="left panel" append="show_merge"><text>&amp;Left Panel</text>
+      <Menu name="sidebar" append="show_merge"><text>&amp;Sidebar</text>
         <Action name="show_datenavigator"/>
       	<Action name="show_todoview"/>
       	<Action name="show_eventviewer"/>
