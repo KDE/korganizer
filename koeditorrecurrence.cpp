@@ -115,42 +115,33 @@ RecurWeekly::RecurWeekly( QWidget *parent, const char *name ) :
 
   QHBox *dayBox = new QHBox( this );
   topLayout->addWidget( dayBox, 1, AlignVCenter );
-  // TODO: Create day checks boxes as array
   // TODO: Respect start of week setting
-  mSundayBox    = new QCheckBox(i18n("Sun"), dayBox );
-  mMondayBox    = new QCheckBox(i18n("Mon"), dayBox );
-  mTuesdayBox   = new QCheckBox(i18n("Tue"), dayBox );
-  mWednesdayBox = new QCheckBox(i18n("Wed"), dayBox );
-  mThursdayBox  = new QCheckBox(i18n("Thu"), dayBox );
-  mFridayBox    = new QCheckBox(i18n("Fri"), dayBox );
-  mSaturdayBox  = new QCheckBox(i18n("Sat"), dayBox );
+  for ( int i = 0; i < 7; ++i ) {
+    QString weekDayName = KGlobal::locale()->weekDayName( i + 1, true );
+    if ( KOPrefs::instance()->mCompactDialogs ) {
+      weekDayName = weekDayName.left( 1 );
+    }
+    mDayBoxes[ i ] = new QCheckBox( weekDayName, dayBox );
+  }
 
   topLayout->addStretch( 1 );
 }
 
 void RecurWeekly::setDays( const QBitArray &days )
 {
-  mMondayBox->setChecked   ( days.testBit( 0 ) );
-  mTuesdayBox->setChecked  ( days.testBit( 1 ) );
-  mWednesdayBox->setChecked( days.testBit( 2 ) );
-  mThursdayBox->setChecked ( days.testBit( 3 ) );
-  mFridayBox->setChecked   ( days.testBit( 4 ) );
-  mSaturdayBox->setChecked ( days.testBit( 5 ) );
-  mSundayBox->setChecked   ( days.testBit( 6 ) );
+  for ( int i = 0; i < 7; ++i ) {
+    mDayBoxes[ i ]->setChecked( days.testBit( i ) );
+  }
 }
 
 QBitArray RecurWeekly::days()
 {
   QBitArray days( 7 );
-  
-  days.setBit( 0, mMondayBox->isChecked() );
-  days.setBit( 1, mTuesdayBox->isChecked() );
-  days.setBit( 2, mWednesdayBox->isChecked() );
-  days.setBit( 3, mThursdayBox->isChecked() );
-  days.setBit( 4, mFridayBox->isChecked() );
-  days.setBit( 5, mSaturdayBox->isChecked() );
-  days.setBit( 6, mSundayBox->isChecked() );
 
+  for ( int i = 0; i < 7; ++i ) {
+    days.setBit( 0, mDayBoxes[ i ]->isChecked() );
+  }
+  
   return days;
 }
 
@@ -159,8 +150,20 @@ QBitArray RecurWeekly::days()
 RecurMonthly::RecurMonthly( QWidget *parent, const char *name ) :
   RecurBase( parent, name )
 {
-  QBoxLayout *topLayout = new QHBoxLayout( this );
+  QBoxLayout *topLayout = new QVBoxLayout( this );
   topLayout->setSpacing( KDialog::spacingHint() );
+
+
+  QBoxLayout *freqLayout = new QHBoxLayout( topLayout );
+  
+  QLabel *preLabel = new QLabel( i18n("every"), this );
+  freqLayout->addWidget( preLabel );
+
+  freqLayout->addWidget( frequencyEdit() );
+
+  QLabel *postLabel = new QLabel( i18n("month(s)"), this );
+  freqLayout->addWidget( postLabel );
+
 
   QButtonGroup *buttonGroup = new QButtonGroup( this );
   buttonGroup->setFrameStyle( QFrame::NoFrame );
@@ -169,7 +172,13 @@ RecurMonthly::RecurMonthly( QWidget *parent, const char *name ) :
   QGridLayout *buttonLayout = new QGridLayout( buttonGroup, 3, 2 );
   buttonLayout->setSpacing( KDialog::spacingHint() );
 
-  mByDayRadio = new QRadioButton( i18n("Recur on the"), buttonGroup );
+
+  QString recurOnText;
+  if ( !KOPrefs::instance()->mCompactDialogs ) {
+    recurOnText = i18n("Recur on the");
+  }
+  
+  mByDayRadio = new QRadioButton( recurOnText, buttonGroup );
   buttonLayout->addWidget( mByDayRadio, 0, 0 );
 
   mByDayCombo = new QComboBox( buttonGroup );
@@ -211,7 +220,7 @@ RecurMonthly::RecurMonthly( QWidget *parent, const char *name ) :
   buttonLayout->addWidget( byDayLabel, 0, 2 );
 
 
-  mByPosRadio = new QRadioButton( i18n("Recur on the" ), buttonGroup);
+  mByPosRadio = new QRadioButton( recurOnText, buttonGroup);
   buttonLayout->addWidget( mByPosRadio, 1, 0 );
 
   mByPosCountCombo = new QComboBox( buttonGroup );
@@ -231,14 +240,6 @@ RecurMonthly::RecurMonthly( QWidget *parent, const char *name ) :
   mByPosWeekdayCombo->insertItem( i18n("Saturday") );
   mByPosWeekdayCombo->insertItem( i18n("Sunday") );
   buttonLayout->addWidget( mByPosWeekdayCombo, 1, 2 );
-
-  QLabel *preLabel = new QLabel( i18n("every"), this );
-  topLayout->addWidget( preLabel );
-
-  topLayout->addWidget( frequencyEdit() );
-
-  QLabel *postLabel = new QLabel( i18n("month(s)"), this );
-  topLayout->addWidget( postLabel );
 }
 
 void RecurMonthly::setByDay( int day )
@@ -284,8 +285,20 @@ int RecurMonthly::weekday()
 RecurYearly::RecurYearly( QWidget *parent, const char *name ) :
   RecurBase( parent, name )
 {
-  QBoxLayout *topLayout = new QHBoxLayout( this );
+  QBoxLayout *topLayout = new QVBoxLayout( this );
   topLayout->setSpacing( KDialog::spacingHint() );
+
+
+  QBoxLayout *freqLayout = new QHBoxLayout( topLayout );
+
+  QLabel *preLabel = new QLabel( i18n("every"), this );
+  freqLayout->addWidget( preLabel );
+
+  freqLayout->addWidget( frequencyEdit() );
+
+  QLabel *postLabel = new QLabel( i18n("year(s)"), this );
+  freqLayout->addWidget( postLabel );
+
 
   QButtonGroup *buttonGroup = new QButtonGroup( this );
   buttonGroup->setFrameStyle( QFrame::NoFrame );
@@ -293,8 +306,12 @@ RecurYearly::RecurYearly( QWidget *parent, const char *name ) :
 
   QGridLayout *buttonLayout = new QGridLayout( buttonGroup, 3, 2 );
 
-  mByMonthRadio = new QRadioButton( i18n("Recur in the month of"),
-                                    buttonGroup);
+  QString recurInMonthText;
+  if ( !KOPrefs::instance()->mCompactDialogs ) {
+    recurInMonthText = i18n("Recur in the month of");
+  }
+
+  mByMonthRadio = new QRadioButton( recurInMonthText, buttonGroup);
   buttonLayout->addWidget( mByMonthRadio, 0, 0 );
 
   mByMonthCombo = new QComboBox( buttonGroup );
@@ -315,19 +332,15 @@ RecurYearly::RecurYearly( QWidget *parent, const char *name ) :
   
   buttonLayout->setRowStretch( 1, 1 );
 
+  QString recurOnDayText;
+  if ( KOPrefs::instance()->mCompactDialogs ) {
+    recurOnDayText = i18n("This day");
+  } else {
+    i18n("Recur on this day");
+  }
 
-  mByDayRadio = new QRadioButton( i18n("Recur on this day"),
-                                  buttonGroup);
+  mByDayRadio = new QRadioButton( recurOnDayText, buttonGroup);
   buttonLayout->addMultiCellWidget( mByDayRadio, 2, 2, 0, 1 );
-
-
-  QLabel *preLabel = new QLabel( i18n("every"), this );
-  topLayout->addWidget( preLabel );
-
-  topLayout->addWidget( frequencyEdit() );
-
-  QLabel *postLabel = new QLabel( i18n("year(s)"), this );
-  topLayout->addWidget( postLabel );
 }
 
 void RecurYearly::setByDay()
@@ -614,6 +627,7 @@ KOEditorRecurrence::KOEditorRecurrence( QWidget* parent, const char *name ) :
 
   mStartDateLabel = new QLabel( i18n("Begin on:"), rangeBox );
   rangeLayout->addWidget( mStartDateLabel );
+  if ( KOPrefs::instance()->mCompactDialogs ) mStartDateLabel->hide();
 
   QButtonGroup *rangeButtonGroup = new QButtonGroup;
 

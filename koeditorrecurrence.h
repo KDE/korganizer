@@ -76,13 +76,7 @@ class RecurWeekly : public RecurBase
     QBitArray days();
     
   private:
-    QCheckBox *mSundayBox;
-    QCheckBox *mMondayBox;
-    QCheckBox *mTuesdayBox;
-    QCheckBox *mWednesdayBox;
-    QCheckBox *mThursdayBox;
-    QCheckBox *mFridayBox;
-    QCheckBox *mSaturdayBox;
+    QCheckBox *mDayBoxes[7];
 };
 
 class RecurMonthly : public RecurBase

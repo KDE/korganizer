@@ -47,12 +47,21 @@
 KOIncidenceEditor::KOIncidenceEditor( const QString &caption, 
                                       Calendar *calendar, QWidget *parent ) :
   KDialogBase( Tabbed, caption, Ok | Apply | Cancel | Default | User1, Ok,
-               parent, 0, false, false, i18n("Save as Template...") ),
+               parent, 0, false, false ),
   mSaveTemplateDialog( 0 )
 {
   mCalendar = calendar;
 
   setButtonText( Default, i18n("Template...") );
+
+  QString saveTemplateText;
+  if ( KOPrefs::instance()->mCompactDialogs ) {
+    saveTemplateText = i18n("Save...");
+    showButton( Apply, false );
+  } else {
+    saveTemplateText = i18n("Save as Template...");
+  }
+  setButtonText( User1, saveTemplateText );
 
   mCategoryDialog = new KPIM::CategorySelectDialog( KOPrefs::instance(), this );
 
