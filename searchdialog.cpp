@@ -38,6 +38,7 @@ SearchDialog::SearchDialog(Calendar *calendar,QWidget *parent)
   subLayout->addWidget(searchEdit);
   searchEdit->setText("*"); // Find all events by default
   searchEdit->setFocus();
+  connect(searchEdit, SIGNAL(textChanged ( const QString & )),this,SLOT(searchTextChanged( const QString & )));
 
   // Date range
   QGroupBox *rangeGroup = new QGroupBox(1,Horizontal,i18n("Date Range"),
@@ -85,6 +86,11 @@ SearchDialog::SearchDialog(Calendar *calendar,QWidget *parent)
 	  SIGNAL(editEventSignal(Event *)));
   connect(listView,SIGNAL(deleteEventSignal(Event *)),
 	  SIGNAL(deleteEventSignal(Event *)));
+}
+
+void SearchDialog::searchTextChanged( const QString &_text )
+{
+    enableButton( KDialogBase::User1, !_text.isEmpty() );
 }
 
 void SearchDialog::doSearch()

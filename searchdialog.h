@@ -27,10 +27,10 @@ class SearchDialog : public KDialogBase
 
   public slots:
     void changeEventDisplay(Event *, int) { updateView(); } 
-
+  
   protected slots:
     void doSearch();
-
+  void searchTextChanged( const QString &_text );	
   signals:
     void showEventSignal(Event *);
     void editEventSignal(Event *);
