@@ -99,7 +99,6 @@
     </Menu>
     <Menu name="help"><text>&amp;Help</text>
       <Action name="show_intro"/>
-      <Action name="help_tipofday"/>
       <Separator/>
       <Action name="downloadnewstuff"/>
       <Action name="uploadnewstuff"/>
