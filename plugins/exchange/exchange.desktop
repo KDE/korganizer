@@ -1,0 +1,8 @@
+[Desktop Entry]
+Encoding=UTF-8
+X-KDE-Library=libkorg_exchange
+Name=Exchange plugin for Calendars
+Name[de]=Exchange Server-Plugin für Kalender
+Name[nl]=Exchange server-plugin voor kalenders
+Type=Service
+ServiceTypes=KOrganizer/Part
