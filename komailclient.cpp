@@ -28,11 +28,11 @@ MailMsgString::~MailMsgString()
 
 void MailMsgString::setAddressee(Attendee *newAddressee)
 {
-  mAddressee = newAddressee->getEmail();
-  if (!newAddressee->getName().isEmpty()) {
+  mAddressee = newAddressee->email();
+  if (!newAddressee->name().isEmpty()) {
     mAddressee.prepend(" <");
     mAddressee.append(">");
-    mAddressee.prepend(newAddressee->getName());
+    mAddressee.prepend(newAddressee->name());
   }
 }
 
@@ -98,7 +98,7 @@ void KOMailClient::emailEvent(Event *selectedEvent)
   QList<Attendee> participants = selectedEvent->attendees();
   Attendee *a;
   for (a = participants.first();a;a=participants.next()) {
-    if (a->getStatus() == Attendee::NEEDS_ACTION) {
+    if (a->status() == Attendee::NEEDS_ACTION) {
       msg.setAddressee(a);
       if (!sendMail(KOPrefs::instance()->mEmail,msg.addressee(),
                     selectedEvent->summary(),msg.body(),

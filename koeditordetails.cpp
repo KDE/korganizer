@@ -39,12 +39,11 @@ AttendeeListItem::~AttendeeListItem()
 
 void AttendeeListItem::updateItem()
 {
-  setText(0,mAttendee->getName());
-  setText(1,(!mAttendee->getEmail().isEmpty()) ? mAttendee->getEmail() :
-                                                 QString::fromLatin1(" "));
-  setText(2,mAttendee->getRoleStr());
-  setText(3,mAttendee->getStatusStr());
-  if (mAttendee->RSVP() && !mAttendee->getEmail().isEmpty())
+  setText(0,mAttendee->name());
+  setText(1,(!mAttendee->email().isEmpty()) ? mAttendee->email() : QString::fromLatin1(" "));
+  setText(2,mAttendee->roleStr());
+  setText(3,mAttendee->statusStr());
+  if (mAttendee->RSVP() && !mAttendee->email().isEmpty())
     setPixmap(4,SmallIcon("mailappt"));
   else
     setPixmap(4,SmallIcon("nomailappt"));
@@ -273,10 +272,10 @@ void KOEditorDetails::attendeeListHilite(QListViewItem *item)
 
   Attendee *a = ((AttendeeListItem *)item)->attendee();
 
-  attendeeEdit->setText(a->getName());
-  emailEdit->setText(a->getEmail());
-  attendeeRoleCombo->setCurrentItem(a->getRole());
-  statusCombo->setCurrentItem(a->getStatus());
+  attendeeEdit->setText(a->name());
+  emailEdit->setText(a->email());
+  attendeeRoleCombo->setCurrentItem(a->role());
+  statusCombo->setCurrentItem(a->status());
   attendeeRSVPButton->setChecked(a->RSVP());
 }
 

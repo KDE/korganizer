@@ -389,8 +389,8 @@ void HtmlExport::formatHtmlAttendees (QTextStream *ts,Incidence *event)
   if (attendees.count()) {
     Attendee *a;
     for(a=attendees.first();a;a=attendees.next()) {
-      *ts << "    " << a->getName();
-      if (!a->getEmail().isEmpty()) *ts << " &lt;" << a->getEmail() << "&gt;";
+      *ts << "    " << a->name();
+      if (!a->email().isEmpty()) *ts << " &lt;" << a->email() << "&gt;";
       *ts << "<BR>" << "\n";
     }
   } else {

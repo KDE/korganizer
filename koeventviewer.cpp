@@ -108,8 +108,8 @@ void KOEventViewer::formatAttendees(Incidence *event)
     Attendee *a;
     mText.append("<ul>");
     for(a=attendees.first();a;a=attendees.next()) {
-      QString str = a->getName();
-      if (!a->getEmail().isEmpty()) str += " &lt;" + a->getEmail() + "&gt;";
+      QString str = a->name();
+      if (!a->email().isEmpty()) str += " &lt;" + a->email() + "&gt;";
       addTag("li",str);
     }
     mText.append("</ul>");
