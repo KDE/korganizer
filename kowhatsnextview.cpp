@@ -280,17 +280,17 @@ void KOWhatsNextView::appendTodo(Incidence *ev)
   mText += "</a></li>\n";
 }
 
-void KOWhatsNextView::showIncidence(const QString &uid)
+void KOWhatsNextView::showIncidence( const QString &uid )
 {
   kdDebug(5850) << "KOWhatsNextView::showIncidence(): " << uid << endl;
-  Incidence*incidence;
+  Incidence *incidence = 0;
 
-  if (uid.startsWith("event://")) {
-    incidence = calendar()->incidence(uid.mid(8));
-  } else if (uid.startsWith("todo://")) {
-    incidence = calendar()->incidence(uid.mid(7));
+  if ( uid.startsWith( "event://" ) ) {
+    incidence = calendar()->incidence( uid.mid( 8 ) );
+  } else if ( uid.startsWith( "todo://" ) ) {
+    incidence = calendar()->incidence( uid.mid( 7 ) );
   }
-  if (incidence) emit showIncidenceSignal(incidence);
+  if ( incidence ) emit showIncidenceSignal( incidence );
 }
 
 #include "kowhatsnextview.moc"
