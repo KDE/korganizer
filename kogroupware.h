@@ -66,7 +66,8 @@ class KOGroupware : public QObject
          user presses Yes og or No.
     */
     bool sendICalMessage( QWidget* parent, KCal::Scheduler::Method method,
-                          Incidence* incidence, bool isDeleting = false );
+                          Incidence* incidence, bool isDeleting = false,
+                          bool statusChanged = false );
 
     // THIS IS THE ACTUAL KM/KO API
     enum EventState { Accepted, ConditionallyAccepted, Declined, Request };
