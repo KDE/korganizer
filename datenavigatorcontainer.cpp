@@ -182,7 +182,9 @@ void DateNavigatorContainer::resizeEvent( QResizeEvent * )
   if ( horizontalCount > 1 ) bar->showButtons( true, false );
   else bar->showButtons( true, true );
   
-  mNavigatorView->setGeometry( 0, 0, width, height );
+  mNavigatorView->setGeometry( 
+      ( (KOGlobals::self()->reverseLayout())?(horizontalCount-1):0) * width, 
+      0, width, height );
   for( uint i = 0; i < mExtraViews.count(); ++i ) {
     int x = ( i + 1 ) % horizontalCount;
     int y = ( i + 1 ) / horizontalCount;
@@ -194,7 +196,9 @@ void DateNavigatorContainer::resizeEvent( QResizeEvent * )
         if ( x + 1 == horizontalCount ) bar->showButtons( false, true );
         else bar->showButtons( false, false );
     }
-    view->setGeometry( x * width, y * height, width, height );
+    view->setGeometry( 
+        ( (KOGlobals::self()->reverseLayout())?(horizontalCount-1-x):x) * width, 
+        y * height, width, height );
   }
 }
 
