@@ -1086,7 +1086,7 @@ bool CalendarView::makeSubTodosIndependents ( )
 {
   bool  status = false;
   Todo *anTodo = selectedTodo();
-  startMultiModify ( i18n( "make sub-to-dos independents" ) );
+  startMultiModify ( i18n( "Make sub-to-dos independent" ) );
 
   if( makeSubTodosIndependents( anTodo ) ) {
     updateView();
