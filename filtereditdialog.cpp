@@ -165,7 +165,8 @@ void FilterEditDialog::readFilter(CalFilter *filter)
   } else {
     mEditor->mCatHideCheck->setChecked(true);
   }
-  
+
+  mEditor->mCatList->clear();  
   mEditor->mCatList->insertStringList(filter->categoryList());
 }
 
