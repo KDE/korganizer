@@ -21,6 +21,7 @@
     without including the source code for Qt in the source distribution.
 */
 #include "kalarmdclient.h"
+#include "kalarmdclient.moc"
 
 #include "kalarmd/alarmdaemoniface_stub.h"
 
