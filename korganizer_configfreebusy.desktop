@@ -13,6 +13,7 @@ X-KDE-ParentComponents=korganizer,kontact_korganizerplugin
 X-KDE-CfgDlgHierarchy=KOrganizer
 
 Name=Free/Busy
+Name[ar]=متوفّر/مشغول
 Name[bg]=Свободно/заето
 Name[bs]=Slobodan/Zauzet
 Name[ca]=Lliure/ocupat
@@ -98,6 +99,7 @@ Keywords[et]=korganizer,vaba,hõivatud,ajakava
 Keywords[fi]=korganizer,vapaa,varattu,ajastus
 Keywords[fr]=korganizer,disponibilité, planification
 Keywords[gl]=korganizer,dispoñibilidade,axenda
+Keywords[he]=korganizer,עסוק,פנוי,תזמון
 Keywords[hi]=के-आर्गेनाइज़र,फ्री-बिज़ी,समय-सारणी
 Keywords[hu]=korganizer,foglaltság,szervezés
 Keywords[is]=kskipulag,prentun,prentari,prentstjórnun

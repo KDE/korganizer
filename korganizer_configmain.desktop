@@ -13,6 +13,7 @@ X-KDE-ParentComponents=korganizer,kontact_korganizerplugin
 X-KDE-CfgDlgHierarchy=KOrganizer
 
 Name=Personal
+Name[ar]=شخصي
 Name[be]=Пэрсанальныя
 Name[bg]=Персоналност
 Name[bs]=Lično
