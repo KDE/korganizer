@@ -36,6 +36,7 @@
 #include <kstandarddirs.h>
 #include <kmessagebox.h>
 #include <kinputdialog.h>
+#include <kio/netaccess.h>
 
 #include <libkdepim/categoryselectdialog.h>
 #include <libkdepim/designerfields.h>
@@ -50,6 +51,7 @@
 #include "koeditordetails.h"
 #include "koeditorattachments.h"
 #include "koeditoralarms.h"
+#include "urihandler.h"
 
 #include "koincidenceeditor.h"
 
@@ -124,6 +126,8 @@ void KOIncidenceEditor::setupAttachmentsTab()
   QBoxLayout *topLayout = new QVBoxLayout( topFrame );
 
   mAttachments = new KOEditorAttachments( spacingHint(), topFrame );
+  connect( mAttachments, SIGNAL( openURL( const KURL & ) ) ,
+           this, SLOT( openURL( const KURL & ) ) );
   topLayout->addWidget( mAttachments );
 }
 
@@ -282,21 +286,29 @@ void KOIncidenceEditor::setupDesignerTabs( const QString &type )
   QStringList list = KGlobal::dirs()->findAllResources( "data",
     "korganizer/designer/" + type + "/*.ui", true, true );
   for ( QStringList::iterator it = list.begin(); it != list.end(); ++it ) {
-    kdDebug() << "Designer tab: " << *it << endl;
-
-    if ( activePages.find( (*it).mid( (*it).findRev('/') + 1 ) ) == activePages.end() )
-      continue;
-
-    KPIM::DesignerFields *wid = new KPIM::DesignerFields( *it, 0 );
-    mDesignerFields.append( wid );
-
-    QFrame *topFrame = addPage( wid->title() );
-
-    QBoxLayout *topLayout = new QVBoxLayout( topFrame );
-
-    wid->reparent( topFrame, 0, QPoint() );
-    topLayout->addWidget( wid );
+    const QString &fn = (*it).mid( (*it).findRev('/') + 1 );
+    if ( activePages.find( fn ) != activePages.end() ) {
+      addDesignerTab( *it );
+    }
   }
+}
+
+QWidget *KOIncidenceEditor::addDesignerTab( const QString &uifile )
+{
+  kdDebug() << "Designer tab: " << uifile << endl;
+
+  KPIM::DesignerFields *wid = new KPIM::DesignerFields( uifile, 0 );
+  mDesignerFields.append( wid );
+
+  QFrame *topFrame = addPage( wid->title() );
+
+  QBoxLayout *topLayout = new QVBoxLayout( topFrame );
+
+  wid->reparent( topFrame, 0, QPoint() );
+  topLayout->addWidget( wid );
+  mDesignerFieldForWidget[ topFrame ] = wid;
+
+  return topFrame;
 }
 
 class KCalStorage : public KPIM::DesignerFields::Storage
@@ -373,7 +385,9 @@ void KOIncidenceEditor::setupEmbeddedURLPage( const QString &label,
   KPIM::EmbeddedURLPage *wid = new KPIM::EmbeddedURLPage( url, mimetype,
                                                           topFrame );
   topLayout->addWidget( wid );
-  mEmbeddedURLPages.append( wid );
+  mEmbeddedURLPages.append( topFrame );
+  connect( wid, SIGNAL( openURL( const KURL & ) ) ,
+           this, SLOT( openURL( const KURL & ) ) );
   // TODO: Call this method only when the tab is actually activated!
   wid->loadContents();
 }
@@ -384,10 +398,23 @@ void KOIncidenceEditor::createEmbeddedURLPages( Incidence *i )
 
   if ( !i ) return;
   if ( !mEmbeddedURLPages.isEmpty() ) {
+kdDebug() << "mEmbeddedURLPages are not empty, clearing it!" << endl;
     mEmbeddedURLPages.setAutoDelete( true );
     mEmbeddedURLPages.clear();
     mEmbeddedURLPages.setAutoDelete( false );
   }
+  if ( !mAttachedDesignerFields.isEmpty() ) {
+    for ( QPtrList<QWidget>::Iterator it = mAttachedDesignerFields.begin();
+          it != mAttachedDesignerFields.end(); ++it ) {
+      if ( mDesignerFieldForWidget.contains( *it ) ) {
+        mDesignerFields.remove( mDesignerFieldForWidget[ *it ] );
+      }
+    }
+    mAttachedDesignerFields.setAutoDelete( true );
+    mAttachedDesignerFields.clear();
+    mAttachedDesignerFields.setAutoDelete( false );
+  }
+
   Attachment::List att = i->attachments();
   for ( Attachment::List::Iterator it = att.begin(); it != att.end(); ++it ) {
     Attachment *a = (*it);
@@ -395,11 +422,26 @@ void KOIncidenceEditor::createEmbeddedURLPages( Incidence *i )
     kdDebug() << "label=" << a->label() << ", url=" << a->uri() << ", mimetype=" << a->mimeType() << endl;
     if ( a && a->showInline() && a->isUri() ) {
       // TODO: Allow more mime-types, but add security checks!
-//       if ( a->mimeType() == "text/html" ) {
+      if ( a->mimeType() == "application/x-designer" ) {
+        QString tmpFile;
+        if ( KIO::NetAccess::download( a->uri(), tmpFile, this ) ) {
+          mAttachedDesignerFields.append( addDesignerTab( tmpFile ) );
+          KIO::NetAccess::removeTempFile( tmpFile );
+        }
+      } else
+      // TODO: Enable that check again!
+//       if ( a->mimeType() == "text/html" )
+      {
         setupEmbeddedURLPage( a->label(), a->uri(), a->mimeType() );
-//       }
+      }
     }
   }
+}
+
+void KOIncidenceEditor::openURL( const KURL &url )
+{
+  QString uri = url.url();
+  UriHandler::process( uri );
 }
 
 #include "koincidenceeditor.moc"

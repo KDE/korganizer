@@ -375,8 +375,8 @@ void KOEventEditor::readEvent( Event *event, bool tmpl )
   // categories
   mCategoryDialog->setSelected( event->categories() );
 
-  readDesignerFields( event );
   createEmbeddedURLPages( event );
+  readDesignerFields( event );
 }
 
 void KOEventEditor::writeEvent( Event *event )

@@ -26,6 +26,7 @@
 #define KOEDITORATTACHMENTS_H
 
 #include <qwidget.h>
+#include <kurl.h>
 
 namespace KCal {
 class Incidence;
@@ -62,6 +63,8 @@ class KOEditorAttachments : public QWidget
     void slotShow();
     void dragEnterEvent( QDragEnterEvent *event );
     void dropEvent( QDropEvent *event );
+  signals:
+    void openURL( const KURL &url );
 
   private:
     KListView *mAttachments;

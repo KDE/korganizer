@@ -25,7 +25,6 @@
 
 #include "koeditorattachments.h"
 
-#include "urihandler.h"
 #include <libkcal/incidence.h>
 
 #include <klocale.h>
@@ -169,8 +168,7 @@ void KOEditorAttachments::showAttachment( QListViewItem *item )
 
   KCal::Attachment *att = attitem->attachment();
   if ( att->isUri() ) {
-    QString uri = att->uri();
-    UriHandler::process( uri );
+    emit openURL( att->uri() );
   } else {
     // FIXME: Handle binary attachments
   }

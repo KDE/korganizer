@@ -26,6 +26,7 @@
 #define KOINCIDENCEEDITOR_H
 
 #include <kdialogbase.h>
+#include <kurl.h>
 
 class QDateTime;
 
@@ -90,6 +91,7 @@ class KOIncidenceEditor : public KDialogBase
     void slotApply();
     void slotOk();
     void slotCancel();
+    void openURL( const KURL &url );
 
     virtual void slotLoadTemplate();
     virtual void slotSaveTemplate();
@@ -110,6 +112,8 @@ class KOIncidenceEditor : public KDialogBase
 
     void readDesignerFields( Incidence *i );
     void writeDesignerFields( Incidence *i );
+    // Returns the page widget. To remove the tab, just delete that one.
+    QWidget *addDesignerTab( const QString &uifile );
 
     void setupEmbeddedURLPage( const QString &label, const QString &url,
                                const QString &mimetype );
@@ -134,7 +138,9 @@ class KOIncidenceEditor : public KDialogBase
     KOrg::IncidenceChangerBase *mChanger;
 
     QPtrList<KPIM::DesignerFields> mDesignerFields;
-    QPtrList<KPIM::EmbeddedURLPage> mEmbeddedURLPages;
+    QMap<QWidget*, KPIM::DesignerFields*> mDesignerFieldForWidget;
+    QPtrList<QWidget> mEmbeddedURLPages;
+    QPtrList<QWidget> mAttachedDesignerFields;
 };
 
 #endif

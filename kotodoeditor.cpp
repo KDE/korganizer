@@ -327,8 +327,8 @@ void KOTodoEditor::readTodo( Todo *todo )
 
   // categories
   mCategoryDialog->setSelected( todo->categories() );
-  readDesignerFields( todo );
   createEmbeddedURLPages( todo );
+  readDesignerFields( todo );
 }
 
 void KOTodoEditor::writeTodo( Todo *todo )
@@ -345,6 +345,7 @@ void KOTodoEditor::writeTodo( Todo *todo )
     if ( todo->hasStartDate() )
       todo->setDtStart( todo->dtStart() );
   }
+  writeDesignerFields( todo );
 
   // set related event, i.e. parent to-do in this case.
   if ( mRelatedTodo ) {
