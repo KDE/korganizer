@@ -119,6 +119,7 @@ class MonthViewCell : public QWidget
 
   signals:
     void defaultAction( Incidence * );
+    void newEventSignal( QDateTime );
     
   protected:
     void resizeEvent( QResizeEvent * );
@@ -127,6 +128,7 @@ class MonthViewCell : public QWidget
     void defaultAction( QListBoxItem * );
     void contextMenu( QListBoxItem * );
     void selection( QListBoxItem * );
+    void cellClicked( QListBoxItem * );
     
   private:
     KOMonthView *mMonthView;

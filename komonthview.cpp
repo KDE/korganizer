@@ -207,6 +207,8 @@ MonthViewCell::MonthViewCell( KOMonthView *parent )
            SLOT( contextMenu( QListBoxItem * ) ) );
   connect( mItemList, SIGNAL( highlighted( QListBoxItem *) ),
            SLOT( selection( QListBoxItem * ) ) );
+  connect( mItemList, SIGNAL( clicked( QListBoxItem * ) ),
+           SLOT( cellClicked( QListBoxItem * ) ) );
 }
 
 void MonthViewCell::setDate( const QDate &date )
@@ -408,6 +410,14 @@ void MonthViewCell::defaultAction( QListBoxItem *item )
   if ( incidence ) mMonthView->defaultAction( incidence );
 }
 
+void MonthViewCell::cellClicked( QListBoxItem *item )
+{
+  if ( item == 0 ) {
+    QDateTime dt( date(), QTime( KOPrefs::instance()->mStartTime, 0 ) );
+    emit newEventSignal( dt );
+  }
+}
+
 void MonthViewCell::contextMenu( QListBoxItem *item )
 {
   if ( !item ) return;
@@ -462,6 +472,8 @@ KOMonthView::KOMonthView(Calendar *calendar, QWidget *parent, const char *name)
 
       connect( cell, SIGNAL( defaultAction( Incidence * ) ),
                SLOT( defaultAction( Incidence * ) ) );
+      connect( cell, SIGNAL( newEventSignal( QDateTime ) ),
+               SIGNAL( newEventSignal( QDateTime ) ) );
     }
     dayLayout->setRowStretch( row + 1, 1 );
   }

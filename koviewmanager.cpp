@@ -284,6 +284,8 @@ void KOViewManager::showMonthView()
             mMainView, SLOT(showEvent(Event *)));
     connect(mMonthView, SIGNAL(newEventSignal(QDate)),
             mMainView, SLOT(newEvent(QDate)));
+    connect(mMonthView, SIGNAL(newEventSignal(QDateTime)),
+            mMainView, SLOT(newEvent(QDateTime)));
     connect(mMonthView, SIGNAL(editEventSignal(Event *)),
             mMainView, SLOT(editEvent(Event *)));
     connect(mMonthView, SIGNAL(deleteEventSignal(Event *)),
