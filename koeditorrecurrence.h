@@ -22,7 +22,6 @@
 */
 #ifndef _KOEDITORRECURRENCE_H
 #define _KOEDITORRECURRENCE_H
-// $Id$
 
 #include <qframe.h>
 #include <qlabel.h>
@@ -38,9 +37,10 @@
 #include <libkcal/event.h>
 
 #include "ktimeedit.h"
-#include "kdateedit.h"
 
 class QWidgetStack;
+
+class KDateEdit;
 
 using namespace KCal;
 

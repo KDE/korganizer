@@ -22,7 +22,6 @@
 */
 #ifndef _KOEDITORDETAILS_H
 #define _KOEDITORDETAILS_H
-// $Id$
 
 #include <qframe.h>
 #include <qlabel.h>
@@ -41,8 +40,9 @@
 #include <libkcal/event.h>
 
 #include "ktimeedit.h"
-#include "kdateedit.h"
 #include "customlistviewitem.h"
+
+class KDateEdit;
 
 using namespace KCal;
 

@@ -22,8 +22,6 @@
     without including the source code for Qt in the source distribution.
 */
 
-// $Id$
-
 #include <qlayout.h>
 #include <qcheckbox.h>
 #include <qgroupbox.h>
@@ -33,7 +31,8 @@
 #include <klocale.h>
 #include <kmessagebox.h>
 
-#include "kdateedit.h"
+#include <libkdepim/kdateedit.h>
+
 #include "koglobals.h"
 
 #include "searchdialog.h"

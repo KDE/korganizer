@@ -21,9 +21,6 @@
     without including the source code for Qt in the source distribution.
 */
 
-#include "exportwebdialog.h"
-#include "exportwebdialog.moc"
-
 #include <qlayout.h>
 #include <qhgroupbox.h>
 #include <qvgroupbox.h>
@@ -32,6 +29,7 @@
 #include <qcheckbox.h>
 #include <qlineedit.h>
 #include <qhbox.h>
+#include <qpushbutton.h>
 #include <qfiledialog.h>
 #include <qtextstream.h>
 #include <qlabel.h>
@@ -39,21 +37,26 @@
 #include <klocale.h>
 #include <kdebug.h>
 #include <kfiledialog.h>
+#include <klineedit.h>
 #include <ktempfile.h>
 #include <kurl.h>
 #include <kio/job.h>
 #include <kstandarddirs.h>
 #include <kconfig.h>
 #include <kglobal.h>
+#include <kurlrequester.h>
 
 #include <libkcal/calendar.h>
 
-#include "kdateedit.h"
+#include <libkdepim/kdateedit.h>
+
+#include <libkdepim/kdateedit.h>
+
 #include "koprefs.h"
 #include "htmlexport.h"
-#include <qpushbutton.h>
-#include <kurlrequester.h>
-#include <klineedit.h>
+
+#include "exportwebdialog.h"
+#include "exportwebdialog.moc"
 
 ExportWebDialog::ExportWebDialog (Calendar *cal, QWidget *parent,
                                   const char *name) :

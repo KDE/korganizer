@@ -20,9 +20,8 @@
     with any edition of Qt, and distribute the resulting executable,
     without including the source code for Qt in the source distribution.
 */
-#ifndef _KOEDITORGENERA_H
-#define _KOEDITORGENERA_H
-// $Id$
+#ifndef KOEDITORGENERAL_H
+#define KOEDITORGENERAL_H
 
 #include <qframe.h>
 #include <qlabel.h>
@@ -40,7 +39,8 @@
 #include <libkcal/incidence.h>
 
 #include "ktimeedit.h"
-#include "kdateedit.h"
+
+class KDateEdit;
 
 using namespace KCal;
 

@@ -22,7 +22,6 @@
 */
 #ifndef _KOEDITORGENERALTODO_H
 #define _KOEDITORGENERALTODO_H
-// $Id$
 
 #include <qframe.h>
 #include <qlabel.h>
@@ -36,10 +35,11 @@
 #include <qradiobutton.h>
 
 #include "ktimeedit.h"
-#include "kdateedit.h"
 #include "koeditorgeneral.h"
 
 class KRestrictedLine;
+
+class KDateEdit;
 
 using namespace KCal;
 

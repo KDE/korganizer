@@ -21,8 +21,6 @@
     without including the source code for Qt in the source distribution.
 */
 
-// $Id$
-
 #include <math.h>
 
 #include <qpainter.h>
@@ -47,7 +45,7 @@
 #ifndef KORG_NOPLUGINS
 #include "kocore.h"
 #endif
-#include "kdateedit.h"
+#include <libkdepim/kdateedit.h>
 
 #include "calprinter.h"
 #include "calprinter.moc"

@@ -21,8 +21,6 @@
     without including the source code for Qt in the source distribution.
 */
 
-// $Id$
-//
 // ArchiveDialog -- archive/delete past appointments.
 
 #include <qlabel.h>
@@ -44,7 +42,8 @@
 #include <libkcal/calendar.h>
 #include <libkcal/calendarlocal.h>
 
-#include "kdateedit.h"
+#include <libkdepim/kdateedit.h>
+
 #include "koprefs.h"
 
 #include "archivedialog.h"

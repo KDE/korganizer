@@ -41,6 +41,8 @@
 
 #include <libkcal/event.h>
 
+#include <libkdepim/kdateedit.h>
+
 #include "koprefs.h"
 
 #include "koeditorgeneralevent.h"

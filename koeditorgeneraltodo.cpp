@@ -43,6 +43,8 @@
 
 #include <libkcal/todo.h>
 
+#include <libkdepim/kdateedit.h>
+
 #include "koprefs.h"
 
 #include "koeditorgeneraltodo.h"
