@@ -714,20 +714,9 @@ void CalendarView::edit_cut()
     return;
   }
   DndFactory factory( mCalendar );
-  // @TODO: use a visitor here
-  if ( incidence->type() == "Event" ) {
-    Event *anEvent = static_cast<Event *>(incidence);
-    incidenceToBeDeleted( anEvent );
-    factory.cutEvent(anEvent);
-    incidenceDeleted( anEvent );
-  } else if ( incidence->type() == "Todo" ) {
-    Todo *anTodo = static_cast<Todo *>(incidence);
-    incidenceToBeDeleted( anTodo );
-    factory.cutTodo( anTodo );
-    incidenceDeleted( anTodo );
-  } else {
-    KNotifyClient::beep();
-  }
+  incidenceToBeDeleted( incidence );
+  factory.cutIncidence( incidence );
+  incidenceDeleted( incidence );
 }
 
 void CalendarView::edit_copy()
@@ -739,14 +728,7 @@ void CalendarView::edit_copy()
     return;
   }
   DndFactory factory( mCalendar );
-  // @TODO: use a visitor here
-  if ( incidence->type() == "Event" ) {
-    Event *anEvent = static_cast<Event *>(incidence);
-    factory.copyEvent( anEvent );
-  } else if ( incidence->type() == "Todo" ) {
-    Todo *anTodo = static_cast<Todo *>(incidence);
-    factory.copyTodo( anTodo );
-  } else {
+  if ( !factory.copyIncidence( incidence ) ) {
     KNotifyClient::beep();
   }
 }
@@ -1099,40 +1081,17 @@ void CalendarView::action_mail()
   }
 
   CalendarLocal cal_tmp;
-  Event *event = 0;
-  Event *ev = 0;
-  // @TODO: use a visitor here
-  // @TODO: Also treat todos (and maybe journals here!)
-  if ( incidence && incidence->type() == "Event" ) {
-    event = static_cast<Event *>(incidence);
-    ev = new Event(*event);
-    cal_tmp.addEvent(ev);
+  Incidence *inc_tmp;
+  if ( incidence ) {
+    inc_tmp = incidence->clone();
+    cal_tmp.addIncidence( inc_tmp );
   }
   ICalFormat mForm;
   QString attachment = mForm.toString( &cal_tmp );
-  delete(ev);
+  delete( inc_tmp );
 
-  mailClient.mailAttendees(currentSelection(), attachment);
+  mailClient.mailAttendees( currentSelection(), attachment);
 
-#endif
-
-#if 0
-  Event *anEvent = 0;
-  if (mViewManager->currentView()->isEventView()) {
-    anEvent = dynamic_cast<Event *>((mViewManager->currentView()->selectedIncidences()).first());
-  }
-
-  if (!anEvent) {
-    KMessageBox::sorry(this,i18n("Cannot generate mail:\nNo event selected."));
-    return;
-  }
-  if(anEvent->attendeeCount() == 0 ) {
-    KMessageBox::sorry(this,
-                       i18n("Cannot generate mail:\nNo attendees defined.\n"));
-    return;
-  }
-
-  mailobject.emailEvent(anEvent);
 #endif
 }
 

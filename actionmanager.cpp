@@ -637,7 +637,7 @@ void ActionManager::file_openRecent(const KURL& url)
   if (!url.isEmpty()) {
     KOrg::MainWindow *korg=ActionManager::findInstance(url);
     if ((0 != korg)&&(korg != mMainWindow)) {
-		  // already open in a different windows, activate that one
+      // already open in a different windows, activate that one
       KWin::setActiveWindow(korg->topLevelWidget()->winId());
       return;
     }
