@@ -324,7 +324,7 @@ KURL FreeBusyManager::freeBusyUrl( const QString &email )
   // address (this also avoids downloading for "(empty email)").
   int emailpos = email.find( '@' );
   if( emailpos == -1 )
-    return false;
+    return KURL();
 
   // Cut off everything left of the @ sign to get the user name.
   QString emailName = email.left( emailpos );
