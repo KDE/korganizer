@@ -33,7 +33,7 @@
 #include <kconfig.h>
 #include <kiconloader.h>
 
-#include <calendarsystem/kcalendarsystem.h>
+#include <kcalendarsystem.h>
 
 #ifndef KORG_NOPRINTER
 #include "calprinter.h"
@@ -618,7 +618,7 @@ void KOMonthView::showDates(const QDate &start, const QDate &)
 
   int startWeekDay = mWeekStartsMonday ? 1 : 7;
 
-   while( KOGlobals::self()->calendarSystem()->dayOfTheWeek(mStartDate) != startWeekDay ) {
+   while( KOGlobals::self()->calendarSystem()->dayOfWeek(mStartDate) != startWeekDay ) {
     mStartDate = mStartDate.addDays( -1 );
   }
 
@@ -631,7 +631,7 @@ void KOMonthView::showDates(const QDate &start, const QDate &)
     }
     mCells[i]->setPrimary( primary );
 
-    if ( KOGlobals::self()->calendarSystem()->dayOfTheWeek(date) == KOGlobals::self()->calendarSystem()->weekDayOfPray() ) {
+    if ( KOGlobals::self()->calendarSystem()->dayOfWeek(date) == KOGlobals::self()->calendarSystem()->weekDayOfPray() ) {
       mCells[i]->setHoliday( true );
     } else {
       mCells[i]->setHoliday( false );

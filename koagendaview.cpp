@@ -48,7 +48,7 @@
 #include <libkcal/icaldrag.h>
 #include <libkcal/dndfactory.h>
 
-#include <calendarsystem/kcalendarsystem.h>
+#include <kcalendarsystem.h>
 
 #ifndef KORG_NOPLUGINS
 #include "kocore.h"
@@ -439,7 +439,7 @@ void KOAgendaView::createDayLabels()
 
     QLabel *dayLabel = new QLabel(mDayLabels);
 
-    int dW = KOGlobals::self()->calendarSystem()->dayOfTheWeek(date);
+    int dW = KOGlobals::self()->calendarSystem()->dayOfWeek(date);
     QString str = i18n( "short_weekday date (e.g. Mon 13)","%1 %2" )
         .arg( KOGlobals::self()->calendarSystem()->weekDayName( dW, true ) )
         .arg( KOGlobals::self()->calendarSystem()->day(date) );

@@ -34,7 +34,7 @@
 #include <libkcal/icaldrag.h>
 #include <libkcal/dndfactory.h>
 
-#include <calendarsystem/kcalendarsystem.h>
+#include <kcalendarsystem.h>
 
 #ifndef KORG_NOPLUGINS
 #include "kocore.h"
@@ -258,7 +258,7 @@ void KODayMatrix::updateView(QDate actdate)
 #else
     QString holiStr = QString::null;
 #endif
-   if ( (KOGlobals::self()->calendarSystem()->dayOfTheWeek(days[i]) == KOGlobals::self()->calendarSystem()->weekDayOfPray()) ||
+   if ( (KOGlobals::self()->calendarSystem()->dayOfWeek(days[i]) == KOGlobals::self()->calendarSystem()->weekDayOfPray()) ||
         !holiStr.isEmpty()) {
       if (holiStr.isNull()) holiStr = "";
       mHolidays[i] = holiStr;

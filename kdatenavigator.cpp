@@ -39,7 +39,7 @@
 #include "kocore.h"
 #endif
 
-#include <calendarsystem/kcalendarsystem.h>
+#include <kcalendarsystem.h>
 
 #include "kdatenavigator.h"
 #include "kdatenavigator.moc"
@@ -256,7 +256,7 @@ void KDateNavigator::updateDates()
   //int di = d1 - d2 + 1;
   dayone = dayone.addDays( -d2 + 1 );
 
-  int m_fstDayOfWkCalsys = KOGlobals::self()->calendarSystem()->dayOfTheWeek( dayone );
+  int m_fstDayOfWkCalsys = KOGlobals::self()->calendarSystem()->dayOfWeek( dayone );
 
   // If month begins on Monday and Monday is first day of week,
   // month should begin on second line. Sunday doesn't have this problem.
@@ -302,7 +302,7 @@ void KDateNavigator::updateView()
     // not just 1.
 
     //ET int dayOfYear = buttons[(i + 1) * 7 - 4]->date().dayOfYear();
-    int dayOfYear = KOGlobals::self()->calendarSystem()->numberOfDayInYear((daymatrix->getDate((i+1)*7-4)));
+    int dayOfYear = KOGlobals::self()->calendarSystem()->daysInYear((daymatrix->getDate((i+1)*7-4)));
 
     if (dayOfYear % 7 != 0)
       weeknum.setNum(dayOfYear / 7 + 1);

@@ -28,7 +28,8 @@
 #include <kconfig.h>
 #include <kstandarddirs.h>
 
-#include <calendarsystem/kcalendarsystem.h>
+#include <kcalendarsystem.h>
+#include <kcalendarsystemfactory.h>
 
 #include "kalarmdclient.h"
 #include "simplealarmclient.h"

@@ -28,7 +28,6 @@ lib_LTLIBRARIES = libkorganizer.la
 libkorganizer_la_LDFLAGS = $(all_libraries) $(KDE_RPATH) -version-info 1:0
 libkorganizer_la_LIBADD  = $(LIB_KPARTS) $(LIB_KFILE) \
                            -lkdeprint -lkabc \
-                           $(top_builddir)/calendarsystem/libkcalsystem.la \
                            $(top_builddir)/libkcal/libkcal.la \
                            $(top_builddir)/libkdepim/libkdepim.la \
                            $(top_builddir)/kalarmd/libkalarmd.la \
