@@ -382,6 +382,7 @@ KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent, const char* name)
   mTodoListView->setColumnWidthMode( 3, QListView::Manual );
   mTodoListView->setColumnWidthMode( 4, QListView::Manual );
   mTodoListView->setColumnWidthMode( 5, QListView::Manual );
+  mTodoListView->setColumnWidthMode( 6, QListView::Manual );
 #if 0
   mTodoListView->setColumnWidthMode( 6, QListView::Manual );
 #endif
@@ -665,16 +666,16 @@ void KOTodoView::popupMenu( QListViewItem *item, const QPoint &, int column )
         dtDue().date() );
     }
     switch ( column ) {
-      case 1:
+      case 2:
         mPriorityPopupMenu->popup( QCursor::pos () );
         break;
-      case 2:
+      case 3:
         mPercentageCompletedPopupMenu->popup( QCursor::pos () );
         break;
-      case 3:
+      case 4:
           mDatePickerPopupMenu->popup( QCursor::pos () );
         break;
-      case 5:
+      case 6:
         getCategoryPopupMenu(
             static_cast<KOTodoViewItem *>( item ) )->popup( QCursor::pos () );
         break;
