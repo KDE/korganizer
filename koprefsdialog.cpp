@@ -92,9 +92,24 @@ void KOPrefsDialog::setupMainTab()
   topLayout->addMultiCellWidget(mBccCheck,4,4,0,1);
 
 
+  mHolidayList << QString::null;
+  QStringList countryList = KGlobal::dirs()->findAllResources("data",
+      "korganizer/holiday_*", false, true);
+  for ( QStringList::Iterator it = countryList.begin();
+        it != countryList.end();
+        ++it )
+    mHolidayList << (*it).mid((*it).findRev('_') + 1);
+
+  topLayout->addWidget(new QLabel(i18n("Holidays:"),topFrame),5,0);
+  mHolidayCombo = new QComboBox(topFrame);
+  mHolidayCombo->insertStringList(mHolidayList);
+
+  topLayout->addWidget(mHolidayCombo,5,1);
+
+
   QGroupBox *autoSaveGroup = new QGroupBox(1,Horizontal,i18n("Auto-Save"),
                                            topFrame);
-  topLayout->addMultiCellWidget(autoSaveGroup,5,5,0,1);
+  topLayout->addMultiCellWidget(autoSaveGroup,6,6,0,1);
 
   mAutoSaveCheck = new QCheckBox(i18n("Enable automatic saving of calendar"),
                                  autoSaveGroup);
@@ -104,21 +119,6 @@ void KOPrefsDialog::setupMainTab()
 
   (void)new QLabel(i18n("Save interval in minutes:"),intervalBox);
   mAutoSaveIntervalSpin = new QSpinBox(0,500,1,intervalBox);
-
-
-  mHolidayList << QString::null;
-  QStringList countryList = KGlobal::dirs()->findAllResources("data",
-      "korganizer/holiday_*", false, true);
-  for ( QStringList::Iterator it = countryList.begin();
-        it != countryList.end();
-        ++it )
-    mHolidayList << (*it).mid((*it).findRev('_') + 1);
-
-  topLayout->addWidget(new QLabel(i18n("Holidays:"),topFrame),6,0);
-  mHolidayCombo = new QComboBox(topFrame);
-  mHolidayCombo->insertStringList(mHolidayList);
-
-  topLayout->addWidget(mHolidayCombo,6,1);
 
 
   mConfirmCheck = new QCheckBox(i18n("Confirm Deletes"),topFrame);
@@ -142,7 +142,9 @@ void KOPrefsDialog::setupMainTab()
 
   // Disable settings for experimental features
   mEnableGroupScheduling->checkBox()->hide();
-//  mEnableProjectView->checkBox()->hide();
+
+  // Disable setting, because this feature now becomes stable
+  mEnableProjectView->checkBox()->hide();
 
   KPrefsWidRadios *defaultFormatGroup =
       new KPrefsWidRadios(i18n("Default Calendar Format"),
@@ -160,7 +162,13 @@ void KOPrefsDialog::setupMainTab()
 
   topLayout->addMultiCellWidget(mailClientGroup->groupBox(),11,11,0,1);
 
-  topLayout->setRowStretch(12,1);
+  KPrefsWidBool *alarmdAutostart =
+      new KPrefsWidBool(i18n("Automatically Start Alarm Dameon on Login"),
+                        &(KOPrefs::instance()->mAlarmdAutostart),this,
+                        topFrame);
+  topLayout->addMultiCellWidget(alarmdAutostart->checkBox(),12,12,0,1);
+
+  topLayout->setRowStretch(13,1);
 }
 
 

@@ -42,6 +42,10 @@ KOPrefs::KOPrefs() :
   addPrefsItem(new KPrefsItemBool("Use Control Center Email",
                                   &mEmailControlCenter,false));
 
+  KPrefsItem::setCurrentGroup("AlarmDaemon");
+
+  addPrefsItem(new KPrefsItemBool("Autostart",&mAlarmdAutostart,false));
+
   KPrefsItem::setCurrentGroup("Calendar");
   
   addPrefsItem(new KPrefsItemInt("Default Calendar Format",&mDefaultFormat,

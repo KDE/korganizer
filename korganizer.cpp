@@ -260,11 +260,12 @@ void KOrganizer::initActions()
   (void)new KAction(i18n("&To-do list"), "todo", 0,
                     mCalendarView, SLOT(showTodoView()),
                     actionCollection(), "view_todo");
-  if (KOPrefs::instance()->mEnableProjectView) {
+// Unconditionally enable project view
+//  if (KOPrefs::instance()->mEnableProjectView) {
     (void)new KAction(i18n("&Project"), 0,
                       mCalendarView, SLOT(showProjectView()),
                       actionCollection(), "view_project");
-  }
+//  }
   (void)new KAction(i18n("&Journal"), 0,
                     mCalendarView, SLOT(showJournalView()),
                     actionCollection(), "view_journal");

@@ -1,0 +1,11 @@
+# KDE Config File 
+[KDE Desktop Entry]
+Name=alarmd
+Exec=alarmd
+Icon=alarmd
+Type=Application
+Comment=KOrganizer alarm daemon
+Terminal=0
+MapNotify=true
+X-KDE-autostart-after=panel
+X-KDE-autostart-condition=korganizerrc:AlarmDaemon:Autostart:true

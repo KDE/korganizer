@@ -83,6 +83,9 @@ noinst_HEADERS = komonthview.h \
 
 SUBDIRS = pixmaps sounds
 
+autostart_DATA = alarmd.desktop
+autostartdir = $(prefix)/share/autostart
+
 datadir = $(kde_bindir)
 data_SCRIPTS = ical2vcal
 
