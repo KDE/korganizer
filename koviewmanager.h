@@ -23,6 +23,8 @@
 
 #include <qobject.h>
 
+#include <korganizer/baseview.h>
+
 class CalendarView;
 
 class KOListView;

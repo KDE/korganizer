@@ -29,11 +29,12 @@ class QCheckBox;
 class QLabel;
 class QSpinBox;
 class QLineEdit;
+class QButtonGroup;
 
 /**
   @short Base class for widgets used by @ref KPrefsDialog.
   @author Cornelius Schumacher
-  @see KPrefsWid
+  @see KPrefsDialog
 
   This class provides the interface for the preferences widgets used by
   KPrefsDialog.

@@ -51,15 +51,6 @@ class KODialogManager : public QObject
     KODialogManager( CalendarView * );
     virtual ~KODialogManager();
 
-    void showOptionsDialog();
-    void showIncomingDialog();
-    void showOutgoingDialog();
-    void showCategoryEditDialog();
-    void showSearchDialog();
-    void showArchiveDialog();
-    void showFilterEditDialog(QPtrList<CalFilter> filters);
-    void showPluginDialog();
-
     /** Get an editor dialog for an Event. */
     KOEventEditor *getEventEditor();
     
@@ -70,6 +61,16 @@ class KODialogManager : public QObject
 
     void updateSearchDialog();
     
+  public slots:
+    void showOptionsDialog();
+    void showIncomingDialog();
+    void showOutgoingDialog();
+    void showCategoryEditDialog();
+    void showSearchDialog();
+    void showArchiveDialog();
+    void showFilterEditDialog(QPtrList<CalFilter> filters);
+    void showPluginDialog();
+
   private:
     void createOutgoingDialog();
 

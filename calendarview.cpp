@@ -65,8 +65,6 @@
 #include "koeventviewerdialog.h"
 #include "publishdialog.h"
 #include "kofilterview.h"
-#include "kowhatsnextview.h"
-#include "kojournalview.h"
 #include "koglobals.h"
 #include "koviewmanager.h"
 #include "kodialogmanager.h"
@@ -177,6 +175,16 @@ CalendarView::~CalendarView()
   delete mCalendar;
 
   kdDebug() << "~CalendarView() done" << endl;
+}
+
+KOViewManager *CalendarView::viewManager()
+{
+  return mViewManager;
+}
+
+KODialogManager *CalendarView::dialogManager()
+{
+  return mDialogManager;
 }
 
 QDate CalendarView::startDate()
@@ -852,11 +860,6 @@ bool CalendarView::deleteEvent(const QString &VUID)
 
 /*****************************************************************************/
 
-void CalendarView::action_search()
-{
-  mDialogManager->showSearchDialog();
-}
-
 void CalendarView::action_mail()
 {
 #ifndef KORG_NOMAIL
@@ -897,67 +900,6 @@ void CalendarView::action_mail()
 #endif
 }
 
-
-void CalendarView::showWhatsNextView()
-{
-  mViewManager->showWhatsNextView();
-}
-
-void CalendarView::showListView()
-{
-  mViewManager->showListView();
-}
-
-void CalendarView::showAgendaView()
-{
-  mViewManager->showAgendaView();
-}
-
-void CalendarView::showDayView()
-{
-  mViewManager->showDayView();
-}
-
-void CalendarView::showWorkWeekView()
-{
-  mViewManager->showWorkWeekView();
-}
-
-void CalendarView::showWeekView()
-{
-  mViewManager->showWeekView();
-}
-
-void CalendarView::showMonthView()
-{
-  mViewManager->showMonthView();
-}
-
-void CalendarView::showTodoView()
-{
-  mViewManager->showTodoView();
-}
-
-void CalendarView::showJournalView()
-{
-  mViewManager->showJournalView();
-}
-
-void CalendarView::showTimeSpanView()
-{
-  mViewManager->showTimeSpanView();
-}
-
-
-void CalendarView::schedule_outgoing()
-{
-  mDialogManager->showOutgoingDialog();
-}
-
-void CalendarView::schedule_incoming()
-{
-  mDialogManager->showIncomingDialog();
-}
 
 void CalendarView::schedule_publish()
 {
@@ -1226,11 +1168,6 @@ void CalendarView::selectDates(const DateList &selectedDates)
   }
 }
 
-void CalendarView::editCategories()
-{
-  mDialogManager->showCategoryEditDialog();
-}
-
 void CalendarView::editFilters()
 {
 //  kdDebug() << "CalendarView::editFilters()" << endl;
@@ -1312,11 +1249,6 @@ void CalendarView::takeOverCalendar()
 void CalendarView::showIntro()
 {
   kdDebug() << "To be implemented." << endl;
-}
-
-void CalendarView::configurePlugins()
-{
-  mDialogManager->showPluginDialog();
 }
 
 QWidgetStack *CalendarView::viewStack()

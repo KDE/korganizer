@@ -53,8 +53,9 @@
 
 #include "komailclient.h"
 #include "calprinter.h"
-#include "exportwebdialog.h"
 #include "calendarview.h"
+#include "koviewmanager.h"
+#include "kodialogmanager.h"
 #include "kowindowlist.h"
 #include "koprefs.h"
 #include "kocore.h"
@@ -195,6 +196,8 @@ void KOrganizer::initActions()
 {
   KAction *action;
 
+  // File menu.
+
   KStdAction::openNew(this, SLOT(file_new()), actionCollection());
   KStdAction::open(this, SLOT(file_open()), actionCollection());
   mRecent = KStdAction::openRecent(this, SLOT(file_openRecent(const KURL&)),
@@ -210,11 +213,6 @@ void KOrganizer::initActions()
   (void)new KAction(i18n("Archive Old Entries..."), 0, this, SLOT(file_archive()),
                     actionCollection(), "file_archive");
 
-#if 0
-  (void)new KAction(i18n("Web Page..."), 0,
-                    mCalendarView, SLOT(exportWeb()),
-                    actionCollection(), "export_web");
-#endif
   (void)new KAction(i18n("iCalendar..."), 0,
                     mCalendarView, SLOT(exportICalendar()),
                     actionCollection(), "export_icalendar");
@@ -238,7 +236,9 @@ void KOrganizer::initActions()
                     actionCollection(),"make_active");
   KStdAction::quit(this, SLOT(close()), actionCollection());
 
-  // setup edit menu
+
+  // edit menu
+
   action = KStdAction::cut(mCalendarView,SLOT(edit_cut()),actionCollection());
   connect(mCalendarView,SIGNAL(eventsSelected(bool)),
           action,SLOT(setEnabled(bool)));
@@ -254,48 +254,45 @@ void KOrganizer::initActions()
                     actionCollection(), "edit_delete");
   connect(mCalendarView,SIGNAL(eventsSelected(bool)),
           action,SLOT(setEnabled(bool)));
+  KStdAction::find(mCalendarView->dialogManager(), SLOT(showSearchDialog()),
+                   actionCollection());
+
 
   // view menu
+
   (void)new KAction(i18n("What's &Next"), "whatsnext", 0,
-                    mCalendarView, SLOT(showWhatsNextView()),
+                    mCalendarView->viewManager(), SLOT(showWhatsNextView()),
                     actionCollection(), "view_whatsnext");
   (void)new KAction(i18n("&List"), "list", 0,
-                    mCalendarView, SLOT(showListView()),
+                    mCalendarView->viewManager(), SLOT(showListView()),
                     actionCollection(), "view_list");
   (void)new KAction(i18n("&Day"), "1day", 0,
-                    mCalendarView, SLOT(showDayView()),
+                    mCalendarView->viewManager(), SLOT(showDayView()),
                     actionCollection(), "view_day");
   (void)new KAction(i18n("W&ork Week"), "5days", 0,
-                    mCalendarView, SLOT(showWorkWeekView()),
+                    mCalendarView->viewManager(), SLOT(showWorkWeekView()),
                     actionCollection(), "view_workweek");
   (void)new KAction(i18n("&Week"), "7days", 0,
-                    mCalendarView, SLOT(showWeekView()),
+                    mCalendarView->viewManager(), SLOT(showWeekView()),
                     actionCollection(), "view_week");
   (void)new KAction(i18n("&Month"), "month", 0,
-                    mCalendarView, SLOT(showMonthView()),
+                    mCalendarView->viewManager(), SLOT(showMonthView()),
                     actionCollection(), "view_month");
   (void)new KAction(i18n("&To-do list"), "todo", 0,
-                    mCalendarView, SLOT(showTodoView()),
+                    mCalendarView->viewManager(), SLOT(showTodoView()),
                     actionCollection(), "view_todo");
-#if 0
-// Unconditionally enable project view
-//  if (KOPrefs::instance()->mEnableProjectView) {
-    (void)new KAction(i18n("&Project"), 0,
-                      mCalendarView, SLOT(showProjectView()),
-                      actionCollection(), "view_project");
-//  }
-#endif
   (void)new KAction(i18n("&Journal"), 0,
-                    mCalendarView, SLOT(showJournalView()),
+                    mCalendarView->viewManager(), SLOT(showJournalView()),
                     actionCollection(), "view_journal");
   (void)new KAction(i18n("&Time Span"), "timespan", 0,
-                    mCalendarView, SLOT(showTimeSpanView()),
+                    mCalendarView->viewManager(), SLOT(showTimeSpanView()),
                     actionCollection(), "view_timespan");
   (void)new KAction(i18n("&Update"), 0,
                     mCalendarView, SLOT(update()),
                     actionCollection(), "update");
 
-  // event handling menu
+  // actions menu
+
   (void)new KAction(i18n("New E&vent..."), "appointment", 0,
                     mCalendarView,SLOT(appointment_new()),
                     actionCollection(), "new_event");
@@ -321,9 +318,7 @@ void KOrganizer::initActions()
   (void)new KAction(i18n("T&ake over Calendar"), 0,
                     mCalendarView,SLOT(takeOverCalendar()),
                     actionCollection(), "takeover_calendar");
-#endif  
-
-  KStdAction::find(mCalendarView, SLOT(action_search()), actionCollection());
+#endif
 
   action = new KAction(i18n("&Mail Appointment"), "mail_generic", 0,
                     mCalendarView,SLOT(action_mail()),
@@ -331,12 +326,14 @@ void KOrganizer::initActions()
   connect(mCalendarView,SIGNAL(eventsSelected(bool)),
           action,SLOT(setEnabled(bool)));
 
-  // Schedule menu
+
+  // Schedule menu.
+
   (void)new KAction(i18n("Outgoing Messages..."),0,
-                    mCalendarView,SLOT(schedule_outgoing()),
+                    mCalendarView->dialogManager(),SLOT(showOutgoingDialog()),
                     actionCollection(),"outgoing");
   (void)new KAction(i18n("Incoming Messages..."),0,
-                    mCalendarView,SLOT(schedule_incoming()),
+                    mCalendarView->dialogManager(),SLOT(showIncomingDialog()),
                     actionCollection(),"incoming");
   action = new KAction(i18n("Publish"),"mail_send",0,
                        mCalendarView,SLOT(schedule_publish()),
@@ -379,7 +376,9 @@ void KOrganizer::initActions()
   connect(mCalendarView,SIGNAL(eventsSelected(bool)),
           action,SLOT(setEnabled(bool)));
 
-  // Navigation menu  
+  
+  // Navigation menu
+  
   (void)new KAction(i18n("Go to &Today"), "today", 0,
                     mCalendarView,SLOT(goToday()),
                     actionCollection(), "go_today");
@@ -402,17 +401,13 @@ void KOrganizer::initActions()
   connect(mCalendarView,SIGNAL(changeNavStringNext(const QString &)),
           action,SLOT(setText(const QString &)));
 */
-      
-  // setup Settings menu
-//  mToolBarToggleAction = KStdAction::showToolbar(this,SLOT(toggleToolBar()),
-//                                                 actionCollection());
-//  KStdAction::showStatusbar(this, SLOT(toggleStatusBar()), actionCollection());
 
+
+  // Settings menu.
 
   (void)new KAction(i18n("Configure &Date && Time..."), 0,
                     this,SLOT(configureDateTime()),
                     actionCollection(), "conf_datetime");
-
 
   mStatusBarAction = KStdAction::showStatusbar(this,SLOT(toggleStatusBar()),
                                                actionCollection());
@@ -430,13 +425,14 @@ void KOrganizer::initActions()
   KStdAction::keyBindings(this, SLOT(editKeys()), actionCollection());
 
   (void)new KAction(i18n("Edit Categories"), 0,
-                    mCalendarView,SLOT(editCategories()),
+                    mCalendarView->dialogManager(),
+                    SLOT(showCategoryEditDialog()),
                     actionCollection(),"edit_categories");
   (void)new KAction(i18n("Edit Filters"), 0,
                     mCalendarView,SLOT(editFilters()),
                     actionCollection(),"edit_filters");
   (void)new KAction(i18n("Configure Plugins"), 0,
-                    mCalendarView,SLOT(configurePlugins()),
+                    mCalendarView->dialogManager(),SLOT(showPluginDialog()),
                     actionCollection(),"configure_plugins");
 
 #if 0
@@ -1128,8 +1124,10 @@ void KOrganizer::toggleFilterView()
 
 void KOrganizer::statusBarPressed(int id)
 {
-  if (id == ID_MESSAGES_IN) mCalendarView->schedule_incoming();
-  else if (id == ID_MESSAGES_OUT) mCalendarView->schedule_outgoing();
+  if (id == ID_MESSAGES_IN)
+    mCalendarView->dialogManager()->showIncomingDialog();
+  else if (id == ID_MESSAGES_OUT)
+    mCalendarView->dialogManager()->showOutgoingDialog();
 }
 
 void KOrganizer::setNumIncoming(int num)

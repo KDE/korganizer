@@ -34,12 +34,8 @@
 
 #include <korganizer/calendarviewbase.h>
 
-#include "kdatenav.h"
-#include "koagendaview.h"
-#include "kolistview.h"
 #include "kotodoview.h"
-#include "komonthview.h"
-#include "kotimespanview.h"
+#include "kdatenav.h"
 
 class QWidgetStack;
 class CalPrinter;
@@ -89,6 +85,9 @@ class CalendarView : public KOrg::CalendarViewBase
     virtual ~CalendarView();
   
     Calendar *calendar() { return mCalendar; }
+
+    KOViewManager *viewManager();
+    KODialogManager *dialogManager();
 
     QDate startDate();
     QDate endDate();
@@ -293,11 +292,6 @@ class CalendarView : public KOrg::CalendarViewBase
      * deletes the currently selected todo item, if one is selected.
      */
     void action_deleteTodo();
-    /**
-     * allows the user to enter a search RegExp and a date range, and then
-     * displays / returns a list of appointments that fit the criteria.
-     */
-    void action_search();
   
     /** mails the currently selected event to a particular user as a vCalendar 
       attachment. */
@@ -321,20 +315,6 @@ class CalendarView : public KOrg::CalendarViewBase
     
     void eventUpdated(Incidence *);
   
-    void showWhatsNextView();
-    void showListView();
-    void showAgendaView();
-    void showDayView();
-    void showWorkWeekView();
-    void showWeekView();
-    void showMonthView();
-    void showTodoView();
-    void showJournalView();
-    void showTimeSpanView();
-
-    void schedule_outgoing();
-    void schedule_incoming();
-
     /* iTIP scheduling actions */  
     void schedule_publish();
     void schedule_request();
@@ -345,7 +325,6 @@ class CalendarView : public KOrg::CalendarViewBase
     void schedule_counter();
     void schedule_declinecounter();
 
-    void editCategories();
     void editFilters();
 
     void showFilter(bool visible);
@@ -353,8 +332,6 @@ class CalendarView : public KOrg::CalendarViewBase
     void filterEdited();
 
     void showIntro();
-
-    void configurePlugins();
 
     /** Move the current view date to today */
     void goToday();
