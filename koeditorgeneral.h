@@ -84,6 +84,7 @@ class KOEditorGeneral : public QObject
 
   protected:
     QLineEdit               *mSummaryEdit;
+    QLineEdit               *mLocationEdit;
     QLabel                  *mAlarmBell;
     QCheckBox               *mAlarmButton;
     KRestrictedLine         *mAlarmTimeEdit;
