@@ -1379,7 +1379,7 @@ bool ActionManager::saveResourceCalendar()
     if ( (*it)->readOnly() ) continue;
     if ( !(*it)->save() ) {
       int result = KMessageBox::warningContinueCancel( view(),
-        i18n("Saving '%1' failed. Please check, if the resource is "
+        i18n("Saving of '%1' failed. Check that the resource is "
              "properly configured.\nIgnore problem and continue without "
              "saving or cancel save?").arg( (*it)->resourceName() ),
         i18n("Save Error"), i18n("Don't save") );
