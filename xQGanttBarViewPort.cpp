@@ -872,3 +872,4 @@ xQGanttBarViewPort::selectTask(xQTask* task, bool f)
   }
 
 }
+#include "xQGanttBarViewPort.moc"

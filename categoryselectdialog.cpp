@@ -105,3 +105,4 @@ void CategorySelectDialog::updateCategoryConfig()
   
   setSelected(selected);
 }
+#include "categoryselectdialog.moc"

@@ -74,3 +74,4 @@ xQGanttListView::paintEvent(QPaintEvent * e)
   printf("xQGanttListView::paintEvent()\n");  
   drawHeader();
 }
+#include "xQGanttListView.moc"

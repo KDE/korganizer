@@ -91,3 +91,4 @@ xQGantt::dumpTasks()
 
 
 
+#include "xQGantt.moc"

@@ -125,3 +125,4 @@ KOrganizerBrowserExtension::KOrganizerBrowserExtension(KOrganizerPart *parent) :
 KOrganizerBrowserExtension::~KOrganizerBrowserExtension()
 {
 }
+#include "korganizer_part.moc"

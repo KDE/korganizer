@@ -106,3 +106,4 @@ void IncomingDialog::rejectMessage()
     emit numMessagesChanged(mMessageListView->childCount());
   }
 }
+#include "incomingdialog.moc"

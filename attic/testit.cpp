@@ -25,3 +25,4 @@ void main()
   a.setValue(79);
   printf("b is now: %d\n",b.value());
 }
+#include "testit.moc"

@@ -77,3 +77,4 @@ void CategoryEditDialog::slotApply()
   
   emit categoryConfigChanged();
 }
+#include "categoryeditdialog.moc"

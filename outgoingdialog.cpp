@@ -88,3 +88,4 @@ void OutgoingDialog::send()
 
   emit numMessagesChanged(mMessageListView->childCount());
 }
+#include "outgoingdialog.moc"

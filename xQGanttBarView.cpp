@@ -193,3 +193,4 @@ xQGanttBarView::paintEvent(QPaintEvent * e)
   drawHeader();
 }
 
+#include "xQGanttBarView.moc"

@@ -51,3 +51,4 @@ void KOFilterView::updateFilter()
   
   emit filterChanged();
 }
+#include "kofilterview.moc"
