@@ -2,11 +2,32 @@
                        | K   O R G A N I Z E R |
                        +-----------------------+
 
-                            version 2.2
+                            version 3.0
 
                        http://korganizer.kde.org
 
 QUICK NOTES ON WHAT'S NEW IN THIS RELEASE:
+
+* Official 3.0 release (March 2002)
+
+  - Bug fixes
+
+* Beta Release 3.0beta2 (Februrary 2002)
+
+  - More group scheduling fixes
+  - Other bug fixes
+
+* Beta Release 3.0beta1 (December 2001)
+
+  - Group scheduling fixes
+
+* Alpha Release 3.0alpha1 (October 2001)
+
+  - Group scheduling
+  - Plugin interface
+  - Marcus Bain line
+  - Full port to Qt3/KDE3
+  - Major code cleanup
 
 * Official 2.2 release (August 2001)
 
