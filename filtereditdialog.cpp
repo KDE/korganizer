@@ -31,7 +31,7 @@
 
 #include <kdebug.h>
 #include <klocale.h>
-#include <klineeditdlg.h>
+#include <kinputdialog.h>
 #include <kmessagebox.h>
   
 #include <libkdepim/categoryselectdialog.h>
@@ -138,10 +138,11 @@ void FilterEditDialog::slotOk()
 
 void FilterEditDialog::slotAdd()
 {
-  KLineEditDlg dlg( i18n("Enter filter name:"), QString::null, this );
-  dlg.setCaption( i18n("Add Filter") );
-  if ( dlg.exec() ) {
-    mFilters->append( new CalFilter( dlg.text() ) );
+  QString txt = KInputDialog::getText( i18n("Add Filter"),
+                                       i18n("Enter filter name:"),
+                                       QString::null, 0, this );
+  if ( !txt.isEmpty() ) {
+    mFilters->append( new CalFilter( txt ) );
     updateFilterList();
   }
 }
