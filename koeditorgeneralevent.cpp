@@ -238,6 +238,9 @@ void KOEditorGeneralEvent::endTimeChanged( QTime newtime )
 
 void KOEditorGeneralEvent::startDateChanged( const QDate &newdate )
 {
+  if ( !newdate.isValid() )
+    return;
+
   int daysep = mCurrStartDateTime.daysTo(mCurrEndDateTime);
 
   mCurrStartDateTime.setDate(newdate);
@@ -251,6 +254,9 @@ void KOEditorGeneralEvent::startDateChanged( const QDate &newdate )
 
 void KOEditorGeneralEvent::endDateChanged( const QDate &newdate )
 {
+  if ( !newdate.isValid() )
+    return;
+
   QDateTime newdt(newdate, mCurrEndDateTime.time());
 
   if(newdt < mCurrStartDateTime) {
