@@ -226,17 +226,17 @@ KOTodoView::KOTodoView(CalObject *calendar,QWidget* parent,const char* name) :
   KOBaseView(calendar,parent,name)
 {
   QBoxLayout *topLayout = new QVBoxLayout(this);
-  
+
   QLabel *title = new QLabel(i18n("To-Do Items"),this);
   title->setFrameStyle(QFrame::Panel|QFrame::Raised);
   topLayout->addWidget(title);
-  
+
   mTodoListView = new KOTodoListView(mCalendar,this);
   topLayout->addWidget(mTodoListView);
 
   mTodoListView->setRootIsDecorated(true);
   mTodoListView->setAllColumnsShowFocus(true);
-  
+
   mTodoListView->addColumn(i18n("Summary"));
   mTodoListView->addColumn(i18n("Priority"));
   mTodoListView->setColumnAlignment(1,AlignHCenter);
@@ -244,13 +244,13 @@ KOTodoView::KOTodoView(CalObject *calendar,QWidget* parent,const char* name) :
   mTodoListView->addColumn(i18n("Due Time"));
   mTodoListView->addColumn(i18n("Sort Id"));
   mTodoListView->setColumnAlignment(4,AlignHCenter);
-  
+
   mItemPopupMenu = new QPopupMenu;
   mItemPopupMenu->insertItem(i18n("Show..."), this,
                              SLOT (showTodo()));
   mItemPopupMenu->insertItem(i18n("Edit..."), this,
                              SLOT (editTodo()));
-  mItemPopupMenu->insertItem(SmallIconSet("delete"), i18n("Delete"), this,
+  mItemPopupMenu->insertItem(SmallIconSet("editdelete"), i18n("Delete"), this,
                              SLOT (deleteTodo()));
   mItemPopupMenu->insertSeparator();
   mItemPopupMenu->insertItem(SmallIconSet("todo"), i18n("New To-Do..."), this,
