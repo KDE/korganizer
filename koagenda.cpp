@@ -1414,22 +1414,23 @@ void KOAgenda::insertMultiItem (Event *event,QDate qd,int XBegin,int XEnd,
 void KOAgenda::removeEvent( Event *event )
 {
   // TODO_RK: make sure the conflicting items are updated correctly
-  KOAgendaItem *item = mItems.first();
-  bool taken = false;
+
   // First find all items to be deleted and store them
   // in its own list. Otherwise removeAgendaItem will reset
   // the current position and mess this up.
-  QPtrList<KOAgendaItem> mItemsToRemove;
+  QPtrList<KOAgendaItem> itemsToRemove;
+
+  KOAgendaItem *item = mItems.first();
   while ( item ) {
     if ( item->incidence() == event ) {
-      mItemsToRemove.append( item );
+      itemsToRemove.append( item );
     }
     item = mItems.next();
   }
-  item = mItemsToRemove.first();
+  item = itemsToRemove.first();
   while ( item ) {
-    taken = removeAgendaItem( item );
-    item = mItemsToRemove.next();
+    removeAgendaItem( item );
+    item = itemsToRemove.next();
   }
 }
 
