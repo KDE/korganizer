@@ -491,6 +491,8 @@ RecurrenceChooser::RecurrenceChooser( QWidget *parent, const char *name ) :
 
     connect( mTypeCombo, SIGNAL( activated( int ) ), SLOT( emitChoice() ) );
   } else {
+    mTypeCombo = 0;
+  
     QButtonGroup *ruleButtonGroup = new QButtonGroup( 1, Horizontal, this );
     ruleButtonGroup->setFrameStyle( QFrame::NoFrame );
     topLayout->addWidget( ruleButtonGroup );
