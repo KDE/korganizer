@@ -159,14 +159,6 @@ class KOAgendaView : public KOEventView {
     void setExpandedButton( bool expanded );
 
   signals:
-    void editEventSignal(Event *);  // From KOBaseView
-    void showEventSignal(Event *);
-    void deleteEventSignal(Event *);  // From KOBaseView
-    void newEventSignal();  // From KOBaseView
-    void newEventSignal(QDate);
-    void newEventSignal(QDateTime);
-    void newEventSignal(QDateTime, QDateTime);  // From KOBaseView
-
     void toggleExpand();
 
     void eventChanged();

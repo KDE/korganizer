@@ -60,7 +60,6 @@ class KOTodoListView : public KListView
 
   signals:
     void todoDropped(Todo *);
-    void doubleClicked(QListViewItem *,const QPoint &,int);
 
   protected:
     void contentsDragEnterEvent(QDragEnterEvent *);
