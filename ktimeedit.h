@@ -22,7 +22,6 @@
 */
 #ifndef _KTIMEEDIT_H
 #define _KTIMEEDIT_H
-// $Id$
 
 #include <qevent.h>
 #include <qkeycode.h>

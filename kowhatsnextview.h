@@ -18,7 +18,6 @@
 */
 #ifndef KOWHATSNEXTVIEW_H
 #define KOWHATSNEXTVIEW_H
-// $Id$
 
 #include <qtextbrowser.h>
 

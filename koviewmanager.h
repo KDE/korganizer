@@ -23,7 +23,6 @@
 */
 #ifndef KOVIEWMANAGER_H
 #define KOVIEWMANAGER_H
-// $Id$
 
 #include <qobject.h>
 

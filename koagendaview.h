@@ -22,7 +22,6 @@
 */
 #ifndef KOAGENDAVIEW_H
 #define KOAGENDAVIEW_H
-// $Id$
 //
 // KOAgendaView is the agenda-like view used to display events in an one or
 // multi-day view.

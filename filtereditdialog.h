@@ -22,7 +22,6 @@
 */
 #ifndef _FILTEREDITDIALOG_H
 #define _FILTEREDITDIALOG_H
-// $Id$	
 
 #include <qptrlist.h>
 

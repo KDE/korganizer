@@ -22,13 +22,6 @@
 */
 #ifndef _CALPRINTER_H
 #define _CALPRINTER_H
-/*
- * CalPrinter is a class for printing Calendars.  It can print in several
- * different formats (day, week, month).  It also provides a way for setting
- * up the printer and remembering these preferences.
- *
- * $Id$
- */
 
 #include <unistd.h>
 
@@ -47,6 +40,11 @@ class KTempFile;
 
 using namespace KCal;
 
+/**
+  CalPrinter is a class for printing Calendars.  It can print in several
+  different formats (day, week, month).  It also provides a way for setting
+  up the printer and remembering these preferences.
+*/
 class CalPrinter : public QObject
 {
     Q_OBJECT

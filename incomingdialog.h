@@ -18,7 +18,6 @@
 */
 #ifndef INCOMINGDIALOG_H
 #define INCOMINGDIALOG_H
-// $Id$
 
 #include <qlistview.h>
 

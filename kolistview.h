@@ -23,7 +23,6 @@
 */
 #ifndef _KOLISTVIEW_H
 #define _KOLISTVIEW_H
-// $Id$
 
 #include <qlistview.h>
 #include <qmap.h>

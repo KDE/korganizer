@@ -21,8 +21,6 @@
     without including the source code for Qt in the source distribution.
 */
 
-// $Id$
-
 #include <kinstance.h>
 #include <klocale.h>
 #include <kaboutdata.h>

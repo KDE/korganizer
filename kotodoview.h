@@ -22,7 +22,6 @@
 */
 #ifndef KOTODOVIEW_H
 #define KOTODOVIEW_H
-// $Id$
 
 #include <qfont.h>
 #include <qfontmetrics.h>

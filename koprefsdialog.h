@@ -22,7 +22,6 @@
 */
 #ifndef _KOPREFSDIALOG_H
 #define _KOPREFSDIALOG_H
-// $Id$
 
 #include <qframe.h>
 #include <qdict.h>

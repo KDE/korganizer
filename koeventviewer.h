@@ -18,7 +18,6 @@
 */
 #ifndef KOEVENTVIEWER_H
 #define KOEVENTVIEWER_H
-// $Id$
 //
 // Viewer widget for events.
 //

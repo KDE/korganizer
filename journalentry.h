@@ -22,7 +22,6 @@
 */
 #ifndef JOURNALENTRY_H
 #define JOURNALENTRY_H
-// $Id$
 //
 // Widget showing one Journal entry
 

@@ -23,7 +23,6 @@
 */
 #ifndef _KOEVENTVIEW_H
 #define _KOEVENTVIEW_H
-// $Id$
 
 #include <libkcal/calendar.h>
 #include <libkcal/event.h>

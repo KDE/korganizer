@@ -22,7 +22,6 @@
 */
 #ifndef KORGANIZER_PART_H
 #define KORGANIZER_PART_H
-// $Id$
 
 #include <kparts/browserextension.h>
 #include <kparts/factory.h>

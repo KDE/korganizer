@@ -22,7 +22,6 @@
 */
 #ifndef KOCORE_H
 #define KOCORE_H
-// $Id$
 
 #include <ktrader.h>
 

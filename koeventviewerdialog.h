@@ -18,7 +18,6 @@
 */
 #ifndef KOEVENTVIEWERDIALOG_H
 #define KOEVENTVIEWERDIALOG_H
-// $Id$
 //
 // Viewer dialog for events.
 //

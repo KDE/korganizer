@@ -21,8 +21,6 @@
     without including the source code for Qt in the source distribution.
 */
 
-// $Id$
-
 #include <kdebug.h>
 
 #include "kowindowlist.h"

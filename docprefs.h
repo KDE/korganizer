@@ -18,7 +18,6 @@
 */
 #ifndef DOCPREFS_H
 #define DOCPREFS_H
-// $Id$
 
 #include <qstring.h>
 

@@ -23,7 +23,6 @@
 */
 #ifndef KODIALOGMANAGER_H
 #define KODIALOGMANAGER_H
-// $Id$
 
 #include <qobject.h>
 #include <qptrlist.h>

@@ -21,7 +21,6 @@
     without including the source code for Qt in the source distribution.
 */
 
-// $Id$
 // Dialog for selecting and configuring KOrganizer plugins
 
 #include <qlayout.h>

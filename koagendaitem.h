@@ -18,7 +18,6 @@
 */
 #ifndef KOAGENDAITEM_H
 #define KOAGENDAITEM_H
-// $Id$
 
 #include <qframe.h>
 #include <qlabel.h>

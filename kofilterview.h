@@ -22,7 +22,6 @@
 */
 #ifndef KOFILTERVIEW_H
 #define KOFILTERVIEW_H
-// $Id$
 
 #include <qstring.h>
 

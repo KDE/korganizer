@@ -22,7 +22,6 @@
 */
 #ifndef MAILSCHEDULER_H
 #define MAILSCHEDULER_H
-// $Id$
 //
 // Mail implementation of iTIP methods
 //

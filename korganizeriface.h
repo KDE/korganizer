@@ -19,7 +19,6 @@
 */
 #ifndef KORGANIZERIFACE_H
 #define KORGANIZERIFACE_H
-// $Id$
  
 #include <dcopobject.h>
 #include <kurl.h>

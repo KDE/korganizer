@@ -22,7 +22,6 @@
 */
 #ifndef HTMLEXPORT_H
 #define HTMLEXPORT_H
-// $Id$
 
 #include <qstring.h>
 #include <qdatetime.h>

@@ -22,7 +22,6 @@
 */
 #ifndef KOAGENDA_H
 #define KOAGENDA_H
-// $Id$
 
 #include <qscrollview.h>
 #include <qtimer.h>

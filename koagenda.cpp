@@ -24,8 +24,6 @@
     without including the source code for Qt in the source distribution.
 */
 
-// $Id$
-
 #include <qintdict.h>
 #include <qdatetime.h>
 #include <qapplication.h>

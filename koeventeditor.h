@@ -22,7 +22,6 @@
 */
 #ifndef _KOEVENTEDITOR_H
 #define _KOEVENTEDITOR_H
-// $Id$	
 
 #include <kdialogbase.h>
 

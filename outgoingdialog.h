@@ -22,7 +22,6 @@
 */
 #ifndef OUTGOINGDIALOG_H
 #define OUTGOINGDIALOG_H
-// $Id$
 
 #include <qlistview.h>
 #include <qmap.h>

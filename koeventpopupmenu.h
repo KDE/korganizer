@@ -22,7 +22,6 @@
 */
 #ifndef KOEVENTPOPUPMENU_H
 #define KOEVENTPOPUPMENU_H
-// $Id$
 //
 // Context menu for event views with standard event actions
 //

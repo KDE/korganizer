@@ -17,8 +17,6 @@
     Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 */
 
-// $Id$
-
 #include <qlabel.h>
 #include <qlayout.h>
 #include <qhbox.h>

@@ -22,7 +22,6 @@
 */
 #ifndef _KOJOURNALVIEW_H
 #define _KOJOURNALVIEW_H
-// $Id$
 
 #include <korganizer/baseview.h>
 

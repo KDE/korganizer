@@ -23,7 +23,6 @@
 */
 #ifndef KOMAILCLIENT_H
 #define KOMAILCLIENT_H
-// $Id$
 
 #include <qstring.h>
 

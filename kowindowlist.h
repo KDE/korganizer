@@ -22,7 +22,6 @@
 */
 #ifndef KOWINDOWLIST_H
 #define KOWINDOWLIST_H
-// $Id$
 
 #include <qobject.h>
 

@@ -21,8 +21,6 @@
     without including the source code for Qt in the source distribution.
 */
 
-// $Id$
-
 #include <qlayout.h>
 #include <qlabel.h>
 #include <qgroupbox.h>
