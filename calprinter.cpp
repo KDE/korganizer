@@ -276,7 +276,7 @@ void CalPrinter::printWeek(const QDate &fd, const QDate &td)
 
   curWeek = fromWeek.addDays(6);
   do {
-     drawHeader(p, fd, td,
+     drawHeader(p, curWeek.addDays(-6), curWeek,
 	       curWeek,
 	       pageWidth, mHeaderHeight, Week);
     drawWeek(p, curWeek, pageWidth, pageHeight);

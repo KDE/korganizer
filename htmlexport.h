@@ -42,10 +42,10 @@ class HtmlExport {
         mCategoriesTodoEnabled(false),mAttendeesTodoEnabled(false),
         mCategoriesEventEnabled(false),mAttendeesEventEnabled(false),
         mDueDateEnabled(false),
-        mExcludePrivateEventEnabled(false),
-        mExcludeConfidentialEventEnabled(false),
         mExcludePrivateTodoEnabled(false),
-        mExcludeConfidentialTodoEnabled(false) {}
+        mExcludeConfidentialTodoEnabled(false),
+        mExcludePrivateEventEnabled(false),
+        mExcludeConfidentialEventEnabled(false) {}
     virtual ~HtmlExport() {};
 
     /**
@@ -123,13 +123,13 @@ class HtmlExport {
     bool mTodosEnabled;
     bool mCategoriesTodoEnabled;
     bool mAttendeesTodoEnabled;
-    bool mExcludePrivateTodoEnabled;
-    bool mExcludeConfidentialTodoEnabled;
     bool mCategoriesEventEnabled;
     bool mAttendeesEventEnabled;
+    bool mDueDateEnabled;
+    bool mExcludePrivateTodoEnabled;
+    bool mExcludeConfidentialTodoEnabled;
     bool mExcludePrivateEventEnabled;
     bool mExcludeConfidentialEventEnabled;
-    bool mDueDateEnabled;
     
     QDate mFromDate;
     QDate mToDate;
