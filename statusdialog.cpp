@@ -48,11 +48,11 @@ StatusDialog::StatusDialog(QWidget* parent, const char* name) :
 
   QBoxLayout *buttonLayout = new QHBoxLayout( topLayout );
 
-  QPushButton *ok = new QPushButton(i18n("OK"), this);
+  QPushButton *ok = new QPushButton(i18n("&OK"), this);
   connect ( ok,SIGNAL(clicked()), this,SLOT(accept()) );
   buttonLayout->addWidget( ok );
 
-  QPushButton *cancel = new QPushButton(i18n("Cancel"), this);
+  QPushButton *cancel = new QPushButton(i18n("&Cancel"), this);
   connect ( cancel,SIGNAL(clicked()), this,SLOT(reject()) );
   buttonLayout->addWidget( cancel );
 }

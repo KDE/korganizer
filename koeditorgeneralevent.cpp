@@ -364,7 +364,7 @@ void KOEditorGeneralEvent::setDuration()
         tmpStr += i18n(", ");
       }
       if (minutediff){
-	catStr = i18n("1 Minute","%n Minutes",minutediff);
+	catStr = i18n("1 minute","%n minutes",minutediff);
         tmpStr += catStr;
       }
     } else tmpStr = "";
