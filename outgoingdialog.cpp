@@ -31,6 +31,7 @@
 #include <kstandarddirs.h>
 
 #include <libkcal/event.h>
+#include <libkcal/freebusy.h>
 //#include <libkcal/imipscheduler.h>
 #include <libkcal/dummyscheduler.h>
 #include <libkcal/icalformat.h>
@@ -44,35 +45,63 @@
 #include "outgoingdialog.h"
 #include "koeventviewerdialog.h"
 
-ScheduleItemOut::ScheduleItemOut(QListView *parent,Event *ev,
+ScheduleItemOut::ScheduleItemOut(QListView *parent,IncidenceBase *ev,
                                  Scheduler::Method method,
                                  const QString &recipients)
   : QListViewItem(parent)
 {
-  mEvent = ev;
+  mIncidence = ev;
   mMethod = method;
   mRecipients = recipients;
-  setText(0,ev->summary());
-  setText(1,ev->dtStartDateStr());
-  if (ev->doesFloat()) {
-    setText(2,i18n("no time"));
-    setText(4,i18n("no time"));
+
+  kdDebug() << "ScheduleItemOut: setting the summary" << endl;
+  //Set the summary
+  if(ev->type() != "FreeBusy") {
+    Incidence *incidence = static_cast<Incidence *>(ev);
+    setText(0,incidence->summary());
+  } else {
+    setText(0,i18n("Free Busy Object"));
   }
-  else {
-    setText(2,ev->dtStartTimeStr());
-    if (ev->hasDuration()) {
-      setText(4,ev->dtEndTimeStr());
+
+  kdDebug() << "ScheduleItemOut: checking if the object is an event" << endl;
+  //If the object is an event
+  if(ev->type()=="Event") {
+    Event *event = static_cast<Event *>(ev);
+  
+    setText(1,event->dtStartDateStr());
+    if (event->doesFloat()) {  //If the event floats set the start and end times to no time
+      setText(2,i18n("no time"));
+      setText(4,i18n("no time"));
+    } else {  //If it does not float
+      setText(2,event->dtStartTimeStr());
+      if (event->hasDuration()) {
+        setText(4,event->dtEndTimeStr());
+      } else {
+        setText(4,i18n("no time"));
+      }
+    }
+    if (event->hasEndDate()) {
+      setText(3,event->dtEndDateStr());
     }
     else {
-      setText(4,i18n("no time"));
+       setText(3,i18n("no time"));
     }
   }
-  if (ev->hasEndDate()) {
-    setText(3,ev->dtEndDateStr());
+
+  kdDebug() << "ScheduleItemOut: checking if the object is a FreeBusy object" << endl;
+  //If the object is a freebusy object
+  if(ev->type() == "FreeBusy") {
+    FreeBusy *freebusy = static_cast<FreeBusy *>(ev);
+
+    setText(1,freebusy->dtStartDateStr());
+    setText(2,freebusy->dtStartTimeStr());
+    //Must try and get this to the users local settings
+    setText(3,freebusy->dtEnd().toString("dd.MM.yyyy"));
+    setText(4,freebusy->dtEnd().toString("h:m:s ap"));
   }
-  else {
-    setText(3,"");
-  }
+
+  kdDebug() << "ScheduleItemOut: Setting the method" << endl;
+  //Set the Method
   setText(5,Scheduler::methodName(mMethod));
 }
 
@@ -107,8 +136,9 @@ OutgoingDialog::~OutgoingDialog()
 {
 }
 
-bool OutgoingDialog::addMessage(Event *incidence,Scheduler::Method method)
+bool OutgoingDialog::addMessage(IncidenceBase *incidence,Scheduler::Method method)
 {
+  kdDebug() << "Outgoing::addMessage" << "Method:" << method << endl;
   if (method == Scheduler::Publish) return false;
 
   if (KOPrefs::instance()->mIMIPSend == KOPrefs::IMIPOutbox) {
@@ -122,7 +152,7 @@ bool OutgoingDialog::addMessage(Event *incidence,Scheduler::Method method)
   return true;
 }
 
-bool OutgoingDialog::addMessage(Event *incidence,Scheduler::Method method,
+bool OutgoingDialog::addMessage(IncidenceBase *incidence,Scheduler::Method method,
                                 const QString &recipients)
 {
   if (method != Scheduler::Publish) return false;
@@ -174,49 +204,51 @@ void OutgoingDialog::deleteItem()
 void OutgoingDialog::showEvent(QListViewItem *qitem)
 {
   ScheduleItemOut *item = (ScheduleItemOut *)qitem;
-  Event *event = item->event();
-  QString sendText;
-  if (event) {
-    KOEventViewerDialog *eventViewer = new KOEventViewerDialog(this);
-    eventViewer->setEvent(event);
-    sendText = "<hr><h4>"+i18n("Event will be sent to:")+"</h4>";
-    switch (item->method()) {
-      case Scheduler::Publish: {
-        sendText += item->recipients();
+  if(item->event()->type()=="Event") {
+    Event *event = static_cast<Event *>(item->event());
+    QString sendText;
+    if (event) {
+      KOEventViewerDialog *eventViewer = new KOEventViewerDialog(this);
+      eventViewer->setEvent(event);
+      sendText = "<hr><h4>"+i18n("Event will be sent to:")+"</h4>";
+      switch (item->method()) {
+        case Scheduler::Publish: {
+          sendText += item->recipients();
+          break; }
+        case Scheduler::Request: {
+          sendText += i18n("All attendees");
+          break; }
+        case Scheduler::Refresh: {
+          sendText += i18n("All attendees");
+          break; }
+        case Scheduler::Cancel: {
+          sendText += i18n("All attendees");
+          break; }
+        case Scheduler::Add: {
+          sendText += i18n("All attendees");
+          break; }
+        case Scheduler::Reply: {
+          sendText += i18n("The organizer %1").arg(item->event()->organizer());
         break; }
-      case Scheduler::Request: {
-        sendText += i18n("All attendees");
-        break; }
-      case Scheduler::Refresh: {
-        sendText += i18n("All attendees");
-        break; }
-      case Scheduler::Cancel: {
-        sendText += i18n("All attendees");
-        break; }
-      case Scheduler::Add: {
-        sendText += i18n("All attendees");
-        break; }
-      case Scheduler::Reply: {
-        sendText += i18n("The organizer %1").arg(item->event()->organizer());
-        break; }
-      case Scheduler::Counter: {
-        sendText += i18n("The organizer %1").arg(item->event()->organizer());
-        break; }
-      case Scheduler::Declinecounter: {
-        sendText += i18n("All attendees");
-        break; }
-      case Scheduler::NoMethod: {
-        sendText += "";
-        break; }
-      default:
-        sendText = "";
+          case Scheduler::Counter: {
+          sendText += i18n("The organizer %1").arg(item->event()->organizer());
+          break; }
+        case Scheduler::Declinecounter: {
+          sendText += i18n("All attendees");
+          break; }
+        case Scheduler::NoMethod: {
+          sendText += "";
+          break; }
+        default:
+          sendText = "";
+      }
+      eventViewer->addText(sendText);
+      eventViewer->show();
     }
-    eventViewer->addText(sendText);
-    eventViewer->show();
   }
 }
 
-bool OutgoingDialog::saveMessage(Incidence *incidence,Scheduler::Method method,
+bool OutgoingDialog::saveMessage(IncidenceBase *incidence,Scheduler::Method method,
           const QString &recipients)
 {
   ICalFormat *mFormat = mCalendar->iCalFormat();
@@ -231,7 +263,7 @@ bool OutgoingDialog::saveMessage(Incidence *incidence,Scheduler::Method method,
   return true;
 }
 
-bool OutgoingDialog::deleteMessage(Incidence *incidence)
+bool OutgoingDialog::deleteMessage(IncidenceBase *incidence)
 {
   QFile f( mMessageMap[incidence] );
   mMessageMap.remove(incidence);
@@ -254,7 +286,7 @@ void OutgoingDialog::loadMessages()
     kdDebug() << "-- File: " << (*it) << endl;
     QFile f(outgoingDirName + "/" + (*it));
     bool inserted = false;
-    QMap<Incidence*, QString>::Iterator iter;
+    QMap<IncidenceBase*, QString>::Iterator iter;
     for ( iter = mMessageMap.begin(); iter != mMessageMap.end(); ++iter ) {
       if (iter.data() == outgoingDirName + "/" + (*it)) inserted = true;
     }
@@ -289,11 +321,8 @@ void OutgoingDialog::loadMessages()
       if (message) {
         kdDebug() << "OutgoingDialog::loadMessage(): got message '"
                   << (*it) << "'" << endl;
-        Event *ev=0;
-        if (message->event()->type()="Event") {
-          ev = static_cast<Event *>(message->event());
-        }
-        new ScheduleItemOut(mMessageListView,ev,method,recipients);
+        IncidenceBase *inc = message->event();
+        new ScheduleItemOut(mMessageListView,inc,method,recipients);
         emit numMessagesChanged(mMessageListView->childCount());
 
         mMessageMap[message->event()]=outgoingDirName + "/" + (*it);

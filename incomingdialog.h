@@ -33,16 +33,16 @@ using namespace KCal;
 class ScheduleItemIn : public QListViewItem
 {
   public:
-    ScheduleItemIn(QListView *parent,Incidence *ev,Scheduler::Method method,
+    ScheduleItemIn(QListView *parent,IncidenceBase *ev,Scheduler::Method method,
                    ScheduleMessage::Status status);
     virtual ~ScheduleItemIn() {}
 
-    Incidence *event() { return mEvent; }
+    IncidenceBase *event() { return mIncidence; }
     Scheduler::Method method() { return mMethod; }
     ScheduleMessage::Status status() { return mStatus; }
 
   private:
-    Incidence *mEvent;
+    IncidenceBase *mIncidence;
     Scheduler::Method mMethod;
     ScheduleMessage::Status mStatus;
 };

@@ -63,6 +63,7 @@
 #include <libkcal/calfilter.h>
 #include <libkcal/attendee.h>
 #include <libkcal/dndfactory.h>
+#include <libkcal/freebusy.h>
 
 #ifndef KORG_NOMAIL
 #include "komailclient.h"
@@ -1121,6 +1122,28 @@ void CalendarView::schedule_counter(Incidence *incidence)
 void CalendarView::schedule_declinecounter(Incidence *incidence)
 {
   schedule(Scheduler::Declinecounter,incidence);
+}
+
+void CalendarView::schedule_publish_freebusy()
+{
+  QDateTime start = QDateTime::currentDateTime();
+  QDateTime end = start.addDays(30);
+
+  FreeBusy *freebusy = new FreeBusy(mCalendar, start, end);
+  freebusy->setOrganizer(KOPrefs::instance()->email());
+
+  kdDebug() << "calendarview: schedule_publish_freebusy: startDate: "
+     << start.toString("ddd MMMM d yyyy: h:m:s ap") << " End Date: " 
+     << end.toString("ddd MMMM d yyyy: h:m:s ap") << endl;
+  
+  PublishDialog *publishdlg = new PublishDialog();
+  if ( publishdlg->exec() == QDialog::Accepted ) {
+    OutgoingDialog *dlg = mDialogManager->outgoingDialog();
+    if (!dlg->addMessage(freebusy,Scheduler::Publish,publishdlg->addresses())) {
+         delete(freebusy);
+    }
+  }
+  delete publishdlg;
 }
 
 void CalendarView::schedule(Scheduler::Method method, Incidence *incidence)

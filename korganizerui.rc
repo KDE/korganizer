@@ -64,6 +64,7 @@
       <Action name="cancel"/>
       <Action name="reply"/>
       <Action name="counter"/>
+      <Action name="publish_freebusy"/>
     </Menu>
     <Menu name="settings"><text>&amp;Settings</text>
       <Actionlist name="toolbartoggles" append="show_merge"/>

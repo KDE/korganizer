@@ -35,7 +35,6 @@
 
 #include "mailscheduler.h"
 
-#include <iostream.h>
 
 using namespace KCal;
 
@@ -48,7 +47,7 @@ MailScheduler::~MailScheduler()
 {
 }
 
-bool MailScheduler::publish (Event *incidence,const QString &recipients)
+bool MailScheduler::publish (IncidenceBase *incidence,const QString &recipients)
 {
   QString messageText = mFormat->createScheduleMessage(incidence,
                                                        Scheduler::Publish);
@@ -57,7 +56,7 @@ bool MailScheduler::publish (Event *incidence,const QString &recipients)
   return mailer.mailTo(incidence,recipients,messageText);
 }
 
-bool MailScheduler::performTransaction(Event *incidence,Method method)
+bool MailScheduler::performTransaction(IncidenceBase *incidence,Method method)
 {
   QString messageText = mFormat->createScheduleMessage(incidence,method);
 
@@ -87,7 +86,7 @@ QPtrList<ScheduleMessage> MailScheduler::retrieveTransactions()
 
     QFile f(incomingDirName + "/" + (*it));
     bool inserted = false;
-    QMap<Incidence*, QString>::Iterator iter;
+    QMap<IncidenceBase*, QString>::Iterator iter;
     for ( iter = mEventMap.begin(); iter != mEventMap.end(); ++iter ) {
       if (iter.data() == incomingDirName + "/" + (*it)) inserted = true;
     }
@@ -119,7 +118,7 @@ QPtrList<ScheduleMessage> MailScheduler::retrieveTransactions()
   return messageList;
 }
 
-bool MailScheduler::deleteTransaction(Incidence *incidence)
+bool MailScheduler::deleteTransaction(IncidenceBase *incidence)
 {
   QFile f( mEventMap[incidence] );
   mEventMap.remove(incidence);

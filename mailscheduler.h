@@ -44,14 +44,14 @@ class MailScheduler : public IMIPScheduler {
     MailScheduler(Calendar *);
     virtual ~MailScheduler();
 
-    bool publish (Event *incidence,const QString &recipients);
-    bool performTransaction(Event *incidence,Method method);
+    bool publish (IncidenceBase *incidence,const QString &recipients);
+    bool performTransaction(IncidenceBase *incidence,Method method);
     QPtrList<ScheduleMessage> retrieveTransactions();
 
-    bool deleteTransaction(Incidence *incidence);
+    bool deleteTransaction(IncidenceBase *incidence);
 
   private:
-    QMap<Incidence*, QString> mEventMap;
+    QMap<IncidenceBase*, QString> mEventMap;
 };
 
 }

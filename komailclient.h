@@ -39,9 +39,9 @@ class KOMailClient
     KOMailClient();
     virtual ~KOMailClient();
     
-    bool mailAttendees(Incidence *,const QString &attachment=QString::null);
-    bool mailOrganizer(Incidence *,const QString &attachment=QString::null);
-    bool mailTo(Incidence *,const QString &recipients,const QString &attachment=QString::null);
+    bool mailAttendees(IncidenceBase *,const QString &attachment=QString::null);
+    bool mailOrganizer(IncidenceBase *,const QString &attachment=QString::null);
+    bool mailTo(IncidenceBase *,const QString &recipients,const QString &attachment=QString::null);
 
   protected:
     /** Send mail with specified from, to and subject field and body as text. If
@@ -50,7 +50,7 @@ class KOMailClient
               const QString &body,bool bcc=false,
               const QString &attachment=QString::null);
 
-    QString createBody(Incidence *incidence);
+    QString createBody(IncidenceBase *incidence);
 
     int kMailOpenComposer(const QString& to, const QString& cc,
                           const QString& bcc, const QString& subject,

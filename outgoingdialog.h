@@ -37,16 +37,16 @@ using namespace KCal;
 class ScheduleItemOut : public QListViewItem
 {
   public:
-    ScheduleItemOut(QListView *parent,Event *ev,Scheduler::Method method,
-                 const QString &recipients=QString::null);
+    ScheduleItemOut(QListView *parent,IncidenceBase *ev,
+        Scheduler::Method method, const QString &recipients=QString::null);
     virtual ~ScheduleItemOut() {}
 
-    Event *event() { return mEvent; }
+    IncidenceBase *event() { return mIncidence; }
     Scheduler::Method method() { return mMethod; }
     QString recipients() { return mRecipients; }
 
   private:
-    Event *mEvent;
+    IncidenceBase *mIncidence;
     Scheduler::Method mMethod;
     QString mRecipients;
 };
@@ -59,8 +59,8 @@ class OutgoingDialog : public OutgoingDialog_base
                    bool modal=false,WFlags fl=0);
     ~OutgoingDialog();
 
-    bool addMessage(Event *,Scheduler::Method);
-    bool addMessage(Event *,Scheduler::Method,const QString &recipients);
+    bool addMessage(IncidenceBase *,Scheduler::Method);
+    bool addMessage(IncidenceBase *,Scheduler::Method,const QString &recipients);
 
   signals:
     void numMessagesChanged(int);
@@ -71,12 +71,12 @@ class OutgoingDialog : public OutgoingDialog_base
     void showEvent(QListViewItem *);
 
   private:
-    bool saveMessage(Incidence *,Scheduler::Method,const QString &recipients=0);
-    bool deleteMessage(Incidence *);
+    bool saveMessage(IncidenceBase *,Scheduler::Method,const QString &recipients=0);
+    bool deleteMessage(IncidenceBase *);
     void loadMessages();
     Calendar *mCalendar;
     Scheduler *mScheduler;
-    QMap<Incidence*, QString> mMessageMap;
+    QMap<IncidenceBase*, QString> mMessageMap;
 };
 
 #endif // OUTGOINGDIALOG_H

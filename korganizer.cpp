@@ -440,6 +440,10 @@ void KOrganizer::initActions()
   action->setEnabled(false);
   connect(mCalendarView,SIGNAL(groupEventsSelected(bool)),
           action,SLOT(setEnabled(bool)));
+  action = new KAction(i18n("Publish Free Busy Information"),0,
+                       mCalendarView,SLOT(schedule_publish_freebusy()),
+                       actionCollection(),"publish_freebusy");
+  action->setEnabled(true);
 /*  action = new KAction(i18n("Decline Counter"),0,
                        mCalendarView,SLOT(schedule_declinecounter()),
                        actionCollection(),"declinecounter");

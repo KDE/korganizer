@@ -21,15 +21,19 @@
 
 #include <qlistview.h>
 #include <qfile.h>
+#include <qdir.h>
 #include <qmap.h>
 
 #include <kglobal.h>
 #include <klocale.h>
 #include <kdebug.h>
+#include <kstandarddirs.h>
 
 #include <libkcal/incidence.h>
 #include <libkcal/event.h>
 #include <libkcal/calendar.h>
+#include <libkcal/freebusy.h>
+#include <libkcal/attendee.h>
 
 #ifndef KORG_NOMAIL
 #include "mailscheduler.h"
@@ -42,11 +46,11 @@
 #include "kocounterdialog.h"
 
 
-ScheduleItemIn::ScheduleItemIn(QListView *parent,Incidence *ev,
+ScheduleItemIn::ScheduleItemIn(QListView *parent,IncidenceBase *ev,
                                Scheduler::Method method,ScheduleMessage::Status status)
   : QListViewItem(parent)
 {
-  mEvent = ev;
+  mIncidence = ev;
   mMethod = method;
   mStatus = status;
   setText(6,Scheduler::methodName(mMethod)+" ");
@@ -144,15 +148,30 @@ void IncomingDialog::retrieve()
 
   ScheduleMessage *message;
   for(message = messages.first();message;message = messages.next()) {
-    Incidence *event = message->event();
+    IncidenceBase *inc = message->event();
     Scheduler::Method method = (Scheduler::Method)message->method();
     ScheduleMessage::Status status = message->status();
 
+    /*
     kdDebug() << "IncomingDialog::retrieve(): summary: " << event->summary()
               << "  method: " << Scheduler::methodName(method) << endl;
-    ScheduleItemIn *item = new ScheduleItemIn(mMessageListView,event,method,status);
-    ScheduleItemVisitor v(item);
-    if (!event->accept(v)) delete item;
+    */
+    ScheduleItemIn *item = new ScheduleItemIn(mMessageListView,inc,method,status);
+    if(inc->type()!="FreeBusy") {
+      Incidence *incidence = static_cast<Incidence *>(inc);
+      ScheduleItemVisitor v(item);
+      if (!incidence->accept(v)) delete item;
+    } else {
+      FreeBusy *fb = static_cast<FreeBusy *>(item->event());
+
+      item->setText(0, "FreeBusy");
+      item->setText(1, fb->dtStart().toString("ddd MMMM d yyyy"));
+      item->setText(2, fb->dtStart().toString("hh:mm:ss"));
+      item->setText(3, fb->dtEnd().toString("ddd MMMM d yyyy"));
+      item->setText(4, fb->dtEnd().toString("hh:mm:ss"));
+      item->setText(5, fb->organizer());
+
+    }
 
   }
   emit numMessagesChanged(mMessageListView->childCount());
@@ -213,7 +232,7 @@ void IncomingDialog::rejectMessage()
 
 void IncomingDialog::showEvent(QListViewItem *item)
 {
-  Incidence *incidence = ((ScheduleItemIn *)item)->event();
+  IncidenceBase *incidence = ((ScheduleItemIn *)item)->event();
   if( incidence && incidence->type() == "Event" ) {
     Event *event = static_cast<Event *>(incidence);
     KOEventViewerDialog *eventViewer = new KOEventViewerDialog(this);
@@ -243,9 +262,14 @@ bool IncomingDialog::incomeRefresh(ScheduleItemIn *item)
 
 bool IncomingDialog::incomeCounter(ScheduleItemIn *item)
 {
-  Incidence *incidence = ((ScheduleItemIn *)item)->event();
-  if ( incidence->type() != "Event" ) return false;
-  Event *counterevent = static_cast<Event *>( incidence );
+//  Incidence *incidence = ((ScheduleItemIn *)item)->event();
+//  if ( incidence->type() != "Event" ) return false;
+//  Event *counterevent = static_cast<Event *>( incidence );
+  Event *anevent = 0;
+  if(item->event()->type()=="Event") {
+    anevent = static_cast<Event *>(item->event());
+  }
+  Event *counterevent = dynamic_cast<Event *>(((ScheduleItemIn*)item)->event());
 
   Event *even = mCalendar->getEvent(item->event()->uid());
 
@@ -270,7 +294,7 @@ bool IncomingDialog::incomeCounter(ScheduleItemIn *item)
       revision = even->revision();
       mCalendar->deleteEvent(even);
     }
-    mCalendar->addIncidence(item->event());
+    mCalendar->addIncidence(anevent);
     even = mCalendar->getEvent(item->event()->uid());
     if (even) {
       if (revision < even->revision())
@@ -321,7 +345,7 @@ bool IncomingDialog::incomeDeclineCounter(ScheduleItemIn *item)
 
 bool IncomingDialog::incomeAdd(ScheduleItemIn *item)
 {
-  Incidence *incidence = ((ScheduleItemIn *)item)->event();
+  IncidenceBase *incidence = ((ScheduleItemIn *)item)->event();
   if (incidence->type() == "Event" ) {
     Event *refr = static_cast<Event *>( incidence );
     mOutgoing->addMessage(refr,Scheduler::Refresh);

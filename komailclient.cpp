@@ -50,7 +50,7 @@ KOMailClient::~KOMailClient()
 {
 }
 
-bool KOMailClient::mailAttendees(Incidence *incidence,const QString &attachment)
+bool KOMailClient::mailAttendees(IncidenceBase *incidence,const QString &attachment)
 {
   QPtrList<Attendee> attendees = incidence->attendees();
   if (attendees.count() == 0) return false;
@@ -63,7 +63,13 @@ bool KOMailClient::mailAttendees(Incidence *incidence,const QString &attachment)
 
   QString from = KOPrefs::instance()->email();
 
-  QString subject = incidence->summary();
+  QString subject;
+  if(incidence->type()!="FreeBusy") {
+    Incidence *inc = static_cast<Incidence *>(incidence);
+    subject = inc->summary();
+  } else {
+    subject = "Free Busy Object";
+  }
 
   QString body = createBody(incidence);
 
@@ -72,13 +78,19 @@ bool KOMailClient::mailAttendees(Incidence *incidence,const QString &attachment)
   return send(from,to,subject,body,bcc,attachment);
 }
 
-bool KOMailClient::mailOrganizer(Incidence *incidence,const QString &attachment)
+bool KOMailClient::mailOrganizer(IncidenceBase *incidence,const QString &attachment)
 {
   QString to = incidence->organizer();
 
   QString from = KOPrefs::instance()->email();
 
-  QString subject = incidence->summary();
+  QString subject;
+  if(incidence->type()!="FreeBusy") {
+    Incidence *inc = static_cast<Incidence *>(incidence);
+    subject = inc->summary();
+  } else {
+    subject = "Free Busy Message";
+  }
 
   QString body = createBody(incidence);
 
@@ -87,11 +99,17 @@ bool KOMailClient::mailOrganizer(Incidence *incidence,const QString &attachment)
   return send(from,to,subject,body,bcc,attachment);
 }
 
-bool KOMailClient::mailTo(Incidence *incidence,const QString &recipients,
+bool KOMailClient::mailTo(IncidenceBase *incidence,const QString &recipients,
                           const QString &attachment)
 {
   QString from = KOPrefs::instance()->email();
-  QString subject = incidence->summary();
+  QString subject;
+  if(incidence->type()!="FreeBusy") {
+    Incidence *inc = static_cast<Incidence *>(incidence);
+    subject = inc->summary();
+  } else {
+    subject = "Free Busy Message";
+  }
   QString body = createBody(incidence);
   bool bcc = KOPrefs::instance()->mBcc;
   kdDebug () << "KOMailClient::mailTo " << recipients << endl;
@@ -145,11 +163,12 @@ bool KOMailClient::send(const QString &from,const QString &to,
       textComplete += QString::fromLatin1("To: ") + to + '\n';
       if (bcc) textComplete += QString::fromLatin1("Bcc: ") + from + '\n';
       textComplete += QString::fromLatin1("Subject: ") + subject + '\n';
-      textComplete += QString::fromLatin1("X-Mailer: KOrganizer") + korgVersion +
-                      '\n';
+      textComplete += QString::fromLatin1("X-Mailer: KOrganizer") + korgVersion + '\n'; 
     }
     textComplete += '\n'; // end of headers
     textComplete += body;
+    textComplete += '\n';
+    textComplete += attachment;
 
     fwrite(textComplete.local8Bit(),textComplete.length(),1,fd);
 
@@ -243,14 +262,14 @@ int KOMailClient::kMailOpenComposer( const QString& arg0, const QString& arg1,
 }
 
 
-QString KOMailClient::createBody(Incidence *incidence)
+QString KOMailClient::createBody(IncidenceBase *incidence)
 {
   QString CR = ("\n");
 
   QString body;
 
-  Event *selectedEvent = dynamic_cast<Event *>(incidence);
-  if (selectedEvent) {
+  if (incidence->type()=="Event") {
+    Event *selectedEvent = static_cast<Event *>(incidence);
     QString recurrence[]= {"None","Daily","Weekly","Monthly Same Day",
                            "Monthly Same Position","Yearly","Yearly"};
   
@@ -287,17 +306,23 @@ QString KOMailClient::createBody(Incidence *incidence)
       }
       body += i18n("End Time : %1").arg(selectedEvent->dtEndTimeStr());
       body += CR;
-      QString details = incidence->description();
+      QString details = selectedEvent->description();
       if (!details.isEmpty()) {
         body += i18n("Details:");
 	body += CR;
 	body += details;
       }
     }
-  } else {
-    body = incidence->summary();
+  } 
+  if(incidence->type()=="FreeBusy") {
+    body = i18n("This is a Free Busy Object");
+  } 
+
+  if(incidence->type()=="ToDo" || incidence->type()=="Journal") {
+    Incidence *inc = static_cast<Incidence *>(incidence);
+    body = inc->summary();
     body += CR;
-    body += incidence->description();
+    body += inc->description();
   }
 
   return body;
