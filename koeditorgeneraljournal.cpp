@@ -25,18 +25,24 @@
 */
 
 #include "koeditorgeneraljournal.h"
+#include "koeditorgeneral.h"
 
 #include <libkcal/journal.h>
 
 #include <ktextedit.h>
 #include <kdateedit.h>
+#include <ktimeedit.h>
+//#include <klineedit.h>
 #include <klocale.h>
 #include <kmessagebox.h>
+#include <kdebug.h>
 
 #include <qgroupbox.h>
 #include <qdatetime.h>
+#include <qcheckbox.h>
 #include <qlabel.h>
 #include <qlayout.h>
+#include <qwhatsthis.h>
 
 
 KOEditorGeneralJournal::KOEditorGeneralJournal( QObject *parent,
@@ -49,31 +55,50 @@ KOEditorGeneralJournal::~KOEditorGeneralJournal()
 {
 }
 
+void KOEditorGeneralJournal::initTitle( QWidget *parent, QBoxLayout *topLayout )
+{
+  QHBoxLayout *hbox = new QHBoxLayout( topLayout );
+  
+  QString whatsThis = i18n("Sets the Title of this journal.");
+  QLabel *summaryLabel = new QLabel( i18n("T&itle:"), parent );
+  QWhatsThis::add( summaryLabel, whatsThis );
+  QFont f = summaryLabel->font();
+  f.setBold( true );
+  summaryLabel->setFont( f );
+  hbox->addWidget( summaryLabel );
+
+  mSummaryEdit = new FocusLineEdit( parent );
+  QWhatsThis::add( mSummaryEdit, whatsThis );
+  connect( mSummaryEdit, SIGNAL( focusReceivedSignal() ),
+           SIGNAL( focusReceivedSignal() ) );
+  summaryLabel->setBuddy( mSummaryEdit );
+  hbox->addWidget( mSummaryEdit );
+}
+
 
 void KOEditorGeneralJournal::initDate( QWidget *parent, QBoxLayout *topLayout )
 {
-  QBoxLayout *dateLayout = new QVBoxLayout(topLayout);
+//  QBoxLayout *dateLayout = new QVBoxLayout(topLayout);
+  QBoxLayout *dateLayout = new QHBoxLayout( topLayout );
+  
+  mDateLabel = new QLabel( i18n("&Date:"), parent);
+  dateLayout->addWidget( mDateLabel );
 
-  QGroupBox *dateGroupBox = new QGroupBox( 1, QGroupBox::Horizontal,
-                                           i18n("Date"), parent );
-  dateLayout->addWidget( dateGroupBox );
-
-  QFrame *dateBoxFrame = new QFrame( dateGroupBox );
-
-  QGridLayout *layoutDateBox = new QGridLayout( dateBoxFrame, 1, 2 );
-  layoutDateBox->setSpacing(topLayout->spacing());
-
-
-  mDateLabel = new QLabel( i18n("&Date:"), dateBoxFrame);
-  layoutDateBox->addWidget( mDateLabel, 0, 0);
-
-  mDateEdit = new KDateEdit(dateBoxFrame);
-  layoutDateBox->addWidget(mDateEdit,0,1);
+  mDateEdit = new KDateEdit( parent );
+  dateLayout->addWidget( mDateEdit );
   mDateLabel->setBuddy( mDateEdit );
+  
+  dateLayout->addStretch();
+  
+  mTimeCheckBox = new QCheckBox( "&Time: ", parent );
+  dateLayout->addWidget( mTimeCheckBox );
+  
+  mTimeEdit = new KTimeEdit( parent );
+  dateLayout->addWidget( mTimeEdit );
+  connect( mTimeCheckBox, SIGNAL(toggled(bool)),
+           mTimeEdit, SLOT(setEnabled(bool)) );
 
-  // date widgets are checked if they contain a valid date
-  connect( mDateEdit, SIGNAL( dateChanged(QDate) ),
-           SLOT( startDateChanged(QDate) ) );
+  dateLayout->addStretch();
 }
 
 void KOEditorGeneralJournal::setDate( const QDate &date )
@@ -81,6 +106,16 @@ void KOEditorGeneralJournal::setDate( const QDate &date )
 //  kdDebug(5850) << "KOEditorGeneralJournal::setDate(): Date: " << date.toString() << endl;
 
   mDateEdit->setDate( date );
+}
+
+void KOEditorGeneralJournal::setTime( const QTime &time )
+{
+kdDebug()<<"KOEditorGeneralJournal::setTime, time="<<time.toString()<<endl;
+  mTimeCheckBox->setChecked( time.isValid() );
+  if ( time.isValid() ) {
+kdDebug()<<"KOEditorGeneralJournal::setTime, time is valid"<<endl;
+    mTimeEdit->setTime( time );
+  }
 }
 
 void KOEditorGeneralJournal::initDescription( QWidget *parent, QBoxLayout *topLayout )
@@ -99,23 +134,35 @@ void KOEditorGeneralJournal::setDefaults( const QDate &date )
   setDate( date );
 }
 
-void KOEditorGeneralJournal::readJournal( Journal *event, bool tmpl )
+void KOEditorGeneralJournal::readJournal( Journal *journal, bool tmpl )
 {
+  setSummary( journal->summary() );
   if ( !tmpl ) {
-    // the rest is for the events only
-    setDate( event->dtStart().date() );
+    setDate( journal->dtStart().date() );
+    if ( !journal->doesFloat() ) {
+kdDebug()<<"KOEditorGeneralJournal::readJournal, does not float, time="<<(journal->dtStart().time().toString())<<endl;
+      setTime( journal->dtStart().time() );
+    } else { 
+kdDebug()<<"KOEditorGeneralJournal::readJournal, does float"<<endl;
+      setTime( QTime( -1, -1, -1 ) );
+    } 
   }
-  setDescription( event->description() );
+  setDescription( journal->description() );
 }
 
-void KOEditorGeneralJournal::writeJournal( Journal *event )
+void KOEditorGeneralJournal::writeJournal( Journal *journal )
 {
 //  kdDebug(5850) << "KOEditorGeneralJournal::writeIncidence()" << endl;
-
-  event->setDescription( mDescriptionEdit->text() );
-  event->setFloats( true );
+  journal->setSummary( mSummaryEdit->text() );
+  journal->setDescription( mDescriptionEdit->text() );
+  
   QDateTime tmpDT( mDateEdit->date(), QTime(0,0,0) );
-  event->setDtStart(tmpDT);
+  bool floats= mTimeCheckBox->isChecked();
+  journal->setFloats( floats );
+  if ( !floats ) {
+    tmpDT.setTime( mTimeEdit->getTime() );
+  }
+  journal->setDtStart(tmpDT);
 
 //  kdDebug(5850) << "KOEditorGeneralJournal::writeJournal() done" << endl;
 }
@@ -126,10 +173,18 @@ void KOEditorGeneralJournal::setDescription( const QString &text )
   mDescriptionEdit->setText( text );
 }
 
+void KOEditorGeneralJournal::setSummary( const QString &text )
+{
+  mSummaryEdit->setText( text );
+}
+
 void KOEditorGeneralJournal::finishSetup()
 {
-  QWidget::setTabOrder( mDateEdit, mDescriptionEdit );
-  mDescriptionEdit->setFocus();
+  QWidget::setTabOrder( mSummaryEdit, mDateEdit );
+  QWidget::setTabOrder( mDateEdit, mTimeCheckBox );
+  QWidget::setTabOrder( mTimeCheckBox, mTimeEdit );
+  QWidget::setTabOrder( mTimeEdit, mDescriptionEdit );
+  mSummaryEdit->setFocus();
 }
 
 bool KOEditorGeneralJournal::validateInput()

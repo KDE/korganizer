@@ -75,6 +75,7 @@ void KOJournalEditor::setupGeneral()
     topLayout->setMargin( marginHint() );
     topLayout->setSpacing( spacingHint() );
 
+    mGeneral->initTitle( topFrame, topLayout );
     mGeneral->initDate( topFrame, topLayout );
     mGeneral->initDescription( topFrame, topLayout );
   } else {
@@ -83,6 +84,7 @@ void KOJournalEditor::setupGeneral()
     QBoxLayout *topLayout = new QVBoxLayout(topFrame);
     topLayout->setSpacing(spacingHint());
 
+    mGeneral->initTitle( topFrame, topLayout );
     mGeneral->initDate( topFrame, topLayout );
     mGeneral->initDescription( topFrame, topLayout );
   }
@@ -119,6 +121,14 @@ void KOJournalEditor::newJournal( const QString &text )
   loadDefaults();
 
   mGeneral->setDescription( text );
+
+  int pos = text.find( "\n" );
+  if ( pos > 0 ) {
+    mGeneral->setSummary( text.left( pos ) );
+    mGeneral->setDescription( text );
+  } else {
+    mGeneral->setSummary( text );
+  }
 }
 
 void KOJournalEditor::newJournal( const QString &text, const QDate &date )

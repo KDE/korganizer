@@ -27,11 +27,15 @@
 
 #include <qlabel.h>
 #include <qlayout.h>
+#include <qcheckbox.h>
+#include <qwhatsthis.h>
 
 #include <kdebug.h>
 #include <kglobal.h>
 #include <klocale.h>
 #include <ktextedit.h>
+#include <ktimeedit.h>
+#include <klineedit.h>
 
 #include <libkcal/journal.h>
 #include <libkcal/calendar.h>
@@ -43,8 +47,8 @@
 #include "journalentry.h"
 #include "journalentry.moc"
 
-JournalEntry::JournalEntry(Calendar *calendar,QWidget *parent) :
-  QVBox(parent)
+JournalEntry::JournalEntry( Calendar *calendar, QWidget *parent ) :
+  QWidget( parent )
 {
 //kdDebug(5850)<<"JournalEntry::JournalEntry, parent="<<parent<<endl;
   mCalendar = calendar;
@@ -52,12 +56,47 @@ JournalEntry::JournalEntry(Calendar *calendar,QWidget *parent) :
   mDirty = false;
   mChanger = 0;
 
-  mTitleLabel = new QLabel(i18n("Title"),this);
-  mTitleLabel->setMargin(2);
-  mTitleLabel->setAlignment(AlignCenter);
+  mLayout = new QGridLayout( this );
   
+  mTitle = new QLabel(i18n("Title"),this);
+  QFont f = mTitle->font();
+  f.setBold( true );
+  f.setItalic( true );
+  mTitle->setFont( f );
+  mTitle->setMargin(2);
+  mTitle->setAlignment(AlignCenter);
+  mTitle->setSizePolicy( QSizePolicy::Expanding, QSizePolicy::Fixed );
+  mLayout->addMultiCellWidget( mTitle, 0, 0, 0, 3 );
+  
+  QString whatsThis = i18n("Sets the Title of this journal.");
+  
+  mTitleLabel = new QLabel( i18n("&Title: "), this );
+  mLayout->addWidget( mTitleLabel, 1, 0 );
+  mTitleEdit = new KLineEdit( this );
+  mLayout->addWidget( mTitleEdit, 1, 1 );
+  mTitleLabel->setBuddy( mTitleEdit );
+  
+  QWhatsThis::add( mTitleLabel, whatsThis );
+  QWhatsThis::add( mTitleEdit, whatsThis );
+  
+  mTimeCheck = new QCheckBox( i18n("Ti&me: "), this );
+  mLayout->addWidget( mTimeCheck, 1, 2 );
+  mTimeEdit = new KTimeEdit( this );
+  mLayout->addWidget( mTimeEdit, 1, 3 );
+  connect( mTimeCheck, SIGNAL(toggled(bool)),
+           mTimeEdit, SLOT(setEnabled(bool)) );
+  QWhatsThis::add( mTimeCheck, i18n("Determines whether this journal has also "
+                                    "a time associated") );
+  QWhatsThis::add( mTimeEdit, i18n( "Sets the time associated with this journal" ) );
+  
+    
   mEditor = new KTextEdit(this);
-  connect(mEditor,SIGNAL(textChanged()),SLOT(setDirty()));
+  mLayout->addMultiCellWidget( mEditor, 2, 3, 0, 3 );
+  
+  connect( mTitleEdit, SIGNAL(textChanged( const QString& )), SLOT(setDirty()) );
+  connect( mTimeCheck, SIGNAL(toggled(bool)), SLOT(setDirty()) );
+  connect( mTimeEdit, SIGNAL(timeChanged(QTime)), SLOT(setDirty()) );
+  connect( mEditor, SIGNAL(textChanged()), SLOT(setDirty()) );
   
   mEditor->installEventFilter(this);
 }
@@ -70,8 +109,16 @@ JournalEntry::~JournalEntry()
 void JournalEntry::setDate(const QDate &date)
 {
   writeJournal();
-  mTitleLabel->setText(KGlobal::locale()->formatDate(date));
+  mTitle->setText(KGlobal::locale()->formatDate(date));
   mDate = date;
+}
+
+void JournalEntry::clearFields()
+{
+  mTitleEdit->clear();
+  mTimeCheck->setChecked( false );
+  mTimeEdit->setEnabled( false );
+  mEditor->clear();
 }
 
 void JournalEntry::setJournal(Journal *journal)
@@ -79,22 +126,25 @@ void JournalEntry::setJournal(Journal *journal)
   writeJournal();
 
   mJournal = journal;
-  if (mJournal) 
-    mEditor->setText(mJournal->description());
-  else mEditor->clear();
+  if ( mJournal ) {
+    readJournal( journal );
+  } else {
+    clearFields();
+  }
+    
   mDirty = false;
 }
 
 void JournalEntry::setDirty()
 {
   mDirty = true;
-//  kdDebug(5850) << "JournalEntry::setDirty()" << endl;
+  kdDebug(5850) << "JournalEntry::setDirty()" << endl;
 }
 
 void JournalEntry::clear()
 {
   mJournal = 0;
-  mEditor->setText("");
+  clearFields();
   writeJournal();
 }
 
@@ -106,7 +156,30 @@ bool JournalEntry::eventFilter( QObject *o, QEvent *e )
        e->type() == QEvent::Close ) {
     writeJournal();
   } 
-  return QFrame::eventFilter( o, e );    // standard event processing
+  return QWidget::eventFilter( o, e );    // standard event processing
+}
+
+
+void JournalEntry::readJournal( Journal *j )
+{
+  mJournal = j;
+  mTitleEdit->setText( mJournal->summary() );
+  bool floats = mJournal->doesFloat();
+  mTimeCheck->setChecked( floats );
+  mTimeEdit->setEnabled( floats );
+  if (!floats) 
+    mTimeEdit->setTime( mJournal->dtStart().time() );
+  mEditor->setText( mJournal->description() );
+}
+
+void JournalEntry::writeJournalPrivate( Journal *j ) 
+{
+  j->setSummary( mTitleEdit->text() );
+  bool floating = !mTimeCheck->isChecked();
+  QTime tm( mTimeEdit->getTime() );
+  j->setDtStart( QDateTime( mDate, floating?QTime(0,0,0):tm ) );
+  j->setFloats( floating );
+  j->setDescription( mEditor->text() );
 }
 
 void JournalEntry::writeJournal()
@@ -119,7 +192,7 @@ void JournalEntry::writeJournal()
   }
   bool newJournal = false;
  
-  if ( mEditor->text().isEmpty() ) {
+  if ( mEditor->text().isEmpty() && mTitleEdit->text().isEmpty() ) {
     if ( mJournal && mChanger ) { // delete the journal
       mChanger->deleteIncidence( mJournal );
     } 
@@ -128,30 +201,26 @@ void JournalEntry::writeJournal()
   }
 
 //  kdDebug(5850) << "JournalEntry::writeJournal()..." << endl;
+  Journal *oldJournal = 0;
   
   if ( !mJournal ) {
     newJournal = true;
     mJournal = new Journal;
-    mJournal->setDtStart(QDateTime(mDate,QTime(0,0,0)));
-    mJournal->setDescription(mEditor->text());
+    writeJournalPrivate( mJournal );
     if ( !mChanger->addIncidence( mJournal ) ) {
       KODialogManager::errorSaveIncidence( this, mJournal );
       delete mJournal;
       mJournal = 0;
-      return;
     }
-    
   } else {
-  
-    Journal* oldJournal = mJournal->clone();
+    oldJournal = mJournal->clone();
     if ( mChanger->beginChange( mJournal ) ) {
-      mJournal->setDescription( mEditor->text() );
+      writeJournalPrivate( mJournal );
       mChanger->changeIncidence( oldJournal, mJournal, KOGlobals::DESCRIPTION_MODIFIED );
       mChanger->endChange( mJournal );
     }
     delete oldJournal;
   } 
-  
   mDirty = false;
 }
 

@@ -29,7 +29,11 @@
 #include <qvbox.h>
 
 class QLabel;
+class QCheckBox;
+class QGridLayout;
+class KLineEdit;
 class KTextEdit;
+class KTimeEdit;
 namespace KOrg {
 class IncidenceChangerBase;
 }
@@ -40,7 +44,7 @@ namespace KCal {
 }
 using namespace KCal;
 
-class JournalEntry : public QVBox {
+class JournalEntry : public QWidget {
     Q_OBJECT
   public:
     typedef ListBase<JournalEntry> List;
@@ -55,7 +59,7 @@ class JournalEntry : public QVBox {
     QDate date() const { return mDate; }
 
     void clear();
-    void readJournal();
+    void readJournal( Journal *j );
 
     void flushEntry();
     void setIncidenceChanger( IncidenceChangerBase *changer ) { mChanger = changer; }
@@ -64,17 +68,26 @@ class JournalEntry : public QVBox {
     void setDirty();
 
   protected:    
+    void clearFields();
     bool eventFilter( QObject *o, QEvent *e );
 
     void writeJournal();
     
   private:
+    void writeJournalPrivate( Journal *j );
+    
     Calendar *mCalendar;
     Journal *mJournal;
     QDate mDate;
     
+    QLabel *mTitle;
     QLabel *mTitleLabel;
+    KLineEdit *mTitleEdit;
     KTextEdit *mEditor;
+    QCheckBox *mTimeCheck;
+    KTimeEdit *mTimeEdit;
+    
+    QGridLayout *mLayout;
 
     bool mDirty;
     IncidenceChangerBase *mChanger;

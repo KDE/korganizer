@@ -29,9 +29,12 @@
 #include <qdatetime.h>
 
 class KDateEdit;
+class KTimeEdit;
 class KTextEdit;
+class QLineEdit;
 class QLabel;
 class QBoxLayout;
+class QCheckBox;
 class QWidget;
 
 namespace KCal {
@@ -49,10 +52,12 @@ class KOEditorGeneralJournal : public QObject
 
     void initDate( QWidget *, QBoxLayout * );
     void initDescription( QWidget *, QBoxLayout * );
+    void initTitle( QWidget *parent, QBoxLayout *topLayout );
 
     /** Set widgets to default values */
     void setDefaults( const QDate &date );
     void setDate( const QDate &date );
+    void setTime( const QTime &time );
     /** Read journal object and setup widgets accordingly */
     void readJournal( Journal *, bool tmpl = false );
     /** Write journal settings to event object */
@@ -61,13 +66,18 @@ class KOEditorGeneralJournal : public QObject
     /** Check if the input is valid. */
     bool validateInput();
 
-    void setDescription( const QString & );
+    void setDescription( const QString &text );
+    void setSummary( const QString &text );
     void finishSetup();
 
   protected:
+    QLineEdit  *mSummaryEdit;
+    QLabel     *mSummaryLabel;
     KTextEdit  *mDescriptionEdit;
     QLabel     *mDateLabel;
     KDateEdit  *mDateEdit;
+    QCheckBox  *mTimeCheckBox;
+    KTimeEdit  *mTimeEdit;
 };
 
 #endif
