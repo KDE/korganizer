@@ -54,20 +54,7 @@ class KOEventViewer : public QTextBrowser
       Show given incidence in viewer. Clear all previously shown incidences.
     */
     virtual void setIncidence( Incidence * );
-
     virtual bool appendIncidence( Incidence * );
-    /**
-      Show given event by appending it to already shown incidences.
-    */
-    virtual bool appendEvent( Event *event );
-    /**
-      Show given todo by appending it to already shown incidences.
-    */
-    virtual bool appendTodo( Todo *todo );
-    /**
-      Show given journal by appending it to already shown incidences.
-    */
-    virtual bool appendJournal( Journal *journal );
     
     /**
       Clear viewer. If \a now is set to true delete view immediately. If set to
@@ -79,16 +66,6 @@ class KOEventViewer : public QTextBrowser
       Add given text to currently shown content.
     */    
     void addText( const QString &text );
-
-  protected:
-    void addTag( const QString &tag, const QString &text );
-    void addLink( const QString &ref, const QString &text,
-                  bool newline = true );
-
-    void formatCategories( Incidence * );
-    void formatAttendees( Incidence * );
-    void formatReadOnly( Incidence * );
-    void formatAttachments( Incidence * );
 
   private:
     QTextBrowser *mEventTextView;

@@ -99,7 +99,8 @@ class KOrganizerPart: public KParts::ReadOnlyPart,
     ActionManager *mActionManager;
     KOrganizerBrowserExtension *mBrowserExtension;
     KParts::StatusBarExtension *mStatusBarExtension;
-
+    QWidget *mTopLevelWidget;
+		
   signals:
     void textChanged( const QString & );
 };

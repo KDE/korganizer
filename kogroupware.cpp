@@ -53,6 +53,7 @@
 #include <libkcal/journal.h>
 #include <libkcal/calendarlocal.h>
 #include <libkcal/icalformat.h>
+#include <libkcal/incidenceformatter.h>
 
 #include <kabc/phonenumber.h>
 #include <kabc/vcardconverter.h>
@@ -186,175 +187,15 @@ void KOGroupware::incomingDirChanged( const QString& path )
   mView->updateView();
 }
 
-static void vPartMicroParser( const QString& str, QString& s )
-{
-  QString line;
-  uint len = str.length();
-
-  for( uint i=0; i<len; ++i) {
-    if( str[i] == '\r' || str[i] == '\n' ) {
-      if( str[i] == '\r' )
-        ++i;
-      if( i+1 < len && str[i+1] == ' ' ) {
-        // Found a continuation line, skip it's leading blanc
-        ++i;
-      } else {
-        // Found a logical line end, process the line
-        if( line.startsWith( s ) ) {
-          s = line.mid( s.length() + 1 );
-          return;
-        }
-        line = "";
-      }
-    } else {
-      line += str[i];
-    }
-  }
-  s.truncate(0);
-}
-
-static void string2HTML( QString& str ) {
-  str.replace( QChar( '&' ), "&amp;" );
-  str.replace( QChar( '<' ), "&lt;" );
-  str.replace( QChar( '>' ), "&gt;" );
-  str.replace( QChar( '\"' ), "&quot;" );
-  str.replace( "\\n", "<br>" );
-  str.replace( "\\,", "," );
-}
-
-static QString meetingDetails( Incidence* incidence, Event* event )
-{
-  // Meeting details are formatted into an HTML table
-
-  QString html;
-
-  QString sSummary = i18n( "Summary unspecified" );
-  if ( incidence ) {
-    if ( ! incidence->summary().isEmpty() ) {
-      sSummary = incidence->summary();
-      string2HTML( sSummary );
-    }
-  }
-
-  QString sLocation = i18n( "Location unspecified" );
-  if ( incidence ) {
-    if ( ! incidence->location().isEmpty() ) {
-      sLocation = incidence->location();
-      string2HTML( sLocation );
-    }
-  }
-
-  QString dir = ( QApplication::reverseLayout() ? "rtl" : "ltr" );
-  html = QString("<div dir=\"%1\">\n").arg(dir);
-
-  html += "<table border=\"0\" cellpadding=\"1\" cellspacing=\"1\">\n";
-
-  // Meeting Summary Row
-  html += "<tr>";
-  html += "<td>" + i18n( "What:" ) + "</td>";
-  html += "<td>" + sSummary + "</td>";
-  html += "</tr>\n";
-
-  // Meeting Location Row
-  html += "<tr>";
-  html += "<td>" + i18n( "Where:" ) + "</td>";
-  html += "<td>" + sLocation + "</td>";
-  html += "</tr>\n";
-
-  // Meeting Start Time Row
-  html += "<tr>";
-  html += "<td>" + i18n( "Start Time:" ) + "</td>";
-  html += "<td>";
-  if ( ! event->doesFloat() ) {
-    html +=  i18n("%1: Start Date, %2: Start Time", "%1 %2")
-             .arg( event->dtStartDateStr(), event->dtStartTimeStr() );
-  } else {
-    html += i18n("%1: Start Date", "%1 (time unspecified)")
-            .arg( event->dtStartDateStr() );
-  }
-  html += "</td>";
-  html += "</tr>\n";
-
-  // Meeting End Time Row
-  html += "<tr>";
-  html += "<td>" + i18n( "End Time:" ) + "</td>";
-  html += "<td>";
-  if ( event->hasEndDate() ) {
-    if ( ! event->doesFloat() ) {
-      html +=  i18n("%1: End Date, %2: End Time", "%1 %2")
-               .arg( event->dtEndDateStr(), event->dtEndTimeStr() );
-    } else {
-      html += i18n("%1: End Date", "%1 (time unspecified)")
-              .arg( event->dtEndDateStr() );
-    }
-  } else {
-    html += i18n( "Unspecified" );
-  }
-  html += "</td>";
-  html += "</tr>\n";
-
-  // Meeting Duration Row
-  if ( !event->doesFloat() && event->hasEndDate() ) {
-    html += "<tr>";
-    QTime sDuration, t;
-    int secs = event->dtStart().secsTo( event->dtEnd() );
-    t = sDuration.addSecs( secs );
-    html += "<td>" + i18n( "Duration:" ) + "</td>";
-    html += "<td>";
-    if ( t.hour() > 0 ) {
-      html += i18n( "1 hour ", "%n hours ", t.hour() );
-    }
-    if ( t.minute() > 0 ) {
-      html += i18n( "1 minute ", "%n minutes ",  t.minute() );
-    }
-    html += "</td>";
-    html += "</tr>\n";
-  }
-
-  html += "</table>\n";
-  html += "</div>\n";
-
-  return html;
-}
-
-static QString taskDetails( Incidence* incidence )
-{
-  // Task details are formatted into an HTML table
-
-  QString html;
-
-  QString sSummary = i18n( "Summary unspecified" );
-  QString sDescr = i18n( "Description unspecified" );
-  if ( incidence ) {
-    if ( ! incidence->summary().isEmpty() ) {
-      sSummary = incidence->summary();
-    }
-    if ( ! incidence->description().isEmpty() ) {
-      sDescr = incidence->description();
-    }
-  }
-  html = "<table border=\"0\" cellpadding=\"1\" cellspacing=\"1\">\n";
-
-  // Task Summary Row
-  html += "<tr>";
-  html += "<td>" + i18n( "Summary:" ) + "</td>";
-  html += "<td>" + sSummary + "</td>";
-  html += "</tr>\n";
-
-  // Task Description Row
-  html += "<tr>";
-  html += "<td>" + i18n( "Description:" ) + "</td>";
-  html += "<td>" + sDescr + "</td>";
-  html += "</tr>\n";
-
-  html += "</table>\n";
-
-  return html;
-}
 
 QString KOGroupware::formatICal( const QString& iCal )
 {
   KCal::CalendarLocal cl( mCalendar->timeZoneId() );
+  return IncidenceFormatter::invitationDisplayString( iCal, &cl );
+}
+
+#if 0
+  
   ICalFormat format;
   // @TODO: What the heck??? We have parseScheduleMessage, which returns just what we need!
   format.fromString( &cl, iCal );
@@ -500,6 +341,7 @@ QString KOGroupware::formatICal( const QString& iCal )
 
   return html;
 }
+#endif
 
 QString KOGroupware::formatTNEF( const QByteArray& tnef )
 {
