@@ -1,11 +1,15 @@
 <!DOCTYPE kpartgui>
-<kpartgui name="projectview" version="1">
+<kpartgui name="projectview" version="2">
 
   <MenuBar>
     <Menu name="view"><text>&amp;View</text>
       <Action name="view_project"/>
     </Menu>
   </MenuBar>
+  <ToolBar name="korganizer_toolbar">
+    <Action name="view_project"/>
+  </ToolBar>
+
 
 </kpartgui>
 
