@@ -46,7 +46,7 @@
 #include <kmessagebox.h>
 #include <kiconloader.h>
 #include <kemailsettings.h>
-#include <kcalendarsystem.h> 
+#include <kcalendarsystem.h>
 
 #if defined(USE_SOLARIS)
 #include <sys/param.h>
@@ -468,7 +468,7 @@ class KOPrefsDialogViews : public KPrefsModule
       KPrefsWidBool *showAllDayTodo =
           addWidBool( KOPrefs::instance()->showAllDayTodoItem(), topFrame );
       topLayout->addWidget(showAllDayTodo->checkBox(),6,0);
-      
+
       KPrefsWidBool *enableMonthScroll =
           addWidBool( KOPrefs::instance()->enableMonthScrollItem(), topFrame );
       topLayout->addWidget(enableMonthScroll->checkBox(),7,0);
@@ -821,9 +821,10 @@ void KOPrefsDialogGroupScheduling::addItem()
   mAMails->insertItem(item);
   mAMails->setSelected(item,true);
   aEmailsEdit->setText(i18n("(EmptyEmail)"));
+  slotWidChanged();
 }
 
-void KOPrefsDialogGroupScheduling::removeItem()
+void KOPrefsDialoGroupScheduling::removeItem()
 {
   QListViewItem *item;
   item = mAMails->selectedItem();
@@ -837,6 +838,7 @@ void KOPrefsDialogGroupScheduling::removeItem()
   if (mAMails->childCount() == 0) {
     aEmailsEdit->setEnabled(false);
   }
+  slotWidChanged();
 }
 
 void KOPrefsDialogGroupScheduling::updateItem()
@@ -845,6 +847,7 @@ void KOPrefsDialogGroupScheduling::updateItem()
   item = mAMails->selectedItem();
   if (!item) return;
   item->setText(0,aEmailsEdit->text());
+  slotWidChanged();
 }
 
 void KOPrefsDialogGroupScheduling::updateInput()
