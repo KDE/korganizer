@@ -59,31 +59,24 @@ KOEditorGeneral::~KOEditorGeneral()
 
 void KOEditorGeneral::initHeader(QWidget *parent,QBoxLayout *topLayout)
 {
-  QBoxLayout *headerLayout = new QVBoxLayout(topLayout);
+  QGridLayout *headerLayout = new QGridLayout(topLayout);
 
 #if 0
   mOwnerLabel = new QLabel(i18n("Owner:"),parent);
-  headerLayout->addWidget(mOwnerLabel);
+  headerLayout->addMultiCellWidget(mOwnerLabel,0,0,0,1);
 #endif
 
-  QBoxLayout *summaryLayout = new QHBoxLayout;
-  headerLayout->addLayout(summaryLayout);
-
   QLabel *summaryLabel = new QLabel(i18n("Summary:"),parent);
-  summaryLayout->addWidget(summaryLabel);
+  headerLayout->addWidget(summaryLabel,1,0);
 
   mSummaryEdit = new QLineEdit(parent);
-  summaryLayout->addWidget(mSummaryEdit);
+  headerLayout->addWidget(mSummaryEdit,1,1);
   
-  QBoxLayout *locationLayout = new QHBoxLayout;
-  headerLayout->addLayout(locationLayout);
-
   QLabel *locationLabel = new QLabel(i18n("Location:"),parent);
-  locationLayout->addWidget(locationLabel);
+  headerLayout->addWidget(locationLabel,2,0);
 
   mLocationEdit = new QLineEdit(parent);
-  locationLayout->addWidget(mLocationEdit);
-  
+  headerLayout->addWidget(mLocationEdit,2,1);
 }
 
 void KOEditorGeneral::initCategories(QWidget *parent, QBoxLayout *topLayout)

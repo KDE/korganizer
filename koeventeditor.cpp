@@ -113,7 +113,6 @@ void KOEventEditor::setupGeneral()
     QFrame *topFrame = addPage(i18n("General"));
 
     QBoxLayout *topLayout = new QVBoxLayout(topFrame);
-    topLayout->setMargin(marginHint());
     topLayout->setSpacing(spacingHint());
 
     mGeneral->initHeader(topFrame,topLayout);
@@ -135,7 +134,6 @@ void KOEventEditor::setupRecurrence()
   QFrame *topFrame = addPage(i18n("Recurrence"));
 
   QBoxLayout *topLayout = new QVBoxLayout(topFrame);  
-  topLayout->setMargin(marginHint());
 
   mRecurrenceStack = new QWidgetStack(topFrame);
   topLayout->addWidget(mRecurrenceStack);

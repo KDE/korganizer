@@ -71,7 +71,6 @@ void KOIncidenceEditor::setupAttendeesTab()
   QFrame *topFrame = addPage(i18n("Attendees"));
 
   QBoxLayout *topLayout = new QVBoxLayout(topFrame);
-  topLayout->setMargin(marginHint());
 
   mDetails = new KOEditorDetails(spacingHint(),topFrame);
   topLayout->addWidget(mDetails);
