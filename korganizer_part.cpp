@@ -51,8 +51,8 @@ QObject *KOrganizerFactory::create(QObject *parent, const char *name,
 KInstance *KOrganizerFactory::instance()
 {
   if ( !s_instance ) {
-    KAboutData about("korganizer", I18N_NOOP("KOrganizer"), "1.99");
-    s_instance = new KInstance(&about);
+    KAboutData *about = new KAboutData("korganizer", I18N_NOOP("KOrganizer"), "1.99");
+    s_instance = new KInstance(about);
   }
   return s_instance;
 }
