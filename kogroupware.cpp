@@ -4,7 +4,7 @@
   Requires the Qt and KDE widget libraries, available at no cost at
   http://www.trolltech.com and http://www.kde.org respectively
 
-  Copyright (c) 2002-2004 Klarälvdalens Datakonsult AB
+  Copyright (c) 2002-2004 KlarÃ¤lvdalens Datakonsult AB
         <info@klaralvdalens-datakonsult.se>
 
   This program is free software; you can redistribute it and/or modify
@@ -129,7 +129,7 @@ void KOGroupware::incomingDirChanged( const QString& path )
   }
   QTextStream t(&f);
   t.setEncoding( QTextStream::UnicodeUTF8 );
-  QString receiver = KPIM::getEmailAddr( t.readLine() );
+  QString receiver = KPIM::getFirstEmailAddress( t.readLine() );
   QString iCal = t.read();
 
   f.remove();
