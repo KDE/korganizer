@@ -240,7 +240,7 @@ void KOEditorRecurrence::initDaily()
   everyNDays = new QLabel(i18n("Recur every"), dailyFrame);
 
   nDaysEntry = new QLineEdit(dailyFrame);
-  nDaysEntry->setText( "" );
+  nDaysEntry->setText( "1" );
   nDaysEntry->setMaxLength( 3 );
 
   nDaysLabel = new QLabel(i18n("day(s)"), dailyFrame);
@@ -259,7 +259,7 @@ void KOEditorRecurrence::initWeekly()
   everyNWeeks = new QLabel(i18n("Recur every"), weeklyFrame);
 
   nWeeksEntry = new QLineEdit(weeklyFrame);
-  nWeeksEntry->setText("");
+  nWeeksEntry->setText("1");
   nWeeksEntry->setMaxLength(2);
 
   nWeeksLabel = new QLabel(i18n("week(s) on:"), weeklyFrame);
@@ -310,6 +310,7 @@ void KOEditorRecurrence::initMonthly()
 
   monthCommonLabel  = new QLabel(i18n("every"), monthlyButtonGroup);
   nMonthsEntry      = new QLineEdit(monthlyButtonGroup);
+  nMonthsEntry->setText("1");
   nMonthsLabel      = new QLabel(i18n("month(s)"), monthlyButtonGroup);
 
   nthDayEntry->setSizeLimit( 7 );
@@ -394,6 +395,7 @@ void KOEditorRecurrence::initYearly()
   yearCommonLabel = new QLabel(i18n("every"), yearlyButtonGroup);
   nYearsEntry = new QLineEdit(yearlyButtonGroup);
   nYearsEntry->setMaxLength(3);
+  nYearsEntry->setText("1");
   yearsLabel = new QLabel(i18n("year(s)"), yearlyButtonGroup);
 
   yearMonthComboBox->insertItem(i18n("January"));

@@ -356,21 +356,6 @@ void KOEditorGeneralEvent::alarmStuffDisable(bool disable)
   alarmProgramButton->setEnabled(!disable);
 }
 
-// This is probably not used anymore
-void KOEditorGeneralEvent::recurStuffEnable(bool enable)
-{
-  if (enable) {
-    startDateLabel->hide();
-    endDateLabel->hide();
-    startDateEdit->hide();
-    endDateEdit->hide();
-  } else {
-    startDateLabel->show();
-    endDateLabel->show();
-    startDateEdit->show();
-    endDateEdit->show();
-  }
-}
 
 void KOEditorGeneralEvent::setDateTimes(QDateTime start, QDateTime end)
 {
@@ -496,7 +481,7 @@ void KOEditorGeneralEvent::readEvent(KOEvent *event)
   setDateTimes(event->getDtStart(),event->getDtEnd());
 
   recursButton->setChecked(event->doesRecur());
-  recurStuffEnable(event->doesRecur());
+//  recurStuffEnable(event->doesRecur());
 
   privateButton->setChecked((event->getSecrecy() > 0) ? true : false);
 
@@ -547,6 +532,8 @@ void KOEditorGeneralEvent::readEvent(KOEvent *event)
 
 void KOEditorGeneralEvent::writeEvent(KOEvent *event)
 {
+  qDebug("KOEditorGeneralEvent::writeEvent()");
+
   QDate tmpDate;
   QTime tmpTime;
   QDateTime tmpDT;
@@ -577,21 +564,31 @@ void KOEditorGeneralEvent::writeEvent(KOEvent *event)
     event->setDtEnd(tmpDT);
   } else {
     event->setFloats(false);
+
+    qDebug("---end dt");
     
     // set date/time end
     tmpDate = endDateEdit->getDate();
+    qDebug("-----1");
     tmpTime = endTimeEdit->getTime(ok);
+    qDebug("-----2");
     tmpDT.setDate(tmpDate);
+    qDebug("-----3");
     tmpDT.setTime(tmpTime);
+    qDebug("-----4");
     event->setDtEnd(tmpDT);
+
+    qDebug("---start dt");
 
     // set date/time start
     tmpDate = startDateEdit->getDate();
     tmpTime = startTimeEdit->getTime(ok);
     tmpDT.setDate(tmpDate);
     tmpDT.setTime(tmpTime);
-    event->setDtStart(tmpDT);    
+    event->setDtStart(tmpDT);
   } // check for float
+
+  qDebug("---Alarm");
 
   // alarm stuff
   if (alarmButton->isChecked()) {
@@ -623,6 +620,8 @@ void KOEditorGeneralEvent::writeEvent(KOEvent *event)
   // note, that if on the details tab the "Transparency" option is implemented,
   // we will have to change this to suit.
   event->setTransparency(freeTimeCombo->currentItem());
+
+  qDebug("KOEditorGeneralEvent::writeEvent() done");
 }
 
 void KOEditorGeneralEvent::setDuration()

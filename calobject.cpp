@@ -1307,8 +1307,8 @@ VObject* CalObject::eventToVEvent(const KOEvent *anEvent)
     switch(anEvent->doesRecur()) {
     case KOEvent::rDaily:
       tmpStr.sprintf("D%i ",anEvent->rFreq);
-      if (anEvent->rDuration > 0)
-	tmpStr += "#";
+//      if (anEvent->rDuration > 0)
+//	tmpStr += "#";
       break;
     case KOEvent::rWeekly:
       tmpStr.sprintf("W%i ",anEvent->rFreq);

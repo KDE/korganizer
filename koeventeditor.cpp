@@ -133,6 +133,8 @@ void KOEventEditor::enableRecurrence(bool enable)
 {
   if (enable) mRecurrenceStack->raiseWidget(mRecurrence);
   else mRecurrenceStack->raiseWidget(mRecurrenceDisabled);
+  
+  mRecurrence->setEnabled(enable);
 }
 
 void KOEventEditor::editEvent(KOEvent *event,QDate)

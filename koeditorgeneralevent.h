@@ -47,7 +47,6 @@ class KOEditorGeneralEvent : public QWidget
     void timeStuffDisable(bool disable);
     void alarmStuffEnable(bool enable);
     void alarmStuffDisable(bool disable);
-    void recurStuffEnable(bool enable);
     void pickAlarmSound();
     void pickAlarmProgram();
 
