@@ -65,8 +65,7 @@ int KOrganizerApp::newInstance()
 {
   kdDebug(5850) << "KOApp::newInstance()" << endl;
   static bool first = true;
-  if ( isRestored() && first)
-  {
+  if ( isRestored() && first ) {
      first = false;
      return 0;
   }
