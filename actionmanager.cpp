@@ -103,6 +103,9 @@ ActionManager::~ActionManager()
 // see the Note: below for why this method is necessary
 void ActionManager::ActionManager::init()
 {
+  // Construct the groupware object
+  KOGroupware::create( mCalendarView, mCalendarResources );
+
   // add this instance of the window to the static list.
   if ( !mWindowList ) {
     mWindowList = new KOWindowList;
@@ -168,9 +171,6 @@ void ActionManager::createCalendarResources()
 
   mCalendarView->setCalendar( mCalendarResources );
   mCalendarView->readSettings();
-
-  // Construct the groupware object
-  KOGroupware::create( mCalendarView, mCalendarResources );
 
   ResourceViewFactory factory( mCalendarResources, mCalendarView );
   mCalendarView->addExtension( &factory );

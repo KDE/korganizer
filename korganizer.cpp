@@ -117,7 +117,7 @@ void KOrganizer::init( bool document )
   } else {
     mActionManager->createCalendarResources();
     setCaption( i18n("Calendar") );
-  }    
+  }
 
   mActionManager->init();
   connect( mActionManager, SIGNAL( actionNew( const KURL & ) ),
