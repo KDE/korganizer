@@ -76,6 +76,8 @@ class KOPrefs : public KOPrefsBase
     QString email();
     /// Returns all email addresses for the user.
     QStringList allEmails();
+    /// Returns all email addresses together with the full username for the user.
+    QStringList fullEmails();
     /// Return true if the given email belongs to the user
     bool thatIsMe( const QString& email );
 
