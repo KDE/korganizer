@@ -36,6 +36,7 @@
 #include <kinputdialog.h>
 
 #include <libkdepim/categoryselectdialog.h>
+#include <libkdepim/designerfields.h>
 
 #include <libkcal/calendarlocal.h>
 #include <libkcal/incidence.h>
@@ -250,6 +251,87 @@ QString KOIncidenceEditor::loadTemplate( Calendar *cal, const QString &type,
   }
 
   return templateName;
+}
+
+void KOIncidenceEditor::setupDesignerTabs( const QString &type )
+{
+  QStringList list = KGlobal::dirs()->findAllResources( "data",
+    "korganizer/designer/" + type + "/*.ui", true, true );
+  for ( QStringList::iterator it = list.begin(); it != list.end(); ++it ) {
+    kdDebug() << "Designer tab: " << *it << endl;
+
+    KPIM::DesignerFields *wid = new KPIM::DesignerFields( *it, 0 );
+    mDesignerFields.append( wid );
+   
+    QFrame *topFrame = addPage( wid->title() );
+
+    QBoxLayout *topLayout = new QVBoxLayout( topFrame );
+
+    wid->reparent( topFrame, 0, QPoint() );
+    topLayout->addWidget( wid );
+  }
+}
+
+class KCalStorage : public KPIM::DesignerFields::Storage
+{
+  public:
+    KCalStorage( Incidence *incidence )
+      : mIncidence( incidence )
+    {
+    }
+
+    QStringList keys()
+    {
+      QStringList keys;
+    
+      QMap<QCString, QString> props = mIncidence->customProperties();
+      QMap<QCString, QString>::ConstIterator it;
+      for( it = props.begin(); it != props.end(); ++it ) {
+        QString customKey = it.key();
+        QStringList parts = QStringList::split( "-", customKey );
+        if ( parts.count() != 4 ) continue;
+        if ( parts[ 2 ] != "KORGANIZER" ) continue;
+        keys.append( parts[ 3 ] );
+      }
+      
+      return keys;
+    }
+    
+    QString read( const QString &key )
+    {
+      return mIncidence->customProperty( "KORGANIZER", key.utf8() );
+    }
+    
+    void write( const QString &key, const QString &value )
+    {
+      mIncidence->setCustomProperty( "KORGANIZER", key.utf8(), value );
+    }
+  
+  private:
+    Incidence *mIncidence;
+};
+
+void KOIncidenceEditor::readDesignerFields( Incidence *i )
+{
+  KCalStorage storage( i );
+  KPIM::DesignerFields *fields;
+  for( fields = mDesignerFields.first(); fields;
+       fields = mDesignerFields.next() ) {
+    fields->load( &storage );
+  }  
+}
+
+void KOIncidenceEditor::writeDesignerFields( Incidence *i )
+{
+  kdDebug() << "KOIncidenceEditor::writeDesignerFields()" << endl;
+
+  KCalStorage storage( i );
+  KPIM::DesignerFields *fields;
+  for( fields = mDesignerFields.first(); fields;
+       fields = mDesignerFields.next() ) {
+    kdDebug() << "Write Field " << fields->title() << endl;
+    fields->save( &storage );
+  }  
 }
 
 #include "koincidenceeditor.moc"

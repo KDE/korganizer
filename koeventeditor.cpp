@@ -71,6 +71,8 @@ void KOEventEditor::init()
   setupAttendeesTab();
   setupFreeBusy();
   setupAttachmentsTab();
+  setupDesignerTabs( "event" );
+
   mDetails->setFreeBusyWidget( mFreeBusy );
 
   // Propagate date time settings to recurrence tab
@@ -342,13 +344,15 @@ void KOEventEditor::readEvent( Event *event, bool tmpl )
   mRecurrence->readIncidence( event );
   mAttachments->readIncidence( event );
 //  mAlarms->readIncidence( event );
-  if( mFreeBusy ) { 
+  if ( mFreeBusy ) {
     mFreeBusy->readEvent( event );
     mFreeBusy->triggerReload();
   }
 
   // categories
   mCategoryDialog->setSelected( event->categories() );
+
+  readDesignerFields( event );
 }
 
 void KOEventEditor::writeEvent( Event *event )
@@ -360,6 +364,8 @@ void KOEventEditor::writeEvent( Event *event )
   cancelRemovedAttendees( event );
 
   mRecurrence->writeIncidence( event );
+
+  writeDesignerFields( event );
 }
 
 bool KOEventEditor::validateInput()

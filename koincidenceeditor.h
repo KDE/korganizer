@@ -28,7 +28,11 @@
 
 class QDateTime;
 
-namespace KPIM { class CategorySelectDialog; }
+namespace KPIM {
+class CategorySelectDialog;
+class DesignerFields;
+}
+
 namespace KOrg { class IncidenceChangerBase; }
 
 class KOEditorDetails;
@@ -96,10 +100,14 @@ class KOIncidenceEditor : public KDialogBase
     void setupAttendeesTab();
     void setupAttachmentsTab();
     void setupAlarmsTab();
+    void setupDesignerTabs( const QString &type );
 
     QString loadTemplate( Calendar *cal, const QString &type,
                           const QStringList &templates );
     void saveAsTemplate( Incidence *, const QString &name );
+
+    void readDesignerFields( Incidence *i );
+    void writeDesignerFields( Incidence *i );
 
     /**
       Process user input and create or update event. Returns false if input is invalid.
@@ -118,6 +126,8 @@ class KOIncidenceEditor : public KDialogBase
     KOEditorAttachments *mAttachments;
     KOEditorAlarms *mAlarms;
     KOrg::IncidenceChangerBase *mChanger;
+    
+    QPtrList<KPIM::DesignerFields> mDesignerFields;
 };
 
 #endif
