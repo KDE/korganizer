@@ -40,6 +40,7 @@
 #include <qpushbutton.h>
 #include <qgroupbox.h>
 #include <qradiobutton.h>
+#include <qregexp.h>
 
 #include <kdebug.h>
 #include <klocale.h>
@@ -331,12 +332,12 @@ void KOEditorDetails::openAddressBook()
           itr != aList.end(); ++itr ) {
       KABC::Addressee a = (*itr);
       bool myself = KOPrefs::instance()->thatIsMe( a.preferredEmail() );
-      bool sameAsOrganizer = mOrganizerCombo && 
+      bool sameAsOrganizer = mOrganizerCombo &&
         KPIM::compareEmail( a.preferredEmail(), mOrganizerCombo->currentText(), false );
       KCal::Attendee::PartStat partStat;
-      if ( myself && sameAsOrganizer ) 
+      if ( myself && sameAsOrganizer )
         partStat = KCal::Attendee::Accepted;
-      else 
+      else
         partStat = KCal::Attendee::NeedsAction;
       insertAttendee( new Attendee( a.realName(), a.preferredEmail(),
                                     !myself, partStat,
@@ -503,8 +504,14 @@ void KOEditorDetails::fillAttendeeInput( AttendeeListItem *aItem )
   Attendee *a = aItem->data();
   mDisableItemUpdate = true;
   QString name = a->name();
-  if (!a->email().isEmpty())
-    name += " <" + a->email() + ">";
+  if (!a->email().isEmpty()) {
+    // Taken from KABC::Addressee::fullEmail
+    QRegExp needQuotes( "[^ 0-9A-Za-z\\x0080-\\xFFFF]" );
+    if ( name.find( needQuotes ) != -1 )
+      name = "\"" + name + "\" <" + a->email() + ">";
+    else
+      name += " <" + a->email() + ">";
+  }
   mNameEdit->setText(name);
   mUidEdit->setText(a->uid());
   mRoleCombo->setCurrentItem(a->role());
@@ -544,7 +551,7 @@ void KOEditorDetails::updateAttendeeItem()
   if ( iAmTheOrganizer ) {
     bool myself =
       KPIM::compareEmail( email, mOrganizerCombo->currentText(), false );
-    bool wasMyself = 
+    bool wasMyself =
       KPIM::compareEmail( a->email(), mOrganizerCombo->currentText(), false );
     if ( myself ) {
       mStatusCombo->setCurrentItem( KCal::Attendee::Accepted );
