@@ -76,6 +76,7 @@ class KTimeEdit : public QComboBox
   protected slots: 
     void activ(int);
     void hilit(int); 
+    void changedText();
 
   protected:
     void addTime(QTime qt);

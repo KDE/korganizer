@@ -57,6 +57,7 @@ KTimeEdit::KTimeEdit(QWidget *parent, QTime qt, const char *name)
 
   connect(this, SIGNAL(activated(int)), this, SLOT(activ(int)));
   connect(this, SIGNAL(highlighted(int)), this, SLOT(hilit(int)));
+  connect(this,SIGNAL(textChanged(const QString&)),this,SLOT(changedText()));
 }
 
 KTimeEdit::~KTimeEdit()
@@ -99,7 +100,7 @@ void KTimeEdit::setTime(QTime newTime)
 void KTimeEdit::activ(int i)
 {
   mTime = QTime(0,0,0).addSecs(i*15*60);
-  emit timeChanged(mTime);
+  //emit timeChanged(mTime);
 }
 
 void KTimeEdit::hilit(int )
@@ -111,7 +112,7 @@ void KTimeEdit::addTime(QTime qt)
 {
   // Calculate the new time.
   mTime = qt.addSecs(mTime.minute()*60+mTime.hour()*3600);
-  emit timeChanged(mTime);
+  //emit timeChanged(mTime);
   updateSelection();
 }
 
@@ -136,7 +137,7 @@ void KTimeEdit::subTime(QTime qt)
 
   // store the newly calculated time.
   mTime.setHMS(h, m, 0);
-  emit timeChanged(mTime);
+  //emit timeChanged(mTime);
   updateSelection();
 }
 
@@ -195,4 +196,11 @@ bool KTimeEdit::inputIsValid()
   QTime t = KGlobal::locale()->readTime(currentText());
 
   return t.isValid();
+}
+
+void KTimeEdit::changedText()
+{
+  kdDebug() << "KTimeEdit::changedText()" << endl;
+  mTime = getTime();
+  emit timeChanged(mTime);
 }
