@@ -206,13 +206,11 @@ void ExportWebDialog::exportWebPage()
   *ts << "</BODY></HTML>\n";
 
   // Copy temporary file to final destination
-  QString srcStr = tmpFile.name();
-  KURL::encode(srcStr);
-  KURL src(srcStr);
-  
-  QString destStr = mOutputFileEdit->text();
-  KURL::encode(destStr);
-  KURL dest(destStr);
+  KURL src;
+  src.setPath(tmpFile.name());
+
+  KURL dest;
+  dest.setPath(mOutputFileEdit->text());
 
   qDebug ("ExportWebDialog::exportWebPage() move");
   

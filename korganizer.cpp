@@ -89,9 +89,8 @@ KOrganizer::KOrganizer(QString filename, bool fnOverride, const char *name )
     mFile = filename;
   }
 
-  QString url = mFile;
-  KURL::encode(url);
-  mURL = KURL(url);
+  mURL = KURL();
+  mURL.setPath( mFile) ;
 
   mCalendarView = new CalendarView(mFile,this,"KOrganizer::CalendarView");
   setView(mCalendarView);
@@ -439,8 +438,8 @@ KURL KOrganizer::getSaveURL()
 
   url.setFileName(filename);
 
-  qDebug("KOrganizer::getSaveURL(): Decoded url: %s",
-         url.decodedURL().latin1());
+  qDebug("KOrganizer::getSaveURL(): url: %s",
+         url.url().latin1());
 
   return url;
 }
