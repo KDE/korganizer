@@ -81,6 +81,9 @@ class KOAgendaItem : public QFrame
     Event *itemEvent() { return mEvent; }
     QDate itemDate() { return mDate; }
     
+    /** Update the date of this item's occurence (not in the event) */ 
+    void setItemDate(QDate qd);
+    
     void setText ( const QString & text ) { mItemLabel->setText(text); }
     QString text () { return mItemLabel->text(); }
 

@@ -250,6 +250,11 @@ int KOAgendaItem::cellWidth()
   return mCellXWidth - mCellX + 1;
 }
 
+void KOAgendaItem::setItemDate(QDate qd)
+{
+  mDate = qd;
+}
+
 void KOAgendaItem::setCellXY(int X, int YTop, int YBottom)
 {
   mCellX = X;

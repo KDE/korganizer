@@ -591,6 +591,7 @@ void KOAgendaView::updateEventDates(KOAgendaItem *item)
   item->itemEvent()->setDtStart(startDt);
   item->itemEvent()->setDtEnd(endDt);
   item->itemEvent()->setRevision(item->itemEvent()->revision()+1);
+  item->setItemDate(startDt.date());
 
   emit shiftedEvent(olddate, startDate);
 
