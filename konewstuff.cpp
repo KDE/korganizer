@@ -25,6 +25,7 @@
 #include <kdebug.h>
 
 #include <libkcal/calendarlocal.h>
+#include <libkcal/filestorage.h>
 
 #include "korganizer.h"
 
@@ -41,7 +42,8 @@ bool KONewStuff::install( const QString &fileName )
   kdDebug() << "KONewStuff::install(): " << fileName << endl;
 
   CalendarLocal cal;
-  if ( !cal.load( fileName ) ) {
+  FileStorage storage( &cal, fileName );
+  if ( !storage.load() ) {
     KMessageBox::error( mView, i18n("Couldn't load calendar.") );
     return false;
   }

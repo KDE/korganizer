@@ -49,6 +49,8 @@ class KODialogManager;
 class KOTodoView;
 class KDateNavigator;
 
+namespace KCal { class FileStorage; }
+
 using namespace KCal;
 
 /**
@@ -418,6 +420,8 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     Calendar      *mCalendar;
 
     KCalendarSystem *mCalendarSystem;
+
+    FileStorage *mStorage;
 
     KOViewManager *mViewManager;
     KODialogManager *mDialogManager;

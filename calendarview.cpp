@@ -65,6 +65,7 @@
 #include <libkcal/attendee.h>
 #include <libkcal/dndfactory.h>
 #include <libkcal/freebusy.h>
+#include <libkcal/filestorage.h>
 
 #ifndef KORG_NOMAIL
 #include "komailclient.h"
@@ -123,6 +124,8 @@ CalendarView::CalendarView( QWidget *parent, const char *name )
   mCalendar->registerObserver( this );
 
   // TODO: Make sure that view is updated, when calendar is changed.
+
+  mStorage = new FileStorage( mCalendar );
 
   QBoxLayout *topLayout = new QVBoxLayout(this);
 
@@ -294,10 +297,12 @@ bool CalendarView::openCalendar(QString filename, bool merge)
 
   if (!merge) mCalendar->close();
   
-  if (mCalendar->load(filename)) {
-    if (merge) setModified(true);
+  mStorage->setFileName( filename );
+  
+  if ( mStorage->load() ) {
+    if ( merge ) setModified( true );
     else {
-      setModified(false);
+      setModified( false );
       mViewManager->setDocumentId( filename );
       mTodoList->setDocumentId( filename );
     }
@@ -306,7 +311,7 @@ bool CalendarView::openCalendar(QString filename, bool merge)
   } else {
     // while failing to load, the calendar object could
     // have become partially populated.  Clear it out.
-    if (!merge) mCalendar->close();
+    if ( !merge ) mCalendar->close();
 
     KMessageBox::error(this,i18n("Couldn't load calendar '%1'.").arg(filename));
     
@@ -314,20 +319,19 @@ bool CalendarView::openCalendar(QString filename, bool merge)
   }
 }
 
-bool CalendarView::saveCalendar(QString filename)
+bool CalendarView::saveCalendar( QString filename )
 {
   kdDebug() << "CalendarView::saveCalendar(): " << filename << endl;
 
   // Store back all unsaved data into calendar object
   mViewManager->currentView()->flushView();
 
-  CalFormat *format = new ICalFormat;
+  mStorage->setFileName( filename );
+  mStorage->setSaveFormat( new ICalFormat );
 
-  bool success = mCalendar->save(filename,format);
+  bool success = mStorage->save();
   
-  delete format;
-  
-  if (!success) {
+  if ( !success ) {
     return false;
   }
 
@@ -1309,9 +1313,8 @@ void CalendarView::exportICalendar()
   // Force correct extension
   if (filename.right(4) != ".ics") filename += ".ics";
 
-  CalFormat *format = new ICalFormat;
-  mCalendar->save(filename,format);
-  delete format;
+  FileStorage storage( mCalendar, filename, new ICalFormat );
+  storage.save();
 }
 
 void CalendarView::exportVCalendar()
@@ -1329,9 +1332,8 @@ void CalendarView::exportVCalendar()
   // Force correct extension
   if (filename.right(4) != ".vcs") filename += ".vcs";
 
-  CalFormat *format = new VCalFormat;
-  mCalendar->save(filename,format);
-  delete format;
+  FileStorage storage( mCalendar, filename, new VCalFormat );
+  storage.save();
 }
 
 void CalendarView::eventUpdated(Incidence *)

@@ -41,6 +41,7 @@
 #include <libkcal/event.h>
 #include <libkcal/calendar.h>
 #include <libkcal/calendarlocal.h>
+#include <libkcal/filestorage.h>
 
 #include <libkdepim/kdateedit.h>
 
@@ -111,17 +112,23 @@ void ArchiveDialog::slotUser1()
     return;
   }
 
+  FileStorage storage( mCalendar );
+
   // Save current calendar to disk
   KTempFile tmpFile;
   tmpFile.setAutoDelete(true);
-  if (!mCalendar->save(tmpFile.name())) {
+  storage.setFileName( tmpFile.name() );
+  if ( !storage.save() ) {
     kdDebug() << "ArchiveDialog::slotUser1(): Can't save calendar to temp file" << endl;
     return;
   }
 
   // Duplicate current calendar by loading in new calendar object
-  CalendarLocal archiveCalendar(KOPrefs::instance()->mTimeZoneId.local8Bit());
-  if (!archiveCalendar.load(tmpFile.name())) {
+  CalendarLocal archiveCalendar( KOPrefs::instance()->mTimeZoneId.local8Bit() );
+
+  FileStorage archiveStore( &archiveCalendar );
+  archiveStore.setFileName( tmpFile.name() );
+  if (!archiveStore.load()) {
     kdDebug() << "ArchiveDialog::slotUser1(): Can't load calendar from temp file" << endl;
     return;
   }
@@ -145,7 +152,8 @@ void ArchiveDialog::slotUser1()
       return;
     }
     // Merge with events to be archived.
-    if (!archiveCalendar.load(archiveFile)) {
+    archiveStore.setFileName( archiveFile );
+    if ( !archiveStore.load() ) {
       kdDebug() << "ArchiveDialog::slotUser1(): Can't merge with archive file" << endl;
       return;
     }
@@ -164,7 +172,7 @@ void ArchiveDialog::slotUser1()
   }
 
   // Save archive calendar
-  if (!archiveCalendar.save(archiveFile)) {
+  if ( !archiveStore.save() ) {
     KMessageBox::error(this,i18n("Cannot write archive file."));
     return;
   }

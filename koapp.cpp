@@ -38,6 +38,7 @@
 #include <kprocess.h>
 
 #include <libkcal/calendarlocal.h>
+#include <libkcal/filestorage.h>
 
 #include "kalarmd/alarmdaemoniface_stub.h"
 
@@ -71,7 +72,9 @@ void KOrganizerApp::displayImminent(const QString &urlString,int numdays)
   QDate currDate(QDate::currentDate());
   Event *currEvent;
 
-  if (!cal->load(url.path())) {
+  FileStorage storage( cal, url.path() );
+
+  if ( !storage.load() ) {
     printf(i18n("Could not load calendar '%1'.\n").arg(url.path()).local8Bit());
     exit(0);
   }
