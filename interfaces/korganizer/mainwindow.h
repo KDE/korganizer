@@ -77,10 +77,6 @@ class MainWindow
       Show status mesage in status bar.
     */
     virtual void showStatusMessage( const QString &message ) = 0;
-    /**
-      Show progress.
-    */
-    virtual void showProgress( int percent ) = 0;
 
     /**
       Set window title.

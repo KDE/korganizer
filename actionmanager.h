@@ -287,8 +287,6 @@ class ActionManager : public QObject, public KCalendarIface
 
     void updateRedoAction( const QString & );
 
-    void slotProgress( ResourceCalendar *, const QString &id, int percent );
-
   protected:
     /** Get URL for saving. Opens FileDialog. */
     KURL getSaveURL();

@@ -44,9 +44,11 @@
 #include "alarmclient.h"
 #include "resourceview.h"
 #include "korganizerifaceimpl.h"
-#include "progresswidget.h"
 
 #include <korganizer/part.h>
+
+#include <libkdepim/statusbarprogresswidget.h>
+#include <libkdepim/progressdialog.h>
 
 #include <libkcal/calendarlocal.h>
 #include <libkcal/calendarresources.h>
@@ -133,19 +135,24 @@ void KOrganizer::init( bool document )
   initActions();
   readSettings();
 
-  statusBar()->insertItem( "", ID_GENERAL, 10 );
+  KStatusBar *bar = statusBar();
 
-  statusBar()->insertItem( i18n(" Incoming messages: %1 ").arg( 0 ),
-                           ID_MESSAGES_IN );
-  statusBar()->insertItem( i18n(" Outgoing messages: %2 ").arg( 0 ),
-                           ID_MESSAGES_OUT );
-  statusBar()->setItemAlignment( ID_MESSAGES_IN, AlignRight );
-  statusBar()->setItemAlignment( ID_MESSAGES_OUT, AlignRight );
-  connect( statusBar(), SIGNAL( pressed( int ) ),
-           SLOT( statusBarPressed( int ) ) );
+  bar->insertItem( "", ID_GENERAL, 10 );
 
-  mProgressWidget = new ProgressWidget( this );
-  statusBar()->addWidget( mProgressWidget, 0, true );
+  bar->insertItem( i18n(" Incoming messages: %1 ").arg( 0 ), ID_MESSAGES_IN );
+  bar->insertItem( i18n(" Outgoing messages: %2 ").arg( 0 ), ID_MESSAGES_OUT );
+  bar->setItemAlignment( ID_MESSAGES_IN, AlignRight );
+  bar->setItemAlignment( ID_MESSAGES_OUT, AlignRight );
+  connect( bar, SIGNAL( pressed( int ) ), SLOT( statusBarPressed( int ) ) );
+  
+  KPIM::ProgressDialog *progressDialog = new KPIM::ProgressDialog( bar, this );
+  progressDialog->hide();
+
+  KPIM::StatusbarProgressWidget *progressWidget;
+  progressWidget = new KPIM::StatusbarProgressWidget( progressDialog, bar );
+  progressWidget->show();
+
+  bar->addWidget( progressWidget, 0, true );
 
   connect( mActionManager->view(), SIGNAL( numIncomingChanged( int ) ),
            SLOT( setNumIncoming( int ) ) );
@@ -308,11 +315,6 @@ void KOrganizer::setNumOutgoing( int num )
 void KOrganizer::showStatusMessage( const QString &message )
 {
   statusBar()->message(message,2000);
-}
-
-void KOrganizer::showProgress( int percent )
-{
-  mProgressWidget->setProgress( percent );
 }
 
 bool KOrganizer::openURL( const KURL &url, bool merge )

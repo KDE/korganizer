@@ -188,9 +188,6 @@ void ActionManager::createCalendarResources()
            mCalendarView, SLOT( slotCalendarChanged() ) );
   connect( mCalendarResources, SIGNAL( signalErrorMessage( const QString & ) ),
            mCalendarView, SLOT( showErrorMessage( const QString & ) ) );
-  connect( mCalendarResources, SIGNAL( progress( ResourceCalendar *,
-                                                 const QString &, int ) ),
-           SLOT( slotProgress( ResourceCalendar *, const QString &, int ) ) );
 
   connect( mCalendarView, SIGNAL( configChanged() ),
            SLOT( updateConfig() ) );
@@ -1454,24 +1451,6 @@ void ActionManager::slotAutoArchive()
   archiver.runAuto( mCalendarView->calendar(), mCalendarView, false /*no gui*/ );
   // restart timer with the correct delay (especially useful for the first time)
   slotAutoArchivingSettingsModified();
-}
-
-void ActionManager::slotProgress( ResourceCalendar *, const QString &id,
-                                  int percent )
-{
-#if 0
-  kdDebug() << "ActionManager::slotProgress: " << id << ": " << percent
-            << endl;
-#else
-  Q_UNUSED( id );
-  Q_UNUSED( percent );
-#endif
-
-  int progress;
-  if ( percent < 0 ) progress = 50;
-  else progress = percent;
-
-  mMainWindow->showProgress( progress );
 }
 
 #include "actionmanager.moc"

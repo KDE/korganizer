@@ -109,8 +109,7 @@ libkorganizer_la_SOURCES =  outgoingdialog_base.ui \
 	resourceimportdialog.cpp \
 	korganizerifaceimpl.cpp \
 	freebusymanager.cpp freebusyurldialog.cpp \
-	eventarchiver.cpp koidentitymanager.cpp \
-        progresswidget.cpp
+	eventarchiver.cpp koidentitymanager.cpp
 
 
 libkorganizer_eventviewer_la_LDFLAGS = $(all_libraries) $(KDE_RPATH) \
