@@ -71,8 +71,9 @@ KOWindowList *ActionManager::mWindowList = 0;
 ActionManager::ActionManager( KXMLGUIClient *client, CalendarView *widget,
                               QObject *parent, KOrg::MainWindow *mainWindow,
                               bool isPart )
-  : QObject( parent ), KCalendarIface(), mRecent( 0 ), mCalendar( 0 ),
-    mCalendarResources( 0 ), mIsClosing( false )
+  : QObject( parent ), KCalendarIface(), mRecent( 0 ),
+    mResourceButtonsAction( 0 ), mCalendar( 0 ),
+    mCalendarResources( 0 ), mResourceView( 0 ), mIsClosing( false )
 {
   mGUIClient = client;
   mACollection = mGUIClient->actionCollection();
@@ -184,6 +185,7 @@ void ActionManager::createCalendarResources()
 
   ResourceViewFactory factory( mCalendarResources, mCalendarView );
   mCalendarView->addExtension( &factory );
+  mResourceView = factory.resourceView();
 
   connect( mCalendarResources, SIGNAL( calendarChanged() ),
            mCalendarView, SLOT( slotCalendarChanged() ) );
@@ -192,6 +194,18 @@ void ActionManager::createCalendarResources()
 
   connect( mCalendarView, SIGNAL( configChanged() ),
            SLOT( updateConfig() ) );
+
+  mResourceButtonsAction = new KToggleAction( i18n("Show Resource Buttons"), 0,
+                                              this,
+                                              SLOT( toggleResourceButtons() ),
+                                              mACollection,
+                                              "show_resourcebuttons" );
+
+  KConfig *config = KOGlobals::self()->config();
+  config->setGroup("Settings");
+  mResourceButtonsAction->setChecked(
+      config->readBoolEntry( "ResourceButtonsVisible", true ) );
+  toggleResourceButtons();
 
   initCalendar( mCalendarResources );
 }
@@ -574,6 +588,10 @@ void ActionManager::writeSettings()
 
   config->setGroup( "Settings" );
   config->writeEntry( "Filter Visible", mFilterViewAction->isChecked() );
+  if ( mResourceButtonsAction ) {
+    config->writeEntry( "ResourceButtonsVisible",
+                        mResourceButtonsAction->isChecked() );
+  }
   if ( mRecent ) mRecent->saveEntries( config );
 }
 
@@ -1149,6 +1167,15 @@ void ActionManager::toggleFilterView()
 {
   bool visible = mFilterViewAction->isChecked();
   mCalendarView->showFilter(visible);
+}
+
+void ActionManager::toggleResourceButtons()
+{
+  bool visible = mResourceButtonsAction->isChecked();
+
+  kdDebug() << "RESOURCE VIEW " << int( mResourceView ) << endl;
+
+  if ( mResourceView ) mResourceView->showButtons( visible );
 }
 
 bool ActionManager::openURL(QString url)

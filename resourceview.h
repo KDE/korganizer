@@ -1,7 +1,7 @@
 /*
     This file is part of KOrganizer.
 
-    Copyright (c) 2003 Cornelius Schumacher <schumacher@kde.org>
+    Copyright (c) 2003,2004 Cornelius Schumacher <schumacher@kde.org>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -45,9 +45,12 @@ class ResourceViewFactory : public CalendarViewExtension::Factory
 
     CalendarViewExtension *create( QWidget * );
 
+    ResourceView *resourceView() const;
+
   private:
     KCal::CalendarResources *mCalendar;
     CalendarView *mView;
+    ResourceView *mResourceView;
 };
 
 
@@ -91,6 +94,8 @@ class ResourceView : public CalendarViewExtension
     void emitResourcesChanged();
     void emitErrorMessage( const QString & );
 
+    void showButtons( bool visible );
+
   public slots:
     void addResourceItem( ResourceCalendar * );
     void updateResourceItem( ResourceCalendar * );
@@ -101,8 +106,11 @@ class ResourceView : public CalendarViewExtension
 
   protected:
     ResourceItem *findItem( ResourceCalendar * );
+    ResourceItem *currentItem();
 
-  private slots:
+    QString infoText( ResourceCalendar *r );
+
+  protected slots:
     void addResource();
     void removeResource();
     void editResource();
@@ -111,6 +119,10 @@ class ResourceView : public CalendarViewExtension
                                const QString &resource );
     void slotSubresourceRemoved( ResourceCalendar *, const QString &,
                                  const QString &resource );
+
+    void contextMenuRequested ( QListViewItem *i, const QPoint &pos, int );
+
+    void showInfo();
 
   private:
     KListView *mListView;

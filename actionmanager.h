@@ -57,6 +57,7 @@ class KOrganizer;
 class KONewStuff;
 class KOWindowList;
 class ImportDialog;
+class ResourceView;
 
 using namespace KCal;
 
@@ -270,6 +271,7 @@ class ActionManager : public QObject, public KCalendarIface
     void uploadNewStuff();
 
     void toggleFilterView();
+    void toggleResourceButtons();
 
     /** called by the autoSaveTimer to automatically save the calendar */
     void checkAutoSave();
@@ -326,6 +328,7 @@ class ActionManager : public QObject, public KCalendarIface
     // Actions
     KRecentFilesAction *mRecent;
     KToggleAction *mFilterViewAction;
+    KToggleAction *mResourceButtonsAction;
     KAction *mShowIncidenceAction;
     KAction *mEditIncidenceAction;
     KAction *mDeleteIncidenceAction;
@@ -351,6 +354,8 @@ class ActionManager : public QObject, public KCalendarIface
     // Either mCalendar *or* mCalendarResources is set.
     Calendar *mCalendar;
     CalendarResources *mCalendarResources;
+
+    ResourceView *mResourceView;
 
     bool mIsClosing;
 };
