@@ -76,6 +76,7 @@ class KOTodoListView : public KListView
     ~KOTodoListView();
 
     void setCalendar( Calendar * );
+
     void setIncidenceChanger( IncidenceChangerBase *changer ) { mChanger = changer; }
 
   protected:
@@ -158,7 +159,7 @@ class KOTodoView : public KOrg::BaseView
     void deleteTodo();
 
     void setNewPercentage( KOTodoViewItem *item, int percentage );
-    
+
     void setNewPriority( int );
     void setNewPercentage( int );
     void setNewDate( QDate );
@@ -168,7 +169,6 @@ class KOTodoView : public KOrg::BaseView
     void purgeCompleted();
 
     void itemStateChanged( QListViewItem * );
-    void emitCompletedSignal( Todo * );
 
   signals:
     void unSubTodoSignal();

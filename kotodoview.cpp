@@ -241,7 +241,7 @@ void KOTodoListView::contentsDropEvent( QDropEvent *e )
   else {
     QString text;
     KOTodoViewItem *todoi = dynamic_cast<KOTodoViewItem *>(itemAt( contentsToViewport(e->pos()) ));
-    if ( ! todoi ) { 
+    if ( ! todoi ) {
       // Not dropped on a todo item:
       e->ignore();
       kdDebug( 5850 ) << "KOTodoListView::contentsDropEvent(): Not dropped on a todo item" << endl;
@@ -612,7 +612,7 @@ bool KOTodoView::scheduleRemoveTodoItem( KOTodoViewItem *todoItem )
     mItemsToDelete.append( todoItem );
     QTimer::singleShot( 0, this, SLOT( removeTodoItems() ) );
     return true;
-  } else 
+  } else
     return false;
 }
 
@@ -646,7 +646,7 @@ Todo::List KOTodoView::selectedTodos()
 void KOTodoView::changeIncidenceDisplay(Incidence *incidence, int action)
 {
   // The todo view only displays todos, so exit on all other incidences
-  if ( incidence->type() != "Todo" ) 
+  if ( incidence->type() != "Todo" )
     return;
   bool isFiltered = !calendar()->filter()->filterIncidence( incidence );
   Todo *todo = static_cast<Todo *>(incidence);
@@ -815,12 +815,12 @@ void KOTodoView::setNewPriority(int index)
 {
   if ( !mActiveItem || !mChanger ) return;
   Todo *todo = mActiveItem->todo();
-  if ( !todo->isReadOnly () && 
+  if ( !todo->isReadOnly () &&
        mChanger->beginChange( todo ) ) {
     Todo *oldTodo = todo->clone();
     todo->setPriority(mPriority[index]);
     mActiveItem->construct();
-    
+
     mChanger->changeIncidence( oldTodo, todo, KOGlobals::PRIORITY_MODIFIED );
     mChanger->endChange( todo );
     delete oldTodo;
@@ -833,7 +833,7 @@ void KOTodoView::setNewPercentage( KOTodoViewItem *item, int percentage )
   if ( !item || !mChanger  ) return;
   Todo *todo = item->todo();
   if ( !todo ) return;
-  
+
   if ( !todo->isReadOnly () && mChanger->beginChange( todo ) ) {
     Todo *oldTodo = todo->clone();
 
@@ -846,11 +846,15 @@ void KOTodoView::setNewPercentage( KOTodoViewItem *item, int percentage )
       myChild = myChild->nextSibling();
     }*/
     if ( percentage == 100 ) {
-      emit todoCompleted( todo );
+      todo->setCompleted( QDateTime::currentDateTime() );
+      // If the todo does recur, it doesn't get set as completed. However, the
+      // item is still checked. Uncheck it again.
+      if ( !todo->isCompleted() ) item->setState( QCheckListItem::Off );
+      else todo->setPercentComplete( percentage );
     } else {
       todo->setCompleted( false );
+      todo->setPercentComplete( percentage );
     }
-    todo->setPercentComplete( percentage );
     item->construct();
     mChanger->changeIncidence( oldTodo, todo, KOGlobals::COMPLETION_MODIFIED );
     mChanger->endChange( todo );
@@ -871,7 +875,7 @@ void KOTodoView::setNewDate( QDate date )
   if ( !mActiveItem || !mChanger ) return;
   Todo *todo = mActiveItem->todo();
   if ( !todo ) return;
-  
+
   if ( !todo->isReadOnly() && mChanger->beginChange( todo ) ) {
     Todo *oldTodo = todo->clone();
 
@@ -913,7 +917,7 @@ void KOTodoView::copyTodoToDate( QDate date )
    // avoid forking
    if ( newTodo->doesRecur() )
      newTodo->recurrence()->unsetRecurs();
-   
+
    mChanger->addIncidence( newTodo );
  }
 }
@@ -944,7 +948,7 @@ void KOTodoView::changedCategories(int index)
   if ( !mActiveItem || !mChanger ) return;
   Todo *todo = mActiveItem->todo();
   if ( !todo ) return;
-  
+
   if ( !todo->isReadOnly() && mChanger->beginChange( todo ) ) {
     Todo *oldTodo = todo->clone();
 
@@ -1020,7 +1024,7 @@ void KOTodoView::addQuickTodo()
 {
   Todo *todo = new Todo();
   todo->setSummary( mQuickAdd->text() );
-  todo->setOrganizer( Person( KOPrefs::instance()->fullName(), 
+  todo->setOrganizer( Person( KOPrefs::instance()->fullName(),
                       KOPrefs::instance()->email() ) );
   if ( !mChanger->addIncidence( todo ) ) {
     KODialogManager::errorSaveIncidence( this, todo );
@@ -1030,13 +1034,8 @@ void KOTodoView::addQuickTodo()
   mQuickAdd->setText( QString::null );
 }
 
-void KOTodoView::emitCompletedSignal( Todo *todo )
+void KOTodoView::setIncidenceChanger( IncidenceChangerBase *changer )
 {
-  emit todoCompleted( todo );
-}
-
-void KOTodoView::setIncidenceChanger( IncidenceChangerBase *changer ) 
-{ 
   mChanger = changer;
   mTodoListView->setIncidenceChanger( changer );
 }

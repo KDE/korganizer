@@ -69,7 +69,7 @@ class KODialogManager::DialogManagerVisitor : public IncidenceBase::Visitor
 class KODialogManager::EditorDialogVisitor : 
       public KODialogManager::DialogManagerVisitor
 {
-  public: 
+  public:
     EditorDialogVisitor() : DialogManagerVisitor(), mEditor( 0 ) {}
     KOIncidenceEditor *editor() const { return mEditor; }
   protected:
@@ -92,7 +92,7 @@ KODialogManager::KODialogManager( CalendarView *mainView ) :
   mFilterEditDialog = 0;
 
   mCategoryEditDialog = new KPIM::CategoryEditDialog( KOPrefs::instance(), mMainView );
-  connect( mainView, SIGNAL( categoriesChanged() ), 
+  connect( mainView, SIGNAL( categoriesChanged() ),
            mCategoryEditDialog, SLOT( reload() ) );
   KOGlobals::fitDialogToScreen( mCategoryEditDialog );
 }
@@ -272,7 +272,7 @@ KOIncidenceEditor *KODialogManager::getEditor( Incidence *incidence )
   EditorDialogVisitor v;
   if ( v.act( incidence, this ) ) {
     return v.editor();
-  } else 
+  } else
     return 0;
 }
 
@@ -318,8 +318,6 @@ KOTodoEditor *KODialogManager::getTodoEditor()
 {
   KOTodoEditor *todoEditor = new KOTodoEditor( mMainView->calendar(), mMainView );
   connectEditor( todoEditor );
-  connect( todoEditor, SIGNAL( todoCompleted( Todo * ) ),
-           mMainView, SLOT( recurTodo( Todo *) ) ) ;
   return todoEditor;
 }
 

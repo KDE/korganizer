@@ -329,7 +329,7 @@ void KOEditorGeneralTodo::writeTodo(Todo *todo)
   todo->setPercentComplete(mCompletedCombo->currentItem() * 10);
 
   if (mCompletedCombo->currentItem() == 10 && mCompleted.isValid()) {
-    if (! mAlreadyComplete) emit todoCompleted( todo );
+    if (! mAlreadyComplete) todo->setCompleted( QDateTime::currentDateTime() );
     else todo->setCompleted(mCompleted);
   }
 }

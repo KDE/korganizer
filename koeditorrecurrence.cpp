@@ -1160,7 +1160,6 @@ void KOEditorRecurrence::writeIncidence( Incidence *incidence )
   }
 
   Recurrence *r = incidence->recurrence();
-  Incidence *oldIncidence = incidence->clone();
 
   // clear out any old settings;
   r->unsetRecurs();
@@ -1238,13 +1237,6 @@ void KOEditorRecurrence::writeIncidence( Incidence *incidence )
     } // end "Yearly"
 
     incidence->setExDates( mExceptions->dates() );
-
-    if ( incidence->type() == "Todo" && *(oldIncidence->recurrence()) != *r ) {
-      Todo *todo = static_cast<Todo *>(incidence);
-      todo->setDtDue( todo->dtDue(), true );
-      if ( todo->hasStartDate() )
-        todo->setDtStart( todo->dtStart() );
-    }
 }
 
 void KOEditorRecurrence::setDateTimeStr( const QString &str )

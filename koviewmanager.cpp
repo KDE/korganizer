@@ -217,8 +217,6 @@ void KOViewManager::connectTodoView( KOTodoView* todoView )
            mMainView, SLOT( purgeCompleted() ) );
   connect( todoView, SIGNAL( unSubTodoSignal() ),
            mMainView, SLOT( todo_unsub() ) );
-  connect( todoView, SIGNAL( todoCompleted( Todo * ) ),
-           mMainView, SLOT( recurTodo( Todo * ) ) );
 }
 
 void KOViewManager::addView(KOrg::BaseView *view)

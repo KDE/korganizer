@@ -91,8 +91,6 @@ void KOTodoEditor::setupGeneral()
   connect(mGeneral,SIGNAL(openCategoryDialog()),mCategoryDialog,SLOT(show()));
   connect(mCategoryDialog, SIGNAL(categoriesSelected(const QString &)),
           mGeneral,SLOT(setCategories(const QString &)));
-  connect(mGeneral,SIGNAL( todoCompleted( Todo * )),
-                   SIGNAL( todoCompleted( Todo * ) ) );
 
   if (KOPrefs::instance()->mCompactDialogs) {
     QFrame *topFrame = addPage(i18n("General"));
@@ -241,11 +239,11 @@ bool KOTodoEditor::processInput()
     bool rc = true;
     Todo *oldTodo = mTodo->clone();
     Todo *todo = mTodo->clone();
-    
+
     kdDebug(5850) << "KOTodoEditor::processInput() write event." << endl;
     writeTodo( todo );
     kdDebug(5850) << "KOTodoEditor::processInput() event written." << endl;
-    
+
     if( *mTodo == *todo )
       // Don't do anything
       kdDebug(5850) << "Todo not changed\n";
@@ -261,7 +259,7 @@ bool KOTodoEditor::processInput()
 
   } else {
     mTodo = new Todo;
-    mTodo->setOrganizer( Person( KOPrefs::instance()->fullName(), 
+    mTodo->setOrganizer( Person( KOPrefs::instance()->fullName(),
                          KOPrefs::instance()->email() ) );
 
     writeTodo( mTodo );
@@ -324,10 +322,18 @@ void KOTodoEditor::readTodo( Todo *todo )
 
 void KOTodoEditor::writeTodo( Todo *todo )
 {
+  Incidence *oldIncidence = todo->clone();
+
+  mRecurrence->writeIncidence( todo );
   mGeneral->writeTodo( todo );
   mDetails->writeEvent( todo );
-  mRecurrence->writeIncidence( todo );
   mAttachments->writeIncidence( todo );
+
+  if ( *(oldIncidence->recurrence()) != *(todo->recurrence() ) ) {
+    todo->setDtDue( todo->dtDue(), true );
+    if ( todo->hasStartDate() )
+      todo->setDtStart( todo->dtStart() );
+  }
 
   // set related event, i.e. parent to-do in this case.
   if ( mRelatedTodo ) {

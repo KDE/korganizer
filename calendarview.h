@@ -122,7 +122,7 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     QWidget *leftFrame() const { return mLeftFrame; }
     NavigatorBar *navigatorBar() const { return mNavigatorBar; }
     DateNavigator *dateNavigator() const { return mNavigator; }
-    
+
     KOIncidenceEditor *editorDialog( Incidence* ) const;
     IncidenceChangerBase *incidenceChanger() const { return mChanger; }
 
@@ -182,7 +182,7 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
         the connected slots enables/disables the corresponding menu items */
     void todoSelected( bool );
     void subtodoSelected( bool );
-    
+
     /** Emitted, when a day changed (i.e. korganizer was running at midnight).
         The argument is the new date */
     void dayPassed( QDate );
@@ -293,8 +293,6 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     void newSubTodo();
     /** create new todo with a parent todo */
     void newSubTodo( Todo * );
-    /** Takes the todo's next occurence and marks the original as complete.*/
-    void recurTodo( Todo * );
 
     void newTodo( const QString & );
     void newTodo( const QString &summary, const QString &description,
@@ -376,7 +374,7 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
 
     /** Export as HTML file */
     void exportWeb();
-    
+
     /** Export as iCalendar file */
     void exportICalendar();
 
@@ -515,8 +513,8 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     void createPrinter();
 
     void calendarModified( bool, Calendar * );
-    // Helper function for purgeCompleted that recursively purges a todo and 
-    // its subitems. If it cannot delete a completed todo (because it has 
+    // Helper function for purgeCompleted that recursively purges a todo and
+    // its subitems. If it cannot delete a completed todo (because it has
     // uncompleted subitems), notAllPurged is set to true.
     bool purgeCompletedSubTodos( Todo* todo, bool &notAllPurged );
 
