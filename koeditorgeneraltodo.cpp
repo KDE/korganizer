@@ -45,36 +45,41 @@
 
 KOEditorGeneralTodo::KOEditorGeneralTodo(int spacing,QWidget* parent,
                                          const char* name)
-  : QWidget( parent, name)
+  : KOEditorGeneral( parent, name)
 {
   mSpacing = spacing;
 
-  initTimeBox();
-  initAlarmBox(); 
-  initMisc();
-  initLayout();
+  QBoxLayout *topLayout = new QVBoxLayout(this);
+  topLayout->addLayout(initHeader());
+  topLayout->addLayout(initTime());
+  topLayout->addLayout(initStatus());
+  QBoxLayout *alarmLineLayout = new QHBoxLayout(topLayout);
+  alarmLineLayout->addLayout(initAlarm());
+  topLayout->addLayout(initDescription());
 
-  QWidget::setTabOrder(summaryEdit, completedCombo);
-  QWidget::setTabOrder(completedCombo, priorityCombo);
-  QWidget::setTabOrder(priorityCombo, descriptionEdit);
-  QWidget::setTabOrder(descriptionEdit, categoriesButton);
-  QWidget::setTabOrder(categoriesButton, mSecrecyCombo);
-  QWidget::setTabOrder(mSecrecyCombo, alarmButton);
+  QWidget::setTabOrder(mSummaryEdit, mCompletedCombo);
+  QWidget::setTabOrder(mCompletedCombo, mPriorityCombo);
+  QWidget::setTabOrder(mPriorityCombo, mDescriptionEdit);
+  QWidget::setTabOrder(mDescriptionEdit, mCategoriesButton);
+  QWidget::setTabOrder(mCategoriesButton, mSecrecyCombo);
+  QWidget::setTabOrder(mSecrecyCombo, mAlarmButton);
   
-  summaryEdit->setFocus();
-
+  mSummaryEdit->setFocus();
 }
 
 KOEditorGeneralTodo::~KOEditorGeneralTodo()
 {
 }
 
-void KOEditorGeneralTodo::initTimeBox()
+QBoxLayout *KOEditorGeneralTodo::initTime()
 {
-  timeGroupBox = new QGroupBox( 1,QGroupBox::Horizontal,
-                                i18n("Due Date "),this, "User_2" );
+  QBoxLayout *timeLayout = new QVBoxLayout;
 
-  QFrame *timeBoxFrame = new QFrame(timeGroupBox,"TimeBoxFrame");
+  QGroupBox *timeGroupBox = new QGroupBox(1,QGroupBox::Horizontal,
+                                          i18n("Due Date "),this);
+  timeLayout->addWidget(timeGroupBox);
+
+  QFrame *timeBoxFrame = new QFrame(timeGroupBox);
 
   QGridLayout *layoutTimeBox = new QGridLayout(timeBoxFrame,1,1);
   layoutTimeBox->setSpacing(mSpacing);
@@ -107,230 +112,64 @@ void KOEditorGeneralTodo::initTimeBox()
   layoutTimeBox->addWidget(mStartTimeEdit,3,2);
 
 
-  noTimeButton = new QCheckBox(i18n("No time associated"),timeBoxFrame);
-  layoutTimeBox->addWidget(noTimeButton,0,4);
+  mNoTimeButton = new QCheckBox(i18n("No time associated"),timeBoxFrame);
+  layoutTimeBox->addWidget(mNoTimeButton,0,4);
 
-  connect(noTimeButton,SIGNAL(toggled(bool)),SLOT(timeStuffDisable(bool)));
-//  connect(noTimeButton, SIGNAL(toggled(bool)),
-//	  this, SLOT(alarmStuffDisable(bool)));
+  connect(mNoTimeButton,SIGNAL(toggled(bool)),SLOT(timeStuffDisable(bool)));
   
   // some more layouting
   layoutTimeBox->setColStretch(3,1);
+
+  return timeLayout;
 }
 
 
-void KOEditorGeneralTodo::initMisc()
+QBoxLayout *KOEditorGeneralTodo::initStatus()
 {
-/*
-  completedButton = new QCheckBox(this, "CheckBox_10" );
-  completedButton->setText( i18n("Completed") );
-  connect(completedButton,SIGNAL(clicked()),SLOT(completedClicked()));
-*/
+  QBoxLayout *statusLayout = new QHBoxLayout;
 
-  completedCombo = new QComboBox(this);
+  mCompletedCombo = new QComboBox(this);
   // xgettext:no-c-format
-  completedCombo->insertItem(i18n("0 %"));
+  mCompletedCombo->insertItem(i18n("0 %"));
   // xgettext:no-c-format
-  completedCombo->insertItem(i18n("20 %"));
+  mCompletedCombo->insertItem(i18n("20 %"));
   // xgettext:no-c-format
-  completedCombo->insertItem(i18n("40 %"));
+  mCompletedCombo->insertItem(i18n("40 %"));
   // xgettext:no-c-format
-  completedCombo->insertItem(i18n("60 %"));
+  mCompletedCombo->insertItem(i18n("60 %"));
   // xgettext:no-c-format
-  completedCombo->insertItem(i18n("80 %"));
+  mCompletedCombo->insertItem(i18n("80 %"));
   // xgettext:no-c-format
-  completedCombo->insertItem(i18n("100 %"));
-  connect(completedCombo,SIGNAL(activated(int)),SLOT(completedChanged(int)));
+  mCompletedCombo->insertItem(i18n("100 %"));
+  connect(mCompletedCombo,SIGNAL(activated(int)),SLOT(completedChanged(int)));
+  statusLayout->addWidget(mCompletedCombo);
 
-  completedLabel = new QLabel(i18n("completed"),this);
+  statusLayout->addStretch(1);
 
-  priorityLabel = new QLabel(i18n("Priority:"),this);
+  mCompletedLabel = new QLabel(i18n("completed"),this);
+  statusLayout->addWidget(mCompletedLabel);
 
-  priorityCombo = new QComboBox(this);
-  priorityCombo->setSizeLimit(10);
-  priorityCombo->insertItem(i18n("1 (Highest)"));
-  priorityCombo->insertItem(i18n("2"));
-  priorityCombo->insertItem(i18n("3"));
-  priorityCombo->insertItem(i18n("4"));
-  priorityCombo->insertItem(i18n("5 (lowest)"));
+  QLabel *priorityLabel = new QLabel(i18n("Priority:"),this);
+  statusLayout->addWidget(priorityLabel);
 
-  summaryLabel = new QLabel(i18n("Summary:"),this);
+  mPriorityCombo = new QComboBox(this);
+  mPriorityCombo->insertItem(i18n("1 (Highest)"));
+  mPriorityCombo->insertItem(i18n("2"));
+  mPriorityCombo->insertItem(i18n("3"));
+  mPriorityCombo->insertItem(i18n("4"));
+  mPriorityCombo->insertItem(i18n("5 (lowest)"));
+  statusLayout->addWidget(mPriorityCombo);
 
-  summaryEdit = new QLineEdit(this);
-
-  descriptionEdit = new QMultiLineEdit(this);
-  descriptionEdit->insertLine("");
-  descriptionEdit->setReadOnly(false);
-  descriptionEdit->setOverwriteMode(false);
-  descriptionEdit->setWordWrap(QMultiLineEdit::WidgetWidth);
-
-  ownerLabel = new QLabel(i18n("Owner:"),this);
-
-  mSecrecyLabel = new QLabel("Access:",this);
-  mSecrecyCombo = new QComboBox(this);
-  mSecrecyCombo->insertStringList(Incidence::secrecyList());
-
-  categoriesButton = new QPushButton(i18n("Categories..."),this);
-  connect(categoriesButton,SIGNAL(clicked()),SIGNAL(openCategoryDialog()));
-
-  categoriesLabel = new QLabel(this);
-  categoriesLabel->setFrameStyle(QFrame::Panel|QFrame::Sunken);
+  return statusLayout;
 }
 
-void KOEditorGeneralTodo::initAlarmBox()
-{
-  QPixmap pixmap;
-
-  alarmBell = new QLabel(this);
-  alarmBell->setPixmap(SmallIcon("bell"));
-
-  alarmButton = new QCheckBox( this, "CheckBox_2" );
-  alarmButton->setText( i18n("Reminder:") );
-
-  alarmTimeEdit = new KRestrictedLine( this, "alarmTimeEdit",
-				       "1234567890");
-  alarmTimeEdit->setText("");
-
-  alarmIncrCombo = new QComboBox(false, this);
-  alarmIncrCombo->insertItem(i18n("minute(s)"));
-  alarmIncrCombo->insertItem(i18n("hour(s)"));
-  alarmIncrCombo->insertItem(i18n("day(s)"));
-  alarmIncrCombo->setMinimumHeight(20);
-
-  alarmSoundButton = new QPushButton( this, "PushButton_4" );
-  pixmap = SmallIcon("playsound");
-  //  alarmSoundButton->setText( i18n("WAV") );
-  alarmSoundButton->setPixmap(pixmap);
-  alarmSoundButton->setToggleButton(true);
-  QToolTip::add(alarmSoundButton, i18n("No sound set"));
-
-  alarmProgramButton = new QPushButton( this, "PushButton_5" );
-  pixmap = SmallIcon("runprog");
-  //  alarmProgramButton->setText( i18n("PROG") );
-  alarmProgramButton->setPixmap(pixmap);
-  alarmProgramButton->setToggleButton(true);
-  QToolTip::add(alarmProgramButton, i18n("No program set"));
-
-  connect(alarmButton, SIGNAL(toggled(bool)),
-	  this, SLOT(alarmStuffEnable(bool)));
-
-  connect(alarmSoundButton, SIGNAL(clicked()),
-	  this, SLOT(pickAlarmSound()));
-  connect(alarmProgramButton, SIGNAL(clicked()),
-	  this, SLOT(pickAlarmProgram()));
-}
-
-void KOEditorGeneralTodo::initLayout()
-{
-  QBoxLayout *layoutTop = new QVBoxLayout(this);
-  layoutTop->setSpacing(mSpacing);
-  
-  layoutTop->addWidget(ownerLabel);
-
-  QBoxLayout *layoutSummary = new QHBoxLayout;
-  layoutTop->addLayout(layoutSummary);
-  layoutSummary->addWidget(summaryLabel);
-  layoutSummary->addWidget(summaryEdit);
-  
-  layoutTop->addWidget(timeGroupBox);
-
-  QBoxLayout *layoutCompletion = new QHBoxLayout;
-  layoutTop->addLayout(layoutCompletion);
-  layoutCompletion->addWidget(completedCombo);
-  layoutCompletion->addWidget(completedLabel);
-  layoutCompletion->addStretch();
-  layoutCompletion->addWidget(priorityLabel);
-  layoutCompletion->addWidget(priorityCombo);
-
-  QBoxLayout *layoutAlarmLine = new QHBoxLayout;
-  layoutTop->addLayout(layoutAlarmLine);
-
-  QBoxLayout *layoutAlarmBox = new QHBoxLayout;
-  layoutAlarmLine->addLayout(layoutAlarmBox);
-  layoutAlarmBox->addWidget(alarmBell);
-  layoutAlarmBox->addWidget(alarmButton);
-  layoutAlarmBox->addWidget(alarmTimeEdit);
-  layoutAlarmBox->addWidget(alarmIncrCombo);
-  layoutAlarmBox->addWidget(alarmSoundButton);
-  layoutAlarmBox->addWidget(alarmProgramButton);
-
-  layoutAlarmLine->addStretch(1);
-
-  layoutTop->addWidget(descriptionEdit,1);
-
-  QBoxLayout *layoutCategories = new QHBoxLayout;
-  layoutTop->addLayout(layoutCategories);
-  layoutCategories->addWidget(categoriesButton);
-  layoutCategories->addWidget(categoriesLabel,1);
-  layoutCategories->addWidget(mSecrecyLabel);
-  layoutCategories->addWidget(mSecrecyCombo);
-}
-
-void KOEditorGeneralTodo::pickAlarmSound()
-{
-  QString prefix = KGlobal::dirs()->findResourceDir("appdata", "sounds/alert.wav"); 
-  if (!alarmSoundButton->isOn()) {
-    alarmSound = "";
-    QToolTip::remove(alarmSoundButton);
-    QToolTip::add(alarmSoundButton, i18n("No sound set"));
-  } else {
-    QString fileName(KFileDialog::getOpenFileName(prefix,
-						  i18n("*.wav|Wav Files"), this));
-    if (!fileName.isEmpty()) {
-      alarmSound = fileName;
-      QToolTip::remove(alarmSoundButton);
-      QString dispStr = i18n("Playing '%1'").arg(fileName);
-      QToolTip::add(alarmSoundButton, dispStr);
-    }
-  }
-  if (alarmSound.isEmpty())
-    alarmSoundButton->setOn(false);
-}
-
-void KOEditorGeneralTodo::pickAlarmProgram()
-{
-  if (!alarmProgramButton->isOn()) {
-    alarmProgram = "";
-    QToolTip::remove(alarmProgramButton);
-    QToolTip::add(alarmProgramButton, i18n("No program set"));
-  } else {
-    QString fileName(KFileDialog::getOpenFileName(QString::null, QString::null, this));
-    if (!fileName.isEmpty()) {
-      alarmProgram = fileName;
-      QToolTip::remove(alarmProgramButton);
-      QString dispStr = i18n("Running '%1'").arg(fileName);
-      QToolTip::add(alarmProgramButton, dispStr);
-    }
-  }
-  if (alarmProgram.isEmpty())
-    alarmProgramButton->setOn(false);
-}
-
-void KOEditorGeneralTodo::alarmStuffEnable(bool enable)
-{
-  alarmTimeEdit->setEnabled(enable);
-  alarmSoundButton->setEnabled(enable);
-  alarmProgramButton->setEnabled(enable);
-  alarmIncrCombo->setEnabled(enable);
-}
-
-void KOEditorGeneralTodo::alarmStuffDisable(bool disable)
-{
-  alarmStuffEnable(!disable);
-}
-
-void KOEditorGeneralTodo::setCategories(const QString &str)
-{
-  categoriesLabel->setText(str);
-}
 
 void KOEditorGeneralTodo::setDefaults(QDateTime due,bool allDay)
 {
-  ownerLabel->setText(i18n("Owner: ") + KOPrefs::instance()->fullName());
+  KOEditorGeneral::setDefaults(allDay);
 
-  noTimeButton->setChecked(allDay);
+  mNoTimeButton->setChecked(allDay);
   timeStuffDisable(allDay);
-  alarmStuffDisable(allDay);
   
   mNoDueCheck->setChecked(true);
   dueStuffDisable(true);
@@ -344,37 +183,17 @@ void KOEditorGeneralTodo::setDefaults(QDateTime due,bool allDay)
   mStartDateEdit->setDate(QDate::currentDate());
   mStartTimeEdit->setTime(QTime::currentTime());  
 
-  mSecrecyCombo->setCurrentItem(Incidence::SecrecyPublic);
-
-  priorityCombo->setCurrentItem(2);
+  mPriorityCombo->setCurrentItem(2);
   
-  completedCombo->setCurrentItem(0);
-
-  // TODO: Implement a KPrefsComboItem to solve this in a clean way.
-  int alarmTime;
-  int a[] = { 1,5,10,15,30 };
-  int index = KOPrefs::instance()->mAlarmTime;
-  if (index < 0 || index > 4) {
-    alarmTime = 0;
-  } else {
-    alarmTime = a[index];
-  }
-  alarmTimeEdit->setText(QString::number(alarmTime));
-  alarmStuffEnable(false);
-
-  mSecrecyCombo->setCurrentItem(Incidence::SecrecyPublic);
+  mCompletedCombo->setCurrentItem(0);
 }
 
 void KOEditorGeneralTodo::readTodo(Todo *todo)
 {
-  QDateTime tmpDT, dueDT;
-  int i;
-  
-  summaryEdit->setText(todo->summary());
-  descriptionEdit->setText(todo->description());
-  // organizer information
-  ownerLabel->setText(i18n("Owner: ") + todo->organizer());
+  KOEditorGeneral::readIncidence(todo);
 
+  QDateTime dueDT;
+  
   if (todo->hasDueDate()) {
     dueDT = todo->dtDue();
     mDueDateEdit->setDate(todo->dtDue().date());
@@ -396,69 +215,23 @@ void KOEditorGeneralTodo::readTodo(Todo *todo)
     mNoStartCheck->setChecked(true);
   }
 
-  noTimeButton->setChecked(todo->doesFloat());
+  mNoTimeButton->setChecked(todo->doesFloat());
 
-  completedCombo->setCurrentItem(todo->percentComplete() / 20);
+  mCompletedCombo->setCurrentItem(todo->percentComplete() / 20);
   if (todo->isCompleted() && todo->hasCompletedDate()) {
     mCompleted = todo->completed();
   }
   setCompletedDate();
 
-  priorityCombo->setCurrentItem(todo->priority()-1);
-
-  setCategories(todo->categoriesStr());
-
-  mSecrecyCombo->setCurrentItem(todo->secrecy());
-
-  // set up alarm stuff  
-  alarmButton->setChecked(todo->alarm()->enabled());
-  if (alarmButton->isChecked()) {
-    alarmStuffEnable(true);
-    tmpDT = todo->alarm()->time();
-    if (tmpDT.isValid()) {
-      i = tmpDT.secsTo(dueDT);
-      i = i / 60; // make minutes
-      if (i % 60 == 0) { // divides evenly into hours?
-	i = i / 60;
-	alarmIncrCombo->setCurrentItem(1);
-      }
-      if (i % 24 == 0) { // divides evenly into days?
-	i = i / 24;
-	alarmIncrCombo->setCurrentItem(2);
-      }
-    } else {
-      i = 5;
-    }
-    alarmTimeEdit->setText(QString::number(i));
-    
-    if (!todo->alarm()->programFile().isEmpty()) {
-      alarmProgram = todo->alarm()->programFile();
-      alarmProgramButton->setOn(true);
-      QString dispStr = i18n("Running '%1'").arg(alarmProgram);
-      QToolTip::add(alarmProgramButton, dispStr);
-    }
-    if (!todo->alarm()->audioFile().isEmpty()) {
-      alarmSound = todo->alarm()->audioFile();
-      alarmSoundButton->setOn(true);
-      QString dispStr = i18n("Playing '%1'").arg(alarmSound);
-      QToolTip::add(alarmSoundButton, dispStr);
-    }
-  }
-  else {
-    alarmStuffEnable(false);
-  }
+  mPriorityCombo->setCurrentItem(todo->priority()-1);
 }
 
 void KOEditorGeneralTodo::writeTodo(Todo *todo)
 {
+  KOEditorGeneral::writeIncidence(todo);
+
   // temp. until something better happens.
   QString tmpStr;
-  int j;
-  
-  todo->setSummary(summaryEdit->text());
-  todo->setDescription(descriptionEdit->text());
-  todo->setCategories(categoriesLabel->text());
-  todo->setSecrecy(mSecrecyCombo->currentItem());
   
   todo->setHasDueDate(!mNoDueCheck->isChecked());
   todo->setHasStartDate(!mNoStartCheck->isChecked());
@@ -466,7 +239,7 @@ void KOEditorGeneralTodo::writeTodo(Todo *todo)
   QDate tmpDate;
   QTime tmpTime;
   QDateTime tmpDT;
-  if (noTimeButton->isChecked()) {
+  if (mNoTimeButton->isChecked()) {
     todo->setFloats(true);
 
     // need to change this.
@@ -499,46 +272,14 @@ void KOEditorGeneralTodo::writeTodo(Todo *todo)
     todo->setDtStart(tmpDT);
   } // check for float
   
-  todo->setPriority(priorityCombo->currentItem()+1);
+  todo->setPriority(mPriorityCombo->currentItem()+1);
 
   // set completion state
-  todo->setPercentComplete(completedCombo->currentItem() * 20);
+  todo->setPercentComplete(mCompletedCombo->currentItem() * 20);
 
-  if (completedCombo->currentItem() == 5 && mCompleted.isValid()) {
+  if (mCompletedCombo->currentItem() == 5 && mCompleted.isValid()) {
     todo->setCompleted(mCompleted);
   }
-
-  // alarm stuff
-  if (alarmButton->isChecked()) {
-    todo->alarm()->setEnabled(true);
-    tmpStr = alarmTimeEdit->text();
-    j = tmpStr.toInt() * -60;
-    if (alarmIncrCombo->currentItem() == 1)
-      j = j * 60;
-    else if (alarmIncrCombo->currentItem() == 2)
-      j = j * (60 * 24);
-
-    tmpDT = todo->dtDue();
-    tmpDT = tmpDT.addSecs(j);
-    todo->alarm()->setTime(tmpDT);
-    if (!alarmProgram.isEmpty() && alarmProgramButton->isOn())
-      todo->alarm()->setProgramFile(alarmProgram);
-    else
-      todo->alarm()->setProgramFile("");
-    if (!alarmSound.isEmpty() && alarmSoundButton->isOn())
-      todo->alarm()->setAudioFile(alarmSound);
-    else
-      todo->alarm()->setAudioFile("");
-  } else {
-    todo->alarm()->setEnabled(false);
-    todo->alarm()->setProgramFile("");
-    todo->alarm()->setAudioFile("");
-  }
-
-  // note, that if on the details tab the "Transparency" option is implemented,
-  // we will have to change this to suit.
-  //todo->setTransparency(freeTimeCombo->currentItem());
-  
 }
 
 void KOEditorGeneralTodo::dueStuffDisable(bool disable)
@@ -552,7 +293,7 @@ void KOEditorGeneralTodo::dueStuffDisable(bool disable)
     mDueDateEdit->show();
     mDueLabel->show();
 //    noTimeButton->show();
-    if (noTimeButton->isChecked()) mDueTimeEdit->hide();
+    if (mNoTimeButton->isChecked()) mDueTimeEdit->hide();
     else mDueTimeEdit->show();
   }
 }
@@ -566,7 +307,7 @@ void KOEditorGeneralTodo::startStuffDisable(bool disable)
   } else {
     mStartDateEdit->show();
     mStartLabel->show();
-    if (noTimeButton->isChecked()) mStartTimeEdit->hide();
+    if (mNoTimeButton->isChecked()) mStartTimeEdit->hide();
     else mStartTimeEdit->show();
   }
 }
@@ -589,7 +330,7 @@ bool KOEditorGeneralTodo::validateInput()
       KMessageBox::sorry(this,i18n("Please specify a valid due date."));
       return false;
     }
-    if (!noTimeButton->isChecked()) {
+    if (!mNoTimeButton->isChecked()) {
       if (!mDueTimeEdit->inputIsValid()) {
         KMessageBox::sorry(this,i18n("Please specify a valid due time."));
         return false;
@@ -602,7 +343,7 @@ bool KOEditorGeneralTodo::validateInput()
       KMessageBox::sorry(this,i18n("Please specify a valid start date."));
       return false;
     }
-    if (!noTimeButton->isChecked()) {
+    if (!mNoTimeButton->isChecked()) {
       if (!mStartTimeEdit->inputIsValid()) {
         KMessageBox::sorry(this,i18n("Please specify a valid start time."));
         return false;
@@ -615,7 +356,7 @@ bool KOEditorGeneralTodo::validateInput()
     QDateTime dueDate;
     startDate.setDate(mStartDateEdit->getDate());
     dueDate.setDate(mDueDateEdit->getDate());
-    if (!noTimeButton->isChecked()) {
+    if (!mNoTimeButton->isChecked()) {
       startDate.setTime(mStartTimeEdit->getTime());
       dueDate.setTime(mDueTimeEdit->getTime());
     }
@@ -626,7 +367,7 @@ bool KOEditorGeneralTodo::validateInput()
     }
   }
 
-  return true;
+  return KOEditorGeneral::validateInput();
 }
 
 void KOEditorGeneralTodo::completedChanged(int index)
@@ -639,10 +380,10 @@ void KOEditorGeneralTodo::completedChanged(int index)
 
 void KOEditorGeneralTodo::setCompletedDate()
 {
-  if (completedCombo->currentItem() == 5 && mCompleted.isValid()) {
-    completedLabel->setText(i18n("completed on %1")
+  if (mCompletedCombo->currentItem() == 5 && mCompleted.isValid()) {
+    mCompletedLabel->setText(i18n("completed on %1")
         .arg(KGlobal::locale()->formatDateTime(mCompleted)));
   } else {
-    completedLabel->setText(i18n("completed"));
+    mCompletedLabel->setText(i18n("completed"));
   }
 }

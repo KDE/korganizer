@@ -33,12 +33,14 @@
 
 #include <krestrictedline.h>
 
+#include "koeditorgeneral.h"
+
 #include "ktimeedit.h"
 #include "kdateedit.h"
 
 using namespace KCal;
 
-class KOEditorGeneralEvent : public QWidget
+class KOEditorGeneralEvent : public KOEditorGeneral
 {
     Q_OBJECT
   public:
@@ -60,17 +62,11 @@ class KOEditorGeneralEvent : public QWidget
 
   public slots:
     void setDateTimes(QDateTime start, QDateTime end);
-    void setCategories(const QString &);
     void setDuration();
 
   protected slots:
-
     void timeStuffDisable(bool disable);
-    void alarmStuffEnable(bool enable);
-    void alarmStuffDisable(bool disable);
     void dontAssociateTime(bool noTime);
-    void pickAlarmSound();
-    void pickAlarmProgram();
 
     void startTimeChanged(QTime);
     void startDateChanged(QDate);
@@ -83,52 +79,29 @@ class KOEditorGeneralEvent : public QWidget
     void dateTimesChanged(QDateTime start,QDateTime end);
     void allDayChanged(bool);
     void recursChanged(bool);
-    void openCategoryDialog();
     void dateTimeStrChanged(const QString &);
 
   protected:
-    void initMisc();
-    void initTimeBox();
-    void initAlarmBox();
-
-    void initLayout();
+    QBoxLayout *initTime();
+    QBoxLayout *initClass();
 
   private:
-    QGroupBox               *timeGroupBox;
-    QLabel                  *summaryLabel;
-    QLineEdit               *summaryEdit;
-    QLabel                  *startDateLabel;
-    QLabel                  *endDateLabel;
-    QLabel                  *startTimeLabel;
-    QLabel                  *endTimeLabel;
-    KDateEdit               *startDateEdit;
-    KDateEdit               *endDateEdit;
-    KTimeEdit               *startTimeEdit;
-    KTimeEdit               *endTimeEdit;
-    QLabel                  *durationLabel;
-    QCheckBox               *noTimeButton;
-    QCheckBox               *recursButton;
-    QLabel                  *alarmBell;
-    QCheckBox               *alarmButton;
-    KRestrictedLine         *alarmTimeEdit;
-    QPushButton             *alarmSoundButton;
-    QPushButton             *alarmProgramButton;
-    QLabel                  *freeTimeLabel;
-    QMultiLineEdit          *descriptionEdit;
-    QComboBox               *freeTimeCombo;
-    QLabel                  *ownerLabel;
-    QLabel *mSecrecyLabel;
-    QComboBox *mSecrecyCombo;
-    QPushButton             *categoriesButton;
-    QLabel                  *categoriesLabel;
-    QComboBox               *alarmIncrCombo;
+    QLabel                  *mStartDateLabel;
+    QLabel                  *mEndDateLabel;
+    QLabel                  *mStartTimeLabel;
+    QLabel                  *mEndTimeLabel;
+    KDateEdit               *mStartDateEdit;
+    KDateEdit               *mEndDateEdit;
+    KTimeEdit               *mStartTimeEdit;
+    KTimeEdit               *mEndTimeEdit;
+    QLabel                  *mDurationLabel;
+    QCheckBox               *mNoTimeButton;
+    QCheckBox               *mRecursButton;
+    QComboBox               *mFreeTimeCombo;
 
-    QString alarmSound;
-    QString alarmProgram;
-    
     // current start and end date and time
-    QDateTime currStartDateTime;
-    QDateTime currEndDateTime;
+    QDateTime mCurrStartDateTime;
+    QDateTime mCurrEndDateTime;
 
     int mSpacing;
 };

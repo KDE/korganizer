@@ -44,42 +44,31 @@
 
 KOEditorGeneralEvent::KOEditorGeneralEvent(int spacing,QWidget* parent,
                                            const char* name) :
-  QWidget( parent, name)
+  KOEditorGeneral( parent, name)
 {
   mSpacing = spacing;
 
-//  alarmProgram = "";
-  initTimeBox();
-  initAlarmBox();
-  initMisc();
+  QBoxLayout *topLayout = new QVBoxLayout(this);
+  topLayout->addLayout(initHeader());
+  topLayout->addLayout(initTime());
+  QBoxLayout *alarmLineLayout = new QHBoxLayout(topLayout);
+  alarmLineLayout->addLayout(initAlarm());
+  alarmLineLayout->addLayout(initClass());
+  topLayout->addLayout(initDescription());
 
-  initLayout();
+  QWidget::setTabOrder(mSummaryEdit, mStartDateEdit);
+  QWidget::setTabOrder(mStartDateEdit, mStartTimeEdit);
+  QWidget::setTabOrder(mStartTimeEdit, mEndDateEdit);
+  QWidget::setTabOrder(mEndDateEdit, mEndTimeEdit);
+  QWidget::setTabOrder(mEndTimeEdit, mNoTimeButton);
+  QWidget::setTabOrder(mNoTimeButton, mRecursButton);
+  QWidget::setTabOrder(mRecursButton, mAlarmButton);
+  QWidget::setTabOrder(mAlarmButton, mFreeTimeCombo);
+  QWidget::setTabOrder(mFreeTimeCombo, mDescriptionEdit);
+  QWidget::setTabOrder(mDescriptionEdit, mCategoriesButton);
+  QWidget::setTabOrder(mCategoriesButton, mSecrecyCombo);
 
-  QWidget::setTabOrder(summaryEdit, startDateEdit);
-  QWidget::setTabOrder(startDateEdit, startTimeEdit);
-  QWidget::setTabOrder(startTimeEdit, endDateEdit);
-  QWidget::setTabOrder(endDateEdit, endTimeEdit);
-  QWidget::setTabOrder(endTimeEdit, noTimeButton);
-  QWidget::setTabOrder(noTimeButton, recursButton);
-  QWidget::setTabOrder(recursButton, alarmButton);
-  QWidget::setTabOrder(alarmButton, freeTimeCombo);
-  QWidget::setTabOrder(freeTimeCombo, descriptionEdit);
-  QWidget::setTabOrder(descriptionEdit, categoriesButton);
-  QWidget::setTabOrder(categoriesButton, mSecrecyCombo);
-
-  summaryEdit->setFocus();
-
-  // time widgets are checked if they contain a valid time
-  connect(startTimeEdit, SIGNAL(timeChanged(QTime)),
-	  this, SLOT(startTimeChanged(QTime)));
-  connect(endTimeEdit, SIGNAL(timeChanged(QTime)),
-	  this, SLOT(endTimeChanged(QTime)));
-
-  // date widgets are checked if they contain a valid date
-  connect(startDateEdit, SIGNAL(dateChanged(QDate)),
-	  this, SLOT(startDateChanged(QDate)));
-  connect(endDateEdit, SIGNAL(dateChanged(QDate)),
-	  this, SLOT(endDateChanged(QDate)));
+  mSummaryEdit->setFocus();
 
   connect(this,SIGNAL(dateTimesChanged(QDateTime,QDateTime)),
           SLOT(setDuration()));
@@ -91,258 +80,106 @@ KOEditorGeneralEvent::~KOEditorGeneralEvent()
 {
 }
 
-void KOEditorGeneralEvent::initTimeBox()
+QBoxLayout *KOEditorGeneralEvent::initTime()
 {
-  timeGroupBox = new QGroupBox( 1,QGroupBox::Horizontal,
-                                i18n("Appointment Time "),this, "User_2" );
+  QBoxLayout *timeLayout = new QVBoxLayout;
 
-  QFrame *timeBoxFrame = new QFrame(timeGroupBox,"TimeBoxFrame");
+  QGroupBox *timeGroupBox = new QGroupBox(1,QGroupBox::Horizontal,
+                                          i18n("Appointment Time "),this);
+  timeLayout->addWidget(timeGroupBox);
+
+  QFrame *timeBoxFrame = new QFrame(timeGroupBox);
 
   QGridLayout *layoutTimeBox = new QGridLayout(timeBoxFrame,2,3);
   layoutTimeBox->setSpacing(mSpacing);
 
 
-  startDateLabel = new QLabel( timeBoxFrame );
-  startDateLabel->setText( i18n("Start Date:") );
-  layoutTimeBox->addWidget(startDateLabel,0,0);
+  mStartDateLabel = new QLabel(i18n("Start Date:"),timeBoxFrame);
+  layoutTimeBox->addWidget(mStartDateLabel,0,0);
   
-  startDateEdit = new KDateEdit(timeBoxFrame);
-  layoutTimeBox->addWidget(startDateEdit,0,1);
+  mStartDateEdit = new KDateEdit(timeBoxFrame);
+  layoutTimeBox->addWidget(mStartDateEdit,0,1);
 
-  startTimeLabel = new QLabel( timeBoxFrame, "Label_2" );
-  startTimeLabel->setText( i18n("Start Time:") );
-  layoutTimeBox->addWidget(startTimeLabel,0,2);
+  mStartTimeLabel = new QLabel(i18n("Start Time:"),timeBoxFrame);
+  layoutTimeBox->addWidget(mStartTimeLabel,0,2);
   
-  startTimeEdit = new KTimeEdit(timeBoxFrame);
-  layoutTimeBox->addWidget(startTimeEdit,0,3);
-
-  
-  endDateLabel = new QLabel( timeBoxFrame, "Label_3" );
-  endDateLabel->setText( i18n("End Date:") );
-  layoutTimeBox->addWidget(endDateLabel,1,0);
-
-  endDateEdit = new KDateEdit(timeBoxFrame);
-  layoutTimeBox->addWidget(endDateEdit,1,1);
-
-  endTimeLabel = new QLabel( timeBoxFrame, "Label_3" );
-  endTimeLabel->setText( i18n("End Time:") );
-  layoutTimeBox->addWidget(endTimeLabel,1,2);
-
-  endTimeEdit = new KTimeEdit(timeBoxFrame);
-  layoutTimeBox->addWidget(endTimeEdit,1,3);
+  mStartTimeEdit = new KTimeEdit(timeBoxFrame);
+  layoutTimeBox->addWidget(mStartTimeEdit,0,3);
 
 
-  noTimeButton = new QCheckBox(timeBoxFrame, "CheckBox_1" );
-  noTimeButton->setText( i18n("No time associated") );
-  layoutTimeBox->addMultiCellWidget(noTimeButton,2,2,2,3);
+  mEndDateLabel = new QLabel(i18n("End Date:"),timeBoxFrame);
+  layoutTimeBox->addWidget(mEndDateLabel,1,0);
 
-  connect(noTimeButton, SIGNAL(toggled(bool)),SLOT(dontAssociateTime(bool)));
+  mEndDateEdit = new KDateEdit(timeBoxFrame);
+  layoutTimeBox->addWidget(mEndDateEdit,1,1);
 
-  recursButton = new QCheckBox(timeBoxFrame);
-  recursButton->setText(i18n("Recurring event"));
-  layoutTimeBox->addMultiCellWidget(recursButton,2,2,0,1);
+  mEndTimeLabel = new QLabel(i18n("End Time:"),timeBoxFrame);
+  layoutTimeBox->addWidget(mEndTimeLabel,1,2);
 
-  QObject::connect(recursButton,SIGNAL(toggled(bool)),
-                   SIGNAL(recursChanged(bool)));
+  mEndTimeEdit = new KTimeEdit(timeBoxFrame);
+  layoutTimeBox->addWidget(mEndTimeEdit,1,3);
 
-  durationLabel = new QLabel(timeBoxFrame);
-  layoutTimeBox->addMultiCellWidget(durationLabel,0,1,5,5);
+
+  mNoTimeButton = new QCheckBox(i18n("No time associated"),timeBoxFrame);
+  connect(mNoTimeButton, SIGNAL(toggled(bool)),SLOT(dontAssociateTime(bool)));
+  layoutTimeBox->addMultiCellWidget(mNoTimeButton,2,2,2,3);
+
+  mRecursButton = new QCheckBox(i18n("Recurring event"),timeBoxFrame);
+  connect(mRecursButton,SIGNAL(toggled(bool)),SIGNAL(recursChanged(bool)));
+  layoutTimeBox->addMultiCellWidget(mRecursButton,2,2,0,1);
+
+  mDurationLabel = new QLabel(timeBoxFrame);
+  layoutTimeBox->addMultiCellWidget(mDurationLabel,0,1,5,5);
 
   // add stretch space around duration label
   layoutTimeBox->setColStretch(4,1);
   layoutTimeBox->setColStretch(6,1);
+
+  // time widgets are checked if they contain a valid time
+  connect(mStartTimeEdit, SIGNAL(timeChanged(QTime)),
+	  this, SLOT(startTimeChanged(QTime)));
+  connect(mEndTimeEdit, SIGNAL(timeChanged(QTime)),
+	  this, SLOT(endTimeChanged(QTime)));
+
+  // date widgets are checked if they contain a valid date
+  connect(mStartDateEdit, SIGNAL(dateChanged(QDate)),
+	  this, SLOT(startDateChanged(QDate)));
+  connect(mEndDateEdit, SIGNAL(dateChanged(QDate)),
+	  this, SLOT(endDateChanged(QDate)));
+
+  return timeLayout;  
 }
 
-void KOEditorGeneralEvent::initMisc()
+QBoxLayout *KOEditorGeneralEvent::initClass()
 {
-  summaryLabel = new QLabel( this, "Label_1" );
-  summaryLabel->setText( i18n("Summary:") );
+  QBoxLayout *classLayout = new QHBoxLayout(this);
 
-  summaryEdit = new QLineEdit( this, "LineEdit_1" );
+  QLabel *freeTimeLabel = new QLabel(i18n("Show Time As:"),this);
+  classLayout->addWidget(freeTimeLabel);
 
-  freeTimeLabel = new QLabel( this, "Label_6" );
-  freeTimeLabel->setText( i18n("Show Time As:") );
+  mFreeTimeCombo = new QComboBox(false, this);
+  mFreeTimeCombo->insertItem(i18n("Busy"));
+  mFreeTimeCombo->insertItem(i18n("Free"));
+  classLayout->addWidget(mFreeTimeCombo);
 
-  freeTimeCombo = new QComboBox( false, this, "ComboBox_1" );
-  freeTimeCombo->insertItem( i18n("Busy") );
-  freeTimeCombo->insertItem( i18n("Free") );
-
-  descriptionEdit = new QMultiLineEdit( this, "MultiLineEdit_1" );
-  descriptionEdit->insertLine( "" );
-  descriptionEdit->setReadOnly( false );
-  descriptionEdit->setOverwriteMode( false );
-  descriptionEdit->setWordWrap(QMultiLineEdit::WidgetWidth);
-
-  ownerLabel = new QLabel( this, "Label_7" );
-  ownerLabel->setText( i18n("Owner:") );
-
-  mSecrecyLabel = new QLabel("Access:",this);
-  mSecrecyCombo = new QComboBox(this);
-  mSecrecyCombo->insertStringList(Incidence::secrecyList());
-
-  categoriesButton = new QPushButton( this, "PushButton_6" );
-  categoriesButton->setText( i18n("Categories...") );
-  connect(categoriesButton,SIGNAL(clicked()),SIGNAL(openCategoryDialog()));
-
-  categoriesLabel = new QLabel( this, "LineEdit_7" );
-  categoriesLabel->setFrameStyle(QFrame::Panel|QFrame::Sunken);
-}
-
-void KOEditorGeneralEvent::initAlarmBox()
-{
-  QPixmap pixmap;
-
-  alarmBell = new QLabel(this);
-  alarmBell->setPixmap(SmallIcon("bell"));
-
-  alarmButton = new QCheckBox( this, "CheckBox_2" );
-  alarmButton->setText( i18n("Reminder:") );
-
-  alarmTimeEdit = new KRestrictedLine( this, "alarmTimeEdit",
-				       "1234567890");
-  alarmTimeEdit->setText("");
-
-  alarmIncrCombo = new QComboBox(false, this);
-  alarmIncrCombo->insertItem(i18n("minute(s)"));
-  alarmIncrCombo->insertItem(i18n("hour(s)"));
-  alarmIncrCombo->insertItem(i18n("day(s)"));
-  alarmIncrCombo->setMinimumHeight(20);
-
-  alarmSoundButton = new QPushButton( this, "PushButton_4" );
-  pixmap = SmallIcon("playsound");
-  //  alarmSoundButton->setText( i18n("WAV") );
-  alarmSoundButton->setPixmap(pixmap);
-  alarmSoundButton->setToggleButton(true);
-  QToolTip::add(alarmSoundButton, i18n("No sound set"));
-
-  alarmProgramButton = new QPushButton( this, "PushButton_5" );
-  pixmap = SmallIcon("runprog");
-  //  alarmProgramButton->setText( i18n("PROG") );
-  alarmProgramButton->setPixmap(pixmap);
-  alarmProgramButton->setToggleButton(true);
-  QToolTip::add(alarmProgramButton, i18n("No program set"));
-
-  connect(alarmButton, SIGNAL(toggled(bool)),
-	  this, SLOT(alarmStuffEnable(bool)));
-
-  connect(alarmSoundButton, SIGNAL(clicked()),
-	  this, SLOT(pickAlarmSound()));
-  connect(alarmProgramButton, SIGNAL(clicked()),
-	  this, SLOT(pickAlarmProgram()));
-}
-
-void KOEditorGeneralEvent::initLayout()
-{
-  QBoxLayout *layoutTop = new QVBoxLayout(this);
-  layoutTop->setSpacing(mSpacing);
-  
-  layoutTop->addWidget(ownerLabel);
-
-  QBoxLayout *layoutSummary = new QHBoxLayout;
-  layoutTop->addLayout(layoutSummary);
-  layoutSummary->addWidget(summaryLabel);
-  layoutSummary->addWidget(summaryEdit);
-
-  layoutTop->addWidget(timeGroupBox);
-
-  QBoxLayout *layoutAlarmLine = new QHBoxLayout;
-  layoutTop->addLayout(layoutAlarmLine);
-
-  QBoxLayout *layoutAlarmBox = new QHBoxLayout;
-  layoutAlarmLine->addLayout(layoutAlarmBox);
-  layoutAlarmBox->addWidget(alarmBell);
-  layoutAlarmBox->addWidget(alarmButton);
-  layoutAlarmBox->addWidget(alarmTimeEdit);
-  layoutAlarmBox->addWidget(alarmIncrCombo);
-  layoutAlarmBox->addWidget(alarmSoundButton);
-  layoutAlarmBox->addWidget(alarmProgramButton);
-
-  layoutAlarmLine->addStretch(1);
-
-  QBoxLayout *layoutFreeTime = new QHBoxLayout;
-  layoutAlarmLine->addLayout(layoutFreeTime);
-  layoutFreeTime->addStretch(1);
-  layoutFreeTime->addWidget(freeTimeLabel);
-  layoutFreeTime->addWidget(freeTimeCombo);
-
-  layoutTop->addWidget(descriptionEdit,1);
-
-  QBoxLayout *layoutCategories = new QHBoxLayout;
-  layoutTop->addLayout(layoutCategories);
-  layoutCategories->addWidget(categoriesButton);
-  layoutCategories->addWidget(categoriesLabel,1);
-  layoutCategories->addWidget(mSecrecyLabel);
-  layoutCategories->addWidget(mSecrecyCombo);
-}
-
-void KOEditorGeneralEvent::pickAlarmSound()
-{
-  QString prefix = KGlobal::dirs()->findResourceDir("appdata", "sounds/alert.wav"); 
-  if (!alarmSoundButton->isOn()) {
-    alarmSound = "";
-    QToolTip::remove(alarmSoundButton);
-    QToolTip::add(alarmSoundButton, i18n("No sound set"));
-  } else {
-    QString fileName(KFileDialog::getOpenFileName(prefix,
-						  i18n("*.wav|Wav Files"), this));
-    if (!fileName.isEmpty()) {
-      alarmSound = fileName;
-      QToolTip::remove(alarmSoundButton);
-      QString dispStr = i18n("Playing '%1'").arg(fileName);
-      QToolTip::add(alarmSoundButton, dispStr);
-    }
-  }
-  if (alarmSound.isEmpty())
-    alarmSoundButton->setOn(false);
-}
-
-void KOEditorGeneralEvent::pickAlarmProgram()
-{
-  if (!alarmProgramButton->isOn()) {
-    alarmProgram = "";
-    QToolTip::remove(alarmProgramButton);
-    QToolTip::add(alarmProgramButton, i18n("No program set"));
-  } else {
-    QString fileName(KFileDialog::getOpenFileName(QString::null, QString::null, this));
-    if (!fileName.isEmpty()) {
-      alarmProgram = fileName;
-      QToolTip::remove(alarmProgramButton);
-      QString dispStr = i18n("Running '%1'").arg(fileName);
-      QToolTip::add(alarmProgramButton, dispStr);
-    }
-  }
-  if (alarmProgram.isEmpty())
-    alarmProgramButton->setOn(false);
+  return classLayout;
 }
 
 void KOEditorGeneralEvent::timeStuffDisable(bool disable)
 {
   if (disable) {
-    startTimeLabel->hide();
-    endTimeLabel->hide();
-    startTimeEdit->hide();
-    endTimeEdit->hide();
+    mStartTimeLabel->hide();
+    mEndTimeLabel->hide();
+    mStartTimeEdit->hide();
+    mEndTimeEdit->hide();
   } else {
-    startTimeLabel->show();
-    endTimeLabel->show();
-    startTimeEdit->show();
-    endTimeEdit->show();
+    mStartTimeLabel->show();
+    mEndTimeLabel->show();
+    mStartTimeEdit->show();
+    mEndTimeEdit->show();
   }
   setDuration();
   emitDateTimeStr();
-}
-
-void KOEditorGeneralEvent::alarmStuffEnable(bool enable)
-{
-  alarmTimeEdit->setEnabled(enable);
-  alarmSoundButton->setEnabled(enable);
-  alarmProgramButton->setEnabled(enable);
-  alarmIncrCombo->setEnabled(enable);
-}
-
-void KOEditorGeneralEvent::alarmStuffDisable(bool disable)
-{
-  alarmStuffEnable(!disable);
 }
 
 void KOEditorGeneralEvent::dontAssociateTime(bool noTime)
@@ -356,181 +193,113 @@ void KOEditorGeneralEvent::setDateTimes(QDateTime start, QDateTime end)
 {
 //  kdDebug() << "KOEditorGeneralEvent::setDateTimes(): Start DateTime: " << start.toString() << endl;
 
-  startDateEdit->setDate(start.date());
-  startTimeEdit->setTime(start.time());
-  endDateEdit->setDate(end.date());
-  endTimeEdit->setTime(end.time());
+  mStartDateEdit->setDate(start.date());
+  mStartTimeEdit->setTime(start.time());
+  mEndDateEdit->setDate(end.date());
+  mEndTimeEdit->setTime(end.time());
 
-  currStartDateTime = start;
-  currEndDateTime = end;
+  mCurrStartDateTime = start;
+  mCurrEndDateTime = end;
 
   setDuration();
   emitDateTimeStr();
-}
-
-void KOEditorGeneralEvent::setCategories(const QString &str)
-{
-  categoriesLabel->setText(str);
 }
 
 void KOEditorGeneralEvent::startTimeChanged(QTime newtime)
 {
   kdDebug() << "KOEditorGeneralEvent::startTimeChanged() " << newtime.toString() << endl;
 
-  int secsep = currStartDateTime.secsTo(currEndDateTime);
+  int secsep = mCurrStartDateTime.secsTo(mCurrEndDateTime);
   
-  currStartDateTime.setTime(newtime);
+  mCurrStartDateTime.setTime(newtime);
 
   // adjust end time so that the event has the same duration as before.
-  currEndDateTime = currStartDateTime.addSecs(secsep);
-  endTimeEdit->setTime(currEndDateTime.time());
+  mCurrEndDateTime = mCurrStartDateTime.addSecs(secsep);
+  mEndTimeEdit->setTime(mCurrEndDateTime.time());
   
-  emit dateTimesChanged(currStartDateTime,currEndDateTime);
+  emit dateTimesChanged(mCurrStartDateTime,mCurrEndDateTime);
 }
 
 void KOEditorGeneralEvent::endTimeChanged(QTime newtime)
 {
 //  kdDebug() << "KOEditorGeneralEvent::endTimeChanged " << newtime.toString() << endl;
 
-  QDateTime newdt(currEndDateTime.date(), newtime);
+  QDateTime newdt(mCurrEndDateTime.date(), newtime);
 
-  if(newdt < currStartDateTime) {
+  if(newdt < mCurrStartDateTime) {
     // oops, can't let that happen.
-    newdt = currStartDateTime;
-    endTimeEdit->setTime(newdt.time());
+    newdt = mCurrStartDateTime;
+    mEndTimeEdit->setTime(newdt.time());
   }
-  currEndDateTime = newdt;
+  mCurrEndDateTime = newdt;
   
-  emit dateTimesChanged(currStartDateTime,currEndDateTime);
+  emit dateTimesChanged(mCurrStartDateTime,mCurrEndDateTime);
 }
 
 void KOEditorGeneralEvent::startDateChanged(QDate newdate)
 {
-  int daysep = currStartDateTime.daysTo(currEndDateTime);
+  int daysep = mCurrStartDateTime.daysTo(mCurrEndDateTime);
   
-  currStartDateTime.setDate(newdate);
+  mCurrStartDateTime.setDate(newdate);
   
   // adjust end date so that the event has the same duration as before
-  currEndDateTime.setDate(currStartDateTime.date().addDays(daysep));
-  endDateEdit->setDate(currEndDateTime.date());
+  mCurrEndDateTime.setDate(mCurrStartDateTime.date().addDays(daysep));
+  mEndDateEdit->setDate(mCurrEndDateTime.date());
 
-  emit dateTimesChanged(currStartDateTime,currEndDateTime);
+  emit dateTimesChanged(mCurrStartDateTime,mCurrEndDateTime);
 }
 
 void KOEditorGeneralEvent::endDateChanged(QDate newdate)
 {
-  QDateTime newdt(newdate, currEndDateTime.time());
+  QDateTime newdt(newdate, mCurrEndDateTime.time());
 
-  if(newdt < currStartDateTime) {
+  if(newdt < mCurrStartDateTime) {
     // oops, we can't let that happen.
-    newdt = currStartDateTime;
-    endDateEdit->setDate(newdt.date());
-    endTimeEdit->setTime(newdt.time());
+    newdt = mCurrStartDateTime;
+    mEndDateEdit->setDate(newdt.date());
+    mEndTimeEdit->setTime(newdt.time());
   }
-  currEndDateTime = newdt;
+  mCurrEndDateTime = newdt;
 
-  emit dateTimesChanged(currStartDateTime,currEndDateTime);
+  emit dateTimesChanged(mCurrStartDateTime,mCurrEndDateTime);
 }
 
 void KOEditorGeneralEvent::setDefaults(QDateTime from,QDateTime to,bool allDay)
 {
-  ownerLabel->setText(i18n("Owner: ") + KOPrefs::instance()->fullName());
+  KOEditorGeneral::setDefaults(allDay);
 
-  noTimeButton->setChecked(allDay);
+  mNoTimeButton->setChecked(allDay);
   timeStuffDisable(allDay);
-  alarmStuffDisable(allDay);
 
   setDateTimes(from,to);
 
-  recursButton->setChecked(false);
-//  recurStuffEnable(false);
-
-  // TODO: Implement a KPrefsComboItem to solve this in a clean way.
-  int alarmTime;
-  int a[] = { 1,5,10,15,30 };
-  int index = KOPrefs::instance()->mAlarmTime;
-  if (index < 0 || index > 4) {
-    alarmTime = 0;
-  } else {
-    alarmTime = a[index];
-  }
-  alarmTimeEdit->setText(QString::number(alarmTime));
-  alarmStuffEnable(false);
-
-  mSecrecyCombo->setCurrentItem(Incidence::SecrecyPublic);
+  mRecursButton->setChecked(false);
 }
 
 void KOEditorGeneralEvent::readEvent(Event *event)
 {
   QString tmpStr;
-  QDateTime tmpDT;
-  int i;
-
-  summaryEdit->setText(event->summary());
-  descriptionEdit->setText(event->description());
-
-  // organizer information
-  ownerLabel->setText(i18n("Owner: ") + event->organizer());
 
   // the rest is for the events only
-  noTimeButton->setChecked(event->doesFloat());
+  mNoTimeButton->setChecked(event->doesFloat());
   timeStuffDisable(event->doesFloat());
-  alarmStuffDisable(event->doesFloat());
 
   setDateTimes(event->dtStart(),event->dtEnd());
 
-  recursButton->setChecked(event->recurrence()->doesRecur());
-//  recurStuffEnable(event->doesRecur());
-
-  mSecrecyCombo->setCurrentItem(event->secrecy());
-
-  // set up alarm stuff
-  alarmButton->setChecked(event->alarm()->enabled());
-  if (alarmButton->isChecked()) {
-    alarmStuffEnable(true);
-    tmpDT = event->alarm()->time();
-    if (tmpDT.isValid()) {
-      i = tmpDT.secsTo(currStartDateTime);
-      i = i / 60; // make minutes
-      if (i % 60 == 0) { // divides evenly into hours?
-        i = i / 60;
-        alarmIncrCombo->setCurrentItem(1);
-      }
-      if (i % 24 == 0) { // divides evenly into days?
-        i = i / 24;
-        alarmIncrCombo->setCurrentItem(2);
-      }
-    } else {
-      i = 5;
-    }
-    alarmTimeEdit->setText(QString::number(i));
-
-    if (!event->alarm()->programFile().isEmpty()) {
-      alarmProgram = event->alarm()->programFile();
-      alarmProgramButton->setOn(true);
-      QString dispStr = i18n("Running '%1'").arg(alarmProgram);
-      QToolTip::add(alarmProgramButton, dispStr);
-    }
-    if (!event->alarm()->audioFile().isEmpty()) {
-      alarmSound = event->alarm()->audioFile();
-      alarmSoundButton->setOn(true);
-      QString dispStr = i18n("Playing '%1'").arg(alarmSound);
-      QToolTip::add(alarmSoundButton, dispStr);
-    }
-  } else {
-    alarmStuffEnable(false);
-  }
+  mRecursButton->setChecked(event->recurrence()->doesRecur());
 
   if (event->transparency() > 0)
-    freeTimeCombo->setCurrentItem(1);
+    mFreeTimeCombo->setCurrentItem(1);
   // else it is implicitly 0 (i.e. busy)
 
-  setCategories(event->categoriesStr());
+  readIncidence(event);  
 }
 
 void KOEditorGeneralEvent::writeEvent(Event *event)
 {
 //  kdDebug() << "KOEditorGeneralEvent::writeEvent()" << endl;
+
+  writeIncidence(event);
 
   QDate tmpDate;
   QTime tmpTime;
@@ -538,23 +307,17 @@ void KOEditorGeneralEvent::writeEvent(Event *event)
 
   // temp. until something better happens.
   QString tmpStr;
-  int j;
 
-  event->setSummary(summaryEdit->text());
-  event->setDescription(descriptionEdit->text());
-  event->setCategories(categoriesLabel->text());
-  event->setSecrecy(mSecrecyCombo->currentItem());
-  
-  if (noTimeButton->isChecked()) {
+  if (mNoTimeButton->isChecked()) {
     event->setFloats(true);
     // need to change this.
-    tmpDate = startDateEdit->getDate();
+    tmpDate = mStartDateEdit->getDate();
     tmpTime.setHMS(0,0,0);
     tmpDT.setDate(tmpDate);
     tmpDT.setTime(tmpTime);
     event->setDtStart(tmpDT);
 
-    tmpDate = endDateEdit->getDate();
+    tmpDate = mEndDateEdit->getDate();
     tmpTime.setHMS(0,0,0);
     tmpDT.setDate(tmpDate);
     tmpDT.setTime(tmpTime);
@@ -563,50 +326,21 @@ void KOEditorGeneralEvent::writeEvent(Event *event)
     event->setFloats(false);
 
     // set date/time end
-    tmpDate = endDateEdit->getDate();
-    tmpTime = endTimeEdit->getTime();
+    tmpDate = mEndDateEdit->getDate();
+    tmpTime = mEndTimeEdit->getTime();
     tmpDT.setDate(tmpDate);
     tmpDT.setTime(tmpTime);
     event->setDtEnd(tmpDT);
 
     // set date/time start
-    tmpDate = startDateEdit->getDate();
-    tmpTime = startTimeEdit->getTime();
+    tmpDate = mStartDateEdit->getDate();
+    tmpTime = mStartTimeEdit->getTime();
     tmpDT.setDate(tmpDate);
     tmpDT.setTime(tmpTime);
     event->setDtStart(tmpDT);
   } // check for float
-
-  // alarm stuff
-  if (alarmButton->isChecked()) {
-    event->alarm()->setEnabled(true);
-    tmpStr = alarmTimeEdit->text();
-    j = tmpStr.toInt() * -60;
-    if (alarmIncrCombo->currentItem() == 1)
-      j = j * 60;
-    else if (alarmIncrCombo->currentItem() == 2)
-      j = j * (60 * 24);
-
-    tmpDT = event->dtStart();
-    tmpDT = tmpDT.addSecs(j);
-    event->alarm()->setTime(tmpDT);
-    if (!alarmProgram.isEmpty() && alarmProgramButton->isOn())
-      event->alarm()->setProgramFile(alarmProgram);
-    else
-      event->alarm()->setProgramFile("");
-    if (!alarmSound.isEmpty() && alarmSoundButton->isOn())
-      event->alarm()->setAudioFile(alarmSound);
-    else
-      event->alarm()->setAudioFile("");
-  } else {
-    event->alarm()->setEnabled(false);
-    event->alarm()->setProgramFile("");
-    event->alarm()->setAudioFile("");
-  }
   
-  // note, that if on the details tab the "Transparency" option is implemented,
-  // we will have to change this to suit.
-  event->setTransparency(freeTimeCombo->currentItem());
+  event->setTransparency(mFreeTimeCombo->currentItem());
 
 //  kdDebug() << "KOEditorGeneralEvent::writeEvent() done" << endl;
 }
@@ -616,16 +350,16 @@ void KOEditorGeneralEvent::setDuration()
   QString tmpStr, catStr;
   int hourdiff, minutediff;
 
-  if (noTimeButton->isChecked()) {
-    int daydiff = currStartDateTime.date().daysTo(currEndDateTime.date()) + 1;
+  if (mNoTimeButton->isChecked()) {
+    int daydiff = mCurrStartDateTime.date().daysTo(mCurrEndDateTime.date()) + 1;
     if (daydiff == 1) tmpStr = i18n("Duration: 1 day");
     else tmpStr = i18n("Duration: %1 days").arg(daydiff);
   } else {
-    hourdiff = currStartDateTime.date().daysTo(currEndDateTime.date()) * 24;
-    hourdiff += currEndDateTime.time().hour() - 
-      currStartDateTime.time().hour();
-    minutediff = currEndDateTime.time().minute() -
-      currStartDateTime.time().minute();
+    hourdiff = mCurrStartDateTime.date().daysTo(mCurrEndDateTime.date()) * 24;
+    hourdiff += mCurrEndDateTime.time().hour() - 
+      mCurrStartDateTime.time().hour();
+    minutediff = mCurrEndDateTime.time().minute() -
+      mCurrStartDateTime.time().minute();
     // If minutediff is negative, "borrow" 60 minutes from hourdiff
     if (minutediff < 0 && hourdiff > 0) {
       hourdiff -= 1;
@@ -652,7 +386,7 @@ void KOEditorGeneralEvent::setDuration()
       }
     } else tmpStr = "";
   }
-  durationLabel->setText(tmpStr);
+  mDurationLabel->setText(tmpStr);
 }
 
 void KOEditorGeneralEvent::emitDateTimeStr()
@@ -660,18 +394,16 @@ void KOEditorGeneralEvent::emitDateTimeStr()
   KLocale *l = KGlobal::locale();
   
   QString from,to;
-  if (noTimeButton->isChecked()) {
-    from = l->formatDate(currStartDateTime.date());
-    to = l->formatDate(currEndDateTime.date());
+  if (mNoTimeButton->isChecked()) {
+    from = l->formatDate(mCurrStartDateTime.date());
+    to = l->formatDate(mCurrEndDateTime.date());
   } else {
-    from = l->formatDateTime(currStartDateTime);
-    to = l->formatDateTime(currEndDateTime);
+    from = l->formatDateTime(mCurrStartDateTime);
+    to = l->formatDateTime(mCurrEndDateTime);
   }
   
   QString str = i18n("From: %1   To: %2   %3").arg(from).arg(to)
-                .arg(durationLabel->text());
-//  QString str = i18n("<b>From:</b> %1  <b>To:</b> %2, %3").arg(from).arg(to)
-//                .arg(durationLabel->text());
+                .arg(mDurationLabel->text());
                  
   emit dateTimeStrChanged(str);
 }
@@ -680,34 +412,34 @@ bool KOEditorGeneralEvent::validateInput()
 {
 //  kdDebug() << "KOEditorGeneralEvent::validateInput()" << endl;
 
-  if (!noTimeButton->isChecked()) {
-    if (!startTimeEdit->inputIsValid()) {
+  if (!mNoTimeButton->isChecked()) {
+    if (!mStartTimeEdit->inputIsValid()) {
       KMessageBox::sorry(this,i18n("Please specify a valid start time."));
       return false;
     }
 
-    if (!endTimeEdit->inputIsValid()) {
+    if (!mEndTimeEdit->inputIsValid()) {
       KMessageBox::sorry(this,i18n("Please specify a valid end time."));
       return false;
     }
   }
 
-  if (!startDateEdit->inputIsValid()) {
+  if (!mStartDateEdit->inputIsValid()) {
     KMessageBox::sorry(this,i18n("Please specify a valid start date."));
     return false;
   }
 
-  if (!endDateEdit->inputIsValid()) {
+  if (!mEndDateEdit->inputIsValid()) {
     KMessageBox::sorry(this,i18n("Please specify a valid end date."));
     return false;
   }
 
   QDateTime startDt,endDt;
-  startDt.setDate(startDateEdit->getDate());
-  endDt.setDate(endDateEdit->getDate());
-  if (!noTimeButton->isChecked()) {
-    startDt.setTime(startTimeEdit->getTime());
-    endDt.setTime(endTimeEdit->getTime());
+  startDt.setDate(mStartDateEdit->getDate());
+  endDt.setDate(mEndDateEdit->getDate());
+  if (!mNoTimeButton->isChecked()) {
+    startDt.setTime(mStartTimeEdit->getTime());
+    endDt.setTime(mEndTimeEdit->getTime());
   }
 
   if (startDt > endDt) {
@@ -716,5 +448,5 @@ bool KOEditorGeneralEvent::validateInput()
     return false;
   }
 
-  return true;
+  return KOEditorGeneral::validateInput();
 }

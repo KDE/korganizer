@@ -33,12 +33,13 @@
 
 #include "ktimeedit.h"
 #include "kdateedit.h"
+#include "koeditorgeneral.h"
 
 class KRestrictedLine;
 
 using namespace KCal;
 
-class KOEditorGeneralTodo : public QWidget
+class KOEditorGeneralTodo : public KOEditorGeneral
 {
     Q_OBJECT
   public:
@@ -55,9 +56,6 @@ class KOEditorGeneralTodo : public QWidget
     /** Check if the input is valid. */
     bool validateInput();
 
-  public slots:
-    void setCategories(const QString &);
-
   signals:
     void openCategoryDialog();
 
@@ -67,64 +65,28 @@ class KOEditorGeneralTodo : public QWidget
     void startStuffDisable(bool disable);
     void completedChanged(int);
 
-    void alarmStuffEnable(bool enable);
-    void alarmStuffDisable(bool disable);
-    void pickAlarmSound();
-    void pickAlarmProgram();
-
   protected:
-    void initMisc();
-    void initLayout();
-    void initTimeBox();
-    void initAlarmBox();
+    QBoxLayout *initTime();
+    QBoxLayout *initStatus();
   
     void setCompletedDate();
 
  private:
-    QGroupBox               *timeGroupBox;
-    QLabel                  *summaryLabel;
-    QLineEdit               *summaryEdit;
     QLabel                  *mStartLabel;
-    QLabel                  *endLabel;
     KDateEdit               *mStartDateEdit;
-    KDateEdit               *endDateEdit;
     KTimeEdit               *mStartTimeEdit;
-    KTimeEdit               *endTimeEdit;
-    QCheckBox               *noTimeButton;
-    QLabel                  *freeTimeLabel;
-    QMultiLineEdit          *descriptionEdit;
-    QComboBox               *freeTimeCombo;
-    QLabel                  *ownerLabel;
-    QLabel *mSecrecyLabel;
-    QComboBox *mSecrecyCombo;
-
-    QPushButton             *categoriesButton;
-    QLabel                  *categoriesLabel;
-
-    QLabel                  *alarmBell;
-    QCheckBox               *alarmButton;
-    KRestrictedLine         *alarmTimeEdit;
-    QPushButton             *alarmSoundButton;
-    QPushButton             *alarmProgramButton;
-    QComboBox               *alarmIncrCombo;
-
-    // variables for the todo stuff
+    QCheckBox               *mNoTimeButton;
     QCheckBox               *mNoDueCheck;
     QLabel                  *mDueLabel;
     KDateEdit               *mDueDateEdit;
     KTimeEdit               *mDueTimeEdit;
-    
-    QComboBox               *completedCombo;
-    QLabel                  *completedLabel;
-    QLabel                  *priorityLabel;
-    QComboBox               *priorityCombo;
+    QComboBox               *mCompletedCombo;
+    QLabel                  *mCompletedLabel;
+    QLabel                  *mPriorityLabel;
+    QComboBox               *mPriorityCombo;
 
     QCheckBox               *mNoStartCheck;
   
-
-    // variables to hold stuff temporarily.
-    QString alarmSound;
-    QString alarmProgram;
     QDateTime mCompleted;
 
     int mSpacing;
