@@ -68,7 +68,7 @@ TimespanView::~TimespanView()
 
 QString TimespanView::info()
 {
-  return i18n("This plugin provides a gantt-like Timespan view.");
+  return i18n("This plugin provides a Gantt-like Timespan view.");
 }
 
 QString TimespanView::shortInfo()
