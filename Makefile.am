@@ -1,6 +1,6 @@
 SUBDIRS = . pixmaps sounds plugins interfaces
 
-INCLUDES = -I$(srcdir)/interfaces $(all_includes)
+INCLUDES = -I$(srcdir)/interfaces -I$(top_srcdir) $(all_includes)
 
 bin_PROGRAMS = korganizer
 
