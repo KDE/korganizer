@@ -557,8 +557,6 @@ void KOAgendaView::updateEventDates(KOAgendaItem *item)
   item->itemEvent()->setDtStart(startDt);
   item->itemEvent()->setDtEnd(endDt);
 
-//ET TODO supply correct date values !
-//  kdDebug() << "KOAgendaView::emit shiftedEvent: old =" << olddate.day() << " | new = " << startDate.day() << endl;
   emit shiftedEvent(olddate, startDate);
 
   kdDebug() << "KOAgendaView::updateEventDates() done " << endl;
