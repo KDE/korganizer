@@ -86,6 +86,7 @@ class MonthViewItem: public QListBoxItem
     MonthViewItem( Incidence *, QDate qd, const QString & title );
 
     void setTodo(bool on)  { mTodo  = on; }
+    void setTodoDone(bool on) { mTodoDone = on; }
     void setRecur(bool on) { mRecur = on; }
     void setAlarm(bool on) { mAlarm = on; }
     void setReply(bool on) { mReply = on; }
@@ -103,11 +104,13 @@ class MonthViewItem: public QListBoxItem
 
   private:
     bool mTodo;
+    bool mTodoDone;
     bool mRecur;
     bool mAlarm;
     bool mReply;
 
     QPixmap mTodoPixmap;
+    QPixmap mTodoDonePixmap;
     QPixmap mAlarmPixmap;
     QPixmap mRecurPixmap;
     QPixmap mReplyPixmap;

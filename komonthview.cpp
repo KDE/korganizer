@@ -180,15 +180,17 @@ MonthViewItem::MonthViewItem( Incidence *incidence, QDate qd, const QString & s)
   mIncidence = incidence;
   mDate = qd;
 
-  mTodoPixmap  = KOGlobals::self()->smallIcon("checkedbox");
-  mAlarmPixmap = KOGlobals::self()->smallIcon("bell");
-  mRecurPixmap = KOGlobals::self()->smallIcon("recur");
-  mReplyPixmap = KOGlobals::self()->smallIcon("mail_reply");
+  mTodoPixmap      = KOGlobals::self()->smallIcon("todo");
+  mTodoDonePixmap  = KOGlobals::self()->smallIcon("checkedbox");
+  mAlarmPixmap     = KOGlobals::self()->smallIcon("bell");
+  mRecurPixmap     = KOGlobals::self()->smallIcon("recur");
+  mReplyPixmap     = KOGlobals::self()->smallIcon("mail_reply");
 
-  mTodo  = false;
-  mRecur = false;
-  mAlarm = false;
-  mReply = false;
+  mTodo      = false;
+  mTodoDone  = false;
+  mRecur     = false;
+  mAlarm     = false;
+  mReply     = false;
 }
 
 void MonthViewItem::paint(QPainter *p)
@@ -209,6 +211,10 @@ void MonthViewItem::paint(QPainter *p)
   int x = 3;
   if ( mTodo ) {
     p->drawPixmap( x, 0, mTodoPixmap );
+    x += mTodoPixmap.width() + 2;
+  }
+  if ( mTodoDone ) {
+    p->drawPixmap( x, 0, mTodoDonePixmap );
     x += mTodoPixmap.width() + 2;
   }
   if ( mRecur ) {
@@ -457,7 +463,7 @@ void MonthViewCell::addIncidence( Incidence *incidence )
     text += todo->summary();
          
     item = new MonthViewItem( todo, mDate, text );
-    item->setTodo( true );
+    todo->isCompleted() ? item->setTodoDone( true ) : item->setTodo( true );
     item->setPalette( mStandardPalette );
   }
   
