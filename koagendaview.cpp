@@ -160,7 +160,7 @@ int TimeLabels::minimumWidth() const
   int borderWidth = 4;
 
   // the maximum width possible
-  int width = fm.width("88:88") + borderWidth;
+  int width = fm.width("88:88") + 2*borderWidth;
 
   return width;
 }
