@@ -180,7 +180,6 @@ class KOTodoView : public KOrg::BaseView
 
     void purgeCompleted();
 
-    void itemClicked( QListViewItem * );
     void itemStateChanged( QListViewItem * );
     void setTodoModified( Todo *oldTodo, Todo *todo )
     {

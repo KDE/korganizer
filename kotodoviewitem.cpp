@@ -143,9 +143,6 @@ void KOTodoViewItem::stateChange(bool state)
   if (state)
     mTodoView->emitCompletedSignal( mTodo );
   else mTodo->setPercentComplete(0);
-  if (isOn()!=state) {
-    setOn(state);
-  }
 
   if (mTodo->hasDueDate()) {
     QString dtStr = mTodo->dtDueDateStr();

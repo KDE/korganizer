@@ -447,8 +447,6 @@ KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent, const char* name)
   connect( mTodoListView, SIGNAL( contextMenuRequested( QListViewItem *,
                                                         const QPoint &, int ) ),
            SLOT( popupMenu( QListViewItem *, const QPoint &, int ) ) );
-  connect( mTodoListView, SIGNAL( clicked( QListViewItem * ) ),
-           SLOT( itemClicked( QListViewItem * ) ) );
   connect( mTodoListView, SIGNAL( expanded( QListViewItem * ) ),
            SLOT( itemStateChanged( QListViewItem * ) ) );
   connect( mTodoListView, SIGNAL( collapsed( QListViewItem * ) ),
@@ -816,23 +814,6 @@ void KOTodoView::changedCategories(int index)
     mActiveItem->construct();
     emit incidenceChanged( oldTodo, todo, KOGlobals::CATEGORY_MODIFIED);
     delete oldTodo;
-  }
-}
-
-void KOTodoView::itemClicked(QListViewItem *item)
-{
-  if (!item) return;
-
-  KOTodoViewItem *todoItem = (KOTodoViewItem *)item;
-  int completed = todoItem->todo()->isCompleted();  // Completed or not?
-
-  if (todoItem->isOn()) {
-    if (!completed) 
-      emit todoCompleted( todoItem->todo() );
-  } else {
-    if (completed) {
-      todoItem->todo()->setCompleted(false);
-    }
   }
 }
 
