@@ -289,76 +289,83 @@
             <property name="title">
                 <string>Sorting Options</string>
             </property>
-            <widget class="QLabel">
+            <grid>
                 <property name="name">
-                    <cstring>sortFieldLabel</cstring>
+                    <cstring>unnamed</cstring>
                 </property>
-                <property name="enabled">
-                    <bool>true</bool>
-                </property>
-                <property name="geometry">
-                    <rect>
-                        <x>11</x>
-                        <y>21</y>
-                        <width>70</width>
-                        <height>27</height>
-                    </rect>
-                </property>
-                <property name="text">
-                    <string>Sort Field:</string>
-                </property>
-            </widget>
-            <widget class="QComboBox">
-                <property name="name">
-                    <cstring>mSortField</cstring>
-                </property>
-                <property name="enabled">
-                    <bool>true</bool>
-                </property>
-                <property name="geometry">
-                    <rect>
-                        <x>87</x>
-                        <y>21</y>
-                        <width>180</width>
-                        <height>27</height>
-                    </rect>
-                </property>
-            </widget>
-            <widget class="QLabel">
-                <property name="name">
-                    <cstring>sortDirectionLabel</cstring>
-                </property>
-                <property name="enabled">
-                    <bool>true</bool>
-                </property>
-                <property name="geometry">
-                    <rect>
-                        <x>11</x>
-                        <y>54</y>
-                        <width>70</width>
-                        <height>27</height>
-                    </rect>
-                </property>
-                <property name="text">
-                    <string>Sort Direction:</string>
-                </property>
-            </widget>
-            <widget class="QComboBox">
-                <property name="name">
-                    <cstring>mSortDirection</cstring>
-                </property>
-                <property name="enabled">
-                    <bool>true</bool>
-                </property>
-                <property name="geometry">
-                    <rect>
-                        <x>87</x>
-                        <y>54</y>
-                        <width>180</width>
-                        <height>27</height>
-                    </rect>
-                </property>
-            </widget>
+                <widget class="QLabel" row="0" column="0">
+                    <property name="name">
+                        <cstring>sortFieldLabel</cstring>
+                    </property>
+                    <property name="enabled">
+                        <bool>true</bool>
+                    </property>
+                    <property name="text">
+                        <string>Sort Field:</string>
+                    </property>
+                </widget>
+                <widget class="QComboBox" row="0" column="1">
+                    <property name="name">
+                        <cstring>mSortField</cstring>
+                    </property>
+                    <property name="enabled">
+                        <bool>true</bool>
+                    </property>
+                </widget>
+                <widget class="QLabel" row="1" column="0">
+                    <property name="name">
+                        <cstring>sortDirectionLabel</cstring>
+                    </property>
+                    <property name="enabled">
+                        <bool>true</bool>
+                    </property>
+                    <property name="text">
+                        <string>Sort Direction:</string>
+                    </property>
+                </widget>
+                <widget class="QComboBox" row="1" column="1">
+                    <property name="name">
+                        <cstring>mSortDirection</cstring>
+                    </property>
+                    <property name="enabled">
+                        <bool>true</bool>
+                    </property>
+                </widget>
+                <spacer row="0" column="2">
+                    <property name="name">
+                        <cstring>spacer4</cstring>
+                    </property>
+                    <property name="orientation">
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property name="sizeType">
+                        <enum>Expanding</enum>
+                    </property>
+                    <property name="sizeHint">
+                        <size>
+                            <width>121</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <spacer row="1" column="2">
+                    <property name="name">
+                        <cstring>spacer5</cstring>
+                    </property>
+                    <property name="orientation">
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property name="sizeType">
+                        <enum>Expanding</enum>
+                    </property>
+                    <property name="sizeHint">
+                        <size>
+                            <width>121</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+            </grid>
         </widget>
         <widget class="QButtonGroup" row="4" column="0" rowspan="1" colspan="2">
             <property name="name">
@@ -367,44 +374,33 @@
             <property name="title">
                 <string>Other Options</string>
             </property>
-            <widget class="QCheckBox">
+            <vbox>
                 <property name="name">
-                    <cstring>mStrikeOutCompleted</cstring>
+                    <cstring>unnamed</cstring>
                 </property>
-                <property name="geometry">
-                    <rect>
-                        <x>10</x>
-                        <y>40</y>
-                        <width>210</width>
-                        <height>19</height>
-                    </rect>
-                </property>
-                <property name="text">
-                    <string>Strike &amp;out completed to-do summaries</string>
-                </property>
-                <property name="checked">
-                    <bool>true</bool>
-                </property>
-            </widget>
-            <widget class="QCheckBox">
-                <property name="name">
-                    <cstring>mConnectSubTodos</cstring>
-                </property>
-                <property name="geometry">
-                    <rect>
-                        <x>10</x>
-                        <y>20</y>
-                        <width>194</width>
-                        <height>19</height>
-                    </rect>
-                </property>
-                <property name="text">
-                    <string>Co&amp;nnect sub-to-dos with its parent</string>
-                </property>
-                <property name="checked">
-                    <bool>true</bool>
-                </property>
-            </widget>
+                <widget class="QCheckBox">
+                    <property name="name">
+                        <cstring>mConnectSubTodos</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Co&amp;nnect sub-to-dos with its parent</string>
+                    </property>
+                    <property name="checked">
+                        <bool>true</bool>
+                    </property>
+                </widget>
+                <widget class="QCheckBox">
+                    <property name="name">
+                        <cstring>mStrikeOutCompleted</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Strike &amp;out completed to-do summaries</string>
+                    </property>
+                    <property name="checked">
+                        <bool>true</bool>
+                    </property>
+                </widget>
+            </vbox>
         </widget>
     </grid>
 </widget>
