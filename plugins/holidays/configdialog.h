@@ -24,6 +24,8 @@
 
 #include <kdialogbase.h>
 
+class QComboBox;
+
 class ConfigDialog : public KDialogBase
 {
     Q_OBJECT
