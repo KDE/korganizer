@@ -197,6 +197,10 @@ class KOAgenda : public QScrollView
     /** Set cursor, when no item action is in progress */
     void setNoActionCursor( KOAgendaItem *moveItem, const QPoint &viewportPos );
 
+    /** calculate the width of the column subcells of the given item */
+    double calcSubCellWidth( KOAgendaItem *item );
+    /** Move and resize the given item to the correct position */
+    void placeAgendaItem( KOAgendaItem *item, double subCellWidth );
     /** Place agenda item in agenda and adjust other cells if necessary */
     void placeSubCells( KOAgendaItem *placeItem );
 
@@ -289,7 +293,7 @@ class KOAgenda : public QScrollView
     int mOldUpperScrollValue;
 
     QMemArray<bool> *mHolidayMask;
-    
+
     bool mTypeAhead;
     QObject *mTypeAheadReceiver;
     QPtrList<QEvent> mTypeAheadEvents;

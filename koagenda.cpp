@@ -990,7 +990,7 @@ void KOAgenda::endItemAction()
 //  kdDebug(5850) << "KOAgenda::endItemAction() done" << endl;
 }
 
-void KOAgenda::setNoActionCursor(KOAgendaItem *moveItem,const QPoint& viewportPos)
+void KOAgenda::setNoActionCursor( KOAgendaItem *moveItem, const QPoint& viewportPos )
 {
 //  kdDebug(5850) << "viewportPos: " << viewportPos.x() << "," << viewportPos.y() << endl;
 //  QPoint point = viewport()->mapToGlobal(viewportPos);
@@ -1038,6 +1038,49 @@ void KOAgenda::setNoActionCursor(KOAgendaItem *moveItem,const QPoint& viewportPo
   }
 }
 
+
+/** calculate the width of the column subcells of the given item
+*/
+double KOAgenda::calcSubCellWidth( KOAgendaItem *item )
+{
+  int x, y, x1, y1;
+  gridToContents( item->cellX(), item->cellYTop(), x, y );
+  gridToContents( item->cellX()+1, item->cellYTop()+1, x1, y1 );
+  int maxSubCells = item->subCells();
+  double newSubCellWidth;
+  if ( mAllDayMode ) {
+    newSubCellWidth = double( y1 - y ) / maxSubCells;
+  } else {
+    newSubCellWidth = double( x1 - x ) / maxSubCells;
+  }
+  kdDebug(5850)<<"calcSubCellWidth for "<<item->incidence()->summary()<<": width="<<newSubCellWidth<<", subcells="<<maxSubCells<<", cellWidth="<<mGridSpacingX<<endl;
+  kdDebug(5850)<<"x="<<x<<", y="<<y<<", x1="<<x1<<", y1="<<y1<<endl;
+  return newSubCellWidth;
+}
+
+void KOAgenda::placeAgendaItem( KOAgendaItem *item, double subCellWidth )
+{
+  kdDebug(5850)<<"placing agenda item "<<item->incidence()->summary()<<endl;
+  int x, y, x1, y1;
+  // left upper corner, no subcells yet
+  // right lower corner
+  gridToContents( item->cellX(), item->cellYTop(), x, y );
+  gridToContents( item->cellX() + item->cellWidth(),
+                  item->cellYBottom(), x1, y1 );
+
+  double subCellPos = item->subCell() * subCellWidth;
+
+  // we need to add 0.01 to make sure we don't loose one pixed due to
+  // numerics (i.e. if it would be x.9998, we want the integer, not rounded down.
+  if (mAllDayMode) {
+    item->resize( x1-x, int( subCellPos + subCellWidth + 0.01 ) - int( subCellPos ) );
+    y += int( subCellPos );
+  } else {
+    item->resize( int( subCellPos + subCellWidth + 0.01 ) - int( subCellPos ), y1-y );
+    x += int( subCellPos );
+  }
+  moveChild( item, x, y );
+}
 
 /*
   Place item in cell and take care that multiple items using the same cell do
@@ -1101,46 +1144,23 @@ void KOAgenda::placeSubCells( KOAgendaItem *placeItem )
       maxSubCells++;  // add new item to number of sub cells
     }
 
-    // Prepare for sub cell geometry adjustment
-    double newSubCellWidth;
-    if ( mAllDayMode ) newSubCellWidth = mGridSpacingY / maxSubCells;
-    else newSubCellWidth = mGridSpacingX / maxSubCells;
     conflictItems.append( placeItem );
 
 //    kdDebug(5850) << "---Conflict items: " << conflictItems.count() << endl;
 
     // Adjust sub cell geometry of all items
-    for ( item = conflictItems.first(); item != 0;
-          item = conflictItems.next() ) {
-//      kdDebug(5850) << "---Placing item: " << item->itemEvent()->getSummary() << endl;
+    placeItem->setSubCells( maxSubCells );
+    double newSubCellWidth = calcSubCellWidth( placeItem );
+    for ( item = conflictItems.first(); item != 0; item = conflictItems.next() ) {
       item->setSubCells( maxSubCells );
-      if ( mAllDayMode ) {
-        item->resize( int( item->cellWidth() * mGridSpacingX ),
-                      int( newSubCellWidth ) );
-      } else {
-        item->resize( int( newSubCellWidth ),
-                      int( item->cellHeight() * mGridSpacingY ) );
-      }
-      int x,y;
-      gridToContents( item->cellX(), item->cellYTop(), x, y );
-      if ( mAllDayMode ) {
-        y += int( item->subCell() * newSubCellWidth );
-      } else {
-        x += int( item->subCell() * newSubCellWidth );
-      }
-      moveChild( item, x, y );
+      placeAgendaItem( item, newSubCellWidth );
     }
   } else {
     // There is only one item in this cell
     placeItem->setSubCell( 0 );
     placeItem->setSubCells( 1 );
-    if ( mAllDayMode )
-      placeItem->resize( placeItem->width(), int( mGridSpacingY ) );
-    else
-      placeItem->resize( int( mGridSpacingX ), placeItem->height() );
-    int x,y;
-    gridToContents( placeItem->cellX(), placeItem->cellYTop(), x, y );
-    moveChild( placeItem, x, y );
+    double newSubCellWidth = calcSubCellWidth( placeItem );
+    placeAgendaItem( placeItem, newSubCellWidth );
   }
   placeItem->setConflictItems( conflictItems );
   placeItem->update();
@@ -1346,7 +1366,11 @@ KOAgendaItem *KOAgenda::insertAllDayItem (Incidence *event,QDate qd,int XBegin,i
 
   agendaItem->setCellXY(XBegin,0,0);
   agendaItem->setCellXWidth(XEnd);
-  agendaItem->resize((int)( mGridSpacingX * agendaItem->cellWidth() ),(int)(mGridSpacingY));
+
+  double startIt = mGridSpacingX * (agendaItem->cellX());
+  double endIt = mGridSpacingX * (agendaItem->cellWidth()+agendaItem->cellX());
+
+  agendaItem->resize( int(endIt) - int(startIt), int(mGridSpacingY));
 
   agendaItem->installEventFilter(this);
 
@@ -1430,47 +1454,29 @@ void KOAgenda::insertMultiItem (Event *event,QDate qd,int XBegin,int XEnd,
 void KOAgenda::resizeEvent ( QResizeEvent *ev )
 {
 //  kdDebug(5850) << "KOAgenda::resizeEvent" << endl;
+  double subCellWidth;
+  KOAgendaItem *item;
   if (mAllDayMode) {
-    mGridSpacingX = (double)width() / (double)mColumns;
+    mGridSpacingX = double( width() - 2 * frameWidth() ) / (double)mColumns;
 //    kdDebug(5850) << "Frame " << frameWidth() << endl;
     mGridSpacingY = height() - 2 * frameWidth();
     resizeContents( (int)( mGridSpacingX * mColumns ), (int)(mGridSpacingY ));
-//    mGridSpacingY = height();
-//    resizeContents( mGridSpacingX * mColumns + 1 , mGridSpacingY * mRows + 1 );
 
-    KOAgendaItem *item;
-    double subCellWidth;
     for ( item=mItems.first(); item != 0; item=mItems.next() ) {
-      subCellWidth = mGridSpacingY / item->subCells();
-      item->resize((int)( mGridSpacingX * item->cellWidth() ), (int)subCellWidth);
-      moveChild(item, (int)( KOGlobals::self()->reverseLayout() ?
-                     (mColumns - 1 - item->cellX()) * mGridSpacingX :
-                      item->cellX() * mGridSpacingX ),
-                      (int)( item->subCell() * subCellWidth ) );
+      subCellWidth = calcSubCellWidth( item );
+      placeAgendaItem( item, subCellWidth );
     }
   } else {
-    mGridSpacingX = (double)(width() - verticalScrollBar()->width() - 2 * frameWidth())/(double)mColumns;
+    mGridSpacingX = double(width() - verticalScrollBar()->width() - 2 * frameWidth()) / double(mColumns);
     // make sure that there are not more than 24 per day
-    mGridSpacingY = (double)(height() - 2 * frameWidth())/(double)mRows;
-    if (mGridSpacingY<mDesiredGridSpacingY) mGridSpacingY=mDesiredGridSpacingY;
+    mGridSpacingY = double(height() - 2 * frameWidth()) / double(mRows);
+    if ( mGridSpacingY < mDesiredGridSpacingY ) mGridSpacingY = mDesiredGridSpacingY;
 
-    resizeContents( (int)( mGridSpacingX * mColumns ), (int)( mGridSpacingY * mRows ));
+    resizeContents( int( mGridSpacingX * mColumns ), int( mGridSpacingY * mRows ));
 
-    KOAgendaItem *item;
-    double subCellWidth;
     for ( item=mItems.first(); item != 0; item=mItems.next() ) {
-      subCellWidth = mGridSpacingX / (double)item->subCells();
-
-      double tmp = item->subCell() * subCellWidth;
-      int subXleft = (int)( tmp );
-      int subXright = (int)( tmp + subCellWidth );
-      int topX = (int)( mGridSpacingX * (KOGlobals::self()->reverseLayout() ?
-                     (mColumns - 1 - item->cellX()) : item->cellX() ) );
-      int topY = (int)( item->cellYTop() * mGridSpacingY );
-      int bottomY = (int)( (item->cellYBottom()+1) * mGridSpacingY );
-
-      item->resize(subXright-subXleft, bottomY-topY);
-      moveChild(item, topX+subXleft, topY);
+      subCellWidth = calcSubCellWidth( item );
+      placeAgendaItem( item, subCellWidth );
     }
   }
 
