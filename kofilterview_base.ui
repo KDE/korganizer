@@ -93,13 +93,4 @@
         </widget>
     </vbox>
 </widget>
-<connections>
-    <connection>
-        <sender>mEnabledCheck</sender>
-        <signal>toggled(bool)</signal>
-        <receiver>KOFilterView_base</receiver>
-        <slot>updateFilter()</slot>
-    </connection>
-    <slot access="public">updateFilter()</slot>
-</connections>
 </UI>

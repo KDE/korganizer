@@ -1,6 +1,6 @@
 /*
     This file is part of KOrganizer.
-    Copyright (c) 2001 Cornelius Schumacher <schumacher@kde.org>
+    Copyright (c) 2001, 2002 Cornelius Schumacher <schumacher@kde.org>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -30,17 +30,17 @@
 #include <libkcal/calfilter.h>
 
 class QComboBox;
+class QPushButton;
 class FilterEdit_base;
 
 using namespace KCal;
 
 /**
-  * This is the class to add/edit a calendar filter.
-  *
-  * @short Creates a dialog box to create/edit a calendar filter
-  * @author Cornelius Schumacher
-  * @version $Revision$
-  */
+  This is the class to add/edit a calendar filter.
+  
+  @short Creates a dialog box to create/edit a calendar filter
+  @author Cornelius Schumacher
+*/
 class FilterEditDialog : public KDialogBase
 {
     Q_OBJECT
@@ -60,6 +60,8 @@ class FilterEditDialog : public KDialogBase
     void slotOk();
 
     void slotAdd();
+    void slotRemove();
+    
     void filterSelected();
     void editCategorySelection();
     void updateCategorySelection(const QStringList &categories);
@@ -72,6 +74,7 @@ class FilterEditDialog : public KDialogBase
     QPtrList<CalFilter> *mFilters;
 
     QComboBox *mSelectionCombo;
+    QPushButton *mRemoveButton;
     FilterEdit_base *mEditor;
 
     QStringList mCategories;

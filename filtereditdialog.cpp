@@ -31,7 +31,8 @@
 #include <kdebug.h>
 #include <klocale.h>
 #include <klineeditdlg.h>
-
+#include <kmessagebox.h>
+  
 #include <libkdepim/categoryselectdialog.h>
 
 #include "koprefs.h"
@@ -39,6 +40,8 @@
 
 #include "filtereditdialog.h"
 #include "filtereditdialog.moc"
+
+// TODO: Make dialog work on a copy of the filters objects.
 
 FilterEditDialog::FilterEditDialog(QPtrList<CalFilter> *filters,QWidget *parent,
                                    const char *name) :
@@ -56,13 +59,17 @@ FilterEditDialog::FilterEditDialog(QPtrList<CalFilter> *filters,QWidget *parent,
   QPushButton *addButton = new QPushButton(i18n("Add Filter..."),mainWidget);
   connect(addButton,SIGNAL(clicked()),SLOT(slotAdd()));
 
+  mRemoveButton = new QPushButton( i18n("Remove"), mainWidget );
+  connect( mRemoveButton, SIGNAL( clicked() ), SLOT( slotRemove() ) );
+
   mEditor = new FilterEdit_base(mainWidget);
 
   QGridLayout *topLayout = new QGridLayout(mainWidget,2,2);
   topLayout->setSpacing(spacingHint());
   topLayout->addWidget(mSelectionCombo,0,0);
   topLayout->addWidget(addButton,0,1);
-  topLayout->addMultiCellWidget(mEditor,1,1,0,1);
+  topLayout->addWidget(mRemoveButton,0,2);
+  topLayout->addMultiCellWidget(mEditor,1,1,0,2);
 
   connect(mEditor->mCatEditButton,SIGNAL(clicked()),
           SLOT(editCategorySelection()));
@@ -98,6 +105,8 @@ void FilterEditDialog::updateFilterList()
     enableButtonOK(true);
     enableButtonApply(true);
   }
+
+  mRemoveButton->setEnabled( mFilters->count() > 1 );
 }
 
 void FilterEditDialog::slotDefault()
@@ -127,6 +136,26 @@ void FilterEditDialog::slotAdd()
     mFilters->append(new CalFilter(dlg.text()));
     updateFilterList();
   }
+}
+
+void FilterEditDialog::slotRemove()
+{
+  int currentItem = mSelectionCombo->currentItem();
+  if ( currentItem < 0 ) return;
+
+  // We need at least a default filter object.
+  if ( mFilters->count() <= 1 ) return;
+
+  int result = KMessageBox::questionYesNo( this,
+     i18n("This item will be permanently deleted.") );
+  
+  if ( result != KMessageBox::Yes ) {
+    return;
+  }
+  
+  mFilters->remove( currentItem );
+  updateFilterList();
+  emit filterChanged();
 }
 
 void FilterEditDialog::editCategorySelection()
