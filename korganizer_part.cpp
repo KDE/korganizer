@@ -21,10 +21,20 @@
     without including the source code for Qt in the source distribution.
 */
 
-#include <qapplication.h>
-#include <qfile.h>
+#include "korganizer_part.h"
+
+#include "calendarview.h"
+#include "actionmanager.h"
+#include "koapp.h"
+#include "korganizer.h"
+#include "koglobals.h"
+#include "koprefs.h"
+
+#include "kalarmd/alarmdaemoniface_stub.h"
+
+#include <libkcal/calendarlocal.h>
+
 #include <kpopupmenu.h>
-#include <qtimer.h>
 #include <kinstance.h>
 #include <klocale.h>
 #include <kaboutdata.h>
@@ -38,14 +48,9 @@
 #include <kprocess.h>
 #include <ktempfile.h>
 
-#include "calendarview.h"
-#include "actionmanager.h"
-#include "koapp.h" // for static methods
-#include "korganizer.h"
-#include "koglobals.h"
-#include "kalarmd/alarmdaemoniface_stub.h"
-
-#include "korganizer_part.h"
+#include <qapplication.h>
+#include <qfile.h>
+#include <qtimer.h>
 
 extern "C"
 {
@@ -110,20 +115,22 @@ KOrganizerPart::KOrganizerPart(QWidget *parentWidget, const char *widgetName,
   canvas->setFocusPolicy(QWidget::ClickFocus);
   setWidget(canvas);
 
-  m_extension = new KOrganizerBrowserExtension(this);
+  mExtension = new KOrganizerBrowserExtension(this);
 
   QVBoxLayout *topLayout = new QVBoxLayout(canvas);
 
   KGlobal::iconLoader()->addAppDir("korganizer");
 
-  widget = new CalendarView(canvas);
-  topLayout->addWidget(widget);
+  mCalendar = new CalendarLocal(KOPrefs::instance()->mTimeZoneId.local8Bit());
 
-  widget->show();
+  mWidget = new CalendarView( mCalendar, canvas );
+  topLayout->addWidget( mWidget );
 
-  mam = new ActionManager( this, widget, this, this );
-  mam->init();
-  mam->readSettings();
+  mWidget->show();
+
+  mActionManager = new ActionManager( this, mWidget, this, this );
+  mActionManager->init();
+  mActionManager->readSettings();
 
   KConfig *config = KOGlobals::config();
   config->setGroup("General");
@@ -133,15 +140,15 @@ KOrganizerPart::KOrganizerPart(QWidget *parentWidget, const char *widgetName,
   if (!urlString.isEmpty()) {
     KOrg::MainWindow *korg=ActionManager::findInstance(urlString);
     if ((0 == korg) && (!urlString.isEmpty()))
-      mam->openURL(urlString);
+      mActionManager->openURL(urlString);
   } else {
     QString location = locateLocal( "data", "korganizer/kontact.ics" );
-    mam->saveAsURL( location );
-    mam->makeActive();
+    mActionManager->saveAsURL( location );
+    mActionManager->makeActive();
   }
 
   setXMLFile( "korganizer_part.rc" );
-  QTimer::singleShot(0, mam, SLOT(loadParts()));
+  QTimer::singleShot(0, mActionManager, SLOT(loadParts()));
 }
 
 void KOrganizerPart::startCompleted( KProcess* process ) {
@@ -158,7 +165,7 @@ void KOrganizerPart::saveCalendar()
       KOrganizer *korg = dynamic_cast<KOrganizer*>(window);
       if (!korg->actionManager()->view()->isModified())
 	continue;
-      if (korg->actionManager()->getCurrentURL().isEmpty()) {
+      if (korg->actionManager()->url().isEmpty()) {
 	KTempFile tmp( locateLocal( "data", "korganizer/" ));
 	korg->actionManager()->saveAsURL( tmp.name() );
       } else {
@@ -168,61 +175,62 @@ void KOrganizerPart::saveCalendar()
     }
   }
 
-  if (mam->view()->isModified()) {
-    if (!mam->getCurrentURL().isEmpty()) {
-      mam->saveURL();
+  if (mActionManager->view()->isModified()) {
+    if (!mActionManager->url().isEmpty()) {
+      mActionManager->saveURL();
     } else {
       QString location = locateLocal( "data", "korganizer/kontact.ics" );
-      mam->saveAsURL( location );
+      mActionManager->saveAsURL( location );
     }
   }
-  mam->writeSettings();
-  delete mam;
+  mActionManager->writeSettings();
+  delete mActionManager;
+  mActionManager = 0;
 }
 
 QWidget* KOrganizerPart::topLevelWidget()
 {
-  return widget->topLevelWidget();
+  return mWidget->topLevelWidget();
 }
 
 ActionManager *KOrganizerPart::actionManager()
 {
-  return mam;
+  return mActionManager;
 }
 
 void KOrganizerPart::addPluginAction( KAction* action)
 {
-  action->plug( mam->pluginMenu()->popupMenu() );
+  action->plug( mActionManager->pluginMenu()->popupMenu() );
 }
 
 void KOrganizerPart::setActive(bool active)
 {
-  mam->setActive(active);
+  mActionManager->setActive(active);
 }
 
 KOrg::CalendarViewBase *KOrganizerPart::view() const
 {
-  return widget;
+  return mWidget;
 }
 
 bool KOrganizerPart::openURL(const KURL &url, bool merge)
 {
-  return mam->openURL( url, merge );
+  return mActionManager->openURL( url, merge );
 }
 
 bool KOrganizerPart::saveURL()
 {
-  return mam->saveURL();
+  return mActionManager->saveURL();
 }
 
 bool KOrganizerPart::saveAsURL(const KURL & kurl)
 {
-  return mam->saveAsURL( kurl );
+  return mActionManager->saveAsURL( kurl );
 }
 
 KURL KOrganizerPart::getCurrentURL() const
 {
-  return mam->getCurrentURL();
+  return mActionManager->url();
 }
 
 void KOrganizerPart::showStatusMessage(const QString& message)
@@ -243,8 +251,8 @@ KOrganizerPart::~KOrganizerPart()
 
 bool KOrganizerPart::openFile()
 {
-  widget->openCalendar(m_file);
-  widget->show();
+  mWidget->openCalendar(m_file);
+  mWidget->show();
   return true;
 }
 

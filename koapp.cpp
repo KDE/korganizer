@@ -138,14 +138,17 @@ int KOrganizerApp::newInstance()
       processCalendar( args->url(i), numDays ); 
     }
   } else {
+// Don't load active calendar. This is now handled by the CalendarResources.
+// TODO: Fix alarm daemon to also use CalendarResources.
+#if 0
     KConfig *config = KOGlobals::config();
     config->setGroup("General");
     QString urlString = config->readEntry("Active Calendar");
 
     // Force alarm daemon to load active calendar
     KOGlobals::self()->alarmClient()->addCalendar( urlString );
-
-    processCalendar( urlString, numDays ); 
+#endif
+    processCalendar( KURL(), numDays ); 
   }
   
   kdDebug() << "KOApp::newInstance() done" << endl;
@@ -159,17 +162,18 @@ void KOrganizerApp::processCalendar( const KURL &url, int numDays )
     displayImminent( url, numDays );
   } else {
     if (isRestored()) {
-      RESTORE(KOrganizer)
+      RESTORE( KOrganizer( true ) )
     } else {
       KOrg::MainWindow *korg=ActionManager::findInstance(url);
       if (0 == korg) {
-        korg = new KOrganizer( "KOrganizer MainWindow" );
+        bool hasDocument = !url.isEmpty();
+        korg = new KOrganizer( hasDocument, "KOrganizer MainWindow" );
         korg->topLevelWidget()->show();
 
-        kdDebug() << "KOrganizerApp::processCalendar(): " << url.url() << endl;
+        kdDebug() << "KOrganizerApp::processCalendar(): '" << url.url()
+                  << "'" << endl;
 
-        if (!url.isEmpty())
-          korg->openURL(url);
+        if ( hasDocument ) korg->openURL(url);
       } else
           KWin::setActiveWindow(korg->topLevelWidget()->winId());
     }

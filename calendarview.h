@@ -70,7 +70,7 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
       @param parent parent window
       @param name Qt internal widget object name
     */
-    CalendarView( QWidget *parent = 0, const char *name = 0 ); 
+    CalendarView( Calendar *, QWidget *parent = 0, const char *name = 0 ); 
     virtual ~CalendarView();
   
     Calendar *calendar() { return mCalendar; }

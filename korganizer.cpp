@@ -54,6 +54,9 @@
 
 #include <korganizer/part.h>
 
+#include <libkcal/calendarlocal.h>
+#include <libkcal/calendarresources.h>
+
 #include "komailclient.h"
 #include "calprinter.h"
 #include "calendarview.h"
@@ -74,16 +77,29 @@ using namespace KParts;
 using namespace KOrg;
 
 
-KOrganizer::KOrganizer( const char *name )
+KOrganizer::KOrganizer( bool document, const char *name )
   : KParts::MainWindow(0,name),
     KOrg::MainWindow(),
-    DCOPObject("KOrganizerIface")
+    DCOPObject("KOrganizerIface"),
+    mDocument( document )
 {
   kdDebug() << "KOrganizer::KOrganizer()" << endl;
 
 //  setMinimumSize(600,400);	// make sure we don't get resized too small...
 
-  mCalendarView = new CalendarView( this, "KOrganizer::CalendarView" );
+  // Create calendar object, which manages all calendar information associated
+  // with this calendar view window.
+  if ( mDocument ) {
+    mCalendar = new CalendarLocal(KOPrefs::instance()->mTimeZoneId.local8Bit());
+  } else {
+    mCalendar = new CalendarResources( KOPrefs::instance()->mTimeZoneId.local8Bit() );
+    setCaption( i18n("Calendar") );
+  }
+
+  mCalendar->setOwner( KOPrefs::instance()->fullName() );
+  mCalendar->setEmail( KOPrefs::instance()->email() );
+
+  mCalendarView = new CalendarView( mCalendar, this, "KOrganizer::CalendarView" );
   setCentralWidget(mCalendarView);
 
   mActionManager = new ActionManager(this, mCalendarView, this, this);
@@ -120,6 +136,7 @@ KOrganizer::KOrganizer( const char *name )
 KOrganizer::~KOrganizer()
 {
   delete mActionManager;
+  delete mCalendar;
 }
 
 
@@ -207,16 +224,24 @@ void KOrganizer::initViews()
 
 bool KOrganizer::queryClose()
 {
-  if (ActionManager::getWindowList()->lastInstance() &&
-      !mActionManager->isActive() &&
-      !mActionManager->getCurrentURL().isEmpty()) {
-      int result = KMessageBox::questionYesNo(this,i18n("Do you want to make this"
-      " calendar active?\nThis means that it is monitored for alarms and loaded"
-      " as default calendar."));
-      if (result == KMessageBox::Yes) mActionManager->makeActive();
+#if 0
+  if ( ActionManager::getWindowList()->lastInstance() &&
+       !mActionManager->isActive() &&
+       !mActionManager->url().isEmpty() ) {
+    int result = KMessageBox::questionYesNo( this, i18n("Do you want to make this"
+    " calendar active?\nThis means that it is monitored for alarms and loaded"
+    " as default calendar.") );
+    if ( result == KMessageBox::Yes ) mActionManager->makeActive();
   }
-  
-  bool success = mActionManager->saveModifiedURL();
+#endif
+
+  bool success = true;
+
+  if ( mDocument ) {
+    success = mActionManager->saveModifiedURL();
+  } else {
+    mCalendar->sync();
+  }
   
   // Write configuration. I don't know if it really makes sense doing it this
   // way, when having opened multiple calendars in different CalendarViews.
@@ -247,7 +272,7 @@ void KOrganizer::slotNewToolbarConfig() // This is called when OK or Apply is cl
 {
   plugActionList("toolbartoggles",mToolBarToggles);
 
-  if (!mActionManager->getCurrentURL().isLocalFile()) {
+  if ( !mActionManager->url().isLocalFile() ) {
     int result = KMessageBox::warningContinueCancel(this,
       i18n("Your calendar is a remote file. Activating it can cause "
            "synchronization problems leading to data loss.\n"
@@ -330,7 +355,7 @@ bool KOrganizer::saveAsURL(const KURL & kurl)
 
 KURL KOrganizer::getCurrentURL() const
 {
-  return mActionManager->getCurrentURL();
+  return mActionManager->url();
 }
 
 void KOrganizer::saveProperties(KConfig *config)
@@ -360,7 +385,29 @@ KOrg::CalendarViewBase *KOrganizer::view() const
 
 void KOrganizer::setTitle()
 {
-  mActionManager->setTitle();
+//  kdDebug() << "KOrganizer::setTitle" << endl;
+
+  if ( !mDocument ) return;
+
+  QString title;
+
+  KURL url = mActionManager->url();
+
+  if ( !url.isEmpty() ) {
+    if ( url.isLocalFile() ) title = url.fileName();
+    else title = url.prettyURL();
+  } else {
+    title = i18n("New Calendar");
+  }
+
+  if ( mCalendarView->isReadOnly() ) {
+    title += " [" + i18n("read-only") + "]";
+  }
+
+  if ( mActionManager->isActive() ) title += " [" + i18n("active") + "]";
+
+  setCaption( title, !mCalendarView->isReadOnly() &&
+                      mCalendarView->isModified() );
 }
 
 QString KOrganizer::getCurrentURLasString() const

@@ -64,6 +64,7 @@
 #include <libkcal/dndfactory.h>
 #include <libkcal/freebusy.h>
 #include <libkcal/filestorage.h>
+#include <libkcal/calendarresources.h>
 
 #ifndef KORG_NOMAIL
 #include "komailclient.h"
@@ -95,8 +96,10 @@
 using namespace KOrg;
 #include "calendarview.moc"
 
-CalendarView::CalendarView( QWidget *parent, const char *name )
-  : CalendarViewBase(parent,name)
+CalendarView::CalendarView( Calendar *calendar, QWidget *parent,
+                            const char *name ) 
+  : CalendarViewBase( parent, name ),
+    mCalendar( calendar )
 {
   kdDebug() << "CalendarView::CalendarView()" << endl;
 
@@ -110,12 +113,6 @@ CalendarView::CalendarView( QWidget *parent, const char *name )
   mCalPrinter = 0;
 
   mFilters.setAutoDelete(true);
-
-  // Create calendar object, which manages all calendar information associated
-  // with this calendar view window.
-  mCalendar = new CalendarLocal(KOPrefs::instance()->mTimeZoneId.local8Bit());
-  mCalendar->setOwner(KOPrefs::instance()->fullName());
-  mCalendar->setEmail(KOPrefs::instance()->email());
 
   mCalendar->registerObserver( this );
 
@@ -250,9 +247,6 @@ CalendarView::~CalendarView()
 {
   kdDebug() << "~CalendarView()" << endl;
 
-  // clean up our calender object
-  mCalendar->close();  // CS: This seems to cause a "Double QObject deletion"
-  delete mCalendar;
   delete mDialogManager;
   delete mViewManager;
 

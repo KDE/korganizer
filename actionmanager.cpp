@@ -94,9 +94,9 @@ void ActionManager::ActionManager::init()
     mAutoSaveTimer->start(1000*60*KOPrefs::instance()->mAutoSaveInterval);
   }
 
-  setTitle();
+  mMainWindow->setTitle();
 
-  connect(mCalendarView,SIGNAL(modifiedChanged(bool)),SLOT(setTitle()));
+  connect(mCalendarView,SIGNAL(modifiedChanged(bool)),SLOT(mMainWindow->setTitle()()));
   connect(mCalendarView,SIGNAL(configChanged()),SLOT(updateConfig()));
 
   connect( mCalendarView, SIGNAL( incidenceSelected( Incidence * ) ),
@@ -515,7 +515,7 @@ void ActionManager::writeSettings()
 void ActionManager::file_new()
 {
   // Make new KOrganizer window containing empty calendar
-  (new KOrganizer())->show();
+  ( new KOrganizer( true ) )->show();
 }
 
 void ActionManager::file_open()
@@ -538,7 +538,7 @@ void ActionManager::file_open()
   if (!mCalendarView->isModified() && mFile.isEmpty()) {
     openURL(url);
   } else {
-    KOrganizer *korg = new KOrganizer;
+    KOrganizer *korg = new KOrganizer( true );
     if (korg->openURL(url)) {
       korg->show();
     } else {
@@ -660,7 +660,7 @@ void ActionManager::file_close()
 
   setActive(false);
 
-  setTitle();
+  mMainWindow->setTitle();
 }
 
 bool ActionManager::openURL(const KURL &url,bool merge)
@@ -694,7 +694,7 @@ bool ActionManager::openURL(const KURL &url,bool merge)
 	QString active = config->readEntry("Active Calendar");
         if (KURL(active) == mURL) setActive(true);
         else setActive(false);
-        setTitle();
+        mMainWindow->setTitle();
         kdDebug() << "-- Add recent URL: " << url.prettyURL() << endl;
         mRecent->addURL(url);
 	mMainWindow->showStatusMessage(i18n("Opened calendar '%1'.").arg(mURL.prettyURL()));
@@ -747,7 +747,7 @@ bool ActionManager::saveURL()
       mFile = mURL.path();
     }
     writeActiveState();
-    setTitle();
+    mMainWindow->setTitle();
     mRecent->addURL(mURL);
   }
 
@@ -828,7 +828,7 @@ bool ActionManager::saveAsURL(const KURL &url)
     } else {
       setActive(false);
     }
-    setTitle();
+    mMainWindow->setTitle();
     mRecent->addURL(mURL);
   } else {
     kdDebug() << "KOrganizer::saveAsURL() failed" << endl;
@@ -927,29 +927,6 @@ void ActionManager::readProperties(KConfig *config)
   }
 }
 
-void ActionManager::setTitle()
-{
-  if (!parent()->inherits("KOrganizer"))
-    return;
-  KOrganizer *organizer = dynamic_cast<KOrganizer*>(parent());
-//  kdDebug() << "KOrganizer::setTitle" << endl;
-
-  QString tmpStr;
-
-  if (!mURL.isEmpty()) {
-    if (mURL.isLocalFile()) tmpStr = mURL.fileName();
-    else tmpStr = mURL.prettyURL();
-  }
-  else tmpStr = i18n("New Calendar");
-
-  if (mCalendarView->isReadOnly())
-    tmpStr += " [" + i18n("read-only") + "]";
-
-  if (isActive()) tmpStr += " [" + i18n("active") + "]";
-
-  organizer->setCaption(tmpStr,!mCalendarView->isReadOnly()&&mCalendarView->isModified());
-}
-
 void ActionManager::checkAutoSave()
 {
   kdDebug() << "KOrganizer::checkAutoSave()" << endl;
@@ -1021,7 +998,7 @@ void ActionManager::setActive(bool active)
   if (active == mActive) return;
 
   mActive = active;
-  setTitle();
+  mMainWindow->setTitle();
 }
 
 void ActionManager::makeActive()

@@ -32,9 +32,14 @@
 class KInstance;
 class KAboutData;
 class KOrganizerBrowserExtension;
+class KProcess;
 
 class CalendarView;
 class ActionManager;
+
+namespace KCal {
+class Calendar;
+}
 
 class KOrganizerFactory : public KParts::Factory
 {
@@ -83,17 +88,20 @@ class KOrganizerPart: public KParts::ReadOnlyPart,
     virtual void setActive(bool active);
     virtual void showStatusMessage(const QString& message);
 
+    void setTitle() {};
+
   protected:
     virtual bool openFile();
 
   protected slots:
     void saveCalendar();
-    void startCompleted( KProcess* );
+    void startCompleted( KProcess * );
 
   private:
-    CalendarView *widget;
-    ActionManager *mam;
-    KOrganizerBrowserExtension *m_extension;
+    KCal::Calendar *mCalendar;    
+    CalendarView *mWidget;
+    ActionManager *mActionManager;
+    KOrganizerBrowserExtension *mExtension;
 };
 
 class KOrganizerBrowserExtension : public KParts::BrowserExtension

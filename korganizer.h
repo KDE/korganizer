@@ -76,11 +76,13 @@ class KOrganizer : public KParts::MainWindow, virtual public KOrganizerIface, pu
     Q_OBJECT
   public:
     /**
-     * Constructs a new main window.
-     *
-     * @param name Qt internal widget name
-     */
-    KOrganizer( const char *name=0 );
+      Constructs a new main window.
+    
+      @param document If true this window shows a calendar as document, if false
+                      the resource based backend is used. 
+      @param name     Qt internal widget name
+    */
+    KOrganizer( bool document, const char *name = 0 );
     virtual ~KOrganizer();
 
     KOrg::CalendarViewBase *view() const;
@@ -169,7 +171,8 @@ class KOrganizer : public KParts::MainWindow, virtual public KOrganizerIface, pu
     void readProperties(KConfig *);
 
   private:
-    // variables
+    bool mDocument;
+    Calendar *mCalendar;
     CalendarView *mCalendarView;  // Main view widget
     KOrg::Part::List mParts; // List of parts loaded
 

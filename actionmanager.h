@@ -82,7 +82,7 @@ class ActionManager : public QObject
     /** Save calendar if it is modified by the user. Ask user what to do. */
     bool saveModifiedURL();
     /** Get current URL */
-    KURL getCurrentURL() const { return mURL; }
+    KURL url() const { return mURL; }
     static KOWindowList* getWindowList() { return windowList; }
 
     /** Is there a instance with this URL? */
@@ -154,9 +154,6 @@ class ActionManager : public QObject
     /* Session management */
     void saveProperties(KConfig *);
     void readProperties(KConfig *);
-
-    /** Sets title of window according to filename and modification state */
-    void setTitle();
 
     void loadParts();
 
