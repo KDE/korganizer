@@ -151,8 +151,7 @@ messages: rc.cpp
 
 include ../admin/Doxyfile.am
 
-pim_DATA = configmain.desktop configtime.desktop \
-  configviews.desktop configcolors.desktop \
-  configfonts.desktop configgroupscheduling.desktop \
-  configgroupautomation.desktop
-pimdir = $(kde_appsdir)/PIM/korganizer
+xdg_apps_DATA = configmain.desktop configtime.desktop \
+                configviews.desktop configcolors.desktop \
+                configfonts.desktop configgroupscheduling.desktop \
+                configgroupautomation.desktop

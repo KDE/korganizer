@@ -14,3 +14,5 @@ X-KDE-ParentApp=korganizer
 Name=Printing
 Comment=KOrganizer Printing Configuration
 Keywords=korganizer,printing
+
+Categories=Qt;KDE;PIM

@@ -14,3 +14,5 @@ X-KDE-ParentApp=korganizer
 Name=Views
 Comment=KOrganizer View Configuration
 Keywords=korganizer,view
+
+Categories=Qt;KDE;PIM

@@ -14,3 +14,5 @@ X-KDE-ParentApp=korganizer
 Name=Personal
 Comment=KOrganizer Main Configuration
 Keywords=korganizer,main,personal
+
+Categories=Qt;KDE;PIM
