@@ -157,7 +157,6 @@ void KOGroupware::incomingDirChanged( const QString& path )
     for ( it = attendees.begin(); it != attendees.end(); ++it ) {
       if( (*it)->email() == receiver ) {
         (*it)->setStatus( KCal::Attendee::Accepted );
-        (*it)->setRSVP(false);
         break;
       }
     }
