@@ -196,14 +196,14 @@ void KOEditorGeneralEvent::initAlarmBox()
   //  alarmSoundButton->setText( i18n("WAV") );
   alarmSoundButton->setPixmap(pixmap);
   alarmSoundButton->setToggleButton(true);
-  QToolTip::add(alarmSoundButton, "No sound set");
+  QToolTip::add(alarmSoundButton, i18n("No sound set"));
 
   alarmProgramButton = new QPushButton( this, "PushButton_5" );
   pixmap = SmallIcon("runprog");
   //  alarmProgramButton->setText( i18n("PROG") );
   alarmProgramButton->setPixmap(pixmap);
   alarmProgramButton->setToggleButton(true);
-  QToolTip::add(alarmProgramButton, "No program set");
+  QToolTip::add(alarmProgramButton, i18n("No program set"));
 
   connect(alarmButton, SIGNAL(toggled(bool)),
 	  this, SLOT(alarmStuffEnable(bool)));
@@ -263,7 +263,7 @@ void KOEditorGeneralEvent::pickAlarmSound()
   if (!alarmSoundButton->isOn()) {
     alarmSound = "";
     QToolTip::remove(alarmSoundButton);
-    QToolTip::add(alarmSoundButton, "No sound set");
+    QToolTip::add(alarmSoundButton, i18n("No sound set"));
   } else {
     QString fileName(QFileDialog::getOpenFileName(prefix,
 						  "*.wav", this));
@@ -285,7 +285,7 @@ void KOEditorGeneralEvent::pickAlarmProgram()
   if (!alarmProgramButton->isOn()) {
     alarmProgram = "";
     QToolTip::remove(alarmProgramButton);
-    QToolTip::add(alarmProgramButton, "No program set");
+    QToolTip::add(alarmProgramButton, i18n("No program set"));
   } else {
     QString fileName(QFileDialog::getOpenFileName(QString::null, "*", this));
     if (!fileName.isEmpty()) {
