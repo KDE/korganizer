@@ -137,12 +137,15 @@ void ResourceView::addResource()
 {
   kdDebug(5850) << "ResourceView::addResource()" << endl;
   QStringList types = mManager->resourceTypeNames();
+  QStringList descs = mManager->resourceTypeDescriptions();
   bool ok = false;
-  QString type = KInputDialog::getItem( i18n( "Resource Configuration" ),
-      i18n( "Please select type of the new resource:" ), types, 0, false, &ok,
+  QString desc = KInputDialog::getItem( i18n( "Resource Configuration" ),
+      i18n( "Please select type of the new resource:" ), descs, 0, false, &ok,
             this );
   if ( !ok )
     return;
+
+  QString type = types[ descs.findIndex( desc ) ];
 
   // Create new resource
   ResourceCalendar *resource = mManager->createResource( type );
