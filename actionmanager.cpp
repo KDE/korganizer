@@ -1306,6 +1306,7 @@ bool ActionManager::queryClose()
   if ( mCalendar ) {
     close = saveModifiedURL();
   } else if ( mCalendarResources ) {
+    mCalendarResources->resourceManager()->writeConfig();
     if ( !mIsClosing ) {
       kdDebug(5850) << "!mIsClosing" << endl;
       mCalendarResources->save();
