@@ -574,14 +574,15 @@ void CalPrintTodos::print( QPainter &p, int width, int height )
   int lineSpacing = 15;
   int fontHeight = 10;
 
+  // Draw the First Page Header
   mHelper->drawHeader( p, mPageTitle, mFromDate, QDate(),
                        0, 0, width, mHelper->mHeaderHeight );
 
+  // Draw the Column Headers
   int mCurrentLinePos = mHelper->mHeaderHeight + 5;
   QString outStr;
   QFont oldFont( p.font() );
 
-  // draw the headers
   p.setFont( QFont( "helvetica", 10, QFont::Bold ) );
   lineSpacing = p.fontMetrics().lineSpacing();
   mCurrentLinePos += lineSpacing;
@@ -615,45 +616,44 @@ void CalPrintTodos::print( QPainter &p, int width, int height )
     posdue = -1;
   }
 
+  // Printing the Todos Now
   p.setFont( QFont( "helvetica", 10 ) );
-
   fontHeight = p.fontMetrics().height();
 
   Todo::List todoList;
-//   if (mTodoPrintType==TodosSelected) {
-//     todoList.append( selectedTodo );
-//   } else {
-    todoList = mCalendar->todos();
-//   }
+  Todo::List unfinishedList;
+  Todo::List::ConstIterator it;
 
-  bool skipDone = mTodoPrintType == TodosUnfinished;
-  if ( skipDone ) {
-    // FIXME: Remove all completed todos from the todoList
+  // Create list of Todos which will be printed
+  switch( mTodoPrintType ) {
+  case TodosAll:
+    todoList = mCalendar->todos();
+    break;
+  case TodosUnfinished:
+    todoList = mCalendar->todos();
+    for( it = todoList.begin(); it!= todoList.end(); ++it ) {
+      if ( !( *it )->isCompleted() )
+        unfinishedList.append( *it );
+    }
+    todoList = unfinishedList;
+    break;
+  case TodosDueRange:
+    //TODO
+    break;
   }
 
+  // The toplevel Todos are printed in priority order
   int count = 0;
   for( int cprior = 1; cprior <= 10; cprior++ ) {
-    Todo::List::ConstIterator it;
     for( it = todoList.begin(); it != todoList.end(); ++it ) {
       Todo *currEvent = *it;
 
-      // Filter out the subitems.
+      // Filter out the subTodos
       if ( currEvent->relatedTo() ) {
         continue;
       }
 
-      // Filter out complete TOPLEVEL Todos.
-      // Complete sub-Todos will be filtered in the drawTodo() method.
-      if ( skipDone && currEvent->isCompleted() ) {
-        continue;
-      }
-
-      QDate start = currEvent->dtStart().date();
-      // TODO: if it is not to start yet, skip.
-//      if ( ( !start.isValid() ) && ( start >= mToDate ) ) {
-//        continue;
-//      }
-      // priority
+      // Skip this Todo if it does not have the current priority
       int priority = currEvent->priority();
       // 0 is the lowest priority (the unspecified one)
       if ( ( priority != cprior ) &&
@@ -661,7 +661,7 @@ void CalPrintTodos::print( QPainter &p, int width, int height )
         continue;
       }
       count++;
-      mHelper->drawTodo( count, currEvent, p, mConnectSubTodos, skipDone,
+      mHelper->drawTodo( count, currEvent, p, mConnectSubTodos,
                          mIncludeDescription, pospriority, possummary, posdue,
                          poscomplete, 0, 0, mCurrentLinePos, width, height,
                          todoList );

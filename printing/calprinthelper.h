@@ -270,7 +270,6 @@ class CalPrintHelper
                   items of the highest level.
       \param p QPainter of the printout
       \param connectSubTodos Whether subtodos shall be connected with their parent by a line (tree-like).
-      \param skipDone Whether to skip todos that are 100% completed.
       \param desc Whether to print the whole description of the item (the summary is always printed).
       \param posPriority x-coordinate where the priority is supposed to be printed. If <0, no priority will be printed.
       \param posSummary x-coordinate where the summary of the item is supposed to be printed.
@@ -286,8 +285,8 @@ class CalPrintHelper
       \param r Internal (used when printing sub items to give information about its parent)
     */
     void drawTodo( int &count, Todo * item, QPainter &p,
-                   bool connectSubTodos, bool skipDone,
-                   bool desc, int posPriority, int posSummary, int posDueDt,
+                   bool connectSubTodos, bool desc,
+                   int posPriority, int posSummary, int posDueDt,
                    int posPercentComplete, int level, int x, int &y,
                    int width, int pageHeight,
                    const Todo::List &todoList, TodoParentStart *r = 0 );
