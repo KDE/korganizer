@@ -1,7 +1,7 @@
 /* 	$Id$	 */
 
-#ifndef _TOPWIDGET_H
-#define _TOPWIDGET_H
+#ifndef _CALENDARVIEW_H
+#define _CALENDARVIEW_H
 
 #include <qframe.h>
 #include <qlayout.h>
@@ -10,9 +10,9 @@
 #include <qtabdlg.h>
 #include <qframe.h>
 #include <qsplitter.h>
+#include <qvbox.h>
 
 #include <ktoolbar.h>
-#include <ktmainwindow.h>
 #include <kapp.h>
 #include <klocale.h>
 #include <kstatusbar.h>
@@ -45,7 +45,7 @@ class ExportWebDialog;
  * @author Preston Brown
  * @version $Revision$
  */
-class TopWidget : public KTMainWindow
+class CalendarView : public QWidget
 {
   Q_OBJECT
 public:
@@ -61,12 +61,8 @@ public:
    * starting up with an empty calendar.
    *
    */
-  TopWidget(CalObject *cal, QString fn="", 
-	    const char *name=0, bool fnOverride = TRUE);
-  virtual ~TopWidget(void);
-
-  // public variables
-  static QList<TopWidget> windowList;
+  CalendarView(QString filename="", QWidget *parent=0, const char *name=0 );
+  virtual ~CalendarView();
 
   // View Types in enum
   enum { AGENDAVIEW, LISTVIEW, MONTHVIEW, TODOVIEW };
@@ -76,25 +72,33 @@ signals:
 
   /** when change is made to options dialog, the topwidget will catch this
    *  and emit this signal which notifies all widgets which have registered 
-   *  for notification to update their settings. */  
+   *  for notification to update their settings. */
   void configChanged();
   /** emitted when the topwidget is closing down, so that any attached
       child windows can also close. */
   void closingDown();
   /** emitted right before we die */
   void closed(QWidget *);
+  
+  /** Emitted when state of modified flag changes */
+  void modifiedChanged(bool);
 
 public slots:
-  /** used for creating a new main window after the first main window has
-   * already been created. */
-  void newTopWidget();
-
   /** options dialog made a changed to the configuration. we catch this
    *  and notify all widgets which need to update their configuration. */
   void updateConfig();
 
-  /** set calendar file to be displayed. Used by KOrganizer KPart. */
-  void setFile(QString fn);
+  /** set calendar file to be displayed. */
+  bool setFile(QString filename);
+
+  /** merge data from calendar file into currently displayed calendar. */
+  bool mergeFile(QString filename);
+
+  /** Save calendar data to file. */
+  bool saveCalendar(QString filename);
+
+  /** Close calendar */
+  void closeCalendar();
 
   /** create an editeventwin with supplied date/time, and if bool is true,
    * make the event take all day. */
@@ -126,7 +130,9 @@ public slots:
   void nextAgendaView();
 
 
- protected slots:
+// Made public from protected because we call these slots now from KOrganizer
+// main view widget.
+ public slots:
   /** slot that sets up a single shot timer to call the dateNavigator 
    * and update the current date when midnight comes around (if we are
    * running, of course)
@@ -156,34 +162,6 @@ public slots:
   void updateView(const QDateList);
   void updateView();
 
-  /** open a file, load it into the calendar. */
-  void file_open();
-
-  /** open a file from the list of recent files. */
-  void file_openRecent(int i);
-
-  /** import a calendar from another program like ical. */
-  void file_import();
-
-  /** open a calendar and add the contents to the current calendar. */
-  void file_merge();
-
-  /** delete or archive old entries in your calendar for speed/space. */
-  void file_archive();
-
-  /** close a file, prompt for save if changes made. */
-  void file_close();
-
-  /** save a file with the current fileName. returns nonzero on error. */
-  int file_save();
-
-  /** save a file under a (possibly) different filename. Returns nonzero
-   * on error. */
-  int file_saveas();
-
-  /** exit the program, prompt for save if files are "dirty". */
-  void file_quit();
-
   /** cut the current appointment to the clipboard */
   void edit_cut();
 
@@ -212,7 +190,7 @@ public slots:
    * pop up an Appointment Dialog to make a new appointment. Uses date that
    * is currently selected in the dateNavigator.
    */
-  void apptmnt_new();
+  void appointment_new();
   /** same as apptmnt_new, but sets "All Day Event" to true by default. */
   void allday_new();
   /**
@@ -221,13 +199,13 @@ public slots:
    * information on the appointment from the list of unique IDs that is
    * currently in the View, called currIds.
    */
-  void apptmnt_edit();
+  void appointment_edit();
   /**
    *
    * pop up dialog confirming deletion of currently selected event in the
    * View.
    */
-  void apptmnt_delete();
+  void appointment_delete();
 
   /**
    *
@@ -247,15 +225,13 @@ public slots:
   void help_contents();
   void help_about();
   void help_postcard();
+
   /** query whether or not the calendar is "dirty". */
   bool isModified();
-  /** set the state of calendar to be "dirty", i.e. needing a save. */
-  void setModified();
-  /** unset the dirty bit on the current calendar. */
-  void unsetModified();
+  /** set the state of calendar. Modified means "dirty", i.e. needing a save. */
+  void setModified(bool modified=true);
 
-  // figures out what the title should be, and sets it accordingly
-  void set_title();
+  void eventUpdated(KOEvent *);
 
   void view_list();
   void view_day();
@@ -277,75 +253,26 @@ protected slots:
   /** Move to the previous date(s) in the current view */
   void goPrevious();
   
-  /** called by the autoSaveTimer to automatically save the calendar */
-  void checkAutoSave();
-  /** toggle the appearance of the menuBar. */
-  void toggleToolBar() 
-    { 
-      tb->enable(KToolBar::Toggle);
-      updateRects();
-      optionsMenu->setItemChecked(toolBarMenuId,
-				  !optionsMenu->isItemChecked(toolBarMenuId));
-    };
-
-// We currently don't use a status bar
-
-  /** toggle the appearance of the statusBar. */
-/*
-  void toggleStatusBar() 
-    { 
-      sb->enable(KStatusBar::Toggle);
-      updateRects();
-      optionsMenu->setItemChecked(statusBarMenuId, 
-				  !optionsMenu->isItemChecked(statusBarMenuId));
-    };
-*/
-
-protected:
-  void initMenus();
-  void initToolBar();
-  void hookupSignals();
-  void initCalendar(QString fn, bool fnOverride);
-
+public:
   // show a standard warning
   // returns KMsgBox::yesNoCancel()
   int msgCalModified();
+
+protected:
+  void hookupSignals();
+  bool initCalendar(QString filename);
+
   // returns KMsgBox::OKCandel()
   int msgItemDelete();
-
-  /** show a file browser and get a file name.
-    * open_save is 0 for open, 1 for save. */
-  QString file_getname(int open_save);
-
-  /**
-   * takes the given fileName and adds it to the list of recent
-   * files opened.
-   */
-  void add_recent_file(QString recentFileName);
 
   /** tell the alarm daemon that we have saved, and he needs to reread */
   void signalAlarmDaemon();
 
-  /** supplied so that close events call file_close()/file_close() properly.*/
-  bool queryClose();
-  bool queryExit();
 
   // variables
 
   // Other variables
   CalPrinter *calPrinter;
-
-  // menu stuff
-  QPopupMenu *fileMenu, *editMenu;
-  QPopupMenu *actionMenu, *optionsMenu, *viewMenu;
-  QPopupMenu *helpMenu;
-  QPopupMenu *recentPop;
-
-  // toolbar stuff
-  KToolBar    *tb;
-  KMenuBar    *menubar;
-  KStatusBar  *sb;
-  int agendaButtonID;
 
   // the main display space frame. note that this is neccessary to
   // avoid things being put under the toolbar
@@ -369,15 +296,12 @@ protected:
   int             agendaViewMode;
 
   // calendar object for this viewing instance
-  CalObject      *calendar;		
+  CalObject      *mCalendar;
 
   // various housekeeping variables.
-  QString         fileName;		// the currently loaded filename
-  QStrList        recentFileList;	// a list of recently accessed files
-  bool            modifiedFlag;		// flag indicating if calendar i
-  QTimer         *autoSaveTimer;        // used if calendar is to be autosaved
-  int toolBarMenuId, statusBarMenuId;
-  bool toolBarEnable, statusBarEnable; // only used at initialization time
+  QString         fileName;	   // the currently loaded filename
+  QStrList        recentFileList;  // a list of recently accessed files
+  bool            mModified;	   // flag indicating if calendar is modified
   QDate saveSingleDate;                
 
   // dialogs
@@ -386,5 +310,5 @@ protected:
   ExportWebDialog *mExportWebDialog;
 };
 
-#endif // _TOPWIDGET_H
+#endif // _CALENDARVIEW_H
 

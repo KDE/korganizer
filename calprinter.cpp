@@ -14,6 +14,7 @@
 
 #include <klocale.h>
 #include <kconfig.h>
+#include <kstddirs.h>
 #include <kdated.h>
 
 #include <optionsdlg.h>
@@ -107,9 +108,9 @@ void CalPrinter::doPreview(int pt, QDate fd, QDate td)
   printer->setOutputToFile(oldOutputToFile);
   printer->setOutputFileName(oldFileName.data());
   
-  KConfig *config(kapp->config());
-  config->setGroup("Printer");
-  previewProg = config->readEntry("Preview", "gv");
+  KConfig config(KGlobal::dirs()->findResource("config", "korganizerrc")); 
+  config.setGroup("Printer");
+  previewProg = config.readEntry("Preview", "gv");
 
   previewProc->clearArguments(); // clear out any old arguments
   *previewProc << previewProg.data(); // program name
@@ -162,18 +163,18 @@ void CalPrinter::doPrint(int pt, QDate fd, QDate td)
 
 void CalPrinter::updateConfig()
 {
-  KConfig *config = kapp->config();
+  KConfig config(KGlobal::dirs()->findResource("config", "korganizerrc")); 
 
-  config->setGroup("Printer");
+  config.setGroup("Printer");
 
   // printer name
-  QString pName = config->readEntry("Printer Name", "");
+  QString pName = config.readEntry("Printer Name", "");
   if (!pName.isEmpty())
     printer->setPrinterName(pName.data());
 
   // paper size
   int val;
-  val = config->readNumEntry("Paper Size", 2);
+  val = config.readNumEntry("Paper Size", 2);
   switch(val) {
   case 0: printer->setPageSize(QPrinter::A4); break;
   case 1: printer->setPageSize(QPrinter::B5); break;
@@ -191,12 +192,12 @@ void CalPrinter::updateConfig()
     printer->setOrientation(QPrinter::Landscape);
   */
 
-  config->setGroup("Time & Date");
-  weekStartsMonday = config->readBoolEntry("Week Starts Monday", FALSE);
-  timeAmPm = (config->readNumEntry("Time Format", 1) ? TRUE : FALSE);
+  config.setGroup("Time & Date");
+  weekStartsMonday = config.readBoolEntry("Week Starts Monday", FALSE);
+  timeAmPm = (config.readNumEntry("Time Format", 1) ? TRUE : FALSE);
 
-  config->setGroup("Views");
-  QString startStr(config->readEntry("Day Begins", "8:00"));
+  config.setGroup("Views");
+  QString startStr(config.readEntry("Day Begins", "8:00"));
   // handle case where old config files are in format "8" instead of "8:00".
   int colonPos = startStr.find(':');
   if (colonPos >= 0)

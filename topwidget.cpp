@@ -58,7 +58,7 @@
 QList<TopWidget> TopWidget::windowList;
 
 TopWidget::TopWidget(CalObject *cal, QString fn,
-		     const char *name, bool fnOverride) 
+                     const char *name, bool fnOverride) 
   : KTMainWindow( name )
 {
   qDebug("TopWidget::TopWidget()");
@@ -207,6 +207,12 @@ TopWidget::~TopWidget(void)
   // Take this window out of the window list.
   windowList.removeRef( this );
   qDebug("~TopWidget() done");
+}
+
+
+void TopWidget::setFile(QString fn)
+{
+  initCalendar(fn,true);
 }
 
 

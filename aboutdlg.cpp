@@ -17,6 +17,7 @@
 #include <kapp.h>
 #include <klocale.h>
 #include <kconfig.h>
+#include <kstddirs.h>
 
 #include "version.h"
 #include "aboutdlg.h"
@@ -74,8 +75,8 @@ PostcardDialog::~PostcardDialog()
 
 void PostcardDialog::send()
 {
-  KConfig *config = kapp->config();
-  config->setGroup("Personal Settings");
+  KConfig config(KGlobal::dirs()->findResource("config", "korganizerrc")); 
+  config.setGroup("Personal Settings");
   QString mailCmd, name, tmpFileName;
   QFile tmpFile;
 
@@ -83,9 +84,9 @@ void PostcardDialog::send()
     return;
 
   mailCmd = "mail -s \"KOrganizer Postcard from ";
-  name = config->readEntry("user_name", "");
+  name = config.readEntry("user_name", "");
   if (name.isEmpty())
-    name = config->readEntry("user_email", "Unknown User");
+    name = config.readEntry("user_email", "Unknown User");
   mailCmd += name.data();
   mailCmd += "\" pbrown@kde.org < ";
   

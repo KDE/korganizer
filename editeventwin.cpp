@@ -39,6 +39,7 @@
 #include <klocale.h>
 #include <kconfig.h>
 #include <ktoolbarbutton.h>
+#include <kstddirs.h>
 
 #include "qdatelist.h"
 #include "misc.h"
@@ -49,9 +50,9 @@ EditEventWin::EditEventWin(CalObject *cal)
 {
   initConstructor();
 
-  KConfig *config = kapp->config();
-  config->setGroup("Time & Date");
-  QString confStr(config->readEntry("Default Start Time", "12:00"));
+  KConfig config(KGlobal::dirs()->findResource("config", "korganizerrc")); 
+  config.setGroup("Time & Date");
+  QString confStr(config.readEntry("Default Start Time", "12:00"));
   int pos = confStr.find(':');
   if (pos >= 0)
     confStr.truncate(pos);
@@ -422,9 +423,9 @@ void EditEventWin::fillInDefaults(QDateTime from,
 
   recurStuffEnable(FALSE);
   General->recursButton->setChecked(FALSE);
-  KConfig *config(kapp->config());
-  config->setGroup("Time & Date");
-  QString alarmText(config->readEntry("Default Alarm Time", "15"));
+  KConfig config(KGlobal::dirs()->findResource("config", "korganizerrc")); 
+  config.setGroup("Time & Date");
+  QString alarmText(config.readEntry("Default Alarm Time", "15"));
   int pos = alarmText.find(' ');
   if (pos >= 0)
     alarmText.truncate(pos);

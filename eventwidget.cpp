@@ -14,6 +14,7 @@
 #include <kglobal.h>
 #include <kiconloader.h>
 #include <kconfig.h>
+#include <kstddirs.h>
 
 #include "calobject.h"
 #include "vcaldrag.h"
@@ -537,55 +538,53 @@ void EventWidget::setToolTip( QString tiptext )
 
 void EventWidget::updateConfig()
 {
-  	KConfig *config;
-  
-	config = kapp->config();
+  KConfig config(KGlobal::dirs()->findResource("config", "korganizerrc")); 
 
-	config->setGroup("Fonts");
-	setFont(config->readFontEntry("Schedule Font"));
+	config.setGroup("Fonts");
+	setFont(config.readFontEntry("Schedule Font"));
 
-	config->setGroup( "Colors" );
+	config.setGroup( "Colors" );
 
-	selectedHandle = config->readColorEntry( "AptSelected" );
-	inactiveHandle = config->readColorEntry( "AptUnselected" );
-	activeHandle = config->readColorEntry( "AptActive" ); 
+	selectedHandle = config.readColorEntry( "AptSelected" );
+	inactiveHandle = config.readColorEntry( "AptUnselected" );
+	activeHandle = config.readColorEntry( "AptActive" ); 
 
 	QColorGroup normalGroup(
 		black, //kapp->windowColor, // foreground, used for the edge
 		//kapp->windowColor,
-		config->readColorEntry( "AptBackground" ), 
+		config.readColorEntry( "AptBackground" ), 
 			// background, used for non text area in textbox
-		green, //config->readColorEntry( "AptUnselected" ),// light
+		green, //config.readColorEntry( "AptUnselected" ),// light
 		red, // dark
 		red, // mid
-		config->readColorEntry( "AptText" ), // text
+		config.readColorEntry( "AptText" ), // text
 		//kapp->windowColor
-		config->readColorEntry( "AptBackground" )
+		config.readColorEntry( "AptBackground" )
 			// base used for background behind text
 	);
 
 	// for displaying currently happening event ...
 	QColorGroup activeGroup(
 		selectedHandle, // for the edge
-		config->readColorEntry( "AptBackground" ), 
+		config.readColorEntry( "AptBackground" ), 
 		green, // light
 		red, // dark
 		red, // mid
-		config->readColorEntry( "AptText" ), // text
-		config->readColorEntry( "AptBackground" )
+		config.readColorEntry( "AptText" ), // text
+		config.readColorEntry( "AptBackground" )
 	);
 
 	QColorGroup disabledGroup(
 		black, //kapp->windowColor, // foreground, used for the edge
 		//kapp->windowColor,
-		config->readColorEntry( "AptBackground" ).dark(120), 
+		config.readColorEntry( "AptBackground" ).dark(120), 
 			// background, used for non text area in textbox
-		green, //config->readColorEntry( "AptUnselected" ),// light
+		green, //config.readColorEntry( "AptUnselected" ),// light
 		red, // dark
 		red, // mid
-		config->readColorEntry( "AptText" ), // text
+		config.readColorEntry( "AptText" ), // text
 		//kapp->windowColor
-		config->readColorEntry( "AptBackground" ).dark(120)
+		config.readColorEntry( "AptBackground" ).dark(120)
 			// base used for background behind text
 	);
 

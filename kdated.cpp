@@ -7,6 +7,7 @@
 #include <kglobal.h>
 #include <kconfig.h>
 #include <kiconloader.h>
+#include <kstddirs.h>
 
 #include "kdated.h"
 #include "kdated.moc"
@@ -100,9 +101,9 @@ QDate KDateEdit::getDate() const
 
 void KDateEdit::updateConfig()
 {
-  KConfig *config = kapp->config();
-  config->setGroup("Time & Date");
-  int dateFormat = config->readNumEntry("Date Format", 1);
+  KConfig config(KGlobal::dirs()->findResource("config", "korganizerrc")); 
+  config.setGroup("Time & Date");
+  int dateFormat = config.readNumEntry("Date Format", 1);
 
   switch(dateFormat) {
   case 0: 

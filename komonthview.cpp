@@ -12,6 +12,7 @@
 #include <klocale.h>
 #include <kglobal.h>
 #include <kconfig.h>
+#include <kstddirs.h>
 #include <kiconloader.h>
 
 #include "calprinter.h"
@@ -455,15 +456,15 @@ void KOMonthView::updateConfig()
                                     i18n("Friday"), i18n("Saturday"),
                                     i18n("Sunday") };
   
-  KConfig *config = kapp->config();
-  config->setGroup("Time & Date");
-  weekStartsMonday = config->readBoolEntry("Week Starts Monday", FALSE);
+  KConfig config(KGlobal::dirs()->findResource("config", "korganizerrc")); 
+  config.setGroup("Time & Date");
+  weekStartsMonday = config.readBoolEntry("Week Starts Monday", FALSE);
   
-  fmt = (config->readNumEntry("Time Format", 1) ? TRUE : FALSE);
+  fmt = (config.readNumEntry("Time Format", 1) ? TRUE : FALSE);
 
   QColor tmpColor("#cc3366");
-  config->setGroup("Colors");
-  QColor hiliteColor = config->readColorEntry("Holiday Color", &tmpColor);
+  config.setGroup("Colors");
+  QColor hiliteColor = config.readColorEntry("Holiday Color", &tmpColor);
 
   holidayPalette = palette();
   QColorGroup myGroup = QColorGroup(palette().normal().foreground(),
@@ -483,9 +484,9 @@ void KOMonthView::updateConfig()
                           longDayNames[i]));
   
   // set font
-  config->setGroup("Fonts");
+  config.setGroup("Fonts");
   QFont defaultFont = font();
-  QFont newFont(config->readFontEntry("Month Font", &defaultFont));
+  QFont newFont(config.readFontEntry("Month Font", &defaultFont));
   QFont hfont(newFont);
   hfont.setBold(TRUE);
   hfont.setPointSize(newFont.pointSize() + 2);

@@ -9,6 +9,7 @@
 #include <kglobal.h>
 #include <kconfig.h>
 #include <kiconloader.h>
+#include <kstddirs.h>
 
 #include "kdatenav.h"
 #include "kdatenav.moc"
@@ -318,14 +319,14 @@ void KDateNavigator::updateConfig()
                                  i18n("Saturday")
                                };
 
-  KConfig *config = kapp->config();
+  KConfig config(KGlobal::dirs()->findResource("config", "korganizerrc")); 
 
-  config->setGroup("Views");
-  showDailyRecurrences = config->readBoolEntry("Show Daily Recurrences", FALSE);
+  config.setGroup("Views");
+  showDailyRecurrences = config.readBoolEntry("Show Daily Recurrences", FALSE);
 
-  config->setGroup("Colors");
+  config.setGroup("Colors");
   
-  QColor hiliteColor(config->readColorEntry("List Color", &kapp->winStyleHighlightColor()));
+  QColor hiliteColor(config.readColorEntry("List Color", &kapp->winStyleHighlightColor()));
   QPalette heading_Palette(palette());
 
   QColorGroup my_Group = QColorGroup(palette().normal().base(),
@@ -338,8 +339,8 @@ void KDateNavigator::updateConfig()
   
   heading_Palette.setNormal(my_Group);
  
-  config->setGroup("Time & Date");
-  weekStartsMonday = config->readBoolEntry("Week Starts Monday", FALSE);
+  config.setGroup("Time & Date");
+  weekStartsMonday = config.readBoolEntry("Week Starts Monday", FALSE);
   curHeaders = (weekStartsMonday ? monHeaders : sunHeaders);
   for(int i=0; i<7; i++) {
     // take the first letter of the day name to be the abbreviation

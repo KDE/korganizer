@@ -47,15 +47,15 @@ CalObject::CalObject() : QObject(), recursCursor(recursList)
   oldestDate = 0L;
   newestDate = 0L;
   cursor = 0L;
-  aSave = FALSE;
   dialogsOn = TRUE;
 
   // initialize random numbers.  This is a hack, and not
   // even that good of one at that.
   srandom(time(0L));
 
-  KConfig *config = new KConfig("korganizerrc");
-  
+  KConfig *config = new KConfig(KGlobal::dirs()->findResource("config",
+                                "korganizerrc")); 
+    
   // user information...
   userId = getuid();
   pwent = getpwuid(userId);
@@ -133,9 +133,6 @@ CalObject::CalObject() : QObject(), recursCursor(recursList)
   
   setTimeZone(tzStr.ascii());
 
-  config->setGroup("General");
-  aSave = config->readBoolEntry("Auto Save", FALSE);
-    
   // done with config object
   delete config;
 
@@ -503,14 +500,15 @@ QString CalObject::getTimeZoneStr() const
 void CalObject::updateConfig()
 {
   bool updateFlag = FALSE;
-  KConfig *config = KGlobal::config();
-  config->setGroup("Personal Settings");
 
-  ownerString = config->readEntry("user_name");
+  KConfig config(KGlobal::dirs()->findResource("config", "korganizerrc")); 
+
+  config.setGroup("Personal Settings");
+  ownerString = config.readEntry("user_name");
 
   // update events to new organizer (email address) 
   // if it has changed...
-  QString configEmail = config->readEntry("user_email");
+  QString configEmail = config.readEntry("user_email");
 
   if (emailString != configEmail) {
     QString oldEmail = emailString;
@@ -536,11 +534,8 @@ void CalObject::updateConfig()
     }
   }
 
-  config->setGroup("Time & Date");
-  setTimeZone(config->readEntry("Time Zone").ascii());
-
-  config->setGroup("General");
-  aSave = config->readBoolEntry("Auto Save", FALSE);
+  config.setGroup("Time & Date");
+  setTimeZone(config.readEntry("Time Zone").ascii());
 
   if (updateFlag)
     emit calUpdated((KOEvent *) 0L);
@@ -2206,19 +2201,26 @@ QList<KOEvent> CalObject::getEventsForDate(const QDate &qd, bool sorted)
 // with that date attached.
 // this list is dynamically allocated and SHOULD BE DELETED when done with!
 inline QList<KOEvent> CalObject::getEventsForDate(const QDateTime &qdt)
-{    
+{
   return getEventsForDate(qdt.date());
 }
 
 QString CalObject::getHolidayForDate(const QDate &qd)
 {
   static int lastYear = 0;
-  KConfig *config(KGlobal::config());
+  KConfig config(KGlobal::dirs()->findResource("config", "korganizerrc")); 
 
-  config->setGroup("Personal Settings");
-  QString holidays(config->readEntry("Holidays", "us"));
+  config.setGroup("Personal Settings");
+  QString holidays(config.readEntry("Holidays", "us"));
   if (holidays == "(none)")
     return (QString(""));
+
+//  qDebug("CalObject::getHolidayForDate(): Holiday: %s",holidays.latin1());
+
+  // Disable parse_holiday() for now, because parse_holiday.y needs adaption to
+  // the KDE2 way of finding files and at the moment it crashes KOrganizer, when
+  // started as a KPart.
+  return QString("");
 
   if ((lastYear == 0) || (qd.year() != lastYear)) {
       lastYear = qd.year() - 1900; // silly parse_year takes 2 digit year...

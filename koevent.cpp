@@ -6,6 +6,7 @@
 #include <kapp.h>
 #include <klocale.h>
 #include <kconfig.h>
+#include <kstddirs.h>
 
 #include "koevent.h"
 #include "koevent.moc"
@@ -32,12 +33,11 @@ KOEvent::KOEvent()
   relatedTo = 0;
   lastModified = QDateTime::currentDateTime();
   
-  KConfig *config = new KConfig("korganizerrc");
-  config->setGroup("Personal Settings");
-  organizer = config->readEntry("user_email");
+  KConfig config(KGlobal::dirs()->findResource("config", "korganizerrc")); 
+  config.setGroup("Personal Settings");
+  organizer = config.readEntry("user_email");
   if (organizer.isEmpty())
     organizer = "x-none";
-  delete config;
   
   description = "";
   summary = "";
@@ -673,9 +673,9 @@ inline void KOEvent::toggleAlarm()
     alarmRepeatCount = 0;
   } else {
     alarmRepeatCount = 1;
-    KConfig *config(kapp->config());
-    config->setGroup("Time & Date");
-    QString alarmStr(config->readEntry("Default Alarm Time", "15"));
+    KConfig config(KGlobal::dirs()->findResource("config", "korganizerrc")); 
+    config.setGroup("Time & Date");
+    QString alarmStr(config.readEntry("Default Alarm Time", "15"));
     int pos = alarmStr.find(' ');
     if (pos >= 0)
       alarmStr.truncate(pos);
@@ -1403,10 +1403,10 @@ int KOEvent::weekOfMonth(const QDate &qd) const
 
 void KOEvent::updateConfig() 
 {
-  KConfig *config(kapp->config());
-  config->setGroup("Time & Date");
+  KConfig config(KGlobal::dirs()->findResource("config", "korganizerrc")); 
+  config.setGroup("Time & Date");
   
-  weekStartsMonday = config->readBoolEntry("Week Starts Monday", FALSE);
+  weekStartsMonday = config.readBoolEntry("Week Starts Monday", FALSE);
 }
 
 /******************************* ATTENDEE CLASS *****************************/

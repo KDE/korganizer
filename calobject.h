@@ -78,9 +78,6 @@ public:
    * @param anEvent a pointer to the event to add
    */
 
-  /** query whether autoSave is set or not */
-  bool autoSave() { return aSave; };
-
   /** methods to get/set the local time zone */
   void setTimeZone(const char *tz);
   inline void setTimeZone(int tz) { timeZone = tz; };
@@ -220,7 +217,6 @@ protected:
   QListIterator<KOEvent> *cursor;        // for linear traversal methods
   QListIterator<KOEvent> recursCursor;   // for linear traversal methods
 
-  bool aSave;                             // prompt for saving, or autosave?
   bool dialogsOn;                         // display various GUI dialogs?
 
 private:

@@ -1,11 +1,14 @@
 #include <kstddirs.h>
 #include <kglobal.h>
 #include <kcmdlineargs.h>
+#include <kconfig.h>
 
 #include "version.h"
 #include "calobject.h"
-#include "topwidget.h"
+#include "korganizer.h"
+
 #include "koapp.h"
+#include "koapp.moc"
 
 
 KOrganizerApp::KOrganizerApp() : KUniqueApplication()
@@ -51,23 +54,6 @@ void KOrganizerApp::displayImminent(int numdays)
   }
 }
 
-/*
-void KOrganizerApp::help()
-{
-  printf("KOrganizer %s\n\n",korgVersion);
-  printf("X11/Qt Options:\n");
-  printf("-display <display>\n");
-  printf("-geometry <geometry>\n");
-  printf("-name <name>\n");
-  printf("-title <title>\n");
-  printf("-cmap\n\n");
-  printf("KOrganizer Options:\n");
-  printf("-c or --calendar <calendar>\n");
-  printf("-l or --list\n");
-  printf("-s or --show <numdays>\n");
-  printf("-h or --help\n");
-}
-*/
 
 void KOrganizerApp::startAlarmDaemon()
 {
@@ -111,70 +97,10 @@ int KOrganizerApp::newInstance()
     // Important: fn is a QCString, while the TopWidget constructor takes
     // a QString. There is no QString( const QCString& ) constructor.
     // It compiles, but we get a null-string with a length of MAXINT ;(
-    (new TopWidget(cal, QString::fromLocal8Bit( (const char*) fn), "TopWidget",
-                   false))->show();
+    (new KOrganizer(QString::fromLocal8Bit( (const char*) fn),false,
+                    "KOrganizer MainWindow"))->show();
   }
 
   qDebug("KOApp::newInstance() done");
   return 0;
 }
-
-/*
-int KOrganizerApp::newInstance(QValueList<QCString> params)
-{
-  qDebug("KOApp::newInstance(params)");
-
-  cal = new CalObject;
-
-  KGlobal::config()->setGroup("General");
-
-  fn = KGlobal::config()->readEntry("Current Calendar");
-
-#if 0
-  KCmdLineArgs *args = KCmdLineArgs::parsedArgs();
-  // ...
-#else
-// if we're not using KCmdLineArgs
-  // process command line arguments
-  QValueList<QCString>::ConstIterator pIt(params.begin());
-  ++pIt;
-  for (; pIt != params.end(); ++pIt) {
-    if ((*pIt == "-h") ||
-	(*pIt == "--help")) {
-      help();
-      return 0;
-    } else if ((*pIt ==  "-c") ||
-	       (*pIt == "--calendar")) {
-      ++pIt;
-      if (!(*pIt).isEmpty())
-	fn = *pIt;
-    } else if ((*pIt == "-l") ||
-	       (*pIt == "--list")) {
-      displayImminent(1);
-      return 0;
-    } else if ((*pIt == "-s") ||
-	       (*pIt == "--show")) {
-      ++pIt;
-      if (!(*pIt).isEmpty())
-	displayImminent((*pIt).toInt());
-      else
-	displayImminent(1);
-      return 0;
-    } else {
-      fn = *pIt;
-    }
-  }
-
-#endif
-
-  // always try to start the alarm daemon. IT will take care of itself
-  // if there is no calendar to work on yet. we may or may not have a
-  // calendar filename to work with.
-  startAlarmDaemon();
-
-  (new TopWidget(cal, fn, "TopWidget"))->show();
-  return 0;
-}
-*/
-
-#include "koapp.moc"

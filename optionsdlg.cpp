@@ -15,6 +15,7 @@
 #include <klocale.h>
 #include <kglobal.h>
 #include <kfontdialog.h>
+#include <kstddirs.h>
 
 #include "kproptext.h"
 #include "kpropcombo.h"
@@ -37,7 +38,7 @@ OptionsDialog::OptionsDialog( const char *title,
 	      KPropDlg::CANCEL | KPropDlg::APPLY,
 	      title, 0, name, modal )
 {
-  config = kapp->config();
+  config = new KConfig(KGlobal::dirs()->findResource("config", "korganizerrc")); 
   
   personalFrame = addPage( -1, i18n("Personal"));
   setupMainTab();
@@ -77,6 +78,7 @@ OptionsDialog::OptionsDialog( const char *title,
 
 OptionsDialog::~OptionsDialog()
 {
+  delete config;
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -413,8 +415,8 @@ void OptionsDialog::setupPrinterTab()
 
 void OptionsDialog::setColorDefaults()
 {
-	KConfig* config = kapp->config();
-	config->setGroup( "Colors" );
+  KConfig config(KGlobal::dirs()->findResource("config", "korganizerrc")); 
+	config.setGroup( "Colors" );
 
 	color1->setLabelColor( koconf.windowColor);
 	color2->setLabelColor( koconf.textColor);

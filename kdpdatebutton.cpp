@@ -5,6 +5,7 @@
 #include <kapp.h>
 #include <klocale.h>
 #include <kconfig.h>
+#include <kstddirs.h>
 
 #include "vcaldrag.h"
 #include "calobject.h"
@@ -72,15 +73,15 @@ KDateButton::~KDateButton()
 
 void KDateButton::updateConfig()
 {
-  KConfig *config = kapp->config();
-  config->setGroup ("Colors");
+  KConfig config(KGlobal::dirs()->findResource("config", "korganizerrc")); 
+  config.setGroup ("Colors");
   QColor *tmpColor = new QColor("#cccccc");
-  QColor todayColor = config->readColorEntry("Today Color", tmpColor);
-  QColor hiliteColor = config->readColorEntry("List Color",
+  QColor todayColor = config.readColorEntry("Today Color", tmpColor);
+  QColor hiliteColor = config.readColorEntry("List Color",
 					      &kapp->winStyleHighlightColor());
   delete tmpColor;
   tmpColor = new QColor("#cc3366");
-  QColor holidayColor = config->readColorEntry( "Holiday Color", tmpColor);
+  QColor holidayColor = config.readColorEntry( "Holiday Color", tmpColor);
   
   my_NormalGroup = QColorGroup(my_OrigPalette.normal().base(),
 			       my_OrigPalette.normal().base(),

@@ -17,6 +17,8 @@
 
 #include <kapp.h>
 #include <kconfig.h>
+#include <kglobal.h>
+#include <kstddirs.h>
 
 TimeLabels::TimeLabels(int rows,QWidget *parent,const char *name,WFlags f) :
   QScrollView(parent,name,f)
@@ -58,9 +60,10 @@ KOAgendaView::KOAgendaView(CalObject *cal,QWidget *parent,const char *name) :
   mStartDate = QDate::currentDate();
   mWeekStartsMonday = true;
   mStartHour = 8;
-  
-  mConfig = kapp->config();
-	
+
+  mConfig = new KConfig (KGlobal::dirs()->findResource("config",
+                         "korganizerrc"));
+                         
   mLayoutDayLabels = 0;
   mDayLabelsFrame = 0;
   mDayLabels = 0;
@@ -139,6 +142,7 @@ KOAgendaView::KOAgendaView(CalObject *cal,QWidget *parent,const char *name) :
 
 KOAgendaView::~KOAgendaView()
 {
+  delete mConfig;
 }
 
 void KOAgendaView::createDayLabels()
