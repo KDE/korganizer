@@ -594,7 +594,7 @@ void ActionManager::file_import()
     mCalendarView->openCalendar(tmpfn.name(),1);
     if (!retVal)
       KMessageBox::information(mCalendarView->topLevelWidget(),
-			       i18n("KOrganizer succesfully imported and "
+			       i18n("KOrganizer successfully imported and "
 				    "merged your .calendar file from ical "
 				    "into the currently opened calendar."));
     else
