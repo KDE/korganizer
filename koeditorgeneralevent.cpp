@@ -146,7 +146,7 @@ void KOEditorGeneralEvent::initClass(QWidget *parent,QBoxLayout *topLayout)
 {
   QBoxLayout *classLayout = new QHBoxLayout(topLayout);
 
-  QLabel *freeTimeLabel = new QLabel(i18n("Show Time As:"),parent);
+  QLabel *freeTimeLabel = new QLabel(i18n("Show time as:"),parent);
   classLayout->addWidget(freeTimeLabel);
 
   mFreeTimeCombo = new QComboBox(false, parent);

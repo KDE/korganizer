@@ -122,7 +122,7 @@ KOEditorDetails::KOEditorDetails (int spacing,QWidget* parent,const char* name)
   connect(mStatusCombo,SIGNAL(activated(int)),SLOT(updateAttendeeItem()));
 
   mRsvpButton = new QCheckBox(this);
-  mRsvpButton->setText(i18n("Request Response"));
+  mRsvpButton->setText(i18n("Request response"));
   connect(mRsvpButton,SIGNAL(clicked()),SLOT(updateAttendeeItem()));
 
   QWidget *buttonBox = new QWidget(this);

@@ -28,7 +28,7 @@
         <widget class="QListView" row="0" column="0" rowspan="1" colspan="7">
             <column>
                 <property name="text">
-                    <string>Name</string>
+                    <string>Name:</string>
                 </property>
                 <property name="clickable">
                     <bool>true</bool>
@@ -39,7 +39,7 @@
             </column>
             <column>
                 <property name="text">
-                    <string>Email</string>
+                    <string>Email:</string>
                 </property>
                 <property name="clickable">
                     <bool>true</bool>
@@ -115,7 +115,7 @@
                 <cstring>PushButton12</cstring>
             </property>
             <property name="text">
-                <string>Addressbook</string>
+                <string>Addressbook...</string>
             </property>
         </widget>
         <widget class="Line" row="4" column="0" rowspan="1" colspan="7">

@@ -372,7 +372,7 @@ void KOrganizer::initActions()
           action,SLOT(setEnabled(bool)));
 #endif
 
-  action = new KAction(i18n("&Make Sub-To-Do independent"), 0,
+  action = new KAction(i18n("&Make Sub-To-Do Independent"), 0,
                     mCalendarView,SLOT(todo_unsub()),
                     actionCollection(), "unsub_todo");
   action->setEnabled(false);
@@ -387,7 +387,7 @@ void KOrganizer::initActions()
   (void)new KAction(i18n("Incoming Messages"),0,
                     mCalendarView->dialogManager(),SLOT(showIncomingDialog()),
                     actionCollection(),"incoming");
-  action = new KAction(i18n("Publish"),"mail_send",0,
+  action = new KAction(i18n("Publish..."),"mail_send",0,
                        mCalendarView,SLOT(schedule_publish()),
                        actionCollection(),"publish");
   action->setEnabled(false);
@@ -438,7 +438,7 @@ void KOrganizer::initActions()
   connect(mCalendarView,SIGNAL(eventsSelected(bool)),
           action,SLOT(setEnabled(bool)));
 */
-  action = new KAction(i18n("Addressbook"),"contents",0,
+  action = new KAction(i18n("Addressbook..."),"contents",0,
                        mCalendarView,SLOT(openAddressbook()),
                        actionCollection(),"addressbook");
 

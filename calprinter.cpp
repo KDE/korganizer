@@ -549,7 +549,7 @@ void CalPrinter::drawHeader(QPainter &p, const QDate &fd, const QDate &td,
   	break;
 
   case Todolist:
-    title +=  i18n("To-Do items:");
+    title +=  i18n("To-do items:");
    
     p.drawText(5, lineSpacing,title);
     break;
@@ -1067,7 +1067,7 @@ CalPrintDialog::CalPrintDialog(KPrinter *p, QWidget *parent, const char *name)
   rButt->setMinimumHeight(rButt->sizeHint().height()-5);
   connect(rButt,  SIGNAL(clicked()), this, SLOT(setPrintMonth()));  
 
-  layout3->addWidget(rButt = new QRadioButton(i18n("To-Do"), mTypeGroup));
+  layout3->addWidget(rButt = new QRadioButton(i18n("To-do"), mTypeGroup));
   rButt->setMinimumHeight(rButt->sizeHint().height()-5);
   connect(rButt,  SIGNAL(clicked()), this, SLOT(setPrintTodo()));
 

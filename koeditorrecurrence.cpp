@@ -168,9 +168,9 @@ void KOEditorRecurrence::initMain()
   rangeButtonGroup->setFrameStyle(QFrame::NoFrame);
 //  rangeButtonGroup->setExclusive(true);
 
-  startDateLabel = new QLabel(i18n("Begin On:"), rangeButtonGroup);
+  startDateLabel = new QLabel(i18n("Begin on:"), rangeButtonGroup);
 //  startDateEdit = new KDateEdit(rangeButtonGroup);
-  noEndDateButton = new QRadioButton(i18n("No Ending Date"), rangeButtonGroup);
+  noEndDateButton = new QRadioButton(i18n("No ending date"), rangeButtonGroup);
   endDurationButton = new QRadioButton(i18n("End after"), rangeButtonGroup);
   endDurationEdit = new QLineEdit(rangeButtonGroup);
   endDurationEdit->setValidator(new KIntValidator(0,9999,endDurationEdit));
@@ -664,7 +664,7 @@ void KOEditorRecurrence::setDateTimes(QDateTime start,QDateTime end)
   currStartDateTime = start;
   currEndDateTime = end;
 
-  startDateLabel->setText(i18n("Begins On: %1")
+  startDateLabel->setText(i18n("Begins on: %1")
       .arg(KGlobal::locale()->formatDate(start.date())));
 }
 
@@ -676,7 +676,7 @@ void KOEditorRecurrence::setDefaults(QDateTime from, QDateTime to,bool)
 
   setDateTimes(from,to);
 
-  startDateLabel->setText(i18n("Begins On: %1")
+  startDateLabel->setText(i18n("Begins on: %1")
                           .arg(KGlobal::locale()->formatDate(from.date())));
 
   noEndDateButton->setChecked(true);
@@ -760,7 +760,7 @@ void KOEditorRecurrence::readEvent(Event *event)
     break;
   }
 
-  startDateLabel->setText(i18n("Begins On: %1")
+  startDateLabel->setText(i18n("Begins on: %1")
       .arg(KGlobal::locale()->formatDate(event->dtStart().date())));
 
   if (event->recurrence()->doesRecur()) {

@@ -129,7 +129,7 @@
                     </property>
                     <property stdset="1">
                         <name>text</name>
-                        <string>Hide Recurring Events</string>
+                        <string>Hide recurring events</string>
                     </property>
                 </widget>
                 <widget>
@@ -140,7 +140,7 @@
                     </property>
                     <property stdset="1">
                         <name>text</name>
-                        <string>Hide Completed To-Dos</string>
+                        <string>Hide completed to-dos</string>
                     </property>
                 </widget>
                 <spacer>

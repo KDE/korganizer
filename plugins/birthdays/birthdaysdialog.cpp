@@ -33,7 +33,7 @@ BirthdaysDialog::BirthdaysDialog(QWidget *parent) :
   setMaximumSize(350,200);
   QFrame *topFrame = plainPage();
   QGridLayout *topLayout = new QGridLayout(topFrame,2,1);
-  mAlarm = new QCheckBox(i18n("Set Alarm"),topFrame);
+  mAlarm = new QCheckBox(i18n("Set alarm"),topFrame);
   topLayout->addWidget(mAlarm,0,0);
 
   QBoxLayout *alarmLayout = new QHBoxLayout(topLayout);

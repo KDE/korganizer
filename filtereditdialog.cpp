@@ -53,7 +53,7 @@ FilterEditDialog::FilterEditDialog(QPtrList<CalFilter> *filters,QWidget *parent,
   mSelectionCombo = new QComboBox(mainWidget);
   connect(mSelectionCombo,SIGNAL(activated(int)),SLOT(filterSelected()));
 
-  QPushButton *addButton = new QPushButton(i18n("Add Filter"),mainWidget);
+  QPushButton *addButton = new QPushButton(i18n("Add Filter..."),mainWidget);
   connect(addButton,SIGNAL(clicked()),SLOT(slotAdd()));
 
   mEditor = new FilterEdit_base(mainWidget);

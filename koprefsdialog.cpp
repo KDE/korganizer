@@ -93,7 +93,7 @@ void KOPrefsDialog::setupMainTab()
   topLayout->setMargin(marginHint());
 
   KPrefsWidBool *emailControlCenter =
-      addWidBool(i18n("&Use Email settings from Control Center"),
+      addWidBool(i18n("&Use email settings from control center"),
                  &(KOPrefs::instance()->mEmailControlCenter),topFrame);
   topLayout->addMultiCellWidget(emailControlCenter->checkBox(),0,0,0,1);
   connect(emailControlCenter->checkBox(),SIGNAL(toggled(bool)),
@@ -190,7 +190,7 @@ void KOPrefsDialog::setupTimeTab()
   QHBox *timeZoneBox = new QHBox( topFrame );
   topLayout->addMultiCellWidget( timeZoneBox, 0, 0, 0, 1 );
 
-  new QLabel( i18n("TimeZone:"), timeZoneBox );
+  new QLabel( i18n("Timezone:"), timeZoneBox );
   mTimeZoneCombo = new QComboBox( timeZoneBox );
 
   FILE *f;
@@ -314,22 +314,22 @@ void KOPrefsDialog::setupViewsTab()
   topLayout->addWidget(weeklyRecur->checkBox(),4,0);
 
   KPrefsWidBool *enableToolTips =
-      addWidBool(i18n("Enable ToolTips displaying summary of events"),
+      addWidBool(i18n("Enable tooltips displaying summary of events"),
                  &(KOPrefs::instance()->mEnableToolTips),topFrame);
   topLayout->addWidget(enableToolTips->checkBox(),5,0);
 
   KPrefsWidBool *enableMonthScroll =
-      addWidBool(i18n("Enable Scrollbars in Month View cells"),
+      addWidBool(i18n("Enable scrollbars in month view cells"),
                  &(KOPrefs::instance()->mEnableMonthScroll),topFrame);
   topLayout->addWidget(enableMonthScroll->checkBox(),6,0);
 
   KPrefsWidBool *fullViewMonth =
-      addWidBool(i18n("Month View uses full window"),
+      addWidBool(i18n("Month view uses full window"),
                  &(KOPrefs::instance()->mFullViewMonth),topFrame);
   topLayout->addWidget(fullViewMonth->checkBox(),8,0);
 
   KPrefsWidBool *fullViewTodo =
-      addWidBool(i18n("To-Do View uses full window"),
+      addWidBool(i18n("To-do view uses full window"),
                  &(KOPrefs::instance()->mFullViewTodo),topFrame);
   topLayout->addWidget(fullViewTodo->checkBox(),9,0);
 
@@ -494,12 +494,12 @@ void KOPrefsDialog::setupGroupSchedulingTab()
       addWidRadios(i18n("Scheduler Mail Client"),&(KOPrefs::instance()->mIMIPScheduler),
                    topFrame);
   schedulerGroup->addRadio(i18n("Dummy"));
-  schedulerGroup->addRadio(i18n("Mail Client"));
+  schedulerGroup->addRadio(i18n("Mail client"));
 
   topLayout->addMultiCellWidget(schedulerGroup->groupBox(),0,0,0,1);
 
   KPrefsWidRadios *sendGroup =
-      addWidRadios(i18n("Scheduler mails should be"),&(KOPrefs::instance()->mIMIPSend),
+      addWidRadios(i18n("Scheduler Mails Should Be"),&(KOPrefs::instance()->mIMIPSend),
                    topFrame);
   sendGroup->addRadio(i18n("Send to outbox"));
   sendGroup->addRadio(i18n("Send directly"));
@@ -550,7 +550,7 @@ void KOPrefsDialog::setupGroupAutomationTab()
   mAutoCheckIntervalSpin = new QSpinBox(1,500,1,intervalBox);
 
   KPrefsWidRadios *autoRefreshGroup =
-      addWidRadios(i18n("Auto send refresh"),
+      addWidRadios(i18n("Auto Send Refresh"),
                    &(KOPrefs::instance()->mIMIPAutoRefresh),topFrame);
   autoRefreshGroup->addRadio(i18n("Never"));
   autoRefreshGroup->addRadio(i18n("If attendee is in addressbook"));
@@ -558,7 +558,7 @@ void KOPrefsDialog::setupGroupAutomationTab()
   topLayout->addMultiCellWidget(autoRefreshGroup->groupBox(),1,1,0,0);
 
   KPrefsWidRadios *autoInsertGroup =
-      addWidRadios(i18n("Auto insert IMIP replies"),
+      addWidRadios(i18n("Auto Insert IMIP Replies"),
                    &(KOPrefs::instance()->mIMIPAutoInsertReply),topFrame);
   autoInsertGroup->addRadio(i18n("Never"));
   autoInsertGroup->addRadio(i18n("If attendee is in addressbook"));
@@ -566,7 +566,7 @@ void KOPrefsDialog::setupGroupAutomationTab()
   topLayout->addMultiCellWidget(autoInsertGroup->groupBox(),2,2,0,0);
 
   KPrefsWidRadios *autoRequestGroup =
-      addWidRadios(i18n("Auto insert IMIP requests"),
+      addWidRadios(i18n("Auto Insert IMIP Requests"),
                    &(KOPrefs::instance()->mIMIPAutoInsertRequest),topFrame);
   autoRequestGroup->addRadio(i18n("Never"));
   autoRequestGroup->addRadio(i18n("If organizer is in addressbook"));
@@ -574,7 +574,7 @@ void KOPrefsDialog::setupGroupAutomationTab()
   topLayout->addMultiCellWidget(autoRequestGroup->groupBox(),3,3,0,0);
 
   KPrefsWidRadios *autoFreeBusyGroup =
-      addWidRadios(i18n("Auto send FreeBusy information"),
+      addWidRadios(i18n("Auto Send FreeBusy Information"),
                    &(KOPrefs::instance()->mIMIPAutoFreeBusy),topFrame);
   autoFreeBusyGroup->addRadio(i18n("Never"));
   autoFreeBusyGroup->addRadio(i18n("If requested from an email in addressbook"));
@@ -582,7 +582,7 @@ void KOPrefsDialog::setupGroupAutomationTab()
   topLayout->addMultiCellWidget(autoFreeBusyGroup->groupBox(),4,4,0,0);
 
   KPrefsWidRadios *autoFreeBusyReplyGroup =
-      addWidRadios(i18n("Auto save FreeBusy replies"),
+      addWidRadios(i18n("Auto Save FreeBusy Replies"),
                    &(KOPrefs::instance()->mIMIPAutoFreeBusyReply),topFrame);
   autoFreeBusyReplyGroup->addRadio(i18n("Never"));
   autoFreeBusyReplyGroup->addRadio(i18n("If attendee is in addressbook"));
