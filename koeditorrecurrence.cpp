@@ -237,11 +237,11 @@ RecurMonthly::RecurMonthly( QWidget *parent, const char *name ) :
   mByPosCountCombo->insertItem( i18n("3rd") );
   mByPosCountCombo->insertItem( i18n("4th") );
   mByPosCountCombo->insertItem( i18n("5th") );
-  mByPosCountCombo->insertItem( i18n("last") );
-  mByPosCountCombo->insertItem( i18n("2nd last") );
-  mByPosCountCombo->insertItem( i18n("3rd last") );
-  mByPosCountCombo->insertItem( i18n("4th last") );
-  mByPosCountCombo->insertItem( i18n("5th last") );
+  mByPosCountCombo->insertItem( i18n("Last") );
+  mByPosCountCombo->insertItem( i18n("2nd Last") );
+  mByPosCountCombo->insertItem( i18n("3rd Last") );
+  mByPosCountCombo->insertItem( i18n("4th Last") );
+  mByPosCountCombo->insertItem( i18n("5th Last") );
 
   buttonLayout->addWidget( mByPosCountCombo, 1, 1 );
 

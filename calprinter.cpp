@@ -181,7 +181,7 @@ CalPrintDialog::CalPrintDialog(QPtrList<CalPrintBase> plugins, KPrinter *p,
   QHBox *printerLayout = new QHBox( page );
 
   mPrinterLabel = new QLabel("", printerLayout);
-  QPushButton*setupButton = new QPushButton(i18n("&Setup printer..."), printerLayout);
+  QPushButton*setupButton = new QPushButton(i18n("&Setup Printer..."), printerLayout);
   setupButton->setSizePolicy( QSizePolicy(
       (QSizePolicy::SizeType)4, (QSizePolicy::SizeType)0,
       0, 0, setupButton->sizePolicy().hasHeightForWidth() ) );
