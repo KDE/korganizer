@@ -154,6 +154,7 @@ void KOPrefsDialog::setupTimeTab()
   topLayout->setSpacing(spacingHint());
   topLayout->setMargin(marginHint());
   
+  //lukas: TODO - replace by human readable ones
   const char *tzList[] = { "-1200", "-1130", "-1100", "-1030", "-1000",
                            "-0930", "-0900", "-0830", "-0800", "-0730",
                            "-0700", "-0630", "-0600", "-0530", "-0500",
@@ -456,6 +457,7 @@ void KOPrefsDialog::setupPrinterTab()
   mPrinterCombo = new QComboBox(mPrinterTab);
   topLayout->addWidget(mPrinterCombo,0,1);
 
+  //lukas: TODO - replace by KPrinter capabilities in the future
   QString prName;
   QFile printcap("/etc/printcap");
 
