@@ -9,7 +9,7 @@
             <x>0</x>
             <y>0</y>
             <width>496</width>
-            <height>540</height>
+            <height>546</height>
         </rect>
     </property>
     <property name="caption">
@@ -69,7 +69,7 @@
                                     <cstring>publishDelayLabel</cstring>
                                 </property>
                                 <property name="text">
-                                    <string>Minimum &amp;time between uploads (in minutes):</string>
+                                    <string>Minimum time between uploads (in minutes):</string>
                                 </property>
                                 <property name="buddy" stdset="0">
                                     <cstring>publishDelaySB</cstring>
@@ -95,7 +95,7 @@
                                     <cstring>TextLabel3</cstring>
                                 </property>
                                 <property name="text">
-                                    <string>P&amp;ublish</string>
+                                    <string>Publish</string>
                                 </property>
                                 <property name="buddy" stdset="0">
                                     <cstring>publishDaysSB</cstring>
