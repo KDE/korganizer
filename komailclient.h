@@ -37,7 +37,7 @@ class KOMailClient
     
     bool mailAttendees(Incidence *,const QString &attachment=QString::null);
     bool mailOrganizer(Incidence *,const QString &attachment=QString::null);
-    bool mailTo(Incidence *,QString recipients,const QString &attachment=QString::null);
+    bool mailTo(Incidence *,const QString recipients,const QString &attachment=QString::null);
 
   protected:
     /** Send mail with specified from, to and subject field and body as text. If
