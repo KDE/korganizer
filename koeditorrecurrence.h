@@ -34,6 +34,8 @@
 #include <qlistview.h>
 #include <qradiobutton.h>
 
+#include <kdialogbase.h>
+
 #include <libkcal/event.h>
 
 #include "ktimeedit.h"
@@ -128,7 +130,40 @@ class RecurYearly : public RecurBase
     QRadioButton *mByDayRadio;
 };
 
-class ExceptionsWidget : public QWidget
+class RecurrenceChooser : public QWidget
+{
+    Q_OBJECT
+  public:
+    RecurrenceChooser( QWidget *parent = 0, const char *name = 0 );
+    
+    enum { Daily, Weekly, Monthly, Yearly };
+    
+    void setType( int );
+    int type();
+    
+  signals:
+    void chosen( int );
+
+  protected slots:
+    void emitChoice();
+    
+  private:
+    QComboBox *mTypeCombo;
+    
+    QRadioButton *mDailyButton;
+    QRadioButton *mWeeklyButton;
+    QRadioButton *mMonthlyButton;
+    QRadioButton *mYearlyButton;    
+};
+
+class ExceptionsBase
+{
+  public:
+    virtual void setDates( const DateList & ) = 0;
+    virtual DateList dates() = 0;
+};
+
+class ExceptionsWidget : public QWidget, public ExceptionsBase
 {
     Q_OBJECT
   public:
@@ -148,12 +183,26 @@ class ExceptionsWidget : public QWidget
     DateList mExceptionDates;  
 };
 
+class ExceptionsDialog : public KDialogBase, public ExceptionsBase
+{
+  public:
+    ExceptionsDialog( QWidget *parent, const char *name = 0 );
+
+    void setDates( const DateList & );
+    DateList dates();
+
+  private:
+    ExceptionsWidget *mExceptions;
+};
+
 class KOEditorRecurrence : public QWidget
 {
     Q_OBJECT
   public:
     KOEditorRecurrence ( QWidget *parent = 0, const char *name = 0 );
     virtual ~KOEditorRecurrence();
+
+    enum { Daily, Weekly, Monthly, Yearly };
 
     /** Set widgets to default values */
     void setDefaults( QDateTime from, QDateTime to, bool allday );
@@ -174,9 +223,10 @@ class KOEditorRecurrence : public QWidget
     void dateTimesChanged( QDateTime start, QDateTime end );
   
   protected slots:
-    void showCurrentRule();
+    void showCurrentRule( int );
     void showCurrentRange();
-
+    void showExceptionsDialog();
+    
   private:
     QCheckBox *mEnabledCheck;
   
@@ -185,11 +235,7 @@ class KOEditorRecurrence : public QWidget
   
     QGroupBox *mRuleBox;
     QWidgetStack *mRuleStack;
-    
-    QRadioButton *mDailyButton;
-    QRadioButton *mWeeklyButton;
-    QRadioButton *mMonthlyButton;
-    QRadioButton *mYearlyButton;
+    RecurrenceChooser *mRecurrenceChooser;
     
     RecurDaily *mDaily;
     RecurWeekly *mWeekly;
@@ -204,7 +250,10 @@ class KOEditorRecurrence : public QWidget
     QRadioButton *mEndDateButton;
     KDateEdit *mEndDateEdit;
   
-    ExceptionsWidget *mExceptions;
+    ExceptionsBase *mExceptions;
+    ExceptionsDialog *mExceptionsDialog;
+    ExceptionsWidget *mExceptionsWidget;
+    QPushButton *mExceptionsButton;
 };
 
 #endif
