@@ -134,6 +134,10 @@ class ActionManager : public QObject, public KCalendarIface
     void openEventEditor( QString summary, QString description,
                           QString attachment );
 
+    void openTodoEditor( QString );
+    void openTodoEditor( QString summary, QString description,
+                         QString attachment );
+
     void showTodoView();
     void showEventView();
 

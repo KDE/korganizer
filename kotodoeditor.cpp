@@ -139,6 +139,43 @@ void KOTodoEditor::newTodo(QDateTime due,Todo *relatedTodo,bool allDay)
   setDefaults(due,relatedTodo,allDay);
 }
 
+void KOTodoEditor::newTodo( const QString &text )
+{
+  init();
+
+  mTodo = 0;
+
+  loadDefaults();
+
+  mGeneral->setDescription( text );
+
+  int pos = text.find( "\n" );
+  if ( pos > 0 ) {
+    mGeneral->setSummary( text.left( pos ) );
+    mGeneral->setDescription( text );
+  } else {
+    mGeneral->setSummary( text );
+  }
+}
+
+void KOTodoEditor::newTodo( const QString &summary,
+                              const QString &description,
+                              const QString &attachment )
+{
+  init();
+  
+  mTodo = 0;
+
+  loadDefaults();
+
+  mGeneral->setSummary( summary );
+  mGeneral->setDescription( description );
+
+  if ( !attachment.isEmpty() ) {
+    mAttachments->addAttachment( attachment );
+  }
+}
+
 void KOTodoEditor::loadDefaults()
 {
   setDefaults(QDateTime::currentDateTime().addDays(7),0,false);

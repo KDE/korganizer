@@ -250,6 +250,10 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     /** Delete todo */
     void deleteTodo( Todo * );
 
+    void newTodo( const QString & );
+    void newTodo( const QString &summary, const QString &description,
+                  const QString &attachment );
+
     /** This todo has been modified */
     void todoModified( Todo *, Todo *, int );
 

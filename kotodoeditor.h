@@ -54,6 +54,16 @@ class KOTodoEditor : public KOIncidenceEditor
     */
     void newTodo(QDateTime due,Todo *relatedTodo=0,bool allDay=false);
 
+    /**
+      Edit new todo. Set summary and description from given text.
+    */
+    void newTodo( const QString & );
+    /**
+      Edit new todo.
+    */
+    void newTodo( const QString &summary, const QString &description,
+                  const QString &attachment );
+
     /** Edit an existing todo. */
     void editTodo(Todo *);
 
