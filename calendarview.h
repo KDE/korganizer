@@ -185,8 +185,7 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
   
     /** create an editeventwin with supplied date/time, and if bool is true,
      * make the event take all day. */
-    void newEvent(QDateTime, QDateTime);
-    void newEvent(QDateTime, QDateTime, bool allDay);
+    void newEvent(QDateTime, QDateTime, bool allDay = false);
     void newEvent(QDateTime fh);
     void newEvent(QDate dt);
     /** create new event without having a date hint. Takes current date as
