@@ -116,7 +116,7 @@
                             </property>
                             <property stdset="1">
                                 <name>text</name>
-                                <string>Edit Selection...</string>
+                                <string>Select Categories...</string>
                             </property>
                         </widget>
                     </grid>

@@ -91,7 +91,7 @@
                 <cstring>PushButton12</cstring>
             </property>
             <property name="text">
-                <string>&amp;Addressbook</string>
+                <string>Select &amp;Addressee...</string>
             </property>
         </widget>
         <widget class="QPushButton" row="1" column="2">

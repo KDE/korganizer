@@ -235,7 +235,7 @@ KOEditorDetails::KOEditorDetails (int spacing,QWidget* parent,const char* name)
   buttonLayout->addWidget(mRemoveButton);
   connect(mRemoveButton, SIGNAL(clicked()),SLOT(removeAttendee()));
 
-  mAddressBookButton = new QPushButton(i18n("Address &Book..."),buttonBox);
+  mAddressBookButton = new QPushButton(i18n("Select Addressee..."),buttonBox);
   buttonLayout->addWidget(mAddressBookButton);
   connect(mAddressBookButton,SIGNAL(clicked()),SLOT(openAddressBook()));
 

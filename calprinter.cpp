@@ -209,8 +209,8 @@ CalPrintDialog::CalPrintDialog( QPtrList<CalPrintBase> plugins, KPrinter *p,
   splitterRightLayout->addWidget( orientationLabel, 1, 0 );
 
   mOrientationSelection = new QComboBox( splitterRight, "orientationCombo" );
-  mOrientationSelection->insertItem( i18n("Use default of selected style") );
-  mOrientationSelection->insertItem( i18n("Use default setting of printer") );
+  mOrientationSelection->insertItem( i18n("Use Default of Selected Style") );
+  mOrientationSelection->insertItem( i18n("Use Default Setting of Printer") );
   mOrientationSelection->insertItem( i18n("Portrait") );
   mOrientationSelection->insertItem( i18n("Landscape") );
   splitterRightLayout->addWidget( mOrientationSelection, 1, 1 );

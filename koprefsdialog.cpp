@@ -127,10 +127,10 @@ KOPrefsDialogMain::KOPrefsDialogMain( QWidget *parent, const char *name )
   topLayout->addMultiCellWidget(htmlsave->checkBox(),12,12,0,1);
 
   KPrefsWidRadios *destinationGroup =
-      addWidRadios(i18n("New Events/Todos should"),KOPrefs::instance()->mDestination,
+      addWidRadios(i18n("New Events/Todos Should"),KOPrefs::instance()->mDestination,
                    topFrame);
-  destinationGroup->addRadio(i18n("be added to the standard resource"));
-  destinationGroup->addRadio(i18n("be asked which resource to use"));
+  destinationGroup->addRadio(i18n("Be added to the standard resource"));
+  destinationGroup->addRadio(i18n("Be asked which resource to use"));
   topLayout->addMultiCellWidget(destinationGroup->groupBox(),13,13,0,1);
 
   topLayout->setRowStretch(14,1);

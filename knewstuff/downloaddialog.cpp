@@ -131,8 +131,8 @@ void DownloadDialog::addProvider(Provider *p)
 	w_l = new QWidget(frame);
 
 	ctl = new KTabCtl(frame);
-	ctl->addTab(w_r, i18n("Highest rated"));
-	ctl->addTab(w_d, i18n("Most downloads"));
+	ctl->addTab(w_r, i18n("Highest Rated"));
+	ctl->addTab(w_d, i18n("Most Downloads"));
 	ctl->addTab(w_l, i18n("Latest"));
 
 	m_curtab = 0;
@@ -156,7 +156,7 @@ void DownloadDialog::addProvider(Provider *p)
 	lvtmp_l = new KListView(w_l);
 	lvtmp_l->addColumn(i18n("Name"));
 	lvtmp_l->addColumn(i18n("Version"));
-	lvtmp_l->addColumn(i18n("Release date"));
+	lvtmp_l->addColumn(i18n("Release Date"));
 	lvtmp_l->setSorting(2, false);
 
 	connect(lvtmp_r, SIGNAL(selectionChanged()), SLOT(slotSelected()));

@@ -108,7 +108,7 @@ void KOEditorGeneral::initCategories(QWidget *parent, QBoxLayout *topLayout)
   QBoxLayout *categoriesLayout = new QHBoxLayout( topLayout );
 
   mCategoriesButton = new QPushButton(parent);
-  mCategoriesButton->setText(i18n("Cate&gories..."));
+  mCategoriesButton->setText(i18n("Select Cate&gories..."));
   connect(mCategoriesButton,SIGNAL(clicked()),SIGNAL(openCategoryDialog()));
   categoriesLayout->addWidget(mCategoriesButton);
 

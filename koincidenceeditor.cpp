@@ -52,7 +52,7 @@ KOIncidenceEditor::KOIncidenceEditor( const QString &caption,
 {
   mCalendar = calendar;
 
-  setButtonText( Default, i18n("&Template...") );
+  setButtonText( Default, i18n("Load &Template...") );
 
   QString saveTemplateText;
   if ( KOPrefs::instance()->mCompactDialogs ) {

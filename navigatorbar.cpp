@@ -95,23 +95,23 @@ NavigatorBar::NavigatorBar( const QDate & date, QWidget *parent, const char *nam
   mPrevYear = new QPushButton( mCtrlFrame );
   mPrevYear->setPixmap( SmallIcon( isRTL ? "2rightarrow" : "2leftarrow" ) );
   mPrevYear->setMinimumHeight(mMonth->height());
-  QToolTip::add( mPrevYear, i18n("Previous Year") );
+  QToolTip::add( mPrevYear, i18n("Previous year") );
 
   mPrevMonth = new QPushButton( mCtrlFrame );
   mPrevMonth->setPixmap( SmallIcon( isRTL ? "1rightarrow" : "1leftarrow") );
   mPrevMonth->setMinimumHeight(mMonth->height());
-  QToolTip::add( mPrevMonth, i18n("Previous Month") );
+  QToolTip::add( mPrevMonth, i18n("Previous month") );
 
   // Create forward navigation buttons
   mNextMonth = new QPushButton( mCtrlFrame );
   mNextMonth->setPixmap( SmallIcon( isRTL ? "1leftarrow" : "1rightarrow") );
   mNextMonth->setMinimumHeight(mMonth->height());
-  QToolTip::add( mNextMonth, i18n("Next Month") );
+  QToolTip::add( mNextMonth, i18n("Next month") );
 
   mNextYear = new QPushButton( mCtrlFrame );
   mNextYear->setPixmap( SmallIcon( isRTL ? "2leftarrow" : "2rightarrow") );
   mNextYear->setMinimumHeight(mMonth->height());
-  QToolTip::add( mNextYear, i18n("Next Year") );
+  QToolTip::add( mNextYear, i18n("Next year") );
 
   // set up control frame layout
   QBoxLayout *ctrlLayout = new QHBoxLayout( mCtrlFrame, 1 );

@@ -62,7 +62,7 @@ SearchDialog::SearchDialog(Calendar *calendar,QWidget *parent)
            this, SLOT( searchTextChanged( const QString & ) ) );
 
 
-  QHButtonGroup *itemsGroup = new QHButtonGroup( i18n("Search for"), topFrame );
+  QHButtonGroup *itemsGroup = new QHButtonGroup( i18n("Search For"), topFrame );
   layout->addWidget( itemsGroup );
   mEventsCheck = new QCheckBox( i18n("&Events"), itemsGroup );
   mTodosCheck = new QCheckBox( i18n("To&dos"), itemsGroup );

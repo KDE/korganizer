@@ -435,7 +435,7 @@ KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent, const char* name)
                              this, SLOT( purgeCompleted() ) );
 
   mPopupMenu = new QPopupMenu(this);
-  mPopupMenu->insertItem(SmallIconSet("todo"), i18n("New To-Do"), this,
+  mPopupMenu->insertItem(SmallIconSet("todo"), i18n("New To-Do..."), this,
                          SLOT (newTodo()));
   mPopupMenu->insertItem(i18n("delete completed To-Dos","Purge Completed"),
                          this, SLOT(purgeCompleted()));
