@@ -113,11 +113,15 @@ void ProviderLoader::load( const QString &type )
   KConfig *cfg = KGlobal::config();
   cfg->setGroup("KNewStuff");
 
-  QString server = cfg->readEntry( "MasterServer",
-                                   "http://korganizer.kde.org" );
+  QString providersUrl = cfg->readEntry( "ProvidersUrl" );
+
+  if ( providersUrl.isEmpty() ) {
+    // TODO: Replace the default by the real one.
+    QString server = cfg->readEntry( "MasterServer",
+                                     "http://korganizer.kde.org" );
   
-  QString providersUrl = server + "/knewstuff/" +
-                         type + "/providers.xml";
+    providersUrl = server + "/knewstuff/" + type + "/providers.xml";
+  }
 
   kdDebug() << "ProviderLoader::load(): providersUrl: " << providersUrl << endl;
   
