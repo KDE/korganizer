@@ -31,6 +31,7 @@
 #include <qptrlist.h>
 #include <qframe.h>
 #include <qvbox.h>
+#include <qmap.h>
 
 #include <libkcal/calendar.h>
 #include <libkcal/scheduler.h>
@@ -436,7 +437,7 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     int mEventsSelected;
 
     KOTodoView *mTodoList;
-    QPtrList<Incidence> mDialogList;
+    QMap<Incidence*,QDialog*> mDialogList;
 };
 
 #endif
