@@ -49,6 +49,29 @@ using namespace KCal;
 typedef CustomListViewItem<Attendee *> AttendeeListItem;
 
 
+/** KOAttendeeListView is a child class of KListView  which supports
+ *  dropping of attendees (e.g. from kaddressbook) onto it. If an attendeee
+ *  was dropped, the signal dropped(Attendee*)  is emitted. Valid drop classes
+ *   are KVCardDrag and QTextDrag.
+ */
+class KOAttendeeListView : public KListView
+{
+Q_OBJECT
+public:
+  KOAttendeeListView (QWidget *parent=0, const char *name=0);
+  virtual ~KOAttendeeListView();
+  virtual void addAttendee( QString newAttendee );
+public slots:
+  virtual void contentsDragEnterEvent( QDragEnterEvent *e );
+  virtual void dragEnterEvent( QDragEnterEvent *e );
+  virtual void contentsDropEvent( QDropEvent *e );
+  virtual void dropEvent( QDropEvent *e );
+  virtual void contentsDragMoveEvent(QDragMoveEvent *e);
+signals:
+  void dropped(Attendee*);
+};
+
+
 class KOEditorDetails : public QWidget
 {
     Q_OBJECT
@@ -96,7 +119,7 @@ class KOEditorDetails : public QWidget
     QPushButton* mAddButton;
     QPushButton* mRemoveButton;
     QPushButton* mAddressBookButton;
-	
+
     QPtrList<Attendee> mdelAttendees;
 };
 

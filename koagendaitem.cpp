@@ -28,6 +28,11 @@
 
 #include <libkcal/icaldrag.h>
 #include <libkcal/vcaldrag.h>
+#include <libkdepim/kvcarddrag.h>
+#ifndef KORG_NOKABC
+#include <kabc/addressee.h>
+#include <kabc/vcardtool.h>
+#endif
 
 #include "koprefs.h"
 
@@ -286,31 +291,59 @@ QToolTipGroup *KOAgendaItem::toolTipGroup()
 void KOAgendaItem::dragEnterEvent( QDragEnterEvent *e )
 {
 #ifndef KORG_NODND
-  if ( ICalDrag::canDecode( e ) || VCalDrag::canDecode( e ) ||
-       !QTextDrag::canDecode( e ) ) {
+  if ( ICalDrag::canDecode( e ) || VCalDrag::canDecode( e ) ) {
     e->ignore();
     return;
   }
-  e->accept();
+  if ( KVCardDrag::canDecode( e ) || QTextDrag::canDecode( e ) )
+    e->accept();
+  else
+    e->ignore();
 #endif
+}
+
+void KOAgendaItem::addAttendee(QString newAttendee)
+{
+  kdDebug(5850) << " Email: " << newAttendee << endl;
+  int pos = newAttendee.find("<");
+  QString name = newAttendee.left(pos);
+  QString email = newAttendee.mid(pos);
+  if (!email.isEmpty()) {
+    mIncidence->addAttendee(new Attendee(name,email));
+  } else if (name.contains("@")) {
+    mIncidence->addAttendee(new Attendee(name,name));
+  } else {
+    mIncidence->addAttendee(new Attendee(name,QString::null));
+  }
 }
 
 void KOAgendaItem::dropEvent( QDropEvent *e )
 {
 #ifndef KORG_NODND
   QString text;
+  QString vcards;
+
+#ifndef KORG_NOKABC
+  if ( KVCardDrag::decode( e, vcards ) ) {
+    KABC::VCardTool tool;
+
+    KABC::Addressee::List list = tool.parseVCards( vcards );
+    KABC::Addressee::List::Iterator it;
+    for ( it = list.begin(); it != list.end(); ++it ) {
+      QString em( (*it).fullEmail() );
+      if (em.isEmpty()) {
+        em=(*it).realName();
+      }
+      addAttendee( em );
+    }
+  } else
+#endif
   if(QTextDrag::decode(e,text))
   {
     kdDebug(5850) << "Dropped : " << text << endl;
     QStringList emails = QStringList::split(",",text);
     for(QStringList::ConstIterator it = emails.begin();it!=emails.end();++it) {
-      kdDebug(5850) << " Email: " << (*it) << endl;
-      int pos = (*it).find("<");
-      QString name = (*it).left(pos);
-      QString email = (*it).mid(pos);
-      if (!email.isEmpty()) {
-        mIncidence->addAttendee(new Attendee(name,email));
-      }
+      addAttendee(*it);
     }
   }
 #endif

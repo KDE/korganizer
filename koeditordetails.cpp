@@ -29,13 +29,16 @@
 #include <qvgroupbox.h>
 #include <qwidgetstack.h>
 #include <qdatetime.h>
+#include <qdragobject.h>
 
 #include <klocale.h>
 #include <kiconloader.h>
 #include <kmessagebox.h>
 #ifndef KORG_NOKABC
 #include <kabc/addresseedialog.h>
+#include <kabc/vcardtool.h>
 #endif
+#include <libkdepim/kvcarddrag.h>
 
 #include <libkcal/incidence.h>
 
@@ -63,6 +66,97 @@ void CustomListViewItem<class Attendee *>::updateItem()
     setPixmap(4,SmallIcon("nomailappt"));
 }
 
+KOAttendeeListView::KOAttendeeListView (QWidget *parent, const char *name)
+    : KListView(parent, name)
+{
+  setAcceptDrops(true);
+}
+
+/** KOAttendeeListView is a child class of KListView  which supports
+ *  dropping of attendees (e.g. from kaddressbook) onto it. If an attendeee
+ *  was dropped, the signal dropped(Attendee*)  is emitted. Valid drop classes
+ *   are KVCardDrag and QTextDrag.
+ */
+KOAttendeeListView::~KOAttendeeListView()
+{
+}
+
+void KOAttendeeListView::contentsDragEnterEvent( QDragEnterEvent *e )
+{
+  dragEnterEvent(e);
+}
+
+void KOAttendeeListView::contentsDragMoveEvent(QDragMoveEvent *e)
+{
+#ifndef KORG_NODND
+  if ( KVCardDrag::canDecode( e ) || QTextDrag::canDecode( e ) ) {
+    e->accept();
+  } else {
+    e->ignore();
+  }
+#endif
+}
+void KOAttendeeListView::dragEnterEvent( QDragEnterEvent *e )
+{
+#ifndef KORG_NODND
+  if ( KVCardDrag::canDecode( e ) || QTextDrag::canDecode( e ) ) {
+    e->accept();
+  } else {
+    e->ignore();
+  }
+#endif
+}
+
+void KOAttendeeListView::addAttendee(QString newAttendee)
+{
+  kdDebug(5850) << " Email: " << newAttendee << endl;
+  int pos = newAttendee.find("<");
+  QString name = newAttendee.left(pos);
+  QString email = newAttendee.mid(pos);
+  if (!email.isEmpty()) {
+    emit dropped(new Attendee(name,email));
+  } else if (name.contains("@")) {
+    emit dropped(new Attendee(name, name));
+  } else
+    emit dropped(new Attendee(name, QString::null));
+}
+
+void KOAttendeeListView::contentsDropEvent( QDropEvent *e )
+{
+  dropEvent(e);
+}
+
+void KOAttendeeListView::dropEvent( QDropEvent *e )
+{
+#ifndef KORG_NODND
+  QString text;
+  QString vcards;
+
+#ifndef KORG_NOKABC
+  if ( KVCardDrag::decode( e, vcards ) ) {
+    KABC::VCardTool tool;
+
+    KABC::Addressee::List list = tool.parseVCards( vcards );
+    KABC::Addressee::List::Iterator it;
+    for ( it = list.begin(); it != list.end(); ++it ) {
+      QString em( (*it).fullEmail() );
+      if (em.isEmpty()) {
+        em=(*it).realName();
+      }
+      addAttendee( em );
+    }
+  } else
+#endif // KORG_NOKABC
+  if (QTextDrag::decode(e,text)) {
+    kdDebug(5850) << "Dropped : " << text << endl;
+    QStringList emails = QStringList::split(",",text);
+    for(QStringList::ConstIterator it = emails.begin();it!=emails.end();++it) {
+      addAttendee(*it);
+    }
+  }
+#endif //KORG_NODND
+}
+
 
 KOEditorDetails::KOEditorDetails (int spacing,QWidget* parent,const char* name)
   : QWidget( parent, name), mDisableItemUpdate( false )
@@ -73,7 +167,7 @@ KOEditorDetails::KOEditorDetails (int spacing,QWidget* parent,const char* name)
   QString organizer = KOPrefs::instance()->email();
   mOrganizerLabel = new QLabel(i18n("Organizer: %1").arg(organizer),this);
 
-  mListView = new KListView(this,"mListView");
+  mListView = new KOAttendeeListView(this,"mListView");
   mListView->addColumn(i18n("Name"),180);
   mListView->addColumn(i18n("Email"),180);
   mListView->addColumn(i18n("Role"),60);
@@ -85,6 +179,10 @@ KOEditorDetails::KOEditorDetails (int spacing,QWidget* parent,const char* name)
 
   connect(mListView,SIGNAL(selectionChanged(QListViewItem *)),
           SLOT(updateAttendeeInput()));
+#ifndef KORG_NODND
+  connect(mListView, SIGNAL(dropped( Attendee *)),
+          SLOT(insertAttendee(Attendee *)));
+#endif
 
   QLabel *attendeeLabel = new QLabel(this);
   attendeeLabel->setText(i18n("Na&me:"));

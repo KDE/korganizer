@@ -95,6 +95,7 @@ class KOAgendaItem : public QWidget
   public slots:
     void updateIcons();
     void select(bool=true);
+    void addAttendee(QString);
 
   protected:
     void dragEnterEvent(QDragEnterEvent *e);
