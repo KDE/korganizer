@@ -812,22 +812,38 @@ void KOTodoView::setNewPriority(int index)
   }
 }
 
-void KOTodoView::setNewPercentage(int index)
+void KOTodoView::setNewPercentage( KOTodoViewItem *item, int percentage )
 {
-  if ( mActiveItem && !mActiveItem->todo()->isReadOnly () ) {
-    Todo *todo = mActiveItem->todo();
+  kdDebug(5850) << "KOTodoView::setNewPercentage( " << percentage << "), item = " << item << endl;
+  if ( item && !item->todo()->isReadOnly () ) {
+    Todo *todo = item->todo();
     Todo *oldTodo = todo->clone();
 
-    if (mPercentage[index] == 100) {
+/*  Old code to make sub-items's percentage related to this one's:
+    QListViewItem *myChild = firstChild();
+    KOTodoViewItem *item;
+    while( myChild ) {
+      item = static_cast<KOTodoViewItem*>(myChild);
+      item->stateChange(state);
+      myChild = myChild->nextSibling();
+    }*/
+    if ( percentage == 100 ) {
       emit todoCompleted( todo );
     } else {
       todo->setCompleted(false);
     }
-    todo->setPercentComplete(mPercentage[index]);
-    mActiveItem->construct();
+    todo->setPercentComplete( percentage );
+    item->construct();
     emit incidenceChanged( oldTodo, todo, KOGlobals::COMPLETION_MODIFIED );
     delete oldTodo;
+  } else {
+    kdDebug(5850) << "No active item, or active item is read-only" << endl;
   }
+}
+
+void KOTodoView::setNewPercentage(int index)
+{
+  setNewPercentage( mActiveItem, mPercentage[index] );
 }
 
 void KOTodoView::setNewDate(QDate date)

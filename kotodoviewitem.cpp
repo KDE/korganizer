@@ -156,56 +156,13 @@ void KOTodoViewItem::construct()
   m_init = false;
 }
 
-void KOTodoViewItem::stateChange(bool state)
+void KOTodoViewItem::stateChange( bool state )
 {
   // do not change setting on startup or if no valid todo item is given
   if ( m_init || !mTodo ) return;
-
+  
   kdDebug(5850) << "State changed, modified " << state << endl;
-  QString keyd = "9";
-
-  Todo*oldTodo = mTodo->clone();
-
-  if (state)
-    mTodoView->emitCompletedSignal( mTodo );
-  else mTodo->setPercentComplete(0);
-
-  if (mTodo->hasDueDate()) {
-    QString dtStr = mTodo->dtDueDateStr();
-    QString keyt = "";
-    if (!mTodo->doesFloat()) {
-      dtStr += " " + mTodo->dtDueTimeStr();
-    }
-    setText( eDueDateColumn, dtStr );
-    keyd = mTodo->dtDue().toString(Qt::ISODate);
-  } else {
-    setText( eDueDateColumn, "" );
-  }
-  setSortKey( eDueDateColumn, keyd );
-
-  QString priorityKey = QString::number( mTodo->priority() ) + keyd;
-  if ( mTodo->isCompleted() ) setSortKey( ePriorityColumn, "1" + priorityKey );
-  else setSortKey( ePriorityColumn, "0" + priorityKey );
-
-  setText( ePercentColumn, QString::number(mTodo->percentComplete()));
-  if (mTodo->percentComplete()<100) {
-    if (mTodo->isCompleted()) setSortKey( ePercentColumn, QString::number(999) );
-    else setSortKey( ePercentColumn, QString::number(mTodo->percentComplete()) );
-  }
-  else {
-    if (mTodo->isCompleted()) setSortKey( ePercentColumn, QString::number(999) );
-    else setSortKey( ePercentColumn, QString::number(99) );
-  }
-  // @TODO: Find a way to emit startMultiModify( "..." ) somewhere so that checking all subitems will belong to the same undo item
-  QListViewItem *myChild = firstChild();
-  KOTodoViewItem *item;
-  while( myChild ) {
-    item = static_cast<KOTodoViewItem*>(myChild);
-    item->stateChange(state);
-    myChild = myChild->nextSibling();
-  }
-  mTodoView->setTodoModified( oldTodo, mTodo );
-  delete oldTodo;
+  mTodoView->setNewPercentage( this, state?100:0 );
 }
 
 bool KOTodoViewItem::isAlternate()

@@ -159,6 +159,8 @@ class KOTodoView : public KOrg::BaseView
     void editTodo();
     void deleteTodo();
 
+    void setNewPercentage( KOTodoViewItem *item, int percentage );
+    
     void setNewPriority( int );
     void setNewPercentage( int );
     void setNewDate( QDate );
