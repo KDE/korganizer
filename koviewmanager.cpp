@@ -169,6 +169,13 @@ void KOViewManager::showWhatsNextView()
     mWhatsNextView = new KOWhatsNextView(mMainView->calendar(),mMainView->viewStack(),
                                          "KOViewManager::WhatsNextView");
     addView(mWhatsNextView);
+    connect(mWhatsNextView, SIGNAL(showIncidenceSignal(Incidence *)),
+            mMainView, SLOT(showIncidence(Incidence *)));
+    connect(mWhatsNextView, SIGNAL(editIncidenceSignal(Incidence *)),
+            mMainView, SLOT(editIncidence(Incidence *)));
+    connect(mWhatsNextView, SIGNAL(deleteIncidenceSignal(Incidence *)),
+            mMainView, SLOT(deleteIncidence(Incidence *)));
+
   }
 
   showView(mWhatsNextView);

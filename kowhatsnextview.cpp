@@ -74,8 +74,6 @@ KOWhatsNextView::KOWhatsNextView(Calendar *calendar, QWidget *parent,
   mView = new WhatsNextTextBrowser(this);
   connect(mView,SIGNAL(showIncidence(const QString &)),SLOT(showIncidence(const QString &)));
 
-  mEventViewer = 0;
-
   QBoxLayout *topLayout = new QVBoxLayout(this);
   topLayout->addWidget(dateLabel);
   topLayout->addWidget(mView);
@@ -282,31 +280,17 @@ void KOWhatsNextView::appendTodo(Incidence *ev)
   mText += "</a></li>\n";
 }
 
-void KOWhatsNextView::createEventViewer()
-{
-  if (!mEventViewer) {
-    mEventViewer = new KOEventViewerDialog(this);
-  }
-}
-
-// TODO: Create this function in CalendarView and remove it from here
 void KOWhatsNextView::showIncidence(const QString &uid)
 {
   kdDebug(5850) << "KOWhatsNextView::showIncidence(): " << uid << endl;
+  Incidence*incidence;
 
   if (uid.startsWith("event://")) {
-    Event *event = calendar()->event(uid.mid(8));
-    if (!event) return;
-    createEventViewer();
-    mEventViewer->setEvent(event);
+    incidence = calendar()->incidence(uid.mid(8));
   } else if (uid.startsWith("todo://")) {
-    Todo *todo = calendar()->todo(uid.mid(7));
-    if (!todo) return;
-    createEventViewer();
-    mEventViewer->setTodo(todo);
+    incidence = calendar()->incidence(uid.mid(7));
   }
-  mEventViewer->show();
-  mEventViewer->raise();
+  if (incidence) emit showIncidenceSignal(incidence);
 }
 
 #include "kowhatsnextview.moc"
