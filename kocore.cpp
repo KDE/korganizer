@@ -1,6 +1,7 @@
 /*
     This file is part of KOrganizer.
-    Copyright (c) 2001 Cornelius Schumacher <schumacher@kde.org>
+
+    Copyright (c) 2001,2003 Cornelius Schumacher <schumacher@kde.org>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -40,41 +41,67 @@ KOCore *KOCore::mSelf = 0;
 
 KOCore *KOCore::self()
 {
-  if (!mSelf) {
+  if ( !mSelf ) {
     mSelf = new KOCore;
   }
   
   return mSelf;
 }
 
-KOCore::KOCore() :
-  mCalendarDecorationsLoaded( false ), mHolidays( 0 ), mXMLGUIClient( 0 )
+KOCore::KOCore()
+  : mCalendarDecorationsLoaded( false ), mHolidays( 0 ), mXMLGUIClient( 0 )
 {
 }
 
-KTrader::OfferList KOCore::availablePlugins(const QString &type)
+KTrader::OfferList KOCore::availablePlugins( const QString &type, int version )
 {
-  return KTrader::self()->query(type);
+  QString constraint;
+  if ( version >= 0 ) {
+    constraint = QString("[X-KDE-PluginInterfaceVersion] == %1")
+                 .arg( QString::number( version ) );
+  }
+
+  return KTrader::self()->query( type, constraint );
 }
 
-KOrg::Plugin *KOCore::loadPlugin(KService::Ptr service)
+KTrader::OfferList KOCore::availablePlugins()
+{
+  return availablePlugins( KOrg::Plugin::serviceType(),
+                           KOrg::Plugin::interfaceVersion() );
+}
+
+KTrader::OfferList KOCore::availableCalendarDecorations()
+{
+  return availablePlugins( KOrg::CalendarDecoration::serviceType(),
+                           KOrg::CalendarDecoration::interfaceVersion() );
+}
+
+KTrader::OfferList KOCore::availableParts()
+{
+  return availablePlugins( KOrg::Part::serviceType(),
+                           KOrg::Part::interfaceVersion() );
+}
+
+KOrg::Plugin *KOCore::loadPlugin( KService::Ptr service )
 {
   kdDebug(5850) << "loadPlugin: library: " << service->library() << endl;
 
-  if ( !service->hasServiceType( "Calendar/Plugin" ) ) {
+  if ( !service->hasServiceType( KOrg::Plugin::serviceType() ) ) {
     return 0;
   }
 
-  KLibFactory *factory = KLibLoader::self()->factory(service->library().latin1());
+  KLibFactory *factory = KLibLoader::self()->factory(
+      service->library().latin1() );
 
-  if (!factory) {
+  if ( !factory ) {
     kdDebug(5850) << "KOCore::loadPlugin(): Factory creation failed" << endl;
     return 0;
   }
   
-  KOrg::PluginFactory *pluginFactory = static_cast<KOrg::PluginFactory *>(factory);
+  KOrg::PluginFactory *pluginFactory =
+      static_cast<KOrg::PluginFactory *>( factory );
   
-  if (!pluginFactory) {
+  if ( !pluginFactory ) {
     kdDebug(5850) << "KOCore::loadPlugin(): Cast to KOrg::PluginFactory failed" << endl;
     return 0;
   }
@@ -82,13 +109,13 @@ KOrg::Plugin *KOCore::loadPlugin(KService::Ptr service)
   return pluginFactory->create();
 }
 
-KOrg::Plugin *KOCore::loadPlugin(const QString &name)
+KOrg::Plugin *KOCore::loadPlugin( const QString &name )
 {
-  KTrader::OfferList list = availablePlugins("Calendar/Plugin");
+  KTrader::OfferList list = availablePlugins();
   KTrader::OfferList::ConstIterator it;
-  for(it = list.begin(); it != list.end(); ++it) {
-    if ((*it)->desktopEntryName() == name) {
-      return loadPlugin(*it);
+  for( it = list.begin(); it != list.end(); ++it ) {
+    if ( (*it)->desktopEntryName() == name ) {
+      return loadPlugin( *it );
     }
   }
   return 0;
@@ -116,57 +143,58 @@ KOrg::CalendarDecoration *KOCore::loadCalendarDecoration(KService::Ptr service)
   return pluginFactory->create();
 }
 
-KOrg::CalendarDecoration *KOCore::loadCalendarDecoration(const QString &name)
+KOrg::CalendarDecoration *KOCore::loadCalendarDecoration( const QString &name )
 {
-  KTrader::OfferList list = availablePlugins("Calendar/Decoration");
+  KTrader::OfferList list = availableCalendarDecorations();
   KTrader::OfferList::ConstIterator it;
-  for(it = list.begin(); it != list.end(); ++it) {
-    if ((*it)->desktopEntryName() == name) {
-      return loadCalendarDecoration(*it);
+  for( it = list.begin(); it != list.end(); ++it ) {
+    if ( (*it)->desktopEntryName() == name ) {
+      return loadCalendarDecoration( *it );
     }
   }
   return 0;  
 }
 
-KOrg::Part *KOCore::loadPart(KService::Ptr service, KOrg::MainWindow *parent)
+KOrg::Part *KOCore::loadPart( KService::Ptr service, KOrg::MainWindow *parent )
 {
   kdDebug(5850) << "loadPart: library: " << service->library() << endl;
 
-  if ( !service->hasServiceType( "KOrganizer/Part" ) ) {
+  if ( !service->hasServiceType( KOrg::Part::serviceType() ) ) {
     return 0;
   }
 
-  KLibFactory *factory = KLibLoader::self()->factory(service->library().latin1());
+  KLibFactory *factory = KLibLoader::self()->factory(
+      service->library().latin1() );
 
-  if (!factory) {
+  if ( !factory ) {
     kdDebug(5850) << "KOCore::loadPart(): Factory creation failed" << endl;
     return 0;
   }
   
   KOrg::PartFactory *pluginFactory =
-      static_cast<KOrg::PartFactory *>(factory);
+      static_cast<KOrg::PartFactory *>( factory );
   
-  if (!pluginFactory) {
+  if ( !pluginFactory ) {
     kdDebug(5850) << "KOCore::loadPart(): Cast failed" << endl;
     return 0;
   }
   
-  return pluginFactory->create(parent);
+  return pluginFactory->create( parent );
 }
 
-void KOCore::setXMLGUIClient( KXMLGUIClient* guiclient )
+void KOCore::setXMLGUIClient( KXMLGUIClient *guiclient )
 {
-       mXMLGUIClient = guiclient;
+  mXMLGUIClient = guiclient;
 }
  
 
-KOrg::Part *KOCore::loadPart(const QString &name,KOrg::MainWindow *parent)
+KOrg::Part *KOCore::loadPart( const QString &name, KOrg::MainWindow *parent )
 {
-  KTrader::OfferList list = availablePlugins("KOrg::MainWindow/Part");
+  KTrader::OfferList list = availableParts();
   KTrader::OfferList::ConstIterator it;
-  for(it = list.begin(); it != list.end(); ++it) {
-    if ((*it)->desktopEntryName() == name) {
-      return loadPart(*it,parent);
+  for( it = list.begin(); it != list.end(); ++it ) {
+    if ( (*it)->desktopEntryName() == name ) {
+      return loadPart( *it, parent );
     }
   }
   return 0;  
@@ -174,14 +202,14 @@ KOrg::Part *KOCore::loadPart(const QString &name,KOrg::MainWindow *parent)
 
 KOrg::CalendarDecoration::List KOCore::calendarDecorations()
 {
-  if (!mCalendarDecorationsLoaded) {
+  if ( !mCalendarDecorationsLoaded ) {
     QStringList selectedPlugins = KOPrefs::instance()->mSelectedPlugins;
 
     mCalendarDecorations.clear();
-    KTrader::OfferList plugins = availablePlugins("Calendar/Decoration");
+    KTrader::OfferList plugins = availableCalendarDecorations();
     KTrader::OfferList::ConstIterator it;
-    for(it = plugins.begin(); it != plugins.end(); ++it) {
-      if ((*it)->hasServiceType("Calendar/Decoration")) {
+    for( it = plugins.begin(); it != plugins.end(); ++it ) {
+      if ( (*it)->hasServiceType("Calendar/Decoration") ) {
         QString name = (*it)->desktopEntryName();
         if ( selectedPlugins.find( name ) != selectedPlugins.end() ) {
           KOrg::CalendarDecoration *d = loadCalendarDecoration(*it);
@@ -202,11 +230,12 @@ KOrg::Part::List KOCore::loadParts( KOrg::MainWindow *parent )
 
   QStringList selectedPlugins = KOPrefs::instance()->mSelectedPlugins;
 
-  KTrader::OfferList plugins = availablePlugins("KOrganizer/Part");
+  KTrader::OfferList plugins = availableParts();
   KTrader::OfferList::ConstIterator it;
-  for(it = plugins.begin(); it != plugins.end(); ++it) {
-    if (selectedPlugins.find((*it)->desktopEntryName()) != selectedPlugins.end()) {
-      KOrg::Part *part = loadPart(*it,parent);
+  for( it = plugins.begin(); it != plugins.end(); ++it ) {
+    if ( selectedPlugins.find( (*it)->desktopEntryName() ) !=
+                               selectedPlugins.end() ) {
+      KOrg::Part *part = loadPart( *it, parent );
       if ( part ) {
         parent->mainGuiFactory()->addClient( part );
         parts.append( part );
@@ -219,7 +248,8 @@ KOrg::Part::List KOCore::loadParts( KOrg::MainWindow *parent )
 void KOCore::unloadPlugins()
 {
   KOrg::CalendarDecoration *plugin;
-  for( plugin=mCalendarDecorations.first(); plugin; plugin=mCalendarDecorations.next() ) {    
+  for( plugin = mCalendarDecorations.first(); plugin;
+       plugin = mCalendarDecorations.next() ) {    
     delete plugin;
   }
   mCalendarDecorations.clear();
@@ -227,17 +257,18 @@ void KOCore::unloadPlugins()
   mHolidays = 0;
 }
 
-void KOCore::unloadParts( KOrg::MainWindow *parent, KOrg::Part::List& parts )
+void KOCore::unloadParts( KOrg::MainWindow *parent, KOrg::Part::List &parts )
 {
   KOrg::Part *part;
-  for( part=parts.first(); part; part=parts.next() ) {    
+  for( part = parts.first(); part; part = parts.next() ) {    
     parent->mainGuiFactory()->removeClient( part );
     delete part;
   }
   parts.clear();
 }
 
-KOrg::Part::List KOCore::reloadParts( KOrg::MainWindow *parent, KOrg::Part::List& parts )
+KOrg::Part::List KOCore::reloadParts( KOrg::MainWindow *parent,
+                                      KOrg::Part::List &parts )
 {
   unloadParts( parent, parts );
   return loadParts( parent );
@@ -251,11 +282,9 @@ void KOCore::reloadPlugins()
   calendarDecorations();
 }
 
-QString KOCore::holiday(const QDate &date)
+QString KOCore::holiday( const QDate &date )
 {
   calendarDecorations();
-  if (mHolidays)
-    return mHolidays->shortText(date);
-  else
-    return QString::null;
+  if ( mHolidays ) return mHolidays->shortText( date );
+  else return QString::null;
 }

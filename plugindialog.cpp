@@ -1,6 +1,7 @@
 /*
     This file is part of KOrganizer.
-    Copyright (c) 2001 Cornelius Schumacher <schumacher@kde.org>
+
+    Copyright (c) 2001,2003 Cornelius Schumacher <schumacher@kde.org>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -21,8 +22,6 @@
     without including the source code for Qt in the source distribution.
 */
 
-// Dialog for selecting and configuring KOrganizer plugins
-
 #include <qlayout.h>
 #include <qcheckbox.h>
 #include <qgroupbox.h>
@@ -38,7 +37,6 @@
 #include "koprefs.h"
 
 #include "plugindialog.h"
-#include "plugindialog.moc"
 
 class PluginItem : public QCheckListItem {
   public:
@@ -54,35 +52,40 @@ class PluginItem : public QCheckListItem {
 };
 
 
-PluginDialog::PluginDialog(QWidget *parent)
-  : KDialogBase(Plain,i18n("Configure Plugins"),Ok|Cancel|User1,Ok,parent,0,false,false,
-                i18n("Configure..."))
+/**
+  Dialog for selecting and configuring KOrganizer plugins
+*/
+PluginDialog::PluginDialog( QWidget *parent )
+  : KDialogBase( Plain, i18n("Configure Plugins"), Ok | Cancel | User1, Ok,
+                 parent, 0, false, false, i18n("Configure...") )
 {
   QFrame *topFrame = plainPage();
-  QVBoxLayout *topLayout = new QVBoxLayout(topFrame,0,spacingHint());
+  QVBoxLayout *topLayout = new QVBoxLayout( topFrame, 0, spacingHint() );
 
-  mListView = new QListView(topFrame);
-  mListView->addColumn(i18n("Name"));
-  topLayout->addWidget(mListView);
-  connect(mListView,SIGNAL(selectionChanged()),SLOT(checkSelection()));
+  mListView = new QListView( topFrame );
+  mListView->addColumn( i18n("Name") );
+  topLayout->addWidget( mListView );
+  connect( mListView, SIGNAL( selectionChanged() ), SLOT( checkSelection() ) );
 
-  KTrader::OfferList plugins = KOCore::self()->availablePlugins("Calendar/Plugin");
-  plugins += KOCore::self()->availablePlugins("KOrganizer/Part");
+  KTrader::OfferList plugins = KOCore::self()->availablePlugins();
+  plugins += KOCore::self()->availableParts();
   
   QStringList selectedPlugins = KOPrefs::instance()->mSelectedPlugins;
   
   KTrader::OfferList::ConstIterator it;
-  for(it = plugins.begin(); it != plugins.end(); ++it) {
-    QCheckListItem *item = new PluginItem(mListView,*it);
-    if ( selectedPlugins.find((*it)->desktopEntryName()) != selectedPlugins.end() ) {
-      item->setOn(true);
+  for( it = plugins.begin(); it != plugins.end(); ++it ) {
+    QCheckListItem *item = new PluginItem( mListView, *it );
+    if ( selectedPlugins.find( (*it)->desktopEntryName() ) !=
+                               selectedPlugins.end() ) {
+      item->setOn( true );
     }
   }
 
   checkSelection();
   
-  connect(this,SIGNAL(user1Clicked()),SLOT(configure()));
-  mMainView = dynamic_cast<CalendarView *>(parent);
+  connect( this, SIGNAL( user1Clicked() ),SLOT( configure() ) );
+
+  mMainView = dynamic_cast<CalendarView *>( parent );
 }
 
 PluginDialog::~PluginDialog()
@@ -93,12 +96,12 @@ void PluginDialog::slotOk()
 {
   QStringList selectedPlugins;
 
-  PluginItem *item = (PluginItem *)mListView->firstChild();
-  while(item) {
-    if(item->isOn()) {
-      selectedPlugins.append(item->service()->desktopEntryName());
+  PluginItem *item = static_cast<PluginItem *>( mListView->firstChild() );
+  while( item ) {
+    if( item->isOn() ) {
+      selectedPlugins.append( item->service()->desktopEntryName() );
     }
-    item = (PluginItem *)item->nextSibling();
+    item = static_cast<PluginItem *>( item->nextSibling() );
   }
 
   KOPrefs::instance()->mSelectedPlugins = selectedPlugins;
@@ -106,12 +109,11 @@ void PluginDialog::slotOk()
   if ( mMainView ) mMainView->updateView();
 
   accept();
-
 }
 
 void PluginDialog::configure()
 {
-  PluginItem *item = (PluginItem *)mListView->selectedItem();
+  PluginItem *item = static_cast<PluginItem *>( mListView->selectedItem() );
   if ( !item ) return;
 
   KOrg::Plugin *plugin = KOCore::self()->loadPlugin( item->service() );
@@ -122,14 +124,15 @@ void PluginDialog::configure()
   } else {
     KMessageBox::sorry( this, i18n( "Unable to configure this plugin" ) );
   }
-
 }
 
 void PluginDialog::checkSelection()
 {
-  if (mListView->selectedItem()) {
-    enableButton(User1,true);
+  if ( mListView->selectedItem() ) {
+    enableButton( User1, true );
   } else {
-    enableButton(User1,false);
+    enableButton( User1, false );
   }
 }
+
+#include "plugindialog.moc"

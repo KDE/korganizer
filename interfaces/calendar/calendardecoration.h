@@ -1,6 +1,7 @@
 /*
     This file is part of the KOrganizer interfaces.
-    Copyright (c) 2001 Cornelius Schumacher <schumacher@kde.org>
+
+    Copyright (c) 2001,2003 Cornelius Schumacher <schumacher@kde.org>
 
     This library is free software; you can redistribute it and/or
     modify it under the terms of the GNU Library General Public
@@ -19,7 +20,6 @@
 */
 #ifndef KORG_CALENDARDECORATION_H
 #define KORG_CALENDARDECORATION_H
-// $Id$
 
 #include <qstring.h>
 #include <qdatetime.h>
@@ -37,12 +37,16 @@ namespace KOrg {
   It provides entities like texts and pictures for a given date. Implementations
   can implement all functions or only a subset.
 */  
-class CalendarDecoration : public Plugin {
+class CalendarDecoration : public Plugin
+{
   public:
+    static int interfaceVersion() { return -1; }  
+    static QString serviceType() { return "Calendar/Decoration"; }
+
     typedef QPtrList<CalendarDecoration> List;
 
-    CalendarDecoration() {};
-    virtual ~CalendarDecoration() {};
+    CalendarDecoration() {}
+    virtual ~CalendarDecoration() {}
 
     /**
       Return a short text for a given date, ususally only a few words.
@@ -69,7 +73,8 @@ class CalendarDecoration : public Plugin {
     virtual QWidget *smallWidget( QWidget *, const QDate & ) { return 0; }
 };
 
-class CalendarDecorationFactory : public PluginFactory {
+class CalendarDecorationFactory : public PluginFactory
+{
   public:
     virtual CalendarDecoration *create() = 0;
 };

@@ -1,6 +1,7 @@
 /*
     This file is part of KOrganizer.
-    Copyright (c) 2001 Cornelius Schumacher <schumacher@kde.org>
+
+    Copyright (c) 2001,2003 Cornelius Schumacher <schumacher@kde.org>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -28,49 +29,54 @@
 #include <calendar/calendardecoration.h>
 #include <korganizer/part.h>
 
-class KOCore {
+class KOCore
+{
   public:
     static KOCore *self();
 
-    KTrader::OfferList availablePlugins(const QString &type);
-  
-    KOrg::Plugin *loadPlugin(KService::Ptr service);
-    KOrg::Plugin *loadPlugin(const QString &);
-    
-    KOrg::CalendarDecoration *loadCalendarDecoration(KService::Ptr service);
-    KOrg::CalendarDecoration *loadCalendarDecoration(const QString &);
+    KTrader::OfferList availablePlugins();
+    KTrader::OfferList availableCalendarDecorations();
+    KTrader::OfferList availableParts();
 
-    KOrg::Part *loadPart(KService::Ptr,KOrg::MainWindow *parent);
-    KOrg::Part *loadPart(const QString &,KOrg::MainWindow *parent);
+    KOrg::Plugin *loadPlugin( KService::Ptr service );
+    KOrg::Plugin *loadPlugin( const QString & );
+    
+    KOrg::CalendarDecoration *loadCalendarDecoration( KService::Ptr service );
+    KOrg::CalendarDecoration *loadCalendarDecoration( const QString & );
+
+    KOrg::Part *loadPart( KService::Ptr, KOrg::MainWindow *parent );
+    KOrg::Part *loadPart( const QString &, KOrg::MainWindow *parent );
 
     KOrg::CalendarDecoration::List calendarDecorations();
-    KOrg::Part::List loadParts(KOrg::MainWindow *parent);
+    KOrg::Part::List loadParts( KOrg::MainWindow *parent );
 
-    void setXMLGUIClient( KXMLGUIClient* guiclient );
-    KXMLGUIClient* xmlguiClient() const { return mXMLGUIClient; };
-
+    void setXMLGUIClient( KXMLGUIClient *guiclient );
+    KXMLGUIClient *xmlguiClient() const { return mXMLGUIClient; }
 
     /**
-     * Unload the parts in &p parts for this main window. Clears
-     * parts.
-     */
-       
-    void unloadParts(KOrg::MainWindow *parent, KOrg::Part::List& parts);
+      Unload the parts in &p parts for this main window. Clears
+      parts.
+    */       
+    void unloadParts( KOrg::MainWindow *parent, KOrg::Part::List &parts );
     void unloadPlugins();
 
     void reloadPlugins();
 
     /**
-     * Unloads the parts from the main window. Loads the parts that
-     * are listed in KOPrefs and returns a list of these parts.
-     */
-    KOrg::Part::List reloadParts(KOrg::MainWindow *parent, KOrg::Part::List& parts);
+      Unloads the parts from the main window. Loads the parts that
+      are listed in KOPrefs and returns a list of these parts.
+    */
+    KOrg::Part::List reloadParts( KOrg::MainWindow *parent,
+                                  KOrg::Part::List &parts );
 
     QString holiday( const QDate & );
 
   protected:
     KOCore();
-    
+
+    KTrader::OfferList availablePlugins( const QString &type,
+                                         int pluginInterfaceVersion = -1 );
+      
   private:
     static KOCore *mSelf;
     
@@ -79,7 +85,7 @@ class KOCore {
     
     KOrg::CalendarDecoration *mHolidays;
 
-    KXMLGUIClient* mXMLGUIClient;
+    KXMLGUIClient *mXMLGUIClient;
 };
 
 #endif

@@ -1,6 +1,7 @@
 /*
     This file is part of the KOrganizer interfaces.
-    Copyright (c) 2001 Cornelius Schumacher <schumacher@kde.org>
+
+    Copyright (c) 2001,2003 Cornelius Schumacher <schumacher@kde.org>
 
     This library is free software; you can redistribute it and/or
     modify it under the terms of the GNU Library General Public
@@ -29,14 +30,18 @@
 
 namespace KOrg {
 
-class Part : public KParts::Part {
+class Part : public KParts::Part
+{
   public:
+    static int interfaceVersion() { return 1; }
+    static QString serviceType() { return "KOrganizer/Part"; }
+  
     typedef QPtrList<Part> List;
 
-    Part(MainWindow *parent, const char *name) :
-      KParts::Part( parent->topLevelWidget(), name ), mMainWindow( parent ) {}
+    Part( MainWindow *parent, const char *name )
+      : KParts::Part( parent->topLevelWidget(), name ), mMainWindow( parent ) {}
 
-    virtual ~Part() {};
+    virtual ~Part() {}
 
     virtual QString info() = 0;
   
@@ -46,13 +51,14 @@ class Part : public KParts::Part {
     MainWindow *mMainWindow;
 };
 
-class PartFactory : public KLibFactory {
+class PartFactory : public KLibFactory
+{
   public:
-    virtual Part *create(MainWindow *parent, const char *name=0) = 0;
+    virtual Part *create( MainWindow *parent, const char *name = 0 ) = 0;
 
   protected:
-    virtual QObject* createObject(QObject*, const char*,const char*,
-                                  const QStringList &)
+    virtual QObject *createObject( QObject *, const char *,const char *,
+                                   const QStringList & )
     {
       return 0;
     } 

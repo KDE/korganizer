@@ -1,6 +1,7 @@
 /*
     This file is part of the KOrganizer interfaces.
-    Copyright (c) 2001 Cornelius Schumacher <schumacher@kde.org>
+
+    Copyright (c) 2001,2003 Cornelius Schumacher <schumacher@kde.org>
 
     This library is free software; you can redistribute it and/or
     modify it under the terms of the GNU Library General Public
@@ -19,30 +20,34 @@
 */
 #ifndef KORG_PLUGIN_H
 #define KORG_PLUGIN_H
-// $Id$
 
 #include <klocale.h>
 #include <klibloader.h>
 
 namespace KOrg {
 
-class Plugin {
+class Plugin
+{
   public:
-    Plugin() {};
-    virtual ~Plugin() {};
+    static int interfaceVersion() { return -1; }
+    static QString serviceType() { return "Calendar/Plugin"; }
+
+    Plugin() {}
+    virtual ~Plugin() {}
     
     virtual QString info() = 0;
 
-    virtual void configure(QWidget *) {};
+    virtual void configure( QWidget * ) {}
 };
 
-class PluginFactory : public KLibFactory {
+class PluginFactory : public KLibFactory
+{
   public:
     virtual Plugin *create() = 0;
 
   protected:
-    virtual QObject* createObject(QObject*, const char*,const char*,
-                                  const QStringList &)
+    virtual QObject *createObject( QObject *, const char *,const char *,
+                                   const QStringList & )
     {
       return 0;
     }
