@@ -3,11 +3,11 @@
 :
 : Author: Claudiu Costin <claudiuc@kde.org>
 :
-small	  "Anul nou"		on 1.1.
+small   "Anul nou"              on 1.1.
 small   "Sărbătoarea unirii"    on 24.1
 small   "Ziua mamei"            on 8.3
-small	  "Ziua copilului"        on 1.6
-small   "Ziua naţională"        on 30.12
+small   "Ziua copilului"        on 1.6
+small   "Ziua naţională"        on 1.12
 small   "Ziua Revoluţiei"       on 22.12
 red     "Crăciunul"             weekend on 25.12
 small   "Ziua muncii"           on 1.5
