@@ -389,7 +389,7 @@ bool KOEditorGeneralTodo::validateInput()
     }
     if (startDate > dueDate) {
       KMessageBox::sorry(this,
-                         i18n("The due date cannot be after the start date."));
+                         i18n("The start date cannot be after the due date."));
       return false;
     }
   }
