@@ -404,14 +404,23 @@ void KOAgendaItem::paintEvent(QPaintEvent *)
     return;
   }
 
+  // Used for multi-day events to make sure the summary is on screen
+  QRect visRect=visibleRect();
+
   // case 2: draw a single line when no more space
   if ( (2 * singleLineHeight) > (height() - 2 * margin) ) {
     p.eraseRect( 0, 0, width(), height() );
     int x = margin;
+    int txtWidth = width() - margin - x;
+    if (mIncidence->doesFloat() ) {
+      x += visRect.left();
+      txtWidth = visRect.right() - margin - x;
+    }
+
     paintTodoIcon( &p, x, ft );
     int y = ((height() - 2 * ft - singleLineHeight) / 2) + fm.ascent();
     KWordWrap::drawFadeoutText( &p, x, y,
-                                width() - margin - x, mLabelText );
+                                txtWidth, mLabelText );
     paintFrame( &p, frameColor );
     return;
   }
@@ -458,10 +467,15 @@ void KOAgendaItem::paintEvent(QPaintEvent *)
   if ( ((!completelyRenderable) &&
         ((height() - (2 * margin)) <= (5 * singleLineHeight)) ) ||
          (mNextMultiItem && mFirstMultiItem) ||
-	 mIncidence->doesFloat() ) {
+         mIncidence->doesFloat() ) {
     int x = margin;
+    int txtWidth = width() - margin - x;
+    if (mIncidence->doesFloat() ) {
+      x += visRect.left();
+      txtWidth = visRect.right() - margin - x;
+    }
     ww = KWordWrap::formatText( fm,
-                                QRect(0, 0, width() - margin - x,
+                                QRect(x, 0, txtWidth,
                                 height() - (2 * margin)),
                                 0,
                                 mLabelText );
