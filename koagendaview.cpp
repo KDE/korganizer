@@ -1130,8 +1130,6 @@ void KOAgendaView::changeIncidenceDisplay( Incidence *incidence, int mode )
     }
     case KOGlobals::INCIDENCEEDITED:
     case KOGlobals::INCIDENCEDELETED: {
-      bool floats = incidence->doesFloat();
-      QCString type = incidence->type();
       mAllDayAgenda->removeIncidence( incidence );
       mAgenda->removeIncidence( incidence );
       if ( mode == KOGlobals::INCIDENCEEDITED )
