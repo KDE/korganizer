@@ -866,6 +866,14 @@ void CalendarView::newEvent( const QString &summary, const QString &description,
   eventEditor->show();
 }
 
+void CalendarView::newEvent(QDateTime fromHint, QDateTime toHint, bool allDay)
+{
+  KOEventEditor *eventEditor = mDialogManager->getEventEditor();
+  eventEditor->newEvent(fromHint,toHint,allDay);
+  mDialogManager->connectTypeAhead( eventEditor, viewManager()->agendaView() );
+  eventEditor->show();
+}
+
 void CalendarView::newTodo( const QString &text )
 {
   KOTodoEditor *todoEditor = mDialogManager->getTodoEditor();
@@ -881,19 +889,28 @@ void CalendarView::newTodo( const QString &summary, const QString &description,
   todoEditor->show();
 }
 
-void CalendarView::newEvent(QDateTime fromHint, QDateTime toHint, bool allDay)
-{
-  KOEventEditor *eventEditor = mDialogManager->getEventEditor();
-  eventEditor->newEvent(fromHint,toHint,allDay);
-  mDialogManager->connectTypeAhead( eventEditor, viewManager()->agendaView() );
-  eventEditor->show();
-}
-
 void CalendarView::newTodo()
 {
   kdDebug() << "CalendarView::newTodo()" << endl;
+  QDateTime dtDue;
+  bool allday = true;
   KOTodoEditor *todoEditor = mDialogManager->getTodoEditor();
-  todoEditor->newTodo(QDateTime::currentDateTime().addDays(7),0,true);
+  if ( mViewManager->currentView()->isEventView() ) {
+    dtDue.setDate( mNavigator->selectedDates().first() );
+    QDateTime dtDummy = QDateTime::currentDateTime();
+    mViewManager->currentView()->
+      eventDurationHint( dtDue , dtDummy , allday );
+  }
+  else
+    dtDue = QDateTime::currentDateTime().addDays( 7 );
+  todoEditor->newTodo(dtDue,0,allday);
+  todoEditor->show();
+}
+
+void CalendarView::newTodo( QDate date )
+{
+  KOTodoEditor *todoEditor = mDialogManager->getTodoEditor();
+  todoEditor->newTodo( QDateTime( date, QTime::currentTime() ), 0, true );
   todoEditor->show();
 }
 

@@ -242,6 +242,8 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     void showTodo( Todo * );
     /** create new todo */
     void newTodo();
+    /** create new todo, due on date */
+    void newTodo( QDate date );
     /** create new todo with a parent todo */
     void newSubTodo();
     /** create new todo with a parent todo */

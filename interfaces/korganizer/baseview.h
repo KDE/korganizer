@@ -243,7 +243,7 @@ class BaseView : public QWidget
      */
     void newEventSignal(QDateTime, QDateTime);
   
-    void newTodoSignal();
+    void newTodoSignal( QDate );
     void newSubTodoSignal( Todo * );
     
   private:

@@ -187,8 +187,8 @@ void KOViewManager::connectView(KOrg::BaseView *view)
            mMainView, SLOT( newEvent( QDateTime, QDateTime ) ) );
   connect( view, SIGNAL( newEventSignal( QDate ) ),
            mMainView, SLOT( newEvent( QDate ) ) );
-  connect( view, SIGNAL( newTodoSignal() ),
-           mMainView, SLOT( newTodo() ) );
+  connect( view, SIGNAL( newTodoSignal( QDate ) ),
+           mMainView, SLOT( newTodo( QDate ) ) );
   connect( view, SIGNAL( newSubTodoSignal( Todo * ) ),
            mMainView, SLOT( newSubTodo( Todo *) ) );
 
