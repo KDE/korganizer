@@ -197,6 +197,7 @@ KOrganizerPart::KOrganizerPart(QWidget *parentWidget, const char *widgetName,
   connect( mActionManager, SIGNAL( actionKeyBindings() ),
             SLOT( configureKeyBindings() ) );
 
+#if 0
   KConfig *config = KOGlobals::config();
   config->setGroup("General");
   QString urlString = config->readPathEntry("Active Calendar");
@@ -211,6 +212,7 @@ KOrganizerPart::KOrganizerPart(QWidget *parentWidget, const char *widgetName,
     mActionManager->saveAsURL( location );
     mActionManager->makeActive();
   }
+#endif
 
   setXMLFile( "korganizer_part.rc" );
   QTimer::singleShot(0, mActionManager, SLOT(loadParts()));
