@@ -30,7 +30,7 @@
 #include <libkcal/calendar.h>
 
 class QLabel;
-class QMultiLineEdit;
+class KTextEdit;
 
 using namespace KCal;
 
@@ -63,7 +63,7 @@ class JournalEntry : public QFrame {
     QDate mDate;
     
     QLabel *mTitleLabel;
-    QMultiLineEdit *mEditor;
+    KTextEdit *mEditor;
 
     bool mDirty;
 };

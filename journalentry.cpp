@@ -25,12 +25,12 @@
 // Journal Entry
 
 #include <qlabel.h>
-#include <qmultilineedit.h>
 #include <qlayout.h>
 
 #include <kdebug.h>
 #include <kglobal.h>
 #include <klocale.h>
+#include <ktextedit.h>
 
 #include <libkcal/journal.h>
 
@@ -48,7 +48,7 @@ JournalEntry::JournalEntry(Calendar *calendar,QWidget *parent) :
   mTitleLabel->setMargin(2);
   mTitleLabel->setAlignment(AlignCenter);
   
-  mEditor = new QMultiLineEdit(this);
+  mEditor = new KTextEdit(this);
   connect(mEditor,SIGNAL(textChanged()),SLOT(setDirty()));
   
   QBoxLayout *topLayout = new QVBoxLayout(this);

@@ -114,11 +114,11 @@ void KOEditorGeneral::initSecrecy(QWidget *parent, QBoxLayout *topLayout)
 
 void KOEditorGeneral::initDescription(QWidget *parent,QBoxLayout *topLayout)
 {
-  mDescriptionEdit = new QMultiLineEdit(parent);
-  mDescriptionEdit->insertLine("");
+  mDescriptionEdit = new KTextEdit(parent);
+  mDescriptionEdit->append("");
   mDescriptionEdit->setReadOnly(false);
   mDescriptionEdit->setOverwriteMode(false);
-  mDescriptionEdit->setWordWrap(QMultiLineEdit::WidgetWidth);
+  mDescriptionEdit->setWordWrap(QTextEdit::WidgetWidth);
   topLayout->addWidget(mDescriptionEdit);
 }
 

@@ -24,7 +24,7 @@
 #include <qlineedit.h>
 #include <qspinbox.h>
 #include <qstring.h>
-#include <qtextedit.h>
+#include <ktextedit.h>
 
 #include <klistview.h>
 #include <klocale.h>
@@ -95,7 +95,7 @@ UploadDialog::UploadDialog( Engine *engine, QWidget *parent ) :
 
   QLabel *summaryLabel = new QLabel( i18n("Summary:"), topPage );
   topLayout->addMultiCellWidget( summaryLabel, 7, 7, 0, 1 );
-  mSummaryEdit = new QTextEdit( topPage );
+  mSummaryEdit = new KTextEdit( topPage );
   topLayout->addMultiCellWidget( mSummaryEdit, 8, 8, 0, 1 );
 }
 

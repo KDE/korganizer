@@ -30,10 +30,10 @@
 #include <qgroupbox.h>
 #include <qlineedit.h>
 #include <qcombobox.h>
-#include <qmultilineedit.h>
 #include <qlistview.h>
 #include <qradiobutton.h>
 
+#include <ktextedit.h>
 #include <krestrictedline.h>
 
 #include <libkcal/incidence.h>
@@ -91,7 +91,7 @@ class KOEditorGeneral : public QObject
     QPushButton             *mAlarmSoundButton;
     QPushButton             *mAlarmProgramButton;
     QComboBox               *mAlarmIncrCombo;
-    QMultiLineEdit          *mDescriptionEdit;
+    KTextEdit               *mDescriptionEdit;
     QLabel                  *mOwnerLabel;
     QComboBox               *mSecrecyCombo;
     QPushButton             *mCategoriesButton;
