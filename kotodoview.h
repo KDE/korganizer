@@ -187,6 +187,7 @@ class KOTodoView : public KOrg::BaseView
   protected slots:
     void processSelectionChange();
     void addQuickTodo();
+    void removeTodoItems();
 
   private:
     /*
@@ -201,7 +202,7 @@ class KOTodoView : public KOrg::BaseView
     friend class KOTodoViewItem;
 
     QMap<Todo *,KOTodoViewItem *>::ConstIterator insertTodoItem( Todo *todo );
-    bool removeTodoItem( KOTodoViewItem *toodItem );
+    bool scheduleRemoveTodoItem( KOTodoViewItem *todoItem );
     void restoreItemState( QListViewItem * );
 
     KOTodoListView *mTodoListView;
@@ -220,6 +221,7 @@ class KOTodoView : public KOrg::BaseView
     KOTodoViewItem *mActiveItem;
 
     QMap<Todo *,KOTodoViewItem *> mTodoMap;
+    QPtrList<KOTodoViewItem> mItemsToDelete;
 
     DocPrefs *mDocPrefs;
     QString mCurrentDoc;

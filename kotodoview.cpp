@@ -39,6 +39,7 @@
 #include <libkcal/dndfactory.h>
 #include <libkcal/calendarresources.h>
 #include <libkcal/resourcecalendar.h>
+#include <libkcal/calfilter.h>
 
 #include <libkdepim/clicklineedit.h>
 #include <libkdepim/kdatepickerpopup.h>
@@ -587,14 +588,25 @@ QMap<Todo *,KOTodoViewItem *>::ConstIterator
   }
 }
 
-bool KOTodoView::removeTodoItem( KOTodoViewItem *todoItem )
+void KOTodoView::removeTodoItems()
 {
-  if ( todoItem ) {
-    Todo *todo = todoItem->todo();
+  KOTodoViewItem *item;
+  for ( item = mItemsToDelete.first(); item; item = mItemsToDelete.next() ) {
+    Todo *todo = item->todo();
     if ( todo && mTodoMap.contains( todo ) ) {
       mTodoMap.remove( todo );
     }
-    delete todoItem;
+    delete item;
+  }
+  mItemsToDelete.clear();
+}
+
+
+bool KOTodoView::scheduleRemoveTodoItem( KOTodoViewItem *todoItem )
+{
+  if ( todoItem ) {
+    mItemsToDelete.append( todoItem );
+    QTimer::singleShot( 0, this, SLOT( removeTodoItems() ) );
     return true;
   } else 
     return false;
@@ -632,6 +644,7 @@ void KOTodoView::changeIncidenceDisplay(Incidence *incidence, int action)
   // The todo view only displays todos, so exit on all other incidences
   if ( incidence->type() != "Todo" ) 
     return;
+  bool isFiltered = !calendar()->filter()->filterIncidence( incidence );
   Todo *todo = static_cast<Todo *>(incidence);
   if ( todo ) {
     KOTodoViewItem *todoItem = 0;
@@ -643,17 +656,22 @@ void KOTodoView::changeIncidenceDisplay(Incidence *incidence, int action)
       case KOGlobals::INCIDENCEEDITED:
         // If it's already there, edit it, otherwise just add
         if ( todoItem ) { 
-          todoItem->construct();
+          if ( isFiltered )
+            scheduleRemoveTodoItem( todoItem );
+          else 
+            todoItem->construct();
         } else {
-          insertTodoItem( todo );
+          if ( !isFiltered ) 
+            insertTodoItem( todo );
         }
         break;
       case KOGlobals::INCIDENCEDELETED:
         if ( todoItem ) {
-          // TODO: Delete the item from the listview
-          removeTodoItem( todoItem );
+          scheduleRemoveTodoItem( todoItem );
         }
         break;
+      default:
+        QTimer::singleShot( 0, this, SLOT( updateView() ) );
     }
   } else {
     // use a QTimer here, because when marking todos finished using
