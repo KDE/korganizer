@@ -26,23 +26,27 @@
  */
 class KOTodoViewItem : public QCheckListItem
 {
-public:
-  /**
-   * Constructor.
-   *
-   * @param parent is the list view to which this item belongs.
-   * @param ev is the event to have the item display information for.
-   */
-  KOTodoViewItem(QListView *parent, KOEvent *ev);
-  KOTodoViewItem(KOTodoViewItem *parent, KOEvent *ev);
-  virtual ~KOTodoViewItem() {}
+  public:
+    /**
+     * Constructor.
+     *
+     * @param parent is the list view to which this item belongs.
+     * @param ev is the event to have the item display information for.
+     */
+    KOTodoViewItem(QListView *parent, KOEvent *ev);
+    KOTodoViewItem(KOTodoViewItem *parent, KOEvent *ev);
+    virtual ~KOTodoViewItem() {}
 
-  void construct();
+    void construct();
 
-  KOEvent *event() { return mEvent; }
+    KOEvent *event() { return mEvent; }
 
-private:
-  KOEvent *mEvent;
+  protected:
+    void paintBranches(QPainter *p,const QColorGroup & cg,int w,int y,int h,
+                       GUIStyle s);
+
+  private:
+    KOEvent *mEvent;
 };
 
 

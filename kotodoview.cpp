@@ -1,19 +1,5 @@
 // $Id$
 
-#include <qpainter.h>
-#include <qkeycode.h>
-#include <qprinter.h>
-#include <qscrollbar.h>
-#include <qcheckbox.h>
-#include <qpoint.h>
-#include <qfont.h>
-#include <qfontmetrics.h>
-#include <qpixmap.h>
-#include <qcolor.h>
-#include <qdrawutil.h>
-#include <qframe.h>
-#include <qlistview.h>
-#include <qmessagebox.h>
 #include <qlayout.h>
 #include <qheader.h>
 
@@ -21,8 +7,8 @@
 #include <klocale.h>
 #include <kglobal.h>
 #include <kiconloader.h>
+#include <kmessagebox.h>
 
-#include "optionsdlg.h"
 #include "vcaldrag.h"
 
 #include "kotodoview.h"
@@ -38,6 +24,12 @@ KOTodoViewItem::KOTodoViewItem(KOTodoViewItem *parent, KOEvent *ev)
   : QCheckListItem(parent,"",CheckBox), mEvent(ev)
 {
   construct();
+}
+
+void KOTodoViewItem::paintBranches(QPainter *p,const QColorGroup & cg,int w,
+                                   int y,int h,GUIStyle s)
+{
+  QListViewItem::paintBranches(p,cg,w,y,h,s);
 }
 
 void KOTodoViewItem::construct()
@@ -128,8 +120,9 @@ void KOTodoListView::contentsDropEvent(QDropEvent *e)
       KOEvent *to = destinationEvent;
       while(to) {
         if (to->getVUID() == todo->getVUID()) {
-          QMessageBox::warning(this,"Drop Todo","Cannot move Todo to itself"
-                               " or a child of itself","Close");
+          KMessageBox::sorry(this,
+              i18n("Cannot move Todo to itself or a child of itself"),
+              i18n("Drop Todo"));
           delete todo;
           return;
         }
@@ -372,9 +365,8 @@ void KOTodoView::deleteTodo()
 {
   if (mActiveItem) {
     if (mActiveItem->childCount()) {
-      QMessageBox::warning(this,"Delete To-Do",
-                           "Can not delete To-Do which has children.",
-                           QMessageBox::Ok,0);
+      KMessageBox::sorry(this,i18n("Cannot delete To-Do which has children."),
+                         i18n("Delete To-Do"));
     } else {
       emit deleteEventSignal(mActiveItem->event());
     }
