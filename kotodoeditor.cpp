@@ -48,7 +48,7 @@
 
 KOTodoEditor::KOTodoEditor(CalObject *calendar) :
   KDialogBase(Tabbed,i18n("Edit To-Do"),Ok|Apply|Cancel|Default|User1,Ok,0,0,
-              false,false,"Delete")
+              false,false,i18n("Delete"))
 {
   mCalendar = calendar;
   mTodo = 0;
