@@ -121,7 +121,7 @@ void KOGroupware::incomingDirChanged( const QString& path )
   const QString incomingDirName = locateLocal( "data","korganizer/" )
                                   + "income.";
   if ( !path.startsWith( incomingDirName ) ) {
-    kdDebug(5850) << "incomingDirChanged: Wrong dir " << path << endl;
+    //kdDebug(5850) << "incomingDirChanged: Wrong dir " << path << endl;
     return;
   }
   QString action = path.mid( incomingDirName.length() );
