@@ -141,7 +141,7 @@ QBitArray RecurWeekly::days()
   for ( int i = 0; i < 7; ++i ) {
     days.setBit( i, mDayBoxes[ i ]->isChecked() );
   }
-  
+
   return days;
 }
 
@@ -155,7 +155,7 @@ RecurMonthly::RecurMonthly( QWidget *parent, const char *name ) :
 
 
   QBoxLayout *freqLayout = new QHBoxLayout( topLayout );
-  
+
   QLabel *preLabel = new QLabel( i18n("every"), this );
   freqLayout->addWidget( preLabel );
 
@@ -177,7 +177,7 @@ RecurMonthly::RecurMonthly( QWidget *parent, const char *name ) :
   if ( !KOPrefs::instance()->mCompactDialogs ) {
     recurOnText = i18n("Recur on the");
   }
-  
+
   mByDayRadio = new QRadioButton( recurOnText, buttonGroup );
   buttonLayout->addWidget( mByDayRadio, 0, 0 );
 
@@ -329,14 +329,14 @@ RecurYearly::RecurYearly( QWidget *parent, const char *name ) :
   mByMonthCombo->insertItem( i18n("December") );
   buttonLayout->addWidget( mByMonthCombo, 0, 1 );
 
-  
+
   buttonLayout->setRowStretch( 1, 1 );
 
   QString recurOnDayText;
   if ( KOPrefs::instance()->mCompactDialogs ) {
     recurOnDayText = i18n("This day");
   } else {
-    i18n("Recur on this day");
+    recurOnDayText = i18n("Recur on this day");
   }
 
   mByDayRadio = new QRadioButton( recurOnDayText, buttonGroup);
@@ -504,7 +504,7 @@ RecurrenceRangeWidget::RecurrenceRangeWidget( QWidget *parent,
   mEndDurationButton = new QRadioButton( i18n("End after"), rangeBox );
   rangeButtonGroup->insert( mEndDurationButton );
   durationLayout->addWidget( mEndDurationButton );
-  
+
   mEndDurationEdit = new QSpinBox( 1, 9999, 1, rangeBox );
   durationLayout->addWidget( mEndDurationEdit );
 
@@ -513,11 +513,11 @@ RecurrenceRangeWidget::RecurrenceRangeWidget( QWidget *parent,
 
   QBoxLayout *endDateLayout = new QHBoxLayout( rangeLayout );
   endDateLayout->setSpacing( KDialog::spacingHint() );
-  
+
   mEndDateButton = new QRadioButton( i18n("End by:"), rangeBox );
   rangeButtonGroup->insert( mEndDateButton );
   endDateLayout->addWidget( mEndDateButton );
-  
+
   mEndDateEdit = new KDateEdit( rangeBox );
   endDateLayout->addWidget( mEndDateEdit );
 
@@ -644,7 +644,7 @@ RecurrenceChooser::RecurrenceChooser( QWidget *parent, const char *name ) :
     connect( mTypeCombo, SIGNAL( activated( int ) ), SLOT( emitChoice() ) );
   } else {
     mTypeCombo = 0;
-  
+
     QButtonGroup *ruleButtonGroup = new QButtonGroup( 1, Horizontal, this );
     ruleButtonGroup->setFrameStyle( QFrame::NoFrame );
     topLayout->addWidget( ruleButtonGroup );
@@ -777,7 +777,7 @@ KOEditorRecurrence::KOEditorRecurrence( QWidget* parent, const char *name ) :
     mRecurrenceRange = mRecurrenceRangeDialog;
     mRecurrenceRangeButton = new QPushButton( i18n("Recurrence Range..."),
                                               this );
-    topLayout->addWidget( mRecurrenceRangeButton, 3, 0 );    
+    topLayout->addWidget( mRecurrenceRangeButton, 3, 0 );
     connect( mRecurrenceRangeButton, SIGNAL( clicked() ),
              SLOT( showRecurrenceRangeDialog() ) );
 
@@ -938,7 +938,7 @@ void KOEditorRecurrence::readEvent(Event *event)
       recurrenceType = RecurrenceChooser::Yearly;
 
       rmd = r->yearNums();
-      month = *rmd.first(); 
+      month = *rmd.first();
       if ( month == event->dtStart().date().month() ) {
         mYearly->setByDay();
       } else {
@@ -967,7 +967,7 @@ void KOEditorRecurrence::readEvent(Event *event)
 void KOEditorRecurrence::writeEvent( Event *event )
 {
   Recurrence *r = event->recurrence();
-    
+
   // clear out any old settings;
   r->unsetRecurs();
 
