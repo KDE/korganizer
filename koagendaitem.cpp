@@ -27,6 +27,9 @@
 #include <kdebug.h>
 #include <klocale.h>
 
+#include <libkcal/icaldrag.h>
+#include <libkcal/vcaldrag.h>
+
 #include "koprefs.h"
 
 #include "koagendaitem.h"
@@ -362,7 +365,8 @@ QToolTipGroup *KOAgendaItem::toolTipGroup()
 void KOAgendaItem::dragEnterEvent( QDragEnterEvent *e )
 {
 #ifndef KORG_NODND
-  if (!QTextDrag::canDecode(e)) {
+  if ( ICalDrag::canDecode( e ) || VCalDrag::canDecode( e ) ||
+       !QTextDrag::canDecode( e ) ) {
     e->ignore();
     return;
   }
