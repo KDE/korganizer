@@ -21,6 +21,7 @@
     without including the source code for Qt in the source distribution.
 */
 
+#include <qapplication.h>
 #include <qfile.h>
 #include <qtextstream.h>
 #include <qtextcodec.h>
@@ -66,18 +67,8 @@ bool HtmlExport::save(QTextStream *ts)
   *ts << "UTF-8\" />\n";
   *ts << "  <title>" << i18n("KOrganizer To-Do List") << "</title>\n";
   *ts << "  <style type=\"text/css\">\n";
-  *ts << "    body { background-color:white; color:black }\n";
-  *ts << "    td { text-align:center; background-color:#eee }\n";
-  *ts << "    th { text-align:center; background-color:#228; color:white }\n";
-  *ts << "    td.sum { text-align:left }\n";
-  *ts << "    td.sumdone { text-align:left; background-color:#ccc }\n";
-  *ts << "    td.done { background-color:#ccc }\n";
-  *ts << "    td.subhead { text-align:center; background-color:#ccf }\n";
-  *ts << "    td.datehead { text-align:center; background-color:#ccf }\n";
-  *ts << "    td.space { background-color:white }\n";
-  *ts << "    td.date { text-align:left }\n";
-  *ts << "    td.dateholiday { text-align:left; color:red }\n";
-  *ts <<   "</style>\n";
+  *ts << styleSheet();
+  *ts << "  </style>\n";
   *ts << "</head><body>\n";
 
   // TO DO: Write KOrganizer header
@@ -533,4 +524,42 @@ QString HtmlExport::cleanChars(const QString &text)
   txt = txt.replace( QRegExp("é"), "&eacute;" );
 
   return txt;
+}
+
+void HtmlExport::setStyleSheet( const QString &styleSheet )
+{
+  mStyleSheet = styleSheet;
+}
+
+QString HtmlExport::styleSheet()
+{
+  if ( !mStyleSheet.isEmpty() ) return mStyleSheet;
+
+  QString css;
+
+  if ( QApplication::reverseLayout() ) {
+    css += "    body { background-color:white; color:black; direction: rtl }\n";
+    css += "    td { text-align:center; background-color:#eee }\n";
+    css += "    th { text-align:center; background-color:#228; color:white }\n";
+    css += "    td.sumdone { background-color:#ccc }\n";
+    css += "    td.done { background-color:#ccc }\n";
+    css += "    td.subhead { text-align:center; background-color:#ccf }\n";
+    css += "    td.datehead { text-align:center; background-color:#ccf }\n";
+    css += "    td.space { background-color:white }\n";
+    css += "    td.dateholiday { color:red }\n";
+  } else {
+    css += "    body { background-color:white; color:black }\n";
+    css += "    td { text-align:center; background-color:#eee }\n";
+    css += "    th { text-align:center; background-color:#228; color:white }\n";
+    css += "    td.sum { text-align:left }\n";
+    css += "    td.sumdone { text-align:left; background-color:#ccc }\n";
+    css += "    td.done { background-color:#ccc }\n";
+    css += "    td.subhead { text-align:center; background-color:#ccf }\n";
+    css += "    td.datehead { text-align:center; background-color:#ccf }\n";
+    css += "    td.space { background-color:white }\n";
+    css += "    td.date { text-align:left }\n";
+    css += "    td.dateholiday { text-align:left; color:red }\n";
+  }
+  
+  return css;
 }

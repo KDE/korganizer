@@ -101,6 +101,9 @@ class HtmlExport {
     QDate fromDate() { return mFromDate; }
     QDate toDate() { return mToDate; }
   
+    void setStyleSheet( const QString & );
+    QString styleSheet();
+  
   protected:
 
     void createHtmlMonthView (QTextStream *ts);  
@@ -137,6 +140,8 @@ class HtmlExport {
     
     QDate mFromDate;
     QDate mToDate;
+
+    QString mStyleSheet;
 };
 
 #endif
