@@ -826,20 +826,22 @@ void KOAgendaView::insertIncidence( Incidence *incidence, QDate curDate, int cur
   if ( curCol < 0 || curCol > int( mSelectedDates.size() ) )
     return;
 
-  int beginX = curDate.daysTo( incidence->dtStart().date() ) + curCol;
+  int beginX;
   int endX;
-  if ( event )
+  if ( event ) {
+    beginX = curDate.daysTo( incidence->dtStart().date() ) + curCol;
     endX = curDate.daysTo( event->dtEnd().date() ) + curCol;
-  if ( todo )
-    endX = curDate.daysTo( todo->dtDue().date() ) + curCol;
+  }
+  if ( todo ) {
+    beginX = curDate.daysTo( todo->dtDue().date() ) + curCol;
+    endX = beginX;
+  }
 
   if ( incidence->doesFloat() ) {
     if ( incidence->recurrence()->doesRecur() ) {
       mAllDayAgenda->insertAllDayItem( incidence, curDate, curCol, curCol );
     } else {
-      if ( beginX <= 0 && curCol == 0 ) {
-        mAllDayAgenda->insertAllDayItem( incidence, curDate, beginX, endX );
-      } else if (beginX == curCol) {
+      if ( ( beginX <= 0 && curCol == 0 ) || beginX == curCol ) {
         mAllDayAgenda->insertAllDayItem( incidence, curDate, beginX, endX );
       }
     }
@@ -860,12 +862,16 @@ void KOAgendaView::insertIncidence( Incidence *incidence, QDate curDate, int cur
       mMaxY[curCol] = mAgenda->timeToY( QTime(23,59) );
     }
   } else {
-    int startY = mAgenda->timeToY( incidence->dtStart().time() );
-    int endY;
-    if ( event )
+    int startY = 0, endY = 0;
+    if ( event ) {
+      startY = mAgenda->timeToY( incidence->dtStart().time() );
       endY = mAgenda->timeToY( event->dtEnd().time() ) - 1;
-    if ( todo )
-      endY = mAgenda->timeToY( todo->dtDue().time() ) - 1;
+    }
+    if ( todo ) {
+      QTime t = todo->dtDue().time();
+      endY = mAgenda->timeToY( t ) - 1;
+      startY = mAgenda->timeToY( t.addSecs( -1800 ) );
+    }
     if ( endY < startY ) endY = startY;
     mAgenda->insertItem( incidence, curDate, curCol, startY, endY );
     if ( startY < mMinY[curCol] ) mMinY[curCol] = startY;
@@ -882,7 +888,6 @@ void KOAgendaView::changeIncidenceDisplayAdded( Incidence *incidence )
   QDate l = mSelectedDates.last();
   QDate startDt = incidence->dtStart().date();
 
-
   if ( incidence->doesRecur() ) {
     DateList::ConstIterator dit;
     QDate curDate;
@@ -897,9 +902,15 @@ void KOAgendaView::changeIncidenceDisplayAdded( Incidence *incidence )
 
   QDate endDt;
   if ( incidence->type() == "Event" )
-    endDt = (dynamic_cast<Event *>(incidence))->dtEnd().date();
-  if ( incidence->type() == "Todo" )
-    endDt = (dynamic_cast<Todo *>(incidence))->dtDue().date();
+    endDt = (static_cast<Event *>(incidence))->dtEnd().date();
+  if ( incidence->type() == "Todo" ) {
+    Todo *todo = static_cast<Todo *>(incidence);
+    endDt = todo->dtDue().date();
+    if ( endDt >= f && endDt <= l ) {
+      insertIncidence( incidence, endDt );
+      return;
+    }
+  }
 
   if ( startDt <= l ) {
     if ( startDt >= f ) {
@@ -925,11 +936,13 @@ void KOAgendaView::changeIncidenceDisplay( Incidence *incidence, int mode )
     case KOGlobals::INCIDENCEDELETED: {
 // TODO: Removing does not work, as it does not correctly reset the max nr. of conflicting items. Thus the items will sometimes not fill the whole width of the column. As a workaround, just recreate the whole view for now... */
       if ( !mItemDragged ) {
-        if ( incidence->doesFloat() )
+        bool floats = incidence->doesFloat();
+        QCString type = incidence->type();
+        if ( type == "Todo" || ( type == "Event" && floats ) )
           mAllDayAgenda->removeIncidence( incidence );
-        else
+        if ( type == "Todo" || ( type == "Event" && !floats ) )
           mAgenda->removeIncidence( incidence );
-        if ( mode == KOGlobals::INCIDENCEEDITED  )
+        if ( mode == KOGlobals::INCIDENCEEDITED )
           changeIncidenceDisplayAdded( incidence );
       } else {
         mItemDragged = false;
