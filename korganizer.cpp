@@ -63,7 +63,7 @@
 #define AGENDABUTTON 0x10
 #define NOACCEL 0
 
-QList<KOrganizer> KOrganizer::windowList;
+QList<KOrganizer> *KOrganizer::windowList = 0;
 
 KOrganizer::KOrganizer(QString filename, bool fnOverride, const char *name ) 
   : KTMainWindow( name )
@@ -75,7 +75,8 @@ KOrganizer::KOrganizer(QString filename, bool fnOverride, const char *name )
   mAutoSave = false;
 
   // add this instance of the window to the static list.
-  windowList.append(this);
+  if (!windowList) windowList = new QList<KOrganizer>;
+  windowList->append(this);
 
 //  setMinimumSize(600,400);	// make sure we don't get resized too small...
 
@@ -127,7 +128,7 @@ KOrganizer::~KOrganizer()
 
   // Free memory allocated for widgets (not children)
   // Take this window out of the window list.
-  windowList.removeRef( this );
+  windowList->removeRef( this );
   qDebug("~KOrganizer() done");
 }
 

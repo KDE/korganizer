@@ -56,7 +56,7 @@ class KOrganizer : public KTMainWindow
     virtual ~KOrganizer();
 
     // public variables
-    static QList<KOrganizer> windowList;
+    static QList<KOrganizer> *windowList;
 
     // View Types in enum
     enum { AGENDAVIEW, LISTVIEW, MONTHVIEW, TODOVIEW };
