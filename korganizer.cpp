@@ -73,6 +73,7 @@
 #include "koglobals.h"
 #include "alarmclient.h"
 #include "resourceview.h"
+#include "kogroupware.h"
 
 #include "korganizer.h"
 using namespace KParts;
@@ -135,6 +136,9 @@ KOrganizer::KOrganizer( bool document, const char *name )
 
     mCalendarView = new CalendarView( mCalendarResources, this,
                                       "KOrganizer::CalendarView" );
+
+    // Construct the groupware object
+    KOGroupware::create( mCalendarView, mCalendarResources );
 
     ResourceViewFactory factory( manager, mCalendarView );
     mCalendarView->addExtension( &factory );
@@ -449,6 +453,11 @@ void KOrganizer::setActive(bool active)
 bool KOrganizer::deleteEvent(QString uid)
 {
   return mActionManager->deleteEvent( uid );
+}
+
+bool KOrganizer::eventRequest(QString request, QCString receiver, QString ical)
+{
+  return mActionManager->eventRequest( request, receiver, ical );
 }
 
 KOrg::CalendarViewBase *KOrganizer::view() const

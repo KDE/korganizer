@@ -115,6 +115,8 @@ class KOrganizer : public KParts::MainWindow, virtual public KOrganizerIface, pu
     /** Delete event with the given unique id from current calendar. */
     virtual bool deleteEvent(QString uid);
 
+    bool eventRequest(QString request, QCString receiver, QString ical);
+
     virtual KXMLGUIFactory *mainGuiFactory() { return factory(); }
     virtual QWidget *topLevelWidget() { return this; }
     virtual void addPluginAction( KAction * ) {}
