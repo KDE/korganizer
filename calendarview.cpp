@@ -865,8 +865,12 @@ void CalendarView::newEvent(QDateTime fh)
 
 void CalendarView::newEvent(QDate dt)
 {
-  newEvent(QDateTime(dt, QTime(0,0,0)),
-           QDateTime(dt, QTime(0,0,0)), true);
+  QTime startTime = KOPrefs::instance()->mStartTime.time();
+  QTime defaultDuration( KOPrefs::instance()->mDefaultDuration.time() );
+  QTime endTime = startTime.addSecs( defaultDuration.hour()*3600 +
+     defaultDuration.minute()*60 + defaultDuration.second() );
+  newEvent(QDateTime(dt, startTime),
+           QDateTime(dt, endTime), true);
 }
 
 void CalendarView::newEvent( const QString &text )
