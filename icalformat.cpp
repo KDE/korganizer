@@ -48,19 +48,25 @@ bool ICalFormat::load(const QString &fileName)
   icalfileset *fs = icalfileset_new(writeText(fileName));
 
   if (!fs) {
+    kdDebug() << "ICalFormat::load() load error" << endl;
     setException(new KOErrorFormat(KOErrorFormat::LoadError));
     return false;
   }
+
+    kdDebug() << "tick1" << endl;
 
   // Get first VCALENDAR component.
   // TODO: Handle more than one VCALENDAR or non-VCALENDAR top components
   icalcomponent *calendar;
   calendar = icalfileset_get_first_component(fs);
 
+    kdDebug() << "tick2" << endl;
+
   while(calendar) {
     if (icalcomponent_isa(calendar) == ICAL_VCALENDAR_COMPONENT) break;
     calendar = icalfileset_get_next_component(fs);
   }
+    kdDebug() << "tick3" << endl;
 
   if (!calendar) {
     kdDebug("ICalFormat::load(): No VCALENDAR component found");
@@ -69,11 +75,14 @@ bool ICalFormat::load(const QString &fileName)
   }
 
 //  kdDebug() << "Error: " << icalerror_perror() << endl;
+    kdDebug() << "tick3" << endl;
 
   // put all vobjects into their proper places
   bool success = populate(calendar);
+    kdDebug() << "tick4" << endl;
 
   icalfileset_free(fs);
+    kdDebug() << "tick5" << endl;
 
   return success;
 }
@@ -132,7 +141,7 @@ bool ICalFormat::save(const QString &fileName)
 }
 
 // Disabled until iCalendar drag and drop is implemented
-VCalDrag *ICalFormat::createDrag(Event *selectedEv, QWidget *owner)
+VCalDrag *ICalFormat::createDrag(Event */*selectedEv*/, QWidget */*owner*/)
 {
   return 0;
 #if 0
@@ -159,7 +168,7 @@ VCalDrag *ICalFormat::createDrag(Event *selectedEv, QWidget *owner)
 #endif
 }
 
-VCalDrag *ICalFormat::createDragTodo(Todo *selectedEv, QWidget *owner)
+VCalDrag *ICalFormat::createDragTodo(Todo */*selectedEv*/, QWidget */*owner*/)
 {
   return 0;
 #if 0
@@ -186,7 +195,7 @@ VCalDrag *ICalFormat::createDragTodo(Todo *selectedEv, QWidget *owner)
 #endif
 }
 
-Event *ICalFormat::createDrop(QDropEvent *de)
+Event *ICalFormat::createDrop(QDropEvent */*de*/)
 {
   return 0;
 #if 0
@@ -220,7 +229,7 @@ Event *ICalFormat::createDrop(QDropEvent *de)
 #endif
 }
 
-Todo *ICalFormat::createDropTodo(QDropEvent *de)
+Todo *ICalFormat::createDropTodo(QDropEvent */*de*/)
 {
   return 0;
 #if 0
@@ -254,7 +263,7 @@ Todo *ICalFormat::createDropTodo(QDropEvent *de)
 #endif
 }
 
-bool ICalFormat::copyEvent(Event *selectedEv)
+bool ICalFormat::copyEvent(Event */*selectedEv*/)
 {
   return false;
 #if 0
@@ -284,7 +293,7 @@ bool ICalFormat::copyEvent(Event *selectedEv)
 #endif
 }
 
-Event *ICalFormat::pasteEvent(const QDate *newDate,const QTime *newTime)
+Event *ICalFormat::pasteEvent(const QDate */*newDate*/,const QTime */*newTime*/)
 {
   return 0;
 #if 0
@@ -677,7 +686,7 @@ void ICalFormat::writeIncidence(icalcomponent *parent,Incidence *incidence)
       icalproperty *p = icalproperty_new_attendee(
           writeText("MAILTO:" + attendee));
       icalproperty_add_parameter(p,icalparameter_new_rsvp(
-          curAttendee->RSVP()));
+          curAttendee->RSVP() ? ICAL_RSVP_TRUE : ICAL_RSVP_FALSE ));
 // TODO: attendee status
 //      addPropValue(aProp, VCStatusProp, curAttendee->getStatusStr().ascii());
 
@@ -1054,21 +1063,21 @@ icalcomponent *ICalFormat::writeAlarm(KOAlarm *alarm)
 {
   icalcomponent *a = icalcomponent_new(ICAL_VALARM_COMPONENT);
   
-  const char *action;
+  icalproperty_action action;
   icalattachtype *attach;
   
   if (!alarm->programFile().isEmpty()) {
-    action = "PROCEDURE";
+    action = ICAL_ACTION_PROCEDURE;
     attach = icalattachtype_new();
     icalattachtype_set_url(attach,QFile::encodeName(alarm->programFile()).data());
     icalcomponent_add_property(a,icalproperty_new_attach(*attach));
   } else if (!alarm->audioFile().isEmpty()) {
-    action = "AUDIO";
+    action = ICAL_ACTION_AUDIO;
     attach = icalattachtype_new();
     icalattachtype_set_url(attach,QFile::encodeName(alarm->audioFile()).data());
     icalcomponent_add_property(a,icalproperty_new_attach(*attach));
   } else {
-    action = "DISPLAY";
+    action = ICAL_ACTION_DISPLAY;
     icalcomponent_add_property(a,icalproperty_new_description("An Alarm"));
   }
   icalcomponent_add_property(a,icalproperty_new_action(action));
@@ -1777,7 +1786,7 @@ void ICalFormat::readAlarm(icalcomponent *alarm,Incidence *incidence)
   icaltriggertype trigger;
   icalattachtype attach;
   
-  const char *action;
+  icalproperty_action action;
   const char *text;
 
   while (p) {
@@ -1955,6 +1964,8 @@ bool ICalFormat::populate(icalcomponent *calendar)
 {
   // this function will populate the caldict dictionary and other event 
   // lists. It turns vevents into Events and then inserts them.
+
+    if (!calendar) return false;
 
 // TODO: check for METHOD
 #if 0
