@@ -111,25 +111,6 @@ class KOEventView : public KOrg::BaseView
     void datesSelected(const DateList);
 
     /**
-     * instructs the receiver to show the incidence in read-only mode.
-     */
-    void showIncidenceSignal(Incidence *);
-
-    /**   
-     * instructs the receiver to begin editing the incidence specified in
-     * some manner.  Doesn't make sense to connect to more than one 
-     * receiver.
-     */
-    void editIncidenceSignal(Incidence *);
-
-    /**
-     * instructs the receiver to delete the Incidence in some manner; some
-     * possibilities include automatically, with a confirmation dialog
-     * box, etc.  Doesn't make sense to connect to more than one receiver.
-     */
-    void deleteIncidenceSignal(Incidence *);
-
-    /**
      * instructs the receiver to create a new event.  Doesn't make
      * sense to connect to more than one receiver.
      */

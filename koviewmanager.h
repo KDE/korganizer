@@ -71,6 +71,7 @@ class KOViewManager : public QObject
 
     void raiseCurrentView();
 
+    void connectView( KOrg::BaseView * );
     void addView( KOrg::BaseView * );
 
     Incidence *currentSelection();

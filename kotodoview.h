@@ -164,6 +164,7 @@ class KOTodoView : public KOrg::BaseView
     void editItem( QListViewItem *item, const QPoint &, int );
     void editItem( QListViewItem *item );
     void showItem( QListViewItem *item, const QPoint &, int );
+    void showItem( QListViewItem *item );
     void popupMenu( QListViewItem *item, const QPoint &, int );
     void newTodo();
     void newSubTodo();
@@ -190,10 +191,7 @@ class KOTodoView : public KOrg::BaseView
     void newTodoSignal();
     void newSubTodoSignal( Todo * );
     void unSubTodoSignal();
-    void showTodoSignal( Todo * );
 
-    void editTodoSignal( Todo * );
-    void deleteTodoSignal( Todo * );
     void todoModifiedSignal( Todo *, Todo *, int );
     void todoChanged ( Todo*, Todo* );
     void todoAdded ( Todo* );

@@ -628,7 +628,8 @@ CalPrinter::PrintType KOTodoView::printType()
 
 void KOTodoView::editItem( QListViewItem *item )
 {
-  emit editTodoSignal( static_cast<KOTodoViewItem *>( item )->todo() );
+  if (item)
+    emit editIncidenceSignal( static_cast<KOTodoViewItem *>( item )->todo() );
 }
 
 void KOTodoView::editItem( QListViewItem *item, const QPoint &, int )
@@ -636,9 +637,15 @@ void KOTodoView::editItem( QListViewItem *item, const QPoint &, int )
   editItem( item );
 }
 
+void KOTodoView::showItem( QListViewItem *item )
+{
+  if (item) 
+    emit showIncidenceSignal( static_cast<KOTodoViewItem *>( item )->todo() );
+}
+
 void KOTodoView::showItem( QListViewItem *item, const QPoint &, int )
 {
-  emit showTodoSignal( static_cast<KOTodoViewItem *>( item )->todo() );
+  showItem( item );
 }
 
 void KOTodoView::popupMenu( QListViewItem *item, const QPoint &, int column )
@@ -691,16 +698,12 @@ void KOTodoView::newSubTodo()
 
 void KOTodoView::editTodo()
 {
-  if (mActiveItem) {
-    emit editTodoSignal(mActiveItem->todo());
-  }
+  editItem( mActiveItem );
 }
 
 void KOTodoView::showTodo()
 {
-  if (mActiveItem) {
-    emit showTodoSignal(mActiveItem->todo());
-  }
+  showItem( mActiveItem );
 }
 
 void KOTodoView::deleteTodo()
@@ -710,7 +713,7 @@ void KOTodoView::deleteTodo()
       KMessageBox::sorry(this,i18n("Cannot delete To-Do which has children."),
                          i18n("Delete To-Do"));
     } else {
-      emit deleteTodoSignal(mActiveItem->todo());
+      emit deleteIncidenceSignal(mActiveItem->todo());
     }
   }
 }

@@ -289,12 +289,12 @@ void KOProjectView::showEvents( const Event::List & )
 #if 0
 void KOProjectView::editItem(QListViewItem *item)
 {
-  emit editEventSignal(((KOProjectViewItem *)item)->event());
+  emit editIncidenceSignal(((KOProjectViewItem *)item)->event());
 }
 
 void KOProjectView::showItem(QListViewItem *item)
 {
-  emit showTodoSignal(((KOProjectViewItem *)item)->event());
+  emit showIncidenceSignal(((KOProjectViewItem *)item)->event());
 }
 
 void KOProjectView::popupMenu(QListViewItem *item,const QPoint &,int)
@@ -319,14 +319,14 @@ void KOProjectView::newSubTodo()
 void KOProjectView::editTodo()
 {
   if (mActiveItem) {
-    emit editEventSignal(mActiveItem->event());
+    emit editIncidenceSignal(mActiveItem->event());
   }
 }
 
 void KOProjectView::showTodo()
 {
   if (mActiveItem) {
-    emit showTodoSignal(mActiveItem->event());
+    emit showIncidenceSignal(mActiveItem->event());
   }
 }
 
@@ -337,7 +337,7 @@ void KOProjectView::deleteTodo()
       KMessageBox::sorry(this,i18n("Cannot delete To-Do which has children."),
                          i18n("Delete To-Do"));
     } else {
-      emit deleteEventSignal(mActiveItem->event());
+      emit deleteIncidenceSignal(mActiveItem->event());
     }
   }
 }

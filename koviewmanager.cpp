@@ -162,20 +162,12 @@ void KOViewManager::updateView(const QDate &start, const QDate &end)
   if (mTodoView) mTodoView->updateView();
 }
 
-
 void KOViewManager::showWhatsNextView()
 {
   if (!mWhatsNextView) {
     mWhatsNextView = new KOWhatsNextView(mMainView->calendar(),mMainView->viewStack(),
                                          "KOViewManager::WhatsNextView");
     addView(mWhatsNextView);
-    connect(mWhatsNextView, SIGNAL(showIncidenceSignal(Incidence *)),
-            mMainView, SLOT(showIncidence(Incidence *)));
-    connect(mWhatsNextView, SIGNAL(editIncidenceSignal(Incidence *)),
-            mMainView, SLOT(editIncidence(Incidence *)));
-    connect(mWhatsNextView, SIGNAL(deleteIncidenceSignal(Incidence *)),
-            mMainView, SLOT(deleteIncidence(Incidence *)));
-
   }
 
   showView(mWhatsNextView);
@@ -186,13 +178,6 @@ void KOViewManager::showListView()
   if (!mListView) {
     mListView = new KOListView(mMainView->calendar(), mMainView->viewStack(), "KOViewManager::ListView");
     addView(mListView);
-
-    connect(mListView, SIGNAL(showIncidenceSignal(Incidence *)),
-            mMainView, SLOT(showIncidence(Incidence *)));
-    connect(mListView, SIGNAL(editIncidenceSignal(Incidence *)),
-            mMainView, SLOT(editIncidence(Incidence *)));
-    connect(mListView, SIGNAL(deleteIncidenceSignal(Incidence *)),
-            mMainView, SLOT(deleteIncidence(Incidence *)));
 
     connect( mListView, SIGNAL( incidenceSelected( Incidence * ) ),
              mMainView, SLOT( processMainViewSelection( Incidence * ) ) );
@@ -224,13 +209,6 @@ void KOViewManager::showAgendaView()
              mMainView, SLOT( newEvent( QDateTime, QDateTime ) ) );
     connect( mAgendaView, SIGNAL( newEventSignal( QDate ) ),
              mMainView, SLOT( newEvent( QDate ) ) );
-
-    connect(mAgendaView, SIGNAL(editIncidenceSignal(Incidence *)),
-            mMainView, SLOT(editIncidence(Incidence *)));
-    connect(mAgendaView, SIGNAL(showIncidenceSignal(Incidence *)),
-            mMainView, SLOT(showIncidence(Incidence *)));
-    connect(mAgendaView, SIGNAL(deleteIncidenceSignal(Incidence *)),
-            mMainView, SLOT(deleteIncidence(Incidence *)));
 
     connect( mAgendaView, SIGNAL( incidenceSelected( Incidence * ) ),
              mMainView, SLOT( processMainViewSelection( Incidence * ) ) );
@@ -292,13 +270,6 @@ void KOViewManager::showMonthView()
     connect(mMonthView, SIGNAL(newEventSignal()),
             mMainView, SLOT(newEvent()));
 
-    connect(mMonthView, SIGNAL(showIncidenceSignal(Incidence *)),
-            mMainView, SLOT(showIncidence(Incidence *)));
-    connect(mMonthView, SIGNAL(editIncidenceSignal(Incidence *)),
-            mMainView, SLOT(editIncidence(Incidence *)));
-    connect(mMonthView, SIGNAL(deleteIncidenceSignal(Incidence *)),
-            mMainView, SLOT(deleteIncidence(Incidence *)));
-
     connect( mMonthView, SIGNAL( incidenceSelected( Incidence * ) ),
              mMainView, SLOT( processMainViewSelection( Incidence * ) ) );
 
@@ -317,12 +288,6 @@ void KOViewManager::connectTodoView( KOTodoView* todoView )
            mMainView, SLOT( newTodo() ) );
   connect( todoView, SIGNAL( newSubTodoSignal( Todo * ) ),
            mMainView, SLOT( newSubTodo( Todo *) ) );
-  connect( todoView, SIGNAL( showTodoSignal( Todo *) ),
-           mMainView, SLOT( showTodo( Todo * ) ) );
-  connect( todoView, SIGNAL( editTodoSignal( Todo * ) ),
-           mMainView, SLOT( editTodo( Todo * ) ) );
-  connect( todoView, SIGNAL( deleteTodoSignal( Todo * ) ),
-           mMainView, SLOT( deleteTodo( Todo * ) ) );
   connect( todoView, SIGNAL( purgeCompletedSignal() ),
            mMainView, SLOT( purgeCompleted() ) );
   connect( todoView, SIGNAL( unSubTodoSignal() ),
@@ -406,8 +371,19 @@ QDate KOViewManager::currentSelectionDate()
   return qd;
 }
 
+void KOViewManager::connectView(KOrg::BaseView *view)
+{
+  connect(view, SIGNAL(showIncidenceSignal(Incidence *)),
+          mMainView, SLOT(showIncidence(Incidence *)));
+  connect(view, SIGNAL(editIncidenceSignal(Incidence *)),
+          mMainView, SLOT(editIncidence(Incidence *)));
+  connect(view, SIGNAL(deleteIncidenceSignal(Incidence *)),
+          mMainView, SLOT(deleteIncidence(Incidence *)));
+}
+
 void KOViewManager::addView(KOrg::BaseView *view)
 {
+  connectView( view );
 #if QT_VERSION >= 300
   mMainView->viewStack()->addWidget( view );
 #else

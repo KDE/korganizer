@@ -254,6 +254,7 @@ CalendarView::CalendarView( QWidget *parent, const char *name )
            mDateNavigator, SLOT( updateConfig() ) );
 
   mViewManager->connectTodoView( mTodoList );
+  mViewManager->connectView( mTodoList );
 
   connect( mFilterView, SIGNAL( filterChanged() ), SLOT( updateFilter() ) );
   connect( mFilterView, SIGNAL( editFilters() ), SLOT( editFilters() ) );

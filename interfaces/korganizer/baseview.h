@@ -198,6 +198,25 @@ class BaseView : public QWidget
   signals:
     void incidenceSelected( Incidence * );
 
+    /**
+     * instructs the receiver to show the incidence in read-only mode.
+     */
+    void showIncidenceSignal(Incidence *);
+
+    /**   
+     * instructs the receiver to begin editing the incidence specified in
+     * some manner.  Doesn't make sense to connect to more than one 
+     * receiver.
+     */
+    void editIncidenceSignal(Incidence *);
+
+    /**
+     * instructs the receiver to delete the Incidence in some manner; some
+     * possibilities include automatically, with a confirmation dialog
+     * box, etc.  Doesn't make sense to connect to more than one receiver.
+     */
+    void deleteIncidenceSignal(Incidence *);
+
   private:
     Calendar *mCalendar;
 };

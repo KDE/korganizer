@@ -110,9 +110,6 @@ class KOProjectView : public KOrg::BaseView
   signals:
     void newTodoSignal();
     void newSubTodoSignal(Todo *);
-    void showTodoSignal(Todo *);
-    void editTodoSignal(Todo *);
-    void deleteTodoSignal(Todo *);
 
   private:
     void createMainTask();
