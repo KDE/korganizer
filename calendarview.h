@@ -47,9 +47,8 @@ class ResourceView;
 class NavigatorBar;
 class DateChecker;
 
-namespace KOrg { class History; class IncidenceChangerBase; }
+namespace KOrg { class History; }
 
-using namespace KOrg;
 using namespace KCal;
 
 class CalendarViewExtension : public QWidget
@@ -87,48 +86,23 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     CalendarView( QWidget *parent = 0, const char *name = 0 );
     virtual ~CalendarView();
 
-    
-    class CalendarViewVisitor : public IncidenceBase::Visitor
-    {
-      public:
-        CalendarViewVisitor() : mView( 0 ) {}
-        bool act( IncidenceBase *incidence, CalendarView *view )
-        {
-          mView = view;
-          return incidence->accept( *this );
-        }
-      protected:
-        CalendarView *mView;
-    };
-
-    class CanDeleteIncidenceVisitor : public CalendarViewVisitor
-    {
-      protected:
-        bool visit( Event *event ) { return mView->deleteEvent( event ); }
-        bool visit( Todo *todo ) { return mView->deleteTodo( todo ); }
-        bool visit( Journal *journal ) { return mView->deleteJournal( journal ); }
-    };
-
-
     void setCalendar( Calendar * );
     Calendar *calendar();
 
-    KOrg::History *history() const { return mHistory; }
+    KOrg::History *history() { return mHistory; }
 
-    KOViewManager *viewManager() const { return mViewManager; }
-    KODialogManager *dialogManager() const { return mDialogManager; }
-
-    QWidgetStack *viewStack() const { return mRightFrame; }
-    QWidget *leftFrame() const { return mLeftFrame; }
-    NavigatorBar *navigatorBar() const { return mNavigatorBar; }
-    DateNavigator *dateNavigator() const { return mNavigator; }
-    
-    KOIncidenceEditor *editorDialog( Incidence* ) const;
-    IncidenceChangerBase *incidenceChanger() const { return mChanger; }
+    KOViewManager *viewManager();
+    KODialogManager *dialogManager();
 
     QDate startDate();
     QDate endDate();
 
+    QWidgetStack *viewStack();
+    QWidget *leftFrame();
+    NavigatorBar *navigatorBar();
+    KOIncidenceEditor *editorDialog( Incidence* );
+
+    DateNavigator *dateNavigator();
 
     void addView( KOrg::BaseView * );
     void showView( KOrg::BaseView * );
@@ -182,7 +156,7 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
         the connected slots enables/disables the corresponding menu items */
     void todoSelected( bool );
     void subtodoSelected( bool );
-    
+
     /** Emitted, when a day changed (i.e. korganizer was running at midnight).
         The argument is the new date */
     void dayPassed( QDate );
@@ -208,8 +182,6 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     /** Emitted when auto-archiving options were modified */
     void autoArchivingSettingsModified();
 
-    void newIncidenceChanger( IncidenceChangerBase* );
-  
   public slots:
     /** options dialog made a changed to the configuration. we catch this
      *  and notify all widgets which need to update their configuration. */
@@ -245,8 +217,6 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     void editIncidence();
     bool editIncidence( const QString& uid );
     void deleteIncidence();
-    
-    void connectIncidenceEditor( KOIncidenceEditor * );
 
     /** create an editeventwin with supplied date/time, and if bool is true,
      * make the event take all day. */
@@ -273,18 +243,29 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     /** Delete the supplied incidence. It calls the correct deleteXXX method*/
     void deleteIncidence( Incidence * );
 
-    /** Check if deleting the supplied event is allowed. */
-    bool deleteEvent( Event * ) { return true; }
-    /** Check if deleting the todo is allowed */
-    bool deleteTodo( Todo * );
-    /** Check if deleting the supplied journal is allowed. */
-    bool deleteJournal( Journal * ) { return true; }
+    /** Create an editor for the supplied Journal. */
+    void editJournal( Journal * );
+    /** Delete the supplied journal. */
+    void deleteJournal( Journal * );
+    /** Create a read-only viewer dialog for the supplied event. */
+    void showJournal( Journal * );
+
+    /** Create an editor for the supplied event. */
+    void editEvent( Event * );
+    /** Delete the supplied event. */
+    void deleteEvent( Event * );
     /**
       Delete the event with the given unique ID. Returns false, if event wasn't
       found.
     */
-    bool deleteIncidence( const QString &uid );
+    bool deleteEvent( const QString &uid );
+    /** Create a read-only viewer dialog for the supplied event. */
+    void showEvent( Event * );
 
+    /** Create an editor dialog for a todo */
+    void editTodo( Todo * );
+    /** Create a read-only viewer dialog for the supplied todo */
+    void showTodo( Todo * );
     /** create new todo */
     void newTodo();
     /** create new todo, due on date */
@@ -293,6 +274,8 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     void newSubTodo();
     /** create new todo with a parent todo */
     void newSubTodo( Todo * );
+    /** Delete todo */
+    void deleteTodo( Todo * );
     /** Takes the todo's next occurence and marks the original as complete.*/
     void recurTodo( Todo * );
 
@@ -303,16 +286,14 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
                   const QString &attachment, const QStringList &attendees );
 
     void toggleAlarm( Incidence * );
-    void dissociateOccurrence( Incidence *, const QDate & );
-    void dissociateFutureOccurrence( Incidence *, const QDate & );
-    
-    /** 
-      Attendees were removed from this incidence. Only the removed attendees 
+
+    /**
+      Attendees were removed from this incidence. Only the removed attendees
       are present in the incidence, so we just need to send a cancel messages
       to all attendees groupware messages are enabled at all.
     */
     void deleteAttendee( Incidence *incidence );
-      
+
 
     /**
       Check if clipboard contains vCalendar event. The signal pasteEnabled() is
@@ -373,10 +354,9 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
       parameters.
     */
     void print();
+    void printSetup();
+    void printPreview();
 
-    /** Export as HTML file */
-    void exportWeb();
-    
     /** Export as iCalendar file */
     void exportICalendar();
 
@@ -396,6 +376,10 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
      * View.
      */
     void appointment_delete();
+
+    /** mails the currently selected event to a particular user as a vCalendar
+      attachment. */
+    void action_mail();
 
     /* frees a subtodo from it's relation */
     void todo_unsub();
@@ -478,9 +462,6 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
                        const QString &tasklistFile );
 
     void showErrorMessage( const QString & );
-    void schedule( Scheduler::Method, Incidence *incidence );
-    void addIncidenceOn( Incidence *, const QDate & );
-    void moveIncidenceTo( Incidence *, const QDate & );
 
   protected slots:
     /** Select a view or adapt the current view to display the specified dates. */
@@ -499,15 +480,14 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     //Attendee* getYourAttendee( Event *event );
 
   protected:
-    void setIncidenceChanger( IncidenceChangerBase *changer );
+    void schedule( Scheduler::Method, Incidence *incidence = 0 );
 
-//     // returns KMsgBox::OKCancel()
-    int msgItemDelete( Incidence *incidence );
+    // returns KMsgBox::OKCandel()
+    int msgItemDelete();
 
     Todo *selectedTodo();
 
     void warningChangeFailed( Incidence * );
-    void checkForFilteredChange( Incidence *incidence );
 
   private:
     void init();
@@ -515,10 +495,6 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     void createPrinter();
 
     void calendarModified( bool, Calendar * );
-    // Helper function for purgeCompleted that recursively purges a todo and 
-    // its subitems. If it cannot delete a completed todo (because it has 
-    // uncompleted subitems), notAllPurged is set to true.
-    bool purgeCompletedSubTodos( Todo* todo, bool &notAllPurged );
 
     KOrg::History *mHistory;
 
@@ -557,11 +533,47 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
 
     KOTodoView *mTodoList;
     QMap<Incidence*,KOIncidenceEditor*> mDialogList;
-    
-    KOrg::IncidenceChangerBase *mChanger;
 };
 
 
+class CalendarViewVisitor : public Incidence::Visitor
+{
+  public:
+    CalendarViewVisitor() : mView( 0 ) {}
+
+    bool act( Incidence *incidence, CalendarView *view )
+    {
+      mView = view;
+      return incidence->accept( *this );
+    }
+
+  protected:
+    CalendarView *mView;
+};
+
+class ShowIncidenceVisitor : public CalendarViewVisitor
+{
+  protected:
+    bool visit( Event *event ) { mView->showEvent( event ); return true; }
+    bool visit( Todo *todo ) { mView->showTodo( todo ); return true; }
+    bool visit( Journal *journal ) { mView->showJournal( journal ); return true; }
+};
+
+class EditIncidenceVisitor : public CalendarViewVisitor
+{
+  protected:
+    bool visit( Event *event ) { mView->editEvent( event ); return true; }
+    bool visit( Todo *todo ) { mView->editTodo( todo ); return true; }
+    bool visit( Journal *journal ) { mView->editJournal( journal ); return true; }
+};
+
+class DeleteIncidenceVisitor : public CalendarViewVisitor
+{
+  protected:
+    bool visit( Event *event ) { mView->deleteEvent( event ); return true; }
+    bool visit( Todo *todo ) { mView->deleteTodo( todo ); return true; }
+    bool visit( Journal *journal ) { mView->deleteJournal( journal ); return true; }
+};
 
 
 #endif
