@@ -779,6 +779,7 @@ void KOEditorRecurrence::writeEvent(KOEvent *event)
       
       tmpStr = nDaysEntry->text();
       rFreq = tmpStr.toInt();
+      if (rFreq < 1) rFreq = 1;
       if (rDuration != 0)
 	event->setRecursDaily(rFreq, rDuration);
       else
@@ -790,6 +791,7 @@ void KOEditorRecurrence::writeEvent(KOEvent *event)
       
       tmpStr = nWeeksEntry->text();
       rFreq = tmpStr.toInt();
+      if (rFreq < 1) rFreq = 1;
 
       getCheckedDays(rDays);
       
@@ -805,6 +807,7 @@ void KOEditorRecurrence::writeEvent(KOEvent *event)
 	
 	tmpStr = nMonthsEntry->text();
 	rFreq = tmpStr.toInt();
+        if (rFreq < 1) rFreq = 1;
 	rDays.fill(false);
 	rPos = nthNumberEntry->currentItem() + 1;
 	rDays.setBit(nthTypeOfDayEntry->currentItem());
@@ -820,6 +823,7 @@ void KOEditorRecurrence::writeEvent(KOEvent *event)
 	
 	tmpStr = nMonthsEntry->text();
 	rFreq = tmpStr.toInt();
+        if (rFreq < 1) rFreq = 1;
 	
 	rDay = nthDayEntry->currentItem() + 1;
 	
@@ -835,6 +839,7 @@ void KOEditorRecurrence::writeEvent(KOEvent *event)
 
 	tmpStr = nYearsEntry->text();
 	rFreq = tmpStr.toInt();
+        if (rFreq < 1) rFreq = 1;
 	rMonth = yearMonthComboBox->currentItem() + 1;
 	if (rDuration != 0)
 	  event->setRecursYearly(KOEvent::rYearlyMonth, rFreq, rDuration);
@@ -848,6 +853,7 @@ void KOEditorRecurrence::writeEvent(KOEvent *event)
 
 	tmpStr = nYearsEntry->text();
 	rFreq = tmpStr.toInt();
+        if (rFreq < 1) rFreq = 1;
 	
 	//tmpStr = Recurrence->yearDayLineEdit->text();
 	rDay = event->getDtStart().date().dayOfYear();

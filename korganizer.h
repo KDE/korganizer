@@ -12,7 +12,7 @@
 #include <qsplitter.h>
 
 #include <ktoolbar.h>
-#include <ktmainwindow.h>
+#include <kmainwindow.h>
 #include <kapp.h>
 #include <klocale.h>
 #include <kstatusbar.h>
@@ -26,6 +26,7 @@ class CalendarView;
 class KTempFile;
 class KRecentFilesAction;
 class KOWindowList;
+class KToggleAction;
 
 /**
  *
@@ -37,7 +38,7 @@ class KOWindowList;
  * @author Preston Brown
  * @version $Revision$
  */
-class KOrganizer : public KTMainWindow
+class KOrganizer : public KMainWindow
 {
     Q_OBJECT
   public:
@@ -138,14 +139,10 @@ class KOrganizer : public KTMainWindow
 
   protected slots:
 
-    /** toggle the appearance of the tool bar. */
-    void toggleToolBar() 
-    { 
-      if(toolBar()->isVisible())
-        toolBar()->hide();
-      else
-        toolBar()->show();
-    };
+    /** toggle the appearance of the tool bars. */
+    void toggleToolBars(bool);
+
+    void toggleToolBar();
 
 // We currently don't use a status bar
 
@@ -193,6 +190,9 @@ class KOrganizer : public KTMainWindow
   private:
     // list of all existing KOrganizer instances
     static KOWindowList *windowList;
+
+    QList<KAction> mToolBarToggles; // List of toolbar hiding toggle actions
+    KToggleAction *mToolBarToggleAction;
 
     bool mActive;  // Indicates if this calendar is active (for alarm daemon)
 

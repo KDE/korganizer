@@ -58,7 +58,7 @@
 KOWindowList *KOrganizer::windowList = 0;
 
 KOrganizer::KOrganizer(const char *name) 
-  : KTMainWindow(name)
+  : KMainWindow(0,name)
 {
   qDebug("KOrganizer::KOrganizer()");
 
@@ -72,7 +72,7 @@ KOrganizer::KOrganizer(const char *name)
 //  setMinimumSize(600,400);	// make sure we don't get resized too small...
 
   mCalendarView = new CalendarView(this,"KOrganizer::CalendarView");
-  setView(mCalendarView);
+  setCentralWidget(mCalendarView);
 
   initActions();
 
@@ -285,7 +285,8 @@ void KOrganizer::initActions()
 */
       
   // setup Settings menu
-  KStdAction::showToolbar(this, SLOT(toggleToolBar()), actionCollection());
+  mToolBarToggleAction = KStdAction::showToolbar(this,SLOT(toggleToolBar()),
+                                                 actionCollection());
 //  KStdAction::showStatusbar(this, SLOT(toggleStatusBar()), actionCollection());
 
 /*
@@ -300,6 +301,20 @@ void KOrganizer::initActions()
                           actionCollection());
   
   createGUI();
+
+// Disabled because of the message freeze. Enabling it would add new messages.
+#if 0
+  QListIterator<KToolBar> it = toolBarIterator();
+  for ( ; it.current() ; ++it ) {
+    KToggleAction *act = new KToggleAction(i18n("Show %1 Toolbar")
+                                           .arg((*it)->text()),0,
+                                           actionCollection(),(*it)->name());
+    connect( act,SIGNAL(toggled(bool)),SLOT(toggleToolBars(bool)));
+    act->setChecked(true);
+    mToolBarToggles.append(act);
+  }
+  plugActionList("toolbartoggles",mToolBarToggles);
+#endif
 }
 
 
@@ -719,4 +734,24 @@ void KOrganizer::makeActive()
 void KOrganizer::dumpText(const QString &str)
 {
   qDebug("KOrganizer::dumpText(): %s",str.latin1());
+}
+
+void KOrganizer::toggleToolBars(bool toggle)
+{
+  KToolBar *bar = toolBar(sender()->name());
+  if (bar) {
+    if (toggle) bar->show();
+    else bar->hide();
+  } else {
+    qDebug("KOrganizer::toggleToolBars(): Toolbar not found");
+  }
+}
+
+void KOrganizer::toggleToolBar()
+{
+  QListIterator<KToolBar> it = toolBarIterator();
+  for ( ; it.current() ; ++it ) {
+    if (mToolBarToggleAction->isChecked()) (*it)->show();
+    else (*it)->hide();
+  }
 }
