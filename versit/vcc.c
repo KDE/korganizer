@@ -1975,7 +1975,7 @@ static int yylex() {
 		    break;
 		default: {
 		    lexPushLookaheadc(c);
-		    if (isalpha(c) || c == " ") {
+		    if (isalpha(c) || c == ' ') {
 			char *t = lexGetWord();
 			yylval.str = t;
 			if (!strcasecmp(t, "begin")) {
