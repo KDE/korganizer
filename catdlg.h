@@ -4,7 +4,7 @@
 #define _CATDLG_H
 
 #include <qstrlist.h>
-#include <qdialog.h>
+#include <kdialogbase.h>
 
 class QStrList;
 class KButtonBox;
@@ -12,7 +12,7 @@ class QListBox;
 class QPushButton;
 class QLineEdit;
 
-class CategoryDialog : public QDialog
+class CategoryDialog : public KDialogBase
 {
   Q_OBJECT
 
@@ -30,12 +30,12 @@ protected slots:
   void removeCat();
 
 signals:
-  void okClicked(QString);
+  void categoriesSelected(QString);
 
 protected:
   QListBox* catListBox, *selCatListBox;
   QLineEdit *catEdit;
-  QStrList catList;
+//  QStringList catList;
 
   KButtonBox *mainButtonBox, *midButtonBox;
   QPushButton *addButton, *removeButton;

@@ -268,13 +268,8 @@ void CalendarView::readSettings()
 
   config.setGroup("General");
 
-  QStringList strlist = config.readListEntry("Separator");
-  if (!strlist.isEmpty()){
-    QValueList<int> sizes;
-    QStringList::Iterator it;
-    for( it = strlist.begin(); it != strlist.end(); ++it ) {
-      sizes.append((*it).toInt());
-    }
+  QValueList<int> sizes = config.readIntListEntry("Separator");
+  if (sizes.count() == 2) {
     panner->setSizes(sizes);
   }
 
@@ -317,17 +312,12 @@ void CalendarView::writeSettings()
 
   KConfig config(locateLocal("config", "korganizerrc")); 
 
-  QString tmpStr;
   config.setGroup("General");
 
-  QStringList strlist;
   QValueList<int> list = panner->sizes();
-  QValueList<int>::Iterator it;
-  for( it = list.begin(); it != list.end(); ++it ) {
-    strlist.append(QString::number(*it));
-  }
-  config.writeEntry("Separator", strlist);
+  config.writeEntry("Separator",list);
 
+  QString tmpStr;
   if (currentView) tmpStr = currentView->className();
   else tmpStr = "KOTodoView";  
   config.writeEntry("Current View", tmpStr);
@@ -335,7 +325,9 @@ void CalendarView::writeSettings()
   config.setGroup("Views");
   config.writeEntry("Agenda View", agendaView->currentView());
 
-  config.sync();
+  KOPrefs::instance()->writeConfig();
+
+  config.sync();  
 }
 
 void CalendarView::goToday()

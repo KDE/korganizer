@@ -522,6 +522,8 @@ void KOOptionsDialog::readConfig()
 
 void KOOptionsDialog::writeConfig()
 {
+  qDebug("KOOptionsDialog::writeConfig()");
+
   KOPrefs::instance()->mAutoSave = mAutoSaveCheck->isChecked();
   KOPrefs::instance()->mConfirm = mConfirmCheck->isChecked();
 

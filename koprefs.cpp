@@ -74,6 +74,7 @@ void KOPrefs::readConfig()
   mConfig->setGroup("General");
   mAutoSave = mConfig->readBoolEntry("Auto Save",false);
   mConfirm = mConfig->readBoolEntry("Confirm Deletes",true);
+  mCustomCategories = mConfig->readListEntry("Custom Categories");
 
   mConfig->setGroup("Personal Settings");
   mName = mConfig->readEntry("user_name","");
@@ -113,9 +114,12 @@ void KOPrefs::readConfig()
 
 void KOPrefs::writeConfig()
 {
+//  qDebug("KOPrefs::writeConfig()");
+
   mConfig->setGroup("General");
   mConfig->writeEntry("Auto Save",mAutoSave);
   mConfig->writeEntry("Confirm Deletes",mConfirm);
+  mConfig->writeEntry("Custom Categories",mCustomCategories);
 
   mConfig->setGroup("Personal Settings");
   mConfig->writeEntry("user_name",mName);

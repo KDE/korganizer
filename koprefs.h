@@ -7,6 +7,7 @@
 #include <qstring.h>
 #include <qfont.h>
 #include <qcolor.h>
+#include <qstringlist.h>
 
 class KConfig;
 
@@ -67,6 +68,8 @@ class KOPrefs
     int     mPaperSize;
     int     mPaperOrientation;
     QString mPrintPreview;
+
+    QStringList mCustomCategories;
 };
 
 #endif

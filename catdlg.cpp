@@ -1,28 +1,29 @@
 // 	$Id$	
 
-#include <stdio.h>
-
 #include <qlayout.h>
 #include <qlabel.h>
 #include <qlineedit.h>
-#include <qpushbt.h>
-#include <qlist.h>
-#include <qstrlist.h>
+#include <qpushbutton.h>
 #include <qlistbox.h>
 
-#include <kapp.h>
 #include <kbuttonbox.h>
 #include <klocale.h>
+
+#include "koprefs.h"
 
 #include "catdlg.h"
 #include "catdlg.moc"
 
 CategoryDialog::CategoryDialog(QWidget* parent,const char* name)
-  : QDialog( parent, name, FALSE, 0 )
+  : KDialogBase(parent, name, false, i18n("Categories"),
+                Ok|Cancel,Ok,false)
 {
-  setCaption(i18n("KOrganizer Categories"));
+  QWidget *topWidget = new QWidget(this);
+  setMainWidget(topWidget);
 
-  QVBoxLayout *layout = new QVBoxLayout(this, 10);
+  QVBoxLayout *layout = new QVBoxLayout(topWidget);
+  layout->setMargin(marginHint());
+  layout->setSpacing(spacingHint());
   
   QBoxLayout *subLayout = new QHBoxLayout();
   layout->addLayout(subLayout);
@@ -30,81 +31,61 @@ CategoryDialog::CategoryDialog(QWidget* parent,const char* name)
   QBoxLayout *subLayout2 = new QVBoxLayout();
   subLayout->addLayout(subLayout2);
 
-  QLabel *catListLabel = new QLabel(this);
+  QLabel *catListLabel = new QLabel(topWidget);
   catListLabel->setText(i18n("Available Categories"));
-  catListLabel->setMinimumSize(catListLabel->sizeHint());
   subLayout2->addWidget(catListLabel);
 
-  catListBox = new QListBox(this);
+  catListBox = new QListBox(topWidget);
   catListBox->setMinimumSize(QSize(75,200));
-  catList.append(i18n("Appointment"));
-  catList.append(i18n("Business"));
-  catList.append(i18n("Meeting"));
-  catList.append(i18n("Phone Call"));
-  catList.append(i18n("Education"));
-  catList.append(i18n("Holiday"));
-  catList.append(i18n("Vacation"));
-  catList.append(i18n("Special Occasion"));
-  catList.append(i18n("Personal"));
-  catList.append(i18n("Travel"));
-  catList.append(i18n("Miscellaneous"));
-  catListBox->insertStrList(&catList);
+  catListBox->insertItem(i18n("Appointment"));
+  catListBox->insertItem(i18n("Business"));
+  catListBox->insertItem(i18n("Meeting"));
+  catListBox->insertItem(i18n("Phone Call"));
+  catListBox->insertItem(i18n("Education"));
+  catListBox->insertItem(i18n("Holiday"));
+  catListBox->insertItem(i18n("Vacation"));
+  catListBox->insertItem(i18n("Special Occasion"));
+  catListBox->insertItem(i18n("Personal"));
+  catListBox->insertItem(i18n("Travel"));
+  catListBox->insertItem(i18n("Miscellaneous"));
+  catListBox->insertItem(i18n("Birthday"));
+  catListBox->insertStringList(KOPrefs::instance()->mCustomCategories);
   subLayout2->addWidget(catListBox);
 
   subLayout2 = new QVBoxLayout();
   subLayout->addLayout(subLayout2);
 
   subLayout2->addStretch();
-  midButtonBox = new KButtonBox(this, KButtonBox::VERTICAL);
+  midButtonBox = new KButtonBox(topWidget, KButtonBox::VERTICAL);
   addButton = midButtonBox->addButton(i18n("&Add >>"));
   connect(addButton, SIGNAL(clicked()), SLOT(addCat()));
-  removeButton = midButtonBox->addButton(i18n("<< &Remove"));
+  removeButton = midButtonBox->addButton(i18n("&Remove"));
   connect(removeButton, SIGNAL(clicked()), SLOT(removeCat()));
   midButtonBox->layout();
   subLayout2->addWidget(midButtonBox);
+  subLayout2->addStretch();
 
   subLayout2 = new QVBoxLayout();
   subLayout->addLayout(subLayout2);
 
-  QLabel *selCatListLabel = new QLabel(this);
+  QLabel *selCatListLabel = new QLabel(topWidget);
   selCatListLabel->setText(i18n("Selected Categories"));
   selCatListLabel->setMinimumSize(selCatListLabel->sizeHint());
   subLayout2->addWidget(selCatListLabel);
 
-  selCatListBox = new QListBox(this);
+  selCatListBox = new QListBox(topWidget);
   selCatListBox->setMinimumSize(QSize(75,200));
   subLayout2->addWidget(selCatListBox);
   
   subLayout = new QHBoxLayout();
   layout->addLayout(subLayout);
 
-  QLabel *catLabel = new QLabel(this);
+  QLabel *catLabel = new QLabel(topWidget);
   catLabel->setText(i18n("New Category:"));
-  catLabel->setFixedSize(catLabel->sizeHint());
   subLayout->addWidget(catLabel);
 
-  catEdit = new QLineEdit( this );
-  catEdit->setFixedHeight(catEdit->sizeHint().height());
+  catEdit = new QLineEdit(topWidget);
   subLayout->addWidget(catEdit);
-
-  QFrame *hLine = new QFrame(this);
-  hLine->setFrameStyle(QFrame::HLine|QFrame::Sunken);
-  hLine->setFixedHeight(hLine->frameWidth());
-  layout->addWidget(hLine);
-
-  mainButtonBox = new KButtonBox(this);
-  mainButtonBox->addStretch();
-  okButton = mainButtonBox->addButton(i18n("&OK"));
-  okButton->setDefault(TRUE);
-  connect(okButton, SIGNAL(clicked()), SLOT(accept()));
-  cancelButton = mainButtonBox->addButton(i18n("&Cancel"));
-  connect(cancelButton, SIGNAL(clicked()), SLOT(reject()));
-  mainButtonBox->layout();
-  layout->addWidget(mainButtonBox);
-
-  layout->activate();
-
-  resize(minimumSize());
 }
 
 
@@ -120,8 +101,15 @@ void CategoryDialog::setSelected(const QStrList &selList)
 
 void CategoryDialog::addCat() 
 {
-  if (strlen(catEdit->text()) > 0) {
-    selCatListBox->insertItem(catEdit->text());
+  QString catText = catEdit->text();
+
+  if (!catText.isEmpty()) {
+    selCatListBox->insertItem(catText);
+    if (KOPrefs::instance()->mCustomCategories.find(catText) ==
+        KOPrefs::instance()->mCustomCategories.end()) {
+      KOPrefs::instance()->mCustomCategories.append(catText);
+      catListBox->insertItem(catText);
+    }
     catEdit->setText("");
   } else {
     if (catListBox->currentItem() >= 0) {
@@ -141,8 +129,13 @@ void CategoryDialog::addCat()
 
 void CategoryDialog::removeCat()
 {
-  if (selCatListBox->currentItem() >= 0)
+  if (selCatListBox->currentItem() >= 0) {
     selCatListBox->removeItem(selCatListBox->currentItem());
+  }
+  if (catListBox->currentItem() >= 0) {
+    KOPrefs::instance()->mCustomCategories.remove(catListBox->currentText());
+    catListBox->removeItem(catListBox->currentItem());
+  }
 }
 
 void CategoryDialog::accept()
@@ -155,7 +148,7 @@ void CategoryDialog::accept()
     if (i < selCatListBox->count()-1)
       catStr += ", ";
   }
-  emit okClicked(catStr);
+  emit categoriesSelected(catStr);
 
   done(Accepted);
 }
