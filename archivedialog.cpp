@@ -80,11 +80,11 @@ ArchiveDialog::ArchiveDialog(Calendar *cal,QWidget *parent, const char *name)
   QLabel *dateLabel = new QLabel(i18n("A&ppointments older than:"),topFrame);
   dateLayout->addWidget(dateLabel);
   mDateEdit = new KDateEdit(topFrame);
-  QWhatsThis::add(mDateEdit, 
+  QWhatsThis::add(mDateEdit,
     i18n("The age of the appointments to archive. All older appointments "
          "will be saved and deleted, the newer will be kept."));
   dateLabel->setBuddy(mDateEdit);
-  dateLayout->addWidget(mDateEdit);  
+  dateLayout->addWidget(mDateEdit);
   topLayout->addLayout(dateLayout);
 
   QHBoxLayout *fileLayout = new QHBoxLayout(0);
@@ -94,7 +94,7 @@ ArchiveDialog::ArchiveDialog(Calendar *cal,QWidget *parent, const char *name)
   mArchiveFile = new KURLRequester(KOPrefs::instance()->mArchiveFile,topFrame);
   mArchiveFile->setMode(KFile::File);
   mArchiveFile->setFilter(i18n("*.vcs|vCalendar Files"));
-  QWhatsThis::add(mArchiveFile, 
+  QWhatsThis::add(mArchiveFile,
     i18n("The path of the archive. The appointments will be added to the "
          "archive file, so any appointments that are already in the file "
          "will not be modified or deleted. You can later load or merge the "
@@ -103,11 +103,11 @@ ArchiveDialog::ArchiveDialog(Calendar *cal,QWidget *parent, const char *name)
   l->setBuddy(mArchiveFile->lineEdit());
   fileLayout->addWidget(mArchiveFile);
   topLayout->addLayout(fileLayout);
-  
+
   mDeleteCb = new QCheckBox(i18n("&Delete only, do not save"),
                             topFrame);
-  QWhatsThis::add(mDeleteCb,  
-    i18n("Select this option to delete old appointments without saving them."
+  QWhatsThis::add(mDeleteCb,
+    i18n("Select this option to delete old appointments without saving them. "
          "It is not possible to recover the appointments later."));
   topLayout->addWidget(mDeleteCb);
   connect(mDeleteCb, SIGNAL(toggled(bool)), mArchiveFile, SLOT(setDisabled(bool)));
