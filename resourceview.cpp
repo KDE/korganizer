@@ -97,7 +97,8 @@ ResourceItem::ResourceItem( ResourceCalendar *resource, ResourceView *view,
   }
 }
 
-void ResourceItem::createSubresourceItems() {
+void ResourceItem::createSubresourceItems()
+{
   const QStringList subresources = mResource->subresources();
   if ( !subresources.isEmpty() ) {
     setOpen( true );
