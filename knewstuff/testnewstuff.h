@@ -31,17 +31,19 @@ class TestNewStuff : public KNewStuff
     }
 };
 
-class MyWidget : public QPushButton
+class MyWidget : public QWidget
 {
     Q_OBJECT
   public:
-    MyWidget() : QPushButton( "Hallo", 0 )
-    {
-      connect( this, SIGNAL( clicked() ), SLOT( mySlot() ) );
-    }
+    MyWidget();
+    ~MyWidget();
     
   public slots:
-    void mySlot();
+    void upload();
+    void download();
+
+  private:
+    KNewStuff *mNewStuff;
 };
 
 #endif
