@@ -910,16 +910,17 @@ void CalendarView::deleteEvent(Event *anEvent)
     if (!itemDate.isValid()) {
       kdDebug() << "Date Not Valid" << endl;
       km = KMessageBox::questionYesNo(this,
-        i18n("This event recurs over multiple dates.\n"
+        i18n("This event recurs over multiple dates."
              "Are you sure you want to delete this event "
              "and all its recurrences?"),
              i18n("KOrganizer Confirmation"),i18n("Cancel"),
              i18n("All"));
     } else {
       km = KMessageBox::questionYesNoCancel(this,
-        i18n("This event recurs over multiple dates.\n"
-             "Do you want to delete all it's recurrences, \n"
-             "or only the current occurence?"),
+        i18n("This event recurs over multiple dates."
+             "Do you want to delete all it's recurrences, "
+             "or only the current one on "+
+             KGlobal::locale()->formatDate(itemDate)+"?"),
              i18n("KOrganizer Confirmation"),i18n("Current"),
              i18n("All"));
     }
