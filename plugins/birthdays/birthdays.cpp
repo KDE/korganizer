@@ -87,8 +87,8 @@ void Birthdays::importBirthdays()
 #ifndef KORG_NOKABC
   Calendar *cal = mainWindow()->view()->calendar();
   QDateTime birthdate;
-  QDate now_date = QDate::currentDate();
-  QDate birthd;
+  //QDate now_date = QDate::currentDate();
+  //QDate birthd;
   QString summary;
   int inserted_birthdays = 0;
 
@@ -103,7 +103,7 @@ void Birthdays::importBirthdays()
 
       summary = (*it).formattedName() + i18n("'s birthday");
       birthdate = (*it).birthday();
-      
+
       Event *ev = 0;
       Event *e;
       // look if not already imported
@@ -119,7 +119,7 @@ void Birthdays::importBirthdays()
         }
       }
       if (!ev) ev = new Event();
-      
+
 
       ev->setDtStart(birthdate);
       ev->setDtEnd(birthdate);
@@ -147,8 +147,8 @@ void Birthdays::importBirthdays()
       QStringList::Iterator itc;
       for (itc = KOPrefs::instance()->mCustomCategories.begin();
           itc != KOPrefs::instance()->mCustomCategories.end(); ++itc ) {
-        if ((*itc)==QString(i18n("Birthday")))
-          ev->setCategories(QString(i18n("Birthday")));
+        if ((*itc)==i18n("Birthday"))
+          ev->setCategories(i18n("Birthday"));
       }
 
       if (insert) {
@@ -158,8 +158,7 @@ void Birthdays::importBirthdays()
       }
     }
   }
-  summary.setNum(inserted_birthdays);
-  summary = i18n("Imported ")+summary+i18n(" birthdays.");
+  summary = i18n("Imported 1 birthday.", "Imported %n birthdays.", inserted_birthdays);
   KMessageBox::information(mParent,summary);
 #endif
 

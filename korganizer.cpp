@@ -71,7 +71,7 @@ using namespace KOrg;
 
 KOWindowList *KOrganizer::windowList = 0;
 
-KOrganizer::KOrganizer( const char *name ) 
+KOrganizer::KOrganizer( const char *name )
   : MainWindow(name), DCOPObject("KOrganizerIface"),
     mAlarmDaemonIface("kalarmd","ad")
 {
@@ -91,7 +91,7 @@ KOrganizer::KOrganizer( const char *name )
 
 //  setMinimumSize(600,400);	// make sure we don't get resized too small...
 
-  mCalendarView = new CalendarView( this, "KOrganizer::CalendarView" ); 
+  mCalendarView = new CalendarView( this, "KOrganizer::CalendarView" );
   setCentralWidget(mCalendarView);
 
   initActions();
@@ -117,7 +117,7 @@ KOrganizer::KOrganizer( const char *name )
   // set up autoSaving stuff
   mAutoSaveTimer = new QTimer(this);
   connect(mAutoSaveTimer,SIGNAL(timeout()),SLOT(checkAutoSave()));
-  if (KOPrefs::instance()->mAutoSave && 
+  if (KOPrefs::instance()->mAutoSave &&
       KOPrefs::instance()->mAutoSaveInterval > 0) {
     mAutoSaveTimer->start(1000*60*KOPrefs::instance()->mAutoSaveInterval);
   }
@@ -142,7 +142,7 @@ KOrganizer::KOrganizer( const char *name )
 
   // Update state of paste action
   mCalendarView->checkClipboard();
-  
+
   mCalendarView->lookForOutgoingMessages();
   mCalendarView->lookForIncomingMessages();
 
@@ -156,7 +156,7 @@ KOrganizer::~KOrganizer()
   kdDebug() << "~KOrganizer()" << endl;
 
   delete mNewStuff;
-  
+
   //close down KAddressBook if we started it
   if (KOrganizer::startedKAddressBook == true)
   {
@@ -194,7 +194,7 @@ void KOrganizer::readSettings()
   mRecent->loadEntries(config);
 
   mCalendarView->readSettings();
-    
+
   config->sync();
 }
 
@@ -311,10 +311,9 @@ void KOrganizer::initActions()
   (void)new KAction(i18n("&Week"), "7days", 0,
                     mCalendarView->viewManager(), SLOT(showWeekView()),
                     actionCollection(), "view_week");
-  mNextXDays = new KAction(
-                    i18n("&Next %1 Days").arg(KOPrefs::instance()->mNextXDays),
-                    "xdays", 0,mCalendarView->viewManager(),
+  mNextXDays = new KAction("xdays", 0,mCalendarView->viewManager(),
                     SLOT(showNextXView()),actionCollection(), "view_nextx");
+  mNextXDays->setText(i18n("&Next Day", "&Next %n Days", KOPrefs::instance()->mNextXDays));
   (void)new KAction(i18n("&Month"), "month", 0,
                     mCalendarView->viewManager(), SLOT(showMonthView()),
                     actionCollection(), "view_month");
@@ -511,13 +510,13 @@ void KOrganizer::initActions()
   new KAction( i18n("Get Hot New Stuff..."), 0, this,
                SLOT( downloadNewStuff() ), actionCollection(),
                "downloadnewstuff" );
-                 
+
   new KAction( i18n("Upload Hot New Stuff..."), 0, this,
                SLOT( uploadNewStuff() ), actionCollection(),
                "uploadnewstuff" );
 
   setInstance( KGlobal::instance() );
-  
+
   setXMLFile("korganizerui.rc");
   createGUI(0);
 
@@ -549,7 +548,7 @@ void KOrganizer::initParts()
 
   KOrg::Part::List parts = KOCore::self()->loadParts(this);
   KOrg::Part *it;
-  for( it=parts.first(); it; it=parts.next() ) {    
+  for( it=parts.first(); it; it=parts.next() ) {
     guiFactory()->addClient(it);
   }
 }
@@ -623,14 +622,14 @@ void KOrganizer::file_import()
   KTempFile tmpfn;
 
   QString homeDir = QDir::homeDirPath() + QString::fromLatin1("/.calendar");
-		  
+
   if (!QFile::exists(homeDir)) {
     KMessageBox::error(this,
 		       i18n("You have no ical file in your home directory.\n"
 		            "Import cannot proceed.\n"));
     return;
   }
-  
+
   KProcess proc;
   proc << "ical2vcal" << tmpfn.name();
   bool success = proc.start( KProcess::Block );
@@ -640,10 +639,10 @@ void KOrganizer::file_import()
     return;
   } else {
     retVal = proc.exitStatus();
-  } 
+  }
 
   kdDebug() << "ical2vcal return value: " << retVal << endl;
-  
+
   if (retVal >= 0 && retVal <= 2) {
     // now we need to MERGE what is in the iCal to the current calendar.
     mCalendarView->openCalendar(tmpfn.name(),1);
@@ -713,7 +712,7 @@ void KOrganizer::file_close()
   mFile="";
 
   setActive(false);
-  
+
   setTitle();
 }
 
@@ -874,7 +873,7 @@ bool KOrganizer::saveAsURL(const KURL &url)
   if (success) {
     delete mTempFile;
     mTempFile = tempFile;
-    KIO::NetAccess::removeTempFile(fileOrig);    
+    KIO::NetAccess::removeTempFile(fileOrig);
     KGlobal::config()->setGroup("General");
     QString active = KGlobal::config()->readEntry("Active Calendar");
     if (KURL(active) == mURL) {
@@ -904,7 +903,7 @@ bool KOrganizer::saveModifiedURL()
   if (!mCalendarView->isModified()) return true;
 
   if (KOPrefs::instance()->mAutoSave && !mURL.isEmpty()) {
-    // Save automatically, when auto save is enabled.  
+    // Save automatically, when auto save is enabled.
     return saveURL();
   } else {
     int result = KMessageBox::warningYesNoCancel(this,
@@ -936,7 +935,7 @@ KURL KOrganizer::getSaveURL()
 
   if (url.isEmpty()) return url;
 
-  QString filename = url.fileName(false); 
+  QString filename = url.fileName(false);
 
   QString e = filename.right(4);
   if (e != ".vcs" && e != ".ics") {
@@ -973,7 +972,7 @@ bool KOrganizer::queryClose()
   // Write configuration. I don't know if it really makes sense doing it this
   // way, when having opened multiple calendars in different CalendarViews.
   writeSettings();
-  
+
   return success;
 }
 
@@ -1051,7 +1050,7 @@ void KOrganizer::updateConfig()
     }
   }
   if (!KOPrefs::instance()->mAutoSave) mAutoSaveTimer->stop();
-  mNextXDays->setText(i18n("&Next %1 Days").arg(KOPrefs::instance()->mNextXDays));
+  mNextXDays->setText(i18n("&Next Day", "&Next %n Days", KOPrefs::instance()->mNextXDays));
 }
 
 void KOrganizer::configureDateTime()
@@ -1111,7 +1110,7 @@ KOrganizer* KOrganizer::findInstance(const KURL &url)
 void KOrganizer::setActive(bool active)
 {
   if (active == mActive) return;
-  
+
   mActive = active;
   setTitle();
 }
@@ -1123,7 +1122,7 @@ void KOrganizer::makeActive()
                                  "Please save it before activating."));
     return;
   }
-  
+
   if (!mURL.isLocalFile()) {
     int result = KMessageBox::warningContinueCancel(this,
       i18n("Your calendar is a remote file. Activating it can cause "
@@ -1251,14 +1250,14 @@ void KOrganizer::configureDateTimeFinished(KProcess *proc)
 void KOrganizer::processIncidenceSelection( Incidence *incidence )
 {
 //  kdDebug() << "KOrganizer::processIncidenceSelection()" << endl;
-  
+
   if ( !incidence ) {
     enableIncidenceActions( false );
     return;
   }
-  
+
   enableIncidenceActions( true );
-  
+
   if ( incidence->type() == "Event" ) {
     mShowIncidenceAction->setText( i18n("&Show Event...") );
     mEditIncidenceAction->setText( i18n("&Edit Event...") );
