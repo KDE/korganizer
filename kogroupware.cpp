@@ -902,25 +902,25 @@ bool KOGroupware::sendICalMessage( QWidget* parent,
                                    Incidence* incidence, bool isDeleting,
                                    bool statusChanged )
 {
-  bool isOrganizer = KOPrefs::instance()->thatIsMe( incidence->organizer() );
-
-  int rc = 0;
-  // Figure out if there are other people involved in this incidence
-  bool otherPeople = false;
-  Attendee::List attendees = incidence->attendees();
-  Attendee *me = 0;
-  Attendee::List::ConstIterator it;
-  for ( it = attendees.begin(); it != attendees.end(); ++it ) {
-    // Don't send email to ourselves
-    if ( !KOPrefs::instance()->thatIsMe( (*it)->email() ) ) {
-      otherPeople = true;
-    } else {
-      me = (*it);
-    }
-  }
-
-  if( !otherPeople && isOrganizer )
+  // If there are no attendees, don't bother
+  if( incidence->attendees().isEmpty() )
     return true;
+
+  bool isOrganizer = KOPrefs::instance()->thatIsMe( incidence->organizer() );
+  int rc = 0;
+  /* 
+   * There are two scenarios:
+   * o "we" are the organizer, where "we" means any of the identities or mail
+   *   addresses known to Kontact/PIM. If there are attendees, we need to mail
+   *   them all, even if one or more of them are also "us". Otherwise there 
+   *   would be no way to invite a resource or our boss, other identities we
+   *   also manage.
+   * o "we: are not the organizer, which means we changed the completion status
+   *   of a todo, or we changed our attendee status from, say, tentative to 
+   *   accepted. In both cases we only mail the organizer. All other changes
+   *   bring us out of sync with the organizer, so we won't mail, if the user
+   *   insists on applying them.
+   */
 
   if ( isOrganizer ) {
     QString type;
