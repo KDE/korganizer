@@ -1,0 +1,29 @@
+# KDE Config File
+[KDE Desktop Entry]
+Comment=vCalendar Calendar/Event
+Comment[ca]=Calendari d'esdeveniments
+Comment[cs]=vCalendar Kalendáø/Událost
+Comment[da]=vCalender-kalender/begivenhed
+Comment[es]=vCalendario Calendario/Eventos
+Comment[fi]=vKalenterin kalenteri/tapahtuma
+Comment[fr]=Calendrier/Evènement vCalendar
+Comment[hr]=vCalendar Kalendar/Dogağaj
+Comment[hu]=vCalendar naptár/esemény
+Comment[is]=vCalendar dagatal/atburğur
+Comment[mi]=vCalendar naptár/esemény
+Comment[no]=vCalendar-kalender/hendelse
+Comment[no_NY]=vCalendar-kalender/-hending
+Comment[pl]=Plik vCalendar
+Comment[pt]=Calendário/Evento vCalendar
+Comment[pt_BR]=vCalendar Calendário/Eventos
+Comment[ro]=vCalendar Eveniment
+Comment[ru]=æÁÊÌ Ó ËÁÌÅÎÄÁÒÅÍ/ÓÏÂÙÔÉÑÍÉ
+Comment[sk]=vCalendar Calendár/Udalos»
+Comment[sl]=koledar/dogodek vCalendar
+Comment[sv]=Kalender/tillställning
+DefaultApp=korganizer
+Icon=korganizer
+Type=MimeType
+MimeType=text/x-vCalendar
+Patterns=*.vcs;*.VCS;
+

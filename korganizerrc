@@ -1,0 +1,33 @@
+# KDE Config File
+[Fonts]
+Schedule Font=helvetica,12,5,iso-8859-1,50,0
+Todo Font=helvetica,12,5,iso-8859-1,50,0
+TimeBar Font=helvetica,18,5,iso-8859-1,75,0
+List Font=helvetica,12,5,iso-8859-1,50,0
+Month Font=helvetica,10,5,iso-8859-1,50,0
+[Personal Settings]
+Holidays=us
+user_name=
+user_email=
+Additional=
+[Printer]
+Paper Size=2
+Preview=kghostview
+Printer Name=lp
+Paper Orientation=1
+[Colors]
+DefaultColors=true
+[Recently Opened Files]
+[General]
+Auto Save=true
+Confirm Deletes=true
+[Views]
+Agenda View=0
+Day Begins=8:00
+Show Daily Recurrences=true
+[Time & Date]
+Week Starts Monday=true
+Default Start Time=13:00
+Time Format=1
+Default Alarm Time=5 minutes
+Date Format=1

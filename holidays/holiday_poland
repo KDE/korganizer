@@ -1,0 +1,40 @@
+: Polish holidays file ( take one )
+: sob kwi 10 15:47:14 CEST 1999
+: by Krzysztof P. Jasiutowicz <kpjas@promail.pl>
+:
+
+small      "Nowy Rok"              weekend on 1.1.
+small      "Trzech Króli"          weekend on 6.1.
+: small      "¦ledzik"             on easter minus 47 days
+small      "Popielec"              on easter minus 46 days
+small      "Dzieñ Kobiet"          on 8.3.
+small      "Wielki Pi±tek"         weekend on easter minus  2 days
+small      "Wielkanoc"             weekend on easter
+small      "Lany Poniedzia³ek"     weekend on easter plus 1 day
+small      "Niedziela Palmowa"     on easter minus 7 days
+small      "Zielone ¦wi±tki"       weekend on easter plus 49 days
+small      "Bo¿e Cia³o"            on easter plus 53 days
+small      "Wniebowziêcie NMP"     weekend on 15.8
+small      "Pierwszy Maj"          weekend on 1.5.
+small      "Trzeci Maj"            weekend on 1.5.
+small      "Wszystkich ¦wiêtych"   weekend on 1.11.
+small      "Zaduszki"              on 2.11.
+small      "¦wiêto Niepodleg³o¶ci" weekend on 11.11.
+small      "Wigilia"               on 24.12.
+small      "Bo¿e Narodzenie"       weekend on 25.12. length 2 days
+small      "Sylwester"             on 31.12.
+
+small      "Dzieñ Babci"           weekend on 21.1.
+small      "Dzieñ Dziadka"         weekend on 22.1.
+small black  "Andrzejki"           on 30.11.
+small black  "Dzieñ Matki"         on 26.5.
+small black  "Dzieñ Ojca"          on 23.6.
+small black  "Dzieñ Dziecka"       on 1.6.
+small black  "¦w. Miko³aj"         on  6.12.
+small black  "Walentynki"          on 14.2.
+
+
+"Pocz±tek wiosny" on march 21
+"Pocz±tek lata" on june 22
+"Pocz±tek jesieni" on september 23
+"Pocz±tek zimy" on december 22

@@ -1,0 +1,458 @@
+#! @PERL@
+# THE ABOVE LINE SHOULD POINT TO YOUR PERL EXECUTABLE!
+# ical2vcal
+# (c) 1998 Preston Brown
+# Part of the KOrganizer Project
+#
+# This utility will read ~/.calendar in the ical format as input, and output 
+# a file in the versit vCalendar format with a .vcs extension.
+#
+# This code is covered by the GNU Public License.  Please see the file
+# COPYING for more information.
+#
+# MINIMAL ERROR CHECKING!  HIGHLY PRIMITIVE!  YOU HAVE BEEN WARNED!
+
+# open the calendar.
+$home = $ENV{"HOME"};
+$pcount = 0;
+
+$exitstatus = 0;
+
+$filename = "$home/.calendar";
+
+if (defined($ARGV[0]) && defined($ARGV[1])) {
+    $filename = $ARGV[0];
+    $outfilename = $ARGV[1];
+} elsif (defined($ARGV[0])) {
+    $outfilename = $ARGV[0];
+} else {
+    $! = -1;
+    exit;
+}
+
+if (!open(ICALFILE, $filename)) {
+    $! = -1;
+    exit;
+}
+if (!open(VCALFILE, ">$outfilename")) {
+    $! = -1;
+    exit;
+}
+
+$line = <ICALFILE>;
+
+&write_header;
+
+if ($line =~ /Calendar(\s+)\[v/) {
+    while ($line = &getLine) {
+	if (($line =~ /^Appt/) || ($line =~ /^Note/)) {
+	    &process_appointment;
+	    &write_appointment;
+	} else {
+	    # silently skip line
+	}
+    }
+} else {
+    # not a ical file?!
+    $! = -2;
+    exit;
+}
+
+close(ICALFILE);
+close(VCALFILE);
+
+sub getLine
+{
+    $_ = <ICALFILE>;
+    if (!defined($_)) {
+	&write_footer;
+	if ($exitstatus) {
+	    $! = $exitstatus;
+	    exit;
+	} else {
+	    $! = 0;
+	    exit;
+	}
+    }
+    s/\\\[/\(/g;
+    s/\\\]/\)/g;
+    $pcount += tr/\[//;
+    $pcount -= tr/\]//;
+    return $_;
+}
+
+sub process_appointment
+{
+    undef(%curappt);
+
+    # this is a count of the total # of parentheses.
+    while ($pcount) {
+	$line = &getLine;
+	
+	# check to see if more is left to be processed.
+	if ($pcount > 0) {
+ 	    # process the line.
+
+ 	    if ($line =~ /^Start/) {
+		# start time (minutes since midnight)
+ 		$_ = $line;
+ 		($totalmin) = /\[(\d+)\]/;
+ 		$min = $totalmin % 60;
+ 		$hour = int ($totalmin / 60);
+ 		$curappt{"starthour"} = $hour;
+ 		$curappt{"startmin"} = $min;
+		
+ 	    } elsif ($line =~ /^Length/) {
+		# time length (minutes)
+ 		$_ = $line;
+ 		($lengthmin) = /\[(\d+)\]/;
+ 		$min = $lengthmin % 60;
+ 		$hour = int ($lengthmin / 60);
+ 		$curappt{"endhour"} = $hour;
+ 		$curappt{"endmin"} = $min;
+	    } elsif ($line =~ /^Uid/) {
+		# unique identifier
+		$_ = $line;
+		($uid) = /\[(.+)\]/;
+		$curappt{"uid"} = $uid ;
+	    } elsif ($line =~ /^Owner/) {
+		# appointment's owner
+		$_ = $line;
+		($attendee) = /\[(\w+)\]/;
+		$curappt{"attendee"} = $attendee;
+	    } elsif ($line =~ /^Contents/) {
+		# description
+		$description = "";
+		$_ = $line;
+		# special case where it's all in one place:
+		if (/\[(.*)\]/) {
+		    $summary = $1;
+		} else {
+		    ($summary) = /\[(.*)/;
+		    $_ = &getLine;
+		    while (!(/\]$/)) {
+			chop;
+			$description = $description . " " . $_;
+			$_ = &getLine;
+		    }
+		    /(.*)\]$/;
+		    $description = $description . $1;
+		}
+		$curappt{"summary"} = $summary;
+		if (length($description) > 0) {
+		    $summary = $summary . "...";
+		    $curappt{"description"} = $description;
+		}
+	    } elsif ($line =~ /^Text/) {
+		$description = "";
+		$_ = $line;
+		if (/\[\d+\s+\[(.*)\]\]/) {
+		    $summary = $1;
+		} else {
+		    ($summary) = /\[\d+\s+\[(.*)$/;
+		    $_ = &getLine;
+		    while (!(/\]$/)) {
+			chop;
+			$description = $description . " " . $_;
+			$_ = &getLine;
+		    }
+		    /^(.*)\]\]/;
+		    $description = $description . $1;
+		}
+		$curappt{"summary"} = $summary;
+		if (length($description) > 0) {
+		    $summary = $summary . "...";
+		    $curappt{"description"} = $description;
+		}
+	    } elsif ($line =~ /^Alarms/) {
+		$_ = $line;
+		($alarm) = /(\d+)\]/;
+		$curappt{"alarmtime"} = $alarm;
+	    } elsif ($line =~ /^Todo/) {
+		$curappt{"todo"} = 1;
+	    } elsif ($line =~ /^Dates/) {
+		# dates to occur on
+		&process_dates;
+	    } elsif ($line =~ /^\]/) {
+		# do nothing
+	    } elsif ($line =~ /^Hilite/) {
+		# do nothing
+	    } elsif ($line =~ /^Remind/) {
+		# do nothing
+	    } elsif (($line =~ /^Todo/) || ($line =~ /^Done/)) {
+		# no support for todo's yet
+		$exitstatus = 1;
+	    } else {
+		# do nothing
+		;
+	    }
+
+	} # if $pcount > 0
+
+    } # while pcount
+
+    if (defined($curappt{"starthour"})) {
+	# fix up end time, just peg it at the end of the day
+	$endhour = $curappt{"starthour"} + $curappt{"endhour"};
+	$endmin = $curappt{"startmin"} + $curappt{"endmin"};
+	$endhour = $endhour + int ($endmin / 60);
+	$endmin = $endmin % 60;
+	$curappt{"endhour"} = $endhour;
+	$curappt{"endmin"} = $endmin;
+	if ($endhour >= 24) {
+	    $curappt{"endhour"} = 23;
+	    $curappt{"endmin"} = 55;
+	}
+    }
+}
+
+sub output
+{
+    $outline = shift(@_);
+    print VCALFILE $outline;
+    print VCALFILE "\n";
+#    print($outline);
+#    print("\n");
+}
+
+sub write_header
+{
+    output("BEGIN:VCALENDAR");
+    output("PRODID:-//K Desktop Environment//NONSGML KOrganizer//EN");
+    output("VERSION:1.0");
+}
+
+sub write_footer
+{
+    output("END:VCALENDAR");
+}
+
+sub write_appointment
+{
+    if (defined($curappt{"tossme"})) {
+	return;
+    }
+
+    if (defined($curappt{"todo"})) {
+	output("BEGIN:VTODO");
+    } else {
+	output("BEGIN:VEVENT");
+    }
+    $tmpstr = &date_to_str($curappt{"startyear"},
+			   $curappt{"startmonth"},
+			   $curappt{"startday"});
+    if (defined($curappt{"starthour"})) {
+	$tmpstr = $tmpstr . &time_to_str($curappt{"starthour"},
+			       $curappt{"startmin"});
+    } else {
+	$tmpstr = $tmpstr . &time_to_str("0","0");
+    }
+    output("DCREATED:" . $tmpstr);
+    output("UID:" . $curappt{"uid"});
+    output("SEQUENCE:0");
+    output("LAST-MODIFIED:$tmpstr");
+    output("DTSTART:$tmpstr");
+    if (defined($curappt{"starthour"})) {
+	$tmpstr = &date_to_str($curappt{"startyear"},
+			      $curappt{"startmonth"},
+			      $curappt{"startday"}) . 
+				  &time_to_str($curappt{"endhour"},
+					       $curappt{"endmin"});
+    } 
+    output("DTEND:$tmpstr");
+    if (defined($curappt{"summary"})) {
+	$summary = $curappt{"summary"};
+	output("SUMMARY:$summary");
+    }
+    if (defined($curappt{"description"})) {
+	$description = $curappt{"description"};
+	output("DESCRIPTION:$description");
+    }
+    if (defined($curappt{"attendee"})) {
+	$attendee = "ATTENDEE;ROLE=OWNER:" . $curappt{"attendee"};
+	output($attendee);
+    }
+    
+    if (defined($curappt{"alarm"})) {
+	
+    }
+
+    if (defined($curappt{"repeats"})) {
+	# wow what a mess
+	$rule = "RRULE:";
+	if ($curappt{"repeats"} eq "DAILY") {
+	    $rule = $rule . "D" . $curappt{"period"};
+	} elsif ($curappt{"repeats"} eq "WEEKLY") {
+	    $rule = $rule . "W1" . " ";
+	    $rule = $rule . $curappt{"weekdays"};
+		
+	} elsif ($curappt{"repeats"} eq "MONTHLY") {
+	    $rule = $rule . "MD" . $curappt{"period"};
+	    $rule = $rule . " " . $curappt{"startday"};
+	}
+	if ($curappt{"endrepeat"} && ($curappt{"endrepeat"} =~ /T/)) {
+	    $rule = $rule . " " . $curappt{"endrepeat"};
+	} elsif ($curappt{"endrepeat"}) {
+	    $rule = $rule . " \#" . $curappt{"endrepeat"};
+	} else {
+	    $rule = $rule . " \#0";
+	}
+	output($rule);
+    }
+    if (defined($curappt{"exceptions"})) {
+	$exceptions = "EXDATE:" . $curappt{"exceptions"};
+	chop($exceptions);
+	output($exceptions);
+    }
+    output("CLASS:PUBLIC");
+    output("PRIORITY:0");
+    output("TRANSP:0");
+    output("RELATED-TO:0");
+    if (defined($curappt{"todo"})) {
+	output("END:VTODO\n");
+    } else {
+	output("END:VEVENT\n");
+    }
+}
+
+sub date_to_str
+{
+    $year = shift(@_);
+    $month = shift(@_);
+    $day = shift(@_);
+    my($datestr);
+    $datestr = sprintf("%04d%02d%02d",$year,$month,$day);
+    return $datestr;
+}
+
+sub time_to_str
+{
+    $hour = shift(@_);
+    $min = shift(@_);
+    my($timestr);
+
+    $timestr = sprintf("T%02d%02d00",$hour,$min);
+    return $timestr;
+}
+
+sub process_dates
+{
+    # first, test for single
+    $_ = $line;
+    if (/\[Single/)  {
+	&repeat_none;
+    } elsif (/\[Days/) {
+	&repeat_daily;
+    } elsif (/\[WeekDays/) {
+	&repeat_weekly;
+    } elsif (/\[Months/) {
+	&repeat_monthly;
+    } elsif (/\[ComplexMonths/) {
+	$exitstatus = 1;
+	#printf("WARNING: complex repeating month entry detected, we don't support.\n");
+	#printf("converting to a single occurrence on the original start date.\n");
+	$line = &getLine;
+	&repeat_none;
+    } elsif (/\[Empty/) {
+	# silently toss
+	$curappt{"tossme"} = "TRUE";
+    } else {
+	$exitstatus = 1;
+	#print "didn't understand line: $_";
+    }
+    while ($line = &getLine) {
+	if ($line =~ /^\]/) {
+	    return;
+	} elsif ($line =~ /^Finish/) {
+	    ($day, $month, $year) = /(\d+)\/(\d+)\/(\d+)/;
+	    $curappt{"endrepeat"} = &date_to_str($year, $month, $day);
+	    $curappt{"endrepeat"} = $curappt{"endrepeat"} . &time_to_str("0","0");
+	} elsif ($line =~ /^Deleted/) {
+	    ($day, $month, $year) = /(\d+)\/(\d+)\/(\d+)/;
+	    if (defined($curappt{"exceptions"})) {
+		$curappt{"exceptions"} = $curappt{"exceptions"} .
+		    &date_to_str($year, $month, $day) . ";";
+	    } else {
+		$curappt{"exceptions"} = &date_to_str($year, $month, $day) .
+		    ";";
+	    }
+	} else {
+	    $exitstatus = 1;
+	    #print "trashed line: $line";
+	}
+    }
+}
+
+sub repeat_none
+{
+    # just a one time shot
+    ($day, $month, $year) = /(\d+)\/(\d+)\/(\d+)/;
+    $curappt{"startmonth"} = $month;
+    $curappt{"startday"} = $day;
+    $curappt{"startyear"} = $year;
+}
+
+sub repeat_daily
+{
+    # repeats on a daily basis
+    $curappt{"repeats"} = "DAILY";
+    ($skip) = /(\d+)$/;
+    $curappt{"period"} = $skip;
+    $line = &getLine;
+    ($day, $month, $year) = /(\d+)\/(\d+)\/(\d+)/;
+    $curappt{"startmonth"} = $month;
+    $curappt{"startday"} = $day;
+    $curappt{"startyear"} = $year;
+}
+
+sub repeat_weekly
+{
+    # repeats on a weekly basis, a few days a week
+    $curappt{"repeats"} = "WEEKLY";
+    $startofdates = index($_,"WeekDays") + length("WeekDays");
+    $endofdates = index($_,"Months");
+    $datestr = substr($_,$startofdates,($endofdates-$startofdates));
+    $datestr =~ s/^\s+//;
+    @days = split(/\s+/,$datestr);
+    $datestr = "";
+    foreach $date (@days) {
+	if ($date == 1) {
+	    $datestr = $datestr . "SU ";
+	} elsif ($date == 2) {
+	    $datestr = $datestr . "MO ";
+	} elsif ($date == 3) {
+	    $datestr = $datestr . "TU ";
+	} elsif ($date == 4) {
+	    $datestr = $datestr . "WE ";
+	} elsif ($date == 5) {
+	    $datestr = $datestr . "TH ";
+	} elsif ($date == 6) {
+	    $datestr = $datestr . "FR ";
+	} elsif ($date == 7) {
+	    $datestr = $datestr . "SA ";
+	}
+    }
+    # remove one trailing whitespace
+    chop($datestr);
+    $curappt{"weekdays"} = $datestr;
+    $line = &getLine;
+    ($day, $month, $year) = /(\d+)\/(\d+)\/(\d+)/;
+    $curappt{"startmonth"} = $month;
+    $curappt{"startday"} = $day;
+    $curappt{"startyear"} = $year;
+}
+
+sub repeat_monthly
+{
+    # repeats on a daily basis
+    $curappt{"repeats"} = "MONTHLY";
+    ($skip) = /(\d+)$/;
+    $curappt{"period"} = $skip;
+    $line = &getLine;
+    ($day, $month, $year) = /(\d+)\/(\d+)\/(\d+)/;
+    $curappt{"startmonth"} = $month;
+    $curappt{"startday"} = $day;
+    $curappt{"startyear"} = $year;
+}
+
+
