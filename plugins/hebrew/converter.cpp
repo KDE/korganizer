@@ -11,9 +11,6 @@
 #include "converter.h"
 #include <klocale.h>
 
-QStringList Converter::HebrewMonthNames;
-QStringList Converter::SecularMonthNames;
-
 Converter::Converter()
 {
 
@@ -334,30 +331,11 @@ void
                        int syear, int smonth,
                        struct DateResult *result)
 {
-
-  HebrewMonthNames << "" <<
-    i18n
-    ("These are months of the Jewish calendar and don't have translations. They may have different  spellings in your language; otherwise just translate the sound to your characters",
-     "Nissan") << i18n("Iyar") << i18n("Sivan") << i18n("Tammuz") <<
-    i18n("Av") << i18n("Elul") << i18n("Tishrei") << i18n("Cheshvan")
-    << i18n("Kislev") << i18n("Tevet") << i18n("Shvat") <<
-    i18n("Adar I") << i18n("Adar II") << i18n("Adar");
-
-  SecularMonthNames << "" << i18n("January") << i18n("February") <<
-    i18n("March") << i18n("April") << i18n("May") << i18n("June") <<
-    i18n("July") << i18n("August") << i18n("September") <<
-    i18n("October") << i18n("November") << i18n("December");
-
   result->hebrew_month_length = hebrew_month_length(hyear, hmonth);
   result->secular_month_length = secular_month_length(syear, smonth);
   result->hebrew_leap_year_p = hebrew_leap_year_p(hyear);
   result->secular_leap_year_p = gregorian_leap_year_p(syear);
   result->kvia = (hebrew_year_length(hyear) % 10) - 3;
-  result->hebrew_month_name = ((hmonth < 12)
-                               || result->
-                               hebrew_leap_year_p) ?
-    HebrewMonthNames[hmonth] : HebrewMonthNames[14];
-  result->secular_month_name = SecularMonthNames[smonth];
   // absolute is -1 on 1/1/0001 Julian
   result->day_of_week = (7 + absolute) % 7;
   result->hebrew_day_number =
