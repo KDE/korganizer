@@ -369,6 +369,8 @@ void FreeBusyManager::cancelRetrieval()
 
 KURL FreeBusyManager::freeBusyUrl( const QString &email )
 {
+  kdDebug(5850) << "FreeBusyManager::freeBusyUrl(): " << email << endl;
+
   // First check if there is a specific FB url for this email
   QString configFile = locateLocal( "data", "korganizer/freebusyurls" );
   KConfig cfg( configFile );
@@ -402,9 +404,12 @@ KURL FreeBusyManager::freeBusyUrl( const QString &email )
   // This tests if the hostnames match, or one is a subset of the other
   const QString hostDomain = sourceURL.host();
   if ( hostDomain != emailHost && !hostDomain.endsWith( '.' + emailHost )
-       && !emailHost.endsWith( '.' + hostDomain ) )
+       && !emailHost.endsWith( '.' + hostDomain ) ) {
     // Host names do not match
+    kdDebug(5850) << "Host '" << sourceURL.host() << "' doesn't match email '"
+      << email << "'" << endl; 
     return KURL();
+}
 
   if ( KOPrefs::instance()->mFreeBusyFullDomainRetrieval )
     sourceURL.setFileName( email + ".ifb" );
