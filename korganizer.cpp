@@ -263,7 +263,7 @@ void KOrganizer::initActions()
   // Navigation menu  
   (void)new KAction(i18n("Go to &Today"), "today", 0,
                     mCalendarView,SLOT(goToday()),
-                    actionCollection(), "go_today");
+                    actionCollection(), "go_home");
   action = new KAction(i18n("Go &Backward"), "1leftarrow", 0,
                        mCalendarView,SLOT(goPrevious()),
                        actionCollection(), "go_previous");
@@ -285,8 +285,8 @@ void KOrganizer::initActions()
 */
       
   // setup Settings menu
-  mToolBarToggleAction = KStdAction::showToolbar(this,SLOT(toggleToolBar()),
-                                                 actionCollection());
+//  mToolBarToggleAction = KStdAction::showToolbar(this,SLOT(toggleToolBar()),
+//                                                 actionCollection());
 //  KStdAction::showStatusbar(this, SLOT(toggleStatusBar()), actionCollection());
 
 /*
@@ -302,8 +302,6 @@ void KOrganizer::initActions()
   
   createGUI();
 
-// Disabled because of the message freeze. Enabling it would add new messages.
-#if 0
   QListIterator<KToolBar> it = toolBarIterator();
   for ( ; it.current() ; ++it ) {
     KToggleAction *act = new KToggleAction(i18n("Show %1 Toolbar")
@@ -314,7 +312,6 @@ void KOrganizer::initActions()
     mToolBarToggles.append(act);
   }
   plugActionList("toolbartoggles",mToolBarToggles);
-#endif
 }
 
 

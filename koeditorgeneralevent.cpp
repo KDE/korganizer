@@ -684,24 +684,23 @@ bool KOEditorGeneralEvent::validateInput()
 
   if (!noTimeButton->isChecked()) {
     if (!startTimeEdit->inputIsValid()) {
-      KMessageBox::sorry(this,"You must specify a valid time");
+      KMessageBox::sorry(this,i18n("Please specify a valid start time."));
       return false;
     }
 
     if (!endTimeEdit->inputIsValid()) {
-      KMessageBox::sorry(this,"You must specify a valid time");
+      KMessageBox::sorry(this,i18n("Please specify a valid end time."));
       return false;
     }
   }
 
   if (!startDateEdit->inputIsValid()) {
-    qDebug("--start date isn't valid");
-    kapp->beep();
+    KMessageBox::sorry(this,i18n("Please specify a valid start date."));
     return false;
   }
 
   if (!endDateEdit->inputIsValid()) {
-    kapp->beep();
+    KMessageBox::sorry(this,i18n("Please specify a valid end date."));
     return false;
   }
 
@@ -714,7 +713,8 @@ bool KOEditorGeneralEvent::validateInput()
   }
 
   if (startDt > endDt) {
-    KMessageBox::sorry(this,"You must specify a valid time");
+    KMessageBox::sorry(this,i18n("The event starts before it ends.\n"
+                                 "Please correct dates and times."));
     return false;
   }
 

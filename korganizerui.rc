@@ -3,7 +3,7 @@
 
   <MenuBar>
     <Menu name="file"><text>&amp;File</text>
-      <Action name="print_setup"/>
+      <Action name="print_setup" append="print_merge"/>
       <Action name="import_ical"/>
       <Action name="merge_calendar"/>
       <Action name="file_archive"/>
@@ -33,16 +33,17 @@
       <Action name="delete_appointment"/>
       <Action name="mail_appointment"/>
     </Menu>
+    <Menu name="settings"><text>&amp;Settings</text>
+      <Actionlist name="toolbartoggles" append="show_merge"/>
+    </Menu>
   </MenuBar>
 
-  <ToolBar name="mainToolBar">
-    <Action name="go_today"/>
-    <Separator/>
-    <Action name="new_event"/>
+  <ToolBar name="mainToolBar"><text>Main</text>
     <Action name="mail_appointment"/>
+    <Action name="new_event"/>
   </ToolBar>
 
-  <ToolBar name="korganizer_toolbar">
+  <ToolBar name="korganizer_toolbar"><text>Views</text>
     <Action name="view_list"/>
     <Action name="view_day"/>
     <Action name="view_workweek"/>

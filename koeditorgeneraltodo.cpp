@@ -288,13 +288,12 @@ bool KOEditorGeneralTodo::validateInput()
 {
   if (!noDueButton->isChecked()) {
     if (!startDateEdit->inputIsValid()) {
-      qDebug("--due date isn't valid");
-      kapp->beep();
+      KMessageBox::sorry(this,i18n("Please specify a valid due date."));
       return false;
     }
     if (!noTimeButton->isChecked()) {
       if (!startTimeEdit->inputIsValid()) {
-        KMessageBox::sorry(this,"You must specify a valid time");
+        KMessageBox::sorry(this,i18n("Please specify a valid due time."));
         return false;
       }
     }

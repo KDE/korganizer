@@ -262,6 +262,7 @@ void KOOptionsDialog::setupMainTab()
   topLayout->setSpacing(spacingHint());
   topLayout->setMargin(marginHint());
   
+  
   topLayout->addWidget(new QLabel(i18n("Your name:"),topFrame),0,0);
   mNameEdit = new QLineEdit(topFrame);
   topLayout->addWidget(mNameEdit,0,1);
@@ -274,14 +275,10 @@ void KOOptionsDialog::setupMainTab()
   mAdditionalEdit = new QLineEdit(topFrame);
   topLayout->addWidget(mAdditionalEdit,2,1);
   
-  mBccCheck = new QCheckBox(i18n("Send Bcc to owner when mailing events"),
-                            topFrame);
-  topLayout->addMultiCellWidget(mBccCheck,3,3,0,1);
-
 
   QGroupBox *autoSaveGroup = new QGroupBox(1,Horizontal,i18n("Auto-Save"),
                                            topFrame);
-  topLayout->addMultiCellWidget(autoSaveGroup,4,4,0,1);
+  topLayout->addMultiCellWidget(autoSaveGroup,3,3,0,1);
 
   mAutoSaveCheck = new QCheckBox(i18n("Enable automatic saving of calendar"),
                                  autoSaveGroup);
@@ -293,9 +290,6 @@ void KOOptionsDialog::setupMainTab()
   mAutoSaveIntervalSpin = new QSpinBox(0,500,1,intervalBox);
 
 
-  mConfirmCheck = new QCheckBox(i18n("Confirm Deletes"),topFrame);
-  topLayout->addMultiCellWidget(mConfirmCheck,6,6,0,1);
-
   mHolidayList << QString::null;
   QStringList countryList = KGlobal::dirs()->findAllResources("data",
       "korganizer/holiday_*", false, true);
@@ -304,13 +298,23 @@ void KOOptionsDialog::setupMainTab()
         ++it )
     mHolidayList << (*it).mid((*it).findRev('_') + 1);
 
-  topLayout->addWidget(new QLabel(i18n("Holidays:"),topFrame),7,0);
+  topLayout->addWidget(new QLabel(i18n("Holidays:"),topFrame),4,0);
   mHolidayCombo = new QComboBox(topFrame);
   mHolidayCombo->insertStringList(mHolidayList);
 
-  topLayout->addWidget(mHolidayCombo,7,1);
+  topLayout->addWidget(mHolidayCombo,4,1);
 
-  topLayout->setRowStretch(8,1);
+
+  mBccCheck = new QCheckBox(i18n("Send copy to owner when mailing events"),
+                            topFrame);
+  topLayout->addMultiCellWidget(mBccCheck,5,5,0,1);
+
+
+  mConfirmCheck = new QCheckBox(i18n("Confirm Deletes"),topFrame);
+  topLayout->addMultiCellWidget(mConfirmCheck,6,6,0,1);
+
+
+  topLayout->setRowStretch(7,1);
 }
 
 
@@ -421,24 +425,24 @@ void KOOptionsDialog::setupFontsTab()
   mTimeBarFont->setFrameStyle(QFrame::Panel|QFrame::Sunken);
   topLayout->addWidget(mTimeBarFont,0,0);
 
-  QPushButton *buttonTimeBar = new QPushButton(i18n("Time Bar Font"),topFrame);
+  QPushButton *buttonTimeBar = new QPushButton(i18n("Time Bar"),topFrame);
   topLayout->addWidget(buttonTimeBar,0,1);
   connect(buttonTimeBar,SIGNAL(clicked()),SLOT(selectTimeBarFont()));
 
   mMonthViewFont = new QLabel(KGlobal::locale()->formatTime(QTime(12,34)) +
-                              " " + i18n("Event"),topFrame);
+                              " " + i18n("Event Text"),topFrame);
   mMonthViewFont->setFrameStyle(QFrame::Panel|QFrame::Sunken);
   topLayout->addWidget(mMonthViewFont,1,0);
 
-  QPushButton *buttonMonthView = new QPushButton(i18n("Month"),topFrame);
+  QPushButton *buttonMonthView = new QPushButton(i18n("Month View"),topFrame);
   topLayout->addWidget(buttonMonthView,1,1);
   connect(buttonMonthView,SIGNAL(clicked()),SLOT(selectMonthViewFont()));
 
-  mAgendaViewFont = new QLabel(i18n("Event"),topFrame);
+  mAgendaViewFont = new QLabel(i18n("Event Text"),topFrame);
   mAgendaViewFont->setFrameStyle(QFrame::Panel|QFrame::Sunken);
   topLayout->addWidget(mAgendaViewFont,2,0);
 
-  QPushButton *buttonAgendaView = new QPushButton(i18n("Week"),topFrame);
+  QPushButton *buttonAgendaView = new QPushButton(i18n("Agenda View"),topFrame);
   topLayout->addWidget(buttonAgendaView,2,1);
   connect(buttonAgendaView,SIGNAL(clicked()),SLOT(selectAgendaViewFont()));
 
