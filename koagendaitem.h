@@ -80,7 +80,7 @@ class KOAgendaItem : public QFrame
     Incidence *incidence() const { return mIncidence; }
     QDate itemDate() { return mDate; }
     
-    /** Update the date of this item's occurence (not in the event) */ 
+    /** Update the date of this item's occurrence (not in the event) */ 
     void setItemDate(QDate qd);
     
     void setText ( const QString & text ) { mItemLabel->setText(text); }
