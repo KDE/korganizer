@@ -220,7 +220,6 @@ class BaseView : public QWidget
     void incidenceChanged( Incidence*, Incidence* );
     void incidenceDeleted( Incidence* );
     void incidenceToBeDeleted( Incidence* );
-    void updateTodoView();
 
 
     /**

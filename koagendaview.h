@@ -270,6 +270,7 @@ class KOAgendaView : public KOEventView
     QDateTime mTimeSpanBegin;
     QDateTime mTimeSpanEnd;
     bool mTimeSpanInAllDay;
+    bool mItemDragged;
 
 };
 

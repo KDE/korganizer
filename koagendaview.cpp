@@ -352,7 +352,7 @@ void KOAlternateLabel::setText( const QString &text ) {
 ////////////////////////////////////////////////////////////////////////////
 
 KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name) :
-  KOEventView (cal,parent,name)
+  KOEventView (cal,parent,name), mItemDragged( false )
 {
   mSelectedDates.append(QDate::currentDate());
 
@@ -773,7 +773,6 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
       (static_cast<Event*>( incidence ) )->setDtEnd( endDt );
     } else if ( i->type() == "Todo" ) {
       (static_cast<Todo*>( incidence ) )->setDtDue( endDt );
-      emit updateTodoView();
     }
     incidence->setRevision( i->revision() );
     item->setItemDate( startDt.date() );
@@ -781,7 +780,8 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
     KOIncidenceToolTip::remove( item );
     KOIncidenceToolTip::add( item, incidence, KOAgendaItem::toolTipGroup() );
 
-//    emit incidenceChanged( oldIncidence, incidence );
+    mItemDragged = true;
+    emit incidenceChanged( oldIncidence, incidence );
   } else {
     updateView();
   }
@@ -912,8 +912,6 @@ void KOAgendaView::changeIncidenceDisplayAdded( Incidence *incidence )
 
 void KOAgendaView::changeIncidenceDisplay( Incidence *incidence, int mode )
 {
-  kdDebug(5850) << "KOAgendaView::changeIncidenceDisplay" << endl;
-
   switch ( mode ) {
     case KOGlobals::INCIDENCEADDED: {
         //  Add an event. No need to recreate the whole view!
@@ -926,12 +924,16 @@ void KOAgendaView::changeIncidenceDisplay( Incidence *incidence, int mode )
     case KOGlobals::INCIDENCEEDITED:
     case KOGlobals::INCIDENCEDELETED: {
 // TODO: Removing does not work, as it does not correctly reset the max nr. of conflicting items. Thus the items will sometimes not fill the whole width of the column. As a workaround, just recreate the whole view for now... */
-      if ( incidence->doesFloat() )
-        mAllDayAgenda->removeIncidence( incidence );
-      else
-        mAgenda->removeIncidence( incidence );
-      if ( mode == KOGlobals::INCIDENCEEDITED )
-        changeIncidenceDisplayAdded( incidence );
+      if ( !mItemDragged ) {
+        if ( incidence->doesFloat() )
+          mAllDayAgenda->removeIncidence( incidence );
+        else
+          mAgenda->removeIncidence( incidence );
+        if ( mode == KOGlobals::INCIDENCEEDITED  )
+          changeIncidenceDisplayAdded( incidence );
+      } else {
+        mItemDragged = false;
+      }
       break;
     }
     default:
@@ -946,6 +948,7 @@ void KOAgendaView::fillAgenda( const QDate & )
 
 void KOAgendaView::fillAgenda()
 {
+  mItemDragged = false;
   clearView();
 
   mAllDayAgenda->changeColumns(mSelectedDates.count());

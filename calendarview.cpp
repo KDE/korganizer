@@ -255,8 +255,6 @@ CalendarView::CalendarView( QWidget *parent, const char *name )
   connect( this, SIGNAL( configChanged() ),
            mDateNavigator, SLOT( updateConfig() ) );
 
-  connect( mViewManager, SIGNAL( updateTodoView() ),
-           mTodoList, SLOT( updateView() ) );
   mViewManager->connectTodoView( mTodoList );
   mViewManager->connectView( mTodoList );
 
@@ -662,12 +660,8 @@ void CalendarView::incidenceDeleted( Incidence *incidence )
 }
 
 
-// most of the changeIncidenceDisplays() right now just call the view's
-// total update mode, but they SHOULD be recoded to be more refresh-efficient.
 void CalendarView::changeIncidenceDisplay( Incidence *incidence, int action )
 {
-//  kdDebug(5850) << "CalendarView::changeIncidenceDisplay" << endl;
-
   mDateNavigator->updateView();
   mDialogManager->updateSearchDialog();
 
