@@ -102,9 +102,9 @@ void MarcusBains::updateLocation(bool recalculate)
 
   int mins = tim.hour()*60 + tim.minute();
   int minutesPerCell = 24 * 60 / agenda->rows();
-  int y = (int)(mins*agenda->gridSpacingY()/minutesPerCell);
+  int y = int( mins * agenda->gridSpacingY() / minutesPerCell );
   int today = recalculate ? todayColumn() : oldToday;
-  int x = (int)( agenda->gridSpacingX()*today );
+  int x = int( agenda->gridSpacingX() * today );
   bool disabled = !(KOPrefs::instance()->mMarcusBainsEnabled);
 
   oldTime = tim;
@@ -119,9 +119,8 @@ void MarcusBains::updateLocation(bool recalculate)
     mTimeBox->show();
   }
 
-  if(recalculate)
-    setFixedSize((int)(agenda->gridSpacingX()),1);
-  agenda->moveChild(this, x, y);
+  if ( recalculate ) setFixedSize( int( agenda->gridSpacingX() ), 1 );
+  agenda->moveChild( this, x, y );
   raise();
 
   if(recalculate)
@@ -131,7 +130,7 @@ void MarcusBains::updateLocation(bool recalculate)
   mTimeBox->adjustSize();
   if (y-mTimeBox->height()>=0) y-=mTimeBox->height(); else y++;
   if (x-mTimeBox->width()+agenda->gridSpacingX() > 0)
-    x+=(int)(agenda->gridSpacingX()-mTimeBox->width()-1);
+    x += int( agenda->gridSpacingX() - mTimeBox->width() - 1 );
   else x++;
   agenda->moveChild(mTimeBox,x,y);
   mTimeBox->raise();
@@ -232,7 +231,7 @@ void KOAgenda::init()
   mItems.setAutoDelete( true );
   mItemsToDelete.setAutoDelete( true );
 
-//  resizeContents( (int)(mGridSpacingX * mColumns + 1) , (int)(mGridSpacingY * mRows + 1) );
+//  resizeContents( int(mGridSpacingX * mColumns + 1) , int(mGridSpacingY * mRows + 1) );
   resizeContents( int( mGridSpacingX * mColumns ),
                   int( mGridSpacingY * mRows ) );
 
@@ -275,8 +274,8 @@ void KOAgenda::clear()
 //  kdDebug(5850) << "KOAgenda::clear()" << endl;
 
   KOAgendaItem *item;
-  for ( item=mItems.first(); item != 0; item=mItems.next() ) {
-    removeChild(item);
+  for ( item = mItems.first(); item != 0; item = mItems.next() ) {
+    removeChild( item );
   }
   mItems.clear();
   mItemsToDelete.clear();
@@ -663,7 +662,7 @@ void KOAgenda::startItemAction(const QPoint& viewportPos)
 
 
   if (mAllDayMode) {
-    int gridDistanceX = (int)(pos.x() - gpos.x() * mGridSpacingX);
+    int gridDistanceX = int( pos.x() - gpos.x() * mGridSpacingX );
     if (gridDistanceX < mResizeBorderWidth &&
         mActionItem->cellXLeft() == mEndCell.x() &&
         !noResize ) {
@@ -680,7 +679,7 @@ void KOAgenda::startItemAction(const QPoint& viewportPos)
       setCursor(sizeAllCursor);
     }
   } else {
-    int gridDistanceY = (int)(pos.y() - gpos.y() * mGridSpacingY);
+    int gridDistanceY = int( pos.y() - gpos.y() * mGridSpacingY );
     if (gridDistanceY < mResizeBorderWidth &&
         mActionItem->cellYTop() == mEndCell.y() &&
         !mActionItem->firstMultiItem() &&
@@ -789,9 +788,9 @@ void KOAgenda::performItemAction(const QPoint& viewportPos)
             // cell's y values are first and last cell of the bar, so if newY=-1, they need to be the same
             if (newFirst) {
               newFirst->setCellXY(moveItem->cellXLeft()-1, rows()+newY, rows()-1);
-              mItems.append(newFirst);
-              moveItem->resize( (int)( mGridSpacingX * newFirst->cellWidth() ),
-                                (int)( mGridSpacingY * newFirst->cellHeight() ));
+              mItems.append( newFirst );
+              moveItem->resize( int( mGridSpacingX * newFirst->cellWidth() ),
+                                int( mGridSpacingY * newFirst->cellHeight() ));
               QPoint cpos = gridToContents( QPoint( newFirst->cellXLeft(), newFirst->cellYTop() ) );
               addChild( newFirst, cpos.x(), cpos.y() );
             } else {
@@ -835,8 +834,8 @@ void KOAgenda::performItemAction(const QPoint& viewportPos)
             if (newLast) {
               newLast->setCellXY( moveItem->cellXLeft()+1, 0, newY-rows()-1 );
               mItems.append(newLast);
-              moveItem->resize( (int)( mGridSpacingX * newLast->cellWidth() ),
-                                (int)( mGridSpacingY * newLast->cellHeight() ));
+              moveItem->resize( int( mGridSpacingX * newLast->cellWidth() ),
+                                int( mGridSpacingY * newLast->cellHeight() ));
               QPoint cpos = gridToContents( QPoint( newLast->cellXLeft(), newLast->cellYTop() ) ) ;
               addChild( newLast, cpos.x(), cpos.y() );
             } else {
@@ -852,8 +851,8 @@ void KOAgenda::performItemAction(const QPoint& viewportPos)
           changed=true;
         }
         if (changed) {
-          moveItem->resize((int)( mGridSpacingX * moveItem->cellWidth() ),
-                         (int)( mGridSpacingY * moveItem->cellHeight() ));
+          moveItem->resize( int( mGridSpacingX * moveItem->cellWidth() ),
+                            int( mGridSpacingY * moveItem->cellHeight() ) );
           QPoint cpos = gridToContents( QPoint( moveItem->cellXLeft(), moveItem->cellYTop() ) );
           moveChild( moveItem, cpos.x(), cpos.y() );
         }
@@ -863,7 +862,7 @@ void KOAgenda::performItemAction(const QPoint& viewportPos)
       if (mEndCell.y() <= mActionItem->cellYBottom()) {
         mActionItem->expandTop(gpos.y() - mEndCell.y());
         mActionItem->resize(mActionItem->width(),
-                            (int)( mGridSpacingY * mActionItem->cellHeight() ));
+                            int( mGridSpacingY * mActionItem->cellHeight() ));
         // TODO_RK: Simplify:
         QPoint cpos = gridToContents( QPoint( mEndCell.x(), mActionItem->cellYTop() ) );
         moveChild( mActionItem, childX(mActionItem), cpos.y() );
@@ -872,21 +871,21 @@ void KOAgenda::performItemAction(const QPoint& viewportPos)
       if (mEndCell.y() >= mActionItem->cellYTop()) {
         mActionItem->expandBottom(gpos.y() - mEndCell.y());
         mActionItem->resize(mActionItem->width(),
-                            (int)( mGridSpacingY * mActionItem->cellHeight() ));
+                            int( mGridSpacingY * mActionItem->cellHeight() ));
       }
     } else if (mActionType == RESIZELEFT) {
        if (mEndCell.x() <= mActionItem->cellXRight()) {
          mActionItem->expandLeft(gpos.x() - mEndCell.x());
-         mActionItem->resize((int)(mGridSpacingX * mActionItem->cellWidth()),
-                             mActionItem->height());
+         mActionItem->resize( int(mGridSpacingX * mActionItem->cellWidth() ),
+                              mActionItem->height() );
         QPoint cpos = gridToContents( QPoint( mActionItem->cellXLeft(),mActionItem->cellYTop() ) );
         moveChild(mActionItem, cpos.x(), childY(mActionItem));
        }
     } else if (mActionType == RESIZERIGHT) {
        if (mEndCell.x() >= mActionItem->cellXLeft()) {
          mActionItem->expandRight(gpos.x() - mEndCell.x());
-         mActionItem->resize((int)(mGridSpacingX * mActionItem->cellWidth()),
-                             mActionItem->height());
+         mActionItem->resize( int( mGridSpacingX * mActionItem->cellWidth() ),
+                              mActionItem->height());
        }
     }
     mEndCell = gpos;
@@ -895,7 +894,7 @@ void KOAgenda::performItemAction(const QPoint& viewportPos)
 
 void KOAgenda::endItemAction()
 {
-//  kdDebug(5850) << "KOAgenda::endItemAction()" << endl;
+//  kdDebug(5850) << "KOAgenda::endItemAction() " << endl;
 
   if ( mItemMoved ) {
     if ( mActionType == MOVE ) {
@@ -905,12 +904,15 @@ void KOAgenda::endItemAction()
     if ( !placeItem ) {
       placeItem = mActionItem;
     }
+
+    // Notify about change, so that agenda view can update the event data
     emit itemModified( placeItem );
+
     QPtrList<KOAgendaItem> oldconflictItems = placeItem->conflictItems();
     KOAgendaItem *item;
-    for ( item=oldconflictItems.first(); item != 0;
-          item=oldconflictItems.next() ) {
-      placeSubCells(item);
+    for ( item = oldconflictItems.first(); item != 0;
+          item = oldconflictItems.next() ) {
+      placeSubCells( item );
     }
     while ( placeItem ) {
       placeSubCells( placeItem );
@@ -925,7 +927,7 @@ void KOAgenda::endItemAction()
   mActionType = NOP;
   mItemMoved = 0;
 
-//  kdDebug(5850) << "KOAgenda::endItemAction() done" << endl;
+  kdDebug(5850) << "KOAgenda::endItemAction() done" << endl;
 }
 
 void KOAgenda::setNoActionCursor( KOAgendaItem *moveItem, const QPoint& viewportPos )
@@ -944,7 +946,7 @@ void KOAgenda::setNoActionCursor( KOAgendaItem *moveItem, const QPoint& viewport
 
   // Change cursor to resize cursor if appropriate
   if (mAllDayMode) {
-    int gridDistanceX = (int)(pos.x() - gpos.x() * mGridSpacingX);
+    int gridDistanceX = int( pos.x() - gpos.x() * mGridSpacingX );
     if ( !noResize &&
          gridDistanceX < mResizeBorderWidth &&
          moveItem->cellXLeft() == gpos.x() ) {
@@ -957,7 +959,7 @@ void KOAgenda::setNoActionCursor( KOAgendaItem *moveItem, const QPoint& viewport
       setCursor(arrowCursor);
     }
   } else {
-    int gridDistanceY = (int)(pos.y() - gpos.y() * mGridSpacingY);
+    int gridDistanceY = int( pos.y() - gpos.y() * mGridSpacingY );
     if ( !noResize &&
          gridDistanceY < mResizeBorderWidth &&
          moveItem->cellYTop() == gpos.y() &&
@@ -995,6 +997,9 @@ double KOAgenda::calcSubCellWidth( KOAgendaItem *item )
 
 void KOAgenda::placeAgendaItem( KOAgendaItem *item, double subCellWidth )
 {
+//  kdDebug() << "KOAgenda::placeAgendaItem(): " << item->incidence()->summary()
+//            << " subCellWidth: " << subCellWidth << endl;
+
   // left upper corner, no subcells yet
   QPoint pt = gridToContents( QPoint( item->cellXLeft(), item->cellYTop() ) );
   // right lower corner
@@ -1060,8 +1065,9 @@ void KOAgenda::placeSubCells( KOAgendaItem *placeItem )
     item->addConflictItem( placeItem );
     placeItem->addConflictItem( item );
   }
-  if ( items.isEmpty() )
+  if ( items.isEmpty() ) {
     placeAgendaItem( placeItem, newSubCellWidth );
+  }
   placeItem->update();
 }
 
@@ -1070,7 +1076,6 @@ void KOAgenda::placeSubCells( KOAgendaItem *placeItem )
 */
 void KOAgenda::drawContents(QPainter* p, int cx, int cy, int cw, int ch)
 {
-
   QPixmap db(cw, ch);
   db.fill(KOPrefs::instance()->mAgendaBgColor);
   QPainter dbp(&db);
@@ -1086,16 +1091,16 @@ void KOAgenda::drawContents(QPainter* p, int cx, int cy, int cw, int ch)
     int x2 = cx+cw-1;
     int y2 = mWorkingHoursYBottom;
     if (x2 >= x1 /*&& y2 >= y1*/) {
-      int gxStart = (int)(x1/mGridSpacingX);
-      int gxEnd = (int)(x2/mGridSpacingX);
+      int gxStart = int( x1 / mGridSpacingX );
+      int gxEnd = int( x2 / mGridSpacingX );
       while(gxStart <= gxEnd) {
-        int xStart = (int)( KOGlobals::self()->reverseLayout() ?
-                            (mColumns - 1 - gxStart)*mGridSpacingX :
-                            gxStart*mGridSpacingX );
+        int xStart = int( KOGlobals::self()->reverseLayout() ?
+                          ( mColumns - 1 - gxStart ) * mGridSpacingX :
+                          gxStart * mGridSpacingX );
         if (xStart < x1) xStart = x1;
-        int xEnd = (int)( KOGlobals::self()->reverseLayout() ?
-                          (mColumns - gxStart)*mGridSpacingX-1 :
-                          (gxStart+1)*mGridSpacingX-1 );
+        int xEnd = int( KOGlobals::self()->reverseLayout() ?
+                        ( mColumns - gxStart ) * mGridSpacingX - 1 :
+                        ( gxStart + 1 ) * mGridSpacingX - 1 );
         if (xEnd > x2) xEnd = x2;
         if ( y2 < y1 ) {
           if ( ( (gxStart==0) && !mHolidayMask->at(mHolidayMask->count()-1) ) ||
@@ -1186,17 +1191,17 @@ void KOAgenda::drawContents(QPainter* p, int cx, int cy, int cw, int ch)
 
   // Draw vertical lines of grid, start with the last line not yet visible
   //  kdDebug(5850) << "drawContents cx: " << cx << " cy: " << cy << " cw: " << cw << " ch: " << ch << endl;
-  double x = ((int)(cx/mGridSpacingX))*mGridSpacingX;
+  double x = ( int( cx / mGridSpacingX ) ) * mGridSpacingX;
   while (x < cx + cw) {
-    dbp.drawLine((int)x,cy,(int)x,cy+ch);
+    dbp.drawLine( int( x ), cy, int( x ), cy + ch );
     x+=mGridSpacingX;
   }
 
   // Draw horizontal lines of grid
-  double y = ((int)(cy/lGridSpacingY))*lGridSpacingY;
+  double y = ( int( cy / lGridSpacingY ) ) * lGridSpacingY;
   while (y < cy + ch) {
 //    kdDebug(5850) << " y: " << y << endl;
-    dbp.drawLine(cx,(int)y,cx+cw,(int)y);
+    dbp.drawLine( cx, int( y ), cx + cw, int( y ) );
     y+=lGridSpacingY;
   }
   p->drawPixmap(cx,cy, db);
@@ -1207,9 +1212,9 @@ void KOAgenda::drawContents(QPainter* p, int cx, int cy, int cw, int ch)
 */
 QPoint KOAgenda::contentsToGrid ( const QPoint &pos ) const
 {
-  int gx = (int)( KOGlobals::self()->reverseLayout() ?
+  int gx = int( KOGlobals::self()->reverseLayout() ?
         mColumns - pos.x()/mGridSpacingX : pos.x()/mGridSpacingX );
-  int gy = (int)( pos.y()/mGridSpacingY );
+  int gy = int( pos.y()/mGridSpacingY );
   return QPoint( gx, gy );
 }
 
@@ -1218,9 +1223,9 @@ QPoint KOAgenda::contentsToGrid ( const QPoint &pos ) const
 */
 QPoint KOAgenda::gridToContents( const QPoint &gpos ) const
 {
-  int x = (int)( KOGlobals::self()->reverseLayout() ?
+  int x = int( KOGlobals::self()->reverseLayout() ?
              (mColumns - gpos.x())*mGridSpacingX : gpos.x()*mGridSpacingX );
-  int y = (int)( gpos.y()*mGridSpacingY );
+  int y = int( gpos.y()*mGridSpacingY );
   return QPoint( x, y );
 }
 
@@ -1268,46 +1273,49 @@ QTime KOAgenda::gyToTime(int gy)
 void KOAgenda::setStartTime( QTime startHour )
 {
   double startPos = ( startHour.hour()/24. + startHour.minute()/1440. +
-     startHour.second()/86400. )* mRows * gridSpacingY();
-  setContentsPos(0, (int)( startPos ));
+                      startHour.second()/86400. ) * mRows * gridSpacingY();
+  setContentsPos( 0, int( startPos ) );
 }
 
 
 /*
   Insert KOAgendaItem into agenda.
 */
-KOAgendaItem *KOAgenda::insertItem (Incidence *event,QDate qd,int X,int YTop,int YBottom)
+KOAgendaItem *KOAgenda::insertItem( Incidence *event, QDate qd, int X, int YTop,
+                                    int YBottom )
 {
-  //kdDebug(5850) << "KOAgenda::insertItem:" << event->summary() << "-" << qd.toString() << " ;top, bottom:" << YTop << "," << YBottom << endl;
+  kdDebug(5850) << "KOAgenda::insertItem:" << event->summary() << "-" << qd.toString() << " ;top, bottom:" << YTop << "," << YBottom << endl;
 
-  if (mAllDayMode) {
+  if ( mAllDayMode ) {
     kdDebug(5850) << "KOAgenda: calling insertItem in all-day mode is illegal." << endl;
     return 0;
   }
   mActionType = NOP;
 
-  KOAgendaItem *agendaItem = new KOAgendaItem (event,qd,viewport());
-  connect( agendaItem, SIGNAL( removeAgendaItem( KOAgendaItem* ) ),
-           this, SLOT( removeAgendaItem( KOAgendaItem* ) ) );
-  connect( agendaItem, SIGNAL( showAgendaItem( KOAgendaItem* ) ),
-           this, SLOT( showAgendaItem( KOAgendaItem* ) ) );
+  KOAgendaItem *agendaItem = new KOAgendaItem( event, qd, viewport() );
+  connect( agendaItem, SIGNAL( removeAgendaItem( KOAgendaItem * ) ),
+           SLOT( removeAgendaItem( KOAgendaItem * ) ) );
+  connect( agendaItem, SIGNAL( showAgendaItem( KOAgendaItem * ) ),
+           SLOT( showAgendaItem( KOAgendaItem * ) ) );
 
-  if ( YBottom<=YTop ) {
+  if ( YBottom <= YTop ) {
     kdDebug(5850) << "KOAgenda::insertItem(): Text: " << agendaItem->text() << " YSize<0" << endl;
     YBottom = YTop;
   }
 
-  agendaItem->resize( (int)( (X+1)*mGridSpacingX ) - (int)( X*mGridSpacingX ), 
-                      (int)( YTop*mGridSpacingY ) - (int)( (YBottom+1) * mGridSpacingY ) );
-  agendaItem->setCellXY(X,YTop,YBottom);
-  agendaItem->setCellXRight(X);
+  agendaItem->resize( int( ( X + 1 ) * mGridSpacingX ) -
+                      int( X * mGridSpacingX ), 
+                      int( YTop * mGridSpacingY ) -
+                      int( ( YBottom + 1 ) * mGridSpacingY ) );
+  agendaItem->setCellXY( X, YTop, YBottom );
+  agendaItem->setCellXRight( X );
 
-  agendaItem->installEventFilter(this);
+  agendaItem->installEventFilter( this );
 
-  addChild(agendaItem,(int)( X*mGridSpacingX ), (int)( YTop*mGridSpacingY ));
-  mItems.append(agendaItem);
+  addChild( agendaItem, int( X * mGridSpacingX ), int( YTop * mGridSpacingY ) );
+  mItems.append( agendaItem );
 
-  placeSubCells(agendaItem);
+  placeSubCells( agendaItem );
 
   agendaItem->show();
 
@@ -1344,7 +1352,7 @@ KOAgendaItem *KOAgenda::insertAllDayItem (Incidence *event,QDate qd,int XBegin,i
 
   agendaItem->installEventFilter(this);
 
-  addChild(agendaItem,(int)( XBegin*mGridSpacingX ), 0);
+  addChild( agendaItem, int( XBegin * mGridSpacingX ), 0 );
   mItems.append(agendaItem);
 
   placeSubCells(agendaItem);
@@ -1403,7 +1411,7 @@ void KOAgenda::insertMultiItem (Event *event,QDate qd,int XBegin,int XEnd,
   marcus_bains();
 }
 
-void KOAgenda::removeEvent ( Event *event )
+void KOAgenda::removeEvent( Event *event )
 {
   // TODO_RK: make sure the conflicting items are updated correctly
   KOAgendaItem *item = mItems.first();
@@ -1425,19 +1433,7 @@ void KOAgenda::removeEvent ( Event *event )
   }
 }
 
-void KOAgenda::updateEvent ( Event *event )
-{
-// TODO_RK: Update the item, don't delete it and readd it...
-  KOAgendaItem *item = mItems.first();
-  while ( item && item->incidence()!=event ) {
-    item = mItems.next();
-  }
-  if (item) {
-// TODO_RK: update this agenda item  
-  }
-}
-
-void KOAgenda::showAgendaItem( KOAgendaItem* agendaItem )
+void KOAgenda::showAgendaItem( KOAgendaItem *agendaItem )
 {
   if ( !agendaItem ) return;
   agendaItem->hide();
@@ -1448,7 +1444,7 @@ void KOAgenda::showAgendaItem( KOAgendaItem* agendaItem )
   agendaItem->show();
 }
 
-bool KOAgenda::removeAgendaItem( KOAgendaItem* item )
+bool KOAgenda::removeAgendaItem( KOAgendaItem *item )
 {
   // we found the item. Let's remove it and update the conflicts
   bool taken = false;
@@ -1505,7 +1501,7 @@ void KOAgenda::resizeEvent ( QResizeEvent *ev )
     mGridSpacingX = double( width() - 2 * frameWidth() ) / (double)mColumns;
 //    kdDebug(5850) << "Frame " << frameWidth() << endl;
     mGridSpacingY = height() - 2 * frameWidth();
-    resizeContents( (int)( mGridSpacingX * mColumns ), (int)(mGridSpacingY ));
+    resizeContents( int( mGridSpacingX * mColumns ), int( mGridSpacingY ) );
 
     for ( item=mItems.first(); item != 0; item=mItems.next() ) {
       subCellWidth = calcSubCellWidth( item );
@@ -1605,8 +1601,8 @@ void KOAgenda::checkScrollBoundaries()
 
 void KOAgenda::checkScrollBoundaries(int v)
 {
-  int yMin = (int)(v/mGridSpacingY);
-  int yMax = (int)((v+visibleHeight())/mGridSpacingY);
+  int yMin = int( v / mGridSpacingY );
+  int yMax = int( ( v + visibleHeight() ) / mGridSpacingY );
 
 //  kdDebug(5850) << "--- yMin: " << yMin << "  yMax: " << yMax << endl;
 
@@ -1666,11 +1662,13 @@ void KOAgenda::calculateWorkingHours()
   mWorkingHoursEnable = !mAllDayMode;
 
   QTime tmp = KOPrefs::instance()->mWorkingHoursStart.time();
-  mWorkingHoursYTop = (int)(4 * mGridSpacingY *
-                      (tmp.hour() + tmp.minute()/60. + tmp.second()/3600.) );
+  mWorkingHoursYTop = int( 4 * mGridSpacingY *
+                           ( tmp.hour() + tmp.minute() / 60. +
+                             tmp.second() / 3600. ) );
   tmp = KOPrefs::instance()->mWorkingHoursEnd.time();
-  mWorkingHoursYBottom = (int)(4 * mGridSpacingY *
-                      (tmp.hour() + tmp.minute()/60. + tmp.second()/3600.) - 1);
+  mWorkingHoursYBottom = int( 4 * mGridSpacingY *
+                              ( tmp.hour() + tmp.minute() / 60. +
+                                tmp.second() / 3600. ) - 1 );
 }
 
 
@@ -1705,4 +1703,13 @@ void KOAgenda::setTypeAheadReceiver( QObject *o )
 QObject *KOAgenda::typeAheadReceiver() const
 {
   return mTypeAheadReceiver;
+}
+
+KOAgendaItem *KOAgenda::findItem( Incidence *incidence )
+{
+  KOAgendaItem *item;
+  for( item = mItems.first(); item; item = mItems.next() ) {
+    if ( item->incidence() == incidence ) break;
+  }
+  return item;
 }

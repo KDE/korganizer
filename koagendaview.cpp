@@ -380,7 +380,7 @@ KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name) :
 #ifndef KORG_NOSPLITTER
   mSplitterAgenda = new QSplitter(Vertical,this);
   topLayout->addWidget(mSplitterAgenda);
-#
+
 #if KDE_IS_VERSION( 3, 1, 93 )
   mSplitterAgenda->setOpaqueResize( KGlobalSettings::opaqueResize() );
 #else
@@ -492,34 +492,35 @@ KOAgendaView::~KOAgendaView()
   delete mAllDayAgendaPopup;
 }
 
-void KOAgendaView::connectAgenda( KOAgenda*agenda, QPopupMenu*popup, KOAgenda* otherAgenda )
+void KOAgendaView::connectAgenda( KOAgenda *agenda, QPopupMenu *popup,
+                                  KOAgenda *otherAgenda )
 {
-  connect(agenda,SIGNAL(showIncidencePopupSignal(Incidence *)),
-          popup,SLOT(showIncidencePopup(Incidence *)));
+  connect( agenda, SIGNAL( showIncidencePopupSignal( Incidence * ) ),
+           popup, SLOT( showIncidencePopup( Incidence * ) ) );
 
-  connect(agenda,SIGNAL(showNewEventPopupSignal()),
-          this, SLOT(showNewEventPopup()));
+  connect( agenda, SIGNAL( showNewEventPopupSignal() ),
+           SLOT( showNewEventPopup() ) );
 
   agenda->setCalendar( calendar() );
   
   // Create/Show/Edit/Delete Event
-  connect(agenda,SIGNAL(newEventSignal()),SIGNAL(newEventSignal()));
+  connect( agenda, SIGNAL( newEventSignal() ), SIGNAL( newEventSignal() ) );
   
-  connect(agenda,SIGNAL(newStartSelectSignal()),
-          otherAgenda,SLOT(clearSelection()));
+  connect( agenda, SIGNAL( newStartSelectSignal() ),
+           otherAgenda, SLOT( clearSelection() ) );
 
-  connect(agenda,SIGNAL(editIncidenceSignal(Incidence *)),
-                 SIGNAL(editIncidenceSignal(Incidence *)));
-  connect(agenda,SIGNAL(showIncidenceSignal(Incidence *)),
-                 SIGNAL(showIncidenceSignal(Incidence *)));
-  connect(agenda,SIGNAL(deleteIncidenceSignal(Incidence *)),
-                 SIGNAL(deleteIncidenceSignal(Incidence *)));
+  connect( agenda, SIGNAL( editIncidenceSignal( Incidence * ) ),
+                   SIGNAL( editIncidenceSignal( Incidence * ) ) );
+  connect( agenda, SIGNAL( showIncidenceSignal( Incidence * ) ),
+                   SIGNAL( showIncidenceSignal( Incidence * ) ) );
+  connect( agenda, SIGNAL( deleteIncidenceSignal( Incidence * ) ),
+                   SIGNAL( deleteIncidenceSignal( Incidence * ) ) );
 
-  connect(agenda,SIGNAL(incidenceChanged(Incidence *, Incidence *)),
-                 SIGNAL(incidenceChanged(Incidence *, Incidence *)));
+  connect( agenda, SIGNAL( incidenceChanged( Incidence *, Incidence * ) ),
+                   SIGNAL( incidenceChanged( Incidence *, Incidence * ) ) );
 
-  connect(agenda,SIGNAL(itemModified(KOAgendaItem *)),
-                 SLOT(updateEventDates(KOAgendaItem *)));
+  connect( agenda, SIGNAL( itemModified( KOAgendaItem * ) ),
+                   SLOT( updateEventDates( KOAgendaItem * ) ) );
 
   // drag signals
   connect( agenda, SIGNAL( startDragSignal( Incidence * ) ),
@@ -532,8 +533,8 @@ void KOAgendaView::connectAgenda( KOAgenda*agenda, QPopupMenu*popup, KOAgenda* o
            SIGNAL( incidenceSelected( Incidence * ) ) );
 
   // rescheduling of todos by d'n'd
-  connect( agenda, SIGNAL( droppedToDo( Todo*, const QPoint&, bool ) ),
-           SLOT( slotTodoDropped( Todo *, const QPoint&, bool ) ) );
+  connect( agenda, SIGNAL( droppedToDo( Todo *, const QPoint &, bool ) ),
+           SLOT( slotTodoDropped( Todo *, const QPoint &, bool ) ) );
 } 
 
 void KOAgendaView::createDayLabels()
@@ -643,7 +644,9 @@ DateList KOAgendaView::selectedDates()
   return selected;
 }
 
-bool KOAgendaView::eventDurationHint(QDateTime &startDt, QDateTime &endDt, bool &allDay) {
+bool KOAgendaView::eventDurationHint( QDateTime &startDt, QDateTime &endDt,
+                                      bool &allDay )
+{
   if ( selectionStart().isValid() ) {
     startDt = selectionStart();
     endDt = selectionEnd();
@@ -666,7 +669,6 @@ bool KOAgendaView::selectedIsSingleCell()
     return ( secs <= 24*60*60/mAgenda->rows() );
   }
 }
-
 
 
 void KOAgendaView::updateView()
@@ -710,35 +712,36 @@ void KOAgendaView::updateConfig()
 }
 
 
-void KOAgendaView::updateEventDates(KOAgendaItem *item)
+void KOAgendaView::updateEventDates( KOAgendaItem *item )
 {
 //  kdDebug(5850) << "KOAgendaView::updateEventDates(): " << item->text() << endl;
 
   QDateTime startDt,endDt;
   QDate startDate;
 
-  if (item->cellXLeft() < 0) {
-    startDate = (mSelectedDates.first()).addDays(item->cellXLeft());
+  if ( item->cellXLeft() < 0 ) {
+    startDate = ( mSelectedDates.first() ).addDays( item->cellXLeft() );
   } else {
-    startDate = mSelectedDates[item->cellXLeft()];
+    startDate = mSelectedDates[ item->cellXLeft() ];
   }
-  startDt.setDate(startDate);
+  startDt.setDate( startDate );
 
-  Incidence*incidence = item->incidence();
-  if (!incidence) return;
-  Incidence*oldIncidence = incidence->clone();
+  Incidence *incidence = item->incidence();
+  if ( !incidence ) return;
+  Incidence *oldIncidence = incidence->clone();
 
-  if (incidence->doesFloat()) {
-    endDt.setDate(startDate.addDays(item->cellWidth() - 1));
+  if ( incidence->doesFloat() ) {
+    endDt.setDate( startDate.addDays( item->cellWidth() - 1 ) );
   } else {
-    startDt.setTime(mAgenda->gyToTime(item->cellYTop()));
-    if (item->lastMultiItem()) {
-      endDt.setTime(mAgenda->gyToTime(item->lastMultiItem()->cellYBottom()+1));
-      endDt.setDate(startDate.
-                    addDays(item->lastMultiItem()->cellXLeft() - item->cellXLeft()));
+    startDt.setTime( mAgenda->gyToTime( item->cellYTop() ) );
+    if ( item->lastMultiItem() ) {
+      endDt.setTime( mAgenda->gyToTime( item->lastMultiItem()->cellYBottom() +
+                                        1 ) );
+      endDt.setDate( startDate. addDays( item->lastMultiItem()->cellXLeft() -
+                                         item->cellXLeft() ) );
     } else {
-      endDt.setTime(mAgenda->gyToTime(item->cellYBottom()+1));
-      endDt.setDate(startDate);
+      endDt.setTime( mAgenda->gyToTime( item->cellYBottom() + 1 ) );
+      endDt.setDate( startDate );
     }
   }
 
@@ -750,35 +753,37 @@ void KOAgendaView::updateEventDates(KOAgendaItem *item)
       delete i;
       return;
     }
-    i->setDtStart(startDt);
-    (static_cast<Event*>(i))->setDtEnd(endDt);
+    i->setDtStart( startDt );
+    (static_cast<Event*>(i))->setDtEnd( endDt );
   } else if ( i->type() == "Todo" ) {
     if( static_cast<Todo*>(i)->dtDue() == endDt ) {
       // No change
       delete i;
       return;
     }
-    (static_cast<Todo*>(i))->setDtDue(endDt);
+    (static_cast<Todo*>(i))->setDtDue( endDt );
   }
 
-  i->setRevision(i->revision()+1);
+  i->setRevision( i->revision() + 1 );
   if( !KOPrefs::instance()->mUseGroupwareCommunication ||
-      KOGroupware::instance()->sendICalMessage( this, KCal::Scheduler::Request, i ) ) {
+      KOGroupware::instance()->sendICalMessage( this, KCal::Scheduler::Request,
+                                                i ) ) {
     if ( i->type() == "Event" ) {
-      incidence->setDtStart(startDt);
-      (static_cast<Event*>(incidence))->setDtEnd(endDt);
+      incidence->setDtStart( startDt );
+      (static_cast<Event*>( incidence ) )->setDtEnd( endDt );
     } else if ( i->type() == "Todo" ) {
-      (static_cast<Todo*>(incidence))->setDtDue(endDt);
+      (static_cast<Todo*>( incidence ) )->setDtDue( endDt );
     }
-    incidence->setRevision(i->revision());
-    item->setItemDate(startDt.date());
+    incidence->setRevision( i->revision() );
+    item->setItemDate( startDt.date() );
 
-    KOIncidenceToolTip::remove(item);
+    KOIncidenceToolTip::remove( item );
     KOIncidenceToolTip::add( item, incidence, KOAgendaItem::toolTipGroup() );
 
-    emit incidenceChanged( oldIncidence, incidence );
-  } else
+//    emit incidenceChanged( oldIncidence, incidence );
+  } else {
     /*updateView()*/;
+  }
 
   delete i;
   delete oldIncidence;
@@ -810,11 +815,11 @@ void KOAgendaView::showIncidences( const Incidence::List & )
 
 void KOAgendaView::insertEvent( Event *event, QDate curDate, int curCol )
 {
-  if ( curCol<0 ) {
+  if ( curCol < 0 ) {
     curCol = mSelectedDates.findIndex( curDate );
   }
   // The date for the event is not displayed, just ignore it
-  if ( curCol<0 || curCol>(int)mSelectedDates.size() )
+  if ( curCol < 0 || curCol > int( mSelectedDates.size() ) )
     return;
 
   int beginX = curDate.daysTo( event->dtStart().date() ) + curCol;
@@ -825,7 +830,7 @@ void KOAgendaView::insertEvent( Event *event, QDate curDate, int curCol )
       mAllDayAgenda->insertAllDayItem( event, curDate, curCol, curCol );
     } else {
       if ( beginX <= 0 && curCol == 0 ) {
-        mAllDayAgenda->insertAllDayItem( event, curDate, beginX, endX);
+        mAllDayAgenda->insertAllDayItem( event, curDate, beginX, endX );
       } else if (beginX == curCol) {
         mAllDayAgenda->insertAllDayItem( event, curDate, beginX, endX );
       }
@@ -836,10 +841,10 @@ void KOAgendaView::insertEvent( Event *event, QDate curDate, int curCol )
     if ( (beginX <= 0 && curCol == 0) || beginX == curCol ) {
       mAgenda->insertMultiItem( event, curDate, beginX, endX, startY, endY );
     }
-    if (beginX == curCol) {
+    if ( beginX == curCol ) {
       mMaxY[curCol] = mAgenda->timeToY( QTime(23,59) );
       if ( startY < mMinY[curCol] ) mMinY[curCol] = startY;
-    } else if (endX == curCol) {
+    } else if ( endX == curCol ) {
       mMinY[curCol] = mAgenda->timeToY( QTime(0,0) );
       if ( endY > mMaxY[curCol] ) mMaxY[curCol] = endY;
     } else {
@@ -885,15 +890,14 @@ void KOAgendaView::changeIncidenceDisplayAdded( Incidence *incidence )
       if ( event->recursOn( curDate ) ) insertEvent( event, curDate );
     }
   }
-
 }
 
-void KOAgendaView::changeIncidenceDisplay(Incidence *incidence, int mode)
+void KOAgendaView::changeIncidenceDisplay( Incidence *incidence, int mode )
 {
   kdDebug(5850) << "KOAgendaView::changeIncidenceDisplay" << endl;
-  Event*event;
+  Event *event;
 
-  switch (mode) {
+  switch ( mode ) {
     case KOGlobals::INCIDENCEADDED: {
         //  Add an event. No need to recreate the whole view!
         // recreating everything even causes troubles: dropping to the day matrix
@@ -903,14 +907,22 @@ void KOAgendaView::changeIncidenceDisplay(Incidence *incidence, int mode)
       }
       break;
 
-    case KOGlobals::INCIDENCEEDITED:    
+    case KOGlobals::INCIDENCEEDITED:
 // TODO: Removing does not work, as it does not correctly reset the max nr. of conflicting items. Thus the items will sometimes not fill the whole width of the column. As a workaround, just recreate the whole view for now... */
-      event=dynamic_cast<Event*>(incidence);
+      event = dynamic_cast<Event *>( incidence );
       if ( event ) {
         if ( incidence->doesFloat() ) {
-          mAllDayAgenda->updateEvent( event );
+          KOAgendaItem *item = mAllDayAgenda->findItem( event );
+          if ( item ) {
+            mAllDayAgenda->removeAgendaItem( item );
+            changeIncidenceDisplayAdded( incidence );
+          }
         } else {
-          mAgenda->updateEvent( event );
+          KOAgendaItem *item = mAgenda->findItem( event );
+          if ( item ) {
+            mAgenda->removeAgendaItem( item );
+            changeIncidenceDisplayAdded( incidence );
+          }
         }
 //        changeIncidenceDisplayAdded( event );
       } else {
@@ -919,7 +931,7 @@ void KOAgendaView::changeIncidenceDisplay(Incidence *incidence, int mode)
       break;
     case KOGlobals::INCIDENCEDELETED:
 // TODO: Same as above, the items will not use the whole column width, as maxSubCells will not be decremented/reset correctly. Just update the whole view for now.
-      event=dynamic_cast<Event*>(incidence);
+      event = dynamic_cast<Event*>( incidence );
       if ( event ) {
         if ( incidence->doesFloat() ) {
           mAllDayAgenda->removeEvent( event );
@@ -932,18 +944,18 @@ void KOAgendaView::changeIncidenceDisplay(Incidence *incidence, int mode)
       break;
 
     default:
-      fillAgenda();
+      updateView();
   }
 }
 
-void KOAgendaView::fillAgenda(const QDate &)
+void KOAgendaView::fillAgenda( const QDate & )
 {
   fillAgenda();
 }
 
 void KOAgendaView::fillAgenda()
 {
-//  clearView();
+  clearView();
 
   mAllDayAgenda->changeColumns(mSelectedDates.count());
   mAgenda->changeColumns(mSelectedDates.count());
@@ -989,8 +1001,7 @@ void KOAgendaView::fillAgenda()
 
 
     // ---------- [display Todos --------------
-    if ( KOPrefs::instance()->showAllDayTodo() )
-    {
+    if ( KOPrefs::instance()->showAllDayTodo() ) {
       unsigned int numTodo;
       for (numTodo = 0; numTodo < todos.count(); ++numTodo) {
         Todo *todo = *todos.at(numTodo);
@@ -1003,13 +1014,12 @@ void KOAgendaView::fillAgenda()
 
         if ( ((todo->dtDue().date() == currentDate) && !overdue) ||
              ((currentDate == today) && overdue) ||
-             ( todo->recursOn( currentDate ) ) )
+             ( todo->recursOn( currentDate ) ) ) {
           if ( todo->doesFloat() || overdue ) {  // Todo has no due-time set or is already overdue
             //kdDebug(5850) << "todo without time:" << todo->dtDueDateStr() << ";" << todo->summary() << endl;
 
             mAllDayAgenda->insertAllDayItem(todo, currentDate, curCol, curCol);
-          }
-          else {
+          } else {
             //kdDebug(5850) << "todo with time:" << todo->dtDueStr() << ";" << todo->summary() << endl;
 
             int endY = mAgenda->timeToY(todo->dtDue().time()) - 1;
@@ -1020,6 +1030,7 @@ void KOAgendaView::fillAgenda()
             if (startY < mMinY[curCol]) mMinY[curCol] = startY;
             if (endY > mMaxY[curCol]) mMaxY[curCol] = endY;
           }
+        }
       }
     }
     // ---------- display Todos] --------------

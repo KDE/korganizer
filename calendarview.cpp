@@ -610,16 +610,18 @@ void CalendarView::incidenceAdded( Incidence *incidence )
   updateUnmanagedViews();
 }
 
-void CalendarView::incidenceChanged( Incidence *oldIncidence, Incidence *newIncidence )
+void CalendarView::incidenceChanged( Incidence *oldIncidence,
+                                     Incidence *newIncidence )
 {
   incidenceChanged( oldIncidence, newIncidence, KOGlobals::UNKNOWN_MODIFIED );
 }
 
-void CalendarView::incidenceChanged( Incidence *oldIncidence, Incidence *newIncidence, int what )
+void CalendarView::incidenceChanged( Incidence *oldIncidence,
+                                     Incidence *newIncidence, int what )
 {
   // TODO_RK: Make use of the what flag, which indicates which parts of the incidence have changed!
   KOIncidenceEditor *tmp = editorDialog( newIncidence );
-  if (tmp) {
+  if ( tmp ) {
     kdDebug(5850) << "Incidence modified and open" << endl;
     tmp->modified( what );
   }
@@ -653,20 +655,20 @@ void CalendarView::incidenceDeleted( Incidence *incidence )
 
 // most of the changeIncidenceDisplays() right now just call the view's
 // total update mode, but they SHOULD be recoded to be more refresh-efficient.
-void CalendarView::changeIncidenceDisplay( Incidence *which, int action )
+void CalendarView::changeIncidenceDisplay( Incidence *incidence, int action )
 {
 //  kdDebug(5850) << "CalendarView::changeIncidenceDisplay" << endl;
 
   mDateNavigator->updateView();
   mDialogManager->updateSearchDialog();
 
-  if (which) {
+  if ( incidence ) {
     // If there is an event view visible update the display
-    mViewManager->currentView()->changeIncidenceDisplay( which, action );
-    if (mTodoList) mTodoList->changeIncidenceDisplay( which, action );
+    mViewManager->currentView()->changeIncidenceDisplay( incidence, action );
+    if ( mTodoList ) mTodoList->changeIncidenceDisplay( incidence, action );
   } else {
     mViewManager->currentView()->updateView();
-    if (mTodoList) mTodoList->updateView();
+    if ( mTodoList ) mTodoList->updateView();
   }
 }
 
