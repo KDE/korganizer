@@ -145,13 +145,7 @@ void KOTodoListView::contentsDropEvent(QDropEvent *e)
       todo->setRelatedTo(destinationEvent);
       CalendarResources *cal = dynamic_cast<CalendarResources*> (mCalendar);
       if (cal) {
-        QPtrList<KRES::Resource> rlist;
-        KCal::CalendarResourceManager *manager = cal->resourceManager();
-        KCal::CalendarResourceManager::Iterator it;
-        for( it = manager->begin(); it != manager->end(); ++it ) {
-          rlist.append(*it);
-        }
-        KRES::Resource *res = KRES::ResourceSelectDialog::getResource( rlist, this );
+        KRES::Resource *res = KRES::ResourceSelectDialog::getResource( cal->resourceList(), this );
         if (res) {
             ResourceCalendar *rcal = static_cast<ResourceCalendar*> (res);
             cal->addTodo(todo, rcal);
