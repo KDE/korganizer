@@ -1330,7 +1330,8 @@ bool ActionManager::queryClose()
     mCalendarResources->resourceManager()->writeConfig();
     if ( !mIsClosing ) {
       kdDebug(5850) << "!mIsClosing" << endl;
-      mCalendarResources->save();
+      if ( !saveResourceCalendar() ) return false;
+
       // TODO: Put main window into a state indicating final saving.
       mIsClosing = true;
 // TODO: Close main window when save is finished
@@ -1366,6 +1367,26 @@ void ActionManager::saveCalendar()
     mCalendarResources->save();
     // TODO: Make sure that asynchronous saves don't fail.
   }
+}
+
+bool ActionManager::saveResourceCalendar()
+{
+  if ( !mCalendarResources ) return false;
+  CalendarResourceManager *m = mCalendarResources->resourceManager();
+
+  CalendarResourceManager::ActiveIterator it;
+  for ( it = m->activeBegin(); it != m->activeEnd(); ++it ) {
+    if ( (*it)->readOnly() ) continue;
+    if ( !(*it)->save() ) {
+      int result = KMessageBox::warningContinueCancel( view(),
+        i18n("Saving '%1' failed. Please check, if the resource is "
+             "properly configured.\nIgnore problem and continue without "
+             "saving or cancel save?").arg( (*it)->resourceName() ),
+        i18n("Save Error"), i18n("Don't save") );
+      if ( result == KMessageBox::Cancel ) return false;
+    }
+  }
+  return true;
 }
 
 void ActionManager::importResource( const QString &url )

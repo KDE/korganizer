@@ -92,6 +92,12 @@ class ActionManager : public QObject, public KCalendarIface
     void saveCalendar();
 
     /**
+      Save the resource based calendar. Return false if an error occured and the
+      user decidec to not ignore the error. Otherwise it returns true.
+    */
+    bool saveResourceCalendar();
+
+    /**
       Open calendar file from URL. Merge into current calendar, if \a merge is
       true.
     */
