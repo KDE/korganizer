@@ -55,6 +55,17 @@ QString Provider::name() const
 }
 
 
+void Provider::setIcon( const KURL &url )
+{
+  mIcon = url;
+}
+
+KURL Provider::icon() const
+{
+  return mIcon;
+}
+
+
 void Provider::setDownloadUrl( const KURL &url )
 {
   mDownloadUrl = url;
@@ -106,6 +117,7 @@ void Provider::parseDomElement( const QDomElement &element )
   setDownloadUrl( KURL( element.attribute("downloadurl") ) );
   setUploadUrl( KURL( element.attribute("uploadurl") ) );
   setNoUploadUrl( KURL( element.attribute("nouploadurl") ) );
+  setIcon( KURL( element.attribute("icon") ) );
 
   QDomNode n;
   for ( n = element.firstChild(); !n.isNull(); n = n.nextSibling() ) {

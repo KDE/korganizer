@@ -203,6 +203,7 @@ QStringList Entry::langs()
 void Entry::parseDomElement( const QDomElement &element )
 {
   if ( element.tagName() != "stuff" ) return;
+  mType = element.attribute("type");
 
   QDomNode n;
   for( n = element.firstChild(); !n.isNull(); n = n.nextSibling() ) {

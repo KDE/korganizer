@@ -56,6 +56,9 @@ class Provider
     void setNoUpload( bool );
     bool noUpload() const;
 
+    void setIcon( const KURL & );
+    KURL icon() const;
+
   protected:
     void parseDomElement( const QDomElement & );
 
@@ -66,6 +69,7 @@ class Provider
     KURL mDownloadUrl;
     KURL mUploadUrl;
     KURL mNoUploadUrl;
+    KURL mIcon;
     bool mNoUpload;
 };
 
