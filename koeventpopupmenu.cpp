@@ -50,9 +50,9 @@ KOEventPopupMenu::KOEventPopupMenu()
                                      i18n("Toggle Alarm"), this,
                                      SLOT( popupAlarm() ) ) );
   mRecurrenceItems.append( insertSeparator() );
-  mRecurrenceItems.append( insertItem( i18n("&Dissociate this occurrence"), 
+  mRecurrenceItems.append( insertItem( i18n("&Dissociate This Occurrence"), 
                                        this, SLOT( dissociateOccurrence() ) ) );
-  mRecurrenceItems.append( insertItem( i18n("&Dissociate future occurrences"), 
+  mRecurrenceItems.append( insertItem( i18n("&Dissociate Future Occurrences"), 
                                        this, SLOT( dissociateFutureOccurrence() ) ) );
 }
 

@@ -131,7 +131,7 @@ ArchiveDialog::ArchiveDialog(Calendar *cal,QWidget *parent, const char *name)
   fileLayout->addWidget(mArchiveFile);
   topLayout->addLayout(fileLayout);
   
-  QHGroupBox *typeBox = new QHGroupBox( i18n("Type of incidences to archive"), 
+  QHGroupBox *typeBox = new QHGroupBox( i18n("Type of Incidences to Archive"), 
                                         topFrame);
   mEvents = new QCheckBox( i18n("&Events"), typeBox );
   mTodos = new QCheckBox( i18n("&To-dos"), typeBox );
