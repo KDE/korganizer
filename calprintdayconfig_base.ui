@@ -21,6 +21,9 @@
         <property name="name">
             <cstring>unnamed</cstring>
         </property>
+        <property name="margin">
+            <number>0</number>
+        </property>
         <widget class="QCheckBox" row="1" column="0">
             <property name="name">
                 <cstring>mIncludeTodos</cstring>
@@ -223,6 +226,7 @@
 </images>
 <layoutdefaults spacing="6" margin="11"/>
 <includehints>
+    <includehint>qwidget.h</includehint>
     <includehint>kdateedit.h</includehint>
     <includehint>kdateedit.h</includehint>
 </includehints>

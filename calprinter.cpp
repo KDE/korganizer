@@ -196,40 +196,42 @@ CalPrintDialog::CalPrintDialog(QPtrList<CalPrintBase> plugins, KPrinter *p,
     (QSizePolicy::SizeType)5, 0, 0,
       mTypeGroup->sizePolicy().hasHeightForWidth() ) );*/
 
-  QWidget* splitterRight = new QWidget( splitter, "splitterRight" );
-  QGridLayout* splitterRightLayout = new QGridLayout( splitterRight );
+  QWidget *splitterRight = new QWidget( splitter, "splitterRight" );
+  QGridLayout *splitterRightLayout = new QGridLayout( splitterRight );
+  splitterRightLayout->setMargin( marginHint() );
+  splitterRightLayout->setSpacing( spacingHint() );
 
   mConfigArea = new QWidgetStack( splitterRight, "configWidgetStack" );
   splitterRightLayout->addMultiCellWidget( mConfigArea, 0,0, 0,1 );
 
-  QLabel*orientationLabel=new QLabel(i18n("Page &orientation:"), splitterRight, "orientationLabel" );
-  splitterRightLayout->addWidget(orientationLabel, 1,0 );
+  QLabel *orientationLabel = new QLabel(i18n("Page &orientation:"), splitterRight, "orientationLabel" );
+  splitterRightLayout->addWidget( orientationLabel, 1, 0 );
 
-  mOrientationSelection=new QComboBox( splitterRight, "orientationCombo" );
+  mOrientationSelection = new QComboBox( splitterRight, "orientationCombo" );
   mOrientationSelection->insertItem(i18n("Use default setting of printer"));
   mOrientationSelection->insertItem(i18n("Use default setting of print style"));
   mOrientationSelection->insertItem(i18n("Portrait"));
   mOrientationSelection->insertItem(i18n("Landscape"));
-  splitterRightLayout->addWidget( mOrientationSelection, 1,1 );
+  splitterRightLayout->addWidget( mOrientationSelection, 1, 1 );
 
     // signals and slots connections
-  connect(setupButton, SIGNAL(clicked()), this, SLOT(setupPrinter()) );
-  connect( mTypeGroup, SIGNAL(clicked(int)), this, SLOT(setPrintType(int)) );
+  connect( setupButton, SIGNAL( clicked() ), SLOT( setupPrinter() ) );
+  connect( mTypeGroup, SIGNAL( clicked( int ) ), SLOT( setPrintType( int ) ) );
 
     // buddies
   orientationLabel->setBuddy(mOrientationSelection);
 
-  CalPrintBase*plug=mPrintPlugins.first();
+  CalPrintBase *plug = mPrintPlugins.first();
   QRadioButton *rButt;
-  int id=0;
-  while (plug) {
-    rButt = new QRadioButton(plug->description(), mTypeGroup);
+  int id = 0;
+  while ( plug ) {
+    rButt = new QRadioButton( plug->description(), mTypeGroup );
     mTypeGroup->insert( rButt, id );
-    rButt->setMinimumHeight( rButt->sizeHint().height()-5 );
+    rButt->setMinimumHeight( rButt->sizeHint().height() - 5 );
 
-    mConfigArea->addWidget( plug->configWidget(mConfigArea), id );
-    connect( this, SIGNAL(applySettings()), plug, SLOT(readSettingsWidget()) );
-    connect( this, SIGNAL(doSettings()), plug, SLOT(setSettingsWidget()) );
+    mConfigArea->addWidget( plug->configWidget( mConfigArea ), id );
+    connect( this, SIGNAL( applySettings() ), plug, SLOT( readSettingsWidget() ) );
+    connect( this, SIGNAL( doSettings() ), plug, SLOT( setSettingsWidget() ) );
 
     plug=mPrintPlugins.next();
     id++;

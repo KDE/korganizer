@@ -11,7 +11,7 @@
             <x>0</x>
             <y>0</y>
             <width>351</width>
-            <height>302</height>
+            <height>313</height>
         </rect>
     </property>
     <property name="caption">
@@ -20,6 +20,9 @@
     <grid>
         <property name="name">
             <cstring>unnamed</cstring>
+        </property>
+        <property name="margin">
+            <number>0</number>
         </property>
         <widget class="QCheckBox" row="2" column="0" rowspan="1" colspan="2">
             <property name="name">
@@ -241,4 +244,7 @@
     </connection>
 </connections>
 <layoutdefaults spacing="6" margin="11"/>
+<includehints>
+    <includehint>qwidget.h</includehint>
+</includehints>
 </UI>
