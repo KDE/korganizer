@@ -386,6 +386,7 @@ bool CalendarView::openCalendar(const QString& filename, bool merge)
       mDialogManager->setDocumentId( filename );
       mTodoList->setDocumentId( filename );
     }
+    updateCategories();
     updateView();
     return true;
   } else {
@@ -2071,6 +2072,22 @@ void CalendarView::recurTodo( Todo *todo )
 void CalendarView::showErrorMessage( const QString &msg )
 {
   KMessageBox::error( this, msg );
+}
+
+void CalendarView::updateCategories()
+{
+  QStringList allCats( calendar()->incidenceCategories() );
+  allCats.sort();
+  QStringList categories( KOPrefs::instance()->mCustomCategories );
+  for ( QStringList::ConstIterator si = allCats.constBegin(); si != allCats.constEnd(); ++si ) {
+    if ( categories.find( *si ) == categories.end() ) {
+      categories.append( *si );
+    }
+  }
+  KOPrefs::instance()->mCustomCategories = categories;
+  KOPrefs::instance()->writeConfig();
+  // Make the category editor update the list!
+  emit categoriesChanged();
 }
 
 #include "calendarview.moc"

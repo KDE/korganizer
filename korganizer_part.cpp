@@ -90,6 +90,7 @@ KOrganizerPart::KOrganizerPart( QWidget *parentWidget, const char *widgetName,
     mActionManager->createCalendarResources();
     setHasDocument( false );
     KOCore::self()->calendarResources()->load();
+    mView->updateCategories();
   } else {
     mActionManager->createCalendarLocal();
     setHasDocument( true );

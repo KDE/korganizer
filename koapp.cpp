@@ -121,6 +121,7 @@ void KOrganizerApp::processCalendar( const KURL &url )
       korg->openURL( url );
     else {
       KOCore::self()->calendarResources()->load();
+      korg->view()->updateCategories();
       korg->view()->updateView();
     }
   } else {

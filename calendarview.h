@@ -124,6 +124,9 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
      *  and emit this signal which notifies all widgets which have registered
      *  for notification to update their settings. */
     void configChanged();
+    /** Emitted when the categories were updated, and thus the categories editor
+     *  dialog needs to reload the list of categories */
+    void categoriesChanged();
     /** emitted when the topwidget is closing down, so that any attached
         child windows can also close. */
     void closingDown();
@@ -183,6 +186,10 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     /** options dialog made a changed to the configuration. we catch this
      *  and notify all widgets which need to update their configuration. */
     void updateConfig();
+    /** Calendar configuration was changed, so refresh categories list
+    */
+    void updateCategories();
+
 
     /**
       Load calendar from file \a filename. If \a merge is true, load

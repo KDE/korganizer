@@ -54,6 +54,7 @@ class CalendarViewBase : public QWidget
 
   public slots:
     virtual void updateView() = 0;
+    virtual void updateCategories() = 0;
 };
 
 }

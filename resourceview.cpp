@@ -56,6 +56,8 @@ CalendarViewExtension *ResourceViewFactory::create( QWidget *parent )
 
   QObject::connect( mResourceView, SIGNAL( resourcesChanged() ),
                     mView, SLOT( updateView() ) );
+  QObject::connect( mResourceView, SIGNAL( resourcesChanged() ),
+                    mView, SLOT( updateCategories() ) );
   QObject::connect( mResourceView,
                     SIGNAL( signalErrorMessage( const QString & ) ),
                     mView, SLOT( showErrorMessage( const QString & ) ) );
@@ -68,6 +70,10 @@ CalendarViewExtension *ResourceViewFactory::create( QWidget *parent )
                     SIGNAL( signalResourceModified( ResourceCalendar * ) ),
                     mResourceView,
                     SLOT( updateResourceItem( ResourceCalendar * ) ) );
+  QObject::connect( mCalendar, SIGNAL( signalResourceAdded( ResourceCalendar * ) ),
+                    mView, SLOT( updateCategories() ) );
+  QObject::connect( mCalendar, SIGNAL( signalResourceModified( ResourceCalendar * ) ),
+                    mView, SLOT( updateCategories() ) );
 
   return mResourceView;
 }
