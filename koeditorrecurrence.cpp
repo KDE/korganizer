@@ -457,7 +457,7 @@ DateList ExceptionsWidget::dates()
 ///////////////////////// ExceptionsDialog ///////////////////////////
 
 ExceptionsDialog::ExceptionsDialog( QWidget *parent, const char *name ) :
-  KDialogBase( parent, name, true, i18n("Edit exceptions"), Ok|Cancel )
+  KDialogBase( parent, name, true, i18n("Edit Exceptions"), Ok|Cancel )
 {
   mExceptions = new ExceptionsWidget( this );
   setMainWidget( mExceptions );

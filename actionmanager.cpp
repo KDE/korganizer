@@ -522,7 +522,7 @@ void ActionManager::file_open()
 {
   KURL url;
   QString defaultPath = locateLocal("data","korganizer/");
-  url = KFileDialog::getOpenURL(defaultPath,i18n("*.vcs *.ics|Calendar files"),
+  url = KFileDialog::getOpenURL(defaultPath,i18n("*.vcs *.ics|Calendar Files"),
 				mCalendarView->topLevelWidget());
 
   if (url.isEmpty()) return;
@@ -619,7 +619,7 @@ void ActionManager::file_import()
 void ActionManager::file_merge()
 {
   KURL url = KFileDialog::getOpenURL(locateLocal("data","korganizer/"),
-                                     i18n("*.vcs *.ics|Calendar files"),
+                                     i18n("*.vcs *.ics|Calendar Files"),
 				     mCalendarView->topLevelWidget());
   openURL(url,true);
 }
@@ -889,7 +889,7 @@ bool ActionManager::saveModifiedURL()
 KURL ActionManager::getSaveURL()
 {
   KURL url = KFileDialog::getSaveURL(locateLocal("data","korganizer/"),
-                                     i18n("*.vcs *.ics|Calendar files"),
+                                     i18n("*.vcs *.ics|Calendar Files"),
 				     mCalendarView->topLevelWidget());
 
   if (url.isEmpty()) return url;
