@@ -372,11 +372,12 @@ void KOAgendaView::createDayLabels()
 
   QLabel *dayLabel;
   unsigned int i;
-  QDate date;
-  for(i=0;i<mSelectedDates.count();++i) {
-    QBoxLayout *dayLayout = new QVBoxLayout(mLayoutDayLabels);
 
-    date = mStartDate.addDays(i);
+
+  for(QDateListIterator dit(mSelectedDates); dit.current(); ++dit)
+  {
+    QDate date = *dit.current();
+    QBoxLayout *dayLayout = new QVBoxLayout(mLayoutDayLabels);
 
     dayLabel = new QLabel(mDayLabels);
     QString str = QString("%1 %2")
