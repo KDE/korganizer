@@ -1637,7 +1637,6 @@ void CalendarView::deleteIncidence(Incidence *incidence)
     KNotifyClient::beep();
     return;
   }
-kdDebug()<<"deleteIncidence 1"<<endl;
   if ( incidence->isReadOnly() ) {
     KMessageBox::information( this, i18n("The item \"%1\" is marked read-only "
                               "and cannot be deleted. Probably it belongs to "
@@ -1648,19 +1647,16 @@ kdDebug()<<"deleteIncidence 1"<<endl;
     return;
   }
   
-kdDebug()<<"deleteIncidence 2"<<endl;
   DeleteIncidenceVisitor v;
   // Let the visitor do special things for special incidence types.
   // e.g. todos with children cannot be deleted, so act(..) returns false
   if ( !v.act( incidence, this ) ) 
     return;
 
-kdDebug()<<"deleteIncidence 3"<<endl;
   if ( incidence->doesRecur() ) {
     QDate itemDate = mViewManager->currentSelectionDate();
     kdDebug(5850) << "Recurrence-Date: " << itemDate.toString() << endl;
     int km;
-kdDebug()<<"deleteIncidence 4"<<endl;
     if ( !itemDate.isValid() ) {
       kdDebug(5850) << "Date Not Valid" << endl;
       km = KMessageBox::warningContinueCancel(this,
@@ -1679,7 +1675,6 @@ kdDebug()<<"deleteIncidence 4"<<endl;
              i18n("Delete &Future"),
              i18n("Delete &All"));
     }
-kdDebug()<<"deleteIncidence 5"<<endl;
     bool doDelete = true;
     switch(km) {
       case KMessageBox::Ok: // Continue // all
@@ -1713,10 +1708,8 @@ kdDebug()<<"deleteIncidence 5"<<endl;
         }
         break;
     }
-kdDebug()<<"deleteIncidence 6"<<endl;
   } else {
     bool userIsOrganizer = KOPrefs::instance()->thatIsMe( incidence->organizer() );
-kdDebug()<<"deleteIncidence 7"<<endl;
     if (KOPrefs::instance()->mConfirm && (!KOPrefs::instance()->mUseGroupwareCommunication ||
                                           userIsOrganizer)) {
       bool doDelete = true;
@@ -1736,31 +1729,22 @@ kdDebug()<<"deleteIncidence 7"<<endl;
           }
           break;
       }
-kdDebug()<<"deleteIncidence 8"<<endl;
     } else {
       bool doDelete = true;
-kdDebug()<<"deleteIncidence 9"<<endl;
       if ( userIsOrganizer &&
            incidence->attendeeCount() > 0 &&
            !KOPrefs::instance()->mUseGroupwareCommunication ) {
-kdDebug()<<"deleteIncidence 9a"<<endl;
         schedule( Scheduler::Cancel, incidence );
-kdDebug()<<"deleteIncidence 9b"<<endl;
       } else if ( KOPrefs::instance()->mUseGroupwareCommunication ) {
-kdDebug()<<"deleteIncidence 9c"<<endl;
         doDelete = KOGroupware::instance()->sendICalMessage( this, KCal::Scheduler::Cancel, incidence, true );
-kdDebug()<<"deleteIncidence 9d"<<endl;
       }
-kdDebug()<<"deleteIncidence 10"<<endl;
       if( doDelete ) {
         incidenceToBeDeleted( incidence );
         mCalendar->deleteIncidence( incidence );
         incidenceDeleted( incidence );
       }
     }
-kdDebug()<<"deleteIncidence 11"<<endl;
   }
-kdDebug()<<"deleteIncidence 12"<<endl;
 }
 
 
