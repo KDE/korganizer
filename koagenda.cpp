@@ -617,7 +617,7 @@ void KOAgenda::startSelectAction( const QPoint &viewportPos )
   mCurrentCellY = gy;
 
   // Store coordinates of old selection
-  int selectionX = int( mSelectionCellX * mGridSpacingX );
+  int selectionX = mSelectionCellX;
   int selectionYTop = mSelectionYTop;
   int selectionHeight = mSelectionHeight;
 
@@ -627,12 +627,14 @@ void KOAgenda::startSelectAction( const QPoint &viewportPos )
   mSelectionHeight = int( mGridSpacingY );
 
   // Clear old selection
-  repaintContents( selectionX, selectionYTop,
-                   int( mGridSpacingX ), selectionHeight );
+  repaintContents( int( selectionX*mGridSpacingX ), selectionYTop,
+                   int( (selectionX+1)*mGridSpacingX ) - int( selectionX*mGridSpacingX ), selectionHeight );
 
   // Paint new selection
   repaintContents( int( mSelectionCellX * mGridSpacingX ), mSelectionYTop,
-                   int( mGridSpacingX ), mSelectionHeight );
+                   int( (mSelectionCellX+1)*mGridSpacingX ) - int( mSelectionCellX*mGridSpacingX ),
+                   mSelectionHeight );
+
 }
 
 void KOAgenda::performSelectAction(const QPoint& viewportPos)
@@ -656,36 +658,18 @@ void KOAgenda::performSelectAction(const QPoint& viewportPos)
     mScrollDownTimer.stop();
   }
 
-  if ( gy > mCurrentCellY ) {
-    mSelectionHeight = (int)( ( gy + 1 ) * mGridSpacingY - mSelectionYTop );
+  if ( gy != mCurrentCellY && gy >= mStartCellY) {
+    int selectionHeight = mSelectionHeight;
 
-#if 0
-    // FIXME: Repaint only the newly selected region
-    repaintContents( mSelectionCellX * mGridSpacingX,
-                     mCurrentCellY + mGridSpacingY,
-                     mGridSpacingX,
-                     mSelectionHeight - ( gy - mCurrentCellY - 1 ) * mGridSpacingY );
-#else
-    repaintContents( (KOGlobals::self()->reverseLayout() ?
-                     mColumns - 1 - mSelectionCellX : mSelectionCellX) *
-                     (int)mGridSpacingX, mSelectionYTop,
-                     (int)mGridSpacingX, mSelectionHeight );
-#endif
+    // FIXME: Repaint only the newly (de)selected region
+    int x, x1, y;
+    gridToContents( mSelectionCellX, 0, x, y );
+    gridToContents( mSelectionCellX + 1, gy+1, x1, y );
+    mSelectionHeight = y - mSelectionYTop;
+    repaintContents( x, mSelectionYTop, x1-x,
+        (mSelectionHeight>selectionHeight)?mSelectionHeight:selectionHeight );
 
     mCurrentCellY = gy;
-  } else if ( gy < mCurrentCellY ) {
-    if ( gy >= mStartCellY ) {
-      int selectionHeight = mSelectionHeight;
-      mSelectionHeight = (int)( ( gy + 1 ) * mGridSpacingY - mSelectionYTop  );
-
-      repaintContents( (KOGlobals::self()->reverseLayout() ?
-                       mColumns - 1 - mSelectionCellX : mSelectionCellX) *
-                       (int)mGridSpacingX, mSelectionYTop,
-                       (int)mGridSpacingX, selectionHeight );
-
-      mCurrentCellY = gy;
-    } else {
-    }
   }
 }
 
@@ -1212,15 +1196,15 @@ void KOAgenda::drawContents(QPainter* p, int cx, int cy, int cw, int ch)
     }
   }
 
-  int selectionX = (int)( KOGlobals::self()->reverseLayout() ?
-                   (mColumns - 1 - mSelectionCellX) * mGridSpacingX :
-                          mSelectionCellX * mGridSpacingX );
+  int selectionX, selectionX1, selectionY;
+  gridToContents( mSelectionCellX, 0, selectionX, selectionY );
+  gridToContents( mSelectionCellX+1, 0, selectionX1, selectionY );
 
   // Draw selection
-  if ( ( cx + cw ) >= selectionX && cx <= ( selectionX + mGridSpacingX ) &&
+  if ( ( cx + cw ) >= selectionX && cx <= ( selectionX1 ) &&
        ( cy + ch ) >= mSelectionYTop && cy <= ( mSelectionYTop + mSelectionHeight ) ) {
     // TODO: paint only part within cx,cy,cw,ch
-    dbp.fillRect( selectionX, mSelectionYTop, (int)mGridSpacingX,
+    dbp.fillRect( selectionX, mSelectionYTop, selectionX1-selectionX,
                  mSelectionHeight, KOPrefs::instance()->mHighlightColor );
   }
 
