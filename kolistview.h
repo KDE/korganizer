@@ -111,6 +111,7 @@ class KOListView : public KOEventView
     virtual void updateView();
     virtual void showDates( const QDate &start, const QDate &end );
     virtual void showEvents( const Event::List & );
+    void showIncidences( const Incidence::List &eventList );
 
     void clearSelection();
 
@@ -128,6 +129,7 @@ class KOListView : public KOEventView
   protected:
     void addEvents( const Event::List & );
     void addTodos( const Todo::List & );
+    void addIncidences( const Incidence::List & );
     void addIncidence(Incidence *);
     KOListViewItem *getItemForEvent(Event *event);
 

@@ -25,6 +25,7 @@
 #include <qlayout.h>
 #include <qcheckbox.h>
 #include <qgroupbox.h>
+#include <qhbuttongroup.h>
 #include <qlabel.h>
 #include <qlineedit.h>
 
@@ -52,64 +53,74 @@ SearchDialog::SearchDialog(Calendar *calendar,QWidget *parent)
   QHBoxLayout *subLayout = new QHBoxLayout();
   layout->addLayout(subLayout);
 
-  searchLabel = new QLabel(topFrame);
-  searchLabel->setText(i18n("Search for:"));
-  subLayout->addWidget(searchLabel);
-
-  searchEdit = new QLineEdit(topFrame);
-  subLayout->addWidget(searchEdit);
-  searchEdit->setText("*"); // Find all events by default
+  searchEdit = new QLineEdit( "*", topFrame ); // Find all events by default
+  searchLabel = new QLabel( searchEdit, i18n("&Search for:"), topFrame );
+  subLayout->addWidget( searchLabel );
+  subLayout->addWidget( searchEdit );
   searchEdit->setFocus();
-  connect(searchEdit, SIGNAL(textChanged ( const QString & )),this,SLOT(searchTextChanged( const QString & )));
+  connect( searchEdit, SIGNAL( textChanged( const QString & ) ),
+           this, SLOT( searchTextChanged( const QString & ) ) );
 
+
+  QHButtonGroup *itemsGroup = new QHButtonGroup( i18n("Search for"), topFrame );
+  layout->addWidget( itemsGroup );
+  mEventsCheck = new QCheckBox( i18n("&Events"), itemsGroup );
+  mTodosCheck = new QCheckBox( i18n("To&dos"), itemsGroup );
+  mJournalsCheck = new QCheckBox( i18n("&Journal entries"), itemsGroup );
+  mEventsCheck->setChecked( true );
+  mTodosCheck->setChecked( true );
+  
   // Date range
-  QGroupBox *rangeGroup = new QGroupBox(1,Horizontal,i18n("Date Range"),
-                                        topFrame);
-  layout->addWidget(rangeGroup);
+  QGroupBox *rangeGroup = new QGroupBox( 1, Horizontal, i18n( "Date Range" ),
+                                        topFrame );
+  layout->addWidget( rangeGroup );
 
-  QWidget *rangeWidget = new QWidget(rangeGroup);
-  QHBoxLayout *rangeLayout = new QHBoxLayout(rangeWidget,0,spacingHint());
+  QWidget *rangeWidget = new QWidget( rangeGroup );
+  QHBoxLayout *rangeLayout = new QHBoxLayout( rangeWidget, 0, spacingHint() );
 
-  rangeLayout->addWidget(new QLabel(i18n("From:"),rangeWidget));
-  mStartDate = new KDateEdit(rangeWidget);
-  rangeLayout->addWidget(mStartDate);
-  rangeLayout->addWidget(new QLabel(i18n("To:"),rangeWidget));
-  mEndDate = new KDateEdit(rangeWidget);
-  mEndDate->setDate(QDate::currentDate().addDays(365));
-  rangeLayout->addWidget(mEndDate);
+  mStartDate = new KDateEdit( rangeWidget );
+  rangeLayout->addWidget( new QLabel( mStartDate, i18n("&From:"), rangeWidget ) );
+  rangeLayout->addWidget( mStartDate );
+  
+  mEndDate = new KDateEdit( rangeWidget );
+  rangeLayout->addWidget( new QLabel( mEndDate, i18n("&To:"), rangeWidget ) );
+  mEndDate->setDate( QDate::currentDate().addDays( 365 ) );
+  rangeLayout->addWidget( mEndDate );
 
-  mInclusiveCheck = new QCheckBox(i18n("Events have to be completely included"),
-                                  rangeGroup);
-  mInclusiveCheck->setChecked(false);
+  mInclusiveCheck = new QCheckBox( i18n("Events have to be &completely included"),
+                                  rangeGroup );
+  mInclusiveCheck->setChecked( false );
+  mIncludeUndatedTodos = new QCheckBox( i18n("Include todos &without due date"), rangeGroup );
+  mIncludeUndatedTodos->setChecked( true );
 
   // Subjects to search
-  QGroupBox *subjectGroup = new QGroupBox(1,Vertical,i18n("Search In"),
-                                          topFrame);
+  QHButtonGroup *subjectGroup = new QHButtonGroup( i18n("Search In"), topFrame );
   layout->addWidget(subjectGroup);
 
-  mSummaryCheck = new QCheckBox(i18n("Summaries"),subjectGroup);
-  mSummaryCheck->setChecked(true);
-  mDescriptionCheck = new QCheckBox(i18n("Descriptions"),subjectGroup);
-  mCategoryCheck = new QCheckBox(i18n("Categories"),subjectGroup);
+  mSummaryCheck = new QCheckBox( i18n("Su&mmaries"), subjectGroup );
+  mSummaryCheck->setChecked( true );
+  mDescriptionCheck = new QCheckBox( i18n("Desc&riptions"), subjectGroup );
+  mCategoryCheck = new QCheckBox( i18n("Cate&gories"), subjectGroup );
+  
 
   // Results list view
-  listView = new KOListView(mCalendar,topFrame);
+  listView = new KOListView( mCalendar, topFrame );
   listView->showDates();
-  layout->addWidget(listView);
+  layout->addWidget( listView );
 
   if ( KOPrefs::instance()->mCompactDialogs ) {
     KOGlobals::fitDialogToScreen( this, true );
   }
 
-  connect(this,SIGNAL(user1Clicked()),SLOT(doSearch()));
+  connect( this,SIGNAL(user1Clicked()),SLOT(doSearch()));
 
   // Propagate edit and delete event signals from event list view
-  connect(listView,SIGNAL(showIncidenceSignal(Incidence *)),
-          SIGNAL(showIncidenceSignal(Incidence *)));
-  connect(listView,SIGNAL(editIncidenceSignal(Incidence *)),
-          SIGNAL(editIncidenceSignal(Incidence *)));
-  connect(listView,SIGNAL(deleteIncidenceSignal(Incidence *)),
-          SIGNAL(deleteIncidenceSignal(Incidence *)));
+  connect( listView, SIGNAL( showIncidenceSignal( Incidence * ) ),
+          SIGNAL( showIncidenceSignal( Incidence *) ) );
+  connect( listView, SIGNAL( editIncidenceSignal( Incidence * ) ),
+          SIGNAL( editIncidenceSignal( Incidence * ) ) );
+  connect( listView, SIGNAL( deleteIncidenceSignal( Incidence * ) ),
+          SIGNAL( deleteIncidenceSignal( Incidence * ) ) );
 }
 
 SearchDialog::~SearchDialog()
@@ -125,80 +136,102 @@ void SearchDialog::doSearch()
 {
   QRegExp re;
 
-  re.setWildcard(true); // most people understand these better.
-  re.setCaseSensitive(false);
-  re.setPattern(searchEdit->text());
-  if (!re.isValid()) {
-    KMessageBox::sorry(this,
-                       i18n("Invalid search expression, cannot perform "
+  re.setWildcard( true ); // most people understand these better.
+  re.setCaseSensitive( false );
+  re.setPattern( searchEdit->text() );
+  if ( !re.isValid() ) {
+    KMessageBox::sorry( this,
+                        i18n("Invalid search expression, cannot perform "
                             "the search. Please enter a search expression "
                             "using the wildcard characters '*' and '?' "
-                            "where needed."));
+                            "where needed." ) );
     return;
   }
 
-  search(re);
+  search( re );
 
-  listView->showEvents(mMatchedEvents);
+  listView->showIncidences( mMatchedEvents );
 
-  if (mMatchedEvents.count() == 0) {
-    KMessageBox::information(this,
-        i18n("No events were found matching your search expression."));
+  if ( mMatchedEvents.count() == 0 ) {
+    KMessageBox::information( this,
+        i18n("No events were found matching your search expression.") );
   }
 }
 
 void SearchDialog::updateView()
 {
   QRegExp re;
-  re.setWildcard(true); // most people understand these better.
-  re.setCaseSensitive(false);
-  re.setPattern(searchEdit->text());
-  if (re.isValid()) {
-    search(re);
+  re.setWildcard( true ); // most people understand these better.
+  re.setCaseSensitive( false );
+  re.setPattern( searchEdit->text() );
+  if ( re.isValid() ) {
+    search( re );
   } else {
     mMatchedEvents.clear();
   }
 
-  listView->showEvents(mMatchedEvents);
+  listView->showIncidences( mMatchedEvents );
 }
 
-void SearchDialog::search(const QRegExp &re)
+void SearchDialog::search( const QRegExp &re )
 {
-  Event::List events = mCalendar->events( mStartDate->date(),
-                                          mEndDate->date(),
+  QDate startDt = mStartDate->date();
+  QDate endDt = mEndDate->date();
+  
+  Event::List events = mCalendar->events( startDt, endDt,
                                           mInclusiveCheck->isChecked() );
+  Todo::List todos;
+  if ( mIncludeUndatedTodos ) 
+    todos = mCalendar->todos();
+  else {
+    QDate dt = startDt; 
+    while ( dt <= endDt ) {
+      todos += mCalendar->todos( dt );
+      dt = dt.addDays( 1 );
+    }
+  }
+  
+  Journal::List journals; 
+  QDate dt = startDt; 
+  while ( dt <= endDt ) {
+    Journal* j=mCalendar->journal( dt );
+    if (j) journals.append( j );
+    dt = dt.addDays( 1 );
+  }
+  
+  Incidence::List allIncidences = Calendar::mergeIncidenceList( events, todos, journals );
 
   mMatchedEvents.clear();
-  Event::List::ConstIterator it;
-  for( it = events.begin(); it != events.end(); ++it ) {
-    Event *ev = *it;
-    if (mSummaryCheck->isChecked()) {
+  Incidence::List::ConstIterator it;
+  for( it = allIncidences.begin(); it != allIncidences.end(); ++it ) {
+    Incidence *ev = *it;
+    if ( mSummaryCheck->isChecked() ) {
 #if QT_VERSION >= 300
-      if (re.search(ev->summary()) != -1) {
+      if ( re.search( ev->summary() ) != -1 ) {
 #else
-      if (re.match(ev->summary()) != -1) {
+      if ( re.match( ev->summary() ) != -1 ) {
 #endif
-        mMatchedEvents.append(ev);
+        mMatchedEvents.append( ev );
         continue;
       }
     }
-    if (mDescriptionCheck->isChecked()) {
+    if ( mDescriptionCheck->isChecked() ) {
 #if QT_VERSION >= 300
-      if (re.search(ev->description()) != -1) {
+      if ( re.search( ev->description() ) != -1 ) {
 #else
-      if (re.match(ev->description()) != -1) {
+      if ( re.match( ev->description() ) != -1 ) {
 #endif
-        mMatchedEvents.append(ev);
+        mMatchedEvents.append( ev );
         continue;
       }
     }
-    if (mCategoryCheck->isChecked()) {
+    if ( mCategoryCheck->isChecked() ) {
 #if QT_VERSION >= 300
-      if (re.search(ev->categoriesStr()) != -1) {
+      if ( re.search( ev->categoriesStr() ) != -1 ) {
 #else
-      if (re.match(ev->categoriesStr()) != -1) {
+      if ( re.match( ev->categoriesStr() ) != -1 ) {
 #endif
-        mMatchedEvents.append(ev);
+        mMatchedEvents.append( ev );
         continue;
       }
     }

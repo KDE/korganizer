@@ -303,6 +303,14 @@ void KOListView::addTodos( const Todo::List &eventList )
   }
 }
 
+void KOListView::addIncidences( const Incidence::List &incidenceList )
+{
+  Incidence::List::ConstIterator it;
+  for( it = incidenceList.begin(); it != incidenceList.end(); ++it ) {
+    addIncidence( *it );
+  }
+}
+
 void KOListView::addIncidence(Incidence *incidence)
 {
   if ( mUidDict.find( incidence->uid() ) ) return;
@@ -320,6 +328,16 @@ void KOListView::showEvents( const Event::List &eventList )
   clear();
 
   addEvents( eventList );
+
+  // After new creation of list view no events are selected.
+  emit incidenceSelected( 0 );
+}
+
+void KOListView::showIncidences( const Incidence::List &eventList )
+{
+  clear();
+
+  addIncidences( eventList );
 
   // After new creation of list view no events are selected.
   emit incidenceSelected( 0 );

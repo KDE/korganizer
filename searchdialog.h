@@ -65,16 +65,22 @@ class SearchDialog : public KDialogBase
 
     Calendar *mCalendar;
 
-    Event::List mMatchedEvents;
+    Incidence::List mMatchedEvents;
 
     QLabel *searchLabel;
     QLineEdit *searchEdit;
     KOListView *listView;
 
+    QCheckBox *mEventsCheck;
+    QCheckBox *mTodosCheck;
+    QCheckBox *mJournalsCheck;
+    
     KDateEdit *mStartDate;
     KDateEdit *mEndDate;
 
     QCheckBox *mInclusiveCheck;
+    QCheckBox *mIncludeUndatedTodos;
+    
     QCheckBox *mSummaryCheck;
     QCheckBox *mDescriptionCheck;
     QCheckBox *mCategoryCheck;
