@@ -851,9 +851,9 @@ void KOEditorRecurrence::writeEvent(Event *event)
 	tmpStr = nMonthsEntry->text();
 	rFreq = tmpStr.toInt();
         if (rFreq < 1) rFreq = 1;
-	
+
 	rDay = nthDayEntry->currentItem() + 1;
-	
+
 	if (rDuration != 0)
 	  event->recurrence()->setMonthly(KORecurrence::rMonthlyDay, rFreq, rDuration);
 	else
