@@ -41,14 +41,16 @@
 
 #include "koprefs.h"
 #include "koglobals.h"
-#include "kmailIface_stub.h"
+#include "koeditordetails.h"
+#include "koeditorattachments.h"
 
 #include "koincidenceeditor.h"
 
 KOIncidenceEditor::KOIncidenceEditor( const QString &caption,
-                                      Calendar *calendar, QWidget *parent ) :
-  KDialogBase( Tabbed, caption, Ok | Apply | Cancel | Default | User1, Ok,
-               parent, 0, false, false )
+                                      Calendar *calendar, QWidget *parent )
+  : KDialogBase( Tabbed, caption, Ok | Apply | Cancel | Default | User1, Ok,
+                 parent, 0, false, false ),
+    mDetails( 0 ), mAttachments( 0 )
 {
   mCalendar = calendar;
 
@@ -66,7 +68,8 @@ KOIncidenceEditor::KOIncidenceEditor( const QString &caption,
   mCategoryDialog = new KPIM::CategorySelectDialog( KOPrefs::instance(), this );
   KOGlobals::fitDialogToScreen( mCategoryDialog );
 
-  connect(mCategoryDialog,SIGNAL(editCategories()),SIGNAL(editCategories()));
+  connect( mCategoryDialog, SIGNAL( editCategories() ),
+           SIGNAL( editCategories() ) );
 
   connect( this, SIGNAL( defaultClicked() ), SLOT( slotLoadTemplate() ) );
   connect( this, SIGNAL( user1Clicked() ), SLOT( slotSaveTemplate() ) );
@@ -79,12 +82,12 @@ KOIncidenceEditor::~KOIncidenceEditor()
 
 void KOIncidenceEditor::setupAttendeesTab()
 {
-  QFrame *topFrame = addPage(i18n("Atte&ndees"));
+  QFrame *topFrame = addPage( i18n("Atte&ndees") );
 
-  QBoxLayout *topLayout = new QVBoxLayout(topFrame);
+  QBoxLayout *topLayout = new QVBoxLayout( topFrame );
 
-  mDetails = new KOEditorDetails(spacingHint(),topFrame);
-  topLayout->addWidget(mDetails);
+  mDetails = new KOEditorDetails( spacingHint(), topFrame );
+  topLayout->addWidget( mDetails );
 }
 
 void KOIncidenceEditor::setupAttachmentsTab()
@@ -93,12 +96,8 @@ void KOIncidenceEditor::setupAttachmentsTab()
 
   QBoxLayout *topLayout = new QVBoxLayout( topFrame );
 
-  mAttachments = new QListView( topFrame );
-  mAttachments->addColumn( i18n("URI") );
-  mAttachments->addColumn( i18n("MIME Type") );
+  mAttachments = new KOEditorAttachments( spacingHint(), topFrame );
   topLayout->addWidget( mAttachments );
-  connect( mAttachments, SIGNAL( doubleClicked( QListViewItem * ) ),
-           SLOT( slotAttachmentDoubleClicked( QListViewItem * ) ) );
 }
 
 void KOIncidenceEditor::slotApply()
@@ -213,27 +212,6 @@ QString KOIncidenceEditor::loadTemplate( Calendar *cal, const QString &type,
   }
 
   return templateName;
-}
-
-void KOIncidenceEditor::slotAttachmentDoubleClicked( QListViewItem *item )
-{
-  if ( !item ) return;
-  
-  QString uri = item->text( 0 );
-  
-  if ( uri.startsWith( "kmail:" ) ) {
-    int pos = uri.find( "/" );
-    if ( pos > 5 ) {
-      QString serialNumberStr = uri.mid( 6, pos - 6 );
-      QString messageId = uri.mid( pos + 1 );
-      kdDebug() << "SERIALNUMBERSTR: " << serialNumberStr << " MESSAGEID: "
-                << messageId << endl;
-      Q_UINT32 serialNumber = serialNumberStr.toUInt();
-      kdDebug() << "SERIALNUMBER: " << serialNumber << endl;
-      KMailIface_stub kmailIface( "kmail", "KMailIface" );
-      kmailIface.showMail( serialNumber, messageId );
-    }
-  }
 }
 
 #include "koincidenceeditor.moc"

@@ -70,7 +70,7 @@ libkorganizer_la_SOURCES =  outgoingdialog_base.ui \
         koprefs.cpp koeventviewer.cpp kowindowlist.cpp \
         koeditorgeneral.cpp \
         koeditorgeneralevent.cpp koeditorgeneraltodo.cpp koeditordetails.cpp \
-        koeditorrecurrence.cpp koeventviewerdialog.cpp \
+        koeditorrecurrence.cpp koeditorattachments.cpp koeventviewerdialog.cpp \
         koeventpopupmenu.cpp \
         outgoingdialog.cpp \
 	incomingdialog_base.ui incomingdialog.cpp \

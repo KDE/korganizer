@@ -39,6 +39,8 @@
 #include <libkcal/calendarlocal.h>
 
 #include "koprefs.h"
+#include "koeditordetails.h"
+#include "koeditorattachments.h"
 
 #include "koeventeditor.h"
 
@@ -185,7 +187,7 @@ void KOEventEditor::newEvent( const QString &summary,
   mGeneral->setDescription( description );
 
   if ( !attachment.isEmpty() ) {
-    new QListViewItem( mAttachments, attachment );
+    mAttachments->addAttachment( attachment );
   }
 }
 
@@ -260,6 +262,7 @@ void KOEventEditor::setDefaults(QDateTime from, QDateTime to, bool allDay)
 {
   mGeneral->setDefaults(from,to,allDay);
   mDetails->setDefaults();
+  mAttachments->setDefaults();
   mRecurrence->setDefaults(from,to,allDay);
 }
 
@@ -268,16 +271,7 @@ void KOEventEditor::readEvent( Event *event, bool tmpl )
   mGeneral->readEvent( event, tmpl );
   mDetails->readEvent( event );
   mRecurrence->readEvent( event );
-
-  // TODO: Move attachement handling to own class
-  Attachment::List attachments = event->attachments();
-  Attachment *a;
-  for( a = attachments.first(); a; a = attachments.next() ) {
-    QString uri;
-    if ( a->isURI() ) uri = a->uri();
-    else uri = i18n("[Binary data]");
-    new QListViewItem( mAttachments, uri, a->mimeType() );
-  }
+  mAttachments->readEvent( event );
 
   // categories
   mCategoryDialog->setSelected( event->categories() );
@@ -287,6 +281,7 @@ void KOEventEditor::writeEvent(Event *event)
 {
   mGeneral->writeEvent( event );
   mDetails->writeEvent( event );
+  mAttachments->writeEvent( event );
 
   if ( event->organizer() == KOPrefs::instance()->email() ) {
     Event *ev = new Event( *event );

@@ -1,6 +1,7 @@
 /*
     This file is part of KOrganizer.
-    Copyright (c) 2001 Cornelius Schumacher <schumacher@kde.org>
+
+    Copyright (c) 2001,2003 Cornelius Schumacher <schumacher@kde.org>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -27,11 +28,14 @@
 
 #include <libkcal/calendar.h>
 
-#include "koeditordetails.h"
 //#include "savetemplatedialog.h"
 
 class QDateTime;
+
 namespace KPIM { class CategorySelectDialog; }
+
+class KOEditorDetails;
+class KOEditorAttachments;
 
 using namespace KCal;
 
@@ -71,8 +75,6 @@ class KOIncidenceEditor : public KDialogBase
     
     virtual void saveTemplate( const QString & ) = 0;
 
-    void slotAttachmentDoubleClicked( QListViewItem * );
-
   protected:
     virtual QString type() { return QString::null; }
     
@@ -93,8 +95,7 @@ class KOIncidenceEditor : public KDialogBase
     KPIM::CategorySelectDialog *mCategoryDialog;
 
     KOEditorDetails *mDetails;
-
-    QListView *mAttachments;
+    KOEditorAttachments *mAttachments;
 };
 
 #endif
