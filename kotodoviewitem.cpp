@@ -19,6 +19,8 @@
 
 #include <klocale.h>
 #include <kdebug.h>
+#include <qpainter.h>
+#include <qpixmap.h>
 
 #include "kotodoviewitem.h"
 #include "kotodoview.h"
@@ -183,13 +185,8 @@ void KOTodoViewItem::stateChange(bool state)
 
 QPixmap KOTodoViewItem::progressImg(int progress)
 {
-  QImage img(64, 11, 32, 16);
-  QPixmap progr;
-  int x, y;
-
-  /* White Background */
-  img.fill(KGlobalSettings::baseColor().rgb());
-
+  QPixmap img(64, 11, 16);
+  QPainter painter( &img );
 
   /* Check wether progress is in valid range */
   if(progress > 100) progress = 100;
@@ -198,26 +195,18 @@ QPixmap KOTodoViewItem::progressImg(int progress)
   /* Calculating the number of pixels to fill */
   progress=(int) (((float)progress)/100 * 62 + 0.5);
 
-  /* Drawing the border */
-  for(x = 0; x < 64; x++) {
-    img.setPixel(x, 0, KGlobalSettings::textColor().rgb());
-    img.setPixel(x, 10, KGlobalSettings::textColor().rgb());
-  }
+  /* White Background */
+  painter.setPen( KGlobalSettings::textColor().rgb() );
+  painter.setBrush( KGlobalSettings::baseColor().rgb() );
+  painter.drawRect( 0, 0, 64, 11 );
 
-  for(y = 0; y < 11; y++) {
-    img.setPixel(0, y, KGlobalSettings::textColor().rgb());
-    img.setPixel(63, y, KGlobalSettings::textColor().rgb());
-  }
+  painter.setPen( Qt::NoPen );
+  painter.setBrush( KGlobalSettings::highlightColor().rgb() );
+  // TODO_RK: do I need to subtract 1 from the w and h?
+  painter.drawRect( 1, 1, progress, 9 );
+  painter.end();
 
-  /* Drawing the progress */
-  for(y = 1; y <= 9; ++y)
-    for(x = 1; x <= progress; ++x)
-      img.setPixel(x, y, KGlobalSettings::highlightColor().rgb());
-
-  /* Converting to a pixmap */
-  progr.convertFromImage(img);
-
-  return progr;
+  return img;
 }
 
 bool KOTodoViewItem::isAlternate()
