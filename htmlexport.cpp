@@ -53,7 +53,7 @@ bool HtmlExport::save(QTextStream *ts)
   *ts << "\"http://www.w3.org/TR/REC-html40/loose.dtd\">\n";
 
   *ts << "<HTML><HEAD>" << endl;
-  *ts << "  <META http-equiv=\"Content-Type\" content=\"text/html; charset=" + KGlobal::locale()->charset() +  "\">\n";
+  *ts << "  <META http-equiv=\"Content-Type\" content=\"text/html; charset=" << KGlobal::locale()->encoding() << "\">\n";
   *ts << "  <TITLE>" << i18n("KOrganizer To-Do List") << "</TITLE>\n";
   *ts << "  <style type=\"text/css\">\n";
   *ts << "    body { background-color:white; color:black }\n";
