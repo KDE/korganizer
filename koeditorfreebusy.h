@@ -36,7 +36,7 @@ class FreeBusyItem;
 namespace KCal {
   class FreeBusy;
   class Attendee;
-};
+}
 
 
 class KOEditorFreeBusy : public QWidget
