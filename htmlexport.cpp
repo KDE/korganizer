@@ -118,8 +118,9 @@ void HtmlExport::createHtmlMonthView(QTextStream *ts)
   QDate end(start.year(),start.month(),start.daysInMonth());
 
   int startmonth = start.month();
+  int startyear = start.year();
 
-  while (end.month()<=toDate().month()) {
+  while ( start < toDate() ) {
     // Write header
     *ts << "<h2>" << (i18n("month_year","%1 %2").arg(KGlobal::locale()->monthName(start.month()))
         .arg(start.year())) << "</h2>\n";
@@ -181,8 +182,12 @@ void HtmlExport::createHtmlMonthView(QTextStream *ts)
       *ts << "  </tr>\n";
     }
     *ts << "</table>\n";
-    startmonth++;
-    start.setYMD(start.year(),startmonth,1);
+    startmonth += 1;
+    if ( startmonth > 12 ) {
+      startyear += 1;
+      startmonth = 1;
+    }
+    start.setYMD( startyear, startmonth, 1 );
     end.setYMD(start.year(),start.month(),start.daysInMonth());
   }
 }
