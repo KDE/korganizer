@@ -1055,14 +1055,11 @@ double KOAgenda::calcSubCellWidth( KOAgendaItem *item )
   } else {
     newSubCellWidth = double( x1 - x ) / maxSubCells;
   }
-  kdDebug(5850)<<"calcSubCellWidth for "<<item->incidence()->summary()<<": width="<<newSubCellWidth<<", subcells="<<maxSubCells<<", cellWidth="<<mGridSpacingX<<endl;
-  kdDebug(5850)<<"x="<<x<<", y="<<y<<", x1="<<x1<<", y1="<<y1<<endl;
   return newSubCellWidth;
 }
 
 void KOAgenda::placeAgendaItem( KOAgendaItem *item, double subCellWidth )
 {
-  kdDebug(5850)<<"placing agenda item "<<item->incidence()->summary()<<endl;
   int x, y, x1, y1;
   // left upper corner, no subcells yet
   // right lower corner
