@@ -47,8 +47,8 @@ GhnsWidget::GhnsWidget()
   topLayout->setMargin( KDialog::marginHint() );
   topLayout->setSpacing( KDialog::spacingHint() );
 
-  topLayout->addWidget( new QLabel( i18n("Get Hot New Stuff:"), this ) );
-  
+  topLayout->addWidget( new QLabel( i18n("Get hot new stuff:"), this ) );
+
   QPushButton *button = new QPushButton( "Wallpapers", this );
   topLayout->addWidget( button );
   connect( button, SIGNAL( clicked() ), SLOT( downloadWallpapers() ) );
@@ -56,7 +56,7 @@ GhnsWidget::GhnsWidget()
   topLayout->addSpacing( 5 );
 
   QBoxLayout *buttonLayout = new QHBoxLayout( topLayout );
-  
+
   buttonLayout->addStretch();
 
   QPushButton *closeButton = new QPushButton( "Close", this );
