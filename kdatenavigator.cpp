@@ -110,7 +110,7 @@ KDateNavigator::KDateNavigator(QWidget *parent,Calendar *calendar,
   QFontMetrics fm = dateLabel->fontMetrics();
 
   for(i=1;i<=12;++i) { 
-    int width = fm.width( mCalendarSystem->getMonthName(i) + " 2000" );
+    int width = fm.width( mCalendarSystem->monthName(i) + " 2000" );
     if (width > maxwidth) maxwidth = width;
   }
   dateLabel->setMinimumWidth(maxwidth);
@@ -187,10 +187,10 @@ void KDateNavigator::updateDates()
 
   // Find the first day of the week of the current month.
   //int d1 = m_MthYr.day(); 
-  int d1 = mCalendarSystem->getDay( m_MthYr );
+  int d1 = mCalendarSystem->day( m_MthYr );
   QDate dayone( m_MthYr.year(), m_MthYr.month(), m_MthYr.day() );
-  int d2 = mCalendarSystem->getDay( dayone );
-  int di = d1 - d2 + 1;
+  int d2 = mCalendarSystem->day( dayone );
+  //int di = d1 - d2 + 1;
   dayone = dayone.addDays( -d2 + 1 );
 
   int m_fstDayOfWkCalsys = mCalendarSystem->dayOfTheWeek( dayone );
@@ -225,8 +225,8 @@ void KDateNavigator::updateView()
 
   // compute the label at the top of the navigator
   QDate cT( m_MthYr.year(), m_MthYr.month(), m_MthYr.day() );  
-  QString dtstr = mCalendarSystem->getMonth( cT ) + " " +
-                  QString::number(mCalendarSystem->getYear( cT ) );
+  QString dtstr = mCalendarSystem->monthName( cT ) + " " +
+                  QString::number(mCalendarSystem->year( cT ) );
   dateLabel->setText(dtstr);
 
   int i;
@@ -331,7 +331,7 @@ void KDateNavigator::goNextMonth()
 {
 
   QDate tmp(m_MthYr.year(), m_MthYr.month(), m_MthYr.day());
-  mCalendarSystem->getNextMonthDate(tmp);
+  mCalendarSystem->nextMonthDate(tmp);
   
   gotoYMD(tmp.year(), tmp.month(), tmp.day());
 
@@ -342,7 +342,7 @@ void KDateNavigator::goPrevMonth()
 {
 
   QDate tmp(m_MthYr.year(), m_MthYr.month(), m_MthYr.day());
-  mCalendarSystem->getPreviousMonthDate(tmp);
+  mCalendarSystem->previousMonthDate(tmp);
 
   gotoYMD(tmp.year(), tmp.month(), tmp.day());
   
@@ -351,7 +351,7 @@ void KDateNavigator::goPrevMonth()
 void KDateNavigator::goNextYear()
 {
   QDate tmp(m_MthYr.year(), m_MthYr.month(), m_MthYr.day());
-  mCalendarSystem->getNextYearDate(tmp);
+  mCalendarSystem->nextYearDate(tmp);
 
   gotoYMD(tmp.year(), tmp.month(), tmp.day());
 }
@@ -359,7 +359,7 @@ void KDateNavigator::goNextYear()
 void KDateNavigator::goPrevYear()
 {
   QDate tmp(m_MthYr.year(), m_MthYr.month(), m_MthYr.day());
-  mCalendarSystem->getPreviousYearDate(tmp);
+  mCalendarSystem->previousYearDate(tmp);
 
   gotoYMD(tmp.year(), tmp.month(), tmp.day());
 }

@@ -442,7 +442,7 @@ void KOAgendaView::createDayLabels()
     int dW = mCalendarSystem->dayOfTheWeek(date);
     QString str = i18n( "short_weekday date (e.g. Mon 13)","%1 %2" )
         .arg( mCalendarSystem->weekDayName( dW, true ) )
-        .arg( mCalendarSystem->getDay(date) );
+        .arg( mCalendarSystem->day(date) );
 
     dayLabel->setText(str);
     dayLabel->setAlignment(QLabel::AlignHCenter);

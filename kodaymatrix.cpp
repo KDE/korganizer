@@ -222,7 +222,7 @@ void KODayMatrix::updateView(QDate actdate)
   for(int i = 0; i < NUMDAYS; i++) {
     if (daychanged) {    
       days[i] = startdate.addDays(i);
-      daylbls[i] = QString::number( mCalendarSystem->getDay( days[i] ));
+      daylbls[i] = QString::number( mCalendarSystem->day( days[i] ));
 
       // if today is in the currently displayed month, hilight today
       if (days[i].year() == QDate::currentDate().year() &&
@@ -498,7 +498,7 @@ void KODayMatrix::paintEvent(QPaintEvent * pevent)
     col = isRTL ? 6-(i-row*7) : i-row*7;
 
     // if it is the first day of a month switch color from normal to shaded and vice versa
-    if ( mCalendarSystem->getDay( days[i] ) == 1) {
+    if ( mCalendarSystem->day( days[i] ) == 1) {
       if (actcol == mDefaultTextColorShaded) {
         actcol = mDefaultTextColor;
       } else {
