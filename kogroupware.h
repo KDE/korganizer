@@ -38,8 +38,10 @@
 
 using namespace KCal;
 
-class KCal::Calendar;
-class KCal::Event;
+namespace KCal {
+class Calendar;
+class Event;
+}
 class CalendarView;
 class KOGroupware;
 

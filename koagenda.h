@@ -36,11 +36,11 @@ class QTime;
 class KConfig;
 class QFrame;
 class KOAgenda;
-class KCal::Event;
-class KCal::Todo;
 
 using namespace KCal;
 namespace KCal {
+class Event;
+class Todo;
 class Calendar;
 }
 
