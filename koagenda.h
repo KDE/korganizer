@@ -142,6 +142,8 @@ class KOAgenda : public QScrollView
     void keyPressEvent( QKeyEvent * );
 
     void calculateWorkingHours();
+
+    virtual void contentsMousePressEvent ( QMouseEvent * );
     
   private:
     void init();

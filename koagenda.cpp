@@ -45,7 +45,6 @@ MarcusBains::~MarcusBains()
     delete minutes;
 }
 
-#include <iostream>
 void MarcusBains::updateLocation()
 {
     QTime tim = QTime::currentTime();
@@ -138,8 +137,8 @@ void KOAgenda::init()
   // effect. Has to be fixed.
   setFocusPolicy(WheelFocus);
 
-  QObject::connect(&mScrollUpTimer,SIGNAL(timeout()),SLOT(scrollUp()));
-  QObject::connect(&mScrollDownTimer,SIGNAL(timeout()),SLOT(scrollDown()));
+  connect(&mScrollUpTimer,SIGNAL(timeout()),SLOT(scrollUp()));
+  connect(&mScrollDownTimer,SIGNAL(timeout()),SLOT(scrollDown()));
 
   mStartCellX = 0;
   mStartCellY = 0;
@@ -251,6 +250,8 @@ bool KOAgenda::eventFilter ( QObject *object, QEvent *event )
     case QEvent::MouseButtonDblClick:
     case QEvent::MouseButtonRelease:
     case QEvent::MouseMove:
+      kdDebug() << "KOAgenda::eventFilter(): mouse event: " << event->type()
+                << " sender: " << object->className() << endl;
       me = (QMouseEvent *)event;
       if (object != viewport()) {
         viewportPos = ((QWidget *)object)->mapToParent(me->pos());
@@ -316,7 +317,7 @@ bool KOAgenda::eventFilter ( QObject *object, QEvent *event )
 	  emit editEventSignal(doubleClickedItem->itemEvent());
 	}
       }
-      break;
+      return true;
     
     case (QEvent::Leave):
       if (!mActionItem)
@@ -1079,4 +1080,10 @@ void KOAgenda::setHolidayMask(QArray<bool> *mask)
   }
   kdDebug() << endl;
 */
+}
+
+void KOAgenda::contentsMousePressEvent ( QMouseEvent *event )
+{
+  kdDebug() << "KOagenda::contentsMousePressEvent(): type: " << event->type() << endl;
+  QScrollView::contentsMousePressEvent(event);
 }
