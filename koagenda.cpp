@@ -184,13 +184,15 @@ bool KOAgenda::eventFilter ( QObject *object, QEvent *event )
 	  endItemAction();
 	}
       } else if (me->type() == QEvent::MouseMove) {
-	KOAgendaItem *moveItem = (KOAgendaItem *)object;
-        if (!(moveItem->itemEvent()->isReadOnly() ||
-              moveItem->itemEvent()->doesRecur())) {
-          if (!mActionItem) {
-      	    setNoActionCursor(moveItem,viewportPos);
-	  } else {
-            performItemAction(viewportPos);
+        if (object != viewport()) {
+          KOAgendaItem *moveItem = (KOAgendaItem *)object;
+          if (!(moveItem->itemEvent()->isReadOnly() ||
+                moveItem->itemEvent()->doesRecur())) {
+            if (!mActionItem) {
+      	      setNoActionCursor(moveItem,viewportPos);
+	    } else {
+              performItemAction(viewportPos);
+            }
           }
 	}
       } else if (me->type() == QEvent::MouseButtonDblClick) {
@@ -214,7 +216,7 @@ bool KOAgenda::eventFilter ( QObject *object, QEvent *event )
     default:
       break;
   }
-
+  
   return QScrollView::eventFilter(object,event);
 }
 
