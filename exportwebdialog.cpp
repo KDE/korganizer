@@ -37,7 +37,8 @@ ExportWebDialog::ExportWebDialog (CalObject *cal, QWidget *parent,
   setupGeneralPage();
   setupEventPage();
   setupTodoPage();
-  setupAdvancedPage();
+// Disabled bacause the functionality is not yet implemented.
+//  setupAdvancedPage();
   
   QObject::connect(this,SIGNAL(user1Clicked()),this,SLOT(exportWebPage()));
 }

@@ -60,11 +60,14 @@ class KOPrefs
 
     QColor  mHolidayColor;
     QColor  mHighlightColor;
+    QColor  mEventColor;
+    QColor  mAgendaBgColor;
 
     int     mDayBegins;
     int     mHourSize;
     bool    mDailyRecur;
     bool    mWeeklyRecur;
+    bool    mEnableToolTips;
 
     QString mPrinter;
     int     mPaperSize;
@@ -81,6 +84,9 @@ class KOPrefs
     QColor mDefaultCategoryColor;
     QColor mDefaultHolidayColor;
     QColor mDefaultHighlightColor;
+    QColor mDefaultAgendaBgColor;
+
+    QFont mDefaultTimeBarFont;
 };
 
 #endif

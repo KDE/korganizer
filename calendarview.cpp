@@ -370,6 +370,8 @@ void CalendarView::hookupSignals()
   connect(dateNavigator, SIGNAL(datesSelected(const QDateList)),
 	  this, SLOT(updateView(const QDateList)));
 
+  connect(dateNavigator,SIGNAL(weekClicked(QDate)),SLOT(selectWeek(QDate)));
+
   connect(dateNavigator,SIGNAL(eventDropped(KOEvent *)),
           SLOT(eventAdded(KOEvent *)));    
 
@@ -528,6 +530,8 @@ void CalendarView::changeAgendaView( int newView )
     break;
   }
   agendaView->slotViewChange( newView );
+
+  adaptNavigationUnits();
 }
 
 void CalendarView::nextAgendaView()
@@ -556,6 +560,8 @@ void CalendarView::changeView(KOBaseView *view)
   else rightFrame->raiseWidget(todoView);
 
   updateView(dateNavigator->getSelected());
+
+  adaptNavigationUnits();
 }
 
 void CalendarView::updateView(const QDateList selectedDates)
@@ -1000,27 +1006,20 @@ void CalendarView::view_list()
 
 void CalendarView::view_day()
 {
-  QDateList tmpList(FALSE);
-  tmpList = dateNavigator->getSelected();
-  if (saveSingleDate != *tmpList.first()) {
-    dateNavigator->selectDates(saveSingleDate);
-    updateView(dateNavigator->getSelected());
-  }
-
-  agendaView->slotViewChange( KOAgendaView::DAY );
   changeView(agendaView);
+  changeAgendaView(KOAgendaView::DAY);
 }
 
 void CalendarView::view_workweek()
 {
-  agendaView->slotViewChange(KOAgendaView::WORKWEEK);
   changeView(agendaView);
+  changeAgendaView(KOAgendaView::WORKWEEK);
 }
 
 void CalendarView::view_week()
 {
-  agendaView->slotViewChange(KOAgendaView::WEEK );
   changeView(agendaView);
+  changeAgendaView(KOAgendaView::WEEK);
 }
 
 void CalendarView::view_month()
@@ -1113,4 +1112,42 @@ void CalendarView::cleanWindow(QWidget *widget)
 void CalendarView::eventUpdated(KOEvent *)
 {
   setModified();
+}
+
+void CalendarView::selectWeek(QDate weekstart)
+{
+//  qDebug("CalendarView::selectWeek(): %s",weekstart.toString().latin1());
+
+  QDateList week;
+
+  // Determine number of days for a week. If current view is work week, than
+  // n is 5. This does not work at the moment.
+  int n = 7;
+  if (currentView) {
+    // maxDatesHint is not the correct function to find out the number of dates
+    // of a view.
+    if (currentView->currentDateCount() == 5) n = 5;
+  }
+
+  int i;
+  for(i=0;i<n;++i) {
+    QDate date = weekstart.addDays(i);
+    week.append(&date);
+  }
+  dateNavigator->selectDates(week);
+  updateView(week);
+}
+
+void CalendarView::adaptNavigationUnits()
+{
+  if(currentView) {
+    int days = currentView->currentDateCount();
+    if (days == 1) {
+      emit changeNavStringPrev(i18n("&Previous Day"));
+      emit changeNavStringNext(i18n("&Next Day"));
+    } else {
+      emit changeNavStringPrev(i18n("&Previous Week"));
+      emit changeNavStringNext(i18n("&Next Week"));
+    }
+  }
 }

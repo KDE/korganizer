@@ -201,6 +201,9 @@ class KOrganizer : public KTMainWindow
     static KOWindowList *windowList;
 
     bool mActive;  // Indicates if this calendar is active (for alarm daemon)
+
+  private slots:
+    void dumpText(const QString &);  // only for debugging purposes
 };
 
 #endif // _KORGANIZER_H

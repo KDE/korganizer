@@ -142,6 +142,10 @@ void KOEditorRecurrence::initMain()
   advancedRuleEdit->setMaxLength( 32767 );
   advancedRuleEdit->setEnabled(false);
 
+// Disable advanced rule input, because it is not used.
+  advancedRuleButton->hide();
+  advancedRuleEdit->hide();
+
   QBoxLayout *layoutAdvancedRule = new QHBoxLayout;
   layoutRuleFrame->addLayout(layoutAdvancedRule);
   layoutAdvancedRule->addWidget(advancedRuleButton);

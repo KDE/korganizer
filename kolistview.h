@@ -55,6 +55,7 @@ public:
   ~KOListView();
 
   virtual int maxDatesHint();
+  virtual int currentDateCount();
   virtual QList<KOEvent> getSelected();
 
   void showDates(bool show);

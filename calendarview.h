@@ -73,6 +73,10 @@ signals:
   /** Emitted when state of modified flag changes */
   void modifiedChanged(bool);
 
+  /** Emitted when the unit of navigation changes */
+  void changeNavStringPrev(const QString &);
+  void changeNavStringNext(const QString &);
+
 public slots:
   /** options dialog made a changed to the configuration. we catch this
    *  and notify all widgets which need to update their configuration. */
@@ -249,6 +253,9 @@ protected slots:
 
   /** Move to the previous date(s) in the current view */
   void goPrevious();
+
+  /** Select a week to be displayed in the calendar view */
+  void selectWeek(QDate weekstart);
   
 public:
   // show a standard warning
@@ -265,6 +272,10 @@ protected:
   /** tell the alarm daemon that we have saved, and he needs to reread */
   void signalAlarmDaemon();
 
+  /** Adapt navigation units correpsonding to step size of navigation of the
+   * current view.
+   */
+  void adaptNavigationUnits();
 
   // variables
 

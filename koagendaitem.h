@@ -7,6 +7,7 @@
 
 #include "koevent.h"
 
+class QToolTipGroup;
 
 /*
   The KOAgendaItem has to make sure that it receives all mouse events, which are
@@ -61,6 +62,8 @@ class KOAgendaItem : public QFrame
 
     virtual bool eventFilter ( QObject *, QEvent * ); 
 
+    static QToolTipGroup *toolTipGroup();
+
   public slots:
     void updateIcons();
 
@@ -85,6 +88,8 @@ class KOAgendaItem : public QFrame
     
     QLabel *mItemLabel;
     QLabel *mIconAlarm,*mIconRecur,*mIconReadonly;
+    
+    static QToolTipGroup *mToolTipGroup;
 };
 
 #endif // KOAGENDAITEM_H

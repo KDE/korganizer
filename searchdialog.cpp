@@ -14,7 +14,7 @@
 SearchDialog::SearchDialog(CalObject *_cal) :
   QDialog(0, "SearchDialog")
 {
-  setCaption(i18n("Search - KOrganizer"));
+  setCaption(i18n("Find Events - KOrganizer"));
 
   cal = _cal;
   QVBoxLayout *layout = new QVBoxLayout(this, 10);
@@ -23,7 +23,7 @@ SearchDialog::SearchDialog(CalObject *_cal) :
   layout->addLayout(subLayout);
 
   searchLabel = new QLabel(this, "searchLabel");
-  searchLabel->setText(i18n("Search For:"));
+  searchLabel->setText(i18n("Search for:"));
   searchLabel->setFixedSize(searchLabel->sizeHint());
   subLayout->addWidget(searchLabel);
 

@@ -53,6 +53,11 @@ public:
   virtual int maxDatesHint() = 0;
 
   /**
+   * Return number of currently shown dates. A return value of 0 means no idea.
+   */
+  virtual int currentDateCount() = 0;
+
+  /**
    * @return a list of selected events.  Most views can probably only
    * select a single event at a time, but some may be able to select
    * more than one.

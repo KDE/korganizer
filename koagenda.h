@@ -51,8 +51,8 @@ class KOAgenda : public QScrollView
 
     /** Calculates the minimum width */
     virtual int minimumWidth() const;
-    /**  */
-    void updateConfig(KConfig* config);
+    /** Update configuration from preference settings */
+    void updateConfig();
 
     void checkScrollBoundaries();
 

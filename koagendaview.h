@@ -97,6 +97,9 @@ class KOAgendaView : public KOBaseView {
     /** Returns maximum number of days supported by the koagendaview */
     virtual int maxDatesHint();
 
+    /** Returns number of currently shown dates. */
+    virtual int currentDateCount();
+
     /** returns the currently selected events */
     virtual QList<KOEvent> getSelected();
 

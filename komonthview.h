@@ -129,6 +129,9 @@ class KOMonthView: public KOBaseView {
    /** Returns maximum number of days supported by the komonthview */
    virtual int maxDatesHint();
 
+   /** Returns number of currently shown dates. */
+   virtual int currentDateCount();
+
    /** returns the currently selected events */
    virtual QList<KOEvent> getSelected();
 

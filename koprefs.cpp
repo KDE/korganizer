@@ -21,10 +21,13 @@ KOPrefs::KOPrefs()
 {
   mCategoryColors.setAutoDelete(true);
   
-  mDefaultCategoryColor  = QColor("gray");
+  mDefaultCategoryColor  = QColor(196,196,196);
   mDefaultHolidayColor   = QColor("red");
   mDefaultHighlightColor = QColor("blue");
+  mDefaultAgendaBgColor  = QColor(128,128,128);
 
+  mDefaultTimeBarFont = QFont("helvetica",12,QFont::Bold);
+  
   mConfig = new KConfig(locate("config","korganizerrc"));
   
   readConfig();
@@ -72,16 +75,19 @@ void KOPrefs::setDefaults()
   mHourSize = 10;
   mDailyRecur = true;
   mWeeklyRecur = true;
+  mEnableToolTips = false;
 
-  mTimeBarFont = QFont("helvetica",18);
+  mTimeBarFont = mDefaultTimeBarFont;
 
   mHolidayColor = mDefaultHolidayColor;
   mHighlightColor = mDefaultHighlightColor;
+  mEventColor = mDefaultCategoryColor;
+  mAgendaBgColor = mDefaultAgendaBgColor;
 
   mPrinter = "";
   mPaperSize = 0;
   mPaperOrientation = 0;
-  mPrintPreview = "gv";
+  mPrintPreview = "kghostview";
   
   setCategoryDefaults();
 }
@@ -128,15 +134,20 @@ void KOPrefs::readConfig()
   mHourSize = mConfig->readNumEntry("Hour Size",10);
   mDailyRecur = mConfig->readBoolEntry("Show Daily Recurrences",true);
   mWeeklyRecur = mConfig->readBoolEntry("Show Weekly Recurrences",true);
+  mEnableToolTips = mConfig->readBoolEntry("Enable ToolTips",false);
 
   mConfig->setGroup("Fonts");
-  mTimeBarFont = mConfig->readFontEntry("TimeBar Font");
+  mTimeBarFont = mConfig->readFontEntry("TimeBar Font",&mDefaultTimeBarFont);
 
   mConfig->setGroup("Colors");
   mHolidayColor = mConfig->readColorEntry("Holiday Color",
                                           &mDefaultHolidayColor);
   mHighlightColor = mConfig->readColorEntry("Highlight Color",
                                             &mDefaultHighlightColor);
+  mEventColor = mConfig->readColorEntry("Event Color",
+                                            &mDefaultCategoryColor);
+  mAgendaBgColor = mConfig->readColorEntry("Agenda Background Color",
+                                            &mDefaultAgendaBgColor);
 
   mConfig->setGroup("Category Colors");
   QStringList::Iterator it;
@@ -148,7 +159,7 @@ void KOPrefs::readConfig()
   mPrinter = mConfig->readEntry("Printer Name",0);
   mPaperSize = mConfig->readNumEntry("Paper Size",0);
   mPaperOrientation = mConfig->readNumEntry("Paper Orientation",0);
-  mPrintPreview = mConfig->readEntry("Preview","gv");
+  mPrintPreview = mConfig->readEntry("Preview","kghostview");
 }
 
 
@@ -178,6 +189,7 @@ void KOPrefs::writeConfig()
   mConfig->writeEntry("Hour Size",mHourSize);
   mConfig->writeEntry("Show Daily Recurrences",mDailyRecur);
   mConfig->writeEntry("Show Weekly Recurrences",mWeeklyRecur);
+  mConfig->writeEntry("Enable ToolTips",mEnableToolTips);
 
   mConfig->setGroup("Fonts");
   mConfig->writeEntry("TimeBar Font",mTimeBarFont);
@@ -185,6 +197,8 @@ void KOPrefs::writeConfig()
   mConfig->setGroup("Colors");
   mConfig->writeEntry("Holiday Color",mHolidayColor);
   mConfig->writeEntry("Highlight Color",mHighlightColor);
+  mConfig->writeEntry("Event Color",mEventColor);
+  mConfig->writeEntry("Agenda Background Color",mAgendaBgColor);
 
   mConfig->setGroup("Category Colors");
   QDictIterator<QColor> it(mCategoryColors);

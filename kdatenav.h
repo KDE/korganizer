@@ -33,6 +33,7 @@ class KDateNavigator: public QFrame {
  signals:
    void datesSelected(const QDateList);
    void eventDropped(KOEvent *);
+   void weekClicked(QDate);
 
  protected slots:
    void goNextMonth();
@@ -43,6 +44,8 @@ class KDateNavigator: public QFrame {
 
  protected:
    void updateDates();
+
+   bool eventFilter (QObject *,QEvent *); 
 
  private:
    QFrame   *ctrlFrame;

@@ -4,6 +4,7 @@
 #include "koagenda.moc"
 
 #include "koagendaitem.h"
+#include "koprefs.h"
 
 #include <klocale.h>
 #include <kiconloader.h>
@@ -51,33 +52,6 @@ KOAgenda::~KOAgenda()
 }
 
 
-void KOAgenda::clear()
-{
-//  qDebug("KOAgenda::clear()");
-
-  KOAgendaItem *item;
-  for ( item=mItems.first(); item != 0; item=mItems.next() ) {
-    removeChild(item);
-  }
-  mItems.clear();
-}
-
-
-void KOAgenda::changeColumns(int columns)
-{
-  if (columns == 0) {
-    qDebug("KOAgenda::changeColumns() called with argument 0");
-    return;
-  }
-
-  clear();
-  mColumns = columns;
-//  setMinimumSize(mColumns * 10, mGridSpacingY + 1);
-//  init();
-//  update();
-  QApplication::sendEvent(this,new QResizeEvent(size(),size()));
-}
-
 void KOAgenda::init()
 {
   mGridSpacingX = 100;
@@ -123,10 +97,41 @@ void KOAgenda::init()
   // controlled in a way that the contents horizontally always fits. Then it is
   // not necessary to turn off the scrollbar.
   setHScrollBarMode(AlwaysOff);
+
+  setStartHour(KOPrefs::instance()->mDayBegins);
   
   connect(verticalScrollBar(),SIGNAL(valueChanged(int)),
           SLOT(checkScrollBoundaries(int)));
 }
+
+
+void KOAgenda::clear()
+{
+//  qDebug("KOAgenda::clear()");
+
+  KOAgendaItem *item;
+  for ( item=mItems.first(); item != 0; item=mItems.next() ) {
+    removeChild(item);
+  }
+  mItems.clear();
+}
+
+
+void KOAgenda::changeColumns(int columns)
+{
+  if (columns == 0) {
+    qDebug("KOAgenda::changeColumns() called with argument 0");
+    return;
+  }
+
+  clear();
+  mColumns = columns;
+//  setMinimumSize(mColumns * 10, mGridSpacingY + 1);
+//  init();
+//  update();
+  QApplication::sendEvent(this,new QResizeEvent(size(),size()));
+}
+
 
 /*
   This is the eventFilter function, which gets all events from the KOAgendaItems
@@ -798,17 +803,9 @@ int KOAgenda::minimumWidth() const
   return min;
 }
 
-void KOAgenda::updateConfig(KConfig* config)
+void KOAgenda::updateConfig()
 {
-  // set start hour
-  config->setGroup("Views");
-  QString startStr(config->readEntry("Day Begins", "8:00"));
-  //TODO: handle case where old config files are in format "8" instead of "8:00".
-  int colonPos = startStr.find(':');
-  if (colonPos >= 0)
-    startStr.truncate(colonPos);
-  int mStartHour = startStr.toUInt();
-  setStartHour(mStartHour);
+  viewport()->setBackgroundColor(KOPrefs::instance()->mAgendaBgColor);
 }
 
 void KOAgenda::checkScrollBoundaries()

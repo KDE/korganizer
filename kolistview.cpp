@@ -103,7 +103,12 @@ KOListView::~KOListView()
 
 int KOListView::maxDatesHint()
 {
-  return 1;
+  return 0;
+}
+
+int KOListView::currentDateCount()
+{
+  return 0;
 }
 
 QList<KOEvent> KOListView::getSelected()

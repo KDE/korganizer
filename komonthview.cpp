@@ -411,6 +411,11 @@ int KOMonthView::maxDatesHint()
   return 42;  // What was the question? :-)
 }
 
+int KOMonthView::currentDateCount()
+{
+  return 42;
+}
+
 QList<KOEvent> KOMonthView::getSelected()
 {
   QList<KOEvent> selectedEvents;

@@ -8,8 +8,11 @@
 #include <qlabel.h>
 #include <qlayout.h>
 #include <qhbox.h>
+#include <qtooltip.h>
 
 #include "koprefs.h"
+
+QToolTipGroup *KOAgendaItem::mToolTipGroup = 0;
 
 KOAgendaItem::KOAgendaItem(KOEvent *event, QWidget *parent,
                            const char *name,WFlags) :
@@ -19,7 +22,10 @@ KOAgendaItem::KOAgendaItem(KOEvent *event, QWidget *parent,
 
   QStrList categories = mEvent->getCategories();
   QString cat = categories.first();
-  if (!cat.isEmpty()) {
+  if (cat.isEmpty()) {
+    setPalette(QPalette(KOPrefs::instance()->mEventColor,
+                        KOPrefs::instance()->mEventColor));
+  } else {
     setPalette(QPalette(*(KOPrefs::instance()->categoryColor(cat)),
                         *(KOPrefs::instance()->categoryColor(cat))));
   }
@@ -40,13 +46,7 @@ KOAgendaItem::KOAgendaItem(KOEvent *event, QWidget *parent,
   setMultiItem(0,0,0);
 
   startMove();
-/*
-  QHBox *iconBox = new QHBox (this,"KOAgendaItem::iconBox");
 
-  mIconAlarm = new QLabel(iconBox,"KOAgendaItem::IconAlarmLabel");    
-  mIconRecur = new QLabel(iconBox,"KOAgendaItem::IconRecurLabel");    
-  mIconReadonly = new QLabel(iconBox,"KOAgendaItem::IconReadonlyLabel");    
-*/
   mIconAlarm = new QLabel(this,"KOAgendaItem::IconAlarmLabel");    
   mIconRecur = new QLabel(this,"KOAgendaItem::IconRecurLabel");    
   mIconReadonly = new QLabel(this,"KOAgendaItem::IconReadonlyLabel");    
@@ -78,14 +78,10 @@ KOAgendaItem::KOAgendaItem(KOEvent *event, QWidget *parent,
   iconLayout->addWidget(mIconReadonly);
   iconLayout->addStretch(1);
 
-/*
-  topLayout->addStretch(2);
-  topLayout->addWidget(mItemLabel,1);
-  topLayout->addWidget(iconBox,0);
-  topLayout->addStretch(2);
-*/
-  
   updateIcons();
+
+//  QToolTip::add(this,mEvent->getSummary());
+  QToolTip::add(this,mEvent->getSummary(),toolTipGroup(),"");
 }
 
 
@@ -237,4 +233,10 @@ void KOAgendaItem::expandRight(int dx)
   int newXWidth = cellXWidth() + dx;
   if (newXWidth < newX) newXWidth = newX;
   setCellX(newX,newXWidth);
+}
+
+QToolTipGroup *KOAgendaItem::toolTipGroup()
+{
+  if (!mToolTipGroup) mToolTipGroup = new QToolTipGroup(0);
+  return mToolTipGroup;
 }

@@ -55,6 +55,8 @@ class KOOptionsDialog : public KDialogBase
     void selectTimeBarFont();
     void selectHolidayColor();
     void selectHighlightColor();
+    void selectEventColor();
+    void selectAgendaBgColor();
     void selectCategoryColor();
   
     void updateCategoryColor();
@@ -109,6 +111,8 @@ class KOOptionsDialog : public KDialogBase
 
     QFrame *mHolidayColor;
     QFrame *mHighlightColor;
+    QFrame *mEventColor;
+    QFrame *mAgendaBgColor;
 
     QFrame        *mCategoryColor;
     QComboBox     *mCategoryCombo;
@@ -118,6 +122,7 @@ class KOOptionsDialog : public KDialogBase
     QSlider   *mHourSizeSlider;
     QCheckBox *mDailyRecurCheck;
     QCheckBox *mWeeklyRecurCheck;
+    QCheckBox *mEnableToolTipsCheck;
 
     QComboBox    *mPrinterCombo;
     QButtonGroup *mPaperSizeGroup;

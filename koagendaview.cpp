@@ -9,9 +9,9 @@
 #include <qfont.h>
 #include <qfontmetrics.h>
 #include <qpopupmenu.h>
+#include <qtooltip.h>
 
 #include <kapp.h>
-#include <kconfig.h>
 #include <kglobal.h>
 #include <kstddirs.h>
 #include <kiconloader.h>
@@ -354,6 +354,10 @@ int KOAgendaView::maxDatesHint()
   return 0;
 }
 
+int KOAgendaView::currentDateCount()
+{
+  return mSelectedDates.count();
+}
 
 QList<KOEvent> KOAgendaView::getSelected()
 {
@@ -365,7 +369,7 @@ QList<KOEvent> KOAgendaView::getSelected()
 
 void KOAgendaView::updateView()
 {
-  qDebug("KOAgendaView::updateView()");
+//  qDebug("KOAgendaView::updateView()");
   fillAgenda();
 }
 
@@ -376,13 +380,12 @@ void KOAgendaView::updateView()
 */
 void KOAgendaView::updateConfig()
 {
-//  debug("KOAgendaView::updateConfig()");
-
-  KConfig config(locate("config","korganizerrc"));
+//  qDebug("KOAgendaView::updateConfig()");
 
   // update config for children
   mTimeLabels->updateConfig();
-  mAgenda->updateConfig(&config);
+  mAgenda->updateConfig();
+  mAllDayAgenda->updateConfig();
 
   // widget synchronization
   //TODO: find a better way, maybe signal/slot
@@ -392,6 +395,10 @@ void KOAgendaView::updateConfig()
   mTimeLabels->repaint();
 
   mDummyAllDayLeft->setFixedWidth(mTimeLabels->width());
+
+  // ToolTips displaying summary of events
+  KOAgendaItem::toolTipGroup()->setEnabled(KOPrefs::instance()
+                                           ->mEnableToolTips);
 
   updateView();
 }
@@ -540,14 +547,14 @@ void KOAgendaView::slotNextDates()
       mSelectedDates.append(new QDate(mStartDate.addDays(count)));
     break;
   case WEEK:
-    mStartDate = mStartDate.addDays( 7 );
+    mStartDate = mStartDate.addDays(7);
     mSelectedDates.clear();
     for( count = 0; count < 7; count++ )
       mSelectedDates.append(new QDate(mStartDate.addDays(count)));
     break;
   case LIST:
     datenum = mSelectedDates.count();
-    mStartDate = mSelectedDates.last()->addDays( 1 );
+    mStartDate = mSelectedDates.last()->addDays(1);
     mSelectedDates.clear();
     for (count = 0; count < datenum; count++)
       mSelectedDates.append(new QDate(mStartDate.addDays(count)));

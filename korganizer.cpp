@@ -193,6 +193,8 @@ void KOrganizer::writeSettings()
 
 void KOrganizer::initActions()
 {
+  KAction *action;
+
   KStdAction::openNew(this, SLOT(file_new()), actionCollection());
   KStdAction::open(this, SLOT(file_open()), actionCollection());
   mRecent = KStdAction::openRecent(this, SLOT(file_openRecent(const KURL&)),
@@ -269,16 +271,30 @@ void KOrganizer::initActions()
   (void)new KAction(i18n("&Mail Appointment"), BarIcon("send"), 0,
                     mCalendarView,SLOT(action_mail()),
                     actionCollection(), "mail_appointment");
-  
+
+  // Navigation menu  
   (void)new KAction(i18n("Go to &Today"), UserIcon("todayicon"), 0,
                     mCalendarView,SLOT(goToday()),
                     actionCollection(), "go_today");
-  (void)new KAction(i18n("&Previous Day"), BarIcon("1leftarrow"), 0,
-                    mCalendarView,SLOT(goPrevious()),
-                    actionCollection(), "go_previous");
-  (void)new KAction(i18n("&Next Day"), BarIcon("1rightarrow"), 0,
-                    mCalendarView,SLOT(goNext()),
-                    actionCollection(), "go_next");
+  action = new KAction(i18n("Go &Backward"), BarIcon("1leftarrow"), 0,
+                       mCalendarView,SLOT(goPrevious()),
+                       actionCollection(), "go_previous");
+
+// Changing the action text by setText makes the toolbar button disappear.
+// This has to be fixed first, before the connects below can be reenabled.
+/*
+  connect(mCalendarView,SIGNAL(changeNavStringPrev(const QString &)),
+          action,SLOT(setText(const QString &)));
+  connect(mCalendarView,SIGNAL(changeNavStringPrev(const QString &)),
+          this,SLOT(dumpText(const QString &)));
+*/
+  action = new KAction(i18n("Go &Forward"), BarIcon("1rightarrow"), 0,
+                       mCalendarView,SLOT(goNext()),
+                       actionCollection(), "go_next");
+/*
+  connect(mCalendarView,SIGNAL(changeNavStringNext(const QString &)),
+          action,SLOT(setText(const QString &)));
+*/
       
   // setup Settings menu
   KStdAction::showToolbar(this, SLOT(toggleToolBar()), actionCollection());
@@ -706,4 +722,9 @@ void KOrganizer::makeActive()
   } else {
     KMessageBox::sorry(this,i18n("Only local files can be active calendars."));
   }
+}
+
+void KOrganizer::dumpText(const QString &str)
+{
+  qDebug("KOrganizer::dumpText(): %s",str.latin1());
 }

@@ -122,15 +122,16 @@ KDateNavigator::KDateNavigator(QWidget *parent,
   }
 
   // Create the weeknumber labels
-  for(i=0; i<7; i++) {
+  for(i=0; i<6; i++) {
     weeknos[i] = new QLabel(this);
     weeknos[i]->setAlignment(AlignCenter);
     weeknos[i]->setFont(QFont("Arial", 10));
     if(!show_week_nums) {
       weeknos[i]->hide();
     }
+    weeknos[i]->installEventFilter(this);
     
-    topLayout->addWidget(weeknos[i],i+1,0);
+    topLayout->addWidget(weeknos[i],i+2,0);
   }
 
   // If month begins on Monday and Monday is first day of week,
@@ -213,7 +214,7 @@ void KDateNavigator::updateView()
       weeknum.setNum(dayOfYear / 7 + 1);
     else
       weeknum.setNum(dayOfYear / 7);
-    weeknos[i+1]->setText(weeknum);
+    weeknos[i]->setText(weeknum);
   }
 
   setUpdatesEnabled(TRUE);
@@ -330,7 +331,7 @@ void KDateNavigator::updateButton(int i)
 void KDateNavigator::setShowWeekNums(bool enabled)
 {
   m_bShowWeekNums = enabled;
-  for(int i=0; i<7; i++) {
+  for(int i=0; i<6; i++) {
     if(enabled)
       weeknos[i]->show();
     else
@@ -614,4 +615,21 @@ int KDateNavigator::dayToIndex(int dayNum)
     row++;
   col = (dayNum+m_fstDayOfWk-1-(KGlobal::locale()->weekStartsMonday() ? 1 : 0)) % 7;
   return row * 7 + col;
+}
+
+bool KDateNavigator::eventFilter (QObject *o,QEvent *e)
+{
+  if (e->type() == QEvent::MouseButtonPress) {
+    int i;
+    for(i=0;i<6;++i) {
+      if (o == weeknos[i]) {
+        QDate weekstart = buttons[i*7]->date();
+        emit weekClicked(weekstart);
+        break;
+      }
+    }
+    return true;
+  } else {
+    return false;
+  }
 }
