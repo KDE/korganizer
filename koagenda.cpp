@@ -349,23 +349,23 @@ bool KOAgenda::eventFilter_mouse(QObject *object, QMouseEvent *me)
 //        kdDebug() << "koagenda: filtered button press" << endl;
       if (object != viewport()) {
         if (me->button() == RightButton) {
-	  mClickedItem = (KOAgendaItem *)object;
-	  if (mClickedItem) {
-	    selectItem(mClickedItem);
-	    emit showEventPopupSignal(mClickedItem->itemEvent());
-	  }
-	  //            mItemPopup->popup(QCursor::pos());
+          mClickedItem = (KOAgendaItem *)object;
+          if (mClickedItem) {
+            selectItem(mClickedItem);
+            emit showEventPopupSignal(mClickedItem->itemEvent());
+          }
+    //            mItemPopup->popup(QCursor::pos());
         } else {
-	  mActionItem = (KOAgendaItem *)object;
-	  if (mActionItem) {
-	    selectItem(mActionItem);
-	    // XXX remove this line:
-	    // mActionItem->itemEvent()->recurrence()->doesRecur()
-	    if (!mActionItem->itemEvent()->isReadOnly())
-	      startItemAction(viewportPos);
-	    else
-	      mActionItem = 0;
-	  }
+          mActionItem = (KOAgendaItem *)object;
+          if (mActionItem) {
+            selectItem(mActionItem);
+            // XXX remove this line:
+            // mActionItem->itemEvent()->recurrence()->doesRecur()
+            if (!mActionItem->itemEvent()->isReadOnly())
+              startItemAction(viewportPos);
+            else
+              mActionItem = 0;
+          }
         }
       } else {
         selectItem(0);
@@ -387,15 +387,15 @@ bool KOAgenda::eventFilter_mouse(QObject *object, QMouseEvent *me)
       if (object != viewport()) {
         KOAgendaItem *moveItem = (KOAgendaItem *)object;
         if (!moveItem->itemEvent()->isReadOnly())
-	  if (!mActionItem)
-	    setNoActionCursor(moveItem,viewportPos);
-	  else
-	    performItemAction(viewportPos);
-      } else {
-        if ( mActionType == SELECT ) {
-          performSelectAction( viewportPos );
+          if (!mActionItem)
+            setNoActionCursor(moveItem,viewportPos);
+          else
+            performItemAction(viewportPos);
+        } else {
+          if ( mActionType == SELECT ) {
+            performSelectAction( viewportPos );
+          }
         }
-      }
       break;
 
     case QEvent::MouseButtonDblClick:
@@ -603,7 +603,7 @@ void KOAgenda::performItemAction(QPoint viewportPos)
       case RESIZETOP:
       case RESIZEBOTTOM:
         setCursor( sizeVerCursor );
-	break;
+        break;
       case RESIZELEFT:
       case RESIZERIGHT:
         setCursor( sizeHorCursor );
@@ -691,6 +691,12 @@ void KOAgenda::endItemAction()
       placeItem = mActionItem;      
     }
     emit itemModified( placeItem );
+    QPtrList<KOAgendaItem> oldconflictItems = placeItem->conflictItems();
+    KOAgendaItem *item;
+    for ( item=oldconflictItems.first(); item != 0;
+          item=oldconflictItems.next() ) {
+      placeSubCells(item);    
+    }
     while ( placeItem ) {
       placeSubCells( placeItem );
       placeItem = placeItem->nextMultiItem();
@@ -788,11 +794,11 @@ void KOAgenda::placeSubCells(KOAgendaItem *placeItem)
           placeItem->cellXWidth() >= item->cellX()) {
         if ((placeItem->cellYTop() <= item->cellYBottom()) &&
             (placeItem->cellYBottom() >= item->cellYTop())) {
-	  conflictItems.append(item);
-	  if (item->subCells() > maxSubCells)
-	    maxSubCells = item->subCells();
-	  subCellDict.insert(item->subCell(),item);
-	}
+          conflictItems.append(item);
+          if (item->subCells() > maxSubCells)
+            maxSubCells = item->subCells();
+          subCellDict.insert(item->subCell(),item);
+        }
       }
     }
   }
@@ -847,6 +853,7 @@ void KOAgenda::placeSubCells(KOAgendaItem *placeItem)
     gridToContents(placeItem->cellX(),placeItem->cellYTop(),x,y);
     moveChild(placeItem,x,y);
   }
+  placeItem->setConflictItems(conflictItems);
 }
 
 /*

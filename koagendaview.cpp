@@ -707,8 +707,8 @@ void KOAgendaView::fillAgenda()
       } else {
         int startY = mAgenda->timeToY(event->dtStart().time());
         int endY = mAgenda->timeToY(event->dtEnd().time()) - 1;
-	if (endY < startY) endY = startY;
-	mAgenda->insertItem(event,currentDate,curCol,startY,endY);
+        if (endY < startY) endY = startY;
+        mAgenda->insertItem(event,currentDate,curCol,startY,endY);
         if (startY < mMinY[curCol]) mMinY[curCol] = startY;
         if (endY > mMaxY[curCol]) mMaxY[curCol] = endY;
       }

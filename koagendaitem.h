@@ -89,6 +89,10 @@ class KOAgendaItem : public QFrame
     virtual bool eventFilter ( QObject *, QEvent * );
 
     static QToolTipGroup *toolTipGroup();
+    
+    QPtrList<KOAgendaItem> conflictItems();
+    void setConflictItems(QPtrList<KOAgendaItem>);
+    void addConflictItem(KOAgendaItem *ci);
 
   public slots:
     void updateIcons();
@@ -125,6 +129,7 @@ class KOAgendaItem : public QFrame
     static QToolTipGroup *mToolTipGroup;
 
     bool mSelected;
+    QPtrList<KOAgendaItem> mConflictItems;
 };
 
 #endif // KOAGENDAITEM_H

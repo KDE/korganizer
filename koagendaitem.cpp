@@ -390,3 +390,25 @@ void KOAgendaItem::dropEvent( QDropEvent *e )
   }
 #endif
 }
+
+
+QPtrList<KOAgendaItem> KOAgendaItem::conflictItems()
+{
+  return mConflictItems;
+}
+
+void KOAgendaItem::setConflictItems(QPtrList<KOAgendaItem> ci)
+{
+  mConflictItems = ci;
+  KOAgendaItem *item;
+  for ( item=mConflictItems.first(); item != 0;
+        item=mConflictItems.next() ) {
+    item->addConflictItem(this);
+  }
+}
+
+void KOAgendaItem::addConflictItem(KOAgendaItem *ci)
+{
+  if (mConflictItems.find(ci)<0)
+    mConflictItems.append(ci);
+}
