@@ -483,9 +483,9 @@ void ResourceView::contextMenuRequested ( QListViewItem *i,
       //FIXME: This is better on the resource dialog
       if ( KOPrefs::instance()->agendaViewUsesResourceColor() ) {
         QPopupMenu *assignMenu= new QPopupMenu( menu );
-        assignMenu->insertItem( i18n( "Assign &Color" ), this, SLOT( assignColor() ) );
+        assignMenu->insertItem( i18n( "&Assign Color" ), this, SLOT( assignColor() ) );
         if ( item->resourceColor().isValid() )
-          assignMenu->insertItem( i18n( "Disable &Color" ), this, SLOT( disableColor() ) );
+          assignMenu->insertItem( i18n( "&Disable Color" ), this, SLOT( disableColor() ) );
         menu->insertItem( i18n( "Resources Colors" ), assignMenu );
       }
       menu->insertItem( i18n("&Edit..."), this, SLOT( editResource() ) );
