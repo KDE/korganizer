@@ -71,16 +71,36 @@ void EventArchiver::runAuto( Calendar* calendar, QWidget* widget, bool withGUI )
 
 void EventArchiver::run( Calendar* calendar, const QDate& limitDate, QWidget* widget, bool withGUI, bool errorIfNone )
 {
-  Event::List events = calendar->events(
-    QDate( 1769, 12, 1 ),
-    // #29555, also advertised by the "limitDate not included" in the class docu
-    limitDate.addDays( -1 ),
-    true );
+  // We need to use rawEvents, otherwise events hidden by filters will not be archived.
+  Incidence::List incidences;
+  Event::List events;
+  Todo::List todos;
+  Journal::List journals;
+  
+  if ( KOPrefs::instance()->mArchiveEvents ) {
+    events = calendar->rawEvents(
+      QDate( 1769, 12, 1 ),
+      // #29555, also advertised by the "limitDate not included" in the class docu
+      limitDate.addDays( -1 ),
+      true );
+  }
+  if ( KOPrefs::instance()->mArchiveTodos ) {
+    Todo::List t = calendar->rawTodos();
+    Todo::List::ConstIterator it;
+    for( it = t.begin(); it != t.end(); ++it ) {
+      if ( (*it) && ( (*it)->isCompleted() ) &&  ( (*it)->completed().date() < limitDate ) ) {
+        todos.append( *it );
+      }
+    }
+  }
+  
+  incidences = Calendar::mergeIncidenceList( events, todos, journals );
+  
 
-  kdDebug(5850) << "EventArchiver: archiving events before " << limitDate << " -> " << events.count() << " events found." << endl;
-  if ( events.isEmpty() ) {
+  kdDebug(5850) << "EventArchiver: archiving incidences before " << limitDate << " -> " << incidences.count() << " incidences found." << endl;
+  if ( incidences.isEmpty() ) {
     if ( withGUI && errorIfNone )
-      KMessageBox::sorry(widget, i18n("There are no events before %1")
+      KMessageBox::sorry(widget, i18n("There are no incidences before %1")
                          .arg(KGlobal::locale()->formatDate(limitDate)));
     return;
   }
@@ -88,38 +108,38 @@ void EventArchiver::run( Calendar* calendar, const QDate& limitDate, QWidget* wi
 
   switch ( KOPrefs::instance()->mArchiveAction ) {
   case KOPrefs::actionDelete:
-    deleteEvents( calendar, limitDate, widget, events, withGUI );
+    deleteIncidences( calendar, limitDate, widget, incidences, withGUI );
     break;
   case KOPrefs::actionArchive:
-    archiveEvents( calendar, limitDate, widget, events, withGUI );
+    archiveIncidences( calendar, limitDate, widget, incidences, withGUI );
     break;
   }
 }
 
-void EventArchiver::deleteEvents( Calendar* calendar, const QDate& limitDate, QWidget* widget, const Event::List& events, bool withGUI )
+void EventArchiver::deleteIncidences( Calendar* calendar, const QDate& limitDate, QWidget* widget, const Incidence::List& incidences, bool withGUI )
 {
-  QStringList eventStrs;
-  Event::List::ConstIterator it;
-  for( it = events.begin(); it != events.end(); ++it ) {
-    eventStrs.append( (*it)->summary() );
+  QStringList incidenceStrs;
+  Incidence::List::ConstIterator it;
+  for( it = incidences.begin(); it != incidences.end(); ++it ) {
+    incidenceStrs.append( (*it)->summary() );
   }
 
   if ( withGUI ) {
     int result = KMessageBox::warningContinueCancelList(
-      widget, i18n("Delete all events before %1 without saving?\n"
-                 "The following events will be deleted:")
-      .arg(KGlobal::locale()->formatDate(limitDate)),eventStrs,
-      i18n("Delete Old Events"),i18n("&Delete"));
+      widget, i18n("Delete all incidences before %1 without saving?\n"
+                 "The following incidences will be deleted:")
+      .arg(KGlobal::locale()->formatDate(limitDate)), incidenceStrs,
+      i18n("Delete Old Incidences"),i18n("&Delete"));
     if (result != KMessageBox::Continue)
       return;
   }
-  for( it = events.begin(); it != events.end(); ++it ) {
-    calendar->deleteEvent( *it );
+  for( it = incidences.begin(); it != incidences.end(); ++it ) {
+    calendar->deleteIncidence( *it );
   }
   emit eventsDeleted();
 }
 
-void EventArchiver::archiveEvents( Calendar* calendar, const QDate& limitDate, QWidget* widget, const Event::List& events, bool /*withGUI*/)
+void EventArchiver::archiveIncidences( Calendar* calendar, const QDate& limitDate, QWidget* widget, const Incidence::List& incidences, bool /*withGUI*/)
 {
   FileStorage storage( calendar );
 
@@ -143,13 +163,20 @@ void EventArchiver::archiveEvents( Calendar* calendar, const QDate& limitDate, Q
   }
 
   // Strip active events from calendar so that only events to be archived
-  // remain.
-  Event::List activeEvents = archiveCalendar.events( limitDate,
-                                                     QDate( 3000, 1, 1 ),
-                                                     false );
-  Event::List::ConstIterator it;
-  for( it = activeEvents.begin(); it != activeEvents.end(); ++it ) {
-    archiveCalendar.deleteEvent( *it );
+  // remain. This is not really efficient, but there is no other easy way.
+  QStringList uids;
+  Incidence::List allIncidences = archiveCalendar.rawIncidences();
+  Incidence::List::ConstIterator it;
+  for( it = incidences.begin(); it != incidences.end(); ++it ) {
+    uids << (*it)->uid();
+  }
+  for( it = allIncidences.begin(); it != allIncidences.end(); ++it ) {
+    if ( !uids.contains( (*it)->uid() ) ) {
+      archiveCalendar.deleteIncidence( *it );
+kdDebug()<<"Incidence \""<<(*it)->summary().latin1()<<"\" is NOT to be archived...."<<endl;
+    } else {
+kdDebug()<<"Incidence \""<<(*it)->summary().latin1()<<"\" is to be archived...."<<endl;
+    }
   }
 
   // Get or create the archive file
@@ -167,16 +194,6 @@ void EventArchiver::archiveEvents( Calendar* calendar, const QDate& limitDate, Q
       kdDebug(5850) << "EventArchiver::archiveEvents(): Can't merge with archive file" << endl;
       return;
     }
-/*
-    QPtrList<Event> es = archiveCalendar.events(QDate(1800,1,1),
-                                                QDate(3000,1,1),
-                                                false);
-    kdDebug(5850) << "--Following events in archive calendar:" << endl;
-    Event *e;
-    for(e=es.first();e;e=es.next()) {
-      kdDebug(5850) << "-----Event: " << e->getSummary() << endl;
-    }
-*/
   } else {
     archiveFile = tmpFile.name();
   }
@@ -200,8 +217,8 @@ void EventArchiver::archiveEvents( Calendar* calendar, const QDate& limitDate, Q
   KIO::NetAccess::removeTempFile(archiveFile);
 
   // Delete archived events from calendar
-  for( it = events.begin(); it != events.end(); ++it ) {
-    calendar->deleteEvent( *it );
+  for( it = incidences.begin(); it != incidences.end(); ++it ) {
+    calendar->deleteIncidence( *it );
   }
   emit eventsDeleted();
 }

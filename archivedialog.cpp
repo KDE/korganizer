@@ -28,6 +28,7 @@
 #include <qdatetime.h>
 #include <qcheckbox.h>
 #include <qwhatsthis.h>
+#include <qhgroupbox.h>
 
 #include <kdebug.h>
 #include <klocale.h>
@@ -128,6 +129,16 @@ ArchiveDialog::ArchiveDialog(Calendar *cal,QWidget *parent, const char *name)
   l->setBuddy(mArchiveFile->lineEdit());
   fileLayout->addWidget(mArchiveFile);
   topLayout->addLayout(fileLayout);
+  
+  QHGroupBox *typeBox = new QHGroupBox( i18n("Type of incidences to archive"), 
+                                        topFrame);
+  mEvents = new QCheckBox( i18n("&Events"), typeBox );
+  mTodos = new QCheckBox( i18n("&Todos"), typeBox );
+  topLayout->addWidget( typeBox );
+  QWhatsThis::add( typeBox, i18n("Here you can select which incidences (events "
+                   "or todo items) shall be archived. Events are archived, if they "
+                   "ended before the date given above, Todo items are archived if "
+                   "they were finished before the date.") );
 
   mDeleteCb = new QCheckBox(i18n("&Delete only, do not save"),
                             topFrame);
@@ -144,6 +155,8 @@ ArchiveDialog::ArchiveDialog(Calendar *cal,QWidget *parent, const char *name)
   mExpiryTimeNumInput->setValue( KOPrefs::instance()->mExpiryTime );
   mExpiryUnitsComboBox->setCurrentItem( KOPrefs::instance()->mExpiryUnit );
   mDeleteCb->setChecked( KOPrefs::instance()->mArchiveAction == KOPrefs::actionDelete );
+  mEvents->setChecked( KOPrefs::instance()->mArchiveEvents );
+  mTodos->setChecked( KOPrefs::instance()->mArchiveTodos );
 
   slotEnableUser1();
 

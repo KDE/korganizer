@@ -63,6 +63,8 @@ class ArchiveDialog : public KDialogBase
     QRadioButton *mAutoArchiveRB;
     KIntNumInput *mExpiryTimeNumInput;
     QComboBox *mExpiryUnitsComboBox;
+    QCheckBox *mEvents;
+    QCheckBox *mTodos;
 
     Calendar *mCalendar;
 };
