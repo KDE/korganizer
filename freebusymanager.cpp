@@ -86,6 +86,9 @@ QString FreeBusyManager::getFreeBusyString()
 
 void FreeBusyManager::slotPerhapsUploadFB()
 {
+  // user has automtic uploading disabled, bail out
+  if ( !KOPrefs::instance()->autoPublish() )
+     return;
   if( mTimerID != 0 )
     // A timer is already running, so we don't need to do anything
     return;

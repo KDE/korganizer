@@ -102,10 +102,8 @@ KOGroupware::KOGroupware( CalendarView* view, KCal::Calendar* calendar )
 
   mFreeBusyManager = new FreeBusyManager( this, "freebusymanager" );
   mFreeBusyManager->setCalendar( mCalendar );
-  if ( KOPrefs::instance()->autoPublish() ) {
-    connect( mCalendar, SIGNAL( calendarChanged() ),
-             mFreeBusyManager, SLOT( slotPerhapsUploadFB() ) );
-  }
+  connect( mCalendar, SIGNAL( calendarChanged() ),
+           mFreeBusyManager, SLOT( slotPerhapsUploadFB() ) );
 
 }
 
