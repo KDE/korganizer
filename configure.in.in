@@ -24,45 +24,6 @@ AC_CHECK_GETDOMAINNAME
 AC_CHECK_GETHOSTNAME
 AC_CHECK_USLEEP
 
-dnl Check for KNewStuff presence (i.e. kdelibs-3.3)
-dnl If not present, use internal knewstuff
-
-AC_DEFUN([KDE_CHECK_KNEWSTUFF],
-[
-AC_MSG_CHECKING([for KDE library: knewstuff])
-ac_knewstuff_includes=NO ac_knewstuff_libraries=NO
-knewstuff_libraries=""
-knewstuff_includes=""
-AC_CACHE_VAL(ac_cv_have_knewstuff,
-[
-AC_FIND_FILE(knewstuff/downloaddialog.h, $kde_incdirs, knewstuff_incdir)
-ac_knewstuff_includes="$knewstuff_incdir"
-AC_FIND_FILE(libknewstuff.so, $kde_libdirs, knewstuff_libdir)
-ac_knewstuff_libraries="$knewstuff_libdir"
-if test "$ac_knewstuff_includes" = NO || test "$ac_knewstuff_libraries" = NO; then
-  ac_cv_have_knewstuff="have_knewstuff=no"
-  ac_knewstuff_notfound=""
-else
-  have_knewstuff="yes"
-fi
-])
-eval "$ac_cv_have_knewstuff"
-if test "$have_knewstuff" != yes; then
-  AC_MSG_RESULT([$have_knewstuff, using internal copy])
-  KNEWSTUFF_SUBDIR='knewstuff'
-  KNEWSTUFF_LIB='$(top_builddir)/korganizer/knewstuff/libknewstuff.la'
-else
-  AC_MSG_RESULT([$have_knewstuff])
-  KNEWSTUFF_SUBDIR=''
-  KNEWSTUFF_LIB='-lknewstuff'
-fi
-AC_SUBST(KNEWSTUFF_SUBDIR)
-AC_SUBST(KNEWSTUFF_LIB)
-AM_CONDITIONAL([include_knewstuff], [test "$KNEWSTUFF_SUBDIR" != ""])
-])
-
-KDE_CHECK_KNEWSTUFF
-
 dnl AC_OUTPUT(korganizer/ical2vcal)
 
 dnl AC_OUTPUT(korganizer/korganizerIn)

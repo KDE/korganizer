@@ -1,8 +1,4 @@
-if include_knewstuff
-knewstuff_SUBDIR=knewstuff
-endif
-
-SUBDIRS = $(knewstuff_SUBDIR) printing . korgac pixmaps sounds plugins interfaces
+SUBDIRS = printing . korgac pixmaps sounds plugins interfaces
 
 INCLUDES = \
   -I$(srcdir)/interfaces \
@@ -55,7 +51,7 @@ lib_LTLIBRARIES = libkorganizer.la libkorganizer_eventviewer.la \
                   libkorganizer_calendar.la
 
 libkorganizer_la_LDFLAGS = $(all_libraries) $(KDE_RPATH) -version-info 1:0
-libkorganizer_la_LIBADD  = $(LIB_KPARTS) $(LIB_KFILE) \
+libkorganizer_la_LIBADD  = $(LIB_KPARTS) $(LIB_KFILE) $(LIB_KNEWSTUFF) \
 	-lkdeprint -lkabc -lkutils \
 	$(top_builddir)/libkcal/libkcal.la \
 	$(top_builddir)/libkpimidentities/libkpimidentities.la \
@@ -65,7 +61,6 @@ libkorganizer_la_LIBADD  = $(LIB_KPARTS) $(LIB_KFILE) \
 	printing/libkocorehelper.la \
 	printing/libkorg_stdprinting.la \
 	$(top_builddir)/kdgantt/libkdgantt.la \
-	$(KNEWSTUFF_LIB) \
 	$(top_builddir)/kresources/remote/libkcal_resourceremote.la \
         $(top_builddir)/libemailfunctions/libemailfunctions.la
 libkorganizer_la_COMPILE_FIRST = \
@@ -178,7 +173,7 @@ META_INCLUDES = $(srcdir)/interfaces/korganizer
 
 messages: rc.cpp
 	$(PREPARETIPS) > tips.cc
-	$(XGETTEXT) *.cpp *.h korgac/*.cpp knewstuff/*.cpp plugins/*/*.cpp plugins/*/*/*.cpp printing/*.cpp tips.cc -o $(podir)/korganizer.pot
+	$(XGETTEXT) *.cpp *.h korgac/*.cpp plugins/*/*.cpp plugins/*/*/*.cpp printing/*.cpp tips.cc -o $(podir)/korganizer.pot
 	rm -f tips.cc
 
 xdg_apps_DATA = korganizer.desktop

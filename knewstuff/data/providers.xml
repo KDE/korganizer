@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE knewstuffproviders SYSTEM "knewstuffproviders.dtd">
-<knewstuffproviders>
-  <provider downloadurl="http://korganizer.kde.org/knewstuff/korganizer/calendar/knewstuff.xml"
-            uploadurl="ftp://thereisnouploadserveryet">
-    <title>KOrganizer Home Page</title>
-  </provider>
-</knewstuffproviders>
