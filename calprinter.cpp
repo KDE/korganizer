@@ -803,40 +803,77 @@ void CalPrinter::drawDaysOfWeek(QPainter &p, const QDate &qd,
 
 void CalPrinter::drawDay(QPainter &p, const QDate &qd, int width, int height)
 {
+  int startHour = mStartHour;
+  int endHour = 20;
   int offset = mHeaderHeight + 5;
+  QPtrList<Event> eventList = mCalendar->events(qd, TRUE);
+  Event *currEvent;
+ 
+  p.setFont(QFont("helvetica", 14));
+  p.setBrush(QBrush(Dense7Pattern));
+  currEvent = eventList.first();
+  int allDays = 0;
+  while(currEvent) {
+    if (currEvent->doesFloat()) {
+      p.drawRect(20, offset, width-25, 35);
+      p.drawText(30, offset+10, width-40, 30, AlignLeft | AlignTop, 
+                 currEvent->summary());
+      offset += 40;
+      allDays++;
+      eventList.remove();
+      currEvent = eventList.current();
+    } else {
+      currEvent = eventList.next();
+    }
+  }
+  startHour += (allDays/2);
+  p.setBrush(QBrush());
+  int tmpEnd;
+  for (currEvent = eventList.first(); currEvent;
+       currEvent = eventList.next()) {
+    if (currEvent->dtStart().time().hour() < startHour) 
+      startHour = currEvent->dtStart().time().hour();
+    tmpEnd = currEvent->dtEnd().time().hour();
+    if (currEvent->dtEnd().time().minute() > 0)
+      tmpEnd++;
+    if (tmpEnd > endHour) 
+      endHour = tmpEnd;
+  }
+  int hours = endHour - startHour;
+  int cellHeight = (height-offset) / hours; // hour increments.
   int cellWidth = width-80;
-  int cellHeight = (height-offset) / 12; // 12 hour increments.
 
   QString numStr;
-  for (int i = 0; i < 12; i++) {
+  for (int i = 0; i < hours; i++) {
     p.drawRect(0, offset+i*cellHeight, 75, cellHeight);
     p.drawLine(37, offset+i*cellHeight+(cellHeight/2),
-	       75, offset+i*cellHeight+(cellHeight/2));
-    numStr.setNum(i+mStartHour);
-    p.setFont(QFont("helvetica", 20, QFont::Bold));
+               75, offset+i*cellHeight+(cellHeight/2));
+    numStr.setNum(i+startHour);
+    if (cellHeight > 40) {
+      p.setFont(QFont("helvetica", 20, QFont::Bold));
+    } else {
+      p.setFont(QFont("helvetica", 16, QFont::Bold));
+    }
     p.drawText(0, offset+i*cellHeight, 33, cellHeight/2,
-	       AlignTop|AlignRight, numStr);
+               AlignTop|AlignRight, numStr);
     p.setFont(QFont("helvetica", 14, QFont::Bold));
     p.drawText(37, offset+i*cellHeight, 45, cellHeight/2,
-	       AlignTop | AlignLeft, "00");
-    p.drawRect(80, offset+i*cellHeight,
-	       cellWidth, cellHeight);
+               AlignTop | AlignLeft, "00");
+    p.drawRect(80, offset+i*cellHeight,cellWidth, cellHeight);
     p.drawLine(80, offset+i*cellHeight+(cellHeight/2),
-    	       cellWidth+80, offset+i*cellHeight+(cellHeight/2));
+               cellWidth+80, offset+i*cellHeight+(cellHeight/2));
 
   }
 
   p.setFont(QFont("helvetica", 14));
-  QPtrList<Event> eventList = mCalendar->events(qd, TRUE);
-  Event *currEvent;
   p.setBrush(QBrush(Dense7Pattern));
   for (currEvent = eventList.first(); currEvent;
        currEvent = eventList.next()) {
     int startTime = currEvent->dtStart().time().hour();
     int endTime = currEvent->dtEnd().time().hour();
     float minuteInc = cellHeight / 60.0;
-    if ((startTime >= mStartHour)  && (endTime <= (mStartHour + 12))) {
-      startTime -= mStartHour;
+    if ((startTime >= startHour)  && (endTime <= (startHour + hours))) {
+      startTime -= startHour;
       int startMinuteOff = (int) (minuteInc * 
       currEvent->dtStart().time().minute());
       int endMinuteOff = (int) (minuteInc * currEvent->dtEnd().time().minute());
