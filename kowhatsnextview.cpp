@@ -102,12 +102,14 @@ void KOWhatsNextView::printPreview(CalPrinter *calPrinter, const QDate &fd,
 
 void KOWhatsNextView::updateView()
 {
-  mText = i18n("<h1>What's next?</h1>");
+  mText = i18n("<table width=\"100%\" align=\"left\"><tr bgcolor=\"#3679AD\"><td>");
+  mText += i18n("<font color=\"white\"><h1>What's next?</h1></font>");
+  mText += i18n("</td></tr><tr><td>");
 
   QPtrList<Event> events = calendar()->getEvents(QDate::currentDate(),
                                                  QDate::currentDate());
   if (events.count() > 0) {
-    mText += i18n("<h2>Events:</h2>");
+    mText += i18n("<p></p><h2>Events:</h2>");
     mText += i18n("<table>");
     Event *ev = events.first();
     while(ev) {
@@ -120,7 +122,7 @@ void KOWhatsNextView::updateView()
   }
 
   QPtrList<Todo> todos = calendar()->getTodoList();
-  if (todos.count() > 0) {  
+  if (todos.count() > 0) {
     mText += i18n("<h2>Todo:</h2>");
     mText += i18n("<ul>");
     Todo *todo = todos.first();
@@ -133,6 +135,9 @@ void KOWhatsNextView::updateView()
     mText += i18n("</ul>");
   }
 
+  mText += i18n("</td></tr></table>");
+
+  kdDebug() << "KOWhatsNextView::updateView: text: " << mText << endl;
   mView->setText(mText);
 }
 

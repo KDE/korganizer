@@ -71,13 +71,13 @@ class KOWhatsNextView : public KOrg::BaseView
   
   private slots:
     void showIncidence(const QString &);
-  
+
   private:
     void createEventViewer();
-  
+
     QTextBrowser *mView;
     QString mText;
-    
+
     KOEventViewerDialog *mEventViewer;
 };
 
