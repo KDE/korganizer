@@ -899,14 +899,19 @@ void CalPrintHelper::drawTodo( int &count, Todo *todo, QPainter &p,
   outStr=todo->summary();
   rect = p.boundingRect( lhs, rect.top(), (rhs-(left + rect.width() + 5)),
                          -1, Qt::WordBreak, outStr );
+
   QRect newrect;
   p.drawText( rect, Qt::WordBreak, outStr, -1, &newrect );
   if ( todo->isCompleted() ) {
     // strike out the summary text if to-do is complete
-    // Note: we tried to use a strike-out font and for unknaown reasons the
-    // result was underline instead of strike-out... so draw the line ourselves.
-    p.moveTo( rect.left(), rect.top() + ( rect.height()/2 ) );
-    p.lineTo( rect.right(), rect.top() + ( rect.height()/2 ) );
+    // Note: we tried to use a strike-out font and for unknown reasons the
+    // result was underline instead of strike-out, so draw the lines ourselves.
+    int delta = p.fontMetrics().lineSpacing();
+    int lines = ( rect.height() / delta ) + 1;
+    for ( int i=0; i<lines; i++ ) {
+      p.moveTo( rect.left(),  rect.top() + ( delta/2 ) + ( i*delta ) );
+      p.lineTo( rect.right(), rect.top() + ( delta/2 ) + ( i*delta ) );
+    }
   }
 
   // due date
