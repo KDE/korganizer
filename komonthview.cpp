@@ -188,31 +188,23 @@ void MonthViewItem::paint(QPainter *p)
   QString t = text();
   int maxW = listBox()->width() - x;
   if ( ( fm.boundingRect( t ).width() > maxW ) && ( t.length() > 1 ) ) {
-    int wt;
-    int maxIterations = 25; // safety, usually needs <5, worst case <12
-    int offset = 1;
-    while ( maxIterations-- &&
-            ( ( wt = fm.boundingRect( t ).width() ) > maxW ) ) {
-      int approxW = ( t.length() * maxW / wt ) + offset;
-      if ( ( approxW < (int) t.length() ) &&
-           ( fm.boundingRect( t.left( approxW ) ).width() > maxW ) ) {
-        t = t.left( approxW );
-	offset = ( offset > 1 ) ? ( offset / 2) : 1;
-      }
-      else {
-	t = t.left( t.length() - 1 );
-	offset = ( approxW >= (int) t.length() ) ? 1 : (offset * 2);
-      }
+    int tl = 0;
+    int w = 0;
+    while ( tl < t.length() ) {
+      w += fm.charWidth( t, tl );
+      if ( w >= maxW )
+        break;
+      tl++;
     }
 
-    if (t.length() > 3) {
-      p->drawText( x, yPos, t.left( t.length() - 3 ) );
-      x += fm.width( t.left( t.length() - 3 ) );
+    if (tl > 3) {
+      p->drawText( x, yPos, t.left( tl - 3 ) );
+      x += fm.width( t.left( tl - 3 ) );
     }
-    int n = QMIN( t.length(), 3);
+    int n = QMIN( tl, 3);
     for (int i = 0; i < n; i++) {
       p->setPen( mixColors( 0.70 - i * 0.25, textColor, bgColor ) );
-      QString s( t.at( t.length() - n + i) );
+      QString s( t.at( tl - n + i ) );
       p->drawText( x, yPos, s );
       x += fm.width( s );
     }
