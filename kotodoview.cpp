@@ -223,7 +223,6 @@ void KOTodoListView::contentsDropEvent( QDropEvent *e )
         existingTodo->setRelatedTo( destinationEvent );
         mChanger->changeIncidence( oldTodo, existingTodo, KOGlobals::RELATION_MODIFIED );
         mChanger->endChange( existingTodo );
-kdDebug()<<"Incidence parent changed"<<endl;
       } else {
         KMessageBox::sorry( this, i18n("Unable to change to-do item's parent, "
                             "because the to-do cannot be locked.") );
@@ -804,7 +803,6 @@ void KOTodoView::deleteTodo()
 
 void KOTodoView::setNewPriority(int index)
 {
-kdDebug()<<"setNewPriority, changer="<<mChanger<<endl;
   if ( !mActiveItem || !mChanger ) return;
   Todo *todo = mActiveItem->todo();
   if ( !todo->isReadOnly () && 
@@ -1028,7 +1026,6 @@ void KOTodoView::emitCompletedSignal( Todo *todo )
 
 void KOTodoView::setIncidenceChanger( IncidenceChangerBase *changer ) 
 { 
-kdDebug()<<"KOTodoView::setIncidenceChanger("<<changer<<")"<<endl;
   mChanger = changer;
   mTodoListView->setIncidenceChanger( changer );
 }
