@@ -138,9 +138,21 @@ KOrganizer::KOrganizer(const char *name)
   kdDebug() << "KOrganizer::KOrganizer() done" << endl;
 }
 
+bool KOrganizer::startedKAddressBook = false;
+
 KOrganizer::~KOrganizer()
 {
   kdDebug() << "~KOrganizer()" << endl;
+  
+  //close down KAddressBook if we started it
+  if (KOrganizer::startedKAddressBook == true)
+  {
+   kdDebug() << "Closing down kaddressbook" << endl;
+   DCOPClient *client = KApplication::kApplication()->dcopClient();
+   const QByteArray noParamData;
+   client->send("kaddressbook", "KAddressBookIface", "exit()",  noParamData);
+  }
+
 
   if (mTempFile) delete mTempFile;
 

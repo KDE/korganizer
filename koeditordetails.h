@@ -87,6 +87,7 @@ class KOEditorDetails : public QWidget
     bool mDisableItemUpdate;
 
     QLineEdit *mNameEdit;
+    QLineEdit *mUidEdit;
     QLineEdit *mEmailEdit;
     QListView *mListView;
     QComboBox* mRoleCombo;
@@ -96,6 +97,7 @@ class KOEditorDetails : public QWidget
     QPushButton* mAddButton;
     QPushButton* mRemoveButton;
     QPushButton* mAddressBookButton;
+
 };
 
 #endif

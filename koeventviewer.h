@@ -23,18 +23,19 @@
 // Viewer widget for events.
 //
 
-#include <qtextview.h>
+#include <qtextbrowser.h>
 
 #include <libkcal/event.h>
 
 using namespace KCal;
 
-class KOEventViewer : public QTextView {
+class KOEventViewer : public QTextBrowser {
     Q_OBJECT
   public:
     KOEventViewer(QWidget *parent=0,const char *name=0);
     virtual ~KOEventViewer();
 
+    void setSource(const QString &);
     void setEvent(Event *event);
     void setTodo(Todo *event);
     
@@ -53,9 +54,11 @@ class KOEventViewer : public QTextView {
     void formatReadOnly(Incidence *event);
 
   private:
-    QTextView *mEventTextView;
+    QTextBrowser *mEventTextView;
 
-    QString mText;    
+    QString mText;
+  signals:
+    void launchaddressbook(QString uid);    
 };
 
 #endif

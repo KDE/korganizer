@@ -97,7 +97,7 @@ class KOrganizer : public KOrg::MainWindow, virtual public KOrganizerIface
 
     /** Is there a instance with this URL? */
     static KOrganizer* findInstance(const KURL &url);
-
+    static void setStartedKAddressBook(bool tmpBool) { startedKAddressBook = tmpBool; }
     /** Open calendar file from URL */
     bool openURL(QString url);
     /** Open calendar file from URL */
@@ -119,7 +119,7 @@ class KOrganizer : public KOrg::MainWindow, virtual public KOrganizerIface
      *  and emit this signal which notifies all widgets which have registered 
      *  for notification to update their settings. */  
     void configChanged();
-    
+
     /** emitted when the topwidget is closing down, so that any attached
         child windows can also close. */
     void closingDown();
@@ -280,6 +280,8 @@ class KOrganizer : public KOrg::MainWindow, virtual public KOrganizerIface
     enum { ID_HISTORY, ID_GENERAL, ID_ACTIVE, ID_MESSAGES_IN, ID_MESSAGES_OUT };
 
     AlarmDaemonIface_stub mAlarmDaemonIface;
+
+    static bool startedKAddressBook; //whether we started KAddressBook ourselves
 
   private slots:
     void dumpText(const QString &);  // only for debugging purposes

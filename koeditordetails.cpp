@@ -32,6 +32,7 @@
 #include <klocale.h>
 #include <kiconloader.h>
 #include <kmessagebox.h>
+#include <kdebug.h>
 #ifndef KORG_NOKABC
 #include <kabc/addresseedialog.h>
 #endif
@@ -94,6 +95,9 @@ KOEditorDetails::KOEditorDetails (int spacing,QWidget* parent,const char* name)
   mNameEdit = new QLineEdit(this);
   connect(mNameEdit,SIGNAL(textChanged(const QString &)),
           SLOT(updateAttendeeItem()));
+
+  mUidEdit = new QLineEdit(0);
+  mUidEdit->setText("");
 
   QLabel *emailLabel = new QLabel(this);
   emailLabel->setText(i18n("Email:"));
@@ -180,7 +184,7 @@ void KOEditorDetails::openAddressBook()
 #ifndef KORG_NOKABC
   KABC::Addressee a = KABC::AddresseeDialog::getAddressee(this);
   if (!a.isEmpty()) {
-    insertAttendee( new Attendee( a.realName(), a.preferredEmail() ) );
+    insertAttendee( new Attendee( a.realName(), a.preferredEmail(),false,KCal::Attendee::NeedsAction,KCal::Attendee::ReqParticipant,a.uid()) );
   }
 #endif
 }
@@ -258,28 +262,27 @@ void KOEditorDetails::updateAttendeeInput()
   if (aItem) {
     fillAttendeeInput( aItem );
   } else {
-    clearAttendeeInput();    
+    clearAttendeeInput();
   }
 }
 
 void KOEditorDetails::clearAttendeeInput()
 {
   mNameEdit->setText("");
+  mUidEdit->setText("");
   mEmailEdit->setText("");
   mRoleCombo->setCurrentItem(0);
   mStatusCombo->setCurrentItem(0);
   mRsvpButton->setChecked(true);
-
   setEnabledAttendeeInput( false );
 }
 
 void KOEditorDetails::fillAttendeeInput( AttendeeListItem *aItem )
 {
   Attendee *a = aItem->attendee();
-
   mDisableItemUpdate = true;
-
   mNameEdit->setText(a->name());
+  mUidEdit->setText(a->uid());
   mEmailEdit->setText(a->email());
   mRoleCombo->setCurrentItem(a->role());
   mStatusCombo->setCurrentItem(a->status());
@@ -312,10 +315,10 @@ void KOEditorDetails::updateAttendeeItem()
   Attendee *a = aItem->attendee();
 
   a->setName( mNameEdit->text() );
+  a->setUid( mUidEdit->text() );
   a->setEmail( mEmailEdit->text() );
   a->setRole( Attendee::Role( mRoleCombo->currentItem() ) );
   a->setStatus( Attendee::PartStat( mStatusCombo->currentItem() ) );
   a->setRSVP( mRsvpButton->isChecked() );
-
   aItem->updateItem();
 }
