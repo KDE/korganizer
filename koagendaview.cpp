@@ -1434,6 +1434,7 @@ void KOAgendaView::fillAgenda()
   }
 
   mAgenda->checkScrollBoundaries();
+  updateEventIndicators();
 
 //  mAgenda->viewport()->update();
 //  mAllDayAgenda->viewport()->update();
@@ -1461,25 +1462,21 @@ CalPrinter::PrintType KOAgendaView::printType()
   else return CalPrinter::Week;
 }
 
-void KOAgendaView::updateEventIndicatorTop(int newY)
+void KOAgendaView::updateEventIndicatorTop( int newY )
 {
   uint i;
-  for(i=0;i<mMinY.size();++i) {
-    if (newY >= mMinY[i]) mEventIndicatorTop->enableColumn(i,true);
-    else mEventIndicatorTop->enableColumn(i,false);
+  for( i = 0; i < mMinY.size(); ++i ) {
+    mEventIndicatorTop->enableColumn( i, newY >= mMinY[i] );
   }
-
   mEventIndicatorTop->update();
 }
 
-void KOAgendaView::updateEventIndicatorBottom(int newY)
+void KOAgendaView::updateEventIndicatorBottom( int newY )
 {
   uint i;
-  for(i=0;i<mMaxY.size();++i) {
-    if (newY <= mMaxY[i]) mEventIndicatorBottom->enableColumn(i,true);
-    else mEventIndicatorBottom->enableColumn(i,false);
+  for( i = 0; i < mMaxY.size(); ++i ) {
+    mEventIndicatorBottom->enableColumn( i, newY <= mMaxY[i] );
   }
-
   mEventIndicatorBottom->update();
 }
 
@@ -1657,6 +1654,8 @@ void KOAgendaView::updateEventIndicators()
   mMaxY = mAgenda->maxContentsY();
 
   mAgenda->checkScrollBoundaries();
+  updateEventIndicatorTop( mAgenda->visibleContentsYMin() );
+  updateEventIndicatorBottom( mAgenda->visibleContentsYMax() );
 }
 
 void KOAgendaView::setIncidenceChanger( IncidenceChangerBase *changer )

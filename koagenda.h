@@ -97,6 +97,9 @@ class KOAgenda : public QScrollView
     QMemArray<int> minContentsY();
     QMemArray<int> maxContentsY();
 
+    int visibleContentsYMin();
+    int visibleContentsYMax();
+
     void setStartTime( const QTime &startHour );
 
     KOAgendaItem *insertItem ( Incidence *incidence, const QDate &qd, int X, int YTop,
