@@ -47,6 +47,7 @@ class KODialogManager;
 class KOTodoView;
 class KDateNavigator;
 class DateNavigator;
+class KOIncidenceEditor;
 
 namespace KCal { class FileStorage; }
 
@@ -420,7 +421,7 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     Incidence *mSelectedIncidence;
 
     KOTodoView *mTodoList;
-    QMap<Incidence*,QDialog*> mDialogList;
+    QMap<Incidence*,KOIncidenceEditor*> mDialogList;
 };
 
 

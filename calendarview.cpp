@@ -744,6 +744,7 @@ void CalendarView::editEvent( Event *event )
   if ( !event ) return;
 
   if ( mDialogList.find( event ) != mDialogList.end() ) {
+    mDialogList[ event ]->reload();
     mDialogList[ event ]->raise();
     mDialogList[ event ]->show();
     return;
@@ -767,6 +768,7 @@ void CalendarView::editTodo( Todo *todo )
 
   if ( mDialogList.find( todo ) != mDialogList.end() ) {
     kdDebug() << "Already in the list " << endl;
+    mDialogList[todo]->reload();
     mDialogList[todo]->raise();
     mDialogList[todo]->show();
     return;

@@ -976,9 +976,11 @@ QTime KOAgenda::gyToTime(int gy)
 
   int timeSeconds = secondsPerCell * gy;
 
-  QTime time( 23, 59, 59 );
+  QTime time( 0, 0, 0 );
   if ( timeSeconds < 24 * 60 * 60 ) {
     time = time.addSecs(timeSeconds);
+  } else {
+    time.setHMS( 23, 59, 59 );
   }
 //  kdDebug() << "  gyToTime: " << time.toString() << endl;
 
