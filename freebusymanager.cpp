@@ -260,7 +260,7 @@ void FreeBusyManager::publishFreeBusy()
     }
 #endif
 
-    KURL targetURL = KOPrefs::instance()->freeBusyPublishUrl();
+    KURL targetURL ( KOPrefs::instance()->freeBusyPublishUrl() );
     targetURL.setUser( KOPrefs::instance()->mFreeBusyPublishUser );
     targetURL.setPass( KOPrefs::instance()->mFreeBusyPublishPassword );
 
