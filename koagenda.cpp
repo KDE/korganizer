@@ -481,10 +481,12 @@ bool KOAgenda::eventFilter_key( QObject *, QKeyEvent *ke )
 void KOAgenda::emitNewEventForSelection()
 {
   if ( mSelectionHeight > 0 ) {
+    // Subtract 1 from the bottom, because the ybottom describes the last cell in
+    // the event, not the one after the item
     emit newEventSignal( mSelectionCellX, (int)(mSelectionYTop / mGridSpacingY),
                          mSelectionCellX,
                          (int)( ( mSelectionYTop + mSelectionHeight ) /
-                         mGridSpacingY ) );
+                         mGridSpacingY ) -1 );
   } else {
     emit newEventSignal();
   }
