@@ -160,9 +160,10 @@ class KOTodoView : public KOrg::BaseView
 
     void clearSelection();
 
-    void editItem(QListViewItem *item,const QPoint &,int);
-    void showItem(QListViewItem *item,const QPoint &,int);
-    void popupMenu(QListViewItem *item,const QPoint &,int);
+    void editItem( QListViewItem *item, const QPoint &, int );
+    void editItem( QListViewItem *item );
+    void showItem( QListViewItem *item, const QPoint &, int );
+    void popupMenu( QListViewItem *item, const QPoint &, int );
     void newTodo();
     void newSubTodo();
     void showTodo();

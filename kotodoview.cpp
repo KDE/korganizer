@@ -398,16 +398,16 @@ KOTodoView::KOTodoView(Calendar *calendar,QWidget* parent,const char* name) :
     QString label = QString ("%1").arg (i);
     mPriority[mPriorityPopupMenu->insertItem (label)] = i;
   }
-  connect (mPriorityPopupMenu, SIGNAL(activated (int)), SLOT (setNewPriority(int)));
+  connect( mPriorityPopupMenu, SIGNAL( activated( int ) ),
+           SLOT( setNewPriority( int ) ));
 
   mPercentageCompletedPopupMenu = new QPopupMenu(this);
   for (int i = 0; i <= 100; i+=20) {
     QString label = QString ("%1 %").arg (i);
     mPercentage[mPercentageCompletedPopupMenu->insertItem (label)] = i;
   }
-  connect (mPercentageCompletedPopupMenu, SIGNAL (activated (int)), SLOT (setNewPercentage (int)));
-
-
+  connect( mPercentageCompletedPopupMenu, SIGNAL( activated( int ) ),
+           SLOT( setNewPercentage( int ) ) );
 
   mItemPopupMenu = new QPopupMenu(this);
   mItemPopupMenu->insertItem(i18n("Show"), this,
@@ -439,6 +439,8 @@ KOTodoView::KOTodoView(Calendar *calendar,QWidget* parent,const char* name) :
   connect( mTodoListView, SIGNAL( doubleClicked( QListViewItem *,
                                                  const QPoint &, int) ),
            SLOT( editItem( QListViewItem *, const QPoint &, int) ) );
+  connect( mTodoListView, SIGNAL( returnPressed( QListViewItem * ) ),
+           SLOT( editItem( QListViewItem * ) ) );
   connect( mTodoListView, SIGNAL( contextMenuRequested( QListViewItem *,
                                                         const QPoint &, int ) ),
            SLOT( popupMenu( QListViewItem *, const QPoint &, int ) ) );
@@ -604,9 +606,14 @@ void KOTodoView::printPreview(CalPrinter *calPrinter, const QDate &fd,
 #endif
 }
 
+void KOTodoView::editItem( QListViewItem *item )
+{
+  emit editTodoSignal( static_cast<KOTodoViewItem *>( item )->todo() );
+}
+
 void KOTodoView::editItem(QListViewItem *item,const QPoint &,int)
 {
-  emit editTodoSignal(((KOTodoViewItem *)item)->todo());
+  editItem( item );
 }
 
 void KOTodoView::showItem(QListViewItem *item,const QPoint &,int)

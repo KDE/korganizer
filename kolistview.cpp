@@ -155,13 +155,16 @@ KOListView::KOListView(Calendar *calendar, QWidget *parent,
 		      SLOT(hideDates()));
 */
 
-  QObject::connect(mListView,SIGNAL(doubleClicked(QListViewItem *)),
-                   this,SLOT(defaultItemAction(QListViewItem *)));
-  QObject::connect(mListView,SIGNAL(rightButtonClicked ( QListViewItem *,
-                     const QPoint &, int )),
-                   this,SLOT(popupMenu(QListViewItem *,const QPoint &,int)));
-  QObject::connect(mListView,SIGNAL(selectionChanged()),
-                   SLOT(processSelectionChange()));
+  QObject::connect( mListView, SIGNAL( doubleClicked( QListViewItem * ) ),
+                    SLOT( defaultItemAction( QListViewItem * ) ) );
+  QObject::connect( mListView, SIGNAL( returnPressed( QListViewItem * ) ),
+                    SLOT( defaultItemAction( QListViewItem * ) ) );
+  QObject::connect( mListView, SIGNAL( rightButtonClicked ( QListViewItem *,
+                                                            const QPoint &,
+                                                            int ) ),
+                    SLOT( popupMenu( QListViewItem *, const QPoint &, int ) ) );
+  QObject::connect( mListView, SIGNAL( selectionChanged() ),
+                    SLOT( processSelectionChange() ) );
 
 //  setMinimumSize(100,100);
   mListView->restoreLayout(KOGlobals::config(),"KOListView Layout");
