@@ -1485,12 +1485,13 @@ QMemArray<int> KOAgenda::minContentsY()
   QMemArray<int> minArray;
   minArray.fill( timeToY( QTime(23, 59) ), mSelectedDates.count() );
   for ( KOAgendaItem *item = mItems.first();
-        item != 0;
-        item = mItems.next() ) {
-    int timeY = timeToY( item->incidence()->dtStart().time() );
-    int index = mSelectedDates.findIndex( item->incidence()->dtStart().date() );
-    if( timeY < minArray[index] && mItemsToDelete.findRef( item ) == -1 )
-      minArray[index] = timeY;
+        item != 0; item = mItems.next() ) {
+    int ymin = item->cellYTop();
+    int index = item->cellXLeft();
+    if ( index>=0 && index<(int)(mSelectedDates.count()) ) {
+      if ( ymin < minArray[index] && mItemsToDelete.findRef( item ) == -1 )
+        minArray[index] = ymin;
+    }
   }
 
   return minArray;
@@ -1501,17 +1502,13 @@ QMemArray<int> KOAgenda::maxContentsY()
   QMemArray<int> maxArray;
   maxArray.fill( timeToY( QTime(0, 0) ), mSelectedDates.count() );
   for ( KOAgendaItem *item = mItems.first();
-        item != 0;
-        item = mItems.next() ) {
-    QDateTime dtEnd;
-    if ( item->incidence()->type() == "Todo" )
-      dtEnd = static_cast<Todo *>( item->incidence() )->dtDue();
-    else
-      dtEnd = item->incidence()->dtEnd();
-    int timeY = timeToY( dtEnd.time() );
-    int index = mSelectedDates.findIndex( dtEnd.date() );
-    if( timeY > maxArray[index] && mItemsToDelete.findRef( item ) == -1 )
-      maxArray[index] = timeY - 1;
+        item != 0; item = mItems.next() ) {
+    int ymax = item->cellYBottom();
+    int index = item->cellXLeft();
+    if ( index>=0 && index<(int)(mSelectedDates.count()) ) {
+      if ( ymax > maxArray[index] && mItemsToDelete.findRef( item ) == -1 )
+        maxArray[index] = ymax;
+    }
   }
 
   return maxArray;
