@@ -40,6 +40,7 @@ class QTextStream;
 class QFrame;
 class KConfig;
 class HtmlExport;
+class KURLRequester;
 
 class ExportWebDialog : public KDialogBase
 {
@@ -50,8 +51,6 @@ class ExportWebDialog : public KDialogBase
 
   public slots:
     void exportWebPage();
-
-    void browseOutputFile();
 
     void slotResult(KIO::Job *);
     void slotDataReq(KIO::Job *,QByteArray &data);
@@ -93,7 +92,7 @@ class ExportWebDialog : public KDialogBase
     QCheckBox *mCbExcludeConfidentialTodo;
     QCheckBox *mCbExcludeConfidentialEvent;
     QCheckBox *mCbHtmlFragment;
-    QLineEdit *mOutputFileEdit;
+    KURLRequester *mOutputFileEdit;
 
     bool mDataAvailable;
 };

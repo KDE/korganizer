@@ -53,6 +53,8 @@
 #include "koprefs.h"
 #include "htmlexport.h"
 #include <qpushbutton.h>
+#include <kurlrequester.h>
+#include <klineedit.h>
 
 ExportWebDialog::ExportWebDialog (Calendar *cal, QWidget *parent,
                                   const char *name) :
@@ -69,7 +71,7 @@ ExportWebDialog::ExportWebDialog (Calendar *cal, QWidget *parent,
   setupTodoPage();
 // Disabled bacause the functionality is not yet implemented.
 //  setupAdvancedPage();
-  
+
   QObject::connect(this,SIGNAL(user1Clicked()),this,SLOT(exportWebPage()));
 }
 
@@ -83,20 +85,20 @@ void ExportWebDialog::setupGeneralPage()
   mGeneralPage = addPage(i18n("General"));
 
   QVBoxLayout *topLayout = new QVBoxLayout(mGeneralPage, 10);
-  
+
   QGroupBox *rangeGroup = new QHGroupBox(i18n("Date Range"),mGeneralPage);
   topLayout->addWidget(rangeGroup);
-  
+
   mFromDate = new KDateEdit(rangeGroup);
   mFromDate->setDate(QDate::currentDate());
-  
+
   mToDate = new KDateEdit(rangeGroup);
   mToDate->setDate(QDate::currentDate());
 
   QButtonGroup *typeGroup = new QVButtonGroup(i18n("View Type"),mGeneralPage);
   topLayout->addWidget(typeGroup);
-  
-  
+
+
   // For now we just support the todo view. Other view types will follow
   // shortly.
 //  new QRadioButton(i18n("Day"), typeGroup);
@@ -112,27 +114,23 @@ void ExportWebDialog::setupGeneralPage()
   new QLabel(i18n("Output File:"),destGroup);
 
   QHBox *outputFileLayout = new QHBox(destGroup);
-  mOutputFileEdit = new QLineEdit(KOPrefs::instance()->mHtmlExportFile,
+  mOutputFileEdit = new KURLRequester(KOPrefs::instance()->mHtmlExportFile,
                                   outputFileLayout);
-  QPushButton *browseButton = new QPushButton(i18n("Browse"),outputFileLayout);
-  QObject::connect(browseButton, SIGNAL(clicked()),
-                   this, SLOT(browseOutputFile()));
-  
   topLayout->addStretch(1);
 }
 
 void ExportWebDialog::setupTodoPage()
 {
   mTodoPage = addPage(i18n("To-Do"));
-  
+
   QVBoxLayout *topLayout = new QVBoxLayout(mTodoPage, 10);
-  
+
   mCbDueDates = new QCheckBox (i18n("Due Dates"),mTodoPage);
   topLayout->addWidget(mCbDueDates);
-  
+
   mCbCategoriesTodo = new QCheckBox (i18n("Categories"),mTodoPage);
   topLayout->addWidget(mCbCategoriesTodo);
-  
+
   mCbAttendeesTodo = new QCheckBox (i18n("Attendees"),mTodoPage);
   topLayout->addWidget(mCbAttendeesTodo);
 
@@ -141,19 +139,19 @@ void ExportWebDialog::setupTodoPage()
 
   mCbExcludeConfidentialTodo = new QCheckBox (i18n("Exclude Confidential"),mTodoPage);
   topLayout->addWidget(mCbExcludeConfidentialTodo);
-  
+
   topLayout->addStretch(1);
 }
 
 void ExportWebDialog::setupEventPage()
 {
   mEventPage = addPage(i18n("Event"));
-  
+
   QVBoxLayout *topLayout = new QVBoxLayout(mEventPage, 10);
-  
+
   mCbCategoriesEvent = new QCheckBox (i18n("Categories"),mEventPage);
   topLayout->addWidget(mCbCategoriesEvent);
-  
+
   mCbAttendeesEvent = new QCheckBox (i18n("Attendees"),mEventPage);
   topLayout->addWidget(mCbAttendeesEvent);
 
@@ -162,36 +160,28 @@ void ExportWebDialog::setupEventPage()
 
   mCbExcludeConfidentialEvent = new QCheckBox (i18n("Exclude Confidential"),mEventPage);
   topLayout->addWidget(mCbExcludeConfidentialEvent);
-  
+
   topLayout->addStretch(1);
 }
 
 void ExportWebDialog::setupAdvancedPage()
 {
   mAdvancedPage = addPage(i18n("Advanced"));
-  
+
   QVBoxLayout *topLayout = new QVBoxLayout(mAdvancedPage, 10);
-  
+
   mCbHtmlFragment = new QCheckBox (i18n("Only generate HTML fragment"),
                                    mAdvancedPage);
-  topLayout->addWidget(mCbHtmlFragment);  
-  
+  topLayout->addWidget(mCbHtmlFragment);
+
   QPushButton *colorsButton = new QPushButton(i18n("Colors"),mAdvancedPage);
   topLayout->addWidget(colorsButton);
-  
+
   // Implement the functionality to enable this buttons.
   mCbHtmlFragment->setEnabled(false);
   colorsButton->setEnabled(false);
-  
+
   topLayout->addStretch(1);
-}
-
-void ExportWebDialog::browseOutputFile()
-{
-//  kdDebug() << "ExportWebDialog::browseOutputFile()" << endl;
-
-  KURL u = KFileDialog::getSaveURL();
-  if(!u.isEmpty()) mOutputFileEdit->setText(u.prettyURL());
 }
 
 void ExportWebDialog::exportWebPage()
@@ -210,9 +200,9 @@ void ExportWebDialog::exportWebPage()
   mExport->setDueDateEnabled(mCbDueDates->isChecked());
   mExport->setDateRange(mFromDate->getDate(),mToDate->getDate());
 
-  KURL dest(mOutputFileEdit->text());
+  KURL dest(mOutputFileEdit->lineEdit()->text());
   // Remember destination.
-  KOPrefs::instance()->mHtmlExportFile = mOutputFileEdit->text();
+  KOPrefs::instance()->mHtmlExportFile = mOutputFileEdit->lineEdit()->text();
 
   mDataAvailable = true;
 
