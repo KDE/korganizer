@@ -485,7 +485,7 @@ void KOAgendaView::updateConfig()
 
 void KOAgendaView::updateEventDates(KOAgendaItem *item)
 {
-//  kdDebug() << "updateEventDates(): " << item->text() << endl;
+  kdDebug() << "KOAgendaView::updateEventDates(): " << item->text() << endl;
 
   QDateTime startDt,endDt;
   QDate startDate;
@@ -511,12 +511,16 @@ void KOAgendaView::updateEventDates(KOAgendaItem *item)
     }
   }
 
-//  kdDebug() << "updateEventDates(): now setting dates" << endl;
+  kdDebug() << "KOAgendaView::updateEventDates(): now setting dates" << endl;
 
   item->itemEvent()->setDtStart(startDt);
   item->itemEvent()->setDtEnd(endDt);
 
-//  kdDebug() << "updateEventDates() done " << endl;
+//ET TODO supply correct date values !
+  kdDebug() << "KOAgendaView::emit shiftedEvent" << endl;
+  emit shiftedEvent(startDate, startDate);
+
+  kdDebug() << "KOAgendaView::updateEventDates() done " << endl;
 }
 
 

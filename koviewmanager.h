@@ -47,13 +47,13 @@ class KOViewManager : public QObject
   public:
     KOViewManager( CalendarView * );
     virtual ~KOViewManager();
-  
+
     /** changes the view to be the currently selected view */
     void showView(KOrg::BaseView *);
-    
+
     void readSettings(KConfig *config);
     void writeSettings(KConfig *config);
-      
+
     /** Read which view was shown last from config file */
     void readCurrentView(KConfig *);
     /** Write which view is currently shown to config file */
@@ -71,11 +71,14 @@ class KOViewManager : public QObject
 
     Incidence *currentSelection();
 
+//ET
+        KOAgendaView    *mAgendaView;
+
   public slots:
-    
+
     /** change Agenda view */
     void changeAgendaView( int view );
-       
+
     void showWhatsNextView();
     void showListView();
     void showAgendaView();
@@ -90,7 +93,7 @@ class KOViewManager : public QObject
   private:
     CalendarView *mMainView;
 
-    KOAgendaView    *mAgendaView;
+//ET    KOAgendaView    *mAgendaView;
     KOListView      *mListView;
     KOMonthView     *mMonthView; 
     KOTodoView      *mTodoView;

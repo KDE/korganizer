@@ -67,6 +67,8 @@
 #include "kofilterview.h"
 #include "koglobals.h"
 #include "koviewmanager.h"
+//ET WORKAROUND
+#include "koagendaview.h"
 #include "kodialogmanager.h"
 #include "outgoingdialog.h"
 
@@ -366,12 +368,12 @@ void CalendarView::readFilterSettings(KConfig *config)
   
     ++it;
   }
-  
+
   if (mFilters.count() == 0) {
     CalFilter *filter = new CalFilter(i18n("Default"));
     mFilters.append(filter);
   }
-  
+
   mFilterView->updateFilters();
 }
 
@@ -407,9 +409,11 @@ void CalendarView::goToday()
 void CalendarView::goNext()
 {
   // adapt this to work for other views
-#if 0
-  if (mAgendaView) mAgendaView->slotNextDates();
-#endif
+//#if 0
+//ET WORKAROUND
+  if (mViewManager->currentView() == (KOrg::BaseView*)mViewManager->mAgendaView) mViewManager->mAgendaView->slotNextDates();
+//ET TODO adapt selection of daymatrix apropriately
+//#endif
   // this *appears* to work fine...
   updateView();
 }
@@ -417,9 +421,11 @@ void CalendarView::goNext()
 void CalendarView::goPrevious()
 {
   // adapt this to work for other views
-#if 0
-  if (mAgendaView) mAgendaView->slotPrevDates();
-#endif
+//#if 0
+//ET WORKAROUND
+  if (mViewManager->currentView() == (KOrg::BaseView*)mViewManager->mAgendaView) mViewManager->mAgendaView->slotPrevDates();
+//ET TODO adapt selection of daymatrix apropriately
+//#endif
   // this *appears* to work fine...
   updateView();
 }
@@ -505,6 +511,8 @@ void CalendarView::updateView(const QDate &start, const QDate &end)
 {
   mTodoList->updateView();
   mViewManager->updateView(start, end);
+//ET
+  mDateNavigator->updateView();
 }
 
 void CalendarView::updateView()

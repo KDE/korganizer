@@ -26,7 +26,8 @@
 
 #include <libkcal/calendar.h>
 
-#include "kdpdatebutton.h"
+//ET#include "kdpdatebutton.h"
+#include "kodaymatrix.h"
 
 class QPushButton;
 
@@ -42,21 +43,27 @@ class KDateNavigator: public QFrame {
    DateList selectedDates();
 
    void gotoYMD(int yr, int mth, int day);
-   
+
  public slots:
    void selectDates(const DateList &);
    void selectDates(QDate);
-   void addSelection(QDate, int, bool);
+//   void addSelection(QDate, int, bool);
+   void addSelection(const DateList);
    void setShowWeekNums(bool enabled);
    void updateView();
    void updateConfig();
-   
+   void shiftEvent(const QDate& , const QDate&);
+
  signals:
    void datesSelected(const DateList &);
    void eventDropped(Event *);
    void weekClicked(QDate);
 
  protected slots:
+
+//+   void goNextWeek();
+//+   void goPrevWeek();
+
    void goNextMonth();
    void goPrevMonth();
    void goNextYear();
@@ -66,7 +73,7 @@ class KDateNavigator: public QFrame {
  protected:
    void updateDates();
 
-   bool eventFilter (QObject *,QEvent *); 
+   bool eventFilter (QObject *,QEvent *);
 
  private:
    QFrame   *ctrlFrame;
@@ -75,12 +82,13 @@ class KDateNavigator: public QFrame {
    QPushButton *nextMonth;
    QPushButton *nextYear;
    QLabel *dateLabel;
-   QFrame *viewFrame;
+//ET   QFrame *viewFrame;
    QFrame *headingSep;
    QFrame *weeknumSep;
    QLabel *headings[7];
    QLabel *weeknos[7];
-   KDateButton *buttons[42];
+//ET   KDateButton *buttons[42];
+   KODayMatrix *daymatrix;
 
    DateList mSelectedDates;
    QDate m_MthYr;
@@ -95,7 +103,7 @@ class KDateNavigator: public QFrame {
 
    const QString *curHeaders;
 
-   // Disabling copy constructor and assignment operator 
+   // Disabling copy constructor and assignment operator
    KDateNavigator(const KDateNavigator & );
    KDateNavigator &operator=(const KDateNavigator &);
 };

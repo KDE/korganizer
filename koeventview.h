@@ -124,23 +124,31 @@ class KOEventView : public KOrg::BaseView
      * than one receiver.
      */
     void newEventSignal(QDateTime, QDateTime);
-  
+
     /**
      * instructs the receiver to show the event in read-only mode.
      */
     void showEventSignal(Event *);
-  
+
     /**
      * Emitted, when events are selected or deselected. The argument is true, if
      * there are selected events and false if there are no selected events.
      */
     void eventsSelected(bool selected);
-    
+
+    //ET CVS MERGE !
+    /**
+     * Emitted when an event is moved using the mouse in an agenda
+     * view (week / month).
+     */
+    void shiftedEvent(const QDate& olddate, const QDate& newdate);
+
+
   protected slots:
     void popupShow();
     void popupEdit();
     void popupDelete();
-  
+
   protected:
     Event *mCurrentEvent;  // event selected e.g. for a context menu
 };

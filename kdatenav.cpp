@@ -17,7 +17,7 @@
     Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 */
 
-// $Id$	
+// $Id$
 
 #include <qstring.h>
 #include <qtooltip.h>
@@ -44,12 +44,12 @@ KDateNavigator::KDateNavigator(QWidget *parent,Calendar *calendar,
   : QFrame(parent, name)
 {
   mCalendar = calendar;
-  
+
   setFrameStyle(QFrame::NoFrame);
 
   QGridLayout *topLayout = new QGridLayout(this,8,8);
 
-  if (!startDate.isValid()) {
+  if (! startDate.isValid()) {
     kdDebug() << "KDateNavigator::KDateNavigator(): an invalid date was passed as a parameter!" << endl;
     startDate = QDate::currentDate();
   }
@@ -64,7 +64,7 @@ KDateNavigator::KDateNavigator(QWidget *parent,Calendar *calendar,
   ctrlFrame->setLineWidth(1);
 
   topLayout->addMultiCellWidget(ctrlFrame,0,0,0,7);
-  
+
   QFont tfont = font();
   tfont.setPointSize(10);
   tfont.setBold(FALSE);
@@ -119,15 +119,16 @@ KDateNavigator::KDateNavigator(QWidget *parent,Calendar *calendar,
   connect(nextMonth, SIGNAL(clicked()), this, SLOT(goNextMonth()));
   connect(nextYear, SIGNAL(clicked()), this, SLOT(goNextYear()));
 
+/*ET
   viewFrame = new QFrame(this, "KDateNavigator::ViewFrame");
   viewFrame->setFrameStyle(QFrame::Panel|QFrame::Sunken);
   viewFrame->setLineWidth(1);
- 
+
   topLayout->addMultiCellWidget(viewFrame,2,7,1,7);
 
+*/
   // get the day of the week on the first day
-  QDate dayone(m_MthYr.year(), 
-	       m_MthYr.month(), 1);
+  QDate dayone(m_MthYr.year(), m_MthYr.month(), 1);
   m_fstDayOfWk = dayone.dayOfWeek();
 
   // Set up the heading fields.
@@ -135,7 +136,7 @@ KDateNavigator::KDateNavigator(QWidget *parent,Calendar *calendar,
     headings[i] = new QLabel("",this);
     headings[i]->setFont(QFont("Arial", 10, QFont::Bold));
     headings[i]->setAlignment(AlignCenter);
-    
+
     topLayout->addWidget(headings[i],1,i+1);
   }
 
@@ -148,7 +149,7 @@ KDateNavigator::KDateNavigator(QWidget *parent,Calendar *calendar,
       weeknos[i]->hide();
     }
     weeknos[i]->installEventFilter(this);
-    
+
     topLayout->addWidget(weeknos[i],i+2,0);
   }
 
@@ -158,6 +159,7 @@ KDateNavigator::KDateNavigator(QWidget *parent,Calendar *calendar,
   int index = 0;
   //  int daysInMonth = m_MthYr.daysInMonth();
 
+/*ET
   QGridLayout *dateLayout = new QGridLayout(viewFrame,6,7,1,0);
 
   int row,col;
@@ -174,7 +176,25 @@ KDateNavigator::KDateNavigator(QWidget *parent,Calendar *calendar,
     connect(buttons[i],SIGNAL(eventDropped(Event *)),
             SIGNAL(eventDropped(Event *)));
   }
+*/
 
+
+  //ET
+  //QDate startday = dayone.addDays((KGlobal::locale()->weekStartsMonday() ? 1 : 0) - m_fstDayOfWk - nextLine);
+  daymatrix = new KODayMatrix(this, mCalendar, dayone, "KDateNavigator::DayMatrix");
+  daymatrix->setFrameStyle(QFrame::Panel|QFrame::Sunken);
+  daymatrix->setLineWidth(1);
+
+  //handle dragged selections
+  connect(daymatrix, SIGNAL(selected(const DateList)),
+          this, SLOT(addSelection(const DateList)));
+
+  connect(daymatrix, SIGNAL(eventDropped(Event *)),
+          this, SIGNAL(eventDropped(Event *)));
+
+  topLayout->addMultiCellWidget(daymatrix,2,7,1,7);
+
+//ET END
   // read settings from configuration file.
   updateConfig();
 }
@@ -196,40 +216,48 @@ void KDateNavigator::updateDates()
   //find the first day of the week of the current month.
   QDate dayone(m_MthYr.year(), m_MthYr.month(), 1);
 
-  // set the date of each of the day buttons. Buttons not belonging to the month
-  // currently displayed are shown in italics.
-  for(int i = 0; i < 42; i++) {
-    index = i + (KGlobal::locale()->weekStartsMonday() ? 1 : 0) - m_fstDayOfWk - nextLine;
-    QDate buttonDate = dayone.addDays(index);
-    buttons[i]->setDate(buttonDate);
-    if (buttonDate.month() != dayone.month()) buttons[i]->setShaded(true);
-    else buttons[i]->setShaded(false);
-//    if (buttonDate.month() != dayone.month()) buttons[i]->setItalic(true);
-//    else buttons[i]->setItalic(false);
-  }
+  // update the matrix dates
+  index = (KGlobal::locale()->weekStartsMonday() ? 1 : 0) - m_fstDayOfWk - nextLine;
+  daymatrix->updateView(dayone.addDays(index));
+
 }
+
+void KDateNavigator::shiftEvent(const QDate& olddate, const QDate& newdate) {
+  //TODO ET forward to specific method of daymatrix the in/decreases events[]
+  //and repaints itself
+  kdDebug() << "KDateNavigator::shiftEvent" << endl;
+  daymatrix->updateView();
+  daymatrix->repaint();
+}
+
 
 void KDateNavigator::updateView()
 {
-  setUpdatesEnabled(false);
+  setUpdatesEnabled(FALSE);
 
   // compute the label at the top of the navigator
   QString dtstr = KGlobal::locale()->monthName(m_MthYr.month()) + " " +
                   QString::number(m_MthYr.year());
   dateLabel->setText(dtstr);
-  
+
   int i;
+
+  kdDebug() << "updateView() -> daymatrix->updateView()" << endl;
+  daymatrix->updateView();
+/*ET
   for(i = 0; i < 42; i++) {
     updateButton(i);
   }
-
+*/
   // set the week numbers.
   for(i = 0; i < 6; i++) {
     QString weeknum;
     // remember, according to ISO 8601, the first week of the year is the
     // first week that contains a thursday.  Thus we must subtract off 4,
     // not just 1.
-    int dayOfYear = buttons[(i + 1) * 7 - 4]->date().dayOfYear();
+
+    //ET int dayOfYear = buttons[(i + 1) * 7 - 4]->date().dayOfYear();
+    int dayOfYear = daymatrix->getDate((i+1)*7-4).dayOfYear();
     if (dayOfYear % 7 != 0)
       weeknum.setNum(dayOfYear / 7 + 1);
     else
@@ -237,8 +265,10 @@ void KDateNavigator::updateView()
     weeknos[i]->setText(weeknum);
   }
 
-  setUpdatesEnabled(true);
+  setUpdatesEnabled(TRUE);
+  kdDebug() << "updateView() -> repaint()" << endl;
   repaint();
+  daymatrix->repaint();
 }
 
 void KDateNavigator::updateConfig()
@@ -254,18 +284,25 @@ void KDateNavigator::updateConfig()
     }
     headings[i]->setText(KGlobal::locale()->weekDayName(day).left(1));
   }
+  kdDebug() << "updateConfig() -> updateDates()" << endl;
   updateDates();
 
+/*ET
   for (int i = 0; i < 42; i++) {
     updateButton(i);
     buttons[i]->updateConfig();
   }
-
+*/
+  kdDebug() << "updateConfig() -> updateView()" << endl;
   updateView();
 }
 
 void KDateNavigator::updateButton(int i)
 {
+
+  kdDebug() << "KDateNavigator::updateButton(" << i << ") !!!!!" << endl;
+
+/*ET
   int index;
   int extraDays;
   // If month begins on Monday and Monday is first day of week,
@@ -280,7 +317,7 @@ void KDateNavigator::updateButton(int i)
   /*if (buttons[i]->date().month() == m_MthYr.month())
     buttons[i]->setItalic(FALSE);
   else
-  buttons[i]->setItalic(TRUE);*/
+  buttons[i]->setItalic(TRUE);* /
 
   // check calendar for events on this day
   bool hasEvents = false;
@@ -300,23 +337,24 @@ void KDateNavigator::updateButton(int i)
 
   // check to see if this button is currently selected
   bool selected = false;
-  DateList::ConstIterator it;
-  for(it = mSelectedDates.begin(); it != mSelectedDates.end(); ++it) {
+  for (QDate *tmpDate = mSelectedDates.first(); tmpDate;
+       tmpDate = mSelectedDates.next()) {
+
     // find out if the selected date is in the previous or the next
     // month, and compute an offset accordingly
     // get the day of the week on the first day
     QDate dayone(m_MthYr.year(), m_MthYr.month(), 1);
-    if ((*it) > dayone.addDays(dayone.daysInMonth()-1)) {
+    if (*tmpDate > dayone.addDays(dayone.daysInMonth()-1)) {
       extraDays = dayone.daysInMonth();
-    } else if ((*it) < dayone) {
-      extraDays = 0 - (*it).daysInMonth();
+    } else if (*tmpDate < dayone) {
+      extraDays = 0 - tmpDate->daysInMonth();
     } else {
       extraDays = 0;
     }
 
-    // compute the "number" of the date in the table. Check that 
+    // compute the "number" of the date in the table. Check that
     // it is in the valid range.
-    index = dayToIndex(((*it).day() + extraDays));
+    index = dayToIndex((tmpDate->day() + extraDays));
     ASSERT(index >= 0);
     ASSERT(index < 42);
 
@@ -329,8 +367,8 @@ void KDateNavigator::updateButton(int i)
   buttons[i]->setSelected(selected);
 
   QToolTip::remove(buttons[i]); // remove any previous tooltip
- 
-#ifndef KORG_NOPLUGINS  
+
+#ifndef KORG_NOPLUGINS
   QString holiStr = KOCore::self()->holiday(buttons[i]->date());
 
   // Calculate holidays. Sunday is also treated as holiday.
@@ -343,8 +381,8 @@ void KDateNavigator::updateButton(int i)
     buttons[i]->setHoliday(false);
   }
 #endif
-  
-  // if today is in the currently displayed month, hilight today. 
+
+  // if today is in the currently displayed month, hilight today.
   if ((buttons[i]->date().year() == QDate::currentDate().year()) &&
       (buttons[i]->date().month() == QDate::currentDate().month()) &&
       (buttons[i]->date().day() == QDate::currentDate().day())) {
@@ -352,6 +390,7 @@ void KDateNavigator::updateButton(int i)
   } else {
     buttons[i]->setToday(false);
   }
+*/
 }
 
 void KDateNavigator::setShowWeekNums(bool enabled)
@@ -391,9 +430,13 @@ void KDateNavigator::gotoYMD(int yr, int mth, int day)
   QDate dayone(m_MthYr.year(), m_MthYr.month(), 1);
   m_fstDayOfWk = dayone.dayOfWeek();
 
+  kdDebug() << "KDateNavigator::gotoYMD -> updateDates()" << endl;
   updateDates();
+  kdDebug() << "KDateNavigator::gotoYMD -> fixupSelectedDates()" << endl;
   fixupSelectedDates(yr, mth);
+  kdDebug() << "KDateNavigator::gotoYMD -> updateView()" << endl;
   updateView();
+  kdDebug() << "KDateNavigator::gotoYMD -> end" << endl;
 }
 
 
@@ -440,23 +483,26 @@ void KDateNavigator::goPrevYear()
 void KDateNavigator::fixupSelectedDates(int, int)
 {
   mSelectedDates.clear();
+  daymatrix->addSelectedDaysTo(mSelectedDates);
+/*ET
   for (int i = 0; i < 42; i++) {
     if (buttons[i]->isSelected()) {
-      if (!buttons[i]->date().isValid())
-        kdDebug() << "KDateNavigator::fixupmSelectedDates(): invalid date stored on buttons[" << i << "]; ignoring" << endl;
+      if (! buttons[i]->date().isValid())
+        kdDebug() << "KDateNavigator::fixupSelectedDates(): invalid date stored on buttons[" << i << "]; ignoring" << endl;
       else
-        mSelectedDates.append(buttons[i]->date());
+        mSelectedDates.inSort(new QDate(buttons[i]->date()));
     }
   }
+*/
 
   emit datesSelected(mSelectedDates);
 }
 
-void KDateNavigator::selectDates(const DateList &dateList)
+void KDateNavigator::selectDates(const DateList& dateList)
 {
   if (dateList.count() > 0) {
     mSelectedDates = dateList;
-  
+
     // set our record of the month and year that this datetbl is
     // displaying.
     m_MthYr = mSelectedDates.first();
@@ -467,6 +513,7 @@ void KDateNavigator::selectDates(const DateList &dateList)
     QDate dayone(m_MthYr.year(), m_MthYr.month(), 1);
     m_fstDayOfWk = dayone.dayOfWeek();
 
+    daymatrix->setSelectedDaysFrom(*(dateList.begin()), *(--dateList.end()));
     updateDates();
     updateView();
   }
@@ -482,17 +529,25 @@ void KDateNavigator::selectDates(QDate qd)
   mSelectedDates.clear();
   mSelectedDates.append(qd);
   m_MthYr = qd;
-  
+
   QDate dayone(m_MthYr.year(), m_MthYr.month(), 1);
   m_fstDayOfWk = dayone.dayOfWeek();
 
+  kdDebug() << "qd:" << qd.day() << endl;
+  daymatrix->setSelectedDaysFrom(qd, qd);
   updateDates();
   updateView();
 }
 
+/* ET
+
 void KDateNavigator::addSelection(QDate selDate, int index, bool ctrlPressed)
 {
-  if (!selDate.isValid()) {
+  QDate *tmpDate;
+  bool found = FALSE;
+  int extraDays;
+
+  if (! selDate.isValid()) {
     kdDebug() << "KDateNavigator::addSelection(): invalid date passed as a parameter!" << endl;
     return;
   }
@@ -502,42 +557,52 @@ void KDateNavigator::addSelection(QDate selDate, int index, bool ctrlPressed)
   if (!ctrlPressed) {
     mSelectedDates.clear();
     DateList::ConstIterator it;
-    for( it = mSelectedDates.begin(); it != mSelectedDates.end(); ++it ) {
+    for (it = mSelectedDates.begin(); it != mSelectedDates.end(); ++it) {
+
+
+
       // find out if the selected date is in the previous or the next
       // month, and compute an offset accordingly
       // get the day of the week on the first day
-      int extraDays = 0;
       QDate dayone(m_MthYr.year(), m_MthYr.month(), 1);
       if ((*it) > dayone.addDays(dayone.daysInMonth()-1)) {
         extraDays = dayone.daysInMonth();
       } else if ((*it) < dayone) {
-        extraDays = -(*it).daysInMonth();
+        extraDays = 0 - (*it).daysInMonth();
+      } else {
+        extraDays = 0;
       }
-      updateButton(dayToIndex((*it).day() + extraDays));
+//      updateButton(dayToIndex((*it).day() + extraDays));
     }
   }
 
   // now, if there are any dates left (i.e. ctrl was held down), check
-  // to see if they clicked an already selected date. 
+  // to see if they clicked an already selected date.
   // If so, we need to unselect it.
   // if not, we need to add it to the list of selected dates.
-  bool found = false;
-  DateList::Iterator dit;
-  for( dit = mSelectedDates.begin(); dit != mSelectedDates.end(); ++dit ) {
-    if ((*dit) == selDate) {
-      found = true;
+  for (tmpDate = mSelectedDates.first(); tmpDate;
+       tmpDate = mSelectedDates.next()) {
+    if (*tmpDate == selDate) {
+      found = TRUE;
       break;
     }
-  }
+  }"kdatenav.cpp"
   if (found && mSelectedDates.count() > 1)
-    mSelectedDates.remove(dit);
+    mSelectedDates.remove();
   else
-    mSelectedDates.append(selDate);
+    mSelectedDates.inSort(new QDate(selDate));
 
   // update the appearance of the clicked date
   updateButton(index);
 
   emit datesSelected(mSelectedDates);
+}
+*/
+
+void KDateNavigator::addSelection(const DateList newsel)
+{
+  mSelectedDates = newsel;
+  emit datesSelected(newsel);
 }
 
 int KDateNavigator::dayNum(int row, int col)
@@ -562,7 +627,7 @@ bool KDateNavigator::eventFilter (QObject *o,QEvent *e)
     int i;
     for(i=0;i<6;++i) {
       if (o == weeknos[i]) {
-        QDate weekstart = buttons[i*7]->date();
+        QDate weekstart = daymatrix->getDate(i*7);
         emit weekClicked(weekstart);
         break;
       }

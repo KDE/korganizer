@@ -210,6 +210,14 @@ void KOViewManager::showAgendaView()
     connect(mAgendaView, SIGNAL(datesSelected(const DateList &)),
             mMainView->dateNavigator(), SLOT(selectDates(const DateList &)));
 
+
+//ET
+    kdDebug() << "KOViewManager::showAgendaView() slot shiftedEvents" << endl;
+
+    connect(mAgendaView, SIGNAL(shiftedEvent(const QDate&, const QDate&)),
+            mMainView->dateNavigator(), SLOT(shiftEvent(const QDate&, const QDate&)));
+//ET
+
     // SIGNALS/SLOTS FOR DAY/WEEK VIEW
     connect(mAgendaView,SIGNAL(newEventSignal(QDateTime)),
             mMainView, SLOT(newEvent(QDateTime)));
