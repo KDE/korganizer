@@ -311,7 +311,7 @@ void KODialogManager::connectEditor( KOIncidenceEditor*editor )
   connect( mMainView, SIGNAL( closingDown() ), editor, SLOT( reject() ) );
 
   connect( editor, SIGNAL( deleteAttendee( Incidence * ) ),
-           mMainView, SLOT( schedule_cancel( Incidence * ) ) );
+           mMainView, SLOT( deleteAttendee( Incidence * ) ) );
 }
 
 KOTodoEditor *KODialogManager::getTodoEditor()

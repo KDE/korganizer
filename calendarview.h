@@ -305,6 +305,14 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     void toggleAlarm( Incidence * );
     void dissociateOccurrence( Incidence *, const QDate & );
     void dissociateFutureOccurrence( Incidence *, const QDate & );
+    
+    /** 
+      Attendees were removed from this incidence. Only the removed attendees 
+      are present in the incidence, so we just need to send a cancel messages
+      to all attendees groupware messages are enabled at all.
+    */
+    void deleteAttendee( Incidence *incidence );
+      
 
     /**
       Check if clipboard contains vCalendar event. The signal pasteEnabled() is
@@ -470,7 +478,7 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
                        const QString &tasklistFile );
 
     void showErrorMessage( const QString & );
-    void schedule( KCal::Scheduler::Method, Incidence *incidence );
+    void schedule( Scheduler::Method, Incidence *incidence );
     void addIncidenceOn( Incidence *, const QDate & );
     void moveIncidenceTo( Incidence *, const QDate & );
 
