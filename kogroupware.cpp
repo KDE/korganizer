@@ -218,16 +218,24 @@ bool KOGroupware::sendICalMessage( QWidget* parent,
    */
 
   if ( isOrganizer ) {
-    QString type;
-    if( incidence->type() == "Event") type = i18n("event");
-    else if( incidence->type() == "Todo" ) type = i18n("task");
-    else if( incidence->type() == "Journal" ) type = i18n("journal entry");
-    else type = incidence->type();
-    QString txt = i18n( "This %1 includes other people. "
-                        "Should email be sent out to the attendees?" )
-      .arg( type );
-    rc = KMessageBox::questionYesNoCancel( parent, txt,
-                                           i18n("Group scheduling email") );
+    /* We are the organizer. If there is more than one attendee, or if there is
+     * only one, and it's not the same as the organizer, ask the user to send 
+     * mail. */
+    if ( incidence->attendees().count() > 1 
+        || incidence->attendees().first()->email() != incidence->organizer().email() ) {
+      QString type;
+      if( incidence->type() == "Event") type = i18n("event");
+      else if( incidence->type() == "Todo" ) type = i18n("task");
+      else if( incidence->type() == "Journal" ) type = i18n("journal entry");
+      else type = incidence->type();
+      QString txt = i18n( "This %1 includes other people. "
+          "Should email be sent out to the attendees?" )
+        .arg( type );
+      rc = KMessageBox::questionYesNoCancel( parent, txt,
+          i18n("Group scheduling email") );
+    } else {
+      return true;
+    }
   } else if( incidence->type() == "Todo" ) {
     if( method == Scheduler::Request )
       // This is an update to be sent to the organizer
