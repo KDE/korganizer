@@ -11,7 +11,7 @@
 #include "incomingdialog.h"
 
 ScheduleItemIn::ScheduleItemIn(QListView *parent,Incidence *ev,
-                               Scheduler::Method method,icalclass status)
+                               Scheduler::Method method,ScheduleMessage::Status status)
   : QListViewItem(parent)
 {
   mEvent = ev;
@@ -20,7 +20,7 @@ ScheduleItemIn::ScheduleItemIn(QListView *parent,Incidence *ev,
   
   setText(0,ev->summary());
   setText(1,Scheduler::methodName(mMethod));
-  setText(2,Scheduler::statusName(status));
+  setText(2,ScheduleMessage::statusName(status));
 }
 
 
@@ -55,7 +55,7 @@ void IncomingDialog::retrieve()
   for(message = messages.first();message;message = messages.next()) {
     Incidence *event = message->event();
     Scheduler::Method method = (Scheduler::Method)message->method();
-    icalclass status = message->status();
+    ScheduleMessage::Status status = message->status();
   
     kdDebug() << "IncomingDialog::retrieve(): summary: " << event->summary()
               << "  method: " << Scheduler::methodName(method) << endl;

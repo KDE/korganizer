@@ -15,17 +15,17 @@ class ScheduleItemIn : public QListViewItem
 {
   public:
     ScheduleItemIn(QListView *parent,Incidence *ev,Scheduler::Method method,
-                   icalclass status);
+                   ScheduleMessage::Status status);
     virtual ~ScheduleItemIn() {}
 
     Incidence *event() { return mEvent; }
     Scheduler::Method method() { return mMethod; }
-    icalclass status() { return mStatus; }
+    ScheduleMessage::Status status() { return mStatus; }
 
   private:
     Incidence *mEvent;
     Scheduler::Method mMethod;
-    icalclass mStatus;
+    ScheduleMessage::Status mStatus;
 };
 
 
