@@ -101,7 +101,7 @@ void KOTodoEditor::setupGeneral()
     mGeneral->initDescription(topFrame2,topLayout2);
   } else {
     QFrame *topFrame = addPage(i18n("General"));
-
+    
     QBoxLayout *topLayout = new QVBoxLayout(topFrame);
     topLayout->setMargin(marginHint());
     topLayout->setSpacing(spacingHint());

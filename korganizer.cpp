@@ -387,12 +387,10 @@ void KOrganizer::initActions()
   (void)new KAction(i18n("Incoming Messages"),0,
                     mCalendarView->dialogManager(),SLOT(showIncomingDialog()),
                     actionCollection(),"incoming");
-  action = new KAction(i18n("Publish..."),"mail_send",0,
+  mPublishEvent = new KAction(i18n("Publish..."),"mail_send",0,
                        mCalendarView,SLOT(schedule_publish()),
                        actionCollection(),"publish");
-  action->setEnabled(false);
-  connect(mCalendarView,SIGNAL(organizerEventsSelected(bool)),
-          action,SLOT(setEnabled(bool)));
+  mPublishEvent->setEnabled(false);
   action = new KAction(i18n("Request"),"mail_generic",0,
                        mCalendarView,SLOT(schedule_request()),
                        actionCollection(),"request");
@@ -1262,14 +1260,17 @@ void KOrganizer::processIncidenceSelection( Incidence *incidence )
     mShowIncidenceAction->setText( i18n("&Show Event...") );
     mEditIncidenceAction->setText( i18n("&Edit Event...") );
     mDeleteIncidenceAction->setText( i18n("&Delete Event...") );
+    mPublishEvent->setEnabled(true);
   } else if ( incidence->type() == "Todo" ) {
     mShowIncidenceAction->setText( i18n("&Show To-Do...") );
     mEditIncidenceAction->setText( i18n("&Edit To-Do...") );
     mDeleteIncidenceAction->setText( i18n("&Delete To-Do...") );
+    mPublishEvent->setEnabled(false);
   } else {
     mShowIncidenceAction->setText( i18n("&Show...") );
     mShowIncidenceAction->setText( i18n("&Edit...") );
     mShowIncidenceAction->setText( i18n("&Delete...") );
+    mPublishEvent->setEnabled(false);
   }
 }
 
