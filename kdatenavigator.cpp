@@ -81,7 +81,7 @@ KDateNavigator::KDateNavigator( QWidget *parent, Calendar *calendar,
 
   // Set up the heading fields.
   for( i = 0; i < 7; i++ ) {
-    headings[i] = new QLabel("",this);
+    headings[i] = new QLabel(this);
     headings[i]->setFont(QFont("Arial", 10, QFont::Bold));
     headings[i]->setAlignment(AlignCenter);
 
