@@ -1321,7 +1321,9 @@ void KOAgenda::drawContents(QPainter* p, int cx, int cy, int cw, int ch)
     }
   }
 
-  dbp.setPen( KOPrefs::instance()->mAgendaBgColor.dark(150) );
+  QPen hourPen( KOPrefs::instance()->mAgendaBgColor.dark( 150 ) );
+  QPen halfHourPen( KOPrefs::instance()->mAgendaBgColor.dark( 125 ) );
+  dbp.setPen( hourPen );
 
   // Draw vertical lines of grid, start with the last line not yet visible
   //  kdDebug(5850) << "drawContents cx: " << cx << " cy: " << cy << " cw: " << cw << " ch: " << ch << endl;
@@ -1332,11 +1334,18 @@ void KOAgenda::drawContents(QPainter* p, int cx, int cy, int cw, int ch)
   }
 
   // Draw horizontal lines of grid
-  double y = ( int( cy / lGridSpacingY ) ) * lGridSpacingY;
+  double y = ( int( cy / (2*lGridSpacingY) ) ) * 2 * lGridSpacingY;
   while (y < cy + ch) {
 //    kdDebug(5850) << " y: " << y << endl;
     dbp.drawLine( cx, int( y ), cx + cw, int( y ) );
-    y+=lGridSpacingY;
+    y += 2 * lGridSpacingY;
+  }
+  y = ( 2 * int( cy / (2*lGridSpacingY) ) + 1) * lGridSpacingY;
+  dbp.setPen( halfHourPen );
+  while (y < cy + ch) {
+//    kdDebug(5850) << " y: " << y << endl;
+    dbp.drawLine( cx, int( y ), cx + cw, int( y ) );
+    y+=2*lGridSpacingY;
   }
   p->drawPixmap(cx,cy, db);
 }
