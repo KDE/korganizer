@@ -150,24 +150,24 @@ void ActionManager::initActions()
   // File menu.
   if ( mIsPart ) {
     new KAction(i18n("&New"), "filenew", CTRL+Key_N, this,
-		SLOT(file_new()), mACollection, "korganizer_openNew" );
+                SLOT(file_new()), mACollection, "korganizer_openNew" );
     new KAction(i18n("&Open"), "fileopen", CTRL+Key_O, this,
-	       SLOT(file_open()), mACollection, "korganizer_open" );
+               SLOT(file_open()), mACollection, "korganizer_open" );
     mRecent = new KRecentFilesAction(i18n("Open &Recent"), 0, 0, this,
-		SLOT(file_openRecent(const KURL&)), mACollection, "korganizer_openRecent" );
+                SLOT(file_openRecent(const KURL&)), mACollection, "korganizer_openRecent" );
     new KAction(i18n("Re&vert"), "revert", 0, this,
-		SLOT(file_revert()), mACollection, "korganizer_revert" );
+                SLOT(file_revert()), mACollection, "korganizer_revert" );
     new KAction(i18n("&Save"), "filesave", CTRL+Key_S, this,
-		SLOT(file_save()), mACollection, "korganizer_save" );
+                SLOT(file_save()), mACollection, "korganizer_save" );
     new KAction(i18n("Save &As..."), "filesaveas", 0, this,
-		SLOT(file_saveas()), mACollection, "korganizer_saveAs" );
+                SLOT(file_saveas()), mACollection, "korganizer_saveAs" );
     new KAction(i18n("&Close"), "fileclose", CTRL+Key_W, this,
-		SLOT(file_close()), mACollection, "korganizer_close" );
+                SLOT(file_close()), mACollection, "korganizer_close" );
   } else {
     KStdAction::openNew(this, SLOT(file_new()), mACollection);
     KStdAction::open(this, SLOT(file_open()), mACollection);
     mRecent = KStdAction::openRecent(this, SLOT(file_openRecent(const KURL&)),
-				     mACollection);
+                                     mACollection);
     KStdAction::revert(this,SLOT(file_revert()),mACollection);
     KStdAction::save(this, SLOT(file_save()), mACollection);
     KStdAction::saveAs(this, SLOT(file_saveas()), mACollection);
@@ -222,7 +222,7 @@ void ActionManager::initActions()
 
   if (mIsPart) {
     new KAction(i18n("&Print..."), "fileprint", CTRL+Key_P, mCalendarView,
-		SLOT(print()), mACollection, "korganizer_print" );
+                SLOT(print()), mACollection, "korganizer_print" );
   } else {
     KStdAction::print(mCalendarView, SLOT(print()), mACollection);
   }
@@ -230,16 +230,16 @@ void ActionManager::initActions()
 #if 1
   if (mIsPart) {
     new KAction(i18n("Print Previe&w..."), "filequickprint", 0, mCalendarView,
-		SLOT(printPreview()), mACollection, "korganizer_quickprint" );
+                SLOT(printPreview()), mACollection, "korganizer_quickprint" );
   } else {
     KStdAction::printPreview(mCalendarView, SLOT(printPreview()),
-			     mACollection);
+                             mACollection);
   }
 #endif
 
   new KAction( i18n("delete completed To-Dos","Purge Completed"), 0,
-	       mCalendarView, SLOT( purgeCompleted() ), mACollection,
-	       "purge_completed" );
+               mCalendarView, SLOT( purgeCompleted() ), mACollection,
+               "purge_completed" );
 
   KOrg::History *h = mCalendarView->history();
 
@@ -248,24 +248,24 @@ void ActionManager::initActions()
   if ( mIsPart ) {
     // edit menu
     mCutAction = new KAction(i18n("Cu&t"), "editcut", CTRL+Key_X, mCalendarView,
-			     SLOT(edit_cut()), mACollection, "korganizer_cut");
+                             SLOT(edit_cut()), mACollection, "korganizer_cut");
     mCopyAction = new KAction(i18n("&Copy"), "editcopy", CTRL+Key_C, mCalendarView,
-			      SLOT(edit_copy()), mACollection, "korganizer_copy");
+                              SLOT(edit_copy()), mACollection, "korganizer_copy");
     pasteAction = new KAction(i18n("&Paste"), "editpaste", CTRL+Key_V, mCalendarView,
-	                      SLOT(edit_paste()), mACollection, "korganizer_paste");
+                              SLOT(edit_paste()), mACollection, "korganizer_paste");
     mUndoAction = new KAction( i18n("&Undo"), "undo", CTRL+Key_Z, h,
                                SLOT( undo() ), mACollection, "korganizer_undo" );
     mRedoAction = new KAction( i18n("Re&do"), "redo", CTRL+SHIFT+Key_Z, h,
                                SLOT( redo() ), mACollection, "korganizer_redo" );
   } else {
     mCutAction = KStdAction::cut(mCalendarView,SLOT(edit_cut()),
-				 mACollection);
+                                 mACollection);
 
     mCopyAction = KStdAction::copy(mCalendarView,SLOT(edit_copy()),
-				   mACollection);
+                                   mACollection);
 
     pasteAction = KStdAction::paste(mCalendarView,SLOT(edit_paste()),
-			       mACollection);
+                               mACollection);
 
     mUndoAction = KStdAction::undo( h, SLOT( undo() ), mACollection );
     mRedoAction = KStdAction::redo( h, SLOT( redo() ), mACollection );
@@ -288,11 +288,11 @@ void ActionManager::initActions()
 
   if ( mIsPart ) {
     new KAction(i18n("&Find..."),"find",CTRL+Key_F,
-		mCalendarView->dialogManager(), SLOT(showSearchDialog()),
-		mACollection, "korganizer_find");
+                mCalendarView->dialogManager(), SLOT(showSearchDialog()),
+                mACollection, "korganizer_find");
   } else {
     KStdAction::find(mCalendarView->dialogManager(), SLOT(showSearchDialog()),
-		     mACollection);
+                     mACollection);
   }
 
   // view menu
@@ -439,8 +439,8 @@ void ActionManager::initActions()
 */
   if ( !mIsPart ) {
       action = new KAction(i18n("Addressbook"),"contents",0,
-			   mCalendarView,SLOT(openAddressbook()),
-			   mACollection,"addressbook");
+                           mCalendarView,SLOT(openAddressbook()),
+                           mACollection,"addressbook");
   }
 
   // Navigation menu
@@ -472,16 +472,16 @@ void ActionManager::initActions()
 
   if ( mIsPart ) {
     new KAction( i18n("&Configure KOrganizer..."),
-		 "configure", 0, mCalendarView,
-		 SLOT(edit_options()), mACollection,
-		 "korganizer_configure" );
+                 "configure", 0, mCalendarView,
+                 SLOT(edit_options()), mACollection,
+                 "korganizer_configure" );
     new KAction( i18n("Configure S&hortcuts..."),
-		 "configure_shortcuts", 0, this,
-		 SLOT(keyBindings()), mACollection,
-		 "korganizer_configure_shortcuts" );
+                 "configure_shortcuts", 0, this,
+                 SLOT(keyBindings()), mACollection,
+                 "korganizer_configure_shortcuts" );
   } else {
     KStdAction::preferences(mCalendarView, SLOT(edit_options()),
-			    mACollection);
+                            mACollection);
     KStdAction::keyBindings(this, SLOT(keyBindings()), mACollection);
   }
 
@@ -545,7 +545,7 @@ void ActionManager::file_open()
   KURL url;
   QString defaultPath = locateLocal("data","korganizer/");
   url = KFileDialog::getOpenURL(defaultPath,i18n("*.vcs *.ics|Calendar Files"),
-				mCalendarView->topLevelWidget());
+                                mCalendarView->topLevelWidget());
 
   if (url.isEmpty()) return;
 
@@ -588,8 +588,8 @@ void ActionManager::file_import()
 
   if (!QFile::exists(homeDir)) {
     KMessageBox::error(mCalendarView->topLevelWidget(),
-		       i18n("You have no ical file in your home directory.\n"
-		            "Import cannot proceed.\n"));
+                       i18n("You have no ical file in your home directory.\n"
+                            "Import cannot proceed.\n"));
     return;
   }
 
@@ -611,24 +611,24 @@ void ActionManager::file_import()
     mCalendarView->openCalendar(tmpfn.name(),1);
     if (!retVal)
       KMessageBox::information(mCalendarView->topLevelWidget(),
-			       i18n("KOrganizer successfully imported and "
-				    "merged your .calendar file from ical "
-				    "into the currently opened calendar."));
+                               i18n("KOrganizer successfully imported and "
+                                    "merged your .calendar file from ical "
+                                    "into the currently opened calendar."));
     else
       KMessageBox::information(mCalendarView->topLevelWidget(),
-			   i18n("KOrganizer encountered some unknown fields while "
-				"parsing your .calendar ical file, and had to "
-				"discard them. Please check to see that all "
-				"your relevant data was correctly imported."),
+                           i18n("KOrganizer encountered some unknown fields while "
+                                "parsing your .calendar ical file, and had to "
+                                "discard them. Please check to see that all "
+                                "your relevant data was correctly imported."),
                                  i18n("ICal Import Successful With Warning"));
   } else if (retVal == -1) {
     KMessageBox::error(mCalendarView->topLevelWidget(),
-			 i18n("KOrganizer encountered an error parsing your "
-			      ".calendar file from ical. Import has failed."));
+                         i18n("KOrganizer encountered an error parsing your "
+                              ".calendar file from ical. Import has failed."));
   } else if (retVal == -2) {
     KMessageBox::error(mCalendarView->topLevelWidget(),
-			 i18n("KOrganizer doesn't think that your .calendar "
-			      "file is a valid ical calendar. Import has failed."));
+                         i18n("KOrganizer doesn't think that your .calendar "
+                              "file is a valid ical calendar. Import has failed."));
   }
   tmpfn.unlink();
 }
@@ -637,7 +637,7 @@ void ActionManager::file_merge()
 {
   KURL url = KFileDialog::getOpenURL(locateLocal("data","korganizer/"),
                                      i18n("*.vcs *.ics|Calendar Files"),
-				     mCalendarView->topLevelWidget());
+                                     mCalendarView->topLevelWidget());
   openURL(url,true);
 }
 
@@ -713,15 +713,15 @@ bool ActionManager::openURL(const KURL &url,bool merge)
         KIO::NetAccess::removeTempFile(mFile);
         mURL = url;
         mFile = tmpFile;
-	KConfig *config = KOGlobals::config();
-	config->setGroup("General");
-	QString active = config->readPathEntry("Active Calendar");
+        KConfig *config = KOGlobals::config();
+        config->setGroup("General");
+        QString active = config->readPathEntry("Active Calendar");
         if (KURL(active) == mURL) setActive(true);
         else setActive(false);
         setTitle();
         kdDebug(5850) << "-- Add recent URL: " << url.prettyURL() << endl;
         mRecent->addURL(url);
-	mMainWindow->showStatusMessage(i18n("Opened calendar '%1'.").arg(mURL.prettyURL()));
+        mMainWindow->showStatusMessage(i18n("Opened calendar '%1'.").arg(mURL.prettyURL()));
       }
     }
     return success;
@@ -752,7 +752,7 @@ bool ActionManager::saveURL()
 
   if (ext == ".vcs") {
     int result = KMessageBox::warningContinueCancel(
-	mCalendarView->topLevelWidget(),
+        mCalendarView->topLevelWidget(),
         i18n("Your calendar will be saved in iCalendar format. Use "
               "'Export vCalendar' to save in vCalendar format."),
         i18n("Format Conversion"),i18n("Proceed"),"dontaskFormatConversion",
@@ -928,7 +928,7 @@ bool ActionManager::saveModifiedURL()
     return saveURL();
   } else {
     int result = KMessageBox::warningYesNoCancel(
-	mCalendarView->topLevelWidget(),
+        mCalendarView->topLevelWidget(),
         i18n("The calendar has been modified.\nDo you want to save it?"),
         QString::null,
         KStdGuiItem::save(), KStdGuiItem::discard());
@@ -944,10 +944,10 @@ bool ActionManager::saveModifiedURL()
         return true;
       case KMessageBox::Cancel:
       default:
-	{
-	  mHtmlExportSync = false;
+        {
+          mHtmlExportSync = false;
           return false;
-	}
+        }
     }
   }
 }
@@ -957,7 +957,7 @@ KURL ActionManager::getSaveURL()
 {
   KURL url = KFileDialog::getSaveURL(locateLocal("data","korganizer/"),
                                      i18n("*.vcs *.ics|Calendar Files"),
-				     mCalendarView->topLevelWidget());
+                                     mCalendarView->topLevelWidget());
 
   if (url.isEmpty()) return url;
 
@@ -1081,8 +1081,8 @@ void ActionManager::makeActive()
 {
   if (mURL.isEmpty()) {
     KMessageBox::sorry(mCalendarView->topLevelWidget(),
-		       i18n("The calendar does not have a filename. "
-			    "Please save it before activating."));
+                       i18n("The calendar does not have a filename. "
+                            "Please save it before activating."));
     return;
   }
 
@@ -1151,11 +1151,11 @@ bool ActionManager::deleteEvent(QString uid)
 }
 
 bool ActionManager::eventRequest(QString request, QCString receiver,
-				 QString ical)
+                                 QString ical)
 {
   if( !KOGroupware::instance() ) return false;
   return KOGroupware::instance()->incomingEventRequest(request, receiver,
-						       ical);
+                                                       ical);
 }
 
 void ActionManager::configureDateTimeFinished(KProcess *proc)
