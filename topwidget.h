@@ -137,6 +137,11 @@ public slots:
    * settings from the config file. 
    */
   void readSettings();
+  
+  /** using the KConfig associated with the kapp variable, read in the
+   * settings for the current view from the config file. 
+   */
+  void readCurrentView();
 
   /** write current state to config file. */
   void writeSettings();
@@ -260,8 +265,6 @@ protected slots:
   // clean up after a child window closes
   void cleanWindow(QWidget *);
 
-  virtual void updateRects();
-
   /** Move the current view date to today */
   void goToday();
 
@@ -348,6 +351,7 @@ protected:
   KOTodoView     *todoList, *todoView;
 
   KOBaseView     *currentView;  // currently active event view
+  QList<KOBaseView> mCalendarViews;  // list of available calendar views
 
   // view mode of agenda view (day, workweek, week, ...)
   int             agendaViewMode;

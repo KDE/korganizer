@@ -65,6 +65,12 @@ TopWidget::TopWidget(CalObject *cal, QString fn,
   // add this instance of the window to the static list.
   windowList.append(this);
 
+  currentView = 0;
+  todoView = 0;
+  agendaView = 0;
+  monthView = 0;
+  listView = 0;
+  
   searchDlg = 0L;
   recentPop = 0L;
   toolBarEnable = statusBarEnable = TRUE;
@@ -118,15 +124,23 @@ TopWidget::TopWidget(CalObject *cal, QString fn,
 
   agendaView = new KOAgendaView(calendar, rightFrame, "TopWidget::AgendaView");
   rightFrame->addWidget(agendaView,1);//  layout2->addWidget(agendaView);
+  mCalendarViews.append(agendaView);
 
   listView   = new KOListView(calendar, rightFrame, "TopWidget::ListView");
   rightFrame->addWidget(listView,2);//  layout3->addWidget(listView);
-
-  currentView = 0;
+  mCalendarViews.append(listView);
 
   monthView = new KOMonthView(calendar, rightFrame, "TopWidget::MonthView");
   rightFrame->addWidget(monthView,3);
-  
+  mCalendarViews.append(monthView);
+
+  readCurrentView();
+/*
+  // List classnames of available views
+  QObject *obj;
+  for(obj=mCalendarViews.first();obj;obj=mCalendarViews.next())
+    qDebug("calViews: %s",obj->className());
+*/  
   // setup toolbar, menubar and status bar, NOTE: this must be done
   // after the widget creation, because setting the menubar, toolbar
   // or statusbar will generate a call to updateRects, which assumes
@@ -155,10 +169,14 @@ TopWidget::TopWidget(CalObject *cal, QString fn,
   // this is required for KTMainWindow for geometry management
   setView(panner, TRUE);
 
+  if (currentView) {
+    rightFrame->raiseWidget(currentView);
+  } else {
+    rightFrame->raiseWidget(todoView);
+  }
+
   goToday();
 
-  changeView(agendaView);
-  goToday();
   changeAgendaView(agendaViewMode);
 
   setupRollover();
@@ -211,26 +229,8 @@ void TopWidget::initCalendar(QString fn, bool fnOverride)
   config->setGroup("General");
   config->writeEntry("Current Calendar", fileName);
   QApplication::restoreOverrideCursor();
-
 }
 
-void TopWidget::updateRects()
-{
-  KTMainWindow::updateRects();
-//  panner->resize(mainFrame->size());
-
-  /*  rightFrame->resize(mainFrame->width()-(panner->separatorPos()+5), 
-		     mainFrame->height());
-
-  agendaView->resize(rightFrame->size());
-  
-  listView->resize(rightFrame->size());*/
-
-//  monthView->move(2,2);
-//  monthView->resize(mainFrame->width()-4, mainFrame->height()-4);
-//  todoView->move(2,2);
-//  todoView->resize(mainFrame->width()-4, mainFrame->height()-4);
-}
 
 void TopWidget::readSettings()
 {
@@ -281,12 +281,8 @@ void TopWidget::readSettings()
 
   toolBarEnable = config->readBoolEntry("Tool Bar", TRUE);
 
-// This should be replaced by a proper way of reading the view information.
-// After replacing the cases by virtual functions, the viewMode variable is
-// gone.
-//  str = config->readEntry("Current View");
-//  if (!str.isEmpty())
-//    viewMode = str.toInt();
+  // Set current view from Entry "Current View"
+  readCurrentView();
 
   str = config->readEntry("Current Calendar");
   if (!str.isEmpty() && QFile::exists(str))
@@ -303,6 +299,25 @@ void TopWidget::readSettings()
   }
 
   config->sync();
+}
+
+void TopWidget::readCurrentView()
+{
+  QString str;
+  KConfig *config(kapp->config());
+
+  config->setGroup("General");
+  str = config->readEntry("Current View");
+  if (!str.isEmpty()) {
+    if (str.compare("KOTodoView") == 0) currentView = 0;
+    else {
+      currentView = agendaView;
+      KOBaseView *obj;
+      for(obj=mCalendarViews.first();obj;obj=mCalendarViews.next()) {
+        if (str.compare(obj->className()) == 0) currentView = obj;
+      }
+    }
+  }
 }
 
 void TopWidget::writeSettings()
@@ -342,12 +357,9 @@ void TopWidget::writeSettings()
 		 "true" : "false");
   config->writeEntry("Status Bar", tmpStr);
 
-// This should be replaced by a proper way of writing the current view
-// information. 
-// After replacing the cases by virtual functions, the viewMode variable is
-// gone.
-//  tmpStr.sprintf("%d", viewMode);
-//  config->writeEntry("Current View", tmpStr);
+  if (currentView) tmpStr = currentView->className();
+  else tmpStr = "KOTodoView";  
+  config->writeEntry("Current View", tmpStr);
 
   config->writeEntry("Current Calendar", fileName);
 
@@ -781,24 +793,6 @@ void TopWidget::changeEventDisplay(KOEvent *which, int action)
     if (!currentView) todoView->changeEventDisplay(which,action);
     todoList->changeEventDisplay(which,action);
   }
-
-/*  
-  switch(viewMode) {
-  case LISTVIEW:
-    listView->changeEventDisplay(which, action);
-    break;
-  case AGENDAVIEW:
-    agendaView->changeEventDisplay(which, action);
-    break;
-  case MONTHVIEW:
-    monthView->changeEventDisplay(which, action);
-    break;
-  default:
-    debug("we don't handle updates for that view, yet.");
-    qApp->beep();
-    return;
-  }
-*/
 }
 
 void TopWidget::changeAgendaView( int newView )
@@ -857,68 +851,14 @@ void TopWidget::nextAgendaView()
 
 void TopWidget::changeView(KOBaseView *view)
 {
-//  if(viewMode == newViewMode) return;  
-//  viewMode = newViewMode;
-
   if(view == currentView) return;
 
   currentView = view;
 
-//  updateView(dateNavigator->getSelected());
-
-//  qDebug("ViewMode: %d",viewMode);
-
-/*
-  // Set the current view to the appropriate view object. The todo view is not
-  // an event view and has another interface.
-  // This switch  statement indicates some shortcomings of the current handling
-  // of views. We should probably get rid of the viewMode variable.
-  switch(viewMode) {
-    case AGENDAVIEW:
-      currentView = agendaView;
-      break;
-    case LISTVIEW:
-      currentView = listView;
-      break;
-    case MONTHVIEW:
-      currentView = monthView;
-      break;
-    case TODOVIEW:
-      currentView = 0;
-      break;
-
-    default:
-      debug("we don't handle that view yet.");
-      break;
-  }
-*/
-
   if (currentView) rightFrame->raiseWidget(currentView);
   else rightFrame->raiseWidget(todoView);
 
-/*
-  switch(viewMode) {
-    case AGENDAVIEW:
-      rightFrame->raiseWidget(agendaView);
-      break;
-    case LISTVIEW:
-      rightFrame->raiseWidget(listView);
-      break;
-    case MONTHVIEW:
-      rightFrame->raiseWidget(monthView);
-      break;
-    case TODOVIEW:
-      rightFrame->raiseWidget(todoView);
-      break;
-
-    default:
-      debug("we don't handle that view yet.");
-      break;
-  }
-*/
-
   updateView(dateNavigator->getSelected());
-//  updateView();
 }
 
 void TopWidget::updateView(const QDateList selectedDates)
@@ -977,22 +917,6 @@ void TopWidget::updateView(const QDateList selectedDates)
     }
 
   if (currentView) currentView->selectDates(selectedDates);
-
-/*  
-  switch (viewMode) {
-  case AGENDAVIEW:
-      agendaView->selectDates(selectedDates);
-    break;
-  case LISTVIEW:
-      listView->selectDates(selectedDates);
-    break;
-  case MONTHVIEW:
-      monthView->selectDates(selectedDates);
-    break;
-  default:
-    break;
-  }
-*/
 
   todoList->updateView();
   todoView->updateView();
@@ -1374,25 +1298,6 @@ void TopWidget::edit_cut()
 
   if (currentView) anEvent = (currentView->getSelected()).first();
 
-/*
-  switch(viewMode) {
-  case LISTVIEW:
-    anEvent = (listView->getSelected()).first();
-    break;
-  case AGENDAVIEW:
-    anEvent = (agendaView->getSelected()).first();
-    break;
-  case MONTHVIEW:
-    anEvent= (monthView->getSelected()).first();
-    break;
-  default:
-    QMessageBox::warning(this,i18n("KOrganizer error"),
-			 i18n("Unfortunately, we don't handle cut/paste for\n"
-			      "that view yet.\n"));
-    return;
-  }
-*/
-
   if (!anEvent) {
     qApp->beep();
     return;
@@ -1406,25 +1311,6 @@ void TopWidget::edit_copy()
   KOEvent *anEvent;
 
   if (currentView) anEvent = (currentView->getSelected()).first();
-
-/*
-  switch(viewMode) {
-  case LISTVIEW:
-    anEvent = (listView->getSelected()).first();
-    break;
-  case AGENDAVIEW:
-    anEvent = (agendaView->getSelected()).first();
-    break;
-  case MONTHVIEW:
-    anEvent = (monthView->getSelected()).first();
-    break;
-  default:
-    QMessageBox::warning(this,i18n("KOrganizer error"),
-			 i18n("Unfortunately, we don't handle cut/paste for\n"
-			      "that view yet.\n"));
-    return;
-  }
-*/  
   
   if (!anEvent) {
     qApp->beep();
@@ -1779,24 +1665,6 @@ void TopWidget::action_mail()
   KoMailClient mailobject(calendar);
 
   if (currentView) anEvent = (currentView->getSelected()).first();
-
-/*
-  switch(viewMode) {
-  case LISTVIEW:
-    anEvent = (listView->getSelected()).first();
-    break;
-  case AGENDAVIEW:
-    anEvent = (agendaView->getSelected()).first();
-    break;
-  case MONTHVIEW:
-    anEvent= (monthView->getSelected()).first();
-    break;
-  default:
-    QMessageBox::warning(this,i18n("KOrganizer error"),
-			 i18n("Can't generate mail from this view\n"));
-    return;
-  }
-*/
 
   if (!anEvent) {
     qApp->beep();

@@ -98,7 +98,8 @@ KOTodoView::KOTodoView(CalObject *calendar,QWidget* parent,const char* name) :
   QObject::connect(mTodoListView,SIGNAL(rightButtonClicked ( QListViewItem *,
                    const QPoint &, int )),
                    this,SLOT(popupMenu(QListViewItem *,const QPoint &,int)));
-
+  QObject::connect(mTodoListView,SIGNAL(clicked(QListViewItem *)),
+                   this,SLOT(itemClicked(QListViewItem *)));
 }
 
 void KOTodoView::updateView()
@@ -215,6 +216,23 @@ void KOTodoView::purgeCompleted()
   updateView();
 }
 
+void KOTodoView::itemClicked(QListViewItem *item)
+{
+  if (!item) return;
+
+  KOTodoViewItem *todoItem = (KOTodoViewItem *)item;
+  int status = todoItem->event()->getStatus();  // Completed or not?
+  
+  if (todoItem->isOn()) {
+    if (status != KOEvent::COMPLETED) {
+      todoItem->event()->setStatus(KOEvent::COMPLETED);
+    }
+  } else {
+    if (status != KOEvent::NEEDS_ACTION) {
+      todoItem->event()->setStatus(KOEvent::NEEDS_ACTION);
+    }
+  }   
+}
 
 
 // code below is obsolete

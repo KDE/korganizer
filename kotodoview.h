@@ -73,6 +73,7 @@ class KOTodoView : public QWidget
     void editTodo();
     void deleteTodo();
     void purgeCompleted();
+    void itemClicked(QListViewItem *);
     
   signals:
     void newTodoSignal();
