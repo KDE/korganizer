@@ -37,8 +37,7 @@ class ResourceItem : public QCheckListItem
 {
   public:
     ResourceItem( ResourceCalendar *resource, KListView *parent ) :
-      QCheckListItem( parent, resource->resourceName(),
-                      QCheckListItem::CheckBox ),
+      QCheckListItem( parent, resource->resourceName(), CheckBox ),
       mResource( resource )
     {
       setOn( mResource->isActive() );
@@ -74,8 +73,7 @@ void ResourceView::updateView()
 
   KCal::CalendarResourceManager::Iterator it;
   for( it = mManager->begin(); it != mManager->end(); ++it ) {
-    new QCheckListItem( mListView, (*it)->resourceName(),
-                        QCheckListItem::CheckBox );   
+    new ResourceItem(  (*it), mListView );
   }
 }
 
