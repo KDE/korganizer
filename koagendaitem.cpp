@@ -9,12 +9,19 @@
 #include <qlayout.h>
 #include <qhbox.h>
 
+#include "koprefs.h"
 
 KOAgendaItem::KOAgendaItem(KOEvent *event, QWidget *parent,
                            const char *name,WFlags) :
   QFrame( parent, name )
 {
   mEvent = event;
+
+  QStrList categories = mEvent->getCategories();
+  QString cat = categories.first();
+  if (!cat.isEmpty()) {
+    setPalette(QPalette(*(KOPrefs::instance()->categoryColor(cat))));
+  }
 
   mItemLabel = new QLabel(mEvent->getSummary(),this,"KOAgendaItem::itemLabel");
   mItemLabel->setAlignment(AlignCenter|WordBreak);

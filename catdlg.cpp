@@ -37,18 +37,6 @@ CategoryDialog::CategoryDialog(QWidget* parent,const char* name)
 
   catListBox = new QListBox(topWidget);
   catListBox->setMinimumSize(QSize(75,200));
-  catListBox->insertItem(i18n("Appointment"));
-  catListBox->insertItem(i18n("Business"));
-  catListBox->insertItem(i18n("Meeting"));
-  catListBox->insertItem(i18n("Phone Call"));
-  catListBox->insertItem(i18n("Education"));
-  catListBox->insertItem(i18n("Holiday"));
-  catListBox->insertItem(i18n("Vacation"));
-  catListBox->insertItem(i18n("Special Occasion"));
-  catListBox->insertItem(i18n("Personal"));
-  catListBox->insertItem(i18n("Travel"));
-  catListBox->insertItem(i18n("Miscellaneous"));
-  catListBox->insertItem(i18n("Birthday"));
   catListBox->insertStringList(KOPrefs::instance()->mCustomCategories);
   subLayout2->addWidget(catListBox);
 

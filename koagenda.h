@@ -58,6 +58,7 @@ class KOAgenda : public QScrollView
     void scrollUp();
     void scrollDown();
 
+    void popupShow();
     void popupEdit();
     void popupDelete();
     void popupAlarm();
@@ -66,6 +67,7 @@ class KOAgenda : public QScrollView
     void newEventSignal();
     void newEventSignal(int gx,int gy);
     void editEventSignal(KOEvent *event);
+    void showEventSignal(KOEvent *event);
     void deleteEventSignal(KOEvent *event);
 
     void itemModified(KOAgendaItem *item);

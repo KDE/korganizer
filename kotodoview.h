@@ -96,6 +96,7 @@ class KOTodoView : public QWidget
     void popupMenu(QListViewItem *item,const QPoint &,int);
     void newTodo();
     void newSubTodo();
+    void showTodo();
     void editTodo();
     void deleteTodo();
     void purgeCompleted();
@@ -104,6 +105,8 @@ class KOTodoView : public QWidget
   signals:
     void newTodoSignal();
     void newSubTodoSignal(KOEvent *);
+    void showTodoSignal(KOEvent *);
+
     void editEventSignal(KOEvent *);
     void deleteEventSignal(KOEvent *);
 

@@ -228,6 +228,8 @@ KOTodoView::KOTodoView(CalObject *calendar,QWidget* parent,const char* name) :
   mItemPopupMenu = new QPopupMenu;
   mItemPopupMenu->insertItem(BarIcon("todolist"), i18n("New To-Do"), this,
                              SLOT (newTodo()));
+  mItemPopupMenu->insertItem(i18n("Show To-Do"), this,
+                             SLOT (showTodo()));
   mItemPopupMenu->insertItem(i18n("New Sub-To-Do"), this,
                              SLOT (newSubTodo()));
   mItemPopupMenu->insertItem(i18n("Edit To-Do"), this,
@@ -356,6 +358,13 @@ void KOTodoView::editTodo()
 {
   if (mActiveItem) {
     emit editEventSignal(mActiveItem->event());
+  }
+}
+
+void KOTodoView::showTodo()
+{
+  if (mActiveItem) {
+    emit showTodoSignal(mActiveItem->event());
   }
 }
 

@@ -215,6 +215,8 @@ public:
   const QStrList &getCategories() const;
   /** return categories as a comma separated string */
   QString getCategoriesStr();
+  /** get color associated with first category */
+  const QColor &getColor();
 
   /** set the list of attachments/associated files for this event */
   void setAttachments(const QStrList &attachments);
@@ -414,7 +416,7 @@ public:
   void setTodoStatus(bool stat) { isTodo = stat; priority = 1; emit eventUpdated(this); };
   bool getTodoStatus() const { return isTodo; };
 
-  inline bool isMultiDay() const {  return !(dtStart.date() == dtEnd.date()); };
+  bool isMultiDay() const {  return !(dtStart.date() == dtEnd.date()); };
 
   void print(int) const;
 

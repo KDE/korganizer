@@ -495,6 +495,7 @@ void KOEvent::setCategories(const QString &catStr)
   // get last category
   tmpList.append(catStr.mid(index1, (catStr.length()-index1)));
   categories = tmpList;
+
   emit eventUpdated(this);
 }
 
@@ -509,12 +510,12 @@ QString KOEvent::getCategoriesStr()
   QString cat;
   bool first = TRUE;
   for (cat = categories.first(); cat; cat = categories.next()) {
-      if (!first) {
-	  temp += ",";
-      } else {
-	  first = FALSE;
-      }
-      temp += cat;
+    if (!first) {
+      temp += ",";
+    } else {
+      first = FALSE;
+    }
+    temp += cat;
   }
   return temp;
 }

@@ -1,16 +1,26 @@
 // $Id$
 
+#include "config.h"
+
+#include <pwd.h>
+#include <sys/types.h>
+#include <unistd.h>
+#include <netdb.h>
+
 #include "koprefs.h"
 
 #include <kconfig.h>
 #include <kstddirs.h>
-
+#include <klocale.h>
 
 KOPrefs *KOPrefs::mInstance = 0;
 
 
 KOPrefs::KOPrefs()
 {
+  mCategoryColors.setAutoDelete(true);
+  mDefaultCategoryColor = QColor("gray");
+
   mConfig = new KConfig(locate("config","korganizerrc"));
   
   readConfig();
@@ -41,8 +51,34 @@ void KOPrefs::setDefaults()
   mAutoSave = false;
   mConfirm = true;
 
-  mName = "";
-  mEmail = "";
+  // user information...
+  uid_t userId = getuid();
+  struct passwd *pwent = getpwuid(userId);
+  if (strlen(pwent->pw_gecos) > 0) mName = pwent->pw_gecos;
+  else mName = i18n("Anonymous");
+
+  // user email...
+  mEmail = pwent->pw_name;
+  mEmail += "@";
+#ifdef HAVE_GETHOSTNAME
+  char cbuf[80];
+  if (gethostname(cbuf, 79)) {
+    // error getting hostname
+    mEmail += "localhost";
+  } else {
+    hostent he;
+    if (gethostbyname(cbuf)) {
+      he = *gethostbyname(cbuf);
+      mEmail += he.h_name;
+    } else {
+      // error getting hostname
+      mEmail += "localhost";
+    }
+  }
+#else
+  mEmail += "localhost";
+#endif
+
   mAdditional = "";
   mHoliday = "(none)";
   
@@ -67,6 +103,24 @@ void KOPrefs::setDefaults()
   mPaperSize = 0;
   mPaperOrientation = 0;
   mPrintPreview = "gv";
+  
+  setCategoryDefaults();
+}
+
+void KOPrefs::setCategoryDefaults()
+{
+  mCustomCategories.clear();
+
+  mCustomCategories << i18n("Appointment") << i18n("Business")
+      << i18n("Meeting") << i18n("Phone Call") << i18n("Education")
+      << i18n("Holiday") << i18n("Vacation") << i18n("Special Occasion")
+      << i18n("Personal") << i18n("Travel") << i18n("Miscellaneous")
+      << i18n("Birthday");
+
+  QStringList::Iterator it;
+  for (it = mCustomCategories.begin();it != mCustomCategories.end();++it ) {
+    setCategoryColor(*it,mDefaultCategoryColor);
+  }
 }
 
 void KOPrefs::readConfig()
@@ -75,6 +129,7 @@ void KOPrefs::readConfig()
   mAutoSave = mConfig->readBoolEntry("Auto Save",false);
   mConfirm = mConfig->readBoolEntry("Confirm Deletes",true);
   mCustomCategories = mConfig->readListEntry("Custom Categories");
+  if (mCustomCategories.isEmpty()) setCategoryDefaults();
 
   mConfig->setGroup("Personal Settings");
   mName = mConfig->readEntry("user_name","");
@@ -103,6 +158,12 @@ void KOPrefs::readConfig()
   mConfig->setGroup("Colors");
   mHolidayColor = mConfig->readColorEntry("Holiday Color");
   mHighlightColor = mConfig->readColorEntry("Highlight Color");
+
+  mConfig->setGroup("Category Colors");
+  QStringList::Iterator it;
+  for (it = mCustomCategories.begin();it != mCustomCategories.end();++it ) {
+    setCategoryColor(*it,mConfig->readColorEntry(*it,&mDefaultCategoryColor));
+  }
 
   mConfig->setGroup("Printer");
   mPrinter = mConfig->readEntry("Printer Name",0);
@@ -148,6 +209,13 @@ void KOPrefs::writeConfig()
   mConfig->writeEntry("Holiday Color",mHolidayColor);
   mConfig->writeEntry("Highlight Color",mHighlightColor);
 
+  mConfig->setGroup("Category Colors");
+  QDictIterator<QColor> it(mCategoryColors);
+  while (it.current()) {
+    mConfig->writeEntry(it.currentKey(),*(it.current()));
+    ++it;
+  }
+
   mConfig->setGroup("Printer");
   mConfig->writeEntry("Printer Name",mPrinter);
   mConfig->writeEntry("Paper Size",mPaperSize);
@@ -155,4 +223,19 @@ void KOPrefs::writeConfig()
   mConfig->writeEntry("Preview",mPrintPreview);
   
   mConfig->sync();
+}
+
+void KOPrefs::setCategoryColor(QString cat,const QColor & color)
+{
+  mCategoryColors.replace(cat,new QColor(color));
+}
+
+QColor *KOPrefs::categoryColor(QString cat)
+{
+  QColor *color = 0;
+  
+  if (!cat.isEmpty()) color = mCategoryColors[cat];
+  
+  if (color) return color;
+  else return &mDefaultCategoryColor;
 }

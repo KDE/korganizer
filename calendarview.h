@@ -115,7 +115,11 @@ public slots:
   void editEvent(KOEvent *);
   /** delete the supplied event */
   void deleteEvent(KOEvent *);
-
+  /** Create a read-only viewer dialog for the supplied event */
+  void showEvent(KOEvent *);
+  /** Create a read-only viewer dialog for the supplied todo */
+  void showTodo(KOEvent *);
+  
   /** create new todo */
   void newTodo();  
   /** create new todo with a parent todo */

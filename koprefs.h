@@ -8,6 +8,7 @@
 #include <qfont.h>
 #include <qcolor.h>
 #include <qstringlist.h>
+#include <qdict.h>
 
 class KConfig;
 
@@ -28,6 +29,9 @@ class KOPrefs
 
     /** Write preferences to config file */
     void writeConfig();
+
+  protected:
+    void setCategoryDefaults();
 
   private:
     /** Constructor disabled for public. Use instance() to create a KOPrefs
@@ -70,6 +74,13 @@ class KOPrefs
     QString mPrintPreview;
 
     QStringList mCustomCategories;
+
+    void setCategoryColor(QString cat,const QColor & color);
+    QColor *categoryColor(QString cat);
+    
+  private:
+    QDict<QColor> mCategoryColors;
+    QColor mDefaultCategoryColor;
 };
 
 #endif

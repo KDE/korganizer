@@ -197,7 +197,7 @@ KOAgendaView::KOAgendaView(CalObject *cal,QWidget *parent,const char *name) :
 
   // Create all-day agenda widget
   mAllDayFrame = new QHBox(splitterAgenda);
-  QWidget *dummyAllDayLeft = new QWidget(mAllDayFrame);
+  mDummyAllDayLeft = new QWidget(mAllDayFrame);
   mAllDayAgenda = new KOAgenda(1,mAllDayFrame);
   QWidget *dummyAllDayRight = new QWidget(mAllDayFrame);
 
@@ -218,11 +218,11 @@ KOAgendaView::KOAgendaView(CalObject *cal,QWidget *parent,const char *name) :
   mTimeLabels->setAgenda(mAgenda);
 
   // Update widgets to reflect user preferences
-  updateConfig();
+//  updateConfig();
 
   // these blank widgets make the All Day Event box line up with the agenda
   dummyAllDayRight->setFixedWidth(mAgenda->verticalScrollBar()->width());
-  dummyAllDayLeft->setFixedWidth(mTimeLabels->width());
+  mDummyAllDayLeft->setFixedWidth(mTimeLabels->width());
 
   QBoxLayout *layoutTop = new QVBoxLayout(this);
   layoutTop->addWidget(mDayLabelsFrame);
@@ -239,6 +239,10 @@ KOAgendaView::KOAgendaView(CalObject *cal,QWidget *parent,const char *name) :
                            SIGNAL(editEventSignal(KOEvent *)));
   QObject::connect(mAllDayAgenda,SIGNAL(editEventSignal(KOEvent *)),
                                  SIGNAL(editEventSignal(KOEvent *)));
+  QObject::connect(mAgenda,SIGNAL(showEventSignal(KOEvent *)),
+                           SIGNAL(showEventSignal(KOEvent *)));
+  QObject::connect(mAllDayAgenda,SIGNAL(showEventSignal(KOEvent *)),
+                                 SIGNAL(showEventSignal(KOEvent *)));
   QObject::connect(mAgenda,SIGNAL(deleteEventSignal(KOEvent *)),
                            SIGNAL(deleteEventSignal(KOEvent *)));
   QObject::connect(mAllDayAgenda,SIGNAL(deleteEventSignal(KOEvent *)),
@@ -326,6 +330,10 @@ void KOAgendaView::updateConfig()
 
   // for some reason, this needs to be called explicitly
   mTimeLabels->repaint();
+
+  mDummyAllDayLeft->setFixedWidth(mTimeLabels->width());
+
+  updateView();
 }
 
 

@@ -1,18 +1,17 @@
 // $Id$
-// (C) 1998 by Preston Brown, Fester Zigterman, and Christopher Beard
+// (C) 2000 by Cornelius Schumacher
 
 #ifndef _KOOPTIONSDIALOG_H
 #define _KOOPTIONSDIALOG_H
 
-#include <qtabdlg.h>
 #include <qframe.h>
-#include <qlined.h>
-#include <qcombo.h>
-#include <qchkbox.h>
-#include <qradiobt.h>
-#include <qpushbt.h>
+#include <qlineedit.h>
+#include <qcombobox.h>
+#include <qcheckbox.h>
+#include <qradiobutton.h>
+#include <qpushbutton.h>
 
-#include "kpropcolor.h"
+#include <kdialogbase.h>
 
 class QSpinBox;
 class QSlider;
@@ -22,136 +21,109 @@ class QSlider;
   */
 class KOOptionsDialog : public KDialogBase
 {
-  Q_OBJECT
-public:
-  /** Initialize dialog and pages */
-  KOOptionsDialog( QWidget *parent = 0, char *name = 0, bool modal=false );
-  ~KOOptionsDialog();
+    Q_OBJECT
+  public:
+    /** Initialize dialog and pages */
+    KOOptionsDialog( QWidget *parent = 0, char *name = 0, bool modal=false );
+    ~KOOptionsDialog();
 
-public slots:
-  void showPrinterTab();
-  void setColorDefaults();
-  void applyColorDefaults();
-  void toggleSystemColors( bool );
-
-  /** Set all widgets to default values */
-  void setDefaults();
+  public slots:
+    void showPrinterTab();
+    
+    /** Set all widgets to default values */
+    void setDefaults();
   
-  /** Read preferences from config file */
-  void readConfig();
+    /** Read preferences from config file */
+    void readConfig();
 
-  /** Write preferences to config file */
-  void writeConfig();
+    /** Write preferences to config file */
+    void writeConfig();
 
-signals:
-  void configChanged();
+  signals:
+    void configChanged();
 
-protected slots:
-  /** Apply changes to preferences */
-  void slotApply();  
+  protected slots:
+    /** Apply changes to preferences */
+    void slotApply();  
 
-  /** Accept changes to preferences and close dialog */
-  void slotOk();
+    /** Accept changes to preferences and close dialog */
+    void slotOk();
   
-  void selectTimeBarFont();
-  void selectHolidayColor();
-  void selectHighlightColor();
-
-protected:
-  /** These methods create the page contents */
-  void setupMainTab();
-  void setupTimeTab();
-  void setupFontsTab();
-  void setupColorsTab();
-  void setupViewsTab();
-  void setupDisplayTab();
-  void setupPrinterTab();
-
-  void setCombo(QComboBox *,const QString &);
-
-  /** Optionsdlg about to close */
-//  virtual void acceptConfig();
+    /** Set preferences to default values */
+    void slotDefault();
   
-  enum {Main, Time, View, Printer};
-  QLabel *labelList[4][10];
-  QLineEdit *lineEditList[4][10];
-  static char *labeltext[4][5];
-  static char *confignames[4][5];
-
-	
-private:
-
-  QFrame *mPrinterTab;
+    void selectTimeBarFont();
+    void selectHolidayColor();
+    void selectHighlightColor();
+    void selectCategoryColor();
   
-  QFrame *personalFrame;
-  QLineEdit *nameEdit;
-  QLineEdit *emailEdit;
+    void updateCategoryColor();
+
+  protected:
+    void setupMainTab();
+    void setupTimeTab();
+    void setupFontsTab();
+    void setupColorsTab();
+    void setupViewsTab();
+    void setupDisplayTab();
+    void setupPrinterTab();
+
+    void setCombo(QComboBox *combo,const QString & text);
+
+  private:
+    QFrame *mPrinterTab;
   
-  QFrame *timeFrame;
-  QComboBox *timeCombo;
-  QComboBox *tzCombo;
+    QFrame *personalFrame;
+    QLineEdit *nameEdit;
+    QLineEdit *emailEdit;
   
-  QFrame *fontsFrame;
-  QFrame *colorsFrame;
-  QFrame *viewsFrame;
-  QFrame *displayFrame;
-  QFrame *printerFrame;
-
-
-  // font frame
-  QLabel *listFontLabel;
-  QLabel *agendaFontLabel;
-  QLabel *monthFontLabel;
-
-//  KPropColor *color1,*color2,*color3,*color4,*color5,*color6,*color7,*color8,*color9;
-
-  // widgets holding preferences data
-  QLineEdit *mNameEdit;
-  QLineEdit *mEmailEdit;
-  QLineEdit *mAdditionalEdit;
-  QCheckBox *mAutoSaveCheck;
-  QCheckBox *mConfirmCheck;
-  QComboBox *mHolidayCombo;
+    QFrame *timeFrame;
+    QComboBox *timeCombo;
+    QComboBox *tzCombo;
   
-  QButtonGroup *mTimeFormatGroup;
-  QButtonGroup *mDateFormatGroup;
-  QComboBox    *mTimeZoneCombo;
-  QSpinBox     *mStartTimeSpin;
-  QComboBox    *mAlarmTimeCombo;
-  QCheckBox    *mWeekstartCheck;
+    QFrame *fontsFrame;
+    QFrame *colorsFrame;
+    QFrame *viewsFrame;
+    QFrame *displayFrame;
+    QFrame *printerFrame;
 
-  QLabel *mTimeBarFont;
+    // font frame
+    QLabel *listFontLabel;
+    QLabel *agendaFontLabel;
+    QLabel *monthFontLabel;
 
-  QFrame *mHolidayColor;
-  QFrame *mHighlightColor;
+    // widgets holding preferences data
+    QLineEdit *mNameEdit;
+    QLineEdit *mEmailEdit;
+    QLineEdit *mAdditionalEdit;
+    QCheckBox *mAutoSaveCheck;
+    QCheckBox *mConfirmCheck;
+    QComboBox *mHolidayCombo;
+  
+    QButtonGroup *mTimeFormatGroup;
+    QButtonGroup *mDateFormatGroup;
+    QComboBox    *mTimeZoneCombo;
+    QSpinBox     *mStartTimeSpin;
+    QComboBox    *mAlarmTimeCombo;
+    QCheckBox    *mWeekstartCheck;
 
-  QSpinBox  *mDayBeginsSpin;
-  QSlider   *mHourSizeSlider;
-  QCheckBox *mDailyRecurCheck;
+    QLabel *mTimeBarFont;
 
-  QComboBox *mPrinterCombo;
-  QButtonGroup *mPaperSizeGroup;
-  QButtonGroup *mPaperOrientationGroup;
-  QLineEdit *mPrintPreviewEdit;
+    QFrame *mHolidayColor;
+    QFrame *mHighlightColor;
+
+    QFrame        *mCategoryColor;
+    QComboBox     *mCategoryCombo;
+    QDict<QColor> mCategoryDict;
+
+    QSpinBox  *mDayBeginsSpin;
+    QSlider   *mHourSizeSlider;
+    QCheckBox *mDailyRecurCheck;
+
+    QComboBox    *mPrinterCombo;
+    QButtonGroup *mPaperSizeGroup;
+    QButtonGroup *mPaperOrientationGroup;
+    QLineEdit    *mPrintPreviewEdit;
 };
 
-/*
-   The new KApplication doesn't have colors, so let's put this object here
-
- */
-/*
-struct koConfig {
-    QColor windowColor;
-    QColor textColor;
-    QColor selectColor;
-    QColor selectTextColor;
-    QColor inactiveTextColor;
-    QColor activeTextColor;
-    QColor backgroundColor;
-    QColor activeTitleColor;
-    QColor inactiveTitleColor;
-};
-
-extern koConfig koconf;
-*/
 #endif

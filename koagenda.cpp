@@ -65,6 +65,11 @@ void KOAgenda::clear()
 
 void KOAgenda::changeColumns(int columns)
 {
+  if (columns == 0) {
+    qDebug("KOAgenda::changeColumns() called with argument 0");
+    return;
+  }
+
   clear();
   mColumns = columns;
 //  setMinimumSize(mColumns * 10, mGridSpacingY + 1);
@@ -114,6 +119,7 @@ void KOAgenda::init()
 
   // item popup menu
   mItemPopup = new QPopupMenu();
+  mItemPopup->insertItem (i18n("&Show"),this,SLOT(popupShow()));
   mItemPopup->insertItem (i18n("&Edit"),this, SLOT(popupEdit()));
   mItemPopup->insertItem (QIconSet(BarIcon("delete")),i18n("&Delete"),
                           this, SLOT(popupDelete()));
@@ -757,6 +763,15 @@ void KOAgenda::scrollDown()
   scrollBy(0,mScrollOffset);
 }
 
+void KOAgenda::popupShow()
+{
+  if (!mClickedItem) {
+    qDebug("KOAgenda::itemPopup() called without having a clicked item");
+    return;
+  }
+  
+  emit showEventSignal(mClickedItem->itemEvent());
+}
 
 void KOAgenda::popupEdit()
 {

@@ -46,6 +46,7 @@
 #include "koeventeditor.h"
 #include "kotodoeditor.h"
 #include "koprefs.h"
+#include "koeventviewer.h"
 
 #include "calendarview.h"
 #include "calendarview.moc"	
@@ -153,6 +154,8 @@ CalendarView::CalendarView(QString filename, QWidget *parent, const char *name )
   changeAgendaView(agendaViewMode);
 
   setupRollover();
+
+  updateConfig();
 
   qDebug("CalendarView::CalendarView() done");
 }
@@ -270,13 +273,6 @@ void CalendarView::readSettings()
 
   config.setGroup("Views");
   agendaViewMode = config.readNumEntry("Agenda View", KOAgendaView::DAY);
-
-  config.setGroup( "Colors" );
-  if( config.readBoolEntry( "DefaultColors", TRUE ) == TRUE )
-  {
-    mOptionsDialog->setColorDefaults();
-    mOptionsDialog->applyColorDefaults();
-  }
 }
 
 void CalendarView::readCurrentView()
@@ -391,6 +387,8 @@ void CalendarView::hookupSignals()
 //		this, SLOT(newEvent()));
   connect(agendaView, SIGNAL(editEventSignal(KOEvent *)),
 	  this, SLOT(editEvent(KOEvent *)));
+  connect(agendaView, SIGNAL(showEventSignal(KOEvent *)),
+	  this, SLOT(showEvent(KOEvent *)));
   connect(agendaView, SIGNAL(deleteEventSignal(KOEvent *)), 
 	  this, SLOT(deleteEvent(KOEvent *)));
 
@@ -407,6 +405,8 @@ void CalendarView::hookupSignals()
 	  this, SLOT(newTodo()));
   connect(todoView, SIGNAL(newSubTodoSignal(KOEvent *)),
 	  this, SLOT(newSubTodo(KOEvent *)));
+  connect(todoView, SIGNAL(showTodoSignal(KOEvent *)),
+	  this, SLOT(showTodo(KOEvent *)));
   connect(todoView, SIGNAL(editEventSignal(KOEvent *)),
 	  this, SLOT(editEvent(KOEvent *)));
   connect(todoView, SIGNAL(deleteEventSignal(KOEvent *)),
@@ -419,6 +419,8 @@ void CalendarView::hookupSignals()
 	  this, SLOT(newSubTodo(KOEvent *)));
   connect(todoList, SIGNAL(editEventSignal(KOEvent *)),
 	  this, SLOT(editEvent(KOEvent *)));
+  connect(todoList, SIGNAL(showTodoSignal(KOEvent *)),
+	  this, SLOT(showTodo(KOEvent *)));
   connect(todoList, SIGNAL(deleteEventSignal(KOEvent *)),
           this, SLOT(deleteEvent(KOEvent *)));
 
@@ -808,6 +810,19 @@ void CalendarView::editEvent(KOEvent *anEvent)
   }
 }
 
+void CalendarView::showEvent(KOEvent *event)
+{
+  KOEventViewerDialog *eventViewer = new KOEventViewerDialog(this);
+  eventViewer->setEvent(event);
+  eventViewer->show();
+}
+
+void CalendarView::showTodo(KOEvent *event)
+{
+  KOEventViewerDialog *eventViewer = new KOEventViewerDialog(this);
+  eventViewer->setTodo(event);
+  eventViewer->show();
+}
 
 void CalendarView::appointment_edit()
 {

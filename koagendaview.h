@@ -113,6 +113,7 @@ class KOAgendaView: public KOBaseView {
 
   signals:
     void editEventSignal(KOEvent *);  // From KOBaseView
+    void showEventSignal(KOEvent *);
     void deleteEventSignal(KOEvent *);  // From KOBaseView
     void datesSelected(const QDateList);  // From KOBaseView
     void newEventSignal();  // From KOBaseView
@@ -150,6 +151,7 @@ class KOAgendaView: public KOBaseView {
     KOAgenda *mAllDayAgenda;
     KOAgenda *mAgenda;
     TimeLabels *mTimeLabels;
+    QWidget *mDummyAllDayLeft;
 
     QDate mStartDate;  // Date of first event displayed
     QDateList mSelectedDates;  // List of dates to be displayed

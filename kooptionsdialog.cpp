@@ -19,18 +19,20 @@
 #include <kglobal.h>
 #include <kfontdialog.h>
 #include <kstddirs.h>
+#include <kmessagebox.h>
+#include <kcolordlg.h>
 
 #include "koprefs.h"
 
 #include "kooptionsdialog.h"
 #include "kooptionsdialog.moc"
 
-//koConfig koconf;
-
 KOOptionsDialog::KOOptionsDialog(QWidget *parent, char *name, bool modal) :
   KDialogBase(TreeList, i18n("Preferences"),Ok|Apply|Cancel|Default,Ok,parent,
               name,modal)
 {
+  mCategoryDict.setAutoDelete(true);
+
   setupMainTab();
   setupTimeTab();
   setupFontsTab();
@@ -200,42 +202,6 @@ void KOOptionsDialog::setupFontsTab()
   connect(buttonTimeBar,SIGNAL(clicked()),SLOT(selectTimeBarFont()));
 
   topLayout->setRowStretch(1,1);
-  
-// Disabled because font settings are not used. Has to be reimplemented.
-#if 0
-	QVBoxLayout *layout = new QVBoxLayout( fontsFrame, 4 );
-
-	KPropFont *fontdlg = new KPropFont( fontsFrame, i18n("Appointment"), 
-					    i18n("List view font"), 50, 
-					    font(), "List Font", "Fonts" );
-	connectConfig( fontdlg );
-	layout->addWidget( fontdlg );
-
-	fontdlg = new KPropFont( fontsFrame, i18n("Appointment"), 
-				 i18n("Schedule view font"), 50, 
-				 font(), "Schedule Font", "Fonts" );
-	connectConfig( fontdlg );
-	layout->addWidget( fontdlg );
-
-	fontdlg = new KPropFont( fontsFrame, i18n("Appointment"), 
-				 i18n("Month view font"), 50, 
-				 font(), "Month Font", "Fonts" );
-	connectConfig( fontdlg );
-	layout->addWidget( fontdlg );
-
-	fontdlg = new KPropFont( fontsFrame, i18n("12345"), i18n("Time bar font"),
-				 50, font(), "TimeBar Font", "Fonts" );
-	connectConfig( fontdlg );
-	layout->addWidget( fontdlg );
-
-	fontdlg = new KPropFont( fontsFrame, i18n("Things to do"),
-				 i18n("To-Do list font"), 50,
-				 font(), "Todo Font", "Fonts" );
-	connectConfig( fontdlg );
-	layout->addWidget( fontdlg );
-
-//	layout->addStretch();	
-#endif
 }
 
 void KOOptionsDialog::selectTimeBarFont()
@@ -269,83 +235,30 @@ void KOOptionsDialog::setupColorsTab()
   topLayout->addWidget(mHighlightColor,1,0);
 
   QPushButton *buttonHighlightColor = new QPushButton(i18n("Highlight Color"),
-                                                    topFrame);
+                                                      topFrame);
   topLayout->addWidget(buttonHighlightColor,1,1);
   connect(buttonHighlightColor,SIGNAL(clicked()),SLOT(selectHighlightColor()));
 
-  topLayout->setRowStretch(2,1);
+  QGroupBox *categoryGroup = new QGroupBox(1,Horizontal,i18n("Categories"),
+                                           topFrame);
+  topLayout->addMultiCellWidget(categoryGroup,2,2,0,1);
+
+  mCategoryCombo = new QComboBox(categoryGroup);
+  mCategoryCombo->insertStringList(KOPrefs::instance()->mCustomCategories);
+  connect(mCategoryCombo,SIGNAL(activated(int)),SLOT(updateCategoryColor()));
+
+  QHBox *categoryBox = new QHBox(categoryGroup);
+  categoryBox->setSpacing(spacingHint());
+
+  mCategoryColor = new QFrame(categoryBox);
+  mCategoryColor->setFrameStyle(QFrame::Panel|QFrame::Plain);
   
-
-// Disabled because color settings are not used. Has to be reimplemented.
-#if 0
-//	KPropColor *color;
-	KPropGroup *group;
-	
-	QVBoxLayout *layout = new QVBoxLayout( colorsFrame, 4 );
-/*
-	QPushButton *button = new QPushButton( "Set System Default Colors", colorsFrame );
-	button->setFixedSize( button->sizeHint() );
-	connect( button, SIGNAL( clicked() ), SLOT( setColorDefaults() ) );
-	layout->addWidget( button,0,AlignLeft );
-*/
-	QCheckBox *checkbox = new KPropCheck( colorsFrame, i18n("Use system default colors"), "DefaultColors", "Colors");  
-	connectConfig( checkbox );
-	connect( checkbox, SIGNAL( toggled(bool) ), SLOT( toggleSystemColors(bool) ) );
-	layout->addWidget( checkbox );
-	
-	layout->addWidget( group = new KPropGroup( colorsFrame, i18n("Appointment & Checklist items")) );
-	group->addWidget( color1 = new KPropColor( group, i18n("Background"), 50, 
-			koconf.windowColor, "AptBackground", "Colors" ) );
-	connectConfig( color1 );
-	group->addWidget( color2 = new KPropColor( group, i18n("Text"), 50, 
-			koconf.textColor, "AptText", "Colors" ) );
-	connectConfig( color2 );
-	group->addWidget( color3 = new KPropColor( group, i18n("Handle Selected"), 50, 
-						   koconf.activeTitleColor, "AptSelected", "Colors" ) );
-	connectConfig( color3 );
-	group->addWidget( color4 = new KPropColor( group, i18n("Handle Unselected"), 50, 
-			koconf.inactiveTitleColor, "AptUnselected", "Colors" ) );
-	connectConfig( color4 );
-	group->addWidget( color5 = new KPropColor( group, i18n("Handle Active Apt."), 50, 
-			koconf.activeTextColor, "AptActive", "Colors" ) );
-	connectConfig( color5 );
-
-	layout->addWidget( group = new KPropGroup( colorsFrame, "Other" ) );
-	group->addWidget( color6 = new KPropColor( group, i18n("Sheet background"), 50, 
-			koconf.backgroundColor.dark(120), "SheetBackground", "Colors" ) );
-	connectConfig( color6 );
-	group->addWidget( color7 = new KPropColor( group, i18n("Calendar Background"), 50, 
-			koconf.windowColor, "CalBackground", "Colors" ) );
-	connectConfig( color7 );
-	group->addWidget( color8 = new KPropColor( group, i18n("Calendar Date Text"), 50, 
-			koconf.textColor, "CalText", "Colors" ) );
-	connectConfig( color8 );
-	group->addWidget( color9 = new KPropColor( group, i18n("Calendar Date Selected"), 50, 
-			koconf.selectColor, "CalSelected", "Colors" ) );
-	connectConfig( color9 );
-
-
-/*	
-	KPropColor *colorProp = new KPropColor( colorsFrame[A, 
-						i18n("Appointment"), 50, 
-						"List Color", "Colors" );
-	connectConfig(colorProp);
-	layout->addWidget(colorProp);
-
-	colorProp = new KPropColor(colorsFrame, 
-				   i18n("Today"), 50,
-				   "Today Color", "Colors");
-	connectConfig(colorProp);
-	layout->addWidget(colorProp);
-
-	colorProp = new KPropColor(colorsFrame, 
-				   i18n("Holidays"), 50, 
-				   "Holiday Color", "Colors");
-	connectConfig(colorProp);
-	layout->addWidget(colorProp);
-*/
-// 	layout->addStretch();
-#endif
+  QPushButton *categoryButton = new QPushButton(i18n("Select Color"),
+                                                categoryBox);
+  connect(categoryButton,SIGNAL(clicked()),SLOT(selectCategoryColor()));
+  updateCategoryColor();
+  
+  topLayout->setRowStretch(3,1);
 }
 
 void KOOptionsDialog::selectHolidayColor()
@@ -366,6 +279,27 @@ void KOOptionsDialog::selectHighlightColor()
   }
 }
 
+void KOOptionsDialog::selectCategoryColor()
+{
+  QColor myColor;
+  int result = KColorDialog::getColor( myColor );
+  if ( result == KColorDialog::Accepted ) {
+    mCategoryColor->setBackgroundColor(myColor);
+    mCategoryDict.insert(mCategoryCombo->currentText(),new QColor(myColor));
+  }
+}
+
+void KOOptionsDialog::updateCategoryColor()
+{
+  QString cat = mCategoryCombo->currentText();
+  QColor *color = mCategoryDict.find(cat);
+  if (!color) {
+    color = KOPrefs::instance()->categoryColor(cat);
+  }
+  if (color) {
+    mCategoryColor->setBackgroundColor(*color);
+  }
+}
 
 void KOOptionsDialog::setupPrinterTab()
 {
@@ -429,40 +363,6 @@ void KOOptionsDialog::setupPrinterTab()
 void KOOptionsDialog::showPrinterTab()
 {
   showPage(pageIndex(mPrinterTab));
-}
-
-
-void KOOptionsDialog::setColorDefaults()
-{
-#if 0
-  KConfig config(locate("config", "korganizerrc")); 
-	config.setGroup( "Colors" );
-
-	color1->setLabelColor( koconf.windowColor);
-	color2->setLabelColor( koconf.textColor);
-	color3->setLabelColor( koconf.selectColor);
-	color4->setLabelColor( koconf.inactiveTextColor);
-	color5->setLabelColor( koconf.activeTextColor);
-	color6->setLabelColor( koconf.backgroundColor.dark(120));
-	color7->setLabelColor( koconf.windowColor);
-	color8->setLabelColor( koconf.textColor);
-	color9->setLabelColor( koconf.selectColor);
-#endif
-}
-
-void KOOptionsDialog::applyColorDefaults()
-{
-#if 0
-	emit setConfig();
-#endif
-}
-
-void KOOptionsDialog::toggleSystemColors( bool syscol )
-{
-	if( syscol )
-		setColorDefaults();
-//	else
-//		emit config();
 }
 
 
@@ -550,6 +450,13 @@ void KOOptionsDialog::writeConfig()
   KOPrefs::instance()->mHolidayColor = mHolidayColor->backgroundColor();
   KOPrefs::instance()->mHighlightColor = mHighlightColor->backgroundColor();
 
+  QDictIterator<QColor> it(mCategoryDict);
+  while (it.current()) {
+    KOPrefs::instance()->setCategoryColor(it.currentKey(),*it.current());
+    ++it;
+  }
+  mCategoryDict.clear();
+
   KOPrefs::instance()->mPrinter = mPrinterCombo->currentText();
   KOPrefs::instance()->mPaperSize = 
       mPaperSizeGroup->id(mPaperSizeGroup->selected());
@@ -574,3 +481,11 @@ void KOOptionsDialog::slotOk()
   accept();
 }
 
+void KOOptionsDialog::slotDefault()
+{
+  if (KMessageBox::warningContinueCancel(this,
+      i18n("You are about to set all preferences to default values. All "
+      "custom modifications will be lost."),i18n("Setting Default Preferences"),
+      i18n("Continue"))
+    == KMessageBox::Continue) setDefaults(); 
+}

@@ -36,7 +36,7 @@ libkorganizer_la_SOURCES =  calobject.cpp catdlg.cpp \
         kobaseview.cpp kolistview.cpp \
 	koapp.cpp exportwebdialog.cpp korganizer_part.cpp korganizer.cpp \
         kooptionsdialog.cpp koeventeditor.cpp koeditorwidgets.cpp \
-        kotodoeditor.cpp koprefs.cpp
+        kotodoeditor.cpp koprefs.cpp koeventviewer.cpp
 
 alarmd_SOURCES = alarmdaemon.cpp alarmmain.cpp calobject.cpp koevent.cpp \
 	scanholiday.c parseholiday.c vcaldrag.cpp koprefs.cpp alarmapp.cpp
@@ -57,7 +57,7 @@ noinst_HEADERS = komonthview.h misc.h calobject.h \
         kobaseview.h kolistview.h \
 	alarmapp.h koapp.h exportwebdialog.h korganizer_part.h korganizer.h \
         kooptionsdialog.h koeventeditor.h koeditorwidgets.h \
-        kotodoeditor.h koprefs.h alarmdaemon.h 
+        kotodoeditor.h koprefs.h alarmdaemon.h koeventviewer.h
 
 
 SUBDIRS = versit \
