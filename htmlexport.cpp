@@ -515,19 +515,19 @@ QString HtmlExport::breakString(const QString &text)
 QString HtmlExport::cleanChars(const QString &text)
 {
   QString txt = text;
-  txt = txt.replace( QRegExp("&"), "&amp;" );
-  txt = txt.replace( QRegExp("<"), "&lt;" );
-  txt = txt.replace( QRegExp(">"), "&gt;" );
-  txt = txt.replace( QRegExp("\""), "&quot;" );
-  txt = txt.replace( QRegExp("ä"), "&auml;" );
-  txt = txt.replace( QRegExp("Ä"), "&Auml;" );
-  txt = txt.replace( QRegExp("ö"), "&ouml;" );
-  txt = txt.replace( QRegExp("Ö"), "&Ouml;" );
-  txt = txt.replace( QRegExp("ü"), "&uuml;" );
-  txt = txt.replace( QRegExp("Ü"), "&Uuml;" );
-  txt = txt.replace( QRegExp("ß"), "&szlig;" );
-  txt = txt.replace( QRegExp("¤"), "&euro;" );
-  txt = txt.replace( QRegExp("é"), "&eacute;" );
+  txt = txt.replace( "&", "&amp;" );
+  txt = txt.replace( "<", "&lt;" );
+  txt = txt.replace( ">", "&gt;" );
+  txt = txt.replace( "\"", "&quot;" );
+  txt = txt.replace( "ä", "&auml;" );
+  txt = txt.replace( "Ä", "&Auml;" );
+  txt = txt.replace( "ö", "&ouml;" );
+  txt = txt.replace( "Ö", "&Ouml;" );
+  txt = txt.replace( "ü", "&uuml;" );
+  txt = txt.replace( "Ü", "&Uuml;" );
+  txt = txt.replace( "ß", "&szlig;" );
+  txt = txt.replace( "¤", "&euro;" );
+  txt = txt.replace( "é", "&eacute;" );
 
   return txt;
 }
