@@ -755,12 +755,12 @@ void KOAgendaView::fillAgenda()
 
   QPtrList<Event> dayEvents;
   int curCol;  // current column of agenda, i.e. the X coordinate
-  QDate currentDate = mStartDate;
-
 
   mAgenda->setDateList(mSelectedDates);
 
-  for(curCol=0;curCol<int(mSelectedDates.count());++curCol) {
+  QDateListIterator dit(mSelectedDates);
+  for(curCol=0; dit.current(); ++dit, ++curCol)  {
+    QDate currentDate = *dit.current();
 //    kdDebug() << "KOAgendaView::fillAgenda(): " << currentDate.toString()
 //              << endl;
 
@@ -816,8 +816,6 @@ void KOAgendaView::fillAgenda()
       }
     }
 //    if (numEvent == 0) kdDebug() << " No events" << endl;
-
-    currentDate = currentDate.addDays(1);
   }
 
   mAgenda->checkScrollBoundaries();
@@ -849,15 +847,20 @@ void KOAgendaView::printPreview(CalPrinter *calPrinter, const QDate &fd,
 
 void KOAgendaView::newEvent(int gx, int gy)
 {
-  QDate day = mStartDate.addDays(gx);
-  QTime time = mAgenda->gyToTime(gy);
-  QDateTime dt(day,time);
-  emit newEventSignal(dt);
+    QDate *day = mSelectedDates.at(gx);
+    if(day == NULL) return;
+
+    QTime time = mAgenda->gyToTime(gy);
+    QDateTime dt(*day,time);
+    emit newEventSignal(dt);
 }
 
 void KOAgendaView::newEventAllDay(int gx, int )
 {
-  emit newEventSignal(mStartDate.addDays(gx));
+    QDate *day = mSelectedDates.at(gx);
+    if(day == NULL) return;
+
+    emit newEventSignal(*day);
 }
 
 void KOAgendaView::showAgendaPopup(Event *event)
