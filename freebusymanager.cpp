@@ -308,6 +308,9 @@ bool FreeBusyManager::retrieveFreeBusy( const QString &email )
 
   KURL sourceURL = freeBusyUrl( email );
 
+  kdDebug() << "FreeBusyManager::retrieveFreeBusy(): url: " << sourceURL.url()
+            << endl;
+
   FreeBusyDownloadJob* job = new FreeBusyDownloadJob( email, sourceURL, this,
                                                       "freebusy_download_job" );
   connect( job, SIGNAL( freeBusyDownloaded( KCal::FreeBusy *, const QString & ) ),
@@ -318,6 +321,15 @@ bool FreeBusyManager::retrieveFreeBusy( const QString &email )
 
 KURL FreeBusyManager::freeBusyUrl( const QString &email )
 {
+  QString configFile = locateLocal( "appdata", "freebusyurls" );
+  KConfig cfg( configFile );
+
+  cfg.setGroup( email );
+  QString url = cfg.readEntry( "url" );
+  if ( !url.isEmpty() ) {
+    return url;
+  }
+
   KURL sourceURL;
 
   // Sanity check: Don't download if it's not a correct email

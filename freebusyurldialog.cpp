@@ -24,14 +24,19 @@
 
 #include "freebusyurldialog.h"
 
+#include <libkcal/attendee.h>
+
 #include <klineedit.h>
 #include <klocale.h>
 #include <kdebug.h>
+#include <kstandarddirs.h>
+#include <kconfig.h>
 
 #include <qlayout.h>
 #include <qlabel.h>
 
-FreeBusyUrlDialog::FreeBusyUrlDialog( QWidget *parent, const char *name )
+FreeBusyUrlDialog::FreeBusyUrlDialog( KCal::Attendee *attendee, QWidget *parent,
+                                      const char *name )
   : KDialogBase( Plain, i18n("Edit Free/Busy Location"), Ok|Cancel, Ok, parent,
                  name, true, false )
 {
@@ -39,7 +44,7 @@ FreeBusyUrlDialog::FreeBusyUrlDialog( QWidget *parent, const char *name )
 
   QBoxLayout *topLayout = new QVBoxLayout( topFrame, 0, spacingHint() );
 
-  mWidget = new FreeBusyUrlWidget( topFrame );
+  mWidget = new FreeBusyUrlWidget( attendee, topFrame );
   topLayout->addWidget( mWidget );
 
   mWidget->loadConfig();
@@ -52,23 +57,47 @@ void FreeBusyUrlDialog::slotOk()
 }
 
 
-FreeBusyUrlWidget::FreeBusyUrlWidget( QWidget *parent, const char *name )
-  : QWidget( parent, name )
+FreeBusyUrlWidget::FreeBusyUrlWidget( KCal::Attendee *attendee, QWidget *parent,
+                                      const char *name )
+  : QWidget( parent, name ), mAttendee( attendee )
 {
   QBoxLayout *topLayout = new QVBoxLayout( this );
+  topLayout->setSpacing( KDialog::spacingHint() );
   
+  QLabel *label = new QLabel(
+      i18n("Location of Free/Busy information for %1 <%2>:")
+      .arg( mAttendee->name() ).arg( mAttendee->email() ), this );
+  topLayout->addWidget( label );
+
   mUrlEdit = new KLineEdit( this );
   topLayout->addWidget( mUrlEdit );
+
+  QString configFile = locateLocal( "appdata", "freebusyurls" );
+  mConfig = new KConfig( configFile );
+}
+
+FreeBusyUrlWidget::~FreeBusyUrlWidget()
+{
+  delete mConfig;
 }
 
 void FreeBusyUrlWidget::loadConfig()
 {
   kdDebug() << "FreeBusyUrlWidget::loadConfig()" << endl;
+
+  mConfig->setGroup( mAttendee->email() );
+  
+  mUrlEdit->setText( mConfig->readEntry( "url" ) );
 }
 
 void FreeBusyUrlWidget::saveConfig()
 {
   kdDebug() << "FreeBusyUrlWidget::saveConfig()" << endl;
+
+  mConfig->setGroup( mAttendee->email() );
+
+  mConfig->writeEntry( "url", mUrlEdit->text() );
+  mConfig->sync();
 }
 
 #include "freebusyurldialog.moc"

@@ -225,13 +225,17 @@ void KOEventEditor::loadDefaults()
 
 bool KOEventEditor::processInput()
 {
+  kdDebug(5850) << "KOEventEditor::processInput()" << endl;
+
   if ( !validateInput() ) return false;
 
   if ( mEvent ) {
     bool rc = true;
     Event *event = mEvent->clone();
     Event *oldEvent = mEvent->clone();
+    kdDebug(5850) << "KOEventEditor::processInput() write event." << endl;
     writeEvent( event );
+    kdDebug(5850) << "KOEventEditor::processInput() event written." << endl;
 
     if( *mEvent == *event )
       // Don't do anything

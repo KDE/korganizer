@@ -28,12 +28,18 @@
 
 class FreeBusyUrlWidget;
 class KLineEdit;
+class KConfig;
+
+namespace KCal {
+class Attendee;
+}
 
 class FreeBusyUrlDialog : public KDialogBase
 {
     Q_OBJECT
   public:
-    FreeBusyUrlDialog( QWidget *parent = 0, const char *name = 0 );
+    FreeBusyUrlDialog( KCal::Attendee *, QWidget *parent = 0,
+                       const char *name = 0 );
 
   public slots:
     void slotOk();
@@ -46,13 +52,17 @@ class FreeBusyUrlWidget : public QWidget
 {
     Q_OBJECT
   public:
-    FreeBusyUrlWidget( QWidget *parent = 0, const char *name = 0 );
+    FreeBusyUrlWidget( KCal::Attendee *, QWidget *parent = 0,
+                       const char *name = 0 );
+    ~FreeBusyUrlWidget();
 
     void loadConfig();
     void saveConfig();
 
   private:
     KLineEdit *mUrlEdit;
+    KConfig *mConfig;
+    KCal::Attendee *mAttendee;
 };
 
 #endif
