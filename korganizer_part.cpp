@@ -148,7 +148,7 @@ KOrganizerPart::KOrganizerPart(QWidget *parentWidget, const char *widgetName,
 
   KConfig *config = KOGlobals::config();
   config->setGroup("General");
-  QString urlString = config->readEntry("Active Calendar");
+  QString urlString = config->readPathEntry("Active Calendar");
 
   // Force alarm daemon to load active calendar
   if (!urlString.isEmpty()) {

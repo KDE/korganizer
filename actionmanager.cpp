@@ -714,7 +714,7 @@ bool ActionManager::openURL(const KURL &url,bool merge)
         mFile = tmpFile;
 	KConfig *config = KOGlobals::config();
 	config->setGroup("General");
-	QString active = config->readEntry("Active Calendar");
+	QString active = config->readPathEntry("Active Calendar");
         if (KURL(active) == mURL) setActive(true);
         else setActive(false);
         setTitle();
@@ -894,7 +894,7 @@ bool ActionManager::saveAsURL(const KURL &url)
     KIO::NetAccess::removeTempFile(fileOrig);
     KConfig *config = KOGlobals::config();
     config->setGroup("General");
-    QString active = config->readEntry("Active Calendar");
+    QString active = config->readPathEntry("Active Calendar");
     if (KURL(active) == mURL) {
       setActive(true);
       emit calendarActivated(mMainWindow);
@@ -984,18 +984,18 @@ KURL ActionManager::getSaveURL()
 
 void ActionManager::saveProperties(KConfig *config)
 {
-  config->writeEntry("Calendar",mURL.url());
+  config->writePathEntry("Calendar",mURL.url());
 }
 
 void ActionManager::readProperties(KConfig *config)
 {
-  QString calendarUrl = config->readEntry("Calendar");
+  QString calendarUrl = config->readPathEntry("Calendar");
   if (!calendarUrl.isEmpty()) {
     KURL u(calendarUrl);
     openURL(u);
     KConfig *config = KOGlobals::config();
     config->setGroup("General");
-    QString active = config->readEntry("Active Calendar");
+    QString active = config->readPathEntry("Active Calendar");
     if (active == calendarUrl) setActive(true);
   }
 }
@@ -1107,7 +1107,7 @@ void ActionManager::writeActiveState()
 {
   KConfig *config = KOGlobals::config();
   config->setGroup("General");
-  config->writeEntry("Active Calendar",mURL.url());
+  config->writePathEntry("Active Calendar",mURL.url());
   config->sync();
 }
 

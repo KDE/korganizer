@@ -108,7 +108,7 @@ KOrganizer::KOrganizer( bool document, const char *name )
     if ( manager->isEmpty() ) {
       KConfig *config = KOGlobals::config();
       config->setGroup("General");
-      QString fileName = config->readEntry( "Active Calendar" );
+      QString fileName = config->readPathEntry( "Active Calendar" );
 
       QString resourceName;
       if ( fileName.isEmpty() ) {

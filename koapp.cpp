@@ -148,7 +148,7 @@ int KOrganizerApp::newInstance()
 #if 0
     KConfig *config = KOGlobals::config();
     config->setGroup("General");
-    QString urlString = config->readEntry("Active Calendar");
+    QString urlString = config->readPathEntry("Active Calendar");
 
     // Force alarm daemon to load active calendar
     KOGlobals::self()->alarmClient()->addCalendar( urlString );

@@ -254,8 +254,8 @@ void KOPrefs::usrReadConfig()
   if (mCustomCategories.isEmpty()) setCategoryDefaults();
 
   config()->setGroup("Personal Settings");
-  mName = config()->readEntry("user_name","");
-  mEmail = config()->readEntry("user_email","");
+  mName = config()->readEntry("user_name");
+  mEmail = config()->readEntry("user_email");
   fillMailDefaults();
 
   config()->setGroup("Category Colors");
