@@ -85,12 +85,18 @@ bool ListItemVisitor::visit(Event *e)
   if ( e->isAlarmEnabled() ) {
     static const QPixmap alarmPxmp = KOGlobals::self()->smallIcon("bell");
     mItem->setPixmap(1,alarmPxmp);
+    mItem->setSortKey(1,"1");
   }
+  else
+    mItem->setSortKey(1,"0");
 
   if ( e->doesRecur() ) {
     static const QPixmap recurPxmp = KOGlobals::self()->smallIcon("recur");
     mItem->setPixmap(2,recurPxmp);
+    mItem->setSortKey(2,"1");
   }
+  else
+    mItem->setSortKey(2,"0");
 
   mItem->setText( 3,e->dtStartDateStr());
   if (e->doesFloat()) mItem->setText(4, i18n("---")); else mItem->setText( 4, e->dtStartTimeStr() );
@@ -101,10 +107,10 @@ bool ListItemVisitor::visit(Event *e)
   mItem->setText( 9,e->categoriesStr());
 
   QString key = e->dtStart().toString(Qt::ISODate);
-  mItem->setSortKey(1,key);
+  mItem->setSortKey(3,key);
 
   key = e->dtEnd().toString(Qt::ISODate);
-  mItem->setSortKey(3,key);
+  mItem->setSortKey(5,key);
 
   return true;
 }
@@ -117,12 +123,18 @@ bool ListItemVisitor::visit(Todo *t)
   if ( t->isAlarmEnabled() ) {
     static const QPixmap alarmPxmp = KOGlobals::self()->smallIcon("bell");
     mItem->setPixmap(1,alarmPxmp);
+    mItem->setSortKey(1, "1");
   }
+  else
+    mItem->setSortKey(1, "0");
   
   if ( t->doesRecur() ) {
     static const QPixmap recurPxmp = KOGlobals::self()->smallIcon("recur");
     mItem->setPixmap(2,recurPxmp);
+    mItem->setSortKey(2, "1");
   }
+  else
+    mItem->setSortKey(2, "0");
   
   if (t->hasStartDate()) {
     mItem->setText(3,t->dtStartDateStr());
