@@ -1,9 +1,9 @@
 #include <qlayout.h>
 
-#include <koglobals.h>
 #include <kconfig.h>
 
 #include "timespanview.h"
+#include "koglobals.h"
 
 #include "kotimespanview.h"
 #include "kotimespanview.moc"

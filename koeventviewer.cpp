@@ -34,9 +34,9 @@
 #ifndef KORG_NODCOP
 #include <dcopclient.h>
 #include "korganizer.h"
+#include "actionmanager.h"
 #endif
 
-#include "actionmanager.h"
 #include "koeventviewer.h"
 #include "koeventviewer.moc"
 

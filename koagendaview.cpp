@@ -38,11 +38,11 @@
 
 #include <kapplication.h>
 #include <kdebug.h>
-#include <koglobals.h>
 #include <kstandarddirs.h>
 #include <kiconloader.h>
 #include <klocale.h>
 #include <kconfig.h>
+#include <kglobal.h>
 
 #include <libkcal/calendar.h>
 #include <libkcal/icaldrag.h>
@@ -50,6 +50,7 @@
 
 #include <kcalendarsystem.h>
 
+#include "koglobals.h"
 #ifndef KORG_NOPLUGINS
 #include "kocore.h"
 #endif
