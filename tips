@@ -16,7 +16,7 @@ Languages, on the Time & Dates tab.
 <tip category="KOrganizer|General">
 <html>
 <p>...that you can store your calendar on an FTP server? Use the standard file
-dialog to save the calendar to a URL like "ftp://username@ftpserver/filename".
+dialog to save the calendar to a URL like <b>ftp://username@ftpserver/filename</b>.
 You can make your calendar active and load and save it as if it were local.
 Just make sure that no two KOrganizer applications are working on the same file, at
 the same time.
@@ -26,6 +26,6 @@ the same time.
 <tip category="KOrganizer|General">
 <html>
 <p>...that you can create hierarchical To-Dos by clicking with the right mouse
-button on an existing To-Do and selecting "New Sub-To-Do" from the context menu?
+button on an existing To-Do and selecting <b>New Sub-To-Do</b> from the context menu?
 </html>
 </tip>
