@@ -110,8 +110,6 @@ class ResourceView : public CalendarViewExtension
     ResourceItem *findItem( ResourceCalendar * );
     ResourceItem *currentItem();
 
-    QString infoText( ResourceCalendar *r );
-
   protected slots:
     void addResource();
     void removeResource();
