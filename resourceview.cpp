@@ -33,6 +33,7 @@
 #include <kresources/configdialog.h>
 #include <kinputdialog.h>
 #include <libkcal/calendarresources.h>
+#include <resourceremote.h>
 
 #include <qhbox.h>
 #include <qlayout.h>
@@ -406,6 +407,12 @@ QString ResourceView::infoText( ResourceCalendar *r )
   KRES::Factory *factory = KRES::Factory::self( "calendar" );
   QString type = factory->typeName( r->type() );
   txt += i18n("Type: %1").arg( type );
+
+  if ( r->type() == "remote" ) {
+    txt += "<br>";
+    ResourceRemote *remote = static_cast<ResourceRemote *>( r );
+    txt += i18n("URL: %1").arg( remote->downloadUrl().prettyURL() );
+  }
 
   txt += "</qt>";
 
