@@ -129,8 +129,6 @@ class KOrganizer : public KParts::MainWindow, virtual public KOrganizerIface,
     /** show status message */
     void showStatusMessage( const QString & );
 
-    void slotConfigChanged();
-
   protected slots:
 
     /** using the KConfig associated with the kapp variable, read in the
@@ -171,8 +169,6 @@ class KOrganizer : public KParts::MainWindow, virtual public KOrganizerIface,
     void readProperties( KConfig * );
 
   private:
-    Calendar *mCalendar;
-    CalendarResources *mCalendarResources;
     CalendarView *mCalendarView;  // Main view widget
     KOrg::Part::List mParts; // List of parts loaded
 
@@ -181,8 +177,6 @@ class KOrganizer : public KParts::MainWindow, virtual public KOrganizerIface,
     // status bar ids
     enum { ID_HISTORY, ID_GENERAL, ID_ACTIVE, ID_MESSAGES_IN, ID_MESSAGES_OUT };
     ActionManager *mActionManager;
-
-    bool mIsClosing;
 };
 
 #endif

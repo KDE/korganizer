@@ -1,6 +1,7 @@
 /*
     This file is part of KOrganizer.
-    Copyright (c) 2000 Cornelius Schumacher <schumacher@kde.org>
+
+    Copyright (c) 2000,2003 Cornelius Schumacher <schumacher@kde.org>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -49,8 +50,8 @@ class KOrganizerPart: public KParts::ReadOnlyPart,
 {
     Q_OBJECT
   public:
-    KOrganizerPart(QWidget *parentWidget, const char *widgetName,
-                   QObject *parent, const char *name, const QStringList & );
+    KOrganizerPart( QWidget *parentWidget, const char *widgetName,
+                    QObject *parent, const char *name, const QStringList & );
     virtual ~KOrganizerPart();
 
     static KAboutData *createAboutData();
@@ -58,11 +59,11 @@ class KOrganizerPart: public KParts::ReadOnlyPart,
     virtual KOrg::CalendarViewBase *view() const;
 
     /** Load calendar file from URL. Merge into current calendar, if \a merge is true. */
-    virtual bool openURL(const KURL &url,bool merge=false);
+    virtual bool openURL( const KURL &url, bool merge = false );
     /** Save calendar file to URL of current calendar */
     virtual bool saveURL();
     /** Save calendar file to URL */
-    virtual bool saveAsURL(const KURL & kurl);
+    virtual bool saveAsURL( const KURL &kurl );
 
     /** Get current URL */
     virtual KURL getCurrentURL() const;
@@ -70,34 +71,30 @@ class KOrganizerPart: public KParts::ReadOnlyPart,
     virtual KXMLGUIFactory *mainGuiFactory() { return factory(); }
     virtual QWidget *topLevelWidget();
     virtual ActionManager *actionManager();
-    virtual void addPluginAction( KAction* );
-    virtual void showStatusMessage(const QString& message);
+    virtual void addPluginAction( KAction * );
+    virtual void showStatusMessage( const QString &message );
 
     void setTitle() {};
 
   public slots:
     void slotChangeInfo( Incidence * );
-    void slotConfigChanged();
 
   protected:
     virtual bool openFile();
 
   protected slots:
-    void saveCalendar();
     void startCompleted( KProcess * );
 
     void configureKeyBindings();
 
   private:
-    KCal::Calendar *mCalendar;
-    CalendarResources *mCalendarResources;
-    CalendarView *mWidget;
+    CalendarView *mView;
     ActionManager *mActionManager;
     KOrganizerBrowserExtension *mBrowserExtension;
     KParts::StatusBarExtension *mStatusBarExtension;
 
   signals:
-    void textChanged( const QString& );
+    void textChanged( const QString & );
 };
 
 class KOrganizerBrowserExtension : public KParts::BrowserExtension
@@ -105,7 +102,7 @@ class KOrganizerBrowserExtension : public KParts::BrowserExtension
     Q_OBJECT
     friend class KOrganizerPart;
   public:
-    KOrganizerBrowserExtension(KOrganizerPart *parent);
+    KOrganizerBrowserExtension( KOrganizerPart *parent );
     virtual ~KOrganizerBrowserExtension();
 };
 

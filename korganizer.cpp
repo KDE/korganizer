@@ -86,8 +86,7 @@ using namespace KOrg;
 KOrganizer::KOrganizer( const char *name )
   : DCOPObject( "KOrganizerIface" ),
     KParts::MainWindow( 0, name ),
-    KOrg::MainWindow(),
-    mIsClosing( false )
+    KOrg::MainWindow()
 {
   kdDebug(5850) << "KOrganizer::KOrganizer()" << endl;
   KOCore::self()->setXMLGUIClient( this );
@@ -102,7 +101,6 @@ KOrganizer::KOrganizer( const char *name )
 KOrganizer::~KOrganizer()
 {
   delete mActionManager;
-  delete mCalendar;
 }
 
 void KOrganizer::init( bool document )
@@ -115,67 +113,11 @@ void KOrganizer::init( bool document )
   // Create calendar object, which manages all calendar information associated
   // with this calendar view window.
   if ( hasDocument() ) {
-    mCalendar = new CalendarLocal(KOPrefs::instance()->mTimeZoneId);
-    mCalendarResources = 0;
-    mCalendarView->setCalendar( mCalendar );
-    mCalendarView->readSettings();
+    mActionManager->createCalendarLocal();
   } else {
-    mCalendarResources = new CalendarResources( KOPrefs::instance()->mTimeZoneId );
-    mCalendar = mCalendarResources;
+    mActionManager->createCalendarResources();
     setCaption( i18n("Calendar") );
-
-    CalendarResourceManager *manager = mCalendarResources->resourceManager();
-
-    slotConfigChanged();
-
-    if ( manager->isEmpty() ) {
-      KConfig *config = KOGlobals::config();
-      config->setGroup("General");
-      QString fileName = config->readPathEntry( "Active Calendar" );
-
-      QString resourceName;
-      if ( fileName.isEmpty() ) {
-        fileName = locateLocal( "appdata", "std.ics" );
-        resourceName = i18n("Default KOrganizer resource");
-      } else {
-        resourceName = i18n("Active Calendar");
-      }
-
-      kdDebug(5850) << "Using as default resource: '" << fileName << "'" << endl;
-
-      ResourceCalendar *defaultResource = new ResourceLocal( fileName );
-      defaultResource->setResourceName( resourceName );
-
-      manager->add( defaultResource );
-      manager->setStandardResource( defaultResource );
-    }
-
-    kdDebug(5850) << "CalendarResources used by KOrganizer:" << endl;
-    CalendarResourceManager::Iterator it;
-    for( it = manager->begin(); it != manager->end(); ++it ) {
-      (*it)->dump();
-    }
-
-    mCalendarView->setCalendar( mCalendarResources );
-    mCalendarView->readSettings();
-
-    // Construct the groupware object
-    KOGroupware::create( mCalendarView, mCalendarResources );
-
-    ResourceViewFactory factory( manager, mCalendarView );
-    mCalendarView->addExtension( &factory );
-
-    connect( mCalendarResources, SIGNAL( calendarChanged() ),
-             mCalendarView, SLOT( slotCalendarChanged() ) );
-
-    connect( mCalendarView, SIGNAL( configChanged() ),
-             SLOT( slotConfigChanged() ) );
-  }
-
-  mCalendar->setOwner( KOPrefs::instance()->fullName() );
-  mCalendar->setEmail( KOPrefs::instance()->email() );
-  // setting fullName and email do not really count as modifying the calendar
-  mCalendarView->setModified(false);
+  }    
 
   mActionManager->init();
   connect( mActionManager, SIGNAL( actionNew( const KURL & ) ),
@@ -208,9 +150,10 @@ void KOrganizer::init( bool document )
            SLOT( showStatusMessage( const QString & ) ) );
 
   mActionManager->loadParts();
-  kdDebug(5850) << "KOrganizer::KOrganizer() done" << endl;
 
   setStandardToolBarMenuEnabled( true );
+
+  kdDebug(5850) << "KOrganizer::KOrganizer() done" << endl;
 }
 
 void KOrganizer::newMainWindow( const KURL &url )
@@ -304,26 +247,7 @@ bool KOrganizer::queryClose()
 {
   kdDebug(5850) << "KOrganizer::queryClose()" << endl;
 
-  bool close = true;
-
-  if ( hasDocument() ) {
-    close = mActionManager->saveModifiedURL();
-  } else {
-    if ( !mIsClosing ) {
-      kdDebug(5850) << "!mIsClosing" << endl;
-      mCalendar->save();
-      // TODO: Put main window into a state indicating final saving.
-      mIsClosing = true;
-      connect( mCalendar, SIGNAL( calendarSaved() ), SLOT( close() ) );
-    }
-    if ( mCalendar->isSaving() ) {
-      kdDebug(5850) << "KOrganizer::queryClose(): isSaving" << endl;
-      close = false;
-    } else {
-      kdDebug(5850) << "KOrganizer::queryClose(): close = true" << endl;
-      close = true;
-    }
-  }
+  bool close = mActionManager->queryClose();
 
   // Write configuration. I don't know if it really makes sense doing it this
   // way, when having opened multiple calendars in different CalendarViews.
@@ -476,16 +400,6 @@ bool KOrganizer::mergeURL( QString url )
 bool KOrganizer::saveAsURL( QString url )
 {
   return mActionManager->saveAsURL( url );
-}
-
-void KOrganizer::slotConfigChanged()
-{
-  if ( mCalendarResources ) {
-    if ( KOPrefs::instance()->mDestination == KOPrefs::askDestination )
-      mCalendarResources->setAskDestinationPolicy();
-    else
-      mCalendarResources->setStandardDestinationPolicy();
-  }
 }
 
 void KOrganizer::configureKeyBindings()

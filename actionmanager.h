@@ -38,6 +38,12 @@
 #include "calendarview.h"
 #include "kcalendariface.h"
 
+namespace KCal
+{
+  class Calendar;
+  class CalendarResources;
+}
+
 class KAction;
 class KActionCollection;
 class KProcess;
@@ -71,16 +77,31 @@ class ActionManager : public QObject, public KCalendarIface
     CalendarView *view() const { return mCalendarView; }
 
     /**
+      Create Calendar object based on local file and set it on the view.
+    */
+    void createCalendarLocal();
+    /**
+      Create Calendar object based on the resource framework and set it on the
+      view.
+    */
+    void createCalendarResources();
+
+    /**
+      Save calendar to disk.
+    */
+    void saveCalendar();
+
+    /**
       Open calendar file from URL. Merge into current calendar, if \a merge is
       true.
     */
-    bool openURL(const KURL &url,bool merge=false);
+    bool openURL( const KURL &url, bool merge = false );
     /** Merge calendar file from URL to current calendar */
-    bool mergeURL(const KURL &url);
+    bool mergeURL( const KURL &url );
     /** Save calendar file to URL of current calendar */
     bool saveURL();
     /** Save calendar file to URL */
-    bool saveAsURL(const KURL & kurl);
+    bool saveAsURL( const KURL &kurl );
     /** Save calendar if it is modified by the user. Ask user what to do. */
     bool saveModifiedURL();
     /** Get current URL */
@@ -88,23 +109,23 @@ class ActionManager : public QObject, public KCalendarIface
     static KOWindowList* getWindowList() { return windowList; }
 
     /** Is there a instance with this URL? */
-    static KOrg::MainWindow* findInstance(const KURL &url);
-    static void setStartedKAddressBook(bool tmpBool) { startedKAddressBook = tmpBool; }
+    static KOrg::MainWindow* findInstance( const KURL &url );
+    static void setStartedKAddressBook( bool tmpBool ) { startedKAddressBook = tmpBool; }
     /** Open calendar file from URL */
-    bool openURL(QString url);
+    bool openURL( QString url );
     /** Open calendar file from URL */
-    bool mergeURL(QString url);
+    bool mergeURL( QString url );
     /** Save calendar file to URL */
-    bool saveAsURL(QString url);
+    bool saveAsURL( QString url );
     /** Close calendar file opened from URL */
     void closeURL();
     /** Get current URL as QString */
     QString getCurrentURLasString() const;
     /** Delete event with the given unique id from current calendar. */
-    virtual bool deleteEvent(QString uid);
+    virtual bool deleteEvent( QString uid );
 
     /** Handle incoming event scheduling */
-    bool eventRequest(QString request, QCString receiver, QString ical);
+    bool eventRequest( QString request, QCString receiver, QString ical );
 
     //// Implementation of the DCOP interface
     virtual ResourceRequestReply resourceRequest( const QValueList<QPair<QDateTime, QDateTime> >& busy,
@@ -119,6 +140,8 @@ class ActionManager : public QObject, public KCalendarIface
     QString localFileName();
 
     KActionMenu *pluginMenu() { return mPluginMenu; }
+
+    bool queryClose();
 
   signals:
     /**
@@ -156,6 +179,8 @@ class ActionManager : public QObject, public KCalendarIface
     */
     void updateConfig();
 
+    void setDestinationPolicy();
+
     void processIncidenceSelection( Incidence * );
     void keyBindings();
 
@@ -171,8 +196,8 @@ class ActionManager : public QObject, public KCalendarIface
     void writeSettings();
 
     /* Session management */
-    void saveProperties(KConfig *);
-    void readProperties(KConfig *);
+    void saveProperties( KConfig * );
+    void readProperties( KConfig * );
 
     void loadParts();
 
@@ -185,7 +210,7 @@ class ActionManager : public QObject, public KCalendarIface
     void file_open();
 
     /** open a file from the list of recent files. */
-    void file_openRecent(const KURL& url);
+    void file_openRecent( const KURL &url );
 
     /** import a calendar from another program like ical. */
     void file_import();
@@ -234,12 +259,13 @@ class ActionManager : public QObject, public KCalendarIface
     void updateRedoAction( const QString & );
 
   protected:
-
     /** Get URL for saving. Opens FileDialog. */
     KURL getSaveURL();
 
+    void initCalendar( Calendar *cal );
+
   private slots:
-    void dumpText(const QString &);  // only for debugging purposes
+    void dumpText( const QString & );  // only for debugging purposes
 
   private:
     /** Create all the actions. */
@@ -252,7 +278,7 @@ class ActionManager : public QObject, public KCalendarIface
     QString mLastUrl;  // URL of last loaded calendar.
 
     KTempFile *mTempFile;
-    QTimer         *mAutoSaveTimer;   // used if calendar is to be autosaved
+    QTimer *mAutoSaveTimer;   // used if calendar is to be autosaved
 
     // list of all existing KOrganizer instances
     static KOWindowList *windowList;
@@ -283,6 +309,11 @@ class ActionManager : public QObject, public KCalendarIface
     static bool startedKAddressBook; //whether we started KAddressBook ourselves
     KONewStuff *mNewStuff;
     bool mHtmlExportSync;
+
+    Calendar *mCalendar;
+    CalendarResources *mCalendarResources;
+
+    bool mIsClosing;
 };
 
 #endif

@@ -42,6 +42,9 @@
 #include <knotifyclient.h>
 
 #include <libkcal/htmlexport.h>
+#include <libkcal/calendarlocal.h>
+#include <libkcal/calendarresources.h>
+#include <libkcal/resourcelocal.h>
 
 #include "alarmclient.h"
 #include "calendarview.h"
@@ -56,7 +59,7 @@
 #include "konewstuff.h"
 #include "history.h"
 #include "kogroupware.h"
-
+#include "resourceview.h"
 
 KOWindowList *ActionManager::windowList = 0;
 bool ActionManager::startedKAddressBook = false;
@@ -64,7 +67,8 @@ bool ActionManager::startedKAddressBook = false;
 ActionManager::ActionManager( KXMLGUIClient *client, CalendarView *widget,
                               QObject *parent, KOrg::MainWindow *mainWindow,
                               bool isPart )
-    : QObject( parent ), KCalendarIface()
+  : QObject( parent ), KCalendarIface(), mCalendar( 0 ),
+    mCalendarResources( 0 ), mIsClosing( false )
 {
   mGUIClient = client;
   mACollection = mGUIClient->actionCollection();
@@ -74,48 +78,6 @@ ActionManager::ActionManager( KXMLGUIClient *client, CalendarView *widget,
   mNewStuff = 0;
   mHtmlExportSync = false;
   mMainWindow = mainWindow;
-}
-
-//see the Note: below for why this method is necessary
-void ActionManager::ActionManager::init()
-{
-  // add this instance of the window to the static list.
-  if (!windowList) {
-    windowList = new KOWindowList;
-    // Show tip of the day, when the first calendar is shown.
-    if (!mIsPart)
-      QTimer::singleShot(0,this,SLOT(showTipOnStart()));
-  }
-  //Note: We need this ActionManager to be fully constructed, and
-  //parent() to have a valid reference to it before the following
-  //addWindow is called.
-  windowList->addWindow(mMainWindow);
-
-  initActions();
-
-  // set up autoSaving stuff
-  mAutoSaveTimer = new QTimer(this);
-  connect(mAutoSaveTimer,SIGNAL(timeout()),SLOT(checkAutoSave()));
-  if (KOPrefs::instance()->mAutoSave &&
-      KOPrefs::instance()->mAutoSaveInterval > 0) {
-    mAutoSaveTimer->start(1000*60*KOPrefs::instance()->mAutoSaveInterval);
-  }
-
-  setTitle();
-
-  connect( mCalendarView, SIGNAL( modifiedChanged( bool ) ), SLOT( setTitle() ) );
-  connect( mCalendarView, SIGNAL( configChanged() ), SLOT( updateConfig() ) );
-
-  connect( mCalendarView, SIGNAL( incidenceSelected( Incidence * ) ),
-           this, SLOT( processIncidenceSelection( Incidence * ) ) );
-
-  processIncidenceSelection( 0 );
-
-  // Update state of paste action
-  mCalendarView->checkClipboard();
-
-  mCalendarView->lookForOutgoingMessages();
-  mCalendarView->lookForIncomingMessages();
 }
 
 ActionManager::~ActionManager()
@@ -140,7 +102,123 @@ ActionManager::~ActionManager()
 
   delete mCalendarView;
 
+  delete mCalendar;
+  delete mCalendarResources;
+
   kdDebug(5850) << "~ActionManager() done" << endl;
+}
+
+// see the Note: below for why this method is necessary
+void ActionManager::ActionManager::init()
+{
+  // add this instance of the window to the static list.
+  if ( !windowList ) {
+    windowList = new KOWindowList;
+    // Show tip of the day, when the first calendar is shown.
+    if ( !mIsPart )
+      QTimer::singleShot( 0, this, SLOT( showTipOnStart() ) );
+  }
+  // Note: We need this ActionManager to be fully constructed, and
+  // parent() to have a valid reference to it before the following
+  // addWindow is called.
+  windowList->addWindow( mMainWindow );
+
+  initActions();
+
+  // set up autoSaving stuff
+  mAutoSaveTimer = new QTimer( this );
+  connect( mAutoSaveTimer,SIGNAL( timeout() ), SLOT( checkAutoSave() ) );
+  if ( KOPrefs::instance()->mAutoSave &&
+       KOPrefs::instance()->mAutoSaveInterval > 0 ) {
+    mAutoSaveTimer->start( 1000 * 60 * KOPrefs::instance()->mAutoSaveInterval );
+  }
+
+  setTitle();
+
+  connect( mCalendarView, SIGNAL( modifiedChanged( bool ) ), SLOT( setTitle() ) );
+  connect( mCalendarView, SIGNAL( configChanged() ), SLOT( updateConfig() ) );
+
+  connect( mCalendarView, SIGNAL( incidenceSelected( Incidence * ) ),
+           this, SLOT( processIncidenceSelection( Incidence * ) ) );
+
+  processIncidenceSelection( 0 );
+
+  // Update state of paste action
+  mCalendarView->checkClipboard();
+
+  mCalendarView->lookForOutgoingMessages();
+  mCalendarView->lookForIncomingMessages();
+}
+
+void ActionManager::createCalendarLocal()
+{
+  mCalendar = new CalendarLocal( KOPrefs::instance()->mTimeZoneId );
+  mCalendarView->setCalendar( mCalendar );
+  mCalendarView->readSettings();
+
+  initCalendar( mCalendar );
+}
+
+void ActionManager::createCalendarResources()
+{
+  mCalendarResources = new CalendarResources( KOPrefs::instance()->mTimeZoneId );
+
+  CalendarResourceManager *manager = mCalendarResources->resourceManager();
+
+  if ( manager->isEmpty() ) {
+    KConfig *config = KOGlobals::config();
+    config->setGroup("General");
+    QString fileName = config->readPathEntry( "Active Calendar" );
+
+    QString resourceName;
+    if ( fileName.isEmpty() ) {
+      fileName = locateLocal( "appdata", "std.ics" );
+      resourceName = i18n("Default KOrganizer resource");
+    } else {
+      resourceName = i18n("Active Calendar");
+    }
+
+    kdDebug(5850) << "Using as default resource: '" << fileName << "'" << endl;
+
+    ResourceCalendar *defaultResource = new ResourceLocal( fileName );
+    defaultResource->setResourceName( resourceName );
+
+    manager->add( defaultResource );
+    manager->setStandardResource( defaultResource );
+  }
+
+  kdDebug(5850) << "CalendarResources used by KOrganizer:" << endl;
+  CalendarResourceManager::Iterator it;
+  for( it = manager->begin(); it != manager->end(); ++it ) {
+    (*it)->dump();
+  }
+
+  setDestinationPolicy();
+
+  mCalendarView->setCalendar( mCalendarResources );
+  mCalendarView->readSettings();
+
+  // Construct the groupware object
+  KOGroupware::create( mCalendarView, mCalendarResources );
+
+  ResourceViewFactory factory( manager, mCalendarView );
+  mCalendarView->addExtension( &factory );
+
+  connect( mCalendarResources, SIGNAL( calendarChanged() ),
+           mCalendarView, SLOT( slotCalendarChanged() ) );
+
+  connect( mCalendarView, SIGNAL( configChanged() ),
+           SLOT( updateConfig() ) );
+
+  initCalendar( mCalendarResources );
+}
+
+void ActionManager::initCalendar( Calendar *cal )
+{
+  cal->setOwner( KOPrefs::instance()->fullName() );
+  cal->setEmail( KOPrefs::instance()->email() );
+  // setting fullName and email do not really count as modifying the calendar
+  mCalendarView->setModified( false );
 }
 
 void ActionManager::initActions()
@@ -1000,19 +1078,32 @@ void ActionManager::updateConfig()
 {
   kdDebug(5850) << "ActionManager::updateConfig()" << endl;
 
-  if (KOPrefs::instance()->mAutoSave && !mAutoSaveTimer->isActive()) {
+  if ( KOPrefs::instance()->mAutoSave && !mAutoSaveTimer->isActive() ) {
     checkAutoSave();
-    if (KOPrefs::instance()->mAutoSaveInterval > 0) {
-      mAutoSaveTimer->start(1000*60*KOPrefs::instance()->mAutoSaveInterval);
+    if ( KOPrefs::instance()->mAutoSaveInterval > 0) {
+      mAutoSaveTimer->start( 1000 * 60 *
+                             KOPrefs::instance()->mAutoSaveInterval );
     }
   }
-  if (!KOPrefs::instance()->mAutoSave) mAutoSaveTimer->stop();
-  mNextXDays->setText(i18n("&Next Day", "&Next %n Days", KOPrefs::instance()->mNextXDays));
+  if ( !KOPrefs::instance()->mAutoSave ) mAutoSaveTimer->stop();
+  mNextXDays->setText( i18n( "&Next Day", "&Next %n Days",
+                             KOPrefs::instance()->mNextXDays ) );
 
-  if (mPluginMenu)
-      mPluginMenu->popupMenu()->clear();
+  if ( mPluginMenu ) mPluginMenu->popupMenu()->clear();
   KOCore::self()->reloadPlugins();
   mParts = KOCore::self()->reloadParts( mMainWindow, mParts );
+
+  setDestinationPolicy();
+}
+
+void ActionManager::setDestinationPolicy()
+{
+  if ( mCalendarResources ) {
+    if ( KOPrefs::instance()->mDestination == KOPrefs::askDestination )
+      mCalendarResources->setAskDestinationPolicy();
+    else
+      mCalendarResources->setStandardDestinationPolicy();
+  }
 }
 
 void ActionManager::configureDateTime()
@@ -1219,5 +1310,53 @@ void ActionManager::updateRedoAction( const QString &text )
   }
 }
 
+bool ActionManager::queryClose()
+{
+  kdDebug() << "ActionManager::queryClose()" << endl;
+
+  bool close = true;
+
+  if ( mCalendar ) {
+    close = saveModifiedURL();
+  } else if ( mCalendarResources ) {
+    if ( !mIsClosing ) {
+      kdDebug(5850) << "!mIsClosing" << endl;
+      mCalendarResources->save();
+      // TODO: Put main window into a state indicating final saving.
+      mIsClosing = true;
+// TODO: Close main window when save is finished
+//      connect( mCalendarResources, SIGNAL( calendarSaved() ),
+//               mMainWindow, SLOT( close() ) );
+    }
+    if ( mCalendarResources->isSaving() ) {
+      kdDebug(5850) << "KOrganizer::queryClose(): isSaving" << endl;
+      close = false;
+    } else {
+      kdDebug(5850) << "KOrganizer::queryClose(): close = true" << endl;
+      close = true;
+    }
+  } else {
+    close = true;
+  }
+
+  return close;
+}
+
+void ActionManager::saveCalendar()
+{
+  if ( mCalendar ) {
+    if ( view()->isModified() ) {
+      if ( !url().isEmpty() ) {
+        saveURL();
+      } else {
+        QString location = locateLocal( "data", "korganizer/kontact.ics" );
+        saveAsURL( location );
+      }
+    }
+  } else if ( mCalendarResources ) {
+    mCalendarResources->save();
+    // TODO: Make sure that asynchronous saves don't fail.
+  }
+}
 
 #include "actionmanager.moc"
