@@ -53,13 +53,13 @@ class KOTodoViewItem : public QCheckListItem
       @param parent is the list view to which this item belongs.
       @param ev is the event to have the item display information for.
     */
-    KOTodoViewItem(QListView *parent, Todo *ev);
-    KOTodoViewItem(KOTodoViewItem *parent, Todo *ev);
+    KOTodoViewItem(QListView *parent, Todo *todo);
+    KOTodoViewItem(KOTodoViewItem *parent, Todo *todo);
     virtual ~KOTodoViewItem() {}
 
     void construct();
 
-    Todo *event() { return mEvent; }
+    Todo *todo() { return mTodo; }
 
     QString key(int, bool) const;
 
@@ -76,7 +76,7 @@ class KOTodoViewItem : public QCheckListItem
   virtual void stateChange(bool);
 
   private:
-    Todo *mEvent;
+    Todo *mTodo;
 
     QMap<int,QString> mKeyMap;
 };

@@ -201,8 +201,9 @@ void KOViewManager::showListView()
             mMainView, SLOT(editEvent(Event *)));
     connect(mListView, SIGNAL(deleteEventSignal(Event *)),
             mMainView, SLOT(deleteEvent(Event *)));
-    connect(mListView,SIGNAL(eventsSelected(bool)),
-            mMainView, SLOT(processEventSelection(bool)));
+
+    connect( mListView, SIGNAL( incidenceSelected( Incidence * ) ),
+             mMainView, SIGNAL( incidenceSelected( Incidence * ) ) );
 
     connect(mMainView, SIGNAL(configChanged()), mListView, SLOT(updateConfig()));
   }
@@ -321,6 +322,9 @@ void KOViewManager::showTodoView()
             mMainView, SLOT(editTodo(Todo *)));
     connect(mTodoView, SIGNAL(deleteTodoSignal(Todo *)),
             mMainView, SLOT(deleteTodo(Todo *)));
+
+    connect( mTodoView, SIGNAL( incidenceSelected( Incidence * ) ),
+             mMainView, SIGNAL( incidenceSelected( Incidence * ) ) );
 
     connect(mMainView, SIGNAL(configChanged()), mTodoView, SLOT(updateConfig()));
   }

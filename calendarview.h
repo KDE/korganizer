@@ -67,7 +67,6 @@ class CreateEditorVisitor : public Incidence::Visitor
     bool visit(Journal *);
 };
 
-
 /**
   This is the main calendar widget. It provides the different vies on t he
   calendar data as well as the date navigator. It also handles synchronisation
@@ -136,6 +135,11 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     void organizerEventsSelected(bool);
     /** Emitted when state of events selection has changed and user is attendee*/
     void groupEventsSelected(bool);
+    /**
+      Emitted when an incidence gets selected. If the selection is cleared the
+      signal is emitted with 0 as argument.
+    */
+    void incidenceSelected( Incidence * );
 
     /** Emitted, when clipboard content changes. Parameter indicates if paste
      * is possible or not */
@@ -182,6 +186,8 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     /** Archive old events of calendar */
     void archiveCalendar();
 
+    void showIncidence();
+    void editIncidence();
     void deleteIncidence();
   
     /** create an editeventwin with supplied date/time, and if bool is true,
@@ -371,7 +377,7 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
 
     void toggleExpand();
     
-    void todoSelect(bool);
+    void todoSelect( Incidence * );
     
     void dialogClosing(Incidence *);
   
@@ -385,7 +391,9 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
 
     /** Select a view or adapt the current view to display the specified dates. */
     void selectDates(const DateList &);
-
+  
+    void processIncidenceSelection( Incidence * );
+    
   public:
     // show a standard warning
     // returns KMsgBox::yesNoCancel()
@@ -410,7 +418,7 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     void signalAlarmDaemon();
   
     Todo *selectedTodo();
-  
+
   private:
     void createPrinter();
 
@@ -444,7 +452,35 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
 
     KOTodoView *mTodoList;
     QMap<Incidence*,QDialog*> mDialogList;
+
     QTimer      *mMessageTimer;
+};
+
+
+class ShowIncidenceVisitor : public Incidence::Visitor
+{
+  public:
+    ShowIncidenceVisitor( CalendarView *view ) { mView = view; }
+
+    bool visit( Event *event ) { mView->showEvent( event ); return true; }  
+    bool visit( Todo *todo ) { mView->showTodo( todo ); return true; }  
+    bool visit( Journal * ) { return false; }
+
+  private:
+    CalendarView *mView;
+};
+
+class EditIncidenceVisitor : public Incidence::Visitor
+{
+  public:
+    EditIncidenceVisitor( CalendarView *view ) { mView = view; }
+
+    bool visit( Event *event ) { mView->editEvent( event ); return true; }  
+    bool visit( Todo *todo ) { mView->editTodo( todo ); return true; }  
+    bool visit( Journal * ) { return false; }
+
+  private:
+    CalendarView *mView;
 };
 
 #endif

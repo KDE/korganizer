@@ -161,6 +161,9 @@ class BaseView : public QWidget
     */
     virtual void updateConfig() {}
 
+  signals:
+    void incidenceSelected( Incidence * );
+
   private:
     Calendar *mCalendar;
 };

@@ -136,12 +136,10 @@ class KOTodoView : public KOrg::BaseView
     void editTodoSignal(Todo *);
     void deleteTodoSignal(Todo *);
 
-    void todoSelected(bool);
-    
     void isModified(bool);
 
-  private slots:
-    void selectionChanged(QListViewItem *);
+  protected slots:
+    void processSelectionChange();
     void modified(bool);
 
   private:

@@ -10,7 +10,7 @@
   Ian Dawes (iadawes@globalserve.net)
   Laszlo Boloni (boloni@cs.purdue.edu)
 
-  Copyright (c) 2000, 2001
+  Copyright (c) 2000, 2001, 2002
   Cornelius Schumacher <schumacher@kde.org>
 
   This program is free software; you can redistribute it and/or modify
@@ -219,8 +219,11 @@ CalendarView::CalendarView(QWidget *parent,const char *name)
 
   connect(QApplication::clipboard(),SIGNAL(dataChanged()),
           SLOT(checkClipboard()));
+  connect( mTodoList,SIGNAL( incidenceSelected( Incidence * ) ),
+           SLOT( todoSelect( Incidence * ) ) );
 
-  connect(mTodoList,SIGNAL(todoSelected(bool)),SLOT(todoSelect(bool)));
+  connect( this, SIGNAL( incidenceSelected( Incidence * ) ),
+           SLOT( processIncidenceSelection( Incidence * ) ) );
 
   kdDebug() << "CalendarView::CalendarView() done" << endl;
 }
@@ -1368,6 +1371,17 @@ void CalendarView::adaptNavigationUnits()
   }
 }
 
+// This function is temporarily needed until all views are moved to the
+// incidenceSelected() signal
+void CalendarView::processIncidenceSelection( Incidence *incidence )
+{
+  if ( incidence && incidence->type() == "Event" ) {
+    processEventSelection( true );
+  } else {
+    processEventSelection( false );
+  }
+}
+
 void CalendarView::processEventSelection(bool selected)
 {
   // Do nothing, if state hasn't changed
@@ -1379,12 +1393,12 @@ void CalendarView::processEventSelection(bool selected)
 
   Event *event = 0;
   if (mViewManager->currentView()) {
-  Incidence *incidence = mViewManager->currentView()->selectedIncidences().first();
-  if (mViewManager->currentView()->isEventView()) {
-    if ( incidence && incidence->type() == "Event" ) {
-      event = static_cast<Event *>(incidence);
+    Incidence *incidence = mViewManager->currentView()->selectedIncidences().first();
+    if (mViewManager->currentView()->isEventView()) {
+      if ( incidence && incidence->type() == "Event" ) {
+        event = static_cast<Event *>(incidence);
+      }
     }
-  }
   }
   if (event) {
     if (event->organizer()==KOPrefs::instance()->email()) {
@@ -1581,9 +1595,13 @@ Todo *CalendarView::selectedTodo()
   return 0;
 }
 
-void CalendarView::todoSelect(bool b)
+void CalendarView::todoSelect( Incidence *incidence )
 {
-  emit todoSelected(b);
+  if  ( incidence && incidence->type() == "Todo" ) {
+    emit todoSelected( true );
+  } else {
+    emit todoSelected( false );
+  }
 }
 
 void CalendarView::dialogClosing(Incidence *in)
@@ -1591,6 +1609,25 @@ void CalendarView::dialogClosing(Incidence *in)
   mDialogList.remove(in);
 }
 
+void CalendarView::showIncidence()
+{
+  Incidence *incidence = currentSelection();
+  if ( !incidence ) incidence = mTodoList->selectedIncidences().first();
+  if ( incidence ) {
+    ShowIncidenceVisitor v( this );
+    incidence->accept( v );
+  }
+}
+
+void CalendarView::editIncidence()
+{
+  Incidence *incidence = currentSelection();
+  if ( !incidence ) incidence = mTodoList->selectedIncidences().first();
+  if ( incidence ) {
+    EditIncidenceVisitor v( this );
+    incidence->accept( v );
+  }
+}
 
 void CalendarView::lookForOutgoingMessages()
 {
@@ -1603,4 +1640,3 @@ void CalendarView::lookForIncomingMessages()
   IncomingDialog *icd = mDialogManager->incomingDialog();
   icd->retrieve();
 }
-

@@ -115,7 +115,7 @@ void KOTodoListView::contentsDropEvent(QDropEvent *e)
     KOTodoViewItem *destination =
         (KOTodoViewItem *)itemAt(contentsToViewport(e->pos()));
     Todo *destinationEvent = 0;
-    if (destination) destinationEvent = destination->event();
+    if (destination) destinationEvent = destination->todo();
 
     Todo *existingTodo = mCalendar->getTodo(todo->uid());
 
@@ -155,7 +155,7 @@ void KOTodoListView::contentsDropEvent(QDropEvent *e)
         QString name = (*it).left(pos);
         QString email = (*it).mid(pos);
         if (!email.isEmpty() && todoi) {
-          todoi->event()->addAttendee(new Attendee(name,email));
+          todoi->todo()->addAttendee(new Attendee(name,email));
         }
       }
     }
@@ -198,7 +198,7 @@ void KOTodoListView::contentsMouseMoveEvent(QMouseEvent* e)
 //      kdDebug() << "Start Drag for item " << item->text(0) << endl;
       DndFactory factory( mCalendar );
       VCalDrag *vd = factory.createDragTodo(
-                          ((KOTodoViewItem *)item)->event(),viewport());
+                          ((KOTodoViewItem *)item)->todo(),viewport());
       if (vd->drag()) {
         kdDebug() << "KOTodoListView::contentsMouseMoveEvent(): Delete drag source" << endl;
       }
@@ -305,13 +305,16 @@ KOTodoView::KOTodoView(Calendar *calendar,QWidget* parent,const char* name) :
   connect(mTodoListView,SIGNAL(collapsed(QListViewItem *)),
           SLOT(itemStateChanged(QListViewItem *)));
 
-/*  connect(mTodoListView,SIGNAL(selectionChanged(QListViewItem *)),
+#if 0
+  connect(mTodoListView,SIGNAL(selectionChanged(QListViewItem *)),
           SLOT(selectionChanged(QListViewItem *)));
   connect(mTodoListView,SIGNAL(clicked(QListViewItem *)),
-          SLOT(selectionChanged(QListViewItem *)));*/
+          SLOT(selectionChanged(QListViewItem *)));
   connect(mTodoListView,SIGNAL(pressed(QListViewItem *)),
           SLOT(selectionChanged(QListViewItem *)));
-
+#endif
+  connect( mTodoListView, SIGNAL(selectionChanged() ),
+           SLOT( processSelectionChange() ) );
 }
 
 KOTodoView::~KOTodoView()
@@ -360,15 +363,15 @@ void KOTodoView::updateView()
   mTodoListView->blockSignals( true );
   if( mDocPrefs ) restoreItemState( mTodoListView->firstChild() );
   mTodoListView->blockSignals( false );
-  if (mTodoListView->selectedItem()) emit todoSelected(true);
-  else emit todoSelected(false);
+
+  processSelectionChange();
 }
 
 void KOTodoView::restoreItemState( QListViewItem *item )
 {
   while( item ) {
     KOTodoViewItem *todoItem = (KOTodoViewItem *)item;
-    todoItem->setOpen( mDocPrefs->readBoolEntry( todoItem->event()->uid() ) );
+    todoItem->setOpen( mDocPrefs->readBoolEntry( todoItem->todo()->uid() ) );
     if( item->childCount() > 0 ) restoreItemState( item->firstChild() );
     item = item->nextSibling();
   }
@@ -414,7 +417,7 @@ QPtrList<Incidence> KOTodoView::selectedIncidences()
 
   KOTodoViewItem *item = (KOTodoViewItem *)(mTodoListView->selectedItem());
 //  if (!item) item = mActiveItem;
-  if (item) selected.append(item->event());
+  if (item) selected.append(item->todo());
 
   return selected;
 }
@@ -425,7 +428,7 @@ QPtrList<Todo> KOTodoView::selectedTodos()
 
   KOTodoViewItem *item = (KOTodoViewItem *)(mTodoListView->selectedItem());
 //  if (!item) item = mActiveItem;
-  if (item) selected.append(item->event());
+  if (item) selected.append(item->todo());
 
   return selected;
 }
@@ -454,12 +457,12 @@ void KOTodoView::printPreview(CalPrinter *calPrinter, const QDate &fd,
 
 void KOTodoView::editItem(QListViewItem *item,const QPoint &,int)
 {
-  emit editTodoSignal(((KOTodoViewItem *)item)->event());
+  emit editTodoSignal(((KOTodoViewItem *)item)->todo());
 }
 
 void KOTodoView::showItem(QListViewItem *item,const QPoint &,int)
 {
-  emit showTodoSignal(((KOTodoViewItem *)item)->event());
+  emit showTodoSignal(((KOTodoViewItem *)item)->todo());
 }
 
 void KOTodoView::popupMenu(QListViewItem *item,const QPoint &,int)
@@ -477,21 +480,21 @@ void KOTodoView::newTodo()
 void KOTodoView::newSubTodo()
 {
   if (mActiveItem) {
-    emit newSubTodoSignal(mActiveItem->event());
+    emit newSubTodoSignal(mActiveItem->todo());
   }
 }
 
 void KOTodoView::editTodo()
 {
   if (mActiveItem) {
-    emit editTodoSignal(mActiveItem->event());
+    emit editTodoSignal(mActiveItem->todo());
   }
 }
 
 void KOTodoView::showTodo()
 {
   if (mActiveItem) {
-    emit showTodoSignal(mActiveItem->event());
+    emit showTodoSignal(mActiveItem->todo());
   }
 }
 
@@ -502,7 +505,7 @@ void KOTodoView::deleteTodo()
       KMessageBox::sorry(this,i18n("Cannot delete To-Do which has children."),
                          i18n("Delete To-Do"));
     } else {
-      emit deleteTodoSignal(mActiveItem->event());
+      emit deleteTodoSignal(mActiveItem->todo());
     }
   }
 }
@@ -554,15 +557,15 @@ void KOTodoView::itemClicked(QListViewItem *item)
   if (!item) return;
 
   KOTodoViewItem *todoItem = (KOTodoViewItem *)item;
-  int completed = todoItem->event()->isCompleted();  // Completed or not?
+  int completed = todoItem->todo()->isCompleted();  // Completed or not?
   
   if (todoItem->isOn()) {
     if (!completed) {
-      todoItem->event()->setCompleted(QDateTime::currentDateTime());
+      todoItem->todo()->setCompleted(QDateTime::currentDateTime());
     }
   } else {
     if (completed) {
-      todoItem->event()->setCompleted(false);
+      todoItem->todo()->setCompleted(false);
     }
   }
 }
@@ -580,9 +583,9 @@ void KOTodoView::itemStateChanged( QListViewItem *item )
 
   KOTodoViewItem *todoItem = (KOTodoViewItem *)item;
 
-//  kdDebug() << "KOTodoView::itemStateChanged(): " << todoItem->event()->summary() << endl;
+//  kdDebug() << "KOTodoView::itemStateChanged(): " << todoItem->todo()->summary() << endl;
 
-  if( mDocPrefs ) mDocPrefs->writeEntry( todoItem->event()->uid(), todoItem->isOpen() );
+  if( mDocPrefs ) mDocPrefs->writeEntry( todoItem->todo()->uid(), todoItem->isOpen() );
 }
 
 void KOTodoView::saveLayout(KConfig *config, const QString &group) const
@@ -595,15 +598,17 @@ void KOTodoView::restoreLayout(KConfig *config, const QString &group)
   mTodoListView->restoreLayout(config,group);
 }
 
-void KOTodoView::selectionChanged(QListViewItem *item)
+void KOTodoView::processSelectionChange()
 {
-  if (item) {
-//    kdDebug() << "KOTodoView::selectionChanged || TRUE" << endl;
-    emit todoSelected(true);
-  }
-  else {
-//    kdDebug() << "KOTodoView::selectionChanged || FALSE" << endl;
-    emit todoSelected(false);
+  kdDebug() << "KOTodoView::processSelectionChange()" << endl;
+
+  KOTodoViewItem *item =
+    static_cast<KOTodoViewItem *>( mTodoListView->selectedItem() );
+
+  if ( !item ) {
+    emit incidenceSelected( 0 );
+  } else {
+    emit incidenceSelected( item->todo() );
   }
 }
 

@@ -112,8 +112,8 @@ bool ListItemVisitor::visit(Journal *)
 }
 
 
-KOListViewItem::KOListViewItem(QListView *parent, Incidence *ev)
-  : QListViewItem(parent), mEvent(ev)
+KOListViewItem::KOListViewItem( QListView *parent, Incidence *incidence )
+  : QListViewItem( parent ), mIncidence( incidence )
 {
 }
 
@@ -207,7 +207,7 @@ QPtrList<Incidence> KOListView::selectedIncidences()
   QPtrList<Incidence> eventList;
 
   QListViewItem *item = mListView->selectedItem();
-  if (item) eventList.append(((KOListViewItem *)item)->event());
+  if (item) eventList.append(((KOListViewItem *)item)->incidence());
 
   return eventList;
 }
@@ -265,7 +265,7 @@ void KOListView::showDates(const QDate &start, const QDate &end)
     date = date.addDays( 1 );
   }
 
-  emit eventsSelected(false);
+  emit incidenceSelected( 0 );
 }
 
 void KOListView::addEvents(QPtrList<Event> eventList)
@@ -298,7 +298,7 @@ void KOListView::showEvents(QPtrList<Event> eventList)
   addEvents(eventList);
 
   // After new creation of list view no events are selected.
-  emit eventsSelected(false);
+  emit incidenceSelected( 0 );
 }
 
 void KOListView::changeEventDisplay(Event *event, int action)
@@ -332,31 +332,28 @@ KOListViewItem *KOListView::getItemForEvent(Event *event)
   KOListViewItem *item = (KOListViewItem *)mListView->firstChild();
   while (item) {
 //    kdDebug() << "Item " << item->text(0) << " found" << endl;
-    if (item->event() == event) return item;
+    if (item->incidence() == event) return item;
     item = (KOListViewItem *)item->nextSibling();
   }
   return 0;
 }
 
-void KOListView::defaultItemAction(QListViewItem *item)
+void KOListView::defaultItemAction(QListViewItem *i)
 {
-  Event *event = static_cast<Event *>(((KOListViewItem *)item)->event());
-  defaultAction( event );
+  KOListViewItem *item = static_cast<KOListViewItem *>( i );
+  if ( item ) defaultAction( item->incidence() );
 }
 
 void KOListView::popupMenu(QListViewItem *item,const QPoint &,int)
 {
   mActiveItem = (KOListViewItem *)item;
   if (mActiveItem) {
-    Event *event = static_cast<Event *>(mActiveItem->event());
-    if (event) mPopupMenu->showEventPopup(event);
+    Incidence *incidence = mActiveItem->incidence();
+    if ( incidence && incidence->type() == "Event" ) {
+      Event *event = static_cast<Event *>( incidence );
+      mPopupMenu->showEventPopup(event);
+    }
   }
-}
-
-void KOListView::processSelectionChange()
-{
-  // If selection has changed, we know that one event is selected.
-  emit eventsSelected(true);
 }
 
 void KOListView::readSettings(KConfig *config)
@@ -369,4 +366,16 @@ void KOListView::writeSettings(KConfig *config)
   mListView->saveLayout(config,"KOListView Layout");
 }
 
+void KOListView::processSelectionChange()
+{
+  kdDebug() << "KOListView::processSelectionChange()" << endl;
 
+  KOListViewItem *item =
+    static_cast<KOListViewItem *>( mListView->selectedItem() );
+
+  if ( !item ) {
+    emit incidenceSelected( 0 );
+  } else {
+    emit incidenceSelected( item->incidence() );
+  }
+}

@@ -208,6 +208,8 @@ class KOrganizer : public KOrg::MainWindow, virtual public KOrganizerIface
     /** Show tip of the day */
     void showTipOnStart();
     
+    void processIncidenceSelection( Incidence * );
+    
   protected slots:
 
     /** toggle the appearance of the tool bars. */
@@ -250,6 +252,8 @@ class KOrganizer : public KOrg::MainWindow, virtual public KOrganizerIface
     /** Get URL for saving. Opens FileDialog. */
     KURL getSaveURL();
 
+    void enableIncidenceActions( bool enable );
+
   private:
     void writeActiveState();
   
@@ -276,6 +280,10 @@ class KOrganizer : public KOrg::MainWindow, virtual public KOrganizerIface
 
     KToggleAction *mStatusBarAction;
     KToggleAction *mFilterViewAction;
+
+    KAction *mShowIncidenceAction;
+    KAction *mEditIncidenceAction;
+    KAction *mDeleteIncidenceAction;
 
     // status bar ids
     enum { ID_HISTORY, ID_GENERAL, ID_ACTIVE, ID_MESSAGES_IN, ID_MESSAGES_OUT };

@@ -54,14 +54,14 @@ class KOListViewItem : public QListViewItem
     KOListViewItem(QListView *parent, Incidence *ev);
     virtual ~KOListViewItem() {}
 
-    Incidence *event() { return mEvent; }
+    Incidence *incidence() { return mIncidence; }
 
     QString key(int, bool) const;
 
     void setSortKey(int column,const QString &key);
 
   private:
-    Incidence *mEvent;
+    Incidence *mIncidence;
 
     QMap<int,QString> mKeyMap;
 };
