@@ -126,9 +126,9 @@ void ResourceItem::stateChange( bool active )
     mResource->setSubresourceActive( text( 0 ), active );
   } else {
     if ( active ) {
-      mView->calendar()->loadResource( mResource );
+      mResource->setActive( mView->calendar()->loadResource( mResource ) );
     } else {
-      mResource->save();
+      mView->calendar()->saveResource( mResource );
       mView->requestClose( mResource );
       mResource->setActive( false );
     }
