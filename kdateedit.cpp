@@ -22,6 +22,7 @@
 
 // $Id$	
 
+#include <qapplication.h>
 #include <qpixmap.h>
 #include <qlineedit.h>
 #include <qpushbutton.h>
@@ -97,19 +98,26 @@ QDate KDateEdit::getDate() const
 
 void KDateEdit::toggleDatePicker()
 {
-  if(mDateFrame->isVisible()) mDateFrame->hide();
-  else {
-  	QPoint tmpPoint = mapToGlobal(mDateButton->geometry().bottomRight());
-	
-	mDateFrame->setGeometry(tmpPoint.x()-207, tmpPoint.y(), 200, 200);
+  if( mDateFrame->isVisible() ) {
+    mDateFrame->hide();
+  } else {
+    QPoint tmpPoint = mapToGlobal(mDateButton->geometry().bottomRight());
 
-  	QDate date = KGlobal::locale()->readDate(mDateEdit->text());
-  	if(date.isValid()) {
-    	mDatePicker->setDate(date);
-  	} else {
-    	mDatePicker->setDate(QDate::currentDate());
-  	}
-  	mDateFrame->show();
+    if ( tmpPoint.x() < 207 ) tmpPoint.setX( 207 );
+
+    int h = QApplication::desktop()->height();
+
+    if ( tmpPoint.y() + 200 > h ) tmpPoint.setY( h - 200 );
+    	
+    mDateFrame->setGeometry(tmpPoint.x()-207, tmpPoint.y(), 200, 200);
+
+    QDate date = KGlobal::locale()->readDate(mDateEdit->text());
+    if(date.isValid()) {
+      mDatePicker->setDate(date);
+    } else {
+      mDatePicker->setDate(QDate::currentDate());
+    }
+    mDateFrame->show();
   }
 }
 
