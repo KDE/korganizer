@@ -383,6 +383,7 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     void goPrevious();
 
     void toggleExpand();
+    void showLeftFrame( bool show = true );
     
     void dialogClosing(Incidence *);
   

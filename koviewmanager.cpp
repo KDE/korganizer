@@ -134,14 +134,14 @@ void KOViewManager::raiseCurrentView()
 {
   if ((mMonthView && KOPrefs::instance()->mFullViewMonth && mCurrentView == mMonthView) ||
       (mTodoView && KOPrefs::instance()->mFullViewTodo && mCurrentView == mTodoView)) {
-    mMainView->leftFrame()->hide();
+    mMainView->showLeftFrame( false );
     if ( mCurrentView == mTodoView ) {
       mMainView->navigatorBar()->hide();
     } else {
       mMainView->navigatorBar()->show();
     }
   } else {
-    mMainView->leftFrame()->show();
+    mMainView->showLeftFrame( true );
     mMainView->navigatorBar()->hide();
   }
   mMainView->viewStack()->raiseWidget(mCurrentView);

@@ -1655,7 +1655,12 @@ Incidence *CalendarView::currentSelection()
 
 void CalendarView::toggleExpand()
 {
-  if ( mLeftFrame->isHidden() ) {
+  showLeftFrame( mLeftFrame->isHidden() );
+}
+
+void CalendarView::showLeftFrame(bool show)
+{
+  if (show) {
     mLeftFrame->show();
     emit calendarViewExpanded( false );
   } else {
