@@ -68,14 +68,11 @@ QString ToolTipVisitor::dateRangeText( Event*event )
     ret += "<br>"+i18n("<i>Date:</i> %1").
         arg( event->dtStartDateStr().replace(" ", "&nbsp;") );
     if ( !event->doesFloat() ) {
-      // Hmm. Remove space here and add &nbsp; for not breaking Time:
-      // line. Note crucial lack of space after : . But even if
-      // translators don't notice it is much better than a line break
-      // between start and end time.
       tmp = "<br>" + i18n("time range for event, &nbsp; to prevent ugly line breaks",
         "<i>Time:</i> %1&nbsp;-&nbsp;%2").
         arg( event->dtStartTimeStr().replace(" ", "&nbsp;") ).
         arg( event->dtEndTimeStr().replace(" ", "&nbsp;") );
+      ret += tmp;
     }
 
   }
