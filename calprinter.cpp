@@ -15,6 +15,7 @@
 #include <klocale.h>
 #include <kstddirs.h>
 #include <kdateedit.h>
+#include <kseparator.h>
 #include <kmessagebox.h>
 #include <ktempfile.h>
 #include <kapp.h>
@@ -807,9 +808,7 @@ CalPrintDialog::CalPrintDialog(KPrinter *p, bool preview, const QDate &fd,
   
   layout->addWidget(typeGroup);
 
-  QFrame *hLine = new QFrame(this);
-  hLine->setFrameStyle(QFrame::HLine|QFrame::Sunken);
-  hLine->setFixedHeight(hLine->sizeHint().height());
+  KSeparator *hLine = new KSeparator( KSeparator::HLine, this);
   layout->addWidget(hLine);
 
   QHBoxLayout *subLayout = new QHBoxLayout();
