@@ -185,6 +185,8 @@ void ActionManager::createCalendarResources()
 
   connect( mCalendarResources, SIGNAL( calendarChanged() ),
            mCalendarView, SLOT( slotCalendarChanged() ) );
+  connect( mCalendarResources, SIGNAL( signalErrorMessage( const QString & ) ),
+           mCalendarView, SLOT( showErrorMessage( const QString & ) ) );
 
   connect( mCalendarView, SIGNAL( configChanged() ),
            SLOT( updateConfig() ) );

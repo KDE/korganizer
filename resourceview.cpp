@@ -54,6 +54,8 @@ CalendarViewExtension *ResourceViewFactory::create( QWidget *parent )
                     mView, SLOT( updateView() ) );
   QObject::connect( mCalendar, SIGNAL( signalResourceAdded( ResourceCalendar * ) ),
                     view, SLOT( addResourceItem( ResourceCalendar * ) ) );
+  QObject::connect( view, SIGNAL( signalErrorMessage( const QString & ) ),
+                    mView, SLOT( showErrorMessage( const QString & ) ) );
 
   return view;
 }
@@ -74,8 +76,14 @@ void ResourceItem::stateChange( bool active )
     return;
 
   if ( active ) {
-    mResource->open();
-    mResource->load();
+    bool success = mResource->open();
+    if ( success ) {
+      success = mResource->load();
+    }
+    if ( !success ) {
+      QString msg = mResource->errorMessage();
+      if ( !msg.isEmpty() ) mView->emitErrorMessage( msg );
+    }
   } else {
     mResource->save();
     mResource->close();
@@ -234,6 +242,11 @@ void ResourceView::currentChanged( QListViewItem *item)
   if ( !item ) selected = false;
   mDeleteButton->setEnabled( selected );
   mEditButton->setEnabled( selected );
+}
+
+void ResourceView::emitErrorMessage( const QString &msg )
+{
+  emit signalErrorMessage( msg );
 }
 
 #include "resourceview.moc"

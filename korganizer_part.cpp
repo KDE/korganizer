@@ -87,6 +87,7 @@ KOrganizerPart::KOrganizerPart( QWidget *parentWidget, const char *widgetName,
   if ( pname == "kontact" ) {
     mActionManager->createCalendarResources();
     setHasDocument( false );
+    KOCore::self()->calendarResources()->load();
   } else {
     mActionManager->createCalendarLocal();
     setHasDocument( true );

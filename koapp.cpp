@@ -35,6 +35,7 @@
 #include <kurl.h>
 
 #include <libkcal/calformat.h>
+#include <libkcal/calendarresources.h>
 
 #include "korganizer.h"
 #include "koprefs.h"
@@ -43,6 +44,7 @@
 #include "koglobals.h"
 #include "actionmanager.h"
 #include "resourceimportdialog.h"
+#include "kocore.h"
 
 #include "koapp.h"
 #include <kstartupinfo.h>
@@ -116,9 +118,10 @@ void KOrganizerApp::processCalendar( const KURL &url )
                   << "'" << endl;
 
     if ( hasDocument ) korg->openURL( url );
-  }
-  else
+    else KOCore::self()->calendarResources()->load();
+  } else {
     korg->topLevelWidget()->show();
+  }
 
   // Handle window activation
 #if defined Q_WS_X11 && ! defined K_WS_QTONLY

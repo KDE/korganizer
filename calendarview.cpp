@@ -1959,4 +1959,9 @@ void CalendarView::recurTodo( Todo *todo )
   // incidenceChanged(todo) should be emitted by caller.
 }
 
+void CalendarView::showErrorMessage( const QString &msg )
+{
+  KMessageBox::error( this, msg );
+}
+
 #include "calendarview.moc"

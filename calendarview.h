@@ -424,6 +424,8 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
                        const QString &datebookFile,
                        const QString &tasklistFile );
 
+    void showErrorMessage( const QString & );
+
   protected slots:
     /** Select a view or adapt the current view to display the specified dates. */
     void showDates( const KCal::DateList & );

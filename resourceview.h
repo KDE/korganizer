@@ -83,12 +83,14 @@ class ResourceView : public CalendarViewExtension
     void updateView();
 
     void emitResourcesChanged();
+    void emitErrorMessage( const QString & );
 
   public slots:
     void addResourceItem( ResourceCalendar * );
 
   signals:
     void resourcesChanged();
+    void signalErrorMessage( const QString & );
 
   private slots:
     void addResource();
