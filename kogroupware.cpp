@@ -38,7 +38,6 @@
 #include "freebusymanager.h"
 #include "calendarview.h"
 #include "mailscheduler.h"
-#include "kogroupwareincomingdialog.h"
 #include "koprefs.h"
 #include <libkdepim/email.h>
 #include <libkcal/attendee.h>
