@@ -283,7 +283,7 @@ static QString taskDetails( Incidence* incidence )
 
 QString KOGroupware::formatICal( const QString& iCal )
 {
-  KCal::CalendarLocal cl;
+  KCal::CalendarLocal cl( mCalendar->timeZoneId() );
   ICalFormat format;
   format.fromString( &cl, iCal );
 
