@@ -126,6 +126,7 @@ void TimeLabels::drawContents(QPainter *p,int cx, int cy, int cw, int ch)
     suffix = "am";
 
     // handle 24h and am/pm time formats
+    // FIXME: don't construct this manually, might break translation!
     if (KGlobal::locale()->use12Clock()) {
       if (cell > 11) suffix = "pm";
       if (cell == 0) hour.setNum(12);
