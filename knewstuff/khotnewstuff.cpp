@@ -9,7 +9,7 @@
 static const KCmdLineOptions op[] =
 {
 	{"type <type>", I18N_NOOP("Display only media of this type"), 0},
-	{0, 0, 0}
+	KCmdLineLastOption
 };
 
 int main(int argc, char **argv)

@@ -35,7 +35,7 @@
 static const KCmdLineOptions options[] =
 {
   { "+[calendar]", I18N_NOOP("A calendar file to load"), 0 },
-  { 0, 0, 0 }
+  KCmdLineLastOption
 };
 
 int main ( int argc, char **argv )
