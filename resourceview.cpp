@@ -124,7 +124,6 @@ ResourceItem::ResourceItem( KCal::ResourceCalendar *resource,
 {
   mResourceColor = QColor();
   mResourceIdentifier = sub;
-  setText( 0, label );
   setGuiState();
 }
 
