@@ -157,6 +157,7 @@ class KOAgendaView : public KOEventView {
     virtual void updateConfig();
     virtual void showDates(const QDate &start, const QDate &end);
     virtual void showEvents( const Event::List & );
+    virtual void showNewEventPopup();
 
     void changeEventDisplay(Event *, int);
 
@@ -229,6 +230,7 @@ class KOAgendaView : public KOEventView {
 
     KOEventPopupMenu *mAgendaPopup;
     KOEventPopupMenu *mAllDayAgendaPopup;
+    QPopupMenu *mNewEventPopup;
 
     EventIndicator *mEventIndicatorTop;
     EventIndicator *mEventIndicatorBottom;

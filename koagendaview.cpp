@@ -35,6 +35,7 @@
 #include <qtooltip.h>
 #include <qpainter.h>
 #include <qpushbutton.h>
+#include <qcursor.h>
 
 #include <kapplication.h>
 #include <kdebug.h>
@@ -392,6 +393,9 @@ KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name) :
                                   SLOT(popupAlarm()),true);
   connect(mAgenda,SIGNAL(showIncidencePopupSignal(Incidence *)),
           mAgendaPopup,SLOT(showIncidencePopup(Incidence *)));
+
+  connect(mAgenda,SIGNAL(showNewEventPopupSignal()),
+          this, SLOT(showNewEventPopup()));
 
   // make connections between dependent widgets
   mTimeLabels->setAgenda(mAgenda);
@@ -1041,4 +1045,13 @@ void KOAgendaView::deleteSelectedDateTime()
   mTimeSpanBegin.setDate(QDate());
   mTimeSpanEnd.setDate(QDate());
   mTimeSpanInAllDay = false;
+}
+
+void KOAgendaView::showNewEventPopup()
+{
+  if (!mNewEventPopup)
+    mNewEventPopup = newEventPopup();
+
+  mNewEventPopup->popup(QCursor::pos());
+
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE kpartgui>
-<kpartgui name="korganizer" version="25">
+<kpartgui name="korganizer" version="26">
 
   <MenuBar>
     <Menu name="file"><text>&amp;File</text>
@@ -113,5 +113,11 @@
     <Action name="reply"/>
     <Action name="addressbook"/>
   </ToolBar>
+
+  <Menu name="rmb_selection_popup">
+    <Action name="new_event"/>
+    <Merge/>
+  </Menu>
+
 
 </kpartgui>

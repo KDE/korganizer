@@ -188,7 +188,8 @@ class KOMonthView: public KOEventView
 
     void clearSelection();
 
-    void showContextMenu( Incidence * );
+    void showEventContextMenu( Incidence * );
+    void showGeneralContextMenu();
 
     void setSelectedCell( MonthViewCell * );
 
@@ -217,8 +218,8 @@ class KOMonthView: public KOEventView
 
     MonthViewCell *mSelectedCell;
 
-    KOEventPopupMenu *mContextMenu;
-
+    KOEventPopupMenu *mEventContextMenu;
+    QPopupMenu *mGeneralContextMenu;
 };
 
 #endif

@@ -77,6 +77,11 @@ class KOEventView : public KOrg::BaseView
      */
     KOEventPopupMenu *eventPopup();
 
+    /**
+     * Construct a standard context that allows to create a new event.
+     */
+    QPopupMenu *newEventPopup();
+
     /** This view is an view for displaying events. */
     bool isEventView() { return true; }
   

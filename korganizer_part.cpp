@@ -30,6 +30,7 @@
 #include "koprefs.h"
 #include "resourceview.h"
 #include "aboutdata.h"
+#include "kocore.h"
 
 #include "kalarmd/alarmdaemoniface_stub.h"
 
@@ -68,6 +69,8 @@ KOrganizerPart::KOrganizerPart( QWidget *parentWidget, const char *widgetName,
                                 const QStringList & ) :
   KParts::ReadOnlyPart(parent, name)
 {
+  KOCore::self()->setXMLGUIClient( this );
+
   QString pname( name );
 
   // create a canvas to insert our widget

@@ -28,9 +28,13 @@
 #include <kdebug.h>
 #include <kiconloader.h>
 #include <kmessagebox.h>
+#include <kxmlguiclient.h>
+#include <kxmlguifactory.h>
 
 #include <libkcal/calendar.h>
 
+
+#include "kocore.h"
 #include "koeventview.h"
 using namespace KOrg;
 #include "koeventview.moc"
@@ -64,6 +68,17 @@ KOEventPopupMenu *KOEventView::eventPopup()
   return eventPopup;
 }
 
+QPopupMenu* KOEventView::newEventPopup()
+{
+
+  KXMLGUIClient* client = KOCore::self()->xmlguiClient();
+  Q_ASSERT( client );
+  if ( !client->factory() ) return 0; // can happen if called too early
+
+  return static_cast<QPopupMenu*>
+      ( client->factory()->container( "rmb_selection_popup", client ) );
+
+}
 //---------------------------------------------------------------------------
 
 void KOEventView::showIncidencePopup(QPopupMenu *popup,Incidence *event)

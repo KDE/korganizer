@@ -48,7 +48,7 @@ KOCore *KOCore::self()
 }
 
 KOCore::KOCore() :
-  mCalendarDecorationsLoaded( false ), mHolidays( 0 )
+  mCalendarDecorationsLoaded( false ), mHolidays( 0 ), mXMLGUIClient( 0 )
 {
 }
 
@@ -153,6 +153,12 @@ KOrg::Part *KOCore::loadPart(KService::Ptr service, KOrg::MainWindow *parent)
   
   return pluginFactory->create(parent);
 }
+
+void KOCore::setXMLGUIClient( KXMLGUIClient* guiclient )
+{
+       mXMLGUIClient = guiclient;
+}
+ 
 
 KOrg::Part *KOCore::loadPart(const QString &name,KOrg::MainWindow *parent)
 {

@@ -46,6 +46,10 @@ class KOCore {
     KOrg::CalendarDecoration::List calendarDecorations();
     KOrg::Part::List loadParts(KOrg::MainWindow *parent);
 
+    void setXMLGUIClient( KXMLGUIClient* guiclient );
+    KXMLGUIClient* xmlguiClient() const { return mXMLGUIClient; };
+
+
     /**
      * Unload the parts in &p parts for this main window. Clears
      * parts.
@@ -74,6 +78,8 @@ class KOCore {
     bool mCalendarDecorationsLoaded;
     
     KOrg::CalendarDecoration *mHolidays;
+
+    KXMLGUIClient* mXMLGUIClient;
 };
 
 #endif

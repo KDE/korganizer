@@ -26,6 +26,7 @@
 #include <qpushbutton.h>
 #include <qtooltip.h>
 #include <qpainter.h>
+#include <qcursor.h>
 
 #include <kdebug.h>
 #include <klocale.h>
@@ -509,11 +510,14 @@ void MonthViewCell::cellClicked( QListBoxItem *item )
 
 void MonthViewCell::contextMenu( QListBoxItem *item )
 {
-  if ( !item ) return;
-
-  MonthViewItem *eventItem = static_cast<MonthViewItem *>( item );
-  Incidence *incidence = eventItem->incidence();
-  if ( incidence ) mMonthView->showContextMenu( incidence );
+  if ( item ) {
+    MonthViewItem *eventItem = static_cast<MonthViewItem *>( item );
+    Incidence *incidence = eventItem->incidence();
+    if ( incidence ) mMonthView->showEventContextMenu( incidence );
+  }
+  else {
+    mMonthView->showGeneralContextMenu();
+  }
 }
 
 void MonthViewCell::selection( QListBoxItem *item )
@@ -569,7 +573,7 @@ KOMonthView::KOMonthView(Calendar *calendar, QWidget *parent, const char *name)
     dayLayout->setRowStretch( row + 1, 1 );
   }
 
-  mContextMenu = eventPopup();
+  mEventContextMenu = eventPopup();
 
   updateConfig();
 
@@ -578,7 +582,8 @@ KOMonthView::KOMonthView(Calendar *calendar, QWidget *parent, const char *name)
 
 KOMonthView::~KOMonthView()
 {
-  delete mContextMenu;
+  delete mEventContextMenu;
+  delete mGeneralContextMenu;
 }
 
 int KOMonthView::maxDatesHint()
@@ -733,9 +738,9 @@ void KOMonthView::resizeEvent(QResizeEvent *)
   }
 }
 
-void KOMonthView::showContextMenu( Incidence *incidence )
+void KOMonthView::showEventContextMenu( Incidence *incidence )
 {
-  mContextMenu->showIncidencePopup(incidence);
+  mEventContextMenu->showIncidencePopup(incidence);
   /*
   if( incidence && incidence->type() == "Event" ) {
     Event *event = static_cast<Event *>(incidence);
@@ -744,6 +749,14 @@ void KOMonthView::showContextMenu( Incidence *incidence )
     kdDebug(5850) << "MonthView::showContextMenu(): cast failed." << endl;
   }
   */
+}
+
+void KOMonthView::showGeneralContextMenu()
+{
+  if ( !mGeneralContextMenu )
+    mGeneralContextMenu = newEventPopup();
+
+    mGeneralContextMenu->popup(QCursor::pos());
 }
 
 void KOMonthView::setSelectedCell( MonthViewCell *cell )

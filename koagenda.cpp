@@ -366,10 +366,17 @@ bool KOAgenda::eventFilter_mouse(QObject *object, QMouseEvent *me)
           }
         }
       } else {
-        selectItem(0);
-        mActionItem = 0;
-        setCursor(arrowCursor);
-        startSelectAction(viewportPos);
+        if (me->button() == RightButton)
+        {
+          showNewEventPopupSignal();
+        }
+        else
+        {
+          selectItem(0);
+          mActionItem = 0;
+          setCursor(arrowCursor);
+          startSelectAction(viewportPos);
+        }
       }
       break;
 
