@@ -122,6 +122,8 @@ void ExportWebDialog::setupGeneralPage()
   QHBox *outputFileLayout = new QHBox(destGroup);
   mOutputFileEdit = new KURLRequester(KOPrefs::instance()->mHtmlExportFile,
                                   outputFileLayout);
+  mOutputFileEdit->setMode( KFile::File );
+  mOutputFileEdit->setFilter( "text/html" );
   connect( mOutputFileEdit->lineEdit(), SIGNAL( textChanged ( const QString & ) ), this, SLOT( slotTextChanged( const QString & ) ) );
   slotTextChanged( mOutputFileEdit->lineEdit()->text());
   topLayout->addStretch(1);
