@@ -55,6 +55,7 @@ JournalEntry::JournalEntry( Calendar *calendar, QWidget *parent ) :
   mJournal = 0;
   mDirty = false;
   mChanger = 0;
+  mReadOnly = false;
 
   mLayout = new QGridLayout( this );
   
@@ -106,6 +107,16 @@ JournalEntry::~JournalEntry()
   writeJournal();
 }
 
+void JournalEntry::setReadOnly( bool readonly ) 
+{
+  mReadOnly = readonly; 
+  mTitleEdit->setReadOnly( mReadOnly );
+  mEditor->setReadOnly( mReadOnly );
+  mTimeCheck->setEnabled( !mReadOnly );
+  mTimeEdit->setEnabled( !mReadOnly && mTimeCheck->isChecked() );
+}
+
+
 void JournalEntry::setDate(const QDate &date)
 {
   writeJournal();
@@ -119,6 +130,8 @@ void JournalEntry::clearFields()
   mTimeCheck->setChecked( false );
   mTimeEdit->setEnabled( false );
   mEditor->clear();
+  
+  setReadOnly( false );
 }
 
 void JournalEntry::setJournal(Journal *journal)
@@ -164,21 +177,23 @@ void JournalEntry::readJournal( Journal *j )
 {
   mJournal = j;
   mTitleEdit->setText( mJournal->summary() );
-  bool floats = mJournal->doesFloat();
-  mTimeCheck->setChecked( floats );
-  mTimeEdit->setEnabled( floats );
-  if (!floats) 
+  bool hasTime = !mJournal->doesFloat();
+  mTimeCheck->setChecked( hasTime );
+  mTimeEdit->setEnabled( hasTime );
+  if ( hasTime ) {
     mTimeEdit->setTime( mJournal->dtStart().time() );
+  }
   mEditor->setText( mJournal->description() );
+  setReadOnly( mJournal->isReadOnly() );
 }
 
 void JournalEntry::writeJournalPrivate( Journal *j ) 
 {
   j->setSummary( mTitleEdit->text() );
-  bool floating = !mTimeCheck->isChecked();
+  bool hasTime = mTimeCheck->isChecked();
   QTime tm( mTimeEdit->getTime() );
-  j->setDtStart( QDateTime( mDate, floating?QTime(0,0,0):tm ) );
-  j->setFloats( floating );
+  j->setDtStart( QDateTime( mDate, hasTime?tm:QTime(0,0,0) ) );
+  j->setFloats( !hasTime );
   j->setDescription( mEditor->text() );
 }
 
@@ -186,8 +201,8 @@ void JournalEntry::writeJournal()
 {
 //  kdDebug(5850) << "JournalEntry::writeJournal()" << endl;
 
-  if ( !mDirty || !mChanger ) {
-    kdDebug(5850)<<"Journal either unchanged or no changer object available"<<endl;
+  if ( mReadOnly || !mDirty || !mChanger ) {
+    kdDebug(5850)<<"Journal either read-only, unchanged or no changer object available"<<endl;
     return;
   }
   bool newJournal = false;

@@ -63,6 +63,9 @@ class JournalEntry : public QWidget {
 
     void flushEntry();
     void setIncidenceChanger( IncidenceChangerBase *changer ) { mChanger = changer; }
+    
+    bool isReadOnly() const { return mReadOnly; }
+    void setReadOnly( bool readonly );
 
   protected slots:
     void setDirty();
@@ -79,6 +82,7 @@ class JournalEntry : public QWidget {
     Calendar *mCalendar;
     Journal *mJournal;
     QDate mDate;
+    bool mReadOnly;
     
     QLabel *mTitle;
     QLabel *mTitleLabel;
