@@ -689,7 +689,7 @@ void KOOptionsDialog::setCombo(QComboBox *combo, const QString & text,
 {
   if (tags) {
     int i = tags->findIndex(text);
-    combo->setCurrentItem(i);
+    if (i > 0) combo->setCurrentItem(i);
   } else {
     for(int i=0;i<combo->count();++i) {
       if (combo->text(i) == text) {
@@ -755,7 +755,7 @@ void KOOptionsDialog::writeConfig()
   KOPrefs::instance()->mEmail = mEmailEdit->text();
   KOPrefs::instance()->mAdditional = mAdditionalEdit->text();
   KOPrefs::instance()->mHoliday = *mHolidayList.at(mHolidayCombo->currentItem());
-  kdDebug() << KOPrefs::instance()->mHoliday << endl;
+  kdDebug() << "Holiday: " << KOPrefs::instance()->mHoliday << endl;
 
   KOPrefs::instance()->mTimeZone = mTimeZoneCombo->currentText();
   KOPrefs::instance()->mStartTime = mStartTimeSpin->value();
