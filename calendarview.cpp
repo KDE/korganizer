@@ -1616,7 +1616,7 @@ void CalendarView::takeOverCalendar()
   Incidence::List incidences = mCalendar->rawIncidences();
   Incidence::List::Iterator it;
 
-  for ( it = incidences.begin(); it != incidences.end(); it++ ) {
+  for ( it = incidences.begin(); it != incidences.end(); ++it ) {
     (*it)->setOrganizer( Person( KOPrefs::instance()->fullName(),
                          KOPrefs::instance()->email() ) );
     (*it)->recreate();
