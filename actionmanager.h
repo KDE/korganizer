@@ -37,6 +37,7 @@ namespace KCal
   class Calendar;
   class CalendarResources;
   class Incidence;
+  class ResourceCalendar;
 }
 namespace KOrg
 {
@@ -285,6 +286,8 @@ class ActionManager : public QObject, public KCalendarIface
     void updateUndoAction( const QString & );
 
     void updateRedoAction( const QString & );
+
+    void slotProgress( ResourceCalendar *, const QString &id, int percent );
 
   protected:
     /** Get URL for saving. Opens FileDialog. */

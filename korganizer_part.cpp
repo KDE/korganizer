@@ -170,6 +170,10 @@ void KOrganizerPart::showStatusMessage( const QString &message )
   if ( statusBar ) statusBar->message( message );
 }
 
+void KOrganizerPart::showProgress( int )
+{
+}
+
 KOrg::CalendarViewBase *KOrganizerPart::view() const
 {
   return mView;

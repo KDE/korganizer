@@ -73,6 +73,7 @@ class KOrganizerPart: public KParts::ReadOnlyPart,
     virtual QWidget *topLevelWidget();
     virtual ActionManager *actionManager();
     virtual void showStatusMessage( const QString &message );
+    void showProgress( int percent );
 
     void setTitle() {};
 

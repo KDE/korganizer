@@ -44,6 +44,7 @@
 #include "alarmclient.h"
 #include "resourceview.h"
 #include "korganizerifaceimpl.h"
+#include "progresswidget.h"
 
 #include <korganizer/part.h>
 
@@ -140,6 +141,9 @@ void KOrganizer::init( bool document )
   statusBar()->setItemAlignment( ID_MESSAGES_OUT, AlignRight );
   connect( statusBar(), SIGNAL( pressed( int ) ),
            SLOT( statusBarPressed( int ) ) );
+
+  mProgressWidget = new ProgressWidget( this );
+  statusBar()->addWidget( mProgressWidget, 0, true );
 
   connect( mActionManager->view(), SIGNAL( numIncomingChanged( int ) ),
            SLOT( setNumIncoming( int ) ) );
@@ -302,6 +306,11 @@ void KOrganizer::setNumOutgoing( int num )
 void KOrganizer::showStatusMessage( const QString &message )
 {
   statusBar()->message(message,2000);
+}
+
+void KOrganizer::showProgress( int percent )
+{
+  mProgressWidget->setProgress( percent );
 }
 
 bool KOrganizer::openURL( const KURL &url, bool merge )

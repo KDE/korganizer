@@ -60,6 +60,7 @@ class KProcess;
 class KONewStuff;
 class ActionManager;
 class CalendarView;
+class ProgressWidget;
 
 namespace KCal { class CalendarResources; }
 
@@ -115,6 +116,7 @@ class KOrganizer : public KPartsMainWindow, public KOrgMainWindow
   public slots:
     /** show status message */
     void showStatusMessage( const QString & );
+    void showProgress( int percent );
 
   protected slots:
 
@@ -164,6 +166,8 @@ class KOrganizer : public KPartsMainWindow, public KOrgMainWindow
     // status bar ids
     enum { ID_HISTORY, ID_GENERAL, ID_ACTIVE, ID_MESSAGES_IN, ID_MESSAGES_OUT };
     ActionManager *mActionManager;
+
+    ProgressWidget *mProgressWidget;
 };
 
 #endif
