@@ -111,7 +111,9 @@ ArchiveDialog::ArchiveDialog(Calendar *cal,QWidget *parent, const char *name)
          "It is not possible to recover the appointments later."));
   topLayout->addWidget(mDeleteCb);
   connect(mDeleteCb, SIGNAL(toggled(bool)), mArchiveFile, SLOT(setDisabled(bool)));
-  connect(mArchiveFile->lineEdit(),SIGNAL(textChanged ( const QString & )),this,SLOT(slotArchiveFileChanged(const QString &)));
+  connect(mDeleteCb, SIGNAL(toggled(bool)), this, SLOT(slotEnableUser1()));
+  connect(mArchiveFile->lineEdit(),SIGNAL(textChanged ( const QString & )),
+          this,SLOT(slotEnableUser1()));
   enableButton(KDialogBase::User1,!mArchiveFile->lineEdit()->text().isEmpty());
 }
 
@@ -119,9 +121,11 @@ ArchiveDialog::~ArchiveDialog()
 {
 }
 
-void ArchiveDialog::slotArchiveFileChanged(const QString &text)
+void ArchiveDialog::slotEnableUser1()
 {
-    enableButton(KDialogBase::User1,!text.isEmpty());
+  bool state = ( mDeleteCb->isChecked() ||
+                 !mArchiveFile->lineEdit()->text().isEmpty() );
+  enableButton(KDialogBase::User1,state);
 }
 
 // Archive old events

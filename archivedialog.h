@@ -45,7 +45,7 @@ class ArchiveDialog : public KDialogBase
 
   protected slots:
     void slotUser1();
-    void slotArchiveFileChanged(const QString &);
+    void slotEnableUser1();
 
   protected:    
     void deleteOldEvents();
