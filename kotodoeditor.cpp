@@ -314,7 +314,7 @@ void KOTodoEditor::readTodo( Todo *todo )
   kdDebug(5850)<<"read todo"<<endl;
   mGeneral->readTodo( todo );
   mDetails->readEvent( todo );
-  mAlarms->readIncidence( todo );
+//  mAlarms->readIncidence( todo );
   mRecurrence->readIncidence( todo );
   mAttachments->readIncidence( todo );
 
