@@ -317,7 +317,7 @@ void KOrganizer::initActions()
   (void)new KAction(i18n("&Week"), "7days", 0,
                     mCalendarView->viewManager(), SLOT(showWeekView()),
                     actionCollection(), "view_week");
-  mNextXDays = new KAction("xdays", 0,mCalendarView->viewManager(),
+  mNextXDays = new KAction("", "xdays", 0,mCalendarView->viewManager(),
                     SLOT(showNextXView()),actionCollection(), "view_nextx");
   mNextXDays->setText(i18n("&Next Day", "&Next %n Days", KOPrefs::instance()->mNextXDays));
   (void)new KAction(i18n("&Month"), "month", 0,
