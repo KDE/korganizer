@@ -107,7 +107,6 @@ ActionManager::~ActionManager()
   delete mCalendarView;
 
   delete mCalendar;
-  delete mCalendarResources;
 
   kdDebug(5850) << "~ActionManager() done" << endl;
 }
