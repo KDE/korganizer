@@ -91,7 +91,7 @@ QString Holidays::getHoliday(const QDate &qd)
   //static int lastYear = 0;
   int lastYear = 0;
 
-  if (mHolidayFile.isEmpty()) return QString::null;
+  if (mHolidayFile.isEmpty() || qd.isNull()) return QString::null;
 
   //if ((lastYear == 0) || (qd.year() != lastYear)) {
   if ((yearLast == 0) || (qd.year() != yearLast)) {
