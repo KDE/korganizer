@@ -682,6 +682,25 @@ void CalPrinter::drawDayBox(QPainter &p, const QDate &qd,
     currEvent = eventList.next();
     ++count;
   }
+
+  if ( count <= 9 ) {
+    QPtrList<Todo> todos = mCalendar->todos( qd );
+    Todo *todo;
+    for( todo = todos.first(); todo && count <= 9; todo = todos.next() ) {
+      QString text;
+      if (todo->hasDueDate()) {
+        if (!todo->doesFloat()) {
+          text += KGlobal::locale()->formatTime(todo->dtDue().time());
+          text += " ";
+        }
+      }
+      text += i18n("To-Do: %1").arg(todo->summary());
+
+      p.drawText(x+5, y+(lineSpacing*(count+1)), width-10, lineSpacing,
+                AlignLeft|AlignVCenter, text);
+      ++count;
+    }
+  }
 }
 
 void CalPrinter::drawTTDayBox(QPainter &p, const QDate &qd,
