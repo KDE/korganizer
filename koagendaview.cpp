@@ -786,6 +786,8 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
     ev->setDtEnd( endDt );
   } else if ( i->type() == "Todo" ) {
     Todo *td = static_cast<Todo*>(i);
+    startDt = td->dtStart();
+    startDt = startDt.addDays( daysOffset );
     endDt = td->dtDue();
     endDt = endDt.addDays( daysOffset );
     endDt.setTime( endTime );

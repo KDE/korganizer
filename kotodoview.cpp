@@ -988,17 +988,19 @@ void KOTodoView::purgeCompleted()
 
 void KOTodoView::addQuickTodo()
 {
-  Todo *todo = new Todo();
-  todo->setSummary( mQuickAdd->text() );
-  todo->setOrganizer( Person( KOPrefs::instance()->fullName(), 
-                      KOPrefs::instance()->email() ) );
-  if ( !calendar()->addTodo( todo ) ) {
-    KODialogManager::errorSaveTodo( this );
-    return;
+  if ( ! mQuickAdd->text().stripWhiteSpace().isEmpty() ) {
+    Todo *todo = new Todo();
+    todo->setSummary( mQuickAdd->text() );
+    todo->setOrganizer( Person( KOPrefs::instance()->fullName(), 
+                        KOPrefs::instance()->email() ) );
+    if ( !calendar()->addTodo( todo ) ) {
+      KODialogManager::errorSaveTodo( this );
+      return;
+    }
+    mQuickAdd->setText( QString::null );
+    emit incidenceAdded( todo );
+    updateView();
   }
-  mQuickAdd->setText( QString::null );
-  emit incidenceAdded( todo );
-  updateView();
 }
 
 void KOTodoView::emitCompletedSignal( Todo *todo )
