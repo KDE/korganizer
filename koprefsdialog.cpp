@@ -71,6 +71,7 @@
 #include "ktimeedit.h"
 #include "koglobals.h"
 #include "stdcalendar.h"
+#include <kdepimmacros.h>
 
 
 KOPrefsDialogMain::KOPrefsDialogMain( QWidget *parent, const char *name )
