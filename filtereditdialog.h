@@ -33,6 +33,8 @@ class QComboBox;
 class QPushButton;
 class FilterEdit_base;
 
+namespace KPIM { class CategorySelectDialog; }
+
 using namespace KCal;
 
 /**
@@ -50,9 +52,11 @@ class FilterEditDialog : public KDialogBase
 
   public slots:
     void updateFilterList();
+    void updateCategoryConfig();
 
   signals:
     void filterChanged();
+    void editCategories();
 
   protected slots:
     void slotDefault();
@@ -78,6 +82,8 @@ class FilterEditDialog : public KDialogBase
     FilterEdit_base *mEditor;
 
     QStringList mCategories;
+
+    KPIM::CategorySelectDialog *mCategorySelectDialog;
 };
 
 #endif

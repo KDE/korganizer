@@ -214,12 +214,16 @@ void KODialogManager::showArchiveDialog()
 #endif
 }
 
-void KODialogManager::showFilterEditDialog(QPtrList<CalFilter> *filters)
+void KODialogManager::showFilterEditDialog( QPtrList<CalFilter> *filters )
 {
-  if (!mFilterEditDialog) {
-    mFilterEditDialog = new FilterEditDialog(filters,mMainView);
-    connect(mFilterEditDialog,SIGNAL(filterChanged()),
-            mMainView,SLOT(filterEdited()));
+  if ( !mFilterEditDialog ) {
+    mFilterEditDialog = new FilterEditDialog( filters, mMainView );
+    connect( mFilterEditDialog, SIGNAL( filterChanged() ),
+             mMainView, SLOT( filterEdited() ) );
+    connect( mFilterEditDialog, SIGNAL( editCategories() ),
+             mCategoryEditDialog, SLOT( show() ) );
+    connect( mCategoryEditDialog, SIGNAL( categoryConfigChanged() ),
+             mFilterEditDialog, SLOT( updateCategoryConfig() ) );
   }
   mFilterEditDialog->show();
   mFilterEditDialog->raise();
