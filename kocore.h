@@ -74,7 +74,6 @@ class KOCore {
     bool mCalendarDecorationsLoaded;
     
     KOrg::CalendarDecoration *mHolidays;
-    bool mHolidaysLoaded;    
 };
 
 #endif

@@ -46,8 +46,7 @@ KOCore *KOCore::self()
 }
 
 KOCore::KOCore() :
-  mCalendarDecorationsLoaded(false),
-  mHolidaysLoaded(false)
+  mCalendarDecorationsLoaded(false)
 {
 }
 
@@ -175,8 +174,11 @@ KOrg::CalendarDecoration::List KOCore::calendarDecorations()
     KTrader::OfferList::ConstIterator it;
     for(it = plugins.begin(); it != plugins.end(); ++it) {
       if ((*it)->hasServiceType("Calendar/Decoration")) {
-        if (selectedPlugins.find((*it)->desktopEntryName()) != selectedPlugins.end()) {
-          mCalendarDecorations.append(loadCalendarDecoration(*it));
+        QString name = (*it)->desktopEntryName();
+        if ( selectedPlugins.find( name ) != selectedPlugins.end() ) {
+          KOrg::CalendarDecoration *d = loadCalendarDecoration(*it);
+          mCalendarDecorations.append( d );
+          if ( name == "holidays" ) mHolidays = d;
         }
       }
     }
@@ -242,11 +244,7 @@ void KOCore::reloadPlugins()
 
 QString KOCore::holiday(const QDate &date)
 {
-  if (!mHolidaysLoaded) {
-    mHolidays = static_cast<KOrg::CalendarDecoration *>(loadPlugin("holidays"));
-    mHolidaysLoaded = true;
-  }
-  
+  calendarDecorations();
   if (mHolidays)
     return mHolidays->shortText(date);
   else
