@@ -468,7 +468,7 @@ FreeBusy *FreeBusyManager::loadFreeBusy( const QString &email )
 
 bool FreeBusyManager::saveFreeBusy( FreeBusy *freebusy, const Person &person )
 {
-  kdDebug(5850) << "FreeBusyManager::saveFreeBusy(): " << person.fullName().latin1() << endl;
+  kdDebug(5850) << "FreeBusyManager::saveFreeBusy(): " << person.fullName() << endl;
 
   QString fbd = freeBusyDir();
 
