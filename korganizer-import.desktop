@@ -1,15 +1,19 @@
 [Desktop Entry]
 Encoding=UTF-8
-BinaryPattern=korganizer;
 MimeType=text/calendar;text/x-vcalendar;
 Exec=korganizer --import %u
 Icon=korganizer
-TerminalOptions=
 Path=
 DocPath=korganizer/index.html
 Type=Application
-Terminal=0
+Terminal=false
 Name=Import Calendar
+Name[be]=Імпартаваць каляндар
+Name[br]=Enporzh an deiziadur
+Name[cy]=Mewnforio Calendr
+Name[da]=Importér kalender
+Name[es]=Importar calendario
+Name[sv]=Importera kalender
 ServiceTypes=Browser/View,DCOP/Organizer
 X-KDE-Library=libkorganizerpart
 X-KDE-StartupNotify=true
