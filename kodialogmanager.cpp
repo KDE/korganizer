@@ -19,6 +19,8 @@
   Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 */
 
+#include <kcmultidialog.h>
+
 #include <libkdepim/categoryeditdialog.h>
 
 #include "calendarview.h"
@@ -89,16 +91,37 @@ void KODialogManager::createOutgoingDialog()
 void KODialogManager::showOptionsDialog()
 {
   if (!mOptionsDialog) {
-    mOptionsDialog = new KOPrefsDialog(mMainView);
-    mOptionsDialog->readConfig();
-    connect(mOptionsDialog,SIGNAL(configChanged()),
-            mMainView,SLOT(updateConfig()));
+    mOptionsDialog = new KCMultiDialog( "PIM", mMainView,
+                                        "KorganizerPreferences" );
+      connect( mOptionsDialog, SIGNAL( applyClicked() ),
+               mMainView, SLOT( updateConfig() ) );
+      connect( mOptionsDialog, SIGNAL( okClicked() ),
+               mMainView, SLOT( updateConfig() ) );
+#if 0
+    // TODO Find a way to do this with KCMultiDialog
     connect(mCategoryEditDialog,SIGNAL(categoryConfigChanged()),
             mOptionsDialog,SLOT(updateCategories()));
+#endif
+
+    QStringList modules;
+
+    modules.append( "PIM/korganizer/configmain.desktop" );
+    modules.append( "PIM/korganizer/configtime.desktop" );
+    modules.append( "PIM/korganizer/configviews.desktop" );
+    modules.append( "PIM/korganizer/configfonts.desktop" );
+    modules.append( "PIM/korganizer/configcolors.desktop" );
+    modules.append( "PIM/korganizer/configprinting.desktop" );
+    modules.append( "PIM/korganizer/configgroupscheduling.desktop" );
+    modules.append( "PIM/korganizer/configgroupautomation.desktop" );
+
+    // add them all
+    QStringList::iterator mit;
+    for ( mit = modules.begin(); mit != modules.end(); ++mit )
+      mOptionsDialog->addModule( *mit );
   }
 
-  mOptionsDialog->readConfig();
   mOptionsDialog->show();
+  mOptionsDialog->raise();
 }
 
 void KODialogManager::showOutgoingDialog()

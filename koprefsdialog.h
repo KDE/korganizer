@@ -1,6 +1,6 @@
 /*
     This file is part of KOrganizer.
-    Copyright (c) 2000,2001 Cornelius Schumacher <schumacher@kde.org>
+    Copyright (c) 2000,2001,2002,2003 Cornelius Schumacher <schumacher@kde.org>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -20,105 +20,81 @@
     with any edition of Qt, and distribute the resulting executable,
     without including the source code for Qt in the source distribution.
 */
-#ifndef _KOPREFSDIALOG_H
-#define _KOPREFSDIALOG_H
-
-#include <qframe.h>
-#include <qdict.h>
-#include <qcolor.h>
-#include <qlistview.h>
-
-#include <kdialogbase.h>
+#ifndef KOPREFSDIALOG_H
+#define KOPREFSDIALOG_H
 
 #include <libkdepim/kprefsdialog.h>
 
-class KColorButton;
-class QSpinBox;
-class QSlider;
-class KURLRequester;
-class QComboBox;
-class QLineEdit;
-class QStringList;
+#include <qdict.h>
 
-/** Dialog to change the korganizer configuration.
-  */
-class KOPrefsDialog : public KPrefsDialog
+class QLineEdit;
+class QLabel;
+class QSpinBox;
+class QComboBox;
+class KColorButton;
+class QColor;
+class QListView;
+
+class KOPrefsDialogMain : public KPrefsModule
 {
     Q_OBJECT
   public:
-    /** Initialize dialog and pages */
-    KOPrefsDialog(QWidget *parent=0,char *name=0,bool modal=false);
-    ~KOPrefsDialog();
-
-  public slots:
-    void showPrinterTab();
-    
-    /** Update controls for categories */
-    void updateCategories();
-
-  protected slots:
-    void setCategoryColor();
-    void updateCategoryColor();
-
-    void warningExperimental(bool on);
-
-    void toggleEmailSettings(bool);
-    
-    //additional emails
-    void addItem();
-    void removeItem();
-    void updateItem();
-    void updateInput();
+    KOPrefsDialogMain( QWidget *parent, const char *name );
 
   protected:
     void usrReadConfig();
     void usrWriteConfig();
 
-    void setupMainTab();
-    void setupTimeTab();
-    void setupFontsTab();
-    void setupColorsTab();
-    void setupViewsTab();
-    void setupDisplayTab();
-    void setupPrinterTab();
-    void setupGroupSchedulingTab();
-    void setupGroupAutomationTab();
-
-    void setCombo(QComboBox *combo,const QString & text, const QStringList *tags = 0);
-
+  protected slots:
+    void toggleEmailSettings( bool on );
 
   private:
-    QFrame *mPrinterTab;
-
-    QLineEdit *nameEdit;
-    QLineEdit *emailEdit;
-
-    QComboBox *timeCombo;
-    QComboBox *tzCombo;
-
-    // widgets holding preferences data
     QLineEdit *mNameEdit;
     QLineEdit *mEmailEdit;
     QLabel *mNameLabel;
     QLabel *mEmailLabel;
-    QLineEdit *mAdditionalEdit;
     QSpinBox  *mAutoSaveIntervalSpin;
-    QListView *mAMails;
-    QLineEdit *aEmailsEdit;
+};
 
-    QComboBox    *mTimeZoneCombo;
-    QStringList  tzonenames;
-    QSpinBox     *mStartTimeSpin;
-    QSpinBox     *mDefaultDurationSpin;
-    QComboBox    *mAlarmTimeCombo;
+class KOPrefsDialogColors : public KPrefsModule
+{
+    Q_OBJECT
+  public:
+    KOPrefsDialogColors( QWidget *parent, const char *name );
 
+  protected:
+    void usrWriteConfig();
+
+  protected slots:
+    void updateCategories();
+    void setCategoryColor();
+    void updateCategoryColor();
+
+  private:
     QComboBox     *mCategoryCombo;
     KColorButton  *mCategoryButton;
     QDict<QColor> mCategoryDict;
+};
 
-    QSlider   *mHourSizeSlider;
+class KOPrefsDialogGroupScheduling : public KPrefsModule
+{
+    Q_OBJECT
+  public:
+    KOPrefsDialogGroupScheduling( QWidget *parent, const char *name );
 
-    QSpinBox  *mNextXDaysSpin;
+  protected:
+    void usrReadConfig();
+    void usrWriteConfig();
+  
+  protected slots:
+    void addItem();
+    void removeItem();
+    void updateItem();
+    void updateInput();
+
+  private:
+    QListView *mAMails;
+    QLineEdit *aEmailsEdit;
 };
 
 #endif

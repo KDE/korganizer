@@ -69,6 +69,8 @@ CalPrinter::~CalPrinter()
 
 void CalPrinter::setupPrinter()
 {
+  KMessageBox::sorry( mParent, i18n("Not implemented.") );
+#if 0
   KOPrefsDialog *optionsDlg = new KOPrefsDialog(mParent);
   optionsDlg->readConfig();
   optionsDlg->showPrinterTab();
@@ -77,6 +79,7 @@ void CalPrinter::setupPrinter()
 //  connect(optionsDlg, SIGNAL(closed(QWidget *)),
 //	  parent, SLOT(cleanWindow(QWidget *)));
   optionsDlg->show();
+#endif
 }
 
 void CalPrinter::preview(PrintType pt, const QDate &fd, const QDate &td)

@@ -7,17 +7,24 @@ INCLUDES = \
 
 bin_PROGRAMS = korganizer
 
-korganizer_LDFLAGS = $(all_libraries) $(KDE_RPATH)
+korganizer_LDFLAGS = $(all_libraries) $(KDE_RPATH) -lkutils
 korganizer_LDADD   = libkorganizer.la
 korganizer_SOURCES = main.cpp korganizer.cpp koapp.cpp
 korganizer_COMPILE_FIRST = koprefs.h
 
-kde_module_LTLIBRARIES = libkorganizerpart.la
+
+kde_module_LTLIBRARIES = kcm_korganizer.la libkorganizerpart.la
+
+kcm_korganizer_la_SOURCES = koprefsdialog.cpp
+kcm_korganizer_la_LDFLAGS = $(all_libraries) -module -avoid-version -no-undefined
+kcm_korganizer_la_LIBADD = libkorganizer.la $(top_builddir)/libkdepim/libkdepim.la \
+  $(LIB_KDECORE)
 
 libkorganizerpart_la_LDFLAGS = -module $(KDE_PLUGIN) $(all_libraries)
 libkorganizerpart_la_LIBADD  = libkorganizer.la
 libkorganizerpart_la_SOURCES = korganizer_part.cpp
 libkorganizerpart_la_COMPILE_FIRST = publishdialog_base.h koprefs.h
+
 
 check_PROGRAMS = korgplugins timezone
 
@@ -34,6 +41,7 @@ timezone_COMPILE_FIRST = koprefs.h
 koprefs_base.h koprefs_base.cpp: $(srcdir)/koprefs.cfg $(top_builddir)/libkdepim/cfgc/cfgc
 	$(top_builddir)/libkdepim/cfgc/cfgc $(srcdir)/koprefs.cfg
 $(srcdir)/koprefs.h: koprefs_base.h
+
 
 lib_LTLIBRARIES = libkorganizer.la
 
@@ -141,3 +149,9 @@ messages: rc.cpp
 	rm -f tips.cc
 
 include ../admin/Doxyfile.am
+
+pim_DATA = configmain.desktop configtime.desktop \
+  configviews.desktop configcolors.desktop \
+  configfonts.desktop configgroupscheduling.desktop \
+  configgroupautomation.desktop
+pimdir = $(kde_appsdir)/PIM/korganizer
