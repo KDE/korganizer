@@ -1,5 +1,6 @@
 /*
     This file is part of KOrganizer.
+
     Copyright (c) 2001 Cornelius Schumacher <schumacher@kde.org>
 
     This program is free software; you can redistribute it and/or modify
@@ -82,11 +83,11 @@ void CustomListViewItem<class Attendee *>::updateItem()
     setPixmap(4,KOGlobals::self()->smallIcon("nomailappt"));
 }
 
-KOAttendeeListView::KOAttendeeListView (QWidget *parent, const char *name)
-    : KListView(parent, name)
+KOAttendeeListView::KOAttendeeListView ( QWidget *parent, const char *name )
+  : KListView(parent, name)
 {
-  setAcceptDrops(true);
-  setAllColumnsShowFocus(true);
+  setAcceptDrops( true );
+  setAllColumnsShowFocus( true );
 }
 
 /** KOAttendeeListView is a child class of KListView  which supports
@@ -103,7 +104,7 @@ void KOAttendeeListView::contentsDragEnterEvent( QDragEnterEvent *e )
   dragEnterEvent(e);
 }
 
-void KOAttendeeListView::contentsDragMoveEvent(QDragMoveEvent *e)
+void KOAttendeeListView::contentsDragMoveEvent( QDragMoveEvent *e )
 {
 #ifndef KORG_NODND
   if ( KVCardDrag::canDecode( e ) || QTextDrag::canDecode( e ) ) {
@@ -282,24 +283,24 @@ KOEditorDetails::~KOEditorDetails()
 
 bool KOEditorDetails::eventFilter( QObject *watched, QEvent *ev)
 {
-  if (watched && watched == mNameEdit && ev->type() == QEvent::FocusIn && mListView->childCount() == 0 )
-  {
+  if ( watched && watched == mNameEdit && ev->type() == QEvent::FocusIn &&
+       mListView->childCount() == 0 ) {
     addNewAttendee();
   }
 
   return QWidget::eventFilter( watched, ev );
-
 }
 
 void KOEditorDetails::removeAttendee()
 {
-  AttendeeListItem *aItem = (AttendeeListItem *)mListView->selectedItem();
-  if (!aItem) return;
+  AttendeeListItem *aItem =
+      static_cast<AttendeeListItem *>( mListView->selectedItem() );
+  if ( !aItem ) return;
 
-  Attendee *delA = new Attendee(aItem->data()->name(),aItem->data()->email(),
-    aItem->data()->RSVP(),aItem->data()->status(),aItem->data()->role(),
-    aItem->data()->uid());
-  mdelAttendees.append(delA);
+  Attendee *delA = new Attendee( aItem->data()->name(), aItem->data()->email(),
+                                 aItem->data()->RSVP(), aItem->data()->status(),
+                                 aItem->data()->role(), aItem->data()->uid() );
+  mdelAttendees.append( delA );
 
   if ( mFreeBusy ) mFreeBusy->removeAttendee( aItem->data() );
   delete aItem;
@@ -311,26 +312,25 @@ void KOEditorDetails::removeAttendee()
 void KOEditorDetails::openAddressBook()
 {
 #ifndef KORG_NOKABC
-
-    KPIM::AddressesDialog* dia = new KPIM::AddressesDialog( this, "adddialog" );
-    dia->setShowCC( false );
-    dia->setShowBCC( false );
-    if ( dia->exec() ) {
-        KABC::Addressee::List aList = dia->allToAddressesNoDuplicates();
-        for ( KABC::Addressee::List::iterator itr = aList.begin();
-              itr != aList.end(); ++itr ) {
-            KABC::Addressee a = (*itr);
-            bool myself = KOPrefs::instance()->thatIsMe( a.preferredEmail() );
-            KCal::Attendee::PartStat partStat =
-                myself ? KCal::Attendee::Accepted : KCal::Attendee::NeedsAction;
-            insertAttendee( new Attendee( a.realName(), a.preferredEmail(),
-                                          !myself, partStat,
-                                          KCal::Attendee::ReqParticipant, a.uid() ) );
-
-        }
+  KPIM::AddressesDialog *dia = new KPIM::AddressesDialog( this, "adddialog" );
+  dia->setShowCC( false );
+  dia->setShowBCC( false );
+  if ( dia->exec() ) {
+    KABC::Addressee::List aList = dia->allToAddressesNoDuplicates();
+    for ( KABC::Addressee::List::iterator itr = aList.begin();
+          itr != aList.end(); ++itr ) {
+      KABC::Addressee a = (*itr);
+      bool myself = KOPrefs::instance()->thatIsMe( a.preferredEmail() );
+      KCal::Attendee::PartStat partStat;
+      if ( myself ) partStat = KCal::Attendee::Accepted;
+      else partStat = KCal::Attendee::NeedsAction;
+      insertAttendee( new Attendee( a.realName(), a.preferredEmail(),
+                                    !myself, partStat,
+                                    KCal::Attendee::ReqParticipant, a.uid() ) );
     }
-    delete dia;
-    return;
+  }
+  delete dia;
+  return;
 #if 0
     // old code
     KABC::Addressee a = KABC::AddresseeDialog::getAddressee(this);
@@ -351,25 +351,26 @@ void KOEditorDetails::openAddressBook()
 
 void KOEditorDetails::addNewAttendee()
 {
-  Attendee *a = new Attendee(i18n("Firstname Lastname"),i18n("name@domain.com"));
-  insertAttendee(a);
+  Attendee *a = new Attendee( i18n("Firstname Lastname"),
+                              i18n("name@domain.com") );
+  insertAttendee( a );
   // We don't want the hint again
-  mNameEdit->setClickMessage("");
+  mNameEdit->setClickMessage( "" );
   mNameEdit->setFocus();
-  QTimer::singleShot(0, mNameEdit, SLOT(selectAll()));
+  QTimer::singleShot( 0, mNameEdit, SLOT( selectAll() ) );
 }
 
 
-void KOEditorDetails::insertAttendee(Attendee *a)
+void KOEditorDetails::insertAttendee( Attendee *a )
 {
-  AttendeeListItem *item = new AttendeeListItem(a,mListView);
+  AttendeeListItem *item = new AttendeeListItem( a, mListView );
   mListView->setSelected( item, true );
   if( mFreeBusy ) mFreeBusy->insertAttendee( a );
 }
 
 void KOEditorDetails::setDefaults()
 {
-  mRsvpButton->setChecked(true);
+  mRsvpButton->setChecked( true );
 }
 
 void KOEditorDetails::readEvent(Incidence *event)

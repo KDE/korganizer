@@ -146,7 +146,8 @@ void FreeBusyItem::setFreeBusyPeriods( FreeBusy* fb )
 }
 
 
-KOEditorFreeBusy::KOEditorFreeBusy( int spacing, QWidget* parent, const char* name )
+KOEditorFreeBusy::KOEditorFreeBusy( int spacing, QWidget *parent,
+                                    const char *name )
   : QWidget( parent, name )
 {
   QVBoxLayout* topLayout = new QVBoxLayout( this );
@@ -202,24 +203,25 @@ KOEditorFreeBusy::KOEditorFreeBusy( int spacing, QWidget* parent, const char* na
   controlLayout->addWidget( button );
   connect( button, SIGNAL( clicked() ), SLOT( reload() ) );
 
-  mGanttView = new KDGanttView(this,"mGanttView");
+  mGanttView = new KDGanttView( this, "mGanttView" );
   topLayout->addWidget( mGanttView );
   // Remove the predefined "Task Name" column
   mGanttView->removeColumn( 0 );
-  mGanttView->addColumn(i18n("Name"),180);
-  mGanttView->addColumn(i18n("Email"),180);
-  mGanttView->addColumn(i18n("Role"),60);
-  mGanttView->addColumn(i18n("Status"),100);
-  mGanttView->addColumn(i18n("RSVP"),35);
+  mGanttView->addColumn( i18n("Name"), 180 );
+  mGanttView->addColumn( i18n("Email"), 180 );
+  mGanttView->addColumn( i18n("Role"), 60 );
+  mGanttView->addColumn( i18n("Status"), 100 );
+  mGanttView->addColumn( i18n("RSVP"), 35 );
   if ( KOPrefs::instance()->mCompactDialogs ) {
-    mGanttView->setFixedHeight(78);
+    mGanttView->setFixedHeight( 78 );
   }
   mGanttView->setHeaderVisible( true );
   mGanttView->setScale( KDGanttView::Hour );
-  mGanttView->setShowHeaderPopupMenu( true, true, true,false,false,true );
+  mGanttView->setShowHeaderPopupMenu( true, true, true, false, false, true );
   // Initially, show 15 days back and forth
   // set start to even hours, i.e. to 12:AM 0 Min 0 Sec
-  QDateTime horizonStart = QDateTime( QDateTime::currentDateTime().addDays( -15 ).date() );
+  QDateTime horizonStart = QDateTime( QDateTime::currentDateTime()
+                           .addDays( -15 ).date() );
   QDateTime horizonEnd = QDateTime::currentDateTime().addDays( 15 );
   mGanttView->setHorizonStart( horizonStart );
   mGanttView->setHorizonEnd( horizonEnd );
@@ -232,7 +234,10 @@ KOEditorFreeBusy::KOEditorFreeBusy( int spacing, QWidget* parent, const char* na
     mGanttView->setHourFormat( KDGanttView::Hour_12 );
   else
     mGanttView->setHourFormat( KDGanttView::Hour_24_FourDigit );
-  connect(mGanttView, SIGNAL ( timeIntervalSelected( const QDateTime&,const QDateTime&) ) ,mGanttView , SLOT( zoomToSelection( const QDateTime&, const  QDateTime&))) ;
+  connect( mGanttView, SIGNAL ( timeIntervalSelected( const QDateTime &,
+                                                      const QDateTime & ) ),
+           mGanttView, SLOT( zoomToSelection( const QDateTime &,
+                                              const  QDateTime & ) ) );
 //  connect( mGanttView, SIGNAL( lvItemDoubleClicked( KDGanttViewItem * ) ),
 //           SLOT( updateFreeBusyData( KDGanttViewItem * ) ) );
   connect( mGanttView, SIGNAL( lvItemDoubleClicked( KDGanttViewItem * ) ),
@@ -247,31 +252,31 @@ KOEditorFreeBusy::~KOEditorFreeBusy()
 {
 }
 
-void KOEditorFreeBusy::removeAttendee( Attendee* attendee )
+void KOEditorFreeBusy::removeAttendee( Attendee *attendee )
 {
   FreeBusyItem *anItem =
-    static_cast<FreeBusyItem*>( mGanttView->firstChild() );
+      static_cast<FreeBusyItem *>( mGanttView->firstChild() );
   while( anItem ) {
     if( anItem->attendee() == attendee ) {
       delete anItem;
       updateStatusSummary();
       break;
     }
-    anItem = static_cast<FreeBusyItem*>( anItem->nextSibling() );
+    anItem = static_cast<FreeBusyItem *>( anItem->nextSibling() );
   }
 }
 
-void KOEditorFreeBusy::insertAttendee( Attendee* attendee )
+void KOEditorFreeBusy::insertAttendee( Attendee *attendee )
 {
   (void)new FreeBusyItem( attendee, mGanttView );
   updateFreeBusyData( attendee );
   updateStatusSummary();
 }
 
-void KOEditorFreeBusy::updateAttendee( Attendee* attendee )
+void KOEditorFreeBusy::updateAttendee( Attendee *attendee )
 {
   FreeBusyItem *anItem =
-    static_cast<FreeBusyItem*>( mGanttView->firstChild() );
+      static_cast<FreeBusyItem *>( mGanttView->firstChild() );
   while( anItem ) {
     if( anItem->attendee() == attendee ) {
       anItem->updateItem();
@@ -279,7 +284,7 @@ void KOEditorFreeBusy::updateAttendee( Attendee* attendee )
       updateStatusSummary();
       break;
     }
-    anItem = static_cast<FreeBusyItem*>( anItem->nextSibling() );
+    anItem = static_cast<FreeBusyItem *>( anItem->nextSibling() );
   }
 }
 
@@ -300,16 +305,14 @@ bool KOEditorFreeBusy::updateEnabled() const
 }
 
 
-void KOEditorFreeBusy::readEvent( Event* event )
+void KOEditorFreeBusy::readEvent( Event *event )
 {
   setDateTimes( event->dtStart(), event->dtEnd() );
-
 }
 
 
 void KOEditorFreeBusy::setDateTimes( QDateTime start, QDateTime end )
 {
-  // qDebug("KOEditorFreeBusy::setDateTimes( %s, %s )", start.toString().latin1(), end.toString().latin1() );
   mDtStart = start;
   mDtEnd = end;
 
@@ -333,7 +336,7 @@ void KOEditorFreeBusy::slotCenterOnStart()
 
 void KOEditorFreeBusy::slotZoomToTime() 
 {
-    mGanttView->zoomToFit();
+  mGanttView->zoomToFit();
 }
 
 void KOEditorFreeBusy::updateFreeBusyData( KDGanttViewItem *item )
@@ -363,14 +366,14 @@ void KOEditorFreeBusy::slotInsertFreeBusy( KCal::FreeBusy *fb,
   if( fb )
     fb->sortList();
   bool block = mGanttView->getUpdateEnabled();
-  mGanttView->setUpdateEnabled(false);
-  for( KDGanttViewItem* it = mGanttView->firstChild(); it;
+  mGanttView->setUpdateEnabled( false );
+  for( KDGanttViewItem *it = mGanttView->firstChild(); it;
        it = it->nextSibling() ) {
-    FreeBusyItem* item = static_cast<FreeBusyItem*>( it );
+    FreeBusyItem *item = static_cast<FreeBusyItem *>( it );
     if( item->email() == email )
       item->setFreeBusyPeriods( fb );
   }
-  mGanttView->setUpdateEnabled(block);
+  mGanttView->setUpdateEnabled( block );
 }
 
 
@@ -403,11 +406,14 @@ void KOEditorFreeBusy::slotPickDate()
 
   if( success ) {
     if ( start == mDtStart && end == mDtEnd ) {
-      KMessageBox::information( this, i18n( "The meeting has already suitable start/end times." ));
+      KMessageBox::information( this,
+          i18n( "The meeting has already suitable start/end times." ));
     } else {
       emit dateTimesChanged( start, end );
       slotUpdateGanttView( start, end );
-      KMessageBox::information( this, i18n( "The meeting has been moved to\nStart: %1\nEnd: %2." ).arg( start.toString() ).arg( end.toString() ) );
+      KMessageBox::information( this,
+          i18n( "The meeting has been moved to\nStart: %1\nEnd: %2." )
+          .arg( start.toString() ).arg( end.toString() ) );
     }
   } else
     KMessageBox::sorry( this, i18n( "No suitable date found." ) );
@@ -418,7 +424,7 @@ void KOEditorFreeBusy::slotPickDate()
   Finds a free slot in the future which has at least the same size as
   the initial slot.
 */
-bool KOEditorFreeBusy::findFreeSlot( QDateTime& dtFrom, QDateTime& dtTo )
+bool KOEditorFreeBusy::findFreeSlot( QDateTime &dtFrom, QDateTime &dtTo )
 {
   if( tryDate( dtFrom, dtTo ) )
     // Current time is acceptable
@@ -481,13 +487,13 @@ bool KOEditorFreeBusy::tryDate( QDateTime& tryFrom, QDateTime& tryTo )
   possible slot for this participant (not necessarily a slot that is
   available for all participants).
 */
-bool KOEditorFreeBusy::tryDate( FreeBusyItem* attendee,
-                               QDateTime& tryFrom, QDateTime& tryTo )
+bool KOEditorFreeBusy::tryDate( FreeBusyItem *attendee,
+                                QDateTime &tryFrom, QDateTime &tryTo )
 {
   // If we don't have any free/busy information, assume the
   // participant is free. Otherwise a participant without available
   // information would block the whole allocation.
-  KCal::FreeBusy* fb = attendee->freeBusy();
+  KCal::FreeBusy *fb = attendee->freeBusy();
   if( !fb )
     return true;
 
@@ -516,7 +522,7 @@ bool KOEditorFreeBusy::tryDate( FreeBusyItem* attendee,
 void KOEditorFreeBusy::updateStatusSummary()
 {
   FreeBusyItem *aItem =
-    static_cast<FreeBusyItem*>(mGanttView->firstChild());
+    static_cast<FreeBusyItem *>( mGanttView->firstChild() );
   int total = 0;
   int accepted = 0;
   int tentative = 0;
@@ -540,16 +546,17 @@ void KOEditorFreeBusy::updateStatusSummary()
       /* just to shut up the compiler */
       break;
     }
-    aItem = static_cast<FreeBusyItem*>(aItem->nextSibling());
+    aItem = static_cast<FreeBusyItem *>( aItem->nextSibling() );
   }
   if( total > 1 && mIsOrganizer ) {
     mStatusSummaryLabel->show();
-    mStatusSummaryLabel->setText( i18n( "Of the %1 participants, %2 have accepted, %3"
-					" have tentatively accepted, and %4 have declined.")
-				  .arg(total).arg(accepted).arg(tentative).arg(declined));
+    mStatusSummaryLabel->setText(
+        i18n( "Of the %1 participants, %2 have accepted, %3"
+              " have tentatively accepted, and %4 have declined.")
+        .arg( total ).arg( accepted ).arg( tentative ).arg( declined ) );
   } else {
     mStatusSummaryLabel->hide();
-    mStatusSummaryLabel->setText("");
+    mStatusSummaryLabel->setText( "" );
   }
   mStatusSummaryLabel->adjustSize();
 }
