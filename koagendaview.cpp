@@ -120,14 +120,11 @@ void TimeLabels::setTimeFormat(int format)
 void TimeLabels::updateConfig(KConfig* config)
 {
   // set the font
-  // TODO: this could be read from config
   config->setGroup("Fonts");
-  //QFont font = config->readFontEntry( "TimeBar Font" ) );
-  QFont font("helvetica", 18);
+  QFont font = config->readFontEntry("TimeBar Font");
   setFont(font);
 
   // set the time format
-  // TODO: use the time format in config
   config->setGroup("Time & Date");
   int fmt = config->readNumEntry("Time Format", 1);
   // fmt = 0 for 24h, or 1 for am/pm

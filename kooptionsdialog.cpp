@@ -2,18 +2,17 @@
 
 #include <qlayout.h>
 #include <qlabel.h>
-#include <qgrpbox.h>
-#include <qbttngrp.h>
-#include <qlined.h>
-#include <qbttngrp.h>
+#include <qgroupbox.h>
+#include <qbuttongroup.h>
+#include <qlineedit.h>
 #include <qfont.h>
 #include <qslider.h>
 #include <qfile.h>
 #include <qtextstream.h>
 #include <qcombobox.h>
-
 #include <qvbox.h>
 #include <qhbox.h>
+#include <qspinbox.h>
 
 #include <kapp.h>
 #include <klocale.h>
@@ -21,19 +20,11 @@
 #include <kfontdialog.h>
 #include <kstddirs.h>
 
-#include "kproptext.h"
-#include "kpropcombo.h"
-#include "kpropspin.h"
-#include "kpropcheck.h"
-#include "kpropradio.h"
-#include "kpropfont.h"
-#include "kpropcolor.h"
-#include "kpropgroup.h"
-
 #include "kooptionsdialog.h"
 #include "kooptionsdialog.moc"
 
 //koConfig koconf;
+
 
 
 // The Preferences dialog reads and writes the config file to get and store the
@@ -203,6 +194,18 @@ void KOOptionsDialog::setupFontsTab()
 {
   QFrame *topFrame = addPage(i18n("Fonts"));
 
+  QGridLayout *topLayout = new QGridLayout(topFrame,5,2);
+
+  mTimeBarFont = new QLabel("12:34",topFrame);
+  mTimeBarFont->setFrameStyle(QFrame::Panel|QFrame::Sunken);
+  topLayout->addWidget(mTimeBarFont,0,0);
+
+  QPushButton *buttonTimeBar = new QPushButton(i18n("Time Bar Font"),topFrame);
+  topLayout->addWidget(buttonTimeBar,0,1);
+  connect(buttonTimeBar,SIGNAL(clicked()),SLOT(selectTimeBarFont()));
+
+  topLayout->setRowStretch(1,1);
+  
 // Disabled because font settings are not used. Has to be reimplemented.
 #if 0
 	QVBoxLayout *layout = new QVBoxLayout( fontsFrame, 4 );
@@ -238,6 +241,14 @@ void KOOptionsDialog::setupFontsTab()
 
 //	layout->addStretch();	
 #endif
+}
+
+void KOOptionsDialog::selectTimeBarFont()
+{
+  QFont theFont(mTimeBarFont->font());
+  QString theText(mTimeBarFont->text());
+  KFontDialog::getFontAndText(theFont,theText);
+  mTimeBarFont->setFont(theFont);
 }
 
 
@@ -435,6 +446,8 @@ void KOOptionsDialog::setDefaults()
   mHourSizeSlider->setValue(10);
   mDailyRecurCheck->setChecked(true);
 
+  mTimeBarFont->setFont(QFont("helvetica",18));
+
   mPrinterCombo->setCurrentItem(0);
   mPaperSizeGroup->setButton(0);
   mPaperOrientationGroup->setButton(0);
@@ -477,6 +490,9 @@ void KOOptionsDialog::readConfig()
   mHourSizeSlider->setValue(config.readNumEntry("Hour Size",10));
   mDailyRecurCheck->setChecked(config.readBoolEntry("Show Daily Recurrences",true));
 
+  config.setGroup("Fonts");
+  mTimeBarFont->setFont(config.readFontEntry("TimeBar Font"));
+
   config.setGroup("Printer");
   mPrinterCombo->setCurrentItem(config.readNumEntry("Printer Name",0));
   mPaperSizeGroup->setButton(config.readNumEntry("Paper Size",0));
@@ -513,6 +529,9 @@ void KOOptionsDialog::writeConfig()
   config.writeEntry("Day Begins",mDayBeginsSpin->value());
   config.writeEntry("Hour Size",mHourSizeSlider->value());
   config.writeEntry("Show Daily Recurrences",mDailyRecurCheck->isChecked());
+
+  config.setGroup("Fonts");
+  config.writeEntry("TimeBar Font",mTimeBarFont->font());
 
   config.setGroup("Printer");
   config.writeEntry("Printer Name",mPrinterCombo->currentItem());

@@ -18,6 +18,7 @@
 class QSpinBox;
 class QSlider;
 
+
 /** Dialog to change the korganizer configuration.
   */
 class KOOptionsDialog : public KDialogBase
@@ -53,6 +54,8 @@ protected slots:
   /** Accept changes to preferences and close dialog */
   void slotOk();
   
+  void selectTimeBarFont();
+
 protected:
   /** These methods create the page contents */
   void setupMainTab();
@@ -114,6 +117,8 @@ private:
   QSpinBox     *mStartTimeSpin;
   QComboBox    *mAlarmTimeCombo;
   QCheckBox    *mWeekstartCheck;
+
+  QLabel *mTimeBarFont;
 
   QSpinBox  *mDayBeginsSpin;
   QSlider   *mHourSizeSlider;
