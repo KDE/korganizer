@@ -25,7 +25,7 @@
 #include <qdatastream.h>
 // yes, this is this very header - but it tells dcopidl to include it
 // in _stub.cpp and _skel.cpp files, to get the definition of the structs.
-#include <kcalendariface.h>
+#include "kcalendariface.h"
 
 
 class KCalendarIface : public DCOPObject

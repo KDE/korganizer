@@ -42,7 +42,7 @@
 #include <kio/job.h>
 #include <kstandarddirs.h>
 #include <kconfig.h>
-#include <koglobals.h>
+#include "koglobals.h"
 #include <kurlrequester.h>
 #include <kio/netaccess.h>
 #include <knotifyclient.h>
