@@ -562,7 +562,9 @@ void CalendarView::writeFilterSettings(KConfig *config)
   }
   config->setGroup( "General" );
   config->writeEntry( "CalendarFilters", filterList);
-  config->writeEntry( "Current Filter", mCurrentFilter->name());
+  if ( mCurrentFilter ) {
+    config->writeEntry( "Current Filter", mCurrentFilter->name());
+  }
 }
 
 
