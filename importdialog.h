@@ -1,7 +1,7 @@
 /*
     This file is part of KOrganizer.
 
-    Copyright (c) 2003 Cornelius Schumacher <schumacher@kde.org>
+    Copyright (c) 2003,2004 Cornelius Schumacher <schumacher@kde.org>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -21,23 +21,46 @@
     with any edition of Qt, and distribute the resulting executable,
     without including the source code for Qt in the source distribution.
 */
-#ifndef RESOURCEIMPORTDIALOG_H
-#define RESOURCEIMPORTDIALOG_H
+#ifndef IMPORTDIALOG_H
+#define IMPORTDIALOG_H
 
 #include <kdialogbase.h>
 
-class ResourceImportDialog : public KDialogBase
+#include <kurl.h>
+
+namespace KCal {
+class ResourceRemote;
+class ResourceCalendar;
+}
+
+class QRadioButton;
+
+using namespace KCal;
+
+class ImportDialog : public KDialogBase
 {
     Q_OBJECT
   public:
-    ResourceImportDialog( const QString &url, QWidget *parent );
-    ~ResourceImportDialog();
+    ImportDialog( const KURL &url, QWidget *parent );
+    ~ImportDialog();
 
   public slots:
     void slotOk();
 
+  signals:
+    void dialogFinished( ImportDialog * );
+
+  protected slots:
+    void mergeResource( ResourceCalendar * );
+
   private:
-    QString mUrl;
+    KURL mUrl;
+
+    QRadioButton *mAddButton;
+    QRadioButton *mMergeButton;
+    QRadioButton *mOpenButton;
+
+    ResourceRemote *mMergeResource;
 };
 
 #endif

@@ -43,7 +43,7 @@
 #include "alarmclient.h"
 #include "koglobals.h"
 #include "actionmanager.h"
-#include "resourceimportdialog.h"
+#include "importdialog.h"
 #include "kocore.h"
 #include "calendarview.h"
 
@@ -94,8 +94,8 @@ int KOrganizerApp::newInstance()
     if ( !korg ) {
       kdError() << "Unable to find default calendar resources view." << endl;
     } else {
-      QString importUrl = QString::fromLocal8Bit( args->getOption( "import" ) );
-      korg->actionManager()->importResource( importUrl );
+      KURL url = KCmdLineArgs::makeURL( args->getOption( "import" ) );
+      korg->actionManager()->importCalendar( url );
     }
   }
 

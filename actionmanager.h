@@ -3,7 +3,7 @@
 
     Copyright (c) 2002 Mike Pilone <mpilone@slac.com>
     Copyright (c) 2002 Don Sanders <sanders@kde.org>
-    Copyright (c) 2003 Cornelius Schumacher <schumacher@kde.org>
+    Copyright (c) 2003,2004 Cornelius Schumacher <schumacher@kde.org>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -56,6 +56,7 @@ class CalendarView;
 class KOrganizer;
 class KONewStuff;
 class KOWindowList;
+class ImportDialog;
 
 using namespace KCal;
 
@@ -222,7 +223,7 @@ class ActionManager : public QObject, public KCalendarIface
 
     void loadParts();
 
-    void importResource( const QString &url );
+    void importCalendar( const KURL &url );
 
   protected slots:
 
@@ -287,6 +288,8 @@ class ActionManager : public QObject, public KCalendarIface
 
     void updateRedoAction( const QString & );
 
+    void slotImportDialogFinished( ImportDialog * );
+
   protected:
     /** Get URL for saving. Opens FileDialog. */
     KURL getSaveURL();
@@ -294,6 +297,11 @@ class ActionManager : public QObject, public KCalendarIface
     void showStatusMessageOpen( const KURL &url, bool merge );
 
     void initCalendar( Calendar *cal );
+
+    /**
+      Return widget used as parent for dialogs and message boxes.
+    */
+    QWidget *dialogParent();
 
   private slots:
     void dumpText( const QString & );  // only for debugging purposes

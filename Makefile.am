@@ -58,7 +58,8 @@ libkorganizer_la_LIBADD  = $(LIB_KPARTS) $(LIB_KFILE) \
 	libkorganizer_eventviewer.la \
 	$(top_builddir)/kdgantt/libkdgantt.la \
 	$(KNEWSTUFF_LIB) \
-	$(top_builddir)/ktnef/lib/libktnef.la
+	$(top_builddir)/ktnef/lib/libktnef.la \
+        $(top_builddir)/kresources/remote/libkcal_resourceremote.la
 libkorganizer_la_COMPILE_FIRST = kofilterview_base.ui \
 	outgoingdialog_base.ui \
 	incomingdialog_base.ui \
@@ -106,7 +107,7 @@ libkorganizer_la_SOURCES =  outgoingdialog_base.ui \
 	koprefs_base.kcfgc \
 	koincidencetooltip.cpp aboutdata.cpp \
 	cellitem.cpp \
-	resourceimportdialog.cpp \
+	importdialog.cpp \
 	korganizerifaceimpl.cpp \
 	freebusymanager.cpp freebusyurldialog.cpp \
 	eventarchiver.cpp koidentitymanager.cpp

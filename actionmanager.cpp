@@ -3,6 +3,7 @@
 
   Copyright (c) 2002 Mike Pilone <mpilone@slac.com>
   Copyright (c) 2002 Don Sanders <sanders@kde.org>
+  Copyright (c) 2004 Cornelius Schumacher <schumacher@kde.org>
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -62,7 +63,7 @@
 #include "history.h"
 #include "kogroupware.h"
 #include "resourceview.h"
-#include "resourceimportdialog.h"
+#include "importdialog.h"
 #include "eventarchiver.h"
 
 KOWindowList *ActionManager::mWindowList = 0;
@@ -586,7 +587,7 @@ void ActionManager::file_open()
   KURL url;
   QString defaultPath = locateLocal("data","korganizer/");
   url = KFileDialog::getOpenURL(defaultPath,i18n("*.vcs *.ics|Calendar Files"),
-                                mCalendarView->topLevelWidget());
+                                dialogParent());
 
   if (url.isEmpty()) return;
 
@@ -631,7 +632,7 @@ void ActionManager::file_import()
   QString homeDir = QDir::homeDirPath() + QString::fromLatin1("/.calendar");
 
   if (!QFile::exists(homeDir)) {
-    KMessageBox::error(mCalendarView->topLevelWidget(),
+    KMessageBox::error(dialogParent(),
                        i18n("You have no ical file in your home directory.\n"
                             "Import cannot proceed.\n"));
     return;
@@ -654,23 +655,23 @@ void ActionManager::file_import()
     // now we need to MERGE what is in the iCal to the current calendar.
     mCalendarView->openCalendar(tmpfn.name(),1);
     if (!retVal)
-      KMessageBox::information(mCalendarView->topLevelWidget(),
+      KMessageBox::information(dialogParent(),
                                i18n("KOrganizer successfully imported and "
                                     "merged your .calendar file from ical "
                                     "into the currently opened calendar."));
     else
-      KMessageBox::information(mCalendarView->topLevelWidget(),
+      KMessageBox::information(dialogParent(),
                            i18n("KOrganizer encountered some unknown fields while "
                                 "parsing your .calendar ical file, and had to "
                                 "discard them; please check to see that all "
                                 "your relevant data was correctly imported."),
                                  i18n("ICal Import Successful With Warning"));
   } else if (retVal == -1) {
-    KMessageBox::error(mCalendarView->topLevelWidget(),
+    KMessageBox::error(dialogParent(),
                          i18n("KOrganizer encountered an error parsing your "
                               ".calendar file from ical; import has failed."));
   } else if (retVal == -2) {
-    KMessageBox::error(mCalendarView->topLevelWidget(),
+    KMessageBox::error(dialogParent(),
                          i18n("KOrganizer does not think that your .calendar "
                               "file is a valid ical calendar; import has failed."));
   }
@@ -681,7 +682,7 @@ void ActionManager::file_merge()
 {
   KURL url = KFileDialog::getOpenURL(locateLocal("data","korganizer/"),
                                      i18n("*.vcs *.ics|Calendar Files"),
-                                     mCalendarView->topLevelWidget());
+                                     dialogParent());
   openURL(url,true);
 }
 
@@ -782,7 +783,7 @@ bool ActionManager::openURL(const KURL &url,bool merge)
     } else {
       QString msg;
       msg = i18n("Cannot download calendar from '%1'.").arg( url.prettyURL() );
-      KMessageBox::error( mCalendarView->topLevelWidget(), msg );
+      KMessageBox::error( dialogParent(), msg );
       return false;
     }
   }
@@ -819,7 +820,7 @@ bool ActionManager::saveURL()
 
   if ( ext == ".vcs" ) {
     int result = KMessageBox::warningContinueCancel(
-        mCalendarView->topLevelWidget(),
+        dialogParent(),
         i18n("Your calendar will be saved in iCalendar format. Use "
               "'Export vCalendar' to save in vCalendar format."),
         i18n("Format Conversion"), i18n("Proceed"), "dontaskFormatConversion",
@@ -848,7 +849,7 @@ bool ActionManager::saveURL()
     if ( !KIO::NetAccess::upload( mFile, mURL, view() ) ) {
       QString msg = i18n("Cannot upload calendar to '%1'")
                     .arg( mURL.prettyURL() );
-      KMessageBox::error( mCalendarView->topLevelWidget() ,msg );
+      KMessageBox::error( dialogParent() ,msg );
       return false;
     }
   }
@@ -981,7 +982,7 @@ bool ActionManager::saveModifiedURL()
     return saveURL();
   } else {
     int result = KMessageBox::warningYesNoCancel(
-        mCalendarView->topLevelWidget(),
+        dialogParent(),
         i18n("The calendar has been modified.\nDo you want to save it?"),
         QString::null,
         KStdGuiItem::save(), KStdGuiItem::discard());
@@ -1010,7 +1011,7 @@ KURL ActionManager::getSaveURL()
 {
   KURL url = KFileDialog::getSaveURL(locateLocal("data","korganizer/"),
                                      i18n("*.vcs *.ics|Calendar Files"),
-                                     mCalendarView->topLevelWidget());
+                                     dialogParent());
 
   if (url.isEmpty()) return url;
 
@@ -1113,7 +1114,7 @@ void ActionManager::configureDateTime()
           SLOT(configureDateTimeFinished(KProcess *)));
 
   if (!proc->start()) {
-      KMessageBox::sorry(mCalendarView->topLevelWidget(),
+      KMessageBox::sorry(dialogParent(),
         i18n("Could not start control module for date and time format."));
       delete proc;
   }
@@ -1121,12 +1122,12 @@ void ActionManager::configureDateTime()
 
 void ActionManager::showTip()
 {
-  KTipDialog::showTip(mCalendarView->topLevelWidget(),QString::null,true);
+  KTipDialog::showTip(dialogParent(),QString::null,true);
 }
 
 void ActionManager::showTipOnStart()
 {
-  KTipDialog::showTip(mCalendarView->topLevelWidget());
+  KTipDialog::showTip(dialogParent());
 }
 
 KOrg::MainWindow *ActionManager::findInstance( const KURL &url )
@@ -1426,11 +1427,25 @@ bool ActionManager::saveResourceCalendar()
   return true;
 }
 
-void ActionManager::importResource( const QString &url )
+void ActionManager::importCalendar( const KURL &url )
 {
-  ResourceImportDialog *dialog;
-  dialog = new ResourceImportDialog( url, mMainWindow->topLevelWidget() );
+  if ( !url.isValid() ) {
+    KMessageBox::error( dialogParent(),
+                        i18n("URL '%1' is invalid.").arg( url.prettyURL() ) );
+    return;
+  }
+  
+  ImportDialog *dialog;
+  dialog = new ImportDialog( url, mMainWindow->topLevelWidget() );
+  connect( dialog, SIGNAL( dialogFinished( ImportDialog * ) ),
+           SLOT( slotImportDialogFinished( ImportDialog * ) ) );
   dialog->show();
+}
+
+void ActionManager::slotImportDialogFinished( ImportDialog *dlg )
+{
+  dlg->deleteLater();
+  mCalendarView->updateView();
 }
 
 void ActionManager::slotAutoArchivingSettingsModified()
@@ -1451,6 +1466,11 @@ void ActionManager::slotAutoArchive()
   archiver.runAuto( mCalendarView->calendar(), mCalendarView, false /*no gui*/ );
   // restart timer with the correct delay (especially useful for the first time)
   slotAutoArchivingSettingsModified();
+}
+
+QWidget *ActionManager::dialogParent()
+{
+  return mCalendarView->topLevelWidget();
 }
 
 #include "actionmanager.moc"
