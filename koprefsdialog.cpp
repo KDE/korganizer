@@ -348,7 +348,6 @@ class KOPrefsDialogTime : public KPrefsModule
 
       addWidBool( KOPrefs::instance()->excludeHolidaysItem(),
                   workingHoursGroup );
-      topLayout->addMultiCellWidget( workDaysBox, 6, 6, 0, 1 );
 
       topLayout->setRowStretch(7,1);
 
