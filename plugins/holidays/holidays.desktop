@@ -1,7 +1,7 @@
 [Desktop Entry]
 Encoding=UTF-8
 X-KDE-Library=libkorg_holidays
-Name=Holiday plugin for Calendars
+Name=Holiday Plugin for Calendars
 Name[af]=Vakansie inplak vir Kalenders
 Name[ar]=ملحق العطل للتقويم
 Name[az]=Təqvim üçün bayram əlavəsi
@@ -39,7 +39,7 @@ Name[ro]=Modul vacanţă pentru calendare
 Name[ru]=Модуль выходных для календарей
 Name[sk]=Modul sviatkov pre Calendars
 Name[sl]=Vstavek za počitnice za Koledar
-Name[sr]=Додатак календара за празнике
+Name[sr]=Прикључак календара за празнике
 Name[sr@Latn]=Dodatak kalendara za praznike
 Name[sv]=Semesterinsticksprogram för kalendrar
 Name[ta]=காலெண்டருக்கு விடுமுறை சொருகுப்பொருள்

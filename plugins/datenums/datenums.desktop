@@ -1,7 +1,7 @@
 [Desktop Entry]
 Encoding=UTF-8
 X-KDE-Library=libkorg_datenums
-Name=Date numbers plugin for Calendars
+Name=Date Numbers Plugin for Calendars
 Name[af]=Datum nommers inplak vir Kalenders
 Name[ar]=ملحق أرقام تواريخ للتقويم
 Name[az]=Təqvim üçün tarix rəqəmləri əlavəsi
@@ -38,7 +38,7 @@ Name[ro]=Modul numere dată pentru calendare
 Name[ru]=Модуль дат для календарей
 Name[sk]=Modul dátumov pre Calendars
 Name[sl]=Datumski vstavek za Koledar
-Name[sr]=Додатак календара за бројеве датума
+Name[sr]=Прикључак календара за бројеве датума
 Name[sr@Latn]=Dodatak kalendara za brojeve datuma
 Name[sv]=Datuminsticksprogram för kalendrar
 Name[ta]=நாள்காட்டிகளுக்கான தேதி எண்களின் சொருகுப்பொருள்
@@ -46,7 +46,7 @@ Name[th]=ปลั๊กอินเลขวันที่สำหรับ�
 Name[tr]=Takvimler için tarih numaraları eklentisi
 Name[uk]=Втулок чисел дати для календарів
 Name[ven]=Pulagini ya nomboro ya datumu uitela khalenda
-Name[vi]=Plugin ngày số cho lịch 
+Name[vi]=Plugin ngày số cho lịch
 Name[xh]=Amanani omhla we plugin ye Khalenda
 Name[xx]=xxDate numbers plugin for Calendarsxx
 Name[zh_CN]=日历的日期数字插件
