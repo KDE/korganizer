@@ -129,27 +129,6 @@ void KOPrefsDialog::setupMainTab()
                  topFrame);
   topLayout->addMultiCellWidget(confirmCheck->checkBox(),7,7,0,1);
 
-
-  mEnableGroupScheduling =
-      addWidBool(i18n("Enable group scheduling"),
-                 KOPrefs::instance()->mEnableGroupScheduling,topFrame);
-  topLayout->addWidget(mEnableGroupScheduling->checkBox(),8,0);
-  connect(mEnableGroupScheduling->checkBox(),SIGNAL(clicked()),
-          SLOT(warningGroupScheduling()));
-
-  mEnableProjectView =
-      addWidBool(i18n("Enable project view"),
-                 KOPrefs::instance()->mEnableProjectView,topFrame);
-  topLayout->addWidget(mEnableProjectView->checkBox(),9,0);
-  connect(mEnableProjectView->checkBox(),SIGNAL(clicked()),
-          SLOT(warningProjectView()));
-
-  // Can't be disabled anymore
-  mEnableGroupScheduling->checkBox()->hide();
-
-  // Disable setting, because this feature now becomes stable
-  mEnableProjectView->checkBox()->hide();
-
   KPrefsWidRadios *defaultFormatGroup =
       addWidRadios(i18n("Default Calendar Format"),
                    KOPrefs::instance()->mDefaultFormat,topFrame);
