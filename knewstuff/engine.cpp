@@ -91,6 +91,7 @@ void Engine::getMetaInformation( Provider::List *providers )
              SLOT( slotNewStuffJobData( KIO::Job *, const QByteArray & ) ) );
 
     mNewStuffJobData.insert( job, "" );
+    mProviderJobs[ job ] = p;
   }
 }
 
@@ -114,6 +115,8 @@ void Engine::slotNewStuffJobResult( KIO::Job *job )
     QString knewstuffDoc = mNewStuffJobData[ job ];
 
     kdDebug(5850) << "---START---" << endl << knewstuffDoc << "---END---" << endl;
+
+    mDownloadDialog->addProvider( mProviderJobs[ job ] );
 
     QDomDocument doc;
     if ( !doc.setContent( knewstuffDoc ) ) {
@@ -149,8 +152,9 @@ void Engine::slotNewStuffJobResult( KIO::Job *job )
       }
     }
   }
-  
+
   mNewStuffJobData.remove( job );
+  mProviderJobs.remove( job );
 
   if ( mNewStuffJobData.count() == 0 ) {
     mDownloadDialog->show();
@@ -197,8 +201,11 @@ void Engine::slotDownloadJobResult( KIO::Job *job )
   }
 }
 
-void Engine::upload()
+void Engine::upload(const QString &fileName, const QString &previewName )
 {
+  mUploadFile = fileName;
+  mPreviewFile = previewName;
+
   connect( mProviderLoader,
            SIGNAL( providersLoaded( Provider::List * ) ),
            SLOT( selectUploadProvider( Provider::List * ) ) );
@@ -232,28 +239,31 @@ void Engine::requestMetaInformation( Provider *provider )
   if ( !mUploadDialog ) {
     mUploadDialog = new UploadDialog( this, mParentWidget );
   }
+  mUploadDialog->setPreviewFile( mPreviewFile );
   mUploadDialog->show();
   mUploadDialog->raise();
 }
 
 void Engine::upload( Entry *entry )
 {
-  QString uploadFile = entry->fullName();
-  uploadFile = locateLocal( "data", "korganizer/upload/" + uploadFile );
+  if ( mUploadFile.isNull()) {
+    mUploadFile = entry->fullName();
+    mUploadFile = locateLocal( "data", "korganizer/upload/" + mUploadFile );
 
-  if ( !mNewStuff->createUploadFile( uploadFile ) ) {
-    KMessageBox::error( mParentWidget, i18n("Unable to create file to upload") );
-    return;
+    if ( !mNewStuff->createUploadFile( mUploadFile ) ) {
+      KMessageBox::error( mParentWidget, i18n("Unable to create file to upload") );
+      return;
+    }
   }
 
   QString lang = entry->langs().first();
-  QFileInfo fi( uploadFile );
+  QFileInfo fi( mUploadFile );
   entry->setPayload( fi.fileName(), lang );
 
   if ( !createMetaFile( entry ) ) return;
 
   QString text = i18n("The files to be uploaded have been created at:\n");
-  text.append( uploadFile + "\n" );
+  text.append( mUploadFile + "\n" );
   text.append( mUploadMetaFile + "\n" );
 
   QString caption = i18n("Upload files");
@@ -278,7 +288,7 @@ void Engine::upload( Entry *entry )
       KURL destination = mUploadProvider->uploadUrl();
       destination.setFileName( fi.fileName() );
 
-      KIO::FileCopyJob *job = KIO::file_copy( uploadFile, destination );
+      KIO::FileCopyJob *job = KIO::file_copy( mUploadFile, destination );
       connect( job, SIGNAL( result( KIO::Job * ) ),
                SLOT( slotUploadPayloadJobResult( KIO::Job * ) ) );
     }
@@ -293,13 +303,16 @@ bool Engine::createMetaFile( Entry *entry )
   QDomElement de = doc.createElement("knewstuff");
   doc.appendChild( de );
 
+  entry->setType(type());
   de.appendChild( entry->createDomElement( doc, de ) );
   
   kdDebug(5850) << "--DOM START--" << endl << doc.toString()
             << "--DOM_END--" << endl;
 
-  mUploadMetaFile = entry->fullName() + ".meta";
-  mUploadMetaFile = locateLocal( "data", "korganizer/upload/" + mUploadMetaFile );
+  if ( mUploadMetaFile.isNull() ) {
+    mUploadMetaFile = entry->fullName() + ".meta";
+    mUploadMetaFile = locateLocal( "data", "korganizer/upload/" + mUploadMetaFile );
+  }
 
   QFile f( mUploadMetaFile );
   if ( !f.open( IO_WriteOnly ) ) {

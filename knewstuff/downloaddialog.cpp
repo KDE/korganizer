@@ -22,6 +22,7 @@
 #include <qdom.h>
 #include <qlabel.h>
 #include <qtextbrowser.h>
+#include <qtimer.h> // hack
 
 using namespace KNS;
 
@@ -75,18 +76,19 @@ void DownloadDialog::clear()
 			(*(v->at(0)))->clear();
 			(*(v->at(1)))->clear();
 			(*(v->at(2)))->clear();
+
+			//delete (*it);
 		}
 
-		//delete (*it);
+		delete it.key();
 	}
+	m_map.clear();
 }
 
 void DownloadDialog::slotProviders(Provider::List *list)
 {
 	Provider *p;
-	QFrame *frame;
-
-	frame = addPage(i18n("Welcome"), i18n("Welcome"), QPixmap(""));
+	/*QFrame *frame;*/
 
 	for(p = list->first(); p; p = list->next())
 	{
@@ -110,6 +112,12 @@ void DownloadDialog::addProvider(Provider *p)
 	KListView *lvtmp_r, *lvtmp_d, *lvtmp_l;
 	QTextBrowser *rt;
 	QString tmp;
+
+	if(m_map.count() == 0)
+	{
+		frame = addPage(i18n("Welcome"), i18n("Welcome"), QPixmap(""));
+		delete frame;
+	}
 
 	kdDebug() << "addProvider()/begin" << endl;
 
@@ -185,6 +193,10 @@ void DownloadDialog::addProvider(Provider *p)
 	m_providers[frame] = p;
 
 	kdDebug() << "addProvider()/end; lvtmp_r = " << lvtmp_r << endl;
+
+	if(m_engine) slotPage(frame);
+
+	QTimer::singleShot(100, this, SLOT(slotFinish()));
 }
 
 void DownloadDialog::slotResult(KIO::Job *job)
@@ -194,7 +206,7 @@ void DownloadDialog::slotResult(KIO::Job *job)
 
 	kdDebug() << "got data: " << m_data[job] << endl;
 
-	kapp->config()->setGroup("status");
+	kapp->config()->setGroup("KNewStuffStatus");
 
 	dom.setContent(m_data[job]);
 	knewstuff = dom.documentElement();
@@ -209,8 +221,10 @@ void DownloadDialog::slotResult(KIO::Job *job)
 		{
 			Entry *entry = new Entry(stuff);
 			kdDebug() << "TYPE::" << entry->type() << " FILTER::" << m_filter << endl;
-			if((!m_filter.isEmpty()) && (entry->type() != m_filter)) continue;
-			m_type = entry->type();
+			if(!entry->type().isEmpty())
+			{
+				if((!m_filter.isEmpty()) && (entry->type() != m_filter)) continue;
+			}
 
 			if((!m_filter.isEmpty()) && (m_jobs[job]))
 			{
@@ -232,7 +246,7 @@ void DownloadDialog::addEntry(Entry *entry)
 	QDate date;
 	int installed;
 
-	if(m_engine)
+	/*if(m_engine)
 	{
 		if(m_map.count() == 0)
 		{
@@ -242,7 +256,7 @@ void DownloadDialog::addEntry(Entry *entry)
 			addProvider(p);
 			slotPage(m_frame);
 		}
-	}
+	}*/
 
 	date = QDate::fromString(kapp->config()->readEntry(entry->name()));
 	if(!date.isValid()) installed = 0;
@@ -327,7 +341,7 @@ void DownloadDialog::slotInstall()
 	}
 	else
 	{
-		m_s = new KNewStuffGeneric(m_type, this);
+		m_s = new KNewStuffGeneric(e->type(), this);
 
 		m_entry = e;
 
@@ -341,7 +355,7 @@ void DownloadDialog::slotInstall()
 
 void DownloadDialog::install(Entry *e)
 {
-	kapp->config()->setGroup("status");
+	kapp->config()->setGroup("KNewStuffStatus");
 	kapp->config()->writeEntry(m_entryname, e->releaseDate().toString());
 	kapp->config()->sync();
 
@@ -354,11 +368,20 @@ void DownloadDialog::install(Entry *e)
 	if(m_entryitem) m_entryitem->setPixmap(0, pix);
 }
 
-void DownloadDialog::slotInstalled(KIO::Job*)
+void DownloadDialog::slotInstalled(KIO::Job *job)
 {
-	bool ret;
-	
-	ret = m_s->install(m_s->downloadDestination(m_entry));
+	bool ret = (job->error() == 0);
+	KIO::FileCopyJob *cjob;
+
+	if(ret)
+	{
+		cjob = static_cast<KIO::FileCopyJob*>(job);
+		if(cjob)
+		{
+			ret = m_s->install(cjob->destURL().path());
+		}
+		else ret = false;
+	}
 
 	if(ret)
 	{
@@ -420,7 +443,7 @@ void DownloadDialog::slotPage(QWidget *w)
 
 	kdDebug() << "changed widget!!!" << endl;
 
-	if(!m_map[w]) return;
+	if(m_map.find(w) == m_map.end()) return;
 
 	lv_r = *(m_map[w]->at(0));
 	lv_d = *(m_map[w]->at(1));
@@ -473,5 +496,11 @@ void DownloadDialog::open(QString type)
 	d.setType(type);
 	d.load();
 	d.exec();
+}
+
+void DownloadDialog::slotFinish()
+{
+	showPage(1);
+	//updateBackground();
 }
 

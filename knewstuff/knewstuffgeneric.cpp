@@ -39,9 +39,9 @@ KNewStuffGeneric::KNewStuffGeneric( const QString &type, QWidget *parent )
   : KNewStuff( type, parent )
 {
   QString file = locate( "data", "knewstuff/types" );
-  
+
   kdDebug() << "typedescription file: " << file << endl;
-  
+
   mConfig = new KConfig( file );
   mConfig->setGroup( type );
 }
@@ -54,13 +54,17 @@ KNewStuffGeneric::~KNewStuffGeneric()
 bool KNewStuffGeneric::install( const QString &fileName )
 {
   kdDebug(5850) << "KNewStuffGeneric::install(): " << fileName << endl;
+  QStringList list, list2;
 
   QString cmd = mConfig->readEntry( "InstallationCommand" );
   if ( !cmd.isEmpty() ) {
-    cmd.replace( "%f", fileName );
     kdDebug(5850) << "InstallationCommand: " << cmd << endl;
+    list = QStringList::split( " ", cmd );
+    for ( QStringList::iterator it = list.begin(); it != list.end(); it++ ) {
+        list2 << (*it).replace("%f", fileName);
+    }
     KProcess proc;
-    proc << QStringList::split( " ", cmd );
+    proc << list2;
     proc.start( KProcess::Block );
   }
 
@@ -74,10 +78,20 @@ bool KNewStuffGeneric::createUploadFile( const QString & /*fileName*/ )
 
 QString KNewStuffGeneric::downloadDestination( KNS::Entry *entry )
 {
+  QString target = entry->fullName();
   QString res = mConfig->readEntry( "StandardResource" );
+  if ( res.isEmpty() )
+  {
+    target = mConfig->readEntry("TargetDir");
+    if ( !target.isEmpty())
+    {
+      res = "data";
+      target.append("/" + entry->fullName());
+    }
+  }
   if ( res.isEmpty() ) return KNewStuff::downloadDestination( entry );
 
-  QString file = locateLocal( res.utf8() , entry->fullName() );
+  QString file = locateLocal( res.utf8() , target );
   if ( KStandardDirs::exists( file ) ) {
     int result = KMessageBox::questionYesNo( parentWidget(),
         i18n("The file '%1' already exists. Do you want to override it?")

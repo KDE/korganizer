@@ -54,6 +54,7 @@ private slots:
 	void slotTab(int tab);
 	void slotSelected();
 	void slotPage(QWidget *w);
+	void slotFinish();
 
 private:
 	void init(Engine *e);
@@ -76,7 +77,7 @@ private:
 	QMap<QWidget*, QTextBrowser*> m_rts;
 	QMap<KIO::Job*, Provider*> m_jobs;
 	QMap<KIO::Job*, QString> m_data;
-	QString m_filter, m_type;
+	QString m_filter;
 	Engine *m_engine;
 };
 

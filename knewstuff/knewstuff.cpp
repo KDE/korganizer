@@ -64,3 +64,9 @@ void KNewStuff::upload()
 {
   mEngine->upload();
 }
+
+void KNewStuff::upload( const QString &fileName, const QString previewName )
+{
+  mEngine->upload(fileName, previewName);
+}
+

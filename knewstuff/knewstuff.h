@@ -84,6 +84,11 @@ class KNewStuff
     void upload();
 
     /**
+      Upload with pre-defined files.
+    */
+    void upload( const QString &fileName, const QString previewName );
+
+    /**
       Install file to application. The given fileName points to the file
       downloaded by the KNewStuff engine. This is a temporary file by default.
       The application can do whatever is needed to handle the information

@@ -124,6 +124,12 @@ void UploadDialog::slotOk()
   entry->setSummary( mSummaryEdit->text(), mLanguageCombo->currentText() );
 
   mEngine->upload( entry );
-  
+
   accept();
 }
+
+void UploadDialog::setPreviewFile( const QString &previewFile )
+{
+  mPreviewUrl->setURL( previewFile );
+}
+

@@ -238,6 +238,7 @@ QDomElement Entry::createDomElement( QDomDocument &doc,
                                               QDomElement &parent )
 {
   QDomElement entry = doc.createElement( "stuff" );
+  entry.setAttribute("type", mType);
   parent.appendChild( entry );
 
   addElement( doc, entry, "name", name() );

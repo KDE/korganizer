@@ -49,7 +49,7 @@ class Engine : public QObject
     QWidget *parentWidget() const { return mParentWidget; }
     
     void download();
-    void upload();
+    void upload( const QString &fileName = QString::null, const QString &previewName = QString::null );
 
     void download( Entry * );
 
@@ -78,6 +78,7 @@ class Engine : public QObject
     ProviderLoader *mProviderLoader;
   
     QMap<KIO::Job *,QString> mNewStuffJobData;
+    QMap<KIO::Job *,Provider *> mProviderJobs;
     
     QPtrList<Entry> mNewStuffList;
     
@@ -90,6 +91,8 @@ class Engine : public QObject
     Provider *mUploadProvider;
 
     QString mUploadMetaFile;
+    QString mUploadFile;
+    QString mPreviewFile;
 
     KNewStuff *mNewStuff;
 

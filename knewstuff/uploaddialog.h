@@ -39,10 +39,12 @@ class UploadDialog : public KDialogBase
   public:
     UploadDialog( Engine *, QWidget *parent );
     ~UploadDialog();
-    
+
+    void setPreviewFile( const QString &previewFile );
+
   protected slots:
     void slotOk();
-    
+
   private:
     Engine *mEngine;
 
@@ -54,7 +56,7 @@ class UploadDialog : public KDialogBase
     QTextEdit *mSummaryEdit;
     QComboBox *mLanguageCombo;
     QComboBox *mLicenceCombo;
-    
+
     QPtrList<Entry> mEntryList;
 };
 
