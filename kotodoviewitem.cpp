@@ -72,8 +72,7 @@ void KOTodoViewItem::paintBranches(QPainter *p,const QColorGroup & cg,int w,
 void KOTodoViewItem::construct()
 {
   m_init = true;
-  QString keyd = "==";
-  QString keyt = "==";
+  QString keyd = "9";
 
   setOn(mTodo->isCompleted());
   setText(0,mTodo->summary());
@@ -93,32 +92,29 @@ void KOTodoViewItem::construct()
     if (mTodo->isCompleted()) setSortKey(3,QString::number(999));
     else setSortKey(3,QString::number(99));
   }
+  
   if (mTodo->hasDueDate()) {
-    setText(4, mTodo->dtDueDateStr());
-    QDate d = mTodo->dtDue().date();
-    keyd.sprintf("%04d%02d%02d",d.year(),d.month(),d.day());
-    setSortKey(4,keyd);
-    if (mTodo->doesFloat()) {
-      setText(5,"");
-    }
-    else {
-      setText(5,mTodo->dtDueTimeStr());
+    QString dtStr = mTodo->dtDueDateStr();
+    QString keyt = "";
+    if (!mTodo->doesFloat()) {
+      dtStr += " " + mTodo->dtDueTimeStr();
       QTime t = mTodo->dtDue().time();
       keyt.sprintf("%02d%02d",t.hour(),t.minute());
-      setSortKey(5,keyt);
     }
+    setText(4, dtStr );
+    QDate d = mTodo->dtDue().date();
+    keyd.sprintf("%04d%02d%02d",d.year(),d.month(),d.day());
+    keyd += keyt;
   } else {
     setText(4,"");
-    setText(5,"");
   }
   setSortKey(4,keyd);
-  setSortKey(5,keyt);
 
-  QString priorityKey = QString::number( mTodo->priority() ) + keyd + keyt;
+  QString priorityKey = QString::number( mTodo->priority() ) + keyd;
   if ( mTodo->isCompleted() ) setSortKey( 2, "1" + priorityKey );
   else setSortKey( 2, "0" + priorityKey );
 
-  setText(6,mTodo->categoriesStr());
+  setText(5,mTodo->categoriesStr());
 
 #if 0
   // Find sort id in description. It's the text behind the last '#' character
@@ -144,8 +140,7 @@ void KOTodoViewItem::stateChange(bool state)
   if ( m_init ) return;
 
   kdDebug(5850) << "State changed, modified " << state << endl;
-  QString keyd = "==";
-  QString keyt = "==";
+  QString keyd = "9";
 
   Todo*oldTodo = mTodo->clone();
 
@@ -157,22 +152,23 @@ void KOTodoViewItem::stateChange(bool state)
   }
 
   if (mTodo->hasDueDate()) {
-    setText(4, mTodo->dtDueDateStr());
-    QDate d = mTodo->dtDue().date();
-    keyd.sprintf("%04d%02d%02d",d.year(),d.month(),d.day());
-    setSortKey(4,keyd);
-    if (mTodo->doesFloat()) {
-      setText(5,"");
-    }
-    else {
-      setText(5,mTodo->dtDueTimeStr());
+    QString dtStr = mTodo->dtDueDateStr();
+    QString keyt = "";
+    if (!mTodo->doesFloat()) {
+      dtStr += " " + mTodo->dtDueTimeStr();
       QTime t = mTodo->dtDue().time();
       keyt.sprintf("%02d%02d",t.hour(),t.minute());
-      setSortKey(5,keyt);
     }
+    setText(4, dtStr );
+    QDate d = mTodo->dtDue().date();
+    keyd.sprintf("%04d%02d%02d",d.year(),d.month(),d.day());
+    keyd += keyt;
+  } else {
+    setText(4,"");
   }
+  setSortKey(4, keyd);
 
-  QString priorityKey = QString::number( mTodo->priority() ) + keyd + keyt;
+  QString priorityKey = QString::number( mTodo->priority() ) + keyd;
   if ( mTodo->isCompleted() ) setSortKey( 2, "1" + priorityKey );
   else setSortKey( 2, "0" + priorityKey );
 

@@ -362,10 +362,8 @@ KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent, const char* name)
   mTodoListView->setColumnAlignment( 2, AlignHCenter );
   mTodoListView->addColumn( i18n("Complete") );
   mTodoListView->setColumnAlignment( 3, AlignRight );
-  mTodoListView->addColumn( i18n("Due Date") );
+  mTodoListView->addColumn( i18n("Due Date/Time") );
   mTodoListView->setColumnAlignment( 4, AlignHCenter );
-  mTodoListView->addColumn( i18n("Due Time") );
-  mTodoListView->setColumnAlignment( 5, AlignHCenter );
   mTodoListView->addColumn( i18n("Categories") );
 #if 0
   mTodoListView->addColumn( i18n("Sort Id") );
@@ -382,7 +380,6 @@ KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent, const char* name)
   mTodoListView->setColumnWidthMode( 3, QListView::Manual );
   mTodoListView->setColumnWidthMode( 4, QListView::Manual );
   mTodoListView->setColumnWidthMode( 5, QListView::Manual );
-  mTodoListView->setColumnWidthMode( 6, QListView::Manual );
 #if 0
   mTodoListView->setColumnWidthMode( 6, QListView::Manual );
 #endif
@@ -673,9 +670,9 @@ void KOTodoView::popupMenu( QListViewItem *item, const QPoint &, int column )
         mPercentageCompletedPopupMenu->popup( QCursor::pos () );
         break;
       case 4:
-          mDatePickerPopupMenu->popup( QCursor::pos () );
+        mDatePickerPopupMenu->popup( QCursor::pos () );
         break;
-      case 6:
+      case 5:
         getCategoryPopupMenu(
             static_cast<KOTodoViewItem *>( item ) )->popup( QCursor::pos () );
         break;
@@ -755,12 +752,16 @@ void KOTodoView::setNewDate(QDate date)
 {   
   if ( mActiveItem && !mActiveItem->todo()->isReadOnly () ) {
     Todo *todo = mActiveItem->todo();
+    QDateTime dt;
+    dt.setDate( date );
+    if ( !todo->doesFloat() )
+      dt.setTime( todo->dtDue().time() );
 
     // Check whether "Copy to" is highlighted
     if ( mItemPopupMenu->isItemActive( POPUP_COPYTO ) ) {
       Todo *newTodo = new Todo( *todo );
       newTodo->recreate();
-      newTodo->setDtDue( date );
+      newTodo->setDtDue( dt );
       calendar()->addTodo( newTodo );
       emit incidenceAdded( newTodo );
     }
@@ -768,7 +769,7 @@ void KOTodoView::setNewDate(QDate date)
       Todo *oldTodo = todo->clone();
       if ( !todo->hasDueDate() )
         todo->setHasDueDate( true );
-      todo->setDtDue( date );
+      todo->setDtDue( dt );
       mActiveItem->construct();
       emit incidenceChanged( todo, oldTodo, KOGlobals::DATE_MODIFIED );      
       delete oldTodo;
