@@ -369,7 +369,7 @@ void KOTodoEditor::readTodo( Todo *todo )
 
 void KOTodoEditor::writeTodo( Todo *todo )
 {
-  Incidence *oldIncidence = incidence->clone();
+  Incidence *oldIncidence = todo->clone();
 
   mRecurrence->writeIncidence( todo );
   mGeneral->writeTodo( todo );
