@@ -1,6 +1,24 @@
-/* $Id$ */
+/*
+    This file is part of KOrganizer.
+    Copyright (c) 1999 Preston Brown, Ian Dawes
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+*/
 #ifndef _KTIMEEDIT_H
 #define _KTIMEEDIT_H
+// $Id$
 
 #include <qevent.h>
 #include <qkeycode.h>
@@ -11,14 +29,12 @@ class QComboBox;
 class QDateTime;
 
 /** 
- * This is a class that provides an easy, user friendly way to edit times.
- * up/down/ increase or decrease time, respectively.
- *
- * @short Provides a way to edit times in a user-friendly manner.
- * @author Preston Brown, Ian Dawes
- * @version $Revision$
- *
- */
+  This is a class that provides an easy, user friendly way to edit times.
+  up/down/ increase or decrease time, respectively.
+
+  @short Provides a way to edit times in a user-friendly manner.
+  @author Preston Brown, Ian Dawes
+*/
 class KTimeEdit : public QComboBox
 {
   Q_OBJECT

@@ -1,5 +1,5 @@
-#ifndef _VERSION_H_
-#define _VERSION_H_
+#ifndef KORG_VERSION_H
+#define KORG_VERSION_H
 
 static const char *korgVersion = "pre2.9";
 

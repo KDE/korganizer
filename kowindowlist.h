@@ -1,6 +1,24 @@
-/* $Id$ */
-#ifndef _KOWINDOWLIST_H
-#define _KOWINDOWLIST_H
+/*
+    This file is part of KOrganizer.
+    Copyright (c) 2000 Cornelius Schumacher <schumacher@kde.org>
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+*/
+#ifndef KOWINDOWLIST_H
+#define KOWINDOWLIST_H
+// $Id$
 
 #include <qobject.h>
 
@@ -9,15 +27,14 @@
 class KURL;
 
 /**
- * This class manages a list of KOrganizer instances, each associated with a
- * window displaying a calendar. It acts as relay for signals between this
- * windows and manages information like the active calendar, which requires
- * interaction of all instances.
- *
- * @short manages a list of all KOrganizer instances
- * @author Cornelius Schumacher
- * @version $Revision$
- */
+  This class manages a list of KOrganizer instances, each associated with a
+  window displaying a calendar. It acts as relay for signals between this
+  windows and manages information like the active calendar, which requires
+  interaction of all instances.
+
+  @short manages a list of all KOrganizer instances
+  @author Cornelius Schumacher
+*/
 class KOWindowList : public QObject
 {
     Q_OBJECT
@@ -48,4 +65,4 @@ class KOWindowList : public QObject
     QPtrList<KOrganizer> mWindowList; // list of all existing KOrganizer instances
 };
 
-#endif // _KOWINDOWLIST_H
+#endif

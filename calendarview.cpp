@@ -1,5 +1,5 @@
 /*
-  $Id$
+  This file is part of KOrganizer.
 
   Requires the Qt and KDE widget libraries, available at no cost at
   http://www.troll.no and http://www.kde.org respectively
@@ -28,6 +28,8 @@
   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 */
 
+// $Id$
+
 #include <stdlib.h>
 
 #include <qcursor.h>
@@ -38,9 +40,7 @@
 
 #include <kglobal.h>
 #include <kdebug.h>
-#include <kiconloader.h>
 #include <kstddirs.h>
-#include <kstdaccel.h>
 #include <kfiledialog.h>
 #include <kmessagebox.h>
 #include <knotifyclient.h>
@@ -66,7 +66,6 @@
 #include "incomingdialog.h"
 #include "categoryeditdialog.h"
 #include "kofilterview.h"
-//#include "koprojectview.h"
 #include "filtereditdialog.h"
 #include "kowhatsnextview.h"
 #include "kojournalview.h"

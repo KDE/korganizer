@@ -1,8 +1,23 @@
-/* CalPrinter.cpp
- * Copyright (c) 1998 Preston Brown
- *
- * $Id$
- */
+/*
+  This file is part of KOrganizer.
+  Copyright (c) 1998 Preston Brown
+
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.	See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program; if not, write to the Free Software
+  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+*/
+
+// $Id$
 
 #include <math.h>
 
@@ -15,18 +30,17 @@
 
 #include <klocale.h>
 #include <kstddirs.h>
-#include <kdateedit.h>
-#include <kseparator.h>
 #include <kmessagebox.h>
 #include <ktempfile.h>
-#include <kapp.h>
 #include <kdebug.h>
+#include <kseparator.h>
 
 #include <libkcal/todo.h>
 
 #include "koprefsdialog.h"
 #include "koprefs.h"
 #include "kocore.h"
+#include "kdateedit.h"
 
 #include "calprinter.h"
 #include "calprinter.moc"
@@ -394,7 +408,6 @@ void CalPrinter::drawTodo(int count, Todo * item, QPainter &p,int level,QRect *r
   QString outStr;
   KLocale *local = KGlobal::locale();
   int pageWidth = p.viewport().width();
-  int pageHeight = p.viewport().height();
   int pospriority = 10;
   int possummary = 60;
   int posdue = pageWidth - 85;  //+ indent;
@@ -437,7 +450,6 @@ void CalPrinter::drawTodo(int count, Todo * item, QPainter &p,int level,QRect *r
   // summary
   outStr=item->summary();
   int left = possummary+(level*10);
-  int width = (posdue-left) + 10;
   rect = p.boundingRect(left,rect.top(),
                         (posdue-(left + rect.width() + 5)),-1,WordBreak,outStr);
   QRect newrect;
