@@ -336,6 +336,8 @@ void MonthViewCell::updateCell()
     MonthViewItem *item = new MonthViewItem( 0, mDate, mHolidayString );
     QPalette pal = mHolidayPalette;
     pal.setColor( QColorGroup::Text, KOPrefs::instance()->holidayColor() );
+    pal.setColor( QColorGroup::Background,
+                  mStandardPalette.color( QPalette::Normal, QColorGroup::Background ) );
     item->setPalette( pal );
     mItemList->insertItem( item );
   }
