@@ -67,7 +67,7 @@ KOWindowList *ActionManager::mWindowList = 0;
 ActionManager::ActionManager( KXMLGUIClient *client, CalendarView *widget,
                               QObject *parent, KOrg::MainWindow *mainWindow,
                               bool isPart )
-  : QObject( parent ), KCalendarIface(), mCalendar( 0 ),
+  : QObject( parent ), KCalendarIface(), mRecent( 0 ), mCalendar( 0 ),
     mCalendarResources( 0 ), mIsClosing( false )
 {
   mGUIClient = client;
@@ -198,20 +198,23 @@ void ActionManager::initActions()
 
   // File menu.
   if ( mIsPart ) {
-    new KAction(i18n("&New"), "filenew", CTRL+Key_N, this,
-                SLOT(file_new()), mACollection, "korganizer_openNew" );
-    new KAction(i18n("&Open"), "fileopen", CTRL+Key_O, this,
-               SLOT(file_open()), mACollection, "korganizer_open" );
-    mRecent = new KRecentFilesAction(i18n("Open &Recent"), 0, 0, this,
-                SLOT(file_openRecent(const KURL&)), mACollection, "korganizer_openRecent" );
-    new KAction(i18n("Re&vert"), "revert", 0, this,
-                SLOT(file_revert()), mACollection, "korganizer_revert" );
-    new KAction(i18n("&Save"), "filesave", CTRL+Key_S, this,
-                SLOT(file_save()), mACollection, "korganizer_save" );
-    new KAction(i18n("Save &As..."), "filesaveas", 0, this,
-                SLOT(file_saveas()), mACollection, "korganizer_saveAs" );
-    new KAction(i18n("&Close"), "fileclose", CTRL+Key_W, this,
-                SLOT(file_close()), mACollection, "korganizer_close" );
+    if ( mMainWindow->hasDocument() ) {
+      new KAction( i18n("&New"), "filenew", CTRL+Key_N, this,
+                   SLOT( file_new() ), mACollection, "korganizer_openNew" );
+      new KAction( i18n("&Open"), "fileopen", CTRL+Key_O, this,
+                   SLOT( file_open() ), mACollection, "korganizer_open" );
+      mRecent = new KRecentFilesAction( i18n("Open &Recent"), 0, 0, this,
+                                        SLOT( file_openRecent( const KURL & ) ),
+                                        mACollection, "korganizer_openRecent" );
+      new KAction( i18n("Re&vert"), "revert", 0, this,
+                   SLOT( file_revert() ), mACollection, "korganizer_revert" );
+      new KAction( i18n("Save &As..."), "filesaveas", 0, this,
+                   SLOT( file_saveas() ), mACollection, "korganizer_saveAs" );
+      new KAction( i18n("&Close"), "fileclose", CTRL+Key_W, this,
+                   SLOT( file_close() ), mACollection, "korganizer_close" );
+    }
+    new KAction( i18n("&Save"), "filesave", CTRL+Key_S, this,
+                 SLOT( file_save() ), mACollection, "korganizer_save" );
   } else {
     KStdAction::openNew(this, SLOT(file_new()), mACollection);
     KStdAction::open(this, SLOT(file_open()), mACollection);
@@ -566,7 +569,7 @@ void ActionManager::readSettings()
   // defaults where none are to be found
 
   KConfig *config = KOGlobals::config();
-  mRecent->loadEntries( config );
+  if ( mRecent ) mRecent->loadEntries( config );
   mCalendarView->readSettings();
 }
 
@@ -578,7 +581,7 @@ void ActionManager::writeSettings()
 
   config->setGroup( "Settings" );
   config->writeEntry( "Filter Visible", mFilterViewAction->isChecked() );
-  mRecent->saveEntries( config );
+  if ( mRecent ) mRecent->saveEntries( config );
 }
 
 void ActionManager::file_new()
@@ -761,7 +764,7 @@ bool ActionManager::openURL(const KURL &url,bool merge)
         config->setGroup("General");
         setTitle();
         kdDebug(5850) << "-- Add recent URL: " << url.prettyURL() << endl;
-        mRecent->addURL(url);
+        if ( mRecent ) mRecent->addURL(url);
         mMainWindow->showStatusMessage(i18n("Opened calendar '%1'.").arg(mURL.prettyURL()));
       }
     }
@@ -807,7 +810,7 @@ bool ActionManager::saveURL()
       mFile = mURL.path();
     }
     setTitle();
-    mRecent->addURL( mURL );
+    if ( mRecent ) mRecent->addURL( mURL );
   }
 
   if ( !mCalendarView->saveCalendar( mFile ) ) {
@@ -927,7 +930,7 @@ bool ActionManager::saveAsURL(const KURL &url)
     KConfig *config = KOGlobals::config();
     config->setGroup("General");
     setTitle();
-    mRecent->addURL(mURL);
+    if ( mRecent ) mRecent->addURL(mURL);
   } else {
     kdDebug(5850) << "ActionManager::saveAsURL() failed" << endl;
     mURL = URLOrig;
