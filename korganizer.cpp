@@ -193,13 +193,6 @@ void KOrganizer::readSettings()
 
   KConfig *config = KOGlobals::self()->config();
 
-/*  config->setGroup( "KOrganizer Geometry" );
-
-  int windowWidth = config->readNumEntry( "Width", 600 );
-  int windowHeight = config->readNumEntry( "Height", 400 );
-
-  resize( windowWidth, windowHeight );*/
-
   mActionManager->readSettings();
 
   config->sync();
@@ -211,10 +204,6 @@ void KOrganizer::writeSettings()
   kdDebug(5850) << "KOrganizer::writeSettings" << endl;
 
   KConfig *config = KOGlobals::self()->config();
-
-  config->setGroup( "KOrganizer Geometry" );
-  config->writeEntry( "Width",width() );
-  config->writeEntry( "Height",height() );
 
   mActionManager->writeSettings();
   saveMainWindowSettings( config );
