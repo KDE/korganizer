@@ -549,8 +549,11 @@ void CalendarView::updateConfig()
 
   emit configChanged();
 
-  mCalendar->setTimeZoneId(KOPrefs::instance()->mTimeZoneId);
-
+  QString tz(mCalendar->timeZoneId());
+  // Only set a new time zone if it changed. This prevents the window
+  // from being modified on start
+  if ( tz != KOPrefs::instance()->mTimeZoneId )
+    mCalendar->setTimeZoneId(KOPrefs::instance()->mTimeZoneId);
   // To make the "fill window" configurations work
   mViewManager->raiseCurrentView();
 }
@@ -558,16 +561,19 @@ void CalendarView::updateConfig()
 
 void CalendarView::incidenceAdded( Incidence *incidence )
 {
+  setModified(true);
   mHistory->recordAdd( incidence );
 }
 
 void CalendarView::incidenceChanged( Incidence *oldIncidence, Incidence *newIncidence )
 {
+  setModified(true);
   mHistory->recordEdit( oldIncidence, newIncidence );
 }
 
 void CalendarView::incidenceDeleted( Incidence *incidence )
 {
+  setModified(true);
   mHistory->recordDelete( incidence );
 }
 

@@ -154,6 +154,8 @@ KOrganizer::KOrganizer( bool document, const char *name )
 
   mCalendar->setOwner( KOPrefs::instance()->fullName() );
   mCalendar->setEmail( KOPrefs::instance()->email() );
+  // setting fullName and email do not really count as modifying the calendar
+  mCalendarView->setModified(false);
 
   setCentralWidget(mCalendarView);
 

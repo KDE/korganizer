@@ -279,6 +279,10 @@ void KOViewManager::showMonthView()
     // SIGNALS/SLOTS FOR MONTH VIEW
     connect(mMonthView, SIGNAL(newEventSignal(QDateTime)),
             mMainView, SLOT(newEvent(QDateTime)));
+    connect(mMonthView, SIGNAL(newEventSignal(QDate)),
+            mMainView, SLOT(newEvent(QDate)));
+    connect(mMonthView, SIGNAL(newEventSignal()),
+            mMainView, SLOT(newEvent()));
 
     connect(mMonthView, SIGNAL(showIncidenceSignal(Incidence *)),
             mMainView, SLOT(showIncidence(Incidence *)));

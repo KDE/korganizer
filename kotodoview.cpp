@@ -837,5 +837,6 @@ void KOTodoView::addQuickTodo()
   todo->setOrganizer(KOPrefs::instance()->email());
   mCalendar->addTodo(todo);
   mQuickAdd->setText(QString::null);
+  emit todoAdded( todo );
   updateView();
 }
