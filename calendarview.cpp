@@ -1063,12 +1063,8 @@ bool CalendarView::todo_unsub( Todo *todo )
   if ( !todo || !todo->relatedTo() ) return false;
 
   if ( mChanger->beginChange( todo ) ) {
-
       Todo *oldTodo = todo->clone();
-      // I think that this is called on Incidence::setRelatedTo
-      todo->relatedTo()->removeRelation(todo);
       todo->setRelatedTo(0);
-      todo->setRelatedToUid("");
       mChanger->changeIncidence( oldTodo, todo, KOGlobals::RELATION_MODIFIED );
       mChanger->endChange( todo );
       delete oldTodo;
@@ -1087,13 +1083,11 @@ bool CalendarView::makeSubTodosIndependents ( )
 {
   bool  status = false;
   Todo *anTodo = selectedTodo();
-  startMultiModify ( i18n( "Make sub-to-dos independent" ) );
 
   if( makeSubTodosIndependents( anTodo ) ) {
     updateView();
     status = true;
   }
-  endMultiModify();
   return status;
 }
 
@@ -1101,6 +1095,7 @@ bool CalendarView::makeSubTodosIndependents ( Todo *todo )
 {
   if( !todo || todo->relations().isEmpty() ) return false;
 
+  startMultiModify ( i18n( "Make sub-to-dos independent" ) );
   Incidence::List subTodos( todo->relations() );
   Incidence::List::Iterator it;
   Incidence *aIncidence;
@@ -1113,6 +1108,7 @@ bool CalendarView::makeSubTodosIndependents ( Todo *todo )
       todo_unsub ( aTodo );
     }
   }
+  endMultiModify();
   return true;
 }
 
