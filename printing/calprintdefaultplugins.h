@@ -111,8 +111,8 @@ class CalPrintTodos : public CalPrintPluginBase
   public:
     CalPrintTodos();
     virtual ~CalPrintTodos();
-    virtual QString description() { return i18n("Print to&dos"); }
-    virtual QString info() { return i18n("Prints all todos in a (tree-like) list"); }
+    virtual QString description() { return i18n("Print to-&dos"); }
+    virtual QString info() { return i18n("Prints all to-dos in a (tree-like) list"); }
     virtual QWidget *createConfigWidget(QWidget*);
 
   public:

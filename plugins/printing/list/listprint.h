@@ -40,7 +40,7 @@ class CalPrintList : public CalPrintPluginBase
     CalPrintList():CalPrintPluginBase() {}
     virtual ~CalPrintList() {}
     virtual QString description() { return i18n("Print list"); }
-    virtual QString info() { return i18n("Prints a list of events and todos"); }
+    virtual QString info() { return i18n("Prints a list of events and to-dos"); }
     virtual QWidget *createConfigWidget( QWidget* );
 
   public:
