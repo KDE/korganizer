@@ -72,7 +72,7 @@ CalendarViewExtension *ResourceViewFactory::create( QWidget *parent )
                     mView, SLOT( updateCategories() ) );
   QObject::connect( mCalendar, SIGNAL( signalResourceModified( ResourceCalendar * ) ),
                     mView, SLOT( updateCategories() ) );
-
+  
   return mResourceView;
 }
 
@@ -183,7 +183,6 @@ ResourceView::ResourceView( KCal::CalendarResources *calendar,
                                                      const QPoint &, int ) ),
            SLOT( contextMenuRequested( QListViewItem *, const QPoint &,
                                        int ) ) );
-
   updateView();
 }
 
@@ -324,7 +323,7 @@ void ResourceView::removeResource()
 
   int km = KMessageBox::warningContinueCancel( this,
         i18n("<qt>Do you really want to remove the resource <b>%1</b>?</qt>")
-        .arg( item->resource()->resourceName() ), "",
+        .arg( item->text( 0 ) ), "",
         KGuiItem( i18n("&Remove" ), "editdelete") );
   if ( km == KMessageBox::Cancel ) return;
 
@@ -336,11 +335,13 @@ void ResourceView::removeResource()
     return;
   }
 #endif
-
-  mCalendar->resourceManager()->remove( item->resource() );
-
-  mListView->takeItem( item );
-  delete item;
+  if ( item->isSubresource() ) {
+    // TODO delete the folder in KMail
+  } else {
+    mCalendar->resourceManager()->remove( item->resource() );
+    mListView->takeItem( item );
+    delete item;
+  }
   emitResourcesChanged();
 }
 
@@ -362,10 +363,14 @@ void ResourceView::editResource()
 
 void ResourceView::currentChanged( QListViewItem *item)
 {
-  bool selected = true;
-  if ( !item ) selected = false;
-  mDeleteButton->setEnabled( selected );
-  mEditButton->setEnabled( selected );
+   ResourceItem *i = currentItem();
+   if ( !item || i->isSubresource() ) {
+     mDeleteButton->setEnabled( false );
+     mEditButton->setEnabled( false );
+   } else {
+     mDeleteButton->setEnabled( true );
+     mEditButton->setEnabled( true );
+   }
 }
 
 ResourceItem *ResourceView::findItem( ResourceCalendar *r )

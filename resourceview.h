@@ -64,6 +64,7 @@ class ResourceItem : public QCheckListItem
 
     KCal::ResourceCalendar *resource() { return mResource; }
     const QString& resourceIdentifier() { return mResourceIdentifier; }
+    bool isSubresource() const { return mIsSubresource; }
 
     void update();
 
@@ -139,5 +140,4 @@ class ResourceView : public CalendarViewExtension
     QPushButton *mEditButton;
     QPtrList<ResourceCalendar> mResourcesToClose;
 };
-
 #endif
