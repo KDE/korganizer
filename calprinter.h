@@ -79,13 +79,11 @@ class CalPrinter : public QObject, public KOrg::CalPrinterBase
     void updateConfig();
 
   private slots:
-    void doPreview( CalPrintBase *selectedStyle );
-    void doPrint( CalPrintBase *selectedStyle );
+    void doPrint( CalPrintBase *selectedStyle, bool preview );
 
   public:
     void preview( PrintType type, const QDate &fd, const QDate &td );
     void print( PrintType type, const QDate &fd, const QDate &td );
-    void forcePrint( PrintType type, const QDate &fd, const QDate &td, bool preview );
 
   protected:
     QPtrList<CalPrintBase> mPrintPlugins;

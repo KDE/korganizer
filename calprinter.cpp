@@ -122,7 +122,7 @@ void CalPrinter::preview( PrintType type, const QDate &fd, const QDate &td )
   setDateRange( fd, td );
 
   if ( mPrintDialog->exec() == QDialog::Accepted ) {
-    doPreview( mPrintDialog->selectedPlugin() );
+    doPrint( mPrintDialog->selectedPlugin(), true );
   }
 }
 
@@ -133,42 +133,18 @@ void CalPrinter::print( PrintType type, const QDate &fd, const QDate &td )
   setDateRange( fd, td );
 
   if ( mPrintDialog->exec() == QDialog::Accepted ) {
-    doPrint( mPrintDialog->selectedPlugin() );
+    doPrint( mPrintDialog->selectedPlugin(), false );
   }
 }
 
-void CalPrinter::forcePrint( PrintType type, const QDate &fd, const QDate &td,
-                             bool preview )
-{
-  if ( type < 0 ) return;
-  setDateRange( fd, td );
-
-  if ( preview )
-    mPrinter->setPreviewOnly( true );
-  else
-    if ( !mPrinter->setup( mParent, i18n("Print Calendar") ) ) return;
-
-  CalPrintBase *selectedStyle = mPrintPlugins.at( type );
-  if ( selectedStyle ) selectedStyle->doPrint();
-
-  if ( preview )
-    mPrinter->setPreviewOnly( false );
-}
-
-void CalPrinter::doPreview( CalPrintBase *selectedStyle )
-{
-  mPrinter->setPreviewOnly( true );
-  selectedStyle->doPrint();
-  // restore previous settings that were used before the preview.
-  mPrinter->setPreviewOnly( false );
-}
-
-void CalPrinter::doPrint( CalPrintBase *selectedStyle )
+void CalPrinter::doPrint( CalPrintBase *selectedStyle, bool preview )
 {
   // FIXME: add a better caption to the Printingdialog
-  if ( !mPrinter->setup( mParent, i18n("Print Calendar") ) ) return;
-
-  selectedStyle->doPrint();
+  mPrinter->setPreviewOnly( preview );
+  if ( mPrinter->setup( mParent, i18n("Print Calendar") ) ) {
+    selectedStyle->doPrint();
+  }
+  mPrinter->setPreviewOnly( false );
 }
 
 ///////////////////////////////////////////////////////////////////////////////
