@@ -54,9 +54,6 @@ KOTodoEditor::KOTodoEditor(Calendar *calendar) :
 {
   mTodo = 0;
   mRelatedTodo = 0;
-
-  mCategoryDialog = new CategorySelectDialog();
-
 }
 
 KOTodoEditor::~KOTodoEditor()
