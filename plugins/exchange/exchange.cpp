@@ -128,9 +128,13 @@ void Exchange::download()
 
   KCal::Calendar* calendar = mainWindow()->view()->calendar();
 
-  mClient->downloadSynchronous(calendar, start, end, true );
+  int result = mClient->downloadSynchronous(calendar, start, end, true );
 
-  emit calendarChanged();
+  if ( result == KPIM::ExchangeClient::ResultOK )
+    emit calendarChanged();
+  else
+    showError( result, mClient->detailedErrorString() );
+
 }
 
 void Exchange::upload()
@@ -146,7 +150,9 @@ void Exchange::upload()
   if ( KMessageBox::warningContinueCancel( 0L, i18n("Exchange Upload is EXPERIMENTAL, you may lose data on this appointment!"), i18n("Exchange Plugin") )
        == KMessageBox::Continue ) {
     kdDebug() << "Trying to add appointment " << event->summary() << endl;
-    mClient->uploadSynchronous( event );
+    int result = mClient->uploadSynchronous( event );
+    if ( result != KPIM::ExchangeClient::ResultOK )
+      showError( result, mClient->detailedErrorString() );
   }
 }
 
@@ -164,9 +170,13 @@ void Exchange::remove()
   if ( KMessageBox::warningContinueCancel( 0L, i18n("Exchange Delete is EXPERIMENTAL, if this is a recurring event it will delete all instances!"), i18n("Exchange Plugin") )
        == KMessageBox::Continue ) {
     kdDebug() << "Trying to delete appointment " << event->summary() << endl;
-    mClient->removeSynchronous( event );
-    mainWindow()->view()->calendar()->deleteEvent( event );
-    emit calendarChanged();
+    int result = mClient->removeSynchronous( event );
+
+    if ( result == KPIM::ExchangeClient::ResultOK ) {
+      mainWindow()->view()->calendar()->deleteEvent( event );
+      emit calendarChanged();
+    } else
+      showError( result, mClient->detailedErrorString() );
   }
 }
 
@@ -177,6 +187,44 @@ void Exchange::configure()
 
   if (dialog.exec() == QDialog::Accepted )
     mAccount->save( "Calendar/Exchange Plugin" );
+}
+
+void Exchange::showError( int error, const QString& moreInfo /* = QString::null */ )
+{
+  QString errorText;
+  switch( error ) {
+  case KPIM::ExchangeClient::ResultOK:
+    errorText = i18n( "No Error" );
+    break;
+  case KPIM::ExchangeClient::CommunicationError:
+    errorText = i18n( "The Exchange server could not be reached or returned an error." );
+    break;
+  case KPIM::ExchangeClient::ServerResponseError:
+    errorText = i18n( "Server response could not be interpreted." );
+    break;
+  case KPIM::ExchangeClient::IllegalAppointmentError:
+    errorText = i18n( "Appointment data could not be interpreted." );
+    break;
+  case KPIM::ExchangeClient::NonEventError:
+    errorText = i18n( "This should not happen: trying to upload wrong type of event." );
+    break;
+  case KPIM::ExchangeClient::EventWriteError:
+    errorText = i18n( "An error occured trying to write an appointment to the server." );
+    break;
+  case KPIM::ExchangeClient::DeleteUnknownEventError:
+    errorText = i18n( "Trying to delete an event that is not present on the server." );
+    break;
+  case KPIM::ExchangeClient::UnknownError:
+  default:
+    errorText = i18n( "Unknown Error" );
+  }
+
+  if ( error !=  KPIM::ExchangeClient::ResultOK ) {
+    if ( moreInfo.isNull() )
+      KMessageBox::error( mainWindow(), errorText, i18n( "Exchange Plugin" ) );
+    else
+      KMessageBox::detailedError( mainWindow(), errorText, moreInfo, i18n( "Exchange Plugin" ) );
+  }
 }
 
 void Exchange::test()

@@ -56,6 +56,7 @@ class Exchange : public KOrg::Part {
 
   private:
     void test2();
+    void showError( int error, const QString& moreInfo = QString::null );
 
     KPIM::ExchangeClient *mClient;
     KPIM::ExchangeAccount* mAccount;
