@@ -43,6 +43,7 @@
 #include "koviewmanager.h"
 #include "kocore.h"
 
+#include <libkdepim/email.h>
 #include <ktnef/ktnefparser.h>
 #include <ktnef/ktnefmessage.h>
 #include <ktnef/ktnefdefs.h>
@@ -154,6 +155,7 @@ void KOGroupware::incomingDirChanged( const QString& path )
   }
   QTextStream t(&f);
   t.setEncoding( QTextStream::UnicodeUTF8 );
+  QString receiver = KPIM::getEmailAddr( t.readLine() );
   QString iCal = t.read();
 
   ScheduleMessage *message = mFormat.parseScheduleMessage( mCalendar, iCal );
@@ -174,9 +176,19 @@ void KOGroupware::incomingDirChanged( const QString& path )
   KCal::Incidence* incidence =
     dynamic_cast<KCal::Incidence*>( message->event() );
   KCal::MailScheduler scheduler( mCalendar );
-  if ( action.startsWith( "accepted" ) )
+  if ( action.startsWith( "accepted" ) ) {
+    // Find myself and set to answered and accepted
+    KCal::Attendee::List attendees = incidence->attendees();
+    KCal::Attendee::List::ConstIterator it;
+    for ( it = attendees.begin(); it != attendees.end(); ++it ) {
+      if( (*it)->email() == receiver ) {
+        (*it)->setStatus( KCal::Attendee::Accepted );
+        (*it)->setRSVP(false);
+        break;
+      }
+    }
     scheduler.acceptTransaction( incidence, method, status );
-  else if ( action.startsWith( "cancel" ) )
+  } else if ( action.startsWith( "cancel" ) )
     // TODO: Could this be done like the others?
     mCalendar->deleteIncidence( incidence );
   else if ( action.startsWith( "reply" ) )
