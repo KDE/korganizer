@@ -35,7 +35,6 @@
 #include <libkcal/journal.h>
 #include <libkcal/calendarresources.h>
 #include <libkcal/resourcecalendar.h>
-#include <kresources/resourceselectdialog.h>
 
 #include "journalentry.h"
 #include "journalentry.moc"

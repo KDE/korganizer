@@ -33,7 +33,6 @@
 #include <kmessagebox.h>
 #include <libkcal/calendarresources.h>
 #include <libkcal/resourcecalendar.h>
-#include <kresources/resourceselectdialog.h>
 
 #include <libkdepim/categoryselectdialog.h>
 #include <libkcal/calendarlocal.h>

@@ -36,7 +36,6 @@
 #include <libkcal/calendarlocal.h>
 #include <libkcal/calendarresources.h>
 #include <libkcal/resourcecalendar.h>
-#include <kresources/resourceselectdialog.h>
 
 #include "koprefs.h"
 

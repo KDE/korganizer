@@ -35,7 +35,6 @@
 #include <libkcal/dndfactory.h>
 #include <libkcal/calendarresources.h>
 #include <libkcal/resourcecalendar.h>
-#include <kresources/resourceselectdialog.h>
 
 #include <kcalendarsystem.h>
 

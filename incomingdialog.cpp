@@ -35,7 +35,6 @@
 #include <libkcal/attendee.h>
 #include <libkcal/calendarresources.h>
 #include <libkcal/resourcecalendar.h>
-#include <kresources/resourceselectdialog.h>
 
 #ifndef KORG_NOMAIL
 #include "mailscheduler.h"

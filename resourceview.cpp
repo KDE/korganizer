@@ -30,7 +30,7 @@
 #include <kglobal.h>
 #include <kmessagebox.h>
 #include <kresources/resource.h>
-#include <kresources/resourceconfigdlg.h>
+#include <kresources/configdialog.h>
 
 #include <qinputdialog.h>
 #include <qlayout.h>
@@ -130,11 +130,11 @@ void ResourceView::addResource()
 
   resource->setResourceName( type + "-resource" );
 
-  KRES::ResourceConfigDlg dlg( this, QString("calendar"), resource, "ResourceConfigDlg" );
+  KRES::ConfigDialog dlg( this, QString("calendar"), resource, "KRES::ConfigDialog" );
 
   if ( dlg.exec() ) {
     mManager->add( resource );
-    ResourceItem *item = new ResourceItem( resource, this, mListView );
+    new ResourceItem( resource, this, mListView );
   } else {
     delete resource;
     resource = 0;
@@ -175,7 +175,8 @@ void ResourceView::editResource()
 
   ResourceCalendar *resource = rItem->resource();
 
-  KRES::ResourceConfigDlg dlg( this, QString("calendar"), resource, "ResourceConfigDlg" );
+  KRES::ConfigDialog dlg( this, QString("calendar"), resource,
+                          "KRES::ConfigDialog" );
 
   if ( dlg.exec() ) {
     rItem->setText( 0, resource->resourceName() );
