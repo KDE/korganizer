@@ -75,14 +75,9 @@ class KOViewManager : public QObject
     Incidence *currentSelection();
     QDate currentSelectionDate();
 
-//ET
-        KOAgendaView    *mAgendaView;
+    KOAgendaView *agendaView() const { return mAgendaView; }
 
   public slots:
-
-    /** change Agenda view */
-    void changeAgendaView( int view );
-
     void showWhatsNextView();
     void showListView();
     void showAgendaView();
@@ -98,7 +93,7 @@ class KOViewManager : public QObject
   private:
     CalendarView *mMainView;
 
-//ET    KOAgendaView    *mAgendaView;
+    KOAgendaView    *mAgendaView;
     KOListView      *mListView;
     KOMonthView     *mMonthView; 
     KOTodoView      *mTodoView;

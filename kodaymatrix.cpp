@@ -37,8 +37,6 @@
 #include "kodaymatrix.h"
 #include "kodaymatrix.moc"
 
-#include <calendarsystem/kcalendarsystem.h>
-
 #ifndef KORG_NOPLUGINS
 #include "kocore.h"
 #endif
@@ -83,11 +81,10 @@ void DynamicTip::maybeTip( const QPoint &pos )
 const int KODayMatrix::NOSELECTION = -1000;
 const int KODayMatrix::NUMDAYS = 42;
 
-KODayMatrix::KODayMatrix(QWidget *parent, Calendar* calendar, QDate date, const char *name, KCalendarSystem* calSys) :
+KODayMatrix::KODayMatrix(QWidget *parent, Calendar* calendar, QDate date, const char *name) :
   QFrame(parent, name)
 {
   mCalendar = calendar;
-  mCalendarSystem = calSys;
 
   // initialize dynamic arrays
   days = new QDate[NUMDAYS];
@@ -185,7 +182,7 @@ void KODayMatrix::recalculateToday()
     today = -1;
     for (int i=0; i<NUMDAYS; i++) {
       days[i] = startdate.addDays(i);
-      daylbls[i] = QString::number( mCalendarSystem->day( days[i] ));
+      daylbls[i] = QString::number( KOCore::self()->calendarSystem()->day( days[i] ));
       
       // if today is in the currently displayed month, hilight today
       if (days[i].year() == QDate::currentDate().year() &&
@@ -211,7 +208,7 @@ void KODayMatrix::updateView(QDate actdate)
   // of the first day to be shown
   if (actdate != startdate) {
     // calculation is from Cornelius
-    int fstDayOfWk = mCalendarSystem->dayOfTheWeek( actdate );
+    int fstDayOfWk = KOCore::self()->calendarSystem()->dayOfTheWeek( actdate );
     
     int nextLine = ((fstDayOfWk == 1) && (KGlobal::locale()->weekStartsMonday() == 1)) ? 7 : 0;
 
@@ -264,8 +261,7 @@ void KODayMatrix::updateView(QDate actdate)
 #else
     QString holiStr = QString::null;
 #endif
-    if (!KGlobal::locale()->weekStartsMonday() && (float(i)/7 == float(i/7)) ||
-        KGlobal::locale()->weekStartsMonday() && (float(i-6)/7 == float((i-6)/7)) ||
+   if ( (KOCore::self()->calendarSystem()->dayOfTheWeek(days[i]) == KOCore::self()->calendarSystem()->weekDayOfPray()) ||
         !holiStr.isEmpty()) {
       if (holiStr.isNull()) holiStr = "";
       mHolidays[i] = holiStr;
@@ -509,7 +505,7 @@ void KODayMatrix::paintEvent(QPaintEvent * pevent)
     col = isRTL ? 6-(i-row*7) : i-row*7;
 
     // if it is the first day of a month switch color from normal to shaded and vice versa
-    if ( mCalendarSystem->day( days[i] ) == 1) {
+    if ( KOCore::self()->calendarSystem()->day( days[i] ) == 1) {
       if (actcol == mDefaultTextColorShaded) {
         actcol = mDefaultTextColor;
       } else {

@@ -53,8 +53,6 @@
 #include <krun.h>
 #include <kdirwatch.h>
 
-#include <calendarsystem/kcalendarsystem.h>
-
 #include <libkcal/vcaldrag.h>
 #include <libkcal/icalformat.h>
 #include <libkcal/vcalformat.h>
@@ -88,8 +86,10 @@
 #include "statusdialog.h"
 #include "kdatenavigator.h"
 #include "kotodoview.h"
+#include "datenavigator.h"
 
 #include "calendarview.h"
+#include "kocore.h"
 using namespace KOrg;
 #include "calendarview.moc"
 
@@ -97,12 +97,6 @@ CalendarView::CalendarView( QWidget *parent, const char *name )
   : CalendarViewBase(parent,name)
 {
   kdDebug() << "CalendarView::CalendarView()" << endl;
-
-  KGlobal::config()->setGroup("General");
-  QString calSystem = KGlobal::config()->readEntry( "CalendarSystem",
-                                                    "gregorian");
-
-  mCalendarSystem = KCalendarSystemFactory::create( calSystem ); 
 
   mViewManager = new KOViewManager( this );
   mDialogManager = new KODialogManager( this );
@@ -127,6 +121,8 @@ CalendarView::CalendarView( QWidget *parent, const char *name )
 
   mStorage = new FileStorage( mCalendar );
 
+  mNavigator = new DateNavigator( this );
+
   QBoxLayout *topLayout = new QVBoxLayout(this);
 
 #ifndef KORG_NOSPLITTER
@@ -139,7 +135,7 @@ CalendarView::CalendarView( QWidget *parent, const char *name )
   mPanner->setResizeMode(mLeftSplitter,QSplitter::KeepSize);
 
   mDateNavigator = new KDateNavigator(mLeftSplitter, mCalendar, TRUE,
-                        "CalendarView::DateNavigator", QDate::currentDate(), mCalendarSystem ); 
+                        "CalendarView::DateNavigator", QDate::currentDate() ); 
   mLeftSplitter->setResizeMode(mDateNavigator,QSplitter::KeepSize);
   mTodoList = new KOTodoView(mCalendar, mLeftSplitter, "todolist");
   mFilterView = new KOFilterView(&mFilters,mLeftSplitter,"CalendarView::FilterView");
@@ -162,7 +158,7 @@ CalendarView::CalendarView( QWidget *parent, const char *name )
   topLayout->addWidget( mainBox );
 
   mDateNavigator = new KDateNavigator(leftFrame, mCalendar, TRUE,
-                        "CalendarView::DateNavigator", QDate::currentDate(), mCalendarSystem); 
+                        "CalendarView::DateNavigator", QDate::currentDate()); 
   mTodoList = new KOTodoView(mCalendar, leftFrame, "todolist");
   mFilterView = new KOFilterView(&mFilters,leftFrame,"CalendarView::FilterView");
 
@@ -176,34 +172,57 @@ CalendarView::CalendarView( QWidget *parent, const char *name )
   }
 #endif
 
-  connect(mDateNavigator, SIGNAL(datesSelected(const DateList &)),
-          SLOT(selectDates(const DateList &)));
-  connect(mDateNavigator,SIGNAL(weekClicked(QDate)),SLOT(selectWeek(QDate)));
-  connect(mDateNavigator,SIGNAL(eventDropped(Event *)),
-          SLOT(eventAdded(Event *)));
-  connect(mDateNavigator,SIGNAL(goNext()),SLOT(goNext()));
-  connect(mDateNavigator,SIGNAL(goPrevious()),SLOT(goPrevious()));
+  connect( mNavigator, SIGNAL( datesSelected( const KCal::DateList & ) ),
+           SLOT( showDates( const KCal::DateList & ) ) );
+  connect( mNavigator, SIGNAL( datesSelected( const KCal::DateList & ) ),
+           mDateNavigator, SLOT( selectDates( const KCal::DateList & ) ) );
+
+  connect( mDateNavigator, SIGNAL( weekClicked( const QDate & ) ),
+           mNavigator, SLOT( selectWeek( const QDate & ) ) );
+
+  connect( mDateNavigator, SIGNAL( goPrevYear() ),
+           mNavigator, SLOT( selectPreviousYear() ) );
+  connect( mDateNavigator, SIGNAL( goNextYear() ),
+           mNavigator, SLOT( selectNextYear() ) );
+  connect( mDateNavigator, SIGNAL( goPrevMonth() ),
+           mNavigator, SLOT( selectPreviousMonth() ) );
+  connect( mDateNavigator, SIGNAL( goNextMonth() ),
+           mNavigator, SLOT( selectNextMonth() ) );
+
+  connect( mDateNavigator, SIGNAL( goPrevious() ),
+           mNavigator, SLOT( selectPrevious() ) );
+  connect( mDateNavigator, SIGNAL( goNext() ),
+           mNavigator, SLOT( selectNext() ) );
+
+  connect( mDateNavigator, SIGNAL( datesSelected( const KCal::DateList & ) ),
+           mNavigator, SLOT( selectDates( const KCal::DateList & ) ) );
+
+  connect( mDateNavigator, SIGNAL( eventDropped( Event * ) ),
+           SLOT( eventAdded( Event *) ) );
+
   connect(mDateNavigator,SIGNAL(dayPassed(QDate)),SLOT(updateView()));
-  connect(this, SIGNAL(configChanged()), mDateNavigator, SLOT(updateConfig()));
 
-  connect(mTodoList, SIGNAL(newTodoSignal()),
-	  this, SLOT(newTodo()));
-  connect(mTodoList, SIGNAL(newSubTodoSignal(Todo *)),
-	  this, SLOT(newSubTodo(Todo *)));
-  connect(mTodoList, SIGNAL(editTodoSignal(Todo *)),
-	  this, SLOT(editTodo(Todo *)));
-  connect(mTodoList, SIGNAL(showTodoSignal(Todo *)),
-	  this, SLOT(showTodo(Todo *)));
-  connect(mTodoList, SIGNAL(deleteTodoSignal(Todo *)),
-          this, SLOT(deleteTodo(Todo *)));
-  connect(this, SIGNAL(configChanged()), mTodoList, SLOT(updateConfig()));
+  connect( this, SIGNAL( configChanged() ),
+           mDateNavigator, SLOT( updateConfig() ) );
+
+  connect( mTodoList, SIGNAL( newTodoSignal() ),
+	   SLOT( newTodo() ) );
+  connect( mTodoList, SIGNAL( newSubTodoSignal( Todo *) ),
+	   SLOT( newSubTodo( Todo * ) ) );
+  connect( mTodoList, SIGNAL( editTodoSignal( Todo * ) ),
+	   SLOT( editTodo( Todo * ) ) );
+  connect( mTodoList, SIGNAL( showTodoSignal( Todo * ) ),
+	   SLOT( showTodo( Todo *) ) );
+  connect( mTodoList, SIGNAL( deleteTodoSignal( Todo *) ),
+           SLOT( deleteTodo( Todo *) ) );
+  connect( this, SIGNAL( configChanged()), mTodoList, SLOT( updateConfig() ) );
   connect( mTodoList, SIGNAL( purgeCompletedSignal() ),
-           this, SLOT( purgeCompleted() ) );
-  connect(mTodoList, SIGNAL(todoModifiedSignal (Todo *, int)),
-	  this, SLOT(todoModified (Todo *, int)));
+           SLOT( purgeCompleted() ) );
+  connect( mTodoList, SIGNAL( todoModifiedSignal( Todo *, int ) ),
+	   SLOT( todoModified( Todo *, int ) ) );
 
-  connect(mFilterView,SIGNAL(filterChanged()),SLOT(updateFilter()));
-  connect(mFilterView,SIGNAL(editFilters()),SLOT(editFilters()));
+  connect( mFilterView, SIGNAL( filterChanged() ), SLOT( updateFilter() ) );
+  connect( mFilterView, SIGNAL( editFilters() ), SLOT( editFilters() ) );
   // Hide filter per default
   mFilterView->hide();
 
@@ -250,14 +269,14 @@ KODialogManager *CalendarView::dialogManager()
 
 QDate CalendarView::startDate()
 {
-  DateList dates = mDateNavigator->selectedDates();
+  DateList dates = mNavigator->selectedDates();
 
   return dates.first();
 }
 
 QDate CalendarView::endDate()
 {
-  DateList dates = mDateNavigator->selectedDates();
+  DateList dates = mNavigator->selectedDates();
 
   return dates.last();
 }
@@ -380,6 +399,9 @@ void CalendarView::readSettings()
   mTodoList->restoreLayout(config,QString("Todo Layout"));
 
   readFilterSettings(config);
+
+  config->setGroup( "Views" );
+  mNavigator->selectDates( config->readNumEntry( "ShownDatesCount", 7 ) );
 }
 
 
@@ -405,6 +427,9 @@ void CalendarView::writeSettings()
   KOPrefs::instance()->writeConfig();
 
   writeFilterSettings(config);
+
+  config->setGroup( "Views" );
+  config->writeEntry( "ShownDatesCount", mNavigator->selectedDates().count() );
 
   config->sync();
 }
@@ -470,35 +495,17 @@ void CalendarView::writeFilterSettings(KConfig *config)
 
 void CalendarView::goToday()
 {
-  DateList tmpList;
-  tmpList.append(QDate::currentDate());
-  mDateNavigator->selectDates(tmpList);
-  mSaveSingleDate = QDate::currentDate();
-  updateView();
+  mNavigator->selectToday();
 }
 
 void CalendarView::goNext()
 {
-  // adapt this to work for other views
-//#if 0
-//ET WORKAROUND
-  if (mViewManager->currentView() == (KOrg::BaseView*)mViewManager->mAgendaView) mViewManager->mAgendaView->slotNextDates();
-//ET TODO adapt selection of daymatrix apropriately
-//#endif
-  // this *appears* to work fine...
-  updateView();
+  mNavigator->selectNext();
 }
 
 void CalendarView::goPrevious()
 {
-  // adapt this to work for other views
-//#if 0
-//ET WORKAROUND
-  if (mViewManager->currentView() == (KOrg::BaseView*)mViewManager->mAgendaView) mViewManager->mAgendaView->slotPrevDates();
-//ET TODO adapt selection of daymatrix apropriately
-//#endif
-  // this *appears* to work fine...
-  updateView();
+  mNavigator->selectPrevious();
 }
 
 void CalendarView::updateConfig()
@@ -569,22 +576,21 @@ void CalendarView::updateView(const QDate &start, const QDate &end)
 {
   mTodoList->updateView();
   mViewManager->updateView(start, end);
-//ET
   mDateNavigator->updateView();
 }
 
 void CalendarView::updateView()
 {
-  // update the current view with the current dates from the date navigator
-  DateList tmpList = mDateNavigator->selectedDates();
+  DateList tmpList = mNavigator->selectedDates();
 
-#if 0
-  // if no dates are supplied, we should refresh the mDateNavigator too...
-  mDateNavigator->updateView();
-#endif
+  // We assume that the navigator only selects consecutive days.
   updateView( tmpList.first(), tmpList.last() );
 }
 
+void CalendarView::updateUnmanagedViews()
+{
+  mDateNavigator->updateDayMatrix();
+}
 
 int CalendarView::msgItemDelete()
 {
@@ -637,7 +643,7 @@ void CalendarView::edit_copy()
 
 void CalendarView::edit_paste()
 {
-  QDate date = mDateNavigator->selectedDates().first();
+  QDate date = mNavigator->selectedDates().first();
 
   DndFactory factory( mCalendar );
   Event *pastedEvent = factory.pasteEvent(date);
@@ -652,8 +658,24 @@ void CalendarView::edit_options()
 
 void CalendarView::newEvent()
 {
-  kdDebug() << "CalendarView::newEvent()" << endl;
-  newEvent(QDate::currentDate());
+  // TODO: Replace this code by a common eventDurationHint of KOBaseView.
+  KOAgendaView *aView = mViewManager->agendaView();
+  if (aView) {
+    if (aView->selectionStart().isValid()) {
+      if (aView->selectedIsAllDay()) {
+        newEvent(aView->selectionStart(),aView->selectionEnd(),true);
+      } else {
+        newEvent(aView->selectionStart(),aView->selectionEnd());
+      }
+      return;
+    }
+  }
+
+  QDate date = mNavigator->selectedDates().first();
+
+  newEvent( QDateTime( date, QTime( KOPrefs::instance()->mStartTime, 0, 0 ) ),
+	    QDateTime( date, QTime( KOPrefs::instance()->mStartTime +
+                       KOPrefs::instance()->mDefaultDuration, 0, 0 ) ) );
 }
 
 void CalendarView::newEvent(QDateTime fh)
@@ -665,7 +687,7 @@ void CalendarView::newEvent(QDateTime fh)
 void CalendarView::newEvent(QDate dt)
 {
   newEvent(QDateTime(dt, QTime(0,0,0)),
-           QDateTime(dt, QTime(0,0,0)), TRUE);
+           QDateTime(dt, QTime(0,0,0)), true);
 }
 
 void CalendarView::newEvent(QDateTime fromHint, QDateTime toHint)
@@ -703,40 +725,13 @@ void CalendarView::newSubTodo(Todo *parentEvent)
   todoEditor->show();
 }
 
-void CalendarView::appointment_new()
+void CalendarView::newFloatingEvent()
 {
-  KOAgendaView *aView = mViewManager->mAgendaView;
-  if (aView) {
-    if (aView->selectionStart().isValid()) {
-      if (aView->selectedIsAllDay()) {
-        newEvent(aView->selectionStart(),aView->selectionEnd(),true);
-      } else {
-        newEvent(aView->selectionStart(),aView->selectionEnd());
-      }
-      return;
-    }
-  }
-  DateList tmpList = mDateNavigator->selectedDates();
-  QDate from = tmpList.first();
-  QDate to = tmpList.last();
+  DateList tmpList = mNavigator->selectedDates();
+  QDate date = tmpList.first();
 
-  ASSERT(from.isValid());
-
-  newEvent(QDateTime(from, QTime(KOPrefs::instance()->mStartTime,0,0)),
-	   QDateTime(to, QTime(KOPrefs::instance()->mStartTime +
-                     KOPrefs::instance()->mDefaultDuration,0,0)));
-}
-
-void CalendarView::allday_new()
-{
-  DateList tmpList = mDateNavigator->selectedDates();
-  QDate from = tmpList.first();
-  QDate to = tmpList.last();
-
-  ASSERT(from.isValid());
-
-  newEvent(QDateTime(from, QTime(12,0,0)),
-           QDateTime(to, QTime(12,0,0)), TRUE);
+  newEvent( QDateTime( date, QTime( 12, 0, 0 ) ),
+            QDateTime( date, QTime( 12, 0, 0 ) ), true );
 }
 
 
@@ -951,7 +946,7 @@ void CalendarView::deleteEvent(Event *anEvent)
 // Disabled because it does not work
 //#if 0
       case KMessageBox::Yes: // just this one
-        //QDate qd = mDateNavigator->selectedDates().first();
+        //QDate qd = mNavigator->selectedDates().first();
         //if (!qd.isValid()) {
         //  kdDebug() << "no date selected, or invalid date" << endl;
         //  KNotifyClient::beep();
@@ -1301,7 +1296,7 @@ void CalendarView::print()
 #ifndef KORG_NOPRINTER
   createPrinter();
 
-  DateList tmpDateList = mDateNavigator->selectedDates();
+  DateList tmpDateList = mNavigator->selectedDates();
   mCalPrinter->print(CalPrinter::Month,
 		     tmpDateList.first(), tmpDateList.last());
 #endif
@@ -1314,7 +1309,7 @@ void CalendarView::printPreview()
 
   createPrinter();
 
-  DateList tmpDateList = mDateNavigator->selectedDates();
+  DateList tmpDateList = mNavigator->selectedDates();
 
   mViewManager->currentView()->printPreview(mCalPrinter,tmpDateList.first(),
                              tmpDateList.last());
@@ -1357,25 +1352,6 @@ void CalendarView::eventUpdated(Incidence *)
   // Don't call updateView here. The code, which has caused the update of the
   // event is responsible for updating the view.
 //  updateView();
-}
-
-void CalendarView::selectWeek(QDate weekstart)
-{
-//  kdDebug() << "CalendarView::selectWeek(): " << weekstart.toString() << endl;
-
-  DateList week;
-
-  int n = 7;
-  if (mViewManager->currentView()->currentDateCount() == 5) n = 5;
-
-  int i;
-  for(i=0;i<n;++i) {
-    QDate date = weekstart.addDays(i);
-    week.append(date);
-  }
-  mDateNavigator->selectDates(week);
-
-  updateView( week.first(), week.last() );
 }
 
 void CalendarView::adaptNavigationUnits()
@@ -1473,12 +1449,12 @@ void CalendarView::checkClipboard()
 #endif
 }
 
-void CalendarView::selectDates(const DateList &selectedDates)
+void CalendarView::showDates(const DateList &selectedDates)
 {
-  kdDebug() << "CalendarView::selectDates()" << endl;
+//  kdDebug() << "CalendarView::selectDates()" << endl;
 
-  if (mViewManager->currentView()->isEventView()) {
-	
+  if ( mViewManager->currentView() &&
+       mViewManager->currentView()->isEventView()) {	
     updateView( selectedDates.first(), selectedDates.last() );
   } else {
     mViewManager->showAgendaView();
@@ -1578,9 +1554,9 @@ QWidget *CalendarView::leftFrame()
   return mLeftFrame;
 }
 
-KDateNavigator *CalendarView::dateNavigator()
+DateNavigator *CalendarView::dateNavigator()
 {
-  return mDateNavigator;
+  return mNavigator;
 }
 
 void CalendarView::addView(KOrg::BaseView *view)

@@ -247,7 +247,7 @@ void EventIndicator::enableColumn(int column, bool enable)
 ////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////
 
-KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name, KCalendarSystem *calSys) :
+KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name) :
   KOEventView (cal,parent,name)
 {
   mStartHour = 8;
@@ -256,8 +256,6 @@ KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name, KCale
   mLayoutDayLabels = 0;
   mDayLabelsFrame = 0;
   mDayLabels = 0;
-
-  mCalendarSystem = calSys;
 
   bool isRTL = QApplication::reverseLayout();
 
@@ -439,10 +437,10 @@ void KOAgendaView::createDayLabels()
 
     QLabel *dayLabel = new QLabel(mDayLabels);
 
-    int dW = mCalendarSystem->dayOfTheWeek(date);
+    int dW = KOCore::self()->calendarSystem()->dayOfTheWeek(date);
     QString str = i18n( "short_weekday date (e.g. Mon 13)","%1 %2" )
-        .arg( mCalendarSystem->weekDayName( dW, true ) )
-        .arg( mCalendarSystem->day(date) );
+        .arg( KOCore::self()->calendarSystem()->weekDayName( dW, true ) )
+        .arg( KOCore::self()->calendarSystem()->day(date) );
 
     dayLabel->setText(str);
     dayLabel->setAlignment(QLabel::AlignHCenter);
@@ -539,14 +537,6 @@ void KOAgendaView::updateConfig()
   mAgenda->updateConfig();
   mAllDayAgenda->updateConfig();
 
-  if ( ( mViewType == NEXTX ) &&
-      ( int( mSelectedDates.count() ) != KOPrefs::instance()->mNextXDays) ) {
-    int count;
-    QDate firstDate = mSelectedDates.first();
-    mSelectedDates.clear();
-    for( count = 0; count < KOPrefs::instance()->mNextXDays; count++ )
-      mSelectedDates.append(firstDate.addDays(count));
-  }
   // widget synchronization
   //TODO: find a better way, maybe signal/slot
   mTimeLabels->positionChanged();
@@ -605,7 +595,7 @@ void KOAgendaView::updateEventDates(KOAgendaItem *item)
   item->itemEvent()->setRevision(item->itemEvent()->revision()+1);
   item->setItemDate(startDt.date());
 
-  emit shiftedEvent(olddate, startDate);
+  emit eventChanged();
 
 //  kdDebug() << "KOAgendaView::updateEventDates() done " << endl;
 }
@@ -623,30 +613,6 @@ void KOAgendaView::showDates( const QDate &start, const QDate &end )
     d = d.addDays( 1 );
   }
 
-  // if there are 5 dates and the first is a monday, we have a workweek.
-  if ((mSelectedDates.count() == 5) &&
-      (mSelectedDates.first().dayOfWeek() == 1) &&
-      (mSelectedDates.first().daysTo(mSelectedDates.last()) == 4)) {
-    setView(WORKWEEK);
-
-  // if there are 7 dates and the first is a monday, we have a regular week.
-  } else if ((mSelectedDates.count() == 7) &&
-             (mSelectedDates.first().dayOfWeek() ==
-	     (KGlobal::locale()->weekStartsMonday() ? 1 : 7)) &&
-             (mSelectedDates.first().daysTo(mSelectedDates.last()) == 6)) {
-    setView(WEEK);
-
-  } else if (mSelectedDates.count() == 1) {
-    setView(DAY);
-
-  } else if (((int)mSelectedDates.count() == KOPrefs::instance()->mNextXDays) &&
-             (mSelectedDates.first() == QDate::currentDate()) ) {
-    setView(NEXTX);
-  } else {
-    // for sanity, set viewtype to LIST for now...
-    setView(LIST);
-  }
-
   // and update the view
   fillAgenda();
 }
@@ -657,18 +623,6 @@ void KOAgendaView::showEvents(QPtrList<Event>)
   kdDebug() << "KOAgendaView::showEvents() is not yet implemented" << endl;
 }
 
-void KOAgendaView::setView(int view)
-{
-  // change view type if valid
-  if( mSelectedDates.count() ) {
-    if ((view >= DAY) && (view <= NEXTX))
-      mViewType = view;
-    else
-      mViewType = DAY;
-  } else
-    mViewType = DAY;
-}
-
 void KOAgendaView::changeEventDisplay(Event *, int)
 {
 //  kdDebug() << "KOAgendaView::changeEventDisplay" << endl;
@@ -677,142 +631,10 @@ void KOAgendaView::changeEventDisplay(Event *, int)
   fillAgenda();
 }
 
-void KOAgendaView::slotPrevDates()
-{
-  shiftDates(-1);
-}
-
-void KOAgendaView::slotNextDates()
-{
-  shiftDates(+1);
-}
-
-void KOAgendaView::shiftDates(int multiplier)
-{
-  int shift = 0;
-
-  switch( mViewType ) {
-    case DAY:
-      shift = 1;
-      break;
-    case WEEK:
-    case WORKWEEK:
-    case LIST:
-      shift = 7;
-      break;
-    case NEXTX:
-      shift = KOPrefs::instance()->mNextXDays;
-      break;
-    default:
-      break;
-  }
-
-  DateList::Iterator it;
-  for( it = mSelectedDates.begin(); it != mSelectedDates.end(); ++it ) {
-    *it = (*it).addDays(multiplier*shift);
-  }
-  
-  emit datesSelected(mSelectedDates);
-
-  fillAgenda();
-}
-
-
-void KOAgendaView::slotViewChange()
-{
-  slotViewChange(mViewType + 1 != LIST ? mViewType + 1 : DAY);
-}
-
-
-void KOAgendaView::slotViewChange(int newView)
-{
-  kdDebug() << "KOAgendaView::slotViewChange(): " << newView << endl;
-
-  int count;
-  QDate firstDate = mSelectedDates.first();
-
-  switch (newView) {
-  case DAY:
-    mSelectedDates.clear();
-    mSelectedDates.append(firstDate);
-    break;
-
-  case WORKWEEK:
-    // find monday for this week
-      if (mCalendarSystem->dayOfTheWeek(firstDate) == 7) {
-      if (KGlobal::locale()->weekStartsMonday())
-        firstDate = firstDate.addDays(-6);
-      else
-        firstDate = firstDate.addDays(1);
-      } else if ( mCalendarSystem->dayOfTheWeek(firstDate) > 1) {
-        firstDate = firstDate.addDays(mCalendarSystem->dayOfTheWeek(firstDate) * -1 + 1);
-    }
-
-    mSelectedDates.clear();
-    for (count = 0; count < 5; count++)
-      mSelectedDates.append(firstDate.addDays(count));
-    break;
-
-  case WEEK:
-    // find the beginning of this week (could be monday or sunday)
-      if(mCalendarSystem->dayOfTheWeek(firstDate) == 7 ) {
-      if (KGlobal::locale()->weekStartsMonday())
-        firstDate = firstDate.addDays(-6);
-    } else if (KGlobal::locale()->weekStartsMonday()) {
-        firstDate = firstDate.addDays(mCalendarSystem->dayOfTheWeek(firstDate) * -1 + 1);
-    } else {
-        firstDate = firstDate.addDays(mCalendarSystem->dayOfTheWeek(firstDate) * -1);
-    }
-
-    mSelectedDates.clear();
-    for( count = 0; count < 7; count++ )
-      mSelectedDates.append(firstDate.addDays(count));
-
-    break;
-
-  case LIST:
-    /* Is this unnecessary? I believe the mSelectedDates is already
-       correctly set and does not need to be reset like this. --ali@mit.edu
-    */
-    /*
-      datenum = mSelectedDates.count();
-    mSelectedDates.clear();
-    for (count = 0; count < datenum; count++)
-      mSelectedDates.append(new QDate(mStartDate.addDays(count)));
-    */
-    break;
-
-  case NEXTX:
-    firstDate = QDate::currentDate();
-    mSelectedDates.clear();
-    for( count = 0; count < KOPrefs::instance()->mNextXDays; count++ )
-      mSelectedDates.append(firstDate.addDays(count));
-  
-    break;
-  
-  default:
-    mSelectedDates.clear();
-    mSelectedDates.append(QDate::currentDate());
-    newView = DAY;
-    break;
-  }
-
-  emit datesSelected(mSelectedDates);
-  setView(newView);
-  fillAgenda();
-}
-
-//void KOAgendaView::adjustTimeLabels()
-//{
-  //mTimeLabels->setContentsPos(0,mAgenda->contentsY());
-//}
-
-
 void KOAgendaView::fillAgenda(const QDate &)
 {
   fillAgenda();
 }
-
 
 void KOAgendaView::fillAgenda()
 {
@@ -1025,8 +847,6 @@ void KOAgendaView::readSettings(KConfig *config)
   }
 #endif
 
-  slotViewChange(config->readNumEntry("Agenda View", KOAgendaView::WORKWEEK));
-
   updateConfig();
 }
 
@@ -1040,8 +860,6 @@ void KOAgendaView::writeSettings(KConfig *config)
   QValueList<int> list = mSplitterAgenda->sizes();
   config->writeEntry("Separator AgendaView",list);
 #endif
-
-  config->writeEntry("Agenda View",currentView());
 }
 
 void KOAgendaView::setHolidayMasks()

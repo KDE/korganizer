@@ -28,7 +28,7 @@
 #include <kconfig.h>
 
 #include "calendarview.h"
-#include "kdatenavigator.h"
+#include "datenavigator.h"
 #include "kotodoview.h"
 #include "koagendaview.h"
 #include "komonthview.h"
@@ -108,42 +108,6 @@ void KOViewManager::writeSettings(KConfig *config)
   }
 }
 
-void KOViewManager::changeAgendaView( int newView )
-{
-  if (!mAgendaView) return;
-
-  if (newView == mAgendaView->currentView()) return;
-
-  switch( newView ) {
-  case KOAgendaView::DAY: {
-#if 0
-    DateList tmpList = mDateNavigator->selectedDates();
-    if (mSaveSingleDate != tmpList.first()) {
-      mDateNavigator->selectDates(mSaveSingleDate);
-      updateView();
-    }
-#endif
-    break;
-  }
-  // if its a workweek view, calculate the dates and emit
-  case KOAgendaView::WORKWEEK:
-    break;
-    // if its a week view, calculate the dates and emit
-  case KOAgendaView::WEEK:
-    break;
-    // if its a list view, update the list properties.
-  case KOAgendaView::LIST:
-    // we want to make sure that this is up to date.
-    break;
-  case KOAgendaView::NEXTX:
-    break;
-  }
-  mAgendaView->slotViewChange( newView );
-
-  mMainView->adaptNavigationUnits();
-}
-
-
 void KOViewManager::showView(KOrg::BaseView *view)
 {
   if(view == mCurrentView) return;
@@ -197,9 +161,6 @@ void KOViewManager::showListView()
     mListView = new KOListView(mMainView->calendar(), mMainView->viewStack(), "KOViewManager::ListView");
     addView(mListView);
 
-    connect(mListView, SIGNAL(datesSelected(const DateList &)),
-            mMainView->dateNavigator(), SLOT(selectDates(const DateList &)));
-
     connect(mListView, SIGNAL(showEventSignal(Event *)),
             mMainView, SLOT(showEvent(Event *)));
     connect(mListView, SIGNAL(editEventSignal(Event *)),
@@ -219,19 +180,12 @@ void KOViewManager::showListView()
 void KOViewManager::showAgendaView()
 {
   if (!mAgendaView) {
-    mAgendaView = new KOAgendaView(mMainView->calendar(), mMainView->viewStack(), "KOViewManager::AgendaView", 
-					mMainView->calendarSystem());
+    mAgendaView = new KOAgendaView(mMainView->calendar(), mMainView->viewStack(), "KOViewManager::AgendaView");
+					
     addView(mAgendaView);
 
-    connect(mAgendaView, SIGNAL(datesSelected(const DateList &)),
-            mMainView->dateNavigator(), SLOT(selectDates(const DateList &)));
-
-//ET
-    kdDebug() << "KOViewManager::showAgendaView() slot shiftedEvents" << endl;
-
-    connect(mAgendaView, SIGNAL(shiftedEvent(const QDate&, const QDate&)),
-            mMainView->dateNavigator(), SLOT(shiftEvent(const QDate&, const QDate&)));
-//ET
+    connect( mAgendaView, SIGNAL( eventChanged() ),
+             mMainView, SLOT( updateUnmanagedViews() ) );
 
     // SIGNALS/SLOTS FOR DAY/WEEK VIEW
     connect(mAgendaView,SIGNAL(newEventSignal(QDateTime)),
@@ -240,8 +194,6 @@ void KOViewManager::showAgendaView()
             mMainView, SLOT(newEvent(QDateTime,QDateTime)));
     connect(mAgendaView,SIGNAL(newEventSignal(QDate)),
             mMainView, SLOT(newEvent(QDate)));
-//  connect(mAgendaView,SIGNAL(newEventSignal()),
-//		mMainView, SLOT(newEvent()));
     connect(mAgendaView, SIGNAL(editEventSignal(Event *)),
 	    mMainView, SLOT(editEvent(Event *)));
     connect(mAgendaView, SIGNAL(showEventSignal(Event *)),
@@ -261,48 +213,44 @@ void KOViewManager::showAgendaView()
 
     mAgendaView->readSettings();
   }
-  
+
   showView(mAgendaView);
 }
 
 void KOViewManager::showDayView()
 {
   showAgendaView();
-  changeAgendaView(KOAgendaView::DAY);
+  mMainView->dateNavigator()->selectDates( 1 );
 }
 
 void KOViewManager::showWorkWeekView()
 {
   showAgendaView();
-  changeAgendaView(KOAgendaView::WORKWEEK);
+  mMainView->dateNavigator()->selectWorkWeek();
 }
 
 void KOViewManager::showWeekView()
 {
   showAgendaView();
-  changeAgendaView(KOAgendaView::WEEK);
+  mMainView->dateNavigator()->selectWeek();
 }
 
 void KOViewManager::showNextXView()
 {
   showAgendaView();
-  changeAgendaView(KOAgendaView::NEXTX);
+  mMainView->dateNavigator()->selectDates( QDate::currentDate(),
+                                           KOPrefs::instance()->mNextXDays );
 }
 
 void KOViewManager::showMonthView()
 {
   if (!mMonthView) {
-    mMonthView = new KOMonthView(mMainView->calendar(), mMainView->viewStack(), "KOViewManager::MonthView", mMainView->calendarSystem());
+    mMonthView = new KOMonthView(mMainView->calendar(), mMainView->viewStack(), "KOViewManager::MonthView");
     addView(mMonthView);
-
-    connect(mMonthView, SIGNAL(datesSelected(const DateList &)),
-            mMainView->dateNavigator(), SLOT(selectDates(const DateList &)));
 
     // SIGNALS/SLOTS FOR MONTH VIEW
     connect(mMonthView, SIGNAL(showEventSignal(Event *)),
             mMainView, SLOT(showEvent(Event *)));
-    connect(mMonthView, SIGNAL(newEventSignal(QDate)),
-            mMainView, SLOT(newEvent(QDate)));
     connect(mMonthView, SIGNAL(newEventSignal(QDateTime)),
             mMainView, SLOT(newEvent(QDateTime)));
     connect(mMonthView, SIGNAL(editEventSignal(Event *)),

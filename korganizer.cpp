@@ -339,7 +339,7 @@ void KOrganizer::initActions()
   // actions menu
 
   (void)new KAction(i18n("New E&vent..."), "appointment", 0,
-                    mCalendarView,SLOT(appointment_new()),
+                    mCalendarView,SLOT( newEvent() ),
                     actionCollection(), "new_event");
   (void)new KAction(i18n("New &To-Do..."), "newtodo", 0,
                     mCalendarView,SLOT(newTodo()),

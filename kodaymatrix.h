@@ -23,6 +23,8 @@
 #ifndef _KODAYMAT_H
 #define _KODAYMAT_H
 
+#include <libkcal/calendar.h>
+
 #include <qstring.h>
 #include <qframe.h>
 #include <qcolor.h>
@@ -37,6 +39,9 @@ class QDragLeaveEvent;
 class QDropEvent;
 
 class KODayMatrix;
+
+using namespace KCal;
+
 
 /**
  *  small helper class to dynamically show tooltips inside the day matrix.
@@ -69,11 +74,6 @@ private:
     /** the parent control this tooltip is designed for. */
     KODayMatrix* matrix;
 };
-
-#include <calendarsystem/kcalendarsystem.h>
-#include <libkcal/calendar.h>
-
-using namespace KCal;
 
 /**
  *  replacement for kdpdatebuton.cpp that used 42 widgets for the day matrix to be displayed.
@@ -115,7 +115,7 @@ public:
      *              assumed that this date is the first week day to be shown in the matrix.
      *  @param name name of the widget
      */
-    KODayMatrix(QWidget *parent, Calendar* calendar, QDate date, const char *name, KCalendarSystem* calSys);
+    KODayMatrix(QWidget *parent, Calendar* calendar, QDate date, const char *name );
 
     /** destructor that deallocates all dynamically allocated private members.
      */
@@ -133,7 +133,7 @@ public:
     /** returns the QDate object associated with day indexed by the
      *  supplied offset.
      */
-     const QDate& getDate(int offset);
+    const QDate& getDate(int offset);
 
     /** returns the official name of this holy day or 0 if there is no label
      *  for this day.
@@ -189,7 +189,7 @@ signals:
      *
      *  @param daylist list of days that have been selected by the user
      */
-    void selected(const DateList daylist);
+    void selected( const KCal::DateList &daylist );
 
     /** emitted if the user has dropped an event inside the matrix
      *
@@ -302,7 +302,6 @@ private:
      */
     QRect     daysize;
 
-    KCalendarSystem* mCalendarSystem;
 };
 
 #endif

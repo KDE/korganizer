@@ -40,14 +40,13 @@
 class QWidgetStack;
 class QSplitter;
 
-class KCalendarSystem;
-
 class CalPrinter;
 class KOFilterView;
 class KOViewManager;
 class KODialogManager;
 class KOTodoView;
 class KDateNavigator;
+class DateNavigator;
 
 namespace KCal { class FileStorage; }
 
@@ -76,8 +75,6 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
   
     Calendar *calendar() { return mCalendar; }
 
-    KCalendarSystem *calendarSystem() { return mCalendarSystem; }
-
     KOViewManager *viewManager();
     KODialogManager *dialogManager();
 
@@ -87,7 +84,7 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     QWidgetStack *viewStack();
     QWidget *leftFrame();
 
-    KDateNavigator *dateNavigator();
+    DateNavigator *dateNavigator();
 
     void addView(KOrg::BaseView *);
     void showView(KOrg::BaseView *);
@@ -185,6 +182,7 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     /** create new event without having a date hint. Takes current date as
      default hint. */ 
     void newEvent();
+    void newFloatingEvent();
     
     /** Create an editor for the supplied event. */
     void editEvent(Event *);
@@ -244,6 +242,8 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
   
     /** Full update of visible todo views */
     void updateTodoViews();
+
+    void updateUnmanagedViews();
   
     /** cut the current appointment to the clipboard */
     void edit_cut();
@@ -271,14 +271,6 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     /** Export as vCalendar file */
     void exportVCalendar();
   
-    /**
-      Pop up an Appointment Dialog to make a new appointment. Uses date that
-      is currently selected in the dateNavigator.
-    */
-    void appointment_new();
-    /** same as apptmnt_new, but sets "All Day Event" to true by default. */
-    void allday_new();
-
     /** pop up a dialog to show an existing appointment. */
     void appointment_show();
     /**
@@ -365,11 +357,8 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     void purgeCompleted();
     
   protected slots:
-    /** Select a week to be displayed in the calendar view */
-    void selectWeek(QDate weekstart);
-
     /** Select a view or adapt the current view to display the specified dates. */
-    void selectDates(const DateList &);
+    void showDates( const KCal::DateList & );
   
   public:
     // show a standard warning
@@ -413,9 +402,9 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     // calendar object for this viewing instance
     Calendar      *mCalendar;
 
-    KCalendarSystem *mCalendarSystem;
-
     FileStorage *mStorage;
+
+    DateNavigator *mNavigator;
 
     KOViewManager *mViewManager;
     KODialogManager *mDialogManager;

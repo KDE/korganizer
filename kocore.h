@@ -28,6 +28,8 @@
 #include <calendar/calendardecoration.h>
 #include <korganizer/part.h>
 
+#include <calendarsystem/kcalendarsystem.h>
+
 class KOCore {
   public:
     static KOCore *self();
@@ -64,6 +66,8 @@ class KOCore {
 
     QString holiday( const QDate & );
 
+    KCalendarSystem *calendarSystem();
+
   protected:
     KOCore();
     
@@ -75,6 +79,8 @@ class KOCore {
     
     KOrg::CalendarDecoration *mHolidays;
     bool mHolidaysLoaded;    
+
+    KCalendarSystem *mCalendarSystem;
 };
 
 #endif

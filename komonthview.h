@@ -35,7 +35,6 @@
 
 #include "koeventview.h"
 
-#include <calendarsystem/kcalendarsystem.h>
 
 class KNoScrollListBox: public QListBox
 {
@@ -98,7 +97,7 @@ class MonthViewCell : public QWidget
 {
     Q_OBJECT
   public:
-    MonthViewCell( KOMonthView *, KCalendarSystem* calSys );
+    MonthViewCell( KOMonthView * );
 
     void setDate( const QDate & );
     QDate date() const;
@@ -148,7 +147,6 @@ class MonthViewCell : public QWidget
     QPalette mHolidayPalette;
     QPalette mStandardPalette;
     
-    KCalendarSystem* mCalendarSystem;
 };
 
 
@@ -156,7 +154,7 @@ class KOMonthView: public KOEventView
 {
     Q_OBJECT
   public:
-    KOMonthView(Calendar *cal, QWidget *parent = 0, const char *name = 0, KCalendarSystem* calSys = 0 );
+    KOMonthView(Calendar *cal, QWidget *parent = 0, const char *name = 0 );
     ~KOMonthView();
 
     /** Returns maximum number of days supported by the komonthview */
@@ -215,7 +213,6 @@ class KOMonthView: public KOEventView
 
     KOEventPopupMenu *mContextMenu;
 
-    KCalendarSystem* mCalendarSystem;
 };
 
 #endif

@@ -22,9 +22,6 @@
 */
 #ifndef KOAGENDAVIEW_H
 #define KOAGENDAVIEW_H
-//
-// KOAgendaView is the agenda-like view used to display events in an one or
-// multi-day view.
 
 #include <qscrollview.h>
 #include <qdatetime.h>
@@ -34,7 +31,6 @@
 
 #include "koeventview.h"
 
-#include <calendarsystem/kcalendarsystem.h>
 
 class QHBox;
 class QFrame;
@@ -101,10 +97,14 @@ class EventIndicator : public QFrame {
     QMemArray<bool> mEnabled;
 };
 
+/**
+  KOAgendaView is the agenda-like view used to display events in an one or
+  multi-day view.
+*/
 class KOAgendaView : public KOEventView {
     Q_OBJECT
   public:
-    KOAgendaView(Calendar *cal,QWidget *parent = 0,const char *name = 0, KCalendarSystem *calSys = 0);
+    KOAgendaView(Calendar *cal,QWidget *parent = 0,const char *name = 0 );
     virtual ~KOAgendaView();
 
     /** Returns maximum number of days supported by the koagendaview */
@@ -118,17 +118,6 @@ class KOAgendaView : public KOEventView {
     
     /** returns the currently selected events */
     virtual DateList selectedDates();
-
-    /** Agenda view types. DAY is a one day view, WORKWEEK is a 5 day view of a
-    week, excluding the weekend, WEEK is a 7 day view of a complete week and
-    LIST is a view of an arbitrary number of days, NEXTX show the next X days
-    beginning with today */
-    enum { DAY, WORKWEEK, WEEK, LIST, NEXTX };
-
-    /** Set type of agenda view. See also the definitions above. */
-    void setView( int ViewType );
-    /** Return type of current agenda view */
-    int currentView() { return mViewType; }
 
     /** Remove all events from view */
     void clearView();
@@ -155,12 +144,6 @@ class KOAgendaView : public KOEventView {
 
     void clearSelection();
 
-    void slotViewChange(int newView);
-    void slotViewChange();
-
-    void slotNextDates();
-    void slotPrevDates();
-
     void newEvent(int gx,int gy);
     void newEvent(int gxStart, int gyStart, int gxEnd, int gyEnd);
     void newEventAllDay(int gx, int gy);
@@ -179,13 +162,14 @@ class KOAgendaView : public KOEventView {
     void editEventSignal(Event *);  // From KOBaseView
     void showEventSignal(Event *);
     void deleteEventSignal(Event *);  // From KOBaseView
-    void datesSelected(const DateList &);  // From KOBaseView
     void newEventSignal();  // From KOBaseView
     void newEventSignal(QDate);
     void newEventSignal(QDateTime);
     void newEventSignal(QDateTime, QDateTime);  // From KOBaseView
 
     void toggleExpand();
+
+    void eventChanged();
 
   protected:
     /** Fill agenda beginning with date startDate */
@@ -202,16 +186,7 @@ class KOAgendaView : public KOEventView {
     */
     void setHolidayMasks();
 
-    /** Displays the next set of dates by going forward, (mul = +1),
-	or backwards (mul = -1).
-    */
-    void shiftDates(int multiplier);
-
   protected slots:
-
-    /** Move TimeLabels, so that its positions correspond to the agenda. */
-    //void adjustTimeLabels();
-
     /** Update event belonging to agenda item */
     void updateEventDates(KOAgendaItem *item);
 
@@ -263,7 +238,6 @@ class KOAgendaView : public KOEventView {
     QDateTime mTimeSpanEnd;
     bool mTimeSpanInAllDay;
 
-    KCalendarSystem *mCalendarSystem;
 };
 
 #endif  // KOAGENDAVIEW_H

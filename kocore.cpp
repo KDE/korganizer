@@ -25,6 +25,7 @@
 
 #include <klibloader.h>
 #include <kdebug.h>
+#include <kconfig.h>
 
 #include <calendar/plugin.h>
 #include <korganizer/part.h>
@@ -48,6 +49,9 @@ KOCore::KOCore() :
   mCalendarDecorationsLoaded(false),
   mHolidaysLoaded(false)
 {
+  KGlobal::config()->setGroup("General");
+  QString calSystem = KGlobal::config()->readEntry( "CalendarSystem", "gregorian" );
+  mCalendarSystem = KCalendarSystemFactory::create( calSystem );
 }
 
 KTrader::OfferList KOCore::availablePlugins(const QString &type)
@@ -240,4 +244,8 @@ QString KOCore::holiday(const QDate &date)
     return mHolidays->shortText(date);
   else
     return QString::null;
+}
+
+KCalendarSystem* KOCore::calendarSystem() {
+	return mCalendarSystem;
 }

@@ -988,7 +988,7 @@ void KOAgenda::setStartHour(int startHour)
 */
 KOAgendaItem *KOAgenda::insertItem (Event *event,QDate qd,int X,int YTop,int YBottom)
 {
-  kdDebug() << "KOAgenda::insertItem" << endl;
+//  kdDebug() << "KOAgenda::insertItem" << endl;
 
   if (mAllDayMode) {
     kdDebug() << "KOAgenda: calling insertItem in all-day mode is illegal." << endl;
