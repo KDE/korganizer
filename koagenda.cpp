@@ -1113,7 +1113,8 @@ void KOAgenda::placeSubCells( KOAgendaItem *placeItem )
     placeAgendaItem( item, newSubCellWidth );
     placeItem->addConflictItem( item );
   }
-
+  if ( items.isEmpty() ) 
+    placeAgendaItem( placeItem, newSubCellWidth );
   placeItem->update();
 }
 
@@ -1416,7 +1417,7 @@ void KOAgenda::showAgendaItem( KOAgendaItem* agendaItem )
 {
   if ( !agendaItem ) return;
   agendaItem->hide();
-  addChild( agendaItem, agendaItem->cellX(), agendaItem->cellYTop() );
+  addChild( agendaItem );
   if ( !mItems.containsRef( agendaItem ) ) 
     mItems.append( agendaItem );
   placeSubCells( agendaItem );
