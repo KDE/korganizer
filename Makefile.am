@@ -1,4 +1,4 @@
-SUBDIRS = knewstuff . korgac pixmaps sounds plugins interfaces
+SUBDIRS = $(KNEWSTUFF_SUBDIR) . korgac pixmaps sounds plugins interfaces
 
 INCLUDES = \
   -I$(srcdir)/interfaces \
@@ -50,7 +50,7 @@ libkorganizer_la_LIBADD  = $(LIB_KPARTS) $(LIB_KFILE) \
 	$(top_builddir)/libkdepim/libkdepim.la \
 	libkorganizer_eventviewer.la \
 	$(top_builddir)/kdgantt/libkdgantt.la \
-	$(top_builddir)/korganizer/knewstuff/libknewstuff.la \
+	$(KNEWSTUFF_LIB) \
 	$(top_builddir)/ktnef/lib/libktnef.la
 libkorganizer_la_COMPILE_FIRST = kofilterview_base.ui \
 	outgoingdialog_base.ui \
