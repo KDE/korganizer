@@ -121,7 +121,7 @@ void ArchiveDialog::slotUser1()
   }
 
   // Duplicate current calendar by loading in new calendar object
-  CalendarLocal archiveCalendar;
+  CalendarLocal archiveCalendar(KOPrefs::instance()->mTimeZoneId.local8Bit());
   if (!archiveCalendar.load(tmpFile.name())) {
     kdDebug() << "ArchiveDialog::slotUser1(): Can't load calendar from temp file" << endl;
     return;

@@ -223,6 +223,8 @@ CalendarView::~CalendarView()
   // clean up our calender object
   mCalendar->close();  // CS: This seems to cause a "Double QObject deletion"
   delete mCalendar;
+  delete mDialogManager;
+  delete mViewManager;
 
   kdDebug() << "~CalendarView() done" << endl;
 }

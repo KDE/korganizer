@@ -46,6 +46,7 @@
 #include "korganizer.h"
 
 #include "koapp.h"
+#include "koprefs.h"
 #include "koapp.moc"
 
 KOrganizerApp::KOrganizerApp() : KUniqueApplication()
@@ -66,7 +67,7 @@ void KOrganizerApp::displayImminent(const QString &urlString,int numdays)
     return;
   }
 
-  Calendar *cal = new CalendarLocal;
+  Calendar *cal = new CalendarLocal(KOPrefs::instance()->mTimeZoneId.local8Bit());
 
   QDate currDate(QDate::currentDate());
   Event *currEvent;
