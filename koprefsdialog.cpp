@@ -484,7 +484,7 @@ class KOPrefsDialogViews : public KPrefsModule
       addWidBool( KOPrefs::instance()->selectionStartsEditorItem(), agendaGroup );
 
       addWidBool( KOPrefs::instance()->agendaViewUsesResourceColorItem(), agendaGroup );
-      
+
       topLayout->addWidget( agendaGroup );
 
 
@@ -505,6 +505,7 @@ class KOPrefsDialogViews : public KPrefsModule
                                             i18n("To-do View"),
                                             topFrame );
       addWidBool( KOPrefs::instance()->fullViewTodoItem(), todoGroup );
+      addWidBool( KOPrefs::instance()->recordTodosInJournalsItem(), todoGroup );
       topLayout->addWidget( todoGroup );
 
       topLayout->addStretch( 1 );
@@ -653,13 +654,13 @@ KOPrefsDialogColors::KOPrefsDialogColors( QWidget *parent, const char *name )
   topLayout->addMultiCellWidget(resourceGroup,8,8,0,1);
 
   mResourceCombo = new QComboBox(resourceGroup);
-  
+
   connect(mResourceCombo,SIGNAL(activated(int)),SLOT(updateResourceColor()));
 
   mResourceButton = new KColorButton(resourceGroup);
   connect(mResourceButton,SIGNAL(changed(const QColor &)),SLOT(setResourceColor()));
   updateResources();
-  
+
   topLayout->setRowStretch(9,1);
 
   load();
@@ -672,7 +673,7 @@ void KOPrefsDialogColors::usrWriteConfig()
     KOPrefs::instance()->setCategoryColor(itCat.currentKey(),*itCat.current());
     ++itCat;
   }
-  
+
   QDictIterator<QColor> itRes(mResourceDict);
   while (itRes.current()) {
     KOPrefs::instance()->setResourceColor(itRes.currentKey(),*itRes.current());
@@ -716,7 +717,7 @@ void KOPrefsDialogColors::updateResources()
   mResourceCombo->clear();
   mResourceIdentifier.clear();
   kdDebug( 5850) << "KOPrefsDialogColors::updateResources()" << endl;
-  
+
   KCal::CalendarResourceManager *manager = KOrg::StdCalendar::self()->resourceManager();
 
   kdDebug(5850) << "Loading Calendar resources...:" << endl;
@@ -731,8 +732,8 @@ void KOPrefsDialogColors::updateResources()
 void KOPrefsDialogColors::setResourceColor()
 {
   kdDebug( 5850) << "KOPrefsDialogColors::setResorceColor()" << endl;
-  
-  mResourceDict.replace( mResourceIdentifier[mResourceCombo->currentItem()], 
+
+  mResourceDict.replace( mResourceIdentifier[mResourceCombo->currentItem()],
     new QColor( mResourceButton->color() ) );
   slotWidChanged();
 }
@@ -744,7 +745,7 @@ void KOPrefsDialogColors::updateResourceColor()
   QColor *color = mCategoryDict.find(res);
   if( !color )  {
     color = KOPrefs::instance()->resourceColor( res );
-  } 
+  }
   if( color ) {
     mResourceButton->setColor(*color);
   }

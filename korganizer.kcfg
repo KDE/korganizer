@@ -149,7 +149,7 @@
       <default>true</default>
     </entry>
     <entry type="Bool" name="ShowAllDayTodo">
-      <label>Display to-dos in day, week and month views</label>
+      <label>Show to-dos in day, week and month views</label>
       <whatsthis>This option toggles the display of to-dos in the day, week, and month view. This comes in handy when you have a lot of (recurring) to-dos.</whatsthis>
       <default>true</default>
     </entry>
@@ -224,6 +224,11 @@
       <default>true</default>
     </entry>
 
+    <entry type="Bool" key="Record Todos In Journals">
+      <label>Record completed to-dos in journals</label>
+      <default>false</default>
+    </entry>
+
     <entry type="Bool" key="Quick Todo" name="EnableQuickTodo">
       <default>true</default>
     </entry>
@@ -257,7 +262,7 @@
     </entry>
     <entry type="StringList" name="JournalTemplates">
     </entry>
-    
+
     <entry type="StringList" name="ActiveDesignerFields">
     </entry>
   </group>
