@@ -309,11 +309,20 @@ kdDebug()<<"read todo"<<endl;
 
 void KOTodoEditor::writeTodo( Todo *todo )
 {
+  // prevent mGeneral overwriting startdate recurrence
+  Recurrence *r = todo->recurrence();
+  QDateTime oldRecStartDate;
+  if ( todo->doesRecur() )
+    oldRecStartDate = r->recurStart();
+  
   mGeneral->writeTodo( todo );
   mDetails->writeEvent( todo );
   mRecurrence->writeIncidence( todo );
   mAttachments->writeIncidence( todo );
-
+    
+  oldRecStartDate.isValid() ? r->setRecurStart( oldRecStartDate )
+                            : r->setRecurStart( todo->dtDue() );
+  
   // set related event, i.e. parent to-do in this case.
   if ( mRelatedTodo ) {
     todo->setRelatedTo( mRelatedTodo );

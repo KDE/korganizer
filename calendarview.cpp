@@ -1945,8 +1945,10 @@ void CalendarView::recurTodo( Todo *todo )
       } while ( !todo->recursAt( todo->dtDue() ) ||
                  todo->dtDue() <= QDateTime::currentDateTime() );
       
+      // prevent setDtStart() from overwriting recurrence's startdate
+      QDateTime oldRecStartDate = r->recurStart();
       todo->setDtStart( oldTodo->dtDue().addDays( length ) );
-      r->setRecurStart( todo->dtDue() );
+      r->setRecurStart( oldRecStartDate );
       
       return;
   }

@@ -386,21 +386,6 @@ void MonthViewCell::updateCell()
     item->setPalette( mHolidayPalette );
     mItemList->insertItem( item );
   }
-
-  Event::List events = mMonthView->calendar()->events( mDate, true );
-  Event::List::ConstIterator it;
-  for( it = events.begin(); it != events.end(); ++it ) {
-    Event *event = *it;
-    addIncidence ( event );
-  }
-
-  // insert due todos
-  Todo::List todos = mMonthView->calendar()->todos( mDate );
-  Todo::List::ConstIterator it2;
-  for( it2 = todos.begin(); it2 != todos.end(); ++it2 ) {
-    Todo *todo = *it2;
-    addIncidence( todo );
-  }
 }
 
 void MonthViewCell::addIncidence( Incidence *incidence )
@@ -463,7 +448,12 @@ void MonthViewCell::addIncidence( Incidence *incidence )
     text += todo->summary();
          
     item = new MonthViewItem( todo, mDate, text );
-    todo->isCompleted() ? item->setTodoDone( true ) : item->setTodo( true );
+    if ( todo->doesRecur() ) {
+      mDate < todo->dtDue().date() ?
+      item->setTodoDone( true ) : item->setTodo( true );
+    }
+    else
+      todo->isCompleted() ? item->setTodoDone( true ) : item->setTodo( true );
     item->setPalette( mStandardPalette );
   }
   
@@ -811,7 +801,7 @@ void KOMonthView::changeIncidenceDisplayAdded( Incidence *incidence )
   
   if ( !calendar()->filter()->filterIncidence( incidence ) )
     return;
-  if ( event && incidence->doesRecur() ) {
+  if ( incidence->doesRecur() ) {
      for ( uint i = 0; i < mCells.count(); i++ ) {
        if ( incidence->recursAt( mCells[i]->date() ) )
          mCells[i]->addIncidence( incidence );
@@ -850,11 +840,16 @@ void KOMonthView::changeIncidenceDisplay(Incidence *incidence, int action)
 
 void KOMonthView::updateView()
 {
-  uint i;
-  for( i = 0; i < mCells.count(); ++i ) {
+  for( uint i = 0; i < mCells.count(); ++i ) {
     mCells[i]->updateCell();
   }
-
+  
+  Incidence::List incidences = calendar()->incidences();
+  Incidence::List::ConstIterator it;
+  
+  for ( it = incidences.begin(); it != incidences.end(); ++it )
+    changeIncidenceDisplayAdded( *it );
+  
   processSelectionChange();
 }
 

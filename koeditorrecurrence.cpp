@@ -1092,11 +1092,6 @@ void KOEditorRecurrence::writeIncidence( Incidence *incidence )
 
       r->addYearlyNum( month );
     }
-
-    // overwrite start for todo's
-    if ( incidence->type() == "Todo" ) {
-      r->setRecurStart( static_cast<Todo *>(incidence)->dtDue() );
-    }
     
     incidence->setExDates( mExceptions->dates() );
 }

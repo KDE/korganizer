@@ -1002,7 +1002,8 @@ void KOAgendaView::fillAgenda()
         bool overdue = (!todo->isCompleted()) && (todo->dtDue() < today);
 
         if ( ((todo->dtDue().date() == currentDate) && !overdue) ||
-             ((currentDate == today) && overdue) )
+             ((currentDate == today) && overdue) ||
+             ( todo->recursOn( currentDate ) ) )
           if ( todo->doesFloat() || overdue ) {  // Todo has no due-time set or is already overdue
             //kdDebug(5850) << "todo without time:" << todo->dtDueDateStr() << ";" << todo->summary() << endl;
 
