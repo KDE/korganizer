@@ -29,13 +29,19 @@
 #include <qspinbox.h>
 #include <qlayout.h>
 #include <qpushbutton.h>
+#include <qcstring.h>
+#include <qdatastream.h>
 
+#include <kapplication.h>
+#include <dcopclient.h>
 #include <klocale.h>
 #include <kprocess.h>
 #include <kaudioplayer.h>
 #include <kdebug.h>
+#include <kmessagebox.h>
 #include <knotifyclient.h>
 #include <kcombobox.h>
+#include <kwin.h>
 
 #include <libkcal/event.h>
 
@@ -47,7 +53,7 @@
 AlarmDialog::AlarmDialog( QWidget *parent, const char *name )
   : KDialogBase( Plain, WType_TopLevel | WStyle_Customize | WStyle_StaysOnTop |
                  WStyle_DialogBorder,
-                 parent, name, false, i18n("Alarm"), Ok | User1 | User2/* | User3*/, User2/*3*/,
+                 parent, name, false, i18n("Alarm"), Ok | User1 | User2/* | User3*/, Ok/*3*/,
                  false, i18n("Suspend"), i18n("Edit...") )
 {
   QWidget *topBox = plainPage();
@@ -80,8 +86,9 @@ AlarmDialog::AlarmDialog( QWidget *parent, const char *name )
   
   connect( mSuspendSpin, SIGNAL( valueChanged(int) ), actionButton(User1), SLOT( setFocus() ) );
   connect( mSuspendUnit, SIGNAL( activated(int) ), actionButton(User1), SLOT( setFocus() ) );
+  connect( mSuspendUnit, SIGNAL( activated(int) ), actionButton(User2), SLOT( setFocus() ) );
   
-  showButton( User2/*3*/, false );
+  // showButton( User2/*3*/, false );
   
   setMinimumSize( 300, 200 );
 }
@@ -133,6 +140,43 @@ void AlarmDialog::slotUser1()
     
   emit suspendSignal( unit * mSuspendSpin->value() );
   accept();
+}
+
+void AlarmDialog::slotUser2()
+{
+  if ( !kapp->dcopClient()->isApplicationRegistered( "korganizer" ) ) {
+    if ( kapp->startServiceByDesktopName( "korganizer", QString::null ) )
+      KMessageBox::error( 0, i18n("Could not start KOrganizer.") );
+  }
+  
+  kapp->dcopClient()->send( "korganizer", "KOrganizerIface", 
+                            "editIncidence(QString)",
+                             mIncidences.first()->uid() );
+  
+  // get desktop # where korganizer (or kontact) runs 
+  QByteArray data, replyData;
+  QCString object, replyType;
+  object = kapp->dcopClient()->isApplicationRegistered( "kontact" ) ?
+           "kontact-mainwindow#1" : "KOrganizer MainWindow";
+  if (!kapp->dcopClient()->call( "korganizer", object,
+                            "getWinID()", data, replyType, replyData, true, -1 ) ) {
+  }
+  
+  if ( replyType == "int" ) {
+    int desktop, window;
+    QDataStream ds( replyData, IO_ReadOnly );
+    ds >> window;
+    desktop = KWin::windowInfo( window ).desktop();
+    
+    if ( KWin::currentDesktop() == desktop ) {
+      KWin::iconifyWindow( winId(), false );
+    }
+    else
+      KWin::setCurrentDesktop( desktop );
+    
+    KWin::activateWindow( KWin::transientFor( window ) );
+  }
+  
 }
 
 void AlarmDialog::eventNotification()

@@ -128,7 +128,7 @@ void KOAlarmClient::showAlarmDialog()
   mAlarmDialog->show();
   mAlarmDialog->raise();
   KWin::forceActiveWindow( mAlarmDialog->winId() );
-  mAlarmDialog->actionButton( KDialogBase::User2 )->setFocus();
+  mAlarmDialog->actionButton( KDialogBase::Ok )->setFocus();
   mAlarmDialog->eventNotification();
 }
 

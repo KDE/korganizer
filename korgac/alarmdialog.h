@@ -54,6 +54,7 @@ class AlarmDialog : public KDialogBase {
   public slots:
     void slotOk();
     void slotUser1();
+    void slotUser2();
 
   signals:
     void suspendSignal(int duration);

@@ -1842,6 +1842,12 @@ void CalendarView::editIncidence()
   editIncidence( selectedIncidence() );
 }
 
+bool CalendarView::editIncidence( const QString& uid )
+{
+  kdDebug(5850) << "CalendarView::editIncidence()" << endl;
+  return editIncidence( mCalendar->incidence( uid ) );
+}
+
 void CalendarView::deleteIncidence()
 {
   deleteIncidence( selectedIncidence() );
@@ -1855,12 +1861,14 @@ void CalendarView::showIncidence(Incidence *incidence)
   }
 }
 
-void CalendarView::editIncidence(Incidence *incidence)
+bool CalendarView::editIncidence(Incidence *incidence)
 {
   if ( incidence ) {
     EditIncidenceVisitor v;
     v.act( incidence, this );
+    return true;
   }
+  return false;
 }
 
 void CalendarView::deleteIncidence(Incidence *incidence)

@@ -202,6 +202,7 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
 
     void showIncidence();
     void editIncidence();
+    bool editIncidence( const QString& uid );
     void deleteIncidence();
 
     /** create an editeventwin with supplied date/time, and if bool is true,
@@ -223,7 +224,7 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     /** Create a read-only viewer dialog for the supplied incidence. It calls the correct showXXX method*/
     void showIncidence( Incidence * );
     /** Create an editor for the supplied incidence. It calls the correct editXXX method*/
-    void editIncidence( Incidence * );
+    bool editIncidence( Incidence * );
     /** Delete the supplied incidence. It calls the correct deleteXXX method*/
     void deleteIncidence( Incidence * );
 

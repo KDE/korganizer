@@ -137,6 +137,8 @@ class ActionManager : public QObject, public KCalendarIface
     bool eventReply( const QString& ical );
     /** Handle cancelling an event */
     bool cancelEvent( const QString& ical );
+    
+    bool editIncidence( const QString& uid );
 
     //// Implementation of the DCOP interface
     virtual ResourceRequestReply resourceRequest( const QValueList<QPair<QDateTime, QDateTime> >& busy,

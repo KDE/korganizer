@@ -81,6 +81,11 @@ bool KOrganizerIfaceImpl::deleteEvent( QString uid )
   return mActionManager->deleteEvent( uid );
 }
 
+bool KOrganizerIfaceImpl::editIncidence( QString uid )
+{
+  return mActionManager->editIncidence( uid );
+}
+
 bool KOrganizerIfaceImpl::eventRequest( QString request, QString receiver,
                                         QString ical )
 {
