@@ -113,8 +113,6 @@ KOPrefsDialogMain::KOPrefsDialogMain( QWidget *parent, const char *name )
 
   KPrefsWidRadios *mailClientGroup =
       addWidRadios( KOPrefs::instance()->mailClientItem(), topFrame );
-  mailClientGroup->addRadio(i18n("KMail"));
-  mailClientGroup->addRadio(i18n("Sendmail"));
   topLayout->addMultiCellWidget(mailClientGroup->groupBox(),11,11,0,1);
 
   KPrefsWidBool *htmlsave =
@@ -125,8 +123,6 @@ KOPrefsDialogMain::KOPrefsDialogMain( QWidget *parent, const char *name )
   KPrefsWidRadios *destinationGroup =
       addWidRadios( KOPrefs::instance()->destinationItem(),
                    topFrame);
-  destinationGroup->addRadio(i18n("Be added to the standard resource"));
-  destinationGroup->addRadio(i18n("Be asked which resource to use"));
   topLayout->addMultiCellWidget(destinationGroup->groupBox(),13,13,0,1);
 
   topLayout->setRowStretch(14,1);
@@ -731,8 +727,6 @@ KOPrefsDialogGroupScheduling::KOPrefsDialogGroupScheduling( QWidget *parent, con
   KPrefsWidRadios *sendGroup =
       addWidRadios( KOPrefs::instance()->iMIPSendItem(),
                     topFrame );
-  sendGroup->addRadio(i18n("Send to outbox"));
-  sendGroup->addRadio(i18n("Send directly"));
 
   topLayout->addMultiCellWidget(sendGroup->groupBox(),1,1,0,1);
 
@@ -852,9 +846,6 @@ class KOPrefsDialogGroupAutomation : public KPrefsModule
 
       KPrefsWidRadios *autoRefreshGroup =
           addWidRadios( KOPrefs::instance()->iMIPAutoRefreshItem(), topFrame );
-      autoRefreshGroup->addRadio(i18n("Never"));
-      autoRefreshGroup->addRadio(i18n("If attendee is in addressbook"));
-      //autoRefreshGroup->addRadio(i18n("selected emails"));
       topLayout->addMultiCellWidget(autoRefreshGroup->groupBox(),0,0,0,0);
 
       KPrefsWidRadios *autoInsertGroup =

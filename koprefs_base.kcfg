@@ -25,8 +25,12 @@
     <entry type="Enum" key="Destination" name="Destination">
       <label>New Events/Todos Should</label>
       <choices>
-        <choice name="standardDestination"/>
-        <choice name="askDestination"/>
+        <choice name="standardDestination">
+          <label>Be added to the standard resource</label>
+        </choice>
+        <choice name="askDestination">
+          <label>Be asked which resource to use</label>
+        </choice>
       </choices>
       <default>standardDestination</default>
     </entry>
@@ -44,8 +48,13 @@
     <entry type="Enum" key="Mail Client">
       <label>Mail Client</label>
       <choices>
-        <choice name="MailClientKMail"/>
-        <choice name="MailClientSendmail"/>
+        <choice name="MailClientKMail">
+          <label>KMail</label>
+          <whatsthis>This is a radio button whatsthis text</whatsthis>
+        </choice>
+        <choice name="MailClientSendmail">
+          <label>Sendmail</label>
+        </choice>
       </choices>
       <default>MailClientKMail</default>
     </entry>
@@ -182,8 +191,12 @@
     <entry type="Enum" name="IMIPSend">
       <label>Scheduler Mails Should Be</label>
       <choices>
-        <choice name="IMIPOutbox"></choice>
-        <choice name="IMIPdirectsend"></choice>
+        <choice name="IMIPOutbox">
+          <label>Send to outbox</label>
+        </choice>
+        <choice name="IMIPdirectsend">
+          <label>Send directly</label>
+        </choice>
       </choices>
       <default>IMIPdirectsend</default>
     </entry>
@@ -191,9 +204,15 @@
     <entry type="Enum" key="IMIP auto refresh" name="IMIPAutoRefresh">
       <label>Auto Send Refresh</label>
       <choices>
-        <choice name="neverAuto"></choice>
-        <choice name="addressbookAuto"></choice>
-        <choice name="selectedAuto"></choice>
+        <choice name="neverAuto">
+          <label>Never</label>
+        </choice>
+        <choice name="addressbookAuto">
+          <label>If attendee is in addressbook</label>
+        </choice>
+        <choice name="selectedAuto">
+          <label>selected emails</label>
+        </choice>
       </choices>
       <default>neverAuto</default>
     </entry>
