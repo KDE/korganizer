@@ -183,6 +183,7 @@ class KOAgenda : public QScrollView
   
   protected:
     void drawContents( QPainter *p, int cx, int cy, int cw, int ch );
+    int columnWidth( int column );
     virtual void resizeEvent ( QResizeEvent * );
 
     /** Handles mouse events. Called from eventFilter */

@@ -1117,6 +1117,16 @@ void KOAgenda::placeSubCells( KOAgendaItem *placeItem )
   placeItem->update();
 }
 
+int KOAgenda::columnWidth( int column ) 
+{
+  int start = gridToContents( QPoint( column, 0 ) ).x();
+  if (KOGlobals::self()->reverseLayout() ) 
+    column--;
+  else 
+    column++;
+  int end = gridToContents( QPoint( column, 0 ) ).x();
+  return end - start;
+}
 /*
   Draw grid in the background of the agenda.
 */
@@ -1132,36 +1142,41 @@ void KOAgenda::drawContents(QPainter* p, int cx, int cy, int cw, int ch)
 
   // Highlight working hours
   if (mWorkingHoursEnable) {
-    int x1 = cx;
-    int y1 = mWorkingHoursYTop;
-    int x2 = cx+cw-1;
-    int y2 = mWorkingHoursYBottom;
-    if (x2 >= x1 /*&& y2 >= y1*/) {
-      int gxStart = int( x1 / mGridSpacingX );
-      int gxEnd = int( x2 / mGridSpacingX );
-      while(gxStart <= gxEnd) {
-        int xStart = int( KOGlobals::self()->reverseLayout() ?
-                          ( mColumns - 1 - gxStart ) * mGridSpacingX :
-                          gxStart * mGridSpacingX );
-        if (xStart < x1) xStart = x1;
-        int xEnd = int( KOGlobals::self()->reverseLayout() ?
-                        ( mColumns - gxStart ) * mGridSpacingX - 1 :
-                        ( gxStart + 1 ) * mGridSpacingX - 1 );
-        if (xEnd > x2) xEnd = x2;
-        if ( y2 < y1 ) {
+    QPoint pt1( cx, mWorkingHoursYTop );
+    QPoint pt2( cx+cw, mWorkingHoursYBottom );
+    if ( pt2.x() >= pt1.x() /*&& pt2.y() >= pt1.y()*/) {
+      int gxStart = contentsToGrid( pt1 ).x();
+      int gxEnd = contentsToGrid( pt2 ).x();
+      // correct start/end for rtl layouts
+      if ( gxStart > gxEnd ) { 
+        int tmp = gxStart; 
+        gxStart = gxEnd; 
+        gxEnd = tmp;
+      }
+      int xoffset = ( KOGlobals::self()->reverseLayout()?1:0 );
+      while( gxStart <= gxEnd ) {
+        int xStart = gridToContents( QPoint( gxStart+xoffset, 0 ) ).x();
+        int xWidth = columnWidth( gxStart ) + 1;
+        if ( pt2.y() < pt1.y() ) {
+          // overnight working hours
           if ( ( (gxStart==0) && !mHolidayMask->at(mHolidayMask->count()-1) ) ||
                ( (gxStart>0) && (gxStart<int(mHolidayMask->count())) && (!mHolidayMask->at(gxStart-1) ) ) ) {
-            if (y2>cy) dbp.fillRect(xStart, cy, xEnd-xStart+1, y2-cy+1, KOPrefs::instance()->mWorkingHoursColor);
+            if ( pt2.y() > cy ) {
+              dbp.fillRect( xStart, cy, xWidth, pt2.y() - cy + 1, 
+                            KOPrefs::instance()->mWorkingHoursColor);
+            }
           }
           if ( (gxStart < int(mHolidayMask->count()-1)) && (!mHolidayMask->at(gxStart)) ) {
-            if (y1<cy+ch-1) dbp.fillRect(xStart,y1+1,xEnd-xStart+1,cy+ch-y1-1,
-                        KOPrefs::instance()->mWorkingHoursColor);
+            if ( pt1.y() < cy + ch - 1 ) {
+              dbp.fillRect( xStart, pt1.y(), xWidth, cy + ch - pt1.y() + 1,
+                            KOPrefs::instance()->mWorkingHoursColor);
+            }
           }
         } else {
           // last entry in holiday mask denotes the previous day not visible (needed for overnight shifts)
-          if (gxStart < int(mHolidayMask->count()-1) && !mHolidayMask->at(gxStart)) {
-            dbp.fillRect(xStart,y1,xEnd-xStart+1,y2-y1+1,
-                        KOPrefs::instance()->mWorkingHoursColor);
+          if ( gxStart < int(mHolidayMask->count()-1) && !mHolidayMask->at(gxStart)) {
+            dbp.fillRect( xStart, pt1.y(), xWidth, pt2.y() - pt1.y() + 1,
+                          KOPrefs::instance()->mWorkingHoursColor );
           }
         }
         ++gxStart;
@@ -1172,24 +1187,18 @@ void KOAgenda::drawContents(QPainter* p, int cx, int cy, int cw, int ch)
   // draw selection
   if ( mHasSelection ) {
     QPoint pt, pt1;
-//    int x, x1, y, y1, y2;
-    int height = contentsHeight();
 
     if ( mSelectionEndCell.x() > mSelectionStartCell.x() ) { // multi day selection
       // draw start day
       pt = gridToContents( mSelectionStartCell );
       pt1 = gridToContents( QPoint( mSelectionStartCell.x() + 1, mRows + 1 ) );
-
       dbp.fillRect( QRect( pt, pt1 ), KOPrefs::instance()->mHighlightColor );
-
       // draw all other days between the start day and the day of the selection end
       for ( int c = mSelectionStartCell.x() + 1; c < mSelectionEndCell.x(); ++c ) {
         pt = gridToContents( QPoint( c, 0 ) );
         pt1 = gridToContents( QPoint( c + 1, mRows + 1 ) );
-
         dbp.fillRect( QRect( pt, pt1 ), KOPrefs::instance()->mHighlightColor );
       }
-
       // draw end day
       pt = gridToContents( QPoint( mSelectionEndCell.x(), 0 ) );
       pt1 = gridToContents( mSelectionEndCell + QPoint(1,1) );
