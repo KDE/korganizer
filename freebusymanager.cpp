@@ -125,7 +125,7 @@ KCal::FreeBusy *FreeBusyManager::ownerFreeBusy()
   QDateTime end = start.addDays( KOPrefs::instance()->mFreeBusyPublishDays );
 
   FreeBusy *freebusy = new FreeBusy( mCalendar, start, end );
-  freebusy->setOrganizer( Person( KOPrefs::instance()->fullName(), 
+  freebusy->setOrganizer( Person( KOPrefs::instance()->fullName(),
                           KOPrefs::instance()->email() ) );
 
   return freebusy;
@@ -391,14 +391,20 @@ KURL FreeBusyManager::freeBusyUrl( const QString &email )
     return KURL();
 
   // Cut off everything left of the @ sign to get the user name.
-  QString emailName = email.left( emailpos );
+  const QString emailName = email.left( emailpos );
+  const QString emailHost = email.mid( emailpos + 1 );
 
   // Build the URL
   KURL sourceURL;
   sourceURL = KOPrefs::instance()->mFreeBusyRetrieveUrl;
 
   // Don't try to fetch free/busy data for users not on the specified servers
-  if ( sourceURL.host() != email.mid( emailpos + 1 ) ) return KURL();
+  // This tests if the hostnames match, or one is a subset of the other
+  const QString hostDomain = sourceURL.host();
+  if ( hostDomain != emailHost && !hostDomain.endsWith( '.' + emailHost )
+       && !emailHost.endsWith( '.' + hostDomain ) )
+    // Host names do not match
+    return KURL();
 
   if ( KOPrefs::instance()->mFreeBusyFullDomainRetrieval )
     sourceURL.setFileName( email + ".ifb" );
