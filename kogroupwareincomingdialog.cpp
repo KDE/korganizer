@@ -67,4 +67,4 @@ void KOGroupwareIncomingDialog::slotDeclineEvent()
   mDeclined = true;
 }
 
-
+#include "kogroupwareincomingdialog.moc"

@@ -666,3 +666,4 @@ bool KOGroupware::sendICalMessage( QWidget* parent,
   else
     return false;
 }
+#include "kogroupware.moc"
