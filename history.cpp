@@ -197,7 +197,8 @@ History::EntryAdd::~EntryAdd()
 void History::EntryAdd::undo()
 {
   Incidence *incidence = mCalendar->incidence( mIncidence->uid() );
-  mCalendar->deleteIncidence( incidence );
+  if ( incidence )
+    mCalendar->deleteIncidence( incidence );
 }
 
 void History::EntryAdd::redo()
