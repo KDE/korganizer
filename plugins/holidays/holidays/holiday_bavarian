@@ -10,15 +10,15 @@
 :
 : Schwalben...
 :  An OCULI da kommen sie
-:  An MARIÄ GEBURT, da sind sie wieder furt.
+:  An MARIÃ„ GEBURT, da sind sie wieder furt.
 : Geranien...
 :  pflanzt man auf dem Balkon nach den Eisheiligen (PANKRAZ bis kalte SOPHIE)
-: Gänse...
+: GÃ¤nse...
 :  Wer einen guten Braten macht hat auch ein gutes Herz. (MARTINI)
 : Spargel...
-:  wird bis höchstens JOHANNI gestochen.
+:  wird bis hÃ¶chstens JOHANNI gestochen.
 : Regen...
-:  Wenns ans SIEBENSCHLÄFER regnet, so regnet's sieben Wochen.
+:  Wenns ans SIEBENSCHLÃ„FER regnet, so regnet's sieben Wochen.
 :
 
 :
@@ -27,7 +27,7 @@
 :
 
 small        "Neujahr"             weekend on 1.1.
-small        "Hl.3 Könige"         weekend on 6.1.
+small        "Hl.3 KÃ¶nige"         weekend on 6.1.
 small        "Rosenmontag"                 on easter minus 48 days
 small        "Fasching"                    on easter minus 47 days
 small        "Aschermittwoch"              on easter minus 46 days
@@ -35,12 +35,12 @@ small        "Karfreitag"          weekend on easter minus  2 days
 small        "Ostern"              weekend on easter length 2 days
 small        "Pfingsten"           weekend on easter plus 49 days length 2 days
 small        "Christi Himmelfahrt" weekend on easter plus 39 days
-small        "Mariä Himmelfahrt"   weekend on 15.8
+small        "MariÃ¤ Himmelfahrt"   weekend on 15.8
 small        "Fronleichnam"        weekend on easter plus 60 days
 small        "1.Mai"               weekend on 1.5.
 small        "Einheistag"          weekend on 3.10.
 small        "Allerheiligen"       weekend on 1.11.
-small        "Buß- und Bettag"     weekend on sunday before 24.12. minus 32 days
+small        "BuÃŸ- und Bettag"     weekend on sunday before 24.12. minus 32 days
 small        "Hl. Abend"                   on 24.12.
 small        "Weihnachten"         weekend on 25.12. length 2 days
 small        "Sylvester"                   on 31.12.
@@ -65,20 +65,20 @@ small black  "3. Fastensonntag"            on easter minus 28 days
 small black  "4. Fastensonntag"            on easter minus 21 days 
 small black  "5. Fastensonntag"            on easter minus 14 days 
 small black  "Palmsonntag"                 on easter minus  7 days
-small black  "Christkönig"                 on sunday before 23.12. minus 28 days
+small black  "ChristkÃ¶nig"                 on sunday before 23.12. minus 28 days
 
 :
 : 5) Selected saints
 :
 
-small black  "Lichtmeß"                    on  2.2.
+small black  "LichtmeÃŸ"                    on  2.2.
 small black  "Pankraz"                     on 11.5.
 small black  "Servaz"                      on 12.5.
 small black  "Bonifaz"                     on 13.5.
 small black  "Sophie"                      on 14.5.
 small black  "Johanni"                     on 24.6.
-small black  "Siebenschläfer"              on 27.6.
-small black  "Mariä Geburt"                on  8.9.
+small black  "SiebenschlÃ¤fer"              on 27.6.
+small black  "MariÃ¤ Geburt"                on  8.9.
 small black  "Martini"                     on 11.11.
 small black  "Nikolaus"                    on  6.12.
 

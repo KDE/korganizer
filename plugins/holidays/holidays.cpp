@@ -101,7 +101,7 @@ QString Holidays::getHoliday(const QDate &qd)
   }
 
   if (holiday[qd.dayOfYear()-1].string) {
-    QString holidayname = QString::fromLocal8Bit(holiday[qd.dayOfYear()-1].string);
+    QString holidayname = QString::fromUtf8(holiday[qd.dayOfYear()-1].string);
     return holidayname;
   } else {
     return QString::null;

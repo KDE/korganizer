@@ -1,18 +1,18 @@
 :
 : Czech holiday file.
-: Author: Miroslav Flídr<flidr@kky.zcu.cz>
+: Author: Miroslav FlÃ­dr<flidr@kky.zcu.cz>
 :
-small 		"Novı rok" 			weekend on 1.1.
+small 		"NovÃ½ rok" 			weekend on 1.1.
 small		"Velikonoce"		 	weekend on easter
-small		"Velikonoèní pondìlí"		weekend on easter plus 1 days
-small 		"Svátek práce" 			weekend on 1.5.
-small 		"Státní svátek - Den osvobození"	weekend on 8.5.
-small 		"Státní svátek - Den slovanskıch vìrozvìstù Cyrila a Metodìje" 	weekend on 5.7.
-small 		"Statní svátek - Mistr Jan Hus"	weekend on 6.7.
-small		"Státní svátek - Den Èeské státnosti"	weekend on 28.9. 
-small 		"Státní svátek - Den vzniku samostatného Èeskoslovenska (1918)"  	weekend on 28.10.
-small		"Státní svátek - Den boje studentù za svobodu a demokracii"	weekend on 17.11.
-small 		"©tìdrı den"			weekend on 24.12.
-small 		"1. svátek vánoèní"		weekend on 25.12.
-small 		"2. svátek vánoèní"		weekend on 26.12.
+small		"VelikonoÄnÃ­ pondÄ›lÃ­"		weekend on easter plus 1 days
+small 		"SvÃ¡tek prÃ¡ce" 			weekend on 1.5.
+small 		"StÃ¡tnÃ­ svÃ¡tek - Den osvobozenÃ­"	weekend on 8.5.
+small 		"StÃ¡tnÃ­ svÃ¡tek - Den slovanskÃ½ch vÄ›rozvÄ›stÅ¯ Cyrila a MetodÄ›je" 	weekend on 5.7.
+small 		"StatnÃ­ svÃ¡tek - Mistr Jan Hus"	weekend on 6.7.
+small		"StÃ¡tnÃ­ svÃ¡tek - Den ÄŒeskÃ© stÃ¡tnosti"	weekend on 28.9. 
+small 		"StÃ¡tnÃ­ svÃ¡tek - Den vzniku samostatnÃ©ho ÄŒeskoslovenska (1918)"  	weekend on 28.10.
+small		"StÃ¡tnÃ­ svÃ¡tek - Den boje studentÅ¯ za svobodu a demokracii"	weekend on 17.11.
+small 		"Å tÄ›drÃ½ den"			weekend on 24.12.
+small 		"1. svÃ¡tek vÃ¡noÄnÃ­"		weekend on 25.12.
+small 		"2. svÃ¡tek vÃ¡noÄnÃ­"		weekend on 26.12.
 small 	blue	"Silvestr"			on 31.12.

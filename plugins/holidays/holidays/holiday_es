@@ -1,31 +1,31 @@
 :
-: Fichero holiday_spain. Cópialo a  ~/.holiday
-: Modifica este fichero borrando y añadiendo lo que te parezca.
+: Fichero holiday_spain. CÃ³pialo a  ~/.holiday
+: Modifica este fichero borrando y aÃ±adiendo lo que te parezca.
 :
 : Fiestas 
 : 
-red "Año nuevo" red on january 1
+red "AÃ±o nuevo" red on january 1
 red "Reyes" red on january 6
-red "San José" red on march 19
+red "San JosÃ©" red on march 19
 red "Trabajo" red on may 1
-red "Asunción" red on august 15
+red "AsunciÃ³n" red on august 15
 red "Nacional" red on october 12
 red "Todos los Santos" red on november 1
-red "Constitución" red on december 6
+red "ConstituciÃ³n" red on december 6
 red "Inmaculada" red on december 8
 red "Navidad" red on december 25
 :
-: Cumpleaños
+: CumpleaÃ±os
 :
 small yellow "Rey Juan Carlos I" on january 5
-small yellow "Príncipe de Asturias" on january 30 
+small yellow "PrÃ­ncipe de Asturias" on january 30 
 :
 : Relacionados con la pascua
 :
 small "Jueves Santo" weekend on easter minus 3 days
 small "Viernes Santo" weekend on easter minus 2 days
 small "Pascua" weekend on easter 
-small "Miércoles de ceniza" on easter minus 46 days
+small "MiÃ©rcoles de ceniza" on easter minus 46 days
 small "Pentecostes" weekend on easter plus 49 days
 small "Ascension" on easter plus 39 days
 small "Trinidad" on easter plus 46 day
@@ -35,7 +35,7 @@ small "Corpus Christi" on easter plus 60 days
 :
 "Llega la Primavera" on march 20
 "Llega el Verano" on june 21
-"Llega el Otoño" on september 23
+"Llega el OtoÃ±o" on september 23
 "Llega el Invierno" on december 22
 :
 : Vacaciones 
