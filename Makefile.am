@@ -1,6 +1,6 @@
 KDE_OPTIONS = nofinal
 
-SUBDIRS = knewstuff . pixmaps sounds plugins interfaces
+SUBDIRS = knewstuff korgac . pixmaps sounds plugins interfaces
 
 INCLUDES = \
   -I$(srcdir)/interfaces -I$(top_srcdir)/libkdepim -I$(top_srcdir) $(all_includes)
