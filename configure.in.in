@@ -41,8 +41,7 @@ AC_C_LONG_DOUBLE
 AC_TYPE_GETGROUPS
 
 dnl Checks for library functions.
-AC_CHECK_FUNCS(socket strdup vsnprintf basename)
-AC_CHECK_SETENV
+AC_CHECK_FUNCS(socket strdup vsnprintf basename setenv unsetenv)
 AC_CHECK_GETDOMAINNAME
 AC_CHECK_GETHOSTNAME
 AC_CHECK_USLEEP
