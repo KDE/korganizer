@@ -145,7 +145,7 @@ ArchiveDialog::ArchiveDialog(Calendar *cal,QWidget *parent, const char *name)
   mExpiryUnitsComboBox->setCurrentItem( KOPrefs::instance()->mExpiryUnit );
   mDeleteCb->setChecked( KOPrefs::instance()->mArchiveAction == KOPrefs::deleteEvents );
 
-  enableButton(KDialogBase::User1,!mArchiveFile->lineEdit()->text().isEmpty());
+  slotEnableUser1();
 
   // The focus should go to a useful field by default, not to the top richtext-label
   if ( KOPrefs::instance()->mAutoArchive ) {
