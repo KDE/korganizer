@@ -13,14 +13,9 @@ Name[ru]=Диаграмма Ганта для KOrganizer
 Name[sr]=Прикључак KOrganizer-а за приказ временског распона
 Name[sr@Latn]=Прикључак KOrganizer-а за приказ временског распона
 Name[sv]=Tidsintervallvyinsticksprogram för Korganizer
-<<<<<<< timespanview.desktop
-Name[tr]=KOrganizer için Zaman Görünüm Eklentisi
-Comment=This plugin provides a timespan view for KOrganizer (like the to-do or month views). If you enable this plugin, you can switch to the timespan view and view your events like in a Gantt diagram.
-=======
 Name[tr]=KOrganizer için Zaman Dilimi Görünümü Eklentisi
 Name[uk]=Втулок перегляду періоду часу для KOrganizer
 Comment=This plugin provides a timespan view for korganizer (like the to-do or month views). If you enable this plugin, you can switch to the timespan view and view your events like in a Gantt diagram.
->>>>>>> 1.21
 Comment[bg]=Приставката служи за преглед на събитията и задачите в зададен период от време.
 Comment[da]=Pluginnet sørger for en tidsintervalsvisning i Korganizer (som ligner gøremål eller månedsvisning). Hvis du aktiverer dette plugin kan du skifte til tidsintervalvisning og vise dine begivenheder som i et Gantt-diagram.
 Comment[es]=Esta extensión proporciona una vista de timespan para korganizer (como la vista de tareas pendientes o la mensual). Si activa esta extensión, puede pasar a la vista de timespan y ver sus eventos como un diagrama de Gantt.
