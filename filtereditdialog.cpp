@@ -151,6 +151,14 @@ void FilterEditDialog::slotAdd()
   if ( !txt.isEmpty() ) {
     mFilters->append( new CalFilter( txt ) );
     updateFilterList();
+
+    // select this filter
+    for( int i = 0 ; i < mSelectionCombo->count() ; ++i ) {
+      if( mSelectionCombo->text( i ) == txt ) {
+        mSelectionCombo->setCurrentItem( i );
+        filterSelected();
+      }
+    }
   }
 }
 
@@ -212,6 +220,8 @@ void FilterEditDialog::readFilter( CalFilter *filter )
   mEditor->mCompletedCheck->setChecked( c & CalFilter::HideCompleted );
   mEditor->mCompletedTimeSpan->setValue( filter->completedTimeSpan() );
   mEditor->mRecurringCheck->setChecked( c & CalFilter::HideRecurring );
+  mEditor->mHideInactiveTodosCheck->
+      setChecked( c & CalFilter::HideInactiveTodos );
 
   if ( c & CalFilter::ShowCategories ) {
     mEditor->mCatShowCheck->setChecked( true );
