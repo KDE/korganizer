@@ -27,13 +27,14 @@ AlarmApp *app;
 
 static const KCmdLineOptions options[] =
 {
-        {"+[calendar]", "A calendar file to load", 0},
+        {"+[calendar]", I18N_NOOP("A calendar file to load"), 0},
 	{0,0,0}
 };
 
 
 int main(int argc, char **argv)
 {
+  KLocale::setMainCatalogue("korganizer");
   KAboutData aboutData("alarmd",I18N_NOOP("AlarmDaemon"),
       "1.93",I18N_NOOP("KOrganizer Alarm Daemon"),KAboutData::License_GPL,
       "(c) 1997-1999 Preston Brown\n(c) 2000 Cornelius Schumacher",0,
