@@ -28,10 +28,14 @@
 #include "actionmanager.h"
 #include "koglobals.h"
 #include "koprefs.h"
+#include "resourceview.h"
 
 #include "kalarmd/alarmdaemoniface_stub.h"
 
 #include <libkcal/calendarlocal.h>
+#include <libkcal/calendarresources.h>
+#include <libkcal/resourcecalendar.h>
+#include <libkcal/resourcelocal.h>
 
 #include <kpopupmenu.h>
 #include <kinstance.h>
@@ -108,35 +112,82 @@ KInstance *KOrganizerFactory::instance()
 
 KOrganizerPart::KOrganizerPart(QWidget *parentWidget, const char *widgetName,
                                QObject *parent, const char *name) :
-  KParts::ReadOnlyPart(parent, name),
-  mCalendar(new CalendarLocal(KOPrefs::instance()->mTimeZoneId)),
-  mWidget(0), mActionManager(0),
-  mBrowserExtension(new KOrganizerBrowserExtension(this)),
-  mStatusBarExtension(new KParts::StatusBarExtension(this))
+  KParts::ReadOnlyPart(parent, name)
 {
-  setInstance(KOrganizerFactory::instance());
+  QString pname( name );
 
   // create a canvas to insert our widget
   QWidget *canvas = new QWidget(parentWidget, widgetName);
   canvas->setFocusPolicy(QWidget::ClickFocus);
   setWidget(canvas);
+  CalendarView *view;
+
+  if ( pname!="kontact" ) {
+    mCalendar = new CalendarLocal(KOPrefs::instance()->mTimeZoneId);
+    mCalendarResources = 0;
+    view = new CalendarView( mCalendar, canvas );
+  } else {
+    mCalendarResources = new CalendarResources( KOPrefs::instance()->mTimeZoneId );
+    mCalendar = mCalendarResources;
+    CalendarResourceManager *manager = mCalendarResources->resourceManager();
+    if ( manager->isEmpty() ) {
+      KConfig *config = KOGlobals::config();
+      config->setGroup("General");
+      QString fileName = config->readPathEntry( "Active Calendar" );
+
+      QString resourceName;
+      if ( fileName.isEmpty() ) {
+        fileName = locateLocal( "appdata", "std.ics" );
+        resourceName = i18n("Default KOrganizer resource");
+      } else {
+        resourceName = i18n("Active Calendar");
+      }
+
+      kdDebug(5850) << "Using as default resource: '" << fileName << "'" << endl;
+
+      ResourceCalendar *defaultResource = new ResourceLocal( fileName );
+      defaultResource->setResourceName( resourceName );
+
+      manager->add( defaultResource );
+      manager->setStandardResource( defaultResource );
+    }
+    view = new CalendarView( mCalendarResources, canvas );
+    ResourceViewFactory factory( manager, view );
+    view->addExtension( &factory );
+    connect( mCalendarResources, SIGNAL( calendarChanged() ),
+             view, SLOT( updateView() ) );
+    connect( mCalendarResources, SIGNAL( calendarChanged() ),
+             view, SLOT( slotCalendarChanged() ) );
+
+    connect( view, SIGNAL( configChanged() ),
+             SLOT( slotConfigChanged() ) );
+    if ( KOPrefs::instance()->mDestination==KOPrefs::askDestination )
+      mCalendarResources->setAskDestinationPolicy();
+    else
+      mCalendarResources->setStandardDestinationPolicy();
+  }
+
+  mBrowserExtension = new KOrganizerBrowserExtension(this);
+  mStatusBarExtension = new KParts::StatusBarExtension(this);
+
+  setInstance(KOrganizerFactory::instance());
+
 
   QVBoxLayout *topLayout = new QVBoxLayout(canvas);
 
   KGlobal::iconLoader()->addAppDir("korganizer");
 
-  CalendarView *view = new CalendarView( mCalendar, canvas );
   mWidget = view;
   topLayout->addWidget( mWidget );
 
   new KParts::SideBarExtension(view->leftFrame(), this, "SBE");
 
   KParts::InfoExtension *ie = new KParts::InfoExtension( this,
-                                                         "KOrganizerInfo" );
+                                                          "KOrganizerInfo" );
   connect( mWidget, SIGNAL( incidenceSelected( Incidence * ) ),
-           SLOT( slotChangeInfo( Incidence * ) ) );
+            SLOT( slotChangeInfo( Incidence * ) ) );
   connect( this, SIGNAL( textChanged( const QString & ) ),
-           ie, SIGNAL( textChanged( const QString& ) ) );
+            ie, SIGNAL( textChanged( const QString& ) ) );
 
   mWidget->show();
 
@@ -144,7 +195,7 @@ KOrganizerPart::KOrganizerPart(QWidget *parentWidget, const char *widgetName,
   mActionManager->init();
   mActionManager->readSettings();
   connect( mActionManager, SIGNAL( actionKeyBindings() ),
-           SLOT( configureKeyBindings() ) );
+            SLOT( configureKeyBindings() ) );
 
   KConfig *config = KOGlobals::config();
   config->setGroup("General");
@@ -262,6 +313,16 @@ bool KOrganizerPart::openFile()
 void KOrganizerPart::configureKeyBindings()
 {
   KKeyDialog::configure( actionCollection(), true );
+}
+
+void KOrganizerPart::slotConfigChanged()
+{
+  if ( mCalendarResources ) {
+    if ( KOPrefs::instance()->mDestination==KOPrefs::askDestination )
+      mCalendarResources->setAskDestinationPolicy();
+    else
+      mCalendarResources->setStandardDestinationPolicy();
+  }
 }
 
 KOrganizerBrowserExtension::KOrganizerBrowserExtension(KOrganizerPart *parent) :

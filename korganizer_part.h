@@ -40,7 +40,8 @@ class CalendarView;
 class ActionManager;
 
 namespace KCal {
-class Calendar;
+  class CalendarResources;
+  class Calendar;
 }
 
 class KOrganizerFactory : public KParts::Factory
@@ -94,6 +95,7 @@ class KOrganizerPart: public KParts::ReadOnlyPart,
 
   public slots:
     void slotChangeInfo( Incidence * );
+    void slotConfigChanged();
 
   protected:
     virtual bool openFile();
@@ -106,6 +108,7 @@ class KOrganizerPart: public KParts::ReadOnlyPart,
 
   private:
     KCal::Calendar *mCalendar;
+    CalendarResources *mCalendarResources;
     CalendarView *mWidget;
     ActionManager *mActionManager;
     KOrganizerBrowserExtension *mBrowserExtension;
