@@ -48,32 +48,32 @@ UploadDialog::UploadDialog( Engine *engine, QWidget *parent ) :
   mEntryList.setAutoDelete( true );
 
   QFrame *topPage = plainPage();
-  
+
   QGridLayout *topLayout = new QGridLayout( topPage );
   topLayout->setSpacing( spacingHint() );
 
-  QLabel *nameLabel = new QLabel( i18n("Name"), topPage );
+  QLabel *nameLabel = new QLabel( i18n("Name:"), topPage );
   topLayout->addWidget( nameLabel, 0, 0 );  
   mNameEdit = new QLineEdit( topPage );
   topLayout->addWidget( mNameEdit, 0, 1 );
 
-  QLabel *authorLabel = new QLabel( i18n("Author"), topPage );
+  QLabel *authorLabel = new QLabel( i18n("Author:"), topPage );
   topLayout->addWidget( authorLabel, 1, 0 );
   mAuthorEdit = new QLineEdit( topPage );
   topLayout->addWidget( mAuthorEdit, 1, 1 );
 
-  QLabel *versionLabel = new QLabel( i18n("Version"), topPage );
+  QLabel *versionLabel = new QLabel( i18n("Version:"), topPage );
   topLayout->addWidget( versionLabel, 2, 0 );  
   mVersionEdit = new QLineEdit( topPage );
   topLayout->addWidget( mVersionEdit, 2, 1 );
 
-  QLabel *releaseLabel = new QLabel( i18n("Release"), topPage );
+  QLabel *releaseLabel = new QLabel( i18n("Release:"), topPage );
   topLayout->addWidget( releaseLabel, 3, 0 );  
   mReleaseSpin = new QSpinBox( topPage );
   mReleaseSpin->setMinValue( 1 );
   topLayout->addWidget( mReleaseSpin, 3, 1 );
 
-  QLabel *licenceLabel = new QLabel( i18n("License"), topPage );
+  QLabel *licenceLabel = new QLabel( i18n("License:"), topPage );
   topLayout->addWidget( licenceLabel, 4, 0 );
   mLicenceCombo = new QComboBox( topPage );
   mLicenceCombo->setEditable( true );
@@ -82,13 +82,13 @@ UploadDialog::UploadDialog( Engine *engine, QWidget *parent ) :
   mLicenceCombo->insertItem( i18n("BSD") );
   topLayout->addWidget( mLicenceCombo, 4, 1 );
 
-  QLabel *languageLabel = new QLabel( i18n("Language"), topPage );
+  QLabel *languageLabel = new QLabel( i18n("Language:"), topPage );
   topLayout->addWidget( languageLabel, 5, 0 );
   mLanguageCombo = new QComboBox( topPage );
   topLayout->addWidget( mLanguageCombo, 5, 1 );
   mLanguageCombo->insertStringList( KGlobal::locale()->languagesTwoAlpha() );
 
-  QLabel *previewLabel = new QLabel( i18n("Preview URL"), topPage );
+  QLabel *previewLabel = new QLabel( i18n("Preview URL:"), topPage );
   topLayout->addWidget( previewLabel, 6, 0 );
   mPreviewUrl = new KURLRequester( topPage );
   topLayout->addWidget( mPreviewUrl, 6, 1 );
