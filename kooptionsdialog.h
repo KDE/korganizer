@@ -68,7 +68,7 @@ class KOOptionsDialog : public KDialogBase
     void setupDisplayTab();
     void setupPrinterTab();
 
-    void setCombo(QComboBox *combo,const QString & text);
+    void setCombo(QComboBox *combo,const QString & text, const QStringList *tags = 0);
 
   private:
     QFrame *mPrinterTab;
@@ -99,6 +99,7 @@ class KOOptionsDialog : public KDialogBase
     QCheckBox *mAutoSaveCheck;
     QCheckBox *mConfirmCheck;
     QComboBox *mHolidayCombo;
+    QStringList mHolidayList;
   
     QComboBox    *mTimeZoneCombo;
     QSpinBox     *mStartTimeSpin;

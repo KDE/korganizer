@@ -76,20 +76,18 @@ void KOOptionsDialog::setupMainTab()
   topLayout->addMultiCellWidget(mAutoSaveCheck,3,3,0,1);
   mConfirmCheck = new QCheckBox(i18n("Confirm Deletes"),topFrame);
   topLayout->addMultiCellWidget(mConfirmCheck,4,4,0,1);
-  
-  const char *holidayList[] = { "(none)",
-				"australia", "austria", "bavarian",
-				"belgium", "canada", "catalan", "czechia", 
-				"denmark", "dutch", "finnish", "french",
-				"frswiss", "german", "hungary", "iceland",
-				"italy", "japan",
-				"norway", "portugal", "poland",
-                                "quebec", "romania", "spain",
-				"swedish", "thailand", "uk", "us", 0L };
+
+  mHolidayList << QString::null;
+  QStringList countryList = KGlobal::dirs()->findAllResources("data", "korganizer/holiday_*", false, true);
+  for ( QStringList::Iterator it = countryList.begin();
+        it != countryList.end();
+        ++it )
+    mHolidayList << (*it).mid((*it).findRev('_') + 1);
 
   topLayout->addWidget(new QLabel(i18n("Holidays:"),topFrame),5,0);
   mHolidayCombo = new QComboBox(topFrame);
-  mHolidayCombo->insertStrList(holidayList);
+  mHolidayCombo->insertStringList(mHolidayList);
+
   topLayout->addWidget(mHolidayCombo,5,1);
 
   topLayout->setRowStretch(6,1);
@@ -364,13 +362,20 @@ void KOOptionsDialog::setDefaults()
 }
 
 
-void KOOptionsDialog::setCombo(QComboBox *combo,const QString & text)
+void KOOptionsDialog::setCombo(QComboBox *combo, const QString & text, const QStringList * tags)
 {
-  int i;
-  for(i=0;i<combo->count();++i) {
-    if (combo->text(i) == text) {
-      combo->setCurrentItem(i);
-      break;
+  if (tags)
+  {
+    int i = tags->findIndex(text);
+    combo->setCurrentItem(i);
+  }
+  else
+  {
+    for(int i=0;i<combo->count();++i) {
+      if (combo->text(i) == text) {
+        combo->setCurrentItem(i);
+        break;
+      }
     }
   }
 }
@@ -384,7 +389,7 @@ void KOOptionsDialog::readConfig()
   mEmailEdit->setText(KOPrefs::instance()->mEmail);
   mAdditionalEdit->setText(KOPrefs::instance()->mAdditional);
 
-  setCombo(mHolidayCombo,KOPrefs::instance()->mHoliday);
+  setCombo(mHolidayCombo,KOPrefs::instance()->mHoliday, &mHolidayList);
   
   setCombo(mTimeZoneCombo,KOPrefs::instance()->mHoliday);
 
@@ -419,7 +424,8 @@ void KOOptionsDialog::writeConfig()
   KOPrefs::instance()->mName = mNameEdit->text();
   KOPrefs::instance()->mEmail = mEmailEdit->text();
   KOPrefs::instance()->mAdditional = mAdditionalEdit->text();
-  KOPrefs::instance()->mHoliday = mHolidayCombo->currentText();
+  KOPrefs::instance()->mHoliday = *mHolidayList.at(mHolidayCombo->currentItem());
+  qDebug("%s", KOPrefs::instance()->mHoliday.latin1());
 
   KOPrefs::instance()->mTimeZone = mTimeZoneCombo->currentText();
   KOPrefs::instance()->mStartTime = mStartTimeSpin->value();
