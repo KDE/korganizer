@@ -18,7 +18,8 @@
 #include <kmessagebox.h>
 #include <kfiledialog.h>
 
-#include "event.h"
+#include <libkcal/event.h>
+
 #include "koprefs.h"
 
 #include "koeditorgeneralevent.h"

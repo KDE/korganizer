@@ -8,8 +8,9 @@
 
 #include <qmap.h>
 
-#include "calendar.h"
-#include "event.h"
+#include <libkcal/calendar.h>
+#include <libkcal/event.h>
+
 #include "kobaseview.h"
 #include "KGanttItem.h"
 

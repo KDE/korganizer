@@ -4,7 +4,7 @@
 
 #include <qlistview.h>
 
-#include "scheduler.h"
+#include <libkcal/scheduler.h>
 
 #include "outgoingdialog_base.h"
 

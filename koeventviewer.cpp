@@ -2,12 +2,11 @@
 
 #include <klocale.h>
 
-#include "event.h"
-#include "todo.h"
+#include <libkcal/event.h>
+#include <libkcal/todo.h>
 
 #include "koeventviewer.h"
 #include "koeventviewer.moc"
-
 
 KOEventViewer::KOEventViewer(QWidget *parent,const char *name)
   : QTextView(parent,name)

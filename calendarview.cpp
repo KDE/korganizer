@@ -10,6 +10,9 @@
   Ian Dawes (iadawes@globalserve.net)
   Laszlo Boloni (boloni@cs.purdue.edu)
 
+  Copyright (c) 2000, 2001
+  Cornelius Schumacher <schumacher@kde.org>
+
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
   the Free Software Foundation; either version 2 of the License, or
@@ -42,6 +45,14 @@
 #include <kmessagebox.h>
 #include <knotifyclient.h>
 
+#include <libkcal/vcaldrag.h>
+#include <libkcal/icalformat.h>
+#include <libkcal/vcalformat.h>
+#include <libkcal/scheduler.h>
+#include <libkcal/calendarlocal.h>
+#include <libkcal/journal.h>
+#include <libkcal/calfilter.h>
+
 #include "koarchivedlg.h"
 #include "komailclient.h"
 #include "calprinter.h"
@@ -51,21 +62,14 @@
 #include "kotodoeditor.h"
 #include "koprefs.h"
 #include "koeventviewerdialog.h"
-#include "vcaldrag.h"
-#include "icalformat.h"
-#include "vcalformat.h"
 #include "outgoingdialog.h"
 #include "incomingdialog.h"
-#include "scheduler.h"
-#include "calendarlocal.h"
 #include "categoryeditdialog.h"
 #include "kofilterview.h"
-#include "calfilter.h"
 #include "koprojectview.h"
 #include "filtereditdialog.h"
 #include "kowhatsnextview.h"
 #include "kojournalview.h"
-#include "journal.h"
 #include "plugindialog.h"
 
 #include "calendarview.h"

@@ -17,7 +17,7 @@
 
 #include <kprocess.h>
 
-#include "calendar.h"
+#include <libkcal/calendar.h>
 
 class KDateEdit;
 class QButtonGroup;

@@ -5,7 +5,7 @@
 #include <qframe.h>
 #include <qlabel.h>
 
-#include "event.h"
+#include <libkcal/event.h>
 
 class QToolTipGroup;
 

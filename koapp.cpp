@@ -12,12 +12,12 @@
 #include <kwin.h>
 #include <kurl.h>
 
-#include "calendarlocal.h"
+#include <libkcal/calendarlocal.h>
+
 #include "korganizer.h"
 
 #include "koapp.h"
 #include "koapp.moc"
-
 
 KOrganizerApp::KOrganizerApp() : KUniqueApplication()
 {
@@ -162,6 +162,8 @@ void KOrganizerApp::processCalendar(const QString &urlString,int numDays,
       if (0 == korg) {
         korg = new KOrganizer("KOrganizer MainWindow");
         korg->show();
+        
+        kdDebug() << "KOrganizerApp::processCalendar(): " << url.url() << endl;
         
         if (!url.isEmpty()) {
           korg->openURL(url);

@@ -6,7 +6,7 @@
 #include <kdebug.h>
 #include <kiconloader.h>
 
-#include "event.h"
+#include <libkcal/event.h>
 
 #include "koeventpopupmenu.h"
 #include "koeventpopupmenu.moc"

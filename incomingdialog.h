@@ -4,8 +4,8 @@
 
 #include <qlistview.h>
 
-#include <calendar.h>
-#include <scheduler.h>
+#include <libkcal/calendar.h>
+#include <libkcal/scheduler.h>
 
 #include "incomingdialog_base.h"
 

@@ -28,7 +28,8 @@
 #include <kconfig.h>
 #include <kglobal.h>
 
-#include "calendar.h"
+#include <libkcal/calendar.h>
+
 #include "kdateedit.h"
 #include "koprefs.h"
 #include "htmlexport.h"

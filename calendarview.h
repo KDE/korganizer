@@ -1,6 +1,6 @@
 #ifndef CALENDARVIEW_H
 #define CALENDARVIEW_H
-/* $Id$	 */
+/* $Id$ */
 
 #include <qframe.h>
 #include <qlayout.h>
@@ -16,15 +16,16 @@
 #include <kstatusbar.h>
 #include <kmenubar.h>
 
-#include "qdatelist.h"
-#include "calendar.h"
+#include <libkcal/qdatelist.h>
+#include <libkcal/calendar.h>
+#include <libkcal/scheduler.h>
+
 #include "kdatenav.h"
 #include "koagendaview.h"
 #include "kolistview.h"
 #include "kotodoview.h"
 #include "komonthview.h"
 #include "searchdialog.h"
-#include "scheduler.h"
 
 class QWidgetStack;
 class CalPrinter;

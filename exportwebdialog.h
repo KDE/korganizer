@@ -11,7 +11,7 @@
 #include <kdialogbase.h>
 #include <kio/job.h>
 
-#include <calendar.h>
+#include <libkcal/calendar.h>
 
 using namespace KCal;
 

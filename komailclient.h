@@ -4,8 +4,7 @@
 
 #include <qstring.h>
 
-
-#include <incidence.h>
+#include <libkcal/incidence.h>
 
 class KURL;
 

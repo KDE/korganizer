@@ -3,7 +3,7 @@
 
 #include "kofilterview_base.h"
 
-#include <calfilter.h>
+#include <libkcal/calfilter.h>
 
 using namespace KCal;
 

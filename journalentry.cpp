@@ -10,8 +10,7 @@
 #include <kglobal.h>
 #include <klocale.h>
 
-#include "journal.h"
-#include "calendar.h"
+#include <libkcal/journal.h>
 
 #include "journalentry.h"
 #include "journalentry.moc"

@@ -1,12 +1,12 @@
 #ifndef _FILTEREDITDIALOG_H
 #define _FILTEREDITDIALOG_H
-// 	$Id$	
+// $Id$	
 
 #include <qptrlist.h>
 
 #include <kdialogbase.h>
 
-#include <calfilter.h>
+#include <libkcal/calfilter.h>
 
 class QComboBox;
 class FilterEdit_base;

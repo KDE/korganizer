@@ -9,8 +9,9 @@
 #include <kconfig.h>
 #include <kmessagebox.h>
 
-#include "vcaldrag.h"
-#include "calendar.h"
+#include <libkcal/vcaldrag.h>
+#include <libkcal/calendar.h>
+
 #include "koprefs.h"
 
 #include "kdpdatebutton.h"

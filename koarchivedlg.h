@@ -3,7 +3,7 @@
 
 #include <kdialogbase.h>
 
-#include <calendar.h>
+#include <libkcal/calendar.h>
 
 using namespace KCal;
 

@@ -16,7 +16,7 @@
 #include <kapp.h>
 #include <krestrictedline.h>
 
-#include <event.h>
+#include <libkcal/event.h>
 
 #include "ktimeedit.h"
 #include "kdateedit.h"

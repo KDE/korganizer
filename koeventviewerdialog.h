@@ -9,7 +9,7 @@
 
 #include <kdialogbase.h>
 
-#include <event.h>
+#include <libkcal/event.h>
 
 using namespace KCal;
 

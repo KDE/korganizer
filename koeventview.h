@@ -7,9 +7,9 @@
  * (c) 1999 Preston Brown <pbrown@kde.org>
  */
 
-#include <calendar.h>
+#include <libkcal/calendar.h>
+#include <libkcal/event.h>
 
-#include "event.h"
 #include "koeventpopupmenu.h"
 #include "kobaseview.h"
 

@@ -17,10 +17,11 @@
 #include <kio/netaccess.h>
 #include <klineedit.h>
 
+#include <libkcal/event.h>
+#include <libkcal/calendar.h>
+#include <libkcal/calendarlocal.h>
+
 #include "kdateedit.h"
-#include "event.h"
-#include "calendar.h"
-#include "calendarlocal.h"
 #include "koprefs.h"
 
 #include "koarchivedlg.h"

@@ -6,7 +6,7 @@
 #include <qtimer.h>
 #include <qmemarray.h>
 
-#include <event.h>
+#include <libkcal/event.h>
 
 #include "koagendaitem.h"
 

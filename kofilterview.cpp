@@ -4,7 +4,7 @@
 #include <qcombobox.h>
 #include <qpushbutton.h>
 
-#include "calfilter.h"
+#include <libkcal/calfilter.h>
 
 #include "kofilterview.h"
 

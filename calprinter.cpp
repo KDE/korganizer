@@ -22,9 +22,10 @@
 #include <kapp.h>
 #include <kdebug.h>
 
+#include <libkcal/todo.h>
+
 #include "koprefsdialog.h"
 #include "koprefs.h"
-#include "todo.h"
 #include "kocore.h"
 
 #include "calprinter.h"

@@ -1,12 +1,11 @@
-/* 	$Id$	 */
-
+/* $Id$ */
 #ifndef _KDPDATEBUTTON_H
 #define _KDPDATEBUTTON_H
 
 #include <qdatetime.h>
 #include <qlabel.h>
 
-#include <calendar.h>
+#include <libkcal/calendar.h>
 
 using namespace KCal;
 

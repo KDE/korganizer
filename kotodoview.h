@@ -14,8 +14,9 @@
 #include <qmap.h>
 #include <qlistview.h>
 
-#include "calendar.h"
-#include "todo.h"
+#include <libkcal/calendar.h>
+#include <libkcal/todo.h>
+
 #include "kobaseview.h"
 
 /**

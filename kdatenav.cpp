@@ -270,9 +270,9 @@ void KDateNavigator::updateButton(int i)
   Event *event;
   for(event=events.first();event;event=events.next()) {
     ushort recurType = event->recurrence()->doesRecur();
-    if ((recurType == KORecurrence::rNone) ||
-        (recurType == KORecurrence::rDaily && KOPrefs::instance()->mDailyRecur) ||
-        (recurType == KORecurrence::rWeekly && KOPrefs::instance()->mWeeklyRecur)) {
+    if ((recurType == Recurrence::rNone) ||
+        (recurType == Recurrence::rDaily && KOPrefs::instance()->mDailyRecur) ||
+        (recurType == Recurrence::rWeekly && KOPrefs::instance()->mWeeklyRecur)) {
       hasEvents = true;
       break;
     }

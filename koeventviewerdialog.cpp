@@ -2,7 +2,7 @@
 
 #include <klocale.h>
 
-#include "event.h"
+#include <libkcal/event.h>
 #include "koeventviewer.h"
 
 #include "koeventviewerdialog.h"

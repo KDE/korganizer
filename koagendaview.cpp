@@ -20,13 +20,14 @@
 #include <klocale.h>
 #include <kconfig.h>
 
+#include <libkcal/calendar.h>
+#include <libkcal/vcaldrag.h>
+
 #include "kocore.h"
 #include "koprefs.h"
 #include "koagenda.h"
 #include "koagendaitem.h"
-#include "calendar.h"
 #include "calprinter.h"
-#include "vcaldrag.h"
 
 #include "koagendaview.h"
 #include "koagendaview.moc"

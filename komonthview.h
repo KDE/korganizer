@@ -13,9 +13,10 @@
 
 #include <kapp.h>
 
-#include "qdatelist.h"
-#include "calendar.h"
-#include "event.h"
+#include <libkcal/qdatelist.h>
+#include <libkcal/calendar.h>
+#include <libkcal/event.h>
+
 #include "koeventview.h"
 #include "ksellabel.h" 
 

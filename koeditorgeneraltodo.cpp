@@ -19,8 +19,9 @@
 #include <kfiledialog.h>
 #include <kdebug.h>
 
+#include <libkcal/todo.h>
+
 #include "koprefs.h"
-#include "todo.h"
 
 #include "koeditorgeneraltodo.h"
 #include "koeditorgeneraltodo.moc"

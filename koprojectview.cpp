@@ -20,7 +20,8 @@
 #include <kmessagebox.h>
 #include <kconfig.h>
 
-#include "vcaldrag.h"
+#include <libkcal/vcaldrag.h>
+
 #include "calprinter.h"
 #include "KGantt.h"
 

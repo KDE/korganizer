@@ -1,17 +1,19 @@
 #ifndef _KOEVENTEDITOR_H
 #define _KOEVENTEDITOR_H
-// 	$Id$	
+// $Id$	
 
 #include <klineedit.h>
 #include <kdialogbase.h>
 
 #include <qdatetime.h>
 
-#include "calendar.h"
+#include <libkcal/calendar.h>
+
 #include "koeditorgeneralevent.h"
 #include "koeditordetails.h"
 #include "koeditorrecurrence.h"
 #include "koincidenceeditor.h"
+
 class QWidgetStack;
 
 using namespace KCal;

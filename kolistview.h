@@ -1,15 +1,12 @@
-/*
- * KOListView provides a view of events in a list.
- * This file is part of the KOrganizer project.
- * (c) 1999 Preston Brown <pbrown@kde.org>
- */
-
 #ifndef _KOLISTVIEW_H
 #define _KOLISTVIEW_H
+// $Id$
+// (c) 1999 Preston Brown <pbrown@kde.org>
+// (c) 2000,2001 Cornelius Schumacher
 
 #include <qlistview.h>
 
-#include <incidence.h>
+#include <libkcal/incidence.h>
 
 #include "koeventview.h"
 

@@ -2,12 +2,13 @@
 
 #include <kdebug.h>
 
-#include "event.h"
-//#include "imipscheduler.h"
-#include "dummyscheduler.h"
+#include <libkcal/event.h>
+//#include <libkcal/imipscheduler.h>
+#include <libkcal/dummyscheduler.h>
+
+#include "mailscheduler.h"
 
 #include "koprefs.h"
-#include "mailscheduler.h"
 #include "outgoingdialog.h"
 
 ScheduleItemOut::ScheduleItemOut(QListView *parent,Event *ev,

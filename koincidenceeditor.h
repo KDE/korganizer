@@ -4,10 +4,10 @@
 
 #include <kdialogbase.h>
 
+#include <libkcal/calendar.h>
 
-
-#include "calendar.h"
 #include "koeditordetails.h"
+
 class QDateTime;
 class CategorySelectDialog;
 

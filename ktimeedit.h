@@ -1,8 +1,6 @@
-/* 	$Id$	 */
-
+/* $Id$ */
 #ifndef _KTIMEEDIT_H
 #define _KTIMEEDIT_H
-
 
 #include <qevent.h>
 #include <qkeycode.h>

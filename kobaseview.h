@@ -10,8 +10,8 @@
 #include <qwidget.h>
 #include <qptrlist.h>
 
-#include "event.h"
-#include "calendar.h"
+#include <libkcal/event.h>
+#include <libkcal/calendar.h>
 
 using namespace KCal;
 

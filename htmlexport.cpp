@@ -1,7 +1,5 @@
 // $Id$
 
-#include "htmlexport.h"
-
 #include <qfile.h>
 #include <qtextstream.h>
 
@@ -9,10 +7,13 @@
 #include <klocale.h>
 #include <kdebug.h>
 
-#include "calendar.h"
-#include "event.h"
-#include "todo.h"
+#include <libkcal/calendar.h>
+#include <libkcal/event.h>
+#include <libkcal/todo.h>
+
 #include "kocore.h"
+
+#include "htmlexport.h"
 
 bool HtmlExport::save(const QString &fileName)
 {

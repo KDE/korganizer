@@ -1,13 +1,14 @@
 #ifndef _SEARCHDIALOG_H
 #define _SEARCHDIALOG_H
-
+// $Id$
 
 #include <qregexp.h>
 
 #include <kdialogbase.h>
 
+#include <libkcal/calendar.h>
+
 #include "kolistview.h"
-#include "calendar.h"
 
 class KDateEdit;
 class QCheckBox;

@@ -4,9 +4,9 @@
 
 #include <kdebug.h>
 
-#include "incidence.h"
-#include "dummyscheduler.h"
-#include "calendar.h"
+#include <libkcal/incidence.h>
+#include <libkcal/dummyscheduler.h>
+#include <libkcal/calendar.h>
 
 #include "incomingdialog.h"
 

@@ -1,13 +1,12 @@
-/*
- $Id$
-*/
+// $Id$
 
 #include <klocale.h>
 #include <kdebug.h>
 #include <kiconloader.h>
 #include <kmessagebox.h>
 
-#include "calendar.h"
+#include <libkcal/calendar.h>
+
 #include "calprinter.h"
 
 #include "kobaseview.h"

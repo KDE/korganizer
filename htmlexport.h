@@ -1,12 +1,11 @@
-// $Id$
-
 #ifndef HTMLEXPORT_H
 #define HTMLEXPORT_H
+// $Id$
 
 #include <qstring.h>
 #include <qdatetime.h>
 
-#include <calendar.h>
+#include <libkcal/calendar.h>
 
 class QFile;
 class QTextStream;

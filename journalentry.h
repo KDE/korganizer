@@ -6,7 +6,7 @@
 
 #include <qframe.h>
 
-#include <calendar.h>
+#include <libkcal/calendar.h>
 
 class QLabel;
 class QMultiLineEdit;

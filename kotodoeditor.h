@@ -1,9 +1,9 @@
 #ifndef _KOTODOEDITOR_H
 #define _KOTODOEDITOR_H
-// 	$Id$	
+// $Id$	
 
+#include <libkcal/calendar.h>
 
-#include "calendar.h"
 #include "koeditorgeneraltodo.h"
 #include "koeditordetails.h"
 #include "koincidenceeditor.h"

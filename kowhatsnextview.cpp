@@ -12,7 +12,8 @@
 #include <kstddirs.h>
 #include <kmessagebox.h>
 
-#include "calendar.h"
+#include <libkcal/calendar.h>
+
 #include "calprinter.h"
 #include "calendarview.h"
 #include "koeventviewerdialog.h"

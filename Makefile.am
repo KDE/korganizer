@@ -1,6 +1,6 @@
 SUBDIRS = . pixmaps sounds plugins interfaces
 
-INCLUDES = -I$(top_srcdir)/kgantt/kgantt -I$(top_srcdir)/libkcal \
+INCLUDES = -I$(top_srcdir)/kgantt/kgantt \
            -I$(srcdir)/interfaces $(all_includes)
 
 bin_PROGRAMS = korganizer

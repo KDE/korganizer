@@ -11,7 +11,8 @@
 #include <kiconloader.h>
 #include <kmessagebox.h>
 
-#include "vcaldrag.h"
+#include <libkcal/vcaldrag.h>
+
 #include "calprinter.h"
 
 #include "kotodoview.h"

@@ -9,7 +9,8 @@
 #include <kdebug.h>
 #include <kiconloader.h>
 
-#include "calendar.h"
+#include <libkcal/calendar.h>
+
 #include "journalentry.h"
 
 #include "kojournalview.h"

@@ -1,6 +1,4 @@
-/*
- $Id$
-*/
+// $Id$
 
 #include <qpopupmenu.h>
 #include <qcursor.h>
@@ -10,7 +8,8 @@
 #include <kiconloader.h>
 #include <kmessagebox.h>
 
-#include "calendar.h"
+#include <libkcal/calendar.h>
+
 #include "calprinter.h"
 
 #include "koeventview.h"

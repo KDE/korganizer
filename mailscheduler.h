@@ -7,7 +7,7 @@
 
 #include <qptrlist.h>
 
-#include <imipscheduler.h>
+#include <libkcal/imipscheduler.h>
 
 namespace KCal {
 

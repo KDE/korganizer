@@ -15,8 +15,9 @@
 #include <kapp.h>
 #include <dcopclient.h>
 
+#include <libkcal/event.h>
+
 #include "version.h"
-#include "event.h"
 #include "koprefs.h"
 
 #include "komailclient.h"

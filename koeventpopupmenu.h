@@ -7,7 +7,7 @@
 
 #include <qpopupmenu.h>
 
-#include <event.h>
+#include <libkcal/event.h>
 
 using namespace KCal;
 

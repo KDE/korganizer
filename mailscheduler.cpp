@@ -3,8 +3,8 @@
 // MailScheduler - Mail implementation of iTIP methods
 //
 
-#include "event.h"
-#include "icalformat.h"
+#include <libkcal/event.h>
+#include <libkcal/icalformat.h>
 
 #include "komailclient.h"
 

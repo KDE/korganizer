@@ -1,4 +1,4 @@
-/* 	$Id$	 */
+/* $Id$ */
 
 #ifndef _KDATENAV_H
 #define _KDATENAV_H
@@ -7,8 +7,9 @@
 #include <qdatetime.h>
 #include <qlabel.h>
 
-#include "qdatelist.h"
-#include "calendar.h"
+#include <libkcal/qdatelist.h>
+#include <libkcal/calendar.h>
+
 #include "kdpdatebutton.h"
 
 class QPushButton;

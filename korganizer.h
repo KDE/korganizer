@@ -1,5 +1,4 @@
-/* 	$Id$	 */
-
+/* $Id$ */
 #ifndef _KORGANIZER_H
 #define _KORGANIZER_H
 
@@ -20,8 +19,8 @@
 #include <kurl.h>
 #include "korganizeriface.h"
 
-#include "qdatelist.h"
-#include "calendar.h"
+#include <libkcal/qdatelist.h>
+#include <libkcal/calendar.h>
 
 class CalendarView;
 class KTempFile;
