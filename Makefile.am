@@ -89,8 +89,6 @@ tipdir = $(kde_datadir)/korganizer
 
 kde_bin_SCRIPTS = ical2vcal korganizerIn
 
-kde_conf_DATA = korganizerrc
-
 kdelnkdir = $(kde_appsdir)/Applications
 kdelnk_DATA = korganizer.desktop
 
