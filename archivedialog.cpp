@@ -74,6 +74,7 @@ ArchiveDialog::ArchiveDialog(Calendar *cal,QWidget *parent, const char *name)
 
   QButtonGroup* radioBG = new QButtonGroup( this );
   radioBG->hide(); // just for the exclusive behavior
+  connect( radioBG, SIGNAL( clicked( int ) ), SLOT( slotActionChanged() ) );
 
   QHBoxLayout *dateLayout = new QHBoxLayout(0);
   mArchiveOnceRB = new QRadioButton(i18n("Archive now events older than:"),topFrame);
@@ -85,8 +86,6 @@ ArchiveDialog::ArchiveDialog(Calendar *cal,QWidget *parent, const char *name)
          "be saved and deleted, the newer (and events exactly on that date) will be kept."));
   dateLayout->addWidget(mDateEdit);
   topLayout->addLayout(dateLayout);
-  connect( mArchiveOnceRB, SIGNAL(toggled(bool)),
-           mDateEdit, SLOT(setEnabled(bool)) );
 
   // Checkbox, numinput and combo for auto-archiving
   // (similar to kmail's mExpireFolderCheckBox/mReadExpiryTimeNumInput in kmfolderdia.cpp)
@@ -102,8 +101,6 @@ ArchiveDialog::ArchiveDialog(Calendar *cal,QWidget *parent, const char *name)
   mExpiryTimeNumInput->setRange(1, 500, 1, false);
   mExpiryTimeNumInput->setEnabled(false);
   mExpiryTimeNumInput->setValue(7);
-  connect( mAutoArchiveRB, SIGNAL(toggled(bool)),
-           mExpiryTimeNumInput, SLOT(setEnabled(bool)) );
   QWhatsThis::add(mExpiryTimeNumInput,
     i18n("The age of the events to archive. All older events "
          "will be saved and deleted, the newer will be kept."));
@@ -114,8 +111,6 @@ ArchiveDialog::ArchiveDialog(Calendar *cal,QWidget *parent, const char *name)
   mExpiryUnitsComboBox->insertItem(i18n("Week(s)"));
   mExpiryUnitsComboBox->insertItem(i18n("Month(s)"));
   mExpiryUnitsComboBox->setEnabled(false);
-  connect( mAutoArchiveRB, SIGNAL(toggled(bool)),
-           mExpiryUnitsComboBox, SLOT(setEnabled(bool)) );
 
   QHBoxLayout *fileLayout = new QHBoxLayout(0);
   fileLayout->setSpacing(spacingHint());
@@ -160,6 +155,7 @@ ArchiveDialog::ArchiveDialog(Calendar *cal,QWidget *parent, const char *name)
     mArchiveOnceRB->setChecked( true );
     mArchiveOnceRB->setFocus();
   }
+  slotActionChanged();
 }
 
 ArchiveDialog::~ArchiveDialog()
@@ -171,6 +167,13 @@ void ArchiveDialog::slotEnableUser1()
   bool state = ( mDeleteCb->isChecked() ||
                  !mArchiveFile->lineEdit()->text().isEmpty() );
   enableButton(KDialogBase::User1,state);
+}
+
+void ArchiveDialog::slotActionChanged()
+{
+  mDateEdit->setEnabled( mArchiveOnceRB->isChecked() );
+  mExpiryTimeNumInput->setEnabled( mAutoArchiveRB->isChecked() );
+  mExpiryUnitsComboBox->setEnabled( mAutoArchiveRB->isChecked() );
 }
 
 // Archive old events

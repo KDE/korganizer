@@ -53,6 +53,7 @@ class ArchiveDialog : public KDialogBase
     void slotEventsDeleted();
     void slotUser1();
     void slotEnableUser1();
+    void slotActionChanged();
 
   private:
     KURLRequester *mArchiveFile;
