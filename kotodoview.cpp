@@ -209,7 +209,7 @@ void KOTodoListView::contentsDropEvent( QDropEvent *e )
     Todo *existingTodo = mCalendar->todo(todo->uid());
 
     if(existingTodo) {
-//      kdDebug(5850) << "Drop existing Todo" << endl;
+//       kdDebug(5850) << "Drop existing Todo " << existingTodo << " onto " << destinationEvent << endl;
       Incidence *to = destinationEvent;
       while(to) {
         if (to->uid() == todo->uid()) {
@@ -224,7 +224,7 @@ void KOTodoListView::contentsDropEvent( QDropEvent *e )
       Todo*oldTodo = existingTodo->clone();
       existingTodo->setRelatedTo(destinationEvent);
 
-      emit incidenceChanged( oldTodo, todo );
+      emit incidenceChanged( oldTodo, existingTodo );
       delete oldTodo;
       delete todo;
     } else {
@@ -662,13 +662,29 @@ void KOTodoView::changeIncidenceDisplay(Incidence *incidence, int action)
       case KOGlobals::INCIDENCEEDITED:
         // If it's already there, edit it, otherwise just add
         if ( todoItem ) { 
-          if ( isFiltered )
+          if ( isFiltered ) {
             scheduleRemoveTodoItem( todoItem );
-          else 
+          } else {
+            // correctly update changes in relations
+            Todo*parent = dynamic_cast<Todo*>( todo->relatedTo() );
+            KOTodoViewItem*parentItem = 0;
+            if ( parent && mTodoMap.contains(parent) ) {
+              parentItem = mTodoMap[ parent ];
+            }
+            if ( todoItem->parent() != parentItem ) {
+              // The relations changed
+              if ( parentItem ) {
+                parentItem->insertItem( todoItem );
+              } else {
+                mTodoListView->insertItem( todoItem );
+              }
+            }
             todoItem->construct();
+          }
         } else {
-          if ( !isFiltered ) 
+          if ( !isFiltered ) {
             insertTodoItem( todo );
+          }
         }
         break;
       case KOGlobals::INCIDENCEDELETED:
