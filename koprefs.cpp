@@ -300,6 +300,33 @@ QStringList KOPrefs::allEmails()
   return lst;
 }
 
+QStringList KOPrefs::fullEmails()
+{
+  QStringList fullEmails;
+  QStringList::Iterator it;
+  // Grab emails from the email identities
+  KPIM::IdentityManager *idmanager = KOCore::self()->identityManager();
+  QStringList lst = idmanager->identities();
+  KPIM::IdentityManager::ConstIterator it1;
+  for ( it1 = idmanager->begin() ; it1 != idmanager->end() ; ++it1 ) {
+    fullEmails << (*it1).fullEmailAddr();
+  }
+  // Add emails configured in korganizer
+  lst = mAdditionalMails;
+  for ( it = lst.begin(); it != lst.end(); ++it ) {
+    fullEmails << QString("%1 <%2>").arg( fullName() ).arg( *it );
+  }
+  // Add emails from the user's kaddressbook entry
+  KABC::Addressee me = KABC::StdAddressBook::self()->whoAmI();
+  lst = me.emails();
+  for ( it = lst.begin(); it != lst.end(); ++it ) {
+    fullEmails << me.fullEmail( *it );
+  }
+
+  // Warning, this list could contain duplicates.
+  return fullEmails;
+}
+
 bool KOPrefs::thatIsMe( const QString& _email )
 {
   if ( KOCore::self()->identityManager()->thatIsMe( _email ) )

@@ -408,16 +408,18 @@ void KOEditorDetails::readEvent( Incidence *event )
     }
     mOrganizerLabel->setText( i18n( "Identity as organizer:" ) );
 
-    // This might not be enough, if the combo as a full name too, hence the loop below
-    // mOrganizerCombo->setCurrentText( event->organizer().fullName() );
+    int found = -1;
+    QString fullOrganizer = event->organizer().fullName();
     for ( int i = 0 ; i < mOrganizerCombo->count(); ++i ) {
-      QString itemTxt = KPIM::getEmailAddr( mOrganizerCombo->text( i ) );
-      if ( KPIM::compareEmail( event->organizer().email(), itemTxt, false ) ) {
-        // Make sure we match the organizer setting completely
-        mOrganizerCombo->changeItem( event->organizer().fullName(), i );
+      if ( mOrganizerCombo->text( i ) == fullOrganizer ) {
+        found = i;
         mOrganizerCombo->setCurrentItem( i );
         break;
       }
+    }
+    if ( found < 0 ) {
+      mOrganizerCombo->insertItem( fullOrganizer, 0 );
+      mOrganizerCombo->setCurrentItem( 0 );
     }
   } else { // someone else is the organizer
     if ( mOrganizerCombo ) {
@@ -544,14 +546,11 @@ void KOEditorDetails::fillOrganizerCombo()
   Q_ASSERT( mOrganizerCombo );
   // Get all emails from KOPrefs (coming from various places),
   // and insert them - removing duplicates
-  const QStringList lst = KOPrefs::instance()->allEmails();
+  const QStringList lst = KOPrefs::instance()->fullEmails();
   QStringList uniqueList;
   for( QStringList::ConstIterator it = lst.begin(); it != lst.end(); ++it ) {
-    QString fullEmail = QString("%1 <%2>").arg( KOPrefs::instance()->fullName())
-                                          .arg( *it );
-    if ( uniqueList.find( *it ) == uniqueList.end() && 
-         uniqueList.find( fullEmail ) == uniqueList.end() )
-      uniqueList << fullEmail;
+    if ( uniqueList.find( *it ) == uniqueList.end() )
+      uniqueList << *it;
   }
   mOrganizerCombo->insertStringList( uniqueList );
 }
