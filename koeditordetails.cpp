@@ -546,7 +546,7 @@ void KOEditorDetails::fillOrganizerCombo()
   Q_ASSERT( mOrganizerCombo );
   // Get all emails from KOPrefs (coming from various places),
   // and insert them - removing duplicates
-  const QStringList lst = KOPrefs::instance()->allEmails();
+  const QStringList lst = KOPrefs::instance()->fullEmails();
   QStringList uniqueList;
   for( QStringList::ConstIterator it = lst.begin(); it != lst.end(); ++it ) {
     if ( uniqueList.find( *it ) == uniqueList.end() )
