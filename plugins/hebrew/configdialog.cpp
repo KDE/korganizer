@@ -58,7 +58,7 @@ ConfigDialog::~ConfigDialog()
 
 void ConfigDialog::load()
 {
-  KConfig config(locateLocal("config", "korganizerrc"));
+  KConfig config("korganizerrc", true, false); // Open read-only, no kdeglobals
 
   config.setGroup("Calendar/Hebrew Calendar Plugin");
   israel_box->setChecked(config.
@@ -73,7 +73,7 @@ void ConfigDialog::load()
 
 void ConfigDialog::save()
 {
-  KConfig config(locateLocal("config", "korganizerrc"));
+  KConfig config("korganizerrc", false, false); // Open read-write, no kdeglobals
 
   config.setGroup("Calendar/Hebrew Calendar Plugin");
   config.writeEntry("Israel", israel_box->isChecked());

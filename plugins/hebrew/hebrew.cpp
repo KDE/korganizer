@@ -46,7 +46,7 @@ K_EXPORT_COMPONENT_FACTORY( libkorg_hebrew, HebrewFactory )
 QString Hebrew::shortText(const QDate & date)
 {
 
-  KConfig config(locateLocal("config", "korganizerrc"));
+  KConfig config("korganizerrc", true, false); // Open read-only, no kdeglobals
 
   config.setGroup("Calendar/Hebrew Calendar Plugin");
   IsraelP =
