@@ -41,9 +41,9 @@ ConfigDialog::ConfigDialog(QWidget *parent)
 
 //  QLabel *label = new QLabel(i18n("Show date numbers:"),topFrame);
 //  topLayout->addWidget(label);
-  mDayNumGroup = new QVButtonGroup( i18n("Show date numbers:"), topFrame );
+  mDayNumGroup = new QVButtonGroup( i18n("Show Date Number:"), topFrame );
 	topLayout->addWidget( mDayNumGroup );
-	
+
 	new QRadioButton( i18n("Show day number"), mDayNumGroup );
 	new QRadioButton( i18n("Show days to end of year"), mDayNumGroup );
 	new QRadioButton( i18n("Show both"), mDayNumGroup );

@@ -113,16 +113,16 @@
     </entry>
 
     <entry type="Int" key="Day Begins">
-      <label>Day begins at</label>
+      <label>Day begins at:</label>
       <default>7</default>
     </entry>
 
     <entry type="Int" key="Working Hours Start">
-      <label>Daily starting hour</label>
+      <label>Daily starting hour:</label>
       <default>8</default>
     </entry>
     <entry type="Int" key="Working Hours End">
-      <label>Daily ending hour</label>
+      <label>Daily ending hour:</label>
       <default>17</default>
     </entry>
     <entry type="Bool" key="Exclude Holidays">
@@ -166,7 +166,7 @@
       <default>false</default>
     </entry>
   </group>
-  
+
   <group name="KOrganizer Plugins">
     <entry type="StringList" name="SelectedPlugins">
       <default>holidays,webexport</default>
@@ -189,6 +189,7 @@
       <default>IMIPKMail</default>
     </entry>
     <entry type="Bool" key="Use Groupware Communication">
+      <label>Use Groupware communication</label>
       <default>false</default>
     </entry>
 
@@ -239,7 +240,7 @@
       <label>Auto Save FreeBusy Replies</label>
       <default>neverAuto</default>
     </entry>
-  
+
   </group>
 
   <group name="Colors">
@@ -275,16 +276,16 @@
 
   <group name="Fonts">
     <entry type="Font" key="TimeBar Font">
-      <label>Time bar</label>
+      <label>Time bar:</label>
     </entry>
     <entry type="Font" key="AgendaView Font">
-      <label>Agenda view</label>
+      <label>Agenda view:</label>
     </entry>
     <entry type="Font" key="MarcusBains Font">
-      <label>Marcus Bains line</label>
+      <label>Marcus Bains line:</label>
     </entry>
     <entry type="Font" key="MonthView Font">
-      <label>Month view</label>
+      <label>Month view:</label>
     </entry>
   </group>
 
