@@ -43,8 +43,8 @@
 #include "koeditorgeneral.h"
 #include "koeditorgeneral.moc"
 
-KOEditorGeneral::KOEditorGeneral(QWidget* parent, const char* name) :
-  QWidget( parent, name)
+KOEditorGeneral::KOEditorGeneral(QObject* parent, const char* name) :
+  QObject( parent, name)
 {
 }
 
@@ -52,87 +52,93 @@ KOEditorGeneral::~KOEditorGeneral()
 {
 }
 
-void KOEditorGeneral::initHeader(QBoxLayout *topLayout)
+void KOEditorGeneral::initHeader(QWidget *parent,QBoxLayout *topLayout)
 {
   QBoxLayout *headerLayout = new QVBoxLayout(topLayout);
 
-  mOwnerLabel = new QLabel(i18n("Owner:"),this);
+#if 0
+  mOwnerLabel = new QLabel(i18n("Owner:"),parent);
   headerLayout->addWidget(mOwnerLabel);
+#endif
 
   QBoxLayout *summaryLayout = new QHBoxLayout;
   headerLayout->addLayout(summaryLayout);
 
-  QLabel *summaryLabel = new QLabel(i18n("Summary:"),this);
+  QLabel *summaryLabel = new QLabel(i18n("Summary:"),parent);
   summaryLayout->addWidget(summaryLabel);
 
-  mSummaryEdit = new QLineEdit(this);
+  mSummaryEdit = new QLineEdit(parent);
   summaryLayout->addWidget(mSummaryEdit);
 }
 
-
-void KOEditorGeneral::initDescription(QBoxLayout *topLayout)
+void KOEditorGeneral::initCategories(QWidget *parent, QBoxLayout *topLayout)
 {
-  QBoxLayout *descriptionLayout = new QVBoxLayout( topLayout );
+  QBoxLayout *categoriesLayout = new QHBoxLayout( topLayout );
 
-  mDescriptionEdit = new QMultiLineEdit(this);
+  mCategoriesButton = new QPushButton(parent);
+  mCategoriesButton->setText(i18n("Categories..."));
+  connect(mCategoriesButton,SIGNAL(clicked()),SIGNAL(openCategoryDialog()));
+  categoriesLayout->addWidget(mCategoriesButton);
+
+  mCategoriesLabel = new QLabel(parent);
+  mCategoriesLabel->setFrameStyle(QFrame::Panel|QFrame::Sunken);
+  categoriesLayout->addWidget(mCategoriesLabel,1);
+}
+
+void KOEditorGeneral::initSecrecy(QWidget *parent, QBoxLayout *topLayout)
+{
+  QBoxLayout *secrecyLayout = new QHBoxLayout( topLayout );
+
+  QLabel *secrecyLabel = new QLabel(i18n("Access:"),parent);
+  secrecyLayout->addWidget(secrecyLabel);
+
+  mSecrecyCombo = new QComboBox(parent);
+  mSecrecyCombo->insertStringList(Incidence::secrecyList());
+  secrecyLayout->addWidget(mSecrecyCombo);
+}
+
+void KOEditorGeneral::initDescription(QWidget *parent,QBoxLayout *topLayout)
+{
+  mDescriptionEdit = new QMultiLineEdit(parent);
   mDescriptionEdit->insertLine("");
   mDescriptionEdit->setReadOnly(false);
   mDescriptionEdit->setOverwriteMode(false);
   mDescriptionEdit->setWordWrap(QMultiLineEdit::WidgetWidth);
-  descriptionLayout->addWidget(mDescriptionEdit);
-
-  QBoxLayout *detailsLayout = new QHBoxLayout(descriptionLayout);
-//  descriptionLayout->addLayout(detailsLayout);
-
-  mCategoriesButton = new QPushButton(this);
-  mCategoriesButton->setText(i18n("Categories..."));
-  connect(mCategoriesButton,SIGNAL(clicked()),SIGNAL(openCategoryDialog()));
-  detailsLayout->addWidget(mCategoriesButton);
-
-  mCategoriesLabel = new QLabel(this);
-  mCategoriesLabel->setFrameStyle(QFrame::Panel|QFrame::Sunken);
-  detailsLayout->addWidget(mCategoriesLabel,1);
-
-  QLabel *secrecyLabel = new QLabel(i18n("Access:"),this);
-  detailsLayout->addWidget(secrecyLabel);
-
-  mSecrecyCombo = new QComboBox(this);
-  mSecrecyCombo->insertStringList(Incidence::secrecyList());
-  detailsLayout->addWidget(mSecrecyCombo);
+  topLayout->addWidget(mDescriptionEdit);
 }
 
-void KOEditorGeneral::initAlarm(QBoxLayout *topLayout)
+void KOEditorGeneral::initAlarm(QWidget *parent,QBoxLayout *topLayout)
 {
   QBoxLayout *alarmLayout = new QHBoxLayout(topLayout);
 
-  mAlarmBell = new QLabel(this);
+  mAlarmBell = new QLabel(parent);
   mAlarmBell->setPixmap(SmallIcon("bell"));
   alarmLayout->addWidget(mAlarmBell);
 
-  mAlarmButton = new QCheckBox(i18n("Reminder:"),this);
-  connect(mAlarmButton, SIGNAL(toggled(bool)), SLOT(alarmStuffEnable(bool)));
+  mAlarmButton = new QCheckBox(i18n("Reminder:"),parent);
+  connect(mAlarmButton, SIGNAL(toggled(bool)), SLOT(enableAlarmEdit(bool)));
   alarmLayout->addWidget(mAlarmButton);
 
-  mAlarmTimeEdit = new KRestrictedLine(this, "alarmTimeEdit",
+  mAlarmTimeEdit = new KRestrictedLine(parent, "alarmTimeEdit",
 				       "1234567890");
   mAlarmTimeEdit->setText("");
   alarmLayout->addWidget(mAlarmTimeEdit);
 
-  mAlarmIncrCombo = new QComboBox(false, this);
+  mAlarmIncrCombo = new QComboBox(false, parent);
   mAlarmIncrCombo->insertItem(i18n("minute(s)"));
   mAlarmIncrCombo->insertItem(i18n("hour(s)"));
   mAlarmIncrCombo->insertItem(i18n("day(s)"));
 //  mAlarmIncrCombo->setMinimumHeight(20);
   alarmLayout->addWidget(mAlarmIncrCombo);
 
-  mAlarmSoundButton = new QPushButton(this);
+  mAlarmSoundButton = new QPushButton(parent);
   mAlarmSoundButton->setPixmap(SmallIcon("playsound"));
   mAlarmSoundButton->setToggleButton(true);
   QToolTip::add(mAlarmSoundButton, i18n("No sound set"));
   connect(mAlarmSoundButton, SIGNAL(clicked()), SLOT(pickAlarmSound()));
   alarmLayout->addWidget(mAlarmSoundButton);
 
-  mAlarmProgramButton = new QPushButton(this);
+  mAlarmProgramButton = new QPushButton(parent);
   mAlarmProgramButton->setPixmap(SmallIcon("runprog"));
   mAlarmProgramButton->setToggleButton(true);
   QToolTip::add(mAlarmProgramButton, i18n("No program set"));
@@ -149,7 +155,7 @@ void KOEditorGeneral::pickAlarmSound()
     QToolTip::add(mAlarmSoundButton, i18n("No sound set"));
   } else {
     QString fileName(KFileDialog::getOpenFileName(prefix,
-						  i18n("*.wav|Wav Files"), this));
+						  i18n("*.wav|Wav Files"), 0));
     if (!fileName.isEmpty()) {
       mAlarmSound = fileName;
       QToolTip::remove(mAlarmSoundButton);
@@ -168,7 +174,7 @@ void KOEditorGeneral::pickAlarmProgram()
     QToolTip::remove(mAlarmProgramButton);
     QToolTip::add(mAlarmProgramButton, i18n("No program set"));
   } else {
-    QString fileName(KFileDialog::getOpenFileName(QString::null, QString::null, this));
+    QString fileName(KFileDialog::getOpenFileName(QString::null, QString::null, 0));
     if (!fileName.isEmpty()) {
       mAlarmProgram = fileName;
       QToolTip::remove(mAlarmProgramButton);
@@ -180,7 +186,9 @@ void KOEditorGeneral::pickAlarmProgram()
     mAlarmProgramButton->setOn(false);
 }
 
-void KOEditorGeneral::alarmStuffEnable(bool enable)
+
+
+void KOEditorGeneral::enableAlarmEdit(bool enable)
 {
   mAlarmTimeEdit->setEnabled(enable);
   mAlarmSoundButton->setEnabled(enable);
@@ -188,9 +196,9 @@ void KOEditorGeneral::alarmStuffEnable(bool enable)
   mAlarmIncrCombo->setEnabled(enable);
 }
 
-void KOEditorGeneral::alarmStuffDisable(bool disable)
+void KOEditorGeneral::disableAlarmEdit(bool disable)
 {
-  alarmStuffEnable(!disable);
+  enableAlarmEdit( !disable );
 }
 
 void KOEditorGeneral::alarmDisable(bool disable)
@@ -220,9 +228,11 @@ void KOEditorGeneral::setCategories(const QString &str)
 
 void KOEditorGeneral::setDefaults(bool allDay)
 {
+#if 0
   mOwnerLabel->setText(i18n("Owner: ") + KOPrefs::instance()->fullName());
+#endif
 
-  alarmStuffDisable(allDay);
+  enableAlarmEdit( !allDay );
 
   // TODO: Implement a KPrefsComboItem to solve this in a clean way.
   int alarmTime;
@@ -234,7 +244,8 @@ void KOEditorGeneral::setDefaults(bool allDay)
     alarmTime = a[index];
   }
   mAlarmTimeEdit->setText(QString::number(alarmTime));
-  alarmStuffEnable(false);
+
+  enableAlarmEdit( false );
 
   mSecrecyCombo->setCurrentItem(Incidence::SecrecyPublic);
 }
@@ -244,10 +255,12 @@ void KOEditorGeneral::readIncidence(Incidence *event)
   mSummaryEdit->setText(event->summary());
   mDescriptionEdit->setText(event->description());
 
+#if 0
   // organizer information
   mOwnerLabel->setText(i18n("Owner: ") + event->organizer());
+#endif
 
-  alarmStuffDisable(event->doesFloat());
+  enableAlarmEdit( !event->doesFloat() );
 
   mSecrecyCombo->setCurrentItem(event->secrecy());
 
@@ -286,11 +299,7 @@ void KOEditorGeneral::readIncidence(Incidence *event)
       QToolTip::add(mAlarmSoundButton, dispStr);
     }
     mAlarmButton->setChecked(alarm->enabled());
-    if (mAlarmButton->isChecked()) {
-      alarmStuffEnable(true);
-    } else {
-      alarmStuffEnable(false);
-    }
+    enableAlarmEdit( alarm->enabled() );
 // TODO: Deal with multiple alarms
     break; // For now, stop after the first alarm
   }

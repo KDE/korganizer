@@ -1,6 +1,6 @@
 /*
     This file is part of KOrganizer.
-    Copyright (c) 2001 Cornelius Schumacher <schumacher@kde.org>
+    Copyright (c) 2001,2002 Cornelius Schumacher <schumacher@kde.org>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -46,16 +46,12 @@ KOEventEditor::~KOEventEditor()
 {
 }
 
-QWidget *KOEventEditor::setupGeneralTabWidget(QWidget *parent)
+void KOEventEditor::init()
 {
-  mGeneral = new KOEditorGeneralEvent(spacingHint(),parent);
-
-  return mGeneral;
-}
-
-void KOEventEditor::setupCustomTabs()
-{
-  setupRecurrenceTab();
+  setupGeneral();
+  setupAttendeesTab();
+#ifndef KORG_NORECURRENCE
+  setupRecurrence();
 
   // Propagate date time settings to recurrence tab
   connect(mGeneral,SIGNAL(dateTimesChanged(QDateTime,QDateTime)),
@@ -66,6 +62,7 @@ void KOEventEditor::setupCustomTabs()
   // Enable/Disable recurrence tab
   connect(mGeneral,SIGNAL(recursChanged(bool)),
           SLOT(enableRecurrence(bool)));
+#endif
 
   // Category dialog
   connect(mGeneral,SIGNAL(openCategoryDialog()),mCategoryDialog,SLOT(show()));
@@ -73,7 +70,56 @@ void KOEventEditor::setupCustomTabs()
           mGeneral,SLOT(setCategories(const QString &)));
 }
 
-void KOEventEditor::setupRecurrenceTab()
+void KOEventEditor::setupGeneral()
+{
+  mGeneral = new KOEditorGeneralEvent( this );
+
+  if( KOPrefs::instance()->mCompactDialogs ) {
+    QFrame *topFrame = addPage(i18n("General"));
+
+    QBoxLayout *topLayout = new QVBoxLayout(topFrame);
+    topLayout->setMargin(marginHint());
+    topLayout->setSpacing(spacingHint());
+
+    mGeneral->initHeader(topFrame,topLayout);
+    mGeneral->initTime(topFrame,topLayout);
+//    QBoxLayout *alarmLineLayout = new QHBoxLayout(topLayout);
+    mGeneral->initAlarm(topFrame,topLayout);
+    mGeneral->initCategories( topFrame, topLayout );
+
+    topLayout->addStretch( 1 );
+
+    QFrame *topFrame2 = addPage(i18n("Details"));
+
+    QBoxLayout *topLayout2 = new QVBoxLayout(topFrame2);
+    topLayout2->setMargin(marginHint());
+    topLayout2->setSpacing(spacingHint());
+
+    mGeneral->initClass(topFrame2,topLayout2);
+    mGeneral->initSecrecy( topFrame2, topLayout2 );
+    mGeneral->initDescription(topFrame2,topLayout2);
+  } else {
+    QFrame *topFrame = addPage(i18n("General"));
+
+    QBoxLayout *topLayout = new QVBoxLayout(topFrame);
+    topLayout->setMargin(marginHint());
+    topLayout->setSpacing(spacingHint());
+
+    mGeneral->initHeader(topFrame,topLayout);
+    mGeneral->initTime(topFrame,topLayout);
+    QBoxLayout *alarmLineLayout = new QHBoxLayout(topLayout);
+    mGeneral->initAlarm(topFrame,alarmLineLayout);
+    mGeneral->initClass(topFrame,alarmLineLayout);
+    mGeneral->initDescription(topFrame,topLayout);
+    QBoxLayout *detailsLayout = new QHBoxLayout(topLayout);
+    mGeneral->initCategories( topFrame, detailsLayout );
+    mGeneral->initSecrecy( topFrame, detailsLayout );
+  }
+
+  mGeneral->finishSetup();
+}
+
+void KOEventEditor::setupRecurrence()
 {
   QFrame *topFrame = addPage(i18n("Recurrence"));
 
@@ -173,18 +219,22 @@ void KOEventEditor::setDefaults(QDateTime from, QDateTime to, bool allDay)
 {
   mGeneral->setDefaults(from,to,allDay);
   mDetails->setDefaults();
+#ifndef KORG_NORECURRENCE
   mRecurrence->setDefaults(from,to,allDay);
 
   enableRecurrence(false);
+#endif
 }
 
 void KOEventEditor::readEvent(Event *event)
 {
   mGeneral->readEvent(event);
   mDetails->readEvent(event);
+#ifndef KORG_NORECURRENCE
   mRecurrence->readEvent(event);
 
   enableRecurrence(event->recurrence()->doesRecur());
+#endif
 
   // categories
   mCategoryDialog->setSelected(event->categories());
@@ -194,13 +244,17 @@ void KOEventEditor::writeEvent(Event *event)
 {
   mGeneral->writeEvent(event);
   mDetails->writeEvent(event);
+#ifndef KORG_NORECURRENCE
   mRecurrence->writeEvent(event);
+#endif
 }
 
 bool KOEventEditor::validateInput()
 {
   if (!mGeneral->validateInput()) return false;
   if (!mDetails->validateInput()) return false;
+#ifndef KORG_NORECURRENCE
   if (!mRecurrence->validateInput()) return false;
+#endif
   return true;
 }

@@ -124,6 +124,9 @@ class KOPrefs : public KPrefs
     bool    mFullViewMonth;
     bool    mFullViewTodo;
     bool    mMarcusBainsEnabled;
+   
+    bool    mCompactDialogs;
+    bool    mVerticalScreen;
 
     QString mPrintPreview;
 

@@ -107,9 +107,9 @@ KDateNavigator::KDateNavigator(QWidget *parent,Calendar *calendar,
   ctrlLayout->addWidget(prevYear,3);
   ctrlLayout->addWidget(prevMonth,3);
   ctrlLayout->addStretch(1);
-  ctrlLayout->addSpacing(4);
+  ctrlLayout->addSpacing(2);
   ctrlLayout->addWidget(dateLabel);
-  ctrlLayout->addSpacing(4);
+  ctrlLayout->addSpacing(2);
   ctrlLayout->addStretch(1);
   ctrlLayout->addWidget(nextMonth,3);
   ctrlLayout->addWidget(nextYear,3);
@@ -242,7 +242,7 @@ void KDateNavigator::updateView()
 
   int i;
 
-  kdDebug() << "updateView() -> daymatrix->updateView()" << endl;
+//  kdDebug() << "updateView() -> daymatrix->updateView()" << endl;
   daymatrix->updateView();
 /*ET
   for(i = 0; i < 42; i++) {
@@ -266,7 +266,7 @@ void KDateNavigator::updateView()
   }
 
   setUpdatesEnabled(TRUE);
-  kdDebug() << "updateView() -> repaint()" << endl;
+//  kdDebug() << "updateView() -> repaint()" << endl;
   repaint();
   daymatrix->repaint();
 }

@@ -147,10 +147,18 @@ CalendarView::CalendarView(QWidget *parent,const char *name)
 
   mLeftFrame = mLeftSplitter;
 #else
-  QHBox *mainBox = new QHBox( this );
-  topLayout->addWidget( mainBox );
+  QWidget *mainBox;
+  QWidget *leftFrame;
 
-  QVBox *leftFrame = new QVBox( mainBox );
+  if ( KOPrefs::instance()->mVerticalScreen ) {
+    mainBox = new QVBox( this );
+    leftFrame = new QHBox( mainBox );
+  } else {
+    mainBox = new QHBox( this );
+    leftFrame = new QVBox( mainBox );
+  }
+
+  topLayout->addWidget( mainBox );
 
   mDateNavigator = new KDateNavigator(leftFrame, mCalendar, TRUE,
                         "CalendarView::DateNavigator", QDate::currentDate());
@@ -160,6 +168,11 @@ CalendarView::CalendarView(QWidget *parent,const char *name)
   mRightFrame = new QWidgetStack(mainBox, "CalendarView::RightFrame");
 
   mLeftFrame = leftFrame;
+
+  if ( KOPrefs::instance()->mVerticalScreen ) {
+//    mTodoList->setFixedHeight( 60 );
+    mTodoList->setFixedHeight( mDateNavigator->sizeHint().height() );
+  }
 #endif
 
   connect(mDateNavigator, SIGNAL(datesSelected(const DateList &)),
@@ -1361,4 +1374,15 @@ void CalendarView::showView(KOrg::BaseView *view)
 Incidence *CalendarView::currentSelection()
 {
   return mViewManager->currentSelection();
+}
+
+void CalendarView::toggleExpand()
+{
+  if ( mLeftFrame->isHidden() ) {
+    mLeftFrame->show();
+    emit calendarViewExpanded( false );
+  } else {
+    mLeftFrame->hide();
+    emit calendarViewExpanded( true );
+  }
 }

@@ -37,47 +37,56 @@
 */
 class KTimeEdit : public QComboBox
 {
-  Q_OBJECT
+    Q_OBJECT
+  public:
+    /** constructs a new time edit. */
+    KTimeEdit(QWidget *parent=0, QTime qt=QTime(12,0), const char *name=0);
+  
+    virtual ~KTimeEdit();
 
-public:
-  /** constructs a new time edit. */
-  KTimeEdit(QWidget *parent=0, QTime qt=QTime(12,0), const char *name=0);
+    /**
+      Returns, if a time is selected.
+    */
+    bool hasTime();
   
-  virtual ~KTimeEdit();
-  
-  /** returns the time that is currently set in the timeLineEdit. */
-  QTime getTime();
+    /** returns the time that is currently set in the timeLineEdit. */
+    QTime getTime();
 
-  /** returns the prefered size policy of the KTimeEdit */   
-  QSizePolicy sizePolicy() const;
+    /** returns the prefered size policy of the KTimeEdit */   
+    QSizePolicy sizePolicy() const;
   
-  /** return true if input is a valid time and false if not */
-  bool inputIsValid();
+    /** return true if input is a valid time and false if not */
+    bool inputIsValid();
   
-signals:
-  /** emitted every time the time displayed changes. "newt" is the new
-      time. */
-  void timeChanged(QTime newt);
+  signals:
+    /**
+      Emitted every time the time displayed changes. "newt" is the new
+      time.
+    */
+    void timeChanged(QTime newt);
  
-public slots:
-  /** used to set the time which is displayed to a specific value. */
-  void setTime(QTime qt);
+  public slots:
+    /** used to set the time which is displayed to a specific value. */
+    void setTime(QTime qt);
 
-protected slots: 
-  void activ(int);
-  void hilit(int); 
+  protected slots: 
+    void activ(int);
+    void hilit(int); 
 
-protected:
-  void addTime(QTime qt);
-  void subTime(QTime qt);
-  void keyPressEvent(QKeyEvent *qke);
-  void validateEntry();
-  void updateDisp();
+  protected:
+    void addTime(QTime qt);
+    void subTime(QTime qt);
+    void keyPressEvent(QKeyEvent *qke);
+    void validateEntry();
+    void updateSelection();
   
-  QTime mTime;                   // the widget's displayed time.
-  bool current_display_valid;   /* TRUE if what is currently displayed
+    QTime mTime;                   // the widget's displayed time.
+    bool current_display_valid;   /* TRUE if what is currently displayed
 				   in the widget corresponds to the
 				   stored time, FALSE otherwise. */
+
+  private:
+    QString mNoTimeString;
 };
 
 #endif

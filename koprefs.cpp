@@ -123,6 +123,11 @@ KOPrefs::KOPrefs() :
 
   KPrefs::setCurrentGroup("Printer");
 
+  KPrefs::setCurrentGroup("Layout");
+
+  addItemBool("CompactDialogs",&mCompactDialogs,false);
+  addItemBool("VerticalScreen",&mVerticalScreen,false);
+
   addItemString("Preview",&mPrintPreview,"kghostview");
   
   KPrefs::setCurrentGroup("KOrganizer Plugins");

@@ -141,6 +141,8 @@ class CalendarView : public KOrg::CalendarViewBase
     /** Send status message, which can e.g. be displayed in the status bar */
     void statusMessage(const QString &);
     
+    void calendarViewExpanded( bool );
+    
   public slots:
     /** options dialog made a changed to the configuration. we catch this
      *  and notify all widgets which need to update their configuration. */
@@ -338,6 +340,8 @@ class CalendarView : public KOrg::CalendarViewBase
     void goPrevious();
 
     void processEventSelection(bool selected);
+
+    void toggleExpand();
   
   protected slots:
     /** Select a week to be displayed in the calendar view */

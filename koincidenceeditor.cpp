@@ -54,24 +54,7 @@ KOIncidenceEditor::~KOIncidenceEditor()
   delete mCategoryDialog;
 }
 
-void KOIncidenceEditor::init()
-{
-  setupGeneralTab();
-  setupDetailsTab();
-  setupCustomTabs();
-}
-
-void KOIncidenceEditor::setupGeneralTab()
-{
-  QFrame *topFrame = addPage(i18n("General"));
-
-  QBoxLayout *topLayout = new QVBoxLayout(topFrame);
-  topLayout->setMargin(marginHint());
-
-  topLayout->addWidget(setupGeneralTabWidget(topFrame));
-}
-
-void KOIncidenceEditor::setupDetailsTab()
+void KOIncidenceEditor::setupAttendeesTab()
 {
   QFrame *topFrame = addPage(i18n("Attendees"));
 

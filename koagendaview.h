@@ -150,6 +150,8 @@ class KOAgendaView : public KOEventView {
 
     void setContentsPos(int y);
 
+    void setExpandedButton( bool expanded );
+
   signals:
     void editEventSignal(Event *);  // From KOBaseView
     void showEventSignal(Event *);
@@ -159,6 +161,8 @@ class KOAgendaView : public KOEventView {
     void newEventSignal(QDate);
     void newEventSignal(QDateTime);
     void newEventSignal(QDateTime, QDateTime);  // From KOBaseView
+
+    void toggleExpand();
 
   protected:
     /** Fill agenda beginning with date startDate */
@@ -205,6 +209,7 @@ class KOAgendaView : public KOEventView {
     TimeLabels *mTimeLabels;
     QWidget *mDummyAllDayLeft;
     QSplitter *mSplitterAgenda;
+    QPushButton *mExpandButton;
 
     DateList mSelectedDates;  // List of dates to be displayed
     int mViewType;
@@ -222,6 +227,9 @@ class KOAgendaView : public KOEventView {
     QMemArray<int> mMaxY;
 
     QMemArray<bool> mHolidayMask;
+    
+    QPixmap mExpandedPixmap;
+    QPixmap mNotExpandedPixmap;
 };
 
 #endif  // KOAGENDAVIEW_H

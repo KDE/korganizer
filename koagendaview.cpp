@@ -32,6 +32,7 @@
 #include <qpopupmenu.h>
 #include <qtooltip.h>
 #include <qpainter.h>
+#include <qpushbutton.h>
 
 #include <kapplication.h>
 #include <kdebug.h>
@@ -142,7 +143,7 @@ int TimeLabels::minimumWidth() const
   QFontMetrics fm = fontMetrics();
 
   //TODO: calculate this value
-  int borderWidth = 8;
+  int borderWidth = 4;
 
   // the maximum width possible
   int width = fm.width("88:88") + borderWidth;
@@ -248,6 +249,14 @@ KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name) :
   mDayLabelsFrame = 0;
   mDayLabels = 0;
 
+  if ( KOPrefs::instance()->mVerticalScreen ) {
+    mExpandedPixmap = SmallIcon( "1downarrow" );
+    mNotExpandedPixmap = SmallIcon( "1uparrow" );
+  } else {
+    mExpandedPixmap = SmallIcon( "1rightarrow" );
+    mNotExpandedPixmap = SmallIcon( "1leftarrow" );
+  }
+
   QBoxLayout *topLayout = new QVBoxLayout(this);
 
   // Create day name labels for agenda columns
@@ -273,7 +282,14 @@ KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name) :
 #endif
 
   // Create all-day agenda widget
-  mDummyAllDayLeft = new QWidget(mAllDayFrame);
+  mDummyAllDayLeft = new QVBox( mAllDayFrame );
+
+  mExpandButton = new QPushButton(mDummyAllDayLeft);
+  mExpandButton->setPixmap( mNotExpandedPixmap );
+  mExpandButton->setSizePolicy( QSizePolicy( QSizePolicy::Fixed,
+                                QSizePolicy::Fixed ) );
+  connect( mExpandButton, SIGNAL( clicked() ), SIGNAL( toggleExpand() ) );
+ 
   mAllDayAgenda = new KOAgenda(1,mAllDayFrame);
   QWidget *dummyAllDayRight = new QWidget(mAllDayFrame);
 
@@ -921,7 +937,7 @@ void KOAgendaView::readSettings(KConfig *config)
   }
 #endif
 
-  slotViewChange(config->readNumEntry("Agenda View", KOAgendaView::WEEK));
+  slotViewChange(config->readNumEntry("Agenda View", KOAgendaView::WORKWEEK));
 
   updateConfig();
 }
@@ -970,4 +986,13 @@ void KOAgendaView::setHolidayMasks()
 void KOAgendaView::setContentsPos(int y)
 {
   mAgenda->setContentsPos(0,y);
+}
+
+void KOAgendaView::setExpandedButton( bool expanded )
+{
+  if ( expanded ) {
+    mExpandButton->setPixmap( mExpandedPixmap );
+  } else {
+    mExpandButton->setPixmap( mNotExpandedPixmap );
+  }
 }

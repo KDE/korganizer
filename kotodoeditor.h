@@ -42,6 +42,8 @@ class KOTodoEditor : public KOIncidenceEditor
     KOTodoEditor(Calendar *calendar);
     virtual ~KOTodoEditor(void);
 
+    void init();
+
     /**
       Clear editor for new todo, and preset the dates and times with hint.
     */
@@ -74,7 +76,7 @@ class KOTodoEditor : public KOIncidenceEditor
     void slotUser1();
   
   protected:
-    QWidget *setupGeneralTabWidget(QWidget *);
+    void setupGeneral();
 
   private:  
     Todo *mTodo;

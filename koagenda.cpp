@@ -158,7 +158,7 @@ KOAgenda::KOAgenda(int columns,QWidget *parent,const char *name,WFlags f) :
 {
   mColumns = columns;
   mRows = 1;
-  mGridSpacingY = 40;
+  mGridSpacingY = 24;
   mAllDayMode = true;
 
   init();

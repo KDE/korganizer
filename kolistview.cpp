@@ -177,6 +177,8 @@ KOListView::KOListView(Calendar *calendar, QWidget *parent,
                    this,SLOT(popupMenu(QListViewItem *,const QPoint &,int)));
   QObject::connect(mListView,SIGNAL(selectionChanged()),
                    SLOT(processSelectionChange()));
+
+//  setMinimumSize(100,100);
 }
 
 KOListView::~KOListView()

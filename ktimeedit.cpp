@@ -38,6 +38,9 @@ KTimeEdit::KTimeEdit(QWidget *parent, QTime qt, const char *name)
 
   mTime = qt;
 
+  mNoTimeString = i18n("No Time");
+//  insertItem( mNoTimeString );
+
   // Fill combo box with selection of times in localized format.
   QTime timeEntry(0,0,0);
   do {
@@ -45,7 +48,7 @@ KTimeEdit::KTimeEdit(QWidget *parent, QTime qt, const char *name)
     timeEntry = timeEntry.addSecs(60*15);
   } while (!timeEntry.isNull());
 
-  updateDisp();
+  updateSelection();
   setFocusPolicy(QWidget::StrongFocus);
 
   connect(this, SIGNAL(activated(int)), this, SLOT(activ(int)));
@@ -54,6 +57,14 @@ KTimeEdit::KTimeEdit(QWidget *parent, QTime qt, const char *name)
 
 KTimeEdit::~KTimeEdit()
 {
+}
+
+bool KTimeEdit::hasTime()
+{
+  if ( currentText().isEmpty() ) return false;
+  if ( currentText() == mNoTimeString ) return false;
+
+  return true;
 }
 
 QTime KTimeEdit::getTime()
@@ -78,7 +89,7 @@ void KTimeEdit::setTime(QTime newTime)
   kdDebug() << "KTimeEdit::setTime(): " << newTime.toString() << endl;
 
   mTime = newTime;
-  updateDisp();
+  updateSelection();
 }
 
 void KTimeEdit::activ(int i)
@@ -97,7 +108,7 @@ void KTimeEdit::addTime(QTime qt)
   // Calculate the new time.
   mTime = qt.addSecs(mTime.minute()*60+mTime.hour()*3600);
   emit timeChanged(mTime);
-  updateDisp();
+  updateSelection();
 }
 
 void KTimeEdit::subTime(QTime qt)
@@ -122,7 +133,7 @@ void KTimeEdit::subTime(QTime qt)
   // store the newly calculated time.
   mTime.setHMS(h, m, 0);
   emit timeChanged(mTime);
-  updateDisp();
+  updateSelection();
 }
 
 void KTimeEdit::keyPressEvent(QKeyEvent *qke)
@@ -163,7 +174,7 @@ void KTimeEdit::validateEntry()
 */
 }
 
-void KTimeEdit::updateDisp()
+void KTimeEdit::updateSelection()
 {
   QString s = KGlobal::locale()->formatTime(mTime);
   setEditText(s);
@@ -175,6 +186,8 @@ void KTimeEdit::updateDisp()
 
 bool KTimeEdit::inputIsValid()
 {
+//  if ( !hasTime() ) return true;
+
   QTime t = KGlobal::locale()->readTime(currentText());
 
   return t.isValid();

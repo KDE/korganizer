@@ -210,7 +210,6 @@ void KOViewManager::showAgendaView()
     connect(mAgendaView, SIGNAL(datesSelected(const DateList &)),
             mMainView->dateNavigator(), SLOT(selectDates(const DateList &)));
 
-
 //ET
     kdDebug() << "KOViewManager::showAgendaView() slot shiftedEvents" << endl;
 
@@ -233,6 +232,11 @@ void KOViewManager::showAgendaView()
             mMainView, SLOT(deleteEvent(Event *)));
     connect(mAgendaView,SIGNAL(eventsSelected(bool)),
             mMainView, SLOT(processEventSelection(bool)));
+
+    connect(mAgendaView, SIGNAL( toggleExpand() ),
+            mMainView, SLOT( toggleExpand() ) );
+    connect(mMainView, SIGNAL( calendarViewExpanded( bool ) ),
+            mAgendaView, SLOT( setExpandedButton( bool ) ) );
 
     connect(mMainView, SIGNAL(configChanged()), mAgendaView, SLOT(updateConfig()));
 

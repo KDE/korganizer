@@ -45,7 +45,7 @@ class KOIncidenceEditor : public KDialogBase
     virtual ~KOIncidenceEditor(void);
 
     /** Initialize editor. This function creates the tab widgets. */
-    void init();
+    virtual void init() = 0;
 
   public slots:
     void updateCategoryConfig();
@@ -58,11 +58,7 @@ class KOIncidenceEditor : public KDialogBase
     void slotOk();
 
   protected:
-    void setupGeneralTab();
-    void setupDetailsTab();
-    virtual void setupCustomTabs() {};
-
-    virtual QWidget *setupGeneralTabWidget(QWidget *) = 0;
+    void setupAttendeesTab();
 
     /**
       Process user input and create or update event. Returns false if input is invalid.

@@ -45,15 +45,65 @@ KOTodoEditor::~KOTodoEditor()
 {
 }
 
-QWidget *KOTodoEditor::setupGeneralTabWidget(QWidget *parent)
+void KOTodoEditor::init()
 {
-  mGeneral = new KOEditorGeneralTodo(spacingHint(),parent);
+  setupGeneral();
+  setupAttendeesTab();
+}
 
+void KOTodoEditor::setupGeneral()
+{
+  mGeneral = new KOEditorGeneralTodo(this);
+ 
   connect(mGeneral,SIGNAL(openCategoryDialog()),mCategoryDialog,SLOT(show()));
   connect(mCategoryDialog, SIGNAL(categoriesSelected(const QString &)),
           mGeneral,SLOT(setCategories(const QString &)));
 
-  return mGeneral;
+  if (KOPrefs::instance()->mCompactDialogs) {
+    QFrame *topFrame = addPage(i18n("General"));
+
+    QBoxLayout *topLayout = new QVBoxLayout(topFrame);
+    topLayout->setMargin(marginHint());
+    topLayout->setSpacing(spacingHint());
+
+    mGeneral->initHeader(topFrame,topLayout);
+    mGeneral->initTime(topFrame,topLayout);
+    QHBoxLayout *priorityLayout = new QHBoxLayout( topLayout );
+    mGeneral->initPriority(topFrame,priorityLayout);
+    mGeneral->initCategories( topFrame, topLayout );
+    topLayout->addStretch(1);
+
+    QFrame *topFrame2 = addPage(i18n("Details"));
+
+    QBoxLayout *topLayout2 = new QVBoxLayout(topFrame2);
+    topLayout2->setMargin(marginHint());
+    topLayout2->setSpacing(spacingHint());
+
+    QHBoxLayout *completionLayout = new QHBoxLayout( topLayout2 );
+    mGeneral->initCompletion(topFrame2,completionLayout);
+    QBoxLayout *alarmLineLayout = new QHBoxLayout(topLayout2);
+    mGeneral->initAlarm(topFrame2,alarmLineLayout);
+    mGeneral->initSecrecy( topFrame2, topLayout2 );
+    mGeneral->initDescription(topFrame2,topLayout2);
+  } else {
+    QFrame *topFrame = addPage(i18n("General"));
+
+    QBoxLayout *topLayout = new QVBoxLayout(topFrame);
+    topLayout->setMargin(marginHint());
+    topLayout->setSpacing(spacingHint());
+
+    mGeneral->initHeader(topFrame,topLayout);
+    mGeneral->initTime(topFrame,topLayout);
+    mGeneral->initStatus(topFrame,topLayout);
+    QBoxLayout *alarmLineLayout = new QHBoxLayout(topLayout);
+    mGeneral->initAlarm(topFrame,alarmLineLayout);
+    mGeneral->initDescription(topFrame,topLayout);
+    QBoxLayout *detailsLayout = new QHBoxLayout(topLayout);
+    mGeneral->initCategories( topFrame, detailsLayout );
+    mGeneral->initSecrecy( topFrame, detailsLayout );
+  }
+
+  mGeneral->finishSetup();
 }
 
 void KOTodoEditor::editTodo(Todo *todo)

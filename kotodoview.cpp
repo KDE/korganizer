@@ -238,6 +238,8 @@ KOTodoView::KOTodoView(Calendar *calendar,QWidget* parent,const char* name) :
   mTodoListView->addColumn(i18n("Sort Id"));
   mTodoListView->setColumnAlignment(4,AlignHCenter);
 
+  mTodoListView->setMinimumHeight( 60 );
+
   mItemPopupMenu = new QPopupMenu;
   mItemPopupMenu->insertItem(i18n("Show..."), this,
                              SLOT (showTodo()));

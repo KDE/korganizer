@@ -40,12 +40,18 @@
 
 using namespace KCal;
 
-class KOEditorGeneral : public QWidget
+class KOEditorGeneral : public QObject
 {
     Q_OBJECT
   public:
-    KOEditorGeneral (QWidget* parent=0,const char* name=0);
+    KOEditorGeneral (QObject* parent=0,const char* name=0);
     virtual ~KOEditorGeneral();
+
+    void initHeader(QWidget *,QBoxLayout *);
+    void initDescription(QWidget *,QBoxLayout *);
+    void initSecrecy(QWidget *,QBoxLayout *);
+    void initCategories(QWidget *,QBoxLayout *);    
+    void initAlarm(QWidget *,QBoxLayout *);
 
     /** Set widgets to default values */
     void setDefaults(bool allDay);
@@ -61,9 +67,9 @@ class KOEditorGeneral : public QWidget
     void setCategories(const QString &);
 
   protected slots:
-    void alarmStuffEnable(bool enable);
-    void alarmStuffDisable(bool disable);
-    void alarmDisable(bool disable);
+    void enableAlarmEdit( bool enable );
+    void disableAlarmEdit( bool disable );
+    void alarmDisable( bool disable );
     void pickAlarmSound();
     void pickAlarmProgram();
 
@@ -71,10 +77,6 @@ class KOEditorGeneral : public QWidget
     void openCategoryDialog();
 
   protected:
-    void initHeader(QBoxLayout *);
-    void initDescription(QBoxLayout *);
-    void initAlarm(QBoxLayout *);
-
     QLineEdit               *mSummaryEdit;
     QLabel                  *mAlarmBell;
     QCheckBox               *mAlarmButton;

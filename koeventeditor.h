@@ -48,6 +48,8 @@ class KOEventEditor : public KOIncidenceEditor
     KOEventEditor( Calendar *calendar);
     virtual ~KOEventEditor(void);
 
+    void init();
+
     /** Clear eventwin for new event, and preset the dates and times with hint */
     void newEvent( QDateTime from, QDateTime to, bool allDay = FALSE );
 
@@ -73,10 +75,8 @@ class KOEventEditor : public KOIncidenceEditor
     void enableRecurrence(bool);
 
   protected:
-    void setupCustomTabs();
-  
-    void setupRecurrenceTab();
-    QWidget *setupGeneralTabWidget(QWidget *);
+    void setupGeneral();
+    void setupRecurrence();
 
     /** Check if the input is valid. */
     bool validateInput();

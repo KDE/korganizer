@@ -44,21 +44,18 @@
 #include "koeditorgeneraltodo.h"
 #include "koeditorgeneraltodo.moc"
 
-KOEditorGeneralTodo::KOEditorGeneralTodo(int spacing,QWidget* parent,
+KOEditorGeneralTodo::KOEditorGeneralTodo(QObject* parent,
                                          const char* name)
   : KOEditorGeneral( parent, name)
 {
-  mSpacing = spacing;
+}
 
-  QBoxLayout *topLayout = new QVBoxLayout(this);
-  topLayout->setSpacing(mSpacing);
-  initHeader(topLayout);
-  initTime(topLayout);
-  initStatus(topLayout);
-  QBoxLayout *alarmLineLayout = new QHBoxLayout(topLayout);
-  initAlarm(alarmLineLayout);
-  initDescription(topLayout);
+KOEditorGeneralTodo::~KOEditorGeneralTodo()
+{
+}
 
+void KOEditorGeneralTodo::finishSetup()
+{
   QWidget::setTabOrder(mSummaryEdit, mCompletedCombo);
   QWidget::setTabOrder(mCompletedCombo, mPriorityCombo);
   QWidget::setTabOrder(mPriorityCombo, mDescriptionEdit);
@@ -69,67 +66,56 @@ KOEditorGeneralTodo::KOEditorGeneralTodo(int spacing,QWidget* parent,
   mSummaryEdit->setFocus();
 }
 
-KOEditorGeneralTodo::~KOEditorGeneralTodo()
-{
-}
-
-void KOEditorGeneralTodo::initTime(QBoxLayout *topLayout)
+void KOEditorGeneralTodo::initTime(QWidget *parent,QBoxLayout *topLayout)
 {
   QBoxLayout *timeLayout = new QVBoxLayout(topLayout);
 
   QGroupBox *timeGroupBox = new QGroupBox(1,QGroupBox::Horizontal,
-                                          i18n("Due Date "),this);
+                                          i18n("Date && Time"),parent);
   timeLayout->addWidget(timeGroupBox);
 
   QFrame *timeBoxFrame = new QFrame(timeGroupBox);
 
   QGridLayout *layoutTimeBox = new QGridLayout(timeBoxFrame,1,1);
-  layoutTimeBox->setSpacing(mSpacing);
+  layoutTimeBox->setSpacing(topLayout->spacing());
 
-  mNoDueCheck = new QCheckBox(i18n("No due date"),timeBoxFrame);
-  layoutTimeBox->addWidget(mNoDueCheck,0,0);
-  connect(mNoDueCheck,SIGNAL(toggled(bool)),SLOT(dueStuffDisable(bool)));
-  connect(mNoDueCheck,SIGNAL(toggled(bool)),SLOT(alarmDisable(bool)));
 
-  mDueLabel = new QLabel(i18n("Due Date:"),timeBoxFrame);
-  layoutTimeBox->addWidget(mDueLabel,1,0);
-  
+  mDueCheck = new QCheckBox(i18n("Due:"),timeBoxFrame);
+  layoutTimeBox->addWidget(mDueCheck,0,0);
+  connect(mDueCheck,SIGNAL(toggled(bool)),SLOT(enableDueEdit(bool)));
+  connect(mDueCheck,SIGNAL(toggled(bool)),SLOT(enableAlarmEdit(bool)));
+
   mDueDateEdit = new KDateEdit(timeBoxFrame);
-  layoutTimeBox->addWidget(mDueDateEdit,1,1);
+  layoutTimeBox->addWidget(mDueDateEdit,0,1);
 
   mDueTimeEdit = new KTimeEdit(timeBoxFrame);
-  layoutTimeBox->addWidget(mDueTimeEdit,1,2);
+  layoutTimeBox->addWidget(mDueTimeEdit,0,2);
 
 
-  mNoStartCheck = new QCheckBox(i18n("No start date"),timeBoxFrame);
-  layoutTimeBox->addWidget(mNoStartCheck,2,0);
-  connect(mNoStartCheck,SIGNAL(toggled(bool)),SLOT(startStuffDisable(bool)));
+  mStartCheck = new QCheckBox(i18n("Start:"),timeBoxFrame);
+  layoutTimeBox->addWidget(mStartCheck,1,0);
+  connect(mStartCheck,SIGNAL(toggled(bool)),SLOT(enableStartEdit(bool)));
 
-  mStartLabel = new QLabel(i18n("Start Date:"),timeBoxFrame);
-  layoutTimeBox->addWidget(mStartLabel,3,0);
-  
   mStartDateEdit = new KDateEdit(timeBoxFrame);
-  layoutTimeBox->addWidget(mStartDateEdit,3,1);
+  layoutTimeBox->addWidget(mStartDateEdit,1,1);
 
   mStartTimeEdit = new KTimeEdit(timeBoxFrame);
-  layoutTimeBox->addWidget(mStartTimeEdit,3,2);
+  layoutTimeBox->addWidget(mStartTimeEdit,1,2);
 
 
-  mNoTimeButton = new QCheckBox(i18n("No time associated"),timeBoxFrame);
-  layoutTimeBox->addWidget(mNoTimeButton,0,4);
+  mTimeButton = new QCheckBox(i18n("Time associated"),timeBoxFrame);
+  layoutTimeBox->addMultiCellWidget(mTimeButton,2,2,0,2);
 
-  connect(mNoTimeButton,SIGNAL(toggled(bool)),SLOT(timeStuffDisable(bool)));
+  connect(mTimeButton,SIGNAL(toggled(bool)),SLOT(enableTimeEdits(bool)));
   
   // some more layouting
   layoutTimeBox->setColStretch(3,1);
 }
 
 
-void KOEditorGeneralTodo::initStatus(QBoxLayout *topLayout)
+void KOEditorGeneralTodo::initCompletion(QWidget *parent, QBoxLayout *topLayout)
 {
-  QBoxLayout *statusLayout = new QHBoxLayout(topLayout);
-
-  mCompletedCombo = new QComboBox(this);
+  mCompletedCombo = new QComboBox(parent);
   // xgettext:no-c-format
   mCompletedCombo->insertItem(i18n("0 %"));
   // xgettext:no-c-format
@@ -143,23 +129,35 @@ void KOEditorGeneralTodo::initStatus(QBoxLayout *topLayout)
   // xgettext:no-c-format
   mCompletedCombo->insertItem(i18n("100 %"));
   connect(mCompletedCombo,SIGNAL(activated(int)),SLOT(completedChanged(int)));
-  statusLayout->addWidget(mCompletedCombo);
+  topLayout->addWidget(mCompletedCombo);
 
-  statusLayout->addStretch(1);
+  mCompletedLabel = new QLabel(i18n("completed"),parent);
+  topLayout->addWidget(mCompletedLabel);
+}
 
-  mCompletedLabel = new QLabel(i18n("completed"),this);
-  statusLayout->addWidget(mCompletedLabel);
+void KOEditorGeneralTodo::initPriority(QWidget *parent, QBoxLayout *topLayout)
+{
+  QLabel *priorityLabel = new QLabel(i18n("Priority:"),parent);
+  topLayout->addWidget(priorityLabel);
 
-  QLabel *priorityLabel = new QLabel(i18n("Priority:"),this);
-  statusLayout->addWidget(priorityLabel);
-
-  mPriorityCombo = new QComboBox(this);
+  mPriorityCombo = new QComboBox(parent);
   mPriorityCombo->insertItem(i18n("1 (Highest)"));
   mPriorityCombo->insertItem(i18n("2"));
   mPriorityCombo->insertItem(i18n("3"));
   mPriorityCombo->insertItem(i18n("4"));
   mPriorityCombo->insertItem(i18n("5 (lowest)"));
-  statusLayout->addWidget(mPriorityCombo);
+  topLayout->addWidget(mPriorityCombo);
+}
+
+void KOEditorGeneralTodo::initStatus(QWidget *parent,QBoxLayout *topLayout)
+{
+  QBoxLayout *statusLayout = new QHBoxLayout(topLayout);
+
+  initCompletion( parent, statusLayout );
+
+  statusLayout->addStretch( 1 );
+
+  initPriority( parent, statusLayout );
 }
 
 
@@ -167,16 +165,16 @@ void KOEditorGeneralTodo::setDefaults(QDateTime due,bool allDay)
 {
   KOEditorGeneral::setDefaults(allDay);
 
-  mNoTimeButton->setChecked(allDay);
-  timeStuffDisable(allDay);
+  mTimeButton->setChecked( !allDay );
+  enableTimeEdits( !allDay );
   
-  mNoDueCheck->setChecked(true);
-  dueStuffDisable(true);
+  mDueCheck->setChecked(false);
+  enableDueEdit(false);
 
   alarmDisable(true);
   
-  mNoStartCheck->setChecked(true);
-  startStuffDisable(true);
+  mStartCheck->setChecked(false);
+  enableStartEdit(false);
 
   mDueDateEdit->setDate(due.date());
   mDueTimeEdit->setTime(due.time());
@@ -199,24 +197,24 @@ void KOEditorGeneralTodo::readTodo(Todo *todo)
     dueDT = todo->dtDue();
     mDueDateEdit->setDate(todo->dtDue().date());
     mDueTimeEdit->setTime(todo->dtDue().time());
-    mNoDueCheck->setChecked(false);
+    mDueCheck->setChecked(true);
   } else {
     mDueDateEdit->setDate(QDate::currentDate());
     mDueTimeEdit->setTime(QTime::currentTime());
-    mNoDueCheck->setChecked(true);
+    mDueCheck->setChecked(false);
   }
 
   if (todo->hasStartDate()) {
     mStartDateEdit->setDate(todo->dtStart().date());
     mStartTimeEdit->setTime(todo->dtStart().time());
-    mNoStartCheck->setChecked(false);
+    mStartCheck->setChecked(true);
   } else {
     mStartDateEdit->setDate(QDate::currentDate());
     mStartTimeEdit->setTime(QTime::currentTime());
-    mNoStartCheck->setChecked(true);
+    mStartCheck->setChecked(false);
   }
 
-  mNoTimeButton->setChecked(todo->doesFloat());
+  mTimeButton->setChecked( !todo->doesFloat() );
 
   mCompletedCombo->setCurrentItem(todo->percentComplete() / 20);
   if (todo->isCompleted() && todo->hasCompletedDate()) {
@@ -234,28 +232,13 @@ void KOEditorGeneralTodo::writeTodo(Todo *todo)
   // temp. until something better happens.
   QString tmpStr;
   
-  todo->setHasDueDate(!mNoDueCheck->isChecked());
-  todo->setHasStartDate(!mNoStartCheck->isChecked());
+  todo->setHasDueDate(mDueCheck->isChecked());
+  todo->setHasStartDate(mStartCheck->isChecked());
 
   QDate tmpDate;
   QTime tmpTime;
   QDateTime tmpDT;
-  if (mNoTimeButton->isChecked()) {
-    todo->setFloats(true);
-
-    // need to change this.
-    tmpDate = mDueDateEdit->getDate();
-    tmpTime.setHMS(0,0,0);
-    tmpDT.setDate(tmpDate);
-    tmpDT.setTime(tmpTime);
-    todo->setDtDue(tmpDT);
-    
-    tmpDate = mStartDateEdit->getDate();
-    tmpTime.setHMS(0,0,0);
-    tmpDT.setDate(tmpDate);
-    tmpDT.setTime(tmpTime);
-    todo->setDtStart(tmpDT);
-  } else {
+  if ( mTimeButton->isChecked() ) {
     todo->setFloats(false);
     
     // set due date/time
@@ -271,7 +254,22 @@ void KOEditorGeneralTodo::writeTodo(Todo *todo)
     tmpDT.setDate(tmpDate);
     tmpDT.setTime(tmpTime);
     todo->setDtStart(tmpDT);
-  } // check for float
+  } else {
+    todo->setFloats(true);
+
+    // need to change this.
+    tmpDate = mDueDateEdit->getDate();
+    tmpTime.setHMS(0,0,0);
+    tmpDT.setDate(tmpDate);
+    tmpDT.setTime(tmpTime);
+    todo->setDtDue(tmpDT);
+    
+    tmpDate = mStartDateEdit->getDate();
+    tmpTime.setHMS(0,0,0);
+    tmpDT.setDate(tmpDate);
+    tmpDT.setTime(tmpTime);
+    todo->setDtStart(tmpDT);
+  }
   
   todo->setPriority(mPriorityCombo->currentItem()+1);
 
@@ -283,86 +281,73 @@ void KOEditorGeneralTodo::writeTodo(Todo *todo)
   }
 }
 
-void KOEditorGeneralTodo::dueStuffDisable(bool disable)
+void KOEditorGeneralTodo::enableDueEdit(bool enable)
 {
-  if (disable) {
-    mDueDateEdit->hide();
-    mDueLabel->hide();
-//    noTimeButton->hide();
-    mDueTimeEdit->hide();
+  mDueDateEdit->setEnabled( enable );
+  
+  if (enable) {
+    mDueTimeEdit->setEnabled( mTimeButton->isChecked() );
   } else {
-    mDueDateEdit->show();
-    mDueLabel->show();
-//    noTimeButton->show();
-    if (mNoTimeButton->isChecked()) mDueTimeEdit->hide();
-    else mDueTimeEdit->show();
+    mDueTimeEdit->setEnabled( false );
   }
 }
 
-void KOEditorGeneralTodo::startStuffDisable(bool disable)
+void KOEditorGeneralTodo::enableStartEdit( bool enable )
 {
-  if (disable) {
-    mStartDateEdit->hide();
-    mStartLabel->hide();
-    mStartTimeEdit->hide();
+  mStartDateEdit->setEnabled( enable );
+
+  if (enable) {
+    mStartTimeEdit->setEnabled( mTimeButton->isChecked() );
   } else {
-    mStartDateEdit->show();
-    mStartLabel->show();
-    if (mNoTimeButton->isChecked()) mStartTimeEdit->hide();
-    else mStartTimeEdit->show();
+    mStartTimeEdit->setEnabled( false );
   }
 }
 
-void KOEditorGeneralTodo::timeStuffDisable(bool disable)
+void KOEditorGeneralTodo::enableTimeEdits(bool enable)
 {
-  if (disable) {
-    mStartTimeEdit->hide();
-    mDueTimeEdit->hide();
-  } else {
-    if(!mNoStartCheck->isChecked()) mStartTimeEdit->show();
-    if(!mNoDueCheck->isChecked()) mDueTimeEdit->show();
-  }
+  mStartTimeEdit->setEnabled( enable );
+  mDueTimeEdit->setEnabled( enable );
 }
 
 bool KOEditorGeneralTodo::validateInput()
 {
-  if (!mNoDueCheck->isChecked()) {
+  if (mDueCheck->isChecked()) {
     if (!mDueDateEdit->inputIsValid()) {
-      KMessageBox::sorry(this,i18n("Please specify a valid due date."));
+      KMessageBox::sorry(0,i18n("Please specify a valid due date."));
       return false;
     }
-    if (!mNoTimeButton->isChecked()) {
+    if (mTimeButton->isChecked()) {
       if (!mDueTimeEdit->inputIsValid()) {
-        KMessageBox::sorry(this,i18n("Please specify a valid due time."));
+        KMessageBox::sorry(0,i18n("Please specify a valid due time."));
         return false;
       }
     }
   }
 
-  if (!mNoStartCheck->isChecked()) {
+  if (mStartCheck->isChecked()) {
     if (!mStartDateEdit->inputIsValid()) {
-      KMessageBox::sorry(this,i18n("Please specify a valid start date."));
+      KMessageBox::sorry(0,i18n("Please specify a valid start date."));
       return false;
     }
-    if (!mNoTimeButton->isChecked()) {
+    if (mTimeButton->isChecked()) {
       if (!mStartTimeEdit->inputIsValid()) {
-        KMessageBox::sorry(this,i18n("Please specify a valid start time."));
+        KMessageBox::sorry(0,i18n("Please specify a valid start time."));
         return false;
       }
     }
   }
 
-  if (!mNoStartCheck->isChecked() && !mNoDueCheck->isChecked()) {
+  if (mStartCheck->isChecked() && mDueCheck->isChecked()) {
     QDateTime startDate;
     QDateTime dueDate;
     startDate.setDate(mStartDateEdit->getDate());
     dueDate.setDate(mDueDateEdit->getDate());
-    if (!mNoTimeButton->isChecked()) {
+    if (mTimeButton->isChecked()) {
       startDate.setTime(mStartTimeEdit->getTime());
       dueDate.setTime(mDueTimeEdit->getTime());
     }
     if (startDate > dueDate) {
-      KMessageBox::sorry(this,
+      KMessageBox::sorry(0,
                          i18n("The start date cannot be after the due date."));
       return false;
     }

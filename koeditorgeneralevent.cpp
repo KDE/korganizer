@@ -42,21 +42,22 @@
 #include "koeditorgeneralevent.h"
 #include "koeditorgeneralevent.moc"
 
-KOEditorGeneralEvent::KOEditorGeneralEvent(int spacing,QWidget* parent,
+KOEditorGeneralEvent::KOEditorGeneralEvent(QObject* parent,
                                            const char* name) :
   KOEditorGeneral( parent, name)
 {
-  mSpacing = spacing;
+  connect(this,SIGNAL(dateTimesChanged(QDateTime,QDateTime)),
+          SLOT(setDuration()));
+  connect(this,SIGNAL(dateTimesChanged(QDateTime,QDateTime)),
+          SLOT(emitDateTimeStr()));
+}
 
-  QBoxLayout *topLayout = new QVBoxLayout(this);
-  topLayout->setSpacing(mSpacing);
-  initHeader(topLayout);
-  initTime(topLayout);
-  QBoxLayout *alarmLineLayout = new QHBoxLayout(topLayout);
-  initAlarm(alarmLineLayout);
-  initClass(alarmLineLayout);
-  initDescription(topLayout);
+KOEditorGeneralEvent::~KOEditorGeneralEvent()
+{
+}
 
+void KOEditorGeneralEvent::finishSetup()
+{
   QWidget::setTabOrder(mSummaryEdit, mStartDateEdit);
   QWidget::setTabOrder(mStartDateEdit, mStartTimeEdit);
   QWidget::setTabOrder(mStartTimeEdit, mEndDateEdit);
@@ -70,71 +71,61 @@ KOEditorGeneralEvent::KOEditorGeneralEvent(int spacing,QWidget* parent,
   QWidget::setTabOrder(mCategoriesButton, mSecrecyCombo);
 
   mSummaryEdit->setFocus();
-
-  connect(this,SIGNAL(dateTimesChanged(QDateTime,QDateTime)),
-          SLOT(setDuration()));
-  connect(this,SIGNAL(dateTimesChanged(QDateTime,QDateTime)),
-          SLOT(emitDateTimeStr()));
 }
 
-KOEditorGeneralEvent::~KOEditorGeneralEvent()
-{
-}
-
-void KOEditorGeneralEvent::initTime(QBoxLayout *topLayout)
+void KOEditorGeneralEvent::initTime(QWidget *parent,QBoxLayout *topLayout)
 {
   QBoxLayout *timeLayout = new QVBoxLayout(topLayout);
 
   QGroupBox *timeGroupBox = new QGroupBox(1,QGroupBox::Horizontal,
-                                          i18n("Appointment Time "),this);
+                                          i18n("Date && Time"),parent);
   timeLayout->addWidget(timeGroupBox);
 
   QFrame *timeBoxFrame = new QFrame(timeGroupBox);
 
   QGridLayout *layoutTimeBox = new QGridLayout(timeBoxFrame,2,3);
-  layoutTimeBox->setSpacing(mSpacing);
+  layoutTimeBox->setSpacing(topLayout->spacing());
 
 
-  mStartDateLabel = new QLabel(i18n("Start Date:"),timeBoxFrame);
+  mStartDateLabel = new QLabel(i18n("Start:"),timeBoxFrame);
   layoutTimeBox->addWidget(mStartDateLabel,0,0);
   
   mStartDateEdit = new KDateEdit(timeBoxFrame);
   layoutTimeBox->addWidget(mStartDateEdit,0,1);
 
-  mStartTimeLabel = new QLabel(i18n("Start Time:"),timeBoxFrame);
-  layoutTimeBox->addWidget(mStartTimeLabel,0,2);
-  
   mStartTimeEdit = new KTimeEdit(timeBoxFrame);
   layoutTimeBox->addWidget(mStartTimeEdit,0,3);
 
 
-  mEndDateLabel = new QLabel(i18n("End Date:"),timeBoxFrame);
+  mEndDateLabel = new QLabel(i18n("End:"),timeBoxFrame);
   layoutTimeBox->addWidget(mEndDateLabel,1,0);
 
   mEndDateEdit = new KDateEdit(timeBoxFrame);
   layoutTimeBox->addWidget(mEndDateEdit,1,1);
 
-  mEndTimeLabel = new QLabel(i18n("End Time:"),timeBoxFrame);
-  layoutTimeBox->addWidget(mEndTimeLabel,1,2);
-
   mEndTimeEdit = new KTimeEdit(timeBoxFrame);
   layoutTimeBox->addWidget(mEndTimeEdit,1,3);
 
+  QHBox *flagsBox = new QHBox( timeBoxFrame );
 
-  mNoTimeButton = new QCheckBox(i18n("No time associated"),timeBoxFrame);
-  connect(mNoTimeButton, SIGNAL(toggled(bool)),SLOT(dontAssociateTime(bool)));
-  layoutTimeBox->addMultiCellWidget(mNoTimeButton,2,2,2,3);
-
-  mRecursButton = new QCheckBox(i18n("Recurring event"),timeBoxFrame);
+  mRecursButton = new QCheckBox(i18n("Recurring event"),flagsBox);
   connect(mRecursButton,SIGNAL(toggled(bool)),SIGNAL(recursChanged(bool)));
-  layoutTimeBox->addMultiCellWidget(mRecursButton,2,2,0,1);
+#ifdef KORG_NORECURRENCE
+  mRecursButton->hide();
+#endif
+
+  mNoTimeButton = new QCheckBox(i18n("No time associated"),flagsBox);
+  connect(mNoTimeButton, SIGNAL(toggled(bool)),SLOT(dontAssociateTime(bool)));
+
+  layoutTimeBox->addMultiCellWidget(flagsBox,2,2,0,3);
+
 
   mDurationLabel = new QLabel(timeBoxFrame);
-  layoutTimeBox->addMultiCellWidget(mDurationLabel,0,1,5,5);
+  layoutTimeBox->addMultiCellWidget(mDurationLabel,3,3,0,3);
 
   // add stretch space around duration label
-  layoutTimeBox->setColStretch(4,1);
-  layoutTimeBox->setColStretch(6,1);
+//  layoutTimeBox->setColStretch(4,1);
+//  layoutTimeBox->setColStretch(6,1);
 
   // time widgets are checked if they contain a valid time
   connect(mStartTimeEdit, SIGNAL(timeChanged(QTime)),
@@ -149,14 +140,14 @@ void KOEditorGeneralEvent::initTime(QBoxLayout *topLayout)
 	  this, SLOT(endDateChanged(QDate)));
 }
 
-void KOEditorGeneralEvent::initClass(QBoxLayout *topLayout)
+void KOEditorGeneralEvent::initClass(QWidget *parent,QBoxLayout *topLayout)
 {
   QBoxLayout *classLayout = new QHBoxLayout(topLayout);
 
-  QLabel *freeTimeLabel = new QLabel(i18n("Show Time As:"),this);
+  QLabel *freeTimeLabel = new QLabel(i18n("Show Time As:"),parent);
   classLayout->addWidget(freeTimeLabel);
 
-  mFreeTimeCombo = new QComboBox(false, this);
+  mFreeTimeCombo = new QComboBox(false, parent);
   mFreeTimeCombo->insertItem(i18n("Busy"));
   mFreeTimeCombo->insertItem(i18n("Free"));
   classLayout->addWidget(mFreeTimeCombo);
@@ -165,13 +156,9 @@ void KOEditorGeneralEvent::initClass(QBoxLayout *topLayout)
 void KOEditorGeneralEvent::timeStuffDisable(bool disable)
 {
   if (disable) {
-    mStartTimeLabel->hide();
-    mEndTimeLabel->hide();
     mStartTimeEdit->hide();
     mEndTimeEdit->hide();
   } else {
-    mStartTimeLabel->show();
-    mEndTimeLabel->show();
     mStartTimeEdit->show();
     mEndTimeEdit->show();
   }
@@ -411,23 +398,23 @@ bool KOEditorGeneralEvent::validateInput()
 
   if (!mNoTimeButton->isChecked()) {
     if (!mStartTimeEdit->inputIsValid()) {
-      KMessageBox::sorry(this,i18n("Please specify a valid start time."));
+      KMessageBox::sorry(0,i18n("Please specify a valid start time."));
       return false;
     }
 
     if (!mEndTimeEdit->inputIsValid()) {
-      KMessageBox::sorry(this,i18n("Please specify a valid end time."));
+      KMessageBox::sorry(0,i18n("Please specify a valid end time."));
       return false;
     }
   }
 
   if (!mStartDateEdit->inputIsValid()) {
-    KMessageBox::sorry(this,i18n("Please specify a valid start date."));
+    KMessageBox::sorry(0,i18n("Please specify a valid start date."));
     return false;
   }
 
   if (!mEndDateEdit->inputIsValid()) {
-    KMessageBox::sorry(this,i18n("Please specify a valid end date."));
+    KMessageBox::sorry(0,i18n("Please specify a valid end date."));
     return false;
   }
 
@@ -440,7 +427,7 @@ bool KOEditorGeneralEvent::validateInput()
   }
 
   if (startDt > endDt) {
-    KMessageBox::sorry(this,i18n("The event ends before it starts.\n"
+    KMessageBox::sorry(0,i18n("The event ends before it starts.\n"
                                  "Please correct dates and times."));
     return false;
   }

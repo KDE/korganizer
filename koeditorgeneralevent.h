@@ -44,8 +44,13 @@ class KOEditorGeneralEvent : public KOEditorGeneral
 {
     Q_OBJECT
   public:
-    KOEditorGeneralEvent (int spacing=8,QWidget* parent=0,const char* name=0);
+    KOEditorGeneralEvent (QObject* parent=0,const char* name=0);
     virtual ~KOEditorGeneralEvent();
+
+    void initTime(QWidget *,QBoxLayout *);
+    void initClass(QWidget *,QBoxLayout *);
+
+    void finishSetup();
 
     /** Set widgets to default values */
     void setDefaults(QDateTime from,QDateTime to,bool allDay);
@@ -56,9 +61,6 @@ class KOEditorGeneralEvent : public KOEditorGeneral
 
     /** Check if the input is valid. */
     bool validateInput();
-
-    /** Set spacing for layouts */
-    void setSpacing(int);
 
   public slots:
     void setDateTimes(QDateTime start, QDateTime end);
@@ -81,15 +83,9 @@ class KOEditorGeneralEvent : public KOEditorGeneral
     void recursChanged(bool);
     void dateTimeStrChanged(const QString &);
 
-  protected:
-    void initTime(QBoxLayout *);
-    void initClass(QBoxLayout *);
-
   private:
     QLabel                  *mStartDateLabel;
     QLabel                  *mEndDateLabel;
-    QLabel                  *mStartTimeLabel;
-    QLabel                  *mEndTimeLabel;
     KDateEdit               *mStartDateEdit;
     KDateEdit               *mEndDateEdit;
     KTimeEdit               *mStartTimeEdit;
@@ -102,8 +98,6 @@ class KOEditorGeneralEvent : public KOEditorGeneral
     // current start and end date and time
     QDateTime mCurrStartDateTime;
     QDateTime mCurrEndDateTime;
-
-    int mSpacing;
 };
 
 #endif

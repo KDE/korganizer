@@ -43,8 +43,15 @@ class KOEditorGeneralTodo : public KOEditorGeneral
 {
     Q_OBJECT
   public:
-    KOEditorGeneralTodo (int spacing=8,QWidget* parent=0,const char* name=0);
+    KOEditorGeneralTodo (QObject* parent=0,const char* name=0);
     virtual ~KOEditorGeneralTodo();
+
+    void initTime(QWidget *, QBoxLayout *);
+    void initStatus(QWidget *, QBoxLayout *);
+    void initCompletion(QWidget *, QBoxLayout *);
+    void initPriority(QWidget *, QBoxLayout *);
+
+    void finishSetup();
 
     /** Set widgets to default values */
     void setDefaults(QDateTime due,bool allDay);
@@ -60,24 +67,20 @@ class KOEditorGeneralTodo : public KOEditorGeneral
     void openCategoryDialog();
 
   protected slots:
-    void timeStuffDisable(bool disable);
-    void dueStuffDisable(bool disable);
-    void startStuffDisable(bool disable);
     void completedChanged(int);
 
-  protected:
-    void initTime(QBoxLayout *);
-    void initStatus(QBoxLayout *);
-  
+    void enableDueEdit( bool enable );
+    void enableStartEdit( bool enable );
+    void enableTimeEdits( bool enable );
+
+  protected:  
     void setCompletedDate();
 
  private:
-    QLabel                  *mStartLabel;
     KDateEdit               *mStartDateEdit;
     KTimeEdit               *mStartTimeEdit;
-    QCheckBox               *mNoTimeButton;
-    QCheckBox               *mNoDueCheck;
-    QLabel                  *mDueLabel;
+    QCheckBox               *mTimeButton;
+    QCheckBox               *mDueCheck;
     KDateEdit               *mDueDateEdit;
     KTimeEdit               *mDueTimeEdit;
     QComboBox               *mCompletedCombo;
@@ -85,11 +88,9 @@ class KOEditorGeneralTodo : public KOEditorGeneral
     QLabel                  *mPriorityLabel;
     QComboBox               *mPriorityCombo;
 
-    QCheckBox               *mNoStartCheck;
+    QCheckBox               *mStartCheck;
   
     QDateTime mCompleted;
-
-    int mSpacing;
 };
 
 
