@@ -35,10 +35,12 @@ AboutData::AboutData()
                 I18N_NOOP("A Personal Organizer for KDE"),
                 KAboutData::License_GPL,
                 "(c) 1997-1999 Preston Brown\n"
-                "(c) 2000-2003 Cornelius Schumacher", 0,
+                "(c) 2000-2004 Cornelius Schumacher", 0,
                 "http://korganizer.kde.org" )
 {
-  addAuthor("Cornelius Schumacher",I18N_NOOP("Current Maintainer"),
+  addAuthor("Reinhold Kainhofer",I18N_NOOP("Current Maintainer"),
+            "reinhold@kainhofer.com");
+  addAuthor("Cornelius Schumacher",I18N_NOOP("Co-Maintainer"),
             "schumacher@kde.org");
   addAuthor("Preston Brown",I18N_NOOP("Original Author"),
             "pbrown@kde.org");
@@ -53,7 +55,6 @@ AboutData::AboutData()
   addCredit("Declan Houlihan");
   addCredit("Hans-Jürgen Husel");
   addCredit("Tim Jansen");
-  addCredit("Reinhold Kainhofer");
   addCredit("Christian Kirsch");
   addCredit("Tobias König");
   addCredit("Martin Koller");
