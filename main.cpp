@@ -66,6 +66,7 @@ int main (int argc, char **argv)
     exit(0);
 
   KOrganizerApp app;
+
 //  kdDebug() << "app.exec" << endl;
   return app.exec();
 //  kdDebug() << "~app.exec" << endl;

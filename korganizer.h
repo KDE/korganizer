@@ -173,6 +173,12 @@ class KOrganizer : public KMainWindow, virtual public KOrganizerIface
     /** Configure key bindings */
     void editKeys();
     
+    /** Show tip of the day */
+    void showTip();
+    
+    /** Show tip of the day */
+    void showTipOnStart();
+    
   protected slots:
 
     /** toggle the appearance of the tool bars. */

@@ -86,6 +86,9 @@ SUBDIRS = pixmaps sounds
 autostart_DATA = alarmd.desktop
 autostartdir = $(prefix)/share/autostart
 
+tip_DATA = tips
+tipdir = $(kde_datadir)/korganizer
+
 datadir = $(kde_bindir)
 data_SCRIPTS = ical2vcal
 
@@ -103,4 +106,6 @@ part_DATA = korganizer_part.rc
 KDE_ICON = AUTO
 
 messages: rc.cpp
-	$(XGETTEXT) *.cpp -o $(podir)/korganizer.pot
+	preparetips > tips.cc
+	$(XGETTEXT) *.cpp tips.cc -o $(podir)/korganizer.pot
+	rm -f tips.cc

@@ -49,6 +49,7 @@
 #include <kprocess.h>
 #include <kwin.h>
 #include <kkeydialog.h>
+#include <ktip.h>
 
 #include "komailclient.h"
 #include "calprinter.h"
@@ -72,7 +73,11 @@ KOrganizer::KOrganizer(const char *name)
   mActive = false;
 
   // add this instance of the window to the static list.
-  if (!windowList) windowList = new KOWindowList;
+  if (!windowList) {
+    windowList = new KOWindowList;
+    // Show tip of the day, when the first main window is shown.
+    QTimer::singleShot(0,this,SLOT(showTipOnStart()));
+  }
   windowList->addWindow(this);
 
 //  setMinimumSize(600,400);	// make sure we don't get resized too small...
@@ -125,7 +130,7 @@ KOrganizer::KOrganizer(const char *name)
 
   // Update state of paste action
   mCalendarView->checkClipboard();
-  
+
   kdDebug() << "KOrganizer::KOrganizer() done" << endl;
 }
 
@@ -418,6 +423,9 @@ void KOrganizer::initActions()
                     mCalendarView,SLOT(showIntro()),
                     actionCollection(),"show_intro");
 #endif
+
+  (void)new KAction(i18n("&Tip of the day..."), 0,
+                    this, SLOT(showTip()), actionCollection(), "help_tipofday");
   
   if (KOPrefs::instance()->mEnableGroupScheduling) {
     createGUI("korganizergsui.rc");
@@ -915,6 +923,16 @@ void KOrganizer::saveOptions()
 
   config->setGroup("Settings");
   config->writeEntry("Filter Visible",mFilterViewAction->isChecked());
+}
+
+void KOrganizer::showTip()
+{
+  KTipDialog::showTip(this,QString::null,true);
+}
+
+void KOrganizer::showTipOnStart()
+{
+  KTipDialog::showTip(this);
 }
 
 KOrganizer* KOrganizer::findInstance(const KURL &url)
