@@ -154,6 +154,8 @@ messages: rc.cpp
 
 xdg_apps_DATA = korganizer.desktop
 
+kde_kcfg_DATA = korganizer.kcfg
+
 kde_services_DATA =  configmain.desktop configtime.desktop \
                      configviews.desktop configcolors.desktop \
                      configfonts.desktop configgroupscheduling.desktop \
