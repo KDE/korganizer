@@ -289,7 +289,7 @@ void KOTodoEditor::setDefaults( QDateTime due, Todo *relatedEvent, bool allDay )
     mGeneral->setDefaults( due, allDay );
   
   mDetails->setDefaults();
-  mRecurrence->setDefaults(QDate::currentDate(), due, false);
+  mRecurrence->setDefaults(QDateTime::currentDateTime(), due, false);
   mAttachments->setDefaults();
 }
 

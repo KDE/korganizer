@@ -737,6 +737,8 @@ void CalendarView::edit_copy()
     factory.copyEvent( anEvent );
   } else if ( incidence->type() == "Todo" ) {
     Todo *anTodo = static_cast<Todo *>(incidence);
+    if (anTodo->doesRecur())
+      anTodo->recurrence()->unsetRecurs(); // avoid 'forking'
     factory.copyTodo( anTodo );
   } else {
     KNotifyClient::beep();
@@ -1909,7 +1911,7 @@ void CalendarView::recurTodo( Todo *todo )
   
   QDateTime endDate = todo->recurrence()->endDateTime();
   if ( ( todo->hasDueDate() && todo->doesRecur() ) &&
-     ( duration == -1 || duration > 1 ||
+     ( duration != 0 ||
      ( duration == 0 && endDate.isValid() && todo->dtDue() < endDate ) ) ) {
     
       Todo *copyTodo = new Todo( *todo );
@@ -1920,29 +1922,18 @@ void CalendarView::recurTodo( Todo *todo )
       if (todo->hasStartDate())
         length = todo->dtDue().daysTo( todo->dtStart() );
 
-      // find next date
-      if ( todo->dtDue() > QDateTime::currentDateTime() ) {
-        copyTodo->setDtDue( copyTodo->recurrence()->getNextDateTime(
-                                                copyTodo->dtDue() ) );
-      }
-      else {
-        copyTodo->setDtDue( copyTodo->recurrence()->getNextDateTime(
-                                                QDateTime::currentDateTime()));
-      }
-
       // exception-handling (recurrence)
-      while ( !copyTodo->recursAt( copyTodo->dtDue() ) ) {
+      do {
         copyTodo->setDtDue( copyTodo->recurrence()->getNextDateTime( 
-                                                      copyTodo->dtDue() ) );
+                                                    copyTodo->dtDue() ) );
         if ( duration > 1 )
           copyTodo->recurrence()->setDuration( duration - 1 );
-      }
+      } while ( !copyTodo->recursAt( copyTodo->dtDue() ) ||
+                 copyTodo->dtDue() <= QDateTime::currentDateTime() );
       
       copyTodo->setDtStart( copyTodo->dtDue().addDays( length ) );
 
       copyTodo->recurrence()->setRecurStart( copyTodo->dtDue() );
-      if ( duration > 1 )
-        copyTodo->recurrence()->setDuration( duration - 1 );
 
       mCalendar->addTodo( copyTodo );
       incidenceAdded( copyTodo );

@@ -42,6 +42,7 @@
 #include <kwordwrap.h>
 
 #include <kcalendarsystem.h>
+#include <libkcal/calfilter.h>
 
 #ifndef KORG_NOPRINTER
 #include "calprinter.h"
@@ -179,10 +180,12 @@ MonthViewItem::MonthViewItem( Incidence *incidence, QDate qd, const QString & s)
   mIncidence = incidence;
   mDate = qd;
 
+  mTodoPixmap  = KOGlobals::self()->smallIcon("checkedbox");
   mAlarmPixmap = KOGlobals::self()->smallIcon("bell");
   mRecurPixmap = KOGlobals::self()->smallIcon("recur");
   mReplyPixmap = KOGlobals::self()->smallIcon("mail_reply");
 
+  mTodo  = false;
   mRecur = false;
   mAlarm = false;
   mReply = false;
@@ -204,6 +207,10 @@ void MonthViewItem::paint(QPainter *p)
     p->eraseRect( 0, 0, listBox()->maxItemWidth(), height( listBox() ) );
   }
   int x = 3;
+  if ( mTodo ) {
+    p->drawPixmap( x, 0, mTodoPixmap );
+    x += mTodoPixmap.width() + 2;
+  }
   if ( mRecur ) {
     p->drawPixmap( x, 0, mRecurPixmap );
     x += mRecurPixmap.width() + 2;
@@ -378,7 +385,24 @@ void MonthViewCell::updateCell()
   Event::List::ConstIterator it;
   for( it = events.begin(); it != events.end(); ++it ) {
     Event *event = *it;
-    QString text;
+    addIncidence ( event );
+  }
+
+  // insert due todos
+  Todo::List todos = mMonthView->calendar()->todos( mDate );
+  Todo::List::ConstIterator it2;
+  for( it2 = todos.begin(); it2 != todos.end(); ++it2 ) {
+    Todo *todo = *it2;
+    addIncidence( todo );
+  }
+}
+
+void MonthViewCell::addIncidence( Incidence *incidence )
+{
+  QString text;
+  MonthViewItem *item = 0;
+  if ( incidence->type() == "Event" ) {
+    Event *event = static_cast<Event *>(incidence);
     if (event->isMultiDay()) {
       if (mDate == event->dtStart().date()) {
         text = "(-- " + event->summary();
@@ -397,8 +421,8 @@ void MonthViewCell::updateCell()
         text += " " + event->summary();
       }
     }
-
-    MonthViewItem *item = new MonthViewItem( event, mDate, text );
+    
+    item = new MonthViewItem( event, mDate, text );
     if (KOPrefs::instance()->monthViewUsesCategoryColor()) {
       QStringList categories = event->categories();
       QString cat = categories.first();
@@ -410,8 +434,6 @@ void MonthViewCell::updateCell()
     } else {
       item->setPalette( mStandardPalette );
     }
-    item->setRecur( event->doesRecur() );
-    item->setAlarm( event->isAlarmEnabled() );
 
     Attendee *me = event->attendeeByMails(KOPrefs::instance()->additionalMails(),
                                           KOPrefs::instance()->email());
@@ -422,30 +444,42 @@ void MonthViewCell::updateCell()
         item->setReply(false);
     } else
       item->setReply(false);
-
-    mItemList->insertItem( item );
   }
-
-  // insert due todos
-  Todo::List todos = mMonthView->calendar()->todos( mDate );
-  Todo::List::ConstIterator it2;
-  for( it2 = todos.begin(); it2 != todos.end(); ++it2 ) {
-    Todo *todo = *it2;
-    QString text;
+  
+  if ( incidence->type() == "Todo" ) {
+    Todo *todo = static_cast<Todo *>(incidence);
     if (todo->hasDueDate()) {
       if (!todo->doesFloat()) {
         text += KGlobal::locale()->formatTime(todo->dtDue().time());
         text += " ";
       }
     }
-    text += i18n("To-Do: %1").arg(todo->summary());
-
-    MonthViewItem *item = new MonthViewItem( todo, mDate, text );
-    item->setRecur( todo->doesRecur() );
+    text += todo->summary();
+         
+    item = new MonthViewItem( todo, mDate, text );
+    item->setTodo( true );
     item->setPalette( mStandardPalette );
-
+  }
+  
+  if ( item ) {
+    item->setAlarm( incidence->isAlarmEnabled() );
+    item->setRecur( incidence->doesRecur() );
     mItemList->insertItem( item );
   }
+}
+
+bool MonthViewCell::removeIncidence( Incidence *incidence )
+{
+  for ( uint i = 0; i < mItemList->count(); i++ ) {
+    MonthViewItem *item = static_cast<MonthViewItem *>(mItemList->item( i ) );
+    if ( item && item->incidence() &&
+         item->incidence()->uid() == incidence->uid() ) {
+      mItemList->removeItem( i );
+      return true;
+    }
+  }
+  
+  return false;
 }
 
 void MonthViewCell::updateConfig()
@@ -753,11 +787,59 @@ void KOMonthView::showIncidences( const Incidence::List & )
   kdDebug(5850) << "KOMonthView::showIncidences( const Incidence::List & ) is not implemented yet." << endl;
 }
 
-void KOMonthView::changeIncidenceDisplay(Incidence *, int)
+void KOMonthView::changeIncidenceDisplayAdded( Incidence *incidence )
 {
-  // this should be re-written to be much more efficient, but this
-  // quick-and-dirty-hack gets the job done for right now.
-  updateView();
+  MonthViewCell *mvc;
+  Event *event = 0;
+  Todo *todo = 0;
+  QDate date;
+  if ( incidence->type() == "Event" ) {
+    event = static_cast<Event *>(incidence);
+    date = event->dtStart().date();
+  }
+  if ( incidence->type() == "Todo" ) {
+    todo = static_cast<Todo *>(incidence);
+    if ( !todo->hasDueDate() ) return;
+    date = todo->dtDue().date();
+  }
+  
+  if ( !calendar()->filter()->filterIncidence( incidence ) )
+    return;
+  if ( event && incidence->doesRecur() ) {
+     for ( uint i = 0; i < mCells.count(); i++ ) {
+       if ( incidence->recursAt( mCells[i]->date() ) )
+         mCells[i]->addIncidence( incidence );
+     }
+  } else if ( event ) {
+      for ( QDateTime _date = date;
+            _date <= event->dtEnd(); _date = _date.addDays(1) ) {
+        mvc = lookupCellByDate( _date.date() );
+        if (mvc) mvc->addIncidence( event );
+      }
+    } else if ( todo ) {
+        mvc = lookupCellByDate( date );
+        if (mvc) mvc->addIncidence( todo );
+      }
+}
+
+void KOMonthView::changeIncidenceDisplay(Incidence *incidence, int action)
+{  
+  switch (action) {
+    case KOGlobals::INCIDENCEADDED:
+      changeIncidenceDisplayAdded( incidence );
+      break;
+    case KOGlobals::INCIDENCEEDITED:
+      for( uint i = 0; i < mCells.count(); i++ )
+        mCells[i]->removeIncidence( incidence );
+      changeIncidenceDisplayAdded( incidence );
+      break;
+    case KOGlobals::INCIDENCEDELETED:
+      for( uint i = 0; i < mCells.count(); i++ )
+        mCells[i]->removeIncidence( incidence );
+      break;
+    default:
+      return;
+  }
 }
 
 void KOMonthView::updateView()
@@ -840,4 +922,13 @@ void KOMonthView::clearSelection()
     mSelectedCell->deselect();
     mSelectedCell = 0;
   }
+}
+
+MonthViewCell *KOMonthView::lookupCellByDate ( const QDate &date )
+{
+  for( uint i = 0; i < mCells.count(); i++ ) {
+    if ( mCells[i]->date() == date )
+      return mCells[i];
+  }
+  return 0;
 }

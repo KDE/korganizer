@@ -1011,7 +1011,7 @@ void KOEditorRecurrence::readIncidence(Incidence *incidence)
   mRecurrenceChooser->setType( recurrenceType );
   showCurrentRule( recurrenceType );
 
-  mRecurrenceRange->setDateTimes( incidence->dtStart() );
+  mRecurrenceRange->setDateTimes( incidence->recurrence()->recurStart() );
 
   if ( incidence->doesRecur() ) {
     mRecurrenceRange->setDuration( r->duration() );
@@ -1034,9 +1034,6 @@ void KOEditorRecurrence::writeIncidence( Incidence *incidence )
 
   // clear out any old settings;
   r->unsetRecurs();
-
-  if ( incidence->type() == "Todo" )
-    r->setRecurStart( static_cast<Todo *>(incidence)->dtDue() );
   
   int duration = mRecurrenceRange->duration();
   QDate endDate;
@@ -1096,6 +1093,12 @@ void KOEditorRecurrence::writeIncidence( Incidence *incidence )
       r->addYearlyNum( month );
     }
 
+    // overwrite start for todo's
+    if ( incidence->type() == "Todo" ) {
+      kdDebug(5850) << "RecurStart veranderen" << endl;
+      r->setRecurStart( static_cast<Todo *>(incidence)->dtDue() );
+    }
+    
     incidence->setExDates( mExceptions->dates() );
 }
 

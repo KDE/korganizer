@@ -85,6 +85,7 @@ class MonthViewItem: public QListBoxItem
   public:
     MonthViewItem( Incidence *, QDate qd, const QString & title );
 
+    void setTodo(bool on)  { mTodo  = on; }
     void setRecur(bool on) { mRecur = on; }
     void setAlarm(bool on) { mAlarm = on; }
     void setReply(bool on) { mReply = on; }
@@ -101,10 +102,12 @@ class MonthViewItem: public QListBoxItem
     virtual int width(const QListBox *) const;
 
   private:
+    bool mTodo;
     bool mRecur;
     bool mAlarm;
     bool mReply;
 
+    QPixmap mTodoPixmap;
     QPixmap mAlarmPixmap;
     QPixmap mRecurPixmap;
     QPixmap mReplyPixmap;
@@ -134,6 +137,8 @@ class MonthViewCell : public QWidget
     void setHoliday( const QString & );
 
     void updateCell();
+    void addIncidence( Incidence * );
+    bool removeIncidence( Incidence * );
 
     void updateConfig();
 
@@ -207,6 +212,7 @@ class KOMonthView: public KOEventView
     virtual void showIncidences( const Incidence::List & );
 
     void changeIncidenceDisplay(Incidence *, int);
+    void changeIncidenceDisplayAdded(Incidence *);
 
     void clearSelection();
 
@@ -223,6 +229,9 @@ class KOMonthView: public KOEventView
 
     void viewChanged();
     void updateDayLabels();
+    
+    /** Returns pointer of monthcell with given date, otherwise 0 */
+    MonthViewCell *lookupCellByDate( const QDate & );
 
   private:
     int mDaysPerWeek;

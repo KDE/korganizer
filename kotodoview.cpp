@@ -725,7 +725,7 @@ void KOTodoView::setNewPriority(int index)
     Todo *oldTodo = todo->clone();
     todo->setPriority(mPriority[index]);
     mActiveItem->construct();
-    emit incidenceChanged( todo, oldTodo, KOGlobals::PRIORITY_MODIFIED );
+    emit incidenceChanged( oldTodo, todo, KOGlobals::PRIORITY_MODIFIED );
     delete oldTodo;
   }
 }
@@ -743,7 +743,7 @@ void KOTodoView::setNewPercentage(int index)
     }
     todo->setPercentComplete(mPercentage[index]);
     mActiveItem->construct();
-    emit incidenceChanged( todo, oldTodo, KOGlobals::COMPLETION_MODIFIED );
+    emit incidenceChanged( oldTodo, todo, KOGlobals::COMPLETION_MODIFIED );
     delete oldTodo;
   }
 }
@@ -762,6 +762,8 @@ void KOTodoView::setNewDate(QDate date)
       Todo *newTodo = new Todo( *todo );
       newTodo->recreate();
       newTodo->setDtDue( dt );
+      // avoid forking
+      if ( newTodo->doesRecur() ) newTodo->recurrence()->unsetRecurs();
       calendar()->addTodo( newTodo );
       emit incidenceAdded( newTodo );
     }
@@ -770,8 +772,10 @@ void KOTodoView::setNewDate(QDate date)
       if ( !todo->hasDueDate() )
         todo->setHasDueDate( true );
       todo->setDtDue( dt );
+      if ( todo->doesRecur() )
+        todo->recurrence()->setRecurStart( todo->dtDue() );
       mActiveItem->construct();
-      emit incidenceChanged( todo, oldTodo, KOGlobals::DATE_MODIFIED );      
+      emit incidenceChanged( oldTodo, todo, KOGlobals::DATE_MODIFIED );      
       delete oldTodo;
     }
   }
@@ -812,7 +816,7 @@ void KOTodoView::changedCategories(int index)
     categories.sort ();
     todo->setCategories (categories);
     mActiveItem->construct();
-    emit incidenceChanged( todo, oldTodo, KOGlobals::CATEGORY_MODIFIED);
+    emit incidenceChanged( oldTodo, todo, KOGlobals::CATEGORY_MODIFIED);
     delete oldTodo;
   }
 }
