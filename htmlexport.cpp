@@ -21,6 +21,7 @@
 
 #include <qfile.h>
 #include <qtextstream.h>
+#include <qtextcodec.h>
 
 #include <kglobal.h>
 #include <klocale.h>
@@ -48,12 +49,15 @@ bool HtmlExport::save(const QString &fileName)
 
 bool HtmlExport::save(QTextStream *ts)
 {
+
+  ts->setEncoding(QTextStream::Locale);
+
   // Write HTML header
   *ts << "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0 Transitional//EN\" ";
   *ts << "\"http://www.w3.org/TR/REC-html40/loose.dtd\">\n";
 
   *ts << "<HTML><HEAD>" << endl;
-  *ts << "  <META http-equiv=\"Content-Type\" content=\"text/html; charset=" << KGlobal::locale()->encoding() << "\">\n";
+  *ts << "  <META http-equiv=\"Content-Type\" content=\"text/html; charset=" <<  QTextCodec::codecForLocale()->mimeName() << "\">\n";
   *ts << "  <TITLE>" << i18n("KOrganizer To-Do List") << "</TITLE>\n";
   *ts << "  <style type=\"text/css\">\n";
   *ts << "    body { background-color:white; color:black }\n";
