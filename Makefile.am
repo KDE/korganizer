@@ -27,7 +27,6 @@ alarmd_LDADD = $(LIB_KDEUI) \
 
 # Which sources should be compiled for korganizer.
 libkorganizer_la_SOURCES =  outgoingdialog_base.ui \
-        catdlg.cpp \
 	koagendaview.cpp koagenda.cpp koagendaitem.cpp \
 	kdateedit.cpp kdatenav.cpp \
 	kdpdatebutton.cpp komonthview.cpp \
@@ -63,7 +62,7 @@ alarmd_SOURCES = alarmdaemon.cpp alarmmain.cpp \
 METASOURCES = AUTO
 
 noinst_HEADERS = komonthview.h \
-	catdlg.h koagendaview.h koagenda.h \
+	koagendaview.h koagenda.h \
 	koagendaitem.h \
 	kdateedit.h ksellabel.h \
 	kdatenav.h \

@@ -41,7 +41,8 @@
 #include <ktoolbarbutton.h>
 #include <kstddirs.h>
 
-#include <catdlg.h>
+#include "categoryselectdialog.h"
+#include "koprefs.h"
 
 #include "kotodoeditor.h"
 #include "kotodoeditor.moc"
@@ -54,16 +55,16 @@ KOTodoEditor::KOTodoEditor(Calendar *calendar) :
   mTodo = 0;
   mRelatedTodo = 0;
 
-  mCategoryDialog = new CategoryDialog();
+  mCategoryDialog = new CategorySelectDialog();
 
   setupGeneralTab();
   setupDetailsTab();
 
+  // Categpry dialog
   connect(mGeneral,SIGNAL(openCategoryDialog()),mCategoryDialog,SLOT(show()));
   connect(mCategoryDialog, SIGNAL(categoriesSelected(QString)),
           mGeneral,SLOT(setCategories(QString)));
-  connect(mCategoryDialog,SIGNAL(categoryConfigChanged()),
-          SIGNAL(categoryConfigChanged()));
+  connect(mCategoryDialog,SIGNAL(editCategories()),SIGNAL(editCategories()));
 
   connect(this,SIGNAL(cancelClicked()),SLOT(reject()));
 }
@@ -120,7 +121,10 @@ bool KOTodoEditor::processInput()
   Todo *todo = 0;
 
   if (mTodo) todo = mTodo;
-  else todo = new Todo;
+  else {
+    todo = new Todo;
+    todo->setOrganizer(KOPrefs::instance()->mEmail);
+  }
   
   writeTodo(todo);
   
@@ -190,4 +194,9 @@ bool KOTodoEditor::validateInput()
   if (!mGeneral->validateInput()) return false;
   if (!mDetails->validateInput()) return false;
   return true;  
+}
+
+void KOTodoEditor::updateCategoryConfig()
+{
+  mCategoryDialog->updateCategoryConfig();
 }

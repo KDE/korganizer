@@ -40,6 +40,8 @@ class KOProjectView;
 class FilterEditDialog;
 class KOWhatsNextView;
 class KOJournalView;
+class KOEventEditor;
+class KOTodoEditor;
 
 using namespace KCal;
 
@@ -378,6 +380,12 @@ class CalendarView : public QWidget
 
     /** changes the view to be the currently selected view */
     void showView(KOBaseView *);
+
+    /** Get an editor dialog for an Event. */
+    KOEventEditor *getEventEditor();
+    
+    /** Get an editor dialog for a Todo. */
+    KOTodoEditor *getTodoEditor();
     
   private:
     void raiseCurrentView();

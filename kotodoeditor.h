@@ -10,7 +10,7 @@
 #include "koeditorgeneraltodo.h"
 #include "koeditordetails.h"
 
-class CategoryDialog;
+class CategorySelectDialog;
 
 using namespace KCal;
 
@@ -53,6 +53,7 @@ class KOTodoEditor : public KDialogBase
     bool processInput();
 
   public slots:
+    void updateCategoryConfig();
 
   signals:
     void todoChanged(Todo *);
@@ -60,7 +61,7 @@ class KOTodoEditor : public KDialogBase
     void todoToBeDeleted(Todo *);
     void todoDeleted();
 
-    void categoryConfigChanged();
+    void editCategories();
 
   protected slots:
     void slotDefault();
@@ -82,7 +83,7 @@ class KOTodoEditor : public KDialogBase
     KOEditorGeneralTodo *mGeneral;
     KOEditorDetails     *mDetails;
 
-    CategoryDialog *mCategoryDialog;    
+    CategorySelectDialog *mCategoryDialog;    
 };
 
 #endif

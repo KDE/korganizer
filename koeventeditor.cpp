@@ -43,9 +43,9 @@
 #include <ktoolbarbutton.h>
 #include <kstddirs.h>
 
-#include "catdlg.h"
 #include "koprefs.h"
 #include "categoryselectdialog.h"
+#include "koprefs.h"
 
 #include "koeventeditor.h"
 #include "koeventeditor.moc"
@@ -57,7 +57,6 @@ KOEventEditor::KOEventEditor(Calendar *calendar) :
   mCalendar = calendar;
   mEvent = 0;
 
-//  mCategoryDialog = new CategoryDialog();
   mCategoryDialog = new CategorySelectDialog();
 
   setupGeneralTab();
@@ -79,8 +78,6 @@ KOEventEditor::KOEventEditor(Calendar *calendar) :
   connect(mCategoryDialog,SIGNAL(categoriesSelected(QString)),
           mGeneral,SLOT(setCategories(QString)));
   connect(mCategoryDialog,SIGNAL(editCategories()),SIGNAL(editCategories()));
-//  connect(mCategoryDialog,SIGNAL(categoryConfigChanged()),
-//          SIGNAL(categoryConfigChanged()));
 
   // Clicking cancel exits the dialog without saving
   connect(this,SIGNAL(cancelClicked()),SLOT(reject()));
@@ -173,7 +170,10 @@ bool KOEventEditor::processInput()
   Event *event = 0;
 
   if (mEvent) event = mEvent;
-  else event = new Event;
+  else {
+    event = new Event;
+    event->setOrganizer(KOPrefs::instance()->mEmail);
+  }
   
   writeEvent(event);
   

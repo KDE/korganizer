@@ -120,6 +120,7 @@ CalendarView::CalendarView(QWidget *parent,const char *name)
   // with this calendar view window.
   mCalendar = new CalendarLocal;
   mCalendar->setHoliday(KOPrefs::instance()->mHoliday);
+  mCalendar->setEmail(KOPrefs::instance()->mEmail);
   connect(mCalendar,SIGNAL(calUpdated(Incidence *)),
           SLOT(eventUpdated(Incidence *)));
 
@@ -770,78 +771,30 @@ void CalendarView::newEvent(QDate dt)
 
 void CalendarView::newEvent(QDateTime fromHint, QDateTime toHint)
 {
-  // create empty event win
-  KOEventEditor *eventWin = new KOEventEditor(mCalendar);
-
-  // put in date hint
-  eventWin->newEvent(fromHint,toHint);
-
-  // connect the win for changed events
-  connect(eventWin,SIGNAL(eventAdded(Event *)),SLOT(eventAdded(Event *)));
-  connect(mCategoryEditDialog,SIGNAL(categoryConfigChanged()),
-          eventWin,SLOT(updateCategoryConfig()));
-  connect(eventWin,SIGNAL(editCategories()),mCategoryEditDialog,SLOT(show()));
-
-  connect(this,SIGNAL(closingDown()),eventWin,SLOT(reject()));
-
-  // show win
-  eventWin->show();
+  KOEventEditor *eventEditor = getEventEditor();
+  eventEditor->newEvent(fromHint,toHint);
+  eventEditor->show();
 }
 
 void CalendarView::newEvent(QDateTime fromHint, QDateTime toHint, bool allDay)
 {
-  // create empty event win
-  KOEventEditor *eventWin = new KOEventEditor(mCalendar);
-
-  // put in date hint
-  eventWin->newEvent(fromHint,toHint,allDay);
-
-  // connect the win for changed events
-  connect(eventWin,SIGNAL(eventAdded(Event *)),SLOT(eventAdded(Event *)));
-  connect(mCategoryEditDialog,SIGNAL(categoryConfigChanged()),
-          eventWin,SLOT(updateCategoryConfig()));
-  connect(eventWin,SIGNAL(editCategories()),mCategoryEditDialog,SLOT(show()));
-
-  connect(this,SIGNAL(closingDown()),eventWin,SLOT(reject()));
-
-  // show win
-  eventWin->show();
+  KOEventEditor *eventEditor = getEventEditor();
+  eventEditor->newEvent(fromHint,toHint,allDay);
+  eventEditor->show();
 }
 
 void CalendarView::newTodo()
 {
-  KOTodoEditor *todoWin = new KOTodoEditor( mCalendar );
-  todoWin->newTodo(QDateTime::currentDateTime().addDays(7),0,true);
-
-  // connect the win for changed events
-  connect(todoWin,SIGNAL(todoAdded(Event *)),SLOT(updateTodoViews()));
-  createOptionsDialog();
-  connect(todoWin,SIGNAL(categoryConfigChanged()),
-          mOptionsDialog,SLOT(updateCategories()));
-
-  connect(this, SIGNAL(closingDown()),
-	  todoWin, SLOT(reject()));
-
-  // show win
-  todoWin->show();
+  KOTodoEditor *todoEditor = getTodoEditor();
+  todoEditor->newTodo(QDateTime::currentDateTime().addDays(7),0,true);
+  todoEditor->show();
 }
 
 void CalendarView::newSubTodo(Todo *parentEvent)
 {
-  KOTodoEditor *todoWin = new KOTodoEditor( mCalendar );
-  todoWin->newTodo(QDateTime::currentDateTime().addDays(7),parentEvent,true);
-
-  // connect the win for changed events
-  connect(todoWin,SIGNAL(todoAdded(Event *)),SLOT(updateTodoViews()));
-  createOptionsDialog();
-  connect(todoWin,SIGNAL(categoryConfigChanged()),
-          mOptionsDialog,SLOT(updateCategories()));
-
-  connect(this, SIGNAL(closingDown()),
-	  todoWin, SLOT(reject()));
-
-  // show win
-  todoWin->show();
+  KOTodoEditor *todoEditor = getTodoEditor();
+  todoEditor->newTodo(QDateTime::currentDateTime().addDays(7),parentEvent,true);
+  todoEditor->show();
 }
 
 void CalendarView::appointment_new()
@@ -898,30 +851,19 @@ void CalendarView::editEvent(Event *anEvent)
     tmpList = mDateNavigator->getSelected();
     qd = *tmpList.first();
 
-    KOEventEditor *eventWin = new KOEventEditor(mCalendar );
-    eventWin->editEvent(anEvent, qd);
-    // connect the win for changed events
-    connect(eventWin,SIGNAL(eventChanged(Event *)),
-            SLOT(eventChanged(Event *)));
-    connect(eventWin,SIGNAL(eventDeleted()),
-            SLOT(eventDeleted()));
-    connect(mCategoryEditDialog,SIGNAL(categoryConfigChanged()),
-            eventWin,SLOT(updateCategoryConfig()));
-    connect(eventWin,SIGNAL(editCategories()),
-            mCategoryEditDialog,SLOT(show()));
-    connect(this, SIGNAL(closingDown()),
-            eventWin, SLOT(reject()));
-    eventWin->show();
+    KOEventEditor *eventEditor = getEventEditor();
+    eventEditor->editEvent(anEvent,qd);
+    eventEditor->show();
   } else {
     KNotifyClient::beep();
   }
 }
 
-void CalendarView::editTodo(Todo *anEvent)
+void CalendarView::editTodo(Todo *todo)
 {
-  if (anEvent) {
-    if (anEvent->isReadOnly()) {
-      showTodo(anEvent);
+  if (todo) {
+    if (todo->isReadOnly()) {
+      showTodo(todo);
       return;
     }
 
@@ -931,20 +873,9 @@ void CalendarView::editTodo(Todo *anEvent)
     tmpList = mDateNavigator->getSelected();
     qd = *tmpList.first();
 
-    // this is a todo
-    KOTodoEditor *eventWin = new KOTodoEditor(mCalendar);
-    eventWin->editTodo(anEvent, qd);
-    // connect for changed events
-    connect(eventWin,SIGNAL(todoChanged(Todo *)),
-            SLOT(updateTodoViews()));
-    connect(eventWin,SIGNAL(todoDeleted()),
-            SLOT(updateTodoViews()));
-    createOptionsDialog();
-    connect(eventWin,SIGNAL(categoryConfigChanged()),
-            mOptionsDialog,SLOT(updateCategories()));
-    connect(this, SIGNAL(closingDown()),
-            eventWin, SLOT(reject()));
-    eventWin->show();
+    KOTodoEditor *todoEditor = getTodoEditor();
+    todoEditor->editTodo(todo,qd);
+    todoEditor->show();
   } else {
     KNotifyClient::beep();
   }
@@ -1652,4 +1583,38 @@ void CalendarView::filterEdited()
 {
   mFilterView->updateFilters();
   updateFilter();
+}
+
+KOEventEditor *CalendarView::getEventEditor()
+{
+  KOEventEditor *eventEditor = new KOEventEditor(mCalendar);
+
+  connect(eventEditor,SIGNAL(eventAdded(Event *)),SLOT(eventAdded(Event *)));
+  connect(eventEditor,SIGNAL(eventChanged(Event *)),SLOT(eventChanged(Event *)));
+  connect(eventEditor,SIGNAL(eventDeleted()),SLOT(eventDeleted()));
+
+  connect(mCategoryEditDialog,SIGNAL(categoryConfigChanged()),
+          eventEditor,SLOT(updateCategoryConfig()));
+  connect(eventEditor,SIGNAL(editCategories()),mCategoryEditDialog,SLOT(show()));
+
+  connect(this,SIGNAL(closingDown()),eventEditor,SLOT(reject()));
+
+  return eventEditor;
+}
+
+KOTodoEditor *CalendarView::getTodoEditor()
+{
+  KOTodoEditor *todoEditor = new KOTodoEditor(mCalendar);
+
+  connect(mCategoryEditDialog,SIGNAL(categoryConfigChanged()),
+          todoEditor,SLOT(updateCategoryConfig()));
+  connect(todoEditor,SIGNAL(editCategories()),mCategoryEditDialog,SLOT(show()));
+
+  connect(todoEditor,SIGNAL(todoAdded(Event *)),SLOT(updateTodoViews()));
+  connect(todoEditor,SIGNAL(todoChanged(Todo *)),SLOT(updateTodoViews()));
+  connect(todoEditor,SIGNAL(todoDeleted()),SLOT(updateTodoViews()));
+
+  connect(this, SIGNAL(closingDown()),todoEditor,SLOT(reject()));
+
+  return todoEditor;
 }
