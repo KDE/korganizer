@@ -157,7 +157,8 @@ QString FreeBusyManager::freeBusyToIcal( KCal::FreeBusy *freebusy )
 void FreeBusyManager::slotPerhapsUploadFB()
 {
   // user has automtic uploading disabled, bail out
-  if ( !KOPrefs::instance()->freeBusyPublishAuto() )
+  if ( !KOPrefs::instance()->freeBusyPublishAuto() ||
+       KOPrefs::instance()->freeBusyPublishUrl().isEmpty() )
      return;
   if( mTimerID != 0 )
     // A timer is already running, so we don't need to do anything
@@ -169,7 +170,7 @@ void FreeBusyManager::slotPerhapsUploadFB()
   if( !mUploadingFreeBusy ) {
     // Not currently uploading
     if( mNextUploadTime.isNull() ||
-	QDateTime::currentDateTime() > mNextUploadTime ) {
+        QDateTime::currentDateTime() > mNextUploadTime ) {
       // No uploading have been done in this session, or delay time is over
       publishFreeBusy();
       return;
@@ -212,6 +213,19 @@ void FreeBusyManager::publishFreeBusy()
   // Already uploading? Skip this one then.
   if ( mUploadingFreeBusy )
     return;
+  KURL targetURL ( KOPrefs::instance()->freeBusyPublishUrl() );
+  if ( targetURL.isEmpty() )  {
+    KMessageBox::sorry( 0,
+      i18n( "<qt>No URL configured for uploading your free/busy list! Please "
+            "set it in KOrganizer's configuration dialog, \"Free/Busy\" page. "
+            "<br>Contact your system administrator for the exact URL and the "
+            "account details."
+            "</qt>" ), i18n("No Free/Busy upload URL") );
+    return;
+  }
+  targetURL.setUser( KOPrefs::instance()->mFreeBusyPublishUser );
+  targetURL.setPass( KOPrefs::instance()->mFreeBusyPublishPassword );
+  
   mUploadingFreeBusy = true;
 
   // If we have a timer running, it should be stopped now
@@ -275,9 +289,6 @@ void FreeBusyManager::publishFreeBusy()
     }
 #endif
 
-    KURL targetURL ( KOPrefs::instance()->freeBusyPublishUrl() );
-    targetURL.setUser( KOPrefs::instance()->mFreeBusyPublishUser );
-    targetURL.setPass( KOPrefs::instance()->mFreeBusyPublishPassword );
 
     KURL src;
     src.setPath( tempFile.name() );
