@@ -36,6 +36,7 @@
 #include <kconfig.h>
 #include <kcalendarsystem.h>
 #include <kprinter.h>
+#include <kwordwrap.h>
 
 #include <libkcal/todo.h>
 #include <libkcal/event.h>
@@ -601,23 +602,27 @@ void CalPrintHelper::drawDayBox( QPainter &p, const QDate &qd,
   int lineSpacing = p.fontMetrics().lineSpacing();
 
   int textY=mSubHeaderHeight+3; // gives the relative y-coord of the next printed entry
+  int flags = Qt::AlignLeft;
   Event::List::ConstIterator it;
   for( it = eventList.begin(); it != eventList.end() && textY<height; ++it ) {
     Event *currEvent = *it;
     if (currEvent->doesFloat() || currEvent->isMultiDay())
-      outStr = currEvent->summary();
+      outStr = "";
+    else
+      outStr = local->formatTime( currEvent->dtStart().time() );
 
-    else {
-      QTime t1 = currEvent->dtStart().time();
+    QRect timeBound = p.boundingRect( x + 5, y + textY, width - 10, lineSpacing, flags, outStr );
+    p.drawText( timeBound, flags, outStr );
 
-      outStr = local->formatTime(t1);
-      outStr += " " + currEvent->summary();
+    QFontMetrics fm = p.fontMetrics();
+    int summaryWidth = outStr.isEmpty() ? 0 : timeBound.width() + 4;
+    QRect summaryBound( x + 5 + summaryWidth, y + textY, width - summaryWidth - 5 , height );
+    KWordWrap *ww = KWordWrap::formatText( fm, summaryBound, flags, currEvent->summary() );
+    ww->drawText( &p, x + 5 + summaryWidth, y + textY, flags );
 
-    } // doesFloat
+    textY+=ww->boundingRect().height();
 
-    p.drawText( x + 5, y + textY, width - 10, lineSpacing,
-                Qt::AlignLeft | Qt::AlignBottom, outStr);
-    textY+=lineSpacing;
+    delete ww;
   }
 
   if ( textY<height ) {
