@@ -100,6 +100,6 @@ KDE_ICON = AUTO
 META_INCLUDES = $(srcdir)/interfaces/korganizer
 
 messages: rc.cpp
-	perl ./preparetips > tips.cc
+	$(PREPARETIPS) > tips.cc
 	$(XGETTEXT) *.cpp plugins/*/*.cpp tips.cc -o $(podir)/korganizer.pot
 	rm -f tips.cc
