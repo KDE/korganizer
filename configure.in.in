@@ -27,7 +27,7 @@ AC_CHECK_USLEEP
 dnl Check for KNewStuff presence (i.e. kdelibs-3.3)
 dnl If not present, use internal knewstuff
 
-AC_DEFUN(KDE_CHECK_KNEWSTUFF,
+AC_DEFUN([KDE_CHECK_KNEWSTUFF],
 [
 AC_MSG_CHECKING([for KDE library: knewstuff])
 ac_knewstuff_includes=NO ac_knewstuff_libraries=NO
