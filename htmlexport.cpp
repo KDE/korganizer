@@ -63,7 +63,7 @@ bool HtmlExport::save(QTextStream *ts)
 
   *ts << "<html><head>" << endl;
   *ts << "  <meta http-equiv=\"Content-Type\" content=\"text/html; charset=";
-  *ts << "\"UTF-8\" />\n";
+  *ts << "UTF-8\" />\n";
   *ts << "  <title>" << i18n("KOrganizer To-Do List") << "</title>\n";
   *ts << "  <style type=\"text/css\">\n";
   *ts << "    body { background-color:white; color:black }\n";
