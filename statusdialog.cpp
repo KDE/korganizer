@@ -31,7 +31,7 @@
 StatusDialog::StatusDialog(QWidget* parent, const char* name) :
   KDialog(parent,name,true)
 {
-  setCaption(i18n("Set your status"));
+  setCaption(i18n("Set Your Status"));
 
   QBoxLayout *topLayout = new QVBoxLayout( this );
   topLayout->setSpacing( spacingHint() );

@@ -33,7 +33,7 @@ PublishDialog::PublishDialog(QWidget* parent, const char* name,
                                bool modal, WFlags fl)
     : PublishDialog_base(parent,name,modal,fl)
 {
-  setCaption(i18n("Select addresses"));
+  setCaption(i18n("Select Addresses"));
   mNameLineEdit->setEnabled(false);
   mEmailLineEdit->setEnabled(false);
   connect(mAddressListView,SIGNAL(selectionChanged(QListViewItem *)),
