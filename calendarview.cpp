@@ -139,7 +139,7 @@ CalendarView::CalendarView(QWidget *parent,const char *name)
 
   mDateNavigator = new KDateNavigator(mLeftSplitter, mCalendar, TRUE,
                         "CalendarView::DateNavigator", QDate::currentDate());
-  mLeftFrame->setResizeMode(mDateNavigator,QSplitter::KeepSize);
+  mLeftSplitter->setResizeMode(mDateNavigator,QSplitter::KeepSize);
   mTodoList = new KOTodoView(mCalendar, mLeftSplitter, "todolist");
   mFilterView = new KOFilterView(&mFilters,mLeftSplitter,"CalendarView::FilterView");
 
