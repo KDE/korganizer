@@ -73,10 +73,19 @@ class KOPrefsDialogColors : public KPrefsModule
     void setCategoryColor();
     void updateCategoryColor();
 
+    void updateResources();
+    void setResourceColor();
+    void updateResourceColor();
   private:
     QComboBox     *mCategoryCombo;
     KColorButton  *mCategoryButton;
     QDict<QColor> mCategoryDict;
+    
+    QComboBox     *mResourceCombo;
+    KColorButton  *mResourceButton;
+    QDict<QColor> mResourceDict;
+    //For translation Identifier <->idx in Combo
+    QStringList mResourceIdentifier;
 };
 
 class KOPrefsDialogGroupScheduling : public KPrefsModule

@@ -62,6 +62,7 @@ KOPrefs::KOPrefs() :
   KOPrefsBase()
 {
   mCategoryColors.setAutoDelete(true);
+  mResourceColors.setAutoDelete(true);
 
   mDefaultCategoryColor = QColor(151, 235, 121);
 

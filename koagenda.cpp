@@ -513,7 +513,7 @@ bool KOAgenda::eventFilter_wheel ( QObject *object, QWheelEvent *e )
 {
   QPoint viewportPos;
   bool accepted=false;
-  if  ( ( e->state() & ControlButton ) == ControlButton ){
+  if  ( ( e->state() & ShiftButton) == ShiftButton ) {
     if ( object != viewport() ) {
       viewportPos = ( (QWidget *) object )->mapToParent( e->pos() );
     } else {
@@ -526,7 +526,8 @@ bool KOAgenda::eventFilter_wheel ( QObject *object, QWheelEvent *e )
       Qt::Horizontal );
     accepted=true;
   }
-  if  ( ( e->state() & ShiftButton) == ShiftButton ) {
+  
+  if  ( ( e->state() & ControlButton ) == ControlButton ){
     if ( object != viewport() ) {
       viewportPos = ( (QWidget *)object )->mapToParent( e->pos() );
     } else {

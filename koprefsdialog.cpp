@@ -51,6 +51,7 @@
 #include <ktrader.h>
 #include <kpushbutton.h>
 #include <kocore.h>
+#include <libkcal/calendarresources.h>
 
 #if defined(USE_SOLARIS)
 #include <sys/param.h>
@@ -65,6 +66,7 @@
 #include "kogroupwareprefspage.h"
 #include "ktimeedit.h"
 #include "koglobals.h"
+#include "stdcalendar.h"
 
 
 KOPrefsDialogMain::KOPrefsDialogMain( QWidget *parent, const char *name )
@@ -644,23 +646,43 @@ KOPrefsDialogColors::KOPrefsDialogColors( QWidget *parent, const char *name )
   connect(mCategoryButton,SIGNAL(changed(const QColor &)),SLOT(setCategoryColor()));
   updateCategoryColor();
 
-  topLayout->setRowStretch(8,1);
+  // resources colors
+  QGroupBox *resourceGroup = new QGroupBox(1,Horizontal,i18n("Resources"),
+                                           topFrame);
+  topLayout->addMultiCellWidget(resourceGroup,8,8,0,1);
+
+  mResourceCombo = new QComboBox(resourceGroup);
+  
+  connect(mResourceCombo,SIGNAL(activated(int)),SLOT(updateResourceColor()));
+
+  mResourceButton = new KColorButton(resourceGroup);
+  connect(mResourceButton,SIGNAL(changed(const QColor &)),SLOT(setResourceColor()));
+  updateResources();
+  
+  topLayout->setRowStretch(9,1);
 
   load();
 }
 
 void KOPrefsDialogColors::usrWriteConfig()
 {
-  QDictIterator<QColor> it(mCategoryDict);
-  while (it.current()) {
-    KOPrefs::instance()->setCategoryColor(it.currentKey(),*it.current());
-    ++it;
+  QDictIterator<QColor> itCat(mCategoryDict);
+  while (itCat.current()) {
+    KOPrefs::instance()->setCategoryColor(itCat.currentKey(),*itCat.current());
+    ++itCat;
+  }
+  
+  QDictIterator<QColor> itRes(mResourceDict);
+  while (itRes.current()) {
+    KOPrefs::instance()->setResourceColor(itRes.currentKey(),*itRes.current());
+    ++itRes;
   }
 }
 
 void KOPrefsDialogColors::usrReadConfig()
 {
   updateCategories();
+  updateResources();
 }
 
 void KOPrefsDialogColors::updateCategories()
@@ -673,6 +695,7 @@ void KOPrefsDialogColors::updateCategories()
 void KOPrefsDialogColors::setCategoryColor()
 {
   mCategoryDict.replace(mCategoryCombo->currentText(), new QColor(mCategoryButton->color()));
+  slotWidChanged();
 }
 
 void KOPrefsDialogColors::updateCategoryColor()
@@ -684,10 +707,47 @@ void KOPrefsDialogColors::updateCategoryColor()
   }
   if (color) {
     mCategoryButton->setColor(*color);
-    slotWidChanged();
   }
 }
 
+void KOPrefsDialogColors::updateResources()
+{
+  mResourceCombo->clear();
+  mResourceIdentifier.clear();
+  kdDebug( 5850) << "KOPrefsDialogColors::updateResources()" << endl;
+  
+  KCal::CalendarResourceManager *manager = KOrg::StdCalendar::self()->resourceManager();
+
+  kdDebug(5850) << "Loading Calendar resources...:" << endl;
+  KCal::CalendarResourceManager::Iterator it;
+  for( it = manager->begin(); it != manager->end(); ++it ) {
+    mResourceCombo->insertItem( (*it)->resourceName() );
+    mResourceIdentifier.append( (*it)->identifier() );
+  }
+  updateResourceColor();
+}
+
+void KOPrefsDialogColors::setResourceColor()
+{
+  kdDebug( 5850) << "KOPrefsDialogColors::setResorceColor()" << endl;
+  
+  mResourceDict.replace( mResourceIdentifier[mResourceCombo->currentItem()], 
+    new QColor( mResourceButton->color() ) );
+  slotWidChanged();
+}
+
+void KOPrefsDialogColors::updateResourceColor()
+{
+  kdDebug( 5850 ) << "KOPrefsDialogColors::updateResourceColor()" << endl;
+  QString res= mResourceIdentifier[mResourceCombo->currentItem()];
+  QColor *color = mCategoryDict.find(res);
+  if( !color )  {
+    color = KOPrefs::instance()->resourceColor( res );
+  } 
+  if( color ) {
+    mResourceButton->setColor(*color);
+  }
+}
 extern "C"
 {
   KCModule *create_korganizerconfigcolors( QWidget *parent, const char * )

@@ -215,6 +215,7 @@ class KOAgendaView : public KOEventView
       const Qt::Orientation orient=Qt::Horizontal );
   signals:
     void toggleExpand();
+    void zoomViewHorizontally(const QDate &, int count );
 
   protected:
     /** Fill agenda beginning with date startDate */

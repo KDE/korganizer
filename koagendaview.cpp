@@ -596,8 +596,9 @@ void KOAgendaView::zoomInHorizontally( )
     
     begin = mSelectedDates.first();
     end = mSelectedDates.last();
-    if ( begin.daysTo( end )> 1 ) {
-      showDates( begin.addDays(1), end.addDays(-1) );
+    int d = begin.daysTo( end );
+    if ( d > 1 ) {
+      emit zoomViewHorizontally( begin.addDays(1),d-1 );
     }
   }
 }
@@ -613,7 +614,8 @@ void KOAgendaView::zoomOutHorizontally( )
     
     begin = mSelectedDates.first();
     end = mSelectedDates.last();
-    showDates( begin.addDays(-1), end.addDays(1) );
+    int d = begin.daysTo(end);
+    emit zoomViewHorizontally( begin.addDays(-1),d+3 );
   }
 }
 
@@ -628,9 +630,10 @@ void KOAgendaView::zoomInHorizontally( const QDate &date )
   
   ndays = begin.daysTo( end );
   if ( ndays <= 2 ) 
-      showDates( date, date );
+    emit zoomViewHorizontally( date,1 );
+      //showDates( date, date );
   else
-      showDates( date.addDays( -( ( ndays/2 )-1 ) ), date.addDays( ndays/2 -1 ) );
+    emit zoomViewHorizontally( date.addDays( -( ( ndays/2 )-1 ) ) , ndays-1 );
 }
 
 void KOAgendaView::zoomOutHorizontally( const QDate &date )
@@ -647,7 +650,7 @@ void KOAgendaView::zoomOutHorizontally( const QDate &date )
     kdDebug(5850) << "change to the mounth view?"<<endl;
   else
     //We want to center the date
-    showDates( date.addDays( -(ndays/2+1 ) ), date.addDays( ndays/2+1));
+    emit zoomViewHorizontally( date.addDays( -( ( ndays/2 )+1 ) ) , ndays+3 );
 }
 
 void KOAgendaView::zoomView( const int delta, const QPoint &pos,

@@ -73,7 +73,7 @@ class ResourceItem : public QCheckListItem
     virtual void paintCell(QPainter *p, const QColorGroup &cg,
       int column, int width, int alignment);
 //     */
-    void setResourceColor(QColor& color) { mResourceColor = color; }
+    void setResourceColor(QColor& color); 
     QColor &resourceColor() {return mResourceColor;}
   protected:
     void stateChange( bool active );

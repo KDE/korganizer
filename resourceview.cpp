@@ -116,7 +116,7 @@ ResourceItem::ResourceItem( KCal::ResourceCalendar *resource,
                             const QString& sub, const QString& label,
                             ResourceView *view, ResourceItem* parent )
 
-  : QCheckListItem( parent, sub, CheckBox ), mResource( resource ),
+  : QCheckListItem( parent, label, CheckBox ), mResource( resource ),
     mView( view ), mBlockStateChange( false ), mIsSubresource( true ),
     mSubItemsCreated( false )
 {
@@ -165,6 +165,16 @@ void ResourceItem::stateChange( bool active )
 void ResourceItem::update()
 {
   setGuiState();
+}
+
+void ResourceItem::setResourceColor(QColor& color) { 
+  if ( color.isValid() && mResourceColor != color ) {
+    QPixmap px(height()-2,height()-2);
+    mResourceColor = color;
+    px.fill(color);
+    setPixmap(0,px);
+    //repaint();
+  }
 }
 /*
 void ResourceItem::paintCell(QPainter *p, const QColorGroup &cg,
@@ -464,10 +474,11 @@ void ResourceView::contextMenuRequested ( QListViewItem *i,
                                    SLOT( saveResource() ) );
     menu->setItemEnabled( saveId, item->resource()->isActive() );
     menu->insertSeparator();
-    //FIXME: This is better on the resource dialog
-    menu->insertItem( i18n( "Assign &Color" ),this , SLOT( assignColor() ) );
+    
     menu->insertItem( i18n("Show &Info"), this, SLOT( showInfo() ) );
     if ( !item->isSubresource() ) {
+      //FIXME: This is better on the resource dialog
+      menu->insertItem( i18n( "Assign &Color" ),this , SLOT( assignColor() ) );
       menu->insertItem( i18n("&Edit..."), this, SLOT( editResource() ) );
       menu->insertItem( i18n("&Remove"), this, SLOT( removeResource() ) );
       if ( item->resource() != manager->standardResource() ) {
@@ -497,6 +508,7 @@ void ResourceView::assignColor()
   
   if ( result == KColorDialog::Accepted ) {
     KOPrefs::instance()->setResourceColor( cal->identifier(), myColor );
+    item->setResourceColor( myColor );
     item->update();
     emit resourcesChanged();
   }

@@ -1159,6 +1159,8 @@ void ActionManager::updateConfig()
   mParts = KOCore::self()->reloadParts( mMainWindow, mParts );
 
   setDestinationPolicy();
+  
+  mResourceView->updateView();
 }
 
 void ActionManager::setDestinationPolicy()
