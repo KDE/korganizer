@@ -420,7 +420,7 @@ void KOrganizer::initActions()
   action->setEnabled(false);
   connect(mCalendarView,SIGNAL(groupEventsSelected(bool)),
           action,SLOT(setEnabled(bool)));
-  action = new KAction(i18n("Counter"),0,
+  action = new KAction(i18n("counter proposal","Counter"),0,
                        mCalendarView,SLOT(schedule_counter()),
                        actionCollection(),"counter");
   action->setEnabled(false);

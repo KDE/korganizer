@@ -275,7 +275,7 @@ bool IncomingDialog::incomeCounter(ScheduleItemIn *item)
   KOCounterDialog *eventViewer = new KOCounterDialog(this);
   //eventViewer->addText(i18n("You received a counterevent<p>"));
   //eventViewer->addText(i18n("<hr>"));
-  eventViewer->addText(i18n("<b>Counter-event:</b><p>"));
+  eventViewer->addText(i18n("counter proposal event","<b>Counter-event:</b><p>"));
   eventViewer->addEvent(counterEvent);
   eventViewer->addText(i18n("<hr>"));
   eventViewer->addText(i18n("<b>Original event:</b><p>"));
