@@ -2012,11 +2012,14 @@ void CalendarView::deleteIncidence(Incidence *incidence)
     DeleteIncidenceVisitor v;
     v.act( incidence, this );
   }
-/* @TODO: Enable this warning message after 3.3
   if ( incidence && incidence->isReadOnly() ) {
-    KMessageBox::information( this, TODO_I18N("The item \"%1\" is marked read-only and cannot be deleted. Probably it belongs to a read-only calendar resource.").arg(incidence->summary()), TODO_I18N("Removing not possible"), "deleteReadOnlyIncidence" );
+    KMessageBox::information( this, i18n("The item \"%1\" is marked read-only "
+                              "and cannot be deleted. Probably it belongs to "
+                              "a read-only calendar resource.")
+                              .arg(incidence->summary()), 
+                              i18n("Removing not possible"), 
+                              "deleteReadOnlyIncidence" );
   }
-*/
 }
 
 
@@ -2032,51 +2035,67 @@ void CalendarView::lookForIncomingMessages()
   icd->retrieve();
 }
 
+bool CalendarView::purgeCompletedSubTodos( Todo* todo, bool &allPurged )
+{
+  if ( !todo ) return true;
+  bool deleteThisTodo = true;
+  Incidence::List subTodos( todo->relations() );
+  Incidence *aIncidence;
+  Todo *aTodo;
+  Incidence::List::Iterator it;
+  for ( it = subTodos.begin(); it != subTodos.end(); ++it ) {
+    aIncidence = *it;
+    if ( aIncidence && aIncidence->type()=="Todo" ) {
+      aTodo = static_cast<Todo*>( aIncidence );
+      deleteThisTodo &= purgeCompletedSubTodos( aTodo, allPurged );
+    }
+  }
+  
+  if ( deleteThisTodo ) {
+    if ( todo->isCompleted() ) {
+      incidenceToBeDeleted( todo );
+      calendar()->deleteIncidence( todo );
+      incidenceDeleted( todo );
+    }
+    else {
+      deleteThisTodo = false;
+    }
+  } else {
+kdDebug()<<"Item "<<todo->summary()<<" not deleted"<<endl;
+    if ( todo->isCompleted() ) {
+      allPurged = false;
+kdDebug()<<" -> Item "<<todo->summary()<<" is completed, but has uncompleted subtodos"<<endl;
+    }
+  }
+kdDebug()<<"       allPurged = "<<allPurged<<endl;
+  return deleteThisTodo;
+}
+
 void CalendarView::purgeCompleted()
 {
   int result = KMessageBox::warningContinueCancel(this,
       i18n("Delete all completed To-Dos?"),i18n("Purge To-Dos"),i18n("Purge"));
 
   if (result == KMessageBox::Continue) {
+    bool allDeleted = true;
     startMultiModify( i18n("Purging completed todos") );
-    Todo::List todoCal;
-    Incidence::List rel;
-    bool childDelete = false;
-    bool deletedOne = true;
-    while (deletedOne) {
-      todoCal.clear();
-      todoCal = calendar()->todos();
-      deletedOne = false;
-      Todo::List::ConstIterator it;
-      for ( it = todoCal.begin(); it != todoCal.end(); ++it ) {
-        Todo *aTodo = *it;
-        if (aTodo->isCompleted()) {
-          rel = aTodo->relations();
-          if (!rel.isEmpty()) {
-            Incidence::List::ConstIterator it2;
-            for ( it2 = rel.begin(); it2 != rel.end(); ++it2 ) {
-              Incidence *rIncidence = *it2;
-              if (rIncidence->type()=="Todo") {
-                Todo *rTodo = static_cast<Todo*>(rIncidence);
-                if (!rTodo->isCompleted()) childDelete = true;
-              }
-            }
-          }
-          else {
-            incidenceToBeDeleted( aTodo );
-            calendar()->deleteTodo( aTodo );
-            incidenceDeleted( aTodo );
-            deletedOne = true;
-          }
-        }
-      }
+    Todo::List todos = calendar()->rawTodos();
+    Todo::List rootTodos;
+    Todo::List::ConstIterator it;
+    for ( it = todos.begin(); it != todos.end(); ++it ) {
+      Todo *aTodo = *it;
+      if ( aTodo && !aTodo->relatedTo() )
+        rootTodos.append( aTodo );
+    }
+    // now that we have a list of all root todos, check them and their children
+    for ( it = rootTodos.begin(); it != rootTodos.end(); ++it ) {
+      purgeCompletedSubTodos( *it, allDeleted );
     }
     endMultiModify();
-    if (childDelete) {
-      KMessageBox::sorry(this,i18n("Cannot purge To-Do which has uncompleted children."),
+    if ( !allDeleted ) {
+      KMessageBox::sorry(this,i18n("Unable to purge Todo items with uncompleted children."),
                          i18n("Delete To-Do"));
     }
-    updateView();
   }
 }
 
