@@ -25,6 +25,8 @@
 #include <kcolordlg.h>
 #include <kiconloader.h>
 #include <kiconeffect.h>
+#include <ksimpleconfig.h>
+#include <kemailsettings.h>
 
 #include "koprefs.h"
 
@@ -70,15 +72,29 @@ void KOPrefsDialog::setupMainTab()
   topLayout->addWidget(new QLabel(i18n("Email address:"),topFrame),1,0);
   mEmailEdit = new QLineEdit(topFrame);
   topLayout->addWidget(mEmailEdit,1,1);
-  
+
+#if 0  
   topLayout->addWidget(new QLabel(i18n("Additional:"),topFrame),2,0);
   mAdditionalEdit = new QLineEdit(topFrame);
   topLayout->addWidget(mAdditionalEdit,2,1);
-  
+#endif
+
+  KPrefsWidBool *emailControlCenter =
+      new KPrefsWidBool(i18n("Use Email settings from Control Center"),
+                        &(KOPrefs::instance()->mEmailControlCenter),this,
+                        topFrame);
+  topLayout->addMultiCellWidget(emailControlCenter->checkBox(),3,3,0,1);
+  connect(emailControlCenter->checkBox(),SIGNAL(toggled(bool)),
+          SLOT(toggleEmailSettings(bool)));  
+
+  mBccCheck = new QCheckBox(i18n("Send copy to owner when mailing events"),
+                            topFrame);
+  topLayout->addMultiCellWidget(mBccCheck,4,4,0,1);
+
 
   QGroupBox *autoSaveGroup = new QGroupBox(1,Horizontal,i18n("Auto-Save"),
                                            topFrame);
-  topLayout->addMultiCellWidget(autoSaveGroup,3,3,0,1);
+  topLayout->addMultiCellWidget(autoSaveGroup,5,5,0,1);
 
   mAutoSaveCheck = new QCheckBox(i18n("Enable automatic saving of calendar"),
                                  autoSaveGroup);
@@ -98,26 +114,21 @@ void KOPrefsDialog::setupMainTab()
         ++it )
     mHolidayList << (*it).mid((*it).findRev('_') + 1);
 
-  topLayout->addWidget(new QLabel(i18n("Holidays:"),topFrame),4,0);
+  topLayout->addWidget(new QLabel(i18n("Holidays:"),topFrame),6,0);
   mHolidayCombo = new QComboBox(topFrame);
   mHolidayCombo->insertStringList(mHolidayList);
 
-  topLayout->addWidget(mHolidayCombo,4,1);
-
-
-  mBccCheck = new QCheckBox(i18n("Send copy to owner when mailing events"),
-                            topFrame);
-  topLayout->addMultiCellWidget(mBccCheck,5,5,0,1);
+  topLayout->addWidget(mHolidayCombo,6,1);
 
 
   mConfirmCheck = new QCheckBox(i18n("Confirm Deletes"),topFrame);
-  topLayout->addMultiCellWidget(mConfirmCheck,6,6,0,1);
+  topLayout->addMultiCellWidget(mConfirmCheck,7,7,0,1);
 
   mEnableGroupScheduling =
       new KPrefsWidBool(i18n("Enable Group Scheduling"),
                         &(KOPrefs::instance()->mEnableGroupScheduling),this,
                         topFrame);
-  topLayout->addWidget(mEnableGroupScheduling->checkBox(),7,0);
+  topLayout->addWidget(mEnableGroupScheduling->checkBox(),8,0);
   connect(mEnableGroupScheduling->checkBox(),SIGNAL(clicked()),
           SLOT(warningGroupScheduling()));
 
@@ -125,7 +136,7 @@ void KOPrefsDialog::setupMainTab()
       new KPrefsWidBool(i18n("Enable Project View"),
                         &(KOPrefs::instance()->mEnableProjectView),this,
                         topFrame);
-  topLayout->addWidget(mEnableProjectView->checkBox(),8,0);
+  topLayout->addWidget(mEnableProjectView->checkBox(),9,0);
   connect(mEnableProjectView->checkBox(),SIGNAL(clicked()),
           SLOT(warningProjectView()));
 
@@ -139,9 +150,17 @@ void KOPrefsDialog::setupMainTab()
   defaultFormatGroup->addRadio(i18n("vCalendar"));
   defaultFormatGroup->addRadio(i18n("iCalendar"));
 
-  topLayout->addMultiCellWidget(defaultFormatGroup->groupBox(),9,9,0,1);
+  topLayout->addMultiCellWidget(defaultFormatGroup->groupBox(),10,10,0,1);
 
-  topLayout->setRowStretch(10,1);
+  KPrefsWidRadios *mailClientGroup =
+      new KPrefsWidRadios(i18n("Mail Client"),
+                          &(KOPrefs::instance()->mMailClient),this,topFrame);
+  mailClientGroup->addRadio(i18n("KMail"));
+  mailClientGroup->addRadio(i18n("Sendmail"));
+
+  topLayout->addMultiCellWidget(mailClientGroup->groupBox(),11,11,0,1);
+
+  topLayout->setRowStretch(12,1);
 }
 
 
@@ -535,9 +554,11 @@ void KOPrefsDialog::setCombo(QComboBox *combo, const QString & text,
 
 void KOPrefsDialog::usrReadConfig()
 {
-  mNameEdit->setText(KOPrefs::instance()->mName);
-  mEmailEdit->setText(KOPrefs::instance()->mEmail);
+  mNameEdit->setText(KOPrefs::instance()->fullName());
+  mEmailEdit->setText(KOPrefs::instance()->email());
+#if 0
   mAdditionalEdit->setText(KOPrefs::instance()->mAdditional);
+#endif
   mBccCheck->setChecked(KOPrefs::instance()->mBcc);
 
   mAutoSaveCheck->setChecked(KOPrefs::instance()->mAutoSave);
@@ -584,9 +605,11 @@ void KOPrefsDialog::usrWriteConfig()
   KOPrefs::instance()->mAutoSaveInterval = mAutoSaveIntervalSpin->value();
   KOPrefs::instance()->mConfirm = mConfirmCheck->isChecked();
 
-  KOPrefs::instance()->mName = mNameEdit->text();
-  KOPrefs::instance()->mEmail = mEmailEdit->text();
+  KOPrefs::instance()->setFullName(mNameEdit->text());
+  KOPrefs::instance()->setEmail(mEmailEdit->text());
+#if 0
   KOPrefs::instance()->mAdditional = mAdditionalEdit->text();
+#endif
   KOPrefs::instance()->mHoliday = *mHolidayList.at(mHolidayCombo->currentItem());
   kdDebug() << "Holiday: " << KOPrefs::instance()->mHoliday << endl;
 
@@ -652,5 +675,20 @@ void KOPrefsDialog::warningExperimental(bool on)
   } else {
     KMessageBox::information(this,
         "You have to restart KOrganizer for this setting to take effect.");
+  }
+}
+
+void KOPrefsDialog::toggleEmailSettings(bool on)
+{
+  if (on) {
+    mEmailEdit->setEnabled(false);
+    mNameEdit->setEnabled(false);
+
+    KEMailSettings settings;
+    mNameEdit->setText(settings.getSetting(KEMailSettings::RealName));
+    mEmailEdit->setText(settings.getSetting(KEMailSettings::EmailAddress));
+  } else {
+    mEmailEdit->setEnabled(true);
+    mNameEdit->setEnabled(true);
   }
 }

@@ -23,13 +23,6 @@ ScheduleItemOut::ScheduleItemOut(QListView *parent,Event *ev,
   }
 }
 
-/* 
- *  Constructs a OutgoingDialog which is a child of 'parent', with the 
- *  name 'name' and widget flags set to 'f' 
- *
- *  The dialog will by default be modeless, unless you set 'modal' to
- *  TRUE to construct a modal dialog.
- */
 OutgoingDialog::OutgoingDialog(Calendar *calendar,QWidget* parent,
                                const char* name,bool modal,
                                WFlags fl)
@@ -40,12 +33,8 @@ OutgoingDialog::OutgoingDialog(Calendar *calendar,QWidget* parent,
   mScheduler = new DummyScheduler(mCalendar);
 }
 
-/*  
- *  Destroys the object and frees any allocated resources
- */
 OutgoingDialog::~OutgoingDialog()
 {
-    // no need to delete child widgets, Qt does it all for us
 }
 
 bool OutgoingDialog::addMessage(Event *incidence,Scheduler::Method method)
@@ -81,7 +70,7 @@ void OutgoingDialog::send()
     } else {
       success = mScheduler->performTransaction(item->event(),item->method());
     }
-    ScheduleItemOut *oldItem = item;  
+    ScheduleItemOut *oldItem = item;
     item = (ScheduleItemOut *)(item->nextSibling());
     if (success) delete oldItem;
   }

@@ -120,7 +120,7 @@ CalendarView::CalendarView(QWidget *parent,const char *name)
   // with this calendar view window.
   mCalendar = new CalendarLocal;
   mCalendar->setHoliday(KOPrefs::instance()->mHoliday);
-  mCalendar->setEmail(KOPrefs::instance()->mEmail);
+  mCalendar->setEmail(KOPrefs::instance()->email());
   connect(mCalendar,SIGNAL(calUpdated(Incidence *)),
           SLOT(eventUpdated(Incidence *)));
 
@@ -1061,8 +1061,23 @@ void CalendarView::action_search()
 
 void CalendarView::action_mail()
 {
-  KOMailClient mailobject;
+  KOMailClient mailClient;
 
+  Incidence *incidence = currentSelection();
+
+  if (!incidence) {
+    KMessageBox::sorry(this,i18n("Can't generate mail:\nNo event selected."));
+    return;
+  }
+  if(incidence->attendeeCount() == 0 ) {
+    KMessageBox::sorry(this,
+                       i18n("Can't generate mail:\nNo attendees defined.\n"));
+    return;
+  }
+
+  mailClient.mailAttendees(currentSelection());
+
+#if 0
   Event *anEvent = 0;
   if (mCurrentView->isEventView()) {
     anEvent = dynamic_cast<Event *>((mCurrentView->getSelected()).first());
@@ -1079,6 +1094,7 @@ void CalendarView::action_mail()
   }
 
   mailobject.emailEvent(anEvent);
+#endif
 }
 
 
@@ -1595,4 +1611,52 @@ KOTodoEditor *CalendarView::getTodoEditor()
   connect(this, SIGNAL(closingDown()),todoEditor,SLOT(reject()));
 
   return todoEditor;
+}
+
+Incidence *CalendarView::currentSelection()
+{
+  if (!mCurrentView) return 0;
+  
+  return mCurrentView->getSelected().first();
+}
+
+void CalendarView::takeOverEvent()
+{
+  Incidence *incidence = currentSelection();
+
+  if (!incidence) return;
+  
+  incidence->setOrganizer(KOPrefs::instance()->email());
+  incidence->recreate();
+  incidence->setReadOnly(false);
+
+  updateView();
+}
+
+void CalendarView::takeOverCalendar()
+{
+  // TODO: Create Calendar::allIncidences() function and use it here
+
+  QList<Event> events = mCalendar->getAllEvents();  
+  for(uint i=0; i<events.count(); ++i) {
+    events.at(i)->setOrganizer(KOPrefs::instance()->email());
+    events.at(i)->recreate();
+    events.at(i)->setReadOnly(false);
+  }
+  
+  QList<Todo> todos = mCalendar->getTodoList();
+  for(uint i=0; i<todos.count(); ++i) {
+    todos.at(i)->setOrganizer(KOPrefs::instance()->email());
+    todos.at(i)->recreate();
+    todos.at(i)->setReadOnly(false);
+  }
+  
+  QList<Journal> journals = mCalendar->journalList();
+  for(uint i=0; i<journals.count(); ++i) {
+    journals.at(i)->setOrganizer(KOPrefs::instance()->email());
+    journals.at(i)->recreate();
+    journals.at(i)->setReadOnly(false);
+  }
+  
+  updateView();
 }

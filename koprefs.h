@@ -18,6 +18,7 @@ class KOPrefs : public KPrefs
 {
   public:
     enum { FormatVCalendar, FormatICalendar };
+    enum { MailClientKMail, MailClientSendmail };
   
     virtual ~KOPrefs();
   
@@ -46,9 +47,15 @@ class KOPrefs : public KPrefs
 
   public:
     // preferences data
-    QString mName;
-    QString mEmail;
+    void setFullName(const QString &);
+    QString fullName();
+    void setEmail(const QString &);
+    QString email();
+
     QString mAdditional;
+
+    bool    mEmailControlCenter;
+
     bool    mBcc;
     QString mHoliday;
     bool    mAutoSave;
@@ -59,6 +66,7 @@ class KOPrefs : public KPrefs
     bool    mEnableProjectView;
   
     int     mDefaultFormat;
+    int     mMailClient;
   
     QString mTimeZone;
     int     mStartTime;
@@ -109,6 +117,9 @@ class KOPrefs : public KPrefs
 
     QFont mDefaultTimeBarFont;
     QFont mDefaultViewFont;
+
+    QString mName;
+    QString mEmail;
 };
 
 #endif

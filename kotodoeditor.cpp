@@ -104,7 +104,7 @@ bool KOTodoEditor::processInput()
   if (mTodo) todo = mTodo;
   else {
     todo = new Todo;
-    todo->setOrganizer(KOPrefs::instance()->mEmail);
+    todo->setOrganizer(KOPrefs::instance()->email());
   }
   
   writeTodo(todo);

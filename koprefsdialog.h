@@ -47,6 +47,8 @@ class KOPrefsDialog : public KPrefsDialog
     void warningGroupScheduling();
     void warningProjectView();
 
+    void toggleEmailSettings(bool);
+
   protected:
     void usrReadConfig();
     void usrWriteConfig();

@@ -1,5 +1,5 @@
 <!DOCTYPE kpartgui>
-<kpartgui name="korganizer" version="8">
+<kpartgui name="korganizer" version="9">
 
   <MenuBar>
     <Menu name="file"><text>&amp;File</text>
@@ -43,6 +43,9 @@
       <Action name="show_appointment"/>
       <Action name="edit_appointment"/>
       <Action name="mail_appointment"/>
+      <Action name="takeover_event"/>
+      <Separator/>
+      <Action name="takeover_calendar"/>
     </Menu>
     <Menu name="schedule"><text>S&amp;chedule</text>
       <Action name="outgoing"/>

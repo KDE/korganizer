@@ -416,7 +416,7 @@ void KOEditorGeneralEvent::endDateChanged(QDate newdate)
 
 void KOEditorGeneralEvent::setDefaults(QDateTime from,QDateTime to,bool allDay)
 {
-  ownerLabel->setText(i18n("Owner: ") + KOPrefs::instance()->mName);
+  ownerLabel->setText(i18n("Owner: ") + KOPrefs::instance()->fullName());
 
   noTimeButton->setChecked(allDay);
   timeStuffDisable(allDay);

@@ -300,6 +300,12 @@ class CalendarView : public QWidget
     /** mails the currently selected event to a particular user as a vCalendar 
       attachment. */
     void action_mail();
+
+    /** Take ownership of selected event. */
+    void takeOverEvent();
+
+    /** Take ownership of all events in calendar. */
+    void takeOverCalendar();
   
     /** query whether or not the calendar is "dirty". */
     bool isModified();
@@ -368,6 +374,8 @@ class CalendarView : public QWidget
     int msgCalModified();
   
     void emitEventsSelected();
+
+    Incidence *currentSelection();
   
   protected:
     void schedule(Scheduler::Method);

@@ -9,6 +9,7 @@
 #include <kstddirs.h>
 #include <klocale.h>
 #include <kdebug.h>
+#include <kemailsettings.h>
 
 KOPrefs *KOPrefs::mInstance = 0;
 
@@ -33,6 +34,13 @@ KOPrefs::KOPrefs() :
                                   &mEnableGroupScheduling,false));
   addPrefsItem(new KPrefsItemBool("Enable Project View",
                                   &mEnableProjectView,false));
+
+  KPrefsItem::setCurrentGroup("Personal Settings");
+  
+  addPrefsItem(new KPrefsItemInt("Mail Client",&mMailClient,
+                                 MailClientKMail));
+  addPrefsItem(new KPrefsItemBool("Use Control Center Email",
+                                  &mEmailControlCenter,false));
 
   KPrefsItem::setCurrentGroup("Calendar");
   
@@ -100,10 +108,11 @@ void KOPrefs::usrSetDefaults()
   mAutoSaveInterval = 10;
   mConfirm = true;
 
-  KSimpleConfig config( QString::fromLatin1("emaildefaults"), false );
-  config.setGroup("UserInfo");
-  mName = config.readEntry( "FullName", i18n("Anonymous") );
-  mEmail = config.readEntry( "EmailAddress", i18n("nobody@nowhere") );
+  KEMailSettings settings;
+  mName = settings.getSetting(KEMailSettings::RealName);
+  mEmail = settings.getSetting(KEMailSettings::RealName);
+  if (mName.isEmpty()) mName = i18n("Anonoymous");
+  if (mEmail.isEmpty()) mEmail = i18n("nobody@nowhere");
   mBcc = false;
 
   mAdditional = "";
@@ -296,4 +305,34 @@ QColor *KOPrefs::categoryColor(QString cat)
   
   if (color) return color;
   else return &mDefaultCategoryColor;
+}
+
+void KOPrefs::setFullName(const QString &name)
+{
+  mName = name;
+}
+
+void KOPrefs::setEmail(const QString &email)
+{
+  mEmail = email;
+}
+
+QString KOPrefs::fullName()
+{
+  if (mEmailControlCenter) {
+    KEMailSettings settings;
+    return settings.getSetting(KEMailSettings::RealName);
+  } else {
+    return mName;
+  }
+}
+
+QString KOPrefs::email()
+{
+  if (mEmailControlCenter) {
+    KEMailSettings settings;
+    return settings.getSetting(KEMailSettings::EmailAddress);
+  } else {
+    return mEmail;
+  }
 }

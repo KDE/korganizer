@@ -187,7 +187,7 @@ void KOEditorGeneralTodo::setCategories(QString str)
 
 void KOEditorGeneralTodo::setDefaults(QDateTime due,bool allDay)
 {
-  ownerLabel->setText(i18n("Owner: ") + KOPrefs::instance()->mName);
+  ownerLabel->setText(i18n("Owner: ") + KOPrefs::instance()->fullName());
 
   noTimeButton->setChecked(allDay);
   timeStuffDisable(allDay);

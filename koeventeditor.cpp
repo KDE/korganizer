@@ -126,7 +126,7 @@ bool KOEventEditor::processInput()
   if (mEvent) event = mEvent;
   else {
     event = new Event;
-    event->setOrganizer(KOPrefs::instance()->mEmail);
+    event->setOrganizer(KOPrefs::instance()->email());
   }
   
   writeEvent(event);
