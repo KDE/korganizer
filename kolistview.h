@@ -27,6 +27,7 @@
 
 #include <qlistview.h>
 #include <qmap.h>
+#include <klistview.h>
 
 #include <libkcal/incidence.h>
 
@@ -109,7 +110,10 @@ class KOListView : public KOEventView
 
     virtual void printPreview(CalPrinter *calPrinter,
                               const QDate &, const QDate &);
-  
+    
+    void readSettings(KConfig *config);
+    void writeSettings(KConfig *config);
+
   public slots:
     virtual void updateView();
     virtual void showDates(const QDate &start, const QDate &end);
@@ -133,7 +137,7 @@ class KOListView : public KOEventView
     KOListViewItem *getItemForEvent(Event *event);
 
   private:
-    QListView *mListView;
+    KListView *mListView;
     KOEventPopupMenu *mPopupMenu;
     KOListViewItem *mActiveItem;
 };

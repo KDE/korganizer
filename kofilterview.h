@@ -24,6 +24,8 @@
 #define KOFILTERVIEW_H
 // $Id$
 
+#include <qstring.h>
+
 #include "kofilterview_base.h"
 
 #include <libkcal/calfilter.h>
@@ -40,12 +42,14 @@ class KOFilterView : public KOFilterView_base
     void updateFilters();
 
     bool filtersEnabled();
+    void setFiltersEnabled(bool);
     CalFilter *selectedFilter();
+    void setSelectedFilter(QString);
 
   signals:
     void filterChanged();
     void editFilters();
-    
+
   private:
     QPtrList<CalFilter> *mFilters;
 };

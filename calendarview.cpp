@@ -418,14 +418,14 @@ void CalendarView::readFilterSettings(KConfig *config)
   QStringList::ConstIterator end = filterList.end();
   while(it != end) {
 //    kdDebug() << "  filter: " << (*it) << endl;
-  
+
     CalFilter *filter;
     filter = new CalFilter(*it);
     config->setGroup("Filter_" + (*it));
     filter->setCriteria(config->readNumEntry("Criteria",0));
     filter->setCategoryList(config->readListEntry("CategoryList"));
     mFilters.append(filter);
-  
+
     ++it;
   }
 
@@ -433,8 +433,11 @@ void CalendarView::readFilterSettings(KConfig *config)
     CalFilter *filter = new CalFilter(i18n("Default"));
     mFilters.append(filter);
   }
-
   mFilterView->updateFilters();
+  config->setGroup("FilterView");
+  mFilterView->setFiltersEnabled(config->readBoolEntry("FilterEnabled"));
+  mFilterView->setSelectedFilter(config->readEntry("Current Filter"));
+
 }
 
 void CalendarView::writeFilterSettings(KConfig *config)
@@ -454,6 +457,10 @@ void CalendarView::writeFilterSettings(KConfig *config)
   }
   config->setGroup("General");
   config->writeEntry("CalendarFilters",filterList);
+
+  config->setGroup("FilterView");
+  config->writeEntry("FilterEnabled",mFilterView->filtersEnabled());
+  config->writeEntry("Current Filter",mFilterView->selectedFilter()->name());
 }
 
 

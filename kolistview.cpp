@@ -138,7 +138,7 @@ KOListView::KOListView(Calendar *calendar, QWidget *parent,
 {
   mActiveItem = 0;
 
-  mListView = new QListView(this);
+  mListView = new KListView(this);
   mListView->addColumn(i18n("Summary"));
   mListView->addColumn(i18n("Start Date"));
   mListView->setColumnAlignment(1,AlignHCenter);
@@ -183,6 +183,7 @@ KOListView::KOListView(Calendar *calendar, QWidget *parent,
                    SLOT(processSelectionChange()));
 
 //  setMinimumSize(100,100);
+  mListView->restoreLayout(KGlobal::config(),"KOListView Layout");
 }
 
 KOListView::~KOListView()
@@ -356,3 +357,15 @@ void KOListView::processSelectionChange()
   // If selection has changed, we know that one event is selected.
   emit eventsSelected(true);
 }
+
+void KOListView::readSettings(KConfig *config)
+{
+  mListView->restoreLayout(config,"KOListView Layout");
+}
+
+void KOListView::writeSettings(KConfig *config)
+{
+  mListView->saveLayout(config,"KOListView Layout");
+}
+
+

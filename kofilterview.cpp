@@ -53,6 +53,13 @@ bool KOFilterView::filtersEnabled()
   return mEnabledCheck->isChecked();
 }
 
+void KOFilterView::setFiltersEnabled(bool set)
+{
+  mEnabledCheck->setChecked(set);
+  emit filterChanged();
+}
+
+
 void KOFilterView::updateFilters()
 {
   mSelectionCombo->clear();
@@ -69,3 +76,15 @@ CalFilter *KOFilterView::selectedFilter()
   CalFilter *f = mFilters->at(mSelectionCombo->currentItem());
   return f;
 }
+
+void KOFilterView::setSelectedFilter(QString filterName)
+{
+  int filter_num = mSelectionCombo->count();
+  int i;
+  for (i=0;i<filter_num;i++) {
+    if (mSelectionCombo->text(i)==filterName)
+      mSelectionCombo->setCurrentItem(i);
+  }
+  emit filterChanged();
+}
+

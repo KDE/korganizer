@@ -99,6 +99,9 @@ void KOViewManager::writeSettings(KConfig *config)
   if (mTimeSpanView) {
     mTimeSpanView->writeSettings(config);
   }
+  if (mListView) {
+    mListView->writeSettings(config);
+  }
 }
 
 void KOViewManager::changeAgendaView( int newView )
