@@ -257,7 +257,7 @@ void KOOptionsDialog::setupMainTab()
 {
   KIconEffect *iconeffect=KGlobal::iconLoader()->iconEffect();
   QFrame *topFrame = addPage(i18n("Personal"),0,
-	iconeffect->apply(QPixmap(user_xpm), KIcon::Desktop, KIcon::DefaultState));
+	DesktopIcon("identity",KIcon::SizeMedium));
 
   QGridLayout *topLayout = new QGridLayout(topFrame,6,2);
   topLayout->setSpacing(spacingHint());
@@ -478,7 +478,7 @@ void KOOptionsDialog::selectAgendaViewFont()
 void KOOptionsDialog::setupColorsTab()
 {
   QFrame *topFrame = addPage(i18n("Colors"),0,
-                             DesktopIcon("colors",KIcon::SizeMedium));
+                             DesktopIcon("colorize",KIcon::SizeMedium));
 
   QGridLayout *topLayout = new QGridLayout(topFrame,5,2);
   topLayout->setSpacing(spacingHint());
