@@ -547,8 +547,11 @@ void KOEditorDetails::fillOrganizerCombo()
   const QStringList lst = KOPrefs::instance()->allEmails();
   QStringList uniqueList;
   for( QStringList::ConstIterator it = lst.begin(); it != lst.end(); ++it ) {
-    if ( uniqueList.find( *it ) == uniqueList.end() )
-      uniqueList << *it;
+    QString fullEmail = QString("%1 <%2>").arg( KOPrefs::instance()->fullName())
+                                          .arg( *it );
+    if ( uniqueList.find( *it ) == uniqueList.end() && 
+         uniqueList.find( fullEmail ) == uniqueList.end() )
+      uniqueList << fullEmail;
   }
   mOrganizerCombo->insertStringList( uniqueList );
 }
