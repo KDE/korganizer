@@ -425,6 +425,7 @@ void ResourceView::saveResource()
   r->save();
 }
 
+// FIXME: This should be done by resource
 QString ResourceView::infoText( ResourceCalendar *r )
 {
   QString txt = "<qt>";
