@@ -25,9 +25,11 @@
 #ifndef DATENAVIGATORCONTAINER_H
 #define DATENAVIGATORCONTAINER_H
 
+#include <qframe.h>
+
 class KDateNavigator;
 
-class DateNavigatorContainer: public QWidget
+class DateNavigatorContainer: public QFrame
 {
     Q_OBJECT
   public:

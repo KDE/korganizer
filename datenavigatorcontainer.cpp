@@ -31,15 +31,17 @@
 #include "kdatenavigator.h"
 
 #include <kcalendarsystem.h>
+#include <kdialog.h>
 
 #include "datenavigatorcontainer.h"
 
 DateNavigatorContainer::DateNavigatorContainer( QWidget *parent,
                                                 const char *name )
-  : QWidget( parent, name ), mCalendar( 0 ),
+  : QFrame( parent, name ), mCalendar( 0 ),
     mHorizontalCount( 1 ), mVerticalCount( 1 )
 {
   mExtraViews.setAutoDelete( true );
+  setFrameStyle( QFrame::Sunken | QFrame::StyledPanel );
 
   mNavigatorView = new KDateNavigator( this, name );
 
@@ -152,8 +154,9 @@ void DateNavigatorContainer::resizeEvent( QResizeEvent * )
 
 //  kdDebug(5850) << "  NAVIGATORVIEW minimumSizeHint: " << minSize << endl;
 
-  int verticalCount = size().height() / minSize.height();
-  int horizontalCount = size().width() / minSize.width();
+  int margin = KDialog::spacingHint();
+  int verticalCount = ( size().height() - margin*2 ) / minSize.height();
+  int horizontalCount = ( size().width() - margin*2 ) / minSize.width();
 
   if ( horizontalCount != mHorizontalCount ||
        verticalCount != mVerticalCount ) {
@@ -177,16 +180,16 @@ void DateNavigatorContainer::resizeEvent( QResizeEvent * )
     mVerticalCount = verticalCount;
   }
 
-  int height = size().height() / verticalCount;
-  int width = size().width() / horizontalCount;
+  int height = (size().height() - margin*2) / verticalCount;
+  int width = (size().width() - margin*2) / horizontalCount;
 
   NavigatorBar *bar = mNavigatorView->navigatorBar();
   if ( horizontalCount > 1 ) bar->showButtons( true, false );
   else bar->showButtons( true, true );
 
   mNavigatorView->setGeometry(
-      ( (KOGlobals::self()->reverseLayout())?(horizontalCount-1):0) * width,
-      0, width, height );
+      ( ( (KOGlobals::self()->reverseLayout())?(horizontalCount-1):0) * width ) + margin,
+        margin, width, height );
   for( uint i = 0; i < mExtraViews.count(); ++i ) {
     int x = ( i + 1 ) % horizontalCount;
     int y = ( i + 1 ) / horizontalCount;
@@ -199,19 +202,21 @@ void DateNavigatorContainer::resizeEvent( QResizeEvent * )
         else bar->showButtons( false, false );
     }
     view->setGeometry(
-        ( (KOGlobals::self()->reverseLayout())?(horizontalCount-1-x):x) * width,
-        y * height, width, height );
+        ( ( (KOGlobals::self()->reverseLayout())?(horizontalCount-1-x):x) * width ) + margin,
+          ( y * height ) + margin, width, height );
   }
 }
 
 QSize DateNavigatorContainer::minimumSizeHint() const
 {
-  return mNavigatorView->minimumSizeHint();
+  int margin = KDialog::spacingHint() * 2;
+  return mNavigatorView->minimumSizeHint() + QSize( margin, margin );
 }
 
 QSize DateNavigatorContainer::sizeHint() const
 {
-  return mNavigatorView->sizeHint();
+  int margin = KDialog::spacingHint() * 2;
+  return mNavigatorView->sizeHint() + QSize( margin, margin );
 }
 
 #include "datenavigatorcontainer.moc"
