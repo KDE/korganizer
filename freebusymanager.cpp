@@ -401,23 +401,15 @@ KURL FreeBusyManager::freeBusyUrl( const QString &email )
 
 KCal::FreeBusy *FreeBusyManager::iCalToFreeBusy( const QCString &data )
 {
-  KCal::FreeBusy *fb = 0;
-  QString freeBusyVCal = QString::fromUtf8( data );
-  KCal::ScheduleMessage *message = mFormat.parseScheduleMessage( mCalendar,
-                                                                 freeBusyVCal );
-  if ( message ) {
-    KCal::IncidenceBase *event = message->event();
+  kdDebug() << "FreeBusyManager::iCalToFreeBusy()" << endl;
 
-    if ( !event ) {
-      kdError() << "freebusy message has no event" << endl;
-    } else {
-      fb = dynamic_cast<KCal::FreeBusy *>( event );
-      if ( fb ){
-        saveFreeBusy( fb, fb->organizer() );
-      } else {
-        kdError() << "no freebusy" << endl;
-      }
-    }
+  QString freeBusyVCal = QString::fromUtf8( data );
+  KCal::FreeBusy *fb = mFormat.parseFreeBusy( freeBusyVCal );
+  if ( !fb ) {
+    kdDebug() << "FreeBusyManager::iCalToFreeBusy(): Error parsing free/busy"
+              << endl;
+  } else {
+    saveFreeBusy( fb, fb->organizer() );
   }
   return fb;
 }

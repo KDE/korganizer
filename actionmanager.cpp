@@ -1461,6 +1461,9 @@ void ActionManager::slotProgress( ResourceCalendar *, const QString &id,
 #if 0
   kdDebug() << "ActionManager::slotProgress: " << id << ": " << percent
             << endl;
+#else
+  Q_UNUSED( id );
+  Q_UNUSED( percent );
 #endif
 
   int progress;
