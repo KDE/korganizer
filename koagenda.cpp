@@ -442,6 +442,9 @@ bool KOAgenda::eventFilter_key( QObject *, QKeyEvent *ke )
       case Key_Next:
       case Key_Home:
       case Key_End:
+      case Key_Control:
+      case Key_Meta:
+      case Key_Alt:
         break;
       default:
         mTypeAheadEvents.append( new QKeyEvent( ke->type(), ke->key(),
