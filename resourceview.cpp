@@ -49,7 +49,6 @@ ResourceViewFactory::ResourceViewFactory( KCal::CalendarResources *calendar,
 CalendarViewExtension *ResourceViewFactory::create( QWidget *parent )
 {
   ResourceView *view = new ResourceView( mCalendar->resourceManager(), parent );
-  view->updateView();
 
   QObject::connect( view, SIGNAL( resourcesChanged() ),
                     mView, SLOT( updateView() ) );
@@ -75,14 +74,12 @@ ResourceItem::ResourceItem( ResourceCalendar *resource, ResourceView *view,
   setGuiState();
 
   const QStringList subresources = mResource->subresources();
-  kdDebug(5850) << "Subresources: " << subresources << endl;
   if ( !subresources.isEmpty() ) {
     setOpen( true );
     setExpandable( true );
     // This resource has subresources
     QStringList::ConstIterator it;
     for ( it=subresources.begin(); it!=subresources.end(); ++it ) {
-      kdDebug(5850) << "Adding subresource " << *it << endl;
       ( void )new ResourceItem( mResource, *it, mView, this );
     }
   }
@@ -197,7 +194,6 @@ void ResourceView::emitResourcesChanged()
 
 void ResourceView::addResource()
 {
-  kdDebug(5850) << "ResourceView::addResource()" << endl;
   QStringList types = mManager->resourceTypeNames();
   QStringList descs = mManager->resourceTypeDescriptions();
   bool ok = false;
