@@ -55,7 +55,7 @@ bool IncidenceChanger::sendGroupwareMessage( Incidence *incidence, KCal::Schedul
   return true;
 }
 
-bool IncidenceChanger::cancelAttendees( Incidence *incidence )
+void IncidenceChanger::cancelAttendees( Incidence *incidence )
 {
   if ( KOPrefs::instance()->mUseGroupwareCommunication ) {
     if ( KMessageBox::questionYesNo( 0, i18n("Some attendees were removed "

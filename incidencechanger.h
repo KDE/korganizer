@@ -49,7 +49,7 @@ public:
   //        crash...
 //  static bool assignIncidence( Incidence *inc1, Incidence *inc2 );
 public slots:
-  bool cancelAttendees( Incidence *incidence );
+  void cancelAttendees( Incidence *incidence );
 
 protected:
   bool myAttendeeStatusChanged( Incidence *oldInc, Incidence *newInc );
