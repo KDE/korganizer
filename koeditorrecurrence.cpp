@@ -366,6 +366,21 @@ RecurYearly::RecurYearly( QWidget *parent, const char *name ) :
   buttonLayout->addMultiCellWidget( mByDayRadio, 2, 2, 0, 1 );
 }
 
+void RecurYearly::setDateTimes( QDateTime start, QDateTime ) 
+{
+  QString recurOnDayText;
+  if ( KOPrefs::instance()->mCompactDialogs ) {
+    mByDayRadio->setText( i18n("This day") );
+  } else {
+    mByDayRadio->setText( i18n("Recur on &day %1 of the year").
+        arg( start.date().dayOfYear() ) );
+  }
+//  mByMonthCombo->setCurrentItem( start.date().month() + 1 );  
+  if ( !KOPrefs::instance()->mCompactDialogs ) {
+    mByMonthRadio->setText( i18n("&Recur on day %1 of ").arg( start.date().day() ) );
+  }
+}
+
 void RecurYearly::setByDay()
 {
   mByDayRadio->setChecked( true );
@@ -868,6 +883,10 @@ void KOEditorRecurrence::setDateTimes( QDateTime start, QDateTime end )
 //  kdDebug(5850) << "KOEditorRecurrence::setDateTimes" << endl;
 
   mRecurrenceRange->setDateTimes( start, end );
+  mDaily->setDateTimes( start, end );
+  mWeekly->setDateTimes( start, end );
+  mMonthly->setDateTimes( start, end );
+  mYearly->setDateTimes( start, end );
 }
 
 void KOEditorRecurrence::setDefaults( QDateTime from, QDateTime to, bool )
@@ -888,13 +907,15 @@ void KOEditorRecurrence::setDefaults( QDateTime from, QDateTime to, bool )
   mWeekly->setFrequency( 1 );
   QBitArray days( 7 );
   days.fill( 0 );
+  days.setBit( (from.date().dayOfWeek()+6) % 7 );
   mWeekly->setDays( days );
 
   mMonthly->setFrequency( 1 );
-  mMonthly->setByDay( from.date().day()-1 );
+  mMonthly->setByPos( from.date().day()/7 + 1, from.date().dayOfWeek() );
+  mMonthly->setByDay( from.date().day() );
 
   mYearly->setFrequency( 1 );
-  mYearly->setByDay();
+  mYearly->setByMonth( from.date().month() );
 }
 
 void KOEditorRecurrence::readEvent(Event *event)
@@ -905,6 +926,7 @@ void KOEditorRecurrence::readEvent(Event *event)
   int day = 0;
   int count = 0;
   int month = 0;
+  setDefaults( event->dtStart(), event->dtEnd(), event->doesFloat() );
 
   setDateTimes( event->dtStart(), event->dtEnd() );
 

@@ -54,6 +54,7 @@ class RecurBase : public QWidget
   
     void setFrequency( int );
     int frequency();
+    void setDateTimes( QDateTime /*start*/, QDateTime /*end*/ ) {}
 
     QWidget *frequencyEdit();
 
@@ -108,6 +109,7 @@ class RecurYearly : public RecurBase
 {
   public:
     RecurYearly( QWidget *parent = 0, const char *name = 0 );
+    void setDateTimes( QDateTime start, QDateTime end );
     
     void setByDay();
     void setByMonth( int month );
