@@ -541,7 +541,7 @@ void CalendarView::readFilterSettings(KConfig *config)
   if ( pos>=0 ) {
     mCurrentFilter = mFilters.at( pos );
   }
-  
+  updateFilter();
 }
 
 void CalendarView::writeFilterSettings(KConfig *config)
@@ -1501,9 +1501,6 @@ void CalendarView::updateFilter()
   }
 
   emit newFilterListSignal( filters );
-kdDebug()<<"Filter #="<<pos<<endl;
-kdDebug()<<"All filters: "<< filters.join(", ").latin1() << endl;  
-    
   // account for the additional "No filter" at the beginning! if the
   // filter is not in the list, pos == -1...
   emit selectFilterSignal( pos+1 );
