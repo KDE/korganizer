@@ -369,10 +369,18 @@ void KOTodoEditor::readTodo( Todo *todo )
 
 void KOTodoEditor::writeTodo( Todo *todo )
 {
+  Incidence *oldIncidence = incidence->clone();
+
+  mRecurrence->writeIncidence( todo );
   mGeneral->writeTodo( todo );
   mDetails->writeEvent( todo );
-  mRecurrence->writeIncidence( todo );
   mAttachments->writeIncidence( todo );
+
+  if ( *(oldIncidence->recurrence()) != *(todo->recurrence() ) ) {
+    todo->setDtDue( todo->dtDue(), true );
+    if ( todo->hasStartDate() )
+      todo->setDtStart( todo->dtStart() );
+  }
 
   // set related event, i.e. parent to-do in this case.
   if ( mRelatedTodo ) {
