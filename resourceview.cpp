@@ -24,6 +24,7 @@
 
 #include "resourceview.h"
 
+#include <kcolordialog.h> 
 #include <klistview.h>
 #include <klocale.h>
 #include <kdebug.h>
@@ -85,9 +86,10 @@ ResourceItem::ResourceItem( ResourceCalendar *resource, ResourceView *view,
                             KListView *parent )
   : QCheckListItem( parent, resource->resourceName(), CheckBox ),
     mResource( resource ), mView( view ), mBlockStateChange( false ),
-    mIsSubresource( false ), mResourceIdentifier( QString::null ), 
+    mIsSubresource( false ), mResourceIdentifier( QString::null ),
     mSubItemsCreated( false )
 {
+  mResourceColor = QColor();
   setGuiState();
 
   if ( mResource->isActive() ) {
@@ -118,6 +120,7 @@ ResourceItem::ResourceItem( KCal::ResourceCalendar *resource,
     mView( view ), mBlockStateChange( false ), mIsSubresource( true ),
     mSubItemsCreated( false )
 {
+  mResourceColor = QColor();
   mResourceIdentifier = sub;
   setText( 0, label );
   setGuiState();
@@ -163,6 +166,15 @@ void ResourceItem::update()
 {
   setGuiState();
 }
+/*
+void ResourceItem::paintCell(QPainter *p, const QColorGroup &cg,
+      int column, int width, int alignment)
+{
+  QColorGroup _cg = cg;
+  if(!mResource) return;
+  _cg.setColor(QColorGroup::Base, getTextColor(mResourceColor));
+}
+*/
 
 ResourceView::ResourceView( KCal::CalendarResources *calendar,
                             QWidget *parent, const char *name )
@@ -264,7 +276,16 @@ void ResourceView::addResource()
 
 void ResourceView::addResourceItem( ResourceCalendar *resource )
 {
-  new ResourceItem( resource, this, mListView );
+  
+  ResourceItem *item=new ResourceItem( resource, this, mListView );
+
+  QColor resourceColor=KOPrefs::instance()->mEventColor;
+  
+  kdDebug(5850) << "ResourceView::addResourceItem from calendar: " << resource->identifier()<< endl;
+  resourceColor= *KOPrefs::instance()->resourceColor(resource->identifier());
+  kdDebug(5850) << "ResourceView::addResourceItem with color: " << resourceColor.name() <<endl;
+  
+  item->setResourceColor(resourceColor);
 
   connect( resource, SIGNAL( signalSubresourceAdded( ResourceCalendar *,
                                                      const QString &,
@@ -443,6 +464,8 @@ void ResourceView::contextMenuRequested ( QListViewItem *i,
                                    SLOT( saveResource() ) );
     menu->setItemEnabled( saveId, item->resource()->isActive() );
     menu->insertSeparator();
+    //FIXME: This is better on the resource dialog
+    menu->insertItem( i18n( "Assign &Color" ),this , SLOT( assignColor() ) );
     menu->insertItem( i18n("Show &Info"), this, SLOT( showInfo() ) );
     if ( !item->isSubresource() ) {
       menu->insertItem( i18n("&Edit..."), this, SLOT( editResource() ) );
@@ -458,6 +481,25 @@ void ResourceView::contextMenuRequested ( QListViewItem *i,
   menu->insertItem( i18n("&Add..."), this, SLOT( addResource() ) );
 
   menu->popup( pos );
+}
+
+void ResourceView::assignColor()
+{
+  ResourceItem *item = currentItem();
+  if ( !item ) 
+    return;
+  QColor myColor;
+  KCal::ResourceCalendar *cal = item->resource();
+  
+  QColor defaultColor =*KOPrefs::instance()->resourceColor( cal->identifier() );
+  
+  int result = KColorDialog::getColor( myColor,defaultColor);
+  
+  if ( result == KColorDialog::Accepted ) {
+    KOPrefs::instance()->setResourceColor( cal->identifier(), myColor );
+    item->update();
+    emit resourcesChanged();
+  }
 }
 
 void ResourceView::showInfo()

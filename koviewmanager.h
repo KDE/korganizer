@@ -94,6 +94,11 @@ class KOViewManager : public QObject
 
     void connectTodoView( KOTodoView *todoView );
 
+    void zoomInHorizontally();
+    void zoomOutHorizontally();
+    void zoomInVertically();
+    void zoomOutVertically();
+
   private:
     CalendarView *mMainView;
 

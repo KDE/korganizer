@@ -466,6 +466,11 @@ KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name) :
   // Scrolling
   connect(mAgenda->verticalScrollBar(),SIGNAL(valueChanged(int)),
           mTimeLabels, SLOT(positionChanged()));
+
+  connect( mAgenda,
+    SIGNAL( zoomView( const int, const QPoint & ,const Qt::Orientation ) ),
+    SLOT( zoomView( const int, const QPoint &, const Qt::Orientation ) ) );
+
   connect(mTimeLabels->verticalScrollBar(),SIGNAL(valueChanged(int)),
           SLOT(setContentsPos(int)));
 
@@ -548,6 +553,133 @@ void KOAgendaView::connectAgenda( KOAgenda *agenda, QPopupMenu *popup,
   connect( agenda, SIGNAL( droppedToDo( Todo *, const QPoint &, bool ) ),
            SLOT( slotTodoDropped( Todo *, const QPoint &, bool ) ) );
 
+}
+
+void KOAgendaView::zoomInVertically( )
+{
+  KOPrefs::instance()->mHourSize++;
+  mAgenda->updateConfig();
+  mAgenda->checkScrollBoundaries();
+
+  mTimeLabels->updateConfig();
+  mTimeLabels->positionChanged();
+  mTimeLabels->repaint();
+
+  updateView();
+}
+
+void KOAgendaView::zoomOutVertically( ) 
+{
+
+  if ( KOPrefs::instance()->mHourSize > 4 ) { 
+    
+    KOPrefs::instance()->mHourSize--;
+    mAgenda->updateConfig();
+    mAgenda->checkScrollBoundaries();
+  
+    mTimeLabels->updateConfig();
+    mTimeLabels->positionChanged();
+    mTimeLabels->repaint();
+  
+    updateView();
+  }
+}
+
+void KOAgendaView::zoomInHorizontally( )
+{
+  QDate date=mAgenda->selectedIncidenceDate();
+  if ( date.isValid() ) {
+     zoomInHorizontally( date );
+  } else {
+    QDate begin;
+    QDate end;
+    
+    begin = mSelectedDates.first();
+    end = mSelectedDates.last();
+    if ( begin.daysTo( end )> 1 ) {
+      showDates( begin.addDays(1), end.addDays(-1) );
+    }
+  }
+}
+
+void KOAgendaView::zoomOutHorizontally( ) 
+{
+  QDate date=mAgenda->selectedIncidenceDate();
+  if ( date.isValid() ) {
+     zoomOutHorizontally( date );
+  } else {
+    QDate begin;
+    QDate end;
+    
+    begin = mSelectedDates.first();
+    end = mSelectedDates.last();
+    showDates( begin.addDays(-1), end.addDays(1) );
+  }
+}
+
+void KOAgendaView::zoomInHorizontally( const QDate &date )
+{
+  QDate begin;
+  QDate end;
+  int ndays;
+  
+  begin = mSelectedDates.first();
+  end = mSelectedDates.last();
+  
+  ndays = begin.daysTo( end );
+  if ( ndays <= 2 ) 
+      showDates( date, date );
+  else
+      showDates( date.addDays( -( ( ndays/2 )-1 ) ), date.addDays( ndays/2 -1 ) );
+}
+
+void KOAgendaView::zoomOutHorizontally( const QDate &date )
+{  
+  QDate begin;
+  QDate end; 
+  int ndays;
+  
+  begin = mSelectedDates.first();
+  end = mSelectedDates.last();
+
+  ndays = begin.daysTo( end );
+  if ( abs( ndays ) >= 31 )
+    kdDebug(5850) << "change to the mounth view?"<<endl;
+  else
+    //We want to center the date
+    showDates( date.addDays( -(ndays/2+1 ) ), date.addDays( ndays/2+1));
+}
+
+void KOAgendaView::zoomView( const int delta, const QPoint &pos,
+  const Qt::Orientation orient )
+{
+  static QDate zoomDate;
+  static QTimer t( this );
+
+
+  //Zoom to the selected incidence, on the other way
+  // zoom to the date on screen after the first mousewheel move.
+  if ( orient == Qt::Horizontal ) {
+    QDate date=mAgenda->selectedIncidenceDate();
+    if ( date.isValid() )
+      zoomDate=date;
+    else{
+      if ( !t.isActive() ) {
+        zoomDate= mSelectedDates[pos.x()];
+      }
+      t.start ( 1000,true );
+    }
+    if ( delta > 0 ) 
+      zoomOutHorizontally( zoomDate );
+    else 
+      zoomInHorizontally( zoomDate );
+  } else {
+    // Vertical zoom
+    if ( delta > 0 ) 
+      zoomOutVertically();
+    else  
+      zoomInVertically();
+  }
 }
 
 void KOAgendaView::createDayLabels()

@@ -480,6 +480,8 @@ class KOPrefsDialogViews : public KPrefsModule
 
       addWidBool( KOPrefs::instance()->selectionStartsEditorItem(), agendaGroup );
 
+      addWidBool( KOPrefs::instance()->agendaViewUsesResourceColorItem(), agendaGroup );
+      
       topLayout->addWidget( agendaGroup );
 
 
@@ -491,6 +493,7 @@ class KOPrefsDialogViews : public KPrefsModule
       addWidBool( KOPrefs::instance()->fullViewMonthItem(), monthGroup );
       addWidBool( KOPrefs::instance()->monthViewUsesCategoryColorItem(),
                       monthGroup );
+      addWidBool( KOPrefs::instance()->monthViewUsesResourceColorItem(), monthGroup );
       topLayout->addWidget( monthGroup );
 
 

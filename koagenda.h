@@ -186,6 +186,7 @@ class KOAgenda : public QScrollView
     void droppedToDo( Todo*todo, const QPoint &gpos, bool allDay );
 
     void enableAgendaUpdate( bool enable );
+    void zoomView( const int delta, const QPoint &pos, const Qt::Orientation );
 
   private:
     enum MouseActionType { NOP, MOVE, SELECT,
@@ -198,6 +199,10 @@ class KOAgenda : public QScrollView
 
     /** Handles mouse events. Called from eventFilter */
     virtual bool eventFilter_mouse ( QObject *, QMouseEvent * );
+#ifndef QT_NO_WHEELEVENT    
+    /** Handles mousewheel events. Called from eventFilter */
+    virtual bool eventFilter_wheel ( QObject *, QWheelEvent * );
+#endif    
     /** Handles key events. Called from eventFilter */
     virtual bool eventFilter_key ( QObject *, QKeyEvent * );
 
@@ -271,7 +276,7 @@ class KOAgenda : public QScrollView
     void marcus_bains();
     bool mAllDayMode;
 
-    // We need the calendar for drag'n'drop
+    // We need the calendar for drag'n'drop and for paint the ResourceColor
     Calendar *mCalendar;
 
     // Width and height of agenda cells. mDesiredGridSpacingY is the height

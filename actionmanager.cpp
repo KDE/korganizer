@@ -217,7 +217,7 @@ void ActionManager::createCalendarResources()
 
 void ActionManager::initCalendar( Calendar *cal )
 {
-  cal->setOwner( Person( KOPrefs::instance()->fullName(), 
+  cal->setOwner( Person( KOPrefs::instance()->fullName(),
                          KOPrefs::instance()->email() ) );
   // setting fullName and email do not really count as modifying the calendar
   mCalendarView->setModified( false );
@@ -362,6 +362,21 @@ void ActionManager::initActions()
 
   // view menu
 
+  // TODO: try to find / create better icons for the following 4 actions
+  new KAction( i18n( "Zoom In Horizontally" ), "viewmag+", 0,
+                    mCalendarView->viewManager(), SLOT( zoomInHorizontally() ),
+                    mACollection, "zoom_in_horizontally" );
+  new KAction( i18n( "Zoom Out Horizontally" ), "viewmag-", 0,
+                    mCalendarView->viewManager(), SLOT( zoomOutHorizontally() ),
+                    mACollection, "zoom_out_horizontally" );
+  new KAction( i18n( "Zoom In Vertically" ), "viewmag+", 0,
+                    mCalendarView->viewManager(), SLOT( zoomInVertically() ),
+                    mACollection, "zoom_in_vertically" );
+  new KAction( i18n( "Zoom Out Vertically" ), "viewmag-", 0,
+                    mCalendarView->viewManager(), SLOT( zoomOutVertically() ),
+                    mACollection, "zoom_out_vertically" );
+
+//--
   new KAction( i18n("What's &Next"), "whatsnext", 0,
                     mCalendarView->viewManager(), SLOT( showWhatsNextView() ),
                     mACollection, "view_whatsnext" );
@@ -920,10 +935,10 @@ void ActionManager::exportHTML()
 {
 kdDebug()<<"ActionManager::exportHTML, no arguments. Using default settings from config."<<endl;
   HTMLExportSettings settings( "KOrganizer" );
-  // Manually read in the config, because parametrized kconfigxt objects don't 
+  // Manually read in the config, because parametrized kconfigxt objects don't
   // seem to load the config theirselves
   settings.readConfig();
-  
+
   QDate qd1;
   qd1 = QDate::currentDate();
   QDate qd2;
@@ -940,16 +955,16 @@ kdDebug()<<"ActionManager::exportHTML, no arguments. Using default settings from
 void ActionManager::exportHTML( HTMLExportSettings *settings )
 {
 kdDebug()<<"ActionManager::exportHTML, settings given."<<endl;
-  if ( !settings || settings->outputFile().isEmpty() ) 
+  if ( !settings || settings->outputFile().isEmpty() )
     return;
   settings->setEMail( KOPrefs::instance()->email() );
   settings->setName( KOPrefs::instance()->fullName() );
-  
+
   settings->setCreditName( "KOrganizer" );
   settings->setCreditURL( "http://korganizer.kde.org" );
 
   KCal::HtmlExport mExport( mCalendarView->calendar(), settings );
-  
+
   QDate cdate = settings->dateStart().date();
   QDate qd2 = settings->dateEnd().date();
   while ( cdate <= qd2 ) {

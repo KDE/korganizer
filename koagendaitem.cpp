@@ -65,7 +65,7 @@ KOAgendaItem::KOAgendaItem( Incidence *incidence, QDate qd, QWidget *parent,
   setCellXY( 0, 0, 1 );
   setCellXRight( 0 );
   setMouseTracking( true );
-
+  mResourceColor = QColor();
   updateIcons();
 
   // select() does nothing, if state hasn't change, so preset mSelected.
@@ -684,11 +684,19 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
     else
       bgColor = *(KOPrefs::instance()->categoryColor(cat));
   }
-
-  QColor frameColor = mSelected ? QColor( 85 + bgColor.red()*2/3,
-                                          85 + bgColor.green()*2/3,
-                                          85 + bgColor.blue()*2/3 )
+  QColor frameColor;
+  if ( KOPrefs::instance()->agendaViewUsesResourceColor() 
+    && mResourceColor.isValid() ) {
+     frameColor = mSelected ? QColor( 85 + mResourceColor.red() * 2/3,
+                                          85 + mResourceColor.green() * 2/3,
+                                          85 + mResourceColor.blue() * 2/3 )
+                                : mResourceColor.dark(115);
+  } else {
+    frameColor = mSelected ? QColor( 85 + bgColor.red() * 2/3,
+                                          85 + bgColor.green() * 2/3,
+                                          85 + bgColor.blue() * 2/3 )
                                 : bgColor.dark(115);
+  }
   QColor textColor = getTextColor(bgColor);
   p.setPen( textColor );
   p.setBackgroundColor( bgColor );

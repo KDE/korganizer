@@ -47,6 +47,7 @@
 #include <libkcal/calfilter.h>
 #include <libkcal/calendar.h>
 #include <libkcal/incidenceformatter.h>
+#include <libkcal/calendarresources.h>
 
 #include "koprefs.h"
 #ifndef KORG_NOPLUGINS
@@ -204,6 +205,7 @@ MonthViewItem::MonthViewItem( Incidence *incidence, QDate qd, const QString & s)
   mRecurPixmap     = KOGlobals::self()->smallIcon("recur");
   mReplyPixmap     = KOGlobals::self()->smallIcon("mail_reply");
 
+  mResourceColor = QColor();
   mTodo      = false;
   mTodoDone  = false;
   mRecur     = false;
@@ -221,9 +223,16 @@ void MonthViewItem::paint( QPainter *p )
 
   QColor bgColor = palette().color( QPalette::Normal,
             sel ? QColorGroup::Highlight : QColorGroup::Background );
+  int offset=0;        
+  if ( KOPrefs::instance()->monthViewUsesResourceColor() && 
+    mResourceColor.isValid() ) {
+    p->setBackgroundColor( mResourceColor );
+    p->eraseRect( 0, 0, listBox()->maxItemWidth(), height( listBox() ) );
+    offset=2;
+  }
   if ( KOPrefs::instance()->monthViewUsesCategoryColor() ) {
     p->setBackgroundColor( bgColor );
-    p->eraseRect( 0, 0, listBox()->maxItemWidth(), height( listBox() ) );
+    p->eraseRect( offset, offset, listBox()->maxItemWidth()-2*offset, height( listBox() )-2*offset );
   }
   int x = 3;
   if ( mTodo ) {
@@ -495,11 +504,23 @@ class MonthViewCell::CreateItemVisitor :
 void MonthViewCell::addIncidence( Incidence *incidence )
 {
   CreateItemVisitor v;
+  
+  QColor resourceColor=KOPrefs::instance()->mEventColor;
+  
+  CalendarResources *calendarRsc = dynamic_cast<CalendarResources*>( mCalendar );
+  if ( calendarRsc ) {
+    ResourceCalendar *rscCalendar = calendarRsc->resource( incidence );
+    resourceColor= *KOPrefs::instance()->resourceColor( rscCalendar->identifier() );
+  }else{
+    kdDebug(5850) << "MonthViewCell::addIncidence and mCalendar is not a CalendarResources" <<endl;
+  }
+  
   if ( v.act( incidence, mDate, mStandardPalette ) ) {
     MonthViewItem *item = v.item();
     if ( item ) {
       item->setAlarm( incidence->isAlarmEnabled() );
       item->setRecur( incidence->doesRecur() );
+      item->setResourceColor(resourceColor);
       // FIXME: Find the correct position (time-wise) to insert the item.
       //        Currently, the items are displayed in "random" order instead of
       //        chronologically sorted.
@@ -680,6 +701,7 @@ KOMonthView::KOMonthView( Calendar *calendar, QWidget *parent, const char *name 
   for( row = 0; row < mNumWeeks; ++row ) {
     for( col = 0; col < mDaysPerWeek; ++col ) {
       MonthViewCell *cell = new MonthViewCell( this );
+      cell->setCalendar(calendar);
       mCells.insert( row * mDaysPerWeek + col, cell );
       dayLayout->addWidget( cell, row + 1, col );
 

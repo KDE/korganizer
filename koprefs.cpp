@@ -29,6 +29,7 @@
 #include <qstring.h>
 #include <qfont.h>
 #include <qcolor.h>
+#include <qmap.h>
 #include <qstringlist.h>
 
 #include <kglobalsettings.h>
@@ -63,6 +64,8 @@ KOPrefs::KOPrefs() :
   mCategoryColors.setAutoDelete(true);
 
   mDefaultCategoryColor = QColor(151, 235, 121);
+
+  mDefaultResourceColor = QColor();//Default is a color invalid
 
   mDefaultMonthViewFont = KGlobalSettings::generalFont();
   // make it a bit smaller
@@ -192,6 +195,18 @@ void KOPrefs::usrReadConfig()
     setCategoryColor(*it,config()->readColorEntry(*it, &*it2));
   }
 
+  config()->setGroup( "Resources Colors" );
+  QMap<QString, QString> map = config()->entryMap( "Resources Colors" );
+  
+  QMapIterator<QString, QString> it3;
+  for( it3 = map.begin(); it3 != map.end(); ++it3 ) {
+    kdDebug(5850)<< "KOPrefs::usrReadConfig: key: " << it3.key() << " value: " 
+      << it3.data()<<endl;
+    setResourceColor( it3.key(), config()->readColorEntry( it3.key(), 
+      &mDefaultResourceColor ) );
+  }
+  
+  
   if (mTimeZoneId.isEmpty()) {
     setTimeZoneIdDefault();
   }
@@ -221,6 +236,13 @@ void KOPrefs::usrWriteConfig()
     ++it;
   }
 
+  config()->setGroup( "Resources Colors" );
+  QDictIterator<QColor> it2( mResourceColors );
+  while( it2.current() ) {
+    config()->writeEntry( it2.currentKey(), *( it2.current() ) );
+    ++it2;
+  }
+  
   if( !mFreeBusyPublishSavePassword ) {
     KConfigSkeleton::ItemPassword *i = freeBusyPublishPasswordItem();
     i->setValue( "" );
@@ -255,6 +277,24 @@ QColor *KOPrefs::categoryColor(QString cat)
 
   if ( color ) return color;
   else return &mDefaultCategoryColor;
+}
+
+void KOPrefs::setResourceColor ( QString cal, const QColor &color )
+{
+  kdDebug(5850)<<"KOPrefs::setResourceColor: " << cal << " color: "<< 
+    color.name()<<endl;
+  mResourceColors.replace( cal, new QColor( color ) );
+}
+  
+QColor* KOPrefs::resourceColor( QString cal )
+{
+  QColor *color=0;
+  if( !cal.isEmpty() ) color = mResourceColors[cal];
+  
+  if (color && color->isValid() ) 
+    return color;
+  else 
+    return &mDefaultResourceColor;
 }
 
 void KOPrefs::setFullName(const QString &name)

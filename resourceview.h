@@ -69,11 +69,17 @@ class ResourceItem : public QCheckListItem
     void createSubresourceItems();
 
     void update();
-
+    /*
+    virtual void paintCell(QPainter *p, const QColorGroup &cg,
+      int column, int width, int alignment);
+//     */
+    void setResourceColor(QColor& color) { mResourceColor = color; }
+    QColor &resourceColor() {return mResourceColor;}
   protected:
     void stateChange( bool active );
 
     void setGuiState();
+    QColor mResourceColor;
 
   private:
     KCal::ResourceCalendar *mResource;
@@ -129,11 +135,12 @@ class ResourceView : public CalendarViewExtension
                                const QString &resource );
 
     void slotSubresourceRemoved( ResourceCalendar *, const QString &,
-                                 const QString &resource );
+                                 const QString & );
     void closeResource( ResourceCalendar * );
 
     void contextMenuRequested ( QListViewItem *i, const QPoint &pos, int );
 
+    void assignColor();
     void showInfo();
   
     void reloadResource();

@@ -133,6 +133,8 @@ class KOAgendaView : public KOEventView
     KOAgendaView( Calendar *cal, QWidget *parent = 0, const char *name = 0 );
     virtual ~KOAgendaView();
 
+    
+
     /** Returns maximum number of days supported by the koagendaview */
     virtual int maxDatesHint();
 
@@ -200,6 +202,17 @@ class KOAgendaView : public KOEventView
     void enableAgendaUpdate( bool enable );
     void setIncidenceChanger( IncidenceChangerBase *changer );
 
+    void zoomInHorizontally( );
+    void zoomInHorizontally( const QDate& );
+    
+    void zoomOutHorizontally( );
+    void zoomOutHorizontally( const QDate& );
+    
+    void zoomInVertically( );
+    void zoomOutVertically( );
+    
+    void zoomView( const int delta, const QPoint &pos,
+      const Qt::Orientation orient=Qt::Horizontal );
   signals:
     void toggleExpand();
 

@@ -219,6 +219,24 @@ void KOViewManager::connectTodoView( KOTodoView* todoView )
            mMainView, SLOT( todo_unsub() ) );
 }
 
+void KOViewManager::zoomInHorizontally() 
+{
+  // is better resend the signal?
+  if( mAgendaView == mCurrentView ) mAgendaView->zoomInHorizontally();
+}
+void KOViewManager::zoomOutHorizontally()
+{
+  if( mAgendaView== mCurrentView ) mAgendaView->zoomOutHorizontally();
+}
+void KOViewManager::zoomInVertically()
+{
+  if( mAgendaView== mCurrentView ) mAgendaView->zoomInVertically();
+}
+void KOViewManager::zoomOutVertically()
+{
+  if( mAgendaView== mCurrentView ) mAgendaView->zoomOutVertically();
+}
+
 void KOViewManager::addView(KOrg::BaseView *view)
 {
   connectView( view );

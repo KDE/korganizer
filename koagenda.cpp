@@ -54,6 +54,8 @@
 #include <libkcal/icaldrag.h>
 #include <libkcal/vcaldrag.h>
 #include <libkcal/calendar.h>
+#include <libkcal/calendarresources.h>
+#include <math.h>
 
 ////////////////////////////////////////////////////////////////////////////
 MarcusBains::MarcusBains(KOAgenda *_agenda,const char *name)
@@ -339,7 +341,10 @@ bool KOAgenda::eventFilter ( QObject *object, QEvent *event )
     case QEvent::MouseButtonRelease:
     case QEvent::MouseMove:
       return eventFilter_mouse( object, static_cast<QMouseEvent *>( event ) );
-
+#ifndef QT_NO_WHEELEVENT
+    case QEvent::Wheel:
+      return eventFilter_wheel( object, static_cast<QWheelEvent *>( event ) );
+#endif
     case QEvent::KeyPress:
     case QEvent::KeyRelease:
       return eventFilter_key( object, static_cast<QKeyEvent *>( event ) );
@@ -503,7 +508,39 @@ void KOAgenda::finishTypeAhead()
   mTypeAheadEvents.clear();
   mTypeAhead = false;
 }
-
+#ifndef QT_NO_WHEELEVENT
+bool KOAgenda::eventFilter_wheel ( QObject *object, QWheelEvent *e )
+{
+  QPoint viewportPos;
+  bool accepted=false;
+  if  ( ( e->state() & ControlButton ) == ControlButton ){
+    if ( object != viewport() ) {
+      viewportPos = ( (QWidget *) object )->mapToParent( e->pos() );
+    } else {
+      viewportPos = e->pos();
+    }
+    //kdDebug(5850)<< "KOAgenda::eventFilter_wheel: type:"<<
+    //  e->type()<<" delta: "<< e->delta()<< endl;
+    emit zoomView( -e->delta() ,
+      contentsToGrid( viewportToContents( viewportPos ) ),
+      Qt::Horizontal );
+    accepted=true;
+  }
+  if  ( ( e->state() & ShiftButton) == ShiftButton ) {
+    if ( object != viewport() ) {
+      viewportPos = ( (QWidget *)object )->mapToParent( e->pos() );
+    } else {
+      viewportPos = e->pos();
+    }
+    emit zoomView( -e->delta() ,
+      contentsToGrid( viewportToContents( viewportPos ) ),
+      Qt::Vertical );
+    accepted=true;
+  }
+  if (accepted ) e->accept();
+  return accepted;
+}
+#endif
 bool KOAgenda::eventFilter_mouse(QObject *object, QMouseEvent *me)
 {
   QPoint viewportPos;
@@ -756,7 +793,7 @@ void KOAgenda::startItemAction(const QPoint& viewportPos)
     mActionType = isInResizeArea( mAllDayMode, pos, mActionItem );
   }
 
-  
+
   mActionItem->startMove();
   setActionCursor( mActionType, true );
 }
@@ -813,7 +850,7 @@ void KOAgenda::performItemAction(const QPoint& viewportPos)
     if ( !mItemMoved ) {
       if ( !mChanger || !mChanger->beginChange( mActionItem->incidence() ) ) {
         KMessageBox::information( this, i18n("Unable to lock incidence for "
-                             "modification. You cannot change make any changes."), 
+                             "modification. You cannot change make any changes."),
                              i18n("Locking failed"), "AgendaLockingFailed" );
         mScrollUpTimer.stop();
         mScrollDownTimer.stop();
@@ -960,8 +997,8 @@ void KOAgenda::endItemAction()
       int res = KOMessageBox::fourBtnMsgBox( this, QMessageBox::Question,
           i18n("The item you try to change is a recurring item. Shall the changes "
                "be applied only to this single occurrence, only to the future items, "
-               "or to all items in the recurrence?"), 
-          i18n("Changing a recurring item"), 
+               "or to all items in the recurrence?"),
+          i18n("Changing a recurring item"),
           i18n("Only &this item"), i18n("Only &future items"), i18n("&All occurrences") );
       switch ( res ) {
         case KMessageBox::Ok: // All occurences
@@ -969,18 +1006,18 @@ void KOAgenda::endItemAction()
             modify = true;
             break;
         case KMessageBox::Yes: { // Just this occurence
-            // Dissociate this occurence: 
-            // create clone of event, set relation to old event, set cloned event 
+            // Dissociate this occurence:
+            // create clone of event, set relation to old event, set cloned event
             // for mActionItem, add exception date to old event, changeIncidence
-            // for the old event, remove the recurrence from the new copy and then just 
-            // go on with the newly adjusted mActionItem and let the usual code take 
+            // for the old event, remove the recurrence from the new copy and then just
+            // go on with the newly adjusted mActionItem and let the usual code take
             // care of the new time!
             modify = true;
             multiModify = true;
             emit startMultiModify( i18n("Dissociate event from recurrence") );
             Incidence* oldInc = mActionItem->incidence();
             Incidence* oldIncSaved = mActionItem->incidence()->clone();
-            Incidence* newInc = mCalendar->dissociateOccurrence( 
+            Incidence* newInc = mCalendar->dissociateOccurrence(
                 oldInc, mActionItem->itemDate() );
             if ( newInc ) {
               // don't recreate items, they already have the correct position
@@ -997,18 +1034,18 @@ void KOAgenda::endItemAction()
             delete oldIncSaved;
             break; }
         case KMessageBox::No/*Future*/: { // All future occurences
-            // Dissociate this occurence: 
-            // create clone of event, set relation to old event, set cloned event 
+            // Dissociate this occurence:
+            // create clone of event, set relation to old event, set cloned event
             // for mActionItem, add recurrence end date to old event, changeIncidence
-            // for the old event, adjust the recurrence for the new copy and then just 
-            // go on with the newly adjusted mActionItem and let the usual code take 
+            // for the old event, adjust the recurrence for the new copy and then just
+            // go on with the newly adjusted mActionItem and let the usual code take
             // care of the new time!
             modify = true;
             multiModify = true;
             emit startMultiModify( i18n("Split future recurrences") );
             Incidence* oldInc = mActionItem->incidence();
             Incidence* oldIncSaved = mActionItem->incidence()->clone();
-            Incidence* newInc = mCalendar->dissociateOccurrence( 
+            Incidence* newInc = mCalendar->dissociateOccurrence(
                 oldInc, mActionItem->itemDate(), false );
             if ( newInc ) {
               emit enableAgendaUpdate( false );
@@ -1057,7 +1094,7 @@ void KOAgenda::endItemAction()
     // FIXME: If the change failed, we need to update the view!
     mChanger->endChange( mActionItem->incidence() );
   }
-  
+
   mActionItem = 0;
   mActionType = NOP;
   mItemMoved = false;
@@ -1474,6 +1511,19 @@ KOAgendaItem *KOAgenda::insertItem( Incidence *incidence, QDate qd, int X,
     kdDebug(5850) << "KOAgenda: calling insertItem in all-day mode is illegal." << endl;
     return 0;
   }
+
+  //FIXME: dynamic_cast are dirty, Better We implements interface to get the color
+  // from the calendar
+  QColor resourceColor = QColor(); //Default invalid color
+  CalendarResources *calendarResource = dynamic_cast<CalendarResources*>( mCalendar );
+
+  if ( calendarResource ) {
+    ResourceCalendar *resourceCalendar = calendarResource->resource( incidence );
+    resourceColor = *KOPrefs::instance()->resourceColor( resourceCalendar->identifier() );
+  }else{
+    kdDebug(5850) << "KOAgenda:insertItem: Calendar is not a CalendarResources" <<endl;
+  }
+
   mActionType = NOP;
 
   KOAgendaItem *agendaItem = new KOAgendaItem( incidence, qd, viewport() );
@@ -1493,7 +1543,7 @@ KOAgendaItem *KOAgenda::insertItem( Incidence *incidence, QDate qd, int X,
                       int( ( YBottom + 1 ) * mGridSpacingY ) );
   agendaItem->setCellXY( X, YTop, YBottom );
   agendaItem->setCellXRight( X );
-
+  agendaItem->setResourceColor(resourceColor);
   agendaItem->installEventFilter( this );
 
   addChild( agendaItem, int( X * mGridSpacingX ), int( YTop * mGridSpacingY ) );
@@ -1518,7 +1568,17 @@ KOAgendaItem *KOAgenda::insertAllDayItem( Incidence *event, QDate qd,
     kdDebug(5850) << "KOAgenda: calling insertAllDayItem in non all-day mode is illegal." << endl;
     return 0;
   }
+
   mActionType = NOP;
+
+  QColor resourceColor = QColor(); //Default invalid color
+  CalendarResources *calendarResource = dynamic_cast<CalendarResources*>(mCalendar);
+  if ( calendarResource ) {
+    ResourceCalendar *resourceCalendar = calendarResource->resource( event );
+    resourceColor = *KOPrefs::instance()->resourceColor( resourceCalendar->identifier() );
+  }else{
+    kdDebug(5850) << "KOAgenda:insertItem: mCalendar is not a CalendarResources" <<endl;
+  }
 
   KOAgendaItem *agendaItem = new KOAgendaItem( event, qd, viewport() );
   connect( agendaItem, SIGNAL( removeAgendaItem( KOAgendaItem* ) ),
@@ -1536,7 +1596,7 @@ KOAgendaItem *KOAgenda::insertAllDayItem( Incidence *event, QDate qd,
   agendaItem->resize( int( endIt ) - int( startIt ), int( mGridSpacingY ) );
 
   agendaItem->installEventFilter( this );
-
+  agendaItem->setResourceColor( resourceColor );
   addChild( agendaItem, int( XBegin * mGridSpacingX ), 0 );
   mItems.append( agendaItem );
 
@@ -1625,6 +1685,7 @@ void KOAgenda::showAgendaItem( KOAgendaItem *agendaItem )
   if ( !mItems.containsRef( agendaItem ) )
     mItems.append( agendaItem );
   placeSubCells( agendaItem );
+
   agendaItem->show();
 }
 
@@ -1694,7 +1755,7 @@ void KOAgenda::resizeEvent ( QResizeEvent *ev )
     mGridSpacingX = double( newSize.width() - verticalScrollBar()->width() - 2 * frameWidth()) / double(mColumns);
     // make sure that there are not more than 24 per day
     mGridSpacingY = double(newSize.height() - 2 * frameWidth()) / double(mRows);
-    if ( mGridSpacingY < mDesiredGridSpacingY ) 
+    if ( mGridSpacingY < mDesiredGridSpacingY )
       mGridSpacingY = mDesiredGridSpacingY;
 
     for ( item=mItems.first(); item != 0; item=mItems.next() ) {
@@ -1737,10 +1798,16 @@ int KOAgenda::minimumWidth() const
 
 void KOAgenda::updateConfig()
 {
+  double oldGridSpacingY = mGridSpacingY;
   mDesiredGridSpacingY = KOPrefs::instance()->mHourSize;
  // make sure that there are not more than 24 per day
   mGridSpacingY = (double)height()/(double)mRows;
   if (mGridSpacingY<mDesiredGridSpacingY) mGridSpacingY=mDesiredGridSpacingY;
+
+  //can be two doubles equal?, it's better to compare them with an epsilon
+  if ( fabs( oldGridSpacingY - mGridSpacingY ) > 0.1 )
+    resizeContents( int( mGridSpacingX * mColumns ),
+                  int( mGridSpacingY * mRows ) );
 
   calculateWorkingHours();
 

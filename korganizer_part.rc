@@ -49,6 +49,13 @@
       <Action name="korganizer_paste"/>
     </Menu>
     <Menu name="view"><text>&amp;View</text>
+      <Menu name="zoom"><text>&amp;Zoom</text>
+        <Action name="zoom_in_horizontally"/>
+        <Action name="zoom_out_horizontally"/>
+        <Separator/>
+        <Action name="zoom_in_vertically"/>
+        <Action name="zoom_out_vertically"/>
+      </Menu>
       <Action name="view_whatsnext"/>
       <Separator/>
       <Action name="view_list"/>
