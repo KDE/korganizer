@@ -26,13 +26,15 @@
 */
 
 #include <qobject.h>
+
 #include <kaction.h>
 #include <klocale.h>
 #include <kurl.h>
+
 #include <libkcal/calendar.h>
-#include "kalarmd/alarmdaemoniface_stub.h"
 #include <korganizer/part.h>
 #include <korganizer/mainwindow.h>
+
 #include "calendarview.h"
 
 class KAction;
@@ -47,9 +49,10 @@ class KOWindowList;
 
 using namespace KCal;
 
-/** The ActionManager creates all the actions in KOrganizer. This class
-* is shared between the main application and the part so all common
-* actions are in one location.
+/**
+  The ActionManager creates all the actions in KOrganizer. This class
+  is shared between the main application and the part so all common
+  actions are in one location.
 */
 class ActionManager : public QObject
 {
@@ -60,7 +63,7 @@ class ActionManager : public QObject
                   QObject *parent, KOrg::MainWindow *parent);
     virtual ~ActionManager();
 
-    /* Peform initialization that requires this* to be full constructed */
+    /** Peform initialization that requires this* to be full constructed */
     void init();
 
     CalendarView *view() const { return mCalendarView; }
@@ -254,7 +257,6 @@ class ActionManager : public QObject
     KOrg::MainWindow *mMainWindow;
     bool mIsPart;
 
-    AlarmDaemonIface_stub mAlarmDaemonIface;
     static bool startedKAddressBook; //whether we started KAddressBook ourselves
     KONewStuff *mNewStuff;
     bool mHtmlExportSync;

@@ -39,6 +39,7 @@
 #include <kxmlguiclient.h>
 #include <kwin.h>
 
+#include "alarmclient.h"
 #include "calendarview.h"
 #include "kocore.h"
 #include "kodialogmanager.h"
@@ -66,7 +67,7 @@ ActionManager::ActionManager(KXMLGUIClient *client, CalendarView *widget,
   mTempFile = 0;
   mActive = false;
   mNewStuff = 0;
-  mHtmlExportSync = false;  
+  mHtmlExportSync = false;
   mMainWindow = mainWindow;
 }
 
@@ -85,7 +86,7 @@ void ActionManager::ActionManager::init()
   windowList->addWindow(mMainWindow);
 
   initActions();
-  
+
   // set up autoSaving stuff
   mAutoSaveTimer = new QTimer(this);
   connect(mAutoSaveTimer,SIGNAL(timeout()),SLOT(checkAutoSave()));
@@ -95,10 +96,10 @@ void ActionManager::ActionManager::init()
   }
 
   setTitle();
-  
+
   connect(mCalendarView,SIGNAL(modifiedChanged(bool)),SLOT(setTitle()));
-  connect(mCalendarView,SIGNAL(configChanged()),SLOT(updateConfig()));  
-  
+  connect(mCalendarView,SIGNAL(configChanged()),SLOT(updateConfig()));
+
   connect( mCalendarView, SIGNAL( incidenceSelected( Incidence * ) ),
            this, SLOT( processIncidenceSelection( Incidence * ) ) );
 
@@ -736,8 +737,7 @@ bool ActionManager::saveURL()
     if (result != KMessageBox::Continue) return false;
 
     // Tell the alarm daemon to stop monitoring the vCalendar file
-    mAlarmDaemonIface.removeCal( mURL.url() );
-    if (!mAlarmDaemonIface.ok() ) {
+    if ( !KOGlobals::self()->alarmClient()->removeCalendar( mURL ) ) {
       kdDebug() << "KOrganizer::saveURL(): dcop send failed" << endl;
     }
 
@@ -769,8 +769,7 @@ bool ActionManager::saveURL()
 
   if (isActive()) {
     kdDebug() << "KOrganizer::saveURL(): Notify alarm daemon" << endl;
-    mAlarmDaemonIface.reloadCal("korgac",mURL.url());
-    if (!mAlarmDaemonIface.ok()) {
+    if ( !KOGlobals::self()->alarmClient()->reloadCalendar( mURL ) ) {
       kdDebug() << "KOrganizer::saveUrl(): reloadCal call failed." << endl;
     }
   }
@@ -1177,7 +1176,7 @@ void ActionManager::loadParts()
 {
   if (mPluginMenu)
       mPluginMenu->popupMenu()->clear();
-  mParts = KOCore::self()->loadParts( mMainWindow );    
+  mParts = KOCore::self()->loadParts( mMainWindow );
 }
 
 #include "actionmanager.moc"
