@@ -89,6 +89,7 @@ KOAttendeeListView::KOAttendeeListView ( QWidget *parent, const char *name )
 {
   setAcceptDrops( true );
   setAllColumnsShowFocus( true );
+  setSorting( -1 );
 }
 
 /** KOAttendeeListView is a child class of KListView  which supports
@@ -382,7 +383,9 @@ void KOEditorDetails::insertAttendee( Attendee *a )
 
 void KOEditorDetails::insertAttendee( Attendee *a, bool goodEmailAddress )
 {
-  AttendeeListItem *item = new AttendeeListItem( a, mListView );
+  // lastItem() is O(n), but for n very small that should be fine
+  AttendeeListItem *item = new AttendeeListItem( a, mListView,
+      static_cast<KListViewItem*>( mListView->lastItem() ) );
   mListView->setSelected( item, true );
   if( mFreeBusy ) mFreeBusy->insertAttendee( a, goodEmailAddress );
 }
