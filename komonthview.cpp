@@ -27,6 +27,7 @@
 #include <qtooltip.h>
 #include <qpainter.h>
 #include <qcursor.h>
+#include <qlistbox.h>
 
 #include <kdebug.h>
 #include <klocale.h>
@@ -45,10 +46,38 @@
 #include "kocore.h"
 #endif
 #include "koglobals.h"
+#include "koincidencetooltip.h"
 
 #include "komonthview.h"
 #include "komonthview.moc"
 
+//--------------------------------------------------------------------------
+
+KOMonthCellToolTip::KOMonthCellToolTip( QWidget* parent,
+                                        KNoScrollListBox* lv )
+  :QToolTip(parent)
+{
+  eventlist=lv;
+}
+
+void KOMonthCellToolTip::maybeTip( const QPoint & pos)
+{
+  QRect r;
+  QListBoxItem *it = eventlist->itemAt(pos);
+  MonthViewItem *i = static_cast<MonthViewItem*>(it);
+
+  if( i && KOPrefs::instance()->mEnableToolTips ) {
+    /* Calculate the rectangle. */
+    r=eventlist->itemRect( it );
+    /* Show the tip */
+    QString tipText;
+    ToolTipVisitor v;
+    if (v.act(i->incidence(), &tipText, true)) {
+      tip(r, tipText);
+    }
+  }
+
+}
 
 KNoScrollListBox::KNoScrollListBox(QWidget *parent,const char *name)
   : QListBox(parent, name),
@@ -63,17 +92,6 @@ KNoScrollListBox::KNoScrollListBox(QWidget *parent,const char *name)
            this, SLOT( addToolTip( QListBoxItem* ) ) );
   connect( this, SIGNAL( onViewport() ),
            this, SLOT( removeToolTip() ) );
-}
-
-void KNoScrollListBox::addToolTip( QListBoxItem *item )
-{
-  QToolTip::remove( this );
-  QToolTip::add( this, item->text() );
-}
-
-void KNoScrollListBox::removeToolTip()
-{
-  QToolTip::remove( this );
 }
 
 void KNoScrollListBox::keyPressEvent(QKeyEvent *e)
@@ -251,6 +269,9 @@ MonthViewCell::MonthViewCell( KOMonthView *parent)
   mItemList->setMinimumSize( 10, 10 );
   mItemList->setFrameStyle( QFrame::Panel | QFrame::Plain );
   mItemList->setLineWidth( 1 );
+
+  new KOMonthCellToolTip( mItemList->viewport(), (KNoScrollListBox*)mItemList );
+
   topLayout->addWidget( mItemList );
 
   mLabel->raise();

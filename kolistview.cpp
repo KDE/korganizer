@@ -37,9 +37,37 @@
 #include "calprinter.h"
 #endif
 #include "koglobals.h"
+#include "koincidencetooltip.h"
 
 #include "kolistview.h"
 #include "kolistview.moc"
+
+
+KOListViewToolTip::KOListViewToolTip( QWidget* parent,
+                                      KListView* lv )
+  :QToolTip(parent)
+{
+  eventlist=lv;
+}
+
+void KOListViewToolTip::maybeTip( const QPoint & pos)
+{
+  QRect r;
+  QListViewItem *it = eventlist->itemAt(pos);
+  KOListViewItem *i = static_cast<KOListViewItem*>(it);
+
+  if( i && KOPrefs::instance()->mEnableToolTips ) {
+    /* Calculate the rectangle. */
+    r=eventlist->itemRect( it );
+    /* Show the tip */
+    QString tipText;
+    ToolTipVisitor v;
+    if (v.act(i->data(), &tipText, true)) {
+      tip(r, tipText);
+    }
+  }
+
+}
 
 ListItemVisitor::ListItemVisitor(KOListViewItem *item)
 {
@@ -113,8 +141,8 @@ bool ListItemVisitor::visit(Journal *)
   return false;
 }
 
-KOListView::KOListView(Calendar *calendar, QWidget *parent,
-		       const char *name)
+KOListView::KOListView( Calendar *calendar, QWidget *parent,
+                        const char *name)
   : KOEventView(calendar, parent, name)
 {
   mActiveItem = 0;
@@ -168,6 +196,8 @@ KOListView::KOListView(Calendar *calendar, QWidget *parent,
 
 //  setMinimumSize(100,100);
   mListView->restoreLayout(KOGlobals::config(),"KOListView Layout");
+
+  new KOListViewToolTip( mListView->viewport(), mListView );
 }
 
 KOListView::~KOListView()
@@ -276,7 +306,7 @@ void KOListView::addTodos( const Todo::List &eventList )
 void KOListView::addIncidence(Incidence *incidence)
 {
   if ( mUidDict.find( incidence->uid() ) ) return;
-  
+
   mUidDict.insert( incidence->uid(), incidence );
 
   KOListViewItem *item = new KOListViewItem( incidence, mListView );

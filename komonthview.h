@@ -29,11 +29,26 @@
 #include <qpushbutton.h>
 #include <qvaluelist.h>
 #include <qptrvector.h>
+#include <qtooltip.h>
 
 #include <libkcal/calendar.h>
 #include <libkcal/event.h>
 
 #include "koeventview.h"
+
+class KNoScrollListBox;
+
+class KOMonthCellToolTip : public QToolTip
+{
+  public:
+    KOMonthCellToolTip (QWidget* parent, KNoScrollListBox* lv );
+
+  protected:
+    void maybeTip( const QPoint & pos);
+
+  private:
+    KNoScrollListBox* eventlist;
+};
 
 
 class KNoScrollListBox: public QListBox
@@ -49,8 +64,6 @@ class KNoScrollListBox: public QListBox
     void rightClick();
 
   protected slots:
-    void addToolTip(QListBoxItem *);
-    void removeToolTip();
     void keyPressEvent(QKeyEvent *);
     void keyReleaseEvent(QKeyEvent *);
     void mousePressEvent(QMouseEvent *);

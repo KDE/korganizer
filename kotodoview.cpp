@@ -64,7 +64,7 @@ void KOTodoListViewToolTip::maybeTip( const QPoint & pos)
   KOTodoViewItem *i=(KOTodoViewItem *)todolist->itemAt(pos);
 
   /* Check wether a tooltip is necessary. */
-  if(i)// && col == 2)
+  if( i && KOPrefs::instance()->mEnableToolTips )
   {
 
     /* Calculate the rectangle. */

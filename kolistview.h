@@ -27,17 +27,34 @@
 #include <qlistview.h>
 #include <qmap.h>
 #include <qdict.h>
+#include <qtooltip.h>
 
 #include <klistview.h>
 
 #include <libkcal/incidence.h>
 
+#include "koprefs.h"
 #include "koeventview.h"
 #include "customlistviewitem.h"
 
 using namespace KCal;
 
 typedef CustomListViewItem<Incidence *> KOListViewItem;
+
+class KOListView;
+
+class KOListViewToolTip : public QToolTip
+{
+  public:
+    KOListViewToolTip (QWidget* parent, KListView* lv );
+
+  protected:
+    void maybeTip( const QPoint & pos);
+
+  private:
+    KListView* eventlist;
+};
+
 
 /**
   This class provides the initialisation of a KOListViewItem for calendar
@@ -48,7 +65,7 @@ class ListItemVisitor : public Incidence::Visitor
   public:
     ListItemVisitor(KOListViewItem *);
     ~ListItemVisitor();
-    
+
     bool visit(Event *);
     bool visit(Todo *);
     bool visit(Journal *);
@@ -59,7 +76,7 @@ class ListItemVisitor : public Incidence::Visitor
 
 /**
   This class provides a multi-column list view of events.  It can
-  display events from one particular day or several days, it doesn't 
+  display events from one particular day or several days, it doesn't
   matter.  To use a view that only handles one day at a time, use
   KODayListView.
 
@@ -71,7 +88,7 @@ class KOListView : public KOEventView
 {
     Q_OBJECT
   public:
-    KOListView(Calendar *calendar, QWidget *parent = 0, 
+    KOListView(Calendar *calendar, QWidget *parent = 0,
 	       const char *name = 0);
     ~KOListView();
 
@@ -79,12 +96,12 @@ class KOListView : public KOEventView
     virtual int currentDateCount();
     virtual Incidence::List selectedIncidences();
     virtual DateList selectedDates();
-    
+
     void showDates(bool show);
 
     virtual void printPreview(CalPrinter *calPrinter,
                               const QDate &, const QDate &);
-    
+
     void readSettings(KConfig *config);
     void writeSettings(KConfig *config);
 
@@ -101,7 +118,7 @@ class KOListView : public KOEventView
     void hideDates();
 
     void changeEventDisplay(Event *, int);
-  
+
     void defaultItemAction(QListViewItem *item);
     void popupMenu(QListViewItem *item,const QPoint &,int);
 
