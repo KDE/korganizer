@@ -1491,6 +1491,10 @@ void ActionManager::importCalendar( const KURL &url )
            SLOT( openURL( const KURL &, bool ) ) );
   connect( dialog, SIGNAL( newWindow( const KURL & ) ),
            SIGNAL( actionNew( const KURL & ) ) );
+  if ( mResourceView ) {
+    connect( dialog, SIGNAL( resourceAdded( ResourceCalendar * ) ),
+             mResourceView, SLOT( addResourceItem( ResourceCalendar * ) ) );
+  }
 
   dialog->show();
 }

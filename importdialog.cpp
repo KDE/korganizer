@@ -98,11 +98,13 @@ void ImportDialog::slotOk()
       resource = new ResourceRemote( mUrl );
       resource->setTimeZoneId( KOPrefs::instance()->mTimeZoneId );
       name = mUrl.prettyURL();
+      resource->setReadOnly( true );
     }
 
     if ( resource ) {
       resource->setResourceName( name );
       manager->add( resource );
+      emit resourceAdded( resource );
     }
   
   } else if ( mMergeButton->isChecked() ) {

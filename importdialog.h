@@ -49,9 +49,10 @@ class ImportDialog : public KDialogBase
 
   signals:
     void dialogFinished( ImportDialog * );
-	 void openURL( const KURL &, bool );
+    void openURL( const KURL &, bool );
     void newWindow( const KURL & );
-	 
+    void resourceAdded( ResourceCalendar * );
+ 
   private:
     KURL mUrl;
 
