@@ -53,12 +53,10 @@ KNoScrollListBox::KNoScrollListBox(QWidget *parent,const char *name)
   : QListBox(parent, name),
     mSqueezing(false)
 {
-  QPalette p = palette();
-  p.setColor( QColorGroup::Foreground,
-              KOPrefs::instance()->agendaBgColor().dark( 150 ) );
-  p.setColor( QColorGroup::Base,
-              KOPrefs::instance()->agendaBgColor() );
-  setPalette( p );
+  QPalette pal = palette();
+  pal.setColor( QColorGroup::Foreground, KOPrefs::instance()->agendaBgColor().dark( 150 ) );
+  pal.setColor( QColorGroup::Base, KOPrefs::instance()->agendaBgColor() );
+  setPalette( pal );
 
   connect( this, SIGNAL( onItem( QListBoxItem* ) ),
            this, SLOT( addToolTip( QListBoxItem* ) ) );
@@ -308,6 +306,12 @@ bool MonthViewCell::isPrimary() const
 void MonthViewCell::setHoliday( bool holiday )
 {
   mHoliday = holiday;
+
+  if ( holiday ) {
+    setPalette( mHolidayPalette );
+  } else {
+    setPalette( mStandardPalette );
+  }
 }
 
 void MonthViewCell::setHoliday( const QString &holiday )
@@ -323,7 +327,8 @@ void MonthViewCell::updateCell()
 {
   if ( mDate == QDate::currentDate() ) {
     setPalette( mTodayPalette );
-  } else {
+  }
+  else {
     if ( mHoliday )
       setPalette( mHolidayPalette );
     else
@@ -334,11 +339,7 @@ void MonthViewCell::updateCell()
 
   if ( !mHolidayString.isEmpty() ) {
     MonthViewItem *item = new MonthViewItem( 0, mDate, mHolidayString );
-    QPalette pal = mHolidayPalette;
-    pal.setColor( QColorGroup::Text, KOPrefs::instance()->holidayColor() );
-    pal.setColor( QColorGroup::Background,
-                  mStandardPalette.color( QPalette::Normal, QColorGroup::Background ) );
-    item->setPalette( pal );
+    item->setPalette( mHolidayPalette );
     mItemList->insertItem( item );
   }
 
@@ -425,11 +426,15 @@ void MonthViewCell::updateConfig()
                QSize( 2, 2 );
 
   mHolidayPalette = mStandardPalette;
-  mHolidayPalette.setColor(QColorGroup::Background,
+  mHolidayPalette.setColor(QColorGroup::Foreground,
+                           KOPrefs::instance()->holidayColor());
+  mHolidayPalette.setColor(QColorGroup::Text,
                            KOPrefs::instance()->holidayColor());
   mTodayPalette = mStandardPalette;
-  mTodayPalette.setColor(QColorGroup::Background,
-                         KOPrefs::instance()->highlightColor().light());
+  mTodayPalette.setColor(QColorGroup::Foreground,
+                         KOPrefs::instance()->highlightColor());
+  mTodayPalette.setColor(QColorGroup::Text,
+                         KOPrefs::instance()->highlightColor());
   updateCell();
 }
 
