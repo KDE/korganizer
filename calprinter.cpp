@@ -426,7 +426,7 @@ void CalPrinter::printTodo(const QDate &fd, const QDate &td)
       // 6 is the lowest priority (the unspecified one)
       if ( ( priority != cprior ) ||
            ( ( cprior == 6 ) && ( priority == 0 ) ) ) {
-        continue
+        continue;
       }
       bool connect = true;
       drawTodo( count++, currEvent, p, connect );
