@@ -729,11 +729,18 @@ void ActionManager::file_save()
   if ( mMainWindow->hasDocument() ) {
     if (mURL.isEmpty()) {
       file_saveas();
+      return;
     } else {
       saveURL();
     }
   } else {
     mCalendarView->calendar()->save();
+  }
+
+  // export to HTML
+  if ( KOPrefs::instance()->mHtmlWithSave &&
+       !KOPrefs::instance()->mHtmlExportFile.isNull() ) {
+    exportToHTML();
   }
 }
 
@@ -881,66 +888,65 @@ bool ActionManager::saveURL()
 
   mMainWindow->showStatusMessage(i18n("Saved calendar '%1'.").arg(mURL.prettyURL()));
 
-  // export to HTML
-  if ( KOPrefs::instance()->mHtmlWithSave==true &&
-        !KOPrefs::instance()->mHtmlExportFile.isNull() ) {
-    KURL dest( KOPrefs::instance()->mHtmlExportFile );
-    KCal::HtmlExport mExport( mCalendarView->calendar() );
-    mExport.setTitle( "KOrganizer Calendar" );
-    mExport.setTitleTodo( "KOrganizer To-Do List" );
-    mExport.setCredit( "KOrganizer", "http://korganizer.kde.org" );
-    mExport.setEmail( KOPrefs::instance()->email() );
-    mExport.setFullName( KOPrefs::instance()->fullName() );
+  return true;
+}
 
-    KConfig *cfg = KOGlobals::self()->config();
-    cfg->setGroup( "HtmlExport" );
+void ActionManager::exportToHTML()
+{
+  KURL dest( KOPrefs::instance()->mHtmlExportFile );
+  KCal::HtmlExport mExport( mCalendarView->calendar() );
+  //@TODO: Make these items translatable after 3.3.
+  mExport.setTitle( "KOrganizer Calendar" );
+  mExport.setTitleTodo( "KOrganizer To-Do List" );
+  mExport.setCredit( "KOrganizer", "http://korganizer.kde.org" );
+  mExport.setEmail( KOPrefs::instance()->email() );
+  mExport.setFullName( KOPrefs::instance()->fullName() );
 
-    mExport.setMonthViewEnabled( cfg->readBoolEntry( "Month", false ) );
-    mExport.setEventsEnabled( cfg->readBoolEntry( "Event", true ) );
-    mExport.setTodosEnabled( cfg->readBoolEntry( "Todo", true ) );
-    mExport.setCategoriesEventEnabled( cfg->readBoolEntry( "CategoriesEvent", false ) );
-    mExport.setAttendeesEventEnabled( cfg->readBoolEntry( "AttendeesEvent", false ) );
-    mExport.setExcludePrivateEventEnabled( cfg->readBoolEntry( "ExcludePrivateEvent", true ) );
-    mExport.setExcludeConfidentialEventEnabled( cfg->readBoolEntry( "ExcludeConfidentialEvent", true ) );
-    mExport.setCategoriesTodoEnabled( cfg->readBoolEntry( "CategoriesTodo", false ) );
-    mExport.setAttendeesTodoEnabled( cfg->readBoolEntry( "AttendeesTodo", false ) );
-    mExport.setExcludePrivateTodoEnabled( cfg->readBoolEntry( "ExcludePrivateTodo", true ) );
-    mExport.setExcludeConfidentialTodoEnabled( cfg->readBoolEntry( "ExcludeConfidentialTodo", true ) );
-    mExport.setDueDateEnabled( cfg->readBoolEntry( "DueDates", true ) );
-    QDate qd1;
-    qd1 = QDate::currentDate();
-    QDate qd2;
-    qd2 = QDate::currentDate();
-    if ( mExport.monthViewEnabled() )
-      qd2.addMonths( 1 );
-    else
-      qd2.addDays( 7 );
+  KConfig *cfg = KOGlobals::self()->config();
+  cfg->setGroup( "HtmlExport" );
 
-    mExport.setDateRange( qd1, qd2 );
-    QDate cdate=qd1;
-    while (cdate<=qd2)
-    {
-      if ( !KOCore::self()->holiday(cdate).isEmpty() )
-        mExport.addHoliday( cdate, KOCore::self()->holiday(cdate) );
-      cdate = cdate.addDays(1);
-    }
+  mExport.setMonthViewEnabled( cfg->readBoolEntry( "Month", false ) );
+  mExport.setEventsEnabled( cfg->readBoolEntry( "Event", true ) );
+  mExport.setTodosEnabled( cfg->readBoolEntry( "Todo", true ) );
+  mExport.setCategoriesEventEnabled( cfg->readBoolEntry( "CategoriesEvent", false ) );
+  mExport.setAttendeesEventEnabled( cfg->readBoolEntry( "AttendeesEvent", false ) );
+  mExport.setExcludePrivateEventEnabled( cfg->readBoolEntry( "ExcludePrivateEvent", true ) );
+  mExport.setExcludeConfidentialEventEnabled( cfg->readBoolEntry( "ExcludeConfidentialEvent", true ) );
+  mExport.setCategoriesTodoEnabled( cfg->readBoolEntry( "CategoriesTodo", false ) );
+  mExport.setAttendeesTodoEnabled( cfg->readBoolEntry( "AttendeesTodo", false ) );
+  mExport.setExcludePrivateTodoEnabled( cfg->readBoolEntry( "ExcludePrivateTodo", true ) );
+  mExport.setExcludeConfidentialTodoEnabled( cfg->readBoolEntry( "ExcludeConfidentialTodo", true ) );
+  mExport.setDueDateEnabled( cfg->readBoolEntry( "DueDates", true ) );
+  QDate qd1;
+  qd1 = QDate::currentDate();
+  QDate qd2;
+  qd2 = QDate::currentDate();
+  if ( mExport.monthViewEnabled() )
+    qd2.addMonths( 1 );
+  else
+    qd2.addDays( 7 );
 
-    if ( dest.isLocalFile() ) {
-      mExport.save( dest.path() );
-    } else {
-      KTempFile tf;
-      QString tfile = tf.name();
-      tf.close();
-      mExport.save( tfile );
-      if (!KIO::NetAccess::upload( tfile, dest, view() ) ) {
-        KNotifyClient::event ( view()->winId(),
-                               i18n("Could not upload file.") );
-      }
-      tf.unlink();
-    }
+  mExport.setDateRange( qd1, qd2 );
+  QDate cdate=qd1;
+  while (cdate<=qd2) {
+    if ( !KOCore::self()->holiday(cdate).isEmpty() )
+      mExport.addHoliday( cdate, KOCore::self()->holiday(cdate) );
+    cdate = cdate.addDays(1);
   }
 
-  return true;
+  if ( dest.isLocalFile() ) {
+    mExport.save( dest.path() );
+  } else {
+    KTempFile tf;
+    QString tfile = tf.name();
+    tf.close();
+    mExport.save( tfile );
+    if (!KIO::NetAccess::upload( tfile, dest, view() ) ) {
+      KNotifyClient::event ( view()->winId(),
+                            i18n("Could not upload file.") );
+    }
+    tf.unlink();
+  }
 }
 
 bool ActionManager::saveAsURL(const KURL &url)
@@ -1476,12 +1482,12 @@ void ActionManager::importCalendar( const KURL &url )
                         i18n("URL '%1' is invalid.").arg( url.prettyURL() ) );
     return;
   }
-  
+
   ImportDialog *dialog;
   dialog = new ImportDialog( url, mMainWindow->topLevelWidget() );
   connect( dialog, SIGNAL( dialogFinished( ImportDialog * ) ),
            SLOT( slotImportDialogFinished( ImportDialog * ) ) );
-  connect( dialog, SIGNAL( openURL( const KURL &, bool ) ), 
+  connect( dialog, SIGNAL( openURL( const KURL &, bool ) ),
            SLOT( openURL( const KURL &, bool ) ) );
   connect( dialog, SIGNAL( newWindow( const KURL & ) ),
            SIGNAL( actionNew( const KURL & ) ) );
