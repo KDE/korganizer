@@ -1837,7 +1837,7 @@ void CalendarView::deleteTodoIncidence ( Todo *todo )
                                      "delete the to-do with all its sub-to-dos?"
                                 ).arg( todo->summary() ),
                                 i18n("KOrganizer Confirmation"),
-                                i18n("Delete only this "),
+                                i18n("Delete only this"),
                                 i18n("Delete all"));
   startMultiModify( i18n("Deleting sub-to-dos" ) );
   // Delete only the father
