@@ -37,3 +37,37 @@ small "Allerzielen" on 2.11
 small "Oudjaar" on 31.12
 small "Moederdag" on every second sunday in may
 small "Vaderdag" on every third sunday in june
+:
+: Winter- en zomertijd:
+: Author: Wilbert Berendsen <wbsoft@xs4all.nl>
+:
+blue "Zomertijd" on last sunday in march
+blue "Wintertijd" on last sunday in october
+:
+: Dagen in het kerkelijk jaar
+: Author: Wilbert Berendsen <wbsoft@xs4all.nl>
+:
+: Kopieer dit bestand eventueel onder een andere naam, maar beginnend
+: met 'holiday_' naar ~/.kde/share/apps/korganizer/ en haal op de
+: volgende regels de dubbelepunten weg.
+:small "Eerste advent" on sunday before 3.12
+:small "Tweede advent" on sunday before 10.12
+:small "Derde advent (Gaudete)" on sunday before 17.12
+:small "Vierde advent (Rorate)" on sunday before 24.12
+:small "Septuagesima (zeventigste)" on easter minus 63 days
+:small "Sexagesima (zestigste)" on easter minus 56 days
+:small "Quinquagesima (vijftigste)" on easter minus 49 days
+:small "Invocabit (roept Hij mij aan, begin Veertigdagentijd)" on easter minus 42 days
+:small "Reminiscere (gedenk)" on easter minus 35 days
+:small "Oculi (ogen)" on easter minus 28 days
+:small "Laetare (verheugt u)" on easter minus 21 days
+:small "Judica (doe recht)" on easter minus 14 days
+:small "Quasi modo geniti (als pasgeboren kinderen)" on easter plus 7 days
+:small "Misericordias Domini (trouw van de Heer)" on easter plus 14 days
+:small "Jubilate (juicht)" on easter plus 21 days
+:small "Cantate (zingt)" on easter plus 28 days
+:small "Rogate (bidt)" on easter plus 35 days
+:small "Exaudi (hoor)" on easter plus 42 days
+:small "Trinitatis (drie-eenheid)" on easter plus 56 days
+:small "Hervormingsdag" on 31.10
+:small "Laatste zondag kerkelijk jaar" on sunday before 26.11
