@@ -92,7 +92,7 @@ void CalPrinter::preview(PrintType pt, const QDate &fd, const QDate &td)
     case Day: 
       mPrintDialog->setPrintDay();
       break;
-    case Week: 
+    case Week:
       mPrintDialog->setPrintWeek();
       break;
     case Month: 
@@ -630,17 +630,17 @@ void CalPrinter::drawDayBox(QPainter &p, const QDate &qd,
 
   while (count <= 9 && (currEvent != NULL)) {
     if (currEvent->doesFloat() || currEvent->isMultiDay())
-      outStr += currEvent->summary();
-    
+      outStr = currEvent->summary();
+
     else {
       QTime t1 = currEvent->dtStart().time();
-      
+
       outStr = local->formatTime(t1);
       outStr += " " + currEvent->summary();
-  
+
     } // doesFloat
-     
-    p.drawText(x+5, y+(lineSpacing*(count+1)), width-10, lineSpacing, 
+
+    p.drawText(x+5, y+(lineSpacing*(count+1)), width-10, lineSpacing,
 	       AlignLeft|AlignVCenter, outStr);
     currEvent = eventList.next();
     ++count;
