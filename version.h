@@ -9,7 +9,7 @@
   If "z" is 0, it the version is "x.y"
   
   "build" is empty for final versions. For developer version "build" is
-  something like "alpha1", "alpha2", "beta1", "beta2", "rc1", "rc2".
+  something like "pre", "alpha1", "alpha2", "beta1", "beta2", "rc1", "rc2".
 
   Examples in chronological order:
   
@@ -21,9 +21,10 @@
     3.1 rc1
     3.1
     3.1.1
+    3.2 pre
     3.2 alpha1
 */
 
-static const char korgVersion[] = "3.1";
+static const char korgVersion[] = "3.2 pre";
 
 #endif
