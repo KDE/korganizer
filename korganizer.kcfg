@@ -285,27 +285,33 @@
   </group>
 
   <group name="Freebusy">
-    <entry type="Bool" key="Automatic FreeBusy lists publishing" name="AutoPublish">
+    <entry type="Bool" name="FreeBusyPublishAuto">
       <default>true</default>
     </entry>
-    <entry type="Int" key="Auto Publish Delay" name="PublishDelay">
+    <entry type="Int" name="FreeBusyPublishInterval">
       <default>5</default>
     </entry>
-    <entry type="Int" key="Publish FreeBusy Days">
+    <entry type="Int" key="FreeBusyPublishDays">
       <default>60</default>
     </entry>
-    <entry type="Bool" key="Publish To Kolab Server" name="PublishKolab">
-      <default>true</default>
+
+    <entry type="String" name="FreeBusyPublishUrl">
+      <label>Free/Busy Publish URL</label>
+      <whatsthis>URL for publishing free/busy information</whatsthis>
     </entry>
-    <entry type="String" key="Publish to Kolab server name" name="PublishKolabServer">
+    <entry type="String" name="FreeBusyPublishUser">
+      <label>Free/Busy Publish User Name</label>
+      <whatsthis>User name for publishing free/busy information</whatsthis>
     </entry>
-    <entry type="String" key="Publish User Name">
+    <entry type="Password" name="FreeBusyPublishPassword">
+      <label>Free/Busy Publish Password</label>
+      <whatsthis>Password for publishing free/busy information</whatsthis>
     </entry>
-    <entry type="String" key="Publish To Any Server URL" name="PublishAnyURL">
-    </entry>
-    <entry type="Bool" key="Remember Publish Password" name="RememberPublishPw">
+    <entry type="Bool" name="FreeBusyPublishSavePassword">
       <default>false</default>
     </entry>
+
+
     <entry type="Bool" key="Retrieve Freebusy Lists" name="RetrieveFreeBusy">
       <default>true</default>
     </entry>
@@ -321,5 +327,6 @@
     <entry type="Bool" key="Remember Retrieve Password" name="RememberRetrievePw">
       <default>false</default>
     </entry>
+
   </group>
 </kcfg>

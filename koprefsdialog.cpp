@@ -936,17 +936,16 @@ KOPrefsDialogGroupwareScheduling::KOPrefsDialogGroupwareScheduling( QWidget *par
 
 void KOPrefsDialogGroupwareScheduling::usrReadConfig()
 {
-  mGroupwarePage->publishManualRB->setChecked( !KOPrefs::instance()->mAutoPublish );
-  mGroupwarePage->publishAutoRB->setChecked( KOPrefs::instance()->mAutoPublish );
-  mGroupwarePage->publishDelaySB->setValue( KOPrefs::instance()->mPublishDelay );
-  mGroupwarePage->publishDaysSB->setValue( KOPrefs::instance()->mPublishFreeBusyDays );
-  mGroupwarePage->publishKolabRB->setChecked( KOPrefs::instance()->mPublishKolab );
-  mGroupwarePage->kolabServerNameED->setText( KOPrefs::instance()->mPublishKolabServer );
-  mGroupwarePage->publishUserNameED->setText( KOPrefs::instance()->mPublishUserName );
-  mGroupwarePage->publishAnyServerRB->setChecked( !KOPrefs::instance()->mPublishKolab );
-  mGroupwarePage->publishPasswordED->setText( KOPrefs::instance()->mPublishPassword );
-  mGroupwarePage->publishPasswordCB->setChecked( KOPrefs::instance()->mRememberPublishPw );
-  mGroupwarePage->anyServerURLED->setText( KOPrefs::instance()->mPublishAnyURL );
+  mGroupwarePage->publishManualRB->setChecked( !KOPrefs::instance()->mFreeBusyPublishAuto );
+  mGroupwarePage->publishAutoRB->setChecked( KOPrefs::instance()->mFreeBusyPublishAuto );
+  mGroupwarePage->publishDelaySB->setValue( KOPrefs::instance()->mFreeBusyPublishInterval );
+  mGroupwarePage->publishDaysSB->setValue( KOPrefs::instance()->mFreeBusyPublishDays );
+
+  mGroupwarePage->publishUrl->setText( KOPrefs::instance()->mFreeBusyPublishUrl );
+  mGroupwarePage->publishUser->setText( KOPrefs::instance()->mFreeBusyPublishUser );
+  mGroupwarePage->publishPassword->setText( KOPrefs::instance()->mFreeBusyPublishPassword );
+  mGroupwarePage->publishSavePassword->setChecked( KOPrefs::instance()->mFreeBusyPublishSavePassword );
+
   mGroupwarePage->retrieveCB->setChecked( KOPrefs::instance()->mRetrieveFreeBusy );
   mGroupwarePage->retrieveKolabRB->setChecked( KOPrefs::instance()->mRetrieveKolab );
   mGroupwarePage->retrieveKolabServerNameED->setText( KOPrefs::instance()->mRetrieveKolabServer );
@@ -959,15 +958,15 @@ void KOPrefsDialogGroupwareScheduling::usrReadConfig()
 
 void KOPrefsDialogGroupwareScheduling::usrWriteConfig()
 {
-  KOPrefs::instance()->mAutoPublish = mGroupwarePage->publishAutoRB->isChecked();
-  KOPrefs::instance()->mPublishDelay = mGroupwarePage->publishDelaySB->value();
-  KOPrefs::instance()->mPublishFreeBusyDays = mGroupwarePage->publishDaysSB->value();
-  KOPrefs::instance()->mPublishKolab = mGroupwarePage->publishKolabRB->isChecked();
-  KOPrefs::instance()->mPublishKolabServer = mGroupwarePage->kolabServerNameED->text();
-  KOPrefs::instance()->mPublishUserName = mGroupwarePage->publishUserNameED->text();
-  KOPrefs::instance()->mPublishAnyURL = mGroupwarePage->anyServerURLED->text();
-  KOPrefs::instance()->mPublishPassword = mGroupwarePage->publishPasswordED->text();
-  KOPrefs::instance()->mRememberPublishPw = mGroupwarePage->publishPasswordCB->isChecked();
+  KOPrefs::instance()->mFreeBusyPublishAuto = mGroupwarePage->publishAutoRB->isChecked();
+  KOPrefs::instance()->mFreeBusyPublishInterval = mGroupwarePage->publishDelaySB->value();
+  KOPrefs::instance()->mFreeBusyPublishDays = mGroupwarePage->publishDaysSB->value();
+
+  KOPrefs::instance()->mFreeBusyPublishUrl = mGroupwarePage->publishUrl->text();
+  KOPrefs::instance()->mFreeBusyPublishUser = mGroupwarePage->publishUser->text();
+  KOPrefs::instance()->mFreeBusyPublishPassword = mGroupwarePage->publishPassword->text();
+  KOPrefs::instance()->mFreeBusyPublishSavePassword = mGroupwarePage->publishSavePassword->isChecked();
+
   KOPrefs::instance()->mRetrieveFreeBusy = mGroupwarePage->retrieveCB->isChecked();
   KOPrefs::instance()->mRetrieveKolab = mGroupwarePage->retrieveKolabRB->isChecked();
   KOPrefs::instance()->mRetrieveKolabServer = mGroupwarePage->retrieveKolabServerNameED->text();

@@ -9,7 +9,7 @@
             <x>0</x>
             <y>0</y>
             <width>496</width>
-            <height>531</height>
+            <height>537</height>
         </rect>
     </property>
     <property name="caption">
@@ -53,147 +53,14 @@
                         <property name="lineWidth">
                             <number>0</number>
                         </property>
-                        <grid>
+                        <vbox>
                             <property name="name">
                                 <cstring>unnamed</cstring>
                             </property>
                             <property name="margin">
                                 <number>0</number>
                             </property>
-                            <widget class="QButtonGroup" row="3" column="0">
-                                <property name="name">
-                                    <cstring>ButtonGroup2</cstring>
-                                </property>
-                                <property name="title">
-                                    <string>Server Information</string>
-                                </property>
-                                <grid>
-                                    <property name="name">
-                                        <cstring>unnamed</cstring>
-                                    </property>
-                                    <widget class="QRadioButton" row="0" column="0" rowspan="1" colspan="2">
-                                        <property name="name">
-                                            <cstring>publishKolabRB</cstring>
-                                        </property>
-                                        <property name="text">
-                                            <string>Publish to a &amp;Kolab server</string>
-                                        </property>
-                                        <property name="checked">
-                                            <bool>true</bool>
-                                        </property>
-                                    </widget>
-                                    <widget class="QLineEdit" row="1" column="1">
-                                        <property name="name">
-                                            <cstring>kolabServerNameED</cstring>
-                                        </property>
-                                        <property name="minimumSize">
-                                            <size>
-                                                <width>120</width>
-                                                <height>0</height>
-                                            </size>
-                                        </property>
-                                    </widget>
-                                    <widget class="QLineEdit" row="3" column="1">
-                                        <property name="name">
-                                            <cstring>anyServerURLED</cstring>
-                                        </property>
-                                        <property name="enabled">
-                                            <bool>false</bool>
-                                        </property>
-                                    </widget>
-                                    <widget class="QRadioButton" row="2" column="0" rowspan="1" colspan="2">
-                                        <property name="name">
-                                            <cstring>publishAnyServerRB</cstring>
-                                        </property>
-                                        <property name="text">
-                                            <string>Publish to &amp;any server</string>
-                                        </property>
-                                    </widget>
-                                    <widget class="QLabel" row="1" column="0">
-                                        <property name="name">
-                                            <cstring>TextLabel5</cstring>
-                                        </property>
-                                        <property name="text">
-                                            <string>&amp;Server name:</string>
-                                        </property>
-                                        <property name="buddy" stdset="0">
-                                            <cstring>kolabServerNameED</cstring>
-                                        </property>
-                                    </widget>
-                                    <widget class="QCheckBox" row="7" column="0" rowspan="1" colspan="2">
-                                        <property name="name">
-                                            <cstring>publishPasswordCB</cstring>
-                                        </property>
-                                        <property name="text">
-                                            <string>Re&amp;member password</string>
-                                        </property>
-                                    </widget>
-                                    <widget class="QLabel" row="6" column="0">
-                                        <property name="name">
-                                            <cstring>textLabel2</cstring>
-                                        </property>
-                                        <property name="text">
-                                            <string>Pass&amp;word:</string>
-                                        </property>
-                                        <property name="buddy" stdset="0">
-                                            <cstring>publishPasswordED</cstring>
-                                        </property>
-                                    </widget>
-                                    <widget class="QLineEdit" row="6" column="1">
-                                        <property name="name">
-                                            <cstring>publishPasswordED</cstring>
-                                        </property>
-                                        <property name="echoMode">
-                                            <enum>Password</enum>
-                                        </property>
-                                    </widget>
-                                    <widget class="QLineEdit" row="5" column="1">
-                                        <property name="name">
-                                            <cstring>publishUserNameED</cstring>
-                                        </property>
-                                        <property name="minimumSize">
-                                            <size>
-                                                <width>120</width>
-                                                <height>0</height>
-                                            </size>
-                                        </property>
-                                    </widget>
-                                    <widget class="QLabel" row="5" column="0">
-                                        <property name="name">
-                                            <cstring>TextLabel6</cstring>
-                                        </property>
-                                        <property name="text">
-                                            <string>Us&amp;er name:</string>
-                                        </property>
-                                        <property name="buddy" stdset="0">
-                                            <cstring>publishUserNameED</cstring>
-                                        </property>
-                                    </widget>
-                                    <widget class="QFrame" row="4" column="0" rowspan="1" colspan="2">
-                                        <property name="name">
-                                            <cstring>frame5</cstring>
-                                        </property>
-                                        <property name="frameShape">
-                                            <enum>HLine</enum>
-                                        </property>
-                                        <property name="frameShadow">
-                                            <enum>Sunken</enum>
-                                        </property>
-                                    </widget>
-                                    <widget class="QLabel" row="3" column="0">
-                                        <property name="name">
-                                            <cstring>TextLabel7</cstring>
-                                        </property>
-                                        <property name="text">
-                                            <string>Server UR&amp;L:</string>
-                                        </property>
-                                        <property name="buddy" stdset="0">
-                                            <cstring>anyServerURLED</cstring>
-                                        </property>
-                                    </widget>
-                                </grid>
-                            </widget>
-                            <widget class="QLabel" row="0" column="0">
+                            <widget class="QLabel">
                                 <property name="name">
                                     <cstring>TextLabel1</cstring>
                                 </property>
@@ -204,67 +71,7 @@
                                     <set>WordBreak|AlignVCenter</set>
                                 </property>
                             </widget>
-                            <widget class="QLayoutWidget" row="2" column="0">
-                                <property name="name">
-                                    <cstring>Layout16</cstring>
-                                </property>
-                                <hbox>
-                                    <property name="name">
-                                        <cstring>unnamed</cstring>
-                                    </property>
-                                    <widget class="QLabel">
-                                        <property name="name">
-                                            <cstring>TextLabel3</cstring>
-                                        </property>
-                                        <property name="text">
-                                            <string>P&amp;ublish</string>
-                                        </property>
-                                        <property name="buddy" stdset="0">
-                                            <cstring>publishDaysSB</cstring>
-                                        </property>
-                                    </widget>
-                                    <widget class="QSpinBox">
-                                        <property name="name">
-                                            <cstring>publishDaysSB</cstring>
-                                        </property>
-                                        <property name="maxValue">
-                                            <number>366</number>
-                                        </property>
-                                        <property name="minValue">
-                                            <number>1</number>
-                                        </property>
-                                        <property name="value">
-                                            <number>60</number>
-                                        </property>
-                                    </widget>
-                                    <widget class="QLabel">
-                                        <property name="name">
-                                            <cstring>TextLabel4</cstring>
-                                        </property>
-                                        <property name="text">
-                                            <string>days of free/busy information</string>
-                                        </property>
-                                    </widget>
-                                    <spacer>
-                                        <property name="name">
-                                            <cstring>Spacer3</cstring>
-                                        </property>
-                                        <property name="orientation">
-                                            <enum>Horizontal</enum>
-                                        </property>
-                                        <property name="sizeType">
-                                            <enum>Expanding</enum>
-                                        </property>
-                                        <property name="sizeHint">
-                                            <size>
-                                                <width>20</width>
-                                                <height>20</height>
-                                            </size>
-                                        </property>
-                                    </spacer>
-                                </hbox>
-                            </widget>
-                            <widget class="QButtonGroup" row="1" column="0">
+                            <widget class="QButtonGroup">
                                 <property name="name">
                                     <cstring>buttonGroup3</cstring>
                                 </property>
@@ -325,7 +132,179 @@
                                     </widget>
                                 </vbox>
                             </widget>
-                        </grid>
+                            <widget class="QLayoutWidget">
+                                <property name="name">
+                                    <cstring>Layout16</cstring>
+                                </property>
+                                <hbox>
+                                    <property name="name">
+                                        <cstring>unnamed</cstring>
+                                    </property>
+                                    <widget class="QLabel">
+                                        <property name="name">
+                                            <cstring>TextLabel3</cstring>
+                                        </property>
+                                        <property name="text">
+                                            <string>P&amp;ublish</string>
+                                        </property>
+                                        <property name="buddy" stdset="0">
+                                            <cstring>publishDaysSB</cstring>
+                                        </property>
+                                    </widget>
+                                    <widget class="QSpinBox">
+                                        <property name="name">
+                                            <cstring>publishDaysSB</cstring>
+                                        </property>
+                                        <property name="maxValue">
+                                            <number>366</number>
+                                        </property>
+                                        <property name="minValue">
+                                            <number>1</number>
+                                        </property>
+                                        <property name="value">
+                                            <number>60</number>
+                                        </property>
+                                    </widget>
+                                    <widget class="QLabel">
+                                        <property name="name">
+                                            <cstring>TextLabel4</cstring>
+                                        </property>
+                                        <property name="text">
+                                            <string>days of free/busy information</string>
+                                        </property>
+                                    </widget>
+                                    <spacer>
+                                        <property name="name">
+                                            <cstring>Spacer3</cstring>
+                                        </property>
+                                        <property name="orientation">
+                                            <enum>Horizontal</enum>
+                                        </property>
+                                        <property name="sizeType">
+                                            <enum>Expanding</enum>
+                                        </property>
+                                        <property name="sizeHint">
+                                            <size>
+                                                <width>20</width>
+                                                <height>20</height>
+                                            </size>
+                                        </property>
+                                    </spacer>
+                                </hbox>
+                            </widget>
+                            <widget class="QButtonGroup">
+                                <property name="name">
+                                    <cstring>ButtonGroup2</cstring>
+                                </property>
+                                <property name="title">
+                                    <string>Server Information</string>
+                                </property>
+                                <grid>
+                                    <property name="name">
+                                        <cstring>unnamed</cstring>
+                                    </property>
+                                    <widget class="QLineEdit" row="3" column="1">
+                                        <property name="name">
+                                            <cstring>publishUrl</cstring>
+                                        </property>
+                                        <property name="enabled">
+                                            <bool>true</bool>
+                                        </property>
+                                    </widget>
+                                    <widget class="QCheckBox" row="7" column="0" rowspan="1" colspan="2">
+                                        <property name="name">
+                                            <cstring>publishSavePassword</cstring>
+                                        </property>
+                                        <property name="text">
+                                            <string>Re&amp;member password</string>
+                                        </property>
+                                        <property name="accel">
+                                            <string>Alt+M</string>
+                                        </property>
+                                    </widget>
+                                    <widget class="QLabel" row="6" column="0">
+                                        <property name="name">
+                                            <cstring>textLabel2</cstring>
+                                        </property>
+                                        <property name="text">
+                                            <string>Password:</string>
+                                        </property>
+                                        <property name="buddy" stdset="0">
+                                            <cstring>publishPasswordED</cstring>
+                                        </property>
+                                    </widget>
+                                    <widget class="QLineEdit" row="6" column="1">
+                                        <property name="name">
+                                            <cstring>publishPassword</cstring>
+                                        </property>
+                                        <property name="echoMode">
+                                            <enum>Password</enum>
+                                        </property>
+                                    </widget>
+                                    <widget class="QLineEdit" row="5" column="1">
+                                        <property name="name">
+                                            <cstring>publishUser</cstring>
+                                        </property>
+                                        <property name="minimumSize">
+                                            <size>
+                                                <width>120</width>
+                                                <height>0</height>
+                                            </size>
+                                        </property>
+                                    </widget>
+                                    <widget class="QLabel" row="5" column="0">
+                                        <property name="name">
+                                            <cstring>TextLabel6</cstring>
+                                        </property>
+                                        <property name="text">
+                                            <string>User name:</string>
+                                        </property>
+                                        <property name="buddy" stdset="0">
+                                            <cstring>publishUserNameED</cstring>
+                                        </property>
+                                    </widget>
+                                    <widget class="QFrame" row="4" column="0" rowspan="1" colspan="2">
+                                        <property name="name">
+                                            <cstring>frame5</cstring>
+                                        </property>
+                                        <property name="frameShape">
+                                            <enum>HLine</enum>
+                                        </property>
+                                        <property name="frameShadow">
+                                            <enum>Sunken</enum>
+                                        </property>
+                                    </widget>
+                                    <widget class="QLabel" row="3" column="0">
+                                        <property name="name">
+                                            <cstring>TextLabel7</cstring>
+                                        </property>
+                                        <property name="text">
+                                            <string>Server URL:</string>
+                                        </property>
+                                        <property name="buddy" stdset="0">
+                                            <cstring>anyServerURLED</cstring>
+                                        </property>
+                                    </widget>
+                                </grid>
+                            </widget>
+                            <spacer>
+                                <property name="name">
+                                    <cstring>spacer3</cstring>
+                                </property>
+                                <property name="orientation">
+                                    <enum>Vertical</enum>
+                                </property>
+                                <property name="sizeType">
+                                    <enum>Expanding</enum>
+                                </property>
+                                <property name="sizeHint">
+                                    <size>
+                                        <width>21</width>
+                                        <height>31</height>
+                                    </size>
+                                </property>
+                            </spacer>
+                        </vbox>
                     </widget>
                 </vbox>
             </widget>
@@ -565,18 +544,6 @@
 </widget>
 <connections>
     <connection>
-        <sender>publishKolabRB</sender>
-        <signal>toggled(bool)</signal>
-        <receiver>kolabServerNameED</receiver>
-        <slot>setEnabled(bool)</slot>
-    </connection>
-    <connection>
-        <sender>publishAnyServerRB</sender>
-        <signal>toggled(bool)</signal>
-        <receiver>anyServerURLED</receiver>
-        <slot>setEnabled(bool)</slot>
-    </connection>
-    <connection>
         <sender>retrieveKolabRB</sender>
         <signal>toggled(bool)</signal>
         <receiver>retrieveKolabServerNameED</receiver>
@@ -613,43 +580,25 @@
         <slot>slotChanged()</slot>
     </connection>
     <connection>
-        <sender>publishKolabRB</sender>
-        <signal>toggled(bool)</signal>
-        <receiver>KOGroupwarePrefsPage</receiver>
-        <slot>slotChanged()</slot>
-    </connection>
-    <connection>
-        <sender>kolabServerNameED</sender>
+        <sender>publishUrl</sender>
         <signal>textChanged(const QString&amp;)</signal>
         <receiver>KOGroupwarePrefsPage</receiver>
         <slot>slotChanged()</slot>
     </connection>
     <connection>
-        <sender>publishAnyServerRB</sender>
-        <signal>toggled(bool)</signal>
-        <receiver>KOGroupwarePrefsPage</receiver>
-        <slot>slotChanged()</slot>
-    </connection>
-    <connection>
-        <sender>anyServerURLED</sender>
+        <sender>publishUser</sender>
         <signal>textChanged(const QString&amp;)</signal>
         <receiver>KOGroupwarePrefsPage</receiver>
         <slot>slotChanged()</slot>
     </connection>
     <connection>
-        <sender>publishUserNameED</sender>
+        <sender>publishPassword</sender>
         <signal>textChanged(const QString&amp;)</signal>
         <receiver>KOGroupwarePrefsPage</receiver>
         <slot>slotChanged()</slot>
     </connection>
     <connection>
-        <sender>publishPasswordED</sender>
-        <signal>textChanged(const QString&amp;)</signal>
-        <receiver>KOGroupwarePrefsPage</receiver>
-        <slot>slotChanged()</slot>
-    </connection>
-    <connection>
-        <sender>publishPasswordCB</sender>
+        <sender>publishSavePassword</sender>
         <signal>toggled(bool)</signal>
         <receiver>KOGroupwarePrefsPage</receiver>
         <slot>slotChanged()</slot>

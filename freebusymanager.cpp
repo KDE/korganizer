@@ -115,7 +115,7 @@ void FreeBusyManager::setCalendar( KCal::Calendar *c )
 KCal::FreeBusy *FreeBusyManager::ownerFreeBusy()
 {
   QDateTime start = QDateTime::currentDateTime();
-  QDateTime end = start.addDays( KOPrefs::instance()->mPublishFreeBusyDays );
+  QDateTime end = start.addDays( KOPrefs::instance()->mFreeBusyPublishDays );
 
   FreeBusy *freebusy = new FreeBusy( mCalendar, start, end );
   freebusy->setOrganizer( KOPrefs::instance()->email() );
@@ -142,7 +142,7 @@ QString FreeBusyManager::freeBusyToIcal( KCal::FreeBusy *freebusy )
 void FreeBusyManager::slotPerhapsUploadFB()
 {
   // user has automtic uploading disabled, bail out
-  if ( !KOPrefs::instance()->autoPublish() )
+  if ( !KOPrefs::instance()->freeBusyPublishAuto() )
      return;
   if( mTimerID != 0 )
     // A timer is already running, so we don't need to do anything
@@ -207,8 +207,9 @@ void FreeBusyManager::publishFreeBusy()
 
   // Save the time of the next free/busy uploading
   mNextUploadTime = QDateTime::currentDateTime();
-  if( KOPrefs::instance()->mPublishDelay > 0 )
-    mNextUploadTime = mNextUploadTime.addSecs( KOPrefs::instance()->mPublishDelay * 60 );
+  if( KOPrefs::instance()->mFreeBusyPublishInterval > 0 )
+    mNextUploadTime = mNextUploadTime.addSecs(
+        KOPrefs::instance()->mFreeBusyPublishInterval * 60 );
 
   QString messageText = ownerFreeBusyAsString();
 
@@ -217,15 +218,16 @@ void FreeBusyManager::publishFreeBusy()
   messageText = messageText.replace( QRegExp( "ORGANIZER\\s*:MAILTO:" ),
                                      "ORGANIZER:" );
 
-  QString emailHost = KOPrefs::instance()->email().mid(
-      KOPrefs::instance()->email().find( '@' ) + 1 );
-
   // Create a local temp file and save the message to it
   KTempFile tempFile;
   QTextStream *textStream = tempFile.textStream();
   if( textStream ) {
     *textStream << messageText;
     tempFile.close();
+
+#if 0
+    QString emailHost = KOPrefs::instance()->email().mid(
+        KOPrefs::instance()->email().find( '@' ) + 1 );
 
     // Put target string together
     KURL targetURL;
@@ -256,6 +258,11 @@ void FreeBusyManager::publishFreeBusy()
       targetURL.setUser( KOPrefs::instance()->mPublishUserName );
       targetURL.setPass( KOPrefs::instance()->mPublishPassword );
     }
+#endif
+
+    KURL targetURL = KOPrefs::instance()->freeBusyPublishUrl();
+    targetURL.setUser( KOPrefs::instance()->mFreeBusyPublishUser );
+    targetURL.setPass( KOPrefs::instance()->mFreeBusyPublishPassword );
 
     KURL src;
     src.setPath( tempFile.name() );
@@ -276,7 +283,12 @@ void FreeBusyManager::slotUploadFreeBusyResult(KIO::Job *_job)
     KIO::FileCopyJob* job = static_cast<KIO::FileCopyJob *>(_job);
     if ( job->error() )
         KMessageBox::sorry( 0,
-          i18n( "<qt>The software could not upload your free/busy list to the URL %1. There might be a problem with the access rights, or you specified an incorrect URL. The system said: <em>%2</em>.<br>Please check the URL or contact your system administrator.</qt>" ).arg( job->destURL().prettyURL() ).arg( job->errorString() ) );
+          i18n( "<qt>The software could not upload your free/busy list to the "
+                "URL '%1'. There might be a problem with the access rights, or "
+                "you specified an incorrect URL. The system said: <em>%2</em>."
+                "<br>Please check the URL or contact your system administrator."
+                "</qt>" ).arg( job->destURL().prettyURL() )
+                         .arg( job->errorString() ) );
     // Delete temp file
     KURL src = job->srcURL();
     Q_ASSERT( src.isLocalFile() );

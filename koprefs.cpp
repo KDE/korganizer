@@ -103,7 +103,6 @@ void KOPrefs::usrSetDefaults()
 
   setTimeZoneIdDefault();
 
-  mRememberPublishPw = false;
   mRememberRetrievePw = false;
 
   KPimPrefs::usrSetDefaults();
@@ -186,9 +185,7 @@ void KOPrefs::usrReadConfig()
     setTimeZoneIdDefault();
   }
 
-  config()->setGroup("Groupware");
-  if( mRememberPublishPw )
-    mPublishPassword = KStringHandler::obscure( config()->readEntry( "Publish Server Password" ) );
+  config()->setGroup("FreeBusy");
   if( mRememberRetrievePw )
     mRetrievePassword = KStringHandler::obscure( config()->readEntry( "Retrieve Server Password" ) );
 
@@ -212,11 +209,10 @@ void KOPrefs::usrWriteConfig()
     ++it;
   }
 
-  config()->setGroup( "Groupware" );
-  if( mRememberPublishPw )
-    config()->writeEntry( "Publish Server Password", KStringHandler::obscure( mPublishPassword ) );
-  else
-    config()->deleteEntry( "Publish Server Password" );
+  config()->setGroup( "Freebusy" );
+  if( !mFreeBusyPublishSavePassword )
+    config()->deleteEntry( "FreeBusyPublishSavePassword" );
+
   if( mRememberRetrievePw )
     config()->writeEntry( "Retrieve Server Password", KStringHandler::obscure( mRetrievePassword ) );
   else
