@@ -319,10 +319,7 @@ void KOEditorFreeBusy::setDateTimes( QDateTime start, QDateTime end )
 {
   mDtStart = start;
   mDtEnd = end;
-
-  mGanttView->centerTimelineAfterShow( start );
-  mGanttView->clearBackgroundColor();
-  mGanttView->setIntervalBackgroundColor( start, end, Qt::magenta );
+  slotUpdateGanttView( start, end );
 }
 
 void KOEditorFreeBusy::slotScaleChanged( int newScale )
