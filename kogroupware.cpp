@@ -49,6 +49,7 @@
 #include <qfile.h>
 #include <qregexp.h>
 #include <qdir.h>
+#include <qtimer.h>
 
 FreeBusyManager *KOGroupware::mFreeBusyManager = 0;
 
@@ -76,6 +77,29 @@ KOGroupware::KOGroupware( CalendarView* view, KCal::Calendar* calendar )
   mView = view;
   mCalendar = calendar;
 
+  // Temporary hack: Wait one minute before starting the scheduling handling
+  // This is because we need the full calendars to be loaded first
+  // TODO: GET RID OF THIS!!! The real fix is to listen for the resources
+  // being all done loading and start the scheduling after that. Even
+  // better fix would be that we would be able to locate the resource
+  // an event is saved in even though the resource is deactivated
+  QTimer::singleShot( 60000, this, SLOT( slotStartScheduling() ) );
+}
+
+FreeBusyManager *KOGroupware::freeBusyManager()
+{
+  if ( !mFreeBusyManager ) {
+    mFreeBusyManager = new FreeBusyManager( this, "freebusymanager" );
+    mFreeBusyManager->setCalendar( mCalendar );
+    connect( mCalendar, SIGNAL( calendarChanged() ),
+             mFreeBusyManager, SLOT( slotPerhapsUploadFB() ) );
+  }
+
+  return mFreeBusyManager;
+}
+
+void KOGroupware::slotStartScheduling()
+{
   // Set up the dir watch of the three incoming dirs
   KDirWatch* watcher = KDirWatch::self();
   watcher->addDir( locateLocal( "data", "korganizer/income.accepted/" ) );
@@ -89,18 +113,6 @@ KOGroupware::KOGroupware( CalendarView* view, KCal::Calendar* calendar )
   incomingDirChanged( locateLocal( "data", "korganizer/income.tentative/" ) );
   incomingDirChanged( locateLocal( "data", "korganizer/income.cancel/" ) );
   incomingDirChanged( locateLocal( "data", "korganizer/income.reply/" ) );
-}
-
-FreeBusyManager *KOGroupware::freeBusyManager()
-{
-  if ( !mFreeBusyManager ) {
-    mFreeBusyManager = new FreeBusyManager( this, "freebusymanager" );
-    mFreeBusyManager->setCalendar( mCalendar );
-    connect( mCalendar, SIGNAL( calendarChanged() ),
-             mFreeBusyManager, SLOT( slotPerhapsUploadFB() ) );
-  }
-
-  return mFreeBusyManager;
 }
 
 void KOGroupware::incomingDirChanged( const QString& path )
@@ -131,11 +143,21 @@ void KOGroupware::incomingDirChanged( const QString& path )
   }
   QTextStream t(&f);
   t.setEncoding( QTextStream::UnicodeUTF8 );
-  QString receiver = KPIM::getEmailAddr( t.readLine() );
+  // Read the receiver email address
+  QString receiver = t.readLine();
+  if ( receiver == "Receiver Not Searched" )
+    // The receiver was never checked
+    receiver = QString::null;
+  else
+    // There should be an email address in here
+    receiver = KPIM::getEmailAddr( receiver );
+  // Read the iCal
   QString iCal = t.read();
 
   f.remove();
 
+  kdDebug(5850) << "Received this for scheduling (" << action << ")\n"
+                << "Receiver: " << receiver << "\niCal:\n" << iCal << endl;
   ScheduleMessage *message = mFormat.parseScheduleMessage( mCalendar, iCal );
   if ( !message ) {
     QString errorMessage;
@@ -143,7 +165,7 @@ void KOGroupware::incomingDirChanged( const QString& path )
       errorMessage = "\nError message: " + mFormat.exception()->message();
     kdDebug(5850) << "MailScheduler::retrieveTransactions() Error parsing"
                   << errorMessage << endl;
-    KMessageBox::detailedError( mView, 
+    KMessageBox::detailedError( mView,
         i18n("Error while processing an invitation or update."),
         errorMessage );
     return;
@@ -222,9 +244,9 @@ bool KOGroupware::sendICalMessage( QWidget* parent,
 
   if ( isOrganizer ) {
     /* We are the organizer. If there is more than one attendee, or if there is
-     * only one, and it's not the same as the organizer, ask the user to send 
+     * only one, and it's not the same as the organizer, ask the user to send
      * mail. */
-    if ( incidence->attendees().count() > 1 
+    if ( incidence->attendees().count() > 1
         || incidence->attendees().first()->email() != incidence->organizer().email() ) {
       QString type;
       if( incidence->type() == "Event") type = i18n("event");

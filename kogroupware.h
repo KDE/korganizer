@@ -75,6 +75,7 @@ class KOGroupware : public QObject
   private slots:
     /** Handle iCals given by KMail. */
     void incomingDirChanged( const QString& path );
+    void slotStartScheduling();
 
   protected:
     KOGroupware( CalendarView*, KCal::Calendar* );
