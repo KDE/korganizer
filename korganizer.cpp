@@ -351,7 +351,7 @@ void KOrganizer::initActions()
   connect(mCalendarView,SIGNAL(todoSelected(bool)),
           action,SLOT(setEnabled(bool)));
 
-  mShowIncidenceAction = new KAction(i18n("&Show..."), 0,
+  mShowIncidenceAction = new KAction(i18n("&Show"), 0,
                          mCalendarView,SLOT(showIncidence()),
                          actionCollection(), "show_incidence");
   mEditIncidenceAction = new KAction(i18n("&Edit..."), 0,
@@ -442,7 +442,7 @@ void KOrganizer::initActions()
   connect(mCalendarView,SIGNAL(eventsSelected(bool)),
           action,SLOT(setEnabled(bool)));
 */
-  action = new KAction(i18n("Addressbook..."),"contents",0,
+  action = new KAction(i18n("Addressbook"),"contents",0,
                        mCalendarView,SLOT(openAddressbook()),
                        actionCollection(),"addressbook");
 
@@ -510,7 +510,7 @@ void KOrganizer::initActions()
                     actionCollection(),"show_intro");
 #endif
 
-  (void)new KAction(i18n("&Tip of the Day..."), 0,
+  (void)new KAction(i18n("&Tip of the Day"), 0,
                     this, SLOT(showTip()), actionCollection(), "help_tipofday");
 
   new KAction( i18n("Get Hot New Stuff..."), 0, this,

@@ -115,7 +115,7 @@
                 <cstring>PushButton12</cstring>
             </property>
             <property name="text">
-                <string>Addressbook...</string>
+                <string>Addressbook</string>
             </property>
         </widget>
         <widget class="Line" row="4" column="0" rowspan="1" colspan="7">
