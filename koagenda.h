@@ -142,6 +142,9 @@ class KOAgenda : public QScrollView
     void drawContents(QPainter *p,int cx, int cy, int cw, int ch);
     virtual void resizeEvent ( QResizeEvent * );
 
+    /** Handles mouse events. Called from eventFilter */
+    virtual bool eventFilter_mouse ( QObject *, QMouseEvent * );
+
     /** Start moving/resizing agenda item */
     void startItemAction(QPoint viewportPos);
 

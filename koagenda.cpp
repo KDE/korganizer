@@ -284,91 +284,99 @@ bool KOAgenda::eventFilter ( QObject *object, QEvent *event )
 {
 //  kdDebug() << "KOAgenda::eventFilter" << endl;
 
-  QMouseEvent *me;
+  QMouseEvent *me = NULL;
+
+  switch(event->type()) {
+  case QEvent::MouseButtonPress:
+  case QEvent::MouseButtonDblClick:
+  case QEvent::MouseButtonRelease:
+  case QEvent::MouseMove:
+    return eventFilter_mouse(object, static_cast<QMouseEvent *>(event));
+
+  case (QEvent::Leave):
+    if (!mActionItem)
+      setCursor(arrowCursor);
+    return true;
+
+  default:
+    return QScrollView::eventFilter(object,event);
+  }
+}
+
+
+bool KOAgenda::eventFilter_mouse(QObject *object, QMouseEvent *me)
+{
   QPoint viewportPos;
-
-  switch (event->type()) {
-    case QEvent::MouseButtonPress:
-    case QEvent::MouseButtonDblClick:
-    case QEvent::MouseButtonRelease:
-    case QEvent::MouseMove:
-      me = (QMouseEvent *)event;
-      if (object != viewport()) {
-        viewportPos = ((QWidget *)object)->mapToParent(me->pos());
-      } else {
-        viewportPos = me->pos();
-      }
-
-      if (me->type() == QEvent::MouseButtonPress) {
-//        kdDebug() << "koagenda: filtered button press" << endl;
-      	if (object != viewport()) {
-          if (me->button() == RightButton) {
-            mClickedItem = (KOAgendaItem *)object;
-            if (mClickedItem) {
-              selectItem(mClickedItem);
-              emit showEventPopupSignal(mClickedItem->itemEvent());
-            }
-//            mItemPopup->popup(QCursor::pos());
-          } else {
-            mActionItem = (KOAgendaItem *)object;
-            if (mActionItem) {
-              selectItem(mActionItem);
-              if (!(mActionItem->itemEvent()->isReadOnly() ||
-                    mActionItem->itemEvent()->recurrence()->doesRecur())) {
-                startItemAction(viewportPos);
-              } else {
-                mActionItem = 0;
-              }
-            }
-          }
-        } else {
-          selectItem(0);
-          mActionItem = 0;
-	  mActionType = NOP;
-          setCursor(arrowCursor);
-	}
-      } else if (me->type() == QEvent::MouseButtonRelease) {
-        if (mActionItem) {
-	  endItemAction();
-	}
-      } else if (me->type() == QEvent::MouseMove) {
-        if (object != viewport()) {
-          KOAgendaItem *moveItem = (KOAgendaItem *)object;
-          if (!(moveItem->itemEvent()->isReadOnly() ||
-                moveItem->itemEvent()->recurrence()->doesRecur())) {
-            if (!mActionItem) {
-      	      setNoActionCursor(moveItem,viewportPos);
-	    } else {
-              performItemAction(viewportPos);
-            }
-          }
-	}
-      } else if (me->type() == QEvent::MouseButtonDblClick) {
-        if (object == viewport()) {
-          selectItem(0);
-          int x,y;
-          viewportToContents(viewportPos.x(),viewportPos.y(),x,y);
-          int gx,gy;
-          contentsToGrid(x,y,gx,gy);
-	  emit newEventSignal(gx,gy);
-        } else {
-          KOAgendaItem *doubleClickedItem = (KOAgendaItem *)object;
-          selectItem(doubleClickedItem);
-	  emit editEventSignal(doubleClickedItem->itemEvent());
-	}
-      }
-      return true;
-
-    case (QEvent::Leave):
-      if (!mActionItem)
-        setCursor(arrowCursor);
-      break;
-
-    default:
-      break;
+  if (object != viewport()) {
+    viewportPos = ((QWidget *)object)->mapToParent(me->pos());
+  } else {
+    viewportPos = me->pos();
   }
 
-  return QScrollView::eventFilter(object,event);
+  switch (me->type())  {
+  case QEvent::MouseButtonPress:
+//        kdDebug() << "koagenda: filtered button press" << endl;
+    if (object != viewport()) {
+      if (me->button() == RightButton) {
+	mClickedItem = (KOAgendaItem *)object;
+	if (mClickedItem) {
+	  selectItem(mClickedItem);
+	  emit showEventPopupSignal(mClickedItem->itemEvent());
+	}
+	//            mItemPopup->popup(QCursor::pos());
+      } else {
+	mActionItem = (KOAgendaItem *)object;
+	if (mActionItem) {
+	  selectItem(mActionItem);
+	  // XXX remove this line:
+	  // mActionItem->itemEvent()->recurrence()->doesRecur()
+	  if (!mActionItem->itemEvent()->isReadOnly())
+	    startItemAction(viewportPos);
+	  else
+	    mActionItem = 0;
+	}
+      }
+    } else {
+      selectItem(0);
+      mActionItem = 0;
+      mActionType = NOP;
+      setCursor(arrowCursor);
+    }
+    break;
+
+  case QEvent::MouseButtonRelease:
+    if (mActionItem)
+      endItemAction();
+    break;
+
+  case QEvent::MouseMove:
+    if (object != viewport()) {
+      KOAgendaItem *moveItem = (KOAgendaItem *)object;
+      if (!moveItem->itemEvent()->isReadOnly())
+	if (!mActionItem)
+	  setNoActionCursor(moveItem,viewportPos);
+	else
+	  performItemAction(viewportPos);
+    }
+    break;
+
+  case QEvent::MouseButtonDblClick:
+    if (object == viewport()) {
+      selectItem(0);
+      int x,y;
+      viewportToContents(viewportPos.x(),viewportPos.y(),x,y);
+      int gx,gy;
+      contentsToGrid(x,y,gx,gy);
+      emit newEventSignal(gx,gy);
+    } else {
+      KOAgendaItem *doubleClickedItem = (KOAgendaItem *)object;
+      selectItem(doubleClickedItem);
+      emit editEventSignal(doubleClickedItem->itemEvent());
+    }
+    break;
+  }
+
+  return true;
 }
 
 

@@ -606,7 +606,6 @@ void KOAgendaView::shiftDates(int multiplier)
       *dit.current() = dit.current()->addDays(multiplier*shift);
 
   emit datesSelected(mSelectedDates);
-  setView(mViewType);
   fillAgenda();
 }
 
