@@ -193,6 +193,10 @@ class KOAgenda : public QScrollView
     void enableAgendaUpdate( bool enable );
     void zoomView( const int delta, const QPoint &pos, const Qt::Orientation );
 
+    void mousePosSignal(const QPoint &pos);
+    void enterAgenda();
+    void leaveAgenda();
+
   private:
     enum MouseActionType { NOP, MOVE, SELECT,
                            RESIZETOP, RESIZEBOTTOM, RESIZELEFT, RESIZERIGHT };

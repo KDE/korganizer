@@ -65,11 +65,20 @@ class TimeLabels : public QScrollView
   protected:
     void drawContents( QPainter *p, int cx, int cy, int cw, int ch );
 
+  private slots:
+    /** update the position of the marker showing the mouse position */
+    void mousePosChanged(const QPoint &pos);
+
+    void showMousePos();
+    void hideMousePos();
+
   private:
     int mRows;
     int mCellHeight;
 
     KOAgenda* mAgenda;
+
+    QFrame *mMousePos;  // shows a marker for the current mouse position in y direction
 };
 
 class EventIndicator : public QFrame

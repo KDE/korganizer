@@ -165,6 +165,8 @@ KOAgenda::KOAgenda( int columns, int rows, int rowSize, QWidget *parent,
   mAllDayMode = false;
 
   init();
+
+  viewport()->setMouseTracking(true);
 }
 
 /*
@@ -359,7 +361,13 @@ bool KOAgenda::eventFilter ( QObject *object, QEvent *event )
     case ( QEvent::Leave ):
       if ( !mActionItem )
         setCursor( arrowCursor );
+      if ( object == viewport() )
+        emit leaveAgenda();
       return true;
+
+    case QEvent::Enter:
+      emit enterAgenda();
+      return QScrollView::eventFilter( object, event );
 
 #ifndef KORG_NODND
     case QEvent::DragEnter:
@@ -543,6 +551,7 @@ bool KOAgenda::eventFilter_wheel ( QObject *object, QWheelEvent *e )
     emit zoomView( -e->delta() ,
       contentsToGrid( viewportToContents( viewportPos ) ),
       Qt::Vertical );
+    emit mousePosSignal(gridToContents(contentsToGrid(viewportToContents( viewportPos ))));
     accepted=true;
   }
   if (accepted ) e->accept();
@@ -632,8 +641,18 @@ bool KOAgenda::eventFilter_mouse(QObject *object, QMouseEvent *me)
       } else {
           if ( mActionType == SELECT ) {
             performSelectAction( viewportPos );
+
+            // show cursor at end of timespan
+            if ( ((mStartCell.y() < mEndCell.y()) && (mEndCell.x() >= mStartCell.x())) ||
+                 (mEndCell.x() > mStartCell.x()) )
+              emit mousePosSignal(gridToContents(QPoint(mEndCell.x(), mEndCell.y()+1)));
+            else
+              emit mousePosSignal(gridToContents(mEndCell));
+
+            return true;
           }
         }
+      emit mousePosSignal(gridToContents(contentsToGrid(viewportToContents( viewportPos ))));
       break;
 
     case QEvent::MouseButtonDblClick:
@@ -731,6 +750,8 @@ void KOAgenda::endSelectAction( const QPoint &currentPos )
 {
   mScrollUpTimer.stop();
   mScrollDownTimer.stop();
+
+  mActionType = NOP;
 
   emit newTimeSpanSignal( mSelectionStartCell, mSelectionEndCell );
 

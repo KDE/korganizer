@@ -87,6 +87,28 @@ TimeLabels::TimeLabels(int rows,QWidget *parent,const char *name,WFlags f) :
   resizeContents(50,mRows * mCellHeight);
 
   viewport()->setBackgroundMode( PaletteBackground );
+
+  mMousePos = new QFrame(this);
+  mMousePos->setLineWidth(0);
+  mMousePos->setMargin(0);
+  mMousePos->setBackgroundColor(Qt::red);
+  mMousePos->setFixedSize(width(), 1);
+  addChild(mMousePos, 0, 0);
+}
+
+void TimeLabels::mousePosChanged(const QPoint &pos)
+{
+  moveChild(mMousePos, 0, pos.y());
+}
+
+void TimeLabels::showMousePos()
+{
+  mMousePos->show();
+}
+
+void TimeLabels::hideMousePos()
+{
+  mMousePos->hide();
 }
 
 void TimeLabels::setCellHeight(int height)
@@ -193,6 +215,10 @@ void TimeLabels::positionChanged()
 void TimeLabels::setAgenda(KOAgenda* agenda)
 {
   mAgenda = agenda;
+
+  connect(mAgenda, SIGNAL(mousePosSignal(const QPoint &)), this, SLOT(mousePosChanged(const QPoint &)));
+  connect(mAgenda, SIGNAL(enterAgenda()), this, SLOT(showMousePos()));
+  connect(mAgenda, SIGNAL(leaveAgenda()), this, SLOT(hideMousePos()));
 }
 
 
