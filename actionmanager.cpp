@@ -837,7 +837,7 @@ bool ActionManager::saveURL()
       qd2.addDays( 7 );
 
     mExport.setDateRange( qd1, qd2 );
-    QDate cdate=qd1;;
+    QDate cdate=qd1;
     while (cdate<=qd2)
     {
       if ( !KOCore::self()->holiday(cdate).isEmpty() )

@@ -168,7 +168,7 @@ KOGroupware::EventState KOGroupware::incomingEventRequest( EventState inState,
 
     QPtrList<KCal::Attendee> attendees = event->attendees();
     QPtrListIterator<KCal::Attendee> attendeeIt( attendees );
-    KCal::Attendee* myself = 0, *current = 0;;
+    KCal::Attendee* myself = 0, *current = 0;
     // Find myself, there will always be all attendees listed, even if
     // only I need to answer it.
     while( ( current = attendeeIt.current() ) != 0 ) {
