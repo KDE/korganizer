@@ -28,6 +28,7 @@
 #include "icalformat.h"
 #include "koexceptions.h"
 #include "incidence.h"
+#include "journal.h"
 
 #include "calendarlocal.h"
 #include "calendarlocal.moc"
@@ -681,4 +682,35 @@ QList<Event> CalendarLocal::getAllEvents()
 QList<Event> CalendarLocal::eventsForDate(const QDateTime &qdt)
 {
   return eventsForDate(qdt.date());
+}
+
+void CalendarLocal::addJournal(Journal *journal)
+{
+//  kdDebug() << "Adding Journal on " << journal->dtStart().toString() << endl;
+
+  mJournalMap.insert(journal->dtStart().date(),journal);
+}
+
+Journal *CalendarLocal::journal(const QDate &date)
+{
+//  kdDebug() << "CalendarLocal::journal() " << date.toString() << endl;
+
+  QMap<QDate,Journal *>::ConstIterator it = mJournalMap.find(date);
+  if (it == mJournalMap.end()) return 0;
+  else {
+//    kdDebug() << "  Found" << endl;
+    return *it;
+  }
+}
+
+QList<Journal> CalendarLocal::journalList()
+{
+  QList<Journal> list;
+  
+  QMap<QDate,Journal *>::Iterator it;
+  for( it = mJournalMap.begin(); it != mJournalMap.end(); ++it ) {
+    list.append(*it);
+  }
+ 
+  return list;
 }

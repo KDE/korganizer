@@ -156,6 +156,11 @@ class CalObject : public QObject {
     /** Returns list of todos due on the specified date */
     virtual QList<Todo> getTodosForDate(const QDate & date) = 0;
 
+    /** Add a Journal entry to calendar */
+    virtual void addJournal(Journal *) = 0;
+    /** Return Journal for given date */
+    virtual Journal *journal(const QDate &) = 0;
+
     void addIncidence(Incidence *);
   
     /** Enable/Disable dialogs shown by calendar class */  

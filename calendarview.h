@@ -39,6 +39,7 @@ class KOFilterView;
 class KOProjectView;
 class FilterEditDialog;
 class KOWhatsNextView;
+class KOJournalView;
 
 /**
   This class provides the initialisation of a KOListViewItem for calendar
@@ -312,6 +313,7 @@ class CalendarView : public QWidget
     void view_month();
     void view_todolist();
     void view_project();
+    void view_journal();
 
     void schedule_outgoing();
     void schedule_incoming();
@@ -395,6 +397,7 @@ class CalendarView : public QWidget
     KOTodoView      *mTodoList;  // Small todo list under date navigator
     KOProjectView   *mProjectView;
     KOWhatsNextView *mWhatsNextView;
+    KOJournalView   *mJournalView;
   
     KOBaseView     *mCurrentView;  // currently active event view
     QList<KOBaseView> mCalendarViews;  // list of available calendar views

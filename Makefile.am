@@ -62,7 +62,8 @@ libkorganizer_la_SOURCES =  outgoingdialog_base.ui \
         koprojectview.cpp \
         korganizeriface.skel \
         filtereditdialog.cpp filteredit_base.ui \
-        kowhatsnextview.cpp
+        kowhatsnextview.cpp \
+        kojournalview.cpp journalentry.cpp
 
 alarmd_SOURCES = alarmdaemon.cpp alarmmain.cpp \
         incidence.cpp journal.cpp todo.cpp event.cpp attendee.cpp \

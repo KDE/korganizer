@@ -62,6 +62,7 @@
 #include "koprojectview.h"
 #include "filtereditdialog.h"
 #include "kowhatsnextview.h"
+#include "kojournalview.h"
 
 #include "calendarview.h"
 #include "calendarview.moc"
@@ -175,6 +176,11 @@ CalendarView::CalendarView(QWidget *parent,const char *name)
                                        "CalendarView::WhatsNextView");
   mRightFrame->addWidget(mWhatsNextView,0);
   mCalendarViews.append(mWhatsNextView);
+
+  mJournalView = new KOJournalView(mCalendar,mRightFrame,
+                                   "CalendarView::JournalView");
+  mRightFrame->addWidget(mJournalView,0);
+  mCalendarViews.append(mJournalView);
 
   readCurrentView();
 
@@ -1269,6 +1275,11 @@ void CalendarView::view_todolist()
 void CalendarView::view_project()
 {
   changeView(mProjectView);
+}
+
+void CalendarView::view_journal()
+{
+  changeView(mJournalView);
 }
 
 void CalendarView::schedule_outgoing()

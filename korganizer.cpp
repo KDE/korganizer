@@ -265,6 +265,9 @@ void KOrganizer::initActions()
                       mCalendarView, SLOT(view_project()),
                       actionCollection(), "view_project");
   }
+  (void)new KAction(i18n("&Journal"), 0,
+                    mCalendarView, SLOT(view_journal()),
+                    actionCollection(), "view_journal");
   (void)new KAction(i18n("&Update"), 0,
                     mCalendarView, SLOT(update()),
                     actionCollection(), "update");

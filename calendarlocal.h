@@ -4,6 +4,7 @@
 #define _CALENDARLOCAL_H
 
 #include <qintdict.h>
+#include <qmap.h>
 
 #include "calobject.h"
 
@@ -76,7 +77,14 @@ class CalendarLocal : public CalObject {
     Todo *getTodo(const QString &UniqueStr);
     /** Returns list of todos due on the specified date */
     QList<Todo> getTodosForDate(const QDate & date);
-  
+
+    /** Add a Journal entry to calendar */
+    virtual void addJournal(Journal *);
+    /** Return Journal for given date */
+    virtual Journal *journal(const QDate &);
+    /** Return list of all Journals stored in calendar */
+    QList<Journal> journalList();
+
   signals:
     /** emitted at regular intervals to indicate that the events in the
       list have triggered an alarm. */
@@ -112,6 +120,8 @@ class CalendarLocal : public CalObject {
     QList<Event> mRecursList;             // list of repeating events.
   
     QList<Todo> mTodoList;               // list of "todo" items.
+
+    QMap<QDate,Journal *> mJournalMap;
   
     QDate *mOldestDate;
     QDate *mNewestDate;
