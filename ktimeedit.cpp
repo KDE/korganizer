@@ -74,9 +74,9 @@ bool KTimeEdit::hasTime()
 
 QTime KTimeEdit::getTime()
 {
-  kdDebug() << "KTimeEdit::getTime()" << endl;
+//  kdDebug() << "KTimeEdit::getTime()" << endl;
   QTime time = KGlobal::locale()->readTime(currentText());
-  kdDebug() << "KTimeEdit::getTime(): " << time.toString() << endl;
+//  kdDebug() << "KTimeEdit::getTime(): " << time.toString() << endl;
   return time;
 }
 
@@ -91,7 +91,7 @@ QSizePolicy  KTimeEdit::sizePolicy() const
 
 void KTimeEdit::setTime(QTime newTime)
 {
-  kdDebug() << "KTimeEdit::setTime(): " << newTime.toString() << endl;
+//  kdDebug() << "KTimeEdit::setTime(): " << newTime.toString() << endl;
 
   mTime = newTime;
   updateSelection();
@@ -200,7 +200,7 @@ bool KTimeEdit::inputIsValid()
 
 void KTimeEdit::changedText()
 {
-  kdDebug() << "KTimeEdit::changedText()" << endl;
+//  kdDebug() << "KTimeEdit::changedText()" << endl;
   mTime = getTime();
   emit timeChanged(mTime);
 }

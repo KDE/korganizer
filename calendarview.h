@@ -53,21 +53,6 @@ class KOTodoView;
 using namespace KCal;
 
 /**
-  This class provides the initialisation of a KOListViewItem for calendar
-  components using the IncidenceVisitor.
-*/
-class CreateEditorVisitor : public Incidence::Visitor
-{
-  public:
-    CreateEditorVisitor() {};
-    ~CreateEditorVisitor() {};
-    
-    bool visit(Event *);
-    bool visit(Todo *);
-    bool visit(Journal *);
-};
-
-/**
   This is the main calendar widget. It provides the different vies on t he
   calendar data as well as the date navigator. It also handles synchronisation
   of the different views and controls the different dialogs like preferences,
@@ -449,30 +434,43 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
 };
 
 
-class ShowIncidenceVisitor : public Incidence::Visitor
+class CalendarViewVisitor : public Incidence::Visitor
 {
   public:
-    ShowIncidenceVisitor( CalendarView *view ) { mView = view; }
+    CalendarViewVisitor() : mView( 0 ) {}
 
-    bool visit( Event *event ) { mView->showEvent( event ); return true; }  
-    bool visit( Todo *todo ) { mView->showTodo( todo ); return true; }  
-    bool visit( Journal * ) { return false; }
-
-  private:
+    bool act( Incidence *incidence, CalendarView *view )
+    {
+      mView = view;
+      return incidence->accept( *this );
+    }
+    
+  protected:
     CalendarView *mView;
 };
 
-class EditIncidenceVisitor : public Incidence::Visitor
+class ShowIncidenceVisitor : public CalendarViewVisitor
 {
-  public:
-    EditIncidenceVisitor( CalendarView *view ) { mView = view; }
+  protected:
+    bool visit( Event *event ) { mView->showEvent( event ); return true; }  
+    bool visit( Todo *todo ) { mView->showTodo( todo ); return true; }  
+    bool visit( Journal * ) { return false; }
+};
 
+class EditIncidenceVisitor : public CalendarViewVisitor
+{
+  protected:
     bool visit( Event *event ) { mView->editEvent( event ); return true; }  
     bool visit( Todo *todo ) { mView->editTodo( todo ); return true; }  
     bool visit( Journal * ) { return false; }
+};
 
-  private:
-    CalendarView *mView;
+class DeleteIncidenceVisitor : public CalendarViewVisitor
+{
+  protected:
+    bool visit( Event *event ) { mView->deleteEvent( event ); return true; }  
+    bool visit( Todo *todo ) { mView->deleteTodo( todo ); return true; }  
+    bool visit( Journal * ) { return false; }
 };
 
 #endif

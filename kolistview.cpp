@@ -111,28 +111,6 @@ bool ListItemVisitor::visit(Journal *)
   return false;
 }
 
-
-KOListViewItem::KOListViewItem( QListView *parent, Incidence *incidence )
-  : QListViewItem( parent ), mIncidence( incidence )
-{
-}
-
-QString KOListViewItem::key(int column,bool) const
-{
-  QMap<int,QString>::ConstIterator it = mKeyMap.find(column);
-  if (it == mKeyMap.end()) {
-    return text(column);
-  } else {
-    return *it;
-  }
-}
-
-void KOListViewItem::setSortKey(int column,const QString &key)
-{
-  mKeyMap.insert(column,key);
-}
-
-
 KOListView::KOListView(Calendar *calendar, QWidget *parent,
 		       const char *name)
   : KOEventView(calendar, parent, name)
@@ -207,7 +185,7 @@ QPtrList<Incidence> KOListView::selectedIncidences()
   QPtrList<Incidence> eventList;
 
   QListViewItem *item = mListView->selectedItem();
-  if (item) eventList.append(((KOListViewItem *)item)->incidence());
+  if (item) eventList.append(((KOListViewItem *)item)->data());
 
   return eventList;
 }
@@ -286,7 +264,7 @@ void KOListView::addTodos(QPtrList<Todo> eventList)
 
 void KOListView::addIncidence(Incidence *incidence)
 {
-  KOListViewItem *item = new KOListViewItem(mListView,incidence);
+  KOListViewItem *item = new KOListViewItem( incidence, mListView );
   ListItemVisitor v(item);
   if (incidence->accept(v)) return;
   else delete item;
@@ -307,13 +285,13 @@ void KOListView::changeEventDisplay(Event *event, int action)
 
   switch(action) {
     case KOGlobals::EVENTADDED:
-      new KOListViewItem(mListView,event);
+      addIncidence( event );
       break;
     case KOGlobals::EVENTEDITED:
       item = getItemForEvent(event);
       if (item) {
         delete item;
-        new KOListViewItem(mListView,event);
+        addIncidence( event );
       }
       break;
     case KOGlobals::EVENTDELETED:
@@ -332,7 +310,7 @@ KOListViewItem *KOListView::getItemForEvent(Event *event)
   KOListViewItem *item = (KOListViewItem *)mListView->firstChild();
   while (item) {
 //    kdDebug() << "Item " << item->text(0) << " found" << endl;
-    if (item->incidence() == event) return item;
+    if (item->data() == event) return item;
     item = (KOListViewItem *)item->nextSibling();
   }
   return 0;
@@ -341,14 +319,14 @@ KOListViewItem *KOListView::getItemForEvent(Event *event)
 void KOListView::defaultItemAction(QListViewItem *i)
 {
   KOListViewItem *item = static_cast<KOListViewItem *>( i );
-  if ( item ) defaultAction( item->incidence() );
+  if ( item ) defaultAction( item->data() );
 }
 
 void KOListView::popupMenu(QListViewItem *item,const QPoint &,int)
 {
   mActiveItem = (KOListViewItem *)item;
   if (mActiveItem) {
-    Incidence *incidence = mActiveItem->incidence();
+    Incidence *incidence = mActiveItem->data();
     if ( incidence && incidence->type() == "Event" ) {
       Event *event = static_cast<Event *>( incidence );
       mPopupMenu->showEventPopup(event);
@@ -376,7 +354,7 @@ void KOListView::processSelectionChange()
   if ( !item ) {
     emit incidenceSelected( 0 );
   } else {
-    emit incidenceSelected( item->incidence() );
+    emit incidenceSelected( item->data() );
   }
 }
 

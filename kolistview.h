@@ -32,39 +32,11 @@
 #include <libkcal/incidence.h>
 
 #include "koeventview.h"
+#include "customlistviewitem.h"
 
 using namespace KCal;
 
-
-/**
-  This class provides a way of displaying a single Event in a QListView.
- 
-  @author Preston Brown <pbrown@kde.org>
-  @see KOListView
-*/
-class KOListViewItem : public QListViewItem
-{
-  public:
-    /**
-      Constructor.
-     
-      @param parent is the list view to which this item belongs.
-      @param ev is the event to have the item display information for.
-    */
-    KOListViewItem(QListView *parent, Incidence *ev);
-    virtual ~KOListViewItem() {}
-
-    Incidence *incidence() { return mIncidence; }
-
-    QString key(int, bool) const;
-
-    void setSortKey(int column,const QString &key);
-
-  private:
-    Incidence *mIncidence;
-
-    QMap<int,QString> mKeyMap;
-};
+typedef CustomListViewItem<Incidence *> KOListViewItem;
 
 /**
   This class provides the initialisation of a KOListViewItem for calendar

@@ -42,24 +42,9 @@
 
 #include "ktimeedit.h"
 #include "kdateedit.h"
+#include "customlistviewitem.h"
 
 using namespace KCal;
-
-template<class T>
-class CustomListViewItem : public QListViewItem
-{
-  public:
-    CustomListViewItem( T data, QListView *parent ) :
-      QListViewItem( parent ), mData( data ) { updateItem(); };
-    ~CustomListViewItem() {};
-    
-    void updateItem() {};
-
-    T attendee() const { return mData; }
-  
-  private:
-    T mData;
-};
 
 typedef CustomListViewItem<Attendee *> AttendeeListItem;
 

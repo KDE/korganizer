@@ -175,9 +175,9 @@ void KOEditorDetails::removeAttendee()
   AttendeeListItem *aItem = (AttendeeListItem *)mListView->selectedItem();
   if (!aItem) return;
 
-  Attendee *delA = new Attendee(aItem->attendee()->name(),aItem->attendee()->email(),
-    aItem->attendee()->RSVP(),aItem->attendee()->status(),aItem->attendee()->role(),
-    aItem->attendee()->uid());
+  Attendee *delA = new Attendee(aItem->data()->name(),aItem->data()->email(),
+    aItem->data()->RSVP(),aItem->data()->status(),aItem->data()->role(),
+    aItem->data()->uid());
   mdelAttendees.append(delA);
 
   delete aItem;
@@ -256,7 +256,7 @@ void KOEditorDetails::writeEvent(Incidence *event)
   for (item = mListView->firstChild(); item;
        item = item->nextSibling()) {
     a = (AttendeeListItem *)item;
-    event->addAttendee(new Attendee(*(a->attendee())));
+    event->addAttendee(new Attendee(*(a->data())));
   }
 }
 
@@ -299,7 +299,7 @@ void KOEditorDetails::clearAttendeeInput()
 
 void KOEditorDetails::fillAttendeeInput( AttendeeListItem *aItem )
 {
-  Attendee *a = aItem->attendee();
+  Attendee *a = aItem->data();
   mDisableItemUpdate = true;
   mNameEdit->setText(a->name());
   mUidEdit->setText(a->uid());
@@ -332,7 +332,7 @@ void KOEditorDetails::updateAttendeeItem()
   AttendeeListItem *aItem = static_cast<AttendeeListItem *>( item );
   if ( !aItem ) return;
 
-  Attendee *a = aItem->attendee();
+  Attendee *a = aItem->data();
 
   a->setName( mNameEdit->text() );
   a->setUid( mUidEdit->text() );

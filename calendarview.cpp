@@ -84,27 +84,11 @@
 #include "kodialogmanager.h"
 #include "outgoingdialog.h"
 #include "incomingdialog.h"
+#include "statusdialog.h"
 
 #include "calendarview.h"
 using namespace KOrg;
 #include "calendarview.moc"
-
-#include "statusdialog.h"
-
-bool CreateEditorVisitor::visit(Event *)
-{
-  return false;
-}
-
-bool CreateEditorVisitor::visit(Todo *)
-{
-  return false;
-}
-
-bool CreateEditorVisitor::visit(Journal *)
-{
-  return false;
-}
 
 
 CalendarView::CalendarView(QWidget *parent,const char *name)
@@ -668,16 +652,6 @@ void CalendarView::edit_options()
   mDialogManager->showOptionsDialog();
 }
 
-
-void CalendarView::deleteIncidence()
-{
-  Incidence *incidence = currentSelection();
-  if ( incidence && incidence->type() == "Event" ) {
-    deleteEvent( static_cast<Event *>( incidence ) );
-  } else if ( incidence && incidence->type() == "Todo" ) {
-    deleteTodo( static_cast<Todo *>( incidence ) );
-  }
-}
 
 void CalendarView::newEvent()
 {
@@ -1578,8 +1552,8 @@ void CalendarView::showIncidence()
   Incidence *incidence = currentSelection();
   if ( !incidence ) incidence = mTodoList->selectedIncidences().first();
   if ( incidence ) {
-    ShowIncidenceVisitor v( this );
-    incidence->accept( v );
+    ShowIncidenceVisitor v;
+    v.act( incidence, this );
   }
 }
 
@@ -1588,10 +1562,21 @@ void CalendarView::editIncidence()
   Incidence *incidence = currentSelection();
   if ( !incidence ) incidence = mTodoList->selectedIncidences().first();
   if ( incidence ) {
-    EditIncidenceVisitor v( this );
-    incidence->accept( v );
+    EditIncidenceVisitor v;
+    v.act( incidence, this );
   }
 }
+
+void CalendarView::deleteIncidence()
+{
+  Incidence *incidence = currentSelection();
+  if ( !incidence ) incidence = mTodoList->selectedIncidences().first();
+  if ( incidence ) {
+    DeleteIncidenceVisitor v;
+    v.act( incidence, this );
+  }
+}
+
 
 void CalendarView::lookForOutgoingMessages()
 {

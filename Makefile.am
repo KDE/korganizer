@@ -82,7 +82,7 @@ noinst_HEADERS = komonthview.h \
         koeditorgeneralevent.h koeditorgeneraltodo.h koeditordetails.h \
         koeditorrecurrence.h koeventviewerdialog.h koeventpopupmenu.h \
         outgoingdialog.h incomingdialog.h publishdialog.h \
-        koeventview.h statusdialog.h
+        koeventview.h statusdialog.h customlistviewitem.h
 
 tip_DATA = tips
 tipdir = $(kde_datadir)/korganizer
