@@ -209,7 +209,7 @@ void Exchange::showError( int error, const QString& moreInfo /* = QString::null 
     errorText = i18n( "This should not happen: trying to upload wrong type of event." );
     break;
   case KPIM::ExchangeClient::EventWriteError:
-    errorText = i18n( "An error occured trying to write an appointment to the server." );
+    errorText = i18n( "An error occurred trying to write an appointment to the server." );
     break;
   case KPIM::ExchangeClient::DeleteUnknownEventError:
     errorText = i18n( "Trying to delete an event that is not present on the server." );
