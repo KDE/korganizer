@@ -26,17 +26,12 @@
 #include <qgroupbox.h>
 #include <qbuttongroup.h>
 #include <qlineedit.h>
-#include <qfont.h>
 #include <qslider.h>
 #include <qfile.h>
-#include <qtextstream.h>
 #include <qcombobox.h>
-#include <qvbox.h>
 #include <qhbox.h>
 #include <qspinbox.h>
-#include <qdatetime.h>
 #include <qcheckbox.h>
-#include <qradiobutton.h>
 #include <qpushbutton.h>
 #include <qstrlist.h>
 
@@ -44,15 +39,9 @@
 #include <kdebug.h>
 #include <klocale.h>
 #include <kglobal.h>
-#include <kfontdialog.h>
 #include <kmessagebox.h>
-#include <kcolordialog.h>
 #include <kiconloader.h>
 #include <kemailsettings.h>
-#include <kstandarddirs.h>
-
-#include <kurlrequester.h>
-#include <klineedit.h>
 
 #if defined(USE_SOLARIS)
 #include <sys/param.h>
@@ -97,7 +86,6 @@ void KOPrefsDialog::setupMainTab()
 
   QGridLayout *topLayout = new QGridLayout(topFrame,6,2);
   topLayout->setSpacing(spacingHint());
-  topLayout->setMargin(marginHint());
 
   KPrefsWidBool *emailControlCenter =
       addWidBool(i18n("&Use email settings from Control Center"),
@@ -203,7 +191,6 @@ void KOPrefsDialog::setupTimeTab()
 
   QGridLayout *topLayout = new QGridLayout(topFrame,5,2);
   topLayout->setSpacing(spacingHint());
-  topLayout->setMargin(marginHint());
 
   QHBox *timeZoneBox = new QHBox( topFrame );
   topLayout->addMultiCellWidget( timeZoneBox, 0, 0, 0, 1 );
@@ -347,7 +334,6 @@ void KOPrefsDialog::setupViewsTab()
 
   QGridLayout *topLayout = new QGridLayout(topFrame,13,2);
   topLayout->setSpacing(spacingHint());
-  topLayout->setMargin(marginHint());
 
   QBoxLayout *dayBeginsLayout = new QHBoxLayout;
   topLayout->addLayout(dayBeginsLayout,0,0);
@@ -423,7 +409,6 @@ void KOPrefsDialog::setupFontsTab()
 
   QGridLayout *topLayout = new QGridLayout(topFrame,5,3);
   topLayout->setSpacing(spacingHint());
-  topLayout->setMargin(marginHint());
 
   KPrefsWidFont *timeBarFont =
       addWidFont(KGlobal::locale()->formatTime(QTime(12,34)),i18n("Time bar:"),
@@ -464,7 +449,6 @@ void KOPrefsDialog::setupColorsTab()
 
   QGridLayout *topLayout = new QGridLayout(topFrame,7,2);
   topLayout->setSpacing(spacingHint());
-  topLayout->setMargin(marginHint());
 
   // Holiday Color
   KPrefsWidColor *holidayColor =
@@ -555,7 +539,6 @@ void KOPrefsDialog::setupPrinterTab()
 
   QGridLayout *topLayout = new QGridLayout(mPrinterTab,5,2);
   topLayout->setSpacing(spacingHint());
-  topLayout->setMargin(marginHint());
 
   topLayout->setRowStretch(4,1);
 }
@@ -567,7 +550,6 @@ void KOPrefsDialog::setupGroupSchedulingTab()
 
   QGridLayout *topLayout = new QGridLayout(topFrame,6,2);
   topLayout->setSpacing(spacingHint());
-  topLayout->setMargin(marginHint());
 
 #if 0
   KPrefsWidRadios *schedulerGroup =
@@ -614,9 +596,8 @@ void KOPrefsDialog::setupGroupAutomationTab()
   QFrame *topFrame  = addPage(i18n("Group Automation"),0,
                               DesktopIcon("personal",KIcon::SizeMedium));
 
-  QGridLayout *topLayout = new QGridLayout(topFrame,5,1);
+  QGridLayout *topLayout = new QGridLayout(topFrame,6,1);
   topLayout->setSpacing(spacingHint());
-  topLayout->setMargin(marginHint());
 
   KPrefsWidRadios *autoRefreshGroup =
       addWidRadios(i18n("Auto Send Refresh"),
@@ -657,6 +638,8 @@ void KOPrefsDialog::setupGroupAutomationTab()
   autoFreeBusyReplyGroup->addRadio(i18n("If attendee is in addressbook"));
   //autoFreeBusyGroup->addRadio(i18n("selected emails"));
   topLayout->addMultiCellWidget(autoFreeBusyReplyGroup->groupBox(),4,4,0,0);
+
+  topLayout->setRowStretch( 5, 1 );
 }
 
 void KOPrefsDialog::showPrinterTab()
