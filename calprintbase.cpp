@@ -227,8 +227,7 @@ void CalPrintBase::drawSmallMonth(QPainter &p, const QDate &qd,
   KLocale *local = KGlobal::locale();
 
   // correct begin of week
-  int weekStartDay = KGlobal::locale()->weekStartDay();
-  int weekdayCol=(qd.dayOfWeek()+7-weekStartDay)%7;
+  int weekdayCol = weekdayColumn( qd.dayOfWeek() );
   monthDate2 = monthDate.addDays(-weekdayCol);
 
   // draw days of week
@@ -250,8 +249,7 @@ void CalPrintBase::drawSmallMonth(QPainter &p, const QDate &qd,
         break;
       if (firstCol) {
         firstCol = true;
-        int weekStartDay = KGlobal::locale()->weekStartDay();
-        col = (monthDate.dayOfWeek()+7-weekStartDay)%7;
+        col = weekdayColumn( monthDate.dayOfWeek() );
       }
       p.drawText( x+col*cellWidth,
                   y+height/4+cellHeight+(row*cellHeight),
@@ -640,9 +638,8 @@ void CalPrintBase::drawWeek(QPainter &p, const QDate &qd,
   cellHeight = height/vcells;
 
   // correct begin of week
-  int weekStartDay = KGlobal::locale()->weekStartDay();
-  int weekdayCol=(qd.dayOfWeek()+7-weekStartDay)%7;
-  weekDate = qd.addDays(-weekdayCol);
+  int weekdayCol = weekdayColumn( qd.dayOfWeek() );
+  weekDate = qd.addDays( -weekdayCol );
 
   for (int i = 0; i < 7; i++, weekDate = weekDate.addDays(1)) {
     if (i<5) {
@@ -700,7 +697,7 @@ void CalPrintBase::drawMonth(QPainter &p, const QDate &qd, bool weeknumbers,
   int xoffset = 0;
   QDate monthDate(QDate(qd.year(), qd.month(), 1));
 
-  int weekdayCol=(monthDate.dayOfWeek()+7-KGlobal::locale()->weekStartDay())%7;
+  int weekdayCol = weekdayColumn( monthDate.dayOfWeek() );
   monthDate = monthDate.addDays(-weekdayCol);
 
   int rows=(weekdayCol + qd.daysInMonth() - 1)/7 +1;

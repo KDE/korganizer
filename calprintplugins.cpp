@@ -378,7 +378,7 @@ void CalPrintMonth::readSettingsWidget()
     mWeekNumbers =  cfg->mWeekNumbers->isChecked();
 
     mIncludeTodos = cfg->mIncludeTodos->isChecked();
-    mUseColors = cfg->mColors->isChecked();
+//    mUseColors = cfg->mColors->isChecked();
   }
 }
 
@@ -393,7 +393,7 @@ void CalPrintMonth::setSettingsWidget()
     cfg->mWeekNumbers->setChecked( mWeekNumbers );
 
     cfg->mIncludeTodos->setChecked( mIncludeTodos );
-    cfg->mColors->setChecked( mUseColors );
+//    cfg->mColors->setChecked( mUseColors );
   }
 }
 
