@@ -191,13 +191,13 @@ void KNoScrollListBox::resizeEvent( QResizeEvent *e )
   QListBox::resizeEvent( e );
 }
 
-MonthViewItem::MonthViewItem( Incidence *incidence, QDate qd, const QString & s)
-  : QListBoxItem()
+MonthViewItem::MonthViewItem( Incidence *incidence, const QDateTime &qd, 
+                              const QString & s ) : QListBoxItem()
 {
   setText( s );
 
   mIncidence = incidence;
-  mDate = qd;
+  mDateTime = qd;
 
   mTodoPixmap      = KOGlobals::self()->smallIcon("todo");
   mTodoDonePixmap  = KOGlobals::self()->smallIcon("checkedbox");
@@ -411,7 +411,7 @@ void MonthViewCell::updateCell()
   mItemList->clear();
 
   if ( !mHolidayString.isEmpty() ) {
-    MonthViewItem *item = new MonthViewItem( 0, mDate, mHolidayString );
+    MonthViewItem *item = new MonthViewItem( 0, QDateTime( mDate ), mHolidayString );
     item->setPalette( mHolidayPalette );
     mItemList->insertItem( item );
   }
@@ -435,26 +435,30 @@ class MonthViewCell::CreateItemVisitor :
   protected:
     bool visit( Event *event ) {
       QString text;
+      QDateTime dt( mDate );
       if ( event->isMultiDay() ) {
         if (mDate == event->dtStart().date()) {
           text = "(-- " + event->summary();
+          dt = event->dtStart();
         } else if (mDate == event->dtEnd().date()) {
           text = event->summary() + " --)";
         } else if (!(event->dtStart().date().daysTo(mDate) % 7)) {
           text = "-- " + event->summary() + " --";
         } else {
           text = "----------------";
+          dt = QDateTime( mDate );
         }
       } else {
         if (event->doesFloat())
           text = event->summary();
         else {
           text = KGlobal::locale()->formatTime(event->dtStart().time());
+          dt.setTime( event->dtStart().time() );
           text += " " + event->summary();
         }
       }
 
-      mItem = new MonthViewItem( event, mDate, text );
+      mItem = new MonthViewItem( event, dt, text );
       if (KOPrefs::instance()->monthViewUsesCategoryColor()) {
         QStringList categories = event->categories();
         QString cat = categories.first();
@@ -478,13 +482,15 @@ class MonthViewCell::CreateItemVisitor :
       QString text;
       if ( !KOPrefs::instance()->showAllDayTodo() ) 
         return false;
+      QDateTime dt( mDate );
       if ( todo->hasDueDate() && !todo->doesFloat() ) {
         text += KGlobal::locale()->formatTime( todo->dtDue().time() );
         text += " ";
+        dt.setTime( todo->dtDue().time() );
       }
       text += todo->summary();
 
-      mItem = new MonthViewItem( todo, mDate, text );
+      mItem = new MonthViewItem( todo, dt, text );
       if ( todo->doesRecur() ) {
         mDate < todo->dtDue().date() ?
         mItem->setTodoDone( true ) : mItem->setTodo( true );
@@ -524,7 +530,19 @@ void MonthViewCell::addIncidence( Incidence *incidence )
       // FIXME: Find the correct position (time-wise) to insert the item.
       //        Currently, the items are displayed in "random" order instead of
       //        chronologically sorted.
-      mItemList->insertItem( item );
+      uint i = 0;
+      int pos = -1;
+      QDateTime dt( item->incidenceDateTime() );
+      
+      while ( i < mItemList->count() && pos<0 ) {
+        QListBoxItem *item = mItemList->item( i );
+        MonthViewItem *mvitem = dynamic_cast<MonthViewItem*>( item );
+        if ( mvitem && mvitem->incidenceDateTime()>dt ) {
+          pos = i;
+        }
+        ++i;
+      }
+      mItemList->insertItem( item, pos );
     }
   }
 }
@@ -615,7 +633,7 @@ QDate MonthViewCell::selectedIncidenceDate()
 
   if ( !item ) return qd;
 
-  return item->incidenceDate();
+  return item->incidenceDateTime().date();
 }
 
 void MonthViewCell::deselect()

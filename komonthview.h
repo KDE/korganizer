@@ -74,7 +74,7 @@ class KNoScrollListBox: public QListBox
 class MonthViewItem: public QListBoxItem
 {
   public:
-    MonthViewItem( Incidence *, QDate qd, const QString & title );
+    MonthViewItem( Incidence *, const QDateTime &qd, const QString & title );
 
     void setTodo(bool on)  { mTodo  = on; }
     void setTodoDone(bool on) { mTodoDone = on; }
@@ -86,7 +86,7 @@ class MonthViewItem: public QListBoxItem
     QPalette palette() const { return mPalette; }
 
     Incidence *incidence() const { return mIncidence; }
-    QDate incidenceDate() { return mDate; }
+    QDateTime incidenceDateTime() { return mDateTime; }
 
     void setResourceColor( QColor& color ) { mResourceColor = color; }
     QColor &resourceColor() { return mResourceColor; }
@@ -110,7 +110,7 @@ class MonthViewItem: public QListBoxItem
     QPixmap mReplyPixmap;
 
     QPalette mPalette;
-    QDate mDate;
+    QDateTime mDateTime;
 
     Incidence *mIncidence;
 };
