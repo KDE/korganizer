@@ -147,6 +147,10 @@ class KOAgenda : public QScrollView
       about selection/deselection of events.
     */
     void selectItem( KOAgendaItem * );
+    /**
+      Select the item associated with a given uid. Linear search, use carefully.
+    */
+    void selectItemByUID( const QString& uid );
     bool removeAgendaItem( KOAgendaItem *item );
     void showAgendaItem( KOAgendaItem *item );
 
