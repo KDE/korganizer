@@ -48,13 +48,13 @@ KOPrefs::KOPrefs() :
 {
   mCategoryColors.setAutoDelete(true);
 
-  mDefaultCategoryColor           = QColor(196,196,196);
-  QColor defaultHolidayColor      = QColor("red");
-  QColor defaultHighlightColor    = KGlobalSettings::highlightColor(); 
-  QColor defaultAgendaBgColor     = QColor(128,128,128);
-  QColor defaultWorkingHoursColor = QColor(160,160,160);
-  QColor defaultTodoDueTodayColor = QColor("orange");
-  QColor defaultTodoOverdueColor  = QColor("red");
+  mDefaultCategoryColor           = QColor(151, 235, 121);
+  QColor defaultHolidayColor      = QColor(255, 100, 100);
+  QColor defaultHighlightColor    = QColor(100, 100, 255);
+  QColor defaultAgendaBgColor     = QColor(255, 255, 255);
+  QColor defaultWorkingHoursColor = QColor(225, 225, 255);
+  QColor defaultTodoDueTodayColor = QColor(255, 200, 50);
+  QColor defaultTodoOverdueColor  = QColor(255, 100, 100);
 
   mDefaultTimeBarFont = KGlobalSettings::generalFont();
   mDefaultViewFont = KGlobalSettings::generalFont();

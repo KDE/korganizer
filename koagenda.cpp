@@ -444,7 +444,7 @@ void KOAgenda::startSelectAction(const QPoint& viewportPos)
   mSelectionCellX = gx;
   mSelectionYTop = gy * mGridSpacingY;
   mSelectionHeight = mGridSpacingY;
-  
+
   // Clear old selection
   repaintContents( selectionX, selectionYTop,
                    mGridSpacingX, selectionHeight );
@@ -501,7 +501,7 @@ void KOAgenda::performSelectAction(const QPoint& viewportPos)
                        mColumns - 1 - mSelectionCellX : mSelectionCellX) *
                        mGridSpacingX, mSelectionYTop,
                        mGridSpacingX, selectionHeight );
-    
+
       mCurrentCellY = gy;
     } else {
     }
@@ -689,14 +689,14 @@ void KOAgenda::endItemAction()
   if ( mItemMoved ) {
     KOAgendaItem *placeItem = mActionItem->firstMultiItem();
     if ( !placeItem ) {
-      placeItem = mActionItem;      
+      placeItem = mActionItem;
     }
     emit itemModified( placeItem );
     QPtrList<KOAgendaItem> oldconflictItems = placeItem->conflictItems();
     KOAgendaItem *item;
     for ( item=oldconflictItems.first(); item != 0;
           item=oldconflictItems.next() ) {
-      placeSubCells(item);    
+      placeSubCells(item);
     }
     while ( placeItem ) {
       placeSubCells( placeItem );
@@ -855,6 +855,7 @@ void KOAgenda::placeSubCells(KOAgendaItem *placeItem)
     moveChild(placeItem,x,y);
   }
   placeItem->setConflictItems(conflictItems);
+  placeItem->update();
 }
 
 /*
@@ -870,7 +871,7 @@ void KOAgenda::drawContents(QPainter* p, int cx, int cy, int cw, int ch)
 
 //  kdDebug(5850) << "KOAgenda::drawContents()" << endl;
   int lGridSpacingY = mGridSpacingY*2;
-  
+
   // Highlight working hours
   if (mWorkingHoursEnable) {
     int x1 = cx;
@@ -905,7 +906,7 @@ void KOAgenda::drawContents(QPainter* p, int cx, int cy, int cw, int ch)
   }
 
   int selectionX = KOGlobals::self()->reverseLayout() ?
-                   (mColumns - 1 - mSelectionCellX) * mGridSpacingX : 
+                   (mColumns - 1 - mSelectionCellX) * mGridSpacingX :
                     mSelectionCellX * mGridSpacingX;
 
   // Draw selection
@@ -915,6 +916,8 @@ void KOAgenda::drawContents(QPainter* p, int cx, int cy, int cw, int ch)
     dbp.fillRect( selectionX, mSelectionYTop, mGridSpacingX,
                  mSelectionHeight, KOPrefs::instance()->mHighlightColor );
   }
+
+  dbp.setPen( KOPrefs::instance()->mAgendaBgColor.dark(150) );
 
   // Draw vertical lines of grid
   //  kdDebug(5850) << "drawContents cx: " << cx << " cy: " << cy << " cw: " << cw << " ch: " << ch << endl;
@@ -1015,7 +1018,6 @@ KOAgendaItem *KOAgenda::insertItem (Incidence *event,QDate qd,int X,int YTop,int
   }
 
   KOAgendaItem *agendaItem = new KOAgendaItem (event,qd,viewport());
-  agendaItem->setFrameStyle(WinPanel|Raised);
 
   int YSize = YBottom - YTop + 1;
   if (YSize < 0) {
@@ -1053,7 +1055,6 @@ KOAgendaItem *KOAgenda::insertAllDayItem (Incidence *event,QDate qd,int XBegin,i
   }
 
   KOAgendaItem *agendaItem = new KOAgendaItem (event,qd,viewport());
-  agendaItem->setFrameStyle(WinPanel|Raised);
 
   agendaItem->setCellXY(XBegin,0,0);
   agendaItem->setCellXWidth(XEnd);

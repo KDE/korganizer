@@ -20,7 +20,6 @@
 #define KOAGENDAITEM_H
 
 #include <qframe.h>
-#include <qlabel.h>
 #include <qdatetime.h>
 
 #include <libkcal/incidence.h>
@@ -37,7 +36,7 @@ using namespace KCal;
   eventfiler for its children, if it has children, and it has to pass mouse
   events from the cildren to itself. See eventFilter().
 */
-class KOAgendaItem : public QFrame
+class KOAgendaItem : public QWidget
 {
     Q_OBJECT
   public:
@@ -79,17 +78,15 @@ class KOAgendaItem : public QFrame
 
     Incidence *incidence() const { return mIncidence; }
     QDate itemDate() { return mDate; }
-    
-    /** Update the date of this item's occurrence (not in the event) */ 
-    void setItemDate(QDate qd);
-    
-    void setText ( const QString & text ) { mItemLabel->setText(text); }
-    QString text () { return mItemLabel->text(); }
 
-    virtual bool eventFilter ( QObject *, QEvent * );
+    /** Update the date of this item's occurrence (not in the event) */
+    void setItemDate(QDate qd);
+
+    void setText ( const QString & text ) { mLabelText = text; }
+    QString text () { return mLabelText; }
 
     static QToolTipGroup *toolTipGroup();
-    
+
     QPtrList<KOAgendaItem> conflictItems();
     void setConflictItems(QPtrList<KOAgendaItem>);
     void addConflictItem(KOAgendaItem *ci);
@@ -101,6 +98,9 @@ class KOAgendaItem : public QFrame
   protected:
     void dragEnterEvent(QDragEnterEvent *e);
     void dropEvent(QDropEvent *e);
+    void paintEvent(QPaintEvent *e);
+    void paintFrame(QPainter *p, const QColor &color);
+    void paintTodoIcon(QPainter *p, int &x, int ft);
 
   private:
     int mCellX;
@@ -121,10 +121,9 @@ class KOAgendaItem : public QFrame
 
     Incidence *mIncidence; // corresponding event or todo
     QDate mDate; //date this events occurs (for recurrence)
-
-    QLabel *mItemLabel;
-    QLabel *mIconAlarm,*mIconRecur,*mIconReadonly;
-    QLabel *mIconReply,*mIconGroup,*mIconOrganizer;
+    QString mLabelText;
+    bool mIconAlarm, mIconRecur, mIconReadonly;
+    bool mIconReply, mIconGroup, mIconOrganizer;
 
     static QToolTipGroup *mToolTipGroup;
 

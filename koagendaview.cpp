@@ -166,7 +166,7 @@ void TimeLabels::updateConfig()
 
   // update geometry restrictions based on new settings
   setFixedWidth(minimumWidth());
-  
+
   // update HourSize
   mCellHeight = KOPrefs::instance()->mHourSize*4;
   resizeContents(50,mRows * mCellHeight);
@@ -226,7 +226,7 @@ void EventIndicator::drawContents(QPainter *p)
   for(i=0;i<mColumns;++i) {
     if (mEnabled[i]) {
       int cellWidth = contentsRect().right()/mColumns;
-      int xOffset = KOGlobals::self()->reverseLayout() ? 
+      int xOffset = KOGlobals::self()->reverseLayout() ?
                (mColumns - 1 - i)*cellWidth + cellWidth/2 -mPixmap.width()/2 :
                i*cellWidth + cellWidth/2 -mPixmap.width()/2;
       p->drawPixmap(QPoint(xOffset,0),mPixmap);
@@ -283,14 +283,14 @@ KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name) :
   mSplitterAgenda = new QSplitter(Vertical,this);
   topLayout->addWidget(mSplitterAgenda);
   mSplitterAgenda->setOpaqueResize();
-  
+
   mAllDayFrame = new QHBox(mSplitterAgenda);
 
   QWidget *agendaFrame = new QWidget(mSplitterAgenda);
 #else
   QVBox *mainBox = new QVBox( this );
   topLayout->addWidget( mainBox );
-  
+
   mAllDayFrame = new QHBox(mainBox);
 
   QWidget *agendaFrame = new QWidget(mainBox);
@@ -304,7 +304,7 @@ KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name) :
   mExpandButton->setSizePolicy( QSizePolicy( QSizePolicy::Fixed,
                                 QSizePolicy::Fixed ) );
   connect( mExpandButton, SIGNAL( clicked() ), SIGNAL( toggleExpand() ) );
- 
+
   mAllDayAgenda = new KOAgenda(1,mAllDayFrame);
   QWidget *dummyAllDayRight = new QWidget(mAllDayFrame);
 
@@ -377,7 +377,7 @@ KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name) :
                         SLOT(newTimeSpanSelectedAllDay(int,int,int,int)));
   connect(mAgenda,SIGNAL(newStartSelectSignal()),SLOT(updateView()));
   connect(mAllDayAgenda,SIGNAL(newStartSelectSignal()),SLOT(updateView()));
-  
+
   connect(mAgenda,SIGNAL(editIncidenceSignal(Incidence *)),
                   SIGNAL(editIncidenceSignal(Incidence *)));
   connect(mAllDayAgenda,SIGNAL(editIncidenceSignal(Incidence *)),
@@ -558,7 +558,7 @@ void KOAgendaView::updateConfig()
   // ToolTips displaying summary of events
   KOAgendaItem::toolTipGroup()->setEnabled(KOPrefs::instance()
                                            ->mEnableToolTips);
-  
+
   setHolidayMasks();
 
   createDayLabels();
@@ -777,7 +777,7 @@ void KOAgendaView::fillAgenda()
 
 // make invalid
   deleteSelectedDateTime();
-  
+
   emit incidenceSelected( 0 );
 
 //  kdDebug(5850) << "Fill Agenda done" << endl;
@@ -805,7 +805,7 @@ void KOAgendaView::printPreview(CalPrinter *calPrinter, const QDate &fd,
 void KOAgendaView::newEvent(int gx, int gy)
 {
   if (!mSelectedDates.count()) return;
-  
+
   QDate day = mSelectedDates[gx];
 
   QTime time = mAgenda->gyToTime(gy);
@@ -817,7 +817,7 @@ void KOAgendaView::newEvent(int gx, int gy)
 void KOAgendaView::newEvent(int gxStart, int gyStart, int gxEnd, int gyEnd)
 {
   if (!mSelectedDates.count()) return;
-  
+
   QDate dayStart = mSelectedDates[gxStart];
   QDate dayEnd = mSelectedDates[gxEnd];
 
@@ -963,7 +963,7 @@ void KOAgendaView::newTimeSpanSelected(int gxStart, int gyStart,
                                        int gxEnd, int gyEnd)
 {
   if (!mSelectedDates.count()) return;
-  
+
   QDate dayStart = mSelectedDates[gxStart];
   QDate dayEnd = mSelectedDates[gxEnd];
 
@@ -976,7 +976,7 @@ void KOAgendaView::newTimeSpanSelected(int gxStart, int gyStart,
   mTimeSpanBegin = dtStart;
   mTimeSpanEnd = dtEnd;
 }
-                                   
+
 void KOAgendaView::deleteSelectedDateTime()
 {
   mTimeSpanBegin.setDate(QDate());

@@ -17,15 +17,14 @@
     Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 */
 
-#include <qlabel.h>
-#include <qlayout.h>
-#include <qhbox.h>
 #include <qtooltip.h>
 #include <qdragobject.h>
+#include <qpainter.h>
 
 #include <kiconloader.h>
 #include <kdebug.h>
 #include <klocale.h>
+#include <kwordwrap.h>
 
 #include <libkcal/icaldrag.h>
 #include <libkcal/vcaldrag.h>
@@ -43,60 +42,15 @@ QToolTipGroup *KOAgendaItem::mToolTipGroup = 0;
 
 KOAgendaItem::KOAgendaItem(Incidence *incidence, QDate qd, QWidget *parent,
                            const char *name,WFlags) :
-  QFrame(parent, name), mIncidence(incidence), mDate(qd)
+  QWidget(parent, name), mIncidence(incidence), mDate(qd),
+  mLabelText(mIncidence->summary()), mIconAlarm(false),
+  mIconRecur(false), mIconReadonly(false), mIconReply(false),
+  mIconGroup(false), mIconOrganizer(false)
 {
+  setBackgroundMode(Qt::NoBackground);
   mFirstMultiItem = 0;
   mNextMultiItem = 0;
   mLastMultiItem = 0;
-
-  QHBox *box = 0;
-
-  if ( incidence->type() == "Todo" )
-  {
-    static const QPixmap todoPxmp = SmallIcon("todo");
-    static const QPixmap completedPxmp = SmallIcon("checkedbox");
-
-    box = new QHBox(this);
-    QLabel *todoIcon = new QLabel(box);
-
-    if ( (static_cast<Todo*>(incidence))->isCompleted() )
-      todoIcon->setPixmap(completedPxmp);
-    else
-      todoIcon->setPixmap(todoPxmp);
-
-    todoIcon->setAlignment(AlignLeft|AlignTop);
-
-    mItemLabel = new QLabel(mIncidence->summary(),box,"KOAgendaItem::itemLabel");
-  }
-  else
-    mItemLabel = new QLabel(mIncidence->summary(),this,"KOAgendaItem::itemLabel");
-
-  // if a Todo item is overdue and not completed, always show it in overdue color
-  if ( (incidence->type() == "Todo") &&
-       ( !((static_cast<Todo*>(incidence))->isCompleted()) &&
-         ((static_cast<Todo*>(incidence))->dtDue() < QDate::currentDate()) ) )
-    setPalette(QPalette(KOPrefs::instance()->mTodoOverdueColor,
-                        KOPrefs::instance()->mTodoOverdueColor));
-  else {
-    QStringList categories = mIncidence->categories();
-    QString cat = categories.first();
-    if (cat.isEmpty()) {
-      setPalette(QPalette(KOPrefs::instance()->mEventColor,
-                          KOPrefs::instance()->mEventColor));
-    } else {
-      setPalette(QPalette(*(KOPrefs::instance()->categoryColor(cat)),
-                          *(KOPrefs::instance()->categoryColor(cat))));
-    }
-  }
-
-  mItemLabel->setAlignment(AlignCenter|WordBreak);
-  mItemLabel->setMouseTracking(true);
-
-  mItemLabel->installEventFilter(this);
-
-  mItemLabel->setFrameStyle(Panel|Sunken);
-
-  mItemLabel->setFont(KOPrefs::instance()->mAgendaViewFont);
 
   setCellXY(0,0,1);
   setCellXWidth(0);
@@ -106,59 +60,6 @@ KOAgendaItem::KOAgendaItem(Incidence *incidence, QDate qd, QWidget *parent,
   setMultiItem(0,0,0);
 
   startMove();
-
-  mIconAlarm = new QLabel(this,"KOAgendaItem::IconAlarmLabel");
-  mIconRecur = new QLabel(this,"KOAgendaItem::IconRecurLabel");
-  mIconReadonly = new QLabel(this,"KOAgendaItem::IconReadonlyLabel");
-  mIconReply = new QLabel(this,"KOAgendaItem::IconReplyLabel");
-  mIconGroup = new QLabel(this,"KOAgendaItem::IconGroupLabel");
-  mIconOrganizer = new QLabel(this,"KOAgendaItem::IconOrganizerLabel");
-
-  mIconAlarm->installEventFilter(this);
-  mIconRecur->installEventFilter(this);
-  mIconReadonly->installEventFilter(this);
-  mIconReply->installEventFilter(this);
-  mIconGroup->installEventFilter(this);
-  mIconOrganizer->installEventFilter(this);
-
-  mIconAlarm->setMouseTracking(true);
-  mIconRecur->setMouseTracking(true);
-  mIconReadonly->setMouseTracking(true);
-  mIconReply->setMouseTracking(true);
-  mIconGroup->setMouseTracking(true);
-  mIconOrganizer->setMouseTracking(true);
-
-  static const QPixmap alarmPxmp = SmallIcon("bell");
-  static const QPixmap recurPxmp = SmallIcon("recur");
-  static const QPixmap readonlyPxmp = SmallIcon("readonlyevent");
-  static const QPixmap replyPxmp = SmallIcon("mail_reply");
-  static const QPixmap groupPxmp = SmallIcon("groupevent");
-  static const QPixmap organizerPxmp = SmallIcon("organizer");
-
-  mIconAlarm->setPixmap(alarmPxmp);
-  mIconRecur->setPixmap(recurPxmp);
-  mIconReadonly->setPixmap(readonlyPxmp);
-  mIconReply->setPixmap(replyPxmp);
-  mIconGroup->setPixmap(groupPxmp);
-  mIconOrganizer->setPixmap(organizerPxmp);
-
-  QVBoxLayout *topLayout = new QVBoxLayout(this,margin()+3);
-  if ( incidence->type() == "Todo" )
-    topLayout->addWidget(box, 1);
-  else
-    topLayout->addWidget(mItemLabel,1);
-
-  QBoxLayout *iconLayout = new QHBoxLayout;
-  topLayout->addLayout(iconLayout);
-
-  iconLayout->addWidget(mIconAlarm);
-  iconLayout->addWidget(mIconRecur);
-  iconLayout->addWidget(mIconReadonly);
-  iconLayout->addWidget(mIconReply);
-  iconLayout->addWidget(mIconGroup);
-  iconLayout->addWidget(mIconOrganizer);
-  iconLayout->addStretch(1);
-
   updateIcons();
 
   // select() does nothing, if state hasn't change, so preset mSelected.
@@ -195,47 +96,37 @@ KOAgendaItem::KOAgendaItem(Incidence *incidence, QDate qd, QWidget *parent,
 
 void KOAgendaItem::updateIcons()
 {
-  if (mIncidence->isReadOnly()) mIconReadonly->show();
-  else mIconReadonly->hide();
-
-  if (mIncidence->recurrence()->doesRecur()) mIconRecur->show();
-  else mIconRecur->hide();
-
-  if (mIncidence->isAlarmEnabled()) mIconAlarm->show();
-  else mIconAlarm->hide();
-
+  mIconReadonly = mIncidence->isReadOnly();
+  mIconRecur = mIncidence->recurrence()->doesRecur();
+  mIconAlarm = mIncidence->isAlarmEnabled();
   if (mIncidence->attendeeCount()>0) {
     if (mIncidence->organizer() == KOPrefs::instance()->email()) {
-      mIconReply->hide();
-      mIconGroup->hide();
-      mIconOrganizer->show();
+      mIconReply = false;
+      mIconGroup = false;
+      mIconOrganizer = true;
     }
     else {
       Attendee *me = mIncidence->attendeeByMails(KOPrefs::instance()->mAdditionalMails,KOPrefs::instance()->email());
       if (me!=0) {
         if (me->status()==Attendee::NeedsAction && me->RSVP()) {
-          mIconReply->show();
-          mIconGroup->hide();
-          mIconOrganizer->hide();
+          mIconReply = true;
+          mIconGroup = false;
+          mIconOrganizer = false;
         }
         else {
-          mIconReply->hide();
-          mIconGroup->show();
-          mIconOrganizer->hide();
+          mIconReply = false;
+          mIconGroup = true;
+          mIconOrganizer = false;
         }
       }
       else {
-        mIconReply->hide();
-        mIconGroup->show();
-        mIconOrganizer->hide();
+        mIconReply = false;
+        mIconGroup = true;
+        mIconOrganizer = false;
       }
     }
   }
-  else {
-    mIconReply->hide();
-    mIconGroup->hide();
-    mIconOrganizer->hide();
-  }
+  update();
 }
 
 
@@ -243,36 +134,8 @@ void KOAgendaItem::select(bool selected)
 {
   if (mSelected == selected) return;
   mSelected = selected;
-  if (mSelected) {
-    mItemLabel->setFrameStyle(Panel|Sunken);
-    mItemLabel->setLineWidth(1);
-  } else {
-    mItemLabel->setFrameStyle(Panel|Plain);
-    mItemLabel->setLineWidth(0);
-  }
-}
 
-
-/*
-  The eventFilter has to filter the mouse events of the agenda item childs. The
-  events are fed into the event handling method of KOAgendaItem. This allows the
-  KOAgenda to handle the KOAgendaItems by using an eventFilter.
-*/
-bool KOAgendaItem::eventFilter ( QObject *object, QEvent *e )
-{
-//  kdDebug(5850) << "KOAgendaItem::eventFilter" << endl;
-  if (e->type() == QEvent::MouseButtonPress ||
-      e->type() == QEvent::MouseButtonDblClick ||
-      e->type() == QEvent::MouseButtonRelease ||
-      e->type() == QEvent::MouseMove) {
-    QMouseEvent *me = (QMouseEvent *)e;
-    QPoint itemPos = this->mapFromGlobal(((QWidget *)object)->
-                                         mapToGlobal(me->pos()));
-    QMouseEvent returnEvent (e->type(),itemPos,me->button(),me->state());
-    return event(&returnEvent);
-  } else {
-    return false;
-  }
+  update();
 }
 
 
@@ -457,3 +320,214 @@ void KOAgendaItem::addConflictItem(KOAgendaItem *ci)
   if (mConflictItems.find(ci)<0)
     mConflictItems.append(ci);
 }
+
+void KOAgendaItem::paintFrame(QPainter *p,
+                              const QColor &color)
+{
+  p->setPen( color );
+  p->drawRect( 0, 0, width(), height() );
+  p->drawRect( 1, 1, width()-2, height()-2 );
+}
+
+static void conditionalPaint(QPainter *p, bool cond, int &x, int ft,
+                             const QPixmap &pxmp)
+{
+  if (!cond)
+    return;
+  p->drawPixmap( x, ft, pxmp);
+  x += pxmp.width() + ft;
+}
+
+void KOAgendaItem::paintTodoIcon(QPainter *p, int &x, int ft)
+{
+  static const QPixmap todoPxmp = SmallIcon("todo");
+  static const QPixmap completedPxmp = SmallIcon("checkedbox");
+  if ( mIncidence->type() != "Todo" )
+    return;
+  bool b = (static_cast<Todo*>(mIncidence))->isCompleted();
+  conditionalPaint(p, b, x, ft, todoPxmp);
+  conditionalPaint(p, !b, x, ft, completedPxmp);
+}
+
+static QColor getTextColor(const QColor &c) {
+  float luminance = (c.red() * 0.299) + (c.green() * 0.587) + (c.blue() * 0.114);
+  return (luminance > 128.0) ? QColor( 0, 0 ,0 ) : QColor( 255, 255 ,255 );
+}
+
+void KOAgendaItem::paintEvent(QPaintEvent *)
+{
+  QPainter p(this);
+  const int ft = 2; // frame thickness for layout, see paintFrame()
+  const int margin = 1 + ft; // frame + space between frame and content
+
+  static const QPixmap alarmPxmp = SmallIcon("bell");
+  static const QPixmap recurPxmp = SmallIcon("recur");
+  static const QPixmap readonlyPxmp = SmallIcon("readonlyevent");
+  static const QPixmap replyPxmp = SmallIcon("mail_reply");
+  static const QPixmap groupPxmp = SmallIcon("groupevent");
+  static const QPixmap organizerPxmp = SmallIcon("organizer");
+
+  QColor bgColor;
+  if ( (mIncidence->type() == "Todo") &&
+       ( !((static_cast<Todo*>(mIncidence))->isCompleted()) &&
+         ((static_cast<Todo*>(mIncidence))->dtDue() < QDate::currentDate()) ) )
+    bgColor = KOPrefs::instance()->mTodoOverdueColor;
+  else {
+    QStringList categories = mIncidence->categories();
+    QString cat = categories.first();
+    if (cat.isEmpty())
+      bgColor = KOPrefs::instance()->mEventColor;
+    else
+      bgColor = *(KOPrefs::instance()->categoryColor(cat));
+      // if uses had the old default event color, override!
+      if ( bgColor == QColor(196,196,196) )
+        bgColor = KOPrefs::instance()->mEventColor;
+  }
+
+  QColor frameColor = mSelected ? bgColor.light(115) : bgColor.dark(115);
+  QColor textColor = getTextColor(bgColor);
+  p.setPen( textColor );
+  p.setBackgroundColor( bgColor );
+  p.setFont(KOPrefs::instance()->mAgendaViewFont);
+  QFontMetrics fm = p.fontMetrics();
+
+  int singleLineHeight = fm.boundingRect( mLabelText ).height();
+
+  // case 1: do not draw text when not even a single line fits
+  if ( ( singleLineHeight > height() ) || // ignore margin, be gentle..
+       ( width() < 16 ) ) {
+    p.eraseRect( 0, 0, width(), height() );
+    int x = margin;
+    paintTodoIcon( &p, x, ft );
+    paintFrame( &p, frameColor );
+    return;
+  }
+
+  // case 2: draw a single line when no more space
+  if ( (2 * singleLineHeight) > (height() - 2 * margin) ) {
+    p.eraseRect( 0, 0, width(), height() );
+    int x = margin;
+    paintTodoIcon( &p, x, ft );
+    int y = ((height() - 2 * ft - singleLineHeight) / 2) + fm.ascent();
+    KWordWrap::drawFadeoutText( &p, x, y,
+                                width() - margin - x, mLabelText );
+    paintFrame( &p, frameColor );
+    return;
+  }
+
+  KWordWrap *ww = KWordWrap::formatText( fm,
+                                         QRect(0, 0,
+                                         width() - (2 * margin), 0),
+                                         0,
+                                         mLabelText );
+  int th = ww->boundingRect().height();
+  delete ww;
+
+  // calculate the height of the full version (case 4) to test whether it is
+  // possible
+  QString shortH;
+  QString longH;
+  if ( (!mFirstMultiItem) && (!mNextMultiItem) ) {
+    shortH = KGlobal::locale()->formatTime(mIncidence->dtStart().time());
+    if (mIncidence->type() != "Todo")
+      longH = i18n("%1 - %2").arg(shortH)
+               .arg(KGlobal::locale()->formatTime(mIncidence->dtEnd().time()));
+    else
+      longH = shortH;
+  }
+  else if ( !mFirstMultiItem ) {
+    shortH = KGlobal::locale()->formatTime(mIncidence->dtStart().time());
+    longH = shortH;
+  }
+  else {
+    shortH = KGlobal::locale()->formatTime(mIncidence->dtEnd().time());
+    longH = i18n("- %1").arg(shortH);
+  }
+
+  int hlHeight = QMAX(fm.boundingRect(longH).height(),
+     QMAX(alarmPxmp.height(), QMAX(recurPxmp.height(),
+     QMAX(readonlyPxmp.height(), QMAX(replyPxmp.height(),
+     QMAX(groupPxmp.height(), organizerPxmp.height()))))));
+  bool completelyRenderable =
+    th <= (height() - 2 * ft - hlHeight);
+
+  // case 3: enough for 2-5 lines, but not for the header.
+  //         Also used for the middle days in multi-events
+  //         or all-day events
+  if ( ((!completelyRenderable) &&
+        ((height() - (2 * margin)) <= (5 * singleLineHeight)) ) ||
+         (mNextMultiItem && mFirstMultiItem) ||
+	 mIncidence->doesFloat() ) {
+    int x = margin;
+    ww = KWordWrap::formatText( fm,
+                                QRect(0, 0, width() - margin - x,
+                                height() - (2 * margin)),
+                                0,
+                                mLabelText );
+    p.eraseRect( 0, 0, width(), height() );
+    paintTodoIcon( &p, x, ft );
+    ww->drawText( &p, x, margin, Qt::AlignAuto | KWordWrap::FadeOut );
+    delete ww;
+    paintFrame( &p, frameColor );
+    return;
+  }
+
+  // case 4: paint everything, with header:
+  // consists of (vertically) ft + headline&icons + ft + text + margin
+  int y = 2 * ft + hlHeight;
+  if ( completelyRenderable )
+    y += (height() - (2 * ft) - margin - hlHeight - th) / 2;
+  ww = KWordWrap::formatText( fm,
+                              QRect(0, 0, width() - (2 * margin),
+                              height() - margin - y),
+                              0,
+                              mLabelText );
+
+  p.eraseRect( 0, 0, width(), height() );
+
+  // paint headline
+  p.fillRect( 0, 0, width(), (ft/2) + margin + hlHeight,
+              QBrush( frameColor ) );
+
+  int x = margin;
+  paintTodoIcon( &p, x, ft );
+  conditionalPaint( &p, mIconAlarm, x, ft, alarmPxmp );
+  conditionalPaint( &p, mIconRecur, x, ft, recurPxmp );
+  conditionalPaint( &p, mIconReadonly, x, ft, readonlyPxmp );
+  conditionalPaint( &p, mIconReply, x, ft, replyPxmp );
+  conditionalPaint( &p, mIconGroup, x, ft, groupPxmp );
+  conditionalPaint( &p, mIconOrganizer, x, ft, organizerPxmp );
+
+  QString headline;
+  int hw = fm.boundingRect( longH ).width();
+  if ( hw > (width() - x - margin) ) {
+    headline = shortH;
+    hw = fm.boundingRect( shortH ).width();
+    if ( hw < (width() - x - margin) )
+      x += (width() - x - margin - hw) / 2;
+    else
+      headline = "";
+  }
+  else {
+    headline = longH;
+    x += (width() - x - margin - hw) / 2;
+  }
+  p.setBackgroundColor( frameColor );
+  p.setPen( getTextColor( frameColor ) );
+  KWordWrap::drawFadeoutText( &p, x, ft + fm.ascent(),
+                              width() - margin - x, headline );
+
+  // draw event text
+  p.setBackgroundColor( bgColor );
+  p.setPen( textColor );
+  QString ws = ww->wrappedString();
+  if ( ws.left( ws.length()-1 ).find( '\n' ) >= 0 )
+    ww->drawText( &p, margin, y,
+                  Qt::AlignAuto | KWordWrap::FadeOut );
+  else
+    ww->drawText( &p, margin + (width()-ww->boundingRect().width()-2*margin)/2,
+                  y, Qt::AlignHCenter | KWordWrap::FadeOut );
+  delete ww;
+  paintFrame( &p, frameColor );
+}
+

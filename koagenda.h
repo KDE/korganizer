@@ -24,6 +24,7 @@
 #define KOAGENDA_H
 
 #include <qscrollview.h>
+#include <qlabel.h>
 #include <qtimer.h>
 #include <qmemarray.h>
 #include <qguardedptr.h>
@@ -98,7 +99,7 @@ class KOAgenda : public QScrollView
 //    virtual QSizePolicy sizePolicy() const;
 
     void clear();
-    
+
     void clearSelection();
 
     /** Calculates the minimum width */

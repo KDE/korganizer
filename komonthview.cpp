@@ -32,6 +32,7 @@
 #include <kglobal.h>
 #include <kconfig.h>
 #include <kiconloader.h>
+#include <kwordwrap.h>
 
 #include <kcalendarsystem.h>
 
@@ -46,6 +47,7 @@
 
 #include "komonthview.h"
 #include "komonthview.moc"
+
 
 KNoScrollListBox::KNoScrollListBox(QWidget *parent,const char *name)
   : QListBox(parent, name),
@@ -138,12 +140,6 @@ MonthViewItem::MonthViewItem( Incidence *incidence, QDate qd, const QString & s)
   mReply = false;
 }
 
-static QColor mixColors(double p1, QColor c1, QColor c2) {
-  return QColor(int(c1.red() * p1 + c2.red() * (1.0-p1)),
-                int(c1.green() * p1 + c2.green() * (1.0-p1)),
-		int(c1.blue() * p1 + c2.blue() * (1.0-p1)));
-}
-
 void MonthViewItem::paint(QPainter *p)
 {
 #if QT_VERSION >= 0x030000
@@ -184,33 +180,7 @@ void MonthViewItem::paint(QPainter *p)
 	  QColorGroup::HighlightedText : QColorGroup::Foreground );
   p->setPen( textColor );
 
-  // try to fade out the text if it does not fit
-  QString t = text();
-  int maxW = listBox()->width() - x;
-  if ( ( fm.boundingRect( t ).width() > maxW ) && ( t.length() > 1 ) ) {
-    uint tl = 0;
-    int w = 0;
-    while ( tl < t.length() ) {
-      w += fm.charWidth( t, tl );
-      if ( w >= maxW )
-        break;
-      tl++;
-    }
-
-    if (tl > 3) {
-      p->drawText( x, yPos, t.left( tl - 3 ) );
-      x += fm.width( t.left( tl - 3 ) );
-    }
-    int n = QMIN( tl, 3);
-    for (int i = 0; i < n; i++) {
-      p->setPen( mixColors( 0.70 - i * 0.25, textColor, bgColor ) );
-      QString s( t.at( tl - n + i ) );
-      p->drawText( x, yPos, s );
-      x += fm.width( s );
-    }
-  }
-  else
-    p->drawText( x, yPos, t );
+  KWordWrap::drawFadeoutText(p, x, yPos, listBox()->width() - x, text());
 }
 
 int MonthViewItem::height(const QListBox *lb) const
