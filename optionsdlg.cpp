@@ -92,7 +92,7 @@ void OptionsDialog::setupMainTab()
 				"frswiss", "german", "hungary", "iceland",
 				"italy", "japan",
 				"norway", "portugal", "poland",
-                                "quebec", "spain",
+                                "quebec", "romania", "spain",
 				"swedish", "thailand", "uk", "us", 0L };
   
   QVBoxLayout *layout = new QVBoxLayout( personalFrame, 4);

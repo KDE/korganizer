@@ -9,4 +9,4 @@ holidays_DATA = holiday_dutch holiday_japan holiday_finnish \
 		holiday_uk holiday_canada holiday_hungary holiday_us \
 		holiday_denmark holiday_italy holiday_portugal \
 		holiday_thailand holiday_czechia holiday_iceland \
-		holiday_poland holiday_catalan
+		holiday_poland holiday_catalan holiday_romania
