@@ -67,11 +67,11 @@ class PrintCellItem : public KOrg::CellItem
       : mEvent( event ), mDay( day )
     {
     }
-  
+
     Event *event() const { return mEvent; }
 
     QString label() const { return mEvent->summary(); }
-    
+
     bool overlaps( KOrg::CellItem *o ) const
     {
       PrintCellItem *other = static_cast<PrintCellItem *>( o );
@@ -97,22 +97,22 @@ class PrintCellItem : public KOrg::CellItem
       kdDebug() << "  otherStart: " << otherStart.toString() << endl;
       kdDebug() << "  otherEnd  : " << otherEnd.toString() << endl;
 #endif
-      
+
       return !( otherStart >= end || otherEnd <= start );
     }
-    
+
   private:
     Event *mEvent;
     QDate mDay;
 };
 
-CalPrintHelper::CalPrintHelper( KPrinter *pr, Calendar *cal, KConfig *cfg, 
+CalPrintHelper::CalPrintHelper( KPrinter *pr, Calendar *cal, KConfig *cfg,
                                 KOrg::CoreHelper *corehelper )
-  : mPrinter( pr ), mCalendar( cal ), mConfig( cfg ), 
-    mCoreHelper( corehelper ), 
+  : mPrinter( pr ), mCalendar( cal ), mConfig( cfg ),
+    mCoreHelper( corehelper ),
     mHeaderHeight( 72 ), mSubHeaderHeight( 20 ), mMargin( 36 )
 {
-  if ( corehelper ) 
+  if ( corehelper )
     setCalendarSystem( mCoreHelper->calendarSystem() );
 }
 
@@ -184,7 +184,7 @@ void CalPrintHelper::drawSmallMonth(QPainter &p, const QDate &qd,
   p.setFont(QFont("helvetica", 8, QFont::Bold));
   //  int lineSpacing = p.fontMetrics().lineSpacing();
   if ( mCalSys )
-    p.drawText(x, y, width, height/4, Qt::AlignCenter, 
+    p.drawText(x, y, width, height/4, Qt::AlignCenter,
       mCalSys->monthName( qd ) );
 
   int cellWidth = width/7;
@@ -196,7 +196,6 @@ void CalPrintHelper::drawSmallMonth(QPainter &p, const QDate &qd,
   monthDate2 = monthDate.addDays( -weekdayCol );
 
   // draw days of week
-   p.setFont( QFont( "helvetica", 8, QFont::Bold ) );
   for (int col = 0; col < 7; col++) {
     // tmpStr.sprintf("%c",(const char*)monthDate2.dayName(monthDate2.dayOfWeek()));
     tmpStr=mCalSys->weekDayName( monthDate2 )[0].upper();
@@ -206,7 +205,7 @@ void CalPrintHelper::drawSmallMonth(QPainter &p, const QDate &qd,
   }
 
   // draw separator line
-  p.drawLine( x, y + height/4 + cellHeight, x + width, 
+  p.drawLine( x, y + height/4 + cellHeight, x + width,
       y + height/4 + cellHeight );
 
   for ( int row = 0; row < 5; row++ ) {
@@ -325,7 +324,7 @@ void CalPrintHelper::drawTimeLine(QPainter &p,
   } // currTime<endTime
 }
 
-Event *CalPrintHelper::holiday( const QDate &dt ) 
+Event *CalPrintHelper::holiday( const QDate &dt )
 {
 #ifndef KORG_NOPLUGINS
   if ( !mCoreHelper ) return 0;
@@ -366,7 +365,7 @@ void CalPrintHelper::drawAllDayBox(QPainter &p, Event::List &eventList,
 
   Event*hd = holiday( qd );
   if ( hd ) eventList.prepend( hd );
-  
+
   it = eventList.begin();
   Event *currEvent = 0;
   // First, print all floating events
@@ -381,7 +380,7 @@ void CalPrintHelper::drawAllDayBox(QPainter &p, Event::List &eventList,
           setCategoryColors( p, currEvent );
 
         p.drawRect( x, offset, width, height );
-        p.drawText( x + 5, offset + 5, width - 10, height - 10, 
+        p.drawText( x + 5, offset + 5, width - 10, height - 10,
                     Qt::AlignCenter | Qt::AlignVCenter | Qt::AlignJustify |
                     Qt::WordBreak,
                     currEvent->summary() );
@@ -402,11 +401,11 @@ void CalPrintHelper::drawAllDayBox(QPainter &p, Event::List &eventList,
   if (!expandable) {
     p.drawRect(x, offset, width, height);
     if (!multiDayStr.isEmpty()) {
-      p.fillRect( x + 1, offset + 1, width - 2, height - 2, 
+      p.fillRect( x + 1, offset + 1, width - 2, height - 2,
                   QBrush( Qt::Dense5Pattern ) );
-      p.drawText( x + 5, offset + 5, width - 10, height - 10, 
+      p.drawText( x + 5, offset + 5, width - 10, height - 10,
                   Qt::AlignCenter | Qt::AlignVCenter | Qt::AlignJustify |
-                  Qt::WordBreak, 
+                  Qt::WordBreak,
                   multiDayStr);
     }
   } else {
@@ -589,11 +588,11 @@ void CalPrintHelper::drawDayBox( QPainter &p, const QDate &qd,
   if (!hstring.isEmpty()) {
     p.setFont( QFont( "helvetica", 8, QFont::Bold, true ) );
 
-    p.drawText( x+5, y, width-25, mSubHeaderHeight, 
+    p.drawText( x+5, y, width-25, mSubHeaderHeight,
                 Qt::AlignLeft | Qt::AlignVCenter, hstring );
   }
   p.setFont(QFont("helvetica", 10, QFont::Bold));
-  p.drawText( x + 5, y, width - 10, mSubHeaderHeight, 
+  p.drawText( x + 5, y, width - 10, mSubHeaderHeight,
               Qt::AlignRight | Qt::AlignVCenter, dayNumStr);
 
   Event::List eventList = mCalendar->events( qd, true );
@@ -723,7 +722,7 @@ void CalPrintHelper::drawMonth(QPainter &p, const QDate &qd, bool weeknumbers,
   QDate monthDate(QDate(qd.year(), qd.month(), 1));
   QDate monthFirst(monthDate);
   QDate monthLast(monthDate.addMonths(1).addDays(-1));
-  
+
 
   int weekdayCol = weekdayColumn( monthDate.dayOfWeek() );
   monthDate = monthDate.addDays(-weekdayCol);
@@ -748,7 +747,7 @@ void CalPrintHelper::drawMonth(QPainter &p, const QDate &qd, bool weeknumbers,
     p.setFont( oldFont );
   }
 
-  drawDaysOfWeek( p, monthDate, monthDate.addDays( 6 ), x + xoffset, 
+  drawDaysOfWeek( p, monthDate, monthDate.addDays( 6 ), x + xoffset,
                   y, width - xoffset, mSubHeaderHeight );
   int cellWidth = ( width - xoffset ) / 7;
 
@@ -840,7 +839,7 @@ void CalPrintHelper::drawTodo( int &count, Todo * item, QPainter &p, bool connec
   // Make it a more reasonable size
   rect.setWidth(18);
   rect.setHeight(18);
-  
+
   // Priority
   if ( priority > 0 && showPriority ) {
     p.drawText(rect, Qt::AlignCenter, outStr);
@@ -884,7 +883,7 @@ void CalPrintHelper::drawTodo( int &count, Todo * item, QPainter &p, bool connec
   // due
   if ( item->hasDueDate() && posDueDt>=0 ) {
     outStr = local->formatDate(item->dtDue().date(),true);
-    rect = p.boundingRect( posdue, y, x + width, -1, 
+    rect = p.boundingRect( posdue, y, x + width, -1,
                            Qt::AlignTop | Qt::AlignLeft, outStr );
     p.drawText( rect, Qt::AlignTop | Qt::AlignLeft, outStr );
   }
@@ -925,17 +924,17 @@ int CalPrintHelper::weekdayColumn( int weekday )
   return ( weekday + 7 - KGlobal::locale()->weekStartDay() ) % 7;
 }
 
-void CalPrintHelper::drawJournalField( QPainter &p, QString field, QString text, 
+void CalPrintHelper::drawJournalField( QPainter &p, QString field, QString text,
                                        int x, int &y, int width, int pageHeight )
 {
   if ( text.isEmpty() ) return;
-  
+
   QString entry( field.arg( text ) );
-  
+
   QRect rect( p.boundingRect( x, y, width, -1, Qt::WordBreak, entry) );
   if ( rect.bottom() > pageHeight) {
     // Start new page...
-    // FIXME: If it's a multi-line text, draw a few lines on this page, and the 
+    // FIXME: If it's a multi-line text, draw a few lines on this page, and the
     // remaining lines on the next page.
     y=0;
     mPrinter->newPage();
@@ -946,7 +945,7 @@ void CalPrintHelper::drawJournalField( QPainter &p, QString field, QString text,
   y = newrect.bottom() + 7;
 }
 
-void CalPrintHelper::drawJournal( Journal * journal, QPainter &p, int x, int &y, 
+void CalPrintHelper::drawJournal( Journal * journal, QPainter &p, int x, int &y,
                                   int width, int pageHeight )
 {
   QFont oldFont( p.font() );
@@ -954,7 +953,7 @@ void CalPrintHelper::drawJournal( Journal * journal, QPainter &p, int x, int &y,
   QString headerText;
   QString dateText( KGlobal::locale()->
         formatDate( journal->dtStart().date(), false ) );
-  
+
   if ( journal->summary().isEmpty() ) {
     headerText = dateText;
   } else {
@@ -962,7 +961,7 @@ void CalPrintHelper::drawJournal( Journal * journal, QPainter &p, int x, int &y,
                      .arg( journal->summary() )
                      .arg( dateText );
   }
-  
+
   QRect rect( p.boundingRect( x, y, width, -1, Qt::WordBreak, headerText) );
   if ( rect.bottom() > pageHeight) {
     // Start new page...
@@ -973,12 +972,12 @@ void CalPrintHelper::drawJournal( Journal * journal, QPainter &p, int x, int &y,
   QRect newrect;
   p.drawText( rect, Qt::WordBreak, headerText, -1, &newrect );
   p.setFont( oldFont );
-  
+
   y = newrect.bottom() + 4;
 
   p.drawLine( x + 3, y, x + width - 6, y );
   y += 5;
-  
+
   drawJournalField( p, i18n("Person: %1"), journal->organizer(), x, y, width, pageHeight );
   drawJournalField( p, i18n("%1"), journal->description(), x, y, width, pageHeight );
   y += 10;
@@ -991,10 +990,10 @@ void CalPrintHelper::drawSplitHeaderRight( QPainter &p, const QDate &fd,
                                            int width, int )
 {
   QFont oldFont( p.font() );
-  
+
   QPen oldPen( p.pen() );
   QPen pen( Qt::black, 4 );
-  
+
   QString title;
   if ( mCalSys ) {
     if ( fd.month() == td.month() ) {
@@ -1015,7 +1014,7 @@ void CalPrintHelper::drawSplitHeaderRight( QPainter &p, const QDate &fd,
   p.setFont(serifFont);
 
   int lineSpacing = p.fontMetrics().lineSpacing();
-  p.drawText( 0, lineSpacing * 0, width, lineSpacing, 
+  p.drawText( 0, lineSpacing * 0, width, lineSpacing,
               Qt::AlignRight | Qt::AlignTop, title );
 
   title.truncate(0);
@@ -1027,9 +1026,9 @@ void CalPrintHelper::drawSplitHeaderRight( QPainter &p, const QDate &fd,
   p.setFont(QFont("Times", 20, QFont::Bold, TRUE));
   int newlineSpacing = p.fontMetrics().lineSpacing();
   title += QString::number(fd.year());
-  p.drawText( 0, lineSpacing * 1 + 4, width, newlineSpacing, 
+  p.drawText( 0, lineSpacing * 1 + 4, width, newlineSpacing,
               Qt::AlignRight | Qt::AlignTop, title );
-  
+
   p.setFont( oldFont );
 }
 

@@ -126,7 +126,7 @@
                 <cstring>mColors</cstring>
             </property>
             <property name="text">
-                <string>Use &amp;colors</string>
+                <string>&amp;Use colors</string>
             </property>
         </widget>
         <widget class="QButtonGroup" row="1" column="0">

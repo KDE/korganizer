@@ -76,21 +76,21 @@ void CalPrinter::init( KPrinter *printer, Calendar *calendar )
 {
   mCalendar = calendar;
   mPrinter = printer;
-  
+
   mPrintPlugins.clear();
   mPrintPlugins.setAutoDelete( true );
-  
+
   mPrintPlugins = mCoreHelper->loadPrintPlugins();
   mPrintPlugins.prepend( new CalPrintTodos() );
   mPrintPlugins.prepend( new CalPrintMonth() );
   mPrintPlugins.prepend( new CalPrintWeek() );
   mPrintPlugins.prepend( new CalPrintDay() );
-  
+
   mPrintDialog = new CalPrintDialog( mPrintPlugins, mPrinter, mParent );
 
   KOrg::PrintPlugin::List::Iterator it = mPrintPlugins.begin();
   for ( ; it != mPrintPlugins.end(); ++it ) {
-kdDebug()<<"Print plugin loaded: "<<(*it)->description()<<endl;  
+kdDebug()<<"Print plugin loaded: "<<(*it)->description()<<endl;
     (*it)->setConfig( mConfig );
     (*it)->setCalendar( calendar );
     (*it)->setPrinter( printer );
@@ -177,7 +177,7 @@ CalPrintDialog::CalPrintDialog( KOrg::PrintPlugin::List plugins, KPrinter *p,
   QHBox *printerLayout = new QHBox( page );
 
   mPrinterLabel = new QLabel( printerLayout );
-  QPushButton *setupButton = new QPushButton( i18n("&Setup Printer..."),
+  QPushButton *setupButton = new QPushButton( i18n("Setup P&rinter..."),
                                               printerLayout );
   setupButton->setSizePolicy( QSizePolicy(
       (QSizePolicy::SizeType)4, (QSizePolicy::SizeType)0,
@@ -285,12 +285,12 @@ KOrg::PrintPlugin *CalPrintDialog::selectedPlugin()
 void CalPrintDialog::slotOk()
 {
   mOrientation = (CalPrinter::ePrintOrientation)mOrientationSelection->currentItem();
-  
+
   KOrg::PrintPlugin::List::Iterator it = mPrintPlugins.begin();
   for ( ; it != mPrintPlugins.end(); ++it ) {
     (*it)->readSettingsWidget();
   }
-             
+
   KDialogBase::slotOk();
 }
 

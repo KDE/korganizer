@@ -41,7 +41,7 @@ class CalPrintDay : public CalPrintPluginBase
   public:
     CalPrintDay();
     virtual ~CalPrintDay();
-    virtual QString description() { return i18n("Print day"); }
+    virtual QString description() { return i18n("Print da&y"); }
     virtual QString info() { return i18n("Prints all events of a single day on one page"); }
     virtual QWidget *createConfigWidget( QWidget* );
 
@@ -64,7 +64,7 @@ class CalPrintWeek : public CalPrintPluginBase
   public:
     CalPrintWeek();
     virtual ~CalPrintWeek();
-    virtual QString description() { return i18n("Print week"); }
+    virtual QString description() { return i18n("Print &week"); }
     virtual QString info() { return i18n("Prints all events of one week on one page"); }
     virtual QWidget *createConfigWidget(QWidget*);
     virtual KPrinter::Orientation orientation();
@@ -88,7 +88,7 @@ class CalPrintMonth : public CalPrintPluginBase
   public:
     CalPrintMonth();
     virtual ~CalPrintMonth();
-    virtual QString description() { return i18n("Print month"); }
+    virtual QString description() { return i18n("Print mont&h"); }
     virtual QString info() { return i18n("Prints all events of one month on one page"); }
     virtual QWidget *createConfigWidget(QWidget*);
     virtual KPrinter::Orientation orientation() { return KPrinter::Landscape; }
@@ -111,7 +111,7 @@ class CalPrintTodos : public CalPrintPluginBase
   public:
     CalPrintTodos();
     virtual ~CalPrintTodos();
-    virtual QString description() { return i18n("Print todos"); }
+    virtual QString description() { return i18n("Print to&dos"); }
     virtual QString info() { return i18n("Prints all todos in a (tree-like) list"); }
     virtual QWidget *createConfigWidget(QWidget*);
 
