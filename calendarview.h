@@ -495,6 +495,10 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     void createPrinter();
 
     void calendarModified( bool, Calendar * );
+    // Helper function for purgeCompleted that recursively purges a todo and 
+    // its subitems. If it cannot delete a completed todo (because it has 
+    // uncompleted subitems), notAllPurged is set to true.
+    bool purgeCompletedSubTodos( Todo* todo, bool &notAllPurged );
 
     KOrg::History *mHistory;
 
