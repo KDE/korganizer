@@ -63,8 +63,10 @@ class Engine : public QObject
     void slotDownloadJobResult( KIO::Job *job );
 
     void slotUploadPayloadJobResult( KIO::Job *job );
-    void slotUploadMetaJobDataReq( KIO::Job *job, QByteArray &data );
     void slotUploadMetaJobResult( KIO::Job *job );
+
+  protected:
+    bool createMetaFile( Entry * );
 
   private:
     QWidget *mParentWidget;
@@ -82,10 +84,8 @@ class Engine : public QObject
     QString mDownloadDestination;
     
     Provider *mUploadProvider;
-    Entry *mUploadEntry;
 
-    bool mMetaUploaded;
-    QCString mUploadMetaData;
+    QString mUploadMetaFile;
 
     KNewStuff *mNewStuff;
 

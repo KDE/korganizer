@@ -16,7 +16,7 @@
 
 using namespace std;
 
-bool TestNewStuff::install( QString &fileName )
+bool TestNewStuff::install( const QString &fileName )
 {
   kdDebug() << "TestNewStuff::install(): " << fileName << endl;
   QFile f( fileName );
@@ -31,9 +31,8 @@ bool TestNewStuff::install( QString &fileName )
   return true;
 }
 
-QString TestNewStuff::createUploadFile()
+bool TestNewStuff::createUploadFile( const QString &fileName )
 {
-  QString fileName = "/tmp/" + KApplication::randomString( 5 );
   QString cmd = "touch " + fileName;
   system( cmd.latin1() );
   kdDebug() << "TestNewStuff::createUploadFile(): " << fileName << endl;

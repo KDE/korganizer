@@ -84,14 +84,17 @@ class KNewStuff
     
       @param fileName Name of downloaded file.
     */
-    virtual bool install( QString &fileName ) = 0;
+    virtual bool install( const QString &fileName ) = 0;
     /**
       Create a file to be uploaded to a "new stuff provider" and return the
       filename. The format of the file is application specific. The only
-      constarint is that the corresponding install() implementation is able to
+      constraint is that the corresponding install() implementation is able to
       use the file.
+      
+      @param fileName Name of the file to be written.
+      @return true on success, false on error.
     */
-    virtual QString createUploadFile() = 0;
+    virtual bool createUploadFile( const QString &fileName ) = 0;
 
     /**
       Return a filename which should be used as destination for downloading the

@@ -43,7 +43,7 @@ Engine::Engine( KNewStuff *newStuff, const QString &type,
                 QWidget *parentWidget ) :
   mParentWidget( parentWidget ), mDownloadDialog( 0 ),
   mUploadDialog( 0 ), mProviderDialog( 0 ), mUploadProvider( 0 ),
-  mMetaUploaded( false ), mNewStuff( newStuff ), mType( type )
+  mNewStuff( newStuff ), mType( type )
 {
   mProviderLoader = new ProviderLoader( mParentWidget );
 
@@ -233,50 +233,82 @@ void Engine::requestMetaInformation( Provider *provider )
 
 void Engine::upload( Entry *entry )
 {
-  mUploadEntry = entry;
+  QString uploadFile = entry->fullName();
+  uploadFile = locateLocal( "appdata", "upload/" + uploadFile );
 
-  QString lang = entry->langs().first();
-
-  QString uploadFile = mNewStuff->createUploadFile();
-  if ( uploadFile.isEmpty() ) {
+  if ( !mNewStuff->createUploadFile( uploadFile ) ) {
     KMessageBox::error( mParentWidget, i18n("Can't create file to upload.") );
     return;
   }
 
+  QString lang = entry->langs().first();
   QFileInfo fi( uploadFile );
-
   entry->setPayload( fi.fileName(), lang );
 
+  if ( !createMetaFile( entry ) ) return;
+
+  QString text = i18n("The files to be uploaded have been created at:\n");
+  text.append( uploadFile + "\n" );
+  text.append( mUploadMetaFile + "\n" );
+
+  QString caption = i18n("Upload files");
+
+  if ( mUploadProvider->noUpload() ) {
+    KURL noUploadUrl = mUploadProvider->noUploadUrl();
+    if ( noUploadUrl.isEmpty() ) {
+      text.append( i18n("Please upload the files manually.") ); 
+      KMessageBox::information( mParentWidget, text, caption );
+    } else {
+      int result = KMessageBox::questionYesNo( mParentWidget, text, caption,
+                                               i18n("Upload Info..."),
+                                               i18n("Close") );
+      if ( result == KMessageBox::Yes ) {
+        kapp->invokeBrowser( noUploadUrl.url() );
+      }
+    }
+  } else {
+    int result = KMessageBox::questionYesNo( mParentWidget, text, caption,
+                                             i18n("Upload"), i18n("Cancel") );
+    if ( result == KMessageBox::Yes ) {
+      KURL destination = mUploadProvider->uploadUrl();
+      destination.setFileName( fi.fileName() );
+
+      KIO::FileCopyJob *job = KIO::file_copy( uploadFile, destination );
+      connect( job, SIGNAL( result( KIO::Job * ) ),
+               SLOT( slotUploadPayloadJobResult( KIO::Job * ) ) );
+    }
+  }
+}
+
+bool Engine::createMetaFile( Entry *entry )
+{
   QDomDocument doc("knewstuff");
   doc.appendChild( doc.createProcessingInstruction(
                    "xml", "version=\"1.0\" encoding=\"UTF-8\"" ) );
   QDomElement de = doc.createElement("knewstuff");
   doc.appendChild( de );
 
-  de.appendChild( mUploadEntry->createDomElement( doc, de ) );
+  de.appendChild( entry->createDomElement( doc, de ) );
   
   kdDebug() << "--DOM START--" << endl << doc.toString()
             << "--DOM_END--" << endl;
 
-  mUploadMetaData = doc.toString().utf8();
+  mUploadMetaFile = entry->fullName() + ".meta";
+  mUploadMetaFile = locateLocal( "appdata", "upload/" + mUploadMetaFile );
 
-  if ( mUploadProvider->noUpload() ) {
-    KURL noUploadUrl = mUploadProvider->noUploadUrl();
-    if ( noUploadUrl.isEmpty() ) {
-      KMessageBox::sorry( mParentWidget,
-          i18n("The provider currently doesn't support upload.") );
-    } else {
-      kapp->invokeBrowser( noUploadUrl.url() );
-    }
-    return;
+  QFile f( mUploadMetaFile );
+  if ( !f.open( IO_WriteOnly ) ) {
+    mUploadMetaFile = QString::null;
+    return false;
   }
-
-  KURL destination = mUploadProvider->uploadUrl();
-  destination.setFileName( fi.fileName() );
-
-  KIO::FileCopyJob *job = KIO::file_copy( uploadFile, destination );
-  connect( job, SIGNAL( result( KIO::Job * ) ),
-           SLOT( slotUploadPayloadJobResult( KIO::Job * ) ) );
+  
+  QTextStream ts( &f );
+  ts.setEncoding( QTextStream::UnicodeUTF8 );
+  ts << doc.toString();
+  
+  f.close();
+  
+  return true;
 }
 
 void Engine::slotUploadPayloadJobResult( KIO::Job *job )
@@ -287,25 +319,14 @@ void Engine::slotUploadPayloadJobResult( KIO::Job *job )
     return;
   }
 
-  mMetaUploaded = false;
+  QFileInfo fi( mUploadMetaFile );
 
   KURL metaDestination = mUploadProvider->uploadUrl();
-  metaDestination.setFileName( mUploadEntry->fullName() );
-  
-  KIO::TransferJob *newjob = KIO::put( metaDestination, -1, false, false );
-  connect( newjob, SIGNAL( result( KIO::Job * ) ),
-           SLOT( slotUploadMetaJobResult( KIO::Job * ) ) );
-  connect( newjob, SIGNAL( dataReq( KIO::Job *, QByteArray & ) ),
-           SLOT( slotUploadMetaJobDataReq( KIO::Job *, QByteArray & ) ) );
-}
+  metaDestination.setFileName( fi.fileName() );
 
-void Engine::slotUploadMetaJobDataReq( KIO::Job *, QByteArray &data )
-{
-  if ( mMetaUploaded ) return;
-  
-  data = mUploadMetaData;
-  
-  mMetaUploaded = true;
+  KIO::FileCopyJob *newJob = KIO::file_copy( mUploadMetaFile, metaDestination );
+  connect( newJob, SIGNAL( result( KIO::Job * ) ),
+           SLOT( slotUploadMetaJobResult( KIO::Job * ) ) );
 }
 
 void Engine::slotUploadMetaJobResult( KIO::Job *job )

@@ -73,6 +73,10 @@ class Entry
     void setDownloads( int );
     int downloads();
 
+    /**
+      Return the full name for the meta information. It is constructed as
+      <name>-<version>-<release>.
+    */
     QString fullName();
 
     QStringList langs();

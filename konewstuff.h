@@ -30,13 +30,13 @@ class KOrganizer;
 class KONewStuff : public KNewStuff
 {
   public:
-    KONewStuff( KOrganizer * );
+    KONewStuff( CalendarView * );
     
-    bool install( QString & );
-    QString createUploadFile();
+    bool install( const QString &fileName );
+    bool createUploadFile( const QString &fileName );
 
   private:
-    KOrganizer *mMain;
+    CalendarView *mView;
 };
 
 #endif

@@ -30,19 +30,19 @@
 
 #include "konewstuff.h"
 
-KONewStuff::KONewStuff( KOrganizer *main ) :
-  KNewStuff( "korganizer/calendar", main ),
-  mMain( main )
+KONewStuff::KONewStuff( CalendarView *view ) :
+  KNewStuff( "korganizer/calendar", view ),
+  mView( view )
 {
 }
 
-bool KONewStuff::install( QString &fileName )
+bool KONewStuff::install( const QString &fileName )
 {
   kdDebug() << "KONewStuff::install(): " << fileName << endl;
 
   CalendarLocal cal;
   if ( !cal.load( fileName ) ) {
-    KMessageBox::error( mMain, i18n("Couldn't load calendar.") );
+    KMessageBox::error( mView, i18n("Couldn't load calendar.") );
     return false;
   }
 
@@ -56,16 +56,16 @@ bool KONewStuff::install( QString &fileName )
     eventList.append( text );
   }
 
-  int result = KMessageBox::warningContinueCancelList( mMain,
+  int result = KMessageBox::warningContinueCancelList( mView,
     i18n("The downloaded events will be merged into your current calendar."),
     eventList );
 
   if ( result != KMessageBox::Continue ) return false;
 
-  return mMain->mergeURL( fileName );
+  return mView->openCalendar( fileName, true );
 }
 
-QString KONewStuff::createUploadFile()
+bool KONewStuff::createUploadFile( const QString &fileName )
 {
-  return mMain->localFileName();
+  return mView->saveCalendar( fileName );
 }

@@ -815,6 +815,8 @@ bool KOrganizer::saveURL()
   if (!mCalendarView->saveCalendar(mFile)) {
     kdDebug() << "KOrganizer::saveURL(): calendar view save failed." << endl;
     return false;
+  } else {
+    mCalendarView->setModified( false );
   }
 
   if (!mURL.isLocalFile()) {
@@ -1286,13 +1288,13 @@ void KOrganizer::downloadNewStuff()
 {
   kdDebug() << "KOrganizer::downloadNewStuff()" << endl;
 
-  if ( !mNewStuff ) mNewStuff = new KONewStuff( this );
+  if ( !mNewStuff ) mNewStuff = new KONewStuff( mCalendarView );
   mNewStuff->download();
 }
 
 void KOrganizer::uploadNewStuff()
 {
-  if ( !mNewStuff ) mNewStuff = new KONewStuff( this );
+  if ( !mNewStuff ) mNewStuff = new KONewStuff( mCalendarView );
   mNewStuff->upload();
 }
 

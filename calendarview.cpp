@@ -328,8 +328,6 @@ bool CalendarView::saveCalendar(QString filename)
     return false;
   }
 
-  setModified(false);
-
   return true;
 }
 

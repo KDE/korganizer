@@ -15,9 +15,9 @@ class TestNewStuff : public KNewStuff
   public:
     TestNewStuff() : KNewStuff( "korganizer/calendar" ) {}
     
-    bool install( QString &fileName );
+    bool install( const QString &fileName );
     
-    QString createUploadFile();
+    bool createUploadFile( const QString &fileName );
 };
 
 class MyWidget : public QWidget
