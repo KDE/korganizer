@@ -27,9 +27,9 @@
 #include <kglobal.h>
 #include <kconfig.h>
 #include <kstandarddirs.h>
+#include <klocale.h>
 
 #include <kcalendarsystem.h>
-#include <kcalendarsystemfactory.h>
 
 #include "kalarmdclient.h"
 #include "simplealarmclient.h"
@@ -61,8 +61,7 @@ KOGlobals::KOGlobals()
   KConfig *cfg = KOGlobals::config();
 
   cfg->setGroup("General");
-  QString calSystem = cfg->readEntry( "CalendarSystem", "gregorian" );
-  mCalendarSystem = KCalendarSystemFactory::create( calSystem );
+  mCalendarSystem = KGlobal::locale()->calendar();
 
   cfg->setGroup("AlarmDaemon");
   QString alarmClient = cfg->readEntry( "Daemon", "kalarmd" );
@@ -88,12 +87,12 @@ KOGlobals::~KOGlobals()
   delete mAlarmClient;
 }
 
-KCalendarSystem *KOGlobals::calendarSystem()
+const KCalendarSystem *KOGlobals::calendarSystem() const
 {
   return mCalendarSystem;
 }
 
-AlarmClient *KOGlobals::alarmClient()
+AlarmClient *KOGlobals::alarmClient() const
 {
   return mAlarmClient;
 }

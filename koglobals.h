@@ -41,9 +41,9 @@ class KOGlobals
 
     static bool reverseLayout();
 
-    KCalendarSystem *calendarSystem();
+    const KCalendarSystem *calendarSystem() const;
 
-    AlarmClient *alarmClient();
+    AlarmClient *alarmClient() const;
 
   protected:
     KOGlobals();
@@ -52,7 +52,7 @@ class KOGlobals
   private:
     static KOGlobals *mSelf;
     
-    KCalendarSystem *mCalendarSystem;    
+    const KCalendarSystem *mCalendarSystem;    
     AlarmClient *mAlarmClient;
 };
 
