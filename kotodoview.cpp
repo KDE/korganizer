@@ -403,10 +403,15 @@ KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent, const char* name)
 
   mPriorityPopupMenu = new QPopupMenu( this );
   mPriority[ mPriorityPopupMenu->insertItem( i18n("Unspecified priority", "unspecified") ) ] = 0;
-  for ( int i = 1; i <= 9; i++ ) {
-    QString label = QString ("%1").arg( i );
-    mPriority[ mPriorityPopupMenu->insertItem( label ) ] = i;
-  }
+  mPriority[ mPriorityPopupMenu->insertItem( i18n( "1 (highest)") ) ] = 1;
+  mPriority[ mPriorityPopupMenu->insertItem( i18n( "2" ) ) ] = 2;
+  mPriority[ mPriorityPopupMenu->insertItem( i18n( "3" ) ) ] = 3;
+  mPriority[ mPriorityPopupMenu->insertItem( i18n( "4" ) ) ] = 4;
+  mPriority[ mPriorityPopupMenu->insertItem( i18n( "5 (medium)" ) ) ] = 5;
+  mPriority[ mPriorityPopupMenu->insertItem( i18n( "6" ) ) ] = 6;
+  mPriority[ mPriorityPopupMenu->insertItem( i18n( "7" ) ) ] = 7;
+  mPriority[ mPriorityPopupMenu->insertItem( i18n( "8" ) ) ] = 8;
+  mPriority[ mPriorityPopupMenu->insertItem( i18n( "9 (lowest)" ) ) ] = 9;
   connect( mPriorityPopupMenu, SIGNAL( activated( int ) ),
            SLOT( setNewPriority( int ) ));
 
@@ -752,7 +757,7 @@ void KOTodoView::popupMenu( QListViewItem *item, const QPoint &, int column )
     mItemPopupMenu->setItemEnabled( ePopupCopyTo, editable );
     mItemPopupMenu->setItemEnabled( ePopupUnSubTodo, editable );
     mItemPopupMenu->setItemEnabled( ePopupUnAllSubTodo, editable );
-    
+
     if ( editable ) {
       QDate date = mActiveItem->todo()->dtDue().date();
       if ( mActiveItem->todo()->hasDueDate () ) {
