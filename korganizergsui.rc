@@ -80,6 +80,7 @@
   </ToolBar>
 
   <ToolBar name="korganizer_toolbar"><text>Views</text>
+    <Action name="view_whatsnext"/>
     <Action name="view_list"/>
     <Action name="view_day"/>
     <Action name="view_workweek"/>
