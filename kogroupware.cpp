@@ -96,155 +96,158 @@ KOGroupware::KOGroupware( CalendarView* view, KCal::Calendar* calendar )
   value of vCalOut is undefined in this case.
 */
 
-KOGroupware::EventState KOGroupware::incomingEventRequest( EventState inState,
-							   const QCString& receiver,
-							   const QString& vCalIn,
-							   bool& vCalInOK,
-							   QString& vCalOut,
-							   bool& vCalOutOK )
+bool KOGroupware::incomingEventRequest( const QString& request,
+					const QCString& receiver,
+					const QString& vCalIn )
 {
-    EventState outState = inState;
+  EventState state;
+  if( request == "accept" )
+    state = Accepted;
+  else if( request == "accept conditionally" )
+    state = ConditionallyAccepted;
+  else if( request == "decline" )
+    state = Declined;
+  else if( request == "check" )
+    state = Request;
+  else
+    return false;
 
-    // Parse the event request into a ScheduleMessage; this needs to
-    // be done in any case.
-    KCal::ScheduleMessage *message = mFormat.parseScheduleMessage( mCalendar,
-                                                                   vCalIn );
-    if( message ) {
-        // kdDebug(5850) << "KOGroupware::incomingEventRequest: got message '"
-        // << vCalIn << "'" << endl;
-        vCalInOK = true;
-    } else {
-        QString errorMessage;
-        if( mFormat.exception() ) {
-            errorMessage = mFormat.exception()->message();
-        }
-        kdDebug(5850) << "KOGroupware::incomingEventRequest() Error parsing "
-            "message: " << errorMessage << endl;
-        vCalInOK = false;
-        // If the message was broken, there's nothing we can do.
-        return outState;
+  // Parse the event request into a ScheduleMessage; this needs to
+  // be done in any case.
+  KCal::ScheduleMessage *message = mFormat.parseScheduleMessage( mCalendar,
+								 vCalIn );
+  if( message ) {
+    kdDebug(5850) << "KOGroupware::incomingEventRequest: got message '"
+		  << vCalIn << "'" << endl;
+  } else {
+    QString errorMessage;
+    if( mFormat.exception() ) {
+      errorMessage = mFormat.exception()->message();
+    }
+    kdDebug(5850) << "KOGroupware::incomingEventRequest() Error parsing "
+		  << "message: " << errorMessage << endl;
+    // If the message was broken, there's nothing we can do.
+    return false;
+  }
+
+  KCal::Incidence* event = dynamic_cast<KCal::Incidence*>( message->event() );
+  Q_ASSERT( event );
+  if( !event ) { // something bad happened, just to be safe
+    kdDebug(5850) << "KOGroupware::incomingEventRequest(): Not an event???\n";
+    return false;
+  }
+
+  // Now check if the event needs to be accepted or if this is
+  // already done.
+  if( state == Request ) {
+    // Need to accept, present it to the user
+    KOGroupwareIncomingDialog dlg( event );
+    int ret = dlg.exec();
+    if( ret == QDialog::Rejected ) {
+      // User declined to make a choice, we can't send a vCal back
+      kdDebug(5850) << "KOGroupware::incomingEventRequest(): User cancelled\n";
+      return false;
     }
 
-    KCal::Incidence* event = dynamic_cast<KCal::Incidence*>( message->event() );
-    Q_ASSERT( event );
-    if( !event ) { // something bad happened, just to be safe
-        vCalOutOK = false;
-        return outState;
+    if( dlg.isDeclined() )
+      state = Declined;
+    else if( dlg.isConditionallyAccepted() )
+      state = ConditionallyAccepted;
+    else if( dlg.isAccepted() )
+      state = Accepted;
+    else
+      kdDebug(5850) << "KOGroupware::incomingEventRequest(): unknown event request state" << endl;
+  }
+
+  // Enter the event into the calendar. We just create a
+  // Scheduler, because all the code we need is already there. We
+  // take an MailScheduler, because we need a concrete one, but we
+  // really only want code from Scheduler.
+  // PENDING(kalle) Handle tentative acceptance differently.
+  if( state == Accepted || state == ConditionallyAccepted ) {
+    KCal::MailScheduler scheduler( mCalendar );
+    scheduler.acceptTransaction( event,
+				 (KCal::Scheduler::Method)message->method(),
+				 message->status() );
+    mView->updateView();
+  }
+
+  QPtrList<KCal::Attendee> attendees = event->attendees();
+  QPtrListIterator<KCal::Attendee> attendeeIt( attendees );
+  KCal::Attendee* myself = 0, *current = 0;
+  // Find myself, there will always be all attendees listed, even if
+  // only I need to answer it.
+  while( ( current = attendeeIt.current() ) != 0 ) {
+    ++attendeeIt;
+    if( current->email().utf8() == receiver ) {
+      // We are the current one, and even the receiver, note
+      // this and quit searching.
+      myself = current;
+      break;
     }
 
-    // Now check if the event needs to be accepted or if this is
-    // already done.
-    if( inState == Request ) {
-        // Need to accept, present it to the user
-        KOGroupwareIncomingDialog dlg( event );
-        int ret = dlg.exec();
-        if( ret == QDialog::Rejected ) {
-            // User declined to make a choice, we can't send a vCal back
-            vCalOutOK = false;
-            return outState;
-        }
-
-        if( dlg.isDeclined() )
-            outState = Declined;
-        else if( dlg.isConditionallyAccepted() )
-            outState = ConditionallyAccepted;
-        else if( dlg.isAccepted() )
-            outState = Accepted;
-        else
-            kdDebug(5850) << "KOGroupware::incomingEventRequest(): unknown event request state" << endl;
+    if( current->email() == KOPrefs::instance()->email() ) {
+      // If we are the current one, note that. Still continue to
+      // search in case we find the receiver himself.
+      myself = current;
     }
+  }
 
-    // Enter the event into the calendar. We just create a
-    // Scheduler, because all the code we need is already there. We
-    // take an MailScheduler, because we need a concrete one, but we
-    // really only want code from Scheduler.
-    // PENDING(kalle) Handle tentative acceptance differently.
-    if( outState == Accepted || outState == ConditionallyAccepted ) {
-        KCal::MailScheduler scheduler( mCalendar );
-        scheduler.acceptTransaction( event,
-                                     (KCal::Scheduler::Method)message->method(),
-                                     message->status() );
-        mView->updateView();
-    }
+  Q_ASSERT( myself );
 
-    QPtrList<KCal::Attendee> attendees = event->attendees();
-    QPtrListIterator<KCal::Attendee> attendeeIt( attendees );
-    KCal::Attendee* myself = 0, *current = 0;
-    // Find myself, there will always be all attendees listed, even if
-    // only I need to answer it.
-    while( ( current = attendeeIt.current() ) != 0 ) {
-        ++attendeeIt;
-	if( current->email().utf8() == receiver ) {
-	    // We are the current one, and even the receiver, note
-	    // this and quit searching.
-	    myself = current;
-	    break;
-	}
+  KCal::Attendee* newMyself = 0;
+  if( myself ) {
+    switch( state ) {
+    case Accepted:
+      myself->setStatus( KCal::Attendee::Accepted );
+      break;
+    case ConditionallyAccepted:
+      myself->setStatus( KCal::Attendee::Tentative );
+      break;
+    case Declined:
+      myself->setStatus( KCal::Attendee::Declined );
+      break;
+    default:
+      ;
+    };
 
-        if( current->email() == KOPrefs::instance()->email() ) {
-            // If we are the current one, note that. Still continue to
-            // search in case we find the receiver himself.
-            myself = current;
-        }
-    }
-
-    Q_ASSERT( myself );
-
-    KCal::Attendee* newMyself = 0;
-    if( myself ) {
-        switch( outState ) {
-        case Accepted:
-            myself->setStatus( KCal::Attendee::Accepted );
-            break;
-        case ConditionallyAccepted:
-            myself->setStatus( KCal::Attendee::Tentative );
-            break;
-        case Declined:
-            myself->setStatus( KCal::Attendee::Declined );
-            break;
-        default:
-            ;
-        };
-
-	// No more request response
-	myself->setRSVP(false);
-
-	event->updated();
-
-        newMyself = new KCal::Attendee( myself->name(),
-					receiver.isEmpty() ?
-                                        myself->email() :
-					receiver,
-                                        myself->RSVP(),
-                                        myself->status(),
-                                        myself->role(),
-                                        myself->uid() );
-    }
+    // No more request response
+    myself->setRSVP(false);
 
     event->updated();
 
-    // Send back the answer; construct it on the base of state. We
-    // make a clone of the event since we need to manipulate it here.
-    // NOTE: This contains a workaround around a libkcal bug: REPLY
-    // vCals may not have more than one ATTENDEE (as libical correctly
-    // specifies), but libkcal always writes out all the ATTENDEEs,
-    // thus producing invalid vCals. We make a clone of the vEvent
-    // here and remove all attendees except ourselves.
-    Incidence* newIncidence = event->clone();
-    Event* newEvent = static_cast<KCal::Event*>( newIncidence );
+    newMyself = new KCal::Attendee( myself->name(),
+				    receiver.isEmpty() ?
+				    myself->email() :
+				    receiver,
+				    myself->RSVP(),
+				    myself->status(),
+				    myself->role(),
+				    myself->uid() );
+  }
 
-    newEvent->clearAttendees();
+  event->updated();
 
-    if( newMyself )
-        newEvent->addAttendee( newMyself );
+  // Send back the answer; construct it on the base of state. We
+  // make a clone of the event since we need to manipulate it here.
+  // NOTE: This contains a workaround around a libkcal bug: REPLY
+  // vCals may not have more than one ATTENDEE (as libical correctly
+  // specifies), but libkcal always writes out all the ATTENDEEs,
+  // thus producing invalid vCals. We make a clone of the vEvent
+  // here and remove all attendees except ourselves.
+  Incidence* newIncidence = event->clone();
+  Event* newEvent = static_cast<KCal::Event*>( newIncidence );
 
-    // Create the outgoing vCal
-    QString messageText = mFormat.createScheduleMessage( newEvent,
-                                                         KCal::Scheduler::Reply );
-    kdDebug(5850) << "Sending vCal back to KMail: " << messageText << endl;
-    vCalOut = messageText;
-    vCalOutOK = true;
-    return outState;
+  newEvent->clearAttendees();
+
+  if( newMyself )
+    newEvent->addAttendee( newMyself );
+
+  // Create the outgoing vCal
+  QString messageText = mFormat.createScheduleMessage( newEvent,
+						       KCal::Scheduler::Reply );
+  kdDebug(5850) << "Done" << endl;
+  return true;
 }
 
 

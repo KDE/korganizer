@@ -78,11 +78,11 @@ public:
     // THIS IS THE ACTUAL KM/KO API
     enum EventState { Accepted, ConditionallyAccepted, Declined, Request };
 
-    // Event initiated by somebody else, coming into KO from KM, returning resulting state
-    EventState incomingEventRequest( EventState, const QCString& receiver,
-				     const QString& vCalIn,
-                                     bool& vCalInOK, QString& vCalOut,
-                                     bool& vCalOutOK );
+    // Event initiated by somebody else, coming into KO from KM, returning
+    // resulting state
+    bool incomingEventRequest( const QString& request,
+			       const QCString& receiver,
+			       const QString& vCalIn );
     void incomingResourceRequest( const QValueList<QPair<QDateTime, QDateTime> >& busy,
                                   const QCString& resource,
                                   const QString& vCalIn,
