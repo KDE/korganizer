@@ -1030,6 +1030,11 @@ void CalendarView::schedule(Scheduler::Method method)
 
   Event *ev = new Event(*event);
 
+  if( ev->attendeeCount() == 0 && method != Scheduler::Publish ) {
+    KMessageBox::sorry(this,i18n("The event has no attendees."));
+    return;
+  }
+
   if (method == Scheduler::Reply ) {
     Attendee *me = event->attendeeByMail(KOPrefs::instance()->email());
     if (!me) {
