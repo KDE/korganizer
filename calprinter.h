@@ -62,7 +62,7 @@ class CalPrinter : public QObject, public KOrg::CalPrinterBase
       eOrientPrinter,
       eOrientPortrait,
       eOrientLandscape
-    } mPrintOrientation;
+    };
   public:
     /**
       \param par parent widget for dialogs

@@ -142,31 +142,20 @@ void CalPrinter::doPrint( CalPrintBase *selectedStyle, bool preview )
   // FIXME: add a better caption to the Printingdialog
   mPrinter->setPreviewOnly( preview );
   if ( mPrinter->setup( mParent, i18n("Print Calendar") ) ) {
-    switch ( mPrintOrientation ) {
+    switch ( mPrintDialog->orientation() ) {
       case eOrientPlugin:
         mPrinter->setOrientation( selectedStyle->orientation());
         break;
       case eOrientPortrait:
         mPrinter->setOrientation( KPrinter::Portrait );
-kdDebug(5850)<<"Portrait"<<endl;
         break;
       case eOrientLandscape:
-kdDebug(5850)<<"Landscape"<<endl;
         mPrinter->setOrientation( KPrinter::Landscape );
         break;
       case eOrientPrinter:
       default:
         break;
     }
-kdDebug(5850)<<"mPrintOrientation="<<mPrintOrientation<<endl;
-kdDebug(5850)<<"mPrinter->orientation()="<<mPrinter->orientation()<<endl;
-kdDebug(5850)<<"OrientPlugin: "<<eOrientPlugin<<endl;
-kdDebug(5850)<<"eOrientPortrait: "<<eOrientPortrait<<endl;
-kdDebug(5850)<<"eOrientLandscape: "<<eOrientLandscape<<endl;
-kdDebug(5850)<<"eOrientPrinter: "<<eOrientPrinter<<endl;
-kdDebug(5850)<<endl;
-kdDebug(5850)<<"KPrinter::Portrait="<<KPrinter::Portrait<<endl;
-kdDebug(5850)<<"KPrinter::Landscape="<<KPrinter::Landscape<<endl;
     selectedStyle->doPrint();
   }
   mPrinter->setPreviewOnly( false );
@@ -220,8 +209,8 @@ CalPrintDialog::CalPrintDialog( QPtrList<CalPrintBase> plugins, KPrinter *p,
   splitterRightLayout->addWidget( orientationLabel, 1, 0 );
 
   mOrientationSelection = new QComboBox( splitterRight, "orientationCombo" );
+  mOrientationSelection->insertItem( i18n("Use default of selected style") );
   mOrientationSelection->insertItem( i18n("Use default setting of printer") );
-  mOrientationSelection->insertItem( i18n("Use default setting of print style") );
   mOrientationSelection->insertItem( i18n("Portrait") );
   mOrientationSelection->insertItem( i18n("Landscape") );
   splitterRightLayout->addWidget( mOrientationSelection, 1, 1 );
@@ -298,7 +287,6 @@ CalPrintBase *CalPrintDialog::selectedPlugin()
 void CalPrintDialog::slotOk()
 {
   mOrientation = (CalPrinter::ePrintOrientation)mOrientationSelection->currentItem();
-kdDebug(5850)<<"Printer::orientation()="<<mOrientation<<endl;
   KDialogBase::slotOk();
 }
 
