@@ -1,4 +1,4 @@
-INCLUDES= -I$(top_srcdir) -I$(top_srcdir)/korganizer $(all_includes)
+INCLUDES= -I$(top_srcdir) -I$(top_srcdir)/korganizer -I$(top_builddir)/libkdepim $(all_includes)
 
 bin_PROGRAMS = korgac
 

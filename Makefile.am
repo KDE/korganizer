@@ -2,7 +2,7 @@ SUBDIRS = printing . korgac pixmaps sounds plugins interfaces
 
 INCLUDES = \
   -I$(srcdir)/interfaces \
-  -I$(top_srcdir)/libkdepim \
+  -I$(top_builddir)/libkdepim \
   -I$(top_srcdir)/libemailfunctions \
   -I$(top_srcdir)/libkpimidentities \
   -I$(top_srcdir)/libkholidays \
@@ -68,7 +68,7 @@ libkorganizer_la_LIBADD  = $(LIB_KPARTS) $(LIB_KFILE) $(LIB_KNEWSTUFF) \
         $(top_builddir)/libkholidays/libkholidays.la
 libkorganizer_la_COMPILE_FIRST = \
 	kogroupwareprefspage.ui \
-	$(top_srcdir)/libkdepim/categoryselectdialog.h
+	$(top_builddir)/libkdepim/categoryselectdialog.h
 libkorganizer_la_SOURCES = komessagebox.cpp \
 	koagendaview.cpp koagenda.cpp koagendaitem.cpp \
 	datenavigator.cpp kdatenavigator.cpp datenavigatorcontainer.cpp \
