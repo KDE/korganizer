@@ -591,9 +591,11 @@ icalcomponent *ICalFormat::writeEvent(Event *event)
   // start and end time
   icaltimetype start,end;
   if (event->doesFloat()) {
+    kdDebug() << "§§ Event " << event->summary() << " floats." << endl; 
     start = writeICalDate(event->dtStart().date());
     end = writeICalDate(event->dtEnd().date());
   } else {
+    kdDebug() << "§§ Event " << event->summary() << " has time." << endl; 
     start = writeICalDateTime(event->dtStart());
     end = writeICalDateTime(event->dtEnd());
   }

@@ -83,6 +83,26 @@ class KPrefsWidColor : public QObject, public KPrefsWid
     QPushButton *mButton;
 };
 
+class KPrefsWidRadios : public KPrefsWid
+{
+  public:
+    KPrefsWidRadios(const QString &text,int *reference,
+                    KPrefsDialog *prefsDialog,QWidget *parent);
+    virtual ~KPrefsWidRadios();
+
+    void addRadio(const QString &text);
+    
+    QButtonGroup *groupBox();
+    
+    void readConfig();
+    void writeConfig();
+    
+  private:
+    int *mReference;
+
+    QButtonGroup *mBox;
+};
+
 
 /** Preferences dialog base class.
   */

@@ -56,7 +56,18 @@ class AddIncidenceVisitor : public IncidenceVisitor {
 CalObject::CalObject()
   : QObject()
 {
-  mFormat = new VCalFormat(this);
+  switch (KOPrefs::instance()->mDefaultFormat) {
+    case KOPrefs::FormatVCalendar: 
+      mFormat = new VCalFormat(this);
+      break;
+    case KOPrefs::FormatICalendar:
+      mFormat = new ICalFormat(this);
+      break;
+    default:
+      mFormat = new ICalFormat(this);
+      break;
+  }
+  
   mICalFormat = new ICalFormat(this);
 
   // Setup default filter, which does nothing

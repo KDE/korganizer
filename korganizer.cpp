@@ -535,7 +535,8 @@ void KOrganizer::file_import()
 
 void KOrganizer::file_merge()
 {
-  KURL url = KFileDialog::getOpenURL(locateLocal("appdata", ""),i18n("*.vcs|Calendar files"),this);
+  KURL url = KFileDialog::getOpenURL(locateLocal("appdata", ""),
+                                     i18n("*.vcs *.ics|Calendar files"),this);
   mergeURL(url);
 }
 
@@ -560,18 +561,20 @@ void KOrganizer::file_saveas()
 
 KURL KOrganizer::getSaveURL()
 {
-  KURL url = KFileDialog::getSaveURL(locateLocal("appdata", ""),i18n("*.vcs|Calendar files"),this);
+  KURL url = KFileDialog::getSaveURL(locateLocal("appdata", ""),
+                                     i18n("*.vcs *.ics|Calendar files"),this);
 
   if (url.isEmpty()) return url;
 
   QString filename = url.fileName(false); 
 
-  if(filename.length() >= 3) {
-    QString e = filename.right(4);
-    // Extension ending in '.vcs' or anything else '.xxx' is cool.
-    if(e != ".vcs" && e.right(1) != ".")
-    // Otherwise, force the default extension.
-    filename += ".vcs";
+  QString e = filename.right(4);
+  if (e != ".vcs" && e != ".ics") {
+    if (KOPrefs::instance()->mDefaultFormat == KOPrefs::FormatVCalendar) {
+      filename += ".vcs";
+    } else if (KOPrefs::instance()->mDefaultFormat == KOPrefs::FormatICalendar) {
+      filename += ".ics";
+    }
   }
 
   url.setFileName(filename);

@@ -34,6 +34,11 @@ KOPrefs::KOPrefs() :
   addPrefsItem(new KPrefsItemBool("Enable Project View",
                                   &mEnableProjectView,false));
 
+  KPrefsItem::setCurrentGroup("Calendar");
+  
+  addPrefsItem(new KPrefsItemInt("Default Calendar Format",&mDefaultFormat,
+                                 FormatICalendar));
+
   KPrefsItem::setCurrentGroup("Colors");
   
   addPrefsItem(new KPrefsItemColor("Holiday Color",&mHolidayColor,

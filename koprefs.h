@@ -17,6 +17,8 @@ class KConfig;
 class KOPrefs : public KPrefs
 {
   public:
+    enum { FormatVCalendar, FormatICalendar };
+  
     virtual ~KOPrefs();
   
     /** Get instance of KOPrefs. It is made sure that there is only one
@@ -55,6 +57,8 @@ class KOPrefs : public KPrefs
   
     bool    mEnableGroupScheduling;
     bool    mEnableProjectView;
+  
+    int     mDefaultFormat;
   
     QString mTimeZone;
     int     mStartTime;

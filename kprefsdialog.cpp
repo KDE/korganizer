@@ -148,6 +148,40 @@ QSpinBox *KPrefsWidTime::spinBox()
 }
 
 
+KPrefsWidRadios::KPrefsWidRadios(const QString &text,int *reference,
+                KPrefsDialog *prefsDialog,QWidget *parent) :
+  KPrefsWid(prefsDialog)
+{
+  mReference = reference;
+
+  mBox = new QButtonGroup(1,Qt::Horizontal,text,parent);
+}
+
+KPrefsWidRadios::~KPrefsWidRadios()
+{
+}
+
+void KPrefsWidRadios::addRadio(const QString &text)
+{
+  new QRadioButton(text,mBox);
+}
+
+QButtonGroup *KPrefsWidRadios::groupBox()
+{
+  return mBox;
+}
+
+void KPrefsWidRadios::readConfig()
+{
+  mBox->setButton(*mReference);
+}
+
+void KPrefsWidRadios::writeConfig()
+{
+  *mReference = mBox->id(mBox->selected());
+}
+
+
 KPrefsDialog::KPrefsDialog(KPrefs *prefs,QWidget *parent,char *name,bool modal) :
   KDialogBase(IconList,i18n("Preferences"),Ok|Apply|Cancel|Default,Ok,parent,
               name,modal,true)

@@ -261,7 +261,17 @@ bool CalendarView::mergeCalendar(QString filename)
 bool CalendarView::saveCalendar(QString filename)
 {
   kdDebug() << "CalendarView::saveCalendar(): " << filename << endl;
-  mCalendar->save(filename);
+
+  QString e = filename.right(4);
+  
+  CalFormat *format;
+  if (e == ".vcs") {
+    format = new VCalFormat(mCalendar);
+  } else {
+    format = new ICalFormat(mCalendar);
+  }
+
+  mCalendar->save(filename,format);
 
   // We should check for errors here.
 
