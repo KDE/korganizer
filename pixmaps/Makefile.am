@@ -15,7 +15,7 @@ toolbar_DATA = listicon.png 5dayicon.png  dayicon.png agenda.png \
 	delete.png monthicon.png search.png checkedclipboard.png \
 	send.png findf.png todolist.png
 
-EXTRA_DIST = dayview.png   inverse_recur.png alarmd.png alarmd-disabled.png
+EXTRA_DIST = dayview.png inverse_recur.png alarmd.png
 
 KDE_ICON = korganizer
 
