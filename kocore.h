@@ -29,7 +29,6 @@
 
 #include <ktrader.h>
 
-namespace KCal { class CalendarResources; }
 namespace KPIM { class IdentityManager; }
 
 class KOCore
@@ -77,8 +76,6 @@ class KOCore
     QString holiday( const QDate & );
     bool isWorkDay( const QDate & );
 
-    KCal::CalendarResources *calendarResources();
-
     KPIM::IdentityManager* identityManager();
 
   protected:
@@ -96,8 +93,6 @@ class KOCore
     KOrg::CalendarDecoration *mHolidays;
 
     KXMLGUIClient *mXMLGUIClient;
-
-    KCal::CalendarResources *mCalendarResources;
 
     KPIM::IdentityManager *mIdentityManager;
 };

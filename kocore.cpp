@@ -31,9 +31,6 @@
 #include <calendar/plugin.h>
 #include <korganizer/part.h>
 
-#include <libkcal/calendarresources.h>
-#include <libkcal/resourcelocal.h>
-
 #include <klibloader.h>
 #include <kdebug.h>
 #include <kconfig.h>
@@ -56,14 +53,12 @@ KOCore *KOCore::self()
 
 KOCore::KOCore()
   : mCalendarDecorationsLoaded( false ), mHolidays( 0 ), mXMLGUIClient( 0 ),
-    mCalendarResources( 0 ), mIdentityManager( 0 )
+    mIdentityManager( 0 )
 {
 }
 
 KOCore::~KOCore()
 {
-  delete mCalendarResources;
-
   mSelf = 0;
 }
 
@@ -325,41 +320,6 @@ bool KOCore::isWorkDay( const QDate &date )
                                !holiday( date ).isEmpty() );
 
   return !nonWorkDay;
-}
-
-KCal::CalendarResources *KOCore::calendarResources()
-{
-  if ( !mCalendarResources ) {
-    mCalendarResources = new KCal::CalendarResources( KOPrefs::instance()->mTimeZoneId );
-    mCalendarResources->readConfig();
-
-    KCal::CalendarResourceManager *manager = mCalendarResources->resourceManager();
-
-    if ( manager->isEmpty() ) {
-      KConfig *config = KOGlobals::self()->config();
-      config->setGroup("General");
-      QString fileName = config->readPathEntry( "Active Calendar" );
-
-      QString resourceName;
-      if ( fileName.isEmpty() ) {
-        fileName = locateLocal( "data", "korganizer/std.ics" );
-        resourceName = i18n("Default Calendar");
-      } else {
-        resourceName = i18n("Active Calendar");
-      }
-
-      kdDebug(5850) << "Using as default resource: '" << fileName << "'" << endl;
-
-      KCal::ResourceCalendar *defaultResource = new KCal::ResourceLocal( fileName );
-      defaultResource->setTimeZoneId( KOPrefs::instance()->mTimeZoneId );
-      defaultResource->setResourceName( resourceName );
-
-      manager->add( defaultResource );
-      manager->setStandardResource( defaultResource );
-    }
-  }
-
-  return mCalendarResources;
 }
 
 KPIM::IdentityManager* KOCore::identityManager()

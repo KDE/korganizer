@@ -26,29 +26,6 @@
 
 #include "actionmanager.h"
 
-#include <qapplication.h>
-#include <qtimer.h>
-
-#include <dcopclient.h>
-#include <kaction.h>
-#include <kfiledialog.h>
-#include <kio/netaccess.h>
-#include <kkeydialog.h>
-#include <kpopupmenu.h>
-#include <kstandarddirs.h>
-#include <ktip.h>
-#include <ktempfile.h>
-#include <kxmlguiclient.h>
-#include <kwin.h>
-#include <knotifyclient.h>
-#include <kstdguiitem.h>
-#include <kdeversion.h>
-
-#include <libkcal/htmlexport.h>
-#include <libkcal/calendarlocal.h>
-#include <libkcal/calendarresources.h>
-#include <libkcal/resourcelocal.h>
-
 #include "alarmclient.h"
 #include "calendarview.h"
 #include "kocore.h"
@@ -65,6 +42,31 @@
 #include "resourceview.h"
 #include "importdialog.h"
 #include "eventarchiver.h"
+#include "stdcalendar.h"
+
+#include <libkcal/htmlexport.h>
+#include <libkcal/calendarlocal.h>
+#include <libkcal/calendarresources.h>
+#include <libkcal/resourcelocal.h>
+
+#include <dcopclient.h>
+#include <kaction.h>
+#include <kfiledialog.h>
+#include <kio/netaccess.h>
+#include <kkeydialog.h>
+#include <kpopupmenu.h>
+#include <kstandarddirs.h>
+#include <ktip.h>
+#include <ktempfile.h>
+#include <kxmlguiclient.h>
+#include <kwin.h>
+#include <knotifyclient.h>
+#include <kstdguiitem.h>
+#include <kdeversion.h>
+
+#include <qapplication.h>
+#include <qtimer.h>
+
 
 KOWindowList *ActionManager::mWindowList = 0;
 
@@ -167,7 +169,7 @@ void ActionManager::createCalendarLocal()
 
 void ActionManager::createCalendarResources()
 {
-  mCalendarResources = KOCore::self()->calendarResources();
+  mCalendarResources = KOrg::StdCalendar::self();
 
   CalendarResourceManager *manager = mCalendarResources->resourceManager();
 

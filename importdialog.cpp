@@ -27,6 +27,7 @@
 #include "kocore.h"
 #include "koprefs.h"
 #include "korganizer.h"
+#include "stdcalendar.h"
 
 #include <libkcal/calendarresources.h>
 #include <libkcal/resourcelocal.h>
@@ -77,7 +78,7 @@ void ImportDialog::slotOk()
   kdDebug() << "Adding resource for url '" << mUrl << "'" << endl;
 
   if ( mAddButton->isChecked() ) {
-    CalendarResources *cr = KOCore::self()->calendarResources();
+    CalendarResources *cr = KOrg::StdCalendar::self();
 
     CalendarResourceManager *manager = cr->resourceManager();
 
@@ -127,7 +128,7 @@ void ImportDialog::slotOk()
 
 void ImportDialog::mergeResource( ResourceCalendar * )
 {
-  Calendar *cal = KOCore::self()->calendarResources();
+  Calendar *cal = KOrg::StdCalendar::self();
 
   Event::List events = mMergeResource->rawEvents();
   Event::List::ConstIterator it;

@@ -46,6 +46,7 @@
 #include "importdialog.h"
 #include "kocore.h"
 #include "calendarview.h"
+#include "stdcalendar.h"
 
 #include "koapp.h"
 #include <kstartupinfo.h>
@@ -120,7 +121,7 @@ void KOrganizerApp::processCalendar( const KURL &url )
     if ( hasDocument )
       korg->openURL( url );
     else {
-      KOCore::self()->calendarResources()->load();
+      KOrg::StdCalendar::self()->load();
       korg->view()->updateCategories();
       korg->view()->updateView();
     }
