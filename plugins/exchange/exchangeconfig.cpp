@@ -38,7 +38,7 @@ ExchangeConfig::ExchangeConfig( KPIM::ExchangeAccount* account, QWidget* parent 
       account->host() << ":" << account->account() << endl;
 
   QFrame *topFrame = plainPage();
-  QGridLayout *topLayout = new QGridLayout( topFrame, 3, 2, 3 );
+  QGridLayout *topLayout = new QGridLayout( topFrame, 5, 3, 3 );
 
   m_host = new KLineEdit( mAccount->host(), topFrame );
   topLayout->addWidget( new QLabel( i18n( "Exchange server:" ), topFrame ), 0, 0 );
@@ -49,20 +49,24 @@ ExchangeConfig::ExchangeConfig( KPIM::ExchangeAccount* account, QWidget* parent 
   topLayout->addWidget( m_user, 1, 1 );
   connect( m_user, SIGNAL(textChanged(const QString&)), this, SLOT(slotUserChanged(const QString&)) );
 
-  m_mailbox= new KLineEdit( mAccount->mailbox(), topFrame );
+  m_password = new KLineEdit( mAccount->password(), topFrame );
+  topLayout->addWidget( new QLabel( i18n( "Password:" ), topFrame ), 2, 0 );
+  topLayout->addWidget( m_password, 2, 1 );
+  m_password->setEchoMode( QLineEdit::Password );
 
   m_mailboxEqualsUser = new QCheckBox( i18n( "Exchange Mailbox is equal to User" ), topFrame );
-  topLayout->addWidget( m_mailboxEqualsUser, 2, 0 );
+  topLayout->addMultiCellWidget( m_mailboxEqualsUser, 3, 3, 0, 1 );
   connect( m_mailboxEqualsUser, SIGNAL(toggled(bool)), this, SLOT(slotToggleEquals(bool)) );
-  m_mailboxEqualsUser->setChecked( mAccount->mailbox() == mAccount->account() );
 
-  topLayout->addWidget( new QLabel( i18n( "Mailbox:" ), topFrame ), 3, 0 );
-  topLayout->addWidget( m_mailbox, 3, 1 );
+  m_mailbox= new KLineEdit( mAccount->mailbox(), topFrame );
+  topLayout->addWidget( new QLabel( i18n( "Mailbox URL:" ), topFrame ), 4, 0 );
+  topLayout->addWidget( m_mailbox, 4, 1 );
 
-  m_password = new KLineEdit( mAccount->password(), topFrame );
-  topLayout->addWidget( new QLabel( i18n( "Password:" ), topFrame ), 4, 0 );
-  topLayout->addWidget( m_password, 4, 1 );
-  m_password->setEchoMode( QLineEdit::Password );
+  m_tryFindMailbox = new QPushButton( "&Find", topFrame );
+  topLayout->addWidget( m_tryFindMailbox, 4, 2 );
+  connect( m_tryFindMailbox, SIGNAL(clicked()), this, SLOT(slotFindClicked()) );
+
+  m_mailboxEqualsUser->setChecked( mAccount->mailbox() == ("webdav://"+mAccount->host()+"/exchange/"+mAccount->account() ) );
 }
 
 ExchangeConfig::~ExchangeConfig()
@@ -72,15 +76,16 @@ ExchangeConfig::~ExchangeConfig()
 void ExchangeConfig::slotToggleEquals( bool on )
 {
   m_mailbox->setEnabled( ! on );
+  m_tryFindMailbox->setEnabled( ! on );
   if ( on ) {
-    m_mailbox->setText( m_user->text() );
+    m_mailbox->setText( "webdav://" + m_host->text() + "/exchange/" + m_user->text() );
   }
 }
 
 void ExchangeConfig::slotUserChanged( const QString& text )
 {
   if ( m_mailboxEqualsUser->isChecked() ) {
-    m_mailbox->setText( text );
+    m_mailbox->setText( "webdav://" + m_host->text() + "/exchange/" + text );
   }
 }
 
@@ -89,7 +94,7 @@ void ExchangeConfig::slotOk()
   mAccount->setHost( m_host->text() );
   mAccount->setAccount( m_user->text() );
   if ( m_mailboxEqualsUser->isChecked() ) {
-    mAccount->setMailbox( m_user->text() );
+    mAccount->setMailbox("webdav://" + m_host->text() + "/exchange/" + m_user->text() );
   } else {
     mAccount->setMailbox( m_mailbox->text() );
   }
@@ -97,4 +102,15 @@ void ExchangeConfig::slotOk()
   
   accept();
 }
+
+void ExchangeConfig::slotFindClicked()
+{
+  QString mailbox = mAccount->tryFindMailbox( m_host->text(), m_user->text(), m_password->text() );
+  if ( mailbox.isNull() ) {
+    KMessageBox::sorry( this, "Could not determine mailbox URL" );
+  } else {
+    m_mailbox->setText( mailbox );
+  }
+}
+
 #include "exchangeconfig.moc"
