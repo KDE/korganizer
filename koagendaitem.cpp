@@ -690,7 +690,7 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
      frameColor = mSelected ? QColor( 85 + mResourceColor.red() * 2/3,
                                           85 + mResourceColor.green() * 2/3,
                                           85 + mResourceColor.blue() * 2/3 )
-                                : mResourceColor.dark(115);
+                                : mResourceColor;
   } else {
     frameColor = mSelected ? QColor( 85 + bgColor.red() * 2/3,
                                           85 + bgColor.green() * 2/3,

@@ -585,74 +585,65 @@ void KOAgendaView::zoomOutVertically( )
   }
 }
 
-// FIXME: Don't have two zoomInHorizontally, but use a default value for the date.
-void KOAgendaView::zoomInHorizontally( )
-{
-  QDate date=mAgenda->selectedIncidenceDate();
-  if ( date.isValid() ) {
-     zoomInHorizontally( date );
-  } else {
-    QDate begin;
-    QDate end;
-    
-    begin = mSelectedDates.first();
-    end = mSelectedDates.last();
-    int d = begin.daysTo( end );
-    if ( d > 1 ) {
-      emit zoomViewHorizontally( begin.addDays(1),d-1 );
-    }
-  }
-}
-
-// FIXME: Don't have two zoomOutHorizontally, but use a default value for the date.
-void KOAgendaView::zoomOutHorizontally( ) 
-{
-  QDate date=mAgenda->selectedIncidenceDate();
-  if ( date.isValid() ) {
-     zoomOutHorizontally( date );
-  } else {
-    QDate begin;
-    QDate end;
-    
-    begin = mSelectedDates.first();
-    end = mSelectedDates.last();
-    int d = begin.daysTo(end);
-    emit zoomViewHorizontally( begin.addDays(-1),d+3 );
-  }
-}
-
-void KOAgendaView::zoomInHorizontally( const QDate &date )
+void KOAgendaView::zoomInHorizontally( const QDate &date)
 {
   QDate begin;
-  QDate end;
-  int ndays;
+  QDate newBegin;
+  QDate dateToZoom = date;
+  int ndays,count;
   
   begin = mSelectedDates.first();
-  end = mSelectedDates.last();
+  ndays = begin.daysTo( mSelectedDates.last() );
   
-  ndays = begin.daysTo( end );
-  if ( ndays <= 2 ) 
-    emit zoomViewHorizontally( date,1 );
-      //showDates( date, date );
-  else
-    emit zoomViewHorizontally( date.addDays( -( ( ndays/2 )-1 ) ) , ndays-1 );
+  // zoom with Action and are there a selected Incidence?, Yes, I zoom in to it.
+  if ( ! dateToZoom.isValid () ) 
+    dateToZoom=mAgenda->selectedIncidenceDate();
+
+  if( !dateToZoom.isValid() ) {
+    if ( ndays > 1 ) {
+      newBegin=begin.addDays(1);
+      count = ndays-1;
+      emit zoomViewHorizontally ( newBegin , count );
+    }
+  } else {
+    if ( ndays <= 2 ) {
+      newBegin = dateToZoom;
+      count = 1;
+    } else  {
+      newBegin = dateToZoom.addDays( -ndays/2 +1  );
+      count = ndays -1 ;
+    }
+    emit zoomViewHorizontally ( newBegin , count );
+  }
 }
 
 void KOAgendaView::zoomOutHorizontally( const QDate &date )
 {  
   QDate begin;
-  QDate end; 
-  int ndays;
+  QDate newBegin;
+  QDate dateToZoom = date;
+  int ndays,count;
   
   begin = mSelectedDates.first();
-  end = mSelectedDates.last();
-
-  ndays = begin.daysTo( end );
-  if ( abs( ndays ) >= 31 )
+  ndays = begin.daysTo( mSelectedDates.last() );
+  
+  // zoom with Action and are there a selected Incidence?, Yes, I zoom out to it.
+  if ( ! dateToZoom.isValid () ) 
+    dateToZoom=mAgenda->selectedIncidenceDate();
+    
+  if ( !dateToZoom.isValid() ) {
+    newBegin = begin.addDays(-1);
+    count = ndays+3 ;
+  } else {
+    newBegin = dateToZoom.addDays( -ndays/2-1 );
+    count = ndays+3;
+  }
+  
+  if ( abs( count ) >= 31 )
     kdDebug(5850) << "change to the mounth view?"<<endl;
   else
     //We want to center the date
-    emit zoomViewHorizontally( date.addDays( -( ( ndays/2 )+1 ) ) , ndays+3 );
+    emit zoomViewHorizontally( newBegin, count );
 }
 
 void KOAgendaView::zoomView( const int delta, const QPoint &pos,

@@ -71,6 +71,7 @@ AboutData::AboutData()
   addCredit("Larry Wright");
   addCredit("Thomas Zander");
   addCredit("Fester Zigterman");
+  addCredit("Mario Teijeiro");
 }
     
 AboutData *AboutData::self()

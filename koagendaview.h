@@ -202,11 +202,8 @@ class KOAgendaView : public KOEventView
     void enableAgendaUpdate( bool enable );
     void setIncidenceChanger( IncidenceChangerBase *changer );
 
-    void zoomInHorizontally( );
-    void zoomInHorizontally( const QDate& );
-    
-    void zoomOutHorizontally( );
-    void zoomOutHorizontally( const QDate& );
+    void zoomInHorizontally( const QDate& date=QDate() );
+    void zoomOutHorizontally( const QDate& date=QDate() );
     
     void zoomInVertically( );
     void zoomOutVertically( );
