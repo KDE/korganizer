@@ -1,4 +1,4 @@
-/* 	$Id$	 */
+/* $Id$	 */
 
 #ifndef _KOMONTHVIEW_H
 #define _KOMONTHVIEW_H

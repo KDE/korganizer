@@ -1,4 +1,4 @@
-// 	$Id$
+// $Id$
 
 #include <qtooltip.h>
 #include <qlayout.h>
@@ -51,13 +51,13 @@ KOEditorGeneralEvent::KOEditorGeneralEvent(int spacing,QWidget* parent,
 
   summaryEdit->setFocus();
 
-  // time widgets are checked if they conatin a valid time
+  // time widgets are checked if they contain a valid time
   connect(startTimeEdit, SIGNAL(timeChanged(QTime)),
 	  this, SLOT(startTimeChanged(QTime)));
   connect(endTimeEdit, SIGNAL(timeChanged(QTime)),
 	  this, SLOT(endTimeChanged(QTime)));
 
-  // date widgets are checked if they conatin a valid date
+  // date widgets are checked if they contain a valid date
   connect(startDateEdit, SIGNAL(dateChanged(QDate)),
 	  this, SLOT(startDateChanged(QDate)));
   connect(endDateEdit, SIGNAL(dateChanged(QDate)),
