@@ -198,9 +198,10 @@ class KPrefsWidFont : public QObject, public KPrefsWid
 };
 
 /**
-  @short Widget for font settings in @ref KPrefsDialog.
+  @short Widget for settings represented by a group of radio buttons in
+  @ref KPrefsDialog.
   
-  This class provides a widget for configuring font values. It is meant to be
+  This class provides a widget for configuring selections. It is meant to be
   used by KPrefsDialog. The user is responsible for the layout management. The
   setting is interpreted as an int value, corresponding to the position of the
   radio button. The position of the button is defined by the sequence of @ref
