@@ -312,13 +312,13 @@ void KOEditorGeneral::readIncidence(Incidence *event)
     }
     mAlarmTimeEdit->setText(QString::number( offset ));
 
-    if (!alarm->programFile().isEmpty()) {
+    if (alarm->type() == Alarm::Procedure)) {
       mAlarmProgram = alarm->programFile();
       mAlarmProgramButton->setOn(true);
       QString dispStr = i18n("Running '%1'").arg(mAlarmProgram);
       QToolTip::add(mAlarmProgramButton, dispStr);
     }
-    if (!alarm->audioFile().isEmpty()) {
+    else if (alarm->type() == Alarm::Audio) {
       mAlarmSound = alarm->audioFile();
       mAlarmSoundButton->setOn(true);
       QString dispStr = i18n("Playing '%1'").arg(mAlarmSound);
@@ -360,14 +360,11 @@ void KOEditorGeneral::writeIncidence(Incidence *event)
       alarm->setOffset( j );
 
       if (!mAlarmProgram.isEmpty() && mAlarmProgramButton->isOn())
-        alarm->setProgramFile(mAlarmProgram);
-      else
-        alarm->setProgramFile("");
-
+        alarm->setProcedureAlarm(mAlarmProgram);
       if (!mAlarmSound.isEmpty() && mAlarmSoundButton->isOn())
-        alarm->setAudioFile(mAlarmSound);
+        alarm->setAudioAlarm(mAlarmSound);
       else
-        alarm->setAudioFile("");
+        alarm->setType(Alarm::Invalid);
 
 // TODO: Deal with multiple alarms
       break; // For now, stop after the first alarm
@@ -376,8 +373,7 @@ void KOEditorGeneral::writeIncidence(Incidence *event)
     Alarm* alarm = event->alarms().first();
     if ( alarm ) {
       alarm->setEnabled(false);
-      alarm->setProgramFile("");
-      alarm->setAudioFile("");
+      alarm->setType(Alarm::Invalid);
     }
   }
 }
