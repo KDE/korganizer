@@ -256,7 +256,7 @@ void KOTodoEditor::modified (int modification)
 
 void KOTodoEditor::slotLoadTemplate()
 {
-  CalendarLocal cal;
+  CalendarLocal cal( KOPrefs::instance()->mTimeZoneId );
   Todo *todo = new Todo;
   QString templateName = loadTemplate( &cal, todo->type(),
                                        KOPrefs::instance()->mTodoTemplates );

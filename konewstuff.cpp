@@ -28,6 +28,7 @@
 #include <libkcal/filestorage.h>
 
 #include "korganizer.h"
+#include "koprefs.h"
 
 #include "konewstuff.h"
 
@@ -41,7 +42,7 @@ bool KONewStuff::install( const QString &fileName )
 {
   kdDebug(5850) << "KONewStuff::install(): " << fileName << endl;
 
-  CalendarLocal cal;
+  CalendarLocal cal( KOPrefs::instance()->mTimeZoneId );
   FileStorage storage( &cal, fileName );
   if ( !storage.load() ) {
     KMessageBox::error( mView, i18n("Couldn't load calendar.") );

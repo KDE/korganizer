@@ -180,7 +180,7 @@ void KOIncidenceEditor::saveAsTemplate( Incidence *incidence,
   fileName.append( "/" + templateName );
   fileName = locateLocal( "data", "korganizer/" + fileName );
 
-  CalendarLocal cal;
+  CalendarLocal cal( KOPrefs::instance()->mTimeZoneId );
   cal.addIncidence( incidence );
   ICalFormat format;
   format.save( &cal, fileName );

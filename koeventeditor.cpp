@@ -313,7 +313,7 @@ int KOEventEditor::msgItemDelete()
 
 void KOEventEditor::slotLoadTemplate()
 {
-  CalendarLocal cal;
+  CalendarLocal cal( KOPrefs::instance()->mTimeZoneId );
   Event *event = new Event;
   QString templateName = loadTemplate( &cal, event->type(),
                                        KOPrefs::instance()->mEventTemplates );
