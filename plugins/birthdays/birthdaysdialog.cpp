@@ -26,7 +26,7 @@
 #include "birthdaysdialog.h"
 #include "birthdaysdialog.moc"
 
-BirthdaysDialog::BirthdaysDialog(QWidget *parent=0) :
+BirthdaysDialog::BirthdaysDialog(QWidget *parent) :
   KDialogBase(Plain,i18n("Import birthdays from KAddressBook"),User1|Cancel,
               User1,parent,"bimport",true,true,i18n("Import"))
 {
