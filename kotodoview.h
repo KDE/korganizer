@@ -82,6 +82,18 @@ class KOTodoListView : public KListView
 
 
 /**
+  This is the line-edit on top of the todoview for fast addition of new todos
+*/
+class KOQuickTodo : public QLineEdit
+{
+  public:
+    KOQuickTodo(QWidget *parent=0);
+  protected:
+    void focusInEvent(QFocusEvent *ev);
+};
+
+
+/**
   This class provides a multi-column list view of todo events.
 
   @short multi-column list view of todo events.
@@ -96,7 +108,7 @@ class KOTodoView : public KOrg::BaseView
 
     QPtrList<Incidence> selectedIncidences();
     QPtrList<Todo> selectedTodos();
-    
+
     DateList selectedDates()
       {DateList q;
        return q;}
@@ -107,7 +119,7 @@ class KOTodoView : public KOrg::BaseView
     void printPreview(CalPrinter *calPrinter, const QDate &fd, const QDate &td);
 
     void setDocumentId( const QString & );
-    
+
     void saveLayout(KConfig *config, const QString &group) const;
     void restoreLayout(KConfig *config, const QString &group);
     /** Create a popup menu to set categories */
@@ -138,7 +150,7 @@ class KOTodoView : public KOrg::BaseView
     void changedCategories(int);
 
     void purgeCompleted();
-    
+
     void itemClicked(QListViewItem *);
     void itemStateChanged(QListViewItem *);
     void modified(bool);
@@ -158,6 +170,7 @@ class KOTodoView : public KOrg::BaseView
 
   protected slots:
     void processSelectionChange();
+    void addQuickTodo();
 
   private:
     /*
@@ -191,6 +204,7 @@ class KOTodoView : public KOrg::BaseView
 
     DocPrefs *mDocPrefs;
     QString mCurrentDoc;
+    KOQuickTodo *mQuickAdd;
 };
 
 #endif

@@ -245,14 +245,33 @@ void KOTodoListView::contentsMouseDoubleClickEvent(QMouseEvent *e)
 
 /////////////////////////////////////////////////////////////////////////////
 
+KOQuickTodo::KOQuickTodo(QWidget *parent) :
+  QLineEdit(parent)
+{
+  setText(i18n("klick to add"));
+}
+
+void KOQuickTodo::focusInEvent(QFocusEvent *ev)
+{
+  if ( text()==i18n("klick to add") )
+    setText("");
+  QLineEdit::focusInEvent(ev);
+}
+
+/////////////////////////////////////////////////////////////////////////////
+
 KOTodoView::KOTodoView(Calendar *calendar,QWidget* parent,const char* name) :
   KOrg::BaseView(calendar,parent,name)
 {
   QBoxLayout *topLayout = new QVBoxLayout(this);
 
   QLabel *title = new QLabel(i18n("To-do items:"),this);
+
+  mQuickAdd = new KOQuickTodo(this);
+
   title->setFrameStyle(QFrame::Panel|QFrame::Raised);
   topLayout->addWidget(title);
+  topLayout->addWidget(mQuickAdd);
 
   mTodoListView = new KOTodoListView(calendar,this);
   topLayout->addWidget(mTodoListView);
@@ -261,7 +280,7 @@ KOTodoView::KOTodoView(Calendar *calendar,QWidget* parent,const char* name) :
   mTodoListView->setAllColumnsShowFocus(true);
 
   mTodoListView->setShowSortIndicator(true);
-  
+
   mTodoListView->addColumn(i18n("Summary"));
   mTodoListView->addColumn(i18n("Priority"));
   mTodoListView->setColumnAlignment(1,AlignHCenter);
@@ -280,7 +299,7 @@ KOTodoView::KOTodoView(Calendar *calendar,QWidget* parent,const char* name) :
   mTodoListView->setMinimumHeight( 60 );
   mTodoListView->setItemsRenameable( true );
   mTodoListView->setRenameable( 0 );
-  
+
   mTodoListView->setColumnWidthMode(0, QListView::Manual);
   mTodoListView->setColumnWidthMode(1, QListView::Manual);
   mTodoListView->setColumnWidthMode(2, QListView::Manual);
@@ -290,7 +309,7 @@ KOTodoView::KOTodoView(Calendar *calendar,QWidget* parent,const char* name) :
 #if 0
   mTodoListView->setColumnWidthMode(6, QListView::Manual);
 #endif
-  
+
   mPriorityPopupMenu = new QPopupMenu(this);
   for (int i = 1; i <= 5; i++) {
     QString label = QString ("%1").arg (i);
@@ -357,6 +376,8 @@ KOTodoView::KOTodoView(Calendar *calendar,QWidget* parent,const char* name) :
 #endif
   connect( mTodoListView, SIGNAL(selectionChanged() ),
            SLOT( processSelectionChange() ) );
+  connect( mQuickAdd, SIGNAL( returnPressed () ),
+           SLOT( addQuickTodo() ) );
 }
 
 KOTodoView::~KOTodoView()
@@ -685,7 +706,7 @@ void KOTodoView::modified(bool b)
 {
   emit isModified(b);
 }
-void KOTodoView::setTodoModified( Todo* todo ) 
+void KOTodoView::setTodoModified( Todo* todo )
 {
   emit todoModifiedSignal( todo, KOGlobals::UNKNOWN_MODIFIED );
 }
@@ -697,4 +718,15 @@ void KOTodoView::clearSelection()
 void KOTodoView::purgeCompleted()
 {
   emit purgeCompletedSignal();
+}
+
+void KOTodoView::addQuickTodo()
+{
+  Todo *todo = new Todo();
+  todo->setSummary(mQuickAdd->text());
+  todo->setOrganizer(KOPrefs::instance()->email());
+  mCalendar->addTodo(todo);
+  mTodoListView->setFocus();
+  mQuickAdd->setText(i18n("klick to add"));
+  updateView();
 }

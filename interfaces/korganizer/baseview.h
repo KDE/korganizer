@@ -177,7 +177,7 @@ class BaseView : public QWidget
   signals:
     void incidenceSelected( Incidence * );
 
-  private:
+  protected:
     Calendar *mCalendar;
 };
 
