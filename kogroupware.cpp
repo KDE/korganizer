@@ -156,32 +156,23 @@ void KOGroupware::incomingDirChanged( const QString& path )
   KCal::Incidence* incidence =
     dynamic_cast<KCal::Incidence*>( message->event() );
   KCal::MailScheduler scheduler( mCalendar );
-  if ( action.startsWith( "accepted" ) ) {
-    // Find myself and set to answered and accepted
+  if ( action.startsWith( "accepted" ) || action.startsWith( "tentative" ) ) {
+    // Find myself and set my status. This can't be done in the scheduler,
+    // since this does not know the choice I made in the KMail bpf
     KCal::Attendee::List attendees = incidence->attendees();
     KCal::Attendee::List::ConstIterator it;
     for ( it = attendees.begin(); it != attendees.end(); ++it ) {
       if( (*it)->email() == receiver ) {
-        (*it)->setStatus( KCal::Attendee::Accepted );
-        (*it)->setRSVP(false);
-        break;
-      }
-    }
-    scheduler.acceptTransaction( incidence, method, status );
-  } else if ( action.startsWith( "tentative" ) ) {
-    // Find myself and set to answered and tentative
-    KCal::Attendee::List attendees = incidence->attendees();
-    KCal::Attendee::List::ConstIterator it;
-    for ( it = attendees.begin(); it != attendees.end(); ++it ) {
-      if( (*it)->email() == receiver ) {
-        (*it)->setStatus( KCal::Attendee::Tentative );
-        (*it)->setRSVP(false);
+        if ( action.startsWith( "accepted" ) )
+          (*it)->setStatus( KCal::Attendee::Accepted );
+        else
+          (*it)->setStatus( KCal::Attendee::Tentative );
         break;
       }
     }
     scheduler.acceptTransaction( incidence, method, status );
   } else if ( action.startsWith( "cancel" ) )
-    // TODO: Could this be done like the others?
+    // Delete the old incidence, if one is present
     mCalendar->deleteIncidence( incidence );
   else if ( action.startsWith( "reply" ) )
     scheduler.acceptTransaction( incidence, method, status );
