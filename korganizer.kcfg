@@ -17,15 +17,15 @@
       <whatsthis>Check this option when you want a confirmation when deleting items.</whatsthis>
       <default>true</default>
     </entry>
-		
-		<entry type="Bool" key="Archive Events">
-		  <label>Archive events</label>
-			<default>true</default>
-		</entry>
-		<entry type="Bool" key="Archive Todos">
-		  <label>Archive to-do items</label>
-			<default>true</default>
-		</entry>
+
+    <entry type="Bool" key="Archive Events">
+      <label>Archive events</label>
+      <default>true</default>
+    </entry>
+    <entry type="Bool" key="Archive Todos">
+      <label>Archive to-do items</label>
+      <default>true</default>
+    </entry>
 
     <entry type="Bool" key="Auto Archive">
       <label>Regularly archive events</label>
@@ -256,6 +256,9 @@
     <entry type="StringList" name="TodoTemplates">
     </entry>
     <entry type="StringList" name="JournalTemplates">
+    </entry>
+    
+    <entry type="StringList" name="ActiveDesignerFields">
     </entry>
   </group>
 

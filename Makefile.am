@@ -194,6 +194,7 @@ kde_services_DATA = korganizer_configmain.desktop \
                     korganizer_configgroupscheduling.desktop \
                     korganizer_configgroupautomation.desktop \
                     korganizer_configfreebusy.desktop \
+                    korganizer_configdesignerfields.desktop \
                     webcal.protocol
 
 update_DATA = korganizer.upd

@@ -255,10 +255,15 @@ QString KOIncidenceEditor::loadTemplate( Calendar *cal, const QString &type,
 
 void KOIncidenceEditor::setupDesignerTabs( const QString &type )
 {
+  QStringList activePages = KOPrefs::instance()->activeDesignerFields();
+
   QStringList list = KGlobal::dirs()->findAllResources( "data",
     "korganizer/designer/" + type + "/*.ui", true, true );
   for ( QStringList::iterator it = list.begin(); it != list.end(); ++it ) {
     kdDebug() << "Designer tab: " << *it << endl;
+
+    if ( activePages.find( (*it).mid( (*it).findRev('/') + 1 ) ) == activePages.end() )
+      continue;
 
     KPIM::DesignerFields *wid = new KPIM::DesignerFields( *it, 0 );
     mDesignerFields.append( wid );

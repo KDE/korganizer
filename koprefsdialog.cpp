@@ -52,6 +52,7 @@
 #include <kpushbutton.h>
 #include <kocore.h>
 #include <libkcal/calendarresources.h>
+#include <kstandarddirs.h>
 
 #if defined(USE_SOLARIS)
 #include <sys/param.h>
@@ -1147,5 +1148,44 @@ extern "C"
 }
 
 
+extern "C"
+{
+  KCModule *create_korgdesignerfields( QWidget *parent, const char * ) {
+    return new KOPrefsDesignerFields( parent, "kcmkorgdesignerfields" );
+  }
+}
+
+KOPrefsDesignerFields::KOPrefsDesignerFields( QWidget *parent, const char *name )
+  : KCMDesignerFields( parent, name )
+{
+}
+
+QString KOPrefsDesignerFields::localUiDir()
+{
+  QString dir = locateLocal( "data", "korganizer/designer/event/");
+  kdDebug() << "KOPrefsDesignerFields::localUiDir(): " << dir << endl;
+  return dir;
+}
+
+QString KOPrefsDesignerFields::uiPath()
+{
+  return "korganizer/designer/event/";
+}
+
+void KOPrefsDesignerFields::writeActivePages( const QStringList &activePages )
+{
+  KOPrefs::instance()->setActiveDesignerFields( activePages );
+  KOPrefs::instance()->writeConfig();
+}
+
+QStringList KOPrefsDesignerFields::readActivePages()
+{
+  return KOPrefs::instance()->activeDesignerFields();
+}
+
+QString KOPrefsDesignerFields::applicationName()
+{
+  return "KORGANIZER";
+}
 
 #include "koprefsdialog.moc"

@@ -167,6 +167,7 @@ void KODialogManager::showOptionsDialog()
     modules.append( "korganizer_configgroupautomation.desktop" );
     modules.append( "korganizer_configfreebusy.desktop" );
     modules.append( "korganizer_configplugins.desktop" );
+    modules.append( "korganizer_configdesignerfields.desktop" );
 
     // add them all
     QStringList::iterator mit;

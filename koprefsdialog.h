@@ -25,6 +25,7 @@
 #define KOPREFSDIALOG_H
 
 #include <libkdepim/kprefsdialog.h>
+#include <libkdepim/kcmdesignerfields.h>
 
 #include <qdict.h>
 
@@ -144,5 +145,17 @@ class KOPrefsDialogPlugins : public KPrefsModule
     KPushButton *mConfigureButton;
 };
 
+class KOPrefsDesignerFields : public KPIM::KCMDesignerFields
+{
+  public:
+    KOPrefsDesignerFields( QWidget *parent = 0, const char *name = 0 );
+
+  protected:
+    QString localUiDir();
+    QString uiPath();
+    void writeActivePages( const QStringList & );
+    QStringList readActivePages();
+    QString applicationName();
+};
 
 #endif
