@@ -47,7 +47,7 @@ void ResourceItem::stateChange( bool active )
     mResource->open();
     mResource->load();
   } else {
-    mResource->sync();
+    mResource->save();
     mResource->close();
   }
   mResource->setActive( active );

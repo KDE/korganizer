@@ -280,7 +280,7 @@ bool KOrganizer::queryClose()
   if ( mDocument ) {
     success = mActionManager->saveModifiedURL();
   } else {
-    mCalendar->sync();
+    mCalendar->save();
   }
   
   // Write configuration. I don't know if it really makes sense doing it this
