@@ -201,12 +201,6 @@ void KOEditorGeneralEvent::endTimeChanged(QTime newtime)
 //  kdDebug() << "KOEditorGeneralEvent::endTimeChanged " << newtime.toString() << endl;
 
   QDateTime newdt(mCurrEndDateTime.date(), newtime);
-
-  if(newdt < mCurrStartDateTime) {
-    // oops, can't let that happen.
-    newdt = mCurrStartDateTime;
-    mEndTimeEdit->setTime(newdt.time());
-  }
   mCurrEndDateTime = newdt;
 
   emit dateTimesChanged(mCurrStartDateTime,mCurrEndDateTime);
@@ -323,36 +317,40 @@ void KOEditorGeneralEvent::setDuration()
 {
   QString tmpStr, catStr;
   int hourdiff, minutediff;
+  // end<date is an accepted temporary state while typing, but don't show
+  // any duration if this happens
+  if(mCurrEndDateTime >= mCurrStartDateTime) {
 
-  if (mNoTimeButton->isChecked()) {
-    int daydiff = mCurrStartDateTime.date().daysTo(mCurrEndDateTime.date()) + 1;
-    tmpStr = i18n("Duration: ");
-    tmpStr.append(i18n("1 Day","%n Days",daydiff));
-  } else {
-    hourdiff = mCurrStartDateTime.date().daysTo(mCurrEndDateTime.date()) * 24;
-    hourdiff += mCurrEndDateTime.time().hour() -
-      mCurrStartDateTime.time().hour();
-    minutediff = mCurrEndDateTime.time().minute() -
-      mCurrStartDateTime.time().minute();
-    // If minutediff is negative, "borrow" 60 minutes from hourdiff
-    if (minutediff < 0 && hourdiff > 0) {
-      hourdiff -= 1;
-      minutediff += 60;
-    }
-    if (hourdiff || minutediff){
+    if (mNoTimeButton->isChecked()) {
+      int daydiff = mCurrStartDateTime.date().daysTo(mCurrEndDateTime.date()) + 1;
       tmpStr = i18n("Duration: ");
-      if (hourdiff){
-        catStr = i18n("1 hour","%n hours",hourdiff);
-        tmpStr.append(catStr);
+      tmpStr.append(i18n("1 Day","%n Days",daydiff));
+    } else {
+      hourdiff = mCurrStartDateTime.date().daysTo(mCurrEndDateTime.date()) * 24;
+      hourdiff += mCurrEndDateTime.time().hour() -
+                  mCurrStartDateTime.time().hour();
+      minutediff = mCurrEndDateTime.time().minute() -
+                   mCurrStartDateTime.time().minute();
+      // If minutediff is negative, "borrow" 60 minutes from hourdiff
+      if (minutediff < 0 && hourdiff > 0) {
+        hourdiff -= 1;
+        minutediff += 60;
       }
-      if (hourdiff && minutediff){
-        tmpStr += i18n(", ");
-      }
-      if (minutediff){
-	catStr = i18n("1 minute","%n minutes",minutediff);
-        tmpStr += catStr;
-      }
-    } else tmpStr = "";
+      if (hourdiff || minutediff){
+        tmpStr = i18n("Duration: ");
+        if (hourdiff){
+          catStr = i18n("1 hour","%n hours",hourdiff);
+          tmpStr.append(catStr);
+        }
+        if (hourdiff && minutediff){
+          tmpStr += i18n(", ");
+        }
+        if (minutediff){
+          catStr = i18n("1 minute","%n minutes",minutediff);
+          tmpStr += catStr;
+        }
+      } else tmpStr = "";
+    }
   }
   mDurationLabel->setText(tmpStr);
 }
