@@ -933,9 +933,9 @@ void KOAgenda::endItemAction()
       int res = KMessageBox::questionYesNoCancel( this, 
           i18n("The item you try to change is a recurring item. Shall the changes "
                "be applied to all items in the recurrence, "/*"only the future items, "*/
-               "or just to this single occurence?"), 
+               "or just to this single occurrence?"), 
           i18n("Changing a recurring item"), 
-          i18n("&All occurences"), i18n("Only &this item") );
+          i18n("&All occurrences"), i18n("Only &this item") );
       switch ( res ) {
         case KMessageBox::Yes: // All occurences
             // Moving the whole sequene of events is handled by the itemModified below.
@@ -964,7 +964,7 @@ void KOAgenda::endItemAction()
               emit enableAgendaUpdate( true );
             } else {
               KMessageBox::sorry( this, i18n("Unable to add the exception item to the "
-                  "calendar. No change will be done."), i18n("Error occured") );
+                  "calendar. No change will be done."), i18n("Error occurred") );
             }
             delete oldInc;
             break; }
@@ -990,7 +990,7 @@ void KOAgenda::endItemAction()
               needItemUpdate = true;
             } else {
               KMessageBox::sorry( this, i18n("Unable to add the future items to the "
-                  "calendar. No change will be done."), i18n("Error occured") );
+                  "calendar. No change will be done."), i18n("Error occurred") );
             }
             delete oldInc;
             break; }

@@ -131,7 +131,7 @@
       <default>true</default>
     </entry>
     <entry type="Bool" name="ShowAllDayTodo">
-      <label>Display todo's in all day view</label>
+      <label>Display todos in all-day view</label>
       <default>true</default>
     </entry>
     <entry type="Bool" key="Enable MonthView ScrollBars" name="EnableMonthScroll">
