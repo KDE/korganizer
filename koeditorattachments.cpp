@@ -46,7 +46,7 @@ KOEditorAttachments::KOEditorAttachments( int spacing, QWidget *parent,
 
   mAttachments = new QListView( this );
   QWhatsThis::add( mAttachments,
-		   i18n("Displays a list of current items (files, mail, etc) "
+		   i18n("Displays a list of current items (files, mail, etc.) "
 		        "that have been associated with this event or to-do. "
 			"The URI column displays the location of the file.") );
   mAttachments->addColumn( i18n("URI") );

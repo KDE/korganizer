@@ -147,7 +147,7 @@ void KOEditorGeneralTodo::initTime(QWidget *parent,QBoxLayout *topLayout)
 
   mTimeButton = new QCheckBox(i18n("Ti&me associated"),timeBoxFrame);
   QWhatsThis::add( mTimeButton,
-		   i18n("Sets whether or not this to-do'd start and due dates "
+		   i18n("Sets whether or not this to-do's start and due dates "
 			"have times associated with them.") );
   layoutTimeBox->addMultiCellWidget(mTimeButton,2,2,0,2);
 
@@ -181,8 +181,8 @@ void KOEditorGeneralTodo::initCompletion(QWidget *parent, QBoxLayout *topLayout)
 void KOEditorGeneralTodo::initPriority(QWidget *parent, QBoxLayout *topLayout)
 {
   QString whatsThis = i18n("Sets the priority of this to-do on a scale "
-  			   "from one to nine, with one being the higest "
-			   "priority, five being the medium priority, and "
+  			   "from one to nine, with one being the highest "
+			   "priority, five being a medium priority, and "
 			   "nine being the lowest. In programs that have a "
 			   "different scale, the numbers will be adjusted "
 			   "to match the appropriate scale.");

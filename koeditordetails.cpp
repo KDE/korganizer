@@ -295,7 +295,7 @@ KOEditorDetails::KOEditorDetails( int spacing, QWidget *parent,
 			"edit the attendee's name, role, attendance "
 			"status, and whether or not the attendee is required "
 			"to respond to the invitation. To select an attendee "
-			"from your addressbook, click the 'Select Addressee'"
+			"from your addressbook, click the 'Select Addressee' "
 			"button instead.") );
   buttonLayout->addWidget( newButton );
   connect( newButton, SIGNAL( clicked() ), SLOT( addNewAttendee() ) );
