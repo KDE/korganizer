@@ -338,8 +338,8 @@ void KOEditorGeneralEvent::setDuration()
 
   if (mNoTimeButton->isChecked()) {
     int daydiff = mCurrStartDateTime.date().daysTo(mCurrEndDateTime.date()) + 1;
-    if (daydiff == 1) tmpStr = i18n("Duration: 1 day");
-    else tmpStr = i18n("Duration: %1 days").arg(daydiff);
+    tmpStr = i18n("Duration: ");
+    tmpStr.append(i18n("1 Day","%n Days",daydiff));
   } else {
     hourdiff = mCurrStartDateTime.date().daysTo(mCurrEndDateTime.date()) * 24;
     hourdiff += mCurrEndDateTime.time().hour() - 
@@ -354,20 +354,14 @@ void KOEditorGeneralEvent::setDuration()
     if (hourdiff || minutediff){
       tmpStr = i18n("Duration: ");
       if (hourdiff){
-        if (hourdiff > 1)
-          catStr = i18n("%1 hours").arg(QString::number(hourdiff));
-        else if (hourdiff == 1)
-          catStr = i18n("%1 hour").arg(QString::number(hourdiff));
+        catStr = i18n("1 Hour","%n Hours",hourdiff);
         tmpStr.append(catStr);
       }
       if (hourdiff && minutediff){
         tmpStr += i18n(", ");
       }
       if (minutediff){
-        if (minutediff > 1)
-          catStr = i18n("%1 minutes").arg(QString::number(minutediff));
-        else if (minutediff == 1)
-          catStr = i18n("%1 minute").arg(QString::number(minutediff));
+	catStr = i18n("1 Minute","%n Minutes",minutediff);
         tmpStr += catStr;
       }
     } else tmpStr = "";
