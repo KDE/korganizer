@@ -62,11 +62,16 @@ ResourceItem::ResourceItem( ResourceCalendar *resource, ResourceView *view,
   : QCheckListItem( parent, resource->resourceName(), CheckBox ),
     mResource( resource ), mView( view )
 {
+  mStartUp = true;
   setOn( mResource->isActive() );
+  mStartUp = false;
 }
 
 void ResourceItem::stateChange( bool active )
 {
+  if ( mStartUp )
+    return;
+
   if ( active ) {
     mResource->open();
     mResource->load();

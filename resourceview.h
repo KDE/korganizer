@@ -66,6 +66,7 @@ class ResourceItem : public QCheckListItem
   private:
     KCal::ResourceCalendar *mResource;
     ResourceView *mView;
+    bool mStartUp;
 };
 
 /**
