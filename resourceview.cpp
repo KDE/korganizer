@@ -191,7 +191,7 @@ void ResourceView::removeResource()
   int km = KMessageBox::warningContinueCancel( this,
         i18n("<qt>Do you really want to delete the resource <b>%1</b>?</qt>")
         .arg( rItem->resource()->resourceName() ),"",KGuiItem(i18n("&Delete"),"editdelete") );
-  if ( km == KMessageBox::No ) return;
+  if ( km == KMessageBox::Cancel ) return;
 
 // Don't be so restricitve
 #if 0
