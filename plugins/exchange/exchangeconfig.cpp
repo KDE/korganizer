@@ -54,9 +54,9 @@ ExchangeConfig::ExchangeConfig( KPIM::ExchangeAccount* account, QWidget* parent 
   topLayout->addWidget( m_password, 2, 1 );
   m_password->setEchoMode( QLineEdit::Password );
 
-  m_mailboxEqualsUser = new QCheckBox( i18n( "Exchange Mailbox is equal to User" ), topFrame );
-  topLayout->addMultiCellWidget( m_mailboxEqualsUser, 3, 3, 0, 1 );
-  connect( m_mailboxEqualsUser, SIGNAL(toggled(bool)), this, SLOT(slotToggleEquals(bool)) );
+  m_autoMailbox = new QCheckBox( i18n( "Determine mailbox automatically" ), topFrame );
+  topLayout->addMultiCellWidget( m_autoMailbox, 3, 3, 0, 1 );
+  connect( m_autoMailbox, SIGNAL(toggled(bool)), this, SLOT(slotToggleAuto(bool)) );
 
   m_mailbox= new KLineEdit( mAccount->mailbox(), topFrame );
   topLayout->addWidget( new QLabel( i18n( "Mailbox URL:" ), topFrame ), 4, 0 );
@@ -66,38 +66,46 @@ ExchangeConfig::ExchangeConfig( KPIM::ExchangeAccount* account, QWidget* parent 
   topLayout->addWidget( m_tryFindMailbox, 4, 2 );
   connect( m_tryFindMailbox, SIGNAL(clicked()), this, SLOT(slotFindClicked()) );
 
-  m_mailboxEqualsUser->setChecked( mAccount->mailbox() == ("webdav://"+mAccount->host()+"/exchange/"+mAccount->account() ) );
+  m_autoMailbox->setChecked( true );
+  // m_mailboxEqualsUser->setChecked( mAccount->mailbox() == ("webdav://"+mAccount->host()+"/exchange/"+mAccount->account() ) );
 }
 
 ExchangeConfig::~ExchangeConfig()
 {
 }
 
-void ExchangeConfig::slotToggleEquals( bool on )
+void ExchangeConfig::slotToggleAuto( bool on )
 {
   m_mailbox->setEnabled( ! on );
-  m_tryFindMailbox->setEnabled( ! on );
-  if ( on ) {
-    m_mailbox->setText( "webdav://" + m_host->text() + "/exchange/" + m_user->text() );
-  }
+//  m_tryFindMailbox->setEnabled( ! on );
+//  if ( on ) {
+//    m_mailbox->setText( "webdav://" + m_host->text() + "/exchange/" + m_user->text() );
+//  }
 }
 
 void ExchangeConfig::slotUserChanged( const QString& text )
 {
-  if ( m_mailboxEqualsUser->isChecked() ) {
-    m_mailbox->setText( "webdav://" + m_host->text() + "/exchange/" + text );
-  }
+//  if ( m_mailboxEqualsUser->isChecked() ) {
+//    m_mailbox->setText( "webdav://" + m_host->text() + "/exchange/" + text );
+//  }
 }
 
 void ExchangeConfig::slotOk()
 {
-  mAccount->setHost( m_host->text() );
-  mAccount->setAccount( m_user->text() );
-  if ( m_mailboxEqualsUser->isChecked() ) {
-    mAccount->setMailbox("webdav://" + m_host->text() + "/exchange/" + m_user->text() );
+  if ( m_autoMailbox->isChecked() ) {
+    QString mailbox = mAccount->tryFindMailbox( m_host->text(), m_user->text(), m_password->text() );
+    if ( mailbox.isNull() ) {
+      kdWarning() << "Could not find Exchange mailbox URL, incomplete settings!"<< endl;
+      KMessageBox::sorry( this, "Could not determine mailbox URL" );
+      return; // Do not accept
+    } else {
+      mAccount->setMailbox( mailbox );
+    }
   } else {
     mAccount->setMailbox( m_mailbox->text() );
   }
+  mAccount->setHost( m_host->text() );
+  mAccount->setAccount( m_user->text() );
   mAccount->setPassword( m_password->text() );
   
   accept();

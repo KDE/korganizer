@@ -39,7 +39,7 @@ class ExchangeConfig : public KDialogBase
 //    void save();
 
   protected slots:
-    void slotToggleEquals( bool on );
+    void slotToggleAuto( bool on );
     void slotUserChanged( const QString& text );
     void slotFindClicked();
     void slotOk();
@@ -49,7 +49,7 @@ class ExchangeConfig : public KDialogBase
     KPIM::ExchangeAccount* mAccount;
     KLineEdit *m_host;
     KLineEdit *m_user;
-    QCheckBox *m_mailboxEqualsUser;
+    QCheckBox *m_autoMailbox;
     KLineEdit *m_mailbox;
     QPushButton* m_tryFindMailbox;
     KLineEdit *m_password;
