@@ -129,8 +129,7 @@ tipdir = $(kde_datadir)/korganizer
 
 kde_bin_SCRIPTS = ical2vcal korganizerIn
 
-kdelnkdir = $(kde_appsdir)/Applications
-kdelnk_DATA = korganizer.desktop
+xdg_apps_DATA = korganizer.desktop
 
 rcdir = $(kde_datadir)/korganizer
 rc_DATA = korganizerui.rc korganizergsui.rc
