@@ -56,7 +56,7 @@ KOIncidenceEditor::KOIncidenceEditor( const QString &caption,
 
   QString saveTemplateText;
   if ( KOPrefs::instance()->mCompactDialogs ) {
-    saveTemplateText = i18n("Save...");
+    showButton( User1, false );
     showButton( Apply, false );
   } else {
     saveTemplateText = i18n("Save as Template...");
