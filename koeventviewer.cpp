@@ -226,7 +226,10 @@ void KOEventViewer::linkPerson( const QString& email, QString name,
   // Make the mailto link
   if ( !email.isEmpty() && !iconPath.isNull() ) {
     KCal::Person person( name, email );
-    addLink( "mailto:" + person.fullName(), "<img src=\"" + iconPath + "\">" );
+    KURL mailto;
+    mailto.setProtocol( "mailto" );
+    mailto.setPath( person.fullName() );
+    addLink( mailto.url(), "<img src=\"" + iconPath + "\">" );
   }
   mText += "</li>\n";
 }
