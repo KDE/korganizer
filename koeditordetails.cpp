@@ -560,11 +560,7 @@ void KOEditorDetails::fillAttendeeInput( AttendeeListItem *aItem )
   mDisableItemUpdate = true;
   QString name = a->name();
   if (!a->email().isEmpty()) {
-    // Taken from KABC::Addressee::fullEmail
-    QRegExp needQuotes( "[^ 0-9A-Za-z\\x0080-\\xFFFF]" );
-    if ( name.find( needQuotes ) != -1 )
-      name = "\"" + name + "\" <" + a->email() + ">";
-    else
+    name = KPIM::quoteNameIfNecessary( name );
     name += " <" + a->email() + ">";
   }
   mNameEdit->setText(name);
