@@ -108,11 +108,11 @@ bool KOListView::ListItemVisitor::visit( Event *e )
     mItem->setSortKey(2,"0");
 
   mItem->setText( 3,e->dtStartDateStr());
-  if (e->doesFloat()) mItem->setText(4, i18n("---")); else mItem->setText( 4, e->dtStartTimeStr() );
+  if (e->doesFloat()) mItem->setText(4, "---"); else mItem->setText( 4, e->dtStartTimeStr() );
   mItem->setText( 5,e->dtEndDateStr());
-  if (e->doesFloat()) mItem->setText(6, i18n("---")); else mItem->setText( 6, e->dtEndTimeStr() );
-  mItem->setText( 7, i18n( "---" ) );
-  mItem->setText( 8, i18n( "---" ) );
+  if (e->doesFloat()) mItem->setText(6, "---"); else mItem->setText( 6, e->dtEndTimeStr() );
+  mItem->setText( 7, "---" );
+  mItem->setText( 8, "---" );
   mItem->setText( 9,e->categoriesStr());
 
   QString key = e->dtStart().toString(Qt::ISODate);
