@@ -22,6 +22,8 @@
 #include <kdebug.h>
 #include <kio/job.h>
 #include <kglobal.h>
+#include <kmessagebox.h>
+#include <klocale.h>
 
 #include "provider.h"
 #include "provider.moc"
@@ -184,7 +186,7 @@ void ProviderLoader::slotJobResult( KIO::Job *job )
 
   QDomDocument doc;
   if ( !doc.setContent( QString::fromUtf8( mJobData ) ) ) {
-    kdDebug(5850) << "Error parsing Providers.xml." << endl;
+    KMessageBox::error( mParentWidget, i18n("Error parsing providers list.") );
     return;
   }
 

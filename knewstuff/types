@@ -1,0 +1,3 @@
+[kdesktop/wallpaper]
+StandardResource=wallpaper
+InstallationCommand=dcop kdesktop KBackgroundIface setWallpaper %f 2

@@ -1,6 +1,7 @@
 /*
-    This file is part of KOrganizer.
-    Copyright (c) 2002 Cornelius Schumacher <schumacher@kde.org>
+    This file is part of KDE.
+
+    Copyright (c) 2003 Cornelius Schumacher <schumacher@kde.org>
 
     This library is free software; you can redistribute it and/or
     modify it under the terms of the GNU Library General Public
@@ -17,50 +18,30 @@
     the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
     Boston, MA 02111-1307, USA.
 */
+#ifndef GHNS_H
+#define GHNS_H
+
+#include <stdlib.h>
+
+#include <qpushbutton.h>
 
 #include <kapplication.h>
 #include <kdebug.h>
-#include <klocale.h>
-#include <kstandarddirs.h>
-
-#include "engine.h"
 
 #include "knewstuff.h"
 
-using namespace KNS;
-
-KNewStuff::KNewStuff( const QString &type, QWidget *parentWidget )
+class GhnsWidget : public QWidget
 {
-  mEngine = new Engine( this, type, parentWidget );
-}
+    Q_OBJECT
+  public:
+    GhnsWidget();
+    ~GhnsWidget();
+    
+  public slots:
+    void downloadWallpapers();
 
-QString KNewStuff::type() const
-{
-  return mEngine->type();
-}
+  private:
+    KNewStuff *mWallpapers;
+};
 
-QWidget *KNewStuff::parentWidget() const
-{
-  return mEngine->parentWidget();
-}
-
-KNewStuff::~KNewStuff()
-{
-  delete mEngine;
-}
-
-void KNewStuff::download()
-{
-  mEngine->download();
-}
-
-QString KNewStuff::downloadDestination( Entry * )
-{
-  return KGlobal::dirs()->saveLocation( "tmp" ) +
-         KApplication::randomString( 10 );
-}
-
-void KNewStuff::upload()
-{
-  mEngine->upload();
-}
+#endif

@@ -38,7 +38,7 @@ bool TestNewStuff::createUploadFile( const QString &fileName )
   p << "touch" << fileName;
   p.start(KProcess::Block);
   kdDebug(5850) << "TestNewStuff::createUploadFile(): " << fileName << endl;
-  return fileName;
+  return true;
 }
 
 

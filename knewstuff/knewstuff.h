@@ -64,6 +64,16 @@ class KNewStuff
     virtual ~KNewStuff();
     
     /**
+      Return type of data.
+    */
+    QString type() const;
+    
+    /**
+      Return parent widget.
+    */
+    QWidget *parentWidget() const;
+    
+    /**
       Start download process.
     */
     void download();

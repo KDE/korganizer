@@ -164,12 +164,18 @@ void Engine::download( Entry *entry )
 
   KURL source = entry->payload();
   mDownloadDestination = mNewStuff->downloadDestination( entry );
+
+  if ( mDownloadDestination.isEmpty() ) {
+    kdDebug(5850) << "Empty downloadDestination. Cancelling download." << endl;
+    return;
+  }
+
   KURL destination = KURL( mDownloadDestination );
 
   kdDebug(5850) << "  SOURCE: " << source.url() << endl;
   kdDebug(5850) << "  DESTINATION: " << destination.url() << endl;
 
-  KIO::FileCopyJob *job = KIO::file_copy( source, destination );
+  KIO::FileCopyJob *job = KIO::file_copy( source, destination, -1, true );
   connect( job, SIGNAL( result( KIO::Job * ) ),
            SLOT( slotDownloadJobResult( KIO::Job * ) ) );
 }

@@ -44,6 +44,10 @@ class Engine : public QObject
     Engine( KNewStuff *, const QString &, QWidget *parentWidget = 0 );
     virtual ~Engine();
     
+    QString type() const { return mType; }
+
+    QWidget *parentWidget() const { return mParentWidget; }
+    
     void download();
     void upload();
 
