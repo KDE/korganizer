@@ -83,7 +83,8 @@ KOrganizer::KOrganizer( bool document, const char *name )
   : KParts::MainWindow(0,name),
     KOrg::MainWindow(),
     DCOPObject("KOrganizerIface"),
-    mDocument( document )
+    mDocument( document ),
+    mIsClosing( false )
 {
   kdDebug() << "KOrganizer::KOrganizer()" << endl;
 
@@ -264,30 +265,34 @@ void KOrganizer::initViews()
 
 bool KOrganizer::queryClose()
 {
-#if 0
-  if ( ActionManager::getWindowList()->lastInstance() &&
-       !mActionManager->isActive() &&
-       !mActionManager->url().isEmpty() ) {
-    int result = KMessageBox::questionYesNo( this, i18n("Do you want to make this"
-    " calendar active?\nThis means that it is monitored for alarms and loaded"
-    " as default calendar.") );
-    if ( result == KMessageBox::Yes ) mActionManager->makeActive();
-  }
-#endif
+  kdDebug() << "KOrganizer::queryClose()" << endl;
 
-  bool success = true;
+  bool close = true;
 
   if ( mDocument ) {
-    success = mActionManager->saveModifiedURL();
+    close = mActionManager->saveModifiedURL();
   } else {
-    mCalendar->save();
+    if ( !mIsClosing ) {
+      kdDebug() << "!mIsClosing" << endl;
+      mCalendar->save();
+      hide();
+      mIsClosing = true;
+      connect( mCalendar, SIGNAL( calendarSaved() ), SLOT( close() ) );
+    }
+    if ( mCalendar->isSaving() ) {
+      kdDebug() << "KOrganizer::queryClose(): isSaving" << endl;
+      close = false;
+    } else {
+      kdDebug() << "KOrganizer::queryClose(): close = true" << endl;
+      close = true;
+    }
   }
   
   // Write configuration. I don't know if it really makes sense doing it this
   // way, when having opened multiple calendars in different CalendarViews.
-  writeSettings();
+  if ( close ) writeSettings();
 
-  return success;
+  return close;
 }
 
 bool KOrganizer::queryExit()

@@ -183,6 +183,8 @@ class KOrganizer : public KParts::MainWindow, virtual public KOrganizerIface, pu
     // status bar ids
     enum { ID_HISTORY, ID_GENERAL, ID_ACTIVE, ID_MESSAGES_IN, ID_MESSAGES_OUT };
     ActionManager *mActionManager;
+
+    bool mIsClosing;
 };
 
 #endif
