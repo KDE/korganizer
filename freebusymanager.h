@@ -127,9 +127,6 @@ class FreeBusyManager : public QObject, public KCal::FreeBusyCache
     */
     void freeBusyRetrieved( KCal::FreeBusy *, const QString &email );
 
-  private slots:
-    void slotUploadFreeBusyResult( KIO::Job * );
-
   protected:
     void timerEvent( QTimerEvent* );
 
@@ -148,9 +145,17 @@ class FreeBusyManager : public QObject, public KCal::FreeBusyCache
     */
     QString freeBusyToIcal( KCal::FreeBusy * );
 
+  protected slots:
+    bool processRetrieveQueue();
+
+  private slots:
+    void slotUploadFreeBusyResult( KIO::Job * );
+
   private:
     KCal::Calendar *mCalendar;
     KCal::ICalFormat mFormat;
+
+    QStringList mRetrieveQueue;
 
     // Free/Busy uploading
     QDateTime mNextUploadTime;

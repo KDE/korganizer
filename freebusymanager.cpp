@@ -6,6 +6,7 @@
 
   Copyright (c) 2002-2004 Klarälvdalens Datakonsult AB
         <info@klaralvdalens-datakonsult.se>
+  Copyright (c) 2004 Cornelius Schumacher <schumacher@kde.org>
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -90,6 +91,8 @@ void FreeBusyDownloadJob::slotData( KIO::Job *, const QByteArray &data )
 
 void FreeBusyDownloadJob::slotResult( KIO::Job *job )
 {
+  kdDebug() << "FreeBusyDownloadJob::slotResult() " << mEmail << endl;
+
   if( job->error() ) {
     kdDebug(5850) << "FreeBusyDownloadJob::slotResult() job error :-(" << endl;
   }
@@ -319,6 +322,20 @@ bool FreeBusyManager::retrieveFreeBusy( const QString &email )
   if( !KOPrefs::instance()->mFreeBusyRetrieveAuto )
     return false;
 
+  mRetrieveQueue.append( email );
+
+  if ( mRetrieveQueue.count() > 1 ) return true;
+
+  return processRetrieveQueue();
+}
+
+bool FreeBusyManager::processRetrieveQueue()
+{
+  if ( mRetrieveQueue.isEmpty() ) return true;
+
+  QString email = mRetrieveQueue.first();
+  mRetrieveQueue.pop_front();
+
   KURL sourceURL = freeBusyUrl( email );
 
   if ( !sourceURL.isValid() ) return false;
@@ -326,10 +343,14 @@ bool FreeBusyManager::retrieveFreeBusy( const QString &email )
   kdDebug() << "FreeBusyManager::retrieveFreeBusy(): url: " << sourceURL.url()
             << endl;
 
-  FreeBusyDownloadJob* job = new FreeBusyDownloadJob( email, sourceURL, this,
+  FreeBusyDownloadJob *job = new FreeBusyDownloadJob( email, sourceURL, this,
                                                       "freebusy_download_job" );
-  connect( job, SIGNAL( freeBusyDownloaded( KCal::FreeBusy *, const QString & ) ),
+  connect( job, SIGNAL( freeBusyDownloaded( KCal::FreeBusy *,
+                                            const QString & ) ),
 	   SIGNAL( freeBusyRetrieved( KCal::FreeBusy *, const QString & ) ) );
+  connect( job, SIGNAL( freeBusyDownloaded( KCal::FreeBusy *,
+                                            const QString & ) ),
+           SLOT( processRetrieveQueue() ) );
 
   return true;
 }
