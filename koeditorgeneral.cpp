@@ -299,7 +299,7 @@ void KOEditorGeneral::readIncidence(Incidence *event)
       QDateTime t = alarm->time();
       offset = event->dtStart().secsTo( t );
     } else {
-      offset = alarm->offset().asSeconds();
+      offset = alarm->startOffset().asSeconds();
     }
     offset = offset / -60; // make minutes
     if (offset % 60 == 0) { // divides evenly into hours?
@@ -357,7 +357,7 @@ void KOEditorGeneral::writeIncidence(Incidence *event)
         j = j * 60;
       else if (mAlarmIncrCombo->currentItem() == 2)
         j = j * (60 * 24);
-      alarm->setOffset( j );
+      alarm->setStartOffset( j );
 
       if (!mAlarmProgram.isEmpty() && mAlarmProgramButton->isOn())
         alarm->setProcedureAlarm(mAlarmProgram);
