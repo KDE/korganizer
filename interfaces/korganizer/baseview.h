@@ -80,10 +80,11 @@ class BaseView : public QWidget
     */
     virtual ~BaseView() {}
 
+    virtual void setCalendar( Calendar *cal ) { mCalendar = cal; }
     /**
       Return calendar object of this view.
     */
-    Calendar *calendar() { return mCalendar; }
+    virtual Calendar *calendar() { return mCalendar; }
 
     /**
       @return a list of selected events.  Most views can probably only

@@ -1,6 +1,7 @@
 /*
     This file is part of KOrganizer.
-    Copyright (c) 2001 Cornelius Schumacher <schumacher@kde.org>
+
+    Copyright (c) 2001,2003 Cornelius Schumacher <schumacher@kde.org>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -42,10 +43,15 @@ class KDateNavigator: public QFrame
 {
     Q_OBJECT
   public:
-    KDateNavigator( QWidget *parent = 0, Calendar *calendar = 0,
+    KDateNavigator( QWidget *parent = 0,
                     bool show_week_numbers = false, const char *name = 0,
                     QDate date = QDate::currentDate() );
     ~KDateNavigator();
+
+    /**
+      Associate date navigator with a calendar. It is used by KODayMatrix.
+    */
+    void setCalendar( Calendar * );
 
     /** The DateNavigator automatically checks for
     * the passage of midnight. If rollover type is
@@ -71,9 +77,9 @@ class KDateNavigator: public QFrame
   signals:
     void datesSelected( const KCal::DateList & );
     void eventDropped( Event * );
-    void eventDroppedMove(Event *, Event *);
+    void eventDroppedMove( Event *, Event * );
     void todoDropped( Todo * );
-    void todoDroppedMove(Todo *, Todo *);
+    void todoDroppedMove( Todo *, Todo * );
     void weekClicked( const QDate &);
 
     void goPrevious();
@@ -84,14 +90,13 @@ class KDateNavigator: public QFrame
     void goNextYear();
     void goPrevYear();
 
-    void goMonth(int month);
+    void goMonth( int month );
 
     // Signals emitted at midnight carrying the new date.
     void dayPassed( QDate );
     void monthPassed( QDate );
 
   protected slots:
-
      /**
      * Called regularly to see if we need to update the view
      * wrt. the today box and the month box. Only important
@@ -111,28 +116,28 @@ class KDateNavigator: public QFrame
   protected:
     void updateDates();
 
-    void wheelEvent (QWheelEvent *);
+    void wheelEvent( QWheelEvent * );
 
-    bool eventFilter (QObject *,QEvent *);
+    bool eventFilter( QObject *,QEvent * );
 
   private:
+    int dayNum( int row, int col );
+    int dayToIndex( int dayNum );
+
     NavigatorBar *mNavigatorBar;
 
     QFrame *headingSep;
     QFrame *weeknumSep;
-    QLabel *headings[7];
-    QLabel *weeknos[7];
-    KODayMatrix *daymatrix;
+    QLabel *headings[ 7 ];
+    QLabel *weeknos[ 7 ];
+
+    KODayMatrix *mDayMatrix;
 
     KCal::DateList mSelectedDates;
     QDate m_MthYr;
     int m_fstDayOfWk;
     bool m_bShowWeekNums;
 
-    int dayNum(int row, int col);
-    int dayToIndex(int dayNum);
-
-    Calendar *mCalendar;
     KCalendarSystem *mCalendarSystem;
 
     const QString *curHeaders;
@@ -145,8 +150,8 @@ class KDateNavigator: public QFrame
     RolloverType updateRollover;
 
     // Disabling copy constructor and assignment operator
-    KDateNavigator(const KDateNavigator & );
-    KDateNavigator &operator=(const KDateNavigator &);
+    KDateNavigator( const KDateNavigator & );
+    KDateNavigator &operator=( const KDateNavigator & );
 };
 
 #endif

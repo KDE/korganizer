@@ -50,8 +50,6 @@ class KOIncidenceEditor;
 class ResourceView;
 class NavigatorBar;
 
-namespace KCal { class FileStorage; }
-
 namespace KOrg { class History; }
 
 using namespace KCal;
@@ -85,14 +83,13 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     /**
       Constructs a new calendar view widget.
 
-      @param calendar calendar document
       @param parent   parent window
       @param name     Qt internal widget object name
     */
-    CalendarView( Calendar *calendar, QWidget *parent = 0,
-                  const char *name = 0 );
+    CalendarView( QWidget *parent = 0, const char *name = 0 );
     virtual ~CalendarView();
 
+    void setCalendar( Calendar * );
     Calendar *calendar();
 
     KOrg::History *history() { return mHistory; }
@@ -125,7 +122,6 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     Incidence *selectedIncidence();
 
   signals:
-
     /** when change is made to options dialog, the topwidget will catch this
      *  and emit this signal which notifies all widgets which have registered
      *  for notification to update their settings. */
@@ -264,6 +260,8 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     /**
       Using the KConfig associated with the kapp variable, read in the
       settings from the config file.
+      
+      You have to call setCalendar before calling readSettings.
     */
     void readSettings();
 
@@ -468,8 +466,6 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     QPtrList<CalendarViewExtension> mExtensions;
 
     Calendar *mCalendar;
-
-    FileStorage *mStorage;
 
     DateNavigator *mNavigator;
 

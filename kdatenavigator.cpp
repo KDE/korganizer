@@ -1,6 +1,7 @@
 /*
     This file is part of KOrganizer.
-    Copyright (c) 2001,2002 Cornelius Schumacher <schumacher@kde.org>
+
+    Copyright (c) 2001,2002,2003 Cornelius Schumacher <schumacher@kde.org>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -45,24 +46,22 @@
 
 #include "kdatenavigator.h"
 
-KDateNavigator::KDateNavigator( QWidget *parent, Calendar *calendar,
+KDateNavigator::KDateNavigator( QWidget *parent,
                                 bool show_week_nums, const char *name,
                                 QDate startDate )
   : QFrame( parent, name ),
     updateTimer( 0 )
 {
-  mCalendar = calendar;
+  setFrameStyle( QFrame::NoFrame );
 
-  setFrameStyle(QFrame::NoFrame);
+  QGridLayout *topLayout = new QGridLayout( this, 8, 8 );
 
-  QGridLayout *topLayout = new QGridLayout(this,8,8);
-
-  if (! startDate.isValid()) {
+  if ( !startDate.isValid() ) {
     kdDebug(5850) << "KDateNavigator::KDateNavigator(): an invalid date was passed as a parameter!" << endl;
     startDate = QDate::currentDate();
   }
 
-  mSelectedDates.append(startDate);
+  mSelectedDates.append( startDate );
   m_MthYr = startDate;
   m_bShowWeekNums = show_week_nums;
 
@@ -73,10 +72,10 @@ KDateNavigator::KDateNavigator( QWidget *parent, Calendar *calendar,
   connect( mNavigatorBar, SIGNAL( goPrevMonth() ), SIGNAL( goPrevMonth() ) );
   connect( mNavigatorBar, SIGNAL( goNextMonth() ), SIGNAL( goNextMonth() ) );
   connect( mNavigatorBar, SIGNAL( goNextYear() ), SIGNAL( goNextYear() ) );
-  connect( mNavigatorBar, SIGNAL( goMonth(int) ), SIGNAL( goMonth(int) ) );
+  connect( mNavigatorBar, SIGNAL( goMonth( int ) ), SIGNAL( goMonth( int ) ) );
 
   // get the day of the week on the first day
-  QDate dayone(m_MthYr.year(), m_MthYr.month(), 1);
+  QDate dayone( m_MthYr.year(), m_MthYr.month(), 1 );
   m_fstDayOfWk = dayone.dayOfWeek();
 
   int i;
@@ -104,101 +103,99 @@ KDateNavigator::KDateNavigator( QWidget *parent, Calendar *calendar,
     topLayout->addWidget(weeknos[i],i+2,0);
   }
 
-  daymatrix = new KODayMatrix( this, mCalendar, dayone,
-                               "KDateNavigator::DayMatrix");
-  daymatrix->setFrameStyle(QFrame::Panel|QFrame::Sunken);
-  daymatrix->setLineWidth(1);
+  mDayMatrix = new KODayMatrix( this, dayone, "KDateNavigator::dayMatrix");
+  mDayMatrix->setFrameStyle(QFrame::Panel|QFrame::Sunken);
+  mDayMatrix->setLineWidth(1);
 
-  connect( daymatrix, SIGNAL( selected( const KCal::DateList & ) ),
+  connect( mDayMatrix, SIGNAL( selected( const KCal::DateList & ) ),
            SIGNAL( datesSelected( const KCal::DateList & ) ) );
 
-  connect( daymatrix, SIGNAL( eventDropped( Event * ) ),
+  connect( mDayMatrix, SIGNAL( eventDropped( Event * ) ),
            SIGNAL( eventDropped( Event * ) ) );
-  connect( daymatrix, SIGNAL( eventDroppedMove( Event * , Event * ) ),
+  connect( mDayMatrix, SIGNAL( eventDroppedMove( Event * , Event * ) ),
            SIGNAL( eventDroppedMove( Event *, Event * ) ) );
-  connect( daymatrix, SIGNAL( todoDropped( Todo * ) ),
+  connect( mDayMatrix, SIGNAL( todoDropped( Todo * ) ),
            SIGNAL( todoDropped( Todo * ) ) );
-  connect( daymatrix, SIGNAL( todoDroppedMove( Todo * , Todo * ) ),
+  connect( mDayMatrix, SIGNAL( todoDroppedMove( Todo * , Todo * ) ),
            SIGNAL( todoDroppedMove( Todo *, Todo * ) ) );
 
-  topLayout->addMultiCellWidget(daymatrix,2,7,1,7);
+  topLayout->addMultiCellWidget( mDayMatrix, 2, 7, 1, 7 );
 
   // read settings from configuration file.
   updateConfig();
-  enableRollover(FollowMonth);
+  enableRollover( FollowMonth );
 }
 
-void KDateNavigator::enableRollover(RolloverType r)
+void KDateNavigator::enableRollover( RolloverType r )
 {
-  switch(r)
-  {
-  case None :
-    if (updateTimer)
-    {
-      updateTimer->stop();
-      delete updateTimer;
-      updateTimer = 0;
-    }
-    break;
-  case FollowDay :
-  case FollowMonth :
-    if (!updateTimer)
-    {
-      updateTimer = new QTimer(this);
-      QObject::connect(updateTimer,SIGNAL(timeout()),
-        this,SLOT(possiblyPastMidnight()));
-    }
-    updateTimer->start(0,true);
-    lastDayChecked = QDate::currentDate();
+  switch( r ) {
+    case None:
+      if ( updateTimer ) {
+        updateTimer->stop();
+        delete updateTimer;
+        updateTimer = 0;
+      }
+      break;
+    case FollowDay:
+    case FollowMonth:
+      if ( !updateTimer ) {
+        updateTimer = new QTimer( this );
+        connect( updateTimer, SIGNAL( timeout() ),
+                 SLOT( possiblyPastMidnight() ) );
+      }
+      updateTimer->start( 0, true );
+      lastDayChecked = QDate::currentDate();
   }
-  updateRollover=r;
+  updateRollover = r;
 }
-
 
 KDateNavigator::~KDateNavigator()
 {
 }
 
+void KDateNavigator::setCalendar( Calendar *cal )
+{
+  mDayMatrix->setCalendar( cal );
+}
 
 void KDateNavigator::passedMidnight()
 {
-    QDate today = QDate::currentDate();
-    bool emitMonth = false;
+  QDate today = QDate::currentDate();
+  bool emitMonth = false;
 
-    if (today.month() != lastDayChecked.month())
-    {
-       if (updateRollover==FollowMonth &&
-           daymatrix->isEndOfMonth()) {
-         goNextMonth();
-         emitMonth=true;
-       }
-    }
-    daymatrix->recalculateToday();
-    daymatrix->repaint();
-    emit dayPassed(today);
-    if (emitMonth) { emit monthPassed(today); }
+  if ( today.month() != lastDayChecked.month() ) {
+     if ( updateRollover == FollowMonth &&
+         mDayMatrix->isEndOfMonth() ) {
+       goNextMonth();
+       emitMonth = true;
+     }
+  }
+  mDayMatrix->recalculateToday();
+  mDayMatrix->repaint();
+  emit dayPassed( today );
+  if ( emitMonth ) {
+    emit monthPassed( today );
+  }
 }
 
-/* slot */ void KDateNavigator::possiblyPastMidnight()
+void KDateNavigator::possiblyPastMidnight()
 {
-  if (lastDayChecked!=QDate::currentDate())
-  {
+  if ( lastDayChecked != QDate::currentDate() ) {
     passedMidnight();
-    lastDayChecked=QDate::currentDate();
+    lastDayChecked = QDate::currentDate();
   }
   // Set the timer to go off 1 second after midnight
   // or after 8 minutes, whichever comes first.
-  if (updateTimer)
-  {
+  if ( updateTimer ) {
     QTime now = QTime::currentTime();
-    QTime midnight = QTime(23,59,59);
-    int msecsWait = QMIN(480000,now.msecsTo(midnight)+2000);
+    QTime midnight = QTime( 23, 59, 59 );
+    int msecsWait = QMIN( 480000, now.msecsTo( midnight ) + 2000 );
 
     // qDebug(QString("Waiting %1 msec from %2 to %3.").arg(msecsWait)
     //        .arg(now.toString()).arg(midnight.toString()));
 
     updateTimer->stop();
-    updateTimer->start(msecsWait,true);
+    updateTimer->start( msecsWait, true );
   }
 }
 
@@ -222,15 +219,15 @@ void KDateNavigator::updateDates()
   int index = (KGlobal::locale()->weekStartsMonday() ? 1 : 0) - m_fstDayOfWkCalsys - nextLine;
 
 
-  daymatrix->updateView(dayone.addDays(index));
+  mDayMatrix->updateView(dayone.addDays(index));
 //each updateDates is followed by an updateView -> repaint is issued there !
-//  daymatrix->repaint();
+//  mDayMatrix->repaint();
 }
 
 void KDateNavigator::updateDayMatrix()
 {
-  daymatrix->updateView();
-  daymatrix->repaint();
+  mDayMatrix->updateView();
+  mDayMatrix->repaint();
 }
 
 
@@ -240,8 +237,8 @@ void KDateNavigator::updateView()
 
   int i;
 
-//  kdDebug(5850) << "updateView() -> daymatrix->updateView()" << endl;
-  daymatrix->updateView();
+//  kdDebug(5850) << "updateView() -> mDayMatrix->updateView()" << endl;
+  mDayMatrix->updateView();
 
   // set the week numbers.
   for(i = 0; i < 6; i++) {
@@ -251,7 +248,7 @@ void KDateNavigator::updateView()
     // not just 1.
 
     //ET int dayOfYear = buttons[(i + 1) * 7 - 4]->date().dayOfYear();
-    int dayOfYear = KOGlobals::self()->calendarSystem()->dayOfYear((daymatrix->getDate((i+1)*7-4)));
+    int dayOfYear = KOGlobals::self()->calendarSystem()->dayOfYear((mDayMatrix->getDate((i+1)*7-4)));
 
     if (dayOfYear % 7 != 0)
       weeknum.setNum(dayOfYear / 7 + 1);
@@ -263,7 +260,7 @@ void KDateNavigator::updateView()
   setUpdatesEnabled( true );
 //  kdDebug(5850) << "updateView() -> repaint()" << endl;
   repaint();
-  daymatrix->repaint();
+  mDayMatrix->repaint();
 }
 
 void KDateNavigator::updateConfig()
@@ -298,9 +295,9 @@ void KDateNavigator::setShowWeekNums(bool enabled)
   resize(size());
 }
 
-void KDateNavigator::selectDates(const DateList& dateList)
+void KDateNavigator::selectDates( const DateList &dateList )
 {
-  if (dateList.count() > 0) {
+  if ( dateList.count() > 0 ) {
     mNavigatorBar->selectDates( dateList );
 
     mSelectedDates = dateList;
@@ -313,49 +310,52 @@ void KDateNavigator::selectDates(const DateList& dateList)
     // set our record of the first day of the week of the current
     // month. This needs to be done before calling dayToIndex, since it
     // relies on this information being up to date.
-    QDate dayone(m_MthYr.year(), m_MthYr.month(), 1);
+    QDate dayone( m_MthYr.year(), m_MthYr.month(), 1 );
     m_fstDayOfWk = dayone.dayOfWeek();
 
     updateDates();
 
-    daymatrix->setSelectedDaysFrom(*(dateList.begin()), *(--dateList.end()));
+    mDayMatrix->setSelectedDaysFrom( *( dateList.begin() ),
+                                     *( --dateList.end() ) );
 
     updateView();
   }
 }
 
-int KDateNavigator::dayNum(int row, int col)
+int KDateNavigator::dayNum( int row, int col )
 {
-  return 7 * (row - 1) + (col + 1) - m_fstDayOfWk;
+  return 7 * ( row - 1 ) + ( col + 1 ) - m_fstDayOfWk;
 }
 
-int KDateNavigator::dayToIndex(int dayNum)
+int KDateNavigator::dayToIndex( int dayNum )
 {
   int row, col;
 
-  row = (dayNum+m_fstDayOfWk-1-(KGlobal::locale()->weekStartsMonday() ? 1 : 0)) / 7;
-  if (KGlobal::locale()->weekStartsMonday() && (m_fstDayOfWk == 1))
+  row = ( dayNum + m_fstDayOfWk - 1 -
+          ( KGlobal::locale()->weekStartsMonday() ? 1 : 0 ) ) / 7;
+  if ( KGlobal::locale()->weekStartsMonday() && ( m_fstDayOfWk == 1 ) )
     row++;
-  col = (dayNum+m_fstDayOfWk-1-(KGlobal::locale()->weekStartsMonday() ? 1 : 0)) % 7;
+  col = ( dayNum + m_fstDayOfWk - 1 -
+          ( KGlobal::locale()->weekStartsMonday() ? 1 : 0 ) ) % 7;
   return row * 7 + col;
 }
 
-void KDateNavigator::wheelEvent (QWheelEvent *e)
+void KDateNavigator::wheelEvent ( QWheelEvent *e )
 {
-  if(e->delta()>0) emit goPrevious();
+  if( e->delta() > 0 ) emit goPrevious();
   else emit goNext();
 
   e->accept();
 }
 
-bool KDateNavigator::eventFilter (QObject *o,QEvent *e)
+bool KDateNavigator::eventFilter ( QObject *o, QEvent *e )
 {
-  if (e->type() == QEvent::MouseButtonPress) {
+  if ( e->type() == QEvent::MouseButtonPress ) {
     int i;
-    for(i=0;i<6;++i) {
-      if (o == weeknos[i]) {
-        QDate weekstart = daymatrix->getDate(i*7);
-        emit weekClicked(weekstart);
+    for( i = 0; i < 6; ++i ) {
+      if ( o == weeknos[ i ] ) {
+        QDate weekstart = mDayMatrix->getDate( i * 7 );
+        emit weekClicked( weekstart );
         break;
       }
     }

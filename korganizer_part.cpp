@@ -82,7 +82,9 @@ KOrganizerPart::KOrganizerPart( QWidget *parentWidget, const char *widgetName,
   if ( pname!="kontact" ) {
     mCalendar = new CalendarLocal(KOPrefs::instance()->mTimeZoneId);
     mCalendarResources = 0;
-    view = new CalendarView( mCalendar, canvas );
+    view = new CalendarView( canvas );
+    view->setCalendar( mCalendar );
+    view->readSettings();
   } else {
     mCalendarResources = new CalendarResources( KOPrefs::instance()->mTimeZoneId );
     mCalendar = mCalendarResources;
@@ -108,7 +110,9 @@ KOrganizerPart::KOrganizerPart( QWidget *parentWidget, const char *widgetName,
       manager->add( defaultResource );
       manager->setStandardResource( defaultResource );
     }
-    view = new CalendarView( mCalendarResources, canvas );
+    view = new CalendarView( canvas );
+    view->setCalendar( mCalendarResources );
+    view->readSettings();
     ResourceViewFactory factory( manager, view );
     view->addExtension( &factory );
     connect( mCalendarResources, SIGNAL( calendarChanged() ),

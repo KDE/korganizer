@@ -1,6 +1,8 @@
 /*
     This file is part of KOrganizer.
+
     Copyright (c) 2001 Eitzenberger Thomas <thomas.eitzenberger@siemens.at>
+    Copyright (c) 2003 Cornelius Schumacher <schumacher@kde.org>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -20,8 +22,8 @@
     with any edition of Qt, and distribute the resulting executable,
     without including the source code for Qt in the source distribution.
 */
-#ifndef _KODAYMAT_H
-#define _KODAYMAT_H
+#ifndef KODAYMATRIX_H
+#define KODAYMATRIX_H
 
 #include <libkcal/calendar.h>
 
@@ -50,33 +52,30 @@ using namespace KCal;
  */
 class DynamicTip : public QToolTip
 {
-public:
-
+  public:
     /**
      * Constructor that expects a KODayMatrix object as parent.
      *
      * @param parent the parent KODayMatrix control.
      */
-    DynamicTip(QWidget* parent );
+    DynamicTip( QWidget *parent );
 
-protected:
-
+  protected:
     /**
      * Qt's callback to ask the object to provide an approrpiate text for the
      * tooltip to be shown.
      *
      * @param pos coordinates of the mouse.
      */
-    void maybeTip( const QPoint & pos);
+    void maybeTip( const QPoint &pos );
 
-private:
-
+  private:
     /** the parent control this tooltip is designed for. */
-    KODayMatrix* matrix;
+    KODayMatrix *mMatrix;
 };
 
 /**
- *  replacement for kdpdatebuton.cpp that used 42 widgets for the day matrix to be displayed.
+ *  Replacement for kdpdatebuton.cpp that used 42 widgets for the day matrix to be displayed.
  *  Cornelius thought this was a waste of memory and a lot of overhead.
  *  In addition the selection was not very intuitive so I decided to rewrite it using a QFrame
  *  that draws the labels and allows for dragging selection while maintaining nearly full
@@ -100,12 +99,10 @@ private:
  *
  *  @author Eitzenberger Thomas
  */
-class KODayMatrix: public QFrame {
-
+class KODayMatrix: public QFrame
+{
     Q_OBJECT
-
-public:
-
+  public:
     /** constructor to create a day matrix widget.
      *
      *  @param parent widget that is the parent of the day matrix. Normally this should
@@ -115,11 +112,17 @@ public:
      *              assumed that this date is the first week day to be shown in the matrix.
      *  @param name name of the widget
      */
-    KODayMatrix(QWidget *parent, Calendar* calendar, QDate date, const char *name );
+    KODayMatrix( QWidget *parent, QDate date, const char *name );
 
     /** destructor that deallocates all dynamically allocated private members.
      */
     ~KODayMatrix();
+
+    /**
+      Associate a calendar with this day matrix. If there is a calendar, the day
+      matrix will accept drops and days with events will be highlighted.
+    */
+    void setCalendar( Calendar * );
 
     /** updates the day matrix to start with the given date. Does all the necessary
      *  checks for holidays or events on a day and stores them for display later on.
@@ -128,34 +131,40 @@ public:
      *  @param actdate recalculates the day matrix to show NUMDAYS starting from this
      *                 date.
      */
-    void updateView(QDate actdate);
+    void updateView( QDate actdate );
+
+    /**
+      Update event states of dates. Depending of the preferences days with
+      events are highlighted in some way.
+    */
+    void updateEvents();
 
     /** returns the QDate object associated with day indexed by the
      *  supplied offset.
      */
-    const QDate& getDate(int offset);
+    const QDate& getDate( int offset );
 
     /** returns the official name of this holy day or 0 if there is no label
      *  for this day.
      */
-    QString getHolidayLabel(int offset);
+    QString getHolidayLabel( int offset );
 
     /** adds all actual selected days from mSelStart to mSelEnd to the supplied
      *  DateList.
      */
-    void addSelectedDaysTo(DateList&);
+    void addSelectedDaysTo( DateList & );
 
     /** sets the actual to be displayed selection in the day matrix starting from
      *  start and ending with end. Theview must be manually updated by calling
      *  repaint. (?)
      */
-    void setSelectedDaysFrom(const QDate& start, const QDate& end);
+    void setSelectedDaysFrom( const QDate &start, const QDate &end );
 
 
     /** Is today visible in the view? Keep this in sync with
     * the values today (below) can take.
     */
-    bool isTodayVisible() const { return today>=0; } ;
+    bool isTodayVisible() const { return today >= 0; }
 
     /** If today is visible, then we can find out if today is
     * near the beginning or the end of the month.
@@ -163,10 +172,10 @@ public:
     * in the array of visible dates and going from
     * top left (0) to bottom right (41).
     */
-    bool isBeginningOfMonth() const { return today<=8; } ;
-    bool isEndOfMonth() const { return today>=27; } ;
+    bool isBeginningOfMonth() const { return today <= 8; }
+    bool isEndOfMonth() const { return today >= 27; }
 
-public slots:
+  public slots:
     /** Recalculates all the flags of the days in the matrix like holidays or events
      *  on a day (Actually calls above method with the actual startdate).
      */
@@ -182,8 +191,7 @@ public slots:
     void setStartDate(QDate);
 */
 
-signals:
-
+  signals:
     /** emitted if the user selects a block of days with the mouse by dragging a rectangle
      *  inside the matrix
      *
@@ -195,60 +203,58 @@ signals:
      *
      *  @param event the dropped calendar event
      */
-    void eventDropped(Event *event);
+    void eventDropped( Event *event );
     /** emitted if the user has dropped an event inside the matrix and chose to move it instead of copy
      *
      *  @param oldevent the new calendar event
      *  @param newevent the item that was moved
      */
-    void eventDroppedMove(Event *oldevent, Event *newevent);
+    void eventDroppedMove( Event *oldevent, Event *newevent );
     /** emitted if the user has dropped a todo inside the matrix and chose to move it instead of copy
      *
      *  @param oldtodo the new todo
      *  @param newtodo the item that was moved
      */
-    void todoDroppedMove( Todo *oldtodo, Todo *newtodo);
+    void todoDroppedMove( Todo *oldtodo, Todo *newtodo );
     /** emitted if the user has dropped a todo inside the matrix
      *
      *  @param event the dropped todo item
      */
-    void todoDropped(Todo *todo);
+    void todoDropped( Todo *todo );
 
-protected:
+  protected:
+    void paintEvent( QPaintEvent *ev );
 
-    void paintEvent(QPaintEvent *ev);
+    void mousePressEvent( QMouseEvent *e );
 
-    void mousePressEvent (QMouseEvent* e);
+    void mouseReleaseEvent( QMouseEvent *e );
 
-    void mouseReleaseEvent (QMouseEvent* e);
+    void mouseMoveEvent( QMouseEvent *e );
 
-    void mouseMoveEvent (QMouseEvent* e);
+    void dragEnterEvent( QDragEnterEvent * );
 
-    void dragEnterEvent(QDragEnterEvent *);
+    void dragMoveEvent( QDragMoveEvent * );
 
-    void dragMoveEvent(QDragMoveEvent *);
+    void dragLeaveEvent( QDragLeaveEvent * );
 
-    void dragLeaveEvent(QDragLeaveEvent *);
+    void dropEvent( QDropEvent * );
 
-    void dropEvent(QDropEvent *);
+    void resizeEvent( QResizeEvent * );
 
-    void resizeEvent(QResizeEvent *);
-
-private:
-
+  private:
     /** returns the index of the day located at the matrix's widget (x,y) position.
      *
      *  @param x horizontal coordinate
      *  @param y vertical coordinate
      */
-    int getDayIndexFrom(int x, int y);
+    int getDayIndexFrom( int x, int y );
 
     /** calculates a "shaded" color from the supplied color object.
      *  (Copied from Cornelius's kdpdatebutton.cpp)
      *
      *  @param color source based on which a shaded color should be calculated.
      */
-    QColor getShadedColor(QColor color);
+    QColor getShadedColor( QColor color );
 
     /** number of days to be displayed. For now there is no support for any other number then 42.
         so change it at your own risk :o) */
@@ -270,7 +276,7 @@ private:
     /** array of storing the number of events on a given day.
       *  used for drawing a bold font if there is at least one event on that day.
       */
-    int      *events;
+    int      *mEvents;
 
     /** stores holiday names of the days shown in the matrix. */
     QMap<int,QString>  mHolidays;
@@ -318,7 +324,6 @@ private:
      *  on every repaint.
      */
     QRect     daysize;
-
 };
 
 #endif

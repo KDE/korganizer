@@ -335,6 +335,7 @@ void KOViewManager::showTodoView()
   if ( !mTodoView ) {
     mTodoView = new KOTodoView( mMainView->calendar(), mMainView->viewStack(),
                                 "KOViewManager::TodoView" );
+    mTodoView->setCalendar( mMainView->calendar() );
     addView( mTodoView );
     connectTodoView( mTodoView );
 
@@ -342,7 +343,7 @@ void KOViewManager::showTodoView()
              mMainView, SLOT( processMainViewSelection( Incidence * ) ) );
 
     KConfig *config = KOGlobals::config();
-    mTodoView->restoreLayout(config,"Todo View");
+    mTodoView->restoreLayout( config, "Todo View" );
   }
 
   showView( mTodoView );

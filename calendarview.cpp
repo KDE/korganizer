@@ -101,16 +101,12 @@
 
 using namespace KOrg;
 
-CalendarView::CalendarView( Calendar *calendar,
-                            QWidget *parent, const char *name )
+CalendarView::CalendarView( QWidget *parent, const char *name )
   : CalendarViewBase( parent, name ),
-    mCalendar( calendar )
+    mHistory( 0 ),
+    mCalendar( CalendarNull::self() )
 {
   kdDebug(5850) << "CalendarView::CalendarView( Calendar )" << endl;
-
-  mHistory = new History( calendar );
-  connect( mHistory, SIGNAL( undone() ), SLOT( updateView() ) );
-  connect( mHistory, SIGNAL( redone() ), SLOT( updateView() ) );
 
   mViewManager = new KOViewManager( this );
   mDialogManager = new KODialogManager( this );
@@ -125,11 +121,7 @@ CalendarView::CalendarView( Calendar *calendar,
 
   mExtensions.setAutoDelete( true );
 
-  mCalendar->registerObserver( this );
-
   // TODO: Make sure that view is updated, when calendar is changed.
-
-  mStorage = new FileStorage( mCalendar );
 
   mNavigator = new DateNavigator( this );
 
@@ -145,11 +137,11 @@ CalendarView::CalendarView( Calendar *calendar,
                                  "CalendarView::LeftFrame" );
   mPanner->setResizeMode( mLeftSplitter, QSplitter::KeepSize );
 
-  mDateNavigator = new KDateNavigator( mLeftSplitter, mCalendar, true,
+  mDateNavigator = new KDateNavigator( mLeftSplitter, true,
                                        "CalendarView::DateNavigator",
                                        QDate::currentDate() );
   mLeftSplitter->setResizeMode( mDateNavigator, QSplitter::KeepSize );
-  mTodoList = new KOTodoView( mCalendar, mLeftSplitter, "todolist" );
+  mTodoList = new KOTodoView( CalendarNull::self(), mLeftSplitter, "todolist" );
   mFilterView = new KOFilterView( &mFilters, mLeftSplitter,
                                   "CalendarView::FilterView" );
 
@@ -177,10 +169,10 @@ CalendarView::CalendarView( Calendar *calendar,
 
   topLayout->addWidget( mainBox );
 
-  mDateNavigator = new KDateNavigator( leftFrame, mCalendar, true,
+  mDateNavigator = new KDateNavigator( leftFrame, true,
                                        "CalendarView::DateNavigator",
                                        QDate::currentDate() );
-  mTodoList = new KOTodoView( mCalendar, leftFrame, "todolist" );
+  mTodoList = new KOTodoView( CalendarNull::self(), leftFrame, "todolist" );
   mFilterView = new KOFilterView( &mFilters, leftFrame,
                                   "CalendarView::FilterView" );
 
@@ -264,8 +256,6 @@ CalendarView::CalendarView( Calendar *calendar,
   // Hide filter per default
   mFilterView->hide();
 
-  readSettings();
-
   KDirWatch *messageWatch = new KDirWatch();
   messageWatch->addDir( locateLocal( "data", "korganizer/income/" ) );
   connect( messageWatch, SIGNAL( dirty( const QString & ) ),
@@ -292,6 +282,22 @@ CalendarView::~CalendarView()
   delete mViewManager;
 
   kdDebug(5850) << "~CalendarView() done" << endl;
+}
+
+void CalendarView::setCalendar( Calendar *cal )
+{
+  mCalendar = cal;
+
+  delete mHistory;
+  mHistory = new History( mCalendar );
+  connect( mHistory, SIGNAL( undone() ), SLOT( updateView() ) );
+  connect( mHistory, SIGNAL( redone() ), SLOT( updateView() ) );
+
+  mCalendar->registerObserver( this );
+
+  mDateNavigator->setCalendar( mCalendar );
+
+  mTodoList->setCalendar( mCalendar );
 }
 
 Calendar *CalendarView::calendar()
@@ -352,9 +358,10 @@ bool CalendarView::openCalendar(const QString& filename, bool merge)
 
   if (!merge) mCalendar->close();
 
-  mStorage->setFileName( filename );
+  FileStorage storage( mCalendar );
+  storage.setFileName( filename );
 
-  if ( mStorage->load() ) {
+  if ( storage.load() ) {
     if ( merge ) setModified( true );
     else {
       setModified( false );
@@ -382,10 +389,11 @@ bool CalendarView::saveCalendar( const QString& filename )
   // Store back all unsaved data into calendar object
   mViewManager->currentView()->flushView();
 
-  mStorage->setFileName( filename );
-  mStorage->setSaveFormat( new ICalFormat );
+  FileStorage storage( mCalendar );
+  storage.setFileName( filename );
+  storage.setSaveFormat( new ICalFormat );
 
-  bool success = mStorage->save();
+  bool success = storage.save();
 
   if ( !success ) {
     return false;

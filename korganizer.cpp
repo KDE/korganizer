@@ -96,7 +96,9 @@ KOrganizer::KOrganizer( bool document, const char *name )
   if ( hasDocument() ) {
     mCalendar = new CalendarLocal(KOPrefs::instance()->mTimeZoneId);
     mCalendarResources = 0;
-    mCalendarView = new CalendarView( mCalendar, this, "KOrganizer::CalendarView" );
+    mCalendarView = new CalendarView( this, "KOrganizer::CalendarView" );
+    mCalendarView->setCalendar( mCalendar );
+    mCalendarView->readSettings();
   } else {
     mCalendarResources = new CalendarResources( KOPrefs::instance()->mTimeZoneId );
     mCalendar = mCalendarResources;
@@ -134,8 +136,9 @@ KOrganizer::KOrganizer( bool document, const char *name )
       (*it)->dump();
     }
 
-    mCalendarView = new CalendarView( mCalendarResources, this,
-                                      "KOrganizer::CalendarView" );
+    mCalendarView = new CalendarView( this, "KOrganizer::CalendarView" );
+    mCalendarView->setCalendar( mCalendarResources );
+    mCalendarView->readSettings();
 
     // Construct the groupware object
     KOGroupware::create( mCalendarView, mCalendarResources );

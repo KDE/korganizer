@@ -1,6 +1,7 @@
 /*
     This file is part of KOrganizer.
-    Copyright (c) 2000,2001 Cornelius Schumacher <schumacher@kde.org>
+
+    Copyright (c) 2000,2001,2003 Cornelius Schumacher <schumacher@kde.org>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -85,25 +86,26 @@ void KOTodoListViewToolTip::maybeTip( const QPoint & pos)
 
 
 
-KOTodoListView::KOTodoListView(Calendar *calendar,QWidget *parent,
-                               const char *name) :
-  KListView(parent,name)
+KOTodoListView::KOTodoListView( QWidget *parent, const char *name )
+  : KListView( parent, name ), mCalendar( 0 )
 {
-  mCalendar = calendar;
-
   mOldCurrent = 0;
   mMousePressed = false;
 
-  setAcceptDrops(true);
-  viewport()->setAcceptDrops(true);
-
   /* Create a Tooltip */
-  tooltip=new KOTodoListViewToolTip(viewport(), this);
+  tooltip = new KOTodoListViewToolTip( viewport(), this );
 }
 
 KOTodoListView::~KOTodoListView()
 {
   delete tooltip;
+}
+
+void KOTodoListView::setCalendar( Calendar *cal )
+{
+  mCalendar = cal;
+  setAcceptDrops( mCalendar );
+  viewport()->setAcceptDrops( mCalendar );
 }
 
 bool KOTodoListView::event(QEvent *e)
@@ -161,7 +163,7 @@ void KOTodoListView::contentsDragMoveEvent(QDragMoveEvent *e)
 #endif
 }
 
-void KOTodoListView::contentsDragLeaveEvent(QDragLeaveEvent *)
+void KOTodoListView::contentsDragLeaveEvent( QDragLeaveEvent * )
 {
 #ifndef KORG_NODND
 //  kdDebug(5850) << "KOTodoListView::contentsDragLeaveEvent" << endl;
@@ -171,13 +173,14 @@ void KOTodoListView::contentsDragLeaveEvent(QDragLeaveEvent *)
 #endif
 }
 
-void KOTodoListView::contentsDropEvent(QDropEvent *e)
+void KOTodoListView::contentsDropEvent( QDropEvent *e )
 {
 #ifndef KORG_NODND
 //  kdDebug(5850) << "KOTodoListView::contentsDropEvent" << endl;
 
-  if ( !ICalDrag::canDecode( e ) && !VCalDrag::canDecode( e ) &&
-       !QTextDrag::canDecode( e ) ) {
+  if ( !mCalendar ||
+       ( !ICalDrag::canDecode( e ) && !VCalDrag::canDecode( e ) &&
+         !QTextDrag::canDecode( e ) ) ) {
     e->ignore();
     return;
   }
@@ -278,7 +281,7 @@ void KOTodoListView::contentsMouseMoveEvent(QMouseEvent* e)
       QApplication::startDragDistance()) {
     mMousePressed = false;
     QListViewItem *item = itemAt(contentsToViewport(mPressPos));
-    if (item) {
+    if ( item && mCalendar ) {
 //      kdDebug(5850) << "Start Drag for item " << item->text(0) << endl;
       DndFactory factory( mCalendar );
       ICalDrag *vd = factory.createDrag(
@@ -346,61 +349,61 @@ void KOQuickTodo::focusOutEvent(QFocusEvent *ev)
 
 /////////////////////////////////////////////////////////////////////////////
 
-KOTodoView::KOTodoView(Calendar *calendar,QWidget* parent,const char* name) :
-  KOrg::BaseView(calendar,parent,name)
+KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent, const char* name)
+  : KOrg::BaseView( calendar, parent, name )
 {
-  QBoxLayout *topLayout = new QVBoxLayout(this);
+  QBoxLayout *topLayout = new QVBoxLayout( this );
 
-  QLabel *title = new QLabel(i18n("To-do items:"),this);
-  title->setFrameStyle(QFrame::Panel|QFrame::Raised);
-  topLayout->addWidget(title);
+  QLabel *title = new QLabel( i18n("To-do items:"), this );
+  title->setFrameStyle( QFrame::Panel | QFrame::Raised );
+  topLayout->addWidget( title );
 
-  mQuickAdd = new KOQuickTodo(this);
-  topLayout->addWidget(mQuickAdd);
+  mQuickAdd = new KOQuickTodo( this );
+  topLayout->addWidget( mQuickAdd );
 
   if ( !KOPrefs::instance()->mEnableQuickTodo ) mQuickAdd->hide();
 
-  mTodoListView = new KOTodoListView(calendar,this);
-  topLayout->addWidget(mTodoListView);
+  mTodoListView = new KOTodoListView( this );
+  topLayout->addWidget( mTodoListView );
 
-  mTodoListView->setRootIsDecorated(true);
-  mTodoListView->setAllColumnsShowFocus(true);
+  mTodoListView->setRootIsDecorated( true );
+  mTodoListView->setAllColumnsShowFocus( true );
 
-  mTodoListView->setShowSortIndicator(true);
+  mTodoListView->setShowSortIndicator( true );
 
-  mTodoListView->addColumn(i18n("Summary"));
-  mTodoListView->addColumn(i18n("Priority"));
-  mTodoListView->setColumnAlignment(1,AlignHCenter);
-  mTodoListView->addColumn(i18n("Complete"));
-  mTodoListView->setColumnAlignment(2,AlignRight);
-  mTodoListView->addColumn(i18n("Due Date"));
-  mTodoListView->setColumnAlignment(3,AlignHCenter);
-  mTodoListView->addColumn(i18n("Due Time"));
-  mTodoListView->setColumnAlignment(4,AlignHCenter);
-  mTodoListView->addColumn(i18n("Categories"));
+  mTodoListView->addColumn( i18n("Summary") );
+  mTodoListView->addColumn( i18n("Priority") );
+  mTodoListView->setColumnAlignment( 1, AlignHCenter );
+  mTodoListView->addColumn( i18n("Complete") );
+  mTodoListView->setColumnAlignment( 2, AlignRight );
+  mTodoListView->addColumn( i18n("Due Date") );
+  mTodoListView->setColumnAlignment( 3, AlignHCenter );
+  mTodoListView->addColumn( i18n("Due Time") );
+  mTodoListView->setColumnAlignment( 4, AlignHCenter );
+  mTodoListView->addColumn( i18n("Categories") );
 #if 0
-  mTodoListView->addColumn(i18n("Sort Id"));
-  mTodoListView->setColumnAlignment(4,AlignHCenter);
+  mTodoListView->addColumn( i18n("Sort Id") );
+  mTodoListView->setColumnAlignment( 4, AlignHCenter );
 #endif
 
   mTodoListView->setMinimumHeight( 60 );
   mTodoListView->setItemsRenameable( true );
   mTodoListView->setRenameable( 0 );
 
-  mTodoListView->setColumnWidthMode(0, QListView::Manual);
-  mTodoListView->setColumnWidthMode(1, QListView::Manual);
-  mTodoListView->setColumnWidthMode(2, QListView::Manual);
-  mTodoListView->setColumnWidthMode(3, QListView::Manual);
-  mTodoListView->setColumnWidthMode(4, QListView::Manual);
-  mTodoListView->setColumnWidthMode(5, QListView::Manual);
+  mTodoListView->setColumnWidthMode( 0, QListView::Manual );
+  mTodoListView->setColumnWidthMode( 1, QListView::Manual );
+  mTodoListView->setColumnWidthMode( 2, QListView::Manual );
+  mTodoListView->setColumnWidthMode( 3, QListView::Manual );
+  mTodoListView->setColumnWidthMode( 4, QListView::Manual );
+  mTodoListView->setColumnWidthMode( 5, QListView::Manual );
 #if 0
-  mTodoListView->setColumnWidthMode(6, QListView::Manual);
+  mTodoListView->setColumnWidthMode( 6, QListView::Manual );
 #endif
 
-  mPriorityPopupMenu = new QPopupMenu(this);
-  for (int i = 1; i <= 5; i++) {
-    QString label = QString ("%1").arg (i);
-    mPriority[mPriorityPopupMenu->insertItem (label)] = i;
+  mPriorityPopupMenu = new QPopupMenu( this );
+  for ( int i = 1; i <= 5; i++ ) {
+    QString label = QString ("%1").arg( i );
+    mPriority[ mPriorityPopupMenu->insertItem( label ) ] = i;
   }
   connect( mPriorityPopupMenu, SIGNAL( activated( int ) ),
            SLOT( setNewPriority( int ) ));
@@ -441,8 +444,8 @@ KOTodoView::KOTodoView(Calendar *calendar,QWidget* parent,const char* name) :
 
   // Double clicking conflicts with opening/closing the subtree
   connect( mTodoListView, SIGNAL( doubleClicked( QListViewItem *,
-                                                 const QPoint &, int) ),
-           SLOT( editItem( QListViewItem *, const QPoint &, int) ) );
+                                                 const QPoint &, int ) ),
+           SLOT( editItem( QListViewItem *, const QPoint &, int ) ) );
   connect( mTodoListView, SIGNAL( returnPressed( QListViewItem * ) ),
            SLOT( editItem( QListViewItem * ) ) );
   connect( mTodoListView, SIGNAL( contextMenuRequested( QListViewItem *,
@@ -473,12 +476,17 @@ KOTodoView::KOTodoView(Calendar *calendar,QWidget* parent,const char* name) :
            SIGNAL( todoChanged( Todo*, Todo* ) ) );
   connect( mTodoListView, SIGNAL( todoAdded( Todo* ) ),
            SIGNAL( todoAdded( Todo* ) ) );
-
 }
 
 KOTodoView::~KOTodoView()
 {
   delete mDocPrefs;
+}
+
+void KOTodoView::setCalendar( Calendar *cal )
+{
+  BaseView::setCalendar( cal );
+  mTodoListView->setCalendar( cal );
 }
 
 void KOTodoView::updateView()
@@ -625,32 +633,37 @@ void KOTodoView::editItem( QListViewItem *item )
   emit editTodoSignal( static_cast<KOTodoViewItem *>( item )->todo() );
 }
 
-void KOTodoView::editItem(QListViewItem *item,const QPoint &,int)
+void KOTodoView::editItem( QListViewItem *item, const QPoint &, int )
 {
   editItem( item );
 }
 
-void KOTodoView::showItem(QListViewItem *item,const QPoint &,int)
+void KOTodoView::showItem( QListViewItem *item, const QPoint &, int )
 {
-  emit showTodoSignal(((KOTodoViewItem *)item)->todo());
+  emit showTodoSignal( static_cast<KOTodoViewItem *>( item )->todo() );
 }
 
-void KOTodoView::popupMenu(QListViewItem *item,const QPoint &,int column)
+void KOTodoView::popupMenu( QListViewItem *item, const QPoint &, int column )
 {
-  mActiveItem = (KOTodoViewItem *)item;
-  if (item) {
-    switch (column){
-    case 1:
-      mPriorityPopupMenu->popup(QCursor::pos ()); break;
-    case 2:
-      mPercentageCompletedPopupMenu->popup(QCursor::pos ()); break;
-    case 5:
-      getCategoryPopupMenu((KOTodoViewItem *)item)->popup(QCursor::pos ()); break;
-    default:
-      mItemPopupMenu->setItemEnabled( POPUP_UNSUBTODO, mActiveItem->todo()->relatedTo() );
-      mItemPopupMenu->popup(QCursor::pos());
+  mActiveItem = static_cast<KOTodoViewItem *>( item );
+  if ( item ) {
+    switch ( column ) {
+      case 1:
+        mPriorityPopupMenu->popup( QCursor::pos () );
+        break;
+      case 2:
+        mPercentageCompletedPopupMenu->popup( QCursor::pos () );
+        break;
+      case 5:
+        getCategoryPopupMenu(
+            static_cast<KOTodoViewItem *>( item ) )->popup( QCursor::pos () );
+        break;
+      default:
+        mItemPopupMenu->setItemEnabled( POPUP_UNSUBTODO,
+                                        mActiveItem->todo()->relatedTo() );
+        mItemPopupMenu->popup( QCursor::pos() );
     }
- } else mPopupMenu->popup(QCursor::pos());
+  } else mPopupMenu->popup( QCursor::pos() );
 }
 
 void KOTodoView::newTodo()
@@ -698,14 +711,14 @@ void KOTodoView::setNewPriority(int index)
     Todo*oldTodo = todo->clone();
     todo->setPriority(mPriority[index]);
     mActiveItem->construct();
-    emit todoModifiedSignal ( todo, oldTodo, KOGlobals::PRIORITY_MODIFIED);
+    emit todoModifiedSignal ( todo, oldTodo, KOGlobals::PRIORITY_MODIFIED );
     delete oldTodo;
   }
 }
 
 void KOTodoView::setNewPercentage(int index)
 {
-  if (mActiveItem && !mActiveItem->todo()->isReadOnly ()) {
+  if ( mActiveItem && !mActiveItem->todo()->isReadOnly () ) {
     Todo*todo = mActiveItem->todo();
     Todo*oldTodo = todo->clone();
 
@@ -716,31 +729,33 @@ void KOTodoView::setNewPercentage(int index)
     }
     todo->setPercentComplete(mPercentage[index]);
     mActiveItem->construct();
-    emit todoModifiedSignal( todo, oldTodo, KOGlobals::COMPLETION_MODIFIED);
+    emit todoModifiedSignal( todo, oldTodo, KOGlobals::COMPLETION_MODIFIED );
     delete oldTodo;
   }
 }
 
 
-QPopupMenu * KOTodoView::getCategoryPopupMenu (KOTodoViewItem *todoItem)
+QPopupMenu *KOTodoView::getCategoryPopupMenu( KOTodoViewItem *todoItem )
 {
-  QPopupMenu* tempMenu = new QPopupMenu (this);
-  QStringList checkedCategories = todoItem->todo()->categories ();
+  QPopupMenu *tempMenu = new QPopupMenu( this );
+  QStringList checkedCategories = todoItem->todo()->categories();
 
-  tempMenu->setCheckable (true);
-  for (QStringList::Iterator it = KOPrefs::instance()->mCustomCategories.begin ();
-       it != KOPrefs::instance()->mCustomCategories.end ();
-       ++it) {
-    int index = tempMenu->insertItem (*it);
-    mCategory[index] = *it;
-    if (checkedCategories.find (*it) != checkedCategories.end ()) tempMenu->setItemChecked (index, true);
+  tempMenu->setCheckable( true );
+  QStringList::Iterator it;
+  for ( it = KOPrefs::instance()->mCustomCategories.begin();
+        it != KOPrefs::instance()->mCustomCategories.end();
+        ++it ) {
+    int index = tempMenu->insertItem( *it );
+    mCategory[ index ] = *it;
+    if ( checkedCategories.find( *it ) != checkedCategories.end() )
+      tempMenu->setItemChecked( index, true );
   }
 
-  connect (tempMenu, SIGNAL (activated (int)), SLOT (changedCategories (int)));
+  connect ( tempMenu, SIGNAL( activated( int ) ),
+            SLOT( changedCategories( int ) ) );
   return tempMenu;
-
-
 }
+
 void KOTodoView::changedCategories(int index)
 {
   if (mActiveItem && !mActiveItem->todo()->isReadOnly ()) {
@@ -837,10 +852,10 @@ void KOTodoView::purgeCompleted()
 void KOTodoView::addQuickTodo()
 {
   Todo *todo = new Todo();
-  todo->setSummary(mQuickAdd->text());
-  todo->setOrganizer(KOPrefs::instance()->email());
-  calendar()->addTodo(todo);
-  mQuickAdd->setText(QString::null);
+  todo->setSummary( mQuickAdd->text() );
+  todo->setOrganizer( KOPrefs::instance()->email() );
+  calendar()->addTodo( todo );
+  mQuickAdd->setText( QString::null );
   emit todoAdded( todo );
   updateView();
 }
