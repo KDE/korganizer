@@ -1211,7 +1211,11 @@ void KOAgendaView::insertIncidence( Incidence *incidence, const QDate &curDate,
     if ( incidence->recurrence()->doesRecur() ) {
       mAllDayAgenda->insertAllDayItem( incidence, curDate, curCol, curCol );
     } else {
-      mAllDayAgenda->insertAllDayItem( incidence, curDate, beginX, endX );
+      // Insert multi-day events only on the first day, otherwise it will
+      // appear multiple times
+      if ( ( beginX <= 0 && curCol == 0 ) || beginX == curCol ) {
+        mAllDayAgenda->insertAllDayItem( incidence, curDate, beginX, endX );
+      }
     }
   } else if ( event && event->isMultiDay() ) {
     int startY = mAgenda->timeToY( event->dtStart().time() );
