@@ -85,14 +85,17 @@ class ResourceView : public CalendarViewExtension
 {
     Q_OBJECT
   public:
-    ResourceView( KCal::CalendarResourceManager *manager, QWidget *parent = 0,
+    ResourceView( KCal::CalendarResources *calendar, QWidget *parent = 0,
                   const char *name = 0 );
     ~ResourceView();
+
+    KCal::CalendarResources *calendar() const { return mCalendar; }
 
     void updateView();
 
     void emitResourcesChanged();
-    void emitErrorMessage( const QString & );
+
+    void requestClose( ResourceCalendar * );
 
     void showButtons( bool visible );
 
@@ -102,13 +105,10 @@ class ResourceView : public CalendarViewExtension
 
   signals:
     void resourcesChanged();
-    void signalErrorMessage( const QString & );
 
   protected:
     ResourceItem *findItem( ResourceCalendar * );
     ResourceItem *currentItem();
-
-    QString infoText( ResourceCalendar *r );
 
   protected slots:
     void addResource();
@@ -119,6 +119,7 @@ class ResourceView : public CalendarViewExtension
                                const QString &resource );
     void slotSubresourceRemoved( ResourceCalendar *, const QString &,
                                  const QString &resource );
+    void closeResource( ResourceCalendar * );
 
     void contextMenuRequested ( QListViewItem *i, const QPoint &pos, int );
 
@@ -129,10 +130,11 @@ class ResourceView : public CalendarViewExtension
 
   private:
     KListView *mListView;
-    KCal::CalendarResourceManager *mManager;
+    KCal::CalendarResources *mCalendar;
     QPushButton *mAddButton;
     QPushButton *mDeleteButton;
     QPushButton *mEditButton;
+    QPtrList<ResourceCalendar> mResourcesToClose;
 };
 
 #endif
