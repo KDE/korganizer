@@ -1007,7 +1007,7 @@ void CalendarView::deleteEvent(Event *anEvent)
 
 bool CalendarView::deleteEvent(const QString &uid)
 {
-    Event *ev = mCalendar->getEvent(uid);
+    Event *ev = mCalendar->event(uid);
     if (ev) {
         deleteEvent(ev);
         return true;
@@ -1509,7 +1509,7 @@ void CalendarView::takeOverCalendar()
 {
   // TODO: Create Calendar::allIncidences() function and use it here
 
-  QPtrList<Event> events = mCalendar->getAllEvents();  
+  QPtrList<Event> events = mCalendar->events();  
   for(uint i=0; i<events.count(); ++i) {
     events.at(i)->setOrganizer(KOPrefs::instance()->email());
     events.at(i)->recreate();

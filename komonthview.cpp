@@ -289,7 +289,7 @@ void MonthViewCell::updateCell()
     mItemList->insertItem( item );
   }
   
-  QPtrList<Event> events = mMonthView->calendar()->getEventsForDate( mDate, true );
+  QPtrList<Event> events = mMonthView->calendar()->events( mDate, true );
   Event *event;
   for( event = events.first(); event; event = events.next() ) {
     QString text;

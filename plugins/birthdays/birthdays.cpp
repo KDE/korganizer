@@ -108,7 +108,7 @@ void Birthdays::importBirthdays()
       Event *e;
       // look if not already imported
       bool insert = true;
-      QPtrList<Event> events = cal->getEventsForDate(birthdate);
+      QPtrList<Event> events = cal->events(birthdate);
       for ( e = events.first(); e; e = events.next() ) {
         kdDebug() << summary << " | " << e->summary() << endl;
         if ( e->summary()==summary ) {

@@ -46,7 +46,7 @@ bool KONewStuff::install( QString &fileName )
     return false;
   }
 
-  QPtrList<Event> events = cal.getAllEvents();
+  QPtrList<Event> events = cal.events();
 
   QStringList eventList;
   

@@ -840,7 +840,7 @@ void KOAgendaView::fillAgenda()
 //    kdDebug() << "KOAgendaView::fillAgenda(): " << currentDate.toString()
 //              << endl;
 
-    dayEvents = calendar()->getEventsForDate(currentDate,true);
+    dayEvents = calendar()->events(currentDate,true);
 
     // Default values, which can never be reached
     mMinY[curCol] = mAgenda->timeToY(QTime(23,59)) + 1;

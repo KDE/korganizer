@@ -311,7 +311,7 @@ void KOEventEditor::slotLoadTemplate()
     return;
   }
 
-  QPtrList<Event> events = cal.getAllEvents();
+  QPtrList<Event> events = cal.events();
   event = events.first();
   if ( !event ) {
     KMessageBox::error( this,

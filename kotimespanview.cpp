@@ -87,7 +87,7 @@ void KOTimeSpanView::insertItems(const QDate &start, const QDate &end)
   mTimeSpanView->clear();
   mTimeSpanView->setDateRange( start, end );
 
-  QPtrList<Event> events = calendar()->getEvents( start, end );
+  QPtrList<Event> events = calendar()->events( start, end );
   Event *event = events.first();
   while( event ) {
 //    kdDebug() << "KOTimeSpanView::showDates() add event: " << event->summary()

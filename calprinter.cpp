@@ -657,7 +657,7 @@ void CalPrinter::drawDayBox(QPainter &p, const QDate &qd,
   p.drawText(x+5, y, width-10, mSubHeaderHeight, AlignRight | AlignVCenter,
 	     dayNumStr);
 
-  eventList = mCalendar->getEventsForDate(qd, TRUE);
+  eventList = mCalendar->events(qd, TRUE);
   eventList.first();
   int count = 1;
   QString outStr;
@@ -734,7 +734,7 @@ void CalPrinter::drawTTDayBox(QPainter &p, const QDate &qd,
   QBrush oldBrush=p.brush();
   p.setBrush(QBrush(Dense5Pattern));
 
-  eventList = mCalendar->getEventsForDate(qd, TRUE);
+  eventList = mCalendar->events(qd, TRUE);
   Event *currEvent;
 
   //Draw all Events for Day
@@ -827,7 +827,7 @@ void CalPrinter::drawDay(QPainter &p, const QDate &qd, int width, int height)
   }
 
   p.setFont(QFont("helvetica", 14));
-  QPtrList<Event> eventList = mCalendar->getEventsForDate(qd, TRUE);
+  QPtrList<Event> eventList = mCalendar->events(qd, TRUE);
   Event *currEvent;
   p.setBrush(QBrush(Dense7Pattern));
   for (currEvent = eventList.first(); currEvent;

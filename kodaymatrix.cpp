@@ -233,7 +233,7 @@ void KODayMatrix::updateView(QDate actdate)
     }
 
     // if events are set for the day then remember to draw it bold
-    QPtrList<Event> eventlist = mCalendar->getEventsForDate(days[i]);
+    QPtrList<Event> eventlist = mCalendar->events(days[i]);
     Event *event;
     int numEvents = eventlist.count();
 
@@ -405,7 +405,7 @@ void KODayMatrix::dropEvent(QDropEvent *e)
   if (event) {
     e->acceptAction();
 
-    Event *existingEvent = mCalendar->getEvent(event->uid());
+    Event *existingEvent = mCalendar->event(event->uid());
 
     if(existingEvent) {
       // uniquify event

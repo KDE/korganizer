@@ -120,8 +120,7 @@ void KOWhatsNextView::updateView()
   mText += i18n("<font color=\"white\"> What's next?</h1></font>");
   mText += i18n("</td></tr>\n<tr><td>");
   
-  QPtrList<Event> events = calendar()->getEvents(QDate::currentDate(),
-                                                 QDate::currentDate());
+  QPtrList<Event> events = calendar()->events( QDate::currentDate() );
   if (events.count() > 0) {
     mText += i18n("<p></p>");
     kil.loadIcon("appointment",KIcon::NoGroup,22,KIcon::DefaultState,ipath);
@@ -140,7 +139,7 @@ void KOWhatsNextView::updateView()
     mText += i18n("</table>\n");
   }
 
-  events = calendar()->getEvents(QDate::currentDate(), QDate(2975,12,6));
+  events = calendar()->events(QDate::currentDate(), QDate(2975,12,6));
   if (events.count() > 0) {
     int replys = 0;
     Event *ev = events.first();
@@ -247,7 +246,7 @@ void KOWhatsNextView::showIncidence(const QString &uid)
   kdDebug() << "KOWhatsNextView::showIncidence(): " << uid << endl;
 
   if (uid.startsWith("event://")) {
-    Event *event = calendar()->getEvent(uid.mid(8));
+    Event *event = calendar()->event(uid.mid(8));
     if (!event) return;
     createEventViewer();
     mEventViewer->setEvent(event);

@@ -170,7 +170,7 @@ void HtmlExport::createHtmlMonthView(QTextStream *ts)
 
         *ts << "</td></tr><tr><td valign=\"top\">";
 
-        QPtrList<Event> events = mCalendar->getEventsForDate(start,true);
+        QPtrList<Event> events = mCalendar->events(start,true);
         if (events.count()) {
           *ts << "<table>";
           Event *ev;
@@ -218,7 +218,7 @@ void HtmlExport::createHtmlEventList (QTextStream *ts)
 
   for (QDate dt = fromDate(); dt <= toDate(); dt = dt.addDays(1)) {
     kdDebug() << "Getting events for " << dt.toString() << endl;
-    QPtrList<Event> events = mCalendar->getEventsForDate(dt,true);
+    QPtrList<Event> events = mCalendar->events(dt,true);
     if (events.count()) {
       *ts << "  <tr><td colspan=\"" << QString::number(columns)
           << "\" class=\"datehead\"><i>"
