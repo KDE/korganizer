@@ -177,7 +177,7 @@ OutgoingDialog::~OutgoingDialog()
 
 bool OutgoingDialog::addMessage(IncidenceBase *incidence,Scheduler::Method method)
 {
-  kdDebug(5850) << "Outgoing::addMessage" << "Method:" << method << endl;
+  kdDebug(5850) << "Outgoing::addMessage, " << "Method:" << method << endl;
   if (method == Scheduler::Publish) return false;
   if( mDocPrefs ) {
     if (method != Scheduler::Cancel) {
