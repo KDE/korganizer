@@ -39,7 +39,7 @@ int main(int argc, char **argv)
   KAboutData aboutData("alarmd",I18N_NOOP("AlarmDaemon"),
       "2.0",I18N_NOOP("KOrganizer Alarm Daemon"),KAboutData::License_GPL,
       "(c) 1997-1999 Preston Brown\n(c) 2000 Cornelius Schumacher",0,
-      "http://devel-home.kde.org/~korganiz");
+      "http://korganizer.kde.org");
   aboutData.addAuthor("Cornelius Schumacher",I18N_NOOP("Maintainer"),
                       "schumacher@kde.org");
   aboutData.addAuthor("Preston Brown",I18N_NOOP("Original Author"),

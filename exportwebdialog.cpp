@@ -216,7 +216,7 @@ void ExportWebDialog::exportWebPage()
 
   // Write KOrganizer trailer
   *ts << "<P>" << i18n("This page was created by <A HREF=\"http://"
-        "devel-home.kde.org/~korganiz\">KOrganizer</A>") << "</P>\n";
+        "korganizer.kde.org\">KOrganizer</A>") << "</P>\n";
   
   // Write HTML trailer
   *ts << "</BODY></HTML>\n";
