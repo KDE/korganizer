@@ -55,7 +55,7 @@
 #include "koeventeditor.h"
 
 KOEventEditor::KOEventEditor( Calendar *calendar, QWidget *parent )
-  : KOIncidenceEditor( i18n("Edit Event"), calendar, parent ),
+  : KOIncidenceEditor( QString::null, calendar, parent ),
     mEvent( 0 )
 {
 }
@@ -171,10 +171,10 @@ void KOEventEditor::modified (int /*modification*/)
 void KOEventEditor::setupRecurrence()
 {
   QFrame *topFrame = addPage( i18n("Rec&urrence") );
-  
+
   QWhatsThis::add( topFrame,
-		    i18n("The Recurrence tab allows you to set options on "
-			 "how often this event recurs.") );
+        i18n("The Recurrence tab allows you to set options on "
+       "how often this event recurs.") );
 
   QBoxLayout *topLayout = new QVBoxLayout( topFrame );
 
@@ -186,8 +186,8 @@ void KOEventEditor::setupFreeBusy()
 {
   QFrame *freeBusyPage = addPage( i18n("&Free/Busy") );
   QWhatsThis::add( freeBusyPage,
-		    i18n("The Free/Busy tab allows you to see whether "
-			 "other attendees are free or busy during your event.") );
+        i18n("The Free/Busy tab allows you to see whether "
+       "other attendees are free or busy during your event.") );
 
   QBoxLayout *topLayout = new QVBoxLayout( freeBusyPage );
 
@@ -204,15 +204,19 @@ void KOEventEditor::editIncidence( Incidence *incidence )
     mEvent = event;
     readEvent(mEvent);
   }
+
+  setCaption( i18n("Edit Event") );
 }
 
-void KOEventEditor::newEvent( const QDateTime &from, const QDateTime &to, 
+void KOEventEditor::newEvent( const QDateTime &from, const QDateTime &to,
                               bool allDay )
 {
   init();
 
   mEvent = 0;
   setDefaults(from,to,allDay);
+
+  setCaption( i18n("New Event") );
 }
 
 void KOEventEditor::newEvent( const QString &text )
@@ -232,6 +236,8 @@ void KOEventEditor::newEvent( const QString &text )
   } else {
     mGeneral->setSummary( text );
   }
+
+  setCaption( i18n("New Event") );
 }
 
 void KOEventEditor::newEvent( const QString &summary,
@@ -250,6 +256,8 @@ void KOEventEditor::newEvent( const QString &summary,
   if ( !attachment.isEmpty() ) {
     mAttachments->addAttachment( attachment );
   }
+
+  setCaption( i18n("New Event") );
 }
 
 void KOEventEditor::newEvent( const QString &summary,
@@ -288,11 +296,11 @@ bool KOEventEditor::processInput()
     bool rc = true;
     Event *oldEvent = mEvent->clone();
     Event *event = mEvent->clone();
-    
+
     kdDebug(5850) << "KOEventEditor::processInput() write event." << endl;
     writeEvent( event );
     kdDebug(5850) << "KOEventEditor::processInput() event written." << endl;
-    
+
     if( *event == *mEvent )
       // Don't do anything
       kdDebug(5850) << "Event not changed\n";
@@ -307,7 +315,7 @@ bool KOEventEditor::processInput()
     return rc;
   } else {
     mEvent = new Event;
-    mEvent->setOrganizer( Person( KOPrefs::instance()->fullName(), 
+    mEvent->setOrganizer( Person( KOPrefs::instance()->fullName(),
                           KOPrefs::instance()->email() ) );
     writeEvent( mEvent );
     if ( !mChanger->addIncidence( mEvent ) ) {

@@ -55,7 +55,7 @@
 #include "kocore.h"
 
 KOTodoEditor::KOTodoEditor( Calendar *calendar, QWidget *parent ) :
-  KOIncidenceEditor( i18n("Edit To-do"), calendar, parent )
+  KOIncidenceEditor( QString::null, calendar, parent )
 {
   mTodo = 0;
   mRelatedTodo = 0;
@@ -165,6 +165,8 @@ void KOTodoEditor::editIncidence(Incidence *incidence)
     mTodo = todo;
     readTodo(mTodo);
   }
+
+  setCaption( i18n("Edit To-do") );
 }
 
 void KOTodoEditor::newTodo( const QDateTime &due, Todo *relatedTodo, bool allDay)
@@ -173,6 +175,8 @@ void KOTodoEditor::newTodo( const QDateTime &due, Todo *relatedTodo, bool allDay
 
   mTodo = 0;
   setDefaults(due,relatedTodo,allDay);
+
+  setCaption( i18n("New To-do") );
 }
 
 void KOTodoEditor::newTodo( const QString &text )
@@ -192,6 +196,8 @@ void KOTodoEditor::newTodo( const QString &text )
   } else {
     mGeneral->setSummary( text );
   }
+
+  setCaption( i18n("New To-do") );
 }
 
 void KOTodoEditor::newTodo( const QString &summary,
@@ -210,6 +216,8 @@ void KOTodoEditor::newTodo( const QString &summary,
   if ( !attachment.isEmpty() ) {
     mAttachments->addAttachment( attachment );
   }
+
+  setCaption( i18n("New To-do") );
 }
 
 void KOTodoEditor::newTodo( const QString &summary,
