@@ -10,6 +10,7 @@
 #include <kglobal.h>
 #include <kiconloader.h>
 #include <kmessagebox.h>
+#include <kconfig.h>
 
 #include "vcaldrag.h"
 #include "calprinter.h"
@@ -58,11 +59,6 @@ KOProjectView::KOProjectView(Calendar *calendar,QWidget* parent,
   topBar->addWidget(zoomOut,0);
   connect(zoomOut,SIGNAL(clicked()),SLOT(zoomOut()));
 
-  // Externally controlled zooming is not possible with the current API of
-  // KGantt.
-  zoomIn->hide();
-  zoomOut->hide();
-
   QPushButton *menuButton = new QPushButton(i18n("Select Mode"),this);
   topBar->addWidget(menuButton,0);
   connect(menuButton,SIGNAL(clicked()),SLOT(showModeMenu()));
@@ -80,55 +76,6 @@ KOProjectView::KOProjectView(Calendar *calendar,QWidget* parent,
   for(int i=1; i<7; i++)
     mGantt->addHoliday(2001, 1, i);
 #endif
-
-
-/*  
-  mTodoListView = new KOTodoListView(mCalendar,this);
-  topLayout->addWidget(mTodoListView);
-
-  mTodoListView->setRootIsDecorated(true);
-  mTodoListView->setAllColumnsShowFocus(true);
-  
-  mTodoListView->addColumn(i18n("Summary"));
-  mTodoListView->addColumn(i18n("Priority"));
-  mTodoListView->setColumnAlignment(1,AlignHCenter);
-  mTodoListView->addColumn(i18n("Due Date"));
-  mTodoListView->addColumn(i18n("Due Time"));
-  mTodoListView->addColumn(i18n("Sort Id"));
-  mTodoListView->setColumnAlignment(4,AlignHCenter);
-  
-  mItemPopupMenu = new QPopupMenu;
-  mItemPopupMenu->insertItem(i18n("Show..."), this,
-                             SLOT (showTodo()));
-  mItemPopupMenu->insertItem(i18n("Edit..."), this,
-                             SLOT (editTodo()));
-  mItemPopupMenu->insertItem(SmallIconSet("delete"), i18n("Delete"), this,
-                             SLOT (deleteTodo()));
-  mItemPopupMenu->insertSeparator();
-  mItemPopupMenu->insertItem(SmallIconSet("todo"), i18n("New To-Do..."), this,
-                             SLOT (newTodo()));
-  mItemPopupMenu->insertItem(i18n("New Sub-To-Do..."), this,
-                             SLOT (newSubTodo()));
-  mItemPopupMenu->insertSeparator();
-  mItemPopupMenu->insertItem(i18n("Purge Completed"), this,
-                             SLOT(purgeCompleted()));
-                       
-  mPopupMenu = new QPopupMenu;
-  mPopupMenu->insertItem(SmallIconSet("todo"), i18n("New To-Do"), this,
-                         SLOT (newTodo()));
-  mPopupMenu->insertItem(i18n("Purge Completed"), this,
-                         SLOT(purgeCompleted()));
-  
-  // Double clicking conflicts with opening/closing the subtree                   
-  QObject::connect(mTodoListView,SIGNAL(doubleClicked(QListViewItem *)),
-                   this,SLOT(showItem(QListViewItem *)));
-  QObject::connect(mTodoListView,SIGNAL(rightButtonClicked ( QListViewItem *,
-                   const QPoint &, int )),
-                   this,SLOT(popupMenu(QListViewItem *,const QPoint &,int)));
-  QObject::connect(mTodoListView,SIGNAL(clicked(QListViewItem *)),
-                   this,SLOT(itemClicked(QListViewItem *)));
-  connect(mTodoListView,SIGNAL(todoDropped(Event *)),SLOT(updateView()));
-*/
 }
 
 void KOProjectView::createMainTask()
@@ -140,6 +87,31 @@ void KOProjectView::createMainTask()
   mMainTask->setStyle(KGanttItem::DrawBorder | KGanttItem::DrawText |
                       KGanttItem::DrawHandle);
 }
+
+void KOProjectView::readSettings()
+{
+  kdDebug() << "KOProjectView::readSettings()" << endl;
+
+  KConfig *config = kapp->config();
+
+  config->setGroup("Views");
+    
+  QValueList<int> sizes = config->readIntListEntry("Separator ProjectView");
+  if (sizes.count() == 2) {
+    mGantt->splitter()->setSizes(sizes);
+  }
+}
+
+void KOProjectView::writeSettings(KConfig *config)
+{
+  kdDebug() << "KOProjectView::writeSettings()" << endl;
+
+  config->setGroup("Views");
+    
+  QValueList<int> list = mGantt->splitter()->sizes();
+  config->writeEntry("Separator ProjectView",list);
+}
+
 
 void KOProjectView::updateView()
 {
@@ -400,8 +372,10 @@ void KOProjectView::taskChanged(KGanttItem *task,KGanttItem::Change change)
 
 void KOProjectView::zoomIn()
 {
+  mGantt->zoom(2);
 }
 
 void KOProjectView::zoomOut()
 {
+  mGantt->zoom(0.5);
 }

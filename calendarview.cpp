@@ -397,6 +397,9 @@ void CalendarView::writeSettings()
   if (mAgendaView) {
     mAgendaView->writeSettings(&config);
   }
+  if (mProjectView) {
+    mProjectView->writeSettings(&config);
+  }
 
   KOPrefs::instance()->writeConfig();
 
@@ -545,6 +548,8 @@ void CalendarView::changeEventDisplay(Event *which, int action)
 
 void CalendarView::updateTodoViews()
 {
+  kdDebug() << "CalendarView::updateTodoViews()" << endl;
+
   mTodoList->updateView();
   mCurrentView->updateView();
 }
@@ -1241,6 +1246,8 @@ void CalendarView::showProjectView()
     mProjectView = new KOProjectView(mCalendar,mRightFrame,
                                      "CalendarView::ProjectView");
     mRightFrame->addWidget(mProjectView,0);
+    
+    mProjectView->readSettings();
   }
 
   showView(mProjectView);
@@ -1604,7 +1611,7 @@ KOTodoEditor *CalendarView::getTodoEditor()
           todoEditor,SLOT(updateCategoryConfig()));
   connect(todoEditor,SIGNAL(editCategories()),mCategoryEditDialog,SLOT(show()));
 
-  connect(todoEditor,SIGNAL(todoAdded(Event *)),SLOT(updateTodoViews()));
+  connect(todoEditor,SIGNAL(todoAdded(Todo *)),SLOT(updateTodoViews()));
   connect(todoEditor,SIGNAL(todoChanged(Todo *)),SLOT(updateTodoViews()));
   connect(todoEditor,SIGNAL(todoDeleted()),SLOT(updateTodoViews()));
 

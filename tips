@@ -1,0 +1,39 @@
+<tip category="KOrganizer|General">
+<html>
+<p>...that you can synchronize your calendar data with a Palm Pilot by using
+KPilot?
+</html>
+</tip>
+
+<tip category="KOrganizer|General">
+<html>
+<p>...that KOrganizer considers events as read-only, when they were created by
+somebody else? This can make all your events read-only, if you change your email
+address. Use "Actions"->"Take Over Calendar" to make them writeable again.
+</html>
+</tip>
+
+<tip category="KOrganizer|General">
+<html>
+<p>...that you can select, if the week starts on Monday or on Sunday in the KDE
+control center? KOrganizer uses this settings. Look at "Personalization"->"Date
+& Time".
+</html>
+</tip>
+
+<tip category="KOrganizer|General">
+<html>
+<p>...that you can store your calendar on an FTP server? Use the standard file
+dialog to save the calendar to an URL like "ftp://username@ftpserver/filename".
+You can make your calendar active and load and save it as it were local.
+Just make sure that no two KOrganizer applications work on the same file at the
+same time.
+</html>
+</tip>
+
+<tip category="KOrganizer|General">
+<html>
+<p>...that you can create hierarchical todos by clicking with the right mouse
+button on an existing todo and selecting "New Sub-Todo" from the context menu?
+</html>
+</tip>

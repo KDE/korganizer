@@ -58,6 +58,9 @@ class KOProjectView : public KOBaseView
 
     void printPreview(CalPrinter *calPrinter, const QDate &fd, const QDate &td);
 
+    void readSettings();
+    void writeSettings(KConfig *);
+
   public slots:
     void updateView();
     void updateConfig();
