@@ -74,7 +74,7 @@ KOEditorDetails::KOEditorDetails (int spacing,QWidget* parent,const char* name)
   QString organizer = KOPrefs::instance()->email();
   mOrganizerLabel = new QLabel(i18n("Organizer: %1").arg(organizer),this);
 
-  mListView = new QListView(this,"mListView");
+  mListView = new KListView(this,"mListView");
   mListView->addColumn(i18n("Name"),180);
   mListView->addColumn(i18n("Email"),180);
   mListView->addColumn(i18n("Role"),60);

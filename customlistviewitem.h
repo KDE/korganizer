@@ -1,16 +1,16 @@
 #ifndef CUSTOMLISTVIEWITEM_H
 #define CUSTOMLISTVIEWITEM_H
 
-#include <qlistview.h>
 #include <qmap.h>
 #include <qstring.h>
+#include <klistview.h>
 
 template<class T>
-class CustomListViewItem : public QListViewItem
+class CustomListViewItem : public KListViewItem
 {
   public:
-    CustomListViewItem( T data, QListView *parent ) :
-      QListViewItem( parent ), mData( data ) { updateItem(); };
+    CustomListViewItem( T data, KListView *parent ) :
+      KListViewItem( parent ), mData( data ) { updateItem(); };
     ~CustomListViewItem() {};
     
     void updateItem() {};

@@ -31,7 +31,7 @@
 #include <qlineedit.h>
 #include <qcombobox.h>
 #include <qmultilineedit.h>
-#include <qlistview.h>
+#include <klistview.h>
 #include <qradiobutton.h>
 #include <qptrlist.h>
 
@@ -87,7 +87,7 @@ class KOEditorDetails : public QWidget
     QLineEdit *mNameEdit;
     QLineEdit *mUidEdit;
     QLineEdit *mEmailEdit;
-    QListView *mListView;
+    KListView *mListView;
     QComboBox* mRoleCombo;
     QCheckBox* mRsvpButton;
     QComboBox* mStatusCombo;
