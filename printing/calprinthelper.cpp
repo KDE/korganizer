@@ -895,20 +895,21 @@ void CalPrintHelper::drawTodo( int &count, Todo *todo, QPainter &p,
     p.lineTo( endx, to );
   }
 
-  // if completed, use strike out font
-  QFont ft( p.font() );
-  ft.setStrikeOut( todo->isCompleted() );
-  p.setFont( ft );
   // summary
   outStr=todo->summary();
   rect = p.boundingRect( lhs, rect.top(), (rhs-(left + rect.width() + 5)),
                          -1, Qt::WordBreak, outStr );
   QRect newrect;
   p.drawText( rect, Qt::WordBreak, outStr, -1, &newrect );
-  ft.setStrikeOut( false );
-  p.setFont( ft );
+  if ( todo->isCompleted() ) {
+    // strike out the summary text if to-do is complete
+    // Note: we tried to use a strike-out font and for unknaown reasons the
+    // result was underline instead of strike-out... so draw the line ourselves.
+    p.moveTo( rect.left(), rect.top() + ( rect.height()/2 ) );
+    p.lineTo( rect.right(), rect.top() + ( rect.height()/2 ) );
+  }
 
-  // due
+  // due date
   if ( todo->hasDueDate() && posDueDt>=0 ) {
     outStr = local->formatDate( todo->dtDue().date(), true );
     rect = p.boundingRect( posDueDt, y, x + width, -1,
