@@ -57,6 +57,7 @@ KOPrefs::KOPrefs() :
 
   mDefaultTimeBarFont = QFont("helvetica",12,QFont::Bold);
   mDefaultViewFont = QFont("helvetica",12);
+  mDefaultMonthViewFont = QFont("helvetica",10);
 
   KPrefs::setCurrentGroup("General");
 
@@ -174,7 +175,7 @@ void KOPrefs::usrSetDefaults()
   mTimeZone = "+0000";
 
   mTimeBarFont = mDefaultTimeBarFont;
-  mMonthViewFont = mDefaultViewFont;
+  mMonthViewFont = mDefaultMonthViewFont;
   mAgendaViewFont = mDefaultViewFont;
   mMarcusBainsFont = mDefaultViewFont;
 

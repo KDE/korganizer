@@ -722,6 +722,8 @@ void CalendarView::allday_new()
 
 void CalendarView::editEvent(Event *anEvent)
 {
+  kdDebug() << "CalendarView::editEvent()" << endl;
+
   if(anEvent) {
     if (anEvent->isReadOnly()) {
       showEvent(anEvent);

@@ -91,10 +91,10 @@ class KOEventView : public KOrg::BaseView
     void showEventPopup(QPopupMenu *popup,Event *event);
 
     /**
-     * Perform the default action for an event. E.g. open the event editor, when
-     * double-clicking an event in the agenda view.
-     */
-    void defaultEventAction(Event *event);
+     Perform the default action for an incidence, e.g. open the event editor,
+     when double-clicking an event in the agenda view.
+    */
+    void defaultAction( Incidence * );
     
   signals:
     /**

@@ -84,9 +84,16 @@ void KOEventView::popupDelete()
   emit deleteEventSignal(mCurrentEvent);
 }
 
-void KOEventView::defaultEventAction(Event *event)
+void KOEventView::defaultAction( Incidence *incidence )
 {
-  if (event) {
+  kdDebug() << "KOEventView::defaultAction()" << endl;
+
+  if ( !incidence ) return;
+
+  kdDebug() << "  type: " << incidence->type() << endl;
+
+  if ( incidence->type() == "Event" ) {
+    Event *event = static_cast<Event *>( incidence );
     if (event->isReadOnly()) emit showEventSignal(event);
     else emit editEventSignal(event);
   }

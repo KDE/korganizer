@@ -151,6 +151,7 @@ class KOPrefs : public KPrefs
 
     QFont mDefaultTimeBarFont;
     QFont mDefaultViewFont;
+    QFont mDefaultMonthViewFont;
 
     QString mName;
     QString mEmail;

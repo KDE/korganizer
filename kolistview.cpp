@@ -339,7 +339,7 @@ KOListViewItem *KOListView::getItemForEvent(Event *event)
 void KOListView::defaultItemAction(QListViewItem *item)
 {
   Event *event = static_cast<Event *>(((KOListViewItem *)item)->event());
-  if (event) defaultEventAction(event);
+  defaultAction( event );
 }
 
 void KOListView::popupMenu(QListViewItem *item,const QPoint &,int)

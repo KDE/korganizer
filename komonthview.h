@@ -30,182 +30,178 @@
 #include <qintdict.h>
 #include <qpushbutton.h>
 #include <qvaluelist.h>
+#include <qptrvector.h>
 
 #include <libkcal/calendar.h>
 #include <libkcal/event.h>
 
 #include "koeventview.h"
-#include "ksellabel.h" 
 
-class KONavButton: public QPushButton
+class KNoScrollListBox: public QListBox
+{
+    Q_OBJECT
+  public:
+    KNoScrollListBox(QWidget *parent=0, const char *name=0);
+    ~KNoScrollListBox() {}
+
+  signals:
+    void shiftDown();
+    void shiftUp();
+    void rightClick();
+
+   protected slots:
+    void keyPressEvent(QKeyEvent *);
+    void keyReleaseEvent(QKeyEvent *);
+    void mousePressEvent(QMouseEvent *);
+};
+
+
+class MonthViewItem: public QListBoxItem
 {
   public:
-    KONavButton( QPixmap pixmap, QWidget *parent, const char *name=0 ) :
-      QPushButton(parent,name)
-    {
-      // We should probably check, if the pixmap is valid.
-      setPixmap(pixmap);
-    }; 
+    MonthViewItem( Incidence *, const QString & title );
+
+    void setRecur(bool on) { mRecur = on; }
+    void setAlarm(bool on) { mAlarm = on; }
+    void setReply(bool on) { mReply = on; }
+
+    void setPalette(const QPalette &p) { mPalette = p; }
+    QPalette palette() const { return mPalette; }
+
+    Incidence *incidence() const { return mIncidence; }
+
+  protected:
+    virtual void paint(QPainter *);
+    virtual int height(const QListBox *) const;
+    virtual int width(const QListBox *) const;
+
+  private:
+    bool mRecur;
+    bool mAlarm;
+    bool mReply;
+
+    QPixmap mAlarmPixmap;
+    QPixmap mRecurPixmap;
+    QPixmap mReplyPixmap;
+
+    QPalette mPalette;
     
-    QSizePolicy sizePolicy() const
-    {
-      return QSizePolicy(QSizePolicy::Minimum,QSizePolicy::MinimumExpanding);
-    }
+    Incidence *mIncidence;
 };
 
 
-class EventListBoxItem: public QListBoxItem
+class KOMonthView;
+
+class MonthViewCell : public QWidget
 {
- public:
-  EventListBoxItem(const QString & s);
-  void setText(const QString & s)
-    { QListBoxItem::setText(s); }
-  void setRecur(bool on) 
-    { recur = on; }
-  void setAlarm(bool on)
-    { alarm = on; }
-  void setReply(bool on)
-    { reply = on; }
-  const QPalette &palette () const { return myPalette; };
-  void setPalette(const QPalette &p) { myPalette = p; };
+    Q_OBJECT
+  public:
+    MonthViewCell( KOMonthView * );
+    
+    void setDate( const QDate & );
+    QDate date() const;
 
- protected:
-  virtual void paint(QPainter *);
-  virtual int height(const QListBox *) const;
-  virtual int width(const QListBox *) const;
- private:
-  bool    recur;
-  bool    alarm;
-  bool    reply;
-  QPixmap alarmPxmp;
-  QPixmap recurPxmp;
-  QPixmap replyPxmp;
-  QPalette myPalette;
-};
+    void setPrimary( bool );
+    bool isPrimary() const;
 
-class KNoScrollListBox: public QListBox {
-  Q_OBJECT
- public:
-  KNoScrollListBox(QWidget *parent=0, const char *name=0);
-  ~KNoScrollListBox() {}
+    void setHoliday( bool );
+    void setHoliday( const QString & );
 
- signals:
-  void shiftDown();
-  void shiftUp();
-  void rightClick();
+    void updateCell();
 
- protected slots:
-  void keyPressEvent(QKeyEvent *);
-  void keyReleaseEvent(QKeyEvent *);
-  void mousePressEvent(QMouseEvent *);
-};
+    void updateConfig();
 
-class KSummaries: public KNoScrollListBox {
-  Q_OBJECT
- public:
-  KSummaries(QWidget    *parent, 
-	     Calendar  *calendar, 
-	     QDate       qd       = QDate::currentDate(),
-	     int         index    = 0,
-	     const char *name     = 0);
-  ~KSummaries() {}
-  QDate getDate() { return(myDate); }
-  void setDate(QDate);
-  void calUpdated();
-  Event *getSelected();
+    void enableScrollBars( bool );
+
+    Incidence *selectedIncidence();
+
+    void deselect();
+
+  signals:
+    void defaultAction( Incidence * );
+    
+  protected:
+    void resizeEvent( QResizeEvent * );
+
+  protected slots:
+    void defaultAction( QListBoxItem * );
+    void contextMenu( QListBoxItem * );
+    void selection( QListBoxItem * );
+    
+  private:
+    KOMonthView *mMonthView;
   
-  QSize minimumSizeHint() const;
-
- signals:
-  void daySelected(int index);
-  void editEventSignal(Event *);
-
- protected slots:
-  void itemHighlighted(int);
-  void itemSelected(int);
-
- private:
-   QDate               myDate;
-   int                 idx, itemIndex;
-   Calendar          *myCal;
-   QIntDict<Event> *currIdxs; 
+    QDate mDate;
+    bool mPrimary;
+    bool mHoliday;
+    QString mHolidayString;
+    
+    QLabel *mLabel;
+    QListBox *mItemList;
+    
+    QSize mLabelSize;
+    QPalette mHolidayPalette;
+    QPalette mStandardPalette;
 };
 
-class KOMonthView: public KOEventView {
-   Q_OBJECT
- public:
-   KOMonthView(Calendar *cal,
-		QWidget    *parent   = 0, 
-		const char *name     = 0,
-		QDate       qd       = QDate::currentDate());
-   ~KOMonthView();
 
-   enum { EVENTADDED, EVENTEDITED, EVENTDELETED };
+class KOMonthView: public KOEventView
+{
+    Q_OBJECT
+  public:
+    KOMonthView(Calendar *cal, QWidget *parent = 0, const char *name = 0 );
+    ~KOMonthView();
 
-   /** Returns maximum number of days supported by the komonthview */
-   virtual int maxDatesHint();
+    /** Returns maximum number of days supported by the komonthview */
+    virtual int maxDatesHint();
 
-   /** Returns number of currently shown dates. */
-   virtual int currentDateCount();
+    /** Returns number of currently shown dates. */
+    virtual int currentDateCount();
 
-   /** returns the currently selected events */
-   virtual QPtrList<Incidence> selectedIncidences();
+    /** returns the currently selected events */
+    virtual QPtrList<Incidence> selectedIncidences();
 
-   virtual void printPreview(CalPrinter *calPrinter,
-                             const QDate &, const QDate &);
+    virtual void printPreview(CalPrinter *calPrinter,
+                              const QDate &, const QDate &);
 
- public slots:
-   virtual void updateView();
-   virtual void updateConfig();
-   virtual void showDates(const QDate &start, const QDate &end);
-   virtual void showEvents(QPtrList<Event> eventList);
+  public slots:
+    virtual void updateView();
+    virtual void updateConfig();
+    virtual void showDates(const QDate &start, const QDate &end);
+    virtual void showEvents(QPtrList<Event> eventList);
 
-   void changeEventDisplay(Event *, int);
+    void changeEventDisplay(Event *, int);
 
- signals:
-   void newEventSignal();  // From KOBaseView
-   void newEventSignal(QDate);
-   void newEventSignal(QDateTime, QDateTime);  // From KOBaseView
-   void editEventSignal(Event *);  // From KOBaseView
-   void deleteEventSignal(Event *);  // From KOBaseView
-   void datesSelected(const DateList &);  // From KOBaseView
+    void showContextMenu( Incidence * );
 
- protected slots:
-   void resizeEvent(QResizeEvent *);
-   void goBackYear();
-   void goForwardYear();
-   void goBackMonth();
-   void goForwardMonth();
-   void goBackWeek();
-   void goForwardWeek();
-   void daySelected(int index);
-   void newEventSlot(int index);
-   void doRightClickMenu();
-//   void newEventSelected() { emit newEventSignal(daySummaries[*selDateIdxs.first()]->getDate()); };
-   void processSelectionChange();
+    void setSelectedCell( MonthViewCell * );
 
- protected:
-   void viewChanged();
+  protected slots:
+    void processSelectionChange();
+
+  protected:
+    void resizeEvent(QResizeEvent *);
+
+    void viewChanged();
+    void updateDayLabels();
    
- private:
-   // date range label.
-   QLabel           *dispLabel;
-   // day display vars
-   QLabel           *dayNames[7];
-   KSelLabel        *dayHeaders[42];
-   KSummaries       *daySummaries[42];
-   bool              shortdaynames;
-   bool              weekStartsMonday;
+  private:
+    int mDaysPerWeek;
+    int mNumWeeks;
+    int mNumCells;
+    bool mWeekStartsMonday;
+    
+    QPtrVector<MonthViewCell> mCells;
+    QPtrVector<QLabel> mDayLabels;
 
-   // display control vars
-   KOEventPopupMenu *rightClickMenu;
+    bool mShortDayLabels;
+    int mWidthLongDayLabel;
 
-   // state data.
-   QDate            myDate;
-   Calendar        *myCal;
-   QValueList<int>  selDateIdxs;
-   QPalette         holidayPalette;
+    QDate mStartDate;
+
+    MonthViewCell *mSelectedCell;
+
+    KOEventPopupMenu *mContextMenu;
 };
 
 #endif
- 
