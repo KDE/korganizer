@@ -184,7 +184,7 @@ void KOEditorGeneralTodo::setDefaults(QDateTime due,bool allDay)
   mDueCheck->setChecked(false);
   enableDueEdit(false);
 
-  alarmDisable(true);
+  disableAlarmEdit(true);
   
   mStartCheck->setChecked(false);
   enableStartEdit(false);
@@ -207,13 +207,13 @@ void KOEditorGeneralTodo::readTodo(Todo *todo)
   QDateTime dueDT;
   
   if (todo->hasDueDate()) {
-    alarmDisable(false);
+    enableAlarmEdit(true);
     dueDT = todo->dtDue();
     mDueDateEdit->setDate(todo->dtDue().date());
     mDueTimeEdit->setTime(todo->dtDue().time());
     mDueCheck->setChecked(true);
   } else {
-    alarmDisable(true);
+    disableAlarmEdit(true);
     mDueDateEdit->setDate(QDate::currentDate());
     mDueTimeEdit->setTime(QTime::currentTime());
     mDueCheck->setChecked(false);
@@ -326,10 +326,10 @@ void KOEditorGeneralTodo::enableTimeEdits(bool enable)
 
 void KOEditorGeneralTodo::showAlarm(bool show) {
   if(show && mDueCheck->isChecked() && mTimeButton->isChecked()) {
-    alarmDisable(false);
+    disableAlarmEdit(false);
   }
   else {
-    alarmDisable(true);
+    disableAlarmEdit(true);
   }
 }
 
