@@ -63,6 +63,8 @@ class KOEditorFreeBusy : public QWidget
 
     void setDateTimes( QDateTime, QDateTime );
 
+    void editFreeBusyUrl( KDGanttViewItem *item );
+
   protected slots:
     void slotUpdateGanttView( QDateTime, QDateTime );
     void slotScaleChanged( int );

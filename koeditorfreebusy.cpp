@@ -43,6 +43,7 @@
 #include "koglobals.h"
 #include "kogroupware.h"
 #include "freebusymanager.h"
+#include "freebusyurldialog.h"
 
 #include "koeditorfreebusy.h"
 
@@ -216,8 +217,10 @@ KOEditorFreeBusy::KOEditorFreeBusy( int spacing, QWidget* parent, const char* na
   else
     mGanttView->setHourFormat( KDGanttView::Hour_24 );
 
+//  connect( mGanttView, SIGNAL( lvItemDoubleClicked( KDGanttViewItem * ) ),
+//           SLOT( updateFreeBusyData( KDGanttViewItem * ) ) );
   connect( mGanttView, SIGNAL( lvItemDoubleClicked( KDGanttViewItem * ) ),
-           SLOT( updateFreeBusyData( KDGanttViewItem * ) ) );
+           SLOT( editFreeBusyUrl( KDGanttViewItem * ) ) );
 
   FreeBusyManager *m = KOGroupware::instance()->freeBusyManager();
   connect( m, SIGNAL( freeBusyRetrieved( KCal::FreeBusy *, const QString & ) ),
@@ -549,6 +552,15 @@ void KOEditorFreeBusy::reload()
     updateFreeBusyData( item->attendee() );
     item = static_cast<FreeBusyItem *>( item->nextSibling() );
   }
+}
+
+void KOEditorFreeBusy::editFreeBusyUrl( KDGanttViewItem *i )
+{
+  FreeBusyItem *item = static_cast<FreeBusyItem *>( i );
+  Attendee *attendee = item->attendee();
+  
+  FreeBusyUrlDialog dialog( this );
+  dialog.exec();
 }
 
 #include "koeditorfreebusy.moc"
