@@ -300,24 +300,7 @@ void KOEditorDetails::openAddressBook()
     dia->setShowCC( false );
     dia->setShowBCC( false );
     if ( dia->exec() ) {
-        KABC::Addressee::List aList = dia->toAddresses();
-        QStringList dList = dia->toDistributionLists();
-        KABC::DistributionListManager manager( KABC::StdAddressBook::self() );
-        manager.load();
-        for ( QStringList::ConstIterator it = dList.begin(); it != dList.end(); ++it ) {
-            QValueList<KABC::DistributionList::Entry> eList = manager.list( *it )->entries();
-            QValueList<KABC::DistributionList::Entry>::Iterator eit;
-            if ( eList.count() > 0 )
-            for( eit = eList.begin(); eit != eList.end(); ++eit ) {
-                KABC::Addressee a = (*eit).addressee;
-                bool myself = a.preferredEmail() == KOPrefs::instance()->email();
-                KCal::Attendee::PartStat partStat =
-                    myself ? KCal::Attendee::Accepted : KCal::Attendee::NeedsAction;
-                insertAttendee( new Attendee( a.realName(), a.preferredEmail(),
-                                              !myself, partStat,
-                                              KCal::Attendee::ReqParticipant, a.uid() ) );
-            }
-        }
+        KABC::Addressee::List aList = dia->allToAddressesNoDuplicates();
         for ( KABC::Addressee::List::iterator itr = aList.begin();
               itr != aList.end(); ++itr ) {
             KABC::Addressee a = (*itr);
@@ -327,6 +310,7 @@ void KOEditorDetails::openAddressBook()
             insertAttendee( new Attendee( a.realName(), a.preferredEmail(),
                                           !myself, partStat,
                                           KCal::Attendee::ReqParticipant, a.uid() ) );
+            
         }
     }
     delete dia;
