@@ -362,6 +362,7 @@ void FreeBusyManager::cancelRetrieval()
 
 KURL FreeBusyManager::freeBusyUrl( const QString &email )
 {
+  // First check if there is a specific FB url for this email
   QString configFile = locateLocal( "data", "korganizer/freebusyurls" );
   KConfig cfg( configFile );
 
@@ -371,7 +372,10 @@ KURL FreeBusyManager::freeBusyUrl( const QString &email )
     return KURL( url );
   }
 
-  KURL sourceURL;
+  // None found. Check if we do automatic FB retrieving then
+  if ( !KOPrefs::instance()->mFreeBusyRetrieveAuto )
+    // No, so no FB list here
+    return KURL();
 
   // Sanity check: Don't download if it's not a correct email
   // address (this also avoids downloading for "(empty email)").
@@ -381,43 +385,10 @@ KURL FreeBusyManager::freeBusyUrl( const QString &email )
 
   // Cut off everything left of the @ sign to get the user name.
   QString emailName = email.left( emailpos );
-  QString emailHost = email.mid( emailpos + 1 );
 
-#if 0
-  // Put download string together
-  if( KOPrefs::instance()->mRetrieveKolab ) {
-    // we use Kolab
-    QString server;
-    if( KOPrefs::instance()->mRetrieveKolabServer == "%SERVER%" ||
-	KOPrefs::instance()->mRetrieveKolabServer.isEmpty() )
-      server = emailHost;
-    else
-      server = KOPrefs::instance()->mRetrieveKolabServer;
-
-    sourceURL.setProtocol( "webdavs" );
-    sourceURL.setHost( server );
-    sourceURL.setPass( KOPrefs::instance()->mRetrievePassword );
-    sourceURL.setUser( KOPrefs::instance()->mRetrieveUserName );
-    sourceURL.setPath( QString::fromLatin1( "/freebusy/" ) + emailName +
-		       QString::fromLatin1( ".ifb" ) );
-  } else {
-    // we use something else
-    QString anyurl = KOPrefs::instance()->mRetrieveAnyURL;
-    if( anyurl.contains( "%SERVER%" ) )
-      anyurl.replace( "%SERVER%", emailHost );
-    sourceURL = anyurl;
-  }
-#endif
-
+  // Build the URL
+  KURL sourceURL;
   sourceURL = KOPrefs::instance()->mFreeBusyRetrieveUrl;
-
-  if ( sourceURL.host() != emailHost ) {
-    kdDebug() << "FreeBusyManager::freeBusyUrl(): " << sourceURL.host()
-              << " doesn't match " << emailHost << ". Cancel retrieval."
-              << endl;
-    return KURL();
-  }
-
   sourceURL.setFileName( emailName + ".ifb" );
   sourceURL.setUser( KOPrefs::instance()->mFreeBusyRetrieveUser );
   sourceURL.setPass( KOPrefs::instance()->mFreeBusyRetrievePassword );
