@@ -711,7 +711,7 @@ bool KOEditorGeneralEvent::validateInput()
   }
 
   if (startDt > endDt) {
-    KMessageBox::sorry(this,i18n("The event ends before starts.\n"
+    KMessageBox::sorry(this,i18n("The event ends before it starts.\n"
                                  "Please correct dates and times."));
     return false;
   }
