@@ -176,7 +176,7 @@ void KOEditorGeneralEvent::initAlarmBox()
   QPixmap pixmap;
 
   alarmBell = new QLabel(this);
-  alarmBell->setPixmap(UserIcon("bell"));
+  alarmBell->setPixmap(SmallIcon("bell"));
 
   alarmButton = new QCheckBox( this, "CheckBox_2" );
   alarmButton->setText( i18n("Reminder:") );
@@ -192,14 +192,14 @@ void KOEditorGeneralEvent::initAlarmBox()
   alarmIncrCombo->setMinimumHeight(20);
 
   alarmSoundButton = new QPushButton( this, "PushButton_4" );
-  pixmap = UserIcon("playsound");
+  pixmap = SmallIcon("playsound");
   //  alarmSoundButton->setText( i18n("WAV") );
   alarmSoundButton->setPixmap(pixmap);
   alarmSoundButton->setToggleButton(true);
   QToolTip::add(alarmSoundButton, "No sound set");
 
   alarmProgramButton = new QPushButton( this, "PushButton_5" );
-  pixmap = UserIcon("runprog");
+  pixmap = SmallIcon("runprog");
   //  alarmProgramButton->setText( i18n("PROG") );
   alarmProgramButton->setPixmap(pixmap);
   alarmProgramButton->setToggleButton(true);

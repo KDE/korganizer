@@ -61,9 +61,9 @@ KOAgendaItem::KOAgendaItem(KOEvent *event, QWidget *parent,
   mIconRecur->setMouseTracking(true);
   mIconReadonly->setMouseTracking(true);
 
-  static const QPixmap alarmPxmp = UserIcon("bell");
-  static const QPixmap recurPxmp = UserIcon("recur");
-  static const QPixmap readonlyPxmp = UserIcon("readonlyevent");
+  static const QPixmap alarmPxmp = SmallIcon("bell");
+  static const QPixmap recurPxmp = SmallIcon("recur");
+  static const QPixmap readonlyPxmp = SmallIcon("readonlyevent");
 
   mIconAlarm->setPixmap(alarmPxmp);
   mIconRecur->setPixmap(recurPxmp);

@@ -19,7 +19,7 @@ KDateEdit::KDateEdit(QWidget *parent, const char *name)
   mDateEdit = new QLineEdit(this);
   mDateEdit->setText(KGlobal::locale()->formatDate(QDate::currentDate(),true));
 
-  QPixmap pixmap = UserIcon("smallcal");
+  QPixmap pixmap = SmallIcon("smallcal");
   mDateButton = new QPushButton(this);
   mDateButton->setPixmap(pixmap);
 

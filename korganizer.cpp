@@ -264,7 +264,7 @@ void KOrganizer::initActions()
   // Navigation menu  
   (void)new KAction(i18n("Go to &Today"), "today", 0,
                     mCalendarView,SLOT(goToday()),
-                    actionCollection(), "go_home");
+                    actionCollection(), "go_today");
   action = new KAction(i18n("Go &Backward"), "1leftarrow", 0,
                        mCalendarView,SLOT(goPrevious()),
                        actionCollection(), "go_previous");

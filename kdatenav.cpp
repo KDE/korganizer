@@ -53,20 +53,20 @@ KDateNavigator::KDateNavigator(QWidget *parent,
 
   // Create backward navigation buttons
   prevYear = new QPushButton(ctrlFrame);
-  prevYear->setPixmap(UserIcon("2leftarrow"));
+  prevYear->setPixmap(SmallIcon("2leftarrow"));
   QToolTip::add(prevYear, i18n("Previous Year"));
 
   prevMonth = new QPushButton(ctrlFrame);
-  prevMonth->setPixmap(UserIcon("1leftarrow"));
+  prevMonth->setPixmap(SmallIcon("1leftarrow"));
   QToolTip::add(prevMonth, i18n("Previous Month"));
 
   // Create forward navigation buttons
   nextMonth = new QPushButton(ctrlFrame);
-  nextMonth->setPixmap(UserIcon("1rightarrow"));
+  nextMonth->setPixmap(SmallIcon("1rightarrow"));
   QToolTip::add(nextMonth, i18n("Next Month"));
 
   nextYear = new QPushButton(ctrlFrame);
-  nextYear->setPixmap(UserIcon("2rightarrow"));
+  nextYear->setPixmap(SmallIcon("2rightarrow"));
   QToolTip::add(nextYear, i18n("Next Year"));
 
   // Create month name label

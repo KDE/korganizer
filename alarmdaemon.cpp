@@ -29,10 +29,9 @@
 AlarmDockWindow::AlarmDockWindow(QWidget *parent, const char *name)
   : KSystemTray(parent, name)
 {
-  dPixmap1 = KGlobal::iconLoader()->loadIcon("alarmd", 
-					     KIcon::User);
-  dPixmap2 = KGlobal::iconLoader()->loadIcon("alarmd-disabled", 
-					     KIcon::User);
+  KGlobal::iconLoader()->addAppDir("korganizer");
+  dPixmap1 = BarIcon("alarmd");
+  dPixmap2 = BarIcon("alarmd_disabled");
 
   if (dPixmap1.isNull() || dPixmap2.isNull()) {
     QMessageBox::warning(this, i18n("Alarm Monitor Error"),

@@ -298,6 +298,8 @@ bool CalObject::save(const QString &fileName)
 
 VCalDrag *CalObject::createDrag(KOEvent *selectedEv, QWidget *owner)
 {
+  if (selectedEv == 0) qDebug("----------------000");
+
   VObject *vcal, *vevent;
   QString tmpStr;
   
@@ -315,7 +317,7 @@ VCalDrag *CalObject::createDrag(KOEvent *selectedEv, QWidget *owner)
   VCalDrag *vcd = new VCalDrag(vcal, owner);
   // free memory associated with vCalendar stuff
   cleanVObject(vcal);  
-  vcd->setPixmap(UserIcon("newevent"));
+  vcd->setPixmap(BarIcon("appointment"));
 
   return vcd;
 }
@@ -339,7 +341,7 @@ VCalDrag *CalObject::createDragTodo(KOEvent *selectedEv, QWidget *owner)
   VCalDrag *vcd = new VCalDrag(vcal, owner);
   // free memory associated with vCalendar stuff
   cleanVObject(vcal);  
-  vcd->setPixmap(UserIcon("newevent"));
+  vcd->setPixmap(BarIcon("todo"));
 
   return vcd;
 }

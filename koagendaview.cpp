@@ -161,8 +161,8 @@ EventIndicator::EventIndicator(Location loc,QWidget *parent,const char *name)
   mLocation = loc;
   mTopLayout = 0;
 
-  if (mLocation == Top) mPixmap = UserIcon("1uparrow");
-  else mPixmap = UserIcon("1downarrow");
+  if (mLocation == Top) mPixmap = SmallIcon("1uparrow");
+  else mPixmap = SmallIcon("1downarrow");
 
   setMinimumHeight(mPixmap.height());
 }
@@ -254,7 +254,7 @@ KOAgendaView::KOAgendaView(CalObject *cal,QWidget *parent,const char *name) :
 
   // Create event context menu for agenda
   mAgendaPopup = eventPopup();
-  mAgendaPopup->addAdditionalItem(QIconSet(UserIcon("bell")),
+  mAgendaPopup->addAdditionalItem(QIconSet(SmallIcon("bell")),
                                   i18n("ToggleAlarm"),mAgenda,
                                   SLOT(popupAlarm()),true);
   connect(mAgenda,SIGNAL(showEventPopupSignal(KOEvent *)),

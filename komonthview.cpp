@@ -84,8 +84,8 @@ EventListBoxItem::EventListBoxItem(const QString & s)
   : QListBoxItem()
 { 
   setText(s); 
-  alarmPxmp = UserIcon("bell");
-  recurPxmp = UserIcon("recur");
+  alarmPxmp = SmallIcon("bell");
+  recurPxmp = SmallIcon("recur");
   recur = false;
   alarm = false;
 }
@@ -287,27 +287,27 @@ KOMonthView::KOMonthView(CalObject *cal,
     cFrame->setFrameStyle(QFrame::Panel|QFrame::Raised);
     
     // Create navigation buttons
-    pixmap = loader->loadIcon("3uparrow",KIcon::User);
+    pixmap = loader->loadIcon("3uparrow",KIcon::Small);
     KONavButton *upYear = new KONavButton(pixmap,cFrame);
     QToolTip::add(upYear, i18n("Go back one year"));    
 
-    pixmap = loader->loadIcon("2uparrow",KIcon::User);
+    pixmap = loader->loadIcon("2uparrow",KIcon::Small);
     KONavButton *upMonth = new KONavButton(pixmap, cFrame);
     QToolTip::add(upMonth, i18n("Go back one month"));    
 
-    pixmap = loader->loadIcon("1uparrow",KIcon::User);
+    pixmap = loader->loadIcon("1uparrow",KIcon::Small);
     KONavButton *upWeek = new KONavButton(pixmap, cFrame);
     QToolTip::add(upWeek, i18n("Go back one week"));
 
-    pixmap = loader->loadIcon("1downarrow",KIcon::User);
+    pixmap = loader->loadIcon("1downarrow",KIcon::Small);
     KONavButton *downWeek = new KONavButton(pixmap, cFrame); 
     QToolTip::add(downWeek, i18n("Go forward one week"));  
 
-    pixmap = loader->loadIcon("2downarrow",KIcon::User);
+    pixmap = loader->loadIcon("2downarrow",KIcon::Small);
     KONavButton *downMonth = new KONavButton(pixmap, cFrame);    
     QToolTip::add(downMonth, i18n("Go forward one month"));
 
-    pixmap = loader->loadIcon("3downarrow",KIcon::User);
+    pixmap = loader->loadIcon("3downarrow",KIcon::Small);
     KONavButton *downYear = new KONavButton(pixmap, cFrame);
     QToolTip::add(downYear, i18n("Go forward one year"));
 

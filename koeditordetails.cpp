@@ -44,9 +44,9 @@ void AttendeeListItem::updateItem()
   setText(2,mAttendee->getRoleStr());
   setText(3,mAttendee->getStatusStr());
   if (mAttendee->RSVP() && !mAttendee->getEmail().isEmpty())
-    setPixmap(4,UserIcon("mailappt"));
+    setPixmap(4,SmallIcon("mailappt"));
   else
-    setPixmap(4,UserIcon("nomailappt"));
+    setPixmap(4,SmallIcon("nomailappt"));
 }
 
 
