@@ -666,7 +666,8 @@ void KOTodoView::popupMenu( QListViewItem *item, const QPoint &, int column )
         break;
       case 3:
         if ( mActiveItem->todo()->hasDueDate () ) {
-          mDatePickerPopupMenu->DatePicker()->setDate( mActiveItem->todo()->dtDue().date() );
+          mDatePickerPopupMenu->datePicker()->setDate( mActiveItem->todo()->
+            dtDue().date() );
           mDatePickerPopupMenu->popup( QCursor::pos () );
         }
         else {
