@@ -354,7 +354,11 @@ KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name) :
   // Create/Show/Edit/Delete Event
   connect(mAgenda,SIGNAL(newEventSignal(int,int)),
                   SLOT(newEvent(int,int)));
+  connect(mAgenda,SIGNAL(newEventSignal(int,int,int,int)),
+                  SLOT(newEvent(int,int,int,int)));
   connect(mAllDayAgenda,SIGNAL(newEventSignal(int,int)),
+                        SLOT(newEventAllDay(int,int)));
+  connect(mAllDayAgenda,SIGNAL(newEventSignal(int,int,int,int)),
                         SLOT(newEventAllDay(int,int)));
   connect(mAgenda,SIGNAL(editEventSignal(Event *)),
                   SIGNAL(editEventSignal(Event *)));
@@ -873,6 +877,22 @@ void KOAgendaView::newEvent(int gx, int gy)
   QDateTime dt(day,time);
 
   emit newEventSignal(dt);
+}
+
+void KOAgendaView::newEvent(int gxStart, int gyStart, int gxEnd, int gyEnd)
+{
+  if (!mSelectedDates.count()) return;
+  
+  QDate dayStart = mSelectedDates[gxStart];
+  QDate dayEnd = mSelectedDates[gxEnd];
+
+  QTime timeStart = mAgenda->gyToTime(gyStart);
+  QTime timeEnd = mAgenda->gyToTime( gyEnd + 1 );
+
+  QDateTime dtStart(dayStart,timeStart);
+  QDateTime dtEnd(dayEnd,timeEnd);
+
+  emit newEventSignal(dtStart,dtEnd);
 }
 
 void KOAgendaView::newEventAllDay(int gx, int )

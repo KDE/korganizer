@@ -224,6 +224,8 @@ void KOViewManager::showAgendaView()
     // SIGNALS/SLOTS FOR DAY/WEEK VIEW
     connect(mAgendaView,SIGNAL(newEventSignal(QDateTime)),
             mMainView, SLOT(newEvent(QDateTime)));
+    connect(mAgendaView,SIGNAL(newEventSignal(QDateTime,QDateTime)),
+            mMainView, SLOT(newEvent(QDateTime,QDateTime)));
     connect(mAgendaView,SIGNAL(newEventSignal(QDate)),
             mMainView, SLOT(newEvent(QDate)));
 //  connect(mAgendaView,SIGNAL(newEventSignal()),

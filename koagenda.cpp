@@ -198,6 +198,10 @@ void KOAgenda::init()
   mCurrentCellX = 0;
   mCurrentCellY = 0;
 
+  mSelectionCellX = 0;
+  mSelectionYTop = 0;
+  mSelectionHeight = 0;
+
   mOldLowerScrollValue = -1;
   mOldUpperScrollValue = -1;
 
@@ -251,8 +255,17 @@ void KOAgenda::clear()
   mItems.clear();
 
   mSelectedItem = 0;
+
+  clearSelection();
 }
 
+
+void KOAgenda::clearSelection()
+{
+  mSelectionCellX = 0;
+  mSelectionYTop = 0;
+  mSelectionHeight = 0;
+}
 
 void KOAgenda::marcus_bains()
 {
@@ -321,75 +334,156 @@ bool KOAgenda::eventFilter_mouse(QObject *object, QMouseEvent *me)
   }
 
   switch (me->type())  {
-  case QEvent::MouseButtonPress:
+    case QEvent::MouseButtonPress:
 //        kdDebug() << "koagenda: filtered button press" << endl;
-    if (object != viewport()) {
-      if (me->button() == RightButton) {
-	mClickedItem = (KOAgendaItem *)object;
-	if (mClickedItem) {
-	  selectItem(mClickedItem);
-	  emit showEventPopupSignal(mClickedItem->itemEvent());
-	}
-	//            mItemPopup->popup(QCursor::pos());
+      if (object != viewport()) {
+        if (me->button() == RightButton) {
+	  mClickedItem = (KOAgendaItem *)object;
+	  if (mClickedItem) {
+	    selectItem(mClickedItem);
+	    emit showEventPopupSignal(mClickedItem->itemEvent());
+	  }
+	  //            mItemPopup->popup(QCursor::pos());
+        } else {
+	  mActionItem = (KOAgendaItem *)object;
+	  if (mActionItem) {
+	    selectItem(mActionItem);
+	    // XXX remove this line:
+	    // mActionItem->itemEvent()->recurrence()->doesRecur()
+	    if (!mActionItem->itemEvent()->isReadOnly())
+	      startItemAction(viewportPos);
+	    else
+	      mActionItem = 0;
+	  }
+        }
       } else {
-	mActionItem = (KOAgendaItem *)object;
-	if (mActionItem) {
-	  selectItem(mActionItem);
-	  // XXX remove this line:
-	  // mActionItem->itemEvent()->recurrence()->doesRecur()
-	  if (!mActionItem->itemEvent()->isReadOnly())
-	    startItemAction(viewportPos);
-	  else
-	    mActionItem = 0;
-	}
+        selectItem(0);
+        mActionItem = 0;
+        setCursor(arrowCursor);
+        startSelectAction(viewportPos);
       }
-    } else {
-      selectItem(0);
-      mActionItem = 0;
-      mActionType = NOP;
-      setCursor(arrowCursor);
-    }
-    break;
+      break;
 
-  case QEvent::MouseButtonRelease:
-    if (mActionItem)
-      endItemAction();
-    break;
+    case QEvent::MouseButtonRelease:
+      if (mActionItem) {
+        endItemAction();
+      } else if ( mActionType == SELECT ) {
+        endSelectAction();
+      }
+      break;
 
-  case QEvent::MouseMove:
-    if (object != viewport()) {
-      KOAgendaItem *moveItem = (KOAgendaItem *)object;
-      if (!moveItem->itemEvent()->isReadOnly())
-	if (!mActionItem)
-	  setNoActionCursor(moveItem,viewportPos);
-	else
-	  performItemAction(viewportPos);
-    }
-    break;
+    case QEvent::MouseMove:
+      if (object != viewport()) {
+        KOAgendaItem *moveItem = (KOAgendaItem *)object;
+        if (!moveItem->itemEvent()->isReadOnly())
+	  if (!mActionItem)
+	    setNoActionCursor(moveItem,viewportPos);
+	  else
+	    performItemAction(viewportPos);
+      } else {
+        if ( mActionType == SELECT ) {
+          performSelectAction( viewportPos );
+        }
+      }
+      break;
 
-  case QEvent::MouseButtonDblClick:
-    if (object == viewport()) {
-      selectItem(0);
-      int x,y;
-      viewportToContents(viewportPos.x(),viewportPos.y(),x,y);
-      int gx,gy;
-      contentsToGrid(x,y,gx,gy);
-      emit newEventSignal(gx,gy);
-    } else {
-      KOAgendaItem *doubleClickedItem = (KOAgendaItem *)object;
-      selectItem(doubleClickedItem);
-      emit editEventSignal(doubleClickedItem->itemEvent());
-    }
-    break;
+    case QEvent::MouseButtonDblClick:
+      if (object == viewport()) {
+        selectItem(0);
+        int x,y;
+        viewportToContents(viewportPos.x(),viewportPos.y(),x,y);
+        int gx,gy;
+        contentsToGrid(x,y,gx,gy);
+        emit newEventSignal(gx,gy);
+      } else {
+        KOAgendaItem *doubleClickedItem = (KOAgendaItem *)object;
+        selectItem(doubleClickedItem);
+//        emit editEventSignal(doubleClickedItem->itemEvent());
+      }
+      break;
 
-  default:
-    break;
+    default:
+      break;
   }
-
 
   return true;
 }
 
+void KOAgenda::startSelectAction(QPoint viewportPos)
+{
+  mActionType = SELECT;
+
+  int x,y;
+  viewportToContents(viewportPos.x(),viewportPos.y(),x,y);
+  int gx,gy;
+  contentsToGrid(x,y,gx,gy);
+
+  mStartCellX = gx;
+  mStartCellY = gy;
+  mCurrentCellX = gx;
+  mCurrentCellY = gy;
+
+  // Store coordinates of old selection
+  int selectionX = mSelectionCellX * mGridSpacingX;
+  int selectionYTop = mSelectionYTop;
+  int selectionHeight = mSelectionHeight;
+
+  // Store new selection
+  mSelectionCellX = gx;
+  mSelectionYTop = gy * mGridSpacingY;
+  mSelectionHeight = mGridSpacingY;
+  
+  // Clear old selection
+  repaintContents( selectionX, selectionYTop,
+                   mGridSpacingX, selectionHeight );
+
+  // Paint new selection
+  repaintContents( mSelectionCellX * mGridSpacingX, mSelectionYTop,
+                   mGridSpacingX, mSelectionHeight );
+}
+
+void KOAgenda::performSelectAction(QPoint viewportPos)
+{
+  int x,y;
+  viewportToContents(viewportPos.x(),viewportPos.y(),x,y);
+  int gx,gy;
+  contentsToGrid(x,y,gx,gy);
+
+  if ( gy > mCurrentCellY ) {
+    mSelectionHeight = ( gy + 1 ) * mGridSpacingY - mSelectionYTop;
+
+#if 0
+    // FIXME: Repaint only the newly selected region
+    repaintContents( mSelectionCellX * mGridSpacingX,
+                     mCurrentCellY + mGridSpacingY,
+                     mGridSpacingX,
+                     mSelectionHeight - ( gy - mCurrentCellY - 1 ) * mGridSpacingY );
+#else
+    repaintContents( mSelectionCellX * mGridSpacingX, mSelectionYTop,
+                     mGridSpacingX, mSelectionHeight );
+#endif
+
+    mCurrentCellY = gy;
+  } else if ( gy < mCurrentCellY ) {
+    if ( gy >= mStartCellY ) {
+      int selectionHeight = mSelectionHeight;
+      mSelectionHeight = ( gy + 1 ) * mGridSpacingY - mSelectionYTop;
+
+      repaintContents( mSelectionCellX * mGridSpacingX, mSelectionYTop,
+                       mGridSpacingX, selectionHeight );
+    
+      mCurrentCellY = gy;
+    } else {
+    }
+  }
+}
+
+void KOAgenda::endSelectAction()
+{
+  mActionType = NOP;
+
+  emit newEventSignal(mStartCellX,mStartCellY,mCurrentCellX,mCurrentCellY);
+}
 
 void KOAgenda::startItemAction(QPoint viewportPos)
 {
@@ -709,6 +803,8 @@ void KOAgenda::placeSubCells(KOAgendaItem *placeItem)
 */
 void KOAgenda::drawContents(QPainter* p, int cx, int cy, int cw, int ch)
 {
+//  kdDebug() << "KOAgenda::drawContents()" << endl;
+
   // Highlight working hours
   if (mWorkingHoursEnable) {
     int x1 = cx;
@@ -736,6 +832,16 @@ void KOAgenda::drawContents(QPainter* p, int cx, int cy, int cw, int ch)
         ++gxStart;
       }
     }
+  }
+
+  int selectionX = mSelectionCellX * mGridSpacingX;
+
+  // Draw selection
+  if ( ( cx + cw ) >= selectionX && cx <= ( selectionX + mGridSpacingX ) &&
+       ( cy + ch ) >= mSelectionYTop && cy <= ( mSelectionYTop + mSelectionHeight ) ) {
+    // TODO: paint only part within cx,cy,cw,ch
+    p->fillRect( selectionX, mSelectionYTop, mGridSpacingX,
+                 mSelectionHeight, KOPrefs::instance()->mHighlightColor );
   }
 
   // Draw vertical lines of grid

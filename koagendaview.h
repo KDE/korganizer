@@ -144,6 +144,7 @@ class KOAgendaView : public KOEventView {
     void slotPrevDates();
 
     void newEvent(int gx,int gy);
+    void newEvent(int gxStart, int gyStart, int gxEnd, int gyEnd);
     void newEventAllDay(int gx, int gy);
 
     void startDrag(Event *);

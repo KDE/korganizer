@@ -97,6 +97,8 @@ class KOAgenda : public QScrollView
 //    virtual QSizePolicy sizePolicy() const;
 
     void clear();
+    
+    void clearSelection();
 
     /** Calculates the minimum width */
     virtual int minimumWidth() const;
@@ -128,6 +130,7 @@ class KOAgenda : public QScrollView
   signals:
     void newEventSignal();
     void newEventSignal(int gx,int gy);
+    void newEventSignal(int gxStart, int gyStart, int gxEnd, int gyEnd);
     void editEventSignal(Event *event);
     void showEventSignal(Event *event);
     void deleteEventSignal(Event *event);
@@ -148,6 +151,15 @@ class KOAgenda : public QScrollView
 
     /** Handles mouse events. Called from eventFilter */
     virtual bool eventFilter_mouse ( QObject *, QMouseEvent * );
+
+    /** Start selecting time span. */
+    void startSelectAction(QPoint viewportPos);
+
+    /** Select time span. */
+    void performSelectAction(QPoint viewportPos);
+
+    /** Emd selecting time span. */
+    void endSelectAction();
 
     /** Start moving/resizing agenda item */
     void startItemAction(QPoint viewportPos);
@@ -208,6 +220,11 @@ class KOAgenda : public QScrollView
     int mWorkingHoursYTop;
     int mWorkingHoursYBottom;
 
+    // Selection
+    int mSelectionCellX;
+    int mSelectionYTop;
+    int mSelectionHeight;
+
     // List of dates to be displayed
     DateList mSelectedDates;
 
@@ -223,8 +240,8 @@ class KOAgenda : public QScrollView
     // The Marcus Bains Line widget.
     MarcusBains *mMarcusBains;
 
-    enum MouseActionType {NOP,MOVE,RESIZETOP,RESIZEBOTTOM,RESIZELEFT,
-                          RESIZERIGHT};
+    enum MouseActionType { NOP, MOVE, SELECT,
+                           RESIZETOP, RESIZEBOTTOM, RESIZELEFT, RESIZERIGHT };
 
     MouseActionType mActionType;
 
