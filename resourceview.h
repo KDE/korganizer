@@ -57,6 +57,8 @@ class ResourceItem : public QCheckListItem
   public:
     ResourceItem( KCal::ResourceCalendar *resource, ResourceView *view,
                   KListView *parent );
+    ResourceItem( KCal::ResourceCalendar *resource, const QString& sub,
+                  ResourceView *view, ResourceItem* parent );
 
     KCal::ResourceCalendar *resource() { return mResource; }
 
@@ -71,6 +73,7 @@ class ResourceItem : public QCheckListItem
     KCal::ResourceCalendar *mResource;
     ResourceView *mView;
     bool mBlockStateChange;
+    bool mIsSubresource;
 };
 
 /**

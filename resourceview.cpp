@@ -69,7 +69,30 @@ CalendarViewExtension *ResourceViewFactory::create( QWidget *parent )
 ResourceItem::ResourceItem( ResourceCalendar *resource, ResourceView *view,
                             KListView *parent )
   : QCheckListItem( parent, resource->resourceName(), CheckBox ),
-    mResource( resource ), mView( view ), mBlockStateChange( false )
+    mResource( resource ), mView( view ), mBlockStateChange( false ),
+    mIsSubresource( false )
+{
+  setGuiState();
+
+  QStringList subresources = mResource->subresources();
+  kdDebug(5850) << "Subresources: " << subresources << endl;
+  if ( subresources.count() > 0 ) {
+    setOpen( true );
+    setExpandable( true );
+    // This resource has subresources
+    QStringList::ConstIterator it;
+    for ( it=subresources.begin(); it!=subresources.end(); ++it ) {
+      kdDebug(5850) << "Adding subresource " << *it << endl;
+      ( void )new ResourceItem( mResource, *it, mView, this );
+    }
+  }
+}
+
+ResourceItem::ResourceItem( KCal::ResourceCalendar *resource,
+                            const QString& sub, ResourceView *view,
+                            ResourceItem* parent )
+  : QCheckListItem( parent, sub, CheckBox ), mResource( resource ),
+    mView( view ), mBlockStateChange( false ), mIsSubresource( true )
 {
   setGuiState();
 }
@@ -85,25 +108,31 @@ void ResourceItem::stateChange( bool active )
 {
   if ( mBlockStateChange ) return;
 
-  bool toActivate = active;
-
-  if ( active ) {
-    bool success = mResource->open();
-    if ( success ) {
-      success = mResource->load();
+  if ( !mIsSubresource ) {
+    // Handle a full resource
+    bool toActivate = active;
+    if ( active ) {
+      bool success = mResource->open();
+      if ( success ) {
+        success = mResource->load();
+      }
+      if ( !success ) {
+        QString msg = mResource->errorMessage();
+        if ( !msg.isEmpty() ) mView->emitErrorMessage( msg );
+        toActivate = false;
+      }
+    } else {
+      mResource->save();
+      mResource->close();
     }
-    if ( !success ) {
-      QString msg = mResource->errorMessage();
-      if ( !msg.isEmpty() ) mView->emitErrorMessage( msg );
-      toActivate = false;
-    }
-  } else {
-    mResource->save();
-    mResource->close();
-  }
-  mResource->setActive( toActivate );
+    mResource->setActive( toActivate );
 
-  setGuiState();
+    setOpen( toActivate && childCount() > 0 );
+
+    setGuiState();
+  } else
+    // Handle a subresource
+    mResource->setSubresourceActive( text( 0 ), active );
 
   mView->emitResourcesChanged();
 }
