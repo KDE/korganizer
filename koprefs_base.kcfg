@@ -24,10 +24,10 @@
     </entry>
     <entry type="Enum" key="Destination" name="Destination">
       <label>New Events/Todos Should</label>
-      <values>
-        <value>standardDestination</value>
-        <value>askDestination</value>
-      </values>
+      <choices>
+        <choice name="standardDestination"/>
+        <choice name="askDestination"/>
+      </choices>
       <default>standardDestination</default>
     </entry>
   </group>
@@ -43,10 +43,10 @@
     </entry>
     <entry type="Enum" key="Mail Client">
       <label>Mail Client</label>
-      <values>
-        <value>MailClientKMail</value>
-        <value>MailClientSendmail</value>
-      </values>
+      <choices>
+        <choice name="MailClientKMail"/>
+        <choice name="MailClientSendmail"/>
+      </choices>
       <default>MailClientKMail</default>
     </entry>
   </group>
@@ -169,10 +169,10 @@
 
   <group name="Group Scheduling">
     <entry type="Enum" name="IMIPScheduler">
-      <values>
-        <value>IMIPDummy</value>
-        <value>IMIPKMail</value>
-      </values>
+      <choices>
+        <choice name="IMIPDummy"/>
+        <choice name="IMIPKMail"/>
+      </choices>
       <default>IMIPKMail</default>
     </entry>
 
@@ -181,20 +181,20 @@
 
     <entry type="Enum" name="IMIPSend">
       <label>Scheduler Mails Should Be</label>
-      <values>
-        <value>IMIPOutbox</value>
-        <value>IMIPdirectsend</value>
-      </values>
+      <choices>
+        <choice name="IMIPOutbox"></choice>
+        <choice name="IMIPdirectsend"></choice>
+      </choices>
       <default>IMIPdirectsend</default>
     </entry>
 
     <entry type="Enum" key="IMIP auto refresh" name="IMIPAutoRefresh">
       <label>Auto Send Refresh</label>
-      <values>
-        <value>neverAuto</value>
-        <value>addressbookAuto</value>
-        <value>selectedAuto</value>
-      </values>
+      <choices>
+        <choice name="neverAuto"></choice>
+        <choice name="addressbookAuto"></choice>
+        <choice name="selectedAuto"></choice>
+      </choices>
       <default>neverAuto</default>
     </entry>
     <entry type="Enum" key="IMIP auto insert request" name="IMIPAutoInsertRequest">
