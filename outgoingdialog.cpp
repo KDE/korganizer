@@ -44,6 +44,8 @@
 #include "outgoingdialog.h"
 #include "koeventviewerdialog.h"
 #include "docprefs.h"
+#include "kogroupware.h"
+#include "freebusymanager.h"
 
 ScheduleItemOut::ScheduleItemOut(QListView *parent,IncidenceBase *ev,
                                  Scheduler::Method method,
@@ -140,6 +142,8 @@ OutgoingDialog::OutgoingDialog(Calendar *calendar,QWidget* parent,
     mScheduler = new DummyScheduler(mCalendar);
 #endif
   }
+  mScheduler->setFreeBusyCache( KOGroupware::instance()->freeBusyManager() );
+
   mMessageListView->setColumnAlignment(1,AlignHCenter);
   mMessageListView->setColumnAlignment(2,AlignHCenter);
   mMessageListView->setColumnAlignment(3,AlignHCenter);

@@ -51,7 +51,8 @@
 #include "koeventviewerdialog.h"
 #include "kocounterdialog.h"
 #include "koprefs.h"
-
+#include "kogroupware.h"
+#include "freebusymanager.h"
 
 ScheduleItemIn::ScheduleItemIn(QListView *parent,IncidenceBase *ev,
                                Scheduler::Method method,ScheduleMessage::Status status)
@@ -143,6 +144,7 @@ IncomingDialog::IncomingDialog( Calendar *calendar, OutgoingDialog * outgoing,
 #else
   mScheduler = new DummyScheduler( mCalendar );
 #endif
+  mScheduler->setFreeBusyCache( KOGroupware::instance()->freeBusyManager() );
   mMessageListView->setColumnAlignment( 1, AlignHCenter );
   mMessageListView->setColumnAlignment( 2, AlignHCenter );
   mMessageListView->setColumnAlignment( 3, AlignHCenter );

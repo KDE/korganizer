@@ -1,6 +1,7 @@
 /*
     This file is part of KOrganizer.
-    Copyright (c) 2001 Cornelius Schumacher <schumacher@kde.org>
+
+    Copyright (c) 2001,2004 Cornelius Schumacher <schumacher@kde.org>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -22,9 +23,6 @@
 */
 #ifndef MAILSCHEDULER_H
 #define MAILSCHEDULER_H
-//
-// Mail implementation of iTIP methods
-//
 
 #include <qptrlist.h>
 #include <qmap.h>
@@ -38,23 +36,25 @@ namespace KCal {
   This class implements the iTIP interface using the email interface specified
   as Mail.
 */
-class MailScheduler : public IMIPScheduler {
+class MailScheduler : public IMIPScheduler
+{
   public:
-    MailScheduler(Calendar *);
+    MailScheduler( Calendar * );
     virtual ~MailScheduler();
 
-    bool publish (IncidenceBase *incidence,const QString &recipients);
-    bool performTransaction(IncidenceBase *incidence,Method method);
-    bool performTransaction(IncidenceBase *incidence,Method method,const QString &recipients);
+    bool publish ( IncidenceBase *incidence, const QString &recipients );
+    bool performTransaction( IncidenceBase *incidence, Method method );
+    bool performTransaction( IncidenceBase *incidence, Method method,
+                             const QString &recipients );
     QPtrList<ScheduleMessage> retrieveTransactions();
 
-    bool deleteTransaction(IncidenceBase *incidence);
+    bool deleteTransaction( IncidenceBase *incidence );
 
     /** Returns the directory where the free-busy information is stored */
     virtual QString freeBusyDir();
   
   private:
-    QMap<IncidenceBase*, QString> mEventMap;
+    QMap<IncidenceBase *, QString> mEventMap;
 };
 
 }

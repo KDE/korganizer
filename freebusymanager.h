@@ -38,6 +38,7 @@
 
 #include <libkcal/icalformat.h>
 #include <libkcal/freebusy.h>
+#include <libkcal/freebusycache.h>
 #include <qstring.h>
 #include <qobject.h>
 
@@ -74,7 +75,7 @@ class FBDownloadJob : public QObject
     QCString mFBData;
 };
 
-class FreeBusyManager : public QObject
+class FreeBusyManager : public QObject, public KCal::FreeBusyCache
 {
     Q_OBJECT
   public:
@@ -99,6 +100,11 @@ class FreeBusyManager : public QObject
     bool downloadFreeBusyData( const QString& email, QObject *receiver,
                                const char *member );
     KCal::FreeBusy *parseFreeBusy( const QCString &data );
+
+    /**
+      Store freebusy information belonging to email.
+    */
+    bool storeFreeBusy( KCal::FreeBusy *, const QString &email );
 
   public slots:
     // When something changed in the calendar, we get this called

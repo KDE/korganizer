@@ -53,10 +53,12 @@
 #include <kapplication.h>
 #include <kconfig.h>
 #include <klocale.h>
+#include <kstandarddirs.h>
 
 #include <qfile.h>
 #include <qbuffer.h>
 #include <qregexp.h>
+#include <qdir.h>
 
 using namespace KCal;
 
@@ -338,6 +340,47 @@ KCal::FreeBusy *FreeBusyManager::parseFreeBusy( const QCString &data )
     }
   }
   return fb;
+}
+
+bool FreeBusyManager::storeFreeBusy( FreeBusy *freebusy, const QString &email )
+{
+  QString freeBusyDir = locateLocal( "data", "korganizer/freebusy" );
+
+  QDir freeBusyDirectory( freeBusyDir );
+  if ( !freeBusyDirectory.exists() ) {
+    kdDebug() << "Directory " << freeBusyDir << " does not exist!" << endl;
+    kdDebug() << "Creating directory: " << freeBusyDir << endl;
+    
+    if( !freeBusyDirectory.mkdir( freeBusyDir, true ) ) {
+      kdDebug() << "Could not create directory: " << freeBusyDir << endl;
+      return false;
+    }
+  }
+
+  QString filename( freeBusyDir );
+  filename += "/";
+  filename += email;
+  filename += ".ifb";
+  QFile f( filename );
+
+  kdDebug() << "acceptFreeBusy: filename" << filename << endl;
+
+  freebusy->clearAttendees();
+  freebusy->setOrganizer( email );
+
+  QString messageText = mFormat.createScheduleMessage( freebusy,
+                                                       Scheduler::Publish );
+
+  if ( !f.open( IO_ReadWrite ) ) {
+    kdDebug() << "acceptFreeBusy: Can't open:" << filename << " for writing"
+              << endl;
+    return false;
+  }
+  QTextStream t( &f );
+  t << messageText;
+  f.close();
+
+  return true;
 }
 
 #include "freebusymanager.moc"
