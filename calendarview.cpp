@@ -135,17 +135,12 @@ CalendarView::CalendarView(QString filename, QWidget *parent, const char *name )
   for(obj=mCalendarViews.first();obj;obj=mCalendarViews.next())
     qDebug("calViews: %s",obj->className());
 */  
-  // setup toolbar, menubar and status bar, NOTE: this must be done
-  // after the widget creation, because setting the menubar, toolbar
-  // or statusbar will generate a call to updateRects, which assumes
-  // that all of them are around.
 
   // set up printing object
   calPrinter = new CalPrinter(this, mCalendar);
 
   // set up web exporting object
   mExportWebDialog = new ExportWebDialog(mCalendar);
-
 
   // hook up the signals/slots of all widgets together so communication
   // can happen when things get clicked.
@@ -180,8 +175,9 @@ CalendarView::~CalendarView()
 }
 
 
-bool CalendarView::setFile(QString filename)
+bool CalendarView::openCalendar(QString filename)
 {
+  qDebug("CalendarView::openCalendar()");
   if (initCalendar(filename)) {
     setModified(false);
     updateView();
@@ -192,8 +188,9 @@ bool CalendarView::setFile(QString filename)
 }
 
 
-bool CalendarView::mergeFile(QString filename)
+bool CalendarView::mergeCalendar(QString filename)
 {
+  qDebug("CalendarView::mergeCalendar()");
   if (mCalendar->load(filename)) {
     setModified(false);
     updateView();
@@ -206,6 +203,7 @@ bool CalendarView::mergeFile(QString filename)
 
 bool CalendarView::saveCalendar(QString filename)
 {
+  qDebug("CalendarView::saveCalendar(): %s",filename.latin1());
   mCalendar->save(filename);
   
   // We should check for errors here.
@@ -217,9 +215,14 @@ bool CalendarView::saveCalendar(QString filename)
 
 void CalendarView::closeCalendar()
 {
+  qDebug("CalendarView::closeCalendar()");
+
+  // child windows no longer valid
+  emit closingDown();
+
   mCalendar->close();
-  fileName = "";
   setModified(false);
+  updateView();
 }
 
 
@@ -236,16 +239,11 @@ bool CalendarView::initCalendar(QString filename)
     setModified(false);
     if (!(mCalendar->load(filename))) {
       // while failing to load, the calendar object could 
-      // have become partially populated.  Clear it out.
+      // have become partially populated.  Cle1ar it out.
       mCalendar->close();
-      fileName = "";
       return false;
     }
   }
-
-  KConfig config(KGlobal::dirs()->findResource("config", "korganizerrc")); 
-  config.setGroup("General");
-  config.writeEntry("Current Calendar (2.0)", fileName);
 
   QApplication::restoreOverrideCursor();
   
@@ -580,18 +578,6 @@ void CalendarView::updateView()
 }
 
   
-int CalendarView::msgCalModified()
-{
-  // returns:
-  //  0: "Yes"
-  //  1: "No"
-  //  2: "Cancel"
-  return QMessageBox::warning(this,
-			      i18n("KOrganizer Warning"),
-			      i18n("This calendar has been modified.\n"
-				   "Would you like to save it?"),
-			      i18n("&Yes"), i18n("&No"), i18n("&Cancel"));
-}
 
 int CalendarView::msgItemDelete()
 {
@@ -607,7 +593,7 @@ int CalendarView::msgItemDelete()
 
 void CalendarView::edit_cut()
 {
-  KOEvent *anEvent;
+  KOEvent *anEvent=0;
 
   if (currentView) anEvent = (currentView->getSelected()).first();
 
@@ -621,7 +607,7 @@ void CalendarView::edit_cut()
 
 void CalendarView::edit_copy()
 {
-  KOEvent *anEvent;
+  KOEvent *anEvent=0;
 
   if (currentView) anEvent = (currentView->getSelected()).first();
   
@@ -959,7 +945,7 @@ void CalendarView::action_search()
 
 void CalendarView::action_mail()
 {
-  KOEvent *anEvent;
+  KOEvent *anEvent=0;
   KoMailClient mailobject(mCalendar);
 
   if (currentView) anEvent = (currentView->getSelected()).first();

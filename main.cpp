@@ -17,7 +17,6 @@
 #include <klocale.h>
 
 #include "koapp.h"
-#include "topwidget.h"
 
 KOrganizerApp *app;
 

@@ -17,11 +17,14 @@
 #include <klocale.h>
 #include <kstatusbar.h>
 #include <kmenubar.h>
+#include <kurl.h>
 
 #include "qdatelist.h"
 #include "calobject.h"
 
 class CalendarView;
+class KTempFile;
+class KRecentFilesAction;
 
 /**
  *
@@ -93,7 +96,7 @@ class KOrganizer : public KTMainWindow
     void file_open();
 
     /** open a file from the list of recent files. */
-    void file_openRecent(int i);
+    void file_openRecent(const KURL& url);
 
     /** import a calendar from another program like ical. */
     void file_import();
@@ -104,12 +107,11 @@ class KOrganizer : public KTMainWindow
     /** delete or archive old entries in your calendar for speed/space. */
     void file_archive();
 
-    /** save a file with the current fileName. returns nonzero on error. */
-    int file_save();
+    /** save a file with the current fileName. */
+    void file_save();
 
-    /** save a file under a (possibly) different filename. Returns nonzero
-     * on error. */
-    int file_saveas();
+    /** save a file under a (possibly) different filename. */
+    void file_saveas();
 
     /** close a file, prompt for save if changes made. */
     void file_close();
@@ -148,24 +150,11 @@ class KOrganizer : public KTMainWindow
     void checkAutoSave();
 
   protected:
-    void initMenus();
-    void initToolBar();
-
     void initActions();
 
-    /** supplied so that close events call file_close()/file_close() properly.*/
+    /** supplied so that close events close calendar properly.*/
     bool queryClose();
     bool queryExit();
-
-    /** show a file browser and get a file name.
-      * open_save is 0 for open, 1 for save. */
-    QString file_getname(int open_save);
-
-    /**
-     * takes the given fileName and adds it to the list of recent
-     * files opened.
-     */
-    void add_recent_file(QString recentFileName);
 
     /** query whether autoSave is set or not */
     bool autoSave() { return mAutoSave; };
@@ -173,29 +162,33 @@ class KOrganizer : public KTMainWindow
     /** Sets title of window according to filename and modification state */
     void setTitle();
 
+    /** Open calendar file from URL */
+    bool openURL(const KURL &url);
+    /** Merge calendar file from URL to current calendar */
+    bool mergeURL(const KURL &url);
+    /** Close calendar file opened from URL */
+    bool closeURL();
+    /** Save calendar file to URL of current calendar */
+    bool saveURL();
+    /** Save calendar file to URL */
+    bool saveAsURL(const KURL & kurl);
+
     // variables
     CalendarView *mCalendarView;  // Main view widget
-    QString mFilename;     // Name of calendar file
+    KURL mURL;      // URL of calendar file
+    QString mFile;  // Local name of calendar file
 
-    // menu stuff
-    QPopupMenu *fileMenu, *editMenu;
-    QPopupMenu *actionMenu, *optionsMenu, *viewMenu;
-    QPopupMenu *helpMenu;
-    QPopupMenu *recentPop;
+    KTempFile *mTempFile;
 
-    // toolbar stuff
-    KToolBar    *tb;
-    KMenuBar    *menubar;
-    KStatusBar  *sb;
+//    KStatusBar  *sb;
+
+    // Actions
+    KRecentFilesAction *mRecent;
 
     // configuration settings
     bool mAutoSave;  // Auto-Save calendar on close
-    QStrList        recentFileList;	// a list of recently accessed files
 
     QTimer         *mAutoSaveTimer;   // used if calendar is to be autosaved
-
-    int toolBarMenuId, statusBarMenuId;
-    bool toolBarEnable, statusBarEnable; // only used at initialization time
 };
 
 #endif // _KORGANIZER_H

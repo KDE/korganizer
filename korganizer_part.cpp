@@ -104,7 +104,7 @@ KOrganizerPart::~KOrganizerPart()
 
 bool KOrganizerPart::openFile()
 {
-  widget->setFile(m_file);
+  widget->openCalendar(m_file);
   widget->show();
   return true;
 }

@@ -16,7 +16,11 @@
       <Action name="view_week"/>
       <Action name="view_month"/>
       <Action name="view_todo"/>
+      <Separator/>
       <Action name="update"/>
+    </Menu>
+    <Menu name="go_document"><text>&amp;Go</text>
+      <Action name="go_today"/>
     </Menu>
     <Menu name="actions"><text>&amp;Actions</text>
       <Action name="new_appointment"/>
@@ -25,20 +29,19 @@
       <Action name="edit_appointment"/>
       <Action name="delete_appointment"/>
       <Action name="mail_appointment"/>
-      <Action name="go_today"/>
-      <Action name="go_previous"/>
-      <Action name="go_next"/>
     </Menu>
   </MenuBar>
 
-  <ToolBar name="korganizer_toolbar">
+  <ToolBar name="mainToolBar">
+    <Action name="go_today"/>
+    <Separator/>
     <Action name="new_appointment"/>
     <Action name="delete_appointment"/>
     <Action name="new_todo"/>
     <Action name="mail_appointment"/>
-    <Action name="go_today"/>
-    <Action name="go_previous"/>
-    <Action name="go_next"/>
+  </ToolBar>
+
+  <ToolBar name="korganizer_toolbar">
     <Action name="view_list"/>
     <Action name="view_day"/>
     <Action name="view_workweek"/>
@@ -46,5 +49,5 @@
     <Action name="view_month"/>
     <Action name="view_todo"/>
   </ToolBar>
-    
+
 </kpartgui>

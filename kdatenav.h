@@ -70,11 +70,13 @@ class KDateNavigator: public QFrame {
    inline int dayToIndex(int dayNum);
    void fixupSelectedDates(int yr, int mth);
 
-   KDateNavigator(const KDateNavigator & ) {}
-   KDateNavigator &operator=(const KDateNavigator &) { return *this; }
    CalObject *calendar;
 
    const QString *curHeaders;
+
+   // Disabling copy constructor and assignment operator 
+   KDateNavigator(const KDateNavigator & );
+   KDateNavigator &operator=(const KDateNavigator &);
 };
 
 #endif

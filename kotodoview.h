@@ -110,7 +110,7 @@ class todoViewIn : public QTableView
         void updateView() ;
         void updateConfig();
         KOEvent *getSelected() { return aTodo; }
-        void changeEventDisplay(KOEvent *which, int action) { updateView(); }
+        void changeEventDisplay(KOEvent *, int ) { updateView(); }
 
     protected slots:
         void updateItem(int r, int c) { updateCell(r,c); }
@@ -195,6 +195,5 @@ class TodoView : public QWidget
         int topH;
         QLabel *label;
 };
-
 
 #endif

@@ -89,10 +89,10 @@ public slots:
   void updateConfig();
 
   /** set calendar file to be displayed. */
-  bool setFile(QString filename);
+  bool openCalendar(QString filename);
 
   /** merge data from calendar file into currently displayed calendar. */
-  bool mergeFile(QString filename);
+  bool mergeCalendar(QString filename);
 
   /** Save calendar data to file. */
   bool saveCalendar(QString filename);
@@ -299,8 +299,6 @@ protected:
   CalObject      *mCalendar;
 
   // various housekeeping variables.
-  QString         fileName;	   // the currently loaded filename
-  QStrList        recentFileList;  // a list of recently accessed files
   bool            mModified;	   // flag indicating if calendar is modified
   QDate saveSingleDate;                
 

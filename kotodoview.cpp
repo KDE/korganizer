@@ -248,7 +248,7 @@ TodoView::TodoView(CalObject *cal, QWidget *parent, const char *name)
   label->setFrameStyle(QFrame::Panel | QFrame::Raised);
 }
 
-void TodoView::resizeEvent(QResizeEvent *e)
+void TodoView::resizeEvent(QResizeEvent *)
 {
   topH = fontMetrics().height()+4;
   
@@ -751,4 +751,3 @@ void todoViewIn::sortPriority()
   curSortMode = PRIORITY;
   updateView();
 }
-

@@ -615,7 +615,8 @@ void KDateNavigator::goPrevYear()
 
 // when prev/next year/month are pressed, this fixes the selected
 // date list and emits datesSelected signal.
-void KDateNavigator::fixupSelectedDates(int yr, int mth)
+//void KDateNavigator::fixupSelectedDates(int yr, int mth)
+void KDateNavigator::fixupSelectedDates(int, int)
 {
   selectedDates.clear();
   for (int i = 0; i < 42; i++) {
@@ -683,8 +684,6 @@ void KDateNavigator::addSelection(QDate selDate, int index, bool ctrlPressed)
   QDate *tmpDate;
   bool found = FALSE;
   int extraDays;
-
-  debug("KDateNavigator::addSelection() called");
 
   if (! selDate.isValid()) {
     debug("KDateNavigator::addSelection(): invalid date passed as a parameter!");

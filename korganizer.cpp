@@ -44,6 +44,9 @@
 #include <kaction.h>
 #include <kstdaction.h>
 #include <kedittoolbar.h>
+#include <ktempfile.h>
+#include <kio/netaccess.h>
+#include <kmessagebox.h>
 
 #include "misc.h"
 #include "version.h"
@@ -67,12 +70,13 @@ KOrganizer::KOrganizer(QString filename, bool fnOverride, const char *name )
 {
   qDebug("KOrganizer::KOrganizer()");
 
+  mTempFile = 0;
+
   mAutoSave = false;
 
   // add this instance of the window to the static list.
   windowList.append(this);
 
-  toolBarEnable = statusBarEnable = true;
 //  setMinimumSize(600,400);	// make sure we don't get resized too small...
 
   if (!fnOverride) {
@@ -80,21 +84,13 @@ KOrganizer::KOrganizer(QString filename, bool fnOverride, const char *name )
     config->setGroup("General");
     QString str = config->readEntry("Current Calendar (2.0)");
     if (!str.isEmpty() && QFile::exists(str))
-      mFilename = str;
+      mFile = str;
   } else {
-    mFilename = filename;
+    mFile = filename;
   }
 
-  mCalendarView = new CalendarView(mFilename,this,"KOrganizer::CalendarView");
+  mCalendarView = new CalendarView(mFile,this,"KOrganizer::CalendarView");
   setView(mCalendarView);
-
-  // setup toolbar, menubar and status bar, NOTE: this must be done
-  // after the widget creation, because setting the menubar, toolbar
-  // or statusbar will generate a call to updateRects, which assumes
-  // that all of them are around.
-
-//  initMenus();
-//  initToolBar();
 
   initActions();
 
@@ -121,6 +117,8 @@ KOrganizer::KOrganizer(QString filename, bool fnOverride, const char *name )
 
 KOrganizer::~KOrganizer()
 {
+  if (mTempFile) delete mTempFile;
+
   qDebug("~KOrganizer()");
   hide();
 
@@ -162,6 +160,8 @@ void KOrganizer::readSettings()
 
   mAutoSave = config->readBoolEntry("Auto Save", FALSE);
 
+  mRecent->loadEntries(config);
+
   mCalendarView->readSettings();
     
   config->sync();
@@ -197,7 +197,9 @@ void KOrganizer::writeSettings()
   // Write version number to prevent automatic loading and saving of a calendar
   // written by a newer KOrganizer, because this can lead to the loss of
   // information not processed by Korganizer 1.1.
-  config->writeEntry("Current Calendar (2.0)", mFilename);
+  config->writeEntry("Current Calendar (2.0)", mFile);
+
+  mRecent->saveEntries(config);
 
   mCalendarView->writeSettings();
 
@@ -209,7 +211,8 @@ void KOrganizer::initActions()
 {
   KStdAction::openNew(this, SLOT(file_new()), actionCollection());
   KStdAction::open(this, SLOT(file_open()), actionCollection());
-  KStdAction::openRecent(this, SLOT(file_openRecent(int)), actionCollection());
+  mRecent = KStdAction::openRecent(this, SLOT(file_openRecent(const KURL&)),
+                                   actionCollection());
   KStdAction::save(this, SLOT(file_save()), actionCollection());
   KStdAction::saveAs(this, SLOT(file_saveas()), actionCollection());
   KStdAction::close(this, SLOT(file_close()), actionCollection());
@@ -304,396 +307,34 @@ void KOrganizer::initActions()
 }
 
 
-void KOrganizer::initMenus()
-{
-  QPixmap pixmap;
-  //  int itemId;
-  KStdAccel stdAccel;
-
-  fileMenu = new QPopupMenu;
-  pixmap = BarIcon("mini/korganizer");
-  fileMenu->insertItem(pixmap,i18n("&New Window"), this,
-		       SLOT(file_new()), stdAccel.openNew());
-  fileMenu->insertSeparator();
-  pixmap = BarIcon("fileopen");
-  fileMenu->insertItem(pixmap, i18n("&Open"), this,
-		       SLOT(file_open()), stdAccel.open());
-
-  recentPop = new QPopupMenu;
-  fileMenu->insertItem(i18n("Open &Recent"), recentPop);
-  connect( recentPop, SIGNAL(activated(int)), SLOT(file_openRecent(int)));
-
-  // setup the list of recently used files
-  recentPop->clear();
-  for (int i = 0; i < (int) recentFileList.count(); i++)
-    recentPop->insertItem(recentFileList.at(i));
-  add_recent_file(mFilename);
-
-  fileMenu->insertItem(i18n("&Close"), this,
-		       SLOT(file_close()), stdAccel.close());
-  fileMenu->insertSeparator();
-
-  pixmap = BarIcon("filefloppy");
-  fileMenu->insertItem(pixmap, i18n("&Save"), this,
-		       SLOT(file_save()), stdAccel.save());
-  fileMenu->insertItem(i18n("Save &As"), this,
-		       SLOT(file_saveas()));
-
-  fileMenu->insertSeparator();
-
-  fileMenu->insertItem(i18n("&Import From Ical"), this,
-  		       SLOT(file_import()));
-  fileMenu->insertItem(i18n("&Merge Calendar"), this,
-		       SLOT(file_merge()));
-  
-  fileMenu->setItemEnabled(fileMenu->insertItem(i18n("Archive Old Entries"),
-						this,
-						SLOT(file_archive())),
-			   FALSE);
-  
-
-  fileMenu->insertItem(i18n("Export as web page"), mCalendarView,
-                       SLOT(exportWeb()));
-
-  fileMenu->insertSeparator();
-  fileMenu->insertItem(i18n("Print Setup"), mCalendarView,
-		       SLOT(printSetup()));
-
-  pixmap = BarIcon("fileprint");
-  fileMenu->insertItem(pixmap, i18n("&Print"), mCalendarView,
-		       SLOT(print()), stdAccel.print());
-  fileMenu->insertItem(i18n("Print Pre&view"), mCalendarView,
-		       SLOT(printPreview()));
-  
-  fileMenu->insertSeparator();
-  fileMenu->insertItem(i18n("&Quit"), this,
-		       SLOT(file_quit()), stdAccel.quit());
-
-  editMenu = new QPopupMenu;
-  //put stuff for editing here 
-  pixmap = BarIcon("editcut");
-  editMenu->insertItem(pixmap, i18n("C&ut"), mCalendarView,
-		       SLOT(edit_cut()), stdAccel.cut());
-  pixmap = BarIcon("editcopy");
-  editMenu->insertItem(pixmap, i18n("&Copy"), mCalendarView,
-		       SLOT(edit_copy()), stdAccel.copy());
-  pixmap = BarIcon("editpaste");
-  editMenu->insertItem(pixmap, i18n("&Paste"), mCalendarView,
-		       SLOT(edit_paste()), stdAccel.paste());
-
-  viewMenu = new QPopupMenu;
-
-  pixmap = BarIcon("listicon");
-  viewMenu->insertItem(pixmap, i18n("&List"), mCalendarView,
-			SLOT( view_list() ) );
-
-  pixmap = BarIcon("dayicon");
-  viewMenu->insertItem(pixmap, i18n("&Day"), mCalendarView,
-			SLOT( view_day() ) );
-  pixmap = BarIcon("5dayicon");
-  viewMenu->insertItem(pixmap, i18n("W&ork Week"), mCalendarView,
-			SLOT( view_workweek() ) );
-  pixmap = BarIcon("weekicon");
-  viewMenu->insertItem(pixmap, i18n("&Week"), mCalendarView,
-			SLOT( view_week() ) );
-  pixmap = BarIcon("monthicon");
-  viewMenu->insertItem(pixmap, i18n("&Month"), mCalendarView,
-			SLOT( view_month() ) );
-  pixmap = BarIcon("todolist");
-  viewMenu->insertItem(pixmap,i18n("&To-do list"), mCalendarView,
-			SLOT( view_todolist()), FALSE );
-  viewMenu->insertSeparator();
-  viewMenu->insertItem( i18n("&Update"), mCalendarView,
-			SLOT( update() ) );
-	
-  actionMenu = new QPopupMenu;
-  pixmap = BarIcon("newevent");
-  actionMenu->insertItem(pixmap, i18n("New &Appointment"), 
-			 mCalendarView, SLOT(apptmnt_new()));
-  actionMenu->insertItem(i18n("New E&vent"),
-			 mCalendarView, SLOT(allday_new()));
-  actionMenu->insertItem(i18n("New To-do"),
-			 mCalendarView, SLOT(newTodo()));
-  actionMenu->insertItem(i18n("&Edit Appointment"), mCalendarView,
-			  SLOT(apptmnt_edit()));
-  pixmap = BarIcon("delete");
-  actionMenu->insertItem(pixmap, i18n("&Delete Appointment"),
-			 mCalendarView, SLOT(apptmnt_delete()));
-  actionMenu->insertItem(i18n("Delete To-do"),
-			 mCalendarView, SLOT(action_deleteTodo()));
-
-  actionMenu->insertSeparator();
-
-  pixmap = BarIcon("search");
-  actionMenu->insertItem(pixmap,i18n("&Search"), mCalendarView,
-			 SLOT(action_search()), stdAccel.find());
-
-  pixmap = BarIcon("send");
-  actionMenu->insertItem(pixmap, i18n("&Mail Appointment"), mCalendarView,
-				  SLOT(action_mail()));
-
-  actionMenu->insertSeparator();
-
-  pixmap = BarIcon("todayicon");
-  actionMenu->insertItem(pixmap,i18n("Go to &Today"), mCalendarView,
-			 SLOT(goToday()));
-
-  pixmap = BarIcon("1leftarrow");
-  actionMenu->insertItem(pixmap, i18n("&Previous Day"), mCalendarView,
-				  SLOT(goPrevious()));
-
-  pixmap = BarIcon("1rightarrow");
-  actionMenu->insertItem(pixmap, i18n("&Next Day"), mCalendarView,
-				  SLOT(goNext()));
-
-  optionsMenu = new QPopupMenu;
-  toolBarMenuId = optionsMenu->insertItem(i18n("Show &Tool Bar"), this,
-				   SLOT(toggleToolBar()));
-  optionsMenu->setItemChecked(toolBarMenuId, TRUE);
-
-// We currently don't use a status bar
-#if 0
-  statusBarMenuId = optionsMenu->insertItem(i18n("Show St&atus Bar"), this,
-				   SLOT(toggleStatusBar()));
-  optionsMenu->setItemChecked(statusBarMenuId, TRUE);
-#endif
-
-  optionsMenu->insertSeparator();			  
-  optionsMenu->insertItem(i18n("&Edit Options"), 
-			  mCalendarView, SLOT(edit_options()));
-
-  helpMenu = new QPopupMenu;
-  helpMenu->insertItem(i18n("&Contents"), mCalendarView,
-		       SLOT(help_contents()),
-		       stdAccel.help());
-  helpMenu->insertSeparator();
-  helpMenu->insertItem(i18n("&About"), mCalendarView,
-		       SLOT(help_about())); 
-  helpMenu->insertItem(i18n("Send &Bug Report"), mCalendarView,
-		       SLOT(help_postcard()));
-    
-  // construct a basic menu
-  menubar = new KMenuBar(this, "menubar_0");
-  menubar->insertItem(i18n("&File"), fileMenu);
-  menubar->insertItem(i18n("&Edit"), editMenu);
-  menubar->insertItem(i18n("&View"), viewMenu);
-  menubar->insertItem(i18n("&Actions"), actionMenu);
-  menubar->insertItem(i18n("&Options"), optionsMenu);
-  menubar->insertSeparator();
-  menubar->insertItem(i18n("&Help"), helpMenu);
-
-  setMenu(menubar);
-}
-
-void KOrganizer::initToolBar()
-{
-  QPixmap pixmap;
-  QString dirName;
-
-  tb = new KToolBar(this);
-
-  pixmap = BarIcon("fileopen");
-  tb->insertButton(pixmap, 0,
-		   SIGNAL(clicked()), this,
-		   SLOT(file_open()), TRUE, 
-		   i18n("Open A Calendar"));
-	
-  pixmap = BarIcon("filefloppy");
-  tb->insertButton(pixmap, 0,
-		   SIGNAL(clicked()), this,
-		   SLOT(file_save()), TRUE, 
-		   i18n("Save mCalendarView Calendar"));
-
-  pixmap = BarIcon("fileprint");
-  tb->insertButton(pixmap, 0,
-		   SIGNAL(clicked()), mCalendarView,
-		   SLOT(print()), TRUE, 
-		   i18n("Print"));
-
-  tb->insertSeparator();
-//  QFrame *sepFrame = new QFrame(tb);
-//  sepFrame->setFrameStyle(QFrame::VLine|QFrame::Raised);
-//  tb->insertWidget(0, 10, sepFrame);
-
-  pixmap = BarIcon("newevent");
-  tb->insertButton(pixmap, 0,
-		   SIGNAL(clicked()), mCalendarView,
-		   SLOT(apptmnt_new()), TRUE, 
-		   i18n("New Appointment"));
-  pixmap = BarIcon("delete");
-
-  tb->insertButton(pixmap, 0,
-		   SIGNAL(clicked()), mCalendarView,
-		   SLOT(apptmnt_delete()), TRUE,
-		   i18n("Delete Appointment"));
-
-  pixmap = BarIcon("findf");
-  tb->insertButton(pixmap, 0,
-		   SIGNAL(clicked()), mCalendarView,
-		   SLOT(action_search()), TRUE,
-		   i18n("Search For an Appointment"));
-
-  pixmap = BarIcon("send");
-  tb->insertButton(pixmap, 0,
-		   SIGNAL(clicked()), mCalendarView,
-		   SLOT(action_mail()), TRUE,
-		   i18n("Mail Appointment"));
-
-  tb->insertSeparator();
-//  sepFrame = new QFrame(tb);
-//  sepFrame->setFrameStyle(QFrame::VLine|QFrame::Raised);
-//  tb->insertWidget(0, 10, sepFrame);
-
-//  KPTButton *bt = new KPTButton(tb);
-//  bt->setText(i18n("Go to Today"));
-//  bt->setPixmap(Icon("todayicon"));
-//  connect(bt, SIGNAL(clicked()), SLOT(goToday()));
-//  tb->insertWidget(0, bt->sizeHint().width(), bt);
-//
-// ! replaced the "Go to Today" button with an icon
-
-  pixmap = BarIcon("todayicon");
-  tb->insertButton(pixmap, 0,
-      SIGNAL(clicked()), mCalendarView,
-      SLOT(goToday()), TRUE,
-      i18n("Go to Today"));
-
-  pixmap = BarIcon("1leftarrow");
-  tb->insertButton(pixmap, 0,
-      SIGNAL(clicked()),
-      mCalendarView, SLOT(goPrevious()), TRUE,
-      i18n("Previous Day"));
-
-  pixmap = BarIcon("1rightarrow");
-  tb->insertButton(pixmap, 0,
-      SIGNAL(clicked()),
-      mCalendarView, SLOT(goNext()), TRUE,
-      i18n("Next Day"));
-
-  tb->insertSeparator();
-//  sepFrame = new QFrame(tb);
-//  sepFrame->setFrameStyle(QFrame::VLine|QFrame::Raised);
-//  tb->insertWidget(0, 10, sepFrame);
-
-  QPopupMenu *agendaViewPopup = new QPopupMenu();
-  agendaViewPopup->insertItem( BarIcon("dayicon"), "Show one day",
-                               KOAgendaView::DAY );
-  agendaViewPopup->insertItem( BarIcon("5dayicon"), "Show a work week",
-                               KOAgendaView::WORKWEEK );
-  agendaViewPopup->insertItem( BarIcon("weekicon"), "Show a week",
-                               KOAgendaView::WEEK );
-  connect( agendaViewPopup, SIGNAL( activated(int) ), mCalendarView , SLOT( changeAgendaView(int) ) );
-
-  pixmap = BarIcon("listicon");
-  tb->insertButton(pixmap, 0, SIGNAL(clicked()), mCalendarView,
-		   SLOT(view_list()), TRUE,
-		   i18n("List View"));
-
-  pixmap = BarIcon("agenda");
-  tb->insertButton(pixmap, AGENDABUTTON, SIGNAL(clicked()),
-		   mCalendarView, SLOT( nextAgendaView()), TRUE,
-		   i18n("Schedule View"));
-  tb->setDelayedPopup( AGENDABUTTON, agendaViewPopup );
-  
-  pixmap = BarIcon("monthicon");
-  tb->insertButton(pixmap, 0,
-		   SIGNAL(clicked()), mCalendarView,
-		   SLOT(view_month()), TRUE,
-		   i18n("Month View"));
-  
-  pixmap = BarIcon("todolist");
-  tb->insertButton(pixmap, 0,
-		   SIGNAL(clicked()), mCalendarView,
-		   SLOT(view_todolist()), TRUE,
-		   i18n("To-do list view"));
-
-  addToolBar(tb);
-}
-
 void KOrganizer::file_new()
 {
   // Make new KOrganizer window containing empty calendar
   (new KOrganizer("",true))->show();
 }
 
+
 void KOrganizer::file_open()
 {
-  int whattodo = 0; // the same as button numbers from QMessageBox return
-
-  if (mCalendarView->isModified() &&
-      (mFilename.isEmpty() || autoSave())) {
-    whattodo = mCalendarView->msgCalModified();
-  } else if (mCalendarView->isModified()) {
-    whattodo = 0; // save if for sure
-  } else {
-    whattodo = 1; // go ahead and just open a new one
+  KURL url;
+  QString defaultPath = locateLocal("appdata", "");
+  url = KFileDialog::getOpenURL(defaultPath,"*.vcs",this);
+  if (openURL(url)) {
+    setTitle();
+    mRecent->addURL(url);
   }
-
-  switch (whattodo) {
-  case 0: // Save
-    if (file_save()) // bail on error
-      return;
-  
-  case 1: { // Open
-    QString newFileName = file_getname(0);
-    
-    if (newFileName == "")
-      return;
-    
-    QApplication::setOverrideCursor(waitCursor);
-
-    // child windows no longer valid
-    emit closingDown();
-    
-    if (mCalendarView->setFile(newFileName)) {
-      mFilename = newFileName;
-      add_recent_file(newFileName);
-      setTitle();
-    }
-    
-    QApplication::restoreOverrideCursor();
-    break;
-  } // case 1
-  } // switch
 }
 
-void KOrganizer::file_openRecent(int i)
+
+void KOrganizer::file_openRecent(const KURL& url)
 {
-  int  whattodo = 0; // the same as button numbers from QMessageBox return
-  
-  if (mCalendarView->isModified() && (mFilename.isEmpty() || !autoSave())) {
-    whattodo = mCalendarView->msgCalModified();
-  } else if (mCalendarView->isModified()) {
-    whattodo = 0; // save if for sure
-  } else {
-    whattodo = 1; // go ahead and just open a new one
+  if (!url.isEmpty()) {
+    if (openURL(url)) {
+      setTitle();
+    }
   }
+}
 
-  switch (whattodo) {
-    case 0: // save ("Yes")
-      if (file_save())
-        return;
-    
-    case 1: { // open ("No")
-      QString newFileName = recentFileList.at(i);
-
-      // this should never happen
-      ASSERT(newFileName != "");
-
-      QApplication::setOverrideCursor(waitCursor);
-      // child windows no longer valid
-      emit closingDown();
-    
-      if(mCalendarView->setFile(newFileName)) {
-        mFilename = newFileName;
-        add_recent_file(newFileName);
-      }
-
-      QApplication::restoreOverrideCursor();
-      break;
-    } // case 1
-  } // switch
-}					
 
 void KOrganizer::file_import()
 {
@@ -719,7 +360,7 @@ void KOrganizer::file_import()
   
   if (retVal >= 0 && retVal <= 2) {
     // now we need to MERGE what is in the iCal to the current calendar.
-    mCalendarView->mergeFile(tmpFn);
+    mCalendarView->mergeCalendar(tmpFn);
     if (!retVal)
       QMessageBox::information(this, i18n("KOrganizer Info"),
 			       i18n("KOrganizer succesfully imported and "
@@ -743,19 +384,13 @@ void KOrganizer::file_import()
   }
 }
 
+
 void KOrganizer::file_merge()
 {
-  QString mergeFileName;
-
-  mergeFileName = file_getname(0);
-
-  // If file dialog box was cancelled (trap for null) 
-  if(mergeFileName.isEmpty())
-    return;
-
-  if(mCalendarView->mergeFile(mergeFileName)) {
-  }
+  KURL url = KFileDialog::getOpenURL(locateLocal("appdata", ""),"*.vcs",this);
+  mergeURL(url);
 }
+
 
 void KOrganizer::file_archive()
 {
@@ -766,55 +401,43 @@ void KOrganizer::file_archive()
   }
 }
 
-int KOrganizer::file_saveas()
+
+void KOrganizer::file_saveas()
 {
-  QString newFileName = file_getname(1);
+  KURL url = KFileDialog::getSaveURL(locateLocal("appdata", ""),"*.vcs",this);
 
-  if (newFileName == "")
-    return 1;
+  QString filename = url.filename(false); 
 
-  if (mCalendarView->saveCalendar(newFileName))
-    return 1;
-
-  mFilename = newFileName;
-  add_recent_file(newFileName);
-
-  setTitle();
-
-  // keep saves on a regular interval
-  if (autoSave()) {
-    mAutoSaveTimer->stop();
-    mAutoSaveTimer->start(1000*60);
+  if(filename.length() >= 3) {
+    QString e = filename.right(4);
+    // Extension ending in '.vcs' or anything else '.???' is cool.
+    if(e != ".vcs" && e.right(1) != ".")
+    // Otherwise, force the default extension.
+    filename += ".vcs";
   }
 
-  return 0;
+  url.setFileName(filename);
+
+  qDebug("KOrganizer::files_saveas(): Decoded url: %s",
+         url.decodedURL().latin1());
+
+  if (saveAsURL(url)) {
+    setTitle();
+    mRecent->addURL(url);
+  }
 }
 
-int KOrganizer::file_save()
+
+void KOrganizer::file_save()
 {
-  // has this calendar been saved before?
-  if (mFilename.isEmpty())
-    return file_saveas();
-
-  if (mCalendarView->saveCalendar(mFilename)) {
-    setTitle();
-    return 1;
-  }
-
-  // keep saves on a regular interval
-  if (autoSave()) {
-    mAutoSaveTimer->stop();
-    mAutoSaveTimer->start(1000*60);
-  }
-
-  return 0;
+  if (mURL.isEmpty()) file_saveas();
+  else saveURL();
 }
 
 
 void KOrganizer::file_close()
 {
-  mCalendarView->closeCalendar();
-  mFilename = "";
+  closeURL();
 
   setTitle();
 }
@@ -823,14 +446,6 @@ void KOrganizer::file_close()
 void KOrganizer::file_quit()
 {
   close();
-/*
-  // Close all open windows. Make sure that this widget is closed as last.
-  KOrganizer *tw;
-  for(tw = windowList.first(); tw; tw = windowList.next()) {
-    if (tw != this) tw->close();
-  }
-  close();
-*/
 }
 
 
@@ -840,40 +455,7 @@ bool KOrganizer::queryClose()
   // way, when having opened multiple calendars in different CalendarViews.
   writeSettings();
 
-  int whattodo = 0; // the same as button numbers from QMessageBox return
-
-  if (mCalendarView->isModified() && (mFilename.isEmpty() || !autoSave())) {
-    whattodo = mCalendarView->msgCalModified();
-  } else if (mCalendarView->isModified()) {
-    whattodo = 0; // save if for sure
-  } else {
-    whattodo = 1; // go ahead and just open a new one
-  }
-
-  switch (whattodo) {
-    case 0: // save ("Yes")
-      if (file_save()) {
-        return true;
-      } else {
-        qDebug("CalendarView::queryClose(): file_save() failed");
-        return false;
-      }
-      break;
-
-    case 1: // open ("No", or wasn't modified)
-      // child windows no longer valid
-      emit closingDown();
-      mCalendarView->setFile("");
-      mFilename = "";
-      return true;
-      break;
-
-    case 2: // cancel
-      return false;
-
-  } // switch
-
-  return false;
+  return closeURL();
 }
 
 
@@ -888,16 +470,18 @@ bool KOrganizer::queryExit()
 
 void KOrganizer::setTitle()
 {
+  qDebug("KOrganizer::setTitle");
+
   QString tmpStr;
 
-  if (!mFilename.isEmpty())
-    tmpStr = mFilename.mid(mFilename.findRev('/')+1, mFilename.length());
+  if (!mFile.isEmpty())
+    tmpStr = mFile.mid(mFile.findRev('/')+1, mFile.length());
   else
     tmpStr = i18n("New Calendar");
 
   // display the modified thing in the title
   // if auto-save is on, we only display it on new calender (no file name)
-  if (mCalendarView->isModified() && (mFilename.isEmpty() || !autoSave())) {
+  if (mCalendarView->isModified() && (mFile.isEmpty() || !autoSave())) {
     tmpStr += " (";
     tmpStr += i18n("modified");
     tmpStr += ")";
@@ -908,11 +492,14 @@ void KOrganizer::setTitle()
 
 void KOrganizer::checkAutoSave()
 {
+// to be reimplemented.
+/*
   // has this calendar been saved before? 
-  if (autoSave() && !mFilename.isEmpty()) {
-    add_recent_file(mFilename);
-    mCalendarView->saveCalendar(mFilename);
+  if (autoSave() && !mFile.isEmpty()) {
+    add_recent_file(mFile);
+    mCalendarView->saveCalendar(mFile);
   }
+*/
 }
 
 
@@ -936,108 +523,6 @@ void KOrganizer::updateConfig()
 }
 
 
-void KOrganizer::add_recent_file(QString recentFileName)
-{
-#if 0
-  KListAction *recent;
-  recent = (KListAction*)actionCollection()->action(KStdAction::stdName(KStdAction::OpenRecent));
-  recent->setItems( recent_files );
-
-  const char *rf;
-  QFileInfo tf(recentFileName);
-
-  // if it is not a file or is not readable bail.
-  if (!tf.isFile() || !tf.isReadable())
-    return;
-
-  // sanity check
-  if (recentFileName.isEmpty())
-    return;
-
-  // check to see if it is already in the list.
-  for (rf = recentFileList.first(); rf;
-       rf = recentFileList.next()) {
-    if (strcmp(rf, recentFileName.data()) == 0)
-      return;  
-  }
-
-  if( recentFileList.count() < 5)
-    recentFileList.insert(0,recentFileName.data());
-  else {
-    recentFileList.remove(4);
-    recentFileList.insert(0,recentFileName.data());
-  }
-  if (recentPop) {
-    recentPop->clear();
-    for ( int i =0 ; i < (int)recentFileList.count(); i++)
-      {
-	recentPop->insertItem(recentFileList.at(i));
-      }
-    if (recentFileList.count() == 0) {
-      // disable the "Open Recent" option on the file menu if necessary
-      fileMenu->setItemEnabled(1, FALSE);
-    }
-  }
-#endif
-}
-
-
-QString KOrganizer::file_getname(int open_save)
-{
-  QString    fileName;
-  QString    defaultPath;
-
-  // Be nice and tidy and have all the files in a nice easy to find place.
-  defaultPath = locateLocal("appdata", "");
-  
-  switch (open_save) {
-  case 0 :
-    // KFileDialog works?
-    fileName = QFileDialog::getOpenFileName(defaultPath, "*.vcs", this);
-    //fileName = KFileDialog::getOpenFileName(defaultPath, "*.vcs", this);
-    break;
-  case 1 :
-    // KFileDialog works?
-    fileName = QFileDialog::getSaveFileName(defaultPath, "*.vcs", this);
-    //fileName = KFileDialog::getSaveFileName(defaultPath, "*.vcs", this);
-    break;
-  default :
-    debug("Internal error: CalendarView::file_getname(): invalid paramater");
-    return "";
-  } // switch
-
-  // If file dialog box was cancelled or blank file name
-  if (fileName.isEmpty()) {
-    if(!fileName.isNull())
-      QMessageBox::warning(this, i18n("KOrganizer Error"), 
-			   i18n("You did not specify a valid file name."));
-    return "";
-  }
-  
-  QFileInfo tf(fileName);
-
-  if(tf.isDir()) {
-    QMessageBox::warning(this, i18n("KOrganizer Error"),
-			 i18n("The file you specified is a directory,\n"
-			      "and cannot be opened. Please try again,\n"
-			      "this time selecting a valid calendar file."));
-    return "";
-  }
-
-  if (open_save == 1) {
-    // Force the extension for consistency.
-    if(fileName.length() >= 3) {
-      QString e = fileName.right(4);
-      // Extension ending in '.vcs' or anything else '.???' is cool.
-      if(e != ".vcs" && e.right(1) != ".")
-      // Otherwise, force the default extension.
-      fileName += ".vcs";
-    }
-  }
-
-  return fileName;
-}
-
 void KOrganizer::configureToolbars()
 {
   KEditToolbar dlg(actionCollection());
@@ -1048,3 +533,115 @@ void KOrganizer::configureToolbars()
   }
 }
 
+
+bool KOrganizer::openURL( const KURL &url )
+{
+  qDebug("KOrganizer::openURL()");
+  if (url.isMalformed()) return false;
+  if (!closeURL()) return false;
+  mURL = url;
+  mFile = "";
+  if( KIO::NetAccess::download( mURL, mFile ) ) {
+    return mCalendarView->openCalendar(mFile);
+  } else {
+    return false;
+  }
+}
+
+
+bool KOrganizer::mergeURL( const KURL &url )
+{
+  qDebug("KOrganizer::mergeURL()");
+  if ( url.isMalformed() )
+    return false;
+
+  QString tmpFile;
+  if( KIO::NetAccess::download( mURL, tmpFile ) ) {
+    bool success = mCalendarView->mergeCalendar(tmpFile);
+    KIO::NetAccess::removeTempFile( tmpFile );
+    return success;
+  } else {
+    return false;
+  }
+}
+
+
+bool KOrganizer::closeURL()
+{
+  qDebug("KOrganizer::closeURL()");
+  if ( mCalendarView->isModified() )
+  {
+    int result = KMessageBox::warningYesNoCancel(0L,
+            i18n("The calendar has been modified.\nDo you want to save it?"));
+
+    switch(result) {
+    case KMessageBox::Yes :
+      if (mURL.isEmpty()) {
+        KURL url = KFileDialog::getSaveURL();
+        if (url.isEmpty()) return false;
+        if (!saveAsURL(url)) return false;
+      }
+      if (!saveURL()) return false;
+      break;
+    case KMessageBox::No :
+      break;
+    default : // case KMessageBox::Cancel :
+      return false;
+    }
+  }
+
+  mCalendarView->closeCalendar();
+  mURL="";
+  mFile="";
+  
+  KIO::NetAccess::removeTempFile( mFile );
+
+  return true;
+}
+
+bool KOrganizer::saveURL()
+{
+  if (!mCalendarView->saveCalendar(mFile)) {
+    qDebug("KOrganizer::saveURL(): calendar view save failed.");
+    return false;
+  }
+  if (KIO::NetAccess::upload(mFile,mURL)) {
+    qDebug("KOrganizer::saveURL(): upload failed.");
+    return false;
+  }
+
+  // keep saves on a regular interval
+  if (autoSave()) {
+    mAutoSaveTimer->stop();
+    mAutoSaveTimer->start(1000*60);
+  }
+
+  return true;
+}
+
+bool KOrganizer::saveAsURL( const KURL & kurl )
+{
+  if (kurl.isMalformed()) {
+    qDebug("KOrganizer::saveAsURL(): Malformed URL.");
+    return false;
+  }
+  mURL = kurl; // Store where to upload
+
+  // Local file
+  if ( mURL.isLocalFile() ) {
+    // get rid of a possible temp file first
+    if ( mTempFile ) {  // (happens if previous url was remote)
+      delete mTempFile;
+      mTempFile = 0;
+    }
+    mFile = mURL.path();
+  } else { // Remote file
+    // We haven't saved yet, or we did but locally - provide a temp file
+    if ( mFile.isEmpty() || !mTempFile ) {
+      mTempFile = new KTempFile;
+      mFile = mTempFile->name();
+    }
+    // otherwise, we already had a temp file
+  }
+  return saveURL(); // Save local file and upload local file
+}
