@@ -207,22 +207,22 @@ void KOrganizer::initActions()
           action,SLOT(setEnabled(bool)));
 
   // view menu
-  (void)new KAction(i18n("&List"), UserIcon("listicon"), 0,
+  (void)new KAction(i18n("&List"), "list", 0,
                     mCalendarView, SLOT(view_list()),
                     actionCollection(), "view_list");
-  (void)new KAction(i18n("&Day"), UserIcon("dayicon"), 0,
+  (void)new KAction(i18n("&Day"), "1day", 0,
                     mCalendarView, SLOT(view_day()),
                     actionCollection(), "view_day");
-  (void)new KAction(i18n("W&ork Week"), UserIcon("5dayicon"), 0,
+  (void)new KAction(i18n("W&ork Week"), "5days", 0,
                     mCalendarView, SLOT(view_workweek()),
                     actionCollection(), "view_workweek");
-  (void)new KAction(i18n("&Week"), UserIcon("weekicon"), 0,
+  (void)new KAction(i18n("&Week"), "7days", 0,
                     mCalendarView, SLOT(view_week()),
                     actionCollection(), "view_week");
-  (void)new KAction(i18n("&Month"), UserIcon("monthicon"), 0,
+  (void)new KAction(i18n("&Month"), "month", 0,
                     mCalendarView, SLOT(view_month()),
                     actionCollection(), "view_month");
-  (void)new KAction(i18n("&To-do list"), UserIcon("todolist"), 0,
+  (void)new KAction(i18n("&To-do list"), "todo", 0,
                     mCalendarView, SLOT(view_todolist()),
                     actionCollection(), "view_todo");
   (void)new KAction(i18n("&Update"), 0,
@@ -230,7 +230,7 @@ void KOrganizer::initActions()
                     actionCollection(), "update");
 
   // event handling menu
-  (void)new KAction(i18n("New E&vent..."), UserIcon("newevent"), 0,
+  (void)new KAction(i18n("New E&vent..."), "appointment", 0,
                     mCalendarView,SLOT(appointment_new()),
                     actionCollection(), "new_event");
   (void)new KAction(i18n("New &To-Do..."), 0,
@@ -254,17 +254,17 @@ void KOrganizer::initActions()
 
   KStdAction::find(mCalendarView, SLOT(action_search()), actionCollection());
 
-  action = new KAction(i18n("&Mail Appointment"), BarIcon("send"), 0,
+  action = new KAction(i18n("&Mail Appointment"), "send", 0,
                     mCalendarView,SLOT(action_mail()),
                     actionCollection(), "mail_appointment");
   connect(mCalendarView,SIGNAL(eventsSelected(bool)),
           action,SLOT(setEnabled(bool)));
 
   // Navigation menu  
-  (void)new KAction(i18n("Go to &Today"), UserIcon("todayicon"), 0,
+  (void)new KAction(i18n("Go to &Today"), "today", 0,
                     mCalendarView,SLOT(goToday()),
                     actionCollection(), "go_today");
-  action = new KAction(i18n("Go &Backward"), BarIcon("1leftarrow"), 0,
+  action = new KAction(i18n("Go &Backward"), "1leftarrow", 0,
                        mCalendarView,SLOT(goPrevious()),
                        actionCollection(), "go_previous");
 
@@ -276,7 +276,7 @@ void KOrganizer::initActions()
   connect(mCalendarView,SIGNAL(changeNavStringPrev(const QString &)),
           this,SLOT(dumpText(const QString &)));
 */
-  action = new KAction(i18n("Go &Forward"), BarIcon("1rightarrow"), 0,
+  action = new KAction(i18n("Go &Forward"), "1rightarrow", 0,
                        mCalendarView,SLOT(goNext()),
                        actionCollection(), "go_next");
 /*

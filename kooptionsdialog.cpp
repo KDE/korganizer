@@ -22,6 +22,7 @@
 #include <kmessagebox.h>
 #include <kcolordlg.h>
 #include <kiconloader.h>
+#include <kiconeffect.h>
 
 #include "koprefs.h"
 
@@ -252,7 +253,9 @@ KOOptionsDialog::~KOOptionsDialog()
 
 void KOOptionsDialog::setupMainTab()
 {
-  QFrame *topFrame = addPage(i18n("Personal"),0,QPixmap(user_xpm));
+  KIconEffect *iconeffect=KGlobal::iconLoader()->iconEffect();
+  QFrame *topFrame = addPage(i18n("Personal"),0,
+	iconeffect->apply(QPixmap(user_xpm), KIcon::Desktop, KIcon::DefaultState));
 
   QGridLayout *topLayout = new QGridLayout(topFrame,6,2);
   topLayout->setSpacing(spacingHint());
@@ -313,7 +316,7 @@ void KOOptionsDialog::setupMainTab()
 void KOOptionsDialog::setupTimeTab()
 {
   QFrame *topFrame = addPage(i18n("Time & Date"),0,
-                             BarIcon("run",KIcon::SizeMedium));
+                             DesktopIcon("clock",KIcon::SizeMedium));
   
   QGridLayout *topLayout = new QGridLayout(topFrame,5,2);
   topLayout->setSpacing(spacingHint());
@@ -364,7 +367,7 @@ void KOOptionsDialog::setupTimeTab()
 void KOOptionsDialog::setupViewsTab()
 {
   QFrame *topFrame = addPage(i18n("Views"),0,
-                             BarIcon("viewmag",KIcon::SizeMedium));
+                             DesktopIcon("viewmag",KIcon::SizeMedium));
   
   QGridLayout *topLayout = new QGridLayout(topFrame,5,2);
   topLayout->setSpacing(spacingHint());
@@ -406,7 +409,7 @@ void KOOptionsDialog::setupViewsTab()
 void KOOptionsDialog::setupFontsTab()
 {
   QFrame *topFrame = addPage(i18n("Fonts"),0,
-                             BarIcon("fonts",KIcon::SizeMedium));
+                             DesktopIcon("fonts",KIcon::SizeMedium));
 
   QGridLayout *topLayout = new QGridLayout(topFrame,5,2);
   topLayout->setSpacing(spacingHint());
@@ -435,7 +438,7 @@ void KOOptionsDialog::selectTimeBarFont()
 void KOOptionsDialog::setupColorsTab()
 {
   QFrame *topFrame = addPage(i18n("Colors"),0,
-                             BarIcon("colors",KIcon::SizeMedium));
+                             DesktopIcon("colors",KIcon::SizeMedium));
 
   QGridLayout *topLayout = new QGridLayout(topFrame,5,2);
   topLayout->setSpacing(spacingHint());
@@ -565,7 +568,7 @@ void KOOptionsDialog::updateCategoryColor()
 void KOOptionsDialog::setupPrinterTab()
 {
   mPrinterTab = addPage(i18n("Printing"),0,
-                             BarIcon("fileprint",KIcon::SizeMedium));
+                             DesktopIcon("fileprint",KIcon::SizeMedium));
   
   QGridLayout *topLayout = new QGridLayout(mPrinterTab,5,2);
   topLayout->setSpacing(spacingHint());

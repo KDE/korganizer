@@ -48,7 +48,7 @@ QPopupMenu *KOBaseView::eventPopup()
   QPopupMenu *eventPopup = new QPopupMenu();
   eventPopup->insertItem (i18n("&Show"),this,SLOT(popupShow()));
   eventPopup->insertItem (i18n("&Edit"),this, SLOT(popupEdit()));
-  eventPopup->insertItem (QIconSet(BarIcon("delete")),i18n("&Delete"),
+  eventPopup->insertItem (SmallIcon("delete"),i18n("&Delete"),
                           this, SLOT(popupDelete()));
 
   return eventPopup;

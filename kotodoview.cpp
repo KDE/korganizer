@@ -236,10 +236,10 @@ KOTodoView::KOTodoView(CalObject *calendar,QWidget* parent,const char* name) :
                              SLOT (showTodo()));
   mItemPopupMenu->insertItem(i18n("Edit..."), this,
                              SLOT (editTodo()));
-  mItemPopupMenu->insertItem(BarIcon("delete"), i18n("Delete"), this,
+  mItemPopupMenu->insertItem(SmallIconSet("delete"), i18n("Delete"), this,
                              SLOT (deleteTodo()));
   mItemPopupMenu->insertSeparator();
-  mItemPopupMenu->insertItem(UserIcon("todolist"), i18n("New To-Do..."), this,
+  mItemPopupMenu->insertItem(SmallIconSet("todo"), i18n("New To-Do..."), this,
                              SLOT (newTodo()));
   mItemPopupMenu->insertItem(i18n("New Sub-To-Do..."), this,
                              SLOT (newSubTodo()));
@@ -248,7 +248,7 @@ KOTodoView::KOTodoView(CalObject *calendar,QWidget* parent,const char* name) :
                              SLOT(purgeCompleted()));
                        
   mPopupMenu = new QPopupMenu;
-  mPopupMenu->insertItem(UserIcon("todolist"), i18n("New To-Do"), this,
+  mPopupMenu->insertItem(SmallIconSet("todo"), i18n("New To-Do"), this,
                          SLOT (newTodo()));
   mPopupMenu->insertItem(i18n("Purge Completed"), this,
                          SLOT(purgeCompleted()));
