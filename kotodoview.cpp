@@ -248,14 +248,20 @@ void KOTodoListView::contentsMouseDoubleClickEvent(QMouseEvent *e)
 KOQuickTodo::KOQuickTodo(QWidget *parent) :
   QLineEdit(parent)
 {
-  setText(i18n("klick to add"));
+  setText(i18n("klick to add a new Todo"));
 }
 
 void KOQuickTodo::focusInEvent(QFocusEvent *ev)
 {
-  if ( text()==i18n("klick to add") )
+  if ( text()==i18n("klick to add a new Todo") )
     setText("");
   QLineEdit::focusInEvent(ev);
+}
+
+void KOQuickTodo::focusOutEvent(QFocusEvent *ev)
+{
+  setText("klick to add a new Todo");
+  QLineEdit::focusOutEvent(ev);
 }
 
 /////////////////////////////////////////////////////////////////////////////
@@ -726,7 +732,6 @@ void KOTodoView::addQuickTodo()
   todo->setSummary(mQuickAdd->text());
   todo->setOrganizer(KOPrefs::instance()->email());
   mCalendar->addTodo(todo);
-  mTodoListView->setFocus();
-  mQuickAdd->setText(i18n("klick to add"));
+  mQuickAdd->setText("");
   updateView();
 }

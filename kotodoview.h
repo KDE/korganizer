@@ -90,6 +90,7 @@ class KOQuickTodo : public QLineEdit
     KOQuickTodo(QWidget *parent=0);
   protected:
     void focusInEvent(QFocusEvent *ev);
+    void focusOutEvent(QFocusEvent *ev);
 };
 
 
