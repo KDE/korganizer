@@ -1,7 +1,6 @@
 // 	$Id$	
 
 #include <qtooltip.h>
-#include <qfiledialog.h>
 #include <qlayout.h>
 #include <qvbox.h>
 #include <qbuttongroup.h>
@@ -17,6 +16,7 @@
 #include <kstddirs.h>
 #include <kbuttonbox.h>
 #include <kmessagebox.h>
+#include <kfiledialog.h>
 
 #include "koevent.h"
 #include "koprefs.h"
@@ -266,8 +266,8 @@ void KOEditorGeneralEvent::pickAlarmSound()
     QToolTip::remove(alarmSoundButton);
     QToolTip::add(alarmSoundButton, i18n("No sound set"));
   } else {
-    QString fileName(QFileDialog::getOpenFileName(prefix,
-						  "*.wav", this));
+    QString fileName(KFileDialog::getOpenFileName(prefix,
+						  i18n("*.wav|Wav Files"), this));
     if (!fileName.isEmpty()) {
       alarmSound = fileName;
       QToolTip::remove(alarmSoundButton);
@@ -288,7 +288,7 @@ void KOEditorGeneralEvent::pickAlarmProgram()
     QToolTip::remove(alarmProgramButton);
     QToolTip::add(alarmProgramButton, i18n("No program set"));
   } else {
-    QString fileName(QFileDialog::getOpenFileName(QString::null, "*", this));
+    QString fileName(KFileDialog::getOpenFileName(QString::null, QString::null, this));
     if (!fileName.isEmpty()) {
       alarmProgram = fileName;
       QToolTip::remove(alarmProgramButton);

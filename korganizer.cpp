@@ -428,7 +428,7 @@ void KOrganizer::file_open()
 {
   KURL url;
   QString defaultPath = locateLocal("appdata", "");
-  url = KFileDialog::getOpenURL(defaultPath,"*.vcs *.ics",this);
+  url = KFileDialog::getOpenURL(defaultPath,i18n("*.vcs *.ics|Calendar files"),this);
 
   KOrganizer *korg=KOrganizer::findInstance(url);
   if ((0 != korg)&&(korg != this)) {
@@ -519,7 +519,7 @@ void KOrganizer::file_import()
 
 void KOrganizer::file_merge()
 {
-  KURL url = KFileDialog::getOpenURL(locateLocal("appdata", ""),"*.vcs",this);
+  KURL url = KFileDialog::getOpenURL(locateLocal("appdata", ""),i18n("*.vcs|Calendar files"),this);
   mergeURL(url);
 }
 
@@ -544,7 +544,7 @@ void KOrganizer::file_saveas()
 
 KURL KOrganizer::getSaveURL()
 {
-  KURL url = KFileDialog::getSaveURL(locateLocal("appdata", ""),"*.vcs",this);
+  KURL url = KFileDialog::getSaveURL(locateLocal("appdata", ""),i18n("*.vcs|Calendar files"),this);
 
   if (url.isEmpty()) return url;
 
