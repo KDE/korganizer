@@ -126,7 +126,7 @@ void KOrganizerApp::startAlarmDaemon()
   // automatically made sure that there is only one instance of the alarm daemon
   // running.
   QString execStr = locate("exe","kalarmd");
-  system(QFile::encodeName(execStr));
+  kapp->kdeinitExecWait(execStr);
 
   kdDebug() << "Starting alarm daemon done" << endl;
 }
