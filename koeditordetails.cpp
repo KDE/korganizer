@@ -112,18 +112,13 @@ void KOAttendeeListView::dragEnterEvent( QDragEnterEvent *e )
 #endif
 }
 
-void KOAttendeeListView::addAttendee(QString newAttendee)
+void KOAttendeeListView::addAttendee(const QString &newAttendee)
 {
   kdDebug(5850) << " Email: " << newAttendee << endl;
-  int pos = newAttendee.find("<");
-  QString name = newAttendee.left(pos);
-  QString email = newAttendee.mid(pos);
-  if (!email.isEmpty()) {
-    emit dropped(new Attendee(name,email));
-  } else if (name.contains("@")) {
-    emit dropped(new Attendee(name, name));
-  } else
-    emit dropped(new Attendee(name, QString::null));
+  QString name;
+  QString email;
+  KPIM::AddresseeLineEdit::getNameAndMail(newAttendee, name, email);
+  emit dropped(new Attendee(name,email));
 }
 
 void KOAttendeeListView::contentsDropEvent( QDropEvent *e )
@@ -193,22 +188,14 @@ KOEditorDetails::KOEditorDetails (int spacing,QWidget* parent,const char* name)
   attendeeLabel->setText(i18n("Na&me:"));
 
   mNameEdit = new KPIM::AddresseeLineEdit(this);
+  mNameEdit->setClickMessage(i18n("Click to add new appointee"));
   attendeeLabel->setBuddy( mNameEdit );
+  mNameEdit->installEventFilter(this);
   connect(mNameEdit,SIGNAL(textChanged(const QString &)),
           SLOT(updateAttendeeItem()));
-  connect(mNameEdit,SIGNAL(contactMatched(const KABC::Addressee&)),
-          SLOT(attendeeMatched(const KABC::Addressee&)));
 
   mUidEdit = new QLineEdit(0);
   mUidEdit->setText("");
-
-  QLabel *emailLabel = new QLabel(this);
-  emailLabel->setText(i18n("&Email:"));
-
-  mEmailEdit = new QLineEdit(this);
-  emailLabel->setBuddy( mEmailEdit );
-  connect(mEmailEdit,SIGNAL(textChanged(const QString &)),
-          SLOT(updateAttendeeItem()));
 
   QLabel *attendeeRoleLabel = new QLabel(this);
   attendeeRoleLabel->setText(i18n("Ro&le:"));
@@ -249,20 +236,19 @@ KOEditorDetails::KOEditorDetails (int spacing,QWidget* parent,const char* name)
   topLayout->addMultiCellWidget(mListView,1,1,0,5);
   topLayout->addWidget(attendeeLabel,2,0);
   topLayout->addMultiCellWidget(mNameEdit,2,2,1,1);
-  topLayout->addWidget(emailLabel,3,0);
-  topLayout->addMultiCellWidget(mEmailEdit,3,3,1,1);
-  topLayout->addWidget(attendeeRoleLabel,4,0);
-  topLayout->addWidget(mRoleCombo,4,1);
+//  topLayout->addWidget(emailLabel,3,0);
+  topLayout->addWidget(attendeeRoleLabel,3,0);
+  topLayout->addWidget(mRoleCombo,3,1);
 #if 0
   topLayout->setColStretch(2,1);
   topLayout->addWidget(statusLabel,3,3);
   topLayout->addWidget(mStatusCombo,3,4);
 #else
-  topLayout->addWidget(statusLabel,5,0);
-  topLayout->addWidget(mStatusCombo,5,1);
+  topLayout->addWidget(statusLabel,4,0);
+  topLayout->addWidget(mStatusCombo,4,1);
 #endif
-  topLayout->addMultiCellWidget(mRsvpButton,6,6,0,1);
-  topLayout->addMultiCellWidget(buttonBox,2,5,5,5);
+  topLayout->addMultiCellWidget(mRsvpButton,5,5,0,1);
+  topLayout->addMultiCellWidget(buttonBox,2,4,5,5);
 
 #ifdef KORG_NOKABC
   mAddressBookButton->hide();
@@ -273,6 +259,17 @@ KOEditorDetails::KOEditorDetails (int spacing,QWidget* parent,const char* name)
 
 KOEditorDetails::~KOEditorDetails()
 {
+}
+
+bool KOEditorDetails::eventFilter( QObject *watched, QEvent *ev)
+{
+  if (watched && watched == mNameEdit && ev->type() == QEvent::FocusIn && mListView->childCount() == 0 )
+  {
+    addNewAttendee();
+  }
+
+  return QWidget::eventFilter( watched, ev );
+
 }
 
 void KOEditorDetails::removeAttendee()
@@ -312,28 +309,10 @@ void KOEditorDetails::openAddressBook()
 
 void KOEditorDetails::addNewAttendee()
 {
-#if 0
-  // this is cool.  If they didn't enter an email address,
-  // try to look it up in the address book and fill it in for them.
-  if (QString(mEmailEdit->text()).stripWhiteSpace().isEmpty()) {
-    KabAPI addrBook;
-    QString name;
-    std::list<AddressBook::Entry> entries;
-    name = mNameEdit->text();
-    if (addrBook.init() == AddressBook::NoError) {
-      if (addrBook.getEntryByName(name, entries, 1) == AddressBook::NoError) {
-        kdDebug(5850) << "positive match" << endl;
-        // take first email address
-        if (!entries.front().emails.isEmpty() &&
-            entries.front().emails.first().length()>0)
-          mEmailEdit->setText(entries.front().emails.first());
-      }
-    }
-  }
-#endif
-
-  Attendee *a = new Attendee(i18n("(EmptyName)"),i18n("(EmptyEmail)"));
+  Attendee *a = new Attendee("","");
   insertAttendee(a);
+  // We don't want the hint again
+  mNameEdit->setClickMessage("");
 }
 
 
@@ -402,6 +381,8 @@ bool KOEditorDetails::validateInput()
 
 void KOEditorDetails::updateAttendeeInput()
 {
+
+  setEnableAttendeeInput(!mNameEdit->text().isEmpty()); 
   QListViewItem *item = mListView->selectedItem();
   AttendeeListItem *aItem = static_cast<AttendeeListItem *>( item );
   if (aItem) {
@@ -415,43 +396,35 @@ void KOEditorDetails::clearAttendeeInput()
 {
   mNameEdit->setText("");
   mUidEdit->setText("");
-  mEmailEdit->setText("");
   mRoleCombo->setCurrentItem(0);
   mStatusCombo->setCurrentItem(0);
   mRsvpButton->setChecked(true);
-  setEnabledAttendeeInput( false );
+  setEnableAttendeeInput( false );
 }
 
 void KOEditorDetails::fillAttendeeInput( AttendeeListItem *aItem )
 {
   Attendee *a = aItem->data();
   mDisableItemUpdate = true;
-  mNameEdit->setText(a->name());
+  mNameEdit->setText(QString("%1 <%2>").arg(a->name(), a->email()));
   mUidEdit->setText(a->uid());
-  mEmailEdit->setText(a->email());
   mRoleCombo->setCurrentItem(a->role());
   mStatusCombo->setCurrentItem(a->status());
   mRsvpButton->setChecked(a->RSVP());
 
   mDisableItemUpdate = false;
 
-  setEnabledAttendeeInput( true );
+  setEnableAttendeeInput( true );
 }
 
-void KOEditorDetails::setEnabledAttendeeInput( bool enabled )
+void KOEditorDetails::setEnableAttendeeInput( bool enabled )
 {
-  mNameEdit->setEnabled( enabled );
-  mEmailEdit->setEnabled( enabled );
+  //mNameEdit->setEnabled( enabled );
   mRoleCombo->setEnabled( enabled );
   mStatusCombo->setEnabled( enabled );
   mRsvpButton->setEnabled( enabled );
 
   mRemoveButton->setEnabled( enabled );
-}
-
-void KOEditorDetails::attendeeMatched( const KABC::Addressee &addr )
-{
-  mEmailEdit->setText( addr.preferredEmail() );
 }
 
 void KOEditorDetails::updateAttendeeItem()
@@ -464,9 +437,12 @@ void KOEditorDetails::updateAttendeeItem()
 
   Attendee *a = aItem->data();
 
-  a->setName( mNameEdit->text() );
+  QString name;
+  QString email;
+  KPIM::AddresseeLineEdit::getNameAndMail(mNameEdit->text(), name, email);
+  a->setName( name );
   a->setUid( mUidEdit->text() );
-  a->setEmail( mEmailEdit->text() );
+  a->setEmail( email );
   a->setRole( Attendee::Role( mRoleCombo->currentItem() ) );
   a->setStatus( Attendee::PartStat( mStatusCombo->currentItem() ) );
   a->setRSVP( mRsvpButton->isChecked() );

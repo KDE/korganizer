@@ -62,7 +62,7 @@ Q_OBJECT
 public:
   KOAttendeeListView (QWidget *parent=0, const char *name=0);
   virtual ~KOAttendeeListView();
-  virtual void addAttendee( QString newAttendee );
+  virtual void addAttendee( const QString& newAttendee );
 public slots:
   virtual void contentsDragEnterEvent( QDragEnterEvent *e );
   virtual void dragEnterEvent( QDragEnterEvent *e );
@@ -107,15 +107,16 @@ class KOEditorDetails : public QWidget
     void clearAttendeeInput();
     void fillAttendeeInput(AttendeeListItem *);
     void updateAttendeeItem();
-    void setEnabledAttendeeInput(bool);
-    void attendeeMatched( const KABC::Addressee& );
+    void setEnableAttendeeInput(bool);
+
+  protected:
+    virtual bool eventFilter( QObject *, QEvent *);
 
   private:
     bool mDisableItemUpdate;
 
     KPIM::AddresseeLineEdit *mNameEdit;
     QLineEdit *mUidEdit;
-    QLineEdit *mEmailEdit;
     KListView *mListView;
     QComboBox* mRoleCombo;
     QCheckBox* mRsvpButton;
