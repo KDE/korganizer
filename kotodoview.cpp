@@ -615,12 +615,23 @@ Todo::List KOTodoView::selectedTodos()
   return selected;
 }
 
-void KOTodoView::changeIncidenceDisplay(Incidence *, int)
+void KOTodoView::changeIncidenceDisplay(Incidence *incidence, int)
 {
-  // use a QTimer here, because when marking todos finished using
-  // the checkbox, this slot gets called, but we cannot update the views
-  // because we're still inside KOTodoViewItem::stateChange
-  QTimer::singleShot(0,this,SLOT(updateView()));
+  // The todo view only displays todos, so exit on all other incidences
+  if ( incidence->type() != "Todo" ) 
+    return;
+  Todo *todo = static_cast<Todo *>(incidence);
+  if ( todo && mTodoMap.contains( todo ) ) {
+    KOTodoViewItem *todoItem = mTodoMap[todo];
+	 if ( todoItem ) {
+	 	todoItem->construct();
+	 }
+  } else {
+    // use a QTimer here, because when marking todos finished using
+    // the checkbox, this slot gets called, but we cannot update the views
+    // because we're still inside KOTodoViewItem::stateChange
+    QTimer::singleShot(0,this,SLOT(updateView()));
+  }
 }
 
 void KOTodoView::showDates(const QDate &, const QDate &)
