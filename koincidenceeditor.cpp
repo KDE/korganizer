@@ -147,9 +147,10 @@ void KOIncidenceEditor::saveAsTemplate( Incidence *incidence,
 QString KOIncidenceEditor::loadTemplate( Calendar *cal, const QString &type,
                                          const QStringList &templates )
 {
+  bool ok = false;
   QString templateName = KInputDialog::getItem( i18n("Load Template"),
-      i18n("Select a template to load:"), templates, 0, false );
-  if ( templateName.isEmpty() ) return QString::null;
+      i18n("Select a template to load:"), templates, 0, false, &ok );
+  if ( !ok || templateName.isEmpty() ) return QString::null;
 
   QString fileName = locateLocal( "data", "korganizer/templates/" + type + "/" +
                                   templateName );
