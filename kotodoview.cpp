@@ -400,7 +400,7 @@ KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent, const char* name)
   connect( mPercentageCompletedPopupMenu, SIGNAL( activated( int ) ),
            SLOT( setNewPercentage( int ) ) );
   
-  mDatePickerPopupMenu = new KDatePickerPopup( QDate::currentDate(),0,0 );
+  mDatePickerPopupMenu = new KDatePickerPopup( QDate::currentDate() );
   connect( mDatePickerPopupMenu, SIGNAL( dateChanged( QDate )),
            SLOT( setNewDate( QDate ) ) );
 
