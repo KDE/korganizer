@@ -381,6 +381,9 @@ void ResourceView::contextMenuRequested ( QListViewItem *i,
     int reloadId = menu->insertItem( i18n("Reload"), this,
                                      SLOT( reloadResource() ) );
     menu->setItemEnabled( reloadId, item->resource()->isActive() );
+    int saveId = menu->insertItem( i18n("Save"), this,
+                                   SLOT( saveResource() ) );
+    menu->setItemEnabled( saveId, item->resource()->isActive() );
     menu->insertSeparator();
     menu->insertItem( i18n("Show Info..."), this, SLOT( showInfo() ) );
     menu->insertItem( i18n("Edit..."), this, SLOT( editResource() ) );
@@ -408,6 +411,15 @@ void ResourceView::reloadResource()
   
   ResourceCalendar *r = item->resource();
   r->load();
+}
+
+void ResourceView::saveResource()
+{
+  ResourceItem *item = currentItem();
+  if ( !item ) return;
+  
+  ResourceCalendar *r = item->resource();
+  r->save();
 }
 
 QString ResourceView::infoText( ResourceCalendar *r )

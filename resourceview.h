@@ -125,6 +125,7 @@ class ResourceView : public CalendarViewExtension
     void showInfo();
   
     void reloadResource();
+    void saveResource();
 
   private:
     KListView *mListView;
