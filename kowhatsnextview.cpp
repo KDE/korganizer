@@ -110,15 +110,27 @@ void KOWhatsNextView::printPreview(CalPrinter *calPrinter, const QDate &fd,
 
 void KOWhatsNextView::updateView()
 {
+  KIconLoader kil("korganizer");
+  QString *ipath = new QString();
+  kil.loadIcon("korganizer",KIcon::NoGroup,32,KIcon::DefaultState,ipath);
+  
   mText = i18n("<table width=\"100%\">\n");
-  mText += i18n("<tr bgcolor=\"#3679AD\"><td>");
-  mText += i18n("<font color=\"white\"><h1>What's next?</h1></font>");
+  mText += i18n("<tr bgcolor=\"#3679AD\"><td><h1>");
+  mText += i18n("<img src=\"");
+  mText += *ipath;
+  mText += i18n("\">");
+  mText += i18n("<font color=\"white\"> What's next?</h1></font>");
   mText += i18n("</td></tr>\n<tr><td>");
-
+  
   QPtrList<Event> events = calendar()->getEvents(QDate::currentDate(),
                                                  QDate::currentDate());
   if (events.count() > 0) {
-    mText += i18n("<p></p><h2>Events:</h2>\n");
+    mText += i18n("<p></p>");
+    kil.loadIcon("appointment",KIcon::NoGroup,22,KIcon::DefaultState,ipath);
+    mText += i18n("<h2><img src=\"");
+    mText += *ipath;
+    mText += i18n("\">");    
+    mText += i18n("Events:</h2>\n");
     mText += i18n("<table>\n");
     Event *ev = events.first();
     while(ev) {
@@ -139,7 +151,12 @@ void KOWhatsNextView::updateView()
       if (me!=0) {
         if (me->status()==Attendee::NeedsAction && me->RSVP()) {
           if (replys == 0) {
-            mText += i18n("<p></p><h2>Events that need a reply:</h2>\n");
+            mText += i18n("<p></p>");
+            kil.loadIcon("reply",KIcon::NoGroup,22,KIcon::DefaultState,ipath);
+            mText += i18n("<h2><img src=\"");
+            mText += *ipath;
+            mText += i18n("\">");    
+            mText += i18n("Events that need a reply:</h2>\n");
             mText += i18n("<table>\n");
           }
           replys++;
@@ -153,7 +170,11 @@ void KOWhatsNextView::updateView()
 
   QPtrList<Todo> todos = calendar()->getTodoList();
   if (todos.count() > 0) {
-    mText += i18n("<h2>To-Do:</h2>\n");
+    kil.loadIcon("todo",KIcon::NoGroup,22,KIcon::DefaultState,ipath);
+    mText += i18n("<h2><img src=\"");
+    mText += *ipath;
+    mText += i18n("\">");    
+    mText += i18n("To-Do:</h2>\n");
     mText += i18n("<ul>\n");
     Todo *todo = todos.first();
     while(todo) {
