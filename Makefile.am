@@ -8,7 +8,7 @@ CXXFLAGS = -g -Wall -pedantic
 bin_PROGRAMS = 	korganizer alarmd
 
 LDFLAGS = $(all_libraries) $(KDE_RPATH)
-korganizer_LDADD   = versit/libversit.a $(LIB_KFILE) -lkab -lnana
+korganizer_LDADD   = versit/libversit.a $(LIB_KFILE) -lkab
 alarmd_LDADD =  versit/libversit.a $(LIB_KDEUI) $(LIB_MEDIATOOL)
 
 ########## FILES
