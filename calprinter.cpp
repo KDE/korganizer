@@ -252,8 +252,8 @@ void CalPrinter::printWeek(const QDate &fd, const QDate &td)
   // we want half-inch margins.
   int margin = 36;
   p.setViewport(margin, margin, 
-		p.viewport().width()-margin, 
-		p.viewport().height()-margin);
+  p.viewport().width()-margin, 
+  p.viewport().height()-margin);
   int pageWidth = p.viewport().width();
   int pageHeight = p.viewport().height();
   mHeaderHeight = 72;
@@ -835,21 +835,17 @@ void CalPrinter::drawDay(QPainter &p, const QDate &qd, int width, int height)
     int startTime = currEvent->dtStart().time().hour();
     int endTime = currEvent->dtEnd().time().hour();
     float minuteInc = cellHeight / 60.0;
-    if ((startTime >= mStartHour)  && 
-	(endTime <= (mStartHour + 12))) {
+    if ((startTime >= mStartHour)  && (endTime <= (mStartHour + 12))) {
       startTime -= mStartHour;
       int startMinuteOff = (int) (minuteInc * 
-	currEvent->dtStart().time().minute());
-      endTime -= mStartHour;
-      int endMinuteOff = (int) (minuteInc * 
-	currEvent->dtEnd().time().minute());
+      currEvent->dtStart().time().minute());
+      int endMinuteOff = (int) (minuteInc * currEvent->dtEnd().time().minute());
+      int cheight = (int) (minuteInc * 
+                    currEvent->dtStart().secsTo(currEvent->dtEnd()) / 60 );
       p.drawRect(80, offset+startMinuteOff+startTime*cellHeight, 
-		 cellWidth, endMinuteOff + (endTime - startTime)*cellHeight);
-      p.drawText(85, 
-		 offset+startMinuteOff+startTime*cellHeight+5,
-		 cellWidth-10, 
-		 endMinuteOff + (endTime - startTime)*cellHeight-10,
-		 AlignLeft | AlignTop, currEvent->summary());
+                 cellWidth, cheight);
+      p.drawText(85, offset+startMinuteOff+startTime*cellHeight+5, cellWidth-10, 
+                 cheight-10, AlignLeft | AlignTop, currEvent->summary());
     }
   }
   p.setBrush(QBrush(NoBrush));
