@@ -713,7 +713,7 @@ KOEditorRecurrence::KOEditorRecurrence( QWidget* parent, const char *name ) :
   QGridLayout *topLayout = new QGridLayout( this );
   topLayout->setSpacing( KDialog::spacingHint() );
 
-  mEnabledCheck = new QCheckBox( i18n("Enable Recurrence"), this );
+  mEnabledCheck = new QCheckBox( i18n("Enable recurrence"), this );
   connect( mEnabledCheck, SIGNAL( toggled( bool ) ),
            SLOT( setEnabled( bool ) ) );
   topLayout->addMultiCellWidget( mEnabledCheck, 0, 0, 0, 1 );
