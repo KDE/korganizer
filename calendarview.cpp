@@ -820,12 +820,18 @@ void CalendarView::allday_new()
 
 void CalendarView::editEvent(KOEvent *anEvent)
 {
-  QDateList tmpList(FALSE);
-  QDate qd;
-
-  tmpList = dateNavigator->getSelected();
   if(anEvent) {
+    if (anEvent->isReadOnly()) {
+      showEvent(anEvent);
+      return;
+    }
+
+    QDateList tmpList(FALSE);
+    QDate qd;
+
+    tmpList = dateNavigator->getSelected();
     qd = *tmpList.first();
+
     if (anEvent->getTodoStatus()) {
       // this is a todo
       KOTodoEditor *eventWin = new KOTodoEditor(mCalendar );

@@ -182,7 +182,7 @@ class KOMonthView: public KOBaseView {
    bool              weekStartsMonday;
 
    // display control vars
-   QPopupMenu       *rightClickMenu;
+   KOEventPopupMenu *rightClickMenu;
 
    // state data.
    QDate             myDate;

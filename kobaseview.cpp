@@ -35,22 +35,32 @@ void KOBaseView::printPreview(CalPrinter *calPrinter, const QDate &,
 		       i18n("Unfortunately, we don't handle printing for\n"
 			    "that view yet.\n"));
 }
-  
+
 void KOBaseView::print(CalPrinter *calPrinter)
 {
   QMessageBox::warning(this,i18n("KOrganizer error"),
-		       i18n("Unfortunately, we don't handle printing for\n"
+                       i18n("Unfortunately, we don't handle printing for\n"
 			    "that view yet.\n"));
 }
 
-QPopupMenu *KOBaseView::eventPopup()
+KOEventPopupMenu *KOBaseView::eventPopup()
 {
+  KOEventPopupMenu *eventPopup = new KOEventPopupMenu;
+  
+  connect (eventPopup,SIGNAL(editEventSignal(KOEvent *)),
+           SIGNAL(editEventSignal(KOEvent *)));
+  connect (eventPopup,SIGNAL(showEventSignal(KOEvent *)),
+           SIGNAL(showEventSignal(KOEvent *)));
+  connect (eventPopup,SIGNAL(deleteEventSignal(KOEvent *)),
+           SIGNAL(deleteEventSignal(KOEvent *)));
+
+/*
   QPopupMenu *eventPopup = new QPopupMenu();
   eventPopup->insertItem (i18n("&Show"),this,SLOT(popupShow()));
   eventPopup->insertItem (i18n("&Edit"),this, SLOT(popupEdit()));
   eventPopup->insertItem (SmallIcon("delete"),i18n("&Delete"),
                           this, SLOT(popupDelete()));
-
+*/
   return eventPopup;
 }
 
@@ -78,5 +88,8 @@ void KOBaseView::popupDelete()
 
 void KOBaseView::defaultEventAction(KOEvent *event)
 {
-  emit editEventSignal(event);
+  if (event) {
+    if (event->isReadOnly()) emit showEventSignal(event);
+    else emit editEventSignal(event);
+  }
 }

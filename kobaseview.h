@@ -12,6 +12,7 @@
 #include <qlist.h>
 
 #include "koevent.h"
+#include "koeventpopupmenu.h"
 
 class CalObject;
 class CalPrinter;
@@ -82,7 +83,7 @@ public:
   /**
    * Construct a standard context menu for an event.
    */
-  QPopupMenu *eventPopup();
+  KOEventPopupMenu *eventPopup();
 
 public slots:
   /**

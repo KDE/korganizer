@@ -247,7 +247,7 @@ void KOListView::defaultItemAction(QListViewItem *item)
 void KOListView::popupMenu(QListViewItem *item,const QPoint &,int)
 {
   mActiveItem = (KOListViewItem *)item;
-  if (mActiveItem) showEventPopup(mPopupMenu,mActiveItem->event());
+  if (mActiveItem) mPopupMenu->showEventPopup(mActiveItem->event());
 }
 
 void KOListView::processSelectionChange()

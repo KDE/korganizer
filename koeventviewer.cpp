@@ -57,6 +57,8 @@ void KOEventViewer::appendEvent(KOEvent *event)
     addTag("p","<em>" + i18n("This is a recurring event.") + "</em>");
   }
 
+  formatReadOnly(event);
+
   setText(mText);
 }
 
@@ -76,6 +78,8 @@ void KOEventViewer::appendTodo(KOEvent *event)
   mText.append(i18n("<p><b>Status:</b> %1<br><b>Priority:</b> %2</p>")
                .arg(event->getStatusStr())
                .arg(QString::number(event->getPriority())));
+
+  formatReadOnly(event);
 
   setText(mText);
 }
@@ -107,6 +111,14 @@ void KOEventViewer::formatAttendees(KOEvent *event)
     mText.append("</ul>");
   }
 }
+
+void KOEventViewer::formatReadOnly(KOEvent *event)
+{
+  if (event->isReadOnly()) {
+    addTag("p","<em>(" + i18n("read-only") + ")</em>");
+  }
+}
+
 
 void KOEventViewer::setTodo(KOEvent *event)
 {

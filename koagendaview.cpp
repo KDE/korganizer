@@ -227,7 +227,7 @@ KOAgendaView::KOAgendaView(CalObject *cal,QWidget *parent,const char *name) :
   // Create event context menu for all day agenda
   mAllDayAgendaPopup = eventPopup();
   connect(mAllDayAgenda,SIGNAL(showEventPopupSignal(KOEvent *)),
-          SLOT(showAllDayAgendaPopup(KOEvent *)));
+          mAllDayAgendaPopup,SLOT(showEventPopup(KOEvent *)));
 
   // Create agenda frame
   QWidget *agendaFrame = new QWidget(splitterAgenda);
@@ -254,11 +254,11 @@ KOAgendaView::KOAgendaView(CalObject *cal,QWidget *parent,const char *name) :
 
   // Create event context menu for agenda
   mAgendaPopup = eventPopup();
-  mAgendaPopup->insertSeparator();
-  mAgendaPopup->insertItem(QIconSet(UserIcon("bell")),i18n("ToggleAlarm"),
-                           mAgenda,SLOT(popupAlarm()));
+  mAgendaPopup->addAdditionalItem(QIconSet(UserIcon("bell")),
+                                  i18n("ToggleAlarm"),mAgenda,
+                                  SLOT(popupAlarm()),true);
   connect(mAgenda,SIGNAL(showEventPopupSignal(KOEvent *)),
-          SLOT(showAgendaPopup(KOEvent *)));
+          mAgendaPopup,SLOT(showEventPopup(KOEvent *)));
 
   // Create day name labels for agenda columns
   mDayLabelsFrame = new QHBox(this);
@@ -319,6 +319,8 @@ KOAgendaView::KOAgendaView(CalObject *cal,QWidget *parent,const char *name) :
 
 KOAgendaView::~KOAgendaView()
 {
+  delete mAgendaPopup;
+  delete mAllDayAgendaPopup;
 }
 
 void KOAgendaView::createDayLabels()

@@ -191,8 +191,8 @@ class KOAgendaView : public KOBaseView {
     bool mWeekStartsMonday;
     int mStartHour;
 
-    QPopupMenu *mAgendaPopup;
-    QPopupMenu *mAllDayAgendaPopup;
+    KOEventPopupMenu *mAgendaPopup;
+    KOEventPopupMenu *mAllDayAgendaPopup;
 
     EventIndicator *mEventIndicatorTop;
     EventIndicator *mEventIndicatorBottom;

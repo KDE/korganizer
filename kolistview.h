@@ -85,7 +85,7 @@ protected:
 
 private:
   QListView *mListView;
-  QPopupMenu *mPopupMenu;
+  KOEventPopupMenu *mPopupMenu;
   KOListViewItem *mActiveItem;
 };
 

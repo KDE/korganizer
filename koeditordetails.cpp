@@ -260,6 +260,8 @@ void KOEditorDetails::removeAttendee()
 
 void KOEditorDetails::attendeeListHilite(QListViewItem *item)
 {
+  if (!item) return;
+
   Attendee *a = ((AttendeeListItem *)item)->attendee(); 
 
   attendeeEdit->setText(a->getName());
@@ -271,6 +273,8 @@ void KOEditorDetails::attendeeListHilite(QListViewItem *item)
 
 void KOEditorDetails::attendeeListAction(QListViewItem *item)
 {
+  if (!item) return;
+
   qDebug("KOEditorDetails::attendeeListAction(): to be implemented");
 
   return;
@@ -306,8 +310,11 @@ void KOEditorDetails::openAddressBook()
       attendeeEdit->setText(nameStr);
 
       // take first email address
-      if (!entry.emails.isEmpty() && entry.emails.first().length()>0)
-      	emailEdit->setText(entry.emails.first());      
+      if (!entry.emails.isEmpty() && entry.emails.first().length()>0) {
+      	emailEdit->setText(entry.emails.first());
+      } else {
+        emailEdit->setText("");
+      }
     } else {
       KMessageBox::sorry(this,i18n("Error getting entry from address book."));
     }
@@ -330,9 +337,7 @@ void KOEditorDetails::addNewAttendee()
   if (QString(attendeeEdit->text()).stripWhiteSpace().isEmpty())
     return;
 
-  Attendee *a;
-  
-  a = new Attendee(attendeeEdit->text());
+  Attendee *a = new Attendee(attendeeEdit->text());
 
   // this is cool.  If they didn't enter an email address,
   // try to look it up in the address book and fill it in for them.
@@ -355,7 +360,7 @@ void KOEditorDetails::addNewAttendee()
   a->setEmail(emailEdit->text());
   a->setRole(attendeeRoleCombo->currentItem());
   a->setStatus(statusCombo->currentItem());
-  a->setRSVP(attendeeRSVPButton->isChecked() ? true : false);
+  a->setRSVP(attendeeRSVPButton->isChecked());
 
   insertAttendee(a);
 
@@ -369,7 +374,7 @@ void KOEditorDetails::addNewAttendee()
 
 void KOEditorDetails::insertAttendee(Attendee *a)
 {
-  mAttendeeList.append(new AttendeeListItem(a,attendeeListBox));
+  (void)new AttendeeListItem(a,attendeeListBox);
 }
 
 void KOEditorDetails::setDefaults()
@@ -379,23 +384,27 @@ void KOEditorDetails::setDefaults()
 
 void KOEditorDetails::readEvent(KOEvent *event)
 {
-  // attendee information
-  // first remove whatever might be here
-  mAttendeeList.clear();
   QList<Attendee> tmpAList = event->getAttendeeList();
   Attendee *a;
   for (a = tmpAList.first(); a; a = tmpAList.next())
-    insertAttendee(a);
+    insertAttendee(new Attendee(*a));
 
   //  Details->attachListBox->insertItem(i18n("Not implemented yet."));
 }
 
 void KOEditorDetails::writeEvent(KOEvent *event)
 {
+//  qDebug("KOEditorDetails::writeEvent()");
   event->clearAttendees();
+  QListViewItem *item;
   AttendeeListItem *a;
-  for (a = mAttendeeList.first(); a; a = mAttendeeList.next())
+  for (item = attendeeListBox->firstChild(); item;
+       item = item->nextSibling()) {
+    a = (AttendeeListItem *)item;
+//    qDebug("KOEditorDetails::writeEvent add");
+//    qDebug("  %s",a->attendee()->getName().latin1());
     event->addAttendee(new Attendee(*(a->attendee())));
+  }
 }
 
 bool KOEditorDetails::validateInput()

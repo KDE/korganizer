@@ -286,10 +286,17 @@ void KOEditorGeneralTodo::timeStuffDisable(bool disable)
 
 bool KOEditorGeneralTodo::validateInput()
 {
-  if (!noTimeButton->isChecked()) {
-    if (!startTimeEdit->inputIsValid()) {
-      KMessageBox::sorry(this,"You must specify a valid time");
+  if (!noDueButton->isChecked()) {
+    if (!startDateEdit->inputIsValid()) {
+      qDebug("--due date isn't valid");
+      kapp->beep();
       return false;
+    }
+    if (!noTimeButton->isChecked()) {
+      if (!startTimeEdit->inputIsValid()) {
+        KMessageBox::sorry(this,"You must specify a valid time");
+        return false;
+      }
     }
   }
 

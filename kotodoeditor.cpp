@@ -132,6 +132,8 @@ bool KOTodoEditor::processInput()
     mTodo = todo;
     emit todoAdded(todo);
   }
+  
+  return true;
 }
 
 void KOTodoEditor::slotApply()

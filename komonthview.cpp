@@ -411,6 +411,7 @@ KOMonthView::KOMonthView(CalObject *cal,
 
 KOMonthView::~KOMonthView()
 {
+  delete rightClickMenu;
 }
 
 int KOMonthView::maxDatesHint()
@@ -769,7 +770,7 @@ void KOMonthView::newEventSlot(int index)
 
 void KOMonthView::doRightClickMenu()
 {
-  showEventPopup(rightClickMenu,getSelected().first());
+  rightClickMenu->showEventPopup(getSelected().first());
 }
 
 void KOMonthView::processSelectionChange()

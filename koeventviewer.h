@@ -30,6 +30,7 @@ class KOEventViewer : public QTextView {
 
     void formatCategories(KOEvent *event);
     void formatAttendees(KOEvent *event);
+    void formatReadOnly(KOEvent *event);
 
   private:
     QTextView *mEventTextView;

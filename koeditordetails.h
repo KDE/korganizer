@@ -97,8 +97,6 @@ class KOEditorDetails : public QWidget
     QLabel* transparencyLabel;
     QLabel* transparencyAmountLabel;
 
-    QList<AttendeeListItem> mAttendeeList; // list of attendee items
-
   private:
     int mSpacing;
 };
