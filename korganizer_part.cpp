@@ -35,8 +35,6 @@
 #include "stdcalendar.h"
 #include "alarmclient.h"
 
-#include "kalarmd/alarmdaemoniface_stub.h"
-
 #include <libkcal/calendarlocal.h>
 #include <libkcal/calendarresources.h>
 #include <libkcal/resourcecalendar.h>
