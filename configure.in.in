@@ -1,0 +1,49 @@
+
+dnl Checks if we want to use insure++ to debug
+KDE_CHECK_INSURE
+
+# the following is to allow programs, that are known to 
+# have problems when compiled with -O2
+if test -n "$CXXFLAGS"; then
+  safe_IFS=$IFS
+  IFS=" "
+  NOOPT_CXXFLAGS=""
+  for i in $CXXFLAGS; do
+    if test "$i" = "-O2"; then
+      i=""
+    fi
+    NOOPT_CXXFLAGS="$NOOPT_CXXFLAGS $i"
+  done
+  IFS=$safe_IFS
+fi
+AC_SUBST(NOOPT_CXXFLAGS)
+
+AC_PROG_YACC
+
+KDE_FIND_PATH(perl, PERL, [], 
+	[
+	  AC_MSG_WARN([Couldn't find perl 5 or later. ical2vcal will no work.])		],
+	[-e 'require 5.000;']
+)
+	
+AC_SUBST(PERL)
+
+KDE_CHECK_STL
+AC_HEADER_DIRENT
+AC_HEADER_STDC
+AC_CHECK_HEADERS(fcntl.h sys/time.h unistd.h sys/select.h \
+	sys/ioctl.h sys/stropts.h malloc.h sys/sockio.h \
+	sys/m_wait.h sys/param.h libgen.h)
+AC_HEADER_TIME
+
+AC_LANG_C
+AC_C_LONG_DOUBLE
+AC_TYPE_GETGROUPS
+
+dnl Checks for library functions.
+AC_CHECK_FUNCS(socket strdup vsnprintf basename)
+AC_CHECK_SETENV
+AC_CHECK_GETDOMAINNAME
+AC_CHECK_GETHOSTNAME
+AC_CHECK_USLEEP
+
