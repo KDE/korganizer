@@ -208,6 +208,8 @@ class ActionManager : public QObject
 
     void configureDateTimeFinished(KProcess *);
 
+    void setTitle();
+
   protected:
 
     /** Get URL for saving. Opens FileDialog. */

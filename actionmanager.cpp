@@ -94,10 +94,10 @@ void ActionManager::ActionManager::init()
     mAutoSaveTimer->start(1000*60*KOPrefs::instance()->mAutoSaveInterval);
   }
 
-  mMainWindow->setTitle();
+  setTitle();
 
-  connect(mCalendarView,SIGNAL(modifiedChanged(bool)),SLOT(mMainWindow->setTitle()()));
-  connect(mCalendarView,SIGNAL(configChanged()),SLOT(updateConfig()));
+  connect( mCalendarView, SIGNAL( modifiedChanged( bool ) ), SLOT( setTitle() ) );
+  connect( mCalendarView, SIGNAL( configChanged() ), SLOT( updateConfig() ) );
 
   connect( mCalendarView, SIGNAL( incidenceSelected( Incidence * ) ),
            this, SLOT( processIncidenceSelection( Incidence * ) ) );
@@ -660,7 +660,7 @@ void ActionManager::file_close()
 
   setActive(false);
 
-  mMainWindow->setTitle();
+  setTitle();
 }
 
 bool ActionManager::openURL(const KURL &url,bool merge)
@@ -694,7 +694,7 @@ bool ActionManager::openURL(const KURL &url,bool merge)
 	QString active = config->readEntry("Active Calendar");
         if (KURL(active) == mURL) setActive(true);
         else setActive(false);
-        mMainWindow->setTitle();
+        setTitle();
         kdDebug() << "-- Add recent URL: " << url.prettyURL() << endl;
         mRecent->addURL(url);
 	mMainWindow->showStatusMessage(i18n("Opened calendar '%1'.").arg(mURL.prettyURL()));
@@ -747,7 +747,7 @@ bool ActionManager::saveURL()
       mFile = mURL.path();
     }
     writeActiveState();
-    mMainWindow->setTitle();
+    setTitle();
     mRecent->addURL(mURL);
   }
 
@@ -828,7 +828,7 @@ bool ActionManager::saveAsURL(const KURL &url)
     } else {
       setActive(false);
     }
-    mMainWindow->setTitle();
+    setTitle();
     mRecent->addURL(mURL);
   } else {
     kdDebug() << "KOrganizer::saveAsURL() failed" << endl;
@@ -998,7 +998,7 @@ void ActionManager::setActive(bool active)
   if (active == mActive) return;
 
   mActive = active;
-  mMainWindow->setTitle();
+  setTitle();
 }
 
 void ActionManager::makeActive()
@@ -1152,6 +1152,11 @@ void ActionManager::loadParts()
   if (mPluginMenu)
       mPluginMenu->popupMenu()->clear();
   mParts = KOCore::self()->loadParts( mMainWindow );
+}
+
+void ActionManager::setTitle()
+{
+  mMainWindow->setTitle();
 }
 
 #include "actionmanager.moc"
