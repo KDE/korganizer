@@ -40,7 +40,7 @@ class Attendee;
 class Incidence;
 }
 using namespace KCal;
-    
+
 namespace KPIM {
 class AddresseeLineEdit;
 }
@@ -109,6 +109,8 @@ class KOEditorDetails : public QWidget
   protected:
     virtual bool eventFilter( QObject *, QEvent *);
     void fillOrganizerCombo();
+
+    void insertAttendee( Attendee*, bool goodEmailAddress );
 
   private:
     bool mDisableItemUpdate;

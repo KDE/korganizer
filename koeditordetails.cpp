@@ -335,7 +335,8 @@ void KOEditorDetails::openAddressBook()
       else partStat = KCal::Attendee::NeedsAction;
       insertAttendee( new Attendee( a.realName(), a.preferredEmail(),
                                     !myself, partStat,
-                                    KCal::Attendee::ReqParticipant, a.uid() ) );
+                                    KCal::Attendee::ReqParticipant, a.uid() ),
+                      true );
     }
   }
   delete dia;
@@ -362,7 +363,7 @@ void KOEditorDetails::addNewAttendee()
 {
   Attendee *a = new Attendee( i18n("Firstname Lastname"),
                               i18n("name@domain.com"), true );
-  insertAttendee( a );
+  insertAttendee( a, false );
   // We don't want the hint again
   mNameEdit->setClickMessage( "" );
   mNameEdit->setFocus();
@@ -372,9 +373,14 @@ void KOEditorDetails::addNewAttendee()
 
 void KOEditorDetails::insertAttendee( Attendee *a )
 {
+  insertAttendee( a, true );
+}
+
+void KOEditorDetails::insertAttendee( Attendee *a, bool goodEmailAddress )
+{
   AttendeeListItem *item = new AttendeeListItem( a, mListView );
   mListView->setSelected( item, true );
-  if( mFreeBusy ) mFreeBusy->insertAttendee( a );
+  if( mFreeBusy ) mFreeBusy->insertAttendee( a, goodEmailAddress );
 }
 
 void KOEditorDetails::setDefaults()
@@ -397,7 +403,7 @@ void KOEditorDetails::readEvent( Incidence *event )
   Attendee::List al = event->attendees();
   Attendee::List::ConstIterator it;
   for( it = al.begin(); it != al.end(); ++it )
-    insertAttendee( new Attendee( **it ) );
+    insertAttendee( new Attendee( **it ), true );
 
   mListView->setSelected( mListView->firstChild(), true );
 

@@ -54,7 +54,8 @@ class FreeBusyItem : public KDGanttViewTaskItem
 {
   public:
     FreeBusyItem( Attendee *attendee, KDGanttView *parent ) :
-      KDGanttViewTaskItem( parent ), mAttendee( attendee )
+      KDGanttViewTaskItem( parent ), mAttendee( attendee ), mTimerID( 0 ),
+      mIsDownloading( false )
     {
       Q_ASSERT( attendee );
       updateItem();
@@ -87,11 +88,28 @@ class FreeBusyItem : public KDGanttViewTaskItem
 
     QString email() const { return mAttendee->email(); }
 
+    void setUpdateTimerID( int id ) { mTimerID = id; }
+    int updateTimerID() const { return mTimerID; }
+
+    void startDownload() {
+      mIsDownloading = true;
+      FreeBusyManager *m = KOGroupware::instance()->freeBusyManager();
+      m->retrieveFreeBusy( attendee()->email() );
+    }
+    void setIsDownloading( bool d ) { mIsDownloading = d; }
+    bool isDownloading() const { return mIsDownloading; }
+
   private:
     Attendee *mAttendee;
     KCal::FreeBusy *mFreeBusy;
 
     QMap<int,QString> mKeyMap;
+
+    // This is used for the update timer
+    int mTimerID;
+
+    // Only run one download job at a time
+    bool mIsDownloading;
 };
 
 void FreeBusyItem::updateItem()
@@ -143,6 +161,9 @@ void FreeBusyItem::setFreeBusyPeriods( FreeBusy* fb )
       setFreeBusy( 0 );
       setShowNoInformation( true );
   }
+
+  // We are no longer downloading
+  mIsDownloading = false;
 }
 
 
@@ -255,6 +276,8 @@ void KOEditorFreeBusy::removeAttendee( Attendee *attendee )
       static_cast<FreeBusyItem *>( mGanttView->firstChild() );
   while( anItem ) {
     if( anItem->attendee() == attendee ) {
+      if ( anItem->updateTimerID() != 0 )
+        killTimer( anItem->updateTimerID() );
       delete anItem;
       updateStatusSummary();
       break;
@@ -263,12 +286,11 @@ void KOEditorFreeBusy::removeAttendee( Attendee *attendee )
   }
 }
 
-void KOEditorFreeBusy::insertAttendee( Attendee *attendee )
+void KOEditorFreeBusy::insertAttendee( Attendee *attendee, bool readFBList )
 {
-  (void)new FreeBusyItem( attendee, mGanttView );
-#if 0
-  updateFreeBusyData( attendee );
-#endif
+  FreeBusyItem* item = new FreeBusyItem( attendee, mGanttView );
+  if ( readFBList )
+    updateFreeBusyData( item );
   updateStatusSummary();
 }
 
@@ -279,7 +301,7 @@ void KOEditorFreeBusy::updateAttendee( Attendee *attendee )
   while( anItem ) {
     if( anItem->attendee() == attendee ) {
       anItem->updateItem();
-      updateFreeBusyData( attendee );
+      updateFreeBusyData( anItem );
       updateStatusSummary();
       break;
     }
@@ -336,11 +358,32 @@ void KOEditorFreeBusy::slotZoomToTime()
   mGanttView->zoomToFit();
 }
 
-void KOEditorFreeBusy::updateFreeBusyData( Attendee *attendee )
+void KOEditorFreeBusy::updateFreeBusyData( FreeBusyItem* item )
 {
-  if( KOGroupware::instance() && attendee->name() != "(EmptyName)" ) {
-    FreeBusyManager *m = KOGroupware::instance()->freeBusyManager();
-    m->retrieveFreeBusy( attendee->email() );
+  if ( item->isDownloading() )
+    // This item is already in the process of fetching the FB list
+    return;
+
+  if ( item->updateTimerID() != 0 )
+    // An update timer is already running. Reset it
+    killTimer( item->updateTimerID() );
+
+  // This item does not have a download running, and no timer is set
+  // Do the download in five seconds
+  item->setUpdateTimerID( startTimer( 5000 ) );
+}
+
+void KOEditorFreeBusy::timerEvent( QTimerEvent* event )
+{
+  killTimer( event->timerId() );
+  FreeBusyItem *item = static_cast<FreeBusyItem *>( mGanttView->firstChild() );
+  while( item ) {
+    if( item->updateTimerID() == event->timerId() ) {
+      item->setUpdateTimerID( 0 );
+      item->startDownload();
+      return;
+    }
+    item = static_cast<FreeBusyItem *>( item->nextSibling() );
   }
 }
 
@@ -566,7 +609,7 @@ void KOEditorFreeBusy::reload()
 
   FreeBusyItem *item = static_cast<FreeBusyItem *>( mGanttView->firstChild() );
   while( item ) {
-    updateFreeBusyData( item->attendee() );
+    updateFreeBusyData( item );
     item = static_cast<FreeBusyItem *>( item->nextSibling() );
   }
 }

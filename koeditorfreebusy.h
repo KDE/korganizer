@@ -50,7 +50,7 @@ class KOEditorFreeBusy : public QWidget
     void setUpdateEnabled( bool enabled );
     bool updateEnabled() const;
 
-    void insertAttendee( KCal::Attendee * );
+    void insertAttendee( KCal::Attendee *, bool readFBList );
     void removeAttendee( KCal::Attendee * );
     void updateAttendee( KCal::Attendee * );
     void clearAttendees();
@@ -79,8 +79,11 @@ class KOEditorFreeBusy : public QWidget
 
     void reload();
 
+  protected:
+    void timerEvent( QTimerEvent* );
+
   private:
-    void updateFreeBusyData( KCal::Attendee * );
+    void updateFreeBusyData( FreeBusyItem * );
 
     bool findFreeSlot( QDateTime &dtFrom, QDateTime &dtTo );
     bool tryDate( QDateTime &tryFrom, QDateTime &tryTo );
