@@ -57,6 +57,13 @@ KODialogManager::KODialogManager( CalendarView *mainView ) :
 
 KODialogManager::~KODialogManager()
 {
+  delete mOutgoingDialog;
+  delete mIncomingDialog;
+  delete mOptionsDialog;
+  delete mSearchDialog;
+  delete mArchiveDialog;
+  delete mFilterEditDialog;
+  delete mPluginDialog;
 }
 
 OutgoingDialog *KODialogManager::outgoingDialog()

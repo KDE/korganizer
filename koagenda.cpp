@@ -285,7 +285,10 @@ void KOAgenda::changeColumns(int columns)
 //  setMinimumSize(mColumns * 10, mGridSpacingY + 1);
 //  init();
 //  update();
-  QApplication::sendEvent(this,new QResizeEvent(size(),size()));
+
+  QResizeEvent event( size(), size() );
+
+  QApplication::sendEvent( this, &event );
 }
 
 
