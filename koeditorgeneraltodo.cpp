@@ -345,8 +345,8 @@ void KOEditorGeneralTodo::timeStuffDisable(bool disable)
     mStartTimeEdit->hide();
     mDueTimeEdit->hide();
   } else {
-    mStartTimeEdit->show();
-    mDueTimeEdit->show();
+    if(!mNoStartCheck->isChecked()) mStartTimeEdit->show();
+    if(!mNoDueCheck->isChecked()) mDueTimeEdit->show();
   }
 }
 
