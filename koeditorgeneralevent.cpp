@@ -198,6 +198,7 @@ void KOEditorGeneralEvent::startTimeChanged(QTime newtime)
   // adjust end time so that the event has the same duration as before.
   mCurrEndDateTime = mCurrStartDateTime.addSecs(secsep);
   mEndTimeEdit->setTime(mCurrEndDateTime.time());
+  mEndDateEdit->setDate(mCurrEndDateTime.date());
   
   emit dateTimesChanged(mCurrStartDateTime,mCurrEndDateTime);
 }
