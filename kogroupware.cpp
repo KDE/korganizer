@@ -230,7 +230,7 @@ bool KOGroupware::sendICalMessage( QWidget* parent,
           "Should email be sent out to the attendees?" )
         .arg( type );
       rc = KMessageBox::questionYesNoCancel( parent, txt,
-          i18n("Group scheduling email") );
+          i18n("Group Scheduling Email") );
     } else {
       return true;
     }
