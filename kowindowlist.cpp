@@ -25,7 +25,6 @@
 #include <kdebug.h>
 
 #include "actionmanager.h"
-#include "korganizer.h"
 #include "kowindowlist.h"
 #include "kowindowlist.moc"
 

@@ -27,7 +27,6 @@
 #include <libkcal/calendarlocal.h>
 #include <libkcal/filestorage.h>
 
-#include "korganizer.h"
 #include "koprefs.h"
 #include "calendarview.h"
 

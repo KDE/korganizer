@@ -34,7 +34,6 @@
 #include "koprefs.h"
 #include "koviewmanager.h"
 #include "kowindowlist.h"
-#include "korganizer.h"
 #include "kprocess.h"
 #include "konewstuff.h"
 #include "history.h"
