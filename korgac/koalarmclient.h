@@ -31,10 +31,10 @@
 #include <kapplication.h>
 
 #include <qtimer.h>
+#include <qdatetime.h>
 
 class AlarmDialog;
 class AlarmDockWindow;
-class QDateTime;
 
 namespace KCal {
 class CalendarResources;
@@ -71,12 +71,14 @@ class KOAlarmClient : public QObject, virtual public AlarmClientIface, public KS
 
   private:
     void createReminder( KCal::Incidence *incidence, QDateTime dt );
+    void saveLastCheckTime();
 
     AlarmDockWindow *mDocker;  // the panel icon
     QValueList<AlarmDialog *> mReminders;
 
     KCal::CalendarResources *mCalendar;
 
+    QDateTime mLastChecked;
     QTimer mCheckTimer;
 };
 

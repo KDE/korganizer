@@ -60,14 +60,14 @@ KOAlarmClient::KOAlarmClient( QObject *parent, const char *name )
 
   connect( &mCheckTimer, SIGNAL( timeout() ), SLOT( checkAlarms() ) );
 
-  KConfig *cfg = KGlobal::config();
-  cfg->setGroup( "Alarms" );
-  int interval = cfg->readNumEntry( "Interval", 60 );
+  KConfig *config = kapp->config();
+  config->setGroup( "Alarms" );
+  int interval = config->readNumEntry( "Interval", 60 );
   kdDebug(5890) << "KOAlarmClient check interval: " << interval << " seconds."
                 << endl;
+  mLastChecked = config->readDateTimeEntry( "CalendarsLastChecked" );
 
   // load reminders that were active when quitting
-  KConfig *config = kapp->config();
   config->setGroup( "General" );
   int numReminders = config->readNumEntry( "Reminders", 0 );
   for ( int i=1; i<=numReminders; ++i )
@@ -84,6 +84,8 @@ KOAlarmClient::KOAlarmClient( QObject *parent, const char *name )
   config->writeEntry( "Reminders", 0 );
   config->sync();
 
+  checkAlarms();
+  saveLastCheckTime();
   mCheckTimer.start( 1000 * interval );  // interval in seconds
 }
 
@@ -95,19 +97,17 @@ KOAlarmClient::~KOAlarmClient()
 
 void KOAlarmClient::checkAlarms()
 {
-  KConfig *cfg = KGlobal::config();
+  KConfig *cfg = kapp->config();
 
   cfg->setGroup( "General" );
   if ( !cfg->readBoolEntry( "Enabled", true ) ) return;
 
-  cfg->setGroup( "Alarms" );
-  QDateTime lastChecked = cfg->readDateTimeEntry( "CalendarsLastChecked" );
-  QDateTime from = lastChecked.addSecs( 1 );
-  QDateTime to = QDateTime::currentDateTime();
+  QDateTime from = mLastChecked.addSecs( 1 );
+  mLastChecked = QDateTime::currentDateTime();
 
-  kdDebug(5891) << "Check: " << from.toString() << " - " << to.toString() << endl;
+  kdDebug(5891) << "Check: " << from.toString() << " - " << mLastChecked.toString() << endl;
 
-  QValueList<Alarm *> alarms = mCalendar->alarms( from, to );
+  QValueList<Alarm *> alarms = mCalendar->alarms( from, mLastChecked );
 
   QValueList<Alarm *>::ConstIterator it;
   for( it = alarms.begin(); it != alarms.end(); ++it ) {
@@ -115,10 +115,6 @@ void KOAlarmClient::checkAlarms()
     Incidence *incidence = mCalendar->incidence( (*it)->parent()->uid() );
     createReminder( incidence, QDateTime::currentDateTime() );
   }
-
-  cfg->writeEntry( "CalendarsLastChecked", to );
-
-  cfg->sync();
 }
 
 void KOAlarmClient::createReminder( KCal::Incidence *incidence, QDateTime dt )
@@ -126,19 +122,28 @@ void KOAlarmClient::createReminder( KCal::Incidence *incidence, QDateTime dt )
   AlarmDialog *dialog = new AlarmDialog();
   dialog->setIncidence( incidence );
   dialog->setRemindAt( dt );
-  mReminders.append( dialog );
   connect( dialog, SIGNAL( finishedSignal( AlarmDialog *) ), SLOT( slotRemove( AlarmDialog *) ) );
   connect( mDocker, SIGNAL( suspendAllSignal() ), dialog, SLOT( slotUser1() ) );
   connect( mDocker, SIGNAL( dismissAllSignal() ), dialog, SLOT( slotOk() ) );
   connect( this, SIGNAL( saveAllSignal() ), dialog, SLOT( slotSave() ) );
-  emit reminderCount( mReminders.count() );
   dialog->wakeUp();
+  mReminders.append( dialog );
+  emit reminderCount( mReminders.count() );
 }
 
 void KOAlarmClient::slotQuit()
 {
   emit saveAllSignal();
+  saveLastCheckTime();
   quit();
+}
+
+void KOAlarmClient::saveLastCheckTime()
+{
+  KConfig *cfg = kapp->config();
+  cfg->setGroup( "Alarms" );
+  cfg->writeEntry( "CalendarsLastChecked", mLastChecked );
+  cfg->sync();
 }
 
 void KOAlarmClient::quit()
@@ -167,7 +172,7 @@ void KOAlarmClient::forceAlarmCheck()
 
 void KOAlarmClient::dumpDebug()
 {
-  KConfig *cfg = KGlobal::config();
+  KConfig *cfg = kapp->config();
 
   cfg->setGroup( "Alarms" );
   QDateTime lastChecked = cfg->readDateTimeEntry( "CalendarsLastChecked" );
