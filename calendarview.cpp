@@ -110,8 +110,8 @@ CalendarView::CalendarView(QWidget *parent,const char *name)
   mCalendar = new CalendarLocal(KOPrefs::instance()->mTimeZoneId.local8Bit());
   mCalendar->setOwner(KOPrefs::instance()->fullName());
   mCalendar->setEmail(KOPrefs::instance()->email());
-  connect(mCalendar,SIGNAL(calUpdated(Incidence *)),
-          SLOT(eventUpdated(Incidence *)));
+
+  // TODO: Make sure that view is updated, when calendar is changed.
 
   QBoxLayout *topLayout = new QVBoxLayout(this);
 
@@ -441,8 +441,6 @@ void CalendarView::updateConfig()
 {
   kdDebug() << "CalendarView::updateConfig()" << endl;
   emit configChanged();
-
-  mCalendar->updateConfig();
 
   mCalendar->setTimeZoneId(KOPrefs::instance()->mTimeZoneId.local8Bit());
 
