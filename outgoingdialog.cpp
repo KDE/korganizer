@@ -86,6 +86,23 @@ ScheduleItemOut::ScheduleItemOut(QListView *parent,IncidenceBase *ev,
     }
   }
 
+  //If the object is an Todo
+  if(ev->type()=="Todo") {
+    Todo *event = static_cast<Todo *>(ev);
+    if (event->hasStartDate()) {
+      setText(1,event->dtStartDateStr());
+      if (!event->doesFloat()) {
+	setText(2,event->dtStartTimeStr());
+      }
+    }
+    if (event->hasDueDate()) {
+      setText(3,event->dtDueDateStr());
+      if (!event->doesFloat()) {
+	setText(4,event->dtDueTimeStr());
+      }
+    }
+  }
+
   kdDebug() << "ScheduleItemOut: checking if the object is a FreeBusy object" << endl;
   //If the object is a freebusy object
   if(ev->type() == "FreeBusy") {
@@ -205,47 +222,53 @@ void OutgoingDialog::deleteItem()
 void OutgoingDialog::showEvent(QListViewItem *qitem)
 {
   ScheduleItemOut *item = (ScheduleItemOut *)qitem;
-  if(item->event()->type()=="Event") {
-    Event *event = static_cast<Event *>(item->event());
-    QString sendText;
-    if (event) {
-      KOEventViewerDialog *eventViewer = new KOEventViewerDialog(this);
-      eventViewer->setEvent(event);
-      sendText = "<hr><h4>"+i18n("Event will be sent to:")+"</h4>";
-      switch (item->method()) {
-        case Scheduler::Publish: {
-          sendText += item->recipients();
-          break; }
-        case Scheduler::Request: {
-          sendText += i18n("All attendees");
-          break; }
-        case Scheduler::Refresh: {
-          sendText += i18n("All attendees");
-          break; }
-        case Scheduler::Cancel: {
-          sendText += i18n("All attendees");
-          break; }
-        case Scheduler::Add: {
-          sendText += i18n("All attendees");
-          break; }
-        case Scheduler::Reply: {
-          sendText += i18n("The organizer %1").arg(item->event()->organizer());
-        break; }
-          case Scheduler::Counter: {
-          sendText += i18n("The organizer %1").arg(item->event()->organizer());
-          break; }
-        case Scheduler::Declinecounter: {
-          sendText += i18n("All attendees");
-          break; }
-        case Scheduler::NoMethod: {
-          sendText += "";
-          break; }
-        default:
-          sendText = "";
-      }
-      eventViewer->addText(sendText);
-      eventViewer->show();
+  Event *event = 0;
+  Todo *todo = 0;
+  if ( item->event()->type()=="Event" ) {
+    event = static_cast<Event *>(item->event());
+  }
+  if ( item->event()->type()=="Todo" ) {
+    todo = static_cast<Todo *>(item->event());
+  }
+  QString sendText;
+  if (event || todo) {
+    KOEventViewerDialog *eventViewer = new KOEventViewerDialog(this);
+    if (event) eventViewer->setEvent(event);
+    if (todo) eventViewer->setTodo(todo);
+    sendText = "<hr><h4>"+i18n("Event will be sent to:")+"</h4>";
+    switch (item->method()) {
+    case Scheduler::Publish: {
+      sendText += item->recipients();
+      break; }
+    case Scheduler::Request: {
+      sendText += i18n("All attendees");
+      break; }
+    case Scheduler::Refresh: {
+      sendText += i18n("All attendees");
+      break; }
+    case Scheduler::Cancel: {
+      sendText += i18n("All attendees");
+      break; }
+    case Scheduler::Add: {
+      sendText += i18n("All attendees");
+      break; }
+    case Scheduler::Reply: {
+      sendText += i18n("The organizer %1").arg(item->event()->organizer());
+      break; }
+    case Scheduler::Counter: {
+      sendText += i18n("The organizer %1").arg(item->event()->organizer());
+      break; }
+    case Scheduler::Declinecounter: {
+      sendText += i18n("All attendees");
+      break; }
+    case Scheduler::NoMethod: {
+      sendText += "";
+      break; }
+    default:
+      sendText = "";
     }
+    eventViewer->addText(sendText);
+    eventViewer->show();
   }
 }
 

@@ -1077,27 +1077,30 @@ void CalendarView::action_mail()
 void CalendarView::schedule_publish(Incidence *incidence)
 {
   Event *event = 0;
+  Todo *todo = 0;
 
-	if (incidence == 0) {
+  if (incidence == 0) {
     incidence = mViewManager->currentView()->selectedIncidences().first();
-//    if (mViewManager->currentView()->isEventView()) {
-//      if ( incidence && incidence->type() == "Event" ) {
-//        event = static_cast<Event *>(incidence);
-//      }
-//    }
+    if (incidence == 0) {
+      incidence = mTodoList->selectedIncidences().first();
+    }
   }
   if ( incidence && incidence->type() == "Event" ) {
     event = static_cast<Event *>(incidence);
+  } else {
+    if ( incidence && incidence->type() == "Todo" ) {
+      todo = static_cast<Todo *>(incidence);
+    }
   }
 
-  if (!event) {
+  if (!event && !todo) {
     KMessageBox::sorry(this,i18n("No event selected."));
     return;
   }
 
   PublishDialog *publishdlg = new PublishDialog();
-  if (event->attendeeCount()>0) {
-    QPtrList<Attendee> attendees = event->attendees();
+  if (incidence->attendeeCount()>0) {
+    QPtrList<Attendee> attendees = incidence->attendees();
     attendees.first();
     while ( attendees.current()!=0 ) {
      publishdlg->addAttendee(attendees.current());
@@ -1106,11 +1109,22 @@ void CalendarView::schedule_publish(Incidence *incidence)
   }
   if ( publishdlg->exec() == QDialog::Accepted ) {
     OutgoingDialog *dlg = mDialogManager->outgoingDialog();
-    Event *ev = new Event(*event);
-    ev->registerObserver(0);
-    ev->clearAttendees();
-    if (!dlg->addMessage(ev,Scheduler::Publish,publishdlg->addresses())) {
-      delete(ev);
+    if ( event ) {
+      Event *ev = new Event(*event);
+      ev->registerObserver(0);
+      ev->clearAttendees();
+      if (!dlg->addMessage(ev,Scheduler::Publish,publishdlg->addresses())) {
+	delete(ev);
+      }
+    } else {
+      if ( todo ) {
+	Todo *ev = new Todo(*todo);
+	ev->registerObserver(0);
+	ev->clearAttendees();
+	if (!dlg->addMessage(ev,Scheduler::Publish,publishdlg->addresses())) {
+	  delete(ev);
+	}
+      }
     }
   }
   delete publishdlg;
@@ -1176,29 +1190,38 @@ void CalendarView::schedule_publish_freebusy(int daysToPublish)
 void CalendarView::schedule(Scheduler::Method method, Incidence *incidence)
 {
   Event *event = 0;
+  Todo *todo = 0;
 
   if (incidence == 0) {
     incidence = mViewManager->currentView()->selectedIncidences().first();
+    if (incidence == 0) {
+      incidence = mTodoList->selectedIncidences().first();
+    }
   }
   if ( incidence && incidence->type() == "Event" ) {
     event = static_cast<Event *>(incidence);
   }
+  if ( incidence && incidence->type() == "Todo" ) {
+    todo = static_cast<Todo *>(incidence);
+  }
 
-  if (!event) {
+  if (!event && !todo) {
     KMessageBox::sorry(this,i18n("No event selected."));
     return;
   }
 
-  if( event->attendeeCount() == 0 && method != Scheduler::Publish ) {
+  if( incidence->attendeeCount() == 0 && method != Scheduler::Publish ) {
     KMessageBox::sorry(this,i18n("The event has no attendees."));
     return;
   }
   
-  Event *ev = new Event(*event);
+  Event *ev = 0;
+  if (event) ev = new Event(*event);
+  Todo *to = 0;
+  if (todo) to = new Todo(*todo);
 
   if (method == Scheduler::Reply ) {
-    Attendee *me = event->attendeeByMails(KOPrefs::instance()->mAdditionalMails,KOPrefs::instance()->email());
-    //Attendee *me = event->attendeeByMail(KOPrefs::instance()->email());
+    Attendee *me = incidence->attendeeByMails(KOPrefs::instance()->mAdditionalMails,KOPrefs::instance()->email());
     if (!me) {
       KMessageBox::sorry(this,i18n("Could not find your attendee entry. Please check the emails."));
       return;
@@ -1208,15 +1231,27 @@ void CalendarView::schedule(Scheduler::Method method, Incidence *incidence)
       if (!statdlg->exec()==QDialog::Accepted) return;
       me->setStatus( statdlg->status() );
       delete(statdlg);
-      //me->setRSVP(false);
     }
     Attendee *menew = new Attendee(*me);
-    ev->clearAttendees();
-    ev->addAttendee(menew,false);
+    if (ev) {
+      ev->clearAttendees();
+      ev->addAttendee(menew,false);
+    } else {
+      if (to) {
+	todo->clearAttendees();
+	todo->addAttendee(menew,false);
+      }
+    }
   }
 
   OutgoingDialog *dlg = mDialogManager->outgoingDialog();
-  if ( !dlg->addMessage(ev,method) ) delete(ev);
+  if (ev) {
+    if ( !dlg->addMessage(ev,method) ) delete(ev);
+  } else {
+    if (to) {
+      if ( !dlg->addMessage(to,method) ) delete(to);
+    }
+  }
 }
 
 void CalendarView::openAddressbook()
@@ -1403,29 +1438,47 @@ void CalendarView::processIncidenceSelection( Incidence *incidence )
 
   if ( incidence && incidence->type() == "Event" ) {
     Event *event = static_cast<Event *>( incidence );
-    
     if ( event->organizer() == KOPrefs::instance()->email() ) {
       emit organizerEventsSelected( true );
     } else {
       emit organizerEventsSelected(false);
     }
-    
     if (event->attendeeByMails( KOPrefs::instance()->mAdditionalMails,
                                 KOPrefs::instance()->email() ) ) {
       emit groupEventsSelected( true );
     } else {
       emit groupEventsSelected(false);
     }
+    return;
   } else {
-    emit organizerEventsSelected(false);
-    emit groupEventsSelected(false);
+    if  ( incidence && incidence->type() == "Todo" ) {
+      emit todoSelected( true );
+      Todo *event = static_cast<Todo *>( incidence );
+      if ( event->organizer() == KOPrefs::instance()->email() ) {
+        emit organizerEventsSelected( true );
+     } else {
+        emit organizerEventsSelected(false);
+      }
+      if (event->attendeeByMails( KOPrefs::instance()->mAdditionalMails,
+                                  KOPrefs::instance()->email() ) ) {
+        emit groupEventsSelected( true );
+      } else {
+        emit groupEventsSelected(false);
+      }
+      return;
+    } else {
+     emit todoSelected( false );
+     emit organizerEventsSelected(false);
+     emit groupEventsSelected(false);
+    }
+    return;
   }
 
-  if  ( incidence && incidence->type() == "Todo" ) {
+/*  if  ( incidence && incidence->type() == "Todo" ) {
     emit todoSelected( true );
   } else {
     emit todoSelected( false );
-  }
+  }*/
 }
 
 

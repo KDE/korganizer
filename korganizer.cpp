@@ -1257,18 +1257,15 @@ void KOrganizer::processIncidenceSelection( Incidence *incidence )
     mShowIncidenceAction->setText( i18n("&Show Event...") );
     mEditIncidenceAction->setText( i18n("&Edit Event...") );
     mDeleteIncidenceAction->setText( i18n("&Delete Event...") );
-    mPublishEvent->setEnabled(true);
   } else if ( incidence->type() == "Todo" ) {
     mShowIncidenceAction->setText( i18n("&Show To-Do...") );
     mEditIncidenceAction->setText( i18n("&Edit To-Do...") );
     mDeleteIncidenceAction->setText( i18n("&Delete To-Do...") );
-    mPublishEvent->setEnabled(false);
   } else {
     mShowIncidenceAction->setText( i18n("&Show...") );
     mShowIncidenceAction->setText( i18n("&Edit...") );
     mShowIncidenceAction->setText( i18n("&Delete...") );
-    mPublishEvent->setEnabled(false);
-  }
+ }
 }
 
 void KOrganizer::enableIncidenceActions( bool enabled )
@@ -1280,6 +1277,7 @@ void KOrganizer::enableIncidenceActions( bool enabled )
   mCutAction->setEnabled( enabled );
   mCopyAction->setEnabled( enabled );
   mDeleteAction->setEnabled( enabled );
+  mPublishEvent->setEnabled( enabled );
 }
 
 void KOrganizer::downloadNewStuff()

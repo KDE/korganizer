@@ -139,9 +139,40 @@ void KOWhatsNextView::updateView()
     mText += "</table>\n";
   }
 
+  QPtrList<Todo> todos = calendar()->todos();
+  if (todos.count() > 0) {
+    kil.loadIcon("todo",KIcon::NoGroup,22,KIcon::DefaultState,ipath);
+    mText += "<h2><img src=\"";
+    mText += *ipath;
+    mText += "\">";
+    mText += i18n("To-Do:") + "</h2>\n";
+    mText += "<ul>\n";
+    Todo *todo = todos.first();
+    while(todo) {
+      if ( todo->hasDueDate() && todo->dtDue().date() == QDate::currentDate() )
+		  appendTodo(todo);
+      todo = todos.next();
+    }
+    bool gotone = false;
+    int priority = 1;
+    while (!gotone && priority<6) {
+      todo = todos.first();
+      while(todo) {
+	if (!todo->isCompleted() && (todo->priority() == priority) ) {
+	  appendTodo(todo);
+	  gotone = true;
+	}
+	todo = todos.next();
+      }
+      priority++;
+      kdDebug() << "adding the todos..." << endl;
+    }
+    mText += "</ul>\n";
+  }
+
+  int replys = 0;
   events = calendar()->events(QDate::currentDate(), QDate(2975,12,6));
   if (events.count() > 0) {
-    int replys = 0;
     Event *ev = events.first();
     while(ev) {
       Attendee *me = ev->attendeeByMails(KOPrefs::instance()->mAdditionalMails,KOPrefs::instance()->email());
@@ -153,7 +184,7 @@ void KOWhatsNextView::updateView()
             mText += "<h2><img src=\"";
             mText += *ipath;
             mText += "\">";    
-            mText += i18n("Events that need a reply:") + "</h2>\n";
+            mText += i18n("Events and To-Dos that need a reply:") + "</h2>\n";
             mText += "<table>\n";
           }
           replys++;
@@ -162,26 +193,33 @@ void KOWhatsNextView::updateView()
       }
       ev = events.next();
     }
-    if (replys > 0 ) mText += "</table>\n";
   }
-
-  QPtrList<Todo> todos = calendar()->todos();
+  todos = calendar()->todos();
   if (todos.count() > 0) {
-    kil.loadIcon("todo",KIcon::NoGroup,22,KIcon::DefaultState,ipath);
-    mText += "<h2><img src=\"";
-    mText += *ipath;
-    mText += "\">";
-    mText += i18n("To-Do:") + "</h2>\n";
-    mText += "<ul>\n";
-    Todo *todo = todos.first();
-    while(todo) {
-      if (!todo->isCompleted() && (todo->priority() == 1 ||
-          (todo->hasDueDate() && todo->dtDue().date() == QDate::currentDate())))
-        appendTodo(todo);
-      todo = todos.next();
+    Todo *to = todos.first();
+    while(to) {
+      Attendee *me = to->attendeeByMails(KOPrefs::instance()->mAdditionalMails,KOPrefs::instance()->email());
+      if (me!=0) {
+        if (me->status()==Attendee::NeedsAction && me->RSVP()) {
+          if (replys == 0) {
+            mText += "<p></p>";
+            kil.loadIcon("reply",KIcon::NoGroup,22,KIcon::DefaultState,ipath);
+            mText += "<h2><img src=\"";
+            mText += *ipath;
+            mText += "\">";    
+            mText += i18n("Events and To-Dos that need a reply:") + "</h2>\n";
+            mText += "<table>\n";
+          }
+          replys++;
+          appendEvent(to);
+        }
+      }
+      kdDebug () << "check for todo-replys..." << endl;
+      to = todos.next();
     }
-    mText += "</ul>\n";
   }
+  if (replys > 0 ) mText += "</table>\n";
+
 
   mText += "</td></tr>\n</table>\n";
 
@@ -212,21 +250,27 @@ void KOWhatsNextView::changeEventDisplay(Event *, int action)
   }
 }
 
-void KOWhatsNextView::appendEvent(Event *ev, bool reply)
+void KOWhatsNextView::appendEvent(Incidence *ev, bool reply)
 {
   kdDebug() << "KOWhatsNextView::appendEvent(): " << ev->uid() << endl;
 
   mText += "<tr><td><b>";
   if (!ev->doesFloat()) {
-    if (reply) mText += "on " + ev->dtStartDateStr() + ": ";
-    mText += ev->dtStartTimeStr() + " - " + ev->dtEndTimeStr();
+    if (ev->type()=="Event") {
+      Event *event = static_cast<Event *>(ev);
+      if (reply) mText += "on " + event->dtStartDateStr() + ": ";
+      mText += event->dtStartTimeStr() + " - " + event->dtEndTimeStr();
+    }
   }
-  mText += "</b></td><td><a href=\"event:" + ev->uid() + "\">";
+  mText += "</b></td><td><a ";
+  if (ev->type()=="Event") mText += "href=\"event:";
+  if (ev->type()=="Todo") mText += "href=\"todo:";
+  mText += ev->uid() + "\">";
   mText += ev->summary();
   mText += "</a></td></tr>\n";
 }
 
-void KOWhatsNextView::appendTodo(Todo *ev)
+void KOWhatsNextView::appendTodo(Incidence *ev)
 {
   mText += "<li><a href=\"todo:" + ev->uid() + "\">";
   mText += ev->summary();

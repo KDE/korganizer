@@ -51,7 +51,7 @@ bool MailScheduler::publish (IncidenceBase *incidence,const QString &recipients)
   QString messageText = mFormat->createScheduleMessage(incidence,
                                                        Scheduler::Publish);
   KOMailClient mailer;
-//  kdDebug () << "MailScheduler::publish to " << recipients << endl;
+  //  kdDebug () << "MailScheduler::publish to " << recipients << endl;
   return mailer.mailTo(incidence,recipients,messageText);
 }
 

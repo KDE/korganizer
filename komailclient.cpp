@@ -34,6 +34,7 @@
 #include <dcopclient.h>
 
 #include <libkcal/event.h>
+#include <libkcal/todo.h>
 
 #include "version.h"
 #include "koprefs.h"
@@ -266,6 +267,7 @@ QString KOMailClient::createBody(IncidenceBase *incidence)
 
   QString body;
 
+  // mailbody for Event
   if (incidence->type()=="Event") {
     Event *selectedEvent = static_cast<Event *>(incidence);
     QString recurrence[]= {i18n("no recurrence", "None"),i18n("Daily"),i18n("Weekly"),i18n("Monthly Same Day"),
@@ -275,7 +277,6 @@ QString KOMailClient::createBody(IncidenceBase *incidence)
       body += i18n("Organizer: %1").arg(selectedEvent->organizer());
       body += CR;
     }
-
     body += i18n("Summary: %1").arg(selectedEvent->summary());
     if (!selectedEvent->location().isEmpty()) {
       body += CR;
@@ -316,11 +317,53 @@ QString KOMailClient::createBody(IncidenceBase *incidence)
       }
     }
   } 
+
+  // mailbody for Todo
+  if (incidence->type()=="Todo") {
+    Todo *selectedEvent = static_cast<Todo *>(incidence);
+    if (selectedEvent->organizer() != "") {
+      body += i18n("Organizer: %1").arg(selectedEvent->organizer());
+      body += CR;
+    }
+    body += i18n("Summary: %1").arg(selectedEvent->summary());
+    if (!selectedEvent->location().isEmpty()) {
+      body += CR;
+      body += i18n("Location: %1").arg(selectedEvent->location());
+    }
+    if (!selectedEvent->hasStartDate()) {
+      body += CR;
+      body += i18n("Start Date: %1").arg(selectedEvent->dtStartDateStr());
+      body += CR;
+      if (!selectedEvent->doesFloat()) {
+	body += i18n("Start Time: %1").arg(selectedEvent->dtStartTimeStr());
+	body += CR;
+      }
+    }
+    if (!selectedEvent->hasDueDate()) {
+      body += CR;
+      body += i18n("Due Date: %1").arg(selectedEvent->dtDueDateStr());
+      body += CR;
+      if (!selectedEvent->doesFloat()) {
+	body += i18n("Due Time: %1").arg(selectedEvent->dtDueTimeStr());
+	body += CR;
+      }
+    }
+    body += CR;
+    QString details = selectedEvent->description();
+    if (!details.isEmpty()) {
+      body += i18n("Details:");
+      body += CR;
+      body += details;
+    }
+  } 
+
+  // mailbody for FreeBusy
   if(incidence->type()=="FreeBusy") {
     body = i18n("This is a Free Busy Object");
   } 
 
-  if(incidence->type()=="ToDo" || incidence->type()=="Journal") {
+  // mailbody for Journal
+  if(incidence->type()=="Journal") {
     Incidence *inc = static_cast<Incidence *>(incidence);
     body = inc->summary();
     body += CR;

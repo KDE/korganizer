@@ -67,8 +67,8 @@ class KOWhatsNextView : public KOrg::BaseView
     void changeEventDisplay(Event *, int);
   
   protected:
-    void appendEvent(Event *, bool reply=false);
-    void appendTodo(Todo *);
+    void appendEvent(Incidence *, bool reply=false);
+    void appendTodo(Incidence *);
   
   private slots:
     void showIncidence(const QString &);

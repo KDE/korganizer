@@ -95,9 +95,24 @@ bool ScheduleItemVisitor::visit(Event *e)
   return true;
 }
 
-bool ScheduleItemVisitor::visit(Todo *)
+bool ScheduleItemVisitor::visit(Todo *e)
 {
-  return false;
+  mItem->setText(0,e->summary());
+  if (e->hasStartDate()) {
+    mItem->setText(1,e->dtStartDateStr());
+    if (!e->doesFloat()) {
+      mItem->setText(2,e->dtStartTimeStr());
+    }
+  }
+  if (e->hasDueDate()) {
+    mItem->setText(1,e->dtDueDateStr());
+    if (!e->doesFloat()) {
+      mItem->setText(2,e->dtDueTimeStr());
+    }
+  }
+  mItem->setText(5,e->organizer()+" ");
+
+  return true;
 }
 
 bool ScheduleItemVisitor::visit(Journal *)
@@ -155,10 +170,7 @@ void IncomingDialog::retrieve()
     IncidenceBase *inc = message->event();
     Scheduler::Method method = (Scheduler::Method)message->method();
     ScheduleMessage::Status status = message->status();
-    /*
-    kdDebug() << "IncomingDialog::retrieve(): summary: " << event->summary()
-              << "  method: " << Scheduler::methodName(method) << endl;
-    */
+    
     ScheduleItemIn *item = new ScheduleItemIn(mMessageListView,inc,method,status);
     if(inc->type()!="FreeBusy") {
       Incidence *incidence = static_cast<Incidence *>(inc);
