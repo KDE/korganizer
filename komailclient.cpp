@@ -55,11 +55,11 @@ bool KOMailClient::mailAttendees(IncidenceBase *incidence,const QString &attachm
   Attendee::List attendees = incidence->attendees();
   if (attendees.count() == 0) return false;
 
-  QString from = KOPrefs::instance()->email();
+  const QString from = incidence->organizer();
   QStringList toList;
   for(uint i=0; i<attendees.count();++i) {
-    QString email = (*attendees.at(i))->email();
-    if( email != from )
+    const QString email = (*attendees.at(i))->email();
+    if( !KOPrefs::instance()->thatIsMe( email ) )
       // Don't send a mail to ourselves
       toList << email;
   }
@@ -254,7 +254,7 @@ int KOMailClient::kMailOpenComposer( const QString& arg0, const QString& arg1,
     //    << arg7 << " , " << arg8 << " , " << arg9
     //    << arg10<< " , " << arg11<< " , " << arg12
     //    << arg13<< " , " << arg14<< " )" << endl;
-    
+
     int result = 0;
 
     QByteArray data, replyData;
