@@ -29,7 +29,7 @@
 
 #include <qfile.h>
 
-#include <kstddirs.h>
+#include <kstandarddirs.h>
 #include <kglobal.h>
 #include <kcmdlineargs.h>
 #include <kconfig.h>

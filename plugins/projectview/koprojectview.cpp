@@ -30,7 +30,7 @@
 #include <qstrlist.h>
 #include <qlistview.h>
 
-#include <kapp.h>
+#include <kapplication.h>
 #include <kdebug.h>
 #include <klocale.h>
 #include <kglobal.h>

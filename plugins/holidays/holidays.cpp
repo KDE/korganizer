@@ -21,9 +21,9 @@
 
 #include <qfile.h>
 
-#include <kapp.h>
+#include <kapplication.h>
 #include <kconfig.h>
-#include <kstddirs.h>
+#include <kstandarddirs.h>
 
 #include "configdialog.h"
 

@@ -38,7 +38,7 @@
 #include <kglobal.h>
 #include <kdebug.h>
 #include <kiconloader.h>
-#include <kstddirs.h>
+#include <kstandarddirs.h>
 #include <kstdaccel.h>
 #include <kfiledialog.h>
 #include <kaction.h>

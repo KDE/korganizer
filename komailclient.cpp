@@ -28,11 +28,11 @@
 #include <stdio.h>
 
 #include <klocale.h>
-#include <kstddirs.h>
+#include <kstandarddirs.h>
 #include <kdebug.h>
 #include <kmessagebox.h>
 #include <kurl.h>
-#include <kapp.h>
+#include <kapplication.h>
 #include <dcopclient.h>
 
 #include <libkcal/event.h>

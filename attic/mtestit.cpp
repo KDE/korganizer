@@ -14,7 +14,7 @@
 #endif
 
 #include "testit.h"
-#include <qmetaobj.h>
+#include <qmetaobject.h>
 
 
 const char *Foo::className() const

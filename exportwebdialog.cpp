@@ -47,7 +47,7 @@
 #include <ktempfile.h>
 #include <kurl.h>
 #include <kio/job.h>
-#include <kstddirs.h>
+#include <kstandarddirs.h>
 #include <kconfig.h>
 #include <kglobal.h>
 

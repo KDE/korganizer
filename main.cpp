@@ -26,7 +26,7 @@
 
 #include <qdir.h>
 
-#include <kstddirs.h>
+#include <kstandarddirs.h>
 #include <kglobal.h>
 #include <kdebug.h>
 #include <kaboutdata.h>
