@@ -129,17 +129,6 @@ void KOPrefsDialog::setupMainTab()
                  topFrame);
   topLayout->addMultiCellWidget(confirmCheck->checkBox(),7,7,0,1);
 
-  KPrefsWidRadios *defaultFormatGroup =
-      addWidRadios(i18n("Default Calendar Format"),
-                   KOPrefs::instance()->mDefaultFormat,topFrame);
-  defaultFormatGroup->addRadio(i18n("vCalendar"));
-  defaultFormatGroup->addRadio(i18n("iCalendar"));
-
-  topLayout->addMultiCellWidget(defaultFormatGroup->groupBox(),10,10,0,1);
-
-  // Default format unconditionally is iCalendar
-  defaultFormatGroup->groupBox()->hide();
-
   KPrefsWidRadios *mailClientGroup =
       addWidRadios(i18n("Mail Client"),KOPrefs::instance()->mMailClient,
                    topFrame);
