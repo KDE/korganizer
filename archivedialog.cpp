@@ -71,8 +71,8 @@ ArchiveDialog::ArchiveDialog(Calendar *cal,QWidget *parent, const char *name)
   topLayout->addMultiCellWidget(fileBox,1,1,0,1);
   (void)new QLabel(i18n("Archive file:"),fileBox);
   mArchiveFile = new KURLRequester (KOPrefs::instance()->mArchiveFile,fileBox);
-  mArchiveFile->fileDialog()->setMode(KFile::File);
-  mArchiveFile->fileDialog()->setFilter(i18n("*.vcs|vCalendar Files"));
+  mArchiveFile->setMode(KFile::File);
+  mArchiveFile->setFilter(i18n("*.vcs|vCalendar Files"));
   connect(mArchiveFile->lineEdit(),SIGNAL(textChanged ( const QString & )),this,SLOT(slotArchiveFileChanged(const QString &)));
   enableButton(KDialogBase::User1,!mArchiveFile->lineEdit()->text().isEmpty());
 }
