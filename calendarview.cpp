@@ -43,7 +43,6 @@
 #include "koprefs.h"
 #include "koeventviewerdialog.h"
 #include "publishdialog.h"
-#include "kofilterview.h"
 #include "koglobals.h"
 #include "koviewmanager.h"
 #include "koagendaview.h"
@@ -153,8 +152,6 @@ CalendarView::CalendarView( QWidget *parent, const char *name )
 //  mLeftSplitter->setResizeMode( mDateNavigator, QSplitter::Stretch );
   mLeftSplitter->setCollapsible( mDateNavigator, true );
   mTodoList = new KOTodoView( CalendarNull::self(), mLeftSplitter, "todolist" );
-  mFilterView = new KOFilterView( &mFilters, mLeftSplitter,
-                                  "CalendarView::FilterView" );
 
   QVBox *rightBox = new QVBox( mPanner );
   mNavigatorBar = new NavigatorBar( rightBox );
@@ -180,8 +177,6 @@ CalendarView::CalendarView( QWidget *parent, const char *name )
                                        "CalendarView::DateNavigator",
                                        QDate::currentDate() );
   mTodoList = new KOTodoView( CalendarNull::self(), leftFrame, "todolist" );
-  mFilterView = new KOFilterView( &mFilters, leftFrame,
-                                  "CalendarView::FilterView" );
 
   QWidget *rightBox = new QWidget( mainBox );
   QBoxLayout *rightLayout = new QVBoxLayout( rightBox );
@@ -258,11 +253,6 @@ CalendarView::CalendarView( QWidget *parent, const char *name )
 
   mViewManager->connectTodoView( mTodoList );
   mViewManager->connectView( mTodoList );
-
-  connect( mFilterView, SIGNAL( filterChanged() ), SLOT( updateFilter() ) );
-  connect( mFilterView, SIGNAL( editFilters() ), SLOT( editFilters() ) );
-  // Hide filter per default
-  mFilterView->hide();
 
   KDirWatch *messageWatch = new KDirWatch( this );
   messageWatch->addDir( locateLocal( "data", "korganizer/income/" ) );
@@ -526,13 +516,14 @@ void CalendarView::readFilterSettings(KConfig *config)
   mFilters.clear();
 
   config->setGroup("General");
+  // FIXME: Move the filter loading and saving to the CalFilter class in libkcal
   QStringList filterList = config->readListEntry("CalendarFilters");
+  QString currentFilter = config->readEntry("Current Filter");
 
   QStringList::ConstIterator it = filterList.begin();
   QStringList::ConstIterator end = filterList.end();
   while(it != end) {
 //    kdDebug(5850) << "  filter: " << (*it) << endl;
-
     CalFilter *filter;
     filter = new CalFilter(*it);
     config->setGroup("Filter_" + (*it));
@@ -543,20 +534,14 @@ void CalendarView::readFilterSettings(KConfig *config)
 
     ++it;
   }
-
-  if (mFilters.count() == 0) {
-    CalFilter *filter = new CalFilter(i18n("Default"));
-    mFilters.append(filter);
+  
+  config->setGroup("General");
+  int pos = filterList.findIndex( currentFilter );
+  mCurrentFilter = 0;
+  if ( pos>=0 ) {
+    mCurrentFilter = mFilters.at( pos );
   }
-  mFilterView->updateFilters();
-  config->setGroup("FilterView");
-
-  mFilterView->blockSignals(true);
-  mFilterView->setFiltersEnabled(config->readBoolEntry("FilterEnabled"));
-  mFilterView->setSelectedFilter(config->readEntry("Current Filter"));
-  mFilterView->blockSignals(false);
-  // We do it manually to avoid it being done twice by the above calls
-  updateFilter();
+  
 }
 
 void CalendarView::writeFilterSettings(KConfig *config)
@@ -566,7 +551,7 @@ void CalendarView::writeFilterSettings(KConfig *config)
   QStringList filterList;
 
   CalFilter *filter = mFilters.first();
-  while(filter) {
+  while( filter ) {
 //    kdDebug(5850) << " fn: " << filter->name() << endl;
     filterList << filter->name();
     config->setGroup( "Filter_" + filter->name() );
@@ -575,12 +560,9 @@ void CalendarView::writeFilterSettings(KConfig *config)
     config->writeEntry( "HideTodoDays", filter->completedTimeSpan() );
     filter = mFilters.next();
   }
-  config->setGroup("General");
-  config->writeEntry("CalendarFilters",filterList);
-
-  config->setGroup("FilterView");
-  config->writeEntry("FilterEnabled",mFilterView->filtersEnabled());
-  config->writeEntry("Current Filter",mFilterView->selectedFilter()->name());
+  config->setGroup( "General" );
+  config->writeEntry( "CalendarFilters", filterList);
+  config->writeEntry( "Current Filter", mCurrentFilter->name());
 }
 
 
@@ -678,13 +660,14 @@ void CalendarView::incidenceDeleted( Incidence *incidence )
 
 void CalendarView::checkForFilteredChange( Incidence *incidence )
 {
-  if ( !mCalendar->filter()->filterIncidence( incidence ) ) {
+  CalFilter *filter = calendar()->filter();
+  if ( filter && !filter->filterIncidence( incidence ) ) {
     // Incidence is filtered and thus not shown in the view, tell the
     // user so that he isn't surprised if his new event doesn't show up
-    KMessageBox::information( this, i18n("The incidence \"%1\" is filtered by your "
-                              "current filter rules, so it will be hidden and "
-                              "not appear in the view.").arg( incidence->summary() ),
-                              i18n("Filter applied"), "ChangedIncidenceFiltered" );
+    KMessageBox::information( this, i18n("The incidence \"%1\" is filtered by "
+                 "your current filter rules, so it will be hidden and not "
+                 "appear in the view.").arg( incidence->summary() ),
+                 i18n("Filter applied"), "ChangedIncidenceFiltered" );
   }
 }
 
@@ -1489,7 +1472,7 @@ void CalendarView::showDates(const DateList &selectedDates)
 
 void CalendarView::editFilters()
 {
-//  kdDebug(5850) << "CalendarView::editFilters()" << endl;
+  kdDebug(5850) << "CalendarView::editFilters()" << endl;
 
   CalFilter *filter = mFilters.first();
   while(filter) {
@@ -1500,29 +1483,48 @@ void CalendarView::editFilters()
   mDialogManager->showFilterEditDialog(&mFilters);
 }
 
-void CalendarView::showFilter(bool visible)
-{
-  if (visible) mFilterView->show();
-  else mFilterView->hide();
-}
-
+/** Filter configuration changed 
+*/
 void CalendarView::updateFilter()
 {
-  CalFilter *filter = mFilterView->selectedFilter();
-  if (filter) {
-    if (mFilterView->filtersEnabled()) filter->setEnabled(true);
-    else filter->setEnabled(false);
-    mCalendar->setFilter(filter);
+  QStringList filters;
+  CalFilter *filter;
+  
+  int pos = mFilters.find( mCurrentFilter );
+  if ( pos < 0 ) {
+    mCurrentFilter = 0;
+  }
+  
+  filters << i18n("No filter");
+  for ( filter = mFilters.first(); filter; filter = mFilters.next() ) {
+    filters << filter->name();
+  }
+
+  emit newFilterListSignal( filters );
+kdDebug()<<"Filter #="<<pos<<endl;
+kdDebug()<<"All filters: "<< filters.join(", ").latin1() << endl;  
+    
+  // account for the additional "No filter" at the beginning! if the
+  // filter is not in the list, pos == -1...
+  emit selectFilterSignal( pos+1 );
+  mCalendar->setFilter( mCurrentFilter );
+  updateView();
+}
+
+/** A different filter was selected
+*/
+void CalendarView::filterActivated( int filterNo )
+{
+  CalFilter *newFilter = 0;
+  if ( filterNo > 0 && filterNo <= int(mFilters.count()) ) {
+    newFilter = mFilters.at( filterNo-1 );
+  }
+  if ( newFilter != mCurrentFilter ) {
+    mCurrentFilter = newFilter;
+    mCalendar->setFilter( mCurrentFilter );
     updateView();
   }
 }
-
-void CalendarView::filterEdited()
-{
-  mFilterView->updateFilters();
-  updateFilter();
-}
-
 
 void CalendarView::takeOverEvent()
 {

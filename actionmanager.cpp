@@ -4,6 +4,7 @@
   Copyright (c) 2002 Mike Pilone <mpilone@slac.com>
   Copyright (c) 2002 Don Sanders <sanders@kde.org>
   Copyright (c) 2004 Cornelius Schumacher <schumacher@kde.org>
+  Copyright (C) 2004 Reinhold Kainhofer <reinhold@kainhofer.com>
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -64,11 +65,14 @@
 #include <knotifyclient.h>
 #include <kstdguiitem.h>
 #include <kdeversion.h>
+#include <kactionclasses.h>
 
 #include <qapplication.h>
 #include <qtimer.h>
+#include <qlabel.h>
 
 
+// FIXME: Several places in the file don't use KConfigXT yet!
 KOWindowList *ActionManager::mWindowList = 0;
 
 ActionManager::ActionManager( KXMLGUIClient *client, CalendarView *widget,
@@ -269,12 +273,6 @@ void ActionManager::initActions()
                     this,SLOT( configureDateTime() ),
                     mACollection, "conf_datetime" );
 
-  mFilterViewAction = new KToggleAction( i18n("Show F&ilter"),0,this,
-                                        SLOT( toggleFilterView() ),
-                                        mACollection,
-                                        "show_filter" );
-  mFilterViewAction->setCheckedState( i18n("Hi&de Filter") );
-
   KStdAction::tipOfDay( this, SLOT( showTip() ), mACollection,
                         "help_tipofday" );
 
@@ -392,8 +390,8 @@ void ActionManager::initActions()
   new KAction( i18n("&Week"), "7days", 0,
                     mCalendarView->viewManager(), SLOT( showWeekView() ),
                     mACollection, "view_week" );
-  mNextXDays = new KAction( "", "xdays", 0,mCalendarView->viewManager(),
-                    SLOT( showNextXView() ),mACollection, "view_nextx" );
+  mNextXDays = new KAction( "", "xdays", 0, mCalendarView->viewManager(),
+                    SLOT( showNextXView() ), mACollection, "view_nextx" );
   mNextXDays->setText( i18n( "&Next Day", "Ne&xt %n Days", KOPrefs::instance()->mNextXDays ) );
   new KAction( i18n("&Month"), "month", 0,
                     mCalendarView->viewManager(), SLOT( showMonthView() ),
@@ -553,20 +551,31 @@ void ActionManager::initActions()
                     mCalendarView->dialogManager(),
                     SLOT( showCategoryEditDialog() ),
                     mACollection,"edit_categories" );
-  new KAction( i18n("Edit &Filters..."), 0,
-                    mCalendarView,SLOT( editFilters() ),
-                    mACollection,"edit_filters" );
 
+  new KAction( i18n("Edit &Filters..."), "configure", 0,
+                    mCalendarView, SLOT( editFilters() ),
+                    mACollection, "edit_filters" );
+  
+  QLabel *filterLabel = new QLabel( i18n("Filter: "), mCalendarView );
+  new KWidgetAction( filterLabel, i18n("Filter: "), 0, 0, 0, 
+                     mACollection, "filter_label" );
+  
+  mFilterAction = new KSelectAction( i18n("F&ilter"), 0, 
+                  mACollection, "filter_select" );
+  mFilterAction->setEditable( false );
+  connect( mFilterAction, SIGNAL( activated(int) ),
+           this, SIGNAL( filterActivated( int ) ) );
+  connect( mCalendarView, SIGNAL( newFilterListSignal( const QStringList & ) ),
+           mFilterAction, SLOT( setItems( const QStringList & ) ) );
+  connect( mCalendarView, SIGNAL( selectFilterSignal( int ) ),
+           mFilterAction, SLOT( setCurrentItem( int ) ) );
+  connect( this, SIGNAL( filterActivated( int ) ),
+           mCalendarView, SLOT( filterActivated( int ) ) );
 #if 0
   new KAction( i18n("Show Intro Page"), 0,
                     mCalendarView,SLOT( showIntro() ),
                     mACollection,"show_intro" );
 #endif
-
-  KConfig *config = KOGlobals::self()->config();
-  config->setGroup( "Settings" );
-  mFilterViewAction->setChecked( config->readBoolEntry( "Filter Visible",false ) );
-  toggleFilterView();
 }
 
 void ActionManager::readSettings()
@@ -587,7 +596,6 @@ void ActionManager::writeSettings()
   mCalendarView->writeSettings();
 
   config->setGroup( "Settings" );
-  config->writeEntry( "Filter Visible", mFilterViewAction->isChecked() );
   if ( mResourceButtonsAction ) {
     config->writeEntry( "ResourceButtonsVisible",
                         mResourceButtonsAction->isChecked() );
@@ -1211,12 +1219,6 @@ KOrg::MainWindow *ActionManager::findInstance( const KURL &url )
 void ActionManager::dumpText( const QString &str )
 {
   kdDebug(5850) << "ActionManager::dumpText(): " << str << endl;
-}
-
-void ActionManager::toggleFilterView()
-{
-  bool visible = mFilterViewAction->isChecked();
-  mCalendarView->showFilter( visible );
 }
 
 void ActionManager::toggleResourceButtons()

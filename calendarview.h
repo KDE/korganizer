@@ -37,7 +37,6 @@ class QWidgetStack;
 class QSplitter;
 
 class CalPrinter;
-class KOFilterView;
 class KOViewManager;
 class KODialogManager;
 class KOTodoView;
@@ -212,6 +211,9 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
 
     void newIncidenceChanger( IncidenceChangerBase* );
     void exportHTML( HTMLExportSettings* );
+    
+    void newFilterListSignal( const QStringList & );
+    void selectFilterSignal( int );
   
   public slots:
     /** options dialog made a changed to the configuration. we catch this
@@ -435,9 +437,7 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
 
     void editFilters();
 
-    void showFilter( bool visible );
     void updateFilter();
-    void filterEdited();
 
     void showIntro();
 
@@ -482,7 +482,7 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     void schedule( Scheduler::Method, Incidence *incidence );
     void addIncidenceOn( Incidence *, const QDate & );
     void moveIncidenceTo( Incidence *, const QDate & );
-
+    void filterActivated( int filterNum );
   protected slots:
     /** Select a view or adapt the current view to display the specified dates. */
     void showDates( const KCal::DateList & );
@@ -534,7 +534,6 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
 
     DateNavigatorContainer *mDateNavigator;
 
-    KOFilterView *mFilterView;
 
     QPtrList<CalendarViewExtension> mExtensions;
 
@@ -548,6 +547,7 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
 
     // Calendar filters
     QPtrList<CalFilter> mFilters;
+    CalFilter *mCurrentFilter;
 
     // various housekeeping variables.
     bool            mModified; // flag indicating if calendar is modified

@@ -47,6 +47,7 @@ namespace KOrg
 class KAction;
 class KActionCollection;
 class KRecentFilesAction;
+class KSelectAction;
 class KToggleAction;
 class KConfig;
 class KProcess;
@@ -278,7 +279,6 @@ class ActionManager : public QObject, public KCalendarIface
     void downloadNewStuff();
     void uploadNewStuff();
 
-    void toggleFilterView();
     void toggleResourceButtons();
 
     /** called by the autoSaveTimer to automatically save the calendar */
@@ -337,7 +337,6 @@ class ActionManager : public QObject, public KCalendarIface
 
     // Actions
     KRecentFilesAction *mRecent;
-    KToggleAction *mFilterViewAction;
     KToggleAction *mResourceButtonsAction;
     KAction *mShowIncidenceAction;
     KAction *mEditIncidenceAction;
@@ -351,6 +350,8 @@ class ActionManager : public QObject, public KCalendarIface
 
     KAction *mUndoAction;
     KAction *mRedoAction;
+    
+    KSelectAction *mFilterAction;
 
     KXMLGUIClient *mGUIClient;
     KActionCollection *mACollection;

@@ -1,5 +1,5 @@
 <!DOCTYPE kpartgui>
-<kpartgui name="korganizer" version="32">
+<kpartgui name="korganizer" version="33">
 
   <MenuBar>
     <Menu name="file"><text>&amp;File</text>
@@ -89,6 +89,7 @@
       <Action name="show_filter" append="show_merge"/>
       <Action name="show_resourcebuttons" append="show_merge"/>
       <Action name="conf_datetime" append="save_merge"/>
+      <Action name="filter_select" append="save_merge"/>
       <Action name="edit_filters" append="save_merge"/>
       <Action name="edit_categories" append="save_merge"/>
     </Menu>
@@ -123,6 +124,12 @@
     <Action name="request"/>
     <Action name="reply"/>
     <Action name="addressbook"/>
+  </ToolBar>
+
+  <ToolBar name="filter_toolbar"><text>Filter toolbar</text>
+    <Action name="filter_label"/>
+    <Action name="filter_select"/>
+    <Action name="edit_filters"/>
   </ToolBar>
 
   <Menu name="rmb_selection_popup">

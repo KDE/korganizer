@@ -67,7 +67,7 @@ libkorganizer_la_LIBADD  = $(LIB_KPARTS) $(LIB_KFILE) \
 	$(KNEWSTUFF_LIB) \
 	$(top_builddir)/kresources/remote/libkcal_resourceremote.la \
         $(top_builddir)/libemailfunctions/libemailfunctions.la
-libkorganizer_la_COMPILE_FIRST = kofilterview_base.ui \
+libkorganizer_la_COMPILE_FIRST = \
 	outgoingdialog_base.ui \
 	incomingdialog_base.ui \
 	kogroupwareprefspage.ui \
@@ -93,7 +93,6 @@ libkorganizer_la_SOURCES = komessagebox.cpp outgoingdialog_base.ui \
 	incomingdialog_base.ui incomingdialog.cpp \
 	publishdialog_base.ui publishdialog.cpp \
 	koeventview.cpp \
-	kofilterview_base.ui kofilterview.cpp \
 	korganizeriface.skel kcalendariface.skel \
 	filtereditdialog.cpp filteredit_base.ui \
 	kowhatsnextview.cpp kocounterdialog.cpp \

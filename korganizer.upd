@@ -17,4 +17,12 @@ Key=AttendeesTodo,Export Attendees
 Key=CategoriesTodo,Export Categories
 RemoveKey=ExcludeConfidentialTodo
 RemoveKey=ExcludePrivateTodo
-
+#
+#
+Id=korganizer_3.4_FilterAction
+File=korganizerrc
+Group=FilterView,General
+Key=Current Filter
+#
+Group=FilterView
+RemoveKey=FilterEnabled

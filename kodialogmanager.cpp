@@ -256,7 +256,7 @@ void KODialogManager::showFilterEditDialog( QPtrList<CalFilter> *filters )
   if ( !mFilterEditDialog ) {
     mFilterEditDialog = new FilterEditDialog( filters, mMainView );
     connect( mFilterEditDialog, SIGNAL( filterChanged() ),
-             mMainView, SLOT( filterEdited() ) );
+             mMainView, SLOT( updateFilter() ) );
     connect( mFilterEditDialog, SIGNAL( editCategories() ),
              mCategoryEditDialog, SLOT( show() ) );
     connect( mCategoryEditDialog, SIGNAL( categoryConfigChanged() ),
