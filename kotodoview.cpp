@@ -269,7 +269,7 @@ void KOTodoListView::contentsMouseMoveEvent(QMouseEvent* e)
     if (item) {
 //      kdDebug(5850) << "Start Drag for item " << item->text(0) << endl;
       DndFactory factory( mCalendar );
-      ICalDrag *vd = factory.createDragTodo(
+      ICalDrag *vd = factory.createDrag(
                           ((KOTodoViewItem *)item)->todo(),viewport());
       if (vd->drag()) {
         kdDebug(5850) << "KOTodoListView::contentsMouseMoveEvent(): Delete drag source" << endl;

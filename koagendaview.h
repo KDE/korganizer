@@ -148,7 +148,7 @@ class KOAgendaView : public KOEventView {
     void newEvent(int gxStart, int gyStart, int gxEnd, int gyEnd);
     void newEventAllDay(int gx, int gy);
 
-    void startDrag(Event *);
+    void startDrag( Incidence * );
 
     void readSettings();
     void readSettings(KConfig *);

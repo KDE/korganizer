@@ -403,10 +403,10 @@ KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name) :
           SLOT(updateEventIndicatorBottom(int)));
 
   // drag signals
-  connect(mAgenda,SIGNAL(startDragSignal(Event *)),
-          SLOT(startDrag(Event *)));
-  connect(mAllDayAgenda,SIGNAL(startDragSignal(Event *)),
-          SLOT(startDrag(Event *)));
+  connect( mAgenda, SIGNAL( startDragSignal( Incidence * ) ),
+           SLOT( startDrag( Incidence * ) ) );
+  connect( mAllDayAgenda, SIGNAL( startDragSignal( Incidence * ) ),
+           SLOT( startDrag( Incidence * ) ) );
 
   // synchronize selections
   connect( mAgenda, SIGNAL( incidenceSelected( Incidence * ) ),
@@ -861,12 +861,12 @@ void KOAgendaView::updateEventIndicatorBottom(int newY)
   mEventIndicatorBottom->update();
 }
 
-void KOAgendaView::startDrag(Event *event)
+void KOAgendaView::startDrag( Incidence *incidence )
 {
 #ifndef KORG_NODND
   DndFactory factory( calendar() );
-  ICalDrag *vd = factory.createDrag(event,this);
-  if (vd->drag()) {
+  ICalDrag *vd = factory.createDrag( incidence, this );
+  if ( vd->drag() ) {
     kdDebug(5850) << "KOAgendaView::startDrag(): Delete drag source" << endl;
   }
 #endif
