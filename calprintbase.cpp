@@ -101,9 +101,7 @@ void setCategoryColors( QPainter &p, Incidence *incidence)
     bgColor = *(KOPrefs::instance()->categoryColor(cat));
   QColor textColor = getTextColor(bgColor);
   p.setPen( textColor );
-  p.setBackgroundColor( bgColor );
-  p.setBrush( Qt::SolidPattern );
-//  p.setBrush( Qt::NoBrush );
+  p.setBrush( bgColor );
 }
 
 
