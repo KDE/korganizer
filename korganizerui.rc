@@ -4,7 +4,10 @@
   <MenuBar>
     <Menu name="file"><text>&amp;File</text>
       <Action name="print_setup" append="print_merge"/>
-      <Action name="import_ical"/>
+      <Menu name="import"><text>Import</text>
+        <Merge/>
+        <Action name="import_ical"/>
+      </Menu>
       <Action name="merge_calendar"/>
       <Action name="file_archive"/>
       <Menu name="export"><text>Export</text>

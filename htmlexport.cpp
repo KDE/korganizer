@@ -36,7 +36,10 @@
 #include <libkcal/todo.h>
 
 #include "kocore.h"
-
+#include "koprefs.h"
+#ifndef KORG_NOKABC
+ #include <kabc/stdaddressbook.h>
+#endif
 #include "htmlexport.h"
 
 bool HtmlExport::save(const QString &fileName)
@@ -105,8 +108,9 @@ bool HtmlExport::save(QTextStream *ts)
   }
 
   // Write KOrganizer trailer
-  *ts << "<P>" << i18n("This page was created by <A HREF=\"http://"
-        "korganizer.kde.org\">KOrganizer</A>") << "</P>\n";
+  *ts << "<P>" << i18n("This page was created by ");
+	*ts << "<A HREF=\"mailto:" << KOPrefs::instance()->email() << "\">" <<KOPrefs::instance()->fullName() << "</A>";
+	*ts << i18n(" with <A HREF=\"http://korganizer.kde.org\">KOrganizer</A>") << "</P>\n";
 
   // Write HTML trailer
   *ts << "</BODY></HTML>\n";
@@ -140,7 +144,7 @@ void HtmlExport::createHtmlMonthView(QTextStream *ts)
     *ts << "<th>" << KGlobal::locale()->weekDayName(start.addDays(i).dayOfWeek()) << "</th>";
   }
   *ts << "</tr>\n";
-  
+
   // Write days
   while (start <= end) {
     *ts << "<tr>\n";
@@ -219,8 +223,8 @@ void HtmlExport::createHtmlEventList (QTextStream *ts)
       }
     }
   }
-  
-  *ts << "</TABLE>\n";  
+
+  *ts << "</TABLE>\n";
 }
 
 void HtmlExport::createHtmlEvent (QTextStream *ts, Event *event,
@@ -250,11 +254,11 @@ void HtmlExport::createHtmlEvent (QTextStream *ts, Event *event,
     *ts << "      <P>" << breakString(event->description()) << "</P>\n";
   }
   *ts << "    </TD>\n";
-  
+
   if (categoriesEventEnabled()) {
     *ts << "  <TD>\n";
-    formatHtmlCategories(ts,event);  
-    *ts << "  </TD>\n";  
+    formatHtmlCategories(ts,event);
+    *ts << "  </TD>\n";
   }
 
   if (attendeesEventEnabled()) {
@@ -262,7 +266,7 @@ void HtmlExport::createHtmlEvent (QTextStream *ts, Event *event,
     formatHtmlAttendees(ts,event);
     *ts << "  </TD>\n";
   }
-  
+
   *ts << "  </TR>\n";
 }
 
@@ -453,10 +457,29 @@ void HtmlExport::formatHtmlAttendees (QTextStream *ts,Incidence *event)
 {
   QPtrList<Attendee> attendees = event->attendees();
   if (attendees.count()) {
+	  *ts << "<em>";
+#ifndef KORG_NOKABC
+    KABC::AddressBook *add_book = KABC::StdAddressBook::self();
+    KABC::Addressee::List addressList;
+    addressList = add_book->findByEmail(event->organizer());
+    KABC::Addressee o = addressList.first();
+    if (!o.isEmpty() && addressList.size()<2) {
+      *ts << "<a href=\"mailto:" << event->organizer() << "\">";
+      *ts << o.formattedName() << "</a>\n";
+    }
+		else *ts << event->organizer();
+#else
+	  *ts << event->organizer();
+#endif
+    *ts << "</em><BR>";
     Attendee *a;
     for(a=attendees.first();a;a=attendees.next()) {
-      *ts << "    " << a->name();
-      if (!a->email().isEmpty()) *ts << " &lt;" << a->email() << "&gt;";
+      if (!a->email().isEmpty()) {
+				*ts << "<a href=\"mailto:" << a->email() << "\">" << a->name() << "</a>";
+		  }
+      else {
+			  *ts << "    " << a->name();
+		  }
       *ts << "<BR>" << "\n";
     }
   } else {
