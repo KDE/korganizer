@@ -231,10 +231,31 @@ void KOEventViewer::formatAttendees(Incidence *event)
     Attendee *a;
     mText.append("<ul>");
     for(a=attendees.first();a;a=attendees.next()) {
-
+#ifndef KORG_NOKABC
+      if (a->name().isEmpty()) {
+        addressList = add_book->findByEmail(a->email());
+        KABC::Addressee o = addressList.first();
+        if (!o.isEmpty() && addressList.size()<2) {
+          mText += "<a href=\"uid:" + o.uid() + "\">";
+          mText += o.formattedName();
+          mText += "</a>\n";
+        } else {
+	  mText += "<li>";
+          mText.append(a->email());
+	  mText += "\n";
+        }
+      } else {
+        mText += "<li><a href=\"uid:" + a->uid() + "\">";
+        if (!a->name().isEmpty()) mText += a->name();
+        else mText += a->email();
+        mText += "</a>\n";
+      }
+#else
       mText += "<li><a href=\"uid:" + a->uid() + "\">";
-      mText += a->name();
+      if (!a->name().isEmpty()) mText += a->name();
+      else mText += a->email();
       mText += "</a>\n";
+#endif
       kdDebug() << "formatAttendees: uid = " << a->uid() << endl;
 
       if (!a->email().isEmpty()) {
