@@ -206,7 +206,7 @@ class KOMonthView: public KOEventView
     virtual void showDates(const QDate &start, const QDate &end);
     virtual void showEvents( const Event::List &eventList );
 
-    void changeEventDisplay(Event *, int);
+    void changeIncidenceDisplay(Incidence *, int);
 
     void clearSelection();
 

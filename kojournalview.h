@@ -53,7 +53,7 @@ class KOJournalView : public KOrg::BaseView
     void showDates( const QDate &start, const QDate &end );
     void showEvents( const Event::List & );
 
-    void changeEventDisplay( Event *, int );
+    void changeIncidenceDisplay( Incidence *, int );
 
   private:
     JournalEntry *mEntry;

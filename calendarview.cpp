@@ -619,13 +619,13 @@ void CalendarView::incidenceDeleted( Incidence *incidence )
 
 void CalendarView::eventChanged( Event *oldEvent, Event *newEvent )
 {
-  changeEventDisplay( newEvent, KOGlobals::EVENTEDITED );
+  changeIncidenceDisplay( newEvent, KOGlobals::INCIDENCEEDITED );
   incidenceChanged( oldEvent, newEvent );
 }
 
 void CalendarView::eventAdded( Event *event )
 {
-  changeEventDisplay( event, KOGlobals::EVENTADDED );
+  changeIncidenceDisplay( event, KOGlobals::INCIDENCEADDED );
   incidenceAdded( event );
 }
 
@@ -638,47 +638,48 @@ void CalendarView::eventToBeDeleted( Event * /*event*/ )
 void CalendarView::eventDeleted( Event *event )
 {
   incidenceDeleted( event );
-  changeEventDisplay( event, KOGlobals::EVENTDELETED );
+  changeIncidenceDisplay( event, KOGlobals::INCIDENCEDELETED );
 }
 
 
 void CalendarView::todoChanged( Todo *oldTodo, Todo *newTodo )
 {
-  // use a QTimer here, because when marking todos finished using
-  // the checkbox, this slot gets called, but we cannot update the views
-  // because we're still insice KOTodoViewItem::stateChange
-  QTimer::singleShot(0, this, SLOT(updateTodoViews()));
+  QTimer::singleShot(0, mTodoList, SLOT(updateView()));
+  changeIncidenceDisplay(newTodo, KOGlobals::INCIDENCEEDITED );
   incidenceChanged( oldTodo, newTodo );
 }
 
 void CalendarView::todoAdded( Todo *todo )
 {
-  QTimer::singleShot(0, this, SLOT(updateTodoViews()));
+  QTimer::singleShot(0, mTodoList, SLOT(updateView()));
+  changeIncidenceDisplay( todo, KOGlobals::INCIDENCEADDED );
   incidenceAdded( todo );
 }
 
 void CalendarView::todoDeleted( Todo *todo )
 {
-  QTimer::singleShot(0, this, SLOT(updateTodoViews()));
+  QTimer::singleShot(0, mTodoList, SLOT(updateView()));
+  changeIncidenceDisplay( todo, KOGlobals::INCIDENCEDELETED );
   incidenceDeleted( todo );
 }
 
 
-// most of the changeEventDisplays() right now just call the view's
+// most of the changeIncidenceDisplays() right now just call the view's
 // total update mode, but they SHOULD be recoded to be more refresh-efficient.
-void CalendarView::changeEventDisplay( Event *which, int action )
+void CalendarView::changeIncidenceDisplay( Incidence *which, int action )
 {
-//  kdDebug(5850) << "CalendarView::changeEventDisplay" << endl;
+//  kdDebug(5850) << "CalendarView::changeIncidenceDisplay" << endl;
 
   mDateNavigator->updateView();
   mDialogManager->updateSearchDialog();
 
   if (which) {
     // If there is an event view visible update the display
-    mViewManager->currentView()->changeEventDisplay( which, action );
+    mViewManager->currentView()->changeIncidenceDisplay( which, action );
 // TODO: check, if update needed
 //    if (which->getTodoStatus()) {
-      mTodoList->updateView();
+      // mTodoList->updateView(); // commented out to prevent crashes,
+      // see comment todoChanged().
 //    }
   } else {
     mViewManager->currentView()->updateView();
@@ -691,7 +692,7 @@ void CalendarView::updateTodoViews()
   kdDebug(5850) << "CalendarView::updateTodoViews()" << endl;
 
   mTodoList->updateView();
-  mViewManager->currentView()->updateView();
+  // mViewManager->currentView()->updateView();
 }
 
 

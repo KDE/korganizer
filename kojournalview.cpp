@@ -93,7 +93,7 @@ void KOJournalView::showEvents( const Event::List & )
 //  emit incidenceSelected( 0 );
 }
 
-void KOJournalView::changeEventDisplay(Event *, int /*action*/)
+void KOJournalView::changeIncidenceDisplay(Incidence *, int /*action*/)
 {
   updateView();
 }

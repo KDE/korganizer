@@ -271,7 +271,7 @@ DateList KOProjectView::selectedDates()
   return selected;
 }
 
-void KOProjectView::changeEventDisplay(Event *, int)
+void KOProjectView::changeIncidenceDisplay(Incidence *, int)
 {
   updateView();
 }

@@ -599,9 +599,12 @@ Todo::List KOTodoView::selectedTodos()
   return selected;
 }
 
-void KOTodoView::changeEventDisplay(Event *, int)
+void KOTodoView::changeIncidenceDisplay(Incidence *, int)
 {
-  updateView();
+  // use a QTimer here, because when marking todos finished using
+  // the checkbox, this slot gets called, but we cannot update the views
+  // because we're still insice KOTodoViewItem::stateChange
+  QTimer::singleShot(0,this,SLOT(updateView()));
 }
 
 void KOTodoView::showDates(const QDate &, const QDate &)
@@ -663,14 +666,8 @@ void KOTodoView::popupMenu( QListViewItem *item, const QPoint &, int column )
       case 2:
         mPercentageCompletedPopupMenu->popup( QCursor::pos () );
         break;
-      case 3: 
-        if ( mActiveItem->todo()->hasDueDate() )
+      case 3:
           mDatePickerPopupMenu->popup( QCursor::pos () );
-        else {
-          mItemPopupMenu->setItemEnabled( POPUP_UNSUBTODO,
-                                          mActiveItem->todo()->relatedTo() );
-          mItemPopupMenu->popup( QCursor::pos() );
-        }
         break;
       case 5:
         getCategoryPopupMenu(
@@ -762,7 +759,9 @@ void KOTodoView::setNewDate(QDate date)
       emit todoAdded( newTodo );
     }
     else {
-      Todo *oldTodo = todo->clone();      
+      Todo *oldTodo = todo->clone();
+      if ( !todo->hasDueDate() )
+        todo->setHasDueDate( true );
       todo->setDtDue( date );
       mActiveItem->construct();
       emit todoModifiedSignal( todo, oldTodo, KOGlobals::DATE_MODIFIED );      

@@ -49,7 +49,7 @@ class SearchDialog : public KDialogBase
     void updateView();
 
   public slots:
-    void changeEventDisplay(Event *, int) { updateView(); }
+    void changeIncidenceDisplay(Incidence *, int) { updateView(); }
 
   protected slots:
     void doSearch();

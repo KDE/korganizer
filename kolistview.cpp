@@ -319,7 +319,7 @@ void KOListView::addIncidences( const Incidence::List &incidenceList )
 void KOListView::addIncidence(Incidence *incidence)
 {
   if ( mUidDict.find( incidence->uid() ) ) return;
-
+  
   mUidDict.insert( incidence->uid(), incidence );
 
   KOListViewItem *item = new KOListViewItem( incidence, mListView );
@@ -348,39 +348,39 @@ void KOListView::showIncidences( const Incidence::List &eventList )
   emit incidenceSelected( 0 );
 }
 
-void KOListView::changeEventDisplay(Event *event, int action)
+void KOListView::changeIncidenceDisplay(Incidence *incidence, int action)
 {
   KOListViewItem *item;
 
   switch(action) {
-    case KOGlobals::EVENTADDED:
-      addIncidence( event );
+    case KOGlobals::INCIDENCEADDED:
+      addIncidence( incidence );
       break;
-    case KOGlobals::EVENTEDITED:
-      item = getItemForEvent(event);
+    case KOGlobals::INCIDENCEEDITED:
+      item = getItemForEvent(incidence);
       if (item) {
         delete item;
-        mUidDict.remove( event->uid() );
-        addIncidence( event );
+        mUidDict.remove( incidence->uid() );
+        addIncidence( incidence );
       }
       break;
-    case KOGlobals::EVENTDELETED:
-      item = getItemForEvent(event);
+    case KOGlobals::INCIDENCEDELETED:
+      item = getItemForEvent(incidence);
       if (item) {
         delete item;
       }
       break;
     default:
-      kdDebug(5850) << "KOListView::changeEventDisplay(): Illegal action " << action << endl;
+      kdDebug(5850) << "KOListView::changeIncidenceDisplay(): Illegal action " << action << endl;
   }
 }
 
-KOListViewItem *KOListView::getItemForEvent(Event *event)
+KOListViewItem *KOListView::getItemForEvent(Incidence *incidence)
 {
   KOListViewItem *item = (KOListViewItem *)mListView->firstChild();
   while (item) {
 //    kdDebug(5850) << "Item " << item->text(0) << " found" << endl;
-    if (item->data() == event) return item;
+    if (item->data() == incidence) return item;
     item = (KOListViewItem *)item->nextSibling();
   }
   return 0;

@@ -752,7 +752,7 @@ void KOMonthView::showEvents( const Event::List & )
   kdDebug(5850) << "KOMonthView::selectEvents is not implemented yet." << endl;
 }
 
-void KOMonthView::changeEventDisplay(Event *, int)
+void KOMonthView::changeIncidenceDisplay(Incidence *, int)
 {
   // this should be re-written to be much more efficient, but this
   // quick-and-dirty-hack gets the job done for right now.

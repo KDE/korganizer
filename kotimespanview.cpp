@@ -124,6 +124,6 @@ void KOTimeSpanView::showEvents( const Event::List & )
 {
 }
 
-void KOTimeSpanView::changeEventDisplay(Event *, int)
+void KOTimeSpanView::changeIncidenceDisplay(Incidence *, int)
 {
 }

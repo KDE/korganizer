@@ -118,7 +118,7 @@ class KOListView : public KOEventView
     void showDates();
     void hideDates();
 
-    void changeEventDisplay(Event *, int);
+    void changeIncidenceDisplay(Incidence *, int);
 
     void defaultItemAction(QListViewItem *item);
     void popupMenu(QListViewItem *item,const QPoint &,int);
@@ -131,7 +131,7 @@ class KOListView : public KOEventView
     void addTodos( const Todo::List & );
     void addIncidences( const Incidence::List & );
     void addIncidence(Incidence *);
-    KOListViewItem *getItemForEvent(Event *event);
+    KOListViewItem *getItemForEvent(Incidence *incidence);
 
   private:
     KListView *mListView;

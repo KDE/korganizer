@@ -175,9 +175,9 @@ class BaseView : public QWidget
     virtual void flushView() {}
 
     /**
-      Updates the current display to reflect the changes to one particular event.
+      Updates the current display to reflect the changes to one particular incidence.
     */
-    virtual void changeEventDisplay( Event *, int ) = 0;
+    virtual void changeIncidenceDisplay( Incidence *, int ) = 0;
 
     /**
       Re-reads the KOrganizer configuration and picks up relevant

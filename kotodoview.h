@@ -154,7 +154,7 @@ class KOTodoView : public KOrg::BaseView
     void updateView();
     void updateConfig();
 
-    void changeEventDisplay( Event *, int );
+    void changeIncidenceDisplay( Incidence *, int );
 
     void showDates( const QDate &start, const QDate &end );
     void showEvents( const Event::List & );

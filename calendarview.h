@@ -282,7 +282,7 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
 
     /** passes on the message that an event has changed to the currently
      * activated view so that it can make appropriate display changes. */
-    void changeEventDisplay( Event *, int );
+    void changeIncidenceDisplay( Incidence *, int );
 
     void incidenceAdded( Incidence * );
     void incidenceChanged( Incidence *oldEvent, Incidence *newEvent );

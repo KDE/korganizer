@@ -36,7 +36,7 @@ class KOGlobals
   public:
     static KOGlobals *self();
 
-    enum { EVENTADDED, EVENTEDITED, EVENTDELETED };  
+    enum { INCIDENCEADDED, INCIDENCEEDITED, INCIDENCEDELETED };  
     enum { PRIORITY_MODIFIED, COMPLETION_MODIFIED, CATEGORY_MODIFIED, DATE_MODIFIED, UNKNOWN_MODIFIED };
 
     static void fitDialogToScreen( QWidget *widget, bool force=false );

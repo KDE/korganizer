@@ -235,17 +235,17 @@ void KOWhatsNextView::showEvents( const Event::List & )
 {
 }
 
-void KOWhatsNextView::changeEventDisplay(Event *, int action)
+void KOWhatsNextView::changeIncidenceDisplay(Incidence *, int action)
 {
   switch(action) {
-    case KOGlobals::EVENTADDED:
+    case KOGlobals::INCIDENCEADDED:
       break;
-    case KOGlobals::EVENTEDITED:
+    case KOGlobals::INCIDENCEEDITED:
       break;
-    case KOGlobals::EVENTDELETED:
+    case KOGlobals::INCIDENCEDELETED:
       break;
     default:
-      kdDebug(5850) << "KOWhatsNextView::changeEventDisplay(): Illegal action " << action << endl;
+      kdDebug(5850) << "KOWhatsNextView::changeIncidenceDisplay(): Illegal action " << action << endl;
   }
 }
 

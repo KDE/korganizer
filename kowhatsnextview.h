@@ -67,7 +67,7 @@ class KOWhatsNextView : public KOrg::BaseView
     virtual void showDates(const QDate &start, const QDate &end);
     virtual void showEvents( const Event::List & );
 
-    void changeEventDisplay(Event *, int);
+    void changeIncidenceDisplay(Incidence *, int);
 
   protected:
     void appendEvent(Incidence *, bool reply=false);
