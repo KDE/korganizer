@@ -9,6 +9,7 @@
 #include <kdebug.h>
 #include <klocale.h>
 #include <kcmdlineargs.h>
+#include <kprocess.h>
 #include <kdialog.h>
 
 #include "testnewstuff.h"
@@ -33,8 +34,9 @@ bool TestNewStuff::install( const QString &fileName )
 
 bool TestNewStuff::createUploadFile( const QString &fileName )
 {
-  QString cmd = "touch " + fileName;
-  system( cmd.latin1() );
+  KProcess p;
+  p << "touch" << fileName;
+  p.start(KProcess::Block);
   kdDebug() << "TestNewStuff::createUploadFile(): " << fileName << endl;
   return fileName;
 }
