@@ -1150,10 +1150,6 @@ void CalendarView::deleteEvent(Event *anEvent)
         if (itemDate!=QDate(1,1,1) || itemDate.isValid()) {
           Event*oldEvent = anEvent->clone();
           anEvent->addExDate(itemDate);
-          int duration = anEvent->recurrence()->duration();
-          if ( duration > 0 ) {
-            anEvent->recurrence()->setDuration( duration - 1 );
-          }
           incidenceChanged( oldEvent, anEvent );
         }
         break;
@@ -1929,27 +1925,22 @@ void CalendarView::recurTodo( Todo *todo )
   Recurrence *r = todo->recurrence();
   int duration = r->duration();
   
-  QDateTime endDate = r->endDateTime();
+  QDateTime endDateTime = r->endDateTime();
   if ( ( todo->hasDueDate() && todo->doesRecur() ) &&
-     ( duration != 0 ||
-     ( duration == 0 && endDate.isValid() && todo->dtDue() < endDate ) ) ) {
-    
-      Todo *oldTodo = todo->clone();
-      
+     ( endDateTime.isValid() && todo->dtDue() < endDateTime ) ) {
+
       int length = 0;
       if (todo->hasStartDate())
         length = todo->dtDue().daysTo( todo->dtStart() );
 
       do {
         todo->setDtDue( r->getNextDateTime( todo->dtDue() ) );
-        if ( duration > 1 )
-          r->setDuration( duration - 1 );
       } while ( !todo->recursAt( todo->dtDue() ) ||
                  todo->dtDue() <= QDateTime::currentDateTime() );
       
       // prevent setDtStart() from overwriting recurrence's startdate
       QDateTime oldRecStartDate = r->recurStart();
-      todo->setDtStart( oldTodo->dtDue().addDays( length ) );
+      todo->setDtStart( todo->dtDue().addDays( length ) );
       r->setRecurStart( oldRecStartDate );
       
       return;
