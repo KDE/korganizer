@@ -240,9 +240,15 @@ void KOTodoListView::contentsDropEvent( QDropEvent *e )
   }
   else {
     QString text;
-    if (QTextDrag::decode(e,text)) {
+    KOTodoViewItem *todoi = dynamic_cast<KOTodoViewItem *>(itemAt( contentsToViewport(e->pos()) ));
+    if ( ! todoi ) { 
+      // Not dropped on a todo item:
+      e->ignore();
+      kdDebug( 5850 ) << "KOTodoListView::contentsDropEvent(): Not dropped on a todo item" << endl;
+      kdDebug( 5850 ) << "TODO: Create a new todo with the given data" << endl;
+      // TODO: Create a new todo with the given text/contact/whatever
+    } else if ( QTextDrag::decode(e, text) ) {
       //QListViewItem *qlvi = itemAt( contentsToViewport(e->pos()) );
-      KOTodoViewItem *todoi = static_cast<KOTodoViewItem *>(itemAt( contentsToViewport(e->pos()) ));
       kdDebug(5850) << "Dropped : " << text << endl;
       QStringList emails = QStringList::split(",",text);
       Todo*newtodo = todoi->todo();
@@ -747,8 +753,7 @@ void KOTodoView::popupMenu( QListViewItem *item, const QPoint &, int column )
         mMovePopupMenu->popup( QCursor::pos() );
         break;
       case 5:
-        getCategoryPopupMenu(
-            static_cast<KOTodoViewItem *>( item ) )->popup( QCursor::pos() );
+        getCategoryPopupMenu( mActiveItem )->popup( QCursor::pos() );
         break;
       default:
         mCopyPopupMenu->datePicker()->setDate( date );
