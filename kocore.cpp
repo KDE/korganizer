@@ -22,20 +22,25 @@
     without including the source code for Qt in the source distribution.
 */
 
-#include <qwidget.h>
+#include "kocore.h"
+
+#include "koprefs.h"
+#include "koglobals.h"
+
+#include <calendar/plugin.h>
+#include <korganizer/part.h>
+
+#include <libkcal/calendarresources.h>
+#include <libkcal/resourcelocal.h>
 
 #include <klibloader.h>
 #include <kdebug.h>
 #include <kconfig.h>
 #include <kxmlguifactory.h>
+#include <kstandarddirs.h>
+#include <klocale.h>
 
-#include <calendar/plugin.h>
-#include <korganizer/part.h>
-
-#include "koprefs.h"
-
-#include "kocore.h"
-#include "koglobals.h"
+#include <qwidget.h>
 
 KOCore *KOCore::mSelf = 0;
 
@@ -49,7 +54,8 @@ KOCore *KOCore::self()
 }
 
 KOCore::KOCore()
-  : mCalendarDecorationsLoaded( false ), mHolidays( 0 ), mXMLGUIClient( 0 )
+  : mCalendarDecorationsLoaded( false ), mHolidays( 0 ), mXMLGUIClient( 0 ),
+    mCalendarResources( 0 )
 {
 }
 
@@ -287,4 +293,37 @@ QString KOCore::holiday( const QDate &date )
   calendarDecorations();
   if ( mHolidays ) return mHolidays->shortText( date );
   else return QString::null;
+}
+
+KCal::CalendarResources *KOCore::calendarResources()
+{
+  if ( !mCalendarResources ) {
+    mCalendarResources = new KCal::CalendarResources( KOPrefs::instance()->mTimeZoneId );
+
+    KCal::CalendarResourceManager *manager = mCalendarResources->resourceManager();
+
+    if ( manager->isEmpty() ) {
+      KConfig *config = KOGlobals::config();
+      config->setGroup("General");
+      QString fileName = config->readPathEntry( "Active Calendar" );
+
+      QString resourceName;
+      if ( fileName.isEmpty() ) {
+        fileName = locateLocal( "appdata", "std.ics" );
+        resourceName = i18n("Default KOrganizer resource");
+      } else {
+        resourceName = i18n("Active Calendar");
+      }
+
+      kdDebug(5850) << "Using as default resource: '" << fileName << "'" << endl;
+
+      KCal::ResourceCalendar *defaultResource = new KCal::ResourceLocal( fileName );
+      defaultResource->setResourceName( resourceName );
+
+      manager->add( defaultResource );
+      manager->setStandardResource( defaultResource );
+    }
+  }
+  
+  return mCalendarResources;
 }

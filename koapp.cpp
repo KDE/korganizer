@@ -34,8 +34,6 @@
 #include <kwin.h>
 #include <kurl.h>
 
-#include <libkcal/calendarlocal.h>
-#include <libkcal/filestorage.h>
 #include <libkcal/calformat.h>
 
 #include "korganizer.h"
@@ -44,9 +42,9 @@
 #include "alarmclient.h"
 #include "koglobals.h"
 #include "actionmanager.h"
+#include "resourceimportdialog.h"
 
 #include "koapp.h"
-#include "koapp.moc"
 
 using namespace std;
 
@@ -79,8 +77,21 @@ int KOrganizerApp::newInstance()
     for( i = 0; i < args->count(); ++i ) {
       processCalendar( args->url( i ) );
     }
+    if ( args->isSet( "import" ) ) {
+      processCalendar( KURL() );
+    }
   } else {
     processCalendar( KURL() );
+  }
+
+  if ( args->isSet( "import" ) ) {
+    KOrg::MainWindow *korg = ActionManager::findInstance( KURL() );
+    if ( !korg ) {
+      kdError() << "Unable to find default calendar resources view." << endl;
+    } else {
+      QString importUrl = QString::fromLocal8Bit( args->getOption( "import" ) );
+      korg->actionManager()->importResource( importUrl );
+    }
   }
   
   kdDebug(5850) << "KOApp::newInstance() done" << endl;
@@ -106,3 +117,5 @@ void KOrganizerApp::processCalendar( const KURL &url )
     KWin::setActiveWindow( korg->topLevelWidget()->winId() );
   }
 }
+
+#include "koapp.moc"

@@ -60,8 +60,9 @@
 #include "history.h"
 #include "kogroupware.h"
 #include "resourceview.h"
+#include "resourceimportdialog.h"
 
-KOWindowList *ActionManager::windowList = 0;
+KOWindowList *ActionManager::mWindowList = 0;
 bool ActionManager::startedKAddressBook = false;
 
 ActionManager::ActionManager( KXMLGUIClient *client, CalendarView *widget,
@@ -98,7 +99,7 @@ ActionManager::~ActionManager()
   delete mTempFile;
 
   // Take this window out of the window list.
-  windowList->removeWindow( mMainWindow );
+  mWindowList->removeWindow( mMainWindow );
 
   delete mCalendarView;
 
@@ -112,8 +113,8 @@ ActionManager::~ActionManager()
 void ActionManager::ActionManager::init()
 {
   // add this instance of the window to the static list.
-  if ( !windowList ) {
-    windowList = new KOWindowList;
+  if ( !mWindowList ) {
+    mWindowList = new KOWindowList;
     // Show tip of the day, when the first calendar is shown.
     if ( !mIsPart )
       QTimer::singleShot( 0, this, SLOT( showTipOnStart() ) );
@@ -121,7 +122,7 @@ void ActionManager::ActionManager::init()
   // Note: We need this ActionManager to be fully constructed, and
   // parent() to have a valid reference to it before the following
   // addWindow is called.
-  windowList->addWindow( mMainWindow );
+  mWindowList->addWindow( mMainWindow );
 
   initActions();
 
@@ -161,31 +162,9 @@ void ActionManager::createCalendarLocal()
 
 void ActionManager::createCalendarResources()
 {
-  mCalendarResources = new CalendarResources( KOPrefs::instance()->mTimeZoneId );
+  mCalendarResources = KOCore::self()->calendarResources();
 
   CalendarResourceManager *manager = mCalendarResources->resourceManager();
-
-  if ( manager->isEmpty() ) {
-    KConfig *config = KOGlobals::config();
-    config->setGroup("General");
-    QString fileName = config->readPathEntry( "Active Calendar" );
-
-    QString resourceName;
-    if ( fileName.isEmpty() ) {
-      fileName = locateLocal( "appdata", "std.ics" );
-      resourceName = i18n("Default KOrganizer resource");
-    } else {
-      resourceName = i18n("Active Calendar");
-    }
-
-    kdDebug(5850) << "Using as default resource: '" << fileName << "'" << endl;
-
-    ResourceCalendar *defaultResource = new ResourceLocal( fileName );
-    defaultResource->setResourceName( resourceName );
-
-    manager->add( defaultResource );
-    manager->setStandardResource( defaultResource );
-  }
 
   kdDebug(5850) << "CalendarResources used by KOrganizer:" << endl;
   CalendarResourceManager::Iterator it;
@@ -1130,12 +1109,14 @@ void ActionManager::showTipOnStart()
   KTipDialog::showTip(mCalendarView->topLevelWidget());
 }
 
-KOrg::MainWindow* ActionManager::findInstance(const KURL &url)
+KOrg::MainWindow *ActionManager::findInstance( const KURL &url )
 {
-  if (windowList)
-    return windowList->findInstance(url);
-  else
+  if ( mWindowList ) {
+    if ( url.isEmpty() ) return mWindowList->defaultInstance();
+    else return mWindowList->findInstance( url );
+  } else {
     return 0;
+  }
 }
 
 void ActionManager::dumpText(const QString &str)
@@ -1357,6 +1338,13 @@ void ActionManager::saveCalendar()
     mCalendarResources->save();
     // TODO: Make sure that asynchronous saves don't fail.
   }
+}
+
+void ActionManager::importResource( const QString &url )
+{
+  ResourceImportDialog *dialog;
+  dialog = new ResourceImportDialog( url, mMainWindow->topLevelWidget() );
+  dialog->show();
 }
 
 #include "actionmanager.moc"

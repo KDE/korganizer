@@ -35,6 +35,7 @@
 #include <ksimpleconfig.h>
 #include <kmessagebox.h>
 #include <kdebug.h>
+#include <kdeversion.h>
 
 #include "koprefsdialog.h"
 
@@ -253,7 +254,11 @@ void CalPrintDialog::setupPrinter()
 
 void CalPrintDialog::setPreview(bool preview)
 {
+#if KDE_IS_VERSION( 3, 1, 93 )
   setButtonOK( preview ? i18n("&Preview") : i18n("&Print...") );
+#else
+  setButtonOKText( preview ? i18n("&Preview") : i18n("&Print...") );
+#endif
   mPreviewText = preview ? i18n("<qt>Preview for printer <b>%1</b></qt>")
       : i18n( "<qt>Printing on printer <b>%1</b></qt>");
   setPrinterLabel();

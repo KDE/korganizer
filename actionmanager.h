@@ -106,7 +106,6 @@ class ActionManager : public QObject, public KCalendarIface
     bool saveModifiedURL();
     /** Get current URL */
     KURL url() const { return mURL; }
-    static KOWindowList* getWindowList() { return windowList; }
 
     /** Is there a instance with this URL? */
     static KOrg::MainWindow* findInstance( const KURL &url );
@@ -201,6 +200,8 @@ class ActionManager : public QObject, public KCalendarIface
 
     void loadParts();
 
+    void importResource( const QString &url );
+
   protected slots:
 
     /** open new window */
@@ -281,7 +282,7 @@ class ActionManager : public QObject, public KCalendarIface
     QTimer *mAutoSaveTimer;   // used if calendar is to be autosaved
 
     // list of all existing KOrganizer instances
-    static KOWindowList *windowList;
+    static KOWindowList *mWindowList;
 
     // Actions
     KRecentFilesAction *mRecent;

@@ -1,6 +1,7 @@
 /*
     This file is part of KOrganizer.
-    Copyright (c) 2000 Cornelius Schumacher <schumacher@kde.org>
+
+    Copyright (c) 2000,2003 Cornelius Schumacher <schumacher@kde.org>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -32,8 +33,7 @@ class KURL;
 /**
   This class manages a list of KOrganizer instances, each associated with a
   window displaying a calendar. It acts as relay for signals between this
-  windows and manages information like the active calendar, which requires
-  interaction of all instances.
+  windows and manages information, which requires interaction of all instances.
 
   @short manages a list of all KOrganizer instances
   @author Cornelius Schumacher
@@ -43,26 +43,44 @@ class KOWindowList : public QObject
     Q_OBJECT
   public:
     /**
-     * Constructs a new list of KOrganizer windows. There should only be one
-     * instance of this class. The KOrganizer class takes care of this.
-     */
-    KOWindowList(const char *name=0);
+      Constructs a new list of KOrganizer windows. There should only be one
+      instance of this class. The ActionManager class takes care of this.
+    */
+    KOWindowList( const char *name = 0 );
     virtual ~KOWindowList();
 
-    /** Is there only one instance left? */
+    /**
+      Is there only one instance left?
+    */
     bool lastInstance();
 
-    /** Is there a instance with this URL? */
-    KOrg::MainWindow* findInstance(const KURL &url);
+    /**
+      Is there a instance with this URL?
+    */
+    KOrg::MainWindow *findInstance( const KURL &url );
+
+    /**
+      Return default instance. This is the main window for the resource based
+      calendar.
+    */
+    KOrg::MainWindow *KOWindowList::defaultInstance();
 
   signals:
 
   public slots:
-    void addWindow(KOrg::MainWindow *);
-    void removeWindow(KOrg::MainWindow *);
+    /**
+      Register a main window.
+    */
+    void addWindow( KOrg::MainWindow * );
+    /**
+      Unregister a main window.
+    */
+    void removeWindow( KOrg::MainWindow * );
 
   private:
     QPtrList<KOrg::MainWindow> mWindowList; // list of all existing KOrganizer instances
+
+    KOrg::MainWindow *mDefaultWindow;
 };
 
 #endif

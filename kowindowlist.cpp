@@ -1,6 +1,7 @@
 /*
     This file is part of KOrganizer.
-    Copyright (c) 2000 Cornelius Schumacher <schumacher@kde.org>
+
+    Copyright (c) 2000,2003 Cornelius Schumacher <schumacher@kde.org>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -27,8 +28,8 @@
 #include "kowindowlist.h"
 #include "kowindowlist.moc"
 
-KOWindowList::KOWindowList(const char *name)
-  : QObject(0,name)
+KOWindowList::KOWindowList( const char *name )
+  : QObject( 0, name ), mDefaultWindow( 0 )
 {
   kdDebug(5850) << "KOWindowList::KOWindowList()" << endl;
 }
@@ -37,27 +38,35 @@ KOWindowList::~KOWindowList()
 {
 }
 
-void KOWindowList::addWindow(KOrg::MainWindow *korg)
+void KOWindowList::addWindow( KOrg::MainWindow *korg )
 {
-  mWindowList.append(korg);
+  if ( !korg->hasDocument() ) mDefaultWindow = korg;
+  else mWindowList.append( korg );
 }
 
-void KOWindowList::removeWindow(KOrg::MainWindow *korg)
+void KOWindowList::removeWindow( KOrg::MainWindow *korg )
 {
-  mWindowList.removeRef(korg);
+  if ( korg == mDefaultWindow ) mDefaultWindow = 0;
+  else mWindowList.removeRef( korg );
 }
 
 bool KOWindowList::lastInstance()
 {
-  if (mWindowList.count() == 1) return true;
+  if ( mWindowList.count() == 1 && !mDefaultWindow ) return true;
+  if ( mWindowList.count() == 0 && mDefaultWindow ) return true;
   else return false;
 }
 
-KOrg::MainWindow* KOWindowList::findInstance(const KURL &url)
+KOrg::MainWindow *KOWindowList::findInstance( const KURL &url )
 {
   KOrg::MainWindow *inst;
-  for(inst=mWindowList.first();inst;inst=mWindowList.next())
-    if (inst->getCurrentURL()==url)
+  for( inst = mWindowList.first(); inst; inst = mWindowList.next() )
+    if ( inst->getCurrentURL() == url )
       return inst;
   return 0;
+}
+
+KOrg::MainWindow *KOWindowList::defaultInstance()
+{
+  return mDefaultWindow;
 }

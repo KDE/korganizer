@@ -34,6 +34,9 @@
 
 static const KCmdLineOptions options[] =
 {
+  { "i", 0, 0 },
+  { "import <url>", I18N_NOOP("Import calendar at <url> into default calendar"),
+    0 },
   { "+[calendar]", I18N_NOOP("A calendar file to load"), 0 },
   KCmdLineLastOption
 };

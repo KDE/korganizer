@@ -24,10 +24,12 @@
 #ifndef KOCORE_H
 #define KOCORE_H
 
-#include <ktrader.h>
-
 #include <calendar/calendardecoration.h>
 #include <korganizer/part.h>
+
+#include <ktrader.h>
+
+namespace KCal { class CalendarResources; }
 
 class KOCore
 {
@@ -71,6 +73,8 @@ class KOCore
 
     QString holiday( const QDate & );
 
+    KCal::CalendarResources *calendarResources();
+
   protected:
     KOCore();
 
@@ -86,6 +90,8 @@ class KOCore
     KOrg::CalendarDecoration *mHolidays;
 
     KXMLGUIClient *mXMLGUIClient;
+
+    KCal::CalendarResources *mCalendarResources;
 };
 
 #endif
