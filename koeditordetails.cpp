@@ -73,6 +73,8 @@ KOAttendeeListView::KOAttendeeListView (QWidget *parent, const char *name)
     : KListView(parent, name)
 {
   setAcceptDrops(true);
+  setAllColumnsShowFocus(true);
+  setFullWidth(true);
 }
 
 /** KOAttendeeListView is a child class of KListView  which supports
