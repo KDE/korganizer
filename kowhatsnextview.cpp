@@ -4,6 +4,7 @@
 #include <qtextbrowser.h>
 #include <qtextcodec.h>
 #include <qfileinfo.h>
+#include <qlabel.h>
 
 #include <klocale.h>
 #include <kdebug.h>
@@ -36,13 +37,19 @@ KOWhatsNextView::KOWhatsNextView(Calendar *calendar, QWidget *parent,
                                  const char *name)
   : KOBaseView(calendar, parent, name)
 {
+  QLabel *dateLabel =
+      new QLabel(KGlobal::locale()->formatDate(QDate::currentDate()),this);
+  dateLabel->setMargin(2);
+  dateLabel->setAlignment(AlignCenter);
+
   mView = new WhatsNextTextBrowser(this);
   connect(mView,SIGNAL(showIncidence(const QString &)),SLOT(showIncidence(const QString &)));
 
   mEventViewer = 0;
 
-  QBoxLayout *layoutTop = new QVBoxLayout(this);
-  layoutTop->addWidget(mView);
+  QBoxLayout *topLayout = new QVBoxLayout(this);
+  topLayout->addWidget(dateLabel);
+  topLayout->addWidget(mView);
 }
 
 KOWhatsNextView::~KOWhatsNextView()
@@ -75,8 +82,7 @@ void KOWhatsNextView::printPreview(CalPrinter *calPrinter, const QDate &fd,
 
 void KOWhatsNextView::updateView()
 {
-  mText = i18n("<table><tr><td><h1>What's next?</h1></td><td align=right>%1</td></tr></table>")
-               .arg(KGlobal::locale()->formatDate(QDate::currentDate()));
+  mText = i18n("<h1>What's next?</h1>");
 
   QList<Event> events = mCalendar->getEvents(QDate::currentDate(),
                                              QDate::currentDate());

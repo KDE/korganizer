@@ -24,7 +24,8 @@ JournalEntry::JournalEntry(Calendar *calendar,QWidget *parent) :
   mDirty = false;
 
   mTitleLabel = new QLabel("Title",this);
-  mTitleLabel->setMargin(3);
+  mTitleLabel->setMargin(2);
+  mTitleLabel->setAlignment(AlignCenter);
   
   mEditor = new QMultiLineEdit(this);
   connect(mEditor,SIGNAL(textChanged()),SLOT(setDirty()));

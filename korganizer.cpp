@@ -649,18 +649,18 @@ bool KOrganizer::saveURL()
     return false;
   }
 
-  if (isActive()) {
-    kdDebug() << "KOrganizer::saveURL(): Notify alarm daemon" << endl;
-    if (!kapp->dcopClient()->send("alarmd","ad","reloadCal()","")) {
-      kdDebug() << "KOrganizer::saveURL(): dcop send failed" << endl;
-    }
-  }
-
   if (!mURL.isLocalFile()) {
     if (!KIO::NetAccess::upload(mFile,mURL)) {
       QString msg = i18n("Cannot upload calendar to %1").arg(mURL.prettyURL());
       KMessageBox::error(this,msg);
       return false;
+    }
+  }
+
+  if (isActive()) {
+    kdDebug() << "KOrganizer::saveURL(): Notify alarm daemon" << endl;
+    if (!kapp->dcopClient()->send("alarmd","ad","reloadCal()","")) {
+      kdDebug() << "KOrganizer::saveURL(): dcop send failed" << endl;
     }
   }
 
@@ -765,11 +765,15 @@ KURL KOrganizer::getSaveURL()
 
   QString e = filename.right(4);
   if (e != ".vcs" && e != ".ics") {
+    // Default save format is iCalendar
+    filename += ".ics";
+#if 0
     if (KOPrefs::instance()->mDefaultFormat == KOPrefs::FormatVCalendar) {
       filename += ".vcs";
     } else if (KOPrefs::instance()->mDefaultFormat == KOPrefs::FormatICalendar) {
       filename += ".ics";
     }
+#endif
   }
 
   url.setFileName(filename);
@@ -943,7 +947,8 @@ void KOrganizer::makeActive()
            "synchronisation problems leading to data loss.\n"
            "Make sure that it is accessed by no more than one single"
            "KOrganizer instance at the same time."),
-      i18n("Activating Calendar."),i18n("Activate Calendar"),"dontaskActivateWarning",true);
+      i18n("Activating Calendar."),i18n("Activate Calendar"),"dontaskActivate",
+      true);
     if (result == KMessageBox::Cancel) return;
   }
 

@@ -268,19 +268,18 @@ bool CalendarView::saveCalendar(QString filename)
 
   QString e = filename.right(4);
 
-  CalFormat *format;
   if (e == ".vcs") {
-    format = new VCalFormat(mCalendar);
-    if (mCalendar->journalList().count() > 0) {
-      int result = KMessageBox::warningContinueCancel(this,
-          i18n("You will lose your journal entries, if you proceed with saving"
-               " in vCalendar format.\nUse 'Export iCalendar' to preserve the"
-               " journal."),i18n("Data Loss Warning"),i18n("Proceed"));
-      if (result != KMessageBox::Continue) return false;
-    }
-  } else {
-    format = new ICalFormat(mCalendar);
+    int result = KMessageBox::warningContinueCancel(this,
+        i18n("Your calendar will be saved in iCalendar format.Use\n"
+              "'Export vCalendar' to save in vCalendar format."),
+        i18n("Format Conversion"),i18n("Proceed"),"dontaskFormatConversion",
+        true);
+    if (result != KMessageBox::Continue) return false;
+    filename.right(4) = ".ics";
   }
+  
+
+  CalFormat *format = new ICalFormat(mCalendar);
 
   bool success = mCalendar->save(filename,format);
   
@@ -1454,6 +1453,14 @@ void CalendarView::exportICalendar()
 
 void CalendarView::exportVCalendar()
 {
+  if (mCalendar->journalList().count() > 0) {
+    int result = KMessageBox::warningContinueCancel(this,
+        i18n("The journal entries can not be exported to a vCalendar file."),
+        i18n("Data Loss Warning"),i18n("Proceed"),"dontaskVCalExport",
+        true);
+    if (result != KMessageBox::Continue) return;
+  }
+
   QString filename = KFileDialog::getSaveFileName("vcalout.vcs",i18n("*.vcs|VCaldendars"),this);
 
   // Force correct extension
