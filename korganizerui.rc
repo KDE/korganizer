@@ -11,7 +11,6 @@
         <Action name="import_ical"/>
         <Action name="merge_calendar"/>
       </Menu>
-      <Action name="file_archive"/>
       <Menu name="export"><text>Export</text>
         <Action name="uploadnewstuff"/>
         <Separator/>
@@ -20,6 +19,7 @@
         <Action name="export_icalendar"/>
         <Action name="export_vcalendar"/>
       </Menu>
+      <Action name="file_archive"/>
       <Separator/>
       <Action name="addressbook"/>
       <Action name="purge_completed"/>
