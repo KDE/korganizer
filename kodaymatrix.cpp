@@ -174,6 +174,7 @@ void KODayMatrix::addSelectedDaysTo(DateList& selDays)
 
 void KODayMatrix::setSelectedDaysFrom(const QDate& start, const QDate& end)
 {
+  //kdDebug() << "startdate = " << startdate.day() << endl;
   mSelStart = startdate.daysTo(start);
   mSelEnd = startdate.daysTo(end);
 }
@@ -196,25 +197,23 @@ void KODayMatrix::updateView(QDate actdate)
     int fstDayOfWk = mCalendarSystem->dayOfTheWeek( actdate );
     
     int nextLine = ((fstDayOfWk == 1) && (KGlobal::locale()->weekStartsMonday() == 1)) ? 7 : 0;
+
     int offset = (KGlobal::locale()->weekStartsMonday() ? 1 : 0) - fstDayOfWk - nextLine;
 
     // reset index of selection according to shift of starting date from startdate to actdate
     if (mSelStart != NOSELECTION) {
       int tmp = actdate.daysTo(startdate);
-      kdDebug() << "Shift of Selection1: " << mSelStart << " - " << mSelEnd << " -> " << tmp << "(" << offset << ")" << endl;
+      //kdDebug() << "Shift of Selection1: " << mSelStart << " - " << mSelEnd << " -> " << tmp << "(" << offset << ")" << endl;
       // shift selection if new one would be visible at least partly !
-
       if (mSelStart+tmp < NUMDAYS && mSelEnd+tmp >= 0) {
         mSelStart = mSelStart + tmp;
         mSelEnd = mSelEnd + tmp;
       }
-
     }
 
     startdate = actdate;
     daychanged = true;
   }
-
 
   if (daychanged) {
     today = -1;

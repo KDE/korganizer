@@ -35,6 +35,8 @@
 
 #include "koeventview.h"
 
+#include <calendarsystem/kcalendarsystem.h>
+
 class QHBox;
 class QFrame;
 class QPushButton;
@@ -103,7 +105,7 @@ class EventIndicator : public QFrame {
 class KOAgendaView : public KOEventView {
     Q_OBJECT
   public:
-    KOAgendaView(Calendar *cal,QWidget *parent = 0,const char *name = 0);
+    KOAgendaView(Calendar *cal,QWidget *parent = 0,const char *name = 0, KCalendarSystem *calSys = 0);
     virtual ~KOAgendaView();
 
     /** Returns maximum number of days supported by the koagendaview */
@@ -261,6 +263,8 @@ class KOAgendaView : public KOEventView {
     QDateTime mTimeSpanBegin;
     QDateTime mTimeSpanEnd;
     bool mTimeSpanInAllDay;
+
+    KCalendarSystem *mCalendarSystem;
 };
 
 #endif  // KOAGENDAVIEW_H

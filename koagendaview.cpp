@@ -21,8 +21,6 @@
     without including the source code for Qt in the source distribution.
 */
 
-// $Id$
-
 #include <qhbox.h>
 #include <qvbox.h>
 #include <qlabel.h>
@@ -249,7 +247,7 @@ void EventIndicator::enableColumn(int column, bool enable)
 ////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////
 
-KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name) :
+KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name, KCalendarSystem *calSys) :
   KOEventView (cal,parent,name)
 {
   mStartHour = 8;
@@ -258,6 +256,8 @@ KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name) :
   mLayoutDayLabels = 0;
   mDayLabelsFrame = 0;
   mDayLabels = 0;
+
+  mCalendarSystem = calSys;
 
   bool isRTL = QApplication::reverseLayout();
 
@@ -424,6 +424,8 @@ KOAgendaView::~KOAgendaView()
 
 void KOAgendaView::createDayLabels()
 {
+//  kdDebug() << "KOAgendaView::createDayLabels()" << endl;
+
   delete mDayLabels;
 
   mDayLabels = new QFrame (mDayLabelsFrame);
@@ -436,9 +438,12 @@ void KOAgendaView::createDayLabels()
     QBoxLayout *dayLayout = new QVBoxLayout(mLayoutDayLabels);
 
     QLabel *dayLabel = new QLabel(mDayLabels);
-    QString str = QString("%1 %2")
-        .arg(KGlobal::locale()->weekDayName(date.dayOfWeek(),true))
-        .arg(date.day());
+
+    int dW = mCalendarSystem->dayOfTheWeek(date);
+    QString str = i18n( "short_weekday date (e.g. Mon 13)","%1 %2" )
+        .arg( mCalendarSystem->weekDayName( dW, true ) )
+        .arg( mCalendarSystem->getDay(date) );
+
     dayLabel->setText(str);
     dayLabel->setAlignment(QLabel::AlignHCenter);
     if (date == QDate::currentDate()) {
@@ -734,13 +739,13 @@ void KOAgendaView::slotViewChange(int newView)
 
   case WORKWEEK:
     // find monday for this week
-    if (firstDate.dayOfWeek() == 7) {
+      if (mCalendarSystem->dayOfTheWeek(firstDate) == 7) {
       if (KGlobal::locale()->weekStartsMonday())
         firstDate = firstDate.addDays(-6);
       else
         firstDate = firstDate.addDays(1);
-    } else if (firstDate.dayOfWeek() > 1) {
-      firstDate = firstDate.addDays(firstDate.dayOfWeek() * -1 + 1);
+      } else if ( mCalendarSystem->dayOfTheWeek(firstDate) > 1) {
+        firstDate = firstDate.addDays(mCalendarSystem->dayOfTheWeek(firstDate) * -1 + 1);
     }
 
     mSelectedDates.clear();
@@ -750,13 +755,13 @@ void KOAgendaView::slotViewChange(int newView)
 
   case WEEK:
     // find the beginning of this week (could be monday or sunday)
-    if (firstDate.dayOfWeek() == 7) {
+      if(mCalendarSystem->dayOfTheWeek(firstDate) == 7 ) {
       if (KGlobal::locale()->weekStartsMonday())
         firstDate = firstDate.addDays(-6);
     } else if (KGlobal::locale()->weekStartsMonday()) {
-      firstDate = firstDate.addDays(firstDate.dayOfWeek() * -1 + 1);
+        firstDate = firstDate.addDays(mCalendarSystem->dayOfTheWeek(firstDate) * -1 + 1);
     } else {
-      firstDate = firstDate.addDays(firstDate.dayOfWeek() * -1);
+        firstDate = firstDate.addDays(mCalendarSystem->dayOfTheWeek(firstDate) * -1);
     }
 
     mSelectedDates.clear();

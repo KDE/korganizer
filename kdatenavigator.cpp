@@ -186,22 +186,26 @@ KDateNavigator::~KDateNavigator()
 
 void KDateNavigator::updateDates()
 {
-  // If month begins on Monday and Monday is first day of week,
-  // month should begin on second line. Sunday doesn't have this problem.
-  int nextLine = ( ( m_fstDayOfWk == 1) &&
-                   ( KGlobal::locale()->weekStartsMonday() == 1 ) ) ? 7 : 0;
 
   // Find the first day of the week of the current month.
-  int d1 = m_MthYr.day(); 
+  //int d1 = m_MthYr.day(); 
+  int d1 = mCalendarSystem->getDay( m_MthYr );
   QDate dayone( m_MthYr.year(), m_MthYr.month(), m_MthYr.day() );
   int d2 = mCalendarSystem->getDay( dayone );
   int di = d1 - d2 + 1;
   dayone = dayone.addDays( -d2 + 1 );
 
   int m_fstDayOfWkCalsys = mCalendarSystem->dayOfTheWeek( dayone );
+
+  // If month begins on Monday and Monday is first day of week,
+  // month should begin on second line. Sunday doesn't have this problem.
+  int nextLine = ( ( m_fstDayOfWkCalsys == 1) &&
+                   ( KGlobal::locale()->weekStartsMonday() == 1 ) ) ? 7 : 0;
+
   // update the matrix dates
   int index = (KGlobal::locale()->weekStartsMonday() ? 1 : 0) - m_fstDayOfWkCalsys - nextLine;
-  
+
+
   daymatrix->updateView(dayone.addDays(index));
 //each updateDates is followed by an updateView -> repaint is issued there !
 //  daymatrix->repaint();
@@ -266,7 +270,7 @@ void KDateNavigator::updateConfig()
       if (i==0) day = 7;
       else day = i;
     }
-    headings[i]->setText( mCalendarSystem->wDayName(day).left(1));
+    headings[i]->setText( mCalendarSystem->weekDayName(day, true).left(1));
   }
   kdDebug() << "updateConfig() -> updateDates()" << endl;
   updateDates();

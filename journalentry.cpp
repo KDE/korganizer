@@ -68,6 +68,7 @@ void JournalEntry::setDate(const QDate &date)
   writeJournal();
 
   mTitleLabel->setText(KGlobal::locale()->formatDate(date));
+
   
   mDate = date;
 }

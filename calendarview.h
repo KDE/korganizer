@@ -74,6 +74,8 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
   
     Calendar *calendar() { return mCalendar; }
 
+    KCalendarSystem *calendarSystem() { return mCalendarSystem; }
+
     KOViewManager *viewManager();
     KODialogManager *dialogManager();
 

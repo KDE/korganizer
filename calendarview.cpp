@@ -1441,8 +1441,10 @@ void CalendarView::checkClipboard()
 
 void CalendarView::selectDates(const DateList &selectedDates)
 {
-//  kdDebug() << "CalendarView::selectDates()" << endl;
+  kdDebug() << "CalendarView::selectDates()" << endl;
+
   if (mViewManager->currentView()->isEventView()) {
+	
     updateView( selectedDates.first(), selectedDates.last() );
   } else {
     mViewManager->showAgendaView();

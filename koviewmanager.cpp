@@ -221,7 +221,8 @@ void KOViewManager::showListView()
 void KOViewManager::showAgendaView()
 {
   if (!mAgendaView) {
-    mAgendaView = new KOAgendaView(mMainView->calendar(), mMainView->viewStack(), "KOViewManager::AgendaView");
+    mAgendaView = new KOAgendaView(mMainView->calendar(), mMainView->viewStack(), "KOViewManager::AgendaView", 
+					mMainView->calendarSystem());
     addView(mAgendaView);
 
     connect(mAgendaView, SIGNAL(datesSelected(const DateList &)),
