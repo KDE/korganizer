@@ -255,7 +255,7 @@ void CalPrintDialog::setupPrinter()
 void CalPrintDialog::setPreview(bool preview)
 {
 #if KDE_IS_VERSION( 3, 1, 93 )
-  setButtonOK( preview ? i18n("&Preview") : KGuiItem( i18n("&Print..."), "fileprint") );
+  setButtonOK( preview ? i18n("&Preview") : KStdGuiItem::print() );
 #else
   setButtonOKText( preview ? i18n("&Preview") : i18n("&Print...") );
 #endif

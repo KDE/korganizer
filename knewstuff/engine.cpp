@@ -139,7 +139,7 @@ void Engine::slotNewStuffJobResult( KIO::Job *job )
           mDownloadDialog->show();
 
           mDownloadDialog->addEntry( entry );
-    
+
           kdDebug(5850) << "KNEWSTUFF: " << entry->name() << endl;
 
           kdDebug(5850) << "  SUMMARY: " << entry->summary() << endl;
@@ -223,7 +223,7 @@ void Engine::selectUploadProvider( Provider::List *providers )
   }
 
   mProviderDialog->clear();
-  
+
   mProviderDialog->show();
   mProviderDialog->raise();
 
@@ -274,19 +274,19 @@ void Engine::upload( Entry *entry )
   if ( mUploadProvider->noUpload() ) {
     KURL noUploadUrl = mUploadProvider->noUploadUrl();
     if ( noUploadUrl.isEmpty() ) {
-      text.append( i18n("Please upload the files manually.") ); 
+      text.append( i18n("Please upload the files manually.") );
       KMessageBox::information( mParentWidget, text, caption );
     } else {
       int result = KMessageBox::questionYesNo( mParentWidget, text, caption,
                                                i18n("Upload Info..."),
-                                               i18n("Close") );
+                                               KStdGuiItem::close() );
       if ( result == KMessageBox::Yes ) {
         kapp->invokeBrowser( noUploadUrl.url() );
       }
     }
   } else {
     int result = KMessageBox::questionYesNo( mParentWidget, text, caption,
-                                             i18n("Upload"), i18n("Cancel") );
+                                             i18n("Upload"), KStdGuiItem::cancel() );
     if ( result == KMessageBox::Yes ) {
       KURL destination = mUploadProvider->uploadUrl();
       destination.setFileName( fi.fileName() );
@@ -308,7 +308,7 @@ bool Engine::createMetaFile( Entry *entry )
 
   entry->setType(type());
   de.appendChild( entry->createDomElement( doc, de ) );
-  
+
   kdDebug(5850) << "--DOM START--" << endl << doc.toString()
             << "--DOM_END--" << endl;
 
@@ -322,13 +322,13 @@ bool Engine::createMetaFile( Entry *entry )
     mUploadMetaFile = QString::null;
     return false;
   }
-  
+
   QTextStream ts( &f );
   ts.setEncoding( QTextStream::UnicodeUTF8 );
   ts << doc.toString();
-  
+
   f.close();
-  
+
   return true;
 }
 
