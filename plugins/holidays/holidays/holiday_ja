@@ -1,39 +1,80 @@
 :
 : Japanese holiday file. Copy to ~/.holiday
-: compiler: Ogura Yoshito <ogura@ndc.ngsk.sony.co.jp>
+: Author: Toyohiro Asukai <toyohiro@ksmplus.com>
+: Last modified on Nov 16 2004
 :
-small "New Year's Day" weekend on 1/1
-small "Adults Day" weekend on 1/15
-small "National Foundation Day" weekend on 2/11
-small "Vernal Equinox Day" weekend on 3/21/1991
-small "Vernal Equinox Day" weekend on 3/20/1992
-small "Vernal Equinox Day" weekend on 3/20/1993
-small "Vernal Equinox Day" weekend on 3/21/1994
-small "Vernal Equinox Day" weekend on 3/21/1995
-small "Vernal Equinox Day" weekend on 3/20/1996
-small "Greenery Day" weekend on 4/29
-small "Constitution Day" weekend on 5/3
-small "Holiday for the Nation" weekend on 5/4
-small "Children's Day" weekend on 5/5
-small "Oceans' Day" weekend on 7/20
-small "Respect for the Aged" weekend on 9/15
-small "Autumnal Equinox Day" weekend on 9/23/1991
-small "Autumnal Equinox Day" weekend on 9/23/1992
-small "Autumnal Equinox Day" weekend on 9/23/1993
-small "Autumnal Equinox Day" weekend on 9/23/1994
-small "Autumnal Equinox Day" weekend on 9/23/1995
-small "Autumnal Equinox Day" weekend on 9/23/1996
-small "Physical Culture Day" weekend on 10/10
-small "Culture Day" weekend on 11/3
-small "Labor Day" weekend on 11/23
-small "Emperor's Birthday" weekend on 12/23
-:
-small "St. Valentine's Day" on february 14
-small "Girls' Festival" on march 3
-small "Buddha's Birthday" on april 8
-small "May Day" on may 1
-small "Boys' Festival" on may 5
-small "Mother's Day" on second sunday in may
-small "Father's Day" on third sunday in june
-small "Festival of the Weaver Star" on july 7
-small "Christmas" on december 25
+: National Holidays. (English Messages)
+:small "New Year's Day" weekend on 1/1
+:small "Coming of Age" weekend on second monday in january
+:small "National Foundation Day" weekend on 2/11
+:small "Vernal Equinox Day" weekend on 3/20/2005
+:small "Vernal Equinox Day" weekend on 3/21/2006
+:small "Vernal Equinox Day" weekend on 3/21/2007
+:small "Vernal Equinox Day" weekend on 3/20/2008
+:small "Vernal Equinox Day" weekend on 3/20/2009
+:small "Vernal Equinox Day" weekend on 3/21/2010
+:small "Greenery Day" weekend on 4/29
+:small "Constitution Day" weekend on 5/3
+:small "Holiday" weekend on 5/4
+:small "Children's Day" weekend on 5/5
+:small "Oceans' Day" weekend on third monday in july
+:small "Respect for Senior Citizens Day" weekend on third monday in september
+:small "Autumnal Equinox Day" weekend on 9/23
+:small "Sports Day" weekend on second monday in october
+:small "Culture Day" weekend on 11/3
+:small "Labor Thanksgiving Day" weekend on 11/23
+:small "The Emperor's Birthday" weekend on 12/23
+
+: National Holidays. (Japanese and English messages)
+small "¸µÃ¶(New Year's Day)" weekend on 1/1
+small "À®¿Í¤ÎÆü(Coming of Age)" weekend on second monday in january
+small "·ú¹ñµ­Ç°Æü(National Foundation Day)" weekend on 2/11
+small "½ÕÊ¬¤ÎÆü(Vernal Equinox Day)" weekend on 3/20/2005
+small "½ÕÊ¬¤ÎÆü(Vernal Equinox Day)" weekend on 3/21/2006
+small "½ÕÊ¬¤ÎÆü(Vernal Equinox Day)" weekend on 3/21/2007
+small "½ÕÊ¬¤ÎÆü(Vernal Equinox Day)" weekend on 3/20/2008
+small "½ÕÊ¬¤ÎÆü(Vernal Equinox Day)" weekend on 3/20/2009
+small "½ÕÊ¬¤ÎÆü(Vernal Equinox Day)" weekend on 3/21/2010
+small "¤ß¤É¤ê¤ÎÆü(Greenery Day)" weekend on 4/29
+small "·ûË¡µ­Ç°Æü(Constitution Day)" weekend on 5/3
+small "µÙÆü(Holiday)" weekend on 5/4
+small "¤³¤É¤â¤ÎÆü(Children's Day)" weekend on 5/5
+small "³¤¤ÎÆü(Oceans' Day)" weekend on third monday in july
+small "·ÉÏ·¤ÎÆü(Respect for Senior Citizens Day)" weekend on third monday in september
+small "½©Ê¬¤ÎÆü(Autumnal Equinox Day)" weekend on 9/23
+small "ÂÎ°é¤ÎÆü(Sports Day)" weekend on second monday in october
+small "Ê¸²½¤ÎÆü(Culture Day)" weekend on 11/3
+small "¶ÐÏ«´¶¼Õ¤ÎÆü(Labor Thanksgiving Day)" weekend on 11/23
+small "Å·¹ÄÃÂÀ¸Æü(The Emperor's Birthday)" weekend on 12/23
+
+: If a "National Holiday" is on Sunday,the following day
+: shall be a substitute holiday.
+:small "Substitute holiday" weekend on 3/21/2005
+:small "Substitute holiday" weekend on 1/2/2006
+:small "Substitute holiday" weekend on 2/12/2007
+:small "Substitute holiday" weekend on 4/30/2007
+:small "Substitute holiday" weekend on 9/24/2007
+:small "Substitute holiday" weekend on 12/24/2007
+:small "Substitute holiday" weekend on 11/24/2008
+:small "Substitute holiday" weekend on 3/22/2010
+
+small "¿¶ÂØµÙÆü(Substitute holiday)" weekend on 3/21/2005
+small "¿¶ÂØµÙÆü(Substitute holiday)" weekend on 1/2/2006
+small "¿¶ÂØµÙÆü(Substitute holiday)" weekend on 2/12/2007
+small "¿¶ÂØµÙÆü(Substitute holiday)" weekend on 4/30/2007
+small "¿¶ÂØµÙÆü(Substitute holiday)" weekend on 9/24/2007
+small "¿¶ÂØµÙÆü(Substitute holiday)" weekend on 12/24/2007
+small "¿¶ÂØµÙÆü(Substitute holiday)" weekend on 11/24/2008
+small "¿¶ÂØµÙÆü(Substitute holiday)" weekend on 3/22/2010
+
+
+: Japanese Events , not National Holidays.
+:small "St. Valentine's Day" on february 14
+:small "Girls' Festival" on march 3
+:small "Buddha's Birthday" on april 8
+:small "May Day" on may 1
+:small "Boys' Festival" on may 5
+:small "Mother's Day" on second sunday in may
+:small "Father's Day" on third sunday in june
+:small "Festival of the Weaver Star" on july 7
+:small "Christmas" on december 25
