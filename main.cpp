@@ -19,8 +19,6 @@
 #include "koapp.h"
 #include "version.h"
 
-KOrganizerApp *app;
-
 static const KCmdLineOptions options[] =
 {
   {"l", 0, 0},

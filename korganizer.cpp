@@ -51,12 +51,15 @@
 #include <kkeydialog.h>
 #include <ktip.h>
 
+#include <korganizer/part.h>
+
 #include "komailclient.h"
 #include "calprinter.h"
 #include "exportwebdialog.h"
 #include "calendarview.h"
 #include "kowindowlist.h"
 #include "koprefs.h"
+#include "kocore.h"
 
 #include "korganizer.h"
 #include "korganizer.moc"
@@ -65,7 +68,7 @@
 KOWindowList *KOrganizer::windowList = 0;
 
 KOrganizer::KOrganizer(const char *name)
-  : KMainWindow(0,name), DCOPObject("KOrganizerIface")
+  : KParts::MainWindow(0,name), DCOPObject("KOrganizerIface")
 {
   kdDebug() << "KOrganizer::KOrganizer()" << endl;
 
@@ -86,6 +89,8 @@ KOrganizer::KOrganizer(const char *name)
   setCentralWidget(mCalendarView);
 
   initActions();
+
+  initParts();
 
   statusBar()->insertItem("",ID_GENERAL,10);
 
@@ -208,9 +213,11 @@ void KOrganizer::initActions()
   (void)new KAction(i18n("Archive Old Entries..."), 0, this, SLOT(file_archive()),
                     actionCollection(), "file_archive");
 
+#if 0
   (void)new KAction(i18n("Web Page..."), 0,
                     mCalendarView, SLOT(exportWeb()),
                     actionCollection(), "export_web");
+#endif
   (void)new KAction(i18n("iCalendar..."), 0,
                     mCalendarView, SLOT(exportICalendar()),
                     actionCollection(), "export_icalendar");
@@ -425,6 +432,9 @@ void KOrganizer::initActions()
   (void)new KAction(i18n("Edit Filters"), 0,
                     mCalendarView,SLOT(editFilters()),
                     actionCollection(),"edit_filters");
+  (void)new KAction(i18n("Configure Plugins"), 0,
+                    mCalendarView,SLOT(configurePlugins()),
+                    actionCollection(),"configure_plugins");
 
 #if 0
   (void)new KAction(i18n("Show Intro Page"), 0,
@@ -436,9 +446,10 @@ void KOrganizer::initActions()
                     this, SLOT(showTip()), actionCollection(), "help_tipofday");
   
   if (KOPrefs::instance()->mEnableGroupScheduling) {
-    createGUI("korganizergsui.rc");
+    KMainWindow::createGUI("korganizergsui.rc");
   } else {  
-    createGUI();
+//    KMainWindow::createGUI();
+    setXMLFile("korganizerui.rc");
   }
 
   KConfig *config = kapp->config();
@@ -463,6 +474,12 @@ void KOrganizer::initActions()
   plugActionList("toolbartoggles",mToolBarToggles);
 }
 
+void KOrganizer::initParts()
+{
+  // TODO: get calendar pointer from somewhere
+  KOrg::Part *part = KOCore::self()->loadPart("webexport",0,this);
+  createGUI(part);
+}
 
 void KOrganizer::file_new()
 {
@@ -958,7 +975,7 @@ void KOrganizer::configureToolbars()
   KEditToolbar dlg(actionCollection());
 
   if (dlg.exec()) {
-    createGUI();
+    KMainWindow::createGUI();
     plugActionList("toolbartoggles",mToolBarToggles);
   }
 }

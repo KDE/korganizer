@@ -1,0 +1,4 @@
+[Desktop Entry]
+Type=ServiceType
+X-KDE-ServiceType=Calendar/TextDecoration
+Comment=Calendar Text Decoration Plugin

@@ -1,0 +1,5 @@
+[Desktop Entry]
+X-KDE-Library=libkorg_webexport
+Name=Web export plugin for KOrganizer
+Type=Service
+ServiceTypes=KOrganizer/Part

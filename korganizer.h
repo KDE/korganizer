@@ -12,7 +12,7 @@
 #include <qsplitter.h>
 
 #include <ktoolbar.h>
-#include <kmainwindow.h>
+#include <kparts/mainwindow.h>
 #include <kapp.h>
 #include <klocale.h>
 #include <kstatusbar.h>
@@ -42,7 +42,7 @@ using namespace KCal;
  * @author Preston Brown
  * @version $Revision$
  */
-class KOrganizer : public KMainWindow, virtual public KOrganizerIface
+class KOrganizer : public KParts::MainWindow, virtual public KOrganizerIface
 {
     Q_OBJECT
   public:
@@ -208,6 +208,7 @@ class KOrganizer : public KMainWindow, virtual public KOrganizerIface
     
   protected:
     void initActions();
+    void initParts();
 
     /** supplied so that close events close calendar properly.*/
     bool queryClose();

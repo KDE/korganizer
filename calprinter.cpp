@@ -25,6 +25,7 @@
 #include "koprefsdialog.h"
 #include "koprefs.h"
 #include "todo.h"
+#include "kocore.h"
 
 #include "calprinter.h"
 #include "calprinter.moc"
@@ -565,7 +566,7 @@ void CalPrinter::drawDayBox(QPainter &p, const QDate &qd,
   QList<Event> eventList;
   QString ampm;
 
-  QString hstring(mCalendar->getHolidayForDate(qd));
+  QString hstring(KOCore::self()->holiday(qd));
 
   // This has to be localized
   if (fullDate) {

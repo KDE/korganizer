@@ -19,6 +19,7 @@
 #include <klocale.h>
 #include <kconfig.h>
 
+#include "kocore.h"
 #include "koprefs.h"
 #include "koagenda.h"
 #include "koagendaitem.h"
@@ -28,6 +29,8 @@
 
 #include "koagendaview.h"
 #include "koagendaview.moc"
+
+using namespace KOrg;
 
 TimeLabels::TimeLabels(int rows,QWidget *parent,const char *name,WFlags f) :
   QScrollView(parent,name,f)
@@ -350,13 +353,14 @@ void KOAgendaView::createDayLabels()
   unsigned int i;
   QDate date;
   for(i=0;i<mSelectedDates.count();++i) {
+    QBoxLayout *dayLayout = new QVBoxLayout(mLayoutDayLabels);
+
     date = mStartDate.addDays(i);
+    
     dayLabel = new QLabel(mDayLabels);
     QString str = QString("%1 %2")
         .arg(KGlobal::locale()->weekDayName(date.dayOfWeek(),true))
         .arg(date.day());
-    QString holiday = mCalendar->getHolidayForDate(date);
-    if (!holiday.isEmpty()) str.append("\n" + holiday);
     dayLabel->setText(str);
     dayLabel->setAlignment(QLabel::AlignHCenter);
     if (date == QDate::currentDate()) {
@@ -364,13 +368,26 @@ void KOAgendaView::createDayLabels()
       font.setBold(true);
       dayLabel->setFont(font);
     }
-    mLayoutDayLabels->addWidget(dayLabel,1);
+    dayLayout->addWidget(dayLabel);
+
+    TextDecoration::List tds = KOCore::self()->textDecorations();
+    TextDecoration *it;
+    for(it = tds.first(); it; it = tds.next()) {
+      QLabel *label = new QLabel(it->dayShort(date),mDayLabels);
+      label->setAlignment(AlignCenter);
+      dayLayout->addWidget(label);
+    }
+    
+    WidgetDecoration::List wds = KOCore::self()->widgetDecorations();
+    WidgetDecoration *itw;
+    for(itw = wds.first(); itw; itw = wds.next()) {
+      QWidget *wid = itw->daySmall(mDayLabels,date);
+//      wid->setHeight(20);
+      dayLayout->addWidget(wid);
+    }
   }
   
   mLayoutDayLabels->addSpacing(mAgenda->verticalScrollBar()->width());
-//  mDayLabels->updateGeometry();
-//  mDayLabelsFrame->updateGeometry();
-//  mDayLabelsFrame->show();
   mDayLabels->show();
 }
 
@@ -434,6 +451,8 @@ void KOAgendaView::updateConfig()
                                            ->mEnableToolTips);
 
   setHolidayMasks();
+
+  createDayLabels();
 
   updateView();
 }
@@ -897,7 +916,7 @@ void KOAgendaView::setHolidayMasks()
     if ((KOPrefs::instance()->mExcludeSaturdays &&
          date.dayOfWeek() == 6) ||
         (KOPrefs::instance()->mExcludeHolidays && 
-         (!mCalendar->getHolidayForDate(date).isEmpty() ||
+         (!KOCore::self()->holiday(date).isEmpty() ||
           date.dayOfWeek() == 7))) {
       mHolidayMask[i] = true;
     } else {

@@ -14,6 +14,7 @@
 #include <kstddirs.h>
 
 #include "koprefs.h"
+#include "kocore.h"
 
 #include "kdatenav.h"
 #include "kdatenav.moc"
@@ -312,7 +313,7 @@ void KDateNavigator::updateButton(int i)
 
   QToolTip::remove(buttons[i]); // remove any previous tooltip
  
-  QString holiStr = mCalendar->getHolidayForDate(buttons[i]->date());
+  QString holiStr = KOCore::self()->holiday(buttons[i]->date());
   
   // Calculate holidays. Sunday is also treated as holiday.
   if (!KGlobal::locale()->weekStartsMonday() && (float(i)/7 == float(i/7)) ||

@@ -1,0 +1,11 @@
+<!DOCTYPE kpartgui>
+<kpartgui name="webexport" version="1">
+
+  <MenuBar>
+    <Menu name="export"><text>Export</text>
+      <Action name="export_web" append="export_merge" />
+    </Menu>
+  </MenuBar>
+
+</kpartgui>
+

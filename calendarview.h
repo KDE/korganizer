@@ -42,6 +42,7 @@ class KOWhatsNextView;
 class KOJournalView;
 class KOEventEditor;
 class KOTodoEditor;
+class PluginDialog;
 
 using namespace KCal;
 
@@ -351,7 +352,9 @@ class CalendarView : public QWidget
     void filterEdited();
 
     void showIntro();
-      
+
+    void configurePlugins();
+
   protected slots:
     /** Move the current view date to today */
     void goToday();
@@ -453,6 +456,7 @@ class CalendarView : public QWidget
     IncomingDialog *mIncomingDialog;
     CategoryEditDialog *mCategoryEditDialog;
     FilterEditDialog *mFilterEditDialog;
+    PluginDialog *mPluginDialog;
 };
 
 #endif // _CALENDARVIEW_H

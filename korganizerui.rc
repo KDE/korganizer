@@ -1,5 +1,5 @@
 <!DOCTYPE kpartgui>
-<kpartgui name="korganizer" version="10">
+<kpartgui name="korganizer" version="11">
 
   <MenuBar>
     <Menu name="file"><text>&amp;File</text>
@@ -8,7 +8,7 @@
       <Action name="merge_calendar"/>
       <Action name="file_archive"/>
       <Menu name="export"><text>Export</text>
-        <Action name="export_web"/>
+        <MergeLocal name="export_merge"/>
         <Separator/>
         <Action name="export_icalendar"/>
         <Action name="export_vcalendar"/>
@@ -47,10 +47,24 @@
       <Separator/>
       <Action name="takeover_calendar"/>
     </Menu>
+    <Menu name="schedule"><text>S&amp;chedule</text>
+      <Action name="outgoing"/>
+      <Action name="incoming"/>
+      <Separator/>
+      <Action name="publish"/>
+      <Action name="request"/>
+      <Action name="refresh"/>
+      <Action name="cancel"/>
+      <Action name="add"/>
+      <Action name="reply"/>
+      <Action name="counter"/>
+      <Action name="declinecounter"/>
+    </Menu>
     <Menu name="settings"><text>&amp;Settings</text>
       <Actionlist name="toolbartoggles" append="show_merge"/>
       <Action name="show_filter" append="show_merge"/>
       <Action name="conf_datetime"/>
+      <Action name="configure_plugins"/>
       <Action name="edit_filters"/>
       <Action name="edit_categories"/>
     </Menu>

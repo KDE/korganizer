@@ -115,6 +115,8 @@ class KOPrefs : public KPrefs
     QString mArchiveFile;
     QString mHtmlExportFile;
 
+    QStringList mSelectedPlugins;
+
   private:
     QDict<QColor> mCategoryColors;
     QColor mDefaultCategoryColor;

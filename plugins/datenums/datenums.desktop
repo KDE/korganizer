@@ -1,0 +1,5 @@
+[Desktop Entry]
+X-KDE-Library=libkorg_datenums
+Name=Date numbers plugin for Calendars
+Type=Service
+ServiceTypes=Calendar/Plugin,Calendar/TextDecoration

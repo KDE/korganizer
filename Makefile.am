@@ -1,7 +1,20 @@
-# set the include path for X, qt and KDE, and versit library for vCalendar
-INCLUDES = -I$(top_srcdir)/kgantt/kgantt -I$(top_srcdir)/libkcal $(all_includes)
+SUBDIRS = pixmaps sounds plugins interfaces
 
-bin_PROGRAMS = 	korganizer
+INCLUDES = -I$(top_srcdir)/kgantt/kgantt -I$(top_srcdir)/libkcal \
+           -Iinterfaces $(all_includes)
+
+bin_PROGRAMS = korganizer
+
+korganizer_LDFLAGS = $(all_libraries) $(KDE_RPATH)
+korganizer_LDADD   = libkorganizer.la
+korganizer_SOURCES = main.cpp
+
+check_PROGRAMS = korgplugins
+
+korgplugins_LDFLAGS = $(all_libraries) $(KDE_RPATH)
+korgplugins_LDADD   = libkorganizer.la $(LIB_KSYCOCA)
+korgplugins_SOURCES = korgplugins.cpp
+
 lib_LTLIBRARIES = libkorganizer.la
 
 libkorganizer_la_LDFLAGS = $(all_libraries) $(KDE_RPATH)
@@ -9,17 +22,6 @@ libkorganizer_la_LIBADD  = $(LIB_KPARTS) $(LIB_KFILE) \
                            -lkdeprint -lkab \
                            $(top_builddir)/kgantt/kgantt/libkgantt.la \
                            $(top_builddir)/libkcal/libkcal.la
-                           
-libkorganizer_la_LDFLAGS = $(all_libraries) -version-info 1:0:0 -module
-
-korganizer_LDFLAGS = $(all_libraries) $(KDE_RPATH)
-korganizer_SOURCES = main.cpp
-korganizer_LDADD   = libkorganizer.la
-
-
-########## FILES
-
-# Which sources should be compiled for korganizer.
 libkorganizer_la_SOURCES =  outgoingdialog_base.ui \
 	koagendaview.cpp koagenda.cpp koagendaitem.cpp \
 	kdateedit.cpp kdatenav.cpp \
@@ -48,7 +50,8 @@ libkorganizer_la_SOURCES =  outgoingdialog_base.ui \
         korganizeriface.skel \
         filtereditdialog.cpp filteredit_base.ui \
         kowhatsnextview.cpp \
-        kojournalview.cpp journalentry.cpp
+        kojournalview.cpp journalentry.cpp \
+        kocore.cpp plugindialog.cpp
 
 METASOURCES = AUTO
 
@@ -71,9 +74,6 @@ noinst_HEADERS = komonthview.h \
         koeditorrecurrence.h koeventviewerdialog.h koeventpopupmenu.h \
         outgoingdialog.h incomingdialog.h \
         koeventview.h koprojectview.h
-
-
-SUBDIRS = pixmaps sounds
 
 tip_DATA = tips
 tipdir = $(kde_datadir)/korganizer

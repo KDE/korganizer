@@ -103,6 +103,10 @@ KOPrefs::KOPrefs() :
   KPrefs::setCurrentGroup("Printer");
 
   addItemString("Preview",&mPrintPreview,"kghostview");
+  
+  KPrefs::setCurrentGroup("KOrganizer Plugins");
+  
+  addItemStringList("SelectedPlugins",&mSelectedPlugins,"holidays");
 }
 
 

@@ -4,6 +4,9 @@
 // (C) 2000,2001 by Cornelius Schumacher
 
 #include <qlist.h>
+#include <qcolor.h>
+#include <qfont.h>
+#include <qstringlist.h>
 
 class KConfig;
 
@@ -210,6 +213,31 @@ class KPrefs {
     */
     void addItemString(const QString &key,QString *reference,
                        const QString &defaultValue="");
+    /**
+      Register an item of type QStringList.
+      
+      @param key Key used in config file.
+      @param reference Pointer to the variable, which is set by readConfig()
+                       and setDefaults() calls and read by writeConfig() calls.
+      @param defaultValue Default value, which is used by setDefaults() and
+                          when the config file does not yet contain the key of
+                          this item.
+    */
+    void addItemStringList(const QString &key,QStringList *reference,
+                           const QStringList &defaultValue=QStringList());
+
+    /**
+      Register an item of type QValueList<int>.
+      
+      @param key Key used in config file.
+      @param reference Pointer to the variable, which is set by readConfig()
+                       and setDefaults() calls and read by writeConfig() calls.
+      @param defaultValue Default value, which is used by setDefaults() and
+                          when the config file does not yet contain the key of
+                          this item.
+    */
+    void addItemIntList(const QString &key,QValueList<int> *reference,
+                        const QValueList<int> &defaultValue=QValueList<int>());
 
   protected:
     /**

@@ -85,6 +85,38 @@ class KPrefsItemString : public KPrefsItem {
 };
 
 
+class KPrefsItemStringList : public KPrefsItem {
+  public:
+    KPrefsItemStringList(const QString &group,const QString &name,QStringList *,
+                         const QStringList &defaultValue=QStringList());
+    virtual ~KPrefsItemStringList() {}
+    
+    void setDefault();
+    void readConfig(KConfig *);
+    void writeConfig(KConfig *);    
+
+  private:
+    QStringList *mReference;
+    QStringList mDefault;
+};
+
+
+class KPrefsItemIntList : public KPrefsItem {
+  public:
+    KPrefsItemIntList(const QString &group,const QString &name,QValueList<int> *,
+                      const QValueList<int> &defaultValue=QValueList<int>());
+    virtual ~KPrefsItemIntList() {}
+    
+    void setDefault();
+    void readConfig(KConfig *);
+    void writeConfig(KConfig *);    
+
+  private:
+    QValueList<int> *mReference;
+    QValueList<int> mDefault;
+};
+
+
 KPrefsItemBool::KPrefsItemBool(const QString &group,const QString &name,
                                bool *reference,bool defaultValue) :
   KPrefsItem(group,name)
@@ -216,6 +248,58 @@ void KPrefsItemString::readConfig(KConfig *config)
 }
 
 
+KPrefsItemStringList::KPrefsItemStringList(const QString &group,const QString &name,
+                                           QStringList *reference,const QStringList &defaultValue) :
+  KPrefsItem(group,name)
+{
+  mReference = reference;
+  mDefault = defaultValue;
+}
+
+void KPrefsItemStringList::setDefault()
+{
+  *mReference = mDefault;
+}
+
+void KPrefsItemStringList::writeConfig(KConfig *config)
+{
+  config->setGroup(mGroup);
+  config->writeEntry(mName,*mReference);
+}
+
+void KPrefsItemStringList::readConfig(KConfig *config)
+{
+  config->setGroup(mGroup);
+  *mReference = config->readListEntry(mName);
+}
+
+
+KPrefsItemIntList::KPrefsItemIntList(const QString &group,const QString &name,
+                                     QValueList<int> *reference,const QValueList<int> &defaultValue) :
+  KPrefsItem(group,name)
+{
+  mReference = reference;
+  mDefault = defaultValue;
+}
+
+void KPrefsItemIntList::setDefault()
+{
+  *mReference = mDefault;
+}
+
+void KPrefsItemIntList::writeConfig(KConfig *config)
+{
+  config->setGroup(mGroup);
+  config->writeEntry(mName,*mReference);
+}
+
+void KPrefsItemIntList::readConfig(KConfig *config)
+{
+  config->setGroup(mGroup);
+  *mReference = config->readIntListEntry(mName);
+}
+
+
 QString *KPrefs::mCurrentGroup = 0;
 
 KPrefs::KPrefs(const QString &configname)
@@ -311,4 +395,16 @@ void KPrefs::addItemFont(const QString &key,QFont *reference,const QFont &defaul
 void KPrefs::addItemString(const QString &key,QString *reference,const QString &defaultValue)
 {
   addItem(new KPrefsItemString(*mCurrentGroup,key,reference,defaultValue));
+}
+
+void KPrefs::addItemStringList(const QString &key,QStringList *reference,
+                               const QStringList &defaultValue)
+{
+  addItem(new KPrefsItemStringList(*mCurrentGroup,key,reference,defaultValue));
+}
+
+void KPrefs::addItemIntList(const QString &key,QValueList<int> *reference,
+                            const QValueList<int> &defaultValue)
+{
+  addItem(new KPrefsItemIntList(*mCurrentGroup,key,reference,defaultValue));
 }

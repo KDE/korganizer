@@ -1,0 +1,39 @@
+:
+: Dutch holiday file. Copy to ~/.holiday
+:
+: NOTE: Goede Vrijdag and Bevrijdingsdag are not holidays for
+: everybody, therefore I don't put them in the "weekend" color.
+: Government employees usually have these days off, for other
+: categories it varies.  Check with your employer!
+:
+: Also note that if Koninginnedag falls on a Sunday, the official day
+: off is moved to Monday.
+:
+: Author: Guido van Rossum, CWI, Amsterdam <Guido.van.Rossum@cwi.nl>
+:
+small "Nieuwjaar" weekend on 1.1.
+small "Goede Vrijdag" on easter minus 2 days
+small "Pasen" weekend on easter length 2 days
+small "Hemelvaart" weekend on easter plus 39 days
+small "Pinksteren" weekend on easter plus 49 days length 2 days
+small "Koninginnedag" weekend on 30.4.
+small "Bevrijdingsdag" on 5.5.
+small "Kerstmis" weekend on 25.12. length 2 days
+:
+: Andere feestdagen:
+: Author: Jeroen C. Kessels <jeroenk@cnplss7.cnps.philips.nl>
+:
+small "Driekoningen" on 3.1
+small "Vastenavond" on easter minus 47 days
+small "Aswoensdag" on easter minus 46 days
+small "Palmzondag" on easter minus 7 days
+small "Witte Donderdag" on easter minus 3 days
+small "Goede Vrijdag" on easter minus 2 days
+small "Dodenherdenking" on 4.5
+small "Bevrijdingsdag" on 5.5
+small "Dierendag" on 4.10
+small "Allerheiligen" on 1.11
+small "Allerzielen" on 2.11
+small "Oudjaar" on 31.12
+small "Moederdag" on every second sunday in may
+small "Vaderdag" on every third sunday in june

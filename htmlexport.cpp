@@ -12,6 +12,7 @@
 #include "calendar.h"
 #include "event.h"
 #include "todo.h"
+#include "kocore.h"
 
 bool HtmlExport::save(const QString &fileName)
 {
@@ -118,7 +119,7 @@ void HtmlExport::createHtmlMonthView(QTextStream *ts)
     for(int i=0;i<7;++i) {
       *ts << "<td valign=top><table border=0>\n";
 
-      QString holiday = mCalendar->getHolidayForDate(start);
+      QString holiday = KOCore::self()->holiday(start);
 
       *ts << "<tr><td ";
       if (!holiday.isEmpty() || start.dayOfWeek() == 7) *ts << "class=dateholiday";

@@ -19,6 +19,7 @@
 
 #include "calprinter.h"
 #include "koprefs.h"
+#include "kocore.h"
 
 #include "komonthview.h"
 #include "komonthview.moc"
@@ -681,7 +682,7 @@ void KOMonthView::viewChanged()
     }
 
     // add holiday, if present
-    QString hstring(mCalendar->getHolidayForDate(date));
+    QString hstring(KOCore::self()->holiday(date));
     if (!hstring.isEmpty()) {
       daynum.prepend(" ");
       daynum.prepend(hstring);

@@ -1,0 +1,21 @@
+:
+: Canadian holiday file. Copy to ~/.holiday
+:
+: Author: Peter Littlefield <plittle@sofkin.ca>
+:
+small "New Year's Day" weekend on january 1
+small "Valentine's Day" on february 14
+small "Good Friday" weekend on easter minus 2 days
+small "Easter" weekend on easter
+small "Easter Monday" weekend on easter plus 1 day
+small "Mother's Day" on second sunday in may
+small "Victoria Day" weekend on monday before may 24
+small "Father's Day" on third sunday in june
+small "St-Jean Baptiste" on june 24
+small "Canada Day" weekend on july 1
+small "Civic Holiday" weekend on first monday in august
+small "Labour Day" weekend on first monday in september
+small "Thanksgiving" weekend on second monday in october
+small "Remembrance Day" weekend on november 11
+small "Christmas" weekend on december 25
+small "Boxing Day" weekend on december 26

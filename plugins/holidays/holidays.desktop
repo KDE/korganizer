@@ -1,0 +1,5 @@
+[Desktop Entry]
+X-KDE-Library=libkorg_holidays
+Name=Holiday plugin for Calendars
+Type=Service
+ServiceTypes=Calendar/Plugin,Calendar/TextDecoration

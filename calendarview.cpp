@@ -66,6 +66,7 @@
 #include "kowhatsnextview.h"
 #include "kojournalview.h"
 #include "journal.h"
+#include "plugindialog.h"
 
 #include "calendarview.h"
 #include "calendarview.moc"
@@ -112,6 +113,7 @@ CalendarView::CalendarView(QWidget *parent,const char *name)
   mExportWebDialog = 0;
   mOutgoingDialog = 0;
   mIncomingDialog = 0;
+  mPluginDialog = 0;
   
   mCalPrinter = 0;
 
@@ -120,7 +122,6 @@ CalendarView::CalendarView(QWidget *parent,const char *name)
   // Create calendar object, which manages all calendar information associated
   // with this calendar view window.
   mCalendar = new CalendarLocal(KOPrefs::instance()->mTimeZoneId.local8Bit());
-  mCalendar->setHoliday(KOPrefs::instance()->mHoliday);
   mCalendar->setEmail(KOPrefs::instance()->email());
   connect(mCalendar,SIGNAL(calUpdated(Incidence *)),
           SLOT(eventUpdated(Incidence *)));
@@ -1682,4 +1683,14 @@ void CalendarView::takeOverCalendar()
 void CalendarView::showIntro()
 {
   kdDebug() << "To be implemented." << endl;
+}
+
+void CalendarView::configurePlugins()
+{
+  if (!mPluginDialog) {
+    mPluginDialog = new PluginDialog(this);
+    connect(mPluginDialog,SIGNAL(configChanged()),SLOT(updateConfig()));
+  }
+  mPluginDialog->show();
+  mPluginDialog->raise();
 }
