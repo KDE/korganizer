@@ -43,7 +43,7 @@
 #include "koprefs.h"
 #include <libkpimidentities/identitymanager.h>
 #include <libkpimidentities/identity.h>
-#include <libkdepim/email.h>
+#include <libemailfunctions/email.h>
 #include <kabc/stdaddressbook.h>
 #include "kocore.h"
 

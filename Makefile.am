@@ -64,7 +64,8 @@ libkorganizer_la_LIBADD  = $(LIB_KPARTS) $(LIB_KFILE) \
 	printing/libkorg_stdprinting.la \
 	$(top_builddir)/kdgantt/libkdgantt.la \
 	$(KNEWSTUFF_LIB) \
-	$(top_builddir)/kresources/remote/libkcal_resourceremote.la
+	$(top_builddir)/kresources/remote/libkcal_resourceremote.la \
+        $(top_builddir)/libemailfunctions/libemailfunctions.la
 libkorganizer_la_COMPILE_FIRST = koprefs_base.h kofilterview_base.ui \
 	outgoingdialog_base.ui \
 	incomingdialog_base.ui \

@@ -54,7 +54,7 @@
 #include <kabc/stdaddressbook.h>
 #endif
 #include <libkdepim/kvcarddrag.h>
-#include <libkdepim/email.h>
+#include <libemailfunctions/email.h>
 
 #include <libkcal/incidence.h>
 

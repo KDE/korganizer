@@ -43,7 +43,7 @@
 #include "koviewmanager.h"
 #include "kocore.h"
 
-#include <libkdepim/email.h>
+#include <libemailfunctions/email.h>
 
 #include <libkcal/incidencebase.h>
 #include <libkcal/attendee.h>
