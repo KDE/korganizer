@@ -510,8 +510,8 @@ void KOPrefsDialog::setupGroupSchedulingTab()
   KPrefsWidRadios *sendGroup =
       addWidRadios(i18n("Scheduler mails should be"),&(KOPrefs::instance()->mIMIPSend),
                    topFrame);
-  sendGroup->addRadio(i18n("send to outbox"));
-  sendGroup->addRadio(i18n("send directly"));
+  sendGroup->addRadio(i18n("sent to outbox"));
+  sendGroup->addRadio(i18n("sent directly"));
 
   topLayout->addMultiCellWidget(sendGroup->groupBox(),1,1,0,1);
 
