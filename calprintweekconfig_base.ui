@@ -147,9 +147,6 @@
                     <property name="text">
                         <string>Print as &amp;Filofax page</string>
                     </property>
-                    <property name="accel">
-                        <string>Alt+F</string>
-                    </property>
                     <property name="checked">
                         <bool>true</bool>
                     </property>
@@ -160,9 +157,6 @@
                     </property>
                     <property name="text">
                         <string>Print as &amp;timetable view:</string>
-                    </property>
-                    <property name="accel">
-                        <string>Alt+T</string>
                     </property>
                 </widget>
                 <spacer row="2" column="0">
