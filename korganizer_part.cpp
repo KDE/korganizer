@@ -166,16 +166,20 @@ void KOrganizerPart::saveCalendar()
     ++it;
     if (window->inherits("KOrganizer")) {
       KOrganizer *korg = dynamic_cast<KOrganizer*>(window);
-      if (!korg->actionManager()->view()->isModified())
-	continue;
-      if (korg->actionManager()->url().isEmpty()) {
-	KTempFile tmp( locateLocal( "data", "korganizer/" ));
-	korg->actionManager()->saveAsURL( tmp.name() );
-      } else {
-	korg->actionManager()->saveURL();
-      }
-      window->close(true);
+	  if (korg)
+	  {
+         if (!korg->actionManager()->view()->isModified())
+	        continue;
+         if (korg->actionManager()->url().isEmpty()) {
+	        KTempFile tmp( locateLocal( "data", "korganizer/" ));
+	        korg->actionManager()->saveAsURL( tmp.name() );
+         } else {
+	        korg->actionManager()->saveURL();
+         }
+         window->close(true);
+	  }
     }
+
   }
 
   if (mActionManager->view()->isModified()) {

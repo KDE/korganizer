@@ -1147,7 +1147,8 @@ void ActionManager::keyBindings()
 {
   if (parent()->inherits("KOrganizer")) {
     KOrganizer *korg = dynamic_cast<KOrganizer*>(parent());
-    KKeyDialog::configureKeys(mACollection,korg->xmlFile(),true,korg);
+	if (korg)
+    	KKeyDialog::configureKeys(mACollection,korg->xmlFile(),true,korg);
   } else {
     KKeyDialog::configure( mACollection, true );
   }
