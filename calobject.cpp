@@ -50,7 +50,7 @@ CalObject::CalObject() : QObject(), recursCursor(recursList)
 
   // initialize random numbers.  This is a hack, and not
   // even that good of one at that.
-  srandom(time(0L));
+//  srandom(time(0L));
 
   // user information...
   userId = getuid();
@@ -465,7 +465,7 @@ KOEvent *CalObject::pasteEvent(const QDate *newDate,
 	QTime::currentTime().minute() + QTime::currentTime().second() +
 	QTime::currentTime().msec();
       QString uidStr;
-      uidStr.sprintf("KOrganizer - %li.%d",random(),hashTime);
+      uidStr.sprintf("KOrganizer - %li.%d",KApplication::random(),hashTime);
       if (getEvent(anEvent->getVUID()))
 	anEvent->setVUID(uidStr.ascii());
 

@@ -302,11 +302,8 @@ KOMonthView::KOMonthView(CalObject *cal,
     connect(downMonth, SIGNAL(clicked()), this, SLOT(goForwardMonth()));
     connect(downYear,  SIGNAL(clicked()), this, SLOT(goForwardYear()));
 
-    
-    calendar = cal;
     myDate = qd.addDays(-(qd.dayOfWeek()) - 7);
 
-    
     QFont bfont = font();
     bfont.setBold(TRUE);
     
@@ -355,7 +352,7 @@ KOMonthView::KOMonthView(CalObject *cal,
         connect(dayHeaders[i], SIGNAL(newEventSignal(int)),
                 this, SLOT(newEventSlot(int)));
 
-        daySummaries[i] = new KSummaries(vFrame, calendar, date, i);
+        daySummaries[i] = new KSummaries(vFrame, mCalendar, date, i);
         daySummaries[i]->setFrameStyle(QFrame::NoFrame);
         connect(daySummaries[i], SIGNAL(daySelected(int)),
                 this, SLOT(daySelected(int)));
@@ -386,14 +383,7 @@ KOMonthView::KOMonthView(CalObject *cal,
     topLayout->addWidget(dispLabel);
     topLayout->addWidget(mainFrame);
 
-
-    rightClickMenu = new QPopupMenu;
-    rightClickMenu->insertItem(i18n("New Event"), this,
-                               SLOT(newEventSelected()));
-    rightClickMenu->insertItem(i18n("&Edit"), this,
-                               SLOT(editSelected()));
-    rightClickMenu->insertItem(i18n("&Delete"), this,
-                               SLOT(deleteSelected()));
+    rightClickMenu = eventPopup();
 
     updateConfig();
 }
@@ -664,7 +654,7 @@ void KOMonthView::viewChanged()
     }
 
     // add holiday, if present
-    QString hstring(calendar->getHolidayForDate(date));;
+    QString hstring(mCalendar->getHolidayForDate(date));;
     if (!hstring.isEmpty()) {
       daynum.prepend(" ");
       daynum.prepend(hstring);
@@ -769,5 +759,5 @@ void KOMonthView::newEventSlot(int index)
 
 void KOMonthView::doRightClickMenu()
 {
-  rightClickMenu->popup(QCursor::pos());
+  showEventPopup(rightClickMenu,getSelected().first());
 }

@@ -74,6 +74,11 @@ public:
    */
   virtual void print(CalPrinter *calPrinter);
 
+  /**
+   * Construct a standard context menu for an event.
+   */
+  QPopupMenu *eventPopup();
+  
 public slots:
   /**
    * Updates the current display to reflect changes that may have happened
@@ -106,6 +111,19 @@ public slots:
    */
   virtual void selectEvents(QList<KOEvent> eventList) = 0;
 
+  /**
+   * Show context menu for event.
+   * @param event event, which is to be manipulated by the menu actions
+   * @param popup a popop menu created with eventPopup()
+   */
+  void showEventPopup(QPopupMenu *popup,KOEvent *event);
+
+  /**
+   * Perform the default action for an event. E.g. open the event editor, when
+   * double-clicking an event in the agenda view.
+   */
+  void defaultEventAction(KOEvent *event);
+  
 signals:
   /**
    * when the view changes the dates that are selected in one way or
@@ -139,8 +157,19 @@ signals:
    */
   void newEventSignal(QDateTime, QDateTime);
 
+  /**
+   * instructs the receiver to show the event in read-only mode.
+   */
+  void showEventSignal(KOEvent *);
+
+protected slots:
+  void popupShow();
+  void popupEdit();
+  void popupDelete();
+
 protected:
-  CalObject *calendar;
+  CalObject *mCalendar;
+  KOEvent *mCurrentEvent;  // event selected e.g. for a context menu
 };
 
 #endif

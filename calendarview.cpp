@@ -361,8 +361,7 @@ void CalendarView::setupRollover()
 
 void CalendarView::hookupSignals()
 {
-  // SIGNAL/SLOTS FOR DATE SYNCHRO
-    
+  // SIGNAL/SLOTS FOR DATE SYNCHRO    
   connect(listView, SIGNAL(datesSelected(const QDateList)),
 	  dateNavigator, SLOT(selectDates(const QDateList)));
   connect(agendaView, SIGNAL(datesSelected(const QDateList)),
@@ -374,6 +373,8 @@ void CalendarView::hookupSignals()
     
 
   // SIGNALS/SLOTS FOR LIST VIEW
+  connect(listView, SIGNAL(showEventSignal(KOEvent *)),
+	  this, SLOT(showEvent(KOEvent *)));
   connect(listView, SIGNAL(editEventSignal(KOEvent *)),
 	  this, SLOT(editEvent(KOEvent *)));
   connect(listView, SIGNAL(deleteEventSignal(KOEvent *)), 
@@ -394,6 +395,8 @@ void CalendarView::hookupSignals()
 	  this, SLOT(deleteEvent(KOEvent *)));
 
   // SIGNALS/SLOTS FOR MONTH VIEW
+  connect(monthView, SIGNAL(showEventSignal(KOEvent *)),
+	  this, SLOT(showEvent(KOEvent *)));
   connect(monthView, SIGNAL(newEventSignal(QDate)),
 	  this, SLOT(newEvent(QDate)));
   connect(monthView, SIGNAL(editEventSignal(KOEvent *)),
@@ -426,7 +429,6 @@ void CalendarView::hookupSignals()
           this, SLOT(deleteEvent(KOEvent *)));
 
   // CONFIGURATION SIGNALS/SLOTS
-
   // need to know about changed in configuration.
   connect(this, SIGNAL(configChanged()), mCalendar, SLOT(updateConfig()));
   connect(this, SIGNAL(configChanged()), agendaView, SLOT(updateConfig()));

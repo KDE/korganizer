@@ -116,15 +116,6 @@ void KOAgenda::init()
   // controlled in a way that the contents horizontally always fits. Then it is
   // not necessary to turn off the scrollbar.
   setHScrollBarMode(AlwaysOff);
-
-  // item popup menu
-  mItemPopup = new QPopupMenu();
-  mItemPopup->insertItem (i18n("&Show"),this,SLOT(popupShow()));
-  mItemPopup->insertItem (i18n("&Edit"),this, SLOT(popupEdit()));
-  mItemPopup->insertItem (QIconSet(BarIcon("delete")),i18n("&Delete"),
-                          this, SLOT(popupDelete()));
-  mItemPopup->insertItem (QIconSet(UserIcon("bell")),i18n("ToggleAlarm"),
-                          this, SLOT(popupAlarm()));
 }
 
 /*
@@ -155,7 +146,10 @@ bool KOAgenda::eventFilter ( QObject *object, QEvent *event )
       	if (object != viewport()) {
           if (me->button() == RightButton) {
             mClickedItem = (KOAgendaItem *)object;
-            mItemPopup->popup(QCursor::pos());
+            if (mClickedItem) {
+              emit showEventPopupSignal(mClickedItem->itemEvent());
+            }
+//            mItemPopup->popup(QCursor::pos());
           } else {
             mActionItem = (KOAgendaItem *)object;
             startItemAction(viewportPos);
@@ -761,36 +755,6 @@ void KOAgenda::scrollUp()
 void KOAgenda::scrollDown()
 {
   scrollBy(0,mScrollOffset);
-}
-
-void KOAgenda::popupShow()
-{
-  if (!mClickedItem) {
-    qDebug("KOAgenda::itemPopup() called without having a clicked item");
-    return;
-  }
-  
-  emit showEventSignal(mClickedItem->itemEvent());
-}
-
-void KOAgenda::popupEdit()
-{
-  if (!mClickedItem) {
-    qDebug("KOAgenda::itemPopup() called without having a clicked item");
-    return;
-  }
-  
-  emit editEventSignal(mClickedItem->itemEvent());
-}
-
-void KOAgenda::popupDelete()
-{
-  if (!mClickedItem) {
-    qDebug("KOAgenda::itemPopup() called without having a clicked item");
-    return;
-  }
-
-  emit deleteEventSignal(mClickedItem->itemEvent());
 }
 
 void KOAgenda::popupAlarm()

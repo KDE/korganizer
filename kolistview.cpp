@@ -50,6 +50,8 @@ KOListView::KOListView(CalObject *calendar, QWidget *parent,
   QBoxLayout *layoutTop = new QVBoxLayout(this);
   layoutTop->addWidget(mListView);
 
+  mPopupMenu = eventPopup();
+/*
   mPopupMenu = new QPopupMenu;
   mPopupMenu->insertItem(i18n("Edit Event"), this,
 		     SLOT (editEvent()));
@@ -60,9 +62,10 @@ KOListView::KOListView(CalObject *calendar, QWidget *parent,
 		      SLOT(showDates()));
   mPopupMenu->insertItem(i18n("Hide Dates"), this,
 		      SLOT(hideDates()));
+*/
   
   QObject::connect(mListView,SIGNAL(doubleClicked(QListViewItem *)),
-                   this,SLOT(editItem(QListViewItem *)));
+                   this,SLOT(defaultItemAction(QListViewItem *)));
   QObject::connect(mListView,SIGNAL(rightButtonClicked ( QListViewItem *,
                      const QPoint &, int )),
                    this,SLOT(popupMenu(QListViewItem *,const QPoint &,int)));
@@ -133,7 +136,7 @@ void KOListView::selectDates(const QDateList dateList)
 
   QDate *date;
   for(date = tmpList.first(); date; date = tmpList.next()) {
-    addEvents(calendar->getEventsForDate(*date));
+    addEvents(mCalendar->getEventsForDate(*date));
   }
 }
 
@@ -174,7 +177,7 @@ void KOListView::changeEventDisplay(KOEvent *event, int action)
       break;
     default:
       qDebug("KOListView::changeEventDisplay(): Illegal action %d",action);
-  }            
+  }
 }
 
 KOListViewItem *KOListView::getItemForEvent(KOEvent *event)
@@ -188,27 +191,13 @@ KOListViewItem *KOListView::getItemForEvent(KOEvent *event)
   return 0;
 }
 
-void KOListView::editItem(QListViewItem *item)
+void KOListView::defaultItemAction(QListViewItem *item)
 {
-  emit editEventSignal(((KOListViewItem *)item)->event());
+  defaultEventAction(((KOListViewItem *)item)->event());
 }
 
 void KOListView::popupMenu(QListViewItem *item,const QPoint &,int)
 {
   mActiveItem = (KOListViewItem *)item;
-  if (item) mPopupMenu->popup(QCursor::pos());
-}
-
-void KOListView::editEvent()
-{
-  if (mActiveItem) {
-    emit editEventSignal(mActiveItem->event());
-  }
-}
-
-void KOListView::deleteEvent()
-{
-  if (mActiveItem) {
-    emit deleteEventSignal(mActiveItem->event());
-  }
+  if (mActiveItem) showEventPopup(mPopupMenu,mActiveItem->event());
 }

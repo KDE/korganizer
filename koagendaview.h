@@ -142,6 +142,9 @@ class KOAgendaView: public KOBaseView {
     /** Update event belonging to agenda item */
     void updateEventDates(KOAgendaItem *item);
 
+    void showAgendaPopup(KOEvent *event);
+    void showAllDayAgendaPopup(KOEvent *event);
+
   private:
     // view widgets
     QFrame *mDayLabels;
@@ -159,6 +162,9 @@ class KOAgendaView: public KOBaseView {
 
     bool mWeekStartsMonday;
     int mStartHour;
+
+    QPopupMenu *mAgendaPopup;
+    QPopupMenu *mAllDayAgendaPopup;
 };
 
 #endif  // KOAGENDAVIEW_H

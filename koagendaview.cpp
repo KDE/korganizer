@@ -1,13 +1,5 @@
 // $Id$
 
-#include "koagendaview.h"
-#include "koagendaview.moc"
-
-#include "koagenda.h"
-#include "koagendaitem.h"
-#include "calobject.h"
-#include "calprinter.h"
-
 #include <qhbox.h>
 #include <qvbox.h>
 #include <qlabel.h>
@@ -16,13 +8,23 @@
 #include <qsplitter.h>
 #include <qfont.h>
 #include <qfontmetrics.h>
+#include <qpopupmenu.h>
 
 #include <kapp.h>
 #include <kconfig.h>
 #include <kglobal.h>
 #include <kstddirs.h>
+#include <kiconloader.h>
+#include <klocale.h>
 
 #include "koprefs.h"
+#include "koagenda.h"
+#include "koagendaitem.h"
+#include "calobject.h"
+#include "calprinter.h"
+
+#include "koagendaview.h"
+#include "koagendaview.moc"
 
 TimeLabels::TimeLabels(int rows,QWidget *parent,const char *name,WFlags f) :
   QScrollView(parent,name,f)
@@ -201,6 +203,11 @@ KOAgendaView::KOAgendaView(CalObject *cal,QWidget *parent,const char *name) :
   mAllDayAgenda = new KOAgenda(1,mAllDayFrame);
   QWidget *dummyAllDayRight = new QWidget(mAllDayFrame);
 
+  // Create event context menu for all day agenda
+  mAllDayAgendaPopup = eventPopup();
+  connect(mAllDayAgenda,SIGNAL(showEventPopupSignal(KOEvent *)),
+          SLOT(showAllDayAgendaPopup(KOEvent *)));
+
   // Create agenda frame
   QHBox *agendaFrame = new QHBox(splitterAgenda);
 
@@ -209,6 +216,14 @@ KOAgendaView::KOAgendaView(CalObject *cal,QWidget *parent,const char *name) :
 
   // Create agenda
   mAgenda = new KOAgenda(1,48,20,agendaFrame);
+
+  // Create event context menu for agenda
+  mAgendaPopup = eventPopup();
+  mAgendaPopup->insertSeparator();
+  mAgendaPopup->insertItem(QIconSet(UserIcon("bell")),i18n("ToggleAlarm"),
+                           mAgenda,SLOT(popupAlarm()));
+  connect(mAgenda,SIGNAL(showEventPopupSignal(KOEvent *)),
+          SLOT(showAgendaPopup(KOEvent *)));
 
   // Create day name labels for agenda columns
   mDayLabelsFrame = new QHBox(this);
@@ -607,7 +622,7 @@ void KOAgendaView::fillAgenda()
   int curCol;  // current column of agenda, i.e. the X coordinate
   QDate currentDate = mStartDate;
   for(curCol=0;curCol<int(mSelectedDates.count());++curCol) {
-    dayEvents = calendar->getEventsForDate(currentDate,false);    
+    dayEvents = mCalendar->getEventsForDate(currentDate,false);    
 
     unsigned int numEvent;
     for(numEvent=0;numEvent<dayEvents.count();++numEvent) {
@@ -679,3 +694,12 @@ void KOAgendaView::newEventAllDay(int gx, int )
   emit newEventSignal(mStartDate.addDays(gx));
 }
 
+void KOAgendaView::showAgendaPopup(KOEvent *event)
+{
+  showEventPopup(mAgendaPopup,event);
+}
+
+void KOAgendaView::showAllDayAgendaPopup(KOEvent *event)
+{
+  showEventPopup(mAllDayAgendaPopup,event);
+}

@@ -166,9 +166,7 @@ class KOMonthView: public KOBaseView {
    void daySelected(int index);
    void newEventSlot(int index);
    void doRightClickMenu();
-   void newEventSelected() { emit newEventSignal(daySummaries[*selDateIdxs.first()]->getDate()); };
-   void editSelected() { emit editEventSignal(getSelected().first()); };
-   void deleteSelected() { emit deleteEventSignal(getSelected().first()); };
+//   void newEventSelected() { emit newEventSignal(daySummaries[*selDateIdxs.first()]->getDate()); };
 
  protected:
    void viewChanged();

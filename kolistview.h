@@ -72,10 +72,8 @@ public slots:
 
   void changeEventDisplay(KOEvent *, int);
   
-  void editItem(QListViewItem *item);
+  void defaultItemAction(QListViewItem *item);
   void popupMenu(QListViewItem *item,const QPoint &,int);
-  void editEvent();
-  void deleteEvent();
 
 protected:
   void addEvents(QList<KOEvent> eventList);
