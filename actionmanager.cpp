@@ -252,6 +252,9 @@ void ActionManager::initActions()
                                         SLOT(toggleFilterView()),
                                         mACollection,
                                         "show_filter");
+#if KDE_IS_VERSION(3,2,90)
+  mFilterViewAction->setCheckedState(i18n("Hide Filter"));
+#endif
 
   KStdAction::tipOfDay( this, SLOT( showTip() ), mACollection,
                         "help_tipofday" );
