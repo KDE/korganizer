@@ -64,7 +64,7 @@
 #include "kogroupwareprefspage.h"
 #include "ktimeedit.h"
 #include "koglobals.h"
-#include "uiextractor.h"
+//#include "uiextractor.h"
 
 
 KOPrefsDialogMain::KOPrefsDialogMain( QWidget *parent, const char *name )
