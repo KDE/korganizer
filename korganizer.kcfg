@@ -9,7 +9,7 @@
       <whatsthis>WhatsThis text for AutoSave option</whatsthis>
       <default>true</default>
     </entry>
-    <entry type="Int" key="Auto Save Interval">
+    <entry type="Int" key="Auto Save Interval" min="1">
       <default>10</default>
     </entry>
     <entry type="Bool" key="Confirm Deletes" name="Confirm">
