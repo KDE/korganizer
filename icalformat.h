@@ -87,9 +87,6 @@ class ICalFormat : public CalFormat {
     icalcomponent *createCalendarComponent();
     icalcomponent *createScheduleComponent(Incidence *,Scheduler::Method);
 
-    /** shows an error dialog box. */
-    void parseError(const char *prop);
-  
   private:
     void dumpIcalRecurrence(icalrecurrencetype);
   

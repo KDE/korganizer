@@ -193,10 +193,10 @@ class CalendarView : public QWidget
      */
     void readSettings();
     
-    /** using the KConfig associated with the kapp variable, read in the
-     * settings for the current view from the config file. 
-     */
-    void readCurrentView();
+    /** Read which view was shown last from config file */
+    void readCurrentView(KConfig *);
+    /** Write which view is currently shown to config file */
+    void writeCurrentView(KConfig *);
   
     /** write current state to config file. */
     void writeSettings();
@@ -216,9 +216,6 @@ class CalendarView : public QWidget
     void eventToBeDeleted(Event *);
     void eventDeleted();
   
-    /** changes the view to be the currently selected view */
-    void changeView(KOBaseView *);
-    
     void updateView(const QDateList);
     void updateView();
   
@@ -305,15 +302,16 @@ class CalendarView : public QWidget
     
     void eventUpdated(Incidence *);
   
-    void view_whatsnext();
-    void view_list();
-    void view_day();
-    void view_workweek();
-    void view_week();
-    void view_month();
-    void view_todolist();
-    void view_project();
-    void view_journal();
+    void showWhatsNextView();
+    void showListView();
+    void showAgendaView();
+    void showDayView();
+    void showWorkWeekView();
+    void showWeekView();
+    void showMonthView();
+    void showTodoView();
+    void showProjectView();
+    void showJournalView();
 
     void schedule_outgoing();
     void schedule_incoming();
@@ -361,7 +359,6 @@ class CalendarView : public QWidget
     void emitEventsSelected();
   
   protected:
-    void hookupSignals();
     bool initCalendar(QString filename);
   
     void schedule(Scheduler::Method);
@@ -377,8 +374,16 @@ class CalendarView : public QWidget
      */
     void adaptNavigationUnits();
 
+    /** changes the view to be the currently selected view */
+    void showView(KOBaseView *);
+    
   private:
     void raiseCurrentView();
+
+    void createOptionsDialog();
+    void createIncomingDialog();
+    void createOutgoingDialog();
+    void createPrinter();
   
     CalPrinter *mCalPrinter;
   
@@ -400,7 +405,6 @@ class CalendarView : public QWidget
     KOJournalView   *mJournalView;
   
     KOBaseView     *mCurrentView;  // currently active event view
-    QList<KOBaseView> mCalendarViews;  // list of available calendar views
   
     // calendar object for this viewing instance
     Calendar      *mCalendar;

@@ -851,24 +851,29 @@ void KOAgendaView::startDrag(Event *event)
 
 void KOAgendaView::readSettings()
 {
-  KConfig *config = KGlobal::config();
+  readSettings(kapp->config());
+}
 
+void KOAgendaView::readSettings(KConfig *config)
+{
   config->setGroup("Views");
     
   QValueList<int> sizes = config->readIntListEntry("Separator AgendaView");
   if (sizes.count() == 2) {
     mSplitterAgenda->setSizes(sizes);
-  }  
+  }
+
+  setView(config->readNumEntry("Agenda View", KOAgendaView::WEEK));
 }
 
-void KOAgendaView::writeSettings()
+void KOAgendaView::writeSettings(KConfig *config)
 {
-  KConfig *config = KGlobal::config();
-
   config->setGroup("Views");
     
   QValueList<int> list = mSplitterAgenda->sizes();
   config->writeEntry("Separator AgendaView",list);
+
+  config->writeEntry("Agenda View",currentView());
 }
 
 void KOAgendaView::setHolidayMasks()

@@ -1,6 +1,4 @@
-// Calendar class for KOrganizer
-// (c) 1998 Preston Brown
-// 	$Id$
+// $Id$
 
 #include "config.h"
 
@@ -39,6 +37,8 @@ VCalFormat::~VCalFormat()
 
 bool VCalFormat::load(const QString &fileName)
 {
+  clearException();
+
   kdDebug() << "VCalFormat::load() " << fileName << endl;
 
   VObject *vcal = 0L;
@@ -48,7 +48,7 @@ bool VCalFormat::load(const QString &fileName)
   vcal = Parse_MIME_FromFileName((const char *)QFile::encodeName(fileName));
 
   if (!vcal) {
-    loadError(fileName);
+    setException(new KOErrorFormat(KOErrorFormat::CalVersionUnknown));
     return FALSE;
   }
 
@@ -1719,17 +1719,4 @@ int VCalFormat::numFromDay(const QString &day)
   if (day == "SU ") return 6;
 
   return -1; // something bad happened. :)
-}
-
-void VCalFormat::parseError(const char *prop) 
-{
-  if (mEnableDialogs)
-    KMessageBox::sorry(mTopWidget,
-                       i18n("An error has occurred parsing this file.\n"
-                            "It is missing property \"%1\".\n"
-                            "Please verify that the file is in vCalendar "
-                            "format\n"
-                            "and try again, or load another file.\n")
-                            .arg(prop),
-                       i18n("KOrganizer: Error Parsing Calendar"));
 }

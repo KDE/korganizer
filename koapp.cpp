@@ -79,6 +79,8 @@ void KOrganizerApp::displayImminent(const QString &file,int numdays)
 
 void KOrganizerApp::startAlarmDaemon()
 {
+  kdDebug() << "Starting alarm daemon" << endl;
+
   // Start alarmdaemon. It is a KUniqueApplication, that means it is
   // automatically made sure that there is only one instance of the alarm daemon
   // running.
@@ -89,6 +91,8 @@ void KOrganizerApp::startAlarmDaemon()
   if (!dcopClient()->send("alarmd","ad","reloadCal()","")) {
     kdDebug() << "KOrganizerApp::startAlarmDaemon(): dcop send failed" << endl;
   }
+
+  kdDebug() << "Starting alarm daemon done" << endl;
 }
 
 

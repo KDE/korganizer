@@ -95,6 +95,8 @@ class KOAgendaView : public KOEventView {
     LIST is a view of an arbitrary number of days */
     enum { DAY, WORKWEEK, WEEK, LIST };
 
+    /** Set type of agenda view. See also the definitions above. */
+    void setView( int ViewType );
     /** Return type of current agenda view */
     int currentView() { return mViewType; }
 
@@ -124,7 +126,8 @@ class KOAgendaView : public KOEventView {
     void startDrag(Event *);
 
     void readSettings();
-    void writeSettings();
+    void readSettings(KConfig *);
+    void writeSettings(KConfig *);
 
   signals:
     void editEventSignal(Event *);  // From KOBaseView
@@ -145,9 +148,6 @@ class KOAgendaView : public KOEventView {
 
     /** Create labels for the selected dates. */
     void createDayLabels();
-
-    /** Set type of agenda view. See also the definitions above. */
-    void setView( int ViewType );
 
     /**
       Set the masks on the agenda widgets indicating, which days are holidays.

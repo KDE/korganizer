@@ -48,7 +48,7 @@ bool ICalFormat::load(const QString &fileName)
   icalfileset *fs = icalfileset_new(writeText(fileName));
 
   if (!fs) {
-    loadError(fileName);
+    setException(new KOErrorFormat(KOErrorFormat::LoadError));
     return false;
   }
 
@@ -2120,19 +2120,6 @@ QString ICalFormat::extractErrorProperty(icalcomponent *c)
 //  kdDebug() << "ICalFormat:extractErrorProperty: " << errorMessage << endl;
   
   return errorMessage;
-}
-
-void ICalFormat::parseError(const char *prop) 
-{
-  if (mEnableDialogs)
-    KMessageBox::sorry(mTopWidget,
-                       i18n("An error has occurred parsing this file.\n"
-                            "It is missing property \"%1\".\n"
-                            "Please verify that the file is in vCalendar "
-                            "format\n"
-                            "and try again, or load another file.\n")
-                            .arg(prop),
-                       i18n("KOrganizer: Error Parsing Calendar"));
 }
 
 void ICalFormat::dumpIcalRecurrence(icalrecurrencetype r)

@@ -84,19 +84,19 @@ KOrganizerPart::KOrganizerPart(QWidget *parent, const char *name) :
   widget->show();
 
   (void)new KAction(i18n("&List"), "list", 0,
-                    widget, SLOT(view_list()),
+                    widget, SLOT(showListView()),
                     actionCollection(), "view_list");
   (void)new KAction(i18n("&Day"), "1day", 0,
-                    widget, SLOT(view_day()),
+                    widget, SLOT(showDayView()),
                     actionCollection(), "view_day");
   (void)new KAction(i18n("W&ork Week"), "5days", 0,
-                    widget, SLOT(view_workweek()),
+                    widget, SLOT(showWorkWeekView()),
                     actionCollection(), "view_workweek");
   (void)new KAction(i18n("&Week"), "7days", 0,
-                    widget, SLOT(view_week()),
+                    widget, SLOT(showWeekView()),
                     actionCollection(), "view_week");
   (void)new KAction(i18n("&Month"), "month", 0,
-                    widget, SLOT(view_month()),
+                    widget, SLOT(showMonthView()),
                     actionCollection(), "view_month");
   (void)new KAction(i18n("&To-do list"), "todo", 0,
                     widget, SLOT(view_todolist()),

@@ -84,8 +84,6 @@ Calendar::Calendar()
   uid_t userId;
   QString tmpStr;
 
-  // initialization
-  mTopWidget = 0;
   mDialogsOn = true;
 
   // initialize random numbers.  This is a hack, and not
@@ -268,11 +266,6 @@ QString Calendar::getTimeZoneStr() const
 		 (neg ? '-' : '+'),
 		 hours, minutes);
   return tmpStr;
-}
-
-void Calendar::setTopwidget(QWidget *topWidget)
-{
-  mTopWidget = topWidget;
 }
 
 const QString &Calendar::getEmail()

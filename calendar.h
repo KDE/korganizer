@@ -41,9 +41,6 @@ class Calendar : public QObject {
     /** Return the iCalendar format class the calendar object uses. */
     ICalFormat *iCalFormat();
 
-    /** Set the widget the calendar belongs to */
-    void setTopwidget(QWidget *topWidget);
-
     /** loads a calendar on disk into the current calendar.
      * Returns TRUE if successful, else returns FALSE.
      * @param fileName the name of the calendar on disk.
@@ -209,7 +206,6 @@ class Calendar : public QObject {
   
   private:
     QString mHolidayfile;  // name of file defining holidays
-    QWidget *mTopWidget;   // topWidget this calendar belongs to
     QString mOwner;        // who the calendar belongs to
     QString mOwnerEmail;   // email address of the owner
     int mTimeZone;         // timezone OFFSET from GMT (MINUTES)

@@ -240,33 +240,33 @@ void KOrganizer::initActions()
 
   // view menu
   (void)new KAction(i18n("What's &Next"), 0,
-                    mCalendarView, SLOT(view_whatsnext()),
+                    mCalendarView, SLOT(showWhatsNextView()),
                     actionCollection(), "view_whatsnext");
   (void)new KAction(i18n("&List"), "list", 0,
-                    mCalendarView, SLOT(view_list()),
+                    mCalendarView, SLOT(showListView()),
                     actionCollection(), "view_list");
   (void)new KAction(i18n("&Day"), "1day", 0,
-                    mCalendarView, SLOT(view_day()),
+                    mCalendarView, SLOT(showDayView()),
                     actionCollection(), "view_day");
   (void)new KAction(i18n("W&ork Week"), "5days", 0,
-                    mCalendarView, SLOT(view_workweek()),
+                    mCalendarView, SLOT(showWorkWeekView()),
                     actionCollection(), "view_workweek");
   (void)new KAction(i18n("&Week"), "7days", 0,
-                    mCalendarView, SLOT(view_week()),
+                    mCalendarView, SLOT(showWeekView()),
                     actionCollection(), "view_week");
   (void)new KAction(i18n("&Month"), "month", 0,
-                    mCalendarView, SLOT(view_month()),
+                    mCalendarView, SLOT(showMonthView()),
                     actionCollection(), "view_month");
   (void)new KAction(i18n("&To-do list"), "todo", 0,
-                    mCalendarView, SLOT(view_todolist()),
+                    mCalendarView, SLOT(showTodoView()),
                     actionCollection(), "view_todo");
   if (KOPrefs::instance()->mEnableProjectView) {
     (void)new KAction(i18n("&Project"), 0,
-                      mCalendarView, SLOT(view_project()),
+                      mCalendarView, SLOT(showProjectView()),
                       actionCollection(), "view_project");
   }
   (void)new KAction(i18n("&Journal"), 0,
-                    mCalendarView, SLOT(view_journal()),
+                    mCalendarView, SLOT(showJournalView()),
                     actionCollection(), "view_journal");
   (void)new KAction(i18n("&Update"), 0,
                     mCalendarView, SLOT(update()),

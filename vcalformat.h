@@ -85,9 +85,6 @@ class VCalFormat : public CalFormat {
     /** the reverse of the above function. */
     int numFromDay(const QString &day);
   
-    /** shows an error dialog box. */
-    void parseError(const char *prop);
-  
   private:
     QList<Event> mEventsRelate;           // events with relations
     QList<Todo> mTodosRelate;             // todos with relations

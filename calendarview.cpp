@@ -89,33 +89,37 @@ CalendarView::CalendarView(QWidget *parent,const char *name)
   kdDebug() << "CalendarView::CalendarView()" << endl;
 
   mCurrentView = 0;
+
+  mWhatsNextView = 0;
   mTodoView = 0;
   mAgendaView = 0;
   mMonthView = 0;
   mListView = 0;
+  mProjectView = 0;
+  mJournalView = 0;
 
-  mModified=false;
+  mModified = false;
   mReadOnly = false;
   mEventsSelected = true;
 
+  mOptionsDialog = 0;
   mSearchDialog = 0;
   mArchiveDialog = 0;
   mFilterEditDialog = 0;
+  mExportWebDialog = 0;
+  mOutgoingDialog = 0;
+  mIncomingDialog = 0;
+  
+  mCalPrinter = 0;
 
 //  setMinimumSize(620,400);	// make sure we don't get resized too small...
 
   // Create calendar object, which manages all calendar information associated
   // with this calendar view window.
   mCalendar = new CalendarLocal;
-
-  mCalendar->setTopwidget(this);
-
-  mOutgoingDialog = new OutgoingDialog(mCalendar,this);
-  connect(mOutgoingDialog,SIGNAL(numMessagesChanged(int)),
-          SIGNAL(numOutgoingChanged(int)));
-  mIncomingDialog = new IncomingDialog(mCalendar,this);
-  connect(mIncomingDialog,SIGNAL(numMessagesChanged(int)),
-          SIGNAL(numIncomingChanged(int)));
+  connect(this, SIGNAL(configChanged()), mCalendar, SLOT(updateConfig()));
+  connect(mCalendar,SIGNAL(calUpdated(Incidence *)),
+          SLOT(eventUpdated(Incidence *)));
 
   mCategoryEditDialog = new CategoryEditDialog();
 
@@ -129,18 +133,27 @@ CalendarView::CalendarView(QWidget *parent,const char *name)
                             "CalendarView::LeftFrame");
   mRightFrame = new QWidgetStack(mPanner, "CalendarView::RightFrame");
 
-  mOptionsDialog = new KOPrefsDialog(this);
-  mOptionsDialog->readConfig();
-  connect(mOptionsDialog,SIGNAL(configChanged()),SLOT(updateConfig()));
-  connect(mCategoryEditDialog,SIGNAL(categoryConfigChanged()),
-          mOptionsDialog,SLOT(updateCategories()));
-
   mDateNavigator = new KDateNavigator(mLeftFrame, mCalendar, TRUE,
                         "CalendarView::DateNavigator", QDate::currentDate());
-
-//  if (!filename.isEmpty()) initCalendar(filename);
+  connect(mDateNavigator, SIGNAL(datesSelected(const QDateList)),
+          SLOT(selectDates(const QDateList)));
+  connect(mDateNavigator,SIGNAL(weekClicked(QDate)),SLOT(selectWeek(QDate)));
+  connect(mDateNavigator,SIGNAL(eventDropped(Event *)),
+          SLOT(eventAdded(Event *)));
+  connect(this, SIGNAL(configChanged()), mDateNavigator, SLOT(updateConfig()));
 
   mTodoList = new KOTodoView(mCalendar, mLeftFrame, "CalendarView::TodoList");
+  connect(mTodoList, SIGNAL(newTodoSignal()),
+	  this, SLOT(newTodo()));
+  connect(mTodoList, SIGNAL(newSubTodoSignal(Todo *)),
+	  this, SLOT(newSubTodo(Todo *)));
+  connect(mTodoList, SIGNAL(editTodoSignal(Todo *)),
+	  this, SLOT(editTodo(Todo *)));
+  connect(mTodoList, SIGNAL(showTodoSignal(Todo *)),
+	  this, SLOT(showTodo(Todo *)));
+  connect(mTodoList, SIGNAL(deleteTodoSignal(Todo *)),
+          this, SLOT(deleteTodo(Todo *)));
+  connect(this, SIGNAL(configChanged()), mTodoList, SLOT(updateConfig()));
 
   mFilters.setAutoDelete(true);
 
@@ -150,62 +163,8 @@ CalendarView::CalendarView(QWidget *parent,const char *name)
   // Hide filter per default
   mFilterView->hide();
 
-  // create the main data display views.
-  mTodoView   = new KOTodoView(mCalendar, mRightFrame, "CalendarView::TodoView");
-  mRightFrame->addWidget(mTodoView,0);
-  mCalendarViews.append(mTodoView);
-
-  mAgendaView = new KOAgendaView(mCalendar, mRightFrame, "CalendarView::AgendaView");
-  mRightFrame->addWidget(mAgendaView,1);
-  mCalendarViews.append(mAgendaView);
-
-  mListView   = new KOListView(mCalendar, mRightFrame, "CalendarView::ListView");
-  mRightFrame->addWidget(mListView,2);
-  mCalendarViews.append(mListView);
-
-  mMonthView = new KOMonthView(mCalendar, mRightFrame, "CalendarView::MonthView");
-  mRightFrame->addWidget(mMonthView,3);
-  mCalendarViews.append(mMonthView);
-
-  mProjectView = new KOProjectView(mCalendar,mRightFrame,
-                                   "CalendarView::ProjectView");
-  mRightFrame->addWidget(mProjectView,0);
-  mCalendarViews.append(mProjectView);
-
-  mWhatsNextView = new KOWhatsNextView(mCalendar,mRightFrame,
-                                       "CalendarView::WhatsNextView");
-  mRightFrame->addWidget(mWhatsNextView,0);
-  mCalendarViews.append(mWhatsNextView);
-
-  mJournalView = new KOJournalView(mCalendar,mRightFrame,
-                                   "CalendarView::JournalView");
-  mRightFrame->addWidget(mJournalView,0);
-  mCalendarViews.append(mJournalView);
-
-  readCurrentView();
-
-/*
-  // List classnames of available views
-  QObject *obj;
-  for(obj=mCalendarViews.first();obj;obj=mCalendarViews.next())
-    kdDebug() << "calViews: " << obj->className() << endl;
-*/
-
-  // set up printing object
-  mCalPrinter = new CalPrinter(this, mCalendar);
-
-  // set up web exporting object
-  mExportWebDialog = new ExportWebDialog(mCalendar);
-
-  // hook up the signals/slots of all widgets together so communication
-  // can happen when things get clicked.
-  hookupSignals();
-
-  raiseCurrentView();
-
+  readSettings();
   goToday();
-
-  changeAgendaView(mAgendaViewMode);
 
   setupRollover();
 
@@ -230,6 +189,43 @@ CalendarView::~CalendarView()
   kdDebug() << "~CalendarView() done" << endl;
 }
 
+void CalendarView::createOptionsDialog()
+{
+  if (!mOptionsDialog) {
+    mOptionsDialog = new KOPrefsDialog(this);
+    mOptionsDialog->readConfig();
+    connect(mOptionsDialog,SIGNAL(configChanged()),SLOT(updateConfig()));
+    connect(mCategoryEditDialog,SIGNAL(categoryConfigChanged()),
+            mOptionsDialog,SLOT(updateCategories()));
+  }
+}
+
+void CalendarView::createOutgoingDialog()
+{
+  if (!mOutgoingDialog) {
+    mOutgoingDialog = new OutgoingDialog(mCalendar,this);
+    connect(mOutgoingDialog,SIGNAL(numMessagesChanged(int)),
+            SIGNAL(numOutgoingChanged(int)));
+  }
+}
+
+void CalendarView::createIncomingDialog()
+{
+  if (!mIncomingDialog) {
+    mIncomingDialog = new IncomingDialog(mCalendar,this);
+    connect(mIncomingDialog,SIGNAL(numMessagesChanged(int)),
+            SIGNAL(numIncomingChanged(int)));
+    connect(mIncomingDialog,SIGNAL(calendarUpdated()),SLOT(updateView()));
+  }
+}
+
+void CalendarView::createPrinter()
+{
+  if (!mCalPrinter) {
+    mCalPrinter = new CalPrinter(this, mCalendar);
+    connect(this, SIGNAL(configChanged()), mCalPrinter, SLOT(updateConfig()));
+  }
+}
 
 bool CalendarView::openCalendar(QString filename)
 {
@@ -251,6 +247,7 @@ bool CalendarView::mergeCalendar(QString filename)
   if (mCalendar->load(filename)) {
     setModified(true);
     updateView();
+    emit statusMessage(i18n("Merged calendar %1").arg(filename));
     return true;
   } else {
     return false;
@@ -368,32 +365,39 @@ void CalendarView::readSettings()
   }
 
   // Set current view from Entry "Current View"
-  readCurrentView();
-
-  mAgendaView->readSettings();
+  readCurrentView(&config);
 
   readFilterSettings(&config);
 }
 
-void CalendarView::readCurrentView()
+void CalendarView::readCurrentView(KConfig *config)
 {
-  QString str;
-  KConfig config(locateLocal("config", "korganizerrc"));
+  config->setGroup("General");
+  QString view = config->readEntry("Current View");
 
-  mCurrentView = mAgendaView;
-
-  config.setGroup("General");
-  str = config.readEntry("Current View");
-  if (!str.isEmpty()) {
-    KOBaseView *obj;
-    for(obj=mCalendarViews.first();obj;obj=mCalendarViews.next()) {
-      if (str.compare(obj->className()) == 0) mCurrentView = obj;
-    }
-  }
-
-  config.setGroup("Views");
-  mAgendaViewMode = config.readNumEntry("Agenda View", KOAgendaView::DAY);
+  if (view == "WhatsNext") showWhatsNextView();
+  else if (view == "Month") showMonthView();
+  else if (view == "List") showListView();
+  else if (view == "Project") showProjectView();
+  else if (view == "Journal") showJournalView();
+  else showAgendaView();
 }
+
+void CalendarView::writeCurrentView(KConfig *config)
+{
+  config->setGroup("General");
+
+  QString view;
+  if (mCurrentView == mWhatsNextView) view = "WhatsNext";
+  else if (mCurrentView == mMonthView) view = "Month";
+  else if (mCurrentView == mListView) view = "List";
+  else if (mCurrentView == mProjectView) view = "Project";
+  else if (mCurrentView == mJournalView) view = "Journal";
+  else view = "Agenda";
+  
+  config->writeEntry("Current View",view);
+}
+
 
 void CalendarView::writeSettings()
 {
@@ -409,12 +413,11 @@ void CalendarView::writeSettings()
   list = mLeftFrame->sizes();
   config.writeEntry("Separator2",list);
 
-  config.writeEntry("Current View",mCurrentView->className());
+  writeCurrentView(&config);
 
-  config.setGroup("Views");
-  config.writeEntry("Agenda View", mAgendaView->currentView());
-
-  mAgendaView->writeSettings();
+  if (mAgendaView) {
+    mAgendaView->writeSettings(&config);
+  }
 
   KOPrefs::instance()->writeConfig();
 
@@ -482,7 +485,7 @@ void CalendarView::goToday()
 void CalendarView::goNext()
 {
   // adapt this to work for other views
-  mAgendaView->slotNextDates();
+  if (mAgendaView) mAgendaView->slotNextDates();
   // this *appears* to work fine...
   updateView(mDateNavigator->getSelected());
 }
@@ -490,7 +493,7 @@ void CalendarView::goNext()
 void CalendarView::goPrevious()
 {
   // adapt this to work for other views
-  mAgendaView->slotPrevDates();
+  if (mAgendaView) mAgendaView->slotPrevDates();
   // this *appears* to work fine...
   updateView(mDateNavigator->getSelected());
 }
@@ -506,103 +509,6 @@ void CalendarView::setupRollover()
 
   QTimer::singleShot(QDateTime::currentDateTime().secsTo(tomorrow)*1000,
 		     mDateNavigator, SLOT(updateView()));
-}
-
-
-void CalendarView::hookupSignals()
-{
-  // SIGNAL/SLOTS FOR DATE SYNCHRO
-  connect(mListView, SIGNAL(datesSelected(const QDateList)),
-	  mDateNavigator, SLOT(selectDates(const QDateList)));
-  connect(mAgendaView, SIGNAL(datesSelected(const QDateList)),
-	  mDateNavigator, SLOT(selectDates(const QDateList)));
-  connect(mMonthView, SIGNAL(datesSelected(const QDateList)),
-	  mDateNavigator, SLOT(selectDates(const QDateList)));
-  connect(mDateNavigator, SIGNAL(datesSelected(const QDateList)),
-	  this, SLOT(selectDates(const QDateList)));
-
-  connect(mDateNavigator,SIGNAL(weekClicked(QDate)),SLOT(selectWeek(QDate)));
-
-  connect(mDateNavigator,SIGNAL(eventDropped(Event *)),
-          SLOT(eventAdded(Event *)));
-
-  // SIGNALS/SLOTS FOR LIST VIEW
-  connect(mListView, SIGNAL(showEventSignal(Event *)),
-	  this, SLOT(showEvent(Event *)));
-  connect(mListView, SIGNAL(editEventSignal(Event *)),
-	  this, SLOT(editEvent(Event *)));
-  connect(mListView, SIGNAL(deleteEventSignal(Event *)),
-	  this, SLOT(deleteEvent(Event *)));
-  connect(mListView,SIGNAL(eventsSelected(bool)),
-          SLOT(processEventSelection(bool)));
-
-  // SIGNALS/SLOTS FOR DAY/WEEK VIEW
-  connect(mAgendaView,SIGNAL(newEventSignal(QDateTime)),
-          this, SLOT(newEvent(QDateTime)));
-  connect(mAgendaView,SIGNAL(newEventSignal(QDate)),
-          this, SLOT(newEvent(QDate)));
-//  connect(mAgendaView,SIGNAL(newEventSignal()),
-//		this, SLOT(newEvent()));
-  connect(mAgendaView, SIGNAL(editEventSignal(Event *)),
-	  this, SLOT(editEvent(Event *)));
-  connect(mAgendaView, SIGNAL(showEventSignal(Event *)),
-	  this, SLOT(showEvent(Event *)));
-  connect(mAgendaView, SIGNAL(deleteEventSignal(Event *)),
-	  this, SLOT(deleteEvent(Event *)));
-  connect(mAgendaView,SIGNAL(eventsSelected(bool)),
-          SLOT(processEventSelection(bool)));
-
-  // SIGNALS/SLOTS FOR MONTH VIEW
-  connect(mMonthView, SIGNAL(showEventSignal(Event *)),
-	  this, SLOT(showEvent(Event *)));
-  connect(mMonthView, SIGNAL(newEventSignal(QDate)),
-	  this, SLOT(newEvent(QDate)));
-  connect(mMonthView, SIGNAL(editEventSignal(Event *)),
-	  this, SLOT(editEvent(Event *)));
-  connect(mMonthView, SIGNAL(deleteEventSignal(Event *)),
-	  this, SLOT(deleteEvent(Event *)));
-  connect(mMonthView,SIGNAL(eventsSelected(bool)),
-          SLOT(processEventSelection(bool)));
-
-  // SIGNALS/SLOTS FOR TODO VIEW
-  connect(mTodoView, SIGNAL(newTodoSignal()),
-	  this, SLOT(newTodo()));
-  connect(mTodoView, SIGNAL(newSubTodoSignal(Todo *)),
-	  this, SLOT(newSubTodo(Todo *)));
-  connect(mTodoView, SIGNAL(showTodoSignal(Todo *)),
-	  this, SLOT(showTodo(Todo *)));
-  connect(mTodoView, SIGNAL(editTodoSignal(Todo *)),
-	  this, SLOT(editTodo(Todo *)));
-  connect(mTodoView, SIGNAL(deleteTodoSignal(Todo *)),
-          this, SLOT(deleteTodo(Todo *)));
-
-  // SIGNALS/SLOTS FOR TODO LIST
-  connect(mTodoList, SIGNAL(newTodoSignal()),
-	  this, SLOT(newTodo()));
-  connect(mTodoList, SIGNAL(newSubTodoSignal(Todo *)),
-	  this, SLOT(newSubTodo(Todo *)));
-  connect(mTodoList, SIGNAL(editTodoSignal(Todo *)),
-	  this, SLOT(editTodo(Todo *)));
-  connect(mTodoList, SIGNAL(showTodoSignal(Todo *)),
-	  this, SLOT(showTodo(Todo *)));
-  connect(mTodoList, SIGNAL(deleteTodoSignal(Todo *)),
-          this, SLOT(deleteTodo(Todo *)));
-
-  // CONFIGURATION SIGNALS/SLOTS
-  // need to know about changed in configuration.
-  connect(this, SIGNAL(configChanged()), mCalendar, SLOT(updateConfig()));
-  connect(this, SIGNAL(configChanged()), mAgendaView, SLOT(updateConfig()));
-  connect(this, SIGNAL(configChanged()), mMonthView, SLOT(updateConfig()));
-  connect(this, SIGNAL(configChanged()), mListView, SLOT(updateConfig()));
-  connect(this, SIGNAL(configChanged()), mCalPrinter, SLOT(updateConfig()));
-  connect(this, SIGNAL(configChanged()), mDateNavigator, SLOT(updateConfig()));
-  connect(this, SIGNAL(configChanged()), mTodoView, SLOT(updateConfig()));
-  connect(this, SIGNAL(configChanged()), mTodoList, SLOT(updateConfig()));
-
-  // MISC. SIGNALS/SLOTS
-  connect(mCalendar,SIGNAL(calUpdated(Incidence *)),
-          SLOT(eventUpdated(Incidence *)));
-  connect(mIncomingDialog,SIGNAL(calendarUpdated()),SLOT(updateView()));
 }
 
 void CalendarView::updateConfig()
@@ -663,9 +569,9 @@ void CalendarView::updateTodoViews()
 
 void CalendarView::changeAgendaView( int newView )
 {
-  if (newView == mAgendaView->currentView()) return;
+  if (!mAgendaView) return;
 
-  QPixmap px;
+  if (newView == mAgendaView->currentView()) return;
 
   switch( newView ) {
   case KOAgendaView::DAY: {
@@ -695,6 +601,8 @@ void CalendarView::changeAgendaView( int newView )
 
 void CalendarView::nextAgendaView()
 {
+  if (!mAgendaView) return;
+
   int view;
 
   if( mCurrentView == mAgendaView ) {
@@ -705,11 +613,11 @@ void CalendarView::nextAgendaView()
       changeAgendaView( KOAgendaView::DAY );
   } else {
     changeAgendaView( mAgendaView->currentView() );
-    changeView( mAgendaView );
+    showView( mAgendaView );
   }
 }
 
-void CalendarView::changeView(KOBaseView *view)
+void CalendarView::showView(KOBaseView *view)
 {
   if(view == mCurrentView) return;
 
@@ -725,8 +633,8 @@ void CalendarView::changeView(KOBaseView *view)
 
 void CalendarView::raiseCurrentView()
 {
-  if ((KOPrefs::instance()->mFullViewMonth && mCurrentView == mMonthView) ||
-       KOPrefs::instance()->mFullViewTodo && mCurrentView == mTodoView) {
+  if ((mMonthView && KOPrefs::instance()->mFullViewMonth && mCurrentView == mMonthView) ||
+      (mTodoView && KOPrefs::instance()->mFullViewTodo && mCurrentView == mTodoView)) {
     mLeftFrame->hide();
   } else {
     mLeftFrame->show();
@@ -742,7 +650,6 @@ void CalendarView::updateView(const QDateList selectedDates)
   tmpList = selectedDates;
 
   int numView;
-  QPixmap px;
 
   // if there are 5 dates and the first is a monday, we have a workweek.
   if ((tmpList.count() == 5) &&
@@ -766,7 +673,7 @@ void CalendarView::updateView(const QDateList selectedDates)
   mCurrentView->selectDates(selectedDates);
 
   mTodoList->updateView();
-  mTodoView->updateView();
+  if (mTodoView) mTodoView->updateView();
 }
 
 void CalendarView::updateView()
@@ -832,6 +739,7 @@ void CalendarView::edit_paste()
 
 void CalendarView::edit_options()
 {
+  createOptionsDialog();
   mOptionsDialog->readConfig();
   mOptionsDialog->show();
 }
@@ -902,6 +810,7 @@ void CalendarView::newTodo()
 
   // connect the win for changed events
   connect(todoWin,SIGNAL(todoAdded(Event *)),SLOT(updateTodoViews()));
+  createOptionsDialog();
   connect(todoWin,SIGNAL(categoryConfigChanged()),
           mOptionsDialog,SLOT(updateCategories()));
 
@@ -919,6 +828,7 @@ void CalendarView::newSubTodo(Todo *parentEvent)
 
   // connect the win for changed events
   connect(todoWin,SIGNAL(todoAdded(Event *)),SLOT(updateTodoViews()));
+  createOptionsDialog();
   connect(todoWin,SIGNAL(categoryConfigChanged()),
           mOptionsDialog,SLOT(updateCategories()));
 
@@ -1024,6 +934,7 @@ void CalendarView::editTodo(Todo *anEvent)
             SLOT(updateTodoViews()));
     connect(eventWin,SIGNAL(todoDeleted()),
             SLOT(updateTodoViews()));
+    createOptionsDialog();
     connect(eventWin,SIGNAL(categoryConfigChanged()),
             mOptionsDialog,SLOT(updateCategories()));
     connect(this, SIGNAL(closingDown()),
@@ -1103,6 +1014,11 @@ void CalendarView::action_deleteTodo()
   Todo *aTodo;
   KOTodoView *todoList2 = (mCurrentView->isEventView() ? mTodoList : mTodoView);
 //  TodoView *todoList2 = (viewMode == TODOVIEW ? mTodoView : mTodoList);
+
+  if (!todoList2) {
+    KNotifyClient::beep();
+    return;
+  }
 
   aTodo = (todoList2->selectedTodos()).first();
   if (!aTodo) {
@@ -1254,62 +1170,178 @@ void CalendarView::action_mail()
 }
 
 
-void CalendarView::view_whatsnext()
+void CalendarView::showWhatsNextView()
 {
-  changeView(mWhatsNextView);
+  if (!mWhatsNextView) {
+    mWhatsNextView = new KOWhatsNextView(mCalendar,mRightFrame,
+                                         "CalendarView::WhatsNextView");
+    mRightFrame->addWidget(mWhatsNextView,0);
+  }
+  
+  showView(mWhatsNextView);
 }
 
-void CalendarView::view_list()
+void CalendarView::showListView()
 {
-  changeView(mListView);
+  if (!mListView) {
+    mListView = new KOListView(mCalendar, mRightFrame, "CalendarView::ListView");
+    mRightFrame->addWidget(mListView,2);
+
+    connect(mListView, SIGNAL(datesSelected(const QDateList)),
+	    mDateNavigator, SLOT(selectDates(const QDateList)));
+
+    connect(mListView, SIGNAL(showEventSignal(Event *)),
+	    this, SLOT(showEvent(Event *)));
+    connect(mListView, SIGNAL(editEventSignal(Event *)),
+	    this, SLOT(editEvent(Event *)));
+    connect(mListView, SIGNAL(deleteEventSignal(Event *)),
+	    this, SLOT(deleteEvent(Event *)));
+    connect(mListView,SIGNAL(eventsSelected(bool)),
+            SLOT(processEventSelection(bool)));
+
+    connect(this, SIGNAL(configChanged()), mListView, SLOT(updateConfig()));
+  }
+  
+  showView(mListView);
 }
 
-void CalendarView::view_day()
+void CalendarView::showAgendaView()
 {
-  changeView(mAgendaView);
+  if (!mAgendaView) {
+    mAgendaView = new KOAgendaView(mCalendar, mRightFrame, "CalendarView::AgendaView");
+    mRightFrame->addWidget(mAgendaView,1);
+
+    connect(mAgendaView, SIGNAL(datesSelected(const QDateList)),
+            mDateNavigator, SLOT(selectDates(const QDateList)));
+
+    // SIGNALS/SLOTS FOR DAY/WEEK VIEW
+    connect(mAgendaView,SIGNAL(newEventSignal(QDateTime)),
+            this, SLOT(newEvent(QDateTime)));
+    connect(mAgendaView,SIGNAL(newEventSignal(QDate)),
+            this, SLOT(newEvent(QDate)));
+//  connect(mAgendaView,SIGNAL(newEventSignal()),
+//		this, SLOT(newEvent()));
+    connect(mAgendaView, SIGNAL(editEventSignal(Event *)),
+	    this, SLOT(editEvent(Event *)));
+    connect(mAgendaView, SIGNAL(showEventSignal(Event *)),
+            this, SLOT(showEvent(Event *)));
+    connect(mAgendaView, SIGNAL(deleteEventSignal(Event *)),
+            this, SLOT(deleteEvent(Event *)));
+    connect(mAgendaView,SIGNAL(eventsSelected(bool)),
+            SLOT(processEventSelection(bool)));
+
+    connect(this, SIGNAL(configChanged()), mAgendaView, SLOT(updateConfig()));
+
+    mAgendaView->readSettings();
+  }
+  
+  showView(mAgendaView);
+}
+
+void CalendarView::showDayView()
+{
+  showAgendaView();
   changeAgendaView(KOAgendaView::DAY);
 }
 
-void CalendarView::view_workweek()
+void CalendarView::showWorkWeekView()
 {
-  changeView(mAgendaView);
+  showAgendaView();
   changeAgendaView(KOAgendaView::WORKWEEK);
 }
 
-void CalendarView::view_week()
+void CalendarView::showWeekView()
 {
-  changeView(mAgendaView);
+  showAgendaView();
   changeAgendaView(KOAgendaView::WEEK);
 }
 
-void CalendarView::view_month()
+void CalendarView::showMonthView()
 {
-  changeView(mMonthView);
+  if (!mMonthView) {
+    mMonthView = new KOMonthView(mCalendar, mRightFrame, "CalendarView::MonthView");
+    mRightFrame->addWidget(mMonthView,0);
+
+    connect(mMonthView, SIGNAL(datesSelected(const QDateList)),
+            mDateNavigator, SLOT(selectDates(const QDateList)));
+
+    // SIGNALS/SLOTS FOR MONTH VIEW
+    connect(mMonthView, SIGNAL(showEventSignal(Event *)),
+            this, SLOT(showEvent(Event *)));
+    connect(mMonthView, SIGNAL(newEventSignal(QDate)),
+            this, SLOT(newEvent(QDate)));
+    connect(mMonthView, SIGNAL(editEventSignal(Event *)),
+            this, SLOT(editEvent(Event *)));
+    connect(mMonthView, SIGNAL(deleteEventSignal(Event *)),
+            this, SLOT(deleteEvent(Event *)));
+    connect(mMonthView,SIGNAL(eventsSelected(bool)),
+            SLOT(processEventSelection(bool)));
+
+    connect(this, SIGNAL(configChanged()), mMonthView, SLOT(updateConfig()));
+  }
+
+  showView(mMonthView);
 }
 
-void CalendarView::view_todolist()
+void CalendarView::showTodoView()
 {
-  changeView(mTodoView);
+  if (!mTodoView) {
+    mTodoView = new KOTodoView(mCalendar, mRightFrame, "CalendarView::TodoView");
+    mRightFrame->addWidget(mTodoView,0);
+
+    // SIGNALS/SLOTS FOR TODO VIEW
+    connect(mTodoView, SIGNAL(newTodoSignal()),
+            this, SLOT(newTodo()));
+    connect(mTodoView, SIGNAL(newSubTodoSignal(Todo *)),
+            this, SLOT(newSubTodo(Todo *)));
+    connect(mTodoView, SIGNAL(showTodoSignal(Todo *)),
+            this, SLOT(showTodo(Todo *)));
+    connect(mTodoView, SIGNAL(editTodoSignal(Todo *)),
+            this, SLOT(editTodo(Todo *)));
+    connect(mTodoView, SIGNAL(deleteTodoSignal(Todo *)),
+            this, SLOT(deleteTodo(Todo *)));
+
+    connect(this, SIGNAL(configChanged()), mTodoView, SLOT(updateConfig()));
+  }
+  
+  showView(mTodoView);
 }
 
-void CalendarView::view_project()
+void CalendarView::showProjectView()
 {
-  changeView(mProjectView);
+  if (!mProjectView) {
+    mProjectView = new KOProjectView(mCalendar,mRightFrame,
+                                     "CalendarView::ProjectView");
+    mRightFrame->addWidget(mProjectView,0);
+  }
+
+  showView(mProjectView);
 }
 
-void CalendarView::view_journal()
+void CalendarView::showJournalView()
 {
-  changeView(mJournalView);
+  if (!mJournalView) {
+    mJournalView = new KOJournalView(mCalendar,mRightFrame,
+                                     "CalendarView::JournalView");
+    mRightFrame->addWidget(mJournalView,0);
+  }
+
+  showView(mJournalView);
 }
+
 
 void CalendarView::schedule_outgoing()
 {
+  createOutgoingDialog();
+
   mOutgoingDialog->show();
   mOutgoingDialog->raise();
 }
 
 void CalendarView::schedule_incoming()
 {
+  createIncomingDialog();
+
   mIncomingDialog->show();
   mIncomingDialog->raise();
 }
@@ -1327,6 +1359,7 @@ void CalendarView::schedule_publish()
     return;
   }
 
+  createOutgoingDialog();
   mOutgoingDialog->addMessage(event,Scheduler::Publish,"dummy@nowhere.nil");
 }
 
@@ -1378,6 +1411,7 @@ void CalendarView::schedule(Scheduler::Method method)
     return;
   }
 
+  createOutgoingDialog();
   mOutgoingDialog->addMessage(event,method);
 }
 
@@ -1430,11 +1464,15 @@ void CalendarView::signalAlarmDaemon()
 
 void CalendarView::printSetup()
 {
+  createPrinter();
+
   mCalPrinter->setupPrinter();
 }
 
 void CalendarView::print()
 {
+  createPrinter();
+
   QDateList tmpDateList(FALSE);
 
   tmpDateList = mDateNavigator->getSelected();
@@ -1446,6 +1484,8 @@ void CalendarView::printPreview()
 {
   kdDebug() << "CalendarView::printPreview()" << endl;
 
+  createPrinter();
+
   QDateList tmpDateList(FALSE);
 
   tmpDateList = mDateNavigator->getSelected();
@@ -1456,6 +1496,10 @@ void CalendarView::printPreview()
 
 void CalendarView::exportWeb()
 {
+  if (!mExportWebDialog) {
+    mExportWebDialog = new ExportWebDialog(mCalendar);
+  }
+
   mExportWebDialog->show();
   mExportWebDialog->raise();
 }
@@ -1555,7 +1599,7 @@ void CalendarView::selectDates(const QDateList selectedDates)
   if (mCurrentView->isEventView()) {
     updateView(selectedDates);
   } else {
-    changeView(mAgendaView);
+    showAgendaView();
   }
 }
 
