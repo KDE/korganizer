@@ -47,6 +47,11 @@ void KOJournalView::updateView()
   kdDebug() << "KOJournalView::updateView() does nothing" << endl;
 }
 
+void KOJournalView::flushView()
+{
+  mEntry->flushEntry();
+}
+
 void KOJournalView::selectDates(const QDateList dateList)
 {
 //  kdDebug() << "KOJournalView::selectDates()" << endl;

@@ -80,6 +80,11 @@ class KOBaseView : public QWidget
     virtual void updateView() = 0;
   
     /**
+      Write all unsaved data back to calendar store.
+    */
+    virtual void flushView() {}
+  
+    /**
      * Updates the current display to reflect the changes to one particular event.
      */
     virtual void changeEventDisplay(Event *, int) = 0;
@@ -103,7 +108,7 @@ class KOBaseView : public QWidget
      * @param eventList a list of events to select.
      */
     virtual void selectEvents(QList<Event> eventList) = 0;
-  
+
   protected:
     CalObject *mCalendar;
 };

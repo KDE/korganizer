@@ -160,6 +160,10 @@ class CalObject : public QObject {
     virtual void addJournal(Journal *) = 0;
     /** Return Journal for given date */
     virtual Journal *journal(const QDate &) = 0;
+    /** Return Journal with given UID */
+    virtual Journal *journal(const QString &UID) = 0;
+    /** Return list of all Journal entries */
+    virtual QList<Journal> journalList() = 0;
 
     void addIncidence(Incidence *);
   

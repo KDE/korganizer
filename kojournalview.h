@@ -26,6 +26,8 @@ class KOJournalView : public KOBaseView
 
   public slots:
     void updateView();
+    void flushView();
+    
     void selectDates(const QDateList dateList);
     void selectEvents(QList<Event> eventList);
 

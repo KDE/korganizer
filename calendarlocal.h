@@ -82,6 +82,8 @@ class CalendarLocal : public CalObject {
     virtual void addJournal(Journal *);
     /** Return Journal for given date */
     virtual Journal *journal(const QDate &);
+    /** Return Journal with given UID */
+    virtual Journal *journal(const QString &UID);
     /** Return list of all Journals stored in calendar */
     QList<Journal> journalList();
 

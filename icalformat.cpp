@@ -24,6 +24,7 @@ extern "C" {
 
 #include "qdatelist.h"
 #include "calobject.h"
+#include "journal.h"
 
 #include "icalformat.h"
 
@@ -117,7 +118,7 @@ bool ICalFormat::save(const QString &fileName)
   
   icalcomponent *component;
 
-  // TODO STUFF
+  // todos
   QList<Todo> todoList = mCalendar->getTodoList();
   QListIterator<Todo> qlt(todoList);
   for (; qlt.current(); ++qlt) {
@@ -125,11 +126,19 @@ bool ICalFormat::save(const QString &fileName)
     icalcomponent_add_component(calendar,component);
   }
 
-  // EVENT STUFF
+  // events
   QList<Event> events = mCalendar->getAllEvents();
   Event *ev;
   for(ev=events.first();ev;ev=events.next()) {
     component = writeEvent(ev);
+    icalcomponent_add_component(calendar,component);
+  }
+
+  // journals
+  QList<Journal> journals = mCalendar->journalList();
+  Journal *j;
+  for(j=journals.first();j;j=journals.next()) {
+    component = writeJournal(j);
     icalcomponent_add_component(calendar,component);
   }
 
@@ -588,18 +597,15 @@ icalcomponent *ICalFormat::writeEvent(Event *event)
 
   writeIncidence(vevent,event);
 
-  // start and end time
-  icaltimetype start,end;
+  // end time
+  icaltimetype end;
   if (event->doesFloat()) {
     kdDebug() << "§§ Event " << event->summary() << " floats." << endl; 
-    start = writeICalDate(event->dtStart().date());
     end = writeICalDate(event->dtEnd().date());
   } else {
     kdDebug() << "§§ Event " << event->summary() << " has time." << endl; 
-    start = writeICalDateTime(event->dtStart());
     end = writeICalDateTime(event->dtEnd());
   }
-  icalcomponent_add_property(vevent,icalproperty_new_dtstart(start));
   icalcomponent_add_property(vevent,icalproperty_new_dtend(end));
 
 // TODO: find correspondence to secrecy in iCal, DONE: it's CLASS
@@ -631,6 +637,15 @@ icalcomponent *ICalFormat::writeEvent(Event *event)
 //  addPropValue(vevent, VCTranspProp, tmpStr.ascii());
   
   return vevent;
+}
+
+icalcomponent *ICalFormat::writeJournal(Journal *journal)
+{
+  icalcomponent *vjournal = icalcomponent_new(ICAL_VJOURNAL_COMPONENT);
+
+  writeIncidence(vjournal,journal);
+  
+  return vjournal;
 }
 
 void ICalFormat::writeIncidence(icalcomponent *parent,Incidence *incidence)
@@ -694,6 +709,17 @@ void ICalFormat::writeIncidence(icalcomponent *parent,Incidence *incidence)
       icalcomponent_add_property(parent,p);
     }
   }
+
+  // start time
+  icaltimetype start;
+  if (incidence->doesFloat()) {
+    kdDebug() << "§§ Incidence " << incidence->summary() << " floats." << endl; 
+    start = writeICalDate(incidence->dtStart().date());
+  } else {
+    kdDebug() << "§§ incidence " << incidence->summary() << " has time." << endl; 
+    start = writeICalDateTime(incidence->dtStart());
+  }
+  icalcomponent_add_property(parent,icalproperty_new_dtstart(start));
 
   // description
   if (!incidence->description().isEmpty()) {
@@ -1171,16 +1197,6 @@ Event *ICalFormat::readEvent(icalcomponent *vevent)
     icalproperty_kind kind = icalproperty_isa(p);
     switch (kind) {
 
-      case ICAL_DTSTART_PROPERTY:  // start date and time
-        icaltime = icalproperty_get_dtstart(p);
-        if (icaltime.is_date) {
-          event->setDtStart(QDateTime(readICalDate(icaltime),QTime(0,0,0)));
-          event->setFloats(true);
-        } else {
-          event->setDtStart(readICalDateTime(icaltime));
-        }
-        break;
-
       case ICAL_DTEND_PROPERTY:  // start date and time
         icaltime = icalproperty_get_dtend(p);
         if (icaltime.is_date) {
@@ -1284,6 +1300,15 @@ Event *ICalFormat::readEvent(icalcomponent *vevent)
   return event;
 }
 
+Journal *ICalFormat::readJournal(icalcomponent *vjournal)
+{
+  Journal *journal = new Journal;
+
+  readIncidence(vjournal,journal);
+  
+  return journal;  
+}
+
 Attendee *ICalFormat::readAttendee(icalproperty *attendee)
 {
   Attendee *a;
@@ -1363,6 +1388,16 @@ void ICalFormat::readIncidence(icalcomponent *parent,Incidence *incidence)
 
       case ICAL_ATTENDEE_PROPERTY:  // attendee
         incidence->addAttendee(readAttendee(p));
+        break;
+
+      case ICAL_DTSTART_PROPERTY:  // start date and time
+        icaltime = icalproperty_get_dtstart(p);
+        if (icaltime.is_date) {
+          incidence->setDtStart(QDateTime(readICalDate(icaltime),QTime(0,0,0)));
+          incidence->setFloats(true);
+        } else {
+          incidence->setDtStart(readICalDateTime(icaltime));
+        }
         break;
 
       case ICAL_DESCRIPTION_PROPERTY:  // description
@@ -1964,6 +1999,15 @@ void ICalFormat::populate(icalcomponent *calendar)
     Event *event = readEvent(c);
     if (!mCalendar->getEvent(event->VUID())) mCalendar->addEvent(event);
     c = icalcomponent_get_next_component(calendar,ICAL_VEVENT_COMPONENT);
+  }
+  
+  // Iterate through all journals
+  c = icalcomponent_get_first_component(calendar,ICAL_VJOURNAL_COMPONENT);
+  while (c) {
+    kdDebug() << "----Journal found" << endl;  
+    Journal *journal = readJournal(c);
+    if (!mCalendar->journal(journal->VUID())) mCalendar->addJournal(journal);
+    c = icalcomponent_get_next_component(calendar,ICAL_VJOURNAL_COMPONENT);
   }
   
 #if 0

@@ -25,6 +25,8 @@ class JournalEntry : public QFrame {
 
     void clear();
 
+    void flushEntry();
+
   protected slots:
     void setDirty();
 

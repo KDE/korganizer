@@ -65,6 +65,7 @@ class ICalFormat : public CalFormat {
 
     icalcomponent *writeTodo(Todo *todo);
     icalcomponent *writeEvent(Event *event);
+    icalcomponent *writeJournal(Journal *journal);
     void writeIncidence(icalcomponent *parent,Incidence *incidence);
     icalproperty *writeRecurrenceRule(KORecurrence *);
     icalproperty *writeAlarm(KOAlarm *alarm);
@@ -72,6 +73,7 @@ class ICalFormat : public CalFormat {
     QString extractErrorProperty(icalcomponent *);    
     Todo *readTodo(icalcomponent *vtodo);
     Event *readEvent(icalcomponent *vevent);
+    Journal *readJournal(icalcomponent *vjournal);
     Attendee *readAttendee(icalproperty *attendee);
     void readIncidence(icalcomponent *parent,Incidence *incidence);
     void readRecurrenceRule(icalproperty *rrule,Incidence *event);

@@ -63,7 +63,7 @@
 #include "filtereditdialog.h"
 #include "kowhatsnextview.h"
 #include "kojournalview.h"
-
+#include "journal.h"
 #include "calendarview.h"
 #include "calendarview.moc"
 
@@ -262,11 +262,21 @@ bool CalendarView::saveCalendar(QString filename)
 {
   kdDebug() << "CalendarView::saveCalendar(): " << filename << endl;
 
+  // Store back all unsaved data into calendar object
+  mCurrentView->flushView();
+
   QString e = filename.right(4);
   
   CalFormat *format;
   if (e == ".vcs") {
     format = new VCalFormat(mCalendar);
+    if (mCalendar->journalList().count() > 0) {
+      int result = KMessageBox::warningContinueCancel(this,
+          i18n("You will use your journal entries, if you proceed with saving"
+               " in vCalendar format.\nUse 'Export iCalendar' to preserve the"
+               " journal."),i18n("Data Loss Warning"),i18n("Proceed"));
+      if (result != KMessageBox::Continue) return false;
+    }
   } else {
     format = new ICalFormat(mCalendar);
   }

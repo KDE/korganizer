@@ -79,6 +79,8 @@ void JournalEntry::clear()
 
 bool JournalEntry::eventFilter( QObject *o, QEvent *e )
 {
+//  kdDebug() << "JournalEntry::event received " << e->type() << endl;
+
   if ( e->type() == QEvent::FocusOut ) {
     writeJournal();
   }
@@ -91,6 +93,8 @@ void JournalEntry::writeJournal()
 
   if (!mDirty) return;
  
+  if (mEditor->text().isEmpty()) return;
+ 
 //  kdDebug() << "JournalEntry::writeJournal()..." << endl;
   
   if (!mJournal) {
@@ -102,4 +106,11 @@ void JournalEntry::writeJournal()
   mJournal->setDescription(mEditor->text());
 
   mDirty = false;
+}
+
+void JournalEntry::flushEntry()
+{
+  if (!mDirty) return;
+  
+  writeJournal();
 }

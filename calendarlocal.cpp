@@ -686,9 +686,12 @@ QList<Event> CalendarLocal::eventsForDate(const QDateTime &qdt)
 
 void CalendarLocal::addJournal(Journal *journal)
 {
-//  kdDebug() << "Adding Journal on " << journal->dtStart().toString() << endl;
+  kdDebug() << "Adding Journal on " << journal->dtStart().toString() << endl;
 
   mJournalMap.insert(journal->dtStart().date(),journal);
+
+  connect(journal, SIGNAL(eventUpdated(Incidence *)), this,
+	  SLOT(updateEvent(Incidence *)));
 }
 
 Journal *CalendarLocal::journal(const QDate &date)
@@ -701,6 +704,16 @@ Journal *CalendarLocal::journal(const QDate &date)
 //    kdDebug() << "  Found" << endl;
     return *it;
   }
+}
+
+Journal *CalendarLocal::journal(const QString &UID)
+{
+  QMap<QDate,Journal *>::ConstIterator it = mJournalMap.begin();
+  QMap<QDate,Journal *>::ConstIterator end = mJournalMap.end();
+  for(;it != end; ++it) {
+    if ((*it)->VUID() == UID) return *it;
+  }
+  return 0;
 }
 
 QList<Journal> CalendarLocal::journalList()
