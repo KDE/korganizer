@@ -17,7 +17,6 @@
 #include "calobject.h"
 #include "koevent.h"
 #include "kobaseview.h"
-#include "kpbutton.h"
 #include "ksellabel.h" 
 
 class KONavButton: public QPushButton
