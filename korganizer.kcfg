@@ -9,7 +9,7 @@
       <whatsthis>WhatsThis text for AutoSave option</whatsthis>
       <default>true</default>
     </entry>
-    <entry type="Int" key="Auto Save Interval" min="1">
+    <entry type="Int" key="Auto Save Interval">
       <default>10</default>
     </entry>
     <entry type="Bool" key="Confirm Deletes" name="Confirm">
@@ -33,7 +33,6 @@
     </entry>
     <entry type="Enum" key="Archive Action">
       <label>What to do when archiving</label>
-      <default>actionArchive</default>
       <choices>
         <choice name="actionDelete">
           <label>Delete old events</label>
@@ -42,6 +41,7 @@
           <label>Archive old events to a separate file</label>
         </choice>
       </choices>
+      <default>actionArchive</default>
     </entry>
     <entry type="Int" key="Expiry Time">
       <label>If auto-archiving is enabled, events older than this amount will be archived. The unit of this value is specified in another field.</label>
@@ -49,7 +49,6 @@
     </entry>
     <entry type="Enum" key="Expiry Unit" name="ExpiryUnit">
       <label>The unit in which the expiry time is expressed.</label>
-      <default>UnitMonths</default>
       <choices>
         <choice name="UnitDays">
           <label>In days</label>
@@ -61,6 +60,7 @@
           <label>In months</label>
         </choice>
       </choices>
+      <default>UnitMonths</default>
     </entry>
     <entry type="String" key="Archive File">
       <label>URL of the file where old events should be archived</label>

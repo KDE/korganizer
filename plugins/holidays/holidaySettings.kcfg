@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE kcfg SYSTEM "http://www.kde.org/standards/kcfg/1.0/kcfg.dtd">
 <kcfg>
-  <kcfgfile name="korganizerrc"/>
   <include>klocale.h</include>
+  <kcfgfile name="korganizerrc"/>
   <group name="Calendar/Holiday Plugin">
     <entry type="String" key="Holidays">
       <label>Please select a holiday set:</label>
