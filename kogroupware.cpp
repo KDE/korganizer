@@ -181,7 +181,7 @@ void KOGroupware::incomingDirChanged( const QString& path )
   else if ( action.startsWith( "reply" ) )
     scheduler.acceptTransaction( incidence, method, status );
   else
-    kdError(5850) << "***** Unknown action " << action << endl;
+    kdError(5850) << "Unknown incoming action " << action << endl;
   mView->updateView();
 }
 
