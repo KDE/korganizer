@@ -28,10 +28,9 @@ timezone_LDFLAGS = $(all_libraries) $(KDE_RPATH)
 timezone_LDADD   = libkorganizer.la $(LIB_KSYCOCA)
 timezone_SOURCES = timezone.cpp
 
-koprefs_base.cpp: $(srcdir)/koprefs.cfg $(top_builddir)/libkdepim/cfgc/cfgc
+koprefs_base.h koprefs_base.cpp: $(srcdir)/koprefs.cfg $(top_builddir)/libkdepim/cfgc/cfgc
 	$(top_builddir)/libkdepim/cfgc/cfgc $(srcdir)/koprefs.cfg
-koprefs_base.h: $(srcdir)/koprefs.cfg $(top_builddir)/libkdepim/cfgc/cfgc
-	$(top_builddir)/libkdepim/cfgc/cfgc $(srcdir)/koprefs.cfg
+$(srcdir)/koprefs.h: koprefs_base.h
 
 lib_LTLIBRARIES = libkorganizer.la
 
