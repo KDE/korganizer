@@ -1,4 +1,4 @@
-<!DOCTYPE UI><UI version="3.1" stdsetdef="1">
+<!DOCTYPE UI><UI version="3.2" stdsetdef="1">
 <class>IncomingDialog_base</class>
 <widget class="QDialog">
     <property name="name">
@@ -9,7 +9,7 @@
             <x>0</x>
             <y>0</y>
             <width>525</width>
-            <height>262</height>
+            <height>265</height>
         </rect>
     </property>
     <property name="caption">
@@ -32,6 +32,9 @@
             <property name="text">
                 <string>Retrieve &amp;Messages</string>
             </property>
+            <property name="accel">
+                <string>Alt+M</string>
+            </property>
         </widget>
         <widget class="QPushButton" row="5" column="1">
             <property name="name">
@@ -39,6 +42,9 @@
             </property>
             <property name="text">
                 <string>&amp;Close</string>
+            </property>
+            <property name="accel">
+                <string>Alt+C</string>
             </property>
             <property name="default">
                 <bool>true</bool>
@@ -147,6 +153,9 @@
             <property name="text">
                 <string>Accept A&amp;ll</string>
             </property>
+            <property name="accel">
+                <string>Alt+L</string>
+            </property>
         </widget>
         <widget class="QPushButton" row="1" column="1">
             <property name="name">
@@ -155,6 +164,9 @@
             <property name="text">
                 <string>&amp;Accept</string>
             </property>
+            <property name="accel">
+                <string>Alt+A</string>
+            </property>
         </widget>
         <widget class="QPushButton" row="2" column="1">
             <property name="name">
@@ -162,6 +174,9 @@
             </property>
             <property name="text">
                 <string>&amp;Reject</string>
+            </property>
+            <property name="accel">
+                <string>Alt+R</string>
             </property>
         </widget>
         <spacer row="4" column="1">
@@ -201,6 +216,18 @@
         <signal>clicked()</signal>
         <receiver>IncomingDialog_base</receiver>
         <slot>acceptAllMessages()</slot>
+    </connection>
+    <connection>
+        <sender>PushButton8</sender>
+        <signal>clicked()</signal>
+        <receiver>IncomingDialog_base</receiver>
+        <slot>acceptMessage()</slot>
+    </connection>
+    <connection>
+        <sender>PushButton9</sender>
+        <signal>clicked()</signal>
+        <receiver>IncomingDialog_base</receiver>
+        <slot>rejectMessage()</slot>
     </connection>
 </connections>
 <tabstops>
