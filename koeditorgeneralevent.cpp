@@ -172,7 +172,10 @@ void KOEditorGeneralEvent::setDateTimes(QDateTime start, QDateTime end)
 //  kdDebug() << "KOEditorGeneralEvent::setDateTimes(): Start DateTime: " << start.toString() << endl;
 
   mStartDateEdit->setDate(start.date());
+  // KTimeEdit seems to emit some signals when setTime() is called.
+  mStartTimeEdit->blockSignals( true );
   mStartTimeEdit->setTime(start.time());
+  mStartTimeEdit->blockSignals( false );
   mEndDateEdit->setDate(end.date());
   mEndTimeEdit->setTime(end.time());
 
