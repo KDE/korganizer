@@ -1,13 +1,16 @@
 # KDE Config File 
 [KDE Desktop Entry]
 Name=alarmd
+Name[af]=ALARMD
 Name[eo]=Alarmilo
 Name[fr]=Démon d'alarme
 Name[pl]=Demon alarmowy
+Name[zh_CN.GB2312]=提示进程
 Exec=alarmd
 Icon=alarmd
 Type=Application
 Comment=KOrganizer alarm daemon
+Comment[af]=KORGANIZER ALARM BEDIENER
 Comment[az]=KOrganizer alarm vasitəsi
 Comment[bg]=Будилник на KOrganizer
 Comment[cs]=Monitor alarmů pro Organizér
@@ -20,6 +23,8 @@ Comment[fi]=KOrganizer hälytyspalvelin
 Comment[fr]=Démon d'alarme de kOrganizer
 Comment[he]=KOrganizer לש תורוכזתה תרש
 Comment[hu]=A KOrganizer emlékeztető szolgáltatása
+Comment[is]=KOrganizer vekjarapúki
+Comment[it]=Demone di sveglia di KOrganizer
 Comment[ja]=KOrganizer アラームデーモン
 Comment[lt]=KOrganizer žadintuvo demonas
 Comment[lv]=KOrganizer trauksmes dēmons
@@ -33,7 +38,10 @@ Comment[ru]=будильник KOrganizer
 Comment[sk]=Démon poplachov KOrganizéra
 Comment[sl]=Strežnik za bujenje za KOrganizer
 Comment[sv]=Alarmdemon för Korganizer
+Comment[tr]=KOrganizer alarm sunucu programı
 Comment[uk]=Демон сигналізації KOrganizer
+Comment[vi]=Trình quản lí các daemon đồng hềE
+Comment[zh_CN.GB2312]=KOrganizer 提示进程
 Terminal=0
 X-KDE-autostart-after=panel
 X-KDE-autostart-condition=korganizerrc:AlarmDaemon:Autostart:true
