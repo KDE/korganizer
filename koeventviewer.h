@@ -26,6 +26,7 @@
 
 #include <qtextbrowser.h>
 
+#include <kconfig.h>
 namespace KCal {
 class Incidence;
 class Todo;
@@ -33,7 +34,6 @@ class Event;
 class Journal;
 }
 using namespace KCal;
-
 
 /**
   Viewer widget for events.
@@ -49,11 +49,7 @@ class KOEventViewer : public QTextBrowser
       Reimplemented from QTextBrowser to handle links.
     */
     void setSource( const QString & );
-
-    /**
-      Show given incidence in viewer. Clear all previously shown incidences.
-    */
-    virtual void setIncidence( Incidence * );
+    
     virtual bool appendIncidence( Incidence * );
     
     /**
@@ -65,8 +61,17 @@ class KOEventViewer : public QTextBrowser
     /**
       Add given text to currently shown content.
     */    
+  
     void addText( const QString &text );
-
+   
+    void readSettings( KConfig *config);
+    void writeSettings ( KConfig *config);
+    
+  public slots:
+    /**
+      Show given incidence in viewer. Clear all previously shown incidences.
+    */
+    virtual void setIncidence( Incidence * );
   private:
     QTextBrowser *mEventTextView;
 

@@ -29,7 +29,7 @@
 #include <qptrlist.h>
 #include <qmap.h>
 #include <kfile.h>
-
+#include <korganizer/koeventviewer.h>
 #include <libkcal/scheduler.h>
 
 #include <korganizer/calendarviewbase.h>
@@ -450,6 +450,10 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     void updateFilter();
 
     void showIntro();
+    
+    void showDateNavigator( bool );
+    void showTodoView( bool );
+    void showEventViewer( bool );
 
     /** Move the current view date to the specified date */
     void goDate( const QDate& date );
@@ -546,7 +550,8 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
 
     DateNavigator *mNavigator;
     DateChecker *mDateChecker;
-
+    
+    KOEventViewer *mEventViewer;
     KOViewManager *mViewManager;
     KODialogManager *mDialogManager;
 

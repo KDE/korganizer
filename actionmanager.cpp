@@ -536,7 +536,44 @@ void ActionManager::initActions()
                             mACollection );
     KStdAction::keyBindings( this, SLOT( keyBindings() ), mACollection );
   }
-
+  
+  mDateNavigatorShowAction= new KToggleAction ( i18n("Show DateNavigator"), 0, 
+                      this,
+                      SLOT( toggleDateNavigator() ),
+                      mACollection, 
+                      "show_datenavigator" );
+  mTodoViewShowAction= new KToggleAction ( i18n("Show Todo View"), 0, 
+                      this,
+                      SLOT( toggleTodoView() ),
+                      mACollection, 
+                      "show_todoview" );
+  mEventViewerShowAction= new KToggleAction ( i18n("Show Event Viewer"), 0, 
+                      this,
+                      SLOT( toggleEventViewer() ),
+                      mACollection, 
+                      "show_eventviewer" );
+  mResourceViewShowAction= new KToggleAction ( i18n("Show Resource View"), 0, 
+                      this,
+                      SLOT( toggleResourceView() ),
+                      mACollection, 
+                      "show_resourceview" );
+  
+  KConfig *config = KOGlobals::self()->config();
+  config->setGroup( "Settings" );
+  mDateNavigatorShowAction->setChecked(
+      config->readBoolEntry( "DateNavigatorVisible", true ) );
+  mTodoViewShowAction->setChecked(
+      config->readBoolEntry( "TodoViewVisible", true ) );
+  mEventViewerShowAction->setChecked(
+      config->readBoolEntry( "EventViewerVisible", true ) );
+  mResourceViewShowAction->setChecked(
+      config->readBoolEntry( "ResourceViewVisible", true ) );
+      
+  toggleDateNavigator();
+  toggleTodoView();
+  toggleEventViewer();
+  toggleResourceView();
+      
   new KAction( i18n("Edit C&ategories..."), 0,
                     mCalendarView->dialogManager(),
                     SLOT( showCategoryEditDialog() ),
@@ -590,6 +627,23 @@ void ActionManager::writeSettings()
     config->writeEntry( "ResourceButtonsVisible",
                         mResourceButtonsAction->isChecked() );
   }
+  if ( mDateNavigatorShowAction ) {
+    config->writeEntry( "DateNavigatorVisible",
+                        mDateNavigatorShowAction->isChecked() );
+  }
+  if ( mTodoViewShowAction ) {
+    config->writeEntry( "TodoViewVisible",
+                        mTodoViewShowAction->isChecked() );
+  }
+  if ( mResourceViewShowAction ) {
+    config->writeEntry( "ResourceViewVisible",
+                        mResourceViewShowAction->isChecked() );
+  }
+  if ( mEventViewerShowAction ) {
+    config->writeEntry( "EventViewerVisible",
+                        mEventViewerShowAction->isChecked() );
+  }
+  
   if ( mRecent ) mRecent->saveEntries( config );
 
   if ( mCalendarResources ) {
@@ -1208,6 +1262,34 @@ KOrg::MainWindow *ActionManager::findInstance( const KURL &url )
 void ActionManager::dumpText( const QString &str )
 {
   kdDebug(5850) << "ActionManager::dumpText(): " << str << endl;
+}
+
+void ActionManager::toggleDateNavigator()
+{
+  bool visible = mDateNavigatorShowAction->isChecked();
+  if ( mCalendarView ) mCalendarView->showDateNavigator( visible );
+}
+
+void ActionManager::toggleTodoView()
+{
+  bool visible = mTodoViewShowAction->isChecked();
+  if ( mCalendarView ) mCalendarView->showTodoView( visible );
+}
+
+void ActionManager::toggleEventViewer()
+{
+  bool visible = mEventViewerShowAction->isChecked();
+  if ( mCalendarView ) mCalendarView->showEventViewer( visible );
+}
+
+void ActionManager::toggleResourceView()
+{
+  bool visible = mResourceViewShowAction->isChecked();
+  kdDebug(5850) << "toggleResourceView: " << endl;
+  if ( mResourceView ) {
+    if ( visible ) mResourceView->show();
+    else mResourceView->hide();
+  }
 }
 
 void ActionManager::toggleResourceButtons()

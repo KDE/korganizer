@@ -289,6 +289,11 @@ class ActionManager : public QObject, public KCalendarIface
 
     void toggleResourceButtons();
 
+    void toggleDateNavigator();
+    void toggleTodoView();
+    void toggleEventViewer();
+    void toggleResourceView();
+    
     /** called by the autoSaveTimer to automatically save the calendar */
     void checkAutoSave();
 
@@ -346,6 +351,12 @@ class ActionManager : public QObject, public KCalendarIface
     // Actions
     KRecentFilesAction *mRecent;
     KToggleAction *mResourceButtonsAction;
+    
+    KToggleAction *mDateNavigatorShowAction;
+    KToggleAction *mTodoViewShowAction;
+    KToggleAction *mResourceViewShowAction;
+    KToggleAction *mEventViewerShowAction;
+    
     KAction *mShowIncidenceAction;
     KAction *mEditIncidenceAction;
     KAction *mDeleteIncidenceAction;

@@ -148,10 +148,13 @@ CalendarView::CalendarView( QWidget *parent, const char *name )
 
   mDateNavigator = new DateNavigatorContainer( mLeftSplitter,
                                                "CalendarView::DateNavigator" );
+                                               
 //  mLeftSplitter->setResizeMode( mDateNavigator, QSplitter::Stretch );
   mLeftSplitter->setCollapsible( mDateNavigator, true );
   mTodoList = new KOTodoView( CalendarNull::self(), mLeftSplitter, "todolist" );
 
+  mEventViewer = new KOEventViewer( mLeftSplitter,"EventViewer" );
+  
   QVBox *rightBox = new QVBox( mPanner );
   mNavigatorBar = new NavigatorBar( rightBox );
   mRightFrame = new QWidgetStack( rightBox );
@@ -177,6 +180,8 @@ CalendarView::CalendarView( QWidget *parent, const char *name )
                                        QDate::currentDate() );
   mTodoList = new KOTodoView( CalendarNull::self(), leftFrame, "todolist" );
 
+  mEventViewer = new KOEventViewer ( leftFrame, "EventViewer" );
+  
   QWidget *rightBox = new QWidget( mainBox );
   QBoxLayout *rightLayout = new QVBoxLayout( rightBox );
 
@@ -250,6 +255,8 @@ CalendarView::CalendarView( QWidget *parent, const char *name )
   connect( this, SIGNAL( configChanged() ),
            mDateNavigator, SLOT( updateConfig() ) );
 
+  connect( this, SIGNAL( incidenceSelected(Incidence *) ),
+           mEventViewer, SLOT ( setIncidence (Incidence *) ) );
   mViewManager->connectTodoView( mTodoList );
   mViewManager->connectView( mTodoList );
 
@@ -275,7 +282,7 @@ CalendarView::~CalendarView()
 
   delete mDialogManager;
   delete mViewManager;
-
+  delete mEventViewer;
   kdDebug(5850) << "~CalendarView() done" << endl;
 }
 
@@ -460,6 +467,8 @@ void CalendarView::readSettings()
   mLeftSplitter->setSizes(sizes);
 #endif
 
+  mEventViewer->readSettings( config );
+
   mViewManager->readSettings( config );
   mTodoList->restoreLayout(config,QString("Todo Layout"));
 
@@ -488,7 +497,7 @@ void CalendarView::writeSettings()
   list = mLeftSplitter->sizes();
   config->writeEntry("Separator2",list);
 #endif
-
+  mEventViewer->writeSettings( config );
   mViewManager->writeSettings( config );
   mTodoList->saveLayout(config,QString("Todo Layout"));
 
@@ -1624,6 +1633,31 @@ void CalendarView::showIntro()
 {
   kdDebug(5850) << "To be implemented." << endl;
 }
+
+void CalendarView::showDateNavigator( bool show )
+{
+  if( show )
+    mDateNavigator->show();
+  else
+    mDateNavigator->hide();
+}
+
+void CalendarView::showTodoView( bool show )
+{
+  if( show )
+    mTodoList->show();
+  else
+    mTodoList->hide();
+}
+
+void CalendarView::showEventViewer( bool show )
+{
+  if( show )
+    mEventViewer->show();
+  else
+    mEventViewer->hide();
+}
+
 
 void CalendarView::addView(KOrg::BaseView *view)
 {

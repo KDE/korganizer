@@ -88,7 +88,6 @@ class FreeBusyItem : public KDGanttViewTaskItem
     }
 
     QString email() const { return mAttendee->email(); }
-
     void setUpdateTimerID( int id ) { mTimerID = id; }
     int updateTimerID() const { return mTimerID; }
 

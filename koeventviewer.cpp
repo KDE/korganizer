@@ -28,7 +28,7 @@
 
 #include <libkcal/incidence.h>
 #include <libkcal/incidenceformatter.h>
-
+#include <kdebug.h>
 
 KOEventViewer::KOEventViewer( QWidget *parent, const char *name )
   : QTextBrowser( parent, name )
@@ -37,6 +37,25 @@ KOEventViewer::KOEventViewer( QWidget *parent, const char *name )
 
 KOEventViewer::~KOEventViewer()
 {
+}
+
+void KOEventViewer::readSettings( KConfig * config )
+{
+  if ( config ) {
+    config->setGroup( QString("EventViewer-%1").arg( name() )  );
+    int zoomFactor = config->readNumEntry("ZoomFactor", pointSize() );
+    zoomTo( zoomFactor );
+    kdDebug(5850) << " KOEventViewer: restoring the zoomFactor: "<< pointSize() << endl;
+  }
+}
+
+void KOEventViewer::writeSettings( KConfig * config )
+{
+  if ( config ) {
+    kdDebug(5850) << " KOEventViewer: saving the zoomFactor: "<< pointSize() << endl;
+    config->setGroup( QString("EventViewer-%1").arg( name() ) );
+    config->writeEntry("ZoomFactor", pointSize() );
+  }
 }
 
 void KOEventViewer::setSource( const QString &n )
