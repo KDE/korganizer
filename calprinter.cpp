@@ -5,7 +5,6 @@
  */
 
 #include <math.h>
-#include <stdlib.h>
 
 #include <qpainter.h>
 #include <qbuttongroup.h>
@@ -17,6 +16,7 @@
 #include <kstddirs.h>
 #include <kdateedit.h>
 #include <kmessagebox.h>
+#include <ktempfile.h>
 #include <kapp.h>
 #include <kdebug.h>
 
@@ -62,20 +62,13 @@ void CalPrinter::setupPrinter()
 
 void CalPrinter::preview(PrintType pt, const QDate &fd, const QDate &td)
 {
-  char previewFileName[200];
-  int tmpfd;
-
-  sprintf(previewFileName,"/tmp/korg.prv.XXXXXX");
-
-  if (-1==(tmpfd=::mkstemp(previewFileName)))
-	  return;
-  ::close(tmpfd);
+  KTempFile	tmpfn;
 
   oldOutputToFile = printer->outputToFile();
   oldFileName = printer->outputFileName();
 
   printer->setOutputToFile(TRUE);
-  printer->setOutputFileName(previewFileName);
+  printer->setOutputFileName(tmpfn.name());
 
   cpd = new CalPrintDialog(printer, TRUE, fd, td);
   switch(pt) {

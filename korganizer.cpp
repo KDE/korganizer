@@ -489,9 +489,9 @@ void KOrganizer::file_import()
 {
   // eventually, we will need a dialog box to select import type, etc.
   // for now, hard-coded to ical file, $HOME/.calendar.
-  int retVal,tmpfd;
+  int retVal;
   QString progPath;
-  char	tmpFn[200];
+  KTempFile tmpfn;
 
   QString homeDir = QDir::homeDirPath() + QString::fromLatin1("/.calendar");
 		  
@@ -501,21 +501,13 @@ void KOrganizer::file_import()
 		            "Import cannot proceed.\n"));
     return;
   }
-  sprintf(tmpFn,"/tmp/korg.vcal.XXXXXX");
-  if (-1 == (tmpfd=::mkstemp(tmpFn))) {
-      KMessageBox::error(this,
-		       i18n("KOrganizer could not create a temporary file for "
-			    "merging ~/.calendar!\n"));
-      return;
-  }
-  ::close(tmpfd);
-  progPath = locate("exe", "ical2vcal") + " " + tmpFn;
+  progPath = locate("exe", "ical2vcal") + " " + tmpfn.name();
 
   retVal = system(QFile::encodeName(progPath));
   
   if (retVal >= 0 && retVal <= 2) {
     // now we need to MERGE what is in the iCal to the current calendar.
-    mCalendarView->mergeCalendar(tmpFn);
+    mCalendarView->mergeCalendar(tmpfn.name());
     if (!retVal)
       KMessageBox::information(this,
 			       i18n("KOrganizer succesfully imported and "
@@ -537,7 +529,7 @@ void KOrganizer::file_import()
 			 i18n("KOrganizer doesn't think that your .calendar\n"
 			      "file is a valid ical calendar. Import has failed.\n"));
   }
-  ::unlink(tmpFn);
+  tmpfn.unlink();
 }
 
 
