@@ -675,7 +675,8 @@ RecurrenceRangeWidget::RecurrenceRangeWidget( QWidget *parent,
 			"should begin.") );
   rangeLayout->addWidget( mStartDateLabel );
 
-  QButtonGroup *rangeButtonGroup = new QButtonGroup;
+  QButtonGroup *rangeButtonGroup = new QButtonGroup( this );
+  rangeButtonGroup->hide();
 
   mNoEndDateButton = new QRadioButton( i18n("&No ending date"), rangeBox );
   QWhatsThis::add( mNoEndDateButton,
