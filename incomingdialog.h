@@ -47,8 +47,28 @@ class ScheduleItemIn : public QListViewItem
 };
 
 
+/**
+  This class provides the initialisation of a ScheduleItemIn for calendar
+  components using the Incidence::Visitor.
+*/
+class ScheduleItemVisitor : public Incidence::Visitor
+{
+  public:
+    ScheduleItemVisitor(ScheduleItemIn *);
+    ~ScheduleItemVisitor();
+
+    bool visit(Event *);
+    bool visit(Todo *);
+    bool visit(Journal *);
+
+  private:
+    ScheduleItemIn *mItem;
+};
+
+
+
 class IncomingDialog : public IncomingDialog_base
-{ 
+{
     Q_OBJECT
   public:
     IncomingDialog(Calendar *calendar,QWidget* parent=0,const char* name=0,
@@ -64,6 +84,7 @@ class IncomingDialog : public IncomingDialog_base
     void acceptAllMessages();
     void acceptMessage();
     void rejectMessage();
+    void showEvent(QListViewItem *);
 
   protected:
     bool acceptMessage(ScheduleItemIn *item);

@@ -87,8 +87,9 @@ QPtrList<ScheduleMessage> MailScheduler::retrieveTransactions()
       ScheduleMessage *message = mFormat->parseScheduleMessage(messageString);
       if (message) {
         kdDebug() << "MailScheduler::retrieveTransactions: got message '"
-                  << (*it) << "'" << endl; 
+                  << (*it) << "'" << endl;
         messageList.append(message);
+        mEventMap[message->event()->VUID()] = incomingDirName + "/" + (*it);
       } else {
         QString errorMessage;
         if (mFormat->exception()) {
@@ -100,6 +101,13 @@ QPtrList<ScheduleMessage> MailScheduler::retrieveTransactions()
       f.close();
     }
   }
-
   return messageList;
+}
+
+bool MailScheduler::deleteTransaction(Incidence *incidence)
+{
+  QFile f( mEventMap[incidence->VUID()] );
+  if ( !f.exists() ) return false;
+  else 
+    return f.remove();
 }

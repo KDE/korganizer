@@ -20,10 +20,14 @@
 // $Id$
 
 #include <qlistview.h>
+//#include <qdatetime.h>
 
+#include <kglobal.h>
+#include <klocale.h>
 #include <kdebug.h>
 
 #include <libkcal/incidence.h>
+#include <libkcal/event.h>
 #include <libkcal/calendar.h>
 
 #ifndef KORG_NOMAIL
@@ -33,6 +37,8 @@
 #endif
 
 #include "incomingdialog.h"
+#include "koeventviewerdialog.h"
+
 
 ScheduleItemIn::ScheduleItemIn(QListView *parent,Incidence *ev,
                                Scheduler::Method method,ScheduleMessage::Status status)
@@ -41,16 +47,58 @@ ScheduleItemIn::ScheduleItemIn(QListView *parent,Incidence *ev,
   mEvent = ev;
   mMethod = method;
   mStatus = status;
-  
-  setText(0,ev->summary());
-  setText(1,Scheduler::methodName(mMethod));
-  setText(2,ScheduleMessage::statusName(status));
+  setText(6,Scheduler::methodName(mMethod)+" ");
+  setText(7,ScheduleMessage::statusName(status));
 }
 
 
-/* 
- *  Constructs a IncomingDialog which is a child of 'parent', with the 
- *  name 'name' and widget flags set to 'f' 
+/* Visitor */
+ScheduleItemVisitor::ScheduleItemVisitor(ScheduleItemIn *item)
+{
+  mItem = item;
+}
+
+ScheduleItemVisitor::~ScheduleItemVisitor()
+{
+}
+
+bool ScheduleItemVisitor::visit(Event *e)
+{
+  mItem->setText(0,e->summary());
+  mItem->setText(1,e->dtStartDateStr());
+  if (e->doesFloat()) {
+    mItem->setText(2,"no time ");
+    mItem->setText(4,"no time ");
+  }
+  else {
+    mItem->setText(2,e->dtStartTimeStr());
+    mItem->setText(4,e->dtEndTimeStr());
+  }
+  if (e->hasEndDate()) {
+    mItem->setText(3,e->dtEndDateStr());
+  }
+  else {
+    mItem->setText(3,"");
+  }
+  mItem->setText(5,e->organizer()+" ");
+
+  return true;
+}
+
+bool ScheduleItemVisitor::visit(Todo *t)
+{
+  return false;
+}
+
+bool ScheduleItemVisitor::visit(Journal *)
+{
+  return false;
+}
+
+
+/*
+ *  Constructs a IncomingDialog which is a child of 'parent', with the
+ *  name 'name' and widget flags set to 'f'
  *
  *  The dialog will by default be modeless, unless you set 'modal' to
  *  TRUE to construct a modal dialog.
@@ -62,12 +110,19 @@ IncomingDialog::IncomingDialog(Calendar *calendar,QWidget* parent,
   mCalendar = calendar;
 #ifndef KORG_NOMAIL
   mScheduler = new MailScheduler(mCalendar);
+  retrieve();
 #else
   mScheduler = new DummyScheduler(mCalendar);
 #endif
+  mMessageListView->setColumnAlignment(1,AlignHCenter);
+  mMessageListView->setColumnAlignment(2,AlignHCenter);
+  mMessageListView->setColumnAlignment(3,AlignHCenter);
+  mMessageListView->setColumnAlignment(4,AlignHCenter);
+  QObject::connect(mMessageListView,SIGNAL(doubleClicked(QListViewItem *)),
+                   this,SLOT(showEvent(QListViewItem *)));
 }
 
-/*  
+/*
  *  Destroys the object and frees any allocated resources
  */
 IncomingDialog::~IncomingDialog()
@@ -84,10 +139,13 @@ void IncomingDialog::retrieve()
     Incidence *event = message->event();
     Scheduler::Method method = (Scheduler::Method)message->method();
     ScheduleMessage::Status status = message->status();
-  
+
     kdDebug() << "IncomingDialog::retrieve(): summary: " << event->summary()
               << "  method: " << Scheduler::methodName(method) << endl;
-    new ScheduleItemIn(mMessageListView,event,method,status);
+    ScheduleItemIn *item = new ScheduleItemIn(mMessageListView,event,method,status);
+    ScheduleItemVisitor v(item);
+    if (event->accept(v)) return;
+    else delete item;
   }
   emit numMessagesChanged(mMessageListView->childCount());
 }
@@ -95,14 +153,14 @@ void IncomingDialog::retrieve()
 void IncomingDialog::acceptAllMessages()
 {
   bool success = false;
-  
+
   ScheduleItemIn *item = (ScheduleItemIn *)mMessageListView->firstChild();
   while(item) {
     ScheduleItemIn *nextitem = (ScheduleItemIn *)(item->nextSibling());
     if (acceptMessage(item)) success = true;
     item = nextitem;
   }
-  
+
   if (success) emit calendarUpdated();
 }
 
@@ -134,4 +192,15 @@ void IncomingDialog::rejectMessage()
     emit numMessagesChanged(mMessageListView->childCount());
   }
 }
+
+void IncomingDialog::showEvent(QListViewItem *item)
+{
+  Event *event = dynamic_cast<Event *>(((ScheduleItemIn *)item)->event());
+  if (event) {
+    KOEventViewerDialog *eventViewer = new KOEventViewerDialog(this);
+    eventViewer->setEvent(event);
+    eventViewer->show();
+  }
+}
+
 #include "incomingdialog.moc"

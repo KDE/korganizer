@@ -21,6 +21,9 @@
 
 #include <kdebug.h>
 
+#include <kglobal.h>
+#include <klocale.h>
+
 #include <libkcal/event.h>
 //#include <libkcal/imipscheduler.h>
 #include <libkcal/dummyscheduler.h>
@@ -31,6 +34,7 @@
 
 #include "koprefs.h"
 #include "outgoingdialog.h"
+#include "koeventviewerdialog.h"
 
 ScheduleItemOut::ScheduleItemOut(QListView *parent,Event *ev,
                                  Scheduler::Method method,
@@ -40,12 +44,32 @@ ScheduleItemOut::ScheduleItemOut(QListView *parent,Event *ev,
   mEvent = ev;
   mMethod = method;
   mRecipients = recipients;
-  
+
   setText(0,ev->summary());
-  setText(1,Scheduler::methodName(mMethod));
+  setText(1,ev->dtStartDateStr());
+  if (ev->doesFloat()) {
+    setText(2,"no time");
+    setText(4,"no time");
+  }
+  else {
+    setText(2,ev->dtStartTimeStr());
+    if (ev->hasDuration()) {
+      setText(4,ev->dtEndTimeStr());
+    }
+    else {
+      setText(4,"no time");
+    }
+  }
+  if (ev->hasEndDate()) {
+    setText(3,ev->dtEndDateStr());
+  }
+  else {
+    setText(3,"");
+  }
+  setText(5,Scheduler::methodName(mMethod));
   if (mMethod == Scheduler::Publish) {
     if (!recipients.isEmpty())
-    setText(2,mRecipients);
+    setText(6,mRecipients);
   }
 }
 
@@ -55,7 +79,7 @@ OutgoingDialog::OutgoingDialog(Calendar *calendar,QWidget* parent,
     : OutgoingDialog_base(parent,name,modal,fl)
 {
   mCalendar = calendar;
-  
+
   if (KOPrefs::instance()->mIMIPScheduler == KOPrefs::IMIPDummy ) {
     kdDebug() << "--- Dummy" << endl;
     mScheduler = new DummyScheduler(mCalendar);
@@ -67,6 +91,12 @@ OutgoingDialog::OutgoingDialog(Calendar *calendar,QWidget* parent,
     mScheduler = new DummyScheduler(mCalendar);
 #endif
   }
+  mMessageListView->setColumnAlignment(1,AlignHCenter);
+  mMessageListView->setColumnAlignment(2,AlignHCenter);
+  mMessageListView->setColumnAlignment(3,AlignHCenter);
+  mMessageListView->setColumnAlignment(4,AlignHCenter);
+  QObject::connect(mMessageListView,SIGNAL(doubleClicked(QListViewItem *)),
+                   this,SLOT(showEvent(QListViewItem *)));
 }
 
 OutgoingDialog::~OutgoingDialog()
@@ -77,10 +107,13 @@ bool OutgoingDialog::addMessage(Event *incidence,Scheduler::Method method)
 {
   if (method == Scheduler::Publish) return false;
 
-  new ScheduleItemOut(mMessageListView,incidence,method);
-
-  emit numMessagesChanged(mMessageListView->childCount());
-
+  if (KOPrefs::instance()->mIMIPSend == KOPrefs::IMIPOutbox) {
+    new ScheduleItemOut(mMessageListView,incidence,method);
+    emit numMessagesChanged(mMessageListView->childCount());
+  }
+  else {
+    mScheduler->performTransaction(incidence,method);
+  }
   return true;
 }
 
@@ -88,11 +121,14 @@ bool OutgoingDialog::addMessage(Event *incidence,Scheduler::Method method,
                                 const QString &recipients)
 {
   if (method != Scheduler::Publish) return false;
-  
-  new ScheduleItemOut(mMessageListView,incidence,method,recipients);
 
-  emit numMessagesChanged(mMessageListView->childCount());
-
+  if (KOPrefs::instance()->mIMIPSend == KOPrefs::IMIPOutbox) {
+    new ScheduleItemOut(mMessageListView,incidence,method,recipients);
+    emit numMessagesChanged(mMessageListView->childCount());
+  }
+  else {
+    mScheduler->publish(incidence,recipients);
+  }
   return true;
 }
 
@@ -112,6 +148,18 @@ void OutgoingDialog::send()
   }
 
   emit numMessagesChanged(mMessageListView->childCount());
+}
+
+void OutgoingDialog::showEvent(QListViewItem *item)
+{
+  Event *event = ((ScheduleItemOut *)item)->event();
+  //ScheduleItemOut *so = (ScheduleItemOut *)item;
+  //Event *event;
+  if (event) {
+    KOEventViewerDialog *eventViewer = new KOEventViewerDialog(this);
+    eventViewer->setEvent(event);
+    eventViewer->show();
+  }
 }
 
 #include "outgoingdialog.moc"

@@ -132,6 +132,7 @@ KOPrefs::KOPrefs() :
   KPrefs::setCurrentGroup("Group Scheduling");
   
   addItemInt("IMIPScheduler",&mIMIPScheduler,IMIPKMail);
+  addItemInt("IMIPSend",&mIMIPSend,IMIPOutbox);
 }
 
 

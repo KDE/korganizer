@@ -24,6 +24,8 @@
 //
 
 #include <qptrlist.h>
+#include <qmap.h>
+#include <qstring.h>
 
 #include <libkcal/imipscheduler.h>
 
@@ -37,10 +39,16 @@ class MailScheduler : public IMIPScheduler {
   public:
     MailScheduler(Calendar *);
     virtual ~MailScheduler();
-    
+
     bool publish (Event *incidence,const QString &recipients);
     bool performTransaction(Event *incidence,Method method);
     QPtrList<ScheduleMessage> retrieveTransactions();
+
+  protected:
+    bool deleteTransaction(Incidence *incidence);
+
+  private:
+    QMap<QString, QString> mEventMap;
 };
 
 }

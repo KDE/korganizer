@@ -46,7 +46,7 @@ class ScheduleItemOut : public QListViewItem
 };
 
 class OutgoingDialog : public OutgoingDialog_base
-{ 
+{
     Q_OBJECT
   public:
     OutgoingDialog(Calendar *,QWidget* parent=0,const char* name=0,
@@ -61,7 +61,8 @@ class OutgoingDialog : public OutgoingDialog_base
 
   protected slots:
     void send();
-  
+    void showEvent(QListViewItem *);
+
   private:
     Calendar *mCalendar;
     Scheduler *mScheduler;

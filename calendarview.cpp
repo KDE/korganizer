@@ -399,7 +399,7 @@ void CalendarView::writeCurrentView(KConfig *config)
 //  else if (mCurrentView == mProjectView) view = "Project";
   else if (mCurrentView == mJournalView) view = "Journal";
   else view = "Agenda";
-  
+
   config->writeEntry("Current View",view);
 }
 
@@ -1273,7 +1273,7 @@ void CalendarView::showTodoView()
 
     connect(this, SIGNAL(configChanged()), mTodoView, SLOT(updateConfig()));
   }
-  
+
   showView(mTodoView);
 }
 
@@ -1332,7 +1332,6 @@ void CalendarView::schedule_publish()
     KMessageBox::sorry(this,i18n("No event selected."));
     return;
   }
-
   createOutgoingDialog();
   mOutgoingDialog->addMessage(event,Scheduler::Publish,"dummy@nowhere.nil");
 }
@@ -1384,7 +1383,6 @@ void CalendarView::schedule(Scheduler::Method method)
     KMessageBox::sorry(this,i18n("No event selected."));
     return;
   }
-
   createOutgoingDialog();
   mOutgoingDialog->addMessage(event,method);
 }
@@ -1710,7 +1708,7 @@ void CalendarView::takeOverCalendar()
     todos.at(i)->recreate();
     todos.at(i)->setReadOnly(false);
   }
-  
+
   QPtrList<Journal> journals = mCalendar->journalList();
   for(uint i=0; i<journals.count(); ++i) {
     journals.at(i)->setOrganizer(KOPrefs::instance()->email());

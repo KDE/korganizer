@@ -500,14 +500,23 @@ void KOPrefsDialog::setupGroupSchedulingTab()
   topLayout->setMargin(marginHint());
 
   KPrefsWidRadios *schedulerGroup =
-      addWidRadios(i18n("Scheduler"),&(KOPrefs::instance()->mIMIPScheduler),
+      addWidRadios(i18n("Scheduler mail client"),&(KOPrefs::instance()->mIMIPScheduler),
                    topFrame);
   schedulerGroup->addRadio(i18n("Dummy"));
   schedulerGroup->addRadio(i18n("Mail Client"));
 
   topLayout->addMultiCellWidget(schedulerGroup->groupBox(),0,0,0,1);
 
-  topLayout->setRowStretch(1,1);
+  KPrefsWidRadios *sendGroup =
+      addWidRadios(i18n("Scheduler mails should be"),&(KOPrefs::instance()->mIMIPSend),
+                   topFrame);
+  sendGroup->addRadio(i18n("send to outbox"));
+  sendGroup->addRadio(i18n("send directly"));
+
+  topLayout->addMultiCellWidget(sendGroup->groupBox(),1,1,0,1);
+
+
+  topLayout->setRowStretch(2,1);
 }
 
 void KOPrefsDialog::showPrinterTab()
