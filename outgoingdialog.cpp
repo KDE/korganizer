@@ -152,6 +152,8 @@ void OutgoingDialog::send()
 void OutgoingDialog::deleteItem()
 {
   ScheduleItemOut *item = (ScheduleItemOut *)(mMessageListView->selectedItem());
+  if(!item)
+      return;
   delete(item->event());
   mMessageListView->takeItem(item);
   emit numMessagesChanged(mMessageListView->childCount());
