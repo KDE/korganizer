@@ -48,8 +48,6 @@ KOAlarmClient::KOAlarmClient( QObject *parent, const char *name )
   mDocker->show();
   connect( this, SIGNAL( reminderCount( int ) ), mDocker, SLOT( slotUpdate( int ) ) );
   connect( mDocker, SIGNAL( quitSignal() ), SLOT( slotQuit() ) );
-  connect( mDocker, SIGNAL( suspendAllSignal() ), SLOT( slotSuspendAll() ) );
-  connect( mDocker, SIGNAL( dismissAllSignal() ), SLOT( slotDismissAll() ) );
 
   KConfig c( locate( "config", "korganizerrc" ) );
   c.setGroup( "Time & Date" );
