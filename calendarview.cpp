@@ -1969,7 +1969,8 @@ void CalendarView::recurTodo( Todo *todo )
 
   QDateTime endDateTime = r->endDateTime();
   if ( ( todo->hasDueDate() && todo->doesRecur() ) &&
-     ( endDateTime.isValid() && todo->dtDue() < endDateTime ) ) {
+     ( r->duration() == -1 || 
+     ( endDateTime.isValid() && todo->dtDue() < endDateTime ) ) ) {
 
       int length = 0;
       if (todo->hasStartDate())
