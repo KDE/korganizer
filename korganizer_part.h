@@ -30,6 +30,7 @@
 #include <korganizer/mainwindow.h>
 #include <korganizer/calendarviewbase.h>
 
+
 class KInstance;
 class KAboutData;
 class KOrganizerBrowserExtension;
@@ -91,6 +92,9 @@ class KOrganizerPart: public KParts::ReadOnlyPart,
 
     void setTitle() {};
 
+  public slots:
+    void slotChangeInfo( Incidence * );
+
   protected:
     virtual bool openFile();
 
@@ -104,6 +108,9 @@ class KOrganizerPart: public KParts::ReadOnlyPart,
     ActionManager *mActionManager;
     KOrganizerBrowserExtension *mBrowserExtension;
     KParts::StatusBarExtension *mStatusBarExtension;
+
+  signals:
+    void textChanged( const QString& );
 };
 
 class KOrganizerBrowserExtension : public KParts::BrowserExtension

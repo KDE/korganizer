@@ -47,6 +47,7 @@
 #include <ktempfile.h>
 
 #include <sidebarextension.h>
+#include <infoextension.h>
 
 #include <qapplication.h>
 #include <qfile.h>
@@ -106,7 +107,7 @@ KInstance *KOrganizerFactory::instance()
 
 KOrganizerPart::KOrganizerPart(QWidget *parentWidget, const char *widgetName,
                                QObject *parent, const char *name) :
-  KParts::ReadOnlyPart(parent, name), 
+  KParts::ReadOnlyPart(parent, name),
   mCalendar(new CalendarLocal(KOPrefs::instance()->mTimeZoneId)),
   mWidget(0), mActionManager(0),
   mBrowserExtension(new KOrganizerBrowserExtension(this)),
@@ -124,11 +125,15 @@ KOrganizerPart::KOrganizerPart(QWidget *parentWidget, const char *widgetName,
   KGlobal::iconLoader()->addAppDir("korganizer");
 
   CalendarView *view = new CalendarView( mCalendar, canvas );
-  mWidget = view; 
+  mWidget = view;
   topLayout->addWidget( mWidget );
-  
+
   new KParts::SideBarExtension(view->leftFrame(), this, "SBE");
-  
+
+  KParts::InfoExtension *ie = new KParts::InfoExtension( this, "KOrganizerInfo" );
+  connect( mWidget, SIGNAL( incidenceSelected( Incidence * ) ), this, SLOT( slotChangeInfo( Incidence * ) ) );
+  connect( this, SIGNAL( textChanged( const QString& ) ), ie, SIGNAL( textChanged( const QString& ) ) );
+
   mWidget->show();
 
   mActionManager = new ActionManager( this, mWidget, this, this );
@@ -157,6 +162,14 @@ KOrganizerPart::KOrganizerPart(QWidget *parentWidget, const char *widgetName,
 void KOrganizerPart::startCompleted( KProcess* process )
 {
   delete process;
+}
+
+void KOrganizerPart::slotChangeInfo( Incidence *inc )
+{
+  if( inc != 0L )
+    emit textChanged( inc->summary() + " / " + inc->dtStartTimeStr() );
+  else
+    emit textChanged( QString::null );
 }
 
 void KOrganizerPart::saveCalendar()
