@@ -277,7 +277,7 @@ void KOPrefsDialog::setupTimeTab()
   addWidBool(i18n("Exclude Saturdays"),
              &(KOPrefs::instance()->mExcludeSaturdays),workingHoursGroup);
 
-  KPrefsWidBool *marcusBainsShowSeconds = addWidBool(i18n("Shows seconds on Marcus Bains Line"),
+  KPrefsWidBool *marcusBainsShowSeconds = addWidBool(i18n("Show seconds on Marcus Bains Line"),
 	     &(KOPrefs::instance()->mMarcusBainsShowSeconds),
 	     topFrame);
   topLayout->addWidget(marcusBainsShowSeconds->checkBox(),5,0);
@@ -530,9 +530,9 @@ void KOPrefsDialog::setupGroupSchedulingTab()
   aEmailsEdit->setEnabled(false);
   topLayout->addWidget(aEmailsEdit,4,1);
 
-  QPushButton *add = new QPushButton("New",topFrame,"new");
+  QPushButton *add = new QPushButton(i18n("New"),topFrame,"new");
   topLayout->addWidget(add,5,0);
-  QPushButton *del = new QPushButton("Remove",topFrame,"remove");
+  QPushButton *del = new QPushButton(i18n("Remove"),topFrame,"remove");
   topLayout->addWidget(del,5,1);
 
   //topLayout->setRowStretch(2,1);

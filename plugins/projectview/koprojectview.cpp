@@ -106,7 +106,7 @@ KOProjectView::KOProjectView(Calendar *calendar,QWidget* parent,
 
 void KOProjectView::createMainTask()
 {
-  mMainTask = new KGanttItem(0,"main task",
+  mMainTask = new KGanttItem(0,i18n("main task"),
                          QDateTime::currentDateTime(),
                          QDateTime::currentDateTime());
   mMainTask->setMode(KGanttItem::Rubberband);
