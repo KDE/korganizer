@@ -1,7 +1,8 @@
 /*
     This file is part of KOrganizer.
+
     Copyright (c) 1999 Preston Brown
-    Copyright (c) 2000,2001 Cornelius Schumacher <schumacher@kde.org>
+    Copyright (c) 2000,2001,2003 Cornelius Schumacher <schumacher@kde.org>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -40,15 +41,11 @@ class KOrganizerApp : public KUniqueApplication
     int newInstance();
 
   private:
-    /** Print events for numDays days from calendar loaded from file to screen.*/
-    void displayImminent( const KURL &url, int numdays );
-
     /**
-      Process calendar from file. If numDays is 0, open a new KOrganizer window,
-      if is is greater print events from corresponding number of dates to the
-      screen.
+      Process calendar from URL \arg url. If url is empty open the default
+      calendar based on the resource framework.
     */
-    void processCalendar( const KURL &url, int numDays );
+    void processCalendar( const KURL &url );
 };
 
 #endif

@@ -1,7 +1,8 @@
 /*
     This file is part of KOrganizer.
+
     Copyright (c) 1997-1999 Preston Brown
-    Copyright (c) 2001 Cornelius Schumacher <schumacher@kde.org>
+    Copyright (c) 2001,2003 Cornelius Schumacher <schumacher@kde.org>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -22,31 +23,22 @@
     without including the source code for Qt in the source distribution.
 */
 
-#include <stdlib.h>
+#include "koapp.h"
+#include "aboutdata.h"
 
-#include <qdir.h>
-
-#include <kstandarddirs.h>
 #include <kglobal.h>
 #include <kdebug.h>
 #include <kaboutdata.h>
 #include <kcmdlineargs.h>
 #include <klocale.h>
 
-#include "koapp.h"
-#include "aboutdata.h"
-
 static const KCmdLineOptions options[] =
 {
-  {"l", 0, 0},
-  {"list", I18N_NOOP("List the events for the current day"), 0},
-  {"s", 0, 0},
-  {"show <numdays>", I18N_NOOP("Show a list of all events for the next <numdays>"),"1"},
-  {"+[calendar]", I18N_NOOP("A calendar file to load"), 0},
-  {0,0,0}
+  { "+[calendar]", I18N_NOOP("A calendar file to load"), 0 },
+  { 0, 0, 0 }
 };
 
-int main (int argc, char **argv)
+int main ( int argc, char **argv )
 {
   KOrg::AboutData aboutData;
 
@@ -54,20 +46,17 @@ int main (int argc, char **argv)
   KCmdLineArgs::addCmdLineOptions( options );
   KUniqueApplication::addCmdLineOptions();
 
-  if (!KOrganizerApp::start())
-    exit(0);
+  if ( !KOrganizerApp::start() ) return 0;
 
   KOrganizerApp app;
 
-  KGlobal::locale()->insertCatalogue("libkcal");
-  KGlobal::locale()->insertCatalogue("libkdepim");
+  KGlobal::locale()->insertCatalogue( "libkcal" );
+  KGlobal::locale()->insertCatalogue( "libkdepim" );
   // This is a workaround for a session management problem with KUniqueApplication
   // The session ID gets reset before the restoration is called. This line makes
   // sure that the config object is created right away  (with the correct config
   // file name). Thanks to Lubos Lunak.
   app.sessionConfig();
 
-//  kdDebug(5850) << "app.exec" << endl;
   return app.exec();
-//  kdDebug(5850) << "~app.exec" << endl;
 }
