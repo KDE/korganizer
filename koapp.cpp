@@ -23,6 +23,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include <qfile.h>
+
 #include <kstddirs.h>
 #include <kglobal.h>
 #include <kcmdlineargs.h>
@@ -114,7 +116,7 @@ void KOrganizerApp::startAlarmDaemon()
   // automatically made sure that there is only one instance of the alarm daemon
   // running.
   QString execStr = locate("exe","kalarmd");
-  system(execStr.latin1());
+  system(QFile::encodeName(execStr));
 
   kdDebug() << "Starting alarm daemon done" << endl;
 }

@@ -93,7 +93,7 @@ void KOEditorGeneral::initDescription(QBoxLayout *topLayout)
   mCategoriesLabel->setFrameStyle(QFrame::Panel|QFrame::Sunken);
   detailsLayout->addWidget(mCategoriesLabel,1);
 
-  QLabel *secrecyLabel = new QLabel("Access:",this);
+  QLabel *secrecyLabel = new QLabel(i18n("Access:"),this);
   detailsLayout->addWidget(secrecyLabel);
 
   mSecrecyCombo = new QComboBox(this);

@@ -171,25 +171,25 @@ void OutgoingDialog::showEvent(QListViewItem *qitem)
         sendText += item->recipients();
         break; }
       case Scheduler::Request: {
-        sendText += "All attendees";
+        sendText += i18n("All attendees");
         break; }
       case Scheduler::Refresh: {
-        sendText += "All attendees";
+        sendText += i18n("All attendees");
         break; }
       case Scheduler::Cancel: {
-        sendText += "All attendees";
+        sendText += i18n("All attendees");
         break; }
       case Scheduler::Add: {
-        sendText += "All attendees";
+        sendText += i18n("All attendees");
         break; }
       case Scheduler::Reply: {
-        sendText += "The organizer "+item->event()->organizer();
+        sendText += i18n("The organizer %1").arg(item->event()->organizer());
         break; }
       case Scheduler::Counter: {
-        sendText += "The organizer "+item->event()->organizer();
+        sendText += i18n("The organizer %1").arg(item->event()->organizer());
         break; }
       case Scheduler::Declinecounter: {
-        sendText += "All attendees";
+        sendText += i18n("All attendees");
         break; }
       case Scheduler::NoMethod: {
         sendText += "";

@@ -48,7 +48,7 @@ StatusDialog::StatusDialog(QWidget* parent, const char* name) :
 
   QBoxLayout *buttonLayout = new QHBoxLayout( topLayout );
 
-  QPushButton *ok = new QPushButton(i18n("Ok"), this);
+  QPushButton *ok = new QPushButton(i18n("OK"), this);
   connect ( ok,SIGNAL(clicked()), this,SLOT(accept()) );
   buttonLayout->addWidget( ok );
 
