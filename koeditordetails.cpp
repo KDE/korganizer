@@ -32,6 +32,13 @@
 #include <qwidgetstack.h>
 #include <qdatetime.h>
 #include <qdragobject.h>
+#include <qcombobox.h>
+#include <qlineedit.h>
+#include <qlabel.h>
+#include <qcheckbox.h>
+#include <qpushbutton.h>
+#include <qgroupbox.h>
+#include <qradiobutton.h>
 
 #include <kdebug.h>
 #include <klocale.h>
@@ -45,9 +52,7 @@
 #include <kabc/stdaddressbook.h>
 #endif
 #include <libkdepim/kvcarddrag.h>
-#include <libkdepim/identitycombo.h>
-#include <libkdepim/identity.h>
-#include <libkdepim/identitymanager.h>
+#include <libkdepim/email.h>
 
 #include <libkcal/incidence.h>
 
@@ -176,7 +181,8 @@ KOEditorDetails::KOEditorDetails (int spacing,QWidget* parent,const char* name)
   // readEvent will delete it and set another label text instead, if the user isn't the organizer.
   // Note that the i18n text below is duplicated in readEvent
   mOrganizerLabel = new QLabel( i18n( "Identity as organizer:" ), mOrganizerHBox );
-  mOrganizerCombo = new KPIM::IdentityCombo( KOCore::self()->identityManager(), mOrganizerHBox );
+  mOrganizerCombo = new QComboBox( mOrganizerHBox );
+  fillOrganizerCombo();
   mOrganizerHBox->setStretchFactor( mOrganizerCombo, 100 );
 
   mListView = new KOAttendeeListView(this,"mListView");
@@ -314,7 +320,7 @@ void KOEditorDetails::openAddressBook()
         for ( KABC::Addressee::List::iterator itr = aList.begin();
               itr != aList.end(); ++itr ) {
             KABC::Addressee a = (*itr);
-            bool myself = a.preferredEmail() == KOPrefs::instance()->email();
+            bool myself = KOPrefs::instance()->thatIsMe( a.preferredEmail() );
             KCal::Attendee::PartStat partStat =
                 myself ? KCal::Attendee::Accepted : KCal::Attendee::NeedsAction;
             insertAttendee( new Attendee( a.realName(), a.preferredEmail(),
@@ -331,7 +337,7 @@ void KOEditorDetails::openAddressBook()
     if (!a.isEmpty()) {
         // If this is myself, I don't want to get a response but instead
         // assume I will be available
-        bool myself = a.preferredEmail() == KOPrefs::instance()->email();
+        bool myself = KOPrefs::instance()->thatIsMe( a.preferredEmail() );
         KCal::Attendee::PartStat partStat =
             myself ? KCal::Attendee::Accepted : KCal::Attendee::NeedsAction;
         insertAttendee( new Attendee( a.realName(), a.preferredEmail(),
@@ -385,13 +391,22 @@ void KOEditorDetails::readEvent(Incidence *event)
 
   mListView->setSelected( mListView->firstChild(), true );
 
-  KPIM::Identity organizerIdentity = KOCore::self()->identityManager()->identityForAddress( event->organizer() );
-  if ( !organizerIdentity.isNull() ) { // the user is the organizer
+  if ( KOPrefs::instance()->thatIsMe( event->organizer() ) ) {
     if ( !mOrganizerCombo ) {
-      mOrganizerCombo = new KPIM::IdentityCombo( KOCore::self()->identityManager(), mOrganizerHBox );
+      mOrganizerCombo = new QComboBox( mOrganizerHBox );
+      fillOrganizerCombo();
     }
     mOrganizerLabel->setText( i18n( "Identity as organizer:" ) );
-    mOrganizerCombo->setCurrentIdentity( organizerIdentity );
+
+    // This might not be enough, if the combo as a full name too, hence the loop below
+    // mOrganizerCombo->setCurrentText( event->organizer() );
+    for ( int i = 0 ; i < mOrganizerCombo->count(); ++i ) {
+      QString itemTxt = KPIM::getEmailAddr( mOrganizerCombo->text( i ) );
+      if ( event->organizer() == itemTxt ) {
+        mOrganizerCombo->setCurrentItem( i );
+        break;
+      }
+    }
   } else { // someone else is the organizer
     if ( mOrganizerCombo ) {
       delete mOrganizerCombo;
@@ -415,9 +430,7 @@ void KOEditorDetails::writeEvent(Incidence *event)
     event->addAttendee(new Attendee(*(a->data())));
   }
   if ( mOrganizerCombo ) {
-    uint uoid = mOrganizerCombo->currentIdentity();
-    const KPIM::Identity& identity = KOCore::self()->identityManager()->identityForUoid( uoid );
-    event->setOrganizer( identity.fullEmailAddr() );
+    event->setOrganizer( mOrganizerCombo->currentText() );
   }
 }
 
@@ -513,6 +526,20 @@ void KOEditorDetails::updateAttendeeItem()
 void KOEditorDetails::setFreeBusyWidget( KOEditorFreeBusy *v )
 {
   mFreeBusy = v;
+}
+
+void KOEditorDetails::fillOrganizerCombo()
+{
+  assert( mOrganizerCombo );
+  // Get all emails from KOPrefs (coming from various places),
+  // and insert them - removing duplicates
+  const QStringList lst = KOPrefs::instance()->allEmails();
+  QStringList uniqueList;
+  for( QStringList::ConstIterator it = lst.begin(); it != lst.end(); ++it ) {
+    if ( uniqueList.find( *it ) == uniqueList.end() )
+      uniqueList << *it;
+  }
+  mOrganizerCombo->insertStringList( uniqueList );
 }
 
 #include "koeditordetails.moc"

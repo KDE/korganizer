@@ -74,6 +74,10 @@ class KOPrefs : public KOPrefsBase
     QString fullName();
     void setEmail( const QString & );
     QString email();
+    /// Returns all email addresses for the user.
+    QStringList allEmails();
+    /// Return true if the given email belongs to the user
+    bool thatIsMe( const QString& email );
 
     void setCategoryColor( QString cat, const QColor &color );
     QColor *categoryColor( QString cat );
@@ -90,6 +94,7 @@ class KOPrefs : public KOPrefsBase
 
     QFont mDefaultMonthViewFont;
 
+  public: // Do not use - except in KOPrefsDialogMain
     QString mName;
     QString mEmail;
 };

@@ -43,6 +43,7 @@
 #include "kodialogmanager.h"
 
 #include "kotodoeditor.h"
+#include "kocore.h"
 
 KOTodoEditor::KOTodoEditor( Calendar *calendar, QWidget *parent ) :
   KOIncidenceEditor( i18n("Edit To-Do"), calendar, parent )
@@ -140,6 +141,7 @@ void KOTodoEditor::setupRecurrence()
 
   mRecurrence = new KOEditorRecurrence( topFrame );
   topLayout->addWidget( mRecurrence );
+
   mRecurrence->setEnabled( false );
   connect(mGeneral,SIGNAL(dueDateEditToggle( bool ) ),
           mRecurrence, SLOT( setEnabled( bool ) ) );
@@ -148,10 +150,10 @@ void KOTodoEditor::setupRecurrence()
 void KOTodoEditor::editIncidence(Incidence *incidence)
 {
   Todo *todo=dynamic_cast<Todo*>(incidence);
-  if (todo) 
+  if (todo)
   {
     init();
-  
+
     mTodo = todo;
     readTodo(mTodo);
   }
@@ -277,17 +279,17 @@ void KOTodoEditor::deleteTodo()
 void KOTodoEditor::setDefaults( QDateTime due, Todo *relatedEvent, bool allDay )
 {
   mRelatedTodo = relatedEvent;
-  
+
   // inherit some properties from parent todo
   if ( mRelatedTodo ) {
     mGeneral->setCategories( mRelatedTodo->categoriesStr() );
     mCategoryDialog->setSelected( mRelatedTodo->categories() );
     if ( mRelatedTodo->hasDueDate() )
-      mGeneral->setDefaults( mRelatedTodo->dtDue(), allDay ); 
+      mGeneral->setDefaults( mRelatedTodo->dtDue(), allDay );
   }
   else
     mGeneral->setDefaults( due, allDay );
-  
+
   mDetails->setDefaults();
   mRecurrence->setDefaults(QDateTime::currentDateTime(), due, false);
   mAttachments->setDefaults();
@@ -314,15 +316,15 @@ void KOTodoEditor::writeTodo( Todo *todo )
   QDateTime oldRecStartDate;
   if ( todo->doesRecur() )
     oldRecStartDate = r->recurStart();
-  
+
   mGeneral->writeTodo( todo );
   mDetails->writeEvent( todo );
   mRecurrence->writeIncidence( todo );
   mAttachments->writeIncidence( todo );
-    
+
   oldRecStartDate.isValid() ? r->setRecurStart( oldRecStartDate )
                             : r->setRecurStart( todo->dtDue() );
-  
+
   // set related event, i.e. parent to-do in this case.
   if ( mRelatedTodo ) {
     todo->setRelatedTo( mRelatedTodo );

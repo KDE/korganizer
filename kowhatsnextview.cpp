@@ -178,7 +178,7 @@ void KOWhatsNextView::updateView()
   Event::List::ConstIterator it2;
   for( it2 = events.begin(); it2 != events.end(); ++it2 ) {
     Event *ev = *it2;
-    Attendee *me = ev->attendeeByMails(KOPrefs::instance()->mAdditionalMails,KOPrefs::instance()->email());
+    Attendee *me = ev->attendeeByMails( KOPrefs::instance()->allEmails() );
     if (me!=0) {
       if (me->status()==Attendee::NeedsAction && me->RSVP()) {
         if (replies == 0) {
@@ -199,7 +199,7 @@ void KOWhatsNextView::updateView()
   Todo::List::ConstIterator it3;
   for( it3 = todos.begin(); it3 != todos.end(); ++it3 ) {
     Todo *to = *it3;
-    Attendee *me = to->attendeeByMails(KOPrefs::instance()->mAdditionalMails,KOPrefs::instance()->email());
+    Attendee *me = to->attendeeByMails( KOPrefs::instance()->allEmails() );
     if (me!=0) {
       if (me->status()==Attendee::NeedsAction && me->RSVP()) {
         if (replies == 0) {

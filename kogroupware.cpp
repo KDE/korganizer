@@ -54,8 +54,6 @@
 #include <libkcal/calendarlocal.h>
 #include <libkcal/icalformat.h>
 
-#include <libkdepim/identitymanager.h>
-
 #include <kabc/phonenumber.h>
 #include <kabc/vcardconverter.h>
 
@@ -79,6 +77,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <qdir.h>
+#include "koprefs.h"
 
 FreeBusyManager *KOGroupware::mFreeBusyManager = 0;
 
@@ -616,7 +615,6 @@ bool KOGroupware::incomingEventRequest( const QString& request,
   KCal::Attendee::List attendees = event->attendees();
   KCal::Attendee::List::ConstIterator it;
   KCal::Attendee* myself = 0;
-  KPIM::IdentityManager* identityManager = KOCore::self()->identityManager();
   // Find myself, there will always be all attendees listed, even if
   // only I need to answer it.
   for ( it = attendees.begin(); it != attendees.end(); ++it ) {
@@ -627,7 +625,7 @@ bool KOGroupware::incomingEventRequest( const QString& request,
       break;
     }
 
-    if ( identityManager->thatIsMe( (*it)->email() ) ) {
+    if ( KOPrefs::instance()->thatIsMe( (*it)->email() ) ) {
       // If we are the current one, note that. Still continue to
       // search in case we find the receiver himself.
       myself = (*it);
@@ -873,8 +871,7 @@ bool KOGroupware::sendICalMessage( QWidget* parent,
                                    KCal::Scheduler::Method method,
                                    Incidence* incidence, bool isDeleting )
 {
-  KPIM::IdentityManager* identityManager = KOCore::self()->identityManager();
-  bool isOrganizer = identityManager->thatIsMe( incidence->organizer() );
+  bool isOrganizer = KOPrefs::instance()->thatIsMe( incidence->organizer() );
 
   int rc = 0;
   if( isOrganizer ) {
@@ -884,7 +881,7 @@ bool KOGroupware::sendICalMessage( QWidget* parent,
     Attendee::List::ConstIterator it;
     for ( it = attendees.begin(); it != attendees.end(); ++it ) {
       // Don't send email to ourselves
-      if ( !identityManager->thatIsMe( (*it)->email() ) ) {
+      if ( !KOPrefs::instance()->thatIsMe( (*it)->email() ) ) {
         otherPeople = true;
         break;
       }

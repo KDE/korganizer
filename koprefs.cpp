@@ -41,6 +41,11 @@
 #include <kstringhandler.h>
 
 #include "koprefs.h"
+#include <libkdepim/identitymanager.h>
+#include <libkdepim/identity.h>
+#include <libkdepim/email.h>
+#include <kabc/stdaddressbook.h>
+#include "kocore.h"
 
 KOPrefs *KOPrefs::mInstance = 0;
 static KStaticDeleter<KOPrefs> insd;
@@ -108,8 +113,16 @@ void KOPrefs::usrSetDefaults()
 
 void KOPrefs::fillMailDefaults()
 {
+  QString defaultEmail = i18n("nobody@nowhere");
+  if (mEmail.isEmpty())
+    mEmail = defaultEmail;
+  if ( mEmail == defaultEmail ) { // from the line above, or from using korganizer previously
+    // No korg settings - but maybe there's a kcontrol[/kmail] setting available
+    KEMailSettings settings;
+    if ( !settings.getSetting( KEMailSettings::EmailAddress ).isEmpty() )
+      mEmailControlCenter = true;
+  }
   if (mName.isEmpty()) mName = i18n("Anonymous");
-  if (mEmail.isEmpty()) mEmail = i18n("nobody@nowhere");
 }
 
 void KOPrefs::setTimeZoneIdDefault()
@@ -219,7 +232,7 @@ void KOPrefs::usrWriteConfig()
     i->setValue( "" );
     i->writeConfig( config() );
   }
-  
+
 #if 0
   if( mRememberRetrievePw )
     config()->writeEntry( "Retrieve Server Password", KStringHandler::obscure( mRetrievePassword ) );
@@ -273,4 +286,31 @@ QString KOPrefs::email()
   } else {
     return mEmail;
   }
+}
+
+QStringList KOPrefs::allEmails()
+{
+  // Grab emails from the email identities
+  QStringList lst = KOCore::self()->identityManager()->allEmails();
+  // Add emails configured in korganizer
+  lst += mAdditionalMails;
+  // Add emails from the user's kaddressbook entry
+  lst += KABC::StdAddressBook::self()->whoAmI().emails();
+
+  // Warning, this list could contain duplicates.
+  return lst;
+}
+
+bool KOPrefs::thatIsMe( const QString& _email )
+{
+  if ( KOCore::self()->identityManager()->thatIsMe( _email ) )
+    return true;
+  // in case email contains a full name, strip it out
+  QString email = KPIM::getEmailAddr( _email );
+  if ( mAdditionalMails.find( email ) != mAdditionalMails.end() )
+    return true;
+  QStringList lst = KABC::StdAddressBook::self()->whoAmI().emails();
+  if ( lst.find( email ) != lst.end() )
+    return true;
+  return false;
 }

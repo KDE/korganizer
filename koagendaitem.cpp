@@ -82,12 +82,12 @@ void KOAgendaItem::updateIcons()
   mIconRecur = mIncidence->doesRecur();
   mIconAlarm = mIncidence->isAlarmEnabled();
   if ( mIncidence->attendeeCount() > 0 ) {
-    if ( mIncidence->organizer() == KOPrefs::instance()->email() ) {
+    if ( KOPrefs::instance()->thatIsMe( mIncidence->organizer() ) ) {
       mIconReply = false;
       mIconGroup = false;
       mIconOrganizer = true;
     } else {
-      Attendee *me = mIncidence->attendeeByMails( KOPrefs::instance()->mAdditionalMails,KOPrefs::instance()->email() );
+      Attendee *me = mIncidence->attendeeByMails( KOPrefs::instance()->allEmails() );
       if ( me ) {
         if ( me->status() == Attendee::NeedsAction && me->RSVP() ) {
           mIconReply = true;
@@ -338,8 +338,8 @@ void KOAgendaItem::resetMovePrivate()
     mCellYTop = mStartMoveInfo->mStartCellYTop;
     mCellYBottom = mStartMoveInfo->mStartCellYBottom;
 
-    // if we don't have mMultiItemInfo, the item didn't span two days before, 
-    // and wasn't moved over midnight, either, so we don't have to reset 
+    // if we don't have mMultiItemInfo, the item didn't span two days before,
+    // and wasn't moved over midnight, either, so we don't have to reset
     // anything. Otherwise, restore from mMoveItemInfo
     if ( mMultiItemInfo ) {
       // It was already a multi-day info
@@ -347,7 +347,7 @@ void KOAgendaItem::resetMovePrivate()
       mMultiItemInfo->mPrevMultiItem = mStartMoveInfo->mPrevMultiItem;
       mMultiItemInfo->mNextMultiItem = mStartMoveInfo->mNextMultiItem;
       mMultiItemInfo->mLastMultiItem = mStartMoveInfo->mLastMultiItem;
-    
+
       if ( !mStartMoveInfo->mFirstMultiItem ) {
         // This was the first multi-item when the move started, delete all previous
         KOAgendaItem*toDel=mStartMoveInfo->mPrevMultiItem;
@@ -376,9 +376,9 @@ void KOAgendaItem::resetMovePrivate()
         mMultiItemInfo->mLastMultiItem = 0L;
         mMultiItemInfo->mNextMultiItem = 0L;
       }
-    
+
       if ( mStartMoveInfo->mFirstMultiItem==0 && mStartMoveInfo->mLastMultiItem==0 ) {
-        // it was a single-day event before we started the move. 
+        // it was a single-day event before we started the move.
         delete mMultiItemInfo;
         mMultiItemInfo = 0;
       }
@@ -719,7 +719,7 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
     th < (height() - 2 * ft - 2 - hlHeight);
   // case 3: enough for 2-5 lines, but not for the header.
   //         Also used for the middle days in multi-events
-  //         or all-day events  
+  //         or all-day events
   if ( ((!completelyRenderable) && ((height() - (2 * margin)) <= (5 * singleLineHeight)) ) ||
        (isMultiItem() && mMultiItemInfo->mNextMultiItem && mMultiItemInfo->mFirstMultiItem) ||
        mIncidence->doesFloat() ) {

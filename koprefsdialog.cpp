@@ -178,6 +178,9 @@ void KOPrefsDialogMain::toggleEmailSettings( bool on )
     mNameEdit->setEnabled(true);
     mEmailLabel->setEnabled(true);
     mNameLabel->setEnabled(true);
+
+    mNameEdit->setText( KOPrefs::instance()->mName );
+    mEmailEdit->setText( KOPrefs::instance()->mEmail );
   }
 }
 

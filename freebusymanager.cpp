@@ -227,8 +227,8 @@ void FreeBusyManager::publishFreeBusy()
     tempFile.close();
 
 #if 0
-    QString emailHost = KOPrefs::instance()->email().mid(
-        KOPrefs::instance()->email().find( '@' ) + 1 );
+    QString defaultEmail = KOCore()::self()->email();
+    QString emailHost = defaultEmail.mid( defaultEmail.find( '@' ) + 1 );
 
     // Put target string together
     KURL targetURL;
@@ -302,7 +302,7 @@ bool FreeBusyManager::retrieveFreeBusy( const QString &email )
 {
   kdDebug() << "FreeBusyManager::retrieveFreeBusy(): " << email << endl;
 
-  if( email == KOPrefs::instance()->email() ) {
+  if( KOPrefs::instance()->thatIsMe( email ) ) {
     // Don't download our own free-busy list from the net
     kdDebug() << "freebusy of owner" << endl;
     emit freeBusyRetrieved( ownerFreeBusy(), email );

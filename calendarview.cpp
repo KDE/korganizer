@@ -250,7 +250,7 @@ CalendarView::CalendarView( QWidget *parent, const char *name )
            this, SIGNAL( dayPassed( QDate ) ) );
   connect( mDateNavigator, SIGNAL( dayPassed( QDate ) ),
            mDateNavigator, SLOT( updateView() ) );
-     
+
   connect( this, SIGNAL( configChanged() ),
            mDateNavigator, SLOT( updateConfig() ) );
 
@@ -1077,7 +1077,7 @@ void CalendarView::deleteTodo(Todo *todo)
     return;
   }
   if (KOPrefs::instance()->mConfirm && (!KOPrefs::instance()->mUseGroupwareCommunication ||
-                                        KOPrefs::instance()->email() == todo->organizer())) {
+                                        KOPrefs::instance()->thatIsMe( todo->organizer() ))) {
     switch (msgItemDelete()) {
       case KMessageBox::Continue: // OK
         if (!todo->relations().isEmpty()) {
@@ -1121,7 +1121,7 @@ void CalendarView::deleteJournal(Journal *journal)
     return;
   }
   if (KOPrefs::instance()->mConfirm && (!KOPrefs::instance()->mUseGroupwareCommunication ||
-                                        KOPrefs::instance()->email() == journal->organizer())) {
+                                        KOPrefs::instance()->thatIsMe( journal->organizer() ))) {
     switch (msgItemDelete()) {
       case KMessageBox::Continue: // OK
         bool doDelete = true;
@@ -1179,7 +1179,7 @@ void CalendarView::deleteEvent(Event *anEvent)
     switch(km) {
       case KMessageBox::No: // Continue // all
       case KMessageBox::Continue:
-        if (anEvent->organizer()==KOPrefs::instance()->email() && anEvent->attendeeCount()>0
+        if (KOPrefs::instance()->thatIsMe( anEvent->organizer() ) && anEvent->attendeeCount()>0
             && !KOPrefs::instance()->mUseGroupwareCommunication) {
           schedule(Scheduler::Cancel,anEvent);
         } else if( KOPrefs::instance()->mUseGroupwareCommunication ) {
@@ -1202,13 +1202,14 @@ void CalendarView::deleteEvent(Event *anEvent)
         break;
     }
   } else {
+    bool userIsOrganizer = KOPrefs::instance()->thatIsMe( anEvent->organizer() );
     if (KOPrefs::instance()->mConfirm && (!KOPrefs::instance()->mUseGroupwareCommunication ||
-                                          KOPrefs::instance()->email() == anEvent->organizer())) {
+                                          userIsOrganizer)) {
       bool doDelete = true;
       switch (msgItemDelete()) {
         case KMessageBox::Continue: // OK
           incidenceToBeDeleted( anEvent );
-          if ( anEvent->organizer() == KOPrefs::instance()->email() &&
+          if ( userIsOrganizer &&
                anEvent->attendeeCount() > 0 &&
                !KOPrefs::instance()->mUseGroupwareCommunication ) {
             schedule( Scheduler::Cancel,anEvent );
@@ -1223,7 +1224,7 @@ void CalendarView::deleteEvent(Event *anEvent)
       }
     } else {
       bool doDelete = true;
-      if ( anEvent->organizer() == KOPrefs::instance()->email() &&
+      if ( userIsOrganizer &&
            anEvent->attendeeCount() > 0 &&
            !KOPrefs::instance()->mUseGroupwareCommunication ) {
         schedule(Scheduler::Cancel,anEvent);
@@ -1452,7 +1453,7 @@ void CalendarView::schedule(Scheduler::Method method, Incidence *incidence)
   if (todo) to = new Todo(*todo);
 
   if (method == Scheduler::Reply || method == Scheduler::Refresh) {
-    Attendee *me = incidence->attendeeByMails(KOPrefs::instance()->mAdditionalMails,KOPrefs::instance()->email());
+    Attendee *me = incidence->attendeeByMails(KOPrefs::instance()->allEmails());
     if (!me) {
       KMessageBox::sorry(this,i18n("Could not find your attendee entry. Please check the emails."));
       return;
@@ -1635,9 +1636,8 @@ void CalendarView::processIncidenceSelection( Incidence *incidence )
   bool subtodo = false;
 
   if ( incidence ) {
-    organizerEvents = ( incidence->organizer() == KOPrefs::instance()->email() );
-    groupEvents = incidence->attendeeByMails( KOPrefs::instance()->mAdditionalMails,
-                                              KOPrefs::instance()->email() );
+    organizerEvents = KOPrefs::instance()->thatIsMe( incidence->organizer() );
+    groupEvents = incidence->attendeeByMails( KOPrefs::instance()->allEmails() );
     if ( incidence && incidence->type() == "Event" ) {
 //      Event *event = static_cast<Event *>( incidence );
     } else if  ( incidence && incidence->type() == "Todo" ) {
@@ -1981,7 +1981,7 @@ void CalendarView::recurTodo( Todo *todo )
 
   QDateTime endDateTime = r->endDateTime();
   if ( ( todo->hasDueDate() && todo->doesRecur() ) &&
-     ( r->duration() == -1 || 
+     ( r->duration() == -1 ||
      ( endDateTime.isValid() && todo->dtDue() < endDateTime ) ) ) {
 
       int length = 0;

@@ -23,19 +23,8 @@
 #ifndef _KOEDITORDETAILS_H
 #define _KOEDITORDETAILS_H
 
-#include <qframe.h>
-#include <qlabel.h>
-#include <qcheckbox.h>
-#include <qpushbutton.h>
-#include <qgroupbox.h>
-#include <qlineedit.h>
-#include <qcombobox.h>
-#include <qmultilineedit.h>
 #include <klistview.h>
-#include <qradiobutton.h>
 #include <qptrlist.h>
-
-#include <kapplication.h>
 
 #include <libkcal/event.h>
 #include <libkdepim/addresseelineedit.h>
@@ -43,10 +32,14 @@
 #include "ktimeedit.h"
 #include "customlistviewitem.h"
 
+class QPushButton;
+class QCheckBox;
+class QLineEdit;
+class QLabel;
+class QComboBox;
 class QHBox;
 class KDateEdit;
 class KOEditorFreeBusy;
-namespace KPIM { class IdentityCombo; }
 
 using namespace KCal;
 
@@ -113,6 +106,7 @@ class KOEditorDetails : public QWidget
 
   protected:
     virtual bool eventFilter( QObject *, QEvent *);
+    void fillOrganizerCombo();
 
   private:
     bool mDisableItemUpdate;
@@ -124,7 +118,7 @@ class KOEditorDetails : public QWidget
     QCheckBox* mRsvpButton;
     QComboBox* mStatusCombo;
     QHBox* mOrganizerHBox;
-    KPIM::IdentityCombo *mOrganizerCombo; // either we organize it (combo shown)
+    QComboBox *mOrganizerCombo; // either we organize it (combo shown)
     QLabel *mOrganizerLabel; // or someone else does (just a label is shown)
 
     QPushButton* mAddButton;

@@ -412,7 +412,7 @@ void MonthViewCell::addIncidence( Incidence *incidence )
         text += " " + event->summary();
       }
     }
-    
+
     item = new MonthViewItem( event, mDate, text );
     if (KOPrefs::instance()->monthViewUsesCategoryColor()) {
       QStringList categories = event->categories();
@@ -426,8 +426,7 @@ void MonthViewCell::addIncidence( Incidence *incidence )
       item->setPalette( mStandardPalette );
     }
 
-    Attendee *me = event->attendeeByMails(KOPrefs::instance()->additionalMails(),
-                                          KOPrefs::instance()->email());
+    Attendee *me = event->attendeeByMails( KOPrefs::instance()->allEmails() );
     if ( me != 0 ) {
       if ( me->status() == Attendee::NeedsAction && me->RSVP())
         item->setReply(true);
@@ -436,7 +435,7 @@ void MonthViewCell::addIncidence( Incidence *incidence )
     } else
       item->setReply(false);
   }
-  
+
   if ( incidence->type() == "Todo" &&
        KOPrefs::instance()->showAllDayTodo() ) {
     Todo *todo = static_cast<Todo *>(incidence);
@@ -447,7 +446,7 @@ void MonthViewCell::addIncidence( Incidence *incidence )
       }
     }
     text += todo->summary();
-         
+
     item = new MonthViewItem( todo, mDate, text );
     if ( todo->doesRecur() ) {
       mDate < todo->dtDue().date() ?
@@ -457,7 +456,7 @@ void MonthViewCell::addIncidence( Incidence *incidence )
       todo->isCompleted() ? item->setTodoDone( true ) : item->setTodo( true );
     item->setPalette( mStandardPalette );
   }
-  
+
   if ( item ) {
     item->setAlarm( incidence->isAlarmEnabled() );
     item->setRecur( incidence->doesRecur() );
@@ -475,7 +474,7 @@ bool MonthViewCell::removeIncidence( Incidence *incidence )
       return true;
     }
   }
-  
+
   return false;
 }
 
@@ -799,7 +798,7 @@ void KOMonthView::changeIncidenceDisplayAdded( Incidence *incidence )
     if ( !todo->hasDueDate() ) return;
     date = todo->dtDue().date();
   }
-  
+
   if ( !calendar()->filter()->filterIncidence( incidence ) )
     return;
   if ( incidence->doesRecur() ) {
@@ -820,7 +819,7 @@ void KOMonthView::changeIncidenceDisplayAdded( Incidence *incidence )
 }
 
 void KOMonthView::changeIncidenceDisplay(Incidence *incidence, int action)
-{  
+{
   switch (action) {
     case KOGlobals::INCIDENCEADDED:
       changeIncidenceDisplayAdded( incidence );
@@ -844,13 +843,13 @@ void KOMonthView::updateView()
   for( uint i = 0; i < mCells.count(); ++i ) {
     mCells[i]->updateCell();
   }
-  
+
   Incidence::List incidences = calendar()->incidences();
   Incidence::List::ConstIterator it;
-  
+
   for ( it = incidences.begin(); it != incidences.end(); ++it )
     changeIncidenceDisplayAdded( *it );
-  
+
   processSelectionChange();
 }
 

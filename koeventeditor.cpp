@@ -314,8 +314,9 @@ void KOEventEditor::deleteEvent()
   kdDebug(5850) << "Delete event" << endl;
 
   if (mEvent) {
-    bool groupwareCheck = KOPrefs::instance()->mConfirm && 
-          (!KOPrefs::instance()->mUseGroupwareCommunication || KOPrefs::instance()->email() == mEvent->organizer());
+    bool groupwareCheck = KOPrefs::instance()->mConfirm &&
+          (!KOPrefs::instance()->mUseGroupwareCommunication ||
+           KOPrefs::instance()->thatIsMe( mEvent->organizer() ) );
     if (!groupwareCheck || (msgItemDelete()==KMessageBox::Continue)) { // Either no groupware check needed, or OK pressed
       emit incidenceToBeDeleted(mEvent);
       emit dialogClose(mEvent);
@@ -361,9 +362,9 @@ void KOEventEditor::writeEvent( Event *event )
   mGeneral->writeEvent( event );
   mDetails->writeEvent( event );
   mAttachments->writeIncidence( event );
-  
+
   // TODO_RK: What the heck does this do??? Isn't this completely wrong? cancelDttendee Event really deletes the removed attendees from the event, so the event might have less attendeed, even 0 attendees afterwards. So the check for attendeeCount is inappropriate here
-  if ( event->organizer() == KOPrefs::instance()->email() ) {
+  if ( KOPrefs::instance()->thatIsMe( event->organizer() ) ) {
     Event *ev = new Event( *event );
     ev->registerObserver( 0 );
     mDetails->cancelAttendeeEvent( ev );
