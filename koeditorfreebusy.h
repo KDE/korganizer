@@ -61,17 +61,17 @@ class KOEditorFreeBusy : public QWidget
     void cancelReload();
 
   signals:
-    void dateTimesChanged( QDateTime, QDateTime );
+    void dateTimesChanged( const QDateTime &, const QDateTime & );
 
   public slots:
     void slotInsertFreeBusy( KCal::FreeBusy *fb, const QString &email );
 
-    void setDateTimes( QDateTime, QDateTime );
+    void setDateTimes( const QDateTime &, const QDateTime & );
 
     void editFreeBusyUrl( KDGanttViewItem *item );
 
   protected slots:
-    void slotUpdateGanttView( QDateTime, QDateTime );
+    void slotUpdateGanttView( const QDateTime &, const QDateTime & );
     void slotScaleChanged( int );
     void slotCenterOnStart() ;
     void slotZoomToTime();

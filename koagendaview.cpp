@@ -292,8 +292,8 @@ void EventIndicator::enableColumn(int column, bool enable)
 ////////////////////////////////////////////////////////////////////////////
 
 
-KOAlternateLabel::KOAlternateLabel(QString shortlabel, QString longlabel,
-    QString extensivelabel, QWidget *parent, const char *name )
+KOAlternateLabel::KOAlternateLabel(const QString &shortlabel, const QString &longlabel,
+    const QString &extensivelabel, QWidget *parent, const char *name )
   : QLabel(parent, name), mTextTypeFixed(false), mShortText(shortlabel),
     mLongText(longlabel), mExtensiveText(extensivelabel)
 {
@@ -1179,7 +1179,7 @@ void KOAgendaView::showIncidences( const Incidence::List & )
   kdDebug(5850) << "KOAgendaView::showIncidences( const Incidence::List & ) is not yet implemented" << endl;
 }
 
-void KOAgendaView::insertIncidence( Incidence *incidence, QDate curDate,
+void KOAgendaView::insertIncidence( Incidence *incidence, const QDate &curDate,
                                     int curCol )
 {
   // FIXME: Use a visitor here, or some other method to get rid of the dynamic_cast's

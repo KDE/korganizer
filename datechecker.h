@@ -57,8 +57,8 @@ class DateChecker: public QObject
 
   signals:
     // Signals emitted at midnight carrying the new date.
-    void dayPassed( QDate );
-    void monthPassed( QDate );
+    void dayPassed( const QDate & );
+    void monthPassed( const QDate & );
 
   protected slots:
      /**

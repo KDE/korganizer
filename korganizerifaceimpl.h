@@ -44,15 +44,15 @@ public:
                        QObject* parent=0, const char* name=0 );
   ~KOrganizerIfaceImpl();
 
-  bool openURL( QString url );
-  bool mergeURL( QString url );
+  bool openURL( const QString &url );
+  bool mergeURL( const QString &url );
   void closeURL();
   bool saveURL();
-  bool saveAsURL( QString url );
+  bool saveAsURL( const QString &url );
   QString getCurrentURLasString() const;
 
-  bool editIncidence( QString uid );
-  bool deleteIncidence( QString uid );
+  bool editIncidence( const QString &uid );
+  bool deleteIncidence( const QString &uid );
 
 private:
   ActionManager* mActionManager;

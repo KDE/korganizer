@@ -182,25 +182,25 @@ void KOViewManager::connectView(KOrg::BaseView *view)
   // signals to create new incidences
   connect( view, SIGNAL( newEventSignal() ),
            mMainView, SLOT( newEvent() ) );
-  connect( view, SIGNAL( newEventSignal( QDateTime ) ),
-           mMainView, SLOT( newEvent( QDateTime ) ) );
-  connect( view, SIGNAL( newEventSignal( QDateTime, QDateTime ) ),
-           mMainView, SLOT( newEvent( QDateTime, QDateTime ) ) );
-  connect( view, SIGNAL( newEventSignal( QDate ) ),
-           mMainView, SLOT( newEvent( QDate ) ) );
-  connect( view, SIGNAL( newTodoSignal( QDate ) ),
-           mMainView, SLOT( newTodo( QDate ) ) );
+  connect( view, SIGNAL( newEventSignal( const QDateTime & ) ),
+           mMainView, SLOT( newEvent( const QDateTime & ) ) );
+  connect( view, SIGNAL( newEventSignal( const QDateTime &, const QDateTime & ) ),
+           mMainView, SLOT( newEvent( const QDateTime &, const QDateTime & ) ) );
+  connect( view, SIGNAL( newEventSignal( const QDate & ) ),
+           mMainView, SLOT( newEvent( const QDate & ) ) );
+  connect( view, SIGNAL( newTodoSignal( const QDate & ) ),
+           mMainView, SLOT( newTodo( const QDate & ) ) );
   connect( view, SIGNAL( newSubTodoSignal( Todo * ) ),
            mMainView, SLOT( newSubTodo( Todo *) ) );
-  connect( view, SIGNAL( newJournalSignal( QDate ) ),
-           mMainView, SLOT( newJournal( QDate ) ) );
+  connect( view, SIGNAL( newJournalSignal( const QDate & ) ),
+           mMainView, SLOT( newJournal( const QDate & ) ) );
 
   // reload settings
   connect(mMainView, SIGNAL(configChanged()), view, SLOT(updateConfig()));
 
   // Notifications about added, changed and deleted incidences
-  connect( mMainView, SIGNAL( dayPassed( QDate ) ),
-           view, SLOT( dayPassed( QDate ) ) );
+  connect( mMainView, SIGNAL( dayPassed( const QDate & ) ),
+           view, SLOT( dayPassed( const QDate & ) ) );
   connect( view, SIGNAL( startMultiModify( const QString & ) ),
            mMainView, SLOT( startMultiModify( const QString & ) ) );
   connect( view, SIGNAL( endMultiModify() ),

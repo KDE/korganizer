@@ -76,8 +76,8 @@ void KOTodoEditor::init()
 
   connect( mGeneral, SIGNAL( dateTimeStrChanged( const QString & ) ),
            mRecurrence, SLOT( setDateTimeStr( const QString & ) ) );
-  connect( mGeneral, SIGNAL( signalDateTimeChanged( QDateTime, QDateTime ) ),
-           mRecurrence, SLOT( setDateTimes( QDateTime, QDateTime ) ) );
+  connect( mGeneral, SIGNAL( signalDateTimeChanged( const QDateTime &, const QDateTime & ) ),
+           mRecurrence, SLOT( setDateTimes( const QDateTime &, const QDateTime & ) ) );
 }
 
 void KOTodoEditor::reload()
@@ -167,7 +167,7 @@ void KOTodoEditor::editIncidence(Incidence *incidence)
   }
 }
 
-void KOTodoEditor::newTodo(QDateTime due,Todo *relatedTodo,bool allDay)
+void KOTodoEditor::newTodo( const QDateTime &due, Todo *relatedTodo, bool allDay)
 {
   init();
 
@@ -284,7 +284,7 @@ void KOTodoEditor::deleteTodo()
   reject();
 }
 
-void KOTodoEditor::setDefaults( QDateTime due, Todo *relatedEvent, bool allDay )
+void KOTodoEditor::setDefaults( const QDateTime &due, Todo *relatedEvent, bool allDay )
 {
   mRelatedTodo = relatedEvent;
 

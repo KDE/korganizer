@@ -1068,7 +1068,7 @@ void KOEditorRecurrence::showCurrentRule( int current )
   }
 }
 
-void KOEditorRecurrence::setDateTimes( QDateTime start, QDateTime end )
+void KOEditorRecurrence::setDateTimes( const QDateTime &start, const QDateTime &end )
 {
 //  kdDebug(5850) << "KOEditorRecurrence::setDateTimes" << endl;
 
@@ -1101,7 +1101,7 @@ void KOEditorRecurrence::setDateTimes( QDateTime start, QDateTime end )
   }
 }
 
-void KOEditorRecurrence::setDefaults( QDateTime from, QDateTime to, bool )
+void KOEditorRecurrence::setDefaults( const QDateTime &from, const QDateTime &to, bool )
 {
   setDateTimes( from, to );
 

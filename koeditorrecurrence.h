@@ -53,7 +53,7 @@ class RecurBase : public QWidget
     int frequency();
     // FIXME: If we want to adjust the recurrence when the start/due date change,
     // we need to reimplement this method in the derived classes!
-    void setDateTimes( QDateTime /*start*/, QDateTime /*end*/ ) {}
+    void setDateTimes( const QDateTime &/*start*/, const QDateTime &/*end*/ ) {}
 
     QWidget *frequencyEdit();
 
@@ -286,7 +286,7 @@ class KOEditorRecurrence : public QWidget
     enum { Daily, Weekly, Monthly, Yearly };
 
     /** Set widgets to default values */
-    void setDefaults( QDateTime from, QDateTime to, bool allday );
+    void setDefaults( const QDateTime &from, const QDateTime &to, bool allday );
     /** Read event object and setup widgets accordingly */
     void readIncidence( Incidence * );
     /** Write event settings to event object */
@@ -297,11 +297,11 @@ class KOEditorRecurrence : public QWidget
 
   public slots:
     void setRecurrenceEnabled( bool );
-    void setDateTimes( QDateTime start, QDateTime end );
+    void setDateTimes( const QDateTime &start, const QDateTime &end );
     void setDateTimeStr( const QString & );
 
   signals:
-    void dateTimesChanged( QDateTime start, QDateTime end );
+    void dateTimesChanged( const QDateTime &start, const QDateTime &end );
 
   protected slots:
     void showCurrentRule( int );

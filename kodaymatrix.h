@@ -130,7 +130,7 @@ class KODayMatrix: public QFrame
      *  @param actdate recalculates the day matrix to show NUMDAYS starting from this
      *                 date.
      */
-    void updateView( QDate actdate );
+    void updateView( const QDate &actdate );
 
     /**
       Update event states of dates. Depending of the preferences days with
@@ -243,7 +243,7 @@ class KODayMatrix: public QFrame
      *
      *  @param color source based on which a shaded color should be calculated.
      */
-    QColor getShadedColor( QColor color );
+    QColor getShadedColor( const QColor &color );
 
     /** number of days to be displayed. For now there is no support for any other number then 42.
         so change it at your own risk :o) */

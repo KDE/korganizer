@@ -728,8 +728,8 @@ KOMonthView::KOMonthView( Calendar *calendar, QWidget *parent, const char *name 
 
       connect( cell, SIGNAL( defaultAction( Incidence * ) ),
                SLOT( defaultAction( Incidence * ) ) );
-      connect( cell, SIGNAL( newEventSignal( QDate ) ),
-               SIGNAL( newEventSignal( QDate ) ) );
+      connect( cell, SIGNAL( newEventSignal( const QDate & ) ),
+               SIGNAL( newEventSignal( const QDate & ) ) );
     }
     dayLayout->setRowStretch( row + 1, 1 );
   }
@@ -988,7 +988,7 @@ void KOMonthView::resizeEvent( QResizeEvent * )
   }
 }
 
-void KOMonthView::showEventContextMenu( Incidence *incidence, QDate qd )
+void KOMonthView::showEventContextMenu( Incidence *incidence, const QDate &qd )
 {
   mEventContextMenu->showIncidencePopup( incidence, qd );
 }

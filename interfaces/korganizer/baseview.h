@@ -139,7 +139,7 @@ class BaseView : public QWidget
       in the calendar since the last display refresh.
     */
     virtual void updateView() = 0;
-    virtual void dayPassed( QDate ) { updateView(); }
+    virtual void dayPassed( const QDate & ) { updateView(); }
 
     /**
       Assign a new incidence change helper object.
@@ -217,23 +217,23 @@ class BaseView : public QWidget
      * instructs the receiver to create a new event with the specified beginning
      * time. Doesn't make sense to connect to more than one receiver.
      */
-    void newEventSignal(QDate);
+    void newEventSignal( const QDate & );
     /**
      * instructs the receiver to create a new event with the specified beginning
      * time. Doesn't make sense to connect to more than one receiver.
      */
-    void newEventSignal(QDateTime);
+    void newEventSignal( const QDateTime & );
     /**
      * instructs the receiver to create a new event, with the specified
      * beginning end ending times.  Doesn't make sense to connect to more
      * than one receiver.
      */
-    void newEventSignal(QDateTime, QDateTime);
+    void newEventSignal( const QDateTime &, const QDateTime & );
 
-    void newTodoSignal( QDate );
+    void newTodoSignal( const QDate & );
     void newSubTodoSignal( Todo * );
 
-    void newJournalSignal( QDate );
+    void newJournalSignal( const QDate & );
 
   private:
     Calendar *mCalendar;

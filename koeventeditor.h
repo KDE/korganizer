@@ -62,7 +62,7 @@ class KOEventEditor : public KOIncidenceEditor
     /**
       Clear eventwin for new event, and preset the dates and times with hint
     */
-    void newEvent( QDateTime from, QDateTime to, bool allDay = false );
+    void newEvent( const QDateTime &from, const QDateTime &to, bool allDay = false );
     /**
       Edit new event. Set summary and description from given text.
     */
@@ -85,7 +85,7 @@ class KOEventEditor : public KOIncidenceEditor
     /**
       Set widgets to default values
     */
-    void setDefaults( QDateTime from, QDateTime to, bool allDay );
+    void setDefaults( const QDateTime &from, const QDateTime &to, bool allDay );
 
     /**
       Read event object and setup widgets accordingly. If tmpl is true, the

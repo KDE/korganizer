@@ -52,7 +52,7 @@ class KOEditorGeneralTodo : public KOEditorGeneral
     void finishSetup();
 
     /** Set widgets to default values */
-    void setDefaults(QDateTime due,bool allDay);
+    void setDefaults( const QDateTime &due, bool allDay );
     /** Read todo object and setup widgets accordingly */
     void readTodo(Todo *);
     /** Write todo settings to event object */
@@ -67,7 +67,7 @@ class KOEditorGeneralTodo : public KOEditorGeneral
   signals:
     void dueDateEditToggle( bool );
     void dateTimeStrChanged( const QString & );
-    void signalDateTimeChanged( QDateTime, QDateTime );
+    void signalDateTimeChanged( const QDateTime &, const QDateTime & );
 
   protected slots:
     void completedChanged(int);

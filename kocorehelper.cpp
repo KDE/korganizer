@@ -25,7 +25,7 @@
 #include "kocore.h"
 
 
-QColor KOCoreHelper::categoryColor( QStringList categories ) 
+QColor KOCoreHelper::categoryColor( const QStringList &categories ) 
 {
   // FIXME: Correctly treat events with multiple categories
   QString cat = categories.first();

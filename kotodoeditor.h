@@ -50,7 +50,7 @@ class KOTodoEditor : public KOIncidenceEditor
     /**
       Clear editor for new todo, and preset the dates and times with hint.
     */
-    void newTodo(QDateTime due,Todo *relatedTodo=0,bool allDay=false);
+    void newTodo( const QDateTime &due, Todo *relatedTodo=0, bool allDay=false);
 
     /**
       Edit new todo. Set summary and description from given text.
@@ -71,7 +71,7 @@ class KOTodoEditor : public KOIncidenceEditor
     void editIncidence(Incidence *);
 
     /** Set widgets to default values */
-    void setDefaults(QDateTime due,Todo *relatedTodo,bool allDay);
+    void setDefaults( const QDateTime &due, Todo *relatedTodo, bool allDay );
     /** Read event object and setup widgets accordingly */
     void readTodo(Todo *);
     /** Write event settings to event object */

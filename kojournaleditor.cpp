@@ -102,7 +102,7 @@ void KOJournalEditor::editIncidence( Incidence *incidence )
   }
 }
 
-void KOJournalEditor::newJournal( QDate date )
+void KOJournalEditor::newJournal( const QDate &date )
 {
   init();
 
@@ -121,7 +121,7 @@ void KOJournalEditor::newJournal( const QString &text )
   mGeneral->setDescription( text );
 }
 
-void KOJournalEditor::newJournal( const QString &text, QDate date )
+void KOJournalEditor::newJournal( const QString &text, const QDate &date )
 {
   init();
 
@@ -175,7 +175,7 @@ void KOJournalEditor::deleteJournal()
   reject();
 }
 
-void KOJournalEditor::setDefaults( QDate date )
+void KOJournalEditor::setDefaults( const QDate &date )
 {
   mGeneral->setDefaults( date );
 }

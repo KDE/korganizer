@@ -187,7 +187,7 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
 
     /** Emitted, when a day changed (i.e. korganizer was running at midnight).
         The argument is the new date */
-    void dayPassed( QDate );
+    void dayPassed( const QDate & );
 
 
     /**
@@ -256,9 +256,9 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
 
     /** create an editeventwin with supplied date/time, and if bool is true,
      * make the event take all day. */
-    void newEvent( QDateTime, QDateTime, bool allDay = false );
-    void newEvent( QDateTime fh );
-    void newEvent( QDate dt );
+    void newEvent( const QDateTime &, const QDateTime &, bool allDay = false );
+    void newEvent( const QDateTime &fh );
+    void newEvent( const QDate &dt );
     /** create new event without having a date hint. Takes current date as
      default hint. */
     void newEvent();
@@ -297,7 +297,7 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     /** create new todo */
     void newTodo();
     /** create new todo, due on date */
-    void newTodo( QDate date );
+    void newTodo( const QDate &date );
     /** create new todo with a parent todo */
     void newSubTodo();
     /** create new todo with a parent todo */
@@ -309,8 +309,8 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     void newTodo( const QString &summary, const QString &description,
                   const QString &attachment, const QStringList &attendees );
 
-    void newJournal( QDate date );
-    void newJournal( const QString &text, QDate date );
+    void newJournal( const QDate &date );
+    void newJournal( const QString &text, const QDate &date );
     void newJournal( const QString &text );
     //TODO:
     // void newJournal( const QString &summary,  const QString &description,

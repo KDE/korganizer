@@ -1517,7 +1517,7 @@ QMemArray<int> KOAgenda::maxContentsY()
   return maxArray;
 }
 
-void KOAgenda::setStartTime( QTime startHour )
+void KOAgenda::setStartTime( const QTime &startHour )
 {
   double startPos = ( startHour.hour()/24. + startHour.minute()/1440. +
                       startHour.second()/86400. ) * mRows * gridSpacingY();
@@ -1528,7 +1528,7 @@ void KOAgenda::setStartTime( QTime startHour )
 /*
   Insert KOAgendaItem into agenda.
 */
-KOAgendaItem *KOAgenda::insertItem( Incidence *incidence, QDate qd, int X,
+KOAgendaItem *KOAgenda::insertItem( Incidence *incidence, const QDate &qd, int X,
                                     int YTop, int YBottom )
 {
 #if 0
@@ -1591,7 +1591,7 @@ KOAgendaItem *KOAgenda::insertItem( Incidence *incidence, QDate qd, int X,
 /*
   Insert all-day KOAgendaItem into agenda.
 */
-KOAgendaItem *KOAgenda::insertAllDayItem( Incidence *event, QDate qd,
+KOAgendaItem *KOAgenda::insertAllDayItem( Incidence *event, const QDate &qd,
                                           int XBegin, int XEnd )
 {
   if ( !mAllDayMode ) {
@@ -1642,7 +1642,7 @@ KOAgendaItem *KOAgenda::insertAllDayItem( Incidence *event, QDate qd,
 }
 
 
-void KOAgenda::insertMultiItem (Event *event,QDate qd,int XBegin,int XEnd,
+void KOAgenda::insertMultiItem (Event *event,const QDate &qd,int XBegin,int XEnd,
                                 int YTop,int YBottom)
 {
   if (mAllDayMode) {

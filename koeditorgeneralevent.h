@@ -52,7 +52,7 @@ class KOEditorGeneralEvent : public KOEditorGeneral
     void finishSetup();
 
     /** Set widgets to default values */
-    void setDefaults( QDateTime from, QDateTime to, bool allDay );
+    void setDefaults( const QDateTime &from, const QDateTime &to, bool allDay );
     /**
       Read event object and setup widgets accordingly. If templ is true, the
       event is read as template, i.e. the time and date information isn't set.
@@ -65,7 +65,7 @@ class KOEditorGeneralEvent : public KOEditorGeneral
     bool validateInput();
 
   public slots:
-    void setDateTimes( QDateTime start, QDateTime end );
+    void setDateTimes( const QDateTime &start, const QDateTime &end );
     void setDuration();
 
   protected slots:
@@ -82,7 +82,7 @@ class KOEditorGeneralEvent : public KOEditorGeneral
   signals:
     void allDayChanged(bool);
     void dateTimeStrChanged( const QString & );
-    void dateTimesChanged( QDateTime start, QDateTime end );
+    void dateTimesChanged( const QDateTime &start, const QDateTime &end );
 
   private:
     QLabel                  *mStartDateLabel;

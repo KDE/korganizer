@@ -75,7 +75,7 @@ class KOAgendaItem : public QWidget, public KOrg::CellItem
 {
     Q_OBJECT
   public:
-    KOAgendaItem(Incidence *incidence, QDate qd, QWidget *parent, const char *name=0,
+    KOAgendaItem(Incidence *incidence, const QDate &qd, QWidget *parent, const char *name=0,
                  WFlags f=0 );
 
     int cellXLeft() const { return mCellXLeft; }
@@ -124,7 +124,7 @@ class KOAgendaItem : public QWidget, public KOrg::CellItem
     QDate itemDate() { return mDate; }
 
     /** Update the date of this item's occurrence (not in the event) */
-    void setItemDate(QDate qd);
+    void setItemDate( const QDate &qd );
 
     void setText ( const QString & text ) { mLabelText = text; }
     QString text () { return mLabelText; }
@@ -148,7 +148,7 @@ class KOAgendaItem : public QWidget, public KOrg::CellItem
   public slots:
     void updateIcons();
     void select(bool=true);
-    void addAttendee(QString);
+    void addAttendee( const QString & );
 
   protected:
     void dragEnterEvent(QDragEnterEvent *e);

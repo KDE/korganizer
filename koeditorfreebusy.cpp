@@ -361,7 +361,7 @@ void KOEditorFreeBusy::readEvent( Event *event )
 }
 
 
-void KOEditorFreeBusy::setDateTimes( QDateTime start, QDateTime end )
+void KOEditorFreeBusy::setDateTimes( const QDateTime &start, const QDateTime &end )
 {
   slotUpdateGanttView( start, end );
 }
@@ -438,7 +438,7 @@ void KOEditorFreeBusy::slotInsertFreeBusy( KCal::FreeBusy *fb,
   Centers the Gantt view to the date/time passed in.
 */
 
-void KOEditorFreeBusy::slotUpdateGanttView( QDateTime dtFrom, QDateTime dtTo )
+void KOEditorFreeBusy::slotUpdateGanttView( const QDateTime &dtFrom, const QDateTime &dtTo )
 {
   mDtStart = dtFrom;
   mDtEnd = dtTo;

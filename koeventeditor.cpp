@@ -78,18 +78,18 @@ void KOEventEditor::init()
   mDetails->setFreeBusyWidget( mFreeBusy );
 
   // Propagate date time settings to recurrence tab
-  connect( mGeneral, SIGNAL( dateTimesChanged( QDateTime, QDateTime ) ),
-           mRecurrence, SLOT( setDateTimes( QDateTime, QDateTime ) ) );
+  connect( mGeneral, SIGNAL( dateTimesChanged( const QDateTime &, const QDateTime & ) ),
+           mRecurrence, SLOT( setDateTimes( const QDateTime &, const QDateTime &) ) );
   connect( mGeneral, SIGNAL( dateTimeStrChanged( const QString & ) ),
            mRecurrence, SLOT( setDateTimeStr( const QString & ) ) );
-  connect( mFreeBusy, SIGNAL( dateTimesChanged( QDateTime, QDateTime ) ),
-           mRecurrence, SLOT( setDateTimes( QDateTime, QDateTime ) ) );
+  connect( mFreeBusy, SIGNAL( dateTimesChanged( const QDateTime &, const QDateTime & ) ),
+           mRecurrence, SLOT( setDateTimes( const QDateTime &, const QDateTime & ) ) );
 
   // Propagate date time settings to gantt tab and back
-  connect( mGeneral, SIGNAL( dateTimesChanged( QDateTime, QDateTime ) ),
-           mFreeBusy, SLOT( slotUpdateGanttView( QDateTime, QDateTime  ) ) );
-  connect( mFreeBusy, SIGNAL( dateTimesChanged( QDateTime, QDateTime ) ),
-           mGeneral, SLOT( setDateTimes( QDateTime, QDateTime ) ) );
+  connect( mGeneral, SIGNAL( dateTimesChanged( const QDateTime &, const QDateTime & ) ),
+           mFreeBusy, SLOT( slotUpdateGanttView( const QDateTime &, const QDateTime & ) ) );
+  connect( mFreeBusy, SIGNAL( dateTimesChanged( const QDateTime &, const QDateTime & ) ),
+           mGeneral, SLOT( setDateTimes( const QDateTime &, const QDateTime & ) ) );
 
   // Category dialog
   connect( mGeneral, SIGNAL( openCategoryDialog() ),
@@ -115,8 +115,8 @@ void KOEventEditor::setupGeneral()
   if( KOPrefs::instance()->mCompactDialogs ) {
     QFrame *topFrame = addPage(i18n("General"));
     QWhatsThis::add( topFrame,
-		      i18n("The General tab allows you to set the most common "
-			   "options for the event.") );
+                     i18n("The General tab allows you to set the most common "
+                          "options for the event.") );
 
     QBoxLayout *topLayout = new QVBoxLayout(topFrame);
     topLayout->setSpacing(spacingHint());
@@ -141,8 +141,8 @@ void KOEventEditor::setupGeneral()
   } else {
     QFrame *topFrame = addPage(i18n("&General"));
     QWhatsThis::add( topFrame,
-		     i18n("The General tab allows you to set the most common "
-			  "options for the event.") );
+                     i18n("The General tab allows you to set the most common "
+                          "options for the event.") );
 
     QBoxLayout *topLayout = new QVBoxLayout(topFrame);
     topLayout->setSpacing(spacingHint());
@@ -206,7 +206,8 @@ void KOEventEditor::editIncidence( Incidence *incidence )
   }
 }
 
-void KOEventEditor::newEvent( QDateTime from, QDateTime to, bool allDay )
+void KOEventEditor::newEvent( const QDateTime &from, const QDateTime &to, 
+                              bool allDay )
 {
   init();
 
@@ -338,7 +339,7 @@ void KOEventEditor::deleteEvent()
   reject();
 }
 
-void KOEventEditor::setDefaults( QDateTime from, QDateTime to, bool allDay )
+void KOEventEditor::setDefaults( const QDateTime &from, const QDateTime &to, bool allDay )
 {
   mGeneral->setDefaults( from, to, allDay );
   mDetails->setDefaults();

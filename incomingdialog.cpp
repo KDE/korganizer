@@ -487,7 +487,7 @@ bool IncomingDialog::automaticAction(ScheduleItemIn *item)
   return autoAction;
 }
 
-bool IncomingDialog::checkOrganizerInAddressbook(QString organizer)
+bool IncomingDialog::checkOrganizerInAddressbook( const QString &organizer )
 {
   bool inBook = false;
 #ifndef KORG_NOKABC

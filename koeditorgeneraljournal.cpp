@@ -76,7 +76,7 @@ void KOEditorGeneralJournal::initDate( QWidget *parent, QBoxLayout *topLayout )
            SLOT( startDateChanged(QDate) ) );
 }
 
-void KOEditorGeneralJournal::setDate( QDate date )
+void KOEditorGeneralJournal::setDate( const QDate &date )
 {
 //  kdDebug(5850) << "KOEditorGeneralJournal::setDate(): Date: " << date.toString() << endl;
 
@@ -94,7 +94,7 @@ void KOEditorGeneralJournal::initDescription( QWidget *parent, QBoxLayout *topLa
   topLayout->addWidget( mDescriptionEdit );
 }
 
-void KOEditorGeneralJournal::setDefaults(QDate date)
+void KOEditorGeneralJournal::setDefaults( const QDate &date )
 {
   setDate( date );
 }

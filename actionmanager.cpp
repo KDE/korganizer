@@ -1228,17 +1228,17 @@ void ActionManager::toggleResourceButtons()
   if ( mResourceView ) mResourceView->showButtons( visible );
 }
 
-bool ActionManager::openURL( QString url )
+bool ActionManager::openURL( const QString &url )
 {
   return openURL( KURL( url ) );
 }
 
-bool ActionManager::mergeURL( QString url )
+bool ActionManager::mergeURL( const QString &url )
 {
   return openURL( KURL( url ),true );
 }
 
-bool ActionManager::saveAsURL( QString url )
+bool ActionManager::saveAsURL( const QString &url )
 {
   return saveAsURL( KURL( url ) );
 }

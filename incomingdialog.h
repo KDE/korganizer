@@ -108,7 +108,7 @@ class IncomingDialog : public IncomingDialog_base
 
   private:
     bool checkAttendeesInAddressbook(IncidenceBase *inc);
-    bool checkOrganizerInAddressbook(QString organizer);
+    bool checkOrganizerInAddressbook( const QString &organizer );
     Calendar *mCalendar;
     Scheduler *mScheduler;
     OutgoingDialog *mOutgoing;

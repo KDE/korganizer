@@ -220,7 +220,7 @@ void KOEditorGeneralTodo::initStatus(QWidget *parent,QBoxLayout *topLayout)
   initPriority( parent, statusLayout );
 }
 
-void KOEditorGeneralTodo::setDefaults(QDateTime due,bool allDay)
+void KOEditorGeneralTodo::setDefaults( const QDateTime &due, bool allDay )
 {
   KOEditorGeneral::setDefaults(allDay);
 

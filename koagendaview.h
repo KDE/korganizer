@@ -111,8 +111,8 @@ class KOAlternateLabel : public QLabel
 {
     Q_OBJECT
   public:
-    KOAlternateLabel( QString shortlabel, QString longlabel,
-                      QString extensivelabel = QString::null,
+    KOAlternateLabel( const QString &shortlabel, const QString &longlabel,
+                      const QString &extensivelabel = QString::null,
                       QWidget *parent = 0, const char *name = 0 );
     ~KOAlternateLabel();
 
@@ -184,7 +184,7 @@ class KOAgendaView : public KOEventView
     virtual void showDates( const QDate &start, const QDate &end );
     virtual void showIncidences( const Incidence::List &incidenceList );
 
-    void insertIncidence( Incidence *incidence, QDate curDate, int curCol = -1 );
+    void insertIncidence( Incidence *incidence, const QDate &curDate, int curCol = -1 );
     void changeIncidenceDisplayAdded( Incidence *incidence );
     void changeIncidenceDisplay( Incidence *incidence, int mode );
 

@@ -247,7 +247,7 @@ QString History::EntryEdit::text()
   return i18n("Edit %1").arg(mNewIncidence->type());
 }
 
-History::MultiEntry::MultiEntry( Calendar *calendar, QString text )
+History::MultiEntry::MultiEntry( Calendar *calendar, const QString &text )
   : Entry( calendar ), mText( text )
 {
   mEntries.setAutoDelete( true );

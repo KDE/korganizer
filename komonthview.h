@@ -164,7 +164,7 @@ class MonthViewCell : public QWidget
     void setCalendar( Calendar*cal ) { mCalendar = cal; }
   signals:
     void defaultAction( Incidence * );
-    void newEventSignal( QDate );
+    void newEventSignal( const QDate & );
 
   protected:
     void resizeEvent( QResizeEvent * );
@@ -235,7 +235,7 @@ class KOMonthView: public KOEventView
 
     void clearSelection();
 
-    void showEventContextMenu( Incidence *, QDate );
+    void showEventContextMenu( Incidence *, const QDate & );
     void showGeneralContextMenu();
 
     void setSelectedCell( MonthViewCell * );

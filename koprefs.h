@@ -81,11 +81,11 @@ class KOPrefs : public KOPrefsBase
     /// Return true if the given email belongs to the user
     bool thatIsMe( const QString& email );
 
-    void setCategoryColor( QString cat, const QColor &color );
-    QColor *categoryColor( QString cat );
+    void setCategoryColor( const QString &cat, const QColor &color );
+    QColor *categoryColor( const QString &cat );
 
-    void setResourceColor ( QString, const QColor &);
-    QColor* resourceColor( QString );
+    void setResourceColor ( const QString &, const QColor & );
+    QColor* resourceColor( const QString & );
     
     QString mHtmlExportFile;
 

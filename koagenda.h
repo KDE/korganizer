@@ -97,13 +97,13 @@ class KOAgenda : public QScrollView
     QMemArray<int> minContentsY();
     QMemArray<int> maxContentsY();
 
-    void setStartTime( QTime startHour );
+    void setStartTime( const QTime &startHour );
 
-    KOAgendaItem *insertItem ( Incidence *incidence, QDate qd, int X, int YTop,
+    KOAgendaItem *insertItem ( Incidence *incidence, const QDate &qd, int X, int YTop,
                                int YBottom );
-    KOAgendaItem *insertAllDayItem ( Incidence *event, QDate qd, int XBegin,
+    KOAgendaItem *insertAllDayItem ( Incidence *event, const QDate &qd, int XBegin,
                                      int XEnd );
-    void insertMultiItem ( Event *event, QDate qd, int XBegin, int XEnd,
+    void insertMultiItem ( Event *event, const QDate &qd, int XBegin, int XEnd,
                            int YTop, int YBottom );
 
     /** remove an event and all its multi-items from the agenda.

@@ -28,7 +28,7 @@ class ExchangeDialog : public KDialogBase
 {
     Q_OBJECT
   public:
-    ExchangeDialog(QDate start, QDate end, QWidget *parent=0);
+    ExchangeDialog( const QDate &start, const QDate &end, QWidget *parent=0);
     virtual ~ExchangeDialog();
 
   protected slots:

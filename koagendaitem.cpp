@@ -53,7 +53,7 @@ QToolTipGroup *KOAgendaItem::mToolTipGroup = 0;
 
 //--------------------------------------------------------------------------
 
-KOAgendaItem::KOAgendaItem( Incidence *incidence, QDate qd, QWidget *parent,
+KOAgendaItem::KOAgendaItem( Incidence *incidence, const QDate &qd, QWidget *parent,
                             const char *name, WFlags f ) :
   QWidget( parent, name, f ), mIncidence( incidence ), mDate( qd ),
   mLabelText( mIncidence->summary() ), mIconAlarm( false ),
@@ -176,7 +176,7 @@ int KOAgendaItem::cellWidth() const
   return mCellXRight - mCellXLeft + 1;
 }
 
-void KOAgendaItem::setItemDate( QDate qd )
+void KOAgendaItem::setItemDate( const QDate &qd )
 {
   mDate = qd;
 }
@@ -538,7 +538,7 @@ void KOAgendaItem::dragEnterEvent( QDragEnterEvent *e )
 #endif
 }
 
-void KOAgendaItem::addAttendee(QString newAttendee)
+void KOAgendaItem::addAttendee( const QString &newAttendee )
 {
   kdDebug(5850) << " Email: " << newAttendee << endl;
   int pos = newAttendee.find("<");

@@ -59,10 +59,10 @@ KOEditorGeneralEvent::KOEditorGeneralEvent(QObject* parent,
                                            const char* name) :
   KOEditorGeneral( parent, name)
 {
-  connect(this,SIGNAL(dateTimesChanged(QDateTime,QDateTime)),
-          SLOT(setDuration()));
-  connect(this,SIGNAL(dateTimesChanged(QDateTime,QDateTime)),
-          SLOT(emitDateTimeStr()));
+  connect( this, SIGNAL( dateTimesChanged( const QDateTime &, const QDateTime & )),
+           SLOT( setDuration() ) );
+  connect( this, SIGNAL( dateTimesChanged( const QDateTime &, const QDateTime & )),
+           SLOT( emitDateTimeStr() ));
 }
 
 KOEditorGeneralEvent::~KOEditorGeneralEvent()
@@ -191,7 +191,7 @@ void KOEditorGeneralEvent::associateTime(bool time)
   allDayChanged(!time);
 }
 
-void KOEditorGeneralEvent::setDateTimes(QDateTime start, QDateTime end)
+void KOEditorGeneralEvent::setDateTimes( const QDateTime &start, const QDateTime &end )
 {
 //  kdDebug(5850) << "KOEditorGeneralEvent::setDateTimes(): Start DateTime: " << start.toString() << endl;
 
@@ -210,7 +210,7 @@ void KOEditorGeneralEvent::setDateTimes(QDateTime start, QDateTime end)
   emitDateTimeStr();
 }
 
-void KOEditorGeneralEvent::startTimeChanged(QTime newtime)
+void KOEditorGeneralEvent::startTimeChanged( QTime newtime )
 {
   kdDebug(5850) << "KOEditorGeneralEvent::startTimeChanged() " << newtime.toString() << endl;
 
@@ -226,7 +226,7 @@ void KOEditorGeneralEvent::startTimeChanged(QTime newtime)
   emit dateTimesChanged(mCurrStartDateTime,mCurrEndDateTime);
 }
 
-void KOEditorGeneralEvent::endTimeChanged(QTime newtime)
+void KOEditorGeneralEvent::endTimeChanged( QTime newtime )
 {
 //  kdDebug(5850) << "KOEditorGeneralEvent::endTimeChanged " << newtime.toString() << endl;
 
@@ -236,7 +236,7 @@ void KOEditorGeneralEvent::endTimeChanged(QTime newtime)
   emit dateTimesChanged(mCurrStartDateTime,mCurrEndDateTime);
 }
 
-void KOEditorGeneralEvent::startDateChanged(QDate newdate)
+void KOEditorGeneralEvent::startDateChanged( QDate newdate )
 {
   int daysep = mCurrStartDateTime.daysTo(mCurrEndDateTime);
 
@@ -249,7 +249,7 @@ void KOEditorGeneralEvent::startDateChanged(QDate newdate)
   emit dateTimesChanged(mCurrStartDateTime,mCurrEndDateTime);
 }
 
-void KOEditorGeneralEvent::endDateChanged(QDate newdate)
+void KOEditorGeneralEvent::endDateChanged( QDate newdate )
 {
   QDateTime newdt(newdate, mCurrEndDateTime.time());
 
@@ -264,7 +264,8 @@ void KOEditorGeneralEvent::endDateChanged(QDate newdate)
   emit dateTimesChanged(mCurrStartDateTime,mCurrEndDateTime);
 }
 
-void KOEditorGeneralEvent::setDefaults(QDateTime from,QDateTime to,bool allDay)
+void KOEditorGeneralEvent::setDefaults( const QDateTime &from, 
+                                        const QDateTime &to, bool allDay)
 {
   KOEditorGeneral::setDefaults(allDay);
 

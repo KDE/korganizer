@@ -130,7 +130,7 @@ class History : public QObject
     class MultiEntry : public Entry
     {
       public:
-        MultiEntry( KCal::Calendar *calendar, QString text );
+        MultiEntry( KCal::Calendar *calendar, const QString &text );
         ~MultiEntry();
         
         void appendEntry( Entry* entry );

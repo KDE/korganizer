@@ -511,7 +511,7 @@ void DownloadDialog::loadProvider(Provider *p)
     SLOT(slotData(KIO::Job*, const QByteArray&)));
 }
 
-void DownloadDialog::setType(QString type)
+void DownloadDialog::setType( const QString &type )
 {
   m_filter = type;
 }
@@ -524,7 +524,7 @@ void DownloadDialog::slotApply()
 {
 }
 
-void DownloadDialog::open(QString type)
+void DownloadDialog::open(const QString &type)
 {
   DownloadDialog d;
   d.setType(type);

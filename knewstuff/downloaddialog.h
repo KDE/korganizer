@@ -85,7 +85,7 @@ class DownloadDialog : public KDialogBase
 
       @param type a Hotstuff data type such as "korganizer/calendar"
     */
-    void setType(QString type);
+    void setType(const QString &type);
 
     /**
       Fetches descriptions of all available data, optionally considering
@@ -123,7 +123,7 @@ class DownloadDialog : public KDialogBase
 
       @param type a data type such as "korganizer/calendar"
     */
-    static void open(QString type);
+    static void open(const QString &type);
 
   public slots:
     /**

@@ -45,12 +45,12 @@ KOrganizerIfaceImpl::~KOrganizerIfaceImpl()
 {
 }
 
-bool KOrganizerIfaceImpl::openURL( QString url )
+bool KOrganizerIfaceImpl::openURL( const QString &url )
 {
   return mActionManager->openURL( url );
 }
 
-bool KOrganizerIfaceImpl::mergeURL( QString url )
+bool KOrganizerIfaceImpl::mergeURL( const QString &url )
 {
   return mActionManager->mergeURL( url );
 }
@@ -65,7 +65,7 @@ bool KOrganizerIfaceImpl::saveURL()
   return mActionManager->saveURL();
 }
 
-bool KOrganizerIfaceImpl::saveAsURL( QString url )
+bool KOrganizerIfaceImpl::saveAsURL( const QString &url )
 {
   return mActionManager->saveAsURL( url );
 }
@@ -75,12 +75,12 @@ QString KOrganizerIfaceImpl::getCurrentURLasString() const
   return mActionManager->getCurrentURLasString();
 }
 
-bool KOrganizerIfaceImpl::deleteIncidence( QString uid )
+bool KOrganizerIfaceImpl::deleteIncidence( const QString &uid )
 {
   return mActionManager->deleteIncidence( uid );
 }
 
-bool KOrganizerIfaceImpl::editIncidence( QString uid )
+bool KOrganizerIfaceImpl::editIncidence( const QString &uid )
 {
   return mActionManager->editIncidence( uid );
 }

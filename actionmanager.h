@@ -129,11 +129,11 @@ class ActionManager : public QObject, public KCalendarIface
     /** Is there a instance with this URL? */
     static KOrg::MainWindow* findInstance( const KURL &url );
     /** Open calendar file from URL */
-    bool openURL( QString url );
+    bool openURL( const QString &url );
     /** Open calendar file from URL */
-    bool mergeURL( QString url );
+    bool mergeURL( const QString &url );
     /** Save calendar file to URL */
-    bool saveAsURL( QString url );
+    bool saveAsURL( const QString &url );
     /** Close calendar file opened from URL */
     void closeURL();
     /** Get current URL as QString */

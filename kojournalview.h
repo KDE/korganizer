@@ -53,7 +53,7 @@ class KOJournalView : public KOrg::BaseView
 
   public slots:
     // Don't update the view when midnight passed, otherwise we'll have data loss (bug 79145)
-    virtual void dayPassed( QDate ) {}
+    virtual void dayPassed( const QDate & ) {}
     void updateView();
     void flushView();
 

@@ -130,7 +130,7 @@ void KODayMatrix::setCalendar( Calendar *cal )
   updateEvents();
 }
 
-QColor KODayMatrix::getShadedColor( QColor color )
+QColor KODayMatrix::getShadedColor( const QColor &color )
 {
   QColor shaded;
   int h = 0;
@@ -218,7 +218,7 @@ void KODayMatrix::recalculateToday()
   updateView( mStartDate );
 }
 
-void KODayMatrix::updateView( QDate actdate )
+void KODayMatrix::updateView( const QDate &actdate )
 {
 //  kdDebug(5850) << "KODayMatrix::updateView() " << actdate.toString() << endl;
 

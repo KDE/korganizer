@@ -27,14 +27,14 @@ class KOrganizerIface : virtual public DCOPObject
 {
     K_DCOP
   k_dcop:
-    virtual bool openURL(QString url) = 0;
-    virtual bool mergeURL(QString url) = 0;
+    virtual bool openURL(const QString &url) = 0;
+    virtual bool mergeURL(const QString &url) = 0;
     virtual void closeURL() = 0;
     virtual bool saveURL() = 0;
-    virtual bool saveAsURL(QString url) = 0;
+    virtual bool saveAsURL(const QString &url) = 0;
     virtual QString getCurrentURLasString() const = 0;
-    virtual bool editIncidence(QString uid) = 0;
-    virtual bool deleteIncidence(QString uid) = 0;
+    virtual bool editIncidence(const QString &uid) = 0;
+    virtual bool deleteIncidence(const QString &uid) = 0;
 };
 
 #endif

@@ -242,11 +242,11 @@ CalendarView::CalendarView( QWidget *parent, const char *name )
   connect( mDateNavigator, SIGNAL(incidenceDroppedMove(Incidence*,const QDate&)),
            SLOT( moveIncidenceTo( Incidence *, const QDate & ) ) );
 
-  connect( mDateChecker, SIGNAL( dayPassed( QDate ) ),
-           mTodoList, SLOT( dayPassed( QDate ) ) );
-  connect( mDateChecker, SIGNAL( dayPassed( QDate ) ),
-           SIGNAL( dayPassed( QDate ) ) );
-  connect( mDateChecker, SIGNAL( dayPassed( QDate ) ),
+  connect( mDateChecker, SIGNAL( dayPassed( const QDate & ) ),
+           mTodoList, SLOT( dayPassed( const QDate & ) ) );
+  connect( mDateChecker, SIGNAL( dayPassed( const QDate & ) ),
+           SIGNAL( dayPassed( const QDate & ) ) );
+  connect( mDateChecker, SIGNAL( dayPassed( const QDate & ) ),
            mDateNavigator, SLOT( updateToday() ) );
 
   connect( this, SIGNAL( configChanged() ),
@@ -839,7 +839,7 @@ void CalendarView::newEvent()
   }
 }
 
-void CalendarView::newEvent(QDateTime fh)
+void CalendarView::newEvent( const QDateTime &fh )
 {
   QTime defaultDuration( KOPrefs::instance()->mDefaultDuration.time() );
   QDateTime endTime = fh.addSecs( defaultDuration.hour()*3600 +
@@ -847,7 +847,7 @@ void CalendarView::newEvent(QDateTime fh)
   newEvent( fh, endTime );
 }
 
-void CalendarView::newEvent(QDate dt)
+void CalendarView::newEvent( const QDate &dt )
 {
   QTime startTime = KOPrefs::instance()->mStartTime.time();
   QTime defaultDuration( KOPrefs::instance()->mDefaultDuration.time() );
@@ -884,7 +884,8 @@ void CalendarView::newEvent( const QString &summary, const QString &description,
   eventEditor->show();
 }
 
-void CalendarView::newEvent(QDateTime fromHint, QDateTime toHint, bool allDay)
+void CalendarView::newEvent( const QDateTime &fromHint, const QDateTime &toHint, 
+                             bool allDay)
 {
   KOEventEditor *eventEditor = mDialogManager->getEventEditor();
   connectIncidenceEditor( eventEditor );
@@ -938,7 +939,7 @@ void CalendarView::newTodo()
   todoEditor->show();
 }
 
-void CalendarView::newTodo( QDate date )
+void CalendarView::newTodo( const QDate &date )
 {
   KOTodoEditor *todoEditor = mDialogManager->getTodoEditor();
   connectIncidenceEditor( todoEditor );
@@ -946,7 +947,7 @@ void CalendarView::newTodo( QDate date )
   todoEditor->show();
 }
 
-void CalendarView::newJournal( QDate date )
+void CalendarView::newJournal( const QDate &date )
 {
   KOJournalEditor *journalEditor = mDialogManager->getJournalEditor();
   connectIncidenceEditor( journalEditor );
@@ -954,7 +955,7 @@ void CalendarView::newJournal( QDate date )
   journalEditor->show();
 }
 
-void CalendarView::newJournal( const QString &text, QDate date )
+void CalendarView::newJournal( const QString &text, const QDate &date )
 {
   KOJournalEditor *journalEditor = mDialogManager->getJournalEditor();
   connectIncidenceEditor( journalEditor );

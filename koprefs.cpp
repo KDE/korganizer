@@ -266,12 +266,12 @@ void KOPrefs::usrWriteConfig()
   KPimPrefs::usrWriteConfig();
 }
 
-void KOPrefs::setCategoryColor(QString cat,const QColor & color)
+void KOPrefs::setCategoryColor( const QString &cat, const QColor & color)
 {
   mCategoryColors.replace( cat, new QColor( color ) );
 }
 
-QColor *KOPrefs::categoryColor(QString cat)
+QColor *KOPrefs::categoryColor( const QString &cat )
 {
   QColor *color = 0;
 
@@ -281,14 +281,14 @@ QColor *KOPrefs::categoryColor(QString cat)
   else return &mDefaultCategoryColor;
 }
 
-void KOPrefs::setResourceColor ( QString cal, const QColor &color )
+void KOPrefs::setResourceColor ( const QString &cal, const QColor &color )
 {
   kdDebug(5850)<<"KOPrefs::setResourceColor: " << cal << " color: "<< 
     color.name()<<endl;
   mResourceColors.replace( cal, new QColor( color ) );
 }
   
-QColor* KOPrefs::resourceColor( QString cal )
+QColor* KOPrefs::resourceColor( const QString &cal )
 {
   QColor *color=0;
   if( !cal.isEmpty() ) color = mResourceColors[cal];

@@ -60,8 +60,8 @@ class KOJournalEditor : public KOIncidenceEditor
     /**
       Clear editor for new Journal, and preset the dates and times with hint.
     */
-    void newJournal( QDate date );
-    void newJournal( const QString &text, QDate date );
+    void newJournal( const QDate &date );
+    void newJournal( const QString &text, const QDate &date );
 
     /**
       Edit new Journal. Set summary and description from given text.
@@ -78,7 +78,7 @@ class KOJournalEditor : public KOIncidenceEditor
     void editIncidence(Incidence *);
 
     /** Set widgets to default values */
-    void setDefaults( QDate date );
+    void setDefaults( const QDate &date );
     /** Read event object and setup widgets accordingly */
     void readJournal( Journal * );
     /** Write event settings to event object */

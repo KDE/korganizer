@@ -30,7 +30,7 @@
 
 #include "exchangedialog.h"
 
-ExchangeDialog::ExchangeDialog(QDate _start, QDate _end, QWidget *parent)
+ExchangeDialog::ExchangeDialog( const QDate &_start, const QDate &_end, QWidget *parent)
   : KDialogBase(Plain,i18n("Exchange Plugin"),Ok|Cancel,Ok,parent)
 {
   QFrame *topFrame = plainPage();
