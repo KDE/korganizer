@@ -30,7 +30,6 @@
 
 #include <libkcal/calendar.h>
 
-//ET#include "kdpdatebutton.h"
 #include "kodaymatrix.h"
 
 class QPushButton;
@@ -51,7 +50,6 @@ class KDateNavigator: public QFrame {
  public slots:
    void selectDates(const DateList &);
    void selectDates(QDate);
-//   void addSelection(QDate, int, bool);
    void addSelection(const DateList);
    void setShowWeekNums(bool enabled);
    void updateView();
@@ -72,7 +70,6 @@ class KDateNavigator: public QFrame {
    void goPrevMonth();
    void goNextYear();
    void goPrevYear();
-   void updateButton(int);
 
  protected:
    void updateDates();
@@ -86,12 +83,10 @@ class KDateNavigator: public QFrame {
    QPushButton *nextMonth;
    QPushButton *nextYear;
    QLabel *dateLabel;
-//ET   QFrame *viewFrame;
    QFrame *headingSep;
    QFrame *weeknumSep;
    QLabel *headings[7];
    QLabel *weeknos[7];
-//ET   KDateButton *buttons[42];
    KODayMatrix *daymatrix;
 
    DateList mSelectedDates;
@@ -101,7 +96,6 @@ class KDateNavigator: public QFrame {
 
    int dayNum(int row, int col);
    int dayToIndex(int dayNum);
-   void fixupSelectedDates(int yr, int mth);
 
    Calendar *mCalendar;
 
