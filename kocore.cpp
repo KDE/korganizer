@@ -63,6 +63,10 @@ KOrg::Plugin *KOCore::loadPlugin(KService::Ptr service)
 {
   kdDebug() << "loadPlugin: library: " << service->library() << endl;
 
+  if ( !service->hasServiceType( "Calendar/Plugin" ) ) {
+    return 0;
+  }
+
   KLibFactory *factory = KLibLoader::self()->factory(service->library());
 
   if (!factory) {
@@ -70,7 +74,7 @@ KOrg::Plugin *KOCore::loadPlugin(KService::Ptr service)
     return 0;
   }
   
-  KOrg::PluginFactory *pluginFactory = dynamic_cast<KOrg::PluginFactory *>(factory);
+  KOrg::PluginFactory *pluginFactory = static_cast<KOrg::PluginFactory *>(factory);
   
   if (!pluginFactory) {
     kdDebug() << "KOCore::loadPlugin(): Cast to KOrg::PluginFactory failed" << endl;
@@ -104,7 +108,7 @@ KOrg::CalendarDecoration *KOCore::loadCalendarDecoration(KService::Ptr service)
   }
   
   KOrg::CalendarDecorationFactory *pluginFactory =
-      dynamic_cast<KOrg::CalendarDecorationFactory *>(factory);
+      static_cast<KOrg::CalendarDecorationFactory *>(factory);
   
   if (!pluginFactory) {
     kdDebug() << "KOCore::loadCalendarDecoration(): Cast failed" << endl;
@@ -130,6 +134,10 @@ KOrg::Part *KOCore::loadPart(KService::Ptr service, KOrg::MainWindow *parent)
 {
   kdDebug() << "loadPart: library: " << service->library() << endl;
 
+  if ( !service->hasServiceType( "KOrganizer/Part" ) ) {
+    return 0;
+  }
+
   KLibFactory *factory = KLibLoader::self()->factory(service->library());
 
   if (!factory) {
@@ -138,7 +146,7 @@ KOrg::Part *KOCore::loadPart(KService::Ptr service, KOrg::MainWindow *parent)
   }
   
   KOrg::PartFactory *pluginFactory =
-      dynamic_cast<KOrg::PartFactory *>(factory);
+      static_cast<KOrg::PartFactory *>(factory);
   
   if (!pluginFactory) {
     kdDebug() << "KOCore::loadPart(): Cast failed" << endl;
@@ -192,8 +200,10 @@ KOrg::Part::List KOCore::loadParts( KOrg::MainWindow *parent )
   for(it = plugins.begin(); it != plugins.end(); ++it) {
     if (selectedPlugins.find((*it)->desktopEntryName()) != selectedPlugins.end()) {
       KOrg::Part *part = loadPart(*it,parent);
-      parent->guiFactory()->addClient( part );
-      parts.append( part );
+      if ( part ) {
+        parent->guiFactory()->addClient( part );
+        parts.append( part );
+      }
     }
   }
   return parts;
@@ -236,7 +246,7 @@ void KOCore::reloadPlugins()
 QString KOCore::holiday(const QDate &date)
 {
   if (!mHolidaysLoaded) {
-    mHolidays = dynamic_cast<KOrg::CalendarDecoration *>(loadPlugin("holidays"));
+    mHolidays = static_cast<KOrg::CalendarDecoration *>(loadPlugin("holidays"));
     mHolidaysLoaded = true;
   }
   
