@@ -48,8 +48,6 @@
 #include "koviewmanager.h"
 #include "koagendaview.h"
 #include "kodialogmanager.h"
-#include "outgoingdialog.h"
-#include "incomingdialog.h"
 #include "statusdialog.h"
 #include "datenavigatorcontainer.h"
 #include "kotodoview.h"
@@ -255,11 +253,6 @@ CalendarView::CalendarView( QWidget *parent, const char *name )
   mViewManager->connectTodoView( mTodoList );
   mViewManager->connectView( mTodoList );
 
-  KDirWatch *messageWatch = new KDirWatch( this );
-  messageWatch->addDir( locateLocal( "data", "korganizer/income/" ) );
-  connect( messageWatch, SIGNAL( dirty( const QString & ) ),
-           SLOT( lookForIncomingMessages() ) );
-
   // We should think about seperating startup settings and configuration change.
   updateConfig();
 
@@ -388,7 +381,6 @@ bool CalendarView::openCalendar(const QString& filename, bool merge)
     else {
       setModified( false );
       mViewManager->setDocumentId( filename );
-      mDialogManager->setDocumentId( filename );
       mTodoList->setDocumentId( filename );
     }
     updateCategories();
@@ -1211,6 +1203,7 @@ void CalendarView::schedule_publish(Incidence *incidence)
                               "PublishNoEventSelected" );
     return;
   }
+  // RK FIXME: Implement this using the new groupware code
 
   PublishDialog *publishdlg = new PublishDialog();
   if (incidence->attendeeCount()>0) {
@@ -1226,13 +1219,13 @@ void CalendarView::schedule_publish(Incidence *incidence)
       send = false;
   }
   if ( send ) {
-    OutgoingDialog *dlg = mDialogManager->outgoingDialog();
+/*    OutgoingDialog *dlg = mDialogManager->outgoingDialog();
     Incidence *inc = incidence->clone();
     inc->registerObserver( 0 );
     inc->clearAttendees();
     if (!dlg->addMessage( inc, Scheduler::Publish, publishdlg->addresses() )) {
       delete( inc );
-    }
+    }*/
   }
   delete publishdlg;
 }
@@ -1274,6 +1267,7 @@ void CalendarView::schedule_declinecounter(Incidence *incidence)
 
 void CalendarView::mailFreeBusy( int daysToPublish )
 {
+// RK FIXME: Implement this using the new groupware methods
   QDateTime start = QDateTime::currentDateTime();
   QDateTime end = start.addDays(daysToPublish);
 
@@ -1287,10 +1281,10 @@ void CalendarView::mailFreeBusy( int daysToPublish )
 
   PublishDialog *publishdlg = new PublishDialog();
   if ( publishdlg->exec() == QDialog::Accepted ) {
-    OutgoingDialog *dlg = mDialogManager->outgoingDialog();
+/*    OutgoingDialog *dlg = mDialogManager->outgoingDialog();
     if (!dlg->addMessage(freebusy,Scheduler::Publish,publishdlg->addresses())) {
          delete(freebusy);
-    }
+    }*/
   }
   delete publishdlg;
 }
@@ -1338,11 +1332,11 @@ void CalendarView::schedule(Scheduler::Method method, Incidence *incidence)
       inc->addAttendee( menew, false );
     }
   }
-
-  OutgoingDialog *dlg = mDialogManager->outgoingDialog();
+// RK FIXME: Use the new groupware methods
+/*  OutgoingDialog *dlg = mDialogManager->outgoingDialog();
   if (inc ) {
     if ( !dlg->addMessage( inc, method ) ) delete(inc);
-  }
+  }*/
 }
 
 void CalendarView::openAddressbook()
@@ -1925,18 +1919,6 @@ void CalendarView::connectIncidenceEditor( KOIncidenceEditor *editor )
   connect( this, SIGNAL( newIncidenceChanger( IncidenceChangerBase* ) ),
            editor, SLOT( setIncidenceChanger( IncidenceChangerBase* ) ) );
   editor->setIncidenceChanger( mChanger );
-}
-
-void CalendarView::lookForOutgoingMessages()
-{
-  OutgoingDialog *ogd = mDialogManager->outgoingDialog();
-  ogd->loadMessages();
-}
-
-void CalendarView::lookForIncomingMessages()
-{
-  IncomingDialog *icd = mDialogManager->incomingDialog();
-  icd->retrieve();
 }
 
 bool CalendarView::purgeCompletedSubTodos( Todo* todo, bool &allPurged )

@@ -119,9 +119,6 @@ class KOrganizer : public KPartsMainWindow, public KOrgMainWindow
     /** Sets title of window according to filename and modification state */
     void setTitle();
 
-    void setNumIncoming( int );
-    void setNumOutgoing( int );
-
     void newMainWindow( const KURL & );
 
   protected:

@@ -64,11 +64,9 @@ libkorganizer_la_LIBADD  = $(LIB_KPARTS) $(LIB_KFILE) $(LIB_KNEWSTUFF) \
 	$(top_builddir)/kresources/remote/libkcal_resourceremote.la \
         $(top_builddir)/libemailfunctions/libemailfunctions.la
 libkorganizer_la_COMPILE_FIRST = \
-	outgoingdialog_base.ui \
-	incomingdialog_base.ui \
 	kogroupwareprefspage.ui \
 	$(top_srcdir)/libkdepim/categoryselectdialog.h
-libkorganizer_la_SOURCES = komessagebox.cpp outgoingdialog_base.ui \
+libkorganizer_la_SOURCES = komessagebox.cpp \
 	koagendaview.cpp koagenda.cpp koagendaitem.cpp \
 	datenavigator.cpp kdatenavigator.cpp datenavigatorcontainer.cpp \
 	datechecker.cpp \
@@ -85,8 +83,6 @@ libkorganizer_la_SOURCES = komessagebox.cpp outgoingdialog_base.ui \
 	koeditordetails.cpp koeditoralarms_base.ui koeditoralarms.cpp \
 	koeditorrecurrence.cpp koeditorattachments.cpp \
 	kogroupwareprefspage.ui koeventpopupmenu.cpp koeditorfreebusy.cpp \
-	outgoingdialog.cpp \
-	incomingdialog_base.ui incomingdialog.cpp \
 	publishdialog_base.ui publishdialog.cpp \
 	koeventview.cpp \
 	korganizeriface.skel kcalendariface.skel \
@@ -147,7 +143,7 @@ noinst_HEADERS = komonthview.h \
 	kowindowlist.h kocounterdialog.h \
 	koeditorgeneralevent.h koeditorgeneraltodo.h koeditordetails.h \
 	koeditorrecurrence.h koeventviewerdialog.h koeventpopupmenu.h \
-	outgoingdialog.h incomingdialog.h publishdialog.h koeditorfreebusy.h \
+	publishdialog.h koeditorfreebusy.h \
 	koeventview.h statusdialog.h customlistviewitem.h \
 	alarmclient.h \
 	navigatorbar.h kogroupware.h \

@@ -29,8 +29,6 @@
 #include <libkdepim/categoryeditdialog.h>
 
 #include "calendarview.h"
-#include "incomingdialog.h"
-#include "outgoingdialog.h"
 #include "koprefsdialog.h"
 #include "koprefs.h"
 #include "koeventeditor.h"
@@ -85,8 +83,6 @@ class KODialogManager::EditorDialogVisitor :
 KODialogManager::KODialogManager( CalendarView *mainView ) :
   QObject(), mMainView( mainView )
 {
-  mOutgoingDialog = 0;
-  mIncomingDialog = 0;
   mOptionsDialog = 0;
   mSearchDialog = 0;
   mArchiveDialog = 0;
@@ -100,8 +96,6 @@ KODialogManager::KODialogManager( CalendarView *mainView ) :
 
 KODialogManager::~KODialogManager()
 {
-  delete mOutgoingDialog;
-  delete mIncomingDialog;
   delete mOptionsDialog;
   delete mSearchDialog;
 #ifndef KORG_NOARCHIVE
@@ -115,22 +109,6 @@ void KODialogManager::errorSaveIncidence( QWidget *parent, Incidence *incidence 
   KMessageBox::sorry( parent, i18n("Unable to save %1 \"%2\".")
                       .arg( i18n( incidence->type() ) )
                       .arg( incidence->summary() ) );
-}
-
-OutgoingDialog *KODialogManager::outgoingDialog()
-{
-  createOutgoingDialog();
-  return mOutgoingDialog;
-}
-
-void KODialogManager::createOutgoingDialog()
-{
-  if (!mOutgoingDialog) {
-    mOutgoingDialog = new OutgoingDialog(mMainView->calendar(),mMainView);
-    if (mIncomingDialog) mIncomingDialog->setOutgoingDialog(mOutgoingDialog);
-    connect(mOutgoingDialog,SIGNAL(numMessagesChanged(int)),
-            mMainView,SIGNAL(numOutgoingChanged(int)));
-  }
 }
 
 void KODialogManager::showOptionsDialog()
@@ -179,38 +157,6 @@ void KODialogManager::showOptionsDialog()
 
   mOptionsDialog->show();
   mOptionsDialog->raise();
-}
-
-void KODialogManager::showOutgoingDialog()
-{
-  createOutgoingDialog();
-  mOutgoingDialog->show();
-  mOutgoingDialog->raise();
-}
-
-IncomingDialog *KODialogManager::incomingDialog()
-{
-  createIncomingDialog();
-  return mIncomingDialog;
-}
-
-void KODialogManager::createIncomingDialog()
-{
-  createOutgoingDialog();
-  if (!mIncomingDialog) {
-    mIncomingDialog = new IncomingDialog(mMainView->calendar(),mOutgoingDialog,mMainView);
-    connect(mIncomingDialog,SIGNAL(numMessagesChanged(int)),
-            mMainView,SIGNAL(numIncomingChanged(int)));
-    connect(mIncomingDialog,SIGNAL(calendarUpdated()),
-            mMainView,SLOT(updateView()));
-  }
-}
-
-void KODialogManager::showIncomingDialog()
-{
-  createIncomingDialog();
-  mIncomingDialog->show();
-  mIncomingDialog->raise();
 }
 
 void KODialogManager::showCategoryEditDialog()
@@ -335,7 +281,3 @@ void KODialogManager::updateSearchDialog()
   if (mSearchDialog) mSearchDialog->updateView();
 }
 
-void KODialogManager::setDocumentId( const QString &id )
-{
-  if (mOutgoingDialog) mOutgoingDialog->setDocumentId( id );
-}

@@ -285,51 +285,6 @@
     <entry type="StringList" name="AdditionalMails">
     </entry>
 
-    <entry type="Enum" name="IMIPSend">
-      <label>Scheduler Mails Should Be</label>
-      <choices>
-        <choice name="IMIPOutbox">
-          <label>Send to outbox</label>
-        </choice>
-        <choice name="IMIPdirectsend">
-          <label>Send directly</label>
-        </choice>
-      </choices>
-      <default>IMIPdirectsend</default>
-    </entry>
-
-    <entry type="Enum" key="IMIP auto refresh" name="IMIPAutoRefresh">
-      <label>Auto Send Refresh</label>
-      <choices>
-        <choice name="neverAuto">
-          <label>Never</label>
-        </choice>
-        <choice name="addressbookAuto">
-          <label>If attendee is in addressbook</label>
-        </choice>
-        <choice name="selectedAuto">
-          <label>Selected emails</label>
-        </choice>
-      </choices>
-      <default>neverAuto</default>
-    </entry>
-    <entry type="Enum" key="IMIP auto insert request" name="IMIPAutoInsertRequest">
-      <label>Auto Insert IMIP Requests</label>
-      <default>neverAuto</default>
-    </entry>
-    <entry type="Enum" key="IMIP auto insert reply" name="IMIPAutoInsertReply">
-      <label>Auto Insert IMIP Replies</label>
-      <default>neverAuto</default>
-    </entry>
-    <entry type="Enum" key="IMIP auto FreeBusy" name="IMIPAutoFreeBusy">
-      <label>Auto Send FreeBusy Information</label>
-      <default>neverAuto</default>
-    </entry>
-    <entry type="Enum" key="IMIP auto save FreeBusy" name="IMIPAutoFreeBusyReply">
-      <label>Auto Save FreeBusy Replies</label>
-      <default>neverAuto</default>
-    </entry>
-
   </group>
 
   <group name="Colors">

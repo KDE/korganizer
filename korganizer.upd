@@ -1,3 +1,14 @@
+Id=korganizer_3.4_GroupwareCleanup
+File=korganizerrc
+Group=Group Scheduling
+RemoveKey=IMIP auto refresh
+RemoveKey=IMIP auto insert reply
+RemoveKey=IMIP auto insert request
+RemoveKey=IMIP auto FreeBusy
+RemoveKey=IMIP auto save FreeBusy
+RemoveKey=IMIPSend
+#
+#
 Id=korganizer_3.4_WebExport
 File=korganizerrc,libkcal_htmlexportrc
 Group=HtmlExport,KOrganizer-General

@@ -125,18 +125,6 @@ KOPrefsDialogMain::KOPrefsDialogMain( QWidget *parent, const char *name )
       addWidBool( KOPrefs::instance()->confirmItem(), topFrame );
   topLayout->addMultiCellWidget(confirmCheck->checkBox(),7,7,0,1);
 
-  KPrefsWidRadios *mailClientGroup =
-      addWidRadios( KOPrefs::instance()->mailClientItem(), topFrame );
-  topLayout->addMultiCellWidget(mailClientGroup->groupBox(),11,11,0,1);
-
-  KPrefsWidBool *useGroupwareBool =
-      addWidBool( KOPrefs::instance()->useGroupwareCommunicationItem(),
-      topFrame );
-  topLayout->addMultiCellWidget(useGroupwareBool->checkBox(),12,12,0,1);
-  // FIXME: This radio button should only be available when KMail is chosen
-//   connect(thekmailradiobuttonupthere,SIGNAL(toggled(bool)),
-//           useGroupwareBool->checkBox(), SLOT(enabled(bool)));
-
   KPrefsWidBool *htmlsave =
       addWidBool( KOPrefs::instance()->htmlWithSaveItem(),
                   topFrame );
@@ -770,6 +758,19 @@ KOPrefsDialogGroupScheduling::KOPrefsDialogGroupScheduling( QWidget *parent, con
   QGridLayout *topLayout = new QGridLayout(topFrame,6,2);
   topLayout->setSpacing( KDialog::spacingHint() );
 
+  KPrefsWidBool *useGroupwareBool =
+      addWidBool( KOPrefs::instance()->useGroupwareCommunicationItem(),
+      topFrame );
+  topLayout->addMultiCellWidget(useGroupwareBool->checkBox(),0,0,0,1);
+  // FIXME: This radio button should only be available when KMail is chosen
+//   connect(thekmailradiobuttonupthere,SIGNAL(toggled(bool)),
+//           useGroupwareBool->checkBox(), SLOT(enabled(bool)));
+
+  KPrefsWidRadios *mailClientGroup =
+      addWidRadios( KOPrefs::instance()->mailClientItem(), topFrame );
+  topLayout->addMultiCellWidget(mailClientGroup->groupBox(),1,1,0,1);
+
+
 #if 0
   KPrefsWidRadios *schedulerGroup =
       addWidRadios(i18n("Scheduler Mail Client"),KOPrefs::instance()->mIMIPScheduler,
@@ -780,11 +781,6 @@ KOPrefsDialogGroupScheduling::KOPrefsDialogGroupScheduling( QWidget *parent, con
   topLayout->addMultiCellWidget(schedulerGroup->groupBox(),0,0,0,1);
 #endif
 
-  KPrefsWidRadios *sendGroup =
-      addWidRadios( KOPrefs::instance()->iMIPSendItem(),
-                    topFrame );
-
-  topLayout->addMultiCellWidget(sendGroup->groupBox(),1,1,0,1);
 
   topLayout->addMultiCellWidget(new QLabel(i18n("Additional email addresses:"),topFrame),2,2,0,1);
   mAMails = new QListView(topFrame);
@@ -888,71 +884,6 @@ extern "C"
   }
 }
 
-
-class KOPrefsDialogGroupAutomation : public KPrefsModule
-{
-  public:
-    KOPrefsDialogGroupAutomation( QWidget *parent, const char *name )
-      : KPrefsModule( KOPrefs::instance(), parent, name )
-    {
-      QBoxLayout *topTopLayout = new QVBoxLayout( this );
-
-      QWidget *topFrame = new QWidget( this );
-      topTopLayout->addWidget( topFrame );
-
-      QGridLayout *topLayout = new QGridLayout(topFrame,6,1);
-      topLayout->setSpacing( KDialog::spacingHint() );
-
-      KPrefsWidRadios *autoRefreshGroup =
-          addWidRadios( KOPrefs::instance()->iMIPAutoRefreshItem(), topFrame );
-      topLayout->addMultiCellWidget(autoRefreshGroup->groupBox(),0,0,0,0);
-
-      KPrefsWidRadios *autoInsertGroup =
-          addWidRadios( KOPrefs::instance()->iMIPAutoInsertReplyItem(),
-                        topFrame );
-      autoInsertGroup->addRadio(i18n("Never"));
-      autoInsertGroup->addRadio(i18n("If attendee is in addressbook"));
-      //autoInsertGroup->addRadio(i18n("selected emails"));
-      topLayout->addMultiCellWidget(autoInsertGroup->groupBox(),1,1,0,0);
-
-      KPrefsWidRadios *autoRequestGroup =
-          addWidRadios( KOPrefs::instance()->iMIPAutoInsertRequestItem(),
-                        topFrame );
-      autoRequestGroup->addRadio(i18n("Never"));
-      autoRequestGroup->addRadio(i18n("If organizer is in addressbook"));
-      //autoInsertGroup->addRadio(i18n("selected emails"));
-      topLayout->addMultiCellWidget(autoRequestGroup->groupBox(),2,2,0,0);
-
-      KPrefsWidRadios *autoFreeBusyGroup =
-          addWidRadios( KOPrefs::instance()->iMIPAutoFreeBusyItem(), topFrame );
-      autoFreeBusyGroup->addRadio(i18n("Never"));
-      autoFreeBusyGroup->addRadio(i18n("If requested from an email in addressbook"));
-      //autoFreeBusyGroup->addRadio(i18n("selected emails"));
-      topLayout->addMultiCellWidget(autoFreeBusyGroup->groupBox(),3,3,0,0);
-
-      KPrefsWidRadios *autoFreeBusyReplyGroup =
-          addWidRadios( KOPrefs::instance()->iMIPAutoFreeBusyReplyItem(),
-                        topFrame );
-      autoFreeBusyReplyGroup->addRadio(i18n("Never"));
-      autoFreeBusyReplyGroup->addRadio(i18n("If attendee is in addressbook"));
-      //autoFreeBusyGroup->addRadio(i18n("selected emails"));
-      topLayout->addMultiCellWidget(autoFreeBusyReplyGroup->groupBox(),4,4,0,0);
-
-      topLayout->setRowStretch( 5, 1 );
-
-      load();
-    }
-};
-
-extern "C"
-{
-  KCModule *create_korganizerconfiggroupautomation( QWidget *parent,
-                                                    const char * )
-  {
-    return new KOPrefsDialogGroupAutomation( parent,
-                                             "kcmkorganizergroupautomation" );
-  }
-}
 
 KOPrefsDialogGroupwareScheduling::KOPrefsDialogGroupwareScheduling( QWidget *parent, const char *name )
   : KPrefsModule( KOPrefs::instance(), parent, name )

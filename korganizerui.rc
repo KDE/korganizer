@@ -72,9 +72,6 @@
       <Action name="unsub_todo"/>
     </Menu>
     <Menu name="schedule"><text>S&amp;chedule</text>
-      <Action name="outgoing"/>
-      <Action name="incoming"/>
-      <Separator/>
       <Action name="publish"/>
       <Action name="request"/>
       <Action name="refresh"/>

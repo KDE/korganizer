@@ -195,13 +195,6 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
       is possible or not.
     */
     void pasteEnabled( bool );
-
-    /** Emitted, when the number of incoming messages has changed. */
-    void numIncomingChanged( int );
-
-    /** Emitted, when the number of outgoing messages has changed. */
-    void numOutgoingChanged( int );
-
     /** Send status message, which can e.g. be displayed in the status bar. */
     void statusMessage( const QString & );
 
@@ -474,11 +467,6 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     void showLeftFrame( bool show = true );
 
     void dialogClosing( Incidence * );
-
-    /** Look for new messages in the inbox */
-    void lookForIncomingMessages();
-   /** Look for new messages in the outbox */
-    void lookForOutgoingMessages();
 
     void processMainViewSelection( Incidence * );
     void processTodoListSelection( Incidence * );

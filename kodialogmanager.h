@@ -30,8 +30,6 @@
 
 namespace KCal{class CalFilter; }
 class CalendarView;
-class OutgoingDialog;
-class IncomingDialog;
 class KCMultiDialog;
 class KConfigureDialog;
 namespace KPIM { class CategoryEditDialog; }
@@ -67,12 +65,7 @@ class KODialogManager : public QObject
     KOJournalEditor *getJournalEditor();
     void connectEditor( KOIncidenceEditor*editor );
 
-    OutgoingDialog *outgoingDialog();
-
-    IncomingDialog *incomingDialog();
-
     void updateSearchDialog();
-    void setDocumentId( const QString &id );
 
     void connectTypeAhead( KOEventEditor *editor, KOAgendaView *agenda );
 
@@ -80,24 +73,17 @@ class KODialogManager : public QObject
 
   public slots:
     void showOptionsDialog();
-    void showIncomingDialog();
-    void showOutgoingDialog();
     void showCategoryEditDialog();
     void showSearchDialog();
     void showArchiveDialog();
     void showFilterEditDialog(QPtrList<CalFilter> *filters);
 
   private:
-    void createOutgoingDialog();
-    void createIncomingDialog();
-
     class DialogManagerVisitor;
     class EditorDialogVisitor;
     
     CalendarView *mMainView;
 
-    OutgoingDialog *mOutgoingDialog;
-    IncomingDialog *mIncomingDialog;
     KCMultiDialog *mOptionsDialog;
 //    KConfigureDialog *mOptionsDialog;
     KPIM::CategoryEditDialog *mCategoryEditDialog;

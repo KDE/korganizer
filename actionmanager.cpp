@@ -159,9 +159,6 @@ void ActionManager::ActionManager::init()
 
   // Update state of paste action
   mCalendarView->checkClipboard();
-
-  mCalendarView->lookForOutgoingMessages();
-  mCalendarView->lookForIncomingMessages();
 }
 
 void ActionManager::createCalendarLocal()
@@ -439,12 +436,6 @@ void ActionManager::initActions()
 
   // Schedule menu.
 
-  new KAction( i18n("&Outgoing Messages"),0,
-                    mCalendarView->dialogManager(),SLOT( showOutgoingDialog() ),
-                    mACollection,"outgoing" );
-  new KAction( i18n("&Incoming Messages"),0,
-                    mCalendarView->dialogManager(),SLOT( showIncomingDialog() ),
-                    mACollection,"incoming" );
   mPublishEvent = new KAction( i18n("&Publish..."),"mail_send",0,
                        mCalendarView,SLOT( schedule_publish() ),
                        mACollection,"publish" );

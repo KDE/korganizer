@@ -141,11 +141,6 @@ void KOrganizer::init( bool document )
   KStatusBar *bar = statusBar();
 
   bar->insertItem( "", ID_GENERAL, 10 );
-
-  bar->insertItem( i18n(" Incoming messages: %1 ").arg( 0 ), ID_MESSAGES_IN );
-  bar->insertItem( i18n(" Outgoing messages: %2 ").arg( 0 ), ID_MESSAGES_OUT );
-  bar->setItemAlignment( ID_MESSAGES_IN, AlignRight );
-  bar->setItemAlignment( ID_MESSAGES_OUT, AlignRight );
   connect( bar, SIGNAL( pressed( int ) ), SLOT( statusBarPressed( int ) ) );
 
   KPIM::ProgressDialog *progressDialog = new KPIM::ProgressDialog( bar, this );
@@ -156,11 +151,6 @@ void KOrganizer::init( bool document )
   progressWidget->show();
 
   bar->addWidget( progressWidget, 0, true );
-
-  connect( mActionManager->view(), SIGNAL( numIncomingChanged( int ) ),
-           SLOT( setNumIncoming( int ) ) );
-  connect( mActionManager->view(), SIGNAL( numOutgoingChanged( int ) ),
-           SLOT( setNumOutgoing( int ) ) );
 
   connect( mActionManager->view(), SIGNAL( statusMessage( const QString & ) ),
            SLOT( showStatusMessage( const QString & ) ) );
@@ -272,22 +262,6 @@ void KOrganizer::toggleStatusBar()
 
 void KOrganizer::statusBarPressed( int id )
 {
-  if ( id == ID_MESSAGES_IN )
-    mCalendarView->dialogManager()->showIncomingDialog();
-  else if ( id == ID_MESSAGES_OUT )
-    mCalendarView->dialogManager()->showOutgoingDialog();
-}
-
-void KOrganizer::setNumIncoming( int num )
-{
-  statusBar()->changeItem( i18n(" Incoming messages: %1 ").arg( num ),
-                           ID_MESSAGES_IN);
-}
-
-void KOrganizer::setNumOutgoing( int num )
-{
-  statusBar()->changeItem( i18n(" Outgoing messages: %1 ").arg( num ),
-                           ID_MESSAGES_OUT );
 }
 
 void KOrganizer::showStatusMessage( const QString &message )
