@@ -38,6 +38,8 @@ KOAgendaItem::KOAgendaItem(KOEvent *event, QWidget *parent,
 
   mItemLabel->setFrameStyle(Panel|Sunken);
 
+  mItemLabel->setFont(KOPrefs::instance()->mAgendaViewFont);
+
   setCellXY(0,0,1);
   setCellXWidth(0);
   setSubCell(0);

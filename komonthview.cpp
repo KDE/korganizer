@@ -17,6 +17,7 @@
 #include <kiconloader.h>
 
 #include "calprinter.h"
+#include "koprefs.h"
 
 #include "komonthview.h"
 #include "komonthview.moc"
@@ -460,43 +461,29 @@ void KOMonthView::printPreview(CalPrinter *calPrinter, const QDate &fd,
 
 void KOMonthView::updateConfig()
 {
-  const QString longDayNames[] = { i18n("Sunday"), i18n("Monday"),
-                                   i18n("Tuesday"), i18n("Wednesday"),
-                                   i18n("Thursday"),
-                                   i18n("Friday"), i18n("Saturday") };
-  const QString longDayNames2[] = { i18n("Monday"), i18n("Tuesday"),
-                                    i18n("Wednesday"), i18n("Thursday"),
-                                    i18n("Friday"), i18n("Saturday"),
-                                    i18n("Sunday") };
-  
-  KConfig config(locate("config", "korganizerrc")); 
   weekStartsMonday = KGlobal::locale()->weekStartsMonday();
   
-  QColor tmpColor("#cc3366");
-  config.setGroup("Colors");
-  QColor hiliteColor = config.readColorEntry("Holiday Color", &tmpColor);
+  for (int i = 0; i < 7; i++) {
+    if (weekStartsMonday) {
+      dayNames[i]->setText(KGlobal::locale()->weekDayName(i+1));
+    } else {
+      if (i==0) dayNames[i]->setText(KGlobal::locale()->weekDayName(7));
+      else dayNames[i]->setText(KGlobal::locale()->weekDayName(i));
+    }
+  }
 
   holidayPalette = palette();
-  QColorGroup myGroup = QColorGroup(palette().normal().foreground(),
-                                    palette().normal().background(),
-                                    palette().normal().light(),
-                                    palette().normal().dark(),
-                                    palette().normal().mid(),
-                                    hiliteColor,
-                                    palette().normal().base());
-  holidayPalette.setNormal(myGroup);
-  
-  for (int i = 0; i < 7; i++)
-    dayNames[i]->setText((weekStartsMonday ? longDayNames2[i] :
-                          longDayNames[i]));
-  
-  // set font
-  config.setGroup("Fonts");
-  QFont defaultFont = font();
-  QFont newFont(config.readFontEntry("Month Font", &defaultFont));
+  holidayPalette.setColor(QColorGroup::Foreground,
+                          KOPrefs::instance()->mHolidayColor);
+  holidayPalette.setColor(QColorGroup::Text,
+                          KOPrefs::instance()->mHolidayColor);
+    
+  QFont newFont = KOPrefs::instance()->mMonthViewFont;
+  newFont.setBold(false);
+
   QFont hfont(newFont);
-  hfont.setBold(TRUE);
-  hfont.setPointSize(newFont.pointSize() + 2);
+  hfont.setBold(true);
+
   for (int i = 0; i < 42; i++) {
     dayHeaders[i]->setFont(hfont);
     daySummaries[i]->setFont(newFont);
@@ -671,7 +658,7 @@ void KOMonthView::viewChanged()
     }
 
     // add holiday, if present
-    QString hstring(mCalendar->getHolidayForDate(date));;
+    QString hstring(mCalendar->getHolidayForDate(date));
     if (!hstring.isEmpty()) {
       daynum.prepend(" ");
       daynum.prepend(hstring);

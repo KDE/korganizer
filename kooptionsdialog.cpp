@@ -13,6 +13,7 @@
 #include <qvbox.h>
 #include <qhbox.h>
 #include <qspinbox.h>
+#include <qdatetime.h>
 
 #include <kapp.h>
 #include <klocale.h>
@@ -415,7 +416,8 @@ void KOOptionsDialog::setupFontsTab()
   topLayout->setSpacing(spacingHint());
   topLayout->setMargin(marginHint());
 
-  mTimeBarFont = new QLabel("12:34",topFrame);
+  mTimeBarFont = new QLabel(KGlobal::locale()->formatTime(QTime(12,34)),
+                            topFrame);
   mTimeBarFont->setFrameStyle(QFrame::Panel|QFrame::Sunken);
   topLayout->addWidget(mTimeBarFont,0,0);
 
@@ -423,7 +425,24 @@ void KOOptionsDialog::setupFontsTab()
   topLayout->addWidget(buttonTimeBar,0,1);
   connect(buttonTimeBar,SIGNAL(clicked()),SLOT(selectTimeBarFont()));
 
-  topLayout->setRowStretch(1,1);
+  mMonthViewFont = new QLabel(KGlobal::locale()->formatTime(QTime(12,34)) +
+                              " " + i18n("Event"),topFrame);
+  mMonthViewFont->setFrameStyle(QFrame::Panel|QFrame::Sunken);
+  topLayout->addWidget(mMonthViewFont,1,0);
+
+  QPushButton *buttonMonthView = new QPushButton(i18n("Month"),topFrame);
+  topLayout->addWidget(buttonMonthView,1,1);
+  connect(buttonMonthView,SIGNAL(clicked()),SLOT(selectMonthViewFont()));
+
+  mAgendaViewFont = new QLabel(i18n("Event"),topFrame);
+  mAgendaViewFont->setFrameStyle(QFrame::Panel|QFrame::Sunken);
+  topLayout->addWidget(mAgendaViewFont,2,0);
+
+  QPushButton *buttonAgendaView = new QPushButton(i18n("Week"),topFrame);
+  topLayout->addWidget(buttonAgendaView,2,1);
+  connect(buttonAgendaView,SIGNAL(clicked()),SLOT(selectAgendaViewFont()));
+
+  topLayout->setRowStretch(3,1);
 }
 
 void KOOptionsDialog::selectTimeBarFont()
@@ -432,6 +451,22 @@ void KOOptionsDialog::selectTimeBarFont()
   QString theText(mTimeBarFont->text());
   KFontDialog::getFontAndText(theFont,theText);
   mTimeBarFont->setFont(theFont);
+}
+
+void KOOptionsDialog::selectMonthViewFont()
+{
+  QFont theFont(mMonthViewFont->font());
+  QString theText(mMonthViewFont->text());
+  KFontDialog::getFontAndText(theFont,theText);
+  mMonthViewFont->setFont(theFont);
+}
+
+void KOOptionsDialog::selectAgendaViewFont()
+{
+  QFont theFont(mAgendaViewFont->font());
+  QString theText(mAgendaViewFont->text());
+  KFontDialog::getFontAndText(theFont,theText);
+  mAgendaViewFont->setFont(theFont);
 }
 
 
@@ -623,7 +658,10 @@ void KOOptionsDialog::setupPrinterTab()
   mPrintPreviewEdit = new QLineEdit(mPrinterTab);
   topLayout->addWidget(mPrintPreviewEdit,3,1);
 
-  topLayout->addRowSpacing(4,25);
+  // Add some pixels spacing to avoid scrollbars in icon field. Not safe, but
+  // works for me :-)
+  topLayout->addRowSpacing(4,27);
+
   topLayout->setRowStretch(4,1);
 }
 
@@ -685,6 +723,8 @@ void KOOptionsDialog::readConfig()
   mEnableToolTipsCheck->setChecked(KOPrefs::instance()->mEnableToolTips);
 
   mTimeBarFont->setFont(KOPrefs::instance()->mTimeBarFont);
+  mMonthViewFont->setFont(KOPrefs::instance()->mMonthViewFont);
+  mAgendaViewFont->setFont(KOPrefs::instance()->mAgendaViewFont);
 
   mHolidayColor->setBackgroundColor(KOPrefs::instance()->mHolidayColor);
   mHighlightColor->setBackgroundColor(KOPrefs::instance()->mHighlightColor);
@@ -726,6 +766,8 @@ void KOOptionsDialog::writeConfig()
   KOPrefs::instance()->mEnableToolTips = mEnableToolTipsCheck->isChecked();
 
   KOPrefs::instance()->mTimeBarFont = mTimeBarFont->font();
+  KOPrefs::instance()->mMonthViewFont = mMonthViewFont->font();
+  KOPrefs::instance()->mAgendaViewFont = mAgendaViewFont->font();
 
   KOPrefs::instance()->mHolidayColor = mHolidayColor->backgroundColor();
   KOPrefs::instance()->mHighlightColor = mHighlightColor->backgroundColor();

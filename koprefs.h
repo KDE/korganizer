@@ -60,6 +60,8 @@ class KOPrefs
     int     mDaylightSavings;
 
     QFont   mTimeBarFont;
+    QFont   mMonthViewFont;
+    QFont   mAgendaViewFont;
 
     QColor  mHolidayColor;
     QColor  mHighlightColor;
@@ -90,6 +92,7 @@ class KOPrefs
     QColor mDefaultAgendaBgColor;
 
     QFont mDefaultTimeBarFont;
+    QFont mDefaultViewFont;
 };
 
 #endif

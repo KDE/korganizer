@@ -56,6 +56,9 @@ class KOOptionsDialog : public KDialogBase
     void slotDefault();
   
     void selectTimeBarFont();
+    void selectMonthViewFont();
+    void selectAgendaViewFont();
+
     void selectHolidayColor();
     void selectHighlightColor();
     void selectEventColor();
@@ -114,6 +117,8 @@ class KOOptionsDialog : public KDialogBase
     QComboBox    *mAlarmTimeCombo;
 
     QLabel *mTimeBarFont;
+    QLabel *mMonthViewFont;
+    QLabel *mAgendaViewFont;
 
     QFrame *mHolidayColor;
     QFrame *mHighlightColor;

@@ -27,6 +27,7 @@ KOPrefs::KOPrefs()
   mDefaultAgendaBgColor  = QColor(128,128,128);
 
   mDefaultTimeBarFont = QFont("helvetica",12,QFont::Bold);
+  mDefaultViewFont = QFont("helvetica",12);
   
   mConfig = new KConfig(locate("config","korganizerrc"));
   
@@ -81,6 +82,8 @@ void KOPrefs::setDefaults()
   mEnableToolTips = false;
 
   mTimeBarFont = mDefaultTimeBarFont;
+  mMonthViewFont = mDefaultViewFont;
+  mAgendaViewFont = mDefaultViewFont;
 
   mHolidayColor = mDefaultHolidayColor;
   mHighlightColor = mDefaultHighlightColor;
@@ -144,6 +147,10 @@ void KOPrefs::readConfig()
 
   mConfig->setGroup("Fonts");
   mTimeBarFont = mConfig->readFontEntry("TimeBar Font",&mDefaultTimeBarFont);
+  mMonthViewFont = mConfig->readFontEntry("MonthView Font",
+                                          &mDefaultViewFont);
+  mAgendaViewFont = mConfig->readFontEntry("AgendaView Font",
+                                          &mDefaultViewFont);
 
   mConfig->setGroup("Colors");
   mHolidayColor = mConfig->readColorEntry("Holiday Color",
@@ -202,6 +209,8 @@ void KOPrefs::writeConfig()
 
   mConfig->setGroup("Fonts");
   mConfig->writeEntry("TimeBar Font",mTimeBarFont);
+  mConfig->writeEntry("MonthView Font",mMonthViewFont);
+  mConfig->writeEntry("AgendaView Font",mAgendaViewFont);
 
   mConfig->setGroup("Colors");
   mConfig->writeEntry("Holiday Color",mHolidayColor);
