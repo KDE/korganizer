@@ -137,7 +137,7 @@
                 <cstring>PushButton9</cstring>
             </property>
             <property name="text">
-                <string>&amp;Ok</string>
+                <string>&amp;OK</string>
             </property>
             <property name="default">
                 <bool>true</bool>
