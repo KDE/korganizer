@@ -39,6 +39,7 @@
 
 #include <libkdepim/categoryselectdialog.h>
 #include <libkdepim/designerfields.h>
+#include <libkdepim/embeddedurlpage.h>
 
 #include <libkcal/calendarlocal.h>
 #include <libkcal/incidence.h>
@@ -357,6 +358,47 @@ void KOIncidenceEditor::writeDesignerFields( Incidence *i )
        fields = mDesignerFields.next() ) {
     kdDebug() << "Write Field " << fields->title() << endl;
     fields->save( &storage );
+  }
+}
+
+
+void KOIncidenceEditor::setupEmbeddedURLPage( const QString &label,
+                                 const QString &url, const QString &mimetype )
+{
+  kdDebug() << "KOIncidenceEditor::setupEmbeddedURLPage()" << endl;
+  kdDebug() << "label=" << label << ", url=" << url << ", mimetype=" << mimetype << endl;
+  QFrame *topFrame = addPage( label );
+  QBoxLayout *topLayout = new QVBoxLayout( topFrame );
+
+  KPIM::EmbeddedURLPage *wid = new KPIM::EmbeddedURLPage( url, mimetype,
+                                                          topFrame );
+  topLayout->addWidget( wid );
+  mEmbeddedURLPages.append( wid );
+  // TODO: Call this method only when the tab is actually activated!
+  wid->loadContents();
+}
+
+void KOIncidenceEditor::createEmbeddedURLPages( Incidence *i )
+{
+  kdDebug() << "KOIncidenceEditor::createEmbeddedURLPages()" << endl;
+
+  if ( !i ) return;
+  if ( !mEmbeddedURLPages.isEmpty() ) {
+    mEmbeddedURLPages.setAutoDelete( true );
+    mEmbeddedURLPages.clear();
+    mEmbeddedURLPages.setAutoDelete( false );
+  }
+  Attachment::List att = i->attachments();
+  for ( Attachment::List::Iterator it = att.begin(); it != att.end(); ++it ) {
+    Attachment *a = (*it);
+    kdDebug() << "Iterating over the attachments " << endl;
+    kdDebug() << "label=" << a->label() << ", url=" << a->uri() << ", mimetype=" << a->mimeType() << endl;
+    if ( a && a->showInline() && a->isUri() ) {
+      // TODO: Allow more mime-types, but add security checks!
+//       if ( a->mimeType() == "text/html" ) {
+        setupEmbeddedURLPage( a->label(), a->uri(), a->mimeType() );
+//       }
+    }
   }
 }
 

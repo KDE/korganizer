@@ -327,6 +327,8 @@ void KOTodoEditor::readTodo( Todo *todo )
 
   // categories
   mCategoryDialog->setSelected( todo->categories() );
+  readDesignerFields( todo );
+  createEmbeddedURLPages( todo );
 }
 
 void KOTodoEditor::writeTodo( Todo *todo )

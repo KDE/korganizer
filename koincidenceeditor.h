@@ -32,6 +32,7 @@ class QDateTime;
 namespace KPIM {
 class CategorySelectDialog;
 class DesignerFields;
+class EmbeddedURLPage;
 }
 
 namespace KOrg { class IncidenceChangerBase; }
@@ -72,7 +73,7 @@ class KOIncidenceEditor : public KDialogBase
     void updateCategoryConfig();
     /** Edit an existing todo. */
     virtual void editIncidence(Incidence *) = 0;
-    virtual void setIncidenceChanger( IncidenceChangerBase *changer ) { 
+    virtual void setIncidenceChanger( IncidenceChangerBase *changer ) {
         mChanger = changer; }
 
 
@@ -92,12 +93,12 @@ class KOIncidenceEditor : public KDialogBase
 
     virtual void slotLoadTemplate();
     virtual void slotSaveTemplate();
-    
+
     virtual void saveTemplate( const QString & ) = 0;
 
   protected:
     virtual QString type() { return QString::null; }
-    
+
     void setupAttendeesTab();
     void setupAttachmentsTab();
     void setupAlarmsTab();
@@ -110,13 +111,17 @@ class KOIncidenceEditor : public KDialogBase
     void readDesignerFields( Incidence *i );
     void writeDesignerFields( Incidence *i );
 
+    void setupEmbeddedURLPage( const QString &label, const QString &url,
+                               const QString &mimetype );
+    void createEmbeddedURLPages( Incidence *i );
+
     /**
       Process user input and create or update event. Returns false if input is invalid.
     */
     virtual bool processInput() { return false; }
 
     virtual void processCancel() {}
-    
+
     void cancelRemovedAttendees( Incidence *incidence );
 
     Calendar *mCalendar;
@@ -127,8 +132,9 @@ class KOIncidenceEditor : public KDialogBase
     KOEditorAttachments *mAttachments;
     KOEditorAlarms *mAlarms;
     KOrg::IncidenceChangerBase *mChanger;
-    
+
     QPtrList<KPIM::DesignerFields> mDesignerFields;
+    QPtrList<KPIM::EmbeddedURLPage> mEmbeddedURLPages;
 };
 
 #endif
