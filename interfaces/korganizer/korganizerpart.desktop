@@ -4,6 +4,7 @@ Type=ServiceType
 X-KDE-ServiceType=KOrganizer/Part
 Comment=KOrganizer Part
 Comment[af]=Korganizer Deel
+Comment[be]=Частка "K Арганізатар"
 Comment[bs]=KOrganizer dio
 Comment[da]=KOrganizer-del
 Comment[de]=KOrganizer-Objekt (KPart)
