@@ -5,7 +5,7 @@
 //#include <ktabctl.h>
 //#include <ktmainwindow.h>
 #include <ktmainwindow.h>
-#include <klined.h>
+#include <klineedit.h>
 
 #include <qmlined.h>
 #include <qlabel.h>
