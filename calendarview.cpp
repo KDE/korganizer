@@ -96,6 +96,7 @@
 #include "resourceview.h"
 #include "navigatorbar.h"
 #include "history.h"
+#include "komonthview.h"
 
 #include "calendarview.h"
 
@@ -557,12 +558,18 @@ void CalendarView::goToday()
 
 void CalendarView::goNext()
 {
-  mNavigator->selectNext();
+  if (dynamic_cast<KOMonthView*>(mViewManager->currentView() ) )
+    mNavigator->selectNextWeek();
+  else 
+    mNavigator->selectNext();
 }
 
 void CalendarView::goPrevious()
 {
-  mNavigator->selectPrevious();
+  if (dynamic_cast<KOMonthView*>(mViewManager->currentView() ) )
+    mNavigator->selectPreviousWeek();
+  else 
+    mNavigator->selectPrevious();
 }
 
 void CalendarView::updateConfig()

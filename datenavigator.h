@@ -62,6 +62,8 @@ class DateNavigator : public QObject
    
     void selectPreviousYear();
     void selectPreviousMonth();
+    void selectPreviousWeek();
+    void selectNextWeek();
     void selectNextMonth();
     void selectNextYear();
    

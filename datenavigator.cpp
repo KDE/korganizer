@@ -173,6 +173,25 @@ void DateNavigator::selectPreviousMonth()
   selectWeekByDay( weekDay, firstSelected );
 }
 
+void DateNavigator::selectPreviousWeek()
+{
+  QDate firstSelected = mSelectedDates.first();
+  int weekDay = firstSelected.dayOfWeek();
+  firstSelected = KOGlobals::self()->calendarSystem()->addDays( firstSelected, -7 );
+
+  selectWeekByDay( weekDay, firstSelected );
+}
+
+void DateNavigator::selectNextWeek()
+{
+  QDate firstSelected = mSelectedDates.first();
+  int weekDay = firstSelected.dayOfWeek();
+
+  firstSelected = KOGlobals::self()->calendarSystem()->addDays( firstSelected, 7 );
+
+  selectWeekByDay( weekDay, firstSelected );
+}
+
 void DateNavigator::selectNextMonth()
 {
   QDate firstSelected = mSelectedDates.first();
