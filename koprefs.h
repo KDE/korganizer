@@ -54,6 +54,7 @@ class KOPrefs : public KPrefs
     bool    mConfirm;
   
     bool    mEnableGroupScheduling;
+    bool    mEnableProjectView;
   
     QString mTimeZone;
     int     mStartTime;

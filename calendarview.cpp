@@ -59,6 +59,7 @@
 #include "categoryeditdialog.h"
 #include "kofilterview.h"
 #include "calfilter.h"
+#include "koprojectview.h"
 
 #include "calendarview.h"
 #include "calendarview.moc"
@@ -143,6 +144,11 @@ CalendarView::CalendarView(QWidget *parent,const char *name)
   mMonthView = new KOMonthView(mCalendar, mRightFrame, "CalendarView::MonthView");
   mRightFrame->addWidget(mMonthView,3);
   mCalendarViews.append(mMonthView);
+
+  mProjectView = new KOProjectView(mCalendar,mRightFrame,
+                                   "CalendarView::ProjectView");
+  mRightFrame->addWidget(mProjectView,0);
+  mCalendarViews.append(mProjectView);
 
   readCurrentView();
 
@@ -1137,6 +1143,11 @@ void CalendarView::view_month()
 void CalendarView::view_todolist()
 {
   changeView(mTodoView);
+}
+
+void CalendarView::view_project()
+{
+  changeView(mProjectView);
 }
 
 void CalendarView::schedule_outgoing()

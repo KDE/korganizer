@@ -31,6 +31,8 @@ KOPrefs::KOPrefs() :
   
   addPrefsItem(new KPrefsItemBool("Enable Group Scheduling",
                                   &mEnableGroupScheduling,false));
+  addPrefsItem(new KPrefsItemBool("Enable Project View",
+                                  &mEnableProjectView,false));
 
   KPrefsItem::setCurrentGroup("Colors");
   

@@ -251,6 +251,11 @@ void KOrganizer::initActions()
   (void)new KAction(i18n("&To-do list"), "todo", 0,
                     mCalendarView, SLOT(view_todolist()),
                     actionCollection(), "view_todo");
+  if (KOPrefs::instance()->mEnableProjectView) {
+    (void)new KAction(i18n("&Project"), 0,
+                      mCalendarView, SLOT(view_project()),
+                      actionCollection(), "view_project");
+  }
   (void)new KAction(i18n("&Update"), 0,
                     mCalendarView, SLOT(update()),
                     actionCollection(), "update");

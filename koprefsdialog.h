@@ -45,6 +45,7 @@ class KOPrefsDialog : public KPrefsDialog
 
     void warningExperimental(bool on);
     void warningGroupScheduling();
+    void warningProjectView();
 
   protected:
     void usrReadConfig();
@@ -62,6 +63,7 @@ class KOPrefsDialog : public KPrefsDialog
 
   private:
     KPrefsWidBool *mEnableGroupScheduling;
+    KPrefsWidBool *mEnableProjectView;
 
     QFrame *mPrinterTab;
   

@@ -1,5 +1,5 @@
 <!DOCTYPE kpartgui>
-<kpartgui name="korganizer" version="4">
+<kpartgui name="korganizer" version="5">
 
   <MenuBar>
     <Menu name="file"><text>&amp;File</text>
@@ -26,6 +26,7 @@
       <Action name="view_week"/>
       <Action name="view_month"/>
       <Action name="view_todo"/>
+      <Action name="view_project"/>
       <Separator/>
       <Action name="update"/>
     </Menu>

@@ -317,7 +317,15 @@ void KOPrefsDialog::setupMainTab()
   connect(mEnableGroupScheduling->checkBox(),SIGNAL(clicked()),
           SLOT(warningGroupScheduling()));
 
-  topLayout->setRowStretch(8,1);
+  mEnableProjectView =
+      new KPrefsWidBool(i18n("Enable Project View"),
+                        &(KOPrefs::instance()->mEnableProjectView),this,
+                        topFrame);
+  topLayout->addWidget(mEnableProjectView->checkBox(),8,0);
+  connect(mEnableProjectView->checkBox(),SIGNAL(clicked()),
+          SLOT(warningProjectView()));
+
+  topLayout->setRowStretch(9,1);
 }
 
 
@@ -809,6 +817,11 @@ void KOPrefsDialog::updateCategories()
 void KOPrefsDialog::warningGroupScheduling()
 {
   warningExperimental(mEnableGroupScheduling->checkBox()->isChecked());
+}
+
+void KOPrefsDialog::warningProjectView()
+{
+  warningExperimental(mEnableProjectView->checkBox()->isChecked());
 }
 
 void KOPrefsDialog::warningExperimental(bool on)

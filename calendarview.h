@@ -36,6 +36,7 @@ class OutgoingDialog;
 class IncomingDialog;
 class CategoryEditDialog;
 class KOFilterView;
+class KOProjectView;
 
 /**
   This is the main calendar widget. It provides the different vies on t he
@@ -275,6 +276,7 @@ class CalendarView : public QWidget
     void view_week();
     void view_month();
     void view_todolist();
+    void view_project();
 
     void schedule_outgoing();
     void schedule_incoming();
@@ -353,6 +355,7 @@ class CalendarView : public QWidget
     KOMonthView    *mMonthView; 
     KOTodoView     *mTodoView;
     KOTodoView     *mTodoList;  // Small todo list under date navigator
+    KOProjectView  *mProjectView;
   
     KOBaseView     *mCurrentView;  // currently active event view
     QList<KOBaseView> mCalendarViews;  // list of available calendar views

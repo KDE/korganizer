@@ -52,7 +52,10 @@ libkorganizer_la_SOURCES =  outgoingdialog_base.ui \
         koeventview.cpp categoryselectdialog_base.ui categoryselectdialog.cpp \
         categoryeditdialog_base.ui categoryeditdialog.cpp calfilter.cpp \
         kofilterview_base.ui kofilterview.cpp \
-        scanholiday.c parseholiday.c
+        scanholiday.c parseholiday.c \
+        koprojectview.cpp xQGantt.cpp xQTask.cpp xQGanttListView.cpp \
+        xQGanttBarView.cpp xQGanttListViewPort.cpp xQGanttBarViewPort.cpp \
+        xQGanttBarViewPort_Events.cpp
 
 alarmd_SOURCES = alarmdaemon.cpp alarmmain.cpp \
         calobject.cpp calendarlocal.cpp \
@@ -85,7 +88,8 @@ noinst_HEADERS = komonthview.h \
         koeditorgeneralevent.h koeditorgeneraltodo.h koeditordetails.h \
         koeditorrecurrence.h koeventviewerdialog.h koeventpopupmenu.h \
         koexceptions.h outgoingdialog.h incomingdialog.h \
-        koeventview.h calfilter.h
+        koeventview.h calfilter.h koprojectview.h \
+        xQGantt.h xQTask.h
 
 
 SUBDIRS = versit \
