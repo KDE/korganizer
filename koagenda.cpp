@@ -111,10 +111,12 @@ void MarcusBains::updateLocation(bool recalculate)
   oldToday = today;
 
   if(disabled || (today<0)) {
-    hide(); mTimeBox->hide();
+    hide(); 
+    mTimeBox->hide();
     return;
   } else {
-    show(); mTimeBox->show();
+    show(); 
+    mTimeBox->show();
   }
 
   if(recalculate)
@@ -854,7 +856,7 @@ kdDebug(5850)<<"Resetting move"<<endl;
             // erase current item (i.e. remove it from the multiItem list)
             firstItem = moveItem->nextMultiItem();
             moveItem->hide();
-            mItems.take(mItems.find(moveItem));
+            mItems.take( mItems.find( moveItem ) );
             removeChild( moveItem );
             mActionItem->removeMoveItem(moveItem);
             moveItem=firstItem;
@@ -1275,6 +1277,10 @@ KOAgendaItem *KOAgenda::insertItem (Incidence *event,QDate qd,int X,int YTop,int
   }
 
   KOAgendaItem *agendaItem = new KOAgendaItem (event,qd,viewport());
+  connect( agendaItem, SIGNAL( removeAgendaItem( KOAgendaItem* ) ), 
+           this, SLOT( removeAgendaItem( KOAgendaItem* ) ) );
+  connect( agendaItem, SIGNAL( showAgendaItem( KOAgendaItem* ) ), 
+           this, SLOT( showAgendaItem( KOAgendaItem* ) ) );
 
   int YSize = YBottom - YTop + 1;
   if (YSize < 0) {
@@ -1312,6 +1318,10 @@ KOAgendaItem *KOAgenda::insertAllDayItem (Incidence *event,QDate qd,int XBegin,i
   }
 
   KOAgendaItem *agendaItem = new KOAgendaItem (event,qd,viewport());
+  connect( agendaItem, SIGNAL( removeAgendaItem( KOAgendaItem* ) ), 
+           this, SLOT( removeAgendaItem( KOAgendaItem* ) ) );
+  connect( agendaItem, SIGNAL( showAgendaItem( KOAgendaItem* ) ), 
+           this, SLOT( showAgendaItem( KOAgendaItem* ) ) );
 
   agendaItem->setCellXY(XBegin,0,0);
   agendaItem->setCellXWidth(XEnd);
@@ -1388,29 +1398,46 @@ void KOAgenda::removeEvent ( Event *event )
   while ( item ) {
     taken = false;
     if (item->incidence() == event) {
-      // we found the item. Let's remove it and update the conflicts
-      KOAgendaItem *thisItem;
-      thisItem = item;
-      QPtrList<KOAgendaItem> conflictItems = thisItem->conflictItems();
-      removeChild( thisItem );
-      int pos = mItems.find( thisItem );
-      if ( pos>=0 ) {
-        mItems.take( pos );
-        taken = true;
-      }
-      mItemsToDelete.append( thisItem );
-
-      KOAgendaItem *confitem;
-      for ( confitem = conflictItems.first(); confitem != 0;
-            confitem = conflictItems.next() ) {
-        // the item itself is also in its own conflictItems list!
-        if ( confitem != thisItem ) placeSubCells(confitem);
-      }
-      QTimer::singleShot( 0, this, SLOT( deleteItemsToDelete() ) );
+      taken = removeAgendaItem( item );
     }
     if ( !taken ) item = mItems.next();
     else item = mItems.current();
   }
+}
+
+void KOAgenda::showAgendaItem( KOAgendaItem* agendaItem )
+{
+  if ( !agendaItem ) return;
+  agendaItem->hide();
+  addChild( agendaItem, agendaItem->cellX(), agendaItem->cellYTop() );
+  if ( !mItems.containsRef( agendaItem ) ) 
+    mItems.append( agendaItem );
+  placeSubCells( agendaItem );
+  agendaItem->show();
+}
+
+bool KOAgenda::removeAgendaItem( KOAgendaItem* item ) 
+{
+  // we found the item. Let's remove it and update the conflicts
+  bool taken = false;
+  KOAgendaItem *thisItem = item;
+  QPtrList<KOAgendaItem> conflictItems = thisItem->conflictItems();
+  removeChild( thisItem );
+  int pos = mItems.find( thisItem );
+  if ( pos>=0 ) {
+    mItems.take( pos );
+    taken = true;
+  }
+  mItemsToDelete.append( thisItem );
+
+  KOAgendaItem *confitem;
+  for ( confitem = conflictItems.first(); confitem != 0;
+        confitem = conflictItems.next() ) {
+    // the item itself is also in its own conflictItems list!
+    if ( confitem != thisItem ) placeSubCells(confitem);
+  }
+  QTimer::singleShot( 0, this, SLOT( deleteItemsToDelete() ) );
+  return taken;
 }
 
 void KOAgenda::deleteItemsToDelete()

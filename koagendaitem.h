@@ -115,10 +115,14 @@ class KOAgendaItem : public QWidget, public KOrg::CellItem
     QPtrList<KOAgendaItem> conflictItems();
     void setConflictItems(QPtrList<KOAgendaItem>);
     void addConflictItem(KOAgendaItem *ci);
-
+    
     QString label() const;
 
     bool overlaps( KOrg::CellItem * ) const;
+
+  signals:
+    void removeAgendaItem( KOAgendaItem* );
+    void showAgendaItem( KOAgendaItem* );
 
   public slots:
     void updateIcons();

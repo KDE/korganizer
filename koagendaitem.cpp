@@ -320,8 +320,8 @@ void KOAgendaItem::startMovePrivate()
 
 void KOAgendaItem::resetMove()
 {
-  if (mStartMoveInfo) {
-    if (mStartMoveInfo->mFirstMultiItem) {
+  if ( mStartMoveInfo ) {
+    if ( mStartMoveInfo->mFirstMultiItem ) {
       mStartMoveInfo->mFirstMultiItem->resetMovePrivate();
     } else {
       resetMovePrivate();
@@ -331,49 +331,68 @@ void KOAgendaItem::resetMove()
 
 void KOAgendaItem::resetMovePrivate()
 {
-// TODO_RK: Implement this. Until then, resetting a move (i.e. because the mouse
-// pointer moved outside the KOAgenda) will not update the screen properly.
   if (mStartMoveInfo) {
     mCellX = mStartMoveInfo->mStartCellX;
     mCellXWidth = mStartMoveInfo->mStartCellXWidth;
     mCellYTop = mStartMoveInfo->mStartCellYTop;
     mCellYBottom = mStartMoveInfo->mStartCellYBottom;
 
-    if (isMultiItem()) {
-    // if first, delete all previous
-      mMultiItemInfo->mFirstMultiItem = mStartMoveInfo->mFirstMultiItem;
-      KOAgendaItem* tmp = mStartMoveInfo->mPrevMultiItem;
-      KOAgendaItem* nextTmp = tmp;
-      while (nextTmp) {
-        nextTmp = 0;
-        if (tmp->mStartMoveInfo) {
-          nextTmp = tmp->mStartMoveInfo->mPrevMultiItem;
-        }
-
-      }
-
-/*
-      // if last, delete all next
-      // reset to values
-      // let the one calling resetMove loop through all multi items.
-      // reset first, last, prev, next to values before move
-      // first, last von mStartMoveInfo.
+    // if we don't have mMultiItemInfo, the item didn't span two days before, 
+    // and wasn't moved over midnight, either, so we don't have to reset 
+    // anything. Otherwise, restore from mMoveItemInfo
+    if ( mMultiItemInfo ) {
+      // It was already a multi-day info
       mMultiItemInfo->mFirstMultiItem = mStartMoveInfo->mFirstMultiItem;
       mMultiItemInfo->mPrevMultiItem = mStartMoveInfo->mPrevMultiItem;
       mMultiItemInfo->mNextMultiItem = mStartMoveInfo->mNextMultiItem;
       mMultiItemInfo->mLastMultiItem = mStartMoveInfo->mLastMultiItem;
-*/
+    
+      if ( !mStartMoveInfo->mFirstMultiItem ) {
+        // This was the first multi-item when the move started, delete all previous
+        KOAgendaItem*toDel=mStartMoveInfo->mPrevMultiItem;
+        KOAgendaItem*nowDel=0L;
+        while (toDel) {
+          nowDel=toDel;
+          if (nowDel->moveInfo()) {
+            toDel=nowDel->moveInfo()->mPrevMultiItem;
+          }
+          emit removeAgendaItem( nowDel );
+        }
+        mMultiItemInfo->mFirstMultiItem = 0L;
+        mMultiItemInfo->mPrevMultiItem = 0L;
+      }
+      if ( !mStartMoveInfo->mLastMultiItem ) {
+        // This was the last multi-item when the move started, delete all next
+        KOAgendaItem*toDel=mStartMoveInfo->mNextMultiItem;
+        KOAgendaItem*nowDel=0L;
+        while (toDel) {
+          nowDel=toDel;
+          if (nowDel->moveInfo()) {
+            toDel=nowDel->moveInfo()->mNextMultiItem;
+          }
+          emit removeAgendaItem( nowDel );
+        }
+        mMultiItemInfo->mLastMultiItem = 0L;
+        mMultiItemInfo->mNextMultiItem = 0L;
+      }
+    
+      if ( mStartMoveInfo->mFirstMultiItem==0 && mStartMoveInfo->mLastMultiItem==0 ) {
+        // it was a single-day event before we started the move. 
+        delete mMultiItemInfo;
+      }
     }
     delete mStartMoveInfo;
+  }
+  emit showAgendaItem( this );
+  if ( nextMultiItem() ) {
+    nextMultiItem()->resetMovePrivate();
   }
 }
 
 void KOAgendaItem::endMove()
 {
   KOAgendaItem*first=firstMultiItem();
-kdDebug(5850)<<"endMove for firstMultiItem="<<first<<", this="<<this<<", next="<<nextMultiItem()<<endl;
   if (!first) first=this;
-kdDebug(5850)<<"endMove for first="<<first<<", this="<<this<<endl;
   first->endMovePrivate();
 }
 
@@ -389,7 +408,7 @@ void KOAgendaItem::endMovePrivate()
         if (nowDel->moveInfo()) {
           toDel=nowDel->moveInfo()->mPrevMultiItem;
         }
-        delete nowDel;
+        emit removeAgendaItem( nowDel );
       }
     }
     // if last, delete all next
@@ -401,12 +420,14 @@ void KOAgendaItem::endMovePrivate()
         if (nowDel->moveInfo()) {
           toDel=nowDel->moveInfo()->mNextMultiItem;
         }
-        delete nowDel;
+        emit removeAgendaItem( nowDel );
       }
     }
     // also delete the moving info
     delete mStartMoveInfo;
     mStartMoveInfo=0;
+    if ( nextMultiItem() )
+      nextMultiItem()->endMovePrivate();
   }
 }
 

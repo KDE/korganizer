@@ -97,7 +97,7 @@ class KOAgenda : public QScrollView
      *  This function removes the items from the view, but doesn't delete them.
      *  Instead, they are queued in mItemsToDelete and later deleted by
      *  the slot deleteItemsToDelete() (called by QTimer::singleShot ) */
-    void removeEvent ( Event *event );
+    void removeEvent( Event *event );
 
     void changeColumns( int columns );
 
@@ -147,6 +147,8 @@ class KOAgenda : public QScrollView
       about selection/deselection of events.
     */
     void selectItem( KOAgendaItem * );
+    bool removeAgendaItem( KOAgendaItem *item );
+    void showAgendaItem( KOAgendaItem *item );
 
   signals:
     void newEventSignal();
