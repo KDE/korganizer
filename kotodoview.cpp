@@ -58,7 +58,7 @@ void KOTodoListViewToolTip::maybeTip( const QPoint & pos)
 {
   QRect r;
   int headerPos;
-  int col=todolist->header()->sectionAt(pos.x());
+  int col=todolist->header()->sectionAt(todolist->contentsX() + pos.x());
   KOTodoViewItem *i=(KOTodoViewItem *)todolist->itemAt(pos);
 
   /* Check wether a tooltip is necessary. */
@@ -67,8 +67,8 @@ void KOTodoListViewToolTip::maybeTip( const QPoint & pos)
 
     /* Calculate the rectangle. */
     r=todolist->itemRect(i);
-    headerPos = todolist->header()->sectionPos(col);
-    r.setLeft(headerPos);
+    headerPos = todolist->header()->sectionPos(col)-todolist->contentsX();
+    r.setLeft( (headerPos < 0 ? 0 : headerPos) );
     r.setRight(headerPos + todolist->header()->sectionSize(col));
 
     /* Show the tip */
@@ -364,7 +364,7 @@ KOTodoView::KOTodoView(Calendar *calendar,QWidget* parent,const char* name) :
   mTodoListView->addColumn(i18n("Summary"));
   mTodoListView->addColumn(i18n("Priority"));
   mTodoListView->setColumnAlignment(1,AlignHCenter);
-  mTodoListView->addColumn(i18n("Complete"), 64);
+  mTodoListView->addColumn(i18n("Complete"));
   mTodoListView->setColumnAlignment(2,AlignRight);
   mTodoListView->addColumn(i18n("Due Date"));
   mTodoListView->setColumnAlignment(3,AlignHCenter);
