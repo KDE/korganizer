@@ -73,9 +73,9 @@ class KOEditorGeneralEvent : public KOEditorGeneral
     void associateTime( bool time );
 
     void startTimeChanged( QTime );
-    void startDateChanged( QDate );
+    void startDateChanged( const QDate& );
     void endTimeChanged( QTime );
-    void endDateChanged( QDate );
+    void endDateChanged( const QDate& );
 
     void emitDateTimeStr();
 
