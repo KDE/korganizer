@@ -1283,18 +1283,6 @@ void KOAgendaView::deleteSelectedDateTime()
   mTimeSpanInAllDay = false;
 }
 
-void KOAgendaView::showNewEventPopup()
-{
-  QPopupMenu *popup = newEventPopup();
-  if ( !popup ) {
-    kdError() << "KOAgendaView::showNewEventPopup(): popup creation failed"
-              << endl;
-    return;
-  }
-
-  popup->popup( QCursor::pos() );
-}
-
 void KOAgendaView::setTypeAheadReceiver( QObject *o )
 {
   mAgenda->setTypeAheadReceiver( o );

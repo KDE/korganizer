@@ -886,10 +886,7 @@ void KOMonthView::showEventContextMenu( Incidence *incidence )
 
 void KOMonthView::showGeneralContextMenu()
 {
-  QPopupMenu *menu = newEventPopup();
-
-  if ( menu )
-    menu->popup( QCursor::pos() );
+  showNewEventPopup();
 }
 
 void KOMonthView::setSelectedCell( MonthViewCell *cell )

@@ -419,15 +419,3 @@ void KOListView::clear()
   mListView->clear();
   mUidDict.clear();
 }
-
-void KOListView::showNewEventPopup()
-{
-  QPopupMenu *popup = newEventPopup();
-  if ( !popup ) {
-    kdError() << "KOAgendaView::showNewEventPopup(): popup creation failed"
-              << endl;
-    return;
-  }
-
-  popup->popup( QCursor::pos() );
-}

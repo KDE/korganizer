@@ -122,6 +122,7 @@ class KOEventView : public KOrg::BaseView
     void popupShow();
     void popupEdit();
     void popupDelete();
+    virtual void showNewEventPopup();
 
   protected:
     Incidence *mCurrentIncidence;  // Incidence selected e.g. for a context menu

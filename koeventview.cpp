@@ -115,6 +115,20 @@ void KOEventView::popupDelete()
 
 //---------------------------------------------------------------------------
 
+void KOEventView::showNewEventPopup()
+{
+  QPopupMenu *popup = newEventPopup();
+  if ( !popup ) {
+    kdError() << "KOEventView::showNewEventPopup(): popup creation failed"
+              << endl;
+    return;
+  }
+
+  popup->popup( QCursor::pos() );
+}
+
+//---------------------------------------------------------------------------
+
 void KOEventView::defaultAction( Incidence *incidence )
 {
   kdDebug(5850) << "KOEventView::defaultAction()" << endl;

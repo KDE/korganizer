@@ -121,7 +121,6 @@ class KOListView : public KOEventView
 
     void defaultItemAction(QListViewItem *item);
     void popupMenu(QListViewItem *item,const QPoint &,int);
-    void showNewEventPopup();
 
   protected slots:
     void processSelectionChange();
