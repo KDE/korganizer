@@ -38,8 +38,8 @@ class AlarmDockWindow : public KSystemTray
     void enableAutostart( bool enabled );
 
   public slots:
-    void toggleAlarmsEnabled();    
-    void toggleAutostart();  
+    void toggleAlarmsEnabled();
+    void toggleAutostart();
     void slotUpdate( int reminders );
 
   signals:

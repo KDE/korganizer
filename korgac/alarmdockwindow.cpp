@@ -27,6 +27,7 @@
 
 #include <kapplication.h>
 #include <kdebug.h>
+#include <kdeversion.h>
 #include <klocale.h>
 #include <kiconloader.h>
 #include <kconfig.h>
@@ -69,12 +70,10 @@ AlarmDockWindow::AlarmDockWindow( const char *name )
   contextMenu()->setItemEnabled( mDismissAll, false );
 
   contextMenu()->insertSeparator();
-  mAlarmsEnabledId = contextMenu()->insertItem( i18n("Alarms Enabled"),
-                                                this,
+  mAlarmsEnabledId = contextMenu()->insertItem( i18n("Alarms Enabled"), this,
                                                 SLOT( toggleAlarmsEnabled() ) );
-  mAutostartId = contextMenu()->insertItem( i18n("Start Alarm Client at Login"),
-                                            this,
-                                            SLOT( toggleAutostart() ) );
+  mAutostartId = contextMenu()->insertItem( i18n("Start Alarm Client at Login"), this,
+                                                SLOT( toggleAutostart() ) );
   contextMenu()->setItemChecked( mAutostartId, autostart );
   contextMenu()->setItemChecked( mAlarmsEnabledId, alarmsEnabled );
 
@@ -86,14 +85,19 @@ AlarmDockWindow::AlarmDockWindow( const char *name )
   if ( !quit ) {
     kdDebug(5890) << "No Quit standard action." << endl;
   } else {
+#if KDE_IS_VERSION(3,3,90)
+    quit->disconnect( SIGNAL( activated() ), this,
+                      SLOT( maybeQuit() ) );
+    connect( quit, SIGNAL( activated() ), SLOT( slotQuit() ) );
+  }
+#else //FIXME: remove for KDE 4.0
     quit->disconnect( SIGNAL( activated() ), qApp,
                       SLOT( closeAllWindows() ) );
   }
+  connect( this, SIGNAL( quitSelected() ), SLOT( slotQuit() ) );
+#endif
 
   QToolTip::add(this, mName );
-
-
-  connect( this, SIGNAL( quitSelected() ), SLOT( slotQuit() ) );
 }
 
 AlarmDockWindow::~AlarmDockWindow()
