@@ -517,7 +517,7 @@ void KOAgendaView::updateConfig()
   // ToolTips displaying summary of events
   KOAgendaItem::toolTipGroup()->setEnabled(KOPrefs::instance()
                                            ->mEnableToolTips);
-
+  
   setHolidayMasks();
 
   createDayLabels();

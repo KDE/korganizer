@@ -27,6 +27,7 @@
 
 #include <kiconloader.h>
 #include <kdebug.h>
+#include <klocale.h>
 
 #include "koprefs.h"
 
@@ -130,8 +131,23 @@ KOAgendaItem::KOAgendaItem(Event *event, QWidget *parent,
   select(false);
 
 //  QToolTip::add(this,mEvent->summary());
-  QToolTip::add(this,mEvent->summary(),toolTipGroup(),"");
-
+  QString tipText = mEvent->summary();
+  if (!mEvent->doesFloat()) {
+    if (mEvent->isMultiDay()) {
+      tipText += "\n"+i18n("From: ")+mEvent->dtStartStr();
+      tipText += "\n"+i18n("To: ")+mEvent->dtEndStr();
+    }
+    else {
+      tipText += "\n"+i18n("Time: ")+mEvent->dtStartTimeStr();
+      tipText += " - "+mEvent->dtEndTimeStr();
+    }
+  }
+  if (!mEvent->location().isEmpty()) {
+    tipText += "\n"+i18n("Location: ")+mEvent->location();
+  }
+  //QToolTip::add(this,mEvent->summary(),toolTipGroup(),"");
+  QToolTip::add(this,tipText,toolTipGroup(),"");
+  
   setAcceptDrops(true);
 }
 
