@@ -83,10 +83,14 @@ KOrganizer::KOrganizer(const char *name)
   initActions();
 
   statusBar()->insertItem("",ID_GENERAL,10);
-  statusBar()->insertItem(i18n("Incoming Messages: %1").arg(0),ID_MESSAGES_IN);
-  statusBar()->insertItem(i18n("Outgoing Messages: %2").arg(0),ID_MESSAGES_OUT);
-  statusBar()->setItemAlignment(ID_MESSAGES_IN,AlignRight);
-  statusBar()->setItemAlignment(ID_MESSAGES_OUT,AlignRight);
+  if (KOPrefs::instance()->mEnableGroupScheduling) {
+    statusBar()->insertItem(i18n("Incoming Messages: %1").arg(0),
+                            ID_MESSAGES_IN);
+    statusBar()->insertItem(i18n("Outgoing Messages: %2").arg(0),
+                            ID_MESSAGES_OUT);
+    statusBar()->setItemAlignment(ID_MESSAGES_IN,AlignRight);
+    statusBar()->setItemAlignment(ID_MESSAGES_OUT,AlignRight);
+  }
   connect(statusBar(),SIGNAL(pressed(int)),SLOT(statusBarPressed(int)));
 
   readSettings();
@@ -379,7 +383,11 @@ void KOrganizer::initActions()
                     mCalendarView,SLOT(editCategories()),
                     actionCollection(),"edit_categories");
   
-  createGUI();
+  if (KOPrefs::instance()->mEnableGroupScheduling) {
+    createGUI("korganizergsui.rc");
+  } else {  
+    createGUI();
+  }
 
   KConfig *config = kapp->config();
 

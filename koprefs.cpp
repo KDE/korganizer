@@ -27,6 +27,11 @@ KOPrefs::KOPrefs() :
   mDefaultTimeBarFont = QFont("helvetica",12,QFont::Bold);
   mDefaultViewFont = QFont("helvetica",12);
 
+  KPrefsItem::setCurrentGroup("General");
+  
+  addPrefsItem(new KPrefsItemBool("Enable Group Scheduling",
+                                  &mEnableGroupScheduling,false));
+
   KPrefsItem::setCurrentGroup("Colors");
   
   addPrefsItem(new KPrefsItemColor("Holiday Color",&mHolidayColor,

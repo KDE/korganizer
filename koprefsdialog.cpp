@@ -309,8 +309,15 @@ void KOPrefsDialog::setupMainTab()
   mConfirmCheck = new QCheckBox(i18n("Confirm Deletes"),topFrame);
   topLayout->addMultiCellWidget(mConfirmCheck,6,6,0,1);
 
+  mEnableGroupScheduling =
+      new KPrefsWidBool(i18n("Enable Group Scheduling"),
+                        &(KOPrefs::instance()->mEnableGroupScheduling),this,
+                        topFrame);
+  topLayout->addWidget(mEnableGroupScheduling->checkBox(),7,0);
+  connect(mEnableGroupScheduling->checkBox(),SIGNAL(clicked()),
+          SLOT(warningGroupScheduling()));
 
-  topLayout->setRowStretch(7,1);
+  topLayout->setRowStretch(8,1);
 }
 
 
@@ -778,4 +785,22 @@ void KOPrefsDialog::updateCategories()
   mCategoryCombo->clear();
   mCategoryCombo->insertStringList(KOPrefs::instance()->mCustomCategories);  
   updateCategoryColor();
+}
+
+void KOPrefsDialog::warningGroupScheduling()
+{
+  warningExperimental(mEnableGroupScheduling->checkBox()->isChecked());
+}
+
+void KOPrefsDialog::warningExperimental(bool on)
+{
+  if (on) {
+    KMessageBox::information(this,"This is an experimental feature. "
+        "It may not work, it may do nothing useful and it may cause data loss. "
+        "Use with care.\n"
+        "You have to restart KOrganizer for this setting to take effect.");
+  } else {
+    KMessageBox::information(this,
+        "You have to restart KOrganizer for this setting to take effect.");
+  }
 }

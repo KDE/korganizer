@@ -41,8 +41,10 @@ class KOPrefsDialog : public KPrefsDialog
     void selectAgendaViewFont();
 
     void selectCategoryColor();
-  
     void updateCategoryColor();
+
+    void warningExperimental(bool on);
+    void warningGroupScheduling();
 
   protected:
     void usrReadConfig();
@@ -59,6 +61,8 @@ class KOPrefsDialog : public KPrefsDialog
     void setCombo(QComboBox *combo,const QString & text, const QStringList *tags = 0);
 
   private:
+    KPrefsWidBool *mEnableGroupScheduling;
+
     QFrame *mPrinterTab;
   
     QFrame *personalFrame;

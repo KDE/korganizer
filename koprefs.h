@@ -53,6 +53,8 @@ class KOPrefs : public KPrefs
     int     mAutoSaveInterval;
     bool    mConfirm;
   
+    bool    mEnableGroupScheduling;
+  
     QString mTimeZone;
     int     mStartTime;
     int     mDefaultDuration;
