@@ -27,6 +27,7 @@
 #include <qpushbutton.h>
 #include <qlayout.h>
 #include <qframe.h>
+#include <qpopupmenu.h>
 #include <qlabel.h>
 
 #include <kdebug.h>
@@ -44,8 +45,19 @@
 
 #include "navigatorbar.h"
 
+ActiveLabel::ActiveLabel( QWidget *parent, const char *name )
+  : QLabel( parent, name )
+{
+}
+
+void ActiveLabel::mouseReleaseEvent( QMouseEvent * )
+{
+  emit clicked();
+}
+
+
 NavigatorBar::NavigatorBar( const QDate & date, QWidget *parent, const char *name )
-  : QWidget( parent, name )
+  : QWidget( parent, name ), mDate(date)
 {
   QBoxLayout *topLayout = new QHBoxLayout( this );
 
@@ -62,53 +74,52 @@ NavigatorBar::NavigatorBar( const QDate & date, QWidget *parent, const char *nam
 
   bool isRTL = KOGlobals::self()->reverseLayout();
 
+  // Create month name button
+  mMonth = new ActiveLabel( mCtrlFrame );
+  mMonth->setFont( tfont );
+  mMonth->setAlignment( AlignCenter );
+  QToolTip::add( mMonth, i18n("Select a Month") );
+
+  // Set minimum width to width of widest month name label
+  int i;
+  int maxwidth = 0;
+
+  const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
+  for( i = 1; i <= calSys->monthsInYear(date); ++i ) {
+    mMonth->setText( QString("%1 8888").arg(calSys->monthName( i, calSys->year(date) )) );
+    if ( mMonth->width() > maxwidth ) maxwidth = mMonth->width();
+  }
+  mMonth->setMinimumWidth( maxwidth );
+
   // Create backward navigation buttons
   mPrevYear = new QPushButton( mCtrlFrame );
   mPrevYear->setPixmap( SmallIcon( isRTL ? "2rightarrow" : "2leftarrow" ) );
+  mPrevYear->setMinimumHeight(mMonth->height());
   QToolTip::add( mPrevYear, i18n("Previous Year") );
 
   mPrevMonth = new QPushButton( mCtrlFrame );
   mPrevMonth->setPixmap( SmallIcon( isRTL ? "1rightarrow" : "1leftarrow") );
+  mPrevMonth->setMinimumHeight(mMonth->height());
   QToolTip::add( mPrevMonth, i18n("Previous Month") );
 
   // Create forward navigation buttons
   mNextMonth = new QPushButton( mCtrlFrame );
   mNextMonth->setPixmap( SmallIcon( isRTL ? "1leftarrow" : "1rightarrow") );
+  mNextMonth->setMinimumHeight(mMonth->height());
   QToolTip::add( mNextMonth, i18n("Next Month") );
 
   mNextYear = new QPushButton( mCtrlFrame );
   mNextYear->setPixmap( SmallIcon( isRTL ? "2leftarrow" : "2rightarrow") );
+  mNextYear->setMinimumHeight(mMonth->height());
   QToolTip::add( mNextYear, i18n("Next Year") );
-
-  // Create month name label
-  mDateLabel = new QLabel( mCtrlFrame );
-  mDateLabel->setFont( tfont );
-  mDateLabel->setAlignment( AlignCenter );
-
-  // Set minimum width to width of widest month name label
-  int i;
-  int maxwidth = 0;
-  QFontMetrics fm = mDateLabel->fontMetrics();
-
-  const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
-  for( i = 1; i <= calSys->monthsInYear(date); ++i ) {
-    QString dtstr(i18n("monthname year", "%1 %2"));
-    dtstr=dtstr.arg( calSys->monthName( i, calSys->year(date) ) )
-          .arg( calSys->year( date ) );
-    int width = fm.width( dtstr );
-    if ( width > maxwidth ) maxwidth = width;
-  }
-  mDateLabel->setMinimumWidth( maxwidth );
 
   // set up control frame layout
   QBoxLayout *ctrlLayout = new QHBoxLayout( mCtrlFrame, 1 );
   ctrlLayout->addWidget( mPrevYear, 3 );
   ctrlLayout->addWidget( mPrevMonth, 3 );
-  ctrlLayout->addStretch( 1 );
   ctrlLayout->addSpacing( 2 );
-  ctrlLayout->addWidget( mDateLabel );
+  ctrlLayout->addWidget( mMonth, 3 );
   ctrlLayout->addSpacing( 2 );
-  ctrlLayout->addStretch( 1 );
   ctrlLayout->addWidget( mNextMonth, 3 );
   ctrlLayout->addWidget( mNextYear, 3 );
 
@@ -116,6 +127,7 @@ NavigatorBar::NavigatorBar( const QDate & date, QWidget *parent, const char *nam
   connect( mPrevMonth, SIGNAL( clicked() ), SIGNAL( goPrevMonth() ) );
   connect( mNextMonth, SIGNAL( clicked() ), SIGNAL( goNextMonth() ) );
   connect( mNextYear, SIGNAL( clicked() ), SIGNAL( goNextYear() ) );
+  connect( mMonth, SIGNAL( clicked() ), SLOT( selectMonth() ) );
 }
 
 NavigatorBar::~NavigatorBar()
@@ -125,17 +137,38 @@ NavigatorBar::~NavigatorBar()
 void NavigatorBar::selectDates( const KCal::DateList &dateList )
 {
   if (dateList.count() > 0) {
-    QDate date = dateList.first();
+    mDate = dateList.first();
 
     const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
 
     // compute the label at the top of the navigator
-    QString dtstr(i18n("monthname year", "%1 %2"));
-    dtstr=dtstr.arg( calSys->monthName( date ) )
-          .arg( calSys->year( date ) );
-
-    mDateLabel->setText( dtstr );
+    mMonth->setText( QString("%1 %2").arg(calSys->monthName( mDate )).arg(calSys->year(mDate)) );
   }
+}
+
+void NavigatorBar::selectMonth()
+{
+  // every year can have different month names (in some calendar systems)
+  const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
+
+  int i, month, months = calSys->monthsInYear(mDate);
+
+  QPopupMenu *popup = new QPopupMenu(mMonth);
+
+  for (i = 1; i <= months; i++)
+    popup->insertItem(calSys->monthName(i, calSys->year(mDate)), i);
+
+  popup->setActiveItem(calSys->month(mDate) - 1);
+  popup->setMinimumWidth(mMonth->width());
+
+  if ( (month = popup->exec(mMonth->mapToGlobal(QPoint(0, 0)), calSys->month(mDate) - 1)) == -1 ) {
+    delete popup;
+    return;  // cancelled
+  }
+
+  emit goMonth(month);
+
+  delete popup;
 }
 
 #include "navigatorbar.moc"

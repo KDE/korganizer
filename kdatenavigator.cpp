@@ -73,6 +73,7 @@ KDateNavigator::KDateNavigator( QWidget *parent, Calendar *calendar,
   connect( mNavigatorBar, SIGNAL( goPrevMonth() ), SIGNAL( goPrevMonth() ) );
   connect( mNavigatorBar, SIGNAL( goNextMonth() ), SIGNAL( goNextMonth() ) );
   connect( mNavigatorBar, SIGNAL( goNextYear() ), SIGNAL( goNextYear() ) );
+  connect( mNavigatorBar, SIGNAL( goMonth(int) ), SIGNAL( goMonth(int) ) );
 
   // get the day of the week on the first day
   QDate dayone(m_MthYr.year(), m_MthYr.month(), 1);

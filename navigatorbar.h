@@ -30,7 +30,20 @@
 
 class QPushButton;
 class QFrame;
-class QLabel;
+
+class ActiveLabel : public QLabel
+{
+    Q_OBJECT
+  public:
+    ActiveLabel( QWidget *parent, const char *name = 0 );
+
+  signals:
+    void clicked();
+
+  protected:
+    void mouseReleaseEvent ( QMouseEvent * e );
+};
+
 
 class NavigatorBar: public QWidget
 {
@@ -47,16 +60,20 @@ class NavigatorBar: public QWidget
     void goPrevMonth();
     void goNextYear();
     void goPrevYear();
+    void goMonth(int month);
+
+  private slots:
+    void selectMonth();
 
   private:
+    QDate mDate;
     QFrame *mCtrlFrame;
 
     QPushButton *mPrevYear;
     QPushButton *mPrevMonth;
+    ActiveLabel *mMonth;
     QPushButton *mNextMonth;
     QPushButton *mNextYear;
-
-    QLabel *mDateLabel;
 };
 
 #endif

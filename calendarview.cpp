@@ -208,6 +208,8 @@ CalendarView::CalendarView( Calendar *calendar,
            mNavigator, SLOT( selectPreviousMonth() ) );
   connect( mNavigatorBar, SIGNAL( goNextMonth() ),
            mNavigator, SLOT( selectNextMonth() ) );
+  connect( mNavigatorBar, SIGNAL( goMonth(int) ),
+           mNavigator, SLOT( selectMonth(int) ) );
 
   connect( mNavigator, SIGNAL( datesSelected( const KCal::DateList & ) ),
            mNavigatorBar, SLOT( selectDates( const KCal::DateList & ) ) );
@@ -223,6 +225,8 @@ CalendarView::CalendarView( Calendar *calendar,
            mNavigator, SLOT( selectPreviousMonth() ) );
   connect( mDateNavigator, SIGNAL( goNextMonth() ),
            mNavigator, SLOT( selectNextMonth() ) );
+  connect( mDateNavigator, SIGNAL( goMonth(int) ),
+           mNavigator, SLOT( selectMonth(int) ) );
 
   connect( mDateNavigator, SIGNAL( goPrevious() ),
            mNavigator, SLOT( selectPrevious() ) );

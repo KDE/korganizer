@@ -212,6 +212,17 @@ void DateNavigator::selectNext()
   selectDates( mSelectedDates.first().addDays( offset ), datesCount() );
 }
 
+void DateNavigator::selectMonth(int month)
+{
+  QDate firstSelected = mSelectedDates.first();
+  int weekDay = firstSelected.dayOfWeek();
+
+  const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
+  calSys->setYMD( firstSelected, calSys->year(firstSelected), month, calSys->day(firstSelected) );
+
+  selectWeekByDay( weekDay, firstSelected );
+}
+
 void DateNavigator::emitSelected()
 {
   emit datesSelected( mSelectedDates );

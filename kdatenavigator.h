@@ -81,6 +81,8 @@ class KDateNavigator: public QFrame
     void goNextYear();
     void goPrevYear();
 
+    void goMonth(int month);
+
     // Signals emitted at midnight carrying the new date.
     void dayPassed( QDate );
     void monthPassed( QDate );
