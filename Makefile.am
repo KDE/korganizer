@@ -96,7 +96,7 @@ libkorganizer_la_SOURCES = komessagebox.cpp outgoingdialog_base.ui \
 	filtereditdialog.cpp filteredit_base.ui \
 	kowhatsnextview.cpp kocounterdialog.cpp \
 	kojournalview.cpp journalentry.cpp \
-	kocore.cpp plugindialog.cpp mailscheduler.cpp \
+	kocore.cpp mailscheduler.cpp \
 	kodaymatrix.cpp docprefs.cpp statusdialog.cpp\
 	kotimespanview.cpp timespanview.cpp lineview.cpp timeline.cpp \
 	koglobals.cpp konewstuff.cpp \
@@ -188,6 +188,7 @@ kde_services_DATA = korganizer_configmain.desktop \
                     korganizer_configviews.desktop \
                     korganizer_configcolors.desktop \
                     korganizer_configfonts.desktop \
+                    korganizer_configplugins.desktop \
                     korganizer_configgroupscheduling.desktop \
                     korganizer_configgroupautomation.desktop \
                     korganizer_configfreebusy.desktop \

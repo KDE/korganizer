@@ -37,9 +37,6 @@
 #include "kojournaleditor.h"
 #include "searchdialog.h"
 #include "filtereditdialog.h"
-#ifndef KORG_NOPLUGINS
-#include "plugindialog.h"
-#endif
 #ifndef KORG_NOARCHIVE
 #include "archivedialog.h"
 #endif
@@ -92,7 +89,6 @@ KODialogManager::KODialogManager( CalendarView *mainView ) :
   mSearchDialog = 0;
   mArchiveDialog = 0;
   mFilterEditDialog = 0;
-  mPluginDialog = 0;
 
   mCategoryEditDialog = new KPIM::CategoryEditDialog( KOPrefs::instance(), mMainView );
   connect( mainView, SIGNAL( categoriesChanged() ), 
@@ -110,9 +106,6 @@ KODialogManager::~KODialogManager()
   delete mArchiveDialog;
 #endif
   delete mFilterEditDialog;
-#ifndef KORG_NOPLUGINS
-  delete mPluginDialog;
-#endif
 }
 
 void KODialogManager::errorSaveIncidence( QWidget *parent, Incidence *incidence )
@@ -172,6 +165,7 @@ void KODialogManager::showOptionsDialog()
     modules.append( "korganizer_configgroupscheduling.desktop" );
     modules.append( "korganizer_configgroupautomation.desktop" );
     modules.append( "korganizer_configfreebusy.desktop" );
+    modules.append( "korganizer_configplugins.desktop" );
 
     // add them all
     QStringList::iterator mit;
@@ -269,19 +263,6 @@ void KODialogManager::showFilterEditDialog( QPtrList<CalFilter> *filters )
   }
   mFilterEditDialog->show();
   mFilterEditDialog->raise();
-}
-
-void KODialogManager::showPluginDialog()
-{
-#ifndef KORG_NOPLUGINS
-  if (!mPluginDialog) {
-    mPluginDialog = new PluginDialog(mMainView);
-    connect(mPluginDialog,SIGNAL(configChanged()),
-            mMainView,SLOT(updateConfig()));
-  }
-  mPluginDialog->show();
-  mPluginDialog->raise();
-#endif
 }
 
 KOIncidenceEditor *KODialogManager::getEditor( Incidence *incidence )

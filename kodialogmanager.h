@@ -40,7 +40,6 @@ class KOTodoEditor;
 class KOJournalEditor;
 class SearchDialog;
 class ArchiveDialog;
-class PluginDialog;
 class FilterEditDialog;
 class KOAgendaView;
 
@@ -86,7 +85,6 @@ class KODialogManager : public QObject
     void showSearchDialog();
     void showArchiveDialog();
     void showFilterEditDialog(QPtrList<CalFilter> *filters);
-    void showPluginDialog();
 
   private:
     void createOutgoingDialog();
@@ -102,7 +100,6 @@ class KODialogManager : public QObject
     SearchDialog *mSearchDialog;
     ArchiveDialog *mArchiveDialog;
     FilterEditDialog *mFilterEditDialog;
-    PluginDialog *mPluginDialog;
 };
 
 #endif

@@ -47,6 +47,9 @@
 #include <kiconloader.h>
 #include <kemailsettings.h>
 #include <kcalendarsystem.h>
+#include <ktrader.h>
+#include <kpushbutton.h>
+#include <kocore.h>
 
 #if defined(USE_SOLARIS)
 #include <sys/param.h>
@@ -949,9 +952,143 @@ extern "C"
   KCModule *create_korganizerconfigfreebusy( QWidget *parent, const char * )
   {
     return new KOPrefsDialogGroupwareScheduling( parent,
-						 "kcmkorganizerfreebusy" );
+                                                 "kcmkorganizerfreebusy" );
   }
 }
+
+
+
+class PluginItem : public QCheckListItem {
+  public:
+    PluginItem( QListView *parent, KService::Ptr service ) :
+      QCheckListItem( parent, service->name(), QCheckListItem::CheckBox ), mService( service )
+    {}
+    KService::Ptr service() { return mService; }
+  private:
+    KService::Ptr mService;
+};
+
+
+/**
+  Dialog for selecting and configuring KOrganizer plugins
+*/
+KOPrefsDialogPlugins::KOPrefsDialogPlugins( QWidget *parent, const char* name )
+  : KPrefsModule( KOPrefs::instance(), parent, name )
+{
+  QBoxLayout *topTopLayout = new QVBoxLayout( this );
+  
+  QWidget *topFrame = new QWidget( this );
+  topTopLayout->addWidget( topFrame );
+  QBoxLayout *topLayout = new QVBoxLayout( topFrame );
+  topLayout->setSpacing( KDialog::spacingHint() );
+
+  mListView = new QListView( topFrame );
+  mListView->addColumn( i18n("Name") );
+  mListView->setResizeMode( QListView::LastColumn );
+  topLayout->addWidget( mListView );
+  
+  mDescription = new QLabel( topFrame );
+  mDescription->setAlignment( QLabel::NoAccel | QLabel::WordBreak | QLabel::AlignVCenter );
+  mDescription->setFrameShape( QLabel::Panel );
+  mDescription->setFrameShadow( QLabel::Sunken );
+  mDescription->setSizePolicy( 
+         QSizePolicy( (QSizePolicy::SizeType)5, (QSizePolicy::SizeType)0, 
+                      0, 0, mDescription->sizePolicy().hasHeightForWidth() ) );
+  mDescription->setMinimumSize( QSize( 0, 55 ) );
+  topLayout->addWidget( mDescription );
+ 
+
+  mConfigureButton = new KPushButton( KGuiItem( i18n("&Configure plugin..."),
+      "configure", QString::null, i18n("This button allows you to configure "
+      " the plugin that you have selected in the list above") ), topFrame );
+  
+  topLayout->addWidget( mConfigureButton );
+  connect( mConfigureButton, SIGNAL( clicked() ), SLOT( configure() ) );
+  
+  connect( mListView, SIGNAL( selectionChanged( QListViewItem* ) ),
+           this, SLOT( selectionChanged( QListViewItem* ) ) );
+
+  load();
+//  usrReadConfig();
+//  selectionChanged( 0 );
+}
+
+void KOPrefsDialogPlugins::usrReadConfig()
+{
+  mListView->clear();
+  KTrader::OfferList plugins = KOCore::self()->availablePlugins();
+  plugins += KOCore::self()->availableParts();
+
+  QStringList selectedPlugins = KOPrefs::instance()->mSelectedPlugins;
+
+  KTrader::OfferList::ConstIterator it;
+  for( it = plugins.begin(); it != plugins.end(); ++it ) {
+    QCheckListItem *item = new PluginItem( mListView, *it );
+    if ( selectedPlugins.find( (*it)->desktopEntryName() ) !=
+                               selectedPlugins.end() ) {
+      item->setOn( true );
+    }
+  }
+}
+
+void KOPrefsDialogPlugins::usrWriteConfig()
+{
+  QStringList selectedPlugins;
+
+  PluginItem *item = static_cast<PluginItem *>( mListView->firstChild() );
+  while( item ) {
+    if( item->isOn() ) {
+      selectedPlugins.append( item->service()->desktopEntryName() );
+    }
+    item = static_cast<PluginItem *>( item->nextSibling() );
+  }
+  KOPrefs::instance()->mSelectedPlugins = selectedPlugins;
+}
+
+void KOPrefsDialogPlugins::configure()
+{
+  PluginItem *item = static_cast<PluginItem *>( mListView->selectedItem() );
+  if ( !item ) return;
+
+  KOrg::Plugin *plugin = KOCore::self()->loadPlugin( item->service() );
+
+  if ( plugin ) {
+    plugin->configure( this );
+    delete plugin;
+  } else {
+    KMessageBox::sorry( this, i18n( "Unable to configure this plugin" ),
+                        "PluginConfigUnable" );
+  }
+}
+
+void KOPrefsDialogPlugins::selectionChanged( QListViewItem *i )
+{
+  PluginItem *item = dynamic_cast<PluginItem*>( i );
+  if ( !item ) {
+    mConfigureButton->setEnabled( false );
+    mDescription->setText( QString::null );
+    return;
+  }
+
+  QVariant variant = item->service()->property( "X-KDE-KOrganizer-HasSettings" );
+
+  bool hasSettings = true;
+  if ( variant.isValid() )
+    hasSettings = variant.toBool();
+
+  mDescription->setText( item->service()->comment() );
+  mConfigureButton->setEnabled( hasSettings );
+}
+
+extern "C"
+{
+  KCModule *create_korganizerconfigplugins( QWidget *parent, const char * )
+  {
+    return new KOPrefsDialogPlugins( parent,
+                                     "kcmkorganizerplugins" );
+  }
+}
+
 
 
 #include "koprefsdialog.moc"

@@ -32,6 +32,7 @@ class QLabel;
 class QSpinBox;
 class QComboBox;
 class KColorButton;
+class KPushButton;
 class QColor;
 class QListView;
 
@@ -113,5 +114,25 @@ class KOPrefsDialogGroupwareScheduling : public KPrefsModule
   private:
     KOGroupwarePrefsPage* mGroupwarePage;
 };
+
+class KOPrefsDialogPlugins : public KPrefsModule
+{
+    Q_OBJECT
+  public:
+    KOPrefsDialogPlugins( QWidget *parent, const char *name );
+
+  protected slots:
+    void usrReadConfig();
+    void usrWriteConfig();
+    void configure();
+    void selectionChanged( QListViewItem* );
+
+  private:
+    void buildList();
+    QListView *mListView;
+    QLabel *mDescription;
+    KPushButton *mConfigureButton;
+};
+
 
 #endif
