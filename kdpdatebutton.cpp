@@ -44,7 +44,8 @@ KDateButton::KDateButton(QDate date, int index, CalObject *_calendar,
 
   myFont = font();
   setFrameStyle(QFrame::Box|QFrame::Plain);
-  setLineWidth(2);
+  setLineWidth(0);
+//  setLineWidth(2);
   setAlignment(AlignCenter);
   my_index = index;
   bt_Date = date;
@@ -82,100 +83,66 @@ void KDateButton::updateConfig()
   delete tmpColor;
   tmpColor = new QColor("#cc3366");
   QColor holidayColor = config.readColorEntry( "Holiday Color", tmpColor);
-  
-  my_NormalGroup = QColorGroup(my_OrigPalette.normal().base(),
-			       my_OrigPalette.normal().base(),
-			       my_OrigPalette.normal().base(),
-			       my_OrigPalette.normal().base(),
-			       my_OrigPalette.normal().base(),
-			       my_OrigPalette.normal().dark(),
-			       my_OrigPalette.normal().base());
-  
-  my_DisabledGroup = QColorGroup(my_OrigPalette.normal().base(),
-				 my_OrigPalette.normal().base(),
-				 my_OrigPalette.normal().base(),
-				 my_OrigPalette.normal().base(),
-				 my_OrigPalette.normal().base(),
-				 my_OrigPalette.normal().mid(),
-				 my_OrigPalette.normal().base());
-  
-  my_HiDisabledGroup = QColorGroup(hiliteColor,
-                                   hiliteColor,
-				   my_OrigPalette.normal().base(),
-				   my_OrigPalette.normal().base(),
-				   my_OrigPalette.normal().base(),
-				   my_OrigPalette.normal().mid(),
-				   my_OrigPalette.normal().base());
-  
-  my_HiliteGroup = QColorGroup(hiliteColor,
-                               hiliteColor,
-                               hiliteColor,
-                               hiliteColor,
-                               hiliteColor,
-			       my_OrigPalette.normal().light(),
-			       hiliteColor);
 
-  my_TodayGroup = QColorGroup(todayColor,
-			      todayColor,
-			      my_OrigPalette.normal().dark(),
-			      my_OrigPalette.normal().dark(),
-			      my_OrigPalette.normal().dark(),
-			      my_OrigPalette.normal().light(),
-			      my_OrigPalette.normal().base());
+  // hilight and holiday colors are hardcoded now. This should be made
+  // configurable again. The preference dialog needs some updates before to
+  // provide meaningful color selections.
+
+  my_NormalGroup = my_OrigPalette.active();
+  my_NormalGroup.setColor(QColorGroup::Background,my_NormalGroup.base());
+
+  my_DisabledGroup = my_OrigPalette.disabled();
+  my_HiDisabledGroup = my_OrigPalette.disabled();
+
+  my_HiliteGroup = my_OrigPalette.active();
+  my_HiliteGroup.setColor(QColorGroup::Background,QColor("blue"));
+  my_HiliteGroup.setColor(QColorGroup::Foreground,QColor("white"));
   
-  my_TodaySelectGroup = QColorGroup(todayColor,
-				    hiliteColor,
-				    my_OrigPalette.normal().dark(),
-				    my_OrigPalette.normal().dark(),
-				    my_OrigPalette.normal().dark(),
-				    my_OrigPalette.normal().light(),
-				    my_OrigPalette.normal().base());
+  my_TodayGroup = my_OrigPalette.active();
+  my_TodayGroup.setColor(QColorGroup::Background,my_NormalGroup.base());
+
+  my_TodaySelectGroup = my_OrigPalette.active();
+  my_TodaySelectGroup.setColor(QColorGroup::Background,QColor("blue"));
+  my_TodaySelectGroup.setColor(QColorGroup::Foreground,QColor("grey"));
+
+  my_EventGroup = my_OrigPalette.active();
+  my_EventGroup.setColor(QColorGroup::Background,my_NormalGroup.base());
   
-  my_EventGroup =  QColorGroup(my_OrigPalette.normal().base(),
-			       my_OrigPalette.normal().base(),
-			       my_OrigPalette.normal().base(),
-			       my_OrigPalette.normal().base(),
-			       my_OrigPalette.normal().base(),
-			       hiliteColor,
-			       my_OrigPalette.normal().base());
+  my_HolidayGroup = my_OrigPalette.active();
+  my_HolidayGroup.setColor(QColorGroup::Foreground,QColor("red"));
+  my_HolidayGroup.setColor(QColorGroup::Background,my_NormalGroup.base());
 
+  my_HolidaySelectGroup = my_OrigPalette.active();
+  my_HolidaySelectGroup.setColor(QColorGroup::Foreground,QColor("red"));
+  my_HolidaySelectGroup.setColor(QColorGroup::Background,QColor("blue"));
+  
 
-  my_HolidayGroup = QColorGroup(my_OrigPalette.normal().base(),
-				my_OrigPalette.normal().base(),
-				my_OrigPalette.normal().base(),
-				my_OrigPalette.normal().base(),
-				my_OrigPalette.normal().base(),
-				holidayColor,
-				my_OrigPalette.normal().base());
-
-  my_HolidaySelectGroup = QColorGroup(holidayColor,
-				      hiliteColor,
-				      my_OrigPalette.normal().dark(),
-				      my_OrigPalette.normal().dark(),
-				      my_OrigPalette.normal().dark(),
-				      my_OrigPalette.normal().light(),
-				      my_OrigPalette.normal().base());
-
-  my_NormalPalette.setNormal(my_NormalGroup);
+  my_NormalPalette.setActive(my_NormalGroup);
+  my_NormalPalette.setInactive(my_NormalGroup);
   my_NormalPalette.setDisabled(my_DisabledGroup);
   
-  my_HilitePalette.setNormal(my_HiliteGroup);
+  my_HilitePalette.setActive(my_HiliteGroup);
+  my_HilitePalette.setInactive(my_HiliteGroup);
   my_HilitePalette.setDisabled(my_HiDisabledGroup);
   
-  my_TodayPalette.setNormal(my_TodayGroup);
+  my_TodayPalette.setActive(my_TodayGroup);
+  my_TodayPalette.setInactive(my_TodayGroup);
   my_TodayPalette.setDisabled(my_DisabledGroup);
   
-  my_TodaySelectPalette.setNormal(my_TodaySelectGroup);
+  my_TodaySelectPalette.setActive(my_TodaySelectGroup);
+  my_TodaySelectPalette.setInactive(my_TodaySelectGroup);
   my_TodaySelectPalette.setDisabled(my_DisabledGroup);
   
-  my_EventPalette.setNormal(my_EventGroup);
+  my_EventPalette.setActive(my_EventGroup);
+  my_EventPalette.setInactive(my_EventGroup);
   my_EventPalette.setDisabled(my_DisabledGroup);
   
-  my_HolidayPalette.setNormal(my_HolidayGroup);
+  my_HolidayPalette.setActive(my_HolidayGroup);
+  my_HolidayPalette.setInactive(my_HolidayGroup);
   my_HolidayPalette.setDisabled(my_DisabledGroup);
-  my_HolidaySelectPalette.setNormal(my_HolidaySelectGroup);
+  my_HolidaySelectPalette.setActive(my_HolidaySelectGroup);
+  my_HolidaySelectPalette.setInactive(my_HolidaySelectGroup);
   my_HolidaySelectPalette.setDisabled(my_HiDisabledGroup);
-
 }
 
 inline QDate KDateButton::date()
@@ -200,36 +167,44 @@ void KDateButton::setHiliteStyle(int HiliteStyle)
   switch(HiliteStyle) {
   case NoHilite:
     setPalette(my_NormalPalette);
+    setLineWidth(0);
     selFlag = FALSE;
     break;
   case EventHilite:    
     myFont.setBold(TRUE);
     setFont(myFont);
     setPalette(my_EventPalette);
+    setLineWidth(0);
     selFlag = FALSE;
     break;
   case SelectHilite:
     setPalette(my_HilitePalette);
+    setLineWidth(0);
     selFlag = TRUE;
     break;
   case TodayHilite:
     setPalette(my_TodayPalette);
+    setLineWidth(2);
     selFlag = FALSE;
     break;
   case TodaySelectHilite:
     setPalette(my_TodaySelectPalette);
+    setLineWidth(2);
     selFlag = TRUE;
     break;
   case HolidayHilite:
     setPalette(my_HolidayPalette);
+    setLineWidth(0);
     selFlag = FALSE;
     break;
   case HolidaySelectHilite:
     setPalette(my_HolidaySelectPalette);
+    setLineWidth(0);
     selFlag = TRUE;
     break;
   default:
     setPalette(my_NormalPalette);
+    setLineWidth(0);
     selFlag = FALSE;
     break;
   }

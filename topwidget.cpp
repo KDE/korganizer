@@ -350,7 +350,7 @@ void TopWidget::writeSettings()
   }
 
   QString tmpStr;
-  config->setGroup("General");
+  config->setGroup("CalendarView");
 
   tmpStr.sprintf("%d", this->width() );
   config->writeEntry("Width",	tmpStr);

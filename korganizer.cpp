@@ -160,6 +160,8 @@ void KOrganizer::readSettings()
 //  toolBarEnable = config->readBoolEntry("Tool Bar", TRUE);
 
   mAutoSave = config->readBoolEntry("Auto Save", FALSE);
+
+  mCalendarView->readSettings();
     
   config->sync();
 }
@@ -195,6 +197,8 @@ void KOrganizer::writeSettings()
   // written by a newer KOrganizer, because this can lead to the loss of
   // information not processed by Korganizer 1.1.
   config->writeEntry("Current Calendar (2.0)", mFilename);
+
+  mCalendarView->writeSettings();
 
   config->sync();
 }

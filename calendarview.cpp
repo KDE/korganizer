@@ -255,12 +255,16 @@ bool CalendarView::initCalendar(QString filename)
 
 void CalendarView::readSettings()
 {
+//  qDebug("CalendarView::readSettings()");
+
   QString str;
 
   // read settings from the KConfig, supplying reasonable
   // defaults where none are to be found
 
   KConfig config(KGlobal::dirs()->findResource("config", "korganizerrc")); 
+
+  config.setGroup("General");
 
   QStringList strlist = config.readListEntry("Separator");
   if (!strlist.isEmpty()){
@@ -309,6 +313,8 @@ void CalendarView::readCurrentView()
 
 void CalendarView::writeSettings()
 {
+//  qDebug("CalendarView::writeSettings");
+
   KConfig config(KGlobal::dirs()->findResource("config", "korganizerrc")); 
 
   QString tmpStr;

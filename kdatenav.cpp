@@ -47,25 +47,27 @@ KDateNavigator::KDateNavigator(QWidget *parent,
   tfont.setPointSize(10);
   tfont.setBold(FALSE);
 
-  pixmap = BarIcon("2leftarrow");
+  KIconLoader *loader = KGlobal::iconLoader();
+
+  pixmap = loader->loadIcon("2leftarrow",KIcon::User);
   prevYear  = new KPButton(pixmap, ctrlFrame);
   prevYear->setFont(tfont);
   prevYear->resize(16,16);
   QToolTip::add(prevYear, i18n("Previous Year"));
 
-  pixmap = BarIcon("1leftarrow");
+  pixmap = loader->loadIcon("1leftarrow",KIcon::User);
   prevMonth = new KPButton(pixmap, ctrlFrame);
   prevMonth->setFont(tfont);
   prevMonth->setFixedSize(prevYear->size());
   QToolTip::add(prevMonth, i18n("Previous Month"));
 
-  pixmap = BarIcon("1rightarrow");
+  pixmap = loader->loadIcon("1rightarrow",KIcon::User);
   nextMonth = new KPButton(pixmap, ctrlFrame);
   nextMonth->setFont(tfont);
   nextMonth->setFixedSize(prevYear->size());
   QToolTip::add(nextMonth, i18n("Next Month"));
 
-  pixmap = BarIcon("2rightarrow");
+  pixmap = loader->loadIcon("2rightarrow",KIcon::User);
   nextYear  = new KPButton(pixmap, ctrlFrame);
   nextYear->setFont(tfont);
   nextYear->setFixedSize(prevYear->size());
@@ -120,15 +122,17 @@ KDateNavigator::KDateNavigator(QWidget *parent,
   // Create the weeknumber labels
 
   QPalette wkno_Palette = palette();
-  QColorGroup my_Group = QColorGroup(palette().normal().base(),
-				     palette().normal().base(),
-				     palette().normal().base(),
-				     palette().normal().base(),
-				     palette().normal().base(),
-				     palette().normal().mid(),
-				     palette().normal().base());
+  QColorGroup my_Group = QColorGroup(palette().active().base(),
+				     palette().active().base(),
+				     palette().active().base(),
+				     palette().active().base(),
+				     palette().active().base(),
+				     palette().active().mid(),
+				     palette().active().base());
 
-  wkno_Palette.setNormal(my_Group);
+// Temporarily disabled.
+//  wkno_Palette.setActive(my_Group);
+//  wkno_Palette.setInactive(my_Group);
   
   for(i=0; i<7; i++) {
     weeknos[i] = new QLabel(viewFrame);
@@ -329,15 +333,17 @@ void KDateNavigator::updateConfig()
   QColor hiliteColor(config.readColorEntry("List Color", &kapp->winStyleHighlightColor()));
   QPalette heading_Palette(palette());
 
-  QColorGroup my_Group = QColorGroup(palette().normal().base(),
-                  palette().normal().base(),
-                  palette().normal().base(),
-                  palette().normal().base(),
-                  palette().normal().base(),
+  QColorGroup my_Group = QColorGroup(palette().active().base(),
+                  palette().active().base(),
+                  palette().active().base(),
+                  palette().active().base(),
+                  palette().active().base(),
                   hiliteColor,
-                  palette().normal().base());
+                  palette().active().base());
   
-  heading_Palette.setNormal(my_Group);
+// Temporarily disabled.
+//  heading_Palette.setActive(my_Group);
+//  heading_Palette.setInactive(my_Group);
  
   config.setGroup("Time & Date");
   weekStartsMonday = config.readBoolEntry("Week Starts Monday", FALSE);
@@ -429,6 +435,15 @@ inline void KDateNavigator::updateButton(int i)
     if (index == i)
       buttons[i]->setHiliteStyle(KDateButton::SelectHilite);
 
+  }
+
+  if (!weekStartsMonday && (float(i)/7 == float(i/7)) ||
+      weekStartsMonday && (float(i-6)/7 == float((i-6)/7))) {
+    if (buttons[i]->hiliteStyle() == KDateButton::SelectHilite) {
+      buttons[i]->setHiliteStyle(KDateButton::HolidaySelectHilite);
+    } else { // it's a holiday, but not selected
+      buttons[i]->setHiliteStyle(KDateButton::HolidayHilite);
+    }
   }
 
   // FIXME: today overwrites holiday for now

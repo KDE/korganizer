@@ -23,6 +23,8 @@ class KDateButton: public QLabel, QDropSite {
    ~KDateButton();
    QDate date();
    void setItalics(bool ital = FALSE);
+   // This should be replaced by a set of functions to set attributes selected,
+   // event, holiday separately.
    void setHiliteStyle(int HiliteStyle);
    int  hiliteStyle();
    bool isSelected() const { return selFlag; }
