@@ -17,7 +17,6 @@
     Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 */
 
-// $Id$
 // Dialog for selecting and configuring the Holiday plugin
 
 #include <qlayout.h>
@@ -36,7 +35,7 @@
 #include "configdialog.moc"
 
 ConfigDialog::ConfigDialog(QWidget *parent)
-  : KDialogBase(Plain,i18n("Configure Holidays"),Ok,Ok,parent)
+  : KDialogBase(Plain,i18n("Configure Holidays"),Ok|Cancel,Ok,parent)
 {
   QFrame *topFrame = plainPage();
   QVBoxLayout *topLayout = new QVBoxLayout(topFrame,0,spacingHint());
@@ -75,16 +74,16 @@ void ConfigDialog::load()
       countryName = cfg.readEntry("Name");
     }
     if (countryName.isEmpty()) countryName = country;
-  
+
     mCountryMap[countryName] = country;
     holidayList << countryName;
 
     if (country == currentHoliday) currentHolidayName = countryName;
   }
   holidayList.sort();
-  
+
   mHolidayCombo->insertStringList(holidayList);
-    
+
   for(int i=0;i<mHolidayCombo->count();++i) {
     if(mHolidayCombo->text(i) == currentHolidayName) {
       mHolidayCombo->setCurrentItem(i);
