@@ -20,7 +20,7 @@
 */
 
 #include <kcmultidialog.h>
-#include <kconfiguredialog.h>
+#include <ksettings/dialog.h>
 
 #include <libkdepim/categoryeditdialog.h>
 
