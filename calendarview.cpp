@@ -534,7 +534,7 @@ void CalendarView::readFilterSettings(KConfig *config)
 
     ++it;
   }
-  
+
   config->setGroup("General");
   int pos = filterList.findIndex( currentFilter );
   mCurrentFilter = 0;
@@ -945,6 +945,41 @@ void CalendarView::newTodo( QDate date )
   todoEditor->show();
 }
 
+void CalendarView::newJournal( QDate date )
+{
+  KOJournalEditor *journalEditor = mDialogManager->getJournalEditor();
+  connectIncidenceEditor( journalEditor );
+  journalEditor->newJournal( date );
+  journalEditor->show();
+}
+
+void CalendarView::newJournal( const QString &text, QDate date )
+{
+  KOJournalEditor *journalEditor = mDialogManager->getJournalEditor();
+  connectIncidenceEditor( journalEditor );
+  journalEditor->newJournal( text, date );
+  journalEditor->show();
+}
+
+void CalendarView::newJournal( const QString &text )
+{
+  KOJournalEditor *journalEditor = mDialogManager->getJournalEditor();
+  connectIncidenceEditor( journalEditor );
+  journalEditor->newJournal( text );
+  journalEditor->show();
+}
+
+//TODO:
+// void CalendarView::newJournal( const QString &summary,
+//                                const QString &description,
+//                                const QString &attachment )
+// {
+//   KOJournalEditor *journalEditor = mDialogManager->getJournalEditor();
+//   connectIncidenceEditor( journalEditor );
+//   journalEditor->newJournal( summary, description, attachment );
+//   journalEditor->show();
+// }
+
 void CalendarView::newSubTodo()
 {
   Todo *todo = selectedTodo();
@@ -1008,11 +1043,11 @@ bool CalendarView::todo_unsub( Todo *todo )
 {
   bool status= false;
   if ( !todo || !todo->relatedTo() ) return false;
-  
+
   if ( mChanger->beginChange( todo ) ) {
-      
+
       Todo *oldTodo = todo->clone();
-      // I think that this is called on Incidence::setRelatedTo 
+      // I think that this is called on Incidence::setRelatedTo
       todo->relatedTo()->removeRelation(todo);
       todo->setRelatedTo(0);
       todo->setRelatedToUid("");
@@ -1021,7 +1056,7 @@ bool CalendarView::todo_unsub( Todo *todo )
       delete oldTodo;
       setModified(true);
       status = true;
-  } 
+  }
   if ( ! status ) {
     KMessageBox::sorry( this, i18n("Unable to turn sub-to-do into a top-level "
         "to-do, because it cannot be locked.") );
@@ -1035,7 +1070,7 @@ bool CalendarView::makeSubTodosIndependents ( )
   bool  status = false;
   Todo *anTodo = selectedTodo();
   startMultiModify ( i18n( "make sub-to-dos independents" ) );
-  
+
   if( makeSubTodosIndependents( anTodo ) ) {
     updateView();
     status = true;
@@ -1047,12 +1082,12 @@ bool CalendarView::makeSubTodosIndependents ( )
 bool CalendarView::makeSubTodosIndependents ( Todo *todo )
 {
   if( !todo || todo->relations().isEmpty() ) return false;
-  
+
   Incidence::List subTodos( todo->relations() );
   Incidence::List::Iterator it;
   Incidence *aIncidence;
   Todo *aTodo;
-  
+
   for ( it= subTodos.begin(); it != subTodos.end(); ++it ) {
     aIncidence = *it;
     if( aIncidence && aIncidence->type() == "Todo" ) {
@@ -1381,11 +1416,11 @@ void CalendarView::exportWeb()
 {
   // FIXME: Get rid of the settings object. When can I delete it???
   HTMLExportSettings *settings = new HTMLExportSettings( "KOrganizer" );
-  // Manually read in the config, because parametrized kconfigxt objects don't 
+  // Manually read in the config, because parametrized kconfigxt objects don't
   // seem to load the config theirselves
   if ( settings ) settings->readConfig();
   ExportWebDialog *dlg = new ExportWebDialog( settings, this );
-  connect( dlg,  SIGNAL( exportHTML( HTMLExportSettings* ) ), 
+  connect( dlg,  SIGNAL( exportHTML( HTMLExportSettings* ) ),
            this, SIGNAL( exportHTML( HTMLExportSettings* ) ) );
   dlg->show();
 }
@@ -1521,18 +1556,18 @@ void CalendarView::editFilters()
   mDialogManager->showFilterEditDialog(&mFilters);
 }
 
-/** Filter configuration changed 
+/** Filter configuration changed
 */
 void CalendarView::updateFilter()
 {
   QStringList filters;
   CalFilter *filter;
-  
+
   int pos = mFilters.find( mCurrentFilter );
   if ( pos < 0 ) {
     mCurrentFilter = 0;
   }
-  
+
   filters << i18n("No filter");
   for ( filter = mFilters.first(); filter; filter = mFilters.next() ) {
     filters << filter->name();
@@ -1741,12 +1776,12 @@ bool CalendarView::editIncidence( Incidence *incidence )
 void CalendarView::deleteSubTodosIncidence ( Todo *todo )
 {
   if( !todo ) return;
-  
+
   Incidence::List subTodos( todo->relations() );
   Incidence::List::Iterator it;
   Incidence *aIncidence;
   Todo *aTodo;
-  
+
   for ( it= subTodos.begin(); it != subTodos.end(); ++it ) {
     aIncidence = *it;
     if( aIncidence && aIncidence->type() == "Todo" ) {
@@ -1760,7 +1795,7 @@ void CalendarView::deleteSubTodosIncidence ( Todo *todo )
 void CalendarView::deleteTodoIncidence ( Todo *todo )
 {
   if ( !todo ) return ;
- 
+
   // it a simple todo, ask and delete it.
   if (todo->relations().isEmpty() ) {
     bool doDelete = true;
@@ -1779,21 +1814,21 @@ void CalendarView::deleteTodoIncidence ( Todo *todo )
                                      "make all its sub-to-dos independent, or "
                                      "delete the to-do with all its sub-to-dos?"
                                 ).arg( todo->summary() ),
-                                i18n("KOrganizer Confirmation"), 
+                                i18n("KOrganizer Confirmation"),
                                 i18n("Delete only this "),
                                 i18n("Delete all"));
   startMultiModify( i18n("Deleting sub-to-dos" ) );
   // Delete only the father
   if( km == KMessageBox::Yes ) {
-    
+
     makeSubTodosIndependents ( todo );
     mChanger->deleteIncidence( todo );
   } else if ( km == KMessageBox::No ) {
-    // Delete all 
+    // Delete all
     // we have to hide the delete confirmation for each itemDate
     deleteSubTodosIncidence ( todo );
   }
-  endMultiModify(); 
+  endMultiModify();
 }
 
 void CalendarView::deleteIncidence(Incidence *incidence)
@@ -1818,13 +1853,13 @@ void CalendarView::deleteIncidence(Incidence *incidence)
   // e.g. todos with children cannot be deleted, so act(..) returns false
   if ( !v.act( incidence, this ) )
     return;
-  //If it is a todo, there are specific delete function 
-  
+  //If it is a todo, there are specific delete function
+
   if ( incidence && incidence->type()=="Todo" ) {
     deleteTodoIncidence( static_cast<Todo*>(incidence) );
     return;
   }
-  
+
   if ( incidence->doesRecur() ) {
     QDate itemDate = mViewManager->currentSelectionDate();
     kdDebug(5850) << "Recurrence-Date: " << itemDate.toString() << endl;

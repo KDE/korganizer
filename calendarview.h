@@ -88,7 +88,7 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     CalendarView( QWidget *parent = 0, const char *name = 0 );
     virtual ~CalendarView();
 
-    
+
     class CalendarViewVisitor : public IncidenceBase::Visitor
     {
       public:
@@ -211,10 +211,10 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
 
     void newIncidenceChanger( IncidenceChangerBase* );
     void exportHTML( HTMLExportSettings* );
-    
+
     void newFilterListSignal( const QStringList & );
     void selectFilterSignal( int );
-  
+
   public slots:
     /** options dialog made a changed to the configuration. we catch this
      *  and notify all widgets which need to update their configuration. */
@@ -250,7 +250,7 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     void editIncidence();
     bool editIncidence( const QString& uid );
     void deleteIncidence();
-    
+
     void connectIncidenceEditor( KOIncidenceEditor * );
 
     /** create an editeventwin with supplied date/time, and if bool is true,
@@ -308,17 +308,24 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     void newTodo( const QString &summary, const QString &description,
                   const QString &attachment, const QStringList &attendees );
 
+    void newJournal( QDate date );
+    void newJournal( const QString &text, QDate date );
+    void newJournal( const QString &text );
+    //TODO:
+    // void newJournal( const QString &summary,  const QString &description,
+    //                  const QString &attachment );
+
     void toggleAlarm( Incidence * );
     void dissociateOccurrence( Incidence *, const QDate & );
     void dissociateFutureOccurrence( Incidence *, const QDate & );
-    
-    /** 
-      Attendees were removed from this incidence. Only the removed attendees 
+
+    /**
+      Attendees were removed from this incidence. Only the removed attendees
       are present in the incidence, so we just need to send a cancel messages
       to all attendees groupware messages are enabled at all.
     */
     void deleteAttendee( Incidence *incidence );
-      
+
 
     /**
       Check if clipboard contains vCalendar event. The signal pasteEnabled() is
@@ -407,11 +414,11 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     void todo_unsub();
     /* Free a subtodo from it's relation, without update the view */
     bool todo_unsub( Todo *todo );
-    /** Make all sub-to-dos of todo independents, update the view*/ 
+    /** Make all sub-to-dos of todo independents, update the view*/
     bool makeSubTodosIndependents ( );
-    /** Make all sub-to-dos of todo independents, not update the view*/ 
+    /** Make all sub-to-dos of todo independents, not update the view*/
     bool makeSubTodosIndependents ( Todo *todo );
-    
+
     /** Take ownership of selected event. */
     void takeOverEvent();
 
@@ -567,7 +574,7 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
 
     KOTodoView *mTodoList;
     QMap<Incidence*,KOIncidenceEditor*> mDialogList;
-    
+
     KOrg::IncidenceChangerBase *mChanger;
 };
 

@@ -47,7 +47,7 @@ KOJournalView::KOJournalView(Calendar *calendar, QWidget *parent,
   : KOrg::BaseView(calendar, parent, name)
 {
   mEntries.setAutoDelete( true );
-  
+
   QVBoxLayout*topLayout = new QVBoxLayout( this );
   topLayout->setAutoAdd(true);
   mSV = new QScrollView( this, "JournalScrollView" );
@@ -83,9 +83,9 @@ int KOJournalView::currentDateCount()
   return mSelectedDates.size();
 }
 
-/*void KOJournalView::resizeEvent( QResizeEvent *event ) 
+/*void KOJournalView::resizeEvent( QResizeEvent *event )
 {
-//  mSV->setSize( 
+//  mSV->setSize(
 }*/
 
 Incidence::List KOJournalView::selectedIncidences()
@@ -130,7 +130,7 @@ void KOJournalView::showDates(const QDate &start, const QDate &end)
 //  kdDebug(5850) << "KOJournalView::showDates(): "<<start.toString().latin1()<<" - "<<end.toString().latin1() << endl;
   clearEntries();
   if ( end<start ) return;
-  
+
   QDate d=start;
   for ( QDate d=start; d<=end; d=d.addDays(1) ) {
     Journal *j = calendar()->journal( d );
@@ -184,11 +184,16 @@ void KOJournalView::changeIncidenceDisplay(Incidence *incidence, int action)
   }
 }
 
-void KOJournalView::setIncidenceChanger( IncidenceChangerBase *changer ) 
-{ 
+void KOJournalView::setIncidenceChanger( IncidenceChangerBase *changer )
+{
   mChanger = changer;
   JournalEntry::List::iterator it;
   for ( it = mEntries.begin(); it != mEntries.end(); ++it ) {
     if ( (*it) ) (*it)->setIncidenceChanger( changer );
   }
+}
+
+void KOJournalView::newJournal()
+{
+  emit newJournalSignal( QDate::currentDate() );
 }

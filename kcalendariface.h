@@ -63,7 +63,14 @@ class KCalendarIface : public DCOPObject
                                  QString attachment ) = 0;
     virtual void openTodoEditor( QString summary, QString description,
                                  QString attachment, QStringList attendees ) = 0;
+    virtual void openJournalEditor( QDate date ) = 0;
+    virtual void openJournalEditor( QString text, QDate date ) = 0;
+    virtual void openJournalEditor( QString text ) = 0;
+   //TODO:
+   // virtual void openJournalEditor( QString summary, QString description,
+   //                                 QString attachment ) = 0;
 
+    virtual void showJournalView() = 0;
     virtual void showTodoView() = 0;
     virtual void showEventView() = 0;
 

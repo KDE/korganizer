@@ -191,6 +191,8 @@ void KOViewManager::connectView(KOrg::BaseView *view)
            mMainView, SLOT( newTodo( QDate ) ) );
   connect( view, SIGNAL( newSubTodoSignal( Todo * ) ),
            mMainView, SLOT( newSubTodo( Todo *) ) );
+  connect( view, SIGNAL( newJournalSignal( QDate ) ),
+           mMainView, SLOT( newJournal( QDate ) ) );
 
   // reload settings
   connect(mMainView, SIGNAL(configChanged()), view, SLOT(updateConfig()));
@@ -202,7 +204,7 @@ void KOViewManager::connectView(KOrg::BaseView *view)
            mMainView, SLOT( startMultiModify( const QString & ) ) );
   connect( view, SIGNAL( endMultiModify() ),
            mMainView, SLOT( endMultiModify() ) );
-           
+
   connect( mMainView, SIGNAL( newIncidenceChanger( IncidenceChangerBase* ) ),
            view, SLOT( setIncidenceChanger( IncidenceChangerBase * ) ) );
   view->setIncidenceChanger( mMainView->incidenceChanger() );
@@ -221,7 +223,7 @@ void KOViewManager::connectTodoView( KOTodoView* todoView )
            mMainView, SLOT( makeSubTodosIndependents() ) );
 }
 
-void KOViewManager::zoomInHorizontally() 
+void KOViewManager::zoomInHorizontally()
 {
   if( mAgendaView == mCurrentView ) mAgendaView->zoomInHorizontally();
 }

@@ -49,12 +49,12 @@ class KOJournalEditor : public KOIncidenceEditor
   public:
     /**
       Constructs a new Journal editor.
-    */  
+    */
     KOJournalEditor( Calendar *calendar, QWidget *parent );
     virtual ~KOJournalEditor();
 
     void init();
-  
+
     void reload();
 
     /**
@@ -70,8 +70,9 @@ class KOJournalEditor : public KOIncidenceEditor
     /**
       Edit new Journal.
     */
-    void newJournal( const QString &summary, const QString &description,
-                  const QString &attachment );
+    //TODO:
+    // void newJournal( const QString &summary, const QString &description,
+    //               const QString &attachment );
 
     /** Edit an existing Journal. */
     void editIncidence(Incidence *);
@@ -97,9 +98,9 @@ class KOJournalEditor : public KOIncidenceEditor
     void loadDefaults();
     void deleteJournal();
 
-    void slotLoadTemplate();  
+    void slotLoadTemplate();
     void saveTemplate( const QString & );
-  
+
   protected:
     QString type() { return "Journal"; }
     void setupGeneral();

@@ -1419,6 +1419,34 @@ void ActionManager::openTodoEditor( QString summary, QString description,
   mCalendarView->newTodo( summary, description, attachment, attendees );
 }
 
+void ActionManager::openJournalEditor( QDate date )
+{
+  mCalendarView->newJournal( date );
+}
+
+void ActionManager::openJournalEditor( QString text, QDate date )
+{
+  mCalendarView->newJournal( text, date );
+}
+
+void ActionManager::openJournalEditor( QString text )
+{
+  mCalendarView->newJournal( text );
+}
+
+//TODO:
+// void ActionManager::openJournalEditor( QString summary, QString description,
+//                                        QString attachment )
+// {
+//   mCalendarView->newJournal( summary, description, attachment );
+// }
+
+
+void ActionManager::showJournalView()
+{
+  mCalendarView->viewManager()->showJournalView();
+}
+
 void ActionManager::showTodoView()
 {
   mCalendarView->viewManager()->showTodoView();

@@ -74,7 +74,7 @@ class BaseView : public QWidget
       @param parent parent widget.
       @param name   name of this widget.
     */
-    BaseView( Calendar *cal, QWidget *parent = 0, 
+    BaseView( Calendar *cal, QWidget *parent = 0,
               const char *name = 0 )
       : QWidget( parent, name ), mCalendar( cal ), mChanger( 0 ) {}
 
@@ -141,9 +141,9 @@ class BaseView : public QWidget
     */
     virtual void updateView() = 0;
     virtual void dayPassed( QDate ) { updateView(); }
-    
-    /** 
-      Assign a new incidence change helper object. 
+
+    /**
+      Assign a new incidence change helper object.
      */
     virtual void setIncidenceChanger( IncidenceChangerBase *changer ) { mChanger = changer; }
 
@@ -233,6 +233,8 @@ class BaseView : public QWidget
 
     void newTodoSignal( QDate );
     void newSubTodoSignal( Todo * );
+
+    void newJournalSignal( QDate );
 
   private:
     Calendar *mCalendar;
