@@ -192,7 +192,7 @@ kde_services_DATA = korganizer_configmain.desktop \
 update_DATA = korganizer.upd
 updatedir = $(kde_datadir)/kconf_update
 
-include ../admin/Doxyfile.am
+include $(top_srcdir)/doc/api/Doxyfile.am
 
 install-data-local: 
 	$(mkinstalldirs) $(DESTDIR)$(kde_servicesdir)

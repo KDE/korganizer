@@ -26,4 +26,4 @@ SUBDIRS = pixmaps
 autostart_DATA = korgac.desktop
 autostartdir = $(datadir)/autostart
 
-include ../../admin/Doxyfile.am
+include $(top_srcdir)/doc/api/Doxyfile.am
