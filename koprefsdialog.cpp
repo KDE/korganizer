@@ -89,7 +89,7 @@ void KOPrefsDialog::setupMainTab()
 
   KPrefsWidBool *emailControlCenter =
       addWidBool(i18n("&Use email settings from Control Center"),
-                 &(KOPrefs::instance()->mEmailControlCenter),topFrame);
+                 KOPrefs::instance()->mEmailControlCenter,topFrame);
   topLayout->addMultiCellWidget(emailControlCenter->checkBox(),0,0,0,1);
   connect(emailControlCenter->checkBox(),SIGNAL(toggled(bool)),
           SLOT(toggleEmailSettings(bool)));
@@ -106,7 +106,7 @@ void KOPrefsDialog::setupMainTab()
 
   KPrefsWidBool *bcc =
       addWidBool(i18n("Send copy to owner when mailing events"),
-                 &(KOPrefs::instance()->mBcc),topFrame);
+                 KOPrefs::instance()->mBcc,topFrame);
   topLayout->addMultiCellWidget(bcc->checkBox(),4,4,0,1);
 
 
@@ -115,7 +115,7 @@ void KOPrefsDialog::setupMainTab()
   topLayout->addMultiCellWidget(autoSaveGroup,6,6,0,1);
 
   addWidBool(i18n("Enable automatic saving of calendar"),
-             &(KOPrefs::instance()->mAutoSave),autoSaveGroup);
+             KOPrefs::instance()->mAutoSave,autoSaveGroup);
 
   QHBox *intervalBox = new QHBox(autoSaveGroup);
   intervalBox->setSpacing(spacingHint());
@@ -125,21 +125,21 @@ void KOPrefsDialog::setupMainTab()
   autoSaveIntervalLabel->setBuddy(mAutoSaveIntervalSpin);
 
   KPrefsWidBool *confirmCheck =
-      addWidBool(i18n("Confirm &deletes"),&(KOPrefs::instance()->mConfirm),
+      addWidBool(i18n("Confirm &deletes"),KOPrefs::instance()->mConfirm,
                  topFrame);
   topLayout->addMultiCellWidget(confirmCheck->checkBox(),7,7,0,1);
 
 
   mEnableGroupScheduling =
       addWidBool(i18n("Enable group scheduling"),
-                 &(KOPrefs::instance()->mEnableGroupScheduling),topFrame);
+                 KOPrefs::instance()->mEnableGroupScheduling,topFrame);
   topLayout->addWidget(mEnableGroupScheduling->checkBox(),8,0);
   connect(mEnableGroupScheduling->checkBox(),SIGNAL(clicked()),
           SLOT(warningGroupScheduling()));
 
   mEnableProjectView =
       addWidBool(i18n("Enable project view"),
-                 &(KOPrefs::instance()->mEnableProjectView),topFrame);
+                 KOPrefs::instance()->mEnableProjectView,topFrame);
   topLayout->addWidget(mEnableProjectView->checkBox(),9,0);
   connect(mEnableProjectView->checkBox(),SIGNAL(clicked()),
           SLOT(warningProjectView()));
@@ -152,7 +152,7 @@ void KOPrefsDialog::setupMainTab()
 
   KPrefsWidRadios *defaultFormatGroup =
       addWidRadios(i18n("Default Calendar Format"),
-                   &(KOPrefs::instance()->mDefaultFormat),topFrame);
+                   KOPrefs::instance()->mDefaultFormat,topFrame);
   defaultFormatGroup->addRadio(i18n("vCalendar"));
   defaultFormatGroup->addRadio(i18n("iCalendar"));
 
@@ -162,19 +162,19 @@ void KOPrefsDialog::setupMainTab()
   defaultFormatGroup->groupBox()->hide();
 
   KPrefsWidRadios *mailClientGroup =
-      addWidRadios(i18n("Mail Client"),&(KOPrefs::instance()->mMailClient),
+      addWidRadios(i18n("Mail Client"),KOPrefs::instance()->mMailClient,
                    topFrame);
   mailClientGroup->addRadio(i18n("KMail"));
   mailClientGroup->addRadio(i18n("Sendmail"));
   topLayout->addMultiCellWidget(mailClientGroup->groupBox(),11,11,0,1);
 
   KPrefsWidBool *htmlsave =
-      addWidBool(i18n("Export to HTML with every save"),&(KOPrefs::instance()->mHtmlWithSave),
+      addWidBool(i18n("Export to HTML with every save"),KOPrefs::instance()->mHtmlWithSave,
                  topFrame);
   topLayout->addMultiCellWidget(htmlsave->checkBox(),12,12,0,1);
 
   KPrefsWidRadios *destinationGroup =
-      addWidRadios(i18n("New Events/Todos should"),&(KOPrefs::instance()->mDestination),
+      addWidRadios(i18n("New Events/Todos should"),KOPrefs::instance()->mDestination,
                    topFrame);
   destinationGroup->addRadio(i18n("be added to the standard resource"));
   destinationGroup->addRadio(i18n("be asked which resource to use"));
@@ -305,21 +305,21 @@ void KOPrefsDialog::setupTimeTab()
   QHBox *workStartBox = new QHBox(workingHoursGroup);
 
   addWidTime(i18n("Daily starting hour:"),
-             &(KOPrefs::instance()->mWorkingHoursStart),workStartBox);
+             KOPrefs::instance()->mWorkingHoursStart,workStartBox);
 
   QHBox *workEndBox = new QHBox(workingHoursGroup);
 
   addWidTime(i18n("Daily ending hour:"),
-             &(KOPrefs::instance()->mWorkingHoursEnd),workEndBox);
+             KOPrefs::instance()->mWorkingHoursEnd,workEndBox);
 
   addWidBool(i18n("Exclude holidays"),
-             &(KOPrefs::instance()->mExcludeHolidays),workingHoursGroup);
+             KOPrefs::instance()->mExcludeHolidays,workingHoursGroup);
 
   addWidBool(i18n("Exclude Saturdays"),
-             &(KOPrefs::instance()->mExcludeSaturdays),workingHoursGroup);
+             KOPrefs::instance()->mExcludeSaturdays,workingHoursGroup);
 
   KPrefsWidBool *marcusBainsShowSeconds = addWidBool(i18n("Show seconds on Marcus Bains line"),
-	     &(KOPrefs::instance()->mMarcusBainsShowSeconds),
+	     KOPrefs::instance()->mMarcusBainsShowSeconds,
 	     topFrame);
   topLayout->addWidget(marcusBainsShowSeconds->checkBox(),5,0);
 
@@ -339,7 +339,7 @@ void KOPrefsDialog::setupViewsTab()
   topLayout->addLayout(dayBeginsLayout,0,0);
 
   KPrefsWidTime *dayBegins =
-    addWidTime(i18n("Day begins at:"),&(KOPrefs::instance()->mDayBegins),
+    addWidTime(i18n("Day begins at:"),KOPrefs::instance()->mDayBegins,
                topFrame);
   dayBeginsLayout->addWidget(dayBegins->label());
   dayBeginsLayout->addStretch(1);
@@ -360,42 +360,42 @@ void KOPrefsDialog::setupViewsTab()
 
   KPrefsWidBool *dailyRecur =
     addWidBool(i18n("Show events that recur daily in date navigator"),
-               &(KOPrefs::instance()->mDailyRecur),topFrame);
+               KOPrefs::instance()->mDailyRecur,topFrame);
   topLayout->addWidget(dailyRecur->checkBox(),3,0);
 
   KPrefsWidBool *weeklyRecur =
     addWidBool(i18n("Show events that recur weekly in date navigator"),
-               &(KOPrefs::instance()->mWeeklyRecur),topFrame);
+               KOPrefs::instance()->mWeeklyRecur,topFrame);
   topLayout->addWidget(weeklyRecur->checkBox(),4,0);
 
   KPrefsWidBool *enableToolTips =
       addWidBool(i18n("Enable tooltips displaying summary of events"),
-                 &(KOPrefs::instance()->mEnableToolTips),topFrame);
+                 KOPrefs::instance()->mEnableToolTips,topFrame);
   topLayout->addWidget(enableToolTips->checkBox(),5,0);
 
   KPrefsWidBool *enableMonthScroll =
       addWidBool(i18n("Enable scrollbars in month view cells"),
-                 &(KOPrefs::instance()->mEnableMonthScroll),topFrame);
+                 KOPrefs::instance()->mEnableMonthScroll,topFrame);
   topLayout->addWidget(enableMonthScroll->checkBox(),6,0);
 
   KPrefsWidBool *fullViewMonth =
       addWidBool(i18n("Month view uses full window"),
-                 &(KOPrefs::instance()->mFullViewMonth),topFrame);
+                 KOPrefs::instance()->mFullViewMonth,topFrame);
   topLayout->addWidget(fullViewMonth->checkBox(),7,0);
 
   KPrefsWidBool *coloredCategoriesInMonthView =
       addWidBool(i18n("Month view uses category colors"),
-                 &(KOPrefs::instance()->mMonthViewUsesCategoryColor),topFrame);
+                 KOPrefs::instance()->mMonthViewUsesCategoryColor,topFrame);
   topLayout->addWidget(coloredCategoriesInMonthView->checkBox(),8,0);
 
   KPrefsWidBool *fullViewTodo =
       addWidBool(i18n("To-do view uses full window"),
-                 &(KOPrefs::instance()->mFullViewTodo),topFrame);
+                 KOPrefs::instance()->mFullViewTodo,topFrame);
   topLayout->addWidget(fullViewTodo->checkBox(),9,0);
 
   KPrefsWidBool *marcusBainsEnabled =
       addWidBool(i18n("Show Marcus Bains line"),
-                 &(KOPrefs::instance()->mMarcusBainsEnabled),topFrame);
+                 KOPrefs::instance()->mMarcusBainsEnabled,topFrame);
   topLayout->addWidget(marcusBainsEnabled->checkBox(),10,0);
 
   topLayout->setRowStretch(11,1);
@@ -412,28 +412,28 @@ void KOPrefsDialog::setupFontsTab()
 
   KPrefsWidFont *timeBarFont =
       addWidFont(KGlobal::locale()->formatTime(QTime(12,34)),i18n("Time bar:"),
-                 &(KOPrefs::instance()->mTimeBarFont),topFrame);
+                 KOPrefs::instance()->mTimeBarFont,topFrame);
   topLayout->addWidget(timeBarFont->label(),0,0);
   topLayout->addWidget(timeBarFont->preview(),0,1);
   topLayout->addWidget(timeBarFont->button(),0,2);
 
   KPrefsWidFont *monthViewFont =
       addWidFont(KGlobal::locale()->formatTime(QTime(12,34)) + " " + i18n("Event text"),
-                 i18n("Month view:"),&(KOPrefs::instance()->mMonthViewFont),topFrame);
+                 i18n("Month view:"),KOPrefs::instance()->mMonthViewFont,topFrame);
   topLayout->addWidget(monthViewFont->label(),1,0);
   topLayout->addWidget(monthViewFont->preview(),1,1);
   topLayout->addWidget(monthViewFont->button(),1,2);
 
   KPrefsWidFont *agendaViewFont =
       addWidFont(i18n("Event text"),i18n("Agenda view:"),
-                 &(KOPrefs::instance()->mAgendaViewFont),topFrame);
+                 KOPrefs::instance()->mAgendaViewFont,topFrame);
   topLayout->addWidget(agendaViewFont->label(),2,0);
   topLayout->addWidget(agendaViewFont->preview(),2,1);
   topLayout->addWidget(agendaViewFont->button(),2,2);
 
   KPrefsWidFont *marcusBainsFont =
       addWidFont(KGlobal::locale()->formatTime(QTime(12,34,23)),i18n("Marcus Bains line:"),
-                 &(KOPrefs::instance()->mMarcusBainsFont),topFrame);
+                 KOPrefs::instance()->mMarcusBainsFont,topFrame);
   topLayout->addWidget(marcusBainsFont->label(),3,0);
   topLayout->addWidget(marcusBainsFont->preview(),3,1);
   topLayout->addWidget(marcusBainsFont->button(),3,2);
@@ -453,49 +453,49 @@ void KOPrefsDialog::setupColorsTab()
   // Holiday Color
   KPrefsWidColor *holidayColor =
       addWidColor(i18n("Holiday color:"),
-                  &(KOPrefs::instance()->mHolidayColor),topFrame);
+                  KOPrefs::instance()->mHolidayColor,topFrame);
   topLayout->addWidget(holidayColor->label(),0,0);
   topLayout->addWidget(holidayColor->button(),0,1);
 
   // Highlight Color
   KPrefsWidColor *highlightColor =
       addWidColor(i18n("Highlight color:"),
-                  &(KOPrefs::instance()->mHighlightColor),topFrame);
+                  KOPrefs::instance()->mHighlightColor,topFrame);
   topLayout->addWidget(highlightColor->label(),1,0);
   topLayout->addWidget(highlightColor->button(),1,1);
 
   // Event color
   KPrefsWidColor *eventColor =
       addWidColor(i18n("Default event color:"),
-                  &(KOPrefs::instance()->mEventColor),topFrame);
+                  KOPrefs::instance()->mEventColor,topFrame);
   topLayout->addWidget(eventColor->label(),2,0);
   topLayout->addWidget(eventColor->button(),2,1);
 
   // agenda view background color
   KPrefsWidColor *agendaBgColor =
       addWidColor(i18n("Agenda view background color:"),
-                  &(KOPrefs::instance()->mAgendaBgColor),topFrame);
+                  KOPrefs::instance()->mAgendaBgColor,topFrame);
   topLayout->addWidget(agendaBgColor->label(),3,0);
   topLayout->addWidget(agendaBgColor->button(),3,1);
 
   // working hours color
   KPrefsWidColor *workingHoursColor =
       addWidColor(i18n("Working hours color:"),
-                  &(KOPrefs::instance()->mWorkingHoursColor),topFrame);
+                  KOPrefs::instance()->mWorkingHoursColor,topFrame);
   topLayout->addWidget(workingHoursColor->label(),4,0);
   topLayout->addWidget(workingHoursColor->button(),4,1);
 
   // Todo due today color
   KPrefsWidColor *todoDueTodayColor =
       addWidColor(i18n("Todo due today color:"),
-                  &(KOPrefs::instance()->mTodoDueTodayColor),topFrame);
+                  KOPrefs::instance()->mTodoDueTodayColor,topFrame);
   topLayout->addWidget(todoDueTodayColor->label(),5,0);
   topLayout->addWidget(todoDueTodayColor->button(),5,1);
 
   // Todo overdue color
   KPrefsWidColor *todoOverdueColor =
       addWidColor(i18n("Todo overdue color:"),
-                  &(KOPrefs::instance()->mTodoOverdueColor),topFrame);
+                  KOPrefs::instance()->mTodoOverdueColor,topFrame);
   topLayout->addWidget(todoOverdueColor->label(),6,0);
   topLayout->addWidget(todoOverdueColor->button(),6,1);
 
@@ -553,7 +553,7 @@ void KOPrefsDialog::setupGroupSchedulingTab()
 
 #if 0
   KPrefsWidRadios *schedulerGroup =
-      addWidRadios(i18n("Scheduler Mail Client"),&(KOPrefs::instance()->mIMIPScheduler),
+      addWidRadios(i18n("Scheduler Mail Client"),KOPrefs::instance()->mIMIPScheduler,
                    topFrame);
   schedulerGroup->addRadio("Dummy"); // Only for debugging
   schedulerGroup->addRadio(i18n("Mail client"));
@@ -562,7 +562,7 @@ void KOPrefsDialog::setupGroupSchedulingTab()
 #endif
 
   KPrefsWidRadios *sendGroup =
-      addWidRadios(i18n("Scheduler Mails Should Be"),&(KOPrefs::instance()->mIMIPSend),
+      addWidRadios(i18n("Scheduler Mails Should Be"),KOPrefs::instance()->mIMIPSend,
                    topFrame);
   sendGroup->addRadio(i18n("Send to outbox"));
   sendGroup->addRadio(i18n("Send directly"));
@@ -601,7 +601,7 @@ void KOPrefsDialog::setupGroupAutomationTab()
 
   KPrefsWidRadios *autoRefreshGroup =
       addWidRadios(i18n("Auto Send Refresh"),
-                   &(KOPrefs::instance()->mIMIPAutoRefresh),topFrame);
+                   KOPrefs::instance()->mIMIPAutoRefresh,topFrame);
   autoRefreshGroup->addRadio(i18n("Never"));
   autoRefreshGroup->addRadio(i18n("If attendee is in addressbook"));
   //autoRefreshGroup->addRadio(i18n("selected emails"));
@@ -609,7 +609,7 @@ void KOPrefsDialog::setupGroupAutomationTab()
 
   KPrefsWidRadios *autoInsertGroup =
       addWidRadios(i18n("Auto Insert IMIP Replies"),
-                   &(KOPrefs::instance()->mIMIPAutoInsertReply),topFrame);
+                   KOPrefs::instance()->mIMIPAutoInsertReply,topFrame);
   autoInsertGroup->addRadio(i18n("Never"));
   autoInsertGroup->addRadio(i18n("If attendee is in addressbook"));
   //autoInsertGroup->addRadio(i18n("selected emails"));
@@ -617,7 +617,7 @@ void KOPrefsDialog::setupGroupAutomationTab()
 
   KPrefsWidRadios *autoRequestGroup =
       addWidRadios(i18n("Auto Insert IMIP Requests"),
-                   &(KOPrefs::instance()->mIMIPAutoInsertRequest),topFrame);
+                   KOPrefs::instance()->mIMIPAutoInsertRequest,topFrame);
   autoRequestGroup->addRadio(i18n("Never"));
   autoRequestGroup->addRadio(i18n("If organizer is in addressbook"));
   //autoInsertGroup->addRadio(i18n("selected emails"));
@@ -625,7 +625,7 @@ void KOPrefsDialog::setupGroupAutomationTab()
 
   KPrefsWidRadios *autoFreeBusyGroup =
       addWidRadios(i18n("Auto Send FreeBusy Information"),
-                   &(KOPrefs::instance()->mIMIPAutoFreeBusy),topFrame);
+                   KOPrefs::instance()->mIMIPAutoFreeBusy,topFrame);
   autoFreeBusyGroup->addRadio(i18n("Never"));
   autoFreeBusyGroup->addRadio(i18n("If requested from an email in addressbook"));
   //autoFreeBusyGroup->addRadio(i18n("selected emails"));
@@ -633,7 +633,7 @@ void KOPrefsDialog::setupGroupAutomationTab()
 
   KPrefsWidRadios *autoFreeBusyReplyGroup =
       addWidRadios(i18n("Auto Save FreeBusy Replies"),
-                   &(KOPrefs::instance()->mIMIPAutoFreeBusyReply),topFrame);
+                   KOPrefs::instance()->mIMIPAutoFreeBusyReply,topFrame);
   autoFreeBusyReplyGroup->addRadio(i18n("Never"));
   autoFreeBusyReplyGroup->addRadio(i18n("If attendee is in addressbook"));
   //autoFreeBusyGroup->addRadio(i18n("selected emails"));
