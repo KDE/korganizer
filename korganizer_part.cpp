@@ -72,7 +72,7 @@ K_EXPORT_COMPONENT_FACTORY( libkorganizerpart, KOrganizerFactory )
 KOrganizerPart::KOrganizerPart( QWidget *parentWidget, const char *widgetName,
                                 QObject *parent, const char *name,
                                 const QStringList & ) :
-  KParts::ReadOnlyPart(parent, name), mTopLevelWidget( parentWidget->topLevelWidget() )
+  KPIM::Part(parent, name), mTopLevelWidget( parentWidget->topLevelWidget() )
 {
   KOCore::self()->addXMLGUIClient( mTopLevelWidget, this );
 

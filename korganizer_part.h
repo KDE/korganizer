@@ -26,10 +26,9 @@
 
 #include <kurl.h>
 #include <kparts/browserextension.h>
-//#include <kparts/statusbarextension.h>
-//#include <kparts/factory.h>
+#include <libkdepim/part.h>
+
 #include <korganizer/mainwindow.h>
-//#include <korganizer/calendarviewbase.h>
 
 
 class KInstance;
@@ -53,7 +52,7 @@ namespace KOrg {
 class CalendarViewBase;
 }
 
-class KOrganizerPart: public KParts::ReadOnlyPart,
+class KOrganizerPart: public KPIM::Part,
                       public KOrg::MainWindow
 {
     Q_OBJECT
@@ -100,7 +99,7 @@ class KOrganizerPart: public KParts::ReadOnlyPart,
     KOrganizerBrowserExtension *mBrowserExtension;
     KParts::StatusBarExtension *mStatusBarExtension;
     QWidget *mTopLevelWidget;
-		
+
   signals:
     void textChanged( const QString & );
 };
