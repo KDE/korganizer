@@ -98,7 +98,7 @@ class KOGroupware : public QObject
     QString formatICal( const QString& iCal );
     // Format a TNEF attachment to an HTML mail
     QString formatTNEF( const QByteArray& tnef );
-    // convert the TNEF attachment to a vCard or iCalendar part
+    // Transform a TNEF attachment to an iCal or vCard
     QString msTNEFToVPart( const QByteArray& tnef );
 
   private slots:

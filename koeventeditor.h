@@ -120,6 +120,10 @@ class KOEventEditor : public KOIncidenceEditor
     /** Process user input and create or update event. Returns false if input
      * is not valid */
     bool processInput();
+
+    /** Find the attendee matching our user in both events and determine if
+     * our status changed. */
+    static bool myAttendeeStatusChanged( Event *oldVersion, Event *newVersion );
     void processCancel();
     int msgItemDelete();
 
