@@ -207,9 +207,9 @@ void FreeBusyManager::publishFreeBusy()
 
   // Save the time of the next free/busy uploading
   mNextUploadTime = QDateTime::currentDateTime();
-  if( KOPrefs::instance()->mFreeBusyPublishInterval > 0 )
+  if( KOPrefs::instance()->mFreeBusyPublishDelay > 0 )
     mNextUploadTime = mNextUploadTime.addSecs(
-        KOPrefs::instance()->mFreeBusyPublishInterval * 60 );
+        KOPrefs::instance()->mFreeBusyPublishDelay * 60 );
 
   QString messageText = ownerFreeBusyAsString();
 
@@ -315,7 +315,7 @@ bool FreeBusyManager::retrieveFreeBusy( const QString &email )
   }
 
   // Don't download free/busy if the user does not want it.
-  if( !KOPrefs::instance()->mRetrieveFreeBusy )
+  if( !KOPrefs::instance()->mFreeBusyRetrieveAuto )
     return false;
 
   KURL sourceURL = freeBusyUrl( email );
@@ -354,6 +354,7 @@ KURL FreeBusyManager::freeBusyUrl( const QString &email )
   QString emailName = email.left( emailpos );
   QString emailHost = email.mid( emailpos + 1 );
 
+#if 0
   // Put download string together
   if( KOPrefs::instance()->mRetrieveKolab ) {
     // we use Kolab
@@ -377,6 +378,20 @@ KURL FreeBusyManager::freeBusyUrl( const QString &email )
       anyurl.replace( "%SERVER%", emailHost );
     sourceURL = anyurl;
   }
+#endif
+
+  sourceURL = KOPrefs::instance()->mFreeBusyRetrieveUrl;
+
+  if ( sourceURL.host() != emailHost ) {
+    kdDebug() << "FreeBusyManager::freeBusyUrl(): " << sourceURL.host()
+              << " doesn't match " << emailHost << ". Cancel retrieval."
+              << endl;
+    return KURL();
+  }
+
+  sourceURL.setFileName( emailName + ".vfb" );
+  sourceURL.setUser( KOPrefs::instance()->mFreeBusyRetrieveUser );
+  sourceURL.setPass( KOPrefs::instance()->mFreeBusyRetrievePassword );
 
   return sourceURL;
 }

@@ -936,44 +936,38 @@ KOPrefsDialogGroupwareScheduling::KOPrefsDialogGroupwareScheduling( QWidget *par
 
 void KOPrefsDialogGroupwareScheduling::usrReadConfig()
 {
-  mGroupwarePage->publishManualRB->setChecked( !KOPrefs::instance()->mFreeBusyPublishAuto );
-  mGroupwarePage->publishAutoRB->setChecked( KOPrefs::instance()->mFreeBusyPublishAuto );
-  mGroupwarePage->publishDelaySB->setValue( KOPrefs::instance()->mFreeBusyPublishInterval );
-  mGroupwarePage->publishDaysSB->setValue( KOPrefs::instance()->mFreeBusyPublishDays );
+  mGroupwarePage->publishEnable->setChecked( KOPrefs::instance()->mFreeBusyPublishAuto );
+  mGroupwarePage->publishDelay->setValue( KOPrefs::instance()->mFreeBusyPublishDelay );
+  mGroupwarePage->publishDays->setValue( KOPrefs::instance()->mFreeBusyPublishDays );
 
   mGroupwarePage->publishUrl->setText( KOPrefs::instance()->mFreeBusyPublishUrl );
   mGroupwarePage->publishUser->setText( KOPrefs::instance()->mFreeBusyPublishUser );
   mGroupwarePage->publishPassword->setText( KOPrefs::instance()->mFreeBusyPublishPassword );
   mGroupwarePage->publishSavePassword->setChecked( KOPrefs::instance()->mFreeBusyPublishSavePassword );
 
-  mGroupwarePage->retrieveCB->setChecked( KOPrefs::instance()->mRetrieveFreeBusy );
-  mGroupwarePage->retrieveKolabRB->setChecked( KOPrefs::instance()->mRetrieveKolab );
-  mGroupwarePage->retrieveKolabServerNameED->setText( KOPrefs::instance()->mRetrieveKolabServer );
-  mGroupwarePage->retrieveAnyServerRB->setChecked( !KOPrefs::instance()->mRetrieveKolab );
-  mGroupwarePage->retrieveAnyServerURLED->setText( KOPrefs::instance()->mRetrieveAnyURL );
-  mGroupwarePage->retrieveUserNameED->setText( KOPrefs::instance()->mRetrieveUserName );
-  mGroupwarePage->retrievePasswordED->setText( KOPrefs::instance()->mRetrievePassword );
-  mGroupwarePage->retrievePasswordCB->setChecked( KOPrefs::instance()->mRememberRetrievePw );
+  mGroupwarePage->retrieveEnable->setChecked( KOPrefs::instance()->mFreeBusyRetrieveAuto );
+  mGroupwarePage->retrieveUrl->setText( KOPrefs::instance()->mFreeBusyRetrieveUrl );
+  mGroupwarePage->retrieveUser->setText( KOPrefs::instance()->mFreeBusyRetrieveUser );
+  mGroupwarePage->retrievePassword->setText( KOPrefs::instance()->mFreeBusyRetrievePassword );
+  mGroupwarePage->retrieveSavePassword->setChecked( KOPrefs::instance()->mFreeBusyRetrieveSavePassword );
 }
 
 void KOPrefsDialogGroupwareScheduling::usrWriteConfig()
 {
-  KOPrefs::instance()->mFreeBusyPublishAuto = mGroupwarePage->publishAutoRB->isChecked();
-  KOPrefs::instance()->mFreeBusyPublishInterval = mGroupwarePage->publishDelaySB->value();
-  KOPrefs::instance()->mFreeBusyPublishDays = mGroupwarePage->publishDaysSB->value();
+  KOPrefs::instance()->mFreeBusyPublishAuto = mGroupwarePage->publishEnable->isChecked();
+  KOPrefs::instance()->mFreeBusyPublishDelay = mGroupwarePage->publishDelay->value();
+  KOPrefs::instance()->mFreeBusyPublishDays = mGroupwarePage->publishDays->value();
 
   KOPrefs::instance()->mFreeBusyPublishUrl = mGroupwarePage->publishUrl->text();
   KOPrefs::instance()->mFreeBusyPublishUser = mGroupwarePage->publishUser->text();
   KOPrefs::instance()->mFreeBusyPublishPassword = mGroupwarePage->publishPassword->text();
   KOPrefs::instance()->mFreeBusyPublishSavePassword = mGroupwarePage->publishSavePassword->isChecked();
 
-  KOPrefs::instance()->mRetrieveFreeBusy = mGroupwarePage->retrieveCB->isChecked();
-  KOPrefs::instance()->mRetrieveKolab = mGroupwarePage->retrieveKolabRB->isChecked();
-  KOPrefs::instance()->mRetrieveKolabServer = mGroupwarePage->retrieveKolabServerNameED->text();
-  KOPrefs::instance()->mRetrieveAnyURL = mGroupwarePage->retrieveAnyServerURLED->text();
-  KOPrefs::instance()->mRetrieveUserName = mGroupwarePage->retrieveUserNameED->text();
-  KOPrefs::instance()->mRetrievePassword = mGroupwarePage->retrievePasswordED->text();
-  KOPrefs::instance()->mRememberRetrievePw = mGroupwarePage->retrievePasswordCB->isChecked();
+  KOPrefs::instance()->mFreeBusyRetrieveAuto = mGroupwarePage->retrieveEnable->isChecked();
+  KOPrefs::instance()->mFreeBusyRetrieveUrl = mGroupwarePage->retrieveUrl->text();
+  KOPrefs::instance()->mFreeBusyRetrieveUser = mGroupwarePage->retrieveUser->text();
+  KOPrefs::instance()->mFreeBusyRetrievePassword = mGroupwarePage->retrievePassword->text();
+  KOPrefs::instance()->mFreeBusyRetrieveSavePassword = mGroupwarePage->retrieveSavePassword->isChecked();
 }
 
 extern "C"

@@ -284,11 +284,13 @@
     </entry>
   </group>
 
-  <group name="Freebusy">
+  <group name="FreeBusy">
+
     <entry type="Bool" name="FreeBusyPublishAuto">
-      <default>true</default>
+      <default>false</default>
     </entry>
-    <entry type="Int" name="FreeBusyPublishInterval">
+
+    <entry type="Int" name="FreeBusyPublishDelay">
       <default>5</default>
     </entry>
     <entry type="Int" key="FreeBusyPublishDays">
@@ -311,20 +313,22 @@
       <default>false</default>
     </entry>
 
+    <entry type="Bool" name="FreeBusyRetrieveAuto">
+      <label>Enable Automatic Free/Busy Retrieval</label>
+      <default>false</default>
+    </entry>
 
-    <entry type="Bool" key="Retrieve Freebusy Lists" name="RetrieveFreeBusy">
-      <default>true</default>
+    <entry type="String" name="FreeBusyRetrieveUrl">
+      <label>Free/Busy Retrieval URL</label>
     </entry>
-    <entry type="Bool" key="Retrieve From Kolab Server" name="RetrieveKolab">
-      <default>true</default>
+    <entry type="String" name="FreeBusyRetrieveUser">
+      <label>Free/Busy Retrieval User Name</label>
     </entry>
-    <entry type="String" key="Retrieve From Kolab Server Name" name="RetrieveKolabServer">
+    <entry type="Password" name="FreeBusyRetrievePassword">
+      <label>Free/Busy Retrieval Password</label>
+      <whatsthis>Password for retrieving free/busy information</whatsthis>
     </entry>
-    <entry type="String" key="Retrieve From Any Server URL" name="RetrieveAnyURL">
-    </entry>
-    <entry type="String" key="Retrieve User Name">
-    </entry>
-    <entry type="Bool" key="Remember Retrieve Password" name="RememberRetrievePw">
+    <entry type="Bool" name="FreeBusyRetrieveSavePassword">
       <default>false</default>
     </entry>
 
