@@ -22,7 +22,7 @@
 #include <klocale.h>
 #include <iostream.h>
 #include "kotodoviewitem.h"
-//#include "kotodoviewitem.moc"
+#include "kotodoviewitem.moc"
 
 KOTodoViewItem::KOTodoViewItem( QListView *parent, Todo *todo )
   : QCheckListItem( parent , "", CheckBox ), mTodo( todo )
