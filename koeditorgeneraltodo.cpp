@@ -135,18 +135,11 @@ void KOEditorGeneralTodo::initTime(QWidget *parent,QBoxLayout *topLayout)
 void KOEditorGeneralTodo::initCompletion(QWidget *parent, QBoxLayout *topLayout)
 {
   mCompletedCombo = new QComboBox(parent);
-  // xgettext:no-c-format
-  mCompletedCombo->insertItem(i18n("0 %"));
-  // xgettext:no-c-format
-  mCompletedCombo->insertItem(i18n("20 %"));
-  // xgettext:no-c-format
-  mCompletedCombo->insertItem(i18n("40 %"));
-  // xgettext:no-c-format
-  mCompletedCombo->insertItem(i18n("60 %"));
-  // xgettext:no-c-format
-  mCompletedCombo->insertItem(i18n("80 %"));
-  // xgettext:no-c-format
-  mCompletedCombo->insertItem(i18n("100 %"));
+  for (int i = 0; i <= 100; i+=10) {
+    // xgettext:no-c-format
+    QString label = i18n("Percent complete", "%1 %").arg (i);
+    mCompletedCombo->insertItem(label);
+  }
   connect(mCompletedCombo,SIGNAL(activated(int)),SLOT(completedChanged(int)));
   topLayout->addWidget(mCompletedCombo);
 
@@ -249,7 +242,7 @@ void KOEditorGeneralTodo::readTodo(Todo *todo)
 
   mTimeButton->setChecked( !todo->doesFloat() );
 
-  mCompletedCombo->setCurrentItem(todo->percentComplete() / 20);
+  mCompletedCombo->setCurrentItem(todo->percentComplete() / 10);
   if (todo->isCompleted() && todo->hasCompletedDate()) {
     mCompleted = todo->completed();
   }
@@ -307,9 +300,9 @@ void KOEditorGeneralTodo::writeTodo(Todo *todo)
   todo->setPriority(mPriorityCombo->currentItem()+1);
 
   // set completion state
-  todo->setPercentComplete(mCompletedCombo->currentItem() * 20);
+  todo->setPercentComplete(mCompletedCombo->currentItem() * 10);
 
-  if (mCompletedCombo->currentItem() == 5 && mCompleted.isValid()) {
+  if (mCompletedCombo->currentItem() == 10 && mCompleted.isValid()) {
     todo->setCompleted(mCompleted);
   }
 }
@@ -429,7 +422,7 @@ void KOEditorGeneralTodo::completedChanged(int index)
 
 void KOEditorGeneralTodo::setCompletedDate()
 {
-  if (mCompletedCombo->currentItem() == 5 && mCompleted.isValid()) {
+  if (mCompletedCombo->currentItem() == 10 && mCompleted.isValid()) {
     mCompletedLabel->setText(i18n("co&mpleted on %1")
         .arg(KGlobal::locale()->formatDateTime(mCompleted)));
   } else {
@@ -444,7 +437,7 @@ void KOEditorGeneralTodo::modified (Todo* todo, int modification)
     mPriorityCombo->setCurrentItem(todo->priority()-1);
     break;
   case KOGlobals::COMPLETION_MODIFIED:
-    mCompletedCombo->setCurrentItem(todo->percentComplete() / 20);
+    mCompletedCombo->setCurrentItem(todo->percentComplete() / 10);
     if (todo->isCompleted() && todo->hasCompletedDate()) {
       mCompleted = todo->completed();
     }

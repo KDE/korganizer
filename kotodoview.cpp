@@ -414,7 +414,7 @@ KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent, const char* name)
            SLOT( setNewPriority( int ) ));
 
   mPercentageCompletedPopupMenu = new QPopupMenu(this);
-  for (int i = 0; i <= 100; i+=20) {
+  for (int i = 0; i <= 100; i+=10) {
     QString label = QString ("%1 %").arg (i);
     mPercentage[mPercentageCompletedPopupMenu->insertItem (label)] = i;
   }
