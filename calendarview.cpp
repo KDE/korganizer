@@ -60,6 +60,7 @@
 #include "kofilterview.h"
 #include "calfilter.h"
 #include "koprojectview.h"
+#include "kowhatsnextview.h"
 
 #include "calendarview.h"
 #include "calendarview.moc"
@@ -151,6 +152,11 @@ CalendarView::CalendarView(QWidget *parent,const char *name)
                                    "CalendarView::ProjectView");
   mRightFrame->addWidget(mProjectView,0);
   mCalendarViews.append(mProjectView);
+
+  mWhatsNextView = new KOWhatsNextView(mCalendar,mRightFrame,
+                                       "CalendarView::WhatsNextView");
+  mRightFrame->addWidget(mWhatsNextView,0);
+  mCalendarViews.append(mWhatsNextView);
 
   readCurrentView();
 
@@ -1128,6 +1134,11 @@ void CalendarView::action_mail()
   mailobject.emailEvent(anEvent);
 }
 
+
+void CalendarView::view_whatsnext()
+{
+  changeView(mWhatsNextView);
+}
 
 void CalendarView::view_list()
 {

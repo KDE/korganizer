@@ -2,7 +2,7 @@
                        | K   O R G A N I Z E R |
                        +-----------------------+
 
-                            version pre2.1
+                            version pre2.2
 
                        http://korganizer.kde.org
 
@@ -12,6 +12,13 @@ libical is now included in kdepim. See kdepim/README.libical for more
 information.
 
 QUICK NOTES ON WHAT'S NEW IN THIS RELEASE:
+
+* Official 2.1 release (February 2001)
+
+  - Highlighting of working hours
+  - Todo and Month View can now use the full window
+  - ScrollBars of month view cells can now be turned off
+  - Better support for non-ascii charsets
 
 * Official 2.0 release (October 2000)
 

@@ -130,9 +130,9 @@ void KOTodoListView::contentsDropEvent(QDropEvent *e)
       
     if(existingTodo) {
 //      kdDebug() << "Drop existing Todo" << endl;
-      KOEvent *to = destinationEvent;
+      Incidence *to = destinationEvent;
       while(to) {
-        if (to->getVUID() == todo->getVUID()) {
+        if (to->VUID() == todo->VUID()) {
           KMessageBox::sorry(this,
               i18n("Cannot move Todo to itself or a child of itself"),
               i18n("Drop Todo"));
@@ -319,7 +319,8 @@ QMap<KOEvent *,KOTodoViewItem *>::ConstIterator
   KOTodoView::insertTodoItem(KOEvent *todo)
 {
 //  kdDebug() << "KOTodoView::insertTodoItem(): " << todo->getSummary() << endl;
-  KOEvent *relatedTodo = todo->getRelatedTo();
+  KOEvent *relatedTodo = dynamic_cast<KOEvent *>(todo->getRelatedTo());
+
   if (relatedTodo) {
 //    kdDebug() << "  has Related" << endl;
     QMap<KOEvent *,KOTodoViewItem *>::ConstIterator itemIterator;

@@ -27,6 +27,7 @@
 #include "vcalformat.h"
 #include "icalformat.h"
 #include "koexceptions.h"
+#include "incidence.h"
 
 #include "calendarlocal.h"
 #include "calendarlocal.moc"
@@ -152,8 +153,8 @@ void CalendarLocal::addEvent(KOEvent *anEvent)
   // set event's read/write status  
   if (anEvent->getOrganizer() != getEmail())
     anEvent->setReadOnly(TRUE);
-  connect(anEvent, SIGNAL(eventUpdated(KOEvent *)), this,
-	  SLOT(updateEvent(KOEvent *)));
+  connect(anEvent, SIGNAL(eventUpdated(Incidence *)), this,
+	  SLOT(updateEvent(Incidence *)));
   emit calUpdated(anEvent);
 }
 
@@ -334,8 +335,8 @@ void CalendarLocal::addTodo(KOEvent *todo)
 {
   todo->setTodoStatus(true);
   mTodoList.append(todo);
-  connect(todo, SIGNAL(eventUpdated(KOEvent *)), this,
-	  SLOT(updateEvent(KOEvent *)));
+  connect(todo, SIGNAL(eventUpdated(Incidence *)), this,
+	  SLOT(updateEvent(Incidence *)));
   emit calUpdated(todo);
 }
 
@@ -749,8 +750,15 @@ void CalendarLocal::checkAlarms()
 
 /****************************** PROTECTED METHODS ****************************/
 // after changes are made to an event, this should be called.
-void CalendarLocal::updateEvent(KOEvent *anEvent)
+void CalendarLocal::updateEvent(Incidence *incidence)
 {
+  KOEvent *anEvent = dynamic_cast<KOEvent *>(incidence);
+  if (!anEvent) {
+    kdDebug() << "CalendarLocal::updateEvent(): Error! Passed non-KOEvent"
+              << endl;
+    return;
+  }
+
   QIntDictIterator<QList<KOEvent> > qdi(*mCalDict);
   QList<KOEvent> *tmpList;
 
@@ -768,9 +776,9 @@ void CalendarLocal::updateEvent(KOEvent *anEvent)
     
     al = anEvent->getAttendeeList();
     for (a = al.first(); a; a = al.next()) {
-      if ((a->flag) && (a->RSVP())) {
+      if ((a->flag()) && (a->RSVP())) {
 	//kdDebug() << "send appointment to " << a->getName() << endl;
-	a->flag = FALSE;
+	a->setFlag(false);
       }
     }
   }

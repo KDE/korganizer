@@ -178,7 +178,7 @@ bool KOEventEditor::processInput()
   writeEvent(event);
   
   if (mEvent) {
-    event->setRevisionNum(event->getRevisionNum()+1);
+    event->setRevision(event->revision()+1);
     emit eventChanged(event);
   } else {
     mCalendar->addEvent(event);

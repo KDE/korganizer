@@ -200,7 +200,7 @@ QMap<KOEvent *,xQTask *>::ConstIterator
     KOProjectView::insertTodoItem(KOEvent *todo)
 {
 //  kdDebug() << "KOProjectView::insertTodoItem(): " << todo->getSummary() << endl;
-  KOEvent *relatedTodo = todo->getRelatedTo();
+  KOEvent *relatedTodo = dynamic_cast<KOEvent *>(todo->getRelatedTo());
   if (relatedTodo) {
 //    kdDebug() << "  has Related" << endl;
     QMap<KOEvent *,xQTask *>::ConstIterator itemIterator;

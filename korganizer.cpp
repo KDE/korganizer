@@ -239,6 +239,9 @@ void KOrganizer::initActions()
           action,SLOT(setEnabled(bool)));
 
   // view menu
+  (void)new KAction(i18n("What's &Next"), 0,
+                    mCalendarView, SLOT(view_whatsnext()),
+                    actionCollection(), "view_whatsnext");
   (void)new KAction(i18n("&List"), "list", 0,
                     mCalendarView, SLOT(view_list()),
                     actionCollection(), "view_list");

@@ -345,8 +345,8 @@ KOEvent *ICalFormat::pasteEvent(const QDate *newDate,
       // own calendar, now we have duplicate UID strings.  Need to generate
       // a new one for this new event.
       QString uidStr = createUniqueId();
-      if (mCalendar->getEvent(anEvent->getVUID()))
-	anEvent->setVUID(uidStr.ascii());
+      if (mCalendar->getEvent(anEvent->VUID()))
+	anEvent->setVUID(uidStr);
 
       daysOffset = anEvent->getDtEnd().date().dayOfYear() - 
 	anEvent->getDtStart().date().dayOfYear();
@@ -515,7 +515,7 @@ ScheduleMessage *ICalFormat::parseScheduleMessage(const QString &messageText)
   
   icalcomponent *calendarComponent = createCalendarComponent();
 
-  KOEvent *existingIncidence = mCalendar->getEvent(incidence->getVUID());
+  KOEvent *existingIncidence = mCalendar->getEvent(incidence->VUID());
   if (existingIncidence) {
     if (existingIncidence->getTodoStatus()) {
       icalcomponent_add_component(calendarComponent,
@@ -661,15 +661,15 @@ void ICalFormat::writeIncidence(icalcomponent *parent,KOEvent *incidence)
 {
   // creation date
   icalcomponent_add_property(parent,icalproperty_new_created(
-      writeICalDateTime(incidence->getCreated())));
+      writeICalDateTime(incidence->created())));
 
   // unique id
   icalcomponent_add_property(parent,icalproperty_new_uid(
-      writeText(incidence->getVUID())));
+      writeText(incidence->VUID())));
 
   // revision
   icalcomponent_add_property(parent,icalproperty_new_sequence(
-      incidence->getRevisionNum()));
+      incidence->revision()));
 
   // last modification date
   icalcomponent_add_property(parent,icalproperty_new_lastmodified(
@@ -779,7 +779,7 @@ void ICalFormat::writeIncidence(icalcomponent *parent,KOEvent *incidence)
   // related event
   if (incidence->getRelatedTo()) {
     icalcomponent_add_property(parent,icalproperty_new_relatedto(
-        writeText(incidence->getRelatedTo()->getVUID())));
+        writeText(incidence->getRelatedTo()->VUID())));
   }
 
 // TODO:
@@ -1162,7 +1162,7 @@ void ICalFormat::readIncidence(icalcomponent *parent,KOEvent *incidence)
 
       case ICAL_SEQUENCE_PROPERTY:  // sequence
         intvalue = icalproperty_get_sequence(p);
-        incidence->setRevisionNum(intvalue);
+        incidence->setRevision(intvalue);
         break;
 
       case ICAL_LASTMODIFIED_PROPERTY:  // last modification date
@@ -1617,7 +1617,7 @@ void ICalFormat::populate(icalcomponent *calendar)
   while (c) {
     kdDebug() << "----Todo found" << endl;
     KOEvent *todo = readTodo(c);
-    if (!mCalendar->getTodo(todo->getVUID())) mCalendar->addTodo(todo);
+    if (!mCalendar->getTodo(todo->VUID())) mCalendar->addTodo(todo);
     c = icalcomponent_get_next_component(calendar,ICAL_VTODO_COMPONENT);
   }
   
@@ -1626,7 +1626,7 @@ void ICalFormat::populate(icalcomponent *calendar)
   while (c) {
     kdDebug() << "----Event found" << endl;  
     KOEvent *event = readEvent(c);
-    if (!mCalendar->getEvent(event->getVUID())) mCalendar->addEvent(event);
+    if (!mCalendar->getEvent(event->VUID())) mCalendar->addEvent(event);
     c = icalcomponent_get_next_component(calendar,ICAL_VEVENT_COMPONENT);
   }
   

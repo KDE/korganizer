@@ -1,5 +1,5 @@
 <!DOCTYPE kpartgui>
-<kpartgui name="korganizer" version="5">
+<kpartgui name="korganizer" version="6">
 
   <MenuBar>
     <Menu name="file"><text>&amp;File</text>
@@ -20,6 +20,8 @@
       <Action name="edit_delete" append="edit_paste_merge"/>
     </Menu>
     <Menu name="view"><text>&amp;View</text>
+      <Action name="view_whatsnext"/>
+      <Separator/>
       <Action name="view_list"/>
       <Action name="view_day"/>
       <Action name="view_workweek"/>

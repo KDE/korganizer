@@ -116,7 +116,7 @@ class CalendarLocal : public CalObject {
     /** this method should be called whenever a KOEvent is modified directly
      * via it's pointer.  It makes sure that the calObject is internally
      * consistent. */
-    void updateEvent(KOEvent *anEvent);
+    void updateEvent(Incidence *incidence);
   
   protected:
     /** inserts an event into its "proper place" in the calendar. */

@@ -330,7 +330,7 @@ KOEvent *VCalFormat::pasteEvent(const QDate *newDate,
       // a new one for this new event.
       QString uidStr = createUniqueId();
       if (mCalendar->getEvent(anEvent->getVUID()))
-	anEvent->setVUID(uidStr.latin1());
+	anEvent->setVUID(uidStr);
 
       daysOffset = anEvent->getDtEnd().date().dayOfYear() - 
 	anEvent->getDtStart().date().dayOfYear();
@@ -382,7 +382,7 @@ VObject *VCalFormat::eventToVTodo(const KOEvent *anEvent)
   }
 
   // creation date
-  tmpStr = qDateTimeToISO(anEvent->dateCreated);
+  tmpStr = qDateTimeToISO(anEvent->created());
   addPropValue(vtodo, VCDCreatedProp, tmpStr.latin1());
 
   // unique id
@@ -390,7 +390,7 @@ VObject *VCalFormat::eventToVTodo(const KOEvent *anEvent)
 	       anEvent->getVUID().latin1());
 
   // revision
-  tmpStr.sprintf("%i", anEvent->getRevisionNum());
+  tmpStr.sprintf("%i", anEvent->revision());
   addPropValue(vtodo, VCSequenceProp, tmpStr.latin1());
 
   // last modification date
@@ -449,7 +449,7 @@ VObject *VCalFormat::eventToVTodo(const KOEvent *anEvent)
   // related event
   if (anEvent->getRelatedTo()) {
     addPropValue(vtodo, VCRelatedToProp,
-	         anEvent->getRelatedTo()->getVUID().latin1());
+	         anEvent->getRelatedTo()->VUID().latin1());
   }
 
   // categories
@@ -505,7 +505,7 @@ VObject* VCalFormat::eventToVEvent(const KOEvent *anEvent)
   }
 
   // creation date
-  tmpStr = qDateTimeToISO(anEvent->dateCreated);
+  tmpStr = qDateTimeToISO(anEvent->created());
   addPropValue(vevent, VCDCreatedProp, tmpStr.latin1());
 
   // unique id
@@ -513,7 +513,7 @@ VObject* VCalFormat::eventToVEvent(const KOEvent *anEvent)
 	       anEvent->getVUID().latin1());
 
   // revision
-  tmpStr.sprintf("%i", anEvent->getRevisionNum());
+  tmpStr.sprintf("%i", anEvent->revision());
   addPropValue(vevent, VCSequenceProp, tmpStr.latin1());
 
   // last modification date
@@ -743,7 +743,7 @@ VObject* VCalFormat::eventToVEvent(const KOEvent *anEvent)
   // related event
   if (anEvent->getRelatedTo()) {
     addPropValue(vevent, VCRelatedToProp,
-	         anEvent->getRelatedTo()->getVUID().latin1());
+	         anEvent->getRelatedTo()->VUID().latin1());
   }
 
   // pilot sync stuff
@@ -767,7 +767,7 @@ KOEvent *VCalFormat::VTodoToEvent(VObject *vtodo)
 
   // creation date
   if ((vo = isAPropertyOf(vtodo, VCDCreatedProp)) != 0) {
-      anEvent->dateCreated = ISOToQDateTime(s = fakeCString(vObjectUStringZValue(vo)));
+      anEvent->setCreated(ISOToQDateTime(s = fakeCString(vObjectUStringZValue(vo))));
       deleteStr(s);
   }
 
@@ -940,7 +940,7 @@ KOEvent* VCalFormat::VEventToEvent(VObject *vevent)
   
   // creation date
   if ((vo = isAPropertyOf(vevent, VCDCreatedProp)) != 0) {
-      anEvent->dateCreated = ISOToQDateTime(s = fakeCString(vObjectUStringZValue(vo)));
+      anEvent->setCreated(ISOToQDateTime(s = fakeCString(vObjectUStringZValue(vo))));
       deleteStr(s);
   }
 
@@ -956,11 +956,11 @@ KOEvent* VCalFormat::VEventToEvent(VObject *vevent)
   // revision
   // again NSCAL doesn't give us much to work with, so we improvise...
   if ((vo = isAPropertyOf(vevent, VCSequenceProp)) != 0) {
-    anEvent->setRevisionNum(atoi(s = fakeCString(vObjectUStringZValue(vo))));
+    anEvent->setRevision(atoi(s = fakeCString(vObjectUStringZValue(vo))));
     deleteStr(s);
   }
   else
-    anEvent->setRevisionNum(0);
+    anEvent->setRevision(0);
 
   // last modification date
   if ((vo = isAPropertyOf(vevent, VCLastModifiedProp)) != 0) {

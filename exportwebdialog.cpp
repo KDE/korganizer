@@ -340,7 +340,16 @@ void ExportWebDialog::createHtmlTodoList (QTextStream *ts)
 {
   KOEvent *ev,*subev;
   
-  QList<KOEvent> todoList = mCalendar->getTodoList();  
+  QList<KOEvent> rawTodoList = mCalendar->getTodoList();
+  QList<KOEvent> todoList;
+
+  // Sort list by priorities. This is brute force and should be
+  // replaced by a real sorting algorithm.
+  for (int i=1; i<=5; ++i) {
+    for(ev=rawTodoList.first();ev;ev=rawTodoList.next()) {
+      if (ev->getPriority() == i) todoList.append(ev);
+    }
+  }
   
   *ts << "<TABLE BORDER=0 CELLPADDING=3 CELLSPACING=3>\n";
   *ts << "  <TR>\n";
@@ -365,7 +374,7 @@ void ExportWebDialog::createHtmlTodoList (QTextStream *ts)
 
   // Create sub-level lists
   for(ev=todoList.first();ev;ev=todoList.next()) {
-    QList<KOEvent> relations = ev->getRelations();
+    QList<Incidence> relations = ev->getRelations();
     if (relations.count()) {
       // Generate sub-task list of event ev
       *ts << "  <TR>\n";
@@ -375,12 +384,23 @@ void ExportWebDialog::createHtmlTodoList (QTextStream *ts)
       if (mCbCategoriesTodo->isChecked()) ++columns;
       if (mCbAttendeesTodo->isChecked()) ++columns;
       *ts << "\"" << QString::number(columns) << "\"";
-      *ts << "><A NAME=\"sub" << ev->getVUID() << "\"></A>"
+      *ts << "><A NAME=\"sub" << ev->VUID() << "\"></A>"
           << i18n("Sub-Tasks of: ") << "<A HREF=\"#"
-          << ev->getVUID() << "\"><B>" << ev->getSummary() << "</B></A></TD>\n";
+          << ev->VUID() << "\"><B>" << ev->summary() << "</B></A></TD>\n";
       *ts << "  </TR>\n";
       
-      for(subev=relations.first();subev;subev=relations.next()) {
+      QList<KOEvent> sortedList;
+      Incidence *ev2;
+      // Sort list by priorities. This is brute force and should be
+      // replaced by a real sorting algorithm.
+      for (int i=1; i<=5; ++i) {
+        for(ev2=relations.first();ev2;ev2=relations.next()) {
+          KOEvent *ev3 = dynamic_cast<KOEvent *>(ev2);
+          if (ev3 && ev3->getPriority() == i) sortedList.append(ev3);
+        }
+      }
+      
+      for(subev=sortedList.first();subev;subev=sortedList.next()) {
         createHtmlTodo(ts,subev);
       }
     }
@@ -394,20 +414,20 @@ void ExportWebDialog::createHtmlTodo (QTextStream *ts,KOEvent *todo)
   kdDebug() << "ExportWebDialog::createHtmlTodo()" << endl;
 
   bool completed = todo->getStatus() == KOEvent::COMPLETED;
-  QList<KOEvent> relations = todo->getRelations();
+  QList<Incidence> relations = todo->getRelations();
 
   *ts << "<TR>\n";
 
   *ts << "  <TD CLASS=sum";
   if (completed) *ts << "done";
   *ts << ">\n";
-  *ts << "    <A NAME=\"" << todo->getVUID() << "\"></A>\n";
-  *ts << "    <B>" << todo->getSummary() << "</B>\n";
-  if (!todo->getDescription().isEmpty()) {
-    *ts << "    <P>" << todo->getDescription() << "</P>\n";
+  *ts << "    <A NAME=\"" << todo->VUID() << "\"></A>\n";
+  *ts << "    <B>" << todo->summary() << "</B>\n";
+  if (!todo->description().isEmpty()) {
+    *ts << "    <P>" << todo->description() << "</P>\n";
   }
   if (relations.count()) {
-    *ts << "    <DIV ALIGN=right><A HREF=\"#sub" << todo->getVUID()
+    *ts << "    <DIV ALIGN=right><A HREF=\"#sub" << todo->VUID()
         << "\">" << i18n("Sub-Tasks") << "</A></DIV>\n";
   }
 

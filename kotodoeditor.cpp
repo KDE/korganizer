@@ -125,7 +125,7 @@ bool KOTodoEditor::processInput()
   writeTodo(todo);
   
   if (mTodo) {
-    todo->setRevisionNum(todo->getRevisionNum()+1);
+    todo->setRevision(todo->revision()+1);
     emit todoChanged(todo);
   } else {
     mCalendar->addTodo(todo);
