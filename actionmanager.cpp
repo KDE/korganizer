@@ -584,6 +584,7 @@ void ActionManager::initActions()
                     mACollection, "edit_filters" );
 
   QLabel *filterLabel = new QLabel( i18n("Filter: "), mCalendarView );
+  filterLabel->hide();
   new KWidgetAction( filterLabel, i18n("Filter: "), 0, 0, 0,
                      mACollection, "filter_label" );
 
