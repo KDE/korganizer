@@ -32,6 +32,7 @@
 #include <libkcal/vcaldrag.h>
 
 #include "calprinter.h"
+#include "docprefs.h"
 
 #include "kotodoview.h"
 #include "kotodoview.moc"
@@ -292,6 +293,8 @@ KOTodoView::KOTodoView(Calendar *calendar,QWidget* parent,const char* name) :
   mPopupMenu->insertItem(i18n("Purge Completed"), this,
                          SLOT(purgeCompleted()));
   
+  mDocPrefs = new DocPrefs( name );
+  
   // Double clicking conflicts with opening/closing the subtree                   
   QObject::connect(mTodoListView,SIGNAL(doubleClicked(QListViewItem *)),
                    this,SLOT(showItem(QListViewItem *)));
@@ -301,11 +304,21 @@ KOTodoView::KOTodoView(Calendar *calendar,QWidget* parent,const char* name) :
   QObject::connect(mTodoListView,SIGNAL(clicked(QListViewItem *)),
                    this,SLOT(itemClicked(QListViewItem *)));
   connect(mTodoListView,SIGNAL(todoDropped(Todo *)),SLOT(updateView()));
+  connect(mTodoListView,SIGNAL(expanded(QListViewItem *)),
+          SLOT(itemStateChanged(QListViewItem *)));
+  connect(mTodoListView,SIGNAL(collapsed(QListViewItem *)),
+          SLOT(itemStateChanged(QListViewItem *)));
+}
+
+KOTodoView::~KOTodoView()
+{
+  delete mDocPrefs;
 }
 
 void KOTodoView::updateView()
 {
 //  kdDebug() << "KOTodoView::updateView()" << endl;
+
   mTodoListView->clear();
 
   QPtrList<Todo> todoList = mCalendar->getFilteredTodoList();
@@ -338,7 +351,23 @@ void KOTodoView::updateView()
       insertTodoItem(todo);
     }
   }
+  
+  // Restore opened/closed state
+  mTodoListView->blockSignals( true );
+  if( mDocPrefs ) restoreItemState( mTodoListView->firstChild() );
+  mTodoListView->blockSignals( false );
 }
+
+void KOTodoView::restoreItemState( QListViewItem *item )
+{
+  while( item ) {
+    KOTodoViewItem *todoItem = (KOTodoViewItem *)item;
+    todoItem->setOpen( mDocPrefs->readBoolEntry( todoItem->event()->VUID() ) );
+    if( item->childCount() > 0 ) restoreItemState( item->firstChild() );
+    item = item->nextSibling();
+  }
+}
+
 
 QMap<Todo *,KOTodoViewItem *>::ConstIterator
   KOTodoView::insertTodoItem(Todo *todo)
@@ -356,12 +385,10 @@ QMap<Todo *,KOTodoViewItem *>::ConstIterator
       itemIterator = insertTodoItem (relatedTodo);
     }
     KOTodoViewItem *todoItem = new KOTodoViewItem(*itemIterator,todo);
-    todoItem->setOpen(true);
     return mTodoMap.insert(todo,todoItem);
   } else {
 //    kdDebug() << "  no Related" << endl;
     KOTodoViewItem *todoItem = new KOTodoViewItem(mTodoListView,todo);
-    todoItem->setOpen(true);
     return mTodoMap.insert(todo,todoItem);
   }
 }
@@ -500,4 +527,22 @@ void KOTodoView::itemClicked(QListViewItem *item)
       todoItem->event()->setCompleted(false);
     }
   }
+}
+
+void KOTodoView::setDocumentId( const QString &id )
+{
+  kdDebug() << "KOTodoView::setDocumentId()" << endl;
+
+  mDocPrefs->setDoc( id );
+}
+
+void KOTodoView::itemStateChanged( QListViewItem *item )
+{
+  if (!item) return;
+
+  KOTodoViewItem *todoItem = (KOTodoViewItem *)item;
+
+//  kdDebug() << "KOTodoView::itemStateChanged(): " << todoItem->event()->summary() << endl;
+
+  if( mDocPrefs ) mDocPrefs->writeEntry( todoItem->event()->VUID(), todoItem->isOpen() );
 }

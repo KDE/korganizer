@@ -36,6 +36,8 @@
 
 #include <korganizer/baseview.h>
 
+class DocPrefs;
+
 /**
   This class provides a way of displaying a single Event of Todo-Type in a
   KTodoView.
@@ -109,7 +111,7 @@ class KOTodoView : public KOrg::BaseView
     Q_OBJECT
   public:
     KOTodoView(Calendar *, QWidget* parent=0, const char* name=0 );
-    ~KOTodoView() {}
+    ~KOTodoView();
 
     QPtrList<Incidence> getSelected();
     QPtrList<Todo> selectedTodos();
@@ -118,6 +120,8 @@ class KOTodoView : public KOrg::BaseView
     int currentDateCount() { return 0; }
 
     void printPreview(CalPrinter *calPrinter, const QDate &fd, const QDate &td);
+
+    void setDocumentId( const QString & );
 
   public slots:
     void updateView();
@@ -152,6 +156,8 @@ class KOTodoView : public KOrg::BaseView
     void purgeCompleted();
     void itemClicked(QListViewItem *);
     
+    void itemStateChanged(QListViewItem *);
+    
   signals:
     void newTodoSignal();
     void newSubTodoSignal(Todo *);
@@ -162,6 +168,7 @@ class KOTodoView : public KOrg::BaseView
 
   private:
     QMap<Todo *,KOTodoViewItem *>::ConstIterator insertTodoItem(Todo *todo);
+    void restoreItemState( QListViewItem * );
 
     KOTodoListView *mTodoListView;
     QPopupMenu *mItemPopupMenu;
@@ -169,6 +176,9 @@ class KOTodoView : public KOrg::BaseView
     KOTodoViewItem *mActiveItem;
 
     QMap<Todo *,KOTodoViewItem *> mTodoMap;
+
+    DocPrefs *mDocPrefs;
+    QString mCurrentDoc;
 };
 
 #endif

@@ -159,7 +159,7 @@ CalendarView::CalendarView(QWidget *parent,const char *name)
           SLOT(eventAdded(Event *)));
   connect(this, SIGNAL(configChanged()), mDateNavigator, SLOT(updateConfig()));
 
-  mTodoList = new KOTodoView(mCalendar, mLeftFrame, "CalendarView::TodoList");
+  mTodoList = new KOTodoView(mCalendar, mLeftFrame, "todolist");
   connect(mTodoList, SIGNAL(newTodoSignal()),
 	  this, SLOT(newTodo()));
   connect(mTodoList, SIGNAL(newSubTodoSignal(Todo *)),
@@ -276,7 +276,11 @@ bool CalendarView::openCalendar(QString filename, bool merge)
   
   if (mCalendar->load(filename)) {
     if (merge) setModified(true);
-    else setModified(false);
+    else {
+      setModified(false);
+      if (mTodoView) mTodoView->setDocumentId( filename );
+      mTodoList->setDocumentId( filename );
+    }
     updateView();
     return true;
   } else {
