@@ -370,7 +370,7 @@ bool IncomingDialog::incomeDefault(ScheduleItemIn *item)
     return true;
   }
   else {
-    KMessageBox::error(this,i18n("Sorry can't accept the IMIP-message. Maybe a problem with the email addresses"));
+    KMessageBox::error(this,i18n("Unable to accept the IMIP-message. It may be a problem with the email addresses."));
     kdDebug() << "IncomingDialog::acceptMessage(): Error!" << endl;
     return false;
   }
