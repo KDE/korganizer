@@ -443,7 +443,7 @@ void CalendarView::closeCalendar()
   emit closingDown();
 
   mCalendar->close();
-  setModified(false);
+  setModified( false );
   updateView();
 }
 
@@ -465,25 +465,25 @@ void CalendarView::readSettings()
   KConfig *config = KOGlobals::self()->config();
 
 #ifndef KORG_NOSPLITTER
-  config->setGroup("KOrganizer Geometry");
+  config->setGroup( "KOrganizer Geometry" );
 
-  QValueList<int> sizes = config->readIntListEntry("Separator1");
-  if (sizes.count() != 2) {
+  QValueList<int> sizes = config->readIntListEntry( "Separator1" );
+  if ( sizes.count() != 2 ) {
     sizes << mDateNavigator->minimumSizeHint().width();
     sizes << 300;
   }
-  mPanner->setSizes(sizes);
+  mPanner->setSizes( sizes );
 
-  sizes = config->readIntListEntry("Separator2");
-  mLeftSplitter->setSizes(sizes);
+  sizes = config->readIntListEntry( "Separator2" );
+  mLeftSplitter->setSizes( sizes );
 #endif
 
   mEventViewer->readSettings( config );
 
   mViewManager->readSettings( config );
-  mTodoList->restoreLayout(config,QString("Todo Layout"));
+  mTodoList->restoreLayout( config, QString( "Todo Layout" ) );
 
-  readFilterSettings(config);
+  readFilterSettings( config );
 
   config->setGroup( "Views" );
   int dateCount = config->readNumEntry( "ShownDatesCount", 7 );
@@ -500,21 +500,21 @@ void CalendarView::writeSettings()
   KConfig *config = KOGlobals::self()->config();
 
 #ifndef KORG_NOSPLITTER
-  config->setGroup("KOrganizer Geometry");
+  config->setGroup( "KOrganizer Geometry" );
 
   QValueList<int> list = mPanner->sizes();
-  config->writeEntry("Separator1",list);
+  config->writeEntry( "Separator1", list );
 
   list = mLeftSplitter->sizes();
-  config->writeEntry("Separator2",list);
+  config->writeEntry( "Separator2", list );
 #endif
   mEventViewer->writeSettings( config );
   mViewManager->writeSettings( config );
-  mTodoList->saveLayout(config,QString("Todo Layout"));
+  mTodoList->saveLayout( config, QString( "Todo Layout" ) );
 
   KOPrefs::instance()->writeConfig();
 
-  writeFilterSettings(config);
+  writeFilterSettings( config );
 
   config->setGroup( "Views" );
   config->writeEntry( "ShownDatesCount", mNavigator->selectedDates().count() );
@@ -522,33 +522,33 @@ void CalendarView::writeSettings()
   config->sync();
 }
 
-void CalendarView::readFilterSettings(KConfig *config)
+void CalendarView::readFilterSettings( KConfig *config )
 {
 //  kdDebug(5850) << "CalendarView::readFilterSettings()" << endl;
 
   mFilters.clear();
 
-  config->setGroup("General");
+  config->setGroup( "General" );
   // FIXME: Move the filter loading and saving to the CalFilter class in libkcal
-  QStringList filterList = config->readListEntry("CalendarFilters");
-  QString currentFilter = config->readEntry("Current Filter");
+  QStringList filterList = config->readListEntry ("CalendarFilters" );
+  QString currentFilter = config->readEntry( "Current Filter" );
 
   QStringList::ConstIterator it = filterList.begin();
   QStringList::ConstIterator end = filterList.end();
-  while(it != end) {
+  while( it != end ) {
 //    kdDebug(5850) << "  filter: " << (*it) << endl;
     CalFilter *filter;
-    filter = new CalFilter(*it);
-    config->setGroup("Filter_" + (*it));
-    filter->setCriteria(config->readNumEntry("Criteria",0));
-    filter->setCategoryList(config->readListEntry("CategoryList"));
+    filter = new CalFilter( *it );
+    config->setGroup( "Filter_" + (*it) );
+    filter->setCriteria( config->readNumEntry( "Criteria", 0 ) );
+    filter->setCategoryList( config->readListEntry( "CategoryList" ) );
     filter->setCompletedTimeSpan( config->readNumEntry( "HideTodoDays", 0 ) );
-    mFilters.append(filter);
+    mFilters.append( filter );
 
     ++it;
   }
 
-  config->setGroup("General");
+  config->setGroup( "General" );
   int pos = filterList.findIndex( currentFilter );
   mCurrentFilter = 0;
   if ( pos>=0 ) {
@@ -557,7 +557,7 @@ void CalendarView::readFilterSettings(KConfig *config)
   updateFilter();
 }
 
-void CalendarView::writeFilterSettings(KConfig *config)
+void CalendarView::writeFilterSettings( KConfig *config )
 {
 //  kdDebug(5850) << "CalendarView::writeFilterSettings()" << endl;
 
@@ -574,9 +574,9 @@ void CalendarView::writeFilterSettings(KConfig *config)
     filter = mFilters.next();
   }
   config->setGroup( "General" );
-  config->writeEntry( "CalendarFilters", filterList);
+  config->writeEntry( "CalendarFilters", filterList );
   if ( mCurrentFilter ) {
-    config->writeEntry( "Current Filter", mCurrentFilter->name());
+    config->writeEntry( "Current Filter", mCurrentFilter->name() );
   }
 }
 
@@ -593,7 +593,7 @@ void CalendarView::goToday()
 
 void CalendarView::goNext()
 {
-  if (dynamic_cast<KOMonthView*>(mViewManager->currentView() ) )
+  if ( dynamic_cast<KOMonthView*>( mViewManager->currentView() ) )
     mNavigator->selectNextMonth();
   else
     mNavigator->selectNext();
@@ -601,7 +601,7 @@ void CalendarView::goNext()
 
 void CalendarView::goPrevious()
 {
-  if (dynamic_cast<KOMonthView*>(mViewManager->currentView() ) )
+  if ( dynamic_cast<KOMonthView*>( mViewManager->currentView() ) )
     mNavigator->selectPreviousMonth();
   else
     mNavigator->selectPrevious();
@@ -611,15 +611,16 @@ void CalendarView::updateConfig()
 {
   kdDebug(5850) << "CalendarView::updateConfig()" << endl;
 
-  KOGlobals::self()->setHolidays(new KHolidays(KOPrefs::instance()->mHolidays));
+  KOGlobals::self()->
+    setHolidays( new KHolidays( KOPrefs::instance()->mHolidays ) );
 
   emit configChanged();
 
-  QString tz(mCalendar->timeZoneId());
+  QString tz(  mCalendar->timeZoneId() );
   // Only set a new time zone if it changed. This prevents the window
   // from being modified on start
   if ( tz != KOPrefs::instance()->mTimeZoneId )
-    mCalendar->setTimeZoneId(KOPrefs::instance()->mTimeZoneId);
+    mCalendar->setTimeZoneId( KOPrefs::instance()->mTimeZoneId );
   // To make the "fill window" configurations work
   mViewManager->raiseCurrentView();
 }
@@ -838,10 +839,9 @@ void CalendarView::newEvent()
   QDate date = mNavigator->selectedDates().first();
   QTime startTime = KOPrefs::instance()->mStartTime.time();
   QDateTime startDt( date, startTime );
-  QTime defaultDuration( KOPrefs::instance()->mDefaultDuration.time() );
-  QTime endTime( startTime.addSecs( defaultDuration.hour()*3600 +
-     defaultDuration.minute()*60 + defaultDuration.second() ) );
-  QDateTime endDt( date, endTime );
+  int addSecs = ( KOPrefs::instance()->mDefaultDuration.time().hour()*3600 ) +
+                ( KOPrefs::instance()->mDefaultDuration.time().minute()*60 );
+  QDateTime endDt = ( startDt.addSecs( addSecs ) );
   bool allDay = false;
 
   // let the current view change the default start/end datetime
@@ -856,18 +856,18 @@ void CalendarView::newEvent()
 
 void CalendarView::newEvent( const QDateTime &fh )
 {
-  QTime defaultDuration( KOPrefs::instance()->mDefaultDuration.time() );
-  QDateTime endTime = fh.addSecs( defaultDuration.hour()*3600 +
-     defaultDuration.minute()*60 + defaultDuration.second() );
+  int addSecs = ( KOPrefs::instance()->mDefaultDuration.time().hour()*3600 ) +
+                ( KOPrefs::instance()->mDefaultDuration.time().minute()*60 );
+  QDateTime endTime ( fh.addSecs( addSecs ) );
   newEvent( fh, endTime );
 }
 
 void CalendarView::newEvent( const QDate &dt )
 {
   QTime startTime = KOPrefs::instance()->mStartTime.time();
-  QTime defaultDuration( KOPrefs::instance()->mDefaultDuration.time() );
-  QTime endTime = startTime.addSecs( defaultDuration.hour()*3600 +
-                  defaultDuration.minute()*60 + defaultDuration.second() );
+  int addSecs = ( KOPrefs::instance()->mDefaultDuration.time().hour()*3600 ) +
+                ( KOPrefs::instance()->mDefaultDuration.time().minute()*60 );
+  QTime endTime ( startTime.addSecs( addSecs ) );
   newEvent(QDateTime(dt, startTime),
            QDateTime(dt, endTime), true);
 }

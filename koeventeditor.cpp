@@ -277,13 +277,12 @@ void KOEventEditor::newEvent( const QString &summary,
 
 void KOEventEditor::loadDefaults()
 {
-  QTime defaultDuration( KOPrefs::instance()->mDefaultDuration.time() );
+  QDateTime from( QDate::currentDate(), KOPrefs::instance()->mStartTime.time() );
+  int addSecs = ( KOPrefs::instance()->mDefaultDuration.time().hour()*3600 ) +
+                ( KOPrefs::instance()->mDefaultDuration.time().minute()*60 );
+  QDateTime to( from.addSecs( addSecs ) );
 
-  QDateTime from(QDate::currentDate(), KOPrefs::instance()->mStartTime.time() );
-  QDateTime to( from.addSecs(defaultDuration.hour()*3600 +
-     defaultDuration.minute()*60 + defaultDuration.second()) );
-
-  setDefaults(from,to,false);
+  setDefaults( from, to, false );
 }
 
 bool KOEventEditor::processInput()

@@ -113,13 +113,11 @@
 
   <group name="Time &amp; Date">
     <entry type="String" name="TimeZoneId">
+      <whatsthis>Select the timezone.</whatsthis>
     </entry>
     <entry type="String" name="Holidays">
       <label>Use holiday region:</label>
-      <whatsthis>Here you can select from which region you want to use the holidays.
-                 Defined holidays are shown as non working days in the
-                 date navigator, in the agenda, etc.
-      </whatsthis>
+      <whatsthis>Here you can select from which region you want to use the holidays. Defined holidays are shown as non-working days in the date navigator, the agenda view, etc.</whatsthis>
     </entry>
     <entry type="DateTime" name="StartTime">
       <label>Default appointment time</label>
@@ -127,7 +125,7 @@
       <default>QDateTime(QDate(), QTime(10,0))</default>
     </entry>
     <entry type="DateTime" name="DefaultDuration">
-      <label>Default duration of new appointment</label>
+      <label>Default duration of new appointment (HH:MM)</label>
       <whatsthis>Here you can enter the event's default duration, used if you do not supply an end time.</whatsthis>
       <default>QDateTime(QDate(), QTime(2,0))</default>
     </entry>
