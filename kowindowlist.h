@@ -63,7 +63,7 @@ class KOWindowList : public QObject
       Return default instance. This is the main window for the resource based
       calendar.
     */
-    KOrg::MainWindow *KOWindowList::defaultInstance();
+    KOrg::MainWindow *defaultInstance();
 
   signals:
 
