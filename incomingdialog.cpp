@@ -243,14 +243,14 @@ bool IncomingDialog::incomeCounter(ScheduleItemIn *item)
   KOCounterDialog *eventViewer = new KOCounterDialog(this);
   //eventViewer->addText(i18n("You received a counterevent<p>"));
   //eventViewer->addText(i18n("<hr>"));
-  eventViewer->addText(i18n("<b>Counterevent:</b><p>"));
+  eventViewer->addText(i18n("<b>Counter-event:</b><p>"));
   eventViewer->addEvent(counterevent);
   eventViewer->addText(i18n("<hr>"));
   eventViewer->addText(i18n("<b>Original event:</b><p>"));
   if (even) eventViewer->addEvent(even);
-    else eventViewer->addText(i18n("A corresponding event is missing in your canlendar!"));
+    else eventViewer->addText(i18n("A corresponding event is missing in your calendar!"));
   eventViewer->addText(i18n("<hr>"));
-  eventViewer->addText(i18n("If this counterevent is a good proprosal for your event, press 'Accept'. And all Attendees will get the new version of this event"));
+  eventViewer->addText(i18n("If this counter-event is a good proposal for your event, press 'Accept'. All Attendees will then get the new version of this event"));
   eventViewer->show();
 
   eventViewer->exec();
