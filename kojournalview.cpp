@@ -28,6 +28,7 @@
 #include <qpopupmenu.h>
 #include <qvbox.h>
 #include <qlabel.h>
+#include <qscrollview.h>
 
 #include <klocale.h>
 #include <kdebug.h>
@@ -46,8 +47,14 @@ KOJournalView::KOJournalView(Calendar *calendar, QWidget *parent,
 {
   mEntries.setAutoDelete( true );
   
-  QVBoxLayout*mTopLayout = new QVBoxLayout( this );
-  mTopLayout->setAutoAdd(true);
+  QVBoxLayout*topLayout = new QVBoxLayout( this );
+  topLayout->setAutoAdd(true);
+  mSV = new QScrollView( this, "JournalScrollView" );
+  topLayout = new QVBoxLayout( mSV->viewport() );
+  topLayout->setAutoAdd(true);
+  mVBox = new QVBox( mSV->viewport() );
+  mSV->setVScrollBarMode( QScrollView::Auto );
+  mSV->setHScrollBarMode( QScrollView::AlwaysOff );
 }
 
 KOJournalView::~KOJournalView()
@@ -57,7 +64,8 @@ KOJournalView::~KOJournalView()
 void KOJournalView::appendJournal( Journal*journal, const QDate &dt)
 {
 //  kdDebug(5850) << "KOJournalView::appendJournal(): "<< journal<<endl;
-  JournalEntry*j = new JournalEntry( calendar(), this );
+//  JournalEntry*j = new JournalEntry( calendar(), this );
+  JournalEntry*j = new JournalEntry( calendar(), mVBox );
   j->show();
   j->setJournal( journal );
   j->setDate( dt );
@@ -74,6 +82,11 @@ int KOJournalView::currentDateCount()
 {
   return mSelectedDates.size();
 }
+
+/*void KOJournalView::resizeEvent( QResizeEvent *event ) 
+{
+//  mSV->setSize( 
+}*/
 
 Incidence::List KOJournalView::selectedIncidences()
 {

@@ -27,6 +27,8 @@
 #include "journalentry.h"
 
 class JournalEntry;
+class QScrollView;
+class QVBox;
 
 /**
  * This class provides a journal view.
@@ -56,11 +58,15 @@ class KOJournalView : public KOrg::BaseView
     void showIncidences( const Incidence::List & );
 
     void changeIncidenceDisplay( Incidence *, int );
+//  protected slots: 
+//    void resizeEvent( QResizeEvent * );
   protected:
     void clearEntries();
 
   private:
-    QBoxLayout *mTopLayout;
+//    QBoxLayout *mTopLayout;
+    QScrollView *mSV;
+    QVBox *mVBox;
     JournalEntry::List mEntries;
     DateList mSelectedDates;  // List of dates to be displayed
 };
