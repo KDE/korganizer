@@ -88,7 +88,7 @@
             </property>
             <property stdset="1">
                 <name>text</name>
-                <string>Edit Filters</string>
+                <string>Edit Filters...</string>
             </property>
         </widget>
     </vbox>
