@@ -48,7 +48,7 @@ fi
 ])
 eval "$ac_cv_have_knewstuff"
 if test "$have_knewstuff" != yes; then
-  AC_MSG_RESULT([$have_knewstuff])
+  AC_MSG_RESULT([$have_knewstuff, using internal copy])
   KNEWSTUFF_SUBDIR='knewstuff'
   KNEWSTUFF_LIB='$(top_builddir)/korganizer/knewstuff/libknewstuff.la'
 else
@@ -58,6 +58,7 @@ else
 fi
 AC_SUBST(KNEWSTUFF_SUBDIR)
 AC_SUBST(KNEWSTUFF_LIB)
+AM_CONDITIONAL([include_knewstuff], [test "$KNEWSTUFF_SUBDIR" != ""])
 ])
 
 KDE_CHECK_KNEWSTUFF

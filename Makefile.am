@@ -1,4 +1,8 @@
-SUBDIRS = $(KNEWSTUFF_SUBDIR) . korgac pixmaps sounds plugins interfaces
+if include_knewstuff
+knewstuff_SUBDIR=knewstuff
+endif
+
+SUBDIRS = $(knewstuff_SUBDIR) . korgac pixmaps sounds plugins interfaces
 
 INCLUDES = \
   -I$(srcdir)/interfaces \
