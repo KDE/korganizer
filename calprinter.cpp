@@ -34,6 +34,7 @@
 #include <kprinter.h>
 #include <ksimpleconfig.h>
 #include <kmessagebox.h>
+#include <kdebug.h>
 
 #include "koprefsdialog.h"
 
@@ -44,18 +45,28 @@
 #include "calprintplugins.h"
 
 CalPrinter::CalPrinter( QWidget *parent, Calendar *calendar )
-  : QObject( 0, "CalPrinter" )
+  : QObject( parent, "CalPrinter" )
 {
   mCalendar = calendar;
   mParent = parent;
   mPrinter = new KPrinter;
   mPrinter->setOrientation( KPrinter::Landscape );
   mConfig = new KSimpleConfig( "korganizer_printing.rc" );
+
   init( mPrinter, calendar );
 }
 
 CalPrinter::~CalPrinter()
 {
+  kdDebug() << "~CalPrinter()" << endl;
+
+  CalPrintBase *plug = mPrintPlugins.first();
+  while ( plug ) {
+    plug->doSaveConfig();
+    plug = mPrintPlugins.next();
+  }
+
+  delete mConfig;
   delete mPrintDialog;
   delete mPrinter;
 }
@@ -73,16 +84,10 @@ void CalPrinter::init( KPrinter *printer, Calendar *calendar )
 
   CalPrintBase *plug = mPrintPlugins.first();
   while ( plug ) {
-    connect( this, SIGNAL( setDateRangeSignal( const QDate &, const QDate & ) ),
-             plug, SLOT( setDateRange( const QDate &, const QDate & ) ) );
-    connect( this, SIGNAL( updateConfigSignal() ),
-             plug, SLOT( loadConfig() ) );
-    connect( this, SIGNAL( writeConfigSignal() ),
-             plug, SLOT( saveConfig() ) );
     connect( mPrintDialog, SIGNAL( okClicked() ),
              plug, SLOT( readSettingsWidget() ) );
 
-    plug->setSettingsWidget();
+    plug->doLoadConfig();
 
     plug = mPrintPlugins.next();
   }
@@ -103,14 +108,18 @@ void CalPrinter::setupPrinter()
 
 void CalPrinter::setDateRange( const QDate &fd, const QDate &td )
 {
-  emit setDateRangeSignal( fd, td );
+  CalPrintBase *plug = mPrintPlugins.first();
+  while ( plug ) {
+    plug->setDateRange( fd, td );
+    plug = mPrintPlugins.next();
+  }
 }
 
 void CalPrinter::preview( int type, const QDate &fd, const QDate &td )
 {
   mPrintDialog->setPreview( true );
   mPrintDialog->setPrintType( type );
-  emit setDateRangeSignal( fd, td );
+  setDateRange( fd, td );
 
   if ( mPrintDialog->exec() == QDialog::Accepted ) {
     doPreview( mPrintDialog->selectedPlugin() );
@@ -121,7 +130,7 @@ void CalPrinter::print( int type, const QDate &fd, const QDate &td )
 {
   mPrintDialog->setPreview( false );
   mPrintDialog->setPrintType( type );
-  emit setDateRangeSignal( fd, td );
+  setDateRange( fd, td );
 
   if ( mPrintDialog->exec() == QDialog::Accepted ) {
     doPrint( mPrintDialog->selectedPlugin() );
@@ -132,7 +141,7 @@ void CalPrinter::forcePrint( int type, const QDate &fd, const QDate &td,
                              bool preview )
 {
   if ( type < 0 ) return;
-  emit setDateRangeSignal( fd, td );
+  setDateRange( fd, td );
 
   if ( preview )
     mPrinter->setPreviewOnly( true );
@@ -232,8 +241,6 @@ CalPrintDialog::CalPrintDialog( QPtrList<CalPrintBase> plugins, KPrinter *p,
     radioButton->setMinimumHeight( radioButton->sizeHint().height() - 5 );
 
     mConfigArea->addWidget( plug->configWidget( mConfigArea ), id );
-    connect( this, SIGNAL( applySettings() ), plug, SLOT( readSettingsWidget() ) );
-    connect( this, SIGNAL( doSettings() ), plug, SLOT( setSettingsWidget() ) );
 
     plug = mPrintPlugins.next();
     id++;

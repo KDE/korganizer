@@ -54,26 +54,33 @@ class CalPrinter : public QObject
 {
     Q_OBJECT
   public:
+    /**
+      \param par parent widget for dialogs
+      \param cal calendar to be printed
+    */
     CalPrinter( QWidget *par, Calendar *cal );
     virtual ~CalPrinter();
 
     enum { Day = 0, Week, Month, Todolist };
-    virtual void init( KPrinter *printer, Calendar *calendar );
+
+    void init( KPrinter *printer, Calendar *calendar );
 
     void setupPrinter();
 
+    /**
+      Set date range to be printed.
+      
+      \param start Start date
+      \param end   End date
+    */
+    void setDateRange( const QDate &start, const QDate &end );
+
   public slots:
     void updateConfig();
-    void setDateRange( const QDate &, const QDate & );
 
   private slots:
     void doPreview( CalPrintBase *selectedStyle );
     void doPrint( CalPrintBase *selectedStyle );
-
-  signals:
-    void setDateRangeSignal( const QDate &, const QDate & );
-    void updateConfigSignal();
-    void writeConfigSignal();
 
   public:
     void preview( int type, const QDate &fd, const QDate &td );
@@ -109,12 +116,6 @@ class CalPrintDialog : public KDialogBase
     void slotOk();
     void setupPrinter();
     void setPrinterLabel();
-
-  signals:
-    /* sent to make the plugins apply the settings from the config widget */
-    void applySettings();
-    /* sent to make the plugins apply the correct settings to the config widget */
-    void doSettings();
 
   private:
     KPrinter *mPrinter;

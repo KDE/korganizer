@@ -83,11 +83,10 @@ void setCategoryColors( QPainter &p, Incidence *incidence)
 
 
 
-CalPrintBase::CalPrintBase(KPrinter *printer, Calendar *cal, KConfig*cfg)
-  : QObject(), mPrinter(printer), mCalendar(cal), mConfig(cfg)
+CalPrintBase::CalPrintBase( KPrinter *printer, Calendar *cal, KConfig *cfg )
+  : QObject(), mPrinter( printer ), mCalendar( cal ), mConfig( cfg )
 {
 //  mOrientation = KPrinter::Portrait;
-  loadConfig();
 }
 
 CalPrintBase::~CalPrintBase()
@@ -96,22 +95,23 @@ CalPrintBase::~CalPrintBase()
 
 
 
-QWidget* CalPrintBase::configWidget( QWidget* w)
+QWidget *CalPrintBase::configWidget( QWidget *w )
 {
-  QFrame*wdg=new QFrame(w);
-  QVBoxLayout*layout=new QVBoxLayout(wdg);
+  QFrame *wdg = new QFrame( w );
+  QVBoxLayout *layout = new QVBoxLayout( wdg );
 
-  QLabel *title = new QLabel(description(), wdg);
+  QLabel *title = new QLabel( description(), wdg );
   QFont titleFont( title->font() );
   titleFont.setPointSize( 20 );
-  titleFont.setBold( TRUE );
+  titleFont.setBold( true );
   title->setFont( titleFont );
 
   layout->addWidget( title );
-  layout->addWidget(new QLabel(longDescription(), wdg));
-  layout->addSpacing(20);
-  layout->addWidget(new QLabel(i18n("This printing style does not "
-    "have any configuration options."), wdg));
+  layout->addWidget( new QLabel( longDescription(), wdg ) );
+  layout->addSpacing( 20 );
+  layout->addWidget( new QLabel( i18n("This printing style does not "
+                                      "have any configuration options."),
+                                 wdg ) );
   layout->addStretch();
   return wdg;
 }
@@ -137,30 +137,35 @@ void CalPrintBase::doPrint()
   p.end();
 }
 
-void CalPrintBase::loadConfig()
+void CalPrintBase::doLoadConfig()
 {
-  if (mConfig) {
+  if ( mConfig ) {
+    KConfigGroupSaver saver( mConfig, description() );
     mConfig->sync();
-    QDateTime currDate(QDate::currentDate());
+    QDateTime currDate( QDate::currentDate() );
     mFromDate = mConfig->readDateTimeEntry( "FromDate", &currDate ).date();
     mToDate = mConfig->readDateTimeEntry( "ToDate" ).date();
     mUseColors = mConfig->readBoolEntry( "UseColors", true );
     mOrientation = (KPrinter::Orientation)(mConfig->readNumEntry(
       "Printer orientation", orientation() ));
+    loadConfig();
   } else {
-    kdDebug(5850)<<"No config available in loadConfig!!!!"<<endl;
+    kdDebug(5850) << "No config available in loadConfig!!!!" << endl;
   }
 }
-void CalPrintBase::saveConfig()
+
+void CalPrintBase::doSaveConfig()
 {
-  if (mConfig) {
-    mConfig->writeEntry( "FromDate", QDateTime(mFromDate) );
-    mConfig->writeEntry( "ToDate", QDateTime(mToDate) );
+  if ( mConfig ) {
+    KConfigGroupSaver saver( mConfig, description() );
+    saveConfig();
+    mConfig->writeEntry( "FromDate", QDateTime( mFromDate ) );
+    mConfig->writeEntry( "ToDate", QDateTime( mToDate ) );
     mConfig->writeEntry( "UseColors", mUseColors );
     mConfig->writeEntry( "Printer orientation", mOrientation );
     mConfig->sync();
   } else {
-    kdDebug(5850)<<"No config available in saveConfig!!!!"<<endl;
+    kdDebug(5850) << "No config available in saveConfig!!!!" << endl;
   }
 }
 

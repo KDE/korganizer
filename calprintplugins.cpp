@@ -109,8 +109,6 @@ void CalPrintDay::setSettingsWidget()
 void CalPrintDay::loadConfig()
 {
   if ( mConfig ) {
-    KConfigGroupSaver saver( mConfig, description() );
-    CalPrintBase::loadConfig();
     // TODO_RK: Use global setting for day start
     QDate dt;
     QTime tm1( 8, 0 );
@@ -127,14 +125,14 @@ void CalPrintDay::loadConfig()
 
 void CalPrintDay::saveConfig()
 {
+  kdDebug() << "CalPrintDay::saveConfig()" << endl;
+
   readSettingsWidget();
   if ( mConfig ) {
-    KConfigGroupSaver saver( mConfig, description() );
-    mConfig->writeEntry( "Start time", mStartTime );
-    mConfig->writeEntry( "End time", mEndTime );
+    mConfig->writeEntry( "Start time", QDateTime( QDate(), mStartTime ) );
+    mConfig->writeEntry( "End time", QDateTime( QDate(), mEndTime ) );
     mConfig->writeEntry( "Include todos", mIncludeTodos );
     mConfig->writeEntry( "Include all events", mIncludeAllEvents );
-    CalPrintBase::saveConfig();
   }
 }
 
@@ -253,9 +251,7 @@ void CalPrintWeek::setSettingsWidget()
 
 void CalPrintWeek::loadConfig()
 {
-  if (mConfig) {
-    KConfigGroupSaver saver(mConfig, description() );
-    CalPrintBase::loadConfig();
+  if ( mConfig ) {
     // TODO_RK: Use global setting for day start
     QDate dt;
     QTime tm1(8,0);
@@ -274,12 +270,10 @@ void CalPrintWeek::saveConfig()
 {
   readSettingsWidget();
   if (mConfig) {
-    KConfigGroupSaver saver(mConfig, description() );
-    mConfig->writeEntry( "Start time", mStartTime );
-    mConfig->writeEntry( "End time", mEndTime );
+    mConfig->writeEntry( "Start time", QDateTime( QDate(), mStartTime ) );
+    mConfig->writeEntry( "End time", QDateTime( QDate(), mEndTime ) );
     mConfig->writeEntry( "Include todos", mIncludeTodos );
     mConfig->writeEntry( "Print type", (int)mWeekPrintType );
-    CalPrintBase::saveConfig();
   }
 }
 
@@ -398,9 +392,7 @@ void CalPrintMonth::setSettingsWidget()
 
 void CalPrintMonth::loadConfig()
 {
-  if (mConfig) {
-    KConfigGroupSaver saver(mConfig, description() );
-    CalPrintBase::loadConfig();
+  if ( mConfig ) {
     mWeekNumbers = mConfig->readBoolEntry( "Print week numbers", true );
     mIncludeTodos = mConfig->readBoolEntry( "Include todos", false );
   }
@@ -410,9 +402,7 @@ void CalPrintMonth::loadConfig()
 void CalPrintMonth::saveConfig()
 {
   readSettingsWidget();
-  if (mConfig) {
-    KConfigGroupSaver saver(mConfig, description() );
-    CalPrintBase::saveConfig();
+  if ( mConfig ) {
     mConfig->writeEntry( "Print week numbers", mWeekNumbers );
     mConfig->writeEntry( "Include todos", mIncludeTodos );
   }
@@ -517,9 +507,7 @@ void CalPrintTodos::setSettingsWidget()
 
 void CalPrintTodos::loadConfig()
 {
-  if (mConfig) {
-    KConfigGroupSaver saver(mConfig, description() );
-    CalPrintBase::loadConfig();
+  if ( mConfig ) {
     mPageTitle = mConfig->readEntry( "Page title", i18n("Todo list") );
     mTodoPrintType = (eTodoPrintType)mConfig->readNumEntry( "Print type", (int)TodosAll );
     mIncludeDescription = mConfig->readBoolEntry( "Include description", true );
@@ -533,9 +521,7 @@ void CalPrintTodos::loadConfig()
 void CalPrintTodos::saveConfig()
 {
   readSettingsWidget();
-  if (mConfig) {
-    KConfigGroupSaver saver(mConfig, description() );
-    CalPrintBase::saveConfig();
+  if ( mConfig ) {
     mConfig->writeEntry( "Page title", mPageTitle );
     mConfig->writeEntry( "Print type", (int)mTodoPrintType );
     mConfig->writeEntry( "Include description", mIncludeDescription );

@@ -89,15 +89,25 @@ class CalPrintBase : public QObject
     */
     virtual KPrinter::Orientation orientation() { return mOrientation; }
 
-  public slots:
     /**
       Load print format configuration from config file.
     */
-    virtual void loadConfig();
+    virtual void loadConfig() = 0;
     /**
       Write print format configuration to config file.
     */
-    virtual void saveConfig();
+    virtual void saveConfig() = 0;
+
+    /**
+      Load complete config. This also calls loadConfig() of the derived class.
+    */
+    void doLoadConfig();
+    /**
+      Save complete config. This also calls saveConfig() of the derived class.
+    */
+    void doSaveConfig();
+
+  public slots:
     /**
       Read settings from configuration widget and apply them to current object.
     */
@@ -117,7 +127,8 @@ class CalPrintBase : public QObject
     }
 
   protected:
-    QDate mFromDate, mToDate;
+    QDate mFromDate;
+    QDate mToDate;
     bool mUseColors;
 
   public:
