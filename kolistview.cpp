@@ -379,8 +379,10 @@ void KOListView::changeIncidenceDisplay(Incidence *incidence, int action)
     break;
     case KOGlobals::INCIDENCEDELETED: {
       item = getItemForIncidence(incidence);
-      if (item)
+      if (item) {
         delete item;
+        mUidDict.remove( incidence->uid() );
+      }
       break;
     }
     default:
