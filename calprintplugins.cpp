@@ -328,7 +328,7 @@ void CalPrintWeek::print( QPainter &p, int width, int height )
       do {
         QString line1( local->formatDate( curWeek.addDays( -6 ) ) );
         QString line2( local->formatDate( curWeek ) );
-        int hh = mHeaderHeight * 2./3.;
+        int hh = int(mHeaderHeight * 2./3.);
         drawHeader( p, i18n("date from - to", "%1 - %2").arg( line1 ).arg( line2 ),
                     curWeek, QDate(), 0, 0, width, hh );
         drawTimeTable( p, fromWeek, curWeek,
