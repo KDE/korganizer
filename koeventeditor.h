@@ -13,7 +13,7 @@
 #include "koeditordetails.h"
 #include "koeditorrecurrence.h"
 
-class CategoryDialog;
+class CategorySelectDialog;
 class QWidgetStack;
 
 /**
@@ -48,6 +48,7 @@ class KOEventEditor : public KDialogBase
     void writeEvent(KOEvent *);
 
   public slots:
+    void updateCategoryConfig();
 
   signals:
     void eventAdded(KOEvent *);
@@ -56,6 +57,7 @@ class KOEventEditor : public KDialogBase
     void eventDeleted();
 
     void categoryConfigChanged();
+    void editCategories();
 
   protected slots:
     void slotDefault();
@@ -84,7 +86,7 @@ class KOEventEditor : public KDialogBase
     KOEditorDetails      *mDetails;
     KOEditorRecurrence   *mRecurrence;
 
-    CategoryDialog *mCategoryDialog;
+    CategorySelectDialog *mCategoryDialog;
     
     QWidgetStack *mRecurrenceStack;
     QLabel *mRecurrenceDisabled;

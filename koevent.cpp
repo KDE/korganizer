@@ -481,6 +481,14 @@ void KOEvent::setCategories(const QString &catStr)
 
   if (catStr.isEmpty()) return;
 
+  categories = QStringList::split(",",catStr);
+
+  QStringList::Iterator it;
+  for(it = categories.begin();it != categories.end(); ++it) {
+    *it = (*it).stripWhiteSpace();
+  }
+
+#if 0
   QStringList tmpList;
   int index1 = 0;
   int index2 = 0;
@@ -492,6 +500,7 @@ void KOEvent::setCategories(const QString &catStr)
   // get last category
   tmpList.append(catStr.mid(index1, (catStr.length()-index1)));
   categories = tmpList;
+#endif
 
   emit eventUpdated(this);
 }

@@ -34,6 +34,7 @@ class KOPrefsDialog;
 class ArchiveDialog;
 class OutgoingDialog;
 class IncomingDialog;
+class CategoryEditDialog;
 
 /**
   This is the main calendar widget. It provides the different vies on t he
@@ -280,7 +281,9 @@ class CalendarView : public QWidget
     void schedule_reply();
     void schedule_counter();
     void schedule_declinecounter();
-  
+
+    void editCategories();
+      
   protected slots:
     /** Move the current view date to today */
     void goToday();
@@ -358,6 +361,7 @@ class CalendarView : public QWidget
     ArchiveDialog *mArchiveDialog;
     OutgoingDialog *mOutgoingDialog;
     IncomingDialog *mIncomingDialog;
+    CategoryEditDialog *mCategoryEditDialog;
 };
 
 #endif // _CALENDARVIEW_H

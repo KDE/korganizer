@@ -45,6 +45,7 @@
 
 #include "catdlg.h"
 #include "koprefs.h"
+#include "categoryselectdialog.h"
 
 #include "koeventeditor.h"
 #include "koeventeditor.moc"
@@ -56,7 +57,8 @@ KOEventEditor::KOEventEditor(CalObject *calendar) :
   mCalendar = calendar;
   mEvent = 0;
 
-  mCategoryDialog = new CategoryDialog();
+//  mCategoryDialog = new CategoryDialog();
+  mCategoryDialog = new CategorySelectDialog();
 
   setupGeneralTab();
   setupDetailsTab();
@@ -76,8 +78,9 @@ KOEventEditor::KOEventEditor(CalObject *calendar) :
   connect(mGeneral,SIGNAL(openCategoryDialog()),mCategoryDialog,SLOT(show()));
   connect(mCategoryDialog,SIGNAL(categoriesSelected(QString)),
           mGeneral,SLOT(setCategories(QString)));
-  connect(mCategoryDialog,SIGNAL(categoryConfigChanged()),
-          SIGNAL(categoryConfigChanged()));
+  connect(mCategoryDialog,SIGNAL(editCategories()),SIGNAL(editCategories()));
+//  connect(mCategoryDialog,SIGNAL(categoryConfigChanged()),
+//          SIGNAL(categoryConfigChanged()));
 
   // Clicking cancel exits the dialog without saving
   connect(this,SIGNAL(cancelClicked()),SLOT(reject()));
@@ -245,4 +248,9 @@ bool KOEventEditor::validateInput()
   if (!mDetails->validateInput()) return false;
   if (!mRecurrence->validateInput()) return false;
   return true;
+}
+
+void KOEventEditor::updateCategoryConfig()
+{
+  mCategoryDialog->updateCategoryConfig();
 }

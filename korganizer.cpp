@@ -363,6 +363,10 @@ void KOrganizer::initActions()
                           actionCollection());
   KStdAction::saveOptions(this, SLOT(saveOptions()), actionCollection());
   KStdAction::keyBindings(this, SLOT(editKeys()), actionCollection());
+
+  (void)new KAction(i18n("Edit Categories"), 0,
+                    mCalendarView,SLOT(editCategories()),
+                    actionCollection(),"edit_categories");
   
   createGUI();
 

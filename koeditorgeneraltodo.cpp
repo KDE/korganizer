@@ -112,6 +112,7 @@ void KOEditorGeneralTodo::initMisc()
   descriptionEdit->insertLine( "" );
   descriptionEdit->setReadOnly( false );
   descriptionEdit->setOverwriteMode( false );
+  descriptionEdit->setWordWrap(QMultiLineEdit::WidgetWidth);
 
   ownerLabel = new QLabel( this, "Label_7" );
   ownerLabel->setText( i18n("Owner:") );

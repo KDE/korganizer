@@ -43,7 +43,8 @@ libkorganizer_la_SOURCES =  outgoingdialog_base.ui \
         outgoingdialog.cpp \
         incomingdialog_base.ui incomingdialog.cpp \
         scheduler.cpp imipscheduler.cpp dummyscheduler.cpp \
-        koeventview.cpp
+        koeventview.cpp categoryselectdialog_base.ui categoryselectdialog.cpp \
+        categoryeditdialog_base.ui categoryeditdialog.cpp
 
 alarmd_SOURCES = alarmdaemon.cpp alarmmain.cpp \
         calobject.cpp calendarlocal.cpp \

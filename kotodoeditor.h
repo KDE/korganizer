@@ -10,6 +10,7 @@
 #include "koeditorgeneraltodo.h"
 #include "koeditordetails.h"
 
+class CategoryDialog;
 
 /**
   * This is the class to add/edit a new appointment.

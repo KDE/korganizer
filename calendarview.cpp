@@ -55,6 +55,7 @@
 #include "incomingdialog.h"
 #include "scheduler.h"
 #include "calendarlocal.h"
+#include "categoryeditdialog.h"
 
 #include "calendarview.h"
 #include "calendarview.moc"
@@ -89,6 +90,8 @@ CalendarView::CalendarView(QWidget *parent,const char *name)
   mOutgoingDialog = new OutgoingDialog(mCalendar,this);
   mIncomingDialog = new IncomingDialog(mCalendar,this);
 
+  mCategoryEditDialog = new CategoryEditDialog();
+
   QBoxLayout *topLayout = new QVBoxLayout(this);
 
   // create the main layout frames.
@@ -102,6 +105,8 @@ CalendarView::CalendarView(QWidget *parent,const char *name)
   mOptionsDialog = new KOPrefsDialog(this);
   mOptionsDialog->readConfig();
   connect(mOptionsDialog,SIGNAL(configChanged()),SLOT(updateConfig()));
+  connect(mCategoryEditDialog,SIGNAL(categoryConfigChanged()),
+          mOptionsDialog,SLOT(updateCategories()));
 
   mDateNavigator = new KDateNavigator(mLeftFrame, mCalendar, TRUE,
                         "CalendarView::DateNavigator", QDate::currentDate());
@@ -725,8 +730,9 @@ void CalendarView::newEvent(QDateTime fromHint, QDateTime toHint)
 
   // connect the win for changed events
   connect(eventWin,SIGNAL(eventAdded(KOEvent *)),SLOT(eventAdded(KOEvent *)));
-  connect(eventWin,SIGNAL(categoryConfigChanged()),
-          mOptionsDialog,SLOT(updateCategories()));
+  connect(mCategoryEditDialog,SIGNAL(categoryConfigChanged()),
+          eventWin,SLOT(updateCategoryConfig()));
+  connect(eventWin,SIGNAL(editCategories()),mCategoryEditDialog,SLOT(show()));
 
   connect(this,SIGNAL(closingDown()),eventWin,SLOT(reject()));
 
@@ -744,8 +750,9 @@ void CalendarView::newEvent(QDateTime fromHint, QDateTime toHint, bool allDay)
 
   // connect the win for changed events
   connect(eventWin,SIGNAL(eventAdded(KOEvent *)),SLOT(eventAdded(KOEvent *)));
-  connect(eventWin,SIGNAL(categoryConfigChanged()),
-          mOptionsDialog,SLOT(updateCategories()));
+  connect(mCategoryEditDialog,SIGNAL(categoryConfigChanged()),
+          eventWin,SLOT(updateCategoryConfig()));
+  connect(eventWin,SIGNAL(editCategories()),mCategoryEditDialog,SLOT(show()));
 
   connect(this,SIGNAL(closingDown()),eventWin,SLOT(reject()));
 
@@ -863,8 +870,10 @@ void CalendarView::editEvent(KOEvent *anEvent)
               SLOT(eventChanged(KOEvent *)));
       connect(eventWin,SIGNAL(eventDeleted()),
               SLOT(eventDeleted()));
-      connect(eventWin,SIGNAL(categoryConfigChanged()),
-              mOptionsDialog,SLOT(updateCategories()));
+      connect(mCategoryEditDialog,SIGNAL(categoryConfigChanged()),
+              eventWin,SLOT(updateCategoryConfig()));
+      connect(eventWin,SIGNAL(editCategories()),
+              mCategoryEditDialog,SLOT(show()));
       connect(this, SIGNAL(closingDown()),
               eventWin, SLOT(reject()));
       eventWin->show();
@@ -1363,4 +1372,9 @@ void CalendarView::selectDates(const QDateList selectedDates)
   } else {
     changeView(mAgendaView);
   }
+}
+
+void CalendarView::editCategories()
+{
+  mCategoryEditDialog->show();
 }
