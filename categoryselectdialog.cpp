@@ -2,6 +2,7 @@
 
 #include <qlistview.h>
 #include <qpushbutton.h>
+#include <qheader.h>
 
 #include "categoryselectdialog.h"
 
@@ -17,6 +18,8 @@
 CategorySelectDialog::CategorySelectDialog( QWidget* parent,  const char* name, bool modal, WFlags fl )
     : CategorySelectDialog_base( parent, name, modal, fl )
 {
+  mCategories->header()->hide();
+
   setCategories();
   
   connect(mButtonEdit,SIGNAL(clicked()),SIGNAL(editCategories()));

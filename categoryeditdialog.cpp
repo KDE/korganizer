@@ -3,6 +3,7 @@
 #include <qstringlist.h>
 #include <qlineedit.h>
 #include <qlistview.h>
+#include <qheader.h>
 
 #include "koprefs.h"
 
@@ -18,6 +19,8 @@
 CategoryEditDialog::CategoryEditDialog( QWidget* parent,  const char* name, bool modal, WFlags fl )
     : CategoryEditDialog_base( parent, name, modal, fl )
 {
+  mCategories->header()->hide();
+
   QStringList::Iterator it;
 
   for (it = KOPrefs::instance()->mCustomCategories.begin();
