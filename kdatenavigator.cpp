@@ -26,6 +26,7 @@
 #include <qkeycode.h>
 #include <qpushbutton.h>
 #include <qlayout.h>
+#include <qtimer.h>
 
 #include <kdebug.h>
 #include <klocale.h>
@@ -174,6 +175,12 @@ KDateNavigator::KDateNavigator(QWidget *parent,Calendar *calendar,
 
   // read settings from configuration file.
   updateConfig();
+  
+  updateTimer = new QTimer(this);
+  QObject::connect(updateTimer,SIGNAL(timeout()),
+    this,SLOT(possiblyPastMidnight()));
+  updateTimer->start(0,true);
+  lastDayChecked = QDate::currentDate();  
 }
 
 
@@ -181,6 +188,51 @@ KDateNavigator::~KDateNavigator()
 {
 }
 
+
+void KDateNavigator::passedMidnight()
+{
+    qDebug("Definitely past midnight.");
+    
+    QDate today = QDate::currentDate();
+
+    daymatrix->recalculateToday();
+    daymatrix->repaint();    
+    emit dayPassed(today);
+    if (today.month() != lastDayChecked.month()) 
+    {
+       if (daymatrix->isEndOfMonth()) {
+         goNextMonth();
+	 daymatrix->recalculateToday();
+	 daymatrix->repaint();
+       }
+       emit monthPassed(today); 
+    }
+}
+
+/* slot */ void KDateNavigator::possiblyPastMidnight()
+{
+  qDebug(QString("Possibly past midnight on %1").arg(QDate::currentDate().toString()));
+  
+  if (lastDayChecked!=QDate::currentDate())
+  {
+    passedMidnight();
+    lastDayChecked=QDate::currentDate();
+  }
+  // Set the timer to go off 1 second after midnight
+  // or after 8 minutes, whichever comes first.
+  if (updateTimer)
+  {
+    QTime now = QTime::currentTime();
+    QTime midnight = QTime(23,59,59);
+    int msecsWait = QMIN(4800,now.msecsTo(midnight)+2000);
+    
+    qDebug(QString("Waiting %1 msec from %2 to %3.").arg(msecsWait)
+    	.arg(now.toString()).arg(midnight.toString()));
+    
+    updateTimer->stop();
+    updateTimer->start(msecsWait,true);
+  }
+}
 
 void KDateNavigator::updateDates()
 {

@@ -25,7 +25,6 @@
 #include <qevent.h>
 #include <qpainter.h>
 #include <qptrlist.h>
-#include <qtimer.h>
 
 #include <kglobal.h>
 #include <kdebug.h>
@@ -107,11 +106,6 @@ KODayMatrix::KODayMatrix(QWidget *parent, Calendar* calendar, QDate date, const 
 
   setAcceptDrops(true);
 
-  // Set up the update timer now; updateView will start it.
-  updateTimer = new QTimer(this);
-  QObject::connect(updateTimer,SIGNAL(timeout()),
-    this,SLOT(updateView()));
-
   updateView(date);
 }
 
@@ -131,6 +125,8 @@ QColor KODayMatrix::getShadedColor(QColor color)
 
 KODayMatrix::~KODayMatrix()
 {
+  qDebug(QString("Destroying a KODayMatrix @%1").arg((int)this));
+  
   delete [] days;
   delete [] daylbls;
   delete [] events;
@@ -186,7 +182,20 @@ void KODayMatrix::setSelectedDaysFrom(const QDate& start, const QDate& end)
 }
 
 
-void KODayMatrix::updateView()
+void KODayMatrix::recalculateToday()
+{
+    today = -1;
+    for (int i=0; i<NUMDAYS; i++) {
+      // if today is in the currently displayed month, hilight today
+      if (days[i].year() == QDate::currentDate().year() &&
+          days[i].month() == QDate::currentDate().month() &&
+          days[i].day() == QDate::currentDate().day()) {
+        today = i;
+      }
+    }
+}
+
+/* slot */ void KODayMatrix::updateView()
 {
   updateView(startdate);
 }
@@ -204,7 +213,7 @@ void KODayMatrix::updateView(QDate actdate)
     
     int nextLine = ((fstDayOfWk == 1) && (KGlobal::locale()->weekStartsMonday() == 1)) ? 7 : 0;
 
-    int offset = (KGlobal::locale()->weekStartsMonday() ? 1 : 0) - fstDayOfWk - nextLine;
+    // int offset = (KGlobal::locale()->weekStartsMonday() ? 1 : 0) - fstDayOfWk - nextLine;
 
     // reset index of selection according to shift of starting date from startdate to actdate
     if (mSelStart != NOSELECTION) {
@@ -228,21 +237,12 @@ void KODayMatrix::updateView(QDate actdate)
   }
 
   if (daychanged) {
-    today = -1;
+    recalculateToday();
   }
-
-  for(int i = 0; i < NUMDAYS; i++) {
-    if (daychanged) {    
+      
+    for(int i = 0; i < NUMDAYS; i++) {
       days[i] = startdate.addDays(i);
       daylbls[i] = QString::number( mCalendarSystem->day( days[i] ));
-
-      // if today is in the currently displayed month, hilight today
-      if (days[i].year() == QDate::currentDate().year() &&
-          days[i].month() == QDate::currentDate().month() &&
-          days[i].day() == QDate::currentDate().day()) {
-        today = i;
-      }
-    }
 
     // if events are set for the day then remember to draw it bold
     QPtrList<Event> eventlist = mCalendar->events(days[i]);
@@ -274,17 +274,6 @@ void KODayMatrix::updateView(QDate actdate)
     } else {
       mHolidays[i] = QString::null;
     }
-  }
-
-  // Set the timer to go off 1 second after midnight
-  if (updateTimer)
-  {
-    QTime now = QTime::currentTime();
-    QTime midnight = QTime(23,59,59);
-    int msecsWait = QMIN(480000,now.msecsTo(midnight)+2000);
-
-    updateTimer->stop();
-    updateTimer->start(msecsWait,true);
   }
 }
 

@@ -32,6 +32,7 @@
 #include "kodaymatrix.h"
 
 class QPushButton;
+class QTimer;
 
 class KCalendarSystem;
 
@@ -57,14 +58,18 @@ class KDateNavigator: public QFrame
    void updateView();
    void updateConfig();
    void shiftEvent(const QDate& , const QDate&);
-
+    
  signals:
    void datesSelected(const DateList &);
    void eventDropped(Event *);
    void weekClicked(QDate);
    void goNext();
    void goPrevious();
-
+   
+   // Signals emitted at midnight carrying the new date.
+   void dayPassed(QDate);
+   void monthPassed(QDate);
+   
  protected slots:
 
 //+   void goNextWeek();
@@ -74,6 +79,22 @@ class KDateNavigator: public QFrame
    void goPrevMonth();
    void goNextYear();
    void goPrevYear();
+
+    /**
+    * Called regularly to see if we need to update the view
+    * wrt. the today box and the month box. Only important
+    * if you leave KOrganizer idle for long periods of time.
+    *
+    * Until we have a reliable way of setting QTimers to go
+    * off at a particular wall-clock time, we need this,
+    * which calls passedMidnight() at the right moments.
+    */
+    void possiblyPastMidnight();
+    
+    /** handles updating the view when midnight has come by due to idle time.
+    * 
+    */
+    void passedMidnight();
 
  protected:
    void updateDates();
@@ -107,6 +128,13 @@ class KDateNavigator: public QFrame
    KCalendarSystem *mCalendarSystem; 
 
    const QString *curHeaders;
+
+   
+    /** used to update the day view periodically, in particular every 
+    * midnight to move the "today" rectangle.
+    */
+    QTimer *updateTimer;
+    QDate lastDayChecked;
 
    // Disabling copy constructor and assignment operator
    KDateNavigator(const KDateNavigator & );

@@ -35,7 +35,6 @@ class QDragEnterEvent;
 class QDragMoveEvent;
 class QDragLeaveEvent;
 class QDropEvent;
-class QTimer;
 
 class KODayMatrix;
 
@@ -153,12 +152,32 @@ public:
     void setSelectedDaysFrom(const QDate& start, const QDate& end);
 
 
+    /** Is today visible in the view? Keep this in sync with
+    * the values today (below) can take.
+    */
+    bool isTodayVisible() const { return today>=0; } ;
+    
+    /** If today is visible, then we can find out if today is 
+    * near the beginning or the end of the month.
+    * This is dependent on today remaining the index
+    * in the array of visible dates and going from
+    * top left (0) to bottom right (41).
+    */
+    bool isBeginningOfMonth() const { return today<=8; } ;
+    bool isEndOfMonth() const { return today>=27; } ;
+        
 public slots:
     /** Recalculates all the flags of the days in the matrix like holidays or events
      *  on a day (Actually calls above method with the actual startdate).
      */
     void updateView();
 
+    /**
+    * Calculate which square in the matrix should be 
+    * hilighted to indicate it's today.
+    */
+    void recalculateToday();
+    
 /*
     void setStartDate(QDate);
 */
@@ -284,11 +303,6 @@ private:
     QRect     daysize;
 
     KCalendarSystem* mCalendarSystem;
-
-    /** used to update the day view periodically, in particular every 
-    * midnight to move the "today" rectangle.
-    */
-    QTimer *updateTimer;
 };
 
 #endif
