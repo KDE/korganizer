@@ -794,6 +794,8 @@ void KOEditorRecurrence::readEvent(Event *event)
 
   exceptionDateEdit->setDate(QDate::currentDate());
 
+  exceptionList->clear();
+  mExceptionDates.clear();
   DateList exDates = event->exDates();
   DateList::ConstIterator dit;
   for (dit = exDates.begin(); dit != exDates.end(); ++dit ) {
