@@ -80,7 +80,7 @@ class KOEditorDetails : public QWidget
   public slots:
     void insertAttendee(Attendee *);
 
-	protected slots:
+  protected slots:
     void addNewAttendee();
     void removeAttendee();
     void openAddressBook();
