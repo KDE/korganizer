@@ -16,26 +16,31 @@
     along with this program; if not, write to the Free Software
     Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 */
-#ifndef KORG_BIRTHDAYS_H
-#define KORG_BIRTHDAYS_H
 
-#include <korganizer/part.h>
+#ifndef KORG_BIRTHDAYSDIALOG_H
+#define KORG_BIRTHDAYSDIALOG_H
 
-#include <libkcal/calendar.h>
+#include <qcheckbox.h>
+#include <qlabel.h>
 
-class Birthdays : public KOrg::Part {
+#include <krestrictedline.h>
+#include <kdialogbase.h>
+
+class BirthdaysDialog : public KDialogBase {
     Q_OBJECT
   public:
-    Birthdays(KOrg::MainWindow *, const char *);
-    ~Birthdays();
+    BirthdaysDialog(QWidget *parent=0);
+    virtual ~BirthdaysDialog();
 
-    QString info();
-
+    QCheckBox *mAlarm;
+    KRestrictedLine *mAlarmTimeEdit;
+  public slots:
+    void slotUser1();
+    
   private slots:
-    void importBirthdays();
-
+    void alarmClicked();
   private:
-    QWidget *mParent;
+    QLabel *mALabel;
 };
 
 #endif

@@ -27,15 +27,19 @@
 #include <klocale.h>
 #include <kdebug.h>
 #include <kaction.h>
+#include <kmessagebox.h>
 
 #include <kabc/addressbook.h>
 #include <kabc/stdaddressbook.h>
 
 #include <libkcal/calendar.h>
 #include <libkcal/event.h>
+#include <libkcal/alarm.h>
 
 #include "calendarview.h"
 #include "koprefs.h"
+
+#include "birthdaysdialog.h"
 
 #include "birthdays.h"
 #include "birthdays.moc"
@@ -64,6 +68,7 @@ Birthdays::Birthdays(KOrg::MainWindow *parent, const char *name) :
 
   new KAction(i18n("Import birthdays"), 0, this, SLOT(importBirthdays()),
               actionCollection(), "import_birthdays");
+  mParent = parent;
 }
 
 Birthdays::~Birthdays()
@@ -84,49 +89,78 @@ void Birthdays::importBirthdays()
   QDateTime birthdate;
   QDate now_date = QDate::currentDate();
   QDate birthd;
+  QString summary;
+  int inserted_birthdays = 0;
+
+  BirthdaysDialog *bd = new BirthdaysDialog();
+  if (bd->exec()!=QDialog::Accepted) return;
 
   KABC::AddressBook *add_book = KABC::StdAddressBook::self();
   KABC::AddressBook::Iterator it;
   for ( it = add_book->begin(); it != add_book->end(); ++it ) {
     if ( (*it).birthday().date().isValid() ) {
       kdDebug() << "found a birthday " << (*it).birthday().toString() << endl;
-      Event *ev = new Event();
-      birthd = (*it).birthday().date();
-      birthd.setYMD(now_date.year(),birthd.month(),birthd.day());
-      if ( birthd < now_date ) {
-        birthd.setYMD(now_date.year()+1,birthd.month(),birthd.day());
-      }
-      birthdate = (*it).birthday();
-      birthdate.setDate(birthd);
-      ev->setDtStart(birthdate);
-      ev->setDtEnd(birthdate);
-      int old = birthd.year() - (*it).birthday().date().year();
-      QString summary;
-      summary.setNum(old);
-      summary  = (*it).formattedName() + " " + summary + "s birthday";
-      ev->setSummary(summary);
-      QStringList::Iterator itc;
-      for (itc = KOPrefs::instance()->mCustomCategories.begin();
-          itc != KOPrefs::instance()->mCustomCategories.end(); ++itc ) {
-        if ((*itc)==QString("Birthday"))
-          ev->setCategories(QString("Birthday"));
-      }
 
-      bool insert = true;
-      QPtrList<Event> events = cal->getAllEvents();
+      summary = (*it).formattedName() + i18n("'s birthday");
+      birthdate = (*it).birthday();
+      
+      Event *ev = 0;
       Event *e;
+      // look if not already imported
+      bool insert = true;
+      QPtrList<Event> events = cal->getEventsForDate(birthdate);
       for ( e = events.first(); e; e = events.next() ) {
+        kdDebug() << summary << " | " << e->summary() << endl;
         if ( e->summary()==summary ) {
+          kdDebug() << " inserted " << e->summary() << endl;
           insert = false;
+          ev = e;
           e = events.last();
         }
       }
+      if (!ev) ev = new Event();
+      
+
+      ev->setDtStart(birthdate);
+      ev->setDtEnd(birthdate);
+      ev->setHasEndDate(true);
+
+      ev->setSummary(summary);
+
+      // Set the recurrence
+      Recurrence *vRecurrence = ev->recurrence();
+      vRecurrence->setRecurStart(birthdate);
+      vRecurrence->setYearly(Recurrence::rYearlyDay,1,-1);
+      vRecurrence->addYearlyNum(birthdate.date().dayOfYear());
+
+      ev->clearAlarms();
+      if (bd->mAlarm->isChecked()) {
+        // Set the alarm
+        Alarm* vAlarm = ev->newAlarm();
+        vAlarm->setText(summary);
+        vAlarm->setTime(birthdate);
+        vAlarm->setOffset(-1440 * bd->mAlarmTimeEdit->text().toInt());
+        vAlarm->setEnabled(true);
+      }
+
+      // insert category
+      QStringList::Iterator itc;
+      for (itc = KOPrefs::instance()->mCustomCategories.begin();
+          itc != KOPrefs::instance()->mCustomCategories.end(); ++itc ) {
+        if ((*itc)==QString(i18n("Birthday")))
+          ev->setCategories(QString(i18n("Birthday")));
+      }
+
       if (insert) {
         cal->addEvent(ev);
+        inserted_birthdays++;
         kdDebug() << "imported " << birthdate.toString() << endl;
       }
     }
   }
+  summary.setNum(inserted_birthdays);
+  summary = i18n("Imported ")+summary+i18n(" birthdays.");
+  KMessageBox::information(mParent,summary);
 #endif
 
 }
