@@ -1002,24 +1002,40 @@ void KOAgenda::placeAgendaItem( KOAgendaItem *item, double subCellWidth )
 //  kdDebug() << "KOAgenda::placeAgendaItem(): " << item->incidence()->summary()
 //            << " subCellWidth: " << subCellWidth << endl;
 
-  // left upper corner, no subcells yet
+  // "left" upper corner, no subcells yet, RTL layouts have right/left switched, widths are negative then
   QPoint pt = gridToContents( QPoint( item->cellXLeft(), item->cellYTop() ) );
   // right lower corner
-  QPoint pt1 = gridToContents( QPoint( item->cellXLeft() + item->cellWidth(),
-                  item->cellYBottom()+1 ) );
+  QPoint pt1 = gridToContents( QPoint( item->cellXLeft() + item->cellWidth(), 
+      item->cellYBottom()+1 ) );
 
   double subCellPos = item->subCell() * subCellWidth;
 
   // we need to add 0.01 to make sure we don't loose one pixed due to
   // numerics (i.e. if it would be x.9998, we want the integer, not rounded down.
+  double delta=0.01;
+  if (subCellWidth<0) delta=-delta;
+  int height, width, xpos, ypos;
   if (mAllDayMode) {
-    item->resize( pt1.x()-pt.x(), int( subCellPos + subCellWidth + 0.01 ) - int( subCellPos ) );
-    pt.setY( pt.y() + int( subCellPos ) );
+    width = pt1.x()-pt.x();
+    height = int( subCellPos + subCellWidth + delta ) - int( subCellPos );
+    xpos = pt.x();
+    ypos = pt.y() + int( subCellPos );
   } else {
-    item->resize( int( subCellPos + subCellWidth + 0.01 ) - int( subCellPos ), pt1.y()-pt.y() );
-    pt.setX( pt.x() + int( subCellPos ) );
+    width = int( subCellPos + subCellWidth + delta ) - int( subCellPos );
+    height = pt1.y()-pt.y();
+    xpos = pt.x() + int( subCellPos );
+    ypos = pt.y();
   }
-  moveChild( item, pt.x(), pt.y() );
+  if (width<0) { // RTL language/layout
+    xpos += width;
+    width = -width;
+  }
+  if (height<0) { // BTT (bottom-to-top) layout ?!?
+    ypos += height;
+    height = -height;
+  }
+  item->resize( width, height );
+  moveChild( item, xpos, ypos );
 }
 
 /*
