@@ -1019,7 +1019,7 @@ void KOAgenda::setNoActionCursor(KOAgendaItem *moveItem,const QPoint& viewportPo
   cell, where other items are, which do not overlap in Y with the item to place,
   the display gets corrupted, although the corruption looks quite nice.
 */
-void KOAgenda::placeSubCells(KOAgendaItem *placeItem)
+void KOAgenda::placeSubCells( KOAgendaItem *placeItem )
 {
 #if 0
   kdDebug(5850) << "KOAgenda::placeSubCells()" << endl;
@@ -1038,75 +1038,81 @@ void KOAgenda::placeSubCells(KOAgendaItem *placeItem)
 
   QPtrList<KOAgendaItem> conflictItems;
   int maxSubCells = 0;
-  QIntDict<KOAgendaItem> subCellDict(5);
+  QIntDict<KOAgendaItem> subCellDict( 5 );
 
+  // Find all items which are in the same cell.
   KOAgendaItem *item;
-  for ( item=mItems.first(); item != 0; item=mItems.next() ) {
-    if (item != placeItem) {
-      if (placeItem->cellX() <= item->cellXWidth() &&
-          placeItem->cellXWidth() >= item->cellX()) {
-        if ((placeItem->cellYTop() <= item->cellYBottom()) &&
-            (placeItem->cellYBottom() >= item->cellYTop())) {
-          conflictItems.append(item);
-          if (item->subCells() > maxSubCells)
+  for ( item=mItems.first(); item != 0; item = mItems.next() ) {
+    if ( item != placeItem ) {
+      if ( placeItem->cellX() <= item->cellXWidth() &&
+           placeItem->cellXWidth() >= item->cellX() ) {
+        if ( ( placeItem->cellYTop() <= item->cellYBottom() ) &&
+             ( placeItem->cellYBottom() >= item->cellYTop() ) ) {
+          conflictItems.append( item );
+          if ( item->subCells() > maxSubCells )
             maxSubCells = item->subCells();
-          subCellDict.insert(item->subCell(),item);
+          subCellDict.insert( item->subCell(), item );
         }
       }
     }
   }
 
-  if (conflictItems.count() > 0) {
+  if ( conflictItems.count() > 0 ) {
     // Look for unused sub cell and insert item
     int i;
-    for(i=0;i<maxSubCells;++i) {
-      if (!subCellDict.find(i)) {
-        placeItem->setSubCell(i);
+    for( i = 0; i < maxSubCells; ++i ) {
+      if ( !subCellDict.find( i ) ) {
+        placeItem->setSubCell( i );
         break;
       }
     }
-    if (i == maxSubCells) {
-      placeItem->setSubCell(maxSubCells);
+    if ( i == maxSubCells ) {
+      placeItem->setSubCell( maxSubCells );
       maxSubCells++;  // add new item to number of sub cells
     }
 
     // Prepare for sub cell geometry adjustment
     double newSubCellWidth;
-    if (mAllDayMode) newSubCellWidth = mGridSpacingY / maxSubCells;
+    if ( mAllDayMode ) newSubCellWidth = mGridSpacingY / maxSubCells;
     else newSubCellWidth = mGridSpacingX / maxSubCells;
-    conflictItems.append(placeItem);
+    conflictItems.append( placeItem );
 
 //    kdDebug(5850) << "---Conflict items: " << conflictItems.count() << endl;
 
     // Adjust sub cell geometry of all items
-    for ( item=conflictItems.first(); item != 0;
-          item=conflictItems.next() ) {
+    for ( item = conflictItems.first(); item != 0;
+          item = conflictItems.next() ) {
 //      kdDebug(5850) << "---Placing item: " << item->itemEvent()->getSummary() << endl;
-      item->setSubCells(maxSubCells);
-      if (mAllDayMode) {
-        item->resize((int)(item->cellWidth() * mGridSpacingX), (int)newSubCellWidth);
+      item->setSubCells( maxSubCells );
+      if ( mAllDayMode ) {
+        item->resize( int( item->cellWidth() * mGridSpacingX ),
+                      int( newSubCellWidth ) );
       } else {
-        item->resize((int)newSubCellWidth, (int)(item->cellHeight()*mGridSpacingY));
+        item->resize( int( newSubCellWidth ),
+                      int( item->cellHeight() * mGridSpacingY ) );
       }
       int x,y;
-      gridToContents(item->cellX(),item->cellYTop(),x,y);
-      if (mAllDayMode) {
-        y += (int)(item->subCell() * newSubCellWidth);
+      gridToContents( item->cellX(), item->cellYTop(), x, y );
+      if ( mAllDayMode ) {
+        y += int( item->subCell() * newSubCellWidth );
       } else {
-        x += (int)(item->subCell() * newSubCellWidth);
+        x += int( item->subCell() * newSubCellWidth );
       }
-      moveChild(item,x,y);
+      moveChild( item, x, y );
     }
   } else {
-    placeItem->setSubCell(0);
-    placeItem->setSubCells(1);
-    if (mAllDayMode) placeItem->resize(placeItem->width(),(int)mGridSpacingY);
-    else placeItem->resize((int)mGridSpacingX,placeItem->height());
+    // There is only one item in this cell
+    placeItem->setSubCell( 0 );
+    placeItem->setSubCells( 1 );
+    if ( mAllDayMode )
+      placeItem->resize( placeItem->width(), int( mGridSpacingY ) );
+    else
+      placeItem->resize( int( mGridSpacingX ), placeItem->height() );
     int x,y;
-    gridToContents(placeItem->cellX(),placeItem->cellYTop(),x,y);
-    moveChild(placeItem,x,y);
+    gridToContents( placeItem->cellX(), placeItem->cellYTop(), x, y );
+    moveChild( placeItem, x, y );
   }
-  placeItem->setConflictItems(conflictItems);
+  placeItem->setConflictItems( conflictItems );
   placeItem->update();
 }
 
