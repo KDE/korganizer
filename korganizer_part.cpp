@@ -73,6 +73,10 @@ KOrganizerPart::KOrganizerPart( QWidget *parentWidget, const char *widgetName,
                                 const QStringList & ) :
   KPIM::Part(parent, name), mTopLevelWidget( parentWidget->topLevelWidget() )
 {
+  KGlobal::locale()->insertCatalogue( "libkcal" );
+  KGlobal::locale()->insertCatalogue( "libkdepim" );
+  KGlobal::locale()->insertCatalogue( "kdgantt" );
+
   KOCore::self()->addXMLGUIClient( mTopLevelWidget, this );
 
   QString pname( name );
