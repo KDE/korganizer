@@ -488,7 +488,7 @@ void KOTodoView::setCalendar( Calendar *cal )
 void KOTodoView::updateView()
 {
 //  kdDebug(5850) << "KOTodoView::updateView()" << endl;
-
+  int oldPos = mTodoListView->contentsY();
   mTodoListView->clear();
 
   Todo::List todoList = calendar()->todos();
@@ -527,6 +527,8 @@ void KOTodoView::updateView()
   if( mDocPrefs ) restoreItemState( mTodoListView->firstChild() );
   mTodoListView->blockSignals( false );
 
+  mTodoListView->setContentsPos( 0, oldPos );
+  
   processSelectionChange();
 }
 
