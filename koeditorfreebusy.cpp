@@ -153,17 +153,14 @@ KOEditorFreeBusy::KOEditorFreeBusy( int spacing, QWidget *parent,
   QVBoxLayout *topLayout = new QVBoxLayout( this );
   topLayout->setSpacing( spacing );
 
-  QString organizer = KOPrefs::instance()->email();
-  mOrganizerLabel = new QLabel( i18n("Organizer: %1").arg( organizer ), this );
-  mIsOrganizer = true; // Will be set later. This is just valgrind silencing
-  topLayout->addWidget( mOrganizerLabel );
-
   // Label for status summary information
   // Uses the tooltip palette to highlight it
+  mIsOrganizer = false; // Will be set later. This is just valgrind silencing
   mStatusSummaryLabel = new QLabel( this );
   mStatusSummaryLabel->setPalette( QToolTip::palette() );
   mStatusSummaryLabel->setFrameStyle( QFrame::Plain | QFrame::Box );
   mStatusSummaryLabel->setLineWidth( 1 );
+  mStatusSummaryLabel->hide(); // Will be unhidden later if you are organizer
   topLayout->addWidget( mStatusSummaryLabel );
 
   // The control panel for the gantt widget
@@ -172,7 +169,7 @@ KOEditorFreeBusy::KOEditorFreeBusy( int spacing, QWidget *parent,
   QLabel *label = new QLabel( i18n( "Scale: " ), this );
   controlLayout->addWidget( label );
 
-  scaleCombo = new QComboBox( this ); 
+  scaleCombo = new QComboBox( this );
   scaleCombo->insertItem( i18n( "Hour" ) );
   scaleCombo->insertItem( i18n( "Day" ) );
   scaleCombo->insertItem( i18n( "Week" ) );
@@ -312,6 +309,8 @@ bool KOEditorFreeBusy::updateEnabled() const
 void KOEditorFreeBusy::readEvent( Event *event )
 {
   setDateTimes( event->dtStart(), event->dtEnd() );
+  mIsOrganizer = KOPrefs::instance()->thatIsMe( event->organizer() );
+  updateStatusSummary();
 }
 
 
@@ -333,12 +332,12 @@ void KOEditorFreeBusy::slotScaleChanged( int newScale )
   slotCenterOnStart();
 }
 
-void KOEditorFreeBusy::slotCenterOnStart() 
+void KOEditorFreeBusy::slotCenterOnStart()
 {
   mGanttView->centerTimeline( mDtStart );
 }
 
-void KOEditorFreeBusy::slotZoomToTime() 
+void KOEditorFreeBusy::slotZoomToTime()
 {
   mGanttView->zoomToFit();
 }
@@ -390,7 +389,7 @@ void KOEditorFreeBusy::slotUpdateGanttView( QDateTime dtFrom, QDateTime dtTo )
   mGanttView->setHorizonStart( horizonStart  );
   mGanttView->setHorizonEnd( dtTo.addDays( 15 ) );
   mGanttView->clearBackgroundColor();
-  mGanttView->setIntervalBackgroundColor( dtFrom, dtTo, Qt::magenta ); 
+  mGanttView->setIntervalBackgroundColor( dtFrom, dtTo, Qt::magenta );
   mGanttView->setUpdateEnabled( block );
   mGanttView->centerTimelineAfterShow( dtFrom );
 }
@@ -557,7 +556,6 @@ void KOEditorFreeBusy::updateStatusSummary()
         .arg( total ).arg( accepted ).arg( tentative ).arg( declined ) );
   } else {
     mStatusSummaryLabel->hide();
-    mStatusSummaryLabel->setText( "" );
   }
   mStatusSummaryLabel->adjustSize();
 }
@@ -589,7 +587,7 @@ void KOEditorFreeBusy::editFreeBusyUrl( KDGanttViewItem *i )
   if ( !item ) return;
 
   Attendee *attendee = item->attendee();
-  
+
   FreeBusyUrlDialog dialog( attendee, this );
   dialog.exec();
 }

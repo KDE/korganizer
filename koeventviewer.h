@@ -75,7 +75,7 @@ class KOEventViewer : public QTextBrowser
       Show given journal by appending it to already shown incidences.
     */
     void appendJournal( Journal *journal );
-    
+
     /**
       Clear viewer. If \a now is set to true delete view immediately. If set to
       false delete it with next call to appendIncidence().
@@ -84,10 +84,12 @@ class KOEventViewer : public QTextBrowser
 
     /**
       Add given text to currently shown content.
-    */    
+    */
     void addText( const QString &text );
 
   protected:
+    void linkPerson( const QString& email, QString name, QString uid,
+                     const QString& iconPath );
     void addTag( const QString &tag, const QString &text );
     void addLink( const QString &ref, const QString &text,
                   bool newline = true );
