@@ -36,6 +36,7 @@
 #include <korganizer/mainwindow.h>
 
 #include "calendarview.h"
+#include "kcalendariface.h"
 
 class KAction;
 class KActionCollection;
@@ -53,8 +54,9 @@ using namespace KCal;
   The ActionManager creates all the actions in KOrganizer. This class
   is shared between the main application and the part so all common
   actions are in one location.
+  It also provides DCOP interface[s].
 */
-class ActionManager : public QObject
+class ActionManager : public QObject, public KCalendarIface
 {
   Q_OBJECT
 
@@ -98,10 +100,16 @@ class ActionManager : public QObject
     void closeURL();
     /** Get current URL as QString */
     QString getCurrentURLasString() const;
-    /** Delete event with the given unique id from current calendar. */	
+    /** Delete event with the given unique id from current calendar. */
     virtual bool deleteEvent(QString uid);
 
     bool isActive() { return mActive; }
+
+    //// Implementation of the DCOP interface
+    virtual ResourceRequestReply resourceRequest( const QValueList<QPair<QDateTime, QDateTime> >& busy,
+                                                  const QCString& resource,
+                                                  const QString& vCalIn );
+
 
     QString localFileName();
 

@@ -57,7 +57,7 @@ bool ActionManager::startedKAddressBook = false;
 
 ActionManager::ActionManager(KXMLGUIClient *client, CalendarView *widget,
                              QObject *parent, KOrg::MainWindow *mainWindow)
-    : QObject(parent)
+    : QObject(parent), KCalendarIface()
 {
   mGUIClient = client;
   mACollection = mGUIClient->actionCollection();
@@ -1159,7 +1159,14 @@ void ActionManager::setTitle()
   mMainWindow->setTitle();
 }
 
+KCalendarIface::ResourceRequestReply ActionManager::resourceRequest( const QValueList<QPair<QDateTime, QDateTime> >& busy,
+ const QCString& resource,
+ const QString& vCalIn )
+{
+    kdDebug() << k_funcinfo << "resource=" << resource << " vCalIn=" << vCalIn << endl;
+    KCalendarIface::ResourceRequestReply reply;
+    reply.vCalOut = "VCalOut";
+    return reply;
+}
+
 #include "actionmanager.moc"
-
-
-

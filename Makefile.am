@@ -58,7 +58,7 @@ libkorganizer_la_SOURCES =  outgoingdialog_base.ui \
 	publishdialog_base.ui publishdialog.cpp \
         koeventview.cpp \
         kofilterview_base.ui kofilterview.cpp \
-        korganizeriface.skel \
+        korganizeriface.skel kcalendariface.skel \
         filtereditdialog.cpp filteredit_base.ui \
         kowhatsnextview.cpp kocounterdialog.cpp \
         kojournalview.cpp journalentry.cpp \
@@ -105,8 +105,8 @@ rc_DATA = korganizerui.rc korganizergsui.rc
 partdir   = $(kde_datadir)/korganizer
 part_DATA = korganizer_part.rc
 
-servicesdir = $(kde_servicesdir)
-services_DATA = webcal.protocol
+kde_services_DATA = webcal.protocol
+kde_servicetypes_DATA = dcopcalendar.desktop
 
 KDE_ICON = AUTO
 

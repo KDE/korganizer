@@ -43,7 +43,6 @@
 #include <kdebug.h>
 #include <kpopupmenu.h>
 #include <kstandarddirs.h>
-#include <dcopclient.h>
 #include <kconfig.h>
 #include <kprocess.h>
 #include <ktempfile.h>
@@ -97,10 +96,10 @@ KInstance *KOrganizerFactory::instance()
     s_about = new KAboutData("korganizer", I18N_NOOP("KOrganizer"),"1.99");
     s_instance = new KInstance(s_about);
   }
-  
+
   kdDebug() << "KOrganizerFactory::instance(): Name: " <<
                s_instance->instanceName() << endl;
-  
+
   return s_instance;
 }
 
@@ -237,6 +236,7 @@ void KOrganizerPart::showStatusMessage(const QString& message)
 {
   if (!parent() || !parent()->parent())
     return;
+  // ## why not use the signal setStatusBarText from KParts::Part? (DF)
   KMainWindow *mainWin = dynamic_cast<KMainWindow*>(parent()->parent()); //yuck
   if (mainWin && mainWin->statusBar())
       mainWin->statusBar()->message( message );
