@@ -269,7 +269,7 @@ QString KOGroupware::formatICal( const QString& iCal )
     html += "</b></a></td><td> &nbsp; </td><td>";
     // Accept conditionally
     html += "<a href=\"kmail:groupware_request_accept conditionally\"><b>";
-    html += i18n( "[Accept cond.]" );
+    html += i18n( "Accept conditionally", "[Accept cond.]" );
     html += "</b></a></td><td> &nbsp; </td><td>";
     // Decline
     html += "<a href=\"kmail:groupware_request_decline\"><b>";
