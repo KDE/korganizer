@@ -502,7 +502,7 @@ void KOrganizer::file_import()
     return;
   }
   tmpFn = tmpnam(0);
-  progPath = locate("exe", "ical2vcal") + tmpFn;
+  progPath = locate("exe", "ical2vcal") + " " + tmpFn;
 
   retVal = system(QFile::encodeName(progPath));
   
