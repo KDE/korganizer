@@ -599,9 +599,7 @@ bool KOAgenda::eventFilter_mouse(QObject *object, QMouseEvent *me)
     case QEvent::MouseButtonDblClick:
       if (object == viewport()) {
         selectItem(0);
-        QPoint pos = viewportToContents( viewportPos );
-        QPoint gpos = contentsToGrid( pos );
-        emit newEventSignal( gpos );
+        emit newEventSignal();
       } else {
         KOAgendaItem *doubleClickedItem = dynamic_cast<KOAgendaItem *>(object);
         if (doubleClickedItem) {
