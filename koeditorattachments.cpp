@@ -28,8 +28,7 @@
 
 #include <klocale.h>
 #include <kdebug.h>
-#include <kfiledialog.h>
-//#include <kurlrequesterdlg.h>
+#include <kurlrequesterdlg.h>
 #include <kmessagebox.h>
 #include <libkcal/incidence.h>
 
@@ -85,8 +84,8 @@ void KOEditorAttachments::showAttachment( QListViewItem *item )
 
 void KOEditorAttachments::slotAdd()
 {
-  KURL uri = KFileDialog::getOpenFileName( QString::null, QString::null,
-                                       this, i18n("Add Attachment") );
+  KURL uri = KURLRequesterDlg::getURL( QString::null, 0,
+                                       i18n("Add Attachment") );
   if ( !uri.isEmpty() ) {
     new QListViewItem( mAttachments, uri.url() );
   }
@@ -97,8 +96,8 @@ void KOEditorAttachments::slotEdit()
   QListViewItem *item = mAttachments->currentItem();
   if ( !item ) return;
 
-  KURL uri = KFileDialog::getOpenFileName( item->text(0), QString::null,
-                                       this, i18n("Edit Attachment") );
+  KURL uri = KURLRequesterDlg::getURL( item->text( 0 ), 0,
+                                       i18n("Edit Attachment") );
 
   if ( !uri.isEmpty() ) item->setText( 0, uri.url() );
 }
