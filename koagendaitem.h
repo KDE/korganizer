@@ -29,6 +29,18 @@ class QDragEnterEvent;
 class QDropEvent;
 
 using namespace KCal;
+class KOAgendaItem;
+
+struct MultiItemInfo
+{
+  int mStartCellX;
+  int mStartCellXWidth;
+  int mStartCellYTop,mStartCellYBottom;
+  KOAgendaItem *mFirstMultiItem;
+  KOAgendaItem *mPrevMultiItem;
+  KOAgendaItem *mNextMultiItem;
+  KOAgendaItem *mLastMultiItem;
+};
 
 /*
   The KOAgendaItem has to make sure that it receives all mouse events, which are
@@ -63,6 +75,8 @@ class KOAgendaItem : public QWidget
     void startMove();
     /** Reset to original values */
     void resetMove();
+    /** End the movement (i.e. clean up) */
+    void endMove();
 
     void moveRelative(int dx,int dy);
     void expandTop(int dy);
@@ -70,11 +84,19 @@ class KOAgendaItem : public QWidget
     void expandLeft(int dx);
     void expandRight(int dx);
 
-    void setMultiItem(KOAgendaItem *first,KOAgendaItem *next,
-                      KOAgendaItem *last);
-    KOAgendaItem *firstMultiItem() { return mFirstMultiItem; }
-    KOAgendaItem *nextMultiItem() { return mNextMultiItem; }
-    KOAgendaItem *lastMultiItem() { return mLastMultiItem; }
+    bool isMultiItem();
+    KOAgendaItem *prevMoveItem() const { return (mStartMoveInfo)?(mStartMoveInfo->mPrevMultiItem):0; }
+    KOAgendaItem *nextMoveItem() const { return (mStartMoveInfo)?(mStartMoveInfo->mNextMultiItem):0; }
+    MultiItemInfo *moveInfo() const { return mStartMoveInfo; }
+    void setMultiItem(KOAgendaItem *first,KOAgendaItem *prev,
+                      KOAgendaItem *next, KOAgendaItem *last);
+    KOAgendaItem *prependMoveItem(KOAgendaItem*);
+    KOAgendaItem *appendMoveItem(KOAgendaItem*);
+    KOAgendaItem *removeMoveItem(KOAgendaItem*);
+    KOAgendaItem *firstMultiItem() const { return (mMultiItemInfo)?(mMultiItemInfo->mFirstMultiItem):0; }
+    KOAgendaItem *prevMultiItem() const { return (mMultiItemInfo)?(mMultiItemInfo->mPrevMultiItem):0; }
+    KOAgendaItem *nextMultiItem() const { return (mMultiItemInfo)?(mMultiItemInfo->mNextMultiItem):0; }
+    KOAgendaItem *lastMultiItem() const { return (mMultiItemInfo)?(mMultiItemInfo->mLastMultiItem):0; }
 
     Incidence *incidence() const { return mIncidence; }
     QDate itemDate() { return mDate; }
@@ -102,6 +124,13 @@ class KOAgendaItem : public QWidget
     void paintEvent(QPaintEvent *e);
     void paintFrame(QPainter *p, const QColor &color);
     void paintTodoIcon(QPainter *p, int &x, int ft);
+    /** private movement functions. startMove needs to be called of only one of
+     *  the multitems. it will then loop through the whole series using
+     *  startMovePrivate. Same for resetMove and endMove */
+    void startMovePrivate();
+    void resetMovePrivate();
+    void endMovePrivate();
+
 
   private:
     int mCellX;
@@ -110,22 +139,19 @@ class KOAgendaItem : public QWidget
     int mSubCell;  // subcell number of this item
     int mSubCells;  // Total number of subcells in cell of this item
 
-    // Variables to remember start position
-    int mStartCellX;
-    int mStartCellXWidth;
-    int mStartCellYTop,mStartCellYBottom;
-
-    // Multi item pointers
-    KOAgendaItem *mFirstMultiItem;
-    KOAgendaItem *mNextMultiItem;
-    KOAgendaItem *mLastMultiItem;
-
     Incidence *mIncidence; // corresponding event or todo
     QDate mDate; //date this events occurs (for recurrence)
     QString mLabelText;
     bool mIconAlarm, mIconRecur, mIconReadonly;
     bool mIconReply, mIconGroup, mIconOrganizer;
 
+    // Multi item pointers
+    MultiItemInfo* mMultiItemInfo;
+  protected:
+    // Variables to remember start position
+    MultiItemInfo* mStartMoveInfo;
+
+  private:
     static QToolTipGroup *mToolTipGroup;
 
     bool mSelected;

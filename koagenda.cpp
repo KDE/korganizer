@@ -800,19 +800,99 @@ void KOAgenda::performItemAction(const QPoint& viewportPos)
     mActionItem->raise();
     if (mActionType == MOVE) {
       // Move all items belonging to a multi item
-      KOAgendaItem *moveItem = mActionItem->firstMultiItem();
-      bool isMultiItem = (moveItem || mActionItem->lastMultiItem());
-      if (!moveItem) moveItem = mActionItem;
+      KOAgendaItem *firstItem = mActionItem->firstMultiItem();
+      if (!firstItem) firstItem = mActionItem;
+      KOAgendaItem *lastItem = mActionItem->lastMultiItem();
+      if (!lastItem) lastItem = mActionItem;
+      int dy = gy - mCurrentCellY;
+      int dx = gx - mCurrentCellX;
+      int x,y;
+      KOAgendaItem *moveItem = firstItem;
       while (moveItem) {
-        int dy;
-        if (isMultiItem) dy = 0;
-        else dy = gy - mCurrentCellY;
-        moveItem->moveRelative(gx - mCurrentCellX,dy);
-        int x,y;
-        gridToContents(moveItem->cellX(),moveItem->cellYTop(),x,y);
-        moveItem->resize((int)( mGridSpacingX * moveItem->cellWidth() ),
+        bool changed=false;
+        if (dx!=0) {
+          moveItem->moveRelative( dx, 0 );
+          changed=true;
+        }
+        if ( moveItem==firstItem ) { // is the first item
+          int newY = dy+moveItem->cellYTop();
+          // If event start moved earlier than 0:00, it starts the previous day
+          if (newY<0) {
+            moveItem->expandTop( -moveItem->cellYTop() );
+            // prepend a new item at ( x-1, rows()+newY to rows() )
+            KOAgendaItem *newFirst = firstItem->prevMoveItem();
+            // cell's y values are first and last cell of the bar, so if newY=-1, they need to be the same
+            if (newFirst) {
+              newFirst->setCellXY(moveItem->cellX()-1, rows()+newY, rows()-1);
+              mItems.append(newFirst);
+              moveItem->resize( (int)( mGridSpacingX * newFirst->cellWidth() ),
+                                (int)( mGridSpacingY * newFirst->cellHeight() ));
+              gridToContents(newFirst->cellX(), newFirst->cellYTop(),x,y);
+              addChild( newFirst, x, y );
+            } else {
+              newFirst = insertItem( moveItem->incidence(), moveItem->itemDate(),
+                moveItem->cellX()-1, rows()+newY, rows()-1 ) ;
+            }
+            if (newFirst) newFirst->show();
+            moveItem->prependMoveItem(newFirst);
+            firstItem=newFirst;
+          } else if ( newY>=rows() ) {
+            // TODO_RK
+            // If event start is moved past 24:00, it starts the next day
+            // erase current item (i.e. remove it from the multiItem list)
+            firstItem = moveItem->nextMultiItem();
+            moveItem->hide();
+            mItems.take(mItems.find(moveItem));
+            removeChild( moveItem );
+            mActionItem->removeMoveItem(moveItem);
+            moveItem=firstItem;
+            // adjust next day's item
+            moveItem->expandTop( rows()-newY );
+          } else {
+            moveItem->expandTop(dy);
+          }
+          changed=true;
+        }
+        if (!moveItem->lastMultiItem()) { // is the last item
+          int newY = dy+moveItem->cellYBottom();
+          if (newY<0) {
+            // erase current item
+            lastItem = moveItem->prevMultiItem();
+            moveItem->hide();
+            mItems.take( mItems.find(moveItem) );
+            removeChild( moveItem );
+            moveItem->removeMoveItem( moveItem );
+            moveItem = lastItem;
+            moveItem->expandBottom(newY+1);
+          } else if (newY>=rows()) {
+            moveItem->expandBottom( rows()-moveItem->cellYBottom()-1 );
+            // append item at ( x+1, 0 to newY-rows() )
+            KOAgendaItem *newLast = lastItem->nextMoveItem();
+            if (newLast) {
+              newLast->setCellXY( moveItem->cellX()+1, 0, newY-rows()-1 );
+              mItems.append(newLast);
+              moveItem->resize( (int)( mGridSpacingX * newLast->cellWidth() ),
+                                (int)( mGridSpacingY * newLast->cellHeight() ));
+              gridToContents( newLast->cellX(), newLast->cellYTop(), x, y) ;
+              addChild( newLast, x, y );
+            } else {
+              newLast = insertItem( moveItem->incidence(), moveItem->itemDate(),
+                moveItem->cellX()+1, 0, newY-rows()-1 ) ;
+            }
+            moveItem->appendMoveItem( newLast );
+            newLast->show();
+            lastItem = newLast;
+          } else {
+            moveItem->expandBottom( dy );
+          }
+          changed=true;
+        }
+        if (changed) {
+          moveItem->resize((int)( mGridSpacingX * moveItem->cellWidth() ),
                          (int)( mGridSpacingY * moveItem->cellHeight() ));
-        moveChild(moveItem,x,y);
+          gridToContents(moveItem->cellX(),moveItem->cellYTop(),x,y);
+          moveChild(moveItem,x,y);
+        }
         moveItem = moveItem->nextMultiItem();
       }
     } else if (mActionType == RESIZETOP) {
@@ -856,6 +936,9 @@ void KOAgenda::endItemAction()
 //  kdDebug(5850) << "KOAgenda::endItemAction()" << endl;
 
   if ( mItemMoved ) {
+    if ( mActionType == MOVE ) {
+      mActionItem->endMove();
+    }
     KOAgendaItem *placeItem = mActionItem->firstMultiItem();
     if ( !placeItem ) {
       placeItem = mActionItem;
@@ -1275,6 +1358,7 @@ void KOAgenda::insertMultiItem (Event *event,QDate qd,int XBegin,int XEnd,
   }
 
   KOAgendaItem *next = 0;
+  KOAgendaItem *prev = 0;
   KOAgendaItem *last = multiItems.last();
   KOAgendaItem *first = multiItems.first();
   KOAgendaItem *setFirst,*setLast;
@@ -1286,7 +1370,8 @@ void KOAgenda::insertMultiItem (Event *event,QDate qd,int XBegin,int XEnd,
     if (current == last) setLast = 0;
     else setLast = last;
 
-    current->setMultiItem(setFirst,next,setLast);
+    current->setMultiItem(setFirst, prev, next, setLast);
+    prev=current;
     current = next;
   }
 

@@ -51,21 +51,17 @@ KOAgendaItem::KOAgendaItem(Incidence *incidence, QDate qd, QWidget *parent,
   QWidget(parent, name), mIncidence(incidence), mDate(qd),
   mLabelText(mIncidence->summary()), mIconAlarm(false),
   mIconRecur(false), mIconReadonly(false), mIconReply(false),
-  mIconGroup(false), mIconOrganizer(false)
+  mIconGroup(false), mIconOrganizer(false),
+  mMultiItemInfo(0), mStartMoveInfo(0)
 {
   setBackgroundMode(Qt::NoBackground);
-  mFirstMultiItem = 0;
-  mNextMultiItem = 0;
-  mLastMultiItem = 0;
 
   setCellXY(0,0,1);
   setCellXWidth(0);
   setSubCell(0);
   setSubCells(1);
   setMouseTracking(true);
-  setMultiItem(0,0,0);
 
-  startMove();
   updateIcons();
 
   // select() does nothing, if state hasn't change, so preset mSelected.
@@ -176,28 +172,252 @@ void KOAgendaItem::setSubCells(int subCells)
   mSubCells = subCells;
 }
 
-void KOAgendaItem::setMultiItem(KOAgendaItem *first,KOAgendaItem *next,
-                                KOAgendaItem *last)
+void KOAgendaItem::setMultiItem(KOAgendaItem *first, KOAgendaItem *prev,
+                                KOAgendaItem *next, KOAgendaItem *last)
 {
-  mFirstMultiItem = first;
-  mNextMultiItem = next;
-  mLastMultiItem = last;
+  if (!mMultiItemInfo) mMultiItemInfo=new MultiItemInfo;
+  mMultiItemInfo->mFirstMultiItem = first;
+  mMultiItemInfo->mPrevMultiItem = prev;
+  mMultiItemInfo->mNextMultiItem = next;
+  mMultiItemInfo->mLastMultiItem = last;
 }
+bool KOAgendaItem::isMultiItem()
+{
+  return mMultiItemInfo;
+}
+KOAgendaItem* KOAgendaItem::prependMoveItem(KOAgendaItem* e)
+{
+  if (!e) return e;
+
+  KOAgendaItem*first=0, *last=0;
+  if (isMultiItem()) {
+    first=mMultiItemInfo->mFirstMultiItem;
+    last=mMultiItemInfo->mLastMultiItem;
+  }
+  if (!first) first=this;
+  if (!last) last=this;
+
+  e->setMultiItem(0, 0, first, last);
+  first->setMultiItem(e, e, first->nextMultiItem(), first->lastMultiItem() );
+
+  KOAgendaItem*tmp=first->nextMultiItem();
+  while (tmp) {
+    tmp->setMultiItem( e, tmp->prevMultiItem(), tmp->nextMultiItem(), tmp->lastMultiItem() );
+    tmp = tmp->nextMultiItem();
+  }
+
+  if ( mStartMoveInfo && !e->moveInfo() ) {
+    e->mStartMoveInfo=new MultiItemInfo( *mStartMoveInfo );
+//    e->moveInfo()->mFirstMultiItem = moveInfo()->mFirstMultiItem;
+//    e->moveInfo()->mLastMultiItem = moveInfo()->mLastMultiItem;
+    e->moveInfo()->mPrevMultiItem = 0;
+    e->moveInfo()->mNextMultiItem = first;
+  }
+
+  if (first && first->moveInfo()) {
+    first->moveInfo()->mPrevMultiItem = e;
+  }
+  return e;
+}
+
+KOAgendaItem* KOAgendaItem::appendMoveItem(KOAgendaItem* e)
+{
+  if (!e) return e;
+
+  KOAgendaItem*first=0, *last=0;
+  if (isMultiItem()) {
+    first=mMultiItemInfo->mFirstMultiItem;
+    last=mMultiItemInfo->mLastMultiItem;
+  }
+  if (!first) first=this;
+  if (!last) last=this;
+
+  e->setMultiItem( first, last, 0, 0 );
+  KOAgendaItem*tmp=first;
+
+  while (tmp) {
+    tmp->setMultiItem(tmp->firstMultiItem(), tmp->prevMultiItem(), tmp->nextMultiItem(), e);
+    tmp = tmp->nextMultiItem();
+  }
+  last->setMultiItem( last->firstMultiItem(), last->prevMultiItem(), e, e);
+
+  if ( mStartMoveInfo && !e->moveInfo() ) {
+    e->mStartMoveInfo=new MultiItemInfo( *mStartMoveInfo );
+//    e->moveInfo()->mFirstMultiItem = moveInfo()->mFirstMultiItem;
+//    e->moveInfo()->mLastMultiItem = moveInfo()->mLastMultiItem;
+    e->moveInfo()->mPrevMultiItem = last;
+    e->moveInfo()->mNextMultiItem = 0;
+  }
+  if (last && last->moveInfo()) {
+    last->moveInfo()->mNextMultiItem = e;
+  }
+  return e;
+}
+
+KOAgendaItem* KOAgendaItem::removeMoveItem(KOAgendaItem* e)
+{
+  if (isMultiItem()) {
+    KOAgendaItem *first = mMultiItemInfo->mFirstMultiItem;
+    KOAgendaItem *next, *prev;
+    KOAgendaItem *last = mMultiItemInfo->mLastMultiItem;
+    if (!first) first = this;
+    if (!last) last = this;
+    // TODO: if e==last...
+    if ( first==e ) {
+      first = first->nextMultiItem();
+      first->setMultiItem( 0, 0, first->nextMultiItem(), first->lastMultiItem() );
+    }
+    if ( last==e ) {
+      last=last->prevMultiItem();
+      last->setMultiItem( last->firstMultiItem(), last->prevMultiItem(), 0, 0 );
+    }
+
+    KOAgendaItem *tmp =  first;
+    if ( first==last ) {
+      delete mMultiItemInfo;
+      tmp=0L;
+      mMultiItemInfo=0L;
+    }
+    while ( tmp ) {
+      next = tmp->nextMultiItem();
+      prev = tmp->prevMultiItem();
+      if ( e==next ) {
+        next = next->nextMultiItem();
+      }
+      if ( e==prev ) {
+        prev = prev->prevMultiItem();
+      }
+      tmp->setMultiItem((tmp==first)?0:first, (tmp==prev)?0:prev, (tmp==next)?0:next, (tmp==last)?0:last);
+      tmp = tmp->nextMultiItem();
+    }
+  }
+
+  return e;
+}
+
 
 void KOAgendaItem::startMove()
 {
-  mStartCellX = mCellX;
-  mStartCellXWidth = mCellXWidth;
-  mStartCellYTop = mCellYTop;
-  mStartCellYBottom = mCellYBottom;
+  KOAgendaItem* first = this;
+  if ( isMultiItem() && mMultiItemInfo->mFirstMultiItem ) {
+    first=mMultiItemInfo->mFirstMultiItem;
+  }
+  first->startMovePrivate();
+}
+
+void KOAgendaItem::startMovePrivate()
+{
+  mStartMoveInfo = new MultiItemInfo;
+  mStartMoveInfo->mStartCellX = mCellX;
+  mStartMoveInfo->mStartCellXWidth = mCellXWidth;
+  mStartMoveInfo->mStartCellYTop = mCellYTop;
+  mStartMoveInfo->mStartCellYBottom = mCellYBottom;
+  if (mMultiItemInfo) {
+    mStartMoveInfo->mFirstMultiItem = mMultiItemInfo->mFirstMultiItem;
+    mStartMoveInfo->mLastMultiItem = mMultiItemInfo->mLastMultiItem;
+    mStartMoveInfo->mPrevMultiItem = mMultiItemInfo->mPrevMultiItem;
+    mStartMoveInfo->mNextMultiItem = mMultiItemInfo->mNextMultiItem;
+  } else {
+    mStartMoveInfo->mFirstMultiItem = 0;
+    mStartMoveInfo->mLastMultiItem = 0;
+    mStartMoveInfo->mPrevMultiItem = 0;
+    mStartMoveInfo->mNextMultiItem = 0;
+  }
+  if ( isMultiItem() && mMultiItemInfo->mNextMultiItem )
+  {
+    mMultiItemInfo->mNextMultiItem->startMovePrivate();
+  }
 }
 
 void KOAgendaItem::resetMove()
 {
-  mCellX = mStartCellX;
-  mCellXWidth = mStartCellXWidth;
-  mCellYTop = mStartCellYTop;
-  mCellYBottom = mStartCellYBottom;
+  if (mStartMoveInfo) {
+    if (mStartMoveInfo->mFirstMultiItem) {
+      mStartMoveInfo->mFirstMultiItem->resetMovePrivate();
+    } else {
+      resetMovePrivate();
+    }
+  }
+}
+
+void KOAgendaItem::resetMovePrivate()
+{
+// TODO_RK
+  if (mStartMoveInfo) {
+    mCellX = mStartMoveInfo->mStartCellX;
+    mCellXWidth = mStartMoveInfo->mStartCellXWidth;
+    mCellYTop = mStartMoveInfo->mStartCellYTop;
+    mCellYBottom = mStartMoveInfo->mStartCellYBottom;
+
+    if (isMultiItem()) {
+    // if first, delete all previous
+      mMultiItemInfo->mFirstMultiItem = mStartMoveInfo->mFirstMultiItem;
+      KOAgendaItem* tmp = mStartMoveInfo->mPrevMultiItem;
+      KOAgendaItem* nextTmp = tmp;
+      while (nextTmp) {
+        nextTmp = 0;
+        if (tmp->mStartMoveInfo) {
+          nextTmp = tmp->mStartMoveInfo->mPrevMultiItem;
+        }
+
+      }
+
+/*
+      // if last, delete all next
+      // reset to values
+      // let the one calling resetMove loop through all multi items.
+      // reset first, last, prev, next to values before move
+      // first, last von mStartMoveInfo.
+      mMultiItemInfo->mFirstMultiItem = mStartMoveInfo->mFirstMultiItem;
+      mMultiItemInfo->mPrevMultiItem = mStartMoveInfo->mPrevMultiItem;
+      mMultiItemInfo->mNextMultiItem = mStartMoveInfo->mNextMultiItem;
+      mMultiItemInfo->mLastMultiItem = mStartMoveInfo->mLastMultiItem;
+*/
+    }
+    delete mStartMoveInfo;
+  }
+}
+
+void KOAgendaItem::endMove()
+{
+  KOAgendaItem*first=firstMultiItem();
+kdDebug(5850)<<"endMove for firstMultiItem="<<first<<", this="<<this<<", next="<<nextMultiItem()<<endl;
+  if (!first) first=this;
+kdDebug(5850)<<"endMove for first="<<first<<", this="<<this<<endl;
+  first->endMovePrivate();
+}
+
+void KOAgendaItem::endMovePrivate()
+{
+  if ( mStartMoveInfo ) {
+    // if first, delete all previous
+    if ( !firstMultiItem() || firstMultiItem()==this ) {
+      KOAgendaItem*toDel=mStartMoveInfo->mPrevMultiItem;
+      KOAgendaItem*nowDel=0L;
+      while (toDel) {
+        nowDel=toDel;
+        if (nowDel->moveInfo()) {
+          toDel=nowDel->moveInfo()->mPrevMultiItem;
+        }
+        delete nowDel;
+      }
+    }
+    // if last, delete all next
+    if ( !lastMultiItem() || lastMultiItem()==this ) {
+      KOAgendaItem*toDel=mStartMoveInfo->mNextMultiItem;
+      KOAgendaItem*nowDel=0L;
+      while (toDel) {
+        nowDel=toDel;
+        if (nowDel->moveInfo()) {
+          toDel=nowDel->moveInfo()->mNextMultiItem;
+        }
+        delete nowDel;
+      }
+    }
+    // also delete the moving info
+    delete mStartMoveInfo;
+    mStartMoveInfo=0;
+  }
 }
 
 void KOAgendaItem::moveRelative(int dx, int dy)
@@ -441,7 +661,7 @@ void KOAgendaItem::paintEvent(QPaintEvent *)
   // possible
   QString shortH;
   QString longH;
-  if ( (!mFirstMultiItem) && (!mNextMultiItem) ) {
+  if ( !isMultiItem() ) {
     shortH = KGlobal::locale()->formatTime(mIncidence->dtStart().time());
     if (mIncidence->type() != "Todo")
       longH = i18n("%1 - %2").arg(shortH)
@@ -449,7 +669,7 @@ void KOAgendaItem::paintEvent(QPaintEvent *)
     else
       longH = shortH;
   }
-  else if ( !mFirstMultiItem ) {
+  else if ( !mMultiItemInfo->mFirstMultiItem ) {
     shortH = KGlobal::locale()->formatTime(mIncidence->dtStart().time());
     longH = shortH;
   }
@@ -470,7 +690,7 @@ void KOAgendaItem::paintEvent(QPaintEvent *)
   //         or all-day events
   if ( ((!completelyRenderable) &&
         ((height() - (2 * margin)) <= (5 * singleLineHeight)) ) ||
-         (mNextMultiItem && mFirstMultiItem) ||
+         (isMultiItem() && mMultiItemInfo->mNextMultiItem && mMultiItemInfo->mFirstMultiItem) ||
          mIncidence->doesFloat() ) {
     int x = margin;
     int txtWidth = width() - margin - x;
