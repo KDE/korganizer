@@ -387,7 +387,7 @@ void ResourceView::contextMenuRequested ( QListViewItem *i,
                                    SLOT( saveResource() ) );
     menu->setItemEnabled( saveId, item->resource()->isActive() );
     menu->insertSeparator();
-    menu->insertItem( i18n("Show Info..."), this, SLOT( showInfo() ) );
+    menu->insertItem( i18n("Show Info"), this, SLOT( showInfo() ) );
     menu->insertItem( i18n("Edit..."), this, SLOT( editResource() ) );
     menu->insertItem( i18n("Remove"), this, SLOT( removeResource() ) );
     menu->insertSeparator();
