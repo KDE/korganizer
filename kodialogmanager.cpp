@@ -48,6 +48,10 @@
 #include "kodialogmanager.h"
 #include "kodialogmanager.moc"
 
+
+// TODO: Handle KOEventViewerDialogs in dialog manager. Pass
+// KOPrefs::mCompactDialog.
+
 KODialogManager::KODialogManager( CalendarView *mainView ) :
   QObject(), mMainView( mainView )
 {

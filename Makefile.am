@@ -77,7 +77,7 @@ libkorganizer_la_SOURCES =  outgoingdialog_base.ui \
         koprefs.cpp kowindowlist.cpp \
         koeditorgeneral.cpp \
         koeditorgeneralevent.cpp koeditorgeneraltodo.cpp koeditordetails.cpp \
-        koeditorrecurrence.cpp koeditorattachments.cpp koeventviewerdialog.cpp \
+        koeditorrecurrence.cpp koeditorattachments.cpp \
         kogroupwareprefspage.ui koeventpopupmenu.cpp koeditorfreebusy.cpp \
         outgoingdialog.cpp \
 	incomingdialog_base.ui incomingdialog.cpp \
@@ -110,7 +110,7 @@ libkorganizer_eventviewer_la_LDFLAGS = $(all_libraries) $(KDE_RPATH) \
 libkorganizer_eventviewer_la_LIBADD  = $(LIB_KPARTS) \
                                        $(top_builddir)/libkcal/libkcal.la
 libkorganizer_eventviewer_la_SOURCES = koeventviewer.cpp urihandler.cpp \
-                                       kmailIface.stub
+                                       kmailIface.stub koeventviewerdialog.cpp
 
 kmailIface_DIR = $(top_srcdir)/kmail
 kmailIface_DCOPIDLNG = true

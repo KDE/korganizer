@@ -22,30 +22,29 @@
     without including the source code for Qt in the source distribution.
 */
 
-#include <klocale.h>
+#include "koeventviewerdialog.h"
+
+#include "koeventviewer.h"
 
 #include <libkcal/event.h>
 
-#include "koeventviewer.h"
-#include "koprefs.h"
+#include <klocale.h>
 
-#include "koeventviewerdialog.h"
-#include "koeventviewerdialog.moc"
-
-KOEventViewerDialog::KOEventViewerDialog(QWidget *parent,const char *name)
-  : KDialogBase(parent,name,false,i18n("Event Viewer"),Ok,Ok,false,
-                i18n("Edit"))
+KOEventViewerDialog::KOEventViewerDialog( QWidget *parent, const char *name,
+                                          bool compact )
+  : KDialogBase( parent, name, false, i18n("Event Viewer"), Ok, Ok, false,
+                 i18n("Edit") )
 {
-  mEventViewer = new KOEventViewer(this);
-  setMainWidget(mEventViewer);
+  mEventViewer = new KOEventViewer( this );
+  setMainWidget( mEventViewer );
 
   // TODO: Set a sensible size (based on the content?).
-  if ( KOPrefs::instance()->mCompactDialogs ) {
+  if ( compact ) {
     setFixedSize( 240,284 );
     move( 0, 15 );
   } else {
-    setMinimumSize(300,200);
-    resize(320,300);
+    setMinimumSize( 300, 200 );
+    resize( 320, 300 );
   }
 }
 
@@ -53,22 +52,29 @@ KOEventViewerDialog::~KOEventViewerDialog()
 {
 }
 
-void KOEventViewerDialog::setEvent(Event *event)
+void KOEventViewerDialog::setEvent( Event *event )
 {
   mEventViewer->setEvent(event);
 }
 
-void KOEventViewerDialog::addEvent(Event *event)
+void KOEventViewerDialog::setTodo( Todo *todo )
 {
-  mEventViewer->addEvent(event);
+  mEventViewer->setTodo( todo );
 }
 
-void KOEventViewerDialog::setTodo(Todo *event)
+void KOEventViewerDialog::appendEvent( Event *event )
 {
-  mEventViewer->setTodo(event);
+  mEventViewer->appendEvent(event);
 }
 
-void KOEventViewerDialog::addText(QString text)
+void KOEventViewerDialog::appendTodo( Todo *todo )
+{
+  mEventViewer->appendTodo( todo );
+}
+
+void KOEventViewerDialog::addText( const QString &text )
 {
   mEventViewer->addText(text);
 }
+
+#include "koeventviewerdialog.moc"

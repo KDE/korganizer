@@ -31,41 +31,41 @@
 #include "kocounterdialog.h"
 #include "kocounterdialog.moc"
 
-KOCounterDialog::KOCounterDialog(QWidget *parent,const char *name)
-  : KDialogBase(parent,name,false,i18n("Counter-event Viewer"),User1|User2,User1,
-                false,i18n("Decline"),i18n("Accept"))
+KOCounterDialog::KOCounterDialog( QWidget *parent, const char *name )
+  : KDialogBase( parent, name, false, i18n("Counter-event Viewer"),
+                 User1 | User2, User1, false, i18n("Decline"), i18n("Accept") )
 {
-  mEventViewer = new KOEventViewer(this);
-  setMainWidget(mEventViewer);
+  mEventViewer = new KOEventViewer( this );
+  setMainWidget( mEventViewer );
 
-  connect(this,SIGNAL(user1Clicked()),this,SLOT(slotCancel()));
-  connect(this,SIGNAL(user2Clicked()),this,SLOT(slotOk()));
+  connect( this, SIGNAL( user1Clicked() ), SLOT( slotCancel() ) );
+  connect( this, SIGNAL( user2Clicked() ), SLOT( slotOk( ) ) );
 
   // TODO: Set a sensible size (based on the content?).
-  setMinimumSize(300,200);
-  resize(320,300);
+  setMinimumSize( 300, 200 );
+  resize( 320, 300 );
 }
 
 KOCounterDialog::~KOCounterDialog()
 {
 }
 
-void KOCounterDialog::setEvent(Event *event)
+void KOCounterDialog::setEvent( Event *event )
 {
-  mEventViewer->setEvent(event);
+  mEventViewer->setEvent( event );
 }
 
-void KOCounterDialog::addEvent(Event *event)
+void KOCounterDialog::addEvent( Event *event )
 {
-  mEventViewer->addEvent(event);
+  mEventViewer->appendEvent( event );
 }
 
-void KOCounterDialog::setTodo(Todo *event)
+void KOCounterDialog::setTodo( Todo *todo )
 {
-  mEventViewer->setTodo(event);
+  mEventViewer->setTodo( todo );
 }
 
-void KOCounterDialog::addText(QString text)
+void KOCounterDialog::addText( const QString &text )
 {
-  mEventViewer->addText(text);
+  mEventViewer->addText( text );
 }

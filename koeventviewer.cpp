@@ -24,7 +24,6 @@
 
 #include "koeventviewer.h"
 
-#include "kocore.h"
 #include "urihandler.h"
 
 #include <libkcal/event.h>
@@ -38,8 +37,8 @@
  #include <kabc/stdaddressbook.h>
 #endif
 
-KOEventViewer::KOEventViewer(QWidget *parent,const char *name)
-  : QTextBrowser(parent,name)
+KOEventViewer::KOEventViewer( QWidget *parent, const char *name )
+  : QTextBrowser( parent, name )
 {
 }
 
@@ -52,70 +51,68 @@ void KOEventViewer::setSource( const QString &n )
   UriHandler::process( n );
 }
 
-void KOEventViewer::addTag(const QString & tag,const QString & text)
+void KOEventViewer::addTag( const QString & tag, const QString & text )
 {
-  int number=text.contains("\n");
+  int numLineBreaks = text.contains( "\n" );
   QString str = "<" + tag + ">";
-  QString tmpText=text;
-  QString tmpStr=str;
-  if(number !=-1)
-    {
-      if (number > 0) {
-        int pos=0;
-        QString tmp;
-        for(int i=0;i<=number;i++) {
-          pos=tmpText.find("\n");
-          tmp=tmpText.left(pos);
-          tmpText=tmpText.right(tmpText.length()-pos-1);
-          tmpStr+=tmp+"<br>";
-        }
+  QString tmpText = text;
+  QString tmpStr = str;
+  if( numLineBreaks >= 0 ) {
+    if ( numLineBreaks > 0) {
+      int pos = 0;
+      QString tmp;
+      for( int i = 0; i <= numLineBreaks; i++ ) {
+        pos = tmpText.find( "\n" );
+        tmp = tmpText.left( pos );
+        tmpText = tmpText.right( tmpText.length() - pos - 1 );
+        tmpStr += tmp + "<br>";
       }
-      else tmpStr += tmpText;
-      tmpStr+="</" + tag + ">";
-      mText.append(tmpStr);
+    } else {
+      tmpStr += tmpText;
     }
-  else
-    {
-      str += text + "</" + tag + ">";
-      mText.append(str);
-    }
+    tmpStr += "</" + tag + ">";
+    mText.append( tmpStr );
+  } else {
+    str += text + "</" + tag + ">";
+    mText.append( str );
+  }
 }
 
-void KOEventViewer::appendEvent(Event *event)
+void KOEventViewer::appendEvent( Event *event )
 {
-  addTag("h1",event->summary());
+  addTag( "h1", event->summary() );
 
-  if (!event->location().isEmpty()) {
-    addTag("b",i18n("Location: "));
-    mText.append(event->location()+"<br>");
+  if ( !event->location().isEmpty() ) {
+    addTag( "b", i18n("Location: ") );
+    mText.append( event->location() + "<br>" );
   }
-  if (event->doesFloat()) {
-    if (event->isMultiDay()) {
-      mText.append(i18n("<b>From:</b> %1 <b>To:</b> %2")
-                   .arg(event->dtStartDateStr())
-                   .arg(event->dtEndDateStr()));
+  if ( event->doesFloat() ) {
+    if ( event->isMultiDay() ) {
+      mText.append( i18n("<b>From:</b> %1 <b>To:</b> %2")
+                    .arg( event->dtStartDateStr() )
+                    .arg( event->dtEndDateStr() ) );
     } else {
-      mText.append(i18n("<b>On:</b> %1").arg(event->dtStartDateStr()));
+      mText.append( i18n("<b>On:</b> %1").arg( event->dtStartDateStr() ) );
     }
   } else {
-    if (event->isMultiDay()) {
-      mText.append(i18n("<b>From:</b> %1 <b>To:</b> %2")
-                   .arg(event->dtStartStr())
-                   .arg(event->dtEndStr()));
+    if ( event->isMultiDay() ) {
+      mText.append( i18n("<b>From:</b> %1 <b>To:</b> %2")
+                    .arg( event->dtStartStr() )
+                    .arg( event->dtEndStr() ) );
     } else {
-      mText.append(i18n("<b>On:</b> %1 <b>From:</b> %2 <b>To:</b> %3")
-                   .arg(event->dtStartDateStr())
-                   .arg(event->dtStartTimeStr())
-                   .arg(event->dtEndTimeStr()));
+      mText.append( i18n("<b>On:</b> %1 <b>From:</b> %2 <b>To:</b> %3")
+                    .arg( event->dtStartDateStr() )
+                    .arg( event->dtStartTimeStr() )
+                    .arg( event->dtEndTimeStr() ) );
     }
   }
 
-  if (!event->description().isEmpty()) addTag("p",event->description());
+  if ( !event->description().isEmpty() ) addTag( "p", event->description() );
 
-  formatCategories(event);
+  formatCategories( event );
 
-  if (event->doesRecur()) {
-    addTag("p","<em>" + i18n("This is a recurring event.") + "</em>");
+  if ( event->doesRecur() ) {
+    addTag( "p", "<em>" + i18n("This is a recurring event.") + "</em>");
   }
 
   formatReadOnly( event );
@@ -154,30 +151,30 @@ void KOEventViewer::appendTodo( Todo *todo )
   setText( mText );
 }
 
-void KOEventViewer::formatCategories(Incidence *event)
+void KOEventViewer::formatCategories( Incidence *event )
 {
-  if (!event->categoriesStr().isEmpty()) {
-    if (event->categories().count() == 1) {
-      addTag("h2",i18n("Category"));
+  if ( !event->categoriesStr().isEmpty() ) {
+    if ( event->categories().count() == 1 ) {
+      addTag( "h2", i18n("Category") );
     } else {
-      addTag("h2",i18n("Categories"));
+      addTag( "h2", i18n("Categories") );
     }
-    addTag("p",event->categoriesStr());
+    addTag( "p", event->categoriesStr() );
   }
 }
 
-void KOEventViewer::formatAttendees(Incidence *event)
+void KOEventViewer::formatAttendees( Incidence *event )
 {
   Attendee::List attendees = event->attendees();
   if ( attendees.count() ) {
     KIconLoader* iconLoader = new KIconLoader();
-    QString iconPath = iconLoader->iconPath("mail_generic",KIcon::Small);
-    addTag("h3",i18n("Organizer"));
-    mText.append("<ul><li>");
+    QString iconPath = iconLoader->iconPath( "mail_generic", KIcon::Small );
+    addTag( "h3", i18n("Organizer") );
+    mText.append( "<ul><li>" );
 #ifndef KORG_NOKABC
     KABC::AddressBook *add_book = KABC::StdAddressBook::self();
     KABC::Addressee::List addressList;
-    addressList = add_book->findByEmail(event->organizer());
+    addressList = add_book->findByEmail( event->organizer() );
     KABC::Addressee o = addressList.first();
     if ( !o.isEmpty() && addressList.size() < 2 ) {
       addLink( "uid" + o.uid(), o.formattedName() );
@@ -191,10 +188,10 @@ void KOEventViewer::formatAttendees(Incidence *event)
       addLink( "mailto:" + event->organizer(),
                "<img src=\"" + iconPath + "\">" );
     }
-    mText.append("</li></ul>");
+    mText.append( "</li></ul>" );
 
-    addTag("h3",i18n("Attendees"));
-    mText.append("<ul>");
+    addTag( "h3", i18n("Attendees") );
+    mText.append( "<ul>" );
     Attendee::List::ConstIterator it;
     for( it = attendees.begin(); it != attendees.end(); ++it ) {
       Attendee *a = *it;
@@ -211,27 +208,27 @@ void KOEventViewer::formatAttendees(Incidence *event)
         }
       } else {
         mText += "<li><a href=\"uid:" + a->uid() + "\">";
-        if (!a->name().isEmpty()) mText += a->name();
+        if ( !a->name().isEmpty() ) mText += a->name();
         else mText += a->email();
         mText += "</a>\n";
       }
 #else
       mText += "<li><a href=\"uid:" + a->uid() + "\">";
-      if (!a->name().isEmpty()) mText += a->name();
+      if ( !a->name().isEmpty() ) mText += a->name();
       else mText += a->email();
       mText += "</a>\n";
 #endif
       kdDebug(5850) << "formatAttendees: uid = " << a->uid() << endl;
 
-      if (!a->email().isEmpty()) {
-        if (!iconPath.isNull()) {
+      if ( !a->email().isEmpty() ) {
+        if ( !iconPath.isNull() ) {
           mText += "<a href=\"mailto:" + a->name() +" "+ "<" + a->email() + ">" + "\">";
           mText += "<img src=\"" + iconPath + "\">";
           mText += "</a>\n";
         }
       }
     }
-    mText.append("</li></ul>");
+    mText.append( "</li></ul>" );
   }
 }
 
@@ -259,27 +256,22 @@ void KOEventViewer::formatAttachments( Incidence *i )
   }
 }
 
-void KOEventViewer::setTodo(Todo *event)
+void KOEventViewer::setTodo( Todo *event )
 {
   clearEvents();
-  appendTodo(event);
+  appendTodo( event );
 }
 
-void KOEventViewer::setEvent(Event *event)
+void KOEventViewer::setEvent( Event *event )
 {
   clearEvents();
-  appendEvent(event);
+  appendEvent( event );
 }
 
-void KOEventViewer::addEvent(Event *event)
-{
-  appendEvent(event);
-}
-
-void KOEventViewer::clearEvents(bool now)
+void KOEventViewer::clearEvents( bool now )
 {
   mText = "";
-  if (now) setText(mText);
+  if ( now ) setText( mText );
 }
 
 void KOEventViewer::addText( const QString &text )

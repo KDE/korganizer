@@ -41,13 +41,13 @@ class KOCounterDialog : public KDialogBase
 {
     Q_OBJECT
   public:
-    KOCounterDialog(QWidget *parent=0,const char *name=0);
+    KOCounterDialog(QWidget *parent = 0, const char *name = 0 );
     virtual ~KOCounterDialog();
 
-    void setEvent(Event *event);
-    void addEvent(Event *event);
-    void setTodo(Todo *event);
-    void addText(QString text);
+    void setEvent( Event *event );
+    void addEvent( Event *event );
+    void setTodo( Todo *todo );
+    void addText( const QString &text );
 
   private:
     KOEventViewer *mEventViewer;

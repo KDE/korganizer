@@ -41,16 +41,38 @@ class KOEventViewer : public QTextBrowser
     KOEventViewer( QWidget *parent = 0, const char *name = 0 );
     virtual ~KOEventViewer();
 
+    /**
+      Reimplemented from QTextBrowser to handle links.
+    */
     void setSource( const QString & );
+
+    /**
+      Show given event in viewer. Clear all previously shown incidences.
+    */
     void setEvent( Event *event );
-    void addEvent( Event *event );
+    /**
+      Show given todo in viewer. Clear all previously shown incidences.
+    */
     void setTodo( Todo *event );
 
+    /**
+      Show given event by appending it to already shown incidences.
+    */
     void appendEvent( Event *event );
+    /**
+      Show given todo by appending it to already shown incidences.
+    */
     void appendTodo( Todo *event );
     
+    /**
+      Clear viewer. If \a now is set to true delete view immediately. If set to
+      false delete it with next call to appendIncidence().
+    */
     void clearEvents( bool now = false );
-    
+
+    /**
+      Add given text to currently shown content.
+    */    
     void addText( const QString &text );
 
   protected:

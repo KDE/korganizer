@@ -1,5 +1,6 @@
 /*
     This file is part of KOrganizer.
+
     Copyright (c) 2000, 2001 Cornelius Schumacher <schumacher@kde.org>
 
     This program is free software; you can redistribute it and/or modify
@@ -40,13 +41,17 @@ class KOEventViewerDialog : public KDialogBase
 {
     Q_OBJECT
   public:
-    KOEventViewerDialog(QWidget *parent=0,const char *name=0);
+    KOEventViewerDialog( QWidget *parent = 0, const char *name = 0,
+                         bool compact = false );
     virtual ~KOEventViewerDialog();
 
-    void setEvent(Event *event);
-    void addEvent(Event *event);
-    void setTodo(Todo *event);
-    void addText(QString text);
+    void setEvent( Event *event );
+    void setTodo( Todo *event );
+
+    void appendEvent( Event *event );
+    void appendTodo( Todo *todo );
+
+    void addText( const QString &text );
 
   private:
     KOEventViewer *mEventViewer;
