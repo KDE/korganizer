@@ -1098,20 +1098,11 @@ void CalendarView::action_mail()
 
 void CalendarView::schedule_publish(Incidence *incidence)
 {
-  Event *event = 0;
-  Todo *todo = 0;
   if (incidence == 0)
     incidence = selectedIncidence();
 
-  // @TODO: use a visitor here
-  if ( incidence && incidence->type() == "Event" ) {
-    event = static_cast<Event *>(incidence);
-  } else if ( incidence && incidence->type() == "Todo" ) {
-    todo = static_cast<Todo *>(incidence);
-  }
-
-  if (!event && !todo) {
-    KMessageBox::sorry(this,i18n("No event selected."));
+  if (!incidence) {
+    KMessageBox::sorry(this,i18n("No incidence selected."));
     return;
   }
 
@@ -1130,20 +1121,11 @@ void CalendarView::schedule_publish(Incidence *incidence)
   }
   if ( send ) {
     OutgoingDialog *dlg = mDialogManager->outgoingDialog();
-    if ( event ) {
-      Event *ev = new Event(*event);
-      ev->registerObserver(0);
-      ev->clearAttendees();
-      if (!dlg->addMessage(ev,Scheduler::Publish,publishdlg->addresses())) {
-        delete(ev);
-      }
-    } else  if ( todo ) {
-      Todo *ev = new Todo(*todo);
-      ev->registerObserver(0);
-      ev->clearAttendees();
-      if (!dlg->addMessage(ev,Scheduler::Publish,publishdlg->addresses())) {
-        delete(ev);
-      }
+    Incidence *inc = incidence->clone();
+    inc->registerObserver( 0 );
+    inc->clearAttendees();
+    if (!dlg->addMessage( inc, Scheduler::Publish, publishdlg->addresses() )) {
+      delete( inc );
     }
   }
   delete publishdlg;
@@ -1213,36 +1195,25 @@ void CalendarView::uploadFreeBusy()
 
 void CalendarView::schedule(Scheduler::Method method, Incidence *incidence)
 {
-  Event *event = 0;
-  Todo *todo = 0;
-  if (incidence == 0) {
+  if ( !incidence ) {
     incidence = selectedIncidence();
   }
-  // @TODO: use a visitor here
-  if ( incidence && incidence->type() == "Event" ) {
-    event = static_cast<Event *>(incidence);
-  } else if ( incidence && incidence->type() == "Todo" ) {
-    todo = static_cast<Todo *>(incidence);
-  }
 
-  if (!event && !todo) {
-    KMessageBox::sorry(this,i18n("No event selected."));
+  if ( !incidence ) {
+    KMessageBox::sorry(this,i18n("No incidence selected."));
     return;
   }
 
   if( incidence->attendeeCount() == 0 && method != Scheduler::Publish ) {
-    KMessageBox::sorry(this,i18n("The event has no attendees."));
+    KMessageBox::sorry(this, i18n("The incidence has no attendees."));
     return;
   }
 
-  Event *ev = 0;
-  if (event) ev = new Event(*event);
-  Todo *to = 0;
-  if (todo) to = new Todo(*todo);
+  Incidence *inc = incidence->clone();
 
-  if (method == Scheduler::Reply || method == Scheduler::Refresh) {
+  if ( method == Scheduler::Reply || method == Scheduler::Refresh ) {
     Attendee *me = incidence->attendeeByMails(KOPrefs::instance()->allEmails());
-    if (!me) {
+    if ( !me ) {
       KMessageBox::sorry(this,i18n("Could not find your attendee entry. Please check the emails."));
       return;
     }
@@ -1253,25 +1224,15 @@ void CalendarView::schedule(Scheduler::Method method, Incidence *incidence)
       delete(statdlg);
     }
     Attendee *menew = new Attendee(*me);
-    if (ev) {
-      ev->clearAttendees();
-      ev->addAttendee(menew,false);
-    } else {
-      if (to) {
-        todo->clearAttendees();
-        todo->addAttendee(menew,false);
-      }
+    if ( inc ) {
+      inc->clearAttendees();
+      inc->addAttendee( menew, false );
     }
   }
 
   OutgoingDialog *dlg = mDialogManager->outgoingDialog();
-  if (ev) {
-    if ( !dlg->addMessage(ev,method) ) delete(ev);
-    if (to) delete(to);
-  } else {
-    if (to) {
-      if ( !dlg->addMessage(to,method) ) delete(to);
-    }
+  if (inc ) {
+    if ( !dlg->addMessage( inc, method ) ) delete(inc);
   }
 }
 
@@ -1426,13 +1387,10 @@ void CalendarView::processIncidenceSelection( Incidence *incidence )
   if ( incidence ) {
     organizerEvents = KOPrefs::instance()->thatIsMe( incidence->organizer() );
     groupEvents = incidence->attendeeByMails( KOPrefs::instance()->allEmails() );
-    // @TODO: use a visitor here
-    if ( incidence && incidence->type() == "Event" ) {
-//      Event *event = static_cast<Event *>( incidence );
-    } else if ( incidence && incidence->type() == "Todo" ) {
-      Todo *event = static_cast<Todo *>( incidence );
+    
+    if ( incidence && incidence->type() == "Todo" ) {
       todo = true;
-      subtodo = (event->relatedTo() != 0);
+      subtodo = ( incidence->relatedTo() != 0 );
     }
   }
   emit todoSelected( todo );
