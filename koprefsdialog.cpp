@@ -462,7 +462,6 @@ class KOPrefsDialogViews : public KPrefsModule
       KPrefsWidBool *marcusBainsShowSeconds = 
           addWidBool( KOPrefs::instance()->marcusBainsShowSecondsItem(), topFrame );
       topLayout->addWidget(marcusBainsShowSeconds->checkBox(),11,0);
-//    TODO: This doesn't work because KPrefsWidBool doesn't support the signals/slots of QCheckBox :-((
       connect( marcusBainsEnabled->checkBox(), SIGNAL( toggled( bool ) ), 
                marcusBainsShowSeconds->checkBox(), SLOT( setEnabled( bool ) ) );
 
