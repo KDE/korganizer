@@ -160,6 +160,8 @@ void CalendarView::init()
   if ( mResourceManager ) {
     mResourceView = new ResourceView( mResourceManager, mLeftSplitter );
     mResourceView->updateView();
+    connect( mResourceView, SIGNAL( resourcesChanged() ),
+             SLOT( updateView() ) );
   }
 
   mRightFrame = new QWidgetStack(mPanner, "CalendarView::RightFrame");

@@ -33,21 +33,20 @@
 
 using namespace KCal;
 
-class ResourceItem : public QCheckListItem
-{
-  public:
-    ResourceItem( ResourceCalendar *resource, KListView *parent ) :
+ResourceItem::ResourceItem( ResourceCalendar *resource, ResourceView *view,
+                            KListView *parent ) :
       QCheckListItem( parent, resource->resourceName(), CheckBox ),
-      mResource( resource )
-    {
-      setOn( mResource->isActive() );
-    }
+      mResource( resource ), mView( view )
+{
+  setOn( mResource->isActive() );
+}
 
-    ResourceCalendar *resource() { return mResource; }
-    
-  private:
-    ResourceCalendar *mResource;
-};
+void ResourceItem::stateChange( bool active )
+{
+  mResource->open();
+  mResource->setActive( active );
+  mView->emitResourcesChanged();
+}
 
 ResourceView::ResourceView( KCal::CalendarResourceManager *manager,
                             QWidget *parent, const char *name )
@@ -73,8 +72,14 @@ void ResourceView::updateView()
 
   KCal::CalendarResourceManager::Iterator it;
   for( it = mManager->begin(); it != mManager->end(); ++it ) {
-    new ResourceItem(  (*it), mListView );
+    new ResourceItem(  (*it), this, mListView );
   }
 }
+
+void ResourceView::emitResourcesChanged()
+{
+  emit resourcesChanged();
+}
+
 
 #include "resourceview.moc"

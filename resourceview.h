@@ -33,6 +33,23 @@
 #include <qwidget.h>
 
 class KListView;
+class ResourceView;
+
+class ResourceItem : public QCheckListItem
+{
+  public:
+    ResourceItem( KCal::ResourceCalendar *resource, ResourceView *view,
+                  KListView *parent );
+
+    KCal::ResourceCalendar *resource() { return mResource; }
+
+  protected:
+    void stateChange( bool active );
+
+  private:
+    KCal::ResourceCalendar *mResource;
+    ResourceView *mView;
+};
 
 /**
   This class provides a view of calendar resources.
@@ -46,6 +63,11 @@ class ResourceView : public QWidget
     ~ResourceView();
 
     void updateView();
+
+    void emitResourcesChanged();
+  
+  signals:
+    void resourcesChanged();
 
   private:
     KListView *mListView;
