@@ -64,6 +64,7 @@ class KOPrefsDialogColors : public KPrefsModule
 
   protected:
     void usrWriteConfig();
+    void usrReadConfig();
 
   protected slots:
     void updateCategories();

@@ -640,6 +640,11 @@ void KOPrefsDialogColors::usrWriteConfig()
   }
 }
 
+void KOPrefsDialogColors::usrReadConfig()
+{
+  updateCategories();
+}
+
 void KOPrefsDialogColors::updateCategories()
 {
   mCategoryCombo->clear();
