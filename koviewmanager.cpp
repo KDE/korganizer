@@ -354,7 +354,7 @@ QDate KOViewManager::currentSelectionDate()
 
 void KOViewManager::addView(KOrg::BaseView *view)
 {
-  mMainView->viewStack()->addWidget(view,1);
+  mMainView->viewStack()->addWidget(view);
 }
 
 void KOViewManager::setDocumentId( const QString &id )
