@@ -77,6 +77,8 @@ class HtmlExport {
     void formatHtmlCategories (QTextStream *ts,Incidence *event);
     void formatHtmlAttendees (QTextStream *ts,Incidence *event);
 
+    QString breakString(const QString &text);
+
   private:
     Calendar *mCalendar;
 

@@ -211,7 +211,7 @@ void HtmlExport::createHtmlEvent (QTextStream *ts, Event *event,
   *ts << "    <TD CLASS=sum>\n";
   *ts << "      <B>" << event->summary() << "</B>\n";
   if (withDescription && !event->description().isEmpty()) {
-    *ts << "      <P>" << event->description() << "</P>\n";
+    *ts << "      <P>" << breakString(event->description()) << "</P>\n";
   }
   *ts << "    </TD>\n";
   
@@ -318,7 +318,7 @@ void HtmlExport::createHtmlTodo (QTextStream *ts,Todo *todo)
   *ts << "    <A NAME=\"" << todo->VUID() << "\"></A>\n";
   *ts << "    <B>" << todo->summary() << "</B>\n";
   if (!todo->description().isEmpty()) {
-    *ts << "    <P>" << todo->description() << "</P>\n";
+    *ts << "    <P>" << breakString(todo->description()) << "</P>\n";
   }
   if (relations.count()) {
     *ts << "    <DIV ALIGN=right><A HREF=\"#sub" << todo->VUID()
@@ -393,5 +393,25 @@ void HtmlExport::formatHtmlAttendees (QTextStream *ts,Incidence *event)
     }
   } else {
     *ts << "    &nbsp;\n";
+  }
+}
+
+QString HtmlExport::breakString(const QString &text)
+{
+  int number = text.contains("\n");
+  if(number < 0) {
+    return text;
+  } else {
+    QString out;
+    QString tmpText = text;
+    int pos = 0;
+    QString tmp;
+    for(int i=0;i<=number;i++) {
+      pos = tmpText.find("\n");
+      tmp = tmpText.left(pos);
+      tmpText = tmpText.right(tmpText.length() - pos - 1);
+      out += tmp + "<br>";
+    }
+    return out;
   }
 }
