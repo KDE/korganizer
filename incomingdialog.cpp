@@ -192,6 +192,9 @@ bool IncomingDialog::acceptMessage(ScheduleItemIn *item)
     case Scheduler::Declinecounter:
         return incomeDeclineCounter(item);
         break;
+    case Scheduler::Add:
+        return incomeAdd(item);
+        break;
     default:
         return incomeDefault(item);
   }
@@ -227,10 +230,14 @@ bool IncomingDialog::incomeRefresh(ScheduleItemIn *item)
     Event *event = new Event(*ev);
     mOutgoing->addMessage(event,Scheduler::Request);
     delete(event);
+    mScheduler->deleteTransaction(item->event());
     delete item;
     emit numMessagesChanged(mMessageListView->childCount());
     return true;
   }
+  mScheduler->deleteTransaction(item->event());
+  delete item;
+  emit numMessagesChanged(mMessageListView->childCount());
   return false;
 }
 
@@ -309,6 +316,25 @@ bool IncomingDialog::incomeDeclineCounter(ScheduleItemIn *item)
   delete item;
   emit numMessagesChanged(mMessageListView->childCount());
   return false;
+}
+
+bool IncomingDialog::incomeAdd(ScheduleItemIn *item)
+{
+  if (item->event()->type() == "Event" ) {
+    Event *refr = dynamic_cast<Event *>(((ScheduleItemIn *)item)->event());
+    mOutgoing->addMessage(refr,Scheduler::Refresh);
+    mScheduler->deleteTransaction(item->event());
+    delete item;
+    emit numMessagesChanged(mMessageListView->childCount());
+    return true;
+  }
+  else {
+    kdDebug() << "IncomingDialog::incomeAdd - only Events are supportet yet" << endl;
+    mScheduler->deleteTransaction(item->event());
+    delete item;
+    emit numMessagesChanged(mMessageListView->childCount());
+    return false;
+  }
 }
 
 bool IncomingDialog::incomeDefault(ScheduleItemIn *item)
