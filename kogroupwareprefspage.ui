@@ -355,7 +355,7 @@
                                             <string>Us&amp;er name:</string>
                                         </property>
                                         <property name="buddy" stdset="0">
-                                            <cstring>retrieveUserNameED</cstring>
+                                            <cstring>retrieveUser</cstring>
                                         </property>
                                     </widget>
                                     <widget class="QLabel" row="1" column="0">
@@ -366,7 +366,7 @@
                                             <string>Pass&amp;word:</string>
                                         </property>
                                         <property name="buddy" stdset="0">
-                                            <cstring>retrievePasswordED</cstring>
+                                            <cstring>retrievePassword</cstring>
                                         </property>
                                     </widget>
                                     <widget class="QLineEdit" row="1" column="1">
