@@ -288,6 +288,8 @@ class KOrganizer : public KOrg::MainWindow, virtual public KOrganizerIface
     KAction *mCutAction;
     KAction *mCopyAction;
     KAction *mDeleteAction;
+    
+    KAction *mNextXDays;
 
     // status bar ids
     enum { ID_HISTORY, ID_GENERAL, ID_ACTIVE, ID_MESSAGES_IN, ID_MESSAGES_OUT };

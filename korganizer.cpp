@@ -309,9 +309,10 @@ void KOrganizer::initActions()
   (void)new KAction(i18n("&Week"), "7days", 0,
                     mCalendarView->viewManager(), SLOT(showWeekView()),
                     actionCollection(), "view_week");
-  (void)new KAction(i18n("&Next X Days"), "xdays", 0,
-                    mCalendarView->viewManager(), SLOT(showNextXView()),
-                    actionCollection(), "view_nextx");
+  mNextXDays = new KAction(
+                    i18n("&Next %1 Days").arg(KOPrefs::instance()->mNextXDays),
+                    "xdays", 0,mCalendarView->viewManager(),
+                    SLOT(showNextXView()),actionCollection(), "view_nextx");
   (void)new KAction(i18n("&Month"), "month", 0,
                     mCalendarView->viewManager(), SLOT(showMonthView()),
                     actionCollection(), "view_month");
@@ -1038,6 +1039,7 @@ void KOrganizer::updateConfig()
     }
   }
   if (!KOPrefs::instance()->mAutoSave) mAutoSaveTimer->stop();
+  mNextXDays->setText(i18n("&Next %1 Days").arg(KOPrefs::instance()->mNextXDays));
 }
 
 void KOrganizer::configureDateTime()

@@ -291,7 +291,7 @@ void KOPrefsDialog::setupViewsTab()
   QBoxLayout *nextDaysLayout = new QHBoxLayout;
   topLayout->addLayout(nextDaysLayout,1,0);
   nextDaysLayout->addWidget(new QLabel(i18n("Days to show in Next-X-Days view:"),topFrame));  
-  mNextXDaysSpin = new QSpinBox(1,14,1,topFrame);
+  mNextXDaysSpin = new QSpinBox(2,14,1,topFrame);
   nextDaysLayout->addStretch(1);
   nextDaysLayout->addWidget(mNextXDaysSpin);
 
