@@ -252,6 +252,8 @@ KOTodoView::KOTodoView(Calendar *calendar,QWidget* parent,const char* name) :
   mTodoListView->setRootIsDecorated(true);
   mTodoListView->setAllColumnsShowFocus(true);
 
+  mTodoListView->setShowSortIndicator(true);
+  
   mTodoListView->addColumn(i18n("Summary"));
   mTodoListView->addColumn(i18n("Priority"));
   mTodoListView->setColumnAlignment(1,AlignHCenter);
@@ -269,7 +271,15 @@ KOTodoView::KOTodoView(Calendar *calendar,QWidget* parent,const char* name) :
   mTodoListView->setItemsRenameable( TRUE );
   mTodoListView->setRenameable( 0 );
   
+  mTodoListView->setColumnWidthMode(0, QListView::Manual);
+  mTodoListView->setColumnWidthMode(1, QListView::Manual);
+  mTodoListView->setColumnWidthMode(2, QListView::Manual);
+  mTodoListView->setColumnWidthMode(3, QListView::Manual);
+  mTodoListView->setColumnWidthMode(4, QListView::Manual);
+  mTodoListView->setColumnWidthMode(5, QListView::Manual);
+  mTodoListView->setColumnWidthMode(6, QListView::Manual);
 
+  
   mPriorityPopupMenu = new QPopupMenu;
   for (int i = 1; i <= 5; i++) {
     QString label = QString ("%1").arg (i);

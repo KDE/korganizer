@@ -92,8 +92,10 @@ void KOTodoEditor::setupGeneral()
 
     QHBoxLayout *completionLayout = new QHBoxLayout( topLayout2 );
     mGeneral->initCompletion(topFrame2,completionLayout);
-    QBoxLayout *alarmLineLayout = new QHBoxLayout(topLayout2);
-    mGeneral->initAlarm(topFrame2,alarmLineLayout);
+    
+    mGeneral->initAlarm(topFrame,topLayout);
+    mGeneral->enableAlarm( false );
+    
     mGeneral->initSecrecy( topFrame2, topLayout2 );
     mGeneral->initDescription(topFrame2,topLayout2);
   } else {
@@ -105,9 +107,9 @@ void KOTodoEditor::setupGeneral()
 
     mGeneral->initHeader(topFrame,topLayout);
     mGeneral->initTime(topFrame,topLayout);
-    mGeneral->initStatus(topFrame,topLayout);
+    mGeneral->initStatus(topFrame,topLayout);    
     QBoxLayout *alarmLineLayout = new QHBoxLayout(topLayout);
-    mGeneral->initAlarm(topFrame,alarmLineLayout);
+    mGeneral->initAlarm(topFrame,alarmLineLayout); 
     mGeneral->initDescription(topFrame,topLayout);
     QBoxLayout *detailsLayout = new QHBoxLayout(topLayout);
     mGeneral->initCategories( topFrame, detailsLayout );

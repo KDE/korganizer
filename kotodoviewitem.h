@@ -18,7 +18,6 @@
 */
 #ifndef KOTODOVIEWITEM_H
 #define KOTODOVIEWITEM_H
-// $Id$
 
 #include <qfont.h>
 #include <qfontmetrics.h>
@@ -86,7 +85,6 @@ class KOTodoViewItem : public QCheckListItem
     uint m_odd : 1;
     uint m_known : 1;
     uint m_unused : 30;
-
 };
 
 #endif

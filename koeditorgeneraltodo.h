@@ -80,7 +80,8 @@ class KOEditorGeneralTodo : public KOEditorGeneral
     void enableDueEdit( bool enable );
     void enableStartEdit( bool enable );
     void enableTimeEdits( bool enable );
-
+    void showAlarm( bool show );
+  
   protected:  
     void setCompletedDate();
 
