@@ -64,12 +64,12 @@ void KOrganizerApp::displayImminent( const KURL &url, int numdays )
     return;
   }
 
-  Calendar *cal = new CalendarLocal(KOPrefs::instance()->mTimeZoneId.local8Bit());
+  CalendarLocal cal( KOPrefs::instance()->mTimeZoneId.local8Bit() );
 
   QDate currDate(QDate::currentDate());
   Event *currEvent;
 
-  FileStorage storage( cal, url.path() );
+  FileStorage storage( &cal, url.path() );
 
   if ( !storage.load() ) {
     printf(i18n("Could not load calendar '%1'.\n").arg(url.path()).local8Bit());
@@ -79,7 +79,7 @@ void KOrganizerApp::displayImminent( const KURL &url, int numdays )
   for (int i = 1; i <= numdays; i++) {
     printf("%s\n",(const char *)KGlobal::locale()->formatDate(currDate).local8Bit());
 
-    QPtrList<Event> tmpList( cal->events( currDate, true ) );
+    QPtrList<Event> tmpList( cal.events( currDate, true ) );
     printf("---------------------------------------------------------------\n");
     if (tmpList.count() > 0) {
       for (currEvent = tmpList.first(); currEvent; currEvent = tmpList.next()) {
@@ -95,7 +95,7 @@ void KOrganizerApp::displayImminent( const KURL &url, int numdays )
     }
 
     printf("---------------------------------------------------------------\n");
-    QPtrList<Todo> tmpList2 = cal->todos(currDate);
+    QPtrList<Todo> tmpList2 = cal.todos(currDate);
     Todo *currTodo;
     if (tmpList.count() > 0) {
       for (currTodo = tmpList2.first(); currTodo; currTodo = tmpList2.next()) {
