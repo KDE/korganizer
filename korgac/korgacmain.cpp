@@ -51,7 +51,7 @@ class MyApp : public KUniqueApplication
 };
 
 
-static const char *korgacVersion = "0.9";
+static const char korgacVersion[] = "0.9";
 
 static const KCmdLineOptions options[] =
 {
