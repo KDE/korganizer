@@ -78,7 +78,7 @@ KOEventPopupMenu *KOEventView::eventPopup()
 
 QPopupMenu *KOEventView::newEventPopup()
 {
-  KXMLGUIClient *client = KOCore::self()->xmlguiClient();
+  KXMLGUIClient *client = KOCore::self()->xmlguiClient( this );
   if ( !client ) {
     kdError() << "KOEventView::newEventPopup(): no xmlGuiClient." << endl;
     return 0;

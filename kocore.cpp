@@ -52,8 +52,7 @@ KOCore *KOCore::self()
 }
 
 KOCore::KOCore()
-  : mCalendarDecorationsLoaded( false ), mHolidays( 0 ), mXMLGUIClient( 0 ),
-    mIdentityManager( 0 )
+  : mCalendarDecorationsLoaded( false ), mHolidays( 0 ), mIdentityManager( 0 )
 {
 }
 
@@ -191,11 +190,25 @@ KOrg::Part *KOCore::loadPart( KService::Ptr service, KOrg::MainWindow *parent )
   return pluginFactory->create( parent );
 }
 
-void KOCore::setXMLGUIClient( KXMLGUIClient *guiclient )
+void KOCore::addXMLGUIClient( QWidget *wdg, KXMLGUIClient *guiclient )
 {
-  mXMLGUIClient = guiclient;
+  mXMLGUIClients.insert( wdg, guiclient );
 }
 
+void KOCore::removeXMLGUIClient( QWidget *wdg )
+{
+  mXMLGUIClients.remove( wdg );
+}
+
+KXMLGUIClient* KOCore::xmlguiClient( QWidget *wdg ) const
+{
+  QWidget *topLevel = wdg->topLevelWidget();
+  QMap<QWidget*, KXMLGUIClient*>::ConstIterator it = mXMLGUIClients.find( topLevel );
+  if ( it != mXMLGUIClients.end() )
+    return it.data();
+
+  return 0;
+}
 
 KOrg::Part *KOCore::loadPart( const QString &name, KOrg::MainWindow *parent )
 {

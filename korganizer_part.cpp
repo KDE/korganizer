@@ -72,9 +72,9 @@ K_EXPORT_COMPONENT_FACTORY( libkorganizerpart, KOrganizerFactory )
 KOrganizerPart::KOrganizerPart( QWidget *parentWidget, const char *widgetName,
                                 QObject *parent, const char *name,
                                 const QStringList & ) :
-  KParts::ReadOnlyPart(parent, name)
+  KParts::ReadOnlyPart(parent, name), mTopLevelWidget( parentWidget->topLevelWidget() )
 {
-  KOCore::self()->setXMLGUIClient( this );
+  KOCore::self()->addXMLGUIClient( mTopLevelWidget, this );
 
   QString pname( name );
 
@@ -137,6 +137,8 @@ KOrganizerPart::~KOrganizerPart()
   mActionManager = 0;
 
   closeURL();
+
+  KOCore::self()->removeXMLGUIClient( mTopLevelWidget );
 }
 
 KAboutData *KOrganizerPart::createAboutData()

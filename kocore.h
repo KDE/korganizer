@@ -54,8 +54,9 @@ class KOCore
     KOrg::CalendarDecoration::List calendarDecorations();
     KOrg::Part::List loadParts( KOrg::MainWindow *parent );
 
-    void setXMLGUIClient( KXMLGUIClient *guiclient );
-    KXMLGUIClient *xmlguiClient() const { return mXMLGUIClient; }
+    void addXMLGUIClient( QWidget*, KXMLGUIClient *guiclient );
+    void removeXMLGUIClient( QWidget* );
+    KXMLGUIClient *xmlguiClient( QWidget* ) const;
 
     /**
       Unload the parts in &p parts for this main window. Clears
@@ -92,7 +93,7 @@ class KOCore
 
     KOrg::CalendarDecoration *mHolidays;
 
-    KXMLGUIClient *mXMLGUIClient;
+    QMap<QWidget*, KXMLGUIClient*> mXMLGUIClients;
 
     KPIM::IdentityManager *mIdentityManager;
 };

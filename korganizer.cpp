@@ -92,7 +92,7 @@ KOrganizer::KOrganizer( const char *name )
     KOrg::MainWindow()
 {
   kdDebug(5850) << "KOrganizer::KOrganizer()" << endl;
-  KOCore::self()->setXMLGUIClient( this );
+  KOCore::self()->addXMLGUIClient( this, this );
 //  setMinimumSize(600,400);  // make sure we don't get resized too small...
 
   mCalendarView = new CalendarView( this, "KOrganizer::CalendarView" );
@@ -105,6 +105,8 @@ KOrganizer::KOrganizer( const char *name )
 KOrganizer::~KOrganizer()
 {
   delete mActionManager;
+
+  KOCore::self()->removeXMLGUIClient( this );
 }
 
 void KOrganizer::init( bool document )
