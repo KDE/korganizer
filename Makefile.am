@@ -74,9 +74,6 @@ kde_conf_DATA = korganizerrc
 kdelnkdir = $(kde_appsdir)/Applications
 kdelnk_DATA = korganizer.desktop
 
-mimedir = $(kde_mimedir)/text
-mime_DATA = x-vcalendar.desktop
-
 rcdir = $(kde_datadir)/korganizer
 rc_DATA = korganizer.rc
 
