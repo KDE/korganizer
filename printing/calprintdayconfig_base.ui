@@ -14,9 +14,6 @@
             <height>202</height>
         </rect>
     </property>
-    <property name="caption">
-        <string>CalPrintDay_Base</string>
-    </property>
     <grid>
         <property name="name">
             <cstring>unnamed</cstring>
