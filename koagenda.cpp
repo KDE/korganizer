@@ -872,9 +872,13 @@ void KOAgenda::drawContents(QPainter* p, int cx, int cy, int cw, int ch)
       while(gxStart <= gxEnd) {
         if (gxStart < int(mHolidayMask->count()) &&
             !mHolidayMask->at(gxStart)) {
-          int xStart = gxStart*mGridSpacingX;
+          int xStart = QApplication::reverseLayout() ?
+                                    (mColumns - 1 - gxStart)*mGridSpacingX :
+                                     gxStart*mGridSpacingX;
           if (xStart < x1) xStart = x1;
-          int xEnd = (gxStart+1)*mGridSpacingX-1;
+          int xEnd = QApplication::reverseLayout() ?
+                                    (mColumns - gxStart)*mGridSpacingX-1 :
+                                    (gxStart+1)*mGridSpacingX-1;
           if (xEnd > x2) xEnd = x2;
           p->fillRect(xStart,y1,xEnd-xStart+1,y2-y1+1,
                       KOPrefs::instance()->mWorkingHoursColor);
