@@ -2,7 +2,7 @@
 
 METASOURCES = AUTO
 
-INCLUDES = -I$(top_srcdir)/korganizer/interfaces -I$(top_srcdir)/korganizer -I$(top_srcdir)/libkcal $(all_includes)
+INCLUDES = -I$(top_srcdir)/korganizer/interfaces -I$(top_srcdir)/korganizer -I$(top_srcdir) $(all_includes)
 
 kde_module_LTLIBRARIES = libkorg_webexport.la
 

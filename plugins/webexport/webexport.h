@@ -22,7 +22,7 @@
 
 #include <korganizer/part.h>
 
-#include <calendar.h>
+#include <libkcal/calendar.h>
 
 class WebExport : public KOrg::Part {
     Q_OBJECT
