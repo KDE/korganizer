@@ -1837,6 +1837,8 @@ void CalendarView::purgeCompleted()
 void CalendarView::slotCalendarChanged()
 {
   kdDebug(5850) << "CalendarView::slotCalendarChanged()" << endl;
+
+  updateView();
 }
 
 NavigatorBar *CalendarView::navigatorBar()

@@ -6,7 +6,8 @@
     Fester Zigterman (F.J.F.ZigtermanRustenburg@student.utwente.nl)
     Ian Dawes (iadawes@globalserve.net)
     Laszlo Boloni (boloni@cs.purdue.edu)
-    Copyright (c) 2000, 2001 Cornelius Schumacher <schumacher@kde.org>
+
+    Copyright (c) 2000-2003 Cornelius Schumacher <schumacher@kde.org>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -73,7 +74,6 @@ using namespace KCal;
   @short constructs a new main window for korganizer
   @author Preston Brown
 */
-
 class KOrganizer : public KParts::MainWindow, virtual public KOrganizerIface,
                    public KOrg::MainWindow
 {
@@ -100,7 +100,7 @@ class KOrganizer : public KParts::MainWindow, virtual public KOrganizerIface,
     /** Save calendar file to URL of current calendar */
     bool saveURL();
     /** Save calendar file to URL */
-    bool saveAsURL(const KURL & kurl);
+    bool saveAsURL( const KURL & kurl );
     /** Get current URL */
     KURL getCurrentURL() const;
 

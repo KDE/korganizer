@@ -1,11 +1,13 @@
 /*
     This file is part of KOrganizer.
+
     Copyright (c) 1997, 1998, 1999
     Preston Brown (preston.brown@yale.edu)
     Fester Zigterman (F.J.F.ZigtermanRustenburg@student.utwente.nl)
     Ian Dawes (iadawes@globalserve.net)
     Laszlo Boloni (boloni@cs.purdue.edu)
-    Copyright (c) 2000, 2001, 2002 Cornelius Schumacher <schumacher@kde.org>
+
+    Copyright (c) 2000-2003 Cornelius Schumacher <schumacher@kde.org>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -26,13 +28,29 @@
     without including the source code for Qt in the source distribution.
 */
 
-#include <stdlib.h>
+#include "korganizer.h"
 
-#include <qcursor.h>
-#include <qtimer.h>
-#include <qvbox.h>
-#include <qfile.h>
-#include <qlabel.h>
+#include "komailclient.h"
+#include "calprinter.h"
+#include "calendarview.h"
+#include "koviewmanager.h"
+#include "kodialogmanager.h"
+#include "kowindowlist.h"
+#include "koprefs.h"
+#include "kocore.h"
+#include "konewstuff.h"
+#include "actionmanager.h"
+#include "koglobals.h"
+#include "alarmclient.h"
+#include "resourceview.h"
+#include "kogroupware.h"
+
+#include <korganizer/part.h>
+
+#include <libkcal/calendarlocal.h>
+#include <libkcal/calendarresources.h>
+#include <libkcal/resourcecalendar.h>
+#include <libkcal/resourcelocal.h>
 
 #include <kglobal.h>
 #include <kdebug.h>
@@ -53,37 +71,21 @@
 #include <ktip.h>
 #include <kstdguiitem.h>
 
-#include <korganizer/part.h>
+#include <qcursor.h>
+#include <qtimer.h>
+#include <qvbox.h>
+#include <qfile.h>
+#include <qlabel.h>
 
-#include <libkcal/calendarlocal.h>
-#include <libkcal/calendarresources.h>
-#include <libkcal/resourcecalendar.h>
-#include <libkcal/resourcelocal.h>
+#include <stdlib.h>
 
-#include "komailclient.h"
-#include "calprinter.h"
-#include "calendarview.h"
-#include "koviewmanager.h"
-#include "kodialogmanager.h"
-#include "kowindowlist.h"
-#include "koprefs.h"
-#include "kocore.h"
-#include "konewstuff.h"
-#include "actionmanager.h"
-#include "koglobals.h"
-#include "alarmclient.h"
-#include "resourceview.h"
-#include "kogroupware.h"
-
-#include "korganizer.h"
 using namespace KParts;
 #include "korganizer.moc"
 using namespace KOrg;
 
-
 KOrganizer::KOrganizer( bool document, const char *name )
-  : DCOPObject("KOrganizerIface"),
-    KParts::MainWindow(0,name),
+  : DCOPObject( "KOrganizerIface" ),
+    KParts::MainWindow( 0, name ),
     KOrg::MainWindow( document ),
     mIsClosing( false )
 {
@@ -147,8 +149,6 @@ KOrganizer::KOrganizer( bool document, const char *name )
     mCalendarView->addExtension( &factory );
 
     connect( mCalendarResources, SIGNAL( calendarChanged() ),
-             mCalendarView, SLOT( updateView() ) );
-    connect( mCalendarResources, SIGNAL( calendarChanged() ),
              mCalendarView, SLOT( slotCalendarChanged() ) );
 
     connect( mCalendarView, SIGNAL( configChanged() ),
@@ -174,23 +174,24 @@ KOrganizer::KOrganizer( bool document, const char *name )
 
 //  initViews();
 
-  statusBar()->insertItem("",ID_GENERAL,10);
+  statusBar()->insertItem( "", ID_GENERAL, 10 );
 
-  statusBar()->insertItem(i18n(" Incoming messages: %1 ").arg(0),
-                            ID_MESSAGES_IN);
-  statusBar()->insertItem(i18n(" Outgoing messages: %2 ").arg(0),
-                            ID_MESSAGES_OUT);
-  statusBar()->setItemAlignment(ID_MESSAGES_IN,AlignRight);
-  statusBar()->setItemAlignment(ID_MESSAGES_OUT,AlignRight);
-  connect(statusBar(),SIGNAL(pressed(int)),SLOT(statusBarPressed(int)));
+  statusBar()->insertItem( i18n(" Incoming messages: %1 ").arg( 0 ),
+                           ID_MESSAGES_IN );
+  statusBar()->insertItem( i18n(" Outgoing messages: %2 ").arg( 0 ),
+                           ID_MESSAGES_OUT );
+  statusBar()->setItemAlignment( ID_MESSAGES_IN, AlignRight );
+  statusBar()->setItemAlignment( ID_MESSAGES_OUT, AlignRight );
+  connect( statusBar(), SIGNAL( pressed( int ) ),
+           SLOT( statusBarPressed( int ) ) );
 
-  connect(mActionManager->view(),SIGNAL(numIncomingChanged(int)),
-          SLOT(setNumIncoming(int)));
-  connect(mActionManager->view(),SIGNAL(numOutgoingChanged(int)),
-          SLOT(setNumOutgoing(int)));
+  connect( mActionManager->view(), SIGNAL( numIncomingChanged( int ) ),
+           SLOT( setNumIncoming( int ) ) );
+  connect( mActionManager->view(), SIGNAL( numOutgoingChanged( int ) ),
+           SLOT( setNumOutgoing( int ) ) );
 
-  connect(mActionManager->view(),SIGNAL(statusMessage(const QString &)),
-          SLOT(showStatusMessage(const QString &)));
+  connect( mActionManager->view(), SIGNAL( statusMessage( const QString & ) ),
+           SLOT( showStatusMessage( const QString & ) ) );
 
   mActionManager->loadParts();
   kdDebug(5850) << "KOrganizer::KOrganizer() done" << endl;
@@ -225,12 +226,12 @@ void KOrganizer::readSettings()
 
   KConfig *config = KOGlobals::config();
 
-  config->setGroup("KOrganizer Geometry");
+  config->setGroup( "KOrganizer Geometry" );
 
-  int windowWidth = config->readNumEntry("Width",600);
-  int windowHeight = config->readNumEntry("Height",400);
+  int windowWidth = config->readNumEntry( "Width", 600 );
+  int windowHeight = config->readNumEntry( "Height", 400 );
 
-  resize(windowWidth,windowHeight);
+  resize( windowWidth, windowHeight );
 
   mActionManager->readSettings();
 
@@ -244,35 +245,35 @@ void KOrganizer::writeSettings()
 
   KConfig *config = KOGlobals::config();
 
-  config->setGroup("KOrganizer Geometry");
-  config->writeEntry("Width",width());
-  config->writeEntry("Height",height());
+  config->setGroup( "KOrganizer Geometry" );
+  config->writeEntry( "Width",width() );
+  config->writeEntry( "Height",height() );
 
   mActionManager->writeSettings();
-  saveMainWindowSettings(config);
+  saveMainWindowSettings( config );
   config->sync();
 }
 
 
 void KOrganizer::initActions()
 {
-  KStdAction::quit(this, SLOT(close()), actionCollection());
-  mStatusBarAction = KStdAction::showStatusbar(this,SLOT(toggleStatusBar()),
-                                               actionCollection());
+  KStdAction::quit( this, SLOT( close() ), actionCollection() );
+  mStatusBarAction = KStdAction::showStatusbar( this, SLOT( toggleStatusBar() ),
+                                                actionCollection() );
 
-  KStdAction::configureToolbars(this, SLOT(configureToolbars()),
-                                actionCollection());
+  KStdAction::configureToolbars( this, SLOT( configureToolbars() ),
+                                 actionCollection() );
 
   setInstance( KGlobal::instance() );
 
-  setXMLFile("korganizerui.rc");
-  createGUI(0);
+  setXMLFile( "korganizerui.rc" );
+  createGUI( 0 );
 
   KConfig *config = KOGlobals::config();
 
-  applyMainWindowSettings(config);
+  applyMainWindowSettings( config );
 
-  mStatusBarAction->setChecked(!statusBar()->isHidden());
+  mStatusBarAction->setChecked( !statusBar()->isHidden() );
 }
 
 #if 0
@@ -281,10 +282,10 @@ void KOrganizer::initViews()
   kdDebug(5850) << "KOrganizer::initViews()" << endl;
 
   // TODO: get calendar pointer from somewhere
-  KOrg::View::List views = KOCore::self()->views(this);
+  KOrg::View::List views = KOCore::self()->views( this );
   KOrg::View *it;
-  for( it=views.first(); it; it=views.next() ) {
-    guiFactory()->addClient(it);
+  for( it = views.first(); it; it = views.next() ) {
+    guiFactory()->addClient( it );
   }
 }
 #endif
@@ -333,7 +334,7 @@ void KOrganizer::configureToolbars()
 {
   saveMainWindowSettings( KOGlobals::config(), "MainWindow" );
 
-  KEditToolbar dlg(factory());
+  KEditToolbar dlg( factory() );
   dlg.exec();
 }
 
@@ -346,32 +347,32 @@ void KOrganizer::toggleStatusBar()
      statusBar()->hide();
 }
 
-void KOrganizer::statusBarPressed(int id)
+void KOrganizer::statusBarPressed( int id )
 {
-  if (id == ID_MESSAGES_IN)
+  if ( id == ID_MESSAGES_IN )
     mCalendarView->dialogManager()->showIncomingDialog();
-  else if (id == ID_MESSAGES_OUT)
+  else if ( id == ID_MESSAGES_OUT )
     mCalendarView->dialogManager()->showOutgoingDialog();
 }
 
-void KOrganizer::setNumIncoming(int num)
+void KOrganizer::setNumIncoming( int num )
 {
-  statusBar()->changeItem(i18n(" Incoming messages: %1 ").arg(num),
-                          ID_MESSAGES_IN);
+  statusBar()->changeItem( i18n(" Incoming messages: %1 ").arg( num ),
+                           ID_MESSAGES_IN);
 }
 
-void KOrganizer::setNumOutgoing(int num)
+void KOrganizer::setNumOutgoing( int num )
 {
-  statusBar()->changeItem(i18n(" Outgoing messages: %1 ").arg(num),
-                          ID_MESSAGES_OUT);
+  statusBar()->changeItem( i18n(" Outgoing messages: %1 ").arg( num ),
+                           ID_MESSAGES_OUT );
 }
 
-void KOrganizer::showStatusMessage(const QString &message)
+void KOrganizer::showStatusMessage( const QString &message )
 {
   statusBar()->message(message,2000);
 }
 
-bool KOrganizer::openURL(const KURL &url,bool merge)
+bool KOrganizer::openURL( const KURL &url, bool merge )
 {
   return mActionManager->openURL( url, merge );
 }
@@ -381,7 +382,7 @@ bool KOrganizer::saveURL()
   return mActionManager->saveURL();
 }
 
-bool KOrganizer::saveAsURL(const KURL & kurl)
+bool KOrganizer::saveAsURL( const KURL & kurl )
 {
   return mActionManager->saveAsURL( kurl )  ;
 }
@@ -391,22 +392,23 @@ KURL KOrganizer::getCurrentURL() const
   return mActionManager->url();
 }
 
-void KOrganizer::saveProperties(KConfig *config)
+void KOrganizer::saveProperties( KConfig *config )
 {
-  return mActionManager->saveProperties(config);
+  return mActionManager->saveProperties( config );
 }
 
-void KOrganizer::readProperties(KConfig *config)
+void KOrganizer::readProperties( KConfig *config )
 {
-  return mActionManager->readProperties(config);
+  return mActionManager->readProperties( config );
 }
 
-bool KOrganizer::deleteEvent(QString uid)
+bool KOrganizer::deleteEvent( QString uid )
 {
   return mActionManager->deleteEvent( uid );
 }
 
-bool KOrganizer::eventRequest(QString request, QCString receiver, QString ical)
+bool KOrganizer::eventRequest( QString request, QCString receiver,
+                               QString ical )
 {
   return mActionManager->eventRequest( request, receiver, ical );
 }
@@ -451,17 +453,17 @@ void KOrganizer::closeURL()
   return mActionManager->closeURL();
 }
 
-bool KOrganizer::openURL(QString url)
+bool KOrganizer::openURL( QString url )
 {
   return mActionManager->openURL( url );
 }
 
-bool KOrganizer::mergeURL(QString url)
+bool KOrganizer::mergeURL( QString url )
 {
   return mActionManager->mergeURL( url );
 }
 
-bool KOrganizer::saveAsURL(QString url)
+bool KOrganizer::saveAsURL( QString url )
 {
   return mActionManager->saveAsURL( url );
 }
@@ -469,7 +471,7 @@ bool KOrganizer::saveAsURL(QString url)
 void KOrganizer::slotConfigChanged()
 {
   if ( mCalendarResources ) {
-    if ( KOPrefs::instance()->mDestination==KOPrefs::askDestination )
+    if ( KOPrefs::instance()->mDestination == KOPrefs::askDestination )
       mCalendarResources->setAskDestinationPolicy();
     else
       mCalendarResources->setStandardDestinationPolicy();
