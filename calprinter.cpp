@@ -322,8 +322,8 @@ void CalPrinter::printMonth(const QDate &fd, const QDate &td)
 	       pageWidth, mHeaderHeight, Month);
     drawDaysOfWeek(p, curMonth, pageWidth, pageHeight);
     drawMonth(p, curMonth, pageWidth, pageHeight);
-    curMonth = curMonth.addDays(fromMonth.daysInMonth());
-    if (fromMonth <= toMonth)
+    curMonth = curMonth.addDays(fromMonth.daysInMonth()+1);
+    if (curMonth <= toMonth)
       mPrinter->newPage();
   } while (curMonth <= toMonth);
 
@@ -451,6 +451,11 @@ void CalPrinter::drawHeader(QPainter &p, const QDate &fd, const QDate &td,
     p.drawText(5, lineSpacing,title);
     break;
   case Month:
+      title += local->monthName(cd.month());
+      title += " ";
+      title += QString::number(cd.year());
+      p.drawText(5, lineSpacing, title );
+      break;
   case Week:
     
     title += local->formatDate(fd);
