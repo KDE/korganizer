@@ -26,6 +26,7 @@
 #include <qscrollview.h>
 #include <qtimer.h>
 #include <qmemarray.h>
+#include <qguardedptr.h>
 
 #include <libkcal/event.h>
 
@@ -234,10 +235,10 @@ class KOAgenda : public QScrollView
     KOAgendaItem *mClickedItem;
 
     // The KOAgendaItem, which is being moved/resized
-    KOAgendaItem *mActionItem;
+    QGuardedPtr<KOAgendaItem> mActionItem;
 
     // Currently selected item
-    KOAgendaItem *mSelectedItem;
+    QGuardedPtr<KOAgendaItem> mSelectedItem;
 
     // The Marcus Bains Line widget.
     MarcusBains *mMarcusBains;

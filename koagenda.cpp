@@ -1254,14 +1254,14 @@ void KOAgenda::checkScrollBoundaries(int v)
 
 void KOAgenda::deselectItem()
 {
-  if (mSelectedItem == 0) return;
+  if (mSelectedItem.isNull()) return;
   mSelectedItem->select(false);
   mSelectedItem = 0;
 }
 
 void KOAgenda::selectItem(KOAgendaItem *item)
 {
-  if (mSelectedItem == item) return;
+  if ((KOAgendaItem *)mSelectedItem == item) return;
   deselectItem();
   if (item == 0) {
     emit incidenceSelected( 0 );
