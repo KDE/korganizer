@@ -45,18 +45,24 @@
 
 using namespace KCal;
 
-class AttendeeListItem : public QListViewItem
+template<class T>
+class CustomListViewItem : public QListViewItem
 {
   public:
-    AttendeeListItem(Attendee *a, QListView *parent);
-    ~AttendeeListItem();
+    CustomListViewItem( T data, QListView *parent ) :
+      QListViewItem( parent ), mData( data ) { updateItem(); };
+    ~CustomListViewItem() {};
+    
+    void updateItem() {};
 
-    Attendee *attendee() { return mAttendee; }
-    void updateItem();
-
+    T attendee() const { return mData; }
+  
   private:
-    Attendee *mAttendee;
+    T mData;
 };
+
+typedef CustomListViewItem<Attendee *> AttendeeListItem;
+
 
 class KOEditorDetails : public QWidget
 {

@@ -48,26 +48,20 @@
 #include "koeditordetails.h"
 #include "koeditordetails.moc"
 
-
-AttendeeListItem::AttendeeListItem(Attendee *a, QListView *parent) :
-  QListViewItem(parent)
+template <>
+CustomListViewItem<class Attendee *>::~CustomListViewItem()
 {
-  mAttendee = a;
-  updateItem();
+  delete mData;
 }
 
-AttendeeListItem::~AttendeeListItem()
+template <>
+void CustomListViewItem<class Attendee *>::updateItem()
 {
-  delete mAttendee;
-}
-
-void AttendeeListItem::updateItem()
-{
-  setText(0,mAttendee->name());
-  setText(1,mAttendee->email());
-  setText(2,mAttendee->roleStr());
-  setText(3,mAttendee->statusStr());
-  if (mAttendee->RSVP() && !mAttendee->email().isEmpty())
+  setText(0,mData->name());
+  setText(1,mData->email());
+  setText(2,mData->roleStr());
+  setText(3,mData->statusStr());
+  if (mData->RSVP() && !mData->email().isEmpty())
     setPixmap(4,SmallIcon("mailappt"));
   else
     setPixmap(4,SmallIcon("nomailappt"));
