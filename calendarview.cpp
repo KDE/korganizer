@@ -1160,9 +1160,9 @@ void CalendarView::schedule_publish(Incidence *incidence)
 {
   Event *event = 0;
   Todo *todo = 0;
-
   if (incidence == 0) {
-    incidence = mViewManager->currentView()->selectedIncidences().first();
+    Incidence::List inclist = mViewManager->currentView()->selectedIncidences();
+    if (!inclist.isEmpty()) incidence = inclist.first();
     if (incidence == 0) {
       incidence = mTodoList->selectedIncidences().first();
     }
@@ -1277,9 +1277,9 @@ void CalendarView::schedule(Scheduler::Method method, Incidence *incidence)
 {
   Event *event = 0;
   Todo *todo = 0;
-
   if (incidence == 0) {
-    incidence = mViewManager->currentView()->selectedIncidences().first();
+    Incidence::List inclist = mViewManager->currentView()->selectedIncidences();
+    if (!inclist.isEmpty()) incidence = inclist.first();
     if (incidence == 0) {
       incidence = mTodoList->selectedIncidences().first();
     }
