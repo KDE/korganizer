@@ -341,7 +341,7 @@ RecurYearly::RecurYearly( QWidget *parent, const char *name ) :
   mByMonthCombo = new QComboBox( buttonGroup );
   for( int i = 1; i <= 12; ++i ) {
     // use an arbitrary year, we just need the month name...
-    QDate dt( 1, i, 2005 );
+    QDate dt( 2005, i, 1 );
     mByMonthCombo->insertItem( calSys->monthName( dt ) );
   }
   buttonLayout->addWidget( mByMonthCombo, 0, 1 );
