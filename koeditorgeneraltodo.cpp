@@ -105,11 +105,17 @@ void KOEditorGeneralTodo::initMisc()
 */
 
   completedCombo = new QComboBox(this);
+  // xgettext:no-c-format
   completedCombo->insertItem(i18n("0 %"));
+  // xgettext:no-c-format
   completedCombo->insertItem(i18n("20 %"));
+  // xgettext:no-c-format
   completedCombo->insertItem(i18n("40 %"));
+  // xgettext:no-c-format
   completedCombo->insertItem(i18n("60 %"));
+  // xgettext:no-c-format
   completedCombo->insertItem(i18n("80 %"));
+  // xgettext:no-c-format
   completedCombo->insertItem(i18n("100 %"));
   connect(completedCombo,SIGNAL(activated(int)),SLOT(completedChanged(int)));
 
