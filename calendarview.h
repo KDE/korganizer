@@ -368,6 +368,8 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     void toggleExpand();
     
     void todoSelect(bool);
+    
+    void dialogClosing(Incidence *);
   
   protected slots:
     /** Select a week to be displayed in the calendar view */
@@ -434,6 +436,7 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     int mEventsSelected;
 
     KOTodoView *mTodoList;
+    QPtrList<Incidence> mDialogList;
 };
 
 #endif

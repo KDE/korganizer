@@ -50,7 +50,7 @@ KOIncidenceEditor::KOIncidenceEditor(const QString &caption,Calendar *calendar) 
   connect(mCategoryDialog,SIGNAL(editCategories()),SIGNAL(editCategories()));
 
   // Clicking cancel exits the dialog without saving
-  connect(this,SIGNAL(cancelClicked()),SLOT(reject()));
+  connect(this,SIGNAL(cancelClicked()),SLOT(slotCancel()));
 }
 
 KOIncidenceEditor::~KOIncidenceEditor()
@@ -77,9 +77,17 @@ void KOIncidenceEditor::slotApply()
 void KOIncidenceEditor::slotOk()
 {
   if (processInput()) accept();
+  emit dialogClose(mIncidence);
 }
 
 void KOIncidenceEditor::updateCategoryConfig()
 {
   mCategoryDialog->updateCategoryConfig();
+}
+
+
+void KOIncidenceEditor::slotCancel()
+{
+  emit dialogClose(mIncidence);
+  reject();
 }

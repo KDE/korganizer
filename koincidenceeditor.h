@@ -56,10 +56,12 @@ class KOIncidenceEditor : public KDialogBase
 
   signals:
     void editCategories();
+    void dialogClose(Incidence *);
 
   protected slots:
     void slotApply();
     void slotOk();
+    void slotCancel();
 
   protected:
     void setupAttendeesTab();
@@ -74,6 +76,7 @@ class KOIncidenceEditor : public KDialogBase
     CategorySelectDialog *mCategoryDialog;
 
     KOEditorDetails      *mDetails;
+    Incidence *mIncidence;
 };
 
 #endif

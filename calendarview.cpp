@@ -120,6 +120,7 @@ CalendarView::CalendarView(QWidget *parent,const char *name)
   mCalPrinter = 0;
 
   mFilters.setAutoDelete(true);
+  mDialogList.setAutoDelete(false);
 
   // Create calendar object, which manages all calendar information associated
   // with this calendar view window.
@@ -743,12 +744,13 @@ void CalendarView::allday_new()
 void CalendarView::editEvent(Event *anEvent)
 {
   kdDebug() << "CalendarView::editEvent()" << endl;
-
+  if (mDialogList.find(anEvent)>=0) return;
   if(anEvent) {
     if (anEvent->isReadOnly()) {
       showEvent(anEvent);
       return;
     }
+    mDialogList.append(anEvent);
     KOEventEditor *eventEditor = mDialogManager->getEventEditor();
     eventEditor->editEvent(anEvent);
     eventEditor->show();
@@ -759,12 +761,13 @@ void CalendarView::editEvent(Event *anEvent)
 
 void CalendarView::editTodo(Todo *todo)
 {
+  if (mDialogList.find(todo)>=0) return;
   if (todo) {
     if (todo->isReadOnly()) {
       showTodo(todo);
       return;
     }
-
+    mDialogList.append(todo);
     KOTodoEditor *todoEditor = mDialogManager->getTodoEditor();
     todoEditor->editTodo(todo);
     todoEditor->show();
@@ -1522,4 +1525,9 @@ Todo *CalendarView::selectedTodo()
 void CalendarView::todoSelect(bool b)
 {
   emit todoSelected(b);
+}
+
+void CalendarView::dialogClosing(Incidence *in)
+{
+  mDialogList.remove(in);
 }

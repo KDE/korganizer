@@ -522,12 +522,12 @@ void CalPrinter::drawHeader(QPainter &p, const QDate &fd, const QDate &td,
       p.drawText(5, lineSpacing, title );
       break;
   case Week:
-    
+
     title += local->formatDate(fd);
-   
+
     p.drawText(5, lineSpacing, title );
     title.truncate(0);
-   
+
     title += local->formatDate(td);
     p.drawText(5, 2*lineSpacing, title);
     break;

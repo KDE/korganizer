@@ -157,6 +157,7 @@ void KOEventEditor::editEvent(Event *event)
   init();
 
   mEvent = event;
+  mIncidence = event;
   readEvent(mEvent);
 }
 
@@ -215,6 +216,7 @@ void KOEventEditor::slotUser1()
       switch (msgItemDelete()) {
         case KMessageBox::Continue: // OK
           emit eventToBeDeleted(mEvent);
+          emit dialogClose(mIncidence);
           mCalendar->deleteEvent(mEvent);
           emit eventDeleted();
           reject();
@@ -223,6 +225,7 @@ void KOEventEditor::slotUser1()
     }
     else {
       emit eventToBeDeleted(mEvent);
+      emit dialogClose(mIncidence);
       mCalendar->deleteEvent(mEvent);
       emit eventDeleted();
       reject();

@@ -191,6 +191,8 @@ KOEventEditor *KODialogManager::getEventEditor()
           eventEditor,SLOT(updateCategoryConfig()));
   connect(eventEditor,SIGNAL(editCategories()),
           mCategoryEditDialog,SLOT(show()));
+  connect(eventEditor,SIGNAL(dialogClose(Incidence*)),
+          mMainView,SLOT(dialogClosing(Incidence*)));
 
   connect(mMainView,SIGNAL(closingDown()),eventEditor,SLOT(reject()));
 
@@ -211,6 +213,8 @@ KOTodoEditor *KODialogManager::getTodoEditor()
           mMainView,SLOT(updateTodoViews()));
   connect(todoEditor,SIGNAL(todoDeleted()),
           mMainView,SLOT(updateTodoViews()));
+  connect(todoEditor,SIGNAL(dialogClose(Incidence*)),
+          mMainView,SLOT(dialogClosing(Incidence*)));
 
   connect(mMainView,SIGNAL(closingDown()),todoEditor,SLOT(reject()));
 
