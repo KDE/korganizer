@@ -155,7 +155,7 @@ META_INCLUDES = $(srcdir)/interfaces/korganizer
 
 messages: rc.cpp
 	$(PREPARETIPS) > tips.cc
-	$(XGETTEXT) *.cpp korgac/*.cpp knewstuff/*.cpp plugins/*/*.cpp tips.cc -o $(podir)/korganizer.pot
+	$(XGETTEXT) *.cpp *.h korgac/*.cpp knewstuff/*.cpp plugins/*/*.cpp tips.cc -o $(podir)/korganizer.pot
 	rm -f tips.cc
 
 xdg_apps_DATA = korganizer.desktop

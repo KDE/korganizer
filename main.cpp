@@ -32,21 +32,14 @@
 #include <kcmdlineargs.h>
 #include <klocale.h>
 
-static const KCmdLineOptions options[] =
-{
-  { "i", 0, 0 },
-  { "import <url>", I18N_NOOP("Import calendar at <url> into default calendar"),
-    0 },
-  { "+[calendar]", I18N_NOOP("A calendar file to load"), 0 },
-  KCmdLineLastOption
-};
+#include "korganizer_options.h"
 
 int main ( int argc, char **argv )
 {
   KOrg::AboutData aboutData;
 
   KCmdLineArgs::init( argc, argv, &aboutData );
-  KCmdLineArgs::addCmdLineOptions( options );
+  KCmdLineArgs::addCmdLineOptions( korganizer_options );
   KUniqueApplication::addCmdLineOptions();
 
   if ( !KOrganizerApp::start() ) return 0;
