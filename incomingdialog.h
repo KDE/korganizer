@@ -93,6 +93,7 @@ class IncomingDialog : public IncomingDialog_base
     void acceptMessage();
     void rejectMessage();
     void showEvent(QListViewItem *);
+    void updateActions();
 
   protected:
     bool acceptMessage(ScheduleItemIn *item);

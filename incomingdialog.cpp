@@ -26,6 +26,7 @@
 #include <qfile.h>
 #include <qdir.h>
 #include <qmap.h>
+#include <qpushbutton.h>
 
 #include <kglobal.h>
 #include <klocale.h>
@@ -155,6 +156,8 @@ IncomingDialog::IncomingDialog( Calendar *calendar, OutgoingDialog * outgoing,
   mMessageListView->setColumnAlignment( 4, AlignHCenter );
   connect( mMessageListView, SIGNAL( doubleClicked( QListViewItem * ) ),
            SLOT( showEvent( QListViewItem * ) ) );
+  connect( mMessageListView, SIGNAL( selectionChanged() ),
+	   SLOT( updateActions() ) );
   retrieve();
 }
 
@@ -199,6 +202,8 @@ void IncomingDialog::retrieve()
     automaticAction(item);
   }
   emit numMessagesChanged(mMessageListView->childCount());
+
+  updateActions();
 }
 
 void IncomingDialog::acceptAllMessages()
@@ -530,4 +535,22 @@ bool IncomingDialog::checkAttendeesInAddressbook(IncidenceBase *inc)
   return inBook;
 }
 
+void IncomingDialog::updateActions()
+{
+  unsigned int count = 0;
+  unsigned int total = 0;
+  ScheduleItemIn *item = (ScheduleItemIn *)mMessageListView->firstChild();
+  while(item) {
+    ScheduleItemIn *nextitem = (ScheduleItemIn *)(item->nextSibling());
+    total++;
+    if (mMessageListView->isSelected(item)) count++;
+    item = nextitem;
+  }
+
+  mAcceptAllButton->setEnabled(total>0);
+  mAcceptButton->setEnabled(count>0);
+  mRejectButton->setEnabled(count>0);
+}
+
 #include "incomingdialog.moc"
+
