@@ -7,6 +7,7 @@ SUBDIRS = $(knewstuff_SUBDIR) . korgac pixmaps sounds plugins interfaces
 INCLUDES = \
   -I$(srcdir)/interfaces \
   -I$(top_srcdir)/libkdepim \
+  -I$(top_srcdir)/libkpimidentities \
   -I$(top_srcdir)/mimelib \
   -I$(top_srcdir)/ktnef \
   -I$(top_srcdir)/certmanager/lib/ \
@@ -52,6 +53,7 @@ libkorganizer_la_LDFLAGS = $(all_libraries) $(KDE_RPATH) -version-info 1:0
 libkorganizer_la_LIBADD  = $(LIB_KPARTS) $(LIB_KFILE) \
 	-lkdeprint -lkabc -lkutils \
 	$(top_builddir)/libkcal/libkcal.la \
+	$(top_builddir)/libkpimidentities/libkpimidentities.la \
 	$(top_builddir)/libkdepim/libkdepim.la \
 	libkorganizer_eventviewer.la \
 	$(top_builddir)/kdgantt/libkdgantt.la \
