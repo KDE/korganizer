@@ -380,12 +380,12 @@ void KOAgendaItem::paintEvent(QPaintEvent *)
       bgColor = KOPrefs::instance()->mEventColor;
     else
       bgColor = *(KOPrefs::instance()->categoryColor(cat));
-      // if uses had the old default event color, override!
-      if ( bgColor == QColor(196,196,196) )
-        bgColor = KOPrefs::instance()->mEventColor;
   }
 
-  QColor frameColor = mSelected ? bgColor.light(115) : bgColor.dark(115);
+  QColor frameColor = mSelected ? QColor( 85 + bgColor.red()*2/3,
+                                          85 + bgColor.green()*2/3,
+                                          85 + bgColor.blue()*2/3 )
+                                : bgColor.dark(115);
   QColor textColor = getTextColor(bgColor);
   p.setPen( textColor );
   p.setBackgroundColor( bgColor );
