@@ -7,19 +7,19 @@ by using <a href="http://www.slac.com/pilone/kpilot_home">KPilot</a>?
 
 <tip category="KOrganizer|General">
 <html>
-<p>...that you can select, if the week starts on Monday or on Sunday in the KDE
-control center? KOrganizer uses this settings. Look at "Personalization"->"Date
-& Time".
+<p>...that you can select whether the week starts on Monday or on Sunday in the KDE
+control center? KOrganizer uses this setting. Look at Personalization -> Country &
+Languages, on the Time & Dates tab.
 </html>
 </tip>
 
 <tip category="KOrganizer|General">
 <html>
 <p>...that you can store your calendar on an FTP server? Use the standard file
-dialog to save the calendar to an URL like "ftp://username@ftpserver/filename".
-You can make your calendar active and load and save it as it were local.
-Just make sure that no two KOrganizer applications work on the same file at the
-same time.
+dialog to save the calendar to a URL like "ftp://username@ftpserver/filename".
+You can make your calendar active and load and save it as if it were local.
+Just make sure that no two KOrganizer applications are working on the same file, at
+the same time.
 </html>
 </tip>
 

@@ -1329,7 +1329,7 @@ void CalendarView::exportVCalendar()
     if (result != KMessageBox::Continue) return;
   }
 
-  QString filename = KFileDialog::getSaveFileName("vcalout.vcs",i18n("*.vcs|VCaldendars"),this);
+  QString filename = KFileDialog::getSaveFileName("vcalout.vcs",i18n("*.vcs|VCalendars"),this);
 
   // Force correct extension
   if (filename.right(4) != ".vcs") filename += ".vcs";
