@@ -38,6 +38,7 @@ class QSlider;
 class KURLRequester;
 class QComboBox;
 class QLineEdit;
+class QStringList;
 
 /** Dialog to change the korganizer configuration.
   */
@@ -111,6 +112,7 @@ class KOPrefsDialog : public KPrefsDialog
     QLineEdit *aEmailsEdit;
 
     QComboBox    *mTimeZoneCombo;
+    QStringList  tzonenames;
     QSpinBox     *mStartTimeSpin;
     QSpinBox     *mDefaultDurationSpin;
     QComboBox    *mAlarmTimeCombo;

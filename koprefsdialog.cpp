@@ -65,6 +65,8 @@ KOPrefsDialog::KOPrefsDialog(QWidget *parent, char *name, bool modal) :
 {
   mCategoryDict.setAutoDelete(true);
 
+  KGlobal::locale()->insertCatalogue("timezones");
+
   setupMainTab();
   setupTimeTab();
   setupFontsTab();
@@ -215,7 +217,8 @@ void KOPrefsDialog::setupTimeTab()
   if (!f) return;
   while(fgets(tempstring, 100, f) != NULL) {
     tempstring[strlen(tempstring)-1] = '\0';
-    list.inSort(tempstring);
+    list.inSort(i18n(tempstring));
+    tzonenames << tempstring;
   }
   pclose(f);
 
@@ -622,7 +625,7 @@ void KOPrefsDialog::usrReadConfig()
 
   mAutoSaveIntervalSpin->setValue(KOPrefs::instance()->mAutoSaveInterval);
 
-  setCombo(mTimeZoneCombo,KOPrefs::instance()->mTimeZoneId);
+  setCombo(mTimeZoneCombo,i18n(KOPrefs::instance()->mTimeZoneId.utf8()));
 
   mStartTimeSpin->setValue(KOPrefs::instance()->mStartTime);
   mDefaultDurationSpin->setValue(KOPrefs::instance()->mDefaultDuration);
@@ -648,7 +651,15 @@ void KOPrefsDialog::usrWriteConfig()
 
   KOPrefs::instance()->mAutoSaveInterval = mAutoSaveIntervalSpin->value();
 
-  KOPrefs::instance()->mTimeZoneId = mTimeZoneCombo->currentText();
+  // Find untranslated selected zone
+  QStringList::Iterator tz;
+  for (tz = tzonenames.begin(); tz != tzonenames.end(); tz++)
+    if (mTimeZoneCombo->currentText() == i18n((*tz).utf8()))
+      break;
+  if (tz != tzonenames.end())
+    KOPrefs::instance()->mTimeZoneId = (*tz);
+  else
+    KOPrefs::instance()->mTimeZoneId = mTimeZoneCombo->currentText();
 
   KOPrefs::instance()->mStartTime = mStartTimeSpin->value();
   KOPrefs::instance()->mDefaultDuration = mDefaultDurationSpin->value();
