@@ -135,7 +135,6 @@ rc_DATA = korganizerui.rc korganizergsui.rc
 partdir   = $(kde_datadir)/korganizer
 part_DATA = korganizer_part.rc
 
-kde_services_DATA = webcal.protocol
 kde_servicetypes_DATA = dcopcalendar.desktop
 
 KDE_ICON = AUTO
@@ -153,6 +152,6 @@ xdg_apps_DATA = korganizer.desktop
 kde_services_DATA =  configmain.desktop configtime.desktop \
                      configviews.desktop configcolors.desktop \
                      configfonts.desktop configgroupscheduling.desktop \
-                     configgroupautomation.desktop
+                     configgroupautomation.desktop webcal.protocol
 
 include ../admin/Doxyfile.am
