@@ -166,7 +166,7 @@ KOEditorGantt::KOEditorGantt( int spacing, QWidget* parent, const char* name )
   scaleCombo->setCurrentItem( 0 ); // start with "hour"
   QLabel* dummy = new QLabel( scaleHB );
   scaleHB->setStretchFactor( dummy, 2 );
-  QLabel* hFormatLA = new QLabel( i18n( "Hour Format: " ), scaleHB );
+  QLabel* hFormatLA = new QLabel( i18n( "Hour format:" ), scaleHB );
   hFormatLA->setAlignment( AlignRight | AlignVCenter );
   dummy = new QLabel( scaleHB );
   scaleHB->setStretchFactor( dummy, 2 );
@@ -174,11 +174,11 @@ KOEditorGantt::KOEditorGantt( int spacing, QWidget* parent, const char* name )
   connect( centerPB, SIGNAL( clicked() ), this, SLOT( slotCenterOnStart() ) );
   dummy = new QLabel( scaleHB );
   scaleHB->setStretchFactor( dummy, 2 );
-  QPushButton* zoomPB = new QPushButton( i18n( "Zoom to fit" ), scaleHB );
+  QPushButton* zoomPB = new QPushButton( i18n( "Zoom to Fit" ), scaleHB );
   connect( zoomPB, SIGNAL( clicked() ), this, SLOT( slotZoomToTime() ) );
   dummy = new QLabel( scaleHB );
   scaleHB->setStretchFactor( dummy, 2 );
-  QPushButton* pickPB = new QPushButton( i18n( "Pick a date" ), scaleHB );
+  QPushButton* pickPB = new QPushButton( i18n( "Pick Date" ), scaleHB );
   connect( pickPB, SIGNAL( clicked() ), this, SLOT( slotPickDate() ) );
   connect( scaleCombo, SIGNAL( activated( int ) ),
            this, SLOT( slotScaleChanged( int ) ) );
@@ -389,14 +389,14 @@ void KOEditorGantt::slotPickDate()
 
   if( success ) {
     if ( start == mDtStart && end == mDtEnd ) {
-      KMessageBox::information( this, i18n( "The meeting has already suitable start/end times" ));
+      KMessageBox::information( this, i18n( "The meeting has already suitable start/end times." ));
     } else {
       emit dateTimesChanged( start, end );
       slotUpdateGanttView( start, end );
       KMessageBox::information( this, i18n( "The meeting has been moved to\nStart: %1\nEnd: %2." ).arg( start.toString() ).arg( end.toString() ) );
     }
   } else
-    KMessageBox::sorry( this, i18n( "No suitable date found" ) );
+    KMessageBox::sorry( this, i18n( "No suitable date found." ) );
 }
 
 

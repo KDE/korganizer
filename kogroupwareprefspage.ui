@@ -65,7 +65,7 @@
                                     <cstring>ButtonGroup2</cstring>
                                 </property>
                                 <property name="title">
-                                    <string>Server information</string>
+                                    <string>Server Information</string>
                                 </property>
                                 <grid>
                                     <property name="name">
@@ -76,7 +76,7 @@
                                             <cstring>publishKolabRB</cstring>
                                         </property>
                                         <property name="text">
-                                            <string>Publish to a &amp;Kolab server:</string>
+                                            <string>Publish to a &amp;Kolab server</string>
                                         </property>
                                         <property name="accel">
                                             <string>Alt+K</string>
@@ -109,7 +109,7 @@
                                             <cstring>publishAnyServerRB</cstring>
                                         </property>
                                         <property name="text">
-                                            <string>Publish to &amp;any server:</string>
+                                            <string>Publish to &amp;any server</string>
                                         </property>
                                         <property name="accel">
                                             <string>Alt+A</string>
@@ -278,7 +278,7 @@
                                     <cstring>buttonGroup3</cstring>
                                 </property>
                                 <property name="title">
-                                    <string>Publish method</string>
+                                    <string>Publish Method</string>
                                 </property>
                                 <property name="toolTip" stdset="0">
                                     <string>&lt;p&gt;If you set this to automatic upload, you can set delay to 0, to force uploading immediately after changes.&lt;/p&gt;&lt;p&gt;If you set a delay, you can always choose manual uploading to override the delay.&lt;/p&gt;</string>
@@ -322,7 +322,7 @@
                                                     <cstring>publishDelayLabel</cstring>
                                                 </property>
                                                 <property name="text">
-                                                    <string>Minimum &amp;time between uploads (in minutes)</string>
+                                                    <string>Minimum &amp;time between uploads (in minutes):</string>
                                                 </property>
                                                 <property name="buddy" stdset="0">
                                                     <cstring>publishDelaySB</cstring>
@@ -396,7 +396,7 @@
                                     <cstring>ButtonGroup2_2</cstring>
                                 </property>
                                 <property name="title">
-                                    <string>Server information</string>
+                                    <string>Server Information</string>
                                 </property>
                                 <vbox>
                                     <property name="name">
@@ -407,7 +407,7 @@
                                             <cstring>retrieveKolabRB</cstring>
                                         </property>
                                         <property name="text">
-                                            <string>Retrieve from a &amp;Kolab server:</string>
+                                            <string>Retrieve from a &amp;Kolab server</string>
                                         </property>
                                         <property name="checked">
                                             <bool>true</bool>
@@ -450,7 +450,7 @@
                                             <cstring>retrieveAnyServerRB</cstring>
                                         </property>
                                         <property name="text">
-                                            <string>Retrieve from &amp;any server:</string>
+                                            <string>Retrieve from &amp;any server</string>
                                         </property>
                                     </widget>
                                     <widget class="QLayoutWidget">
@@ -511,7 +511,7 @@
                                                     <cstring>textLabel3</cstring>
                                                 </property>
                                                 <property name="text">
-                                                    <string>Us&amp;er Name:</string>
+                                                    <string>Us&amp;er name:</string>
                                                 </property>
                                                 <property name="buddy" stdset="0">
                                                     <cstring>retrieveUserNameED</cstring>
@@ -546,7 +546,7 @@
                                             <bool>true</bool>
                                         </property>
                                         <property name="text">
-                                            <string>Re&amp;member Password</string>
+                                            <string>Re&amp;member password</string>
                                         </property>
                                         <property name="accel">
                                             <string>Alt+M</string>
