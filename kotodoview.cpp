@@ -258,7 +258,9 @@ KOTodoView::KOTodoView(Calendar *calendar,QWidget* parent,const char* name) :
   mTodoListView->addColumn(i18n("Complete"));
   mTodoListView->setColumnAlignment(2,AlignRight);
   mTodoListView->addColumn(i18n("Due Date"));
+  mTodoListView->setColumnAlignment(3,AlignHCenter);
   mTodoListView->addColumn(i18n("Due Time"));
+  mTodoListView->setColumnAlignment(4,AlignHCenter);
   mTodoListView->addColumn(i18n("Categories"));
   mTodoListView->addColumn(i18n("Sort Id"));
   mTodoListView->setColumnAlignment(4,AlignHCenter);

@@ -50,13 +50,13 @@ FilterEditDialog::FilterEditDialog(QPtrList<CalFilter> *filters,QWidget *parent,
   setMainWidget(mainWidget);
 
   mSelectionCombo = new QComboBox(mainWidget);
-  connect(mSelectionCombo,SIGNAL(activated(int)),SLOT(filterSelected()));  
-  
+  connect(mSelectionCombo,SIGNAL(activated(int)),SLOT(filterSelected()));
+
   QPushButton *addButton = new QPushButton(i18n("Add Filter"),mainWidget);
   connect(addButton,SIGNAL(clicked()),SLOT(slotAdd()));
-  
+
   mEditor = new FilterEdit_base(mainWidget);
-  
+
   QGridLayout *topLayout = new QGridLayout(mainWidget,2,2);
   topLayout->setSpacing(spacingHint());
   topLayout->addWidget(mSelectionCombo,0,0);
@@ -90,10 +90,10 @@ void FilterEditDialog::updateFilterList()
       mSelectionCombo->insertItem(filter->name());
       filter = mFilters->next();
     }
-  
+
     CalFilter *f = mFilters->at(mSelectionCombo->currentItem());
     if (f) readFilter(f);
-    
+
     enableButtonOK(true);
     enableButtonApply(true);
   }
@@ -156,7 +156,7 @@ void FilterEditDialog::filterSelected()
 void FilterEditDialog::readFilter(CalFilter *filter)
 {
   int c = filter->criteria();
-  
+
   mEditor->mCompletedCheck->setChecked(c & CalFilter::HideCompleted);
   mEditor->mRecurringCheck->setChecked(c & CalFilter::HideRecurring);
 
@@ -166,8 +166,9 @@ void FilterEditDialog::readFilter(CalFilter *filter)
     mEditor->mCatHideCheck->setChecked(true);
   }
 
-  mEditor->mCatList->clear();  
+  mEditor->mCatList->clear();
   mEditor->mCatList->insertStringList(filter->categoryList());
+  mCategories = filter->categoryList();
 }
 
 void FilterEditDialog::writeFilter(CalFilter *filter)

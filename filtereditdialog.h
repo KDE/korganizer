@@ -74,7 +74,7 @@ class FilterEditDialog : public KDialogBase
 
     QComboBox *mSelectionCombo;
     FilterEdit_base *mEditor;
-    
+
     QStringList mCategories;
 };
 

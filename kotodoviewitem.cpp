@@ -67,18 +67,26 @@ void KOTodoViewItem::construct()
   setOn(mEvent->isCompleted());
   setText(0,mEvent->summary());
   setText(1,QString::number(mEvent->priority()));
+  if (mEvent->isCompleted()) setSortKey(1,QString::number(9));
+  else setSortKey(1,QString::number(mEvent->priority()));
+  setText(2,i18n("%1 %").arg(QString::number(mEvent->percentComplete())));
   if (mEvent->percentComplete()<100) {
-    setText(2,i18n(" %1 %").arg(QString::number(mEvent->percentComplete())));
+    if (mEvent->isCompleted()) setSortKey(2,QString::number(999));
+    else setSortKey(2,QString::number(mEvent->percentComplete()));
   }
   else {
-    setText(2,i18n("%1 %").arg(QString::number(mEvent->percentComplete())));
+    if (mEvent->isCompleted()) setSortKey(2,QString::number(999));
+    else setSortKey(2,QString::number(99));
   }
   if (mEvent->hasDueDate()) {
     setText(3, mEvent->dtDueDateStr());
     QDate d = mEvent->dtDue().date();
     key.sprintf("%04d%02d%02d",d.year(),d.month(),d.day());
     setSortKey(3,key);
-    if (mEvent->doesFloat()) setText(4,"");
+    if (mEvent->doesFloat()) {
+      setText(4,"");
+      setSortKey(4,"==");
+    }
     else {
       setText(4,mEvent->dtDueTimeStr());
       QTime t = mEvent->dtDue().time();
@@ -87,7 +95,9 @@ void KOTodoViewItem::construct()
     }
   } else {
     setText(3,"");
+    setSortKey(3,"==");
     setText(4,"");
+    setSortKey(4,"==");
   }
   setText(5,mEvent->categoriesStr());
   // Find sort id in description. It's the text behind the last '#' character
@@ -111,11 +121,16 @@ void KOTodoViewItem::stateChange(bool state)
     setOn(state);
 //    emit isModified(true);
   }
+  if (mEvent->isCompleted()) setSortKey(1,QString::number(9));
+  else setSortKey(1,QString::number(mEvent->priority()));
+  setText(2,i18n("%1 %").arg(QString::number(mEvent->percentComplete())));
   if (mEvent->percentComplete()<100) {
-    setText(2,i18n(" %1 %").arg(QString::number(mEvent->percentComplete())));
+    if (mEvent->isCompleted()) setSortKey(2,QString::number(999));
+    else setSortKey(2,QString::number(mEvent->percentComplete()));
   }
   else {
-    setText(2,i18n("%1 %").arg(QString::number(mEvent->percentComplete())));
+    if (mEvent->isCompleted()) setSortKey(2,QString::number(999));
+    else setSortKey(2,QString::number(99));
   }
   QListViewItem * myChild = firstChild();
   KOTodoViewItem *item;
