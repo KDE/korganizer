@@ -55,9 +55,8 @@ class KOWhatsNextView : public KOrg::BaseView
                     const char *name = 0);
     ~KOWhatsNextView();
 
-    virtual int maxDatesHint();
     virtual int currentDateCount();
-    virtual Incidence::List selectedIncidences();
+    virtual Incidence::List selectedIncidences() { return Incidence::List(); }
     DateList selectedDates() { return DateList(); }
 
   public slots:
@@ -68,8 +67,9 @@ class KOWhatsNextView : public KOrg::BaseView
     void changeIncidenceDisplay(Incidence *, int);
 
   protected:
-    void appendEvent(Incidence *, bool reply=false);
-    void appendTodo(Incidence *);
+    void appendEvent( Incidence *, const QDateTime &start = QDateTime(), 
+                      const QDateTime &end = QDateTime() );
+    void appendTodo( Incidence * );
 
   private slots:
     void showIncidence(const QString &);
@@ -77,6 +77,8 @@ class KOWhatsNextView : public KOrg::BaseView
   private:
     QTextBrowser *mView;
     QString mText;
+    QDate mStartDate;
+    QDate mEndDate;
 
     Incidence::List mTodos;
 };

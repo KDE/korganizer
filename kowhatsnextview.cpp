@@ -63,16 +63,16 @@ KOWhatsNextView::KOWhatsNextView(Calendar *calendar, QWidget *parent,
                                  const char *name)
   : KOrg::BaseView(calendar, parent, name)
 {
-  QLabel *dateLabel =
-      new QLabel(KGlobal::locale()->formatDate(QDate::currentDate()),this);
-  dateLabel->setMargin(2);
-  dateLabel->setAlignment(AlignCenter);
+//  QLabel *dateLabel =
+//      new QLabel(KGlobal::locale()->formatDate(QDate::currentDate()),this);
+//  dateLabel->setMargin(2);
+//  dateLabel->setAlignment(AlignCenter);
 
   mView = new WhatsNextTextBrowser(this);
   connect(mView,SIGNAL(showIncidence(const QString &)),SLOT(showIncidence(const QString &)));
 
   QBoxLayout *topLayout = new QVBoxLayout(this);
-  topLayout->addWidget(dateLabel);
+//  topLayout->addWidget(dateLabel);
   topLayout->addWidget(mView);
 }
 
@@ -80,23 +80,10 @@ KOWhatsNextView::~KOWhatsNextView()
 {
 }
 
-int KOWhatsNextView::maxDatesHint()
-{
-  return 0;
-}
-
 int KOWhatsNextView::currentDateCount()
 {
-  return 0;
+  return mStartDate.daysTo( mEndDate );
 }
-
-Incidence::List KOWhatsNextView::selectedIncidences()
-{
-  Incidence::List eventList;
-
-  return eventList;
-}
-
 
 void KOWhatsNextView::updateView()
 {
@@ -109,10 +96,24 @@ void KOWhatsNextView::updateView()
   mText += "<img src=\"";
   mText += *ipath;
   mText += "\">";
-  mText += "<font color=\"white\"> " + i18n("What's next?") + "</font></h1>";
+  mText += "<font color=\"white\"> ";
+  mText += i18n("What's next?") + "</font></h1>";
   mText += "</td></tr>\n<tr><td>";
 
-  Event::List events = calendar()->events( QDate::currentDate(), true );
+  mText += "<h2>";
+  if ( mStartDate.daysTo( mEndDate ) < 1 ) {
+    mText += KGlobal::locale()->formatDate( mStartDate );
+  } else {
+    mText += i18n("Date from - to", "%1 - %2")
+            .arg( KGlobal::locale()->formatDate( mStartDate ) )
+            .arg( KGlobal::locale()->formatDate( mEndDate ) );
+  }
+  mText+="</h2>\n";
+
+  Event::List unsortedevents = calendar()->events( mStartDate, mEndDate, false );
+  Event::List events = Calendar::sortEvents( &unsortedevents, 
+                     EventSortStartDate, SortDirectionAscending );
+
   if (events.count() > 0) {
     mText += "<p></p>";
     kil.loadIcon("appointment",KIcon::NoGroup,22,KIcon::DefaultState,ipath);
@@ -124,15 +125,32 @@ void KOWhatsNextView::updateView()
     Event::List::ConstIterator it;
     for( it = events.begin(); it != events.end(); ++it ) {
       Event *ev = *it;
-      if (!ev->doesRecur() || ev->recursOn( QDate::currentDate())) {
+      if ( !ev->doesRecur() ){
         appendEvent(ev);
+      } else {
+        // FIXME: This should actually be cleaned up. Libkcal should
+        // provide a method to return a list of all recurrences in a 
+        // given time span.
+        Recurrence *recur = ev->recurrence();
+        int duration = ev->dtStart().secsTo( ev->dtEnd() );
+        QDateTime start = recur->getPreviousDateTime( 
+                                QDateTime( mStartDate, QTime() ) );
+        QDateTime end = start.addSecs( duration );
+        if ( end.date() >= mStartDate ) {
+          appendEvent( ev, start, end );
+        }
+        start = recur->getNextDateTime( start );
+        while ( start.isValid() && start.date() <= mEndDate ) {
+          appendEvent( ev, start );
+          start = recur->getNextDateTime( start );
+        }
       }
     }
     mText += "</table>\n";
   }
 
   mTodos.clear();
-  Todo::List todos = calendar()->todos();
+  Todo::List todos = calendar()->todos( TodoSortDueDate, SortDirectionAscending );
   if ( todos.count() > 0 ) {
     kil.loadIcon("todo",KIcon::NoGroup,22,KIcon::DefaultState,ipath);
     mText += "<h2><img src=\"";
@@ -143,7 +161,7 @@ void KOWhatsNextView::updateView()
     Todo::List::ConstIterator it;
     for( it = todos.begin(); it != todos.end(); ++it ) {
       Todo *todo = *it;
-      if ( !todo->isCompleted() && todo->hasDueDate() && todo->dtDue().date() <= QDate::currentDate() )
+      if ( !todo->isCompleted() && todo->hasDueDate() && todo->dtDue().date() <= mEndDate )
                   appendTodo(todo);
     }
     bool gotone = false;
@@ -163,7 +181,7 @@ void KOWhatsNextView::updateView()
   }
 
   int replies = 0;
-  events = calendar()->events(QDate::currentDate(), QDate(2975,12,6));
+  events = calendar()->events( QDate::currentDate(), QDate(2975,12,6) );
   Event::List::ConstIterator it2;
   for( it2 = events.begin(); it2 != events.end(); ++it2 ) {
     Event *ev = *it2;
@@ -180,7 +198,7 @@ void KOWhatsNextView::updateView()
           mText += "<table>\n";
         }
         replies++;
-        appendEvent(ev,true);
+        appendEvent( ev );
       }
     }
   }
@@ -215,8 +233,10 @@ void KOWhatsNextView::updateView()
   mView->setText(mText);
 }
 
-void KOWhatsNextView::showDates(const QDate &, const QDate &)
+void KOWhatsNextView::showDates( const QDate &start, const QDate &end )
 {
+  mStartDate = start;
+  mEndDate = end;
   updateView();
 }
 
@@ -228,28 +248,45 @@ void KOWhatsNextView::changeIncidenceDisplay(Incidence *, int action)
 {
   switch(action) {
     case KOGlobals::INCIDENCEADDED:
-      break;
     case KOGlobals::INCIDENCEEDITED:
-      break;
     case KOGlobals::INCIDENCEDELETED:
+      updateView();
       break;
     default:
       kdDebug(5850) << "KOWhatsNextView::changeIncidenceDisplay(): Illegal action " << action << endl;
   }
 }
 
-void KOWhatsNextView::appendEvent(Incidence *ev, bool reply)
+void KOWhatsNextView::appendEvent( Incidence *ev, const QDateTime &start,
+                                   const QDateTime &end )
 {
   kdDebug(5850) << "KOWhatsNextView::appendEvent(): " << ev->uid() << endl;
 
   mText += "<tr><td><b>";
-  if (!ev->doesFloat()) {
+//  if (!ev->doesFloat()) {
     if (ev->type()=="Event") {
       Event *event = static_cast<Event *>(ev);
-      if (reply) mText += "on " + event->dtStartDateStr() + ": ";
-      mText += event->dtStartTimeStr() + " - " + event->dtEndTimeStr();
+      QDateTime starttime( start );
+      if ( !starttime.isValid() ) 
+        starttime = event->dtStart();
+      QDateTime endtime( end );
+      if ( !endtime.isValid() ) 
+        endtime = starttime.addSecs( 
+                  event->dtStart().secsTo( event->dtEnd() ) );
+      
+      if ( starttime.date().daysTo( endtime.date() ) >= 1 ) {
+        mText += i18n("date from - to", "%1 - %2")
+              .arg( KGlobal::locale()->formatDateTime( starttime ) )
+              .arg( KGlobal::locale()->formatDateTime( endtime ) );
+      } else {
+        /*if (reply) */
+        mText += i18n("on date: from - to", "on %1: %2 - %3")
+            .arg( KGlobal::locale()->formatDate( starttime.date(), true ) )
+            .arg( KGlobal::locale()->formatTime( starttime.time() ) )
+            .arg( KGlobal::locale()->formatTime( endtime.time() ) );
+      }
     }
-  }
+//  }
   mText += "</b></td><td><a ";
   if (ev->type()=="Event") mText += "href=\"event:";
   if (ev->type()=="Todo") mText += "href=\"todo:";
@@ -258,7 +295,7 @@ void KOWhatsNextView::appendEvent(Incidence *ev, bool reply)
   mText += "</a></td></tr>\n";
 }
 
-void KOWhatsNextView::appendTodo(Incidence *ev)
+void KOWhatsNextView::appendTodo( Incidence *ev )
 {
   if ( mTodos.find( ev ) != mTodos.end() ) return;
 
@@ -266,7 +303,16 @@ void KOWhatsNextView::appendTodo(Incidence *ev)
 
   mText += "<li><a href=\"todo:" + ev->uid() + "\">";
   mText += ev->summary();
-  mText += "</a></li>\n";
+  mText += "</a>";
+  
+  if ( ev->type()=="Todo" ) {
+    Todo *todo = static_cast<Todo*>(ev);
+    if ( todo->hasDueDate() ) {
+      mText += i18n("  (Due: %1)")
+         .arg( (todo->doesFloat())?(todo->dtDueDateStr()):(todo->dtDueStr()) );
+    }
+  }
+  mText += "</li>\n";
 }
 
 void KOWhatsNextView::showIncidence( const QString &uid )
