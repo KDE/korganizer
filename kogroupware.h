@@ -72,9 +72,6 @@ class KOGroupware : public QObject
     // THIS IS THE ACTUAL KM/KO API
     enum EventState { Accepted, ConditionallyAccepted, Declined, Request };
 
-    // Transform a TNEF attachment to an iCal or vCard
-    QString msTNEFToVPart( const QByteArray& tnef );
-
   private slots:
     /** Handle iCals given by KMail. */
     void incomingDirChanged( const QString& path );
