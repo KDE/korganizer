@@ -134,4 +134,10 @@
     <Action name="reply"/>
   </ToolBar>
 
+  <Menu name="rmb_selection_popup">
+    <Action name="new_event"/>
+    <Merge/>
+  </Menu>
+
+
 </kpartgui>
