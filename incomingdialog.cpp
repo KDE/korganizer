@@ -33,6 +33,9 @@
 #include <libkcal/calendar.h>
 #include <libkcal/freebusy.h>
 #include <libkcal/attendee.h>
+#include <libkcal/calendarresources.h>
+#include <libkcal/resourcecalendar.h>
+#include <kresources/resourceselectdialog.h>
 
 #ifndef KORG_NOMAIL
 #include "mailscheduler.h"
@@ -283,6 +286,7 @@ bool IncomingDialog::incomeRefresh(ScheduleItemIn *item)
 bool IncomingDialog::incomeCounter(ScheduleItemIn *item)
 {
   IncidenceBase *incidence = ((ScheduleItemIn *)item)->event();
+  // currently only events supportet - attetion at insertion below!
   if ( incidence->type() != "Event" ) return false;
 
   Event *counterEvent = static_cast<Event *>( incidence );
@@ -290,8 +294,6 @@ bool IncomingDialog::incomeCounter(ScheduleItemIn *item)
   Event *even = mCalendar->event(counterEvent->uid());
 
   KOCounterDialog *eventViewer = new KOCounterDialog(this);
-  //eventViewer->addText(i18n("You received a counterevent<p>"));
-  //eventViewer->addText(i18n("<hr>"));
   eventViewer->addText(i18n("counter proposal event","<b>Counter-event:</b><p>"));
   eventViewer->addEvent(counterEvent);
   eventViewer->addText("<hr>");
@@ -310,7 +312,24 @@ bool IncomingDialog::incomeCounter(ScheduleItemIn *item)
       revision = even->revision();
       mCalendar->deleteEvent(even);
     }
-    mCalendar->addIncidence(counterEvent);
+    CalendarResources *cal = dynamic_cast<CalendarResources*> (mCalendar);
+    if (cal) {
+      QPtrList<KRES::Resource> rlist;
+      KCal::CalendarResourceManager *manager = cal->resourceManager();
+      KCal::CalendarResourceManager::Iterator it;
+      for( it = manager->begin(); it != manager->end(); ++it ) {
+        rlist.append(*it);
+      }
+      KRES::Resource *res = KRES::ResourceSelectDialog::getResource( rlist, this );
+      if (res) {
+          ResourceCalendar *rcal = static_cast<ResourceCalendar*> (res);
+          // currently only events supportet
+          cal->addEvent(counterEvent, rcal);
+      }
+    } else {
+      mCalendar->addIncidence(counterEvent);
+    }
+
     even = mCalendar->event(item->event()->uid());
     if (even) {
       if (revision < even->revision())

@@ -33,6 +33,9 @@
 #include <libkcal/vcaldrag.h>
 #include <libkcal/icaldrag.h>
 #include <libkcal/dndfactory.h>
+#include <libkcal/calendarresources.h>
+#include <libkcal/resourcecalendar.h>
+#include <kresources/resourceselectdialog.h>
 
 #include <kcalendarsystem.h>
 
@@ -434,7 +437,22 @@ void KODayMatrix::dropEvent(QDropEvent *e)
 
     event->setDtStart(start);
     event->setDtEnd(end);
-    mCalendar->addEvent(event);
+    CalendarResources *cal = dynamic_cast<CalendarResources*> (mCalendar);
+    if (cal) {
+      QPtrList<KRES::Resource> rlist;
+      KCal::CalendarResourceManager *manager = cal->resourceManager();
+      KCal::CalendarResourceManager::Iterator it;
+      for( it = manager->begin(); it != manager->end(); ++it ) {
+        rlist.append(*it);
+      }
+      KRES::Resource *res = KRES::ResourceSelectDialog::getResource( rlist, this );
+      if (res) {
+          ResourceCalendar *rcal = static_cast<ResourceCalendar*> (res);
+          cal->addEvent(event, rcal);
+      }
+    } else {
+      mCalendar->addEvent(event);
+    }
 
     emit eventDropped(event);
   } else {

@@ -34,6 +34,9 @@
 
 #include <libkdepim/categoryselectdialog.h>
 #include <libkcal/calendarlocal.h>
+#include <libkcal/calendarresources.h>
+#include <libkcal/resourcecalendar.h>
+#include <kresources/resourceselectdialog.h>
 
 #include "koprefs.h"
 
@@ -158,7 +161,22 @@ bool KOTodoEditor::processInput()
     todo->setRevision(todo->revision()+1);
     emit todoChanged(todo);
   } else {
-    mCalendar->addTodo(todo);
+    CalendarResources *cal = dynamic_cast<CalendarResources*> (mCalendar);
+    if (cal) {
+      QPtrList<KRES::Resource> rlist;
+      KCal::CalendarResourceManager *manager = cal->resourceManager();
+      KCal::CalendarResourceManager::Iterator it;
+      for( it = manager->begin(); it != manager->end(); ++it ) {
+        rlist.append(*it);
+      }
+      KRES::Resource *res = KRES::ResourceSelectDialog::getResource( rlist, this );
+      if (res) {
+          ResourceCalendar *rcal = static_cast<ResourceCalendar*> (res);
+          cal->addTodo(todo, rcal);
+      }
+    } else {
+      mCalendar->addTodo(todo);
+    }
     mTodo = todo;
     emit todoAdded(todo);
   }

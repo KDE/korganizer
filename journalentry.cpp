@@ -33,6 +33,9 @@
 #include <ktextedit.h>
 
 #include <libkcal/journal.h>
+#include <libkcal/calendarresources.h>
+#include <libkcal/resourcecalendar.h>
+#include <kresources/resourceselectdialog.h>
 
 #include "journalentry.h"
 #include "journalentry.moc"
@@ -117,13 +120,28 @@ void JournalEntry::writeJournal()
   if (!mDirty) return;
  
   if (mEditor->text().isEmpty()) return;
- 
+
 //  kdDebug() << "JournalEntry::writeJournal()..." << endl;
   
   if (!mJournal) {
     mJournal = new Journal;
     mJournal->setDtStart(QDateTime(mDate,QTime(0,0,0)));
-    mCalendar->addJournal(mJournal);
+    CalendarResources *cal = dynamic_cast<CalendarResources*> (mCalendar);
+    if (cal) {
+      QPtrList<KRES::Resource> rlist;
+      KCal::CalendarResourceManager *manager = cal->resourceManager();
+      KCal::CalendarResourceManager::Iterator it;
+      for( it = manager->begin(); it != manager->end(); ++it ) {
+        rlist.append(*it);
+      }
+      KRES::Resource *res = KRES::ResourceSelectDialog::getResource( rlist, this );
+      if (res) {
+          ResourceCalendar *rcal = static_cast<ResourceCalendar*> (res);
+          cal->addJournal(mJournal, rcal);
+      }
+    } else {
+      mCalendar->addJournal(mJournal);
+    }
   }
 
   mJournal->setDescription(mEditor->text());

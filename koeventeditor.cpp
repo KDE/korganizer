@@ -31,6 +31,9 @@
 #include <kdebug.h>
 #include <klocale.h>
 #include <kmessagebox.h>
+#include <libkcal/calendarresources.h>
+#include <libkcal/resourcecalendar.h>
+#include <kresources/resourceselectdialog.h>
 
 #include <libkdepim/categoryselectdialog.h>
 #include <libkcal/calendarlocal.h>
@@ -150,7 +153,7 @@ void KOEventEditor::newEvent( QDateTime from, QDateTime to, bool allDay )
 void KOEventEditor::loadDefaults()
 {
   int fmt = KOPrefs::instance()->mStartTime;
-  
+
   QDateTime from(QDate::currentDate(), QTime(fmt,0,0));
   QDateTime to(QDate::currentDate(),
                QTime(fmt+KOPrefs::instance()->mDefaultDuration,0,0));
@@ -169,18 +172,33 @@ bool KOEventEditor::processInput()
     event = new Event;
     event->setOrganizer(KOPrefs::instance()->email());
   }
-  
+
   writeEvent(event);
-  
+
   if (mEvent) {
     event->setRevision(event->revision()+1);
     emit eventChanged(event);
   } else {
-    mCalendar->addEvent(event);
+    CalendarResources *cal = dynamic_cast<CalendarResources*> (mCalendar);
+    if (cal) {
+      QPtrList<KRES::Resource> rlist;
+      KCal::CalendarResourceManager *manager = cal->resourceManager();
+      KCal::CalendarResourceManager::Iterator it;
+      for( it = manager->begin(); it != manager->end(); ++it ) {
+        rlist.append(*it);
+      }
+      KRES::Resource *res = KRES::ResourceSelectDialog::getResource( rlist, this );
+      if (res) {
+          ResourceCalendar *rcal = static_cast<ResourceCalendar*> (res);
+          cal->addEvent(event, rcal);
+      }
+    } else {
+      mCalendar->addEvent(event);
+    }
     mEvent = event;
     emit eventAdded(event);
   }
-  
+
   return true;
 }
 
