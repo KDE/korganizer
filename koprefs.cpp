@@ -41,8 +41,8 @@
 #include <kstringhandler.h>
 
 #include "koprefs.h"
-#include <libkdepim/identitymanager.h>
-#include <libkdepim/identity.h>
+#include <libkpimidentities/identitymanager.h>
+#include <libkpimidentities/identity.h>
 #include <libkdepim/email.h>
 #include <kabc/stdaddressbook.h>
 #include "kocore.h"

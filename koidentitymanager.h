@@ -25,7 +25,7 @@
 #ifndef KOIDENTITYMANAGER_H
 #define KOIDENTITYMANAGER_H
 
-#include <libkdepim/identitymanager.h>
+#include <libkpimidentities/identitymanager.h>
 
 namespace KOrg {
 
