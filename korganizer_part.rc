@@ -127,8 +127,8 @@
   </MenuBar>
 
   <ToolBar name="mainToolBar"><text>Main</text>
-    <Action name="go_today"/>
     <Action name="go_previous"/>
+    <Action name="go_today"/>
     <Action name="go_next"/>
     <Action name="mail_appointment"/>
     <Action name="new_event"/>
