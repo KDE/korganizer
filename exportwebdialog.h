@@ -56,6 +56,7 @@ class ExportWebDialog : public KDialogBase
     QCheckBox *mCbEvent;
     QCheckBox *mCbTodo;
     QCheckBox *mCbDueDates;
+    QCheckBox *mCbAttendees;
     QCheckBox *mCbHtmlFragment;
     QLineEdit *mOutputFileEdit;
 

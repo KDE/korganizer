@@ -34,7 +34,7 @@ KOEvent::KOEvent()
   relatedTo = 0;
   lastModified = QDateTime::currentDateTime();
   
-  organizer = KOPrefs::instance()->mName;
+  organizer = KOPrefs::instance()->mEmail;
   if (organizer.isEmpty())
     organizer = "x-none";
   
@@ -87,7 +87,7 @@ KOEvent::~KOEvent()
   KOEvent::eventCount--;
 }
 
-inline void KOEvent::setOrganizer(const char *o)
+void KOEvent::setOrganizer(const QString &o)
 {
   // we don't check for readonly here, because it is
   // possible that by setting the organizer we are changing
@@ -98,19 +98,16 @@ inline void KOEvent::setOrganizer(const char *o)
   emit eventUpdated(this);  
 }
 
-inline void KOEvent::setOrganizer(const QString &o)
-{
-  setOrganizer(o.data());
-}
-
-inline const QString &KOEvent::getOrganizer() const
+const QString &KOEvent::getOrganizer() const
 {
   return organizer;
 }
 
-inline void KOEvent::addAttendee(Attendee *a)
+void KOEvent::addAttendee(Attendee *a)
 {
+//  qDebug("KOEvent::addAttendee()");
   if (ro) return;
+//  qDebug("KOEvent::addAttendee() weiter");
   if (a->name.left(7).upper() == "MAILTO:")
     a->name = a->name.remove(0,7);
 
@@ -118,14 +115,14 @@ inline void KOEvent::addAttendee(Attendee *a)
   emit eventUpdated(this);
 }
 
-inline void KOEvent::removeAttendee(Attendee *a)
+void KOEvent::removeAttendee(Attendee *a)
 {
   if (ro) return;
   attendeeList.removeRef(a);
   emit eventUpdated(this);
 }
 
-inline void KOEvent::removeAttendee(const char *n)
+void KOEvent::removeAttendee(const char *n)
 {
   Attendee *a;
 
@@ -137,7 +134,7 @@ inline void KOEvent::removeAttendee(const char *n)
     }
 }
     
-inline void KOEvent::clearAttendees()
+void KOEvent::clearAttendees()
 {
   if (ro) return;
   attendeeList.clear();
@@ -156,7 +153,7 @@ Attendee *KOEvent::getAttendee(const char *n) const
   return 0L;
 }
 
-inline void KOEvent::setDtStart(const QDateTime &dtStart)
+void KOEvent::setDtStart(const QDateTime &dtStart)
 {  
   int diffsecs = KOEvent::dtStart.secsTo(dtStart);
 
@@ -168,7 +165,7 @@ inline void KOEvent::setDtStart(const QDateTime &dtStart)
   emit eventUpdated(this);
 }
 
-inline void KOEvent::setDtStart(const QString &dtStartStr)
+void KOEvent::setDtStart(const QString &dtStartStr)
 {
   QDateTime tmpDt(strToDateTime(dtStartStr));
   int diffsecs = KOEvent::dtStart.secsTo(tmpDt);
@@ -181,12 +178,12 @@ inline void KOEvent::setDtStart(const QString &dtStartStr)
   emit eventUpdated(this);
 }
 
-inline const QDateTime &KOEvent::getDtStart() const
+const QDateTime &KOEvent::getDtStart() const
 {
   return dtStart;
 }
 
-inline QString KOEvent::getDtStartTimeStr() const
+QString KOEvent::getDtStartTimeStr() const
 {
   QString timeStr;
 
@@ -195,7 +192,7 @@ inline QString KOEvent::getDtStartTimeStr() const
   return timeStr;
 }
 
-inline QString KOEvent::getDtStartDateStr() const
+QString KOEvent::getDtStartDateStr() const
 {
   QString dateStr;
  
@@ -205,7 +202,7 @@ inline QString KOEvent::getDtStartDateStr() const
   return dateStr;
 }
 
-inline void KOEvent::setDtDue(const QDateTime &dtDue)
+void KOEvent::setDtDue(const QDateTime &dtDue)
 {  
   int diffsecs = KOEvent::dtDue.secsTo(dtDue);
 
@@ -217,7 +214,7 @@ inline void KOEvent::setDtDue(const QDateTime &dtDue)
   emit eventUpdated(this);
 }
 
-inline void KOEvent::setDtDue(const QString &dtDueStr)
+void KOEvent::setDtDue(const QString &dtDueStr)
 {
   QDateTime tmpDt(strToDateTime(dtDueStr));
   int diffsecs = KOEvent::dtDue.secsTo(tmpDt);
@@ -230,12 +227,12 @@ inline void KOEvent::setDtDue(const QString &dtDueStr)
   emit eventUpdated(this);
 }
 
-inline const QDateTime &KOEvent::getDtDue() const
+const QDateTime &KOEvent::getDtDue() const
 {
   return dtDue;
 }
 
-inline QString KOEvent::getDtDueTimeStr() const
+QString KOEvent::getDtDueTimeStr() const
 {
   QString timeStr;
 
@@ -244,7 +241,7 @@ inline QString KOEvent::getDtDueTimeStr() const
   return timeStr;		  
 }
 
-inline QString KOEvent::getDtDueDateStr() const
+QString KOEvent::getDtDueDateStr() const
 {
   QString dateStr;
  
@@ -254,26 +251,26 @@ inline QString KOEvent::getDtDueDateStr() const
   return dateStr;
 }
 
-inline void KOEvent::setDtEnd(const QDateTime &dtEnd)
+void KOEvent::setDtEnd(const QDateTime &dtEnd)
 {  
   if (ro) return;
   KOEvent::dtEnd = dtEnd;
   emit eventUpdated(this);
 }
 
-inline void KOEvent::setDtEnd(const QString &dtEndStr)
+void KOEvent::setDtEnd(const QString &dtEndStr)
 {
   if (ro) return;
   KOEvent::dtEnd = strToDateTime(dtEndStr);
   emit eventUpdated(this);
 }
 
-inline const QDateTime &KOEvent::getDtEnd() const
+const QDateTime &KOEvent::getDtEnd() const
 {
   return dtEnd;
 }
 
-inline QString KOEvent::getDtEndTimeStr() const
+QString KOEvent::getDtEndTimeStr() const
 {
   QString timeStr;
 
@@ -282,7 +279,7 @@ inline QString KOEvent::getDtEndTimeStr() const
   return timeStr;		  
 }
 
-inline QString KOEvent::getDtEndDateStr() const
+QString KOEvent::getDtEndDateStr() const
 {
   QString dateStr;
 
@@ -292,64 +289,64 @@ inline QString KOEvent::getDtEndDateStr() const
   return dateStr;
 }
 
-inline bool KOEvent::doesFloat() const
+bool KOEvent::doesFloat() const
 {
   return floats;
 }
 
-inline void KOEvent::setFloats(bool f)
+void KOEvent::setFloats(bool f)
 {
   if (ro) return;
   floats = f;
   emit eventUpdated(this);
 }
 
-inline bool KOEvent::hasDueDate() const
+bool KOEvent::hasDueDate() const
 {
   return mHasDueDate;
 }
 
-inline void KOEvent::setHasDueDate(bool f)
+void KOEvent::setHasDueDate(bool f)
 {
   if (ro) return;
   mHasDueDate = f;
   emit eventUpdated(this);
 }
 
-inline void KOEvent::setDescription(const QString &description)
+void KOEvent::setDescription(const QString &description)
 {
   if (ro) return;
   KOEvent::description = description;
   emit eventUpdated(this);
 }
 
-inline void KOEvent::setDescription(const char *description)
+void KOEvent::setDescription(const char *description)
 {
   if (ro) return;
   KOEvent::description = description;
   emit eventUpdated(this);
 }
 
-inline const QString &KOEvent::getDescription() const
+const QString &KOEvent::getDescription() const
 {
   return description;
 }
 
-inline void KOEvent::setSummary(const QString &summary)
+void KOEvent::setSummary(const QString &summary)
 {
   if (ro) return;
   KOEvent::summary = summary.data(); // so it gets detached
   emit eventUpdated(this);
 }
 
-inline void KOEvent::setSummary(const char *summary)
+void KOEvent::setSummary(const char *summary)
 {
   if (ro) return;
   KOEvent::summary = summary;
   emit eventUpdated(this);
 }
 
-inline const QString &KOEvent::getSummary() const
+const QString &KOEvent::getSummary() const
 {
   return summary;
 }
@@ -383,14 +380,14 @@ void KOEvent::setStatus(const QString &statStr)
   emit eventUpdated(this);
 }
 
-inline void KOEvent::setStatus(int status)
+void KOEvent::setStatus(int status)
 {
   if (ro) return;
   KOEvent::status = status;
   emit eventUpdated(this);
 }
 
-inline int KOEvent::getStatus() const
+int KOEvent::getStatus() const
 {
   return status;
 }
@@ -455,7 +452,7 @@ void KOEvent::setSecrecy(int sec)
   emit eventUpdated(this);
 }
 
-inline int KOEvent::getSecrecy() const
+int KOEvent::getSecrecy() const
 {
   return secrecy;
 }
@@ -477,7 +474,7 @@ QString KOEvent::getSecrecyStr() const
   return QString("");
 }
 
-inline void KOEvent::setCategories(const QStrList &categories)
+void KOEvent::setCategories(const QStrList &categories)
 {
   if (ro) return;
   KOEvent::categories = categories;
@@ -501,7 +498,7 @@ void KOEvent::setCategories(const QString &catStr)
   emit eventUpdated(this);
 }
 
-inline const QStrList &KOEvent::getCategories() const
+const QStrList &KOEvent::getCategories() const
 {
   return categories;
 }
@@ -522,150 +519,150 @@ QString KOEvent::getCategoriesStr()
   return temp;
 }
 
-inline void KOEvent::setAttachments(const QStrList &attachments)
+void KOEvent::setAttachments(const QStrList &attachments)
 {
   if (ro) return;
   KOEvent::attachments = attachments;
   emit eventUpdated(this);
 }
 
-inline const QStrList &KOEvent::getAttachments() const
+const QStrList &KOEvent::getAttachments() const
 {
   return attachments;
 }
 
-inline void KOEvent::setResources(const QStrList &resources)
+void KOEvent::setResources(const QStrList &resources)
 {
   if (ro) return;
   KOEvent::resources = resources;
   emit eventUpdated(this);
 }
 
-inline const QStrList &KOEvent::getResources() const
+const QStrList &KOEvent::getResources() const
 {
   return resources;
 }
 
-inline void KOEvent::setAudioAlarmFile(const QString &audioAlarmFile)
+void KOEvent::setAudioAlarmFile(const QString &audioAlarmFile)
 {
   if (ro) return;
   KOEvent::audioAlarmFile = audioAlarmFile;
   emit eventUpdated(this);
 }
 
-inline void KOEvent::setAudioAlarmFile(const char *audioAlarmFile)
+void KOEvent::setAudioAlarmFile(const char *audioAlarmFile)
 {
   if (ro) return;
   KOEvent::audioAlarmFile = audioAlarmFile;
   emit eventUpdated(this);
 }
 
-inline const QString &KOEvent::getAudioAlarmFile() const
+const QString &KOEvent::getAudioAlarmFile() const
 {
   return audioAlarmFile;
 }
 
-inline void KOEvent::setProgramAlarmFile(const QString &programAlarmFile)
+void KOEvent::setProgramAlarmFile(const QString &programAlarmFile)
 {
   if (ro) return;
   KOEvent::programAlarmFile = programAlarmFile;
   emit eventUpdated(this);
 }
 
-inline void KOEvent::setProgramAlarmFile(const char *programAlarmFile)
+void KOEvent::setProgramAlarmFile(const char *programAlarmFile)
 {
   if (ro) return;
   KOEvent::programAlarmFile = programAlarmFile;
   emit eventUpdated(this);
 }
 
-inline const QString &KOEvent::getProgramAlarmFile() const
+const QString &KOEvent::getProgramAlarmFile() const
 {
   return programAlarmFile;
 }
 
-inline void KOEvent::setMailAlarmAddress(const QString &mailAlarmAddress)
+void KOEvent::setMailAlarmAddress(const QString &mailAlarmAddress)
 {
   if (ro) return;
   KOEvent::mailAlarmAddress = mailAlarmAddress;
   emit eventUpdated(this);
 }
 
-inline void KOEvent::setMailAlarmAddress(const char *mailAlarmAddress)
+void KOEvent::setMailAlarmAddress(const char *mailAlarmAddress)
 {
   if (ro) return;
   KOEvent::mailAlarmAddress = mailAlarmAddress;
   emit eventUpdated(this);
 }
 
-inline const QString &KOEvent::getMailAlarmAddress() const
+const QString &KOEvent::getMailAlarmAddress() const
 {
   return mailAlarmAddress;
 }
 
-inline void KOEvent::setAlarmText(const QString &alarmText)
+void KOEvent::setAlarmText(const QString &alarmText)
 {
   if (ro) return;
   KOEvent::alarmText = alarmText.data(); // so it gets detached
   emit eventUpdated(this);
 }
 
-inline void KOEvent::setAlarmText(const char *alarmText)
+void KOEvent::setAlarmText(const char *alarmText)
 {
   if (ro) return;
   KOEvent::alarmText = alarmText;
   emit eventUpdated(this);
 }
 
-inline const QString &KOEvent::getAlarmText() const
+const QString &KOEvent::getAlarmText() const
 {
   return alarmText;
 }
 
-inline void KOEvent::setAlarmTime(const QDateTime &alarmTime)
+void KOEvent::setAlarmTime(const QDateTime &alarmTime)
 {
   if (ro) return;
   KOEvent::alarmTime = alarmTime;
   emit eventUpdated(this);
 }
 
-inline void KOEvent::setAlarmTime(const QString &alarmTimeStr)
+void KOEvent::setAlarmTime(const QString &alarmTimeStr)
 {
   if (ro) return;
   KOEvent::alarmTime = strToDateTime(alarmTimeStr);
   emit eventUpdated(this);
 }
 
-inline const QDateTime &KOEvent::getAlarmTime() const
+const QDateTime &KOEvent::getAlarmTime() const
 {
   return alarmTime;
 }
 
-inline void KOEvent::setAlarmSnoozeTime(int alarmSnoozeTime)
+void KOEvent::setAlarmSnoozeTime(int alarmSnoozeTime)
 {
   if (ro) return;
   KOEvent::alarmSnoozeTime = alarmSnoozeTime;
   emit eventUpdated(this);
 }
 
-inline int KOEvent::getAlarmSnoozeTime() const
+int KOEvent::getAlarmSnoozeTime() const
 {
   return alarmSnoozeTime;
 }
 
-inline void KOEvent::setAlarmRepeatCount(int alarmRepeatCount)
+void KOEvent::setAlarmRepeatCount(int alarmRepeatCount)
 {
   if (ro) return;
   KOEvent::alarmRepeatCount = alarmRepeatCount;
   emit eventUpdated(this);
 }
 
-inline int KOEvent::getAlarmRepeatCount() const
+int KOEvent::getAlarmRepeatCount() const
 {
   return alarmRepeatCount;
 }
 
-inline void KOEvent::toggleAlarm()
+void KOEvent::toggleAlarm()
 {
   if (ro) return;
   if (alarmRepeatCount) {
@@ -681,42 +678,42 @@ inline void KOEvent::toggleAlarm()
   emit eventUpdated(this);
 }
 
-inline void KOEvent::setPriority(int priority)
+void KOEvent::setPriority(int priority)
 {
   if (ro) return;
   KOEvent::priority = priority;
   emit eventUpdated(this);
 }
 
-inline int KOEvent::getPriority() const
+int KOEvent::getPriority() const
 {
   return priority;
 }
 
-inline void KOEvent::setTransparency(int transparency)
+void KOEvent::setTransparency(int transparency)
 {
   if (ro) return;
   KOEvent::transparency = transparency;
   emit eventUpdated(this);
 }
 
-inline int KOEvent::getTransparency() const
+int KOEvent::getTransparency() const
 {
   return transparency;
 }
 
-inline void KOEvent::setRelatedToVUID(const char *relatedToVUID)
+void KOEvent::setRelatedToVUID(const char *relatedToVUID)
 {
   if (ro) return;
   KOEvent::relatedToVUID = relatedToVUID;
 }
 
-inline const QString &KOEvent::getRelatedToVUID() const
+const QString &KOEvent::getRelatedToVUID() const
 {
   return relatedToVUID;
 }
 
-inline void KOEvent::setRelatedTo(KOEvent *relatedTo)
+void KOEvent::setRelatedTo(KOEvent *relatedTo)
 {
   if (ro) return;
   KOEvent *oldRelatedTo = KOEvent::relatedTo;
@@ -728,76 +725,76 @@ inline void KOEvent::setRelatedTo(KOEvent *relatedTo)
   emit eventUpdated(this);
 }
 
-inline KOEvent *KOEvent::getRelatedTo() const
+KOEvent *KOEvent::getRelatedTo() const
 {
   return relatedTo;
 }
 
-inline  const QList<KOEvent> &KOEvent::getRelations() const
+ const QList<KOEvent> &KOEvent::getRelations() const
 {
   return relations;
 }
 
-inline void KOEvent::addRelation(KOEvent *event)
+void KOEvent::addRelation(KOEvent *event)
 {
   relations.append(event);
   emit eventUpdated(this);
 }
 
-inline void KOEvent::removeRelation(KOEvent *event)
+void KOEvent::removeRelation(KOEvent *event)
 {
   relations.removeRef(event);
 //  if (event->getRelatedTo() == this) event->setRelatedTo(0);
   emit eventUpdated(this);
 }
 
-inline void KOEvent::setEventId(int id)
+void KOEvent::setEventId(int id)
 {
   KOEvent::id = id;
   emit eventUpdated(this);
 }
 
-inline int KOEvent::getEventId() const
+int KOEvent::getEventId() const
 {
   return id;
 }
 
-inline void KOEvent::setVUID(const char *vUID)
+void KOEvent::setVUID(const char *vUID)
 {
   KOEvent::vUID = vUID;
   emit eventUpdated(this);
 }
 
-inline const QString &KOEvent::getVUID() const
+const QString &KOEvent::getVUID() const
 {
   return vUID;
 }
 
-inline void KOEvent::setRevisionNum(int rev)
+void KOEvent::setRevisionNum(int rev)
 {
   if (ro) return;
   revisionNum = rev;
   emit eventUpdated(this);
 }
 
-inline int KOEvent::getRevisionNum() const
+int KOEvent::getRevisionNum() const
 {
   return revisionNum;
 }
 
-inline void KOEvent::setLastModified(const QDateTime &lm)
+void KOEvent::setLastModified(const QDateTime &lm)
 {
   // DON'T! emit eventUpdated because we call this from
   // CalObject::updateEvent().
   lastModified = lm;
 }
 
-inline const QDateTime &KOEvent::getLastModified() const
+const QDateTime &KOEvent::getLastModified() const
 {
   return lastModified;
 }
 
-inline ushort KOEvent::doesRecur() const
+ushort KOEvent::doesRecur() const
 {
   return recurs;
 }
@@ -1100,22 +1097,22 @@ void KOEvent::setRecursDaily(int _rFreq, const QDate &_rEndDate)
   emit eventUpdated(this);
 }
 
-inline int KOEvent::getRecursFrequency() const
+int KOEvent::getRecursFrequency() const
 {
   return rFreq;
 }
 
-inline int KOEvent::getRecursDuration() const
+int KOEvent::getRecursDuration() const
 {
   return rDuration;
 }
 
-inline const QDate &KOEvent::getRecursEndDate() const
+const QDate &KOEvent::getRecursEndDate() const
 {
   return rEndDate;
 }
 
-inline QString KOEvent::getRecursEndDateStr() const
+QString KOEvent::getRecursEndDateStr() const
 {
   QString dateStr;
 
@@ -1125,17 +1122,17 @@ inline QString KOEvent::getRecursEndDateStr() const
   return dateStr;
 }
 
-inline const QBitArray &KOEvent::getRecursDays() const
+const QBitArray &KOEvent::getRecursDays() const
 {
   return rDays;
 }
 
-inline const QList<KOEvent::rMonthPos> &KOEvent::getRecursMonthPositions() const
+const QList<KOEvent::rMonthPos> &KOEvent::getRecursMonthPositions() const
 {
   return rMonthPositions;
 }
 
-inline const QList<int> &KOEvent::getRecursMonthDays() const
+const QList<int> &KOEvent::getRecursMonthDays() const
 {
   return rMonthDays;
 }
@@ -1243,7 +1240,7 @@ void KOEvent::setRecursYearly(int type, int _rFreq, const QDate &_rEndDate)
   emit eventUpdated(this);
 }
 
-inline const QList<int> &KOEvent::getRecursYearNums() const
+const QList<int> &KOEvent::getRecursYearNums() const
 {
   return rYearNums;
 }
@@ -1295,7 +1292,7 @@ void KOEvent::addExDate(const QDate &date)
   emit eventUpdated(this);
 }
 
-inline const QDateList &KOEvent::getExDates() const
+const QDateList &KOEvent::getExDates() const
 {
   return exDates;
 }
@@ -1316,26 +1313,26 @@ bool KOEvent::isException(const QDate &qd) const
   return FALSE;
 }
 
-inline void KOEvent::setPilotId(int id)
+void KOEvent::setPilotId(int id)
 {
   if (ro) return;
   pilotId = id;
   //emit eventUpdated(this);
 }
 
-inline int KOEvent::getPilotId() const
+int KOEvent::getPilotId() const
 {
   return pilotId;
 }
 
-inline void KOEvent::setSyncStatus(int stat)
+void KOEvent::setSyncStatus(int stat)
 {
   if (ro) return;
   syncStatus = stat;
   //  emit eventUpdated(this);
 }
 
-inline int KOEvent::getSyncStatus() const
+int KOEvent::getSyncStatus() const
 {
   return syncStatus;
 }

@@ -97,6 +97,9 @@ void ExportWebDialog::setupTodoPage()
   mCbDueDates = new QCheckBox (i18n("Due Dates"),mTodoPage);
   topLayout->addWidget(mCbDueDates);
   
+  mCbAttendees = new QCheckBox (i18n("Attendees"),mTodoPage);
+  topLayout->addWidget(mCbAttendees);
+  
   topLayout->addStretch(1);
 }
 
@@ -291,6 +294,9 @@ void ExportWebDialog::createHtmlTodoList (QTextStream *ts)
   if (mCbDueDates->isChecked()) {
     *ts << "    <TH>Due Date</TH>\n";
   }
+  if (mCbAttendees->isChecked()) {
+    *ts << "    <TH>Attendees</TH>\n";
+  }
   *ts << "  </TR>\n";
 
   // Create top-level list.
@@ -305,8 +311,10 @@ void ExportWebDialog::createHtmlTodoList (QTextStream *ts)
       // Generate sub-task list of event ev
       *ts << "  <TR>\n";
       *ts << "    <TD CLASS=subhead COLSPAN=";
-      if (mCbDueDates->isChecked()) *ts << "4";
-      else *ts << "3";
+      int columns = 3;
+      if (mCbDueDates->isChecked()) ++columns;
+      if (mCbAttendees->isChecked()) ++columns;
+      *ts << "\"" << QString::number(columns) << "\"";
       *ts << "><A NAME=\"sub" << ev->getVUID() << "\"></A>"
           << "Sub-Tasks of: <A HREF=\"#"
           << ev->getVUID() << "\"><B>" << ev->getSummary() << "</B></A></TD>\n";
@@ -369,6 +377,26 @@ void ExportWebDialog::createHtmlTodo (QTextStream *ts,KOEvent *todo)
     } else {
       *ts << "    &nbsp;\n";
     }
+    *ts << "  </TD>\n";
+  }
+
+  if (mCbAttendees->isChecked()) {
+    *ts << "  <TD";
+    if (completed) *ts << " CLASS=done";
+    *ts << ">\n";
+  
+    QList<Attendee> attendees = todo->getAttendeeList();
+    if (attendees.count()) {
+      Attendee *a;
+      for(a=attendees.first();a;a=attendees.next()) {
+        *ts << "    " << a->getName();
+        if (!a->getEmail().isEmpty()) *ts << " &lt;" << a->getEmail() << "&gt;";
+        *ts << "<BR>" << "\n";
+      }
+    } else {
+      *ts << "    &nbsp;\n";
+    }
+
     *ts << "  </TD>\n";
   }
 

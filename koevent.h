@@ -97,7 +97,6 @@ public:
 
   /** sets the organizer for the event */
   void setOrganizer(const QString &o);
-  void setOrganizer(const char *o);
   const QString &getOrganizer() const;
 
   /** attendee stuff */

@@ -574,7 +574,7 @@ void CalObject::updateConfig()
       }
       if (currEvent->getOrganizer() == oldEmail) {
 	currEvent->setReadOnly(FALSE);
-	currEvent->setOrganizer(emailString); 
+	currEvent->setOrganizer(emailString);
         updateFlag = TRUE;
       }
       atFirst = FALSE;
@@ -604,7 +604,7 @@ void CalObject::addEvent(KOEvent *anEvent)
 {
   anEvent->isTodo = FALSE;
   insertEvent(anEvent);
-  // set event's read/write status
+  // set event's read/write status  
   if (anEvent->getOrganizer() != getEmail())
     anEvent->setReadOnly(TRUE);
   connect(anEvent, SIGNAL(eventUpdated(KOEvent *)), this,
@@ -1088,9 +1088,35 @@ VObject *CalObject::eventToVTodo(const KOEvent *anEvent)
   tmpStr = qDateTimeToISO(anEvent->getLastModified());
   addPropValue(vtodo, VCLastModifiedProp, tmpStr.ascii());  
 
+  // organizer stuff
   tmpStr.sprintf("MAILTO:%s",anEvent->getOrganizer().ascii());
-  addPropValue(vtodo, ICOrganizerProp, 
+  addPropValue(vtodo, ICOrganizerProp,
 	       tmpStr.ascii());
+
+  // attendees
+  if (anEvent->attendeeCount() != 0) {
+    QList<Attendee> al = anEvent->getAttendeeList();
+    QListIterator<Attendee> ai(al);
+    Attendee *curAttendee;
+    
+    for (; ai.current(); ++ai) {
+      curAttendee = ai.current();
+      if (!curAttendee->getEmail().isEmpty() && 
+	  !curAttendee->getName().isEmpty())
+	tmpStr.sprintf("MAILTO:%s <%s>",curAttendee->getName().ascii(),
+		       curAttendee->getEmail().ascii());
+      else if (curAttendee->getName().isEmpty())
+	tmpStr.sprintf("MAILTO: %s",curAttendee->getEmail().ascii());
+      else if (curAttendee->getEmail().isEmpty())
+	tmpStr.sprintf("MAILTO: %s",curAttendee->getName().ascii());
+      else if (curAttendee->getName().isEmpty() && 
+	       curAttendee->getEmail().isEmpty())
+	debug("warning! this koevent has an attendee w/o name or email!");
+      VObject *aProp = addPropValue(vtodo, VCAttendeeProp, tmpStr.ascii());
+      addPropValue(aProp, VCRSVPProp, curAttendee->RSVP() ? "TRUE" : "FALSE");;
+      addPropValue(aProp, VCStatusProp, curAttendee->getStatusStr().ascii());
+    }
+  }
 
   // description BL:
   if (!anEvent->getDescription().isEmpty()) {
@@ -1389,6 +1415,7 @@ KOEvent *CalObject::VTodoToEvent(VObject *vtodo)
 {
   KOEvent *anEvent;
   VObject *vo;
+  VObjectIterator voi;
   char *s;
 
   anEvent = new KOEvent;
@@ -1421,6 +1448,43 @@ KOEvent *CalObject::VTodoToEvent(VObject *vtodo)
     deleteStr(s);
   } else {
     anEvent->setOrganizer(getEmail());
+  }
+
+  // deal with attendees.
+  initPropIterator(&voi, vtodo);
+  while (moreIteration(&voi)) {
+    vo = nextVObject(&voi);
+    if (strcmp(vObjectName(vo), VCAttendeeProp) == 0) {
+      Attendee *a;
+      VObject *vp;
+      s = fakeCString(vObjectUStringZValue(vo));
+      QString tmpStr = s;
+      deleteStr(s);
+      tmpStr = tmpStr.simplifyWhiteSpace();
+      int emailPos1, emailPos2;
+      if ((emailPos1 = tmpStr.find('<')) > 0) {
+	// both email address and name
+	emailPos2 = tmpStr.find('>');
+	a = new Attendee(tmpStr.left(emailPos1 - 1).ascii(),
+			 tmpStr.mid(emailPos1 + 1, 
+				    emailPos2 - (emailPos1 + 1)).ascii());
+      } else if (tmpStr.find('@') > 0) {
+	// just an email address
+	a = new Attendee(0, tmpStr.ascii());
+      } else {
+	// just a name
+	a = new Attendee(tmpStr.ascii());
+      }
+
+      // is there an RSVP property?
+      if ((vp = isAPropertyOf(vo, VCRSVPProp)) != 0)
+	a->setRSVP(vObjectStringZValue(vp));
+      // is there a status property?
+      if ((vp = isAPropertyOf(vo, VCStatusProp)) != 0)
+	a->setStatus(vObjectStringZValue(vp));
+      // add the attendee
+      anEvent->addAttendee(a);
+    }
   }
 
   // BL: description for todo

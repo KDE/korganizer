@@ -36,8 +36,6 @@
     <Action name="go_today"/>
     <Separator/>
     <Action name="new_appointment"/>
-    <Action name="delete_appointment"/>
-    <Action name="new_todo"/>
     <Action name="mail_appointment"/>
   </ToolBar>
 

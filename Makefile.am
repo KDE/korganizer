@@ -25,7 +25,7 @@ libkorganizer_la_SOURCES =  calobject.cpp catdlg.cpp \
 	koagendaview.cpp koagenda.cpp koagendaitem.cpp \
 	kdated.cpp kdatenav.cpp \
 	kdpdatebutton.cpp komonthview.cpp koevent.cpp kpbutton.cpp \
-	kdpquickevt.cpp ksellabel.cpp \
+	ksellabel.cpp \
 	ktimed.cpp main.cpp  \
 	searchdialog.cpp calendarview.cpp quickdialog.cpp \
 	calprinter.cpp kptbutton.cpp \
@@ -39,7 +39,7 @@ libkorganizer_la_SOURCES =  calobject.cpp catdlg.cpp \
         kotodoeditor.cpp koprefs.cpp
 
 alarmd_SOURCES = alarmdaemon.cpp alarmmain.cpp calobject.cpp koevent.cpp \
-	scanholiday.c parseholiday.c vcaldrag.cpp
+	scanholiday.c parseholiday.c vcaldrag.cpp koprefs.cpp
 
 METASOURCES = AUTO
 
@@ -50,7 +50,6 @@ noinst_HEADERS = komonthview.h misc.h calobject.h \
 	eventwidget.h kdatenav.h ksmalldaydisp.h \
 	calendarview.h kdpdatebutton.h ktimed.h \
 	version.h koevent.h \
-	kdpquickevt.h \
 	searchdialog.h calprinter.h kptbutton.h \
 	koarchivedlg.h parseholiday.h \
 	vcaldrag.h komailclient.h kotodoview.h \

@@ -708,7 +708,7 @@ void KOMonthView::updateView()
   }
 }
 
-void KOMonthView::resizeEvent(QResizeEvent *e) 
+void KOMonthView::resizeEvent(QResizeEvent *)
 {
   QFontMetrics fontmetric(dayNames[0]->font());
   unsigned int i;
