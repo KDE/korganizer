@@ -110,6 +110,8 @@ class KOEditorDetails : public QWidget
     virtual bool eventFilter( QObject *, QEvent *);
     void fillOrganizerCombo();
 
+    void insertAttendee( Attendee*, bool goodEmailAddress );
+
   private:
     bool mDisableItemUpdate;
 
