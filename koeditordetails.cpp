@@ -132,7 +132,7 @@ void KOAttendeeListView::addAttendee( const QString &newAttendee )
   kdDebug(5850) << " Email: " << newAttendee << endl;
   QString name;
   QString email;
-  KPIM::AddresseeLineEdit::getNameAndMail( newAttendee, name, email );
+  KPIM::getNameAndMail( newAttendee, name, email );
   emit dropped( new Attendee( name, email ) );
 }
 
@@ -522,7 +522,7 @@ void KOEditorDetails::updateAttendeeItem()
 
   QString name;
   QString email;
-  KPIM::AddresseeLineEdit::getNameAndMail(mNameEdit->text(), name, email);
+  KPIM::getNameAndMail(mNameEdit->text(), name, email);
   a->setName( name );
   a->setUid( mUidEdit->text() );
   a->setEmail( email );
