@@ -46,6 +46,7 @@ KOEventViewerDialog::KOEventViewerDialog( QWidget *parent, const char *name,
     setMinimumSize( 300, 200 );
     resize( 320, 300 );
   }
+  connect( this, SIGNAL(finished()), this, SLOT(delayedDestruct()) );
 }
 
 KOEventViewerDialog::~KOEventViewerDialog()
