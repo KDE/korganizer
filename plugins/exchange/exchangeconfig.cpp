@@ -41,15 +41,15 @@ ExchangeConfig::ExchangeConfig( KPIM::ExchangeAccount* account, QWidget* parent 
   QGridLayout *topLayout = new QGridLayout( topFrame, 3, 2, 3 );
 
   m_host = new KLineEdit( mAccount->host(), topFrame );
-  topLayout->addWidget( new QLabel( i18n( "Exchange server" ), topFrame ), 0, 0 );
+  topLayout->addWidget( new QLabel( i18n( "Exchange server:" ), topFrame ), 0, 0 );
   topLayout->addWidget( m_host, 0, 1 );
 
   m_user = new KLineEdit( mAccount->account(), topFrame );
-  topLayout->addWidget( new QLabel( i18n( "User" ), topFrame ), 1, 0 );
+  topLayout->addWidget( new QLabel( i18n( "User:" ), topFrame ), 1, 0 );
   topLayout->addWidget( m_user, 1, 1 );
 
   m_password = new KLineEdit( mAccount->password(), topFrame );
-  topLayout->addWidget( new QLabel( i18n( "Password" ), topFrame ), 2, 0 );
+  topLayout->addWidget( new QLabel( i18n( "Password:" ), topFrame ), 2, 0 );
   topLayout->addWidget( m_password, 2, 1 );
   m_password->setEchoMode( QLineEdit::Password );
 }
