@@ -98,8 +98,11 @@ void CalPrinter::preview(PrintType pt, const QDate &fd, const QDate &td)
     case Month: 
       mPrintDialog->setPrintMonth();
       break;
-    case Todolist: 
-      mPrintDialog->setPrintTodo(); 
+    case Todolist:
+      mPrintDialog->setPrintTodo();
+      break;
+    case TimeTable:
+      mPrintDialog->setPrintTimeTable();
       break;
   }
 
@@ -131,6 +134,9 @@ void CalPrinter::doPreview(int pt, QDate fd, QDate td)
       break;
     case Todolist:
       printTodo(fd, td);
+      break;
+    case TimeTable:
+      printTimeTable(fd, td);
       break;
   }
 
@@ -177,6 +183,9 @@ void CalPrinter::print(PrintType pt, const QDate &fd, const QDate &td)
     case Todolist: 
       mPrintDialog->setPrintTodo();
       break;
+    case TimeTable:
+      mPrintDialog->setPrintTimeTable();
+      break;
   }
 
   if (mPrintDialog->exec() == QDialog::Accepted) {
@@ -201,6 +210,9 @@ void CalPrinter::doPrint(int pt, QDate fd, QDate td)
       break;
     case Todolist: 
       printTodo(fd, td);
+      break;
+    case TimeTable:
+      printTimeTable(fd, td);
       break;
   }
 }
@@ -328,6 +340,52 @@ void CalPrinter::printMonth(const QDate &fd, const QDate &td)
 
   p.end();
 }
+
+void CalPrinter::printTimeTable(const QDate &fd, const QDate &td)
+{
+  QPainter p;
+  QDate curWeek, fromWeek, toWeek;
+
+  mPrinter->setOrientation(KPrinter::Landscape);
+
+  if (KGlobal::locale()->weekStartsMonday()) {
+    // correct to monday
+    fromWeek = fd.addDays(-(fd.dayOfWeek()-1));
+    // correct to sunday
+    toWeek = td.addDays(7-fd.dayOfWeek());
+  } else {
+    // correct to sunday
+    fromWeek = fd.addDays(-(fd.dayOfWeek()%7));
+    // correct to saturday
+    toWeek = td.addDays(6-td.dayOfWeek());
+  }
+
+  p.begin(mPrinter);
+  // the painter initially begins at 72 dpi per the Qt docs.
+  // we want half-inch margins.
+  int margin = 36;
+  p.setViewport(margin, margin,
+		p.viewport().width()-margin,
+		p.viewport().height()-margin);
+  int pageWidth = p.viewport().width();
+  int pageHeight = p.viewport().height();
+  mHeaderHeight = 36;
+  mSubHeaderHeight = 20;
+
+  curWeek = fromWeek.addDays(6);
+  do {
+     //drawHeader(p, curWeek.addDays(-6), curWeek,
+//	       curWeek,
+	//       pageWidth, mHeaderHeight, TimeTable);
+    drawTimeTable(p, curWeek, pageWidth, pageHeight);
+    curWeek = curWeek.addDays(7);
+    if (curWeek <= toWeek)
+      mPrinter->newPage();
+  } while (curWeek <= toWeek);
+
+  p.end();
+}
+
 
 void CalPrinter::printTodo(const QDate &fd, const QDate &td)
 {
@@ -510,6 +568,9 @@ void CalPrinter::drawHeader(QPainter &p, const QDate &fd, const QDate &td,
   //  title += myOwner;
 
   switch(pt) {
+  case TimeTable:
+  	break;
+
   case Todolist:
     title +=  i18n("To-Do items:");
    
@@ -540,6 +601,7 @@ void CalPrinter::drawHeader(QPainter &p, const QDate &fd, const QDate &td,
   
   // print previous month for month view, print current for todo, day and week
   switch (pt) {
+  case TimeTable: break;
   case Todolist:
   case Week:
   case Day:
@@ -647,7 +709,101 @@ void CalPrinter::drawDayBox(QPainter &p, const QDate &qd,
   }
 }
 
-void CalPrinter::drawDaysOfWeek(QPainter &p, const QDate &qd, 
+void CalPrinter::drawTTDayBox(QPainter &p, const QDate &qd,
+			    int x, int y, int width, int height,
+			    bool fullDate)
+{
+  KLocale *local = KGlobal::locale();
+  QString dayNumStr;
+  QPtrList<Event> eventList;
+  QString ampm;
+
+#ifndef KORG_NOPLUGINS
+  QString hstring(KOCore::self()->holiday(qd));
+#else
+  QString hstring;
+#endif
+
+  // This has to be localized
+  if (fullDate) {
+    /*int index;
+    dayNumStr= qd.toString();
+    index = dayNumStr.find(' ');
+    dayNumStr.remove(0, index);
+    index = dayNumStr.findRev(' ');
+    dayNumStr.truncate(index);*/
+    dayNumStr = local->weekDayName(qd.dayOfWeek()) + ' ' + local->monthName(qd.month(), true) + ' ' + QString::number(qd.day());
+  } else {
+    dayNumStr = QString::number(qd.day());
+  }
+
+  p.drawRect(x, y, width, mSubHeaderHeight); //draw Rect for Header
+  p.fillRect(x+1, y+1, width-2, mSubHeaderHeight-2, QBrush(Dense5Pattern));
+  p.setFont(QFont("helvetica", 10, QFont::Bold));
+  p.drawText(x+5, y, width, mSubHeaderHeight,
+        AlignCenter | AlignVCenter | AlignJustify | WordBreak,
+	     dayNumStr);
+
+  p.drawRect(x, y+mSubHeaderHeight, width, height); //draw rect for daily event
+
+  //draw lines for day
+  int cury=y+mSubHeaderHeight+height;
+  for(int i=1; i<=12;i++){
+    cury+=height;
+    p.drawLine(x,cury,x+width,cury);
+  }
+  //draw one straight line to close day vertically
+  p.drawLine(x+width,y,x+width,y+mSubHeaderHeight+(13*height));
+
+  p.setFont(QFont("helvetica", 10));
+  QBrush oldBrush=p.brush();
+  p.setBrush(QBrush(Dense5Pattern));
+
+  eventList = mCalendar->getEventsForDate(qd, TRUE);
+  Event *currEvent;
+
+  //Draw all Events for Day
+  QString MultiDayStr; //string for storing Multi Day Events
+  for (currEvent = eventList.first(); currEvent; currEvent = eventList.next()) {
+      if (currEvent->doesFloat() || currEvent->isMultiDay()) {
+          if(MultiDayStr) MultiDayStr += ", ";
+          MultiDayStr += currEvent->summary(); // add MultiDayevent
+          }
+      else {
+           int startTime = currEvent->dtStart().time().hour();
+           int endTime = currEvent->dtEnd().time().hour();
+           float minuteInc = height / 60.0;
+           if ((startTime >= mStartHour)  && (endTime <= (mStartHour + 12))) {
+                startTime -= mStartHour;
+                int startMinuteOff = (int) (minuteInc * currEvent->dtStart().time().minute());
+                int currentyPos =y+mSubHeaderHeight+height+startMinuteOff+startTime*height;
+                endTime -= mStartHour;
+                int endMinuteOff = (int) (minuteInc * currEvent->dtEnd().time().minute());
+                int eventLenght=endMinuteOff + (endTime - startTime)*height;
+                kdDebug() << currEvent->summary() << ": " << " x=" << x << " currY=" << currentyPos << " width=" << width << " lenght=" << eventLenght;
+                p.drawRect(x, currentyPos,
+                width, eventLenght);
+                p.drawText(x,
+          		 currentyPos,
+          		 width,
+          		 eventLenght,
+          		 AlignCenter | AlignVCenter | AlignJustify | WordBreak, currEvent->summary());
+            }
+        }
+  }
+
+  p.setBrush(oldBrush);
+
+  // Fill MultiDay Event Box
+  if(MultiDayStr.length()!=0)
+      p.fillRect(x+1,y+1+mSubHeaderHeight, width-2, height-2, QBrush(Dense5Pattern));
+  p.setFont(QFont("helvetica", 10));
+  p.drawText(x, y+mSubHeaderHeight, width, height, AlignCenter | AlignVCenter| AlignJustify | WordBreak,
+	     MultiDayStr);
+}
+
+
+void CalPrinter::drawDaysOfWeek(QPainter &p, const QDate &qd,
 				int width, int /*height*/)
 {	
   int offset=mHeaderHeight+5;
@@ -754,6 +910,50 @@ void CalPrinter::drawWeek(QPainter &p, const QDate &qd, int width, int height)
       else
 	drawDayBox(p, weekDate, cellWidth, offset+(i%3)*cellHeight,
 		   cellWidth, cellHeight, TRUE);
+  }
+}
+
+void CalPrinter::drawTimeTable(QPainter &p, const QDate &qd, int width, int height)
+{
+  QDate weekDate = qd;
+  int offset = 5;
+  int cellWidthTimeline = 40;
+  int hoursToPrint = 12;
+  int cellWidth = (width-cellWidthTimeline)/6;
+  int cellHeight = (height-offset) / (hoursToPrint+1); // print 12 hours + 1 field for daily usage
+  int ystartTimeLine =offset+mSubHeaderHeight+cellHeight;
+
+  if (KGlobal::locale()->weekStartsMonday())
+    // correct to monday
+    weekDate = qd.addDays(-(qd.dayOfWeek()-1));
+  else
+    // correct to sunday
+    weekDate = qd.addDays(-(qd.dayOfWeek()%7));
+
+  // Draw the timeline info on the left site of the page
+  QString numStr;
+  for (int i = 0; i < hoursToPrint; i++) {
+    p.drawRect(0, ystartTimeLine+i*cellHeight, //draw Rect for one hour
+          cellWidthTimeline, cellHeight);
+    p.drawLine(cellWidthTimeline/2,   //draw line for half an hour
+          ystartTimeLine+i*cellHeight+(cellHeight/2),
+	       cellWidthTimeline, ystartTimeLine+i*cellHeight+(cellHeight/2));
+    numStr.setNum(i+mStartHour);
+    p.setFont(QFont("helvetica", 10, QFont::Bold));
+    p.drawText(0, ystartTimeLine+i*cellHeight, //draw hour text
+          cellWidthTimeline/2, cellHeight/2,
+	       AlignTop|AlignRight, numStr);
+    p.setFont(QFont("helvetica", 8, QFont::Bold));
+    p.drawText(cellWidthTimeline/2+2,  //draw minutes text
+          ystartTimeLine+i*cellHeight, cellWidthTimeline/2,
+          cellHeight/2, AlignTop | AlignLeft, "00");
+  }
+
+  // draw each day
+  for (int i = 0; i < 7; i++, weekDate = weekDate.addDays(1)) {
+    if (i < 6)
+      drawTTDayBox(p, weekDate, cellWidthTimeline+i*cellWidth, offset,
+		 cellWidth, cellHeight, TRUE);
   }
 }
 
@@ -892,8 +1092,12 @@ CalPrintDialog::CalPrintDialog(KPrinter *p, QWidget *parent, const char *name)
 
   layout3->addWidget(rButt = new QRadioButton(i18n("To-Do"), mTypeGroup));
   rButt->setMinimumHeight(rButt->sizeHint().height()-5);
-  connect(rButt,  SIGNAL(clicked()), this, SLOT(setPrintTodo()));  
-  
+  connect(rButt,  SIGNAL(clicked()), this, SLOT(setPrintTodo()));
+
+  layout3->addWidget(rButt = new QRadioButton(i18n("Timetable"), mTypeGroup));
+  rButt->setMinimumHeight(rButt->sizeHint().height()-5);
+  connect(rButt,  SIGNAL(clicked()), this, SLOT(setPrintTimeTable()));
+
   layout->addWidget(mTypeGroup);
 
 #if 0
@@ -967,4 +1171,10 @@ void CalPrintDialog::setPrintTodo()
 {
   mTypeGroup->setButton(3);
   mPrintType = CalPrinter::Todolist;
+}
+
+void CalPrintDialog::setPrintTimeTable()
+{
+  mTypeGroup->setButton(4);
+  mPrintType = CalPrinter::TimeTable;
 }

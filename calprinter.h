@@ -51,7 +51,7 @@ class CalPrinter : public QObject
 {
     Q_OBJECT
   public:
-    enum PrintType { Day, Week, Month, Todolist };
+    enum PrintType { Day, Week, Month, Todolist, TimeTable };
     CalPrinter(QWidget *par, Calendar *cal);
     virtual ~CalPrinter();
 
@@ -65,24 +65,28 @@ class CalPrinter : public QObject
     void printWeek(const QDate &fd, const QDate &td);
     void printMonth(const QDate &fd, const QDate &td);
     void printTodo(const QDate &fd, const QDate &td);
+    void printTimeTable(const QDate &fd, const QDate &td);
 
   private slots:
     void doPreview(int, QDate, QDate);
     void doPrint(int, QDate, QDate);
     void previewCleanup(KProcess *);
- 
+
   private:
     void drawHeader(QPainter &p, const QDate &fd, const QDate &td,
 	            const QDate &cd,
 	            int width, int height, PrintType pt = Month);
     void drawDayBox(QPainter &p, const QDate &qd,
-                    int x, int y, int width, int height, 
+                    int x, int y, int width, int height,
                     bool fullDate = FALSE);
-
+    void drawTTDayBox(QPainter &p, const QDate &qd,
+                    int x, int y, int width, int height,
+                    bool fullDate = FALSE);
     void drawDay(QPainter &p, const QDate &qd, int width, int height);
     void drawWeek(QPainter &p, const QDate &qd, int width, int height);
+    void drawTimeTable(QPainter &p, const QDate &qd, int width, int height);
     void drawMonth(QPainter &p, const QDate &qd, int width, int height);
-    void drawSmallMonth(QPainter &p, const QDate &qd, 
+    void drawSmallMonth(QPainter &p, const QDate &qd,
 	                int x, int y, int width, int height);
     void drawDaysOfWeekBox(QPainter &p, const QDate &qd,
                            int x, int y, int width, int height);
@@ -119,6 +123,7 @@ class CalPrintDialog : public QDialog
     void setPrintWeek();
     void setPrintMonth();
     void setPrintTodo();
+    void setPrintTimeTable();
 
   private:
     KPrinter *mPrinter;
