@@ -93,6 +93,7 @@ KOrganizer::KOrganizer( bool document, const char *name )
   // with this calendar view window.
   if ( mDocument ) {
     mCalendar = new CalendarLocal(KOPrefs::instance()->mTimeZoneId.local8Bit());
+    mCalendarView = new CalendarView( mCalendar, this, "KOrganizer::CalendarView" );
   } else {
     CalendarResources *calendar = new CalendarResources( KOPrefs::instance()->mTimeZoneId.local8Bit() );
     mCalendar = calendar;
@@ -105,30 +106,35 @@ KOrganizer::KOrganizer( bool document, const char *name )
       config->setGroup("General");
       QString fileName = config->readEntry( "Active Calendar" );
 
+      QString resourceName;
       if ( fileName.isEmpty() ) {
         fileName = locateLocal( "appdata", "std.ics" );
+        resourceName = i18n("Default KOrganizer resource");
+      } else {
+        resourceName = i18n("Active Calendar");
       }
     
       kdDebug() << "Using as default resource: '" << fileName << "'" << endl;
-    
+
       ResourceCalendar *defaultResource = new ResourceLocal( fileName );
-      defaultResource->setResourceName( i18n("Default KOrganizer resource") );
+      defaultResource->setResourceName( resourceName );
 
       manager->add( defaultResource );
       manager->setStandardResource( defaultResource );
     }
-    
+
     kdDebug() << "CalendarResources used by KOrganizer:" << endl;
     CalendarResourceManager::Iterator it;
     for( it = manager->begin(); it != manager->end(); ++it ) {
       (*it)->dump();
     }
+
+    mCalendarView = new CalendarView( calendar, this, "KOrganizer::CalendarView" );
   }
 
   mCalendar->setOwner( KOPrefs::instance()->fullName() );
   mCalendar->setEmail( KOPrefs::instance()->email() );
 
-  mCalendarView = new CalendarView( mCalendar, this, "KOrganizer::CalendarView" );
   setCentralWidget(mCalendarView);
 
   mActionManager = new ActionManager(this, mCalendarView, this, this);

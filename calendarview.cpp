@@ -91,18 +91,36 @@
 #include "kdatenavigator.h"
 #include "kotodoview.h"
 #include "datenavigator.h"
+#include "resourceview.h"
 
 #include "calendarview.h"
 using namespace KOrg;
 #include "calendarview.moc"
 
-CalendarView::CalendarView( Calendar *calendar, QWidget *parent,
-                            const char *name ) 
+CalendarView::CalendarView( CalendarResources *calendar,
+                            QWidget *parent, const char *name ) 
   : CalendarViewBase( parent, name ),
-    mCalendar( calendar )
+    mCalendar( calendar ),
+    mResourceManager( calendar->resourceManager() )
 {
-  kdDebug() << "CalendarView::CalendarView()" << endl;
+  kdDebug() << "CalendarView::CalendarView( CalendarResources )" << endl;
 
+  init();
+}
+
+CalendarView::CalendarView( Calendar *calendar,
+                            QWidget *parent, const char *name ) 
+  : CalendarViewBase( parent, name ),
+    mCalendar( calendar ),
+    mResourceManager( 0 )
+{
+  kdDebug() << "CalendarView::CalendarView( Calendar )" << endl;
+
+  init();
+}
+
+void CalendarView::init()
+{
   mViewManager = new KOViewManager( this );
   mDialogManager = new KODialogManager( this );
 
@@ -138,6 +156,11 @@ CalendarView::CalendarView( Calendar *calendar, QWidget *parent,
   mLeftSplitter->setResizeMode(mDateNavigator,QSplitter::KeepSize);
   mTodoList = new KOTodoView(mCalendar, mLeftSplitter, "todolist");
   mFilterView = new KOFilterView(&mFilters,mLeftSplitter,"CalendarView::FilterView");
+
+  if ( mResourceManager ) {
+    mResourceView = new ResourceView( mResourceManager, mLeftSplitter );
+    mResourceView->updateView();
+  }
 
   mRightFrame = new QWidgetStack(mPanner, "CalendarView::RightFrame");
 

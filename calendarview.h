@@ -33,6 +33,8 @@
 
 #include <libkcal/calendar.h>
 #include <libkcal/scheduler.h>
+#include <libkcal/calendarresources.h>
+#include <libkcal/resourcecalendar.h>
 
 #include <korganizer/calendarviewbase.h>
 
@@ -47,6 +49,7 @@ class KOTodoView;
 class KDateNavigator;
 class DateNavigator;
 class KOIncidenceEditor;
+class ResourceView;
 
 namespace KCal { class FileStorage; }
 
@@ -67,10 +70,15 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
   public:
     /**
       Constructs a new calendar view widget.
-      @param parent parent window
-      @param name Qt internal widget object name
+
+      @param calendar calendar document
+      @param parent   parent window
+      @param name     Qt internal widget object name
     */
-    CalendarView( Calendar *, QWidget *parent = 0, const char *name = 0 ); 
+    CalendarView( CalendarResources *calendar, QWidget *parent = 0,
+                  const char *name = 0 ); 
+    CalendarView( Calendar *calendar, QWidget *parent = 0,
+                  const char *name = 0 );
     virtual ~CalendarView();
   
     Calendar *calendar() { return mCalendar; }
@@ -381,6 +389,8 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     Todo *selectedTodo();
 
   private:
+    void init();
+
     void createPrinter();
 
     void calendarModified( bool, Calendar * );
@@ -396,8 +406,12 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
 
     KOFilterView *mFilterView;
 
+    ResourceView *mResourceView;
+
     // calendar object for this viewing instance
     Calendar      *mCalendar;
+
+    CalendarResourceManager *mResourceManager;
 
     FileStorage *mStorage;
 
