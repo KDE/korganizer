@@ -37,6 +37,11 @@ libkorganizer_la_LIBADD  = $(LIB_KPARTS) $(LIB_KFILE) \
                            $(top_builddir)/libkdepim/libkdepim.la \
                            $(top_builddir)/kalarmd/libkalarmd.la \
                            $(top_builddir)/korganizer/knewstuff/libknewstuff.la
+libkorganizer_la_COMPILE_FIRST = kofilterview_base.ui \
+	outgoingdialog_base.ui \
+	incomingdialog_base.ui \
+	../libkdepim/categoryselectdialog.h \
+	../kalarmd/alarmdaemoniface_stub.h
 libkorganizer_la_SOURCES =  outgoingdialog_base.ui \
 	koagendaview.cpp koagenda.cpp koagendaitem.cpp \
 	datenavigator.cpp kdatenavigator.cpp \
@@ -74,8 +79,6 @@ libkorganizer_la_SOURCES =  outgoingdialog_base.ui \
 	kogroupwareincomingdialog_base.ui kogroupwareincomingdialog.cpp \
         history.cpp
 
-libkorganizer_la_COMPILE_FIRST = ../libkdepim/categoryselectdialog.h \
-	../kalarmd/alarmdaemoniface_stub.h
 
 METASOURCES = AUTO
 
