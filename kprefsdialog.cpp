@@ -33,7 +33,6 @@
 #include <qspinbox.h>
 #include <qdatetime.h>
 #include <qframe.h>
-#include <qlineedit.h>
 #include <qcombobox.h>
 #include <qcheckbox.h>
 #include <qradiobutton.h>

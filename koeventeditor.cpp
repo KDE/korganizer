@@ -32,7 +32,6 @@
 
 #include "koprefs.h"
 #include "categoryselectdialog.h"
-#include "koprefs.h"
 
 #include "koeventeditor.h"
 #include "koeventeditor.moc"

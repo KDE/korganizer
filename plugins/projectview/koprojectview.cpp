@@ -25,7 +25,6 @@
 #include <qfont.h>
 #include <qlabel.h>
 #include <qlineedit.h>
-#include <qlabel.h>
 #include <qlistbox.h>
 #include <qpopupmenu.h>
 #include <qstrlist.h>
