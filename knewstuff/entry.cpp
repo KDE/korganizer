@@ -210,7 +210,7 @@ void Entry::parseDomElement( const QDomElement &element )
     QDomElement e = n.toElement();
     if ( e.tagName() == "name" ) setName( e.text().stripWhiteSpace() );
     if ( e.tagName() == "author" ) setAuthor( e.text().stripWhiteSpace() );
-    if ( e.tagName() == "licence" ) setLicense( e.text().stripWhiteSpace() );
+    if ( e.tagName() == "licence" ) setLicence( e.text().stripWhiteSpace() );
     if ( e.tagName() == "summary" ) {
       QString lang = e.attribute( "lang " );
       setSummary( e.text().stripWhiteSpace(), lang );
