@@ -42,11 +42,7 @@ DFARS 252.227-7013 or 48 CFR 52.227-19, as applicable.
  * vobject, and convert a vobject into its textual representation.
  */
 
-#ifndef __FreeBSD__
-#include <malloc.h>
-#else
 #include <stdlib.h>
-#endif
 
 #include "vobject.h"
 #include <string.h>
@@ -1278,9 +1274,9 @@ static void writeProp(OFile *fp, VObject *o)
 	    /* output prop as fields */
 	    appendcOFile(fp,':');
 	    while (*fields) {
-		VObject *t = isAPropertyOf(o,*fields);
+		VObject *tl = isAPropertyOf(o,*fields);
 		i++;
-		if (t) n = i;
+		if (tl) n = i;
 		fields++;
 		}
 	    fields = fields_;
