@@ -120,10 +120,10 @@
                         <cstring>mHideInactiveTodosCheck</cstring>
                     </property>
                     <property name="text">
-                        <string>Hide &amp;inactive todos</string>
+                        <string>Hide &amp;inactive to-dos</string>
                     </property>
                     <property name="whatsThis" stdset="0">
-                        <string>This option hides all todos from your list, where the start date has not been reached. (Note that the start date is not the due date of the to-do item.)</string>
+                        <string>This option hides all to-dos from your list, where the start date has not been reached. (Note that the start date is not the due date of the to-do item.)</string>
                     </property>
                 </widget>
                 <spacer row="3" column="3">
