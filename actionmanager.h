@@ -36,7 +36,7 @@ namespace KCal
 {
   class Calendar;
   class CalendarResources;
-	class Incidence;
+  class Incidence;
 }
 namespace KOrg 
 {

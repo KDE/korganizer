@@ -953,6 +953,7 @@ void CalendarView::newEvent(QDateTime fromHint, QDateTime toHint, bool allDay)
 
 void CalendarView::newTodo()
 {
+  kdDebug() << "CalendarView::newTodo()" << endl;
   KOTodoEditor *todoEditor = mDialogManager->getTodoEditor();
   todoEditor->newTodo(QDateTime::currentDateTime().addDays(7),0,true);
   todoEditor->show();
@@ -1641,44 +1642,27 @@ void CalendarView::processIncidenceSelection( Incidence *incidence )
   mSelectedIncidence = incidence;
 
   emit incidenceSelected( mSelectedIncidence );
+  bool organizerEvents = false;
+  bool groupEvents = false;
+  bool todo = false;
+  bool subtodo = false;
 
-  if ( incidence && incidence->type() == "Event" ) {
-    Event *event = static_cast<Event *>( incidence );
-    if ( event->organizer() == KOPrefs::instance()->email() ) {
-      emit organizerEventsSelected( true );
-    } else {
-      emit organizerEventsSelected(false);
-    }
-    if (event->attendeeByMails( KOPrefs::instance()->mAdditionalMails,
-                                KOPrefs::instance()->email() ) ) {
-      emit groupEventsSelected( true );
-    } else {
-      emit groupEventsSelected(false);
-    }
-    return;
-  } else {
-    if  ( incidence && incidence->type() == "Todo" ) {
-      emit todoSelected( true );
+  if ( incidence ) {
+    organizerEvents = ( incidence->organizer() == KOPrefs::instance()->email() );
+    groupEvents = incidence->attendeeByMails( KOPrefs::instance()->mAdditionalMails,
+                                              KOPrefs::instance()->email() );
+    if ( incidence && incidence->type() == "Event" ) {
+//      Event *event = static_cast<Event *>( incidence );
+    } else if  ( incidence && incidence->type() == "Todo" ) {
       Todo *event = static_cast<Todo *>( incidence );
-      if ( event->organizer() == KOPrefs::instance()->email() ) {
-        emit organizerEventsSelected( true );
-     } else {
-        emit organizerEventsSelected(false);
-      }
-      if (event->attendeeByMails( KOPrefs::instance()->mAdditionalMails,
-                                  KOPrefs::instance()->email() ) ) {
-        emit groupEventsSelected( true );
-      } else {
-        emit groupEventsSelected(false);
-      }
-      return;
-    } else {
-     emit todoSelected( false );
-     emit organizerEventsSelected(false);
-     emit groupEventsSelected(false);
+      todo = true;
+      subtodo = (event->relatedTo() != 0);
     }
-    return;
   }
+  emit todoSelected( todo );
+  emit subtodoSelected( subtodo );
+  emit organizerEventsSelected( organizerEvents );
+  emit groupEventsSelected( groupEvents );
 }
 
 

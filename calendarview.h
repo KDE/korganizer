@@ -147,8 +147,10 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
       signal is emitted with 0 as argument.
     */
     void incidenceSelected( Incidence * );
-    /** Emitted, when a todoitem is selected or deselected. */
+    /** Emitted, when a todoitem is selected or deselected. 
+        the connected slots enables/disables the corresponding menu items */
     void todoSelected( bool );
+    void subtodoSelected( bool );
 
     /**
       Emitted, when clipboard content changes. Parameter indicates if paste

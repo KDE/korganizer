@@ -403,28 +403,11 @@ void ActionManager::initActions()
                          mCalendarView,SLOT(deleteIncidence()),
                          mACollection, "delete_incidence");
 
-#if 0
-  action = new KAction(i18n("T&ake over Event"), 0,
-                       mCalendarView,SLOT(takeOverEvent()),
-                       mACollection, "takeover_event");
-  connect(mCalendarView,SIGNAL(eventsSelected(bool)),
-          action,SLOT(setEnabled(bool)));
-  (void)new KAction(i18n("T&ake over Calendar"), 0,
-                    mCalendarView,SLOT(takeOverCalendar()),
-                    mACollection, "takeover_calendar");
-
-  action = new KAction(i18n("&Mail Appointment"), "mail_generic", 0,
-                    mCalendarView,SLOT(action_mail()),
-                    mACollection, "mail_appointment");
-  connect(mCalendarView,SIGNAL(eventsSelected(bool)),
-          action,SLOT(setEnabled(bool)));
-#endif
-
   action = new KAction(i18n("&Make Sub-To-Do Independent"), 0,
                     mCalendarView,SLOT(todo_unsub()),
                     mACollection, "unsub_todo");
   action->setEnabled(false);
-  connect(mCalendarView,SIGNAL(todoSelected(bool)),
+  connect(mCalendarView,SIGNAL(subtodoSelected(bool)),
           action,SLOT(setEnabled(bool)));
 
   // Schedule menu.
@@ -484,13 +467,6 @@ void ActionManager::initActions()
                         mCalendarView, SLOT( uploadFreeBusy() ),
                         mACollection, "upload_freebusy" );
   action->setEnabled( true );
-
-/*  action = new KAction(i18n("Decline Counter"),0,
-                       mCalendarView,SLOT(schedule_declinecounter()),
-                       mACollection,"declinecounter");
-  connect(mCalendarView,SIGNAL(eventsSelected(bool)),
-          action,SLOT(setEnabled(bool)));
-*/
 
   if ( !mIsPart ) {
       action = new KAction(i18n("Addressbook"),"contents",0,
