@@ -10,8 +10,8 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>497</width>
-            <height>272</height>
+            <width>386</width>
+            <height>262</height>
         </rect>
     </property>
     <property name="caption">
@@ -69,20 +69,6 @@
                         </size>
                     </property>
                 </spacer>
-                <widget class="QLabel" row="0" column="2">
-                    <property name="name">
-                        <cstring>mToDateLabel</cstring>
-                    </property>
-                    <property name="text">
-                        <string>&amp;End date:</string>
-                    </property>
-                    <property name="buddy" stdset="0">
-                        <cstring>mToDate</cstring>
-                    </property>
-                    <property name="whatsThis" stdset="0">
-                        <string>Here you can choose which events should be printed based on their date. This check enables you to enter the end date of the date range. Use the &lt;i&gt;Start date&lt;/i&gt; to enter the start date of the daterange.</string>
-                    </property>
-                </widget>
                 <widget class="QLabel" row="0" column="0">
                     <property name="name">
                         <cstring>mFromDateLabel</cstring>
@@ -97,15 +83,49 @@
                         <string>Here you can choose which events should be printed based on their date. This check enables you to enter the start date of the date range. Use the &lt;i&gt;End date&lt;/i&gt; to enter the end date of the daterange.</string>
                     </property>
                 </widget>
+                <widget class="KDateEdit" row="0" column="3">
+                    <property name="name">
+                        <cstring>mToDate</cstring>
+                    </property>
+                    <property name="focusPolicy">
+                        <enum>StrongFocus</enum>
+                    </property>
+                    <property name="whatsThis" stdset="0">
+                        <string>Here you can choose which events should be printed based on their date. This check enables you to enter the end date of the date range. Use the &lt;i&gt;Start date&lt;/i&gt; to enter the start date of the daterange.</string>
+                    </property>
+                </widget>
+                <widget class="QLabel" row="1" column="0">
+                    <property name="name">
+                        <cstring>mFromTimeLabel</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Start &amp;time:</string>
+                    </property>
+                    <property name="buddy" stdset="0">
+                        <cstring>mFromTime</cstring>
+                    </property>
+                    <property name="whatsThis" stdset="0">
+                        <string>All events which start earlier than the given time won't be printed.</string>
+                    </property>
+                </widget>
+                <widget class="QTimeEdit" row="1" column="1">
+                    <property name="name">
+                        <cstring>mFromTime</cstring>
+                    </property>
+                    <property name="time">
+                        <time>
+                            <hour>0</hour>
+                            <minute>8</minute>
+                            <second>0</second>
+                        </time>
+                    </property>
+                    <property name="whatsThis" stdset="0">
+                        <string>All events which start earlier than the given time won't be printed.</string>
+                    </property>
+                </widget>
                 <widget class="KDateEdit" row="0" column="1">
                     <property name="name">
                         <cstring>mFromDate</cstring>
-                    </property>
-                    <property name="minimumSize">
-                        <size>
-                            <width>50</width>
-                            <height>0</height>
-                        </size>
                     </property>
                     <property name="focusPolicy">
                         <enum>StrongFocus</enum>
@@ -114,21 +134,64 @@
                         <string>Here you can choose which events should be printed based on their date. This check enables you to enter the start date of the date range. Use the &lt;i&gt;End date&lt;/i&gt; to enter the end date of the daterange.</string>
                     </property>
                 </widget>
-                <widget class="KDateEdit" row="0" column="3">
+                <widget class="QLabel" row="0" column="2">
                     <property name="name">
+                        <cstring>mToDateLabel</cstring>
+                    </property>
+                    <property name="text">
+                        <string>&amp;End date:</string>
+                    </property>
+                    <property name="buddy" stdset="0">
                         <cstring>mToDate</cstring>
-                    </property>
-                    <property name="minimumSize">
-                        <size>
-                            <width>50</width>
-                            <height>0</height>
-                        </size>
-                    </property>
-                    <property name="focusPolicy">
-                        <enum>StrongFocus</enum>
                     </property>
                     <property name="whatsThis" stdset="0">
                         <string>Here you can choose which events should be printed based on their date. This check enables you to enter the end date of the date range. Use the &lt;i&gt;Start date&lt;/i&gt; to enter the start date of the daterange.</string>
+                    </property>
+                </widget>
+                <widget class="QLabel" row="1" column="2">
+                    <property name="name">
+                        <cstring>mToTimeLabel</cstring>
+                    </property>
+                    <property name="text">
+                        <string>End ti&amp;me:</string>
+                    </property>
+                    <property name="buddy" stdset="0">
+                        <cstring>mToTime</cstring>
+                    </property>
+                    <property name="whatsThis" stdset="0">
+                        <string>All events which start later than the given time won't be printed.</string>
+                    </property>
+                </widget>
+                <spacer row="1" column="4">
+                    <property name="name">
+                        <cstring>spacer4</cstring>
+                    </property>
+                    <property name="orientation">
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property name="sizeType">
+                        <enum>Expanding</enum>
+                    </property>
+                    <property name="sizeHint">
+                        <size>
+                            <width>110</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget class="QTimeEdit" row="1" column="3">
+                    <property name="name">
+                        <cstring>mToTime</cstring>
+                    </property>
+                    <property name="time">
+                        <time>
+                            <hour>16</hour>
+                            <minute>0</minute>
+                            <second>0</second>
+                        </time>
+                    </property>
+                    <property name="whatsThis" stdset="0">
+                        <string>All events which start later than the given time won't be printed.</string>
                     </property>
                 </widget>
             </grid>
@@ -169,62 +232,6 @@
                         <string>The Filofax view prints one week per page, so all days have a large surface.</string>
                     </property>
                 </widget>
-                <widget class="QLabel" row="4" column="0">
-                    <property name="name">
-                        <cstring>mFromTimeLabel</cstring>
-                    </property>
-                    <property name="text">
-                        <string>Start &amp;time:</string>
-                    </property>
-                    <property name="buddy" stdset="0">
-                        <cstring>mFromTime</cstring>
-                    </property>
-                    <property name="whatsThis" stdset="0">
-                        <string>All events which start earlier than the given time won't be printed.</string>
-                    </property>
-                </widget>
-                <widget class="QLabel" row="4" column="2">
-                    <property name="name">
-                        <cstring>mToTimeLabel</cstring>
-                    </property>
-                    <property name="text">
-                        <string>End ti&amp;me:</string>
-                    </property>
-                    <property name="buddy" stdset="0">
-                        <cstring>mToTime</cstring>
-                    </property>
-                    <property name="whatsThis" stdset="0">
-                        <string>All events which start later than the given time won't be printed.</string>
-                    </property>
-                </widget>
-                <spacer row="4" column="4">
-                    <property name="name">
-                        <cstring>spacer4</cstring>
-                    </property>
-                    <property name="orientation">
-                        <enum>Horizontal</enum>
-                    </property>
-                    <property name="sizeType">
-                        <enum>Expanding</enum>
-                    </property>
-                    <property name="sizeHint">
-                        <size>
-                            <width>16</width>
-                            <height>20</height>
-                        </size>
-                    </property>
-                </spacer>
-                <widget class="QFrame" row="3" column="0" rowspan="1" colspan="5">
-                    <property name="name">
-                        <cstring>frame3</cstring>
-                    </property>
-                    <property name="frameShape">
-                        <enum>HLine</enum>
-                    </property>
-                    <property name="frameShadow">
-                        <enum>Raised</enum>
-                    </property>
-                </widget>
                 <widget class="QRadioButton" row="1" column="0" rowspan="1" colspan="5">
                     <property name="name">
                         <cstring>mPrintTypeButton2</cstring>
@@ -247,36 +254,6 @@
                         <string>This view is similar to the week view in KOrganizer. The only difference with the timetable view is the page layout. Timetables are printed in landscape, the split week view in portrait.</string>
                     </property>
                 </widget>
-                <widget class="QTimeEdit" row="4" column="1">
-                    <property name="name">
-                        <cstring>mFromTime</cstring>
-                    </property>
-                    <property name="time">
-                        <time>
-                            <hour>0</hour>
-                            <minute>8</minute>
-                            <second>0</second>
-                        </time>
-                    </property>
-                    <property name="whatsThis" stdset="0">
-                        <string>All events which start earlier than the given time won't be printed.</string>
-                    </property>
-                </widget>
-                <widget class="QTimeEdit" row="4" column="3">
-                    <property name="name">
-                        <cstring>mToTime</cstring>
-                    </property>
-                    <property name="time">
-                        <time>
-                            <hour>16</hour>
-                            <minute>0</minute>
-                            <second>0</second>
-                        </time>
-                    </property>
-                    <property name="whatsThis" stdset="0">
-                        <string>All events which start later than the given time won't be printed.</string>
-                    </property>
-                </widget>
             </grid>
         </widget>
         <widget class="QCheckBox" row="2" column="0">
@@ -295,32 +272,8 @@
         </widget>
     </grid>
 </widget>
-<customwidgets>
-    <customwidget>
-        <class>KDateEdit</class>
-        <header location="local">libkdepim/kdateedit.h</header>
-        <sizehint>
-            <width>-1</width>
-            <height>-1</height>
-        </sizehint>
-        <container>0</container>
-        <sizepolicy>
-            <hordata>5</hordata>
-            <verdata>5</verdata>
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-        </sizepolicy>
-        <pixmap>image0</pixmap>
-    </customwidget>
-</customwidgets>
-<images>
-    <image name="image0">
-        <data format="PNG" length="824">89504e470d0a1a0a0000000d4948445200000016000000160806000000c4b46c3b000002ff49444154789cb59531681c4714863f992dde820cb370815b50600f54e8ca0ba43970712a8fb838438a3895634813d238a5ab80e314ae4d0a812060a4226017c27221c8a9da6b8c4fe0e00d28b0571cec82043b85611f78c12966efa4bb8bc085f29a6567df7cef9f7fdeccaec571cc2cbaddee47ae21e2385e5b9b815f1ebcfcd8de6a63ad25cb338af7c52741acb5a4a729a3d723a82ec6bd99d267bf3f23fc1c4cab2442d14a915986e792fdfa59569766573049417784f1b12e8267954dab24b78714450a28beaf941f847c2a14e70a0841035a2d45d641eb027213c210c69756320767794684d6508bef0befde1a860796e4c402333542b4256c0f0cdd1e50b97191458be6e0e27d81563a87c643d8fb2d7793d685d696413cc8a6cae46f65f7d79c7c62b87b4f2e15fd0fb0d302be0fefde4a0d557a5f35e90f84e0334014d590f855c9de4ecee17e4eb319d1ff3a00ec02f8c67299f283307c61e7d06fbf1782d082588a33e1cf1705fd81cf773f3601e1f9bec59e2f4b5c7ef5209f0ac95f16630cfd818067c103b586dd274a726229cee0fe8380d191cb4d1267d3d58aa1de7d258ceae5d7d0a78fdd269a86f0c52d414c49bbe3762c9b686de41560d7a72e41c4795a6486a78f95e4c4151481d686efbe7b3398ac58b1a23868b8c474aaa8068c8e714a8dd06c1af2a9e5d1c38c641c909dba6e08237f19b358a7ac5cf3479bc2e41f257e55d2ffc6a73833746f09e186cfa387904f2cbffc90a2aa9886d0e99464d3c5965b512cebd01f1800f67672e2a392fb0f023a3d883a053ffddcc2340dd65ab452b6074dc2cd15c1cbceb863daed413e353cdfcfd97d92333a12da6d0181ec3443cf753ef3cdd092de0e116ff1a02cdc157338ca9d7b8269461cfee1ba2139b9286e1a427f10110f2d561555b076d18a39383d4d99a4c0cd0b787f20747b214962c8266e3cdcf0e97c59126ec2f6edd089f40a92f115e0d1eb11ba238461dd6a15f32b53666de841965bb203575a3cc15a48c64a965fe57105e3635db8fa96dcffc431172b5d715d7103dc3fea7f015f373c8ee3b57f0135105a0ffe02a8010000000049454e44ae426082</data>
-    </image>
-</images>
 <layoutdefaults spacing="6" margin="11"/>
-<includehints>
-    <includehint>kdateedit.h</includehint>
-    <includehint>kdateedit.h</includehint>
-</includehints>
+<includes>
+    <include location="global" impldecl="in declaration">kdateedit.h</include>
+</includes>
 </UI>
