@@ -100,15 +100,15 @@ void KOWhatsNextView::updateView()
   QList<Todo> todos = mCalendar->getTodoList();
   if (todos.count() > 0) {  
     mText += i18n("<h2>Todo:</h2>");
-    mText += i18n("<table>");
-    Todo *ev = todos.first();
-    while(ev) {
-      if (ev->priority() == 1 ||
-          (ev->hasDueDate() && ev->dtDue().date() == QDate::currentDate()))
-        appendTodo(ev);
-      ev = todos.next();
+    mText += i18n("<ul>");
+    Todo *todo = todos.first();
+    while(todo) {
+      if (!todo->isCompleted() && (todo->priority() == 1 ||
+          (todo->hasDueDate() && todo->dtDue().date() == QDate::currentDate())))
+        appendTodo(todo);
+      todo = todos.next();
     }
-    mText += i18n("</table>");
+    mText += i18n("</ul>");
   }
 
   mView->setText(mText);
@@ -150,11 +150,9 @@ void KOWhatsNextView::appendEvent(Event *ev)
 
 void KOWhatsNextView::appendTodo(Todo *ev)
 {
-  mText += "<tr><td><b>";
-  mText += QString::number(ev->priority());
-  mText += "</b></td><td><a href=\"todo:" + ev->VUID() + "\">";
+  mText += "<li><a href=\"todo:" + ev->VUID() + "\">";
   mText += ev->summary();
-  mText += "</a></td></tr>";
+  mText += "</a></li>";
 }
 
 void KOWhatsNextView::createEventViewer()
