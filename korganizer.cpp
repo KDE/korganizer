@@ -217,12 +217,18 @@ void KOrganizer::initActions()
                     mCalendarView, SLOT(exportVCalendar()),
                     actionCollection(), "export_vcalendar");
 
+// This is now done by KPrinter::setup().
+#if 0
   (void)new KAction(i18n("Print Setup..."), 0,
                     mCalendarView, SLOT(printSetup()),
                     actionCollection(), "print_setup");
+#endif
+
   KStdAction::print(mCalendarView, SLOT(print()), actionCollection());
+#if 1
   KStdAction::printPreview(mCalendarView, SLOT(printPreview()),
                            actionCollection());
+#endif
   (void)new KAction(i18n("Make active"),0,this,SLOT(makeActive()),
                     actionCollection(),"make_active");
   KStdAction::quit(this, SLOT(close()), actionCollection());

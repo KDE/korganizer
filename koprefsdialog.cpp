@@ -49,7 +49,10 @@ KOPrefsDialog::KOPrefsDialog(QWidget *parent, char *name, bool modal) :
   setupFontsTab();
   setupColorsTab();
   setupViewsTab();
+  // Printer configuration is now done by KPrinter::setup()
+#if 1
   setupPrinterTab();
+#endif
 }
 
 
@@ -488,7 +491,8 @@ void KOPrefsDialog::setupPrinterTab()
   topLayout->setSpacing(spacingHint());
   topLayout->setMargin(marginHint());
 
-  topLayout->addWidget(new QLabel(i18n("Printer Name:"),mPrinterTab),0,0);
+  QLabel *printerNameLabel = new QLabel(i18n("Printer Name:"),mPrinterTab);
+  topLayout->addWidget(printerNameLabel,0,0);
   mPrinterCombo = new QComboBox(mPrinterTab);
   topLayout->addWidget(mPrinterCombo,0,1);
 
@@ -546,6 +550,11 @@ void KOPrefsDialog::setupPrinterTab()
   topLayout->addRowSpacing(4,27);
 
   topLayout->setRowStretch(4,1);
+
+  // KPrinter::setup() does this now
+  mPaperSizeGroup->hide();
+  mPrinterCombo->hide();
+  printerNameLabel->hide();
 }
 
 
@@ -607,11 +616,14 @@ void KOPrefsDialog::usrReadConfig()
 //  mEventColor->setBackgroundColor(KOPrefs::instance()->mEventColor);
 //  mAgendaBgColor->setBackgroundColor(KOPrefs::instance()->mAgendaBgColor);
 
+  // Printer configuration is now done by KPrinter::setup()
+#if 1
   setCombo(mPrinterCombo,KOPrefs::instance()->mPrinter);
 
   mPaperSizeGroup->setButton(KOPrefs::instance()->mPaperSize);
   mPaperOrientationGroup->setButton(KOPrefs::instance()->mPaperOrientation);
   mPrintPreviewEdit->lineEdit()->setText(KOPrefs::instance()->mPrintPreview);
+#endif
 }
 
 
@@ -659,12 +671,14 @@ void KOPrefsDialog::usrWriteConfig()
   }
   mCategoryDict.clear();
 
+#if 1
   KOPrefs::instance()->mPrinter = mPrinterCombo->currentText();
   KOPrefs::instance()->mPaperSize =
       mPaperSizeGroup->id(mPaperSizeGroup->selected());
   KOPrefs::instance()->mPaperOrientation =
       mPaperOrientationGroup->id(mPaperOrientationGroup->selected());
   KOPrefs::instance()->mPrintPreview = mPrintPreviewEdit->lineEdit()->text();
+#endif
 }
 
 void KOPrefsDialog::updateCategories()

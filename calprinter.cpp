@@ -163,6 +163,8 @@ void CalPrinter::print(PrintType pt, const QDate &fd, const QDate &td)
 
 void CalPrinter::doPrint(int pt, QDate fd, QDate td)
 {
+  if (!mPrinter->setup(mParent)) return;
+
   switch(pt) {
     case Day: 
       printDay(fd, td);
@@ -845,7 +847,7 @@ void CalPrintDialog::setRange(const QDate &from, const QDate &to)
 
 void CalPrintDialog::setPreview(bool preview)
 {
-  mOkButton->setText(preview ? i18n("&Preview") : i18n("&Print"));
+  mOkButton->setText(preview ? i18n("&Preview") : i18n("&Print..."));
 }
 
 QDate CalPrintDialog::fromDate() const
