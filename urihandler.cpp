@@ -67,6 +67,7 @@ bool UriHandler::process( const QString &uri )
       //client->send("kaddressbook","KAddressBookIface",
       QDataStream arg( paramData, IO_WriteOnly );
       arg << uri.mid( 6 );
+      kapp->updateRemoteUserTimestamp("kaddressbook");
       client->send( "kaddressbook", "KAddressBookIface",
                     "showContactEditor( QString )", paramData );
       return true;
