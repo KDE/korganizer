@@ -258,7 +258,12 @@ CalendarView::CalendarView( QWidget *parent, const char *name )
            mEventViewer, SLOT ( setIncidence (Incidence *) ) );
   
   //TODO: do a pretty Summary, 
-  mEventViewer->setDefaultText( "<H1>···</H1>" );
+  QString s;
+  s= "<H1>No incidence selected<H1>";
+  s = s + "<p>If you select an event or todo in korganizer's main view, "
+	  " you will see a preview of that item here.</p>";
+
+  mEventViewer->setDefaultText( s );
   mEventViewer->setIncidence( 0 );
   
   mViewManager->connectTodoView( mTodoList );
