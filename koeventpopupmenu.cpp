@@ -29,6 +29,8 @@
 
 #include <libkcal/event.h>
 
+#include "koglobals.h"
+
 #include "koeventpopupmenu.h"
 #include "koeventpopupmenu.moc"
 
@@ -39,7 +41,7 @@ KOEventPopupMenu::KOEventPopupMenu()
 
   insertItem (i18n("&Show"),this,SLOT(popupShow()));
   mEditOnlyItems.append(insertItem (i18n("&Edit..."),this,SLOT(popupEdit())));
-  mEditOnlyItems.append(insertItem (SmallIcon("editdelete"),i18n("&Delete"),
+  mEditOnlyItems.append(insertItem (KOGlobals::self()->smallIcon("editdelete"),i18n("&Delete"),
                                    this,SLOT(popupDelete())));
 }
 

@@ -39,6 +39,7 @@
 #include <kdgantt/KDGanttViewTaskItem.h>
 
 #include "koprefs.h"
+#include "koglobals.h"
 #include "kogroupware.h"
 
 #include "koeditorgantt.h"
@@ -100,9 +101,9 @@ void GanttItem::updateItem()
   setListViewText(2,mData->roleStr());
   setListViewText(3,mData->statusStr());
   if (mData->RSVP() && !mData->email().isEmpty())
-    setPixmap(4,SmallIcon("mailappt"));
+    setPixmap(4,KOGlobals::self()->smallIcon("mailappt"));
   else
-    setPixmap(4,SmallIcon("nomailappt"));
+    setPixmap(4,KOGlobals::self()->smallIcon("nomailappt"));
 }
 
 

@@ -23,10 +23,13 @@
 #ifndef KORG_GLOBALS_H
 #define KORG_GLOBALS_H
 
+class QPixmap;
+class QIconSet;
 class KCalendarSystem;
 class AlarmClient;
 
 class KConfig;
+class KInstance;
 
 class KOGlobals
 {
@@ -47,12 +50,16 @@ class KOGlobals
 
     ~KOGlobals();
 
+    QPixmap smallIcon(const QString& name);
+    QIconSet smallIconSet(const QString& name, int size = 0);
+    
   protected:
     KOGlobals();
 
   private:
     static KOGlobals *mSelf;
-    KConfig *mConfig;
+
+    KInstance *mOwnInstance;
 
     const KCalendarSystem *mCalendarSystem;    
     AlarmClient *mAlarmClient;

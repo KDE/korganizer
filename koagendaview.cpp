@@ -215,8 +215,8 @@ EventIndicator::EventIndicator(Location loc,QWidget *parent,const char *name)
   mLocation = loc;
   mTopLayout = 0;
 
-  if (mLocation == Top) mPixmap = SmallIcon("1uparrow");
-  else mPixmap = SmallIcon("1downarrow");
+  if (mLocation == Top) mPixmap = KOGlobals::self()->smallIcon("1uparrow");
+  else mPixmap = KOGlobals::self()->smallIcon("1downarrow");
 
   setMinimumHeight(mPixmap.height());
 }
@@ -361,11 +361,11 @@ KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name) :
   bool isRTL = KOGlobals::self()->reverseLayout();
 
   if ( KOPrefs::instance()->mVerticalScreen ) {
-    mExpandedPixmap = SmallIcon( "1downarrow" );
-    mNotExpandedPixmap = SmallIcon( "1uparrow" );
+    mExpandedPixmap = KOGlobals::self()->smallIcon( "1downarrow" );
+    mNotExpandedPixmap = KOGlobals::self()->smallIcon( "1uparrow" );
   } else {
-    mExpandedPixmap = SmallIcon( isRTL ? "1leftarrow" : "1rightarrow" );
-    mNotExpandedPixmap = SmallIcon( isRTL ? "1rightarrow" : "1leftarrow" );
+    mExpandedPixmap = KOGlobals::self()->smallIcon( isRTL ? "1leftarrow" : "1rightarrow" );
+    mNotExpandedPixmap = KOGlobals::self()->smallIcon( isRTL ? "1rightarrow" : "1leftarrow" );
   }
 
   QBoxLayout *topLayout = new QVBoxLayout(this);
@@ -438,7 +438,7 @@ KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name) :
 
   // Create event context menu for agenda
   mAgendaPopup = eventPopup();
-  mAgendaPopup->addAdditionalItem(QIconSet(SmallIcon("bell")),
+  mAgendaPopup->addAdditionalItem(QIconSet(KOGlobals::self()->smallIcon("bell")),
                                   i18n("Toggle Alarm"),mAgenda,
                                   SLOT(popupAlarm()),true);
   connect(mAgenda,SIGNAL(showIncidencePopupSignal(Incidence *)),

@@ -44,6 +44,7 @@
 #include <libkcal/incidence.h>
 
 #include "koprefs.h"
+#include "koglobals.h"
 
 #include "koeditorgantt.h"
 #include "koeditordetails.h"
@@ -63,9 +64,9 @@ void CustomListViewItem<class Attendee *>::updateItem()
   setText(2,mData->roleStr());
   setText(3,mData->statusStr());
   if (mData->RSVP() && !mData->email().isEmpty())
-    setPixmap(4,SmallIcon("mailappt"));
+    setPixmap(4,KOGlobals::self()->smallIcon("mailappt"));
   else
-    setPixmap(4,SmallIcon("nomailappt"));
+    setPixmap(4,KOGlobals::self()->smallIcon("nomailappt"));
 }
 
 KOAttendeeListView::KOAttendeeListView (QWidget *parent, const char *name)

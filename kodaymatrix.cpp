@@ -474,12 +474,12 @@ void KODayMatrix::dropEvent( QDropEvent *e )
     if ( existingEvent || existingTodo ) {
       menu->insertItem( i18n("Move"), DRAG_MOVE, 0 );
       if (existingEvent)
-        menu->insertItem( SmallIcon("editcopy"), i18n("Copy"), DRAG_COPY, 1 );
+        menu->insertItem( KOGlobals::self()->smallIcon("editcopy"), i18n("Copy"), DRAG_COPY, 1 );
     } else {
       menu->insertItem( i18n("Add"), DRAG_MOVE, 0 );
     }
     menu->insertSeparator();
-    menu->insertItem( SmallIcon("cancel"), i18n("Cancel"), DRAG_CANCEL, 3 );
+    menu->insertItem( KOGlobals::self()->smallIcon("cancel"), i18n("Cancel"), DRAG_CANCEL, 3 );
     action = menu->exec( QCursor::pos(), 0 );
   }
 

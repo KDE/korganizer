@@ -45,6 +45,7 @@
 
 #include "koincidencetooltip.h"
 #include "kotodoview.h"
+#include "koglobals.h"
 using namespace KOrg;
 #include "kotodoview.moc"
 
@@ -421,10 +422,10 @@ KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent, const char* name)
                              SLOT (showTodo()));
   mItemPopupMenu->insertItem(i18n("Edit..."), this,
                              SLOT (editTodo()));
-  mItemPopupMenu->insertItem(SmallIconSet("editdelete"), i18n("Delete"), this,
+  mItemPopupMenu->insertItem(KOGlobals::self()->smallIconSet("editdelete"), i18n("Delete"), this,
                              SLOT (deleteTodo()));
   mItemPopupMenu->insertSeparator();
-  mItemPopupMenu->insertItem(SmallIconSet("todo"), i18n("New To-Do..."), this,
+  mItemPopupMenu->insertItem(KOGlobals::self()->smallIconSet("todo"), i18n("New To-Do..."), this,
                              SLOT (newTodo()));
   mItemPopupMenu->insertItem(i18n("New Sub-To-Do..."), this,
                              SLOT (newSubTodo()));
@@ -435,7 +436,7 @@ KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent, const char* name)
                              this, SLOT( purgeCompleted() ) );
 
   mPopupMenu = new QPopupMenu(this);
-  mPopupMenu->insertItem(SmallIconSet("todo"), i18n("New To-Do..."), this,
+  mPopupMenu->insertItem(KOGlobals::self()->smallIconSet("todo"), i18n("New To-Do..."), this,
                          SLOT (newTodo()));
   mPopupMenu->insertItem(i18n("delete completed To-Dos","Purge Completed"),
                          this, SLOT(purgeCompleted()));

@@ -31,12 +31,14 @@
 #include <kglobalsettings.h>
 #include <klocale.h>
 #include <kstaticdeleter.h>
+#include <kiconloader.h>
 
 #include <kcalendarsystem.h>
 
 #include "alarmclient.h"
 
 #include "koglobals.h"
+#include "korganizer_part.h"
 
 class NopAlarmClient : public AlarmClient
 {
@@ -60,8 +62,10 @@ KOGlobals *KOGlobals::self()
 
 KOGlobals::KOGlobals()
 {
-  mConfig = new KConfig( locateLocal( "config", "korganizerrc" ) );
-  mConfig->setGroup("General");
+  // Needed to distinguish from global KInstance 
+  // in case we are a KPart
+  mOwnInstance = new KInstance("korganizer");
+  mOwnInstance->config()->setGroup("General");
 
   mCalendarSystem = KGlobal::locale()->calendar();
 
@@ -70,7 +74,7 @@ KOGlobals::KOGlobals()
 
 KConfig* KOGlobals::config() const
 {
-  return mConfig;
+  return mOwnInstance->config();
 }
 
 KOGlobals::~KOGlobals()
@@ -78,8 +82,8 @@ KOGlobals::~KOGlobals()
   delete mAlarmClient;
   mAlarmClient = 0;
 
-  delete mConfig;
-  mConfig = 0;
+  delete mOwnInstance;
+  mOwnInstance = 0;
 }
 
 const KCalendarSystem *KOGlobals::calendarSystem() const
@@ -125,4 +129,14 @@ bool KOGlobals::reverseLayout()
 #else
   return false;
 #endif
+}
+
+QPixmap KOGlobals::smallIcon(const QString& name)
+{
+  return SmallIcon(name, mOwnInstance);
+}
+
+QIconSet KOGlobals::smallIconSet(const QString& name, int size)
+{
+  return SmallIconSet(name, size, mOwnInstance);
 }

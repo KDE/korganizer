@@ -93,23 +93,23 @@ NavigatorBar::NavigatorBar( const QDate & date, QWidget *parent, const char *nam
 
   // Create backward navigation buttons
   mPrevYear = new QPushButton( mCtrlFrame );
-  mPrevYear->setPixmap( SmallIcon( isRTL ? "2rightarrow" : "2leftarrow" ) );
+  mPrevYear->setPixmap( KOGlobals::self()->smallIcon( isRTL ? "2rightarrow" : "2leftarrow" ) );
   mPrevYear->setMinimumHeight(mMonth->height());
   QToolTip::add( mPrevYear, i18n("Previous year") );
 
   mPrevMonth = new QPushButton( mCtrlFrame );
-  mPrevMonth->setPixmap( SmallIcon( isRTL ? "1rightarrow" : "1leftarrow") );
+  mPrevMonth->setPixmap( KOGlobals::self()->smallIcon( isRTL ? "1rightarrow" : "1leftarrow") );
   mPrevMonth->setMinimumHeight(mMonth->height());
   QToolTip::add( mPrevMonth, i18n("Previous month") );
 
   // Create forward navigation buttons
   mNextMonth = new QPushButton( mCtrlFrame );
-  mNextMonth->setPixmap( SmallIcon( isRTL ? "1leftarrow" : "1rightarrow") );
+  mNextMonth->setPixmap( KOGlobals::self()->smallIcon( isRTL ? "1leftarrow" : "1rightarrow") );
   mNextMonth->setMinimumHeight(mMonth->height());
   QToolTip::add( mNextMonth, i18n("Next month") );
 
   mNextYear = new QPushButton( mCtrlFrame );
-  mNextYear->setPixmap( SmallIcon( isRTL ? "2leftarrow" : "2rightarrow") );
+  mNextYear->setPixmap( KOGlobals::self()->smallIcon( isRTL ? "2leftarrow" : "2rightarrow") );
   mNextYear->setMinimumHeight(mMonth->height());
   QToolTip::add( mNextYear, i18n("Next year") );
 

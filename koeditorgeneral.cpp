@@ -45,6 +45,7 @@
 #include <libkdepim/kdateedit.h>
 
 #include "koprefs.h"
+#include "koglobals.h"
 
 #include "koeditorgeneral.h"
 #include "koeditorgeneral.moc"
@@ -147,7 +148,7 @@ void KOEditorGeneral::initAlarm(QWidget *parent,QBoxLayout *topLayout)
   QBoxLayout *alarmLayout = new QHBoxLayout(topLayout);
 
   mAlarmBell = new QLabel(parent);
-  mAlarmBell->setPixmap(SmallIcon("bell"));
+  mAlarmBell->setPixmap(KOGlobals::self()->smallIcon("bell"));
   alarmLayout->addWidget(mAlarmBell);
 
   mAlarmButton = new QCheckBox(i18n("&Reminder:"),parent);
@@ -167,14 +168,14 @@ void KOEditorGeneral::initAlarm(QWidget *parent,QBoxLayout *topLayout)
   alarmLayout->addWidget(mAlarmIncrCombo);
 
   mAlarmSoundButton = new QPushButton(parent);
-  mAlarmSoundButton->setPixmap(SmallIcon("playsound"));
+  mAlarmSoundButton->setPixmap(KOGlobals::self()->smallIcon("playsound"));
   mAlarmSoundButton->setToggleButton(true);
   QToolTip::add(mAlarmSoundButton, i18n("No sound set"));
   connect(mAlarmSoundButton, SIGNAL(clicked()), SLOT(pickAlarmSound()));
   alarmLayout->addWidget(mAlarmSoundButton);
 
   mAlarmProgramButton = new QPushButton(parent);
-  mAlarmProgramButton->setPixmap(SmallIcon("runprog"));
+  mAlarmProgramButton->setPixmap(KOGlobals::self()->smallIcon("runprog"));
   mAlarmProgramButton->setToggleButton(true);
   QToolTip::add(mAlarmProgramButton, i18n("No program set"));
   connect(mAlarmProgramButton, SIGNAL(clicked()), SLOT(pickAlarmProgram()));

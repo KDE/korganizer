@@ -174,9 +174,9 @@ MonthViewItem::MonthViewItem( Incidence *incidence, QDate qd, const QString & s)
   mIncidence = incidence;
   mDate = qd;
 
-  mAlarmPixmap = SmallIcon("bell");
-  mRecurPixmap = SmallIcon("recur");
-  mReplyPixmap = SmallIcon("mail_reply");
+  mAlarmPixmap = KOGlobals::self()->smallIcon("bell");
+  mRecurPixmap = KOGlobals::self()->smallIcon("recur");
+  mReplyPixmap = KOGlobals::self()->smallIcon("mail_reply");
 
   mRecur = false;
   mAlarm = false;

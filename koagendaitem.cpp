@@ -40,6 +40,7 @@
 #endif
 
 #include "koprefs.h"
+#include "koglobals.h"
 
 #include "koincidencetooltip.h"
 #include "koagendaitem.h"
@@ -601,8 +602,8 @@ static void conditionalPaint( QPainter *p, bool cond, int &x, int ft,
 
 void KOAgendaItem::paintTodoIcon( QPainter *p, int &x, int ft )
 {
-  static const QPixmap todoPxmp = SmallIcon("todo");
-  static const QPixmap completedPxmp = SmallIcon("checkedbox");
+  static const QPixmap todoPxmp = KOGlobals::self()->smallIcon("todo");
+  static const QPixmap completedPxmp = KOGlobals::self()->smallIcon("checkedbox");
   if ( mIncidence->type() != "Todo" )
     return;
   bool b = ( static_cast<Todo *>( mIncidence ) )->isCompleted();
@@ -616,12 +617,12 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
   const int ft = 2; // frame thickness for layout, see paintFrame()
   const int margin = 1 + ft; // frame + space between frame and content
 
-  static const QPixmap alarmPxmp = SmallIcon("bell");
-  static const QPixmap recurPxmp = SmallIcon("recur");
-  static const QPixmap readonlyPxmp = SmallIcon("readonlyevent");
-  static const QPixmap replyPxmp = SmallIcon("mail_reply");
-  static const QPixmap groupPxmp = SmallIcon("groupevent");
-  static const QPixmap organizerPxmp = SmallIcon("organizer");
+  static const QPixmap alarmPxmp = KOGlobals::self()->smallIcon("bell");
+  static const QPixmap recurPxmp = KOGlobals::self()->smallIcon("recur");
+  static const QPixmap readonlyPxmp = KOGlobals::self()->smallIcon("readonlyevent");
+  static const QPixmap replyPxmp = KOGlobals::self()->smallIcon("mail_reply");
+  static const QPixmap groupPxmp = KOGlobals::self()->smallIcon("groupevent");
+  static const QPixmap organizerPxmp = KOGlobals::self()->smallIcon("organizer");
 
   QColor bgColor;
   if ( (mIncidence->type() == "Todo") &&

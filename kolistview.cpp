@@ -179,7 +179,7 @@ KOListView::KOListView( Calendar *calendar, QWidget *parent,
   mPopupMenu = new QPopupMenu;
   mPopupMenu->insertItem(i18n("Edit Event"), this,
                      SLOT (editEvent()));
-  mPopupMenu->insertItem(SmallIcon("delete"), i18n("Delete Event"), this,
+  mPopupMenu->insertItem(KOGlobals::self()->smallIcon("delete"), i18n("Delete Event"), this,
                      SLOT (deleteEvent()));
   mPopupMenu->insertSeparator();
   mPopupMenu->insertItem(i18n("Show Dates"), this,
