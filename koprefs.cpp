@@ -29,8 +29,8 @@
 #include <qfont.h>
 #include <qcolor.h>
 #include <qstringlist.h>
-#include <kglobalsettings.h>
 
+#include <kglobalsettings.h>
 #include <kglobal.h>
 #include <kconfig.h>
 #include <klocale.h>
