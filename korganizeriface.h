@@ -35,9 +35,6 @@ class KOrganizerIface : virtual public DCOPObject
     virtual QString getCurrentURLasString() const = 0;
     virtual bool editIncidence(QString uid) = 0;
     virtual bool deleteIncidence(QString uid) = 0;
-
-    // TODO: Move to a library
-    virtual QString msTNEFToVPart(QByteArray tnef) = 0;
 };
 
 #endif

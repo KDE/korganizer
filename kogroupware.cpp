@@ -35,43 +35,22 @@
 */
 
 #include "kogroupware.h"
-
 #include "freebusymanager.h"
 #include "calendarview.h"
 #include "mailscheduler.h"
 #include "kogroupwareincomingdialog.h"
-#include "koviewmanager.h"
-#include "kocore.h"
-
+#include "koprefs.h"
 #include <libemailfunctions/email.h>
-
-#include <libkcal/incidencebase.h>
 #include <libkcal/attendee.h>
-#include <libkcal/freebusy.h>
 #include <libkcal/journal.h>
-#include <libkcal/calendarlocal.h>
-#include <libkcal/icalformat.h>
 #include <libkcal/incidenceformatter.h>
-
 #include <kdebug.h>
 #include <kmessagebox.h>
-#include <ktempfile.h>
-#include <kio/netaccess.h>
-#include <kapplication.h>
-#include <kconfig.h>
-#include <dcopclient.h>
-#include <dcopref.h>
 #include <kstandarddirs.h>
 #include <kdirwatch.h>
-
 #include <qfile.h>
 #include <qregexp.h>
-
-#include <mimelib/enum.h>
-
-#include <stdlib.h>
 #include <qdir.h>
-#include "koprefs.h"
 
 FreeBusyManager *KOGroupware::mFreeBusyManager = 0;
 
@@ -211,11 +190,6 @@ class KOInvitationFormatterHelper : public InvitationFormatterHelper
   public:
     virtual QString generateLinkURL( const QString &id ) { return "kmail:groupware_request_" + id; }
 };
-
-QString KOGroupware::msTNEFToVPart( const QByteArray& tnef )
-{
-  return IncidenceFormatter::msTNEFToVPart( tnef );
-}
 
 /* This function sends mails if necessary, and makes sure the user really
  * want to change his calendar.
