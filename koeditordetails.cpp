@@ -330,9 +330,13 @@ void KOEditorDetails::openAddressBook()
           itr != aList.end(); ++itr ) {
       KABC::Addressee a = (*itr);
       bool myself = KOPrefs::instance()->thatIsMe( a.preferredEmail() );
+      bool sameAsOrganizer = mOrganizerCombo && 
+        KPIM::compareEmail( a.preferredEmail(), mOrganizerCombo->currentText(), false );
       KCal::Attendee::PartStat partStat;
-      if ( myself ) partStat = KCal::Attendee::Accepted;
-      else partStat = KCal::Attendee::NeedsAction;
+      if ( myself && sameAsOrganizer ) 
+        partStat = KCal::Attendee::Accepted;
+      else 
+        partStat = KCal::Attendee::NeedsAction;
       insertAttendee( new Attendee( a.realName(), a.preferredEmail(),
                                     !myself, partStat,
                                     KCal::Attendee::ReqParticipant, a.uid() ),
@@ -533,15 +537,18 @@ void KOEditorDetails::updateAttendeeItem()
   QString email;
   KPIM::getNameAndMail(mNameEdit->text(), name, email);
 
-  bool myself = KOPrefs::instance()->thatIsMe( email );
   bool iAmTheOrganizer = mOrganizerCombo &&
     KOPrefs::instance()->thatIsMe( mOrganizerCombo->currentText() );
   if ( iAmTheOrganizer ) {
+    bool myself =
+      KPIM::compareEmail( email, mOrganizerCombo->currentText(), false );
+    bool wasMyself = 
+      KPIM::compareEmail( a->email(), mOrganizerCombo->currentText(), false );
     if ( myself ) {
       mStatusCombo->setCurrentItem( KCal::Attendee::Accepted );
       mRsvpButton->setChecked( false );
       mRsvpButton->setEnabled( false );
-    } else if ( KOPrefs::instance()->thatIsMe ( a->email() ) ) {
+    } else if ( wasMyself ) {
       // this was me, but is no longer, reset
       mStatusCombo->setCurrentItem( KCal::Attendee::NeedsAction );
       mRsvpButton->setChecked( true );
