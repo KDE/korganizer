@@ -307,12 +307,7 @@ void ResourceView::addResourceItem( ResourceCalendar *resource )
            SLOT( slotSubresourceAdded( ResourceCalendar *, const QString &,
                                        const QString &, const QString & ) ) );
 
-  connect( resource, SIGNAL( signalSubresourceAdded( ResourceCalendar *,
-                                                     const QString &,
-                                                     const QString & ) ),
-           SLOT( slotSubresourceAdded( ResourceCalendar *, const QString &,
-                                       const QString & ) ) );
-  connect( resource, SIGNAL( signalSubresourceRemoved( ResourceCalendar *,
+ connect( resource, SIGNAL( signalSubresourceRemoved( ResourceCalendar *,
                                                        const QString &,
                                                        const QString & ) ),
            SLOT( slotSubresourceRemoved( ResourceCalendar *, const QString &,
@@ -322,15 +317,6 @@ void ResourceView::addResourceItem( ResourceCalendar *resource )
            SLOT( closeResource( ResourceCalendar * ) ) );
 
   emitResourcesChanged();
-}
-
-
-// FIXME proko2: merge once we are back in HEAD by porting imap resource
-void ResourceView::slotSubresourceAdded( ResourceCalendar *calendar,
-                                         const QString& type,
-                                         const QString& resource )
-{
-   slotSubresourceAdded( calendar, type, resource, resource );
 }
 
 // Add a new entry
@@ -349,7 +335,7 @@ void ResourceView::slotSubresourceAdded( ResourceCalendar *calendar,
 }
 
 // Remove an entry
-void ResourceView::slotSubresourceRemoved( ResourceCalendar */*calendar*/,
+void ResourceView::slotSubresourceRemoved( ResourceCalendar * /*calendar*/,
                                            const QString &/*type*/,
                                            const QString &resource )
 {
