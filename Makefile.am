@@ -111,6 +111,8 @@ noinst_HEADERS = komonthview.h \
         alarmclient.h kalarmdclient.h simplealarmclient.h \
         navigatorbar.h kogroupware.h kogroupwareincomingdialog.h
 
+DISTCLEANFILES = koprefs_base.cpp
+
 tip_DATA = tips
 tipdir = $(kde_datadir)/korganizer
 
