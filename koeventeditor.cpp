@@ -279,7 +279,7 @@ void KOEventEditor::slotLoadTemplate()
   event = events.first();
   if ( !event ) {
     KMessageBox::error( this,
-        i18n("Template does not contain a valid Event.")
+        i18n("Template does not contain a valid event.")
         .arg( templateName ) );
   } else {
     kdDebug(5850) << "KOEventEditor::slotLoadTemplate(): readTemplate" << endl;

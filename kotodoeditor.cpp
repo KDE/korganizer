@@ -262,7 +262,7 @@ void KOTodoEditor::slotLoadTemplate()
   todo = todos.first();
   if ( !todo ) {
     KMessageBox::error( this,
-        i18n("Template '%1' does not contain a valid Todo.")
+        i18n("Template '%1' does not contain a valid todo.")
         .arg( templateName ) );
   } else {
     readTodo( todo );
