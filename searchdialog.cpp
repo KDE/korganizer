@@ -201,7 +201,7 @@ void SearchDialog::search( const QRegExp &re )
              ( todo->hasCompletedDate() && (todo->completed().date()>=startDt) && (todo->completed()<=endDt) ) ) { // completed dt in range
           todos.append( todo );
         }
-      } 
+      }
     } else {
       QDate dt = startDt;
       while ( dt <= endDt ) {
@@ -215,8 +215,7 @@ void SearchDialog::search( const QRegExp &re )
   if (mJournalsCheck->isChecked()) {
     QDate dt = startDt;
     while ( dt <= endDt ) {
-      Journal* j=mCalendar->journal( dt );
-      if (j) journals.append( j );
+      journals += mCalendar->journals( dt );
       dt = dt.addDays( 1 );
     }
   }

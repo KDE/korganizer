@@ -112,7 +112,8 @@ void KOJournalView::updateView()
   for ( it = mEntries.begin(); it != mEntries.end(); ++it ) {
     if ( (*it) ) {
       QDate dt((*it)->date());
-      (*it)->setJournal( calendar()->journal( dt ) );
+      //FIXME: use the first journal in the list for now
+      (*it)->setJournal( calendar()->journals( dt ).first() );
     }
   }
 }
@@ -132,10 +133,15 @@ void KOJournalView::showDates(const QDate &start, const QDate &end)
   clearEntries();
   if ( end<start ) return;
 
+  Journal::List::ConstIterator it;
+  Journal::List jnls;
   QDate d=start;
   for ( QDate d=start; d<=end; d=d.addDays(1) ) {
-    Journal *j = calendar()->journal( d );
-    appendJournal( j, d );
+    jnls = calendar()->journals( d );
+    for ( it = jnls.begin(); it != jnls.end(); ++it ) {
+      Journal *j = ( *it ) ;
+      appendJournal( j, d );
+    }
   }
 }
 
