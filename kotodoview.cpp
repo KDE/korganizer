@@ -48,16 +48,17 @@ void KOTodoViewItem::construct()
     setText(3,"");
     setText(4,"");
   }
+  setText(5,mEvent->categoriesStr());
   // Find sort id in description. It's the text behind the last '#' character
   // found in the description. White spaces are removed from beginning and end
   // of sort id.
   int pos = mEvent->description().findRev('#');
   if (pos < 0) {
-    setText(5,"");
+    setText(6,"");
   } else {
     QString str = mEvent->description().mid(pos+1);
     str.stripWhiteSpace();
-    setText(5,str);
+    setText(6,str);
   }
 }
 
@@ -244,6 +245,7 @@ KOTodoView::KOTodoView(Calendar *calendar,QWidget* parent,const char* name) :
   mTodoListView->addColumn(i18n("Complete"));
   mTodoListView->addColumn(i18n("Due Date"));
   mTodoListView->addColumn(i18n("Due Time"));
+  mTodoListView->addColumn(i18n("Categories"));
   mTodoListView->addColumn(i18n("Sort Id"));
   mTodoListView->setColumnAlignment(4,AlignHCenter);
 

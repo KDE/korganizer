@@ -11,7 +11,7 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>381</width>
+            <width>377</width>
             <height>339</height>
         </rect>
     </property>
@@ -82,21 +82,19 @@
                         <cstring>Spacer3</cstring>
                     </property>
                     <property stdset="1">
-                        <name>geometry</name>
-                        <rect>
-                            <x>31</x>
-                            <y>1</y>
-                            <width>20</width>
-                            <height>173</height>
-                        </rect>
-                    </property>
-                    <property stdset="1">
                         <name>orientation</name>
                         <enum>Vertical</enum>
                     </property>
                     <property stdset="1">
                         <name>sizeType</name>
                         <enum>Expanding</enum>
+                    </property>
+                    <property>
+                        <name>sizeHint</name>
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
                     </property>
                 </spacer>
             </grid>
@@ -106,13 +104,6 @@
             <property stdset="1">
                 <name>name</name>
                 <cstring>mEdit</cstring>
-            </property>
-        </widget>
-        <widget row="0"  column="0" >
-            <class>QListBox</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>mCategories</cstring>
             </property>
         </widget>
         <widget row="2"  column="0"  rowspan="1"  colspan="2" >
@@ -151,21 +142,19 @@
                         <cstring>Horizontal Spacing2</cstring>
                     </property>
                     <property stdset="1">
-                        <name>geometry</name>
-                        <rect>
-                            <x>87</x>
-                            <y>2</y>
-                            <width>13</width>
-                            <height>20</height>
-                        </rect>
-                    </property>
-                    <property stdset="1">
                         <name>orientation</name>
                         <enum>Horizontal</enum>
                     </property>
                     <property stdset="1">
                         <name>sizeType</name>
                         <enum>Expanding</enum>
+                    </property>
+                    <property>
+                        <name>sizeHint</name>
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
                     </property>
                 </spacer>
                 <widget>
@@ -214,6 +203,27 @@
                     </property>
                 </widget>
             </hbox>
+        </widget>
+        <widget row="0"  column="0" >
+            <class>QListView</class>
+            <column>
+                <property>
+                    <name>text</name>
+                    <string>Category</string>
+                </property>
+                <property>
+                    <name>clickable</name>
+                    <bool>true</bool>
+                </property>
+                <property>
+                    <name>resizeable</name>
+                    <bool>true</bool>
+                </property>
+            </column>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>mCategories</cstring>
+            </property>
         </widget>
     </grid>
 </widget>

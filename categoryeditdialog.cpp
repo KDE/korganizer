@@ -1,8 +1,8 @@
 // $Id$
 
 #include <qstringlist.h>
-#include <qlistbox.h>
 #include <qlineedit.h>
+#include <qlistview.h>
 
 #include "koprefs.h"
 
@@ -22,11 +22,11 @@ CategoryEditDialog::CategoryEditDialog( QWidget* parent,  const char* name, bool
 
   for (it = KOPrefs::instance()->mCustomCategories.begin();
        it != KOPrefs::instance()->mCustomCategories.end(); ++it ) {
-    mCategories->insertItem(*it);
+    new QListViewItem(mCategories,*it);
   }
-  
-  connect(mCategories,SIGNAL(highlighted(const QString &)),
-          mEdit,SLOT(setText(const QString &)));
+
+  connect(mCategories,SIGNAL(selectionChanged(QListViewItem *)),
+          SLOT(editItem(QListViewItem *)));
 }
 
 /*  
@@ -40,23 +40,23 @@ CategoryEditDialog::~CategoryEditDialog()
 void CategoryEditDialog::add()
 {
   if (!mEdit->text().isEmpty()) {
-    mCategories->insertItem(mEdit->text());
+    new QListViewItem(mCategories,mEdit->text());
     mEdit->setText("");
   }
 }
 
 void CategoryEditDialog::remove()
 {
-  if (mCategories->currentItem() >= 0) {
-    mCategories->removeItem(mCategories->currentItem());
+  if (mCategories->currentItem()) {
+    delete mCategories->currentItem();
   }
 }
 
 void CategoryEditDialog::modify()
 {
   if (!mEdit->text().isEmpty()) {
-    if (mCategories->currentItem() >= 0) {
-      mCategories->changeItem(mEdit->text(),mCategories->currentItem());
+    if (mCategories->currentItem()) {
+      mCategories->currentItem()->setText(0,mEdit->text());
     }
   }
 }
@@ -70,11 +70,19 @@ void CategoryEditDialog::slotOk()
 void CategoryEditDialog::slotApply()
 {
   KOPrefs::instance()->mCustomCategories.clear();
-  
-  for (uint i = 0;i<mCategories->count();++i) {
-    KOPrefs::instance()->mCustomCategories.append(mCategories->text(i));
+
+  QListViewItem *item = mCategories->firstChild();
+  while(item) {
+    KOPrefs::instance()->mCustomCategories.append(item->text(0));
+    item = item->nextSibling();
   }
   
   emit categoryConfigChanged();
 }
+
+void CategoryEditDialog::editItem(QListViewItem *item)
+{
+  mEdit->setText(item->text(0));
+}
+
 #include "categoryeditdialog.moc"

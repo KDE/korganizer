@@ -20,6 +20,9 @@ class CategoryEditDialog : public CategoryEditDialog_base
     
   signals:
     void categoryConfigChanged();
+
+  private slots:
+    void editItem(QListViewItem *item);
 };
 
 #endif // CATEGORYEDITDIALOG_H
