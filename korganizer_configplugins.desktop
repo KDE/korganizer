@@ -1,0 +1,17 @@
+[Desktop Entry]
+Encoding=UTF-8
+Icon=identity
+Type=Service
+ServiceTypes=KCModule
+
+X-KDE-ModuleType=Library
+X-KDE-Library=korganizer
+X-KDE-FactoryName=korganizerconfigplugins
+X-KDE-HasReadOnlyMode=false
+X-KDE-ParentApp=korganizer
+X-KDE-ParentComponents=korganizer,kontact_korganizerplugin
+X-KDE-CfgDlgHierarchy=KOrganizer
+
+Name=Plugins
+Comment=KOrganizer Plugin Configuration
+Keywords=korganizer,plugin,module
