@@ -3,7 +3,7 @@
 : Author: Friedrich Leisch <Friedrich.Leisch@ci.tuwien.ac.at>
 :
 small "Neujahr"		weekend	on 1.1.
-small "Hl. 3 K=F6nige"	weekend	on 6.1.
+small "Hl. 3 Könige"	weekend	on 6.1.
 
 blue "Sommerzeit"		on last sunday in march
 
@@ -11,10 +11,10 @@ small "Rosenmontag"		on easter minus 48 days
 small "Faschingsdienstag"	on easter minus 47 days
 small "Aschermittwoch"		on easter minus 46 days
 small "Palmsonntag"             on easter minus 7 days
-small "Gr=FCndonnerstag"		on easter minus 3 days
+small "Gründonnerstag"		on easter minus 3 days
 small "Karfreitag"		on easter minus 2 days
 small "Karsamstag"		on easter minus 1 days
-small "Ostern"		weekend on easter length 2 days=20
+small "Ostern"		weekend on easter length 2 days
 small "Pfingsten"	weekend on easter plus 49 days length 2 days
 small "Christi Himmelfahrt" weekend on easter plus 39 days
 small "Fronleichnam"	weekend on easter plus 60 days
@@ -35,7 +35,7 @@ small "Martini"                 on 11.11.
 small "Leopoldi"		on 15.11.
 small "Krampus"			on  5.12.
 small "Nikolaus"                on  6.12.
-small "Maria Empf=E4ngnis" weekend on 8.12.
+small "Maria Empfängnis" weekend on 8.12.
 small "1. Advent"		on sunday before 24.12. minus 21 days
 small "2. Advent"		on sunday before 24.12. minus 14 days
 small "3. Advent"		on sunday before 24.12. minus 7 days
