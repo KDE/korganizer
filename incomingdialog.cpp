@@ -77,8 +77,8 @@ bool ScheduleItemVisitor::visit(Event *e)
   mItem->setText(0,e->summary());
   mItem->setText(1,e->dtStartDateStr());
   if (e->doesFloat()) {
-    mItem->setText(2,"no time ");
-    mItem->setText(4,"no time ");
+    mItem->setText(2,i18n("no time "));
+    mItem->setText(4,i18n("no time "));
   }
   else {
     mItem->setText(2,e->dtStartTimeStr());
@@ -275,11 +275,11 @@ bool IncomingDialog::incomeCounter(ScheduleItemIn *item)
   //eventViewer->addText(i18n("<hr>"));
   eventViewer->addText(i18n("counter proposal event","<b>Counter-event:</b><p>"));
   eventViewer->addEvent(counterEvent);
-  eventViewer->addText(i18n("<hr>"));
+  eventViewer->addText("<hr>");
   eventViewer->addText(i18n("<b>Original event:</b><p>"));
   if (even) eventViewer->addEvent(even);
   else eventViewer->addText(i18n("A corresponding event is missing in your calendar!"));
-  eventViewer->addText(i18n("<hr>"));
+  eventViewer->addText("<hr>");
   eventViewer->addText(i18n("If this counter-event is a good proposal for your event, press 'Accept'. All Attendees will then get the new version of this event"));
   eventViewer->show();
 

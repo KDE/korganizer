@@ -1057,7 +1057,7 @@ void KOrganizer::updateConfig()
 void KOrganizer::configureDateTime()
 {
   KProcess *proc = new KProcess;
-  *proc << "kcmshell" << "Personalization/language";
+  *proc << "kcmshell" << "language";
 
   connect(proc,SIGNAL(processExited(KProcess *)),
           SLOT(configureDateTimeFinished(KProcess *)));

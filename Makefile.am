@@ -108,5 +108,5 @@ META_INCLUDES = $(srcdir)/interfaces/korganizer
 
 messages: rc.cpp
 	$(PREPARETIPS) > tips.cc
-	$(XGETTEXT) *.cpp plugins/*/*.cpp tips.cc -o $(podir)/korganizer.pot
+	$(XGETTEXT) *.cpp knewstuff/*.cpp plugins/*/*.cpp tips.cc -o $(podir)/korganizer.pot
 	rm -f tips.cc

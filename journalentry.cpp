@@ -44,7 +44,7 @@ JournalEntry::JournalEntry(Calendar *calendar,QWidget *parent) :
   mJournal = 0;
   mDirty = false;
 
-  mTitleLabel = new QLabel("Title",this);
+  mTitleLabel = new QLabel(i18n("Title"),this);
   mTitleLabel->setMargin(2);
   mTitleLabel->setAlignment(AlignCenter);
   

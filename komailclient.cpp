@@ -268,8 +268,8 @@ QString KOMailClient::createBody(IncidenceBase *incidence)
 
   if (incidence->type()=="Event") {
     Event *selectedEvent = static_cast<Event *>(incidence);
-    QString recurrence[]= {"None","Daily","Weekly","Monthly Same Day",
-                           "Monthly Same Position","Yearly","Yearly"};
+    QString recurrence[]= {i18n("no recurrence", "None"),i18n("Daily"),i18n("Weekly"),i18n("Monthly Same Day"),
+                           i18n("Monthly Same Position"),i18n("Yearly"),i18n("Yearly")};
   
     if (selectedEvent->organizer() != "") {
       body += i18n("Organizer: %1").arg(selectedEvent->organizer());

@@ -91,7 +91,7 @@ void KOrganizerApp::displayImminent(const QString &urlString,int numdays)
         printf("\n");
       }
     } else {
-      printf("(no events)\n");
+      printf(i18n("(no events)\n").local8Bit());
     }
 
     printf("---------------------------------------------------------------\n");
@@ -106,7 +106,7 @@ void KOrganizerApp::displayImminent(const QString &urlString,int numdays)
         printf("\n");
       }
     } else {
-      printf("(no todos)\n");
+      printf(i18n("(no todos)\n").local8Bit());
     }
 
     printf("\n");

@@ -341,7 +341,7 @@ void MonthViewCell::updateCell()
         text += " ";
       }
     }
-    text += i18n("To-Do: ") + todo->summary();
+    text += i18n("To-Do: %1").arg(todo->summary());
 
     MonthViewItem *item = new MonthViewItem( todo, mDate, text );
     item->setPalette( mStandardPalette );

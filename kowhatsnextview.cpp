@@ -112,23 +112,23 @@ void KOWhatsNextView::updateView()
   QString *ipath = new QString();
   kil.loadIcon("korganizer",KIcon::NoGroup,32,KIcon::DefaultState,ipath);
   
-  mText = i18n("<table width=\"100%\">\n");
-  mText += i18n("<tr bgcolor=\"#3679AD\"><td><h1>");
-  mText += i18n("<img src=\"");
+  mText = "<table width=\"100%\">\n";
+  mText += "<tr bgcolor=\"#3679AD\"><td><h1>";
+  mText += "<img src=\"";
   mText += *ipath;
-  mText += i18n("\">");
-  mText += i18n("<font color=\"white\"> What's next?</h1></font>");
-  mText += i18n("</td></tr>\n<tr><td>");
+  mText += "\">";
+  mText += "<font color=\"white\"> What's next?</h1></font>";
+  mText += "</td></tr>\n<tr><td>";
   
   QPtrList<Event> events = calendar()->events( QDate::currentDate() );
   if (events.count() > 0) {
-    mText += i18n("<p></p>");
+    mText += "<p></p>";
     kil.loadIcon("appointment",KIcon::NoGroup,22,KIcon::DefaultState,ipath);
-    mText += i18n("<h2><img src=\"");
+    mText += "<h2><img src=\"";
     mText += *ipath;
-    mText += i18n("\">");    
-    mText += i18n("Events:</h2>\n");
-    mText += i18n("<table>\n");
+    mText += "\">";    
+    mText += i18n("Events:") + "</h2>\n";
+    mText += "<table>\n";
     Event *ev = events.first();
     while(ev) {
       if (!ev->recurrence()->doesRecur() || ev->recursOn( QDate::currentDate())) {
@@ -136,7 +136,7 @@ void KOWhatsNextView::updateView()
       }
       ev = events.next();
     }
-    mText += i18n("</table>\n");
+    mText += "</table>\n";
   }
 
   events = calendar()->events(QDate::currentDate(), QDate(2975,12,6));
@@ -148,13 +148,13 @@ void KOWhatsNextView::updateView()
       if (me!=0) {
         if (me->status()==Attendee::NeedsAction && me->RSVP()) {
           if (replys == 0) {
-            mText += i18n("<p></p>");
+            mText += "<p></p>";
             kil.loadIcon("reply",KIcon::NoGroup,22,KIcon::DefaultState,ipath);
-            mText += i18n("<h2><img src=\"");
+            mText += "<h2><img src=\"";
             mText += *ipath;
-            mText += i18n("\">");    
-            mText += i18n("Events that need a reply:</h2>\n");
-            mText += i18n("<table>\n");
+            mText += "\">";    
+            mText += i18n("Events that need a reply:") + "</h2>\n";
+            mText += "<table>\n";
           }
           replys++;
           appendEvent(ev,true);
@@ -162,17 +162,17 @@ void KOWhatsNextView::updateView()
       }
       ev = events.next();
     }
-    if (replys > 0 ) mText += i18n("</table>\n");
+    if (replys > 0 ) mText += "</table>\n";
   }
 
   QPtrList<Todo> todos = calendar()->todos();
   if (todos.count() > 0) {
     kil.loadIcon("todo",KIcon::NoGroup,22,KIcon::DefaultState,ipath);
-    mText += i18n("<h2><img src=\"");
+    mText += "<h2><img src=\"";
     mText += *ipath;
-    mText += i18n("\">");    
-    mText += i18n("To-Do:</h2>\n");
-    mText += i18n("<ul>\n");
+    mText += "\">";
+    mText += i18n("To-Do:") + "</h2>\n";
+    mText += "<ul>\n";
     Todo *todo = todos.first();
     while(todo) {
       if (!todo->isCompleted() && (todo->priority() == 1 ||
@@ -180,10 +180,10 @@ void KOWhatsNextView::updateView()
         appendTodo(todo);
       todo = todos.next();
     }
-    mText += i18n("</ul>\n");
+    mText += "</ul>\n";
   }
 
-  mText += i18n("</td></tr>\n</table>\n");
+  mText += "</td></tr>\n</table>\n";
 
   kdDebug() << "KOWhatsNextView::updateView: text: " << mText << endl;
   mView->setText(mText);

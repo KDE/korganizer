@@ -681,13 +681,13 @@ void KOPrefsDialog::warningProjectView()
 void KOPrefsDialog::warningExperimental(bool on)
 {
   if (on) {
-    KMessageBox::information(this,"This is an experimental feature. "
+    KMessageBox::information(this,i18n("This is an experimental feature. "
         "It may not work, it may do nothing useful and it may cause data loss. "
         "Use with care.\n"
-        "You have to restart KOrganizer for this setting to take effect.");
+        "You have to restart KOrganizer for this setting to take effect."));
   } else {
     KMessageBox::information(this,
-        "You have to restart KOrganizer for this setting to take effect.");
+        i18n("You have to restart KOrganizer for this setting to take effect."));
   }
 }
 
