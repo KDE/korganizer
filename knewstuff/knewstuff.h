@@ -31,10 +31,10 @@ class Entry;
 
 /**
   This class provides the functionality to download and upload "new stuff".
-  
+
   Applications have to subclass KNewStuff, implement the pure virtual functions
   and link to against libknewstuff.
-  
+
   By calling download() the download process is started which means that a list
   of "providers" is fetched from a "master server", information about new stuff
   is collected from the providers and presented to the user. Selected entries
@@ -42,19 +42,19 @@ class Entry;
   install new stuff are provided by implementing install(). The location where
   the downloaded files are stored can be customized by reimplementing
   downloadDestination().
-  
+
   By calling upload() the upload process is started which means the user has to
   select a provider from the list fetched from the master server and to put in
   infomration about the entry to be uploaded. Then the file to be uploaded is
   fetched from the application by calling createUploadFile() and transfered to
   the upload destination specified in the provider list.
-*/  
+*/
 class KNewStuff
 {
   public:
     /**
       Constructor.
-      
+
       @param type Type of data to be handled, should be something like
                   korganizer/calendar, kword/template, kdesktop/wallpaper.
       @param parentWidget Parent widget of dialogs opened by the KNewStuff
@@ -62,22 +62,22 @@ class KNewStuff
     */
     KNewStuff( const QString &type, QWidget *parentWidget = 0 );
     virtual ~KNewStuff();
-    
+
     /**
       Return type of data.
     */
     QString type() const;
-    
+
     /**
       Return parent widget.
     */
     QWidget *parentWidget() const;
-    
+
     /**
       Start download process.
     */
     void download();
-    
+
     /**
       Start upload process.
     */
@@ -93,10 +93,10 @@ class KNewStuff
       downloaded by the KNewStuff engine. This is a temporary file by default.
       The application can do whatever is needed to handle the information
       contained in the file.
-      
+
       The function returns true, when the installation
       was successful and false if were errors.
-    
+
       @param fileName Name of downloaded file.
     */
     virtual bool install( const QString &fileName ) = 0;
@@ -105,7 +105,7 @@ class KNewStuff
       filename. The format of the file is application specific. The only
       constraint is that the corresponding install() implementation is able to
       use the file.
-      
+
       @param fileName Name of the file to be written.
       @return true on success, false on error.
     */

@@ -29,19 +29,37 @@ namespace KNS {
 class Provider;
 class Engine;
 
+/**
+* Dialog displaying a list of Hotstuff providers.
+* This is normally used in the process of uploading data, thus limiting the
+* list to providers which support uploads.
+* One of the providers is then chosen by the user for further operation.
+*/
 class ProviderDialog : public KDialogBase
 {
     Q_OBJECT
   public:
-    ProviderDialog( Engine *, QWidget *parent );
-    
+    /**
+      Constructor.
+
+      @param engine Hotstuff engine object.
+      @param parent The parent window.
+    */
+    ProviderDialog( Engine *engine, QWidget *parent );
+
+    /**
+      Clears the list of providers.
+    */
     void clear();
-    
+
+    /**
+      Adds a Hotstuff provider to the list.
+    */
     void addProvider( Provider * );
-    
+
   protected slots:
     void slotOk();
-    
+
   private:
     Engine *mEngine;
 

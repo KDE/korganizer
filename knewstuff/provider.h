@@ -40,7 +40,7 @@ class Provider
     Provider();
     Provider( const QDomElement & );
     ~Provider();
-    
+
     void setName( const QString & );
     QString name() const;
 
@@ -90,9 +90,9 @@ class ProviderLoader : public QObject
 
   private:
     QWidget *mParentWidget;
-    
+
     QString mJobData;
-    
+
     Provider::List mProviders;
 };
 

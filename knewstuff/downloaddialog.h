@@ -41,23 +41,91 @@ class Entry;
 class Provider;
 class Engine;
 
+/**
+* Common download dialog for data browsing and installation.
+* It provides an easy-to-use convenience method named open() which does all
+* the work, unless a more complex operation is needed.
+* \code
+* KNewStuff::DownloadDialog::open("kdesktop/wallpapers");
+* \endcode
+*/
 class DownloadDialog : public KDialogBase
 {
     Q_OBJECT
   public:
+    /**
+      Constructor.
+
+      @param engine A pre-built engine object, or NULL if the download
+                    dialog should create an engine on its own.
+      @param parent The parent window.
+    */
     DownloadDialog(Engine *engine, QWidget *parent = 0);
+
+    /**
+      Alternative constructor.
+      Always uses an internal engine.
+
+      @param parent The parent window.
+    */
     DownloadDialog(QWidget *parent = 0);
+
+    /**
+      Destructor.
+    */
     ~DownloadDialog();
+
+    /**
+      Restricts the display of available data to a certain data type.
+
+      @param type A data type such as "korganizer/calendar".
+    */
     void setType(QString type);
+
+    /**
+      Fetches descriptions of all available data, optionally considering
+      a previously set type.
+    */
     void load();
 
+    /**
+      Adds another provider to the download dialog.
+      This is normally done internally.
+
+      @param p Hotstuff provider object.
+    */
     void addProvider(Provider *p);
+
+    /**
+      Adds an additional entry to the current provider.
+      This is normally done internally.
+
+      @param entry Hotstuff data entry.
+    */
     void addEntry(Entry *entry);
+
+    /**
+      Clears the entry list of the current provider.
+      This is normally done internally.
+    */
     void clear();
 
+    /**
+      Opens the download dialog.
+      This is a convenience method which automatically sets up the dialog.
+      @see setType()
+      @see load()
+
+      @param type A data type such as "korganizer/calendar".
+    */
     static void open(QString type);
 
   public slots:
+    /**
+      Availability of the provider list.
+
+      @param list List of Hotstuff providers.
+    */
     void slotProviders(Provider::List *list);
 
   protected slots:

@@ -33,13 +33,35 @@ namespace KNS {
 class Engine;
 class Entry;
 
+/**
+* KNewStuff file upload dialog.
+* Using this dialog, data can easily be uploaded to the Hotstuff servers.
+* It should however not be used on its own, instead a KNewStuff (or
+* KNewStuffGeneric) object invokes it.
+*/
 class UploadDialog : public KDialogBase
 {
     Q_OBJECT
   public:
-    UploadDialog( Engine *, QWidget *parent );
+    /**
+      Constructor.
+
+      @param engine KNewStuff engine object to be used for uploads.
+      @param parent The parent window.
+    */
+    UploadDialog( Engine *engine, QWidget *parent );
+
+    /**
+      Destructor.
+    */
     ~UploadDialog();
 
+    /**
+      Sets the preview filename.
+      This is only meaningful if the application supports previews.
+
+      @param previewFile The preview image file.
+    */
     void setPreviewFile( const QString &previewFile );
 
   protected slots:

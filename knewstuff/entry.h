@@ -36,7 +36,7 @@ class Entry
     Entry();
     Entry( const QDomElement & );
     ~Entry();
-    
+
     void setName( const QString & );
     QString name() const;
 
@@ -45,7 +45,7 @@ class Entry
 
     void setAuthor( const QString & );
     QString author() const;
-    
+
     void setLicence( const QString & );
     QString license() const;
 
@@ -54,22 +54,22 @@ class Entry
 
     void setVersion( const QString & );
     QString version() const;
-    
+
     void setRelease( int );
     int release() const;
 
     void setReleaseDate( const QDate & );
     QDate releaseDate() const;
-    
+
     void setPayload( const KURL &, const QString &lan = QString::null );
     KURL payload( const QString &lang = QString::null ) const;
-    
+
     void setPreview( const KURL &, const QString &lan = QString::null );
     KURL preview( const QString &lang = QString::null ) const;
-    
+
     void setRating( int );
     int rating();
-    
+
     void setDownloads( int );
     int downloads();
 
