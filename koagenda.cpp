@@ -425,6 +425,10 @@ bool KOAgenda::eventFilter_drag(QObject *object, QDropEvent *de)
 bool KOAgenda::eventFilter_key( QObject *, QKeyEvent *ke )
 {
 //  kdDebug() << "KOAgenda::eventFilter_key() " << ke->type() << endl;
+
+  // Ignore all input that does not produce any output
+  if ( ke->text().isEmpty() ) return false;
+
   if ( ke->type() == QEvent::KeyPress || ke->type() == QEvent::KeyRelease ) {
     switch ( ke->key() ) {
       case Key_Escape:
