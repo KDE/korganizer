@@ -526,7 +526,7 @@ void KOPrefsDialog::setupColorsTab()
 
 void KOPrefsDialog::setCategoryColor()
 {
-  mCategoryDict.insert(mCategoryCombo->currentText(), new QColor(mCategoryButton->color()));
+  mCategoryDict.replace(mCategoryCombo->currentText(), new QColor(mCategoryButton->color()));
 }
 
 void KOPrefsDialog::updateCategoryColor()
@@ -728,7 +728,6 @@ void KOPrefsDialog::usrWriteConfig()
     KOPrefs::instance()->setCategoryColor(it.currentKey(),*it.current());
     ++it;
   }
-  mCategoryDict.clear();
 
   KOPrefs::instance()->mNextXDays = mNextXDaysSpin->value();
   
