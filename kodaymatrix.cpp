@@ -118,7 +118,7 @@ KODayMatrix::~KODayMatrix()
 {
   delete [] days;
   delete [] daylbls;
-  delete events;
+  delete [] events;
   delete mToolTip;
 
   // pen is created on the fly in the paintEvent method, so make sure there
@@ -526,6 +526,8 @@ void KODayMatrix::paintEvent(QPaintEvent * pevent)
       p.setPen(*mTodayPen);
       p.drawRect(col*dwidth, row*dheight, dwidth, dheight);
       p.setPen(tmppen);
+      delete mTodayPen;
+      mTodayPen = 0;
     }
 
     // if any events are on that day then draw it using a bold font
