@@ -23,12 +23,14 @@
 
 #include <korganizer/part.h>
 
+#include <libkcal/incidence.h>
 #include <libkcal/event.h>
 
 #include <exchangeaccount.h>
 #include <exchangeclient.h>
 
 // using namespace KOrg;
+using namespace KCal;
 
 class Exchange : public KOrg::Part {
     Q_OBJECT
@@ -38,11 +40,16 @@ class Exchange : public KOrg::Part {
 
     QString info();
 
+  signals:
+    void enableIncidenceActions( bool );
+
   private slots:
     void download();
     void upload();
+    void remove();
     void configure();
     void test();
+    void slotIncidenceSelected( Incidence * );
 
   private:
     void test2();

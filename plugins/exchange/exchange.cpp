@@ -41,6 +41,8 @@
 #include "exchangedialog.h"
 #include "exchangeconfig.h"
 
+using namespace KCal; // Needed for connecting slots
+
 class ExchangeFactory : public KOrg::PartFactory {
   public:
     KOrg::Part *create(KOrg::MainWindow *parent, const char *name)
@@ -66,14 +68,28 @@ Exchange::Exchange(KOrg::MainWindow *parent, const char *name) :
   mClient = new KPIM::ExchangeClient( mAccount );
   
   setXMLFile("plugins/exchangeui.rc");
+
   new KAction(i18n("Download..."), 0, this, SLOT(download()),
               actionCollection(), "exchange_download");
+
 //  new KAction(i18n("Test"), 0, this, SLOT(test()),
 //              actionCollection(), "exchange_test");
+
   KAction *action = new KAction(i18n("Upload Event..."), 0, this, SLOT(upload()),
                                 actionCollection(), "exchange_upload");
-//  QObject::connect(mainWindow()->view(),SIGNAL(eventsSelected(bool)),
+  QObject::connect(mainWindow()->view(),SIGNAL(incidenceSelected(Incidence *)),
+            this, SLOT(slotIncidenceSelected(Incidence *)));
+  action->setEnabled( false );
+  QObject::connect(this,SIGNAL(enableIncidenceActions(bool)),
+          action,SLOT(setEnabled(bool)));
 //          action,SLOT(setEnabled(bool)));
+
+  action = new KAction(i18n("Delete Event..."), 0, this, SLOT(remove()),
+                                actionCollection(), "exchange_delete");
+  QObject::connect(this,SIGNAL(enableIncidenceActions(bool)),
+          action,SLOT(setEnabled(bool)));
+  action->setEnabled( false );
+
   new KAction(i18n("Configure..."), 0, this, SLOT(configure()),
               actionCollection(), "exchange_configure");
 }
@@ -86,6 +102,11 @@ Exchange::~Exchange()
 QString Exchange::info()
 {
   return i18n("This plugin imports and export calendar events from/to a Microsoft Exchange 2000 Server.");
+}
+
+void  Exchange::slotIncidenceSelected( Incidence *incidence )
+{
+  emit enableIncidenceActions( incidence != 0 );
 }
 
 void Exchange::upload()
@@ -103,6 +124,25 @@ void Exchange::upload()
   kdDebug() << "Trying to add appointment " << event->summary() << endl;
 
   mClient->upload( event );
+}
+
+void Exchange::remove()
+{
+  kdDebug() << "Called Exchange::remove()" << endl;
+
+  Event* event = static_cast<Event *> ( mainWindow()->view()->currentSelection() );
+  if ( ! event )
+  {
+    KMessageBox::information( 0L, i18n("Please select an appointment"), i18n("Exchange Plugin") );
+    return;
+  }
+  KMessageBox::information( 0L, "Exchange Delete Event is HIGHLY EXPERIMENTAL!", i18n("Exchange Plugin") );
+  
+  kdDebug() << "Trying to delete appointment " << event->summary() << endl;
+
+  mClient->remove( event );
+
+  mainWindow()->view()->calendar()->deleteEvent( event );
 }
 
 void Exchange::configure()

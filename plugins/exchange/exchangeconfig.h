@@ -21,7 +21,7 @@
 
 #include <kdialogbase.h>
 #include <klineedit.h>
-#include <kpassdlg.h>
+//#include <kpassdlg.h>
 
 #include <exchangeaccount.h>
 
@@ -44,7 +44,7 @@ class ExchangeConfig : public KDialogBase
     KPIM::ExchangeAccount* mAccount;
     KLineEdit *m_host;
     KLineEdit *m_user;
-    KPasswordEdit *m_password;
+    KLineEdit *m_password;
 };
 
 #endif

@@ -48,10 +48,10 @@ ExchangeConfig::ExchangeConfig( KPIM::ExchangeAccount* account, QWidget* parent 
   topLayout->addWidget( new QLabel( i18n( "User" ), topFrame ), 1, 0 );
   topLayout->addWidget( m_user, 1, 1 );
 
-  m_password = new KPasswordEdit( topFrame );
+  m_password = new KLineEdit( mAccount->password(), topFrame );
   topLayout->addWidget( new QLabel( i18n( "Password" ), topFrame ), 2, 0 );
   topLayout->addWidget( m_password, 2, 1 );
-  m_password->setText( "<hidden>" );
+  m_password->setEchoMode( QLineEdit::Password );
   m_password->selectAll();
 }
 
@@ -63,7 +63,7 @@ void ExchangeConfig::slotOk()
 {
   mAccount->setHost( m_host->text() );
   mAccount->setAccount( m_user->text() );
-  mAccount->setPassword( m_password->password() );
+  mAccount->setPassword( m_password->text() );
 
   accept();
 }
