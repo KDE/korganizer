@@ -8,7 +8,7 @@ INCLUDES = -I$(top_srcdir)/korganizer/interfaces $(all_includes)
 
 kde_module_LTLIBRARIES = libkorg_holidays.la
 
-libkorg_holidays_la_SOURCES = holidays.cpp configdialog.cpp scanholiday.c parseholiday.c
+libkorg_holidays_la_SOURCES = holidaySettings.kcfgc holidays.cpp configdialog.cpp scanholiday.c parseholiday.c
 
 libkorg_holidays_la_LDFLAGS = -module $(KDE_PLUGIN) $(KDE_RPATH) $(all_libraries) 
 libkorg_holidays_la_LIBADD = $(LIB_KDEUI)

@@ -22,12 +22,14 @@
 #include <qfile.h>
 
 #include <kapplication.h>
-#include <kconfig.h>
+//#include <kconfig.h>
 #include <kstandarddirs.h>
 
 #include "configdialog.h"
 
+#include "holidaySettings.h"
 #include "holidays.h"
+
 
 class HolidaysFactory : public CalendarDecorationFactory {
   public:
@@ -55,9 +57,8 @@ extern "C" {
 
 Holidays::Holidays()
 {
-  KConfig config( locateLocal( "config", "korganizerrc" ));
-  config.setGroup("Calendar/Holiday Plugin");
-  QString holiday = config.readEntry("Holidays");
+  HolidaySettings::self()->readConfig();
+  QString holiday( HolidaySettings::holidays() );
 
   mHolidayFile = locate("data","korganizer/holiday_" + holiday);
 

@@ -20,8 +20,6 @@
 #define CONFIGDIALOG_H
 // $Id$
 
-#include <qlistview.h>
-
 #include <kdialogbase.h>
 
 class QComboBox;

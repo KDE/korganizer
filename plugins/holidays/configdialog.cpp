@@ -24,12 +24,9 @@
 #include <qcombobox.h>
 
 #include <klocale.h>
-#include <kmessagebox.h>
-#include <kapplication.h>
-#include <kglobal.h>
-#include <kconfig.h>
 #include <kstandarddirs.h>
 #include <ksimpleconfig.h>
+#include "holidaySettings.h"
 
 #include "configdialog.h"
 #include "configdialog.moc"
@@ -55,9 +52,9 @@ ConfigDialog::~ConfigDialog()
 
 void ConfigDialog::load()
 {
-  KConfig config( locateLocal( "config", "korganizerrc" ));
-  config.setGroup("Calendar/Holiday Plugin");
-  QString currentHoliday = config.readEntry("Holidays");
+  HolidaySettings::self()->readConfig();
+	QString currentHoliday( HolidaySettings::holidays() );
+
   QString currentHolidayName;
 
   QStringList holidayList;
@@ -95,11 +92,8 @@ void ConfigDialog::load()
 void ConfigDialog::save()
 {
   QString currentHoliday = mCountryMap[mHolidayCombo->currentText()];
-  KConfig config( locateLocal( "config", "korganizerrc" ));
-
-  config.setGroup("Calendar/Holiday Plugin");
-  config.writeEntry("Holidays",currentHoliday);
-  config.sync();
+	HolidaySettings::setHolidays( currentHoliday );
+	HolidaySettings::self()->writeConfig();
 }
 
 void ConfigDialog::slotOk()
