@@ -31,6 +31,7 @@ QUICK NOTES ON WHAT'S NEW IN THIS RELEASE:
     - Coloring of events in month view based on categories.
     - Coloring of due and overdue todos.
     - Improved "What's Next" view.
+    - Configurable cell height in week and day views
 
   - Group scheduling:
     - iMIP group scheduling functions for todos.
