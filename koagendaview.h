@@ -256,7 +256,6 @@ class KOAgendaView : public KOEventView
 
     KOEventPopupMenu *mAgendaPopup;
     KOEventPopupMenu *mAllDayAgendaPopup;
-    QPopupMenu *mNewEventPopup;
 
     EventIndicator *mEventIndicatorTop;
     EventIndicator *mEventIndicatorBottom;

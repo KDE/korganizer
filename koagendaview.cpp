@@ -350,7 +350,7 @@ void KOAlternateLabel::setText( const QString &text ) {
 ////////////////////////////////////////////////////////////////////////////
 
 KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name) :
-  KOEventView (cal,parent,name), mNewEventPopup( 0 )
+  KOEventView (cal,parent,name)
 {
   mSelectedDates.append(QDate::currentDate());
 
@@ -1259,16 +1259,14 @@ void KOAgendaView::deleteSelectedDateTime()
 
 void KOAgendaView::showNewEventPopup()
 {
-  if ( !mNewEventPopup ) {
-    mNewEventPopup = newEventPopup();
-    if ( !mNewEventPopup ) {
-      kdError() << "KOAgendaView::showNewEventPopup(): popup creation failed"
-                << endl;
-      return;
-    }
+  QPopupMenu *popup = newEventPopup();
+  if ( !popup ) {
+    kdError() << "KOAgendaView::showNewEventPopup(): popup creation failed"
+              << endl;
+    return;
   }
 
-  mNewEventPopup->popup( QCursor::pos() );
+  popup->popup( QCursor::pos() );
 }
 
 void KOAgendaView::setTypeAheadReceiver( QObject *o )
