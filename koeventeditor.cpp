@@ -79,7 +79,7 @@ void KOEventEditor::init()
 
   // Propagate date time settings to gantt tab and back
   connect( mGeneral, SIGNAL( dateTimesChanged( QDateTime, QDateTime ) ),
-           mFreeBusy, SLOT( setDateTimes( QDateTime, QDateTime ) ) );
+           mFreeBusy, SLOT( slotUpdateGanttView( QDateTime, QDateTime  ) ) );
   connect( mFreeBusy, SIGNAL( dateTimesChanged( QDateTime, QDateTime ) ),
            mGeneral, SLOT( setDateTimes( QDateTime, QDateTime ) ) );
 

@@ -309,6 +309,7 @@ void KOEditorFreeBusy::readEvent( Event* event )
 
 void KOEditorFreeBusy::setDateTimes( QDateTime start, QDateTime end )
 {
+  // qDebug("KOEditorFreeBusy::setDateTimes( %s, %s )", start.toString().latin1(), end.toString().latin1() );
   mDtStart = start;
   mDtEnd = end;
 
