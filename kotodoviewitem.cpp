@@ -66,7 +66,12 @@ void KOTodoViewItem::construct()
   setOn(mEvent->isCompleted());
   setText(0,mEvent->summary());
   setText(1,QString::number(mEvent->priority()));
-  setText(2,i18n("%1 %").arg(QString::number(mEvent->percentComplete())));
+  if (mEvent->percentComplete()<100) {
+    setText(2,i18n(" %1 %").arg(QString::number(mEvent->percentComplete())));
+  }
+  else {
+    setText(2,i18n("%1 %").arg(QString::number(mEvent->percentComplete())));
+  }
   if (mEvent->hasDueDate()) {
     setText(3, mEvent->dtDueDateStr());
     QDate d = mEvent->dtDue().date();

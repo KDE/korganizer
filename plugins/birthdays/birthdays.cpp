@@ -35,6 +35,7 @@
 #include <libkcal/event.h>
 
 #include "calendarview.h"
+#include "koprefs.h"
 
 #include "birthdays.h"
 #include "birthdays.moc"
@@ -104,6 +105,12 @@ void Birthdays::importBirthdays()
       summary.setNum(old);
       summary  = (*it).formattedName() + " " + summary + "s birthday";
       ev->setSummary(summary);
+      QStringList::Iterator itc;
+      for (itc = KOPrefs::instance()->mCustomCategories.begin();
+          itc != KOPrefs::instance()->mCustomCategories.end(); ++itc ) {
+        if ((*itc)==QString("Birthday"))
+          ev->setCategories(QString("Birthday"));
+      }
 
       bool insert = true;
       QPtrList<Event> events = cal->getAllEvents();
