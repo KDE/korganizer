@@ -240,7 +240,7 @@ void KOrganizer::initActions()
                     actionCollection(), "import_ical");
   (void)new KAction(i18n("&Merge Calendar..."), 0, this, SLOT(file_merge()),
                     actionCollection(), "merge_calendar");
-  (void)new KAction(i18n("Archive Old Entries..."), 0, this, SLOT(file_archive()),
+  (void)new KAction(i18n("Archive old Entries..."), 0, this, SLOT(file_archive()),
                     actionCollection(), "file_archive");
 
   (void)new KAction(i18n("iCalendar..."), 0,
@@ -338,7 +338,7 @@ void KOrganizer::initActions()
   (void)new KAction(i18n("New &To-Do..."), "newtodo", 0,
                     mCalendarView,SLOT(newTodo()),
                     actionCollection(), "new_todo");
-  action = new KAction(i18n("New Su&b- To-Do..."), 0,
+  action = new KAction(i18n("New Su&b-To-Do..."), 0,
                     mCalendarView,SLOT(newSubTodo()),
                     actionCollection(), "new_subtodo");
   action->setEnabled(false);
