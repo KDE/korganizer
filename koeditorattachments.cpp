@@ -130,12 +130,12 @@ void KOEditorAttachments::readIncidence( Incidence *i )
   mAttachments->clear();
 
   Attachment::List attachments = i->attachments();
-  Attachment *a;
-  for( a = attachments.first(); a; a = attachments.next() ) {
+  Attachment::List::ConstIterator it;
+  for( it = attachments.begin(); it != attachments.end(); ++it ) {
     QString uri;
-    if ( a->isURI() ) uri = a->uri();
+    if ( (*it)->isUri() ) uri = (*it)->uri();
     else uri = i18n("[Binary data]");
-    addAttachment( uri, a->mimeType() );
+    addAttachment( uri, (*it)->mimeType() );
   }
 }
 

@@ -243,11 +243,11 @@ void KOEventViewer::formatAttachments( Incidence *i )
   Attachment::List as = i->attachments();
   if ( as.count() > 0 ) {
     mText += "<ul>";
-    Attachment *a;
-    for( a = as.first(); a; a = as.next() ) {
-      if ( a->isURI() ) {
+    Attachment::List::ConstIterator it;
+    for( it = as.begin(); it != as.end(); ++it ) {
+      if ( (*it)->isUri() ) {
         mText += "<li>";
-        addLink( a->uri(), a->uri() );
+        addLink( (*it)->uri(), (*it)->uri() );
         mText += "</li>";
       }
     }
