@@ -27,6 +27,7 @@
 #include <qpixmap.h>
 #include <qlayout.h>
 #include <qwidgetstack.h>
+#include <qfile.h>
 
 #include <kabc/addressee.h>
 #include <kiconloader.h>
@@ -281,6 +282,21 @@ bool KOEventEditor::processInput()
     kdDebug(5850) << "KOEventEditor::processInput() write event." << endl;
     writeEvent( event );
     kdDebug(5850) << "KOEventEditor::processInput() event written." << endl;
+    
+#ifdef OPERATOREQUALDEBUG
+    ICalFormat ical;
+    QString firstEvent = ical.toICalString( mEvent );
+    QString secondEvent = ical.toICalString( event );
+
+    QFile f( "/tmp/firstEvent" );
+    f.open( IO_WriteOnly );
+    f.writeBlock( firstEvent.local8Bit() );
+    f.close();
+    QFile f2( "/tmp/secondEvent" );
+    f2.open( IO_WriteOnly );
+    f2.writeBlock( secondEvent.local8Bit() );
+    f2.close();
+#endif
 
     if( *mEvent == *event )
       // Don't do anything
