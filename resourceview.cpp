@@ -85,10 +85,17 @@ ResourceItem::ResourceItem( ResourceCalendar *resource, ResourceView *view,
                             KListView *parent )
   : QCheckListItem( parent, resource->resourceName(), CheckBox ),
     mResource( resource ), mView( view ), mBlockStateChange( false ),
-    mIsSubresource( false )
+    mIsSubresource( false ), mResourceIdentifier( QString::null ), 
+    mSubItemsCreated( false )
 {
   setGuiState();
 
+  if ( mResource->isActive() ) {
+    createSubresourceItems();
+  }
+}
+
+void ResourceItem::createSubresourceItems() {
   const QStringList subresources = mResource->subresources();
   if ( !subresources.isEmpty() ) {
     setOpen( true );
@@ -96,17 +103,23 @@ ResourceItem::ResourceItem( ResourceCalendar *resource, ResourceView *view,
     // This resource has subresources
     QStringList::ConstIterator it;
     for ( it=subresources.begin(); it!=subresources.end(); ++it ) {
-      ( void )new ResourceItem( mResource, *it, mView, this );
+      ( void )new ResourceItem( mResource, *it, mResource->labelForSubresource( *it ),
+                                mView, this );
     }
   }
+  mSubItemsCreated = true;
 }
 
 ResourceItem::ResourceItem( KCal::ResourceCalendar *resource,
-                            const QString& sub, ResourceView *view,
-                            ResourceItem* parent )
+                            const QString& sub, const QString& label,
+                            ResourceView *view, ResourceItem* parent )
+
   : QCheckListItem( parent, sub, CheckBox ), mResource( resource ),
-    mView( view ), mBlockStateChange( false ), mIsSubresource( true )
+    mView( view ), mBlockStateChange( false ), mIsSubresource( true ),
+    mSubItemsCreated( false )
 {
+  mResourceIdentifier = sub;
+  setText( 0, label );
   setGuiState();
 }
 
@@ -114,7 +127,7 @@ void ResourceItem::setGuiState()
 {
   mBlockStateChange = true;
   if ( mIsSubresource )
-    setOn( mResource->subresourceActive( text( 0 ) ) );
+    setOn( mResource->subresourceActive( mResourceIdentifier ) );
   else
     setOn( mResource->isActive() );
   mBlockStateChange = false;
@@ -125,10 +138,14 @@ void ResourceItem::stateChange( bool active )
   if ( mBlockStateChange ) return;
 
   if ( mIsSubresource ) {
-    mResource->setSubresourceActive( text( 0 ), active );
+    mResource->setSubresourceActive( mResourceIdentifier, active );
   } else {
     if ( active ) {
-      if ( mResource->load() ) mResource->setActive( true );
+      if ( mResource->load() ) {
+        mResource->setActive( true );
+        if ( !mSubItemsCreated )
+          createSubresourceItems();
+      }
     } else {
       if ( mResource->save() ) mResource->setActive( false );
       mView->requestClose( mResource );
@@ -234,7 +251,12 @@ void ResourceView::addResource()
 
   if ( dlg.exec() ) {
     resource->setTimeZoneId( KOPrefs::instance()->mTimeZoneId );
+    if ( resource->isActive() ) {
+      resource->open();
+      resource->load();
+    }
     manager->add( resource );
+    addResourceItem( resource );
     // we have to call resourceAdded manually, because for in-process changes
     // the dcop signals are not connected, so the resource's signals would not
     // be connected otherwise
@@ -248,6 +270,13 @@ void ResourceView::addResource()
 void ResourceView::addResourceItem( ResourceCalendar *resource )
 {
   new ResourceItem( resource, this, mListView );
+
+  connect( resource, SIGNAL( signalSubresourceAdded( ResourceCalendar *,
+                                                     const QString &,
+                                                     const QString &,
+                                                     const QString & ) ),
+           SLOT( slotSubresourceAdded( ResourceCalendar *, const QString &,
+                                       const QString &, const QString & ) ) );
 
   connect( resource, SIGNAL( signalSubresourceAdded( ResourceCalendar *,
                                                      const QString &,
@@ -266,10 +295,20 @@ void ResourceView::addResourceItem( ResourceCalendar *resource )
   emitResourcesChanged();
 }
 
+
+// FIXME proko2: merge once we are back in HEAD by porting imap resource
+void ResourceView::slotSubresourceAdded( ResourceCalendar *calendar,
+                                         const QString& type,
+                                         const QString& resource )
+{
+   slotSubresourceAdded( calendar, type, resource, resource );
+}
+
 // Add a new entry
 void ResourceView::slotSubresourceAdded( ResourceCalendar *calendar,
-                                         const QString &/*type*/,
-                                         const QString &resource )
+                                         const QString& /*type*/,
+                                         const QString& resource,
+                                         const QString& label)
 {
   QListViewItem *i = mListView->findItem( calendar->resourceName(), 0 );
   if ( !i )
@@ -277,7 +316,7 @@ void ResourceView::slotSubresourceAdded( ResourceCalendar *calendar,
     return;
 
   ResourceItem *item = static_cast<ResourceItem *>( i );
-  ( void )new ResourceItem( calendar, resource, this, item );
+  ( void )new ResourceItem( calendar, resource, label, this, item );
 }
 
 // Remove an entry
@@ -285,7 +324,8 @@ void ResourceView::slotSubresourceRemoved( ResourceCalendar */*calendar*/,
                                            const QString &/*type*/,
                                            const QString &resource )
 {
-  delete mListView->findItem( resource, 0 );
+  delete findItemByIdentifier( resource );
+  emitResourcesChanged();
 }
 
 void ResourceView::closeResource( ResourceCalendar *r )
@@ -318,7 +358,7 @@ void ResourceView::removeResource()
 
   int km = KMessageBox::warningContinueCancel( this,
         i18n("<qt>Do you really want to remove the resource <b>%1</b>?</qt>")
-        .arg( item->resource()->resourceName() ), "",
+        .arg( item->text( 0 ) ), "",
         KGuiItem( i18n("&Remove" ), "editdelete") );
   if ( km == KMessageBox::Cancel ) return;
 
@@ -330,11 +370,13 @@ void ResourceView::removeResource()
     return;
   }
 #endif
-
-  mCalendar->resourceManager()->remove( item->resource() );
-
-  mListView->takeItem( item );
-  delete item;
+  if ( item->isSubresource() ) {
+    // TODO delete the folder in KMail
+  } else {
+    mCalendar->resourceManager()->remove( item->resource() );
+    mListView->takeItem( item );
+    delete item;
+  }
   emitResourcesChanged();
 }
 
@@ -356,10 +398,14 @@ void ResourceView::editResource()
 
 void ResourceView::currentChanged( QListViewItem *item)
 {
-  bool selected = true;
-  if ( !item ) selected = false;
-  mDeleteButton->setEnabled( selected );
-  mEditButton->setEnabled( selected );
+   ResourceItem *i = currentItem();
+   if ( !item || i->isSubresource() ) {
+     mDeleteButton->setEnabled( false );
+     mEditButton->setEnabled( false );
+   } else {
+     mDeleteButton->setEnabled( true );
+     mEditButton->setEnabled( true );
+   }
 }
 
 ResourceItem *ResourceView::findItem( ResourceCalendar *r )
@@ -372,6 +418,19 @@ ResourceItem *ResourceView::findItem( ResourceCalendar *r )
   }
   return i;
 }
+
+ResourceItem *ResourceView::findItemByIdentifier( const QString& id )
+{
+  QListViewItem *item;
+  ResourceItem *i = 0;
+  for( item = mListView->firstChild(); item; item = item->itemBelow() ) {
+    i = static_cast<ResourceItem *>( item );
+    if ( i->resourceIdentifier() == id )
+       return i;
+  }
+  return 0;
+}
+
 
 void ResourceView::contextMenuRequested ( QListViewItem *i,
                                           const QPoint &pos, int )
@@ -389,10 +448,12 @@ void ResourceView::contextMenuRequested ( QListViewItem *i,
     menu->setItemEnabled( saveId, item->resource()->isActive() );
     menu->insertSeparator();
     menu->insertItem( i18n("Show Info"), this, SLOT( showInfo() ) );
-    menu->insertItem( i18n("Edit..."), this, SLOT( editResource() ) );
-    menu->insertItem( i18n("Remove"), this, SLOT( removeResource() ) );
+    if ( !item->isSubresource() ) {
+      menu->insertItem( i18n("Edit..."), this, SLOT( editResource() ) );
+      menu->insertItem( i18n("Remove"), this, SLOT( removeResource() ) );
+    }
     menu->insertSeparator();
-  }
+ }
   menu->insertItem( i18n("Add..."), this, SLOT( addResource() ) );
 
   menu->popup( pos );
