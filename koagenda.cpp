@@ -1006,13 +1006,12 @@ void KOAgenda::popupAlarm()
     kdDebug() << "KOAgenda::itemPopup() called without having a clicked item" << endl;
     return;
   }
-
 // TODO: deal correctly with multiple alarms
   Alarm* alarm;
-  for (QPtrListIterator<Alarm> it(mClickedItem->itemEvent()->alarms());
-       (alarm = it.current()) != 0;  ++it) {
-    alarm->toggleAlarm();
-  }
+  QPtrList<Alarm> list(mClickedItem->itemEvent()->alarms());
+  for(alarm=list.first();alarm;alarm=list.next())
+      alarm->toggleAlarm();
+
   mClickedItem->updateIcons();
 }
 
