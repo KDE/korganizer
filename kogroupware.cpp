@@ -75,18 +75,19 @@
 #include <stdlib.h>
 #include <time.h>
 
+FreeBusyManager *KOGroupware::mFreeBusyManager = 0;
 
-KOGroupware* KOGroupware::mInstance = 0;
+KOGroupware *KOGroupware::mInstance = 0;
 
-KOGroupware* KOGroupware::create( CalendarView* view,
-                                  KCal::Calendar* calendar )
+KOGroupware *KOGroupware::create( CalendarView *view,
+                                  KCal::Calendar *calendar )
 {
   if( !mInstance )
     mInstance = new KOGroupware( view, calendar );
   return mInstance;
 }
 
-KOGroupware* KOGroupware::instance()
+KOGroupware *KOGroupware::instance()
 {
   // Doesn't create, that is the task of create()
   Q_ASSERT( mInstance );
@@ -99,16 +100,17 @@ KOGroupware::KOGroupware( CalendarView* view, KCal::Calendar* calendar )
 {
   mView = view;
   mCalendar = calendar;
-
-  mFreeBusyManager = new FreeBusyManager( this, "freebusymanager" );
-  mFreeBusyManager->setCalendar( mCalendar );
-  connect( mCalendar, SIGNAL( calendarChanged() ),
-           mFreeBusyManager, SLOT( slotPerhapsUploadFB() ) );
-
 }
 
 FreeBusyManager *KOGroupware::freeBusyManager()
 {
+  if ( !mFreeBusyManager ) {
+    mFreeBusyManager = new FreeBusyManager( this, "freebusymanager" );
+    mFreeBusyManager->setCalendar( mCalendar );
+    connect( mCalendar, SIGNAL( calendarChanged() ),
+             mFreeBusyManager, SLOT( slotPerhapsUploadFB() ) );
+  }
+
   return mFreeBusyManager;
 }
 

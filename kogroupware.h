@@ -109,7 +109,7 @@ class KOGroupware : public QObject
     KCal::ICalFormat mFormat;
     CalendarView *mView;
     KCal::Calendar *mCalendar;
-    FreeBusyManager *mFreeBusyManager;
+    static FreeBusyManager *mFreeBusyManager;
 };
 
 #endif
