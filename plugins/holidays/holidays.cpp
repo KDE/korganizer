@@ -59,7 +59,7 @@ Holidays::Holidays()
   config.setGroup("Calendar/Holiday Plugin");
   QString holiday = config.readEntry("Holidays");
 
-  mHolidayFile = locate("appdata","holiday_" + holiday);
+  mHolidayFile = locate("data","korganizer/holiday_" + holiday);
 
   yearLast = 0;
 }
