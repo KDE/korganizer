@@ -134,7 +134,7 @@ void KOIncidenceEditor::saveAsTemplate( Incidence *incidence,
 }
 
 QString KOIncidenceEditor::loadTemplate( Calendar *cal, const QString &type,
-                                      const QStringList &templates )
+                                         const QStringList &templates )
 {
   QString templateName = QInputDialog::getItem( i18n("Load Template"),
       i18n("Select a template to load:"), templates, 0, false );

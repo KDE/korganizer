@@ -959,6 +959,10 @@ void CalendarView::deleteEvent(Event *anEvent)
         //while (!anEvent->recursOn(qd)) qd = qd.addDays(1);
         if (itemDate!=QDate(1,1,1) || itemDate.isValid()) {
           anEvent->addExDate(itemDate);
+          int duration = anEvent->recurrence()->duration();
+          if ( duration > 0 ) {
+            anEvent->recurrence()->setDuration( duration - 1 );
+          }
           changeEventDisplay(anEvent, KOGlobals::EVENTEDITED);
         }
         break;

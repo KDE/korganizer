@@ -10,6 +10,45 @@
 
 QUICK NOTES ON WHAT'S NEW IN THIS RELEASE:
 
+* Official 3.1 release
+
+  - General:
+    - User-definable templates for events and todos.
+    - Alarms for todos.
+    - Automatic HTML export on save of calendar file.
+    - Time table print view.
+    - New "location" attribute for events.
+    - Experimental "Get Hot New Stuff" button for downloading and uploading
+      calendar files of common interest.
+
+  - Views:
+    - New "Next 3 days" view.
+    - Selection of time span for a new event in day and week views.
+    - Direct manipulation of priority, completion status and categories of todos
+      by context menus.
+    - Deletion of individual instances of recurring events.
+    - Rewritten month view.
+    - Coloring of events in month view based on categories.
+    - Coloring of due and overdue todos.
+    - Improved "What's Next" view.
+
+  - Group scheduling:
+    - iMIP group scheduling functions for todos.
+    - Publishing of Free/Busy information by iMIP conformant email.
+    - Improved automatisation of group scheduling.
+    
+  - Interoperability and integration
+    - Support for "webcal" URLs in Konqueror.
+    - Support for iCalendar based drag&drop.
+    - KOrganizer now shares the dialogs for categories with KAddressBook.
+    - Improved iCalendar conformance.
+    - Improved right-to-left languages support.
+    - Bug fixes for non-latin1 encodings.
+
+  - Plugins:
+    - New plugin for importing birthdays from The KDE address book.
+    - New plugin for accessing calendar data on an Exchange server.
+
 * Official 3.0.3 release (August 2002)
 
   - Fixed problem caused by Qt 3.0.5 that made context menus in todo and list
