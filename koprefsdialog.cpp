@@ -54,6 +54,13 @@
 #include <kurlrequester.h>
 #include <klineedit.h>
 
+#if defined(USE_SOLARIS)
+#include <sys/param.h>
+
+#define ZONEINFODIR    "/usr/share/lib/zoneinfo"
+#define INITFILE       "/etc/default/init"
+#endif
+
 #include "koprefs.h"
 
 #include "koprefsdialog.h"
@@ -200,19 +207,56 @@ void KOPrefsDialog::setupTimeTab()
 
   FILE *f;
   char tempstring[101] = "Unknown";
-  char szCurrentlySet[101] = "Unknown";
+  QString sCurrentlySet(i18n("Unknown"));
+  int nCurrentlySet = 0;
   QStrList list;
 
   // read the currently set time zone
+#if defined(USE_SOLARIS)       // MARCO
+    char buf[MAXPATHLEN];
+
+    snprintf(buf, MAXPATHLEN,
+            "/bin/fgrep 'TZ=' %s | /bin/head -n 1 | /bin/cut -b 4-",
+            INITFILE);
+    
+    if (f = popen(buf, "r"))
+      {
+       if (fgets(buf, MAXPATHLEN - 1, f) != NULL)
+         {
+           buf[strlen(buf) - 1] = '\0';
+           sCurrentlySet = QString(buf);
+         }
+       pclose(f);
+      }
+#else
   if((f = fopen("/etc/timezone", "r")) != NULL) {
     // get the currently set timezone
-    fgets(szCurrentlySet, 100, f);
+    fgets(tempstring, 100, f);
+    tempstring[strlen(tempstring) - 1] = '\0';
+    sCurrentlySet = QString(tempstring);
     fclose(f);
   }
+#endif // !USE_SOLARIS
 
   mTimeZoneCombo->insertItem(i18n("[No selection]"));
 
   // Read all system time zones
+#if defined(USE_SOLARIS)       // MARCO
+    snprintf(buf, MAXPATHLEN,
+           "/bin/find %s \\( -name src -prune \\) -o -type f -print | /bin/cut -b %d-",
+           ZONEINFODIR, strlen(ZONEINFODIR) + 2);
+    
+    if (f = popen(buf, "r"))
+      {
+       while(fgets(buf, MAXPATHLEN - 1, f) != NULL)
+         {
+           buf[strlen(buf) - 1] = '\0';
+           list.inSort(buf);
+         }
+       pclose(f);
+      }
+    
+#else
   f = popen("grep -e  ^[^#] /usr/share/zoneinfo/zone.tab | cut -f 3","r");
   if (!f) return;
   while(fgets(tempstring, 100, f) != NULL) {
@@ -221,9 +265,21 @@ void KOPrefsDialog::setupTimeTab()
     tzonenames << tempstring;
   }
   pclose(f);
+#endif // !USE_SOLARIS
 
   mTimeZoneCombo->insertStrList(&list);
 
+    // find the currently set time zone and select it
+  for (int i = 0; i < mTimeZoneCombo->count(); i++)
+    {
+      if (mTimeZoneCombo->text(i) == sCurrentlySet)
+        {
+         nCurrentlySet = i;
+         break;
+        }
+    }
+
+  mTimeZoneCombo->setCurrentItem(nCurrentlySet);
   
   topLayout->addWidget(new QLabel(i18n("Default appointment time:"),
                        topFrame),1,0);
