@@ -19,69 +19,68 @@ bool HtmlExport::save(const QString &fileName)
   if (!f.open(IO_WriteOnly)) {
     return false;
   }
-  bool success = save(&f); 
+  QTextStream ts(&f);
+  bool success = save(&ts);
   f.close();
   return success;
 }
 
-bool HtmlExport::save(QFile *file)
+bool HtmlExport::save(QTextStream *ts)
 {
-  QTextStream ts(file);
-
   // Write HTML header
-  ts << "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0 Transitional//EN\" ";
-  ts << "\"http://www.w3.org/TR/REC-html40/loose.dtd\">\n";
+  *ts << "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0 Transitional//EN\" ";
+  *ts << "\"http://www.w3.org/TR/REC-html40/loose.dtd\">\n";
 
-  ts << "<HTML><HEAD>" << endl;
-  ts << "  <META http-equiv=\"Content-Type\" content=\"text/html; charset=" + KGlobal::locale()->charset() +  "\">\n";
-  ts << "  <TITLE>" << i18n("KOrganizer To-Do List") << "</TITLE>\n";
-  ts << "  <style type=\"text/css\">\n";
-  ts << "    body { background-color:white; color:black }\n";
-  ts << "    td { text-align:center; background-color:#eee }\n";
-  ts << "    th { text-align:center; background-color:#228; color:white }\n";
-  ts << "    td.sum { text-align:left }\n";
-  ts << "    td.sumdone { text-align:left; background-color:#ccc }\n";
-  ts << "    td.done { background-color:#ccc }\n";
-  ts << "    td.subhead { text-align:center; background-color:#ccf }\n";
-  ts << "    td.datehead { text-align:center; background-color:#ccf }\n";
-  ts << "    td.space { background-color:white }\n";
-  ts << "    td.date { text-align:left }\n";
-  ts << "    td.dateholiday { text-align:left; color:red }\n";
-  ts <<   "</style>\n";
-  ts << "</HEAD><BODY>\n";
+  *ts << "<HTML><HEAD>" << endl;
+  *ts << "  <META http-equiv=\"Content-Type\" content=\"text/html; charset=" + KGlobal::locale()->charset() +  "\">\n";
+  *ts << "  <TITLE>" << i18n("KOrganizer To-Do List") << "</TITLE>\n";
+  *ts << "  <style type=\"text/css\">\n";
+  *ts << "    body { background-color:white; color:black }\n";
+  *ts << "    td { text-align:center; background-color:#eee }\n";
+  *ts << "    th { text-align:center; background-color:#228; color:white }\n";
+  *ts << "    td.sum { text-align:left }\n";
+  *ts << "    td.sumdone { text-align:left; background-color:#ccc }\n";
+  *ts << "    td.done { background-color:#ccc }\n";
+  *ts << "    td.subhead { text-align:center; background-color:#ccf }\n";
+  *ts << "    td.datehead { text-align:center; background-color:#ccf }\n";
+  *ts << "    td.space { background-color:white }\n";
+  *ts << "    td.date { text-align:left }\n";
+  *ts << "    td.dateholiday { text-align:left; color:red }\n";
+  *ts <<   "</style>\n";
+  *ts << "</HEAD><BODY>\n";
 
   // TO DO: Write KOrganizer header
   // (Heading, Calendar-Owner, Calendar-Date, ...)
 
   if (eventsEnabled() || monthViewEnabled()) {
-    ts << "<H1>" << i18n("KOrganizer Calendar") << "</H1>\n";
+    *ts << "<H1>" << i18n("KOrganizer Calendar") << "</H1>\n";
   }
 
   // Write Month View
   if (monthViewEnabled()) {
-    createHtmlMonthView(&ts);
+    createHtmlMonthView(ts);
   }
 
   // Write Event List
   if (eventsEnabled()) {
     // Write HTML page content
-    createHtmlEventList(&ts);
+    createHtmlEventList(ts);
   }
 
   // Write Todo List
   if (todosEnabled()) {
-    ts << "<H1>" << i18n("KOrganizer To-Do List") << "</H1>\n";
+    *ts << "<H1>" << i18n("KOrganizer To-Do List") << "</H1>\n";
 
     // Write HTML page content
-    createHtmlTodoList(&ts);
+    createHtmlTodoList(ts);
   }
 
   // Write KOrganizer trailer
-  ts << "<P>" << i18n("This page was created by <A HREF=\"http://"
+  *ts << "<P>" << i18n("This page was created by <A HREF=\"http://"
         "korganizer.kde.org\">KOrganizer</A>") << "</P>\n";
 
   // Write HTML trailer
-  ts << "</BODY></HTML>\n";
+  *ts << "</BODY></HTML>\n";
 
   return true;
 }

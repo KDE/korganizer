@@ -35,7 +35,7 @@ class HtmlExport {
     /**
       writes out calendar to file. The QFile has to already be opened for writing.
     */
-    bool save(QFile *);
+    bool save(QTextStream *);
 
     void setMonthViewEnabled(bool enable=true) { mMonthViewEnabled = enable; }
     bool monthViewEnabled() { return mMonthViewEnabled; }

@@ -34,7 +34,9 @@ class ExportWebDialog : public KDialogBase
     void exportWebPage();
 
     void browseOutputFile();
+
     void slotResult(KIO::Job *);
+    void slotDataReq(KIO::Job *,QByteArray &data);
 
   protected slots:
  
@@ -70,6 +72,8 @@ class ExportWebDialog : public KDialogBase
     QCheckBox *mCbAttendeesEvent;
     QCheckBox *mCbHtmlFragment;
     QLineEdit *mOutputFileEdit;
+
+    bool mDataAvailable;
 };
 
 #endif // _EXPORTWEBDIALOG_H

@@ -38,7 +38,8 @@ ExportWebDialog::ExportWebDialog (Calendar *cal, QWidget *parent,
   KDialogBase(Tabbed,i18n("Export calendar as web page"),
               Help|Default|User1|Cancel,User1,parent,name,false,false,
               i18n("Export")),
-  mCalendar(cal)
+  mCalendar(cal),
+  mDataAvailable(false)
 {
   mExport = new HtmlExport(cal);
 
@@ -172,35 +173,42 @@ void ExportWebDialog::exportWebPage()
   mExport->setDueDateEnabled(mCbDueDates->isChecked());
   mExport->setDateRange(mFromDate->getDate(),mToDate->getDate());
 
-  // Create temporary file
-  KTempFile tmpFile;
-
-  // Save to temporary file
-  mExport->save(tmpFile.file());
-
-  // Copy temporary file to final destination
-  KURL src;
-  src.setPath(tmpFile.name());
-
   KURL dest(mOutputFileEdit->text());
   // Remember destination.
   KOPrefs::instance()->mHtmlExportFile = mOutputFileEdit->text();
 
-  KIO::Job *job = KIO::move(src,dest);
+  mDataAvailable = true;
+
+  KIO::TransferJob *job = KIO::put(dest,-1,true,false);
+  connect(job,SIGNAL(dataReq(KIO::Job *,QByteArray &)),
+          SLOT(slotDataReq(KIO::Job *,QByteArray &)));
   connect(job,SIGNAL(result(KIO::Job *)),SLOT(slotResult(KIO::Job *)));
 }
 
 void ExportWebDialog::slotResult(KIO::Job *job)
 {
-//  kdDebug() << "slotResult" << endl;
+  kdDebug() << "slotResult" << endl;
   int err = job->error();
   if (err)
   {
-//    kdDebug() << "Error " << err << ": " << job->errorString() << endl;
+    kdDebug() << "  Error " << err << ": " << job->errorString() << endl;
     job->showErrorDialog();
   } else {
-//    kdDebug() << "No Error" << endl;
+    kdDebug() << "  No Error" << endl;
     accept();
   }
-//  kdDebug() << "slotResult done" << endl;
+  kdDebug() << "slotResult done" << endl;
+}
+
+void ExportWebDialog::slotDataReq(KIO::Job *,QByteArray &data)
+{
+  kdDebug() << "ExportWebDialog::slotDataReq()" << endl;
+
+  if (mDataAvailable) {
+    kdDebug() << "  Data availavble" << endl;
+    QTextStream ts(data,IO_WriteOnly);
+    mExport->save(&ts);
+    mDataAvailable = false;
+  } else
+    kdDebug() << "  No Data" << endl;
 }
