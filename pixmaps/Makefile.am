@@ -23,11 +23,12 @@ icondir = $(kde_icondir)
 
 install-data-local:
 	$(mkinstalldirs) $(kde_minidir)
-	$(INSTALL_DATA) mini-korganizer.xpm $(kde_minidir)/korganizer.xpm
-	$(INSTALL_DATA) alarmd.xpm $(kde_minidir)
-	$(INSTALL_DATA) alarmd-disabled.xpm $(kde_minidir)
+	$(INSTALL_DATA) $(srcdir)/mini-korganizer.xpm $(kde_minidir)/korganizer.xpm
+	$(INSTALL_DATA) $(srcdir)/alarmd.xpm $(kde_minidir)
+	$(INSTALL_DATA) $(srcdir)/alarmd-disabled.xpm $(kde_minidir)
 
 uninstall-local:
 	-rm -f $(kde_minidir)/korganizer.xpm
 	-rm -f $(kde_minidir)/alarmd.xpm
 	-rm -f $(kde_minidir)/alarmd-disabled.xpm
+
