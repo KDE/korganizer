@@ -23,12 +23,14 @@
 
 #include <libkcal/resourcecalendar.h>
 #include <libkcal/resourcelocal.h>
+#include <libkcal/resourceremote.h>
 #include <libkdepim/kpimprefs.h>
 
 #include <kstaticdeleter.h>
 #include <kconfig.h>
 #include <kstandarddirs.h>
 #include <klocale.h>
+#include <kurl.h>
 
 using namespace KOrg;
 
@@ -60,15 +62,21 @@ StdCalendar::StdCalendar()
     QString fileName = config.readPathEntry( "Active Calendar" );
 
     QString resourceName;
+    KCal::ResourceCalendar *defaultResource = 0;
     if ( fileName.isEmpty() ) {
       fileName = locateLocal( "data", "korganizer/std.ics" );
       resourceName = i18n( "Default Calendar" );
+      defaultResource = new KCal::ResourceLocal( fileName );
     } else {
+      KURL url( fileName );
+      if ( url.isLocalFile() ) {
+        defaultResource = new KCal::ResourceLocal( url.path() );
+      } else {
+        kdDebug(5850) << "Remote Resource" << endl;
+        defaultResource = new KCal::ResourceRemote( url );
+      }
       resourceName = i18n( "Active Calendar" );
     }
-
-    KCal::ResourceCalendar *defaultResource =
-                             new KCal::ResourceLocal( fileName );
 
     defaultResource->setTimeZoneId( KPimPrefs::timezone() );
     defaultResource->setResourceName( resourceName );

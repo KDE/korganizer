@@ -125,7 +125,8 @@ libkorganizer_calendar_la_LDFLAGS = $(all_libraries) $(KDE_RPATH) \
                                     -no-undefined -version-info 1:0
 libkorganizer_calendar_la_LIBADD  = $(LIB_KPARTS) \
                                     $(top_builddir)/libkdepim/libkdepim.la \
-                                    $(top_builddir)/libkcal/libkcal.la
+                                    $(top_builddir)/libkcal/libkcal.la \
+                                    $(top_builddir)/kresources/remote/libkcal_resourceremote.la
 libkorganizer_calendar_la_SOURCES = stdcalendar.cpp
 
 
