@@ -83,6 +83,7 @@ ResourceView::ResourceView( KCal::CalendarResourceManager *manager,
 {
   mListView = new KListView( this );
   mListView->addColumn( i18n("Calendar") );
+  mListView->setResizeMode( QListView::LastColumn );
 
   QBoxLayout *topLayout = new QVBoxLayout( this );
   topLayout->addWidget( mListView );
