@@ -495,7 +495,7 @@ void KOAgenda::finishTypeAhead()
   if ( typeAheadReceiver() ) {
     for( QEvent *e = mTypeAheadEvents.first(); e;
          e = mTypeAheadEvents.next() ) {
-//      kdDebug(5850) << "postEvent() " << int( typeAheadReceiver() ) << endl;
+//      kdDebug(5850) << "sendEvent() " << int( typeAheadReceiver() ) << endl;
       QApplication::sendEvent( typeAheadReceiver(), e );
     }
   }
