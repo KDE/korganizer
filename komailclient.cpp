@@ -162,7 +162,7 @@ bool KOMailClient::send(const QString &from,const QString &to,
       textComplete += QString::fromLatin1("To: ") + to + '\n';
       if (bcc) textComplete += QString::fromLatin1("Bcc: ") + from + '\n';
       textComplete += QString::fromLatin1("Subject: ") + subject + '\n';
-      textComplete += QString::fromLatin1("X-Mailer: KOrganizer") + korgVersion + '\n'; 
+      textComplete += QString::fromLatin1("X-Mailer: KOrganizer") + korgVersion + '\n';
     }
     textComplete += '\n'; // end of headers
     textComplete += body;
@@ -263,7 +263,7 @@ int KOMailClient::kMailOpenComposer( const QString& arg0, const QString& arg1,
 	} else {
             kdDebug(5850) << "kMailOpenComposer() call failed." << endl;
 	}
-    } else { 
+    } else {
         kdDebug(5850) << "kMailOpenComposer() call failed." << endl;
     }
     return result;
@@ -279,53 +279,68 @@ QString KOMailClient::createBody(IncidenceBase *incidence)
   // mailbody for Event
   if (incidence->type()=="Event") {
     Event *selectedEvent = static_cast<Event *>(incidence);
-    QString recurrence[]= {i18n("no recurrence", "None"),i18n("Daily"),i18n("Weekly"),i18n("Monthly Same Day"),
-                           i18n("Monthly Same Position"),i18n("Yearly"),i18n("Yearly")};
-  
+    QString recurrence[]= {i18n("no recurrence", "None"),
+      i18n("Minutely"), i18n("Hourly"), i18n("Daily"),
+      i18n("Weekly"), i18n("Monthly Same Day"), i18n("Monthly Same Position"),
+      i18n("Yearly"), i18n("Yearly"), i18n("Yearly")};
+
     if (!selectedEvent->organizer().isEmpty()) {
       body += i18n("Organizer: %1").arg(selectedEvent->organizer());
       body += CR;
     }
     body += i18n("Summary: %1").arg(selectedEvent->summary());
+    body += CR;
     if (!selectedEvent->location().isEmpty()) {
-      body += CR;
       body += i18n("Location: %1").arg(selectedEvent->location());
+      body += CR;
     }
+    body += i18n("Start Date: %1").arg(selectedEvent->dtStartDateStr());
+    body += CR;
     if (!selectedEvent->doesFloat()) {
-      body += CR;
-      body += i18n("Start Date: %1").arg(selectedEvent->dtStartDateStr());
-      body += CR;
       body += i18n("Start Time: %1").arg(selectedEvent->dtStartTimeStr());
       body += CR;
-      if (selectedEvent->recurrence()->doesRecur()) {
-        body += i18n("Recurs: %1")
-                 .arg(recurrence[selectedEvent->recurrence()->frequency()]);
-        body += CR;
-        if (selectedEvent->recurrence()->duration() > 0 ) {
-          body += i18n ("Repeats %1 times")
-                   .arg(QString::number(selectedEvent->recurrence()->duration()));
-          body += CR;
-        } else {
-          if (selectedEvent->recurrence()->duration() != -1) {
-            body += i18n("End Date: %1")
-                     .arg(selectedEvent->recurrence()->endDateStr());
-            body += CR;
-          } else {
-            body += i18n("Repeats forever");
-            body += CR;
-          }
-        }
-      }
+    }
+    if ( selectedEvent->dtStart()!=selectedEvent->dtEnd() ) {
+      body += i18n("End Date: %1").arg(selectedEvent->dtEndDateStr());
+      body += CR;
+    }
+    if (!selectedEvent->doesFloat()) {
       body += i18n("End Time: %1").arg(selectedEvent->dtEndTimeStr());
       body += CR;
-      QString details = selectedEvent->description();
-      if (!details.isEmpty()) {
-        body += i18n("Details:");
-	body += CR;
-	body += details;
+    }
+    if (selectedEvent->recurrence()->doesRecur()) {
+      body += i18n("Recurs: %1")
+               .arg(recurrence[selectedEvent->recurrence()->doesRecur()]);
+      body += CR;
+/* TODO: frequency
+      body += i18n("Frequency: %1")
+               .arg(recurrence[selectedEvent->recurrence()->frequency()]);
+      body += CR;
+*/
+      if (selectedEvent->recurrence()->duration() > 0 ) {
+        body += i18n ("Repeats %1 times")
+                 .arg(QString::number(selectedEvent->recurrence()->duration()));
+        body += CR;
+      } else {
+        if (selectedEvent->recurrence()->duration() != -1) {
+//          body += i18n("Repeat until: %1")
+          body += i18n("End Date: %1")
+                   .arg(selectedEvent->recurrence()->endDateStr());
+          body += CR;
+        } else {
+          body += i18n("Repeats forever");
+          body += CR;
+        }
       }
     }
-  } 
+    QString details = selectedEvent->description();
+    if (!details.isEmpty()) {
+      body += i18n("Details:");
+      body += CR;
+      body += details;
+      body += CR;
+    }
+  }
 
   // mailbody for Todo
   if (incidence->type()=="Todo") {
@@ -335,41 +350,40 @@ QString KOMailClient::createBody(IncidenceBase *incidence)
       body += CR;
     }
     body += i18n("Summary: %1").arg(selectedEvent->summary());
+    body += CR;
     if (!selectedEvent->location().isEmpty()) {
-      body += CR;
       body += i18n("Location: %1").arg(selectedEvent->location());
-    }
-    if (!selectedEvent->hasStartDate()) {
       body += CR;
+    }
+    if (selectedEvent->hasStartDate()) {
       body += i18n("Start Date: %1").arg(selectedEvent->dtStartDateStr());
       body += CR;
       if (!selectedEvent->doesFloat()) {
-	body += i18n("Start Time: %1").arg(selectedEvent->dtStartTimeStr());
-	body += CR;
+        body += i18n("Start Time: %1").arg(selectedEvent->dtStartTimeStr());
+        body += CR;
       }
     }
-    if (!selectedEvent->hasDueDate()) {
-      body += CR;
+    if (selectedEvent->hasDueDate()) {
       body += i18n("Due Date: %1").arg(selectedEvent->dtDueDateStr());
       body += CR;
       if (!selectedEvent->doesFloat()) {
-	body += i18n("Due Time: %1").arg(selectedEvent->dtDueTimeStr());
-	body += CR;
+        body += i18n("Due Time: %1").arg(selectedEvent->dtDueTimeStr());
+        body += CR;
       }
     }
-    body += CR;
     QString details = selectedEvent->description();
     if (!details.isEmpty()) {
       body += i18n("Details:");
       body += CR;
       body += details;
+      body += CR;
     }
-  } 
+  }
 
   // mailbody for FreeBusy
   if(incidence->type()=="FreeBusy") {
     body = i18n("This is a Free Busy Object");
-  } 
+  }
 
   // mailbody for Journal
   if(incidence->type()=="Journal") {
@@ -377,6 +391,7 @@ QString KOMailClient::createBody(IncidenceBase *incidence)
     body = inc->summary();
     body += CR;
     body += inc->description();
+    body += CR;
   }
 
   return body;
