@@ -366,7 +366,6 @@ void Exchange::configure()
     return;
 }
 
-
 void Exchange::test()
 {
   kdDebug() << "Entering test()" << endl;
@@ -404,15 +403,7 @@ void Exchange::test()
   KIO::DavJob* job = KIO::davPropFind( url, doc, "0", false );
   job->addMetaData( "errorPage", "false" );
   connect(job, SIGNAL(result( KIO::Job * )), this, SLOT(slotTestResult(KIO::Job *)));
- 
-//  KIO::ListJob *job = KIO::listDir(baseURL, true);
-//  KIO::Scheduler::scheduleJob(job);
-//  job->addMetaData("davSearchQuery", query);
-//  job->addMetaData( "davRequestResponse", "" );
-  /*
-  connect(job, SIGNAL(entries( KIO::Job *, const KIO::UDSEntryList& )), this, SLOT(slotSearchEntries(KIO::Job *, const KIO::UDSEntryList&)));
-*/
-  }
+}
 
 void Exchange::slotTestResult( KIO::Job * job )
 {
@@ -498,63 +489,6 @@ void Exchange::download()
   KIO::DavJob *job = KIO::davSearch( baseURL, "DAV:", "sql", sql, false );
   connect(job, SIGNAL(result( KIO::Job * )), this, SLOT(slotSearchResult(KIO::Job *)));
 }
-
-/*
- Old version, works
-
-void Exchange::download()
-{
-  ExchangeDialog dialog( mainWindow()->view()->startDate(), mainWindow()->view()->endDate() );
-  
-  if (dialog.exec() != QDialog::Accepted ) 
-    return;
-
-  QDate start = dialog.m_start->date();
-  QDate end = dialog.m_end->date();
-//  QString host = dialog.m_host->text();
- // QString user = dialog.m_user->text();
-  
-//  QString urlString = "webdav://" + host + "/" + user + "/Calendar";
-  baseURL = getCalendarURL();
-  if ( ! baseURL.isValid() ) {
-    KMessageBox::sorry( 0L, "Please configure the Exchange host and user", "Exchange Plugin" );
-    return;
-  }
-	
-  calendar = mainWindow()->view()->calendar();
-  
-  ExchangeProgress *progress;
-  progress = new ExchangeProgress();
-  
-  connect( this, SIGNAL(startDownload()), progress, SLOT(slotTransferStarted()) );
-  connect( this, SIGNAL(finishDownload()), progress, SLOT(slotTransferFinished()) );
-  connect( progress, SIGNAL(complete()), this, SLOT(slotComplete()) );
-    
-  QString startString;
-  startString.sprintf("%04i/%02i/%02i",start.year(),start.month(),start.day());
-  // startString = "2002/05/29";
-  QString endString;
-  endString.sprintf("%04i/%02i/%02i",end.year(),end.month(),end.day());
-  // endString  = "2002/05/30";
-//, \"urn:schemas:calendar:instancetype\"
-  QString query = "<D:sql> "
-        "SELECT \"DAV:href\", \"urn:schemas:calendar:instancetype\", \"urn:schemas:calendar:uid\"\r\n"
-        "FROM Scope('shallow traversal of \"\"')\r\n"
-        "WHERE \"urn:schemas:calendar:dtend\" > '" + startString + "'\r\n"
-        "AND \"urn:schemas:calendar:dtstart\" < '" + endString + "'\r\n"
-        "</D:sql>\r\n";
-
-  kdDebug() << query << endl;
-  
-  emit startDownload();
-  KIO::ListJob *job = KIO::listDir(baseURL, false);
-//  KIO::Scheduler::scheduleJob(job);
-  job->addMetaData("davSearchQuery", query);
-  job->addMetaData( "davRequestResponse", "" );
-  connect(job, SIGNAL(entries( KIO::Job *, const KIO::UDSEntryList& )), this, SLOT(slotSearchEntries(KIO::Job *, const KIO::UDSEntryList&)));
-  connect(job, SIGNAL(result( KIO::Job * )), this, SLOT(slotSearchResult(KIO::Job *)));
-}
-*/
 
 void Exchange::slotSearchResult( KIO::Job *job )
 {
@@ -649,115 +583,23 @@ void Exchange::handleAppointments( const QDomDocument& response, bool recurrence
   }
 }  
 
-/*
-void Exchange::slotSearchEntries( KIO::Job *job, const KIO::UDSEntryList& entries) {
-  KURL url = static_cast<KIO::ListJob *>(job)->url();
-  kdDebug() << "Entering slotSearchEntries for URL " << url.prettyURL() << endl;
-  
-  handleEntries( entries, true ); // handle entries with special handling for recurrence
-}
-*/
 void Exchange::handleRecurrence(QString uid) {
   kdDebug() << "Handling recurrence info for uid=" << uid << endl;
-  QString query = // "<D:sql> "
+  QString query = 
         "SELECT \"DAV:href\", \"urn:schemas:calendar:instancetype\"\r\n"
         "FROM Scope('shallow traversal of \"\"')\r\n"
         "WHERE \"urn:schemas:calendar:uid\" = '" + uid + "'\r\n"
 	" AND (\"urn:schemas:calendar:instancetype\" = 1)\r\n";
 //	"      OR \"urn:schemas:calendar:instancetype\" = 3)\r\n" // FIXME: exception are not handled
-        // "</D:sql>\r\n";
 
-  kdDebug() << query << endl;
-  
   kdDebug() << "Exchange master query: " << endl << query << endl;
-
 
   emit startDownload();
  
   KIO::DavJob* job = KIO::davSearch( baseURL, "DAV:", "sql", query, false );
-  // KIO::ListJob *job = KIO::listDir(baseURL, false);
-  // KIO::Scheduler::scheduleJob(job);
-  // job->addMetaData("davSearchQuery", query);
-  // job->addMetaData( "davRequestResponse", "" );
-  // connect(job, SIGNAL(entries( KIO::Job *, const KIO::UDSEntryList& )), this, SLOT(slotMasterEntries(KIO::Job *, const KIO::UDSEntryList&)));
   connect(job, SIGNAL(result( KIO::Job * )), this, SLOT(slotMasterResult(KIO::Job *)));
 }
-/*
-void Exchange::slotMasterEntries( KIO::Job *job, const KIO::UDSEntryList& entries) {
-  KURL url = static_cast<KIO::ListJob *>(job)->url();
-  kdDebug() << "Entering slotMasterEntries for URL " << url.prettyURL() << endl;
-  handleEntries( entries, false );
-} 
-*/
-/*  
-void Exchange::handleEntries( const KIO::UDSEntryList& entries, bool recurrence ) {
-  KIO::UDSEntryListConstIterator it = entries.begin();
-  KIO::UDSEntryListConstIterator end = entries.end();
 
-  for ( ; it != end; ++it )
-  {
-    QDomElement prop;
-    KIO::UDSEntry entry = *it;
-    KIO::UDSEntry::ConstIterator item = entry.begin();
-    for( ; item != entry.end(); ++item ) {
-      // kdDebug() << "UDS type: " << (*item).m_uds << endl;
-      if ( (*item).m_uds == KIO::UDS_XML_PROPERTIES ) {
-        // kdDebug() << "Before tricky cast" << endl;
-        kdDebug() << "XML properties: " << endl << (*item).m_str << endl;
-        QDomDocument doc;
-        doc.setContent( (*item).m_str, true );
-        prop = doc.documentElement();
-      } else if ( (*item).m_uds & KIO::UDS_STRING ) {
-        kdDebug() << "UDS String: " << (*item).m_str << endl;
-      }
-    }
-
-    if ( prop.isNull() ) {
-      kdDebug() << "Error: Exchange server prop is null" << endl;
-      continue;
-    }
-
-    QDomElement instancetypeElement = prop.namedItem( "instancetype" ).toElement();
-    if ( instancetypeElement.isNull() ) {
-      kdDebug() << "Error: no instance type in Exchange server reply" << endl;
-      continue;
-    }
-    int instanceType = instancetypeElement.text().toInt();
-    kdDebug() << "Instance type: " << instanceType << endl;
-    
-    if ( recurrence && instanceType > 0 ) {
-      QDomElement uidElement = prop.namedItem( "uid" ).toElement();
-      if ( uidElement.isNull() ) {
-        kdDebug() << "Error: no uid in Exchange server reply" << endl;
-        continue;
-      }
-      QString uid = uidElement.text();
-      if ( ! m_uids.contains( uid ) ) {
-        m_uids[uid] = 1;
-        handleRecurrence(uid);
-      }
-      continue;
-    }
-
-    QDomElement hrefElement = prop.namedItem( "href" ).toElement();
-    if ( instancetypeElement.isNull() ) {
-      kdDebug() << "Error: no href in Exchange server reply" << endl;
-      continue;
-    }
-    QString href = hrefElement.text();
-    KURL url(href);
-    url.setProtocol("webdav");
-    kdDebug() << "GET url: " << url.prettyURL() << endl;
-    
-    emit startDownload();
-    KIO::TransferJob *job2 = KIO::get(url, false, false);
-    KIO::Scheduler::scheduleJob(job2);
-    job2->addMetaData("davHeader", "Translate: f\r\n");
-    connect( job2, SIGNAL(data(KIO::Job *, const QByteArray &)), this, SLOT(slotData(KIO::Job *, const QByteArray &)));
-    connect( job2, SIGNAL( result ( KIO::Job * ) ), SLOT ( slotTransferResult( KIO:: Job * ) ) );
-  }
-}
-*/
 void Exchange::slotData(KIO::Job *job, const QByteArray &data) {
   KURL url = static_cast<KIO::TransferJob *>(job)->url();
   kdDebug() << "Got data for " << url.prettyURL() << endl;
