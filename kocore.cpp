@@ -26,6 +26,7 @@
 
 #include "koprefs.h"
 #include "koglobals.h"
+#include "koidentitymanager.h"
 
 #include <calendar/plugin.h>
 #include <korganizer/part.h>
@@ -49,13 +50,13 @@ KOCore *KOCore::self()
   if ( !mSelf ) {
     mSelf = new KOCore;
   }
-  
+
   return mSelf;
 }
 
 KOCore::KOCore()
   : mCalendarDecorationsLoaded( false ), mHolidays( 0 ), mXMLGUIClient( 0 ),
-    mCalendarResources( 0 )
+    mCalendarResources( 0 ), mIdentityManager( 0 )
 {
 }
 
@@ -110,15 +111,15 @@ KOrg::Plugin *KOCore::loadPlugin( KService::Ptr service )
     kdDebug(5850) << "KOCore::loadPlugin(): Factory creation failed" << endl;
     return 0;
   }
-  
+
   KOrg::PluginFactory *pluginFactory =
       static_cast<KOrg::PluginFactory *>( factory );
-  
+
   if ( !pluginFactory ) {
     kdDebug(5850) << "KOCore::loadPlugin(): Cast to KOrg::PluginFactory failed" << endl;
     return 0;
   }
-  
+
   return pluginFactory->create();
 }
 
@@ -144,15 +145,15 @@ KOrg::CalendarDecoration *KOCore::loadCalendarDecoration(KService::Ptr service)
     kdDebug(5850) << "KOCore::loadCalendarDecoration(): Factory creation failed" << endl;
     return 0;
   }
-  
+
   KOrg::CalendarDecorationFactory *pluginFactory =
       static_cast<KOrg::CalendarDecorationFactory *>(factory);
-  
+
   if (!pluginFactory) {
     kdDebug(5850) << "KOCore::loadCalendarDecoration(): Cast failed" << endl;
     return 0;
   }
-  
+
   return pluginFactory->create();
 }
 
@@ -165,7 +166,7 @@ KOrg::CalendarDecoration *KOCore::loadCalendarDecoration( const QString &name )
       return loadCalendarDecoration( *it );
     }
   }
-  return 0;  
+  return 0;
 }
 
 KOrg::Part *KOCore::loadPart( KService::Ptr service, KOrg::MainWindow *parent )
@@ -183,15 +184,15 @@ KOrg::Part *KOCore::loadPart( KService::Ptr service, KOrg::MainWindow *parent )
     kdDebug(5850) << "KOCore::loadPart(): Factory creation failed" << endl;
     return 0;
   }
-  
+
   KOrg::PartFactory *pluginFactory =
       static_cast<KOrg::PartFactory *>( factory );
-  
+
   if ( !pluginFactory ) {
     kdDebug(5850) << "KOCore::loadPart(): Cast failed" << endl;
     return 0;
   }
-  
+
   return pluginFactory->create( parent );
 }
 
@@ -199,7 +200,7 @@ void KOCore::setXMLGUIClient( KXMLGUIClient *guiclient )
 {
   mXMLGUIClient = guiclient;
 }
- 
+
 
 KOrg::Part *KOCore::loadPart( const QString &name, KOrg::MainWindow *parent )
 {
@@ -210,7 +211,7 @@ KOrg::Part *KOCore::loadPart( const QString &name, KOrg::MainWindow *parent )
       return loadPart( *it, parent );
     }
   }
-  return 0;  
+  return 0;
 }
 
 KOrg::CalendarDecoration::List KOCore::calendarDecorations()
@@ -233,7 +234,7 @@ KOrg::CalendarDecoration::List KOCore::calendarDecorations()
     }
     mCalendarDecorationsLoaded = true;
   }
-  
+
   return mCalendarDecorations;
 }
 
@@ -267,7 +268,7 @@ void KOCore::unloadPlugins()
 {
   KOrg::CalendarDecoration *plugin;
   for( plugin = mCalendarDecorations.first(); plugin;
-       plugin = mCalendarDecorations.next() ) {    
+       plugin = mCalendarDecorations.next() ) {
     delete plugin;
   }
   mCalendarDecorations.clear();
@@ -278,7 +279,7 @@ void KOCore::unloadPlugins()
 void KOCore::unloadParts( KOrg::MainWindow *parent, KOrg::Part::List &parts )
 {
   KOrg::Part *part;
-  for( part = parts.first(); part; part = parts.next() ) {    
+  for( part = parts.first(); part; part = parts.next() ) {
     parent->mainGuiClient()->removeChildClient( part );
     delete part;
   }
@@ -345,6 +346,13 @@ KCal::CalendarResources *KOCore::calendarResources()
       manager->setStandardResource( defaultResource );
     }
   }
-  
+
   return mCalendarResources;
+}
+
+KPIM::IdentityManager* KOCore::identityManager()
+{
+  if ( !mIdentityManager )
+    mIdentityManager = new KOrg::IdentityManager;
+  return mIdentityManager;
 }

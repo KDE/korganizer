@@ -37,11 +37,11 @@
 #include "kogroupware.h"
 
 #include "freebusymanager.h"
-#include "koprefs.h"
 #include "calendarview.h"
 #include "mailscheduler.h"
 #include "kogroupwareincomingdialog.h"
 #include "koviewmanager.h"
+#include "kocore.h"
 
 #include <ktnef/ktnefparser.h>
 #include <ktnef/ktnefmessage.h>
@@ -53,6 +53,8 @@
 #include <libkcal/journal.h>
 #include <libkcal/calendarlocal.h>
 #include <libkcal/icalformat.h>
+
+#include <libkdepim/identitymanager.h>
 
 #include <kabc/phonenumber.h>
 #include <kabc/vcardconverter.h>
@@ -614,6 +616,7 @@ bool KOGroupware::incomingEventRequest( const QString& request,
   KCal::Attendee::List attendees = event->attendees();
   KCal::Attendee::List::ConstIterator it;
   KCal::Attendee* myself = 0;
+  KPIM::IdentityManager* identityManager = KOCore::self()->identityManager();
   // Find myself, there will always be all attendees listed, even if
   // only I need to answer it.
   for ( it = attendees.begin(); it != attendees.end(); ++it ) {
@@ -624,7 +627,7 @@ bool KOGroupware::incomingEventRequest( const QString& request,
       break;
     }
 
-    if( (*it)->email() == KOPrefs::instance()->email() ) {
+    if ( identityManager->thatIsMe( (*it)->email() ) ) {
       // If we are the current one, note that. Still continue to
       // search in case we find the receiver himself.
       myself = (*it);
@@ -870,7 +873,8 @@ bool KOGroupware::sendICalMessage( QWidget* parent,
                                    KCal::Scheduler::Method method,
                                    Incidence* incidence, bool isDeleting )
 {
-  bool isOrganizer = KOPrefs::instance()->email() == incidence->organizer();
+  KPIM::IdentityManager* identityManager = KOCore::self()->identityManager();
+  bool isOrganizer = identityManager->thatIsMe( incidence->organizer() );
 
   int rc = 0;
   if( isOrganizer ) {
@@ -880,7 +884,7 @@ bool KOGroupware::sendICalMessage( QWidget* parent,
     Attendee::List::ConstIterator it;
     for ( it = attendees.begin(); it != attendees.end(); ++it ) {
       // Don't send email to ourselves
-      if( (*it)->email() != KOPrefs::instance()->email() ) {
+      if ( !identityManager->thatIsMe( (*it)->email() ) ) {
         otherPeople = true;
         break;
       }

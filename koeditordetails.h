@@ -43,8 +43,10 @@
 #include "ktimeedit.h"
 #include "customlistviewitem.h"
 
+class QHBox;
 class KDateEdit;
 class KOEditorFreeBusy;
+namespace KPIM { class IdentityCombo; }
 
 using namespace KCal;
 
@@ -121,7 +123,9 @@ class KOEditorDetails : public QWidget
     QComboBox* mRoleCombo;
     QCheckBox* mRsvpButton;
     QComboBox* mStatusCombo;
-    QLabel *mOrganizerLabel;
+    QHBox* mOrganizerHBox;
+    KPIM::IdentityCombo *mOrganizerCombo; // either we organize it (combo shown)
+    QLabel *mOrganizerLabel; // or someone else does (just a label is shown)
 
     QPushButton* mAddButton;
     QPushButton* mRemoveButton;

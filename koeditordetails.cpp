@@ -21,6 +21,8 @@
     without including the source code for Qt in the source distribution.
 */
 
+#include "koeditordetails.h"
+
 #include <qtooltip.h>
 #include <qfiledialog.h>
 #include <qlayout.h>
@@ -43,6 +45,9 @@
 #include <kabc/stdaddressbook.h>
 #endif
 #include <libkdepim/kvcarddrag.h>
+#include <libkdepim/identitycombo.h>
+#include <libkdepim/identity.h>
+#include <libkdepim/identitymanager.h>
 
 #include <libkcal/incidence.h>
 
@@ -51,7 +56,7 @@
 
 #include "koeditorfreebusy.h"
 
-#include "koeditordetails.h"
+#include "kocore.h"
 
 template <>
 CustomListViewItem<class Attendee *>::~CustomListViewItem()
@@ -166,8 +171,13 @@ KOEditorDetails::KOEditorDetails (int spacing,QWidget* parent,const char* name)
   QGridLayout *topLayout = new QGridLayout(this);
   topLayout->setSpacing(spacing);
 
-  QString organizer = KOPrefs::instance()->email();
-  mOrganizerLabel = new QLabel(i18n("Organizer: %1").arg(organizer),this);
+  mOrganizerHBox = new QHBox( this );
+  // If creating a new event, then the user is the organizer -> show the identity combo
+  // readEvent will delete it and set another label text instead, if the user isn't the organizer.
+  // Note that the i18n text below is duplicated in readEvent
+  mOrganizerLabel = new QLabel( i18n( "Identity as organizer:" ), mOrganizerHBox );
+  mOrganizerCombo = new KPIM::IdentityCombo( KOCore::self()->identityManager(), mOrganizerHBox );
+  mOrganizerHBox->setStretchFactor( mOrganizerCombo, 100 );
 
   mListView = new KOAttendeeListView(this,"mListView");
   mListView->addColumn(i18n("Name"),200);
@@ -235,7 +245,7 @@ KOEditorDetails::KOEditorDetails (int spacing,QWidget* parent,const char* name)
   buttonLayout->addWidget(mAddressBookButton);
   connect(mAddressBookButton,SIGNAL(clicked()),SLOT(openAddressBook()));
 
-  topLayout->addMultiCellWidget(mOrganizerLabel,0,0,0,5);
+  topLayout->addMultiCellWidget(mOrganizerHBox,0,0,0,5);
   topLayout->addMultiCellWidget(mListView,1,1,0,5);
   topLayout->addWidget(attendeeLabel,2,0);
   topLayout->addMultiCellWidget(mNameEdit,2,2,1,1);
@@ -310,7 +320,7 @@ void KOEditorDetails::openAddressBook()
             insertAttendee( new Attendee( a.realName(), a.preferredEmail(),
                                           !myself, partStat,
                                           KCal::Attendee::ReqParticipant, a.uid() ) );
-            
+
         }
     }
     delete dia;
@@ -374,7 +384,21 @@ void KOEditorDetails::readEvent(Incidence *event)
     insertAttendee( new Attendee( **it ) );
 
   mListView->setSelected( mListView->firstChild(), true );
-  mOrganizerLabel->setText(i18n("Organizer: %1").arg(event->organizer()));
+
+  KPIM::Identity organizerIdentity = KOCore::self()->identityManager()->identityForAddress( event->organizer() );
+  if ( !organizerIdentity.isNull() ) { // the user is the organizer
+    if ( !mOrganizerCombo ) {
+      mOrganizerCombo = new KPIM::IdentityCombo( KOCore::self()->identityManager(), mOrganizerHBox );
+    }
+    mOrganizerLabel->setText( i18n( "Identity as organizer:" ) );
+    mOrganizerCombo->setCurrentIdentity( organizerIdentity );
+  } else { // someone else is the organizer
+    if ( mOrganizerCombo ) {
+      delete mOrganizerCombo;
+      mOrganizerCombo = 0;
+    }
+    mOrganizerLabel->setText( i18n( "Organizer: %1" ).arg( event->organizer() ) );
+  }
 
   // Reinstate free/busy view updates
   if( mFreeBusy ) mFreeBusy->setUpdateEnabled( block );
@@ -389,6 +413,11 @@ void KOEditorDetails::writeEvent(Incidence *event)
        item = item->nextSibling()) {
     a = (AttendeeListItem *)item;
     event->addAttendee(new Attendee(*(a->data())));
+  }
+  if ( mOrganizerCombo ) {
+    uint uoid = mOrganizerCombo->currentIdentity();
+    const KPIM::Identity& identity = KOCore::self()->identityManager()->identityForUoid( uoid );
+    event->setOrganizer( identity.fullEmailAddr() );
   }
 }
 
@@ -410,7 +439,7 @@ bool KOEditorDetails::validateInput()
 void KOEditorDetails::updateAttendeeInput()
 {
 
-  setEnableAttendeeInput(!mNameEdit->text().isEmpty()); 
+  setEnableAttendeeInput(!mNameEdit->text().isEmpty());
   QListViewItem *item = mListView->selectedItem();
   AttendeeListItem *aItem = static_cast<AttendeeListItem *>( item );
   if (aItem) {
@@ -435,7 +464,7 @@ void KOEditorDetails::fillAttendeeInput( AttendeeListItem *aItem )
   Attendee *a = aItem->data();
   mDisableItemUpdate = true;
   QString name = a->name();
-  if (!a->email().isEmpty()) 
+  if (!a->email().isEmpty())
     name += " <" + a->email() + ">";
   mNameEdit->setText(name);
   mUidEdit->setText(a->uid());

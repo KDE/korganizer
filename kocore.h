@@ -30,6 +30,7 @@
 #include <ktrader.h>
 
 namespace KCal { class CalendarResources; }
+namespace KPIM { class IdentityManager; }
 
 class KOCore
 {
@@ -44,7 +45,7 @@ class KOCore
 
     KOrg::Plugin *loadPlugin( KService::Ptr service );
     KOrg::Plugin *loadPlugin( const QString & );
-    
+
     KOrg::CalendarDecoration *loadCalendarDecoration( KService::Ptr service );
     KOrg::CalendarDecoration *loadCalendarDecoration( const QString & );
 
@@ -60,7 +61,7 @@ class KOCore
     /**
       Unload the parts in &p parts for this main window. Clears
       parts.
-    */       
+    */
     void unloadParts( KOrg::MainWindow *parent, KOrg::Part::List &parts );
     void unloadPlugins();
 
@@ -77,23 +78,27 @@ class KOCore
 
     KCal::CalendarResources *calendarResources();
 
+    KPIM::IdentityManager* identityManager();
+
   protected:
     KOCore();
 
     KTrader::OfferList availablePlugins( const QString &type,
                                          int pluginInterfaceVersion = -1 );
-      
+
   private:
     static KOCore *mSelf;
-    
+
     KOrg::CalendarDecoration::List mCalendarDecorations;
     bool mCalendarDecorationsLoaded;
-    
+
     KOrg::CalendarDecoration *mHolidays;
 
     KXMLGUIClient *mXMLGUIClient;
 
     KCal::CalendarResources *mCalendarResources;
+
+    KPIM::IdentityManager *mIdentityManager;
 };
 
 #endif
