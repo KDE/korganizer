@@ -59,6 +59,9 @@ class FreeBusyItem : public KDGanttViewTaskItem
       Q_ASSERT( attendee );
       updateItem();
       setFreeBusyPeriods( 0 );
+      setDisplaySubitemsAsGroup( true );
+      if ( listView () )
+          listView ()->setRootIsDecorated( false );
     }
     ~FreeBusyItem() {}
 
@@ -124,9 +127,21 @@ void FreeBusyItem::setFreeBusyPeriods( FreeBusy* fb )
     setFreeBusy( fb );
     setShowNoInformation( false );
   } else {
-    // No free/busy information
-    setFreeBusy( 0 );
-    setShowNoInformation( true );
+      // No free/busy information
+      //debug only start
+      //   int ii ;
+      //       QDateTime cur = QDateTime::currentDateTime();
+      //       for( ii = 0; ii < 10 ;++ii ) {
+      //           KDGanttViewTaskItem* newSubItem = new KDGanttViewTaskItem( this );
+      //           cur = cur.addSecs( 7200 );
+      //           newSubItem->setStartTime( cur );
+      //           cur = cur.addSecs( 7200 );
+      //           newSubItem->setEndTime( cur );
+      //           newSubItem->setColors( Qt::red, Qt::red, Qt::red );
+      //       }
+      //debug only end
+      setFreeBusy( 0 );
+      setShowNoInformation( true );
   }
 }
 
@@ -201,6 +216,7 @@ KOEditorFreeBusy::KOEditorFreeBusy( int spacing, QWidget* parent, const char* na
   }
   mGanttView->setHeaderVisible( true );
   mGanttView->setScale( KDGanttView::Hour );
+  mGanttView->setShowHeaderPopupMenu( true, true, true,false,false,true );
   // Initially, show 15 days back and forth
   // set start to even hours, i.e. to 12:AM 0 Min 0 Sec
   QDateTime horizonStart = QDateTime( QDateTime::currentDateTime().addDays( -15 ).date() );
@@ -208,15 +224,15 @@ KOEditorFreeBusy::KOEditorFreeBusy( int spacing, QWidget* parent, const char* na
   mGanttView->setHorizonStart( horizonStart );
   mGanttView->setHorizonEnd( horizonEnd );
   mGanttView->setCalendarMode( true );
-  mGanttView->setDisplaySubitemsAsGroup( true );
+  //mGanttView->setDisplaySubitemsAsGroup( true );
   mGanttView->setShowLegendButton( false );
   // Initially, center to current date
   mGanttView->centerTimelineAfterShow( QDateTime::currentDateTime() );
   if ( KGlobal::locale()->use12Clock() )
     mGanttView->setHourFormat( KDGanttView::Hour_12 );
   else
-    mGanttView->setHourFormat( KDGanttView::Hour_24 );
-
+    mGanttView->setHourFormat( KDGanttView::Hour_24_FourDigit );
+  connect(mGanttView, SIGNAL ( timeIntervalSelected( const QDateTime&,const QDateTime&) ) ,mGanttView , SLOT( zoomToSelection( const QDateTime&, const  QDateTime&))) ;
 //  connect( mGanttView, SIGNAL( lvItemDoubleClicked( KDGanttViewItem * ) ),
 //           SLOT( updateFreeBusyData( KDGanttViewItem * ) ) );
   connect( mGanttView, SIGNAL( lvItemDoubleClicked( KDGanttViewItem * ) ),
@@ -287,6 +303,7 @@ bool KOEditorFreeBusy::updateEnabled() const
 void KOEditorFreeBusy::readEvent( Event* event )
 {
   setDateTimes( event->dtStart(), event->dtEnd() );
+
 }
 
 
@@ -315,14 +332,7 @@ void KOEditorFreeBusy::slotCenterOnStart()
 
 void KOEditorFreeBusy::slotZoomToTime() 
 {
-  bool block  = mGanttView->getUpdateEnabled();
-  mGanttView->setUpdateEnabled( false );
-  if ( scaleCombo->currentItem() != 4 ) {
-    scaleCombo->setCurrentItem( 4 );// auto
-    slotScaleChanged( 4 );// auto
-  }
-  mGanttView->setUpdateEnabled( block );
-  mGanttView->zoomToSelection( mDtStart, mDtEnd );
+    mGanttView->zoomToFit();
 }
 
 void KOEditorFreeBusy::updateFreeBusyData( KDGanttViewItem *item )

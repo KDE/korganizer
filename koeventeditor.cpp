@@ -328,6 +328,13 @@ void KOEventEditor::setDefaults( QDateTime from, QDateTime to, bool allDay )
   mDetails->setDefaults();
   mAttachments->setDefaults();
   mRecurrence->setDefaults( from, to, allDay );
+  if( mFreeBusy ) {
+      if ( allDay )
+          mFreeBusy->setDateTimes( from, to.addDays(1) );
+      else
+          mFreeBusy->setDateTimes( from, to );
+          
+   }
 }
 
 void KOEventEditor::readEvent( Event *event, bool tmpl )
