@@ -586,9 +586,11 @@ bool KOAgendaItem::overlaps( KOrg::CellItem *o ) const
 
 void KOAgendaItem::paintFrame( QPainter *p, const QColor &color )
 {
+  QColor oldpen(p->pen().color());
   p->setPen( color );
   p->drawRect( 0, 0, width(), height() );
   p->drawRect( 1, 1, width() - 2, height() - 2 );
+  p->setPen( oldpen );
 }
 
 static void conditionalPaint( QPainter *p, bool cond, int &x, int ft,
@@ -651,7 +653,7 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
   int singleLineHeight = fm.boundingRect( mLabelText ).height();
 
   // case 1: do not draw text when not even a single line fits
-  if ( ( singleLineHeight > height() ) || // ignore margin, be gentle..
+  if ( //( singleLineHeight > height()-4 ) || // ignore margin, be gentle.. Even ignore 2 pixel outside the item
        ( width() < 16 ) ) {
     p.eraseRect( 0, 0, width(), height() );
     int x = margin;
@@ -674,10 +676,10 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
     }
 
     paintTodoIcon( &p, x, ft );
+    paintFrame( &p, frameColor );
     int y = ((height() - 2 * ft - singleLineHeight) / 2) + fm.ascent();
     KWordWrap::drawFadeoutText( &p, x, y,
                                 txtWidth, mLabelText );
-    paintFrame( &p, frameColor );
     return;
   }
 
@@ -713,15 +715,13 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
      QMAX(readonlyPxmp.height(), QMAX(replyPxmp.height(),
      QMAX(groupPxmp.height(), organizerPxmp.height()))))));
   bool completelyRenderable =
-    th <= (height() - 2 * ft - hlHeight);
-
+    th < (height() - 2 * ft - 2 - hlHeight);
   // case 3: enough for 2-5 lines, but not for the header.
   //         Also used for the middle days in multi-events
-  //         or all-day events
-  if ( ((!completelyRenderable) &&
-        ((height() - (2 * margin)) <= (5 * singleLineHeight)) ) ||
-         (isMultiItem() && mMultiItemInfo->mNextMultiItem && mMultiItemInfo->mFirstMultiItem) ||
-         mIncidence->doesFloat() ) {
+  //         or all-day events  
+  if ( ((!completelyRenderable) && ((height() - (2 * margin)) <= (5 * singleLineHeight)) ) ||
+       (isMultiItem() && mMultiItemInfo->mNextMultiItem && mMultiItemInfo->mFirstMultiItem) ||
+       mIncidence->doesFloat() ) {
     int x = margin;
     int txtWidth = width() - margin - x;
     if (mIncidence->doesFloat() ) {
@@ -735,9 +735,9 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
                                 mLabelText );
     p.eraseRect( 0, 0, width(), height() );
     paintTodoIcon( &p, x, ft );
+    paintFrame( &p, frameColor );
     ww->drawText( &p, x, margin, Qt::AlignAuto | KWordWrap::FadeOut );
     delete ww;
-    paintFrame( &p, frameColor );
     return;
   }
 
@@ -788,6 +788,7 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
   // draw event text
   p.setBackgroundColor( bgColor );
   p.setPen( textColor );
+  paintFrame( &p, frameColor );
   QString ws = ww->wrappedString();
   if ( ws.left( ws.length()-1 ).find( '\n' ) >= 0 )
     ww->drawText( &p, margin, y,
@@ -796,6 +797,5 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
     ww->drawText( &p, margin + (width()-ww->boundingRect().width()-2*margin)/2,
                   y, Qt::AlignHCenter | KWordWrap::FadeOut );
   delete ww;
-  paintFrame( &p, frameColor );
 }
 
