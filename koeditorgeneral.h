@@ -42,6 +42,7 @@
 #include "ktimeedit.h"
 
 class KDateEdit;
+class KSqueezedTextLabel;
 
 using namespace KCal;
 
@@ -118,9 +119,10 @@ class KOEditorGeneral : public QObject
     QLabel                  *mOwnerLabel;
     QComboBox               *mSecrecyCombo;
     QPushButton             *mCategoriesButton;
-    QLabel                  *mCategoriesLabel;
+    KSqueezedTextLabel      *mCategoriesLabel;
      
   private:
+    QString mCategories;
     QString mAlarmSound;
     QString mAlarmProgram;
 };

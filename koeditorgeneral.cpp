@@ -36,6 +36,7 @@
 #include <kiconloader.h>
 #include <kmessagebox.h>
 #include <kfiledialog.h>
+#include <ksqueezedtextlabel.h>
 #include <kstandarddirs.h>
 
 #include <libkcal/todo.h>
@@ -112,7 +113,7 @@ void KOEditorGeneral::initCategories(QWidget *parent, QBoxLayout *topLayout)
   connect(mCategoriesButton,SIGNAL(clicked()),SIGNAL(openCategoryDialog()));
   categoriesLayout->addWidget(mCategoriesButton);
 
-  mCategoriesLabel = new QLabel(parent);
+  mCategoriesLabel = new KSqueezedTextLabel(parent);
   mCategoriesLabel->setFrameStyle(QFrame::Panel|QFrame::Sunken);
   categoriesLayout->addWidget(mCategoriesLabel,1);
 }
@@ -266,6 +267,7 @@ void KOEditorGeneral::alarmDisable(bool disable)
 void KOEditorGeneral::setCategories(const QString &str)
 {
   mCategoriesLabel->setText(str);
+  mCategories = str;
 }
 
 void KOEditorGeneral::setDefaults(bool allDay)
@@ -372,7 +374,7 @@ void KOEditorGeneral::writeIncidence(Incidence *event)
   event->setSummary(mSummaryEdit->text());
   event->setLocation(mLocationEdit->text());
   event->setDescription(mDescriptionEdit->text());
-  event->setCategories(mCategoriesLabel->text());
+  event->setCategories(mCategories);
   event->setSecrecy(mSecrecyCombo->currentItem());
 
   // alarm stuff
