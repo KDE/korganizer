@@ -221,10 +221,6 @@ void KOEditorGeneral::setDefaults(bool allDay)
 
 void KOEditorGeneral::readIncidence(Incidence *event)
 {
-  QString tmpStr;
-  QDateTime tmpDT;
-  int i;
-
   mSummaryEdit->setText(event->summary());
   mDescriptionEdit->setText(event->description());
 
@@ -239,38 +235,39 @@ void KOEditorGeneral::readIncidence(Incidence *event)
   QPtrList<Alarm> alarms = event->alarms();
   Alarm* alarm;
   for ( alarm = alarms.first(); alarm; alarm = alarms.next() ) {
+    int offset;
+    if ( alarm->hasTime() ) {
+      QDateTime t = alarm->time();
+      offset = event->dtStart().secsTo( t );
+    } else {
+      offset = alarm->offset().asSeconds();
+    }
+    offset = offset / -60; // make minutes
+    if (offset % 60 == 0) { // divides evenly into hours?
+      offset = offset / 60;
+      mAlarmIncrCombo->setCurrentItem(1);
+    }
+    if (offset % 24 == 0) { // divides evenly into days?
+      offset = offset / 24;
+      mAlarmIncrCombo->setCurrentItem(2);
+    }
+    mAlarmTimeEdit->setText(QString::number( offset ));
+
+    if (!alarm->programFile().isEmpty()) {
+      mAlarmProgram = alarm->programFile();
+      mAlarmProgramButton->setOn(true);
+      QString dispStr = i18n("Running '%1'").arg(mAlarmProgram);
+      QToolTip::add(mAlarmProgramButton, dispStr);
+    }
+    if (!alarm->audioFile().isEmpty()) {
+      mAlarmSound = alarm->audioFile();
+      mAlarmSoundButton->setOn(true);
+      QString dispStr = i18n("Playing '%1'").arg(mAlarmSound);
+      QToolTip::add(mAlarmSoundButton, dispStr);
+    }
     mAlarmButton->setChecked(alarm->enabled());
     if (mAlarmButton->isChecked()) {
       alarmStuffEnable(true);
-      tmpDT = alarm->time();
-      if (tmpDT.isValid()) {
-        i = tmpDT.secsTo(event->dtStart());
-        i = i / 60; // make minutes
-        if (i % 60 == 0) { // divides evenly into hours?
-          i = i / 60;
-          mAlarmIncrCombo->setCurrentItem(1);
-        }
-        if (i % 24 == 0) { // divides evenly into days?
-          i = i / 24;
-          mAlarmIncrCombo->setCurrentItem(2);
-        }
-      } else {
-        i = 5;
-      }
-      mAlarmTimeEdit->setText(QString::number(i));
-
-      if (!alarm->programFile().isEmpty()) {
-        mAlarmProgram = alarm->programFile();
-        mAlarmProgramButton->setOn(true);
-        QString dispStr = i18n("Running '%1'").arg(mAlarmProgram);
-        QToolTip::add(mAlarmProgramButton, dispStr);
-      }
-      if (!alarm->audioFile().isEmpty()) {
-        mAlarmSound = alarm->audioFile();
-        mAlarmSoundButton->setOn(true);
-        QString dispStr = i18n("Playing '%1'").arg(mAlarmSound);
-        QToolTip::add(mAlarmSoundButton, dispStr);
-      }
     } else {
       alarmStuffEnable(false);
     }
@@ -285,12 +282,6 @@ void KOEditorGeneral::writeIncidence(Incidence *event)
 {
 //  kdDebug() << "KOEditorGeneral::writeEvent()" << endl;
 
-  QDateTime tmpDT;
-
-  // temp. until something better happens.
-  QString tmpStr;
-  int j;
-
   event->setSummary(mSummaryEdit->text());
   event->setDescription(mDescriptionEdit->text());
   event->setCategories(mCategoriesLabel->text());
@@ -303,24 +294,25 @@ void KOEditorGeneral::writeIncidence(Incidence *event)
     Alarm *alarm;
     for (alarm = alarms.first(); alarm; alarm = alarms.next() ) {
       alarm->setEnabled(true);
-      tmpStr = mAlarmTimeEdit->text();
-      j = tmpStr.toInt() * -60;
+
+      QString tmpStr = mAlarmTimeEdit->text();
+      int j = tmpStr.toInt() * -60;
       if (mAlarmIncrCombo->currentItem() == 1)
         j = j * 60;
       else if (mAlarmIncrCombo->currentItem() == 2)
         j = j * (60 * 24);
+      alarm->setOffset( j );
 
-      tmpDT = event->dtStart();
-      tmpDT = tmpDT.addSecs(j);
-      alarm->setTime(tmpDT);
       if (!mAlarmProgram.isEmpty() && mAlarmProgramButton->isOn())
         alarm->setProgramFile(mAlarmProgram);
       else
         alarm->setProgramFile("");
+
       if (!mAlarmSound.isEmpty() && mAlarmSoundButton->isOn())
         alarm->setAudioFile(mAlarmSound);
       else
         alarm->setAudioFile("");
+
 // TODO: Deal with multiple alarms
       break; // For now, stop after the first alarm
     }

@@ -745,7 +745,7 @@ bool KOrganizer::saveURL()
   }
 
   if (isActive()) {
-    kdDebug() << "KOrganizer::saveURL(): Notify alarm daemon" << endl;
+    kdDebug() << "KOrganizer::saveURL(): Notify alarm daemon: " << mURL.url() << endl;
     QByteArray data;
     QDataStream arg(data, IO_WriteOnly);
     arg << QString("korganizer") << mURL.url();
@@ -1063,6 +1063,8 @@ void KOrganizer::makeActive()
   }
 
   writeActiveState();
+
+  kdDebug() << "KOrganizer::saveURL(): Notify alarm daemon: " << mURL.url() << endl;
 
   QByteArray data;
   QDataStream arg(data, IO_WriteOnly);

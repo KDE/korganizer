@@ -138,12 +138,13 @@ int KOrganizerApp::newInstance()
     if (!dcopClient()->isApplicationRegistered("kalarmd")) {
       startAlarmDaemon();
     }
+    kdDebug() << "KOApp::newInstance() registerApp" << endl;
     // Register this application with the alarm daemon
     QByteArray data;
     QDataStream arg(data, IO_WriteOnly);
-    arg << QString("korganizer") << QString("KOrganizer") << QString() << (Q_INT8)0 << (Q_INT8)1;
-    if (!dcopClient()->send("kalarmd","ad","registerApp(QString,QString,QString,bool,bool)", data)) {
-      kdDebug() << "KOrganizerApp::startAlarmDaemon(): dcop send failed" << endl;
+    arg << QCString("korganizer") << QString("KOrganizer") << QCString() << (Q_INT8)0 << (Q_INT8)1;
+    if (!dcopClient()->send("kalarmd","ad","registerApp(QCString,QString,QCString,int,bool)", data)) {
+      kdDebug() << "KOrganizerApp::newInstance(): dcop send failed" << endl;
     }
   }
 
@@ -160,8 +161,8 @@ int KOrganizerApp::newInstance()
     // Force alarm daemon to load active calendar
     QByteArray data;
     QDataStream arg(data, IO_WriteOnly);
-    arg << QString("korganizer") << urlString;
-    if (!dcopClient()->send("kalarmd","ad","addCal(QString,QString)", data)) {
+    arg << QCString("korganizer") << urlString;
+    if (!dcopClient()->send("kalarmd","ad","addCal(QCString,QString)", data)) {
       kdDebug() << "KOrganizerApp::newInstance(): dcop send failed" << endl;
     }
 
