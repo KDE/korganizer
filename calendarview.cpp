@@ -1082,7 +1082,12 @@ void CalendarView::schedule_publish(Incidence *incidence)
      attendees.next();
    }
   }
-  if ( publishdlg->exec() == QDialog::Accepted ) {
+  bool send = true;
+  if ( KOPrefs::instance()->mMailClient == KOPrefs::MailClientSendmail ) {
+    if ( publishdlg->exec() != QDialog::Accepted ) 
+      send = false;
+  }    
+  if ( send ) {
     OutgoingDialog *dlg = mDialogManager->outgoingDialog();
     if ( event ) {
       Event *ev = new Event(*event);
