@@ -31,8 +31,6 @@
 
 #include <libkcal/calendar.h>
 
-#include "calprinter.h"
-
 #include "koeventview.h"
 using namespace KOrg;
 #include "koeventview.moc"

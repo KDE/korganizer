@@ -33,7 +33,9 @@
 
 #include <libkcal/calendar.h>
 
+#ifndef KORG_NOPRINTER
 #include "calprinter.h"
+#endif
 #include "koglobals.h"
 
 #include "kolistview.h"
