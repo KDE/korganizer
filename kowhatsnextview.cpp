@@ -132,7 +132,7 @@ void KOWhatsNextView::updateView()
     Event::List::ConstIterator it;
     for( it = events.begin(); it != events.end(); ++it ) {
       Event *ev = *it;
-      if (!ev->recurrence()->doesRecur() || ev->recursOn( QDate::currentDate())) {
+      if (!ev->doesRecur() || ev->recursOn( QDate::currentDate())) {
         appendEvent(ev);
       }
     }

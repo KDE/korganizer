@@ -380,7 +380,7 @@ void MonthViewCell::updateCell()
     } else {
       item->setPalette( mStandardPalette );
     }
-    item->setRecur( event->recurrence()->doesRecur() );
+    item->setRecur( event->doesRecur() );
     item->setAlarm( event->isAlarmEnabled() );
 
     Attendee *me = event->attendeeByMails(KOPrefs::instance()->additionalMails(),

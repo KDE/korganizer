@@ -423,7 +423,7 @@ bool KOAgenda::eventFilter_mouse(QObject *object, QMouseEvent *me)
           if (mActionItem) {
             selectItem(mActionItem);
             Incidence *incidence = mActionItem->incidence();
-            if ( incidence->isReadOnly() || incidence->recurrence()->doesRecur() ) {
+            if ( incidence->isReadOnly() || incidence->doesRecur() ) {
               mActionItem = 0;
             } else {
               startItemAction(viewportPos);

@@ -308,7 +308,7 @@ QString KOMailClient::createBody(IncidenceBase *incidence)
       body += i18n("End Time: %1").arg(selectedEvent->dtEndTimeStr());
       body += CR;
     }
-    if (selectedEvent->recurrence()->doesRecur()) {
+    if (selectedEvent->doesRecur()) {
       body += i18n("Recurs: %1")
                .arg(recurrence[selectedEvent->recurrence()->doesRecur()]);
       body += CR;

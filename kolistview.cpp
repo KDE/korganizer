@@ -58,7 +58,7 @@ bool ListItemVisitor::visit(Event *e)
   mItem->setText(3,e->dtEndDateStr());
   mItem->setText(4,e->dtEndTimeStr());
   mItem->setText(5,e->isAlarmEnabled() ? i18n("Yes") : i18n("No"));
-  mItem->setText(6,e->recurrence()->doesRecur() ? i18n("Yes") : i18n("No"));
+  mItem->setText(6,e->doesRecur() ? i18n("Yes") : i18n("No"));
   mItem->setText(7,"---");
   mItem->setText(8,"---");
   mItem->setText(9,e->categoriesStr());

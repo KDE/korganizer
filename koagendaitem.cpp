@@ -79,7 +79,7 @@ KOAgendaItem::KOAgendaItem(Incidence *incidence, QDate qd, QWidget *parent,
 void KOAgendaItem::updateIcons()
 {
   mIconReadonly = mIncidence->isReadOnly();
-  mIconRecur = mIncidence->recurrence()->doesRecur();
+  mIconRecur = mIncidence->doesRecur();
   mIconAlarm = mIncidence->isAlarmEnabled();
   if (mIncidence->attendeeCount()>0) {
     if (mIncidence->organizer() == KOPrefs::instance()->email()) {

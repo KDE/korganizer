@@ -908,10 +908,16 @@ void KOEditorRecurrence::readEvent(Event *event)
 
   setDateTimes( event->dtStart(), event->dtEnd() );
 
-  Recurrence *r = event->recurrence();
-  int f = r->frequency();
+  int recurs = event->doesRecur();
+  int f = 0;
+  Recurrence *r = 0;
 
-  int recurs = r->doesRecur();
+  if ( recurs )
+  {
+    r = event->recurrence();
+    f = r->frequency();
+  }
+
 
   mEnabledCheck->setChecked( recurs );
   setEnabled( recurs );
@@ -982,7 +988,7 @@ void KOEditorRecurrence::readEvent(Event *event)
 
   mRecurrenceRange->setDateTimes( event->dtStart() );
 
-  if ( r->doesRecur() ) {
+  if ( event->doesRecur() ) {
     mRecurrenceRange->setDuration( r->duration() );
     if ( r->duration() == 0 ) mRecurrenceRange->setEndDate( r->endDate() );
   }
@@ -992,60 +998,66 @@ void KOEditorRecurrence::readEvent(Event *event)
 
 void KOEditorRecurrence::writeEvent( Event *event )
 {
+  if ( !mEnabledCheck->isChecked() )
+  {
+    if (event->doesRecur())
+        event->recurrence()->unsetRecurs();
+    return;
+  }
+
   Recurrence *r = event->recurrence();
 
   // clear out any old settings;
   r->unsetRecurs();
 
-  if ( mEnabledCheck->isChecked() ) {
-    int duration = mRecurrenceRange->duration();
-    QDate endDate;
-    if ( duration == 0 ) endDate = mRecurrenceRange->endDate();
+  int duration = mRecurrenceRange->duration();
+  QDate endDate;
+  if ( duration == 0 ) endDate = mRecurrenceRange->endDate();
 
-    int recurrenceType = mRecurrenceChooser->type();
+  int recurrenceType = mRecurrenceChooser->type();
 
-    if ( recurrenceType == RecurrenceChooser::Daily ) {
+  if ( recurrenceType == RecurrenceChooser::Daily ) {
       int freq = mDaily->frequency();
       if ( duration != 0 ) r->setDaily( freq, duration );
       else  r->setDaily( freq, endDate );
-    } else if ( recurrenceType == RecurrenceChooser::Weekly ) {
+  } else if ( recurrenceType == RecurrenceChooser::Weekly ) {
       int freq = mWeekly->frequency();
       QBitArray days = mWeekly->days();
       if ( duration != 0 ) r->setWeekly( freq, days, duration );
       else r->setWeekly( freq, days, endDate );
-    } else if ( recurrenceType == RecurrenceChooser::Monthly ) {
+  } else if ( recurrenceType == RecurrenceChooser::Monthly ) {
       int freq = mMonthly->frequency();
       if ( mMonthly->byPos() ) {
-        int pos = mMonthly->count();
+          int pos = mMonthly->count();
 
-        QBitArray days( 7 );
-        days.fill( false );
+          QBitArray days( 7 );
+          days.fill( false );
 
-        days.setBit( mMonthly->weekday() );
-        if ( duration != 0 )
-          r->setMonthly( Recurrence::rMonthlyPos, freq, duration );
-        else
-          r->setMonthly( Recurrence::rMonthlyPos, freq, endDate );
-        r->addMonthlyPos( pos, days );
+          days.setBit( mMonthly->weekday() );
+          if ( duration != 0 )
+              r->setMonthly( Recurrence::rMonthlyPos, freq, duration );
+          else
+              r->setMonthly( Recurrence::rMonthlyPos, freq, endDate );
+          r->addMonthlyPos( pos, days );
       } else {
-        // it's by day
-        int day = mMonthly->day();
+          // it's by day
+          int day = mMonthly->day();
 
-        if ( duration != 0 ) {
-          r->setMonthly( Recurrence::rMonthlyDay, freq, duration );
-        } else {
-          r->setMonthly( Recurrence::rMonthlyDay, freq, endDate );
-        }
-        r->addMonthlyDay( day );
+          if ( duration != 0 ) {
+              r->setMonthly( Recurrence::rMonthlyDay, freq, duration );
+          } else {
+              r->setMonthly( Recurrence::rMonthlyDay, freq, endDate );
+          }
+          r->addMonthlyDay( day );
       }
-    } else if ( recurrenceType == RecurrenceChooser::Yearly ) {
+  } else if ( recurrenceType == RecurrenceChooser::Yearly ) {
       int freq = mYearly->frequency();
 
       int month;
       if ( mYearly->byMonth() ) {
-        month = mYearly->month();
+          month = mYearly->month();
       } else {
-        month = event->dtStart().date().month();
+          month = event->dtStart().date().month();
       }
       if ( duration != 0 ) {
         r->setYearly( Recurrence::rYearlyMonth, freq, duration );
@@ -1057,7 +1069,6 @@ void KOEditorRecurrence::writeEvent( Event *event )
     }
 
     event->setExDates( mExceptions->dates() );
-  }
 }
 
 void KOEditorRecurrence::setDateTimeStr( const QString &str )

@@ -254,7 +254,7 @@ void KODayMatrix::updateView(QDate actdate)
     Event::List::ConstIterator it;
     for( it = eventlist.begin(); it != eventlist.end(); ++it ) {
       Event *event = *it;
-      ushort recurType = event->recurrence()->doesRecur();
+      ushort recurType = event->doesRecur();
 
       if ((recurType == Recurrence::rDaily && !KOPrefs::instance()->mDailyRecur) ||
           (recurType == Recurrence::rWeekly && !KOPrefs::instance()->mWeeklyRecur)) {

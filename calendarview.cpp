@@ -1014,7 +1014,7 @@ void CalendarView::deleteEvent(Event *anEvent)
     return;
   }
 
-  if (anEvent->recurrence()->doesRecur()) {
+  if (anEvent->doesRecur()) {
     QDate itemDate = mViewManager->currentSelectionDate();
     kdDebug(5850) << "Recurrence-Date: " << itemDate.toString() << endl;
     int km;

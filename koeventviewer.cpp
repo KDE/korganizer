@@ -155,7 +155,7 @@ void KOEventViewer::appendEvent(Event *event)
 
   formatCategories(event);
 
-  if (event->recurrence()->doesRecur()) {
+  if (event->doesRecur()) {
     addTag("p","<em>" + i18n("This is a recurring event.") + "</em>");
   }
 
