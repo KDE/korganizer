@@ -1,6 +1,7 @@
 /*
-    This file is part of the KDE alarm daemon.
-    Copyright (c) 2000 Cornelius Schumacher <schumacher@kde.org>
+    This file is part of the KOrganizer alarm daemon.
+
+    Copyright (c) 2000,2003 Cornelius Schumacher <schumacher@kde.org>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -21,13 +22,12 @@
     without including the source code for Qt in the source distribution.
 */
 
-// $Id$
-
 #include <qhbox.h>
 #include <qvbox.h>
 #include <qlabel.h>
 #include <qfile.h>
 #include <qspinbox.h>
+#include <qlayout.h>
 
 #include <klocale.h>
 #include <kprocess.h>
@@ -42,30 +42,37 @@
 #include "alarmdialog.h"
 #include "alarmdialog.moc"
 
-AlarmDialog::AlarmDialog(QWidget *parent,const char *name)
-  : KDialogBase(parent,name,false,i18n("Alarm"),Ok|User1|User2,User2,false,
-                i18n("Suspend"))
+AlarmDialog::AlarmDialog( QWidget *parent, const char *name )
+  : KDialogBase( Plain, WType_TopLevel | WStyle_Customize | WStyle_StaysOnTop |
+                 WStyle_DialogBorder,
+                 parent, name, false, i18n("Alarm"), Ok | User1 | User2, User2,
+                 false, i18n("Suspend") )
 {
-  QVBox *topBox = new QVBox(this);
-  topBox->setSpacing(spacingHint());
-  setMainWidget(topBox);
-
-  (void)new QLabel(i18n("The following events triggered alarms:"),topBox);
-
-  mIncidences.setAutoDelete(true);
+  QWidget *topBox = plainPage();
   
-  mEventViewer = new KOEventViewer(topBox);
+  QBoxLayout *topLayout = new QVBoxLayout( topBox );
+  topLayout->setSpacing( spacingHint() );
 
-  QHBox *suspendBox = new QHBox(topBox);
-  suspendBox->setSpacing(spacingHint());
+  QLabel *label = new QLabel( i18n("The following events triggered alarms:"),
+                              topBox );
+  topLayout->addWidget( label );
 
-  (void)new QLabel(i18n("Suspend duration (minutes):"),suspendBox);
-  mSuspendSpin = new QSpinBox(1,60,1,suspendBox);
-  mSuspendSpin->setValue(5);  // default suspend duration
+  mIncidences.setAutoDelete( true );
   
-  showButton(User2, false);
+  mEventViewer = new KOEventViewer( topBox );
+  topLayout->addWidget( mEventViewer );
+
+  QHBox *suspendBox = new QHBox( topBox );
+  suspendBox->setSpacing( spacingHint() );
+  topLayout->addWidget( suspendBox );
+
+  new QLabel( i18n("Suspend duration (minutes):"), suspendBox );
+  mSuspendSpin = new QSpinBox( 1, 60, 1, suspendBox );
+  mSuspendSpin->setValue( 5 );  // default suspend duration
   
-  setMinimumSize(300,200);
+  showButton( User2, false );
+  
+  setMinimumSize( 300, 200 );
 }
 
 AlarmDialog::~AlarmDialog()

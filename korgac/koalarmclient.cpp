@@ -35,6 +35,9 @@
 #include <kdebug.h>
 #include <klocale.h>
 #include <kapplication.h>
+#include <kwin.h>
+
+#include <qpushbutton.h>
 
 KOAlarmClient::KOAlarmClient( QObject *parent, const char *name )
   : DCOPObject( "ac" ), QObject( parent, name ),
@@ -101,8 +104,7 @@ void KOAlarmClient::checkAlarms()
     }
   }
   if ( newEvents ) {
-    mAlarmDialog->show();
-    mAlarmDialog->eventNotification();
+    showAlarmDialog();
   }
 
   cfg->writeEntry( "CalendarsLastChecked", to );
@@ -120,6 +122,9 @@ void KOAlarmClient::suspend( int minutes )
 void KOAlarmClient::showAlarmDialog()
 {
   mAlarmDialog->show();
+  mAlarmDialog->raise();
+  KWin::setActiveWindow( mAlarmDialog->winId() );
+  mAlarmDialog->actionButton( KDialogBase::User2 )->setFocus();
   mAlarmDialog->eventNotification();
 }
 
@@ -164,6 +169,11 @@ QStringList KOAlarmClient::dumpAlarms()
   }
 
   return lst;
+}
+
+void KOAlarmClient::debugShowDialog()
+{
+  showAlarmDialog();
 }
 
 #include "koalarmclient.moc"

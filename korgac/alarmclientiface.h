@@ -37,6 +37,8 @@ class AlarmClientIface : virtual public DCOPObject
     virtual ASYNC forceAlarmCheck() = 0;
     virtual ASYNC dumpDebug() = 0;
     virtual QStringList dumpAlarms() = 0;
+    
+    virtual void debugShowDialog() = 0;
 };
 
 #endif

@@ -50,6 +50,8 @@ class KOAlarmClient : public QObject, virtual public AlarmClientIface
     void dumpDebug();
     QStringList dumpAlarms();
 
+    void debugShowDialog();
+
   public slots:
     /**
       Schedule the alarm dialog for redisplay after a specified number of
