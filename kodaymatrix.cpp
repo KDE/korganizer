@@ -65,23 +65,23 @@ void DynamicTip::maybeTip( const QPoint &pos )
   QRect rct(col*dwidth, row*dheight, dwidth, dheight);
 
   kdDebug() << "DynamicTip::maybeTip index " << (col+row*7) << endl;
-  const QString* str = matrix->getHolidayLabel(col+row*7);
-  if (str == 0) return;
+  QString str = matrix->getHolidayLabel(col+row*7);
+  if (str.isEmpty()) return;
 
   kdDebug() << "DynamicTip::maybeTip #" << *str << "#" << endl;
 
-  tip(rct, *str);
+  tip(rct, str);
 }
 
 KODayMatrix::KODayMatrix(QWidget *parent, Calendar* calendar, QDate date, const char *name) :
-QFrame(parent, name) {
+  QFrame(parent, name)
+{
   mCalendar = calendar;
 
   // initialize dynamic arrays
   daylbls = new QString[NUMDAYS];
   days = new QDate[NUMDAYS];
   events = new int[NUMDAYS];
-  holidays = new (QString*)[NUMDAYS];
   mToolTip = new DynamicTip(this);
 
   // set default values used for drawing the matrix
@@ -112,14 +112,11 @@ QColor KODayMatrix::getShadedColor(QColor color)
   return shaded;
 }
 
-KODayMatrix::~KODayMatrix() {
+KODayMatrix::~KODayMatrix()
+{
   delete [] days;
   delete [] daylbls;
   delete events;
-  for (int i = 0; i < NUMDAYS; i++) {
-    if (holidays[i] != 0) delete holidays[i];
-  }
-  delete holidays;
   delete mToolTip;
 
   // pen is created on the fly in the paintEvent method, so make sure there
@@ -127,17 +124,20 @@ KODayMatrix::~KODayMatrix() {
   if (mTodayPen != 0) delete mTodayPen;
 }
 
-void KODayMatrix::setStartDate(QDate start) {
+void KODayMatrix::setStartDate(QDate start)
+{
   updateView(start);
 }
 
-void KODayMatrix::addSelectedDaysTo(DateList& selDays) {
+void KODayMatrix::addSelectedDaysTo(DateList& selDays)
+{
   for (int i = mSelStart; i <= mSelEnd; i++) {
     selDays.append(/*new QDate*/days[i]);
   }
 }
 
-void KODayMatrix::setSelectedDaysFrom(const QDate& start, const QDate& end) {
+void KODayMatrix::setSelectedDaysFrom(const QDate& start, const QDate& end)
+{
   mSelStart = startdate.daysTo(start);
   mSelEnd = startdate.daysTo(end);
   kdDebug() << "startdate" << startdate.day() << endl;
@@ -145,12 +145,13 @@ void KODayMatrix::setSelectedDaysFrom(const QDate& start, const QDate& end) {
 }
 
 
-void KODayMatrix::updateView() {
+void KODayMatrix::updateView()
+{
   updateView(startdate);
 }
 
-void KODayMatrix::updateView(QDate actdate) {
-
+void KODayMatrix::updateView(QDate actdate)
+{
   bool daychanged = false;
 
   // if a new startdate is to be set then apply Cornelius's calculation
@@ -206,23 +207,24 @@ void KODayMatrix::updateView(QDate actdate) {
 #ifndef KORG_NOPLUGINS
     QString holiStr = KOCore::self()->holiday(days[i]);
 #else
-    QString holiStr = nullStr;
+    QString holiStr = QString::null;
 #endif
     // Calculate holidays. Sunday is also treated as holiday.
     if (!KGlobal::locale()->weekStartsMonday() && (float(i)/7 == float(i/7)) ||
         KGlobal::locale()->weekStartsMonday() && (float(i-6)/7 == float((i-6)/7)) ||
         !holiStr.isEmpty()) {
-      //if (holidays[i] != 0) delete holidays[i];
-      holidays[i] = new QString(holiStr);
+      if (holiStr.isNull()) holiStr = "";
+      mHolidays[i] = holiStr;
 
       kdDebug() << "KODayMatrix::updateView holidays " << i << " = #" << holiStr << "#" << endl;
     } else {
-      holidays[i] = 0;
+      mHolidays[i] = QString::null;
     }
   }
 }
 
-const QDate& KODayMatrix::getDate(int offset) {
+const QDate& KODayMatrix::getDate(int offset)
+{
   if (offset < 0 || offset > NUMDAYS-1) {
     kdDebug() << "Wrong offset (" << offset << ") in KODayMatrix::getDate(int)" << endl;
     return days[0];
@@ -230,16 +232,17 @@ const QDate& KODayMatrix::getDate(int offset) {
   return days[offset];
 }
 
-const QString* KODayMatrix::getHolidayLabel(int offset) {
+QString KODayMatrix::getHolidayLabel(int offset)
+{
   if (offset < 0 || offset > NUMDAYS-1) {
     kdDebug() << "Wrong offset (" << offset << ") in KODayMatrix::getHolidayLabel(int)" << endl;
     return 0;
   }
-  return holidays[offset];
-
+  return mHolidays[offset];
 }
 
-int KODayMatrix::getDayIndexFrom(int x, int y) {
+int KODayMatrix::getDayIndexFrom(int x, int y)
+{
   QRect sz = frameRect();
   int dheight = sz.height()*7 / NUMDAYS;
   int dwidth = sz.width() / 7;
@@ -250,7 +253,8 @@ int KODayMatrix::getDayIndexFrom(int x, int y) {
 //  M O U S E   E V E N T   H A N D L I N G
 // ----------------------------------------------------------------------------
 
-void KODayMatrix::mousePressEvent (QMouseEvent* e) {
+void KODayMatrix::mousePressEvent (QMouseEvent* e)
+{
   //QRect sz = frameRect();
   //int dheight = sz.height()*7 / NUMDAYS;
   //int dwidth = sz.width() / 7;
@@ -259,7 +263,8 @@ void KODayMatrix::mousePressEvent (QMouseEvent* e) {
   mSelInit = mSelStart;
 }
 
-void KODayMatrix::mouseReleaseEvent (QMouseEvent* e) {
+void KODayMatrix::mouseReleaseEvent (QMouseEvent* e)
+{
   //QRect sz = frameRect();
   //int dheight = sz.height()*7 / NUMDAYS;
   //int dwidth = sz.width() / 7;
@@ -289,7 +294,8 @@ void KODayMatrix::mouseReleaseEvent (QMouseEvent* e) {
   emit selected((const DateList)daylist);
 }
 
-void KODayMatrix::mouseMoveEvent (QMouseEvent* e) {
+void KODayMatrix::mouseMoveEvent (QMouseEvent* e)
+{
   //QRect sz = frameRect();
   //int dheight = sz.height()*7 / NUMDAYS;
   //int dwidth = sz.width() / 7;
@@ -399,7 +405,8 @@ void KODayMatrix::dropEvent(QDropEvent *e)
 //  P A I N T   E V E N T   H A N D L I N G
 // ----------------------------------------------------------------------------
 
-void KODayMatrix::paintEvent(QPaintEvent *ev) {
+void KODayMatrix::paintEvent(QPaintEvent *)
+{
   QPainter p(this);
 
   QRect sz = frameRect();
@@ -475,7 +482,7 @@ void KODayMatrix::paintEvent(QPaintEvent *ev) {
     }
 
     // if it is a holiday then use the default holiday color
-    if (holidays[i] != 0) {
+    if (!mHolidays[i].isNull()) {
       if (actcol == mDefaultTextColor) {
         p.setPen(KOPrefs::instance()->mHolidayColor);
       } else {
@@ -487,7 +494,7 @@ void KODayMatrix::paintEvent(QPaintEvent *ev) {
               Qt::AlignHCenter | Qt::AlignVCenter,  daylbls[i]);
 
     // reset color to actual color
-    if (holidays[i] != 0) {
+    if (!mHolidays[i].isNull()) {
       p.setPen(actcol);
     }
     // reset bold font to plain font

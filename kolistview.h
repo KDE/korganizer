@@ -22,6 +22,7 @@
 // $Id$
 
 #include <qlistview.h>
+#include <qmap.h>
 
 #include <libkcal/incidence.h>
 

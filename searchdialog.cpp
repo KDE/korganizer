@@ -163,19 +163,31 @@ void SearchDialog::search(const QRegExp &re)
   Event *ev;
   for(ev=events.first();ev;ev=events.next()) {
     if (mSummaryCheck->isChecked()) {
+#if QT_VERSION >= 300
       if (re.search(ev->summary()) != -1) {
+#else
+      if (re.match(ev->summary()) != -1) {
+#endif
         mMatchedEvents.append(ev);
         continue;
       }
     }
     if (mDescriptionCheck->isChecked()) {
+#if QT_VERSION >= 300
       if (re.search(ev->description()) != -1) {
+#else
+      if (re.match(ev->description()) != -1) {
+#endif
         mMatchedEvents.append(ev);
         continue;
       }
     }
     if (mCategoryCheck->isChecked()) {
+#if QT_VERSION >= 300
       if (re.search(ev->categoriesStr()) != -1) {
+#else
+      if (re.match(ev->categoriesStr()) != -1) {
+#endif
         mMatchedEvents.append(ev);
         continue;
       }

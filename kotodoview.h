@@ -36,39 +36,9 @@
 
 #include <korganizer/baseview.h>
 
+#include "kotodoviewitem.h"
+
 class DocPrefs;
-
-/**
-  This class provides a way of displaying a single Event of Todo-Type in a
-  KTodoView.
-  
-  @author Cornelius Schumacher <schumacher@kde.org>
-  @see KOTodoView
-*/
-class KOTodoViewItem : public QCheckListItem
-{
-  public:
-    /**
-      Constructor.
-     
-      @param parent is the list view to which this item belongs.
-      @param ev is the event to have the item display information for.
-    */
-    KOTodoViewItem(QListView *parent, Todo *ev);
-    KOTodoViewItem(KOTodoViewItem *parent, Todo *ev);
-    virtual ~KOTodoViewItem() {}
-
-    void construct();
-
-    Todo *event() { return mEvent; }
-
-  protected:
-    void paintBranches(QPainter *p,const QColorGroup & cg,int w,int y,int h);
-
-  private:
-    Todo *mEvent;
-};
-
 
 class KOTodoListView : public QListView
 {

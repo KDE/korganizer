@@ -344,7 +344,7 @@ Incidence *KOViewManager::currentSelection()
 
 void KOViewManager::addView(KOrg::BaseView *view)
 {
-  mMainView->viewStack()->addWidget(view);
+  mMainView->viewStack()->addWidget(view,1);
 }
 
 void KOViewManager::setDocumentId( const QString &id )

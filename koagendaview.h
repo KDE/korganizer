@@ -27,6 +27,7 @@
 #include <qdatetime.h>
 #include <qlayout.h>
 #include <qsplitter.h>
+#include <qmemarray.h>
 
 #include "koeventview.h"
 

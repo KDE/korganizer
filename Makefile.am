@@ -31,7 +31,7 @@ libkorganizer_la_SOURCES =  outgoingdialog_base.ui \
         kodialogmanager.cpp \
 	calprinter.cpp \
 	archivedialog.cpp \
-	komailclient.cpp kotodoview.cpp \
+	komailclient.cpp kotodoview.cpp kotodoviewitem.cpp \
         kolistview.cpp \
         exportwebdialog.cpp htmlexport.cpp \
         koapp.cpp korganizer_part.cpp korganizer.cpp \

@@ -20,7 +20,7 @@
 // $Id$
 
 #include <ksimpleconfig.h>
-#include <kstddirs.h>
+#include <kstandarddirs.h>
 #include <kdebug.h>
 
 #include "docprefs.h"

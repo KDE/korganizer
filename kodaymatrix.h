@@ -25,6 +25,7 @@
 #include <qpen.h>
 #include <qdatetime.h>
 #include <qtooltip.h>
+#include <qmap.h>
 
 class KODayMatrix;
 
@@ -78,7 +79,7 @@ public:
 
     const QDate& getDate(int offset);
 
-    const QString* getHolidayLabel(int offset);
+    QString getHolidayLabel(int offset);
 
     void addSelectedDaysTo(DateList&);
 
@@ -139,7 +140,7 @@ private:
     int      *events;
 
     /** stores holiday names of the days shown in the matrix. */
-    QString   **holidays;
+    QMap<int,QString>  mHolidays;
 
     /** indey of today or -1 if today is not visible in the matrix. */
     int       today;

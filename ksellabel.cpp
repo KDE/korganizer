@@ -83,12 +83,20 @@ void KSelLabel::paintEvent(QPaintEvent *)
   p.eraseRect(cr);
   if(act) {
     QColor   fc;                            // fill color
+#if QT_VERSION >= 300
     if ( style().styleHint(QStyle::SH_GUIStyle) == WindowsStyle )
       fc = QApplication::winStyleHighlightColor();
     else
+#endif
       fc = colorGroup().text();
     p.fillRect(cr, fc );
-    p.setPen( style().styleHint(QStyle::SH_GUIStyle) == WindowsStyle ? white : colorGroup().base() );
+#if QT_VERSION >= 300
+    if ( style().styleHint(QStyle::SH_GUIStyle) == WindowsStyle )
+      p.setPen( white );
+    else
+#endif
+      p.setPen( colorGroup().base() );
+    
     p.setBackgroundColor( fc );
   }
 
