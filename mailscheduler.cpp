@@ -144,3 +144,8 @@ bool MailScheduler::deleteTransaction(IncidenceBase *incidence)
   else
     return f.remove();
 }
+
+QString MailScheduler::freeBusyDir()
+{
+  return locateLocal("data","korganizer/freebusy");
+}

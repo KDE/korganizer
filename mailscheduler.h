@@ -50,6 +50,9 @@ class MailScheduler : public IMIPScheduler {
 
     bool deleteTransaction(IncidenceBase *incidence);
 
+    /** Returns the directory where the free-busy information is stored */
+    virtual QString freeBusyDir();
+  
   private:
     QMap<IncidenceBase*, QString> mEventMap;
 };
