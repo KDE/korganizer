@@ -30,6 +30,7 @@
 #include <klocale.h>
 #include <kdebug.h>
 #include <kinputdialog.h>
+#include <kmessagebox.h>
 
 #include <qlayout.h>
 #include <qlistview.h>
@@ -66,7 +67,6 @@ KOEditorAttachments::KOEditorAttachments( int spacing, QWidget *parent,
   button = new QPushButton( i18n("Show"), this );
   buttonLayout->addWidget( button );
   connect( button, SIGNAL( clicked() ), SLOT( slotShow() ) );
-  connect( mAttachments, SIGNAL( doubleClicked ( QListViewItem *, const QPoint &, int ) ), this, SLOT( slotEdit() ) );
 }
 
 KOEditorAttachments::~KOEditorAttachments()
@@ -107,7 +107,12 @@ void KOEditorAttachments::slotEdit()
 void KOEditorAttachments::slotRemove()
 {
   QListViewItem *item = mAttachments->currentItem();
-  delete item;
+  if ( !item ) return;
+
+  if ( KMessageBox::warningContinueCancel(this,
+        i18n("This item will be permanently deleted."),
+        i18n("KOrganizer Confirmation"),i18n("Delete")) == KMessageBox::Continue )
+    delete item;
 }
 
 void KOEditorAttachments::slotShow()
