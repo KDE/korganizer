@@ -2,38 +2,29 @@
 #define _KOTODOEDITOR_H
 // 	$Id$	
 
-#include <kdialogbase.h>
-
 #include <qdatetime.h>
 
 #include "calendar.h"
 #include "koeditorgeneraltodo.h"
 #include "koeditordetails.h"
-
-class CategorySelectDialog;
-
-using namespace KCal;
+#include "koincidenceeditor.h"
 
 /**
-  * This is the class to add/edit a new appointment.
-  *
-  * @short Creates a dialog box to create/edit an appointment
-  * @author Preston Brown
-  * @version $Revision$
-  */
-class KOTodoEditor : public KDialogBase
+  This class provides a dialog for editing a Todo.
+*/
+class KOTodoEditor : public KOIncidenceEditor
 {
     Q_OBJECT
   public:
     /**
-     * Constructs a new appointment dialog.
-     *
-     */  
+      Constructs a new todo editor.
+    */  
     KOTodoEditor(Calendar *calendar);
     virtual ~KOTodoEditor(void);
 
-    /** Clear eventwin for new todo, and preset the dates and times with hint
-     */
+    /**
+      Clear editor for new todo, and preset the dates and times with hint.
+    */
     void newTodo(QDateTime due,Todo *relatedTodo=0,bool allDay=false);
 
     /** Edit an existing todo. */
@@ -52,38 +43,25 @@ class KOTodoEditor : public KDialogBase
      * is not valid */
     bool processInput();
 
-  public slots:
-    void updateCategoryConfig();
-
   signals:
     void todoChanged(Todo *);
     void todoAdded(Todo *);
     void todoToBeDeleted(Todo *);
     void todoDeleted();
 
-    void editCategories();
-
   protected slots:
     void slotDefault();
-    void slotApply();
-    void slotOk();
     void slotUser1();
   
   protected:
-    void setupGeneralTab();
-    void setupDetailsTab();
+    QWidget *setupGeneralTabWidget(QWidget *);
 
-  private:
-    Calendar *mCalendar;
-  
+  private:  
     Todo *mTodo;
     
     Todo *mRelatedTodo;
 
     KOEditorGeneralTodo *mGeneral;
-    KOEditorDetails     *mDetails;
-
-    CategorySelectDialog *mCategoryDialog;    
 };
 
 #endif

@@ -39,8 +39,9 @@ libkorganizer_la_SOURCES =  outgoingdialog_base.ui \
         kobaseview.cpp kolistview.cpp \
         exportwebdialog.cpp htmlexport.cpp \
         koapp.cpp korganizer_part.cpp korganizer.cpp \
-        kprefsdialog.cpp koprefsdialog.cpp koeventeditor.cpp \
-        kotodoeditor.cpp koprefs.cpp koeventviewer.cpp kowindowlist.cpp \
+        kprefsdialog.cpp koprefsdialog.cpp \
+        koincidenceeditor.cpp koeventeditor.cpp kotodoeditor.cpp \
+        koprefs.cpp koeventviewer.cpp kowindowlist.cpp \
         koeditorgeneralevent.cpp koeditorgeneraltodo.cpp koeditordetails.cpp \
         koeditorrecurrence.cpp koeventviewerdialog.cpp \
         koeventpopupmenu.cpp kprefs.cpp \

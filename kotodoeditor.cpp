@@ -48,51 +48,28 @@
 #include "kotodoeditor.moc"
 
 KOTodoEditor::KOTodoEditor(Calendar *calendar) :
-  KDialogBase(Tabbed,i18n("Edit To-Do"),Ok|Apply|Cancel|Default|User1,Ok,0,0,
-              false,false,i18n("Delete"))
+  KOIncidenceEditor(i18n("Edit To-Do"),calendar)
 {
-  mCalendar = calendar;
   mTodo = 0;
   mRelatedTodo = 0;
 
   mCategoryDialog = new CategorySelectDialog();
 
-  setupGeneralTab();
-  setupDetailsTab();
-
-  // Categpry dialog
-  connect(mGeneral,SIGNAL(openCategoryDialog()),mCategoryDialog,SLOT(show()));
-  connect(mCategoryDialog, SIGNAL(categoriesSelected(QString)),
-          mGeneral,SLOT(setCategories(QString)));
-  connect(mCategoryDialog,SIGNAL(editCategories()),SIGNAL(editCategories()));
-
-  connect(this,SIGNAL(cancelClicked()),SLOT(reject()));
 }
 
 KOTodoEditor::~KOTodoEditor()
 {
 }
 
-void KOTodoEditor::setupGeneralTab()
+QWidget *KOTodoEditor::setupGeneralTabWidget(QWidget *parent)
 {
-  QFrame *topFrame = addPage(i18n("General"));
+  mGeneral = new KOEditorGeneralTodo(spacingHint(),parent);
 
-  QBoxLayout *topLayout = new QVBoxLayout(topFrame);  
-  topLayout->setMargin(marginHint());
+  connect(mGeneral,SIGNAL(openCategoryDialog()),mCategoryDialog,SLOT(show()));
+  connect(mCategoryDialog, SIGNAL(categoriesSelected(QString)),
+          mGeneral,SLOT(setCategories(QString)));
 
-  mGeneral = new KOEditorGeneralTodo(spacingHint(),topFrame);
-  topLayout->addWidget(mGeneral);
-}
-
-void KOTodoEditor::setupDetailsTab()
-{
-  QFrame *topFrame = addPage(i18n("Attendees"));
-
-  QBoxLayout *topLayout = new QVBoxLayout(topFrame);  
-  topLayout->setMargin(marginHint());
-
-  mDetails = new KOEditorDetails(spacingHint(),topFrame);
-  topLayout->addWidget(mDetails);
+  return mGeneral;
 }
 
 void KOTodoEditor::editTodo(Todo *todo, QDate)
@@ -140,16 +117,6 @@ bool KOTodoEditor::processInput()
   return true;
 }
 
-void KOTodoEditor::slotApply()
-{
-  processInput();
-}
-
-void KOTodoEditor::slotOk()
-{
-  if (processInput()) accept();
-}
-
 void KOTodoEditor::slotUser1()
 {
   if (mTodo) {
@@ -194,9 +161,4 @@ bool KOTodoEditor::validateInput()
   if (!mGeneral->validateInput()) return false;
   if (!mDetails->validateInput()) return false;
   return true;  
-}
-
-void KOTodoEditor::updateCategoryConfig()
-{
-  mCategoryDialog->updateCategoryConfig();
 }

@@ -11,27 +11,21 @@
 #include "koeditorgeneralevent.h"
 #include "koeditordetails.h"
 #include "koeditorrecurrence.h"
-
-class CategorySelectDialog;
+#include "koincidenceeditor.h"
 class QWidgetStack;
 
 using namespace KCal;
 
 /**
-  * This is the class to add/edit a new appointment.
-  *
-  * @short Creates a dialog box to create/edit an appointment
-  * @author Preston Brown
-  * @version $Revision$
-  */
-class KOEventEditor : public KDialogBase
+  This class provides a dialog for editing an event.
+*/
+class KOEventEditor : public KOIncidenceEditor
 {
     Q_OBJECT
   public:
     /**
-     * Constructs a new appointment dialog.
-     *
-     */
+      Construct new event editor.
+    */
     KOEventEditor( Calendar *calendar);
     virtual ~KOEventEditor(void);
 
@@ -48,28 +42,22 @@ class KOEventEditor : public KDialogBase
     /** Write event settings to event object */
     void writeEvent(Event *);
 
-  public slots:
-    void updateCategoryConfig();
-
   signals:
     void eventAdded(Event *);
     void eventChanged(Event *);
     void eventToBeDeleted(Event *);
     void eventDeleted();
 
-    void editCategories();
-
   protected slots:
     void slotDefault();
-    void slotApply();
-    void slotOk();
     void slotUser1();
     void enableRecurrence(bool);
 
   protected:
-    void setupGeneralTab();
-    void setupDetailsTab();
+    void setupCustomTabs();
+  
     void setupRecurrenceTab();
+    QWidget *setupGeneralTabWidget(QWidget *);
 
     /** Check if the input is valid. */
     bool validateInput();
@@ -78,20 +66,13 @@ class KOEventEditor : public KDialogBase
     bool processInput();
     
   private:
-    Calendar *mCalendar;
-  
     Event *mEvent;
 
     KOEditorGeneralEvent *mGeneral;
-    KOEditorDetails      *mDetails;
     KOEditorRecurrence   *mRecurrence;
 
-    CategorySelectDialog *mCategoryDialog;
-    
     QWidgetStack *mRecurrenceStack;
     QLabel *mRecurrenceDisabled;
 };
 
 #endif
-
-

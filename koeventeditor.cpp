@@ -1,31 +1,4 @@
-/*
-    $Id$
-
-     Requires the Qt and KDE widget libraries, available at no cost at
-     http://www.troll.no and http://www.kde.org respectively
-
-     Copyright (C) 1997, 1998 Preston Brown
-     preston.brown@yale.edu
-
-     This program is free software; you can redistribute it and/or modify
-     it under the terms of the GNU General Public License as published by
-     the Free Software Foundation; either version 2 of the License, or
-     (at your option) any later version.
-
-     This program is distributed in the hope that it will be useful,
-     but WITHOUT ANY WARRANTY; without even the implied warranty of
-     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-     GNU General Public License for more details.
-
-     You should have received a copy of the GNU General Public License
-     along with this program; if not, write to the Free Software
-     Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-
-     -*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
-
-     This file implements a class for displaying a dialog box for
-     adding or editing appointments/events.
-*/
+// $Id$
 
 #include <stdio.h>
 
@@ -51,16 +24,24 @@
 #include "koeventeditor.moc"
 
 KOEventEditor::KOEventEditor(Calendar *calendar) :
-  KDialogBase(Tabbed,i18n("Edit Event"),Ok|Apply|Cancel|Default|User1,Ok,0,0,
-              false,false,i18n("Delete"))
+  KOIncidenceEditor(i18n("Edit Event"),calendar)
 {
-  mCalendar = calendar;
   mEvent = 0;
+}
 
-  mCategoryDialog = new CategorySelectDialog();
+KOEventEditor::~KOEventEditor()
+{
+}
 
-  setupGeneralTab();
-  setupDetailsTab();
+QWidget *KOEventEditor::setupGeneralTabWidget(QWidget *parent)
+{
+  mGeneral = new KOEditorGeneralEvent(spacingHint(),parent);
+
+  return mGeneral;
+}
+
+void KOEventEditor::setupCustomTabs()
+{
   setupRecurrenceTab();
 
   // Propagate date time settings to recurrence tab
@@ -77,37 +58,6 @@ KOEventEditor::KOEventEditor(Calendar *calendar) :
   connect(mGeneral,SIGNAL(openCategoryDialog()),mCategoryDialog,SLOT(show()));
   connect(mCategoryDialog,SIGNAL(categoriesSelected(QString)),
           mGeneral,SLOT(setCategories(QString)));
-  connect(mCategoryDialog,SIGNAL(editCategories()),SIGNAL(editCategories()));
-
-  // Clicking cancel exits the dialog without saving
-  connect(this,SIGNAL(cancelClicked()),SLOT(reject()));
-}
-
-KOEventEditor::~KOEventEditor()
-{
-  delete mCategoryDialog;
-}
-
-void KOEventEditor::setupGeneralTab()
-{
-  QFrame *topFrame = addPage(i18n("General"));
-
-  QBoxLayout *topLayout = new QVBoxLayout(topFrame);  
-  topLayout->setMargin(marginHint());
-
-  mGeneral = new KOEditorGeneralEvent(spacingHint(),topFrame);
-  topLayout->addWidget(mGeneral);
-}
-
-void KOEventEditor::setupDetailsTab()
-{
-  QFrame *topFrame = addPage(i18n("Attendees"));
-
-  QBoxLayout *topLayout = new QVBoxLayout(topFrame);  
-  topLayout->setMargin(marginHint());
-
-  mDetails = new KOEditorDetails(spacingHint(),topFrame);
-  topLayout->addWidget(mDetails);
 }
 
 void KOEventEditor::setupRecurrenceTab()
@@ -189,16 +139,6 @@ bool KOEventEditor::processInput()
   return true;
 }
 
-void KOEventEditor::slotApply()
-{
-  processInput();
-}
-
-void KOEventEditor::slotOk()
-{
-  if (processInput()) accept();
-}
-
 void KOEventEditor::slotUser1()
 {
   kdDebug() << "Delete event" << endl;
@@ -246,9 +186,4 @@ bool KOEventEditor::validateInput()
   if (!mDetails->validateInput()) return false;
   if (!mRecurrence->validateInput()) return false;
   return true;
-}
-
-void KOEventEditor::updateCategoryConfig()
-{
-  mCategoryDialog->updateCategoryConfig();
 }

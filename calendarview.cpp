@@ -1574,7 +1574,7 @@ void CalendarView::updateFilter()
 {
   CalFilter *filter = mFilterView->selectedFilter();
   if (mFilterView->filtersEnabled()) filter->setEnabled(true);
-  else filter->setEnabled(false);  
+  else filter->setEnabled(false);
   mCalendar->setFilter(filter);
   updateView();
 }
