@@ -589,6 +589,10 @@ bool KOAgenda::eventFilter_mouse(QObject *object, QMouseEvent *me)
               mActionItem = item;
               startItemAction(viewportPos);
             }
+            // Warning: do selectItem() as late as possible, since all
+            // sorts of things happen during this call. Some can lead to
+            // this filter being run again and mActionItem being set to
+            // null.
             selectItem(mActionItem);
           }
         }
