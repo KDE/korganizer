@@ -1,5 +1,6 @@
 /*
     This file is part of KOrganizer.
+
     Copyright (c) 1998 Preston Brown
     Copyright (c) 2003 Reinhold Kainhofer <reinhold@kainhofer.com>
 
@@ -21,8 +22,8 @@
     with any edition of Qt, and distribute the resulting executable,
     without including the source code for Qt in the source distribution.
 */
-#ifndef _CALPRINTBASE_H
-#define _CALPRINTBASE_H
+#ifndef CALPRINTBASE_H
+#define CALPRINTBASE_H
 // #define KORG_NOPRINTER
 
 #ifndef KORG_NOPRINTER

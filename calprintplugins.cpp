@@ -189,8 +189,7 @@ void CalPrintDay::print( QPainter &p, int width, int height )
                       curStartTime, curEndTime, x, y, width - x, height - y );
     drawTimeLine( p, curStartTime, curEndTime, 0, y, x - 5, height - y );
     curDay = curDay.addDays( 1 );
-    if ( curDay <= mToDate )
-      mPrinter->newPage();
+    if ( curDay <= mToDate ) mPrinter->newPage();
   } while ( curDay <= mToDate );
 }
 

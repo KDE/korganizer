@@ -1,5 +1,6 @@
 /*
     This file is part of KOrganizer.
+
     Copyright (c) 1998 Preston Brown
     Copyright (c) 2003 Reinhold Kainhofer <reinhold@kainhofer.com>
 
@@ -21,7 +22,6 @@
     with any edition of Qt, and distribute the resulting executable,
     without including the source code for Qt in the source distribution.
 */
-
 
 #include <qpainter.h>
 #include <qlayout.h>
@@ -431,96 +431,100 @@ void CalPrintBase::drawAllDayBox(QPainter &p, Event::List &eventList,
 }
 
 
-void CalPrintBase::drawAgendaDayBox( QPainter &p, Event::List &eventList,
-    const QDate &qd, bool expandable, QTime &fromTime, QTime &toTime,
-    int x, int y, int width, int height)
+void CalPrintBase::drawAgendaDayBox( QPainter &p, Event::List &events,
+                                     const QDate &qd, bool expandable,
+                                     QTime &fromTime, QTime &toTime,
+                                     int x, int y, int width, int height )
 {
   p.drawRect( x, y, width, height );
 
-  Event*currEvent;
-  if (expandable) {
+  Event *event;
+
+  if ( expandable ) {
+    // Adapt start/end times to include complete events
     Event::List::ConstIterator it;
-    for ( it = eventList.begin(); it != eventList.end(); ++it ) {
-      currEvent = *it;
-      if ( currEvent->dtStart().time() < fromTime )
-        fromTime = currEvent->dtStart().time();
-      if ( currEvent->dtEnd().time() > toTime )
-        toTime = currEvent->dtEnd().time();
+    for ( it = events.begin(); it != events.end(); ++it ) {
+      event = *it;
+      if ( event->dtStart().time() < fromTime )
+        fromTime = event->dtStart().time();
+      if ( event->dtEnd().time() > toTime )
+        toTime = event->dtEnd().time();
     }
   }
+
   // Show at least one hour
-  if (fromTime.secsTo(toTime)<3600) {
-    fromTime = QTime(fromTime.hour(), 0, 0);
-    toTime = fromTime.addSecs(3600);
+  if ( fromTime.secsTo( toTime ) < 3600 ) {
+    fromTime = QTime( fromTime.hour(), 0, 0 );
+    toTime = fromTime.addSecs( 3600 );
   }
+
   // calculate the height of a cell and of a minute
-  int totalsecs=fromTime.secsTo(toTime);
-  float minlen=height*60./totalsecs;
-  float cellHeight=(60.*minlen);
-  float currY=y;
+  int totalsecs = fromTime.secsTo( toTime );
+  float minlen = height * 60. / totalsecs;
+  float cellHeight = 60. * minlen;
+  float currY = y;
 
   // print grid:
-  QTime curTime(QTime(fromTime.hour(), 0, 0));
-  QTime endTime(toTime);
-  currY+=(fromTime.secsTo(curTime)*minlen/60);
+  QTime curTime( QTime( fromTime.hour(), 0, 0 ) );
+  currY += fromTime.secsTo( curTime ) * minlen / 60;
 
-  while ( curTime<endTime && curTime.isValid() ) {
-    if (currY>y) p.drawLine(x, (int)currY, x+width, (int)currY);
-    currY+=cellHeight/2;
-    if ( (currY > y) && (currY < y+height) ) {
-      QPen oldPen(p.pen());
-      p.setPen(QColor(192, 192, 192));
-      p.drawLine(x, (int)currY, x+width, (int)currY);
-      p.setPen(oldPen);
+  while ( curTime < toTime && curTime.isValid() ) {
+    if ( currY > y ) p.drawLine( x, int( currY ), x + width, int( currY ) );
+    currY += cellHeight / 2;
+    if ( ( currY > y ) && ( currY < y + height ) ) {
+      QPen oldPen( p.pen() );
+      p.setPen( QColor( 192, 192, 192 ) );
+      p.drawLine( x, int( currY ), x + width, int( currY ) );
+      p.setPen( oldPen );
     } // enough space for half-hour line
-    if (curTime.secsTo(endTime)>3600)
-      curTime=curTime.addSecs(3600);
-    else curTime=endTime;
-    currY+=cellHeight/2;
-  } ; // currTime<endTime
+    if ( curTime.secsTo( toTime ) > 3600 )
+      curTime = curTime.addSecs( 3600 );
+    else curTime = toTime;
+    currY += cellHeight / 2;
+  }
 
   // draw the event boxes
   QPen oldPen = p.pen();
   QColor oldBgColor = p.backgroundColor();
   QBrush oldBrush = p.brush();
 
-  p.setFont(QFont("helvetica", 14));
-  p.setBrush(QBrush(Dense7Pattern));
+  p.setFont( QFont( "helvetica", 14 ) );
+  p.setBrush( QBrush( Dense7Pattern ) );
 
   // now print the rectangles for the events
   QDateTime startPrintDate = QDateTime( qd, fromTime );
   QDateTime endPrintDate = QDateTime( qd, toTime );
   Event::List::ConstIterator it;
-  for ( it = eventList.begin(); it != eventList.end(); ++it ) {
-    Event *currEvent = *it;
+  for ( it = events.begin(); it != events.end(); ++it ) {
+    event = *it;
     // set the colors according to the categories
-    if (mUseColors)
-      setCategoryColors(p, currEvent);
+    if ( mUseColors ) setCategoryColors( p, event );
 
     // start/end of print area for event
-    QDateTime startTime = currEvent->dtStart();
-    QDateTime endTime = currEvent->dtEnd();
-    if (currEvent->doesRecur()) {
-      startTime.setDate(qd);
-      endTime.setDate(qd);
+    QDateTime startTime = event->dtStart();
+    QDateTime endTime = event->dtEnd();
+    if ( event->doesRecur() ) {
+      startTime.setDate( qd );
+      endTime.setDate( qd );
     }
-    if ( (startTime<endPrintDate && endTime>startPrintDate) ||
-         (endTime>startPrintDate && startTime<endPrintDate) ) {
-      if ( startTime<startPrintDate ) startTime = startPrintDate;
-      if ( endTime>endPrintDate ) endTime = endPrintDate;
-      int eventLength = (int)(startTime.secsTo( endTime )/60. * minlen);
-      int currentyPos = (int)(y + startPrintDate.secsTo( startTime )*minlen/60.);
-      p.drawRect(x, currentyPos, width, eventLength);
-      p.drawText(x, currentyPos, width, eventLength,
-                 AlignCenter | AlignVCenter | AlignJustify | WordBreak,
-                 currEvent->summary());
+    if ( ( startTime < endPrintDate && endTime > startPrintDate ) ||
+         ( endTime > startPrintDate && startTime < endPrintDate ) ) {
+      if ( startTime < startPrintDate ) startTime = startPrintDate;
+      if ( endTime > endPrintDate ) endTime = endPrintDate;
+      int eventLength = int( startTime.secsTo( endTime ) / 60. * minlen );
+      int currentyPos = int( y + startPrintDate.secsTo( startTime ) *
+                             minlen / 60. );
+      p.drawRect( x, currentyPos, width, eventLength );
+      p.drawText( x, currentyPos, width, eventLength,
+                  AlignCenter | AlignVCenter | AlignJustify | WordBreak,
+                  event->summary() );
     }
 
-    p.setBrush(oldBrush);
-    p.setPen(oldPen);
-    p.setBackgroundColor(oldBgColor);
-  } // loop through event list
-  p.setBrush(QBrush(NoBrush));
+    p.setBrush( oldBrush );
+    p.setPen( oldPen );
+    p.setBackgroundColor( oldBgColor );
+  }
+  p.setBrush( QBrush( NoBrush ) );
 }
 
 
