@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!ELEMENT knewstuffproviders (provider+)>
+<!ELEMENT provider (#PCDATA)>
+  <!ATTLIST provider downloadurl CDATA #REQUIRED>
+  <!ATTLIST provider uploadurl CDATA #REQUIRED>
