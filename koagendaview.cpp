@@ -880,7 +880,7 @@ void KOAgendaView::changeIncidenceDisplayAdded( Incidence *incidence )
   Event *event = dynamic_cast<Event *>(incidence);
   if (!event) return;
   
-  if ( !calendar()->filter()->filterEvent( event ) ) return;
+  if ( !calendar()->filter()->filterIncidence( event ) ) return;
 
   if ( !event->doesRecur() ) {
     // find a suitable date
