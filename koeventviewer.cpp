@@ -47,6 +47,7 @@ void KOEventViewer::setSource( const QString &n )
 bool KOEventViewer::appendIncidence( Incidence *incidence )
 {
   addText( IncidenceFormatter::extensiveDisplayString( incidence ) );
+  return true;
 }
 
 void KOEventViewer::setIncidence( Incidence *incidence )
