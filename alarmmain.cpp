@@ -37,8 +37,8 @@ int main(int argc, char **argv)
 {
   KLocale::setMainCatalogue("korganizer");
   KAboutData aboutData("alarmd",I18N_NOOP("AlarmDaemon"),
-      "2.0",I18N_NOOP("KOrganizer Alarm Daemon"),KAboutData::License_GPL,
-      "(c) 1997-1999 Preston Brown\n(c) 2000 Cornelius Schumacher",0,
+      "2.1beta",I18N_NOOP("KOrganizer Alarm Daemon"),KAboutData::License_GPL,
+      "(c) 1997-1999 Preston Brown\n(c) 2000-2001 Cornelius Schumacher",0,
       "http://korganizer.kde.org");
   aboutData.addAuthor("Cornelius Schumacher",I18N_NOOP("Maintainer"),
                       "schumacher@kde.org");

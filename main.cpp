@@ -34,14 +34,14 @@ static const KCmdLineOptions options[] =
 int main (int argc, char **argv)
 {
   KAboutData aboutData("korganizer",I18N_NOOP("KOrganizer"),
-      "pre2.1",I18N_NOOP("A Personal Organizer for KDE"),KAboutData::License_GPL,
-      "(c) 1997-1999 Preston Brown\n(c) 2000 Cornelius Schumacher",0,
+      "2.1beta",I18N_NOOP("A Personal Organizer for KDE"),KAboutData::License_GPL,
+      "(c) 1997-1999 Preston Brown\n(c) 2000-2001 Cornelius Schumacher",0,
       "http://korganizer.kde.org");
   aboutData.addAuthor("Cornelius Schumacher",I18N_NOOP("Current Maintainer"),
                       "schumacher@kde.org");
   aboutData.addAuthor("Preston Brown",I18N_NOOP("Original Author"),
                       "pbrown@kde.org");
-  aboutData.addCredit("Richard Apodaca");              
+  aboutData.addCredit("Richard Apodaca");        
   aboutData.addCredit("Laszlo Boloni");
   aboutData.addCredit("Barry Benowitz");
   aboutData.addCredit("Christopher Beard");
@@ -55,6 +55,7 @@ int main (int argc, char **argv)
   aboutData.addCredit("Roman Rohr");
   aboutData.addCredit("Herwin Jan Steehouwer");
   aboutData.addCredit("Nick Thompson");
+  aboutData.addCredit("Thomas Zander");
   aboutData.addCredit("Fester Zigterman");
 
 
