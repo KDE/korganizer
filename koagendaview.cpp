@@ -488,7 +488,7 @@ KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name) :
   // these blank widgets make the All Day Event box line up with the agenda
   dummyAllDayRight->setFixedWidth(mAgenda->verticalScrollBar()->width());
   dummyAgendaRight->setFixedWidth(mAgenda->verticalScrollBar()->width());
-  
+
   updateTimeBarWidth();
 
   // Scrolling
@@ -588,19 +588,19 @@ void KOAgendaView::zoomInVertically( )
   updateView();
 }
 
-void KOAgendaView::zoomOutVertically( ) 
+void KOAgendaView::zoomOutVertically( )
 {
 
-  if ( KOPrefs::instance()->mHourSize > 4 ) { 
-    
+  if ( KOPrefs::instance()->mHourSize > 4 ) {
+
     KOPrefs::instance()->mHourSize--;
     mAgenda->updateConfig();
     mAgenda->checkScrollBoundaries();
-  
+
     mTimeLabels->updateConfig();
     mTimeLabels->positionChanged();
     mTimeLabels->repaint();
-  
+
     updateView();
   }
 }
@@ -611,12 +611,12 @@ void KOAgendaView::zoomInHorizontally( const QDate &date)
   QDate newBegin;
   QDate dateToZoom = date;
   int ndays,count;
-  
+
   begin = mSelectedDates.first();
   ndays = begin.daysTo( mSelectedDates.last() );
-  
+
   // zoom with Action and are there a selected Incidence?, Yes, I zoom in to it.
-  if ( ! dateToZoom.isValid () ) 
+  if ( ! dateToZoom.isValid () )
     dateToZoom=mAgenda->selectedIncidenceDate();
 
   if( !dateToZoom.isValid() ) {
@@ -638,19 +638,19 @@ void KOAgendaView::zoomInHorizontally( const QDate &date)
 }
 
 void KOAgendaView::zoomOutHorizontally( const QDate &date )
-{  
+{
   QDate begin;
   QDate newBegin;
   QDate dateToZoom = date;
   int ndays,count;
-  
+
   begin = mSelectedDates.first();
   ndays = begin.daysTo( mSelectedDates.last() );
-  
+
   // zoom with Action and are there a selected Incidence?, Yes, I zoom out to it.
-  if ( ! dateToZoom.isValid () ) 
+  if ( ! dateToZoom.isValid () )
     dateToZoom=mAgenda->selectedIncidenceDate();
-    
+
   if ( !dateToZoom.isValid() ) {
     newBegin = begin.addDays(-1);
     count = ndays+3 ;
@@ -658,7 +658,7 @@ void KOAgendaView::zoomOutHorizontally( const QDate &date )
     newBegin = dateToZoom.addDays( -ndays/2-1 );
     count = ndays+3;
   }
-  
+
   if ( abs( count ) >= 31 )
     kdDebug(5850) << "change to the mounth view?"<<endl;
   else
@@ -685,9 +685,9 @@ void KOAgendaView::zoomView( const int delta, const QPoint &pos,
       }
       t.start ( 1000,true );
     }
-    if ( delta > 0 ) 
+    if ( delta > 0 )
       zoomOutHorizontally( zoomDate );
-    else 
+    else
       zoomInHorizontally( zoomDate );
   } else {
     // Vertical zoom
@@ -906,7 +906,7 @@ void KOAgendaView::updateTimeBarWidth()
     width = mTimeLabels->width();
   }
 #endif
-  
+
   mDummyAllDayLeft->setFixedWidth( width );
   mTimeLabels->setFixedWidth( width );
 }
@@ -914,7 +914,7 @@ void KOAgendaView::updateTimeBarWidth()
 
 void KOAgendaView::updateEventDates( KOAgendaItem *item )
 {
-//  kdDebug(5850) << "KOAgendaView::updateEventDates(): " << item->text() << endl;
+  kdDebug(5850) << "KOAgendaView::updateEventDates(): " << item->text() << endl;
 
   QDateTime startDt,endDt;
 
@@ -967,22 +967,21 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
     ev->setDtEnd( endDt );
   } else if ( incidence->type() == "Todo" ) {
     Todo *td = static_cast<Todo*>(incidence);
-    startDt = td->dtStart();
-    startDt = startDt.addDays( daysOffset );
-    endDt = td->dtDue();
-    endDt = endDt.addDays( daysOffset );
+    startDt = td->hasStartDate() ? td->dtStart() : td->dtDue();
+    startDt = thisDate.addDays( td->dtDue().daysTo( startDt ) );
+    startDt.setTime( startTime );
+    endDt.setDate( thisDate );
     endDt.setTime( endTime );
 
     if( td->dtDue() == endDt ) {
       // No change
       return;
     }
-    td->setDtDue( endDt );
   }
   // FIXME: Adjusting the recurrence should really go to CalendarView so this
   // functionality will also be available in other views!
   Recurrence *recur = incidence->recurrence();
-  if ( recur && (recur->doesRecur()!=Recurrence::rNone) && (daysOffset!=0) ) {
+  if ( recur->doesRecur() && daysOffset != 0 ) {
     switch ( recur->doesRecur() ) {
       case Recurrence::rYearlyPos: {
         int freq = recur->frequency();
@@ -1117,8 +1116,8 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
     KMessageBox::information( this, i18n("A recurring incidence was moved "
                               "to a different day. The recurrence settings "
                               "have been updated with that move. Please check "
-                              "them in the incidence editor."), 
-                              i18n("Recurrence Moved"), 
+                              "them in the incidence editor."),
+                              i18n("Recurrence Moved"),
                               "RecurrenceMoveInAgendaWarning" );
   }
 
@@ -1127,8 +1126,12 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
     incidence->setDtStart( startDt );
     (static_cast<Event*>( incidence ) )->setDtEnd( endDt );
   } else if ( incidence->type() == "Todo" ) {
-    (static_cast<Todo*>( incidence ) )->setDtDue( endDt );
+    Todo *td = static_cast<Todo*>( incidence );
+    if ( td->hasStartDate() )
+      td->setDtStart( startDt );
+    td->setDtDue( endDt );
   }
+
   item->setItemDate( startDt.date() );
 
   KOIncidenceToolTip::remove( item );
@@ -1214,9 +1217,7 @@ void KOAgendaView::insertIncidence( Incidence *incidence, const QDate &curDate,
     if ( incidence->recurrence()->doesRecur() ) {
       mAllDayAgenda->insertAllDayItem( incidence, curDate, curCol, curCol );
     } else {
-      if ( ( beginX <= 0 && curCol == 0 ) || beginX == curCol ) {
-        mAllDayAgenda->insertAllDayItem( incidence, curDate, beginX, endX );
-      }
+      mAllDayAgenda->insertAllDayItem( incidence, curDate, beginX, endX );
     }
   } else if ( event && event->isMultiDay() ) {
     int startY = mAgenda->timeToY( event->dtStart().time() );
@@ -1280,22 +1281,17 @@ void KOAgendaView::changeIncidenceDisplayAdded( Incidence *incidence )
   if ( incidence->type() == "Event" )
     endDt = (static_cast<Event *>(incidence))->dtEnd().date();
   if ( todo ) {
-    bool overdue = (!todo->isCompleted()) &&
-                   (todo->dtDue() < QDate::currentDate() );
-    endDt = overdue ? QDate::currentDate()
-                    : todo->dtDue().date();
+    endDt = todo->isOverdue() ? QDate::currentDate()
+                              : todo->dtDue().date();
+
     if ( endDt >= f && endDt <= l ) {
       insertIncidence( incidence, endDt );
       return;
     }
   }
 
-  if ( startDt <= l ) {
-    if ( startDt >= f ) {
-      insertIncidence( incidence, startDt );
-    } else if ( endDt >= f ) {
-      insertIncidence( incidence, endDt );
-    }
+  if ( startDt >= f && startDt <= l ) {
+    insertIncidence( incidence, startDt );
   }
 }
 
@@ -1409,7 +1405,7 @@ void KOAgendaView::fillAgenda()
 
         // ToDo items shall be displayed for the day they are due, but only showed today if they are already overdue.
         // Already completed items can be displayed on their original due date
-        bool overdue = (!todo->isCompleted()) && (todo->dtDue() < today);
+        bool overdue = todo->isOverdue();
 
         if ( (( todo->dtDue().date() == currentDate) && !overdue) ||
              (( currentDate == today) && overdue) ||
@@ -1494,6 +1490,9 @@ void KOAgendaView::slotTodoDropped( Todo *todo, const QPoint &gpos, bool allDay 
   QTime time = mAgenda->gyToTime( gpos.y() );
   QDateTime newTime( day, time );
 
+  // overdue tasks should always float
+  bool floats = todo->isOverdue() ? true : allDay;
+
   if ( todo ) {
     Todo *existingTodo = calendar()->todo(todo->uid());
     if ( existingTodo ) {
@@ -1501,7 +1500,7 @@ void KOAgendaView::slotTodoDropped( Todo *todo, const QPoint &gpos, bool allDay 
       Todo *oldTodo = existingTodo->clone();
       if ( mChanger && mChanger->beginChange( existingTodo ) ) {
         existingTodo->setDtDue( newTime );
-        existingTodo->setFloats( allDay );
+        existingTodo->setFloats( floats );
         existingTodo->setHasDueDate( true );
         mChanger->changeIncidence( oldTodo, existingTodo );
         mChanger->endChange( existingTodo );
@@ -1513,7 +1512,7 @@ void KOAgendaView::slotTodoDropped( Todo *todo, const QPoint &gpos, bool allDay 
     } else {
       kdDebug(5850) << "Drop new Todo" << endl;
       todo->setDtDue( newTime );
-      todo->setFloats( allDay );
+      todo->setFloats( floats );
       existingTodo->setHasDueDate( true );
       if ( !mChanger->addIncidence( todo ) ) {
         KODialogManager::errorSaveIncidence( this, todo );
@@ -1663,8 +1662,8 @@ void KOAgendaView::updateEventIndicators()
   mAgenda->checkScrollBoundaries();
 }
 
-void KOAgendaView::setIncidenceChanger( IncidenceChangerBase *changer ) 
-{ 
+void KOAgendaView::setIncidenceChanger( IncidenceChangerBase *changer )
+{
   mChanger = changer;
   mAgenda->setIncidenceChanger( changer );
   mAllDayAgenda->setIncidenceChanger( changer );
