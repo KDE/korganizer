@@ -218,8 +218,8 @@ EventIndicator::EventIndicator(Location loc,QWidget *parent,const char *name)
   mLocation = loc;
   mTopLayout = 0;
 
-  if (mLocation == Top) mPixmap = KOGlobals::self()->smallIcon("1uparrow");
-  else mPixmap = KOGlobals::self()->smallIcon("1downarrow");
+  if (mLocation == Top) mPixmap = KOGlobals::self()->smallIcon("upindicator");
+  else mPixmap = KOGlobals::self()->smallIcon("downindicator");
 
   setMinimumHeight(mPixmap.height());
 }
