@@ -25,23 +25,24 @@
 
 #include "koeditordetails.h"
 
-#include <qtooltip.h>
-#include <qfiledialog.h>
-#include <qlayout.h>
-#include <qvbox.h>
 #include <qbuttongroup.h>
-#include <qvgroupbox.h>
-#include <qwidgetstack.h>
+#include <qcheckbox.h>
+#include <qcombobox.h>
 #include <qdatetime.h>
 #include <qdragobject.h>
-#include <qcombobox.h>
-#include <qlineedit.h>
-#include <qlabel.h>
-#include <qcheckbox.h>
-#include <qpushbutton.h>
+#include <qfiledialog.h>
 #include <qgroupbox.h>
+#include <qlabel.h>
+#include <qlayout.h>
+#include <qlineedit.h>
+#include <qpushbutton.h>
 #include <qradiobutton.h>
+#include <qregexp.h>
+#include <qtooltip.h>
+#include <qvbox.h>
+#include <qvgroupbox.h>
 #include <qwhatsthis.h>
+#include <qwidgetstack.h>
 
 #include <kdebug.h>
 #include <klocale.h>
