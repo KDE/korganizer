@@ -287,6 +287,39 @@ RecurMonthly::RecurMonthly( QWidget *parent, const char *name ) :
   mByDayCombo->insertItem( i18n("29th") );
   mByDayCombo->insertItem( i18n("30th") );
   mByDayCombo->insertItem( i18n("31st") );
+  mByDayCombo->insertItem( i18n("Last") );
+  mByDayCombo->insertItem( i18n("2nd Last") );
+  mByDayCombo->insertItem( i18n("3rd Last") );
+  mByDayCombo->insertItem( i18n("4th Last") );
+  mByDayCombo->insertItem( i18n("5th Last") );
+  // FIXME: After the string freeze is over, insert all possible values, not
+  //        just the ones we already have translated:
+/*  mByDayCombo->insertItem( i18n("6th Last") );
+  mByDayCombo->insertItem( i18n("7th Last") );
+  mByDayCombo->insertItem( i18n("8th Last") );
+  mByDayCombo->insertItem( i18n("9th Last") );
+  mByDayCombo->insertItem( i18n("10th Last") );
+  mByDayCombo->insertItem( i18n("11th Last") );
+  mByDayCombo->insertItem( i18n("12th Last") );
+  mByDayCombo->insertItem( i18n("13th Last") );
+  mByDayCombo->insertItem( i18n("14th Last") );
+  mByDayCombo->insertItem( i18n("15th Last") );
+  mByDayCombo->insertItem( i18n("16th Last") );
+  mByDayCombo->insertItem( i18n("17th Last") );
+  mByDayCombo->insertItem( i18n("18th Last") );
+  mByDayCombo->insertItem( i18n("19th Last") );
+  mByDayCombo->insertItem( i18n("20th Last") );
+  mByDayCombo->insertItem( i18n("21st Last") );
+  mByDayCombo->insertItem( i18n("22nd Last") );
+  mByDayCombo->insertItem( i18n("23rd Last") );
+  mByDayCombo->insertItem( i18n("24th Last") );
+  mByDayCombo->insertItem( i18n("25th Last") );
+  mByDayCombo->insertItem( i18n("26th Last") );
+  mByDayCombo->insertItem( i18n("27th Last") );
+  mByDayCombo->insertItem( i18n("28th Last") );
+  mByDayCombo->insertItem( i18n("29th Last") );
+  mByDayCombo->insertItem( i18n("30th Last") );
+  mByDayCombo->insertItem( i18n("31st Last") );*/
   buttonLayout->addWidget( mByDayCombo, 0, 1 );
 
   QLabel *byDayLabel = new QLabel( i18n("day"), buttonGroup );
@@ -296,8 +329,8 @@ RecurMonthly::RecurMonthly( QWidget *parent, const char *name ) :
 
   mByPosRadio = new QRadioButton( recurOnText, buttonGroup);
   QWhatsThis::add( mByPosRadio,
-		   i18n("Sets a weekday and specific week in the month "
-			"on which this event or to-do should recur") );
+                   i18n("Sets a weekday and specific week in the month "
+                        "on which this event or to-do should recur") );
   buttonLayout->addWidget( mByPosRadio, 1, 0 );
 
   mByPosCountCombo = createWeekCountCombo( buttonGroup );
@@ -310,7 +343,12 @@ RecurMonthly::RecurMonthly( QWidget *parent, const char *name ) :
 void RecurMonthly::setByDay( int day )
 {
   mByDayRadio->setChecked( true );
-  mByDayCombo->setCurrentItem( day-1 );
+  // Days from the end are after the ones from the begin, so correct for the
+  // negative sign and add 30 (index starting at 0)
+  if ( day > 0 & day <= 31 )
+    mByDayCombo->setCurrentItem( day-1 );
+  else if ( day < 0 )
+    mByDayCombo->setCurrentItem( 31 - 1 - day );
 }
 
 void RecurMonthly::setByPos( int count, int weekday )
@@ -336,7 +374,10 @@ bool RecurMonthly::byPos()
 
 int RecurMonthly::day()
 {
-  return mByDayCombo->currentItem() + 1;
+  int day = mByDayCombo->currentItem();
+  if ( day >= 31 ) day = 31-day-1;
+  else --day;
+  return day;
 }
 
 int RecurMonthly::count()
