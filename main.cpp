@@ -50,17 +50,18 @@ int main (int argc, char **argv)
 {
   KAboutData aboutData("korganizer",I18N_NOOP("KOrganizer"),
       korgVersion,I18N_NOOP("A Personal Organizer for KDE"),KAboutData::License_GPL,
-      "(c) 1997-1999 Preston Brown\n(c) 2000-2001 Cornelius Schumacher",0,
+      "(c) 1997-1999 Preston Brown\n(c) 2000-2002 Cornelius Schumacher",0,
       "http://korganizer.kde.org");
   aboutData.addAuthor("Cornelius Schumacher",I18N_NOOP("Current Maintainer"),
                       "schumacher@kde.org");
   aboutData.addAuthor("Preston Brown",I18N_NOOP("Original Author"),
                       "pbrown@kde.org");
-  aboutData.addCredit("Richard Apodaca");  
+  aboutData.addCredit("Richard Apodaca");
   aboutData.addCredit("Laszlo Boloni");
   aboutData.addCredit("Barry Benowitz");
   aboutData.addCredit("Christopher Beard");
   aboutData.addCredit("Ian Dawes");
+  aboutData.addCredit("Thomas Eitzenberger");
   aboutData.addCredit("Neil Hart");
   aboutData.addCredit("Hans-Jürgen Husel");
   aboutData.addCredit("Christian Kirsch");
