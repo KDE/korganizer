@@ -48,6 +48,7 @@ class ExchangeConfig : public KDialogBase
   public:
     KPIM::ExchangeAccount* mAccount;
     KLineEdit *m_host;
+    KLineEdit *m_port;
     KLineEdit *m_user;
     QCheckBox *m_autoMailbox;
     KLineEdit *m_mailbox;
