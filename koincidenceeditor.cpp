@@ -7,6 +7,7 @@
 #include <qpixmap.h>
 #include <qlayout.h>
 #include <qwidgetstack.h>
+#include <qdatetime.h>
 
 #include <kdatepik.h>
 #include <kiconloader.h>
@@ -52,7 +53,7 @@ void KOIncidenceEditor::setupGeneralTab()
 {
   QFrame *topFrame = addPage(i18n("General"));
 
-  QBoxLayout *topLayout = new QVBoxLayout(topFrame);  
+  QBoxLayout *topLayout = new QVBoxLayout(topFrame);
   topLayout->setMargin(marginHint());
 
   topLayout->addWidget(setupGeneralTabWidget(topFrame));
@@ -62,7 +63,7 @@ void KOIncidenceEditor::setupDetailsTab()
 {
   QFrame *topFrame = addPage(i18n("Attendees"));
 
-  QBoxLayout *topLayout = new QVBoxLayout(topFrame);  
+  QBoxLayout *topLayout = new QVBoxLayout(topFrame);
   topLayout->setMargin(marginHint());
 
   mDetails = new KOEditorDetails(spacingHint(),topFrame);

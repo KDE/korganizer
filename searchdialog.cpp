@@ -5,6 +5,8 @@
 #include <qlayout.h>
 #include <qcheckbox.h>
 #include <qgroupbox.h>
+#include <qlabel.h>
+#include <qlineedit.h>
 
 #include <klocale.h>
 #include <kbuttonbox.h>
@@ -36,8 +38,8 @@ SearchDialog::SearchDialog(Calendar *calendar)
   subLayout->addWidget(searchEdit);
   searchEdit->setText("*"); // Find all events by default
   searchEdit->setFocus();
- 
-  // Date range  
+
+  // Date range
   QGroupBox *rangeGroup = new QGroupBox(1,Horizontal,i18n("Date Range"),
                                         topFrame);
   layout->addWidget(rangeGroup);
@@ -61,7 +63,7 @@ SearchDialog::SearchDialog(Calendar *calendar)
   QGroupBox *subjectGroup = new QGroupBox(1,Vertical,i18n("Search In:"),
                                           topFrame);
   layout->addWidget(subjectGroup);
-  
+
   mSummaryCheck = new QCheckBox(i18n("Summaries"),subjectGroup);
   mSummaryCheck->setChecked(true);
   mDescriptionCheck = new QCheckBox(i18n("Descriptions"),subjectGroup);
@@ -73,7 +75,7 @@ SearchDialog::SearchDialog(Calendar *calendar)
 //  listView->setMinimumHeight(200);
   listView->showDates();
   layout->addWidget(listView);
- 
+
   connect(this,SIGNAL(user1Clicked()),SLOT(doSearch()));
 
   // Propagate edit and delete event signals from event list view
@@ -104,7 +106,7 @@ void SearchDialog::doSearch()
   search(re);
 
   listView->selectEvents(mMatchedEvents);
-  
+
   if (mMatchedEvents.count() == 0) {
     KMessageBox::information(this,
         i18n("No events were found matching your search expression."));

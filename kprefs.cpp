@@ -4,6 +4,7 @@
 #include <kstddirs.h>
 #include <kglobal.h>
 #include <kdebug.h>
+#include <qcolor.h>
 
 #include "kprefs.h"
 
@@ -12,7 +13,7 @@ QString *KPrefsItem::mCurrentGroup = 0;
 KPrefsItem::KPrefsItem(const QString &name)
 {
   mName = name;
-  
+
   if (mCurrentGroup == 0) mGroup = "No Group";
   else mGroup = *mCurrentGroup;
 }
@@ -39,7 +40,7 @@ void KPrefsItemBool::setDefault()
 
 void KPrefsItemBool::writeConfig(KConfig *config)
 {
-  config->setGroup(mGroup);            
+  config->setGroup(mGroup);
   config->writeEntry(mName,*mReference);
 }
 
@@ -66,7 +67,7 @@ void KPrefsItemInt::setDefault()
 
 void KPrefsItemInt::writeConfig(KConfig *config)
 {
-  config->setGroup(mGroup);            
+  config->setGroup(mGroup);
   config->writeEntry(mName,*mReference);
 }
 
@@ -92,7 +93,7 @@ void KPrefsItemColor::setDefault()
 
 void KPrefsItemColor::writeConfig(KConfig *config)
 {
-  config->setGroup(mGroup);            
+  config->setGroup(mGroup);
   config->writeEntry(mName,*mReference);
 }
 
@@ -119,7 +120,7 @@ void KPrefsItemString::setDefault()
 
 void KPrefsItemString::writeConfig(KConfig *config)
 {
-  config->setGroup(mGroup);            
+  config->setGroup(mGroup);
   config->writeEntry(mName,*mReference);
 }
 
@@ -186,7 +187,7 @@ void KPrefs::writeConfig()
   }
 
   usrWriteConfig();
-  
+
   mConfig->sync();
 
 //  kdDebug() << "KPrefs::writeConfig() done" << endl;

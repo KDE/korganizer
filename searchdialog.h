@@ -1,8 +1,7 @@
 #ifndef _SEARCHDIALOG_H
 #define _SEARCHDIALOG_H
 
-#include <qlabel.h>
-#include <qlineedit.h>
+
 #include <qregexp.h>
 
 #include <kdialogbase.h>
@@ -12,6 +11,8 @@
 
 class KDateEdit;
 class QCheckBox;
+class KLineEdit;
+class QLabel;
 
 using namespace KCal;
 

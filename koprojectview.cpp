@@ -3,6 +3,14 @@
 #include <qlayout.h>
 #include <qheader.h>
 #include <qpushbutton.h>
+#include <qfont.h>
+#include <qlabel.h>
+#include <qlineedit.h>
+#include <qlabel.h>
+#include <qlistbox.h>
+#include <qpopupmenu.h>
+#include <qstrlist.h>
+#include <qlistview.h>
 
 #include <kapp.h>
 #include <kdebug.h>
@@ -20,7 +28,7 @@
 #include "koprojectview.moc"
 
 KOProjectViewItem::KOProjectViewItem(Todo *event,KGanttItem* parentTask,
-                                     const QString& text, 
+                                     const QString& text,
 	                             const QDateTime& start,
                                      const QDateTime& end) :
   KGanttItem(parentTask,text,start,end)
@@ -46,7 +54,7 @@ KOProjectView::KOProjectView(Calendar *calendar,QWidget* parent,
 
   QBoxLayout *topBar = new QHBoxLayout;
   topLayout->addLayout(topBar);
-  
+
   QLabel *title = new QLabel(i18n("Project View"),this);
   title->setFrameStyle(QFrame::Panel|QFrame::Raised);
   topBar->addWidget(title,1);
@@ -95,7 +103,7 @@ void KOProjectView::readSettings()
   KConfig *config = kapp->config();
 
   config->setGroup("Views");
-    
+
   QValueList<int> sizes = config->readIntListEntry("Separator ProjectView");
   if (sizes.count() == 2) {
     mGantt->splitter()->setSizes(sizes);
@@ -107,7 +115,7 @@ void KOProjectView::writeSettings(KConfig *config)
   kdDebug() << "KOProjectView::writeSettings()" << endl;
 
   config->setGroup("Views");
-    
+
   QValueList<int> list = mGantt->splitter()->sizes();
   config->writeEntry("Separator ProjectView",list);
 }
@@ -127,11 +135,11 @@ void KOProjectView::updateView()
   }
 
 #if 0
-  KGanttItem* t1 = new KGanttItem(mGantt->getMainTask(), "task 1, no subtasks", 
+  KGanttItem* t1 = new KGanttItem(mGantt->getMainTask(), "task 1, no subtasks",
                              QDateTime::currentDateTime().addDays(10),
                              QDateTime::currentDateTime().addDays(20) );
 
-  KGanttItem* t2 = new KGanttItem(mGantt->getMainTask(), "task 2, subtasks, no rubberband", 
+  KGanttItem* t2 = new KGanttItem(mGantt->getMainTask(), "task 2, subtasks, no rubberband",
                              QDateTime(QDate(2000,10,1)),
                              QDateTime(QDate(2000,10,31)) );
 #endif
@@ -248,7 +256,7 @@ void KOProjectView::selectDates(const QDateList)
 {
   updateView();
 }
- 
+
 void KOProjectView::selectEvents(QList<Event>)
 {
   kdDebug() << "KOProjectView::selectEvents(): not yet implemented" << endl;
@@ -339,7 +347,7 @@ void KOProjectView::itemClicked(QListViewItem *item)
 
   KOProjectViewItem *todoItem = (KOProjectViewItem *)item;
   int completed = todoItem->event()->isCompleted();  // Completed or not?
-  
+
   if (todoItem->isOn()) {
     if (!completed) {
       todoItem->event()->setCompleted(true);
@@ -354,7 +362,7 @@ void KOProjectView::itemClicked(QListViewItem *item)
 
 void KOProjectView::showModeMenu()
 {
-  mGantt->menu()->popup(QCursor::pos());  
+  mGantt->menu()->popup(QCursor::pos());
 }
 
 void KOProjectView::taskChanged(KGanttItem *task,KGanttItem::Change change)

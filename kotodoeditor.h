@@ -2,12 +2,13 @@
 #define _KOTODOEDITOR_H
 // 	$Id$	
 
-#include <qdatetime.h>
 
 #include "calendar.h"
 #include "koeditorgeneraltodo.h"
 #include "koeditordetails.h"
 #include "koincidenceeditor.h"
+
+class QDateTime;
 
 /**
   This class provides a dialog for editing a Todo.

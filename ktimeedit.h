@@ -3,12 +3,14 @@
 #ifndef _KTIMEEDIT_H
 #define _KTIMEEDIT_H
 
+
 #include <qevent.h>
 #include <qkeycode.h>
-#include <qdatetime.h>
 #include <qstring.h>
-#include <qcombobox.h>
 #include <kapp.h>
+
+class QComboBox;
+class QDateTime;
 
 /** 
  * This is a class that provides an easy, user friendly way to edit times.

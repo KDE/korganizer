@@ -2,10 +2,11 @@
 #define KOWHATSNEXTVIEW_H
 // $Id$
 
-#include <qlistview.h>
 #include <qtextbrowser.h>
 
 #include "kobaseview.h"
+
+class QListView;
 
 class KOEventViewerDialog;
 

@@ -5,9 +5,9 @@
 
 #include <qlist.h>
 #include <qdict.h>
-#include <qcolor.h>
 
 class KConfig;
+class QColor;
 
 class KPrefsItem {
   public:

@@ -1,16 +1,19 @@
-// 	$Id$	
+// 	$Id$
 
 #include <qkeycode.h>
+#include <qcombobox.h>
+#include <qdatetime.h>
+
 
 #include <kmessagebox.h>
 #include <kglobal.h>
 #include <kdebug.h>
 #include <klocale.h>
 
-#include "ktimeedit.h" 
+#include "ktimeedit.h"
 #include "ktimeedit.moc"
 
-KTimeEdit::KTimeEdit(QWidget *parent, QTime qt, const char *name) 
+KTimeEdit::KTimeEdit(QWidget *parent, QTime qt, const char *name)
   : QComboBox(TRUE, parent, name)
 {
   setInsertionPolicy(NoInsertion);
@@ -60,7 +63,7 @@ void KTimeEdit::setTime(QTime newTime)
   updateDisp();
 }
 
-void KTimeEdit::activ(int i) 
+void KTimeEdit::activ(int i)
 {
   mTime = QTime(0,0,0).addSecs(i*15*60);
   emit timeChanged(mTime);
@@ -142,7 +145,7 @@ void KTimeEdit::validateEntry()
 */
 }
 
-void KTimeEdit::updateDisp() 
+void KTimeEdit::updateDisp()
 {
   QString s = KGlobal::locale()->formatTime(mTime);
   setEditText(s);

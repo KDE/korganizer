@@ -4,9 +4,10 @@
 
 #include <qstring.h>
 
-#include <kurl.h>
 
 #include <incidence.h>
+
+class KURL;
 
 using namespace KCal;
 

@@ -2,17 +2,11 @@
 #ifndef _KOPROJECTVIEW_H
 #define _KOPROJECTVIEW_H
 
-#include <qtableview.h>
-#include <qfont.h>
-#include <qfontmetrics.h>
-#include <qlineedit.h>
 #include <qlist.h>
-#include <qstrlist.h>
-#include <qlistbox.h>
-#include <qpopupmenu.h>
-#include <qlabel.h>
+#include <qtableview.h>
+#include <qfontmetrics.h>
+
 #include <qmap.h>
-#include <qlistview.h>
 
 #include "calendar.h"
 #include "event.h"
@@ -20,6 +14,13 @@
 #include "KGanttItem.h"
 
 class KGantt;
+class QLineEdit;
+class QFont;
+class QLabel;
+class QPopupMenu;
+class QListBox;
+class QStrList;
+class QListView;
 
 /**
   This class provides an item of the project view. It is a xQTask with

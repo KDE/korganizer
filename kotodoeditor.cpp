@@ -33,6 +33,8 @@
 #include <qframe.h>
 #include <qpixmap.h>
 #include <qlayout.h>
+#include <qdatetime.h>
+
 
 #include <kdatepik.h>
 #include <kiconloader.h>
@@ -106,9 +108,9 @@ bool KOTodoEditor::processInput()
     todo = new Todo;
     todo->setOrganizer(KOPrefs::instance()->email());
   }
-  
+
   writeTodo(todo);
-  
+
   if (mTodo) {
     todo->setRevision(todo->revision()+1);
     emit todoChanged(todo);
@@ -117,7 +119,7 @@ bool KOTodoEditor::processInput()
     mTodo = todo;
     emit todoAdded(todo);
   }
-  
+
   return true;
 }
 
@@ -136,7 +138,7 @@ void KOTodoEditor::slotUser1()
 void KOTodoEditor::setDefaults(QDateTime due,Todo *relatedEvent,bool allDay)
 {
   mRelatedTodo = relatedEvent;
-  
+
   mGeneral->setDefaults(due,allDay);
   mDetails->setDefaults();
 }
@@ -164,5 +166,5 @@ bool KOTodoEditor::validateInput()
 {
   if (!mGeneral->validateInput()) return false;
   if (!mDetails->validateInput()) return false;
-  return true;  
+  return true;
 }

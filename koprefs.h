@@ -4,15 +4,15 @@
 #ifndef _KOPREFS_H
 #define _KOPREFS_H
 
-#include <qstring.h>
-#include <qfont.h>
-#include <qcolor.h>
-#include <qstringlist.h>
+
 #include <qdict.h>
 
 #include "kprefs.h"
 
 class KConfig;
+class QFont;
+class QColor;
+class QStringList;
 
 class KOPrefs : public KPrefs
 {

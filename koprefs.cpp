@@ -1,6 +1,10 @@
 // $Id$
 
 #include <qdir.h>
+#include <qstring.h>
+#include <qfont.h>
+#include <qcolor.h>
+#include <qstringlist.h>
 
 #include "koprefs.h"
 
@@ -18,7 +22,7 @@ KOPrefs::KOPrefs() :
   KPrefs("korganizerrc")
 {
   mCategoryColors.setAutoDelete(true);
-  
+
   mDefaultCategoryColor           = QColor(196,196,196);
   QColor defaultHolidayColor      = QColor("red");
   QColor defaultHighlightColor    = QColor("blue");
@@ -29,14 +33,14 @@ KOPrefs::KOPrefs() :
   mDefaultViewFont = QFont("helvetica",12);
 
   KPrefsItem::setCurrentGroup("General");
-  
+
   addPrefsItem(new KPrefsItemBool("Enable Group Scheduling",
                                   &mEnableGroupScheduling,false));
   addPrefsItem(new KPrefsItemBool("Enable Project View",
                                   &mEnableProjectView,false));
 
   KPrefsItem::setCurrentGroup("Personal Settings");
-  
+
   addPrefsItem(new KPrefsItemInt("Mail Client",&mMailClient,
                                  MailClientKMail));
   addPrefsItem(new KPrefsItemBool("Use Control Center Email",
@@ -47,12 +51,12 @@ KOPrefs::KOPrefs() :
   addPrefsItem(new KPrefsItemBool("Autostart",&mAlarmdAutostart,false));
 
   KPrefsItem::setCurrentGroup("Calendar");
-  
+
   addPrefsItem(new KPrefsItemInt("Default Calendar Format",&mDefaultFormat,
                                  FormatICalendar));
 
   KPrefsItem::setCurrentGroup("Colors");
-  
+
   addPrefsItem(new KPrefsItemColor("Holiday Color",&mHolidayColor,
                                    defaultHolidayColor));
   addPrefsItem(new KPrefsItemColor("Highlight Color",&mHighlightColor,
@@ -65,7 +69,7 @@ KOPrefs::KOPrefs() :
                                    defaultWorkingHoursColor));
 
   KPrefsItem::setCurrentGroup("Views");
- 
+
   addPrefsItem(new KPrefsItemBool("Show Daily Recurrences",&mDailyRecur,true));
   addPrefsItem(new KPrefsItemBool("Show Weekly Recurrences",&mWeeklyRecur,
                                   true));
@@ -99,7 +103,7 @@ KOPrefs *KOPrefs::instance()
     mInstance = new KOPrefs();
     mInstance->readConfig();
   }
-  
+
   return mInstance;
 }
 
@@ -121,7 +125,7 @@ void KOPrefs::usrSetDefaults()
 
   mAdditional = "";
   mHoliday = KGlobal::locale()->country();
-  
+
   mTimeZone = "+0000";
   mStartTime = 10;
   mDefaultDuration = 2;
@@ -147,7 +151,7 @@ void KOPrefs::usrSetDefaults()
   mPaperSize = 0;
   mPaperOrientation = 0;
   mPrintPreview = "kghostview";
-  
+
   setCategoryDefaults();
 }
 
@@ -189,7 +193,7 @@ void KOPrefs::usrReadConfig()
   mBcc = mConfig->readBoolEntry("Bcc",false);
 
   mHoliday = mConfig->readEntry("Holidays", KGlobal::locale()->country());
-  
+
   mConfig->setGroup("Time & Date");
   mTimeZone = mConfig->readEntry("Time Zone","+0000");
   mStartTime = mConfig->readNumEntry("Default Start Time",10);
@@ -233,7 +237,7 @@ void KOPrefs::usrReadConfig()
   mPaperOrientation = mConfig->readNumEntry("Paper Orientation",0);
   mPrintPreview = mConfig->readEntry("Preview","kghostview");
 
-  kdDebug() << "KOPrefs::usrReadConfig() done" << endl;  
+  kdDebug() << "KOPrefs::usrReadConfig() done" << endl;
 }
 
 
@@ -304,9 +308,9 @@ void KOPrefs::setCategoryColor(QString cat,const QColor & color)
 QColor *KOPrefs::categoryColor(QString cat)
 {
   QColor *color = 0;
-  
+
   if (!cat.isEmpty()) color = mCategoryColors[cat];
-  
+
   if (color) return color;
   else return &mDefaultCategoryColor;
 }
