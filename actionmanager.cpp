@@ -234,7 +234,7 @@ void ActionManager::initActions()
                    SLOT( file_new() ), mACollection, "korganizer_openNew" );
       KStdAction::open( this, SLOT( file_open() ), mACollection, "korganizer_open" );
       mRecent = new KRecentFilesAction( i18n("Open &Recent"), 0, 0, this,
-                                        SLOT( file_openRecent( const KURL & ) ),
+                                        SLOT( file_open( const KURL & ) ),
                                         mACollection, "korganizer_openRecent" );
       new KAction( i18n("Re&vert"), "revert", 0, this,
                    SLOT( file_revert() ), mACollection, "korganizer_revert" );
@@ -248,7 +248,7 @@ void ActionManager::initActions()
   } else {
     KStdAction::openNew( this, SLOT( file_new() ), mACollection );
     KStdAction::open( this, SLOT( file_open() ), mACollection );
-    mRecent = KStdAction::openRecent( this, SLOT( file_openRecent( const KURL& ) ),
+    mRecent = KStdAction::openRecent( this, SLOT( file_open( const KURL& ) ),
                                      mACollection );
     KStdAction::revert( this,SLOT( file_revert() ),mACollection );
     KStdAction::save( this, SLOT( file_save() ), mACollection );
@@ -666,6 +666,11 @@ void ActionManager::file_open()
   url = KFileDialog::getOpenURL( defaultPath,i18n("*.vcs *.ics|Calendar Files"),
                                 dialogParent() );
 
+  file_open( url );
+}
+
+void ActionManager::file_open( const KURL &url )
+{
   if ( url.isEmpty() ) return;
 
   // is that URL already opened somewhere else? Activate that window
@@ -682,19 +687,6 @@ void ActionManager::file_open()
     openURL( url );
   } else {
     emit actionNew( url );
-  }
-}
-
-void ActionManager::file_openRecent( const KURL& url )
-{
-  if ( !url.isEmpty() ) {
-    KOrg::MainWindow *korg=ActionManager::findInstance( url );
-    if ( ( 0 != korg )&&( korg != mMainWindow ) ) {
-      // already open in a different windows, activate that one
-      KWin::setActiveWindow( korg->topLevelWidget()->winId() );
-      return;
-    }
-    openURL( url );
   }
 }
 

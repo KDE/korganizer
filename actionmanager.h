@@ -252,8 +252,9 @@ class KDE_EXPORT ActionManager : public QObject, public KCalendarIface
     /** open a file, load it into the calendar. */
     void file_open();
 
-    /** open a file from the list of recent files. */
-    void file_openRecent( const KURL &url );
+    /** open a file from the list of recent files. Also called from file_open()
+        after the URL is obtained from the user. */
+    void file_open( const KURL &url );
 
     /** import a calendar from another program like ical. */
     void file_import();
@@ -294,7 +295,7 @@ class KDE_EXPORT ActionManager : public QObject, public KCalendarIface
     void toggleTodoView();
     void toggleEventViewer();
     void toggleResourceView();
-    
+
     /** called by the autoSaveTimer to automatically save the calendar */
     void checkAutoSave();
 
@@ -352,12 +353,12 @@ class KDE_EXPORT ActionManager : public QObject, public KCalendarIface
     // Actions
     KRecentFilesAction *mRecent;
     KToggleAction *mResourceButtonsAction;
-    
+
     KToggleAction *mDateNavigatorShowAction;
     KToggleAction *mTodoViewShowAction;
     KToggleAction *mResourceViewShowAction;
     KToggleAction *mEventViewerShowAction;
-    
+
     KAction *mShowIncidenceAction;
     KAction *mEditIncidenceAction;
     KAction *mDeleteIncidenceAction;
