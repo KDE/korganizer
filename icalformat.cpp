@@ -528,7 +528,7 @@ ScheduleMessage *ICalFormat::parseScheduleMessage(const QString &messageText)
 
   kdDebug() << "ICalFormat::parseScheduleMessage() classify..." << endl;
 
-  icalclass result = icalclassify(message,calendarComponent,"");
+  icalclass result = icalclassify(message,calendarComponent,(char *)"");
   
   kdDebug() << "ICalFormat::parseScheduleMessage() returning..." << endl;
 
@@ -895,7 +895,7 @@ KOEvent *ICalFormat::readTodo(icalcomponent *vtodo)
 
   icalproperty *p = icalcomponent_get_first_property(vtodo,ICAL_ANY_PROPERTY);
 
-  char *text;
+  const char *text;
   int intvalue;
   icaltimetype icaltime;
 
@@ -944,7 +944,7 @@ KOEvent *ICalFormat::readEvent(icalcomponent *vevent)
 
   icalproperty *p = icalcomponent_get_first_property(vevent,ICAL_ANY_PROPERTY);
 
-  char *text;
+  const char *text;
   int intvalue;
   icaltimetype icaltime;
 
@@ -1138,7 +1138,7 @@ void ICalFormat::readIncidence(icalcomponent *parent,KOEvent *incidence)
 {
   icalproperty *p = icalcomponent_get_first_property(parent,ICAL_ANY_PROPERTY);
 
-  char *text;
+  const char *text;
   int intvalue;
   icaltimetype icaltime;
 
