@@ -172,7 +172,8 @@ class KOTodoView : public KOrg::BaseView
 
   signals:
     void unSubTodoSignal();
-
+    void unAllSubTodoSignal();
+    
     void todoCompleted( Todo * );
 
     void purgeCompletedSignal();
@@ -235,7 +236,8 @@ class KOTodoView : public KOrg::BaseView
       ePopupDelete = 1301,
       ePopupMoveTo = 1302,
       ePopupCopyTo = 1303,
-      ePopupUnSubTodo = 1304
+      ePopupUnSubTodo = 1304,
+      ePopupUnAllSubTodo = 1305
     };
   
 };

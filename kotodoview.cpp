@@ -447,6 +447,8 @@ KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent, const char* name)
                              SLOT (newSubTodo()));
   mItemPopupMenu->insertItem( i18n("Make Sub-to-do Independent"), this,
       SIGNAL( unSubTodoSignal() ), 0, ePopupUnSubTodo );
+  mItemPopupMenu->insertItem( i18n("Make the Sub-to-dos Independent"), this,
+      SIGNAL( unAllSubTodoSignal() ), 0, ePopupUnAllSubTodo );
   mItemPopupMenu->insertSeparator();
   mItemPopupMenu->insertItem( i18n("Copy To"), mCopyPopupMenu, ePopupCopyTo );
   mItemPopupMenu->insertItem(i18n("Move To"), mMovePopupMenu, ePopupMoveTo );
@@ -749,7 +751,8 @@ void KOTodoView::popupMenu( QListViewItem *item, const QPoint &, int column )
     mItemPopupMenu->setItemEnabled( ePopupMoveTo, editable );
     mItemPopupMenu->setItemEnabled( ePopupCopyTo, editable );
     mItemPopupMenu->setItemEnabled( ePopupUnSubTodo, editable );
-
+    mItemPopupMenu->setItemEnabled( ePopupUnAllSubTodo, editable );
+    
     if ( editable ) {
       QDate date = mActiveItem->todo()->dtDue().date();
       if ( mActiveItem->todo()->hasDueDate () ) {
@@ -776,6 +779,8 @@ void KOTodoView::popupMenu( QListViewItem *item, const QPoint &, int column )
           mCopyPopupMenu->datePicker()->setDate( QDate::currentDate() );
           mItemPopupMenu->setItemEnabled( ePopupUnSubTodo,
                                           mActiveItem->todo()->relatedTo() );
+          mItemPopupMenu->setItemEnabled( ePopupUnAllSubTodo,
+                                          !mActiveItem->todo()->relations().isEmpty() );
           mItemPopupMenu->popup( QCursor::pos() );
       }
     } else {

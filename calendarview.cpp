@@ -1006,24 +1006,61 @@ void CalendarView::todo_unsub()
 
 bool CalendarView::todo_unsub( Todo *todo )
 {
-  bool status;
+  bool status= false;
   if ( !todo || !todo->relatedTo() ) return false;
-  Todo *oldTodo = todo->clone();
+  
   if ( mChanger->beginChange( todo ) ) {
-    todo->relatedTo()->removeRelation(todo);
-    todo->setRelatedTo(0);
-    todo->setRelatedToUid("");
-    mChanger->changeIncidence( todo, todo, KOGlobals::RELATION_MODIFIED );
-    mChanger->endChange( todo );
-    setModified(true);
-    status = true;
-  } else {
+      
+      Todo *oldTodo = todo->clone();
+      // I think that this is called on Incidence::setRelatedTo 
+      todo->relatedTo()->removeRelation(todo);
+      todo->setRelatedTo(0);
+      todo->setRelatedToUid("");
+      mChanger->changeIncidence( oldTodo, todo, KOGlobals::RELATION_MODIFIED );
+      mChanger->endChange( todo );
+      delete oldTodo;
+      setModified(true);
+      status = true;
+  } 
+  if ( ! status ) {
     KMessageBox::sorry( this, i18n("Unable to turn sub-to-do into a top-level "
         "to-do, because it cannot be locked.") );
-    status = false;
   }
-  delete oldTodo;
+
   return status;
+}
+
+bool CalendarView::makeSubTodosIndependents ( )
+{
+  bool  status = false;
+  Todo *anTodo = selectedTodo();
+  startMultiModify ( i18n( "make sub-to-dos independents" ) );
+  
+  if( makeSubTodosIndependents( anTodo ) ) {
+    updateView();
+    status = true;
+  }
+  endMultiModify();
+  return status;
+}
+
+bool CalendarView::makeSubTodosIndependents ( Todo *todo )
+{
+  if( !todo || todo->relations().isEmpty() ) return false;
+  
+  Incidence::List subTodos( todo->relations() );
+  Incidence::List::Iterator it;
+  Incidence *aIncidence;
+  Todo *aTodo;
+  
+  for ( it= subTodos.begin(); it != subTodos.end(); ++it ) {
+    aIncidence = *it;
+    if( aIncidence && aIncidence->type() == "Todo" ) {
+      aTodo = static_cast<Todo*>( aIncidence );
+      todo_unsub ( aTodo );
+    }
+  }
+  return true;
 }
 
 bool CalendarView::deleteIncidence( const QString &uid )
@@ -1701,6 +1738,25 @@ bool CalendarView::editIncidence( Incidence *incidence )
   return true;
 }
 
+void CalendarView::deleteSubTodosIncidence ( Todo *todo )
+{
+  if( !todo ) return;
+  
+  Incidence::List subTodos( todo->relations() );
+  Incidence::List::Iterator it;
+  Incidence *aIncidence;
+  Todo *aTodo;
+  
+  for ( it= subTodos.begin(); it != subTodos.end(); ++it ) {
+    aIncidence = *it;
+    if( aIncidence && aIncidence->type() == "Todo" ) {
+      aTodo = static_cast<Todo*>( aIncidence );
+      deleteSubTodosIncidence ( aTodo );
+    }
+  }
+  mChanger->deleteIncidence ( todo );
+}
+
 void CalendarView::deleteTodoIncidence ( Todo *todo )
 {
   Todo *subtodo;
@@ -1708,7 +1764,7 @@ void CalendarView::deleteTodoIncidence ( Todo *todo )
   
   if ( !todo ) return ;
  
-  // it a simple todo, ask and delete.
+  // it a simple todo, ask and delete it.
   if (todo->relations().isEmpty() ) {
     bool doDelete = true;
     if (KOPrefs::instance()->mConfirm ) {
@@ -1729,30 +1785,18 @@ void CalendarView::deleteTodoIncidence ( Todo *todo )
                                 i18n("KOrganizer Confirmation"), 
                                 i18n("Delete only this "),
                                 i18n("Delete all"));
+  startMultiModify( i18n("Deleting sub-to-dos" ) );
   // Delete only the father
   if( km == KMessageBox::Yes ) {
-    // do all sub-to-dos independents
-    for( i=todo->relations().count()-1; i>=0; i--) {
-      subtodo= static_cast<Todo*>(todo->relations()[i]);
-      todo_unsub( subtodo );
-    }
     
+    makeSubTodosIndependents ( todo );
+    mChanger->deleteIncidence( todo );
   } else if ( km == KMessageBox::No ) {
     // Delete all 
-    // do all sub-to-dos independents
     // we have to hide the delete confirmation for each itemDate
-    bool saveConfirm=KOPrefs::instance()->mConfirm;
-    KOPrefs::instance()->mConfirm = false;
-    
-    for( i=todo->relations().count()-1; i>=0; i--) {
-      subtodo= static_cast<Todo*>(todo->relations()[i]);
-      todo_unsub (subtodo);
-      deleteIncidence( subtodo );
-    }
-    //Restore the Confirm option
-    KOPrefs::instance()->mConfirm=saveConfirm;
+    deleteSubTodosIncidence ( todo );
   }
-  mChanger->deleteIncidence( todo );
+  endMultiModify(); 
 }
 
 void CalendarView::deleteIncidence(Incidence *incidence)

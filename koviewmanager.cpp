@@ -217,6 +217,8 @@ void KOViewManager::connectTodoView( KOTodoView* todoView )
            mMainView, SLOT( purgeCompleted() ) );
   connect( todoView, SIGNAL( unSubTodoSignal() ),
            mMainView, SLOT( todo_unsub() ) );
+  connect( todoView, SIGNAL( unAllSubTodoSignal() ),
+           mMainView, SLOT( makeSubTodosIndependents() ) );
 }
 
 void KOViewManager::zoomInHorizontally() 

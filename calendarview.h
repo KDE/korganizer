@@ -277,6 +277,8 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     bool editIncidence( Incidence * );
     /** Delete the supplied incidence. It calls the correct deleteXXX method*/
     void deleteIncidence( Incidence * );
+    /** Delete the supplied todo and all sub-todos */
+    void deleteSubTodosIncidence ( Todo *todo );
     /** Delete the todo incidence, this is special to can delete sub-to-dos */
     void deleteTodoIncidence ( Todo *todo );
     /** Check if deleting the supplied event is allowed. */
@@ -405,6 +407,10 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     void todo_unsub();
     /* Free a subtodo from it's relation, without update the view */
     bool todo_unsub( Todo *todo );
+    /** Make all sub-to-dos of todo independents, update the view*/ 
+    bool makeSubTodosIndependents ( );
+    /** Make all sub-to-dos of todo independents, not update the view*/ 
+    bool makeSubTodosIndependents ( Todo *todo );
     
     /** Take ownership of selected event. */
     void takeOverEvent();
