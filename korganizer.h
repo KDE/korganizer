@@ -146,6 +146,9 @@ class KOrganizer : public KMainWindow, virtual public KOrganizerIface
     /** open a calendar and add the contents to the current calendar. */
     void file_merge();
 
+    /** revert to saved */
+    void file_revert();
+
     /** delete or archive old entries in your calendar for speed/space. */
     void file_archive();
 

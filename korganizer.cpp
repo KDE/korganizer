@@ -197,6 +197,7 @@ void KOrganizer::initActions()
   KStdAction::open(this, SLOT(file_open()), actionCollection());
   mRecent = KStdAction::openRecent(this, SLOT(file_openRecent(const KURL&)),
                                    actionCollection());
+  KStdAction::revert(this,SLOT(file_revert()),actionCollection());
   KStdAction::save(this, SLOT(file_save()), actionCollection());
   KStdAction::saveAs(this, SLOT(file_saveas()), actionCollection());
   KStdAction::close(this, SLOT(file_close()), actionCollection());
@@ -566,6 +567,11 @@ void KOrganizer::file_merge()
 void KOrganizer::file_archive()
 {
   mCalendarView->archiveCalendar();
+}
+
+void KOrganizer::file_revert()
+{
+  openURL(mURL);
 }
 
 void KOrganizer::file_saveas()

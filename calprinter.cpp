@@ -412,7 +412,7 @@ void CalPrinter::printTodo(const QDate &fd, const QDate &td)
   p.end();
 }
 
-void CalPrinter::drawTodo(int count, Todo * item, QPainter &p,int level=0,QRect *r=0)
+void CalPrinter::drawTodo(int count, Todo * item, QPainter &p,int level,QRect *r)
 {
   QString outStr;
   KLocale *local = KGlobal::locale();
