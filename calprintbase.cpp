@@ -372,15 +372,15 @@ void CalPrintBase::drawTimeLine(QPainter &p,
       // draw the time:
       if ( !KGlobal::locale()->use12Clock() ) {
         numStr.setNum(curTime.hour());
-        if (cellHeight > 40) {
-          p.setFont(QFont("helvetica", 20, QFont::Bold));
-        } else {
+        if (cellHeight > 30) {
           p.setFont(QFont("helvetica", 16, QFont::Bold));
+        } else {
+          p.setFont(QFont("helvetica", 12, QFont::Bold));
         }
         p.drawText(x+2, (int)currY+2, width/2-2, (int)cellHeight,
                   AlignTop|AlignRight, numStr);
-        p.setFont(QFont("helvetica", 12, QFont::Bold));
-        p.drawText(x+width/2, (int)currY+2, width/2, (int)(cellHeight/2)-3,
+        p.setFont(QFont("helvetica", 10, QFont::Normal));
+        p.drawText(x+width/2, (int)currY+2, width/2+2, (int)(cellHeight/2)-3,
                   AlignTop | AlignLeft, "00");
       } else {
         QTime time( curTime.hour(), 0 );
@@ -443,12 +443,13 @@ void CalPrintBase::drawAllDayBox(QPainter &p, Event::List &eventList,
         if (mUseColors)
           setCategoryColors(p, currEvent);
 
-        p.drawRect(x, offset, width, height);
-        p.drawText(x+5, offset+5, width-10, height-10, AlignCenter,
-                  currEvent->summary());
+        p.drawRect( x, offset, width, height );
+        p.drawText( x+5, offset+5, width-10, height-10, 
+                    AlignCenter | AlignVCenter | AlignJustify | WordBreak,
+                    currEvent->summary() );
         // reset the colors
-        p.setBrush(oldBrush);
-        p.setPen(oldPen);
+        p.setBrush( oldBrush );
+        p.setPen( oldPen );
         p.setBackgroundColor(oldBgColor);
 
         offset += height;
@@ -464,7 +465,9 @@ void CalPrintBase::drawAllDayBox(QPainter &p, Event::List &eventList,
     p.drawRect(x, offset, width, height);
     if (!multiDayStr.isEmpty()) {
       p.fillRect(x+1, offset+1, width-2, height-2, QBrush(Dense5Pattern) );
-      p.drawText(x+5, offset+5, width-10, height-10, AlignCenter, multiDayStr);
+      p.drawText( x+5, offset+5, width-10, height-10, 
+                  AlignCenter | AlignVCenter | AlignJustify | WordBreak, 
+                  multiDayStr);
     }
   } else {
     height=offset-y;
@@ -549,7 +552,7 @@ void CalPrintBase::drawAgendaDayBox( QPainter &p, Event::List &events,
   QColor oldBgColor = p.backgroundColor();
   QBrush oldBrush = p.brush();
 
-  p.setFont( QFont( "helvetica", 14 ) );
+  p.setFont( QFont( "helvetica", 10 ) );
   p.setBrush( QBrush( Dense7Pattern ) );
 
   for( it1.toFirst(); it1.current(); ++it1 ) {
@@ -565,6 +568,7 @@ void CalPrintBase::drawAgendaDayBox( QPainter &p, Event::List &events,
   
   p.setBrush( QBrush( NoBrush ) );
 }
+
 
 void CalPrintBase::drawAgendaItem( PrintCellItem *item, QPainter &p,
                                    const QDate &qd,
@@ -738,7 +742,7 @@ void CalPrintBase::drawTimeTable(QPainter &p,
     int x, int y, int width, int height)
 {
   // timeline is 1.5 hours:
-  int alldayHeight = (int)( 5400.*height/(fromTime.secsTo(toTime)+5400.) );
+  int alldayHeight = (int)( 3600.*height/(fromTime.secsTo(toTime)+3600.) );
   int timelineWidth = 50;
   int cellWidth = (int)( (width-timelineWidth)/(fromDate.daysTo(toDate)+1) );
   int currY=y;

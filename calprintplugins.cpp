@@ -328,11 +328,12 @@ void CalPrintWeek::print( QPainter &p, int width, int height )
       do {
         QString line1( local->formatDate( curWeek.addDays( -6 ) ) );
         QString line2( local->formatDate( curWeek ) );
+        int hh = mHeaderHeight * 2./3.;
         drawHeader( p, i18n("date from - to", "%1 - %2").arg( line1 ).arg( line2 ),
-                    curWeek, QDate(), 0, 0, width, mHeaderHeight / 2 );
+                    curWeek, QDate(), 0, 0, width, hh );
         drawTimeTable( p, fromWeek, curWeek,
-                       mStartTime, mEndTime, 0, mHeaderHeight / 2 + 5,
-                       width, height - mHeaderHeight / 2 - 5 );
+                       mStartTime, mEndTime, 0, hh + 5,
+                       width, height - hh - 5 );
         fromWeek = fromWeek.addDays( 7 );
         curWeek = fromWeek.addDays( 6 );
         if ( curWeek <= toWeek )
