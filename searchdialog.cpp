@@ -83,7 +83,7 @@ SearchDialog::SearchDialog(Calendar *calendar,QWidget *parent)
   mInclusiveCheck->setChecked(false);
 
   // Subjects to search
-  QGroupBox *subjectGroup = new QGroupBox(1,Vertical,i18n("Search In:"),
+  QGroupBox *subjectGroup = new QGroupBox(1,Vertical,i18n("Search In"),
                                           topFrame);
   layout->addWidget(subjectGroup);
 
