@@ -180,7 +180,7 @@ void KODayMatrix::updateView(QDate actdate)
       if (days[i].year() == QDate::currentDate().year() &&
           days[i].month() == QDate::currentDate().month() &&
           days[i].day() == QDate::currentDate().day()) {
-        kdDebug() << "KODayMatrix::updateView() today:" << days[i].day() << "i" << i << endl;
+//        kdDebug() << "KODayMatrix::updateView() today:" << days[i].day() << "i" << i << endl;
         today = i;
       }
     }
@@ -192,7 +192,7 @@ void KODayMatrix::updateView(QDate actdate)
     Event *event;
     for(event=eventlist.first();event != 0;event=eventlist.next()) {
       ushort recurType = event->recurrence()->doesRecur();
-      kdDebug() << "KODayMatrix::updateView recurType " << recurType << endl;
+//      kdDebug() << "KODayMatrix::updateView recurType " << recurType << endl;
       if ((recurType == Recurrence::rNone) ||
           (recurType == Recurrence::rDaily && KOPrefs::instance()->mDailyRecur) ||
           (recurType == Recurrence::rWeekly && KOPrefs::instance()->mWeeklyRecur)) {
@@ -216,7 +216,7 @@ void KODayMatrix::updateView(QDate actdate)
       if (holiStr.isNull()) holiStr = "";
       mHolidays[i] = holiStr;
 
-      kdDebug() << "KODayMatrix::updateView holidays " << i << " = #" << holiStr << "#" << endl;
+//      kdDebug() << "KODayMatrix::updateView holidays " << i << " = #" << holiStr << "#" << endl;
     } else {
       mHolidays[i] = QString::null;
     }
@@ -423,7 +423,7 @@ void KODayMatrix::paintEvent(QPaintEvent *)
   // draw selected days with highlighted background color
   if (mSelStart != -1) {
 
-    kdDebug() << "Sel:" << mSelStart << " - " << mSelEnd << endl;
+//    kdDebug() << "Sel:" << mSelStart << " - " << mSelEnd << endl;
     row = mSelStart/7;
     col = mSelStart -row*7;
     QColor selcol = KOPrefs::instance()->mHighlightColor;

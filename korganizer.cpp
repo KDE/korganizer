@@ -745,7 +745,7 @@ bool KOrganizer::saveURL()
 
   if (isActive()) {
     kdDebug() << "KOrganizer::saveURL(): Notify alarm daemon" << endl;
-    mAlarmDaemonIface.reloadCal("korganizer",mURL.url());
+    mAlarmDaemonIface.reloadCal("korgac",mURL.url());
     if (!mAlarmDaemonIface.ok()) {
       kdDebug() << "KOrganizer::saveUrl(): reloadCal call failed." << endl;
     }
@@ -1061,7 +1061,7 @@ void KOrganizer::makeActive()
 
   writeActiveState();
 
-  mAlarmDaemonIface.reloadCal( "korganizer", mURL.url() );
+  mAlarmDaemonIface.reloadCal( "korgac", mURL.url() );
   if ( !mAlarmDaemonIface.ok() ) {
     kdDebug() << "KOrganizer::makeActive(): dcop send failed" << endl;
   }

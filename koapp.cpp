@@ -143,7 +143,7 @@ int KOrganizerApp::newInstance()
     kdDebug() << "KOApp::newInstance() registerApp" << endl;
     // Register this application with the alarm daemon
     AlarmDaemonIface_stub stub( "kalarmd", "ad" );
-    stub.registerApp( "korganizer", "KOrganizer", "", 0, true );
+    stub.registerApp( "korgac", "KOrganizer", "ac", 3, true );
     if( !stub.ok() ) {
       kdDebug() << "KOrganizerApp::newInstance(): dcop send failed" << endl;
     }
@@ -161,7 +161,7 @@ int KOrganizerApp::newInstance()
 
     // Force alarm daemon to load active calendar
     AlarmDaemonIface_stub stub( "kalarmd", "ad" );
-    stub.addCal( "korganizer", urlString );
+    stub.addCal( "korgac", urlString );
 
     processCalendar(urlString,numDays);
   }
