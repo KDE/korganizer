@@ -62,13 +62,12 @@ void KOTodoViewItem::paintBranches(QPainter *p,const QColorGroup & cg,int w,
 
 void KOTodoViewItem::construct()
 {
-  QString key;
+  QString keyd = "==";
+  QString keyt = "==";
 
   setOn(mEvent->isCompleted());
   setText(0,mEvent->summary());
   setText(1,QString::number(mEvent->priority()));
-  if (mEvent->isCompleted()) setSortKey(1,QString::number(9));
-  else setSortKey(1,QString::number(mEvent->priority()));
   setText(2,i18n("%1 %").arg(QString::number(mEvent->percentComplete())));
   if (mEvent->percentComplete()<100) {
     if (mEvent->isCompleted()) setSortKey(2,QString::number(999));
@@ -81,24 +80,27 @@ void KOTodoViewItem::construct()
   if (mEvent->hasDueDate()) {
     setText(3, mEvent->dtDueDateStr());
     QDate d = mEvent->dtDue().date();
-    key.sprintf("%04d%02d%02d",d.year(),d.month(),d.day());
-    setSortKey(3,key);
+    keyd.sprintf("%04d%02d%02d",d.year(),d.month(),d.day());
+    setSortKey(3,keyd);
     if (mEvent->doesFloat()) {
       setText(4,"");
-      setSortKey(4,"==");
     }
     else {
       setText(4,mEvent->dtDueTimeStr());
       QTime t = mEvent->dtDue().time();
-      key.sprintf("%02d%02d",t.hour(),t.minute());
-      setSortKey(4,key);
+      keyt.sprintf("%02d%02d",t.hour(),t.minute());
+      setSortKey(4,keyt);
     }
   } else {
     setText(3,"");
-    setSortKey(3,"==");
     setText(4,"");
-    setSortKey(4,"==");
   }
+  setSortKey(3,keyd);
+  setSortKey(4,keyt);
+
+  if (mEvent->isCompleted()) setSortKey(1,QString::number(9)+keyd+keyt);
+  else setSortKey(1,QString::number(mEvent->priority())+keyd+keyt);
+
   setText(5,mEvent->categoriesStr());
   // Find sort id in description. It's the text behind the last '#' character
   // found in the description. White spaces are removed from beginning and end
@@ -115,14 +117,34 @@ void KOTodoViewItem::construct()
 
 void KOTodoViewItem::stateChange(bool state)
 {
+  QString keyd = "==";
+  QString keyt = "==";
+  
   if (state) mEvent->setCompleted(state);
   else mEvent->setPercentComplete(0);
   if (isOn()!=state) {
     setOn(state);
 //    emit isModified(true);
   }
-  if (mEvent->isCompleted()) setSortKey(1,QString::number(9));
-  else setSortKey(1,QString::number(mEvent->priority()));
+
+  if (mEvent->hasDueDate()) {
+    setText(3, mEvent->dtDueDateStr());
+    QDate d = mEvent->dtDue().date();
+    keyd.sprintf("%04d%02d%02d",d.year(),d.month(),d.day());
+    setSortKey(3,keyd);
+    if (mEvent->doesFloat()) {
+      setText(4,"");
+    }
+    else {
+      setText(4,mEvent->dtDueTimeStr());
+      QTime t = mEvent->dtDue().time();
+      keyt.sprintf("%02d%02d",t.hour(),t.minute());
+      setSortKey(4,keyt);
+    }
+  }
+  if (mEvent->isCompleted()) setSortKey(1,QString::number(9)+keyd+keyt);
+  else setSortKey(1,QString::number(mEvent->priority())+keyd+keyt);
+  
   setText(2,i18n("%1 %").arg(QString::number(mEvent->percentComplete())));
   if (mEvent->percentComplete()<100) {
     if (mEvent->isCompleted()) setSortKey(2,QString::number(999));
