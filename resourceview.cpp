@@ -83,7 +83,8 @@ ResourceItem::ResourceItem( ResourceCalendar *resource, ResourceView *view,
                             KListView *parent )
   : QCheckListItem( parent, resource->resourceName(), CheckBox ),
     mResource( resource ), mView( view ), mBlockStateChange( false ),
-    mIsSubresource( false )
+    mIsSubresource( false ), mResourceIdentifier( QString::null )
+   
 {
   setGuiState();
 
@@ -105,6 +106,9 @@ ResourceItem::ResourceItem( KCal::ResourceCalendar *resource,
   : QCheckListItem( parent, sub, CheckBox ), mResource( resource ),
     mView( view ), mBlockStateChange( false ), mIsSubresource( true )
 {
+  mResourceIdentifier = sub;
+  QString label = resource->labelForSubresource( mResourceIdentifier );
+  setText( 0, label );
   setGuiState();
 }
 
@@ -112,7 +116,7 @@ void ResourceItem::setGuiState()
 {
   mBlockStateChange = true;
   if ( mIsSubresource )
-    setOn( mResource->subresourceActive( text( 0 ) ) );
+    setOn( mResource->subresourceActive( mResourceIdentifier ) );
   else
     setOn( mResource->isActive() );
   mBlockStateChange = false;
@@ -123,7 +127,7 @@ void ResourceItem::stateChange( bool active )
   if ( mBlockStateChange ) return;
 
   if ( mIsSubresource ) {
-    mResource->setSubresourceActive( text( 0 ), active );
+    mResource->setSubresourceActive( mResourceIdentifier, active );
   } else {
     if ( active ) {
       if ( mResource->load() ) mResource->setActive( true );
@@ -284,7 +288,8 @@ void ResourceView::slotSubresourceRemoved( ResourceCalendar */*calendar*/,
                                            const QString &/*type*/,
                                            const QString &resource )
 {
-  delete mListView->findItem( resource, 0 );
+  delete findItemByIdentifier( resource );
+  emitResourcesChanged();
 }
 
 void ResourceView::closeResource( ResourceCalendar *r )
@@ -317,7 +322,7 @@ void ResourceView::removeResource()
 
   int km = KMessageBox::warningContinueCancel( this,
         i18n("<qt>Do you really want to remove the resource <b>%1</b>?</qt>")
-        .arg( item->resource()->resourceName() ), "",
+        .arg( item->text( 0 ) ), "",
         KGuiItem( i18n("&Remove" ), "editdelete") );
   if ( km == KMessageBox::Cancel ) return;
 
@@ -329,11 +334,13 @@ void ResourceView::removeResource()
     return;
   }
 #endif
-
-  mCalendar->resourceManager()->remove( item->resource() );
-
-  mListView->takeItem( item );
-  delete item;
+  if ( item->isSubresource() ) {
+    // TODO delete the folder in KMail
+  } else {
+    mCalendar->resourceManager()->remove( item->resource() );
+    mListView->takeItem( item );
+    delete item;
+  }
   emitResourcesChanged();
 }
 
@@ -355,10 +362,14 @@ void ResourceView::editResource()
 
 void ResourceView::currentChanged( QListViewItem *item)
 {
-  bool selected = true;
-  if ( !item ) selected = false;
-  mDeleteButton->setEnabled( selected );
-  mEditButton->setEnabled( selected );
+   ResourceItem *i = currentItem();
+   if ( !item || i->isSubresource() ) {
+     mDeleteButton->setEnabled( false );
+     mEditButton->setEnabled( false );
+   } else {
+     mDeleteButton->setEnabled( true );
+     mEditButton->setEnabled( true );
+   }
 }
 
 ResourceItem *ResourceView::findItem( ResourceCalendar *r )
@@ -371,6 +382,19 @@ ResourceItem *ResourceView::findItem( ResourceCalendar *r )
   }
   return i;
 }
+
+ResourceItem *ResourceView::findItemByIdentifier( const QString& id )
+{
+  QListViewItem *item;
+  ResourceItem *i = 0;
+  for( item = mListView->firstChild(); item; item = item->itemBelow() ) {
+    i = static_cast<ResourceItem *>( item );
+    if ( i->resourceIdentifier() == id )
+       return i;
+  }
+  return 0;
+}
+
 
 void ResourceView::contextMenuRequested ( QListViewItem *i,
                                           const QPoint &pos, int )
