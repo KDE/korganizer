@@ -1,6 +1,0 @@
-[Desktop Entry]
-Encoding=UTF-8
-X-KDE-Library=libkorg_hebrew
-Name=Jewish calendar plugin
-Type=Service
-ServiceTypes=Calendar/Plugin,Calendar/Decoration
