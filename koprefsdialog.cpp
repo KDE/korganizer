@@ -75,14 +75,14 @@ KOPrefsDialogMain::KOPrefsDialogMain( QWidget *parent, const char *name )
 
   mNameEdit = new QLineEdit(topFrame);
   connect( mNameEdit, SIGNAL( textChanged( const QString & ) ),
-           SIGNAL( changed() ) );
+           SLOT( slotWidChanged() ) );
   mNameLabel = new QLabel(mNameEdit, i18n("Full &name:"), topFrame);
   topLayout->addWidget(mNameLabel,1,0);
   topLayout->addWidget(mNameEdit,1,1);
 
   mEmailEdit = new QLineEdit(topFrame);
   connect( mEmailEdit, SIGNAL( textChanged( const QString & ) ),
-           SIGNAL( changed() ) );
+           SLOT( slotWidChanged() ) );
   mEmailLabel = new QLabel(mEmailEdit, i18n("E&mail address:"),topFrame);
   topLayout->addWidget(mEmailLabel,2,0);
   topLayout->addWidget(mEmailEdit,2,1);
@@ -106,7 +106,7 @@ KOPrefsDialogMain::KOPrefsDialogMain( QWidget *parent, const char *name )
   QLabel *autoSaveIntervalLabel = new QLabel(i18n("Save &interval in minutes:"),intervalBox);
   mAutoSaveIntervalSpin = new QSpinBox(0,500,1,intervalBox);
   connect( mAutoSaveIntervalSpin, SIGNAL( valueChanged( int ) ),
-           SIGNAL( changed() ) );
+           SLOT( slotWidChanged() ) );
   autoSaveIntervalLabel->setBuddy(mAutoSaveIntervalSpin);
 
   KPrefsWidBool *confirmCheck =
@@ -202,7 +202,7 @@ class KOPrefsDialogTime : public KPrefsModule
       new QLabel( i18n("Timezone:"), timeZoneBox );
       mTimeZoneCombo = new QComboBox( timeZoneBox );
       connect( mTimeZoneCombo, SIGNAL( activated( int ) ),
-               SIGNAL( changed() ) );
+               SLOT( slotWidChanged() ) );
 
       FILE *f;
       char tempstring[101] = "Unknown";
@@ -285,7 +285,7 @@ class KOPrefsDialogTime : public KPrefsModule
                            topFrame),1,0);
       mStartTimeSpin = new QSpinBox(0,23,1,topFrame);
       connect( mStartTimeSpin, SIGNAL( valueChanged( int ) ),
-               SIGNAL( changed() ) );
+               SLOT( slotWidChanged() ) );
       mStartTimeSpin->setSuffix(":00");
       topLayout->addWidget(mStartTimeSpin,1,1);
 
@@ -293,7 +293,7 @@ class KOPrefsDialogTime : public KPrefsModule
                            topFrame),2,0);
       mDefaultDurationSpin = new QSpinBox(0,23,1,topFrame);
       connect( mDefaultDurationSpin, SIGNAL( valueChanged( int ) ),
-               SIGNAL( changed() ) );
+               SLOT( slotWidChanged() ) );
       mDefaultDurationSpin->setSuffix(":00");
       topLayout->addWidget(mDefaultDurationSpin,2,1);
 
@@ -304,7 +304,7 @@ class KOPrefsDialogTime : public KPrefsModule
                            3,0);
       mAlarmTimeCombo = new QComboBox(topFrame);
       connect( mAlarmTimeCombo, SIGNAL( activated( int ) ),
-               SIGNAL( changed() ) );
+               SLOT( slotWidChanged() ) );
       mAlarmTimeCombo->insertStringList(alarmList);
       topLayout->addWidget(mAlarmTimeCombo,3,1);
 
@@ -429,7 +429,7 @@ class KOPrefsDialogViews : public KPrefsModule
       nextDaysLayout->addWidget(new QLabel(i18n("Days to show in Next-X-Days view:"),topFrame));
       mNextXDaysSpin = new QSpinBox(2,14,1,topFrame);
       connect( mNextXDaysSpin, SIGNAL( valueChanged( int ) ),
-               SIGNAL( changed() ) );
+               SLOT( slotWidChanged() ) );
       nextDaysLayout->addStretch(1);
       nextDaysLayout->addWidget(mNextXDaysSpin);
 
@@ -677,7 +677,7 @@ void KOPrefsDialogColors::updateCategoryColor()
   }
   if (color) {
     mCategoryButton->setColor(*color);
-    emit changed();
+    slotWidChanged();
   }
 }
 

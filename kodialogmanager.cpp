@@ -20,6 +20,7 @@
 */
 
 #include <kcmultidialog.h>
+#include <kconfiguredialog.h>
 
 #include <libkdepim/categoryeditdialog.h>
 
@@ -91,13 +92,23 @@ void KODialogManager::createOutgoingDialog()
 void KODialogManager::showOptionsDialog()
 {
   if (!mOptionsDialog) {
+#if 0
+    mOptionsDialog = new KConfigureDialog();
+//    mOptionsDialog = new KConfigureDialog( KConfigureDialog::Configurable );
+//    mOptionsDialog = new KConfigureDialog( mMainView );
+    connect( mOptionsDialog->dialog(),
+             SIGNAL( configCommitted( const QCString & ) ),
+             mMainView, SLOT( updateConfig() ) );
+#else
     mOptionsDialog = new KCMultiDialog( "PIM", mMainView,
                                         "KorganizerPreferences" );
-      connect( mOptionsDialog, SIGNAL( applyClicked() ),
-               mMainView, SLOT( updateConfig() ) );
-      connect( mOptionsDialog, SIGNAL( okClicked() ),
-               mMainView, SLOT( updateConfig() ) );
+    connect( mOptionsDialog, SIGNAL( configCommitted( const QCString & ) ),
+             mMainView, SLOT( updateConfig() ) );
 #if 0
+    connect( mOptionsDialog, SIGNAL( applyClicked() ),
+             mMainView, SLOT( updateConfig() ) );
+    connect( mOptionsDialog, SIGNAL( okClicked() ),
+             mMainView, SLOT( updateConfig() ) );
     // TODO Find a way to do this with KCMultiDialog
     connect(mCategoryEditDialog,SIGNAL(categoryConfigChanged()),
             mOptionsDialog,SLOT(updateCategories()));
@@ -118,6 +129,7 @@ void KODialogManager::showOptionsDialog()
     QStringList::iterator mit;
     for ( mit = modules.begin(); mit != modules.end(); ++mit )
       mOptionsDialog->addModule( *mit );
+#endif
   }
 
   mOptionsDialog->show();
