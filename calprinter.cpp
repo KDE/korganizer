@@ -728,9 +728,10 @@ void CalPrinter::drawDayBox(QPainter &p, const QDate &qd,
 }
 
 void CalPrinter::drawTTDayBox(QPainter &p, const QDate &qd,
-			    int x, int y, int width, int height,
-			    bool fullDate)
+                              int x, int y, int width, int height,
+                              bool fullDate)
 {
+  int printHours=12;
   KLocale *local = KGlobal::locale();
   QString dayNumStr;
   QString ampm;
@@ -749,7 +750,8 @@ void CalPrinter::drawTTDayBox(QPainter &p, const QDate &qd,
     dayNumStr.remove(0, index);
     index = dayNumStr.findRev(' ');
     dayNumStr.truncate(index);*/
-    dayNumStr = local->weekDayName(qd.dayOfWeek()) + ' ' + local->monthName(qd.month(), true) + ' ' + QString::number(qd.day());
+    dayNumStr = local->weekDayName(qd.dayOfWeek()) + ' ' +
+      local->monthName(qd.month(), true) + ' ' + QString::number(qd.day());
   } else {
     dayNumStr = QString::number(qd.day());
   }
@@ -759,18 +761,18 @@ void CalPrinter::drawTTDayBox(QPainter &p, const QDate &qd,
   p.setFont(QFont("helvetica", 10, QFont::Bold));
   p.drawText(x+5, y, width, mSubHeaderHeight,
         AlignCenter | AlignVCenter | AlignJustify | WordBreak,
-	     dayNumStr);
+        dayNumStr);
 
   p.drawRect(x, y+mSubHeaderHeight, width, height); //draw rect for daily event
 
   //draw lines for day
   int cury=y+mSubHeaderHeight+height;
-  for(int i=1; i<=12;i++){
+  for(int i=1; i<=printHours;i++){
     cury+=height;
     p.drawLine(x,cury,x+width,cury);
   }
   //draw one straight line to close day vertically
-  p.drawLine(x+width,y,x+width,y+mSubHeaderHeight+(13*height));
+  p.drawLine(x+width,y,x+width,y+mSubHeaderHeight+((printHours+1)*height));
 
   p.setFont(QFont("helvetica", 10));
   QBrush oldBrush=p.brush();
@@ -781,33 +783,39 @@ void CalPrinter::drawTTDayBox(QPainter &p, const QDate &qd,
 
   //Draw all Events for Day
   QString MultiDayStr; //string for storing Multi Day Events
+  QDateTime startPrintDate(qd, QTime(mStartHour, 0, 0) );
+  QDateTime endPrintDate(startPrintDate.addSecs(3600*printHours));
+  float minuteInc = height / 60.0;
   for ( it = eventList.begin(); it != eventList.end(); ++it ) {
-      Event *currEvent = *it;
-      if (currEvent->doesFloat() || currEvent->isMultiDay()) {
-          if(!MultiDayStr.isNull()) MultiDayStr += ", ";
-          MultiDayStr += currEvent->summary(); // add MultiDayevent
-          }
-      else {
-           int startTime = currEvent->dtStart().time().hour();
-           int endTime = currEvent->dtEnd().time().hour();
-           float minuteInc = height / 60.0;
-           if ((startTime >= mStartHour)  && (endTime <= (mStartHour + 12))) {
-                startTime -= mStartHour;
-                int startMinuteOff = (int) (minuteInc * currEvent->dtStart().time().minute());
-                int currentyPos =y+mSubHeaderHeight+height+startMinuteOff+startTime*height;
-                endTime -= mStartHour;
-                int endMinuteOff = (int) (minuteInc * currEvent->dtEnd().time().minute());
-                int eventLenght=endMinuteOff + (endTime - startTime)*height;
-                kdDebug(5850) << currEvent->summary() << ": " << " x=" << x << " currY=" << currentyPos << " width=" << width << " lenght=" << eventLenght;
-                p.drawRect(x, currentyPos,
-                width, eventLenght);
-                p.drawText(x,
-          		 currentyPos,
-          		 width,
-          		 eventLenght,
-          		 AlignCenter | AlignVCenter | AlignJustify | WordBreak, currEvent->summary());
-            }
-        }
+    Event *currEvent = *it;
+    if (currEvent->doesFloat() ) {
+      if(!MultiDayStr.isNull()) MultiDayStr += ", ";
+      MultiDayStr += currEvent->summary(); // add MultiDayevent
+    } else {
+      QDateTime startTime = currEvent->dtStart();
+      QDateTime endTime = currEvent->dtEnd();
+      if (currEvent->doesRecur()) {
+        startTime.setDate(qd);
+        endTime.setDate(qd);
+      }
+      if ( (startTime<endPrintDate && endTime>startPrintDate) ||
+           (endTime>startPrintDate && startTime<endPrintDate) ) {
+        if ( startTime<startPrintDate ) startTime = startPrintDate;
+        if ( endTime>endPrintDate ) endTime = endPrintDate;
+        int eventLength = (int)(startTime.secsTo( endTime )/60. * minuteInc);
+        int currentyPos = y + mSubHeaderHeight + height
+              + (int)( minuteInc*startTime.time().minute() )
+              + (int)( height*(startTime.time().hour()-mStartHour) );
+        kdDebug(5850) << currEvent->summary() << ": " << " x=" << x <<
+          " currY=" << currentyPos << " width=" << width << " lenght=" << eventLength;
+        p.drawRect(x, currentyPos, width, eventLength);
+        p.drawText(x,
+                   currentyPos,
+                   width,
+                   eventLength,
+                   AlignCenter | AlignVCenter | AlignJustify | WordBreak, currEvent->summary());
+      }
+    }
   }
 
   p.setBrush(oldBrush);
