@@ -1,7 +1,6 @@
 /*
     This file is part of KOrganizer.
     Copyright (c) 2000,2001 Cornelius Schumacher <schumacher@kde.org>
-    Copyright (C) 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -41,9 +40,13 @@ class Attendee;
 class Incidence;
 }
 using namespace KCal;
-    
+
 namespace KPIM {
 class AddresseeLineEdit;
+}
+
+namespace KABC {
+class Addressee;
 }
 
 typedef CustomListViewItem<Attendee *> AttendeeListItem;
@@ -112,6 +115,11 @@ class KOEditorDetails : public QWidget
     void fillOrganizerCombo();
 
     void insertAttendee( Attendee*, bool goodEmailAddress );
+
+    /** Reads values from a KABC::Addressee and inserts a new Attendee
+     * item into the listview with those items. Used when adding attendees
+     * from the addressbook and expanding distribution lists. */
+    void insertAttendeeFromAddressee( const KABC::Addressee& a );
 
   private:
     bool mDisableItemUpdate;
