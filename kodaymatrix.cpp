@@ -388,7 +388,7 @@ void KODayMatrix::dragMoveEvent(QDragMoveEvent *e)
 #endif
 }
 
-void KODayMatrix::dragLeaveEvent(QDragLeaveEvent */*dl*/)
+void KODayMatrix::dragLeaveEvent(QDragLeaveEvent * /*dl*/)
 {
 #ifndef KORG_NODND
 //  setPalette(oldPalette);
