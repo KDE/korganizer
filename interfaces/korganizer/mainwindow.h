@@ -40,7 +40,7 @@ class CalendarViewBase;
 class MainWindow
 {
   public:
-    MainWindow() {};
+    MainWindow( bool document = true ) : mDocument( document ) {};
     virtual ~MainWindow() {};
 
     virtual CalendarViewBase *view() const = 0;
@@ -84,6 +84,11 @@ class MainWindow
       Set window title.
     */
     virtual void setTitle() = 0;
+
+    bool hasDocument() const { return mDocument; }
+
+  private:
+    bool mDocument;
 };
 
 }

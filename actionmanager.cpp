@@ -645,11 +645,15 @@ void ActionManager::file_saveas()
 
 void ActionManager::file_save()
 {
-  if (mURL.isEmpty()) {
-    if ( !mCalendarView->saveResources() )
+  if ( mMainWindow->hasDocument() ) {
+    if (mURL.isEmpty()) {
       file_saveas();
+    } else {
+      saveURL();
+    }
+  } else {
+    mCalendarView->calendar()->save();
   }
-  else saveURL();
 }
 
 void ActionManager::file_close()

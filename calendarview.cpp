@@ -402,21 +402,6 @@ bool CalendarView::saveCalendar( QString filename )
   return true;
 }
 
-bool CalendarView::saveResources()
-{
-  if ( mResourceManager ) {
-    CalendarResourceManager::ActiveIterator it;
-    for ( it = mResourceManager->activeBegin();
-          it != mResourceManager->activeEnd(); it++ )
-    {
-      (*it)->save();
-    }
-    return true;
-  } else {
-    return false;
-  }
-}
-
 void CalendarView::closeCalendar()
 {
   kdDebug() << "CalendarView::closeCalendar()" << endl;

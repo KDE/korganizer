@@ -175,7 +175,6 @@ class KOrganizer : public KParts::MainWindow, virtual public KOrganizerIface, pu
     void readProperties(KConfig *);
 
   private:
-    bool mDocument;
     Calendar *mCalendar;
     CalendarResources *mCalendarResources;
     CalendarView *mCalendarView;  // Main view widget

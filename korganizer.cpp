@@ -81,9 +81,8 @@ using namespace KOrg;
 
 KOrganizer::KOrganizer( bool document, const char *name )
   : KParts::MainWindow(0,name),
-    KOrg::MainWindow(),
+    KOrg::MainWindow( document ),
     DCOPObject("KOrganizerIface"),
-    mDocument( document ),
     mIsClosing( false )
 {
   kdDebug() << "KOrganizer::KOrganizer()" << endl;
@@ -92,7 +91,7 @@ KOrganizer::KOrganizer( bool document, const char *name )
 
   // Create calendar object, which manages all calendar information associated
   // with this calendar view window.
-  if ( mDocument ) {
+  if ( hasDocument() ) {
     mCalendar = new CalendarLocal(KOPrefs::instance()->mTimeZoneId);
     mCalendarResources = 0;
     mCalendarView = new CalendarView( mCalendar, this, "KOrganizer::CalendarView" );
@@ -276,7 +275,7 @@ bool KOrganizer::queryClose()
 
   bool close = true;
 
-  if ( mDocument ) {
+  if ( hasDocument() ) {
     close = mActionManager->saveModifiedURL();
   } else {
     if ( !mIsClosing ) {
@@ -439,7 +438,7 @@ void KOrganizer::setTitle()
 {
 //  kdDebug() << "KOrganizer::setTitle" << endl;
 
-  if ( !mDocument ) return;
+  if ( !hasDocument() ) return;
 
   QString title;
 

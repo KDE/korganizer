@@ -77,7 +77,7 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
       @param name     Qt internal widget object name
     */
     CalendarView( CalendarResources *calendar, QWidget *parent = 0,
-                  const char *name = 0 ); 
+                  const char *name = 0 );
     CalendarView( Calendar *calendar, QWidget *parent = 0,
                   const char *name = 0 );
     virtual ~CalendarView();
@@ -170,12 +170,6 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     */
     bool saveCalendar(QString filename);
   
-    /**
-      Save calendar(s) data to resource(s). Return true if calendar could be
-      successfully saved. Return false if no resource is used.
-    */
-    bool saveResources();
-
     /**
       Close calendar. Clear calendar data and reset views to display an empty
       calendar.
