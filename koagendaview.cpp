@@ -320,7 +320,7 @@ KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name) :
   agendaLayout->addWidget(mTimeLabels,1,0);
 
   // Create agenda
-  mAgenda = new KOAgenda(1,48,20,agendaFrame);
+  mAgenda = new KOAgenda(1,96,10,agendaFrame);
   agendaLayout->addMultiCellWidget(mAgenda,1,1,1,2);
   agendaLayout->setColStretch(1,1);
 

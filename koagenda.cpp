@@ -841,7 +841,8 @@ void KOAgenda::placeSubCells(KOAgendaItem *placeItem)
 void KOAgenda::drawContents(QPainter* p, int cx, int cy, int cw, int ch)
 {
 //  kdDebug() << "KOAgenda::drawContents()" << endl;
-
+  int lGridSpacingY = mGridSpacingY*2;
+  
   // Highlight working hours
   if (mWorkingHoursEnable) {
     int x1 = cx;
@@ -890,11 +891,11 @@ void KOAgenda::drawContents(QPainter* p, int cx, int cy, int cw, int ch)
   }
 
   // Draw horizontal lines of grid
-  int y = ((int)(cy/mGridSpacingY))*mGridSpacingY;
+  int y = ((int)(cy/lGridSpacingY))*lGridSpacingY;
   while (y < cy + ch) {
 //    kdDebug() << " y: " << y << endl;
     p->drawLine(cx,y,cx+cw,y);
-    y+=mGridSpacingY;
+    y+=lGridSpacingY;
   }
 }
 
@@ -1255,9 +1256,9 @@ void KOAgenda::calculateWorkingHours()
   mWorkingHoursEnable = !mAllDayMode;
 
   mWorkingHoursYTop = mGridSpacingY *
-                      KOPrefs::instance()->mWorkingHoursStart * 2;
+                      KOPrefs::instance()->mWorkingHoursStart * 4;
   mWorkingHoursYBottom = mGridSpacingY *
-                         KOPrefs::instance()->mWorkingHoursEnd * 2 - 1;
+                         KOPrefs::instance()->mWorkingHoursEnd * 4 - 1;
 }
 
 
