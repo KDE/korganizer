@@ -149,14 +149,7 @@ void KODialogManager::showOutgoingDialog()
 
 IncomingDialog *KODialogManager::incomingDialog()
 {
-  createOutgoingDialog();
-  if (!mIncomingDialog) {
-    mIncomingDialog = new IncomingDialog(mMainView->calendar(),mOutgoingDialog,mMainView);
-    connect(mIncomingDialog,SIGNAL(numMessagesChanged(int)),
-            mMainView,SIGNAL(numIncomingChanged(int)));
-    connect(mIncomingDialog,SIGNAL(calendarUpdated()),
-            mMainView,SLOT(updateView()));
-  }
+  createIncomingDialog();
   return mIncomingDialog;
 }
 
