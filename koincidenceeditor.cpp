@@ -66,10 +66,10 @@ KOIncidenceEditor::KOIncidenceEditor( const QString &caption,
 
   setButtonText( Default, i18n("Load &Template...") );
   setButtonWhatsThis( Default,
-		   i18n("Allows you to load a pre-saved "
-		  	"template for the event. You "
-			"can save this event or to-do as a "
-			"template by clicking 'Save as Template...'.") );
+                      i18n("Allows you to load a pre-saved "
+                           "template for the event. You "
+                           "can save this event or to-do as a "
+                           "template by clicking 'Save as Template...'.") );
 
   QString saveTemplateText;
   if ( KOPrefs::instance()->mCompactDialogs ) {
@@ -80,8 +80,8 @@ KOIncidenceEditor::KOIncidenceEditor( const QString &caption,
   }
   setButtonText( User1, saveTemplateText );
   setButtonWhatsThis( User1,
-		   i18n("Allows you to save the current settings as a template "
-			"which can later be loaded for other events.") );
+                      i18n("Allows you to save the current settings as a template "
+                           "which can later be loaded for other events.") );
 
   mCategoryDialog = new KPIM::CategorySelectDialog( KOPrefs::instance(), this );
   KOGlobals::fitDialogToScreen( mCategoryDialog );
@@ -103,8 +103,8 @@ void KOIncidenceEditor::setupAttendeesTab()
 {
   QFrame *topFrame = addPage( i18n("Atte&ndees") );
   QWhatsThis::add( topFrame,
-		    i18n("The Attendees tab allows you to Add or Remove "
-			 "Attendees to/from this event or to-do.") );
+                   i18n("The Attendees tab allows you to Add or Remove "
+                        "Attendees to/from this event or to-do.") );
 
   QBoxLayout *topLayout = new QVBoxLayout( topFrame );
 
@@ -116,9 +116,9 @@ void KOIncidenceEditor::setupAttachmentsTab()
 {
   QFrame *topFrame = addPage( i18n("Attach&ments") );
   QWhatsThis::add( topFrame,
-		    i18n("The Attachments tab allows you to add or remove "
-		    	 "files, emails, contacts, and other items "
-			 "associated with this event or to-do.") );
+                   i18n("The Attachments tab allows you to add or remove "
+                        "files, emails, contacts, and other items "
+                        "associated with this event or to-do.") );
 
   QBoxLayout *topLayout = new QVBoxLayout( topFrame );
 
