@@ -88,9 +88,6 @@
             <property name="text">
                 <string>&amp;New</string>
             </property>
-            <property name="accel">
-                <string>Alt+N</string>
-            </property>
         </widget>
         <widget class="QPushButton" row="2" column="2">
             <property name="name">
@@ -99,9 +96,6 @@
             <property name="text">
                 <string>Select &amp;Addressee...</string>
             </property>
-            <property name="accel">
-                <string>Alt+A</string>
-            </property>
         </widget>
         <widget class="QPushButton" row="1" column="2">
             <property name="name">
@@ -109,9 +103,6 @@
             </property>
             <property name="text">
                 <string>&amp;Remove</string>
-            </property>
-            <property name="accel">
-                <string>Alt+R</string>
             </property>
         </widget>
         <spacer row="3" column="2" rowspan="3" colspan="1">
