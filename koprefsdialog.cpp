@@ -91,7 +91,7 @@ void KOPrefsDialog::setupMainTab()
   topLayout->setMargin(marginHint());
 
   KPrefsWidBool *emailControlCenter =
-      addWidBool(i18n("&Use email settings from control center"),
+      addWidBool(i18n("&Use email settings from Control Center"),
                  &(KOPrefs::instance()->mEmailControlCenter),topFrame);
   topLayout->addMultiCellWidget(emailControlCenter->checkBox(),0,0,0,1);
   connect(emailControlCenter->checkBox(),SIGNAL(toggled(bool)),
