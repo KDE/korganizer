@@ -54,6 +54,8 @@ class KOEventEditor : public KOIncidenceEditor
 
     void init();
 
+    void reload();
+
     /** Clear eventwin for new event, and preset the dates and times with hint */
     void newEvent( QDateTime from, QDateTime to, bool allDay = FALSE );
 

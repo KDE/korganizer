@@ -84,7 +84,7 @@ void KOEventViewer::setSource(const QString& n)
       KOrganizer::setStartedKAddressBook(true);
       tmpStr = "kaddressbook --editor-only --uid ";
       tmpStr += n.mid(6);
-      bool result = KRun::runCommand(tmpStr,"KAddressBook",iconPath);
+      runCommand(tmpStr,"KAddressBook",iconPath);
       return;
     }
   } else {

@@ -197,7 +197,8 @@ void KDateNavigator::updateDates()
 //  daymatrix->repaint();
 }
 
-void KDateNavigator::shiftEvent(const QDate& olddate, const QDate& newdate) {
+void KDateNavigator::shiftEvent(const QDate& olddate, const QDate& newdate)
+{
   //TODO ET forward to specific method of daymatrix the in/decreases events[]
   //and repaints itself
   kdDebug() << "KDateNavigator::shiftEvent" << endl;

@@ -51,12 +51,14 @@ class KOIncidenceEditor : public KDialogBase
     /** Initialize editor. This function creates the tab widgets. */
     virtual void init() = 0;
 
+    virtual void reload() = 0;
+
   public slots:
     void updateCategoryConfig();
 
   signals:
     void editCategories();
-    void dialogClose(Incidence *);
+    void dialogClose( Incidence * );
 
   protected slots:
     void slotApply();
@@ -75,8 +77,7 @@ class KOIncidenceEditor : public KDialogBase
 
     CategorySelectDialog *mCategoryDialog;
 
-    KOEditorDetails      *mDetails;
-    Incidence *mIncidence;
+    KOEditorDetails *mDetails;
 };
 
 #endif

@@ -47,12 +47,18 @@ KOTodoEditor::KOTodoEditor(Calendar *calendar) :
 
 KOTodoEditor::~KOTodoEditor()
 {
+  emit dialogClose( mTodo );
 }
 
 void KOTodoEditor::init()
 {
   setupGeneral();
   setupAttendeesTab();
+}
+
+void KOTodoEditor::reload()
+{
+  if ( mTodo ) readTodo( mTodo );
 }
 
 void KOTodoEditor::setupGeneral()
@@ -115,7 +121,6 @@ void KOTodoEditor::editTodo(Todo *todo)
   init();
 
   mTodo = todo;
-  mIncidence = todo;
   readTodo(mTodo);
 }
 
@@ -167,7 +172,7 @@ void KOTodoEditor::slotUser1()
       switch (msgItemDelete()) {
         case KMessageBox::Continue: // OK
           emit todoToBeDeleted(mTodo);
-          emit dialogClose(mIncidence);
+          emit dialogClose(mTodo);
           mCalendar->deleteTodo(mTodo);
           emit todoDeleted();
           reject();
@@ -176,7 +181,7 @@ void KOTodoEditor::slotUser1()
     }
     else {
       emit todoToBeDeleted(mTodo);
-      emit dialogClose(mIncidence);
+      emit dialogClose(mTodo);
       mCalendar->deleteTodo(mTodo);
       emit todoDeleted();
       reject();

@@ -76,8 +76,7 @@ void KOIncidenceEditor::slotApply()
 
 void KOIncidenceEditor::slotOk()
 {
-  if (processInput()) accept();
-  emit dialogClose(mIncidence);
+  if ( processInput() ) accept();
 }
 
 void KOIncidenceEditor::updateCategoryConfig()
@@ -85,9 +84,7 @@ void KOIncidenceEditor::updateCategoryConfig()
   mCategoryDialog->updateCategoryConfig();
 }
 
-
 void KOIncidenceEditor::slotCancel()
 {
-  emit dialogClose(mIncidence);
   reject();
 }

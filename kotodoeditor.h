@@ -47,6 +47,8 @@ class KOTodoEditor : public KOIncidenceEditor
     virtual ~KOTodoEditor(void);
 
     void init();
+  
+    void reload();
 
     /**
       Clear editor for new todo, and preset the dates and times with hint.

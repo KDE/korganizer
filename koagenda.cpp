@@ -566,33 +566,33 @@ void KOAgenda::performItemAction(QPoint viewportPos)
 
   // Cursor left active agenda area.
   // This starts a drag.
-  if (clipperPos.y() < 0 || clipperPos.y() > visibleHeight() ||
-      clipperPos.x() < 0 || clipperPos.x() > visibleWidth()) {
+  if ( clipperPos.y() < 0 || clipperPos.y() > visibleHeight() ||
+       clipperPos.x() < 0 || clipperPos.x() > visibleWidth() ) {
     mScrollUpTimer.stop();
     mScrollDownTimer.stop();
     mActionItem->resetMove();
-    placeSubCells(mActionItem);
-    emit startDragSignal(mActionItem->itemEvent());
-    setCursor(arrowCursor);
+    placeSubCells( mActionItem );
+    emit startDragSignal( mActionItem->itemEvent() );
+    setCursor( arrowCursor );
     mActionItem = 0;
     mActionType = NOP;
     mItemMoved = 0;
     return;
   } else {
-    switch (mActionType) {
+    switch ( mActionType ) {
       case MOVE:
-        setCursor(sizeAllCursor);
+        setCursor( sizeAllCursor );
         break;
       case RESIZETOP:
       case RESIZEBOTTOM:
-        setCursor(sizeVerCursor);
+        setCursor( sizeVerCursor );
 	break;
       case RESIZELEFT:
       case RESIZERIGHT:
-        setCursor(sizeHorCursor);
+        setCursor( sizeHorCursor );
         break;
       default:
-        setCursor(arrowCursor);
+        setCursor( arrowCursor );
     }
   }
 
@@ -668,18 +668,21 @@ void KOAgenda::endItemAction()
 {
 //  kdDebug() << "KOAgenda::endItemAction()" << endl;
 
-  if (mItemMoved) {
+  if ( mItemMoved ) {
     KOAgendaItem *placeItem = mActionItem->firstMultiItem();
-    if (!placeItem) placeItem = mActionItem;
-    emit itemModified(placeItem);
-    while (placeItem) {
-      placeSubCells(placeItem);
+    if ( !placeItem ) {
+      placeItem = mActionItem;      
+    }
+    emit itemModified( placeItem );
+    while ( placeItem ) {
+      placeSubCells( placeItem );
       placeItem = placeItem->nextMultiItem();
     }
   }
+
   mScrollUpTimer.stop();
   mScrollDownTimer.stop();
-  setCursor(arrowCursor);
+  setCursor( arrowCursor );
   mActionItem = 0;
   mActionType = NOP;
   mItemMoved = 0;
@@ -742,6 +745,21 @@ void KOAgenda::setNoActionCursor(KOAgendaItem *moveItem,QPoint viewportPos)
 */
 void KOAgenda::placeSubCells(KOAgendaItem *placeItem)
 {
+#if 0
+  kdDebug() << "KOAgenda::placeSubCells()" << endl;
+  if ( placeItem ) {
+    Event *event = placeItem->itemEvent();
+    if ( !event ) {
+      kdDebug() << "  event is 0" << endl;
+    } else {
+      kdDebug() << "  event: " << event->summary() << endl;
+    }
+  } else {
+    kdDebug() << "  placeItem is 0" << endl;
+  }
+  kdDebug() << "KOAgenda::placeSubCells()..." << endl;
+#endif
+
   QPtrList<KOAgendaItem> conflictItems;
   int maxSubCells = 0;
   QIntDict<KOAgendaItem> subCellDict(5);
@@ -944,7 +962,7 @@ void KOAgenda::setStartHour(int startHour)
 */
 KOAgendaItem *KOAgenda::insertItem (Event *event,int X,int YTop,int YBottom)
 {
-//  kdDebug() << "KOAgenda::insertItem" << endl;
+  kdDebug() << "KOAgenda::insertItem" << endl;
 
   if (mAllDayMode) {
     kdDebug() << "KOAgenda: calling insertItem in all-day mode is illegal." << endl;

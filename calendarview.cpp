@@ -758,47 +758,48 @@ void CalendarView::allday_new()
 }
 
 
-void CalendarView::editEvent(Event *anEvent)
+void CalendarView::editEvent( Event *event )
 {
   kdDebug() << "CalendarView::editEvent()" << endl;
-  if (mDialogList.find(anEvent)!=mDialogList.end()) {
-    mDialogList[anEvent]->raise();
-    mDialogList[anEvent]->show();
+
+  if ( !event ) return;
+
+  if ( mDialogList.find( event ) != mDialogList.end() ) {
+    mDialogList[ event ]->raise();
+    mDialogList[ event ]->show();
     return;
   }
-  if(anEvent) {
-    if (anEvent->isReadOnly()) {
-      showEvent(anEvent);
-      return;
-    }
-    KOEventEditor *eventEditor = mDialogManager->getEventEditor();
-    mDialogList.insert(anEvent,eventEditor);
-    eventEditor->editEvent(anEvent);
-    eventEditor->show();
-  } else {
-    KNotifyClient::beep();
+
+  if ( event->isReadOnly() ) {
+    showEvent( event );
+    return;
   }
+  
+  KOEventEditor *eventEditor = mDialogManager->getEventEditor();
+  mDialogList.insert( event, eventEditor );
+  eventEditor->editEvent( event );
+  eventEditor->show();
 }
 
-void CalendarView::editTodo(Todo *todo)
+void CalendarView::editTodo( Todo *todo )
 {
-  if (mDialogList.find(todo)!=mDialogList.end()) {
+  if ( !todo ) return;
+
+  if ( mDialogList.find( todo ) != mDialogList.end() ) {
     mDialogList[todo]->raise();
     mDialogList[todo]->show();
     return;
   }
-  if (todo) {
-    if (todo->isReadOnly()) {
-      showTodo(todo);
-      return;
-    }
-    KOTodoEditor *todoEditor = mDialogManager->getTodoEditor();
-    mDialogList.insert(todo,todoEditor);
-    todoEditor->editTodo(todo);
-    todoEditor->show();
-  } else {
-    KNotifyClient::beep();
+
+  if ( todo->isReadOnly() ) {
+    showTodo( todo );
+    return;
   }
+
+  KOTodoEditor *todoEditor = mDialogManager->getTodoEditor();
+  mDialogList.insert( todo, todoEditor );
+  todoEditor->editTodo( todo );
+  todoEditor->show();
 }
 
 void CalendarView::showEvent(Event *event)

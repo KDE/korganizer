@@ -39,6 +39,10 @@ KOAgendaItem::KOAgendaItem(Event *event, QWidget *parent,
                            const char *name,WFlags) :
   QFrame( parent, name )
 {
+  mFirstMultiItem = 0;
+  mNextMultiItem = 0;
+  mLastMultiItem = 0;
+
   mEvent = event;
 
   QStringList categories = mEvent->categories();

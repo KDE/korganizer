@@ -48,6 +48,7 @@ KOEventEditor::KOEventEditor(Calendar *calendar) :
 
 KOEventEditor::~KOEventEditor()
 {
+  emit dialogClose( mEvent );
 }
 
 void KOEventEditor::init()
@@ -72,6 +73,11 @@ void KOEventEditor::init()
   connect(mGeneral,SIGNAL(openCategoryDialog()),mCategoryDialog,SLOT(show()));
   connect(mCategoryDialog,SIGNAL(categoriesSelected(const QString &)),
           mGeneral,SLOT(setCategories(const QString &)));
+}
+
+void KOEventEditor::reload()
+{
+  if ( mEvent ) readEvent( mEvent );
 }
 
 void KOEventEditor::setupGeneral()
@@ -157,7 +163,6 @@ void KOEventEditor::editEvent(Event *event)
   init();
 
   mEvent = event;
-  mIncidence = event;
   readEvent(mEvent);
 }
 
@@ -216,16 +221,16 @@ void KOEventEditor::slotUser1()
       switch (msgItemDelete()) {
         case KMessageBox::Continue: // OK
           emit eventToBeDeleted(mEvent);
-          emit dialogClose(mIncidence);
+          emit dialogClose(mEvent);
           mCalendar->deleteEvent(mEvent);
           emit eventDeleted();
           reject();
           break;
-      }//switch
+      }
     }
     else {
       emit eventToBeDeleted(mEvent);
-      emit dialogClose(mIncidence);
+      emit dialogClose(mEvent);
       mCalendar->deleteEvent(mEvent);
       emit eventDeleted();
       reject();
@@ -262,13 +267,14 @@ void KOEventEditor::readEvent(Event *event)
 
 void KOEventEditor::writeEvent(Event *event)
 {
-  mGeneral->writeEvent(event);
-  mDetails->writeEvent(event);
-  if (event->organizer()==KOPrefs::instance()->email()) {
-    Event *ev = new Event(*event);
-    mDetails->cancelAttendeeEvent(ev);
-    if (ev->attendeeCount()>0) {
-      emit deleteAttendee(ev);
+  mGeneral->writeEvent( event );
+  mDetails->writeEvent( event );
+
+  if ( event->organizer() == KOPrefs::instance()->email() ) {
+    Event *ev = new Event( *event );
+    mDetails->cancelAttendeeEvent( ev );
+    if ( ev->attendeeCount() > 0 ) {
+      emit deleteAttendee( ev );
     }
   }
 
