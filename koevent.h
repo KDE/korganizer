@@ -432,7 +432,7 @@ public:
 
   bool isMultiDay() const {  return !(dtStart.date() == dtEnd.date()); };
 
-  void print(int) const;
+//  void print(int) const;
 
 signals:
   void eventUpdated(KOEvent *);

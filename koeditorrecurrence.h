@@ -54,9 +54,9 @@ class KOEditorRecurrence : public QWidget
     void deleteException();
     void timeStuffDisable(bool);
 
-    void startTimeChanged(QTime,int);
+    void startTimeChanged(QTime);
     void startDateChanged(QDate);
-    void endTimeChanged(QTime,int);
+    void endTimeChanged(QTime);
     void endDateChanged(QDate);
   
   protected:

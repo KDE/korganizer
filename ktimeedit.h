@@ -37,11 +37,8 @@ public:
   
 signals:
   /** emitted every time the time displayed changes. "newt" is the new
-      time, and wrap specifies whether or not the time has wrapped
-      around, and if it has, by how many days. It can be positive,
-      negative or zero. Negative indicates a wrap backwards. Positive
-      indicates a wrap forwards. 0 indicates no wrap. */
-  void timeChanged(QTime newt, int wrap);
+      time. */
+  void timeChanged(QTime newt);
  
 public slots:
   /** used to set the time which is displayed to a specific value. */

@@ -185,7 +185,7 @@ void KSummaries::calUpdated()
         sumString = anEvent->getSummary();
       else {
         sumString = KGlobal::locale()->formatTime(anEvent->getDtStart().time());
-        sumString += anEvent->getSummary();
+        sumString += " " + anEvent->getSummary();
       }
     }
 
@@ -203,6 +203,7 @@ void KSummaries::calUpdated()
     if (anEvent->hasDueDate()) {
       if (!anEvent->doesFloat()) {
         sumString += KGlobal::locale()->formatTime(anEvent->getDtDue().time());
+        sumString += " ";
       }
     }
     sumString += i18n("Todo: ") + anEvent->getSummary();

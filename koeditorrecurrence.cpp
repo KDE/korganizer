@@ -38,10 +38,10 @@ KOEditorRecurrence::KOEditorRecurrence(int spacing,QWidget* parent,
   initLayout();
 
   // time widgets on General and Recurrence tab are synchronized
-  connect(startTimeEdit, SIGNAL(timeChanged(QTime, int)),
-	  this, SLOT(startTimeChanged(QTime, int)));
-  connect(endTimeEdit, SIGNAL(timeChanged(QTime, int)),
-	  this, SLOT(endTimeChanged(QTime, int)));
+  connect(startTimeEdit, SIGNAL(timeChanged(QTime)),
+	  this, SLOT(startTimeChanged(QTime)));
+  connect(endTimeEdit, SIGNAL(timeChanged(QTime)),
+	  this, SLOT(endTimeChanged(QTime)));
 
   // date widgets on General and Recurrence tab are synchronized
   connect(startDateEdit, SIGNAL(dateChanged(QDate)),
@@ -718,24 +718,22 @@ void KOEditorRecurrence::setDuration()
   durationLabel->adjustSize();
 }
 
-void KOEditorRecurrence::startTimeChanged(QTime newtime, int wrapval)
+void KOEditorRecurrence::startTimeChanged(QTime newtime)
 {
-  int secsep;
-
-  secsep = currStartDateTime.secsTo(currEndDateTime);
+  int secsep = currStartDateTime.secsTo(currEndDateTime);
   
-  currStartDateTime = currStartDateTime.addDays(wrapval);
   currStartDateTime.setTime(newtime);
 
+  // adjust end time so that the event has the same duration as before.
   currEndDateTime = currStartDateTime.addSecs(secsep);
   endTimeEdit->setTime(currEndDateTime.time());
   
   emit dateTimesChanged(currStartDateTime,currEndDateTime);
 }
 
-void KOEditorRecurrence::endTimeChanged(QTime newtime, int wrapval)
+void KOEditorRecurrence::endTimeChanged(QTime newtime)
 {
-  QDateTime newdt(currEndDateTime.addDays(wrapval).date(), newtime);
+  QDateTime newdt(currEndDateTime.date(), newtime);
 
   if(newdt < currStartDateTime) {
     // oops, can't let that happen.
@@ -751,11 +749,13 @@ void KOEditorRecurrence::endTimeChanged(QTime newtime, int wrapval)
 
 void KOEditorRecurrence::startDateChanged(QDate newdate)
 {
-  int daysep;
-  daysep = currStartDateTime.daysTo(currEndDateTime);
+  int daysep = currStartDateTime.daysTo(currEndDateTime);
   
   currStartDateTime.setDate(newdate);
+
+  // adjust end date so that the event has the same duration as before
   currEndDateTime.setDate(currStartDateTime.date().addDays(daysep));
+  endDateEdit->setDate(currEndDateTime.date());
 
   emit dateTimesChanged(currStartDateTime,currEndDateTime);
 }

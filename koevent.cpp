@@ -1327,6 +1327,7 @@ int KOEvent::getSyncStatus() const
   return syncStatus;
 }
 
+#if 0
 void KOEvent::print(int style) const
 {
   switch(style) {
@@ -1343,6 +1344,7 @@ void KOEvent::print(int style) const
     break;
   }
 }
+#endif
 
 /***************************** PROTECTED FUNCTIONS ***************************/
 

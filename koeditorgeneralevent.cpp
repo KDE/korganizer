@@ -51,10 +51,10 @@ KOEditorGeneralEvent::KOEditorGeneralEvent(int spacing,QWidget* parent,
   summaryEdit->setFocus();
 
   // time widgets on General and Recurrence tab are synchronized
-  connect(startTimeEdit, SIGNAL(timeChanged(QTime, int)),
-	  this, SLOT(startTimeChanged(QTime, int)));
-  connect(endTimeEdit, SIGNAL(timeChanged(QTime, int)),
-	  this, SLOT(endTimeChanged(QTime, int)));
+  connect(startTimeEdit, SIGNAL(timeChanged(QTime)),
+	  this, SLOT(startTimeChanged(QTime)));
+  connect(endTimeEdit, SIGNAL(timeChanged(QTime)),
+	  this, SLOT(endTimeChanged(QTime)));
 
   // date widgets on General and Recurrence tab are synchronized
   connect(startDateEdit, SIGNAL(dateChanged(QDate)),
@@ -77,46 +77,58 @@ void KOEditorGeneralEvent::initTimeBox()
 
   QFrame *timeBoxFrame = new QFrame(timeGroupBox,"TimeBoxFrame");
 
-  QGridLayout *layoutTimeBox = new QGridLayout(timeBoxFrame,1,1);
+  QGridLayout *layoutTimeBox = new QGridLayout(timeBoxFrame,2,3);
   layoutTimeBox->setSpacing(mSpacing);
 
-  startLabel = new QLabel( timeBoxFrame, "Label_2" );
-  startLabel->setText( i18n("Start Time:") );
-  layoutTimeBox->addWidget(startLabel,0,0);
+
+  startDateLabel = new QLabel( timeBoxFrame );
+  startDateLabel->setText( i18n("Start Date:") );
+  layoutTimeBox->addWidget(startDateLabel,0,0);
   
   startDateEdit = new KDateEdit(timeBoxFrame);
   layoutTimeBox->addWidget(startDateEdit,0,1);
 
+  startTimeLabel = new QLabel( timeBoxFrame, "Label_2" );
+  startTimeLabel->setText( i18n("Start Time:") );
+  layoutTimeBox->addWidget(startTimeLabel,0,2);
+  
   startTimeEdit = new KTimeEdit(timeBoxFrame);
-  layoutTimeBox->addWidget(startTimeEdit,0,2);
+  layoutTimeBox->addWidget(startTimeEdit,0,3);
+
 
   noTimeButton = new QCheckBox(timeBoxFrame, "CheckBox_1" );
   noTimeButton->setText( i18n("No time associated") );
-  layoutTimeBox->addWidget(noTimeButton,0,4);
+  layoutTimeBox->addWidget(noTimeButton,0,5);
 
   connect(noTimeButton, SIGNAL(toggled(bool)),SLOT(timeStuffDisable(bool)));
   connect(noTimeButton, SIGNAL(toggled(bool)),SLOT(alarmStuffDisable(bool)));
   connect(noTimeButton, SIGNAL(toggled(bool)),SIGNAL(allDayChanged(bool)));
+
   
-  endLabel = new QLabel( timeBoxFrame, "Label_3" );
-  endLabel->setText( i18n("End Time:") );
-  layoutTimeBox->addWidget(endLabel,1,0);
+  endDateLabel = new QLabel( timeBoxFrame, "Label_3" );
+  endDateLabel->setText( i18n("End Date:") );
+  layoutTimeBox->addWidget(endDateLabel,1,0);
 
   endDateEdit = new KDateEdit(timeBoxFrame);
   layoutTimeBox->addWidget(endDateEdit,1,1);
 
+  endTimeLabel = new QLabel( timeBoxFrame, "Label_3" );
+  endTimeLabel->setText( i18n("End Time:") );
+  layoutTimeBox->addWidget(endTimeLabel,1,2);
+
   endTimeEdit = new KTimeEdit(timeBoxFrame);
-  layoutTimeBox->addWidget(endTimeEdit,1,2);
+  layoutTimeBox->addWidget(endTimeEdit,1,3);
+
 
   recursButton = new QCheckBox(timeBoxFrame);
   recursButton->setText(i18n("Recurring event"));
-  layoutTimeBox->addWidget(recursButton,1,4);
+  layoutTimeBox->addWidget(recursButton,1,5);
 
   QObject::connect(recursButton,SIGNAL(toggled(bool)),
                    SIGNAL(recursChanged(bool)));
 
-  // some more layouting
-  layoutTimeBox->setColStretch(3,1);
+  // add stretch space between date/time edits and checkboxes
+  layoutTimeBox->setColStretch(4,1);
 }
 
 void KOEditorGeneralEvent::initMisc()
@@ -316,9 +328,13 @@ void KOEditorGeneralEvent::setEnabled(bool enabled)
 void KOEditorGeneralEvent::timeStuffDisable(bool disable)
 {
   if (disable) {
+    startTimeLabel->hide();
+    endTimeLabel->hide();
     startTimeEdit->hide();
     endTimeEdit->hide();
   } else {
+    startTimeLabel->show();
+    endTimeLabel->show();
     startTimeEdit->show();
     endTimeEdit->show();
   }
@@ -341,9 +357,13 @@ void KOEditorGeneralEvent::alarmStuffDisable(bool disable)
 void KOEditorGeneralEvent::recurStuffEnable(bool enable)
 {
   if (enable) {
+    startDateLabel->hide();
+    endDateLabel->hide();
     startDateEdit->hide();
     endDateEdit->hide();
   } else {
+    startDateLabel->show();
+    endDateLabel->show();
     startDateEdit->show();
     endDateEdit->show();
   }
@@ -351,8 +371,8 @@ void KOEditorGeneralEvent::recurStuffEnable(bool enable)
 
 void KOEditorGeneralEvent::setDateTimes(QDateTime start, QDateTime end)
 {
-//  qDebug("KOEditorGeneralEvent::setDateTimes(): Start DateTime: %s",
-//         start.toString().latin1());
+  qDebug("KOEditorGeneralEvent::setDateTimes(): Start DateTime: %s",
+         start.toString().latin1());
 
   startDateEdit->setDate(start.date());
   startTimeEdit->setTime(start.time());
@@ -368,26 +388,28 @@ void KOEditorGeneralEvent::setCategories(QString str)
   categoriesLabel->setText(str);
 }
 
-void KOEditorGeneralEvent::startTimeChanged(QTime newtime, int wrapval)
+void KOEditorGeneralEvent::startTimeChanged(QTime newtime)
 {
-//  qDebug("KOEditorGeneralEvent::startTimeChanged");
+  qDebug("KOEditorGeneralEvent::startTimeChanged() %s",
+         newtime.toString().latin1());
 
-  int secsep;
-
-  secsep = currStartDateTime.secsTo(currEndDateTime);
+  int secsep = currStartDateTime.secsTo(currEndDateTime);
   
-  currStartDateTime = currStartDateTime.addDays(wrapval);
   currStartDateTime.setTime(newtime);
 
+  // adjust end time so that the event has the same duration as before.
   currEndDateTime = currStartDateTime.addSecs(secsep);
   endTimeEdit->setTime(currEndDateTime.time());
   
   emit dateTimesChanged(currStartDateTime,currEndDateTime);
 }
 
-void KOEditorGeneralEvent::endTimeChanged(QTime newtime, int wrapval)
+void KOEditorGeneralEvent::endTimeChanged(QTime newtime)
 {
-  QDateTime newdt(currEndDateTime.addDays(wrapval).date(), newtime);
+  qDebug("KOEditorGeneralEvent::endTimeChanged %s",
+         newtime.toString().latin1());
+
+  QDateTime newdt(currEndDateTime.date(), newtime);
 
   if(newdt < currStartDateTime) {
     // oops, can't let that happen.
@@ -401,11 +423,13 @@ void KOEditorGeneralEvent::endTimeChanged(QTime newtime, int wrapval)
 
 void KOEditorGeneralEvent::startDateChanged(QDate newdate)
 {
-  int daysep;
-  daysep = currStartDateTime.daysTo(currEndDateTime);
+  int daysep = currStartDateTime.daysTo(currEndDateTime);
   
   currStartDateTime.setDate(newdate);
+  
+  // adjust end date so that the event has the same duration as before
   currEndDateTime.setDate(currStartDateTime.date().addDays(daysep));
+  endDateEdit->setDate(currEndDateTime.date());
 
   emit dateTimesChanged(currStartDateTime,currEndDateTime);
 }

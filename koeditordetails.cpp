@@ -72,7 +72,7 @@ void KOEditorDetails::initAttendee()
                                    this);
   topLayout->addWidget(attendeeGroupBox);
 
-  attendeeListBox = new QListView( attendeeGroupBox, "attendeeListBox" );
+  attendeeListBox = new QListView(attendeeGroupBox,"attendeeListBox");
   attendeeListBox->addColumn(i18n("Name"),180);
   attendeeListBox->addColumn(i18n("Email"),180);
   attendeeListBox->addColumn(i18n("Role"),60);
@@ -85,12 +85,13 @@ void KOEditorDetails::initAttendee()
 	  this, SLOT(attendeeListAction(QListViewItem *)));
 
   QHBox *nameBox = new QHBox(attendeeGroupBox);
+  nameBox->setSpacing(mSpacing);
 
   attendeeLabel = new QLabel(nameBox);
   attendeeLabel->setText(i18n("Attendee Name:"));
 
   attendeeEdit = new QLineEdit(nameBox);
-  attendeeEdit->setText( "" );
+  attendeeEdit->setText("");
 
   QLabel *emailLabel = new QLabel(nameBox);
   emailLabel->setText(i18n("Email Address:"));
@@ -98,11 +99,13 @@ void KOEditorDetails::initAttendee()
   emailEdit = new QLineEdit(nameBox);
   emailEdit->setText("");
 
-
-  QHBox *roleBox = new QHBox(attendeeGroupBox);
+  QWidget *roleBox = new QWidget(attendeeGroupBox);
+  QBoxLayout *roleLayout = new QHBoxLayout(roleBox);
   
   attendeeRoleLabel = new QLabel(roleBox);
   attendeeRoleLabel->setText(i18n("Role:"));
+  roleLayout->addWidget(attendeeRoleLabel);
+  roleLayout->addSpacing(mSpacing);
 //  attendeeRoleLabel->setAlignment(AlignVCenter|AlignRight);
 
   attendeeRoleCombo = new QComboBox(false,roleBox);
@@ -110,10 +113,15 @@ void KOEditorDetails::initAttendee()
   attendeeRoleCombo->insertItem( i18n("Organizer") );
   attendeeRoleCombo->insertItem( i18n("Owner") );
   attendeeRoleCombo->insertItem( i18n("Delegate") );
+  roleLayout->addWidget(attendeeRoleCombo);
+
+  roleLayout->addStretch();
 
   statusLabel = new QLabel(roleBox);
   statusLabel->setText( i18n("Status:") );
 //  statusLabel->setAlignment(AlignVCenter|AlignRight);
+  roleLayout->addWidget(statusLabel);
+  roleLayout->addSpacing(mSpacing);
 
   statusCombo = new QComboBox(false,roleBox);
   statusCombo->insertItem( i18n("Needs Action") );
@@ -124,32 +132,28 @@ void KOEditorDetails::initAttendee()
   statusCombo->insertItem( i18n("Declined") );
   statusCombo->insertItem( i18n("Completed") );
   statusCombo->insertItem( i18n("Delegated") );
+  roleLayout->addWidget(statusCombo);
 
-//  subLayout->addStretch();
+  roleLayout->addStretch();
 
   attendeeRSVPButton = new QCheckBox(roleBox);
   attendeeRSVPButton->setText(i18n("Request Response"));
+  roleLayout->addWidget(attendeeRSVPButton);
+
 
   KButtonBox *buttonBox = new KButtonBox(attendeeGroupBox);
 
   addAttendeeButton = buttonBox->addButton(i18n("&Add"));
-  connect(addAttendeeButton, SIGNAL(clicked()),
-	  this, SLOT(addNewAttendee()));
+  connect(addAttendeeButton,SIGNAL(clicked()),SLOT(addNewAttendee()));
 
   addAttendeeButton = buttonBox->addButton(i18n("&Modify"));
-  connect(addAttendeeButton, SIGNAL(clicked()),
-	  this, SLOT(updateAttendee()));
+  connect(addAttendeeButton,SIGNAL(clicked()),SLOT(updateAttendee()));
 
   addressBookButton = buttonBox->addButton(i18n("Address &Book..."));
-  connect(addressBookButton, SIGNAL(clicked()),
-          this, SLOT(openAddressBook()));
+  connect(addressBookButton,SIGNAL(clicked()),SLOT(openAddressBook()));
 
   removeAttendeeButton = buttonBox->addButton(i18n("&Remove"));
-  connect(removeAttendeeButton, SIGNAL(clicked()),
-	  this, SLOT(removeAttendee()));
-//  buttonBox->layout();
-
-//  layout->addWidget(buttonBox);
+  connect(removeAttendeeButton, SIGNAL(clicked()),SLOT(removeAttendee()));
 }
     
 void KOEditorDetails::initAttach()

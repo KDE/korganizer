@@ -32,14 +32,37 @@ void KOrganizerApp::displayImminent(const QString &file,int numdays)
   }
 
   for (int i = 1; i <= numdays; i++) {
-    QList<KOEvent> tmpList(cal->getEventsForDate(currDate, TRUE));
     printf("%s\n",KGlobal::locale()->formatDate(currDate).latin1());
-    printf("---------------------------------\n");
-    if (tmpList.first())
-      for (currEvent = tmpList.first(); currEvent; currEvent = tmpList.next())
-	currEvent->print(KOEvent::ASCII);
-    else
-      printf("(none)\n");
+
+    QList<KOEvent> tmpList(cal->getEventsForDate(currDate, TRUE));
+    printf("---------------------------------------------------------------\n");
+    if (tmpList.count() > 0) {
+      for (currEvent = tmpList.first(); currEvent; currEvent = tmpList.next()) {
+        printf("%s",currEvent->getSummary().latin1());
+        if (!currEvent->doesFloat()) {
+          printf(" (%s - %s)",currEvent->getDtStartStr().latin1(),
+                 currEvent->getDtEndStr().latin1());
+        }
+        printf("\n");
+      }
+    } else {
+      printf("(no events)\n");
+    }
+
+    printf("---------------------------------------------------------------\n");
+    tmpList = cal->getTodosForDate(currDate);
+    if (tmpList.count() > 0) {
+      for (currEvent = tmpList.first(); currEvent; currEvent = tmpList.next()) {
+        printf("%s",currEvent->getSummary().latin1());
+        if (!currEvent->doesFloat()) {
+          printf(" (%s)",currEvent->getDtDueStr().latin1());
+        }
+        printf("\n");
+      }
+    } else {
+      printf("(no todos)\n");
+    }
+
     printf("\n");
     currDate = currDate.addDays(1);
   }

@@ -126,24 +126,14 @@ void ExportWebDialog::setupAdvancedPage()
 
 void ExportWebDialog::browseOutputFile()
 {
-// KFileDialog seems to be broken, use QFileDIalog instead
-#if 0
-  qDebug("ExportWebDialog::browseOutputFile()");
-  KURL u = KFileDialog::getSaveURL();
-//  KURL url = KFileDialog::getSaveURL(QString::null, QString::null, this,
-//                                     i18n("Output File"));
-  qDebug("ExportWebDialog::browseOutputFile() 1");
-  QString str = u.path();
-  qDebug("ExportWebDialog::browseOutputFile() 2");
-  if(!str.isEmpty())
-    qDebug("ExportWebDialog::browseOutputFile() 3");
-    mOutputFileEdit->setText(str);
-  qDebug("ExportWebDialog::browseOutputFile() done");
-#endif
+//  qDebug("ExportWebDialog::browseOutputFile()");
 
-  QString str = QFileDialog::getSaveFileName();
-  if(!str.isEmpty())
-    mOutputFileEdit->setText(str);
+  KURL u = KFileDialog::getSaveURL();
+  if(!u.isEmpty()) mOutputFileEdit->setText(u.prettyURL());
+
+//  QString str = QFileDialog::getSaveFileName();
+//  if(!str.isEmpty())
+//    mOutputFileEdit->setText(str);
 }
 
 void ExportWebDialog::exportWebPage()
@@ -162,7 +152,7 @@ void ExportWebDialog::exportWebPage()
   qDebug ("ExportWebDialog::exportWebPage() header");
   
   *ts << "<HTML><HEAD>" << endl;
-  *ts << "  <TITLE>KOrganizer To-Do List</TITLE>\n";
+  *ts << "  <TITLE>" << i18n("KOrganizer To-Do List") << "</TITLE>\n";
   *ts << "  <style type=\"text/css\">\n";
   *ts << "    body { background-color:white; color:black }\n";
   *ts << "    td { text-align:center; background-color:#eee }\n";
@@ -182,7 +172,7 @@ void ExportWebDialog::exportWebPage()
   // Write Event List
   if (mCbEvent->isChecked()) {
     qDebug ("ExportWebDialog::exportWebPage() evlist");
-    *ts << "<H1>KOrganizer Calendar</H1>\n";
+    *ts << "<H1>" << i18n("KOrganizer Calendar") << "</H1>\n";
 
     // Write HTML page content
     createHtmlEventList(ts);
@@ -191,7 +181,7 @@ void ExportWebDialog::exportWebPage()
   // Write Todo List
   if (mCbTodo->isChecked()) {
     qDebug ("ExportWebDialog::exportWebPage() todolist");
-    *ts << "<H1>KOrganizer To-Do List</H1>\n";
+    *ts << "<H1>" << i18n("KOrganizer To-Do List") << "</H1>\n";
 
     // Write HTML page content
     createHtmlTodoList(ts);
@@ -200,8 +190,8 @@ void ExportWebDialog::exportWebPage()
   qDebug ("ExportWebDialog::exportWebPage() trailer");
 
   // Write KOrganizer trailer
-  *ts << "<P>This page was created by <A HREF=\"http://"
-      << "devel-home.kde.org/~korganiz\">KOrganizer</A></P>\n";
+  *ts << "<P>" << i18n("This page was created by <A HREF=\"http://"
+        "devel-home.kde.org/~korganiz\">KOrganizer</A>") << "</P>\n";
   
   // Write HTML trailer
   *ts << "</BODY></HTML>\n";
@@ -236,9 +226,9 @@ void ExportWebDialog::createHtmlEventList (QTextStream *ts)
 {
   *ts << "<TABLE BORDER=0 CELLPADDING=3 CELLSPACING=3>\n";
   *ts << "  <TR>\n";
-  *ts << "    <TH CLASS=sum>Task</TH>\n";
-  *ts << "    <TH>Start Time</TH>\n";
-  *ts << "    <TH>End Time</TH>\n";
+  *ts << "    <TH CLASS=sum>" << i18n("Task") << "</TH>\n";
+  *ts << "    <TH>" << i18n("Start Time") << "</TH>\n";
+  *ts << "    <TH>" << i18n("End Time") << "</TH>\n";
   *ts << "  </TR>\n";
 
   QDate dt = mFromDate->getDate();
@@ -290,14 +280,14 @@ void ExportWebDialog::createHtmlTodoList (QTextStream *ts)
   
   *ts << "<TABLE BORDER=0 CELLPADDING=3 CELLSPACING=3>\n";
   *ts << "  <TR>\n";
-  *ts << "    <TH CLASS=sum>Task</TH>\n";
-  *ts << "    <TH>Priority</TH>\n";
-  *ts << "    <TH>Status</TH>\n";
+  *ts << "    <TH CLASS=sum>" << i18n("Task") << "</TH>\n";
+  *ts << "    <TH>" << i18n("Priority") << "</TH>\n";
+  *ts << "    <TH>" << i18n("Status") << "</TH>\n";
   if (mCbDueDates->isChecked()) {
-    *ts << "    <TH>Due Date</TH>\n";
+    *ts << "    <TH>" << i18n("Due Date") << "</TH>\n";
   }
   if (mCbAttendees->isChecked()) {
-    *ts << "    <TH>Attendees</TH>\n";
+    *ts << "    <TH>" << i18n("Attendees") << "</TH>\n";
   }
   *ts << "  </TR>\n";
 
@@ -318,7 +308,7 @@ void ExportWebDialog::createHtmlTodoList (QTextStream *ts)
       if (mCbAttendees->isChecked()) ++columns;
       *ts << "\"" << QString::number(columns) << "\"";
       *ts << "><A NAME=\"sub" << ev->getVUID() << "\"></A>"
-          << "Sub-Tasks of: <A HREF=\"#"
+          << i18n("Sub-Tasks of: ") << "<A HREF=\"#"
           << ev->getVUID() << "\"><B>" << ev->getSummary() << "</B></A></TD>\n";
       *ts << "  </TR>\n";
       
@@ -350,7 +340,7 @@ void ExportWebDialog::createHtmlTodo (QTextStream *ts,KOEvent *todo)
   }
   if (relations.count()) {
     *ts << "    <DIV ALIGN=right><A HREF=\"#sub" << todo->getVUID()
-        << "\">Sub-Tasks</A></DIV>\n";
+        << "\">" << i18n("Sub-Tasks") << "</A></DIV>\n";
   }
 
   *ts << "  </TD";
@@ -366,7 +356,7 @@ void ExportWebDialog::createHtmlTodo (QTextStream *ts,KOEvent *todo)
   *ts << "  <TD";
   if (completed) *ts << " CLASS=done";
   *ts << ">\n";
-  *ts << "    " << (completed ? "Done" : "Open")
+  *ts << "    " << (completed ? i18n("Done") : i18n("Open"))
       << "\n";
   *ts << "  </TD>\n";
 

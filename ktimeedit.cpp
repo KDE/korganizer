@@ -52,13 +52,16 @@ QSizePolicy  KTimeEdit::sizePolicy() const
 
 void KTimeEdit::setTime(QTime newTime)
 {
+  qDebug("KTimeEdit::setTime(): %s",newTime.toString().latin1());
+
   mTime = newTime;
   updateDisp();
 }
 
-void KTimeEdit::activ(int) 
+void KTimeEdit::activ(int i) 
 {
-  emit timeChanged(mTime,0);
+  mTime = QTime(0,0,0).addSecs(i*15*60);
+  emit timeChanged(mTime);
 }
 
 void KTimeEdit::hilit(int )
@@ -70,7 +73,7 @@ void KTimeEdit::addTime(QTime qt)
 {
   // Calculate the new time.
   mTime = qt.addSecs(mTime.minute()*60+mTime.hour()*3600);
-  emit timeChanged(mTime, 0);
+  emit timeChanged(mTime);
   updateDisp();
 }
 
@@ -95,7 +98,7 @@ void KTimeEdit::subTime(QTime qt)
 
   // store the newly calculated time.
   mTime.setHMS(h, m, 0);
-  emit timeChanged(mTime, 0);
+  emit timeChanged(mTime);
   updateDisp();
 }                  
 

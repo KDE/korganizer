@@ -50,9 +50,9 @@ class KOEditorGeneralEvent : public QWidget
     void pickAlarmSound();
     void pickAlarmProgram();
 
-    void startTimeChanged(QTime,int);
+    void startTimeChanged(QTime);
     void startDateChanged(QDate);
-    void endTimeChanged(QTime,int);
+    void endTimeChanged(QTime);
     void endDateChanged(QDate);
 
   signals:
@@ -72,8 +72,10 @@ class KOEditorGeneralEvent : public QWidget
     QGroupBox               *timeGroupBox;
     QLabel                  *summaryLabel;
     QLineEdit               *summaryEdit;
-    QLabel                  *startLabel;
-    QLabel                  *endLabel;
+    QLabel                  *startDateLabel;
+    QLabel                  *endDateLabel;
+    QLabel                  *startTimeLabel;
+    QLabel                  *endTimeLabel;
     KDateEdit               *startDateEdit;
     KDateEdit               *endDateEdit;
     KTimeEdit               *startTimeEdit;

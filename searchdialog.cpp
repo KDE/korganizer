@@ -3,10 +3,10 @@
 // (c) 1998 by Preston Brown
 
 #include <qlayout.h>
-#include <qmessagebox.h>
 
 #include <klocale.h>
 #include <kbuttonbox.h>
+#include <kmessagebox.h>
 
 #include "searchdialog.h"
 #include "searchdialog.moc"
@@ -33,7 +33,7 @@ SearchDialog::SearchDialog(CalObject *_cal) :
   subLayout->addWidget(searchEdit);
   
   searchButton = new QPushButton(this, "searchButton");
-  searchButton->setText(i18n("&Search"));
+  searchButton->setText(i18n("&Find"));
   searchButton->setFixedHeight(searchButton->sizeHint().height());
   searchButton->setMinimumWidth(searchButton->sizeHint().width());
   searchButton->setDefault(TRUE);
@@ -81,16 +81,22 @@ void SearchDialog::doSearch()
   re.setCaseSensitive(FALSE);
   re = searchEdit->text();
   if (!re.isValid()) {
-    QMessageBox::warning(this, i18n("KOrganizer Error"),
-			 i18n("Invalid search expression, cannot perform\n"
-			      "the search.  Please enter a search expression\n"
-			      "using the wildcard characters '*' and '?'\n"
-			      "where needed."));
+    KMessageBox::sorry(this,
+                       i18n("Invalid search expression, cannot perform\n"
+                            "the search. Please enter a search expression\n"
+                            "using the wildcard characters '*' and '?'\n"
+                            "where needed."));
     return;
   }
+
   matchedEvents = cal->search(re);
 
   listView->selectEvents(matchedEvents);
+  
+  if (matchedEvents.count() == 0) {
+    KMessageBox::information(this,
+        i18n("No events were found matching your search expression."));
+  }
 }
 
 SearchDialog::~SearchDialog()

@@ -2123,7 +2123,7 @@ QList<KOEvent> CalObject::search(const QRegExp &searchExp) const
     ++qdi;
     for (matchEvent = tmpList->first(); matchEvent;
 	 matchEvent = tmpList->next()) {
-      testStr = matchEvent->getSummary().ascii();
+      testStr = matchEvent->getSummary();
       if ((searchExp.match(testStr) != -1) && (matchList.findRef(matchEvent) == -1))
 	matchList.append(matchEvent);
       // do other match tests here...
@@ -2134,7 +2134,7 @@ QList<KOEvent> CalObject::search(const QRegExp &searchExp) const
   tmpList2.setAutoDelete(FALSE); // just to make sure
   for (matchEvent = tmpList2.first(); matchEvent;
        matchEvent = tmpList2.next()) {
-    testStr = matchEvent->getSummary().ascii();
+    testStr = matchEvent->getSummary();
     if ((searchExp.match(testStr) != -1) && 
 	(matchList.findRef(matchEvent) == -1)) 
       matchList.append(matchEvent);

@@ -93,7 +93,7 @@ void KOEditorGeneralTodo::initMisc()
   completedButton->setText( i18n("Completed") );
 
   priorityLabel = new QLabel( this, "Label_3" );
-  priorityLabel->setText( i18n("Priority") );
+  priorityLabel->setText( i18n("Priority:") );
 
   priorityCombo = new QComboBox( false, this, "ComboBox_10" );
   priorityCombo->setSizeLimit( 10 );
@@ -144,6 +144,7 @@ void KOEditorGeneralTodo::initLayout()
   QBoxLayout *layoutCompletion = new QHBoxLayout;
   layoutTop->addLayout(layoutCompletion);
   layoutCompletion->addWidget(completedButton);
+  layoutCompletion->addStretch();
   layoutCompletion->addWidget(priorityLabel);
   layoutCompletion->addWidget(priorityCombo);
   
