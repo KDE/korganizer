@@ -277,7 +277,9 @@ KOAlternateLabel::KOAlternateLabel(QString shortlabel, QString longlabel,
   squeezeTextToLabel();
 }
 
-KOAlternateLabel::~KOAlternateLabel() {}
+KOAlternateLabel::~KOAlternateLabel()
+{
+}
 
 void KOAlternateLabel::useShortText()
 {
@@ -309,7 +311,8 @@ void KOAlternateLabel::useDefaultText()
   squeezeTextToLabel();
 }
 
-void KOAlternateLabel::squeezeTextToLabel() {
+void KOAlternateLabel::squeezeTextToLabel()
+{
   if (mTextTypeFixed) return;
 
   QFontMetrics fm(fontMetrics());
@@ -331,7 +334,8 @@ void KOAlternateLabel::squeezeTextToLabel() {
   }
 }
 
-void KOAlternateLabel::resizeEvent( QResizeEvent * ) {
+void KOAlternateLabel::resizeEvent( QResizeEvent * )
+{
   squeezeTextToLabel();
 }
 

@@ -999,7 +999,7 @@ int CalPrintBase::weekdayColumn( int weekday )
 void CalPrintBase::drawSplitHeaderRight( QPainter &p, const QDate &fd,
                                          const QDate &td,
                                          const QDate &,
-                                         int width, int height)
+                                         int width, int )
 {
   QFont oldFont( p.font() );
   
@@ -1007,7 +1007,6 @@ void CalPrintBase::drawSplitHeaderRight( QPainter &p, const QDate &fd,
   QPen pen( black,4);
   
   QString title;
-  const KLocale *locale = KGlobal::locale();
   const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
   if ( fd.month() == td.month() ) {
     title = i18n("Date range: Month dayStart - dayEnd", "%1 %2 - %3")

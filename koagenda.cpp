@@ -1081,7 +1081,8 @@ double KOAgenda::calcSubCellWidth( KOAgendaItem *item )
 {
   QPoint pt, pt1;
   pt = gridToContents( QPoint( item->cellXLeft(), item->cellYTop() ) );
-  pt1 = gridToContents( QPoint( item->cellXLeft(), item->cellYTop() ) + QPoint(1,1) );
+  pt1 = gridToContents( QPoint( item->cellXLeft(), item->cellYTop() ) +
+                        QPoint( 1, 1 ) );
   pt1 -= pt;
   int maxSubCells = item->subCells();
   double newSubCellWidth;
@@ -1384,8 +1385,8 @@ void KOAgenda::setStartTime( QTime startHour )
 /*
   Insert KOAgendaItem into agenda.
 */
-KOAgendaItem *KOAgenda::insertItem( Incidence *incidence, QDate qd, int X, int YTop,
-                                    int YBottom )
+KOAgendaItem *KOAgenda::insertItem( Incidence *incidence, QDate qd, int X,
+                                    int YTop, int YBottom )
 {
 #if 0
   kdDebug(5850) << "KOAgenda::insertItem:" << event->summary() << "-"
@@ -1434,34 +1435,36 @@ KOAgendaItem *KOAgenda::insertItem( Incidence *incidence, QDate qd, int X, int Y
 /*
   Insert all-day KOAgendaItem into agenda.
 */
-KOAgendaItem *KOAgenda::insertAllDayItem (Incidence *event,QDate qd,int XBegin,int XEnd)
+KOAgendaItem *KOAgenda::insertAllDayItem( Incidence *event, QDate qd,
+                                          int XBegin, int XEnd )
 {
-   if (!mAllDayMode) {
+  if ( !mAllDayMode ) {
     kdDebug(5850) << "KOAgenda: calling insertAllDayItem in non all-day mode is illegal." << endl;
     return 0;
   }
   mActionType = NOP;
 
-  KOAgendaItem *agendaItem = new KOAgendaItem (event,qd,viewport());
+  KOAgendaItem *agendaItem = new KOAgendaItem( event, qd, viewport() );
   connect( agendaItem, SIGNAL( removeAgendaItem( KOAgendaItem* ) ),
-           this, SLOT( removeAgendaItem( KOAgendaItem* ) ) );
+           SLOT( removeAgendaItem( KOAgendaItem* ) ) );
   connect( agendaItem, SIGNAL( showAgendaItem( KOAgendaItem* ) ),
-           this, SLOT( showAgendaItem( KOAgendaItem* ) ) );
+           SLOT( showAgendaItem( KOAgendaItem* ) ) );
 
-  agendaItem->setCellXY(XBegin,0,0);
-  agendaItem->setCellXRight(XEnd);
+  agendaItem->setCellXY( XBegin, 0, 0 );
+  agendaItem->setCellXRight( XEnd );
 
-  double startIt = mGridSpacingX * (agendaItem->cellXLeft());
-  double endIt = mGridSpacingX * (agendaItem->cellWidth()+agendaItem->cellXLeft());
+  double startIt = mGridSpacingX * ( agendaItem->cellXLeft() );
+  double endIt = mGridSpacingX * ( agendaItem->cellWidth() +
+                                   agendaItem->cellXLeft() );
 
-  agendaItem->resize( int(endIt) - int(startIt), int(mGridSpacingY));
+  agendaItem->resize( int( endIt ) - int( startIt ), int( mGridSpacingY ) );
 
-  agendaItem->installEventFilter(this);
+  agendaItem->installEventFilter( this );
 
   addChild( agendaItem, int( XBegin * mGridSpacingX ), 0 );
-  mItems.append(agendaItem);
+  mItems.append( agendaItem );
 
-  placeSubCells(agendaItem);
+  placeSubCells( agendaItem );
 
   agendaItem->show();
 

@@ -354,9 +354,9 @@ void CalPrintWeek::print( QPainter &p, int width, int height )
                        width, height - hh - 5 );
         mPrinter->newPage();
         drawSplitHeaderRight( p, fromWeek, curWeek, QDate(), width, hh );
-        drawTimeTable( p, endLeft.addDays(1), curWeek,
+        drawTimeTable( p, endLeft.addDays( 1 ), curWeek,
                        mStartTime, mEndTime, 0, hh + 5,
-                       (width-50)*3./4. + 50, height - hh - 5 );
+                       int( ( width - 50 ) * 3. / 4. + 50 ), height - hh - 5 );
         
         fromWeek = fromWeek.addDays( 7 );
         curWeek = fromWeek.addDays( 6 );
