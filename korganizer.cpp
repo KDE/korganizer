@@ -98,6 +98,12 @@ KOrganizer::KOrganizer(const char *name)
   connect(mCalendarView,SIGNAL(modifiedChanged(bool)),SLOT(setTitle()));
   connect(mCalendarView,SIGNAL(configChanged()),SLOT(updateConfig()));
 
+  // Update state of event instance related actions
+  mCalendarView->emitEventsSelected();
+
+  // Update state of paste action
+  mCalendarView->checkClipboard();
+  
   qDebug("KOrganizer::KOrganizer() done");
 }
 
@@ -189,9 +195,16 @@ void KOrganizer::initActions()
   KStdAction::quit(this, SLOT(close()), actionCollection());
 
   // setup edit menu
-  KStdAction::cut(mCalendarView, SLOT(edit_cut()), actionCollection());
-  KStdAction::copy(mCalendarView, SLOT(edit_copy()), actionCollection());
-  KStdAction::paste(mCalendarView, SLOT(edit_paste()), actionCollection());
+  action = KStdAction::cut(mCalendarView,SLOT(edit_cut()),actionCollection());
+  connect(mCalendarView,SIGNAL(eventsSelected(bool)),
+          action,SLOT(setEnabled(bool)));
+  action = KStdAction::copy(mCalendarView,SLOT(edit_copy()),actionCollection());
+  connect(mCalendarView,SIGNAL(eventsSelected(bool)),
+          action,SLOT(setEnabled(bool)));
+  action = KStdAction::paste(mCalendarView,SLOT(edit_paste()),
+                             actionCollection());
+  connect(mCalendarView,SIGNAL(pasteEnabled(bool)),
+          action,SLOT(setEnabled(bool)));
 
   // view menu
   (void)new KAction(i18n("&List"), UserIcon("listicon"), 0,
@@ -223,21 +236,32 @@ void KOrganizer::initActions()
   (void)new KAction(i18n("New E&vent..."), 0,
                     mCalendarView,SLOT(allday_new()),
                     actionCollection(), "new_event");
-  (void)new KAction(i18n("New To-Do..."), 0,
+  (void)new KAction(i18n("New &To-Do..."), 0,
                     mCalendarView,SLOT(newTodo()),
                     actionCollection(), "new_todo");
-  (void)new KAction(i18n("&Edit Appointment..."), 0,
+  action = new KAction(i18n("&Show Appointment..."), 0,
+                    mCalendarView,SLOT(appointment_show()),
+                    actionCollection(), "show_appointment");
+  connect(mCalendarView,SIGNAL(eventsSelected(bool)),
+          action,SLOT(setEnabled(bool)));
+  action = new KAction(i18n("&Edit Appointment..."), 0,
                     mCalendarView,SLOT(appointment_edit()),
-                    actionCollection(), "new_appointment");
-  (void)new KAction(i18n("&Delete Appointment"), 0,
+                    actionCollection(), "edit_appointment");
+  connect(mCalendarView,SIGNAL(eventsSelected(bool)),
+          action,SLOT(setEnabled(bool)));
+  action = new KAction(i18n("&Delete Appointment"), 0,
                     mCalendarView,SLOT(appointment_delete()),
                     actionCollection(), "delete_appointment");
+  connect(mCalendarView,SIGNAL(eventsSelected(bool)),
+          action,SLOT(setEnabled(bool)));
 
   KStdAction::find(mCalendarView, SLOT(action_search()), actionCollection());
 
-  (void)new KAction(i18n("&Mail Appointment"), BarIcon("send"), 0,
+  action = new KAction(i18n("&Mail Appointment"), BarIcon("send"), 0,
                     mCalendarView,SLOT(action_mail()),
                     actionCollection(), "mail_appointment");
+  connect(mCalendarView,SIGNAL(eventsSelected(bool)),
+          action,SLOT(setEnabled(bool)));
 
   // Navigation menu  
   (void)new KAction(i18n("Go to &Today"), UserIcon("todayicon"), 0,

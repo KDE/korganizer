@@ -100,6 +100,8 @@ KOListView::KOListView(CalObject *calendar, QWidget *parent,
   QObject::connect(mListView,SIGNAL(rightButtonClicked ( QListViewItem *,
                      const QPoint &, int )),
                    this,SLOT(popupMenu(QListViewItem *,const QPoint &,int)));
+  QObject::connect(mListView,SIGNAL(selectionChanged()),
+                   SLOT(processSelectionChange()));
 }
 
 KOListView::~KOListView()
@@ -120,6 +122,10 @@ int KOListView::currentDateCount()
 QList<KOEvent> KOListView::getSelected()
 {
   QList<KOEvent> eventList;
+
+  QListViewItem *item = mListView->selectedItem();
+  if (item) eventList.append(((KOListViewItem *)item)->event());
+  
   return eventList;
 }
 
@@ -175,6 +181,8 @@ void KOListView::selectDates(const QDateList dateList)
     addEvents(mCalendar->getEventsForDate(*date));
     addEvents(mCalendar->getTodosForDate(*date));
   }
+  
+  emit eventsSelected(false);
 }
 
 void KOListView::addEvents(QList<KOEvent> eventList)
@@ -189,6 +197,9 @@ void KOListView::selectEvents(QList<KOEvent> eventList)
 {
   mListView->clear();
   addEvents(eventList);
+
+  // After new creation of list view no events are selected.
+  emit eventsSelected(false);
 }
 
 void KOListView::changeEventDisplay(KOEvent *event, int action)
@@ -237,4 +248,10 @@ void KOListView::popupMenu(QListViewItem *item,const QPoint &,int)
 {
   mActiveItem = (KOListViewItem *)item;
   if (mActiveItem) showEventPopup(mPopupMenu,mActiveItem->event());
+}
+
+void KOListView::processSelectionChange()
+{
+  // If selection has changed, we know that one event is selected.
+  emit eventsSelected(true);
 }

@@ -28,6 +28,8 @@
       <Action name="new_appointment"/>
       <Action name="new_event"/>
       <Action name="new_todo"/>
+      <Separator/>
+      <Action name="show_appointment"/>
       <Action name="edit_appointment"/>
       <Action name="delete_appointment"/>
       <Action name="mail_appointment"/>

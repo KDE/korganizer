@@ -81,15 +81,15 @@ void ArchiveDialog::slotUser1()
     return;
   }
 
-  CalObject *archiveCal = new CalObject;
+  CalObject archiveCal;
   
   KOEvent *ev;
   for(ev=events.first();ev;ev=events.next()) {
-    archiveCal->addEvent(ev);
+    archiveCal.addEvent(ev);
   }
 
   KTempFile tmpFile;
-  if (!archiveCal->save(tmpFile.name())) {
+  if (!archiveCal.save(tmpFile.name())) {
     KMessageBox::error(this,i18n("Cannot write archive file."));
     return;
   }
@@ -105,7 +105,7 @@ void ArchiveDialog::slotUser1()
 // Delete old events
 void ArchiveDialog::slotUser2()
 {
-  QList<KOEvent> events = mCalendar->getEvents(QDate(1800,1,1),
+  QList<KOEvent> events = mCalendar->getEvents(QDate(1769,12,1),
                                                mDateEdit->getDate(),true);
 
   if (events.count() == 0) {

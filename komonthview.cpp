@@ -218,6 +218,12 @@ void KSummaries::calUpdated()
   repaint();
 }
 
+KOEvent *KSummaries::getSelected()
+{
+  if (currentItem() < 0) return 0;
+  else return currIdxs->find(currentItem());
+};
+
 // QScrollView assumes a minimum size of (100,100). That's too much for us.
 QSize KSummaries::minimumSizeHint() const
 {
@@ -397,6 +403,8 @@ KOMonthView::KOMonthView(CalObject *cal,
     rightClickMenu = eventPopup();
 
     updateConfig();
+
+    emit eventsSelected(false);
 }
 
 
@@ -691,6 +699,8 @@ void KOMonthView::viewChanged()
     //debug("selDateIdxs.count(): %d",selDateIdxs.count());
     daySelected(*idx);
   }
+
+  processSelectionChange();
 }
 
 void KOMonthView::updateView()
@@ -705,6 +715,8 @@ void KOMonthView::updateView()
     daySummaries[i]->setBackgroundMode(PaletteLight);*/
     daySummaries[i]->calUpdated();
   }
+
+  processSelectionChange();
 }
 
 void KOMonthView::resizeEvent(QResizeEvent *)
@@ -735,7 +747,7 @@ void KOMonthView::resizeEvent(QResizeEvent *)
 }
 
 
-void KOMonthView::daySelected(int index) 
+void KOMonthView::daySelected(int index)
 {
   unsigned int i;
   int *idx;
@@ -759,6 +771,8 @@ void KOMonthView::daySelected(int index)
 
   emit datesSelected(dateList);
   dateList.clear();
+
+  processSelectionChange();
 }
 
 void KOMonthView::newEventSlot(int index)
@@ -769,4 +783,16 @@ void KOMonthView::newEventSlot(int index)
 void KOMonthView::doRightClickMenu()
 {
   showEventPopup(rightClickMenu,getSelected().first());
+}
+
+void KOMonthView::processSelectionChange()
+{
+  QList<KOEvent> events = getSelected();
+  if (events.count() > 0) {
+    emit eventsSelected(true);
+//    qDebug("KOMonthView::processSelectionChange() true");
+  } else {
+    emit eventsSelected(false);
+//    qDebug("KOMonthView::processSelectionChange() false");
+  }
 }

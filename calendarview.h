@@ -81,6 +81,13 @@ signals:
   void changeNavStringPrev(const QString &);
   void changeNavStringNext(const QString &);
 
+  /** Emitted when state of events selection has changed. */
+  void eventsSelected(bool);
+
+  /** Enabled, when clipboard content changes. Parameter indicates if paste
+   * is possible or not */
+  void pasteEnabled(bool);
+  
 public slots:
   /** options dialog made a changed to the configuration. we catch this
    *  and notify all widgets which need to update their configuration. */
@@ -133,7 +140,10 @@ public slots:
   /** next Agenda view */
   void nextAgendaView();
 
-
+  /** Check if clipboard contains vCalendar event. The signal pasteEnabled() is
+   * emitted as result. */
+  void checkClipboard();
+  
 // Made public from protected because we call these slots now from KOrganizer
 // main view widget.
  public slots:
@@ -205,15 +215,16 @@ public slots:
   void appointment_new();
   /** same as apptmnt_new, but sets "All Day Event" to true by default. */
   void allday_new();
+  
+  /** pop up a dialog to show an existing appointment. */
+  void appointment_show();
   /**
-   *
    * pop up an Appointment Dialog to edit an existing appointment.	Get
    * information on the appointment from the list of unique IDs that is
    * currently in the View, called currIds.
    */
   void appointment_edit();
   /**
-   *
    * pop up dialog confirming deletion of currently selected event in the
    * View.
    */
@@ -265,11 +276,15 @@ protected slots:
 
   /** Select a week to be displayed in the calendar view */
   void selectWeek(QDate weekstart);
-  
+
+  void processEventSelection(bool selected);
+
 public:
   // show a standard warning
   // returns KMsgBox::yesNoCancel()
   int msgCalModified();
+
+  void emitEventsSelected();
 
 protected:
   void hookupSignals();
@@ -318,6 +333,7 @@ protected:
   bool            mModified;	   // flag indicating if calendar is modified
   bool            mReadOnly; // flag indicating if calendar is read-only
   QDate saveSingleDate;                
+  int mEventsSelected;
 
   // dialogs
   KOOptionsDialog *mOptionsDialog;

@@ -29,6 +29,7 @@
 #include <qmultilineedit.h>
 #include <qtimer.h>
 #include <qwidgetstack.h>
+#include <qclipboard.h>
 
 #include <kglobal.h>
 #include <kiconloader.h>
@@ -47,6 +48,7 @@
 #include "koprefs.h"
 #include "koeventviewerdialog.h"
 #include "koarchivedlg.h"
+#include "vcaldrag.h"
 
 #include "calendarview.h"
 #include "calendarview.moc"
@@ -65,6 +67,7 @@ CalendarView::CalendarView(QWidget *parent,const char *name)
 
   mModified=false;
   mReadOnly = false;
+  mEventsSelected = true;
   
   searchDlg = 0L;
   mArchiveDialog = 0;
@@ -145,6 +148,9 @@ CalendarView::CalendarView(QWidget *parent,const char *name)
   setupRollover();
 
   updateConfig();
+
+  connect(QApplication::clipboard(),SIGNAL(dataChanged()),
+          SLOT(checkClipboard()));
 
   qDebug("CalendarView::CalendarView() done");
 }
@@ -389,6 +395,8 @@ void CalendarView::hookupSignals()
 	  this, SLOT(editEvent(KOEvent *)));
   connect(listView, SIGNAL(deleteEventSignal(KOEvent *)), 
 	  this, SLOT(deleteEvent(KOEvent *)));
+  connect(listView,SIGNAL(eventsSelected(bool)),
+          SLOT(processEventSelection(bool)));
 
   // SIGNALS/SLOTS FOR DAY/WEEK VIEW
   connect(agendaView,SIGNAL(newEventSignal(QDateTime)),
@@ -403,6 +411,8 @@ void CalendarView::hookupSignals()
 	  this, SLOT(showEvent(KOEvent *)));
   connect(agendaView, SIGNAL(deleteEventSignal(KOEvent *)), 
 	  this, SLOT(deleteEvent(KOEvent *)));
+  connect(agendaView,SIGNAL(eventsSelected(bool)),
+          SLOT(processEventSelection(bool)));
 
   // SIGNALS/SLOTS FOR MONTH VIEW
   connect(monthView, SIGNAL(showEventSignal(KOEvent *)),
@@ -413,6 +423,8 @@ void CalendarView::hookupSignals()
 	  this, SLOT(editEvent(KOEvent *)));
   connect(monthView, SIGNAL(deleteEventSignal(KOEvent *)),
 	  this, SLOT(deleteEvent(KOEvent *)));
+  connect(monthView,SIGNAL(eventsSelected(bool)),
+          SLOT(processEventSelection(bool)));
 
   // SIGNALS/SLOTS FOR TODO VIEW
   connect(todoView, SIGNAL(newTodoSignal()),
@@ -564,7 +576,10 @@ void CalendarView::changeView(KOBaseView *view)
   currentView = view;
 
   if (currentView) rightFrame->raiseWidget(currentView);
-  else rightFrame->raiseWidget(todoView);
+  else {
+    rightFrame->raiseWidget(todoView);
+    processEventSelection(false);
+  }
 
   updateView(dateNavigator->getSelected());
 
@@ -601,6 +616,7 @@ void CalendarView::updateView(const QDateList selectedDates)
 
   }
 
+  qDebug("CalendarView::updateView() now selecting dates");
   if (currentView) currentView->selectDates(selectedDates);
 
   todoList->updateView();
@@ -862,6 +878,20 @@ void CalendarView::showTodo(KOEvent *event)
     eventViewer->setTodo(event);
     eventViewer->show();
   }
+}
+
+void CalendarView::appointment_show()
+{
+  KOEvent *anEvent = 0;
+  
+  if (currentView) anEvent = (currentView->getSelected()).first();
+
+  if (!anEvent) {
+    qApp->beep();
+    return;
+  }
+
+  showEvent(anEvent);
 }
 
 void CalendarView::appointment_edit()
@@ -1180,5 +1210,31 @@ void CalendarView::adaptNavigationUnits()
       emit changeNavStringPrev(i18n("&Previous Week"));
       emit changeNavStringNext(i18n("&Next Week"));
     }
+  }
+}
+
+void CalendarView::processEventSelection(bool selected)
+{
+  // Do nothing, if state hasn't changed
+// Disabled because initial state wasn't propagated correctly
+  if (mEventsSelected == selected) return;
+
+  mEventsSelected = selected;
+  emit eventsSelected(mEventsSelected);
+}
+
+void CalendarView::emitEventsSelected()
+{
+  emit eventsSelected(mEventsSelected);
+}
+
+void CalendarView::checkClipboard()
+{
+  if (VCalDrag::canDecode(QApplication::clipboard()->data())) {
+    qDebug("CalendarView::checkClipboard() true");
+    emit pasteEnabled(true);
+  } else {
+    qDebug("CalendarView::checkClipboard() false");
+    emit pasteEnabled(false);
   }
 }

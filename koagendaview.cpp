@@ -723,6 +723,8 @@ void KOAgendaView::fillAgenda()
 //  mAgenda->viewport()->update();
 //  mAllDayAgenda->viewport()->update();
 
+  emit eventsSelected(false);
+
 //  qDebug("Fill Agenda done");
 }
 

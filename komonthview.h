@@ -96,8 +96,8 @@ class KSummaries: public KNoScrollListBox {
   QDate getDate() { return(myDate); }
   void setDate(QDate);
   void calUpdated();
-  KOEvent *getSelected() { return currIdxs->find(itemIndex); };
-
+  KOEvent *getSelected();
+  
   QSize minimumSizeHint() const;
 
  signals:
@@ -166,6 +166,7 @@ class KOMonthView: public KOBaseView {
    void newEventSlot(int index);
    void doRightClickMenu();
 //   void newEventSelected() { emit newEventSignal(daySummaries[*selDateIdxs.first()]->getDate()); };
+   void processSelectionChange();
 
  protected:
    void viewChanged();

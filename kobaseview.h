@@ -83,7 +83,7 @@ public:
    * Construct a standard context menu for an event.
    */
   QPopupMenu *eventPopup();
-  
+
 public slots:
   /**
    * Updates the current display to reflect changes that may have happened
@@ -167,6 +167,12 @@ signals:
    */
   void showEventSignal(KOEvent *);
 
+  /**
+   * Emitted, when events are selected or deselected. The argument is true, if
+   * there are selected events and false if there are no selected events.
+   */
+  void eventsSelected(bool selected);
+  
 protected slots:
   void popupShow();
   void popupEdit();

@@ -1114,6 +1114,7 @@ VObject *CalObject::eventToVTodo(const KOEvent *anEvent)
 {
   VObject *vtodo;
   QString tmpStr;
+  QStrList tmpStrList;
 
   vtodo = newVObject(VCTodoProp);
 
@@ -1193,6 +1194,26 @@ VObject *CalObject::eventToVTodo(const KOEvent *anEvent)
   if (anEvent->getRelatedTo()) {
     addPropValue(vtodo, VCRelatedToProp,
 	         anEvent->getRelatedTo()->getVUID().ascii());
+  }
+
+  // categories
+  tmpStrList = anEvent->getCategories();
+  tmpStr = "";
+  char *catStr;
+  for (catStr = tmpStrList.first(); catStr; 
+       catStr = tmpStrList.next()) {
+    if (catStr[0] == ' ')
+      tmpStr += (catStr+1);
+    else
+      tmpStr += catStr;
+    // this must be a ';' character as the vCalendar specification requires!
+    // vcc.y has been hacked to translate the ';' to a ',' when the vcal is
+    // read in.
+    tmpStr += ";";
+  }
+  if (!tmpStr.isEmpty()) {
+    tmpStr.truncate(tmpStr.length()-1);
+    addPropValue(vtodo, VCCategoriesProp, tmpStr.ascii());
   }
 
   // pilot sync stuff
@@ -1600,6 +1621,27 @@ KOEvent *CalObject::VTodoToEvent(VObject *vtodo)
     anEvent->setRelatedToVUID(s = fakeCString(vObjectUStringZValue(vo)));
     deleteStr(s);
     mTodosRelate.append(anEvent);
+  }
+
+  // categories
+  QStrList tmpStrList;
+  int index1 = 0;
+  int index2 = 0;
+  if ((vo = isAPropertyOf(vtodo, VCCategoriesProp)) != 0) {
+    QString categories = (s = fakeCString(vObjectUStringZValue(vo)));
+    deleteStr(s);
+    //const char* category;
+    QString category;
+    while ((index2 = categories.find(',', index1)) != -1) {
+	//category = (const char *) categories.mid(index1, (index2 - index1));
+      category = categories.mid(index1, (index2 - index1));	
+      tmpStrList.append(category);
+      index1 = index2+1;
+    }
+    // get last category
+    category = categories.mid(index1, (categories.length()-index1));
+    tmpStrList.append(category);
+    anEvent->setCategories(tmpStrList);
   }
 
   /* PILOT SYNC STUFF */

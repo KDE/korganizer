@@ -76,10 +76,14 @@ public slots:
   void defaultItemAction(QListViewItem *item);
   void popupMenu(QListViewItem *item,const QPoint &,int);
 
+protected slots:
+  void processSelectionChange();
+
 protected:
   void addEvents(QList<KOEvent> eventList);
   KOListViewItem *getItemForEvent(KOEvent *event);
 
+private:
   QListView *mListView;
   QPopupMenu *mPopupMenu;
   KOListViewItem *mActiveItem;
