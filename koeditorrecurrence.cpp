@@ -51,6 +51,7 @@ void KOEditorRecurrence::initLayout()
   layoutTop->addMultiCellWidget(ruleGroupBox,1,1,0,1);
   layoutTop->addWidget(rangeGroupBox,2,0);
   layoutTop->addWidget(exceptionGroupBox,2,1);
+  layoutTop->setColStretch(1,1);
 }
 
 void KOEditorRecurrence::initMain()
@@ -173,6 +174,8 @@ void KOEditorRecurrence::initMain()
   layoutRange->addLayout(layoutEndDate);
   layoutEndDate->addWidget(endDateButton);
   layoutEndDate->addWidget(endDateEdit,AlignLeft);
+  
+  layoutRange->addStretch(1);
   
   connect(noEndDateButton, SIGNAL(toggled(bool)),
 	  this, SLOT(disableRange(bool)));
@@ -447,7 +450,9 @@ void KOEditorRecurrence::initExceptions()
   layoutExceptionFrame->addWidget(addExceptionButton,1,0);
   layoutExceptionFrame->addWidget(changeExceptionButton,2,0);
   layoutExceptionFrame->addWidget(deleteExceptionButton,3,0);
-  layoutExceptionFrame->addMultiCellWidget(exceptionList,0,3,1,1);
+  layoutExceptionFrame->addMultiCellWidget(exceptionList,0,4,1,1);
+  layoutExceptionFrame->setRowStretch(4,1);
+  layoutExceptionFrame->setColStretch(1,3);
 
   connect(addExceptionButton, SIGNAL(clicked()),
 	  this, SLOT(addException()));

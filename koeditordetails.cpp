@@ -14,7 +14,6 @@
 #include <kglobal.h>
 #include <kiconloader.h>
 #include <kstddirs.h>
-#include <kbuttonbox.h>
 #include <kabapi.h>
 #include <kmessagebox.h>
 
@@ -56,7 +55,7 @@ KOEditorDetails::KOEditorDetails (int spacing,QWidget* parent,const char* name)
 {
   mSpacing = spacing;
 
-  topLayout = new QVBoxLayout(this);
+  topLayout = new QGridLayout(this);
   topLayout->setSpacing(mSpacing);
 
   initAttendee();
@@ -64,6 +63,8 @@ KOEditorDetails::KOEditorDetails (int spacing,QWidget* parent,const char* name)
 // implemented.
   //initAttach();
   //initMisc();
+
+  checkAttendeeSelection();
 }
 
 void KOEditorDetails::initAttendee()
@@ -74,53 +75,51 @@ void KOEditorDetails::initAttendee()
   attendeeListBox->addColumn(i18n("Role"),60);
   attendeeListBox->addColumn(i18n("Status"),100);
   attendeeListBox->addColumn(i18n("RSVP"),35);
-  topLayout->addWidget(attendeeListBox);
+  topLayout->addMultiCellWidget(attendeeListBox,0,0,0,5);
 
   connect(attendeeListBox, SIGNAL(clicked(QListViewItem *)),
 	  this, SLOT(attendeeListHilite(QListViewItem *)));
   connect(attendeeListBox, SIGNAL(doubleClicked(QListViewItem *)),
 	  this, SLOT(attendeeListAction(QListViewItem *)));
+  connect(attendeeListBox,SIGNAL(selectionChanged()),
+          SLOT(checkAttendeeSelection()));
 
-  QHBox *nameBox = new QHBox(this);
-  nameBox->setSpacing(mSpacing);
-  topLayout->addWidget(nameBox);
-
-  attendeeLabel = new QLabel(nameBox);
+  attendeeLabel = new QLabel(this);
   attendeeLabel->setText(i18n("Attendee Name:"));
+  topLayout->addWidget(attendeeLabel,1,0);
 
-  attendeeEdit = new QLineEdit(nameBox);
+  attendeeEdit = new QLineEdit(this);
   attendeeEdit->setText("");
+  topLayout->addMultiCellWidget(attendeeEdit,1,1,1,4);
+  connect(attendeeEdit,SIGNAL(textChanged(const QString &)),
+          SLOT(checkLineEdits()));
 
-  QLabel *emailLabel = new QLabel(nameBox);
+  QLabel *emailLabel = new QLabel(this);
   emailLabel->setText(i18n("Email Address:"));
+  topLayout->addWidget(emailLabel,2,0);
   
-  emailEdit = new QLineEdit(nameBox);
+  emailEdit = new QLineEdit(this);
   emailEdit->setText("");
-
-  QWidget *roleBox = new QWidget(this);
-  topLayout->addWidget(roleBox);
-  QBoxLayout *roleLayout = new QHBoxLayout(roleBox);
+  topLayout->addMultiCellWidget(emailEdit,2,2,1,4);
   
-  attendeeRoleLabel = new QLabel(roleBox);
+  attendeeRoleLabel = new QLabel(this);
   attendeeRoleLabel->setText(i18n("Role:"));
-  roleLayout->addWidget(attendeeRoleLabel);
-  roleLayout->addSpacing(mSpacing);
+  topLayout->addWidget(attendeeRoleLabel,3,0);
 
-  attendeeRoleCombo = new QComboBox(false,roleBox);
+  attendeeRoleCombo = new QComboBox(false,this);
   attendeeRoleCombo->insertItem( i18n("Attendee") );
   attendeeRoleCombo->insertItem( i18n("Organizer") );
   attendeeRoleCombo->insertItem( i18n("Owner") );
   attendeeRoleCombo->insertItem( i18n("Delegate") );
-  roleLayout->addWidget(attendeeRoleCombo);
+  topLayout->addWidget(attendeeRoleCombo,3,1);
 
-  roleLayout->addStretch();
+  topLayout->setColStretch(2,1);
 
-  statusLabel = new QLabel(roleBox);
+  statusLabel = new QLabel(this);
   statusLabel->setText( i18n("Status:") );
-  roleLayout->addWidget(statusLabel);
-  roleLayout->addSpacing(mSpacing);
+  topLayout->addWidget(statusLabel,3,3);
 
-  statusCombo = new QComboBox(false,roleBox);
+  statusCombo = new QComboBox(false,this);
   statusCombo->insertItem( i18n("Needs Action") );
   statusCombo->insertItem( i18n("Accepted") );
   statusCombo->insertItem( i18n("Sent") );
@@ -129,28 +128,33 @@ void KOEditorDetails::initAttendee()
   statusCombo->insertItem( i18n("Declined") );
   statusCombo->insertItem( i18n("Completed") );
   statusCombo->insertItem( i18n("Delegated") );
-  roleLayout->addWidget(statusCombo);
+  topLayout->addWidget(statusCombo,3,4);
 
-  roleLayout->addStretch();
-
-  attendeeRSVPButton = new QCheckBox(roleBox);
+  attendeeRSVPButton = new QCheckBox(this);
   attendeeRSVPButton->setText(i18n("Request Response"));
-  roleLayout->addWidget(attendeeRSVPButton);
+  topLayout->addMultiCellWidget(attendeeRSVPButton,4,4,0,4);
 
-  KButtonBox *buttonBox = new KButtonBox(this);
-  topLayout->addWidget(buttonBox);
+  QWidget *buttonBox = new QWidget(this);
+  QVBoxLayout *buttonLayout = new QVBoxLayout(buttonBox);
 
-  addAttendeeButton = buttonBox->addButton(i18n("&Add"));
+  topLayout->addMultiCellWidget(buttonBox,1,4,5,5);
+
+  addAttendeeButton = new QPushButton(i18n("&Add"),buttonBox);
+  buttonLayout->addWidget(addAttendeeButton);
+  addAttendeeButton->setEnabled(false);
   connect(addAttendeeButton,SIGNAL(clicked()),SLOT(addNewAttendee()));
 
-  addAttendeeButton = buttonBox->addButton(i18n("&Modify"));
-  connect(addAttendeeButton,SIGNAL(clicked()),SLOT(updateAttendee()));
+  modifyAttendeeButton = new QPushButton(i18n("&Modify"),buttonBox);
+  buttonLayout->addWidget(modifyAttendeeButton);
+  connect(modifyAttendeeButton,SIGNAL(clicked()),SLOT(updateAttendee()));
 
-  addressBookButton = buttonBox->addButton(i18n("Address &Book..."));
-  connect(addressBookButton,SIGNAL(clicked()),SLOT(openAddressBook()));
-
-  removeAttendeeButton = buttonBox->addButton(i18n("&Remove"));
+  removeAttendeeButton = new QPushButton(i18n("&Remove"),buttonBox);
+  buttonLayout->addWidget(removeAttendeeButton);
   connect(removeAttendeeButton, SIGNAL(clicked()),SLOT(removeAttendee()));
+
+  addressBookButton = new QPushButton(i18n("Address &Book..."),buttonBox);
+  buttonLayout->addWidget(addressBookButton);
+  connect(addressBookButton,SIGNAL(clicked()),SLOT(openAddressBook()));
 }
     
 void KOEditorDetails::initAttach()
@@ -252,10 +256,14 @@ void KOEditorDetails::setEnabled(bool)
 
 void KOEditorDetails::removeAttendee()
 {
-  AttendeeListItem *aItem = (AttendeeListItem *)attendeeListBox->currentItem();
+  AttendeeListItem *aItem = (AttendeeListItem *)attendeeListBox->selectedItem();
   if (!aItem) return;
 
   delete aItem;
+
+  clearAttendeeInput();
+
+  checkAttendeeSelection();
 }
 
 void KOEditorDetails::attendeeListHilite(QListViewItem *item)
@@ -324,11 +332,12 @@ void KOEditorDetails::openAddressBook()
 
 void KOEditorDetails::updateAttendee()
 {
-  AttendeeListItem *aItem = (AttendeeListItem *)attendeeListBox->currentItem();
+  AttendeeListItem *aItem = (AttendeeListItem *)attendeeListBox->selectedItem();
   if (!aItem) return;
 
   delete aItem;
   addNewAttendee();
+  checkAttendeeSelection();
 }
 
 void KOEditorDetails::addNewAttendee()
@@ -365,12 +374,20 @@ void KOEditorDetails::addNewAttendee()
   insertAttendee(a);
 
   // zero everything out for a new one
+  clearAttendeeInput();
+
+  checkAttendeeSelection();
+}
+
+void KOEditorDetails::clearAttendeeInput()
+{
   attendeeEdit->setText("");
   emailEdit->setText("");
   attendeeRoleCombo->setCurrentItem(0);
   statusCombo->setCurrentItem(0);
   attendeeRSVPButton->setChecked(true);
 }
+
 
 void KOEditorDetails::insertAttendee(Attendee *a)
 {
@@ -410,4 +427,26 @@ void KOEditorDetails::writeEvent(KOEvent *event)
 bool KOEditorDetails::validateInput()
 {
   return true;
+}
+
+void KOEditorDetails::checkLineEdits()
+{
+  if (attendeeEdit->text().isEmpty()) {
+    addAttendeeButton->setEnabled(false);
+  } else {
+    addAttendeeButton->setEnabled(true);
+  }
+}
+
+void KOEditorDetails::checkAttendeeSelection()
+{
+//  qDebug("KOEditorDetails::checkAttendeeSelection()");
+
+  if (attendeeListBox->selectedItem()) {
+    removeAttendeeButton->setEnabled(true);
+    modifyAttendeeButton->setEnabled(true);
+  } else {
+    removeAttendeeButton->setEnabled(false);
+    modifyAttendeeButton->setEnabled(false);
+  }
 }

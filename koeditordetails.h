@@ -65,19 +65,24 @@ class KOEditorDetails : public QWidget
     void attendeeListHilite(QListViewItem *);
     void attendeeListAction(QListViewItem *);
     void openAddressBook();
+    void checkLineEdits();
+    void checkAttendeeSelection();
 
   protected:
     void initAttendee();
     void initAttach();
     void initMisc();
 
-    QVBoxLayout *topLayout;
+    void clearAttendeeInput();
+
+    QGridLayout *topLayout;
 
     QLabel* attendeeLabel;
     QLineEdit *attendeeEdit;
     QLineEdit *emailEdit;
     QListView *attendeeListBox;
     QPushButton* addAttendeeButton;
+    QPushButton* modifyAttendeeButton;
     QPushButton* removeAttendeeButton;
     QGroupBox* attachGroupBox;
     QPushButton* attachFileButton;
