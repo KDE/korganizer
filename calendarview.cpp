@@ -1322,6 +1322,32 @@ bool CalendarView::deleteEvent(const QString &uid)
     }
 }
 
+
+
+void CalendarView::toggleAlarm( Incidence *incidence )
+{
+  if ( !incidence ) {
+    kdDebug(5850) << "CalendarView::toggleAlarm() called without having a clicked item" << endl;
+    return;
+  }
+  Incidence*oldincidence = incidence->clone();
+
+// TODO: deal correctly with multiple alarms
+  Alarm::List alarms = incidence->alarms();
+  Alarm::List::ConstIterator it;
+  for( it = alarms.begin(); it != alarms.end(); ++it )
+    (*it)->toggleAlarm();
+  if (alarms.isEmpty()) {
+    // Add an alarm if it didn't have one
+    Alarm*alm = incidence->newAlarm();
+    alm->setEnabled(true);
+  }
+  emit incidenceChanged( oldincidence, incidence );
+  delete oldincidence;
+
+//  mClickedItem->updateIcons();
+}
+
 /*****************************************************************************/
 
 void CalendarView::action_mail()

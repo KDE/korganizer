@@ -1658,30 +1658,6 @@ void KOAgenda::scrollDown()
   scrollBy(0,mScrollOffset);
 }
 
-void KOAgenda::popupAlarm()
-{
-  if (!mClickedItem) {
-    kdDebug(5850) << "KOAgenda::popupAlarm() called without having a clicked item" << endl;
-    return;
-  }
-  Incidence*incidence = mClickedItem->incidence();
-  Incidence*oldincidence = incidence->clone();
-
-// TODO: deal correctly with multiple alarms
-  Alarm::List alarms = incidence->alarms();
-  Alarm::List::ConstIterator it;
-  for( it = alarms.begin(); it != alarms.end(); ++it )
-    (*it)->toggleAlarm();
-  if (alarms.isEmpty()) {
-    // Add an alarm if it didn't have one
-    Alarm*alm = incidence->newAlarm();
-    alm->setEnabled(true);
-  }
-  emit incidenceChanged( oldincidence, incidence );
-  delete oldincidence;
-
-  mClickedItem->updateIcons();
-}
 
 /*
   Calculates the minimum width
