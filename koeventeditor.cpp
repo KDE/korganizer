@@ -269,11 +269,7 @@ bool KOEventEditor::processInput()
     Event *event = mEvent->clone();
     Event *oldEvent = mEvent->clone();
     kdDebug(5850) << "KOEventEditor::processInput() write event." << endl;
-    kdDebug(5850) << "Organizers: " << mEvent->organizer() << ", " << event->organizer() << endl;
-    kdDebug(5850) << "Alarms: " << mEvent->alarms().count() << ", " << event->alarms().count() << endl;
     writeEvent( event );
-    kdDebug(5850) << "Alarms: " << mEvent->alarms().count() << ", " << event->alarms().count() << endl;
-    kdDebug(5850) << "Organizers: " << mEvent->organizer() << ", " << event->organizer() << endl;
     kdDebug(5850) << "KOEventEditor::processInput() event written." << endl;
 
     if( *mEvent == *event )
