@@ -105,7 +105,7 @@ class FreeBusyManager : public QObject, public KCal::FreeBusyCache
     /**
       Store freebusy information belonging to email.
     */
-    bool storeFreeBusy( KCal::FreeBusy *, const QString &email );
+    bool saveFreeBusy( KCal::FreeBusy *, const QString &email );
 
     /**
       Return URL of freeBusy information for given email address.

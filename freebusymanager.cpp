@@ -371,7 +371,7 @@ KCal::FreeBusy *FreeBusyManager::iCalToFreeBusy( const QCString &data )
     } else {
       fb = dynamic_cast<KCal::FreeBusy *>( event );
       if ( fb ){
-        storeFreeBusy( fb, fb->organizer() );
+        saveFreeBusy( fb, fb->organizer() );
       } else {
         kdError() << "no freebusy" << endl;
       }
@@ -410,9 +410,9 @@ FreeBusy *FreeBusyManager::loadFreeBusy( const QString &email )
   return iCalToFreeBusy( str.utf8() );
 }
 
-bool FreeBusyManager::storeFreeBusy( FreeBusy *freebusy, const QString &email )
+bool FreeBusyManager::saveFreeBusy( FreeBusy *freebusy, const QString &email )
 {
-  kdDebug() << "FreeBusyManager::storeFreeBusy(): " << email << endl;
+  kdDebug() << "FreeBusyManager::saveFreeBusy(): " << email << endl;
 
   QString fbd = freeBusyDir();
 
@@ -433,7 +433,7 @@ bool FreeBusyManager::storeFreeBusy( FreeBusy *freebusy, const QString &email )
   filename += ".ifb";
   QFile f( filename );
 
-  kdDebug() << "FreeBusyManager::storeFreeBusy(): filename: " << filename
+  kdDebug() << "FreeBusyManager::saveFreeBusy(): filename: " << filename
             << endl;
 
   freebusy->clearAttendees();
