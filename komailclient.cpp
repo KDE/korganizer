@@ -282,7 +282,7 @@ QString KOMailClient::createBody(IncidenceBase *incidence)
     QString recurrence[]= {i18n("no recurrence", "None"),i18n("Daily"),i18n("Weekly"),i18n("Monthly Same Day"),
                            i18n("Monthly Same Position"),i18n("Yearly"),i18n("Yearly")};
   
-    if (selectedEvent->organizer() != "") {
+    if (!selectedEvent->organizer().isEmpty()) {
       body += i18n("Organizer: %1").arg(selectedEvent->organizer());
       body += CR;
     }
@@ -330,7 +330,7 @@ QString KOMailClient::createBody(IncidenceBase *incidence)
   // mailbody for Todo
   if (incidence->type()=="Todo") {
     Todo *selectedEvent = static_cast<Todo *>(incidence);
-    if (selectedEvent->organizer() != "") {
+    if (!selectedEvent->organizer().isEmpty()) {
       body += i18n("Organizer: %1").arg(selectedEvent->organizer());
       body += CR;
     }
