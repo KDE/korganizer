@@ -475,8 +475,10 @@ KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name) :
                         SLOT(newTimeSpanSelected(int,int,int,int)));
   connect(mAllDayAgenda,SIGNAL(newTimeSpanSignal(int,int,int,int)),
                         SLOT(newTimeSpanSelectedAllDay(int,int,int,int)));
-  connect(mAgenda,SIGNAL(newStartSelectSignal()),SLOT(updateView()));
-  connect(mAllDayAgenda,SIGNAL(newStartSelectSignal()),SLOT(updateView()));
+  // No need to call updateView when just the selection changed. This prevents
+  // the whole agenda from being rebuild, and so reduces the flicker.
+//  connect(mAgenda,SIGNAL(newStartSelectSignal()),SLOT(updateView()));
+//  connect(mAllDayAgenda,SIGNAL(newStartSelectSignal()),SLOT(updateView()));
 
   connect(mAgenda,SIGNAL(editIncidenceSignal(Incidence *)),
                   SIGNAL(editIncidenceSignal(Incidence *)));
