@@ -22,7 +22,7 @@
 #include <qstring.h>
 
 #include <calendar/calendardecoration.h>
-#include <libkholidays/kholidays.h>
+#include <kholidays.h>
 
 using namespace KOrg;
 
