@@ -14,5 +14,3 @@ X-KDE-ParentApp=korganizer
 Name=Group Scheduling
 Comment=KOrganizer Group Scheduling Configuration
 Keywords=korganizer,group,scheduling
-
-Categories=Qt;KDE;PIM

@@ -147,9 +147,14 @@ messages: rc.cpp
 	$(XGETTEXT) *.cpp korgac/*.cpp knewstuff/*.cpp plugins/*/*.cpp tips.cc -o $(podir)/korganizer.pot
 	rm -f tips.cc
 
-include ../admin/Doxyfile.am
 
-xdg_apps_DATA = korganizer.desktop configmain.desktop configtime.desktop \
-                configviews.desktop configcolors.desktop \
-                configfonts.desktop configgroupscheduling.desktop \
-                configgroupautomation.desktop
+xdg_apps_DATA = korganizer.desktop
+
+hidden_apps_DATA = configmain.desktop configtime.desktop \
+                   configviews.desktop configcolors.desktop \
+                   configfonts.desktop configgroupscheduling.desktop \
+                   configgroupautomation.desktop
+hidden_appsdir = $(kde_appsdir)/.hidden
+
+
+include ../admin/Doxyfile.am

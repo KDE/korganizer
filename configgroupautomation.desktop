@@ -14,5 +14,3 @@ X-KDE-ParentApp=korganizer
 Name=Group Automation
 Comment=KOrganizer Group Automation Configuration
 Keywords=korganizer,group,automation
-
-Categories=Qt;KDE;PIM
