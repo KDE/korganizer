@@ -398,7 +398,7 @@ bool KOAgenda::eventFilter_mouse(QObject *object, QMouseEvent *me)
       } else {
         KOAgendaItem *doubleClickedItem = (KOAgendaItem *)object;
         selectItem(doubleClickedItem);
-//        emit editEventSignal(doubleClickedItem->itemEvent());
+        emit editEventSignal(doubleClickedItem->itemEvent());
       }
       break;
 
