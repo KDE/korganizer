@@ -25,6 +25,7 @@
 #include <qlistview.h>
 #include <qlayout.h>
 #include <qpopupmenu.h>
+#include <qcursor.h>
 
 #include <klocale.h>
 #include <kdebug.h>
@@ -81,12 +82,18 @@ ListItemVisitor::~ListItemVisitor()
 bool ListItemVisitor::visit(Event *e)
 {
   mItem->setText(0,e->summary());
-  mItem->setText(1,e->dtStartDateStr());
-  mItem->setText(2,e->dtStartTimeStr());
-  mItem->setText(3,e->dtEndDateStr());
-  mItem->setText(4,e->dtEndTimeStr());
-  mItem->setText(5,e->isAlarmEnabled() ? i18n("Yes") : i18n("No"));
-  mItem->setText(6,e->doesRecur() ? i18n("Yes") : i18n("No"));
+  if ( e->isAlarmEnabled() ) {
+    static const QPixmap alarmPxmp = KOGlobals::self()->smallIcon("bell");
+    mItem->setPixmap(1,alarmPxmp);
+  }
+  if ( e->doesRecur() ) {
+    static const QPixmap recurPxmp = KOGlobals::self()->smallIcon("recur");
+    mItem->setPixmap(2,recurPxmp);
+  }
+  mItem->setText(3,e->dtStartDateStr());
+  mItem->setText(4,e->dtStartTimeStr());
+  mItem->setText(5,e->dtEndDateStr());
+  mItem->setText(6,e->dtEndTimeStr());
   mItem->setText(7,"---");
   mItem->setText(8,"---");
   mItem->setText(9,e->categoriesStr());
@@ -107,13 +114,22 @@ bool ListItemVisitor::visit(Event *e)
 
 bool ListItemVisitor::visit(Todo *t)
 {
-  mItem->setText(0,i18n("To-Do: %1").arg(t->summary()));
-  mItem->setText(1,"---");
-  mItem->setText(2,"---");
+  static const QPixmap todoPxmp = KOGlobals::self()->smallIcon("checkedbox");
+  mItem->setPixmap(0,todoPxmp);
+  mItem->setText(0,t->summary());
+  if ( t->isAlarmEnabled() ) {
+    static const QPixmap alarmPxmp = KOGlobals::self()->smallIcon("bell");
+    mItem->setPixmap(1,alarmPxmp);
+  }
+  if ( t->doesRecur() ) {
+    static const QPixmap recurPxmp = KOGlobals::self()->smallIcon("recur");
+    mItem->setPixmap(2,recurPxmp);
+  }
   mItem->setText(3,"---");
   mItem->setText(4,"---");
-  mItem->setText(5,t->isAlarmEnabled() ? i18n("Yes") : i18n("No"));
-  mItem->setText(6,t->doesRecur() ? i18n("Yes") : i18n("No"));
+  mItem->setText(5,"---");
+  mItem->setText(6,"---");
+  
   if (t->hasDueDate()) {
     mItem->setText(7,t->dtDueDateStr());
     if (t->doesFloat()) {
@@ -138,8 +154,8 @@ bool ListItemVisitor::visit(Todo *t)
 
 bool ListItemVisitor::visit(Journal *t)
 {
-  // TODO: When the string freeze is over, use i18n("Journal: %1").arg(t->summary())
-//  mItem->setText( 0, i18n("Journal: %1").arg(t->description()) );
+  static const QPixmap jrnalPxmp = KOGlobals::self()->smallIcon("journal");
+  mItem->setPixmap(0,jrnalPxmp);
   mItem->setText( 0, t->description() );
   mItem->setText( 1, t->dtStartDateStr() );
 
@@ -154,16 +170,16 @@ KOListView::KOListView( Calendar *calendar, QWidget *parent,
 
   mListView = new KListView(this);
   mListView->addColumn(i18n("Summary"));
-  mListView->addColumn(i18n("Start Date"));
-  mListView->setColumnAlignment(1,AlignHCenter);
-  mListView->addColumn(i18n("Start Time"));
-  mListView->setColumnAlignment(2,AlignHCenter);
-  mListView->addColumn(i18n("End Date"));
-  mListView->setColumnAlignment(3,AlignHCenter);
-  mListView->addColumn(i18n("End Time"));
-  mListView->setColumnAlignment(4,AlignHCenter);
   mListView->addColumn(i18n("Alarm")); // alarm set?
   mListView->addColumn(i18n("Recurs")); // recurs?
+  mListView->addColumn(i18n("Start Date"));
+  mListView->setColumnAlignment(3,AlignHCenter);
+  mListView->addColumn(i18n("Start Time"));
+  mListView->setColumnAlignment(4,AlignHCenter);
+  mListView->addColumn(i18n("End Date"));
+  mListView->setColumnAlignment(5,AlignHCenter);
+  mListView->addColumn(i18n("End Time"));
+  mListView->setColumnAlignment(6,AlignHCenter);
   mListView->addColumn(i18n("Due Date"));
   mListView->setColumnAlignment(7,AlignHCenter);
   mListView->addColumn(i18n("Due Time"));
@@ -406,6 +422,9 @@ void KOListView::popupMenu(QListViewItem *item,const QPoint &,int)
     }
     */
   }
+  else {
+    showNewEventPopup();
+  }
 }
 
 void KOListView::readSettings(KConfig *config)
@@ -441,4 +460,16 @@ void KOListView::clear()
 {
   mListView->clear();
   mUidDict.clear();
+}
+
+void KOListView::showNewEventPopup()
+{
+  QPopupMenu *popup = newEventPopup();
+  if ( !popup ) {
+    kdError() << "KOAgendaView::showNewEventPopup(): popup creation failed"
+              << endl;
+    return;
+  }
+
+  popup->popup( QCursor::pos() );
 }

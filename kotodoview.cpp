@@ -357,14 +357,15 @@ KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent, const char* name)
   mTodoListView->setShowSortIndicator( true );
 
   mTodoListView->addColumn( i18n("Summary") );
+  mTodoListView->addColumn( i18n("Recurs") );
   mTodoListView->addColumn( i18n("Priority") );
-  mTodoListView->setColumnAlignment( 1, AlignHCenter );
+  mTodoListView->setColumnAlignment( 2, AlignHCenter );
   mTodoListView->addColumn( i18n("Complete") );
-  mTodoListView->setColumnAlignment( 2, AlignRight );
+  mTodoListView->setColumnAlignment( 3, AlignRight );
   mTodoListView->addColumn( i18n("Due Date") );
-  mTodoListView->setColumnAlignment( 3, AlignHCenter );
-  mTodoListView->addColumn( i18n("Due Time") );
   mTodoListView->setColumnAlignment( 4, AlignHCenter );
+  mTodoListView->addColumn( i18n("Due Time") );
+  mTodoListView->setColumnAlignment( 5, AlignHCenter );
   mTodoListView->addColumn( i18n("Categories") );
 #if 0
   mTodoListView->addColumn( i18n("Sort Id") );
@@ -607,7 +608,7 @@ void KOTodoView::changeIncidenceDisplay(Incidence *, int)
 {
   // use a QTimer here, because when marking todos finished using
   // the checkbox, this slot gets called, but we cannot update the views
-  // because we're still insice KOTodoViewItem::stateChange
+  // because we're still inside KOTodoViewItem::stateChange
   QTimer::singleShot(0,this,SLOT(updateView()));
 }
 

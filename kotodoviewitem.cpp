@@ -77,45 +77,45 @@ void KOTodoViewItem::construct()
 
   setOn(mTodo->isCompleted());
   setText(0,mTodo->summary());
-  setText(1,QString::number(mTodo->priority()));
-  setText(2,QString::number(mTodo->percentComplete()));
+  setText(2,QString::number(mTodo->priority()));
+  setText(3,QString::number(mTodo->percentComplete()));
   if (mTodo->percentComplete()<100) {
     if (mTodo->isCompleted()) setSortKey(2,QString::number(999));
-    else setSortKey(2,QString::number(mTodo->percentComplete()));
+    else setSortKey(3,QString::number(mTodo->percentComplete()));
   }
   else {
-    if (mTodo->isCompleted()) setSortKey(2,QString::number(999));
-    else setSortKey(2,QString::number(99));
+    if (mTodo->isCompleted()) setSortKey(3,QString::number(999));
+    else setSortKey(3,QString::number(99));
   }
   if (mTodo->hasDueDate()) {
-    setText(3, mTodo->dtDueDateStr());
+    setText(4, mTodo->dtDueDateStr());
     QDate d = mTodo->dtDue().date();
     keyd.sprintf("%04d%02d%02d",d.year(),d.month(),d.day());
-    setSortKey(3,keyd);
+    setSortKey(4,keyd);
     if (mTodo->doesFloat()) {
-      setText(4,"");
+      setText(5,"");
     }
     else {
-      setText(4,mTodo->dtDueTimeStr());
+      setText(5,mTodo->dtDueTimeStr());
       QTime t = mTodo->dtDue().time();
       keyt.sprintf("%02d%02d",t.hour(),t.minute());
-      setSortKey(4,keyt);
+      setSortKey(5,keyt);
     }
   } else {
-    setText(3,"");
     setText(4,"");
+    setText(5,"");
   }
   static const QPixmap recurPxmp = KOGlobals::self()->smallIcon("recur");
   if (mTodo->doesRecur())
-    setPixmap(0,recurPxmp);
-  setSortKey(3,keyd);
-  setSortKey(4,keyt);
+    setPixmap(1,recurPxmp);
+  setSortKey(4,keyd);
+  setSortKey(5,keyt);
 
   QString priorityKey = QString::number( mTodo->priority() ) + keyd + keyt;
-  if ( mTodo->isCompleted() ) setSortKey( 1, "1" + priorityKey );
-  else setSortKey( 1, "0" + priorityKey );
+  if ( mTodo->isCompleted() ) setSortKey( 2, "1" + priorityKey );
+  else setSortKey( 2, "0" + priorityKey );
 
-  setText(5,mTodo->categoriesStr());
+  setText(6,mTodo->categoriesStr());
 
 #if 0
   // Find sort id in description. It's the text behind the last '#' character
@@ -154,33 +154,33 @@ void KOTodoViewItem::stateChange(bool state)
   }
 
   if (mTodo->hasDueDate()) {
-    setText(3, mTodo->dtDueDateStr());
+    setText(4, mTodo->dtDueDateStr());
     QDate d = mTodo->dtDue().date();
     keyd.sprintf("%04d%02d%02d",d.year(),d.month(),d.day());
-    setSortKey(3,keyd);
+    setSortKey(4,keyd);
     if (mTodo->doesFloat()) {
-      setText(4,"");
+      setText(5,"");
     }
     else {
-      setText(4,mTodo->dtDueTimeStr());
+      setText(5,mTodo->dtDueTimeStr());
       QTime t = mTodo->dtDue().time();
       keyt.sprintf("%02d%02d",t.hour(),t.minute());
-      setSortKey(4,keyt);
+      setSortKey(5,keyt);
     }
   }
 
   QString priorityKey = QString::number( mTodo->priority() ) + keyd + keyt;
-  if ( mTodo->isCompleted() ) setSortKey( 1, "1" + priorityKey );
-  else setSortKey( 1, "0" + priorityKey );
+  if ( mTodo->isCompleted() ) setSortKey( 2, "1" + priorityKey );
+  else setSortKey( 2, "0" + priorityKey );
 
-  setText(2, QString::number(mTodo->percentComplete()));
+  setText(3, QString::number(mTodo->percentComplete()));
   if (mTodo->percentComplete()<100) {
-    if (mTodo->isCompleted()) setSortKey(2,QString::number(999));
-    else setSortKey(2,QString::number(mTodo->percentComplete()));
+    if (mTodo->isCompleted()) setSortKey(3,QString::number(999));
+    else setSortKey(3,QString::number(mTodo->percentComplete()));
   }
   else {
-    if (mTodo->isCompleted()) setSortKey(2,QString::number(999));
-    else setSortKey(2,QString::number(99));
+    if (mTodo->isCompleted()) setSortKey(3,QString::number(999));
+    else setSortKey(3,QString::number(99));
   }
   QListViewItem *myChild = firstChild();
   KOTodoViewItem *item;
@@ -258,7 +258,7 @@ void KOTodoViewItem::paintCell(QPainter *p, const QColorGroup &cg, int column, i
 #endif
 
   // show the progess by a horizontal bar
-  if ( column == 2 ) {
+  if ( column == 3 ) {
     p->save();
     int progress = (int)(( (width-6)*mTodo->percentComplete())/100.0 + 0.5);
 
