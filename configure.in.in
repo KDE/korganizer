@@ -49,3 +49,10 @@ AC_CHECK_USLEEP
 dnl AC_OUTPUT(korganizer/ical2vcal)
 
 dnl AC_OUTPUT(korganizer/korganizerIn)
+
+dnl build with exchange support
+ac_use_exchange="no"
+AC_ARG_ENABLE(exchange,
+	[  --enable-exchange       enable exchange plugin for korganizer [default=disable]], ac_use_exchange=$enableval, ac_use_exchange=no)
+AM_CONDITIONAL(include_exchange_SUBDIR, test "$ac_use_exchange" = "yes")
+
