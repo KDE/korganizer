@@ -41,6 +41,7 @@
 #include "koagendaitem.h"
 #include "koprefs.h"
 #include "koglobals.h"
+#include "komessagebox.h"
 
 #include "koagenda.h"
 #include "koagenda.moc"
@@ -936,18 +937,18 @@ void KOAgenda::endItemAction()
   if ( mItemMoved ) {
     bool modify = true;
     if ( mActionItem->incidence()->doesRecur() ) {
-      int res = KMessageBox::questionYesNoCancel( this, 
+      int res = KOMessageBox::fourBtnMsgBox( this, QMessageBox::Question,
           i18n("The item you try to change is a recurring item. Shall the changes "
-               "be applied to all items in the recurrence, "/*"only the future items, "*/
-               "or just to this single occurrence?"), 
+               "be applied only to this single occurrence, only to the future items, "
+               "or to all items in the recurrence?"), 
           i18n("Changing a recurring item"), 
-          i18n("&All occurrences"), i18n("Only &this item") );
+          i18n("Only &this item"), i18n("Only &future items"), i18n("&All occurrences") );
       switch ( res ) {
-        case KMessageBox::Yes: // All occurences
+        case KMessageBox::Ok: // All occurences
             // Moving the whole sequene of events is handled by the itemModified below.
             modify = true;
             break;
-        case KMessageBox::No: { // Just this occurence
+        case KMessageBox::Yes: { // Just this occurence
             // Dissociate this occurence: 
             // create clone of event, set relation to old event, set cloned event 
             // for mActionItem, add exception date to old event, emit incidenceChanged 
@@ -957,23 +958,26 @@ void KOAgenda::endItemAction()
             modify = true;
             multiModify = true;
             emit startMultiModify( i18n("Dissociate event from recurrence") );
-            Incidence* oldInc = mActionItem->incidence()->clone();
+            Incidence* oldInc = mActionItem->incidence();
+            Incidence* oldIncSaved = mActionItem->incidence()->clone();
             Incidence* newInc = mCalendar->dissociateOccurrence( 
-                mActionItem->incidence(), mActionItem->itemDate() );
+                oldInc, mActionItem->itemDate() );
             if ( newInc ) {
               // don't recreate items, they already have the correct position
               emit enableAgendaUpdate( false );
-              emit incidenceChanged( oldInc, mActionItem->incidence() );
+              emit incidenceChanged( oldIncSaved, oldInc );
               mActionItem->setIncidence( newInc );
+              mActionItem->dissociateFromMultiItem();
               emit incidenceAdded( newInc );
               emit enableAgendaUpdate( true );
             } else {
               KMessageBox::sorry( this, i18n("Unable to add the exception item to the "
                   "calendar. No change will be done."), i18n("Error Occurred") );
             }
-            delete oldInc;
+            delete oldIncSaved;
             break; }
-        case KMessageBox::Continue/*Future*/: { // All future occurences
+        case KMessageBox::No/*Future*/: { // All future occurences
+kdDebug()<<"Only future events"<<endl;
             // Dissociate this occurence: 
             // create clone of event, set relation to old event, set cloned event 
             // for mActionItem, add recurrence end date to old event, emit incidenceChanged 
@@ -983,20 +987,22 @@ void KOAgenda::endItemAction()
             modify = true;
             multiModify = true;
             emit startMultiModify( i18n("Split future recurrences") );
-            Incidence* oldInc = mActionItem->incidence()->clone();
+            Incidence* oldInc = mActionItem->incidence();
+            Incidence* oldIncSaved = mActionItem->incidence()->clone();
             Incidence* newInc = mCalendar->dissociateOccurrence( 
-                mActionItem->incidence(), mActionItem->itemDate(), true );
+                oldInc, mActionItem->itemDate(), false );
             if ( newInc ) {
-              emit incidenceChanged( oldInc, mActionItem->incidence() );
               emit enableAgendaUpdate( false );
+              mActionItem->dissociateFromMultiItem();
               mActionItem->setIncidence( newInc );
               emit incidenceAdded( newInc );
               emit enableAgendaUpdate( true );
+              emit incidenceChanged( oldIncSaved, oldInc );
             } else {
               KMessageBox::sorry( this, i18n("Unable to add the future items to the "
                   "calendar. No change will be done."), i18n("Error Occurred") );
             }
-            delete oldInc;
+            delete oldIncSaved;
             break; }
         default:
           modify = false;

@@ -48,6 +48,11 @@ KOEventPopupMenu::KOEventPopupMenu()
   mEditOnlyItems.append( insertItem( QIconSet( KOGlobals::self()->smallIcon("bell") ),
                                      i18n("Toggle Alarm"), this,
                                      SLOT( popupAlarm() ) ) );
+  mRecurrenceItems.append( insertSeparator() );
+  mRecurrenceItems.append( insertItem( i18n("&Dissociate this occurrence"), 
+                                       this, SLOT( dissociateOccurrence() ) ) );
+  mRecurrenceItems.append( insertItem( i18n("&Dissociate future occurrences"), 
+                                       this, SLOT( dissociateFutureOccurrence() ) ) );
 }
 
 void KOEventPopupMenu::showIncidencePopup( Incidence *incidence, const QDate &qd )
@@ -60,6 +65,9 @@ void KOEventPopupMenu::showIncidencePopup( Incidence *incidence, const QDate &qd
     QValueList<int>::Iterator it;
     for( it = mEditOnlyItems.begin(); it != mEditOnlyItems.end(); ++it ) {
       setItemEnabled(*it,!mCurrentIncidence->isReadOnly());
+    }
+    for ( it = mRecurrenceItems.begin(); it != mRecurrenceItems.end(); ++it ) {
+      setItemVisible( *it, mCurrentIncidence->doesRecur() );
     }
     popup(QCursor::pos());
   } else {
@@ -97,4 +105,16 @@ void KOEventPopupMenu::popupDelete()
 void KOEventPopupMenu::popupAlarm()
 {
   if (mCurrentIncidence) emit toggleAlarmSignal( mCurrentIncidence );
+}
+
+void KOEventPopupMenu::dissociateOccurrence() 
+{
+  if ( mCurrentIncidence ) 
+    emit dissociateOccurrenceSignal( mCurrentIncidence, mCurrentDate );
+}
+
+void KOEventPopupMenu::dissociateFutureOccurrence() 
+{
+  if ( mCurrentIncidence ) 
+    emit dissociateFutureOccurrenceSignal( mCurrentIncidence, mCurrentDate );
 }

@@ -117,6 +117,31 @@ void KOAgendaItem::select( bool selected )
   update();
 }
 
+bool KOAgendaItem::dissociateFromMultiItem()
+{
+  if ( !isMultiItem() ) return false;
+  KOAgendaItem *firstItem = firstMultiItem();
+  if ( firstItem == this ) firstItem = nextMultiItem();
+  KOAgendaItem *lastItem = lastMultiItem();
+  if ( lastItem == this ) lastItem = prevMultiItem();
+
+  KOAgendaItem *prevItem = prevMultiItem();
+  KOAgendaItem *nextItem = nextMultiItem();
+  
+  if ( prevItem ) {
+    prevItem->setMultiItem( firstItem, 
+                            prevItem->prevMultiItem(), 
+                            nextItem, lastItem );
+  }
+  if ( nextItem ) {
+    nextItem->setMultiItem( firstItem, prevItem,
+                            nextItem->prevMultiItem(), 
+                            lastItem );
+  }
+  delete mMultiItemInfo;
+  return true;
+}
+
 bool KOAgendaItem::setIncidence( Incidence *i )
 {
   mIncidence = i;

@@ -64,6 +64,7 @@
 #include "freebusymanager.h"
 #include "komonthview.h"
 #include "datechecker.h"
+#include "komessagebox.h"
 
 #include <libkcal/vcaldrag.h>
 #include <libkcal/icaldrag.h>
@@ -1229,17 +1230,18 @@ void CalendarView::deleteEvent(Event *anEvent)
              "and all its recurrences?").arg( anEvent->summary() ),
              i18n("KOrganizer Confirmation"),i18n("Delete All"));
     } else {
-      km = KMessageBox::warningYesNoCancel(this,
-        i18n("The event \"%1\" recurs over multiple dates. "
-             "Do you want to delete all it's recurrences, "
-             "or only the current one on %2?" ).arg( anEvent->summary() )
+      km = KOMessageBox::fourBtnMsgBox(this, QMessageBox::Warning,
+        i18n("This event recurs over multiple dates. "
+             "Do you want to delete only the current one on %1, only all "
+             "future recurrences, or all it's recurrences?" )
              .arg( KGlobal::locale()->formatDate(itemDate)),
-             i18n("KOrganizer Confirmation"),i18n("Delete Current"),
-             i18n("Delete All"));
+             i18n("KOrganizer Confirmation"), i18n("Delete C&urrent"),
+             i18n("Delete &Future"),
+             i18n("Delete &All"));
     }
     bool doDelete = true;
     switch(km) {
-      case KMessageBox::No: // Continue // all
+      case KMessageBox::Ok: // Continue // all
       case KMessageBox::Continue:
         if (KOPrefs::instance()->thatIsMe( anEvent->organizer() ) && anEvent->attendeeCount()>0
             && !KOPrefs::instance()->mUseGroupwareCommunication) {
@@ -1263,7 +1265,7 @@ void CalendarView::deleteEvent(Event *anEvent)
         break;
       // TODO_RK: Find a proper dialogbox with four buttons, then change the 9999
       // to the actual code of the "delete only future items" button
-      case 9999: // all future items
+      case KMessageBox::No: // all future items
         Recurrence *recur = anEvent->recurrence();
         if ( recur ) {
           Event*oldEvent = anEvent->clone();
@@ -1347,6 +1349,38 @@ void CalendarView::toggleAlarm( Incidence *incidence )
 
 //  mClickedItem->updateIcons();
 }
+
+void CalendarView::dissociateOccurrence( Incidence *incidence, const QDate &date )
+{
+  Incidence* oldInc = incidence->clone();
+  Incidence* newInc = mCalendar->dissociateOccurrence( 
+    incidence, date, true );
+  if ( newInc ) {
+    startMultiModify( i18n("Dissociate ocurrence") );
+    incidenceChanged( oldInc, incidence );
+    incidenceAdded( newInc );
+    endMultiModify();
+  } else {
+    KMessageBox::sorry( this, i18n("Dissociating the occurence failed!"), 
+      i18n("Dissociating failed") );
+  }
+}
+void CalendarView::dissociateFutureOccurrence( Incidence *incidence, const QDate &date )
+{
+  Incidence* oldInc = incidence->clone();
+  Incidence* newInc = mCalendar->dissociateOccurrence( 
+    incidence, date, false );
+  if ( newInc ) {
+    startMultiModify( i18n("Dissociate future ocurrences") );
+    incidenceChanged( oldInc, incidence );
+    incidenceAdded( newInc );
+    endMultiModify();
+  } else {
+    KMessageBox::sorry( this, i18n("Dissociating the future occurences failed!"), 
+      i18n("Dissociating failed") );
+  }
+}
+
 
 /*****************************************************************************/
 

@@ -68,7 +68,7 @@ libkorganizer_la_COMPILE_FIRST = kofilterview_base.ui \
 	incomingdialog_base.ui \
 	kogroupwareprefspage.ui \
 	../libkdepim/categoryselectdialog.h
-libkorganizer_la_SOURCES =  outgoingdialog_base.ui \
+libkorganizer_la_SOURCES = komessagebox.cpp outgoingdialog_base.ui \
 	koagendaview.cpp koagenda.cpp koagendaitem.cpp \
 	datenavigator.cpp kdatenavigator.cpp datenavigatorcontainer.cpp \
 	datechecker.cpp \

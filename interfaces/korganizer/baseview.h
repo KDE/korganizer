@@ -219,6 +219,12 @@ class BaseView : public QWidget
      * instructs the receiver to toggle the alarms of the Incidence.
      */
     void toggleAlarmSignal(Incidence *);
+    /** Dissociate from a recurring incidence the occurence on the given 
+        date to a new incidence */
+    void dissociateOccurrenceSignal( Incidence *, const QDate & );
+    /** Dissociate from a recurring incidence all occurences after the given 
+        date to a new incidence */
+    void dissociateFutureOccurrenceSignal( Incidence *, const QDate & );
 
     void incidenceAdded( Incidence* );
     void incidenceChanged( Incidence*, Incidence*, int );

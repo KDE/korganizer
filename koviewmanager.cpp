@@ -180,6 +180,10 @@ void KOViewManager::connectView(KOrg::BaseView *view)
           mMainView, SLOT(deleteIncidence(Incidence *)));
   connect(view, SIGNAL(toggleAlarmSignal(Incidence *)),
           mMainView, SLOT(toggleAlarm(Incidence *)));
+  connect(view,SIGNAL(dissociateOccurrenceSignal( Incidence *, const QDate & )),
+          mMainView, SLOT(dissociateOccurrence( Incidence *, const QDate & )));
+  connect(view,SIGNAL(dissociateFutureOccurrenceSignal( Incidence *, const QDate & )),
+          mMainView, SLOT(dissociateFutureOccurrence( Incidence *, const QDate & )));
 
   // signals to create new incidences
   connect( view, SIGNAL( newEventSignal() ),

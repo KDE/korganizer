@@ -286,6 +286,8 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
                   const QString &attachment, const QStringList &attendees );
 
     void toggleAlarm( Incidence * );
+    void dissociateOccurrence( Incidence *, const QDate & );
+    void dissociateFutureOccurrence( Incidence *, const QDate & );
 
     /**
       Check if clipboard contains vCalendar event. The signal pasteEnabled() is
