@@ -44,7 +44,7 @@ class PluginDialog : public KDialogBase
     
     void configure();
 
-    void checkSelection();
+    void selectionChanged( QListViewItem* );
 
   private:
     QListView *mListView;

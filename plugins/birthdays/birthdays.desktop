@@ -43,4 +43,5 @@ Name[zh_TW]=KOrganizer 自 KaddressBook 匯入生日的外掛程式
 Name[zu]=Izinsuku zokuzalwa zihwebela ngaphakathi i-plugin kusuka kwi-KAddressBook yenzela i-KOrganizer
 Type=Service
 ServiceTypes=KOrganizer/Part
+X-KDE-KOrganizer-HasSettings=false
 X-KDE-PluginInterfaceVersion=1

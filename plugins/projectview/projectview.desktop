@@ -49,4 +49,5 @@ Name[zh_TW]=KOrganizer 專案檢視外掛程式
 Name[zu]=Project Khombisa Iplagi ye KUmgqugquzeli
 Type=Service
 ServiceTypes=KOrganizer/Part
+X-KDE-KOrganizer-HasSettings=false
 X-KDE-PluginInterfaceVersion=1

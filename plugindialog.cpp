@@ -81,11 +81,14 @@ PluginDialog::PluginDialog( QWidget *parent )
     }
   }
 
-  checkSelection();
-  
+  connect( mListView, SIGNAL( selectionChanged( QListViewItem* ) ),
+           this, SLOT( selectionChanged( QListViewItem* ) ) );
+
   connect( this, SIGNAL( user1Clicked() ),SLOT( configure() ) );
 
   mMainView = dynamic_cast<CalendarView *>( parent );
+
+  selectionChanged( 0 );
 }
 
 PluginDialog::~PluginDialog()
@@ -126,13 +129,21 @@ void PluginDialog::configure()
   }
 }
 
-void PluginDialog::checkSelection()
+void PluginDialog::selectionChanged( QListViewItem *i )
 {
-  if ( mListView->selectedItem() ) {
-    enableButton( User1, true );
-  } else {
+  PluginItem *item = dynamic_cast<PluginItem*>( i );
+  if ( !item ) {
     enableButton( User1, false );
+    return;
   }
+
+  QVariant variant = item->service()->property( "X-KDE-KOrganizer-HasSettings" );
+
+  bool hasSettings = true;
+  if ( variant.isValid() )
+    hasSettings = variant.toBool();
+
+  enableButton( User1, hasSettings );
 }
 
 #include "plugindialog.moc"

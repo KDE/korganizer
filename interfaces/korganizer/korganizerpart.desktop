@@ -43,5 +43,8 @@ Comment[zh_CN]=KOrganizer 部件
 Comment[zh_TW]=KOrganizer 組件
 Comment[zu]=KUmgqugquzeleli Wengxenye
 
+[PropertyDef::X-KDE-KOrganizer-HasSettings]
+Type=bool
+
 [PropertyDef::X-KDE-PluginInterfaceVersion]
 Type=int

@@ -50,4 +50,5 @@ Name[zh_TW]=KOrganizer Web 匯出外掛程式
 Name[zu]=Web ihweba ngaphandle iplagi ye KUmgqugquzeli
 Type=Service
 ServiceTypes=KOrganizer/Part
+X-KDE-KOrganizer-HasSettings=false
 X-KDE-PluginInterfaceVersion=1
