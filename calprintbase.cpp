@@ -413,7 +413,7 @@ void CalPrintBase::drawAllDayBox(QPainter &p, Event::List &eventList,
     eventList.prepend(holiday);
   }
 #endif
-  Event *currEvent =0L;
+  Event *currEvent = 0;
   // First, print all floating events
   while( it!=eventList.end() ) {
     currEvent=*it;

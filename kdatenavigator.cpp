@@ -48,8 +48,8 @@
 KDateNavigator::KDateNavigator( QWidget *parent, Calendar *calendar,
                                 bool show_week_nums, const char *name,
                                 QDate startDate )
-  : QFrame(parent, name),
-    updateTimer(0L)
+  : QFrame( parent, name ),
+    updateTimer( 0 )
 {
   mCalendar = calendar;
 
@@ -137,7 +137,7 @@ void KDateNavigator::enableRollover(RolloverType r)
     {
       updateTimer->stop();
       delete updateTimer;
-      updateTimer=0L;
+      updateTimer = 0;
     }
     break;
   case FollowDay :

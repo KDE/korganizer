@@ -1,5 +1,6 @@
 /*
     This file is part of KOrganizer.
+
     Copyright (c) 2000,2001 Cornelius Schumacher <schumacher@kde.org>
 
     This program is free software; you can redistribute it and/or modify
@@ -69,17 +70,17 @@ class KOPrefs : public KOPrefsBase
 
   public:
     // preferences data
-    void setFullName(const QString &);
+    void setFullName( const QString & );
     QString fullName();
-    void setEmail(const QString &);
+    void setEmail( const QString & );
     QString email();
 
     QFont   mMonthViewFont;
 
     QColor  mEventColor;
 
-    void setCategoryColor(QString cat,const QColor & color);
-    QColor *categoryColor(QString cat);
+    void setCategoryColor( QString cat, const QColor &color );
+    QColor *categoryColor( QString cat );
 
     QString mHtmlExportFile;
 

@@ -432,8 +432,8 @@ void KODayMatrix::dropEvent(QDropEvent *e)
     return;
   }
 
-  Todo *existingTodo = 0L, *oldTodo=0;
-  Event *existingEvent = 0L, *oldEvent=0;
+  Todo *existingTodo = 0, *oldTodo = 0;
+  Event *existingEvent = 0, *oldEvent = 0;
 
   // Find the incidence in the calendar, then we don't need the drag object any more
   if (event) existingEvent = mCalendar->event(event->uid());

@@ -1,5 +1,6 @@
 /*
     This file is part of KOrganizer.
+
     Copyright (c) 1997, 1998, 1999
     Preston Brown (preston.brown@yale.edu)
     Fester Zigterman (F.J.F.ZigtermanRustenburg@student.utwente.nl)
@@ -73,7 +74,8 @@ using namespace KCal;
   @author Preston Brown
 */
 
-class KOrganizer : public KParts::MainWindow, virtual public KOrganizerIface, public KOrg::MainWindow
+class KOrganizer : public KParts::MainWindow, virtual public KOrganizerIface,
+                   public KOrg::MainWindow
 {
     Q_OBJECT
   public:
@@ -94,7 +96,7 @@ class KOrganizer : public KParts::MainWindow, virtual public KOrganizerIface, pu
       Open calendar file from URL. Merge into current calendar, if \a merge is
       true.
     */
-    bool openURL(const KURL &url,bool merge=false);
+    bool openURL( const KURL &url, bool merge = false );
     /** Save calendar file to URL of current calendar */
     bool saveURL();
     /** Save calendar file to URL */
@@ -103,19 +105,19 @@ class KOrganizer : public KParts::MainWindow, virtual public KOrganizerIface, pu
     KURL getCurrentURL() const;
 
     /** Open calendar file from URL */
-    bool openURL(QString url);
+    bool openURL( QString url );
     /** Open calendar file from URL */
-    bool mergeURL(QString url);
+    bool mergeURL( QString url );
     /** Save calendar file to URL */
-    bool saveAsURL(QString url);
+    bool saveAsURL( QString url );
     /** Close calendar file opened from URL */
     void closeURL();
     /** Get current URL as QString */
     QString getCurrentURLasString() const;
     /** Delete event with the given unique id from current calendar. */
-    virtual bool deleteEvent(QString uid);
+    virtual bool deleteEvent( QString uid );
 
-    bool eventRequest(QString request, QCString receiver, QString ical);
+    bool eventRequest( QString request, QCString receiver, QString ical );
 
     virtual KXMLGUIFactory *mainGuiFactory() { return factory(); }
     virtual QWidget *topLevelWidget() { return this; }
@@ -123,7 +125,7 @@ class KOrganizer : public KParts::MainWindow, virtual public KOrganizerIface, pu
 
   public slots:
     /** show status message */
-    void showStatusMessage(const QString &);
+    void showStatusMessage( const QString & );
 
     void slotConfigChanged();
 
@@ -142,13 +144,13 @@ class KOrganizer : public KParts::MainWindow, virtual public KOrganizerIface, pu
 
     void toggleStatusBar();
 
-    void statusBarPressed(int);
+    void statusBarPressed( int );
 
     /** Sets title of window according to filename and modification state */
     void setTitle();
 
-    void setNumIncoming(int);
-    void setNumOutgoing(int);
+    void setNumIncoming( int );
+    void setNumOutgoing( int );
 
     void newMainWindow( const KURL & );
 
@@ -163,8 +165,8 @@ class KOrganizer : public KParts::MainWindow, virtual public KOrganizerIface, pu
     bool queryExit();
 
     /* Session management */
-    void saveProperties(KConfig *);
-    void readProperties(KConfig *);
+    void saveProperties( KConfig * );
+    void readProperties( KConfig * );
 
   private:
     Calendar *mCalendar;

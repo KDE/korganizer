@@ -265,8 +265,8 @@ KOAgendaItem* KOAgendaItem::removeMoveItem(KOAgendaItem* e)
     KOAgendaItem *tmp =  first;
     if ( first==last ) {
       delete mMultiItemInfo;
-      tmp=0L;
-      mMultiItemInfo=0L;
+      tmp = 0;
+      mMultiItemInfo = 0;
     }
     while ( tmp ) {
       next = tmp->nextMultiItem();
@@ -384,7 +384,7 @@ void KOAgendaItem::endMovePrivate()
     // if first, delete all previous
     if ( !firstMultiItem() || firstMultiItem()==this ) {
       KOAgendaItem*toDel=mStartMoveInfo->mPrevMultiItem;
-      KOAgendaItem*nowDel=0L;
+      KOAgendaItem*nowDel = 0;
       while (toDel) {
         nowDel=toDel;
         if (nowDel->moveInfo()) {
@@ -396,7 +396,7 @@ void KOAgendaItem::endMovePrivate()
     // if last, delete all next
     if ( !lastMultiItem() || lastMultiItem()==this ) {
       KOAgendaItem*toDel=mStartMoveInfo->mNextMultiItem;
-      KOAgendaItem*nowDel=0L;
+      KOAgendaItem*nowDel = 0;
       while (toDel) {
         nowDel=toDel;
         if (nowDel->moveInfo()) {

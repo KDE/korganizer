@@ -1,5 +1,6 @@
 /*
     This file is part of the KOrganizer interfaces.
+
     Copyright (c) 2001 Cornelius Schumacher <schumacher@kde.org>
 
     This library is free software; you can redistribute it and/or
@@ -19,7 +20,6 @@
 */
 #ifndef KORG_CALENDARVIEWBASE_H
 #define KORG_CALENDARVIEWBASE_H
-// $Id$
 
 #include <qwidget.h>
 
@@ -36,9 +36,9 @@ namespace KOrg {
 class CalendarViewBase : public QWidget
 {
   public:
-    CalendarViewBase(QWidget *parent, const char *name) :
-      QWidget(parent,name) {};
-    virtual ~CalendarViewBase() {};
+    CalendarViewBase( QWidget *parent, const char *name )
+      : QWidget( parent, name ) {}
+    virtual ~CalendarViewBase() {}
   
     virtual KCal::Calendar *calendar() = 0;
 
@@ -47,10 +47,10 @@ class CalendarViewBase : public QWidget
 
     virtual Incidence *currentSelection() = 0;
 
-    virtual void addView(KOrg::BaseView *) = 0;
+    virtual void addView( KOrg::BaseView * ) = 0;
 
     /** changes the view to be the currently selected view */
-    virtual void showView(KOrg::BaseView *) = 0;
+    virtual void showView( KOrg::BaseView * ) = 0;
 
   public slots:
     virtual void updateView() = 0;

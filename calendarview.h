@@ -1,7 +1,7 @@
 /*
     This file is part of KOrganizer.
 
-    Copyright (c) 2000, 2001 Cornelius Schumacher <schumacher@kde.org>
+    Copyright (c) 2000,2001,2003 Cornelius Schumacher <schumacher@kde.org>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -109,8 +109,8 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
 
     DateNavigator *dateNavigator();
 
-    void addView(KOrg::BaseView *);
-    void showView(KOrg::BaseView *);
+    void addView( KOrg::BaseView * );
+    void showView( KOrg::BaseView * );
 
     /**
       Add calendar view extension widget. CalendarView takes ownership of the
@@ -134,22 +134,22 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
         child windows can also close. */
     void closingDown();
     /** emitted right before we die */
-    void closed(QWidget *);
+    void closed( QWidget * );
 
     /** Emitted when state of modified flag changes */
-    void modifiedChanged(bool);
+    void modifiedChanged( bool );
 
     /** Emitted when state of read-only flag changes */
-    void readOnlyChanged(bool);
+    void readOnlyChanged( bool );
 
     /** Emitted when the unit of navigation changes */
-    void changeNavStringPrev(const QString &);
-    void changeNavStringNext(const QString &);
+    void changeNavStringPrev( const QString & );
+    void changeNavStringNext( const QString & );
 
     /** Emitted when state of events selection has changed and user is organizer*/
-    void organizerEventsSelected(bool);
+    void organizerEventsSelected( bool );
     /** Emitted when state of events selection has changed and user is attendee*/
-    void groupEventsSelected(bool);
+    void groupEventsSelected( bool );
     /**
       Emitted when an incidence gets selected. If the selection is cleared the
       signal is emitted with 0 as argument.
@@ -162,16 +162,16 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
       Emitted, when clipboard content changes. Parameter indicates if paste
       is possible or not.
     */
-    void pasteEnabled(bool);
+    void pasteEnabled( bool );
 
     /** Emitted, when the number of incoming messages has changed. */
-    void numIncomingChanged(int);
+    void numIncomingChanged( int );
 
     /** Emitted, when the number of outgoing messages has changed. */
-    void numOutgoingChanged(int);
+    void numOutgoingChanged( int );
 
     /** Send status message, which can e.g. be displayed in the status bar. */
-    void statusMessage(const QString &);
+    void statusMessage( const QString & );
 
     void calendarViewExpanded( bool );
 
@@ -185,13 +185,13 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
       calendar into existing one, if it is false, clear calendar, before
       loading. Return true, if calendar could be successfully loaded.
     */
-    bool openCalendar(const QString& filename, bool merge=false);
+    bool openCalendar( const QString &filename, bool merge = false );
 
     /**
       Save calendar data to file. Return true if calendar could be
       successfully saved.
     */
-    bool saveCalendar(const QString& filename);
+    bool saveCalendar( const QString &filename );
 
     /**
       Close calendar. Clear calendar data and reset views to display an empty
@@ -208,9 +208,9 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
 
     /** create an editeventwin with supplied date/time, and if bool is true,
      * make the event take all day. */
-    void newEvent(QDateTime, QDateTime, bool allDay = false);
-    void newEvent(QDateTime fh);
-    void newEvent(QDate dt);
+    void newEvent( QDateTime, QDateTime, bool allDay = false );
+    void newEvent( QDateTime fh );
+    void newEvent( QDate dt );
     /** create new event without having a date hint. Takes current date as
      default hint. */
     void newEvent();
@@ -221,59 +221,64 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     void newFloatingEvent();
 
     /** Create a read-only viewer dialog for the supplied incidence. It calls the correct showXXX method*/
-    void showIncidence(Incidence *);
+    void showIncidence( Incidence * );
     /** Create an editor for the supplied incidence. It calls the correct editXXX method*/
-    void editIncidence(Incidence *);
+    void editIncidence( Incidence * );
     /** Delete the supplied incidence. It calls the correct deleteXXX method*/
-    void deleteIncidence(Incidence *);
+    void deleteIncidence( Incidence * );
 
     /** Create an editor for the supplied event. */
-    void editEvent(Event *);
+    void editEvent( Event * );
     /** Delete the supplied event. */
-    void deleteEvent(Event *);
-    /** Delete the event with the given unique ID. Returns false, if event wasn't
-    found. */
-    bool deleteEvent(const QString &uid);
+    void deleteEvent( Event * );
+    /**
+      Delete the event with the given unique ID. Returns false, if event wasn't
+      found.
+    */
+    bool deleteEvent( const QString &uid );
     /** Create a read-only viewer dialog for the supplied event. */
-    void showEvent(Event *);
+    void showEvent( Event * );
 
     /** Create an editor dialog for a todo */
-    void editTodo(Todo *);
+    void editTodo( Todo * );
     /** Create a read-only viewer dialog for the supplied todo */
-    void showTodo(Todo *);
+    void showTodo( Todo * );
     /** create new todo */
     void newTodo();
     /** create new todo with a parent todo */
     void newSubTodo();
     /** create new todo with a parent todo */
-    void newSubTodo(Todo *);
+    void newSubTodo( Todo * );
     /** Delete todo */
-    void deleteTodo(Todo *);
+    void deleteTodo( Todo * );
 
     /** This todo has been modified */
-    void todoModified(Todo *, Todo *, int);
+    void todoModified( Todo *, Todo *, int );
 
-    /** Check if clipboard contains vCalendar event. The signal pasteEnabled() is
-     * emitted as result. */
+    /**
+      Check if clipboard contains vCalendar event. The signal pasteEnabled() is
+      emitted as result.
+    */
     void checkClipboard();
 
-    /** using the KConfig associated with the kapp variable, read in the
-     * settings from the config file.
-     */
+    /**
+      Using the KConfig associated with the kapp variable, read in the
+      settings from the config file.
+    */
     void readSettings();
 
     /** write current state to config file. */
     void writeSettings();
 
     /** read settings for calendar filters */
-    void readFilterSettings(KConfig *config);
+    void readFilterSettings( KConfig *config );
 
     /** write settings for calendar filters */
-    void writeFilterSettings(KConfig *config);
+    void writeFilterSettings( KConfig *config );
 
     /** passes on the message that an event has changed to the currently
      * activated view so that it can make appropriate display changes. */
-    void changeEventDisplay(Event *, int);
+    void changeEventDisplay( Event *, int );
 
     void incidenceAdded( Incidence * );
     void incidenceChanged( Incidence *oldEvent, Incidence *newEvent );
@@ -288,7 +293,7 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     void todoChanged( Todo *oldTodo, Todo *newTodo );
     void todoDeleted( Todo * );
 
-    void updateView(const QDate &start, const QDate &end);
+    void updateView( const QDate &start, const QDate &end );
     void updateView();
 
     /** Full update of visible todo views */
@@ -352,31 +357,31 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     /** query whether or not the calendar is "dirty". */
     bool isModified();
     /** set the state of calendar. Modified means "dirty", i.e. needing a save. */
-    void setModified(bool modified=true);
+    void setModified( bool modified = true );
 
     /** query if the calendar is read-only. */
     bool isReadOnly();
     /** set state of calendar to read-only */
-    void setReadOnly(bool readOnly=true);
+    void setReadOnly( bool readOnly = true );
 
-    void eventUpdated(Incidence *);
+    void eventUpdated( Incidence * );
 
     /* iTIP scheduling actions */
-    void schedule_publish(Incidence *incidence = 0);
-    void schedule_request(Incidence *incidence = 0);
-    void schedule_refresh(Incidence *incidence = 0);
-    void schedule_cancel(Incidence *incidence = 0);
-    void schedule_add(Incidence *incidence = 0);
-    void schedule_reply(Incidence *incidence = 0);
-    void schedule_counter(Incidence *incidence = 0);
-    void schedule_declinecounter(Incidence *incidence = 0);
-    void schedule_publish_freebusy(int daysToPublish = 30);
+    void schedule_publish( Incidence *incidence = 0 );
+    void schedule_request( Incidence *incidence = 0 );
+    void schedule_refresh( Incidence *incidence = 0 );
+    void schedule_cancel( Incidence *incidence = 0 );
+    void schedule_add( Incidence *incidence = 0 );
+    void schedule_reply( Incidence *incidence = 0 );
+    void schedule_counter( Incidence *incidence = 0 );
+    void schedule_declinecounter( Incidence *incidence = 0 );
+    void schedule_publish_freebusy( int daysToPublish = 30 );
 
     void openAddressbook();
 
     void editFilters();
 
-    void showFilter(bool visible);
+    void showFilter( bool visible );
     void updateFilter();
     void filterEdited();
 
@@ -394,7 +399,7 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     void toggleExpand();
     void showLeftFrame( bool show = true );
 
-    void dialogClosing(Incidence *);
+    void dialogClosing( Incidence * );
 
     /** Look for new messages in the inbox */
     void lookForIncomingMessages();
@@ -428,10 +433,10 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
      */
     void adaptNavigationUnits();
 
-    //Attendee* getYourAttendee(Event *event);
+    //Attendee* getYourAttendee( Event *event );
 
   protected:
-    void schedule(Scheduler::Method, Incidence *incidence = 0);
+    void schedule( Scheduler::Method, Incidence *incidence = 0 );
 
     // returns KMsgBox::OKCandel()
     int msgItemDelete();
@@ -456,13 +461,12 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
 
     NavigatorBar *mNavigatorBar;
 
-    KDateNavigator *mDateNavigator;       // widget showing small month view.
+    KDateNavigator *mDateNavigator;
 
     KOFilterView *mFilterView;
 
     QPtrList<CalendarViewExtension> mExtensions;
 
-    // calendar object for this viewing instance
     Calendar *mCalendar;
 
     FileStorage *mStorage;
