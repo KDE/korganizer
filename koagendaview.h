@@ -35,10 +35,12 @@
 
 #include "koeventview.h"
 
-class KOAgenda;
-class KOAgendaItem;
 class QHBox;
 class QFrame;
+class QPushButton;
+
+class KOAgenda;
+class KOAgendaItem;
 class KConfig;
 
 class TimeLabels : public QScrollView {

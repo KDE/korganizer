@@ -84,6 +84,8 @@
 #include "outgoingdialog.h"
 #include "incomingdialog.h"
 #include "statusdialog.h"
+#include "kdatenavigator.h"
+#include "kotodoview.h"
 
 #include "calendarview.h"
 using namespace KOrg;

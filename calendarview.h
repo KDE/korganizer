@@ -37,9 +37,6 @@
 
 #include <korganizer/calendarviewbase.h>
 
-#include "kotodoview.h"
-#include "kdatenav.h"
-
 class QWidgetStack;
 class QSplitter;
 
@@ -50,6 +47,7 @@ class KOFilterView;
 class KOViewManager;
 class KODialogManager;
 class KOTodoView;
+class KDateNavigator;
 
 using namespace KCal;
 

@@ -34,7 +34,7 @@ libkorganizer_la_LIBADD  = $(LIB_KPARTS) $(LIB_KFILE) \
                            $(top_builddir)/korganizer/knewstuff/libknewstuff.la
 libkorganizer_la_SOURCES =  outgoingdialog_base.ui \
 	koagendaview.cpp koagenda.cpp koagendaitem.cpp \
-	kdateedit.cpp kdatenav.cpp \
+	kdateedit.cpp kdatenavigator.cpp \
 	komonthview.cpp \
 	ktimeedit.cpp main.cpp  \
 	searchdialog.cpp calendarview.cpp koviewmanager.cpp \
@@ -73,7 +73,7 @@ noinst_HEADERS = komonthview.h \
 	koagendaview.h koagenda.h \
 	koagendaitem.h \
 	kdateedit.h \
-	kdatenav.h \
+	kdatenavigator.h \
 	calendarview.h ktimeedit.h \
 	version.h \
 	searchdialog.h calprinter.h \

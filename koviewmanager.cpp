@@ -30,6 +30,7 @@
 #include <kconfig.h>
 
 #include "calendarview.h"
+#include "kdatenavigator.h"
 #include "kotodoview.h"
 #include "koagendaview.h"
 #include "komonthview.h"
