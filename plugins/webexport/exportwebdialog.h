@@ -59,8 +59,6 @@ class ExportWebDialog : public KDialogBase
     void slotTextChanged( const QString & _text);
   protected slots:
 
-signals:
-
   protected:
     void setupGeneralPage();
     void setupEventPage();

@@ -65,8 +65,6 @@ class KOWindowList : public QObject
     */
     KOrg::MainWindow *defaultInstance();
 
-  signals:
-
   public slots:
     /**
       Register a main window.
