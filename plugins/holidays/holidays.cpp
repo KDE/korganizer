@@ -50,7 +50,7 @@ extern "C" {
     unsigned short  dup;            /* reference count */
   };
   extern struct holiday holiday[366];
-};
+}
 
 
 Holidays::Holidays()

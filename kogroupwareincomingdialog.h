@@ -3,7 +3,7 @@
 
 #include "kogroupwareincomingdialog_base.h"
 
-namespace KCal { class Incidence; };
+namespace KCal { class Incidence; }
 
 
 class KOGroupwareIncomingDialog : public KOGroupwareIncomingDialog_base
