@@ -104,7 +104,7 @@
       <default>false</default>
     </entry>
     <entry type="Bool" key="Show Marcus Bains" name="MarcusBainsEnabled">
-      <label>Show Marcus Bains line</label>
+      <label>Show current time (Marcus Bains line)</label>
       <default>false</default>
     </entry>
 

@@ -320,11 +320,6 @@ class KOPrefsDialogTime : public KPrefsModule
       addWidBool( KOPrefs::instance()->excludeSaturdaysItem(),
                   workingHoursGroup );
 
-      KPrefsWidBool *marcusBainsShowSeconds = addWidBool(
-                 KOPrefs::instance()->marcusBainsShowSecondsItem(),
-                 topFrame );
-      topLayout->addWidget(marcusBainsShowSeconds->checkBox(),5,0);
-
       topLayout->setRowStretch(6,1);
 
       load();
@@ -427,8 +422,8 @@ class KOPrefsDialogViews : public KPrefsModule
                                                i18n("Hour Size in Schedule View"),
                                                topFrame);
       mHourSizeSlider = new QSlider(4,30,1,10,Horizontal,hourSizeGroup);
-      connect (mHourSizeSlider, SIGNAL ( valueChanged( int ) ),
-      		SLOT( slotWidChanged() ) );
+      connect( mHourSizeSlider, SIGNAL ( valueChanged( int ) ),
+               SLOT( slotWidChanged() ) );
       topLayout->addMultiCellWidget(hourSizeGroup,2,2,0,1);
 
       KPrefsWidBool *dailyRecur =
@@ -464,10 +459,17 @@ class KOPrefsDialogViews : public KPrefsModule
           addWidBool( KOPrefs::instance()->marcusBainsEnabledItem(), topFrame );
       topLayout->addWidget(marcusBainsEnabled->checkBox(),10,0);
 
+      KPrefsWidBool *marcusBainsShowSeconds = 
+          addWidBool( KOPrefs::instance()->marcusBainsShowSecondsItem(), topFrame );
+      topLayout->addWidget(marcusBainsShowSeconds->checkBox(),11,0);
+//    TODO: This doesn't work because KPrefsWidBool doesn't support the signals/slots of QCheckBox :-((
+      connect( marcusBainsEnabled->checkBox(), SIGNAL( toggled( bool ) ), 
+               marcusBainsShowSeconds->checkBox(), SLOT( setEnabled( bool ) ) );
+
       KPrefsWidBool *selectionStartsEditor =
           addWidBool( KOPrefs::instance()->selectionStartsEditorItem(),
                       topFrame );
-      topLayout->addWidget(selectionStartsEditor->checkBox(),11,0);
+      topLayout->addWidget(selectionStartsEditor->checkBox(),12,0);
 
       topLayout->setRowStretch(11,1);
 
