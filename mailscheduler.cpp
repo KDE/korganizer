@@ -23,6 +23,7 @@
 
 #include <qdir.h>
 #include <qfile.h>
+#include <qregexp.h>
 
 #include <kstandarddirs.h>
 #include <kdebug.h>
@@ -109,7 +110,10 @@ QPtrList<ScheduleMessage> MailScheduler::retrieveTransactions()
                 << (*it) << "'" << endl;
     } else {
       QTextStream t(&f);
+      t.setEncoding( QTextStream::Latin1 );
       QString messageString = t.read();
+      messageString.replace( QRegExp("\n[ \t]"), "");
+      messageString = QString::fromUtf8( messageString.latin1() );
       ScheduleMessage *message = mFormat->parseScheduleMessage( mCalendar,
                                                                 messageString );
       if (message) {

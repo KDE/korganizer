@@ -22,6 +22,7 @@
 #include <qfile.h>
 #include <qdir.h>
 #include <qtextstream.h>
+#include <qregexp.h>
 
 #include <kglobal.h>
 #include <klocale.h>
@@ -295,6 +296,7 @@ bool OutgoingDialog::saveMessage(IncidenceBase *incidence,Scheduler::Method meth
   KTempFile ktfile(locateLocal("data","korganizer/outgoing/"),"ics");
   QString messageText = mFormat->createScheduleMessage(incidence,method);
   QTextStream *qts = ktfile.textStream();
+  qts->setEncoding( QTextStream::UnicodeUTF8 );
   *qts << messageText;
   *qts << "METHOD-BEGIN:" << endl << method << endl << ":METHOD-END" << endl;
   *qts << "RECIPIENTS-BEGIN:" << endl << recipients << endl << ":RECIPIENTS-END" << endl;
@@ -335,7 +337,10 @@ void OutgoingDialog::loadMessages()
                 << (*it) << "'" << endl;
     } else {
       QTextStream t(&f);
+      t.setEncoding( QTextStream::Latin1 );
       QString messageString = t.read();
+      messageString.replace( QRegExp("\n[ \t]"), "");
+      messageString = QString::fromUtf8( messageString.latin1() );
       ScheduleMessage *message = mFormat->parseScheduleMessage(mCalendar,
                                                                messageString);
       int begin_pos = messageString.find("METHOD-BEGIN:");

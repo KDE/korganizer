@@ -306,6 +306,8 @@ void ExportWebDialog::slotDataReq(KIO::Job *,QByteArray &data)
   if (mDataAvailable) {
     kdDebug(5850) << "  Data availavble" << endl;
     QTextStream ts(data,IO_WriteOnly);
+    ts.setEncoding( QTextStream::Latin1 );
+    
     mExport->save(&ts);
     mDataAvailable = false;
   } else
