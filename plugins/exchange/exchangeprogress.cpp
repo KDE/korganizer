@@ -32,7 +32,7 @@
 #include "exchangeprogress.h"
 
 ExchangeProgress::ExchangeProgress(QWidget *parent)
-  : KProgressDialog(parent, i18n("Exchange Download Progress"), "Exchange Plugin", "text" )
+  : KProgressDialog(parent, i18n("Exchange Download Progress"), i18n("Exchange Plugin"), "text" )
 {
   m_finished = 0;
   m_total = 0;  

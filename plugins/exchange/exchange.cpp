@@ -112,7 +112,7 @@ Exchange::~Exchange()
 
 QString Exchange::info()
 {
-  return i18n("This plugin provides calendar events from an Exchange Server.");
+  return i18n("This plugin imports and export calendar events from/to a Microsoft Exchange 2000 Server.");
 }
 
 QDomElement addElement( QDomDocument& doc, QDomNode& node, const QString& ns, const QString& tag )
@@ -138,10 +138,10 @@ void Exchange::upload()
   m_currentUpload = mainWindow()->view()->currentSelection();
   if ( ! m_currentUpload )
   {
-    KMessageBox::information( 0L, "Please select an appointment", "Exchange Plugin" );
+    KMessageBox::information( 0L, i18n("Please select an appointment"), i18n("Exchange Plugin") );
     return;
   }
-  KMessageBox::information( 0L, "Exchange Upload is HIGHLY EXPERIMENTAL!", "Exchange Plugin" );
+  KMessageBox::information( 0L, "Exchange Upload is HIGHLY EXPERIMENTAL!", i18n("Exchange Plugin") );
   
   m_currentUploadNumber = 0;
 
@@ -459,7 +459,7 @@ void Exchange::download()
   
   baseURL = getCalendarURL();
   if ( ! baseURL.isValid() ) {
-    KMessageBox::sorry( 0L, "Please configure the Exchange host and user", "Exchange Plugin" );
+    KMessageBox::sorry( 0L, i18n("Please configure the Exchange host and user"), i18n("Exchange Plugin") );
     return;
   }
 	
