@@ -342,7 +342,8 @@ void KOAgendaItem::resetMove()
 
 void KOAgendaItem::resetMovePrivate()
 {
-// TODO_RK
+// TODO_RK: Implement this. Until then, resetting a move (i.e. because the mouse
+// pointer moved outside the KOAgenda) will not update the screen properly.
   if (mStartMoveInfo) {
     mCellX = mStartMoveInfo->mStartCellX;
     mCellXWidth = mStartMoveInfo->mStartCellXWidth;
