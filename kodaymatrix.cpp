@@ -92,7 +92,6 @@ KODayMatrix::KODayMatrix(QWidget *parent, Calendar* calendar, QDate date, const 
   mHolidayColorShaded = getShadedColor(KOPrefs::instance()->mHolidayColor);
   mSelectedDaysColor = QColor("white");
   mTodayMarginWidth = 2;
-  mTodayPen = 0;
   mSelStart = NOSELECTION;
 
   setAcceptDrops(true);
@@ -120,10 +119,6 @@ KODayMatrix::~KODayMatrix()
   delete [] daylbls;
   delete [] events;
   delete mToolTip;
-
-  // pen is created on the fly in the paintEvent method, so make sure there
-  // is a pen before deleting it
-  if (mTodayPen != 0) delete mTodayPen;
 }
 
 /*
@@ -508,26 +503,25 @@ void KODayMatrix::paintEvent(QPaintEvent * pevent)
     // if today then draw rectangle around day
     if (today == i) {
       tmppen = p.pen();
-      mTodayPen = new QPen(tmppen);
-      mTodayPen->setWidth(mTodayMarginWidth);
+      QPen mTodayPen(p.pen());
+
+      mTodayPen.setWidth(mTodayMarginWidth);
       //draw red rectangle for holidays
       if (!mHolidays[i].isNull()) {
         if (actcol == mDefaultTextColor) {
-          mTodayPen->setColor(KOPrefs::instance()->mHolidayColor);
+          mTodayPen.setColor(KOPrefs::instance()->mHolidayColor);
         } else {
-          mTodayPen->setColor(mHolidayColorShaded);
+          mTodayPen.setColor(mHolidayColorShaded);
         }
       }
       //draw gray rectangle for today if in selection
       if (i >= mSelStart && i <= mSelEnd) {
         QColor grey("grey");
-        mTodayPen->setColor(grey);
+        mTodayPen.setColor(grey);
       }
-      p.setPen(*mTodayPen);
+      p.setPen(mTodayPen);
       p.drawRect(col*dwidth, row*dheight, dwidth, dheight);
       p.setPen(tmppen);
-      delete mTodayPen;
-      mTodayPen = 0;
     }
 
     // if any events are on that day then draw it using a bold font

@@ -254,11 +254,6 @@ private:
     DynamicTip* mToolTip;
 
 
-
-    /** pen to be used to draw rectangle around today label.
-        created on the fly in paintEvent(). */
-    QPen      *mTodayPen;
-
     /** default background colour of the matrix. */
     QColor    mDefaultBackColor;
 
