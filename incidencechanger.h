@@ -49,6 +49,9 @@ public:
   //        the first one is deleted, the other one has a stale pointer and will
   //        crash...
 //  static bool assignIncidence( Incidence *inc1, Incidence *inc2 );
+protected:
+  bool myAttendeeStatusChanged( Incidence *oldInc, Incidence *newInc );
+
 private:
   class ComparisonVisitor;
   class AssignmentVisitor;

@@ -592,27 +592,30 @@ bool KOGroupware::cancelIncidence( const QString& iCal )
  */
 bool KOGroupware::sendICalMessage( QWidget* parent,
                                    KCal::Scheduler::Method method,
-                                   Incidence* incidence, bool isDeleting )
+                                   Incidence* incidence, bool isDeleting,
+                                   bool statusChanged )
 {
   bool isOrganizer = KOPrefs::instance()->thatIsMe( incidence->organizer().email() );
 
   int rc = 0;
-  if( isOrganizer ) {
-    // Figure out if there are other people involved in this incidence
-    bool otherPeople = false;
-    Attendee::List attendees = incidence->attendees();
-    Attendee::List::ConstIterator it;
-    for ( it = attendees.begin(); it != attendees.end(); ++it ) {
-      // Don't send email to ourselves
-      if ( !KOPrefs::instance()->thatIsMe( (*it)->email() ) ) {
-        otherPeople = true;
-        break;
-      }
+  // Figure out if there are other people involved in this incidence
+  bool otherPeople = false;
+  Attendee::List attendees = incidence->attendees();
+  Attendee *me = 0;
+  Attendee::List::ConstIterator it;
+  for ( it = attendees.begin(); it != attendees.end(); ++it ) {
+    // Don't send email to ourselves
+    if ( !KOPrefs::instance()->thatIsMe( (*it)->email() ) ) {
+      otherPeople = true;
+    } else {
+      me = (*it);
     }
-    if( !otherPeople )
-      // You never send something out if no others are involved
-      return true;
+  }
+  // You never send something out if no others are involved
+  if( !otherPeople && isOrganizer )
+    return true;
 
+  if( isOrganizer ) {
     QString txt = i18n( "This %1 includes other people. "
                         "Should email be sent out to the attendees?" )
       .arg( i18n( incidence->type() ) );
@@ -629,22 +632,27 @@ bool KOGroupware::sendICalMessage( QWidget* parent,
                         "organizer of this task?");
     rc = KMessageBox::questionYesNo( parent, txt );
   } else if( incidence->type() == "Event" ) {
-    // When you're not the organizer of an event, an update mail can
-    // never be sent out
-    // Pending(Bo): So how will an attendee cancel his participation?
     QString txt;
-    if( isDeleting )
-      txt = i18n( "You are not the organizer of this event. "
-                  "Deleting it will bring your calendar out of sync "
-                  "with the organizers calendar. Do you really want "
-                  "to delete it?" );
-    else
-      txt = i18n( "You are not the organizer of this event. "
-                  "Editing it will bring your calendar out of sync "
-                  "with the organizers calendar. Do you really want "
-                  "to edit it?" );
-    rc = KMessageBox::questionYesNo( parent, txt );
-    return ( rc == KMessageBox::Yes );
+    if ( statusChanged && method == Scheduler::Request ) {
+      txt = i18n( "Your status as an attendee of this event "
+          "changed. Do you want to send a status update to the "
+          "organizer of this event?" );
+      method = Scheduler::Reply;
+      rc = KMessageBox::questionYesNo( parent, txt );
+    } else {
+      if( isDeleting )
+        txt = i18n( "You are not the organizer of this event. "
+            "Deleting it will bring your calendar out of sync "
+            "with the organizers calendar. Do you really want "
+            "to delete it?" );
+      else
+        txt = i18n( "You are not the organizer of this event. "
+            "Editing it will bring your calendar out of sync "
+            "with the organizers calendar. Do you really want "
+            "to edit it?" );
+      rc = KMessageBox::questionYesNo( parent, txt );
+      return ( rc == KMessageBox::Yes );
+    }
   } else {
     kdWarning(5850) << "Groupware messages for Journals are not implemented yet!" << endl;
     return true;

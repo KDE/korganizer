@@ -222,6 +222,16 @@ bool IncidenceChanger::incidencesEqual( Incidence *inc1, Incidence *inc2 )
   return v.act( inc1, inc2 );
 }*/
 
+bool IncidenceChanger::myAttendeeStatusChanged( Incidence *oldInc, Incidence *newInc )
+{
+  Attendee *oldMe = oldInc->attendeeByMails( KOPrefs::instance()->allEmails() );
+  Attendee *newMe = newInc->attendeeByMails( KOPrefs::instance()->allEmails() );
+  if ( oldMe && newMe && ( oldMe->status() != newMe->status() ) )
+    return true;
+
+  return false;
+}
+
 bool IncidenceChanger::changeIncidence( Incidence *oldinc, Incidence *newinc, 
                                         int action )
 {
@@ -231,6 +241,7 @@ kdDebug(5850)<<"IncidenceChanger::changeChange for incidence \""<<newinc->summar
     kdDebug(5850) << "Incidence not changed\n";
   } else {
     kdDebug(5850) << "Incidence changed\n";
+    bool statusChanged = myAttendeeStatusChanged( oldinc, newinc );
     int revision = newinc->revision();
     newinc->setRevision( revision + 1 );
     // FIXME: Use a generic method for this! Ideally, have an interface class 
@@ -240,7 +251,7 @@ kdDebug(5850)<<"IncidenceChanger::changeChange for incidence \""<<newinc->summar
     if( !KOPrefs::instance()->mUseGroupwareCommunication ||
         KOGroupware::instance()->sendICalMessage( 0,
                                                   KCal::Scheduler::Request,
-                                                  newinc ) ) {
+                                                  newinc, false, statusChanged ) ) {
       // Accept the event changes
       if ( action<0 ) {
         emit incidenceChanged( oldinc, newinc );
