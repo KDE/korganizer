@@ -32,7 +32,6 @@
 #include <klocale.h>
 #include <kurl.h>
 
-#include <libkcal/calendar.h>
 #include <korganizer/part.h>
 #include <korganizer/mainwindow.h>
 
@@ -103,6 +102,9 @@ class ActionManager : public QObject, public KCalendarIface
     QString getCurrentURLasString() const;
     /** Delete event with the given unique id from current calendar. */
     virtual bool deleteEvent(QString uid);
+
+    /** Handle incoming event scheduling */
+    bool eventRequest(QString request, QCString receiver, QString ical);
 
     bool isActive() { return mActive; }
 

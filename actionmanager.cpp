@@ -55,6 +55,7 @@
 #include "kprocess.h"
 #include "konewstuff.h"
 #include "history.h"
+#include "kogroupware.h"
 
 
 KOWindowList *ActionManager::windowList = 0;
@@ -1145,6 +1146,14 @@ QString ActionManager::getCurrentURLasString() const
 bool ActionManager::deleteEvent(QString uid)
 {
   return mCalendarView->deleteEvent(uid);
+}
+
+bool ActionManager::eventRequest(QString request, QCString receiver,
+				 QString ical)
+{
+  if( !KOGroupware::instance() ) return false;
+  return KOGroupware::instance()->incomingEventRequest(request, receiver,
+						       ical);
 }
 
 void ActionManager::configureDateTimeFinished(KProcess *proc)
