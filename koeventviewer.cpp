@@ -42,17 +42,19 @@ void KOEventViewer::addTag(const QString & tag,const QString & text)
   QString str = "<" + tag + ">";
   QString tmpText=text;
   QString tmpStr=str;
-  if(number !=-1)  
+  if(number !=-1) 
     {
-      int pos=0;
-      QString tmp;
-      for(int i=0;i<=number;i++)
-	{
-	  pos=tmpText.find("\n");
-	  tmp=tmpText.left(pos);
-	  tmpText=tmpText.right(tmpText.length()-pos-1);
-	  tmpStr+=tmp+"<br>";
-	}
+      if (number > 0) {
+        int pos=0;
+        QString tmp;
+        for(int i=0;i<=number;i++) {
+          pos=tmpText.find("\n");
+          tmp=tmpText.left(pos);
+          tmpText=tmpText.right(tmpText.length()-pos-1);
+          tmpStr+=tmp+"<br>";
+        }
+      }
+      else tmpStr += tmpText;
       tmpStr+="</" + tag + ">";
       mText.append(tmpStr);
     }
@@ -178,4 +180,10 @@ void KOEventViewer::clearEvents(bool now)
 {
   mText = "";
   if (now) setText(mText);
+}
+
+void KOEventViewer::addText(QString text)
+{
+  mText.append(text);
+  setText(mText);
 }

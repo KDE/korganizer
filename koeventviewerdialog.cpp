@@ -52,3 +52,8 @@ void KOEventViewerDialog::setTodo(Todo *event)
 {
   mEventViewer->setTodo(event);
 }
+
+void KOEventViewerDialog::addText(QString text)
+{
+  mEventViewer->addText(text);
+}

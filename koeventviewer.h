@@ -43,6 +43,8 @@ class KOEventViewer : public QTextView {
     
     void clearEvents(bool now=false);
     
+    void addText(QString text);
+
   protected:
     void addTag(const QString & tag,const QString & text);
 

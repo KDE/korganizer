@@ -41,7 +41,8 @@ class KOEventViewerDialog : public KDialogBase {
 
     void setEvent(Event *event);
     void setTodo(Todo *event);
-    
+    void addText(QString text);
+
   private:
     KOEventViewer *mEventViewer;
 };

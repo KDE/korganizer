@@ -88,11 +88,14 @@ void PublishDialog::removeItem()
   item = mAddressListView->selectedItem();
   if (!item) return;
   mAddressListView->takeItem(item);
+  item = mAddressListView->selectedItem();
+  if (!item) {
+    mNameLineEdit->setText("");
+    mEmailLineEdit->setText("");
+  }
   if (mAddressListView->childCount() == 0) {
     mNameLineEdit->setEnabled(false);
     mEmailLineEdit->setEnabled(false);
-    mNameLineEdit->setText("");
-    mEmailLineEdit->setText("");
   }
 }
 

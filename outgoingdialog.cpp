@@ -48,8 +48,8 @@ ScheduleItemOut::ScheduleItemOut(QListView *parent,Event *ev,
   setText(0,ev->summary());
   setText(1,ev->dtStartDateStr());
   if (ev->doesFloat()) {
-    setText(2,"no time");
-    setText(4,"no time");
+    setText(2,i18n("no time"));
+    setText(4,i18n("no time"));
   }
   else {
     setText(2,ev->dtStartTimeStr());
@@ -57,7 +57,7 @@ ScheduleItemOut::ScheduleItemOut(QListView *parent,Event *ev,
       setText(4,ev->dtEndTimeStr());
     }
     else {
-      setText(4,"no time");
+      setText(4,i18n("no time"));
     }
   }
   if (ev->hasEndDate()) {
@@ -67,11 +67,6 @@ ScheduleItemOut::ScheduleItemOut(QListView *parent,Event *ev,
     setText(3,"");
   }
   setText(5,Scheduler::methodName(mMethod));
-//  kdDebug() << "OutgoingItem rescipients: " << mRecipients << endl;
-//  if (mMethod == Scheduler::Publish) {
-//    if (!recipients.isEmpty())
-//    setText(6,mRecipients);
-//  }
 }
 
 OutgoingDialog::OutgoingDialog(Calendar *calendar,QWidget* parent,
@@ -122,7 +117,6 @@ bool OutgoingDialog::addMessage(Event *incidence,Scheduler::Method method,
                                 const QString &recipients)
 {
   if (method != Scheduler::Publish) return false;
-
   if (KOPrefs::instance()->mIMIPSend == KOPrefs::IMIPOutbox) {
     new ScheduleItemOut(mMessageListView,incidence,method,recipients);
     emit numMessagesChanged(mMessageListView->childCount());
@@ -158,14 +152,47 @@ void OutgoingDialog::deleteItem()
   emit numMessagesChanged(mMessageListView->childCount());
 }
 
-void OutgoingDialog::showEvent(QListViewItem *item)
+void OutgoingDialog::showEvent(QListViewItem *qitem)
 {
-  Event *event = ((ScheduleItemOut *)item)->event();
-  //ScheduleItemOut *so = (ScheduleItemOut *)item;
-  //Event *event;
+  ScheduleItemOut *item = (ScheduleItemOut *)qitem;
+  Event *event = item->event();
+  QString sendText;
   if (event) {
     KOEventViewerDialog *eventViewer = new KOEventViewerDialog(this);
     eventViewer->setEvent(event);
+    sendText = "<hr><h4>"+i18n("Event will be sent to:")+"</h4>";
+    switch (item->method()) {
+      case Scheduler::Publish: {
+        sendText += item->recipients();
+        break; }
+      case Scheduler::Request: {
+        sendText += "All attendees";
+        break; }
+      case Scheduler::Refresh: {
+        sendText += "All attendees";
+        break; }
+      case Scheduler::Cancel: {
+        sendText += "All attendees";
+        break; }
+      case Scheduler::Add: {
+        sendText += "All attendees";
+        break; }
+      case Scheduler::Reply: {
+        sendText += "The organizer "+item->event()->organizer();
+        break; }
+      case Scheduler::Counter: {
+        sendText += "The organizer "+item->event()->organizer();
+        break; }
+      case Scheduler::Declinecounter: {
+        sendText += "All attendees";
+        break; }
+      case Scheduler::NoMethod: {
+        sendText += "";
+        break; }
+      default:
+        sendText = "";
+    }
+    eventViewer->addText(sendText);
     eventViewer->show();
   }
 }
