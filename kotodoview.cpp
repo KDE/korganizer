@@ -249,19 +249,27 @@ KOQuickTodo::KOQuickTodo(QWidget *parent) :
   QLineEdit(parent)
 {
   setText(i18n("Click to add a new Todo"));
+  setPaletteForegroundColor(gray);
 }
 
 void KOQuickTodo::focusInEvent(QFocusEvent *ev)
 {
   if ( text()==i18n("Click to add a new Todo") )
-    setText("");
+    setText(QString::null);
   QLineEdit::focusInEvent(ev);
 }
 
 void KOQuickTodo::focusOutEvent(QFocusEvent *ev)
 {
   setText(i18n("Click to add a new Todo"));
+  setPaletteForegroundColor(gray); 
   QLineEdit::focusOutEvent(ev);
+}
+
+void KOQuickTodo::mousePressEvent(QMouseEvent *ev)
+{
+  setPaletteForegroundColor(parentWidget()->paletteForegroundColor()); 
+  QLineEdit::mousePressEvent(ev);
 }
 
 /////////////////////////////////////////////////////////////////////////////
@@ -733,6 +741,6 @@ void KOTodoView::addQuickTodo()
   todo->setSummary(mQuickAdd->text());
   todo->setOrganizer(KOPrefs::instance()->email());
   mCalendar->addTodo(todo);
-  mQuickAdd->setText("");
+  mQuickAdd->setText(QString::null);
   updateView();
 }

@@ -27,12 +27,12 @@
 #include <qfontmetrics.h>
 #include <qlineedit.h>
 #include <qptrlist.h>
-#include <qstrlist.h>
 #include <qlistbox.h>
 #include <qpopupmenu.h>
 #include <qlabel.h>
 #include <qmap.h>
-#include <qlistview.h>
+#include <qtimer.h>
+
 #include <klistview.h>
 
 #include <libkcal/calendar.h>
@@ -86,9 +86,11 @@ class KOTodoListView : public KListView
 */
 class KOQuickTodo : public QLineEdit
 {
+  Q_OBJECT
   public:
     KOQuickTodo(QWidget *parent=0);
   protected:
+    void mousePressEvent(QMouseEvent *ev);
     void focusInEvent(QFocusEvent *ev);
     void focusOutEvent(QFocusEvent *ev);
 };
