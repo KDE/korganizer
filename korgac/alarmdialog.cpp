@@ -183,7 +183,7 @@ void AlarmDialog::eventNotification()
     Alarm::List::ConstIterator it;
     for ( it = alarms.begin(); it != alarms.end(); ++it ) {
       Alarm *alarm = *it;
-// @TODO: Check whether this should be done for all multiple alarms
+// FIXME: Check whether this should be done for all multiple alarms
       if (alarm->type() == Alarm::Procedure) {
         kdDebug(5890) << "Starting program: '" << alarm->programFile() << "'" << endl;
         KProcess proc;

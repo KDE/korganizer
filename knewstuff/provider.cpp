@@ -160,7 +160,7 @@ void ProviderLoader::load( const QString &type )
   QString providersUrl = cfg->readEntry( "ProvidersUrl" );
 
   if ( providersUrl.isEmpty() ) {
-    // @TODO: Replace the default by the real one.
+    // FIXME: Replace the default by the real one.
     QString server = cfg->readEntry( "MasterServer",
                                      "http://korganizer.kde.org" );
   

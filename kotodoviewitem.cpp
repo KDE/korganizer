@@ -46,7 +46,7 @@ KOTodoViewItem::KOTodoViewItem( KOTodoViewItem *parent, Todo *todo, KOTodoView *
   construct();
 }
 
-// @TODO: Is this the best way to sort the items on due dates?
+// FIXME: Is this the best way to sort the items on due dates?
 int KOTodoViewItem::compare( QListViewItem *i, int col, bool ascending ) const
 {
   if ( i && ( col == eDueDateColumn ) ) {

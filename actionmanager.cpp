@@ -214,8 +214,8 @@ void ActionManager::createCalendarResources()
 
 void ActionManager::initCalendar( Calendar *cal )
 {
-  cal->setOwner( KOPrefs::instance()->fullName() );
-  cal->setEmail( KOPrefs::instance()->email() );
+  cal->setOwner( Person( KOPrefs::instance()->fullName(), 
+                         KOPrefs::instance()->email() ) );
   // setting fullName and email do not really count as modifying the calendar
   mCalendarView->setModified( false );
 }
@@ -630,7 +630,7 @@ void ActionManager::file_openRecent( const KURL& url )
 
 void ActionManager::file_import()
 {
-  // @TODO: eventually, we will need a dialog box to select import type, etc.
+  // FIXME: eventually, we will need a dialog box to select import type, etc.
   // for now, hard-coded to ical file, $HOME/.calendar.
   int retVal = -1;
   QString progPath;
@@ -1287,7 +1287,7 @@ QString ActionManager::localFileName()
   return mFile;
 }
 
-class ActionStringsVisitor : public IncidenceBase::Visitor
+class ActionManager::ActionStringsVisitor : public IncidenceBase::Visitor
 {
   public:
     ActionStringsVisitor() : mShow( 0 ), mEdit( 0 ), mDelete( 0 ) {}
@@ -1492,9 +1492,9 @@ bool ActionManager::queryClose()
       kdDebug(5850) << "!mIsClosing" << endl;
       if ( !saveResourceCalendar() ) return false;
 
-      // @TODO: Put main window into a state indicating final saving.
+      // FIXME: Put main window into a state indicating final saving.
       mIsClosing = true;
-// @TODO: Close main window when save is finished
+// FIXME: Close main window when save is finished
 //      connect( mCalendarResources, SIGNAL( calendarSaved() ),
 //               mMainWindow, SLOT( close() ) );
     }
@@ -1527,7 +1527,7 @@ void ActionManager::saveCalendar()
     }
   } else if ( mCalendarResources ) {
     mCalendarResources->save();
-    // @TODO: Make sure that asynchronous saves don't fail.
+    // FIXME: Make sure that asynchronous saves don't fail.
   }
 }
 

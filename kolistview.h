@@ -52,24 +52,6 @@ class KOListViewToolTip : public QToolTip
 
 
 /**
-  This class provides the initialization of a KOListViewItem for calendar
-  components using the Incidence::Visitor.
-*/
-class ListItemVisitor : public IncidenceBase::Visitor
-{
-  public:
-    ListItemVisitor( KOListViewItem * );
-    ~ListItemVisitor();
-
-    bool visit( Event * );
-    bool visit( Todo * );
-    bool visit( Journal * );
-
-  private:
-    KOListViewItem *mItem;
-};
-
-/**
   This class provides a multi-column list view of events.  It can
   display events from one particular day or several days, it doesn't
   matter.  To use a view that only handles one day at a time, use
@@ -123,6 +105,7 @@ class KOListView : public KOEventView
     KOListViewItem *getItemForIncidence(Incidence *incidence);
 
   private:
+    class ListItemVisitor;
     KListView *mListView;
     KOEventPopupMenu *mPopupMenu;
     KOListViewItem *mActiveItem;

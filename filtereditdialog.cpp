@@ -43,7 +43,7 @@
 #include "filtereditdialog.h"
 #include "filtereditdialog.moc"
 
-// @TODO: Make dialog work on a copy of the filters objects.
+// FIXME: Make dialog work on a copy of the filters objects.
 
 FilterEditDialog::FilterEditDialog( QPtrList<CalFilter> *filters,
                                     QWidget *parent, const char *name)

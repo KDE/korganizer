@@ -267,7 +267,7 @@ void CalPrintDialog::setPrinterLabel()
 
 void CalPrintDialog::setPrintType( int i )
 {
-  // TODO: Make a safe correlation between type and the radio button
+  // FIXME: Make a safe correlation between type and the radio button
 
   mTypeGroup->setButton( i );
   mConfigArea->raiseWidget( i );

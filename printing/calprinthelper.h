@@ -318,7 +318,7 @@ class CalPrintHelper
                         const QString &summary, int &textY );
 
   public:
-    // TODO_RK: move these to the appropriate subclasses or set them globally.
+    // FIXME: move these to the appropriate subclasses or set them globally.
     int mHeaderHeight;
     int mSubHeaderHeight;
     int mMargin;

@@ -315,6 +315,8 @@ class ActionManager : public QObject, public KCalendarIface
     void dumpText( const QString & );  // only for debugging purposes
 
   private:
+    class ActionStringsVisitor;
+    
     /** Create all the actions. */
     void initActions();
     void enableIncidenceActions( bool enable );

@@ -50,7 +50,7 @@ class RecurBase : public QWidget
 
     void setFrequency( int );
     int frequency();
-    // @TODO: If we want to adjust the recurrence when the start/due date change,
+    // FIXME: If we want to adjust the recurrence when the start/due date change,
     // we need to reimplement this method in the derived classes!
     void setDateTimes( QDateTime /*start*/, QDateTime /*end*/ ) {}
 

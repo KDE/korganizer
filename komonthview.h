@@ -171,6 +171,7 @@ class MonthViewCell : public QWidget
     void cellClicked( QListBoxItem * );
 
   private:
+    class CreateItemVisitor;
     KOMonthView *mMonthView;
 
     QDate mDate;
@@ -246,6 +247,7 @@ class KOMonthView: public KOEventView
     MonthViewCell *lookupCellByDate( const QDate &date );
 
   private:
+    class GetDateVisitor;
     int mDaysPerWeek;
     int mNumWeeks;
     int mNumCells;

@@ -407,10 +407,11 @@ void MonthViewCell::updateCell()
   }
 }
 
-class CreateMonthViewItemVisitor : public IncidenceBase::Visitor
+class MonthViewCell::CreateItemVisitor : 
+      public IncidenceBase::Visitor
 {
   public:
-    CreateMonthViewItemVisitor() : mItem(0) {}
+    CreateItemVisitor() : mItem(0) {}
 
     bool act( IncidenceBase *incidence, QDate date, QPalette stdPal )
     {
@@ -492,7 +493,7 @@ class CreateMonthViewItemVisitor : public IncidenceBase::Visitor
 
 void MonthViewCell::addIncidence( Incidence *incidence )
 {
-  CreateMonthViewItemVisitor v;
+  CreateItemVisitor v;
   if ( v.act( incidence, mDate, mStandardPalette ) ) {
     MonthViewItem *item = v.item();
     if ( item ) {
@@ -819,10 +820,10 @@ void KOMonthView::showIncidences( const Incidence::List & )
   kdDebug(5850) << "KOMonthView::showIncidences( const Incidence::List & ) is not implemented yet." << endl;
 }
 
-class MonthViewDateVisitor : public IncidenceBase::Visitor
+class KOMonthView::GetDateVisitor : public IncidenceBase::Visitor
 {
   public:
-    MonthViewDateVisitor() {}
+    GetDateVisitor() {}
 
     bool act( IncidenceBase *incidence )
     {
@@ -857,7 +858,7 @@ void KOMonthView::changeIncidenceDisplayAdded( Incidence *incidence )
   Todo *todo = 0;
   QDate date;
   
-  // @TODO: use a visitor here
+  // FIXME: use a visitor here
   if ( incidence->type() == "Event" ) {
     event = static_cast<Event *>( incidence );
     date = event->dtStart().date();

@@ -55,8 +55,8 @@ KOGroupwareIncomingDialog::KOGroupwareIncomingDialog( KCal::Incidence *evt,
   mDeclined = false;
 
   fromLA->setText( evt->dtStartDateStr() + ", " + evt->dtStartTimeStr() );
-  // @TODO: use a visitor here
-  // @TODO: Treat todos and other incidences here
+  // FIXME: use a visitor here
+  // FIXME: Treat todos and other incidences here
   if( evt->type() == "Event" ) {
     KCal::Event* event = static_cast<KCal::Event*>(evt);
     toLA->setText( event->dtEndDateStr() + ", " + event->dtEndTimeStr() );

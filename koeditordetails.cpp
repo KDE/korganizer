@@ -442,7 +442,7 @@ void KOEditorDetails::writeEvent(Incidence *event)
     event->addAttendee(new Attendee(*(a->data())));
   }
   if ( mOrganizerCombo ) {
-    // TODO: Don't take a string and split it up... Is there a better way?
+    // FIXME: Don't take a string and split it up... Is there a better way?
     event->setOrganizer( mOrganizerCombo->currentText() );
   }
 }

@@ -27,7 +27,7 @@
 
 QColor KOCoreHelper::categoryColor( QStringList categories ) 
 {
-  // TODO: Correctly treat events with multiple categories
+  // FIXME: Correctly treat events with multiple categories
   QString cat = categories.first();
   QColor bgColor;
   if (cat.isEmpty())

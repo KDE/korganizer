@@ -68,7 +68,7 @@ int main(int argc,char **argv)
     kdDebug(5850) << "CalendarDecoration: " << (*it)->desktopEntryName() << " ("
               << (*it)->name() << ")" << endl;
 #if 0
-    // @TODO: Update this to calendar decorations
+    // FIXME: Update this to calendar decorations
     KOrg::Part *p = KOCore::self()->loadPart(*it,0,0);
     if (!p) {
       kdDebug(5850) << "Plugin loading failed." << endl;

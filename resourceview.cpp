@@ -366,7 +366,7 @@ void ResourceView::removeResource()
   }
 #endif
   if ( item->isSubresource() ) {
-    // TODO delete the folder in KMail
+    // FIXME delete the folder in KMail
   } else {
     mCalendar->resourceManager()->remove( item->resource() );
     mListView->takeItem( item );

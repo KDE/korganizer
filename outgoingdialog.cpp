@@ -128,7 +128,7 @@ ScheduleItemOut::ScheduleItemOut(QListView *parent,IncidenceBase *ev,
   mRecipients = recipients;
 
 //  kdDebug(5850) << "ScheduleItemOut: setting the summary" << endl;
-  // @TODO: use a visitor here
+  // FIXME: use a visitor here
   ScheduleItemOutVisitor v;
   if ( !mIncidence || !v.act( mIncidence, this ) ) {
     setText( 0, i18n("Unable to interpret incidence") );

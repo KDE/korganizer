@@ -36,7 +36,7 @@ KOEventViewerDialog::KOEventViewerDialog( QWidget *parent, const char *name,
   mEventViewer = new KOEventViewer( this );
   setMainWidget( mEventViewer );
 
-  // @TODO: Set a sensible size (based on the content?).
+  // FIXME: Set a sensible size (based on the content?).
   if ( compact ) {
     setFixedSize( 240,284 );
     move( 0, 15 );

@@ -69,16 +69,25 @@ void KOListViewToolTip::maybeTip( const QPoint & pos)
 
 }
 
-ListItemVisitor::ListItemVisitor( KOListViewItem *item )
+/**
+  This class provides the initialization of a KOListViewItem for calendar
+  components using the Incidence::Visitor.
+*/
+class KOListView::ListItemVisitor : public IncidenceBase::Visitor
 {
-  mItem = item;
-}
+  public:
+    ListItemVisitor( KOListViewItem *item ) : mItem( item ) {}
+    ~ListItemVisitor() {}
 
-ListItemVisitor::~ListItemVisitor()
-{
-}
+    bool visit( Event * );
+    bool visit( Todo * );
+    bool visit( Journal * );
 
-bool ListItemVisitor::visit( Event *e )
+  private:
+    KOListViewItem *mItem;
+};
+
+bool KOListView::ListItemVisitor::visit( Event *e )
 {
   mItem->setText(0,e->summary());
   if ( e->isAlarmEnabled() ) {
@@ -114,7 +123,7 @@ bool ListItemVisitor::visit( Event *e )
   return true;
 }
 
-bool ListItemVisitor::visit(Todo *t)
+bool KOListView::ListItemVisitor::visit(Todo *t)
 {
   static const QPixmap todoPxmp = KOGlobals::self()->smallIcon("todo");
   static const QPixmap todoDonePxmp = KOGlobals::self()->smallIcon("checkedbox");
@@ -167,7 +176,7 @@ bool ListItemVisitor::visit(Todo *t)
   return true;
 }
 
-bool ListItemVisitor::visit(Journal *t)
+bool KOListView::ListItemVisitor::visit(Journal *t)
 {
   static const QPixmap jrnalPxmp = KOGlobals::self()->smallIcon("journal");
   mItem->setPixmap(0,jrnalPxmp);
@@ -399,7 +408,7 @@ void KOListView::popupMenu(QListViewItem *item,const QPoint &,int)
   mActiveItem = (KOListViewItem *)item;
   if (mActiveItem) {
     Incidence *incidence = mActiveItem->data();
-    // @TODO: For recurring incidences we don't know the date of this 
+    // FIXME: For recurring incidences we don't know the date of this 
     // occurence, there's no reference to it at all!
     mPopupMenu->showIncidencePopup( incidence, QDate() );
   }

@@ -54,7 +54,7 @@ public:
   bool editIncidence( QString uid );
   bool deleteIncidence( QString uid );
   
-  // TODO: Where are these really used?
+  // FIXME: Where are these really used?
   bool eventRequest( QString request, QString receiver, QString iCal );
   bool eventReply( QString iCal );
   bool cancelEvent( QString iCal );

@@ -42,7 +42,7 @@ KOCounterDialog::KOCounterDialog( QWidget *parent, const char *name )
   connect( this, SIGNAL( user1Clicked() ), SLOT( slotCancel() ) );
   connect( this, SIGNAL( user2Clicked() ), SLOT( slotOk( ) ) );
 
-  // @TODO: Set a sensible size (based on the content?).
+  // FIXME: Set a sensible size (based on the content?).
   setMinimumSize( 300, 200 );
   resize( 320, 300 );
 }

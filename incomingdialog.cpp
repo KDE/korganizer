@@ -126,7 +126,7 @@ bool ScheduleItemVisitor::visit( Todo *e )
 
 bool ScheduleItemVisitor::visit( Journal *j )
 {
-  // @TODO: Allow Journals in the schedule items...
+  // FIXME: Allow Journals in the schedule items...
   mItem->setText( 0, j->description().left(150) );
   mItem->setText( 1, j->dtStartDateStr() );
   if ( !j->doesFloat() ) {
