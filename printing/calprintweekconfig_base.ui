@@ -267,7 +267,7 @@
                 <string>Include to&amp;dos that are due on the printed day(s)</string>
             </property>
             <property name="whatsThis" stdset="0">
-                <string>Check this option if you want to have todos on the print, placed by their due date.</string>
+                <string>Check this option if you want to have to-dos on the print, placed by their due date.</string>
             </property>
         </widget>
     </grid>

@@ -144,7 +144,7 @@
                 <string>Include to&amp;dos that are due on the printed day(s)</string>
             </property>
             <property name="whatsThis" stdset="0">
-                <string>Check this option if you want to have todos on the print, placed by their due date.</string>
+                <string>Check this option if you want to have to-dos on the print, placed by their due date.</string>
             </property>
         </widget>
         <widget class="QCheckBox" row="1" column="0">
@@ -166,7 +166,7 @@
                 <string>Print daily re&amp;curring incidences</string>
             </property>
             <property name="whatsThis" stdset="0">
-                <string>With this option it's possible to leave out the daily recurring todos in the print. The incidences take a lot of space and make the month view needlessly complicated.</string>
+                <string>With this option it's possible to leave out the daily recurring to-dos in the print. The incidences take a lot of space and make the month view needlessly complicated.</string>
             </property>
         </widget>
         <widget class="QCheckBox" row="3" column="0">

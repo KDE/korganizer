@@ -45,7 +45,7 @@
                 <cstring>mPrintType</cstring>
             </property>
             <property name="title">
-                <string>Todos to Print</string>
+                <string>To-dos to Print</string>
             </property>
             <vbox>
                 <property name="name">

@@ -35,7 +35,7 @@
                 <string>Include to&amp;dos that are due on the printed day(s)</string>
             </property>
             <property name="whatsThis" stdset="0">
-                <string>You should check this option if you want to print todos which are due on one of the dates which are in the supplied date range.</string>
+                <string>You should check this option if you want to print to-dos which are due on one of the dates which are in the supplied date range.</string>
             </property>
         </widget>
         <widget class="QGroupBox" row="0" column="0">
