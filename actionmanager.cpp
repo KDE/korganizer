@@ -646,6 +646,8 @@ void ActionManager::writeSettings()
   
   if ( mRecent ) mRecent->saveEntries( config );
 
+  config->sync();
+
   if ( mCalendarResources ) {
     mCalendarResources->resourceManager()->writeConfig();
   }
