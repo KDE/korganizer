@@ -82,7 +82,6 @@ void KOEventEditor::setupGeneral()
     QFrame *topFrame = addPage(i18n("General"));
 
     QBoxLayout *topLayout = new QVBoxLayout(topFrame);
-    topLayout->setMargin(marginHint());
     topLayout->setSpacing(spacingHint());
 
     mGeneral->initHeader(topFrame,topLayout);
@@ -97,7 +96,6 @@ void KOEventEditor::setupGeneral()
     QFrame *topFrame2 = addPage(i18n("Details"));
 
     QBoxLayout *topLayout2 = new QVBoxLayout(topFrame2);
-    topLayout2->setMargin(marginHint());
     topLayout2->setSpacing(spacingHint());
 
     mGeneral->initClass(topFrame2,topLayout2);
