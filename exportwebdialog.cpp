@@ -30,6 +30,7 @@
 #include <qcheckbox.h>
 #include <qlineedit.h>
 #include <qhbox.h>
+#include <qvbox.h>
 #include <qpushbutton.h>
 #include <qfiledialog.h>
 #include <qtextstream.h>
