@@ -43,6 +43,10 @@ KOEventPopupMenu::KOEventPopupMenu()
   mEditOnlyItems.append(insertItem (i18n("&Edit..."),this,SLOT(popupEdit())));
   mEditOnlyItems.append(insertItem (KOGlobals::self()->smallIcon("editdelete"),i18n("&Delete"),
                                    this,SLOT(popupDelete())));
+  mEditOnlyItems.append( insertSeparator() );
+  mEditOnlyItems.append( insertItem( QIconSet( KOGlobals::self()->smallIcon("bell") ),
+                                     i18n("Toggle Alarm"), this,
+                                     SLOT( popupAlarm() ) ) );
 }
 
 void KOEventPopupMenu::showIncidencePopup(Incidence *incidence)
@@ -86,4 +90,9 @@ void KOEventPopupMenu::popupEdit()
 void KOEventPopupMenu::popupDelete()
 {
   if (mCurrentIncidence) emit deleteIncidenceSignal(mCurrentIncidence);
+}
+
+void KOEventPopupMenu::popupAlarm()
+{
+  if (mCurrentIncidence) emit toggleAlarmSignal( mCurrentIncidence );
 }

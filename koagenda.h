@@ -131,8 +131,6 @@ class KOAgenda : public QScrollView
     void scrollUp();
     void scrollDown();
 
-    void popupAlarm();
-
     void checkScrollBoundaries( int );
 
     /** Deselect selected items. This function does not emit any signals. */

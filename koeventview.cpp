@@ -66,6 +66,8 @@ KOEventPopupMenu *KOEventView::eventPopup()
                      SIGNAL(showIncidenceSignal(Incidence *)));
   connect(eventPopup,SIGNAL(deleteIncidenceSignal(Incidence *)),
                      SIGNAL(deleteIncidenceSignal(Incidence *)));
+  connect(eventPopup,SIGNAL(toggleAlarmSignal(Incidence *)),
+                     SIGNAL(toggleAlarmSignal(Incidence*)));
 
   return eventPopup;
 }

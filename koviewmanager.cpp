@@ -178,6 +178,8 @@ void KOViewManager::connectView(KOrg::BaseView *view)
           mMainView, SLOT(editIncidence(Incidence *)));
   connect(view, SIGNAL(deleteIncidenceSignal(Incidence *)),
           mMainView, SLOT(deleteIncidence(Incidence *)));
+  connect(view, SIGNAL(toggleAlarmSignal(Incidence *)),
+          mMainView, SLOT(toggleAlarm(Incidence *)));
 
   // signals to create new incidences
   connect( view, SIGNAL( newEventSignal() ),

@@ -440,9 +440,6 @@ KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name) :
 
   // Create event context menu for agenda
   mAgendaPopup = eventPopup();
-  mAgendaPopup->addAdditionalItem(QIconSet(KOGlobals::self()->smallIcon("bell")),
-                                  i18n("Toggle Alarm"),mAgenda,
-                                  SLOT(popupAlarm()),true);
 
   // Create event context menu for all day agenda
   mAllDayAgendaPopup = eventPopup();

@@ -50,11 +50,13 @@ class KOEventPopupMenu : public QPopupMenu {
     void popupShow();
     void popupEdit();
     void popupDelete();
+    void popupAlarm();
 
   signals:
     void editIncidenceSignal(Incidence *);
     void showIncidenceSignal(Incidence *);
     void deleteIncidenceSignal(Incidence *);
+    void toggleAlarmSignal(Incidence *);
     
   private:
     Incidence *mCurrentIncidence;
