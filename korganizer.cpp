@@ -357,7 +357,7 @@ void KOrganizer::initActions()
   mEditIncidenceAction = new KAction(i18n("&Edit..."), 0,
                          mCalendarView,SLOT(editIncidence()),
                          actionCollection(), "edit_incidence");
-  mDeleteIncidenceAction = new KAction(i18n("&Delete..."), 0,
+  mDeleteIncidenceAction = new KAction(i18n("&Delete"), 0,
                          mCalendarView,SLOT(deleteIncidence()),
                          actionCollection(), "delete_incidence");
 
@@ -1266,17 +1266,17 @@ void KOrganizer::processIncidenceSelection( Incidence *incidence )
   enableIncidenceActions( true );
 
   if ( incidence->type() == "Event" ) {
-    mShowIncidenceAction->setText( i18n("&Show Event...") );
+    mShowIncidenceAction->setText( i18n("&Show Event") );
     mEditIncidenceAction->setText( i18n("&Edit Event...") );
-    mDeleteIncidenceAction->setText( i18n("&Delete Event...") );
+    mDeleteIncidenceAction->setText( i18n("&Delete Event") );
   } else if ( incidence->type() == "Todo" ) {
-    mShowIncidenceAction->setText( i18n("&Show To-Do...") );
+    mShowIncidenceAction->setText( i18n("&Show To-Do") );
     mEditIncidenceAction->setText( i18n("&Edit To-Do...") );
-    mDeleteIncidenceAction->setText( i18n("&Delete To-Do...") );
+    mDeleteIncidenceAction->setText( i18n("&Delete To-Do") );
   } else {
-    mShowIncidenceAction->setText( i18n("&Show...") );
+    mShowIncidenceAction->setText( i18n("&Show") );
     mShowIncidenceAction->setText( i18n("&Edit...") );
-    mShowIncidenceAction->setText( i18n("&Delete...") );
+    mShowIncidenceAction->setText( i18n("&Delete") );
  }
 }
 

@@ -85,7 +85,7 @@ Exchange::Exchange(KOrg::MainWindow *parent, const char *name) :
           action,SLOT(setEnabled(bool)));
 //          action,SLOT(setEnabled(bool)));
 
-  action = new KAction(i18n("Delete Event..."), 0, this, SLOT(remove()),
+  action = new KAction(i18n("Delete Event"), 0, this, SLOT(remove()),
                                 actionCollection(), "exchange_delete");
   QObject::connect(this,SIGNAL(enableIncidenceActions(bool)),
           action,SLOT(setEnabled(bool)));
