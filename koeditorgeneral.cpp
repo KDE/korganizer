@@ -165,6 +165,7 @@ void KOEditorGeneral::pickAlarmSound()
       QToolTip::remove(mAlarmSoundButton);
       QString dispStr = i18n("Playing '%1'").arg(fileName);
       QToolTip::add(mAlarmSoundButton, dispStr);
+      mAlarmProgramButton->setOn(false);
     }
   }
   if (mAlarmSound.isEmpty())
@@ -184,6 +185,7 @@ void KOEditorGeneral::pickAlarmProgram()
       QToolTip::remove(mAlarmProgramButton);
       QString dispStr = i18n("Running '%1'").arg(fileName);
       QToolTip::add(mAlarmProgramButton, dispStr);
+      mAlarmSoundButton->setOn(false);
     }
   }
   if (mAlarmProgram.isEmpty())
