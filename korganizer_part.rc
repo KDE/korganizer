@@ -1,0 +1,24 @@
+<!DOCTYPE kpartgui>
+<kpartgui name="korganizer">
+
+  <MenuBar>
+    <Menu name="view"><text>&amp;View</text>
+      <Action name="view_list"/>
+      <Action name="view_day"/>
+      <Action name="view_workweek"/>
+      <Action name="view_week"/>
+      <Action name="view_month"/>
+      <Action name="view_todo"/>
+    </Menu>
+  </MenuBar>
+
+  <ToolBar>
+    <Action name="view_list"/>
+    <Action name="view_day"/>
+    <Action name="view_workweek"/>
+    <Action name="view_week"/>
+    <Action name="view_month"/>
+    <Action name="view_todo"/>
+  </ToolBar>
+    
+</kpartgui>

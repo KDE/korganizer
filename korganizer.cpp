@@ -43,6 +43,7 @@
 #include <kfiledialog.h>
 #include <kaction.h>
 #include <kstdaction.h>
+#include <kedittoolbar.h>
 
 #include "misc.h"
 #include "version.h"
@@ -294,10 +295,12 @@ void KOrganizer::initActions()
   KStdAction::showToolbar(this, SLOT(toggleToolBar()), actionCollection());
 //  KStdAction::showStatusbar(this, SLOT(toggleStatusBar()), actionCollection());
 
+  KStdAction::configureToolbars(this, SLOT(configureToolbars()),
+                                actionCollection());
   KStdAction::preferences(mCalendarView, SLOT(edit_options()),
                           actionCollection());
-
-  createGUI( "korganizer.rc" );
+  
+  createGUI("korganizer.rc");
 }
 
 
@@ -1034,3 +1037,14 @@ QString KOrganizer::file_getname(int open_save)
 
   return fileName;
 }
+
+void KOrganizer::configureToolbars()
+{
+  KEditToolbar dlg(actionCollection());
+
+  if (dlg.exec())
+  {
+    createGUI("korganizer.rc");
+  }
+}
+

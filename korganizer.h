@@ -35,93 +35,95 @@ class CalendarView;
  */
 class KOrganizer : public KTMainWindow
 {
-  Q_OBJECT
-public:
-  /**
-   *
-   * Constructs a new main window.
-   *
-   * @param cal is a newly allocated calendar passed from the main program
-   * @param parent this should usually be 0, unless it is a child win (when?)
-   * @param name this is the name of the window to display in the titlebar
-   * @param fnOverride specifies whether if the filename given is empty,
-   * KOrg. will try to obtain a filename from the config file instead of 
-   * starting up with an empty calendar.
-   *
-   */
-  KOrganizer(QString filename="", bool fnOverride=true, const char *name=0);
-  virtual ~KOrganizer();
+    Q_OBJECT
+  public:
+    /**
+     *
+     * Constructs a new main window.
+     *
+     * @param cal is a newly allocated calendar passed from the main program
+     * @param parent this should usually be 0, unless it is a child win (when?)
+     * @param name this is the name of the window to display in the titlebar
+     * @param fnOverride specifies whether if the filename given is empty,
+     * KOrg. will try to obtain a filename from the config file instead of 
+     * starting up with an empty calendar.
+     *
+     */
+    KOrganizer(QString filename="", bool fnOverride=true, const char *name=0);
+    virtual ~KOrganizer();
 
-  // public variables
-  static QList<KOrganizer> windowList;
+    // public variables
+    static QList<KOrganizer> windowList;
 
-  // View Types in enum
-  enum { AGENDAVIEW, LISTVIEW, MONTHVIEW, TODOVIEW };
-  enum { EVENTADDED, EVENTEDITED, EVENTDELETED };
+    // View Types in enum
+    enum { AGENDAVIEW, LISTVIEW, MONTHVIEW, TODOVIEW };
+    enum { EVENTADDED, EVENTEDITED, EVENTDELETED };
 
-signals:
+  signals:
 
-  /** when change is made to options dialog, the topwidget will catch this
-   *  and emit this signal which notifies all widgets which have registered 
-   *  for notification to update their settings. */  
-  void configChanged();
-  /** emitted when the topwidget is closing down, so that any attached
-      child windows can also close. */
-  void closingDown();
+    /** when change is made to options dialog, the topwidget will catch this
+     *  and emit this signal which notifies all widgets which have registered 
+     *  for notification to update their settings. */  
+    void configChanged();
+    /** emitted when the topwidget is closing down, so that any attached
+        child windows can also close. */
+    void closingDown();
 
-public slots:
+  public slots:
 
-  /** options dialog made a changed to the configuration. we catch this
-   *  and notify all widgets which need to update their configuration. */
-  void updateConfig();
+    /** options dialog made a changed to the configuration. we catch this
+     *  and notify all widgets which need to update their configuration. */
+    void updateConfig();
 
 
- protected slots:
+  protected slots:
  
-  /** using the KConfig associated with the kapp variable, read in the
-   * settings from the config file. 
-   */
-  void readSettings();
+    /** using the KConfig associated with the kapp variable, read in the
+     * settings from the config file. 
+     */
+    void readSettings();
   
-  /** write current state to config file. */
-  void writeSettings();
+    /** write current state to config file. */
+    void writeSettings();
 
-  /** open new window */
-  void file_new();
+    /** open new window */
+    void file_new();
 
-  /** open a file, load it into the calendar. */
-  void file_open();
+    /** open a file, load it into the calendar. */
+    void file_open();
 
-  /** open a file from the list of recent files. */
-  void file_openRecent(int i);
+    /** open a file from the list of recent files. */
+    void file_openRecent(int i);
 
-  /** import a calendar from another program like ical. */
-  void file_import();
+    /** import a calendar from another program like ical. */
+    void file_import();
 
-  /** open a calendar and add the contents to the current calendar. */
-  void file_merge();
+    /** open a calendar and add the contents to the current calendar. */
+    void file_merge();
 
-  /** delete or archive old entries in your calendar for speed/space. */
-  void file_archive();
+    /** delete or archive old entries in your calendar for speed/space. */
+    void file_archive();
 
-  /** save a file with the current fileName. returns nonzero on error. */
-  int file_save();
+    /** save a file with the current fileName. returns nonzero on error. */
+    int file_save();
 
-  /** save a file under a (possibly) different filename. Returns nonzero
-   * on error. */
-  int file_saveas();
+    /** save a file under a (possibly) different filename. Returns nonzero
+     * on error. */
+    int file_saveas();
 
-  /** close a file, prompt for save if changes made. */
-  void file_close();
+    /** close a file, prompt for save if changes made. */
+    void file_close();
 
-  /** exit the program, prompt for save if files are "dirty". */
-  void file_quit();
+    /** exit the program, prompt for save if files are "dirty". */
+    void file_quit();
 
+    /** Open toolbar configuration dialog */
+    void configureToolbars();
 
-protected slots:
+  protected slots:
 
-  /** toggle the appearance of the menuBar. */
-  void toggleToolBar() 
+    /** toggle the appearance of the menuBar. */
+    void toggleToolBar() 
     { 
       if(toolBar()->isVisible())
         toolBar()->hide();
@@ -142,58 +144,58 @@ protected slots:
     };
 */
 
-  /** called by the autoSaveTimer to automatically save the calendar */
-  void checkAutoSave();
+    /** called by the autoSaveTimer to automatically save the calendar */
+    void checkAutoSave();
 
-protected:
-  void initMenus();
-  void initToolBar();
+  protected:
+    void initMenus();
+    void initToolBar();
 
-  void initActions();
+    void initActions();
 
-  /** supplied so that close events call file_close()/file_close() properly.*/
-  bool queryClose();
-  bool queryExit();
+    /** supplied so that close events call file_close()/file_close() properly.*/
+    bool queryClose();
+    bool queryExit();
 
-  /** show a file browser and get a file name.
-    * open_save is 0 for open, 1 for save. */
-  QString file_getname(int open_save);
+    /** show a file browser and get a file name.
+      * open_save is 0 for open, 1 for save. */
+    QString file_getname(int open_save);
 
-  /**
-   * takes the given fileName and adds it to the list of recent
-   * files opened.
-   */
-  void add_recent_file(QString recentFileName);
+    /**
+     * takes the given fileName and adds it to the list of recent
+     * files opened.
+     */
+    void add_recent_file(QString recentFileName);
 
-  /** query whether autoSave is set or not */
-  bool autoSave() { return mAutoSave; };
+    /** query whether autoSave is set or not */
+    bool autoSave() { return mAutoSave; };
 
-  /** Sets title of window according to filename and modification state */
-  void setTitle();
+    /** Sets title of window according to filename and modification state */
+    void setTitle();
 
-  // variables
-  CalendarView *mCalendarView;  // Main view widget
-  QString mFilename;     // Name of calendar file
+    // variables
+    CalendarView *mCalendarView;  // Main view widget
+    QString mFilename;     // Name of calendar file
 
-  // menu stuff
-  QPopupMenu *fileMenu, *editMenu;
-  QPopupMenu *actionMenu, *optionsMenu, *viewMenu;
-  QPopupMenu *helpMenu;
-  QPopupMenu *recentPop;
+    // menu stuff
+    QPopupMenu *fileMenu, *editMenu;
+    QPopupMenu *actionMenu, *optionsMenu, *viewMenu;
+    QPopupMenu *helpMenu;
+    QPopupMenu *recentPop;
 
-  // toolbar stuff
-  KToolBar    *tb;
-  KMenuBar    *menubar;
-  KStatusBar  *sb;
+    // toolbar stuff
+    KToolBar    *tb;
+    KMenuBar    *menubar;
+    KStatusBar  *sb;
 
-  // configuration settings
-  bool mAutoSave;  // Auto-Save calendar on close
-  QStrList        recentFileList;	// a list of recently accessed files
+    // configuration settings
+    bool mAutoSave;  // Auto-Save calendar on close
+    QStrList        recentFileList;	// a list of recently accessed files
 
-  QTimer         *mAutoSaveTimer;   // used if calendar is to be autosaved
+    QTimer         *mAutoSaveTimer;   // used if calendar is to be autosaved
 
-  int toolBarMenuId, statusBarMenuId;
-  bool toolBarEnable, statusBarEnable; // only used at initialization time
+    int toolBarMenuId, statusBarMenuId;
+    bool toolBarEnable, statusBarEnable; // only used at initialization time
 };
 
 #endif // _KORGANIZER_H

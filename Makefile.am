@@ -80,6 +80,10 @@ mime_DATA = x-vcalendar.desktop
 rcdir = $(kde_datadir)/korganizer
 rc_DATA = korganizer.rc
 
+partdir   = $(kde_datadir)/korganizer
+part_DATA = korganizer_part.rc
+
+
 messages: rc.cpp
 	$(XGETTEXT) *.cpp -o $(podir)/korganizer.pot
 
