@@ -66,33 +66,39 @@ KOAgendaItem::KOAgendaItem(Incidence *incidence, QDate qd, QWidget *parent,
   mSelected = true;
   select(false);
 
-//  QToolTip::add(this,mEvent->summary());
-  QString tipText = mIncidence->summary();
+  generateToolTip();
+  setAcceptDrops(true);
+}
+
+void KOAgendaItem::generateToolTip()
+{
+  QString tipText = "<qt><b>"+ mIncidence->summary().replace("\n", "<br>")+"</b>";
 
   if ( !mIncidence->doesFloat() )
     if ( mIncidence->type() == "Event" ) {
       if ( (static_cast<Event*>(mIncidence))->isMultiDay() ) {
-        tipText += "\n"+i18n("From: ")+mIncidence->dtStartStr();
-        tipText += "\n"+i18n("To: ")+(static_cast<Event*>(mIncidence))->dtEndStr();
+        tipText += "<br>"+i18n("From: ")+mIncidence->dtStartStr();
+        tipText += "<br>"+i18n("To: ")+(static_cast<Event*>(mIncidence))->dtEndStr();
       }
       else {
-        tipText += "\n"+i18n("Time: ")+mIncidence->dtStartTimeStr();
+        tipText += "<br>"+i18n("Time: ")+mIncidence->dtStartTimeStr();
         tipText += " - "+(static_cast<Event*>(mIncidence))->dtEndTimeStr();
       }
     }
     else if ( mIncidence->type() == "Todo" ) {
-      tipText += "\n"+i18n("Due: ")+ (static_cast<Todo*>(mIncidence))->dtDueTimeStr();
+      tipText += "<br>"+i18n("Due: ")+ (static_cast<Todo*>(mIncidence))->dtDueTimeStr();
     }
 
   if (!mIncidence->location().isEmpty()) {
-    tipText += "\n"+i18n("Location: ")+mIncidence->location();
+    tipText += "<br>"+i18n("Location: ")+mIncidence->location().replace("\n", "<br>");
   }
-  //QToolTip::add(this,mEvent->summary(),toolTipGroup(),"");
+  if (!mIncidence->description().isEmpty()) {
+    tipText += "<br><hr>" +mIncidence->description().replace("\n", "<br>");
+  }
+  tipText += "</qt>";
   QToolTip::add(this,tipText,toolTipGroup(),"");
 
-  setAcceptDrops(true);
 }
-
 
 void KOAgendaItem::updateIcons()
 {

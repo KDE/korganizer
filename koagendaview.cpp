@@ -607,6 +607,7 @@ void KOAgendaView::updateEventDates(KOAgendaItem *item)
 
   item->incidence()->setRevision(item->incidence()->revision()+1);
   item->setItemDate(startDt.date());
+  item->generateToolTip();
 
   emit eventChanged();
 

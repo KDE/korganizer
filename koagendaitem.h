@@ -86,6 +86,7 @@ class KOAgendaItem : public QWidget
     QString text () { return mLabelText; }
 
     static QToolTipGroup *toolTipGroup();
+    void generateToolTip();
 
     QPtrList<KOAgendaItem> conflictItems();
     void setConflictItems(QPtrList<KOAgendaItem>);
