@@ -92,13 +92,13 @@ bool ListItemVisitor::visit(Event *e)
     mItem->setPixmap(2,recurPxmp);
   }
 
-  mItem->setText(3,e->dtStartDateStr());
-  mItem->setText(4,e->dtStartTimeStr());
-  mItem->setText(5,e->dtEndDateStr());
-  mItem->setText(6,e->dtEndTimeStr());
-  mItem->setText(7,"---");
-  mItem->setText(8,"---");
-  mItem->setText(9,e->categoriesStr());
+  mItem->setText( 3,e->dtStartDateStr());
+  if (e->doesFloat()) mItem->setText(4, i18n("---")); else mItem->setText( 4, e->dtStartTimeStr() );
+  mItem->setText( 5,e->dtEndDateStr());
+  if (e->doesFloat()) mItem->setText(6, i18n("---")); else mItem->setText( 6, e->dtEndTimeStr() );
+  mItem->setText( 7, i18n( "---" ) );
+  mItem->setText( 8, i18n( "---" ) );
+  mItem->setText( 9,e->categoriesStr());
 
   QString key = e->dtStart().toString(Qt::ISODate);
   mItem->setSortKey(1,key);
