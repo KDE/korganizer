@@ -53,7 +53,6 @@ using namespace KOrg;
 #include "kotodoview.moc"
 
 const int KOTodoView::POPUP_UNSUBTODO=1234;
-const int KOTodoView::POPUP_COPYTO=1235;
 
 KOTodoListViewToolTip::KOTodoListViewToolTip (QWidget* parent,
                                               KOTodoListView* lv )
@@ -399,10 +398,21 @@ KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent, const char* name)
   }
   connect( mPercentageCompletedPopupMenu, SIGNAL( activated( int ) ),
            SLOT( setNewPercentage( int ) ) );
-  
-  mDatePickerPopupMenu = new KDatePickerPopup( QDate::currentDate() );
-  connect( mDatePickerPopupMenu, SIGNAL( dateChanged( QDate )),
+
+  mMovePopupMenu = new KDatePickerPopup(
+                             KDatePickerPopup::NoDate |
+                             KDatePickerPopup::DatePicker |
+                             KDatePickerPopup::Words );
+  mCopyPopupMenu = new KDatePickerPopup(
+                             KDatePickerPopup::NoDate |
+                             KDatePickerPopup::DatePicker |
+                             KDatePickerPopup::Words );
+
+
+  connect( mMovePopupMenu, SIGNAL( dateChanged( QDate )),
            SLOT( setNewDate( QDate ) ) );
+  connect( mCopyPopupMenu, SIGNAL( dateChanged( QDate )),
+           SLOT( copyTodoToDate( QDate ) ) );
 
   mItemPopupMenu = new QPopupMenu(this);
   mItemPopupMenu->insertItem(i18n("Show"), this,
@@ -419,17 +429,17 @@ KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent, const char* name)
   mItemPopupMenu->insertItem( i18n("Make Sub-To-Do Independent"), this,
       SIGNAL( unSubTodoSignal() ), 0, POPUP_UNSUBTODO );
   mItemPopupMenu->insertSeparator();
-  mItemPopupMenu->insertItem( i18n("Copy To"), mDatePickerPopupMenu,
-                              POPUP_COPYTO);
-  mItemPopupMenu->insertItem(i18n("Move To"), mDatePickerPopupMenu);
+  mItemPopupMenu->insertItem( i18n("Copy To"), mCopyPopupMenu );
+  mItemPopupMenu->insertItem(i18n("Move To"), mMovePopupMenu);
   mItemPopupMenu->insertSeparator();
   mItemPopupMenu->insertItem(i18n("delete completed To-Dos","Purge Completed"),
                              this, SLOT( purgeCompleted() ) );
-  
-  // mItemPopupMenu won't hide when a date is selected
-  connect( mDatePickerPopupMenu, SIGNAL( dateChanged( QDate ) ),
-      mItemPopupMenu, SLOT( hide() ) );
-  
+
+  connect( mMovePopupMenu, SIGNAL( dateChanged( QDate ) ),
+           mItemPopupMenu, SLOT( hide() ) );
+  connect( mCopyPopupMenu, SIGNAL( dateChanged( QDate ) ),
+           mItemPopupMenu, SLOT( hide() ) );
+
   mPopupMenu = new QPopupMenu(this);
   mPopupMenu->insertItem(KOGlobals::self()->smallIconSet("todo"), i18n("New To-Do..."), this,
                          SLOT (newTodo()));
@@ -464,7 +474,7 @@ KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent, const char* name)
            SLOT( processSelectionChange() ) );
   connect( mQuickAdd, SIGNAL( returnPressed () ),
            SLOT( addQuickTodo() ) );
-  
+
   connect( mTodoListView, SIGNAL( incidenceAdded( Incidence* ) ),
            SIGNAL( incidenceAdded( Incidence* ) ) );
   connect( mTodoListView, SIGNAL( incidenceChanged( Incidence*, Incidence* ) ),
@@ -529,7 +539,7 @@ void KOTodoView::updateView()
   mTodoListView->blockSignals( false );
 
   mTodoListView->setContentsPos( 0, oldPos );
-  
+
   processSelectionChange();
 }
 
@@ -643,7 +653,7 @@ void KOTodoView::editItem( QListViewItem *item, const QPoint &, int )
 
 void KOTodoView::showItem( QListViewItem *item )
 {
-  if (item) 
+  if (item)
     emit showIncidenceSignal( static_cast<KOTodoViewItem *>( item )->todo() );
 }
 
@@ -656,25 +666,30 @@ void KOTodoView::popupMenu( QListViewItem *item, const QPoint &, int column )
 {
   mActiveItem = static_cast<KOTodoViewItem *>( item );
   if ( item ) {
+    QDate date = mActiveItem->todo()->dtDue().date();
     if ( mActiveItem->todo()->hasDueDate () ) {
-      mDatePickerPopupMenu->datePicker()->setDate( mActiveItem->todo()->
-        dtDue().date() );
+      mMovePopupMenu->datePicker()->setDate( date );
+    } else {
+      mMovePopupMenu->datePicker()->setDate( QDate::currentDate() );
     }
     switch ( column ) {
       case 2:
-        mPriorityPopupMenu->popup( QCursor::pos () );
+        mPriorityPopupMenu->popup( QCursor::pos() );
         break;
-      case 3:
-        mPercentageCompletedPopupMenu->popup( QCursor::pos () );
+      case 3: {
+        mPercentageCompletedPopupMenu->popup( QCursor::pos() );
         break;
+      }
       case 4:
-        mDatePickerPopupMenu->popup( QCursor::pos () );
+        mMovePopupMenu->popup( QCursor::pos() );
         break;
       case 5:
         getCategoryPopupMenu(
-            static_cast<KOTodoViewItem *>( item ) )->popup( QCursor::pos () );
+            static_cast<KOTodoViewItem *>( item ) )->popup( QCursor::pos() );
         break;
       default:
+        mCopyPopupMenu->datePicker()->setDate( date );
+        mCopyPopupMenu->datePicker()->setDate( QDate::currentDate() );
         mItemPopupMenu->setItemEnabled( POPUP_UNSUBTODO,
                                         mActiveItem->todo()->relatedTo() );
         mItemPopupMenu->popup( QCursor::pos() );
@@ -747,36 +762,55 @@ void KOTodoView::setNewPercentage(int index)
 }
 
 void KOTodoView::setNewDate(QDate date)
-{   
-  if ( mActiveItem && !mActiveItem->todo()->isReadOnly () ) {
+{
+  if ( mActiveItem && !mActiveItem->todo()->isReadOnly()) {
     Todo *todo = mActiveItem->todo();
+
     QDateTime dt;
     dt.setDate( date );
+
     if ( !todo->doesFloat() )
       dt.setTime( todo->dtDue().time() );
 
-    // Check whether "Copy to" is highlighted
-    if ( mItemPopupMenu->isItemActive( POPUP_COPYTO ) ) {
-      Todo *newTodo = new Todo( *todo );
-      newTodo->recreate();
-      newTodo->setDtDue( dt );
-      // avoid forking
-      if ( newTodo->doesRecur() ) newTodo->recurrence()->unsetRecurs();
-      calendar()->addTodo( newTodo );
-      emit incidenceAdded( newTodo );
-    }
-    else {
-      Todo *oldTodo = todo->clone();
-      if ( !todo->hasDueDate() )
-        todo->setHasDueDate( true );
-      todo->setDtDue( dt );
-      mActiveItem->construct();
-      emit incidenceChanged( oldTodo, todo, KOGlobals::DATE_MODIFIED );      
-      delete oldTodo;
-    }
+    Todo *oldTodo = todo->clone();
+    if ( !todo->hasDueDate() )
+      todo->setHasDueDate( true );
+
+    if ( date.isNull() )
+      todo->setHasDueDate( false );
+    todo->setDtDue( dt );
+
+    if ( todo->doesRecur() )
+      todo->recurrence()->setRecurStart( todo->dtDue() );
+
+    mActiveItem->construct();
+    emit incidenceChanged( oldTodo, todo, KOGlobals::DATE_MODIFIED );
+    delete oldTodo;
   }
 }
 
+void KOTodoView::copyTodoToDate( QDate date )
+{
+  QDateTime dt;
+  dt.setDate( date );
+
+  if ( mActiveItem ) {
+    Todo *newTodo = mActiveItem->todo()->clone();
+    newTodo->recreate();
+
+   if ( date.isNull() )
+     newTodo->setHasDueDate( false );
+   newTodo->setDtDue( dt );
+   newTodo->setPercentComplete( 0 );
+
+   // avoid forking
+   if ( newTodo->doesRecur() )
+     newTodo->recurrence()->unsetRecurs();
+
+   calendar()->addTodo( newTodo );
+   emit incidenceAdded( newTodo );
+ }
+}
 
 QPopupMenu *KOTodoView::getCategoryPopupMenu( KOTodoViewItem *todoItem )
 {

@@ -176,6 +176,7 @@ class KOTodoView : public KOrg::BaseView
     void setNewPriority( int );
     void setNewPercentage( int );
     void setNewDate( QDate );
+    void copyTodoToDate( QDate );
     void changedCategories( int );
 
     void purgeCompleted();
@@ -219,7 +220,8 @@ class KOTodoView : public KOrg::BaseView
     QPopupMenu *mPriorityPopupMenu;
     QPopupMenu *mPercentageCompletedPopupMenu;
     QPopupMenu *mCategoryPopupMenu;
-    KDatePickerPopup *mDatePickerPopupMenu;
+    KDatePickerPopup *mMovePopupMenu;
+    KDatePickerPopup *mCopyPopupMenu;
 
     QMap<int, int> mPercentage;
     QMap<int, int> mPriority;
@@ -234,7 +236,6 @@ class KOTodoView : public KOrg::BaseView
     KPIM::ClickLineEdit *mQuickAdd;
 
     static const int POPUP_UNSUBTODO;
-    static const int POPUP_COPYTO;
 };
 
 #endif
