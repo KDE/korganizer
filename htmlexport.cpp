@@ -250,7 +250,7 @@ void HtmlExport::createHtmlTodoList (QTextStream *ts)
   *ts << "  <TR>\n";
   *ts << "    <TH CLASS=sum>" << i18n("Task") << "</TH>\n";
   *ts << "    <TH>" << i18n("Priority") << "</TH>\n";
-  *ts << "    <TH>" << i18n("Status") << "</TH>\n";
+  *ts << "    <TH>" << i18n("Completed") << "</TH>\n";
   if (dueDateEnabled()) {
     *ts << "    <TH>" << i18n("Due Date") << "</TH>\n";
   }
@@ -339,8 +339,7 @@ void HtmlExport::createHtmlTodo (QTextStream *ts,Todo *todo)
   *ts << "  <TD";
   if (completed) *ts << " CLASS=done";
   *ts << ">\n";
-  *ts << "    " << (completed ? i18n("completed","Done") : i18n("not yet done","Open"))
-      << "\n";
+  *ts << "    " << i18n("%1 %").arg(todo->percentComplete()) << "\n";
   *ts << "  </TD>\n";
 
   if (dueDateEnabled()) {

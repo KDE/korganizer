@@ -134,16 +134,22 @@ CalendarView::CalendarView(QWidget *parent,const char *name)
 
   mLeftFrame = new QSplitter(QSplitter::Vertical,mPanner,
                             "CalendarView::LeftFrame");
+  mPanner->setResizeMode(mLeftFrame,QSplitter::KeepSize);
   mRightFrame = new QWidgetStack(mPanner, "CalendarView::RightFrame");
 
   mDateNavigator = new KDateNavigator(mLeftFrame, mCalendar, TRUE,
                         "CalendarView::DateNavigator", QDate::currentDate());
+  mLeftFrame->setResizeMode(mDateNavigator,QSplitter::KeepSize);
   connect(mDateNavigator, SIGNAL(datesSelected(const QDateList)),
           SLOT(selectDates(const QDateList)));
   connect(mDateNavigator,SIGNAL(weekClicked(QDate)),SLOT(selectWeek(QDate)));
   connect(mDateNavigator,SIGNAL(eventDropped(Event *)),
           SLOT(eventAdded(Event *)));
   connect(this, SIGNAL(configChanged()), mDateNavigator, SLOT(updateConfig()));
+
+  kdDebug() << "/// width: " << mDateNavigator->minimumSizeHint().width()
+            << "/// heigh: " << mDateNavigator->minimumSizeHint().height()
+            << endl;
 
   mTodoList = new KOTodoView(mCalendar, mLeftFrame, "CalendarView::TodoList");
   connect(mTodoList, SIGNAL(newTodoSignal()),
@@ -333,9 +339,11 @@ void CalendarView::readSettings()
   config->setGroup("KOrganizer Geometry");
 
   QValueList<int> sizes = config->readIntListEntry("Separator1");
-  if (sizes.count() == 2) {
-    mPanner->setSizes(sizes);
+  if (sizes.count() != 2) {
+    sizes << mDateNavigator->minimumSizeHint().width();
+    sizes << 300;
   }
+  mPanner->setSizes(sizes);
 
   sizes = config->readIntListEntry("Separator2");
   if (sizes.count() == 3) {

@@ -1,4 +1,4 @@
-// 	$Id$	
+// $Id$	
 
 #include <qstring.h>
 #include <qtooltip.h>
@@ -18,11 +18,9 @@
 #include "kdatenav.h"
 #include "kdatenav.moc"
 
-KDateNavigator::KDateNavigator(QWidget *parent, 
-			       Calendar *calendar, 
-			       bool show_week_nums,
-			       const char *name,
-			       QDate startDate)
+KDateNavigator::KDateNavigator(QWidget *parent,Calendar *calendar,
+                               bool show_week_nums,const char *name,
+                               QDate startDate)
   : QFrame(parent, name)
 {
   mCalendar = calendar;

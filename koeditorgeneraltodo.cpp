@@ -34,8 +34,8 @@ KOEditorGeneralTodo::KOEditorGeneralTodo(int spacing,QWidget* parent,
 
   initLayout();
 
-  QWidget::setTabOrder(summaryEdit, completedButton);
-  QWidget::setTabOrder(completedButton, priorityCombo);
+  QWidget::setTabOrder(summaryEdit, completedCombo);
+  QWidget::setTabOrder(completedCombo, priorityCombo);
   QWidget::setTabOrder(priorityCombo, descriptionEdit);
   QWidget::setTabOrder(descriptionEdit, categoriesButton);
   QWidget::setTabOrder(categoriesButton, mSecrecyCombo);
@@ -56,15 +56,11 @@ void KOEditorGeneralTodo::initTimeBox()
   QGridLayout *layoutTimeBox = new QGridLayout(timeBoxFrame,1,1);
   layoutTimeBox->setSpacing(mSpacing);
 
-  mNoDueCheck = new QCheckBox(timeBoxFrame);
-  mNoDueCheck->setText(i18n("No due date"));
+  mNoDueCheck = new QCheckBox(i18n("No due date"),timeBoxFrame);
   layoutTimeBox->addWidget(mNoDueCheck,0,0);
+  connect(mNoDueCheck,SIGNAL(toggled(bool)),SLOT(dueStuffDisable(bool)));
 
-  connect(mNoDueCheck, SIGNAL(toggled(bool)), 
-	  this, SLOT(dueStuffDisable(bool)));
-
-  mDueLabel = new QLabel( timeBoxFrame, "Label_2" );
-  mDueLabel->setText( i18n("Due Date:") );
+  mDueLabel = new QLabel(i18n("Due Date:"),timeBoxFrame);
   layoutTimeBox->addWidget(mDueLabel,1,0);
   
   mDueDateEdit = new KDateEdit(timeBoxFrame);
@@ -74,15 +70,11 @@ void KOEditorGeneralTodo::initTimeBox()
   layoutTimeBox->addWidget(mDueTimeEdit,1,2);
 
 
-  mNoStartCheck = new QCheckBox(timeBoxFrame);
-  mNoStartCheck->setText(i18n("No start date"));
+  mNoStartCheck = new QCheckBox(i18n("No start date"),timeBoxFrame);
   layoutTimeBox->addWidget(mNoStartCheck,2,0);
+  connect(mNoStartCheck,SIGNAL(toggled(bool)),SLOT(startStuffDisable(bool)));
 
-  connect(mNoStartCheck, SIGNAL(toggled(bool)), 
-	  this, SLOT(startStuffDisable(bool)));
-
-  mStartLabel = new QLabel(timeBoxFrame);
-  mStartLabel->setText(i18n("Start Date:"));
+  mStartLabel = new QLabel(i18n("Start Date:"),timeBoxFrame);
   layoutTimeBox->addWidget(mStartLabel,3,0);
   
   mStartDateEdit = new KDateEdit(timeBoxFrame);
@@ -92,12 +84,10 @@ void KOEditorGeneralTodo::initTimeBox()
   layoutTimeBox->addWidget(mStartTimeEdit,3,2);
 
 
-  noTimeButton = new QCheckBox(timeBoxFrame);
-  noTimeButton->setText(i18n("No time associated"));
+  noTimeButton = new QCheckBox(i18n("No time associated"),timeBoxFrame);
   layoutTimeBox->addWidget(noTimeButton,0,4);
 
-  connect(noTimeButton, SIGNAL(toggled(bool)), 
-	  this, SLOT(timeStuffDisable(bool)));
+  connect(noTimeButton,SIGNAL(toggled(bool)),SLOT(timeStuffDisable(bool)));
 //  connect(noTimeButton, SIGNAL(toggled(bool)),
 //	  this, SLOT(alarmStuffDisable(bool)));
   
@@ -108,44 +98,53 @@ void KOEditorGeneralTodo::initTimeBox()
 
 void KOEditorGeneralTodo::initMisc()
 {
+/*
   completedButton = new QCheckBox(this, "CheckBox_10" );
   completedButton->setText( i18n("Completed") );
   connect(completedButton,SIGNAL(clicked()),SLOT(completedClicked()));
+*/
 
-  priorityLabel = new QLabel( this, "Label_3" );
-  priorityLabel->setText( i18n("Priority:") );
+  completedCombo = new QComboBox(this);
+  completedCombo->insertItem(i18n("0 %"));
+  completedCombo->insertItem(i18n("20 %"));
+  completedCombo->insertItem(i18n("40 %"));
+  completedCombo->insertItem(i18n("60 %"));
+  completedCombo->insertItem(i18n("80 %"));
+  completedCombo->insertItem(i18n("100 %"));
+  connect(completedCombo,SIGNAL(activated(int)),SLOT(completedChanged(int)));
 
-  priorityCombo = new QComboBox( false, this, "ComboBox_10" );
-  priorityCombo->setSizeLimit( 10 );
-  priorityCombo->insertItem( i18n("1 (Highest)") );
-  priorityCombo->insertItem( i18n("2") );
-  priorityCombo->insertItem( i18n("3") );
-  priorityCombo->insertItem( i18n("4") );
-  priorityCombo->insertItem( i18n("5 (lowest)") );
+  completedLabel = new QLabel(i18n("completed"),this);
 
-  summaryLabel = new QLabel( this, "Label_1" );
-  summaryLabel->setText( i18n("Summary:") );
+  priorityLabel = new QLabel(i18n("Priority:"),this);
 
-  summaryEdit = new QLineEdit( this, "LineEdit_1" );
+  priorityCombo = new QComboBox(this);
+  priorityCombo->setSizeLimit(10);
+  priorityCombo->insertItem(i18n("1 (Highest)"));
+  priorityCombo->insertItem(i18n("2"));
+  priorityCombo->insertItem(i18n("3"));
+  priorityCombo->insertItem(i18n("4"));
+  priorityCombo->insertItem(i18n("5 (lowest)"));
 
-  descriptionEdit = new QMultiLineEdit( this, "MultiLineEdit_1" );
-  descriptionEdit->insertLine( "" );
-  descriptionEdit->setReadOnly( false );
-  descriptionEdit->setOverwriteMode( false );
+  summaryLabel = new QLabel(i18n("Summary:"),this);
+
+  summaryEdit = new QLineEdit(this);
+
+  descriptionEdit = new QMultiLineEdit(this);
+  descriptionEdit->insertLine("");
+  descriptionEdit->setReadOnly(false);
+  descriptionEdit->setOverwriteMode(false);
   descriptionEdit->setWordWrap(QMultiLineEdit::WidgetWidth);
 
-  ownerLabel = new QLabel( this, "Label_7" );
-  ownerLabel->setText( i18n("Owner:") );
+  ownerLabel = new QLabel(i18n("Owner:"),this);
 
   mSecrecyLabel = new QLabel("Access:",this);
   mSecrecyCombo = new QComboBox(this);
   mSecrecyCombo->insertStringList(Incidence::secrecyList());
 
-  categoriesButton = new QPushButton( this, "PushButton_6" );
-  categoriesButton->setText( i18n("Categories...") );
+  categoriesButton = new QPushButton(i18n("Categories..."),this);
   connect(categoriesButton,SIGNAL(clicked()),SIGNAL(openCategoryDialog()));
 
-  categoriesLabel = new QLabel( this, "LineEdit_7" );
+  categoriesLabel = new QLabel(this);
   categoriesLabel->setFrameStyle(QFrame::Panel|QFrame::Sunken);
 }
 
@@ -165,7 +164,8 @@ void KOEditorGeneralTodo::initLayout()
 
   QBoxLayout *layoutCompletion = new QHBoxLayout;
   layoutTop->addLayout(layoutCompletion);
-  layoutCompletion->addWidget(completedButton);
+  layoutCompletion->addWidget(completedCombo);
+  layoutCompletion->addWidget(completedLabel);
   layoutCompletion->addStretch();
   layoutCompletion->addWidget(priorityLabel);
   layoutCompletion->addWidget(priorityCombo);
@@ -205,6 +205,8 @@ void KOEditorGeneralTodo::setDefaults(QDateTime due,bool allDay)
   mStartTimeEdit->setTime(QTime::currentTime());  
 
   mSecrecyCombo->setCurrentItem(Incidence::SecrecyPublic);
+
+  completedCombo->setCurrentItem(0);
 }
 
 void KOEditorGeneralTodo::readTodo(Todo *todo)
@@ -236,13 +238,9 @@ void KOEditorGeneralTodo::readTodo(Todo *todo)
 
   noTimeButton->setChecked(todo->doesFloat());
 
-  if (todo->isCompleted()) {
-    completedButton->setChecked(true);
-    if (todo->hasCompletedDate()) {
-      mCompleted = todo->completed();
-    }
-  } else {
-    completedButton->setChecked(false);
+  completedCombo->setCurrentItem(todo->percentComplete() / 20);
+  if (todo->isCompleted() && todo->hasCompletedDate()) {
+    mCompleted = todo->completed();
   }
   setCompletedDate();
 
@@ -302,14 +300,10 @@ void KOEditorGeneralTodo::writeTodo(Todo *todo)
   todo->setPriority(priorityCombo->currentItem()+1);
 
   // set completion state
-  if (completedButton->isChecked()) {
-    if (mCompleted.isValid()) {
-      todo->setCompleted(mCompleted);
-    } else {
-      todo->setCompleted(true);
-    }
-  } else {
-    todo->setCompleted(false);
+  todo->setPercentComplete(completedCombo->currentItem() * 20);
+
+  if (completedCombo->currentItem() == 5 && mCompleted.isValid()) {
+    todo->setCompleted(mCompleted);
   }
 }
 
@@ -401,9 +395,9 @@ bool KOEditorGeneralTodo::validateInput()
   return true;
 }
 
-void KOEditorGeneralTodo::completedClicked()
+void KOEditorGeneralTodo::completedChanged(int index)
 {
-  if (completedButton->isChecked()) {
+  if (index == 5) {
     mCompleted = QDateTime::currentDateTime();
   }
   setCompletedDate();
@@ -411,10 +405,10 @@ void KOEditorGeneralTodo::completedClicked()
 
 void KOEditorGeneralTodo::setCompletedDate()
 {
-  if (completedButton->isChecked() && mCompleted.isValid()) {
-    completedButton->setText(i18n("Completed on %1")
+  if (completedCombo->currentItem() == 5 && mCompleted.isValid()) {
+    completedLabel->setText(i18n("completed on %1")
         .arg(KGlobal::locale()->formatDateTime(mCompleted)));
   } else {
-    completedButton->setText(i18n("Completed"));
+    completedLabel->setText(i18n("completed"));
   }
 }

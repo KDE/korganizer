@@ -30,7 +30,8 @@ class KDateButton: public QLabel {
 
     void updateConfig();
 
-    QSize sizeHint () const ;
+    QSize sizeHint () const;
+    QSize minimumSizeHint () const { return sizeHint(); }
 
   public slots:
     void setDate(QDate newdate);

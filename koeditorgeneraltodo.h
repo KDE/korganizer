@@ -48,7 +48,7 @@ class KOEditorGeneralTodo : public QWidget
     void timeStuffDisable(bool disable);
     void dueStuffDisable(bool disable);
     void startStuffDisable(bool disable);
-    void completedClicked();
+    void completedChanged(int);
 
   protected:
     void initMisc();
@@ -84,7 +84,8 @@ class KOEditorGeneralTodo : public QWidget
     KDateEdit               *mDueDateEdit;
     KTimeEdit               *mDueTimeEdit;
     
-    QCheckBox               *completedButton;
+    QComboBox               *completedCombo;
+    QLabel                  *completedLabel;
     QLabel                  *priorityLabel;
     QComboBox               *priorityCombo;
 

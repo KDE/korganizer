@@ -159,8 +159,6 @@ void KOrganizer::readSettings()
   int windowWidth = config->readNumEntry("Width",600);
   int windowHeight = config->readNumEntry("Height",400);
 
-  kdDebug() << "---- Width: " << windowWidth << " Height: " << windowHeight << endl;
-
   resize(windowWidth,windowHeight);
 
   mRecent->loadEntries(config);

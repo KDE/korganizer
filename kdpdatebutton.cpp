@@ -270,7 +270,7 @@ QSize KDateButton::sizeHint () const
   QFontMetrics fm = fontMetrics();
   QSize size = fm.size(SingleLine,"30");
   int add = 2*mTodayMarginWidth + 1;
-  size += QSize(add,add);  
+  size += QSize(add,add);
   return size;
 }
 

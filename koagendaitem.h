@@ -70,6 +70,10 @@ class KOAgendaItem : public QFrame
     void updateIcons();
     void select(bool=true);
 
+  protected:    
+    void dragEnterEvent(QDragEnterEvent *e);
+    void dropEvent(QDropEvent *e);
+
   private:
     int mCellX;
     int mCellXWidth;

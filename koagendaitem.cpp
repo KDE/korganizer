@@ -1,16 +1,19 @@
 // $Id$
 
-#include "koagendaitem.h"
-#include "koagendaitem.moc"
-
-#include <kiconloader.h>
-
 #include <qlabel.h>
 #include <qlayout.h>
 #include <qhbox.h>
 #include <qtooltip.h>
+#include <qdragobject.h>
+
+#include <kiconloader.h>
+#include <kdebug.h>
+#include <kurl.h>
 
 #include "koprefs.h"
+
+#include "koagendaitem.h"
+#include "koagendaitem.moc"
 
 QToolTipGroup *KOAgendaItem::mToolTipGroup = 0;
 
@@ -88,6 +91,8 @@ KOAgendaItem::KOAgendaItem(Event *event, QWidget *parent,
 
 //  QToolTip::add(this,mEvent->summary());
   QToolTip::add(this,mEvent->summary(),toolTipGroup(),"");
+
+  setAcceptDrops(true);
 }
 
 
@@ -259,4 +264,32 @@ QToolTipGroup *KOAgendaItem::toolTipGroup()
 {
   if (!mToolTipGroup) mToolTipGroup = new QToolTipGroup(0);
   return mToolTipGroup;
+}
+
+void KOAgendaItem::dragEnterEvent( QDragEnterEvent *e )
+{
+  if (!QTextDrag::canDecode(e)) {
+    e->ignore();
+    return;
+  }
+  e->accept();
+}
+
+void KOAgendaItem::dropEvent( QDropEvent *e )
+{
+  QString text;
+  if(QTextDrag::decode(e,text))
+  {
+    kdDebug() << "Dropped : " << text << endl;
+    QStringList emails = QStringList::split(",",text);
+    for(QStringList::ConstIterator it = emails.begin();it!=emails.end();++it) {
+      kdDebug() << " Email: " << (*it) << endl;
+      int pos = (*it).find("<");
+      QString name = (*it).left(pos);
+      QString email = (*it).mid(pos);
+      if (!email.isEmpty()) {
+        mEvent->addAttendee(new Attendee(name,email));
+      }
+    }
+  }
 }

@@ -100,9 +100,8 @@ void KOEventViewer::appendTodo(Todo *event)
   mText.append(i18n("<p><b>Priority:</b> %2</p>")
                .arg(QString::number(event->priority())));
 
-  if (event->isCompleted()) {
-    mText.append(i18n("<p><i>Completed</i></p>"));
-  }
+  mText.append(i18n("<p><i>%1 % completed</i></p>")
+                    .arg(event->percentComplete()));
 
   formatReadOnly(event);
 
