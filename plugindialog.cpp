@@ -147,7 +147,8 @@ void PluginDialog::configure()
     plugin->configure( this );
     delete plugin;
   } else {
-    KMessageBox::sorry( this, i18n( "Unable to configure this plugin" ) );
+    KMessageBox::sorry( this, i18n( "Unable to configure this plugin" ),
+                        "PluginConfigUnable" );
   }
 }
 

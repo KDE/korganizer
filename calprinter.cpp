@@ -96,6 +96,7 @@ void CalPrinter::init( KPrinter *printer, Calendar *calendar )
 
 void CalPrinter::setupPrinter()
 {
+// TODO:REMOVEME:FIXME
   KMessageBox::sorry( mParent, i18n("Not implemented.") );
 #if 0
   KOPrefsDialog *optionsDlg = new KOPrefsDialog(mParent);

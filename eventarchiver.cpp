@@ -100,8 +100,9 @@ void EventArchiver::run( Calendar* calendar, const QDate& limitDate, QWidget* wi
   kdDebug(5850) << "EventArchiver: archiving incidences before " << limitDate << " -> " << incidences.count() << " incidences found." << endl;
   if ( incidences.isEmpty() ) {
     if ( withGUI && errorIfNone )
-      KMessageBox::sorry(widget, i18n("There are no incidences before %1")
-                         .arg(KGlobal::locale()->formatDate(limitDate)));
+      KMessageBox::information( widget, i18n("There are no incidences before %1")
+                          .arg(KGlobal::locale()->formatDate(limitDate)),
+                          "ArchiverNoIncidences" );
     return;
   }
 

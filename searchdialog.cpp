@@ -155,7 +155,8 @@ void SearchDialog::doSearch()
 
   if ( mMatchedEvents.count() == 0 ) {
     KMessageBox::information( this,
-        i18n("No events were found matching your search expression.") );
+        i18n("No events were found matching your search expression."),
+        "NoSearchResults" );
   }
 }
 

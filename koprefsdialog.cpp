@@ -692,35 +692,6 @@ extern "C"
 }
 
 
-class KOPrefsDialogPrinting : public KPrefsModule
-{
-  public:
-    KOPrefsDialogPrinting( QWidget *parent, const char *name )
-      : KPrefsModule( KOPrefs::instance(), parent, name )
-    {
-      QBoxLayout *topTopLayout = new QVBoxLayout( this );
-
-      QWidget *topFrame = new QWidget( this );
-      topTopLayout->addWidget( topFrame );
-
-      QGridLayout *topLayout = new QGridLayout( topFrame, 5, 2 );
-      topLayout->setSpacing( KDialog::spacingHint() );
-
-      topLayout->setRowStretch( 4, 1 );
-
-      load();
-    }
-};
-
-extern "C"
-{
-  KCModule *create_korganizerconfigprinting( QWidget *parent, const char * )
-  {
-    return new KOPrefsDialogPrinting( parent, "kcmkorganizerprinting" );
-  }
-}
-
-
 KOPrefsDialogGroupScheduling::KOPrefsDialogGroupScheduling( QWidget *parent, const char *name )
   : KPrefsModule( KOPrefs::instance(), parent, name )
 {

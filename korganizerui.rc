@@ -9,7 +9,7 @@
         <Separator/>
         <Merge/>
         <Action name="import_ical"/>
-        <Action name="merge_calendar"/>
+        <Action name="import_icalendar"/>
       </Menu>
       <Menu name="export"><text>&amp;Export</text>
         <Action name="uploadnewstuff"/>

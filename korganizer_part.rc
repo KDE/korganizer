@@ -19,7 +19,7 @@
         <Action name="downloadnewstuff"/>
         <Merge/>
         <Action name="import_ical"/>
-        <Action name="merge_calendar"/>
+        <Action name="import_icalendar"/>
       </Menu>
       <Action name="file_archive"/>
       <Menu name="export"><text>&amp;Export</text>

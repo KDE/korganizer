@@ -255,8 +255,8 @@ void ActionManager::initActions()
 
   (void)new KAction(i18n("&Import From Ical"), 0, this, SLOT(file_import()),
                     mACollection, "import_ical");
-  (void)new KAction(i18n("&Merge Calendar..."), 0, this, SLOT(file_merge()),
-                    mACollection, "merge_calendar");
+  (void)new KAction(i18n("Import &Calendar..."), 0, this, SLOT(file_merge()),
+                    mACollection, "import_icalendar");
   (void)new KAction(i18n("Archive O&ld Entries..."), 0, this, SLOT(file_archive()),
                     mACollection, "file_archive");
 
@@ -670,7 +670,8 @@ void ActionManager::file_import()
       KMessageBox::information(dialogParent(),
                                i18n("KOrganizer successfully imported and "
                                     "merged your .calendar file from ical "
-                                    "into the currently opened calendar."));
+                                    "into the currently opened calendar."), 
+                               "dotCalendarImportSuccess" );
     else
       KMessageBox::information(dialogParent(),
                            i18n("KOrganizer encountered some unknown fields while "
@@ -695,7 +696,7 @@ void ActionManager::file_merge()
   KURL url = KFileDialog::getOpenURL(locateLocal("data","korganizer/"),
                                      i18n("*.vcs *.ics|Calendar Files"),
                                      dialogParent());
-  openURL(url,true);
+  importCalendar( url );
 }
 
 void ActionManager::file_archive()

@@ -336,7 +336,6 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
       parameters.
     */
     void print();
-    void printSetup();
 
     /** Export as HTML file */
     void exportWeb();

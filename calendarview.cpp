@@ -1072,12 +1072,13 @@ void CalendarView::action_mail()
   Incidence *incidence = currentSelection();
 
   if (!incidence) {
-    KMessageBox::sorry(this,i18n("Cannot generate mail:\nNo event selected."));
+    KMessageBox::information( this, i18n("Cannot generate mail:\nNo "
+                              "event selected."), "MailNoEventSelected" );
     return;
   }
   if(incidence->attendeeCount() == 0 ) {
-    KMessageBox::sorry(this,
-                       i18n("Cannot generate mail:\nNo attendees defined.\n"));
+    KMessageBox::information( this, i18n("Cannot generate mail:\nNo "
+                              "attendees defined.\n"), "MailNoAttendees" );
     return;
   }
 
@@ -1103,7 +1104,8 @@ void CalendarView::schedule_publish(Incidence *incidence)
     incidence = selectedIncidence();
 
   if (!incidence) {
-    KMessageBox::sorry(this,i18n("No incidence selected."));
+    KMessageBox::information( this, i18n("No incidence selected."), 
+                              "PublishNoEventSelected" );
     return;
   }
 
@@ -1201,12 +1203,14 @@ void CalendarView::schedule(Scheduler::Method method, Incidence *incidence)
   }
 
   if ( !incidence ) {
-    KMessageBox::sorry(this,i18n("No incidence selected."));
+    KMessageBox::sorry( this, i18n("No incidence selected."), 
+                        "ScheduleNoEventSelected" );
     return;
   }
 
   if( incidence->attendeeCount() == 0 && method != Scheduler::Publish ) {
-    KMessageBox::sorry(this, i18n("The incidence has no attendees."));
+    KMessageBox::information( this, i18n("The incidence has no attendees."),
+                              "ScheduleNoIncidences" );
     return;
   }
 
@@ -1266,15 +1270,6 @@ void CalendarView::setReadOnly(bool readOnly)
 bool CalendarView::isModified()
 {
   return mModified;
-}
-
-void CalendarView::printSetup()
-{
-#ifndef KORG_NOPRINTER
-  createPrinter();
-
-  mCalPrinter->setupPrinter();
-#endif
 }
 
 void CalendarView::print()
@@ -1808,8 +1803,9 @@ void CalendarView::purgeCompleted()
     }
     endMultiModify();
     if ( !allDeleted ) {
-      KMessageBox::sorry(this,i18n("Unable to purge Todo items with uncompleted children."),
-                         i18n("Delete To-Do"));
+      KMessageBox::information( this, i18n("Unable to purge Todo items with "
+                                "uncompleted children."), i18n("Delete To-Do"),
+                                "UncompletedChildrenPurgeTodos" );
     }
   }
 }
