@@ -16,6 +16,7 @@ kde_module_LTLIBRARIES = libkorganizerpart.la
 libkorganizerpart_la_LDFLAGS = -module $(KDE_PLUGIN) $(all_libraries)
 libkorganizerpart_la_LIBADD  = libkorganizer.la
 libkorganizerpart_la_SOURCES = korganizer_part.cpp
+libkorganizerpart_la_COMPILE_FIRST = publishdialog_base.h
 
 check_PROGRAMS = korgplugins timezone
 
