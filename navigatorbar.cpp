@@ -86,8 +86,8 @@ NavigatorBar::NavigatorBar( const QDate & date, QWidget *parent, const char *nam
 
   const KCalendarSystem *calSys = KOGlobals::self()->calendarSystem();
   for( i = 1; i <= calSys->monthsInYear(date); ++i ) {
-    mMonth->setText( QString("%1 8888").arg(calSys->monthName( i, calSys->year(date) )) );
-    if ( mMonth->width() > maxwidth ) maxwidth = mMonth->width();
+    int w = QFontMetrics(tfont).width( QString("%1 8888").arg(calSys->monthName( i, calSys->year(date) )) );
+    if ( w > maxwidth ) maxwidth = w;
   }
   mMonth->setMinimumWidth( maxwidth );
 
