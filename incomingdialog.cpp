@@ -243,7 +243,9 @@ bool IncomingDialog::incomeRefresh(ScheduleItemIn *item)
 
 bool IncomingDialog::incomeCounter(ScheduleItemIn *item)
 {
-  Event *counterevent = dynamic_cast<Event *>(((ScheduleItemIn *)item)->event());
+  Incidence *incidence = ((ScheduleItemIn *)item)->event();
+  if ( incidence->type() != "Event" ) return false;
+  Event *counterevent = static_cast<Event *>( incidence );
 
   Event *even = mCalendar->getEvent(item->event()->uid());
 
@@ -255,7 +257,7 @@ bool IncomingDialog::incomeCounter(ScheduleItemIn *item)
   eventViewer->addText(i18n("<hr>"));
   eventViewer->addText(i18n("<b>Original event:</b><p>"));
   if (even) eventViewer->addEvent(even);
-    else eventViewer->addText(i18n("A corresponding event is missing in your calendar!"));
+  else eventViewer->addText(i18n("A corresponding event is missing in your calendar!"));
   eventViewer->addText(i18n("<hr>"));
   eventViewer->addText(i18n("If this counter-event is a good proposal for your event, press 'Accept'. All Attendees will then get the new version of this event"));
   eventViewer->show();
@@ -283,8 +285,7 @@ bool IncomingDialog::incomeCounter(ScheduleItemIn *item)
     delete item;
     emit numMessagesChanged(mMessageListView->childCount());
     return true;
-  }
-  else {
+  } else {
     kdDebug() << "IncomingDialog::Counter:Decline" << endl;
     //the counter-sender's email is missing...
     //now every attendee gets an declinecounter :-(
@@ -320,17 +321,18 @@ bool IncomingDialog::incomeDeclineCounter(ScheduleItemIn *item)
 
 bool IncomingDialog::incomeAdd(ScheduleItemIn *item)
 {
-  if (item->event()->type() == "Event" ) {
-    Event *refr = dynamic_cast<Event *>(((ScheduleItemIn *)item)->event());
+  Incidence *incidence = ((ScheduleItemIn *)item)->event();
+  if (incidence->type() == "Event" ) {
+    Event *refr = static_cast<Event *>( incidence );
     mOutgoing->addMessage(refr,Scheduler::Refresh);
-    mScheduler->deleteTransaction(item->event());
+    mScheduler->deleteTransaction( incidence );
     delete item;
     emit numMessagesChanged(mMessageListView->childCount());
     return true;
   }
   else {
     kdDebug() << "IncomingDialog::incomeAdd - only Events are supportet yet" << endl;
-    mScheduler->deleteTransaction(item->event());
+    mScheduler->deleteTransaction( incidence );
     delete item;
     emit numMessagesChanged(mMessageListView->childCount());
     return false;
