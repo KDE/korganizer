@@ -233,6 +233,7 @@ void KOPrefsDialog::setupTimeTab()
   mAlarmTimeCombo->insertStringList(alarmList);
   topLayout->addWidget(mAlarmTimeCombo,3,1);
 
+
   QGroupBox *workingHoursGroup = new QGroupBox(1,Horizontal,
                                                i18n("Working Hours"),
                                                topFrame);
@@ -254,7 +255,12 @@ void KOPrefsDialog::setupTimeTab()
   addWidBool(i18n("Exclude Saturdays"),
              &(KOPrefs::instance()->mExcludeSaturdays),workingHoursGroup);
 
-  topLayout->setRowStretch(5,1);
+  KPrefsWidBool *marcusBainsShowSeconds = addWidBool(i18n("Shows seconds on Marcus Bains Line"),
+	     &(KOPrefs::instance()->mMarcusBainsShowSeconds),
+	     topFrame);
+  topLayout->addWidget(marcusBainsShowSeconds->checkBox(),5,0);
+
+  topLayout->setRowStretch(6,1);
 }
 
 
@@ -312,7 +318,13 @@ void KOPrefsDialog::setupViewsTab()
                  &(KOPrefs::instance()->mFullViewTodo),topFrame);
   topLayout->addWidget(fullViewTodo->checkBox(),9,0);
 
-  topLayout->setRowStretch(10,1);
+  KPrefsWidBool *marcusBainsEnabled =
+      addWidBool(i18n("Show Marcus Bains line."),
+                 &(KOPrefs::instance()->mMarcusBainsEnabled),topFrame);
+  topLayout->addWidget(marcusBainsEnabled->checkBox(),10,0);
+
+
+  topLayout->setRowStretch(11,1);
 }
 
 
@@ -343,7 +355,13 @@ void KOPrefsDialog::setupFontsTab()
   topLayout->addWidget(agendaViewFont->preview(),2,0);
   topLayout->addWidget(agendaViewFont->button(),2,1);
 
-  topLayout->setRowStretch(3,1);
+  KPrefsWidFont *marcusBainsFont =
+      addWidFont(KGlobal::locale()->formatTime(QTime(12,34,23)),i18n("Marcus Bains Line"),
+                 &(KOPrefs::instance()->mMarcusBainsFont),topFrame);
+  topLayout->addWidget(marcusBainsFont->preview(),3,0);
+  topLayout->addWidget(marcusBainsFont->button(),3,1);
+
+  topLayout->setRowStretch(4,1);
 }
 
 void KOPrefsDialog::setupColorsTab()
@@ -470,7 +488,6 @@ void KOPrefsDialog::setupGroupSchedulingTab()
 
   topLayout->setRowStretch(1,1);
 }
-
 
 void KOPrefsDialog::showPrinterTab()
 {

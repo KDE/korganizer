@@ -735,9 +735,16 @@ void KOAgendaView::fillAgenda()
   QList<Event> dayEvents;
   int curCol;  // current column of agenda, i.e. the X coordinate
   QDate currentDate = mStartDate;
+
+
+  mAgenda->setTodayColumn(-1);
   for(curCol=0;curCol<int(mSelectedDates.count());++curCol) {
 //    kdDebug() << "KOAgendaView::fillAgenda(): " << currentDate.toString()
 //              << endl;
+
+    if(currentDate == QDate::currentDate())
+	mAgenda->setTodayColumn(curCol);
+
 
     dayEvents = mCalendar->getEventsForDate(currentDate,false);
 

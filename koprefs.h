@@ -86,10 +86,12 @@ class KOPrefs : public KPrefs
     int     mWorkingHoursEnd;
     bool    mExcludeHolidays;
     bool    mExcludeSaturdays;
+    bool    mMarcusBainsShowSeconds;
 
     QFont   mTimeBarFont;
     QFont   mMonthViewFont;
     QFont   mAgendaViewFont;
+    QFont   mMarcusBainsFont;
 
     QColor  mHolidayColor;
     QColor  mHighlightColor;
@@ -105,6 +107,7 @@ class KOPrefs : public KPrefs
     bool    mEnableMonthScroll;
     bool    mFullViewMonth;
     bool    mFullViewTodo;
+    bool    mMarcusBainsEnabled;
 
     QString mPrintPreview;
 

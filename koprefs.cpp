@@ -74,6 +74,7 @@ KOPrefs::KOPrefs() :
   addItemFont("TimeBar Font",&mTimeBarFont);
   addItemFont("MonthView Font",&mMonthViewFont);
   addItemFont("AgendaView Font",&mAgendaViewFont);
+  addItemFont("MarcusBains Font",&mAgendaViewFont);
 
   KPrefs::setCurrentGroup("Colors");
 
@@ -90,6 +91,7 @@ KOPrefs::KOPrefs() :
   addItemBool("Show Weekly Recurrences",&mWeeklyRecur,true);
   addItemBool("Enable ToolTips",&mEnableToolTips,false);
   addItemBool("Enable MonthView ScrollBars",&mEnableMonthScroll,false);
+  addItemBool("Marcus Bains shows seconds",&mMarcusBainsShowSeconds,true);
 
   addItemInt("Day Begins",&mDayBegins,7);
   addItemInt("Working Hours Start",&mWorkingHoursStart,8);
@@ -150,6 +152,7 @@ void KOPrefs::usrSetDefaults()
   mTimeBarFont = mDefaultTimeBarFont;
   mMonthViewFont = mDefaultViewFont;
   mAgendaViewFont = mDefaultViewFont;
+  mMarcusBainsFont = mDefaultViewFont;
 
   setCategoryDefaults();
   

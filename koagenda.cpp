@@ -18,6 +18,74 @@
 #include <qcursor.h>
 #include <qpainter.h>
 
+
+////////////////////////////////////////////////////////////////////////////
+MarcusBains::MarcusBains(KOAgenda *_agenda,const char *name)
+    : QFrame(_agenda->viewport(),name), agenda(_agenda)
+{
+    setLineWidth(0);
+    setMargin(0);
+    setBackgroundColor(Qt::red);
+    minutes = new QTimer(this);
+    connect(minutes, SIGNAL(timeout()), this, SLOT(updateLocation()));
+    minutes->start(0, true);
+
+    mTimeBox = new QLabel(this);
+    mTimeBox->setAlignment(Qt::AlignRight | Qt::AlignBottom);
+    mTimeBox->setAutoMask(true);
+    QPalette pal = mTimeBox->palette();
+    pal.setColor(QColorGroup::Foreground, Qt::red);
+    mTimeBox->setPalette(pal);
+
+    agenda->addChild(mTimeBox);
+}
+
+MarcusBains::~MarcusBains()
+{
+    delete minutes;
+}
+
+#include <iostream>
+void MarcusBains::updateLocation()
+{
+    QTime tim = QTime::currentTime();
+    int mins = tim.hour()*60 + tim.minute();
+    int minutesPerCell = 24 * 60 / agenda->rows();
+    int y = mins*agenda->gridSpacingY()/minutesPerCell;
+    int x = agenda->gridSpacingX()*agenda->todayColumn();
+    bool disabled = !(KOPrefs::instance()->mMarcusBainsEnabled);
+
+    if(disabled || (agenda->todayColumn()<0)) {
+	hide(); mTimeBox->hide();
+	return;
+    } else {
+	show(); mTimeBox->show();
+    }
+
+
+    setFixedSize(agenda->gridSpacingX(),1);
+    agenda->moveChild(this, x, y);
+    raise();
+
+    mTimeBox->setFont(KOPrefs::instance()->mMarcusBainsFont);
+    mTimeBox->setText(KGlobal::locale()->formatTime(tim, KOPrefs::instance()->mMarcusBainsShowSeconds));
+    mTimeBox->adjustSize();
+    // the -2 below is there because there is a bug in this program
+    // somewhere, where the last column of this widget is a few pixels
+    // narrower than the other columns.
+    int offs = (agenda->todayColumn() == agenda->columns()-1) ? -4 : 0;
+    agenda->moveChild(mTimeBox,
+		      x+agenda->gridSpacingX()-mTimeBox->width()+offs,
+		      y-mTimeBox->height());
+    mTimeBox->raise();
+
+    minutes->start(1000,true);
+}
+
+
+////////////////////////////////////////////////////////////////////////////
+
+
 /*
   Create an agenda widget with rows rows and columns columns.
 */
@@ -51,6 +119,7 @@ KOAgenda::KOAgenda(int columns,QWidget *parent,const char *name,WFlags f) :
 
 KOAgenda::~KOAgenda()
 {
+    if(mMarcusBains) delete mMarcusBains;
 }
 
 
@@ -88,6 +157,8 @@ void KOAgenda::init()
 
   mSelectedItem = 0;
 
+  mTodayColumn = -1;
+
   mItems.setAutoDelete(true);
   
   resizeContents( mGridSpacingX * mColumns + 1 , mGridSpacingY * mRows + 1 );
@@ -108,6 +179,14 @@ void KOAgenda::init()
 
   connect(verticalScrollBar(),SIGNAL(valueChanged(int)),
           SLOT(checkScrollBoundaries(int)));
+
+  // Create the Marcus Bains line.
+  if(mAllDayMode)
+      mMarcusBains = 0;
+  else {
+      mMarcusBains = new MarcusBains(this);
+      addChild(mMarcusBains);
+  }
 }
 
 
@@ -122,6 +201,12 @@ void KOAgenda::clear()
   mItems.clear();
 
   mSelectedItem = 0;
+}
+
+
+void KOAgenda::marcus_bains()
+{
+    if(mMarcusBains) mMarcusBains->updateLocation();
 }
 
 
@@ -706,6 +791,8 @@ KOAgendaItem *KOAgenda::insertItem (Event *event,int X,int YTop,int YBottom)
 
   agendaItem->show();
   
+  marcus_bains();
+
   return agendaItem;
 }
 
@@ -781,6 +868,8 @@ void KOAgenda::insertMultiItem (Event *event,int XBegin,int XEnd,
     current->setMultiItem(setFirst,next,setLast);
     current = next;
   }
+
+  marcus_bains();
 }
 
 
@@ -837,6 +926,8 @@ void KOAgenda::resizeEvent ( QResizeEvent *ev )
 
   checkScrollBoundaries();
   
+  marcus_bains();
+
   viewport()->update();
   QScrollView::resizeEvent(ev);
 }
@@ -880,6 +971,8 @@ void KOAgenda::updateConfig()
   viewport()->setBackgroundColor(KOPrefs::instance()->mAgendaBgColor);
 
   calculateWorkingHours();
+
+  marcus_bains();
 }
 
 void KOAgenda::checkScrollBoundaries()
@@ -958,6 +1051,21 @@ void KOAgenda::calculateWorkingHours()
                       KOPrefs::instance()->mWorkingHoursStart * 2;
   mWorkingHoursYBottom = mGridSpacingY *
                          KOPrefs::instance()->mWorkingHoursEnd * 2 - 1;
+}
+
+
+
+int KOAgenda::todayColumn() const
+{
+    return mTodayColumn;
+}
+void KOAgenda::setTodayColumn(int col)
+{
+    if((col>=0) && (col<columns()))
+	mTodayColumn = col;
+    else
+	mTodayColumn = -1;
+    marcus_bains();
 }
 
 void KOAgenda::setHolidayMask(QArray<bool> *mask)

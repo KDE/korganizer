@@ -13,8 +13,26 @@
 class QPopupMenu;
 class QTime;
 class KConfig;
+class QFrame;
+class KOAgenda;
 
 using namespace KCal;
+
+class MarcusBains : public QFrame {
+    Q_OBJECT
+  public:
+    MarcusBains(KOAgenda *agenda=0,const char *name=0);
+    virtual ~MarcusBains();
+
+  public slots:
+    void updateLocation();
+
+  private:
+    QTimer *minutes;
+    QLabel *mTimeBox;
+    KOAgenda *agenda;
+};
+
 
 class KOAgenda : public QScrollView
 {
@@ -63,6 +81,9 @@ class KOAgenda : public QScrollView
     void checkScrollBoundaries();
 
     void setHolidayMask(QArray<bool> *);
+
+    void setTodayColumn(int col);
+    int todayColumn() const;
 
   public slots:
     void scrollUp();
@@ -124,6 +145,7 @@ class KOAgenda : public QScrollView
     
   private:
     void init();
+    void marcus_bains();
     bool mAllDayMode;
   
     // Width and height of agenda cells
@@ -156,6 +178,9 @@ class KOAgenda : public QScrollView
     int mWorkingHoursYTop;
     int mWorkingHoursYBottom;
     
+    // The column representing today.
+    int mTodayColumn;
+
     // The KOAgendaItem, which has been right-clicked last
     KOAgendaItem *mClickedItem;
 
@@ -164,6 +189,9 @@ class KOAgenda : public QScrollView
 
     // Currently selected item
     KOAgendaItem *mSelectedItem;
+
+    // The Marcus Bains Line widget.
+    MarcusBains *mMarcusBains;
 
     enum MouseActionType {NOP,MOVE,RESIZETOP,RESIZEBOTTOM,RESIZELEFT,
                           RESIZERIGHT};
