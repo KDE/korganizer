@@ -373,17 +373,7 @@ void KOEventEditor::writeEvent( Event *event )
   mDetails->writeEvent( event );
   mAttachments->writeIncidence( event );
 
-  // cancelAttendeeEvent removes all attendees from the incidence, 
-  // and then only adds those that need to be cancelled.
-  if ( KOPrefs::instance()->thatIsMe( event->organizer() ) ) {
-    Event *ev = new Event( *event );
-    ev->registerObserver( 0 );
-    mDetails->cancelAttendeeEvent( ev );
-    if ( ev->attendeeCount() > 0 ) {
-      emit deleteAttendee( ev );
-    }
-    delete( ev );
-  }
+  cancelRemovedAttendees( event );
 
   mRecurrence->writeIncidence( event );
 }

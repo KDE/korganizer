@@ -104,6 +104,8 @@ class KOIncidenceEditor : public KDialogBase
     virtual bool processInput() { return false; }
 
     virtual void processCancel() {}
+    
+    void cancelRemovedAttendees( Incidence *incidence );
 
     Calendar *mCalendar;
 

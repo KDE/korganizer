@@ -124,6 +124,24 @@ void KOIncidenceEditor::slotCancel()
   reject();
 }
 
+void KOIncidenceEditor::cancelRemovedAttendees( Incidence *incidence )
+{
+  if ( !incidence ) return;
+  
+  // cancelAttendeeEvent removes all attendees from the incidence, 
+  // and then only adds those that need to be cancelled (i.e. a mail needs to be sent to them).
+  if ( KOPrefs::instance()->thatIsMe( incidence->organizer() ) ) {
+    Incidence *ev = incidence->clone();
+    ev->registerObserver( 0 );
+    mDetails->cancelAttendeeEvent( ev );
+    if ( ev->attendeeCount() > 0 ) {
+      emit deleteAttendee( ev );
+    }
+    delete( ev );
+  }
+
+}
+
 void KOIncidenceEditor::slotLoadTemplate()
 {
   kdDebug(5850) << "KOIncidenceEditor::loadTemplate()" << endl;
@@ -221,5 +239,6 @@ QString KOIncidenceEditor::loadTemplate( Calendar *cal, const QString &type,
 
   return templateName;
 }
+
 
 #include "koincidenceeditor.moc"

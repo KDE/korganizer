@@ -331,6 +331,8 @@ void KOTodoEditor::writeTodo( Todo *todo )
   if ( mRelatedTodo ) {
     todo->setRelatedTo( mRelatedTodo );
   }
+  
+  cancelRemovedAttendees( todo );
 }
 
 bool KOTodoEditor::validateInput()
