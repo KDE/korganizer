@@ -375,7 +375,7 @@ void KOEditorGeneral::writeIncidence(Incidence *event)
       if (!mAlarmSound.isEmpty() && mAlarmSoundButton->isOn())
         alarm->setAudioAlarm(mAlarmSound);
       else
-        alarm->setType(Alarm::Invalid);
+        alarm->setDisplayAlarm(QString::null);
 
 // TODO: Deal with multiple alarms
       break; // For now, stop after the first alarm
