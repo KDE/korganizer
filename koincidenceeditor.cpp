@@ -45,7 +45,7 @@
 #include "koincidenceeditor.h"
 #include "koincidenceeditor.moc"
 
-KOIncidenceEditor::KOIncidenceEditor( const QString &caption, 
+KOIncidenceEditor::KOIncidenceEditor( const QString &caption,
                                       Calendar *calendar, QWidget *parent ) :
   KDialogBase( Tabbed, caption, Ok | Apply | Cancel | Default | User1, Ok,
                parent, 0, false, false ),
@@ -53,14 +53,14 @@ KOIncidenceEditor::KOIncidenceEditor( const QString &caption,
 {
   mCalendar = calendar;
 
-  setButtonText( Default, i18n("Template...") );
+  setButtonText( Default, i18n("&Template...") );
 
   QString saveTemplateText;
   if ( KOPrefs::instance()->mCompactDialogs ) {
     showButton( User1, false );
     showButton( Apply, false );
   } else {
-    saveTemplateText = i18n("Save as Template...");
+    saveTemplateText = i18n("&Save as Template...");
   }
   setButtonText( User1, saveTemplateText );
 
@@ -80,7 +80,7 @@ KOIncidenceEditor::~KOIncidenceEditor()
 
 void KOIncidenceEditor::setupAttendeesTab()
 {
-  QFrame *topFrame = addPage(i18n("Attendees"));
+  QFrame *topFrame = addPage(i18n("Atte&ndees"));
 
   QBoxLayout *topLayout = new QVBoxLayout(topFrame);
 

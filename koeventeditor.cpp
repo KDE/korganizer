@@ -104,7 +104,7 @@ void KOEventEditor::setupGeneral()
     mGeneral->initSecrecy( topFrame2, topLayout2 );
     mGeneral->initDescription(topFrame2,topLayout2);
   } else {
-    QFrame *topFrame = addPage(i18n("General"));
+    QFrame *topFrame = addPage(i18n("&General"));
 
     QBoxLayout *topLayout = new QVBoxLayout(topFrame);
     topLayout->setSpacing(spacingHint());
@@ -125,7 +125,7 @@ void KOEventEditor::setupGeneral()
 
 void KOEventEditor::setupRecurrence()
 {
-  QFrame *topFrame = addPage( i18n("Recurrence") );
+  QFrame *topFrame = addPage( i18n("Rec&urrence") );
 
   QBoxLayout *topLayout = new QVBoxLayout( topFrame );
 
@@ -152,13 +152,13 @@ void KOEventEditor::newEvent( QDateTime from, QDateTime to, bool allDay )
 void KOEventEditor::newEvent( const QString &text )
 {
   init();
-  
+
   mEvent = 0;
-  
+
   loadDefaults();
-  
+
   mGeneral->setDescription( text );
-  
+
   int pos = text.find( "\n" );
   if ( pos > 0 ) {
     mGeneral->setSummary( text.left( pos ) );

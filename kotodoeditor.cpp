@@ -95,23 +95,23 @@ void KOTodoEditor::setupGeneral()
 
     QHBoxLayout *completionLayout = new QHBoxLayout( topLayout2 );
     mGeneral->initCompletion(topFrame2,completionLayout);
-    
+
     mGeneral->initAlarm(topFrame,topLayout);
     mGeneral->enableAlarm( false );
-    
+
     mGeneral->initSecrecy( topFrame2, topLayout2 );
     mGeneral->initDescription(topFrame2,topLayout2);
   } else {
-    QFrame *topFrame = addPage(i18n("General"));
-    
+    QFrame *topFrame = addPage(i18n("&General"));
+
     QBoxLayout *topLayout = new QVBoxLayout(topFrame);
     topLayout->setSpacing(spacingHint());
 
     mGeneral->initHeader(topFrame,topLayout);
     mGeneral->initTime(topFrame,topLayout);
-    mGeneral->initStatus(topFrame,topLayout);    
+    mGeneral->initStatus(topFrame,topLayout);
     QBoxLayout *alarmLineLayout = new QHBoxLayout(topLayout);
-    mGeneral->initAlarm(topFrame,alarmLineLayout); 
+    mGeneral->initAlarm(topFrame,alarmLineLayout);
     mGeneral->initDescription(topFrame,topLayout);
     QBoxLayout *detailsLayout = new QHBoxLayout(topLayout);
     mGeneral->initCategories( topFrame, detailsLayout );
@@ -152,18 +152,18 @@ bool KOTodoEditor::processInput()
     writeTodo( mTodo );
 
     mTodo->setRevision( mTodo->revision() + 1 );
-    
+
     emit todoChanged( oldTodo, mTodo );
 
     delete oldTodo;
   } else {
-    mTodo = new Todo;    
+    mTodo = new Todo;
     mTodo->setOrganizer( KOPrefs::instance()->email() );
-    
+
     writeTodo( mTodo );
-    
+
     mCalendar->addTodo( mTodo );
-    
+
     emit todoAdded( mTodo );
   }
 
@@ -208,7 +208,7 @@ void KOTodoEditor::readTodo(Todo *todo)
 {
   mGeneral->readTodo(todo);
   mDetails->readEvent(todo);
-  
+
   // categories
   mCategoryDialog->setSelected(todo->categories());
 
@@ -242,7 +242,7 @@ int KOTodoEditor::msgItemDelete()
 
 void KOTodoEditor::modified (int modification)
 {
-  if (modification == KOGlobals::CATEGORY_MODIFIED || 
+  if (modification == KOGlobals::CATEGORY_MODIFIED ||
       KOGlobals::UNKNOWN_MODIFIED == modification )
     mCategoryDialog->setSelected (mTodo->categories ());
   mGeneral->modified (mTodo, modification);

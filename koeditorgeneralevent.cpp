@@ -91,28 +91,30 @@ void KOEditorGeneralEvent::initTime(QWidget *parent,QBoxLayout *topLayout)
   layoutTimeBox->setSpacing(topLayout->spacing());
 
 
-  mStartDateLabel = new QLabel(i18n("Start:"),timeBoxFrame);
+  mStartDateLabel = new QLabel(i18n("&Start:"),timeBoxFrame);
   layoutTimeBox->addWidget(mStartDateLabel,0,0);
 
   mStartDateEdit = new KDateEdit(timeBoxFrame);
   layoutTimeBox->addWidget(mStartDateEdit,0,1);
+  mStartDateLabel->setBuddy( mStartDateEdit );
 
   mStartTimeEdit = new KOTimeEdit(timeBoxFrame);
   layoutTimeBox->addWidget(mStartTimeEdit,0,2);
 
 
-  mEndDateLabel = new QLabel(i18n("End:"),timeBoxFrame);
+  mEndDateLabel = new QLabel(i18n("&End:"),timeBoxFrame);
   layoutTimeBox->addWidget(mEndDateLabel,1,0);
 
   mEndDateEdit = new KDateEdit(timeBoxFrame);
   layoutTimeBox->addWidget(mEndDateEdit,1,1);
+  mEndDateLabel->setBuddy( mEndDateEdit );
 
   mEndTimeEdit = new KOTimeEdit(timeBoxFrame);
   layoutTimeBox->addWidget(mEndTimeEdit,1,2);
 
   QHBoxLayout *flagsBox = new QHBoxLayout( timeBoxFrame );
 
-  mNoTimeButton = new QCheckBox(i18n("No time associated"),timeBoxFrame);
+  mNoTimeButton = new QCheckBox(i18n("&No time associated"),timeBoxFrame);
   flagsBox->addWidget(mNoTimeButton);
   connect(mNoTimeButton, SIGNAL(toggled(bool)),SLOT(dontAssociateTime(bool)));
 
@@ -142,13 +144,14 @@ void KOEditorGeneralEvent::initClass(QWidget *parent,QBoxLayout *topLayout)
 {
   QBoxLayout *classLayout = new QHBoxLayout(topLayout);
 
-  QLabel *freeTimeLabel = new QLabel(i18n("Show time as:"),parent);
+  QLabel *freeTimeLabel = new QLabel(i18n("S&how time as:"),parent);
   classLayout->addWidget(freeTimeLabel);
 
   mFreeTimeCombo = new QComboBox(false, parent);
   mFreeTimeCombo->insertItem(i18n("Busy"));
   mFreeTimeCombo->insertItem(i18n("Free"));
   classLayout->addWidget(mFreeTimeCombo);
+  freeTimeLabel->setBuddy( mFreeTimeCombo );
 }
 
 void KOEditorGeneralEvent::timeStuffDisable(bool disable)

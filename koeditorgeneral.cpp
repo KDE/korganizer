@@ -66,17 +66,19 @@ void KOEditorGeneral::initHeader(QWidget *parent,QBoxLayout *topLayout)
   headerLayout->addMultiCellWidget(mOwnerLabel,0,0,0,1);
 #endif
 
-  QLabel *summaryLabel = new QLabel(i18n("Summary:"),parent);
+  QLabel *summaryLabel = new QLabel(i18n("S&ummary:"),parent);
   headerLayout->addWidget(summaryLabel,1,0);
 
   mSummaryEdit = new QLineEdit(parent);
   headerLayout->addWidget(mSummaryEdit,1,1);
-  
-  QLabel *locationLabel = new QLabel(i18n("Location:"),parent);
+  summaryLabel->setBuddy( mSummaryEdit );
+
+  QLabel *locationLabel = new QLabel(i18n("&Location:"),parent);
   headerLayout->addWidget(locationLabel,2,0);
 
   mLocationEdit = new QLineEdit(parent);
   headerLayout->addWidget(mLocationEdit,2,1);
+  locationLabel->setBuddy( mLocationEdit );
 }
 
 void KOEditorGeneral::initCategories(QWidget *parent, QBoxLayout *topLayout)
@@ -84,7 +86,7 @@ void KOEditorGeneral::initCategories(QWidget *parent, QBoxLayout *topLayout)
   QBoxLayout *categoriesLayout = new QHBoxLayout( topLayout );
 
   mCategoriesButton = new QPushButton(parent);
-  mCategoriesButton->setText(i18n("Categories..."));
+  mCategoriesButton->setText(i18n("Cate&gories..."));
   connect(mCategoriesButton,SIGNAL(clicked()),SIGNAL(openCategoryDialog()));
   categoriesLayout->addWidget(mCategoriesButton);
 
@@ -97,12 +99,13 @@ void KOEditorGeneral::initSecrecy(QWidget *parent, QBoxLayout *topLayout)
 {
   QBoxLayout *secrecyLayout = new QHBoxLayout( topLayout );
 
-  QLabel *secrecyLabel = new QLabel(i18n("Access:"),parent);
+  QLabel *secrecyLabel = new QLabel(i18n("Acc&ess:"),parent);
   secrecyLayout->addWidget(secrecyLabel);
 
   mSecrecyCombo = new QComboBox(parent);
   mSecrecyCombo->insertStringList(Incidence::secrecyList());
   secrecyLayout->addWidget(mSecrecyCombo);
+  secrecyLabel->setBuddy( mSecrecyCombo );
 }
 
 void KOEditorGeneral::initDescription(QWidget *parent,QBoxLayout *topLayout)
@@ -123,12 +126,12 @@ void KOEditorGeneral::initAlarm(QWidget *parent,QBoxLayout *topLayout)
   mAlarmBell->setPixmap(SmallIcon("bell"));
   alarmLayout->addWidget(mAlarmBell);
 
-  mAlarmButton = new QCheckBox(i18n("Reminder:"),parent);
+  mAlarmButton = new QCheckBox(i18n("&Reminder:"),parent);
   connect(mAlarmButton, SIGNAL(toggled(bool)), SLOT(enableAlarmEdit(bool)));
   alarmLayout->addWidget(mAlarmButton);
 
   mAlarmTimeEdit = new KRestrictedLine(parent, "alarmTimeEdit",
-				       "1234567890");
+                  "1234567890");
   mAlarmTimeEdit->setText("");
   alarmLayout->addWidget(mAlarmTimeEdit);
 
@@ -270,16 +273,16 @@ void KOEditorGeneral::readIncidence(Incidence *event)
 {
   mSummaryEdit->setText(event->summary());
   mLocationEdit->setText(event->location());
-  
+
   mDescriptionEdit->setText(event->description());
 
 #if 0
   // organizer information
   mOwnerLabel->setText(i18n("Owner: ") + event->organizer());
 #endif
-  
+
   enableAlarmEdit( event->isAlarmEnabled() );
-  
+
   if(!event->isAlarmEnabled()) {
     // TODO: Implement a KPrefsComboItem to solve this in a clean way.
     int alarmTime;
