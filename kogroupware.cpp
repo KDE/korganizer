@@ -202,7 +202,7 @@ bool KOGroupware::sendICalMessage( QWidget* parent,
   if( incidence->attendees().isEmpty() )
     return true;
 
-  bool isOrganizer = KOPrefs::instance()->thatIsMe( incidence->organizer() );
+  bool isOrganizer = KOPrefs::instance()->thatIsMe( incidence->organizer().email() );
   int rc = 0;
   /*
    * There are two scenarios:
