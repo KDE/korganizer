@@ -98,7 +98,7 @@ void DateNavigator::selectWeekByDay( int weekDay, const QDate &d )
 {
   int dateCount = mSelectedDates.count();
   bool weekStart = ( weekDay == KGlobal::locale()->weekStartDay() );
-  if ( weekStart && dateCount == 5 ) selectWorkWeek( d );
+  if ( weekDay == 1 && dateCount == 5 ) selectWorkWeek( d );
   else if ( weekStart && dateCount == 7 ) selectWeek( d );
   else selectDates( d, dateCount );
 }
@@ -110,11 +110,15 @@ void DateNavigator::selectWeek()
 
 void DateNavigator::selectWeek( const QDate &d )
 {
-  QDate firstDate;
-
   int dayOfWeek = KOCore::self()->calendarSystem()->dayOfTheWeek( d );
 
-  firstDate = d.addDays( KGlobal::locale()->weekStartDay() - dayOfWeek );
+  int weekStart = KGlobal::locale()->weekStartDay();
+
+  QDate firstDate = d.addDays( weekStart - dayOfWeek );
+
+  if ( weekStart != 1 && dayOfWeek < weekStart ) {
+    firstDate = firstDate.addDays( -7 );
+  }
 
   selectDates( firstDate, 7 );
 }
@@ -126,11 +130,14 @@ void DateNavigator::selectWorkWeek()
 
 void DateNavigator::selectWorkWeek( const QDate &d )
 {
-  QDate firstDate;
-
   int dayOfWeek = KOCore::self()->calendarSystem()->dayOfTheWeek( d );
 
-  firstDate = d.addDays( KGlobal::locale()->weekStartDay() - dayOfWeek );
+  QDate firstDate = d.addDays( 1 - dayOfWeek );
+
+  int weekStart = KGlobal::locale()->weekStartDay();
+  if ( weekStart != 1 && dayOfWeek >= weekStart ) {
+    firstDate = firstDate.addDays( 7 );
+  }
 
   selectDates( firstDate, 5 );
 }
