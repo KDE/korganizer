@@ -22,8 +22,8 @@
     without including the source code for Qt in the source distribution.
 */
 
-#include <stdio.h>
 #include <stdlib.h>
+#include <iostream>
 
 #include <kglobal.h>
 #include <kcmdlineargs.h>
@@ -47,6 +47,8 @@
 #include "koapp.h"
 #include "koapp.moc"
 
+using namespace std;
+
 KOrganizerApp::KOrganizerApp() : KUniqueApplication()
 {
   QString prodId = "-//K Desktop Environment//NONSGML KOrganizer %1//EN";
@@ -60,7 +62,7 @@ KOrganizerApp::~KOrganizerApp()
 void KOrganizerApp::displayImminent( const KURL &url, int numdays )
 {
   if (!url.isLocalFile()) {
-    printf(i18n("Unable to handle remote calendar.\n").local8Bit());
+    cout << i18n("Unable to handle remote calendar.").local8Bit() << endl;
     return;
   }
 
@@ -72,44 +74,47 @@ void KOrganizerApp::displayImminent( const KURL &url, int numdays )
   FileStorage storage( &cal, url.path() );
 
   if ( !storage.load() ) {
-    printf(i18n("Could not load calendar '%1'.\n").arg(url.path()).local8Bit());
+    cout << i18n("Could not load calendar '%1'.").arg(url.path()).local8Bit()
+         << endl;
     exit(0);
   }
 
   for (int i = 1; i <= numdays; i++) {
-    printf("%s\n",(const char *)KGlobal::locale()->formatDate(currDate).local8Bit());
+    cout << KGlobal::locale()->formatDate(currDate).local8Bit() << endl;
 
     QPtrList<Event> tmpList( cal.events( currDate, true ) );
-    printf("---------------------------------------------------------------\n");
+    cout << "---------------------------------------------------------------"
+         << endl;
     if (tmpList.count() > 0) {
       for (currEvent = tmpList.first(); currEvent; currEvent = tmpList.next()) {
-        printf("%s",(const char *)currEvent->summary().local8Bit());
+        cout << currEvent->summary().local8Bit() << endl;
         if (!currEvent->doesFloat()) {
-          printf(" (%s - %s)",(const char *)currEvent->dtStartStr().local8Bit(),
-                 (const char *)currEvent->dtEndStr().local8Bit());
+          cout << " (" << currEvent->dtStartStr().local8Bit() << " - "
+               << currEvent->dtEndStr().local8Bit() << ")" << endl;
         }
-        printf("\n");
+        cout << endl;
       }
     } else {
-      printf(i18n("(no events)\n").local8Bit());
+      cout << i18n("(no events)").local8Bit() << endl;
     }
 
-    printf("---------------------------------------------------------------\n");
+    cout << "---------------------------------------------------------------"
+         << endl;
     QPtrList<Todo> tmpList2 = cal.todos(currDate);
     Todo *currTodo;
     if (tmpList.count() > 0) {
       for (currTodo = tmpList2.first(); currTodo; currTodo = tmpList2.next()) {
-        printf("%s",(const char *)currTodo->summary().local8Bit());
+        cout << currTodo->summary().local8Bit() << endl;
         if (!currTodo->doesFloat()) {
-          printf(" (%s)",(const char *)currTodo->dtDueStr().local8Bit());
+          cout << " (" << currTodo->dtDueStr().local8Bit() << ")" << endl;
         }
-        printf("\n");
+        cout << endl;
       }
     } else {
-      printf(i18n("(no todos)\n").local8Bit());
+      cout << i18n("(no todos)").local8Bit() << endl;
     }
 
-    printf("\n");
+    cout << endl;
     currDate = currDate.addDays(1);
   }
 }
