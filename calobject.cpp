@@ -303,7 +303,7 @@ VCalDrag *CalObject::createDrag(KOEvent *selectedEv, QWidget *owner)
   VCalDrag *vcd = new VCalDrag(vcal, owner);
   // free memory associated with vCalendar stuff
   cleanVObject(vcal);  
-  vcd->setPixmap(BarIcon("newevent"));
+  vcd->setPixmap(UserIcon("newevent"));
 
   return vcd;
 }
@@ -327,7 +327,7 @@ VCalDrag *CalObject::createDragTodo(KOEvent *selectedEv, QWidget *owner)
   VCalDrag *vcd = new VCalDrag(vcal, owner);
   // free memory associated with vCalendar stuff
   cleanVObject(vcal);  
-  vcd->setPixmap(BarIcon("newevent"));
+  vcd->setPixmap(UserIcon("newevent"));
 
   return vcd;
 }
@@ -1068,21 +1068,26 @@ VObject *CalObject::eventToVTodo(const KOEvent *anEvent)
 
   vtodo = newVObject(VCTodoProp);
 
+  // due date
   if (anEvent->hasDueDate()) {
     tmpStr = qDateTimeToISO(anEvent->getDtDue(),
                             !anEvent->doesFloat());
     addPropValue(vtodo, VCDueProp, tmpStr.ascii());
   }
 
+  // creation date
   tmpStr = qDateTimeToISO(anEvent->dateCreated);
   addPropValue(vtodo, VCDCreatedProp, tmpStr.ascii());
 
+  // unique id
   addPropValue(vtodo, VCUniqueStringProp, 
 	       anEvent->getVUID().ascii());
 
+  // revision
   tmpStr.sprintf("%i", anEvent->getRevisionNum());
   addPropValue(vtodo, VCSequenceProp, tmpStr.ascii());
 
+  // last modification date
   tmpStr = qDateTimeToISO(anEvent->getLastModified());
   addPropValue(vtodo, VCLastModifiedProp, tmpStr.ascii());  
 
@@ -1124,13 +1129,16 @@ VObject *CalObject::eventToVTodo(const KOEvent *anEvent)
       addProp(d, VCQuotedPrintableProp);
   }
 
+  // summary
   if (!anEvent->getSummary().isEmpty())
     addPropValue(vtodo, VCSummaryProp, anEvent->getSummary().ascii());
   addPropValue(vtodo, VCStatusProp, anEvent->getStatusStr().ascii());
 
+  // priority
   tmpStr.sprintf("%i",anEvent->getPriority());
   addPropValue(vtodo, VCPriorityProp, tmpStr.ascii());
 
+  // related event
   if (anEvent->getRelatedTo()) {
     addPropValue(vtodo, VCRelatedToProp,
 	         anEvent->getRelatedTo()->getVUID().ascii());
@@ -1139,14 +1147,12 @@ VObject *CalObject::eventToVTodo(const KOEvent *anEvent)
   // pilot sync stuff
   tmpStr.sprintf("%i",anEvent->getPilotId());
   addPropValue(vtodo, KPilotIdProp, tmpStr.ascii());
-
   tmpStr.sprintf("%i",anEvent->getSyncStatus());
   addPropValue(vtodo, KPilotStatusProp, tmpStr.ascii());
 
   return vtodo;
 }
 
-// this stuff should really be in koevent!??
 VObject* CalObject::eventToVEvent(const KOEvent *anEvent)
 {
   VObject *vevent;
@@ -1155,6 +1161,7 @@ VObject* CalObject::eventToVEvent(const KOEvent *anEvent)
   
   vevent = newVObject(VCEventProp);
 
+  // start and end time
   tmpStr = qDateTimeToISO(anEvent->getDtStart(),
 			  !anEvent->doesFloat());
   addPropValue(vevent, VCDTstartProp, tmpStr.ascii());
@@ -1167,15 +1174,19 @@ VObject* CalObject::eventToVEvent(const KOEvent *anEvent)
     addPropValue(vevent, VCDTendProp, tmpStr.ascii());
   }
 
+  // creation date
   tmpStr = qDateTimeToISO(anEvent->dateCreated);
   addPropValue(vevent, VCDCreatedProp, tmpStr.ascii());
 
+  // unique id
   addPropValue(vevent, VCUniqueStringProp,
 	       anEvent->getVUID().ascii());
 
+  // revision
   tmpStr.sprintf("%i", anEvent->getRevisionNum());
   addPropValue(vevent, VCSequenceProp, tmpStr.ascii());
 
+  // last modification date
   tmpStr = qDateTimeToISO(anEvent->getLastModified());
   addPropValue(vevent, VCLastModifiedProp, tmpStr.ascii());
 
@@ -1324,10 +1335,14 @@ VObject* CalObject::eventToVEvent(const KOEvent *anEvent)
       addProp(d, VCQuotedPrintableProp);
   }
 
+  // summary
   if (!anEvent->getSummary().isEmpty())
     addPropValue(vevent, VCSummaryProp, anEvent->getSummary().ascii());
 
+  // status
   addPropValue(vevent, VCStatusProp, anEvent->getStatusStr().ascii());
+  
+  // secrecy
   addPropValue(vevent, VCClassProp, anEvent->getSecrecyStr().ascii());
 
   // categories
@@ -1350,12 +1365,14 @@ VObject* CalObject::eventToVEvent(const KOEvent *anEvent)
     addPropValue(vevent, VCCategoriesProp, tmpStr.ascii());
   }
 
+  // attachments
   tmpStrList = anEvent->getAttachments();
   char *attachStr;
   for (attachStr = tmpStrList.first(); attachStr;
        attachStr = tmpStrList.next())
     addPropValue(vevent, VCAttachProp, attachStr);
   
+  // resources
   tmpStrList = anEvent->getResources();
   tmpStr = "";
   char *resStr;
@@ -1388,12 +1405,16 @@ VObject* CalObject::eventToVEvent(const KOEvent *anEvent)
       addPropValue(a, VCProcedureNameProp, anEvent->getProgramAlarmFile().ascii());
     }
   }
-	    
+
+  // priority	    
   tmpStr.sprintf("%i",anEvent->getPriority());
   addPropValue(vevent, VCPriorityProp, tmpStr.ascii());
+
+  // transparency
   tmpStr.sprintf("%i",anEvent->getTransparency());
   addPropValue(vevent, VCTranspProp, tmpStr.ascii());
   
+  // related event
   if (anEvent->getRelatedTo()) {
     addPropValue(vevent, VCRelatedToProp,
 	         anEvent->getRelatedTo()->getVUID().ascii());
@@ -1402,7 +1423,6 @@ VObject* CalObject::eventToVEvent(const KOEvent *anEvent)
   // pilot sync stuff
   tmpStr.sprintf("%i",anEvent->getPilotId());
   addPropValue(vevent, KPilotIdProp, tmpStr.ascii());
-
   tmpStr.sprintf("%i",anEvent->getSyncStatus());
   addPropValue(vevent, KPilotStatusProp, tmpStr.ascii());
 
@@ -1419,11 +1439,13 @@ KOEvent *CalObject::VTodoToEvent(VObject *vtodo)
   anEvent = new KOEvent;
   anEvent->setTodoStatus(TRUE);
 
+  // creation date
   if ((vo = isAPropertyOf(vtodo, VCDCreatedProp)) != 0) {
       anEvent->dateCreated = ISOToQDateTime(s = fakeCString(vObjectUStringZValue(vo)));
       deleteStr(s);
   }
 
+  // unique id
   vo = isAPropertyOf(vtodo, VCUniqueStringProp);
   // while the UID property is preferred, it is not required.  We'll use the
   // default KOEvent UID if none is given.
@@ -1432,6 +1454,7 @@ KOEvent *CalObject::VTodoToEvent(VObject *vtodo)
     deleteStr(s);
   }
 
+  // last modification date
   if ((vo = isAPropertyOf(vtodo, VCLastModifiedProp)) != 0) {
     anEvent->setLastModified(ISOToQDateTime(s = fakeCString(vObjectUStringZValue(vo))));
     deleteStr(s);
@@ -1440,6 +1463,7 @@ KOEvent *CalObject::VTodoToEvent(VObject *vtodo)
     anEvent->setLastModified(QDateTime(QDate::currentDate(),
 				       QTime::currentTime()));
 
+  // organizer
   // if our extension property for the event's ORGANIZER exists, add it.
   if ((vo = isAPropertyOf(vtodo, ICOrganizerProp)) != 0) {
     anEvent->setOrganizer(s = fakeCString(vObjectUStringZValue(vo)));
@@ -1448,7 +1472,7 @@ KOEvent *CalObject::VTodoToEvent(VObject *vtodo)
     anEvent->setOrganizer(getEmail());
   }
 
-  // deal with attendees.
+  // attendees.
   initPropIterator(&voi, vtodo);
   while (moreIteration(&voi)) {
     vo = nextVObject(&voi);
@@ -1491,11 +1515,13 @@ KOEvent *CalObject::VTodoToEvent(VObject *vtodo)
     deleteStr(s);
   }
   
+  // summary
   if ((vo = isAPropertyOf(vtodo, VCSummaryProp))) {
     anEvent->setSummary(s = fakeCString(vObjectUStringZValue(vo)));
     deleteStr(s);
   }
   
+  // status
   if ((vo = isAPropertyOf(vtodo, VCStatusProp)) != 0) {
     anEvent->setStatus(s = fakeCString(vObjectUStringZValue(vo)));
     deleteStr(s);
@@ -1503,11 +1529,13 @@ KOEvent *CalObject::VTodoToEvent(VObject *vtodo)
   else
     anEvent->setStatus("NEEDS ACTION");
   
+  // priority
   if ((vo = isAPropertyOf(vtodo, VCPriorityProp))) {
     anEvent->setPriority(atoi(s = fakeCString(vObjectUStringZValue(vo))));
     deleteStr(s);
   }
 
+  // due date
   if ((vo = isAPropertyOf(vtodo, VCDueProp)) != 0) {
     anEvent->setDtDue(ISOToQDateTime(s = fakeCString(vObjectUStringZValue(vo))));
     deleteStr(s);
@@ -1515,7 +1543,8 @@ KOEvent *CalObject::VTodoToEvent(VObject *vtodo)
   } else {
     anEvent->setHasDueDate(false);
   }
-  
+
+  // related todo  
   if ((vo = isAPropertyOf(vtodo, VCRelatedToProp)) != 0) {
     anEvent->setRelatedToVUID(s = fakeCString(vObjectUStringZValue(vo)));
     deleteStr(s);
@@ -1548,15 +1577,15 @@ KOEvent* CalObject::VEventToEvent(VObject *vevent)
   char *s;
 
   anEvent = new KOEvent;
-
   
+  // creation date
   if ((vo = isAPropertyOf(vevent, VCDCreatedProp)) != 0) {
       anEvent->dateCreated = ISOToQDateTime(s = fakeCString(vObjectUStringZValue(vo)));
       deleteStr(s);
   }
 
+  // unique id
   vo = isAPropertyOf(vevent, VCUniqueStringProp);
-
   if (!vo) {
     parseError(VCUniqueStringProp);
     return 0;
@@ -1564,6 +1593,7 @@ KOEvent* CalObject::VEventToEvent(VObject *vevent)
   anEvent->setVUID(s = fakeCString(vObjectUStringZValue(vo)));
   deleteStr(s);
 
+  // revision
   // again NSCAL doesn't give us much to work with, so we improvise...
   if ((vo = isAPropertyOf(vevent, VCSequenceProp)) != 0) {
     anEvent->setRevisionNum(atoi(s = fakeCString(vObjectUStringZValue(vo))));
@@ -1572,6 +1602,7 @@ KOEvent* CalObject::VEventToEvent(VObject *vevent)
   else
     anEvent->setRevisionNum(0);
 
+  // last modification date
   if ((vo = isAPropertyOf(vevent, VCLastModifiedProp)) != 0) {
     anEvent->setLastModified(ISOToQDateTime(s = fakeCString(vObjectUStringZValue(vo))));
     deleteStr(s);
@@ -1580,6 +1611,7 @@ KOEvent* CalObject::VEventToEvent(VObject *vevent)
     anEvent->setLastModified(QDateTime(QDate::currentDate(),
 				       QTime::currentTime()));
 
+  // organizer
   // if our extension property for the event's ORGANIZER exists, add it.
   if ((vo = isAPropertyOf(vevent, ICOrganizerProp)) != 0) {
     anEvent->setOrganizer(s = fakeCString(vObjectUStringZValue(vo)));
@@ -1633,8 +1665,10 @@ KOEvent* CalObject::VEventToEvent(VObject *vevent)
     anEvent->setFloats(TRUE);
     } else {
     }*/
+
   anEvent->setFloats(FALSE);
   
+  // start time
   if ((vo = isAPropertyOf(vevent, VCDTstartProp)) != 0) {
     anEvent->setDtStart(ISOToQDateTime(s = fakeCString(vObjectUStringZValue(vo))));
     //    debug("s is %s, ISO is %s",
@@ -1644,6 +1678,7 @@ KOEvent* CalObject::VEventToEvent(VObject *vevent)
       anEvent->setFloats(TRUE);
   }
   
+  // stop time
   if ((vo = isAPropertyOf(vevent, VCDTendProp)) != 0) {
     anEvent->setDtEnd(ISOToQDateTime(s = fakeCString(vObjectUStringZValue(vo))));
       deleteStr(s);
@@ -1875,17 +1910,19 @@ KOEvent* CalObject::VEventToEvent(VObject *vevent)
   } // repeats
 
 
+  // recurrence exceptions
   if ((vo = isAPropertyOf(vevent, VCExDateProp)) != 0) {
     anEvent->setExDates(s = fakeCString(vObjectUStringZValue(vo)));
     deleteStr(s);
   }
 
-
+  // summary
   if ((vo = isAPropertyOf(vevent, VCSummaryProp))) {
     anEvent->setSummary(s = fakeCString(vObjectUStringZValue(vo)));
     deleteStr(s);
   }
 
+  // description
   if ((vo = isAPropertyOf(vevent, VCDescriptionProp)) != 0) {
     if (!anEvent->getDescription().isEmpty()) {
       anEvent->setDescription(anEvent->getDescription() + "\n" +
@@ -1905,6 +1942,7 @@ KOEvent* CalObject::VEventToEvent(VObject *vevent)
     anEvent->setSummary(tmpStr.ascii());
   }  
 
+  // status
   if ((vo = isAPropertyOf(vevent, VCStatusProp)) != 0) {
     QString tmpStr(s = fakeCString(vObjectUStringZValue(vo)));
     deleteStr(s);
@@ -1913,6 +1951,7 @@ KOEvent* CalObject::VEventToEvent(VObject *vevent)
   else
     anEvent->setStatus("NEEDS ACTION");
 
+  // secrecy
   if ((vo = isAPropertyOf(vevent, VCClassProp)) != 0) {
     anEvent->setSecrecy(s = fakeCString(vObjectUStringZValue(vo)));
     deleteStr(s);
@@ -1920,6 +1959,7 @@ KOEvent* CalObject::VEventToEvent(VObject *vevent)
   else
     anEvent->setSecrecy("PUBLIC");
 
+  // categories
   QStrList tmpStrList;
   int index1 = 0;
   int index2 = 0;
@@ -1940,6 +1980,7 @@ KOEvent* CalObject::VEventToEvent(VObject *vevent)
     anEvent->setCategories(tmpStrList);
   }
 
+  // attachments
   tmpStrList.clear();
   initPropIterator(&voi, vevent);
   while (moreIteration(&voi)) {
@@ -1951,7 +1992,7 @@ KOEvent* CalObject::VEventToEvent(VObject *vevent)
   }
   anEvent->setAttachments(tmpStrList);
 
-  
+  // resources
   if ((vo = isAPropertyOf(vevent, VCResourcesProp)) != 0) {
     QString resources = (s = fakeCString(vObjectUStringZValue(vo)));
     deleteStr(s);
@@ -1989,16 +2030,19 @@ KOEvent* CalObject::VEventToEvent(VObject *vevent)
     }
   }
 
+  // priority
   if ((vo = isAPropertyOf(vevent, VCPriorityProp))) {
     anEvent->setPriority(atoi(s = fakeCString(vObjectUStringZValue(vo))));
     deleteStr(s);
   }
   
+  // transparency
   if ((vo = isAPropertyOf(vevent, VCTranspProp)) != 0) {
     anEvent->setTransparency(atoi(s = fakeCString(vObjectUStringZValue(vo))));
     deleteStr(s);
   }
 
+  // related event
   if ((vo = isAPropertyOf(vevent, VCRelatedToProp)) != 0) {
     anEvent->setRelatedToVUID(s = fakeCString(vObjectUStringZValue(vo)));
     deleteStr(s);

@@ -164,7 +164,7 @@ void KOEditorGeneralEvent::initAlarmBox()
   QPixmap pixmap;
 
   alarmBell = new QLabel(this);
-  alarmBell->setPixmap(BarIcon("bell"));
+  alarmBell->setPixmap(UserIcon("bell"));
 
   alarmButton = new QCheckBox( this, "CheckBox_2" );
   alarmButton->setText( i18n("Reminder:") );
@@ -180,14 +180,14 @@ void KOEditorGeneralEvent::initAlarmBox()
   alarmIncrCombo->setMinimumHeight(20);
 
   alarmSoundButton = new QPushButton( this, "PushButton_4" );
-  pixmap = BarIcon("playsound");
+  pixmap = UserIcon("playsound");
   //  alarmSoundButton->setText( i18n("WAV") );
   alarmSoundButton->setPixmap(pixmap);
   alarmSoundButton->setToggleButton(true);
   QToolTip::add(alarmSoundButton, "No sound set");
 
   alarmProgramButton = new QPushButton( this, "PushButton_5" );
-  pixmap = BarIcon("runprog");
+  pixmap = UserIcon("runprog");
   //  alarmProgramButton->setText( i18n("PROG") );
   alarmProgramButton->setPixmap(pixmap);
   alarmProgramButton->setToggleButton(true);
@@ -618,9 +618,9 @@ void AttendeeListItem::updateItem()
 //  setText(4,(mAttendee->RSVP() && !mAttendee->getEmail().isEmpty()) ?
 //            "Y" : "N");
   if (mAttendee->RSVP() && !mAttendee->getEmail().isEmpty())
-    setPixmap(4,BarIcon("mailappt"));
+    setPixmap(4,UserIcon("mailappt"));
   else
-    setPixmap(4,BarIcon("nomailappt"));
+    setPixmap(4,UserIcon("nomailappt"));
 }
 
 
@@ -782,16 +782,6 @@ void KOEditorDetails::initMisc()
   layout->addWidget(locationLabel);*/
 
 
-  QHBox *priorityBox = new QHBox(groupBox);
-
-  priorityLabel = new QLabel(i18n("Priority:"),priorityBox);
-
-  priorityCombo = new QComboBox( false, priorityBox);
-  priorityCombo->insertItem( i18n("Low (1)") );
-  priorityCombo->insertItem( i18n("Normal (2)") );
-  priorityCombo->insertItem( i18n("High (3)") );
-  priorityCombo->insertItem( i18n("Maximum (4)") );
-
   /*  subLayout = new QHBoxLayout();
   layout->addLayout(subLayout);
 
@@ -840,7 +830,6 @@ void KOEditorDetails::setEnabled(bool enabled)
   attendeeRoleCombo->setEnabled(enabled);
   //  attendeeRSVPButton->setEnabled(enabled);
   statusCombo->setEnabled(enabled);
-  priorityCombo->setEnabled(enabled);
   resourceButton->setEnabled(enabled);
   resourcesEdit->setEnabled(enabled);
 */
@@ -2065,8 +2054,7 @@ KOEditorGeneralTodo::KOEditorGeneralTodo(int spacing,QWidget* parent,
   initLayout();
 
   QWidget::setTabOrder(summaryEdit, completedButton);
-  QWidget::setTabOrder(completedButton, completedCombo);
-  QWidget::setTabOrder(completedCombo, priorityCombo);
+  QWidget::setTabOrder(completedButton, priorityCombo);
   QWidget::setTabOrder(priorityCombo, descriptionEdit);
   QWidget::setTabOrder(descriptionEdit, categoriesButton);
   QWidget::setTabOrder(categoriesButton, privateButton);
@@ -2123,17 +2111,6 @@ void KOEditorGeneralTodo::initMisc()
   completedButton = new QCheckBox(this, "CheckBox_10" );
   completedButton->setText( i18n("Completed") );
 
-  completedLabel = new QLabel( this, "Label_3" );
-  completedLabel->setText( i18n("% Completed") );
-
-  completedCombo = new QComboBox( false, this, "ComboBox_10" );
-  completedCombo->setSizeLimit( 10 );
-  completedCombo->insertItem( i18n("0 %") );
-  completedCombo->insertItem( i18n("25 %") );
-  completedCombo->insertItem( i18n("50 %") );
-  completedCombo->insertItem( i18n("75 %") );
-  completedCombo->insertItem( i18n("Completed") );
-
   priorityLabel = new QLabel( this, "Label_3" );
   priorityLabel->setText( i18n("Priority") );
 
@@ -2187,7 +2164,6 @@ void KOEditorGeneralTodo::initLayout()
   layoutTop->addLayout(layoutCompletion);
   layoutCompletion->addWidget(completedButton);
   layoutCompletion->addWidget(completedLabel);
-  layoutCompletion->addWidget(completedCombo);
   layoutCompletion->addWidget(priorityLabel);
   layoutCompletion->addWidget(priorityCombo);
   
@@ -2296,7 +2272,6 @@ void KOEditorGeneralTodo::setEnabled(bool enabled)
   // Labels are not enabled, since they are not active input controls.
 
   completedButton->setEnabled(enabled);
-  completedCombo->setEnabled(enabled);
   priorityCombo->setEnabled(enabled);
   summaryEdit->setEnabled(enabled);
   descriptionEdit->setEnabled(enabled);

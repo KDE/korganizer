@@ -26,7 +26,7 @@ KDateEdit::KDateEdit(QWidget *parent, const char *name)
   kfEdit->setFixedWidth(90);
   kfEdit->adjustSize();
 
-  pixmap = BarIcon("smallcal");
+  pixmap = UserIcon("smallcal");
   dateButton = new QPushButton(this);
   dateButton->setPixmap(pixmap);
   dateButton->move(kfEdit->geometry().topRight().x()+1,

@@ -483,7 +483,7 @@ void CalPrinter::drawDaysOfWeekBox(QPainter &p, const QDate &qd,
              width-2, height-2, 
              QBrush(Dense3Pattern));
   p.drawText(x+5, y, width-10, height, AlignCenter | AlignVCenter,
-             local->WeekDayName(qd.dayOfWeek()));
+             local->weekDayName(qd.dayOfWeek()));
 }
 
 void CalPrinter::drawDayBox(QPainter &p, const QDate &qd,
@@ -504,7 +504,7 @@ void CalPrinter::drawDayBox(QPainter &p, const QDate &qd,
     dayNumStr.remove(0, index);
     index = dayNumStr.findRev(' ');
     dayNumStr.truncate(index);
-    dayNumStr = local->WeekDayName(qd.dayOfWeek()) + dayNumStr;
+    dayNumStr = local->weekDayName(qd.dayOfWeek()) + dayNumStr;
   } else {
     dayNumStr = QString::number(qd.day());
   }
@@ -720,7 +720,7 @@ void CalPrinter::drawSmallMonth(QPainter &p, const QDate &qd,
   // draw days of week
   for (int col = 0; col < 7; col++) {
     // tmpStr.sprintf("%c",(const char*)monthDate2.dayName(monthDate2.dayOfWeek()));
-    tmpStr=local->WeekDayName(monthDate2.dayOfWeek());
+    tmpStr=local->weekDayName(monthDate2.dayOfWeek());
     p.drawText(x+col*cellWidth, y+height/4, cellWidth, cellHeight,
 	       AlignCenter, tmpStr);
     monthDate2 = monthDate2.addDays(1);

@@ -123,7 +123,7 @@ void KOAgenda::init()
   mItemPopup->insertItem (i18n("&Edit"),this, SLOT(popupEdit()));
   mItemPopup->insertItem (QIconSet(BarIcon("delete")),i18n("&Delete"),
                           this, SLOT(popupDelete()));
-  mItemPopup->insertItem (QIconSet(BarIcon("bell")),i18n("ToggleAlarm"),
+  mItemPopup->insertItem (QIconSet(UserIcon("bell")),i18n("ToggleAlarm"),
                           this, SLOT(popupAlarm()));
 }
 

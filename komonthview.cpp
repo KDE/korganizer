@@ -82,8 +82,8 @@ EventListBoxItem::EventListBoxItem(const char *s)
   : QListBoxItem()
 { 
   setText(s); 
-  alarmPxmp = BarIcon("bell");
-  recurPxmp = BarIcon("recur");
+  alarmPxmp = UserIcon("bell");
+  recurPxmp = UserIcon("recur");
 }
 
 void EventListBoxItem::paint(QPainter *p)

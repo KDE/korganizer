@@ -219,7 +219,7 @@ KOTodoView::KOTodoView(CalObject *calendar,QWidget* parent,const char* name) :
   mTodoListView->addColumn(i18n("Due Time"));
   
   mItemPopupMenu = new QPopupMenu;
-  mItemPopupMenu->insertItem(BarIcon("todolist"), i18n("New To-Do"), this,
+  mItemPopupMenu->insertItem(UserIcon("todolist"), i18n("New To-Do"), this,
                              SLOT (newTodo()));
   mItemPopupMenu->insertItem(i18n("Show To-Do"), this,
                              SLOT (showTodo()));
@@ -233,7 +233,7 @@ KOTodoView::KOTodoView(CalObject *calendar,QWidget* parent,const char* name) :
                              SLOT(purgeCompleted()));
                        
   mPopupMenu = new QPopupMenu;
-  mPopupMenu->insertItem(BarIcon("todolist"), i18n("New To-Do"), this,
+  mPopupMenu->insertItem(UserIcon("todolist"), i18n("New To-Do"), this,
                          SLOT (newTodo()));
   mPopupMenu->insertItem(i18n("Purge Completed"), this,
                          SLOT(purgeCompleted()));

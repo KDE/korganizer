@@ -271,9 +271,6 @@ void CalendarView::readSettings()
 
   // Set current view from Entry "Current View"
   readCurrentView();
-
-  config.setGroup("Views");
-  agendaViewMode = config.readNumEntry("Agenda View", KOAgendaView::DAY);
 }
 
 void CalendarView::readCurrentView()
@@ -293,6 +290,9 @@ void CalendarView::readCurrentView()
       }
     }
   }
+
+  config.setGroup("Views");
+  agendaViewMode = config.readNumEntry("Agenda View", KOAgendaView::DAY);  
 }
 
 void CalendarView::writeSettings()

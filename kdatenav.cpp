@@ -263,7 +263,7 @@ void KDateNavigator::updateView()
   setUpdatesEnabled(FALSE);
 
   // compute the label at the top of the navigator
-  QString dtstr = KGlobal::locale()->MonthName(m_MthYr.month()) + " " +
+  QString dtstr = KGlobal::locale()->monthName(m_MthYr.month()) + " " +
                   QString::number(m_MthYr.year());
   dateLabel->setText(dtstr);
   

@@ -225,22 +225,22 @@ void KOrganizer::initActions()
   KStdAction::paste(mCalendarView, SLOT(edit_paste()), actionCollection());
 
   // view menu
-  (void)new KAction(i18n("&List"), BarIcon("listicon"), 0,
+  (void)new KAction(i18n("&List"), UserIcon("listicon"), 0,
                     mCalendarView, SLOT(view_list()),
                     actionCollection(), "view_list");
-  (void)new KAction(i18n("&Day"), BarIcon("dayicon"), 0,
+  (void)new KAction(i18n("&Day"), UserIcon("dayicon"), 0,
                     mCalendarView, SLOT(view_day()),
                     actionCollection(), "view_day");
-  (void)new KAction(i18n("W&ork Week"), BarIcon("5dayicon"), 0,
+  (void)new KAction(i18n("W&ork Week"), UserIcon("5dayicon"), 0,
                     mCalendarView, SLOT(view_workweek()),
                     actionCollection(), "view_workweek");
-  (void)new KAction(i18n("&Week"), BarIcon("weekicon"), 0,
+  (void)new KAction(i18n("&Week"), UserIcon("weekicon"), 0,
                     mCalendarView, SLOT(view_week()),
                     actionCollection(), "view_week");
-  (void)new KAction(i18n("&Month"), BarIcon("monthicon"), 0,
+  (void)new KAction(i18n("&Month"), UserIcon("monthicon"), 0,
                     mCalendarView, SLOT(view_month()),
                     actionCollection(), "view_month");
-  (void)new KAction(i18n("&To-do list"), BarIcon("todolist"), 0,
+  (void)new KAction(i18n("&To-do list"), UserIcon("todolist"), 0,
                     mCalendarView, SLOT(view_todolist()),
                     actionCollection(), "view_todo");
   (void)new KAction(i18n("&Update"), 0,
@@ -248,7 +248,7 @@ void KOrganizer::initActions()
                     actionCollection(), "update");
 
   // event handling menu
-  (void)new KAction(i18n("New &Appointment"), BarIcon("newevent"), 0,
+  (void)new KAction(i18n("New &Appointment"), UserIcon("newevent"), 0,
                     mCalendarView,SLOT(appointment_new()),
                     actionCollection(), "new_appointment");
   (void)new KAction(i18n("New E&vent"), 0,
@@ -270,7 +270,7 @@ void KOrganizer::initActions()
                     mCalendarView,SLOT(action_mail()),
                     actionCollection(), "mail_appointment");
   
-  (void)new KAction(i18n("Go to &Today"), BarIcon("todayicon"), 0,
+  (void)new KAction(i18n("Go to &Today"), UserIcon("todayicon"), 0,
                     mCalendarView,SLOT(goToday()),
                     actionCollection(), "go_today");
   (void)new KAction(i18n("&Previous Day"), BarIcon("1leftarrow"), 0,
@@ -404,7 +404,7 @@ KURL KOrganizer::getSaveURL()
 {
   KURL url = KFileDialog::getSaveURL(locateLocal("appdata", ""),"*.vcs",this);
 
-  QString filename = url.filename(false); 
+  QString filename = url.fileName(false); 
 
   if(filename.length() >= 3) {
     QString e = filename.right(4);
@@ -475,7 +475,7 @@ void KOrganizer::setTitle()
 
   QString tmpStr;
 
-  if (!mURL.isEmpty()) tmpStr = mURL.filename();
+  if (!mURL.isEmpty()) tmpStr = mURL.fileName();
   else tmpStr = i18n("New Calendar");
 
   // display the modified thing in the title
