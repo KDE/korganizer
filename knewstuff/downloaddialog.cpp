@@ -11,6 +11,7 @@
 #include <kurl.h>
 #include <kconfig.h>
 #include <kapplication.h>
+#include <kiconloader.h>
 
 #include <knewstuff/entry.h>
 #include <knewstuff/knewstuffgeneric.h>
@@ -64,7 +65,20 @@ void DownloadDialog::load()
 
 void DownloadDialog::clear()
 {
-	// not implemented
+	QMap<QWidget*, QValueList<KListView*>* >::Iterator it;
+	for(it = m_map.begin(); it != m_map.end(); it++)
+	{
+		QValueList<KListView*> *v = it.data();
+		kdDebug() << "clear listviews in " << v << endl;
+		if(v)
+		{
+			(*(v->at(0)))->clear();
+			(*(v->at(1)))->clear();
+			(*(v->at(2)))->clear();
+		}
+
+		//delete (*it);
+	}
 }
 
 void DownloadDialog::slotProviders(Provider::List *list)
@@ -72,7 +86,7 @@ void DownloadDialog::slotProviders(Provider::List *list)
 	Provider *p;
 	QFrame *frame;
 
-	frame = addPage(i18n("Qt bug"), i18n("Qt bug"), QPixmap("prov_bar.png"));
+	frame = addPage(i18n("Welcome"), i18n("Welcome"), QPixmap(""));
 
 	for(p = list->first(); p; p = list->next())
 	{
@@ -178,11 +192,11 @@ void DownloadDialog::slotResult(KIO::Job *job)
 	QDomDocument dom;
 	QDomElement knewstuff;
 
-	kdDebug() << "got data: " << m_data << endl;
+	kdDebug() << "got data: " << m_data[job] << endl;
 
 	kapp->config()->setGroup("status");
 
-	dom.setContent(m_data);
+	dom.setContent(m_data[job]);
 	knewstuff = dom.documentElement();
 
 	for(QDomNode pn = knewstuff.firstChild(); !pn.isNull(); pn = pn.nextSibling())
@@ -209,7 +223,7 @@ void DownloadDialog::slotResult(KIO::Job *job)
 		}
 	}
 
-	m_data = "";
+	m_data[job] = "";
 }
 
 void DownloadDialog::addEntry(Entry *entry)
@@ -222,7 +236,7 @@ void DownloadDialog::addEntry(Entry *entry)
 	{
 		if(m_map.count() == 0)
 		{
-			m_frame = addPage(i18n("Qt bug"), i18n("Qt bug"), QPixmap("prov_bar.png"));
+			m_frame = addPage(i18n("Welcome"), i18n("Welcome"), QPixmap(""));
 			Provider *p = new Provider();
 			p->setName(i18n("Generic"));
 			addProvider(p);
@@ -235,8 +249,8 @@ void DownloadDialog::addEntry(Entry *entry)
 	else if(date < entry->releaseDate()) installed = -1;
 	else installed = 1;
 
-	if(installed > 0) pix = QPixmap("installed.png");
-	else if(installed < 0) pix = QPixmap("updated.png");
+	if(installed > 0) pix = KGlobal::iconLoader()->loadIcon("ok", KIcon::Small);
+	else if(installed < 0) pix = KGlobal::iconLoader()->loadIcon("history", KIcon::Small);
 	else pix = QPixmap();
 
 	KListViewItem *tmp_r = new KListViewItem(lv_r,
@@ -255,10 +269,10 @@ void DownloadDialog::addEntry(Entry *entry)
 	kdDebug() << "added entry " << entry->name() << endl;
 }
 
-void DownloadDialog::slotData(KIO::Job *, const QByteArray &a)
+void DownloadDialog::slotData(KIO::Job *job, const QByteArray &a)
 {
 	QCString tmp(a, a.size() + 1);
-	m_data.append(QString::fromUtf8(tmp));
+	m_data[job].append(QString::fromUtf8(tmp));
 }
 
 void DownloadDialog::slotDetails()
@@ -308,6 +322,7 @@ void DownloadDialog::slotInstall()
 
 	if(m_engine)
 	{
+		install(e);
 		m_engine->download(e);
 	}
 	else
@@ -324,6 +339,21 @@ void DownloadDialog::slotInstall()
 	}
 }
 
+void DownloadDialog::install(Entry *e)
+{
+	kapp->config()->setGroup("status");
+	kapp->config()->writeEntry(m_entryname, e->releaseDate().toString());
+	kapp->config()->sync();
+
+	QPixmap pix = KGlobal::iconLoader()->loadIcon("ok", KIcon::Small);
+	m_entryitem = lv_r->findItem(m_entryname, 0);
+	if(m_entryitem) m_entryitem->setPixmap(0, pix);
+	m_entryitem = lv_d->findItem(m_entryname, 0);
+	if(m_entryitem) m_entryitem->setPixmap(0, pix);
+	m_entryitem = lv_l->findItem(m_entryname, 0);
+	if(m_entryitem) m_entryitem->setPixmap(0, pix);
+}
+
 void DownloadDialog::slotInstalled(KIO::Job*)
 {
 	bool ret;
@@ -332,17 +362,7 @@ void DownloadDialog::slotInstalled(KIO::Job*)
 
 	if(ret)
 	{
-		kapp->config()->setGroup("status");
-		kapp->config()->writeEntry(m_entryname, m_entry->releaseDate().toString());
-		kapp->config()->sync();
-
-		QPixmap pix("installed.png");
-		m_entryitem = lv_r->findItem(m_entryname, 0);
-		if(m_entryitem) m_entryitem->setPixmap(0, pix);
-		m_entryitem = lv_d->findItem(m_entryname, 0);
-		if(m_entryitem) m_entryitem->setPixmap(0, pix);
-		m_entryitem = lv_l->findItem(m_entryname, 0);
-		if(m_entryitem) m_entryitem->setPixmap(0, pix);
+		install(m_entry);
 
 		KMessageBox::information(this, i18n("Installation successful."), i18n("Installation"));
 	}
@@ -365,14 +385,14 @@ void DownloadDialog::slotSelected()
 	{
 		if(!e->preview().isValid())
 		{
-			m_rt->setText(QString("<b>%1</b><br>%2<br><br><i>%3</i><br>(%4)").arg(
-				e->name()).arg(e->author()).arg(e->summary()).arg(e->licence()));
+			m_rt->setText(QString("<b>%1</b><br>%2<br>%3<br><br><i>%4</i><br>(%5)").arg(
+				e->name()).arg(e->author()).arg(e->releaseDate().toString()).arg(e->summary()).arg(e->licence()));
 		}
 		else
 		{
 			KIO::NetAccess::download(e->preview(), tmp);
-			m_rt->setText(QString("<b>%1</b><br>%2<br><br><img src='%3'><br><i>%4</i><br>(%5)").arg(
-				e->name()).arg(e->author()).arg(tmp).arg(e->summary()).arg(e->licence()));
+			m_rt->setText(QString("<b>%1</b><br>%2<br>%3<br><br><img src='%4'><br><i>%5</i><br>(%6)").arg(
+				e->name()).arg(e->author()).arg(e->releaseDate().toString()).arg(tmp).arg(e->summary()).arg(e->licence()));
 		}
 	}
 }

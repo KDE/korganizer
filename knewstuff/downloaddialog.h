@@ -59,9 +59,10 @@ private:
 	void init(Engine *e);
 	Entry *getEntry();
 	void loadProvider(Provider *p);
+	void install(Entry *e);
 
 	ProviderLoader *m_loader;
-	QString m_data, m_entryname;
+	QString m_entryname;
 	KListView *lv_r, *lv_d, *lv_l;
 	QTextBrowser *m_rt;
 	QFrame *m_frame;
@@ -74,6 +75,7 @@ private:
 	QMap<QWidget*, Provider*> m_providers;
 	QMap<QWidget*, QTextBrowser*> m_rts;
 	QMap<KIO::Job*, Provider*> m_jobs;
+	QMap<KIO::Job*, QString> m_data;
 	QString m_filter, m_type;
 	Engine *m_engine;
 };
