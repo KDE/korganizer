@@ -1,2 +1,2 @@
-SUBDIRS=datenums holidays webexport
+SUBDIRS=datenums holidays
 
