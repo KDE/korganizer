@@ -23,6 +23,8 @@
 #include <ktempfile.h>
 #include <kurl.h>
 #include <kio/job.h>
+#include <kstddirs.h>
+#include <kconfig.h>
 
 #include "calobject.h"
 #include "kdateedit.h"
@@ -45,6 +47,7 @@ ExportWebDialog::ExportWebDialog (CalObject *cal, QWidget *parent,
 
 ExportWebDialog::~ExportWebDialog()
 {
+  delete mConfig;
 }
 
 void ExportWebDialog::setupGeneralPage()
@@ -82,7 +85,10 @@ void ExportWebDialog::setupGeneralPage()
   new QLabel(i18n("Output File:"),destGroup);
 
   QHBox *outputFileLayout = new QHBox(destGroup);
-  QString str = QDir::homeDirPath() + "/calendar.html";
+  mConfig = new KConfig(locate("config","korganizerrc"));
+  mConfig->setGroup("General");
+  QString str = mConfig->readEntry("Export HTML URL",
+                                      QDir::homeDirPath() + "/calendar.html");
   mOutputFileEdit = new QLineEdit(str,outputFileLayout);
   QPushButton *browseButton = new QPushButton(i18n("Browse"),outputFileLayout);
   QObject::connect(browseButton, SIGNAL(clicked()),
@@ -222,6 +228,10 @@ void ExportWebDialog::exportWebPage()
 
   KURL dest;
   dest.setPath(mOutputFileEdit->text());
+  // Remember destination.
+  mConfig->setGroup("General");
+  mConfig->writeEntry("Export HTML URL",mOutputFileEdit->text());
+  mConfig->sync();
 
   qDebug ("ExportWebDialog::exportWebPage() move");
   

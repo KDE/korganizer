@@ -2339,7 +2339,21 @@ long int CalObject::makeKey(const QDateTime &dt)
 
   tmpD = dt.date();
   tmpStr.sprintf("%d%.2d%.2d",tmpD.year(), tmpD.month(), tmpD.day());
+//  qDebug("CalObject::makeKey(): %s",tmpStr.latin1());
   return tmpStr.toLong();
+}
+
+QDate CalObject::keyToDate(long int key)
+{
+#if 0
+  qDebug("CalObject::keyToDate(): %l",key);
+  
+  QString dateStr = QString::number(key);
+  QDate date(dateStr.mid(0,4).toInt(),dateStr.mid(4,2).toInt(),
+             dateStr.mid(6,2).toInt());
+             
+  qDebug("  QDate: %s",date.toString().latin1());
+#endif
 }
 
 // make a long dict key out of a QDate
@@ -2355,7 +2369,7 @@ long int CalObject::makeKey(const QDate &d)
 // with that date attached -
 // BL: an the returned list should be deleted!!!
 QList<KOEvent> CalObject::getEventsForDate(const QDate &qd, bool sorted)
-{    
+{
   QList<KOEvent> eventList;
   QList<KOEvent> *tmpList;
   KOEvent *anEvent;
@@ -2408,10 +2422,103 @@ QList<KOEvent> CalObject::getEventsForDate(const QDate &qd, bool sorted)
   return eventListSorted;
 }
 
+QList<KOEvent> CalObject::getEvents(const QDate &start,const QDate &end)
+{
+#if 0
+  QIntDictIterator<QList<KOEvent> > qdi(*calDict);
+  const char *testStr;
+  QList<KOEvent> matchList, *tmpList, tmpList2;
+  KOEvent *matchEvent;
+
+  qdi.toFirst();
+  while ((tmpList = qdi.current()) != 0L) {
+    ++qdi;
+    for (matchEvent = tmpList->first(); matchEvent;
+	 matchEvent = tmpList->next()) {
+      testStr = matchEvent->getSummary();
+      if ((searchExp.match(testStr) != -1) && (matchList.findRef(matchEvent) == -1))
+	matchList.append(matchEvent);
+      // do other match tests here...
+    }
+  }
+
+  tmpList2 = recursList;
+  tmpList2.setAutoDelete(FALSE); // just to make sure
+  for (matchEvent = tmpList2.first(); matchEvent;
+       matchEvent = tmpList2.next()) {
+    testStr = matchEvent->getSummary();
+    if ((searchExp.match(testStr) != -1) && 
+	(matchList.findRef(matchEvent) == -1)) 
+      matchList.append(matchEvent);
+    // do other match tests here...
+  }
+
+  // now, we have to sort it based on getDtStart()
+  QList<KOEvent> matchListSorted;
+  for (matchEvent = matchList.first(); matchEvent; 
+       matchEvent = matchList.next()) {
+    if (!matchListSorted.isEmpty() &&
+        matchEvent->getDtStart() < matchListSorted.at(0)->getDtStart()) {
+      matchListSorted.insert(0,matchEvent);
+      goto nextToInsert;
+    }
+    for (int i = 0; (uint) i+1 < matchListSorted.count(); i++) {
+      if (matchEvent->getDtStart() > matchListSorted.at(i)->getDtStart() &&
+          matchEvent->getDtStart() <= matchListSorted.at(i+1)->getDtStart()) {
+        matchListSorted.insert(i+1,matchEvent);
+        goto nextToInsert;
+      }
+    }
+    matchListSorted.append(matchEvent);
+  nextToInsert:
+    continue;
+  }
+
+  return matchListSorted;
+  QIntDictIterator<QList<KOEvent>> it(calDict );
+
+  while ( it.current() ) {
+    
+    printf( "%d -> %s\n", it.currentKey(), it.current() );
+    ++it;
+  }
+
+
+
+  QList<KOEvent> eventList;
+  QList<KOEvent> *tmpList;
+  KOEvent *anEvent;
+  tmpList = calDict->find(makeKey(qd));
+  if (tmpList) {
+    for (anEvent = tmpList->first(); anEvent;
+	 anEvent = tmpList->next())
+      eventList.append(anEvent);
+  }
+  int extraDays, i;
+  for (anEvent = recursList.first(); anEvent; anEvent = recursList.next()) {
+    if (anEvent->isMultiDay()) {
+      extraDays = anEvent->getDtStart().date().daysTo(anEvent->getDtEnd().date());
+      for (i = 0; i <= extraDays; i++) {
+	if (anEvent->recursOn(qd.addDays(i))) {
+	  eventList.append(anEvent);
+	  break;
+	}
+      }
+    } else {
+      if (anEvent->recursOn(qd))
+	eventList.append(anEvent);
+    }
+  }
+
+  updateCursors(eventList.first());
+  return eventList;
+#endif
+}
+
 // taking a QDateTime, this function will look for an eventlist in the dict
 // with that date attached.
 // this list is dynamically allocated and SHOULD BE DELETED when done with!
-inline QList<KOEvent> CalObject::getEventsForDate(const QDateTime &qdt)
+QList<KOEvent> CalObject::getEventsForDate(const QDateTime &qdt)
 {
   return getEventsForDate(qdt.date());
 }

@@ -270,31 +270,43 @@ void KOOptionsDialog::setupMainTab()
   mAdditionalEdit = new QLineEdit(topFrame);
   topLayout->addWidget(mAdditionalEdit,2,1);
   
-  mAutoSaveCheck = new QCheckBox(i18n("Auto-save Calendar"),topFrame);
-  topLayout->addMultiCellWidget(mAutoSaveCheck,3,3,0,1);
+  mBccCheck = new QCheckBox(i18n("Send Bcc to owner when mailing events"),
+                            topFrame);
+  topLayout->addMultiCellWidget(mBccCheck,3,3,0,1);
 
-  topLayout->addWidget(new QLabel(i18n("Auto-save interval in minutes:"),
-                       topFrame),4,0);
-  mAutoSaveIntervalSpin = new QSpinBox(0,500,1,topFrame);
-  topLayout->addWidget(mAutoSaveIntervalSpin,4,1);
+
+  QGroupBox *autoSaveGroup = new QGroupBox(1,Horizontal,i18n("Auto-Save"),
+                                           topFrame);
+  topLayout->addMultiCellWidget(autoSaveGroup,4,4,0,1);
+
+  mAutoSaveCheck = new QCheckBox(i18n("Enable automatic saving of calendar"),
+                                 autoSaveGroup);
+
+  QHBox *intervalBox = new QHBox(autoSaveGroup);
+  intervalBox->setSpacing(spacingHint());
+
+  (void)new QLabel(i18n("Save interval in minutes:"),intervalBox);
+  mAutoSaveIntervalSpin = new QSpinBox(0,500,1,intervalBox);
+
 
   mConfirmCheck = new QCheckBox(i18n("Confirm Deletes"),topFrame);
-  topLayout->addMultiCellWidget(mConfirmCheck,5,5,0,1);
+  topLayout->addMultiCellWidget(mConfirmCheck,6,6,0,1);
 
   mHolidayList << QString::null;
-  QStringList countryList = KGlobal::dirs()->findAllResources("data", "korganizer/holiday_*", false, true);
+  QStringList countryList = KGlobal::dirs()->findAllResources("data",
+      "korganizer/holiday_*", false, true);
   for ( QStringList::Iterator it = countryList.begin();
         it != countryList.end();
         ++it )
     mHolidayList << (*it).mid((*it).findRev('_') + 1);
 
-  topLayout->addWidget(new QLabel(i18n("Holidays:"),topFrame),6,0);
+  topLayout->addWidget(new QLabel(i18n("Holidays:"),topFrame),7,0);
   mHolidayCombo = new QComboBox(topFrame);
   mHolidayCombo->insertStringList(mHolidayList);
 
-  topLayout->addWidget(mHolidayCombo,6,1);
+  topLayout->addWidget(mHolidayCombo,7,1);
 
-  topLayout->setRowStretch(7,1);
+  topLayout->setRowStretch(8,1);
 }
 
 
@@ -646,13 +658,14 @@ void KOOptionsDialog::setCombo(QComboBox *combo, const QString & text, const QSt
 
 void KOOptionsDialog::readConfig()
 {
-  mAutoSaveCheck->setChecked(KOPrefs::instance()->mAutoSave);
-  mAutoSaveIntervalSpin->setValue(KOPrefs::instance()->mAutoSaveInterval);
-  mConfirmCheck->setChecked(KOPrefs::instance()->mConfirm);
-
   mNameEdit->setText(KOPrefs::instance()->mName);
   mEmailEdit->setText(KOPrefs::instance()->mEmail);
   mAdditionalEdit->setText(KOPrefs::instance()->mAdditional);
+  mBccCheck->setChecked(KOPrefs::instance()->mBcc);
+
+  mAutoSaveCheck->setChecked(KOPrefs::instance()->mAutoSave);
+  mAutoSaveIntervalSpin->setValue(KOPrefs::instance()->mAutoSaveInterval);
+  mConfirmCheck->setChecked(KOPrefs::instance()->mConfirm);
 
   setCombo(mHolidayCombo,KOPrefs::instance()->mHoliday, &mHolidayList);
   
@@ -687,6 +700,7 @@ void KOOptionsDialog::writeConfig()
 {
   qDebug("KOOptionsDialog::writeConfig()");
 
+  KOPrefs::instance()->mBcc = mBccCheck->isChecked();
   KOPrefs::instance()->mAutoSave = mAutoSaveCheck->isChecked();
   KOPrefs::instance()->mAutoSaveInterval = mAutoSaveIntervalSpin->value();
   KOPrefs::instance()->mConfirm = mConfirmCheck->isChecked();

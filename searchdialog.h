@@ -2,45 +2,50 @@
 #define _SEARCHDIALOG_H
 
 #include <qlabel.h>
-#include <qlined.h>
-#include <qdialog.h>
-#include <qpushbt.h>
+#include <qlineedit.h>
 #include <qregexp.h>
 
-//#include "baselistview.h"
+#include <kdialogbase.h>
+
 #include "kolistview.h"
 #include "calobject.h"
 
-class SearchDialog : public QDialog
+class KDateEdit;
+
+class SearchDialog : public KDialogBase
 {
-  Q_OBJECT
+    Q_OBJECT
+  public:
+    SearchDialog(CalObject *calendar);
+    virtual ~SearchDialog();
 
-public:
-  SearchDialog(CalObject *_cal);
-  virtual ~SearchDialog();
-  void updateView();
+    void updateView();
 
-public slots:
-/** cancel is public so TopWidget can call it to close the dialog. */
-  void cancel();
-  void changeEventDisplay(KOEvent *, int) { updateView(); } 
+  public slots:
+    void changeEventDisplay(KOEvent *, int) { updateView(); } 
 
-protected slots:
-  void doSearch();
+  protected slots:
+    void doSearch();
 
-signals:
-    void closed(QWidget *);
+  signals:
+    void showEventSignal(KOEvent *);
     void editEventSignal(KOEvent *);
     void deleteEventSignal(KOEvent *);
 
-private:
-  void closeEvent(QCloseEvent *);
+  private:
+    void search(const QRegExp &);
 
-  CalObject *cal;
-  QPushButton *searchButton;
-  QLabel *searchLabel;
-  QLineEdit *searchEdit;
-  KOListView *listView;
+    CalObject *mCalendar;
+    
+    QList<KOEvent> mMatchedEvents;
+    
+    QPushButton *searchButton;
+    QLabel *searchLabel;
+    QLineEdit *searchEdit;
+    KOListView *listView;
+    
+    KDateEdit *mStartDate;
+    KDateEdit *mEndDate;
 };
 
 #endif

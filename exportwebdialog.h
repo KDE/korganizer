@@ -18,6 +18,7 @@ class QCheckBox;
 class QLineEdit;
 class QTextStream;
 class KOEvent;
+class KConfig;
 
 class ExportWebDialog : public KDialogBase
 {
@@ -50,7 +51,10 @@ class ExportWebDialog : public KDialogBase
     void formatHtmlCategories (QTextStream *ts,KOEvent *event);
     void formatHtmlAttendees (QTextStream *ts,KOEvent *event);
 
+  private:
     CalObject *mCalendar;
+
+    KConfig *mConfig;
   
     QFrame *mGeneralPage;
     QFrame *mEventPage;

@@ -8,74 +8,66 @@
 #include <kbuttonbox.h>
 #include <kmessagebox.h>
 
+#include "kdateedit.h"
+
 #include "searchdialog.h"
 #include "searchdialog.moc"
 
-SearchDialog::SearchDialog(CalObject *_cal) :
-  QDialog(0, "SearchDialog")
+SearchDialog::SearchDialog(CalObject *calendar)
+  : KDialogBase(Plain,i18n("Find Events"),User1|Close,User1,0,0,false,false,
+                i18n("&Find"))
 {
-  setCaption(i18n("Find Events - KOrganizer"));
+  mCalendar = calendar;
 
-  cal = _cal;
-  QVBoxLayout *layout = new QVBoxLayout(this, 10);
+  QFrame *topFrame = plainPage();
+  QVBoxLayout *layout = new QVBoxLayout(topFrame,0,spacingHint());
 
+  // Search expression
   QHBoxLayout *subLayout = new QHBoxLayout();
   layout->addLayout(subLayout);
 
-  searchLabel = new QLabel(this, "searchLabel");
+  searchLabel = new QLabel(topFrame);
   searchLabel->setText(i18n("Search for:"));
-  searchLabel->setFixedSize(searchLabel->sizeHint());
   subLayout->addWidget(searchLabel);
 
-  searchEdit = new QLineEdit(this);
-  searchEdit->setMinimumWidth(300);
-  searchEdit->setFixedHeight(searchEdit->sizeHint().height());
+  searchEdit = new QLineEdit(topFrame);
   subLayout->addWidget(searchEdit);
+  searchEdit->setText("*"); // Find all events by default
+  searchEdit->setFocus();
+ 
+  // Date range
+  QHBoxLayout *rangeLayout = new QHBoxLayout;
+  layout->addLayout(rangeLayout);
   
-  searchButton = new QPushButton(this, "searchButton");
-  searchButton->setText(i18n("&Find"));
-  searchButton->setFixedHeight(searchButton->sizeHint().height());
-  searchButton->setMinimumWidth(searchButton->sizeHint().width());
-  searchButton->setDefault(TRUE);
-  connect(searchButton, SIGNAL(clicked()),
-	  this, SLOT(doSearch()));
-  subLayout->addWidget(searchButton);
-  
-  listView = new KOListView(cal, this);
+  rangeLayout->addWidget(new QLabel(i18n("Date range from"),topFrame));
+  mStartDate = new KDateEdit(topFrame);
+  rangeLayout->addWidget(mStartDate);
+  rangeLayout->addWidget(new QLabel(i18n("to"),topFrame));
+  mEndDate = new KDateEdit(topFrame);
+  mEndDate->setDate(QDate::currentDate().addDays(365));
+  rangeLayout->addWidget(mEndDate);
+
+  // Results list view
+  listView = new KOListView(mCalendar,topFrame);
   listView->setMinimumWidth(300);
   listView->setMinimumHeight(200);
-  layout->addWidget(listView);
-  
-  QFrame *hLine = new QFrame(this);
-  hLine->setFrameStyle(QFrame::HLine | QFrame::Sunken);
-  hLine->setMinimumWidth(listView->minimumSize().width());
-  hLine->setFixedHeight(hLine->sizeHint().height());
-  layout->addWidget(hLine);
-
-  KButtonBox *buttonBox = new KButtonBox(this);
-  buttonBox->addStretch();
-  QPushButton *okButton = buttonBox->addButton(i18n("&Close"));
-  buttonBox->setMinimumWidth(buttonBox->sizeHint().width());
-  buttonBox->setFixedHeight(buttonBox->sizeHint().height());
-  connect(okButton, SIGNAL(clicked()), SLOT(accept()));
-  layout->addWidget(buttonBox);
-  
-  layout->activate();
-  adjustSize();
-
   listView->showDates();
-  searchEdit->setFocus();
+  layout->addWidget(listView);
+ 
+  connect(this,SIGNAL(user1Clicked()),SLOT(doSearch()));
 
-  connect(listView, SIGNAL(editEventSignal(KOEvent *)),
-	  this, SIGNAL(editEventSignal(KOEvent *)));
-  connect(listView, SIGNAL(deleteEventSignal(KOEvent *)),
-	  this, SIGNAL(deleteEventSignal(KOEvent *)));
+  // Propagate edit and delete event signals from event list view
+  connect(listView,SIGNAL(showEventSignal(KOEvent *)),
+	  SIGNAL(showEventSignal(KOEvent *)));
+  connect(listView,SIGNAL(editEventSignal(KOEvent *)),
+	  SIGNAL(editEventSignal(KOEvent *)));
+  connect(listView,SIGNAL(deleteEventSignal(KOEvent *)),
+	  SIGNAL(deleteEventSignal(KOEvent *)));
 }
 
 void SearchDialog::doSearch()
 {
   QRegExp re;
-  QList<KOEvent> matchedEvents;
 
   re.setWildcard(TRUE); // most people understand these better.
   re.setCaseSensitive(FALSE);
@@ -89,11 +81,11 @@ void SearchDialog::doSearch()
     return;
   }
 
-  matchedEvents = cal->search(re);
+  search(re);
 
-  listView->selectEvents(matchedEvents);
+  listView->selectEvents(mMatchedEvents);
   
-  if (matchedEvents.count() == 0) {
+  if (mMatchedEvents.count() == 0) {
     KMessageBox::information(this,
         i18n("No events were found matching your search expression."));
   }
@@ -103,19 +95,23 @@ SearchDialog::~SearchDialog()
 {
 }
 
-/***************************************************************************/
-void SearchDialog::closeEvent(QCloseEvent *)
-{
-  // we clean up after ourselves...
-  emit closed(this);
-}
-
 void SearchDialog::updateView()
 {
-  doSearch();
+  QRegExp re;
+  re.setWildcard(TRUE); // most people understand these better.
+  re.setCaseSensitive(FALSE);
+  re = searchEdit->text();
+  if (re.isValid()) {
+    search(re);
+  }
+
+  listView->selectEvents(mMatchedEvents);
 }
 
-void SearchDialog::cancel()
+void SearchDialog::search(const QRegExp &re)
 {
-  close();
+//  mMatchedEvents = mCalendar(getEvents(mStartDate->getDate()),
+//                                       mEndDate->getDate());
+
+  mMatchedEvents = mCalendar->search(re);
 }

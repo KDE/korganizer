@@ -113,6 +113,8 @@ public:
    * date specified. useful for dayView, etc. etc. */
   QList<KOEvent> getEventsForDate(const QDate &date, bool sorted = FALSE);
   QList<KOEvent> getEventsForDate(const QDateTime &qdt);
+  /** Get events in a range of dates */
+  QList<KOEvent> getEvents(const QDate &start,const QDate &end);
 
   /*
    * returns a QString with the text of the holiday (if any) that falls
@@ -185,6 +187,8 @@ protected:
   long int makeKey(const QDateTime &dt);
   /** on the basis of a QDate, forms a hash key for the dictionary */
   long int makeKey(const QDate &d);
+  /** Return the date for which the specified key was made. */
+  QDate keyToDate(long int key);
 
   /** update internal position information */
   void updateCursors(KOEvent *dEvent);

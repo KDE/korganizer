@@ -1,25 +1,25 @@
 #ifndef _ARCHIVE_DLG
 #define _ARCHIVE_DLG
 
-#include <qdialog.h>
+#include <kdialogbase.h>
 
-class ArchiveDialog : public QDialog
+class KURLRequester;
+class KDateEdit;
+
+class ArchiveDialog : public KDialogBase
 {
-  Q_OBJECT
-    
-public:
-  ArchiveDialog(QWidget *parent = 0, const char *name = 0);
-  virtual ~ArchiveDialog();
+    Q_OBJECT
+  public:
+    ArchiveDialog(QWidget *parent = 0, const char *name = 0);
+    virtual ~ArchiveDialog();
 
-public slots:
+  protected slots:
+    void slotUser1();
+    void slotUser2();
 
-protected slots:
-    void accept();
-
-signals:
-
-protected:
-
+  private:
+    KURLRequester *mArchiveFile;
+    KDateEdit *mDateEdit;
 };
 
 #endif

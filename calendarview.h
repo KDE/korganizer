@@ -250,9 +250,6 @@ public slots:
   void view_todolist();
 
 protected slots:
-  // clean up after a child window closes
-  void cleanWindow(QWidget *);
-
   /** Move the current view date to today */
   void goToday();
 

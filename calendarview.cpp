@@ -980,16 +980,16 @@ void CalendarView::action_search()
 {
   if (!searchDlg) {
     searchDlg = new SearchDialog(mCalendar);
-    connect(searchDlg, SIGNAL(closed(QWidget *)),
-	    this, SLOT(cleanWindow(QWidget *)));
-    connect(searchDlg, SIGNAL(editEventSignal(KOEvent *)),
-	    this, SLOT(editEvent(KOEvent *)));
-    connect(searchDlg, SIGNAL(deleteEventSignal(KOEvent *)), 
-	    this, SLOT(deleteEvent(KOEvent *)));
-    connect(this, SIGNAL(closingDown()),
-	      searchDlg, SLOT(cancel()));
+    connect(searchDlg,SIGNAL(showEventSignal(KOEvent *)),
+	    SLOT(showEvent(KOEvent *)));
+    connect(searchDlg,SIGNAL(editEventSignal(KOEvent *)),
+	    SLOT(editEvent(KOEvent *)));
+    connect(searchDlg,SIGNAL(deleteEventSignal(KOEvent *)), 
+	    SLOT(deleteEvent(KOEvent *)));
+    connect(this,SIGNAL(closingDown()),searchDlg,SLOT(reject()));
   }
   // make sure the widget is on top again
+  searchDlg->show();
   searchDlg->raise();
 }
 
@@ -1126,15 +1126,6 @@ void CalendarView::exportWeb()
 {
   mExportWebDialog->show();
   mExportWebDialog->raise();
-}
-
-void CalendarView::cleanWindow(QWidget *widget)
-{
-  widget->hide();
-
-  // some widgets are stored in CalendarView
-  if (widget == searchDlg)
-    searchDlg = NULL;
 }
 
 void CalendarView::eventUpdated(KOEvent *)

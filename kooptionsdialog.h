@@ -101,6 +101,7 @@ class KOOptionsDialog : public KDialogBase
     QLineEdit *mNameEdit;
     QLineEdit *mEmailEdit;
     QLineEdit *mAdditionalEdit;
+    QCheckBox *mBccCheck;
     QCheckBox *mAutoSaveCheck;
     QSpinBox  *mAutoSaveIntervalSpin;
     QCheckBox *mConfirmCheck;
