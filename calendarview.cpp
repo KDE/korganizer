@@ -380,7 +380,7 @@ bool CalendarView::openCalendar(const QString& filename, bool merge)
     // have become partially populated.  Clear it out.
     if ( !merge ) mCalendar->close();
 
-    KMessageBox::error(this,i18n("Couldn't load calendar '%1'.").arg(filename));
+    KMessageBox::error(this,i18n("Could not load calendar '%1'.").arg(filename));
 
     return false;
   }
@@ -1220,12 +1220,12 @@ void CalendarView::action_mail()
   Incidence *incidence = currentSelection();
 
   if (!incidence) {
-    KMessageBox::sorry(this,i18n("Can't generate mail:\nNo event selected."));
+    KMessageBox::sorry(this,i18n("Cannot generate mail:\nNo event selected."));
     return;
   }
   if(incidence->attendeeCount() == 0 ) {
     KMessageBox::sorry(this,
-                       i18n("Can't generate mail:\nNo attendees defined.\n"));
+                       i18n("Cannot generate mail:\nNo attendees defined.\n"));
     return;
   }
 
@@ -1252,12 +1252,12 @@ void CalendarView::action_mail()
   }
 
   if (!anEvent) {
-    KMessageBox::sorry(this,i18n("Can't generate mail:\nNo event selected."));
+    KMessageBox::sorry(this,i18n("Cannot generate mail:\nNo event selected."));
     return;
   }
   if(anEvent->attendeeCount() == 0 ) {
     KMessageBox::sorry(this,
-                       i18n("Can't generate mail:\nNo attendees defined.\n"));
+                       i18n("Cannot generate mail:\nNo attendees defined.\n"));
     return;
   }
 

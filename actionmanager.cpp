@@ -673,17 +673,17 @@ void ActionManager::file_import()
       KMessageBox::information(mCalendarView->topLevelWidget(),
                            i18n("KOrganizer encountered some unknown fields while "
                                 "parsing your .calendar ical file, and had to "
-                                "discard them. Please check to see that all "
+                                "discard them; please check to see that all "
                                 "your relevant data was correctly imported."),
                                  i18n("ICal Import Successful With Warning"));
   } else if (retVal == -1) {
     KMessageBox::error(mCalendarView->topLevelWidget(),
                          i18n("KOrganizer encountered an error parsing your "
-                              ".calendar file from ical. Import has failed."));
+                              ".calendar file from ical; import has failed."));
   } else if (retVal == -2) {
     KMessageBox::error(mCalendarView->topLevelWidget(),
-                         i18n("KOrganizer doesn't think that your .calendar "
-                              "file is a valid ical calendar. Import has failed."));
+                         i18n("KOrganizer does not think that your .calendar "
+                              "file is a valid ical calendar; import has failed."));
   }
   tmpfn.unlink();
 }
@@ -1097,7 +1097,7 @@ void ActionManager::configureDateTime()
 
   if (!proc->start()) {
       KMessageBox::sorry(mCalendarView->topLevelWidget(),
-        i18n("Couldn't start control module for date and time format."));
+        i18n("Could not start control module for date and time format."));
       delete proc;
   }
 }
@@ -1397,7 +1397,7 @@ bool ActionManager::saveResourceCalendar()
         i18n("Saving of '%1' failed. Check that the resource is "
              "properly configured.\nIgnore problem and continue without "
              "saving or cancel save?").arg( (*it)->resourceName() ),
-        i18n("Save Error"), i18n("Don't Save") );
+        i18n("Save Error"), i18n("Do not Save") );
       if ( result == KMessageBox::Cancel ) return false;
     }
   }

@@ -139,7 +139,7 @@ void AlarmDockWindow::slotQuit()
 {
   int result = KMessageBox::questionYesNoCancel( this,
       i18n("Do you want to start the KOrganizer alarm daemon at login "
-           "(Note that you won't get alarms when the daemon isn't running)?"),
+           "(note that you will not get alarms whilst the daemon is not running)?"),
       i18n("Close KOrganizer Alarm Daemon") );
 
   bool autostart = true;
