@@ -82,6 +82,7 @@
 #include <libkcal/calendarresources.h>
 #include <libkcal/qtopiaformat.h>
 #include <libkcal/calendarnull.h>
+#include <libkcal/htmlexportsettings.h>
 
 #include <kglobal.h>
 #include <kdebug.h>
@@ -1355,7 +1356,14 @@ void CalendarView::print()
 
 void CalendarView::exportWeb()
 {
-  ExportWebDialog *dlg = new ExportWebDialog( calendar(), this );
+  // FIXME: Get rid of the settings object. When can I delete it???
+  HTMLExportSettings *settings = new HTMLExportSettings( "KOrganizer" );
+  // Manually read in the config, because parametrized kconfigxt objects don't 
+  // seem to load the config theirselves
+  if ( settings ) settings->readConfig();
+  ExportWebDialog *dlg = new ExportWebDialog( settings, this );
+  connect( dlg,  SIGNAL( exportHTML( HTMLExportSettings* ) ), 
+           this, SIGNAL( exportHTML( HTMLExportSettings* ) ) );
   dlg->show();
 }
 

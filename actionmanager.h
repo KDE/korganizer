@@ -58,6 +58,7 @@ class KONewStuff;
 class KOWindowList;
 class ImportDialog;
 class ResourceView;
+class HTMLExportSettings;
 
 using namespace KCal;
 
@@ -116,6 +117,9 @@ class ActionManager : public QObject, public KCalendarIface
     bool saveAsURL( const KURL &kurl );
     /** Save calendar if it is modified by the user. Ask user what to do. */
     bool saveModifiedURL();
+
+    void exportHTML();
+    void exportHTML( HTMLExportSettings * );
   public:
     /** Get current URL */
     KURL url() const { return mURL; }
@@ -303,8 +307,6 @@ class ActionManager : public QObject, public KCalendarIface
     void showStatusMessageOpen( const KURL &url, bool merge );
 
     void initCalendar( Calendar *cal );
-
-    void exportToHTML();
 
     /**
       Return widget used as parent for dialogs and message boxes.

@@ -1,6 +1,7 @@
 /*
     This file is part of KOrganizer.
     Copyright (c) 2001 Cornelius Schumacher <schumacher@kde.org>
+    Copyright (c) 2004 Reinhold Kainhofer <reinhold@kainhofer.com>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -23,81 +24,61 @@
 #ifndef _EXPORTWEBDIALOG_H
 #define _EXPORTWEBDIALOG_H
 
-#include <kdialogbase.h>
-#include <kio/job.h>
+#include <libkdepim/kprefsdialog.h>
 
-#include <libkcal/calendar.h>
-#include <libkcal/htmlexport.h>
-
+class HTMLExportSettings;
 using namespace KCal;
 
-class KDateEdit;
-class QRadioButton;
-class QCheckBox;
-class QLineEdit;
-class QTextStream;
-class QFrame;
-class KConfig;
-class KURLRequester;
 
 /**
   ExportWebDialog is a class that provides the dialog and functions to export a
   calendar as web page.
 */
-class ExportWebDialog : public KDialogBase
+class ExportWebDialog : public KDialogBase, public KPrefsWidManager
 {
     Q_OBJECT
   public:
-    ExportWebDialog(Calendar *cal, QWidget *parent=0, const char *name=0);
+    ExportWebDialog( HTMLExportSettings *settings, QWidget *parent = 0,
+                     const char *name = 0 );
     virtual ~ExportWebDialog();
 
   public slots:
-    void exportWebPage(bool synchronous=false);
-
-    void slotResult(KIO::Job *);
-    void slotDataReq(KIO::Job *,QByteArray &data);
     void slotTextChanged( const QString & _text);
-  protected slots:
 
   protected:
     void setupGeneralPage();
     void setupEventPage();
     void setupTodoPage();
-    void setupAdvancedPage();
+//    void setupJournalPage();
+//    void setupFreeBusyPage();
+//    void setupAdvancedPage();
 
-    void loadSettings();
-    void saveSettings();
+  public slots:
+    void setDefaults();
+    void readConfig();
+    void writeConfig();
 
+  signals:
+    void configChanged();
+    void exportHTML( HTMLExportSettings* );
+
+  protected slots:
+    void slotOk();
+    void slotApply();
+    void slotDefault();
+
+  protected:
+    virtual void usrReadConfig() {}
+    virtual void usrWriteConfig() {}
+    
   private:
-    Calendar *mCalendar;
-
-    HtmlExport *mExport;
-
-    KConfig *mConfig;
-
+    HTMLExportSettings* mSettings;
     QFrame *mGeneralPage;
     QFrame *mEventPage;
     QFrame *mTodoPage;
-    QFrame *mAdvancedPage;
-
-    // Widgets containing export parameters
-    KDateEdit *mFromDate,*mToDate;
-    QCheckBox *mCbMonth;
-    QCheckBox *mCbEvent;
-    QCheckBox *mCbTodo;
-    QCheckBox *mCbDueDates;
-    QCheckBox *mCbCategoriesTodo;
-    QCheckBox *mCbCategoriesEvent;
-    QCheckBox *mCbAttendeesTodo;
-    QCheckBox *mCbAttendeesEvent;
-    QCheckBox *mCbExcludePrivateTodo;
-    QCheckBox *mCbExcludePrivateEvent;
-    QCheckBox *mCbExcludeConfidentialTodo;
-    QCheckBox *mCbExcludeConfidentialEvent;
-    QCheckBox *mCbHtmlFragment;
-    KURLRequester *mOutputFileEdit;
-
-    bool mDataAvailable;
+//    QFrame *mJournalPage;
+//    QFrame *mFreeBusyPage;
+//    QFrame *mAdvancedPage;
 };
 
 #endif // _EXPORTWEBDIALOG_H

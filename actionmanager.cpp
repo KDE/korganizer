@@ -43,11 +43,12 @@
 #include "eventarchiver.h"
 #include "stdcalendar.h"
 
-#include <libkcal/htmlexport.h>
 #include <libkcal/calendarlocal.h>
 #include <libkcal/calendarresources.h>
 #include <libkcal/resourcelocal.h>
 #include <resourceremote.h>
+#include <libkcal/htmlexport.h>
+#include <libkcal/htmlexportsettings.h>
 
 #include <dcopclient.h>
 #include <kaction.h>
@@ -148,6 +149,8 @@ void ActionManager::ActionManager::init()
 
   connect( mCalendarView, SIGNAL( incidenceSelected( Incidence * ) ),
            this, SLOT( processIncidenceSelection( Incidence * ) ) );
+  connect( mCalendarView, SIGNAL( exportHTML( HTMLExportSettings * ) ),
+           this, SLOT( exportHTML( HTMLExportSettings * ) ) );
 
   processIncidenceSelection( 0 );
 
@@ -724,9 +727,8 @@ void ActionManager::file_save()
   }
 
   // export to HTML
-  if ( KOPrefs::instance()->mHtmlWithSave &&
-       !KOPrefs::instance()->mHtmlExportFile.isNull() ) {
-    exportToHTML();
+  if ( KOPrefs::instance()->mHtmlWithSave ) {
+    exportHTML();
   }
 }
 
@@ -914,49 +916,49 @@ bool ActionManager::saveURL()
   return true;
 }
 
-void ActionManager::exportToHTML()
+void ActionManager::exportHTML()
 {
-  KURL dest( KOPrefs::instance()->mHtmlExportFile );
-  KCal::HtmlExport mExport( mCalendarView->calendar() );
-
-  mExport.setTitle( i18n("KOrganizer Calendar") );
-  mExport.setTitleTodo( i18n("KOrganizer To-do List") );
-  mExport.setCredit( "KOrganizer", "http://korganizer.kde.org" );
-  mExport.setEmail( KOPrefs::instance()->email() );
-  mExport.setFullName( KOPrefs::instance()->fullName() );
-
-  KConfig *cfg = KOGlobals::self()->config();
-  cfg->setGroup( "HtmlExport" );
-
-  mExport.setMonthViewEnabled( cfg->readBoolEntry( "Month", false ) );
-  mExport.setEventsEnabled( cfg->readBoolEntry( "Event", true ) );
-  mExport.setTodosEnabled( cfg->readBoolEntry( "Todo", true ) );
-  mExport.setCategoriesEventEnabled( cfg->readBoolEntry( "CategoriesEvent", false ) );
-  mExport.setAttendeesEventEnabled( cfg->readBoolEntry( "AttendeesEvent", false ) );
-  mExport.setExcludePrivateEventEnabled( cfg->readBoolEntry( "ExcludePrivateEvent", true ) );
-  mExport.setExcludeConfidentialEventEnabled( cfg->readBoolEntry( "ExcludeConfidentialEvent", true ) );
-  mExport.setCategoriesTodoEnabled( cfg->readBoolEntry( "CategoriesTodo", false ) );
-  mExport.setAttendeesTodoEnabled( cfg->readBoolEntry( "AttendeesTodo", false ) );
-  mExport.setExcludePrivateTodoEnabled( cfg->readBoolEntry( "ExcludePrivateTodo", true ) );
-  mExport.setExcludeConfidentialTodoEnabled( cfg->readBoolEntry( "ExcludeConfidentialTodo", true ) );
-  mExport.setDueDateEnabled( cfg->readBoolEntry( "DueDates", true ) );
+kdDebug()<<"ActionManager::exportHTML, no arguments. Using default settings from config."<<endl;
+  HTMLExportSettings settings( "KOrganizer" );
+  // Manually read in the config, because parametrized kconfigxt objects don't 
+  // seem to load the config theirselves
+  settings.readConfig();
+  
   QDate qd1;
   qd1 = QDate::currentDate();
   QDate qd2;
   qd2 = QDate::currentDate();
-  if ( mExport.monthViewEnabled() )
+  if ( settings.monthView() )
     qd2.addMonths( 1 );
   else
     qd2.addDays( 7 );
+  settings.setDateStart( qd1 );
+  settings.setDateEnd( qd2 );
+  exportHTML( &settings );
+}
 
-  mExport.setDateRange( qd1, qd2 );
-  QDate cdate=qd1;
-  while ( cdate<=qd2 ) {
+void ActionManager::exportHTML( HTMLExportSettings *settings )
+{
+kdDebug()<<"ActionManager::exportHTML, settings given."<<endl;
+  if ( !settings || settings->outputFile().isEmpty() ) 
+    return;
+  settings->setEMail( KOPrefs::instance()->email() );
+  settings->setName( KOPrefs::instance()->fullName() );
+  
+  settings->setCreditName( "KOrganizer" );
+  settings->setCreditURL( "http://korganizer.kde.org" );
+
+  KCal::HtmlExport mExport( mCalendarView->calendar(), settings );
+  
+  QDate cdate = settings->dateStart().date();
+  QDate qd2 = settings->dateEnd().date();
+  while ( cdate <= qd2 ) {
     if ( !KOCore::self()->holiday( cdate ).isEmpty() )
       mExport.addHoliday( cdate, KOCore::self()->holiday( cdate ) );
     cdate = cdate.addDays( 1 );
   }
 
+  KURL dest( settings->outputFile() );
   if ( dest.isLocalFile() ) {
     mExport.save( dest.path() );
   } else {

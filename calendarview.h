@@ -27,6 +27,7 @@
 #include <qwidget.h>
 #include <qptrlist.h>
 #include <qmap.h>
+#include <kfile.h>
 
 #include <libkcal/scheduler.h>
 
@@ -48,6 +49,7 @@ class NavigatorBar;
 class DateChecker;
 
 namespace KOrg { class History; class IncidenceChangerBase; }
+class HTMLExportSettings;
 
 using namespace KOrg;
 using namespace KCal;
@@ -209,6 +211,7 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     void autoArchivingSettingsModified();
 
     void newIncidenceChanger( IncidenceChangerBase* );
+    void exportHTML( HTMLExportSettings* );
   
   public slots:
     /** options dialog made a changed to the configuration. we catch this

@@ -1,0 +1,20 @@
+Id=korganizer_3.4_WebExport
+File=korganizerrc,libkcal_htmlexportrc
+Group=HtmlExport,KOrganizer-General
+Key=ExcludeConfidentialEvent,Exclude Private
+Key=ExcludePrivateEvent,Exclude Confidential
+#
+Group=HtmlExport,KOrganizer-Events
+Key=Event,Event View
+Key=Month,Month View
+Key=AttendeesEvent,Export Attendees
+Key=CategoriesEvent,Export Categories
+#
+Group=HtmlExport,KOrganizer-Todos
+Key=Todo,Todo View
+Key=DueDates,Export Due Date
+Key=AttendeesTodo,Export Attendees
+Key=CategoriesTodo,Export Categories
+RemoveKey=ExcludeConfidentialTodo
+RemoveKey=ExcludePrivateTodo
+
