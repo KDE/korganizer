@@ -39,8 +39,8 @@ AttendeeListItem::~AttendeeListItem()
 void AttendeeListItem::updateItem()
 {
   setText(0,mAttendee->getName());
-  setText(1,(!mAttendee->getEmail().isEmpty()) ? mAttendee->getEmail().data() :
-                                                 " ");
+  setText(1,(!mAttendee->getEmail().isEmpty()) ? mAttendee->getEmail() :
+                                                 QString::fromLatin1(" "));
   setText(2,mAttendee->getRoleStr());
   setText(3,mAttendee->getStatusStr());
   if (mAttendee->RSVP() && !mAttendee->getEmail().isEmpty())
@@ -357,7 +357,7 @@ void KOEditorDetails::addNewAttendee()
     name = attendeeEdit->text();
     if (addrBook.init() == AddressBook::NoError) {
       if (addrBook.getEntryByName(name, entries, 1) == AddressBook::NoError) {
-	debug("positive match");
+	qDebug("positive match");
 	// take first email address
 	if (!entries.front().emails.isEmpty() && 
 	    entries.front().emails.first().length()>0)

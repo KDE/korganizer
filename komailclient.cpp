@@ -32,7 +32,7 @@ void MailMsgString::setAddressee(Attendee *newAddressee)
   if (!newAddressee->getName().isEmpty()) {
     mAddressee.prepend(" <");
     mAddressee.append(">");
-    mAddressee.prepend(newAddressee->getName().data());
+    mAddressee.prepend(newAddressee->getName());
   }
 }
 

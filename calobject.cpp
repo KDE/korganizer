@@ -523,13 +523,13 @@ KOEvent *CalObject::pasteEvent(const QDate *newDate,
 				  anEvent->getDtEnd().time()));
       addEvent(anEvent);
     } else {
-      debug("found a VEvent with no DTSTART/DTEND! Skipping");
+      qDebug("found a VEvent with no DTSTART/DTEND! Skipping");
     }
   } else if (strcmp(vObjectName(curVO), VCTodoProp) == 0) {
     anEvent = VTodoToEvent(curVO);
     addTodo(anEvent);
   } else {
-    debug("unknown event type in paste!!!");
+    qDebug("unknown event type in paste!!!");
   }
   // get rid of temporary VObject
   deleteVObject(vcal);
@@ -608,7 +608,7 @@ void CalObject::updateConfig()
     // gotta skip over the first one, which is same as first. 
     // I know, bad coding.
     for (currEvent = prev(); currEvent; currEvent = prev()) {
-//      debug("in calobject::updateConfig(), currEvent summary: %s",currEvent->getSummary().ascii());
+//      qDebug("in calobject::updateConfig(), currEvent summary: %s",currEvent->getSummary().ascii());
       if ((currEvent == firstEvent) && !atFirst) {
 	break;
       }
@@ -671,7 +671,7 @@ void CalObject::deleteEvent(const QDate &date, int eventId)
 	  tmpList->remove();
 	  goto FINISH;
 	} else {
-	  //debug("deleting multi-day event");
+	  //qDebug("deleting multi-day event");
 	  // event covers multiple days.
 	  startDate = anEvent->getDtStart().date();
 	  extraDays = startDate.daysTo(anEvent->getDtEnd().date());
@@ -1013,7 +1013,7 @@ KOEvent *CalObject::next()
     }
   }
   } // infinite while loop.
-  debug("ieee! bug in calobject::next()");
+  qDebug("ieee! bug in calobject::next()");
   return (KOEvent *) 0L;
 }
 
@@ -1086,7 +1086,7 @@ KOEvent *CalObject::prev()
     }
   }
   } // while loop
-  debug("ieee! bug in calobject::prev()");
+  qDebug("ieee! bug in calobject::prev()");
   return (KOEvent *) 0L;
 }
 
@@ -1171,7 +1171,7 @@ VObject *CalObject::eventToVTodo(const KOEvent *anEvent)
 	tmpStr.sprintf("MAILTO: %s",curAttendee->getName().ascii());
       else if (curAttendee->getName().isEmpty() && 
 	       curAttendee->getEmail().isEmpty())
-	debug("warning! this koevent has an attendee w/o name or email!");
+	qDebug("warning! this koevent has an attendee w/o name or email!");
       VObject *aProp = addPropValue(vtodo, VCAttendeeProp, tmpStr.ascii());
       addPropValue(aProp, VCRSVPProp, curAttendee->RSVP() ? "TRUE" : "FALSE");;
       addPropValue(aProp, VCStatusProp, curAttendee->getStatusStr().ascii());
@@ -1290,7 +1290,7 @@ VObject* CalObject::eventToVEvent(const KOEvent *anEvent)
 	tmpStr.sprintf("MAILTO: %s",curAttendee->getName().ascii());
       else if (curAttendee->getName().isEmpty() && 
 	       curAttendee->getEmail().isEmpty())
-	debug("warning! this koevent has an attendee w/o name or email!");
+	qDebug("warning! this koevent has an attendee w/o name or email!");
       VObject *aProp = addPropValue(vevent, VCAttendeeProp, tmpStr.ascii());
       addPropValue(aProp, VCRSVPProp, curAttendee->RSVP() ? "TRUE" : "FALSE");;
       addPropValue(aProp, VCStatusProp, curAttendee->getStatusStr().ascii());
@@ -1374,7 +1374,7 @@ VObject* CalObject::eventToVEvent(const KOEvent *anEvent)
       }
       break;
     default:
-      debug("ERROR, it should never get here in eventToVEvent!");
+      qDebug("ERROR, it should never get here in eventToVEvent!");
       break;
     } // switch
 
@@ -1771,7 +1771,7 @@ KOEvent* CalObject::VEventToEvent(VObject *vevent)
   // start time
   if ((vo = isAPropertyOf(vevent, VCDTstartProp)) != 0) {
     anEvent->setDtStart(ISOToQDateTime(s = fakeCString(vObjectUStringZValue(vo))));
-    //    debug("s is %s, ISO is %s",
+    //    qDebug("s is %s, ISO is %s",
     //	  s, ISOToQDateTime(s = fakeCString(vObjectUStringZValue(vo))).toString().ascii());
     deleteStr(s);
     if (anEvent->getDtStart().time().isNull())
@@ -2005,7 +2005,7 @@ KOEvent* CalObject::VEventToEvent(VObject *vevent)
 	  anEvent->setRecursYearly(KOEvent::rYearlyDay, rFreq, rDuration);
       }
     } else {
-      debug("we don't understand this type of recurrence!");
+      qDebug("we don't understand this type of recurrence!");
     } // if
   } // repeats
 
@@ -2237,7 +2237,7 @@ int CalObject::numEvents(const QDate &qd)
   for (anEvent = recursList.first(); anEvent; anEvent = recursList.next()) {
     if (anEvent->isMultiDay()) {
       extraDays = anEvent->getDtStart().date().daysTo(anEvent->getDtEnd().date());
-      //debug("multi day event w/%d days", extraDays);
+      //qDebug("multi day event w/%d days", extraDays);
       for (i = 0; i <= extraDays; i++) {
 	if (anEvent->recursOn(qd.addDays(i))) {
 	  ++count;
@@ -2312,7 +2312,7 @@ void CalObject::updateEvent(KOEvent *anEvent)
     al = anEvent->getAttendeeList();
     for (a = al.first(); a; a = al.next()) {
       if ((a->flag) && (a->RSVP())) {
-	//debug("send appointment to %s",a->getName().ascii());
+	//qDebug("send appointment to %s",a->getName().ascii());
 	a->flag = FALSE;
       }
     }
@@ -2452,7 +2452,7 @@ QList<KOEvent> CalObject::getEventsForDate(const QDate &qd, bool sorted)
     updateCursors(eventList.first());
     return eventList;
   }
-  //  debug("Sorting getEvents for date\n");
+  //  qDebug("Sorting getEvents for date\n");
   // now, we have to sort it based on getDtStart.time()
   QList<KOEvent> eventListSorted;
   for (anEvent = eventList.first(); anEvent; anEvent = eventList.next()) {
@@ -2835,7 +2835,7 @@ void CalObject::populate(VObject *vcal)
 	// check to see if event was deleted by the kpilot conduit
 	if (atoi(s) == KOEvent::SYNCDEL) {
 	  deleteStr(s);
-	  debug("skipping pilot-deleted event");
+	  qDebug("skipping pilot-deleted event");
 	  goto SKIP;
 	}
 	deleteStr(s);
@@ -2886,7 +2886,7 @@ void CalObject::populate(VObject *vcal)
 
       if ((!(curVOProp = isAPropertyOf(curVO, VCDTstartProp))) &&
 	  (!(curVOProp = isAPropertyOf(curVO, VCDTendProp)))) {
-	debug("found a VEvent with no DTSTART and no DTEND! Skipping...");
+	qDebug("found a VEvent with no DTSTART and no DTEND! Skipping...");
 	goto SKIP;
       }
 
@@ -2909,7 +2909,7 @@ void CalObject::populate(VObject *vcal)
       // we have either already processed them or are ignoring them.
       ;
     } else {
-      debug("Ignoring unknown vObject \"%s\"", vObjectName(curVO));
+      qDebug("Ignoring unknown vObject \"%s\"", vObjectName(curVO));
     }
   SKIP:
     ;

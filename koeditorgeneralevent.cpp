@@ -265,15 +265,15 @@ void KOEditorGeneralEvent::pickAlarmSound()
     QToolTip::remove(alarmSoundButton);
     QToolTip::add(alarmSoundButton, "No sound set");
   } else {
-    QString fileName(QFileDialog::getOpenFileName(prefix.data(),
+    QString fileName(QFileDialog::getOpenFileName(prefix,
 						  "*.wav", this));
     if (!fileName.isEmpty()) {
       alarmSound = fileName;
       QToolTip::remove(alarmSoundButton);
       QString dispStr = "Playing \"";
-      dispStr += fileName.data();
+      dispStr += fileName;
       dispStr += "\"";
-      QToolTip::add(alarmSoundButton, dispStr.data());
+      QToolTip::add(alarmSoundButton, dispStr);
     }
   }
   if (alarmSound.isEmpty())
@@ -292,9 +292,9 @@ void KOEditorGeneralEvent::pickAlarmProgram()
       alarmProgram = fileName;
       QToolTip::remove(alarmProgramButton);
       QString dispStr = "Running \"";
-      dispStr += fileName.data();
+      dispStr += fileName;
       dispStr += "\"";
-      QToolTip::add(alarmProgramButton, dispStr.data());
+      QToolTip::add(alarmProgramButton, dispStr);
     }
   }
   if (alarmProgram.isEmpty())
@@ -457,7 +457,7 @@ void KOEditorGeneralEvent::setDefaults(QDateTime from,QDateTime to,bool allDay)
   int pos = alarmText.find(' ');
   if (pos >= 0)
     alarmText.truncate(pos);
-  alarmTimeEdit->setText(alarmText.data());
+  alarmTimeEdit->setText(alarmText);
   alarmStuffEnable(false);
 }
 
@@ -507,17 +507,17 @@ void KOEditorGeneralEvent::readEvent(KOEvent *event)
       alarmProgram = event->getProgramAlarmFile();
       alarmProgramButton->setOn(true);
       QString dispStr = "Running \"";
-      dispStr += alarmProgram.data();
+      dispStr += alarmProgram;
       dispStr += "\"";
-      QToolTip::add(alarmProgramButton, dispStr.data());
+      QToolTip::add(alarmProgramButton, dispStr);
     }
     if (!event->getAudioAlarmFile().isEmpty()) {
       alarmSound = event->getAudioAlarmFile();
       alarmSoundButton->setOn(true);
       QString dispStr = "Playing \"";
-      dispStr += alarmSound.data();
+      dispStr += alarmSound;
       dispStr += "\"";
-      QToolTip::add(alarmSoundButton, dispStr.data());
+      QToolTip::add(alarmSoundButton, dispStr);
     }
   } else {
     alarmStuffEnable(false);

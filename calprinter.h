@@ -13,6 +13,8 @@
 
 #include <qprinter.h>
 #include <qprintdialog.h>
+#include <qfile.h>
+
 #include <kprocess.h>
 
 #include "calobject.h"
@@ -44,7 +46,7 @@ public slots:
 protected slots:
   void doPreview(int, QDate, QDate);
   void doPrint(int, QDate, QDate);
-  void previewCleanup() { unlink(previewFileName.data()); };
+  void previewCleanup() { unlink(QFile::encodeName(previewFileName)); };
  
 protected:
   void drawHeader(QPainter &p, const QDate &fd, const QDate &td,

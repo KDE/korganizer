@@ -144,7 +144,7 @@ void TimeLabels::setAgenda(KOAgenda* agenda)
 /** This is called in response to repaint() */
 void TimeLabels::paintEvent(QPaintEvent*)
 {
-//  debug("paintevent...");
+//  qDebug("paintevent...");
   // this is another hack!
 //  QPainter painter(this);
   //QString c

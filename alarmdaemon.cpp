@@ -116,7 +116,7 @@ void AlarmDaemon::reloadCal()
   
   qDebug("AlarmDaemon::reloadCal(): '%s'",newFileName.latin1());
   
-  calendar->load(newFileName.data());
+  calendar->load(newFileName);
 }
 
 void AlarmDaemon::showAlarms(QList<KOEvent> &alarmEvents)

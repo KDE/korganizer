@@ -55,7 +55,7 @@ void KNoScrollListBox::keyReleaseEvent(QKeyEvent *e)
 void KNoScrollListBox::mousePressEvent(QMouseEvent *e)
 {
   if(e->button() == RightButton) {
-    debug("right mouse button pressed");
+    qDebug("right mouse button pressed");
   } 
   QListBox::mousePressEvent(e);
 }
@@ -179,7 +179,6 @@ void KDPSmallDayDisp::updateDisp()
     // object.
     return;
   }
-  summaries->setAutoUpdate(FALSE);
   summaries->clear();
   summarylist = new QStrList;
   currIdxs->clear();
@@ -209,7 +208,6 @@ void KDPSmallDayDisp::updateDisp()
   }
 
   summaries->insertStrList(summarylist);
-  summaries->setAutoUpdate(TRUE);
   if(evtSelected > -1 && summaries->count() > (unsigned int) evtSelected) {
     summaries->setCurrentItem(evtSelected);
     summaries->centerCurrentItem();
@@ -235,7 +233,7 @@ void KDPSmallDayDisp::setShowFullHeader(bool on)
 
 void KDPSmallDayDisp::setSelected(bool on)
 {
-//   debug("entered setSelected for date: %s, with on = %d",
+//   qDebug("entered setSelected for date: %s, with on = %d",
 // 	 myDate.toString().data(), on?1:0);
 
   if(selected == on) {
@@ -259,7 +257,7 @@ void KDPSmallDayDisp::eventSelected(int i)
 
   anEvent = currIdxs->find(i);
   if (!anEvent)
-    debug("error, event not found in dictionary");
+    qDebug("error, event not found in dictionary");
   else
     emit editEventSignal(anEvent);
 }
@@ -285,7 +283,7 @@ void KDPSmallDayDisp::daySelected(int)
 
 void KDPSmallDayDisp::resizeEvent(QResizeEvent *e) 
 {
-//   debug("in KDPSmallDayDisp resizeEvent");
+//   qDebug("in KDPSmallDayDisp resizeEvent");
 
   header->resize(e->size().width(), header->height());
   summaries->resize(e->size().width(),

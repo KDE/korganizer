@@ -329,7 +329,7 @@ const QString &KOEvent::getDescription() const
 void KOEvent::setSummary(const QString &summary)
 {
   if (ro) return;
-  KOEvent::summary = summary.data(); // so it gets detached
+  KOEvent::summary = summary; // so it gets detached
   emit eventUpdated(this);
 }
 
@@ -369,7 +369,7 @@ void KOEvent::setStatus(const QString &statStr)
   else if (ss == "DELEGATED")
     status = DELEGATED;
   else
-    debug("error setting status, unknown status!");
+    qDebug("error setting status, unknown status!");
 
   emit eventUpdated(this);
 }
@@ -427,7 +427,7 @@ void KOEvent::setSecrecy(const QString &secStr)
   else if (secStr == "CONFIDENTIAL")
     secrecy = CONFIDENTIAL;
   else
-    debug("Unknown secrecy value specified!");
+    qDebug("Unknown secrecy value specified!");
 
   emit eventUpdated(this);
 }
@@ -483,7 +483,7 @@ void KOEvent::setCategories(const QString &catStr)
   int index2 = 0;
 
   while ((index2 = catStr.find(',', index1)) != -1) {
-    tmpList.append(catStr.mid(index1, index2-index1).data());
+    tmpList.append(catStr.mid(index1, index2-index1));
     index1 = index2 + 1;
   }
   // get last category
@@ -598,7 +598,7 @@ const QString &KOEvent::getMailAlarmAddress() const
 void KOEvent::setAlarmText(const QString &alarmText)
 {
   if (ro) return;
-  KOEvent::alarmText = alarmText.data(); // so it gets detached
+  KOEvent::alarmText = alarmText; // so it gets detached
   emit eventUpdated(this);
 }
 
@@ -828,7 +828,7 @@ bool KOEvent::recursOn(const QDate &qd) const
     break;
   default:
     // catch-all.  Should never get here.
-    debug("Control should never reach here in recursOn()!");
+    qDebug("Control should never reach here in recursOn()!");
     return FALSE;
     break;
   } // case
@@ -1339,9 +1339,9 @@ void KOEvent::print(int style) const
   switch(style) {
   case ASCII:
     if (doesFloat())
-      debug("\t\t: %s", getSummary().data());
+      qDebug("\t\t: %s", getSummary().data());
     else
-      debug("\t%02d:%02d-%02d:%02d: %s",
+      qDebug("\t%02d:%02d-%02d:%02d: %s",
 	     dtStart.time().hour(), dtStart.time().minute(),
 	     dtEnd.time().hour(), dtEnd.time().minute(),
 	     summary.data());

@@ -1128,7 +1128,7 @@ void CalendarView::signalAlarmDaemon()
 
   tmpStr = locateLocal("appdata", "alarm.pid");
 
-  pidFile.setName(tmpStr.data());
+  pidFile.setName(tmpStr);
 
   // only necessary if the file actually is opened
   if(pidFile.open(IO_ReadOnly)) {

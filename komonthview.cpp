@@ -156,7 +156,6 @@ KSummaries::KSummaries(QWidget    *parent,
 
 void KSummaries::calUpdated()
 {
-  setAutoUpdate(FALSE);
   setBackgroundMode(PaletteBase);
   clear();
   currIdxs->clear();
@@ -215,7 +214,6 @@ void KSummaries::calUpdated()
     currIdxs->insert(i++, anEvent);
   }
 
-  setAutoUpdate(TRUE);
   repaint();
 }
 
@@ -254,7 +252,7 @@ void KSummaries::itemSelected(int index)
     
     anEvent = currIdxs->find(index);
     if (!anEvent)
-      debug("error, event not found in dictionary");
+      qDebug("error, event not found in dictionary");
     else
       emit editEventSignal(anEvent);
 }
@@ -684,7 +682,7 @@ void KOMonthView::viewChanged()
   for(i=0, idx = selDateIdxs.first(); 
       i < selDateIdxs.count(), idx != 0;
       i++, idx = selDateIdxs.next()) {
-    //debug("selDateIdxs.count(): %d",selDateIdxs.count());
+    //qDebug("selDateIdxs.count(): %d",selDateIdxs.count());
     daySelected(*idx);
   }
 

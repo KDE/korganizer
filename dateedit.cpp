@@ -31,7 +31,7 @@ DateEdit::DateEdit(QWidget *parent, int default_m, int default_y,
 void DateEdit::lookNice(void)
 {
   QString str(text());
-  setText((dvalidator->reFormat(str)).data());
+  setText((dvalidator->reFormat(str)));
 };
 
 void DateEdit::setValidator(QValidator *v)

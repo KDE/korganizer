@@ -29,6 +29,7 @@
 #include <qcursor.h>
 #include <qtimer.h>
 #include <qvbox.h>
+#include <qfile.h>
 
 #include <kglobal.h>
 #include <kiconloader.h>
@@ -375,7 +376,7 @@ void KOrganizer::file_import()
   tmpFn = tmpnam(0);
   progPath = locate("exe", "ical2vcal") + tmpFn;
 
-  retVal = system(progPath.data());
+  retVal = system(QFile::encodeName(progPath));
   
   if (retVal >= 0 && retVal <= 2) {
     // now we need to MERGE what is in the iCal to the current calendar.
