@@ -226,8 +226,7 @@ void ExportWebDialog::exportWebPage()
   KURL src;
   src.setPath(tmpFile.name());
 
-  KURL dest;
-  dest.setPath(mOutputFileEdit->text());
+  KURL dest(mOutputFileEdit->text());
   // Remember destination.
   mConfig->setGroup("General");
   mConfig->writeEntry("Export HTML URL",mOutputFileEdit->text());

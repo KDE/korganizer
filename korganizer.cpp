@@ -415,6 +415,8 @@ void KOrganizer::file_saveas()
 {
   KURL url = getSaveURL();
 
+  if (url.isEmpty()) return;
+
   if (saveAsURL(url)) {
     setTitle();
   }
@@ -424,6 +426,8 @@ void KOrganizer::file_saveas()
 KURL KOrganizer::getSaveURL()
 {
   KURL url = KFileDialog::getSaveURL(locateLocal("appdata", ""),"*.vcs",this);
+
+  if (url.isEmpty()) return url;
 
   QString filename = url.fileName(false); 
 

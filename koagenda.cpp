@@ -167,7 +167,8 @@ bool KOAgenda::eventFilter ( QObject *object, QEvent *event )
 //            mItemPopup->popup(QCursor::pos());
           } else {
             mActionItem = (KOAgendaItem *)object;
-            if (!mActionItem->itemEvent()->isReadOnly()) {
+            if (!(mActionItem->itemEvent()->isReadOnly() ||
+                  mActionItem->itemEvent()->doesRecur())) {
               startItemAction(viewportPos);
             } else {
               mActionItem = 0;
@@ -184,7 +185,8 @@ bool KOAgenda::eventFilter ( QObject *object, QEvent *event )
 	}
       } else if (me->type() == QEvent::MouseMove) {
 	KOAgendaItem *moveItem = (KOAgendaItem *)object;
-        if (!moveItem->itemEvent()->isReadOnly()) {
+        if (!(moveItem->itemEvent()->isReadOnly() ||
+              moveItem->itemEvent()->doesRecur())) {
           if (!mActionItem) {
       	    setNoActionCursor(moveItem,viewportPos);
 	  } else {

@@ -974,37 +974,32 @@ void CalendarView::deleteEvent(KOEvent *anEvent)
 
   // At the moment we don't handle recurrence for todos
   if (!anEvent->getTodoStatus() && anEvent->doesRecur()) {
-
-  switch(KMessageBox::warningYesNoCancel(this,
+    switch(KMessageBox::warningYesNoCancel(this,
 				i18n("This event recurs over multiple dates.\n"
 				     "Are you sure you want to delete the\n"
 				     "selected event, or just this instance?\n"),
 				i18n("KOrganizer Confirmation"),
 				i18n("&All"), i18n("&This"))) {
 
-    case KMessageBox::Yes: // all
-      mCalendar->deleteEvent(anEvent);
-      changeEventDisplay(anEvent, EVENTDELETED);
-      break;
+      case KMessageBox::Yes: // all
+        mCalendar->deleteEvent(anEvent);
+        changeEventDisplay(anEvent, EVENTDELETED);
+        break;
 
-    case KMessageBox::No: // just this one
-      {
+      case KMessageBox::No: // just this one
         QDate qd;
         QDateList tmpList(FALSE);
         tmpList = dateNavigator->getSelected();
         qd = *(tmpList.first());
         if (!qd.isValid()) {
-          debug("no date selected, or invalid date");
+          qDebug("no date selected, or invalid date");
           qApp->beep();
           return;
         }
-        while (!anEvent->recursOn(qd))
-          qd.addDays(1);
+        while (!anEvent->recursOn(qd)) qd = qd.addDays(1);
         anEvent->addExDate(qd);
-        changeEventDisplay(anEvent, EVENTDELETED);
+        changeEventDisplay(anEvent, EVENTEDITED);
         break;
-      }
-
     } // switch
   } else {
     if (KOPrefs::instance()->mConfirm) {

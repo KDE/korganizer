@@ -56,6 +56,7 @@ ArchiveDialog::~ArchiveDialog()
 // Archive old events
 void ArchiveDialog::slotUser1()
 {
+/*
   QString str = mArchiveFile->lineEdit()->text();
   if (str.isEmpty()) {
     KMessageBox::sorry(this,i18n("The archive file name is not valid.\n"));
@@ -72,7 +73,22 @@ void ArchiveDialog::slotUser1()
     destUrl.setFileName(filename);
   }
   qDebug("url: %s",destUrl.prettyURL().latin1());
+*/
 
+  // Get destination URL
+  KURL destUrl = mArchiveFile->url();
+  if (destUrl.isMalformed()) {
+    KMessageBox::sorry(this,i18n("The archive file name is not valid.\n"));
+    return;
+  }
+  // Force filename to be ending with vCalendar extension
+  QString filename = destUrl.fileName();
+  if (filename.right(4) != ".vcs") {
+    filename.append(".vcs");
+    destUrl.setFileName(filename);
+  }
+  
+  // Get events to be archived
   QList<KOEvent> events = mCalendar->getEvents(QDate(1800,1,1),
                                                mDateEdit->getDate(),true);
   if (events.count() == 0) {
@@ -81,23 +97,91 @@ void ArchiveDialog::slotUser1()
     return;
   }
 
-  CalObject archiveCal;
-  
-  KOEvent *ev;
-  for(ev=events.first();ev;ev=events.next()) {
-    archiveCal.addEvent(ev);
+  // Save current calendar to disk
+  KTempFile tmpFile;
+  tmpFile.setAutoDelete(true);
+  if (!mCalendar->save(tmpFile.name())) {
+    qDebug("ArchiveDialog::slotUser1(): Can't save calendar to temp file");
+    return;
   }
 
-  KTempFile tmpFile;
-  if (!archiveCal.save(tmpFile.name())) {
+  // Duplicate current calendar by loading in new calendar object
+  CalObject archiveCalendar;
+  if (!archiveCalendar.load(tmpFile.name())) {
+    qDebug("ArchiveDialog::slotUser1(): Can't load calendar from temp file");
+    return;
+  }
+
+  // Strip active events from calendar so that only events to be archived
+  // remain.
+  QList<KOEvent> activeEvents = archiveCalendar.getEvents(mDateEdit->getDate(),
+                                                          QDate(3000,1,1),
+                                                          false);
+  KOEvent *ev;
+  for(ev=activeEvents.first();ev;ev=activeEvents.next()) {
+    archiveCalendar.deleteEvent(ev);
+  }
+
+  // Get or create the archive file
+  QString archiveFile;
+
+  if (KIO::NetAccess::exists(destUrl)) {
+    if(!KIO::NetAccess::download(destUrl,archiveFile)) {
+      qDebug("ArchiveDialog::slotUser1(): Can't download archive file");
+      return;
+    }
+    // Merge with events to be archived.
+    if (!archiveCalendar.load(archiveFile)) {
+      qDebug("ArchiveDialog::slotUser1(): Can't merge with archive file");
+      return;
+    }
+/*    
+    QList<KOEvent> es = archiveCalendar.getEvents(QDate(1800,1,1),
+                                                  QDate(3000,1,1),
+                                                  false);
+    qDebug("--Following events in archive calendar:");
+    KOEvent *e;
+    for(e=es.first();e;e=es.next()) {
+      qDebug("-----Event: %s",e->getSummary().latin1());
+    }
+*/
+  } else {
+    archiveFile = tmpFile.name();
+  }
+   
+  // Save archive calendar
+  if (!archiveCalendar.save(archiveFile)) {
     KMessageBox::error(this,i18n("Cannot write archive file."));
     return;
   }
 
-  if (!KIO::NetAccess::upload(tmpFile.name(),destUrl)) {
-    KMessageBox::error(this,i18n("Cannot write archive to final destination."));
-    return;
+  // Upload if necessary
+  KURL srcUrl;
+  srcUrl.setPath(archiveFile);
+  if (srcUrl != destUrl) {
+    if (!KIO::NetAccess::upload(archiveFile,destUrl)) {
+      KMessageBox::error(this,i18n("Cannot write archive to final destination."));
+      return;
+    }
   }
+
+  KIO::NetAccess::removeTempFile(archiveFile);
+   
+  // Delete archived events from calendar    
+  for(ev=events.first();ev;ev=events.next()) {
+    mCalendar->deleteEvent(ev);
+  }
+  emit eventsDeleted();
+
+#if 0
+  // NetAccess::upload deletes the contents of the file. This is a bug!
+  QString testFile = "/home/corni/tmp/piep";
+  KURL testUrl;
+  testUrl.setPath(testFile);
+  if (!KIO::NetAccess::upload(testFile,testUrl)) {
+    qDebug("test upload failed");
+  }
+#endif
 
   accept();
 }
