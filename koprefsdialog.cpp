@@ -965,7 +965,7 @@ KOPrefsDialogPlugins::KOPrefsDialogPlugins( QWidget *parent, const char* name )
   : KPrefsModule( KOPrefs::instance(), parent, name )
 {
   QBoxLayout *topTopLayout = new QVBoxLayout( this );
-  
+
   QWidget *topFrame = new QWidget( this );
   topTopLayout->addWidget( topFrame );
   QBoxLayout *topLayout = new QVBoxLayout( topFrame );
@@ -975,25 +975,25 @@ KOPrefsDialogPlugins::KOPrefsDialogPlugins( QWidget *parent, const char* name )
   mListView->addColumn( i18n("Name") );
   mListView->setResizeMode( QListView::LastColumn );
   topLayout->addWidget( mListView );
-  
+
   mDescription = new QLabel( topFrame );
   mDescription->setAlignment( QLabel::NoAccel | QLabel::WordBreak | QLabel::AlignVCenter );
   mDescription->setFrameShape( QLabel::Panel );
   mDescription->setFrameShadow( QLabel::Sunken );
   mDescription->setMinimumSize( QSize( 0, 55 ) );
-  mDescription->setSizePolicy( 
-         QSizePolicy( (QSizePolicy::SizeType)5, (QSizePolicy::SizeType)0, 
+  mDescription->setSizePolicy(
+         QSizePolicy( (QSizePolicy::SizeType)5, (QSizePolicy::SizeType)0,
                       0, 0, mDescription->sizePolicy().hasHeightForWidth() ) );
   topLayout->addWidget( mDescription );
- 
 
-  mConfigureButton = new KPushButton( KGuiItem( i18n("&Configure plugin..."),
+
+  mConfigureButton = new KPushButton( KGuiItem( i18n("&Configure Plugin..."),
       "configure", QString::null, i18n("This button allows you to configure"
       " the plugin that you have selected in the list above") ), topFrame );
-  
+
   topLayout->addWidget( mConfigureButton );
   connect( mConfigureButton, SIGNAL( clicked() ), SLOT( configure() ) );
-  
+
   connect( mListView, SIGNAL( selectionChanged( QListViewItem* ) ),
            SLOT( selectionChanged( QListViewItem* ) ) );
   connect( mListView, SIGNAL( clicked( QListViewItem* ) ),
