@@ -46,6 +46,8 @@
 using namespace KOrg;
 #include "kotodoview.moc"
 
+const int KOTodoView::POPUP_UNSUBTODO=1234;
+
 KOTodoListViewToolTip::KOTodoListViewToolTip (QWidget* parent,
                                               KOTodoListView* lv )
   :QToolTip(parent)
@@ -419,6 +421,8 @@ KOTodoView::KOTodoView(Calendar *calendar,QWidget* parent,const char* name) :
                              SLOT (newTodo()));
   mItemPopupMenu->insertItem(i18n("New Sub-To-Do..."), this,
                              SLOT (newSubTodo()));
+  mItemPopupMenu->insertItem( i18n("Make Sub-To-Do Independent"), this,
+      SIGNAL( unSubTodoSignal() ), 0, POPUP_UNSUBTODO );
   mItemPopupMenu->insertSeparator();
   mItemPopupMenu->insertItem(i18n("delete completed To-Dos","Purge Completed"),
                              this, SLOT( purgeCompleted() ) );
@@ -622,6 +626,7 @@ void KOTodoView::popupMenu(QListViewItem *item,const QPoint &,int column)
     case 5:
       getCategoryPopupMenu((KOTodoViewItem *)item)->popup(QCursor::pos ()); break;
     default:
+      mItemPopupMenu->setItemEnabled( POPUP_UNSUBTODO, mActiveItem->todo()->relatedTo() );
       mItemPopupMenu->popup(QCursor::pos());
     }
  } else mPopupMenu->popup(QCursor::pos());

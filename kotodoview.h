@@ -62,7 +62,7 @@ class KOTodoListViewToolTip : public QToolTip
 {
   public:
     KOTodoListViewToolTip (QWidget* parent, KOTodoListView* lv );
-    
+
   protected:
     void maybeTip( const QPoint & pos);
 
@@ -83,7 +83,7 @@ class KOTodoListView : public KListView
 
   protected:
     virtual bool event(QEvent *);
-    
+
     void contentsDragEnterEvent(QDragEnterEvent *);
     void contentsDragMoveEvent(QDragMoveEvent *);
     void contentsDragLeaveEvent(QDragLeaveEvent *);
@@ -182,6 +182,7 @@ class KOTodoView : public KOrg::BaseView
   signals:
     void newTodoSignal();
     void newSubTodoSignal(Todo *);
+    void unSubTodoSignal();
     void showTodoSignal(Todo *);
 
     void editTodoSignal(Todo *);
@@ -229,6 +230,8 @@ class KOTodoView : public KOrg::BaseView
     DocPrefs *mDocPrefs;
     QString mCurrentDoc;
     KOQuickTodo *mQuickAdd;
+
+    static const int POPUP_UNSUBTODO;
 };
 
 #endif

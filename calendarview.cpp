@@ -253,6 +253,8 @@ CalendarView::CalendarView( Calendar *calendar,
   connect( this, SIGNAL( configChanged()), mTodoList, SLOT( updateConfig() ) );
   connect( mTodoList, SIGNAL( purgeCompletedSignal() ),
            SLOT( purgeCompleted() ) );
+  connect( mTodoList, SIGNAL( unSubTodoSignal() ),
+           SLOT( todo_unsub() ) );
   connect( mTodoList, SIGNAL( todoModifiedSignal( Todo *, int ) ),
 	   SLOT( todoModified( Todo *, int ) ) );
 

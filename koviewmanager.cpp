@@ -307,7 +307,8 @@ void KOViewManager::showTodoView()
              mMainView, SLOT( deleteTodo( Todo * ) ) );
     connect( mTodoView, SIGNAL( purgeCompletedSignal() ),
              mMainView, SLOT( purgeCompleted() ) );
-
+    connect( mTodoView, SIGNAL( unSubTodoSignal() ),
+             mMainView, SLOT( todo_unsub() ) );
     connect( mTodoView, SIGNAL( incidenceSelected( Incidence * ) ),
              mMainView, SLOT( processMainViewSelection( Incidence * ) ) );
 
