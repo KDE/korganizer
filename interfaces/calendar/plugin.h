@@ -36,7 +36,7 @@ class Plugin {
     virtual void configure(QWidget *) {};
 };
 
-class PluginFactory : KLibFactory {
+class PluginFactory : public KLibFactory {
   public:
     virtual Plugin *create() = 0;
 
