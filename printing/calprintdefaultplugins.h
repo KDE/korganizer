@@ -103,6 +103,8 @@ class CalPrintMonth : public CalPrintPluginBase
 
   protected:
     bool mWeekNumbers;
+    bool mRecurDaily;
+    bool mRecurWeekly;
     bool mIncludeTodos;
 };
 

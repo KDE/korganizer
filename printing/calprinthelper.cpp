@@ -556,7 +556,7 @@ void CalPrintHelper::drawAgendaItem( PrintCellItem *item, QPainter &p,
 
 void CalPrintHelper::drawDayBox( QPainter &p, const QDate &qd,
     int x, int y, int width, int height,
-    bool fullDate )
+    bool fullDate, bool printRecurDaily, bool printRecurWeekly )
 {
   QString dayNumStr;
   QString ampm;
@@ -576,7 +576,8 @@ void CalPrintHelper::drawDayBox( QPainter &p, const QDate &qd,
   }
 
   p.eraseRect( x, y, width, height );
-  p.drawRect( x, y, width, height );
+  QRect dayBox( x, y, width, height );
+  p.drawRect( dayBox );
   p.drawRect( x, y, width, mSubHeaderHeight );
   p.fillRect( x + 1, y + 1, width - 2, mSubHeaderHeight - 2,
               QBrush( Qt::Dense7Pattern ) );
@@ -597,32 +598,23 @@ void CalPrintHelper::drawDayBox( QPainter &p, const QDate &qd,
               Qt::AlignRight | Qt::AlignVCenter, dayNumStr);
 
   Event::List eventList = mCalendar->events( qd, true );
-  QString outStr;
+  QString text;
   p.setFont( QFont( "helvetica", 8 ) );
-  int lineSpacing = p.fontMetrics().lineSpacing();
 
   int textY=mSubHeaderHeight+3; // gives the relative y-coord of the next printed entry
-  int flags = Qt::AlignLeft;
   Event::List::ConstIterator it;
+
   for( it = eventList.begin(); it != eventList.end() && textY<height; ++it ) {
     Event *currEvent = *it;
-    if (currEvent->doesFloat() || currEvent->isMultiDay())
-      outStr = "";
+    if ( ( !printRecurDaily  && currEvent->doesRecur() == Recurrence::rDaily  ) ||
+         ( !printRecurWeekly && currEvent->doesRecur() == Recurrence::rWeekly ) ) {
+      continue; }
+    if ( currEvent->doesFloat() || currEvent->isMultiDay() )
+      text = "";
     else
-      outStr = local->formatTime( currEvent->dtStart().time() );
+      text = local->formatTime( currEvent->dtStart().time() );
 
-    QRect timeBound = p.boundingRect( x + 5, y + textY, width - 10, lineSpacing, flags, outStr );
-    p.drawText( timeBound, flags, outStr );
-
-    QFontMetrics fm = p.fontMetrics();
-    int summaryWidth = outStr.isEmpty() ? 0 : timeBound.width() + 4;
-    QRect summaryBound( x + 5 + summaryWidth, y + textY, width - summaryWidth - 5 , height );
-    KWordWrap *ww = KWordWrap::formatText( fm, summaryBound, flags, currEvent->summary() );
-    ww->drawText( &p, x + 5 + summaryWidth, y + textY, flags );
-
-    textY+=ww->boundingRect().height();
-
-    delete ww;
+    drawIncidence( p, dayBox, text, currEvent->summary(), textY );
   }
 
   if ( textY<height ) {
@@ -630,21 +622,41 @@ void CalPrintHelper::drawDayBox( QPainter &p, const QDate &qd,
     Todo::List::ConstIterator it2;
     for( it2 = todos.begin(); it2 != todos.end() && textY<height; ++it2 ) {
       Todo *todo = *it2;
-      QString text;
-      if (todo->hasDueDate()) {
-        if (!todo->doesFloat()) {
-          text += KGlobal::locale()->formatTime(todo->dtDue().time());
-          text += " ";
-        }
-      }
-      text += i18n("To-do: %1").arg(todo->summary());
-
-      p.drawText( x + 5, y + textY, width - 10, lineSpacing,
-                  Qt::AlignLeft | Qt::AlignBottom, text );
-      textY += lineSpacing;
+      if ( ( !printRecurDaily  && todo->doesRecur() == Recurrence::rDaily  ) ||
+           ( !printRecurWeekly && todo->doesRecur() == Recurrence::rWeekly ) )
+        continue;
+      if ( todo->hasDueDate() && !todo->doesFloat() )
+        text += KGlobal::locale()->formatTime(todo->dtDue().time()) + " ";
+      else
+        text = "";
+      drawIncidence( p, dayBox, text, i18n("To-do: %1").arg(todo->summary()), textY );
     }
   }
+
   p.setFont( oldFont );
+}
+
+void CalPrintHelper::drawIncidence( QPainter &p, QRect &dayBox, const QString &time, const QString &summary, int &textY )
+{
+  kdDebug(5850) << "summary = " << summary << endl;
+
+  int flags = Qt::AlignLeft;
+  QFontMetrics fm = p.fontMetrics();
+  QRect timeBound = p.boundingRect( dayBox.x() + 5, dayBox.y() + textY,
+                                    dayBox.width() - 10, fm.lineSpacing(),
+                                    flags, time );
+  p.drawText( timeBound, flags, time );
+
+  int summaryWidth = time.isEmpty() ? 0 : timeBound.width() + 4;
+  QRect summaryBound = QRect( dayBox.x() + 5 + summaryWidth, dayBox.y() + textY,
+                              dayBox.width() - summaryWidth -5, dayBox.height() );
+
+  KWordWrap *ww = KWordWrap::formatText( fm, summaryBound, flags, summary );
+  ww->drawText( &p, dayBox.x() + 5 + summaryWidth, dayBox.y() + textY, flags );
+
+  textY += ww->boundingRect().height();
+
+  delete ww;
 }
 
 
@@ -720,7 +732,8 @@ void CalPrintHelper::drawTimeTable(QPainter &p,
 ///////////////////////////////////////////////////////////////////////////////
 
 void CalPrintHelper::drawMonth(QPainter &p, const QDate &qd, bool weeknumbers,
-    int x, int y, int width, int height)
+                               bool recurDaily, bool recurWeekly, int x, int y,
+                               int width, int height)
 {
   int yoffset = mSubHeaderHeight;
   int xoffset = 0;
@@ -766,7 +779,7 @@ void CalPrintHelper::drawMonth(QPainter &p, const QDate &qd, bool weeknumbers,
         darkbg = true;
       }
       drawDayBox(p, monthDate, x+xoffset+col*cellWidth, y+yoffset+row*cellHeight,
-                 cellWidth, cellHeight);
+                 cellWidth, cellHeight, false,  recurDaily, recurWeekly );
       if ( darkbg ) {
         p.setBackgroundColor( back );
         darkbg = false;

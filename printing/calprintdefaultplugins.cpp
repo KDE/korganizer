@@ -344,7 +344,7 @@ void CalPrintWeek::print( QPainter &p, int width, int height )
         QString line2( local->formatDate( curWeek ) );
         QDate endLeft( fromWeek.addDays( 3 ) );
         int hh = mHelper->mHeaderHeight;
-        
+
         mHelper->drawTimeTable( p, fromWeek, endLeft,
                        mStartTime, mEndTime, 0, hh + 5,
                        width, height - hh - 5 );
@@ -353,7 +353,7 @@ void CalPrintWeek::print( QPainter &p, int width, int height )
         mHelper->drawTimeTable( p, endLeft.addDays( 1 ), curWeek,
                        mStartTime, mEndTime, 0, hh + 5,
                        int( ( width - 50 ) * 3. / 4. + 50 ), height - hh - 5 );
-        
+
         fromWeek = fromWeek.addDays( 7 );
         curWeek = fromWeek.addDays( 6 );
         if ( curWeek <= toWeek )
@@ -392,7 +392,8 @@ void CalPrintMonth::readSettingsWidget()
     mToDate = cfg->mToDate->date();
 
     mWeekNumbers =  cfg->mWeekNumbers->isChecked();
-
+    mRecurDaily = cfg->mRecurDaily->isChecked();
+    mRecurWeekly = cfg->mRecurWeekly->isChecked();
     mIncludeTodos = cfg->mIncludeTodos->isChecked();
 //    mUseColors = cfg->mColors->isChecked();
   }
@@ -407,7 +408,8 @@ void CalPrintMonth::setSettingsWidget()
     cfg->mToDate->setDate( mToDate );
 
     cfg->mWeekNumbers->setChecked( mWeekNumbers );
-
+    cfg->mRecurDaily->setChecked( mRecurDaily );
+    cfg->mRecurWeekly->setChecked( mRecurWeekly );
     cfg->mIncludeTodos->setChecked( mIncludeTodos );
 //    cfg->mColors->setChecked( mUseColors );
   }
@@ -417,6 +419,8 @@ void CalPrintMonth::loadConfig()
 {
   if ( mConfig ) {
     mWeekNumbers = mConfig->readBoolEntry( "Print week numbers", true );
+    mRecurDaily = mConfig->readBoolEntry( "Print daily incidences", true );
+    mRecurWeekly = mConfig->readBoolEntry( "Print weekly incidences", true );
     mIncludeTodos = mConfig->readBoolEntry( "Include todos", false );
   }
   setSettingsWidget();
@@ -427,6 +431,8 @@ void CalPrintMonth::saveConfig()
   readSettingsWidget();
   if ( mConfig ) {
     mConfig->writeEntry( "Print week numbers", mWeekNumbers );
+    mConfig->writeEntry( "Print daily incidences", mRecurDaily );
+    mConfig->writeEntry( "Print weekly incidences", mRecurWeekly );
     mConfig->writeEntry( "Include todos", mIncludeTodos );
   }
 }
@@ -462,7 +468,7 @@ void CalPrintMonth::print( QPainter &p, int width, int height )
     mHelper->drawHeader( p, title,
                 curMonth.addMonths( -1 ), curMonth.addMonths( 1 ),
                 0, 0, width, mHelper->mHeaderHeight );
-    mHelper->drawMonth( p, curMonth, mWeekNumbers, 0, mHelper->mHeaderHeight + 5,
+    mHelper->drawMonth( p, curMonth, mWeekNumbers, mRecurDaily, mRecurWeekly, 0, mHelper->mHeaderHeight + 5,
                width, height - mHelper->mHeaderHeight - 5 );
     curMonth = curMonth.addDays( curMonth.daysInMonth() );
     if ( curMonth <= toMonth ) mPrinter->newPage();

@@ -21,7 +21,7 @@
         <property name="margin">
             <number>0</number>
         </property>
-        <spacer row="4" column="0">
+        <spacer row="5" column="0">
             <property name="name">
                 <cstring>spacer2</cstring>
             </property>
@@ -118,7 +118,7 @@
                 </widget>
             </grid>
         </widget>
-        <widget class="QCheckBox" row="2" column="0">
+        <widget class="QCheckBox" row="4" column="0">
             <property name="name">
                 <cstring>mIncludeTodos</cstring>
             </property>
@@ -135,6 +135,22 @@
             </property>
             <property name="text">
                 <string>Print week &amp;numbers</string>
+            </property>
+        </widget>
+        <widget class="QCheckBox" row="2" column="0">
+            <property name="name">
+                <cstring>mRecurDaily</cstring>
+            </property>
+            <property name="text">
+                <string>Print daily re&amp;curring incidences</string>
+            </property>
+        </widget>
+        <widget class="QCheckBox" row="3" column="0">
+            <property name="name">
+                <cstring>mRecurWeekly</cstring>
+            </property>
+            <property name="text">
+                <string>Print weekl&amp;y recurring incidences</string>
             </property>
         </widget>
     </grid>
