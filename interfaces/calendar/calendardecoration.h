@@ -33,14 +33,14 @@ namespace KOrg {
 
 /**
   This class provides the interface for a date dependent decoration.
-  
+
   It provides entities like texts and pictures for a given date. Implementations
   can implement all functions or only a subset.
-*/  
+*/
 class CalendarDecoration : public Plugin
 {
   public:
-    static int interfaceVersion() { return -1; }  
+    static int interfaceVersion() { return 2; }
     static QString serviceType() { return "Calendar/Decoration"; }
 
     typedef QPtrList<CalendarDecoration> List;
@@ -66,7 +66,7 @@ class CalendarDecoration : public Plugin
       Return a large pixmap. The size should be something like 300x300 pixels.
     */
     virtual QPixmap largePixmap( const QDate &) { return QPixmap(); }
-    
+
     /**
       Return a small widget. It should have the size of a pushbutton.
     */

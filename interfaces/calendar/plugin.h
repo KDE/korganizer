@@ -29,12 +29,12 @@ namespace KOrg {
 class Plugin
 {
   public:
-    static int interfaceVersion() { return -1; }
+    static int interfaceVersion() { return 2; }
     static QString serviceType() { return "Calendar/Plugin"; }
 
     Plugin() {}
     virtual ~Plugin() {}
-    
+
     virtual QString info() = 0;
 
     virtual void configure( QWidget * ) {}

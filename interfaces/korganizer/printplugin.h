@@ -43,12 +43,12 @@ class CoreHelper;
 class PrintPlugin : public KOrg::Plugin
 {
   public:
-    PrintPlugin() : KOrg::Plugin(), mCoreHelper(0), mPrinter(0), 
+    PrintPlugin() : KOrg::Plugin(), mCoreHelper(0), mPrinter(0),
          mCalendar(0), mConfig(0), mHelper(0) {}
     virtual ~PrintPlugin() {}
 
     typedef QPtrList<PrintPlugin> List;
-    static int interfaceVersion() { return -1; }
+    static int interfaceVersion() { return 2; }
     static QString serviceType() { return "KOrganizer/PrintPlugin"; }
 
     virtual void setCalPrintHelper( CalPrintHelper *helper ) { mHelper = helper; }
@@ -89,11 +89,11 @@ class PrintPlugin : public KOrg::Plugin
     virtual KPrinter::Orientation orientation() { return KPrinter::Portrait; }
 
     /**
-      Load complete config. 
+      Load complete config.
     */
     void doLoadConfig() {}
     /**
-      Save complete config. 
+      Save complete config.
     */
     void doSaveConfig() {}
 
