@@ -260,7 +260,7 @@ void KOQuickTodo::focusInEvent(QFocusEvent *ev)
 
 void KOQuickTodo::focusOutEvent(QFocusEvent *ev)
 {
-  setText("klick to add a new Todo");
+  setText(i18n("klick to add a new Todo"));
   QLineEdit::focusOutEvent(ev);
 }
 
