@@ -61,6 +61,7 @@
 #include "kocorehelper.h"
 #include "incidencechanger.h"
 #include "kholidays.h"
+#include "mailscheduler.h"
 
 #include <libkcal/vcaldrag.h>
 #include <libkcal/icaldrag.h>
@@ -1242,13 +1243,13 @@ void CalendarView::schedule_publish(Incidence *incidence)
       send = false;
   }
   if ( send ) {
-/*    OutgoingDialog *dlg = mDialogManager->outgoingDialog();
     Incidence *inc = incidence->clone();
     inc->registerObserver( 0 );
     inc->clearAttendees();
-    if (!dlg->addMessage( inc, Scheduler::Publish, publishdlg->addresses() )) {
-      delete( inc );
-    }*/
+
+    // Send the mail
+    KCal::MailScheduler scheduler( mCalendar );
+    scheduler.publish( incidence, publishdlg->addresses() );
   }
   delete publishdlg;
 }
