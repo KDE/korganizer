@@ -393,6 +393,7 @@ extern "C"
 {
   KCModule *create_korganizerconfigtime( QWidget *parent, const char * )
   {
+    KGlobal::locale()->insertCatalogue( "timezones" );
     return new KOPrefsDialogTime( parent, "kcmkorganizertime" );
   }
 }
@@ -472,10 +473,10 @@ class KOPrefsDialogViews : public KPrefsModule
           addWidBool( KOPrefs::instance()->marcusBainsEnabledItem(), topFrame );
       topLayout->addWidget(marcusBainsEnabled->checkBox(),10,0);
 
-      KPrefsWidBool *marcusBainsShowSeconds = 
+      KPrefsWidBool *marcusBainsShowSeconds =
           addWidBool( KOPrefs::instance()->marcusBainsShowSecondsItem(), topFrame );
       topLayout->addWidget(marcusBainsShowSeconds->checkBox(),11,0);
-      connect( marcusBainsEnabled->checkBox(), SIGNAL( toggled( bool ) ), 
+      connect( marcusBainsEnabled->checkBox(), SIGNAL( toggled( bool ) ),
                marcusBainsShowSeconds->checkBox(), SLOT( setEnabled( bool ) ) );
 
       KPrefsWidBool *selectionStartsEditor =
