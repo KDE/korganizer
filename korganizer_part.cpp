@@ -104,7 +104,11 @@ KInstance *KOrganizerFactory::instance()
 
 KOrganizerPart::KOrganizerPart(QWidget *parentWidget, const char *widgetName,
                                QObject *parent, const char *name) :
-  KParts::ReadOnlyPart(parent, name)
+  KParts::ReadOnlyPart(parent, name), 
+  mCalendar(new CalendarLocal(KOPrefs::instance()->mTimeZoneId)),
+  mWidget(0), mActionManager(0),
+  mBrowserExtension(new KOrganizerBrowserExtension(this)),
+  mStatusBarExtension(new KParts::StatusBarExtension(this))
 {
   setInstance(KOrganizerFactory::instance());
 
@@ -113,20 +117,9 @@ KOrganizerPart::KOrganizerPart(QWidget *parentWidget, const char *widgetName,
   canvas->setFocusPolicy(QWidget::ClickFocus);
   setWidget(canvas);
 
-  mBrowserExtension = new KOrganizerBrowserExtension(this);
-  mStatusBarExtension = new KOStatusBarExtension(this);
-
-  KStatusBar *statusBar = mStatusBarExtension->statusBar();
-  if ( !statusBar ) kdError() << "NO STATUSBAR" << endl;
-
-  QLabel *dummy = new QLabel( "korganizer status bar widget", statusBar );
-  mStatusBarExtension->addStatusBarItem( dummy, 0, true );
-
   QVBoxLayout *topLayout = new QVBoxLayout(canvas);
 
   KGlobal::iconLoader()->addAppDir("korganizer");
-
-  mCalendar = new CalendarLocal(KOPrefs::instance()->mTimeZoneId);
 
   mWidget = new CalendarView( mCalendar, canvas );
   topLayout->addWidget( mWidget );
@@ -213,6 +206,13 @@ void KOrganizerPart::setActive(bool active)
   mActionManager->setActive(active);
 }
 
+void KOrganizerPart::showStatusMessage(const QString& message)
+{
+  KStatusBar *statusBar = mStatusBarExtension->statusBar();
+  if(statusBar) // could be 0L
+    statusBar->message(message);
+}
+
 KOrg::CalendarViewBase *KOrganizerPart::view() const
 {
   return mWidget;
@@ -238,17 +238,6 @@ KURL KOrganizerPart::getCurrentURL() const
   return mActionManager->url();
 }
 
-void KOrganizerPart::showStatusMessage(const QString& message)
-{
-  if (!parent() || !parent()->parent())
-    return;
-  // ## why not use the signal setStatusBarText from KParts::Part? (DF)
-  KMainWindow *mainWin = dynamic_cast<KMainWindow*>(parent()->parent()); //yuck
-  if (mainWin && mainWin->statusBar())
-      mainWin->statusBar()->message( message );
-}
-
-
 KOrganizerPart::~KOrganizerPart()
 {
   saveCalendar();
@@ -269,19 +258,6 @@ KOrganizerBrowserExtension::KOrganizerBrowserExtension(KOrganizerPart *parent) :
 
 KOrganizerBrowserExtension::~KOrganizerBrowserExtension()
 {
-}
-
-
-KOStatusBarExtension::KOStatusBarExtension( KOrganizerPart *parent )
-  : KParts::StatusBarExtension( parent ), mParent( parent )
-{
-}
-
-KMainWindow *KOStatusBarExtension::mainWindow() const
-{
-  kdDebug() << "KOStatusBarExtension::mainWindow()" << endl;
-
-  return dynamic_cast<KMainWindow*>(mParent->parent()->parent());
 }
 
 using namespace KParts;
