@@ -20,8 +20,9 @@
 // $Id$
 
 #include <klocale.h>
-
+#include <iostream.h>
 #include "kotodoviewitem.h"
+//#include "kotodoviewitem.moc"
 
 KOTodoViewItem::KOTodoViewItem(QListView *parent, Todo *ev)
   : QCheckListItem(parent,"",CheckBox), mEvent(ev)
@@ -99,5 +100,28 @@ void KOTodoViewItem::construct()
     QString str = mEvent->description().mid(pos+1);
     str.stripWhiteSpace();
     setText(6,str);
+  }
+}
+
+void KOTodoViewItem::stateChange(bool state)
+{
+  if (state) mEvent->setCompleted(state);
+  else mEvent->setPercentComplete(0);
+  if (isOn()!=state) {
+    setOn(state);
+//    emit isModified(true);
+  }
+  if (mEvent->percentComplete()<100) {
+    setText(2,i18n(" %1 %").arg(QString::number(mEvent->percentComplete())));
+  }
+  else {
+    setText(2,i18n("%1 %").arg(QString::number(mEvent->percentComplete())));
+  }
+  QListViewItem * myChild = firstChild();
+  KOTodoViewItem *item;
+  while( myChild ) {
+    item = static_cast<KOTodoViewItem*>(myChild);
+    item->stateChange(state);
+    myChild = myChild->nextSibling();
   }
 }

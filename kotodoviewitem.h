@@ -45,10 +45,11 @@ using namespace KCal;
 */
 class KOTodoViewItem : public QCheckListItem
 {
+//    Q_OBJECT
   public:
     /**
       Constructor.
-     
+
       @param parent is the list view to which this item belongs.
       @param ev is the event to have the item display information for.
     */
@@ -64,11 +65,15 @@ class KOTodoViewItem : public QCheckListItem
 
     void setSortKey(int column,const QString &key);
 
+//  signals:
+//    void isModified(bool);
+
   protected:
 #if QT_VERSION >= 300
     void paintBranches(QPainter *p,const QColorGroup & cg,int w,int y,int h);
 #else
 #endif
+  virtual void stateChange(bool);
 
   private:
     Todo *mEvent;

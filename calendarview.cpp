@@ -169,6 +169,7 @@ CalendarView::CalendarView(QWidget *parent,const char *name)
   mDateNavigator = new KDateNavigator(leftFrame, mCalendar, TRUE,
                         "CalendarView::DateNavigator", QDate::currentDate());
   mTodoList = new KOTodoView(mCalendar, leftFrame, "todolist");
+  connect(mTodoList,SIGNAL(isModified(bool)),SLOT(setModified(bool)));
   mFilterView = new KOFilterView(&mFilters,leftFrame,"CalendarView::FilterView");
 
   mRightFrame = new QWidgetStack(mainBox, "CalendarView::RightFrame");
