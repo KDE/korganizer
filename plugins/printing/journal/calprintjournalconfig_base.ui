@@ -45,9 +45,6 @@
                     <property name="text">
                         <string>&amp;All journals</string>
                     </property>
-                    <property name="accel">
-                        <string>Alt+A</string>
-                    </property>
                     <property name="buttonGroupId">
                         <number>0</number>
                     </property>
@@ -61,9 +58,6 @@
                     </property>
                     <property name="text">
                         <string>Date &amp;range:</string>
-                    </property>
-                    <property name="accel">
-                        <string>Alt+R</string>
                     </property>
                     <property name="buttonGroupId">
                         <number>1</number>
