@@ -87,9 +87,10 @@ KOEditorDetails::KOEditorDetails (int spacing,QWidget* parent,const char* name)
           SLOT(updateAttendeeInput()));
 
   QLabel *attendeeLabel = new QLabel(this);
-  attendeeLabel->setText(i18n("Name:"));
+  attendeeLabel->setText(i18n("Na&me:"));
 
   mNameEdit = new QLineEdit(this);
+  attendeeLabel->setBuddy( mNameEdit );
   connect(mNameEdit,SIGNAL(textChanged(const QString &)),
           SLOT(updateAttendeeItem()));
 
@@ -97,28 +98,31 @@ KOEditorDetails::KOEditorDetails (int spacing,QWidget* parent,const char* name)
   mUidEdit->setText("");
 
   QLabel *emailLabel = new QLabel(this);
-  emailLabel->setText(i18n("Email:"));
+  emailLabel->setText(i18n("&Email:"));
 
   mEmailEdit = new QLineEdit(this);
+  emailLabel->setBuddy( mEmailEdit );
   connect(mEmailEdit,SIGNAL(textChanged(const QString &)),
           SLOT(updateAttendeeItem()));
 
   QLabel *attendeeRoleLabel = new QLabel(this);
-  attendeeRoleLabel->setText(i18n("Role:"));
+  attendeeRoleLabel->setText(i18n("Ro&le:"));
 
   mRoleCombo = new QComboBox(false,this);
   mRoleCombo->insertStringList(Attendee::roleList());
+  attendeeRoleLabel->setBuddy( mRoleCombo );
   connect(mRoleCombo,SIGNAL(activated(int)),SLOT(updateAttendeeItem()));
 
   QLabel *statusLabel = new QLabel(this);
-  statusLabel->setText( i18n("Status:") );
+  statusLabel->setText( i18n("Stat&us:") );
 
   mStatusCombo = new QComboBox(false,this);
   mStatusCombo->insertStringList(Attendee::statusList());
+  statusLabel->setBuddy( mStatusCombo );
   connect(mStatusCombo,SIGNAL(activated(int)),SLOT(updateAttendeeItem()));
 
   mRsvpButton = new QCheckBox(this);
-  mRsvpButton->setText(i18n("Request response"));
+  mRsvpButton->setText(i18n("Re&quest response"));
   connect(mRsvpButton,SIGNAL(clicked()),SLOT(updateAttendeeItem()));
 
   QWidget *buttonBox = new QWidget(this);
