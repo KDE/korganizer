@@ -116,4 +116,4 @@ messages: rc.cpp
 	$(XGETTEXT) *.cpp knewstuff/*.cpp plugins/*/*.cpp tips.cc -o $(podir)/korganizer.pot
 	rm -f tips.cc
 
-include $(top_srcdir)/admin/Doxyfile.am
+include ../admin/Doxyfile.am
