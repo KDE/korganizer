@@ -39,8 +39,9 @@
 #include "korganizer.h"
 #include "koprefs.h"
 #include "version.h"
-
 #include "alarmclient.h"
+#include "koglobals.h"
+
 #include "koapp.h"
 #include "koapp.moc"
 
@@ -125,8 +126,7 @@ int KOrganizerApp::newInstance()
   } else if (args->isSet("show")) {
     numDays = args->getOption("show").toInt();
   } else {
-    AlarmClient::startAlarmDaemon();
-    AlarmClient::startAlarmClient();
+    KOGlobals::self()->alarmClient()->startDaemon();
   }
 
   // If filenames was given as argument load this as calendars, one per window.
@@ -140,8 +140,7 @@ int KOrganizerApp::newInstance()
     QString urlString = KGlobal::config()->readEntry("Active Calendar");
 
     // Force alarm daemon to load active calendar
-    AlarmDaemonIface_stub stub( "kalarmd", "ad" );
-    stub.addCal( "korgac", urlString );
+    KOGlobals::self()->alarmClient()->addCalendar( urlString );
 
     processCalendar( urlString, numDays ); 
   }

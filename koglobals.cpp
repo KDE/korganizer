@@ -1,3 +1,26 @@
+/*
+    This file is part of KOrganizer.
+    Copyright (c) 2002 Cornelius Schumacher <schumacher@kde.org>
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+
+    As a special exception, permission is given to link this program
+    with any edition of Qt, and distribute the resulting executable,
+    without including the source code for Qt in the source distribution.
+*/
+
 #include <qapplication.h>
 
 #include <kdebug.h>
@@ -6,7 +29,19 @@
 
 #include <calendarsystem/kcalendarsystem.h>
 
+#include "kalarmdclient.h"
+#include "simplealarmclient.h"
+
 #include "koglobals.h"
+
+class NopAlarmClient : public AlarmClient
+{
+  public:
+    void startDaemon(){}
+    bool addCalendar( const KURL & ) { return false; }
+    bool removeCalendar( const KURL & ) { return false; }
+    bool reloadCalendar( const KURL & ) { return false; }
+};
 
 KOGlobals *KOGlobals::mSelf = 0;
 
@@ -21,16 +56,36 @@ KOGlobals *KOGlobals::self()
 
 KOGlobals::KOGlobals()
 {
-  KGlobal::config()->setGroup("General");
-  QString calSystem = KGlobal::config()->readEntry( "CalendarSystem",
-                                                    "gregorian" );
-  
+  KConfig *cfg = KGlobal::config();
+
+  cfg->setGroup("General");
+  QString calSystem = cfg->readEntry( "CalendarSystem", "gregorian" );
   mCalendarSystem = KCalendarSystemFactory::create( calSystem );
+
+  cfg->setGroup("AlarmDaemon");
+  QString alarmClient = cfg->readEntry( "Daemon", "kalarmd" );
+  if ( alarmClient == "kalarmd" ) {
+    mAlarmClient = new KalarmdClient;
+  } else if ( alarmClient == "simple" ) {
+    mAlarmClient = new SimpleAlarmClient;
+  } else {
+    mAlarmClient = new NopAlarmClient;
+  }
+}
+
+KOGlobals::~KOGlobals()
+{
+  delete mAlarmClient;
 }
 
 KCalendarSystem *KOGlobals::calendarSystem()
 {
   return mCalendarSystem;
+}
+
+AlarmClient *KOGlobals::alarmClient()
+{
+  return mAlarmClient;
 }
 
 void KOGlobals::fitDialogToScreen( QWidget *wid, bool force )

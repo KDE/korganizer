@@ -1279,30 +1279,6 @@ bool CalendarView::isModified()
   return mModified;
 }
 
-// TODO: Check, if this function is still needed
-void CalendarView::signalAlarmDaemon()
-{
-#if 0
-  QFile pidFile;
-  QString tmpStr;
-  pid_t pid;
-  char pidStr[25];
-
-  tmpStr = locateLocal("appdata", "alarm.pid");
-
-  pidFile.setName(tmpStr);
-
-  // only necessary if the file actually is opened
-  if(pidFile.open(IO_ReadOnly)) {
-    pidFile.readLine(pidStr, 24);
-    pidFile.close();
-    pid = atoi(pidStr);
-    if (pid > 0)
-      kill(pid, SIGHUP);
-  }
-#endif
-}
-
 void CalendarView::printSetup()
 {
 #ifndef KORG_NOPRINTER

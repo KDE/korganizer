@@ -379,9 +379,6 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     // returns KMsgBox::OKCandel()
     int msgItemDelete();
   
-    /** tell the alarm daemon that we have saved, and he needs to reread */
-    void signalAlarmDaemon();
-  
     Todo *selectedTodo();
 
   private:

@@ -20,37 +20,40 @@
     with any edition of Qt, and distribute the resulting executable,
     without including the source code for Qt in the source distribution.
 */
-#ifndef KORG_GLOBALS_H
-#define KORG_GLOBALS_H
+#ifndef KALARMDCLIENT_H
+#define KALARMDCLIENT_H
 
-class KCalendarSystem;
-class AlarmClient;
+#include "alarmclient.h"
 
-class KOGlobals
+#include "kalarmd/alarmdaemoniface_stub.h"
+
+#include <qobject.h>
+
+class KProcess;
+
+/**
+  Alarm daemon interface implementation for kalarmd.
+*/
+class KalarmdClient : public QObject, public AlarmClient
 {
+    Q_OBJECT
   public:
-    static KOGlobals *self();
-  
-    enum { EVENTADDED, EVENTEDITED, EVENTDELETED };  
-    enum { PRIORITY_MODIFIED, COMPLETION_MODIFIED, CATEGORY_MODIFIED, UNKNOWN_MODIFIED };
-
-    static void fitDialogToScreen( QWidget *widget, bool force=false );
-
-    static bool reverseLayout();
-
-    KCalendarSystem *calendarSystem();
-
-    AlarmClient *alarmClient();
-
-  protected:
-    KOGlobals();
-    ~KOGlobals();
+    KalarmdClient();
+    ~KalarmdClient();
     
+    void startDaemon();
+
+    bool addCalendar( const KURL & );
+
+    bool removeCalendar( const KURL & );
+
+    bool reloadCalendar( const KURL & );
+
+  private slots:
+    void startCompleted( KProcess * );
+
   private:
-    static KOGlobals *mSelf;
-    
-    KCalendarSystem *mCalendarSystem;    
-    AlarmClient *mAlarmClient;
+    AlarmDaemonIface_stub mAlarmDaemonIface;
 };
 
 #endif

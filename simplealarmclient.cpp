@@ -20,37 +20,26 @@
     with any edition of Qt, and distribute the resulting executable,
     without including the source code for Qt in the source distribution.
 */
-#ifndef KORG_GLOBALS_H
-#define KORG_GLOBALS_H
 
-class KCalendarSystem;
-class AlarmClient;
+#include "simplealarmclient.h"
 
-class KOGlobals
+#include <kprocess.h>
+
+void SimpleAlarmClient::startDaemon()
 {
-  public:
-    static KOGlobals *self();
-  
-    enum { EVENTADDED, EVENTEDITED, EVENTDELETED };  
-    enum { PRIORITY_MODIFIED, COMPLETION_MODIFIED, CATEGORY_MODIFIED, UNKNOWN_MODIFIED };
+}
 
-    static void fitDialogToScreen( QWidget *widget, bool force=false );
+bool SimpleAlarmClient::addCalendar( const KURL & )
+{
+  return false;
+}
 
-    static bool reverseLayout();
+bool SimpleAlarmClient::removeCalendar( const KURL & )
+{
+  return false;
+}
 
-    KCalendarSystem *calendarSystem();
-
-    AlarmClient *alarmClient();
-
-  protected:
-    KOGlobals();
-    ~KOGlobals();
-    
-  private:
-    static KOGlobals *mSelf;
-    
-    KCalendarSystem *mCalendarSystem;    
-    AlarmClient *mAlarmClient;
-};
-
-#endif
+bool SimpleAlarmClient::reloadCalendar( const KURL & )
+{
+  return false;
+}

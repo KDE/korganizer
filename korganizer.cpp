@@ -64,6 +64,8 @@
 #include "kocore.h"
 #include "konewstuff.h"
 #include "exportwebdialog.h"
+#include "koglobals.h"
+#include "alarmclient.h"
 
 #include "korganizer.h"
 using namespace KOrg;
@@ -73,8 +75,7 @@ using namespace KOrg;
 KOWindowList *KOrganizer::windowList = 0;
 
 KOrganizer::KOrganizer( const char *name )
-  : MainWindow(name), DCOPObject("KOrganizerIface"),
-    mAlarmDaemonIface("kalarmd","ad")
+  : MainWindow(name), DCOPObject("KOrganizerIface")
 {
   kdDebug() << "KOrganizer::KOrganizer()" << endl;
 
@@ -789,8 +790,7 @@ bool KOrganizer::saveURL()
     if (result != KMessageBox::Continue) return false;
 
     // Tell the alarm daemon to stop monitoring the vCalendar file
-    mAlarmDaemonIface.removeCal( mURL.url() );
-    if (!mAlarmDaemonIface.ok() ) {
+    if ( !KOGlobals::self()->alarmClient()->removeCalendar( mURL ) ) {
       kdDebug() << "KOrganizer::saveURL(): dcop send failed" << endl;
     }
 
@@ -822,8 +822,7 @@ bool KOrganizer::saveURL()
 
   if (isActive()) {
     kdDebug() << "KOrganizer::saveURL(): Notify alarm daemon" << endl;
-    mAlarmDaemonIface.reloadCal("korgac",mURL.url());
-    if (!mAlarmDaemonIface.ok()) {
+    if ( !KOGlobals::self()->alarmClient()->reloadCalendar( mURL ) ) {
       kdDebug() << "KOrganizer::saveUrl(): reloadCal call failed." << endl;
     }
   }
@@ -1143,8 +1142,7 @@ void KOrganizer::makeActive()
 
   writeActiveState();
 
-  mAlarmDaemonIface.reloadCal( "korgac", mURL.url() );
-  if ( !mAlarmDaemonIface.ok() ) {
+  if ( !KOGlobals::self()->alarmClient()->reloadCalendar( mURL ) ) {
     kdDebug() << "KOrganizer::makeActive(): dcop send failed" << endl;
   }
   setActive();
