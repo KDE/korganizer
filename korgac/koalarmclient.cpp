@@ -98,9 +98,12 @@ void KOAlarmClient::checkAlarms()
   QValueList<Alarm *>::ConstIterator it;
   for( it = alarms.begin(); it != alarms.end(); ++it ) {
     kdDebug(5891) << "ALARM: " << (*it)->parent()->summary() << endl;
-    Event *event = mCalendar->event( (*it)->parent()->uid() );
-    if ( event ) {
-      mAlarmDialog->appendEvent( event );
+    Incidence *incidence = mCalendar->incidence( (*it)->parent()->uid() );
+    if ( incidence->type() == "Event" ) {
+      mAlarmDialog->appendEvent( static_cast<Event *>(incidence) );
+      newEvents = true;
+    } else if ( incidence->type() == "Todo" ) {
+      mAlarmDialog->appendTodo( static_cast<Todo *>(incidence) );
       newEvents = true;
     }
   }
