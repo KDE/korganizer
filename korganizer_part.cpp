@@ -115,10 +115,15 @@ KOrganizerPart::KOrganizerPart(QWidget *parentWidget, const char *widgetName,
   setWidget(canvas);
 
   mBrowserExtension = new KOrganizerBrowserExtension(this);
-  mStatusBarExtension = new KParts::StatusBarExtension(this);
+  mStatusBarExtension = new KOStatusBarExtension(this);
 
-  QLabel *dummy = new QLabel( "huhu", mStatusBarExtension->statusBar() );
-  mStatusBarExtension->addStatusBarItem( dummy, 1, true );
+  mStatusBarExtension->mainWindow();
+
+  KStatusBar *statusBar = mStatusBarExtension->statusBar();
+  if ( !statusBar ) kdError() << "NO STATUSBAR" << endl;
+
+  QLabel *dummy = new QLabel( "korganizer status bar widget", statusBar );
+  mStatusBarExtension->addStatusBarItem( dummy, 0, true );
 
   QVBoxLayout *topLayout = new QVBoxLayout(canvas);
 
@@ -269,7 +274,21 @@ KOrganizerBrowserExtension::~KOrganizerBrowserExtension()
 {
 }
 
+
+KOStatusBarExtension::KOStatusBarExtension( KOrganizerPart *parent )
+  : KParts::StatusBarExtension( parent ), mParent( parent )
+{
+}
+
+KMainWindow *KOStatusBarExtension::mainWindow() const
+{
+  kdDebug() << "KOStatusBarExtension::mainWindow()" << endl;
+
+  return dynamic_cast<KMainWindow*>(mParent->parent()->parent());
+}
+
 using namespace KParts;
+
 #include "korganizer_part.moc"
 
 

@@ -115,4 +115,16 @@ class KOrganizerBrowserExtension : public KParts::BrowserExtension
     virtual ~KOrganizerBrowserExtension();
 };
 
+class KOStatusBarExtension : public KParts::StatusBarExtension
+{
+  public:
+    KOStatusBarExtension( KOrganizerPart *parent );
+
+    KMainWindow *mainWindow() const;
+
+  private:
+    KOrganizerPart *mParent;
+};
+
+
 #endif
