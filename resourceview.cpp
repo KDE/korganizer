@@ -191,6 +191,11 @@ void ResourceView::addResource()
                           "KRES::ConfigDialog" );
 
   if ( dlg.exec() ) {
+    if ( resource->isActive() ) {
+      resource->open();
+      resource->load();
+    }
+
     mManager->add( resource );
     addResourceItem( resource );
   } else {
@@ -201,10 +206,6 @@ void ResourceView::addResource()
 
 void ResourceView::addResourceItem( ResourceCalendar *resource )
 {
-  if ( resource->isActive() ) {
-    resource->open();
-    resource->load();
-  }
   new ResourceItem( resource, this, mListView );
   emitResourcesChanged();
 }

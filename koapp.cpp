@@ -117,8 +117,12 @@ void KOrganizerApp::processCalendar( const KURL &url )
     kdDebug(5850) << "KOrganizerApp::processCalendar(): '" << url.url()
                   << "'" << endl;
 
-    if ( hasDocument ) korg->openURL( url );
-    else KOCore::self()->calendarResources()->load();
+    if ( hasDocument )
+      korg->openURL( url );
+    else {
+      KOCore::self()->calendarResources()->load();
+      korg->view()->updateView();
+    }
   } else {
     korg->topLevelWidget()->show();
   }
