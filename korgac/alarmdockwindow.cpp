@@ -59,9 +59,9 @@ AlarmDockWindow::AlarmDockWindow(KOAlarmClient *client, QWidget *parent,
   bool alarmsEnabled = config->readBoolEntry( "Enabled", true );
 
   // Set up GUI icons
-  KGlobal::iconLoader()->addAppDir( "kalarmdgui" );
-  mPixmapEnabled  = loadIcon( "kalarmdgui" );
-  mPixmapDisabled = loadIcon( "kalarmdgui_disabled" );
+  KGlobal::iconLoader()->addAppDir( "korgac" );
+  mPixmapEnabled  = loadIcon( "korgac" );
+  mPixmapDisabled = loadIcon( "korgac_disabled" );
 
   setPixmap( alarmsEnabled ? mPixmapEnabled : mPixmapDisabled );
 
