@@ -238,17 +238,11 @@ void CalPrinter::printWeek(const QDate &fd, const QDate &td)
 
   mPrinter->setOrientation(KPrinter::Portrait);
 
-  if (KGlobal::locale()->weekStartsMonday()) {
-    // correct to monday
-    fromWeek = fd.addDays(-(fd.dayOfWeek()-1));
-    // correct to sunday
-    toWeek = td.addDays(7-fd.dayOfWeek());
-  } else {
-    // correct to sunday
-    fromWeek = fd.addDays(-(fd.dayOfWeek()%7));
-    // correct to saturday
-    toWeek = td.addDays(6-td.dayOfWeek());
-  }
+  // correct begin and end to first and last day of week
+  int weekdayCol=(fd.dayOfWeek()+7-KGlobal::locale()->weekStartDay())%7;
+  fromWeek = fd.addDays(-weekdayCol);
+  weekdayCol=(fd.dayOfWeek()+7-KGlobal::locale()->weekStartDay())%7;
+  toWeek = td.addDays(6-weekdayCol);
 
   p.begin(mPrinter);
   // the painter initially begins at 72 dpi per the Qt docs.
@@ -330,17 +324,11 @@ void CalPrinter::printTimeTable(const QDate &fd, const QDate &td)
 
   mPrinter->setOrientation(KPrinter::Landscape);
 
-  if (KGlobal::locale()->weekStartsMonday()) {
-    // correct to monday
-    fromWeek = fd.addDays(-(fd.dayOfWeek()-1));
-    // correct to sunday
-    toWeek = td.addDays(7-fd.dayOfWeek());
-  } else {
-    // correct to sunday
-    fromWeek = fd.addDays(-(fd.dayOfWeek()%7));
-    // correct to saturday
-    toWeek = td.addDays(6-td.dayOfWeek());
-  }
+  // correct begin and end to first and last day of week
+  int weekdayCol=(fd.dayOfWeek()+7-KGlobal::locale()->weekStartDay())%7;
+  fromWeek = fd.addDays(-weekdayCol);
+  weekdayCol=(fd.dayOfWeek()+7-KGlobal::locale()->weekStartDay())%7;
+  toWeek = td.addDays(6-weekdayCol);
 
   p.begin(mPrinter);
   // the painter initially begins at 72 dpi per the Qt docs.
@@ -630,7 +618,11 @@ void CalPrinter::drawDayBox(QPainter &p, const QDate &qd,
     index = dayNumStr.findRev(' ');
     dayNumStr.truncate(index);*/
 
-    dayNumStr = local->weekDayName(qd.dayOfWeek()) + ' ' + local->monthName(qd.month(), true) + ' ' + QString::number(qd.day());
+    dayNumStr = i18n("weekday month date", "%1 %2 %3")
+        .arg( local->weekDayName(qd.dayOfWeek()) )
+        .arg( local->monthName(qd.month(), true) )
+        .arg( qd.day() );
+//    dayNumStr = local->formatDate(qd);
   } else {
     dayNumStr = QString::number(qd.day());
   }
@@ -650,13 +642,13 @@ void CalPrinter::drawDayBox(QPainter &p, const QDate &qd,
 	     dayNumStr);
 
   Event::List eventList = mCalendar->events(qd, TRUE);
-  int count = 1;
   QString outStr;
   p.setFont(QFont("helvetica", 8));
   int lineSpacing = p.fontMetrics().lineSpacing();
 
+  int textY=mSubHeaderHeight+3; // gives the relative y-coord of the next printed entry
   Event::List::ConstIterator it;
-  for( it = eventList.begin(); it != eventList.end() && count <= 9; ++it ) {
+  for( it = eventList.begin(); it != eventList.end() && textY<height; ++it ) {
     Event *currEvent = *it;
     if (currEvent->doesFloat() || currEvent->isMultiDay())
       outStr = currEvent->summary();
@@ -669,15 +661,15 @@ void CalPrinter::drawDayBox(QPainter &p, const QDate &qd,
 
     } // doesFloat
 
-    p.drawText(x+5, y+(lineSpacing*(count+1)), width-10, lineSpacing,
-	       AlignLeft|AlignVCenter, outStr);
-    ++count;
+    p.drawText(x+5, y+textY, width-10, lineSpacing,
+	       AlignLeft|AlignBottom, outStr);
+    textY+=lineSpacing;
   }
 
-  if ( count <= 9 ) {
+  if ( textY<height ) {
     Todo::List todos = mCalendar->todos( qd );
     Todo::List::ConstIterator it2;
-    for( it2 = todos.begin(); it2 != todos.end() && count <= 9; ++it2 ) {
+    for( it2 = todos.begin(); it2 != todos.end() && textY<height; ++it2 ) {
       Todo *todo = *it2;
       QString text;
       if (todo->hasDueDate()) {
@@ -688,9 +680,9 @@ void CalPrinter::drawDayBox(QPainter &p, const QDate &qd,
       }
       text += i18n("To-Do: %1").arg(todo->summary());
 
-      p.drawText(x+5, y+(lineSpacing*(count+1)), width-10, lineSpacing,
-                AlignLeft|AlignVCenter, text);
-      ++count;
+      p.drawText(x+5, y+textY, width-10, lineSpacing,
+                AlignLeft|AlignBottom, text);
+      textY+=lineSpacing;
     }
   }
 }
@@ -913,24 +905,21 @@ void CalPrinter::drawWeek(QPainter &p, const QDate &qd, int width, int height)
   int cellWidth = width/2;
   int cellHeight = (height-offset)/3;
 
-  if (KGlobal::locale()->weekStartsMonday())
-    // correct to monday
-    weekDate = qd.addDays(-(qd.dayOfWeek()-1));
-  else
-    // correct to sunday
-    weekDate = qd.addDays(-(qd.dayOfWeek()%7));
+  // correct begin of week
+  int weekStartDay = KGlobal::locale()->weekStartDay();
+  int weekdayCol=(qd.dayOfWeek()+7-weekStartDay)%7;
+  weekDate = qd.addDays(-weekdayCol);
 
   for (int i = 0; i < 7; i++, weekDate = weekDate.addDays(1)) {
     if (i < 3)
       drawDayBox(p, weekDate, 0, offset+i*cellHeight,
 		 cellWidth, cellHeight, TRUE);
     else
-      if ((weekDate.dayOfWeek() == 6 && KGlobal::locale()->weekStartsMonday()) ||
-	  (weekDate.dayOfWeek() == 5 && !KGlobal::locale()->weekStartsMonday()))
+      // next to last day of week
+      if ((7+weekDate.dayOfWeek()-weekStartDay)%7 == 5)
 	drawDayBox(p, weekDate, cellWidth, offset+2*cellHeight,
 		   cellWidth, cellHeight/2, TRUE);
-      else if ((weekDate.dayOfWeek() == 7 && KGlobal::locale()->weekStartsMonday()) ||
-	       (weekDate.dayOfWeek() == 6 && !KGlobal::locale()->weekStartsMonday()))
+      else if ((7+weekDate.dayOfWeek()-weekStartDay)%7 == 6)
 	drawDayBox(p, weekDate, cellWidth, offset+2*cellHeight+(cellHeight/2),
 		   cellWidth, cellHeight/2, TRUE);
       else
@@ -949,12 +938,10 @@ void CalPrinter::drawTimeTable(QPainter &p, const QDate &qd, int width, int heig
   int cellHeight = (height-offset) / (hoursToPrint+1); // print 12 hours + 1 field for daily usage
   int ystartTimeLine =offset+mSubHeaderHeight+cellHeight;
 
-  if (KGlobal::locale()->weekStartsMonday())
-    // correct to monday
-    weekDate = qd.addDays(-(qd.dayOfWeek()-1));
-  else
-    // correct to sunday
-    weekDate = qd.addDays(-(qd.dayOfWeek()%7));
+  // correct begin of week
+  int weekStartDay = KGlobal::locale()->weekStartDay();
+  int weekdayCol=(qd.dayOfWeek()+7-weekStartDay)%7;
+  weekDate = qd.addDays(-weekdayCol);
 
   // Draw the timeline info on the left site of the page
   QString numStr;
