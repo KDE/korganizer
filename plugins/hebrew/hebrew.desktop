@@ -2,7 +2,9 @@
 Encoding=UTF-8
 X-KDE-Library=libkorg_hebrew
 Name=Jewish Calendar Plugin
+Name[ar]=أداة إضافية للتقويم اليهودي
 Name[bg]=Приставка за еврейския календар
+Name[br]=Lugent deiziadur yudev
 Name[bs]=Dodatak za hebrejski kalendar
 Name[ca]=Endollable de calendari jueu
 Name[cs]=Modul židovského kalendáře

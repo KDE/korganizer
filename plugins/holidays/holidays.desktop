@@ -2,6 +2,7 @@
 Encoding=UTF-8
 X-KDE-Library=libkorg_holidays
 Name=Holiday Plugin for Calendars
+Name[ar]=أداة إضافية العطل للتقويم
 Name[bg]=Приставка на календара за празници и ваканции
 Name[bs]=Dodatak za kalendar - praznici
 Name[ca]=Endollable de vacances per als calendaris

@@ -2,6 +2,7 @@
 Encoding=UTF-8
 X-KDE-Library=libkorg_exchange
 Name=Microsoft Exchange 2000 Plugin for KOrganizer
+Name[ar]= KOrganizer خاصة بـ  Microsoft Exchange 2000 أداة إضافية لـ 
 Name[be]=Дапаўненьне K Арганізатара "Microsoft Exchange 2000"
 Name[bg]=Приставка на организатора за връзка с Microsoft Exchange 2000
 Name[bs]=Microsoft Exchange 2000 dodatak za KOrganizer

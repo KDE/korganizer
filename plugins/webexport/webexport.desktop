@@ -2,6 +2,7 @@
 Encoding=UTF-8
 X-KDE-Library=libkorg_webexport
 Name=Web Export Plugin for KOrganizer
+Name[ar]=ملحق عرض المشاريع للمنظم
 Name[bg]=Приставка на организатора за експорт в уеб формат
 Name[bs]=Eksportovanje na web, dodatak za KOrganizer
 Name[ca]=Endollable d'exportació web per a KOrganizer

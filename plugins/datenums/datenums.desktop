@@ -2,6 +2,7 @@
 Encoding=UTF-8
 X-KDE-Library=libkorg_datenums
 Name=Date Numbers Plugin for Calendars
+Name[ar]=أداة إضافية لأرقام تواريخ للتقويم
 Name[bg]=Приставка на календара за дати и смятане с дати
 Name[bs]=Dodatak za kalendar - brojevi datuma
 Name[ca]=Endollable de números de data per als calendaris
