@@ -221,6 +221,8 @@ class BaseView : public QWidget
     void incidenceDeleted( Incidence* );
     void incidenceToBeDeleted( Incidence* );
 
+    void startMultiModify( const QString & );
+    void endMultiModify();
 
     /**
      * instructs the receiver to create a new event.  Doesn't make

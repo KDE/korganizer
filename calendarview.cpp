@@ -639,12 +639,11 @@ void CalendarView::incidenceChanged( Incidence *oldIncidence,
   updateUnmanagedViews();
 }
 
-// TODO_RK: Make sure a possibly open editor is closed and the memory is freed
 void CalendarView::incidenceToBeDeleted( Incidence *incidence )
 {
   KOIncidenceEditor *tmp = editorDialog( incidence );
   if (tmp) {
-    kdDebug(5850) << "Incidence to be deletd and open in editor" << endl;
+    kdDebug(5850) << "Incidence to be deleted and open in editor" << endl;
     tmp->delayedDestruct();
   }
   setModified( true );
@@ -657,6 +656,16 @@ void CalendarView::incidenceDeleted( Incidence *incidence )
 {
   changeIncidenceDisplay( incidence, KOGlobals::INCIDENCEDELETED );
   updateUnmanagedViews();
+}
+
+void CalendarView::startMultiModify( const QString &text )
+{
+  history()->startMultiModify( text );
+}
+
+void CalendarView::endMultiModify()
+{
+  history()->endMultiModify();
 }
 
 
@@ -1930,6 +1939,7 @@ void CalendarView::purgeCompleted()
       i18n("Delete all completed To-Dos?"),i18n("Purge To-Dos"),i18n("Purge"));
 
   if (result == KMessageBox::Continue) {
+    startMultiModify( i18n("Purging completed todos") );
     Todo::List todoCal;
     Incidence::List rel;
     bool childDelete = false;
@@ -1954,12 +1964,15 @@ void CalendarView::purgeCompleted()
             }
           }
           else {
-            calendar()->deleteTodo(aTodo);
+            incidenceToBeDeleted( aTodo );
+            calendar()->deleteTodo( aTodo );
+            incidenceDeleted( aTodo );
             deletedOne = true;
           }
         }
       }
     }
+    endMultiModify();
     if (childDelete) {
       KMessageBox::sorry(this,i18n("Cannot purge To-Do which has uncompleted children."),
                          i18n("Delete To-Do"));

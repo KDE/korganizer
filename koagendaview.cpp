@@ -518,6 +518,13 @@ void KOAgendaView::connectAgenda( KOAgenda *agenda, QPopupMenu *popup,
 
   connect( agenda, SIGNAL( incidenceChanged( Incidence *, Incidence * ) ),
                    SIGNAL( incidenceChanged( Incidence *, Incidence * ) ) );
+  connect( agenda, SIGNAL( incidenceAdded( Incidence * ) ),
+                   SIGNAL( incidenceAdded( Incidence * ) ) );
+
+  connect( agenda, SIGNAL( startMultiModify( const QString & ) ),
+                   SIGNAL( startMultiModify( const QString & ) ) );
+  connect( agenda, SIGNAL( endMultiModify() ),
+                   SIGNAL( endMultiModify() ) );
 
   connect( agenda, SIGNAL( itemModified( KOAgendaItem * ) ),
                    SLOT( updateEventDates( KOAgendaItem * ) ) );

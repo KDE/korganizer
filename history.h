@@ -46,6 +46,8 @@ class History : public QObject
     void recordAdd( KCal::Incidence * );
     void recordEdit( KCal::Incidence *oldIncidence,
                      KCal::Incidence *newIncidence );
+    void startMultiModify( const QString &description );
+    void endMultiModify();
 
   public slots:
     void undo();
@@ -125,7 +127,25 @@ class History : public QObject
         KCal::Incidence *mNewIncidence;
     };
 
+    class MultiEntry : public Entry
+    {
+      public:
+        MultiEntry( KCal::Calendar *calendar, QString text );
+        ~MultiEntry();
+        
+        void appendEntry( Entry* entry );
+        void undo();
+        void redo();
+      
+        QString text();
+      
+      private:
+        QPtrList<Entry> mEntries;
+        QString mText;
+    };
+
     KCal::Calendar *mCalendar;
+    MultiEntry *mCurrentMultiEntry;
 
     QPtrList<Entry> mEntries;
     QPtrListIterator<Entry> mUndoEntry;

@@ -306,6 +306,8 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     void incidenceChanged( Incidence *oldEvent, Incidence *newEvent, int what );
     void incidenceToBeDeleted( Incidence *incidence );
     void incidenceDeleted( Incidence * );
+    void startMultiModify( const QString &text );
+    void endMultiModify();
 
     void editCanceled( Incidence * );
 

@@ -165,6 +165,9 @@ class KOAgenda : public QScrollView
     void itemModified( KOAgendaItem *item );
     void incidenceSelected( Incidence * );
     void incidenceChanged( Incidence*, Incidence* );
+    void incidenceAdded( Incidence* );
+    void startMultiModify( const QString & );
+    void endMultiModify();
 
     void lowerYChanged( int );
     void upperYChanged( int );

@@ -34,13 +34,15 @@ using namespace KCal;
 using namespace KOrg;
 
 History::History( KCal::Calendar *calendar )
-  : mCalendar( calendar ), mUndoEntry( mEntries ), mRedoEntry( mEntries )
+  : mCalendar( calendar ), mCurrentMultiEntry( 0 ), 
+    mUndoEntry( mEntries ), mRedoEntry( mEntries )
 {
   mEntries.setAutoDelete( true );
 }
 
 void History::undo()
 {
+  if ( mCurrentMultiEntry ) mCurrentMultiEntry = 0;
   Entry *entry = mUndoEntry.current();
   if ( !entry ) return;
 
@@ -59,6 +61,7 @@ void History::undo()
 
 void History::redo()
 {
+  if ( mCurrentMultiEntry ) mCurrentMultiEntry = 0;
   Entry *entry = mRedoEntry.current();
   if ( !entry ) return;
 
@@ -86,32 +89,62 @@ void History::truncate()
 
 void History::recordDelete( Incidence *incidence )
 {
-  truncate();
   Entry *entry = new EntryDelete( mCalendar, incidence );
-  mEntries.append( entry );
-  mUndoEntry.toLast();
-  mRedoEntry = QPtrList<Entry>( mEntries );
-  emit undoAvailable( entry->text() );
+  if (mCurrentMultiEntry) {
+    mCurrentMultiEntry->appendEntry( entry );
+  } else {
+    truncate();
+    mEntries.append( entry );
+    mUndoEntry.toLast();
+    mRedoEntry = QPtrList<Entry>( mEntries );
+    emit undoAvailable( entry->text() );
+  }
 }
 
 void History::recordAdd( Incidence *incidence )
 {
-  truncate();
   Entry *entry = new EntryAdd( mCalendar, incidence );
-  mEntries.append( entry );
-  mUndoEntry.toLast();
-  mRedoEntry = QPtrList<Entry>( mEntries );
-  emit undoAvailable( entry->text() );
+  if (mCurrentMultiEntry) {
+    mCurrentMultiEntry->appendEntry( entry );
+  } else {
+    truncate();
+    mEntries.append( entry );
+    mUndoEntry.toLast();
+    mRedoEntry = QPtrList<Entry>( mEntries );
+    emit undoAvailable( entry->text() );
+  }
 }
 
 void History::recordEdit( Incidence *oldIncidence, Incidence *newIncidence )
 {
-  truncate();
   Entry *entry = new EntryEdit( mCalendar, oldIncidence, newIncidence );
-  mEntries.append( entry );
+  if (mCurrentMultiEntry) {
+    mCurrentMultiEntry->appendEntry( entry );
+  } else {
+    truncate();
+    mEntries.append( entry );
+    mUndoEntry.toLast();
+    mRedoEntry = QPtrList<Entry>( mEntries );
+    emit undoAvailable( entry->text() );
+  }
+}
+
+void History::startMultiModify( const QString &description )
+{
+  if ( mCurrentMultiEntry ) {
+    endMultiModify();
+  }
+  mCurrentMultiEntry = new MultiEntry( mCalendar, description );
+  truncate();
+  mEntries.append( mCurrentMultiEntry );
   mUndoEntry.toLast();
   mRedoEntry = QPtrList<Entry>( mEntries );
-  emit undoAvailable( entry->text() );
+  emit undoAvailable( mCurrentMultiEntry->text() );
+}
+
+void History::endMultiModify()
+{
+  mCurrentMultiEntry = 0;
 }
 
 
@@ -210,6 +243,47 @@ void History::EntryEdit::redo()
 QString History::EntryEdit::text()
 {
   return i18n("Edit %1").arg(mNewIncidence->type());
+}
+
+History::MultiEntry::MultiEntry( Calendar *calendar, QString text )
+  : Entry( calendar ), mText( text )
+{
+  mEntries.setAutoDelete( true );
+}
+
+History::MultiEntry::~MultiEntry()
+{
+}
+
+void History::MultiEntry::appendEntry( Entry* entry )
+{
+  mEntries.append( entry );
+}
+
+void History::MultiEntry::undo()
+{
+  QPtrListIterator<Entry> it( mEntries );
+  it.toLast();
+  Entry *entry;
+  while ( (entry = it.current()) != 0 ) {
+    --it;
+    entry->undo();
+  }
+}
+
+void History::MultiEntry::redo()
+{
+  QPtrListIterator<Entry> it( mEntries );
+  Entry *entry;
+  while ( (entry = it.current()) != 0 ) {
+    ++it;
+    entry->redo();
+  }
+}
+
+QString History::MultiEntry::text()
+{
+  return mText;
 }
 
 #include "history.moc"
