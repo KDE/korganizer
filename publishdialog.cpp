@@ -107,7 +107,7 @@ void PublishDialog::openAddressbook()
   //KABC::Addressee a = KABC::AddresseeDialog::getAddressee(this);
   KABC::Addressee a = addressList.first();
   if (!a.isEmpty()) {
-    int i;
+    uint i;
     for (i=0;i<addressList.size();i++) {
       a = addressList[i];
       mNameLineEdit->setEnabled(true);

@@ -40,16 +40,18 @@
 #include "kowhatsnextview.h"
 #include "kowhatsnextview.moc"
 
-void WhatsNextTextBrowser::setSource(const QString& name)
+void WhatsNextTextBrowser::setSource(const QString& n)
 {
-  if (name.startsWith("event:")) {
-    emit showIncidence(name);
+  kdDebug() << "WhatsNextTextBrowser::setSource(): " << n << endl;
+
+  if (n.startsWith("event:")) {
+    emit showIncidence(n);
     return;
-  } else if (name.startsWith("todo:")) {
-    emit showIncidence(name);
+  } else if (n.startsWith("todo:")) {
+    emit showIncidence(n);
     return;
   } else {
-    QTextBrowser::setSource(name);
+    QTextBrowser::setSource(n);
   }
 }
 
@@ -102,15 +104,16 @@ void KOWhatsNextView::printPreview(CalPrinter *calPrinter, const QDate &fd,
 
 void KOWhatsNextView::updateView()
 {
-  mText = i18n("<table width=\"100%\" align=\"left\"><tr bgcolor=\"#3679AD\"><td>");
+  mText = i18n("<table width=\"100%\">\n");
+  mText += i18n("<tr bgcolor=\"#3679AD\"><td>");
   mText += i18n("<font color=\"white\"><h1>What's next?</h1></font>");
-  mText += i18n("</td></tr><tr><td>");
+  mText += i18n("</td></tr>\n<tr><td>");
 
   QPtrList<Event> events = calendar()->getEvents(QDate::currentDate(),
                                                  QDate::currentDate());
   if (events.count() > 0) {
-    mText += i18n("<p></p><h2>Events:</h2>");
-    mText += i18n("<table>");
+    mText += i18n("<p></p><h2>Events:</h2>\n");
+    mText += i18n("<table>\n");
     Event *ev = events.first();
     while(ev) {
       if (!ev->recurrence()->doesRecur() || ev->recursOn( QDate::currentDate())) {
@@ -118,13 +121,13 @@ void KOWhatsNextView::updateView()
       }
       ev = events.next();
     }
-    mText += i18n("</table>");
+    mText += i18n("</table>\n");
   }
 
   QPtrList<Todo> todos = calendar()->getTodoList();
   if (todos.count() > 0) {
-    mText += i18n("<h2>Todo:</h2>");
-    mText += i18n("<ul>");
+    mText += i18n("<h2>Todo:</h2>\n");
+    mText += i18n("<ul>\n");
     Todo *todo = todos.first();
     while(todo) {
       if (!todo->isCompleted() && (todo->priority() == 1 ||
@@ -132,10 +135,10 @@ void KOWhatsNextView::updateView()
         appendTodo(todo);
       todo = todos.next();
     }
-    mText += i18n("</ul>");
+    mText += i18n("</ul>\n");
   }
 
-  mText += i18n("</td></tr></table>");
+  mText += i18n("</td></tr>\n</table>\n");
 
   kdDebug() << "KOWhatsNextView::updateView: text: " << mText << endl;
   mView->setText(mText);
@@ -166,20 +169,22 @@ void KOWhatsNextView::changeEventDisplay(Event *, int action)
 
 void KOWhatsNextView::appendEvent(Event *ev)
 {
+  kdDebug() << "KOWhatsNextView::appendEvent(): " << ev->VUID() << endl;
+
   mText += "<tr><td><b>";
   if (!ev->doesFloat()) {
     mText += ev->dtStartTimeStr() + " - " + ev->dtEndTimeStr();
   }
   mText += "</b></td><td><a href=\"event:" + ev->VUID() + "\">";
   mText += ev->summary();
-  mText += "</a></td></tr>";
+  mText += "</a></td></tr>\n";
 }
 
 void KOWhatsNextView::appendTodo(Todo *ev)
 {
   mText += "<li><a href=\"todo:" + ev->VUID() + "\">";
   mText += ev->summary();
-  mText += "</a></li>";
+  mText += "</a></li>\n";
 }
 
 void KOWhatsNextView::createEventViewer()
@@ -192,12 +197,16 @@ void KOWhatsNextView::createEventViewer()
 // TODO: Create this function in CalendarView and remove it from here
 void KOWhatsNextView::showIncidence(const QString &uid)
 {
-  if (uid.startsWith("event:")) {
-    Event *event = calendar()->getEvent(uid.mid(6));
+  kdDebug() << "KOWhatsNextView::showIncidence(): " << uid << endl;
+
+  if (uid.startsWith("event://")) {
+    Event *event = calendar()->getEvent(uid.mid(8));
+    if (!event) return;
     createEventViewer();
     mEventViewer->setEvent(event);
-  } else if (uid.startsWith("todo:")) {
-    Todo *todo = calendar()->getTodo(uid.mid(5));
+  } else if (uid.startsWith("todo://")) {
+    Todo *todo = calendar()->getTodo(uid.mid(7));
+    if (!todo) return;
     createEventViewer();
     mEventViewer->setTodo(todo);
   }
