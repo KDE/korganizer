@@ -91,7 +91,7 @@ void FreeBusyDownloadJob::slotData( KIO::Job *, const QByteArray &data )
 
 void FreeBusyDownloadJob::slotResult( KIO::Job *job )
 {
-  kdDebug() << "FreeBusyDownloadJob::slotResult() " << mEmail << endl;
+  kdDebug(5850) << "FreeBusyDownloadJob::slotResult() " << mEmail << endl;
 
   if( job->error() ) {
     kdDebug(5850) << "FreeBusyDownloadJob::slotResult() job error :-(" << endl;
@@ -274,7 +274,7 @@ void FreeBusyManager::publishFreeBusy()
     KURL src;
     src.setPath( tempFile.name() );
 
-    kdDebug() << "FreeBusyManager::publishFreeBusy(): " << targetURL << endl;
+    kdDebug(5850) << "FreeBusyManager::publishFreeBusy(): " << targetURL << endl;
 
     KIO::Job * job = KIO::file_copy( src, targetURL, -1,
                                      true /*overwrite*/,
@@ -306,11 +306,11 @@ void FreeBusyManager::slotUploadFreeBusyResult(KIO::Job *_job)
 
 bool FreeBusyManager::retrieveFreeBusy( const QString &email )
 {
-  kdDebug() << "FreeBusyManager::retrieveFreeBusy(): " << email << endl;
+  kdDebug(5850) << "FreeBusyManager::retrieveFreeBusy(): " << email << endl;
 
   if( KOPrefs::instance()->thatIsMe( email ) ) {
     // Don't download our own free-busy list from the net
-    kdDebug() << "freebusy of owner" << endl;
+    kdDebug(5850) << "freebusy of owner" << endl;
     emit freeBusyRetrieved( ownerFreeBusy(), email );
     return true;
   }
@@ -341,7 +341,7 @@ bool FreeBusyManager::processRetrieveQueue()
 
   KURL sourceURL = freeBusyUrl( email );
 
-  kdDebug() << "FreeBusyManager::retrieveFreeBusy(): url: " << sourceURL.url()
+  kdDebug(5850) << "FreeBusyManager::retrieveFreeBusy(): url: " << sourceURL.url()
             << endl;
 
   if ( !sourceURL.isValid() ) {
@@ -411,12 +411,12 @@ KURL FreeBusyManager::freeBusyUrl( const QString &email )
 
 KCal::FreeBusy *FreeBusyManager::iCalToFreeBusy( const QCString &data )
 {
-  kdDebug() << "FreeBusyManager::iCalToFreeBusy()" << endl;
+  kdDebug(5850) << "FreeBusyManager::iCalToFreeBusy()" << endl;
 
   QString freeBusyVCal = QString::fromUtf8( data );
   KCal::FreeBusy *fb = mFormat.parseFreeBusy( freeBusyVCal );
   if ( !fb ) {
-    kdDebug() << "FreeBusyManager::iCalToFreeBusy(): Error parsing free/busy"
+    kdDebug(5850) << "FreeBusyManager::iCalToFreeBusy(): Error parsing free/busy"
               << endl;
   } else {
     saveFreeBusy( fb, fb->organizer() );
@@ -431,19 +431,19 @@ QString FreeBusyManager::freeBusyDir()
 
 FreeBusy *FreeBusyManager::loadFreeBusy( const QString &email )
 {
-  kdDebug() << "FreeBusyManager::loadFreeBusy(): " << email << endl;
+  kdDebug(5850) << "FreeBusyManager::loadFreeBusy(): " << email << endl;
 
   QString fbd = freeBusyDir();
 
   QFile f( fbd + "/" + email + ".ifb" );
   if ( !f.exists() ) {
-    kdDebug() << "FreeBusyManager::loadFreeBusy() " << f.name()
+    kdDebug(5850) << "FreeBusyManager::loadFreeBusy() " << f.name()
               << " doesn't exist." << endl;
     return 0;
   }
 
   if ( !f.open( IO_ReadOnly ) ) {
-    kdDebug() << "FreeBusyManager::loadFreeBusy() Unable to open file "
+    kdDebug(5850) << "FreeBusyManager::loadFreeBusy() Unable to open file "
               << f.name() << endl;
     return 0;
   }
@@ -456,17 +456,17 @@ FreeBusy *FreeBusyManager::loadFreeBusy( const QString &email )
 
 bool FreeBusyManager::saveFreeBusy( FreeBusy *freebusy, const QString &email )
 {
-  kdDebug() << "FreeBusyManager::saveFreeBusy(): " << email << endl;
+  kdDebug(5850) << "FreeBusyManager::saveFreeBusy(): " << email << endl;
 
   QString fbd = freeBusyDir();
 
   QDir freeBusyDirectory( fbd );
   if ( !freeBusyDirectory.exists() ) {
-    kdDebug() << "Directory " << fbd << " does not exist!" << endl;
-    kdDebug() << "Creating directory: " << fbd << endl;
+    kdDebug(5850) << "Directory " << fbd << " does not exist!" << endl;
+    kdDebug(5850) << "Creating directory: " << fbd << endl;
 
     if( !freeBusyDirectory.mkdir( fbd, true ) ) {
-      kdDebug() << "Could not create directory: " << fbd << endl;
+      kdDebug(5850) << "Could not create directory: " << fbd << endl;
       return false;
     }
   }
@@ -477,7 +477,7 @@ bool FreeBusyManager::saveFreeBusy( FreeBusy *freebusy, const QString &email )
   filename += ".ifb";
   QFile f( filename );
 
-  kdDebug() << "FreeBusyManager::saveFreeBusy(): filename: " << filename
+  kdDebug(5850) << "FreeBusyManager::saveFreeBusy(): filename: " << filename
             << endl;
 
   freebusy->clearAttendees();
@@ -487,7 +487,7 @@ bool FreeBusyManager::saveFreeBusy( FreeBusy *freebusy, const QString &email )
                                                        Scheduler::Publish );
 
   if ( !f.open( IO_ReadWrite ) ) {
-    kdDebug() << "acceptFreeBusy: Can't open:" << filename << " for writing"
+    kdDebug(5850) << "acceptFreeBusy: Can't open:" << filename << " for writing"
               << endl;
     return false;
   }

@@ -91,7 +91,7 @@ void DownloadDialog::clear()
   for(it = m_map.begin(); it != m_map.end(); it++)
   {
     QValueList<KListView*> *v = it.data();
-    kdDebug() << "clear listviews in " << v << endl;
+    kdDebug(5850) << "clear listviews in " << v << endl;
     if(v)
     {
       (*(v->at(0)))->clear();
@@ -113,7 +113,7 @@ void DownloadDialog::slotProviders(Provider::List *list)
 
   for(p = list->first(); p; p = list->next())
   {
-    kdDebug() << "++ provider ++ " << p->name() << endl;
+    kdDebug(5850) << "++ provider ++ " << p->name() << endl;
 
     if(!m_filter.isEmpty())
       loadProvider(p);
@@ -140,7 +140,7 @@ void DownloadDialog::addProvider(Provider *p)
     delete frame;
   }
 
-  kdDebug() << "addProvider()/begin" << endl;
+  kdDebug(5850) << "addProvider()/begin" << endl;
 
   KIO::NetAccess::download(p->icon(), tmp, this);
   frame = addPage(p->name(), p->name(), QPixmap(tmp));
@@ -218,7 +218,7 @@ void DownloadDialog::addProvider(Provider *p)
   m_buttons[frame] = vb;
   m_providers[frame] = p;
 
-  kdDebug() << "addProvider()/end; lvtmp_r = " << lvtmp_r << endl;
+  kdDebug(5850) << "addProvider()/end; lvtmp_r = " << lvtmp_r << endl;
 
   if(m_engine) slotPage(frame);
 
@@ -230,7 +230,7 @@ void DownloadDialog::slotResult(KIO::Job *job)
   QDomDocument dom;
   QDomElement knewstuff;
 
-  kdDebug() << "got data: " << m_data[job] << endl;
+  kdDebug(5850) << "got data: " << m_data[job] << endl;
 
   kapp->config()->setGroup("KNewStuffStatus");
 
@@ -241,12 +241,12 @@ void DownloadDialog::slotResult(KIO::Job *job)
   {
     QDomElement stuff = pn.toElement();
 
-    kdDebug() << "element: " << stuff.tagName() << endl;
+    kdDebug(5850) << "element: " << stuff.tagName() << endl;
 
     if(stuff.tagName() == "stuff")
     {
       Entry *entry = new Entry(stuff);
-      kdDebug() << "TYPE::" << entry->type() << " FILTER::" << m_filter << endl;
+      kdDebug(5850) << "TYPE::" << entry->type() << " FILTER::" << m_filter << endl;
       if(!entry->type().isEmpty())
       {
         if((!m_filter.isEmpty()) && (entry->type() != m_filter)) continue;
@@ -306,7 +306,7 @@ void DownloadDialog::addEntry(Entry *entry)
 
   m_entries.append(entry);
 
-  kdDebug() << "added entry " << entry->name() << endl;
+  kdDebug(5850) << "added entry " << entry->name() << endl;
 }
 
 void DownloadDialog::slotData(KIO::Job *job, const QByteArray &a)
@@ -358,7 +358,7 @@ void DownloadDialog::slotInstall()
   Entry *e = getEntry();
   if(!e) return;
 
-  kdDebug() << "download entry now" << endl;
+  kdDebug(5850) << "download entry now" << endl;
 
   if(m_engine)
   {
@@ -422,7 +422,7 @@ void DownloadDialog::slotInstalled(KIO::Job *job)
 
 void DownloadDialog::slotTab(int tab)
 {
-  kdDebug() << "switch tab to: " << tab << endl;
+  kdDebug(5850) << "switch tab to: " << tab << endl;
   m_curtab = tab;
 }
 
@@ -473,7 +473,7 @@ void DownloadDialog::slotPage(QWidget *w)
 {
   Provider *p;
 
-  kdDebug() << "changed widget!!!" << endl;
+  kdDebug(5850) << "changed widget!!!" << endl;
 
   if(m_map.find(w) == m_map.end()) return;
 
@@ -485,7 +485,7 @@ void DownloadDialog::slotPage(QWidget *w)
   p = m_providers[w];
   m_rt = m_rts[w];
 
-  kdDebug() << "valid change!!!; lv_r = " << lv_r << endl;
+  kdDebug(5850) << "valid change!!!; lv_r = " << lv_r << endl;
 
   if(m_engine) return;
 
@@ -495,7 +495,7 @@ void DownloadDialog::slotPage(QWidget *w)
   lv_d->clear();
   lv_l->clear();
 
-  kdDebug() << "-- fetch -- " << p->downloadUrl() << endl;
+  kdDebug(5850) << "-- fetch -- " << p->downloadUrl() << endl;
 
   loadProvider(p);
 }

@@ -165,21 +165,21 @@ void KOJournalView::changeIncidenceDisplay(Incidence *incidence, int action)
         break;
       case KOGlobals::INCIDENCEEDITED:
         /*
-				item = getItemForEvent(incidence);
+        item = getItemForEvent(incidence);
         if (item) {
           delete item;
           mUidDict.remove( incidence->uid() );
           addIncidence( incidence );
         }
-				*/
+        */
         break;
       case KOGlobals::INCIDENCEDELETED:
         /*
-				item = getItemForEvent(incidence);
+        item = getItemForEvent(incidence);
         if (item) {
           delete item;
         }
-				*/
+        */
         break;
       default:
         kdDebug(5850) << "KOListView::changeIncidenceDisplay(): Illegal action " << action << endl;

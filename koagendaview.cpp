@@ -1011,6 +1011,7 @@ void KOAgendaView::showIncidences( const Incidence::List & )
 void KOAgendaView::insertIncidence( Incidence *incidence, QDate curDate,
                                     int curCol )
 {
+  // @TODO: Use a visitor here, or some other method to get rid of the dynamic_cast's
   Event *event = dynamic_cast<Event *>( incidence );
   Todo  *todo  = dynamic_cast<Todo  *>( incidence );
 

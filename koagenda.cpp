@@ -429,7 +429,7 @@ bool KOAgenda::eventFilter_drag( QObject *object, QDropEvent *de )
 
 bool KOAgenda::eventFilter_key( QObject *, QKeyEvent *ke )
 {
-//  kdDebug() << "KOAgenda::eventFilter_key() " << ke->type() << endl;
+//  kdDebug(5850) << "KOAgenda::eventFilter_key() " << ke->type() << endl;
 
   // If Return is pressed bring up an editor for the current selected time span.
   if ( ke->key() == Key_Return ) {
@@ -492,11 +492,11 @@ void KOAgenda::emitNewEventForSelection()
 
 void KOAgenda::finishTypeAhead()
 {
-//  kdDebug() << "KOAgenda::finishTypeAhead()" << endl;
+//  kdDebug(5850) << "KOAgenda::finishTypeAhead()" << endl;
   if ( typeAheadReceiver() ) {
     for( QEvent *e = mTypeAheadEvents.first(); e;
          e = mTypeAheadEvents.next() ) {
-//      kdDebug() << "postEvent() " << int( typeAheadReceiver() ) << endl;
+//      kdDebug(5850) << "postEvent() " << int( typeAheadReceiver() ) << endl;
       QApplication::postEvent( typeAheadReceiver(), e );
     }
   }
@@ -705,8 +705,8 @@ KOAgenda::MouseActionType KOAgenda::isInResizeArea( bool horizontal,
   QPoint contpos = gridToContents( gridpos +
       QPoint( (KOGlobals::self()->reverseLayout())?1:0, 0 ) );
 
-//kdDebug()<<"contpos="<<contpos<<", pos="<<pos<<", gpos="<<gpos<<endl;
-//kdDebug()<<"clXLeft="<<clXLeft<<", clXRight="<<clXRight<<endl;
+//kdDebug(5850)<<"contpos="<<contpos<<", pos="<<pos<<", gpos="<<gpos<<endl;
+//kdDebug(5850)<<"clXLeft="<<clXLeft<<", clXRight="<<clXRight<<endl;
 
   if ( horizontal ) {
     int clXLeft = item->cellXLeft();
@@ -977,7 +977,6 @@ void KOAgenda::endItemAction()
             delete oldIncSaved;
             break; }
         case KMessageBox::No/*Future*/: { // All future occurences
-kdDebug()<<"Only future events"<<endl;
             // Dissociate this occurence: 
             // create clone of event, set relation to old event, set cloned event 
             // for mActionItem, add recurrence end date to old event, emit incidenceChanged 
@@ -1116,7 +1115,7 @@ void KOAgenda::adjustItemPosition( KOAgendaItem *item )
 
 void KOAgenda::placeAgendaItem( KOAgendaItem *item, double subCellWidth )
 {
-//  kdDebug() << "KOAgenda::placeAgendaItem(): " << item->incidence()->summary()
+//  kdDebug(5850) << "KOAgenda::placeAgendaItem(): " << item->incidence()->summary()
 //            << " subCellWidth: " << subCellWidth << endl;
 
   // "left" upper corner, no subcells yet, RTL layouts have right/left switched, widths are negative then

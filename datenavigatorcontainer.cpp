@@ -140,16 +140,16 @@ void DateNavigatorContainer::setBaseDates()
 void DateNavigatorContainer::resizeEvent( QResizeEvent * )
 {
 #if 0
-  kdDebug() << "DateNavigatorContainer::resizeEvent()" << endl;
-  kdDebug() << "  CURRENT SIZE: " << size() << endl;
-  kdDebug() << "  MINIMUM SIZEHINT: " << minimumSizeHint() << endl;
-  kdDebug() << "  SIZEHINT: " << sizeHint() << endl;
-  kdDebug() << "  MINIMUM SIZE: " << minimumSize() << endl;
+  kdDebug(5850) << "DateNavigatorContainer::resizeEvent()" << endl;
+  kdDebug(5850) << "  CURRENT SIZE: " << size() << endl;
+  kdDebug(5850) << "  MINIMUM SIZEHINT: " << minimumSizeHint() << endl;
+  kdDebug(5850) << "  SIZEHINT: " << sizeHint() << endl;
+  kdDebug(5850) << "  MINIMUM SIZE: " << minimumSize() << endl;
 #endif
 
   QSize minSize = mNavigatorView->minimumSizeHint();
 
-//  kdDebug() << "  NAVIGATORVIEW minimumSizeHint: " << minSize << endl;
+//  kdDebug(5850) << "  NAVIGATORVIEW minimumSizeHint: " << minSize << endl;
 
   int verticalCount = size().height() / minSize.height();
   int horizontalCount = size().width() / minSize.width();

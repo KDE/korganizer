@@ -98,12 +98,12 @@ class PrintCellItem : public KOrg::CellItem
       }
 
 #if 0
-      kdDebug() << "PrintCellItem::overlaps() " << event()->summary()
+      kdDebug(5855) << "PrintCellItem::overlaps() " << event()->summary()
                 << " <-> " << other->event()->summary() << endl;
-      kdDebug() << "  start     : " << start.toString() << endl;
-      kdDebug() << "  end       : " << end.toString() << endl;
-      kdDebug() << "  otherStart: " << otherStart.toString() << endl;
-      kdDebug() << "  otherEnd  : " << otherEnd.toString() << endl;
+      kdDebug(5855) << "  start     : " << start.toString() << endl;
+      kdDebug(5855) << "  end       : " << end.toString() << endl;
+      kdDebug(5855) << "  otherStart: " << otherStart.toString() << endl;
+      kdDebug(5855) << "  otherEnd  : " << otherEnd.toString() << endl;
 #endif
       
       return !( otherStart >= end || otherEnd <= start );

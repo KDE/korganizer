@@ -179,7 +179,7 @@ void KDateNavigator::updateDayMatrix()
 
 void KDateNavigator::updateView()
 {
-//  kdDebug() << "KDateNavigator::updateView()" << endl;
+//  kdDebug(5850) << "KDateNavigator::updateView()" << endl;
 
   setUpdatesEnabled( false );
 

@@ -78,7 +78,6 @@ void KOTodoEditor::init()
 
 void KOTodoEditor::reload()
 {
-kdDebug()<<"reloading todo"<<endl;
   if ( mTodo ) readTodo( mTodo );
 }
 
@@ -339,7 +338,7 @@ void KOTodoEditor::setDefaults( QDateTime due, Todo *relatedEvent, bool allDay )
 
 void KOTodoEditor::readTodo( Todo *todo )
 {
-  kdDebug()<<"read todo"<<endl;
+  kdDebug(5850)<<"read todo"<<endl;
   mGeneral->readTodo( todo );
   mDetails->readEvent( todo );
   mRecurrence->readIncidence( todo );

@@ -29,7 +29,7 @@
 AlarmClient::AlarmClient( QObject *o, const char *name )
   : QObject( o, name )
 {
-  kdDebug() << "AlarmClient::AlarmClient()" << endl;
+  kdDebug(5850) << "AlarmClient::AlarmClient()" << endl;
 }
 
 void AlarmClient::startDaemon()

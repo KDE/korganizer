@@ -111,7 +111,7 @@ KOrganizer::~KOrganizer()
 
 void KOrganizer::init( bool document )
 {
-  kdDebug() << "KOrganizer::init() "
+  kdDebug(5850) << "KOrganizer::init() "
             << ( document ? "hasDocument" : "resources" ) << endl;
 
   setHasDocument( document );
@@ -238,20 +238,6 @@ void KOrganizer::initActions()
 
   mStatusBarAction->setChecked( !statusBar()->isHidden() );
 }
-
-#if 0
-void KOrganizer::initViews()
-{
-  kdDebug(5850) << "KOrganizer::initViews()" << endl;
-
-  // @TODO: get calendar pointer from somewhere
-  KOrg::View::List views = KOCore::self()->views( this );
-  KOrg::View *it;
-  for( it = views.first(); it; it = views.next() ) {
-    guiFactory()->addClient( it );
-  }
-}
-#endif
 
 bool KOrganizer::queryClose()
 {

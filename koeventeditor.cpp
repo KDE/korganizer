@@ -96,7 +96,7 @@ void KOEventEditor::init()
 
 void KOEventEditor::reload()
 {
-  kdDebug() << "KOEventEditor::reload()" << endl;
+  kdDebug(5850) << "KOEventEditor::reload()" << endl;
 
   if ( mEvent ) readEvent( mEvent );
 }
@@ -324,7 +324,7 @@ bool KOEventEditor::processInput()
 
 void KOEventEditor::processCancel()
 {
-  kdDebug() << "KOEventEditor::processCancel()" << endl;
+  kdDebug(5850) << "KOEventEditor::processCancel()" << endl;
 
   if ( mEvent ) {
     emit editCanceled( mEvent );

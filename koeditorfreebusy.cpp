@@ -362,7 +362,7 @@ void KOEditorFreeBusy::updateFreeBusyData( Attendee *attendee )
 void KOEditorFreeBusy::slotInsertFreeBusy( KCal::FreeBusy *fb,
                                            const QString &email )
 {
-  kdDebug() << "KOEditorFreeBusy::slotInsertFreeBusy() " << email << endl;
+  kdDebug(5850) << "KOEditorFreeBusy::slotInsertFreeBusy() " << email << endl;
 
   if( fb )
     fb->sortList();
@@ -574,7 +574,7 @@ void KOEditorFreeBusy::cancelReload()
 
 void KOEditorFreeBusy::reload()
 {
-  kdDebug() << "KOEditorFreeBusy::reload()" << endl;
+  kdDebug(5850) << "KOEditorFreeBusy::reload()" << endl;
 
   FreeBusyItem *item = static_cast<FreeBusyItem *>( mGanttView->firstChild() );
   while( item ) {

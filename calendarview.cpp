@@ -798,7 +798,7 @@ void CalendarView::edit_options()
 
 void CalendarView::newEvent()
 {
-  kdDebug() << "CalendarView::newEvent()" << endl;
+  kdDebug(5850) << "CalendarView::newEvent()" << endl;
   QDate date = mNavigator->selectedDates().first();
   QTime startTime = KOPrefs::instance()->mStartTime.time();
   QDateTime startDt( date, startTime );
@@ -893,7 +893,7 @@ void CalendarView::newTodo( const QString &summary, const QString &description,
 
 void CalendarView::newTodo()
 {
-  kdDebug() << "CalendarView::newTodo()" << endl;
+  kdDebug(5850) << "CalendarView::newTodo()" << endl;
   QDateTime dtDue;
   bool allday = true;
   KOTodoEditor *todoEditor = mDialogManager->getTodoEditor();

@@ -201,7 +201,6 @@ void KOPrefs::usrReadConfig()
   if( mRememberRetrievePw )
     mRetrievePassword = KStringHandler::obscure( config()->readEntry( "Retrieve Server Password" ) );
 #endif
-kdDebug()<<"KOPrefs::usrReadConfig()"<<endl;
   KPimPrefs::usrReadConfig();
 }
 

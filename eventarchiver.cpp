@@ -173,9 +173,6 @@ void EventArchiver::archiveIncidences( Calendar* calendar, const QDate& limitDat
   for( it = allIncidences.begin(); it != allIncidences.end(); ++it ) {
     if ( !uids.contains( (*it)->uid() ) ) {
       archiveCalendar.deleteIncidence( *it );
-kdDebug()<<"Incidence \""<<(*it)->summary().latin1()<<"\" is NOT to be archived...."<<endl;
-    } else {
-kdDebug()<<"Incidence \""<<(*it)->summary().latin1()<<"\" is to be archived...."<<endl;
     }
   }
 

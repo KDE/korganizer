@@ -45,7 +45,7 @@ bool UriHandler::process( const QString &uri )
     if ( pos > 8 ) {
       QString messageId = uri.mid( 8, pos - 8 );
       Q_UINT32 serialNumber = messageId.toUInt();
-      kdDebug() << "SERIALNUMBERSTR: " << serialNumber << " MESSAGEID: "
+      kdDebug(5850) << "SERIALNUMBERSTR: " << serialNumber << " MESSAGEID: "
                 << messageId << endl;
       KMailIface_stub kmailIface( "kmail", "KMailIface" );
       kmailIface.showMail( serialNumber, messageId );
