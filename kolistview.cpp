@@ -184,6 +184,8 @@ bool KOListView::ListItemVisitor::visit(Journal *t)
   mItem->setText( 0, t->description().section( "\n", 0, 0 ) );
   mItem->setText( 3, t->dtStartDateStr() );
 
+  mItem->setSortKey( 3, t->dtStart().toString(Qt::ISODate) );
+
   return true;
 }
 
