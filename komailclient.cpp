@@ -183,8 +183,17 @@ bool KOMailClient::send(const QString &from,const QString &to,
     if (attachment.isEmpty()) {
       if (!kMailOpenComposer(to,"",from,subject,body,0,KURL())) return false;
     } else {
+      QString meth;
+      int idx = attachment.find("METHOD");
+      if (idx>=0) {
+        idx = attachment.find(':',idx)+1;
+        meth = attachment.mid(idx,attachment.find('\n',idx)-idx);
+	meth = meth.lower();
+      } else {
+        meth = "publish";
+      }
       if (!kMailOpenComposer(to,"",from,subject,body,0,"cal.ics","7bit",
-                             attachment.utf8(),"text","calendar","method","publish",
+                             attachment.utf8(),"text","calendar","method",meth,
                              "attachment")) return false;
     }
   }
