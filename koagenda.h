@@ -86,7 +86,7 @@ class KOAgenda : public QScrollView
 
     void setStartTime( QTime startHour );
 
-    KOAgendaItem *insertItem ( Incidence *event, QDate qd, int X, int YTop,
+    KOAgendaItem *insertItem ( Incidence *incidence, QDate qd, int X, int YTop,
                                int YBottom );
     KOAgendaItem *insertAllDayItem ( Incidence *event, QDate qd, int XBegin,
                                      int XEnd );

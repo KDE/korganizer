@@ -187,7 +187,7 @@ class BaseView : public QWidget
       Clear selection. The incidenceSelected signal is not emitted.
     */
     virtual void clearSelection() {}
-    
+
     /**
       Set the default start/end date/time for new events. Return true if anything was changed
     */
@@ -201,9 +201,9 @@ class BaseView : public QWidget
      */
     void showIncidenceSignal(Incidence *);
 
-    /**   
+    /**
      * instructs the receiver to begin editing the incidence specified in
-     * some manner.  Doesn't make sense to connect to more than one 
+     * some manner.  Doesn't make sense to connect to more than one
      * receiver.
      */
     void editIncidenceSignal(Incidence *);
@@ -214,12 +214,13 @@ class BaseView : public QWidget
      * box, etc.  Doesn't make sense to connect to more than one receiver.
      */
     void deleteIncidenceSignal(Incidence *);
-    
+
     void incidenceAdded( Incidence* );
     void incidenceChanged( Incidence*, Incidence*, int );
     void incidenceChanged( Incidence*, Incidence* );
     void incidenceDeleted( Incidence* );
     void incidenceToBeDeleted( Incidence* );
+    void updateTodoView();
 
 
     /**
@@ -243,10 +244,10 @@ class BaseView : public QWidget
      * than one receiver.
      */
     void newEventSignal(QDateTime, QDateTime);
-  
+
     void newTodoSignal( QDate );
     void newSubTodoSignal( Todo * );
-    
+
   private:
     Calendar *mCalendar;
 };

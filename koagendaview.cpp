@@ -179,7 +179,7 @@ void TimeLabels::updateConfig()
   mCellHeight = KOPrefs::instance()->mHourSize*4;
   if (mCellHeight>mAgenda->gridSpacingY())
     mCellHeight=(int)(4*mAgenda->gridSpacingY());
-	// FIXME: Why the heck do we set the width to 50???
+        // FIXME: Why the heck do we set the width to 50???
   resizeContents(50,mRows * mCellHeight);
 }
 
@@ -773,6 +773,7 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
       (static_cast<Event*>( incidence ) )->setDtEnd( endDt );
     } else if ( i->type() == "Todo" ) {
       (static_cast<Todo*>( incidence ) )->setDtDue( endDt );
+      emit updateTodoView();
     }
     incidence->setRevision( i->revision() );
     item->setItemDate( startDt.date() );
@@ -813,8 +814,11 @@ void KOAgendaView::showIncidences( const Incidence::List & )
   kdDebug(5850) << "KOAgendaView::showIncidences( const Incidence::List & ) is not yet implemented" << endl;
 }
 
-void KOAgendaView::insertEvent( Event *event, QDate curDate, int curCol )
+void KOAgendaView::insertIncidence( Incidence *incidence, QDate curDate, int curCol )
 {
+  Event *event = dynamic_cast<Event *>(incidence);
+  Todo  *todo  = dynamic_cast<Todo  *>(incidence);
+
   if ( curCol < 0 ) {
     curCol = mSelectedDates.findIndex( curDate );
   }
@@ -822,20 +826,24 @@ void KOAgendaView::insertEvent( Event *event, QDate curDate, int curCol )
   if ( curCol < 0 || curCol > int( mSelectedDates.size() ) )
     return;
 
-  int beginX = curDate.daysTo( event->dtStart().date() ) + curCol;
-  int endX = curDate.daysTo( event->dtEnd().date() ) + curCol;
+  int beginX = curDate.daysTo( incidence->dtStart().date() ) + curCol;
+  int endX;
+  if ( event )
+    endX = curDate.daysTo( event->dtEnd().date() ) + curCol;
+  if ( todo )
+    endX = curDate.daysTo( todo->dtDue().date() ) + curCol;
 
-  if ( event->doesFloat() ) {
-    if ( event->recurrence()->doesRecur() ) {
-      mAllDayAgenda->insertAllDayItem( event, curDate, curCol, curCol );
+  if ( incidence->doesFloat() ) {
+    if ( incidence->recurrence()->doesRecur() ) {
+      mAllDayAgenda->insertAllDayItem( incidence, curDate, curCol, curCol );
     } else {
       if ( beginX <= 0 && curCol == 0 ) {
-        mAllDayAgenda->insertAllDayItem( event, curDate, beginX, endX );
+        mAllDayAgenda->insertAllDayItem( incidence, curDate, beginX, endX );
       } else if (beginX == curCol) {
-        mAllDayAgenda->insertAllDayItem( event, curDate, beginX, endX );
+        mAllDayAgenda->insertAllDayItem( incidence, curDate, beginX, endX );
       }
     }
-  } else if ( event->isMultiDay() ) {
+  } else if ( event && event->isMultiDay() ) {
     int startY = mAgenda->timeToY( event->dtStart().time() );
     int endY = mAgenda->timeToY( event->dtEnd().time() ) - 1;
     if ( (beginX <= 0 && curCol == 0) || beginX == curCol ) {
@@ -852,10 +860,14 @@ void KOAgendaView::insertEvent( Event *event, QDate curDate, int curCol )
       mMaxY[curCol] = mAgenda->timeToY( QTime(23,59) );
     }
   } else {
-    int startY = mAgenda->timeToY( event->dtStart().time() );
-    int endY = mAgenda->timeToY( event->dtEnd().time() ) - 1;
+    int startY = mAgenda->timeToY( incidence->dtStart().time() );
+    int endY;
+    if ( event )
+      endY = mAgenda->timeToY( event->dtEnd().time() ) - 1;
+    if ( todo )
+      endY = mAgenda->timeToY( todo->dtDue().time() ) - 1;
     if ( endY < startY ) endY = startY;
-    mAgenda->insertItem( event, curDate, curCol, startY, endY );
+    mAgenda->insertItem( incidence, curDate, curCol, startY, endY );
     if ( startY < mMinY[curCol] ) mMinY[curCol] = startY;
     if ( endY > mMaxY[curCol] ) mMaxY[curCol] = endY;
   }
@@ -863,31 +875,37 @@ void KOAgendaView::insertEvent( Event *event, QDate curDate, int curCol )
 
 void KOAgendaView::changeIncidenceDisplayAdded( Incidence *incidence )
 {
-  // TODO: the agenda view also displays Todos, so check for them, too!!!
-  Event *event = dynamic_cast<Event *>(incidence);
-  if (!event) return;
+  if ( !calendar()->filter()->filterIncidence( incidence ) )
+    return;
 
-  if ( !calendar()->filter()->filterIncidence( event ) ) return;
+  QDate f = mSelectedDates.first();
+  QDate l = mSelectedDates.last();
+  QDate startDt = incidence->dtStart().date();
 
-  if ( !event->doesRecur() ) {
-    // find a suitable date
-    QDate f = mSelectedDates.first();
-    QDate l = mSelectedDates.last();
-    QDate startDt = event->dtStart().date();
-    QDate endDt = event->dtEnd().date();
-    if ( startDt <= l ) {
-      if ( startDt >= f ) {
-        insertEvent( event, startDt );
-      } else if ( endDt >= f ) {
-        insertEvent( event, endDt );
-      }
-    }
-  } else {
+
+  if ( incidence->doesRecur() ) {
     DateList::ConstIterator dit;
     QDate curDate;
     for( dit = mSelectedDates.begin(); dit != mSelectedDates.end(); ++dit ) {
       curDate = *dit;
-      if ( event->recursOn( curDate ) ) insertEvent( event, curDate );
+      if ( incidence->recursOn( curDate ) ) {
+        insertIncidence( incidence, curDate );
+      }
+    }
+    return;
+  }
+
+  QDate endDt;
+  if ( incidence->type() == "Event" )
+    endDt = (dynamic_cast<Event *>(incidence))->dtEnd().date();
+  if ( incidence->type() == "Todo" )
+    endDt = (dynamic_cast<Todo *>(incidence))->dtDue().date();
+
+  if ( startDt <= l ) {
+    if ( startDt >= f ) {
+      insertIncidence( incidence, startDt );
+    } else if ( endDt >= f ) {
+      insertIncidence( incidence, endDt );
     }
   }
 }
@@ -968,7 +986,7 @@ void KOAgendaView::fillAgenda()
     for(numEvent=0;numEvent<dayEvents.count();++numEvent) {
       Event *event = *dayEvents.at(numEvent);
 //      kdDebug(5850) << " Event: " << event->summary() << endl;
-      insertEvent( event, currentDate, curCol );
+      insertIncidence( event, currentDate, curCol );
     }
 //    if (numEvent == 0) kdDebug(5850) << " No events" << endl;
 
@@ -1195,7 +1213,7 @@ void KOAgendaView::setHolidayMasks()
   // overnight working hours) in the last bit of the mask:
   bool showDay = !KOCore::self()->isWorkDay( mSelectedDates[ 0 ].addDays( -1 ) );
   mHolidayMask[ mSelectedDates.count() ] = showDay;
-  
+
   mAgenda->setHolidayMask( &mHolidayMask );
   mAllDayAgenda->setHolidayMask( &mHolidayMask );
 }

@@ -255,6 +255,8 @@ CalendarView::CalendarView( QWidget *parent, const char *name )
   connect( this, SIGNAL( configChanged() ),
            mDateNavigator, SLOT( updateConfig() ) );
 
+  connect( mViewManager, SIGNAL( updateTodoView() ),
+           mTodoList, SLOT( updateView() ) );
   mViewManager->connectTodoView( mTodoList );
   mViewManager->connectView( mTodoList );
 

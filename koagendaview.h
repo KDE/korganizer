@@ -149,7 +149,7 @@ class KOAgendaView : public KOEventView
 
     /** returns the currently selected events */
     virtual DateList selectedDates();
-    
+
     /** return the default start/end date/time for new events   */
     virtual bool eventDurationHint(QDateTime &startDt, QDateTime &endDt, bool &allDay);
 
@@ -180,7 +180,7 @@ class KOAgendaView : public KOEventView
     virtual void showDates( const QDate &start, const QDate &end );
     virtual void showIncidences( const Incidence::List & );
 
-    void insertEvent( Event *event, QDate curDate, int curCol = -1 );
+    void insertIncidence( Incidence *incidence, QDate curDate, int curCol = -1 );
     void changeIncidenceDisplayAdded( Incidence *incidence );
     void changeIncidenceDisplay( Incidence *incidence, int mode );
 
@@ -214,7 +214,7 @@ class KOAgendaView : public KOEventView
 
     /** Fill agenda using the current set value for the start date */
     void fillAgenda();
-    
+
     void connectAgenda( KOAgenda*agenda, QPopupMenu*popup, KOAgenda* otherAgenda );
 
     /** Create labels for the selected dates. */

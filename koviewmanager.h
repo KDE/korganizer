@@ -97,6 +97,8 @@ class KOViewManager : public QObject
 
     void connectTodoView( KOTodoView *todoView );
 
+  signals:
+    void updateTodoView();
   private:
     CalendarView *mMainView;
 

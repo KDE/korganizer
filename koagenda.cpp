@@ -1283,7 +1283,7 @@ void KOAgenda::setStartTime( QTime startHour )
 /*
   Insert KOAgendaItem into agenda.
 */
-KOAgendaItem *KOAgenda::insertItem( Incidence *event, QDate qd, int X, int YTop,
+KOAgendaItem *KOAgenda::insertItem( Incidence *incidence, QDate qd, int X, int YTop,
                                     int YBottom )
 {
 #if 0
@@ -1298,7 +1298,7 @@ KOAgendaItem *KOAgenda::insertItem( Incidence *event, QDate qd, int X, int YTop,
   }
   mActionType = NOP;
 
-  KOAgendaItem *agendaItem = new KOAgendaItem( event, qd, viewport() );
+  KOAgendaItem *agendaItem = new KOAgendaItem( incidence, qd, viewport() );
   connect( agendaItem, SIGNAL( removeAgendaItem( KOAgendaItem * ) ),
            SLOT( removeAgendaItem( KOAgendaItem * ) ) );
   connect( agendaItem, SIGNAL( showAgendaItem( KOAgendaItem * ) ),
