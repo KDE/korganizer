@@ -1,8 +1,10 @@
 [Desktop Entry]
 Encoding=UTF-8
 X-KDE-Library=libkorg_exchange
-Name=Exchange plugin for Calendars
-Name[de]=Exchange Server-Plugin für Kalender
-Name[nl]=Exchange server-plugin voor kalenders
+Name=Microsoft Exchange 2000 plugin for KOrganizer
+Name[fi]=EXchange sovelma kalentereille
+Name[he]=תוסף Exchange ללוחות שנה
+Name[sv]=Exchange-insticksprogram för kalendrar
+Name[th]=แลกเปลี่ยนปลั๊กอินสำหรับปฏิทิน
 Type=Service
 ServiceTypes=KOrganizer/Part

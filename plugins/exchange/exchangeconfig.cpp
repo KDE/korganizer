@@ -22,36 +22,42 @@
 #include <qcombobox.h>
 
 #include <klocale.h>
+#include <kdebug.h>
 #include <kmessagebox.h>
-#include <kapplication.h>
-#include <kglobal.h>
-#include <kconfig.h>
-#include <kstandarddirs.h>
-#include <ksimpleconfig.h>
+
+#include <exchangeaccount.h>
 
 #include "exchangeconfig.h"
 
-ExchangeConfig::ExchangeConfig( QWidget* parent )
+ExchangeConfig::ExchangeConfig( KPIM::ExchangeAccount* account, QWidget* parent )
   : KDialogBase(Plain,i18n("Exchange Plugin"),Ok|Cancel,Ok,parent)
 {
-  QFrame *topFrame = plainPage();
-  QGridLayout *topLayout = new QGridLayout( topFrame, 2, 2, 3 );
+  mAccount = account;
 
-  m_host = new KLineEdit( "", topFrame );
+  kdDebug() << "Creating ExchangeConfig with account: " << 
+      account->host() << ":" << account->account() << " (" << account->password() << ")" << endl;
+
+  QFrame *topFrame = plainPage();
+  QGridLayout *topLayout = new QGridLayout( topFrame, 3, 2, 3 );
+
+  m_host = new KLineEdit( mAccount->host(), topFrame );
   topLayout->addWidget( new QLabel( i18n( "Exchange server" ), topFrame ), 0, 0 );
   topLayout->addWidget( m_host, 0, 1 );
 
-  m_user = new KLineEdit( "", topFrame );
+  m_user = new KLineEdit( mAccount->account(), topFrame );
   topLayout->addWidget( new QLabel( i18n( "User" ), topFrame ), 1, 0 );
   topLayout->addWidget( m_user, 1, 1 );
 
-  load();
+  m_password = new KPasswordEdit( topFrame );
+  topLayout->addWidget( new QLabel( i18n( "Password" ), topFrame ), 2, 0 );
+  topLayout->addWidget( m_password, 2, 1 );
+
 }
 
 ExchangeConfig::~ExchangeConfig()
 {
 }
-
+/*
 void ExchangeConfig::load()
 {
   kapp->config()->setGroup("Calendar/Exchange Plugin");
@@ -74,10 +80,14 @@ void ExchangeConfig::save()
   kapp->config()->writeEntry( "user", m_user->text() );
   kapp->config()->sync();
 }
+*/
 
 void ExchangeConfig::slotOk()
 {
-  save();
+  mAccount->setHost( m_host->text() );
+  mAccount->setAccount( m_user->text() );
+  mAccount->setPassword( m_password->password() );
+  //save();
 
   accept();
 }

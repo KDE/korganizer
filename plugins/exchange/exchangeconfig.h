@@ -21,25 +21,30 @@
 
 #include <kdialogbase.h>
 #include <klineedit.h>
+#include <kpassdlg.h>
+
+#include <exchangeaccount.h>
 
 class ExchangeConfig : public KDialogBase
 {
     Q_OBJECT
   public:
-    ExchangeConfig(QWidget *parent=0);
+    ExchangeConfig(KPIM::ExchangeAccount* account, QWidget *parent=0);
     virtual ~ExchangeConfig();
 
-  protected:
-    void load();
-    void save();
+//  protected:
+//    void load();
+//    void save();
 
   protected slots:
     void slotOk();
 
   private:
   public:
+    KPIM::ExchangeAccount* mAccount;
     KLineEdit *m_host;
     KLineEdit *m_user;
+    KPasswordEdit *m_password;
 };
 
 #endif

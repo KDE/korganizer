@@ -20,25 +20,13 @@
 #define KORG_EXCHANGE_H
 
 #include <qstring.h>
-#include <kio/job.h>
 
-#include <calendar/plugin.h>
 #include <korganizer/part.h>
 
-// #include <klocale.h>
-// #include <klibloader.h>
-// #include <kfileitem.h>
-// #include <kdirlister.h>
-// #include <mimelib/string.h>
-
-// #include <mimelib/entity.h>
 #include <libkcal/event.h>
-#include <libkcal/icalformat.h>
-#include <libkcal/incidence.h>
 
-class DwString;
-class DwEntity;
-class ExchangeProgress;
+#include <exchangeaccount.h>
+#include <exchangeclient.h>
 
 // using namespace KOrg;
 
@@ -55,49 +43,13 @@ class Exchange : public KOrg::Part {
     void upload();
     void configure();
     void test();
-    void slotPatchResult( KIO::Job * );
-    void slotPropFindResult( KIO::Job * );
-    void slotComplete( ExchangeProgress * );
-    // void slotDataReq( KIO::Job *, QByteArray& data );
- 
-    // void slotNewItems(const KFileItemList&);
-    void slotSearchEntries( KIO::Job *, const KIO::UDSEntryList& ); 
-    void slotSearchResult( KIO::Job *job );
-    void slotMasterResult( KIO::Job* job );
-    void slotData( KIO::Job *job, const QByteArray &data );
-    void slotTransferResult( KIO::Job *job );
-    void slotMasterEntries( KIO::Job *, const KIO::UDSEntryList& );
-    void slotFindUidResult( KIO::Job * );
-    void slotTestResult( KIO::Job * );
 
-  signals:
-    void startDownload();
-    void finishDownload();
-
-  protected:
-    KURL getBaseURL();
-    KURL getCalendarURL();
-    
   private:
     void test2();
-    void tryExist();
-    void handleEntries( const KIO::UDSEntryList &, bool recurrence );
-    void handleAppointments( const QDomDocument &, bool recurrence );
-    void handleRecurrence( QString uid );
-    void handlePart( DwEntity *part );
-    void startUpload( const KURL& url );
-    void findUid( QString const& uid );
-    
-    KURL baseURL;
-    KCal::Calendar *calendar;
 
-    KCal::Incidence* m_currentUpload;
-    int m_currentUploadNumber;
-
-    QMap<QString,int> m_uids; // This keeps trakc of uids we already covered. Especially useful for
-    	// recurring events.
-    QMap<QString,DwString *> m_transferJobs; // keys are URLs
-    QString putData;
+    KPIM::ExchangeClient *mClient;
+    KPIM::ExchangeAccount* mAccount;
 };
 
 #endif
+
