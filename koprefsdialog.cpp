@@ -185,10 +185,11 @@ void KOPrefsDialog::setupTimeTab()
   topLayout->setSpacing(spacingHint());
   topLayout->setMargin(marginHint());
 
+  QHBox *timeZoneBox = new QHBox( topFrame );
+  topLayout->addMultiCellWidget( timeZoneBox, 0, 0, 0, 1 );
 
-  topLayout->addWidget(new QLabel(i18n("TimeZone:"),topFrame),0,0);
-  mTimeZoneCombo = new QComboBox(topFrame);
-  topLayout->addWidget(mTimeZoneCombo,0,1);
+  new QLabel( i18n("TimeZone:"), timeZoneBox );
+  mTimeZoneCombo = new QComboBox( timeZoneBox );
 
   FILE *f;
   char tempstring[101] = "Unknown";
