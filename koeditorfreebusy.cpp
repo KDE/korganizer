@@ -317,8 +317,7 @@ void KOEditorFreeBusy::readEvent( Event *event )
 
 void KOEditorFreeBusy::setDateTimes( QDateTime start, QDateTime end )
 {
-  mDtStart = start;
-  mDtEnd = end;
+ 
   slotUpdateGanttView( start, end );
 }
 
@@ -380,7 +379,9 @@ void KOEditorFreeBusy::slotInsertFreeBusy( KCal::FreeBusy *fb,
 */
 
 void KOEditorFreeBusy::slotUpdateGanttView( QDateTime dtFrom, QDateTime dtTo )
-{
+{ 
+  mDtStart = dtFrom;
+  mDtEnd = dtTo;
   bool block = mGanttView->getUpdateEnabled( );
   mGanttView->setUpdateEnabled( false );
   QDateTime horizonStart = QDateTime( dtFrom.addDays( -15 ).date() );
