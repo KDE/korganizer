@@ -218,9 +218,11 @@ void CalPrinter::printDay(const QDate &fd, const QDate &td)
   mSubHeaderHeight = 20;
 
   do {
-    drawHeader(p, curDay,toDay,curDay,
-	       pageWidth, mHeaderHeight, Day);
-    drawDay(p, curDay, pageWidth, pageHeight);
+    KLocale*local=KGlobal::locale();
+    drawHeader(p, local->formatDate(curDay,false),
+               curDay, QDate(),
+               pageWidth, mHeaderHeight);
+//    drawDay(p, curDay, pageWidth, pageHeight);
     curDay = curDay.addDays(1);
     if (curDay <= toDay)
       mPrinter->newPage();
@@ -262,10 +264,15 @@ void CalPrinter::printWeek(const QDate &fd, const QDate &td)
 
   curWeek = fromWeek.addDays(6);
   do {
-     drawHeader(p, curWeek.addDays(-6), curWeek,
-	       curWeek,
-	       pageWidth, mHeaderHeight, Week);
-    drawWeek(p, curWeek, pageWidth, pageHeight);
+    KLocale*local=KGlobal::locale();
+    QString line1( local->formatDate(curWeek.addDays(-6)) );
+    QString line2( local->formatDate(curWeek) );
+
+    line1+="\n";
+    line1+=line2;
+    drawHeader( p, line1, curWeek.addDays(-6), QDate(),
+                pageWidth, mHeaderHeight );
+    drawWeek(p, curWeek, pageWidth, pageHeight );
     curWeek = curWeek.addDays(7);
     if (curWeek <= toWeek)
       mPrinter->newPage();
@@ -298,9 +305,14 @@ void CalPrinter::printMonth(const QDate &fd, const QDate &td)
 
   curMonth = fromMonth;
   do {
-    drawHeader(p, fromMonth,
-	       toMonth, curMonth,
-	       pageWidth, mHeaderHeight, Month);
+    KLocale*local=KGlobal::locale();
+    QString title(i18n("monthname year", "%1 %2"));
+    title=title.arg( local->monthName(curMonth.month()) )
+          .arg( curMonth.year() );
+
+    drawHeader(p, title,
+         curMonth.addMonths(-1), curMonth.addMonths(1),
+         pageWidth, mHeaderHeight);
     drawDaysOfWeek(p, curMonth, pageWidth, pageHeight);
     drawMonth(p, curMonth, pageWidth, pageHeight);
     curMonth = curMonth.addDays(curMonth.daysInMonth());
@@ -344,9 +356,6 @@ void CalPrinter::printTimeTable(const QDate &fd, const QDate &td)
 
   curWeek = fromWeek.addDays(6);
   do {
-     //drawHeader(p, curWeek.addDays(-6), curWeek,
-//	       curWeek,
-	//       pageWidth, mHeaderHeight, TimeTable);
     drawTimeTable(p, curWeek, pageWidth, pageHeight);
     curWeek = curWeek.addDays(7);
     if (curWeek <= toWeek)
@@ -365,8 +374,8 @@ void CalPrinter::printTodo(const QDate &fd, const QDate &td)
 
   p.begin(mPrinter);
   int pageWidth = p.viewport().width();
-  int pageHeight = p.viewport().height();
-  mHeaderHeight = pageHeight/7 - 20;
+//  int pageHeight = p.viewport().height();
+  mHeaderHeight = 72;//pageHeight/7 - 20;
 
   int pospriority = 10;
   int possummary = 60;
@@ -374,7 +383,8 @@ void CalPrinter::printTodo(const QDate &fd, const QDate &td)
   int lineSpacing = 15;
   int fontHeight = 10;
 
-  drawHeader(p, fd, td, fd, pageWidth, mHeaderHeight, Todolist);
+  drawHeader( p, i18n("To-do items:"), fd, QDate(),
+              pageWidth, mHeaderHeight );
 
   mCurrentLinePos = mHeaderHeight + 5;
   kdDebug(5850) << "Header Height: " << mCurrentLinePos << endl;
@@ -383,21 +393,22 @@ void CalPrinter::printTodo(const QDate &fd, const QDate &td)
 
   p.setFont(QFont("helvetica", 10));
   lineSpacing = p.fontMetrics().lineSpacing();
+  mCurrentLinePos+=lineSpacing;
   // draw the headers
   p.setFont(QFont("helvetica", 10, QFont::Bold));
   outStr += i18n("Priority");
 
-  p.drawText(pospriority, mHeaderHeight - 2,
+  p.drawText(pospriority, mCurrentLinePos - 2,
 	     outStr);
   outStr.truncate(0);
   outStr += i18n("Summary");
 
-  p.drawText(possummary, mHeaderHeight - 2,
+  p.drawText(possummary, mCurrentLinePos - 2,
 		 outStr);
   outStr.truncate(0);
   outStr += i18n("Due");
 
-  p.drawText(posdue,  mHeaderHeight - 2,
+  p.drawText(posdue,  mCurrentLinePos - 2,
 		 outStr);
   p.setFont(QFont("helvetica", 10));
 
@@ -435,8 +446,8 @@ void CalPrinter::printTodo(const QDate &fd, const QDate &td)
   p.end();
 }
 
-void CalPrinter::drawTodo(int count, Todo * item, QPainter &p, bool &connect,
-			  int level, QRect *r)
+void CalPrinter::drawTodo( int count, Todo * item, QPainter &p, bool &connect,
+                           int level, QRect *r )
 {
   QString outStr;
   KLocale *local = KGlobal::locale();
@@ -542,78 +553,40 @@ void CalPrinter::drawTodo(int count, Todo * item, QPainter &p, bool &connect,
 
 ///////////////////////////////////////////////////////////////////////////////
 
-void CalPrinter::drawHeader(QPainter &p, const QDate &fd, const QDate &td,
-			    const QDate &cd,
-			    int width, int height, PrintType pt)
+void CalPrinter::drawHeader( QPainter &p, QString title,
+                             const QDate &month1, const QDate &month2,
+                             int width, int height )
 {
-  KLocale *local = KGlobal::locale();
-  QFont font("helvetica", 18, QFont::Bold);
   p.drawRect(0, 0, width, height);
-  p.fillRect(1, 1,
-	     width-2,
-	     height-2,
-	     QBrush(Dense7Pattern));
+  p.fillRect( 1, 1,
+              width-2,height-2,
+              QBrush(Dense7Pattern) );
 
-  p.setFont(font);
-  int lineSpacing = p.fontMetrics().lineSpacing();
-  QString title;
   QString myOwner(mCalendar->getOwner());
 
-  //  title.sprintf("%s %d Schedule for ",qd.monthName(qd.month()),qd.year());
-  //  title += myOwner;
-
-  switch(pt) {
-  case TimeTable:
-  	break;
-
-  case Todolist:
-    title +=  i18n("To-do items:");
-
-    p.drawText(5, lineSpacing,title);
-    break;
-  case Month:
-      title += local->monthName(cd.month());
-      title += " ";
-      title += QString::number(cd.year());
-      p.drawText(5, lineSpacing, title );
-      break;
-  case Week:
-
-    title += local->formatDate(fd);
-
-    p.drawText(5, lineSpacing, title );
-    title.truncate(0);
-
-    title += local->formatDate(td);
-    p.drawText(5, 2*lineSpacing, title);
-    break;
-  case Day:
-
-    title += local->formatDate(fd,false);
-    p.drawText(5, lineSpacing, title );
-
-  }
+  int w=width, top=5;
 
   // print previous month for month view, print current for todo, day and week
-  switch (pt) {
-  case TimeTable: break;
-  case Todolist:
-  case Week:
-  case Day:
-    drawSmallMonth(p, QDate(cd.addDays(-cd.day()+1)),
-		   width/2+5, 5, /*width/4-10*/100, height-10);
-    break;
-
-    drawSmallMonth(p, QDate(cd.addDays(cd.daysInMonth()-cd.day()+1)),
-  		 width/2+width/4+5, 5, /*width/4-10*/100, height-10);
-  case Month:
-    drawSmallMonth(p, QDate(cd.addDays(-cd.day())),
-		   width/2+5, 5, /*width/4-10*/100, height-10);
-    //print the following month as well
-    drawSmallMonth(p, QDate(cd.addDays(cd.daysInMonth()-cd.day()+1)),
-  		 width/2+width/4+5, 5, /*width/4-10*/100, height-10);
-
+  int smallMonthWidth=w/4-10;
+  if (smallMonthWidth>100) smallMonthWidth=100;
+  if (month2.isValid()) {
+    drawSmallMonth(p, QDate(month2.year(), month2.month(), 1),
+                   w-10-smallMonthWidth, 2, smallMonthWidth, height-4);
+    w=w-smallMonthWidth-20;
   }
+  if (month1.isValid()) {
+    drawSmallMonth(p, QDate(month1.year(), month1.month(), 1),
+                   w-10-smallMonthWidth, 2, smallMonthWidth, height-4);
+    w=w-smallMonthWidth-20;
+  }
+
+  // Print the one or two titles...
+
+  QFont font("helvetica", 18, QFont::Bold);
+  p.setFont(font);
+  QRect textRect( top, 5, w-10, height-10 );
+  p.drawText( textRect, Qt::AlignLeft | Qt::AlignTop | Qt::WordBreak,
+    title );
 }
 
 /*

@@ -70,9 +70,9 @@ class CalPrinter : public QObject
     void doPrint(int, QDate, QDate);
 
   private:
-    void drawHeader(QPainter &p, const QDate &fd, const QDate &td,
-	            const QDate &cd,
-	            int width, int height, PrintType pt = Month);
+    void drawHeader( QPainter &p, QString title,
+                     const QDate &month1, const QDate &month2,
+                     int width, int height );
     void drawDayBox(QPainter &p, const QDate &qd,
                     int x, int y, int width, int height,
                     bool fullDate = FALSE);
