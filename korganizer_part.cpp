@@ -1,5 +1,6 @@
 /*
     This file is part of KOrganizer.
+
     Copyright (c) 2000 Cornelius Schumacher <schumacher@kde.org>
 
     This program is free software; you can redistribute it and/or modify
@@ -70,8 +71,8 @@ extern "C"
 * We need one static instance of the factory for our C 'main'
 * function
 */
-KInstance *KOrganizerFactory::s_instance = 0L;
-KAboutData *KOrganizerFactory::s_about = 0L;
+KInstance *KOrganizerFactory::s_instance = 0;
+KAboutData *KOrganizerFactory::s_about = 0;
 
 KOrganizerFactory::KOrganizerFactory()
 {
@@ -130,9 +131,12 @@ KOrganizerPart::KOrganizerPart(QWidget *parentWidget, const char *widgetName,
 
   new KParts::SideBarExtension(view->leftFrame(), this, "SBE");
 
-  KParts::InfoExtension *ie = new KParts::InfoExtension( this, "KOrganizerInfo" );
-  connect( mWidget, SIGNAL( incidenceSelected( Incidence * ) ), this, SLOT( slotChangeInfo( Incidence * ) ) );
-  connect( this, SIGNAL( textChanged( const QString& ) ), ie, SIGNAL( textChanged( const QString& ) ) );
+  KParts::InfoExtension *ie = new KParts::InfoExtension( this,
+                                                         "KOrganizerInfo" );
+  connect( mWidget, SIGNAL( incidenceSelected( Incidence * ) ),
+           SLOT( slotChangeInfo( Incidence * ) ) );
+  connect( this, SIGNAL( textChanged( const QString & ) ),
+           ie, SIGNAL( textChanged( const QString& ) ) );
 
   mWidget->show();
 
@@ -164,12 +168,14 @@ void KOrganizerPart::startCompleted( KProcess* process )
   delete process;
 }
 
-void KOrganizerPart::slotChangeInfo( Incidence *inc )
+void KOrganizerPart::slotChangeInfo( Incidence *incidence )
 {
-  if( inc != 0L )
-    emit textChanged( inc->summary() + " / " + inc->dtStartTimeStr() );
-  else
+  if ( incidence ) {
+    emit textChanged( incidence->summary() + " / " +
+                      incidence->dtStartTimeStr() );
+  } else {
     emit textChanged( QString::null );
+  }
 }
 
 void KOrganizerPart::saveCalendar()
@@ -207,7 +213,7 @@ void KOrganizerPart::saveCalendar()
   mActionManager = 0;
 }
 
-QWidget* KOrganizerPart::topLevelWidget()
+QWidget *KOrganizerPart::topLevelWidget()
 {
   return mWidget->topLevelWidget();
 }
@@ -217,7 +223,7 @@ ActionManager *KOrganizerPart::actionManager()
   return mActionManager;
 }
 
-void KOrganizerPart::addPluginAction( KAction* action)
+void KOrganizerPart::addPluginAction( KAction *action )
 {
   action->plug( mActionManager->pluginMenu()->popupMenu() );
 }
@@ -227,11 +233,10 @@ void KOrganizerPart::setActive(bool active)
   mActionManager->setActive(active);
 }
 
-void KOrganizerPart::showStatusMessage(const QString& message)
+void KOrganizerPart::showStatusMessage( const QString &message )
 {
   KStatusBar *statusBar = mStatusBarExtension->statusBar();
-  if(statusBar) // could be 0L
-    statusBar->message(message);
+  if ( statusBar ) statusBar->message( message );
 }
 
 KOrg::CalendarViewBase *KOrganizerPart::view() const
