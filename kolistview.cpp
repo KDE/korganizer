@@ -86,10 +86,12 @@ bool ListItemVisitor::visit(Event *e)
     static const QPixmap alarmPxmp = KOGlobals::self()->smallIcon("bell");
     mItem->setPixmap(1,alarmPxmp);
   }
+
   if ( e->doesRecur() ) {
     static const QPixmap recurPxmp = KOGlobals::self()->smallIcon("recur");
     mItem->setPixmap(2,recurPxmp);
   }
+
   mItem->setText(3,e->dtStartDateStr());
   mItem->setText(4,e->dtStartTimeStr());
   mItem->setText(5,e->dtEndDateStr());
@@ -98,15 +100,10 @@ bool ListItemVisitor::visit(Event *e)
   mItem->setText(8,"---");
   mItem->setText(9,e->categoriesStr());
 
-  QString key;
-  QDate d = e->dtStart().date();
-  QTime t = e->doesFloat() ? QTime(0,0) : e->dtStart().time();
-  key.sprintf("%04d%02d%02d%02d%02d",d.year(),d.month(),d.day(),t.hour(),t.minute());
+  QString key = e->dtStart().toString(Qt::ISODate);
   mItem->setSortKey(1,key);
 
-  d = e->dtEnd().date();
-  t = e->doesFloat() ? QTime(0,0) : e->dtEnd().time();
-  key.sprintf("%04d%02d%02d%02d%02d",d.year(),d.month(),d.day(),t.hour(),t.minute());
+  key = e->dtEnd().toString(Qt::ISODate);
   mItem->setSortKey(3,key);
 
   return true;
@@ -121,10 +118,12 @@ bool ListItemVisitor::visit(Todo *t)
     static const QPixmap alarmPxmp = KOGlobals::self()->smallIcon("bell");
     mItem->setPixmap(1,alarmPxmp);
   }
+  
   if ( t->doesRecur() ) {
     static const QPixmap recurPxmp = KOGlobals::self()->smallIcon("recur");
     mItem->setPixmap(2,recurPxmp);
   }
+  
   mItem->setText(3,"---");
   mItem->setText(4,"---");
   mItem->setText(5,"---");
@@ -143,10 +142,7 @@ bool ListItemVisitor::visit(Todo *t)
   }
   mItem->setText(9,t->categoriesStr());
 
-  QString key;
-  QDate d = t->dtDue().date();
-  QTime tm = t->doesFloat() ? QTime(0,0) : t->dtDue().time();
-  key.sprintf("%04d%02d%02d%02d%02d",d.year(),d.month(),d.day(),tm.hour(),tm.minute());
+  QString key = t->dtDue().toString(Qt::ISODate);
   mItem->setSortKey(7,key);
 
   return true;

@@ -98,13 +98,9 @@ void KOTodoViewItem::construct()
     QString keyt = "";
     if (!mTodo->doesFloat()) {
       dtStr += " " + mTodo->dtDueTimeStr();
-      QTime t = mTodo->dtDue().time();
-      keyt.sprintf("%02d%02d",t.hour(),t.minute());
     }
     setText(4, dtStr );
-    QDate d = mTodo->dtDue().date();
-    keyd.sprintf("%04d%02d%02d",d.year(),d.month(),d.day());
-    keyd += keyt;
+    keyd = mTodo->dtDue().toString(Qt::ISODate);
   } else {
     setText(4,"");
   }
@@ -156,13 +152,9 @@ void KOTodoViewItem::stateChange(bool state)
     QString keyt = "";
     if (!mTodo->doesFloat()) {
       dtStr += " " + mTodo->dtDueTimeStr();
-      QTime t = mTodo->dtDue().time();
-      keyt.sprintf("%02d%02d",t.hour(),t.minute());
     }
     setText(4, dtStr );
-    QDate d = mTodo->dtDue().date();
-    keyd.sprintf("%04d%02d%02d",d.year(),d.month(),d.day());
-    keyd += keyt;
+    keyd = mTodo->dtDue().toString(Qt::ISODate);
   } else {
     setText(4,"");
   }
