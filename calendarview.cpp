@@ -132,6 +132,7 @@ CalendarView::CalendarView(QWidget *parent,const char *name)
   // Create calendar object, which manages all calendar information associated
   // with this calendar view window.
   mCalendar = new CalendarLocal(KOPrefs::instance()->mTimeZoneId.local8Bit());
+  mCalendar->setOwner(KOPrefs::instance()->fullName());
   mCalendar->setEmail(KOPrefs::instance()->email());
   connect(mCalendar,SIGNAL(calUpdated(Incidence *)),
           SLOT(eventUpdated(Incidence *)));
