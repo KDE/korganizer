@@ -520,9 +520,13 @@ void CalendarView::readFilterSettings(KConfig *config)
   }
   mFilterView->updateFilters();
   config->setGroup("FilterView");
+
+  mFilterView->blockSignals(true);
   mFilterView->setFiltersEnabled(config->readBoolEntry("FilterEnabled"));
   mFilterView->setSelectedFilter(config->readEntry("Current Filter"));
-
+  mFilterView->blockSignals(false);
+  // We do it manually to avoid it being done twice by the above calls
+  updateFilter();
 }
 
 void CalendarView::writeFilterSettings(KConfig *config)
