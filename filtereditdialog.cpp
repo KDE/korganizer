@@ -24,13 +24,13 @@
 #include <qlayout.h>
 #include <qpushbutton.h>
 #include <qcombobox.h>
-#include <qinputdialog.h>
 #include <qcheckbox.h>
 #include <qradiobutton.h>
 #include <qlistbox.h>
 
 #include <kdebug.h>
 #include <klocale.h>
+#include <klineeditdlg.h>
 
 #include "koprefs.h"
 #include "filteredit_base.h"
@@ -120,9 +120,10 @@ void FilterEditDialog::slotOk()
 
 void FilterEditDialog::slotAdd()
 {
-  QString filterName = QInputDialog::getText(i18n("Add Filter"), i18n("Enter Filter Name"));
-  if (!filterName.isEmpty()) {
-    mFilters->append(new CalFilter(filterName));
+  KLineEditDlg dlg(i18n("Enter filter name:"), QString::null, this);
+  dlg.setCaption(i18n("Add Filter"));
+  if (dlg.exec()) {
+    mFilters->append(new CalFilter(dlg.text()));
     updateFilterList();
   }
 }
