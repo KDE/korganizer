@@ -1458,7 +1458,10 @@ void ActionManager::slotAutoArchive()
 void ActionManager::slotProgress( ResourceCalendar *, const QString &id,
                                   int percent )
 {
-  kdDebug() << "ActionManager::slotProgress: " << id << ": " << percent << endl;
+#if 0
+  kdDebug() << "ActionManager::slotProgress: " << id << ": " << percent
+            << endl;
+#endif
 
   int progress;
   if ( percent < 0 ) progress = 50;
