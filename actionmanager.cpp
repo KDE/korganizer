@@ -806,7 +806,7 @@ bool ActionManager::openURL(const KURL &url,bool merge)
       return false;
     }
   }
-	return true;
+  return true;
 }
 
 void ActionManager::showStatusMessageOpen( const KURL &url, bool merge )
