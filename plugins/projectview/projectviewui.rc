@@ -1,0 +1,11 @@
+<!DOCTYPE kpartgui>
+<kpartgui name="projectview" version="1">
+
+  <MenuBar>
+    <Menu name="view"><text>&amp;View</text>
+      <Action name="view_project"/>
+    </Menu>
+  </MenuBar>
+
+</kpartgui>
+

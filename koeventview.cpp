@@ -16,7 +16,7 @@
 #include "koeventview.moc"
 
 KOEventView::KOEventView(Calendar *cal,QWidget *parent,const char *name)
-  : KOBaseView(cal,parent,name)
+  : KOrg::BaseView(cal,parent,name)
 {
 }
 

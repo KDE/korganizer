@@ -4,7 +4,7 @@
 
 #include <qtextbrowser.h>
 
-#include "kobaseview.h"
+#include <korganizer/baseview.h>
 
 class QListView;
 
@@ -25,7 +25,7 @@ class WhatsNextTextBrowser : public QTextBrowser {
 /**
  This class provides a view of the next events and todos
 */
-class KOWhatsNextView : public KOBaseView
+class KOWhatsNextView : public KOrg::BaseView
 {
     Q_OBJECT
   public:

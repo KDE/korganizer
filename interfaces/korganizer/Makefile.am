@@ -1,5 +1,5 @@
 
-korginclude_HEADERS = part.h
+korginclude_HEADERS = part.h baseview.h calendarviewbase.h mainwindow.h
 korgincludedir = $(includedir)/korganizer
 
 servicetypedir = $(kde_servicetypesdir)

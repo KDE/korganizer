@@ -227,7 +227,7 @@ void KOTodoListView::contentsMouseDoubleClickEvent(QMouseEvent *e)
 /////////////////////////////////////////////////////////////////////////////
 
 KOTodoView::KOTodoView(Calendar *calendar,QWidget* parent,const char* name) :
-  KOBaseView(calendar,parent,name)
+  KOrg::BaseView(calendar,parent,name)
 {
   QBoxLayout *topLayout = new QVBoxLayout(this);
 

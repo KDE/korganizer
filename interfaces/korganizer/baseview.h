@@ -1,14 +1,19 @@
-#ifndef _KOBASEVIEW_H
-#define _KOBASEVIEW_H
+#ifndef KORG_BASEVIEW_H
+#define KORG_BASEVIEW_H
 // $Id$
 /*
  * KOBaseView is the abstract base class of all calendar views.
  * This file is part of the KOrganizer project.
  * (c) 1999 Preston Brown <pbrown@kde.org>
+ * (c) 2001 Cornelius Schumacher
  */
 
 #include <qwidget.h>
 #include <qptrlist.h>
+
+#include <klocale.h>
+#include <kdebug.h>
+#include <kmessagebox.h>
 
 #include <libkcal/event.h>
 #include <libkcal/calendar.h>
@@ -16,6 +21,8 @@
 using namespace KCal;
 
 class CalPrinter;
+
+namespace KOrg {
 
 /**
   This class provides an interface for all views being displayed within the main
@@ -28,7 +35,7 @@ class CalPrinter;
   @author Preston Brown
   @see KOTodoView, KOEventView, KOListView, KOAgendaView, KOWeekView, KOMonthView  
 */
-class KOBaseView : public QWidget
+class BaseView : public QWidget
 {
     Q_OBJECT
   public:
@@ -37,12 +44,13 @@ class KOBaseView : public QWidget
      * @param cal is a pointer to the calendar object from which events
      *        will be retrieved for display.
      */
-    KOBaseView(Calendar *cal, QWidget *parent = 0, const char *name = 0);
+    BaseView(Calendar *cal, QWidget *parent = 0, const char *name = 0) :
+        QWidget(parent, name), mCalendar(cal) {}
 
     /**
      * Destructor.  Views will do view-specific cleanups here.
      */
-    virtual ~KOBaseView();
+    virtual ~BaseView() {}
   
     /**
      * @return a list of selected events.  Most views can probably only
@@ -57,14 +65,27 @@ class KOBaseView : public QWidget
      * @param fd from date
      * @param td to date
      */
-    virtual void printPreview(CalPrinter *calPrinter, 
-                              const QDate &fd, const QDate &td);
+/*
+  The date parameters should be determined by the view itself and not given as
+  parameters. At the moment I just move the code from the topwidget to the
+  individual views.
+*/
+    virtual void printPreview(CalPrinter *, 
+                              const QDate &, const QDate &)
+    {
+      KMessageBox::sorry(this, i18n("Unfortunately, we don't handle printing for\n"
+			            "that view yet.\n"));
+    }
     
     /**
      * Print this event view.
      * @param calPrinter Calendar printer object used for printing
      */
-    virtual void print(CalPrinter *calPrinter);
+    virtual void print(CalPrinter *)
+    {
+      KMessageBox::sorry(this, i18n("Unfortunately, we don't handle printing for\n"
+	                            "that view yet.\n"));
+    }
   
     /**
      * Return number of currently shown dates. A return value of 0 means no idea.
@@ -114,5 +135,6 @@ class KOBaseView : public QWidget
   protected:
     Calendar *mCalendar;
 };
-  
+
+}  
 #endif

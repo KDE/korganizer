@@ -32,12 +32,26 @@ int main(int argc,char **argv)
   for(it = plugins.begin(); it != plugins.end(); ++it) {
     kdDebug() << "Part: " << (*it)->desktopEntryName() << " ("
               << (*it)->name() << ")" << endl;
+    KOrg::Part *p = KOCore::self()->loadPart(*it,0);
+    if (!p) {
+      kdDebug() << "Plugin loading failed." << endl;
+    } else {
+      kdDebug() << "PLUGIN INFO: " << p->info() << endl;
+    }
+  }
+  
+  plugins = KOCore::self()->availablePlugins("KOrganizer/View");
+  for(it = plugins.begin(); it != plugins.end(); ++it) {
+    kdDebug() << "Part: " << (*it)->desktopEntryName() << " ("
+              << (*it)->name() << ")" << endl;
+#if 0
     KOrg::Part *p = KOCore::self()->loadPart(*it,0,0);
     if (!p) {
       kdDebug() << "Plugin loading failed." << endl;
     } else {
       kdDebug() << "PLUGIN INFO: " << p->info() << endl;
     }
+#endif
   }
   
   KOrg::TextDecoration::List tdl = KOCore::self()->textDecorations();

@@ -20,6 +20,8 @@
 #include <libkcal/calendar.h>
 #include <libkcal/scheduler.h>
 
+#include <korganizer/calendarviewbase.h>
+
 #include "kdatenav.h"
 #include "koagendaview.h"
 #include "kolistview.h"
@@ -72,7 +74,7 @@ class CreateEditorVisitor : public Incidence::Visitor
   @author Cornelius Schumacher
   @version $Revision$
 */
-class CalendarView : public QWidget
+class CalendarView : public KOrg::CalendarViewBase
 {
     Q_OBJECT
   public:
@@ -90,6 +92,11 @@ class CalendarView : public QWidget
 
     QDate startDate();
     QDate endDate();
+
+    void addView(KOrg::BaseView *);
+
+    /** changes the view to be the currently selected view */
+    void showView(KOrg::BaseView *);
 
   signals:
   
@@ -401,9 +408,6 @@ class CalendarView : public QWidget
      */
     void adaptNavigationUnits();
 
-    /** changes the view to be the currently selected view */
-    void showView(KOBaseView *);
-
     /** Get an editor dialog for an Event. */
     KOEventEditor *getEventEditor();
     
@@ -433,11 +437,11 @@ class CalendarView : public QWidget
     KOMonthView     *mMonthView; 
     KOTodoView      *mTodoView;
     KOTodoView      *mTodoList;  // Small todo list under date navigator
-    KOProjectView   *mProjectView;
+//    KOProjectView   *mProjectView;
     KOWhatsNextView *mWhatsNextView;
     KOJournalView   *mJournalView;
   
-    KOBaseView     *mCurrentView;  // currently active event view
+    KOrg::BaseView     *mCurrentView;  // currently active event view
   
     // calendar object for this viewing instance
     Calendar      *mCalendar;

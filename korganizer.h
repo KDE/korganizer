@@ -11,18 +11,20 @@
 #include <qsplitter.h>
 
 #include <ktoolbar.h>
-#include <kparts/mainwindow.h>
 #include <kapp.h>
 #include <klocale.h>
 #include <kstatusbar.h>
 #include <kmenubar.h>
 #include <kurl.h>
-#include "korganizeriface.h"
 
 #include <libkcal/qdatelist.h>
 #include <libkcal/calendar.h>
 
-class CalendarView;
+#include <korganizer/mainwindow.h>
+
+#include "calendarview.h"
+#include "korganizeriface.h"
+
 class KTempFile;
 class KRecentFilesAction;
 class KOWindowList;
@@ -41,7 +43,7 @@ using namespace KCal;
  * @author Preston Brown
  * @version $Revision$
  */
-class KOrganizer : public KParts::MainWindow, virtual public KOrganizerIface
+class KOrganizer : public KOrg::MainWindow, virtual public KOrganizerIface
 {
     Q_OBJECT
   public:
@@ -53,7 +55,7 @@ class KOrganizer : public KParts::MainWindow, virtual public KOrganizerIface
     KOrganizer(const char *name=0);
     virtual ~KOrganizer();
 
-    CalendarView *view() const { return mCalendarView; }
+    KOrg::CalendarViewBase *view() const { return mCalendarView; }
 
     /**
       Open calendar file from URL. Merge into current calendar, if \a merge is
@@ -212,6 +214,7 @@ class KOrganizer : public KParts::MainWindow, virtual public KOrganizerIface
   protected:
     void initActions();
     void initParts();
+//    void initViews();
 
     /** supplied so that close events close calendar properly.*/
     bool queryClose();

@@ -2,7 +2,6 @@
 #ifndef _KOTODOVIEW_H
 #define _KOTODOVIEW_H
 
-//#include <qttableview.h>
 #include <qfont.h>
 #include <qfontmetrics.h>
 #include <qlineedit.h>
@@ -17,7 +16,7 @@
 #include <libkcal/calendar.h>
 #include <libkcal/todo.h>
 
-#include "kobaseview.h"
+#include <korganizer/baseview.h>
 
 /**
  * This class provides a way of displaying a single Event of Todo-Type in a
@@ -87,7 +86,7 @@ class KOTodoListView : public QListView
  * @short multi-column list view of todo events.
  * @author Cornelius Schumacher <schumacher@kde.org>
  */
-class KOTodoView : public KOBaseView
+class KOTodoView : public KOrg::BaseView
 {
     Q_OBJECT
   public:

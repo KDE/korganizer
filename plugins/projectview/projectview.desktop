@@ -1,0 +1,5 @@
+[Desktop Entry]
+X-KDE-Library=libkorg_projectview
+Name=Project View Plugin for KOrganizer
+Type=Service
+ServiceTypes=KOrganizer/Part

@@ -2,7 +2,7 @@
 #define _KOJOURNALVIEW_H
 // $Id$
 
-#include "kobaseview.h"
+#include <korganizer/baseview.h>
 
 class JournalEntry;
 
@@ -13,7 +13,7 @@ class JournalEntry;
  * @author Cornelius Schumacher <schumacher@kde.org>
  * @see KOBaseView
  */
-class KOJournalView : public KOBaseView
+class KOJournalView : public KOrg::BaseView
 {
     Q_OBJECT
   public:

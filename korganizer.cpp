@@ -68,7 +68,7 @@
 KOWindowList *KOrganizer::windowList = 0;
 
 KOrganizer::KOrganizer(const char *name)
-  : KParts::MainWindow(0,name), DCOPObject("KOrganizerIface")
+  : MainWindow(name), DCOPObject("KOrganizerIface")
 {
   kdDebug() << "KOrganizer::KOrganizer()" << endl;
 
@@ -91,6 +91,7 @@ KOrganizer::KOrganizer(const char *name)
   initActions();
 
   initParts();
+//  initViews();
 
   statusBar()->insertItem("",ID_GENERAL,10);
 
@@ -278,12 +279,14 @@ void KOrganizer::initActions()
   (void)new KAction(i18n("&To-do list"), "todo", 0,
                     mCalendarView, SLOT(showTodoView()),
                     actionCollection(), "view_todo");
+#if 0
 // Unconditionally enable project view
 //  if (KOPrefs::instance()->mEnableProjectView) {
     (void)new KAction(i18n("&Project"), 0,
                       mCalendarView, SLOT(showProjectView()),
                       actionCollection(), "view_project");
 //  }
+#endif
   (void)new KAction(i18n("&Journal"), 0,
                     mCalendarView, SLOT(showJournalView()),
                     actionCollection(), "view_journal");
@@ -473,14 +476,28 @@ void KOrganizer::initActions()
 
 void KOrganizer::initParts()
 {
-  // TODO: get calendar pointer from somewhere
+  kdDebug() << "KOrganizer::initParts()" << endl;
+
   KOrg::Part::List parts = KOCore::self()->parts(this);
   KOrg::Part *it;
-  for( it=parts.first(); it; it=parts.next() ) {
+  for( it=parts.first(); it; it=parts.next() ) {    
     guiFactory()->addClient(it);
-//    createGUI(it);
   }
 }
+
+#if 0
+void KOrganizer::initViews()
+{
+  kdDebug() << "KOrganizer::initViews()" << endl;
+
+  // TODO: get calendar pointer from somewhere
+  KOrg::View::List views = KOCore::self()->views(this);
+  KOrg::View *it;
+  for( it=views.first(); it; it=views.next() ) {
+    guiFactory()->addClient(it);
+  }
+}
+#endif
 
 void KOrganizer::file_new()
 {

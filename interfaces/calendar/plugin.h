@@ -20,6 +20,13 @@ class Plugin {
 class PluginFactory : KLibFactory {
   public:
     virtual Plugin *create() = 0;
+
+  protected:
+    virtual QObject* createObject(QObject*, const char*,const char*,
+                                  const QStringList &)
+    {
+      return 0;
+    }
 };
 
 }

@@ -10,8 +10,9 @@
 #include <libkcal/calendar.h>
 #include <libkcal/event.h>
 
+#include <korganizer/baseview.h>
+
 #include "koeventpopupmenu.h"
-#include "kobaseview.h"
 
 using namespace KCal;
 
@@ -31,7 +32,7 @@ class CalPrinter;
   @author Preston Brown <pbrown@kde.org>
   @see KOListView, KOAgendaView, KOWeekView, KOMonthView
 */
-class KOEventView : public KOBaseView
+class KOEventView : public KOrg::BaseView
 {
     Q_OBJECT
   

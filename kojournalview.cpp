@@ -19,7 +19,7 @@
 
 KOJournalView::KOJournalView(Calendar *calendar, QWidget *parent,
 		       const char *name)
-  : KOBaseView(calendar, parent, name)
+  : KOrg::BaseView(calendar, parent, name)
 {
   mEntry = new JournalEntry(calendar,this);
   

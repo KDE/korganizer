@@ -25,7 +25,7 @@ KOCore *KOCore::self()
 
 KOCore::KOCore() :
   mTextDecorationsLoaded(false), mWidgetDecorationsLoaded(false),
-  mHolidaysLoaded(false)
+  mPartsLoaded(false), mHolidaysLoaded(false)
 {
 }
 
@@ -122,7 +122,7 @@ KOrg::WidgetDecoration *KOCore::loadWidgetDecoration(const QString &name)
   return 0;  
 }
 
-KOrg::Part *KOCore::loadPart(KService::Ptr service, KOrganizer *parent)
+KOrg::Part *KOCore::loadPart(KService::Ptr service, KOrg::MainWindow *parent)
 {
   kdDebug() << "loadPart: library: " << service->library() << endl;
 
@@ -144,9 +144,9 @@ KOrg::Part *KOCore::loadPart(KService::Ptr service, KOrganizer *parent)
   return pluginFactory->create(parent);
 }
 
-KOrg::Part *KOCore::loadPart(const QString &name,KOrganizer *parent)
+KOrg::Part *KOCore::loadPart(const QString &name,KOrg::MainWindow *parent)
 {
-  KTrader::OfferList list = availablePlugins("KOrganizer/Part");
+  KTrader::OfferList list = availablePlugins("KOrg::MainWindow/Part");
   KTrader::OfferList::ConstIterator it;
   for(it = list.begin(); it != list.end(); ++it) {
     if ((*it)->desktopEntryName() == name) {
@@ -198,7 +198,7 @@ KOrg::WidgetDecoration::List KOCore::widgetDecorations()
   return mWidgetDecorations;
 }
 
-KOrg::Part::List KOCore::parts(KOrganizer *parent)
+KOrg::Part::List KOCore::parts(KOrg::MainWindow *parent)
 {
   if (!mPartsLoaded) {
     mParts.clear();

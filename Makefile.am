@@ -1,7 +1,6 @@
 SUBDIRS = . pixmaps sounds plugins interfaces
 
-INCLUDES = -I$(top_srcdir)/kgantt/kgantt \
-           -I$(srcdir)/interfaces $(all_includes)
+INCLUDES = -I$(srcdir)/interfaces $(all_includes)
 
 bin_PROGRAMS = korganizer
 
@@ -20,7 +19,6 @@ lib_LTLIBRARIES = libkorganizer.la
 libkorganizer_la_LDFLAGS = $(all_libraries) $(KDE_RPATH)
 libkorganizer_la_LIBADD  = $(LIB_KPARTS) $(LIB_KFILE) \
                            -lkdeprint -lkab \
-                           $(top_builddir)/kgantt/kgantt/libkgantt.la \
                            $(top_builddir)/libkcal/libkcal.la
 libkorganizer_la_SOURCES =  outgoingdialog_base.ui \
 	koagendaview.cpp koagenda.cpp koagendaitem.cpp \
@@ -32,7 +30,7 @@ libkorganizer_la_SOURCES =  outgoingdialog_base.ui \
 	calprinter.cpp \
 	koarchivedlg.cpp \
 	komailclient.cpp kotodoview.cpp \
-        kobaseview.cpp kolistview.cpp \
+        kolistview.cpp \
         exportwebdialog.cpp htmlexport.cpp \
         koapp.cpp korganizer_part.cpp korganizer.cpp \
         kprefsdialog.cpp koprefsdialog.cpp \
@@ -46,12 +44,12 @@ libkorganizer_la_SOURCES =  outgoingdialog_base.ui \
         koeventview.cpp categoryselectdialog_base.ui categoryselectdialog.cpp \
         categoryeditdialog_base.ui categoryeditdialog.cpp \
         kofilterview_base.ui kofilterview.cpp \
-        koprojectview.cpp \
         korganizeriface.skel \
         filtereditdialog.cpp filteredit_base.ui \
         kowhatsnextview.cpp \
         kojournalview.cpp journalentry.cpp \
-        kocore.cpp plugindialog.cpp mailscheduler.cpp
+        kocore.cpp plugindialog.cpp mailscheduler.cpp \
+        moc_baseview.cpp
 
 METASOURCES = AUTO
 
@@ -65,7 +63,7 @@ noinst_HEADERS = komonthview.h \
 	searchdialog.h calprinter.h \
 	koarchivedlg.h \
 	komailclient.h kotodoview.h \
-        kobaseview.h kolistview.h \
+        kolistview.h \
 	koapp.h exportwebdialog.h korganizer_part.h korganizer.h \
         kprefsdialog.h koprefsdialog.h koeventeditor.h \
         kotodoeditor.h kprefs.h koprefs.h koeventviewer.h \
@@ -73,7 +71,7 @@ noinst_HEADERS = komonthview.h \
         koeditorgeneralevent.h koeditorgeneraltodo.h koeditordetails.h \
         koeditorrecurrence.h koeventviewerdialog.h koeventpopupmenu.h \
         outgoingdialog.h incomingdialog.h \
-        koeventview.h koprojectview.h
+        koeventview.h
 
 tip_DATA = tips
 tipdir = $(kde_datadir)/korganizer
@@ -98,3 +96,6 @@ messages: rc.cpp
 	perl ./preparetips > tips.cc
 	$(XGETTEXT) *.cpp tips.cc -o $(podir)/korganizer.pot
 	rm -f tips.cc
+
+moc_baseview.cpp: interfaces/korganizer/baseview.h
+	$(MOC) interfaces/korganizer/baseview.h -o moc_baseview.cpp

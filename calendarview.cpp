@@ -66,7 +66,7 @@
 #include "incomingdialog.h"
 #include "categoryeditdialog.h"
 #include "kofilterview.h"
-#include "koprojectview.h"
+//#include "koprojectview.h"
 #include "filtereditdialog.h"
 #include "kowhatsnextview.h"
 #include "kojournalview.h"
@@ -92,7 +92,7 @@ bool CreateEditorVisitor::visit(Journal *)
 
 
 CalendarView::CalendarView(QWidget *parent,const char *name)
-  : QWidget(parent,name)
+  : CalendarViewBase(parent,name)
 {
   kdDebug() << "CalendarView::CalendarView()" << endl;
 
@@ -103,7 +103,7 @@ CalendarView::CalendarView(QWidget *parent,const char *name)
   mAgendaView = 0;
   mMonthView = 0;
   mListView = 0;
-  mProjectView = 0;
+//  mProjectView = 0;
   mJournalView = 0;
 
   mModified = false;
@@ -370,7 +370,7 @@ void CalendarView::readCurrentView(KConfig *config)
   if (view == "WhatsNext") showWhatsNextView();
   else if (view == "Month") showMonthView();
   else if (view == "List") showListView();
-  else if (view == "Project") showProjectView();
+//  else if (view == "Project") showProjectView();
   else if (view == "Journal") showJournalView();
   else showAgendaView();
 }
@@ -383,7 +383,7 @@ void CalendarView::writeCurrentView(KConfig *config)
   if (mCurrentView == mWhatsNextView) view = "WhatsNext";
   else if (mCurrentView == mMonthView) view = "Month";
   else if (mCurrentView == mListView) view = "List";
-  else if (mCurrentView == mProjectView) view = "Project";
+//  else if (mCurrentView == mProjectView) view = "Project";
   else if (mCurrentView == mJournalView) view = "Journal";
   else view = "Agenda";
   
@@ -410,9 +410,11 @@ void CalendarView::writeSettings()
   if (mAgendaView) {
     mAgendaView->writeSettings(config);
   }
+#if 0
   if (mProjectView) {
     mProjectView->writeSettings(config);
   }
+#endif
 
   KOPrefs::instance()->writeConfig();
 
@@ -624,7 +626,7 @@ void CalendarView::nextAgendaView()
   }
 }
 
-void CalendarView::showView(KOBaseView *view)
+void CalendarView::showView(KOrg::BaseView *view)
 {
   if(view == mCurrentView) return;
 
@@ -1128,7 +1130,7 @@ void CalendarView::showWhatsNextView()
   if (!mWhatsNextView) {
     mWhatsNextView = new KOWhatsNextView(mCalendar,mRightFrame,
                                          "CalendarView::WhatsNextView");
-    mRightFrame->addWidget(mWhatsNextView,0);
+    addView(mWhatsNextView);
   }
   
   showView(mWhatsNextView);
@@ -1138,7 +1140,7 @@ void CalendarView::showListView()
 {
   if (!mListView) {
     mListView = new KOListView(mCalendar, mRightFrame, "CalendarView::ListView");
-    mRightFrame->addWidget(mListView,2);
+    addView(mListView);
 
     connect(mListView, SIGNAL(datesSelected(const QDateList)),
 	    mDateNavigator, SLOT(selectDates(const QDateList)));
@@ -1162,7 +1164,7 @@ void CalendarView::showAgendaView()
 {
   if (!mAgendaView) {
     mAgendaView = new KOAgendaView(mCalendar, mRightFrame, "CalendarView::AgendaView");
-    mRightFrame->addWidget(mAgendaView,1);
+    addView(mAgendaView);
 
     connect(mAgendaView, SIGNAL(datesSelected(const QDateList)),
             mDateNavigator, SLOT(selectDates(const QDateList)));
@@ -1213,7 +1215,7 @@ void CalendarView::showMonthView()
 {
   if (!mMonthView) {
     mMonthView = new KOMonthView(mCalendar, mRightFrame, "CalendarView::MonthView");
-    mRightFrame->addWidget(mMonthView,0);
+    addView(mMonthView);
 
     connect(mMonthView, SIGNAL(datesSelected(const QDateList)),
             mDateNavigator, SLOT(selectDates(const QDateList)));
@@ -1240,7 +1242,7 @@ void CalendarView::showTodoView()
 {
   if (!mTodoView) {
     mTodoView = new KOTodoView(mCalendar, mRightFrame, "CalendarView::TodoView");
-    mRightFrame->addWidget(mTodoView,0);
+    addView(mTodoView);
 
     // SIGNALS/SLOTS FOR TODO VIEW
     connect(mTodoView, SIGNAL(newTodoSignal()),
@@ -1262,15 +1264,17 @@ void CalendarView::showTodoView()
 
 void CalendarView::showProjectView()
 {
+#if 0
   if (!mProjectView) {
     mProjectView = new KOProjectView(mCalendar,mRightFrame,
                                      "CalendarView::ProjectView");
-    mRightFrame->addWidget(mProjectView,0);
+    addView(mProjectView);
     
     mProjectView->readSettings();
   }
 
   showView(mProjectView);
+#endif
 }
 
 void CalendarView::showJournalView()
@@ -1278,7 +1282,7 @@ void CalendarView::showJournalView()
   if (!mJournalView) {
     mJournalView = new KOJournalView(mCalendar,mRightFrame,
                                      "CalendarView::JournalView");
-    mRightFrame->addWidget(mJournalView,0);
+    addView(mJournalView);
   }
 
   showView(mJournalView);
@@ -1711,4 +1715,9 @@ void CalendarView::configurePlugins()
   }
   mPluginDialog->show();
   mPluginDialog->raise();
+}
+
+void CalendarView::addView(KOrg::BaseView *view)
+{
+  mRightFrame->addWidget(view);
 }

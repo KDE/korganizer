@@ -7,7 +7,7 @@
 #include <klibloader.h>
 #include <kparts/part.h>
 
-#include <korganizer.h>
+#include <korganizer/mainwindow.h>
 
 namespace KOrg {
 
@@ -15,22 +15,29 @@ class Part : public KParts::Part {
   public:
     typedef QPtrList<Part> List;
 
-    Part(KOrganizer *parent, const char *name) :
+    Part(MainWindow *parent, const char *name) :
       KParts::Part(parent,name), mMainWindow(parent) {};
 
     virtual ~Part() {};
 
     virtual QString info() = 0;
   
-    KOrganizer *mainWindow() { return mMainWindow; }
+    MainWindow *mainWindow() { return mMainWindow; }
   
   private:
-    KOrganizer *mMainWindow;
+    MainWindow *mMainWindow;
 };
 
 class PartFactory : public KLibFactory {
   public:
-    virtual Part *create(KOrganizer *parent, const char *name=0) = 0;
+    virtual Part *create(MainWindow *parent, const char *name=0) = 0;
+
+  protected:
+    virtual QObject* createObject(QObject*, const char*,const char*,
+                                  const QStringList &)
+    {
+      return 0;
+    } 
 };
 
 }

@@ -1,9 +1,8 @@
-/* $Id$ */
 #ifndef _KOPROJECTVIEW_H
 #define _KOPROJECTVIEW_H
+/* $Id$ */
 
 #include <qptrlist.h>
-//#include <qttableview.h>
 #include <qfontmetrics.h>
 
 #include <qmap.h>
@@ -11,7 +10,7 @@
 #include <libkcal/calendar.h>
 #include <libkcal/event.h>
 
-#include "kobaseview.h"
+#include "korganizer/baseview.h"
 #include "KGanttItem.h"
 
 class KGantt;
@@ -46,7 +45,7 @@ class KOProjectViewItem : public KGanttItem {
  * @short project view on todo items.
  * @author Cornelius Schumacher <schumacher@kde.org>
  */
-class KOProjectView : public KOBaseView
+class KOProjectView : public KOrg::BaseView
 {
     Q_OBJECT
   public:
@@ -57,8 +56,6 @@ class KOProjectView : public KOBaseView
 
     /** Return number of shown dates. */
     int currentDateCount() { return 0; }
-
-    void printPreview(CalPrinter *calPrinter, const QDate &fd, const QDate &td);
 
     void readSettings();
     void writeSettings(KConfig *);

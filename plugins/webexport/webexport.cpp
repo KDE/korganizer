@@ -17,7 +17,7 @@
 
 class WebExportFactory : public KOrg::PartFactory {
   public:
-    KOrg::Part *create(KOrganizer *parent, const char *name)
+    KOrg::Part *create(KOrg::MainWindow *parent, const char *name)
     {
       return new WebExport(parent,name);
     }
@@ -31,7 +31,7 @@ extern "C" {
 }
 
 
-WebExport::WebExport(KOrganizer *parent, const char *name) :
+WebExport::WebExport(KOrg::MainWindow *parent, const char *name) :
   KOrg::Part(parent,name)
 {
 //  KInstance * instance = new KInstance( "korganizer_part" );

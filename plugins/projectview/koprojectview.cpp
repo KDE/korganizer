@@ -22,7 +22,6 @@
 
 #include <libkcal/vcaldrag.h>
 
-#include "calprinter.h"
 #include "KGantt.h"
 
 #include "koprojectview.h"
@@ -49,7 +48,7 @@ Todo *KOProjectViewItem::event()
 
 KOProjectView::KOProjectView(Calendar *calendar,QWidget* parent,
                              const char* name) :
-  KOBaseView(calendar,parent,name)
+  KOrg::BaseView(calendar,parent,name)
 {
   QBoxLayout *topLayout = new QVBoxLayout(this);
 
@@ -261,12 +260,6 @@ void KOProjectView::selectDates(const QDateList)
 void KOProjectView::selectEvents(QPtrList<Event>)
 {
   kdDebug() << "KOProjectView::selectEvents(): not yet implemented" << endl;
-}
-
-void KOProjectView::printPreview(CalPrinter *calPrinter, const QDate &fd,
-                              const QDate &td)
-{
-  calPrinter->preview(CalPrinter::Todolist, fd, td);
 }
 
 #if 0
