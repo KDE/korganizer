@@ -192,7 +192,7 @@ void KOGroupware::incomingDirChanged( const QString& path )
         break;
       }
     }
-    scheduler.acceptTransaction( incidence, method, status );
+    scheduler.acceptTransaction( incidence, method, status, receiver );
   } else if ( action.startsWith( "cancel" ) )
     // Delete the old incidence, if one is present
     mCalendar->deleteIncidence( incidence );
