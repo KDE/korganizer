@@ -2,12 +2,15 @@
 : New Zealand holiday file. Copy to ~/.holiday
 :
 : Author: Miles Leonard-Taylor (m.leonardtaylor@irl.cri.nz)
-: 13 September 2000
+: 13 September 2000 (first version)
+: 24 September 2004 (update with spelling corrections)
+: Thanks to various people for pointing out all my spelling mistakes...
 
 : Holidays as defined by the government's "Holidays Acts, 1981-1991"
 : and the Visits and Ceremonial office of the Department of Internal Affairs
-: and also at http://www.nzir.dol.govt.nz/rights/leave/dates/2000.html
-:
+: and was also at http://www.nzir.dol.govt.nz/rights/leave/dates/2000.html
+: but now located under http://www.ers.dol.govt.nz/holidays_act_2003/dates/
+
 small "Christmas" weekend on december 25
 small "Boxing Day" weekend on december 26
 small "New Year's Day" weekend on january 1
