@@ -51,9 +51,6 @@
             <property name="name">
                 <cstring>mAddressListView</cstring>
             </property>
-            <property name="resizeMode">
-                <enum>AllColumns</enum>
-            </property>
         </widget>
         <widget class="QLabel" row="4" column="0">
             <property name="name">
