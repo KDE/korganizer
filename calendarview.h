@@ -50,6 +50,7 @@ class KDateNavigator;
 class DateNavigator;
 class KOIncidenceEditor;
 class ResourceView;
+class NavigatorBar;
 
 namespace KCal { class FileStorage; }
 
@@ -91,6 +92,7 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
 
     QWidgetStack *viewStack();
     QWidget *leftFrame();
+    NavigatorBar *navigatorBar();
 
     DateNavigator *dateNavigator();
 
@@ -403,6 +405,8 @@ class CalendarView : public KOrg::CalendarViewBase, public Calendar::Observer
     QSplitter    *mLeftSplitter;
     QWidget      *mLeftFrame;
     QWidgetStack *mRightFrame;
+
+    NavigatorBar *mNavigatorBar;
 
     KDateNavigator *mDateNavigator;       // widget showing small month view.
 

@@ -128,6 +128,7 @@ void NavigatorBar::selectDates( const KCal::DateList &dateList )
     // compute the label at the top of the navigator
     QString dtstr = calSys->monthName( date ) + " " +
                     QString::number( calSys->year( date ) );
+
     mDateLabel->setText( dtstr );
   }
 }

@@ -38,6 +38,7 @@
 #include "kojournalview.h"
 #include "kotimespanview.h"
 #include "koprefs.h"
+#include "navigatorbar.h"
 
 #include "koviewmanager.h"
 #include "koviewmanager.moc"
@@ -129,8 +130,14 @@ void KOViewManager::raiseCurrentView()
   if ((mMonthView && KOPrefs::instance()->mFullViewMonth && mCurrentView == mMonthView) ||
       (mTodoView && KOPrefs::instance()->mFullViewTodo && mCurrentView == mTodoView)) {
     mMainView->leftFrame()->hide();
+    if ( mCurrentView == mTodoView ) {
+      mMainView->navigatorBar()->hide();
+    } else {
+      mMainView->navigatorBar()->show();
+    }
   } else {
     mMainView->leftFrame()->show();
+    mMainView->navigatorBar()->hide();
   }
   mMainView->viewStack()->raiseWidget(mCurrentView);
 }

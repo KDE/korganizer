@@ -92,10 +92,11 @@
 #include "kotodoview.h"
 #include "datenavigator.h"
 #include "resourceview.h"
+#include "navigatorbar.h"
 
 #include "calendarview.h"
+
 using namespace KOrg;
-#include "calendarview.moc"
 
 CalendarView::CalendarView( CalendarResources *calendar,
                             QWidget *parent, const char *name ) 
@@ -166,7 +167,14 @@ void CalendarView::init()
     mResourceView = 0;
   }
 
-  mRightFrame = new QWidgetStack(mPanner, "CalendarView::RightFrame");
+  QWidget *rightBox = new QWidget( mPanner );
+  QBoxLayout *rightLayout = new QVBoxLayout( rightBox );
+
+  mNavigatorBar = new NavigatorBar( rightBox );
+  rightLayout->addWidget( mNavigatorBar );
+  
+  mRightFrame = new QWidgetStack( rightBox );
+  rightLayout->addWidget( mRightFrame, 1 );
 
   mLeftFrame = mLeftSplitter;
 #else
@@ -202,6 +210,18 @@ void CalendarView::init()
            SLOT( showDates( const KCal::DateList & ) ) );
   connect( mNavigator, SIGNAL( datesSelected( const KCal::DateList & ) ),
            mDateNavigator, SLOT( selectDates( const KCal::DateList & ) ) );
+
+  connect( mNavigatorBar, SIGNAL( goPrevYear() ),
+           mNavigator, SLOT( selectPreviousYear() ) );
+  connect( mNavigatorBar, SIGNAL( goNextYear() ),
+           mNavigator, SLOT( selectNextYear() ) );
+  connect( mNavigatorBar, SIGNAL( goPrevMonth() ),
+           mNavigator, SLOT( selectPreviousMonth() ) );
+  connect( mNavigatorBar, SIGNAL( goNextMonth() ),
+           mNavigator, SLOT( selectNextMonth() ) );
+
+  connect( mNavigator, SIGNAL( datesSelected( const KCal::DateList & ) ),
+           mNavigatorBar, SLOT( selectDates( const KCal::DateList & ) ) );
 
   connect( mDateNavigator, SIGNAL( weekClicked( const QDate & ) ),
            mNavigator, SLOT( selectWeek( const QDate & ) ) );
@@ -1715,3 +1735,10 @@ void CalendarView::slotCalendarChanged()
 {
   kdDebug() << "CalendarView::slotCalendarChanged()" << endl;
 }
+
+NavigatorBar *CalendarView::navigatorBar()
+{
+  return mNavigatorBar;
+}
+
+#include "calendarview.moc"
