@@ -5,7 +5,7 @@
 
 #include <qlist.h>
 #include <kdockwindow.h>
-#include <kpopmenu.h>
+#include <kpopupmenu.h>
 #include <dcopobject.h>
 
 #include "calobject.h"
