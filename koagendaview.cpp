@@ -262,27 +262,66 @@ void EventIndicator::enableColumn(int column, bool enable)
 
 
 KOAlternateLabel::KOAlternateLabel(QString shortlabel, QString longlabel,
-    QWidget *parent, const char *name )
-  : QLabel(parent, name), fullText(longlabel), shortText(shortlabel)
+    QString extensivelabel, QWidget *parent, const char *name )
+  : QLabel(parent, name), mTextTypeFixed(false), mShortText(shortlabel),
+    mLongText(longlabel), mExtensiveText(extensivelabel)
 {
   setSizePolicy(QSizePolicy( QSizePolicy::Expanding, QSizePolicy::Fixed ));
+  if (mExtensiveText.isEmpty()) mExtensiveText = mLongText;
   squeezeTextToLabel();
 }
 
 KOAlternateLabel::~KOAlternateLabel() {}
 
+void KOAlternateLabel::useShortText()
+{
+  mTextTypeFixed = true;
+  QLabel::setText( mShortText );
+  QToolTip::remove( this );
+  QToolTip::add( this, mExtensiveText );
+}
+
+void KOAlternateLabel::useLongText()
+{
+  mTextTypeFixed = true;
+  QLabel::setText( mLongText );
+  QToolTip::remove( this );
+  QToolTip::add( this, mExtensiveText );
+}
+
+void KOAlternateLabel::useExtensiveText()
+{
+  mTextTypeFixed = true;
+  QLabel::setText( mExtensiveText );
+  QToolTip::remove( this );
+  QToolTip::hide();
+}
+
+void KOAlternateLabel::useDefaultText()
+{
+  mTextTypeFixed = false;
+  squeezeTextToLabel();
+}
+
 void KOAlternateLabel::squeezeTextToLabel() {
+  if (mTextTypeFixed) return;
+
   QFontMetrics fm(fontMetrics());
   int labelWidth = size().width();
-  int textWidth = fm.width(fullText);
-  if (textWidth > labelWidth) {
-    QLabel::setText( shortText );
-    QToolTip::remove( this );
-    QToolTip::add( this, fullText );
-  } else {
-    QLabel::setText( fullText );
+  int textWidth = fm.width(mLongText);
+  int longTextWidth = fm.width(mExtensiveText);
+  if (longTextWidth <= labelWidth) {
+    QLabel::setText( mExtensiveText );
     QToolTip::remove( this );
     QToolTip::hide();
+  } else if (textWidth <= labelWidth) {
+    QLabel::setText( mLongText );
+    QToolTip::remove( this );
+    QToolTip::add( this, mExtensiveText );
+  } else {
+    QLabel::setText( mShortText );
+    QToolTip::remove( this );
+    QToolTip::add( this, mExtensiveText );
   }
 }
 
@@ -298,7 +337,7 @@ QSize KOAlternateLabel::minimumSizeHint() const
 }
 
 void KOAlternateLabel::setText( const QString &text ) {
-  fullText = text;
+  mLongText = text;
   squeezeTextToLabel();
 }
 
@@ -516,13 +555,14 @@ void KOAgendaView::createDayLabels()
 //    dayLayout->setMinimumWidth(1);
 
     int dW = calsys->dayOfWeek(date);
+    QString veryLongStr = KGlobal::locale()->formatDate( date );
     QString longstr = i18n( "short_weekday date (e.g. Mon 13)","%1 %2" )
         .arg( calsys->weekDayName( dW, true ) )
         .arg( calsys->day(date) );
     QString shortstr = QString::number(calsys->day(date));
 
     KOAlternateLabel *dayLabel = new KOAlternateLabel(shortstr,
-      longstr, mDayLabels);
+      longstr, veryLongStr, mDayLabels);
     dayLabel->setMinimumWidth(1);
     dayLabel->setAlignment(QLabel::AlignHCenter);
     if (date == QDate::currentDate()) {
@@ -538,8 +578,8 @@ void KOAgendaView::createDayLabels()
     for(it = cds.first(); it; it = cds.next()) {
       QString text = it->shortText( date );
       if ( !text.isEmpty() ) {
-//        KSqueezedTextLabel *label = new KSqueezedTextLabel(text,mDayLabels);
-        QLabel*label = new QLabel(text, mDayLabels);
+        // use a KOAlternateLabel so when the text doesn't fit any more a tooltip is used
+        KOAlternateLabel*label = new KOAlternateLabel( text, text, QString::null, mDayLabels );
         label->setMinimumWidth(1);
         label->setAlignment(AlignCenter);
         dayLayout->addWidget(label);

@@ -104,18 +104,24 @@ class KOAlternateLabel : public QLabel
 {
     Q_OBJECT
   public:
-    KOAlternateLabel(QString shortlabel, QString longlabel, QWidget *parent=0, const char *name=0 );
+    KOAlternateLabel(QString shortlabel, QString longlabel, QString extensivelabel=QString::null,
+        QWidget *parent=0, const char *name=0 );
     ~KOAlternateLabel();
 
     virtual QSize minimumSizeHint() const;
 
   public slots:
     void setText( const QString & );
+    void useShortText();
+    void useLongText();
+    void useExtensiveText();
+    void useDefaultText();
 
   protected:
     virtual void resizeEvent( QResizeEvent * );
     virtual void squeezeTextToLabel();
-    QString fullText, shortText;
+    bool mTextTypeFixed;
+    QString mShortText, mLongText, mExtensiveText;
 };
 
 /**
