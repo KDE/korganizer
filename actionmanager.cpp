@@ -40,6 +40,7 @@
 #include <kxmlguiclient.h>
 #include <kwin.h>
 #include <knotifyclient.h>
+#include <kstdguiitem.h>
 
 #include <libkcal/htmlexport.h>
 #include <libkcal/calendarlocal.h>
@@ -210,10 +211,10 @@ void ActionManager::initActions()
                    SLOT( file_revert() ), mACollection, "korganizer_revert" );
       new KAction( i18n("Save &As..."), "filesaveas", 0, this,
                    SLOT( file_saveas() ), mACollection, "korganizer_saveAs" );
-      new KAction( i18n("&Close"), "fileclose", CTRL+Key_W, this,
+      new KAction( KStdGuiItem::close().text(), "fileclose", CTRL+Key_W, this,
                    SLOT( file_close() ), mACollection, "korganizer_close" );
     }
-    new KAction( i18n("&Save"), "filesave", CTRL+Key_S, this,
+    new KAction( KStdGuiItem::save().text(), "filesave", CTRL+Key_S, this,
                  SLOT( file_save() ), mACollection, "korganizer_save" );
   } else {
     KStdAction::openNew(this, SLOT(file_new()), mACollection);
