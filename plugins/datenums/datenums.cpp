@@ -39,7 +39,6 @@ extern "C" {
 
 QString Datenums::shortText(const QDate &date)
 {
-  //return QString::number(KOGlobals::self()->calendarSystem()->dayOfYear(date));
   return QString::number(KOGlobals::self()->calendarSystem()->dayOfYear(date));
 }
 
