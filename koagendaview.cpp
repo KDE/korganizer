@@ -1213,7 +1213,8 @@ void KOAgendaView::insertIncidence( Incidence *incidence, const QDate &curDate,
     } else {
       // Insert multi-day events only on the first day, otherwise it will
       // appear multiple times
-      if ( ( beginX <= 0 && curCol == 0 ) || beginX == curCol ) {
+      // overdue to-dos are floating, even if they have a time set!
+      if ( ( beginX <= 0 && curCol == 0 ) || beginX == curCol || todo ) {
         mAllDayAgenda->insertAllDayItem( incidence, curDate, beginX, endX );
       }
     }
