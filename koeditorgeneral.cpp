@@ -274,14 +274,7 @@ void KOEditorGeneral::setDefaults(bool allDay)
 void KOEditorGeneral::readIncidence(Incidence *event)
 {
   mSummaryEdit->setText(event->summary());
-  if (event->type()=="Todo") {
-    Todo *todo = static_cast<Todo *>(event);
-    mLocationEdit->setText(todo->location());
-  }
-  if (event->type()=="Event") {
-    Event *ev = static_cast<Event *>(event);
-    mLocationEdit->setText(ev->location());
-  }
+  mLocationEdit->setText(event->location());
   
   mDescriptionEdit->setText(event->description());
 
@@ -342,14 +335,7 @@ void KOEditorGeneral::writeIncidence(Incidence *event)
 //  kdDebug() << "KOEditorGeneral::writeEvent()" << endl;
 
   event->setSummary(mSummaryEdit->text());
-  if (event->type()=="Todo") {
-    Todo *todo = static_cast<Todo *>(event);
-    todo->setLocation(mLocationEdit->text());
-  }
-  if (event->type()=="Event") {
-    Event *ev = static_cast<Event *>(event);
-    ev->setLocation(mLocationEdit->text());
-  }
+  event->setLocation(mLocationEdit->text());
   event->setDescription(mDescriptionEdit->text());
   event->setCategories(mCategoriesLabel->text());
   event->setSecrecy(mSecrecyCombo->currentItem());
