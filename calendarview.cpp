@@ -763,6 +763,8 @@ void CalendarView::edit_copy()
   } else {
     KNotifyClient::beep();
   }
+  
+  mTodoList->clearSelection();
 }
 
 void CalendarView::edit_paste()
@@ -814,6 +816,9 @@ void CalendarView::edit_paste()
 
   } else if ( pastedIncidence->type() == "Todo" ) {
     Todo* pastedTodo = static_cast<Todo*>(pastedIncidence);
+    Todo* _selectedTodo = selectedTodo();
+    if ( _selectedTodo )
+      pastedTodo->setRelatedTo( _selectedTodo );
     todoAdded( pastedTodo );
   }
 }
