@@ -38,6 +38,9 @@
 #ifndef KORG_NOKABC
 #include <kabc/addresseedialog.h>
 #include <kabc/vcardconverter.h>
+#include <libkdepim/addressesdialog.h>
+#include <kabc/distributionlist.h>
+#include <kabc/stdaddressbook.h>
 #endif
 #include <libkdepim/kvcarddrag.h>
 
@@ -292,17 +295,56 @@ void KOEditorDetails::removeAttendee()
 void KOEditorDetails::openAddressBook()
 {
 #ifndef KORG_NOKABC
-  KABC::Addressee a = KABC::AddresseeDialog::getAddressee(this);
-  if (!a.isEmpty()) {
-    // If this is myself, I don't want to get a response but instead
-    // assume I will be available
-    bool myself = a.preferredEmail() == KOPrefs::instance()->email();
-    KCal::Attendee::PartStat partStat =
-      myself ? KCal::Attendee::Accepted : KCal::Attendee::NeedsAction;
-    insertAttendee( new Attendee( a.realName(), a.preferredEmail(),
-                                  !myself, partStat,
-                                  KCal::Attendee::ReqParticipant, a.uid() ) );
-  }
+
+    KPIM::AddressesDialog* dia = new KPIM::AddressesDialog( this, "adddialog" );
+    dia->setShowCC( false );
+    dia->setShowBCC( false );
+    if ( dia->exec() ) {
+        KABC::Addressee::List aList = dia->toAddresses();
+        QStringList dList = dia->toDistributionLists();
+        KABC::DistributionListManager manager( KABC::StdAddressBook::self() );
+        manager.load();
+        for ( QStringList::ConstIterator it = dList.begin(); it != dList.end(); ++it ) {
+            QValueList<KABC::DistributionList::Entry> eList = manager.list( *it )->entries();
+            QValueList<KABC::DistributionList::Entry>::Iterator eit;
+            if ( eList.count() > 0 )
+            for( eit = eList.begin(); eit != eList.end(); ++eit ) {
+                KABC::Addressee a = (*eit).addressee;
+                bool myself = a.preferredEmail() == KOPrefs::instance()->email();
+                KCal::Attendee::PartStat partStat =
+                    myself ? KCal::Attendee::Accepted : KCal::Attendee::NeedsAction;
+                insertAttendee( new Attendee( a.realName(), a.preferredEmail(),
+                                              !myself, partStat,
+                                              KCal::Attendee::ReqParticipant, a.uid() ) );
+            }
+        }
+        for ( KABC::Addressee::List::iterator itr = aList.begin();
+              itr != aList.end(); ++itr ) {
+            KABC::Addressee a = (*itr);
+            bool myself = a.preferredEmail() == KOPrefs::instance()->email();
+            KCal::Attendee::PartStat partStat =
+                myself ? KCal::Attendee::Accepted : KCal::Attendee::NeedsAction;
+            insertAttendee( new Attendee( a.realName(), a.preferredEmail(),
+                                          !myself, partStat,
+                                          KCal::Attendee::ReqParticipant, a.uid() ) );
+        }
+    }
+    delete dia;
+    return;
+#if 0
+    // old code
+    KABC::Addressee a = KABC::AddresseeDialog::getAddressee(this);
+    if (!a.isEmpty()) {
+        // If this is myself, I don't want to get a response but instead
+        // assume I will be available
+        bool myself = a.preferredEmail() == KOPrefs::instance()->email();
+        KCal::Attendee::PartStat partStat =
+            myself ? KCal::Attendee::Accepted : KCal::Attendee::NeedsAction;
+        insertAttendee( new Attendee( a.realName(), a.preferredEmail(),
+                                      !myself, partStat,
+                                      KCal::Attendee::ReqParticipant, a.uid() ) );
+    }
+#endif
 #endif
 }
 
