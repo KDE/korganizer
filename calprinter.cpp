@@ -411,14 +411,14 @@ void CalPrinter::drawHeader(QPainter &p, const QDate &fd, const QDate &td,
 			    int width, int height, PrintType pt)
 {
   KLocale *local = KGlobal::locale();
-
+  QFont font("helvetica", 18, QFont::Bold);
   p.drawRect(0, 0, width, height);
   p.fillRect(1, 1, 
 	     width-2, 
 	     height-2, 
-	     QBrush(Dense3Pattern));
+	     QBrush(Dense4Pattern));
 
-  p.setFont(QFont("helvetica", 24, QFont::Bold));
+  p.setFont(font);
   int lineSpacing = p.fontMetrics().lineSpacing();
   QString title;
   QString myOwner(calendar->getOwner());
@@ -713,9 +713,10 @@ void CalPrinter::drawSmallMonth(QPainter &p, const QDate &qd,
     monthDate2 = monthDate.addDays(-(monthDate.dayOfWeek()%7)); 
 
   // draw days of week
+   p.setFont(QFont("helvetica", 8, QFont::Bold));
   for (int col = 0; col < 7; col++) {
     // tmpStr.sprintf("%c",(const char*)monthDate2.dayName(monthDate2.dayOfWeek()));
-    tmpStr=local->weekDayName(monthDate2.dayOfWeek());
+    tmpStr=local->weekDayName(monthDate2.dayOfWeek())[0].upper();
     p.drawText(x+col*cellWidth, y+height/4, cellWidth, cellHeight,
 	       AlignCenter, tmpStr);
     monthDate2 = monthDate2.addDays(1);
