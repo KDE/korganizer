@@ -43,6 +43,8 @@
 #include <qpushbutton.h>
 #include <qpopupmenu.h>
 
+#include "koprefs.h"
+
 using namespace KCal;
 
 ResourceViewFactory::ResourceViewFactory( KCal::CalendarResources *calendar,
@@ -72,7 +74,7 @@ CalendarViewExtension *ResourceViewFactory::create( QWidget *parent )
                     mView, SLOT( updateCategories() ) );
   QObject::connect( mCalendar, SIGNAL( signalResourceModified( ResourceCalendar * ) ),
                     mView, SLOT( updateCategories() ) );
-  
+
   return mResourceView;
 }
 
@@ -241,6 +243,7 @@ void ResourceView::addResource()
       resource->load();
     }
 
+    resource->setTimeZoneId( KOPrefs::instance()->mTimeZoneId );
     manager->add( resource );
     addResourceItem( resource );
   } else {
