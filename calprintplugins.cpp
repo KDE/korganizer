@@ -146,46 +146,49 @@ void CalPrintDay::setDateRange( const QDate& from, const QDate& to )
   }
 }
 
-void CalPrintDay::print(QPainter &p, int width, int height)
+void CalPrintDay::print( QPainter &p, int width, int height )
 {
-  QDate curDay(mFromDate);
+  QDate curDay( mFromDate );
 
   do {
-    int x=0;
-    int y=0;
-    int currHeight=(height-y)/20;
-    QTime curStartTime(mStartTime), curEndTime(mEndTime);
-    if (curStartTime.secsTo(curEndTime)<=3600) {
-      if (curStartTime.hour()==0) {
-        curStartTime=QTime(0,0,0);
-        curEndTime=curStartTime.addSecs(3600);
+    int x = 0;
+    int y = 0;
+    int currHeight=( height - y ) / 20;
+    QTime curStartTime( mStartTime );
+    QTime curEndTime( mEndTime );
+    if ( curStartTime.secsTo( curEndTime ) <= 3600 ) {
+      if ( curStartTime.hour() == 0 ) {
+        curStartTime = QTime( 0, 0, 0 );
+        curEndTime = curStartTime.addSecs( 3600 );
+      } else if ( curEndTime.hour() == 23 ) {
+        curEndTime=QTime( 23, 59, 59 );
+        if ( curStartTime > QTime( 23, 0, 0 ) ) {
+          curStartTime = QTime( 23, 0, 0 );
+        }
+      } else {
+        curStartTime = curStartTime.addSecs( -1200 );
       }
-      else if (curEndTime.hour()==23) {
-        curEndTime=QTime(23,59,59);
-        if (curStartTime>QTime(23,0,0)) curStartTime=QTime(23,0,0);
-      } else
-      curStartTime=curStartTime.addSecs(-1200);
-      curEndTime=curEndTime.addSecs(1200);
+      curEndTime = curEndTime.addSecs( 1200 );
     }
 
-    KLocale*local=KGlobal::locale();
-    drawHeader(p, local->formatDate(curDay,false),
-               curDay, QDate(), 0, 0, width, mHeaderHeight );
+    KLocale *local = KGlobal::locale();
+    drawHeader( p, local->formatDate( curDay, false ),
+                curDay, QDate(), 0, 0, width, mHeaderHeight );
 
-    y+=mHeaderHeight+5;
-    x=80;
-    Event::List eventList = mCalendar->events(curDay, TRUE);
+    y += mHeaderHeight + 5;
+    x = 80;
+    Event::List eventList = mCalendar->events( curDay, true );
 
-    p.setFont(QFont("helvetica", 14));
-    drawAllDayBox(p, eventList, curDay, true, x, y, width-x, currHeight);
-    y+=currHeight;
-    drawAgendaDayBox(p, eventList, curDay, mIncludeAllEvents,
-      curStartTime, curEndTime, x, y, width-x, height-y);
-    drawTimeLine(p, curStartTime, curEndTime, 0, y, x-5, height-y);
-    curDay = curDay.addDays(1);
-    if (curDay <= mToDate)
+    p.setFont( QFont( "helvetica", 14 ) );
+    drawAllDayBox( p, eventList, curDay, true, x, y, width - x, currHeight );
+    y += currHeight;
+    drawAgendaDayBox( p, eventList, curDay, mIncludeAllEvents,
+                      curStartTime, curEndTime, x, y, width - x, height - y );
+    drawTimeLine( p, curStartTime, curEndTime, 0, y, x - 5, height - y );
+    curDay = curDay.addDays( 1 );
+    if ( curDay <= mToDate )
       mPrinter->newPage();
-  } while (curDay <= mToDate);
+  } while ( curDay <= mToDate );
 }
 
 
