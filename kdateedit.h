@@ -4,6 +4,7 @@
 #define _KDATEEDIT_H
 
 #include <qhbox.h>
+#include <qvbox.h>
 
 class QLineEdit;
 class QPushButton;
@@ -35,6 +36,7 @@ class KDateEdit : public QHBox
     QPushButton *mDateButton;
     QLineEdit *mDateEdit;
     KDatePicker *mDatePicker;
+    QVBox *mDateFrame;
 };
 
 #endif

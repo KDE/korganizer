@@ -312,11 +312,16 @@ void KDateNavigator::updateButton(int i)
   }
   buttons[i]->setSelected(selected);
 
+  QToolTip::remove(buttons[i]); // remove any previous tooltip
+ 
+  QString holiStr = mCalendar->getHolidayForDate(buttons[i]->date());
+  
   // Calculate holidays. Sunday is also treated as holiday.
   if (!KGlobal::locale()->weekStartsMonday() && (float(i)/7 == float(i/7)) ||
       KGlobal::locale()->weekStartsMonday() && (float(i-6)/7 == float((i-6)/7)) ||
-      !mCalendar->getHolidayForDate(buttons[i]->date()).isEmpty()) {
+      !holiStr.isEmpty()) {
     buttons[i]->setHoliday();
+	QToolTip::add(buttons[i], holiStr); // set the tooltip
   } else {
     buttons[i]->setHoliday(false);
   }
@@ -360,22 +365,18 @@ const QDateList KDateNavigator::getSelected()
   return selectedDates;
 }
 
-
-void KDateNavigator::goNextMonth()
+void KDateNavigator::gotoYMD(int yr, int mth, int day)
 {
-  int yr, mth, day;
+  // make sure that we move to a valid day and month.
+  if( day <= 0 ) day = 1;
+  if( mth <= 0 ) mth = 1;
 
-  // calculate yr, mth and day for the next month, wrapping if
-  // necessary.
-  yr  = m_MthYr.month() < 12 ? m_MthYr.year() : m_MthYr.year()+1;
-  mth = m_MthYr.month() < 12 ? m_MthYr.month()+1 : 1;
-  day = m_MthYr.day();
-
-  // make sure that we move to a valid day in the next month.
   for(;;) {
-    if(QDate::isValid(yr, mth, day))
-      break;
-    day--;
+  	if(QDate::isValid(yr, mth, day))
+  		break;
+  	if( day > 1 ) day--;
+	else if( mth > 1 ) mth--;
+	else yr=1900;
   }
 
   // set our record of the month, year and day that this datetbl is
@@ -387,6 +388,20 @@ void KDateNavigator::goNextMonth()
   updateDates();
   fixupSelectedDates(yr, mth);
   updateView();
+}
+
+
+void KDateNavigator::goNextMonth()
+{
+  int yr, mth, day;
+
+  // calculate yr, mth and day for the next month, wrapping if
+  // necessary.
+  yr  = m_MthYr.month() < 12 ? m_MthYr.year() : m_MthYr.year()+1;
+  mth = m_MthYr.month() < 12 ? m_MthYr.month()+1 : 1;
+  day = m_MthYr.day();
+
+  gotoYMD(yr,mth,day);
 }
 
 void KDateNavigator::goPrevMonth()
@@ -399,78 +414,17 @@ void KDateNavigator::goPrevMonth()
   mth = m_MthYr.month() > 1 ? m_MthYr.month()-1 : 12;
   day = m_MthYr.day();
 
-  // make sure that we move to a valid day in the next month.
-  for(;;) {
-    if(QDate::isValid(yr, mth, day))
-      break;
-    day--;
-  }
-
-  // set our record of the month and year that this datetbl is
-  // displaying.
-  m_MthYr.setYMD(yr, mth, day);
-  QDate dayone(m_MthYr.year(), m_MthYr.month(), 1);
-  m_fstDayOfWk = dayone.dayOfWeek();
-
-  updateDates();
-  fixupSelectedDates(yr, mth);
-  updateView();
+  gotoYMD(yr,mth,day);
 }
 
 void KDateNavigator::goNextYear()
 {
-  int yr, mth, day;
-
-  // calculate yr, mth and day for the next month, wrapping if
-  // necessary.
-  yr  = m_MthYr.year()+1;
-  mth = m_MthYr.month();
-  day = m_MthYr.day();
-
-  // make sure that we move to a valid day in the next month.
-  for(;;) {
-    if(QDate::isValid(yr, mth, day))
-      break;
-    day--;
-  }
-
-  // set our record of the month, year and day that this datetbl is
-  // displaying.
-  m_MthYr.setYMD(yr, mth, day);
-  QDate dayone(m_MthYr.year(), m_MthYr.month(), 1);
-  m_fstDayOfWk = dayone.dayOfWeek();
-
-  updateDates();
-  fixupSelectedDates(yr, mth);
-  updateView();
+  gotoYMD(m_MthYr.year()+1, m_MthYr.month(), m_MthYr.day());
 }
 
 void KDateNavigator::goPrevYear()
 {
-  int yr, mth, day;
-
-  // calculate yr, mth and day for the next month, wrapping if
-  // necessary.
-  yr  = m_MthYr.year()-1;
-  mth = m_MthYr.month();
-  day = m_MthYr.day();
-
-  // make sure that we move to a valid day in the next month.
-  for(;;) {
-    if(QDate::isValid(yr, mth, day))
-      break;
-    day--;
-  }
-
-  // set our record of the month, year and day that this datetbl is
-  // displaying.
-  m_MthYr.setYMD(yr, mth, day);
-  QDate dayone(m_MthYr.year(), m_MthYr.month(), 1);
-  m_fstDayOfWk = dayone.dayOfWeek();
-
-  updateDates();
-  fixupSelectedDates(yr, mth);
-  updateView();
+  gotoYMD(m_MthYr.year()-1, m_MthYr.month(), m_MthYr.day());
 }
 
 

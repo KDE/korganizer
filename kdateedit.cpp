@@ -5,6 +5,7 @@
 #include <qpushbutton.h>
 
 #include <kapp.h>
+#include <kdebug.h>
 #include <klocale.h>
 #include <kglobal.h>
 #include <kiconloader.h>
@@ -24,10 +25,14 @@ KDateEdit::KDateEdit(QWidget *parent, const char *name)
   QPixmap pixmap = SmallIcon("smallcal");
   mDateButton = new QPushButton(this);
   mDateButton->setPixmap(pixmap);
+  
+  mDateFrame = new QVBox(0,0,WType_Popup);
+  mDateFrame->setFrameStyle(QFrame::PopupPanel | QFrame::Raised);
+  mDateFrame->setFixedSize(200,200);
+  mDateFrame->setLineWidth(3);
+  mDateFrame->hide();
 
-  mDatePicker = new KDatePicker(0,QDate::currentDate());
-  mDatePicker->setFixedSize(200,200);
-  mDatePicker->hide();
+  mDatePicker = new KDatePicker(mDateFrame,QDate::currentDate());
 
   connect(mDateEdit,SIGNAL(returnPressed()),SLOT(lineEnterPressed()));
 
@@ -35,11 +40,12 @@ KDateEdit::KDateEdit(QWidget *parent, const char *name)
 
   connect(mDatePicker,SIGNAL(dateSelected(QDate)),SLOT(setDate(QDate)));
   connect(mDatePicker,SIGNAL(dateSelected(QDate)),SIGNAL(dateChanged(QDate)));
-  connect(mDatePicker,SIGNAL(dateSelected(QDate)),mDatePicker,SLOT(hide()));
+  connect(mDatePicker,SIGNAL(dateSelected(QDate)),mDateFrame,SLOT(hide()));
 }
 
 KDateEdit::~KDateEdit()
 {
+  delete mDateFrame;
 }
 
 void KDateEdit::setDate(QDate newDate)
@@ -70,26 +76,22 @@ QDate KDateEdit::getDate() const
 
 void KDateEdit::toggleDatePicker()
 {
-  static bool visible = FALSE;
-  QPoint tmpPoint;
+  if(mDateFrame->isVisible()) mDateFrame->hide();
+  else {
+  	QPoint tmpPoint = mapToGlobal(mDateButton->geometry().bottomRight());
+	
+	mDateFrame->setGeometry(tmpPoint.x()-207, tmpPoint.y(), 200, 200);
 
-  tmpPoint = mapToGlobal(mDateButton->geometry().bottomRight());
-  mDatePicker->setGeometry(tmpPoint.x()-207, tmpPoint.y(), 200, 200);
-
-  QDate date = KGlobal::locale()->readDate(mDateEdit->text());
-  if(date.isValid()) {
-    mDatePicker->setDate(date);
-  } else {
-    mDatePicker->setDate(QDate::currentDate());
-  }
-
-  if (!visible) {
-    mDatePicker->show();
-    mDatePicker->raise();
-  } else {
-    mDatePicker->hide();
+  	QDate date = KGlobal::locale()->readDate(mDateEdit->text());
+  	if(date.isValid()) {
+    	mDatePicker->setDate(date);
+  	} else {
+    	mDatePicker->setDate(QDate::currentDate());
+  	}
+  	mDateFrame->show();
   }
 }
+
 
 void KDateEdit::lineEnterPressed()
 {

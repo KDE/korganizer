@@ -22,6 +22,8 @@ class KDateNavigator: public QFrame {
 
    const QDateList getSelected();
 
+   void gotoYMD(int yr, int mth, int day);
+   
  public slots:
    void selectDates(const QDateList);
    void selectDates(QDate);
