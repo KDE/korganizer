@@ -48,7 +48,7 @@ KOCore *KOCore::self()
 
 KOCore::KOCore() :
   mCalendarDecorationsLoaded(false),
-  mPartsLoaded(false), mHolidaysLoaded(false)
+  mHolidaysLoaded(false)
 {
 }
 
@@ -179,16 +179,13 @@ KOrg::CalendarDecoration::List KOCore::calendarDecorations()
   return mCalendarDecorations;
 }
 
-KOrg::Part::List KOCore::parts(KOrg::MainWindow *parent)
+KOrg::Part::List KOCore::loadParts(KOrg::MainWindow *parent)
 {
-  if (!mPartsLoaded) {
-    mParts.clear();
-    KTrader::OfferList plugins = availablePlugins("KOrganizer/Part");
-    KTrader::OfferList::ConstIterator it;
-    for(it = plugins.begin(); it != plugins.end(); ++it) {
-      mParts.append(loadPart(*it,parent));
-    }
-    mPartsLoaded = true;
+  mParts.clear();
+  KTrader::OfferList plugins = availablePlugins("KOrganizer/Part");
+  KTrader::OfferList::ConstIterator it;
+  for(it = plugins.begin(); it != plugins.end(); ++it) {
+    mParts.append(loadPart(*it,parent));
   }
   
   return mParts;

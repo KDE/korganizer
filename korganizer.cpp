@@ -507,7 +507,7 @@ void KOrganizer::initParts()
 {
   kdDebug() << "KOrganizer::initParts()" << endl;
 
-  KOrg::Part::List parts = KOCore::self()->parts(this);
+  KOrg::Part::List parts = KOCore::self()->loadParts(this);
   KOrg::Part *it;
   for( it=parts.first(); it; it=parts.next() ) {    
     guiFactory()->addClient(it);

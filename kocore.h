@@ -45,7 +45,7 @@ class KOCore {
     KOrg::Part *loadPart(const QString &,KOrg::MainWindow *parent);
 
     KOrg::CalendarDecoration::List calendarDecorations();
-    KOrg::Part::List parts(KOrg::MainWindow *parent);
+    KOrg::Part::List loadParts(KOrg::MainWindow *parent);
 
     void reloadPlugins();
 
@@ -61,7 +61,6 @@ class KOCore {
     bool mCalendarDecorationsLoaded;
     
     KOrg::Part::List mParts;
-    bool mPartsLoaded;
 
     KOrg::CalendarDecoration *mHolidays;
     bool mHolidaysLoaded;    
