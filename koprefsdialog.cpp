@@ -345,34 +345,39 @@ void KOPrefsDialog::setupFontsTab()
   QFrame *topFrame = addPage(i18n("Fonts"),0,
                              DesktopIcon("fonts",KIcon::SizeMedium));
 
-  QGridLayout *topLayout = new QGridLayout(topFrame,5,2);
+  QGridLayout *topLayout = new QGridLayout(topFrame,5,3);
   topLayout->setSpacing(spacingHint());
   topLayout->setMargin(marginHint());
 
   KPrefsWidFont *timeBarFont =
-      addWidFont(KGlobal::locale()->formatTime(QTime(12,34)),i18n("Time Bar..."),
+      addWidFont(KGlobal::locale()->formatTime(QTime(12,34)),i18n("Time bar:"),
                  &(KOPrefs::instance()->mTimeBarFont),topFrame);
-  topLayout->addWidget(timeBarFont->preview(),0,0);
-  topLayout->addWidget(timeBarFont->button(),0,1);
+  topLayout->addWidget(timeBarFont->label(),0,0);
+  topLayout->addWidget(timeBarFont->preview(),0,1);
+  topLayout->addWidget(timeBarFont->button(),0,2);
 
   KPrefsWidFont *monthViewFont =
       addWidFont(KGlobal::locale()->formatTime(QTime(12,34)) + " " + i18n("Event text"),
-                 i18n("Month View..."),&(KOPrefs::instance()->mMonthViewFont),topFrame);
-  topLayout->addWidget(monthViewFont->preview(),1,0);
-  topLayout->addWidget(monthViewFont->button(),1,1);
+                 i18n("Month view:"),&(KOPrefs::instance()->mMonthViewFont),topFrame);
+  topLayout->addWidget(monthViewFont->label(),1,0);
+  topLayout->addWidget(monthViewFont->preview(),1,1);
+  topLayout->addWidget(monthViewFont->button(),1,2);
 
   KPrefsWidFont *agendaViewFont =
-      addWidFont(i18n("Event text"),i18n("Agenda View..."),
+      addWidFont(i18n("Event text"),i18n("Agenda view:"),
                  &(KOPrefs::instance()->mAgendaViewFont),topFrame);
-  topLayout->addWidget(agendaViewFont->preview(),2,0);
-  topLayout->addWidget(agendaViewFont->button(),2,1);
+  topLayout->addWidget(agendaViewFont->label(),2,0);
+  topLayout->addWidget(agendaViewFont->preview(),2,1);
+  topLayout->addWidget(agendaViewFont->button(),2,2);
 
   KPrefsWidFont *marcusBainsFont =
-      addWidFont(KGlobal::locale()->formatTime(QTime(12,34,23)),i18n("Marcus Bains Line..."),
+      addWidFont(KGlobal::locale()->formatTime(QTime(12,34,23)),i18n("Marcus Bains line:"),
                  &(KOPrefs::instance()->mMarcusBainsFont),topFrame);
-  topLayout->addWidget(marcusBainsFont->preview(),3,0);
-  topLayout->addWidget(marcusBainsFont->button(),3,1);
+  topLayout->addWidget(marcusBainsFont->label(),3,0);
+  topLayout->addWidget(marcusBainsFont->preview(),3,1);
+  topLayout->addWidget(marcusBainsFont->button(),3,2);
 
+  topLayout->setColStretch(1,1);
   topLayout->setRowStretch(4,1);
 }
 
