@@ -190,7 +190,7 @@ KOEditorDetails::KOEditorDetails (int spacing,QWidget* parent,const char* name)
   QLabel *attendeeLabel = new QLabel(this);
   attendeeLabel->setText(i18n("Na&me:"));
 
-  mNameEdit = new QLineEdit(this);
+  mNameEdit = new KPIM::AddresseeLineEdit(this);
   attendeeLabel->setBuddy( mNameEdit );
   connect(mNameEdit,SIGNAL(textChanged(const QString &)),
           SLOT(updateAttendeeItem()));

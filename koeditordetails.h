@@ -38,6 +38,7 @@
 #include <kapplication.h>
 
 #include <libkcal/event.h>
+#include <libkdepim/addresseelineedit.h>
 
 #include "ktimeedit.h"
 #include "customlistviewitem.h"
@@ -111,7 +112,7 @@ class KOEditorDetails : public QWidget
   private:
     bool mDisableItemUpdate;
 
-    QLineEdit *mNameEdit;
+    KPIM::AddresseeLineEdit *mNameEdit;
     QLineEdit *mUidEdit;
     QLineEdit *mEmailEdit;
     KListView *mListView;
