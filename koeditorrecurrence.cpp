@@ -249,13 +249,9 @@ RecurMonthly::RecurMonthly( QWidget *parent, const char *name ) :
   buttonLayout->addWidget( mByPosCountCombo, 1, 1 );
 
   mByPosWeekdayCombo = new QComboBox( buttonGroup );
-  mByPosWeekdayCombo->insertItem( i18n("Monday") );
-  mByPosWeekdayCombo->insertItem( i18n("Tuesday") );
-  mByPosWeekdayCombo->insertItem( i18n("Wednesday") );
-  mByPosWeekdayCombo->insertItem( i18n("Thursday") );
-  mByPosWeekdayCombo->insertItem( i18n("Friday") );
-  mByPosWeekdayCombo->insertItem( i18n("Saturday") );
-  mByPosWeekdayCombo->insertItem( i18n("Sunday") );
+  for( int i = 1; i <= 7; ++i ) {
+    mByPosWeekdayCombo->insertItem( KGlobal::locale()->weekDayName( i ) );
+  }
   buttonLayout->addWidget( mByPosWeekdayCombo, 1, 2 );
 }
 
@@ -341,18 +337,9 @@ RecurYearly::RecurYearly( QWidget *parent, const char *name ) :
   buttonLayout->addWidget( mByMonthRadio, 0, 0 );
 
   mByMonthCombo = new QComboBox( buttonGroup );
-  mByMonthCombo->insertItem( i18n("January") );
-  mByMonthCombo->insertItem( i18n("February") );
-  mByMonthCombo->insertItem( i18n("March") );
-  mByMonthCombo->insertItem( i18n("April") );
-  mByMonthCombo->insertItem( i18n("May") );
-  mByMonthCombo->insertItem( i18n("June") );
-  mByMonthCombo->insertItem( i18n("July") );
-  mByMonthCombo->insertItem( i18n("August") );
-  mByMonthCombo->insertItem( i18n("September") );
-  mByMonthCombo->insertItem( i18n("October") );
-  mByMonthCombo->insertItem( i18n("November") );
-  mByMonthCombo->insertItem( i18n("December") );
+  for( int i = 1; i <= 12; ++i ) {
+    mByMonthCombo->insertItem( KGlobal::locale()->monthName( i ) );
+  }
   buttonLayout->addWidget( mByMonthCombo, 0, 1 );
 
 
