@@ -325,6 +325,10 @@ void KOPrefsDialog::setupMainTab()
   connect(mEnableProjectView->checkBox(),SIGNAL(clicked()),
           SLOT(warningProjectView()));
 
+  // Disable settings for experimental features
+  mEnableGroupScheduling->checkBox()->hide();
+  mEnableProjectView->checkBox()->hide();
+
   topLayout->setRowStretch(9,1);
 }
 
@@ -382,7 +386,7 @@ void KOPrefsDialog::setupTimeTab()
   topLayout->addMultiCellWidget(workingHoursGroup,4,4,0,1);
 
   QHBox *workStartBox = new QHBox(workingHoursGroup);
-  KPrefsWidTime *workingHoursStart =
+//  KPrefsWidTime *workingHoursStart =
     new KPrefsWidTime(i18n("Daily Starting Hour:"),
                       &(KOPrefs::instance()->mWorkingHoursStart),
                       this,workStartBox);
@@ -390,20 +394,20 @@ void KOPrefsDialog::setupTimeTab()
 //  topLayout->addWidget(workingHoursStart->spinBox(),6,1);
 
   QHBox *workEndBox = new QHBox(workingHoursGroup);
-  KPrefsWidTime *workingHoursEnd =
+//  KPrefsWidTime *workingHoursEnd =
     new KPrefsWidTime(i18n("Daily Ending Hour:"),
                       &(KOPrefs::instance()->mWorkingHoursEnd),
                       this,workEndBox);
 //  topLayout->addWidget(workingHoursEnd->label(),7,0);
 //  topLayout->addWidget(workingHoursEnd->spinBox(),7,1);
 
-  KPrefsWidBool *excludeHolidays =
+//  KPrefsWidBool *excludeHolidays =
       new KPrefsWidBool(i18n("Exclude Holidays"),
                         &(KOPrefs::instance()->mExcludeHolidays),this,
                         workingHoursGroup);
 //  topLayout->addWidget(fullViewMonth->checkBox(),8,0);
 
-  KPrefsWidBool *excludeSaturdays =
+//  KPrefsWidBool *excludeSaturdays =
       new KPrefsWidBool(i18n("Exclude Saturdays"),
                         &(KOPrefs::instance()->mExcludeSaturdays),this,
                         workingHoursGroup);

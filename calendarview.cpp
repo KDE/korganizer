@@ -127,6 +127,8 @@ CalendarView::CalendarView(QWidget *parent,const char *name)
   mCalendar->setFilter(filter);
   mFilterView = new KOFilterView(filter,mLeftFrame,"CalendarView::FilterView");
   connect(mFilterView,SIGNAL(filterChanged()),SLOT(updateView()));
+  // Hide filter per default
+  mFilterView->hide();
 
   // create the main data display views.
   mTodoView   = new KOTodoView(mCalendar, mRightFrame, "CalendarView::TodoView");
@@ -205,6 +207,7 @@ bool CalendarView::openCalendar(QString filename)
   if (initCalendar(filename)) {
     setModified(false);
     updateView();
+    emit statusMessage(i18n("Opened calendar %1").arg(filename));
     return true;
   } else {
     return false;
@@ -233,6 +236,8 @@ bool CalendarView::saveCalendar(QString filename)
   // We should check for errors here.
 
   setModified(false);
+
+  emit statusMessage(i18n("Saved calendar %1").arg(filename));
 
   return true;
 }
@@ -297,7 +302,7 @@ void CalendarView::readSettings()
   // read settings from the KConfig, supplying reasonable
   // defaults where none are to be found
 
-  KConfig config(locate("config", "korganizerrc"));
+  KConfig config(locateLocal("config", "korganizerrc"));
 
   config.setGroup("General");
 
@@ -320,7 +325,7 @@ void CalendarView::readSettings()
 void CalendarView::readCurrentView()
 {
   QString str;
-  KConfig config(locate("config", "korganizerrc"));
+  KConfig config(locateLocal("config", "korganizerrc"));
 
   mCurrentView = mAgendaView;
 

@@ -13,8 +13,8 @@
 #include "lupe.xpm"
 
 
-xQGanttBarViewPort::xQGanttBarViewPort(xQTask* maintask, QWidget* parent = 0,
-				       const char * name=0, WFlags f=0 )
+xQGanttBarViewPort::xQGanttBarViewPort(xQTask* maintask, QWidget* parent,
+				       const char * name, WFlags f)
   : QFrame(parent,name,f)
 /////////////////////////////////////////////////////////////////////////////
 {
@@ -111,9 +111,9 @@ xQGanttBarViewPort::initMenu()
   action->addTo(_menu);
  
   QPixmap selectPixL("icons/22x22/select.png");
-  if(selectPixL.isNull()) printf("select.png not found !\n");
+//  if(selectPixL.isNull()) printf("select.png not found !\n");
   QPixmap selectPixS("icons/16x16/select.png");
-  if(selectPixS.isNull()) printf("select.png not found !\n");
+//  if(selectPixS.isNull()) printf("select.png not found !\n");
   QIconSet iconset(selectPixS, selectPixL );
   action->setIconSet(iconset);
 
@@ -128,9 +128,9 @@ xQGanttBarViewPort::initMenu()
   action->addTo(_menu);
 
   QPixmap zoomPixL("icons/22x22/viewmag.png");
-  if(zoomPixL.isNull()) printf("viewmag.png not found !\n");
+//  if(zoomPixL.isNull()) printf("viewmag.png not found !\n");
   QPixmap zoomPixS("icons/16x16/viewmag.png");
-  if(zoomPixS.isNull()) printf("viewmag.png not found !\n");
+//  if(zoomPixS.isNull()) printf("viewmag.png not found !\n");
   QIconSet iconsetZoom(zoomPixS, zoomPixL );
   action->setIconSet(iconsetZoom);
 
@@ -144,9 +144,9 @@ xQGanttBarViewPort::initMenu()
   action->addTo(_menu);
 
   QPixmap movePixL("icons/22x22/move.png");
-  if(movePixL.isNull()) printf("move.png not found !\n");
+//  if(movePixL.isNull()) printf("move.png not found !\n");
   QPixmap movePixS("icons/16x16/move.png");
-  if(movePixS.isNull()) printf("move.png not found !\n");
+//  if(movePixS.isNull()) printf("move.png not found !\n");
   QIconSet iconsetMove(movePixS, movePixL );
   action->setIconSet(iconsetMove);
 
@@ -163,9 +163,9 @@ xQGanttBarViewPort::initMenu()
   action->addTo(_menu);
 
   QPixmap selectTaskPixL("icons/22x22/selectTask.png");
-  if(selectTaskPixL.isNull()) printf("selectTask.png not found !\n");
+//  if(selectTaskPixL.isNull()) printf("selectTask.png not found !\n");
   QPixmap selectTaskPixS("icons/16x16/selectTask.png");
-  if(selectTaskPixS.isNull()) printf("selectTask.png not found !\n");
+//  if(selectTaskPixS.isNull()) printf("selectTask.png not found !\n");
   QIconSet iconsetSelectTask(selectTaskPixS, selectTaskPixL );
   action->setIconSet(iconsetSelectTask);
 
@@ -179,9 +179,9 @@ xQGanttBarViewPort::initMenu()
   action->addTo(_menu);
 
   QPixmap unselectTaskPixL("icons/22x22/unselectTask.png");
-  if(unselectTaskPixL.isNull()) printf("unselectTask.png not found !\n");
+//  if(unselectTaskPixL.isNull()) printf("unselectTask.png not found !\n");
   QPixmap unselectTaskPixS("icons/16x16/unselectTask.png");
-  if(unselectTaskPixS.isNull()) printf("unselectTask.png not found !\n");
+//  if(unselectTaskPixS.isNull()) printf("unselectTask.png not found !\n");
   QIconSet iconsetUnselectTask(unselectTaskPixS, unselectTaskPixL );
   action->setIconSet(iconsetUnselectTask);
 
@@ -239,8 +239,8 @@ xQGanttBarViewPort::update(int x1, int y1, int x2, int y2)
 {
   QPainter p(this);
 
-  printf("xQGanttBarViewPort::update(%d,%d,%d,%d)\n",
-	 x1, y1, x2, y2 );
+//  printf("xQGanttBarViewPort::update(%d,%d,%d,%d)\n",
+//	 x1, y1, x2, y2 );
 
   // QTime time1 = QTime::currentTime();
   
@@ -566,7 +566,7 @@ void
 xQGanttBarViewPort::setMode(int mode) 
 /////////////////////////////
 {
-  printf("setMode( %d )\n", mode );
+//  printf("setMode( %d )\n", mode );
 
   if(_mode == (Mode) mode) {
     return;
@@ -649,7 +649,7 @@ xQGanttBarViewPort::snapCursor(int x, int y)
 
   QDateTime dt(_maintask->getStart().addSecs(wwx*60).date());
 
-  printf("dt  = %s \n", dt.toString().latin1() );
+//  printf("dt  = %s \n", dt.toString().latin1() );
 
   double tmp = ((double) wwx)/((double) _snapgrid);
   wwx = ((int) (tmp + sgn(tmp) * 0.5)) * _snapgrid;
@@ -712,7 +712,7 @@ xQGanttBarViewPort::zoom(double sfactor, int wx, int wy)
 {
   _scaleX *= sfactor;
 
-  printf("xQGanttBarViewPort::zoom(); scaleX = %f \n", _scaleX );
+//  printf("xQGanttBarViewPort::zoom(); scaleX = %f \n", _scaleX );
 
   //  _scaleY *= sfactor;
   /*
@@ -738,7 +738,7 @@ void
 xQGanttBarViewPort::zoomAll()
 /////////////////////////////
 {  
-  printf("zoom all. scaleX = %f\n", _scaleX );
+//  printf("zoom all. scaleX = %f\n", _scaleX );
 
   _scaleX = ((double) (((QWidget*) parent())->width()*60))/
     ((double) _maintask->getStart().secsTo(_maintask->getEnd()));

@@ -55,7 +55,8 @@ libkorganizer_la_SOURCES =  outgoingdialog_base.ui \
         scanholiday.c parseholiday.c \
         koprojectview.cpp xQGantt.cpp xQTask.cpp xQGanttListView.cpp \
         xQGanttBarView.cpp xQGanttListViewPort.cpp xQGanttBarViewPort.cpp \
-        xQGanttBarViewPort_Events.cpp
+        xQGanttBarViewPort_Events.cpp \
+        korganizeriface.skel
 
 alarmd_SOURCES = alarmdaemon.cpp alarmmain.cpp \
         calobject.cpp calendarlocal.cpp \

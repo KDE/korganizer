@@ -18,6 +18,7 @@
 #include <kstatusbar.h>
 #include <kmenubar.h>
 #include <kurl.h>
+#include "korganizeriface.h"
 
 #include "qdatelist.h"
 #include "calobject.h"
@@ -38,7 +39,7 @@ class KToggleAction;
  * @author Preston Brown
  * @version $Revision$
  */
-class KOrganizer : public KMainWindow
+class KOrganizer : public KMainWindow, virtual public KOrganizerIface
 {
     Q_OBJECT
   public:
@@ -65,6 +66,15 @@ class KOrganizer : public KMainWindow
 
     /** Is there a instance with this URL? */
     static KOrganizer* findInstance(const KURL &url);
+
+    /** Open calendar file from URL */
+    bool openURL(QString url);
+    /** Open calendar file from URL */
+    bool mergeURL(QString url);
+    /** Save calendar file to URL */
+    bool saveAsURL(QString url);
+    /** Get current URL as QString */
+    QString getCurrentURLasString() const;
 
   signals:
 
@@ -95,6 +105,9 @@ class KOrganizer : public KMainWindow
 
     /** Make calendar active */
     void makeActive();
+
+    /** show status message */
+    void showStatusMessage(const QString &);
 
   protected slots:
  
@@ -210,7 +223,7 @@ class KOrganizer : public KMainWindow
     KToggleAction *mFilterViewAction;
 
     // status bar ids
-    enum { ID_GENERAL, ID_MESSAGES_IN, ID_MESSAGES_OUT };
+    enum { ID_GENERAL, ID_ACTIVE, ID_MESSAGES_IN, ID_MESSAGES_OUT };
 
   private slots:
     void dumpText(const QString &);  // only for debugging purposes

@@ -64,7 +64,7 @@
 KOWindowList *KOrganizer::windowList = 0;
 
 KOrganizer::KOrganizer(const char *name) 
-  : KMainWindow(0,name)
+  : KMainWindow(0,name), DCOPObject("KOrganizerIface")
 {
   kdDebug() << "KOrganizer::KOrganizer()" << endl;
 
@@ -83,6 +83,9 @@ KOrganizer::KOrganizer(const char *name)
   initActions();
 
   statusBar()->insertItem("",ID_GENERAL,10);
+
+//  statusBar()->insertFixedItem(i18n("Active"),ID_ACTIVE);
+
   if (KOPrefs::instance()->mEnableGroupScheduling) {
     statusBar()->insertItem(i18n("Incoming Messages: %1").arg(0),
                             ID_MESSAGES_IN);
@@ -113,6 +116,9 @@ KOrganizer::KOrganizer(const char *name)
           SLOT(setNumIncoming(int)));
   connect(mCalendarView,SIGNAL(numOutgoingChanged(int)),
           SLOT(setNumOutgoing(int)));
+
+  connect(mCalendarView,SIGNAL(statusMessage(const QString &)),
+          SLOT(showStatusMessage(const QString &)));
 
   // Update state of event instance related actions
   mCalendarView->emitEventsSelected();
@@ -429,6 +435,8 @@ void KOrganizer::file_open()
   KURL url;
   QString defaultPath = locateLocal("appdata", "");
   url = KFileDialog::getOpenURL(defaultPath,i18n("*.vcs *.ics|Calendar files"),this);
+
+  if (url.isEmpty()) return;
 
   KOrganizer *korg=KOrganizer::findInstance(url);
   if ((0 != korg)&&(korg != this)) {
@@ -946,4 +954,29 @@ void KOrganizer::setNumOutgoing(int num)
 {
   statusBar()->changeItem(i18n("Outgoing Messages: %1").arg(num),
                           ID_MESSAGES_OUT);
+}
+
+void KOrganizer::showStatusMessage(const QString &message)
+{
+  statusBar()->message(message,2000);
+}
+
+bool KOrganizer::openURL(QString url)
+{
+  return openURL(KURL(url));
+}
+
+bool KOrganizer::mergeURL(QString url)
+{
+  return mergeURL(KURL(url));
+}
+
+bool KOrganizer::saveAsURL(QString url)
+{
+  return saveAsURL(KURL(url));
+}
+
+QString KOrganizer::getCurrentURLasString() const
+{
+  return mURL.url();
 }

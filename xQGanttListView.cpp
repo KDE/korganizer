@@ -61,7 +61,7 @@ void
 xQGanttListView::contentsMoved(int x, int y)
 ////////////////////////////////////////////
 {
-  printf("xQGanttListView::contentsMoved(%d,%d)\n", x, y);
+//  printf("xQGanttListView::contentsMoved(%d,%d)\n", x, y);
   setContentsPos( 0, y );
 }
 
@@ -71,7 +71,7 @@ void
 xQGanttListView::paintEvent(QPaintEvent * e)
 //////////////////////////////////////// 
 {      
-  printf("xQGanttListView::paintEvent()\n");  
+//  printf("xQGanttListView::paintEvent()\n");  
   drawHeader();
 }
 #include "xQGanttListView.moc"

@@ -10,12 +10,12 @@
 
 
 
-xQGanttBarView::xQGanttBarView(xQTask* maintask, QWidget* parent = 0, 
-			       const char * name=0, WFlags f=0 )
+xQGanttBarView::xQGanttBarView(xQTask* maintask, QWidget* parent, 
+			       const char * name, WFlags f)
   : QScrollView(parent,name,f)
 /////////////////////////////////////////////////////////
 {     
-  printf("xQGanttBarView::xQGanttBarView()\n");
+//  printf("xQGanttBarView::xQGanttBarView()\n");
 
   _task = maintask;
  
@@ -57,7 +57,7 @@ void
 xQGanttBarView::horizontalScrollBarChanged(int x)
 ////////////////////////////////////////////////////
 {
-  printf("xQGanttBarView::horizontalScrollBarChanged()\n");
+//  printf("xQGanttBarView::horizontalScrollBarChanged()\n");
   drawHeader();
 }
 
@@ -189,7 +189,7 @@ void
 xQGanttBarView::paintEvent(QPaintEvent * e)
 //////////////////////////////////////// 
 {      
-  printf("xQGanttBarView::paintEvent()\n");  
+//  printf("xQGanttBarView::paintEvent()\n");  
   drawHeader();
 }
 

@@ -96,6 +96,9 @@ class CalendarView : public QWidget
 
     /** Emitted, when the number of outgoing messages has changed */
     void numOutgoingChanged(int);
+
+    /** Send status message, which can e.g. be displayed in the status bar */
+    void statusMessage(const QString &);
     
   public slots:
     /** options dialog made a changed to the configuration. we catch this

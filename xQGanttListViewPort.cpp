@@ -49,7 +49,7 @@ xQGanttListViewPort::setBarViewPort(xQGanttBarViewPort* v)
 
   resize(500, _barviewport->height());
 
-  printf("setBarViewPort()\n");
+//  printf("setBarViewPort()\n");
 
   connect(_barviewport, SIGNAL(resized()),
 	  this, SLOT(barViewResized()));
@@ -70,7 +70,7 @@ void
 xQGanttListViewPort::barViewResized()
 //////////////////////////////////////
 {
-  printf("xQGanttListViewPort::barViewResized()\n");
+//  printf("xQGanttListViewPort::barViewResized()\n");
   
   static int _h = 0;
 

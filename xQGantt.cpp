@@ -19,7 +19,7 @@ xQGantt::xQGantt(xQTask* maintask = 0, QWidget* parent = 0,
   : QWidget(parent,name,f)
 /////////////////////////////////////////////////////////
 { 
-  printf("xQGantt::xQGantt()\n");
+//  printf("xQGantt::xQGantt()\n");
 
   if(maintask == 0) {
     _task = new xQTask(0, "maintask",

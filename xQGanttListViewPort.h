@@ -104,7 +104,7 @@ protected:
   xQTask* _maintask;
 
   void paintEvent(QPaintEvent * e) {    
-    printf("xQGanttListViewPort::paintEvent()\n");
+//    printf("xQGanttListViewPort::paintEvent()\n");
     update(e->rect().left(), e->rect().top(),
 	   e->rect().right(), e->rect().bottom() );
   }
