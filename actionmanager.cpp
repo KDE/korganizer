@@ -241,8 +241,8 @@ void ActionManager::initActions()
                                         mACollection,
                                         "show_filter");
 
-  (void)new KAction(i18n("&Tip of the Day"), 0,
-                    this, SLOT(showTip()), mACollection, "help_tipofday");
+  KStdAction::tipOfDay( this, SLOT( showTip() ), mACollection,
+                        "help_tipofday" );
 
   new KAction( i18n("Get Hot New Stuff..."), 0, this,
                SLOT( downloadNewStuff() ), mACollection,
@@ -360,7 +360,7 @@ void ActionManager::initActions()
                     mACollection, "view_week");
   mNextXDays = new KAction("", "xdays", 0,mCalendarView->viewManager(),
                     SLOT(showNextXView()),mACollection, "view_nextx");
-  mNextXDays->setText(i18n("&Next Day", "&Next %n Days", KOPrefs::instance()->mNextXDays));
+  mNextXDays->setText(i18n("&Next Day", "Ne&xt %n Days", KOPrefs::instance()->mNextXDays));
   (void)new KAction(i18n("&Month"), "month", 0,
                     mCalendarView->viewManager(), SLOT(showMonthView()),
                     mACollection, "view_month");
