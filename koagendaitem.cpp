@@ -74,7 +74,7 @@ void KOAgendaItem::generateToolTip()
 {
   QString tipText = "<qt><b>"+ mIncidence->summary().replace("\n", "<br>")+"</b>";
 
-  if ( !mIncidence->doesFloat() )
+  if ( !mIncidence->doesFloat() ) {
     if ( mIncidence->type() == "Event" ) {
       if ( (static_cast<Event*>(mIncidence))->isMultiDay() ) {
         tipText += "<br>"+i18n("From: ")+mIncidence->dtStartStr();
@@ -88,6 +88,17 @@ void KOAgendaItem::generateToolTip()
     else if ( mIncidence->type() == "Todo" ) {
       tipText += "<br>"+i18n("Due: ")+ (static_cast<Todo*>(mIncidence))->dtDueTimeStr();
     }
+  } else {
+    if ( mIncidence->type() == "Event" ) {
+      if ( (static_cast<Event*>(mIncidence))->isMultiDay() ) {
+        tipText += "<br>"+i18n("From: ")+mIncidence->dtStartDateStr();
+        tipText += "<br>"+i18n("To: ")+(static_cast<Event*>(mIncidence))->dtEndDateStr();
+      } else {
+        tipText += "<br>"+i18n("Date: ")+mIncidence->dtStartDateStr();
+      }
+    }
+  }
+
 
   if (!mIncidence->location().isEmpty()) {
     tipText += "<br>"+i18n("Location: ")+mIncidence->location().replace("\n", "<br>");
