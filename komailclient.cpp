@@ -68,6 +68,21 @@ bool KOMailClient::mailAttendees(Incidence *incidence,const QString &attachment)
   return send(from,to,subject,body,bcc,attachment);
 }
 
+bool KOMailClient::mailOrganizer(Incidence *incidence,const QString &attachment)
+{
+  QString to = incidence->organizer();
+
+  QString from = KOPrefs::instance()->email();
+
+  QString subject = incidence->summary();
+
+  QString body = createBody(incidence);
+
+  bool bcc = KOPrefs::instance()->mBcc;
+
+  return send(from,to,subject,body,bcc,attachment);
+}
+
 bool KOMailClient::mailTo(Incidence *incidence,const QString recipients,
                           const QString &attachment)
 {

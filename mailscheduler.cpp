@@ -61,7 +61,12 @@ bool MailScheduler::performTransaction(Event *incidence,Method method)
 
   KOMailClient mailer;
 //  kdDebug () << "MailScheduler::performTransaction"  << endl;
-  return mailer.mailAttendees(incidence,messageText);
+  if (method==Request || method==Cancel || method==Add || method==Declinecounter) {
+    return mailer.mailAttendees(incidence,messageText);
+  }
+  else {
+    return mailer.mailOrganizer(incidence,messageText);
+  }
 }
 
 QPtrList<ScheduleMessage> MailScheduler::retrieveTransactions()
