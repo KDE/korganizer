@@ -2,9 +2,6 @@
 INCLUDES= $(all_includes) \
 	   -I$(srcdir)/versit 
 
-# this gives better compile-time warnings.
-CXXFLAGS = -g -Wall -pedantic
-
 bin_PROGRAMS = 	korganizer alarmd
 lib_LTLIBRARIES = libkorganizer.la
 
@@ -17,7 +14,7 @@ korganizer_LDFLAGS = $(KDE_RPATH)
 korganizer_SOURCES = main.cpp
 korganizer_LDADD   = libkorganizer.la
 
-alarmd_LDADD =  versit/libversit.a $(LIB_KDEUI)
+alarmd_LDADD =  versit/libversit.a $(KDE_RPATH) $(LIB_KDEUI)
 
 ########## FILES
 
