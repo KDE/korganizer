@@ -65,17 +65,19 @@ void CategorySelectDialog::setSelected(const QStringList &selList)
 
 void CategorySelectDialog::slotApply()
 {
-  QString catStr;
+  QStringList categories;
   QCheckListItem *item = (QCheckListItem *)mCategories->firstChild();
   while (item) {
     if (item->isOn()) {
-      if (!catStr.isEmpty()) catStr.append(", ");
-      catStr.append(item->text());
+      categories.append(item->text());
     }
     item = (QCheckListItem *)item->nextSibling();
   }
+  
+  QString categoriesStr = categories.join(", ");
 
-  emit categoriesSelected(catStr);
+  emit categoriesSelected(categories);
+  emit categoriesSelected(categoriesStr);
 }
 
 void CategorySelectDialog::slotOk()

@@ -180,7 +180,7 @@ void KOEditorGeneralTodo::initLayout()
   layoutCategories->addWidget(mSecrecyCombo);
 }
 
-void KOEditorGeneralTodo::setCategories(QString str)
+void KOEditorGeneralTodo::setCategories(const QString &str)
 {
   categoriesLabel->setText(str);
 }

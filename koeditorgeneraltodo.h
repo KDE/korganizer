@@ -39,7 +39,7 @@ class KOEditorGeneralTodo : public QWidget
     bool validateInput();
 
   public slots:
-    void setCategories(QString);
+    void setCategories(const QString &);
 
   signals:
     void openCategoryDialog();

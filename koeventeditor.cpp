@@ -56,8 +56,8 @@ void KOEventEditor::setupCustomTabs()
 
   // Category dialog
   connect(mGeneral,SIGNAL(openCategoryDialog()),mCategoryDialog,SLOT(show()));
-  connect(mCategoryDialog,SIGNAL(categoriesSelected(QString)),
-          mGeneral,SLOT(setCategories(QString)));
+  connect(mCategoryDialog,SIGNAL(categoriesSelected(const QString &)),
+          mGeneral,SLOT(setCategories(const QString &)));
 }
 
 void KOEventEditor::setupRecurrenceTab()

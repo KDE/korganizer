@@ -288,7 +288,7 @@ void KOTodoView::updateView()
 //  kdDebug() << "KOTodoView::updateView()" << endl;
   mTodoListView->clear();
 
-  QList<Todo> todoList = mCalendar->getTodoList();
+  QList<Todo> todoList = mCalendar->getFilteredTodoList();
 
 /*
   kdDebug() << "KOTodoView::updateView(): Todo List:" << endl;

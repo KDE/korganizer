@@ -40,6 +40,8 @@ class FilterEditDialog : public KDialogBase
 
     void slotAdd();
     void filterSelected();
+    void editCategorySelection();
+    void updateCategorySelection(const QStringList &categories);
 
   protected:
     void readFilter(CalFilter *);
@@ -50,6 +52,8 @@ class FilterEditDialog : public KDialogBase
 
     QComboBox *mSelectionCombo;
     FilterEdit_base *mEditor;
+    
+    QStringList mCategories;
 };
 
 #endif

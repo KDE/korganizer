@@ -31,12 +31,14 @@
 #include <qcombobox.h>
 #include <qinputdialog.h>
 #include <qcheckbox.h>
+#include <qradiobutton.h>
 
 #include <kdebug.h>
 #include <klocale.h>
 
 #include "koprefs.h"
 #include "filteredit_base.h"
+#include "categoryselectdialog.h"
 
 #include "filtereditdialog.h"
 #include "filtereditdialog.moc"
@@ -64,6 +66,9 @@ FilterEditDialog::FilterEditDialog(QList<CalFilter> *filters,QWidget *parent,
   topLayout->addWidget(mSelectionCombo,0,0);
   topLayout->addWidget(addButton,0,1);
   topLayout->addMultiCellWidget(mEditor,1,1,0,1);
+
+  connect(mEditor->mCatEditButton,SIGNAL(clicked()),
+          SLOT(editCategorySelection()));
 
   // Clicking cancel exits the dialog without saving
   connect(this,SIGNAL(cancelClicked()),SLOT(reject()));
@@ -126,6 +131,25 @@ void FilterEditDialog::slotAdd()
   }
 }
 
+void FilterEditDialog::editCategorySelection()
+{
+  CategorySelectDialog *dlg = new CategorySelectDialog(this,"filterCatSelect",true);
+  dlg->setSelected(mCategories);
+
+  connect(dlg,SIGNAL(categoriesSelected(const QStringList &)),
+          SLOT(updateCategorySelection(const QStringList &)));
+
+  dlg->exec();
+}
+
+void FilterEditDialog::updateCategorySelection(const QStringList &categories)
+{
+  mCategories = categories;
+
+  mEditor->mCatList->clear();
+  mEditor->mCatList->insertStringList(mCategories);
+}
+
 void FilterEditDialog::filterSelected()
 {
   CalFilter *f = mFilters->at(mSelectionCombo->currentItem());
@@ -135,26 +159,33 @@ void FilterEditDialog::filterSelected()
 
 void FilterEditDialog::readFilter(CalFilter *filter)
 {
-  int in = filter->inclusionCriteria();
+  int c = filter->criteria();
   
-  mEditor->mInRecurringCheck->setChecked(in & CalFilter::Recurring);
-  mEditor->mInFloatingCheck->setChecked(in & CalFilter::Floating);
+  mEditor->mCompletedCheck->setChecked(c & CalFilter::HideCompleted);
+  mEditor->mRecurringCheck->setChecked(c & CalFilter::HideRecurring);
 
-  int ex = filter->exclusionCriteria();
+  if (c & CalFilter::ShowCategories) {
+    mEditor->mCatShowCheck->setChecked(true);
+  } else {
+    mEditor->mCatHideCheck->setChecked(true);
+  }
   
-  mEditor->mExRecurringCheck->setChecked(ex & CalFilter::Recurring);
-  mEditor->mExFloatingCheck->setChecked(ex & CalFilter::Floating);
+  mEditor->mCatList->insertStringList(filter->categoryList());
 }
 
 void FilterEditDialog::writeFilter(CalFilter *filter)
 {
-  int in = 0;
-  if (mEditor->mInRecurringCheck->isChecked()) in |= CalFilter::Recurring;
-  if (mEditor->mInFloatingCheck->isChecked()) in |= CalFilter::Floating;
-  filter->setInclusionCriteria(in);
+  int c = 0;
 
-  int ex = 0;
-  if (mEditor->mExRecurringCheck->isChecked()) ex |= CalFilter::Recurring;
-  if (mEditor->mExFloatingCheck->isChecked()) ex |= CalFilter::Floating;
-  filter->setExclusionCriteria(ex);
+  if (mEditor->mCompletedCheck->isChecked()) c |= CalFilter::HideCompleted;
+  if (mEditor->mRecurringCheck->isChecked()) c |= CalFilter::HideRecurring;
+  if (mEditor->mCatShowCheck->isChecked()) c |= CalFilter::ShowCategories;
+
+  filter->setCriteria(c);
+
+  QStringList categoryList;
+  for(uint i=0;i<mEditor->mCatList->count();++i) {
+    categoryList.append(mEditor->mCatList->text(i));
+  }
+  filter->setCategoryList(categoryList);
 }

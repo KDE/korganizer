@@ -418,11 +418,16 @@ void CalendarView::readFilterSettings(KConfig *config)
     CalFilter *filter;
     filter = new CalFilter(*it);
     config->setGroup("Filter_" + (*it));
-    filter->setInclusionCriteria(config->readNumEntry("Inclusion",0));
-    filter->setExclusionCriteria(config->readNumEntry("Exclusion",0));
+    filter->setCriteria(config->readNumEntry("Criteria",0));
+    filter->setCategoryList(config->readListEntry("CategoryList"));
     mFilters.append(filter);
   
     ++it;
+  }
+  
+  if (mFilters.count() == 0) {
+    CalFilter *filter = new CalFilter(i18n("Default"));
+    mFilters.append(filter);
   }
   
   mFilterView->updateFilters();
@@ -439,8 +444,8 @@ void CalendarView::writeFilterSettings(KConfig *config)
 //    kdDebug() << " fn: " << filter->name() << endl;
     filterList << filter->name();
     config->setGroup("Filter_" + filter->name());
-    config->writeEntry("Inclusion",filter->inclusionCriteria());
-    config->writeEntry("Exclusion",filter->exclusionCriteria());
+    config->writeEntry("Criteria",filter->criteria());
+    config->writeEntry("CategoryList",filter->categoryList());
     filter = mFilters.next();
   }
   config->setGroup("General");

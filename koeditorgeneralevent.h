@@ -43,7 +43,7 @@ class KOEditorGeneralEvent : public QWidget
 
   public slots:
     void setDateTimes(QDateTime start, QDateTime end);
-    void setCategories(QString);
+    void setCategories(const QString &);
     void setDuration();
 
   protected slots:

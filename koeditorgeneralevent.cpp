@@ -350,7 +350,7 @@ void KOEditorGeneralEvent::setDateTimes(QDateTime start, QDateTime end)
   emitDateTimeStr();
 }
 
-void KOEditorGeneralEvent::setCategories(QString str)
+void KOEditorGeneralEvent::setCategories(const QString &str)
 {
   categoriesLabel->setText(str);
 }
