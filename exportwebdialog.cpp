@@ -115,7 +115,7 @@ void ExportWebDialog::setupGeneralPage()
   QGroupBox *destGroup = new QVGroupBox(i18n("Destination"),mGeneralPage);
   topLayout->addWidget(destGroup);
 
-  new QLabel(i18n("Output File:"),destGroup);
+  new QLabel(i18n("Output file:"),destGroup);
 
   QHBox *outputFileLayout = new QHBox(destGroup);
   mOutputFileEdit = new KURLRequester(KOPrefs::instance()->mHtmlExportFile,
