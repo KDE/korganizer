@@ -67,16 +67,18 @@ void KOJournalView::appendJournal( Journal*journal, const QDate &dt)
 //  kdDebug(5850) << "KOJournalView::appendJournal(): "<< journal<<endl;
 //  JournalEntry*j = new JournalEntry( calendar(), this );
   JournalEntry*j = new JournalEntry( calendar(), mVBox );
-  j->show();
-  j->setJournal( journal );
-  j->setDate( dt );
-  connect( j, SIGNAL( incidenceAdded( Incidence* )), SIGNAL( incidenceAdded( Incidence* )) );
-  connect( j, SIGNAL( incidenceChanged( Incidence*, Incidence* )), SIGNAL( incidenceChanged( Incidence*, Incidence* )) );
-  connect( j, SIGNAL( incidenceToBeDeleted( Incidence* )), SIGNAL( incidenceToBeDeleted( Incidence* )) );
-  connect( j, SIGNAL( incidenceDeleted( Incidence* )), SIGNAL( incidenceDeleted( Incidence* )) );
+  if ( j ) {
+    j->show();
+    j->setJournal( journal );
+    j->setDate( dt );
+    connect( j, SIGNAL( incidenceAdded( Incidence* )), SIGNAL( incidenceAdded( Incidence* )) );
+    connect( j, SIGNAL( incidenceChanged( Incidence*, Incidence* )), SIGNAL( incidenceChanged( Incidence*, Incidence* )) );
+    connect( j, SIGNAL( incidenceToBeDeleted( Incidence* )), SIGNAL( incidenceToBeDeleted( Incidence* )) );
+    connect( j, SIGNAL( incidenceDeleted( Incidence* )), SIGNAL( incidenceDeleted( Incidence* )) );
 
-  mEntries.append( j );
-  mSelectedDates.append( dt );
+    mEntries.append( j );
+    mSelectedDates.append( dt );
+  }
 }
 
 int KOJournalView::currentDateCount()
@@ -110,8 +112,10 @@ void KOJournalView::updateView()
 {
   JournalEntry::List::iterator it;
   for ( it = mEntries.begin(); it != mEntries.end(); ++it ) {
-    QDate dt((*it)->date());
-    (*it)->setJournal( calendar()->journal( dt ) );
+    if ( (*it) ) {
+      QDate dt((*it)->date());
+      (*it)->setJournal( calendar()->journal( dt ) );
+    }
   }
 }
 
@@ -120,7 +124,7 @@ void KOJournalView::flushView()
 //  kdDebug(5850) << "KOJournalView::flushView(): "<< endl;
   JournalEntry::List::iterator it;
   for ( it = mEntries.begin(); it != mEntries.end(); ++it ) {
-    (*it)->flushEntry();
+    if (*it) (*it)->flushEntry();
   }
 }
 
@@ -145,7 +149,7 @@ void KOJournalView::showIncidences( const Incidence::List &incidences )
   for ( it=incidences.constBegin(); it!=incidences.constEnd(); ++it) {
     if ((*it) && ( (*it)->type()=="Journal" ) ) {
       Journal*j = (Journal*)(*it);
-      appendJournal( j, j->dtStart().date() );
+      if ( j ) appendJournal( j, j->dtStart().date() );
     }
   }
 }

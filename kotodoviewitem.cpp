@@ -94,6 +94,7 @@ void KOTodoViewItem::paintBranches(QPainter *p,const QColorGroup & cg,int w,
 
 void KOTodoViewItem::construct()
 {
+  if ( !mTodo ) return;
   m_init = true;
   QString keyd = "9";
 
@@ -156,8 +157,8 @@ void KOTodoViewItem::construct()
 
 void KOTodoViewItem::stateChange(bool state)
 {
-  // do not change setting on startup
-  if ( m_init ) return;
+  // do not change setting on startup or if no valid todo item is given
+  if ( m_init || !mTodo ) return;
 
   kdDebug(5850) << "State changed, modified " << state << endl;
   QString keyd = "9";
@@ -253,6 +254,8 @@ bool KOTodoViewItem::isAlternate()
 void KOTodoViewItem::paintCell(QPainter *p, const QColorGroup &cg, int column, int width, int alignment)
 {
   QColorGroup _cg = cg;
+  // If no todo is set, just don't paint anything...
+  if ( !mTodo ) return;
 #ifndef KORG_NOLVALTERNATION
   if (isAlternate())
         _cg.setColor(QColorGroup::Base, static_cast< KOTodoListView* >(listView())->alternateBackground());

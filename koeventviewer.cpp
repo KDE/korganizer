@@ -35,7 +35,7 @@
 #include <kapplication.h>
 #include <kdebug.h>
 #ifndef KORG_NOKABC
- #include <kabc/stdaddressbook.h>
+#include <kabc/stdaddressbook.h>
 #endif
 
 KOEventViewer::KOEventViewer( QWidget *parent, const char *name )
