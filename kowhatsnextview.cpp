@@ -139,6 +139,7 @@ void KOWhatsNextView::updateView()
     mText += "</table>\n";
   }
 
+  mTodos.clear();
   QPtrList<Todo> todos = calendar()->todos();
   if (todos.count() > 0) {
     kil.loadIcon("todo",KIcon::NoGroup,22,KIcon::DefaultState,ipath);
@@ -272,6 +273,10 @@ void KOWhatsNextView::appendEvent(Incidence *ev, bool reply)
 
 void KOWhatsNextView::appendTodo(Incidence *ev)
 {
+  if ( mTodos.find( ev ) != mTodos.end() ) return;
+
+  mTodos.append( ev );
+
   mText += "<li><a href=\"todo:" + ev->uid() + "\">";
   mText += ev->summary();
   mText += "</a></li>\n";

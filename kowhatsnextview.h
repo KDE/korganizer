@@ -80,6 +80,8 @@ class KOWhatsNextView : public KOrg::BaseView
     QString mText;
 
     KOEventViewerDialog *mEventViewer;
+    
+    QValueList<Incidence *> mTodos;
 };
 
 #endif
