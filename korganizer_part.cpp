@@ -154,36 +154,35 @@ KOrganizerPart::KOrganizerPart(QWidget *parentWidget, const char *widgetName,
   QTimer::singleShot(0, mActionManager, SLOT(loadParts()));
 }
 
-void KOrganizerPart::startCompleted( KProcess* process ) {
-    delete process;
+void KOrganizerPart::startCompleted( KProcess* process )
+{
+  delete process;
 }
 
 void KOrganizerPart::saveCalendar()
 {
   QPtrListIterator<KMainWindow> it(*KMainWindow::memberList);
   KMainWindow *window = 0;
-  while ((window = it.current()) != 0) {
+  while ( ( window = it.current() ) != 0 ) {
     ++it;
-    if (window->inherits("KOrganizer")) {
-      KOrganizer *korg = dynamic_cast<KOrganizer*>(window);
-	  if (korg)
-	  {
-         if (!korg->actionManager()->view()->isModified())
-	        continue;
-         if (korg->actionManager()->url().isEmpty()) {
-	        KTempFile tmp( locateLocal( "data", "korganizer/" ));
-	        korg->actionManager()->saveAsURL( tmp.name() );
-         } else {
-	        korg->actionManager()->saveURL();
-         }
-         window->close(true);
-	  }
+    if ( window->inherits( "KOrganizer" ) ) {
+      KOrganizer *korg = dynamic_cast<KOrganizer*>( window );
+      if ( korg ) {
+        if ( !korg->actionManager()->view()->isModified() )
+	  continue;
+        if ( korg->actionManager()->url().isEmpty() ) {
+	  KTempFile tmp( locateLocal( "data", "korganizer/" ) );
+	  korg->actionManager()->saveAsURL( tmp.name() );
+        } else {
+	  korg->actionManager()->saveURL();
+        }
+        window->close( true );
+      }
     }
-
   }
 
-  if (mActionManager->view()->isModified()) {
-    if (!mActionManager->url().isEmpty()) {
+  if ( mActionManager->view()->isModified() ) {
+    if ( !mActionManager->url().isEmpty() ) {
       mActionManager->saveURL();
     } else {
       QString location = locateLocal( "data", "korganizer/kontact.ics" );
