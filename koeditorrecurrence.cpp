@@ -139,7 +139,7 @@ QBitArray RecurWeekly::days()
   QBitArray days( 7 );
 
   for ( int i = 0; i < 7; ++i ) {
-    days.setBit( 0, mDayBoxes[ i ]->isChecked() );
+    days.setBit( i, mDayBoxes[ i ]->isChecked() );
   }
   
   return days;
