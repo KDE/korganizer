@@ -47,7 +47,7 @@ class QPopupMenu;
   that is up to the classes that inherit from it.  It also provides
   methods for updating the display, retrieving the currently selected
   event (or events), and the like.
-  
+
   @short Abstract class from which all event views are derived.
   @author Preston Brown <pbrown@kde.org>
   @see KOListView, KOAgendaView, KOWeekView, KOMonthView
@@ -55,26 +55,28 @@ class QPopupMenu;
 class KOEventView : public KOrg::BaseView
 {
     Q_OBJECT
-  
+
   public:
     /**
-     * Constructs a view. 
+     * Constructs a view.
      * @param cal is a pointer to the calendar object from which events
      *        will be retrieved for display.
+     * @param parent is the parent QWidget.
+     * @param name is the view name.
      */
     KOEventView(Calendar *cal,QWidget *parent=0,const char *name=0);
-  
+
     /**
      * Destructor.  Views will do view-specific cleanups here.
      */
     virtual ~KOEventView();
-  
+
     /**
      * provides a hint back to the caller on the maximum number of dates
      * that the view supports.  A return value of 0 means no maximum.
      */
     virtual int maxDatesHint() = 0;
-      
+
     /**
      * Construct a standard context menu for an event.
      */
@@ -87,7 +89,7 @@ class KOEventView : public KOrg::BaseView
 
     /** This view is an view for displaying events. */
     bool isEventView() { return true; }
-  
+
   public slots:
 
     /**
@@ -95,13 +97,13 @@ class KOEventView : public KOrg::BaseView
      when double-clicking an event in the agenda view.
     */
     void defaultAction( Incidence * );
-    
+
   signals:
     /**
      * when the view changes the dates that are selected in one way or
      * another, this signal is emitted.  It should be connected back to
      * the @see KDateNavigator object so that it changes appropriately,
-     * and any other objects that need to be aware that the list of 
+     * and any other objects that need to be aware that the list of
      * selected dates has changed.
      */
     void datesSelected(const DateList);

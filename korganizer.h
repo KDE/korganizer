@@ -67,9 +67,6 @@ class KOrganizer : public KPartsMainWindow, public KOrgMainWindow
   public:
     /**
       Constructs a new main window.
-
-      @param document If true this window shows a calendar as document, if false
-                      the resource based backend is used.
       @param name     Qt internal widget name
     */
     KOrganizer( const char *name = 0 );

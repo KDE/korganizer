@@ -86,7 +86,7 @@ class KOProjectView : public KOrg::BaseView
     void changeIncidenceDisplay(Incidence *, int);
 
     void showDates(const QDate &start, const QDate &end);
-    void showIncidences( const Incidence::List & );
+    void showIncidences( const Incidence::List &incidenceList );
 
 /*
     void editItem(QListViewItem *item);

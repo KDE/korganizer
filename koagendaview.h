@@ -170,7 +170,7 @@ class KOAgendaView : public KOEventView
     virtual void updateView();
     virtual void updateConfig();
     virtual void showDates( const QDate &start, const QDate &end );
-    virtual void showIncidences( const Incidence::List & );
+    virtual void showIncidences( const Incidence::List &incidenceList );
 
     void insertIncidence( Incidence *incidence, QDate curDate, int curCol = -1 );
     void changeIncidenceDisplayAdded( Incidence *incidence );

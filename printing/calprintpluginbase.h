@@ -54,10 +54,6 @@ class CalPrintPluginBase : public KOrg::PrintPlugin
   public:
     /**
       Constructor
-      
-      \param pr KPrinter object used to print.
-      \param cal Calendar to be printed.
-      \param cfg KConfig object for reading/writing printing configuration
     */
     CalPrintPluginBase() : KOrg::PrintPlugin() {}
     virtual ~CalPrintPluginBase() {}
@@ -69,7 +65,7 @@ class CalPrintPluginBase : public KOrg::PrintPlugin
 
     /**
       Actually do the printing.
-      
+
       \param p QPainter the print result is painted to
       \param width Width of printable area
       \param height Height of printable area

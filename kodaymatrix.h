@@ -39,7 +39,7 @@ class QDropEvent;
 
 class KODayMatrix;
 
-namespace KCal { 
+namespace KCal {
 class Incidence;
 class Calendar;
 }
@@ -106,11 +106,8 @@ class KODayMatrix: public QFrame
   public:
     /** constructor to create a day matrix widget.
      *
-     *  @param parent widget that is the parent of the day matrix. Normally this should
-     *                be a KDateNavigator
-     *  @param calendar instance of a calendar on which all calculations are based
-     *  @param date start date of the matrix (is expected to be already fixed). It is
-     *              assumed that this date is the first week day to be shown in the matrix.
+     *  @param parent widget that is the parent of the day matrix.
+     *  Normally this should be a KDateNavigator
      *  @param name name of the widget
      */
     KODayMatrix( QWidget *parent, const char *name );
@@ -202,13 +199,13 @@ class KODayMatrix: public QFrame
 
     /** emitted if the user has dropped an incidence (event or todo) inside the matrix
      *
-     *  @param event the dropped calendar event
+     *  @param incidence the dropped calendar incidence
      */
-    void incidenceDropped( Incidence * );
+    void incidenceDropped( Incidence *incidence );
     /** emitted if the user has dropped an event inside the matrix and chose to move it instead of copy
      *
-     *  @param oldevent the new calendar event
-     *  @param newevent the item that was moved
+     *  @param oldincidence the new calendar incidence
+     *  @param newincidence the incidence that was moved
      */
     void incidenceDroppedMove( Incidence *oldincidence, Incidence *newincidence );
 

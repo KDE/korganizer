@@ -127,9 +127,9 @@ class BaseView : public QWidget
       Show given incidences. Depending on the actual view it might not be possible to
       show all given events.
 
-      @param eventList a list of events to show.
+      @param incidenceList a list of incidences to show.
     */
-    virtual void showIncidences( const Incidence::List &eventList ) = 0;
+    virtual void showIncidences( const Incidence::List &incidenceList ) = 0;
 
     /**
       Updates the current display to reflect changes that may have happened
@@ -185,15 +185,15 @@ class BaseView : public QWidget
      * box, etc.  Doesn't make sense to connect to more than one receiver.
      */
     void deleteIncidenceSignal(Incidence *);
- 
-    /** 
+
+    /**
      * instructs the receiver to toggle the alarms of the Incidence.
      */
     void toggleAlarmSignal(Incidence *);
-    /** Dissociate from a recurring incidence the occurence on the given 
+    /** Dissociate from a recurring incidence the occurence on the given
         date to a new incidence */
     void dissociateOccurrenceSignal( Incidence *, const QDate & );
-    /** Dissociate from a recurring incidence all occurences after the given 
+    /** Dissociate from a recurring incidence all occurences after the given
         date to a new incidence */
     void dissociateFutureOccurrenceSignal( Incidence *, const QDate & );
 

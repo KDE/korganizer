@@ -75,7 +75,7 @@ class KOTodoListView : public KListView
     ~KOTodoListView();
 
     void setCalendar( Calendar * );
-    
+
   signals:
     void incidenceAdded( Incidence* );
     void incidenceChanged( Incidence*, Incidence* );
@@ -144,7 +144,7 @@ class KOTodoView : public KOrg::BaseView
     void changeIncidenceDisplay( Incidence *, int );
 
     void showDates( const QDate &start, const QDate &end );
-    void showIncidences( const Incidence::List & );
+    void showIncidences( const Incidence::List &incidenceList );
 
     void clearSelection();
 

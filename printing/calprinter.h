@@ -66,6 +66,7 @@ class CalPrinter : public QObject, public KOrg::CalPrinterBase
     /**
       \param par parent widget for dialogs
       \param cal calendar to be printed
+      \param helper is a pointer to the KOrg::CoreHelper object
     */
     CalPrinter( QWidget *par, Calendar *cal, KOrg::CoreHelper *helper );
     virtual ~CalPrinter();
@@ -74,7 +75,7 @@ class CalPrinter : public QObject, public KOrg::CalPrinterBase
 
     /**
       Set date range to be printed.
-      
+
       \param start Start date
       \param end   End date
     */

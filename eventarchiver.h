@@ -53,7 +53,7 @@ class EventArchiver : public QObject
 
     /**
      * Delete or archive events once
-     * @param calendar the calendar to
+     * @param calendar the calendar to archive
      * @param limitDate all events *before* the limitDate (not included) will be deleted/archived.
      * @param widget parent widget for message boxes
      * Confirmation and "no events to process" dialogs will be shown
@@ -62,6 +62,8 @@ class EventArchiver : public QObject
 
     /**
      * Delete or archive events. This is called regularly, when auto-archiving is enabled
+     * @param calendar the calendar to archive
+     * @param widget parent widget for message boxes
      * @param withGUI whether this is called from the dialog, so message boxes should be shown.
      * Note that error dialogs like "cannot save" are shown even if from this method, so widget
      * should be set in all cases.
