@@ -68,16 +68,20 @@ KOEventPopupMenu *KOEventView::eventPopup()
   return eventPopup;
 }
 
-QPopupMenu* KOEventView::newEventPopup()
+QPopupMenu *KOEventView::newEventPopup()
 {
-
-  KXMLGUIClient* client = KOCore::self()->xmlguiClient();
-  Q_ASSERT( client );
-  if ( !client->factory() ) return 0; // can happen if called too early
+  KXMLGUIClient *client = KOCore::self()->xmlguiClient();
+  if ( !client ) {
+    kdError() << "KOEventView::newEventPopup(): no xmlGuiClient." << endl;
+    return 0;
+  }
+  if ( !client->factory() ) {
+    kdError() << "KOEventView::newEventPopup(): no factory" << endl;
+    return 0; // can happen if called too early
+  }
 
   return static_cast<QPopupMenu*>
       ( client->factory()->container( "rmb_selection_popup", client ) );
-
 }
 //---------------------------------------------------------------------------
 
