@@ -1,2 +1,1 @@
-SUBDIRS=datenums holidays webexport
-
+SUBDIRS=$(AUTODIRS)

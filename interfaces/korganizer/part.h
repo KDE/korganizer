@@ -7,7 +7,7 @@
 #include <klibloader.h>
 #include <kparts/part.h>
 
-class CalendarView;
+#include <korganizer.h>
 
 namespace KOrg {
 
@@ -15,22 +15,22 @@ class Part : public KParts::Part {
   public:
     typedef QList<Part> List;
 
-    Part(CalendarView *view,QObject *parent, const char *name) :
-      KParts::Part(parent,name), mView(view) {};
+    Part(KOrganizer *parent, const char *name) :
+      KParts::Part(parent,name), mMainWindow(parent) {};
 
     virtual ~Part() {};
 
     virtual QString info() = 0;
   
-    CalendarView *view() { return mView; }
+    KOrganizer *mainWindow() { return mMainWindow; }
   
   private:
-    CalendarView *mView;
+    KOrganizer *mMainWindow;
 };
 
 class PartFactory : public KLibFactory {
   public:
-    virtual Part *create(CalendarView *,QObject *parent, const char *name) = 0;
+    virtual Part *create(KOrganizer *parent, const char *name=0) = 0;
 };
 
 }

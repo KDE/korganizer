@@ -54,6 +54,8 @@ class KOrganizer : public KParts::MainWindow, virtual public KOrganizerIface
     KOrganizer(const char *name=0);
     virtual ~KOrganizer();
 
+    CalendarView *view() const { return mCalendarView; }
+
     /**
       Open calendar file from URL. Merge into current calendar, if \a merge is
       true.

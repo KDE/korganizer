@@ -196,6 +196,20 @@ CalendarView::~CalendarView()
   kdDebug() << "~CalendarView() done" << endl;
 }
 
+QDate CalendarView::startDate()
+{
+  QDateList dates = mDateNavigator->getSelected();
+
+  return *dates.first();
+}
+
+QDate CalendarView::endDate()
+{
+  QDateList dates = mDateNavigator->getSelected();
+
+  return *dates.last();
+}
+
 void CalendarView::createOptionsDialog()
 {
   if (!mOptionsDialog) {

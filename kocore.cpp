@@ -8,8 +8,6 @@
 #include <calendar/plugin.h>
 #include <korganizer/part.h>
 
-#include <calendar.h>
-
 #include "koprefs.h"
 
 #include "kocore.h"
@@ -124,8 +122,7 @@ KOrg::WidgetDecoration *KOCore::loadWidgetDecoration(const QString &name)
   return 0;  
 }
 
-KOrg::Part *KOCore::loadPart(KService::Ptr service, CalendarView *view,
-                             QWidget *parent)
+KOrg::Part *KOCore::loadPart(KService::Ptr service, KOrganizer *parent)
 {
   kdDebug() << "loadPart: library: " << service->library() << endl;
 
@@ -144,22 +141,20 @@ KOrg::Part *KOCore::loadPart(KService::Ptr service, CalendarView *view,
     return 0;
   }
   
-  return pluginFactory->create(view,parent,0);
+  return pluginFactory->create(parent);
 }
 
-KOrg::Part *KOCore::loadPart(const QString &name,CalendarView *view,
-                             QWidget *parent)
+KOrg::Part *KOCore::loadPart(const QString &name,KOrganizer *parent)
 {
   KTrader::OfferList list = availablePlugins("KOrganizer/Part");
   KTrader::OfferList::ConstIterator it;
   for(it = list.begin(); it != list.end(); ++it) {
     if ((*it)->desktopEntryName() == name) {
-      return loadPart(*it,view,parent);
+      return loadPart(*it,parent);
     }
   }
   return 0;  
 }
-
 
 KOrg::TextDecoration::List KOCore::textDecorations()
 {
@@ -201,6 +196,21 @@ KOrg::WidgetDecoration::List KOCore::widgetDecorations()
   }
   
   return mWidgetDecorations;
+}
+
+KOrg::Part::List KOCore::parts(KOrganizer *parent)
+{
+  if (!mPartsLoaded) {
+    mParts.clear();
+    KTrader::OfferList plugins = availablePlugins("KOrganizer/Part");
+    KTrader::OfferList::ConstIterator it;
+    for(it = plugins.begin(); it != plugins.end(); ++it) {
+      mParts.append(loadPart(*it,parent));
+    }
+    mPartsLoaded = true;
+  }
+  
+  return mParts;
 }
 
 void KOCore::reloadPlugins()

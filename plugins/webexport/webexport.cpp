@@ -17,9 +17,9 @@
 
 class WebExportFactory : public KOrg::PartFactory {
   public:
-    KOrg::Part *create(CalendarView *view,QObject *parent, const char *name)
+    KOrg::Part *create(KOrganizer *parent, const char *name)
     {
-      return new WebExport(view,parent,name);
+      return new WebExport(parent,name);
     }
 };
 
@@ -31,8 +31,8 @@ extern "C" {
 }
 
 
-WebExport::WebExport(CalendarView *view,QObject *parent, const char *name) :
-  KOrg::Part(view,parent,name)
+WebExport::WebExport(KOrganizer *parent, const char *name) :
+  KOrg::Part(parent,name)
 {
 //  KInstance * instance = new KInstance( "korganizer_part" );
 //  setInstance( instance );
@@ -54,6 +54,6 @@ QString WebExport::info()
 
 void WebExport::exportWeb()
 {
-  ExportWebDialog *dlg = new ExportWebDialog(view()->calendar());
+  ExportWebDialog *dlg = new ExportWebDialog(mainWindow()->view()->calendar());
   dlg->show();
 }

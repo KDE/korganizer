@@ -88,6 +88,9 @@ class CalendarView : public QWidget
 
     Calendar *calendar() { return mCalendar; }
 
+    QDate startDate();
+    QDate endDate();
+
   signals:
   
     /** when change is made to options dialog, the topwidget will catch this
