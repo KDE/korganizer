@@ -12,7 +12,6 @@
 #include "calformat.h"
 
 #include "koevent.h"
-#include "koevent.moc"
 
 int KOEvent::eventCount = 0;
 

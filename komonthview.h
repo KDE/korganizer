@@ -5,7 +5,7 @@
 
 #include <qlabel.h>
 #include <qframe.h>
-#include <qdatetm.h>
+#include <qdatetime.h>
 #include <qlistbox.h>
 #include <qlayout.h>
 #include <qintdict.h>

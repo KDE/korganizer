@@ -2,7 +2,7 @@
 
 #include <qpopupmenu.h>
 #include <qfont.h>
-#include <qfontmet.h>
+#include <qfontmetrics.h>
 #include <qkeycode.h>
 #include <qhbox.h>
 #include <qvbox.h>

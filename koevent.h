@@ -5,10 +5,10 @@
 #define _KOEVENT_H
 
 #include <qobject.h>
-#include <qdatetm.h>
+#include <qdatetime.h>
 #include <qstring.h>
 #include <qstrlist.h>
-#include <qbitarry.h>
+#include <qbitarray.h>
 
 #include "qdatelist.h"
 #include "event.h"

@@ -7,7 +7,7 @@
 #include <qlayout.h>
 #include <qwidget.h>
 #include <qlist.h>
-#include <qtabdlg.h>
+#include <qtabdialog.h>
 #include <qframe.h>
 #include <qsplitter.h>
 

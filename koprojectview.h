@@ -5,11 +5,11 @@
 #include <qtableview.h>
 #include <qfont.h>
 #include <qfontmetrics.h>
-#include <qlined.h>
+#include <qlineedit.h>
 #include <qlist.h>
 #include <qstrlist.h>
 #include <qlistbox.h>
-#include <qpopmenu.h>
+#include <qpopupmenu.h>
 #include <qlabel.h>
 #include <qmap.h>
 #include <qlistview.h>

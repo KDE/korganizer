@@ -3,7 +3,7 @@
 #ifndef _KSMALLDAYDISP_H 
 #define _KSMALLDAYDISP_H
 
-#include <qdatetm.h>
+#include <qdatetime.h>
 #include <qlist.h>
 #include <qlistbox.h>
 #include <qintdict.h>

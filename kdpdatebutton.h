@@ -3,7 +3,7 @@
 #ifndef _KDPDATEBUTTON_H
 #define _KDPDATEBUTTON_H
 
-#include <qdatetm.h>
+#include <qdatetime.h>
 #include <qlabel.h>
 
 class CalObject;

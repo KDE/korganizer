@@ -1,7 +1,7 @@
 // 	$Id$	
 
 #include <qstring.h>
-#include <qfontmet.h>
+#include <qfontmetrics.h>
 
 #include "ksmalldaydisp.h"
 #include "ksmalldaydisp.moc"

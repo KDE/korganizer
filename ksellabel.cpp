@@ -1,11 +1,11 @@
 // 	$Id$	
 
-#include <qapp.h>
+#include <qapplication.h>
 #include <qcolor.h>
 #include <qfont.h>
-#include <qfontmet.h>
+#include <qfontmetrics.h>
 #include <qpainter.h>
-#include <qdrawutl.h>
+#include <qdrawutil.h>
 #include <qpalette.h>
 
 #include "ksellabel.h"

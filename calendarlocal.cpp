@@ -4,12 +4,12 @@
 
 #include "config.h"
 
-#include <qdatetm.h>
+#include <qdatetime.h>
 #include <qstring.h>
 #include <qlist.h>
 #include <stdlib.h>
 #include <qregexp.h>
-#include <qclipbrd.h>
+#include <qclipboard.h>
 #include <qdialog.h>
 #include <qfile.h>
 
