@@ -222,7 +222,7 @@ class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::
   public slots:
     /** options dialog made a changed to the configuration. we catch this
      *  and notify all widgets which need to update their configuration. */
-    void updateConfig();
+    void updateConfig( const QCString& );
     /** Calendar configuration was changed, so refresh categories list
     */
     void updateCategories();

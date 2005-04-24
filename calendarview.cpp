@@ -269,7 +269,7 @@ CalendarView::CalendarView( QWidget *parent, const char *name )
   mViewManager->connectView( mTodoList );
 
   // We should think about seperating startup settings and configuration change.
-  updateConfig();
+  updateConfig( "korganizer" );
 
   connect( QApplication::clipboard(), SIGNAL( dataChanged() ),
            SLOT( checkClipboard() ) );
@@ -610,8 +610,9 @@ void CalendarView::goPrevious()
     mNavigator->selectPrevious();
 }
 
-void CalendarView::updateConfig()
+void CalendarView::updateConfig( const QCString& receiver)
 {
+  if ( receiver != "korganizer" ) return;
   kdDebug(5850) << "CalendarView::updateConfig()" << endl;
 
   KOGlobals::self()->

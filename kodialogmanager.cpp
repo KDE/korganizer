@@ -124,7 +124,7 @@ void KODialogManager::showOptionsDialog()
 #else
     mOptionsDialog = new KCMultiDialog( mMainView, "KorganizerPreferences" );
     connect( mOptionsDialog, SIGNAL( configCommitted( const QCString & ) ),
-             mMainView, SLOT( updateConfig() ) );
+             mMainView, SLOT( updateConfig( const QCString& ) ) );
 #if 0
     connect( mOptionsDialog, SIGNAL( applyClicked() ),
              mMainView, SLOT( updateConfig() ) );
