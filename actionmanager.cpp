@@ -1209,7 +1209,8 @@ void ActionManager::updateConfig()
 
   setDestinationPolicy();
 
-  mResourceView->updateView();
+  if ( mResourceView )
+    mResourceView->updateView();
 }
 
 void ActionManager::setDestinationPolicy()
