@@ -1338,7 +1338,6 @@ void KOEditorRecurrence::writeIncidence( Incidence *incidence )
 
   // clear out any old settings;
   r->unsetRecurs();
-  bool invalidRecurrence = false;
 
   int duration = mRecurrenceRange->duration();
   QDate endDate;
@@ -1440,7 +1439,17 @@ bool KOEditorRecurrence::validateInput()
       .arg( KGlobal::locale()->formatDate( mEventStartDt.date() ) ) );
     return false;
   }
-
+  int recurrenceType = mRecurrenceChooser->type();
+  // Check if a weekly recurrence has at least one day selected
+  if( mEnabledCheck->isChecked() && recurrenceType == RecurrenceChooser::Weekly ) {
+    const QBitArray &days = mWeekly->days();
+    bool valid = false;
+    for ( int i=0; i<7; ++i ) valid = valid || days.testBit( i );
+    if ( !valid ) {
+      // FIXME message box
+      return false;
+    }
+  }
   return true;
 }
 
