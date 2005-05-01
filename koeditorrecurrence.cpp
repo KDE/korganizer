@@ -1163,6 +1163,7 @@ void KOEditorRecurrence::writeIncidence( Incidence *incidence )
 
   // clear out any old settings;
   r->unsetRecurs();
+  bool invalidRecurrence = false;
 
   int duration = mRecurrenceRange->duration();
   QDate endDate;
@@ -1175,9 +1176,14 @@ void KOEditorRecurrence::writeIncidence( Incidence *incidence )
       else  r->setDaily( freq, endDate );
   } else if ( recurrenceType == RecurrenceChooser::Weekly ) {
       int freq = mWeekly->frequency();
-      QBitArray days = mWeekly->days();
-      if ( duration != 0 ) r->setWeekly( freq, days, duration );
-      else r->setWeekly( freq, days, endDate );
+      const QBitArray &days = mWeekly->days();
+      bool valid = false; // make sure at least one day is set
+      for ( int i = 0; i<7; i++ ) valid = valid || days.testBit( i );
+      invalidRecurrence = !valid;
+      if ( !invalidRecurrence ) {
+        if ( duration != 0 ) r->setWeekly( freq, days, duration );
+        else r->setWeekly( freq, days, endDate );
+      }
   } else if ( recurrenceType == RecurrenceChooser::Monthly ) {
       int freq = mMonthly->frequency();
       if ( mMonthly->byPos() ) {
@@ -1234,8 +1240,11 @@ void KOEditorRecurrence::writeIncidence( Incidence *incidence )
           r->addYearlyNum( mYearly->day() );
           break;
       }
-    } // end "Yearly"
+  } // end "Yearly"
 
+  if ( invalidRecurrence )
+    r->unsetRecurs();
+  else
     incidence->setExDates( mExceptions->dates() );
 }
 
