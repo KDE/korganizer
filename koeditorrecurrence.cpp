@@ -1351,13 +1351,8 @@ void KOEditorRecurrence::writeIncidence( Incidence *incidence )
   } else if ( recurrenceType == RecurrenceChooser::Weekly ) {
       int freq = mWeekly->frequency();
       const QBitArray &days = mWeekly->days();
-      bool valid = false; // make sure at least one day is set
-      for ( int i = 0; i<7; i++ ) valid = valid || days.testBit( i );
-      invalidRecurrence = !valid;
-      if ( !invalidRecurrence ) {
       if ( duration != 0 ) r->setWeekly( freq, days, duration );
       else r->setWeekly( freq, days, endDate );
-      }
   } else if ( recurrenceType == RecurrenceChooser::Monthly ) {
       int freq = mMonthly->frequency();
       if ( mMonthly->byPos() ) {
@@ -1414,12 +1409,9 @@ void KOEditorRecurrence::writeIncidence( Incidence *incidence )
           r->addYearlyNum( mYearly->day() );
           break;
       }
-    } // end "Yearly"
+  } // end "Yearly"
 
-  if ( invalidRecurrence )
-    r->unsetRecurs();
-  else
-    incidence->setExDates( mExceptions->dates() );
+  incidence->setExDates( mExceptions->dates() );
 }
 
 void KOEditorRecurrence::setDateTimeStr( const QString &str )
@@ -1446,7 +1438,9 @@ bool KOEditorRecurrence::validateInput()
     bool valid = false;
     for ( int i=0; i<7; ++i ) valid = valid || days.testBit( i );
     if ( !valid ) {
-      // FIXME message box
+      KMessageBox::sorry( 0,
+        i18n("A weekly recurring event or task has to have at least one weekday "
+             "associated with it.") );
       return false;
     }
   }
