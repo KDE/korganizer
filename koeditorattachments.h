@@ -55,6 +55,8 @@ class KOEditorAttachments : public QWidget
     /** Write event settings to event object */
     void writeIncidence( KCal::Incidence * );
 
+    bool hasAttachments();
+
   protected slots:
     void showAttachment( QListViewItem *item );
     void slotAdd();

@@ -295,6 +295,8 @@ class KOEditorRecurrence : public QWidget
     /** Check if the input is valid. */
     bool validateInput();
 
+    bool doesRecur();
+
   public slots:
     void setRecurrenceEnabled( bool );
     void setDateTimes( const QDateTime &start, const QDateTime &end );

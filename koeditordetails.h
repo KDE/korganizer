@@ -94,6 +94,9 @@ class KOEditorDetails : public QWidget
     /** Set the gantt view */
     void setFreeBusyWidget( KOEditorFreeBusy * );
 
+    /** Returns whether at least one attendee was added */
+    bool hasAttendees();
+
   public slots:
     void insertAttendee(Attendee *);
 

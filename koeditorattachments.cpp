@@ -140,6 +140,11 @@ KOEditorAttachments::~KOEditorAttachments()
 {
 }
 
+bool KOEditorAttachments::hasAttachments()
+{
+  return mAttachments->childCount() > 0;
+}
+
 void KOEditorAttachments::dragEnterEvent( QDragEnterEvent* event ) {
   event->accept( QTextDrag::canDecode( event ) );
 }

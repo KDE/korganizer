@@ -1465,3 +1465,8 @@ void KOEditorRecurrence::showRecurrenceRangeDialog()
     mRecurrenceRange->setEndDate( endDate );
   }
 }
+
+bool KOEditorRecurrence::doesRecur()
+{
+  return mEnabledCheck->isChecked();
+}

@@ -347,6 +347,11 @@ KOEditorDetails::~KOEditorDetails()
 {
 }
 
+bool KOEditorDetails::hasAttendees()
+{
+  return mListView->childCount() > 0;
+}
+
 bool KOEditorDetails::eventFilter( QObject *watched, QEvent *ev)
 {
   if ( watched && watched == mNameEdit && ev->type() == QEvent::FocusIn &&
