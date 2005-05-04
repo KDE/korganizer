@@ -27,8 +27,10 @@ while(<STDIN>) {
   if ($calactive) {
     $data .= $_;
   } else {
-    if (/Message-ID:\s+<([^>]+)>/) {
+    if (/Message-ID:\s+<([^>]+)>/i) {
       $id = $1;
+      # This is a security bug: if the message-ID contains ../../ etc, the file can be put anywhere on the harddisk...
+      # TODO: Need to remove all non-alphabetic chars.
     }
   }
   if ($calactive and /END:VCALENDAR/) {
