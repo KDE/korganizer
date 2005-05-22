@@ -14,7 +14,6 @@ X-KDE-CfgDlgHierarchy=KOrganizer
 
 Name=Custom Pages
 Name[bg]=Потребителски полета
-Name[br]=Pajennoù dre ziouer
 Name[bs]=Vlastite stranice
 Name[ca]=Pàgines a mida
 Name[cs]=Vlastní stránky
@@ -51,7 +50,6 @@ Name[xx]=xxCustom Pagesxx
 Name[zh_CN]=定制页
 Comment=Configure the Custom Pages
 Comment[bg]=Настройки на потребителските полета
-Comment[br]=Kefluniañ ar pajennoù diouzhoc'h
 Comment[bs]=Podesite vlastite stranice
 Comment[ca]=Configura les pàgines a mida
 Comment[cs]=Nastavení vlastních stránek
