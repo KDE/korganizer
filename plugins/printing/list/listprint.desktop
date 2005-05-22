@@ -29,6 +29,7 @@ Name[zh_CN]=列表打印样式
 Comment=This plugin allows you to print out events and to-dos in list form.
 Comment[bg]=Приставката служи за печат на събитията и задачите в списъчна форма.
 Comment[ca]=Aquest endollable permet imprimir esdeveniments i tasques pendents en forma de llista.
+Comment[cs]=tento modul umožňuje tisknout události a úlohy do seznamu.
 Comment[da]=Dette plugin gør at du kan udskrive begivenheder og opgaver på en liste.
 Comment[de]=Mit diesem Plugin können Ereignisse und Aufgaben in Listenform ausgedruckt werden.
 Comment[es]=Esta extensión le permite imprimir eventos y tareas pendientes en forma de lista.

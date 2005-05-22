@@ -2,6 +2,7 @@
 Encoding=UTF-8
 X-KDE-Library=libkorg_timespanview
 Name=Timespan View Plugin for KOrganizer
+Name[cs]=Modul časového pohledu pro KOrganizer
 Name[da]=Timespan-visning-plugin for KOrganizer
 Name[de]=Zeitspannenansicht-Plugin für KOrganizer
 Name[es]=Extensión de visor de Timespan para KOrganizer
@@ -28,6 +29,7 @@ Name[uk]=Втулок перегляду періоду часу для KOrga
 Name[zh_CN]=KOrganizer 的时间跨度查看插件
 Comment=This plugin provides a timespan view for korganizer (like the to-do or month views). If you enable this plugin, you can switch to the timespan view and view your events like in a Gantt diagram.
 Comment[bg]=Приставката служи за преглед на събитията и задачите в зададен период от време.
+Comment[cs]=Tento modul umožňuje časový pohled pro korganizer (podobně jako úkoly nebo měsíční pohled). Pokud ho povolíte, můžete se přepnout na časový pohled a prohlížet si události v Ganttově diagramu.
 Comment[da]=Pluginnet sørger for en tidsintervalsvisning i Korganizer (som ligner gøremål eller månedsvisning). Hvis du aktiverer dette plugin kan du skifte til tidsintervalvisning og vise dine begivenheder som i et Gantt-diagram.
 Comment[de]=Mit diesem Plugin wird KOrganizer um eine Zeitspannenansicht (ähnlich der Aufgaben- und Monatsansicht) erweitert. Wenn Sie es einschalten können Sie zur Zeitspannenansicht wechseln und sich Ihre Ereignisse wie in einem Gantt-Diagramm ansehen.
 Comment[es]=Esta extensión proporciona una vista de timespan para korganizer (como la vista de tareas pendientes o la mensual). Si activa esta extensión, puede pasar a la vista de timespan y ver sus eventos como un diagrama de Gantt.
