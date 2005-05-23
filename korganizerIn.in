@@ -27,8 +27,9 @@ while(<STDIN>) {
   if ($calactive) {
     $data .= $_;
   } else {
-    if (/Message-ID:\s+<([^>]+)>/) {
+    if (/Message-ID:\s+<([^>]+)>/i) {
       $id = $1;
+      $id =~ y/[\w\@]//cd;
     }
   }
   if ($calactive and /END:VCALENDAR/) {
