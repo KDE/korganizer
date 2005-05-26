@@ -358,7 +358,7 @@ void KOEditorDetails::openAddressBook()
 void KOEditorDetails::addNewAttendee()
 {
   Attendee *a = new Attendee( i18n("Firstname Lastname"),
-                              i18n("name@domain.com"), true );
+                              i18n("name") + "@example.net", true );
   insertAttendee( a, false );
   // We don't want the hint again
   mNameEdit->setClickMessage( "" );
