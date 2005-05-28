@@ -43,16 +43,14 @@ bool UriHandler::process( const QString &uri )
   if ( uri.startsWith( "kmail:" ) ) {
     // make sure kmail is running or the part is shown
     kapp->startServiceByDesktopPath("kmail");
+
     // parse string, show
-    int start = uri.find( ':' ) + 1;
-    int delimiter = uri.find( '/', start );
-    QString serialNumberStr = uri.mid( start, delimiter-start );
-    Q_UINT32 serialNumber = serialNumberStr.toUInt();
-    QString messageId = uri.mid( delimiter+1 );
-    kdDebug(5850) << "SERIALNUMBERSTR: " << serialNumberStr << " MESSAGEID: "
-      << messageId << endl;
+    int colon = uri.find( ':' );
+    // strip of the '://' from 'kmail://<number>'
+    QString serialNumberStr = uri.mid( colon + 3 );
+
     KMailIface_stub kmailIface( "kmail", "KMailIface" );
-    kmailIface.showMail( serialNumber, messageId );
+    kmailIface.showMail( serialNumberStr.toUInt(), QString() );
     return true;
   } else if ( uri.startsWith( "mailto:" ) ) {
     KApplication::kApplication()->invokeMailer( uri.mid(7), QString::null );
