@@ -76,7 +76,7 @@ class TimeLabels : public QScrollView
   private:
     int mRows;
     int mCellHeight;
-
+    int mMiniWidth;
     KOAgenda* mAgenda;
 
     QFrame *mMousePos;  // shows a marker for the current mouse position in y direction

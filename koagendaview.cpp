@@ -78,6 +78,7 @@ TimeLabels::TimeLabels(int rows,QWidget *parent,const char *name,WFlags f) :
   QScrollView(parent,name,f)
 {
   mRows = rows;
+  mMiniWidth = 0;
 
   mCellHeight = KOPrefs::instance()->mHourSize*4;
 
@@ -124,52 +125,76 @@ void TimeLabels::setCellHeight(int height)
 */
 void TimeLabels::drawContents(QPainter *p,int cx, int cy, int cw, int ch)
 {
-  // bug:  the parameters cx, cy, cw, ch are the areas that need to be
+  // bug:  the parameters cx and cw are the areas that need to be
   //       redrawn, not the area of the widget.  unfortunately, this
   //       code assumes the latter...
 
   // now, for a workaround...
-  // these two assignments fix the weird redraw bug
-  cx = contentsX() + 2;
-  cw = contentsWidth() - 2;
-  int visWidth = visibleWidth();
-  double cellHeight=mCellHeight;
-  if (mAgenda) cellHeight=(4*mAgenda->gridSpacingY());
+  cx = contentsX() + frameWidth()*2;
+  cw = contentsWidth() ;
   // end of workaround
 
-  int cell = ((int)(cy/cellHeight));
-  double y = (cell * cellHeight);
+  int cell = ((int)(cy/mCellHeight));
+  int y = cell * mCellHeight;
   QFontMetrics fm = fontMetrics();
   QString hour;
-  QString suffix;
-  QString fullTime;
-
-  while (y < cy + ch) {
-    p->drawLine(cx,(int)y,cx+cw,(int)y);
-    hour.setNum(cell);
-    suffix = "am";
-
-    // handle 24h and am/pm time formats
-    // FIXME: don't construct this manually, might break translation!
-    if (KGlobal::locale()->use12Clock()) {
+  QString suffix = "am";
+  int timeHeight =  fm.ascent();
+  QFont nFont = font();
+  p->setFont( font() );
+ 
+  if (!KGlobal::locale()->use12Clock()) {
+      suffix = "00";
+  } else
       if (cell > 11) suffix = "pm";
+     
+  if ( timeHeight >  mCellHeight ) {
+    timeHeight = mCellHeight-1;
+    int pointS = nFont.pointSize();
+    while ( pointS > 4 ) {
+      nFont.setPointSize( pointS );
+      fm = QFontMetrics( nFont );
+      if ( fm.ascent() < mCellHeight )
+        break;
+      -- pointS;
+    }
+    fm = QFontMetrics( nFont );
+    timeHeight = fm.ascent();
+  }
+  //timeHeight -= (timeHeight/4-2); 
+  QFont sFont = nFont;
+  sFont.setPointSize( sFont.pointSize()/2 );
+  QFontMetrics fmS(  sFont );
+  int startW = mMiniWidth - frameWidth()-2 ;
+  int tw2 = fmS.width(suffix);
+  int divTimeHeight = (timeHeight-1) /2 - 1; 
+  //testline
+  //p->drawLine(0,0,0,contentsHeight());
+  while (y < cy + ch+mCellHeight) {
+    // hour, full line
+    p->drawLine( cx, y, cw+2, y );
+    hour.setNum(cell);
+    // handle 24h and am/pm time formats
+    if (KGlobal::locale()->use12Clock()) {
+      if (cell == 12) suffix = "pm";
       if (cell == 0) hour.setNum(12);
       if (cell > 12) hour.setNum(cell - 12);
-    } else {
-      suffix = ":00";
     }
 
-    // create string in format of "XX:XX" or "XXpm/am"
-    fullTime = hour + suffix;
-
     // center and draw the time label
-    QRect r( cx, (int)y+3, visWidth-4, (int)(y+cellHeight-3) );
-    p->drawText ( r, Qt::AlignHCenter | Qt::AlignTop | Qt::SingleLine, fullTime );
+    int timeWidth = fm.width(hour);
+    int offset = startW - timeWidth - tw2 -1 ;
+    p->setFont( nFont );
+    p->drawText( offset, y+timeHeight, hour);
+    p->setFont( sFont ); 
+    offset = startW - tw2;
+    p->drawText( offset, y+timeHeight-divTimeHeight, suffix);
 
     // increment indices
-    y += cellHeight;
+    y += mCellHeight;
     cell++;
   }
+
 }
 
 /**
@@ -177,33 +202,33 @@ void TimeLabels::drawContents(QPainter *p,int cx, int cy, int cw, int ch)
 */
 int TimeLabels::minimumWidth() const
 {
-  QFontMetrics fm = fontMetrics();
-
-  int borderWidth = 4;
-
-  // the minimum width possible
-  int width = fm.width("88:88") + 2*borderWidth;
-
-  return width;
+  return mMiniWidth;
 }
 
 /** updates widget's internal state */
 void TimeLabels::updateConfig()
 {
-  // set the font
-//  config->setGroup("Fonts");
-//  QFont font = config->readFontEntry("TimeBar Font");
   setFont(KOPrefs::instance()->mTimeBarFont);
 
+  QString test = "20";
+  if ( KGlobal::locale()->use12Clock() )
+      test = "12";
+  mMiniWidth = fontMetrics().width( test );
+  if ( KGlobal::locale()->use12Clock() )
+      test = "pm";
+  else {
+      test = "00";
+  }
+  QFont sFont = font();
+  sFont.setPointSize(  sFont.pointSize()/2 );
+  QFontMetrics fmS(   sFont );
+  mMiniWidth += fmS.width(  test ) + frameWidth()*2+4 ;
   // update geometry restrictions based on new settings
-  setFixedWidth(minimumWidth());
+  setFixedWidth(  mMiniWidth );
 
   // update HourSize
   mCellHeight = KOPrefs::instance()->mHourSize*4;
-  if (mCellHeight>mAgenda->gridSpacingY())
-    mCellHeight=(int)(4*mAgenda->gridSpacingY());
-        // FIXME: Why the heck do we set the width to 50???
-  resizeContents(50,mRows * mCellHeight);
+  resizeContents( mMiniWidth,mRows * mCellHeight+1 );
 }
 
 /** update time label positions */

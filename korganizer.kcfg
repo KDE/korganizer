@@ -326,6 +326,7 @@
   <group name="Fonts">
     <entry type="Font" key="TimeBar Font">
       <label>Time bar</label>
+      <default code="true">QFont(QString::null, 16)</default>
     </entry>
     <entry type="Font" key="AgendaView Font">
       <label>Agenda view</label>
