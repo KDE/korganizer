@@ -105,6 +105,7 @@
 #include <qvbox.h>
 
 #include <stdlib.h>
+#include <assert.h>
 
 using namespace KOrg;
 
@@ -268,8 +269,8 @@ CalendarView::CalendarView( QWidget *parent, const char *name )
   mViewManager->connectTodoView( mTodoList );
   mViewManager->connectView( mTodoList );
 
-  // We should think about seperating startup settings and configuration change.
-  updateConfig( "korganizer" );
+  KOGlobals::self()->
+      setHolidays( new KHolidays( KOPrefs::instance()->mHolidays ) );
 
   connect( QApplication::clipboard(), SIGNAL( dataChanged() ),
            SLOT( checkClipboard() ) );
@@ -390,13 +391,28 @@ bool CalendarView::openCalendar(const QString& filename, bool merge)
               << "' doesn't exist." << endl;
   }
 
-  if (!merge) mCalendar->close();
+  bool loadedSuccesfully = true;
+  if ( !merge ) {
+    mCalendar->close();
+    CalendarLocal *cl = dynamic_cast<CalendarLocal*>( mCalendar );
+    if ( cl ) {
+      loadedSuccesfully = cl->load( filename );
+    } else {
+      CalendarResources *cr = dynamic_cast<CalendarResources*>( mCalendar );
+      assert( cr ); // otherwise something is majorly wrong
+      // openCalendar called without merge and a filename, what should we do?
+      return false;
+    }
+  } else {
+    // merge in a file
+    FileStorage storage( mCalendar );
+    storage.setFileName( filename );
+    loadedSuccesfully = storage.load();
+  }
 
-  FileStorage storage( mCalendar );
-  storage.setFileName( filename );
-
-  if ( storage.load() ) {
-    if ( merge ) setModified( true );
+  if ( loadedSuccesfully ) {
+    if ( merge )
+      setModified( true );
     else {
       setModified( false );
       mViewManager->setDocumentId( filename );
@@ -618,13 +634,29 @@ void CalendarView::updateConfig( const QCString& receiver)
   KOGlobals::self()->
     setHolidays( new KHolidays( KOPrefs::instance()->mHolidays ) );
 
-  emit configChanged();
-
   QString tz(  mCalendar->timeZoneId() );
   // Only set a new time zone if it changed. This prevents the window
   // from being modified on start
-  if ( tz != KOPrefs::instance()->mTimeZoneId )
-    mCalendar->setTimeZoneId( KOPrefs::instance()->mTimeZoneId );
+  if ( tz != KOPrefs::instance()->mTimeZoneId ) {
+
+    const QString question( i18n("The timezone setting was changed. Do you want to keep the absolute time of "
+                                "the items in your calendar, which will show them to be at a different time than "
+                                "before, or move them to be at the old time also in the new timezone?") );
+    int rc = KMessageBox::questionYesNo( this, question,
+                              i18n("Keep absolute times?"),
+                              KGuiItem(i18n("Keep times")),
+                              KGuiItem(i18n("Move times")),
+                              "calendarKeepAbsoluteTimes");
+    if ( rc == KMessageBox::Yes ) {
+      // user wants us to shift
+      mCalendar->setTimeZoneIdViewOnly( KOPrefs::instance()->mTimeZoneId );
+    } else {
+      // only set the new timezone, wihtout shifting events, they will be
+      // interpreted as being in the new timezone now
+      mCalendar->setTimeZoneId( KOPrefs::instance()->mTimeZoneId );
+    }
+  }
+  emit configChanged();
   // To make the "fill window" configurations work
   mViewManager->raiseCurrentView();
 }
