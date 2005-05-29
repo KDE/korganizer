@@ -407,6 +407,8 @@ void MonthViewCell::setHoliday( const QString &holiday )
 
 void MonthViewCell::updateCell()
 {
+  setFrameWidth();
+
   if ( mDate == QDate::currentDate() ) {
     setPalette( mTodayPalette );
 

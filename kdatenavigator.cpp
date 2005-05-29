@@ -110,7 +110,7 @@ void KDateNavigator::setCalendar( Calendar *cal )
 void KDateNavigator::setBaseDate( const QDate &date )
 {
   mBaseDate = date;
-  
+
   updateDates();
   updateView();
 
@@ -130,9 +130,6 @@ QSizePolicy KDateNavigator::sizePolicy () const
 
 void KDateNavigator::updateToday()
 {
-  if ( mDayMatrix->isEndOfMonth() ) {
-    goNextMonth();
-  }
   mDayMatrix->recalculateToday();
   mDayMatrix->repaint();
 }
@@ -191,7 +188,7 @@ void KDateNavigator::updateView()
     int weeknumstart = calsys->weekNumber( dtStart );
     int weeknumend = calsys->weekNumber( dtEnd );
     QString weeknum;
-    
+
     if ( weeknumstart != weeknumend ) {
       weeknum = i18n("start/end week number of line in date picker", "%1/%2")
                 .arg( weeknumstart ).arg( weeknumend );

@@ -270,7 +270,7 @@ class KODayMatrix: public QFrame
     /** stores holiday names of the days shown in the matrix. */
     QMap<int,QString>  mHolidays;
 
-    /** indey of today or -1 if today is not visible in the matrix. */
+    /** index of today or -1 if today is not visible in the matrix. */
     int       mToday;
 
     /** index of day where dragged selection was initiated.
