@@ -165,6 +165,7 @@ void KOAlarmClient::slotRemove( AlarmDialog *d )
 bool KOAlarmClient::commitData( QSessionManager& )
 {
   emit saveAllSignal();
+  saveLastCheckTime();
   return true;
 }
 
