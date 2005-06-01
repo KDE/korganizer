@@ -8,15 +8,16 @@
   <group name="General">
     <entry type="Bool" key="Auto Save">
       <label>Enable automatic saving of calendar</label>
-      <whatsthis>WhatsThis text for AutoSave option</whatsthis>
+      <whatsthis>Check this box to save your calendar automatically when you exit KOrganizer without asking and periodically, as you work.</whatsthis>
       <default>true</default>
     </entry>
     <entry type="Int" key="Auto Save Interval">
+      <whatsthis>Set the interval between automatic saving of calendar events in minutes here.</whatsthis>
       <default>10</default>
     </entry>
     <entry type="Bool" key="Confirm Deletes" name="Confirm">
       <label>Confirm deletes</label>
-      <whatsthis>Check this option when you want a confirmation when deleting items.</whatsthis>
+      <whatsthis>Check this box to display a confirmation dialog when deleting items.</whatsthis>
       <default>true</default>
     </entry>
 
@@ -70,7 +71,7 @@
 
     <entry type="Bool" key="Html With Save">
       <label>Export to HTML with every save</label>
-      <whatsthis>The calendar will be exported to a HTML-file every time you save if you select this option.</whatsthis>
+      <whatsthis>Check this box to export the calendar to a HTML-file every time you save it. By default, this file will be called calendar.html and placed in the user home folder.</whatsthis>
       <default>false</default>
     </entry>
     <entry type="Enum" key="Destination" name="Destination">
@@ -78,9 +79,11 @@
       <choices>
         <choice name="standardDestination">
           <label>Be added to the standard resource</label>
+          <whatsthis>Select this option to always record a new event or to-do using the standard resource.</whatsthis>
         </choice>
         <choice name="askDestination">
           <label>Be asked which resource to use</label>
+          <whatsthis>Select this option to choose the resource to be used to record a event or to-do each time you create a new one. This choice is recommended if you intend to use the shared folders functionality of the Kolab server or have to manage multiple accounts using Kontact as a KDE Kolab client. </whatsthis>
         </choice>
       </choices>
       <default>askDestination</default>
@@ -90,10 +93,12 @@
   <group name="Personal Settings">
     <entry type="Bool" key="Bcc">
       <label>Send copy to owner when mailing events</label>
+      <whatsthis>Check this box to get a copy of all e-mail messages that KOrganizer sends at your request to event attendees.</whatsthis>
       <default>false</default>
     </entry>
     <entry type="Bool" key="Use Control Center Email" name="EmailControlCenter">
       <label>Use email settings from Control Center</label>
+      <whatsthis>Check this box to use the KDE-wide e-mail settings, which are defined using the KDE Control Center &quot;Password &amp; User Account&quot; Module. Uncheck this box to be able to specify your full name and e-mail.</whatsthis>
       <default>false</default>
     </entry>
     <entry type="Enum" key="Mail Client">
@@ -101,10 +106,11 @@
       <choices>
         <choice name="MailClientKMail">
           <label>KMail</label>
-          <whatsthis>This is a radio button whatsthis text</whatsthis>
+          <whatsthis>Select this option to use KMail as the mail transport. The mail transport is used for groupware funcionality.</whatsthis>
         </choice>
         <choice name="MailClientSendmail">
           <label>Sendmail</label>
+          <whatsthis>Select this option to use sendmail as the mail transport. The mail transport is used for groupware functionality. Please check if you have sendmail installed before selecting this option.</whatsthis>
         </choice>
       </choices>
       <default>MailClientKMail</default>
@@ -113,24 +119,24 @@
 
   <group name="Time &amp; Date">
     <entry type="String" name="TimeZoneId">
-      <whatsthis>Select the timezone.</whatsthis>
+      <whatsthis>Select your timezone from the list of locations on this drop down box. If your city is not listed, select one which shares the same timezone. KOrganizer will automatically adjust for daylight savings.</whatsthis>
     </entry>
     <entry type="String" name="Holidays">
       <label>Use holiday region:</label>
-      <whatsthis>Here you can select from which region you want to use the holidays. Defined holidays are shown as non-working days in the date navigator, the agenda view, etc.</whatsthis>
+      <whatsthis>Select from which region you want to use the holidays here. Defined holidays are shown as non-working days in the date navigator, the agenda view, etc.</whatsthis>
     </entry>
     <entry type="DateTime" name="StartTime">
       <label>Default appointment time</label>
-      <whatsthis>Here you can enter the event's default time, used if you do not supply a start time.</whatsthis>
+      <whatsthis>Enter the default time for events here. The default is used if you do not supply a start time.</whatsthis>
       <default>QDateTime(QDate(), QTime(10,0))</default>
     </entry>
     <entry type="DateTime" name="DefaultDuration">
       <label>Default duration of new appointment (HH:MM)</label>
-      <whatsthis>Here you can enter the event's default duration, used if you do not supply an end time.</whatsthis>
+      <whatsthis>Enter default duration for events here. The default is used if you do not supply an end time.</whatsthis>
       <default>QDateTime(QDate(), QTime(2,0))</default>
     </entry>
     <entry type="Int" key="Default Alarm Time" name="AlarmTime">
-      <whatsthis>Here you can enter an incidence's default alarmtime.</whatsthis>
+      <whatsthis>Enter the default alarm time for incidences here.</whatsthis>
       <default>0</default>
     </entry>
   </group>
@@ -138,67 +144,73 @@
   <group name="Views">
     <entry type="Int" key="Hour Size">
       <label>Hour size</label>
+      <whatsthis>Select on this spin box the the height of the hour rows in the schedule view.</whatsthis>
       <default>10</default>
 			<min>4</min>
 			<max>30</max>
     </entry>
     <entry type="Bool" key="Show Daily Recurrences" name="DailyRecur">
       <label>Show events that recur daily in date navigator</label>
+      <whatsthis>Check this box to show the days containing daily recurring events in bold typeface in the Date Navigator, or uncheck it to give more prominence to other (non daily recurring) events.</whatsthis>
       <default>true</default>
     </entry>
     <entry type="Bool" key="Show Weekly Recurrences" name="WeeklyRecur">
       <label>Show events that recur weekly in date navigator</label>
+      <whatsthis>Check this box to show the days containing weekly recurring events in bold typeface in the Date Navigator, or uncheck it to give more prominence to other (non weekly recurring) events.</whatsthis>
       <default>true</default>
     </entry>
     <entry type="Bool" key="Enable ToolTips">
       <label>Enable tooltips displaying summary of events</label>
-      <whatsthis>Enable this when you want a tooltip appearing when hovering the mouse above an event.</whatsthis>
+      <whatsthis>Check this box to display an event summary tooltip when hovering the mouse over an event.</whatsthis>
       <default>true</default>
     </entry>
     <entry type="Bool" name="ShowAllDayTodo">
       <label>Show to-dos in day, week and month views</label>
-      <whatsthis>This option toggles the display of to-dos in the day, week, and month view. This comes in handy when you have a lot of (recurring) to-dos.</whatsthis>
+      <whatsthis>Check this box to display to-dos in the day, week, and month view. This is helpful when you have a lot of (recurring) to-dos.</whatsthis>
       <default>true</default>
     </entry>
     <entry type="Bool" key="Enable Month-View Scrollbars" name="EnableMonthScroll">
       <label>Enable scrollbars in month view cells</label>
-      <whatsthis>By checking this option, scrollbars will appear when clicking on a cell in the month view; they will only appear when needed though.</whatsthis>
+      <whatsthis>Check this box to display scrollbars when clicking on a cell in the month view; they will only appear when needed though.</whatsthis>
       <default>false</default>
     </entry>
     <entry type="Bool" name="SelectionStartsEditor">
       <label>Time range selection in agenda view starts event editor</label>
-      <whatsthis>If you check this option, you can drag the mouse from the start time to the end time of the event you are about to plan. An editor will open to an event with the selected time range. This works only in the daily and weekly view.</whatsthis>
+      <whatsthis>Check this box to start the event editor automatically when you select a time range in the daily and weekly view. To select a time range, drag the mouse from the start time to the end time of the event you are about to plan.</whatsthis>
       <default>false</default>
     </entry>
 
     <entry type="Bool" key="Marcus Bains shows seconds" name="MarcusBainsShowSeconds">
       <label>Show seconds on Marcus Bains line</label>
-      <whatsthis>Check this option if you want seconds in the Marcus Bains line.</whatsthis>
+      <whatsthis>Check this box if you want to show seconds on the current time line (Marcus Bains line).</whatsthis>
       <default>false</default>
     </entry>
     <entry type="Bool" key="Show Marcus Bains" name="MarcusBainsEnabled">
       <label>Show current time (Marcus Bains line)</label>
-      <whatsthis>If selected, a red line will appear in the day or week view indicating the current time.</whatsthis>
+      <whatsthis>Check this box to display a red line in the day or week view indicating the current time (Marcus Bains line).</whatsthis>
       <default>false</default>
     </entry>
-	<entry type="Bool" key="Agenda View Uses Resource Color">
+    <entry type="Bool" key="Agenda View Uses Resource Color">
       <label>Agenda view uses resource colors</label>
-      <whatsthis>Check this option to make the agenda view use the resource colors of an incidence.</whatsthis>
+      <whatsthis>Check this box to make the agenda view use the resource colors of an incidence.</whatsthis>
       <default>false</default>
     </entry>
 
 
     <entry type="DateTime" name="DayBegins">
       <label>Day begins at</label>
+      <whatsthis>Enter the start time for events here. This time should be the earliest time that you use for events, as it will be displayed at the top.</whatsthis>
       <default>QDateTime(QDate(), QTime(7,0))</default>
     </entry>
 
     <entry type="DateTime" name="WorkingHoursStart">
       <label>Daily starting hour</label>
+      <whatsthis>Enter the start time for the working hours here. The working hours will be marked with color by KOrganizer.</whatsthis>
       <default>QDateTime(QDate(), QTime(8,0))</default>
     </entry>
     <entry type="DateTime" name="WorkingHoursEnd">
       <label>Daily ending hour</label>
+      <whatsthis>Enter the ending time for the working hours here. The working hours will be marked with color by KOrganizer.</whatsthis>
       <default>QDateTime(QDate(), QTime(17,0))</default>
     </entry>
     <entry type="Int" key="Work Week Mask" name="WorkWeekMask">
@@ -206,33 +218,37 @@
     </entry>
     <entry type="Bool" key="Exclude Holidays">
       <label>Exclude holidays</label>
+      <whatsthis>Check this box to prevent KOrganizer from marking the working hours on holidays.</whatsthis>
       <default>true</default>
     </entry>
 
     <entry type="Bool" key="Month View Uses Category Color">
       <label>Month view uses category colors</label>
-      <whatsthis>Check this option to make the month view use the category colors of an incidence.</whatsthis>
+      <whatsthis>Check this box to make the month view use the category colors of an incidence.</whatsthis>
       <default>false</default>
     </entry>
 
     <entry type="Bool" key="Month View Uses Resource Color">
       <label>Month view uses resource colors</label>
-      <whatsthis>Check this option to make the month view use the resource colors of an incidence.</whatsthis>
+      <whatsthis>Check this box to make the month view use the resource colors of an incidence.</whatsthis>
       <default>false</default>
     </entry>
 
 
     <entry type="Bool" key="Full View Month">
       <label>Month view uses full window</label>
+      <whatsthis>Check this box to use the full Korganizer window when displaying the month view. If this box is checked, you will gain some space for the monthly view, but other widgets, such as the date navigator, the incidence details and the resources list, will not be displayed.</whatsthis>
       <default>false</default>
     </entry>
     <entry type="Bool" key="Full View Todo">
       <label>To-do view uses full window</label>
+      <whatsthis>Check this box to use the full Korganizer window when displaying the to-do view. If this box is checked, you will gain some space for the to-do view, but other widgets, such as the date navigator, the to-do details and the resources list, will not be displayed.</whatsthis>
       <default>true</default>
     </entry>
 
     <entry type="Bool" key="Record Todos In Journals">
       <label>Record completed to-dos in journals</label>
+      <whatsthis>Check this box to record the completion of a to-do task in a new entry of your journal automatically.</whatsthis>
       <default>false</default>
     </entry>
 
@@ -242,6 +258,7 @@
 
     <entry type="Int" key="Next X Days">
       <label>Next x days</label>
+      <whatsthis>Select on this spin box the number of &quot;x&quot; days to be displayed in the next days view. To access the  the next &quot;x&quot; days view, choose the the &quot;Next X Days&quot; menu item from the &quot;View&quot; menu.</whatsthis>
       <default>3</default>
     </entry>
 
@@ -284,6 +301,7 @@
     </entry>
     <entry type="Bool" key="Use Groupware Communication">
       <label>Use Groupware communication</label>
+      <whatsthis>Check this box to enable automatic generation of mails when creating, updating or deleting events, todo or journal. You should check this box if you you want to use the groupware functionality (e.g Configuring Kontact as a KDE Kolab client).</whatsthis>
       <default>false</default>
     </entry>
 
@@ -295,30 +313,37 @@
   <group name="Colors">
     <entry type="Color" key="Holiday Color">
       <label>Holiday color</label>
+      <whatsthis>Select the holiday color here. The holiday color will be used for the holiday name in the month view and the holiday number in the date navigator.</whatsthis>
       <default>255, 100, 100</default>
     </entry>
     <entry type="Color" key="Highlight Color">
       <label>Highlight color</label>
+      <whatsthis>Select the highlight color here. The highlight color will be used for marking the current selected area in your agenda and in the date navigator.</whatsthis>
       <default>100, 100, 255</default>
     </entry>
     <entry type="Color" key="AgendaBackgroundColor" name="AgendaBgColor">
       <label>Agenda view background color</label>
+      <whatsthis>Select the agenda view background color here.</whatsthis>
       <default>255, 255, 255</default>
     </entry>
     <entry type="Color" key="WorkingHoursColor">
       <label>Working hours color</label>
+      <whatsthis>Select the working hour color for the agenda view here.</whatsthis>
       <default>225, 225, 255</default>
     </entry>
     <entry type="Color" key="Todo due today Color" name="TodoDueTodayColor">
       <label>To-do due today color</label>
+      <whatsthis>Select the to-do due today color here.</whatsthis>
       <default>255, 200, 50</default>
     </entry>
     <entry type="Color" key="Todo overdue Color" name="TodoOverdueColor">
       <label>To-do overdue color</label>
+      <whatsthis>Select the to-do overdue color here.</whatsthis>
       <default>255, 100, 100</default>
     </entry>
     <entry type="Color" key="EventColor">
       <label>Default event color</label>
+      <whatsthis>Select the default event color here. The default event color will be used for events categories in your agenda. Note that you can specify a separate color for each event category below.</whatsthis>
       <default>151, 235, 121</default>
     </entry>
   </group>
@@ -326,16 +351,20 @@
   <group name="Fonts">
     <entry type="Font" key="TimeBar Font">
       <label>Time bar</label>
+      <whatsthis>Press this button configure the time bar font. The time bar is the widget that shows the hours in the agenda view. This button will open the &quot;Select Font&quot; dialog, allowing you to choose the hour font for the time bar.</whatsthis>
       <default code="true">QFont(QString::null, 16)</default>
     </entry>
     <entry type="Font" key="AgendaView Font">
       <label>Agenda view</label>
+      <whatsthis>Press this button configure the agenda view font. This button will open the &quot;Select Font&quot; dialog, allowing you to choose the font for the events in the agenda view.</whatsthis>
     </entry>
     <entry type="Font" key="MarcusBains Font">
       <label>Marcus Bains line</label>
+      <whatsthis>Press this button configure the Marcus Bains line font. This button will open the &quot;Select Font&quot; dialog, allowing you to choose the font for the current time (Marcus Bains) line in the agenda view.</whatsthis>
     </entry>
     <entry type="Font" key="MonthView Font">
       <label>Month view</label>
+      <whatsthis>Press this button configure the month view font. This button will open the &quot;Select Font&quot; dialog, allowing you to choose the font for the items in the month view.</whatsthis>
     </entry>
   </group>
 

@@ -28,7 +28,7 @@
                     <cstring>tab</cstring>
                 </property>
                 <attribute name="title">
-                    <string>&amp;Publish</string>
+                    <string>P&amp;ublish</string>
                 </attribute>
                 <vbox>
                     <property name="name">
@@ -52,6 +52,11 @@
                         <property name="text">
                             <string>Publish your free/&amp;busy information automatically</string>
                         </property>
+                        <property name="whatsThis" stdset="0">
+                            <string>Check this box to upload your Free/Busy information automatically.
+It is possible to skip this option and mail or upload your Free/Busy information using the Schedule menu of KOrganizer.
+Note: If KOrganizer is acting as a KDE Kolab client, this is not required, as the Kolab2 server taking care of publishing your Free/Busy information and manages the access to it from other users.</string>
+                        </property>
                     </widget>
                     <widget class="QLayoutWidget">
                         <property name="name">
@@ -71,10 +76,16 @@
                                 <property name="buddy" stdset="0">
                                     <cstring>publishDelaySB</cstring>
                                 </property>
+                                <property name="whatsThis" stdset="0">
+                                    <string>Configure minimum the interval of time in minutes between each upload here. This configuration is only effective in case you choose to publish your information automatically.</string>
+                                </property>
                             </widget>
                             <widget class="QSpinBox">
                                 <property name="name">
                                     <cstring>publishDelay</cstring>
+                                </property>
+                                <property name="whatsThis" stdset="0">
+                                    <string>Configure minimum the interval of time in minutes between each upload here. This configuration is only effective in case you choose to publish your information automatically.</string>
                                 </property>
                             </widget>
                         </hbox>
@@ -97,6 +108,9 @@
                                 <property name="buddy" stdset="0">
                                     <cstring>publishDaysSB</cstring>
                                 </property>
+                                <property name="whatsThis" stdset="0">
+                                    <string>Configure the number of calendar days you wish to be published and available to others here.</string>
+                                </property>
                             </widget>
                             <widget class="QSpinBox">
                                 <property name="name">
@@ -111,6 +125,9 @@
                                 <property name="value">
                                     <number>60</number>
                                 </property>
+                                <property name="whatsThis" stdset="0">
+                                    <string>Configure the number of calendar days you wish to be published and available to others here.</string>
+                                </property>
                             </widget>
                             <widget class="QLabel">
                                 <property name="name">
@@ -118,6 +135,9 @@
                                 </property>
                                 <property name="text">
                                     <string>days of free/busy information</string>
+                                </property>
+                                <property name="whatsThis" stdset="0">
+                                    <string>Configure the number of calendar days you wish to be published and available to others here.</string>
                                 </property>
                             </widget>
                             <spacer>
@@ -157,13 +177,22 @@
                                 <property name="enabled">
                                     <bool>true</bool>
                                 </property>
+                                <property name="whatsThis" stdset="0">
+                                    <string>Enter the URL for the server on which your Free/Busy information shall be published here.
+Ask the server administrator for this information.
+Here is a Kolab2 server URL example: "webdavs://kolab2.com/freebusy/joe@kolab2.com.ifb"</string>
+                                </property>
                             </widget>
                             <widget class="QCheckBox" row="7" column="0" rowspan="1" colspan="2">
                                 <property name="name">
                                     <cstring>publishSavePassword</cstring>
                                 </property>
                                 <property name="text">
-                                    <string>Re&amp;member password</string>
+                                    <string>Remember p&amp;assword</string>
+                                </property>
+                                <property name="whatsThis" stdset="0">
+                                    <string>Check this box to make KOrganizer remember your password and skip asking you each time it uploads your Free/Busy information, by storing it in the configuration file.
+For security reasons, it is not recommended to store your password in the configuration file.</string>
                                 </property>
                             </widget>
                             <widget class="QLabel" row="6" column="0">
@@ -176,6 +205,9 @@
                                 <property name="buddy" stdset="0">
                                     <cstring>publishPasswordED</cstring>
                                 </property>
+                                <property name="whatsThis" stdset="0">
+                                    <string>Enter your groupware server login password here.</string>
+                                </property>
                             </widget>
                             <widget class="QLineEdit" row="6" column="1">
                                 <property name="name">
@@ -183,6 +215,9 @@
                                 </property>
                                 <property name="echoMode">
                                     <enum>Password</enum>
+                                </property>
+                                <property name="whatsThis" stdset="0">
+                                    <string>Enter your groupware server login password here.</string>
                                 </property>
                             </widget>
                             <widget class="QLineEdit" row="5" column="1">
@@ -195,6 +230,11 @@
                                         <height>0</height>
                                     </size>
                                 </property>
+                                <property name="whatsThis" stdset="0">
+                                    <string>Enter the login information relative to your account on the server here.
+
+A Kolab2 server specificity: Registered your UID (Unique IDentifier). By default your UID would be your email address on the Kolab2 server but it may also be different. In the last case enter your UID.</string>
+                                </property>
                             </widget>
                             <widget class="QLabel" row="5" column="0">
                                 <property name="name">
@@ -205,6 +245,11 @@
                                 </property>
                                 <property name="buddy" stdset="0">
                                     <cstring>publishUserNameED</cstring>
+                                </property>
+                                <property name="whatsThis" stdset="0">
+                                    <string>Enter the login information relative to your account on the server here.
+
+A Kolab2 server specificity: Registered your UID (Unique IDentifier). By default your UID would be your email address on the Kolab2 server but it may also be different. In the last case enter your UID.</string>
                                 </property>
                             </widget>
                             <widget class="QFrame" row="4" column="0" rowspan="1" colspan="2">
@@ -227,6 +272,11 @@
                                 </property>
                                 <property name="buddy" stdset="0">
                                     <cstring>anyServerURLED</cstring>
+                                </property>
+                                <property name="whatsThis" stdset="0">
+                                    <string>Enter the URL for the server on which your Free/Busy information shall be published here.
+Ask the server administrator for this information.
+Here is a Kolab2 server URL example: "webdavs://kolab2.com/freebusy/joe@kolab2.com.ifb"</string>
                                 </property>
                             </widget>
                         </grid>
@@ -277,7 +327,10 @@
                             <cstring>retrieveEnable</cstring>
                         </property>
                         <property name="text">
-                            <string>Retrieve other peoples' &amp;free/busy information automatically</string>
+                            <string>Retrieve other peoples' free/&amp;busy information automatically</string>
+                        </property>
+                        <property name="whatsThis" stdset="0">
+                            <string>Check this box to retrieve other peoples' Free/Busy information automatically. Note that you have to fill the correct server information to make this possible.</string>
                         </property>
                     </widget>
                     <widget class="QCheckBox">
@@ -288,13 +341,13 @@
                             <bool>true</bool>
                         </property>
                         <property name="text">
-                            <string>Use full email address for retrieval</string>
+                            <string>Use full email &amp;address for retrieval</string>
                         </property>
                         <property name="toolTip" stdset="0">
                             <string>Set this to retrieve user@domain.ifb instead of user.ifb from the server</string>
                         </property>
                         <property name="whatsThis" stdset="0">
-                            <string>With this setting, you can change the filename that will be fetched from the server. With this checked, it will download a free/busy file called user@domain.ifb, for example nn@kde.org.ifb. Without this set, it will download user.ifb, for example nn.ifb.</string>
+                            <string>Check this box to download a free/busy file in the format "user@domain.ifb" (for example joe@company.com.ifb). Otherwise, it will download a free/busy file in the format user.ifb (for example joe.ifb). Ask the server Administrator if you are not sure about how to configure this option.</string>
                         </property>
                     </widget>
                     <widget class="QButtonGroup">
@@ -326,6 +379,11 @@
                                         <property name="buddy" stdset="0">
                                             <cstring>anyServerURLED</cstring>
                                         </property>
+                                        <property name="whatsThis" stdset="0">
+                                            <string>Enter the URL for the server on which the Free/Busy information is published here.
+Ask the server administrator for this information.
+Here is a Kolab2 server URL example: "webdavs://kolab2.com/freebusy/"</string>
+                                        </property>
                                     </widget>
                                     <widget class="QLineEdit">
                                         <property name="name">
@@ -333,6 +391,11 @@
                                         </property>
                                         <property name="enabled">
                                             <bool>true</bool>
+                                        </property>
+                                        <property name="whatsThis" stdset="0">
+                                            <string>Enter the URL for the server on which the Free/Busy information is published here.
+Ask the server administrator for this information.
+Here is a Kolab2 server URL example: "webdavs://kolab2.com/freebusy/"</string>
                                         </property>
                                     </widget>
                                 </hbox>
@@ -360,16 +423,26 @@
                                         <property name="name">
                                             <cstring>retrieveUser</cstring>
                                         </property>
+                                        <property name="whatsThis" stdset="0">
+                                            <string>Enter the login information relative to your account on the server here.
+
+A Kolab2 server specificity: Registered your UID (Unique IDentifier). By default your UID would be your email address on the Kolab2 server but it may also be different. In the last case enter your UID.</string>
+                                        </property>
                                     </widget>
                                     <widget class="QLabel" row="0" column="0">
                                         <property name="name">
                                             <cstring>textLabel3</cstring>
                                         </property>
                                         <property name="text">
-                                            <string>Us&amp;er name:</string>
+                                            <string>User &amp;name:</string>
                                         </property>
                                         <property name="buddy" stdset="0">
                                             <cstring>retrieveUser</cstring>
+                                        </property>
+                                        <property name="whatsThis" stdset="0">
+                                            <string>Enter the login information relative to your account on the server here.
+
+A Kolab2 server specificity: Registered your UID (Unique IDentifier). By default your UID would be your email address on the Kolab2 server but it may also be different. In the last case enter your UID.</string>
                                         </property>
                                     </widget>
                                     <widget class="QLabel" row="1" column="0">
@@ -377,10 +450,13 @@
                                             <cstring>textLabel4</cstring>
                                         </property>
                                         <property name="text">
-                                            <string>Pass&amp;word:</string>
+                                            <string>Passwor&amp;d:</string>
                                         </property>
                                         <property name="buddy" stdset="0">
                                             <cstring>retrievePassword</cstring>
+                                        </property>
+                                        <property name="whatsThis" stdset="0">
+                                            <string>Enter your groupware server login password here.</string>
                                         </property>
                                     </widget>
                                     <widget class="QLineEdit" row="1" column="1">
@@ -389,6 +465,9 @@
                                         </property>
                                         <property name="echoMode">
                                             <enum>Password</enum>
+                                        </property>
+                                        <property name="whatsThis" stdset="0">
+                                            <string>Enter your groupware server login password here.</string>
                                         </property>
                                     </widget>
                                 </grid>
@@ -402,6 +481,10 @@
                                 </property>
                                 <property name="text">
                                     <string>Re&amp;member password</string>
+                                </property>
+                                <property name="whatsThis" stdset="0">
+                                    <string>Check this box to make KOrganizer remember your password and skip asking you each time it uploads your Free/Busy information, by storing it in the configuration file.
+For security reasons, it is not recommended to store your password in the configuration file.</string>
                                 </property>
                             </widget>
                         </vbox>
@@ -509,8 +592,8 @@
     </connection>
 </connections>
 <includes>
-    <include location="local" impldecl="in implementation">kogroupwareprefspage.ui.h</include>
     <include location="global" impldecl="in declaration">kdepimmacros.h</include>
+    <include location="local" impldecl="in implementation">kogroupwareprefspage.ui.h</include>
 </includes>
 <signals>
     <signal>changed()</signal>
