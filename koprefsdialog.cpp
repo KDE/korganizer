@@ -96,30 +96,23 @@ KOPrefsDialogMain::KOPrefsDialogMain( QWidget *parent, const char *name )
            SLOT( slotWidChanged() ) );
   mNameLabel = new QLabel(mNameEdit, i18n("Full &name:"), topFrame);
   topLayout->addWidget(mNameLabel,1,0);
-  QWhatsThis::add( mNameLabel,
-                   i18n( "Enter here your full name. This name will be "
-                         "displayed as \"Organizer\" in tasks and "
-                         "events you create." ) ); 
-topLayout->addWidget(mNameEdit,1,1);
-  QWhatsThis::add( mNameEdit,
-                   i18n( "Enter here your full name. This name will be "
-                         "displayed as \"Organizer\" in tasks and "
-                         "events you create." ) );
-
+  QString whatsThis = i18n( "Enter here your full name. This name will be "
+                            "displayed as \"Organizer\" in tasks and "
+                            "events you create." );
+  QWhatsThis::add( mNameLabel, whatsThis );
+  topLayout->addWidget(mNameEdit,1,1);
+  QWhatsThis::add( mNameEdit, whatsThis );
   mEmailEdit = new QLineEdit(topFrame);
   connect( mEmailEdit, SIGNAL( textChanged( const QString & ) ),
            SLOT( slotWidChanged() ) );
   mEmailLabel = new QLabel(mEmailEdit, i18n("E&mail address:"),topFrame);
   topLayout->addWidget(mEmailLabel,2,0);
-  QWhatsThis::add( mEmailLabel,
-                   i18n( "Enter here your e-mail address. This e-mail address "
-                         "will be used to identify the owner of the calendar, "
-                         "and displayed in events and tasks you create." ) );
+  whatsThis = i18n( "Enter here your e-mail address. This e-mail address "
+                    "will be used to identify the owner of the calendar, "
+                    "and displayed in events and tasks you create." );
+  QWhatsThis::add( mEmailLabel, whatsThis );
   topLayout->addWidget(mEmailEdit,2,1);
-  QWhatsThis::add( mEmailEdit,
-                   i18n( "Enter here your e-mail address. This e-mail address "
-                         "will be used to identify the owner of the calendar, "
-                         "and displayed in events and tasks you create." ) );
+  QWhatsThis::add( mEmailEdit, whatsThis );
 
   KPrefsWidBool *bcc =
       addWidBool( KOPrefs::instance()->bccItem(), topFrame );
@@ -136,14 +129,12 @@ topLayout->addWidget(mNameEdit,1,1);
   intervalBox->setSpacing( KDialog::spacingHint() );
 
   QLabel *autoSaveIntervalLabel = new QLabel(i18n("Save &interval in minutes:"),intervalBox);
-  QWhatsThis::add( autoSaveIntervalLabel,
-                   i18n( "Set on this spin box the interval in minutes between "
-                         "automatic saves of calendar data." ) );
+  whatsThis =  i18n( "Set on this spin box the interval in minutes between "
+                     "automatic saves of calendar data." );
+  QWhatsThis::add( autoSaveIntervalLabel, whatsThis );
 
   mAutoSaveIntervalSpin = new QSpinBox(0,500,1,intervalBox);
-  QWhatsThis::add( mAutoSaveIntervalSpin,
-                   i18n( "Set on this spin box the interval in minutes between "
-                         "automatic saves of calendar data." ) );
+  QWhatsThis::add( mAutoSaveIntervalSpin, whatsThis );
   connect( mAutoSaveIntervalSpin, SIGNAL( valueChanged( int ) ),
            SLOT( slotWidChanged() ) );
   autoSaveIntervalLabel->setBuddy(mAutoSaveIntervalSpin);
@@ -232,12 +223,12 @@ class KOPrefsDialogTime : public KPrefsModule
       topLayout->addMultiCellWidget( timeZoneBox, 0, 0, 0, 1 );
 
       QLabel *timeZoneLabel = new QLabel( i18n("Timezone:"), timeZoneBox );
-      QWhatsThis::add( timeZoneLabel,
-                       i18n( "Select your timezone from the list of locations "
-                             "on this drop down box. If your city is not "
-                             "listed, select one which shares the same "
-                             "timezone. KOrganizer will automatically adjust "
-                             "for daylight savings." ) );
+      QString whatsThis = i18n( "Select your timezone from the list of "
+                                "locations on this drop down box. If your city "
+                                "is not listed, select one which shares the "
+                                "same timezone. KOrganizer will automatically "
+                                "adjust for daylight savings." );
+      QWhatsThis::add( timeZoneLabel, whatsThis );
       mTimeZoneCombo = new QComboBox( timeZoneBox );
 
       connect( mTimeZoneCombo, SIGNAL( activated( int ) ),
@@ -319,33 +310,24 @@ class KOPrefsDialogTime : public KPrefsModule
         }
 
       mTimeZoneCombo->setCurrentItem(nCurrentlySet);
-      QWhatsThis::add( mTimeZoneCombo,
-                       i18n( "Select your timezone from the list of locations "
-                             "on this drop down box. If your city is not "
-                             "listed, select one which shares the same "
-                             "timezone. KOrganizer will automatically adjust "
-                             "for daylight savings." ) );
+      QWhatsThis::add( mTimeZoneCombo, whatsThis );
 
       // holiday region selection
       QHBox *holidayRegBox = new QHBox( topFrame );
       topLayout->addMultiCellWidget( holidayRegBox, 1, 1, 0, 1 );
 
       QLabel *holidayLabel = new QLabel( i18n( "Use holiday region:" ), holidayRegBox );
-      QWhatsThis::add( holidayLabel,
-                       i18n( "Select from which region you want to use the "
-                             "holidays here. Defined holidays are shown as "
-                             "non-working days in the date navigator, the "
-                             "agenda view, etc." ) );
+      whatsThis = i18n( "Select from which region you want to use the "
+                        "holidays here. Defined holidays are shown as "
+                        "non-working days in the date navigator, the "
+                        "agenda view, etc." );
+      QWhatsThis::add( holidayLabel, whatsThis );
 
       mHolidayCombo = new QComboBox( holidayRegBox );
       connect( mHolidayCombo, SIGNAL( activated( int ) ),
                SLOT( slotWidChanged() ) );
 
-      QWhatsThis::add( mHolidayCombo,
-                       i18n( "Select from which region you want to use the "
-                             "holidays here. Defined holidays are shown as "
-                             "non-working days in the date navigator, the "
-                             "agenda view, etc." ) );
+      QWhatsThis::add( mHolidayCombo, whatsThis );
 
       QString currentHolidayName;
       QStringList holidayList;
@@ -912,57 +894,42 @@ KOPrefsDialogGroupScheduling::KOPrefsDialogGroupScheduling( QWidget *parent, con
 #endif
 
   QLabel *aMailsLabel = new QLabel(i18n("Additional email addresses:"),topFrame);
-  QWhatsThis::add( aMailsLabel,
-                   i18n( "Add, edit or remove additional e-mails addresses "
-                         "here. These email addresses are the ones you "
-                         "have in addition to the one set in personal "
-                         "preferences. If you are an attendee of one event, "
-                         "but use another email address there, you need to list "
-                         "this address here so KOrganizer can recognize "
-                         "it as yours." ) );
+  QString whatsThis = i18n( "Add, edit or remove additional e-mails addresses "
+                            "here. These email addresses are the ones you "
+                            "have in addition to the one set in personal "
+                            "preferences. If you are an attendee of one event, "
+                            "but use another email address there, you need to "
+                            "list this address here so KOrganizer can "
+                            "recognize it as yours." );
+  QWhatsThis::add( aMailsLabel, whatsThis );
   topLayout->addMultiCellWidget(aMailsLabel,2,2,0,1);
   mAMails = new QListView(topFrame);
-  QWhatsThis::add( mAMails,
-                   i18n( "Add, edit or remove additional e-mails addresses "
-                         "here. These email addresses are the ones you "
-                         "have in addition to the one set in personal "
-                         "preferences. If you are an attendee of one event, "
-                         "but use another email address there, you need to list "
-                         "this address here so KOrganizer can recognize "
-                         "it as yours." ) ); 
+  QWhatsThis::add( mAMails, whatsThis );
 
   mAMails->addColumn(i18n("Email"),300);
   topLayout->addMultiCellWidget(mAMails,3,3,0,1);
 
   QLabel *aEmailsEditLabel = new QLabel(i18n("Additional email address:"),topFrame);
-  QWhatsThis::add( aEmailsEditLabel,
-                   i18n( "Edit additional e-mails addresses here. To edit an "
-                         "address select it from the list above "
-                         "or press the \"New\" button below. These email "
-                         "addresses are the ones you have in addition to the "
-                         "one set in personal preferences. " ) ); 
+  whatsThis = i18n( "Edit additional e-mails addresses here. To edit an "
+                    "address select it from the list above "
+                    "or press the \"New\" button below. These email "
+                    "addresses are the ones you have in addition to the "
+                    "one set in personal preferences." );
+  QWhatsThis::add( aEmailsEditLabel, whatsThis );
   topLayout->addWidget(aEmailsEditLabel,4,0);
   aEmailsEdit = new QLineEdit(topFrame);
-  QWhatsThis::add( aEmailsEdit,
-                   i18n( "Edit additional e-mails addresses here. To edit an "
-                         "address select it from the list above "
-                         "or press the \"New\" button below. These email "
-                         "addresses are the ones you have in addition to the "
-                         "one set in personal preferences. " ) ); 
+  QWhatsThis::add( aEmailsEdit, whatsThis );
   aEmailsEdit->setEnabled(false);
   topLayout->addWidget(aEmailsEdit,4,1);
 
   QPushButton *add = new QPushButton(i18n("New"),topFrame,"new");
-  QWhatsThis::add( add,
-                   i18n( "Press this button to add a new entry to the "
-                         "additional e-mail addresses list. Use the edit "
-                         "box above to edit the new entry." ) ); 
+  whatsThis = i18n( "Press this button to add a new entry to the "
+                    "additional e-mail addresses list. Use the edit "
+                    "box above to edit the new entry." ); 
+  QWhatsThis::add( add, whatsThis );
   topLayout->addWidget(add,5,0);
   QPushButton *del = new QPushButton(i18n("Remove"),topFrame,"remove");
-  QWhatsThis::add( del,
-                   i18n( "Press this button to remove the currently selected "
-                         "entry from the additional e-mail addresses "
-                         "list." ) ); 
+  QWhatsThis::add( del, whatsThis );
   topLayout->addWidget(del,5,1);
 
   //topLayout->setRowStretch(2,1);
