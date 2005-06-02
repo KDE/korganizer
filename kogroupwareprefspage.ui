@@ -241,7 +241,7 @@ A Kolab2 server specificity: Registered your UID (Unique IDentifier). By default
                                     <cstring>TextLabel6</cstring>
                                 </property>
                                 <property name="text">
-                                    <string>User name:</string>
+                                    <string>Username:</string>
                                 </property>
                                 <property name="buddy" stdset="0">
                                     <cstring>publishUserNameED</cstring>
@@ -434,7 +434,7 @@ A Kolab2 server specificity: Registered your UID (Unique IDentifier). By default
                                             <cstring>textLabel3</cstring>
                                         </property>
                                         <property name="text">
-                                            <string>User &amp;name:</string>
+                                            <string>User&amp;name:</string>
                                         </property>
                                         <property name="buddy" stdset="0">
                                             <cstring>retrieveUser</cstring>

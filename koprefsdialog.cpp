@@ -917,7 +917,7 @@ KOPrefsDialogGroupScheduling::KOPrefsDialogGroupScheduling( QWidget *parent, con
                          "here. These email addresses are the ones you "
                          "have in addition to the one set in personal "
                          "preferences. If you are an attendee of one event, "
-                         "but use another email address there, you need to list"
+                         "but use another email address there, you need to list "
                          "this address here so KOrganizer can recognize "
                          "it as yours." ) );
   topLayout->addMultiCellWidget(aMailsLabel,2,2,0,1);
@@ -927,7 +927,7 @@ KOPrefsDialogGroupScheduling::KOPrefsDialogGroupScheduling( QWidget *parent, con
                          "here. These email addresses are the ones you "
                          "have in addition to the one set in personal "
                          "preferences. If you are an attendee of one event, "
-                         "but use another email address there, you need to list"
+                         "but use another email address there, you need to list "
                          "this address here so KOrganizer can recognize "
                          "it as yours." ) ); 
 
