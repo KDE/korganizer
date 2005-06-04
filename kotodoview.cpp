@@ -874,10 +874,13 @@ void KOTodoView::setNewPercentage( KOTodoViewItem *item, int percentage )
         //FIXME: put all completed to-dos in one journal entry
         QString text = i18n( "Todo completed: %1" ).arg( todo->summary() );
         Journal *journal = new Journal();
-        mChanger->beginChange( journal );
         journal->setDtStart( QDateTime::currentDateTime() );
         journal->setDescription( text );
-        mChanger->addIncidence( journal );
+        if ( !mChanger->addIncidence( journal ) ) {
+          KODialogManager::errorSaveIncidence( this, journal );
+          delete journal;
+          return;
+        }
       }
       todo->setCompleted( QDateTime::currentDateTime() );
       // If the todo does recur, it doesn't get set as completed. However, the
@@ -1023,10 +1026,10 @@ void KOTodoView::setNewPercentageDelayed( KOTodoViewItem *item, int percentage )
 {
   mPercentChangedMap.append( qMakePair( item, percentage ) );
 
-  QTimer::singleShot( 0, this, SLOT( progressDelayedNewPercentage() ) );
+  QTimer::singleShot( 0, this, SLOT( processDelayedNewPercentage() ) );
 }
 
-void KOTodoView::progressDelayedNewPercentage()
+void KOTodoView::processDelayedNewPercentage()
 {
   QValueList< QPair< KOTodoViewItem *, int> >::Iterator it;
   for ( it = mPercentChangedMap.begin(); it != mPercentChangedMap.end(); ++it )

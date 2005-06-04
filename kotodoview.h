@@ -172,7 +172,7 @@ class KOTodoView : public KOrg::BaseView
     void itemStateChanged( QListViewItem * );
 
     void setNewPercentageDelayed( KOTodoViewItem *item, int percentage );
-    void progressDelayedNewPercentage();
+    void processDelayedNewPercentage();
 
   signals:
     void unSubTodoSignal();
