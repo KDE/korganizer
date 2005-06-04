@@ -1547,8 +1547,8 @@ KOAgendaItem *KOAgenda::insertItem( Incidence *incidence, const QDate &qd, int X
   if ( calendarResource ) {
     ResourceCalendar *resourceCalendar = calendarResource->resource( incidence );
     resourceColor = *KOPrefs::instance()->resourceColor( resourceCalendar->identifier() );
-  }else{
-    kdDebug(5850) << "KOAgenda:insertItem: Calendar is not a CalendarResources" <<endl;
+//  }else{
+//    kdDebug(5850) << "KOAgenda:insertItem: Calendar is not a CalendarResources" <<endl;
   }
 
   mActionType = NOP;
@@ -1607,8 +1607,8 @@ KOAgendaItem *KOAgenda::insertAllDayItem( Incidence *event, const QDate &qd,
     else
       kdDebug(5850) << "KOAgenda:insertAllDayItem: resource of "<< event->summary()
         << " is null" << endl;
-  }else{
-    kdDebug(5850) << "KOAgenda:insertAllDayItem: mCalendar is not a CalendarResources" <<endl;
+//  }else{
+//    kdDebug(5850) << "KOAgenda:insertAllDayItem: mCalendar is not a CalendarResources" <<endl;
   }
 
   KOAgendaItem *agendaItem = new KOAgendaItem( event, qd, viewport() );
