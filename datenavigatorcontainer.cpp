@@ -84,6 +84,9 @@ void DateNavigatorContainer::setCalendar( Calendar *cal )
   }
 }
 
+// TODO_Recurrence: let the navigators update just once, and tell them that
+// if data has changed or just the selection (because then the list of dayss
+// with events doesn't have to be updated if the month stayed the same
 void DateNavigatorContainer::updateDayMatrix()
 {
   mNavigatorView->updateDayMatrix();

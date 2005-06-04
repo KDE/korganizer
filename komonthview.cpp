@@ -536,8 +536,8 @@ void MonthViewCell::addIncidence( Incidence *incidence )
   if ( calendarRsc ) {
     ResourceCalendar *rscCalendar = calendarRsc->resource( incidence );
     resourceColor= *KOPrefs::instance()->resourceColor( rscCalendar->identifier() );
-  }else{
-    kdDebug(5850) << "MonthViewCell::addIncidence and mCalendar is not a CalendarResources" <<endl;
+//  }else{
+//    kdDebug(5850) << "MonthViewCell::addIncidence and mCalendar is not a CalendarResources" <<endl;
   }
 
   if ( v.act( incidence, mDate, mStandardPalette ) ) {

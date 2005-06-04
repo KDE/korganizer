@@ -243,6 +243,9 @@ void KODayMatrix::updateView( const QDate &actdate )
     recalculateToday();
   }
 
+  // TODO_Recurrence: If we just change the selection, but not the data, there's
+  // no need to update the whole list of events... This is just a waste of
+  // computational power (and it takes forever!)
   updateEvents();
   for( int i = 0; i < NUMDAYS; i++ ) {
     //if it is a holy day then draw it red. Sundays are consider holidays, too
@@ -271,7 +274,7 @@ void KODayMatrix::updateEvents()
     for( it = eventlist.begin(); it != eventlist.end(); ++it ) {
       Event *event = *it;
       ushort recurType = event->doesRecur();
-
+      // TODO_Recurrence: Don't do it like this!
       if ( ( recurType == Recurrence::rDaily &&
              !KOPrefs::instance()->mDailyRecur ) ||
            ( recurType == Recurrence::rWeekly &&
