@@ -90,11 +90,11 @@ class KOTodoEditor : public KOIncidenceEditor
   protected slots:
     void loadDefaults();
     void deleteTodo();
-
-    void slotLoadTemplate();
-    void saveTemplate( const QString & );
+    void slotSaveTemplate( const QString & );
 
   protected:
+    void loadTemplate( /*const*/ CalendarLocal& );
+    QStringList& templates() const;
     QString type() { return "ToDo"; }
     void setupGeneral();
     void setupRecurrence();

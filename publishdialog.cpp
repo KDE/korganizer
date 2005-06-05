@@ -44,7 +44,6 @@ PublishDialog::PublishDialog( QWidget* parent, const char* name,
 {
   mWidget = new PublishDialog_base( this, "PublishFreeBusy" );
   setMainWidget( mWidget );
-
   mWidget->mNameLineEdit->setEnabled( false );
   mWidget->mEmailLineEdit->setEnabled( false );
   connect( mWidget->mAddressListView, SIGNAL( selectionChanged(QListViewItem *) ),
