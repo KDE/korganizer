@@ -47,12 +47,11 @@
 
 TemplateManagementDialog::TemplateManagementDialog(QWidget *parent, const QStringList &templates )
     :KDialogBase( parent, "template_management_dialog", true,
-                        i18n("Manage Templates"), Ok|User1|Cancel, Ok, true ),
+                        i18n("Manage Templates"), Ok|User1|Cancel, Ok, true , i18n("Apply Template")),
       m_templates( templates ), m_newTemplate( QString::null ), m_changed( false )
 {
   m_base = new TemplateManagementDialog_base( this, "template_management_dialog_base" );
   setMainWidget( m_base );
-  setButtonText( User1, "Apply Template" );
   connect( m_base->m_buttonAdd, SIGNAL( clicked() ),
            SLOT( slotAddTemplate() ) );
   connect( m_base->m_buttonDelete, SIGNAL( clicked() ),
@@ -96,9 +95,11 @@ void TemplateManagementDialog::slotDeleteTemplate()
 {
   QListBoxItem *const item = m_base->m_listBox->selectedItem();
   if ( !item ) return; // can't happen (TM)
+  unsigned int current = m_base->m_listBox->index(item);
   m_templates.remove( item->text() );
   m_base->m_listBox->removeItem( m_base->m_listBox->currentItem() );
   m_changed = true;
+  m_base->m_listBox->setSelected(QMAX(current -1, 0), true);
 }
 
 void TemplateManagementDialog::slotUpdateDeleteButton( QListBoxItem *item )

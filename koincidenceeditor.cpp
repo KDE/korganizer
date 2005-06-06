@@ -70,7 +70,7 @@ KOIncidenceEditor::KOIncidenceEditor( const QString &caption,
     showButton( Apply, false );
     showButton( Default, false );
   } else {
-    setButtonText( Default, "&Templates ..." );
+    setButtonText( Default, "&Templates..." );
   }
 
   mCategoryDialog = new KPIM::CategorySelectDialog( KOPrefs::instance(), this );

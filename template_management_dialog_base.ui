@@ -19,20 +19,26 @@
         <property name="name">
             <cstring>unnamed</cstring>
         </property>
+        <property name="margin">
+            <number>0</number>
+        </property>
         <widget class="KListBox" row="1" column="0" rowspan="3" colspan="1">
             <property name="name">
                 <cstring>m_listBox</cstring>
             </property>
         </widget>
-        <widget class="KPushButton" row="1" column="1">
+        <widget class="QPushButton" row="1" column="1">
             <property name="name">
                 <cstring>m_buttonAdd</cstring>
             </property>
             <property name="text">
-                <string>Add</string>
+                <string>&amp;New</string>
+            </property>
+            <property name="accel">
+                <string>Alt+N</string>
             </property>
         </widget>
-        <widget class="KPushButton" row="2" column="1">
+        <widget class="QPushButton" row="2" column="1">
             <property name="name">
                 <cstring>m_buttonDelete</cstring>
             </property>
@@ -51,7 +57,7 @@
                 <enum>NoFrame</enum>
             </property>
             <property name="text">
-                <string>Select one of the listed templates and click &lt;b&gt;Apply Template&lt;/b&gt; to apply it to the current event or task. Click &lt;b&gt;Add&lt;/b&gt; to create a new template based on the current event or task.</string>
+                <string>Select a template and click &lt;b&gt;Apply Template&lt;/b&gt; to apply it to the current event or task. Click &lt;b&gt;New&lt;/b&gt; to create a new template based on the current event or task.</string>
             </property>
         </widget>
         <spacer row="3" column="1">
@@ -78,7 +84,5 @@
 <layoutdefaults spacing="6" margin="11"/>
 <includehints>
     <includehint>klistbox.h</includehint>
-    <includehint>kpushbutton.h</includehint>
-    <includehint>kpushbutton.h</includehint>
 </includehints>
 </UI>
