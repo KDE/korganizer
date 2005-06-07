@@ -105,9 +105,7 @@ class KOEventEditor : public KOIncidenceEditor
     void loadDefaults();
     void deleteEvent();
 
-    void slotLoadTemplate();
-
-    void saveTemplate( const QString & );
+    void slotSaveTemplate( const QString & );
 
   protected:
     QString type() { return "Event"; }
@@ -126,6 +124,8 @@ class KOEventEditor : public KOIncidenceEditor
     static bool myAttendeeStatusChanged( Event *oldVersion, Event *newVersion );
     void processCancel();
     int msgItemDelete();
+    void loadTemplate( /*const*/ CalendarLocal& );
+    QStringList& templates() const;
 
   private:
     Event *mEvent;
