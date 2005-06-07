@@ -8,8 +8,8 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>325</width>
-            <height>249</height>
+            <width>355</width>
+            <height>272</height>
         </rect>
     </property>
     <property name="caption">
@@ -58,6 +58,14 @@
             </property>
             <property name="text">
                 <string>Select a template and click &lt;b&gt;Apply Template&lt;/b&gt; to apply it to the current event or task. Click &lt;b&gt;New&lt;/b&gt; to create a new template based on the current event or task.</string>
+            </property>
+        </widget>
+        <widget class="QPushButton" row="4" column="0">
+            <property name="name">
+                <cstring>m_buttonApply</cstring>
+            </property>
+            <property name="text">
+                <string>Apply template</string>
             </property>
         </widget>
         <spacer row="3" column="1">

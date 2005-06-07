@@ -63,8 +63,8 @@ Q_OBJECT
   protected slots:
     void slotAddTemplate();
     void slotDeleteTemplate();
+    void slotApplyTemplate();
     void slotUpdateDeleteButton( QListBoxItem *item );
-    void slotUser1();
     void slotOk();
     
   private:

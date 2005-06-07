@@ -47,7 +47,7 @@
 
 TemplateManagementDialog::TemplateManagementDialog(QWidget *parent, const QStringList &templates )
     :KDialogBase( parent, "template_management_dialog", true,
-                        i18n("Manage Templates"), Ok|User1|Cancel, Ok, true , i18n("Apply Template")),
+                        i18n("Manage Templates"), Ok|Cancel, Ok, true , i18n("Apply Template")),
       m_templates( templates ), m_newTemplate( QString::null ), m_changed( false )
 {
   m_base = new TemplateManagementDialog_base( this, "template_management_dialog_base" );
@@ -59,6 +59,9 @@ TemplateManagementDialog::TemplateManagementDialog(QWidget *parent, const QStrin
   m_base->m_listBox->insertStringList( m_templates );
   connect( m_base->m_listBox, SIGNAL( selectionChanged( QListBoxItem * ) ),
            SLOT( slotUpdateDeleteButton( QListBoxItem * ) ) );
+  connect( m_base->m_buttonApply, SIGNAL( clicked() ),
+           SLOT( slotApplyTemplate() ) );
+
 }
 
 void TemplateManagementDialog::slotAddTemplate()
@@ -86,7 +89,7 @@ void TemplateManagementDialog::slotAddTemplate()
   m_changed = true;
   // From this point on we need to keep the original event around until the user has
   // closed the dialog, applying a template would make little sense
-  enableButton( User1, false );
+  m_base->m_buttonApply->setEnabled( false );
   // neither does adding it again
   m_base->m_buttonAdd->setEnabled( false );
 }
@@ -107,7 +110,7 @@ void TemplateManagementDialog::slotUpdateDeleteButton( QListBoxItem *item )
   m_base->m_buttonDelete->setEnabled( item != 0 );
 }
 
-void TemplateManagementDialog::slotUser1()
+void TemplateManagementDialog::slotApplyTemplate()
 {
   // Once the user has applied the current template to the event, it makes no sense to add it again
   m_base->m_buttonAdd->setEnabled( false );
