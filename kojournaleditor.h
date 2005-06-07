@@ -98,15 +98,14 @@ class KOJournalEditor : public KOIncidenceEditor
     void loadDefaults();
     void deleteJournal();
 
-    void slotSaveTemplate( const QString & );
-
+    void slotLoadTemplate();  
+    void saveTemplate( const QString & );
+  
   protected:
     QString type() { return "Journal"; }
     void setupGeneral();
 //    int msgItemDelete();
 
-    void loadTemplate( /*const*/ CalendarLocal& );
-    QStringList& templates() const;
   private:
     Journal *mJournal;
     KOEditorGeneralJournal *mGeneral;

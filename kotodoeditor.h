@@ -86,14 +86,17 @@ class KOTodoEditor : public KOIncidenceEditor
     /** This todo has been modified externally */
     void modified (int change=0);
 
+  signals:
+    void todoCompleted( Todo * );
+
   protected slots:
     void loadDefaults();
     void deleteTodo();
-    void slotSaveTemplate( const QString & );
+
+    void slotLoadTemplate();
+    void saveTemplate( const QString & );
 
   protected:
-    void loadTemplate( /*const*/ CalendarLocal& );
-    QStringList& templates() const;
     QString type() { return "ToDo"; }
     void setupGeneral();
     void setupRecurrence();

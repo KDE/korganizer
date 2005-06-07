@@ -241,26 +241,32 @@ void KOJournalEditor::modified( int /*modification*/)
   reload();
 }
 
-void KOJournalEditor::loadTemplate( /*const*/ CalendarLocal& cal)
+void KOJournalEditor::slotLoadTemplate()
 {
+  CalendarLocal cal( KOPrefs::instance()->mTimeZoneId );
+  Journal *journal = new Journal;
+  QString templateName = loadTemplate( &cal, journal->type(),
+                                       KOPrefs::instance()->mJournalTemplates );
+  delete journal;
+  if ( templateName.isEmpty() ) {
+    return;
+  }
+
   Journal::List journals = cal.journals();
   if ( journals.count() == 0 ) {
     KMessageBox::error( this,
-        i18n("Template does not contain a valid journal.") );
+        i18n("Template '%1' does not contain a valid journal.")
+        .arg( templateName ) );
   } else {
     readJournal( journals.first() );
   }
 }
 
-void KOJournalEditor::slotSaveTemplate( const QString &templateName )
+void KOJournalEditor::saveTemplate( const QString &templateName )
 {
   Journal *journal = new Journal;
   writeJournal( journal );
   saveAsTemplate( journal, templateName );
 }
 
-QStringList& KOJournalEditor::templates() const
-{
-  return KOPrefs::instance()->mJournalTemplates;
-}
 #include "kojournaleditor.moc"

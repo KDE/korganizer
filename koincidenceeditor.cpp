@@ -47,11 +47,10 @@
 #include "koeditorattachments.h"
 
 #include "koincidenceeditor.h"
-#include "templatemanagementdialog.h"
 
 KOIncidenceEditor::KOIncidenceEditor( const QString &caption,
                                       Calendar *calendar, QWidget *parent )
-  : KDialogBase( Tabbed, caption, Ok | Apply | Cancel | Default, Ok,
+  : KDialogBase( Tabbed, caption, Ok | Apply | Cancel | Default | User1, Ok,
                  parent, 0, false, false ),
     mDetails( 0 ), mAttachments( 0 )
 {
@@ -61,12 +60,16 @@ KOIncidenceEditor::KOIncidenceEditor( const QString &caption,
 
   mCalendar = calendar;
 
+  setButtonText( Default, i18n("Load &Template...") );
+
+  QString saveTemplateText;
   if ( KOPrefs::instance()->mCompactDialogs ) {
+    showButton( User1, false );
     showButton( Apply, false );
-    showButton( Default, false );
   } else {
-    setButtonText( Default, "&Templates..." );
+    saveTemplateText = i18n("&Save as Template...");
   }
+  setButtonText( User1, saveTemplateText );
 
   mCategoryDialog = new KPIM::CategorySelectDialog( KOPrefs::instance(), this );
   KOGlobals::fitDialogToScreen( mCategoryDialog );
@@ -74,7 +77,8 @@ KOIncidenceEditor::KOIncidenceEditor( const QString &caption,
   connect( mCategoryDialog, SIGNAL( editCategories() ),
            SIGNAL( editCategories() ) );
 
-  connect( this, SIGNAL( defaultClicked() ), SLOT( slotManageTemplates() ) );
+  connect( this, SIGNAL( defaultClicked() ), SLOT( slotLoadTemplate() ) );
+  connect( this, SIGNAL( user1Clicked() ), SLOT( slotSaveTemplate() ) );
   connect( this, SIGNAL( finished() ), SLOT( delayedDestruct() ) );
 }
 
@@ -142,21 +146,59 @@ void KOIncidenceEditor::cancelRemovedAttendees( Incidence *incidence )
 
 }
 
-void KOIncidenceEditor::slotManageTemplates()
+void KOIncidenceEditor::slotLoadTemplate()
 {
-  kdDebug(5850) << "KOIncidenceEditor::manageTemplates()" << endl;
+  kdDebug(5850) << "KOIncidenceEditor::loadTemplate()" << endl;
+}
 
+void KOIncidenceEditor::slotSaveTemplate()
+{
+  kdDebug(5850) << "KOIncidenceEditor::saveTemplate()" << endl;
   QString tp = type();
+  QStringList templates;
+  if ( tp == "Event" ) {
+    templates = KOPrefs::instance()->mEventTemplates;
+  } else if( tp == "ToDo" ) {
+    templates = KOPrefs::instance()->mTodoTemplates;
+  } else if ( tp == "Journal" ) {
+    templates = KOPrefs::instance()->mJournalTemplates;
+  }
+  bool ok = false;
+  QString templateName = KInputDialog::getItem( i18n("Save Template"),
+      i18n("Please enter a name for the template:"), templates,
+      -1, true, &ok, this );
+  if ( ok && templateName.isEmpty() ) {
+    KMessageBox::error( this, i18n("You did not give a valid template name, "
+                                   "no template will be saved") );
+    ok = false;
+  }
 
-  TemplateManagementDialog * const d = new TemplateManagementDialog( this, templates() );
-  connect( d, SIGNAL( loadTemplate( const QString& ) ),
-           this, SLOT( slotLoadTemplate( const QString& ) ) );
-  connect( d, SIGNAL( templatesChanged( const QStringList& ) ),
-           this, SLOT( slotTemplatesChanged( const QStringList& ) ) );
-  connect( d, SIGNAL( saveTemplate( const QString& ) ),
-           this, SLOT( slotSaveTemplate( const QString& ) ) );
-  d->exec();
-  return;
+  if ( ok && templates.contains( templateName ) ) {
+    int res = KMessageBox::warningYesNo( this,
+                                         i18n("The selected template "
+                                              "already exists. Overwrite it?"),
+                                         i18n("Template Already Exists") );
+    if ( res == KMessageBox::No ) {
+      ok = false;
+    }
+  }
+
+  if ( ok ) {
+    saveTemplate( templateName );
+
+    // Add template to list of existing templates
+    if ( !templates.contains( templateName ) ) {
+      templates.append( templateName );
+      if ( tp == "Event" ) {
+        KOPrefs::instance()->mEventTemplates = templates;
+      } else if ( tp == "ToDo" ) {
+        KOPrefs::instance()->mTodoTemplates = templates;
+      } else if ( tp == "Journal" ) {
+        KOPrefs::instance()->mJournalTemplates = templates;
+      }
+    }
+
+  }
 }
 
 void KOIncidenceEditor::saveAsTemplate( Incidence *incidence,
@@ -174,29 +216,33 @@ void KOIncidenceEditor::saveAsTemplate( Incidence *incidence,
   format.save( &cal, fileName );
 }
 
-void KOIncidenceEditor::slotLoadTemplate( const QString& templateName )
+QString KOIncidenceEditor::loadTemplate( Calendar *cal, const QString &type,
+                                         const QStringList &templates )
 {
-  CalendarLocal cal( KOPrefs::instance()->mTimeZoneId );
-  QString fileName = locateLocal( "data", "korganizer/templates/" + type() + "/" +
-      templateName );
+  bool ok = false;
+  QString templateName = KInputDialog::getItem( i18n("Load Template"),
+      i18n("Select a template to load:"), templates, 0, false, &ok, this );
+
+  if ( !ok || templateName.isEmpty() ) return QString::null;
+
+  QString fileName = locateLocal( "data", "korganizer/templates/" + type + "/" +
+                                  templateName );
 
   if ( fileName.isEmpty() ) {
     KMessageBox::error( this, i18n("Unable to find template '%1'.")
                               .arg( fileName ) );
+    return QString::null;
   } else {
     ICalFormat format;
-    if ( !format.load( &cal, fileName ) ) {
+    if ( !format.load( cal, fileName ) ) {
       KMessageBox::error( this, i18n("Error loading template file '%1'.")
-          .arg( fileName ) );
-      return;
+                                .arg( fileName ) );
+      return QString::null;
     }
   }
-  loadTemplate( cal );
+
+  return templateName;
 }
 
-void KOIncidenceEditor::slotTemplatesChanged( const QStringList& newTemplates )
-{
-  templates() = newTemplates;
-}
 
 #include "koincidenceeditor.moc"
