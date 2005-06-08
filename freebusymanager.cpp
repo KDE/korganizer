@@ -326,6 +326,7 @@ void FreeBusyManager::slotUploadFreeBusyResult(KIO::Job *_job)
 bool FreeBusyManager::retrieveFreeBusy( const QString &email )
 {
   kdDebug(5850) << "FreeBusyManager::retrieveFreeBusy(): " << email << endl;
+  if ( email.isEmpty() ) return false;
 
   if( KOPrefs::instance()->thatIsMe( email ) ) {
     // Don't download our own free-busy list from the net
