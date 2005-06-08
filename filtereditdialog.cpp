@@ -149,7 +149,7 @@ void FilterEdit::filterSelected()
 void FilterEdit::filterSelected(CalFilter *filter)
 {
   if(filter == current) return;
-  kdDebug(5850) << "Selected filter " << filter->name() << endl;
+  kdDebug(5850) << "Selected filter " << (filter!=0?filter->name():"") << endl;
 
   if(current != 0L) {
     // save the old values first.
