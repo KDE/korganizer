@@ -26,10 +26,10 @@
 #include "koeditorattachments.h"
 
 #include <libkcal/incidence.h>
+#include <libkdepim/kpimurlrequesterdlg.h>
 
 #include <klocale.h>
 #include <kdebug.h>
-#include <kurlrequesterdlg.h>
 #include <kmessagebox.h>
 #include <klistview.h>
 
@@ -179,9 +179,13 @@ void KOEditorAttachments::showAttachment( QListViewItem *item )
   }
 }
 
+
+
 void KOEditorAttachments::slotAdd()
 {
-  KURL uri = KURLRequesterDlg::getURL( QString::null, 0,
+  KURL uri = KPimURLRequesterDlg::getURL( QString::null, i18n(
+         "URL (e.g. a web page) or file to be attached (only "
+         "the link will be attached, not the file itself):"), this,
                                        i18n("Add Attachment") );
   // TODO: Implement adding binary attachments
   if ( !uri.isEmpty() ) {
@@ -197,7 +201,9 @@ void KOEditorAttachments::slotEdit()
 
   KCal::Attachment *att = attitem->attachment();
   if ( att->isUri() ) {
-    KURL uri = KURLRequesterDlg::getURL( att->uri(), 0,
+    KURL uri = KPimURLRequesterDlg::getURL( att->uri(), i18n(
+         "URL (e.g. a web page) or file to be attached (only "
+         "the link will be attached, not the file itself):"), this,
                                          i18n("Edit Attachment") );
 
     if ( !uri.isEmpty() )
