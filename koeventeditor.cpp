@@ -438,24 +438,29 @@ int KOEventEditor::msgItemDelete()
       i18n("KOrganizer Confirmation"),KGuiItem(i18n("Delete"),"editdelete"));
 }
 
-void KOEventEditor::loadTemplate( /*const*/ CalendarLocal& cal )
+void KOEventEditor::slotLoadTemplate()
 {
-  const Event::List events = cal.events();
+  CalendarLocal cal( KOPrefs::instance()->mTimeZoneId );
+  Event *event = new Event;
+  QString templateName = loadTemplate( &cal, event->type(),
+                                       KOPrefs::instance()->mEventTemplates );
+  delete event;
+  if ( templateName.isEmpty() ) {
+    return;
+  }
+
+  Event::List events = cal.events();
   if ( events.count() == 0 ) {
     KMessageBox::error( this,
-        i18n("Template does not contain a valid event.") );
+        i18n("Template does not contain a valid event.")
+        .arg( templateName ) );
   } else {
     kdDebug(5850) << "KOEventEditor::slotLoadTemplate(): readTemplate" << endl;
     readEvent( events.first(), true );
   }
 }
 
-QStringList& KOEventEditor::templates() const
-{
-  return KOPrefs::instance()->mEventTemplates;
-}
-
-void KOEventEditor::slotSaveTemplate( const QString &templateName )
+void KOEventEditor::saveTemplate( const QString &templateName )
 {
   Event *event = new Event;
   writeEvent( event );
