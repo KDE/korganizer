@@ -94,7 +94,8 @@ class FreeBusyItem : public KDGanttViewTaskItem
     void startDownload() {
       mIsDownloading = true;
       FreeBusyManager *m = KOGroupware::instance()->freeBusyManager();
-      m->retrieveFreeBusy( attendee()->email() );
+      if ( !m->retrieveFreeBusy( attendee()->email() ) )
+        mIsDownloading = false;
     }
     void setIsDownloading( bool d ) { mIsDownloading = d; }
     bool isDownloading() const { return mIsDownloading; }
