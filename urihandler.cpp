@@ -46,8 +46,9 @@ bool UriHandler::process( const QString &uri )
 
     // parse string, show
     int colon = uri.find( ':' );
-    // strip of the '://' from 'kmail://<number>'
-    QString serialNumberStr = uri.mid( colon + 3 );
+    // extract 'number' from 'kmail:<number>/<id>'
+    QString serialNumberStr = uri.mid( colon + 1 );
+    serialNumberStr = serialNumberStr.left( serialNumberStr.find( '/' ) );
 
     KMailIface_stub kmailIface( "kmail", "KMailIface" );
     kmailIface.showMail( serialNumberStr.toUInt(), QString() );
