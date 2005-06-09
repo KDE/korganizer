@@ -20,6 +20,11 @@
 #ifndef KCALENDARIFACE_H
 #define KCALENDARIFACE_H
 
+/** @file
+* This file is a generic DCOP interface, shared between KDE applications.
+* It handles Calendar requests.
+*/
+
 #include <dcopobject.h>
 #include <qdatetime.h>
 #include <qdatastream.h>
@@ -30,6 +35,7 @@
 
 typedef QPair<QDateTime, QDateTime> QDateTimePair;
 
+/** Interface class for calendar requests. */
 class KCalendarIface : public DCOPObject
 {
     K_DCOP
@@ -38,8 +44,8 @@ class KCalendarIface : public DCOPObject
 
   k_dcop:
 
-    /**
-     * ...
+    /** This is a struct.
+     * 
      */
     struct ResourceRequestReply {
         bool vCalInOK;
