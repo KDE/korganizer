@@ -1,0 +1,58 @@
+:
+: Danish holiday file. Copy to ~/.holiday for private changes or tip
+: aneks@kom.auc.dk if things are missing.
+: (colors edited by thomas@bitrot.in-berlin.de)
+:
+: Helligdage
+"Hellig tre Konger" on 6.1
+weekend "Fastelavn" weekend on easter minus 49 days
+weekend "Palme søndag" weekend on easter minus 7 days
+weekend "Skærtorsdag" weekend on easter minus 3 days
+weekend "Langfredag" weekend on easter minus 2 days
+weekend "Påskedag" weekend on easter
+weekend "2. Påskedag" weekend on easter plus 1 day
+weekend "Store bededag" weekend on easter plus 26 days
+weekend "Kristi himmelfart" weekend on easter plus 39 days
+weekend "Pinsedag" weekend on easter plus 49 days
+weekend "2. Pinsedag" weekend on easter plus 50 days
+"Skt. Hans dag" on 24.6
+"Mortensdag" on 11.11
+weekend "Juleaftensdag" weekend on 24.12
+weekend "1.Juledag" weekend on 25.12
+weekend "2.Juledag" weekend on 26.12
+weekend "1. Advent" weekend on sunday before 25.12 minus 21 days
+weekend "2. Advent" weekend on sunday before 25.12 minus 14 days
+weekend "3. Advent" weekend on sunday before 25.12 minus 7 days
+weekend "4. Advent" weekend on sunday before 25.12
+: 
+: Nationle fridage 
+weekend "Nytårsdag" weekend on 1.1
+weekend "Grundlovsdag/Fars dag" weekend on 5.6
+:
+: Nationale mærkedage
+"Kampen ved Myslunde 1864" on 2.2
+"Stormen på København 1659" on second tuesday in february
+"Slaget på reden 1801" on 2.4
+"Danmarks Besættelse 1940" on 9.4
+"Slaget ved Dybbøl 1864" on 18.4
+"Danmarks befrielse 1945" on 5.5
+"Kampen ved Helgoland 1864" on 9.5
+"Valdemarsdag/Genforeningsdag" on 15.6
+"Slaget ved Fredericia 1849" on 6.7
+"Slaget ved Isted 1850" on 25.7
+"Stormen på Frederiksstad 1850" on 4.10
+"FN-dag" on 24.10
+:
+: Royale fødselsdage
+"Dronning Ingrid" on 28.3
+"Dronning Margrete II" on 16.4
+"Prinsesse Benedikte" on 29.4
+"Kronprins Frederik" on 26.5
+"Prins Joachim" on 7.6
+"Prins Henrik" on 11.6
+"Prinsesse Alexandra" on 30.6
+:
+: Andet
+small blue "Sommertid" on last sunday in march
+small blue "Vintertid" on last sunday in october
+"Mors dag" on second sunday in may

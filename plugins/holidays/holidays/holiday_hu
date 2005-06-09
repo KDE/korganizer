@@ -1,0 +1,26 @@
+:
+: Hungarian holidays
+: Kelemen Péter <fuji@heureka.inf.elte.hu>
+: Last modified on Jul 21 1997
+:
+: public holidays
+"Újév" weekend on 1/1
+"Nemzeti ünnep" weekend on 3/15
+"Húsvét" weekend on easter length 2 days
+"Pünkösd" weekend on easter plus 49 length 2 days
+"Munka ünnepe" weekend on 5/1
+"Szt. István, az államalapítás ünnepe" weekend on 8/20
+"Nemzeti ünnep" weekend on 10/23
+"Karácsony" weekend on 12/25 length 2 days
+
+: other events
+small "Vízkereszt" on 1/6
+small "Valentin" on 2/14
+small "Nônap" on 3/8
+small "Anyák napja" on first sunday in may
+small "Gyermeknap" on last sunday in may
+small "Szentivánéj" on 6/24
+small "Halottak napja" black on 10/31
+small "Mindenszentek napja" on 11/1
+small "Mikulás" on 12/6
+small "Szilveszter" on 12/31

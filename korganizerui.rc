@@ -1,0 +1,125 @@
+<!DOCTYPE kpartgui>
+<kpartgui name="korganizer" version="31">
+
+  <MenuBar>
+    <Menu name="file"><text>&amp;File</text>
+      <Action name="print_setup" append="print_merge"/>
+      <Menu name="import"><text>Import</text>
+        <Action name="downloadnewstuff"/>
+        <Separator/>
+        <Merge/>
+        <Action name="import_ical"/>
+        <Action name="merge_calendar"/>
+      </Menu>
+      <Menu name="export"><text>Export</text>
+        <Action name="uploadnewstuff"/>
+        <Separator/>
+        <Merge/>
+        <Separator/>
+        <Action name="export_icalendar"/>
+        <Action name="export_vcalendar"/>
+      </Menu>
+      <Action name="file_archive"/>
+      <Separator/>
+      <Action name="addressbook"/>
+      <Action name="purge_completed"/>
+      <Separator/>
+      <Action name="make_active"/>
+    </Menu>
+    <Menu name="edit"><text>&amp;Edit</text>
+      <Action name="edit_delete" append="edit_paste_merge"/>
+    </Menu>
+    <Menu name="view"><text>&amp;View</text>
+      <Action name="view_whatsnext"/>
+      <Separator/>
+      <Action name="view_list"/>
+      <Action name="view_day"/>
+      <Action name="view_workweek"/>
+      <Action name="view_week"/>
+      <Action name="view_nextx"/>
+      <Action name="view_month"/>
+      <Action name="view_todo"/>
+      <Action name="view_journal"/>
+      <Separator/>
+      <Action name="update"/>
+    </Menu>
+    <Menu name="go_document"><text>&amp;Go</text>
+      <Action name="go_today"/>
+    </Menu>
+    <Menu name="actions"><text>&amp;Actions</text>
+      <Action name="new_event"/>
+      <Action name="new_todo"/>
+      <Action name="new_subtodo"/>
+      <Separator/>
+      <Action name="show_incidence"/>
+      <Action name="edit_incidence"/>
+      <Action name="delete_incidence"/>
+      <Action name="mail_appointment"/>
+      <Separator/>
+      <Action name="show_todo"/>
+      <Action name="edit_todo"/>
+      <Action name="delete_todo"/>
+      <Action name="unsub_todo"/>
+    </Menu>
+    <Menu name="schedule"><text>S&amp;chedule</text>
+      <Action name="outgoing"/>
+      <Action name="incoming"/>
+      <Separator/>
+      <Action name="publish"/>
+      <Action name="request"/>
+      <Action name="refresh"/>
+      <Action name="cancel"/>
+      <Action name="reply"/>
+      <Action name="counter"/>
+      <Separator/>
+      <Action name="mail_freebusy"/>
+      <Action name="upload_freebusy"/>
+    </Menu>
+    <Menu name="settings"><text>&amp;Settings</text>
+      <Action name="show_filter" append="show_merge"/>
+      <Action name="show_resourcebuttons" append="show_merge"/>
+      <Action name="conf_datetime" append="save_merge"/>
+      <Action name="configure_plugins" append="save_merge"/>
+      <Action name="edit_filters" append="save_merge"/>
+      <Action name="edit_categories" append="save_merge"/>
+    </Menu>
+    <Menu name="help"><text>&amp;Help</text>
+      <Action name="show_intro"/>
+      <Action name="help_tipofday"/>
+    </Menu>
+  </MenuBar>
+
+  <ToolBar name="mainToolBar"><text>Main</text>
+    <Action name="go_today"/>
+    <Action name="mail_appointment"/>
+    <Action name="new_event"/>
+    <Action name="new_todo"/>
+  </ToolBar>
+
+  <ToolBar name="korganizer_toolbar"><text>Views</text>
+    <Action name="view_whatsnext"/>
+    <Action name="view_list"/>
+    <Action name="view_day"/>
+    <Action name="view_workweek"/>
+    <Action name="view_week"/>
+    <Action name="view_nextx"/>
+    <Action name="view_month"/>
+    <Action name="view_todo"/>
+    <Action name="view_journal"/>
+  </ToolBar>
+
+  <ToolBar name="schedule_toolbar"><text>Schedule</text>
+    <Action name="publish"/>
+    <Action name="request"/>
+    <Action name="reply"/>
+    <Action name="addressbook"/>
+  </ToolBar>
+
+  <Menu name="rmb_selection_popup">
+    <Action name="new_event"/>
+    <Action name="new_todo"/>
+    <Merge/>
+  </Menu>
+
+
+</kpartgui>

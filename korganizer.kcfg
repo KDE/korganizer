@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE kcfg SYSTEM "http://www.kde.org/standards/kcfg/1.0/kcfg.dtd">
+<kcfg>
+  <kcfgfile name="korganizerrc"/>
+
+  <group name="General">
+    <entry type="Bool" key="Auto Save">
+      <label>Enable automatic saving of calendar</label>
+      <whatsthis>WhatsThis text for AutoSave option</whatsthis>
+      <default>true</default>
+    </entry>
+    <entry type="Int" key="Auto Save Interval">
+      <default>10</default>
+    </entry>
+    <entry type="Bool" key="Confirm Deletes" name="Confirm">
+      <label>Confirm deletes</label>
+      <whatsthis>Check this option when you want a confirmation when deleting items.</whatsthis>
+      <default>true</default>
+    </entry>
+
+    <entry type="Bool" key="Auto Archive">
+      <label>Regularly archive events</label>
+      <default>false</default>
+    </entry>
+    <entry type="Enum" key="Archive Action">
+      <label>What to do when archiving</label>
+      <default>actionArchive</default>
+      <choices>
+        <choice name="actionDelete">
+          <label>Delete old events</label>
+        </choice>
+        <choice name="actionArchive">
+          <label>Archive old events to a separate file</label>
+        </choice>
+      </choices>
+    </entry>
+    <entry type="Int" key="Expiry Time">
+      <label>If auto-archiving is enabled, events older than this amount will be archived. The unit of this value is specified in another field.</label>
+      <default>1</default>
+    </entry>
+    <entry type="Enum" key="Expiry Unit" name="ExpiryUnit">
+      <label>The unit in which the expiry time is expressed.</label>
+      <default>UnitMonths</default>
+      <choices>
+        <choice name="UnitDays">
+          <label>In days</label>
+        </choice>
+        <choice name="UnitWeeks">
+          <label>In weeks</label>
+        </choice>
+        <choice name="UnitMonths">
+          <label>In months</label>
+        </choice>
+      </choices>
+    </entry>
+    <entry type="String" key="Archive File">
+      <label>URL of the file where old events should be archived</label>
+    </entry>
+
+    <entry type="Bool" key="Html With Save">
+      <label>Export to HTML with every save</label>
+      <whatsthis>The calendar will be exported to a HTML-file every time you save if you select this option.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry type="Enum" key="Destination" name="Destination">
+      <label>New Events/Todos Should</label>
+      <choices>
+        <choice name="standardDestination">
+          <label>Be added to the standard resource</label>
+        </choice>
+        <choice name="askDestination">
+          <label>Be asked which resource to use</label>
+        </choice>
+      </choices>
+      <default>askDestination</default>
+    </entry>
+  </group>
+
+  <group name="Personal Settings">
+    <entry type="Bool" key="Bcc">
+      <label>Send copy to owner when mailing events</label>
+      <default>false</default>
+    </entry>
+    <entry type="Bool" key="Use Control Center Email" name="EmailControlCenter">
+      <label>Use email settings from Control Center</label>
+      <default>false</default>
+    </entry>
+    <entry type="Enum" key="Mail Client">
+      <label>Mail Client</label>
+      <choices>
+        <choice name="MailClientKMail">
+          <label>KMail</label>
+          <whatsthis>This is a radio button whatsthis text</whatsthis>
+        </choice>
+        <choice name="MailClientSendmail">
+          <label>Sendmail</label>
+        </choice>
+      </choices>
+      <default>MailClientKMail</default>
+    </entry>
+  </group>
+
+  <group name="Time &amp; Date">
+    <entry type="String" name="TimeZoneId">
+    </entry>
+    <entry type="DateTime" name="StartTime">
+      <label>Default appointment time</label>
+      <whatsthis>Here you can enter the event's default time, used if you do not supply a start time.</whatsthis>
+      <default>QDateTime(QDate(), QTime(10,0))</default>
+    </entry>
+    <entry type="DateTime" name="DefaultDuration">
+      <label>Default duration of new appointment</label>
+      <whatsthis>Here you can enter the event's default duration, used if you do not supply an end time.</whatsthis>
+      <default>QDateTime(QDate(), QTime(2,0))</default>
+    </entry>
+    <entry type="Int" key="Default Alarm Time" name="AlarmTime">
+      <whatsthis>Here you can enter an incidence's default alarmtime.</whatsthis>
+      <default>0</default>
+    </entry>
+  </group>
+
+  <group name="Views">
+    <entry type="Int" key="Hour Size">
+      <label>Hour size</label>
+      <default>10</default>
+			<min>4</min>
+			<max>30</max>
+    </entry>
+    <entry type="Bool" key="Show Daily Recurrences" name="DailyRecur">
+      <label>Show events that recur daily in date navigator</label>
+      <default>true</default>
+    </entry>
+    <entry type="Bool" key="Show Weekly Recurrences" name="WeeklyRecur">
+      <label>Show events that recur weekly in date navigator</label>
+      <default>true</default>
+    </entry>
+    <entry type="Bool" key="Enable ToolTips">
+      <label>Enable tooltips displaying summary of events</label>
+      <whatsthis>Enable this when you want a tooltip appearing when hovering the mouse above an event.</whatsthis>
+      <default>true</default>
+    </entry>
+    <entry type="Bool" name="ShowAllDayTodo">
+      <label>Display todos in day, week and month views</label>
+      <whatsthis>This option toggles the display of todos in the day, week, and month view. This comes in handy when you have a lot of (recurring) todos.</whatsthis>
+      <default>true</default>
+    </entry>
+    <entry type="Bool" key="Enable Month-View Scrollbars" name="EnableMonthScroll">
+      <label>Enable scrollbars in month view cells</label>
+      <whatsthis>By checking this option, scrollbars will appear when clicking on a cell in the month view; they will only appear when needed though.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry type="Bool" name="SelectionStartsEditor">
+      <label>Time range selection in agenda view starts event editor</label>
+      <whatsthis>If you check this option, you can drag the mouse from the start time to the end time of the event you are about to plan. An editor will open to an event with the selected time range. This works only in the daily and weekly view.</whatsthis>
+      <default>false</default>
+    </entry>
+
+    <entry type="Bool" key="Marcus Bains shows seconds" name="MarcusBainsShowSeconds">
+      <label>Show seconds on Marcus Bains line</label>
+      <whatsthis>Check this option if you want seconds in the Marcus Bains line.</whatsthis>
+      <default>false</default>
+    </entry>
+    <entry type="Bool" key="Show Marcus Bains" name="MarcusBainsEnabled">
+      <label>Show current time (Marcus Bains line)</label>
+      <whatsthis>If selected, a red line will appear in the day or week view indicating the current time.</whatsthis>
+      <default>false</default>
+    </entry>
+
+    <entry type="DateTime" name="DayBegins">
+      <label>Day begins at</label>
+      <default>QDateTime(QDate(), QTime(7,0))</default>
+    </entry>
+
+    <entry type="DateTime" name="WorkingHoursStart">
+      <label>Daily starting hour</label>
+      <default>QDateTime(QDate(), QTime(8,0))</default>
+    </entry>
+    <entry type="DateTime" name="WorkingHoursEnd">
+      <label>Daily ending hour</label>
+      <default>QDateTime(QDate(), QTime(17,0))</default>
+    </entry>
+    <entry type="Int" key="Work Week Mask" name="WorkWeekMask">
+      <default>31</default>
+    </entry>
+    <entry type="Bool" key="Exclude Holidays">
+      <label>Exclude holidays</label>
+      <default>true</default>
+    </entry>
+
+    <entry type="Bool" key="Month View Uses Category Color">
+      <label>Month view uses category colors</label>
+      <whatsthis>Check this option to make the month view use the category colors of an incidence.</whatsthis>
+      <default>false</default>
+    </entry>
+
+    <entry type="Bool" key="Full View Month">
+      <label>Month view uses full window</label>
+      <default>false</default>
+    </entry>
+    <entry type="Bool" key="Full View Todo">
+      <label>To-do view uses full window</label>
+      <default>true</default>
+    </entry>
+
+    <entry type="Bool" key="Quick Todo" name="EnableQuickTodo">
+      <default>true</default>
+    </entry>
+
+    <entry type="Int" key="Next X Days">
+      <label>Next x days</label>
+      <default>3</default>
+    </entry>
+
+  </group>
+
+  <group name="Layout">
+    <entry type="Bool" key="CompactDialogs">
+      <default>false</default>
+    </entry>
+    <entry type="Bool" key="VerticalScreen">
+      <default>false</default>
+    </entry>
+  </group>
+
+  <group name="KOrganizer Plugins">
+    <entry type="StringList" name="SelectedPlugins">
+      <default>holidays,webexport</default>
+    </entry>
+  </group>
+
+  <group name="Editors">
+    <entry type="StringList" name="EventTemplates">
+    </entry>
+    <entry type="StringList" name="TodoTemplates">
+    </entry>
+    <entry type="StringList" name="JournalTemplates">
+    </entry>
+  </group>
+
+  <group name="Group Scheduling">
+    <entry type="Enum" name="IMIPScheduler">
+      <choices>
+        <choice name="IMIPDummy"/>
+        <choice name="IMIPKMail"/>
+      </choices>
+      <default>IMIPKMail</default>
+    </entry>
+    <entry type="Bool" key="Use Groupware Communication">
+      <label>Use Groupware communication</label>
+      <default>false</default>
+    </entry>
+
+    <entry type="StringList" name="AdditionalMails">
+    </entry>
+
+    <entry type="Enum" name="IMIPSend">
+      <label>Scheduler Mails Should Be</label>
+      <choices>
+        <choice name="IMIPOutbox">
+          <label>Send to outbox</label>
+        </choice>
+        <choice name="IMIPdirectsend">
+          <label>Send directly</label>
+        </choice>
+      </choices>
+      <default>IMIPdirectsend</default>
+    </entry>
+
+    <entry type="Enum" key="IMIP auto refresh" name="IMIPAutoRefresh">
+      <label>Auto Send Refresh</label>
+      <choices>
+        <choice name="neverAuto">
+          <label>Never</label>
+        </choice>
+        <choice name="addressbookAuto">
+          <label>If attendee is in addressbook</label>
+        </choice>
+        <choice name="selectedAuto">
+          <label>Selected emails</label>
+        </choice>
+      </choices>
+      <default>neverAuto</default>
+    </entry>
+    <entry type="Enum" key="IMIP auto insert request" name="IMIPAutoInsertRequest">
+      <label>Auto Insert IMIP Requests</label>
+      <default>neverAuto</default>
+    </entry>
+    <entry type="Enum" key="IMIP auto insert reply" name="IMIPAutoInsertReply">
+      <label>Auto Insert IMIP Replies</label>
+      <default>neverAuto</default>
+    </entry>
+    <entry type="Enum" key="IMIP auto FreeBusy" name="IMIPAutoFreeBusy">
+      <label>Auto Send FreeBusy Information</label>
+      <default>neverAuto</default>
+    </entry>
+    <entry type="Enum" key="IMIP auto save FreeBusy" name="IMIPAutoFreeBusyReply">
+      <label>Auto Save FreeBusy Replies</label>
+      <default>neverAuto</default>
+    </entry>
+
+  </group>
+
+  <group name="Colors">
+    <entry type="Color" key="Holiday Color">
+      <label>Holiday color</label>
+      <default>255, 100, 100</default>
+    </entry>
+    <entry type="Color" key="Highlight Color">
+      <label>Highlight color</label>
+      <default>100, 100, 255</default>
+    </entry>
+    <entry type="Color" key="AgendaBackgroundColor" name="AgendaBgColor">
+      <label>Agenda view background color</label>
+      <default>255, 255, 255</default>
+    </entry>
+    <entry type="Color" key="WorkingHoursColor">
+      <label>Working hours color</label>
+      <default>225, 225, 255</default>
+    </entry>
+    <entry type="Color" key="Todo due today Color" name="TodoDueTodayColor">
+      <label>Todo due today color</label>
+      <default>255, 200, 50</default>
+    </entry>
+    <entry type="Color" key="Todo overdue Color" name="TodoOverdueColor">
+      <label>Todo overdue color</label>
+      <default>255, 100, 100</default>
+    </entry>
+    <entry type="Color" key="EventColor">
+      <label>Default event color</label>
+      <default>151, 235, 121</default>
+    </entry>
+  </group>
+
+  <group name="Fonts">
+    <entry type="Font" key="TimeBar Font">
+      <label>Time bar</label>
+    </entry>
+    <entry type="Font" key="AgendaView Font">
+      <label>Agenda view</label>
+    </entry>
+    <entry type="Font" key="MarcusBains Font">
+      <label>Marcus Bains line</label>
+    </entry>
+    <entry type="Font" key="MonthView Font">
+      <label>Month view</label>
+    </entry>
+  </group>
+
+  <group name="FreeBusy">
+
+    <entry type="Bool" name="FreeBusyPublishAuto">
+      <default>false</default>
+    </entry>
+
+    <entry type="Int" name="FreeBusyPublishDelay">
+      <default>5</default>
+    </entry>
+    <entry type="Int" key="FreeBusyPublishDays">
+      <default>60</default>
+    </entry>
+
+    <entry type="String" name="FreeBusyPublishUrl">
+      <label>Free/Busy Publish URL</label>
+      <whatsthis>URL for publishing free/busy information</whatsthis>
+    </entry>
+    <entry type="String" name="FreeBusyPublishUser">
+      <label>Free/Busy Publish User Name</label>
+      <whatsthis>User name for publishing free/busy information</whatsthis>
+    </entry>
+    <entry type="Password" name="FreeBusyPublishPassword">
+      <label>Free/Busy Publish Password</label>
+      <whatsthis>Password for publishing free/busy information</whatsthis>
+    </entry>
+    <entry type="Bool" name="FreeBusyPublishSavePassword">
+      <default>false</default>
+    </entry>
+
+    <entry type="Bool" name="FreeBusyRetrieveAuto">
+      <label>Enable Automatic Free/Busy Retrieval</label>
+      <default>false</default>
+    </entry>
+
+    <entry type="Bool" name="FreeBusyFullDomainRetrieval">
+      <label>Use full email address for retrieval</label>
+      <whatsthis>With this setting, you can change the filename that will be fetched from the server. With this checked, it will download a free/busy file called user@domain.ifb, for example nn@kde.org.ifb. Without this set, it will download user.ifb, for example nn.ifb.</whatsthis>
+      <default>false</default>
+    </entry>
+
+    <entry type="String" name="FreeBusyRetrieveUrl">
+      <label>Free/Busy Retrieval URL</label>
+    </entry>
+    <entry type="String" name="FreeBusyRetrieveUser">
+      <label>Free/Busy Retrieval User Name</label>
+    </entry>
+    <entry type="Password" name="FreeBusyRetrievePassword">
+      <label>Free/Busy Retrieval Password</label>
+      <whatsthis>Password for retrieving free/busy information</whatsthis>
+    </entry>
+    <entry type="Bool" name="FreeBusyRetrieveSavePassword">
+      <default>false</default>
+    </entry>
+
+  </group>
+</kcfg>

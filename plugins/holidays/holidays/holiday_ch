@@ -1,0 +1,17 @@
+:
+: Swiss holiday file. Copy to ~/.holiday
+: Use this as a starting point, some holidays are missing, and some listed
+: here are largely irrelevant.
+:
+: Author: Christian Iseli
+:
+red "Nouvel-An" weekend on 1/1
+red "Vendredi Saint" weekend on easter minus 2 days
+red "Paques" weekend on easter
+red "Ascension" weekend on easter plus 39 days
+red "Pentecote" weekend on easter plus 49 days
+red "L. de Pentecote" weekend on easter plus 50 days
+red "Noel" weekend on 12/25
+red "Premier Aout" weekend on august 1
+red "Jeune Federal" weekend third sunday in september
+red "Lundi du Jeune" weekend third sunday in september plus 1 day

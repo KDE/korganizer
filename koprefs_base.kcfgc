@@ -1,0 +1,11 @@
+# Code generation options for kconfig_compiler
+File=korganizer.kcfg
+ClassName=KOPrefsBase
+Singleton=false
+Mutators=true
+Inherits=KPimPrefs
+IncludeFiles=libkdepim/kpimprefs.h
+MemberVariables=public
+GlobalEnums=true
+ItemAccessors=true
+SetUserTexts=true

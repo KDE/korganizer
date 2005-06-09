@@ -1,0 +1,39 @@
+:
+: Fichero holiday_guatemala. Cópialo a  ~/.holiday
+: Modifica este fichero borrando y añadiendo lo que te parezca.
+:
+: Fiestas 
+: 
+red "Año nuevo" red on january 1
+red "Reyes" red on january 6
+red "Trabajo" red on march 19
+red "Ejército" red on may 1
+red "Virgen de la Asunción" red on august 15
+red "Independencia" red on september 15
+red "Revolucion de 1944" red on october 20
+red "Todos los Santos" red on november 1
+red "Nochebuena" red on december 24
+red "Navidad" red on december 25
+red "Fin de año" red on december 31
+:
+: Relacionados con la pascua
+:
+small "Jueves Santo" weekned on easter minus 3 days
+small "Viernes Santo" weekned on easter minus 2 days
+small "Pascua" weekned on easter 
+small "Miércoles de ceniza" on easter minus 46 days
+small "Pentecostes" weekned on easter plus 49 days
+small "Ascension" on easter plus 39 days
+small "Trinidad" on easter plus 46 day
+small "Corpus Christi" on easter plus 60 days
+:
+: Estaciones
+:
+"Llega la Primavera" on march 20
+"Llega el Verano" on june 21
+"Llega el Otoño" on september 23
+"Llega el Invierno" on december 22
+:
+: Vacaciones 
+:
+green "Vacaciones" on 1.8.94 length 31 days
