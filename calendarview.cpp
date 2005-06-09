@@ -1195,25 +1195,24 @@ void CalendarView::dissociateOccurrence( Incidence *incidence, const QDate &date
     kdDebug(5850) << "CalendarView::toggleAlarm() called without having a clicked item" << endl;
     return;
   }
-  Incidence*oldincidence = incidence->clone();
   if ( !mChanger->beginChange( incidence ) ) {
     kdDebug(5850) << "Unable to lock incidence " << endl;
-    delete oldincidence;
     return;
   }
+  startMultiModify( i18n("Dissociate occurrence") );
+  Incidence*oldincidence = incidence->clone();
 
   Incidence* newInc = mCalendar->dissociateOccurrence( incidence, date, true );
 
   if ( newInc ) {
-    startMultiModify( i18n("Dissociate occurrence") );
     mChanger->changeIncidence( oldincidence, incidence );
     mChanger->addIncidence( newInc );
-    endMultiModify();
   } else {
     KMessageBox::sorry( this, i18n("Dissociating the occurrence failed."),
       i18n("Dissociating Failed") );
   }
   mChanger->endChange( incidence );
+  endMultiModify();
   delete oldincidence;
 }
 
@@ -1223,23 +1222,22 @@ void CalendarView::dissociateFutureOccurrence( Incidence *incidence, const QDate
     kdDebug(5850) << "CalendarView::toggleAlarm() called without having a clicked item" << endl;
     return;
   }
-  Incidence*oldincidence = incidence->clone();
   if ( !mChanger->beginChange( incidence ) ) {
     kdDebug(5850) << "Unable to lock incidence " << endl;
-    delete oldincidence;
     return;
   }
+  startMultiModify( i18n("Dissociate future occurrences") );
+  Incidence*oldincidence = incidence->clone();
 
   Incidence* newInc = mCalendar->dissociateOccurrence( incidence, date, true );
   if ( newInc ) {
-    startMultiModify( i18n("Dissociate future occurrences") );
     mChanger->changeIncidence( oldincidence, incidence );
     mChanger->addIncidence( newInc );
-    endMultiModify();
   } else {
     KMessageBox::sorry( this, i18n("Dissociating the future occurrences failed."),
       i18n("Dissociating Failed") );
   }
+  endMultiModify();
   mChanger->endChange( incidence );
   delete oldincidence;
 }
