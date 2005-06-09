@@ -413,32 +413,27 @@ void KOTodoEditor::modified (int /*modification*/)
   reload();
 }
 
-void KOTodoEditor::slotLoadTemplate()
+void KOTodoEditor::loadTemplate( /*const*/ CalendarLocal& cal )
 {
-  CalendarLocal cal( KOPrefs::instance()->mTimeZoneId );
-  Todo *todo = new Todo;
-  QString templateName = loadTemplate( &cal, todo->type(),
-                                       KOPrefs::instance()->mTodoTemplates );
-  delete todo;
-  if ( templateName.isEmpty() ) {
-    return;
-  }
-
   Todo::List todos = cal.todos();
   if ( todos.count() == 0 ) {
     KMessageBox::error( this,
-        i18n("Template '%1' does not contain a valid todo.")
-        .arg( templateName ) );
+        i18n("Template does not contain a valid to-do.") );
   } else {
     readTodo( todos.first() );
   }
 }
 
-void KOTodoEditor::saveTemplate( const QString &templateName )
+void KOTodoEditor::slotSaveTemplate( const QString &templateName )
 {
   Todo *todo = new Todo;
   writeTodo( todo );
   saveAsTemplate( todo, templateName );
+}
+
+QStringList& KOTodoEditor::templates() const
+{
+  return KOPrefs::instance()->mTodoTemplates;
 }
 
 #include "kotodoeditor.moc"
