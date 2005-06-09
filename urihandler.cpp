@@ -43,9 +43,9 @@ bool UriHandler::process( const QString &uri )
   if ( uri.startsWith( "kmail:" ) ) {
     // make sure kmail is running or the part is shown
     kapp->startServiceByDesktopPath("kmail");
-    int pos = uri.find( "/", 8 );
-    if ( pos > 8 ) {
-      QString messageId = uri.mid( 8, pos - 8 );
+    int pos = uri.find( "/", 6 );
+    if ( pos > 6 ) {
+      QString messageId = uri.mid( 6, pos - 6 );
       Q_UINT32 serialNumber = messageId.toUInt();
       kdDebug() << "SERIALNUMBERSTR: " << serialNumber << " MESSAGEID: "
                 << messageId << endl;
