@@ -1,5 +1,3 @@
-#ifndef RESOURCEVIEW.CPP
-#define RESOURCEVIEW.CPP
 /*
     This file is part of KOrganizer.
 
@@ -87,7 +85,7 @@ ResourceItem::ResourceItem( ResourceCalendar *resource, ResourceView *view,
                             KListView *parent )
   : QCheckListItem( parent, resource->resourceName(), CheckBox ),
     mResource( resource ), mView( view ), mBlockStateChange( false ),
-    mIsSubresource( false ), mResourceIdentifier( QString::null ), 
+    mIsSubresource( false ), mResourceIdentifier(),
     mSubItemsCreated( false )
 {
   setGuiState();
@@ -116,12 +114,11 @@ ResourceItem::ResourceItem( KCal::ResourceCalendar *resource,
                             const QString& sub, const QString& label,
                             ResourceView *view, ResourceItem* parent )
 
-  : QCheckListItem( parent, sub, CheckBox ), mResource( resource ),
+  : QCheckListItem( parent, label, CheckBox ), mResource( resource ),
     mView( view ), mBlockStateChange( false ), mIsSubresource( true ),
     mSubItemsCreated( false )
 {
   mResourceIdentifier = sub;
-  setText( 0, label );
   setGuiState();
 }
 
@@ -503,4 +500,3 @@ void ResourceView::requestClose( ResourceCalendar *r )
 }
 
 #include "resourceview.moc"
-#endif // RESOURCEVIEW.CPP
