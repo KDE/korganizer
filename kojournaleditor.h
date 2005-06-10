@@ -33,6 +33,7 @@
 class QDateTime;
 namespace KCal {
 class Calendar;
+class CalendarLocal;
 class Journal;
 class Incidence;
 }

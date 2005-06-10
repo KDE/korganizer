@@ -36,6 +36,7 @@ class KOEditorFreeBusy;
 
 namespace KCal {
 class Calendar;
+class CalendarLocal;
 class Event;
 }
 using namespace KCal;
