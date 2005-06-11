@@ -99,7 +99,7 @@ FilterEdit::FilterEdit(QPtrList<CalFilter> *filters, QWidget *parent)
   QWhatsThis::add( mNewButton, i18n( "Press this button to define a new filter." ) );
   QWhatsThis::add( mDeleteButton, i18n( "Press this button to remove the currently active filter." ) );
 
-  connect(mRulesList, SIGNAL(selectionChanged()), this, SLOT(filterSelected()));
+  connect( mRulesList, SIGNAL(selectionChanged()), this, SLOT(filterSelected()) );
   connect( mNewButton, SIGNAL( clicked() ), SLOT( bNewPressed() ) );
   connect( mDeleteButton, SIGNAL( clicked() ), SLOT( bDeletePressed() ) );
   connect( mNameLineEdit, SIGNAL( textChanged(const QString &) ), SLOT( updateSelectedName(const QString &) ) );
@@ -137,8 +137,23 @@ void FilterEdit::updateFilterList()
 
 void FilterEdit::saveChanges()
 {
-  if(current != 0L)
-    filterSelected(current);
+  if(current == 0L)
+    return;
+  
+  current->setName(mNameLineEdit->text());
+  int criteria = 0;
+  if ( mCompletedCheck->isChecked() ) criteria |= CalFilter::HideCompleted;
+  if ( mRecurringCheck->isChecked() ) criteria |= CalFilter::HideRecurring;
+  if ( mCatShowCheck->isChecked() ) criteria |= CalFilter::ShowCategories;
+  if ( mHideInactiveTodosCheck->isChecked() ) criteria |= CalFilter::HideInactiveTodos;
+  current->setCriteria( criteria );
+  current->setCompletedTimeSpan( mCompletedTimeSpan->value() );
+
+  QStringList categoryList;
+  for( uint i = 0; i < mCatList->count(); ++i )
+      categoryList.append( mCatList->text( i ) );
+  current->setCategoryList( categoryList );
+  emit filterChanged();
 }
 
 void FilterEdit::filterSelected()
@@ -150,24 +165,7 @@ void FilterEdit::filterSelected(CalFilter *filter)
 {
   if(filter == current) return;
   kdDebug(5850) << "Selected filter " << (filter!=0?filter->name():"") << endl;
-
-  if(current != 0L) {
-    // save the old values first.
-    current->setName(mNameLineEdit->text());
-    int criteria = 0;
-    if ( mCompletedCheck->isChecked() ) criteria |= CalFilter::HideCompleted;
-    if ( mRecurringCheck->isChecked() ) criteria |= CalFilter::HideRecurring;
-    if ( mCatShowCheck->isChecked() ) criteria |= CalFilter::ShowCategories;
-    if ( mHideInactiveTodosCheck->isChecked() ) criteria |= CalFilter::HideInactiveTodos;
-    current->setCriteria( criteria );
-    current->setCompletedTimeSpan( mCompletedTimeSpan->value() );
-
-    QStringList categoryList;
-    for( uint i = 0; i < mCatList->count(); ++i )
-        categoryList.append( mCatList->text( i ) );
-    current->setCategoryList( categoryList );
-    emit filterChanged();
-  }
+  saveChanges();
 
   current = filter;
   mNameLineEdit->blockSignals(true);
@@ -210,7 +208,9 @@ void FilterEdit::bDeletePressed() {
 }
 
 void FilterEdit::updateSelectedName(const QString &newText) {
+  mRulesList->blockSignals( true );
   mRulesList->changeItem(newText, mRulesList->currentItem());
+  mRulesList->blockSignals( false );
   bool allOk = true;
   CalFilter *filter = mFilters->first();
   while( allOk && filter ) {
