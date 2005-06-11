@@ -1119,11 +1119,15 @@ KOPrefsDialogPlugins::KOPrefsDialogPlugins( QWidget *parent, const char* name )
   topLayout->addWidget( mDescription );
 
 
-  mConfigureButton = new KPushButton( KGuiItem( i18n("&Configure Plugin..."),
+  QWidget *buttonRow = new QWidget( topFrame );
+  QBoxLayout *buttonRowLayout = new QHBoxLayout( buttonRow );
+  mConfigureButton = new KPushButton( KGuiItem( i18n("Configure &Plugin..."),
       "configure", QString::null, i18n("This button allows you to configure"
-      " the plugin that you have selected in the list above") ), topFrame );
+      " the plugin that you have selected in the list above") ), buttonRow );
 
-  topLayout->addWidget( mConfigureButton );
+  buttonRowLayout->addWidget( mConfigureButton );
+  buttonRowLayout->addItem( new QSpacerItem(1, 1,  QSizePolicy::Expanding) );
+  topLayout->addWidget( buttonRow );
   connect( mConfigureButton, SIGNAL( clicked() ), SLOT( configure() ) );
 
   connect( mListView, SIGNAL( selectionChanged( QListViewItem* ) ),
@@ -1133,7 +1137,7 @@ KOPrefsDialogPlugins::KOPrefsDialogPlugins( QWidget *parent, const char* name )
 
   load();
 //  usrReadConfig();
-//  selectionChanged( 0 );
+  selectionChanged( 0 );
 }
 
 void KOPrefsDialogPlugins::usrReadConfig()
