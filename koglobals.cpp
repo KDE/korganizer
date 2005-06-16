@@ -40,12 +40,14 @@
 #include "koglobals.h"
 #include "korganizer_part.h"
 
+#if 0 // unused
 class NopAlarmClient : public AlarmClient
 {
   public:
     void startDaemon() {}
     void stopDaemon() {}
 };
+#endif
 
 KOGlobals *KOGlobals::mSelf = 0;
 
@@ -62,7 +64,7 @@ KOGlobals *KOGlobals::self()
 
 KOGlobals::KOGlobals()
 {
-  // Needed to distinguish from global KInstance 
+  // Needed to distinguish from global KInstance
   // in case we are a KPart
   mOwnInstance = new KInstance("korganizer");
   mOwnInstance->config()->setGroup("General");
@@ -99,7 +101,7 @@ void KOGlobals::fitDialogToScreen( QWidget *wid, bool force )
   bool resized = false;
 
   int w = wid->frameSize().width();
-  int h = wid->frameSize().height();  
+  int h = wid->frameSize().height();
 
   QRect desk = KGlobalSettings::desktopGeometry(wid);
   if ( w > desk.width() ) {

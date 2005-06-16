@@ -128,9 +128,6 @@ KOrganizerPart::KOrganizerPart( QWidget *parentWidget, const char *widgetName,
 
   setXMLFile( "korganizer_part.rc" );
   mActionManager->loadParts();
-  // If korganizer is run as part inside kontact, the alarmdaemon
-  // is not started by KOrganizerApp, so we have to start it here.
-  KOGlobals::self()->alarmClient()->startDaemon();
 }
 
 KOrganizerPart::~KOrganizerPart()

@@ -2,6 +2,7 @@
     This file is part of KOrganizer.
 
     Copyright (c) 2003 Cornelius Schumacher <schumacher@kde.org>
+    Copyright (c) 2005 David Faure <faure@kde.org>
 
     This library is free software; you can redistribute it and/or
     modify it under the terms of the GNU Library General Public
@@ -21,13 +22,14 @@
 
 #include "alarmclient.h"
 
-#include <kprocess.h>
-#include <dcopclient.h>
 #include <kapplication.h>
 #include <kdebug.h>
+#include <kstandarddirs.h>
 
-AlarmClient::AlarmClient( QObject *o, const char *name )
-  : QObject( o, name )
+#include <dcopclient.h>
+#include <dcopref.h>
+
+AlarmClient::AlarmClient()
 {
   kdDebug() << "AlarmClient::AlarmClient()" << endl;
 }
@@ -39,22 +41,20 @@ void AlarmClient::startDaemon()
     return;
   }
 
-  KProcess *proc = new KProcess;
-  *proc << "korgac";
-  *proc << "--miniicon" <<  "korganizer";
-  connect( proc, SIGNAL( processExited( KProcess * ) ),
-           SLOT( startCompleted( KProcess * ) ) );
-  if ( !proc->start() ) delete proc;
-}
-
-void AlarmClient::startCompleted( KProcess *process )
-{
-  delete process;
+  KGlobal::dirs()->addResourceType("autostart", "share/autostart");
+  QString desktopFile = locate( "autostart", "korgac.desktop" );
+  if ( desktopFile.isEmpty() ) {
+    kdWarning() << "Couldn't find autostart/korgac.desktop!" << endl;
+  }
+  else {
+    QString error;
+    if ( kapp->startServiceByDesktopPath( desktopFile, QStringList(), &error ) != 0 )
+      kdWarning() << "Failure starting korgac:" << error << endl;
+  }
 }
 
 void AlarmClient::stopDaemon()
 {
-  kapp->dcopClient()->send( "korgac", "ac", "quit()", QByteArray() );
+  DCOPRef ref( "korgac", "ac" );
+  ref.send( "quit" );
 }
-
-#include "alarmclient.moc"
