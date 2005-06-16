@@ -42,12 +42,14 @@
 #include "koprefs.h"
 #include "korganizer_part.h"
 
+#if 0 // unused
 class NopAlarmClient : public AlarmClient
 {
   public:
     void startDaemon() {}
     void stopDaemon() {}
 };
+#endif
 
 KOGlobals *KOGlobals::mSelf = 0;
 

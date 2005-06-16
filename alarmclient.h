@@ -21,20 +21,15 @@
 #ifndef ALARMCLIENT_H
 #define ALARMCLIENT_H
 
-#include <qobject.h>
-
-class KProcess;
-
 /**
   This class provides the interface for communicating with the alarm daemon. It
   can be subclassed for specific daemons.
 */
-class AlarmClient : public QObject
+class AlarmClient
 {
-    Q_OBJECT
   public:
-    AlarmClient( QObject *parent = 0, const char *name = 0 );
-  
+    AlarmClient();
+
     /**
       Start alarm daemon.
     */
@@ -44,9 +39,6 @@ class AlarmClient : public QObject
       Stop alarm daemon.
     */
     virtual void stopDaemon();
-
-  private slots:
-    void startCompleted( KProcess *process );
 };
 
 #endif
