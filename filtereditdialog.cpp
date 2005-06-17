@@ -146,6 +146,8 @@ void FilterEdit::saveChanges()
   if ( mRecurringCheck->isChecked() ) criteria |= CalFilter::HideRecurring;
   if ( mCatShowCheck->isChecked() ) criteria |= CalFilter::ShowCategories;
   if ( mHideInactiveTodosCheck->isChecked() ) criteria |= CalFilter::HideInactiveTodos;
+  if ( mHideTodosNotAssignedToMeCheck->isChecked() ) 
+    criteria |= CalFilter::HideTodosWithoutAttendeeInEmailList;
   current->setCriteria( criteria );
   current->setCompletedTimeSpan( mCompletedTimeSpan->value() );
 
@@ -176,6 +178,8 @@ void FilterEdit::filterSelected(CalFilter *filter)
   mCompletedTimeSpan->setValue( current->completedTimeSpan() );
   mRecurringCheck->setChecked( current->criteria() & CalFilter::HideRecurring );
   mHideInactiveTodosCheck->setChecked( current->criteria() & CalFilter::HideInactiveTodos );
+  mHideTodosNotAssignedToMeCheck->setChecked( 
+      current->criteria() & CalFilter::HideTodosWithoutAttendeeInEmailList );
   mCategoriesButtonGroup->setButton( (current->criteria() & CalFilter::ShowCategories)?0:1 );
   mCatList->clear();
   mCatList->insertStringList( current->categoryList() );
