@@ -194,7 +194,7 @@ update_DATA = korganizer.upd
 updatedir = $(kde_datadir)/kconf_update
 
 DOXYGEN_REFERENCES=libkcal
-include $(top_srcdir)/doc/api/Doxyfile.am
+include $(top_srcdir)/admin/Doxyfile.am
 
 install-data-local: 
 	$(mkinstalldirs) $(DESTDIR)$(kde_servicesdir)
