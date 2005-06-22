@@ -141,7 +141,7 @@
                                 <bool>false</bool>
                             </property>
                             <property name="text">
-                                <string>&amp;Days after completion:</string>
+                                <string>Days after completion:</string>
                             </property>
                             <property name="buddy" stdset="0">
                                 <cstring>mCompletedTimeSpan</cstring>
@@ -297,13 +297,14 @@
                         <cstring>mHideTodosNotAssignedToMeCheck</cstring>
                     </property>
                     <property name="text">
-                        <string>Hide to-dos &amp;not assigned to me</string>
+                        <string>Hide to-dos not assigned to me</string>
                     </property>
                     <property name="accel">
-                        <string>Alt+N</string>
+                        <string></string>
                     </property>
                     <property name="whatsThis" stdset="0">
-                        <string>This option hides all to-dos from your list, where the start date has not been reached. (Note that the start date is not the due date of the to-do item.)</string>
+                        <string>This option hides all to-dos from your list which are assigned to someone else.&lt;br&gt;
+Only to-dos which have least one attendee will be checked.  If you are not in the list of attendees the to-do will be hidden.</string>
                     </property>
                 </widget>
             </grid>
@@ -312,6 +313,20 @@
 </widget>
 <customwidgets>
 </customwidgets>
+<connections>
+    <connection>
+        <sender>mCompletedCheck</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>mCompletedTimeSpanLabel</receiver>
+        <slot>setEnabled(bool)</slot>
+    </connection>
+    <connection>
+        <sender>mCompletedCheck</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>mCompletedTimeSpan</receiver>
+        <slot>setEnabled(bool)</slot>
+    </connection>
+</connections>
 <slots>
     <slot>updateFilter()</slot>
 </slots>
