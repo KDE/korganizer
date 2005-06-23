@@ -1546,7 +1546,15 @@ KOAgendaItem *KOAgenda::insertItem( Incidence *incidence, const QDate &qd, int X
 
   if ( calendarResource ) {
     ResourceCalendar *resourceCalendar = calendarResource->resource( incidence );
-    resourceColor = *KOPrefs::instance()->resourceColor( resourceCalendar->identifier() );
+
+    QString identifier = resourceCalendar->identifier();
+    if ( !resourceCalendar->subresources().isEmpty() ) {
+      identifier = resourceCalendar->subresourceIdentifier( incidence );
+      if ( identifier.isEmpty() )
+        identifier = resourceCalendar->identifier();
+    }
+
+    resourceColor = *KOPrefs::instance()->resourceColor( identifier );
 //  }else{
 //    kdDebug(5850) << "KOAgenda:insertItem: Calendar is not a CalendarResources" <<endl;
   }

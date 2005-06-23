@@ -108,8 +108,10 @@ void ResourceItem::createSubresourceItems()
     // This resource has subresources
     QStringList::ConstIterator it;
     for ( it=subresources.begin(); it!=subresources.end(); ++it ) {
-      ( void )new ResourceItem( mResource, *it, mResource->labelForSubresource( *it ),
-                                mView, this );
+      ResourceItem *item = new ResourceItem( mResource, *it, mResource->labelForSubresource( *it ),
+                                             mView, this );
+      QColor resourceColor = *KOPrefs::instance()->resourceColor( *it );
+      item->setResourceColor( resourceColor );
     }
   }
   mSubItemsCreated = true;
@@ -466,23 +468,23 @@ void ResourceView::contextMenuRequested ( QListViewItem *i,
     menu->insertSeparator();
 
     menu->insertItem( i18n("Show &Info"), this, SLOT( showInfo() ) );
-    if ( !item->isSubresource() ) {
-      //FIXME: This is better on the resource dialog
-      if ( KOPrefs::instance()->agendaViewUsesResourceColor() ) {
-        QPopupMenu *assignMenu= new QPopupMenu( menu );
-        assignMenu->insertItem( i18n( "&Assign Color" ), this, SLOT( assignColor() ) );
-        if ( item->resourceColor().isValid() )
-          assignMenu->insertItem( i18n( "&Disable Color" ), this, SLOT( disableColor() ) );
-        menu->insertItem( i18n( "Resources Colors" ), assignMenu );
-      }
-      menu->insertItem( i18n("&Edit..."), this, SLOT( editResource() ) );
-      menu->insertItem( i18n("&Remove"), this, SLOT( removeResource() ) );
-      if ( item->resource() != manager->standardResource() ) {
-        menu->insertSeparator();
-        menu->insertItem( i18n("Use as &Default Calendar"), this,
-                          SLOT( setStandard() ) );
-      }
+    //FIXME: This is better on the resource dialog
+    if ( KOPrefs::instance()->agendaViewUsesResourceColor() ) {
+      QPopupMenu *assignMenu= new QPopupMenu( menu );
+      assignMenu->insertItem( i18n( "&Assign Color" ), this, SLOT( assignColor() ) );
+      if ( item->resourceColor().isValid() )
+        assignMenu->insertItem( i18n( "&Disable Color" ), this, SLOT( disableColor() ) );
+      menu->insertItem( i18n( "Resources Colors" ), assignMenu );
     }
+
+    menu->insertItem( i18n("&Edit..."), this, SLOT( editResource() ) );
+    menu->insertItem( i18n("&Remove"), this, SLOT( removeResource() ) );
+    if ( item->resource() != manager->standardResource() ) {
+      menu->insertSeparator();
+      menu->insertItem( i18n("Use as &Default Calendar"), this,
+                        SLOT( setStandard() ) );
+    }
+
     menu->insertSeparator();
  }
   menu->insertItem( i18n("&Add..."), this, SLOT( addResource() ) );
@@ -499,12 +501,16 @@ void ResourceView::assignColor()
   QColor myColor;
   KCal::ResourceCalendar *cal = item->resource();
 
-  QColor defaultColor =*KOPrefs::instance()->resourceColor( cal->identifier() );
+  QString identifier = cal->identifier();
+  if ( item->isSubresource() )
+    identifier = item->resourceIdentifier();
+
+  QColor defaultColor =*KOPrefs::instance()->resourceColor( identifier );
 
   int result = KColorDialog::getColor( myColor,defaultColor);
 
   if ( result == KColorDialog::Accepted ) {
-    KOPrefs::instance()->setResourceColor( cal->identifier(), myColor );
+    KOPrefs::instance()->setResourceColor( identifier, myColor );
     item->setResourceColor( myColor );
     item->update();
     emit resourcesChanged();
