@@ -116,8 +116,8 @@ void KOGroupware::incomingDirChanged( const QString& path )
 
   // Handle accepted invitations
   QDir dir( path );
-  QStringList files = dir.entryList( QDir::Files );
-  if ( files.count() == 0 )
+  const QStringList files = dir.entryList( QDir::Files );
+  if ( files.isEmpty() )
     // No more files here
     return;
 
@@ -138,8 +138,8 @@ void KOGroupware::incomingDirChanged( const QString& path )
   if ( !message ) {
     QString errorMessage;
     if (mFormat.exception())
-      errorMessage = "\nError message: " + mFormat.exception()->message();
-    kdDebug(5850) << "MailScheduler::retrieveTransactions() Error parsing"
+      errorMessage = i18n( "Error message: %1" ).arg( mFormat.exception()->message() );
+    kdDebug(5850) << "MailScheduler::retrieveTransactions() Error parsing "
                   << errorMessage << endl;
     KMessageBox::detailedError( mView,
         i18n("Error while processing an invitation or update."),
