@@ -35,7 +35,8 @@ AboutData::AboutData()
                 I18N_NOOP("A Personal Organizer for KDE"),
                 KAboutData::License_GPL,
                 "(c) 1997-1999 Preston Brown\n"
-                "(c) 2000-2004 Cornelius Schumacher", 0,
+                "(c) 2000-2004 Cornelius Schumacher\n"
+                "(c) 2004-2005 Reinhold Kainhofer", 0,
                 "http://korganizer.kde.org" )
 {
   addAuthor("Reinhold Kainhofer",I18N_NOOP("Current Maintainer"),
