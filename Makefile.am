@@ -193,7 +193,7 @@ kde_services_DATA = korganizer_configmain.desktop \
 update_DATA = korganizer.upd
 updatedir = $(kde_datadir)/kconf_update
 
-DOXYGEN_REFERENCES=libkcal
+DOXYGEN_REFERENCES=libkcal kdeui
 include $(top_srcdir)/admin/Doxyfile.am
 
 install-data-local: 
