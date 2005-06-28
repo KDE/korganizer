@@ -55,6 +55,9 @@ public:
   bool editIncidence( const QString &uid );
   bool deleteIncidence( const QString &uid );
 
+  /** @reimp from KOrganizerIface::addIncidence() */
+  bool addIncidence( const QString &iCal );
+
 private:
   ActionManager* mActionManager;
 };

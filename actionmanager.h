@@ -144,6 +144,13 @@ class KDE_EXPORT ActionManager : public QObject, public KCalendarIface
 
     bool editIncidence( const QString& uid );
 
+    /**
+      Add an incidence to the active calendar.
+      @param ical A calendar in iCalendar format containing the incidence.
+    */
+
+    bool addIncidence( const QString& ical );
+
     //// Implementation of the DCOP interface
     virtual ResourceRequestReply resourceRequest( const QValueList<QPair<QDateTime, QDateTime> >& busy,
                                                   const QCString& resource,

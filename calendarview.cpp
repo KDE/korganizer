@@ -1058,6 +1058,19 @@ void CalendarView::newFloatingEvent()
             QDateTime( date, QTime( 12, 0, 0 ) ), true );
 }
 
+bool CalendarView::addIncidence( const QString &ical )
+{
+  kdDebug(5850) << "CalendarView::addIncidence:\n" << ical << endl;
+  ICalFormat format;
+  format.setTimeZone( mCalendar->timeZoneId(), true );
+  Incidence *incidence = format.fromString( ical );
+  if ( !incidence ) return false;
+  if ( !mChanger->addIncidence( incidence ) ) {
+    delete incidence;
+    return false;
+  }
+  return true;
+}
 
 void CalendarView::appointment_show()
 {

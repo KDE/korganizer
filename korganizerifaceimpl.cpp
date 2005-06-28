@@ -84,3 +84,8 @@ bool KOrganizerIfaceImpl::editIncidence( const QString &uid )
 {
   return mActionManager->editIncidence( uid );
 }
+
+bool KOrganizerIfaceImpl::addIncidence( const QString &ical )
+{
+  return mActionManager->addIncidence( ical );
+}

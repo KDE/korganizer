@@ -255,6 +255,16 @@ class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::
     bool editIncidence( const QString& uid );
     void deleteIncidence();
 
+    /**
+      Add an incidence to the active calendar.
+      @param ical A calendar in iCalendar format containing the incidence. The
+                  calendar must consist of a VCALENDAR component which contains
+                  the incidence (VEVENT, VTODO, VJOURNAL or VFREEBUSY) and
+                  optionally a VTIMEZONE component. If there is more than one
+                  incidence, only the first is added to KOrganizer's calendar.
+    */
+    bool addIncidence( const QString &ical );
+
     void connectIncidenceEditor( KOIncidenceEditor * );
 
     /** create an editeventwin with supplied date/time, and if bool is true,

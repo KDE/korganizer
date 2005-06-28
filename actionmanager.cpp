@@ -1330,6 +1330,11 @@ bool ActionManager::deleteIncidence( const QString& uid )
   return mCalendarView->deleteIncidence( uid );
 }
 
+bool ActionManager::addIncidence( const QString& ical )
+{
+  return mCalendarView->addIncidence( ical );
+}
+
 void ActionManager::configureDateTimeFinished( KProcess *proc )
 {
   delete proc;

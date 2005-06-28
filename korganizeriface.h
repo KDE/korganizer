@@ -35,6 +35,15 @@ class KOrganizerIface : virtual public DCOPObject
     virtual QString getCurrentURLasString() const = 0;
     virtual bool editIncidence(const QString &uid) = 0;
     virtual bool deleteIncidence(const QString &uid) = 0;
+    /**
+      Add an incidence to the active calendar.
+      @param ical A calendar in iCalendar format containing the incidence. The
+                  calendar must consist of a VCALENDAR component which contains
+                  the incidence (VEVENT, VTODO, VJOURNAL or VFREEBUSY) and
+                  optionally a VTIMEZONE component. If there is more than one
+                  incidence, only the first is added to KOrganizer's calendar.
+    */
+    virtual bool addIncidence(const QString &iCal) = 0;
 };
 
 #endif
