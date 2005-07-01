@@ -157,7 +157,7 @@ void ResourceItem::stateChange( bool active )
       if ( mResource->save() ) mResource->setActive( false );
       mView->requestClose( mResource );
     } else { // user tried to deselect a standard resource
-      KMessageBox::information( mView, i18n("You can't disable a standard resource. If you still want to disable it, please mark another resource as standard.") );
+      KMessageBox::information( mView, i18n("You cannot disable a standard resource. If you still want to disable it, please mark another resource as standard.") );
     }
 
     setOpen( mResource->isActive() && childCount() > 0 );
