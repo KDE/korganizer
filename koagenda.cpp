@@ -1031,12 +1031,12 @@ void KOAgenda::endItemAction()
           i18n("Changing Recurring Item"),
           i18n("Only &This Item"), i18n("Only &Future Items"), i18n("&All Occurrences") );
       switch ( res ) {
-        case KMessageBox::Ok: // All occurences
+        case KMessageBox::Ok: // All occurrences
             // Moving the whole sequene of events is handled by the itemModified below.
             modify = true;
             break;
-        case KMessageBox::Yes: { // Just this occurence
-            // Dissociate this occurence:
+        case KMessageBox::Yes: { // Just this occurrence
+            // Dissociate this occurrence:
             // create clone of event, set relation to old event, set cloned event
             // for mActionItem, add exception date to old event, changeIncidence
             // for the old event, remove the recurrence from the new copy and then just
@@ -1063,8 +1063,8 @@ void KOAgenda::endItemAction()
             }
             delete oldIncSaved;
             break; }
-        case KMessageBox::No/*Future*/: { // All future occurences
-            // Dissociate this occurence:
+        case KMessageBox::No/*Future*/: { // All future occurrences
+            // Dissociate this occurrence:
             // create clone of event, set relation to old event, set cloned event
             // for mActionItem, add recurrence end date to old event, changeIncidence
             // for the old event, adjust the recurrence for the new copy and then just

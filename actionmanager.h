@@ -101,7 +101,7 @@ class KDE_EXPORT ActionManager : public QObject, public KCalendarIface
     void saveCalendar();
 
     /**
-      Save the resource based calendar. Return false if an error occured and the
+      Save the resource based calendar. Return false if an error occurred and the
       user decidec to not ignore the error. Otherwise it returns true.
     */
     bool saveResourceCalendar();

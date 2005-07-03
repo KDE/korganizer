@@ -413,7 +413,7 @@ void KOListView::popupMenu(QListViewItem *item,const QPoint &,int)
   if (mActiveItem) {
     Incidence *incidence = mActiveItem->data();
     // FIXME: For recurring incidences we don't know the date of this
-    // occurence, there's no reference to it at all!
+    // occurrence, there's no reference to it at all!
     mPopupMenu->showIncidencePopup( incidence, QDate() );
   }
   else {
