@@ -103,7 +103,7 @@ class KOEventView : public KOrg::BaseView
     /**
      * when the view changes the dates that are selected in one way or
      * another, this signal is emitted.  It should be connected back to
-     * the @see KDateNavigator object so that it changes appropriately,
+     * the KDateNavigator object so that it changes appropriately,
      * and any other objects that need to be aware that the list of
      * selected dates has changed.
      */
