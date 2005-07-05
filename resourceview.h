@@ -76,9 +76,6 @@ class ResourceItem : public QCheckListItem
 //     */
     void setResourceColor(QColor& color); 
     QColor &resourceColor() {return mResourceColor;}
-    
-    /** Sets whether this item represents a standard resource. */
-    void setStandard( bool s ) { mStandard = s; }
   protected:
     void stateChange( bool active );
 
@@ -92,7 +89,6 @@ class ResourceItem : public QCheckListItem
     bool mIsSubresource;
     QString mResourceIdentifier;
     bool mSubItemsCreated;
-    bool mStandard;
 };
 
 /**
@@ -157,7 +153,6 @@ class ResourceView : public CalendarViewExtension
     QPushButton *mDeleteButton;
     QPushButton *mEditButton;
     QPtrList<ResourceCalendar> mResourcesToClose;
-    ResourceItem *mStandard;
 };
 
 #endif

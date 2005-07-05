@@ -89,7 +89,7 @@ ResourceItem::ResourceItem( ResourceCalendar *resource, ResourceView *view,
   : QCheckListItem( parent, resource->resourceName(), CheckBox ),
     mResource( resource ), mView( view ), mBlockStateChange( false ),
     mIsSubresource( false ), mResourceIdentifier( QString::null ),
-    mSubItemsCreated( false ), mStandard( false )
+    mSubItemsCreated( false )
 {
   mResourceColor = QColor();
   setGuiState();
@@ -123,7 +123,7 @@ ResourceItem::ResourceItem( KCal::ResourceCalendar *resource,
 
   : QCheckListItem( parent, label, CheckBox ), mResource( resource ),
     mView( view ), mBlockStateChange( false ), mIsSubresource( true ),
-    mSubItemsCreated( false ), mStandard( false )
+    mSubItemsCreated( false )
 {
   mResourceColor = QColor();
   mResourceIdentifier = sub;
@@ -153,11 +153,9 @@ void ResourceItem::stateChange( bool active )
         if ( !mSubItemsCreated )
           createSubresourceItems();
       }
-    } else if( !mStandard ) {
+    } else {
       if ( mResource->save() ) mResource->setActive( false );
       mView->requestClose( mResource );
-    } else { // user tried to deselect a standard resource
-      KMessageBox::information( mView, i18n("You cannot disable a standard resource. If you still want to disable it, please mark another resource as standard.") );
     }
 
     setOpen( mResource->isActive() && childCount() > 0 );
@@ -199,7 +197,7 @@ void ResourceItem::paintCell(QPainter *p, const QColorGroup &cg,
 
 ResourceView::ResourceView( KCal::CalendarResources *calendar,
                             QWidget *parent, const char *name )
-  : CalendarViewExtension( parent, name ), mCalendar( calendar ), mStandard( 0 )
+  : CalendarViewExtension( parent, name ), mCalendar( calendar )
 {
   QBoxLayout *topLayout = new QVBoxLayout( this, 0, KDialog::spacingHint() );
 
@@ -298,14 +296,8 @@ void ResourceView::addResource()
 
 void ResourceView::addResourceItem( ResourceCalendar *resource )
 {
-  KCal::CalendarResourceManager *manager = mCalendar->resourceManager();
-  bool standard = ( resource == manager->standardResource() );
 
   ResourceItem *item=new ResourceItem( resource, this, mListView );
-  
-  if( standard )
-    mStandard = item;
-  item->setStandard( standard );
 
   QColor resourceColor;
 
@@ -566,16 +558,12 @@ void ResourceView::saveResource()
 
 void ResourceView::setStandard()
 {
-  if( mStandard )
-    mStandard->setStandard( false );
   ResourceItem *item = currentItem();
   if ( !item ) return;
 
   ResourceCalendar *r = item->resource();
   KCal::CalendarResourceManager *manager = mCalendar->resourceManager();
   manager->setStandardResource( r );
-  mStandard = item;
-  item->setStandard( true );
 }
 
 void ResourceView::showButtons( bool visible )
