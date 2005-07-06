@@ -101,7 +101,7 @@ class KDE_EXPORT ActionManager : public QObject, public KCalendarIface
     void saveCalendar();
 
     /**
-      Save the resource based calendar. Return false if an error occurred and the
+      Save the resource based calendar. Return false if an error occured and the
       user decidec to not ignore the error. Otherwise it returns true.
     */
     bool saveResourceCalendar();
@@ -139,8 +139,12 @@ class KDE_EXPORT ActionManager : public QObject, public KCalendarIface
     void closeURL();
     /** Get current URL as QString */
     QString getCurrentURLasString() const;
-    /** Delete event with the given unique id from current calendar. */
-    virtual bool deleteIncidence( const QString& uid );
+    /**
+      Delete the incidence with the given unique id from current calendar.
+      @param force If true, all recurrences and sub-todos (if applicable) will be
+                         deleted without prompting for confirmation.
+    */
+    virtual bool deleteIncidence( const QString& uid, bool force = false );
 
     bool editIncidence( const QString& uid );
 

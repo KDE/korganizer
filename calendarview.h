@@ -289,12 +289,19 @@ class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::
     void showIncidence( Incidence * );
     /** Create an editor for the supplied incidence. It calls the correct editXXX method*/
     bool editIncidence( Incidence * );
-    /** Delete the supplied incidence. It calls the correct deleteXXX method*/
-    void deleteIncidence( Incidence * );
+    /**
+      Delete the supplied incidence. It calls the correct deleteXXX method
+      @param force If true, all recurrences and sub-todos (if applicable) will be
+                   deleted without prompting for confirmation.
+    */
+    void deleteIncidence( Incidence *, bool force = false );
     /** Delete the supplied todo and all sub-todos */
     void deleteSubTodosIncidence ( Todo *todo );
-    /** Delete the todo incidence, this is special to can delete sub-to-dos */
-    void deleteTodoIncidence ( Todo *todo );
+    /**
+      Delete the todo incidence, and its sub-to-dos.
+      @param force If true, all sub-todos will be deleted without prompting for confirmation.
+    */
+    void deleteTodoIncidence ( Todo *todo, bool force = false );
     /** Check if deleting the supplied event is allowed. */
     bool deleteEvent( Event * ) { return true; }
     /** Check if deleting the todo is allowed */
@@ -302,10 +309,11 @@ class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::
     /** Check if deleting the supplied journal is allowed. */
     bool deleteJournal( Journal * ) { return true; }
     /**
-      Delete the event with the given unique ID. Returns false, if event wasn't
-      found.
+      Delete the incidence with the given unique ID. Returns false, if event wasn't found.
+      @param force If true, all recurrences and sub-todos (if applicable) will be
+                   deleted without prompting for confirmation.
     */
-    bool deleteIncidence( const QString &uid );
+    bool deleteIncidence( const QString &uid, bool force = false );
 
     /** create new todo */
     void newTodo();

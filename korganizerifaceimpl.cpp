@@ -75,9 +75,9 @@ QString KOrganizerIfaceImpl::getCurrentURLasString() const
   return mActionManager->getCurrentURLasString();
 }
 
-bool KOrganizerIfaceImpl::deleteIncidence( const QString &uid )
+bool KOrganizerIfaceImpl::deleteIncidence( const QString &uid, bool force )
 {
-  return mActionManager->deleteIncidence( uid );
+  return mActionManager->deleteIncidence( uid, force );
 }
 
 bool KOrganizerIfaceImpl::editIncidence( const QString &uid )

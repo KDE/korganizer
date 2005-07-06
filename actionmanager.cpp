@@ -1325,9 +1325,9 @@ bool ActionManager::editIncidence( const QString& uid )
   return mCalendarView->editIncidence( uid );
 }
 
-bool ActionManager::deleteIncidence( const QString& uid )
+bool ActionManager::deleteIncidence( const QString& uid, bool force )
 {
-  return mCalendarView->deleteIncidence( uid );
+  return mCalendarView->deleteIncidence( uid, force );
 }
 
 bool ActionManager::addIncidence( const QString& ical )

@@ -1162,11 +1162,11 @@ bool CalendarView::makeSubTodosIndependents ( Todo *todo )
   return true;
 }
 
-bool CalendarView::deleteIncidence( const QString &uid )
+bool CalendarView::deleteIncidence( const QString &uid, bool force )
 {
   Incidence *inc = mCalendar->incidence( uid );
   if ( inc ) {
-    deleteIncidence( inc );
+    deleteIncidence( inc, force );
     return true;
   } else {
     return false;
@@ -1867,14 +1867,14 @@ void CalendarView::deleteSubTodosIncidence ( Todo *todo )
   mChanger->deleteIncidence ( todo );
 }
 
-void CalendarView::deleteTodoIncidence ( Todo *todo )
+void CalendarView::deleteTodoIncidence ( Todo *todo, bool force )
 {
   if ( !todo ) return ;
 
   // it a simple todo, ask and delete it.
   if (todo->relations().isEmpty() ) {
     bool doDelete = true;
-    if (KOPrefs::instance()->mConfirm ) {
+    if ( !force && KOPrefs::instance()->mConfirm ) {
       doDelete = ( msgItemDelete( todo ) == KMessageBox::Continue );
     }
     if ( doDelete )
@@ -1883,7 +1883,9 @@ void CalendarView::deleteTodoIncidence ( Todo *todo )
   }
 
   /* Ok, this todo has sub-to-dos, ask what to do */
-  int km=KMessageBox::questionYesNoCancel( this,
+  int km = KMessageBox::No;
+  if ( !force ) {
+    km=KMessageBox::questionYesNoCancel( this,
                                 i18n("The incidence \"%1\" has sub-to-dos. "
                                      "Do you want to delete just this item and "
                                      "make all its sub-to-dos independent, or "
@@ -1892,6 +1894,7 @@ void CalendarView::deleteTodoIncidence ( Todo *todo )
                                 i18n("KOrganizer Confirmation"),
                                 i18n("Delete Only This"),
                                 i18n("Delete All"));
+  }
   startMultiModify( i18n("Deleting sub-to-dos" ) );
   // Delete only the father
   if( km == KMessageBox::Yes ) {
@@ -1906,19 +1909,23 @@ void CalendarView::deleteTodoIncidence ( Todo *todo )
   endMultiModify();
 }
 
-void CalendarView::deleteIncidence(Incidence *incidence)
+void CalendarView::deleteIncidence(Incidence *incidence, bool force)
 {
   if ( !incidence || !mChanger ) {
-    KNotifyClient::beep();
+    if ( !force ) {
+      KNotifyClient::beep();
+    }
     return;
   }
   if ( incidence->isReadOnly() ) {
-    KMessageBox::information( this, i18n("The item \"%1\" is marked read-only "
-                              "and cannot be deleted; it probably belongs to "
-                              "a read-only calendar resource.")
-                              .arg(incidence->summary()),
-                              i18n("Removing not possible"),
-                              "deleteReadOnlyIncidence" );
+    if ( !force ) {
+      KMessageBox::information( this, i18n("The item \"%1\" is marked read-only "
+                                "and cannot be deleted; it probably belongs to "
+                                "a read-only calendar resource.")
+                                .arg(incidence->summary()),
+                                i18n("Removing not possible"),
+                                "deleteReadOnlyIncidence" );
+    }
     return;
   }
 
@@ -1931,31 +1938,33 @@ void CalendarView::deleteIncidence(Incidence *incidence)
   //If it is a todo, there are specific delete function
 
   if ( incidence && incidence->type()=="Todo" ) {
-    deleteTodoIncidence( static_cast<Todo*>(incidence) );
+    deleteTodoIncidence( static_cast<Todo*>(incidence), force );
     return;
   }
 
   if ( incidence->doesRecur() ) {
     QDate itemDate = mViewManager->currentSelectionDate();
     kdDebug(5850) << "Recurrence-Date: " << itemDate.toString() << endl;
-    int km;
-    if ( !itemDate.isValid() ) {
-      kdDebug(5850) << "Date Not Valid" << endl;
-      km = KMessageBox::warningContinueCancel(this,
-        i18n("The incidence \"%1\" recurs over multiple dates; "
-             "are you sure you want to delete this event "
-             "and all its recurrences?").arg( incidence->summary() ),
-             i18n("KOrganizer Confirmation"), i18n("Delete All") );
-    } else {
-      km = KOMessageBox::fourBtnMsgBox( this, QMessageBox::Warning,
-        i18n("The incidence \"%1\" recurs over multiple dates. "
-             "Do you want to delete only the current one on %2, only all "
-             "future recurrences, or all its recurrences?" )
-             .arg( incidence->summary() )
-             .arg( KGlobal::locale()->formatDate(itemDate)),
-             i18n("KOrganizer Confirmation"), i18n("Delete C&urrent"),
-             i18n("Delete &Future"),
-             i18n("Delete &All"));
+    int km = KMessageBox::Ok;
+    if ( !force ) {
+      if ( !itemDate.isValid() ) {
+        kdDebug(5850) << "Date Not Valid" << endl;
+        km = KMessageBox::warningContinueCancel(this,
+          i18n("The incidence \"%1\" recurs over multiple dates; "
+               "are you sure you want to delete this event "
+               "and all its recurrences?").arg( incidence->summary() ),
+               i18n("KOrganizer Confirmation"), i18n("Delete All") );
+      } else {
+        km = KOMessageBox::fourBtnMsgBox( this, QMessageBox::Warning,
+          i18n("The incidence \"%1\" recurs over multiple dates. "
+               "Do you want to delete only the current one on %2, only all "
+               "future recurrences, or all its recurrences?" )
+               .arg( incidence->summary() )
+               .arg( KGlobal::locale()->formatDate(itemDate)),
+               i18n("KOrganizer Confirmation"), i18n("Delete C&urrent"),
+               i18n("Delete &Future"),
+               i18n("Delete &All"));
+      }
     }
     switch(km) {
       case KMessageBox::Ok: // Continue // all
@@ -1985,7 +1994,7 @@ void CalendarView::deleteIncidence(Incidence *incidence)
     }
   } else {
     bool doDelete = true;
-    if (KOPrefs::instance()->mConfirm ) {
+    if ( !force && KOPrefs::instance()->mConfirm ) {
       doDelete = ( msgItemDelete( incidence ) == KMessageBox::Continue );
     }
     if ( doDelete ) {

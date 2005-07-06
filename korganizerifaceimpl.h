@@ -53,12 +53,17 @@ public:
   QString getCurrentURLasString() const;
 
   bool editIncidence( const QString &uid );
-  bool deleteIncidence( const QString &uid );
+  /** @reimp from KOrganizerIface::deleteIncidence() */
+  bool deleteIncidence( const QString &uid )  { return deleteIncidence( uid, false ); }
+  /** @reimp from KOrganizerIface::deleteIncidenceForce() */
+  bool deleteIncidenceForce( const QString &uid )  { return deleteIncidence( uid, true ); }
 
   /** @reimp from KOrganizerIface::addIncidence() */
   bool addIncidence( const QString &iCal );
 
 private:
+  bool deleteIncidence( const QString &uid, bool force );
+
   ActionManager* mActionManager;
 };
 
