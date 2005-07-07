@@ -180,7 +180,7 @@ void AlarmDockWindow::slotQuit()
       i18n("Do you want to start the KOrganizer alarm daemon at login "
            "(note that you will not get alarms whilst the daemon is not running)?"),
       i18n("Close KOrganizer Alarm Daemon"),
-      KStdGuiItem::yes(), KStdGuiItem::no(), 
+      i18n("Start"), i18n("Do Not Start"), 
       QString::fromLatin1("AskForStartAtLogin")
       );
 
