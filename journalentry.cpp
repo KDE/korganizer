@@ -30,9 +30,10 @@
 #include <qcheckbox.h>
 #include <qwhatsthis.h>
 #include <qtooltip.h>
-#include <qpushbutton.h>
+#include <qtoolbutton.h>
 
 #include <kdebug.h>
+#include <kdialog.h>
 #include <kglobal.h>
 #include <klocale.h>
 #include <ktextedit.h>
@@ -40,7 +41,6 @@
 #include <klineedit.h>
 #include <kactivelabel.h>
 #include <kstdguiitem.h>
-#include <kpushbutton.h>
 #include <kmessagebox.h>
 
 #include <libkcal/journal.h>
@@ -84,8 +84,8 @@ void JournalDateEntry::setDate(const QDate &date)
   QString dtstring = QString( "<qt><center><b><i>%1</i></b>  " )
                      .arg( KGlobal::locale()->formatDate(date) );
 
-  dtstring += "<font size=\"-1\"><a href=\"#\">" +
-              i18n("[add Journal]") +
+  dtstring += " <font size=\"-1\"><a href=\"#\">" +
+              i18n("[Add Journal]") +
               "</a></font></center></qt>";
 
   mTitle->setText( dtstring );
@@ -182,6 +182,8 @@ JournalEntry::JournalEntry( Journal* j, QWidget *parent ) :
   mReadOnly = false;
 
   mLayout = new QGridLayout( this );
+  mLayout->setSpacing( KDialog::spacingHint() );
+  mLayout->setMargin( KDialog::marginHint() );
 
   QString whatsThis = i18n("Sets the Title of this journal.");
 
@@ -199,12 +201,12 @@ JournalEntry::JournalEntry( Journal* j, QWidget *parent ) :
   mTimeEdit = new KTimeEdit( this );
   mLayout->addWidget( mTimeEdit, 0, 3 );
   connect( mTimeCheck, SIGNAL(toggled(bool)),
-           mTimeEdit, SLOT(setEnabled(bool)) );
-  QWhatsThis::add( mTimeCheck, i18n("Determines whether this journal has also "
-                                    "a time associated") );
+           this, SLOT(timeCheckBoxToggled(bool)) );
+  QWhatsThis::add( mTimeCheck, i18n("Determines whether this journal also has "
+                                    "a time associated with it") );
   QWhatsThis::add( mTimeEdit, i18n( "Sets the time associated with this journal" ) );
 
-  mDeleteButton = new KPushButton( this );
+  mDeleteButton = new QToolButton( this, "deleteButton" );
   QPixmap pix = KOGlobals::self()->smallIcon( "editdelete" );
   mDeleteButton->setPixmap( pix );
   mDeleteButton->setSizePolicy( QSizePolicy::Fixed, QSizePolicy::Fixed );
@@ -356,4 +358,11 @@ void JournalEntry::flushEntry()
   if (!mDirty) return;
 
   writeJournal();
+}
+
+void JournalEntry::timeCheckBoxToggled(bool on)
+{
+    mTimeEdit->setEnabled(on);
+    if(on)
+        mTimeEdit->setFocus();
 }
