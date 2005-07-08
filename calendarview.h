@@ -69,7 +69,7 @@ class CalendarViewExtension : public QWidget
 };
 
 /**
-  This is the main calendar widget. It provides the different vies on t he
+  This is the main calendar widget. It provides the different views on the
   calendar data as well as the date navigator. It also handles synchronization
   of the different views and controls the different dialogs like preferences,
   event editor, search dialog etc.
