@@ -593,7 +593,7 @@ bool KOAgenda::eventFilter_mouse(QObject *object, QMouseEvent *me)
             // sorts of things happen during this call. Some can lead to
             // this filter being run again and mActionItem being set to
             // null.
-            selectItem(mActionItem);
+            selectItem( item );
           }
         }
       } else {
