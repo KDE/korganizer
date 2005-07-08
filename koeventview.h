@@ -51,7 +51,7 @@ class QPopupMenu;
 
   @short Abstract class from which all event views are derived.
   @author Preston Brown <pbrown@kde.org>
-  @see KOListView, KOAgendaView, KOWeekView, KOMonthView
+  @see KOListView, KOAgendaView, KOMonthView
 */
 class KOEventView : public KOrg::BaseView
 {
