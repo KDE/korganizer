@@ -1256,6 +1256,10 @@ void ActionManager::processIncidenceSelection( Incidence *incidence )
   }
 
   enableIncidenceActions( true );
+  if ( incidence->isReadOnly() ) {
+    mCutAction->setEnabled( false );
+    mDeleteAction->setEnabled( false );
+  }
 
   if ( incidence->type() == "Event" ) {
     mShowIncidenceAction->setText( i18n("&Show Event") );
