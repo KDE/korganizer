@@ -299,6 +299,7 @@ class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::
     void deleteSubTodosIncidence ( Todo *todo );
     /**
       Delete the todo incidence, and its sub-to-dos.
+      @param todo The todo to delete.
       @param force If true, all sub-todos will be deleted without prompting for confirmation.
     */
     void deleteTodoIncidence ( Todo *todo, bool force = false );
@@ -310,6 +311,7 @@ class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::
     bool deleteJournal( Journal * ) { return true; }
     /**
       Delete the incidence with the given unique ID. Returns false, if event wasn't found.
+      @param uid The UID of the incidence to delete.
       @param force If true, all recurrences and sub-todos (if applicable) will be
                    deleted without prompting for confirmation.
     */

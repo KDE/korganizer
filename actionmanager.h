@@ -141,6 +141,7 @@ class KDE_EXPORT ActionManager : public QObject, public KCalendarIface
     QString getCurrentURLasString() const;
     /**
       Delete the incidence with the given unique id from current calendar.
+      @param uid UID of the incidence to delete.
       @param force If true, all recurrences and sub-todos (if applicable) will be
                          deleted without prompting for confirmation.
     */
