@@ -97,7 +97,7 @@ void KOWhatsNextView::updateView()
   mText += *ipath;
   mText += "\">";
   mText += "<font color=\"white\"> ";
-  mText += i18n("What's next?") + "</font></h1>";
+  mText += i18n("What's Next?") + "</font></h1>";
   mText += "</td></tr>\n<tr><td>";
 
   mText += "<h2>";
@@ -230,6 +230,7 @@ void KOWhatsNextView::updateView()
   mText += "</td></tr>\n</table>\n";
 
   kdDebug(5850) << "KOWhatsNextView::updateView: text: " << mText << endl;
+
   mView->setText(mText);
 }
 
@@ -280,7 +281,7 @@ void KOWhatsNextView::appendEvent( Incidence *ev, const QDateTime &start,
               .arg( KGlobal::locale()->formatDateTime( endtime ) );
       } else {
         /*if (reply) */
-        mText += i18n("on date: from - to", "on %1: %2 - %3")
+        mText += i18n("date, from - to", "%1, %2 - %3")
             .arg( KGlobal::locale()->formatDate( starttime.date(), true ) )
             .arg( KGlobal::locale()->formatTime( starttime.time() ) )
             .arg( KGlobal::locale()->formatTime( endtime.time() ) );
