@@ -121,6 +121,8 @@ class KOEventView : public KOrg::BaseView
     void popupShow();
     void popupEdit();
     void popupDelete();
+    void popupCut();
+    void popupCopy();
     virtual void showNewEventPopup();
 
   protected:

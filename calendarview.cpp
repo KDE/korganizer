@@ -1173,8 +1173,6 @@ bool CalendarView::deleteIncidence( const QString &uid, bool force )
   }
 }
 
-
-
 void CalendarView::toggleAlarm( Incidence *incidence )
 {
   if ( !incidence || !mChanger ) {
@@ -1801,6 +1799,16 @@ bool CalendarView::editIncidence( const QString& uid )
 void CalendarView::deleteIncidence()
 {
   deleteIncidence( selectedIncidence() );
+}
+
+void CalendarView::cutIncidence(Incidence *)
+{
+  edit_cut();
+}
+
+void CalendarView::copyIncidence(Incidence *)
+{
+  edit_copy();
 }
 
 void CalendarView::showIncidence( Incidence *incidence )

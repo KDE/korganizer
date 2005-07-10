@@ -295,6 +295,14 @@ class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::
                    deleted without prompting for confirmation.
     */
     void deleteIncidence( Incidence *, bool force = false );
+    /**
+      Cuts the selected incidence using the edit_cut() method
+    */
+    void cutIncidence( Incidence * );
+    /**
+      Copies the selected incidence using the edit_copy() method
+    */
+    void copyIncidence( Incidence *);
     /** Delete the supplied todo and all sub-todos */
     void deleteSubTodosIncidence ( Todo *todo );
     /**

@@ -196,6 +196,16 @@ class KDE_EXPORT BaseView : public QWidget
     void deleteIncidenceSignal(Incidence *);
 
     /**
+    * instructs the receiver to cut the Incidence
+    */
+    void cutIncidenceSignal(Incidence *);
+
+    /**
+    * instructs the receiver to copy the incidence
+    */
+    void copyIncidenceSignal(Incidence *);
+
+    /**
      * instructs the receiver to toggle the alarms of the Incidence.
      */
     void toggleAlarmSignal(Incidence *);

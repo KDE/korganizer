@@ -172,6 +172,10 @@ void KOViewManager::connectView(KOrg::BaseView *view)
           mMainView, SLOT(editIncidence(Incidence *)));
   connect(view, SIGNAL(deleteIncidenceSignal(Incidence *)),
           mMainView, SLOT(deleteIncidence(Incidence *)));
+  connect(view, SIGNAL(copyIncidenceSignal(Incidence *)),
+          mMainView, SLOT(copyIncidence(Incidence *)));
+  connect(view, SIGNAL(cutIncidenceSignal(Incidence *)),
+          mMainView, SLOT(cutIncidence(Incidence *)));
   connect(view, SIGNAL(toggleAlarmSignal(Incidence *)),
           mMainView, SLOT(toggleAlarm(Incidence *)));
   connect(view,SIGNAL(dissociateOccurrenceSignal( Incidence *, const QDate & )),

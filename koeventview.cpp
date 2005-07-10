@@ -67,6 +67,10 @@ KOEventPopupMenu *KOEventView::eventPopup()
                      SIGNAL(showIncidenceSignal(Incidence *)));
   connect(eventPopup,SIGNAL(deleteIncidenceSignal(Incidence *)),
                      SIGNAL(deleteIncidenceSignal(Incidence *)));
+  connect(eventPopup,SIGNAL(cutIncidenceSignal(Incidence *)),
+                     SIGNAL(cutIncidenceSignal(Incidence *)));
+  connect(eventPopup,SIGNAL(copyIncidenceSignal(Incidence *)),
+                     SIGNAL(copyIncidenceSignal(Incidence *)));
   connect(eventPopup,SIGNAL(toggleAlarmSignal(Incidence *)),
                      SIGNAL(toggleAlarmSignal(Incidence*)));
   connect(eventPopup,SIGNAL(dissociateOccurrenceSignal( Incidence *, const QDate & )),
@@ -111,6 +115,20 @@ void KOEventView::popupEdit()
 void KOEventView::popupDelete()
 {
   emit deleteIncidenceSignal(mCurrentIncidence);
+}
+
+//---------------------------------------------------------------------------
+
+void KOEventView::popupCut()
+{
+  emit cutIncidenceSignal(mCurrentIncidence);
+}
+
+//---------------------------------------------------------------------------
+
+void KOEventView::popupCopy()
+{
+  emit copyIncidenceSignal(mCurrentIncidence);
 }
 
 //---------------------------------------------------------------------------

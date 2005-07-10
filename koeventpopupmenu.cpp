@@ -43,11 +43,16 @@ KOEventPopupMenu::KOEventPopupMenu()
 
   insertItem (i18n("&Show"),this,SLOT(popupShow()));
   mEditOnlyItems.append(insertItem (i18n("&Edit..."),this,SLOT(popupEdit())));
+  mEditOnlyItems.append(insertSeparator());
+  mEditOnlyItems.append(insertItem (KOGlobals::self()->smallIcon("editcut"),i18n("&Cut"),
+                                   this,SLOT(popupCut())));
+  mEditOnlyItems.append(insertItem (KOGlobals::self()->smallIcon("editcopy"),i18n("&Copy"),
+                                   this,SLOT(popupCopy())));
   mEditOnlyItems.append(insertItem (KOGlobals::self()->smallIcon("editdelete"),i18n("&Delete"),
                                    this,SLOT(popupDelete())));
   mEditOnlyItems.append( insertSeparator() );
   mEditOnlyItems.append( insertItem( QIconSet( KOGlobals::self()->smallIcon("bell") ),
-                                     i18n("Toggle Alarm"), this,
+                                     i18n("&Toggle Alarm"), this,
                                      SLOT( popupAlarm() ) ) );
   mRecurrenceItems.append( insertSeparator() );
   mRecurrenceItems.append( insertItem( i18n("&Dissociate This Occurrence"), 
@@ -102,6 +107,17 @@ void KOEventPopupMenu::popupDelete()
 {
   if (mCurrentIncidence) emit deleteIncidenceSignal(mCurrentIncidence);
 }
+
+void KOEventPopupMenu::popupCut()
+{
+  if (mCurrentIncidence) emit cutIncidenceSignal(mCurrentIncidence);
+}
+
+void KOEventPopupMenu::popupCopy()
+{
+  if (mCurrentIncidence) emit copyIncidenceSignal(mCurrentIncidence);
+}
+
 
 void KOEventPopupMenu::popupAlarm()
 {

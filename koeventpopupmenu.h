@@ -52,6 +52,8 @@ class KOEventPopupMenu : public QPopupMenu {
     void popupShow();
     void popupEdit();
     void popupDelete();
+    void popupCut();
+    void popupCopy();
     void popupAlarm();
     void dissociateOccurrence();
     void dissociateFutureOccurrence();
@@ -60,6 +62,8 @@ class KOEventPopupMenu : public QPopupMenu {
     void editIncidenceSignal(Incidence *);
     void showIncidenceSignal(Incidence *);
     void deleteIncidenceSignal(Incidence *);
+    void cutIncidenceSignal(Incidence *);
+    void copyIncidenceSignal(Incidence *);
     void toggleAlarmSignal(Incidence *);
     void dissociateOccurrenceSignal( Incidence *, const QDate & );
     void dissociateFutureOccurrenceSignal( Incidence *, const QDate & );
