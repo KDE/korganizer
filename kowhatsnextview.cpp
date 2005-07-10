@@ -231,6 +231,8 @@ void KOWhatsNextView::updateView()
 
   kdDebug(5850) << "KOWhatsNextView::updateView: text: " << mText << endl;
 
+  delete ipath;
+
   mView->setText(mText);
 }
 
