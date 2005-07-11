@@ -35,6 +35,8 @@
 
 #include "datenavigatorcontainer.h"
 
+#include <qwhatsthis.h>
+
 DateNavigatorContainer::DateNavigatorContainer( QWidget *parent,
                                                 const char *name )
   : QFrame( parent, name ), mCalendar( 0 ),
@@ -44,6 +46,16 @@ DateNavigatorContainer::DateNavigatorContainer( QWidget *parent,
   setFrameStyle( QFrame::Sunken | QFrame::StyledPanel );
 
   mNavigatorView = new KDateNavigator( this, name );
+  QWhatsThis::add( mNavigatorView,
+                   i18n( "<qt><p>Select the dates you want to "
+                         "display in KOrganizer's main view here. Hold the "
+                         "mouse button to select more than one day.</p>"
+                         "<p>Press the upper buttons to browse to the next "
+                         "/ previous months or years.</p>"
+                         "<p>Each line shows a week. The number in the left "
+                         "column is the number of the week in the year. "
+                         "Press it to select the whole week.</p>"
+                         "</qt>" ) );
 
   connectNavigatorView( mNavigatorView );
 }

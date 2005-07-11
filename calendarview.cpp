@@ -103,6 +103,7 @@
 #include <qsplitter.h>
 #endif
 #include <qvbox.h>
+#include <qwhatsthis.h>
 
 #include <stdlib.h>
 #include <assert.h>
@@ -264,6 +265,9 @@ CalendarView::CalendarView( QWidget *parent, const char *name )
            "of the item here.</p>");
 
   mEventViewer->setDefaultText( s );
+  QWhatsThis::add( mEventViewer,
+                   i18n( "View the details of events, journals or to-dos "
+                         "selected in KOrganizer's main view here." ) );
   mEventViewer->setIncidence( 0 );
 
   mViewManager->connectTodoView( mTodoList );
