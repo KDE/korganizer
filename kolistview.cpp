@@ -108,6 +108,9 @@ bool KOListView::ListItemVisitor::visit( Event *e )
   else
     mItem->setSortKey(2,"0");
 
+  static const QPixmap eventPxmp = KOGlobals::self()->smallIcon("appointment");
+  mItem->setPixmap(0, eventPxmp);
+
   mItem->setText( 3,e->dtStartDateStr());
   if (e->doesFloat()) mItem->setText(4, "---"); else mItem->setText( 4, e->dtStartTimeStr() );
   mItem->setText( 5,e->dtEndDateStr());
