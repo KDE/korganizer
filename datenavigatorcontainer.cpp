@@ -50,7 +50,7 @@ DateNavigatorContainer::DateNavigatorContainer( QWidget *parent,
                    i18n( "<qt><p>Select the dates you want to "
                          "display in KOrganizer's main view here. Hold the "
                          "mouse button to select more than one day.</p>"
-                         "<p>Press the upper buttons to browse to the next "
+                         "<p>Press the top buttons to browse to the next "
                          "/ previous months or years.</p>"
                          "<p>Each line shows a week. The number in the left "
                          "column is the number of the week in the year. "

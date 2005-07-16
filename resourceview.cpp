@@ -205,16 +205,17 @@ ResourceView::ResourceView( KCal::CalendarResources *calendar,
   mListView = new KListView( this );
   QWhatsThis::add( mListView,
                    i18n( "<qt><p>Select on this list the active KOrganizer "
-                         "resources. Check the resourse box to make it "
+                         "resources. Check the resource box to make it "
                          "active. Press the \"Add...\" button below to add new "
                          "resources to the list.</p>"
                          "<p>Events, journals and to-dos are retrieved "
-                         "and stored on one of these resources. Available "
+                         "and stored on resources. Available "
                          "resources include groupware servers, local files, "
                          "journal as blogs on a server, etc...</p>"
-                         "<p>If you have more than one active resource, you "
-                         "will be prompted to select the resource to use when "
-                         "saving incidents.</p></qt>" ) );
+                         "<p>If you have more than one active resource, "
+                         "when creating incidents you will either automatically "
+                         "use the default resource or be prompted "
+                         "to select the resource to use.</p></qt>" ) );
   mListView->addColumn( i18n("Calendar") );
   mListView->setResizeMode( QListView::LastColumn );
   topLayout->addWidget( mListView );
@@ -225,15 +226,16 @@ ResourceView::ResourceView( KCal::CalendarResources *calendar,
 
   mAddButton = new QPushButton( i18n("Add..."), buttonBox, "add" );
   QWhatsThis::add( mAddButton,
-                   i18n( "<qt><p>Press this button to add a resource to the "
-                         "KOrganizer available resources list above.</p>"
+                   i18n( "<qt><p>Press this button to add a resource to "
+                         "KOrganizer.</p>"
                          "<p>Events, journals and to-dos are retrieved "
-                         "and stored on one of these resources. Available "
+                         "and stored on resources. Available "
                          "resources include groupware servers, local files, "
                          "journal as blogs on a server, etc... </p>"
                          "<p>If you have more than one active resource, "
-                         "you will be prompted to select the resource when "
-                         "saving incidents.</p></qt>" ) );
+                         "when creating incidents you will either automatically "
+                         "use the default resource or be prompted "
+                         "to select the resource to use.</p></qt>" ) );
   mEditButton = new QPushButton( i18n("Edit..."), buttonBox, "edit" );
   QWhatsThis::add( mEditButton,
                    i18n( "Press this button to edit the resource currently "
