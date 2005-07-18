@@ -1,6 +1,8 @@
 /*
     This file is part of KOrganizer.
     Copyright (c) 2001, 2002 Cornelius Schumacher <schumacher@kde.org>
+    Copyright (C) 2004 Reinhold Kainhofer <reinhold@kainhofer.com>
+    Copyright (C) 2005 Thomas Zander <zander@kde.org>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -24,10 +26,9 @@
 #define _FILTEREDITDIALOG_H
 
 #include <kdialogbase.h>
+#include "filteredit_base.h"
 
-class QComboBox;
-class QPushButton;
-class FilterEdit_base;
+class FilterEdit;
 template<class type> class QPtrList;
 
 namespace KPIM { class CategorySelectDialog; }
@@ -37,9 +38,9 @@ using namespace KCal;
 
 /**
   This is the class to add/edit a calendar filter.
-  
+
   @short Creates a dialog box to create/edit a calendar filter
-  @author Cornelius Schumacher
+  @author Cornelius Schumacher, Thomas Zander
 */
 class FilterEditDialog : public KDialogBase
 {
@@ -48,39 +49,52 @@ class FilterEditDialog : public KDialogBase
     FilterEditDialog(QPtrList<CalFilter> *,QWidget *parent=0, const char *name=0);
     virtual ~FilterEditDialog();
 
-  public slots:
-    void updateFilterList();
-    void updateCategoryConfig();
-
   signals:
     void filterChanged();
     void editCategories();
 
-  protected slots:
-    void slotDefault();
-    void slotApply();
-    void slotOk();
-
-    void slotAdd();
-    void slotRemove();
-    
-    void filterSelected();
-    void editCategorySelection();
-    void updateCategorySelection(const QStringList &categories);
-
-  protected:
-    void readFilter(CalFilter *);
-    void writeFilter(CalFilter *);
+  public slots:
+    void updateFilterList();
+    void updateCategoryConfig();
+    void setDialogConsistent(bool consistent);
 
   private:
+    FilterEdit *mFilterEdit;
+
+  protected slots:
+    void slotApply();
+    void slotOk();
+};
+
+class FilterEdit : public FilterEdit_base
+{
+    Q_OBJECT
+  public:
+    FilterEdit(QPtrList<CalFilter> *filters, QWidget *parent);
+    ~FilterEdit();
+
+    void updateFilterList();
+    void saveChanges();
+    void updateCategoryConfig();
+
+  signals:
+    void dataConsistent(bool);
+    void filterChanged();
+    void editCategories();
+
+  private slots:
+    void filterSelected();
+    void bNewPressed();
+    void bDeletePressed();
+    void updateSelectedName(const QString &);
+    void updateCategorySelection(const QStringList &categories);
+    void editCategorySelection();
+
+  private:
+    void filterSelected(CalFilter *f);
+
     QPtrList<CalFilter> *mFilters;
-
-    QComboBox *mSelectionCombo;
-    QPushButton *mRemoveButton;
-    FilterEdit_base *mEditor;
-
-    QStringList mCategories;
-
+    CalFilter *current;
     KPIM::CategorySelectDialog *mCategorySelectDialog;
 };
 

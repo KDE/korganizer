@@ -1,170 +1,242 @@
-<!DOCTYPE UI><UI>
+<!DOCTYPE UI><UI version="3.2" stdsetdef="1">
 <class>FilterEdit_base</class>
-<widget>
-    <class>QWidget</class>
-    <property stdset="1">
-        <name>name</name>
+<widget class="QWidget">
+    <property name="name">
         <cstring>FilterEdit_base</cstring>
     </property>
-    <property stdset="1">
-        <name>geometry</name>
+    <property name="geometry">
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>289</width>
-            <height>188</height>
+            <width>504</width>
+            <height>436</height>
         </rect>
     </property>
-    <property>
-        <name>layoutMargin</name>
-    </property>
-    <property>
-        <name>layoutSpacing</name>
-    </property>
-    <vbox>
-        <property stdset="1">
-            <name>margin</name>
-            <number>0</number>
+    <grid>
+        <property name="name">
+            <cstring>unnamed</cstring>
         </property>
-        <property stdset="1">
-            <name>spacing</name>
-            <number>0</number>
-        </property>
-        <widget>
-            <class>QFrame</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>mCriteriaFrame</cstring>
+        <widget class="QListBox" row="0" column="0" rowspan="1" colspan="2">
+            <property name="name">
+                <cstring>mRulesList</cstring>
             </property>
-            <property stdset="1">
-                <name>frameShape</name>
-                <enum>StyledPanel</enum>
+        </widget>
+        <widget class="QPushButton" row="1" column="0">
+            <property name="name">
+                <cstring>mNewButton</cstring>
             </property>
-            <property stdset="1">
-                <name>frameShadow</name>
-                <enum>Raised</enum>
+            <property name="text">
+                <string>&amp;New</string>
             </property>
-            <property>
-                <name>layoutMargin</name>
+        </widget>
+        <widget class="QPushButton" row="1" column="1">
+            <property name="name">
+                <cstring>mDeleteButton</cstring>
             </property>
-            <vbox>
-                <property stdset="1">
-                    <name>margin</name>
-                    <number>11</number>
+            <property name="text">
+                <string>&amp;Delete</string>
+            </property>
+        </widget>
+        <widget class="QButtonGroup" row="0" column="2" rowspan="2" colspan="1">
+            <property name="name">
+                <cstring>mDetailsFrame</cstring>
+            </property>
+            <property name="title">
+                <string>Filter Details</string>
+            </property>
+            <grid>
+                <property name="name">
+                    <cstring>unnamed</cstring>
                 </property>
-                <property stdset="1">
-                    <name>spacing</name>
-                    <number>6</number>
-                </property>
-                <widget>
-                    <class>QButtonGroup</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>ButtonGroup1</cstring>
+                <widget class="QLayoutWidget" row="0" column="0">
+                    <property name="name">
+                        <cstring>layout3</cstring>
                     </property>
-                    <property stdset="1">
-                        <name>title</name>
+                    <hbox>
+                        <property name="name">
+                            <cstring>unnamed</cstring>
+                        </property>
+                        <widget class="QLabel">
+                            <property name="name">
+                                <cstring>textLabel1</cstring>
+                            </property>
+                            <property name="text">
+                                <string>Name:</string>
+                            </property>
+                        </widget>
+                        <widget class="QLineEdit">
+                            <property name="name">
+                                <cstring>mNameLineEdit</cstring>
+                            </property>
+                        </widget>
+                    </hbox>
+                </widget>
+                <widget class="QCheckBox" row="1" column="0">
+                    <property name="name">
+                        <cstring>mRecurringCheck</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Hide &amp;recurring incidences</string>
+                    </property>
+                    <property name="whatsThis" stdset="0">
+                        <string>Select this option if you do not want to show recurring incidences in your views. Daily and weekly recurring incidences may take a lot of space, so it might be handy to hide them.</string>
+                    </property>
+                </widget>
+                <widget class="QCheckBox" row="2" column="0">
+                    <property name="name">
+                        <cstring>mCompletedCheck</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Hide co&amp;mpleted to-dos</string>
+                    </property>
+                    <property name="whatsThis" stdset="0">
+                        <string>If this box is checked, the filter will hide all to-do items from the list, that have been completed. Optionally, only items that have been completed a given number of days are hidden.</string>
+                    </property>
+                </widget>
+                <widget class="QLayoutWidget" row="3" column="0">
+                    <property name="name">
+                        <cstring>layout1</cstring>
+                    </property>
+                    <hbox>
+                        <property name="name">
+                            <cstring>unnamed</cstring>
+                        </property>
+                        <spacer>
+                            <property name="name">
+                                <cstring>spacer2</cstring>
+                            </property>
+                            <property name="orientation">
+                                <enum>Horizontal</enum>
+                            </property>
+                            <property name="sizeType">
+                                <enum>Fixed</enum>
+                            </property>
+                            <property name="sizeHint">
+                                <size>
+                                    <width>15</width>
+                                    <height>20</height>
+                                </size>
+                            </property>
+                        </spacer>
+                        <spacer>
+                            <property name="name">
+                                <cstring>spacer3</cstring>
+                            </property>
+                            <property name="orientation">
+                                <enum>Horizontal</enum>
+                            </property>
+                            <property name="sizeType">
+                                <enum>Expanding</enum>
+                            </property>
+                            <property name="sizeHint">
+                                <size>
+                                    <width>16</width>
+                                    <height>21</height>
+                                </size>
+                            </property>
+                        </spacer>
+                    </hbox>
+                </widget>
+                <widget class="QButtonGroup" row="6" column="0">
+                    <property name="name">
+                        <cstring>mCategoriesButtonGroup</cstring>
+                    </property>
+                    <property name="title">
                         <string>Categories</string>
                     </property>
                     <grid>
-                        <property stdset="1">
-                            <name>margin</name>
+                        <property name="name">
+                            <cstring>unnamed</cstring>
+                        </property>
+                        <property name="margin">
                             <number>11</number>
                         </property>
-                        <property stdset="1">
-                            <name>spacing</name>
+                        <property name="spacing">
                             <number>6</number>
                         </property>
-                        <widget row="1"  column="0" >
-                            <class>QRadioButton</class>
-                            <property stdset="1">
-                                <name>name</name>
-                                <cstring>mCatHideCheck</cstring>
-                            </property>
-                            <property stdset="1">
-                                <name>text</name>
-                                <string>Show all but selected</string>
-                            </property>
-                        </widget>
-                        <widget row="0"  column="0" >
-                            <class>QRadioButton</class>
-                            <property stdset="1">
-                                <name>name</name>
-                                <cstring>mCatShowCheck</cstring>
-                            </property>
-                            <property stdset="1">
-                                <name>text</name>
-                                <string>Show only selected</string>
-                            </property>
-                        </widget>
-                        <widget row="0"  column="1"  rowspan="3"  colspan="1" >
-                            <class>QListBox</class>
-                            <property stdset="1">
-                                <name>name</name>
+                        <widget class="QListBox" row="2" column="0" rowspan="2" colspan="1">
+                            <property name="name">
                                 <cstring>mCatList</cstring>
                             </property>
+                            <property name="selectionMode">
+                                <enum>NoSelection</enum>
+                            </property>
                         </widget>
-                        <widget row="2"  column="0" >
-                            <class>QPushButton</class>
-                            <property stdset="1">
-                                <name>name</name>
+                        <spacer row="3" column="1">
+                            <property name="name">
+                                <cstring>spacer4</cstring>
+                            </property>
+                            <property name="orientation">
+                                <enum>Vertical</enum>
+                            </property>
+                            <property name="sizeType">
+                                <enum>Expanding</enum>
+                            </property>
+                            <property name="sizeHint">
+                                <size>
+                                    <width>20</width>
+                                    <height>110</height>
+                                </size>
+                            </property>
+                        </spacer>
+                        <widget class="QRadioButton" row="1" column="0" rowspan="1" colspan="2">
+                            <property name="name">
+                                <cstring>mCatHideCheck</cstring>
+                            </property>
+                            <property name="text">
+                                <string>Show all except selected</string>
+                            </property>
+                            <property name="accel">
+                                <string></string>
+                            </property>
+                            <property name="buttonGroupId">
+                                <number>1</number>
+                            </property>
+                            <property name="whatsThis" stdset="0">
+                                <string>When this option is enabled, this filter will show all incidences which do &lt;i&gt;not&lt;/i&gt; contain the selected categories.</string>
+                            </property>
+                        </widget>
+                        <widget class="QRadioButton" row="0" column="0" rowspan="1" colspan="2">
+                            <property name="name">
+                                <cstring>mCatShowCheck</cstring>
+                            </property>
+                            <property name="text">
+                                <string>Show only selected</string>
+                            </property>
+                            <property name="accel">
+                                <string></string>
+                            </property>
+                            <property name="buttonGroupId">
+                                <number>0</number>
+                            </property>
+                            <property name="whatsThis" stdset="0">
+                                <string>When this option is enabled, this filter will show all incidences containing at least the selected incidences.</string>
+                            </property>
+                        </widget>
+                        <widget class="QPushButton" row="2" column="1">
+                            <property name="name">
                                 <cstring>mCatEditButton</cstring>
                             </property>
-                            <property stdset="1">
-                                <name>text</name>
-                                <string>Select Categories...</string>
+                            <property name="text">
+                                <string>Change...</string>
+                            </property>
+                            <property name="accel">
+                                <string></string>
                             </property>
                         </widget>
                     </grid>
                 </widget>
-                <widget>
-                    <class>QCheckBox</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>mRecurringCheck</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>text</name>
-                        <string>Hide recurring events</string>
-                    </property>
-                </widget>
-                <widget>
-                    <class>QCheckBox</class>
-                    <property stdset="1">
-                        <name>name</name>
-                        <cstring>mCompletedCheck</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>text</name>
-                        <string>Hide completed to-dos</string>
-                    </property>
-                </widget>
-                <spacer>
-                    <property>
-                        <name>name</name>
-                        <cstring>Spacer1</cstring>
-                    </property>
-                    <property stdset="1">
-                        <name>orientation</name>
-                        <enum>Vertical</enum>
-                    </property>
-                    <property stdset="1">
-                        <name>sizeType</name>
-                        <enum>Expanding</enum>
-                    </property>
-                    <property>
-                        <name>sizeHint</name>
-                        <size>
-                            <width>20</width>
-                            <height>20</height>
-                        </size>
-                    </property>
-                </spacer>
-            </vbox>
+            </grid>
         </widget>
-    </vbox>
+    </grid>
 </widget>
-<connections>
-    <slot access="public">updateFilter()</slot>
-</connections>
+<customwidgets>
+</customwidgets>
+<slots>
+    <slot>updateFilter()</slot>
+</slots>
+<layoutdefaults spacing="6" margin="11"/>
+<includehints>
+    <includehint>knuminput.h</includehint>
+</includehints>
 </UI>
