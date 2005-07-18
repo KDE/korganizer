@@ -12,9 +12,6 @@
             <height>436</height>
         </rect>
     </property>
-    <property name="caption">
-        <string>FilterEdit_base</string>
-    </property>
     <grid>
         <property name="name">
             <cstring>unnamed</cstring>
@@ -31,9 +28,6 @@
             <property name="text">
                 <string>&amp;New</string>
             </property>
-            <property name="accel">
-                <string>Alt+N</string>
-            </property>
         </widget>
         <widget class="QPushButton" row="1" column="1">
             <property name="name">
@@ -41,9 +35,6 @@
             </property>
             <property name="text">
                 <string>&amp;Delete</string>
-            </property>
-            <property name="accel">
-                <string>Alt+D</string>
             </property>
         </widget>
         <widget class="QButtonGroup" row="0" column="2" rowspan="2" colspan="1">
@@ -87,9 +78,6 @@
                     <property name="text">
                         <string>Hide &amp;recurring incidences</string>
                     </property>
-                    <property name="accel">
-                        <string>Alt+R</string>
-                    </property>
                     <property name="whatsThis" stdset="0">
                         <string>Select this option if you do not want to show recurring incidences in your views. Daily and weekly recurring incidences may take a lot of space, so it might be handy to hide them.</string>
                     </property>
@@ -100,9 +88,6 @@
                     </property>
                     <property name="text">
                         <string>Hide co&amp;mpleted to-dos</string>
-                    </property>
-                    <property name="accel">
-                        <string>Alt+M</string>
                     </property>
                     <property name="whatsThis" stdset="0">
                         <string>If this box is checked, the filter will hide all to-do items from the list, that have been completed. Optionally, only items that have been completed a given number of days are hidden.</string>
@@ -195,9 +180,6 @@
                     </property>
                     <property name="text">
                         <string>Hide &amp;inactive to-dos</string>
-                    </property>
-                    <property name="accel">
-                        <string>Alt+I</string>
                     </property>
                     <property name="whatsThis" stdset="0">
                         <string>This option hides all to-dos from your list, where the start date has not been reached. (Note that the start date is not the due date of the to-do item.)</string>
