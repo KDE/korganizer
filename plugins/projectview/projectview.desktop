@@ -73,6 +73,7 @@ Comment[sr]=Овај прикључак пружа приказ планирањ
 Comment[sr@Latn]=Ovaj priključak pruža prikaz planiranja projekta za KOrganizer (kao mesečni ili prikazi zadataka). Ako uključite ovaj priključak, možete se prebaciti na prikaz projekta i razgledati svoju listu poslova u planeru projekta.
 Comment[sv]=Insticksprogrammet tillhandahåller en projektplaneringsvy i Korganizer (som liknar uppgifts- eller månadsvyn). Om du aktiverar insticksprogrammet kan du byta till projektvyn och visa din uppgiftslista som i ett projektplaneringsverktyg.
 Comment[ta]=இந்த சொருகுப்பொருள் KOrganizer-க்கான ஒரு திட்டப்பணி செய்யும் காட்சியை வழங்குகிறது. (செய்யவேண்டியது அல்லது மாத காட்சிகள் போன்ற). இது செயலில் இருந்தால், நீங்கள் திட்டக்காட்சிக்கு செல்லலாம் திட்ட அமைப்பான் போன்ற திட்டக் காட்சிக்கும் செல்லலாம்.
+Comment[tr]=Bu eklenti, KOrganizer için bir proje planı görünümü sağlar (yapılacaklar ve aylık görünüm gibi). Eğer bu eklentiyi aktif hale getirirseniz, proje görünümüne geçebilir ve yapılacaklar listenizi proje planlayıcısı şeklinde görüntüleyebilirsiniz.
 Comment[uk]=Цей втулок показує вигляд планування проектів у KOrganizer (подібно до виглядів завдань або місячного). Якщо увімкнути цей втулок, то можна переглядати ваш список завдань у вигляді плановика проектів.
 Comment[xx]=xxThis plugin provides a project planning view for KOrganizer (like the to-do or month views). If you enable this plugin, you can switch to the project view and view your to-do list like in a project planner.xx
 Comment[zh_CN]=此插件为 KOrganizer 提供了项目规划视图(类似于待办或月视图)。如果您启用了此插件，您可以像项目规划程序那样切换到项目视图并查看您的待办清单。
