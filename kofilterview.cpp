@@ -60,6 +60,8 @@ void KOFilterView::setFiltersEnabled(bool set)
 
 void KOFilterView::updateFilters()
 {
+  const QString currentFilter = mSelectionCombo->currentText();
+
   mSelectionCombo->clear();
 
   CalFilter *filter = mFilters->first();
@@ -67,6 +69,8 @@ void KOFilterView::updateFilters()
     mSelectionCombo->insertItem(filter->name());
     filter = mFilters->next();
   }
+
+  setSelectedFilter( currentFilter );
 }
 
 CalFilter *KOFilterView::selectedFilter()
@@ -81,8 +85,10 @@ void KOFilterView::setSelectedFilter(QString filterName)
   int i;
   for (i=0;i<filter_num;i++) {
     if (mSelectionCombo->text(i)==filterName)
+     {
       mSelectionCombo->setCurrentItem(i);
+      emit filterChanged();
+     }
   }
-  emit filterChanged();
 }
 
