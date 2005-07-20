@@ -43,7 +43,7 @@
                         <cstring>mAllJournals</cstring>
                     </property>
                     <property name="text">
-                        <string>&amp;All journals</string>
+                        <string>&amp;All journal entries</string>
                     </property>
                     <property name="buttonGroupId">
                         <number>0</number>

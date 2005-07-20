@@ -43,7 +43,7 @@
 using namespace KCal;
 
 KOJournalEditor::KOJournalEditor( Calendar *calendar, QWidget *parent ) :
-  KOIncidenceEditor( i18n("Edit Journal"), calendar, parent )
+  KOIncidenceEditor( i18n("Edit Journal Entry"), calendar, parent )
 {
   mJournal = 0;
 }

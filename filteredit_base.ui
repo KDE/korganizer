@@ -132,7 +132,7 @@
                                 <cstring>mCompletedTimeSpan</cstring>
                             </property>
                             <property name="whatsThis" stdset="0">
-                                <string>This option will allow you to select which completed to-dos should be hidden. When you choose &lt;i&gt;Immediately&lt;/i&gt;, it will hide the todo as soon as you check it. You can increase or decrease the number of days in the spinbox.</string>
+                                <string>This option will allow you to select which completed to-dos should be hidden. When you choose &lt;i&gt;Immediately&lt;/i&gt;, it will hide the to-do as soon as you check it. You can increase or decrease the number of days in the spinbox.</string>
                             </property>
                         </widget>
                         <widget class="KIntNumInput">
@@ -152,7 +152,7 @@
                                 <string>Immediately</string>
                             </property>
                             <property name="whatsThis" stdset="0">
-                                <string>Here you can give the number of days a to-do item has to be completed to be hidden from the to-do list. If you select "Immediately", all completed todos will be hidden. If you, for example, choose a value of 1, all to-do items will be hidden, that have been marked finished longer than 24 hours ago.</string>
+                                <string>Here you can give the number of days a to-do item has to be completed to be hidden from the to-do list. If you select "Immediately", all completed to-dos will be hidden. If you, for example, choose a value of 1, all to-do items will be hidden, that have been marked finished longer than 24 hours ago.</string>
                             </property>
                         </widget>
                         <spacer>

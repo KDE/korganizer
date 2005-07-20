@@ -97,7 +97,7 @@ KOPrefsDialogMain::KOPrefsDialogMain( QWidget *parent, const char *name )
   mNameLabel = new QLabel(mNameEdit, i18n("Full &name:"), topFrame);
   topLayout->addWidget(mNameLabel,1,0);
   QString whatsThis = i18n( "Enter here your full name. This name will be "
-                            "displayed as \"Organizer\" in tasks and "
+                            "displayed as \"Organizer\" in to-dos and "
                             "events you create." );
   QWhatsThis::add( mNameLabel, whatsThis );
   topLayout->addWidget(mNameEdit,1,1);
@@ -109,7 +109,7 @@ KOPrefsDialogMain::KOPrefsDialogMain( QWidget *parent, const char *name )
   topLayout->addWidget(mEmailLabel,2,0);
   whatsThis = i18n( "Enter here your e-mail address. This e-mail address "
                     "will be used to identify the owner of the calendar, "
-                    "and displayed in events and tasks you create." );
+                    "and displayed in events and to-dos you create." );
   QWhatsThis::add( mEmailLabel, whatsThis );
   topLayout->addWidget(mEmailEdit,2,1);
   QWhatsThis::add( mEmailEdit, whatsThis );

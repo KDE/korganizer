@@ -296,7 +296,7 @@ void ActionManager::initActions()
     KStdAction::print( mCalendarView, SLOT( print() ), mACollection );
   }
 
-  new KAction( i18n("delete completed To-dos","Pur&ge Completed"), 0,
+  new KAction( i18n("delete completed to-dos","Pur&ge Completed"), 0,
                mCalendarView, SLOT( purgeCompleted() ), mACollection,
                "purge_completed" );
 
@@ -542,12 +542,12 @@ void ActionManager::initActions()
                       SLOT( toggleDateNavigator() ),
                       mACollection,
                       "show_datenavigator" );
-  mTodoViewShowAction= new KToggleAction ( i18n("Show Todo View"), 0,
+  mTodoViewShowAction= new KToggleAction ( i18n("Show To-do View"), 0,
                       this,
                       SLOT( toggleTodoView() ),
                       mACollection,
                       "show_todoview" );
-  mEventViewerShowAction= new KToggleAction ( i18n("Show Event Viewer"), 0,
+  mEventViewerShowAction= new KToggleAction ( i18n("Show Incidence Viewer"), 0,
                       this,
                       SLOT( toggleEventViewer() ),
                       mACollection,

@@ -7,22 +7,22 @@
 
 <tip category="KOrganizer|General">
 <html>
-<p>...that it is possible to show the current time in the calendar? Enable the Marcus Bains line in the dialog which appears after selecting <b>Settings</b>,
-<b>KOrganizer settings...</b> from the menu bar.
+<p>...that it is possible to show the current time in the calendar? Enable the current time line in the dialog which appears after selecting <b>Settings</b>, <b>Configure KOrganizer...</b> from the menu bar.
 </p>
 </html>
 </tip>
 
 <tip category="KOrganizer|General">
 <html>
-<p>...that KOrganizer supports Microsoft Exchange? Just enable the plugin <b>Microsoft&reg; Exchange 2000 plugin for KOrganizer</b> in the dialog <b>Configure Plugins...</b> from the <b>Settings</b> menu.
+<p>...that KOrganizer supports Microsoft Exchange? Add the <b>Microsoft&reg; Exchange 2000 resource</b> using the <b>Resource View</b> from the KOrganizer sidebar.
 </p>
 </html>
 </tip>
 
 <tip category="KOrganizer|General">
 <html>
-<p>...that you can select whether the week starts on Monday or on Sunday in the KDE Control Center? KOrganizer uses this setting. Look at Regional & Accessibility->Country/Region & Languages, then select the Time & Dates tab.
+<p>...that you can select whether the week starts on Monday or on Sunday in the KDE Control Center? KOrganizer uses this setting. Look at Regional & Accessibility->Country/Region & Languages in the KDE Control Center, or select <b>Settings</b>,
+<b>Configure Date & Time...</b> from the menu bar. Select the Time & Dates tab.
 </p>
 </html>
 </tip>
@@ -50,7 +50,7 @@
 
 <tip category="KOrganizer|General">
 <html>
-<p>...that you can store your calendar on an FTP server? Use the standard file dialog to save the calendar to a URL like <b>ftp://username@ftpserver/filename</b>. You can make your calendar active and load and save it as if it were local. Just make sure that no two KOrganizer applications are working on the same file, at the same time.
+<p>...that you can store your calendar on an FTP server? Use the standard file dialog to save the calendar to a URL like <b>ftp://username@ftpserver/filename</b>. You can make your calendar active and load and save it as if it were local, or add it permanently to your resources list, using the remote file resource. Just make sure that no two KOrganizer applications are working on the same file, at the same time.
 </p>
 </html>
 </tip>
@@ -64,7 +64,7 @@
 
 <tip category="KOrganizer|General">
 <html>
-<p>...that a color can be assigned to each category? Events with a certain category will be shown in that color. You can assign these in the section <b>Colors</b> within the dialog which appears after selecting <b>Settings</b>, <b>KOrganizer settings...</b> from the menu bar.
+<p>...that a color can be assigned to each category? Events with a certain category will be shown in that color. You can assign these in the section <b>Colors</b> within the dialog which appears after selecting <b>Settings</b>, <b>Configure KOrganizer...</b> from the menu bar.
 </p>
 </html>
 </tip>
@@ -78,14 +78,14 @@
 
 <tip category="KOrganizer|General">
 <html>
-<p>...that it is possible to add an attachment to an event? To do so, add a link to the <b>Attachments</b> tab within the <b>Edit Event</b> dialog.
+<p>...that it is possible to add an attachment to an event or to-do? To do so, add a link to the <b>Attachments</b> tab within the <b>Edit Event</b> or <b>Edit To-do</b> dialog.
 </p>
 </html>
 </tip>
 
 <tip category="KOrganizer|General">
 <html>
-<p>...that you can export your calendar to HTML? Check the plugin <b>Web export plugin for KOrganizer</b> in the dialog <b>Configure Plugins...</b> from the <b>Settings</b> menu. Now you can export your calendar with <b>File</b>, <b>Export</b>, <b>Export Web Page...</b> from the menu bar.
+<p>...that you can export your calendar to HTML? Select <b>File</b>, <b>Export</b>, <b>Export Web Page...</b> from the menu bar to open the <p>Export calendar as web page</b> dialog.
 </p>
 </html>
 </tip>

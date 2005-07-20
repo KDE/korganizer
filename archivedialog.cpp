@@ -136,9 +136,9 @@ ArchiveDialog::ArchiveDialog(Calendar *cal,QWidget *parent, const char *name)
   mEvents = new QCheckBox( i18n("&Events"), typeBox );
   mTodos = new QCheckBox( i18n("&To-dos"), typeBox );
   topLayout->addWidget( typeBox );
-  QWhatsThis::add( typeBox, i18n("Here you can select which incidences (events "
-                   "or to-do items) should be archived. Events are archived if they "
-                   "ended before the date given above; to-do items are archived if "
+  QWhatsThis::add( typeBox, i18n("Here you can select which incidences"
+                   "should be archived. Events are archived if they "
+                   "ended before the date given above; to-dos are archived if "
                    "they were finished before the date.") );
 
   mDeleteCb = new QCheckBox(i18n("&Delete only, do not save"),

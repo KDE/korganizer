@@ -85,7 +85,7 @@ void JournalDateEntry::setDate(const QDate &date)
                      .arg( KGlobal::locale()->formatDate(date) );
 
   dtstring += " <font size=\"-1\"><a href=\"#\">" +
-              i18n("[Add Journal]") +
+              i18n("[Add Journal Entry]") +
               "</a></font></center></qt>";
 
   mTitle->setText( dtstring );
@@ -185,7 +185,7 @@ JournalEntry::JournalEntry( Journal* j, QWidget *parent ) :
   mLayout->setSpacing( KDialog::spacingHint() );
   mLayout->setMargin( KDialog::marginHint() );
 
-  QString whatsThis = i18n("Sets the Title of this journal.");
+  QString whatsThis = i18n("Sets the Title of this journal entry.");
 
   mTitleLabel = new QLabel( i18n("&Title: "), this );
   mLayout->addWidget( mTitleLabel, 0, 0 );
@@ -202,16 +202,17 @@ JournalEntry::JournalEntry( Journal* j, QWidget *parent ) :
   mLayout->addWidget( mTimeEdit, 0, 3 );
   connect( mTimeCheck, SIGNAL(toggled(bool)),
            this, SLOT(timeCheckBoxToggled(bool)) );
-  QWhatsThis::add( mTimeCheck, i18n("Determines whether this journal also has "
+  QWhatsThis::add( mTimeCheck, i18n("Determines whether this journal entry has "
                                     "a time associated with it") );
-  QWhatsThis::add( mTimeEdit, i18n( "Sets the time associated with this journal" ) );
+  QWhatsThis::add( mTimeEdit, i18n( "Sets the time associated with this journal "
+                                    " entry" ) );
 
   mDeleteButton = new QToolButton( this, "deleteButton" );
   QPixmap pix = KOGlobals::self()->smallIcon( "editdelete" );
   mDeleteButton->setPixmap( pix );
   mDeleteButton->setSizePolicy( QSizePolicy::Fixed, QSizePolicy::Fixed );
-  QToolTip::add( mDeleteButton, i18n("Delete this journal") );
-  QWhatsThis::add( mDeleteButton, i18n("Delete this journal") );
+  QToolTip::add( mDeleteButton, i18n("Delete this journal entry") );
+  QWhatsThis::add( mDeleteButton, i18n("Delete this journal entry") );
   mLayout->addWidget( mDeleteButton, 0, 4 );
 
   connect( mDeleteButton, SIGNAL(pressed()), this, SLOT(deleteItem()) );

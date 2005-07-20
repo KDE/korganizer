@@ -1526,7 +1526,7 @@ void KOAgendaView::slotTodoDropped( Todo *todo, const QPoint &gpos, bool allDay 
         mChanger->changeIncidence( oldTodo, existingTodo );
         mChanger->endChange( existingTodo );
       } else {
-        KMessageBox::sorry( this, i18n("Unable to modify this to-do item, "
+        KMessageBox::sorry( this, i18n("Unable to modify this to-do, "
                             "because it cannot be locked.") );
       }
       delete oldTodo;

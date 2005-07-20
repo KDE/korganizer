@@ -227,7 +227,7 @@ void KOTodoListView::contentsDropEvent( QDropEvent *e )
         mChanger->changeIncidence( oldTodo, existingTodo, KOGlobals::RELATION_MODIFIED );
         mChanger->endChange( existingTodo );
       } else {
-        KMessageBox::sorry( this, i18n("Unable to change to-do item's parent, "
+        KMessageBox::sorry( this, i18n("Unable to change to-do's parent, "
                             "because the to-do cannot be locked.") );
       }
       delete oldTodo;
@@ -275,7 +275,7 @@ void KOTodoListView::contentsDropEvent( QDropEvent *e )
         mChanger->changeIncidence( oldtodo, todo );
         mChanger->endChange( todo );
       } else {
-        KMessageBox::sorry( this, i18n("Unable to add attendees to the to-do item, "
+        KMessageBox::sorry( this, i18n("Unable to add attendees to the to-do, "
             "because the to-do cannot be locked.") );
       }
     }
@@ -365,7 +365,7 @@ KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent, const char* name)
 {
   QBoxLayout *topLayout = new QVBoxLayout( this );
 
-  QLabel *title = new QLabel( i18n("To-do Items:"), this );
+  QLabel *title = new QLabel( i18n("To-dos:"), this );
   title->setFrameStyle( QFrame::Panel | QFrame::Raised );
   topLayout->addWidget( title );
 

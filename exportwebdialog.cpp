@@ -211,7 +211,7 @@ void ExportWebDialog::setupEventPage()
 /*
 void ExportWebDialog::setupJournalPage()
 {
-  mJournalPage = addPage(i18n("Journals"));
+  mJournalPage = addPage(i18n("Journal"));
   QVBoxLayout *topLayout = new QVBoxLayout( mJournalPage, 10 );
 
   QHBox *hbox = new QHBox( mJournalPage );

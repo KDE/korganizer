@@ -261,12 +261,12 @@ CalendarView::CalendarView( QWidget *parent, const char *name )
   //TODO: do a pretty Summary,
   QString s;
   s = i18n( "<p><em>No Incidence Selected</em></p>"
-           "<p>Select an event or todo to see a preview, "
-           "of the item here.</p>");
+           "<p>Select an event, to-do or journal entry to view its details "
+           "here.</p>");
 
   mEventViewer->setDefaultText( s );
   QWhatsThis::add( mEventViewer,
-                   i18n( "View the details of events, journals or to-dos "
+                   i18n( "View the details of events, journal entries or to-dos "
                          "selected in KOrganizer's main view here." ) );
   mEventViewer->setIncidence( 0 );
 
@@ -1894,7 +1894,7 @@ void CalendarView::deleteTodoIncidence ( Todo *todo, bool force )
     return;
   }
 
-  /* Ok, this todo has sub-to-dos, ask what to do */
+  /* Ok, this to-do has sub-to-dos, ask what to do */
   int km = KMessageBox::No;
   if ( !force ) {
     km=KMessageBox::questionYesNoCancel( this,
@@ -2076,7 +2076,7 @@ void CalendarView::purgeCompleted()
     }
     endMultiModify();
     if ( !allDeleted ) {
-      KMessageBox::information( this, i18n("Unable to purge to-do items with "
+      KMessageBox::information( this, i18n("Unable to purge to-dos with "
                                 "uncompleted children."), i18n("Delete To-do"),
                                 "UncompletedChildrenPurgeTodos" );
     }
