@@ -475,13 +475,13 @@ void KODayMatrix::dropEvent( QDropEvent *e )
   if ( action == DRAG_COPY  || action == DRAG_MOVE ) {
     e->accept();
     int idx = getDayIndexFrom( e->pos().x(), e->pos().y() );
-    
+
     if ( action == DRAG_COPY ) {
       if ( event ) emit incidenceDropped( event, mDays[idx] );
-      if ( todo )  emit incidenceDropped( event, mDays[idx] );
+      if ( todo )  emit incidenceDropped( todo, mDays[idx] );
     } else if ( action == DRAG_MOVE ) {
       if ( event ) emit incidenceDroppedMove( event, mDays[idx] );
-      if ( todo )  emit incidenceDroppedMove( event, mDays[idx] );
+      if ( todo )  emit incidenceDroppedMove( todo, mDays[idx] );
     }
   }
   delete event;
