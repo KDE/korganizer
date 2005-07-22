@@ -391,7 +391,7 @@ int RecurMonthly::count()
 
 int RecurMonthly::weekday()
 {
-  return mByPosWeekdayCombo->currentItem();
+  return mByPosWeekdayCombo->currentItem() + 1;
 }
 
 /////////////////////////// RecurYearly ///////////////////////////////
@@ -422,13 +422,13 @@ RecurYearly::RecurYearly( QWidget *parent, const char *name ) :
   }
   mByMonthRadio = new QRadioButton( recurInMonthText, buttonGroup );
   QWhatsThis::add( mByMonthRadio,
-		   i18n("Sets a specific day in a specific month on which "
-			"this event or to-do should recur.") );
+       i18n("Sets a specific day in a specific month on which "
+      "this event or to-do should recur.") );
   monthLayout->addWidget( mByMonthRadio );
   mByMonthSpin = new QSpinBox( 1, 31, 1, buttonGroup );
   QWhatsThis::add( mByMonthSpin,
-		   i18n("The day of the month on which this event or to-do "
-			"should recur.") );
+       i18n("The day of the month on which this event or to-do "
+      "should recur.") );
   monthLayout->addWidget( mByMonthSpin );
   QLabel *ofLabel = new QLabel(
       i18n("part between XXX and YYY of 'Recur on day XXX of month YYY'", " &of "),
@@ -451,8 +451,8 @@ RecurYearly::RecurYearly( QWidget *parent, const char *name ) :
   }
   mByPosRadio = new QRadioButton( recurOnPosText, buttonGroup );
   QWhatsThis::add( mByPosRadio,
-		   i18n("Sets a specific day in a specific week of a specific "
-			"month on which this event or to-do should recur.") );
+       i18n("Sets a specific day in a specific week of a specific "
+      "month on which this event or to-do should recur.") );
   posLayout->addWidget( mByPosRadio );
 
   mByPosDayCombo = createWeekCountCombo( buttonGroup );
@@ -482,7 +482,7 @@ RecurYearly::RecurYearly( QWidget *parent, const char *name ) :
     recurOnDayText = i18n("Recur on &day #");
   }
   QString whatsThis = i18n("Sets a specific day within the year on which this "
-			   "event or to-do should recur.");
+         "event or to-do should recur.");
   mByDayRadio = new QRadioButton( recurOnDayText, buttonGroup );
   QWhatsThis::add( mByDayRadio, whatsThis );
   dayLayout->addWidget( mByDayRadio );
@@ -518,7 +518,7 @@ void RecurYearly::setByPos( int count, int weekday, int month )
     mByPosDayCombo->setCurrentItem( count - 1 );
   else
     mByPosDayCombo->setCurrentItem( -count + 4 );
-  mByPosWeekdayCombo->setCurrentItem( weekday );
+  mByPosWeekdayCombo->setCurrentItem( weekday - 1 );
   mByPosMonthCombo->setCurrentItem( month-1 );
 }
 
@@ -558,7 +558,7 @@ int RecurYearly::posCount()
 
 int RecurYearly::posWeekday()
 {
-  return mByPosWeekdayCombo->currentItem();
+  return mByPosWeekdayCombo->currentItem() + 1;
 }
 
 int RecurYearly::posMonth()
@@ -588,32 +588,32 @@ ExceptionsWidget::ExceptionsWidget( QWidget *parent, const char *name ) :
 
   mExceptionDateEdit = new KDateEdit( box );
   QWhatsThis::add( mExceptionDateEdit,
-		   i18n("A date that should be considered an exception "
-			"to the recurrence rules for this event or to-do.") );
+       i18n("A date that should be considered an exception "
+      "to the recurrence rules for this event or to-do.") );
   mExceptionDateEdit->setDate( QDate::currentDate() );
   boxLayout->addWidget( mExceptionDateEdit, 0, 0 );
 
   QPushButton *addExceptionButton = new QPushButton( i18n("&Add"), box );
   QWhatsThis::add( addExceptionButton,
-		   i18n("Add this date as an exception "
-			"to the recurrence rules for this event or to-do.") );
+       i18n("Add this date as an exception "
+      "to the recurrence rules for this event or to-do.") );
   boxLayout->addWidget( addExceptionButton, 1, 0 );
   QPushButton *changeExceptionButton = new QPushButton( i18n("&Change"), box );
   QWhatsThis::add( changeExceptionButton,
-		   i18n("Replace the currently selected date with this date.") );
+       i18n("Replace the currently selected date with this date.") );
   boxLayout->addWidget( changeExceptionButton, 2, 0 );
   QPushButton *deleteExceptionButton = new QPushButton( i18n("&Delete"), box );
   QWhatsThis::add( deleteExceptionButton,
-		   i18n("Delete the currently selected date from the list of dates "
-		        "that should be considered exceptions to the recurrence rules "
-		        "for this event or to-do.") );
+       i18n("Delete the currently selected date from the list of dates "
+            "that should be considered exceptions to the recurrence rules "
+            "for this event or to-do.") );
   boxLayout->addWidget( deleteExceptionButton, 3, 0 );
 
   mExceptionList = new QListBox( box );
   QWhatsThis::add( mExceptionList,
-		   i18n("Displays current dates that are being considered "
-			"exceptions to the recurrence rules for this event "
-			"or to-do.") );
+       i18n("Displays current dates that are being considered "
+      "exceptions to the recurrence rules for this event "
+      "or to-do.") );
   boxLayout->addMultiCellWidget( mExceptionList, 0, 3, 1, 1 );
 
   boxLayout->setRowStretch( 4, 1 );
@@ -702,8 +702,8 @@ RecurrenceRangeWidget::RecurrenceRangeWidget( QWidget *parent,
   mRangeGroupBox = new QGroupBox( 1, Horizontal, i18n("Recurrence Range"),
                                   this );
   QWhatsThis::add( mRangeGroupBox,
-		   i18n("Sets a range for which these recurrence rules will "
-			"apply to this event or to-do.") );
+       i18n("Sets a range for which these recurrence rules will "
+      "apply to this event or to-do.") );
   topLayout->addWidget( mRangeGroupBox );
 
   QWidget *rangeBox = new QWidget( mRangeGroupBox );
@@ -712,8 +712,8 @@ RecurrenceRangeWidget::RecurrenceRangeWidget( QWidget *parent,
 
   mStartDateLabel = new QLabel( i18n("Begin on:"), rangeBox );
   QWhatsThis::add( mStartDateLabel,
-		   i18n("The date on which the recurrences for this event or to-do "
-			"should begin.") );
+       i18n("The date on which the recurrences for this event or to-do "
+      "should begin.") );
   rangeLayout->addWidget( mStartDateLabel );
 
   QButtonGroup *rangeButtonGroup = new QButtonGroup( this );
@@ -721,7 +721,7 @@ RecurrenceRangeWidget::RecurrenceRangeWidget( QWidget *parent,
 
   mNoEndDateButton = new QRadioButton( i18n("&No ending date"), rangeBox );
   QWhatsThis::add( mNoEndDateButton,
-		   i18n("Sets the event or to-do to recur forever.") );
+       i18n("Sets the event or to-do to recur forever.") );
   rangeButtonGroup->insert( mNoEndDateButton );
   rangeLayout->addWidget( mNoEndDateButton );
 
@@ -730,13 +730,13 @@ RecurrenceRangeWidget::RecurrenceRangeWidget( QWidget *parent,
 
   mEndDurationButton = new QRadioButton( i18n("End &after"), rangeBox );
   QWhatsThis::add( mEndDurationButton,
-		   i18n("Sets the event or to-do to stop recurring after a "
-			"certain number of occurrences.") );
+       i18n("Sets the event or to-do to stop recurring after a "
+      "certain number of occurrences.") );
   rangeButtonGroup->insert( mEndDurationButton );
   durationLayout->addWidget( mEndDurationButton );
 
   QString whatsThis = i18n("Number of times the event or to-do should recur "
-		  	   "before stopping.");
+           "before stopping.");
   mEndDurationEdit = new QSpinBox( 1, 9999, 1, rangeBox );
   QWhatsThis::add( mEndDurationEdit, whatsThis );
   durationLayout->addWidget( mEndDurationEdit );
@@ -1180,8 +1180,6 @@ void KOEditorRecurrence::readIncidence(Incidence *incidence)
   if (!incidence) return;
 
   QBitArray rDays( 7 );
-  QPtrList<Recurrence::rMonthPos> rmp;
-  QPtrList<int> rmd;
   int day = 0;
   int count = 0;
   int month = 0;
@@ -1193,12 +1191,11 @@ void KOEditorRecurrence::readIncidence(Incidence *incidence)
     setDefaults( incidence->dtStart(), incidence->dtEnd(), incidence->doesFloat() );
   }
 
-  int recurs = incidence->doesRecur();
+  uint recurs = incidence->recurrenceType();
   int f = 0;
   Recurrence *r = 0;
 
-  if ( recurs )
-  {
+  if ( recurs ) {
     r = incidence->recurrence();
     f = r->frequency();
   }
@@ -1221,93 +1218,86 @@ void KOEditorRecurrence::readIncidence(Incidence *incidence)
       mWeekly->setFrequency( f );
       mWeekly->setDays( r->days() );
       break;
-    case Recurrence::rMonthlyPos:
-      // we only handle one possibility in the list right now,
+    case Recurrence::rMonthlyPos: {
+      // TODO: we only handle one possibility in the list right now,
       // so I have hardcoded calls with first().  If we make the GUI
       // more extended, this can be changed.
       recurrenceType = RecurrenceChooser::Monthly;
 
-      rmp = r->monthPositions();
-      if ( rmp.first()->negative )
-        count=-rmp.first()->rPos;
-      else
-        // give the week as -5 to -1 and 1 to 5. the widget will do the rest
-        count = rmp.first()->rPos;
-      day = 0;
-      while ( !rmp.first()->rDays.testBit( day ) ) ++day;
-      mMonthly->setByPos( count, day );
+      QValueList<RecurrenceRule::WDayPos> rmp = r->monthPositions();
+      if ( !rmp.isEmpty() ) {
+        mMonthly->setByPos( rmp.first().pos(), rmp.first().day() );
+      }
 
       mMonthly->setFrequency( f );
 
-      break;
-    case Recurrence::rMonthlyDay:
+      break; }
+    case Recurrence::rMonthlyDay: {
       recurrenceType = RecurrenceChooser::Monthly;
 
-      rmd = r->monthDays();
+      QValueList<int> rmd = r->monthDays();
       // check if we have any setting for which day (vcs import is broken and
       // does not set any day, thus we need to check)
-      if ( rmd.first() ) {
-        day = *rmd.first();
-      } else {
+      if ( rmd.isEmpty() ) {
         day = incidence->dtStart().date().day();
+      } else {
+        day = rmd.first();
       }
       mMonthly->setByDay( day );
 
       mMonthly->setFrequency( f );
 
-      break;
+      break; }
     case Recurrence::rYearlyMonth: {
       recurrenceType = RecurrenceChooser::Yearly;
-      rmd = r->monthDays();
-      if ( rmd.first() ) {
-        day = *rmd.first();
-      } else {
+      QValueList<int> rmd = r->yearDates();
+      if ( rmd.isEmpty() ) {
         day = incidence->dtStart().date().day();
+      } else {
+        day = rmd.first();
       }
-      QValueList<int> monthlist;
-      QValueList<int> leaplist;
-      r->getYearlyMonthMonths( day, monthlist, leaplist );
-      if ( !monthlist.isEmpty() ) {
-        mYearly->setByMonth( day, monthlist.first() );
-      }
+      int month = incidence->dtStart().date().month();
+      rmd = r->yearMonths();
+      if ( !rmd.isEmpty() )
+        month = rmd.first();
+      mYearly->setByMonth( day, month );
       mYearly->setFrequency( f );
       break; }
     case Recurrence::rYearlyPos: {
       recurrenceType = RecurrenceChooser::Yearly;
-      rmd = r->yearNums();
-      if ( rmd.first() ) {
-        month = *rmd.first();
-      } else {
+
+      QValueList<int> months = r->yearMonths();
+      if ( months.isEmpty() ) {
         month = incidence->dtStart().date().month();
+      } else {
+        month = months.first();
       }
 
-      QPtrList<Recurrence::rMonthPos> monthPos( r->yearMonthPositions() );
-      if ( monthPos.first() ) {
-        Recurrence::rMonthPos *mp = monthPos.first();
-        count = mp->rPos;
-        if ( mp->negative ) count = -count;
-        QBitArray days( mp->rDays );
-        day = -1;
-        for ( int i=6; i>=0; i-- ) {
-          if ( days.testBit(i) ) day = i;
-        }
-        if ( day == -1 )
-          day = incidence->dtStart().date().dayOfWeek();
-      } else {
+      QValueList<RecurrenceRule::WDayPos> pos = r->yearPositions();
+
+      if ( pos.isEmpty() ) {
+        // Use dtStart if nothing is given (shouldn't happen!)
         count = ( incidence->dtStart().date().day() - 1 ) / 7;
         day = incidence->dtStart().date().dayOfWeek();
+      } else {
+        count = pos.first().pos();
+        day = pos.first().day();
       }
       mYearly->setByPos( count, day, month );
       mYearly->setFrequency( f );
       break; }
-    case Recurrence::rYearlyDay:
+    case Recurrence::rYearlyDay: {
       recurrenceType = RecurrenceChooser::Yearly;
-      rmd = r->yearNums();
-      day = *rmd.first();
+      QValueList<int> days = r->yearDays();
+      if ( days.isEmpty() ) {
+        day = incidence->dtStart().date().dayOfYear();
+      } else {
+        day = days.first();
+      }
       mYearly->setByDay( day );
 
       mYearly->setFrequency( f );
-      break;
+      break; }
     default:
       break;
   }
@@ -1315,14 +1305,14 @@ void KOEditorRecurrence::readIncidence(Incidence *incidence)
   mRecurrenceChooser->setType( recurrenceType );
   showCurrentRule( recurrenceType );
 
-  mRecurrenceRange->setDateTimes( incidence->recurrence()->recurStart() );
+  mRecurrenceRange->setDateTimes( incidence->recurrence()->startDateTime() );
 
   if ( incidence->doesRecur() ) {
     mRecurrenceRange->setDuration( r->duration() );
     if ( r->duration() == 0 ) mRecurrenceRange->setEndDate( r->endDate() );
   }
 
-  mExceptions->setDates( incidence->exDates() );
+  mExceptions->setDates( incidence->recurrence()->exDates() );
 }
 
 void KOEditorRecurrence::writeIncidence( Incidence *incidence )
@@ -1345,73 +1335,49 @@ void KOEditorRecurrence::writeIncidence( Incidence *incidence )
 
   int recurrenceType = mRecurrenceChooser->type();
   if ( recurrenceType == RecurrenceChooser::Daily ) {
-      int freq = mDaily->frequency();
-      if ( duration != 0 ) r->setDaily( freq, duration );
-      else  r->setDaily( freq, endDate );
+    r->setDaily( mDaily->frequency() );
   } else if ( recurrenceType == RecurrenceChooser::Weekly ) {
-      int freq = mWeekly->frequency();
-      const QBitArray &days = mWeekly->days();
-      if ( duration != 0 ) r->setWeekly( freq, days, duration );
-      else r->setWeekly( freq, days, endDate );
+    r->setWeekly( mWeekly->frequency(), mWeekly->days() );
   } else if ( recurrenceType == RecurrenceChooser::Monthly ) {
-      int freq = mMonthly->frequency();
-      if ( mMonthly->byPos() ) {
-          int pos = mMonthly->count();
+    r->setMonthly( mMonthly->frequency() );
+    
+    if ( mMonthly->byPos() ) {
+      int pos = mMonthly->count();
 
-          QBitArray days( 7 );
-          days.fill( false );
-
-          days.setBit( mMonthly->weekday() );
-          if ( duration != 0 )
-              r->setMonthly( Recurrence::rMonthlyPos, freq, duration );
-          else
-              r->setMonthly( Recurrence::rMonthlyPos, freq, endDate );
-          r->addMonthlyPos( pos, days );
-      } else {
-          // it's by day
-          if ( duration != 0 ) {
-              r->setMonthly( Recurrence::rMonthlyDay, freq, duration );
-          } else {
-              r->setMonthly( Recurrence::rMonthlyDay, freq, endDate );
-          }
-          r->addMonthlyDay( mMonthly->day() );
-      }
+      QBitArray days( 7 );
+      days.fill( false );
+      days.setBit( mMonthly->weekday() - 1 );
+      r->addMonthlyPos( pos, days );
+    } else {
+      // it's by day
+      r->addMonthlyDate( mMonthly->day() );
+    }
   } else if ( recurrenceType == RecurrenceChooser::Yearly ) {
-      int freq = mYearly->frequency();
+    r->setYearly( mYearly->frequency() );
 
-      switch ( mYearly->getType() ) {
-        case RecurYearly::byMonth:
-          if ( duration != 0 ) {
-              r->setYearlyByDate( mYearly->monthDay(), r->feb29YearlyType(), freq, duration );
-          } else {
-              r->setYearlyByDate( mYearly->monthDay(), r->feb29YearlyType(), freq, endDate );
-          }
-          r->addYearlyNum( mYearly->month() );
-          break;
-        case RecurYearly::byPos:  {
-          if ( duration != 0 ) {
-              r->setYearly( Recurrence::rYearlyPos, freq, duration );
-          } else {
-              r->setYearly( Recurrence::rYearlyPos, freq, endDate );
-          }
-          r->addYearlyNum( mYearly->posMonth() );
-          QBitArray days( 7 );
-          days.fill( false );
-          days.setBit( mYearly->posWeekday() );
-          r->addYearlyMonthPos( mYearly->posCount(), days );
-          break; }
-        case RecurYearly::byDay:
-          if ( duration != 0 ) {
-              r->setYearly( Recurrence::rYearlyDay, freq, duration );
-          } else {
-              r->setYearly( Recurrence::rYearlyDay, freq, endDate );
-          }
-          r->addYearlyNum( mYearly->day() );
-          break;
-      }
+    switch ( mYearly->getType() ) {
+      case RecurYearly::byMonth:
+        r->addYearlyDate( mYearly->monthDay() );
+        r->addYearlyMonth( mYearly->month() );
+        break;
+      case RecurYearly::byPos:  {
+        r->addYearlyMonth( mYearly->posMonth() );
+        QBitArray days( 7 );
+        days.fill( false );
+        days.setBit( mYearly->posWeekday() - 1 );
+        r->addYearlyPos( mYearly->posCount(), days );
+        break; }
+      case RecurYearly::byDay:
+        r->addYearlyDay( mYearly->day() );
+        break;
+    }
   } // end "Yearly"
 
-  incidence->setExDates( mExceptions->dates() );
+  if ( duration > 0 ) 
+    r->setDuration( duration );
+  else if ( duration == 0 )
+    r->setEndDate( endDate );
+  incidence->recurrence()->setExDates( mExceptions->dates() );
 }
 
 void KOEditorRecurrence::setDateTimeStr( const QString &str )
@@ -1433,6 +1399,7 @@ bool KOEditorRecurrence::validateInput()
   }
   int recurrenceType = mRecurrenceChooser->type();
   // Check if a weekly recurrence has at least one day selected
+  // TODO: Get rid of this, it's not really needed (by default the day should be taken from dtStart)
   if( mEnabledCheck->isChecked() && recurrenceType == RecurrenceChooser::Weekly ) {
     const QBitArray &days = mWeekly->days();
     bool valid = false;

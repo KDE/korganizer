@@ -608,8 +608,8 @@ void CalPrintHelper::drawDayBox( QPainter &p, const QDate &qd,
 
   for( it = eventList.begin(); it != eventList.end() && textY<height; ++it ) {
     Event *currEvent = *it;
-    if ( ( !printRecurDaily  && currEvent->doesRecur() == Recurrence::rDaily  ) ||
-         ( !printRecurWeekly && currEvent->doesRecur() == Recurrence::rWeekly ) ) {
+    if ( ( !printRecurDaily  && currEvent->recurrenceType() == Recurrence::rDaily  ) ||
+         ( !printRecurWeekly && currEvent->recurrenceType() == Recurrence::rWeekly ) ) {
       continue; }
     if ( currEvent->doesFloat() || currEvent->isMultiDay() )
       text = "";
@@ -624,8 +624,8 @@ void CalPrintHelper::drawDayBox( QPainter &p, const QDate &qd,
     Todo::List::ConstIterator it2;
     for( it2 = todos.begin(); it2 != todos.end() && textY<height; ++it2 ) {
       Todo *todo = *it2;
-      if ( ( !printRecurDaily  && todo->doesRecur() == Recurrence::rDaily  ) ||
-           ( !printRecurWeekly && todo->doesRecur() == Recurrence::rWeekly ) )
+      if ( ( !printRecurDaily  && todo->recurrenceType() == Recurrence::rDaily  ) ||
+           ( !printRecurWeekly && todo->recurrenceType() == Recurrence::rWeekly ) )
         continue;
       if ( todo->hasDueDate() && !todo->doesFloat() )
         text += KGlobal::locale()->formatTime(todo->dtDue().time()) + " ";

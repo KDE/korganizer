@@ -544,7 +544,7 @@ void MonthViewCell::addIncidence( Incidence *incidence )
     MonthViewItem *item = v.item();
     if ( item ) {
       item->setAlarm( incidence->isAlarmEnabled() );
-      item->setRecur( incidence->doesRecur() );
+      item->setRecur( incidence->recurrenceType() );
       item->setResourceColor(resourceColor);
       // FIXME: Find the correct position (time-wise) to insert the item.
       //        Currently, the items are displayed in "random" order instead of

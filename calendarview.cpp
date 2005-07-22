@@ -1492,6 +1492,7 @@ void CalendarView::exportVCalendar()
 
   QString filename = KFileDialog::getSaveFileName("vcalout.vcs",i18n("*.vcs|vCalendars"),this);
 
+	// TODO: I don't like forcing extensions:
   // Force correct extension
   if (filename.right(4) != ".vcs") filename += ".vcs";
 
@@ -1987,7 +1988,7 @@ void CalendarView::deleteIncidence(Incidence *incidence, bool force)
       case KMessageBox::Yes: // just this one
         if ( mChanger->beginChange( incidence ) ) {
           Incidence *oldIncidence = incidence->clone();
-          incidence->addExDate( itemDate );
+          incidence->recurrence()->addExDate( itemDate );
           mChanger->changeIncidence( oldIncidence, incidence );
           mChanger->endChange( incidence );
           delete oldIncidence;

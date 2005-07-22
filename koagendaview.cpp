@@ -469,7 +469,7 @@ KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name) :
     connect( mExpandButton, SIGNAL( clicked() ), SIGNAL( toggleExpand() ) );
   } else {
     QLabel *label = new QLabel( i18n("All Day"), mDummyAllDayLeft );
-    label->setAlignment( Qt::AlignRight | Qt::AlignVCenter );
+    label->setAlignment( Qt::AlignRight | Qt::AlignVCenter | Qt::WordBreak );
   }
 
   mAllDayAgenda = new KOAgenda(1,mAllDayFrame);
@@ -999,9 +999,11 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
   }
   // FIXME: Adjusting the recurrence should really go to CalendarView so this
   // functionality will also be available in other views!
+  // TODO_Recurrence: This does not belong here, and I'm not really sure
+  // how it's supposed to work anyway.
   Recurrence *recur = incidence->recurrence();
-  if ( recur->doesRecur() && daysOffset != 0 ) {
-    switch ( recur->doesRecur() ) {
+/*  if ( recur->doesRecur() && daysOffset != 0 ) {
+    switch ( recur->recurrenceType() ) {
       case Recurrence::rYearlyPos: {
         int freq = recur->frequency();
         int duration = recur->duration();
@@ -1138,7 +1140,7 @@ void KOAgendaView::updateEventDates( KOAgendaItem *item )
                               "them in the incidence editor."),
                               i18n("Recurrence Moved"),
                               "RecurrenceMoveInAgendaWarning" );
-  }
+  }*/
 
   // FIXME: use a visitor here
   if ( incidence->type() == "Event" ) {

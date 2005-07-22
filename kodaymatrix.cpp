@@ -273,8 +273,7 @@ void KODayMatrix::updateEvents()
     Event::List::ConstIterator it;
     for( it = eventlist.begin(); it != eventlist.end(); ++it ) {
       Event *event = *it;
-      ushort recurType = event->doesRecur();
-      // TODO_Recurrence: Don't do it like this!
+      ushort recurType = event->recurrenceType();
       if ( ( recurType == Recurrence::rDaily &&
              !KOPrefs::instance()->mDailyRecur ) ||
            ( recurType == Recurrence::rWeekly &&
