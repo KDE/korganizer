@@ -61,20 +61,21 @@ class ResourceItem : public QCheckListItem
     ResourceItem( KCal::ResourceCalendar *resource, ResourceView *view,
                   KListView *parent );
     ResourceItem( KCal::ResourceCalendar *resource, const QString& sub,
-                  const QString& label, ResourceView *view, 
+                  const QString& label, ResourceView *view,
                   ResourceItem* parent );
 
     KCal::ResourceCalendar *resource() { return mResource; }
     const QString& resourceIdentifier() { return mResourceIdentifier; }
     bool isSubresource() const { return mIsSubresource; }
     void createSubresourceItems();
+    void setStandardResource( bool std );
 
     void update();
-    /*
+
     virtual void paintCell(QPainter *p, const QColorGroup &cg,
       int column, int width, int alignment);
-//     */
-    void setResourceColor(QColor& color); 
+
+    void setResourceColor(QColor& color);
     QColor &resourceColor() {return mResourceColor;}
   protected:
     void stateChange( bool active );
@@ -89,6 +90,7 @@ class ResourceItem : public QCheckListItem
     bool mIsSubresource;
     QString mResourceIdentifier;
     bool mSubItemsCreated;
+    bool mIsStandardResource;
 };
 
 /**
@@ -140,11 +142,12 @@ class ResourceView : public CalendarViewExtension
     void assignColor();
     void disableColor();
     void showInfo();
-  
+
     void reloadResource();
     void saveResource();
-    
+
     void setStandard();
+    void updateResourceList();
 
   private:
     KListView *mListView;

@@ -41,6 +41,7 @@
 #include <qhbox.h>
 #include <qlayout.h>
 #include <qlabel.h>
+#include <qpainter.h>
 #include <qpushbutton.h>
 #include <qpopupmenu.h>
 #include <qwhatsthis.h>
@@ -124,7 +125,7 @@ ResourceItem::ResourceItem( KCal::ResourceCalendar *resource,
 
   : QCheckListItem( parent, label, CheckBox ), mResource( resource ),
     mView( view ), mBlockStateChange( false ), mIsSubresource( true ),
-    mSubItemsCreated( false )
+    mSubItemsCreated( false ), mIsStandardResource( false )
 {
   mResourceColor = QColor();
   mResourceIdentifier = sub;
@@ -186,15 +187,29 @@ void ResourceItem::setResourceColor(QColor& color)
     setPixmap(0,0);
   }
 }
-/*
+
+void ResourceItem::setStandardResource( bool std )
+{
+  if ( mIsStandardResource != std ) {
+    mIsStandardResource = std;
+    repaint();
+  }
+}
+
 void ResourceItem::paintCell(QPainter *p, const QColorGroup &cg,
       int column, int width, int alignment)
 {
-  QColorGroup _cg = cg;
+  QFont oldFont = p->font();
+  QFont newFont = oldFont;
+  newFont.setBold( mIsStandardResource );
+  p->setFont( newFont );
+  QCheckListItem::paintCell( p, cg, column, width, alignment );
+  p->setFont( oldFont );
+/*  QColorGroup _cg = cg;
   if(!mResource) return;
-  _cg.setColor(QColorGroup::Base, getTextColor(mResourceColor));
+  _cg.setColor(QColorGroup::Base, getTextColor(mResourceColor));*/
 }
-*/
+
 
 ResourceView::ResourceView( KCal::CalendarResources *calendar,
                             QWidget *parent, const char *name )
@@ -351,6 +366,7 @@ void ResourceView::addResourceItem( ResourceCalendar *resource )
   connect( resource, SIGNAL( resourceSaved( ResourceCalendar * ) ),
            SLOT( closeResource( ResourceCalendar * ) ) );
 
+  updateResourceList();
   emitResourcesChanged();
 }
 
@@ -426,6 +442,7 @@ void ResourceView::removeResource()
     mListView->takeItem( item );
     delete item;
   }
+  updateResourceList();
   emitResourcesChanged();
 }
 
@@ -595,6 +612,18 @@ void ResourceView::setStandard()
   ResourceCalendar *r = item->resource();
   KCal::CalendarResourceManager *manager = mCalendar->resourceManager();
   manager->setStandardResource( r );
+  updateResourceList();
+}
+
+void ResourceView::updateResourceList()
+{
+  QListViewItemIterator it( mListView );
+  ResourceCalendar* stdRes = mCalendar->resourceManager()->standardResource();
+  while ( it.current() ) {
+    ResourceItem *item = static_cast<ResourceItem *>( it.current() );
+    item->setStandardResource( item->resource() == stdRes );
+    ++it;
+  }
 }
 
 void ResourceView::showButtons( bool visible )
