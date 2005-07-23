@@ -32,6 +32,7 @@
 #include <kdebug.h>
 #include <kmessagebox.h>
 #include <klistview.h>
+#include <kurldrag.h>
 
 #include <qlayout.h>
 #include <qlistview.h>
@@ -150,18 +151,10 @@ void KOEditorAttachments::dragEnterEvent( QDragEnterEvent* event ) {
 }
 
 void KOEditorAttachments::dropEvent( QDropEvent* event ) {
-  QString text;
-  int index;
-
-  if ( QTextDrag::decode( event, text ) ) {
-    if ( ( index = text.contains( '\n', FALSE ) ) <= 1 ) {
-      addAttachment( text );
-    } else {
-      QString section;
-      for ( int num = 0; num < index; num++ ) {
-        section = text.section('\n', num, num );
-        addAttachment( section );
-      }
+  KURL::List urls;
+  if ( KURLDrag::decode( event, urls ) ) {
+    for ( KURL::List::ConstIterator it = urls.begin(); it != urls.end(); ++it ) {
+      addAttachment( (*it).url() );
     }
   }
 }
