@@ -147,16 +147,23 @@ bool KOEditorAttachments::hasAttachments()
 }
 
 void KOEditorAttachments::dragEnterEvent( QDragEnterEvent* event ) {
-  event->accept( QTextDrag::canDecode( event ) );
+  event->accept( KURLDrag::canDecode( event ) | QTextDrag::canDecode( event ) );
 }
 
 void KOEditorAttachments::dropEvent( QDropEvent* event ) {
   KURL::List urls;
+  QString text;
   if ( KURLDrag::decode( event, urls ) ) {
     for ( KURL::List::ConstIterator it = urls.begin(); it != urls.end(); ++it ) {
       addAttachment( (*it).url() );
     }
+  } else if ( QTextDrag::decode( event, text ) ) {
+    QStringList lst = QStringList::split( '\n', text );
+    for ( QStringList::ConstIterator it = lst.begin(); it != lst.end(); ++it ) {
+      addAttachment( (*it)  );
+    }
   }
+
 }
 
 void KOEditorAttachments::showAttachment( QListViewItem *item )
