@@ -87,7 +87,7 @@ TimeLabels::TimeLabels(int rows,QWidget *parent,const char *name,WFlags f) :
   setHScrollBarMode(AlwaysOff);
   setVScrollBarMode(AlwaysOff);
 
-  resizeContents(50,mRows * mCellHeight);
+  resizeContents(50, int(mRows * mCellHeight) );
 
   viewport()->setBackgroundMode( PaletteBackground );
 
@@ -135,7 +135,7 @@ void TimeLabels::drawContents(QPainter *p,int cx, int cy, int cw, int ch)
   // end of workaround
 
   int cell = ((int)(cy/mCellHeight));
-  int y = cell * mCellHeight;
+  double y = cell * mCellHeight;
   QFontMetrics fm = fontMetrics();
   QString hour;
   QString suffix = "am";
@@ -149,7 +149,7 @@ void TimeLabels::drawContents(QPainter *p,int cx, int cy, int cw, int ch)
       if (cell > 11) suffix = "pm";
 
   if ( timeHeight >  mCellHeight ) {
-    timeHeight = mCellHeight-1;
+    timeHeight = int(mCellHeight-1);
     int pointS = nFont.pointSize();
     while ( pointS > 4 ) {
       nFont.setPointSize( pointS );
@@ -172,7 +172,7 @@ void TimeLabels::drawContents(QPainter *p,int cx, int cy, int cw, int ch)
   //p->drawLine(0,0,0,contentsHeight());
   while (y < cy + ch+mCellHeight) {
     // hour, full line
-    p->drawLine( cx, y, cw+2, y );
+    p->drawLine( cx, int(y), cw+2, int(y) );
     hour.setNum(cell);
     // handle 24h and am/pm time formats
     if (KGlobal::locale()->use12Clock()) {
@@ -185,10 +185,10 @@ void TimeLabels::drawContents(QPainter *p,int cx, int cy, int cw, int ch)
     int timeWidth = fm.width(hour);
     int offset = startW - timeWidth - tw2 -1 ;
     p->setFont( nFont );
-    p->drawText( offset, y+timeHeight, hour);
+    p->drawText( offset, int(y+timeHeight), hour);
     p->setFont( sFont );
     offset = startW - tw2;
-    p->drawText( offset, y+timeHeight-divTimeHeight, suffix);
+    p->drawText( offset, int(y+timeHeight-divTimeHeight), suffix);
 
     // increment indices
     y += mCellHeight;
@@ -228,7 +228,12 @@ void TimeLabels::updateConfig()
 
   // update HourSize
   mCellHeight = KOPrefs::instance()->mHourSize*4;
-  resizeContents( mMiniWidth,mRows * mCellHeight+1 );
+  // If the agenda is zoomed out so that more then 24 would be shown,
+  // the agenda only shows 24 hours, so we need to take the cell height
+  // from the agenda, which is larger than the configured one!
+  if ( mCellHeight < 4*mAgenda->gridSpacingY() )
+       mCellHeight = 4*mAgenda->gridSpacingY();
+  resizeContents( mMiniWidth, int(mRows * mCellHeight+1) );
 }
 
 /** update time label positions */
