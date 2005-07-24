@@ -126,15 +126,12 @@ class CalPrintDialog : public KDialogBase
 
   protected slots:
     void slotOk();
-    void setupPrinter();
-    void setPrinterLabel();
 
   private:
     KPrinter *mPrinter;
     QVButtonGroup *mTypeGroup;
     QWidgetStack *mConfigArea;
     KOrg::PrintPlugin::List mPrintPlugins;
-    QLabel *mPrinterLabel;
     QString mPreviewText;
     QComboBox *mOrientationSelection;
 
