@@ -152,8 +152,6 @@ void CalPrinter::doPrint( KOrg::PrintPlugin *selectedStyle, bool preview )
       break;
   }
 
-
-//   mPrinter->setOption( "kde-orientation-fixed", "0" );
   if ( preview || mPrinter->setup( mParent, i18n("Print Calendar") ) ) {
   selectedStyle->setKOrgCoreHelper( mCoreHelper );
   selectedStyle->setCalPrintHelper( mHelper );
@@ -161,7 +159,6 @@ void CalPrinter::doPrint( KOrg::PrintPlugin *selectedStyle, bool preview )
   }
   mPrinter->setPreviewOnly( false );
   mPrinter->setOrientation( printerOrientation );
-//   mPrinter->setOption( "kde-orientation-fixed", "0" );
 }
 
 ///////////////////////////////////////////////////////////////////////////////
