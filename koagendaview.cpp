@@ -142,12 +142,12 @@ void TimeLabels::drawContents(QPainter *p,int cx, int cy, int cw, int ch)
   int timeHeight =  fm.ascent();
   QFont nFont = font();
   p->setFont( font() );
- 
+
   if (!KGlobal::locale()->use12Clock()) {
       suffix = "00";
   } else
       if (cell > 11) suffix = "pm";
-     
+
   if ( timeHeight >  mCellHeight ) {
     timeHeight = mCellHeight-1;
     int pointS = nFont.pointSize();
@@ -161,13 +161,13 @@ void TimeLabels::drawContents(QPainter *p,int cx, int cy, int cw, int ch)
     fm = QFontMetrics( nFont );
     timeHeight = fm.ascent();
   }
-  //timeHeight -= (timeHeight/4-2); 
+  //timeHeight -= (timeHeight/4-2);
   QFont sFont = nFont;
   sFont.setPointSize( sFont.pointSize()/2 );
   QFontMetrics fmS(  sFont );
   int startW = mMiniWidth - frameWidth()-2 ;
   int tw2 = fmS.width(suffix);
-  int divTimeHeight = (timeHeight-1) /2 - 1; 
+  int divTimeHeight = (timeHeight-1) /2 - 1;
   //testline
   //p->drawLine(0,0,0,contentsHeight());
   while (y < cy + ch+mCellHeight) {
@@ -186,7 +186,7 @@ void TimeLabels::drawContents(QPainter *p,int cx, int cy, int cw, int ch)
     int offset = startW - timeWidth - tw2 -1 ;
     p->setFont( nFont );
     p->drawText( offset, y+timeHeight, hour);
-    p->setFont( sFont ); 
+    p->setFont( sFont );
     offset = startW - tw2;
     p->drawText( offset, y+timeHeight-divTimeHeight, suffix);
 
@@ -856,8 +856,20 @@ bool KOAgendaView::eventDurationHint( QDateTime &startDt, QDateTime &endDt,
                                       bool &allDay )
 {
   if ( selectionStart().isValid() ) {
-    startDt = selectionStart();
-    endDt = selectionEnd();
+    QDateTime start = selectionStart();
+    QDateTime end = selectionEnd();
+
+    if ( start.secsTo( end ) == 15*60 ) {
+      // One cell in the agenda view selected, e.g.
+      // because of a double-click, => Use the default duration
+      QTime defaultDuration( KOPrefs::instance()->mDefaultDuration.time() );
+      int addSecs = ( defaultDuration.hour()*3600 ) +
+                    ( defaultDuration.minute()*60 );
+      end = start.addSecs( addSecs );
+    }
+
+    startDt = start;
+    endDt = end;
     allDay = selectedIsAllDay();
     return true;
   }
