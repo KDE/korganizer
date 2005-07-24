@@ -449,26 +449,26 @@ KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent, const char* name)
            SLOT( copyTodoToDate( QDate ) ) );
 
   mItemPopupMenu = new QPopupMenu(this);
-  mItemPopupMenu->insertItem(i18n("Show"), this,
+  mItemPopupMenu->insertItem(i18n("&Show"), this,
                              SLOT (showTodo()));
-  mItemPopupMenu->insertItem(i18n("Edit..."), this,
+  mItemPopupMenu->insertItem(i18n("&Edit..."), this,
                              SLOT (editTodo()), 0, ePopupEdit );
-  mItemPopupMenu->insertItem(KOGlobals::self()->smallIconSet("editdelete"), i18n("Delete"), this,
+  mItemPopupMenu->insertItem(KOGlobals::self()->smallIconSet("editdelete"), i18n("&Delete"), this,
                              SLOT (deleteTodo()), 0, ePopupDelete );
   mItemPopupMenu->insertSeparator();
-  mItemPopupMenu->insertItem(KOGlobals::self()->smallIconSet("todo"), i18n("New To-do..."), this,
+  mItemPopupMenu->insertItem(KOGlobals::self()->smallIconSet("todo"), i18n("New &To-do..."), this,
                              SLOT (newTodo()));
-  mItemPopupMenu->insertItem(i18n("New Sub-to-do..."), this,
+  mItemPopupMenu->insertItem(i18n("New Su&b-to-do..."), this,
                              SLOT (newSubTodo()));
-  mItemPopupMenu->insertItem( i18n("Make Sub-to-do Independent"), this,
+  mItemPopupMenu->insertItem( i18n("&Make Sub-to-do Independent"), this,
       SIGNAL( unSubTodoSignal() ), 0, ePopupUnSubTodo );
-  mItemPopupMenu->insertItem( i18n("Make Sub-to-dos Independent"), this,
+  mItemPopupMenu->insertItem( i18n("Make Sub-to-dos &Independent"), this,
       SIGNAL( unAllSubTodoSignal() ), 0, ePopupUnAllSubTodo );
   mItemPopupMenu->insertSeparator();
-  mItemPopupMenu->insertItem( i18n("Copy To"), mCopyPopupMenu, ePopupCopyTo );
-  mItemPopupMenu->insertItem(i18n("Move To"), mMovePopupMenu, ePopupMoveTo );
+  mItemPopupMenu->insertItem( i18n("&Copy To"), mCopyPopupMenu, ePopupCopyTo );
+  mItemPopupMenu->insertItem(i18n("&Move To"), mMovePopupMenu, ePopupMoveTo );
   mItemPopupMenu->insertSeparator();
-  mItemPopupMenu->insertItem(i18n("delete completed to-dos","Purge Completed"),
+  mItemPopupMenu->insertItem(i18n("delete completed to-dos","Pur&ge Completed"),
                              this, SLOT( purgeCompleted() ) );
 
   connect( mMovePopupMenu, SIGNAL( dateChanged( QDate ) ),
@@ -477,9 +477,9 @@ KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent, const char* name)
            mItemPopupMenu, SLOT( hide() ) );
 
   mPopupMenu = new QPopupMenu(this);
-  mPopupMenu->insertItem(KOGlobals::self()->smallIconSet("todo"), i18n("New To-do..."), this,
+  mPopupMenu->insertItem(KOGlobals::self()->smallIconSet("todo"), i18n("&New To-do..."), this,
                          SLOT (newTodo()));
-  mPopupMenu->insertItem(i18n("delete completed to-dos","Purge Completed"),
+  mPopupMenu->insertItem(i18n("delete completed to-dos","&Purge Completed"),
                          this, SLOT(purgeCompleted()));
 
   mDocPrefs = new DocPrefs( name );
