@@ -1586,7 +1586,7 @@ bool ActionManager::queryClose()
 
   bool close = true;
 
-  if ( mCalendar ) {
+  if ( mCalendar && mCalendar->isModified() ) {
     int res = KMessageBox::questionYesNoCancel( dialogParent(),
       i18n("The calendar contains unsaved changes. Do you want to save them before exiting?") );
     // Exit on yes and no, don't exit on cancel. If saving fails, ask for exiting.
