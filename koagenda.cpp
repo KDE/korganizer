@@ -631,16 +631,40 @@ bool KOAgenda::eventFilter_mouse(QObject *object, QMouseEvent *me)
       } else if ( mActionType == SELECT ) {
         endSelectAction( viewportPos );
       }
+      // This nasty gridToContents(contentsToGrid(..)) is needed to
+      // avoid an offset of a few pixels. Don't ask me why...
+      emit mousePosSignal( gridToContents(contentsToGrid(
+                           viewportToContents( viewportPos ) ) ));
       break;
 
-    case QEvent::MouseMove:
+    case QEvent::MouseMove: {
+      // This nasty gridToContents(contentsToGrid(..)) is needed to
+      // avoid an offset of a few pixels. Don't ask me why...
+      QPoint indicatorPos = gridToContents(contentsToGrid(
+                                          viewportToContents( viewportPos )));
       if (object != viewport()) {
         KOAgendaItem *moveItem = dynamic_cast<KOAgendaItem *>(object);
-        if (moveItem && !moveItem->incidence()->isReadOnly() )
+        if (moveItem && !moveItem->incidence()->isReadOnly() ) {
           if (!mActionItem)
             setNoActionCursor(moveItem,viewportPos);
-          else
+          else {
             performItemAction(viewportPos);
+
+            if ( mActionType == MOVE ) {
+              // show cursor at the current begin of the item
+              KOAgendaItem *firstItem = mActionItem->firstMultiItem();
+              if (!firstItem) firstItem = mActionItem;
+              indicatorPos = gridToContents( QPoint( firstItem->cellXLeft(),
+                                                     firstItem->cellYTop() ) );
+
+            } else if ( mActionType == RESIZEBOTTOM ) {
+              // RESIZETOP is handled correctly, only resizebottom works differently
+              indicatorPos = gridToContents( QPoint( mActionItem->cellXLeft(),
+                                                     mActionItem->cellYBottom()+1 ) );
+            }
+
+          } // If we have an action item
+        } // If move item && !read only
       } else {
           if ( mActionType == SELECT ) {
             performSelectAction( viewportPos );
@@ -648,15 +672,13 @@ bool KOAgenda::eventFilter_mouse(QObject *object, QMouseEvent *me)
             // show cursor at end of timespan
             if ( ((mStartCell.y() < mEndCell.y()) && (mEndCell.x() >= mStartCell.x())) ||
                  (mEndCell.x() > mStartCell.x()) )
-              emit mousePosSignal(gridToContents(QPoint(mEndCell.x(), mEndCell.y()+1)));
+              indicatorPos = gridToContents( QPoint(mEndCell.x(), mEndCell.y()+1) );
             else
-              emit mousePosSignal(gridToContents(mEndCell));
-
-            return true;
+              indicatorPos = gridToContents( mEndCell );
           }
         }
-      emit mousePosSignal(gridToContents(contentsToGrid(viewportToContents( viewportPos ))));
-      break;
+      emit mousePosSignal( indicatorPos );
+      break; }
 
     case QEvent::MouseButtonDblClick:
       if (object == viewport()) {
