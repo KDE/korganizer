@@ -34,7 +34,6 @@
       <Separator/>
       <Action name="purge_completed"/>
       <Separator/>
-      <Action name="make_active"/>
       <Action name="korganizer_close"/>
     </Menu>
     <Menu name="edit"><text>&amp;Edit</text>

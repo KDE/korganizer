@@ -25,7 +25,6 @@
       <Action name="addressbook"/>
       <Action name="purge_completed"/>
       <Separator/>
-      <Action name="make_active"/>
     </Menu>
     <Menu name="edit"><text>&amp;Edit</text>
       <Action name="edit_delete" append="edit_paste_merge"/>
