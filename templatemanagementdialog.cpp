@@ -73,8 +73,8 @@ void TemplateManagementDialog::slotAddTemplate()
                                        i18n("New Template"), &ok );
   if ( newTemplate.isEmpty() || !ok ) return;
   if ( m_templates.find( newTemplate) != m_templates.end() ) {
-    int rc = KMessageBox::warningYesNo( this, i18n("A template with that name already exists, do you want to overwrite it?."), i18n("Duplicate template name") );
-    if ( rc == KMessageBox::No ) {
+    int rc = KMessageBox::warningContinueCancel( this, i18n("A template with that name already exists, do you want to overwrite it?."), i18n("Duplicate Template Name"), i18n("Overwrite"));
+    if ( rc == KMessageBox::Cancel ) {
       QTimer::singleShot(0, this, SLOT( slotAddTemplate() ) );
       return;
     }

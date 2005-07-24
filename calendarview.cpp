@@ -649,9 +649,9 @@ void CalendarView::updateConfig( const QCString& receiver)
                                 "the items in your calendar, which will show them to be at a different time than "
                                 "before, or move them to be at the old time also in the new timezone?") );
     int rc = KMessageBox::questionYesNo( this, question,
-                              i18n("Keep absolute times?"),
-                              KGuiItem(i18n("Keep times")),
-                              KGuiItem(i18n("Move times")),
+                              i18n("Keep Absolute Times?"),
+                              KGuiItem(i18n("Keep Times")),
+                              KGuiItem(i18n("Move Times")),
                               "calendarKeepAbsoluteTimes");
     if ( rc == KMessageBox::Yes ) {
       // user wants us to shift

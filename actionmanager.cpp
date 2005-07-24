@@ -1588,12 +1588,12 @@ bool ActionManager::queryClose()
 
   if ( mCalendar && mCalendar->isModified() ) {
     int res = KMessageBox::questionYesNoCancel( dialogParent(),
-      i18n("The calendar contains unsaved changes. Do you want to save them before exiting?") );
+      i18n("The calendar contains unsaved changes. Do you want to save them before exiting?"), QString::null, KStdGuiItem::save(), KStdGuiItem::discard() );
     // Exit on yes and no, don't exit on cancel. If saving fails, ask for exiting.
     if ( res == KMessageBox::Yes ) {
       close = saveModifiedURL();
       if ( !close ) {
-        int res1 = KMessageBox::questionYesNo( dialogParent(), i18n("Unable to save the calendar. Do you still want to close this window?") );
+        int res1 = KMessageBox::questionYesNo( dialogParent(), i18n("Unable to save the calendar. Do you still want to close this window?"), QString::null, KStdGuiItem::close(), KStdGuiItem::cancel() );
         close = ( res1 == KMessageBox::Yes );
       }
     } else {

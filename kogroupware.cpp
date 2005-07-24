@@ -230,7 +230,7 @@ bool KOGroupware::sendICalMessage( QWidget* parent,
           "Should email be sent out to the attendees?" )
         .arg( type );
       rc = KMessageBox::questionYesNoCancel( parent, txt,
-          i18n("Group Scheduling Email") );
+          i18n("Group Scheduling Email"), i18n("Send Email"), i18n("Do Not Send") );
     } else {
       return true;
     }
@@ -242,7 +242,7 @@ bool KOGroupware::sendICalMessage( QWidget* parent,
     // Ask if the user wants to tell the organizer about the current status
     QString txt = i18n( "Do you want to send a status update to the "
                         "organizer of this task?");
-    rc = KMessageBox::questionYesNo( parent, txt );
+    rc = KMessageBox::questionYesNo( parent, txt, QString::null, i18n("Send Update"), i18n("Do Not Send") );
   } else if( incidence->type() == "Event" ) {
     QString txt;
     if ( statusChanged && method == Scheduler::Request ) {
@@ -250,7 +250,7 @@ bool KOGroupware::sendICalMessage( QWidget* parent,
           "changed. Do you want to send a status update to the "
           "organizer of this event?" );
       method = Scheduler::Reply;
-      rc = KMessageBox::questionYesNo( parent, txt );
+      rc = KMessageBox::questionYesNo( parent, txt, QString::null, i18n("Send Update"), i18n("Do Not Send") );
     } else {
       if( isDeleting )
         txt = i18n( "You are not the organizer of this event. "
@@ -262,8 +262,8 @@ bool KOGroupware::sendICalMessage( QWidget* parent,
             "Editing it will bring your calendar out of sync "
             "with the organizers calendar. Do you really want "
             "to edit it?" );
-      rc = KMessageBox::questionYesNo( parent, txt );
-      return ( rc == KMessageBox::Yes );
+      rc = KMessageBox::warningContinueCancel( parent, txt, QString::null, KStdGuiItem::del() );
+      return ( rc == KMessageBox::Continue );
     }
   } else {
     kdWarning(5850) << "Groupware messages for Journals are not implemented yet!" << endl;
