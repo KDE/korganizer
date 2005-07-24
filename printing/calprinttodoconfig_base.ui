@@ -430,8 +430,26 @@
         <slot>setEnabled(bool)</slot>
     </connection>
 </connections>
+<tabstops>
+    <tabstop>mTitle</tabstop>
+    <tabstop>mPrintAll</tabstop>
+    <tabstop>mFromDate</tabstop>
+    <tabstop>mToDate</tabstop>
+    <tabstop>mDescription</tabstop>
+    <tabstop>mDueDate</tabstop>
+    <tabstop>mPriority</tabstop>
+    <tabstop>mPercentComplete</tabstop>
+    <tabstop>mSortField</tabstop>
+    <tabstop>mSortDirection</tabstop>
+    <tabstop>mConnectSubTodos</tabstop>
+    <tabstop>mStrikeOutCompleted</tabstop>
+</tabstops>
 <includes>
     <include location="global" impldecl="in declaration">kdateedit.h</include>
 </includes>
 <layoutdefaults spacing="6" margin="11"/>
+<includehints>
+    <includehint>libkdepim/kdateedit.h</includehint>
+    <includehint>libkdepim/kdateedit.h</includehint>
+</includehints>
 </UI>

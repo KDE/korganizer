@@ -14,6 +14,9 @@
             <height>262</height>
         </rect>
     </property>
+    <property name="caption">
+        <string>CalPrintWeek_Base</string>
+    </property>
     <grid>
         <property name="name">
             <cstring>unnamed</cstring>
@@ -80,46 +83,6 @@
                         <string>Here you can choose which events should be printed based on their date. This check enables you to enter the start date of the date range. Use the &lt;i&gt;End date&lt;/i&gt; to enter the end date of the daterange.</string>
                     </property>
                 </widget>
-                <widget class="KDateEdit" row="0" column="3">
-                    <property name="name">
-                        <cstring>mToDate</cstring>
-                    </property>
-                    <property name="focusPolicy">
-                        <enum>StrongFocus</enum>
-                    </property>
-                    <property name="whatsThis" stdset="0">
-                        <string>Here you can choose which events should be printed based on their date. This check enables you to enter the end date of the date range. Use the &lt;i&gt;Start date&lt;/i&gt; to enter the start date of the daterange.</string>
-                    </property>
-                </widget>
-                <widget class="QLabel" row="1" column="0">
-                    <property name="name">
-                        <cstring>mFromTimeLabel</cstring>
-                    </property>
-                    <property name="text">
-                        <string>Start &amp;time:</string>
-                    </property>
-                    <property name="buddy" stdset="0">
-                        <cstring>mFromTime</cstring>
-                    </property>
-                    <property name="whatsThis" stdset="0">
-                        <string>All events which start earlier than the given time will not be printed.</string>
-                    </property>
-                </widget>
-                <widget class="QTimeEdit" row="1" column="1">
-                    <property name="name">
-                        <cstring>mFromTime</cstring>
-                    </property>
-                    <property name="time">
-                        <time>
-                            <hour>0</hour>
-                            <minute>8</minute>
-                            <second>0</second>
-                        </time>
-                    </property>
-                    <property name="whatsThis" stdset="0">
-                        <string>All events which start earlier than the given time will not be printed.</string>
-                    </property>
-                </widget>
                 <widget class="KDateEdit" row="0" column="1">
                     <property name="name">
                         <cstring>mFromDate</cstring>
@@ -129,20 +92,6 @@
                     </property>
                     <property name="whatsThis" stdset="0">
                         <string>Here you can choose which events should be printed based on their date. This check enables you to enter the start date of the date range. Use the &lt;i&gt;End date&lt;/i&gt; to enter the end date of the daterange.</string>
-                    </property>
-                </widget>
-                <widget class="QLabel" row="0" column="2">
-                    <property name="name">
-                        <cstring>mToDateLabel</cstring>
-                    </property>
-                    <property name="text">
-                        <string>&amp;End date:</string>
-                    </property>
-                    <property name="buddy" stdset="0">
-                        <cstring>mToDate</cstring>
-                    </property>
-                    <property name="whatsThis" stdset="0">
-                        <string>Here you can choose which events should be printed based on their date. This check enables you to enter the end date of the date range. Use the &lt;i&gt;Start date&lt;/i&gt; to enter the start date of the daterange.</string>
                     </property>
                 </widget>
                 <widget class="QLabel" row="1" column="2">
@@ -187,8 +136,68 @@
                             <second>0</second>
                         </time>
                     </property>
+                    <property name="display">
+                        <set>Minutes|Hours</set>
+                    </property>
                     <property name="whatsThis" stdset="0">
                         <string>All events which start later than the given time will not be printed.</string>
+                    </property>
+                </widget>
+                <widget class="QLabel" row="0" column="2">
+                    <property name="name">
+                        <cstring>mFromTimeLabel</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Start &amp;time:</string>
+                    </property>
+                    <property name="buddy" stdset="0">
+                        <cstring>mFromTime</cstring>
+                    </property>
+                    <property name="whatsThis" stdset="0">
+                        <string>All events which start earlier than the given time will not be printed.</string>
+                    </property>
+                </widget>
+                <widget class="QTimeEdit" row="0" column="3">
+                    <property name="name">
+                        <cstring>mFromTime</cstring>
+                    </property>
+                    <property name="time">
+                        <time>
+                            <hour>8</hour>
+                            <minute>0</minute>
+                            <second>0</second>
+                        </time>
+                    </property>
+                    <property name="display">
+                        <set>Minutes|Hours</set>
+                    </property>
+                    <property name="whatsThis" stdset="0">
+                        <string>All events which start earlier than the given time will not be printed.</string>
+                    </property>
+                </widget>
+                <widget class="KDateEdit" row="1" column="1">
+                    <property name="name">
+                        <cstring>mToDate</cstring>
+                    </property>
+                    <property name="focusPolicy">
+                        <enum>StrongFocus</enum>
+                    </property>
+                    <property name="whatsThis" stdset="0">
+                        <string>Here you can choose which events should be printed based on their date. This check enables you to enter the end date of the date range. Use the &lt;i&gt;Start date&lt;/i&gt; to enter the start date of the daterange.</string>
+                    </property>
+                </widget>
+                <widget class="QLabel" row="1" column="0">
+                    <property name="name">
+                        <cstring>mToDateLabel</cstring>
+                    </property>
+                    <property name="text">
+                        <string>&amp;End date:</string>
+                    </property>
+                    <property name="buddy" stdset="0">
+                        <cstring>mToDate</cstring>
+                    </property>
+                    <property name="whatsThis" stdset="0">
+                        <string>Here you can choose which events should be printed based on their date. This check enables you to enter the end date of the date range. Use the &lt;i&gt;Start date&lt;/i&gt; to enter the start date of the daterange.</string>
                     </property>
                 </widget>
             </grid>
@@ -209,7 +218,7 @@
                 <cstring>mPrintType</cstring>
             </property>
             <property name="title">
-                <string>Type of View</string>
+                <string>Print Layout</string>
             </property>
             <grid>
                 <property name="name">
@@ -269,8 +278,21 @@
         </widget>
     </grid>
 </widget>
-<layoutdefaults spacing="6" margin="11"/>
+<tabstops>
+    <tabstop>mFromDate</tabstop>
+    <tabstop>mFromTime</tabstop>
+    <tabstop>mToDate</tabstop>
+    <tabstop>mToTime</tabstop>
+    <tabstop>mPrintTypeButton1</tabstop>
+    <tabstop>mIncludeTodos</tabstop>
+    <tabstop>mColors</tabstop>
+</tabstops>
 <includes>
     <include location="global" impldecl="in declaration">kdateedit.h</include>
 </includes>
+<layoutdefaults spacing="6" margin="11"/>
+<includehints>
+    <includehint>libkdepim/kdateedit.h</includehint>
+    <includehint>libkdepim/kdateedit.h</includehint>
+</includehints>
 </UI>

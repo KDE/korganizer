@@ -14,6 +14,9 @@
             <height>202</height>
         </rect>
     </property>
+    <property name="caption">
+        <string>CalPrintDay_Base</string>
+    </property>
     <grid>
         <property name="name">
             <cstring>unnamed</cstring>
@@ -80,20 +83,6 @@
                         </size>
                     </property>
                 </spacer>
-                <widget class="QLabel" row="0" column="2">
-                    <property name="name">
-                        <cstring>mToDateLabel</cstring>
-                    </property>
-                    <property name="text">
-                        <string>&amp;End date:</string>
-                    </property>
-                    <property name="buddy" stdset="0">
-                        <cstring>mToDate</cstring>
-                    </property>
-                    <property name="whatsThis" stdset="0">
-                        <string>If you want to print more days at once, you can define a range of dates with this option and the &lt;i&gt;Start date&lt;/i&gt; option. This option is used to define the end date.</string>
-                    </property>
-                </widget>
                 <widget class="QLabel" row="0" column="0">
                     <property name="name">
                         <cstring>mFromDateLabel</cstring>
@@ -106,20 +95,6 @@
                     </property>
                     <property name="whatsThis" stdset="0">
                         <string>If you want to print more days at once, you can define a range of dates with this option and the &lt;i&gt;End date&lt;/i&gt; option. This option is used to define the start date.</string>
-                    </property>
-                </widget>
-                <widget class="QLabel" row="1" column="0">
-                    <property name="name">
-                        <cstring>mFromTimeLabel</cstring>
-                    </property>
-                    <property name="text">
-                        <string>Start &amp;time:</string>
-                    </property>
-                    <property name="buddy" stdset="0">
-                        <cstring>mFromTime</cstring>
-                    </property>
-                    <property name="whatsThis" stdset="0">
-                        <string>It is possible to print only those events which are inside a given timerange. With this time selection box you can define the start of this time range. The end time should be defined with the &lt;i&gt;End time&lt;/i&gt; option. Note you can automatically modify these settings if you check &lt;i&gt;Extend time range to include all events&lt;/i&gt;.</string>
                     </property>
                 </widget>
                 <widget class="QLabel" row="1" column="2">
@@ -136,21 +111,6 @@
                         <string>It is possible to print only those events which are inside a given timerange. With this time selection box you can define the end of this time range. The start time should be defined with the &lt;i&gt;Start time&lt;/i&gt; option. Note you can automatically modify these settings if you check &lt;i&gt;Extend time range to include all events&lt;/i&gt;.</string>
                     </property>
                 </widget>
-                <widget class="QTimeEdit" row="1" column="1">
-                    <property name="name">
-                        <cstring>mFromTime</cstring>
-                    </property>
-                    <property name="time">
-                        <time>
-                            <hour>0</hour>
-                            <minute>8</minute>
-                            <second>0</second>
-                        </time>
-                    </property>
-                    <property name="whatsThis" stdset="0">
-                        <string>It's possible to print only those events which are inside a given timerange. With this time selection box you can define the start of this time range. The end time should be defined with the &lt;i&gt;End time&lt;/i&gt; option. Note you can automatically modify these settings if you check &lt;i&gt;Extend time range to include all events&lt;/i&gt;.</string>
-                    </property>
-                </widget>
                 <widget class="QTimeEdit" row="1" column="3">
                     <property name="name">
                         <cstring>mToTime</cstring>
@@ -161,6 +121,9 @@
                             <minute>0</minute>
                             <second>0</second>
                         </time>
+                    </property>
+                    <property name="display">
+                        <set>Minutes|Hours</set>
                     </property>
                     <property name="whatsThis" stdset="0">
                         <string>It's possible to print only those events which are inside a given timerange. With this time selection box you can define the end of this time range. The start time should be defined with the &lt;i&gt;Start time&lt;/i&gt; option. Note you can automatically modify these settings if you check &lt;i&gt;Extend time range to include all events&lt;/i&gt;.</string>
@@ -177,7 +140,50 @@
                         <string>Check this option to automatically determine the required time range, so all events will be shown.</string>
                     </property>
                 </widget>
-                <widget class="KDateEdit" row="0" column="3">
+                <widget class="KDateEdit" row="0" column="1">
+                    <property name="name">
+                        <cstring>mFromDate</cstring>
+                    </property>
+                    <property name="focusPolicy">
+                        <enum>StrongFocus</enum>
+                    </property>
+                    <property name="whatsThis" stdset="0">
+                        <string>If you want to print more days at once, you can define a range of dates with this option and the &lt;i&gt;End date&lt;/i&gt; option. This option is used to define the start date.</string>
+                    </property>
+                </widget>
+                <widget class="QTimeEdit" row="0" column="3">
+                    <property name="name">
+                        <cstring>mFromTime</cstring>
+                    </property>
+                    <property name="time">
+                        <time>
+                            <hour>8</hour>
+                            <minute>0</minute>
+                            <second>0</second>
+                        </time>
+                    </property>
+                    <property name="display">
+                        <set>Minutes|Hours</set>
+                    </property>
+                    <property name="whatsThis" stdset="0">
+                        <string>It's possible to print only those events which are inside a given timerange. With this time selection box you can define the start of this time range. The end time should be defined with the &lt;i&gt;End time&lt;/i&gt; option. Note you can automatically modify these settings if you check &lt;i&gt;Extend time range to include all events&lt;/i&gt;.</string>
+                    </property>
+                </widget>
+                <widget class="QLabel" row="0" column="2">
+                    <property name="name">
+                        <cstring>mFromTimeLabel</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Start &amp;time:</string>
+                    </property>
+                    <property name="buddy" stdset="0">
+                        <cstring>mFromTime</cstring>
+                    </property>
+                    <property name="whatsThis" stdset="0">
+                        <string>It is possible to print only those events which are inside a given timerange. With this time selection box you can define the start of this time range. The end time should be defined with the &lt;i&gt;End time&lt;/i&gt; option. Note you can automatically modify these settings if you check &lt;i&gt;Extend time range to include all events&lt;/i&gt;.</string>
+                    </property>
+                </widget>
+                <widget class="KDateEdit" row="1" column="1">
                     <property name="name">
                         <cstring>mToDate</cstring>
                     </property>
@@ -188,15 +194,18 @@
                         <string>If you want to print more days at once, you can define a range of dates with this option and the &lt;i&gt;Start date&lt;/i&gt; option. This option is used to define the end date.</string>
                     </property>
                 </widget>
-                <widget class="KDateEdit" row="0" column="1">
+                <widget class="QLabel" row="1" column="0">
                     <property name="name">
-                        <cstring>mFromDate</cstring>
+                        <cstring>mToDateLabel</cstring>
                     </property>
-                    <property name="focusPolicy">
-                        <enum>StrongFocus</enum>
+                    <property name="text">
+                        <string>&amp;End date:</string>
+                    </property>
+                    <property name="buddy" stdset="0">
+                        <cstring>mToDate</cstring>
                     </property>
                     <property name="whatsThis" stdset="0">
-                        <string>If you want to print more days at once, you can define a range of dates with this option and the &lt;i&gt;End date&lt;/i&gt; option. This option is used to define the start date.</string>
+                        <string>If you want to print more days at once, you can define a range of dates with this option and the &lt;i&gt;Start date&lt;/i&gt; option. This option is used to define the end date.</string>
                     </property>
                 </widget>
             </grid>
@@ -231,8 +240,21 @@
         </spacer>
     </grid>
 </widget>
-<layoutdefaults spacing="6" margin="11"/>
+<tabstops>
+    <tabstop>mFromDate</tabstop>
+    <tabstop>mFromTime</tabstop>
+    <tabstop>mToDate</tabstop>
+    <tabstop>mToTime</tabstop>
+    <tabstop>mIncludeAllEvents</tabstop>
+    <tabstop>mIncludeTodos</tabstop>
+    <tabstop>mColors</tabstop>
+</tabstops>
 <includes>
     <include location="global" impldecl="in declaration">kdateedit.h</include>
 </includes>
+<layoutdefaults spacing="6" margin="11"/>
+<includehints>
+    <includehint>libkdepim/kdateedit.h</includehint>
+    <includehint>libkdepim/kdateedit.h</includehint>
+</includehints>
 </UI>
