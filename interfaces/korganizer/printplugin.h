@@ -72,7 +72,8 @@ class PrintPlugin : public KOrg::Plugin
       setSettingsWidget();
       return mConfigWidget;
     }
-		/* Create the config widget. setSettingsWidget will be automatically called on it */
+    /* Create the config widget. setSettingsWidget will be automatically
+       called on it */
     virtual QWidget *createConfigWidget( QWidget * ) = 0;
 
     /**
