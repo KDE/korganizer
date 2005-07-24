@@ -240,8 +240,6 @@ void ActionManager::initActions()
                    SLOT( file_revert() ), mACollection, "korganizer_revert" );
       KStdAction::saveAs( this, SLOT( file_saveas() ), mACollection,
                    "korganizer_saveAs" );
-      KStdAction::close( this,
-                   SLOT( file_close() ), mACollection, "korganizer_close" );
     }
     KStdAction::save( this,
                  SLOT( file_save() ), mACollection, "korganizer_save" );
@@ -253,7 +251,6 @@ void ActionManager::initActions()
     KStdAction::revert( this,SLOT( file_revert() ),mACollection );
     KStdAction::save( this, SLOT( file_save() ), mACollection );
     KStdAction::saveAs( this, SLOT( file_saveas() ), mACollection );
-    KStdAction::close( this, SLOT( file_close() ), mACollection );
   }
 
   new KAction( i18n("&Import From Ical"), 0, this, SLOT( file_import() ),
