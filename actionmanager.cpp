@@ -180,6 +180,7 @@ void ActionManager::createCalendarResources()
   CalendarResourceManager::Iterator it;
   for( it = manager->begin(); it != manager->end(); ++it ) {
     kdDebug(5850) << "  " << (*it)->resourceName() << endl;
+    (*it)->setResolveConflict( true );
 //    (*it)->dump();
   }
 
