@@ -177,7 +177,7 @@ void ResourceItem::setResourceColor(QColor& color)
 {
   if ( color.isValid() ) {
     if ( mResourceColor != color ) {
-      QPixmap px(height()-13,height()-13);
+      QPixmap px(height()-4,height()-4);
       mResourceColor = color;
       px.fill(color);
       setPixmap(0,px);
@@ -201,7 +201,7 @@ void ResourceItem::paintCell(QPainter *p, const QColorGroup &cg,
 {
   QFont oldFont = p->font();
   QFont newFont = oldFont;
-  newFont.setBold( mIsStandardResource );
+  newFont.setBold( mIsStandardResource && !mIsSubresource );
   p->setFont( newFont );
   QCheckListItem::paintCell( p, cg, column, width, alignment );
   p->setFont( oldFont );
