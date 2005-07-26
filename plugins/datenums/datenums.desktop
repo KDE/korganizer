@@ -34,6 +34,7 @@ Name[zh_CN]=日历的日期数字插件
 Comment=For each day this plugin shows its daynumber of the year at the top of the agenda view. For example, February 1 is day 32 of the year.
 Comment[bg]=Приставката служи за показване на деня от началото на годината. Примерно, 1-ви февруари е 32-ия ден от годината.
 Comment[ca]=Per cada día, aquest endollable mostra el número de día de l'any al capdamunt de la vista d'agenda. Per exemple, 1 de Febrer és el dia 32 de l'any.
+Comment[cs]=tento modul pro každý den zobrazuje pořadí dne v roce na vrcholu pohledu. Např. 1. únor je 32 druhý den v roce.
 Comment[da]=For hver dag viser dette plugin nummeret for dagen i året for oven i agendavisningen. For eksempel er 1. februar 1 is den 32. dag i året.
 Comment[de]=Für jeden Tag des Jahres wird mit diesem Plugin die zugehörige Tageszahl oben in der Tagesansicht angezeigt. Der 1. Februar ist beispielsweise der 32. Tag des Jahres.
 Comment[es]=Para cada día, esta extensión mostrará el número del día en el año en la parte superior de la vista de la agenda. Por ejemplo, el 1 de febrero es el día número 32 del año.
