@@ -572,7 +572,10 @@ void ResourceView::disableColor()
     return;
   QColor colorInvalid;
   KCal::ResourceCalendar *cal = item->resource();
-  KOPrefs::instance()->setResourceColor(cal->identifier(),colorInvalid);
+  QString identifier = cal->identifier();
+  if ( item->isSubresource() )
+    identifier = item->resourceIdentifier();
+  KOPrefs::instance()->setResourceColor( identifier, colorInvalid );
   item->setResourceColor( colorInvalid );
   item->update();
   emit resourcesChanged();
