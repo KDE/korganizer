@@ -27,6 +27,7 @@
 #include "kojournaleditor.h"
 
 #include "koeditorgeneraljournal.h"
+#include "koeditordetails.h"
 #include "kodialogmanager.h"
 #include "koprefs.h"
 
@@ -56,6 +57,7 @@ KOJournalEditor::~KOJournalEditor()
 void KOJournalEditor::init()
 {
   setupGeneral();
+  setupAttendeesTab();
 }
 
 void KOJournalEditor::reload()
@@ -188,22 +190,25 @@ void KOJournalEditor::deleteJournal()
 void KOJournalEditor::setDefaults( const QDate &date )
 {
   mGeneral->setDefaults( date );
+  mDetails->setDefaults();
 }
 
 void KOJournalEditor::readJournal( Journal *journal )
 {
   kdDebug(5851)<<"read Journal"<<endl;
   mGeneral->readJournal( journal );
+  mDetails->readEvent( journal );
 }
 
 void KOJournalEditor::writeJournal( Journal *journal )
 {
   mGeneral->writeJournal( journal );
+  mDetails->writeEvent( journal );
 }
 
 bool KOJournalEditor::validateInput()
 {
-  return mGeneral->validateInput();
+  return mGeneral->validateInput() && mDetails->validateInput();
 }
 
 int KOJournalEditor::msgItemDelete()

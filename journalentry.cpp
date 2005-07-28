@@ -72,7 +72,7 @@ JournalDateEntry::JournalDateEntry( Calendar *calendar, QWidget *parent ) :
   mTitle->setMargin(2);
   mTitle->setSizePolicy( QSizePolicy::Expanding, QSizePolicy::Fixed );
   connect( mTitle, SIGNAL( linkClicked( const QString & ) ),
-           this, SLOT( newJournal() ) );
+           this, SLOT( emitNewJournal() ) );
 }
 
 JournalDateEntry::~JournalDateEntry()
@@ -104,6 +104,7 @@ void JournalDateEntry::clear()
   mEntries.clear();
 }
 
+// should only be called by the KOJournalView now.
 void JournalDateEntry::addJournal( Journal *j )
 {
   QMap<Journal*,JournalEntry*>::Iterator pos = mEntries.find( j );
@@ -123,6 +124,8 @@ void JournalDateEntry::addJournal( Journal *j )
            entry, SLOT( flushEntry() ) );
   connect( entry, SIGNAL( deleteIncidence( Incidence* ) ),
            this, SIGNAL( deleteIncidence( Incidence* ) ) );
+  connect( entry, SIGNAL( editIncidence( Incidence* ) ),
+           this, SIGNAL( editIncidence( Incidence* ) ) );
 }
 
 Journal::List JournalDateEntry::journals() const
@@ -142,15 +145,9 @@ void JournalDateEntry::setIncidenceChanger( IncidenceChangerBase *changer )
   emit setIncidenceChangerSignal( changer );
 }
 
-void JournalDateEntry::newJournal()
+void JournalDateEntry::emitNewJournal()
 {
-  Journal *j = new Journal();
-  j->setDtStart( QDateTime( mDate, QTime(0,0,0) ) );
-  if ( mCalendar->addIncidence( j ) ) {
-    addJournal( j );
-  } else {
-    delete j;
-  }
+  emit newJournal( mDate );
 }
 
 void JournalDateEntry::journalEdited( Journal *journal )
@@ -161,6 +158,7 @@ void JournalDateEntry::journalEdited( Journal *journal )
   pos.data()->setJournal( journal );
 
 }
+
 void JournalDateEntry::journalDeleted( Journal *journal )
 {
   QMap<Journal*,JournalEntry*>::Iterator pos = mEntries.find( journal );
@@ -178,6 +176,7 @@ JournalEntry::JournalEntry( Journal* j, QWidget *parent ) :
 {
 //kdDebug(5850)<<"JournalEntry::JournalEntry, parent="<<parent<<endl;
   mDirty = false;
+  mWriteInProgress = false;
   mChanger = 0;
   mReadOnly = false;
 
@@ -214,13 +213,19 @@ JournalEntry::JournalEntry( Journal* j, QWidget *parent ) :
   QToolTip::add( mDeleteButton, i18n("Delete this journal entry") );
   QWhatsThis::add( mDeleteButton, i18n("Delete this journal entry") );
   mLayout->addWidget( mDeleteButton, 0, 4 );
-
   connect( mDeleteButton, SIGNAL(pressed()), this, SLOT(deleteItem()) );
 
+  mEditButton = new QToolButton( this, "editButton" );
+  mEditButton->setPixmap( KOGlobals::self()->smallIcon( "edit" ) );
+  mEditButton->setSizePolicy( QSizePolicy::Fixed, QSizePolicy::Fixed );
+  QToolTip::add( mEditButton, i18n("Edit this journal entry") );
+  QWhatsThis::add( mEditButton, i18n("Opens an editor dialog for this journal entry") );
+  mLayout->addWidget( mEditButton, 0, 5 );
+  connect( mEditButton, SIGNAL(clicked()), this, SLOT( editItem() ) );
 
 
   mEditor = new KTextEdit(this);
-  mLayout->addMultiCellWidget( mEditor, 1, 2, 0, 4 );
+  mLayout->addMultiCellWidget( mEditor, 1, 2, 0, 5 );
 
   connect( mTitleEdit, SIGNAL(textChanged( const QString& )), SLOT(setDirty()) );
   connect( mTimeCheck, SIGNAL(toggled(bool)), SLOT(setDirty()) );
@@ -251,6 +256,12 @@ void JournalEntry::deleteItem()
 //   }
 }
 
+void JournalEntry::editItem()
+{
+  if ( mJournal )
+    emit editIncidence( mJournal );
+}
+
 void JournalEntry::setReadOnly( bool readonly )
 {
   mReadOnly = readonly;
@@ -270,7 +281,8 @@ void JournalEntry::setDate(const QDate &date)
 
 void JournalEntry::setJournal(Journal *journal)
 {
-  writeJournal();
+  if ( !mWriteInProgress )
+    writeJournal();
   if ( !journal ) return;
 
   mJournal = journal;
@@ -330,6 +342,7 @@ void JournalEntry::writeJournal()
     return;
   }
   bool newJournal = false;
+  mWriteInProgress = true;
 
   Journal *oldJournal = 0;
 
@@ -352,6 +365,7 @@ void JournalEntry::writeJournal()
     delete oldJournal;
   }
   mDirty = false;
+  mWriteInProgress = false;
 }
 
 void JournalEntry::flushEntry()

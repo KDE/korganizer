@@ -412,6 +412,9 @@ void ActionManager::initActions()
                     mCalendarView,SLOT( newSubTodo() ),
                     mACollection, "new_subtodo" );
   action->setEnabled( false );
+  new KAction( i18n("New &Journal..."), 0,
+                    mCalendarView,SLOT( newJournal() ),
+                    mACollection, "new_journal" );
   connect( mCalendarView,SIGNAL( todoSelected( bool ) ),
           action,SLOT( setEnabled( bool ) ) );
 

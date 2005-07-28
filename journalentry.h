@@ -68,6 +68,7 @@ class JournalEntry : public QWidget {
   protected slots:
     void setDirty();
     void deleteItem();
+    void editItem();
     void timeCheckBoxToggled(bool on);
   public slots:
     void setIncidenceChanger( IncidenceChangerBase *changer ) { mChanger = changer; }
@@ -76,6 +77,7 @@ class JournalEntry : public QWidget {
 
   signals:
     void deleteIncidence( Incidence * );
+    void editIncidence( Incidence * );
 
   protected:
     void clearFields();
@@ -96,10 +98,12 @@ class JournalEntry : public QWidget {
     QCheckBox *mTimeCheck;
     KTimeEdit *mTimeEdit;
     QButton *mDeleteButton;
+    QButton *mEditButton;
 
     QGridLayout *mLayout;
 
     bool mDirty;
+    bool mWriteInProgress;
     IncidenceChangerBase *mChanger;
 };
 
@@ -125,10 +129,12 @@ class JournalDateEntry : public QVBox {
     void setIncidenceChangerSignal( IncidenceChangerBase *changer );
     void setDateSignal( const QDate & );
     void flushEntries();
+    void editIncidence( Incidence * );
     void deleteIncidence( Incidence * );
+    void newJournal( const QDate & );
 
   public slots:
-    void newJournal();
+    void emitNewJournal();
     void setIncidenceChanger( IncidenceChangerBase *changer );
     void journalEdited( Journal* );
     void journalDeleted( Journal* );

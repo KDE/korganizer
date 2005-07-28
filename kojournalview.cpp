@@ -79,9 +79,12 @@ void KOJournalView::appendJournal( Journal*journal, const QDate &dt)
     connect( this, SIGNAL( journalDeleted( Journal* ) ),
              entry, SLOT( journalDeleted( Journal* ) ) );
     
+    connect( entry, SIGNAL( editIncidence( Incidence* ) ),
+             this, SIGNAL( editIncidenceSignal( Incidence* ) ) );
     connect( entry, SIGNAL( deleteIncidence( Incidence* ) ),
              this, SIGNAL( deleteIncidenceSignal( Incidence* ) ) );
-
+    connect( entry, SIGNAL( newJournal( const QDate & ) ),
+             this, SIGNAL( newJournalSignal( const QDate & ) ) );
     mEntries.insert( dt, entry );
   }
   

@@ -1004,6 +1004,13 @@ void CalendarView::newTodo( const QDate &date )
   todoEditor->show();
 }
 
+void CalendarView::newJournal()
+{
+  kdDebug(5850) << "CalendarView::newJournal()" << endl;
+  QDate date = mNavigator->selectedDates().first();
+  newJournal( date );
+}
+
 void CalendarView::newJournal( const QDate &date )
 {
   KOJournalEditor *journalEditor = mDialogManager->getJournalEditor();
