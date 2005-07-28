@@ -62,7 +62,7 @@
                 <cstring>m_buttonApply</cstring>
             </property>
             <property name="text">
-                <string>Apply template</string>
+                <string>Apply Template</string>
             </property>
         </widget>
         <spacer row="3" column="1">

@@ -268,7 +268,7 @@
                                 <cstring>mTypeAppRadio</cstring>
                             </property>
                             <property name="text">
-                                <string>Application / Script</string>
+                                <string>Application / script</string>
                             </property>
                         </widget>
                         <widget class="QRadioButton">

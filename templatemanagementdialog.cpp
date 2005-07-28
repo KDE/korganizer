@@ -69,7 +69,7 @@ void TemplateManagementDialog::slotAddTemplate()
   bool ok;
   bool duplicate = false;
   const QString newTemplate = KInputDialog::getText( i18n("Template Name"),
-                                       i18n("Please enter a name for the new template"),
+                                       i18n("Please enter a name for the new template:"),
                                        i18n("New Template"), &ok );
   if ( newTemplate.isEmpty() || !ok ) return;
   if ( m_templates.find( newTemplate) != m_templates.end() ) {
