@@ -127,7 +127,7 @@ void KOEditorGeneral::initCategories(QWidget *parent, QBoxLayout *topLayout)
 
   QString whatsThis = i18n("Allows you to select the categories that this "
 		  	   "event or to-do belongs to.");
-  
+
   mCategoriesButton = new QPushButton(parent);
   mCategoriesButton->setText(i18n("Select Cate&gories..."));
   QWhatsThis::add( mCategoriesButton, whatsThis );
@@ -328,6 +328,7 @@ void KOEditorGeneral::setDefaults(bool allDay)
   enableAlarmEdit( !allDay );
 
   // FIXME: Implement a KPrefsComboItem to solve this in a clean way.
+// FIXME: Use an int value for minutes instead of 5 hardcoded values
   int alarmTime;
   int a[] = { 1,5,10,15,30 };
   int index = KOPrefs::instance()->mAlarmTime;
@@ -359,6 +360,7 @@ void KOEditorGeneral::readIncidence(Incidence *event)
 
   if(!event->isAlarmEnabled()) {
     // FIXME: Implement a KPrefsComboItem to solve this in a clean way.
+// FIXME: Use an int value for minutes instead of 5 hardcoded values
     int alarmTime;
     int a[] = { 1,5,10,15,30 };
     int index = KOPrefs::instance()->mAlarmTime;

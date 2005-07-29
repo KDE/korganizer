@@ -1254,6 +1254,7 @@ void KOAgendaView::insertIncidence( Incidence *incidence, const QDate &curDate,
   if ( todo && todo->isOverdue() ) {
     mAllDayAgenda->insertAllDayItem( incidence, curDate, curCol, curCol );
   } else if ( incidence->doesFloat() ) {
+// FIXME: This breaks with recurring multi-day events!
     if ( incidence->recurrence()->doesRecur() ) {
       mAllDayAgenda->insertAllDayItem( incidence, curDate, curCol, curCol );
     } else {
@@ -1314,6 +1315,7 @@ void KOAgendaView::changeIncidenceDisplayAdded( Incidence *incidence )
     QDate curDate;
     for( dit = mSelectedDates.begin(); dit != mSelectedDates.end(); ++dit ) {
       curDate = *dit;
+// FIXME: This breaks with recurring multi-day events!
       if ( incidence->recursOn( curDate ) ) {
         insertIncidence( incidence, curDate );
       }
