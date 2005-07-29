@@ -7,7 +7,7 @@ INCLUDES = -I$(top_srcdir)/korganizer/interfaces \
 
 kde_module_LTLIBRARIES = libkorg_timespanview.la
 
-libkorg_timespanview_la_SOURCES = timespanview.cpp timespanwidget.cpp kotimespanview.cpp
+libkorg_timespanview_la_SOURCES = lineview.cpp timeline.cpp timespanview.cpp timespanwidget.cpp kotimespanview.cpp
 libkorg_timespanview_la_LDFLAGS = -module $(KDE_PLUGIN) $(KDE_RPATH) $(all_libraries) 
 libkorg_timespanview_la_LIBADD = $(top_builddir)/korganizer/libkorganizer.la $(LIB_KPARTS)
 
