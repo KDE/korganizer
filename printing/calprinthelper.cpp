@@ -79,12 +79,14 @@ class PrintCellItem : public KOrg::CellItem
 
       QDateTime start = event()->dtStart();
       QDateTime end = event()->dtEnd();
+// FIXME: This breaks with recurring multi-day events!
       if ( event()->doesRecur() ) {
         start.setDate( mDay );
         end.setDate( mDay );
       }
       QDateTime otherStart = other->event()->dtStart();
       QDateTime otherEnd = other->event()->dtEnd();
+// FIXME: This breaks with recurring multi-day events!
       if ( other->event()->doesRecur() ) {
         otherStart.setDate( mDay );
         otherEnd.setDate( mDay );
@@ -525,6 +527,7 @@ void CalPrintHelper::drawAgendaItem( PrintCellItem *item, QPainter &p,
   // start/end of print area for event
   QDateTime startTime = event->dtStart();
   QDateTime endTime = event->dtEnd();
+// FIXME: This breaks with recurring multi-day events!
   if ( event->doesRecur() ) {
     startTime.setDate( qd );
     endTime.setDate( qd );
