@@ -251,9 +251,6 @@ KOEditorDetails::KOEditorDetails( int spacing, QWidget *parent,
   connect( mNameEdit, SIGNAL( textChanged( const QString & ) ),
            SLOT( updateAttendeeItem() ) );
 
-  mUidEdit = new QLineEdit( 0 );
-  mUidEdit->setText( "" );
-
   whatsThis = i18n("Edits the role of the attendee selected "
   		   "in the list above.");
   QLabel *attendeeRoleLabel = new QLabel( this );
@@ -552,7 +549,7 @@ void KOEditorDetails::updateAttendeeInput()
 void KOEditorDetails::clearAttendeeInput()
 {
   mNameEdit->setText("");
-  mUidEdit->setText("");
+  mUid = QString::null;
   mRoleCombo->setCurrentItem(0);
   mStatusCombo->setCurrentItem(0);
   mRsvpButton->setChecked(true);
@@ -569,7 +566,7 @@ void KOEditorDetails::fillAttendeeInput( AttendeeListItem *aItem )
     name += " <" + a->email() + ">";
   }
   mNameEdit->setText(name);
-  mUidEdit->setText(a->uid());
+  mUid = a->uid();
   mRoleCombo->setCurrentItem(a->role());
   mStatusCombo->setCurrentItem(a->status());
   mRsvpButton->setChecked(a->RSVP());
@@ -622,7 +619,7 @@ void KOEditorDetails::updateAttendeeItem()
     }
   }
   a->setName( name );
-  a->setUid( mUidEdit->text() );
+  a->setUid( mUid );
   a->setEmail( email );
   a->setRole( Attendee::Role( mRoleCombo->currentItem() ) );
   a->setStatus( Attendee::PartStat( mStatusCombo->currentItem() ) );

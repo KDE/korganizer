@@ -120,7 +120,7 @@ class KOEditorDetails : public QWidget
     bool mDisableItemUpdate;
 
     KPIM::AddresseeLineEdit *mNameEdit;
-    QLineEdit *mUidEdit;
+    QString mUid;
     KListView *mListView;
     QComboBox* mRoleCombo;
     QCheckBox* mRsvpButton;
