@@ -54,8 +54,8 @@ struct MultiItemInfo
   to be used for dragging and resizing. That means it has to be installed as
   eventfiler for its children, if it has children, and it has to pass mouse
   events from the cildren to itself. See eventFilter().
-  
-  
+
+
   Some comments on the movement of multi-day items:
   Basically, the agenda items are arranged in two implicit double-linked lists.
   The mMultiItemInfo works like before to describe the currently viewed
@@ -116,7 +116,7 @@ class KOAgendaItem : public QWidget, public KOrg::CellItem
     KOAgendaItem *prevMultiItem() const { return (mMultiItemInfo)?(mMultiItemInfo->mPrevMultiItem):0; }
     KOAgendaItem *nextMultiItem() const { return (mMultiItemInfo)?(mMultiItemInfo->mNextMultiItem):0; }
     KOAgendaItem *lastMultiItem() const { return (mMultiItemInfo)?(mMultiItemInfo->mLastMultiItem):0; }
-    
+
     bool dissociateFromMultiItem();
 
     bool setIncidence( Incidence * );
@@ -134,13 +134,13 @@ class KOAgendaItem : public QWidget, public KOrg::CellItem
     QPtrList<KOAgendaItem> conflictItems();
     void setConflictItems(QPtrList<KOAgendaItem>);
     void addConflictItem(KOAgendaItem *ci);
-    
+
     QString label() const;
 
     bool overlaps( KOrg::CellItem * ) const;
 
-    void setResourceColor( QColor& color ) { mResourceColor = color; }
-    QColor &resourceColor() {return mResourceColor;}
+    void setResourceColor( const QColor& color ) { mResourceColor = color; }
+    QColor resourceColor() {return mResourceColor;}
   signals:
     void removeAgendaItem( KOAgendaItem* );
     void showAgendaItem( KOAgendaItem* );
