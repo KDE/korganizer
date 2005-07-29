@@ -54,6 +54,7 @@
 #include "koglobals.h"
 #include "koincidencetooltip.h"
 #include "koeventpopupmenu.h"
+#include "kohelper.h"
 
 #include "komonthview.h"
 #include "komonthview.moc"
@@ -510,6 +511,7 @@ class MonthViewCell::CreateItemVisitor :
       text += todo->summary();
 
       mItem = new MonthViewItem( todo, dt, text );
+// FIXME: This breaks with recurring multi-day events!
       if ( todo->doesRecur() ) {
         mDate < todo->dtDue().date() ?
         mItem->setTodoDone( true ) : mItem->setTodo( true );
@@ -530,22 +532,17 @@ void MonthViewCell::addIncidence( Incidence *incidence )
 {
   CreateItemVisitor v;
 
-  QColor resourceColor=KOPrefs::instance()->mEventColor;
-
-  CalendarResources *calendarRsc = dynamic_cast<CalendarResources*>( mCalendar );
-  if ( calendarRsc ) {
-    ResourceCalendar *rscCalendar = calendarRsc->resource( incidence );
-    resourceColor= *KOPrefs::instance()->resourceColor( rscCalendar->identifier() );
-//  }else{
-//    kdDebug(5850) << "MonthViewCell::addIncidence and mCalendar is not a CalendarResources" <<endl;
-  }
-
   if ( v.act( incidence, mDate, mStandardPalette ) ) {
     MonthViewItem *item = v.item();
     if ( item ) {
       item->setAlarm( incidence->isAlarmEnabled() );
       item->setRecur( incidence->recurrenceType() );
-      item->setResourceColor(resourceColor);
+
+      QColor resourceColor = KOHelper::resourceColor( mCalendar, incidence );
+      if ( !resourceColor.isValid() )
+        resourceColor = KOPrefs::instance()->mEventColor;
+      item->setResourceColor( resourceColor );
+
       // FIXME: Find the correct position (time-wise) to insert the item.
       //        Currently, the items are displayed in "random" order instead of
       //        chronologically sorted.
@@ -962,6 +959,7 @@ void KOMonthView::changeIncidenceDisplayAdded( Incidence *incidence )
   }
 
   if ( incidence->doesRecur() ) {
+// FIXME: This breaks with recurring multi-day events!
      for ( uint i = 0; i < mCells.count(); i++ ) {
        if ( incidence->recursOn( mCells[i]->date() ) ) {
          mCells[i]->addIncidence( incidence );

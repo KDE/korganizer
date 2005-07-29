@@ -75,6 +75,7 @@ libkorganizer_la_SOURCES = komessagebox.cpp \
 	searchdialog.cpp calendarview.cpp koviewmanager.cpp \
 	kodialogmanager.cpp \
 	archivedialog.cpp \
+	kohelper.cpp \
 	komailclient.cpp kotodoview.cpp kotodoviewitem.cpp \
 	kolistview.cpp \
 	koincidenceeditor.cpp koeventeditor.cpp kotodoeditor.cpp kojournaleditor.cpp\
@@ -92,7 +93,6 @@ libkorganizer_la_SOURCES = komessagebox.cpp \
 	kojournalview.cpp journalentry.cpp \
 	kocore.cpp mailscheduler.cpp \
 	kodaymatrix.cpp docprefs.cpp statusdialog.cpp\
-	lineview.cpp timeline.cpp \
 	koglobals.cpp konewstuff.cpp \
 	alarmclient.cpp \
 	actionmanager.cpp resourceview.cpp \
@@ -147,7 +147,7 @@ noinst_HEADERS = komonthview.h \
 	koeditorrecurrence.h koeventviewerdialog.h koeventpopupmenu.h \
 	publishdialog.h koeditorfreebusy.h \
 	koeventview.h statusdialog.h customlistviewitem.h \
-	alarmclient.h \
+	alarmclient.h kohelper.h \
 	navigatorbar.h kogroupware.h \
 	koincidencetooltip.h korganizerifaceimpl.h \
 	exportwebdialog.h templatemanagementdialog.h

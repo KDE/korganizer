@@ -45,6 +45,7 @@
 #include "koglobals.h"
 #include "komessagebox.h"
 #include "incidencechanger.h"
+#include "kohelper.h"
 
 #include "koagenda.h"
 #include "koagenda.moc"
@@ -1561,25 +1562,6 @@ KOAgendaItem *KOAgenda::insertItem( Incidence *incidence, const QDate &qd, int X
     return 0;
   }
 
-  //FIXME: dynamic_cast are dirty, Better We implements interface to get the color
-  // from the calendar
-  QColor resourceColor = QColor(); //Default invalid color
-  CalendarResources *calendarResource = dynamic_cast<CalendarResources*>( mCalendar );
-
-  if ( calendarResource ) {
-    ResourceCalendar *resourceCalendar = calendarResource->resource( incidence );
-
-    QString identifier = resourceCalendar->identifier();
-    if ( !resourceCalendar->subresources().isEmpty() ) {
-      identifier = resourceCalendar->subresourceIdentifier( incidence );
-      if ( identifier.isEmpty() )
-        identifier = resourceCalendar->identifier();
-    }
-
-    resourceColor = *KOPrefs::instance()->resourceColor( identifier );
-//  }else{
-//    kdDebug(5850) << "KOAgenda:insertItem: Calendar is not a CalendarResources" <<endl;
-  }
 
   mActionType = NOP;
 
@@ -1600,7 +1582,7 @@ KOAgendaItem *KOAgenda::insertItem( Incidence *incidence, const QDate &qd, int X
                       int( ( YBottom + 1 ) * mGridSpacingY ) );
   agendaItem->setCellXY( X, YTop, YBottom );
   agendaItem->setCellXRight( X );
-  agendaItem->setResourceColor(resourceColor);
+  agendaItem->setResourceColor( KOHelper::resourceColor( mCalendar, incidence ) );
   agendaItem->installEventFilter( this );
 
   addChild( agendaItem, int( X * mGridSpacingX ), int( YTop * mGridSpacingY ) );
@@ -1628,19 +1610,6 @@ KOAgendaItem *KOAgenda::insertAllDayItem( Incidence *event, const QDate &qd,
 
   mActionType = NOP;
 
-  QColor resourceColor = QColor(); //Default invalid color
-  CalendarResources *calendarResource = dynamic_cast<CalendarResources*>(mCalendar);
-  if ( calendarResource ) {
-    ResourceCalendar *resourceCalendar = calendarResource->resource( event );
-    if ( resourceCalendar )
-      resourceColor = *KOPrefs::instance()->resourceColor( resourceCalendar->identifier() );
-    else
-      kdDebug(5850) << "KOAgenda:insertAllDayItem: resource of "<< event->summary()
-        << " is null" << endl;
-//  }else{
-//    kdDebug(5850) << "KOAgenda:insertAllDayItem: mCalendar is not a CalendarResources" <<endl;
-  }
-
   KOAgendaItem *agendaItem = new KOAgendaItem( event, qd, viewport() );
   connect( agendaItem, SIGNAL( removeAgendaItem( KOAgendaItem* ) ),
            SLOT( removeAgendaItem( KOAgendaItem* ) ) );
@@ -1657,7 +1626,7 @@ KOAgendaItem *KOAgenda::insertAllDayItem( Incidence *event, const QDate &qd,
   agendaItem->resize( int( endIt ) - int( startIt ), int( mGridSpacingY ) );
 
   agendaItem->installEventFilter( this );
-  agendaItem->setResourceColor( resourceColor );
+  agendaItem->setResourceColor( KOHelper::resourceColor( mCalendar, event ) );
   addChild( agendaItem, int( XBegin * mGridSpacingX ), 0 );
   mItems.append( agendaItem );
 
