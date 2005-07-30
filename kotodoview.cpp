@@ -872,6 +872,8 @@ void KOTodoView::setNewPercentage( KOTodoViewItem *item, int percentage )
     if ( percentage == 100 ) {
       if ( KOPrefs::instance()->recordTodosInJournals() ) {
         //FIXME: put all completed to-dos in one journal entry
+        // FIXME: This needs to be done by the calendar view (a to-do might
+        // also be marked completed in the to-do editor!
         QString text = i18n( "Todo completed: %1" ).arg( todo->summary() );
         Journal *journal = new Journal();
         journal->setDtStart( QDateTime::currentDateTime() );
