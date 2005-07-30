@@ -112,7 +112,7 @@ ActionManager::~ActionManager()
 }
 
 // see the Note: below for why this method is necessary
-void ActionManager::ActionManager::init()
+void ActionManager::init()
 {
   // Construct the groupware object
   KOGroupware::create( mCalendarView, mCalendarResources );
@@ -201,18 +201,6 @@ void ActionManager::createCalendarResources()
   connect( mCalendarView, SIGNAL( configChanged() ),
            SLOT( updateConfig() ) );
 
-  mResourceButtonsAction = new KToggleAction( i18n("Show Resource Buttons"), 0,
-                                              this,
-                                              SLOT( toggleResourceButtons() ),
-                                              mACollection,
-                                              "show_resourcebuttons" );
-
-  KConfig *config = KOGlobals::self()->config();
-  config->setGroup( "Settings" );
-  mResourceButtonsAction->setChecked(
-      config->readBoolEntry( "ResourceButtonsVisible", true ) );
-  toggleResourceButtons();
-
   initCalendar( mCalendarResources );
 }
 
@@ -228,132 +216,173 @@ void ActionManager::initActions()
 {
   KAction *action;
 
-  // File menu.
+
+  //*************************** FILE MENU **********************************
+
+  //~~~~~~~~~~~~~~~~~~~~~~~ LOADING / SAVING ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   if ( mIsPart ) {
     if ( mMainWindow->hasDocument() ) {
-      new KAction( i18n("&New"), "filenew", CTRL+Key_N, this,
-                   SLOT( file_new() ), mACollection, "korganizer_openNew" );
+      KStdAction::openNew( this, SLOT(file_new()), mACollection, "korganizer_openNew" );
       KStdAction::open( this, SLOT( file_open() ), mACollection, "korganizer_open" );
-      mRecent = new KRecentFilesAction( i18n("Open &Recent"), 0, 0, this,
-                                        SLOT( file_open( const KURL & ) ),
-                                        mACollection, "korganizer_openRecent" );
-      new KAction( i18n("Re&vert"), "revert", 0, this,
-                   SLOT( file_revert() ), mACollection, "korganizer_revert" );
+      mRecent = KStdAction::openRecent( this, SLOT( file_open( const KURL& ) ),
+                                     mACollection, "korganizer_openRecent" );
+      KStdAction::revert( this,SLOT( file_revert() ), mACollection, "korganizer_revert" );
       KStdAction::saveAs( this, SLOT( file_saveas() ), mACollection,
                    "korganizer_saveAs" );
+      KStdAction::save( this, SLOT( file_save() ), mACollection, "korganizer_save" );
     }
-    KStdAction::save( this,
-                 SLOT( file_save() ), mACollection, "korganizer_save" );
+    KStdAction::print( mCalendarView, SLOT( print() ), mACollection, "korganizer_print" );
   } else {
     KStdAction::openNew( this, SLOT( file_new() ), mACollection );
     KStdAction::open( this, SLOT( file_open() ), mACollection );
     mRecent = KStdAction::openRecent( this, SLOT( file_open( const KURL& ) ),
                                      mACollection );
-    KStdAction::revert( this,SLOT( file_revert() ),mACollection );
-    KStdAction::save( this, SLOT( file_save() ), mACollection );
-    KStdAction::saveAs( this, SLOT( file_saveas() ), mACollection );
+    if ( mMainWindow->hasDocument() ) {
+      KStdAction::revert( this,SLOT( file_revert() ), mACollection );
+      KStdAction::save( this, SLOT( file_save() ), mACollection );
+      KStdAction::saveAs( this, SLOT( file_saveas() ), mACollection );
+    }
+    KStdAction::print( mCalendarView, SLOT( print() ), mACollection );
   }
 
-  new KAction( i18n("&Import From Ical"), 0, this, SLOT( file_import() ),
-                    mACollection, "import_ical" );
+
+  //~~~~~~~~~~~~~~~~~~~~~~~~ IMPORT / EXPORT ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   new KAction( i18n("Import &Calendar..."), 0, this, SLOT( file_merge() ),
-                    mACollection, "import_icalendar" );
-  new KAction( i18n("Archive O&ld Entries..."), 0, this, SLOT( file_archive() ),
-                    mACollection, "file_archive" );
-
-  // Settings menu.
-
-  new KAction( i18n("Configure &Date && Time..."), 0,
-                    this,SLOT( configureDateTime() ),
-                    mACollection, "conf_datetime" );
-
-  KStdAction::tipOfDay( this, SLOT( showTip() ), mACollection,
-                        "help_tipofday" );
-
+               mACollection, "import_icalendar" );
+  new KAction( i18n("&Import From UNIX Ical tool"), 0, this, SLOT( file_icalimport() ),
+               mACollection, "import_ical" );
   new KAction( i18n("Get &Hot New Stuff..."), 0, this,
                SLOT( downloadNewStuff() ), mACollection,
                "downloadnewstuff" );
 
+  new KAction( i18n("Export &Web Page..."), "webexport", 0,
+               mCalendarView, SLOT( exportWeb() ),
+               mACollection, "export_web" );
+  new KAction( i18n("&iCalendar..."), 0,
+               mCalendarView, SLOT( exportICalendar() ),
+               mACollection, "export_icalendar" );
+  new KAction( i18n("&vCalendar..."), 0,
+               mCalendarView, SLOT( exportVCalendar() ),
+               mACollection, "export_vcalendar" );
   new KAction( i18n("Upload &Hot New Stuff..."), 0, this,
                SLOT( uploadNewStuff() ), mACollection,
                "uploadnewstuff" );
 
-  new KAction( i18n("&iCalendar..."), 0,
-                    mCalendarView, SLOT( exportICalendar() ),
-                    mACollection, "export_icalendar" );
-  new KAction( i18n("&vCalendar..."), 0,
-                    mCalendarView, SLOT( exportVCalendar() ),
-                    mACollection, "export_vcalendar" );
-  new KAction( i18n("Export &Web Page..."), "webexport", 0,
-                    mCalendarView, SLOT( exportWeb() ),
-                    mACollection, "export_web" );
 
-  if ( mIsPart ) {
-    KStdAction::print( mCalendarView, SLOT( print() ), mACollection, "korganizer_print" );
-  } else {
-    KStdAction::print( mCalendarView, SLOT( print() ), mACollection );
-  }
 
-  new KAction( i18n("delete completed to-dos","Pur&ge Completed"), 0,
+  new KAction( i18n("Archive O&ld Entries..."), 0, this, SLOT( file_archive() ),
+                    mACollection, "file_archive" );
+  new KAction( i18n("delete completed to-dos", "Pur&ge Completed To-dos"), 0,
                mCalendarView, SLOT( purgeCompleted() ), mACollection,
                "purge_completed" );
 
-  KOrg::History *h = mCalendarView->history();
 
+
+
+  //************************** EDIT MENU *********************************
   KAction *pasteAction;
-
+  KOrg::History *h = mCalendarView->history();
   if ( mIsPart ) {
     // edit menu
-    mCutAction = new KAction( i18n("Cu&t"), "editcut", CTRL+Key_X, mCalendarView,
-                             SLOT( edit_cut() ), mACollection, "korganizer_cut" );
-    mCopyAction = new KAction( i18n("&Copy"), "editcopy", CTRL+Key_C, mCalendarView,
-                              SLOT( edit_copy() ), mACollection, "korganizer_copy" );
-    pasteAction = new KAction( i18n("&Paste"), "editpaste", CTRL+Key_V, mCalendarView,
-                              SLOT( edit_paste() ), mACollection, "korganizer_paste" );
-    mUndoAction = new KAction( i18n("&Undo"), "undo", CTRL+Key_Z, h,
-                               SLOT( undo() ), mACollection, "korganizer_undo" );
-    mRedoAction = new KAction( i18n("Re&do"), "redo", CTRL+SHIFT+Key_Z, h,
-                               SLOT( redo() ), mACollection, "korganizer_redo" );
+    mCutAction = KStdAction::cut( mCalendarView, SLOT( edit_cut() ),
+                                  mACollection, "korganizer_cut" );
+    mCopyAction = KStdAction::copy( mCalendarView, SLOT( edit_copy() ),
+                                    mACollection, "korganizer_copy" );
+    pasteAction = KStdAction::paste( mCalendarView, SLOT( edit_paste() ),
+                                     mACollection, "korganizer_paste" );
+    mUndoAction = KStdAction::undo( h, SLOT( undo() ),
+                                    mACollection, "korganizer_undo" );
+    mRedoAction = KStdAction::redo( h, SLOT( redo() ),
+                                    mACollection, "korganizer_redo" );
   } else {
     mCutAction = KStdAction::cut( mCalendarView,SLOT( edit_cut() ),
-                                 mACollection );
-
+                                  mACollection );
     mCopyAction = KStdAction::copy( mCalendarView,SLOT( edit_copy() ),
-                                   mACollection );
-
+                                    mACollection );
     pasteAction = KStdAction::paste( mCalendarView,SLOT( edit_paste() ),
-                               mACollection );
-
+                                     mACollection );
     mUndoAction = KStdAction::undo( h, SLOT( undo() ), mACollection );
     mRedoAction = KStdAction::redo( h, SLOT( redo() ), mACollection );
   }
-
-  pasteAction->setEnabled( false );
-  connect( mCalendarView, SIGNAL( pasteEnabled( bool ) ),
-           pasteAction, SLOT( setEnabled( bool ) ) );
-
-  connect( h, SIGNAL( undoAvailable( const QString & ) ),
-           SLOT( updateUndoAction( const QString & ) ) );
-  connect( h, SIGNAL( redoAvailable( const QString & ) ),
-           SLOT( updateRedoAction( const QString & ) ) );
-  mUndoAction->setEnabled( false );
-  mRedoAction->setEnabled( false );
-
-  mDeleteAction = new KAction( i18n("&Delete"),"editdelete",0,
-                              mCalendarView,SLOT( appointment_delete() ),
-                              mACollection, "edit_delete" );
-
+  mDeleteAction = new KAction( i18n("&Delete"), "editdelete", 0,
+                               mCalendarView, SLOT( appointment_delete() ),
+                               mACollection, "edit_delete" );
   if ( mIsPart ) {
-    new KAction( i18n("&Find..."),"find",CTRL+Key_F,
-                mCalendarView->dialogManager(), SLOT( showSearchDialog() ),
-                mACollection, "korganizer_find" );
+    KStdAction::find( mCalendarView->dialogManager(), SLOT( showSearchDialog() ),
+                     mACollection, "korganizer_find" );
   } else {
     KStdAction::find( mCalendarView->dialogManager(), SLOT( showSearchDialog() ),
                      mACollection );
   }
+  pasteAction->setEnabled( false );
+  mUndoAction->setEnabled( false );
+  mRedoAction->setEnabled( false );
+  connect( mCalendarView, SIGNAL( pasteEnabled( bool ) ),
+           pasteAction, SLOT( setEnabled( bool ) ) );
+  connect( h, SIGNAL( undoAvailable( const QString & ) ),
+           SLOT( updateUndoAction( const QString & ) ) );
+  connect( h, SIGNAL( redoAvailable( const QString & ) ),
+           SLOT( updateRedoAction( const QString & ) ) );
 
-  // view menu
 
+
+
+  //************************** VIEW MENU *********************************
+
+  //~~~~~~~~~~~~~~~~~~~~~~~~~~~~ VIEWS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  new KAction( i18n("What's &Next"), "whatsnext", 0,
+                    mCalendarView->viewManager(), SLOT( showWhatsNextView() ),
+                    mACollection, "view_whatsnext" );
+  new KAction( i18n("&Day"), "1day", 0,
+                    mCalendarView->viewManager(), SLOT( showDayView() ),
+                    mACollection, "view_day" );
+  mNextXDays = new KAction( "", "xdays", 0, mCalendarView->viewManager(),
+                    SLOT( showNextXView() ), mACollection, "view_nextx" );
+  mNextXDays->setText( i18n( "&Next Day", "Ne&xt %n Days",
+                             KOPrefs::instance()->mNextXDays ) );
+  new KAction( i18n("W&ork Week"), "5days", 0,
+                    mCalendarView->viewManager(), SLOT( showWorkWeekView() ),
+                    mACollection, "view_workweek" );
+  new KAction( i18n("&Week"), "7days", 0,
+                    mCalendarView->viewManager(), SLOT( showWeekView() ),
+                    mACollection, "view_week" );
+  new KAction( i18n("&Month"), "month", 0,
+                    mCalendarView->viewManager(), SLOT( showMonthView() ),
+                    mACollection, "view_month" );
+  new KAction( i18n("&List"), "list", 0,
+                    mCalendarView->viewManager(), SLOT( showListView() ),
+                    mACollection, "view_list" );
+  new KAction( i18n("&To-do List"), "todo", 0,
+                    mCalendarView->viewManager(), SLOT( showTodoView() ),
+                    mACollection, "view_todo" );
+  new KAction( i18n("&Journal"), "journal", 0,
+                    mCalendarView->viewManager(), SLOT( showJournalView() ),
+                    mACollection, "view_journal" );
+
+
+  //~~~~~~~~~~~~~~~~~~~~~~~~~~~ FILTERS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  new KAction( i18n("&Update"), 0,
+                    mCalendarView, SLOT( updateView() ),
+                    mACollection, "update" );
+// TODO:
+//   new KAction( i18n("Hide &Completed To-dos"), 0,
+//                     mCalendarView, SLOT( toggleHideCompleted() ),
+//                     mACollection, "hide_completed_todos" );
+
+  mFilterAction = new KSelectAction( i18n("F&ilter"), 0,
+                  mACollection, "filter_select" );
+  mFilterAction->setEditable( false );
+  connect( mFilterAction, SIGNAL( activated(int) ),
+           mCalendarView, SLOT( filterActivated( int ) ) );
+  connect( mCalendarView, SIGNAL( newFilterListSignal( const QStringList & ) ),
+           mFilterAction, SLOT( setItems( const QStringList & ) ) );
+  connect( mCalendarView, SIGNAL( selectFilterSignal( int ) ),
+           mFilterAction, SLOT( setCurrentItem( int ) ) );
+  connect( mCalendarView, SIGNAL( filterChanged() ),
+           this, SLOT( setTitle() ) );
+
+
+  //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ZOOM ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   // TODO: try to find / create better icons for the following 4 actions
   new KAction( i18n( "Zoom In Horizontally" ), "viewmag+", 0,
                     mCalendarView->viewManager(), SLOT( zoomInHorizontally() ),
@@ -368,114 +397,114 @@ void ActionManager::initActions()
                     mCalendarView->viewManager(), SLOT( zoomOutVertically() ),
                     mACollection, "zoom_out_vertically" );
 
-//--
-  new KAction( i18n("What's &Next"), "whatsnext", 0,
-                    mCalendarView->viewManager(), SLOT( showWhatsNextView() ),
-                    mACollection, "view_whatsnext" );
-  new KAction( i18n("&List"), "list", 0,
-                    mCalendarView->viewManager(), SLOT( showListView() ),
-                    mACollection, "view_list" );
-  new KAction( i18n("&Day"), "1day", 0,
-                    mCalendarView->viewManager(), SLOT( showDayView() ),
-                    mACollection, "view_day" );
-  new KAction( i18n("W&ork Week"), "5days", 0,
-                    mCalendarView->viewManager(), SLOT( showWorkWeekView() ),
-                    mACollection, "view_workweek" );
-  new KAction( i18n("&Week"), "7days", 0,
-                    mCalendarView->viewManager(), SLOT( showWeekView() ),
-                    mACollection, "view_week" );
-  mNextXDays = new KAction( "", "xdays", 0, mCalendarView->viewManager(),
-                    SLOT( showNextXView() ), mACollection, "view_nextx" );
-  mNextXDays->setText( i18n( "&Next Day", "Ne&xt %n Days", KOPrefs::instance()->mNextXDays ) );
-  new KAction( i18n("&Month"), "month", 0,
-                    mCalendarView->viewManager(), SLOT( showMonthView() ),
-                    mACollection, "view_month" );
-  new KAction( i18n("&To-do List"), "todo", 0,
-                    mCalendarView->viewManager(), SLOT( showTodoView() ),
-                    mACollection, "view_todo" );
-  new KAction( i18n("&Journal"), "journal", 0,
-                    mCalendarView->viewManager(), SLOT( showJournalView() ),
-                    mACollection, "view_journal" );
-  new KAction( i18n("&Update"), 0,
-                    mCalendarView, SLOT( updateView() ),
-                    mACollection, "update" );
 
-  // actions menu
 
+
+  //************************** Actions MENU *********************************
+
+  new KAction( i18n("Go to &Today"), "today", 0,
+                    mCalendarView,SLOT( goToday() ),
+                    mACollection, "go_today" );
+  action = KStdAction::prior( mCalendarView, SLOT( goPrevious() ),
+                              mACollection, "go_previous" );
+  action = KStdAction::next( mCalendarView, SLOT( goNext() ),
+                             mACollection, "go_next" );
+//   bool isRTL = QApplication::reverseLayout();
+//   action = new KAction( i18n("Go &Backward"), isRTL ? "forward" : "back", 0,
+//                        mCalendarView,SLOT( goPrevious() ),
+//                        mACollection, "go_previous" );
+//   action = new KAction( i18n("Go &Forward"), isRTL ? "back" : "forward", 0,
+//                        mCalendarView,SLOT( goNext() ),
+//                        mACollection, "go_next" );
+
+
+
+
+  //************************** Actions MENU *********************************
   new KAction( i18n("New E&vent..."), "appointment", 0,
-                    mCalendarView,SLOT( newEvent() ),
-                    mACollection, "new_event" );
+               mCalendarView,SLOT( newEvent() ),
+               mACollection, "new_event" );
   new KAction( i18n("New &To-do..."), "newtodo", 0,
-                    mCalendarView,SLOT( newTodo() ),
-                    mACollection, "new_todo" );
+               mCalendarView,SLOT( newTodo() ),
+               mACollection, "new_todo" );
   action = new KAction( i18n("New Su&b-to-do..."), 0,
-                    mCalendarView,SLOT( newSubTodo() ),
-                    mACollection, "new_subtodo" );
+                        mCalendarView,SLOT( newSubTodo() ),
+                        mACollection, "new_subtodo" );
   action->setEnabled( false );
-  new KAction( i18n("New &Journal..."), 0,
-                    mCalendarView,SLOT( newJournal() ),
-                    mACollection, "new_journal" );
   connect( mCalendarView,SIGNAL( todoSelected( bool ) ),
-          action,SLOT( setEnabled( bool ) ) );
+           action,SLOT( setEnabled( bool ) ) );
+  new KAction( i18n("New &Journal..."), 0,
+               mCalendarView,SLOT( newJournal() ),
+               mACollection, "new_journal" );
 
   mShowIncidenceAction = new KAction( i18n("&Show"), 0,
-                         mCalendarView,SLOT( showIncidence() ),
-                         mACollection, "show_incidence" );
+                                      mCalendarView,SLOT( showIncidence() ),
+                                      mACollection, "show_incidence" );
   mEditIncidenceAction = new KAction( i18n("&Edit..."), 0,
-                         mCalendarView,SLOT( editIncidence() ),
-                         mACollection, "edit_incidence" );
+                                      mCalendarView,SLOT( editIncidence() ),
+                                      mACollection, "edit_incidence" );
   mDeleteIncidenceAction = new KAction( i18n("&Delete"), Key_Delete,
-                         mCalendarView,SLOT( deleteIncidence() ),
-                         mACollection, "delete_incidence" );
+                                        mCalendarView,SLOT( deleteIncidence()),
+                                        mACollection, "delete_incidence" );
 
   action = new KAction( i18n("&Make Sub-to-do Independent"), 0,
-                    mCalendarView,SLOT( todo_unsub() ),
-                    mACollection, "unsub_todo" );
+                        mCalendarView,SLOT( todo_unsub() ),
+                        mACollection, "unsub_todo" );
   action->setEnabled( false );
   connect( mCalendarView,SIGNAL( subtodoSelected( bool ) ),
-          action,SLOT( setEnabled( bool ) ) );
+           action,SLOT( setEnabled( bool ) ) );
+// TODO: Add item to move the incidence to different resource
+//   mAssignResourceAction = new KAction( i18n("Assign &Resource..."), 0,
+//                                        mCalendarView, SLOT( assignResource()),
+//                                        mACollection, "assign_resource" );
+// TODO: Add item to quickly toggle the alarm of a given incidence
+//   mToggleAlarmAction = new KToggleAction( i18n("&Activate Alarm"), 0,
+//                                         mCalendarView, SLOT( toggleAlarm()),
+//                                         mACollection, "activate_alarm" );
 
-  // Schedule menu.
 
-  mPublishEvent = new KAction( i18n("&Publish..."),"mail_send",0,
-                       mCalendarView,SLOT( schedule_publish() ),
-                       mACollection,"publish" );
+
+
+  //************************** SCHEDULE MENU ********************************
+  mPublishEvent = new KAction( i18n("&Publish Item Information..."), "mail_send", 0,
+                               mCalendarView, SLOT( schedule_publish() ),
+                               mACollection, "schedule_publish" );
   mPublishEvent->setEnabled( false );
-  action = new KAction( i18n("Re&quest"),"mail_generic",0,
-                       mCalendarView,SLOT( schedule_request() ),
-                       mACollection,"request" );
+
+  action = new KAction( i18n("Send &Invitation to Attendees"),"mail_generic",0,
+                        mCalendarView,SLOT( schedule_request() ),
+                        mACollection,"schedule_request" );
+  action->setEnabled( false );
+  connect( mCalendarView, SIGNAL( organizerEventsSelected( bool ) ),
+           action, SLOT( setEnabled( bool ) ) );
+
+  action = new KAction( i18n("Re&quest Update"), 0,
+                        mCalendarView, SLOT( schedule_refresh() ),
+                        mACollection, "schedule_refresh" );
+  action->setEnabled( false );
+  connect( mCalendarView,SIGNAL( groupEventsSelected( bool ) ),
+           action,SLOT( setEnabled( bool ) ) );
+
+  action = new KAction( i18n("Send &Cancellation to Attendees"), 0,
+                        mCalendarView, SLOT( schedule_cancel() ),
+                        mACollection, "schedule_cancel" );
   action->setEnabled( false );
   connect( mCalendarView,SIGNAL( organizerEventsSelected( bool ) ),
-          action,SLOT( setEnabled( bool ) ) );
-  action = new KAction( i18n("Re&fresh"),0,
-                       mCalendarView,SLOT( schedule_refresh() ),
-                       mACollection,"refresh" );
+           action,SLOT( setEnabled( bool ) ) );
+
+  action = new KAction( i18n("Send Status &Update"),"mail_reply",0,
+                        mCalendarView,SLOT( schedule_reply() ),
+                        mACollection,"schedule_reply" );
   action->setEnabled( false );
   connect( mCalendarView,SIGNAL( groupEventsSelected( bool ) ),
-          action,SLOT( setEnabled( bool ) ) );
-  action = new KAction( KStdGuiItem::cancel(),0,
-                       mCalendarView,SLOT( schedule_cancel() ),
-                       mACollection,"cancel" );
-  action->setEnabled( false );
-  connect( mCalendarView,SIGNAL( organizerEventsSelected( bool ) ),
-          action,SLOT( setEnabled( bool ) ) );
-/*  action = new KAction( i18n("Add"),0,
-                       mCalendarView,SLOT( schedule_add() ),
-                       mACollection,"add" );
-  connect( mCalendarView,SIGNAL( eventsSelected( bool ) ),
-          action,SLOT( setEnabled( bool ) ) );
-*/  action = new KAction( i18n("&Reply"),"mail_reply",0,
-                       mCalendarView,SLOT( schedule_reply() ),
-                       mACollection,"reply" );
+           action,SLOT( setEnabled( bool ) ) );
+
+  action = new KAction( i18n("counter proposal","Request Chan&ge"),0,
+                        mCalendarView,SLOT( schedule_counter() ),
+                        mACollection, "schedule_counter" );
   action->setEnabled( false );
   connect( mCalendarView,SIGNAL( groupEventsSelected( bool ) ),
-          action,SLOT( setEnabled( bool ) ) );
-  action = new KAction( i18n("counter proposal","Coun&ter"),0,
-                       mCalendarView,SLOT( schedule_counter() ),
-                       mACollection,"counter" );
-  action->setEnabled( false );
-  connect( mCalendarView,SIGNAL( groupEventsSelected( bool ) ),
-          action,SLOT( setEnabled( bool ) ) );
+           action,SLOT( setEnabled( bool ) ) );
 
   action = new KAction( i18n("&Mail Free Busy Information"), 0,
                         mCalendarView, SLOT( mailFreeBusy() ),
@@ -489,76 +518,25 @@ void ActionManager::initActions()
 
   if ( !mIsPart ) {
       action = new KAction( i18n("&Addressbook"),"contents",0,
-                           mCalendarView,SLOT( openAddressbook() ),
-                           mACollection,"addressbook" );
+                            mCalendarView,SLOT( openAddressbook() ),
+                            mACollection,"addressbook" );
   }
 
-  // Navigation menu
-  bool isRTL = QApplication::reverseLayout();
-
-  new KAction( i18n("Go to &Today"), "today", 0,
-                    mCalendarView,SLOT( goToday() ),
-                    mACollection, "go_today" );
-
-  action = new KAction( i18n("Go &Backward"), isRTL ? "forward" : "back", 0,
-                       mCalendarView,SLOT( goPrevious() ),
-                       mACollection, "go_previous" );
-
-// Changing the action text by setText makes the toolbar button disappear.
-// This has to be fixed first, before the connects below can be reenabled.
-/*
-  connect( mCalendarView,SIGNAL( changeNavStringPrev( const QString & ) ),
-          action,SLOT( setText( const QString & ) ) );
-  connect( mCalendarView,SIGNAL( changeNavStringPrev( const QString & ) ),
-          this,SLOT( dumpText( const QString & ) ) );
-*/
-
-  action = new KAction( i18n("Go &Forward"), isRTL ? "back" : "forward", 0,
-                       mCalendarView,SLOT( goNext() ),
-                       mACollection, "go_next" );
-
-/*
-  connect( mCalendarView,SIGNAL( changeNavStringNext( const QString & ) ),
-          action,SLOT( setText( const QString & ) ) );
-*/
 
 
-  if ( mIsPart ) {
-    new KAction( i18n("&Configure Calendar..."),
-                 "configure", 0, mCalendarView,
-                 SLOT( edit_options() ), mACollection,
-                 "korganizer_configure" );
-    new KAction( i18n("Configure S&hortcuts..."),
-                 "configure_shortcuts", 0, this,
-                 SLOT( keyBindings() ), mACollection,
-                 "korganizer_configure_shortcuts" );
-  } else {
-    KStdAction::preferences( mCalendarView, SLOT( edit_options() ),
-                            mACollection );
-    KStdAction::keyBindings( this, SLOT( keyBindings() ), mACollection );
-  }
 
-  mDateNavigatorShowAction= new KToggleAction ( i18n("Show Date Navigator"), 0,
-                      this,
-                      SLOT( toggleDateNavigator() ),
-                      mACollection,
-                      "show_datenavigator" );
-  mTodoViewShowAction= new KToggleAction ( i18n("Show To-do View"), 0,
-                      this,
-                      SLOT( toggleTodoView() ),
-                      mACollection,
-                      "show_todoview" );
-  mEventViewerShowAction= new KToggleAction ( i18n("Show Incidence Viewer"), 0,
-                      this,
-                      SLOT( toggleEventViewer() ),
-                      mACollection,
-                      "show_eventviewer" );
-  mResourceViewShowAction= new KToggleAction ( i18n("Show Resource View"), 0,
-                      this,
-                      SLOT( toggleResourceView() ),
-                      mACollection,
-                      "show_resourceview" );
+  //************************** SETTINGS MENU ********************************
 
+  //~~~~~~~~~~~~~~~~~~~~~~~~~~~~ SIDEBAR ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  mDateNavigatorShowAction = new KToggleAction( i18n("Show Date Navigator"), 0,
+                      this, SLOT( toggleDateNavigator() ),
+                      mACollection, "show_datenavigator" );
+  mTodoViewShowAction = new KToggleAction ( i18n("Show To-do View"), 0,
+                      this, SLOT( toggleTodoView() ),
+                      mACollection, "show_todoview" );
+  mEventViewerShowAction = new KToggleAction ( i18n("Show Incidence Viewer"), 0,
+                      this, SLOT( toggleEventViewer() ),
+                      mACollection, "show_eventviewer" );
   KConfig *config = KOGlobals::self()->config();
   config->setGroup( "Settings" );
   mDateNavigatorShowAction->setChecked(
@@ -570,44 +548,73 @@ void ActionManager::initActions()
       config->readBoolEntry( "TodoViewVisible", mIsPart ? false : true ) );
   mEventViewerShowAction->setChecked(
       config->readBoolEntry( "EventViewerVisible", true ) );
-  mResourceViewShowAction->setChecked(
-      config->readBoolEntry( "ResourceViewVisible", true ) );
-
   toggleDateNavigator();
   toggleTodoView();
   toggleEventViewer();
-  toggleResourceView();
 
-  new KAction( i18n("Edit C&ategories..."), 0,
-                    mCalendarView->dialogManager(),
-                    SLOT( showCategoryEditDialog() ),
-                    mACollection,"edit_categories" );
+  if ( !mMainWindow->hasDocument() ) {
+    mResourceViewShowAction = new KToggleAction ( i18n("Show Resource View"), 0,
+                        this, SLOT( toggleResourceView() ),
+                        mACollection, "show_resourceview" );
+    mResourceButtonsAction = new KToggleAction( i18n("Show &Resource Buttons"), 0,
+                        this, SLOT( toggleResourceButtons() ),
+                        mACollection, "show_resourcebuttons" );
+    mResourceViewShowAction->setChecked(
+        config->readBoolEntry( "ResourceViewVisible", true ) );
+    mResourceButtonsAction->setChecked(
+        config->readBoolEntry( "ResourceButtonsVisible", true ) );
 
-  new KAction( i18n("Edit &Filters..."), "configure", 0,
-                    mCalendarView, SLOT( editFilters() ),
-                    mACollection, "edit_filters" );
+    toggleResourceView();
+    toggleResourceButtons();
+  }
 
+
+  //~~~~~~~~~~~~~~~~~~~~~~~~~~~~ SIDEBAR ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  new KAction( i18n("Configure &Date && Time..."), 0,
+                    this, SLOT( configureDateTime() ),
+                    mACollection, "conf_datetime" );
+// TODO: Add an item to show the resource management dlg
+//   new KAction( i18n("Manage &Resources..."), 0,
+//                     this, SLOT( manageResources() ),
+//                     mACollection, "conf_resources" );
+  new KAction( i18n("Manage View &Filters..."), "configure", 0,
+               mCalendarView, SLOT( editFilters() ),
+               mACollection, "edit_filters" );
+  new KAction( i18n("Manage C&ategories..."), 0,
+               mCalendarView->dialogManager(), SLOT( showCategoryEditDialog() ),
+               mACollection, "edit_categories" );
+  if ( mIsPart ) {
+    new KAction( i18n("&Configure Calendar..."), "configure", 0,
+                 mCalendarView, SLOT( edit_options() ),
+                 mACollection, "korganizer_configure" );
+    KStdAction::keyBindings( this, SLOT( keyBindings() ),
+                             mACollection, "korganizer_configure_shortcuts" );
+  } else {
+    KStdAction::preferences( mCalendarView, SLOT( edit_options() ),
+                            mACollection );
+    KStdAction::keyBindings( this, SLOT( keyBindings() ), mACollection );
+  }
+
+
+
+
+  //**************************** HELP MENU **********************************
+  KStdAction::tipOfDay( this, SLOT( showTip() ), mACollection,
+                        "help_tipofday" );
+//   new KAction( i18n("Show Intro Page"), 0,
+//                     mCalendarView,SLOT( showIntro() ),
+//                     mACollection,"show_intro" );
+
+
+
+
+  //************************* TOOLBAR ACTIONS *******************************
   QLabel *filterLabel = new QLabel( i18n("Filter: "), mCalendarView );
   filterLabel->hide();
   new KWidgetAction( filterLabel, i18n("Filter: "), 0, 0, 0,
                      mACollection, "filter_label" );
 
-  mFilterAction = new KSelectAction( i18n("F&ilter"), 0,
-                  mACollection, "filter_select" );
-  mFilterAction->setEditable( false );
-  connect( mFilterAction, SIGNAL( activated(int) ),
-           mCalendarView, SLOT( filterActivated( int ) ) );
-  connect( mCalendarView, SIGNAL( newFilterListSignal( const QStringList & ) ),
-           mFilterAction, SLOT( setItems( const QStringList & ) ) );
-  connect( mCalendarView, SIGNAL( selectFilterSignal( int ) ),
-           mFilterAction, SLOT( setCurrentItem( int ) ) );
-  connect( mCalendarView, SIGNAL( filterChanged() ),
-           this, SLOT( setTitle() ) );
-#if 0
-  new KAction( i18n("Show Intro Page"), 0,
-                    mCalendarView,SLOT( showIntro() ),
-                    mACollection,"show_intro" );
-#endif
 }
 
 void ActionManager::readSettings()
@@ -694,7 +701,7 @@ void ActionManager::file_open( const KURL &url )
   }
 }
 
-void ActionManager::file_import()
+void ActionManager::file_icalimport()
 {
   // FIXME: eventually, we will need a dialog box to select import type, etc.
   // for now, hard-coded to ical file, $HOME/.calendar.
@@ -1428,6 +1435,7 @@ void ActionManager::enableIncidenceActions( bool enabled )
   mShowIncidenceAction->setEnabled( enabled );
   mEditIncidenceAction->setEnabled( enabled );
   mDeleteIncidenceAction->setEnabled( enabled );
+//   mAssignResourceAction->setEnabled( enabled );
 
   mCutAction->setEnabled( enabled );
   mCopyAction->setEnabled( enabled );

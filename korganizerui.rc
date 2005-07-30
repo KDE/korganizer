@@ -1,59 +1,64 @@
 <!DOCTYPE kpartgui>
-<kpartgui name="korganizer" version="36">
+<kpartgui name="korganizer" version="39">
 
   <MenuBar>
     <Menu name="file"><text>&amp;File</text>
-      <Action name="print_setup" append="print_merge"/>
       <Menu name="import"><text>&amp;Import</text>
-        <Action name="downloadnewstuff"/>
-        <Separator/>
-        <Merge/>
-        <Action name="import_ical"/>
         <Action name="import_icalendar"/>
+        <Action name="import_ical"/>
+        <Merge/>
+        <Separator/>
+        <Action name="downloadnewstuff"/>
       </Menu>
       <Menu name="export"><text>&amp;Export</text>
-        <Action name="uploadnewstuff"/>
-        <Separator/>
         <Action name="export_web" />
         <Action name="export_icalendar"/>
         <Action name="export_vcalendar"/>
-        <Separator/>
         <Merge/>
+        <Separator/>
+        <Action name="uploadnewstuff"/>
       </Menu>
-      <Action name="file_archive"/>
       <Separator/>
-      <Action name="addressbook"/>
+      <Action name="file_archive"/>
       <Action name="purge_completed"/>
       <Separator/>
     </Menu>
     <Menu name="edit"><text>&amp;Edit</text>
+      <Merge/>
+      <Separator/>
       <Action name="edit_delete" append="edit_paste_merge"/>
     </Menu>
     <Menu name="view"><text>&amp;View</text>
-          <Menu name="zoom"><text>&amp;Zoom</text>
+      <Action name="view_whatsnext"/>
+      <Separator/>
+      <Action name="view_day"/>
+      <Action name="view_nextx"/>
+      <Action name="view_workweek"/>
+      <Action name="view_week"/>
+      <Action name="view_month"/>
+      <Separator/>
+      <Action name="view_list"/>
+      <Action name="view_todo"/>
+      <Action name="view_journal"/>
+      <Merge/>
+      <Separator/>
+      <Action name="update"/>
+      <Separator/>
+      <Action name="hide_completed_todos"/>
+      <Separator/>
+      <Action name="filter_select" append="save_merge"/>
+      <Separator/>
+      <Menu name="zoom"><text>&amp;Zoom</text>
         <Action name="zoom_in_horizontally"/>
         <Action name="zoom_out_horizontally"/>
         <Separator/>
         <Action name="zoom_in_vertically"/>
         <Action name="zoom_out_vertically"/>
       </Menu>
-      <Separator/>
-      <Action name="view_whatsnext"/>
-      <Separator/>
-      <Action name="view_list"/>
-      <Action name="view_day"/>
-      <Action name="view_workweek"/>
-      <Action name="view_week"/>
-      <Action name="view_nextx"/>
-      <Action name="view_month"/>
-      <Action name="view_todo"/>
-      <Action name="view_journal"/>
-			<Merge/>
-      <Separator/>
-      <Action name="update"/>
     </Menu>
     <Menu name="go_document"><text>&amp;Go</text>
       <Action name="go_today"/>
+      <Action name="go_select"/>
     </Menu>
     <Menu name="actions"><text>&amp;Actions</text>
       <Action name="new_event"/>
@@ -64,38 +69,40 @@
       <Action name="show_incidence"/>
       <Action name="edit_incidence"/>
       <Action name="delete_incidence"/>
-      <Action name="mail_appointment"/>
       <Separator/>
-      <Action name="show_todo"/>
-      <Action name="edit_todo"/>
-      <Action name="delete_todo"/>
       <Action name="unsub_todo"/>
+      <Separator/>
+      <Action name="assign_resource"/>
+      <Separator/>
+      <Action name="activate_alarm"/>
     </Menu>
     <Menu name="schedule"><text>S&amp;chedule</text>
-      <Action name="publish"/>
-      <Action name="request"/>
-      <Action name="refresh"/>
-      <Action name="cancel"/>
-      <Action name="reply"/>
-      <Action name="counter"/>
+      <Action name="schedule_publish"/>
+      <Action name="schedule_request"/>
+      <Action name="schedule_reply"/>
+      <Action name="schedule_cancel"/>
+      <Action name="schedule_refresh"/>
+      <Action name="schedule_counter"/>
       <Separator/>
       <Action name="mail_freebusy"/>
       <Action name="upload_freebusy"/>
     </Menu>
     <Menu name="settings"><text>&amp;Settings</text>
-      <Action name="show_filter" append="show_merge"/>
-  	  <Menu name="sidebar" append="show_merge"><text>&amp;Sidebar</text>
+      <Menu name="sidebar" append="show_merge"><text>&amp;Sidebar</text>
         <Action name="show_datenavigator"/>
-       	<Action name="show_todoview"/>
-       	<Action name="show_eventviewer"/>
-       	<Action name="show_resourceview"/>
+        <Action name="show_todoview"/>
+        <Action name="show_eventviewer"/>
+        <Action name="show_resourceview"/>
+        <Action name="show_resourcebuttons" append="show_merge"/>
       </Menu>
-      <Action name="show_resourcebuttons" append="show_merge"/>
+      <Merge name="StandardToolBarMenuHandler" />
       <Separator/>
       <Action name="conf_datetime" append="save_merge"/>
-      <Action name="filter_select" append="save_merge"/>
+      <Action name="conf_resources" append="save_merge"/>
+      <Separator/>
       <Action name="edit_filters" append="save_merge"/>
       <Action name="edit_categories" append="save_merge"/>
+      <Separator/>
     </Menu>
     <Menu name="help"><text>&amp;Help</text>
       <Action name="show_intro"/>
@@ -104,6 +111,7 @@
   </MenuBar>
 
   <ToolBar name="mainToolBar"><text>Main</text>
+    <Merge/>
     <Action name="go_today"/>
     <Action name="mail_appointment"/>
     <Action name="new_event"/>
@@ -124,13 +132,13 @@
   </ToolBar>
 
   <ToolBar name="schedule_toolbar" hidden="true"><text>Schedule</text>
-    <Action name="publish"/>
-    <Action name="request"/>
-    <Action name="reply"/>
+    <Action name="schedule_publish"/>
+    <Action name="schedule_request"/>
+    <Action name="schedule_reply"/>
     <Action name="addressbook"/>
   </ToolBar>
 
-  <ToolBar name="filter_toolbar" hidden="true"><text>Filter toolbar</text>
+  <ToolBar name="filter_toolbar" hidden="true"><text>Filters Toolbar</text>
     <Action name="filter_label"/>
     <Action name="filter_select"/>
     <Action name="edit_filters"/>

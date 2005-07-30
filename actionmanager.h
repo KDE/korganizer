@@ -264,7 +264,7 @@ class KDE_EXPORT ActionManager : public QObject, public KCalendarIface
     void file_open( const KURL &url );
 
     /** import a calendar from another program like ical. */
-    void file_import();
+    void file_icalimport();
 
     /** open a calendar and add the contents to the current calendar. */
     void file_merge();
@@ -365,10 +365,12 @@ class KDE_EXPORT ActionManager : public QObject, public KCalendarIface
     KToggleAction *mTodoViewShowAction;
     KToggleAction *mResourceViewShowAction;
     KToggleAction *mEventViewerShowAction;
+//     KToggleAction *mToggleAlarmAction;
 
     KAction *mShowIncidenceAction;
     KAction *mEditIncidenceAction;
     KAction *mDeleteIncidenceAction;
+//     KAction *mAssignResourceAction;
 
     KAction *mCutAction;
     KAction *mCopyAction;
