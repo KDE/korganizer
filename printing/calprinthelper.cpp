@@ -64,8 +64,8 @@ class CalPrintHelper::TodoParentStart
 class PrintCellItem : public KOrg::CellItem
 {
   public:
-    PrintCellItem( Event *event, const QDate &day )
-      : mEvent( event ), mDay( day )
+    PrintCellItem( Event *event, const QDateTime &start, const QDateTime &end )
+      : mEvent( event ), mStart( start), mEnd( end )
     {
     }
 
@@ -73,24 +73,14 @@ class PrintCellItem : public KOrg::CellItem
 
     QString label() const { return mEvent->summary(); }
 
+    QDateTime start() const { return mStart; }
+    QDateTime end() const { return mEnd; }
+
+    /** Calculate the start and end date/time of the recurrence that
+        happens on the given day */
     bool overlaps( KOrg::CellItem *o ) const
     {
       PrintCellItem *other = static_cast<PrintCellItem *>( o );
-
-      QDateTime start = event()->dtStart();
-      QDateTime end = event()->dtEnd();
-// FIXME: This breaks with recurring multi-day events!
-      if ( event()->doesRecur() ) {
-        start.setDate( mDay );
-        end.setDate( mDay );
-      }
-      QDateTime otherStart = other->event()->dtStart();
-      QDateTime otherEnd = other->event()->dtEnd();
-// FIXME: This breaks with recurring multi-day events!
-      if ( other->event()->doesRecur() ) {
-        otherStart.setDate( mDay );
-        otherEnd.setDate( mDay );
-      }
 
 #if 0
       kdDebug(5850) << "PrintCellItem::overlaps() " << event()->summary()
@@ -101,12 +91,12 @@ class PrintCellItem : public KOrg::CellItem
       kdDebug(5850) << "  otherEnd  : " << otherEnd.toString() << endl;
 #endif
 
-      return !( otherStart >= end || otherEnd <= start );
+      return !( other->start() >= end() || other->end() <= start() );
     }
 
   private:
     Event *mEvent;
-    QDate mDay;
+    QDateTime mStart, mEnd;
 };
 
 CalPrintHelper::CalPrintHelper( KPrinter *pr, Calendar *cal, KConfig *cfg,
@@ -480,7 +470,11 @@ void CalPrintHelper::drawAgendaDayBox( QPainter &p, Event::List &events,
 
   Event::List::ConstIterator itEvents;
   for( itEvents = events.begin(); itEvents != events.end(); ++itEvents ) {
-    cells.append( new PrintCellItem( *itEvents, qd ) );
+    QValueList<QDateTime> times = (*itEvents)->startDateTimesForDate( qd );
+    for ( QValueList<QDateTime>::ConstIterator it = times.begin();
+          it != times.end(); ++it ) {
+      cells.append( new PrintCellItem( *itEvents, (*it), (*itEvents)->endDateForStart( *it ) ) );
+    }
   }
 
   QPtrListIterator<KOrg::CellItem> it1( cells );
@@ -525,13 +519,8 @@ void CalPrintHelper::drawAgendaItem( PrintCellItem *item, QPainter &p,
   if ( mUseColors ) setCategoryColors( p, event );
 
   // start/end of print area for event
-  QDateTime startTime = event->dtStart();
-  QDateTime endTime = event->dtEnd();
-// FIXME: This breaks with recurring multi-day events!
-  if ( event->doesRecur() ) {
-    startTime.setDate( qd );
-    endTime.setDate( qd );
-  }
+  QDateTime startTime = item->start();
+  QDateTime endTime = item->end();
   if ( ( startTime < endPrintDate && endTime > startPrintDate ) ||
        ( endTime > startPrintDate && startTime < endPrintDate ) ) {
     if ( startTime < startPrintDate ) startTime = startPrintDate;
