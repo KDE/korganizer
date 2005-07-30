@@ -460,9 +460,9 @@ KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent, const char* name)
                              SLOT (newTodo()));
   mItemPopupMenu->insertItem(i18n("New Su&b-to-do..."), this,
                              SLOT (newSubTodo()));
-  mItemPopupMenu->insertItem( i18n("&Make Sub-to-do Independent"), this,
+  mItemPopupMenu->insertItem( i18n("&Make this To-do Independent"), this,
       SIGNAL( unSubTodoSignal() ), 0, ePopupUnSubTodo );
-  mItemPopupMenu->insertItem( i18n("Make Sub-to-dos &Independent"), this,
+  mItemPopupMenu->insertItem( i18n("Make all Sub-to-dos &Independent"), this,
       SIGNAL( unAllSubTodoSignal() ), 0, ePopupUnAllSubTodo );
   mItemPopupMenu->insertSeparator();
   mItemPopupMenu->insertItem( i18n("&Copy To"), mCopyPopupMenu, ePopupCopyTo );
