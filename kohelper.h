@@ -30,7 +30,7 @@
 namespace KCal {
   class Calendar;
   class Incidence;
-};
+}
 
 class KDE_EXPORT KOHelper
 {
