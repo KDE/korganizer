@@ -109,11 +109,6 @@ class KOrganizer : public KPartsMainWindow, public KOrgMainWindow
     /** write current state to config file. */
     void writeSettings();
 
-    /** Open toolbar configuration dialog */
-    void configureToolbars();
-
-    void toggleStatusBar();
-
     void statusBarPressed( int );
 
     /** Sets title of window according to filename and modification state */
@@ -136,8 +131,6 @@ class KOrganizer : public KPartsMainWindow, public KOrgMainWindow
   private:
     CalendarView *mCalendarView;  // Main view widget
     KOrg::Part::List mParts; // List of parts loaded
-
-    KToggleAction *mStatusBarAction;
 
     // status bar ids
     enum { ID_HISTORY, ID_GENERAL, ID_ACTIVE, ID_MESSAGES_IN, ID_MESSAGES_OUT };

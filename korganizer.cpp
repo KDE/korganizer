@@ -196,30 +196,25 @@ void KOrganizer::writeSettings()
   KConfig *config = KOGlobals::self()->config();
 
   mActionManager->writeSettings();
-  saveMainWindowSettings( config );
   config->sync();
 }
 
 
 void KOrganizer::initActions()
 {
-  KStdAction::quit( this, SLOT( close() ), actionCollection() );
-  mStatusBarAction = KStdAction::showStatusbar( this, SLOT( toggleStatusBar() ),
-                                                actionCollection() );
-
-  KStdAction::configureToolbars( this, SLOT( configureToolbars() ),
-                                 actionCollection() );
 
   setInstance( KGlobal::instance() );
 
   setXMLFile( "korganizerui.rc" );
+  setStandardToolBarMenuEnabled( true );
+  createStandardStatusBarAction();
+
+  KStdAction::keyBindings(guiFactory(), SLOT(configureShortcuts()), actionCollection());
+  KStdAction::configureToolbars(this, SLOT(configureToolbars() ), actionCollection());
+  KStdAction::quit( this, SLOT( close() ), actionCollection() );
+  setAutoSaveSettings();
+
   createGUI( 0 );
-
-  KConfig *config = KOGlobals::self()->config();
-
-  applyMainWindowSettings( config );
-
-  mStatusBarAction->setChecked( !statusBar()->isHidden() );
 }
 
 bool KOrganizer::queryClose()
@@ -241,23 +236,6 @@ bool KOrganizer::queryExit()
   // now called in queryClose.
 //  writeSettings();
   return true;
-}
-
-void KOrganizer::configureToolbars()
-{
-  saveMainWindowSettings( KOGlobals::self()->config(), "MainWindow" );
-
-  KEditToolbar dlg( factory() );
-  dlg.exec();
-}
-
-void KOrganizer::toggleStatusBar()
-{
-  bool show_statusbar = mStatusBarAction->isChecked();
-  if (show_statusbar)
-     statusBar()->show();
-  else
-     statusBar()->hide();
 }
 
 void KOrganizer::statusBarPressed( int /*id*/ )
