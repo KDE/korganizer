@@ -258,6 +258,7 @@ void JournalEntry::deleteItem()
 
 void JournalEntry::editItem()
 {
+	writeJournal();
   if ( mJournal )
     emit editIncidence( mJournal );
 }
