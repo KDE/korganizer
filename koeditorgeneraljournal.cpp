@@ -69,8 +69,6 @@ void KOEditorGeneralJournal::initTitle( QWidget *parent, QBoxLayout *topLayout )
 
   mSummaryEdit = new FocusLineEdit( parent );
   QWhatsThis::add( mSummaryEdit, whatsThis );
-  connect( mSummaryEdit, SIGNAL( focusReceivedSignal() ),
-           SIGNAL( focusReceivedSignal() ) );
   summaryLabel->setBuddy( mSummaryEdit );
   hbox->addWidget( mSummaryEdit );
 }
@@ -99,6 +97,7 @@ void KOEditorGeneralJournal::initDate( QWidget *parent, QBoxLayout *topLayout )
            mTimeEdit, SLOT(setEnabled(bool)) );
 
   dateLayout->addStretch();
+  setTime( QTime( -1, -1, -1 ) );
 }
 
 void KOEditorGeneralJournal::setDate( const QDate &date )
@@ -111,8 +110,10 @@ void KOEditorGeneralJournal::setDate( const QDate &date )
 void KOEditorGeneralJournal::setTime( const QTime &time )
 {
 kdDebug()<<"KOEditorGeneralJournal::setTime, time="<<time.toString()<<endl;
-  mTimeCheckBox->setChecked( time.isValid() );
-  if ( time.isValid() ) {
+  bool validTime = time.isValid();
+  mTimeCheckBox->setChecked( validTime );
+  mTimeEdit->setEnabled( validTime );
+  if ( validTime ) {
 kdDebug()<<"KOEditorGeneralJournal::setTime, time is valid"<<endl;
     mTimeEdit->setTime( time );
   }
@@ -157,9 +158,9 @@ void KOEditorGeneralJournal::writeJournal( Journal *journal )
   journal->setDescription( mDescriptionEdit->text() );
   
   QDateTime tmpDT( mDateEdit->date(), QTime(0,0,0) );
-  bool floats= mTimeCheckBox->isChecked();
-  journal->setFloats( floats );
-  if ( !floats ) {
+  bool hasTime = mTimeCheckBox->isChecked();
+  journal->setFloats( !hasTime );
+  if ( hasTime ) {
     tmpDT.setTime( mTimeEdit->getTime() );
   }
   journal->setDtStart(tmpDT);
