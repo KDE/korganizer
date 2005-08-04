@@ -258,7 +258,7 @@ void JournalEntry::deleteItem()
 
 void JournalEntry::editItem()
 {
-	writeJournal();
+  writeJournal();
   if ( mJournal )
     emit editIncidence( mJournal );
 }
@@ -378,7 +378,7 @@ void JournalEntry::flushEntry()
 
 void JournalEntry::timeCheckBoxToggled(bool on)
 {
-    mTimeEdit->setEnabled(on);
-    if(on)
-        mTimeEdit->setFocus();
+  mTimeEdit->setEnabled(on);
+  if(on)
+    mTimeEdit->setFocus();
 }
