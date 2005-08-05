@@ -7,7 +7,6 @@ INCLUDES = \
   -I$(top_srcdir)/libkholidays \
   -I$(top_srcdir)/mimelib \
   -I$(top_srcdir)/certmanager/lib \
-  -I$(top_srcdir)/kresources/remote \
   -I$(top_srcdir)/korganizer/printing \
   -I$(top_srcdir) \
   -I$(top_builddir) \
@@ -61,7 +60,6 @@ libkorganizer_la_LIBADD  = $(LIB_KPARTS) $(LIB_KFILE) $(LIB_KNEWSTUFF) \
 	printing/libkocorehelper.la \
 	printing/libkorg_stdprinting.la \
 	$(top_builddir)/kdgantt/libkdgantt.la \
-	$(top_builddir)/kresources/remote/libkcal_resourceremote.la \
         $(top_builddir)/libemailfunctions/libemailfunctions.la \
         $(top_builddir)/libkholidays/libkholidays.la
 libkorganizer_la_COMPILE_FIRST = \
@@ -119,8 +117,7 @@ libkorganizer_calendar_la_LDFLAGS = $(all_libraries) $(KDE_RPATH) \
                                     -no-undefined -version-info 1:0
 libkorganizer_calendar_la_LIBADD  = $(LIB_KPARTS) \
                                     $(top_builddir)/libkdepim/libkdepim.la \
-                                    $(top_builddir)/libkcal/libkcal.la \
-                                    $(top_builddir)/kresources/remote/libkcal_resourceremote.la
+                                    $(top_builddir)/libkcal/libkcal.la 
 libkorganizer_calendar_la_SOURCES = stdcalendar.cpp
 
 

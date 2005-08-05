@@ -46,8 +46,6 @@
 
 #include <libkcal/calendarlocal.h>
 #include <libkcal/calendarresources.h>
-#include <libkcal/resourcelocal.h>
-#include <resourceremote.h>
 #include <libkcal/htmlexport.h>
 #include <libkcal/htmlexportsettings.h>
 
@@ -891,18 +889,21 @@ bool ActionManager::addResource( const KURL &mUrl )
   kdDebug(5850) << "URL: " << mUrl << endl;
   if ( mUrl.isLocalFile() ) {
     kdDebug(5850) << "Local Resource" << endl;
-    resource = new ResourceLocal( mUrl.path() );
-    resource->setTimeZoneId( KOPrefs::instance()->mTimeZoneId );
+    resource = manager->createResource( "file" );
+    if ( resource )
+      resource->setValue( "File", mUrl.path() );
     name = mUrl.path();
   } else {
     kdDebug(5850) << "Remote Resource" << endl;
-    resource = new ResourceRemote( mUrl );
-    resource->setTimeZoneId( KOPrefs::instance()->mTimeZoneId );
+    resource = manager->createResource( "remote" );
+    if ( resource )
+      resource->setValue( "DownloadURL", mUrl.url() );
     name = mUrl.prettyURL();
     resource->setReadOnly( true );
   }
 
   if ( resource ) {
+    resource->setTimeZoneId( KOPrefs::instance()->mTimeZoneId );
     resource->setResourceName( name );
     manager->add( resource );
     // we have to call resourceAdded manually, because for in-process changes

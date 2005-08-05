@@ -22,8 +22,6 @@
 #include "stdcalendar.h"
 
 #include <libkcal/resourcecalendar.h>
-#include <libkcal/resourcelocal.h>
-#include <kresources/remote/resourceremote.h>
 #include <libkdepim/kpimprefs.h>
 
 #include <kstaticdeleter.h>
@@ -58,27 +56,52 @@ StdCalendar::StdCalendar()
     QString fileName = config.readPathEntry( "Active Calendar" );
 
     QString resourceName;
+    QString resoruceType;
     KCal::ResourceCalendar *defaultResource = 0;
-    if ( fileName.isEmpty() ) {
-      fileName = locateLocal( "data", "korganizer/std.ics" );
-      resourceName = i18n( "Default Calendar" );
-      defaultResource = new KCal::ResourceLocal( fileName );
-    } else {
+    if ( !fileName.isEmpty() ) {
       KURL url( fileName );
       if ( url.isLocalFile() ) {
-        defaultResource = new KCal::ResourceLocal( url.path() );
+        kdDebug(5850) << "Local resource at " << url << endl;
+        defaultResource = manager->createResource( "file" );
+        if ( defaultResource )
+          defaultResource->setValue( "File", url.path() );
       } else {
-        kdDebug(5850) << "Remote Resource" << endl;
-        defaultResource = new KCal::ResourceRemote( url );
+        kdDebug(5850) << "Remote Resource at " << url << endl;
+        defaultResource = manager->createResource( "remote" );
+        if ( defaultResource )
+          defaultResource->setValue( "URL", url.url() );
       }
       resourceName = i18n( "Active Calendar" );
     }
+    // No resource created, i.e. no path found in config => use default path
+    if ( !defaultResource ) {
+      fileName = locateLocal( "data", "korganizer/std.ics" );
+      kdDebug(5850) << "Creating new default local resource at " << fileName << endl;
+      defaultResource = manager->createResource( "file" );
+      if ( defaultResource )
+        defaultResource->setValue( "File", fileName );
+      resourceName = i18n( "Default Calendar" );
+    }
 
-    defaultResource->setTimeZoneId( KPimPrefs::timezone() );
-    defaultResource->setResourceName( resourceName );
+    if ( defaultResource ) {
+      defaultResource->setTimeZoneId( KPimPrefs::timezone() );
+      defaultResource->setResourceName( resourceName );
+      manager->add( defaultResource );
+      manager->setStandardResource( defaultResource );
+    }
 
-    manager->add( defaultResource );
-    manager->setStandardResource( defaultResource );
+    // By default, also create a birthday resource
+    KCal::ResourceCalendar *bdayResource = manager->createResource( "birthdays" );
+    if ( bdayResource ) {
+      kdDebug(5850) << "Adding Birthdays resource" << endl;
+      bdayResource->setTimeZoneId( KPimPrefs::timezone() );
+      bdayResource->setResourceName( i18n("Birthdays") );
+      bdayResource->setValue( "Alarm", "true" );
+      bdayResource->setValue( "AlarmDays", "0" );
+      manager->add( bdayResource );
+    } else {
+      kdDebug(5850) << "Unable to add a Birthdays resource" << endl;
+    }
   }
 }
 
