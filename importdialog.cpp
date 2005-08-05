@@ -28,10 +28,6 @@
 #include "koprefs.h"
 #include "stdcalendar.h"
 
-#include <libkcal/calendarresources.h>
-#include <libkcal/resourcelocal.h>
-#include <kresources/remote/resourceremote.h>
-
 #include <klocale.h>
 
 #include <qlabel.h>
@@ -59,7 +55,7 @@ ImportDialog::ImportDialog( const KURL &url, QWidget *parent )
   topLayout->addWidget( radioBox );
 
   mAddButton = new QRadioButton( i18n("Add as new calendar"), radioBox );
-  
+
   mMergeButton = new QRadioButton( i18n("Merge into existing calendar"),
                                    radioBox );
 
@@ -87,7 +83,7 @@ void ImportDialog::slotOk()
   } else {
     kdError() << "ImportDialog: internal error." << endl;
   }
-  
+
   emit dialogFinished( this );
   accept();
 }

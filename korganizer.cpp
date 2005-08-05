@@ -53,7 +53,6 @@
 #include <libkcal/calendarlocal.h>
 #include <libkcal/calendarresources.h>
 #include <libkcal/resourcecalendar.h>
-#include <libkcal/resourcelocal.h>
 
 #include <kglobal.h>
 #include <kdebug.h>

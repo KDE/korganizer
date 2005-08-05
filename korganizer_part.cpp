@@ -39,7 +39,6 @@
 #include <libkcal/calendarlocal.h>
 #include <libkcal/calendarresources.h>
 #include <libkcal/resourcecalendar.h>
-#include <libkcal/resourcelocal.h>
 
 #include <kpopupmenu.h>
 #include <kinstance.h>
