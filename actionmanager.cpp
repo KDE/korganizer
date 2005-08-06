@@ -906,11 +906,17 @@ bool ActionManager::addResource( const KURL &mUrl )
     resource->setTimeZoneId( KOPrefs::instance()->mTimeZoneId );
     resource->setResourceName( name );
     manager->add( resource );
+    mMainWindow->showStatusMessage( i18n( "Added calendar resource for URL '%1'." )
+               .arg( name ) );
     // we have to call resourceAdded manually, because for in-process changes
     // the dcop signals are not connected, so the resource's signals would not
     // be connected otherwise
     if ( mCalendarResources )
       mCalendarResources->resourceAdded( resource );
+  } else {
+    QString msg = i18n("Unable to create calendar resource '%1'.")
+                      .arg( name );
+    KMessageBox::error( dialogParent(), msg );
   }
   return true;
 }
