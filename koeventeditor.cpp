@@ -151,6 +151,7 @@ void KOEventEditor::setupGeneral()
     mGeneral->initTime(topFrame,topLayout);
     QBoxLayout *alarmLineLayout = new QHBoxLayout(topLayout);
     mGeneral->initAlarm(topFrame,alarmLineLayout);
+    alarmLineLayout->addStretch( 1 );
     mGeneral->initClass(topFrame,alarmLineLayout);
     mGeneral->initDescription(topFrame,topLayout);
     QBoxLayout *detailsLayout = new QHBoxLayout(topLayout);
