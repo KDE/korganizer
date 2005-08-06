@@ -96,8 +96,6 @@ StdCalendar::StdCalendar()
       kdDebug(5850) << "Adding Birthdays resource" << endl;
       bdayResource->setTimeZoneId( KPimPrefs::timezone() );
       bdayResource->setResourceName( i18n("Birthdays") );
-      bdayResource->setValue( "Alarm", "true" );
-      bdayResource->setValue( "AlarmDays", "0" );
       manager->add( bdayResource );
     } else {
       kdDebug(5850) << "Unable to add a Birthdays resource" << endl;
