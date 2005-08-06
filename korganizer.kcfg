@@ -105,7 +105,7 @@
       <default>true</default>
     </entry>
     <entry type="String" key="user_name" name="UserName">
-      <label>Full &name</label>
+      <label>Full &amp;name</label>
       <whatsthis>Enter here your full name. This name will be displayed as "Organizer" in to-dos and events you create.</whatsthis>
       <default code="true">i18n(&quot;Anonymous&quot;)</default>
     </entry>
