@@ -93,8 +93,7 @@ KOPrefsDialogMain::KOPrefsDialogMain( QWidget *parent, const char *name )
 
   mUserEmailSettings = new QGrid( 2, topFrame );
 
-  KPrefsWidString *userName =
-      addWidString( KOPrefs::instance()->userNameItem(), mUserEmailSettings );
+  addWidString( KOPrefs::instance()->userNameItem(), mUserEmailSettings );
   addWidString( KOPrefs::instance()->userEmailItem(), mUserEmailSettings );
 
   QGroupBox *saveGroup = new QGroupBox(1,Horizontal,i18n("Saving the Calendar"),
