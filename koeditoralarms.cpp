@@ -23,34 +23,31 @@
     without including the source code for Qt in the source distribution.
 */
 
+#include "koeditoralarms_base.h"
 #include "koeditoralarms.h"
 
-//#include "urihandler.h"
 
 #include <klocale.h>
 #include <kdebug.h>
-// #include <kurlrequesterdlg.h>
-// #include <kmessagebox.h>*/
 
 #include <libkcal/alarm.h>
 #include <libkcal/incidence.h>
 
 #include <qlayout.h>
 #include <qlistview.h>
-//#include <qpushbutton.h>
 
 class AlarmListViewItem : public QListViewItem
 {
   public:
     AlarmListViewItem( QListView *parent, KCal::Alarm *alarm );
     virtual ~AlarmListViewItem();
-    Alarm *alarm() const { return mAlarm; }
+    KCal::Alarm *alarm() const { return mAlarm; }
     void construct();
   protected:
-    Alarm *mAlarm;
+    KCal::Alarm *mAlarm;
 };
 
-AlarmListViewItem::AlarmListViewItem( QListView *parent, Alarm *alarm )
+AlarmListViewItem::AlarmListViewItem( QListView *parent, KCal::Alarm *alarm )
     : QListViewItem( parent ), mAlarm( alarm )
 {
   construct();
@@ -63,7 +60,7 @@ AlarmListViewItem::~AlarmListViewItem()
 void AlarmListViewItem::construct()
 {
   if ( mAlarm ) {
-  
+
     // Alarm offset:
     QString startend;
     int offset = 0;
@@ -74,7 +71,7 @@ void AlarmListViewItem::construct()
       offset = mAlarm->endOffset().asSeconds();
       setText( 2, i18n( "end" ) );
     }
-    
+
     QString beforeafter;
     if ( offset<0 ) {
       offset = -offset;
@@ -85,7 +82,7 @@ void AlarmListViewItem::construct()
 
     offset = offset / 60; // make minutes
     int useoffset = offset;
-    
+
     if ( offset % (24*60) == 0 && offset>0 ) { // divides evenly into days?
       useoffset = offset / (24*60);
       setText( 0, i18n("1 day", "%n days", useoffset ) );
@@ -96,22 +93,22 @@ void AlarmListViewItem::construct()
       useoffset = offset;
       setText( 0, i18n("1 minute", "%n minutes", useoffset ) );
     }
-    
+
     // Alarm type:
     QString type( i18n("Unknown") );
     switch ( mAlarm->type() ) {
-      case Alarm::Display: type = i18n("Reminder Dialog");
+      case KCal::Alarm::Display: type = i18n("Reminder Dialog");
         break;
-      case Alarm::Procedure: type = i18n("Application/Script");
+      case KCal::Alarm::Procedure: type = i18n("Application/Script");
         break;
-      case Alarm::Email: type = i18n("Email");
+      case KCal::Alarm::Email: type = i18n("Email");
         break;
-      case Alarm::Audio: type = i18n("Audio");
+      case KCal::Alarm::Audio: type = i18n("Audio");
         break;
       default: break;
     }
     setText( 3, type );
-    
+
     // Alarm repeat
     if ( mAlarm->repeatCount()>0 ) {
       setText( 4, i18n("%1 times every %2 minutes").arg( mAlarm->repeatCount() )
@@ -121,12 +118,12 @@ void AlarmListViewItem::construct()
 }
 
 
-KOEditorAlarms::KOEditorAlarms( int spacing, QWidget *parent,
+KOEditorAlarms::KOEditorAlarms( KCal::Alarm::List *alarms, QWidget *parent,
                                 const char *name )
-  : KOEditorAlarms_base( parent, name )
+  : KDialogBase( parent, name, true, i18n("Edit Alarms"), Ok | Apply | Cancel ), mAlarms( alarms )
 {
-  QBoxLayout *topLayout = new QVBoxLayout( this );
-  topLayout->setSpacing( spacing );
+  setMainWidget( mWidget = new KOEditorAlarms_base( this ) );
+  init();
 }
 
 KOEditorAlarms::~KOEditorAlarms()
@@ -164,40 +161,28 @@ void KOEditorAlarms::slotRemove()
     delete item;*/
 }
 
-void KOEditorAlarms::setDefaults()
-{
-  mAlarmList->clear();
-}
+// void KOEditorAlarms::setDefaults()
+// {
+//   mAlarms->clear();
+// }
 
-void KOEditorAlarms::readIncidence( Incidence *i )
+void KOEditorAlarms::init()
 {
-  mAlarmList->clear();
-  
-  Alarm::List alarms = i->alarms();
-  Alarm::List::ConstIterator it;
-  for ( it = alarms.begin(); it != alarms.end(); ++it ) {
-    new AlarmListViewItem( mAlarmList, *it );
-    
+  KCal::Alarm::List::ConstIterator it;
+  for ( it = mAlarms->begin(); it != mAlarms->end(); ++it ) {
+    new AlarmListViewItem( mWidget->mAlarmList, *it );
+
   }
-
-/*  Attachment::List attachments = i->attachments();
-  Attachment::List::ConstIterator it;
-  for( it = attachments.begin(); it != attachments.end(); ++it ) {
-    QString uri;
-    if ( (*it)->isUri() ) uri = (*it)->uri();
-    else uri = i18n("[Binary data]");
-    addAttachment( uri, (*it)->mimeType() );
-  }*/
 }
 
-void KOEditorAlarms::writeIncidence( Incidence *i )
+/*void KOEditorAlarms::writeIncidence( Incidence *i )
 {
   i->clearAlarms();
-
+*/
 /*  QListViewItem *item;
   for( item = mAttachments->firstChild(); item; item = item->nextSibling() ) {
     i->addAttachment( new Attachment( item->text( 0 ), item->text( 1 ) ) );
   }*/
-}
+// }
 
 #include "koeditoralarms.moc"

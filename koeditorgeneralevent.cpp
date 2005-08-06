@@ -28,6 +28,7 @@
 #include <qbuttongroup.h>
 #include <qvgroupbox.h>
 #include <qwidgetstack.h>
+#include <qspinbox.h>
 #include <qdatetime.h>
 #include <qlabel.h>
 #include <qcheckbox.h>
@@ -42,7 +43,6 @@
 #include <kmessagebox.h>
 #include <kfiledialog.h>
 #include <kstandarddirs.h>
-#include <krestrictedline.h>
 #include <ktextedit.h>
 
 #include <libkcal/event.h>
@@ -80,9 +80,11 @@ void KOEditorGeneralEvent::finishSetup()
   QWidget::setTabOrder( mTimeAssociateButton, mAlarmButton );
   QWidget::setTabOrder( mAlarmButton, mAlarmTimeEdit );
   QWidget::setTabOrder( mAlarmTimeEdit, mAlarmIncrCombo );
-  QWidget::setTabOrder( mAlarmIncrCombo, mAlarmSoundButton );
-  QWidget::setTabOrder( mAlarmSoundButton, mAlarmProgramButton );
-  QWidget::setTabOrder( mAlarmProgramButton, mFreeTimeCombo );
+//   QWidget::setTabOrder( mAlarmIncrCombo, mAlarmSoundButton );
+  QWidget::setTabOrder( mAlarmIncrCombo, mAlarmEditButton );
+//   QWidget::setTabOrder( mAlarmSoundButton, mAlarmProgramButton );
+//   QWidget::setTabOrder( mAlarmProgramButton, mFreeTimeCombo );
+  QWidget::setTabOrder( mAlarmEditButton, mFreeTimeCombo );
   QWidget::setTabOrder( mFreeTimeCombo, mDescriptionEdit );
   QWidget::setTabOrder( mDescriptionEdit, mCategoriesButton );
   QWidget::setTabOrder( mCategoriesButton, mSecrecyCombo );
@@ -163,7 +165,7 @@ void KOEditorGeneralEvent::initClass(QWidget *parent,QBoxLayout *topLayout)
 
   QLabel *freeTimeLabel = new QLabel(i18n("S&how time as:"),parent);
   QString whatsThis = i18n("Sets how this time will appear on your Free/Busy "
-		  	   "information.");
+                           "information.");
   QWhatsThis::add( freeTimeLabel, whatsThis );
   classLayout->addWidget(freeTimeLabel);
 
@@ -270,7 +272,7 @@ void KOEditorGeneralEvent::endDateChanged( const QDate &newdate )
   emit dateTimesChanged(mCurrStartDateTime,mCurrEndDateTime);
 }
 
-void KOEditorGeneralEvent::setDefaults( const QDateTime &from, 
+void KOEditorGeneralEvent::setDefaults( const QDateTime &from,
                                         const QDateTime &to, bool allDay)
 {
   KOEditorGeneral::setDefaults(allDay);
@@ -398,8 +400,8 @@ void KOEditorGeneralEvent::setDuration()
   }
   mDurationLabel->setText(tmpStr);
   QWhatsThis::add( mDurationLabel,
-		   i18n("Shows the duration of the event or to-do with the "
-			"current start and end dates and times.") );
+       i18n("Shows the duration of the event or to-do with the "
+      "current start and end dates and times.") );
 }
 
 void KOEditorGeneralEvent::emitDateTimeStr()

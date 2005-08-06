@@ -31,8 +31,9 @@
 #include <qwidgetstack.h>
 #include <qdatetime.h>
 #include <qcheckbox.h>
-#include <qpushbutton.h>
 #include <qlabel.h>
+#include <qspinbox.h>
+#include <qpushbutton.h>
 #include <qwhatsthis.h>
 
 #include <kglobal.h>
@@ -40,7 +41,6 @@
 #include <kiconloader.h>
 #include <kmessagebox.h>
 #include <kdebug.h>
-#include <krestrictedline.h>
 #include <kstandarddirs.h>
 #include <kfiledialog.h>
 #include <ktextedit.h>
@@ -81,9 +81,11 @@ void KOEditorGeneralTodo::finishSetup()
   QWidget::setTabOrder( mPriorityCombo, mAlarmButton );
   QWidget::setTabOrder( mAlarmButton, mAlarmTimeEdit );
   QWidget::setTabOrder( mAlarmTimeEdit, mAlarmIncrCombo );
-  QWidget::setTabOrder( mAlarmIncrCombo, mAlarmSoundButton );
-  QWidget::setTabOrder( mAlarmSoundButton, mAlarmProgramButton );
-  QWidget::setTabOrder( mAlarmProgramButton, mDescriptionEdit );
+//   QWidget::setTabOrder( mAlarmIncrCombo, mAlarmSoundButton );
+  QWidget::setTabOrder( mAlarmIncrCombo, mAlarmEditButton );
+//   QWidget::setTabOrder( mAlarmSoundButton, mAlarmProgramButton );
+//   QWidget::setTabOrder( mAlarmProgramButton, mDescriptionEdit );
+  QWidget::setTabOrder( mAlarmEditButton, mDescriptionEdit );
   QWidget::setTabOrder( mDescriptionEdit, mCategoriesButton );
   QWidget::setTabOrder( mCategoriesButton, mSecrecyCombo );
 //  QWidget::setTabOrder( mSecrecyCombo, mDescriptionEdit );
@@ -237,7 +239,7 @@ void KOEditorGeneralTodo::setDefaults( const QDateTime &due, bool allDay )
   mDueCheck->setChecked(false);
   enableDueEdit(false);
 
-  alarmDisable(true);
+  enableAlarm(false);
 
   mStartCheck->setChecked(false);
   enableStartEdit(false);
@@ -261,13 +263,13 @@ void KOEditorGeneralTodo::readTodo(Todo *todo)
   QDateTime dueDT;
 
   if (todo->hasDueDate()) {
-    enableAlarmEdit(true);
+    enableAlarm( true );
     dueDT = todo->dtDue();
     mDueDateEdit->setDate(todo->dtDue().date());
     mDueTimeEdit->setTime(todo->dtDue().time());
     mDueCheck->setChecked(true);
   } else {
-    alarmDisable(true);
+    enableAlarm( false );
     mDueDateEdit->setEnabled(false);
     mDueTimeEdit->setEnabled(false);
     mDueDateEdit->setDate(QDate::currentDate());
@@ -368,7 +370,7 @@ void KOEditorGeneralTodo::writeTodo(Todo *todo)
     QDateTime completed( mCompletionDateEdit->date(),
                          mCompletionTimeEdit->getTime() );
     int difference = mCompleted.secsTo( completed );
-    if ( (difference < 60) && (difference > -60) && 
+    if ( (difference < 60) && (difference > -60) &&
          (completed.time().minute() == mCompleted.time().minute() ) ) {
       // completion time wasn't changed substantially (only the seconds
       // truncated, but that's an effect done by KTimeEdit automatically).
@@ -428,12 +430,7 @@ void KOEditorGeneralTodo::enableTimeEdits(bool enable)
 
 void KOEditorGeneralTodo::showAlarm()
 {
-  if ( mDueCheck->isChecked() ) {
-    alarmDisable(false);
-  }
-  else {
-    alarmDisable(true);
-  }
+  enableAlarm( mDueCheck->isChecked() );
 }
 
 bool KOEditorGeneralTodo::validateInput()

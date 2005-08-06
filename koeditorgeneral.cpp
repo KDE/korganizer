@@ -27,6 +27,7 @@
 #include <qtooltip.h>
 #include <qlayout.h>
 #include <qvbox.h>
+#include <qhbox.h>
 #include <qbuttongroup.h>
 #include <qvgroupbox.h>
 #include <qwidgetstack.h>
@@ -36,6 +37,7 @@
 #include <qcheckbox.h>
 #include <qpushbutton.h>
 #include <qcombobox.h>
+#include <qspinbox.h>
 #include <qwhatsthis.h>
 
 #include <kglobal.h>
@@ -58,11 +60,13 @@
 #include "koglobals.h"
 
 #include "koeditorgeneral.h"
+#include "koeditoralarms.h"
 #include "koeditorgeneral.moc"
 
 KOEditorGeneral::KOEditorGeneral(QObject* parent, const char* name) :
   QObject( parent, name)
 {
+  mAlarmList.setAutoDelete( true );
 }
 
 KOEditorGeneral::~KOEditorGeneral()
@@ -184,133 +188,68 @@ void KOEditorGeneral::initAlarm(QWidget *parent,QBoxLayout *topLayout)
 
   mAlarmBell = new QLabel(parent);
   mAlarmBell->setPixmap(KOGlobals::self()->smallIcon("bell"));
-  alarmLayout->addWidget(mAlarmBell);
+  alarmLayout->addWidget( mAlarmBell );
 
-  mAlarmButton = new QCheckBox(i18n("&Reminder:"),parent);
+
+  mAlarmStack = new QWidgetStack( parent );
+  alarmLayout->addWidget( mAlarmStack );
+
+  mAlarmInfoLabel = new QLabel("XXX alarms configured", mAlarmStack );
+  mAlarmStack->addWidget( mAlarmInfoLabel, AdvancedAlarmLabel );
+
+  QHBox *simpleAlarmBox = new QHBox( mAlarmStack );
+  mAlarmStack->addWidget( simpleAlarmBox, SimpleAlarmPage );
+
+  mAlarmButton = new QCheckBox(i18n("&Reminder:"), simpleAlarmBox );
   QWhatsThis::add( mAlarmButton,
-		   i18n("Activates a reminder for this event or to-do.") );
-  connect(mAlarmButton, SIGNAL(toggled(bool)), SLOT(enableAlarmEdit(bool)));
-  alarmLayout->addWidget(mAlarmButton);
+       i18n("Activates a reminder for this event or to-do.") );
 
   QString whatsThis = i18n("Sets how long before the event occurs "
-		  	   "the reminder will be triggered.");
-  mAlarmTimeEdit = new KRestrictedLine(parent, "alarmTimeEdit",
-                  "1234567890");
-  mAlarmTimeEdit->setText("");
+                           "the reminder will be triggered.");
+  mAlarmTimeEdit = new QSpinBox( 0, 99999, 1, simpleAlarmBox, "alarmTimeEdit" );
+  mAlarmTimeEdit->setValue( 0 );
   QWhatsThis::add( mAlarmTimeEdit, whatsThis );
-  alarmLayout->addWidget(mAlarmTimeEdit);
 
-  mAlarmIncrCombo = new QComboBox(false, parent);
+  mAlarmIncrCombo = new QComboBox( false, simpleAlarmBox );
   QWhatsThis::add( mAlarmIncrCombo, whatsThis );
-  mAlarmIncrCombo->insertItem(i18n("minute(s)"));
-  mAlarmIncrCombo->insertItem(i18n("hour(s)"));
-  mAlarmIncrCombo->insertItem(i18n("day(s)"));
+  mAlarmIncrCombo->insertItem( i18n("minute(s)") );
+  mAlarmIncrCombo->insertItem( i18n("hour(s)") );
+  mAlarmIncrCombo->insertItem( i18n("day(s)") );
 //  mAlarmIncrCombo->setMinimumHeight(20);
-  alarmLayout->addWidget(mAlarmIncrCombo);
+  connect(mAlarmButton, SIGNAL(toggled(bool)), mAlarmTimeEdit, SLOT(setEnabled(bool)));
+  connect(mAlarmButton, SIGNAL(toggled(bool)), mAlarmIncrCombo, SLOT(setEnabled(bool)));
 
-  mAlarmSoundButton = new QPushButton(parent);
-  QWhatsThis::add( mAlarmSoundButton,
-		   i18n("Sets a sound to play in conjunction with the popup "
-		        "dialog as a reminder.") );
-  mAlarmSoundButton->setIconSet(KOGlobals::self()->smallIconSet("playsound"));
-  mAlarmSoundButton->setToggleButton(true);
-  QToolTip::add(mAlarmSoundButton, i18n("No sound set"));
-  connect(mAlarmSoundButton, SIGNAL(clicked()), SLOT(pickAlarmSound()));
-  alarmLayout->addWidget(mAlarmSoundButton);
+  mAlarmEditButton = new QPushButton( i18n("Advanced..."), parent );
+  alarmLayout->addWidget( mAlarmEditButton );
+  connect( mAlarmEditButton, SIGNAL( clicked() ),
+      SLOT( editAlarms() ) );
 
-  mAlarmProgramButton = new QPushButton(parent);
-  QWhatsThis::add( mAlarmProgramButton,
-		   i18n("Sets a program to execute in conjunction with the "
-			"popup dialog.") );
-  mAlarmProgramButton->setIconSet(KOGlobals::self()->smallIconSet("runprog"));
-  mAlarmProgramButton->setToggleButton(true);
-  QToolTip::add(mAlarmProgramButton, i18n("No program set"));
-  connect(mAlarmProgramButton, SIGNAL(clicked()), SLOT(pickAlarmProgram()));
-  alarmLayout->addWidget(mAlarmProgramButton);
-
-  if ( KOPrefs::instance()->mCompactDialogs ) {
-    mAlarmSoundButton->hide();
-    mAlarmProgramButton->hide();
-  }
 }
 
-void KOEditorGeneral::pickAlarmSound()
+void KOEditorGeneral::editAlarms()
 {
-  QString prefix = KGlobal::dirs()->findResourceDir("data", "korganizer/sounds/alert.wav");
-  prefix += "/korganizer/sounds/alert.wav";
-  if (!mAlarmSoundButton->isOn()) {
-    mAlarmSound = "";
-    QToolTip::remove(mAlarmSoundButton);
-    QToolTip::add(mAlarmSoundButton, i18n("No sound set"));
-  } else {
-    QString fileName(KFileDialog::getOpenFileName(prefix,
-                                                  i18n("*.wav|Wav Files"), 0));
-    if (!fileName.isEmpty()) {
-      mAlarmSound = fileName;
-      QToolTip::remove(mAlarmSoundButton);
-      QString dispStr = i18n("Playing '%1'").arg(fileName);
-      QToolTip::add(mAlarmSoundButton, dispStr);
-      mAlarmProgramButton->setOn(false);
+  KMessageBox::sorry( mAlarmEditButton, i18n("Advanced alarm editing is still work in progress..."), i18n("Work in progress") );
+
+  if ( mAlarmStack->id( mAlarmStack->visibleWidget() ) == SimpleAlarmPage ) {
+    mAlarmList.clear();
+    Alarm *al = alarmFromSimplePage();
+    if ( al ) {
+      mAlarmList.append( al );
     }
   }
-  if (mAlarmSound.isEmpty())
-    mAlarmSoundButton->setOn(false);
-}
 
-void KOEditorGeneral::pickAlarmProgram()
-{
-  if (!mAlarmProgramButton->isOn()) {
-    mAlarmProgram = "";
-    QToolTip::remove(mAlarmProgramButton);
-    QToolTip::add(mAlarmProgramButton, i18n("No program set"));
-  } else {
-    QString fileName(KFileDialog::getOpenFileName(QString::null, QString::null, 0));
-    if (!fileName.isEmpty()) {
-      mAlarmProgram = fileName;
-      QToolTip::remove(mAlarmProgramButton);
-      QString dispStr = i18n("Running '%1'").arg(fileName);
-      QToolTip::add(mAlarmProgramButton, dispStr);
-      mAlarmSoundButton->setOn(false);
-    }
+  KOEditorAlarms *dlg = new KOEditorAlarms( &mAlarmList, mAlarmEditButton );
+  if ( dlg->exec() != KDialogBase::Cancel ) {
+    updateAlarmWidgets();
+    // TODO: Update the up
   }
-  if (mAlarmProgram.isEmpty())
-    mAlarmProgramButton->setOn(false);
 }
 
-
-
-void KOEditorGeneral::enableAlarmEdit(bool enable)
-{
-  mAlarmTimeEdit->setEnabled(enable);
-  mAlarmSoundButton->setEnabled(enable);
-  mAlarmProgramButton->setEnabled(enable);
-  mAlarmIncrCombo->setEnabled(enable);
-}
-
-void KOEditorGeneral::disableAlarmEdit(bool disable)
-{
-  enableAlarmEdit( !disable );
-}
 
 void KOEditorGeneral::enableAlarm( bool enable )
 {
-  enableAlarmEdit( enable );
-}
-
-void KOEditorGeneral::alarmDisable(bool disable)
-{
-  if (!disable) {
-    mAlarmBell->setEnabled(true);
-    mAlarmButton->setEnabled(true);
-  } else {
-    mAlarmBell->setEnabled(false);
-    mAlarmButton->setEnabled(false);
-    mAlarmButton->setChecked(false);
-    mAlarmTimeEdit->setEnabled(false);
-    mAlarmSoundButton->setEnabled(false);
-    mAlarmProgramButton->setEnabled(false);
-    mAlarmIncrCombo->setEnabled(false);
-  }
+  mAlarmStack->setEnabled( enable );
+  mAlarmEditButton->setEnabled( enable );
 }
 
 void KOEditorGeneral::setCategories(const QString &str)
@@ -319,14 +258,21 @@ void KOEditorGeneral::setCategories(const QString &str)
   mCategories = str;
 }
 
-void KOEditorGeneral::setDefaults(bool allDay)
+void KOEditorGeneral::setDefaults(bool /*allDay*/)
 {
 #if 0
   mOwnerLabel->setText(i18n("Owner: ") + KOPrefs::instance()->fullName());
 #endif
 
-  enableAlarmEdit( !allDay );
+  mAlarmList.clear();
+  updateDefaultAlarmTime();
+  updateAlarmWidgets();
 
+  mSecrecyCombo->setCurrentItem(Incidence::SecrecyPublic);
+}
+
+void KOEditorGeneral::updateDefaultAlarmTime()
+{
   // FIXME: Implement a KPrefsComboItem to solve this in a clean way.
 // FIXME: Use an int value for minutes instead of 5 hardcoded values
   int alarmTime;
@@ -337,11 +283,54 @@ void KOEditorGeneral::setDefaults(bool allDay)
   } else {
     alarmTime = a[index];
   }
-  mAlarmTimeEdit->setText(QString::number(alarmTime));
+  mAlarmTimeEdit->setValue(alarmTime);
+}
 
-  enableAlarmEdit( false );
+void KOEditorGeneral::updateAlarmWidgets()
+{
+  if ( mAlarmList.isEmpty() ) {
+    mAlarmStack->raiseWidget( SimpleAlarmPage );
+    mAlarmButton->setChecked( false );
+  } else if ( mAlarmList.count() > 1 ) {
+    mAlarmStack->raiseWidget( AdvancedAlarmLabel );
+    mAlarmInfoLabel->setText( i18n("1 alarm configured",
+                                   "%n alarms configured")
+                              .arg( mAlarmList.count() ) );
+  } else {
+    Alarm *alarm = mAlarmList.first();
+    // Check if its the trivial type of alarm, which can be
+    // configured with a simply spin box...
+// kdDebug() << "alarm->type() == Alarm::Display: " << (alarm->type() == Alarm::Display) << endl;
+// kdDebug() << "alarm->type(): " << alarm->type() << endl;
+// kdDebug() << "display="<<Alarm::Display<<", Audio:="<<Alarm::Audio<<", Procedure="<<Alarm::Procedure<<", Email="<<Alarm::Email<<", Invalid="<<Alarm::Invalid<<endl;
+//
+// kdDebug() << "alarm->text().isEmpty(): " << alarm->text().isEmpty() << endl;
+// kdDebug() << "alarm->hasStartOffset(): " << alarm->hasStartOffset() << endl;
+// kdDebug() << "alarm->repeatCount() == 0: " << (alarm->repeatCount() == 0) << endl;
+// kdDebug() << "!alarm->hasTime(): " << !alarm->hasTime() << endl;
 
-  mSecrecyCombo->setCurrentItem(Incidence::SecrecyPublic);
+    if ( alarm->type() == Alarm::Display && alarm->text().isEmpty()
+         && alarm->hasStartOffset() && alarm->repeatCount() == 0
+         && !alarm->hasTime() )  {
+      mAlarmStack->raiseWidget( SimpleAlarmPage );
+      mAlarmButton->setChecked( true );
+      int offset = alarm->startOffset().asSeconds();
+
+      offset = offset / -60; // make minutes
+      int useoffset = offset;
+      if (offset % (24*60) == 0) { // divides evenly into days?
+        useoffset = offset / (24*60);
+        mAlarmIncrCombo->setCurrentItem(2);
+      } else if (offset % 60 == 0) { // divides evenly into hours?
+        useoffset = offset / 60;
+        mAlarmIncrCombo->setCurrentItem(1);
+      }
+      mAlarmTimeEdit->setValue( useoffset );
+    } else {
+      mAlarmStack->raiseWidget( AdvancedAlarmLabel );
+      mAlarmInfoLabel->setText( i18n("1 advanced alarm configured") );
+    }
+  }
 }
 
 void KOEditorGeneral::readIncidence(Incidence *event)
@@ -356,68 +345,41 @@ void KOEditorGeneral::readIncidence(Incidence *event)
   mOwnerLabel->setText(i18n("Owner: ") + event->organizer().fullName() );
 #endif
 
-  enableAlarmEdit( event->isAlarmEnabled() );
-
-  if(!event->isAlarmEnabled()) {
-    // FIXME: Implement a KPrefsComboItem to solve this in a clean way.
-// FIXME: Use an int value for minutes instead of 5 hardcoded values
-    int alarmTime;
-    int a[] = { 1,5,10,15,30 };
-    int index = KOPrefs::instance()->mAlarmTime;
-    if (index < 0 || index > 4) {
-      alarmTime = 0;
-    } else {
-      alarmTime = a[index];
-    }
-    mAlarmTimeEdit->setText(QString::number(alarmTime));
-  }
-
   mSecrecyCombo->setCurrentItem(event->secrecy());
 
   // set up alarm stuff
-  Alarm::List alarms = event->alarms();
+  mAlarmList.clear();
   Alarm::List::ConstIterator it;
+  Alarm::List alarms = event->alarms();
   for( it = alarms.begin(); it != alarms.end(); ++it ) {
-    Alarm *alarm = *it;
-    int offset;
-    if ( alarm->hasTime() ) {
-      QDateTime t = alarm->time();
-      offset = event->dtStart().secsTo( t );
-    } else {
-      offset = alarm->startOffset().asSeconds();
-    }
-    offset = offset / -60; // make minutes
-    int useoffset = offset;
-    if (offset % (24*60) == 0) { // divides evenly into days?
-      useoffset = offset / (24*60);
-      mAlarmIncrCombo->setCurrentItem(2);
-    } else if (offset % 60 == 0) { // divides evenly into hours?
-      useoffset = offset / 60;
-      mAlarmIncrCombo->setCurrentItem(1);
-    }
-    mAlarmTimeEdit->setText(QString::number( useoffset ));
-
-    if (alarm->type() == Alarm::Procedure) {
-      mAlarmProgram = alarm->programFile();
-      mAlarmProgramButton->setOn(true);
-      QString dispStr = i18n("Running '%1'").arg(mAlarmProgram);
-      QToolTip::add(mAlarmProgramButton, dispStr);
-    }
-    else if (alarm->type() == Alarm::Audio) {
-      mAlarmSound = alarm->audioFile();
-      mAlarmSoundButton->setOn(true);
-      QString dispStr = i18n("Playing '%1'").arg(mAlarmSound);
-      QToolTip::add(mAlarmSoundButton, dispStr);
-    }
-    mAlarmButton->setChecked(alarm->enabled());
-    enableAlarmEdit( alarm->enabled() );
-// FIXME: Deal with multiple alarms
-    break; // For now, stop after the first alarm
+    Alarm *al = new Alarm( *(*it) );
+    al->setParent( 0 );
+    mAlarmList.append( al );
   }
+  updateDefaultAlarmTime();
+  updateAlarmWidgets();
 
   setCategories(event->categoriesStr());
 }
 
+Alarm *KOEditorGeneral::alarmFromSimplePage() const
+{
+  if ( mAlarmButton->isChecked() ) {
+    Alarm *alarm = new Alarm( 0 );
+    alarm->setDisplayAlarm("");
+    alarm->setEnabled(true);
+    QString tmpStr = mAlarmTimeEdit->text();
+    int j = mAlarmTimeEdit->value() * -60;
+    if (mAlarmIncrCombo->currentItem() == 1)
+      j = j * 60;
+    else if (mAlarmIncrCombo->currentItem() == 2)
+      j = j * (60 * 24);
+    alarm->setStartOffset( j );
+    return alarm;
+  } else {
+    return 0;
+  }
+}
 void KOEditorGeneral::writeIncidence(Incidence *event)
 {
 //  kdDebug(5850) << "KOEditorGeneral::writeEvent()" << endl;
@@ -429,38 +391,20 @@ void KOEditorGeneral::writeIncidence(Incidence *event)
   event->setSecrecy(mSecrecyCombo->currentItem());
 
   // alarm stuff
-  if (mAlarmButton->isChecked()) {
-    if (event->alarms().count() == 0) event->newAlarm();
-    Alarm::List alarms = event->alarms();
-    Alarm::List::ConstIterator it;
-    for( it = alarms.begin(); it != alarms.end(); ++it ) {
-      Alarm *alarm = *it;
-      alarm->setEnabled(true);
-
-      QString tmpStr = mAlarmTimeEdit->text();
-      int j = tmpStr.toInt() * -60;
-      if (mAlarmIncrCombo->currentItem() == 1)
-        j = j * 60;
-      else if (mAlarmIncrCombo->currentItem() == 2)
-        j = j * (60 * 24);
-      alarm->setStartOffset( j );
-
-      if (!mAlarmSound.isEmpty() && mAlarmSoundButton->isOn())
-        alarm->setAudioAlarm(mAlarmSound);
-      else
-        alarm->setDisplayAlarm(QString::null);
-      // FIXME: Make sure all alarm options are correctly set and don't erase other options!
-      if (!mAlarmProgram.isEmpty() && mAlarmProgramButton->isOn())
-        alarm->setProcedureAlarm(mAlarmProgram);
-
-// FIXME: Deal with multiple alarms
-      break; // For now, stop after the first alarm
+  event->clearAlarms();
+  if ( mAlarmStack->id( mAlarmStack->visibleWidget() ) == SimpleAlarmPage ) {
+    Alarm *al = alarmFromSimplePage();
+    if ( al ) {
+      al->setParent( event );
+      event->addAlarm( al );
     }
   } else {
-    if ( !event->alarms().isEmpty() ) {
-      Alarm *alarm = event->alarms().first();
-      alarm->setEnabled(false);
-      alarm->setType(Alarm::Invalid);
+    // simply assign the list of alarms
+    Alarm::List::ConstIterator it;
+    for( it = mAlarmList.begin(); it != mAlarmList.end(); ++it ) {
+      Alarm *al = new Alarm( *(*it) );
+      al->setParent( event );
+      event->addAlarm( al );
     }
   }
 }

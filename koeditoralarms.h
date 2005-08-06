@@ -24,36 +24,31 @@
 #ifndef KOEDITORALARMS_H
 #define KOEDITORALARMS_H
 
-#include <qwidget.h>
-#include <koeditoralarms_base.h>
+#include <kdialogbase.h>
+#include <libkcal/alarm.h>
 
-namespace KCal {
-class Incidence;
-}
-using namespace KCal;
+class KOEditorAlarms_base;
 
-class QListViewItem;
-class QListView;
-
-class KOEditorAlarms : public KOEditorAlarms_base
+class KOEditorAlarms : public KDialogBase
 {
     Q_OBJECT
   public:
-    KOEditorAlarms( int spacing = 8, QWidget *parent = 0,
+    KOEditorAlarms( KCal::Alarm::List *alarms, QWidget *parent = 0,
                     const char *name = 0 );
     ~KOEditorAlarms();
 
     /** Set widgets to default values */
-    void setDefaults();
-    /** Read event object and setup widgets accordingly */
-    void readIncidence( Incidence * );
-    /** Write event settings to event object */
-    void writeIncidence( Incidence * );
+//     void setDefaults();
 
   protected slots:
     void slotAdd();
     void slotEdit();
     void slotRemove();
+  protected:
+    void init();
+  private:
+    KCal::Alarm::List *mAlarms;
+    KOEditorAlarms_base *mWidget;
 };
 
 #endif

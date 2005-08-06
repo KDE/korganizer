@@ -23,6 +23,7 @@
 #ifndef KOEDITORGENERAL_H
 #define KOEDITORGENERAL_H
 
+#include <libkcal/alarm.h>
 #include <qlineedit.h>
 
 class QWidget;
@@ -30,7 +31,8 @@ class QBoxLayout;
 class QLineEdit;
 class QLabel;
 class QCheckBox;
-class KRestrictedLine;
+class QWidgetStack;
+class QSpinBox;
 class QPushButton;
 class QComboBox;
 class KTextEdit;
@@ -46,13 +48,13 @@ class FocusLineEdit : public QLineEdit
     Q_OBJECT
   public:
     FocusLineEdit( QWidget *parent );
-    
+
   signals:
     void focusReceivedSignal();
 
   protected:
     void focusInEvent ( QFocusEvent *e );
-  
+
   private:
     bool mSkipFirst;
 };
@@ -67,7 +69,7 @@ class KOEditorGeneral : public QObject
     void initHeader(QWidget *,QBoxLayout *);
     void initDescription(QWidget *,QBoxLayout *);
     void initSecrecy(QWidget *,QBoxLayout *);
-    void initCategories(QWidget *,QBoxLayout *);    
+    void initCategories(QWidget *,QBoxLayout *);
     void initAlarm(QWidget *,QBoxLayout *);
 
     /** Set widgets to default values */
@@ -91,35 +93,37 @@ class KOEditorGeneral : public QObject
     void setCategories(const QString &);
 
   protected slots:
-    void enableAlarmEdit( bool enable );
-    void disableAlarmEdit( bool disable );
-    void alarmDisable( bool disable );
-    void pickAlarmSound();
-    void pickAlarmProgram();
+    void editAlarms();
+    void updateAlarmWidgets();
+    void updateDefaultAlarmTime();
 
   signals:
     void openCategoryDialog();
     void focusReceivedSignal();
-    
+
   protected:
+    Alarm *alarmFromSimplePage() const;
+
     QLineEdit               *mSummaryEdit;
     QLineEdit               *mLocationEdit;
     QLabel                  *mAlarmBell;
+    QWidgetStack            *mAlarmStack;
+    QLabel                  *mAlarmInfoLabel;
     QCheckBox               *mAlarmButton;
-    KRestrictedLine         *mAlarmTimeEdit;
-    QPushButton             *mAlarmSoundButton;
-    QPushButton             *mAlarmProgramButton;
+    QSpinBox                *mAlarmTimeEdit;
     QComboBox               *mAlarmIncrCombo;
+    QPushButton             *mAlarmEditButton;
     KTextEdit               *mDescriptionEdit;
     QLabel                  *mOwnerLabel;
     QComboBox               *mSecrecyCombo;
     QPushButton             *mCategoriesButton;
     KSqueezedTextLabel      *mCategoriesLabel;
-     
+
+    enum AlarmStackPages { SimpleAlarmPage, AdvancedAlarmLabel };
+
   private:
     QString mCategories;
-    QString mAlarmSound;
-    QString mAlarmProgram;
+    KCal::Alarm::List mAlarmList;
 };
 
 #endif
