@@ -218,6 +218,8 @@ void KOEditorGeneral::initAlarm(QWidget *parent,QBoxLayout *topLayout)
 //  mAlarmIncrCombo->setMinimumHeight(20);
   connect(mAlarmButton, SIGNAL(toggled(bool)), mAlarmTimeEdit, SLOT(setEnabled(bool)));
   connect(mAlarmButton, SIGNAL(toggled(bool)), mAlarmIncrCombo, SLOT(setEnabled(bool)));
+  mAlarmTimeEdit->setEnabled( false );
+  mAlarmIncrCombo->setEnabled( false );
 
   mAlarmEditButton = new QPushButton( i18n("Advanced..."), parent );
   alarmLayout->addWidget( mAlarmEditButton );
@@ -228,8 +230,6 @@ void KOEditorGeneral::initAlarm(QWidget *parent,QBoxLayout *topLayout)
 
 void KOEditorGeneral::editAlarms()
 {
-  KMessageBox::sorry( mAlarmEditButton, i18n("Advanced alarm editing is still work in progress..."), i18n("Work in progress") );
-
   if ( mAlarmStack->id( mAlarmStack->visibleWidget() ) == SimpleAlarmPage ) {
     mAlarmList.clear();
     Alarm *al = alarmFromSimplePage();
@@ -241,7 +241,6 @@ void KOEditorGeneral::editAlarms()
   KOEditorAlarms *dlg = new KOEditorAlarms( &mAlarmList, mAlarmEditButton );
   if ( dlg->exec() != KDialogBase::Cancel ) {
     updateAlarmWidgets();
-    // TODO: Update the up
   }
 }
 
@@ -294,24 +293,16 @@ void KOEditorGeneral::updateAlarmWidgets()
   } else if ( mAlarmList.count() > 1 ) {
     mAlarmStack->raiseWidget( AdvancedAlarmLabel );
     mAlarmInfoLabel->setText( i18n("1 alarm configured",
-                                   "%n alarms configured")
-                              .arg( mAlarmList.count() ) );
+                                   "%n alarms configured",
+                                   mAlarmList.count() ) );
   } else {
     Alarm *alarm = mAlarmList.first();
     // Check if its the trivial type of alarm, which can be
     // configured with a simply spin box...
-// kdDebug() << "alarm->type() == Alarm::Display: " << (alarm->type() == Alarm::Display) << endl;
-// kdDebug() << "alarm->type(): " << alarm->type() << endl;
-// kdDebug() << "display="<<Alarm::Display<<", Audio:="<<Alarm::Audio<<", Procedure="<<Alarm::Procedure<<", Email="<<Alarm::Email<<", Invalid="<<Alarm::Invalid<<endl;
-//
-// kdDebug() << "alarm->text().isEmpty(): " << alarm->text().isEmpty() << endl;
-// kdDebug() << "alarm->hasStartOffset(): " << alarm->hasStartOffset() << endl;
-// kdDebug() << "alarm->repeatCount() == 0: " << (alarm->repeatCount() == 0) << endl;
-// kdDebug() << "!alarm->hasTime(): " << !alarm->hasTime() << endl;
 
     if ( alarm->type() == Alarm::Display && alarm->text().isEmpty()
-         && alarm->hasStartOffset() && alarm->repeatCount() == 0
-         && !alarm->hasTime() )  {
+         && alarm->repeatCount() == 0 && !alarm->hasTime()
+         && alarm->hasStartOffset() && alarm->startOffset().asSeconds() < 0 )  {
       mAlarmStack->raiseWidget( SimpleAlarmPage );
       mAlarmButton->setChecked( true );
       int offset = alarm->startOffset().asSeconds();
@@ -404,6 +395,7 @@ void KOEditorGeneral::writeIncidence(Incidence *event)
     for( it = mAlarmList.begin(); it != mAlarmList.end(); ++it ) {
       Alarm *al = new Alarm( *(*it) );
       al->setParent( event );
+      al->setEnabled( true );
       event->addAlarm( al );
     }
   }

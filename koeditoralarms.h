@@ -29,6 +29,8 @@
 
 class KOEditorAlarms_base;
 
+class AlarmListViewItem;
+
 class KOEditorAlarms : public KDialogBase
 {
     Q_OBJECT
@@ -37,18 +39,23 @@ class KOEditorAlarms : public KDialogBase
                     const char *name = 0 );
     ~KOEditorAlarms();
 
-    /** Set widgets to default values */
-//     void setDefaults();
-
   protected slots:
+    void slotApply();
+    void slotOk();
     void slotAdd();
-    void slotEdit();
+    void slotDuplicate();
     void slotRemove();
+    void changed();
+    void selectionChanged( QListViewItem *listviewitem );
   protected:
     void init();
+    void readAlarm( KCal::Alarm *alarm );
+    void writeAlarm( KCal::Alarm *alarm );
   private:
     KCal::Alarm::List *mAlarms;
     KOEditorAlarms_base *mWidget;
+    bool mInitializing;
+    AlarmListViewItem *mCurrentItem;
 };
 
 #endif
