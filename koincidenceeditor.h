@@ -40,7 +40,6 @@ namespace KOrg { class IncidenceChangerBase; }
 
 class KOEditorDetails;
 class KOEditorAttachments;
-class KOEditorAlarms;
 
 namespace KCal {
 class Calendar;
@@ -107,7 +106,6 @@ class KOIncidenceEditor : public KDialogBase
 
     void setupAttendeesTab();
     void setupAttachmentsTab();
-    void setupAlarmsTab();
     void setupDesignerTabs( const QString &type );
 
     void saveAsTemplate( Incidence *, const QString &name );
@@ -136,7 +134,6 @@ class KOIncidenceEditor : public KDialogBase
 
     KOEditorDetails *mDetails;
     KOEditorAttachments *mAttachments;
-    KOEditorAlarms *mAlarms;
     KOrg::IncidenceChangerBase *mChanger;
 
     QPtrList<KPIM::DesignerFields> mDesignerFields;

@@ -58,7 +58,7 @@ KOIncidenceEditor::KOIncidenceEditor( const QString &caption,
                                       Calendar *calendar, QWidget *parent )
   : KDialogBase( Tabbed, caption, Ok | Apply | Cancel | Default, Ok,
                  parent, 0, false, false ),
-    mDetails( 0 ), mAttachments( 0 ), mAlarms( 0 )
+    mDetails( 0 ), mAttachments( 0 )
 {
   // Set this to be the group leader for all subdialogs - this means
   // modal subdialogs will only affect this dialog, not the other windows
@@ -115,16 +115,6 @@ void KOIncidenceEditor::setupAttachmentsTab()
   connect( mAttachments, SIGNAL( openURL( const KURL & ) ) ,
            this, SLOT( openURL( const KURL & ) ) );
   topLayout->addWidget( mAttachments );
-}
-
-void KOIncidenceEditor::setupAlarmsTab()
-{
-  QFrame *topFrame = addPage( i18n("Re&minders") );
-
-  QBoxLayout *topLayout = new QVBoxLayout( topFrame );
-
-  mAlarms = new KOEditorAlarms( spacingHint(), topFrame );
-  topLayout->addWidget( mAlarms );
 }
 
 void KOIncidenceEditor::slotApply()
