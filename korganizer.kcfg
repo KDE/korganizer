@@ -4,16 +4,19 @@
       xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0
       http://www.kde.org/standards/kcfg/1.0/kcfg.xsd" >
   <kcfgfile name="korganizerrc"/>
+  <include>klocale.h</include>
 
   <group name="General">
     <entry type="Bool" key="Auto Save">
-      <label>Enable automatic saving of calendar</label>
-      <whatsthis>Check this box to save your calendar automatically when you exit KOrganizer without asking and periodically, as you work.</whatsthis>
+      <label>Enable automatic saving of manually opened calendar files</label>
+      <whatsthis>Check this box to save your calendar file automatically when you exit KOrganizer without asking and periodically, as you work. This setting does not affect the automatic saving of the standard calendar, which is automatically saved after each change.</whatsthis>
       <default>true</default>
     </entry>
     <entry type="Int" key="Auto Save Interval">
-      <whatsthis>Set the interval between automatic saving of calendar events in minutes here.</whatsthis>
+      <label>Save &amp;interval in minutes:</label>
+      <whatsthis>Set the interval between automatic saving of calendar events in minutes here. This setting only applies to files that are opened manually. The standard KDE-wide calendar is automatically saved after each change.</whatsthis>
       <default>10</default>
+      <min>1</min>
     </entry>
     <entry type="Bool" key="Confirm Deletes" name="Confirm">
       <label>Confirm deletes</label>
@@ -100,6 +103,16 @@
       <label>Use email settings from Control Center</label>
       <whatsthis>Check this box to use the KDE-wide e-mail settings, which are defined using the KDE Control Center &quot;Password &amp; User Account&quot; Module. Uncheck this box to be able to specify your full name and e-mail.</whatsthis>
       <default>true</default>
+    </entry>
+    <entry type="String" key="user_name" name="UserName">
+      <label>Full &name</label>
+      <whatsthis>Enter here your full name. This name will be displayed as "Organizer" in to-dos and events you create.</whatsthis>
+      <default code="true">i18n(&quot;Anonymous&quot;)</default>
+    </entry>
+    <entry type="String" key="user_email" name="UserEmail">
+      <label>E&amp;mail address</label>
+      <whatsthis>Enter here your e-mail address. This e-mail address will be used to identify the owner of the calendar, and displayed in events and to-dos you create.</whatsthis>
+      <default code="true">i18n(&quot;nobody@nowhere&quot;)</default>
     </entry>
     <entry type="Enum" key="Mail Client">
       <label>Mail Client</label>

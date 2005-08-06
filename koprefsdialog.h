@@ -44,19 +44,10 @@ class KDE_EXPORT KOPrefsDialogMain : public KPrefsModule
   public:
     KOPrefsDialogMain( QWidget *parent, const char *name );
 
-  protected:
-    void usrReadConfig();
-    void usrWriteConfig();
-
   protected slots:
     void toggleEmailSettings( bool on );
-
   private:
-    QLineEdit *mNameEdit;
-    QLineEdit *mEmailEdit;
-    QLabel *mNameLabel;
-    QLabel *mEmailLabel;
-    QSpinBox  *mAutoSaveIntervalSpin;
+    QWidget *mUserEmailSettings;
 };
 
 class KDE_EXPORT KOPrefsDialogColors : public KPrefsModule
@@ -81,7 +72,7 @@ class KDE_EXPORT KOPrefsDialogColors : public KPrefsModule
     QComboBox     *mCategoryCombo;
     KColorButton  *mCategoryButton;
     QDict<QColor> mCategoryDict;
-    
+
     QComboBox     *mResourceCombo;
     KColorButton  *mResourceButton;
     QDict<QColor> mResourceDict;
@@ -98,7 +89,7 @@ class KDE_EXPORT KOPrefsDialogGroupScheduling : public KPrefsModule
   protected:
     void usrReadConfig();
     void usrWriteConfig();
-  
+
   protected slots:
     void addItem();
     void removeItem();

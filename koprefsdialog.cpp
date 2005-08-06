@@ -32,6 +32,8 @@
 #include <qfile.h>
 #include <qcombobox.h>
 #include <qhbox.h>
+#include <qvbox.h>
+#include <qgrid.h>
 #include <qspinbox.h>
 #include <qcheckbox.h>
 #include <qradiobutton.h>
@@ -79,121 +81,55 @@ KOPrefsDialogMain::KOPrefsDialogMain( QWidget *parent, const char *name )
 {
   QBoxLayout *topTopLayout = new QVBoxLayout( this );
 
-  QWidget *topFrame = new QWidget( this );
+  QVBox *topFrame = new QVBox( this );
   topTopLayout->addWidget( topFrame );
 
-  QGridLayout *topLayout = new QGridLayout(topFrame,6,2);
-  topLayout->setSpacing( KDialog::spacingHint() );
+  topFrame->setSpacing( KDialog::spacingHint() );
 
   KPrefsWidBool *emailControlCenter =
       addWidBool( KOPrefs::instance()->emailControlCenterItem(), topFrame );
-  topLayout->addMultiCellWidget(emailControlCenter->checkBox(),0,0,0,1);
   connect(emailControlCenter->checkBox(),SIGNAL(toggled(bool)),
           SLOT(toggleEmailSettings(bool)));
 
-  mNameEdit = new QLineEdit(topFrame);
-  connect( mNameEdit, SIGNAL( textChanged( const QString & ) ),
-           SLOT( slotWidChanged() ) );
-  mNameLabel = new QLabel(mNameEdit, i18n("Full &name:"), topFrame);
-  topLayout->addWidget(mNameLabel,1,0);
-  QString whatsThis = i18n( "Enter here your full name. This name will be "
-                            "displayed as \"Organizer\" in to-dos and "
-                            "events you create." );
-  QWhatsThis::add( mNameLabel, whatsThis );
-  topLayout->addWidget(mNameEdit,1,1);
-  QWhatsThis::add( mNameEdit, whatsThis );
-  mEmailEdit = new QLineEdit(topFrame);
-  connect( mEmailEdit, SIGNAL( textChanged( const QString & ) ),
-           SLOT( slotWidChanged() ) );
-  mEmailLabel = new QLabel(mEmailEdit, i18n("E&mail address:"),topFrame);
-  topLayout->addWidget(mEmailLabel,2,0);
-  whatsThis = i18n( "Enter here your e-mail address. This e-mail address "
-                    "will be used to identify the owner of the calendar, "
-                    "and displayed in events and to-dos you create." );
-  QWhatsThis::add( mEmailLabel, whatsThis );
-  topLayout->addWidget(mEmailEdit,2,1);
-  QWhatsThis::add( mEmailEdit, whatsThis );
+  mUserEmailSettings = new QGrid( 2, topFrame );
 
-  KPrefsWidBool *bcc =
-      addWidBool( KOPrefs::instance()->bccItem(), topFrame );
-  topLayout->addMultiCellWidget(bcc->checkBox(),4,4,0,1);
+  KPrefsWidString *userName =
+      addWidString( KOPrefs::instance()->userNameItem(), mUserEmailSettings );
+  addWidString( KOPrefs::instance()->userEmailItem(), mUserEmailSettings );
 
-
-  QGroupBox *autoSaveGroup = new QGroupBox(1,Horizontal,i18n("Auto-Save"),
+  QGroupBox *saveGroup = new QGroupBox(1,Horizontal,i18n("Saving the Calendar"),
                                            topFrame);
-  topLayout->addMultiCellWidget(autoSaveGroup,6,6,0,1);
 
-  addWidBool( KOPrefs::instance()->autoSaveItem(), autoSaveGroup );
+  addWidBool( KOPrefs::instance()->htmlWithSaveItem(), saveGroup );
 
-  QHBox *intervalBox = new QHBox(autoSaveGroup);
+  KPrefsWidBool *autoSave = addWidBool( KOPrefs::instance()->autoSaveItem(), saveGroup );
+
+  QHBox *intervalBox = new QHBox( saveGroup );
+  addWidInt( KOPrefs::instance()->autoSaveIntervalItem(), intervalBox );
+  connect( autoSave->checkBox(), SIGNAL( toggled( bool ) ),
+           intervalBox, SLOT( setEnabled( bool ) ) );
   intervalBox->setSpacing( KDialog::spacingHint() );
+  new QWidget( intervalBox );
 
-  QLabel *autoSaveIntervalLabel = new QLabel(i18n("Save &interval in minutes:"),intervalBox);
-  whatsThis =  i18n( "Set on this spin box the interval in minutes between "
-                     "automatic saves of calendar data." );
-  QWhatsThis::add( autoSaveIntervalLabel, whatsThis );
+  addWidBool( KOPrefs::instance()->confirmItem(), topFrame );
+  addWidRadios( KOPrefs::instance()->destinationItem(), topFrame);
 
-  mAutoSaveIntervalSpin = new QSpinBox(0,500,1,intervalBox);
-  QWhatsThis::add( mAutoSaveIntervalSpin, whatsThis );
-  connect( mAutoSaveIntervalSpin, SIGNAL( valueChanged( int ) ),
-           SLOT( slotWidChanged() ) );
-  autoSaveIntervalLabel->setBuddy(mAutoSaveIntervalSpin);
-
-  KPrefsWidBool *confirmCheck =
-      addWidBool( KOPrefs::instance()->confirmItem(), topFrame );
-  topLayout->addMultiCellWidget(confirmCheck->checkBox(),7,7,0,1);
-
-  KPrefsWidBool *htmlsave =
-      addWidBool( KOPrefs::instance()->htmlWithSaveItem(),
-                  topFrame );
-  topLayout->addMultiCellWidget(htmlsave->checkBox(),13,13,0,1);
-
-  KPrefsWidRadios *destinationGroup =
-      addWidRadios( KOPrefs::instance()->destinationItem(),
-                   topFrame);
-  topLayout->addMultiCellWidget(destinationGroup->groupBox(),14,14,0,1);
-
-  topLayout->setRowStretch(15,1);
+  topTopLayout->addStretch( 1 );
 
   load();
 }
 
-void KOPrefsDialogMain::usrReadConfig()
-{
-  mNameEdit->setText(KOPrefs::instance()->fullName());
-  mEmailEdit->setText(KOPrefs::instance()->email());
-
-  mAutoSaveIntervalSpin->setValue(KOPrefs::instance()->mAutoSaveInterval);
-}
-
-void KOPrefsDialogMain::usrWriteConfig()
-{
-  KOPrefs::instance()->setFullName(mNameEdit->text());
-  KOPrefs::instance()->setEmail(mEmailEdit->text());
-
-  KOPrefs::instance()->mAutoSaveInterval = mAutoSaveIntervalSpin->value();
-}
-
 void KOPrefsDialogMain::toggleEmailSettings( bool on )
 {
-  if (on) {
-    mEmailEdit->setEnabled(false);
-    mNameEdit->setEnabled(false);
-    mEmailLabel->setEnabled(false);
-    mNameLabel->setEnabled(false);
-
+  mUserEmailSettings->setEnabled( !on );
+/*  if (on) {
     KEMailSettings settings;
-    mNameEdit->setText(settings.getSetting(KEMailSettings::RealName));
-    mEmailEdit->setText(settings.getSetting(KEMailSettings::EmailAddress));
+    mNameEdit->setText( settings.getSetting(KEMailSettings::RealName) );
+    mEmailEdit->setText( settings.getSetting(KEMailSettings::EmailAddress) );
   } else {
-    mEmailEdit->setEnabled(true);
-    mNameEdit->setEnabled(true);
-    mEmailLabel->setEnabled(true);
-    mNameLabel->setEnabled(true);
-
     mNameEdit->setText( KOPrefs::instance()->mName );
     mEmailEdit->setText( KOPrefs::instance()->mEmail );
-  }
+  }*/
 }
 
 extern "C"
@@ -419,7 +355,7 @@ class KOPrefsDialogTime : public KPrefsModule
                                "working hours for this day of the week. "
                                "If this is a work day for you, check "
                                "this box, or the working hours will not be "
-                               "marked with color." ) ); 
+                               "marked with color." ) );
 
         connect( mWorkDays[ index ], SIGNAL( stateChanged( int ) ),
                SLOT( slotWidChanged() ) );
@@ -552,6 +488,7 @@ class KOPrefsDialogViews : public KPrefsModule
       KPrefsWidInt *hourSize =
           addWidInt( KOPrefs::instance()->hourSizeItem(), hourSizeBox );
       hourSize->spinBox()->setSuffix(i18n("suffix in the hour size spin box", " pixel"));
+      // horizontal spacer:
       new QWidget( hourSizeBox );
 
       QHBox *nextDaysBox = new QHBox( agendaGroup );
@@ -890,9 +827,13 @@ KOPrefsDialogGroupScheduling::KOPrefsDialogGroupScheduling( QWidget *parent, con
 //   connect(thekmailradiobuttonupthere,SIGNAL(toggled(bool)),
 //           useGroupwareBool->checkBox(), SLOT(enabled(bool)));
 
+  KPrefsWidBool *bcc =
+      addWidBool( KOPrefs::instance()->bccItem(), topFrame );
+  topLayout->addMultiCellWidget(bcc->checkBox(),1,1,0,1);
+
   KPrefsWidRadios *mailClientGroup =
       addWidRadios( KOPrefs::instance()->mailClientItem(), topFrame );
-  topLayout->addMultiCellWidget(mailClientGroup->groupBox(),1,1,0,1);
+  topLayout->addMultiCellWidget(mailClientGroup->groupBox(),2,2,0,1);
 
 
 #if 0
@@ -914,12 +855,12 @@ KOPrefsDialogGroupScheduling::KOPrefsDialogGroupScheduling( QWidget *parent, con
                             "list this address here so KOrganizer can "
                             "recognize it as yours." );
   QWhatsThis::add( aMailsLabel, whatsThis );
-  topLayout->addMultiCellWidget(aMailsLabel,2,2,0,1);
+  topLayout->addMultiCellWidget(aMailsLabel,3,3,0,1);
   mAMails = new QListView(topFrame);
   QWhatsThis::add( mAMails, whatsThis );
 
   mAMails->addColumn(i18n("Email"),300);
-  topLayout->addMultiCellWidget(mAMails,3,3,0,1);
+  topLayout->addMultiCellWidget(mAMails,4,4,0,1);
 
   QLabel *aEmailsEditLabel = new QLabel(i18n("Additional email address:"),topFrame);
   whatsThis = i18n( "Edit additional e-mails addresses here. To edit an "
@@ -928,21 +869,21 @@ KOPrefsDialogGroupScheduling::KOPrefsDialogGroupScheduling( QWidget *parent, con
                     "addresses are the ones you have in addition to the "
                     "one set in personal preferences." );
   QWhatsThis::add( aEmailsEditLabel, whatsThis );
-  topLayout->addWidget(aEmailsEditLabel,4,0);
+  topLayout->addWidget(aEmailsEditLabel,5,0);
   aEmailsEdit = new QLineEdit(topFrame);
   QWhatsThis::add( aEmailsEdit, whatsThis );
   aEmailsEdit->setEnabled(false);
-  topLayout->addWidget(aEmailsEdit,4,1);
+  topLayout->addWidget(aEmailsEdit,5,1);
 
   QPushButton *add = new QPushButton(i18n("New"),topFrame,"new");
   whatsThis = i18n( "Press this button to add a new entry to the "
                     "additional e-mail addresses list. Use the edit "
-                    "box above to edit the new entry." ); 
+                    "box above to edit the new entry." );
   QWhatsThis::add( add, whatsThis );
-  topLayout->addWidget(add,5,0);
+  topLayout->addWidget(add,6,0);
   QPushButton *del = new QPushButton(i18n("Remove"),topFrame,"remove");
   QWhatsThis::add( del, whatsThis );
-  topLayout->addWidget(del,5,1);
+  topLayout->addWidget(del,6,1);
 
   //topLayout->setRowStretch(2,1);
   connect(add, SIGNAL( clicked() ), this, SLOT(addItem()) );

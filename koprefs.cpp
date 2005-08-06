@@ -105,8 +105,10 @@ void KOPrefs::usrSetDefaults()
   // settings for example.
 
   KEMailSettings settings;
-  mName = settings.getSetting(KEMailSettings::RealName);
-  mEmail = settings.getSetting(KEMailSettings::EmailAddress);
+  QString tmp = settings.getSetting(KEMailSettings::RealName);
+  if ( !tmp.isEmpty() ) setUserName( tmp );
+  tmp = settings.getSetting(KEMailSettings::EmailAddress);
+  if ( !tmp.isEmpty() ) setUserEmail( tmp );
   fillMailDefaults();
 
   mMonthViewFont = mDefaultMonthViewFont;
@@ -118,16 +120,16 @@ void KOPrefs::usrSetDefaults()
 
 void KOPrefs::fillMailDefaults()
 {
-  QString defaultEmail = i18n("nobody@nowhere");
-  if (mEmail.isEmpty())
-    mEmail = defaultEmail;
-  if ( mEmail == defaultEmail ) { // from the line above, or from using korganizer previously
+  userEmailItem()->swapDefault();
+  QString defEmail = userEmailItem()->value();
+  userEmailItem()->swapDefault();
+
+  if ( userEmail() == defEmail ) {
     // No korg settings - but maybe there's a kcontrol[/kmail] setting available
     KEMailSettings settings;
     if ( !settings.getSetting( KEMailSettings::EmailAddress ).isEmpty() )
       mEmailControlCenter = true;
   }
-  if (mName.isEmpty()) mName = i18n("Anonymous");
 }
 
 void KOPrefs::setTimeZoneIdDefault()
@@ -173,11 +175,6 @@ void KOPrefs::usrReadConfig()
   mCustomCategories = config()->readListEntry("Custom Categories");
   if (mCustomCategories.isEmpty()) setCategoryDefaults();
 
-  config()->setGroup("Personal Settings");
-  mName = config()->readEntry("user_name");
-  mEmail = config()->readEntry("user_email");
-  fillMailDefaults();
-
   // old category colors, ignore if they have the old default
   // should be removed a few versions after 3.2...
   config()->setGroup("Category Colors");
@@ -199,26 +196,27 @@ void KOPrefs::usrReadConfig()
 
   config()->setGroup( "Resources Colors" );
   QMap<QString, QString> map = config()->entryMap( "Resources Colors" );
-  
+
   QMapIterator<QString, QString> it3;
   for( it3 = map.begin(); it3 != map.end(); ++it3 ) {
-    kdDebug(5850)<< "KOPrefs::usrReadConfig: key: " << it3.key() << " value: " 
+    kdDebug(5850)<< "KOPrefs::usrReadConfig: key: " << it3.key() << " value: "
       << it3.data()<<endl;
-    setResourceColor( it3.key(), config()->readColorEntry( it3.key(), 
+    setResourceColor( it3.key(), config()->readColorEntry( it3.key(),
       &mDefaultResourceColor ) );
   }
-  
-  
+
+
   if (mTimeZoneId.isEmpty()) {
     setTimeZoneIdDefault();
   }
 
-  config()->setGroup("FreeBusy");
 #if 0
+  config()->setGroup("FreeBusy");
   if( mRememberRetrievePw )
     mRetrievePassword = KStringHandler::obscure( config()->readEntry( "Retrieve Server Password" ) );
 #endif
   KPimPrefs::usrReadConfig();
+  fillMailDefaults();
 }
 
 
@@ -226,10 +224,6 @@ void KOPrefs::usrWriteConfig()
 {
   config()->setGroup("General");
   config()->writeEntry("Custom Categories",mCustomCategories);
-
-  config()->setGroup("Personal Settings");
-  config()->writeEntry("user_name",mName);
-  config()->writeEntry("user_email",mEmail);
 
   config()->setGroup("Category Colors2");
   QDictIterator<QColor> it(mCategoryColors);
@@ -244,7 +238,7 @@ void KOPrefs::usrWriteConfig()
     config()->writeEntry( it2.currentKey(), *( it2.current() ) );
     ++it2;
   }
-  
+
   if( !mFreeBusyPublishSavePassword ) {
     KConfigSkeleton::ItemPassword *i = freeBusyPublishPasswordItem();
     i->setValue( "" );
@@ -283,49 +277,39 @@ QColor *KOPrefs::categoryColor( const QString &cat )
 
 void KOPrefs::setResourceColor ( const QString &cal, const QColor &color )
 {
-  kdDebug(5850)<<"KOPrefs::setResourceColor: " << cal << " color: "<< 
+  kdDebug(5850)<<"KOPrefs::setResourceColor: " << cal << " color: "<<
     color.name()<<endl;
   mResourceColors.replace( cal, new QColor( color ) );
 }
-  
+
 QColor* KOPrefs::resourceColor( const QString &cal )
 {
   QColor *color=0;
   if( !cal.isEmpty() ) color = mResourceColors[cal];
-  
-  if (color && color->isValid() ) 
+
+  if (color && color->isValid() )
     return color;
-  else 
+  else
     return &mDefaultResourceColor;
-}
-
-void KOPrefs::setFullName(const QString &name)
-{
-  mName = name;
-}
-
-void KOPrefs::setEmail(const QString &email)
-{
-  mEmail = email;
 }
 
 QString KOPrefs::fullName()
 {
-  if (mEmailControlCenter) {
+  if ( mEmailControlCenter ) {
     KEMailSettings settings;
-    return settings.getSetting(KEMailSettings::RealName);
+    return settings.getSetting( KEMailSettings::RealName );
   } else {
-    return mName;
+    return userName();
   }
 }
 
 QString KOPrefs::email()
 {
-  if (mEmailControlCenter) {
+  if ( mEmailControlCenter ) {
     KEMailSettings settings;
-    return settings.getSetting(KEMailSettings::EmailAddress);
+    return settings.getSetting( KEMailSettings::EmailAddress );
   } else {
-    return mEmail;
+    return userEmail();
   }
 }
 
@@ -337,6 +321,8 @@ QStringList KOPrefs::allEmails()
   lst += mAdditionalMails;
   // Add emails from the user's kaddressbook entry
   lst += KABC::StdAddressBook::self( true )->whoAmI().emails();
+  // Add the email entered as the userEmail here
+  lst += email();
 
   // Warning, this list could contain duplicates.
   return lst;
@@ -347,7 +333,7 @@ QStringList KOPrefs::fullEmails()
   QStringList fullEmails;
   // The user name and email from the config dialog:
   fullEmails << QString("%1 <%2>").arg( fullName() ).arg( email() );
-  
+
   QStringList::Iterator it;
   // Grab emails from the email identities
   KPIM::IdentityManager *idmanager = KOCore::self()->identityManager();
