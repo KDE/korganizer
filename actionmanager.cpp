@@ -455,8 +455,8 @@ void ActionManager::initActions()
 //   mAssignResourceAction = new KAction( i18n("Assign &Resource..."), 0,
 //                                        mCalendarView, SLOT( assignResource()),
 //                                        mACollection, "assign_resource" );
-// TODO: Add item to quickly toggle the alarm of a given incidence
-//   mToggleAlarmAction = new KToggleAction( i18n("&Activate Alarm"), 0,
+// TODO: Add item to quickly toggle the reminder of a given incidence
+//   mToggleAlarmAction = new KToggleAction( i18n("&Activate Reminder"), 0,
 //                                         mCalendarView, SLOT( toggleAlarm()),
 //                                         mACollection, "activate_alarm" );
 

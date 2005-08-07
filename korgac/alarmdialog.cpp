@@ -54,7 +54,7 @@
 AlarmDialog::AlarmDialog( QWidget *parent, const char *name )
   : KDialogBase( Plain, WType_TopLevel | WStyle_Customize | WStyle_StaysOnTop |
                  WStyle_DialogBorder,
-                 parent, name, false, i18n("Alarm"), Ok | User1 | User2/* | User3*/, User1/*3*/,
+                 parent, name, false, i18n("Reminder"), Ok | User1 | User2/* | User3*/, User1/*3*/,
                  false, i18n("Suspend"), i18n("Edit...") ),
                  mSuspendTimer(this)
 {
@@ -62,7 +62,7 @@ AlarmDialog::AlarmDialog( QWidget *parent, const char *name )
   QBoxLayout *topLayout = new QVBoxLayout( topBox );
   topLayout->setSpacing( spacingHint() );
 
-  QLabel *label = new QLabel( i18n("The following events triggered alarms:"),
+  QLabel *label = new QLabel( i18n("The following events triggered reminders:"),
                               topBox );
   topLayout->addWidget( label );
 

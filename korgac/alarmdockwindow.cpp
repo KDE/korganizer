@@ -1,6 +1,6 @@
 /*
     This file is part of KOrganizer.
-    
+
     Copyright (c) 2003 Cornelius Schumacher <schumacher@kde.org>
 
     This program is free software; you can redistribute it and/or modify
@@ -53,7 +53,7 @@ AlarmDockWindow::AlarmDockWindow( const char *name )
   bool autostart = config->readBoolEntry( "Autostart", true );
   bool alarmsEnabled = config->readBoolEntry( "Enabled", true );
 
-  mName = i18n( "KOrganizer Alarm Daemon" );
+  mName = i18n( "KOrganizer Reminder Daemon" );
   setCaption( mName );
 
   // Set up icons
@@ -70,9 +70,9 @@ AlarmDockWindow::AlarmDockWindow( const char *name )
   contextMenu()->setItemEnabled( mDismissAll, false );
 
   contextMenu()->insertSeparator();
-  mAlarmsEnabledId = contextMenu()->insertItem( i18n("Alarms Enabled"), this,
+  mAlarmsEnabledId = contextMenu()->insertItem( i18n("Reminders Enabled"), this,
                                                 SLOT( toggleAlarmsEnabled() ) );
-  mAutostartId = contextMenu()->insertItem( i18n("Start Alarm Client at Login"), this,
+  mAutostartId = contextMenu()->insertItem( i18n("Start Reminder Daemon at Login"), this,
                                                 SLOT( toggleAutostart() ) );
   contextMenu()->setItemChecked( mAutostartId, autostart );
   contextMenu()->setItemChecked( mAlarmsEnabledId, alarmsEnabled );
@@ -133,7 +133,7 @@ void AlarmDockWindow::toggleAlarmsEnabled()
   contextMenu()->setItemChecked( mAlarmsEnabledId, enabled );
   setPixmap( enabled ? mPixmapEnabled : mPixmapDisabled );
 
-  config->writeEntry( "Enabled", enabled );  
+  config->writeEntry( "Enabled", enabled );
   config->sync();
 }
 
@@ -177,10 +177,10 @@ void AlarmDockWindow::mousePressEvent( QMouseEvent *e )
 void AlarmDockWindow::slotQuit()
 {
   int result = KMessageBox::questionYesNoCancel( this,
-      i18n("Do you want to start the KOrganizer alarm daemon at login "
-           "(note that you will not get alarms whilst the daemon is not running)?"),
-      i18n("Close KOrganizer Alarm Daemon"),
-      i18n("Start"), i18n("Do Not Start"), 
+      i18n("Do you want to start the KOrganizer reminder daemon at login "
+           "(note that you will not get reminders whilst the daemon is not running)?"),
+      i18n("Close KOrganizer Reminder Daemon"),
+      i18n("Start"), i18n("Do Not Start"),
       QString::fromLatin1("AskForStartAtLogin")
       );
 

@@ -194,7 +194,7 @@ void KOEditorGeneral::initAlarm(QWidget *parent,QBoxLayout *topLayout)
   mAlarmStack = new QWidgetStack( parent );
   alarmLayout->addWidget( mAlarmStack );
 
-  mAlarmInfoLabel = new QLabel("XXX alarms configured", mAlarmStack );
+  mAlarmInfoLabel = new QLabel("XXX reminders configured", mAlarmStack );
   mAlarmStack->addWidget( mAlarmInfoLabel, AdvancedAlarmLabel );
 
   QHBox *simpleAlarmBox = new QHBox( mAlarmStack );
@@ -292,8 +292,8 @@ void KOEditorGeneral::updateAlarmWidgets()
     mAlarmButton->setChecked( false );
   } else if ( mAlarmList.count() > 1 ) {
     mAlarmStack->raiseWidget( AdvancedAlarmLabel );
-    mAlarmInfoLabel->setText( i18n("1 alarm configured",
-                                   "%n alarms configured",
+    mAlarmInfoLabel->setText( i18n("1 reminder configured",
+                                   "%n reminders configured",
                                    mAlarmList.count() ) );
   } else {
     Alarm *alarm = mAlarmList.first();
@@ -319,7 +319,7 @@ void KOEditorGeneral::updateAlarmWidgets()
       mAlarmTimeEdit->setValue( useoffset );
     } else {
       mAlarmStack->raiseWidget( AdvancedAlarmLabel );
-      mAlarmInfoLabel->setText( i18n("1 advanced alarm configured") );
+      mAlarmInfoLabel->setText( i18n("1 advanced reminder configured") );
     }
   }
 }

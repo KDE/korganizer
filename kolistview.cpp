@@ -202,7 +202,7 @@ KOListView::KOListView( Calendar *calendar, QWidget *parent,
 
   mListView = new KListView(this);
   mListView->addColumn(i18n("Summary"));
-  mListView->addColumn(i18n("Alarm")); // alarm set?
+  mListView->addColumn(i18n("Reminder")); // alarm set?
   mListView->addColumn(i18n("Recurs")); // recurs?
   mListView->addColumn(i18n("Start Date"));
   mListView->setColumnAlignment(3,AlignHCenter);

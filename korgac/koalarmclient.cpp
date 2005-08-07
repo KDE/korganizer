@@ -111,7 +111,7 @@ void KOAlarmClient::checkAlarms()
 
   QValueList<Alarm *>::ConstIterator it;
   for( it = alarms.begin(); it != alarms.end(); ++it ) {
-    kdDebug(5891) << "ALARM: " << (*it)->parent()->summary() << endl;
+    kdDebug(5891) << "REMINDER: " << (*it)->parent()->summary() << endl;
     Incidence *incidence = mCalendar->incidence( (*it)->parent()->uid() );
     createReminder( incidence, QDateTime::currentDateTime() );
   }

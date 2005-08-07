@@ -52,12 +52,12 @@ KOEventPopupMenu::KOEventPopupMenu()
                                    this,SLOT(popupDelete())));
   mEditOnlyItems.append( insertSeparator() );
   mEditOnlyItems.append( insertItem( QIconSet( KOGlobals::self()->smallIcon("bell") ),
-                                     i18n("&Toggle Alarm"), this,
+                                     i18n("&Toggle Reminder"), this,
                                      SLOT( popupAlarm() ) ) );
   mRecurrenceItems.append( insertSeparator() );
-  mRecurrenceItems.append( insertItem( i18n("&Dissociate This Occurrence"), 
+  mRecurrenceItems.append( insertItem( i18n("&Dissociate This Occurrence"),
                                        this, SLOT( dissociateOccurrence() ) ) );
-  mRecurrenceItems.append( insertItem( i18n("&Dissociate Future Occurrences"), 
+  mRecurrenceItems.append( insertItem( i18n("&Dissociate Future Occurrences"),
                                        this, SLOT( dissociateFutureOccurrence() ) ) );
 }
 
@@ -65,7 +65,7 @@ void KOEventPopupMenu::showIncidencePopup( Incidence *incidence, const QDate &qd
 {
   mCurrentIncidence = incidence;
   mCurrentDate = qd;
-  
+
   if (mCurrentIncidence) {
     // Enable/Disabled menu items only valid for editable events.
     QValueList<int>::Iterator it;
@@ -124,14 +124,14 @@ void KOEventPopupMenu::popupAlarm()
   if (mCurrentIncidence) emit toggleAlarmSignal( mCurrentIncidence );
 }
 
-void KOEventPopupMenu::dissociateOccurrence() 
+void KOEventPopupMenu::dissociateOccurrence()
 {
-  if ( mCurrentIncidence ) 
+  if ( mCurrentIncidence )
     emit dissociateOccurrenceSignal( mCurrentIncidence, mCurrentDate );
 }
 
-void KOEventPopupMenu::dissociateFutureOccurrence() 
+void KOEventPopupMenu::dissociateFutureOccurrence()
 {
-  if ( mCurrentIncidence ) 
+  if ( mCurrentIncidence )
     emit dissociateFutureOccurrenceSignal( mCurrentIncidence, mCurrentDate );
 }

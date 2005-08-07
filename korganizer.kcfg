@@ -149,7 +149,8 @@
       <default>QDateTime(QDate(), QTime(2,0))</default>
     </entry>
     <entry type="Int" key="Default Alarm Time" name="AlarmTime">
-      <whatsthis>Enter the default alarm time for incidences here.</whatsthis>
+      <label>Default Reminder Time</label>
+      <whatsthis>Enter the reminder time for incidences here.</whatsthis>
       <default>3</default>
     </entry>
   </group>

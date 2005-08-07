@@ -61,13 +61,15 @@ static const KCmdLineOptions options[] =
 int main( int argc, char **argv )
 {
   KLocale::setMainCatalogue( "korganizer" );
-  KAboutData aboutData( "korgac", I18N_NOOP("KOrganizer Alarm Daemon"),
-                        korgacVersion, I18N_NOOP("KOrganizer Alarm Daemon"),
+  KAboutData aboutData( "korgac", I18N_NOOP("KOrganizer Reminder Daemon"),
+                        korgacVersion, I18N_NOOP("KOrganizer Reminder Daemon"),
                         KAboutData::License_GPL,
                         "(c) 2003 Cornelius Schumacher",
                         0, "http://pim.kde.org" );
   aboutData.addAuthor( "Cornelius Schumacher", I18N_NOOP("Maintainer"),
                        "schumacher@kde.org" );
+  aboutData.addAuthor( "Reinhold Kainhofer", I18N_NOOP("Maintainer"),
+                       "kainhofer@kde.org" );
 
   KCmdLineArgs::init( argc, argv, &aboutData );
   KCmdLineArgs::addCmdLineOptions( options );
