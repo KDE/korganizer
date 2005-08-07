@@ -252,6 +252,7 @@ void KOEditorAlarms::readAlarm( KCal::Alarm *alarm )
         mWidget->mDisplayText->setText( alarm->text() );
         break;
   }
+
   mWidget->mTypeStack->raiseWidget( mWidget->mAlarmType->selectedId() );
 
   mInitializing = false;
@@ -364,7 +365,9 @@ void KOEditorAlarms::slotRemove()
 {
   if ( mCurrentItem ) {
     delete mCurrentItem;
-    mCurrentItem = 0;
+    mCurrentItem = dynamic_cast<AlarmListViewItem*>( mWidget->mAlarmList->currentItem() );
+    mWidget->mAlarmList->setSelected( mCurrentItem, true );
+
   }
 }
 
