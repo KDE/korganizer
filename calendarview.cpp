@@ -1280,7 +1280,6 @@ void CalendarView::schedule_publish(Incidence *incidence)
                               "PublishNoEventSelected" );
     return;
   }
-  // RK FIXME: Implement this using the new groupware code
 
   PublishDialog *publishdlg = new PublishDialog();
   if (incidence->attendeeCount()>0) {
@@ -1290,19 +1289,19 @@ void CalendarView::schedule_publish(Incidence *incidence)
       publishdlg->addAttendee( *it );
     }
   }
-  bool send = true;
-  if ( KOPrefs::instance()->mMailClient == KOPrefs::MailClientSendmail ) {
-    if ( publishdlg->exec() != QDialog::Accepted )
-      send = false;
-  }
-  if ( send ) {
+  if ( publishdlg->exec() == QDialog::Accepted ) {
     Incidence *inc = incidence->clone();
     inc->registerObserver( 0 );
     inc->clearAttendees();
 
     // Send the mail
     KCal::MailScheduler scheduler( mCalendar );
-    scheduler.publish( incidence, publishdlg->addresses() );
+    if ( scheduler.publish( incidence, publishdlg->addresses() ) ) {
+      KMessageBox::information( this, i18n("The item information was successfully sent."),
+                                i18n("Publishing"), "IncidencePublishSuccess" );
+    } else {
+      KMessageBox::error( this, i18n("Unable to publish the item '%1'").arg( incidence->summary() ) );
+    }
   }
   delete publishdlg;
 }
@@ -1344,7 +1343,6 @@ void CalendarView::schedule_declinecounter(Incidence *incidence)
 
 void CalendarView::mailFreeBusy( int daysToPublish )
 {
-// RK FIXME: Implement this using the new groupware methods
   QDateTime start = QDateTime::currentDateTime();
   QDateTime end = start.addDays(daysToPublish);
 
@@ -1358,11 +1356,16 @@ void CalendarView::mailFreeBusy( int daysToPublish )
 
   PublishDialog *publishdlg = new PublishDialog();
   if ( publishdlg->exec() == QDialog::Accepted ) {
-/*    OutgoingDialog *dlg = mDialogManager->outgoingDialog();
-    if (!dlg->addMessage(freebusy,Scheduler::Publish,publishdlg->addresses())) {
-         delete(freebusy);
-    }*/
+    // Send the mail
+    KCal::MailScheduler scheduler( mCalendar );
+    if ( scheduler.publish( freebusy, publishdlg->addresses() ) ) {
+      KMessageBox::information( this, i18n("The free/busy information was successfully sent."),
+                                i18n("Sending Free/Busy"), "FreeBusyPublishSuccess" );
+    } else {
+      KMessageBox::error( this, i18n("Unable to publish the free/busy data.") );
+    }
   }
+  delete freebusy;
   delete publishdlg;
 }
 
@@ -1390,30 +1393,25 @@ void CalendarView::schedule(Scheduler::Method method, Incidence *incidence)
   }
 
   Incidence *inc = incidence->clone();
+  inc->registerObserver( 0 );
+  inc->clearAttendees();
 
-  if ( method == Scheduler::Reply || method == Scheduler::Refresh ) {
-    Attendee *me = incidence->attendeeByMails(KOPrefs::instance()->allEmails());
-    if ( !me ) {
-      KMessageBox::sorry(this,i18n("Could not find your attendee entry. Please check the emails."));
-      return;
-    }
-    if (me->status()==Attendee::NeedsAction && me->RSVP() && method==Scheduler::Reply) {
-      StatusDialog *statdlg = new StatusDialog(this);
-      if (!statdlg->exec()==QDialog::Accepted) return;
-      me->setStatus( statdlg->status() );
-      delete(statdlg);
-    }
-    Attendee *menew = new Attendee(*me);
-    if ( inc ) {
-      inc->clearAttendees();
-      inc->addAttendee( menew, false );
-    }
+  // Send the mail
+  KCal::MailScheduler scheduler( mCalendar );
+  if ( !scheduler.performTransaction( incidence, method ) ) {
+    KMessageBox::information( this, i18n("The groupware message for item '%1'"
+                                "was successfully sent.\nMethod: %2")
+                                .arg( incidence->summary() )
+                                .arg( Scheduler::methodName( method ) ),
+                              i18n("Sending Free/Busy"),
+                              "FreeBusyPublishSuccess" );
+  } else {
+    KMessageBox::error( this, i18n("Groupware message sending failed. "
+                        "%2 is request/reply/add/cancel/counter/etc.",
+                        "Unable to send the item '%1'.\nMethod: %2")
+                        .arg( incidence->summary() )
+                        .arg( Scheduler::methodName( method ) ) );
   }
-// RK FIXME: Use the new groupware methods
-/*  OutgoingDialog *dlg = mDialogManager->outgoingDialog();
-  if (inc ) {
-    if ( !dlg->addMessage( inc, method ) ) delete(inc);
-  }*/
 }
 
 void CalendarView::openAddressbook()
