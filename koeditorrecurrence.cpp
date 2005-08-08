@@ -359,7 +359,7 @@ void RecurMonthly::setByPos( int count, int weekday )
   else
     // negative weeks means counted from the end of month
     mByPosCountCombo->setCurrentItem( -count + 4 );
-  mByPosWeekdayCombo->setCurrentItem( weekday );
+  mByPosWeekdayCombo->setCurrentItem( weekday - 1 );
 }
 
 bool RecurMonthly::byDay()
