@@ -34,7 +34,6 @@ Name[sr@Latn]=Uvezi kalendar
 Name[sv]=Importera kalender
 Name[ta]=இறக்கும் நாட்காட்டி
 Name[tr]=Takvim Aktar
-Name[uk]=Імпорт календаря
 Name[xx]=xxImport Calendarxx
 Name[zh_CN]=导入日历
 ServiceTypes=Browser/View,DCOP/Organizer
