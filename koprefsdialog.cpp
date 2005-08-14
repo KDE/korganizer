@@ -96,7 +96,7 @@ KOPrefsDialogMain::KOPrefsDialogMain( QWidget *parent, const char *name )
   addWidString( KOPrefs::instance()->userNameItem(), mUserEmailSettings );
   addWidString( KOPrefs::instance()->userEmailItem(), mUserEmailSettings );
 
-  QGroupBox *saveGroup = new QGroupBox(1,Horizontal,i18n("Saving the Calendar"),
+  QGroupBox *saveGroup = new QGroupBox(1,Horizontal,i18n("Saving Calendar"),
                                            topFrame);
 
   addWidBool( KOPrefs::instance()->htmlWithSaveItem(), saveGroup );
