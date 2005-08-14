@@ -1,6 +1,6 @@
 /*
     This file is part of KOrganizer.
-    
+
     Copyright (c) 2003 Cornelius Schumacher <schumacher@kde.org>
 
     This program is free software; you can redistribute it and/or modify
@@ -70,11 +70,12 @@ AboutData::AboutData()
   addCredit("Mario Teijeiro");
   addCredit("Nick Thompson");
   addCredit("Bo Thorsen");
+  addCredit("Allen Winter");
   addCredit("Larry Wright");
   addCredit("Thomas Zander");
   addCredit("Fester Zigterman");
 }
-    
+
 AboutData *AboutData::self()
 {
   if ( !mSelf ) mSelf = new AboutData;
