@@ -3,11 +3,13 @@
 Encoding=UTF-8
 Name=KOrganizer Reminder Client
 Name[es]=Cliente de recordatorio para KOrganizer
+Name[fr]=Client d'alarme de KOrganizer
 Exec=korgac --miniicon korganizer
 Icon=korganizer
 Type=Application
 GenericName=KOrganizer Reminder Daemon Client
 GenericName[es]=Cliente del daemon de recordatorio para KOrganizer
+GenericName[fr]=Client pour le démon d'alarme de KOrganizer
 Terminal=false
 X-KDE-autostart-after=panel
 X-KDE-autostart-condition=korgacrc:General:Autostart:true
