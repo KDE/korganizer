@@ -350,7 +350,6 @@ void CalPrintHelper::drawAllDayBox(QPainter &p, Event::List &eventList,
 
   int offset=y;
 
-  p.setBrush( QBrush( Qt::Dense7Pattern ) );
   QPen oldPen( p.pen() );
   QColor oldBgColor( p.backgroundColor() );
   QBrush oldBrush( p.brush() );
@@ -404,6 +403,7 @@ void CalPrintHelper::drawAllDayBox(QPainter &p, Event::List &eventList,
   } else {
     height=offset-y;
   }
+  p.setBrush( oldBrush );
 }
 
 
