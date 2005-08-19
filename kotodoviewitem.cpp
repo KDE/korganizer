@@ -3,6 +3,7 @@
 
     Copyright (c) 2000,2001 Cornelius Schumacher <schumacher@kde.org>
     Copyright (C) 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
+    Copyright (c) 2005 Rafal Rzepecki <divide@users.sourceforge.net>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -47,41 +48,57 @@ KOTodoViewItem::KOTodoViewItem( KOTodoViewItem *parent, Todo *todo, KOTodoView *
   construct();
 }
 
-// FIXME: Is this the best way to sort the items on due dates?
-int KOTodoViewItem::compare( QListViewItem *i, int col, bool ascending ) const
+inline int KOTodoViewItem::compareDueDates( const KOTodoViewItem *b ) const
 {
-  if ( i && ( col == KOTodoView::eDueDateColumn ) ) {
-    QString thiskey( key( col, ascending ) );
-    QString ikey( i->key( col, ascending ) );
-    if ( thiskey.isEmpty() ) { // no due date set
-      if ( ikey.isEmpty() )
-        return 0;
-      else
-        if ( ascending ) return 1;
-        else return -1;
-    } else {
-      if ( ikey.isEmpty() ) // i has not due date set, but this has
-        if ( ascending ) return -1;
-        else return 1;
-      else
-        return QCheckListItem::compare( i, col, ascending );
-    }
-  } else return QCheckListItem::compare( i, col, ascending );
+  if ( mEffectiveDueDate.isValid() && 
+       !b->mEffectiveDueDate.isValid() )
+    return -1;
+  else if ( !mEffectiveDueDate.isValid() &&
+            b->mEffectiveDueDate.isValid() )
+    return 1;
+  else
+    return b->mEffectiveDueDate.secsTo( mEffectiveDueDate );
 }
 
-QString KOTodoViewItem::key( int column, bool ) const
+int KOTodoViewItem::compare( QListViewItem *it, int col, bool ascending ) const
 {
-  QMap<int,QString>::ConstIterator it = mKeyMap.find( column );
-  if ( it == mKeyMap.end() ) {
-    return text( column );
-  } else {
-    return *it;
+  KOTodoViewItem *i = dynamic_cast<KOTodoViewItem *>( it );
+  if ( !i )
+    return QListViewItem::compare( it, col, ascending );
+  
+  // throw completed todos to the bottom
+  if ( mTodo->isCompleted() && !i->todo()->isCompleted() )
+    return ascending ? 1 : -1;
+  else if ( !mTodo->isCompleted() && i->todo()->isCompleted() )
+    return ascending ? -1 : 1;
+  
+  int c;
+  switch ( col ) {
+    case ( KOTodoView::eSummaryColumn ):
+      return mTodo->summary().localeAwareCompare( i->todo()->summary() );
+    case ( KOTodoView::eRecurColumn ):
+      return ( mTodo->doesRecur() ? 1 : 0 ) - (i->todo()->doesRecur() ? 1 : 0 );
+    case ( KOTodoView::ePriorityColumn ):
+      c = mTodo->priority() - i->todo()->priority();
+      if ( c )
+        return c;
+      return compareDueDates( i );
+    case ( KOTodoView::ePercentColumn ):
+      return mTodo->percentComplete() - i->todo()->percentComplete();
+    case ( KOTodoView::eDueDateColumn ):
+      c = compareDueDates( i );
+      if ( c )
+        return c;
+      return mTodo->priority() - i->todo()->priority();
+    case ( KOTodoView::eCategoriesColumn ):
+      return mTodo->categoriesStr().localeAwareCompare( 
+                                                  i->todo()->categoriesStr() );
+    case ( KOTodoView::eDescriptionColumn ):
+      return mTodo->description().localeAwareCompare( i->todo()->description() );
+    default:
+      Q_ASSERT( false && "unknown column to compare" );
+      return QListViewItem::compare( it, col, ascending );
   }
-}
-
-void KOTodoViewItem::setSortKey(int column,const QString &key)
-{
-  mKeyMap.insert(column,key);
 }
 
 #if QT_VERSION >= 300
@@ -97,50 +114,36 @@ void KOTodoViewItem::construct()
 {
   if ( !mTodo ) return;
   m_init = true;
-  QString keyd = "9";
 
   setOn( mTodo->isCompleted() );
   setText( KOTodoView::eSummaryColumn, mTodo->summary());
   static const QPixmap recurPxmp = KOGlobals::self()->smallIcon("recur");
-  if ( mTodo->doesRecur() ) {
+  if ( mTodo->doesRecur() )
     setPixmap( KOTodoView::eRecurColumn, recurPxmp );
-    setSortKey( KOTodoView::eRecurColumn, "1" );
-  }
-  else setSortKey( KOTodoView::eRecurColumn, "0" );
+  
   if ( mTodo->priority()==0 ) {
     setText( KOTodoView::ePriorityColumn, i18n("--") );
   } else {
     setText( KOTodoView::ePriorityColumn, QString::number(mTodo->priority()) );
   }
   setText( KOTodoView::ePercentColumn, QString::number(mTodo->percentComplete()) );
-  if ( mTodo->percentComplete()<100 ) {
-    if (mTodo->isCompleted()) setSortKey( KOTodoView::ePercentColumn, QString::number(999) );
-    else setSortKey( KOTodoView::ePercentColumn, QString::number( mTodo->percentComplete() ) );
-  }
-  else {
-    if (mTodo->isCompleted()) setSortKey( KOTodoView::ePercentColumn, QString::number(999) );
-    else setSortKey( KOTodoView::ePercentColumn, QString::number(99) );
-  }
-
+  
   if (mTodo->hasDueDate()) {
     QString dtStr = mTodo->dtDueDateStr();
-    QString keyt = "";
     if (!mTodo->doesFloat()) {
       dtStr += " " + mTodo->dtDueTimeStr();
     }
     setText( KOTodoView::eDueDateColumn, dtStr );
-    keyd = mTodo->dtDue().toString(Qt::ISODate);
-  } else {
-    keyd = "";
+    mEffectiveDueDate = mTodo->dtDue();
+    KOTodoViewItem *myParent;
+    if ( ( myParent = dynamic_cast<KOTodoViewItem *>( parent() ) ) )
+      if ( !myParent->mEffectiveDueDate.isValid() ||
+          myParent->mEffectiveDueDate > mEffectiveDueDate ) {
+        myParent->mEffectiveDueDate = mEffectiveDueDate;
+      }
+  } else
     setText( KOTodoView::eDueDateColumn, "" );
-  }
-  keyd += QString::number( mTodo->priority() );
-  setSortKey( KOTodoView::eDueDateColumn, keyd );
-
-  QString priorityKey = QString::number( mTodo->priority() ) + keyd;
-  if ( mTodo->isCompleted() ) setSortKey( KOTodoView::ePriorityColumn, "1" + priorityKey );
-  else setSortKey( KOTodoView::ePriorityColumn, "0" + priorityKey );
-
+  
   setText( KOTodoView::eCategoriesColumn, mTodo->categoriesStr() );
 
 #if 0

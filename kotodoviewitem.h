@@ -3,6 +3,7 @@
 
     Copyright (c) 2000, 2001 Cornelius Schumacher <schumacher@kde.org>
     Copyright (C) 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
+    Copyright (c) 2005 Rafal Rzepecki <divide@users.sourceforge.net>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -28,6 +29,7 @@
 #include <qmap.h>
 #include <qlistview.h>
 #include <qpalette.h>
+#include <qdatetime.h>
 
 namespace KCal {
 class Todo;
@@ -59,11 +61,7 @@ class KOTodoViewItem : public QCheckListItem
 
     void construct();
 
-    Todo *todo() { return mTodo; }
-
-    QString key(int, bool) const;
-
-    void setSortKey(int column,const QString &key);
+    Todo *todo() const { return mTodo; }
 
     bool isAlternate();
     int compare( QListViewItem *i, int col, bool ascending ) const;
@@ -77,12 +75,12 @@ class KOTodoViewItem : public QCheckListItem
 #endif
   virtual void stateChange(bool);
 
-
   private:
     Todo *mTodo;
     KOTodoView *mTodoView;
+    QDateTime mEffectiveDueDate;
+    int compareDueDates( const KOTodoViewItem *b ) const;
 
-    QMap<int,QString> mKeyMap;
     uint m_odd : 1;
     uint m_known : 1;
     uint m_unused : 30;
