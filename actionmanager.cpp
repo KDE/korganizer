@@ -77,7 +77,7 @@ ActionManager::ActionManager( KXMLGUIClient *client, CalendarView *widget,
                               QObject *parent, KOrg::MainWindow *mainWindow,
                               bool isPart )
   : QObject( parent ), KCalendarIface(), mRecent( 0 ),
-    mResourceButtonsAction( 0 ), mCalendar( 0 ),
+    mResourceButtonsAction( 0 ), mResourceViewShowAction( 0 ), mCalendar( 0 ),
     mCalendarResources( 0 ), mResourceView( 0 ), mIsClosing( false )
 {
   mGUIClient = client;
