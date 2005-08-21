@@ -90,7 +90,7 @@ ResourceItem::ResourceItem( ResourceCalendar *resource, ResourceView *view,
   : QCheckListItem( parent, resource->resourceName(), CheckBox ),
     mResource( resource ), mView( view ), mBlockStateChange( false ),
     mIsSubresource( false ), mResourceIdentifier( QString::null ),
-    mSubItemsCreated( false )
+    mSubItemsCreated( false ), mIsStandardResource( false )
 {
   mResourceColor = QColor();
   setGuiState();
