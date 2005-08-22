@@ -395,8 +395,11 @@ void KOEditorFreeBusy::slotInsertFreeBusy( KCal::FreeBusy *fb,
 {
   kdDebug() << "KOEditorFreeBusy::slotInsertFreeBusy() " << email << endl;
 
-  if( fb )
+  if( fb ) {
     fb->sortList();
+    // weed out dummies
+    if ( fb->dtEnd().toTime_t() == 0 ) return;
+  }
   bool block = mGanttView->getUpdateEnabled();
   mGanttView->setUpdateEnabled( false );
   for( KDGanttViewItem *it = mGanttView->firstChild(); it;
