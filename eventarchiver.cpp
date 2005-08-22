@@ -101,7 +101,7 @@ void EventArchiver::run( Calendar* calendar, const QDate& limitDate, QWidget* wi
   kdDebug(5850) << "EventArchiver: archiving incidences before " << limitDate << " -> " << incidences.count() << " incidences found." << endl;
   if ( incidences.isEmpty() ) {
     if ( withGUI && errorIfNone )
-      KMessageBox::information( widget, i18n("There are no incidences before %1")
+      KMessageBox::information( widget, i18n("There are no items before %1")
                           .arg(KGlobal::locale()->formatDate(limitDate)),
                           "ArchiverNoIncidences" );
     return;
@@ -128,10 +128,10 @@ void EventArchiver::deleteIncidences( Calendar* calendar, const QDate& limitDate
 
   if ( withGUI ) {
     int result = KMessageBox::warningContinueCancelList(
-      widget, i18n("Delete all incidences before %1 without saving?\n"
-                 "The following incidences will be deleted:")
+      widget, i18n("Delete all items before %1 without saving?\n"
+                 "The following items will be deleted:")
       .arg(KGlobal::locale()->formatDate(limitDate)), incidenceStrs,
-		 i18n("Delete Old Incidences"),KStdGuiItem::del());
+		 i18n("Delete Old Items"),KStdGuiItem::del());
     if (result != KMessageBox::Continue)
       return;
   }

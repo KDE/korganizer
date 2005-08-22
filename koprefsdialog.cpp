@@ -321,12 +321,10 @@ class KOPrefsDialogTime : public KPrefsModule
       QLabel *alarmLabel = new QLabel( i18n( "Default reminder time:" ), topFrame);
       topLayout->addWidget( alarmLabel, 5, 0 );
       QWhatsThis::add( alarmLabel,
-                       i18n( "Enter the default reminder time for incidences "
-                             "here." ) );
+                       i18n( "Enter the default reminder time here." ) );
       mAlarmTimeCombo = new QComboBox( topFrame );
       QWhatsThis::add( mAlarmTimeCombo,
-                       i18n( "Enter the default reminder time for incidences "
-                             "here." ) );
+                       i18n( "Enter the default reminder time here." ) );
       connect( mAlarmTimeCombo, SIGNAL( activated( int ) ),
                SLOT( slotWidChanged() ) );
       mAlarmTimeCombo->insertStringList( alarmList );

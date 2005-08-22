@@ -539,7 +539,7 @@ void ActionManager::initActions()
   mTodoViewShowAction = new KToggleAction ( i18n("Show To-do View"), 0,
                       this, SLOT( toggleTodoView() ),
                       mACollection, "show_todoview" );
-  mEventViewerShowAction = new KToggleAction ( i18n("Show Incidence Viewer"), 0,
+  mEventViewerShowAction = new KToggleAction ( i18n("Show Item Viewer"), 0,
                       this, SLOT( toggleEventViewer() ),
                       mACollection, "show_eventviewer" );
   KConfig *config = KOGlobals::self()->config();

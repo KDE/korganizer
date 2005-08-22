@@ -260,7 +260,7 @@ CalendarView::CalendarView( QWidget *parent, const char *name )
 
   //TODO: do a pretty Summary,
   QString s;
-  s = i18n( "<p><em>No Incidence Selected</em></p>"
+  s = i18n( "<p><em>No Item Selected</em></p>"
            "<p>Select an event, to-do or journal entry to view its details "
            "here.</p>");
 
@@ -724,7 +724,7 @@ void CalendarView::checkForFilteredChange( Incidence *incidence )
   if ( filter && !filter->filterIncidence( incidence ) ) {
     // Incidence is filtered and thus not shown in the view, tell the
     // user so that he isn't surprised if his new event doesn't show up
-    KMessageBox::information( this, i18n("The incidence \"%1\" is filtered by "
+    KMessageBox::information( this, i18n("The item \"%1\" is filtered by "
                  "your current filter rules, so it will be hidden and not "
                  "appear in the view.").arg( incidence->summary() ),
                  i18n("Filter Applied"), "ChangedIncidenceFiltered" );
@@ -1276,7 +1276,7 @@ void CalendarView::schedule_publish(Incidence *incidence)
     incidence = selectedIncidence();
 
   if (!incidence) {
-    KMessageBox::information( this, i18n("No incidence selected."),
+    KMessageBox::information( this, i18n("No item selected."),
                               "PublishNoEventSelected" );
     return;
   }
@@ -1381,13 +1381,13 @@ void CalendarView::schedule(Scheduler::Method method, Incidence *incidence)
   }
 
   if ( !incidence ) {
-    KMessageBox::sorry( this, i18n("No incidence selected."),
+    KMessageBox::sorry( this, i18n("No item selected."),
                         "ScheduleNoEventSelected" );
     return;
   }
 
   if( incidence->attendeeCount() == 0 && method != Scheduler::Publish ) {
-    KMessageBox::information( this, i18n("The incidence has no attendees."),
+    KMessageBox::information( this, i18n("The item has no attendees."),
                               "ScheduleNoIncidences" );
     return;
   }
@@ -1904,7 +1904,7 @@ void CalendarView::deleteTodoIncidence ( Todo *todo, bool force )
   int km = KMessageBox::No;
   if ( !force ) {
     km=KMessageBox::questionYesNoCancel( this,
-                                i18n("The incidence \"%1\" has sub-to-dos. "
+                                i18n("The item \"%1\" has sub-to-dos. "
                                      "Do you want to delete just this item and "
                                      "make all its sub-to-dos independent, or "
                                      "delete the to-do with all its sub-to-dos?"
@@ -1968,13 +1968,13 @@ void CalendarView::deleteIncidence(Incidence *incidence, bool force)
       if ( !itemDate.isValid() ) {
         kdDebug(5850) << "Date Not Valid" << endl;
         km = KMessageBox::warningContinueCancel(this,
-          i18n("The incidence \"%1\" recurs over multiple dates; "
-               "are you sure you want to delete this event "
+          i18n("The calendar item \"%1\" recurs over multiple dates; "
+               "are you sure you want to delete it "
                "and all its recurrences?").arg( incidence->summary() ),
                i18n("KOrganizer Confirmation"), i18n("Delete All") );
       } else {
         km = KOMessageBox::fourBtnMsgBox( this, QMessageBox::Warning,
-          i18n("The incidence \"%1\" recurs over multiple dates. "
+          i18n("The calendar item \"%1\" recurs over multiple dates. "
                "Do you want to delete only the current one on %2, only all "
                "future recurrences, or all its recurrences?" )
                .arg( incidence->summary() )
@@ -2109,7 +2109,7 @@ void CalendarView::importQtopia( const QString &categories,
 
 void CalendarView::warningChangeFailed( Incidence * )
 {
-  KMessageBox::sorry( this, i18n("Unable to edit incidence: "
+  KMessageBox::sorry( this, i18n("Unable to edit item: "
                                  "it is locked by another process.") );
 }
 
@@ -2142,7 +2142,7 @@ void CalendarView::updateCategories()
 void CalendarView::addIncidenceOn( Incidence *incadd, const QDate &dt )
 {
   if ( !incadd || !mChanger ) {
-    KMessageBox::sorry(this, i18n("Unable to copy the incidence to %1.")
+    KMessageBox::sorry(this, i18n("Unable to copy the item to %1.")
                        .arg( dt.toString() ), i18n("Copying Failed") );
     return;
   }
@@ -2184,7 +2184,7 @@ void CalendarView::addIncidenceOn( Incidence *incadd, const QDate &dt )
 void CalendarView::moveIncidenceTo( Incidence *incmove, const QDate &dt )
 {
   if ( !incmove || !mChanger ) {
-    KMessageBox::sorry( this, i18n("Unable to move the incidence to  %1.")
+    KMessageBox::sorry( this, i18n("Unable to move the item to  %1.")
                         .arg( dt.toString() ), i18n("Moving Failed") );
     return;
   }
