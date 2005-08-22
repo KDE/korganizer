@@ -1,5 +1,5 @@
 <!DOCTYPE kpartgui>
-<kpartgui name="korganizer" version="41">
+<kpartgui name="korganizer" version="42">
 
   <MenuBar>
     <Menu name="file"><text>&amp;File</text>
@@ -108,12 +108,23 @@
     </Menu>
   </MenuBar>
 
-  <ToolBar name="mainToolBar"><text>Main</text>
-    <Merge/>
-    <Action name="go_today"/>
-    <Action name="mail_appointment"/>
+  <ToolBar noMerge="1" name="mainToolBar"><text>Main</text>
     <Action name="new_event"/>
     <Action name="new_todo"/>
+    <Action name="file_print"/>
+    <Action name="mail_appointment"/>
+    <Separator/>
+    <Action name="edit_undo"/>
+    <Action name="edit_redo"/>
+    <Action name="edit_cut"/>
+    <Action name="edit_copy"/>
+    <Action name="edit_paste"/>
+    <Separator/>
+    <Action name="edit_find"/>
+    <Separator/>
+    <Action name="go_previous"/>
+    <Action name="go_next"/>
+    <Action name="go_today"/>
   </ToolBar>
 
   <ToolBar name="korganizer_toolbar"><text>Views</text>
