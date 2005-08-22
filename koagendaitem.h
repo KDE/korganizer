@@ -156,6 +156,10 @@ class KOAgendaItem : public QWidget, public KOrg::CellItem
     void paintEvent(QPaintEvent *e);
     void paintFrame(QPainter *p, const QColor &color);
     void paintTodoIcon(QPainter *p, int &x, int ft);
+
+    // paint all visible icons
+    void paintIcons(QPainter *p, int &x, int ft);
+
     /** private movement functions. startMove needs to be called of only one of
      *  the multitems. it will then loop through the whole series using
      *  startMovePrivate. Same for resetMove and endMove */
@@ -189,6 +193,14 @@ class KOAgendaItem : public QWidget, public KOrg::CellItem
 
     bool mSelected;
     QPtrList<KOAgendaItem> mConflictItems;
+
+    static QPixmap *alarmPxmp;
+    static QPixmap *recurPxmp;
+    static QPixmap *readonlyPxmp;
+    static QPixmap *replyPxmp;
+    static QPixmap *groupPxmp;
+    static QPixmap *groupPxmpTentative;
+    static QPixmap *organizerPxmp;
 };
 
 #endif

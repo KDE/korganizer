@@ -51,6 +51,14 @@
 
 QToolTipGroup *KOAgendaItem::mToolTipGroup = 0;
 
+QPixmap *KOAgendaItem::alarmPxmp = 0;
+QPixmap *KOAgendaItem::recurPxmp = 0;
+QPixmap *KOAgendaItem::readonlyPxmp = 0;
+QPixmap *KOAgendaItem::replyPxmp = 0;
+QPixmap *KOAgendaItem::groupPxmp = 0;
+QPixmap *KOAgendaItem::groupPxmpTentative = 0;
+QPixmap *KOAgendaItem::organizerPxmp = 0;
+
 //--------------------------------------------------------------------------
 
 KOAgendaItem::KOAgendaItem( Incidence *incidence, const QDate &qd, QWidget *parent,
@@ -663,27 +671,49 @@ void KOAgendaItem::paintTodoIcon( QPainter *p, int &x, int ft )
   conditionalPaint( p, b, x, ft, completedPxmp );
 }
 
+void KOAgendaItem::paintIcons( QPainter *p, int &x, int ft )
+{
+  paintTodoIcon( p, x, ft );
+  conditionalPaint( p, mIconAlarm,          x, ft, *alarmPxmp );
+  conditionalPaint( p, mIconRecur,          x, ft, *recurPxmp );
+  conditionalPaint( p, mIconReadonly,       x, ft, *readonlyPxmp );
+  conditionalPaint( p, mIconReply,          x, ft, *replyPxmp );
+  conditionalPaint( p, mIconGroup,          x, ft, *groupPxmp );
+  conditionalPaint( p, mIconGroupTentative, x, ft, *groupPxmpTentative );
+  conditionalPaint( p, mIconOrganizer,      x, ft, *organizerPxmp );
+}
+
 void KOAgendaItem::paintEvent( QPaintEvent * )
 {
   QPainter p( this );
   const int ft = 2; // frame thickness for layout, see paintFrame()
   const int margin = 1 + ft; // frame + space between frame and content
-  bool isTodoOverdue = false;
 
-  static const QPixmap alarmPxmp = KOGlobals::self()->smallIcon("bell");
-  static const QPixmap recurPxmp = KOGlobals::self()->smallIcon("recur");
-  static const QPixmap readonlyPxmp = KOGlobals::self()->smallIcon("readonlyevent");
-  static const QPixmap replyPxmp = KOGlobals::self()->smallIcon("mail_reply");
-  static const QPixmap groupPxmp = KOGlobals::self()->smallIcon("groupevent");
-  static const QPixmap groupPxmpTentative = KOGlobals::self()->smallIcon("groupeventtentative");
-  static const QPixmap organizerPxmp = KOGlobals::self()->smallIcon("organizer");
+  // General idea is to always show the icons (even in the all-day events).
+  // This creates a consistent fealing for the user when the view mode
+  // changes and therefore the available width changes.
+  // Also look at #17984
+
+  if ( !alarmPxmp ) {
+    alarmPxmp          = new QPixmap( KOGlobals::self()->smallIcon("bell") );
+    recurPxmp          = new QPixmap( KOGlobals::self()->smallIcon("recur") );
+    readonlyPxmp       = new QPixmap( KOGlobals::self()->smallIcon("readonlyevent") );
+    replyPxmp          = new QPixmap( KOGlobals::self()->smallIcon("mail_reply") );
+    groupPxmp          = new QPixmap( KOGlobals::self()->smallIcon("groupevent") );
+    groupPxmpTentative = new QPixmap( KOGlobals::self()->smallIcon("groupeventtentative") );
+    organizerPxmp      = new QPixmap( KOGlobals::self()->smallIcon("organizer") );
+  }
 
   QColor bgColor;
-  if ( (mIncidence->type() == "Todo") &&
-     ( (static_cast<Todo*>(mIncidence)->isOverdue()) ) ) {
-    bgColor = KOPrefs::instance()->mTodoOverdueColor;
-    isTodoOverdue = true;
-  } else {
+  if ( mIncidence->type() == "Todo" ) {
+    if ( static_cast<Todo*>(mIncidence)->isOverdue() )
+      bgColor = KOPrefs::instance()->todoOverdueColor();
+    else if ( static_cast<Todo*>(mIncidence)->dtDue().date() ==
+              QDateTime::currentDateTime().date() )
+      bgColor = KOPrefs::instance()->todoDueTodayColor();
+  }
+
+  if ( !bgColor.isValid() ) {
     QStringList categories = mIncidence->categories();
     QString cat = categories.first();
     if (cat.isEmpty())
@@ -695,13 +725,13 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
   if ( KOPrefs::instance()->agendaViewUsesResourceColor()
     && mResourceColor.isValid() ) {
      frameColor = mSelected ? QColor( 85 + mResourceColor.red() * 2/3,
-                                          85 + mResourceColor.green() * 2/3,
-                                          85 + mResourceColor.blue() * 2/3 )
+                                      85 + mResourceColor.green() * 2/3,
+                                      85 + mResourceColor.blue() * 2/3 )
                                 : mResourceColor;
   } else {
     frameColor = mSelected ? QColor( 85 + bgColor.red() * 2/3,
-                                          85 + bgColor.green() * 2/3,
-                                          85 + bgColor.blue() * 2/3 )
+                                     85 + bgColor.green() * 2/3,
+                                     85 + bgColor.blue() * 2/3 )
                                 : bgColor.dark(115);
   }
   QColor textColor = getTextColor(bgColor);
@@ -712,49 +742,12 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
 
   int singleLineHeight = fm.boundingRect( mLabelText ).height();
 
-  // case 1: do not draw text when not even a single line fits
-  // Don't do this any more, always try to print out the text. Even if
-  // it's just a few pixel, one can still guess the whole text from just four pixels' height!
-  if ( //( singleLineHeight > height()-4 ) || // ignore margin, be gentle.. Even ignore 2 pixel outside the item
-       ( width() < 16 ) ) {
-    p.eraseRect( 0, 0, width(), height() );
-    int x = margin;
-    paintTodoIcon( &p, x, ft );
-    paintFrame( &p, frameColor );
-    return;
-  }
-
-  // Used for multi-day events to make sure the summary is on screen
-  QRect visRect=visibleRect();
-
-  // case 2: draw a single line when no more space
-  if ( (2 * singleLineHeight) > (height() - 2 * margin) ) {
-    p.eraseRect( 0, 0, width(), height() );
-    int x = margin;
-    int txtWidth = width() - margin - x;
-    if (mIncidence->doesFloat() ) {
-      x += visRect.left();
-      txtWidth = visRect.right() - margin - x;
-    }
-
-    paintTodoIcon( &p, x, ft );
-    paintFrame( &p, frameColor );
-    int y = ((height() - 2 * ft - singleLineHeight) / 2) + fm.ascent();
-    KWordWrap::drawFadeoutText( &p, x, y,
-                                txtWidth, mLabelText );
-    return;
-  }
-
-  KWordWrap *ww = KWordWrap::formatText( fm,
-                                         QRect(0, 0,
-                                         width() - (2 * margin), -1),
-                                         0,
-                                         mLabelText );
-  int th = ww->boundingRect().height();
-  delete ww;
+  p.eraseRect( 0, 0, width(), height() );
+  paintFrame( &p, frameColor );
 
   // calculate the height of the full version (case 4) to test whether it is
   // possible
+
   QString shortH;
   QString longH;
   if ( !isMultiItem() ) {
@@ -772,33 +765,75 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
     longH = i18n("- %1").arg(shortH);
   }
 
+  KWordWrap *ww = KWordWrap::formatText( fm,
+                                         QRect(0, 0, width() - (2 * margin), -1),
+                                         0,
+                                         mLabelText );
+  int th = ww->boundingRect().height();
+  delete ww;
+
   int hlHeight = QMAX(fm.boundingRect(longH).height(),
-     QMAX(alarmPxmp.height(), QMAX(recurPxmp.height(),
-     QMAX(readonlyPxmp.height(), QMAX(replyPxmp.height(),
-     QMAX(groupPxmp.height(), organizerPxmp.height()))))));
-  bool completelyRenderable =
-    th < (height() - 2 * ft - 2 - hlHeight);
-  // case 3: enough for 2-5 lines, but not for the header.
-  //         Also used for the middle days in multi-events
-  //         or all-day events, or overdue todo items
-  if ( ((!completelyRenderable) && ((height() - (2 * margin)) <= (5 * singleLineHeight)) ) ||
-       (isMultiItem() && mMultiItemInfo->mNextMultiItem && mMultiItemInfo->mFirstMultiItem) ||
-       mIncidence->doesFloat() ||
-       isTodoOverdue ) {
+     QMAX(alarmPxmp->height(), QMAX(recurPxmp->height(),
+     QMAX(readonlyPxmp->height(), QMAX(replyPxmp->height(),
+     QMAX(groupPxmp->height(), organizerPxmp->height()))))));
+
+  bool completelyRenderable = th < (height() - 2 * ft - 2 - hlHeight);
+
+  // case 1: do not draw text when not even a single line fits
+  // Don't do this any more, always try to print out the text. Even if
+  // it's just a few pixel, one can still guess the whole text from just four pixels' height!
+  if ( //( singleLineHeight > height()-4 ) || // ignore margin, be gentle.. Even ignore 2 pixel outside the item
+       ( width() < 16 ) ) {
     int x = margin;
-    int txtWidth = width() - margin - x;
-    if (mIncidence->doesFloat() ) {
+    paintTodoIcon( &p, x, ft );
+    return;
+  }
+
+  // Used for multi-day events to make sure the summary is on screen
+  QRect visRect=visibleRect();
+
+  // case 2: draw a single line when no more space
+  if ( (2 * singleLineHeight) > (height() - 2 * margin) ) {
+    int x = margin, txtWidth;
+
+    if ( mIncidence->doesFloat() ) {
       x += visRect.left();
+      paintIcons( &p, x, ft );
       txtWidth = visRect.right() - margin - x;
     }
+    else {
+      paintIcons( &p, x, ft );
+      txtWidth = width() - margin - x;
+    }
+
+    int y = ((height() - 2 * ft - singleLineHeight) / 2) + fm.ascent();
+    KWordWrap::drawFadeoutText( &p, x, y,
+                                txtWidth, mLabelText );
+    return;
+  }
+
+  // case 3: enough for 2-5 lines, but not for the header.
+  //         Also used for the middle days in multi-events
+  if ( ((!completelyRenderable) && ((height() - (2 * margin)) <= (5 * singleLineHeight)) ) ||
+       (isMultiItem() && mMultiItemInfo->mNextMultiItem && mMultiItemInfo->mFirstMultiItem) ) {
+    int x = margin, txtWidth;
+
+    if ( mIncidence->doesFloat() ) {
+      x += visRect.left();
+      paintIcons( &p, x, ft );
+      txtWidth = visRect.right() - margin - x;
+    }
+    else {
+      paintIcons( &p, x, ft );
+      txtWidth = width() - margin - x;
+    }
+
     ww = KWordWrap::formatText( fm,
                                 QRect( 0, 0, txtWidth,
                                 (height() - (2 * margin)) ),
                                 0,
                                 mLabelText );
-    p.eraseRect( 0, 0, width(), height() );
-    paintTodoIcon( &p, x, ft );
-    paintFrame( &p, frameColor );
+
     //kdDebug() << "SIZES for " << mLabelText <<  ": " << width() << " :: " << txtWidth << endl;
     ww->drawText( &p, x, margin, Qt::AlignHCenter | KWordWrap::FadeOut );
     delete ww;
@@ -810,54 +845,70 @@ void KOAgendaItem::paintEvent( QPaintEvent * )
   int y = 2 * ft + hlHeight;
   if ( completelyRenderable )
     y += (height() - (2 * ft) - margin - hlHeight - th) / 2;
-  ww = KWordWrap::formatText( fm,
-                              QRect(0, 0, width() - (2 * margin),
-                              height() - margin - y),
-                              0,
-                              mLabelText );
 
-  p.eraseRect( 0, 0, width(), height() );
+  int x = margin, txtWidth, hTxtWidth, eventX;
 
-  // paint headline
-  p.fillRect( 0, 0, width(), (ft/2) + margin + hlHeight,
-              QBrush( frameColor ) );
+  if ( mIncidence->doesFloat() ) {
+    shortH = longH = "";
 
-  int x = margin;
-  paintTodoIcon( &p, x, ft );
-  conditionalPaint( &p, mIconAlarm, x, ft, alarmPxmp );
-  conditionalPaint( &p, mIconRecur, x, ft, recurPxmp );
-  conditionalPaint( &p, mIconReadonly, x, ft, readonlyPxmp );
-  conditionalPaint( &p, mIconReply, x, ft, replyPxmp );
-  conditionalPaint( &p, mIconGroup, x, ft, groupPxmp );
-  conditionalPaint( &p, mIconGroupTentative, x, ft, groupPxmpTentative );
-  conditionalPaint( &p, mIconOrganizer, x, ft, organizerPxmp );
+    if ( (mIncidence->type() != "Todo") &&
+         (mIncidence->dtStart() != mIncidence->dtEnd()) ) { // multi days
+      shortH = longH =
+        i18n("%1 - %2")
+             .arg(KGlobal::locale()->formatDate(mIncidence->dtStart().date()))
+             .arg(KGlobal::locale()->formatDate(mIncidence->dtEnd().date()));
+
+      // paint headline
+      p.fillRect( 0, 0, width(), (ft/2) + margin + hlHeight,
+                  QBrush( frameColor ) );
+    }
+
+    x += visRect.left();
+    eventX = x;
+    txtWidth = visRect.right() - margin - x;
+    paintIcons( &p, x, ft );
+    hTxtWidth = visRect.right() - margin - x;
+  }
+  else {
+    // paint headline
+    p.fillRect( 0, 0, width(), (ft/2) + margin + hlHeight,
+                QBrush( frameColor ) );
+
+    txtWidth = width() - margin - x;
+    eventX = x;
+    paintIcons( &p, x, ft );
+    hTxtWidth = width() - margin - x;
+  }
 
   QString headline;
   int hw = fm.boundingRect( longH ).width();
-  if ( hw > (width() - x - margin) ) {
+  if ( hw > hTxtWidth ) {
     headline = shortH;
     hw = fm.boundingRect( shortH ).width();
-    if ( hw < (width() - x - margin) )
-      x += (width() - x - margin - hw) / 2;
+    if ( hw < txtWidth )
+      x += (hTxtWidth - hw) / 2;
   } else {
     headline = longH;
-    x += (width() - x - margin - hw) / 2;
+    x += (hTxtWidth - hw) / 2;
   }
   p.setBackgroundColor( frameColor );
   p.setPen( getTextColor( frameColor ) );
-  KWordWrap::drawFadeoutText( &p, x, ft + fm.ascent(),
-                              width() - margin - x, headline );
+  KWordWrap::drawFadeoutText( &p, x, ft + fm.ascent(), hTxtWidth, headline );
 
   // draw event text
+  ww = KWordWrap::formatText( fm,
+                              QRect( 0, 0, txtWidth, height() - margin - y ),
+                              0,
+                              mLabelText );
+
   p.setBackgroundColor( bgColor );
   p.setPen( textColor );
-  paintFrame( &p, frameColor );
   QString ws = ww->wrappedString();
   if ( ws.left( ws.length()-1 ).find( '\n' ) >= 0 )
-    ww->drawText( &p, margin, y,
+    ww->drawText( &p, eventX, y,
                   Qt::AlignAuto | KWordWrap::FadeOut );
   else
-    ww->drawText( &p, margin + (width()-ww->boundingRect().width()-2*margin)/2,
+    ww->drawText( &p, eventX + (txtWidth-ww->boundingRect().width()-2*margin)/2,
                   y, Qt::AlignHCenter | KWordWrap::FadeOut );
   delete ww;
 }
