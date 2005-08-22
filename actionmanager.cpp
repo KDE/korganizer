@@ -359,7 +359,7 @@ void ActionManager::initActions()
 
 
   //~~~~~~~~~~~~~~~~~~~~~~~~~~~ FILTERS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  new KAction( i18n("&Update"), 0,
+  new KAction( i18n("&Refresh"), 0,
                     mCalendarView, SLOT( updateView() ),
                     mACollection, "update" );
 // TODO:
@@ -403,19 +403,26 @@ void ActionManager::initActions()
   new KAction( i18n("Go to &Today"), "today", 0,
                     mCalendarView,SLOT( goToday() ),
                     mACollection, "go_today" );
-  action = KStdAction::prior( mCalendarView, SLOT( goPrevious() ),
-                              mACollection, "go_previous" );
-  action = KStdAction::next( mCalendarView, SLOT( goNext() ),
-                             mACollection, "go_next" );
-//   bool isRTL = QApplication::reverseLayout();
-//   action = new KAction( i18n("Go &Backward"), isRTL ? "forward" : "back", 0,
-//                        mCalendarView,SLOT( goPrevious() ),
-//                        mACollection, "go_previous" );
-//   action = new KAction( i18n("Go &Forward"), isRTL ? "back" : "forward", 0,
-//                        mCalendarView,SLOT( goNext() ),
-//                        mACollection, "go_next" );
+  bool isRTL = QApplication::reverseLayout();
+  action = new KAction( i18n("Go &Backward"), isRTL ? "forward" : "back", 0,
+                        mCalendarView,SLOT( goPrevious() ),
+                        mACollection, "go_previous" );
 
+  // Changing the action text by setText makes the toolbar button disappear.   
+  // This has to be fixed first, before the connects below can be reenabled.   
+  /*
+  connect( mCalendarView, SIGNAL( changeNavStringPrev( const QString & ) ),   
+           action, SLOT( setText( const QString & ) ) );   
+  connect( mCalendarView, SIGNAL( changeNavStringPrev( const QString & ) ),   
+           this, SLOT( dumpText( const QString & ) ) );*/
 
+  action = new KAction( i18n("Go &Forward"), isRTL ? "back" : "forward", 0,
+                        mCalendarView,SLOT( goNext() ),
+                        mACollection, "go_next" );
+  /*
+  connect( mCalendarView,SIGNAL( changeNavStringNext( const QString & ) ),   
+           action,SLOT( setText( const QString & ) ) );   
+  */
 
 
   //************************** Actions MENU *********************************
