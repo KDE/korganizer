@@ -368,7 +368,7 @@ int KOTodoEditor::msgItemDelete()
 {
   return KMessageBox::warningContinueCancel(this,
       i18n("This item will be permanently deleted."),
-      i18n("KOrganizer Confirmation"),KGuiItem(i18n("Delete"),"editdelete"));
+      i18n("KOrganizer Confirmation"), KStdGuiItem::del() );
 }
 
 void KOTodoEditor::modified (int /*modification*/)
