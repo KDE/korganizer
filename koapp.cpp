@@ -69,6 +69,12 @@ int KOrganizerApp::newInstance()
   kdDebug(5850) << "KOApp::newInstance()" << endl;
   static bool first = true;
   if ( isRestored() && first ) {
+     KOrg::MainWindow *korg = ActionManager::findInstance( KURL() );
+     if ( korg ) {
+       KOrg::StdCalendar::self()->load();
+       korg->view()->updateCategories();
+       korg->view()->updateView();
+     }
      first = false;
      return 0;
   }
