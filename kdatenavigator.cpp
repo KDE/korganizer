@@ -206,7 +206,7 @@ void KDateNavigator::updateDayMatrix()
 
 void KDateNavigator::updateView()
 {
-  kdDebug(5850) << "KDateNavigator::updateView(), view " << this << endl;
+//   kdDebug(5850) << "KDateNavigator::updateView(), view " << this << endl;
   updateDayMatrix();
   repaint();
 }
