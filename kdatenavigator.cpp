@@ -46,7 +46,7 @@
 #include "kdatenavigator.h"
 
 KDateNavigator::KDateNavigator( QWidget *parent, const char *name )
-  : QFrame( parent, name )
+  : QFrame( parent, name ), mBaseDate( 1970, 1, 1 )
 {
   QGridLayout* topLayout = new QGridLayout( this, 8, 8 );
 
@@ -109,17 +109,20 @@ void KDateNavigator::setCalendar( Calendar *cal )
 
 void KDateNavigator::setBaseDate( const QDate &date )
 {
-  mBaseDate = date;
+  if ( date != mBaseDate ) {
+    mBaseDate = date;
 
-  updateDates();
-  updateView();
+    updateDates();
+    updateView();
 
-  KCal::DateList dates;
-  dates.append( date );
-  mNavigatorBar->selectDates( dates );
+    // Use the base date to show the monthname and year in the header
+    KCal::DateList dates;
+    dates.append( date );
+    mNavigatorBar->selectDates( dates );
 
-  mDayMatrix->clearSelection();
-  mDayMatrix->repaint();
+    repaint();
+    mDayMatrix->repaint();
+  }
 }
 
 QSizePolicy KDateNavigator::sizePolicy () const
@@ -133,18 +136,17 @@ void KDateNavigator::updateToday()
   mDayMatrix->recalculateToday();
   mDayMatrix->repaint();
 }
-
-void KDateNavigator::updateDates()
+QDate KDateNavigator::startDate() const
 {
   // Find the first day of the week of the current month.
-  //int d1 = KOGlobals::self()->calendarSystem()->day( mBaseDate );
   QDate dayone( mBaseDate.year(), mBaseDate.month(), mBaseDate.day() );
   int d2 = KOGlobals::self()->calendarSystem()->day( dayone );
   //int di = d1 - d2 + 1;
   dayone = dayone.addDays( -d2 + 1 );
 
-  int m_fstDayOfWkCalsys = KOGlobals::self()->calendarSystem()->dayOfWeek(
-      dayone );
+
+  const KCalendarSystem *calsys = KOGlobals::self()->calendarSystem();
+  int m_fstDayOfWkCalsys = calsys->dayOfWeek( dayone );
 
   // If month begins on Monday and Monday is first day of week,
   // month should begin on second line. Sunday doesn't have this problem.
@@ -155,33 +157,26 @@ void KDateNavigator::updateDates()
   int index = ( KGlobal::locale()->weekStartDay() == 1 ? 1 : 0 ) -
               m_fstDayOfWkCalsys - nextLine;
 
-  mDayMatrix->updateView( dayone.addDays( index ) );
+  dayone = dayone.addDays( index );
 
-// each updateDates is followed by an updateView -> repaint is issued there !
-//  mDayMatrix->repaint();
+  return dayone;
+}
+QDate KDateNavigator::endDate() const
+{
+  return startDate().addDays( 6*7 );
 }
 
-void KDateNavigator::updateDayMatrix()
+void KDateNavigator::updateDates()
 {
-  mDayMatrix->updateView();
-  mDayMatrix->repaint();
-}
+// kdDebug(5850) << "KDateNavigator::updateDates(), this=" << this << endl;
+  QDate dayone = startDate();
 
+  mDayMatrix->updateView( dayone );
 
-void KDateNavigator::updateView()
-{
-//  kdDebug(5850) << "KDateNavigator::updateView()" << endl;
-
-  setUpdatesEnabled( false );
-
-  int i;
-
-//  kdDebug(5850) << "updateView() -> mDayMatrix->updateView()" << endl;
-  mDayMatrix->updateView();
+  const KCalendarSystem *calsys = KOGlobals::self()->calendarSystem();
 
   // set the week numbers.
-  const KCalendarSystem *calsys = KOGlobals::self()->calendarSystem();
-  for( i = 0; i < 6; i++ ) {
+  for( int i = 0; i < 6; i++ ) {
     // Use QDate's weekNumber method to determine the week number!
     QDate dtStart = mDayMatrix->getDate( i * 7 );
     QDate dtEnd = mDayMatrix->getDate( ( i + 1 ) * 7 - 1 );
@@ -198,11 +193,22 @@ void KDateNavigator::updateView()
     weeknos[i]->setText( weeknum );
   }
 
-  setUpdatesEnabled( true );
+// each updateDates is followed by an updateView -> repaint is issued there !
+//  mDayMatrix->repaint();
+}
 
-//  kdDebug(5850) << "updateView() -> repaint()" << endl;
-  repaint();
+void KDateNavigator::updateDayMatrix()
+{
+  mDayMatrix->updateView();
   mDayMatrix->repaint();
+}
+
+
+void KDateNavigator::updateView()
+{
+  kdDebug(5850) << "KDateNavigator::updateView(), view " << this << endl;
+  updateDayMatrix();
+  repaint();
 }
 
 void KDateNavigator::updateConfig()
@@ -239,13 +245,7 @@ void KDateNavigator::setShowWeekNums( bool enabled )
 void KDateNavigator::selectDates( const DateList &dateList )
 {
   if ( dateList.count() > 0 ) {
-    mNavigatorBar->selectDates( dateList );
-
     mSelectedDates = dateList;
-
-    // set our record of the month and year that this datetbl is
-    // displaying.
-    mBaseDate = mSelectedDates.first();
 
     updateDates();
 

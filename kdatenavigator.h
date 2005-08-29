@@ -33,7 +33,6 @@
 class QPushButton;
 class QLabel;
 
-class KCalendarSystem;
 namespace KCal {
 class Calendar;
 class Incidence;
@@ -62,6 +61,8 @@ class KDateNavigator: public QFrame
     QSizePolicy sizePolicy () const;
 
     NavigatorBar *navigatorBar() const { return mNavigatorBar; }
+    QDate startDate() const;
+    QDate endDate() const;
 
   public slots:
     void selectDates( const KCal::DateList & );
@@ -98,8 +99,6 @@ class KDateNavigator: public QFrame
   private:
     NavigatorBar *mNavigatorBar;
 
-    QFrame *headingSep;
-    QFrame *weeknumSep;
     QLabel *headings[ 7 ];
     QLabel *weeknos[ 7 ];
 
@@ -107,8 +106,6 @@ class KDateNavigator: public QFrame
 
     KCal::DateList mSelectedDates;
     QDate mBaseDate;
-
-    KCalendarSystem *mCalendarSystem;
 
     const QString *curHeaders;
 

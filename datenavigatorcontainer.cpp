@@ -137,19 +137,40 @@ void DateNavigatorContainer::updateConfig()
 
 void DateNavigatorContainer::selectDates( const DateList &dateList )
 {
-  mNavigatorView->selectDates( dateList );
-  setBaseDates();
+  if ( !dateList.isEmpty() ) {
+    QDate start( dateList.first() );
+    QDate end( dateList.last() );
+    QDate navfirst( mNavigatorView->startDate() );
+    QDate navsecond; // start of the second shown month if existant
+    QDate navlast;
+    if ( !mExtraViews.isEmpty() ) {
+      navlast = mExtraViews.last()->endDate();
+      navsecond = mExtraViews.first()->startDate();
+    } else {
+      navlast = mNavigatorView->endDate();
+      navsecond = navfirst;
+    }
+    if ( start < navfirst // <- start should always be visible
+         // end is not visible and we have a spare month at the beginning:
+         || ( end > navlast && start >= navsecond ) ) {
+      // Change the shown months so that the beginning of the date list is visible
+      setBaseDates( start );
+    }
+
+    mNavigatorView->selectDates( dateList );
+    KDateNavigator *n = mExtraViews.first();
+    while ( n ) {
+      n->selectDates( dateList );
+      n = mExtraViews.next();
+    }
+  }
 }
 
-void DateNavigatorContainer::setBaseDates()
+void DateNavigatorContainer::setBaseDates( const QDate &start )
 {
-  KCal::DateList dateList = mNavigatorView->selectedDates();
-  if ( dateList.isEmpty() ) {
-    kdError() << "DateNavigatorContainer::selectDates() empty list." << endl;
-  }
-  QDate baseDate = dateList.first();
-  KDateNavigator *n;
-  for( n = mExtraViews.first(); n; n = mExtraViews.next() ) {
+  QDate baseDate = start;
+  mNavigatorView->setBaseDate( baseDate );
+  for( KDateNavigator *n = mExtraViews.first(); n; n = mExtraViews.next() ) {
     baseDate = KOGlobals::self()->calendarSystem()->addMonths( baseDate, 1 );
     n->setBaseDate( baseDate );
   }
@@ -182,9 +203,7 @@ void DateNavigatorContainer::resizeEvent( QResizeEvent * )
       KDateNavigator *n = new KDateNavigator( this );
       mExtraViews.append( n );
       n->setCalendar( mCalendar );
-      setBaseDates();
       connectNavigatorView( n );
-      n->show();
     }
 
     while ( count < ( mExtraViews.count() + 1 ) ) {
@@ -193,6 +212,10 @@ void DateNavigatorContainer::resizeEvent( QResizeEvent * )
 
     mHorizontalCount = horizontalCount;
     mVerticalCount = verticalCount;
+    selectDates( mNavigatorView->selectedDates() );
+    for( KDateNavigator *n = mExtraViews.first(); n; n = mExtraViews.next() ) {
+      n->show();
+    }
   }
 
   int height = (size().height() - margin*2) / verticalCount;

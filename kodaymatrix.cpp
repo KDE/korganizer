@@ -99,7 +99,7 @@ const int KODayMatrix::NOSELECTION = -1000;
 const int KODayMatrix::NUMDAYS = 42;
 
 KODayMatrix::KODayMatrix( QWidget *parent, const char *name )
-  : QFrame( parent, name ), mCalendar( 0 )
+  : QFrame( parent, name ), mCalendar( 0 ), mStartDate( 1970, 1, 1 )
 {
   // initialize dynamic arrays
   mDays = new QDate[ NUMDAYS ];
@@ -110,6 +110,7 @@ KODayMatrix::KODayMatrix( QWidget *parent, const char *name )
   mTodayMarginWidth = 2;
   mSelEnd = mSelStart = NOSELECTION;
   setBackgroundMode( NoBackground );
+  recalculateToday();
 }
 
 void KODayMatrix::setCalendar( Calendar *cal )
@@ -524,23 +525,28 @@ void KODayMatrix::paintEvent( QPaintEvent * )
     col = mSelStart -row*7;
     QColor selcol = KOPrefs::instance()->mHighlightColor;
 
-    if (row == mSelEnd/7) {
-      // Single row selection
-      p.fillRect(isRTL ? (7 - (mSelEnd-mSelStart+1) - col)*dwidth : col*dwidth,
-                  row*dheight, (mSelEnd-mSelStart+1)*dwidth, dheight, selcol);
-    } else {
-      // draw first row to the right
-      p.fillRect(isRTL ? 0 : col*dwidth, row*dheight, (7-col)*dwidth,
-                 dheight, selcol);
-      // draw full block till last line
-      selh = mSelEnd/7-row;
-      if (selh > 1) {
-        p.fillRect(0, (row+1)*dheight, 7*dwidth, (selh-1)*dheight,selcol);
+    if ( row < 6 && row >= 0 ) {
+      if (row == mSelEnd/7) {
+        // Single row selection
+        p.fillRect(isRTL ? (7 - (mSelEnd-mSelStart+1) - col)*dwidth : col*dwidth,
+                    row*dheight, (mSelEnd-mSelStart+1)*dwidth, dheight, selcol);
+      } else {
+        // draw first row to the right
+        p.fillRect(isRTL ? 0 : col*dwidth, row*dheight, (7-col)*dwidth,
+                   dheight, selcol);
+        // draw full block till last line
+        selh = mSelEnd/7-row;
+        if ( selh + row >= 6 ) selh = 6-row;
+        if ( selh > 1 ) {
+          p.fillRect(0, (row+1)*dheight, 7*dwidth, (selh-1)*dheight,selcol);
+        }
+        // draw last block from left to mSelEnd
+        if ( mSelEnd/7 < 6 ) {
+          selw = mSelEnd-7*(mSelEnd/7)+1;
+          p.fillRect(isRTL ? (7-selw)*dwidth : 0, (row+selh)*dheight,
+                     selw*dwidth, dheight, selcol);
+        }
       }
-      // draw last block from left to mSelEnd
-      selw = mSelEnd-7*(mSelEnd/7)+1;
-      p.fillRect(isRTL ? (7-selw)*dwidth : 0, (row+selh)*dheight,
-                 selw*dwidth, dheight, selcol);
     }
   }
 

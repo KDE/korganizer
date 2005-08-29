@@ -69,8 +69,7 @@ class DateNavigatorContainer: public QFrame
 
   protected:
     void resizeEvent( QResizeEvent * );
-
-    void setBaseDates();
+    void setBaseDates( const QDate &start );
     void connectNavigatorView( KDateNavigator *v );
 
   private:
