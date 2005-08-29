@@ -210,10 +210,10 @@ class KOAgenda : public QScrollView
 
     /** Handles mouse events. Called from eventFilter */
     virtual bool eventFilter_mouse ( QObject *, QMouseEvent * );
-#ifndef QT_NO_WHEELEVENT    
+#ifndef QT_NO_WHEELEVENT
     /** Handles mousewheel events. Called from eventFilter */
     virtual bool eventFilter_wheel ( QObject *, QWheelEvent * );
-#endif    
+#endif
     /** Handles key events. Called from eventFilter */
     virtual bool eventFilter_key ( QObject *, QKeyEvent * );
 
@@ -281,6 +281,11 @@ class KOAgenda : public QScrollView
   protected slots:
     /** delete the items that are queued for deletion */
     void deleteItemsToDelete();
+    /** Resizes all the child elements after the size of the agenda
+        changed. This is needed because Qt seems to have a bug when
+        the resizeEvent of one of the widgets in a splitter takes a
+        lot of time / does a lot of resizes.... see bug 80114 */
+    void resizeAllContents();
 
   private:
     void init();

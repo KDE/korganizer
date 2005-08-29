@@ -36,6 +36,7 @@
 #include "datenavigatorcontainer.h"
 
 #include <qwhatsthis.h>
+#include <qtimer.h>
 
 DateNavigatorContainer::DateNavigatorContainer( QWidget *parent,
                                                 const char *name )
@@ -185,7 +186,11 @@ void DateNavigatorContainer::resizeEvent( QResizeEvent * )
   kdDebug(5850) << "  SIZEHINT: " << sizeHint() << endl;
   kdDebug(5850) << "  MINIMUM SIZE: " << minimumSize() << endl;
 #endif
+  QTimer::singleShot( 0, this, SLOT( resizeAllContents() ) );
+}
 
+void DateNavigatorContainer::resizeAllContents()
+{
   QSize minSize = mNavigatorView->minimumSizeHint();
 
 //  kdDebug(5850) << "  NAVIGATORVIEW minimumSizeHint: " << minSize << endl;

@@ -1776,36 +1776,40 @@ void KOAgenda::deleteItemsToDelete()
 void KOAgenda::resizeEvent ( QResizeEvent *ev )
 {
 //  kdDebug(5850) << "KOAgenda::resizeEvent" << endl;
-  double subCellWidth;
-  KOAgendaItem *item;
+
   QSize newSize( ev->size() );
   if (mAllDayMode) {
     mGridSpacingX = double( newSize.width() - 2 * frameWidth() ) / (double)mColumns;
     mGridSpacingY = newSize.height() - 2 * frameWidth();
-
-    for ( item=mItems.first(); item != 0; item=mItems.next() ) {
-      subCellWidth = calcSubCellWidth( item );
-      placeAgendaItem( item, subCellWidth );
-    }
   } else {
     mGridSpacingX = double( newSize.width() - verticalScrollBar()->width() - 2 * frameWidth()) / double(mColumns);
     // make sure that there are not more than 24 per day
     mGridSpacingY = double(newSize.height() - 2 * frameWidth()) / double(mRows);
     if ( mGridSpacingY < mDesiredGridSpacingY )
       mGridSpacingY = mDesiredGridSpacingY;
+  }
+  calculateWorkingHours();
+  QTimer::singleShot( 0, this, SLOT( resizeAllContents() ) );
+  QScrollView::resizeEvent(ev);
+}
 
+void KOAgenda::resizeAllContents()
+{
+  double subCellWidth;
+  KOAgendaItem *item;
+  if (mAllDayMode) {
+    for ( item=mItems.first(); item != 0; item=mItems.next() ) {
+      subCellWidth = calcSubCellWidth( item );
+      placeAgendaItem( item, subCellWidth );
+    }
+  } else {
     for ( item=mItems.first(); item != 0; item=mItems.next() ) {
       subCellWidth = calcSubCellWidth( item );
       placeAgendaItem( item, subCellWidth );
     }
   }
-
   checkScrollBoundaries();
-  calculateWorkingHours();
-
   marcus_bains();
-
-  QScrollView::resizeEvent(ev);
 }
 
 

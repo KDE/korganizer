@@ -71,6 +71,12 @@ class DateNavigatorContainer: public QFrame
     void resizeEvent( QResizeEvent * );
     void setBaseDates( const QDate &start );
     void connectNavigatorView( KDateNavigator *v );
+  protected slots:
+    /** Resizes all the child elements after the size of the widget
+        changed. This slot is called by a QTimer::singleShot from
+        resizeEvent. This makes the UI seem more responsive, since
+        the other parts of the splitter are resized earlier now */
+    void resizeAllContents();
 
   private:
     KDateNavigator *mNavigatorView;
