@@ -163,10 +163,10 @@
                 <cstring>mRecurDaily</cstring>
             </property>
             <property name="text">
-                <string>Print daily re&amp;curring incidences</string>
+                <string>Print daily re&amp;curring to-dos and events</string>
             </property>
             <property name="whatsThis" stdset="0">
-                <string>With this option it is possible to leave out the daily recurring to-dos in the print. The incidences take a lot of space and make the month view needlessly complicated.</string>
+                <string>With this option it is possible to leave out the daily recurring to-dos and events in the print. They take a lot of space and make the month view needlessly complicated.</string>
             </property>
         </widget>
         <widget class="QCheckBox" row="3" column="0">
@@ -174,10 +174,10 @@
                 <cstring>mRecurWeekly</cstring>
             </property>
             <property name="text">
-                <string>Print weekl&amp;y recurring incidences</string>
+                <string>Print weekl&amp;y recurring to-dos and events</string>
             </property>
             <property name="whatsThis" stdset="0">
-                <string>Similar to "Print daily recurring incidences". Weekly incidences will be omitted when making a print of the selected month.</string>
+                <string>Similar to "Print daily recurring to-dos and events". Weekly to-dos and events will be omitted when making a print of the selected month.</string>
             </property>
         </widget>
     </grid>

@@ -52,7 +52,7 @@
 #include "archivedialog.moc"
 
 ArchiveDialog::ArchiveDialog(Calendar *cal,QWidget *parent, const char *name)
-  : KDialogBase (Plain,i18n("Archive/Delete Past Events"),
+  : KDialogBase (Plain,i18n("Archive/Delete Past Events and To-dos"),
                  User1|Cancel,User1,parent,name,false,true,
                  i18n("&Archive"))
 {
@@ -63,7 +63,7 @@ ArchiveDialog::ArchiveDialog(Calendar *cal,QWidget *parent, const char *name)
   topLayout->setSpacing(spacingHint());
 
   KActiveLabel *descLabel = new KActiveLabel(
-    i18n("Archiving saves old events into the given file and "
+    i18n("Archiving saves old items into the given file and "
          "then deletes them in the current calendar. If the archive file "
          "already exists they will be added. "
          "(<a href=\"whatsthis:In order to add an archive "
@@ -79,12 +79,12 @@ ArchiveDialog::ArchiveDialog(Calendar *cal,QWidget *parent, const char *name)
   connect( radioBG, SIGNAL( clicked( int ) ), SLOT( slotActionChanged() ) );
 
   QHBoxLayout *dateLayout = new QHBoxLayout(0);
-  mArchiveOnceRB = new QRadioButton(i18n("Archive now events older than:"),topFrame);
+  mArchiveOnceRB = new QRadioButton(i18n("Archive now items older than:"),topFrame);
   dateLayout->addWidget(mArchiveOnceRB);
   radioBG->insert(mArchiveOnceRB);
   mDateEdit = new KDateEdit(topFrame);
   QWhatsThis::add(mDateEdit,
-    i18n("The date before which events should be archived. All older events will "
+    i18n("The date before which items should be archived. All older events and to-dos will "
          "be saved and deleted, the newer (and events exactly on that date) will be kept."));
   dateLayout->addWidget(mDateEdit);
   topLayout->addLayout(dateLayout);
@@ -93,10 +93,10 @@ ArchiveDialog::ArchiveDialog(Calendar *cal,QWidget *parent, const char *name)
   // (similar to kmail's mExpireFolderCheckBox/mReadExpiryTimeNumInput in kmfolderdia.cpp)
   QHBox* autoArchiveHBox = new QHBox(topFrame);
   topLayout->addWidget(autoArchiveHBox);
-  mAutoArchiveRB = new QRadioButton(i18n("Automaticall&y archive events older than:"), autoArchiveHBox);
+  mAutoArchiveRB = new QRadioButton(i18n("Automaticall&y archive items older than:"), autoArchiveHBox);
   radioBG->insert(mAutoArchiveRB);
   QWhatsThis::add(mAutoArchiveRB,
-    i18n("If this feature is enabled, KOrganizer will regularly check if events have to be archived; "
+    i18n("If this feature is enabled, KOrganizer will regularly check if events and to-dos have to be archived; "
          "this means you will not need to use this dialog box again, except to change the settings."));
 
   mExpiryTimeNumInput = new KIntNumInput(autoArchiveHBox);
@@ -104,7 +104,7 @@ ArchiveDialog::ArchiveDialog(Calendar *cal,QWidget *parent, const char *name)
   mExpiryTimeNumInput->setEnabled(false);
   mExpiryTimeNumInput->setValue(7);
   QWhatsThis::add(mExpiryTimeNumInput,
-    i18n("The age of the events to archive. All older events "
+    i18n("The age of the events and to-dos to archive. All older items "
          "will be saved and deleted, the newer will be kept."));
 
   mExpiryUnitsComboBox = new QComboBox(autoArchiveHBox);
@@ -122,11 +122,11 @@ ArchiveDialog::ArchiveDialog(Calendar *cal,QWidget *parent, const char *name)
   mArchiveFile->setMode(KFile::File);
   mArchiveFile->setFilter(i18n("*.ics|iCalendar Files"));
   QWhatsThis::add(mArchiveFile,
-    i18n("The path of the archive. The events will be added to the "
+    i18n("The path of the archive. The events and to-dos will be added to the "
          "archive file, so any events that are already in the file "
          "will not be modified or deleted. You can later load or merge the "
          "file like any other calendar. It is not saved in a special "
-         "format, it uses the vCalendar format. "));
+         "format, it uses the iCalendar format. "));
   l->setBuddy(mArchiveFile->lineEdit());
   fileLayout->addWidget(mArchiveFile);
   topLayout->addLayout(fileLayout);
@@ -144,7 +144,7 @@ ArchiveDialog::ArchiveDialog(Calendar *cal,QWidget *parent, const char *name)
   mDeleteCb = new QCheckBox(i18n("&Delete only, do not save"),
                             topFrame);
   QWhatsThis::add(mDeleteCb,
-    i18n("Select this option to delete old events without saving them. "
+    i18n("Select this option to delete old events and to-dos without saving them. "
          "It is not possible to recover the events later."));
   topLayout->addWidget(mDeleteCb);
   connect(mDeleteCb, SIGNAL(toggled(bool)), mArchiveFile, SLOT(setDisabled(bool)));

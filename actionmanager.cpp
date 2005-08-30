@@ -511,7 +511,7 @@ void ActionManager::initActions()
   connect( mCalendarView,SIGNAL( groupEventsSelected( bool ) ),
            action,SLOT( setEnabled( bool ) ) );
 
-  action = new KAction( i18n("&Mail Free Busy Information"), 0,
+  action = new KAction( i18n("&Mail Free Busy Information..."), 0,
                         mCalendarView, SLOT( mailFreeBusy() ),
                         mACollection, "mail_freebusy" );
   action->setEnabled( true );

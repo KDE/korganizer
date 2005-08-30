@@ -76,10 +76,10 @@
                         <cstring>mRecurringCheck</cstring>
                     </property>
                     <property name="text">
-                        <string>Hide &amp;recurring incidences</string>
+                        <string>Hide &amp;recurring events and to-dos</string>
                     </property>
                     <property name="whatsThis" stdset="0">
-                        <string>Select this option if you do not want to show recurring incidences in your views. Daily and weekly recurring incidences may take a lot of space, so it might be handy to hide them.</string>
+                        <string>Select this option if you do not want to show recurring events and to-dos in your views. Daily and weekly recurring items may take a lot of space, so it might be handy to hide them.</string>
                     </property>
                 </widget>
                 <widget class="QCheckBox" row="2" column="0">
@@ -241,7 +241,7 @@
                                 <number>1</number>
                             </property>
                             <property name="whatsThis" stdset="0">
-                                <string>When this option is enabled, this filter will show all incidences which do &lt;i&gt;not&lt;/i&gt; contain the selected categories.</string>
+                                <string>When this option is enabled, this filter will show all items which do &lt;i&gt;not&lt;/i&gt; contain the selected categories.</string>
                             </property>
                         </widget>
                         <widget class="QRadioButton" row="0" column="0" rowspan="1" colspan="2">
@@ -258,7 +258,7 @@
                                 <number>0</number>
                             </property>
                             <property name="whatsThis" stdset="0">
-                                <string>When this option is enabled, this filter will show all incidences containing at least the selected incidences.</string>
+                                <string>When this option is enabled, this filter will show all items containing at least the selected items.</string>
                             </property>
                         </widget>
                         <widget class="QPushButton" row="2" column="1">
