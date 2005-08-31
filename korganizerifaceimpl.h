@@ -1,6 +1,7 @@
 /*
     This file is part of KOrganizer
     Copyright (c) 2004  Bo Thorsen <bo@sonofthor.dk>
+    Copyright (c) 2005 Rafal Rzepecki <divide@users.sourceforge.net>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -60,6 +61,12 @@ public:
 
   /** @reimp from KOrganizerIface::addIncidence() */
   bool addIncidence( const QString &iCal );
+  
+  /** @reimp from KOrganizerIface::showIncidence() */
+  bool showIncidence( const QString& uid );
+
+  /** @reimp from KOrganizerIface::showIncidence() */
+  bool showIncidenceContext( const QString& uid );
 
 private:
   ActionManager* mActionManager;

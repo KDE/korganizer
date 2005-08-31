@@ -10,6 +10,7 @@
     Copyright (c) 2000, 2001, 2002, 2003, 2004
     Cornelius Schumacher <schumacher@kde.org>
     Copyright (C) 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
+    Copyright (c) 2005 Rafal Rzepecki <divide@users.sourceforge.net>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -1806,6 +1807,24 @@ bool CalendarView::editIncidence( const QString& uid )
   return editIncidence( mCalendar->incidence( uid ) );
 }
 
+bool CalendarView::showIncidence( const QString& uid )
+{
+  Incidence *incidence = mCalendar->incidence( uid );
+  if ( !incidence )
+    return false;
+  showIncidence( incidence );
+  return true;
+}
+
+bool CalendarView::showIncidenceContext( const QString& uid )
+{
+  Incidence *incidence = mCalendar->incidence( uid );
+  if ( !incidence )
+    return false;
+  showIncidenceContext( incidence );
+  return true;
+}
+
 void CalendarView::deleteIncidence()
 {
   deleteIncidence( selectedIncidence() );
@@ -1826,6 +1845,26 @@ void CalendarView::showIncidence( Incidence *incidence )
   KOEventViewerDialog *eventViewer = new KOEventViewerDialog( this );
   eventViewer->setIncidence( incidence );
   eventViewer->show();
+}
+
+void CalendarView::showIncidenceContext( Incidence *incidence )
+{
+  if ( dynamic_cast<KCal::Event *>( incidence ) ) {
+    if ( !viewManager()->currentView()->inherits( "KOEventView" ) )
+      viewManager()->showAgendaView();
+    // just select the appropriate date
+    mNavigator->selectWeek( incidence->dtStart().date() );
+    return;
+  } else if ( dynamic_cast<KCal::Journal *>( incidence ) ) {
+    if ( !viewManager()->currentView()->inherits( "KOJournalView" ) )
+      viewManager()->showJournalView();
+  } else if ( dynamic_cast<KCal::Todo *>( incidence ) ) {
+    if ( !viewManager()->currentView()->inherits( "KOTodoView" ) )
+      viewManager()->showTodoView();
+  }
+  Incidence::List list;
+  list.append( incidence );
+  viewManager()->currentView()->showIncidences( list );
 }
 
 bool CalendarView::editIncidence( Incidence *incidence )

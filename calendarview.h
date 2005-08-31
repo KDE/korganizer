@@ -3,6 +3,7 @@
 
     Copyright (c) 2000,2001,2003,2004 Cornelius Schumacher <schumacher@kde.org>
     Copyright (C) 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
+    Copyright (c) 2005 Rafal Rzepecki <divide@users.sourceforge.net>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -158,6 +159,9 @@ class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::
     /** Emitted when the categories were updated, and thus the categories editor
      *  dialog needs to reload the list of categories */
     void categoriesChanged();
+    /** Emitted when the categories were edited by the user, and thus the views
+     *  need to reload the list of categories */
+    void categoryConfigChanged();
     /** emitted when the topwidget is closing down, so that any attached
         child windows can also close. */
     void closingDown();
@@ -253,6 +257,13 @@ class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::
     void showIncidence();
     void editIncidence();
     bool editIncidence( const QString& uid );
+    bool showIncidence( const QString& uid );
+    /**
+      Show an incidence in context. This means showing the todo, agenda or 
+      journal view (as appropriate) and scrolling it to show the incidence.
+      @param uid Unique ID of the incidence to show.
+    */
+    bool showIncidenceContext( const QString& uid );
     void deleteIncidence();
 
     /**
@@ -287,6 +298,12 @@ class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::
 
     /** Create a read-only viewer dialog for the supplied incidence. It calls the correct showXXX method*/
     void showIncidence( Incidence * );
+    /**
+      Show an incidence in context. This means showing the todo, agenda or 
+      journal view (as appropriate) and scrolling it to show the incidence.
+      @param incidence The incidence to show.
+    */
+    void showIncidenceContext( Incidence *incidence );
     /** Create an editor for the supplied incidence. It calls the correct editXXX method*/
     bool editIncidence( Incidence * );
     /**

@@ -119,11 +119,15 @@ void KOIncidenceEditor::setupAttachmentsTab()
 
 void KOIncidenceEditor::slotApply()
 {
+  if ( mAttachments )
+    mAttachments->applyChanges();
   processInput();
 }
 
 void KOIncidenceEditor::slotOk()
 {
+  if ( mAttachments )
+    mAttachments->applyChanges();
   if ( processInput() ) accept();
 }
 

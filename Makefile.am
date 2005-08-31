@@ -74,7 +74,7 @@ libkorganizer_la_SOURCES = komessagebox.cpp \
 	kodialogmanager.cpp \
 	archivedialog.cpp \
 	kohelper.cpp \
-	komailclient.cpp kotodoview.cpp kotodoviewitem.cpp \
+	komailclient.cpp kotodoview.cpp kotodoviewitem.cpp kotodoviewquicksearch.cpp \
 	kolistview.cpp \
 	koincidenceeditor.cpp koeventeditor.cpp kotodoeditor.cpp kojournaleditor.cpp\
 	koprefs.cpp kowindowlist.cpp \
@@ -111,7 +111,8 @@ libkorganizer_eventviewer_la_LDFLAGS = $(all_libraries) $(KDE_RPATH) \
 libkorganizer_eventviewer_la_LIBADD  = $(LIB_KPARTS) \
                                        $(top_builddir)/libkcal/libkcal.la
 libkorganizer_eventviewer_la_SOURCES = koeventviewer.cpp urihandler.cpp \
-                                       kmailIface.stub koeventviewerdialog.cpp
+                                       kmailIface.stub koeventviewerdialog.cpp \
+                                       korganizeriface.stub knodeiface.stub
 
 libkorganizer_calendar_la_LDFLAGS = $(all_libraries) $(KDE_RPATH) \
                                     -no-undefined -version-info 1:0
@@ -124,6 +125,9 @@ libkorganizer_calendar_la_SOURCES = stdcalendar.cpp
 kmailIface_DIR = $(top_srcdir)/kmail
 kmailIface_DCOPIDLNG = true
 
+knodeiface_DIR = $(top_srcdir)/knode
+knodeiface_DCOPIDLNG = true
+
 METASOURCES = AUTO
 
 noinst_HEADERS = komonthview.h \
@@ -134,7 +138,7 @@ noinst_HEADERS = komonthview.h \
 	version.h \
 	searchdialog.h \
 	archivedialog.h \
-	komailclient.h kotodoview.h \
+	komailclient.h kotodoview.h kotodoviewquicksearch.h \
 	kolistview.h \
 	koapp.h korganizer_part.h korganizer.h \
 	koprefsdialog.h koeventeditor.h \

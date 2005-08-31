@@ -2,6 +2,7 @@
     This file is part of KOrganizer.
 
     Copyright (c) 2003 Cornelius Schumacher <schumacher@kde.org>
+    Copyright (c) 2005 Rafal Rzepecki <divide@users.sourceforge.net>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -22,11 +23,18 @@
     without including the source code for Qt in the source distribution.
 */
 
+#include <qobject.h>
+#include <qobjectlist.h>
+
+#include <libkdepim/kdepimprotocols.h>
+
 #include "urihandler.h"
 
 #ifndef KORG_NODCOP
 #include <dcopclient.h>
 #include "kmailIface_stub.h"
+#include "knodeiface_stub.h"
+#include "korganizeriface_stub.h"
 #endif
 
 #include <kiconloader.h>
@@ -40,7 +48,7 @@ bool UriHandler::process( const QString &uri )
   kdDebug(5850) << "UriHandler::process(): " << uri << endl;
 
 #ifndef KORG_NODCOP
-  if ( uri.startsWith( "kmail:" ) ) {
+  if ( uri.startsWith( KDEPIMPROTOCOL_EMAIL ) ) {
     // make sure kmail is running or the part is shown
     kapp->startServiceByDesktopPath("kmail");
 
@@ -56,7 +64,7 @@ bool UriHandler::process( const QString &uri )
   } else if ( uri.startsWith( "mailto:" ) ) {
     KApplication::kApplication()->invokeMailer( uri.mid(7), QString::null );
     return true;
-  } else if ( uri.startsWith( "uid:" ) ) {
+  } else if ( uri.startsWith( KDEPIMPROTOCOL_CONTACT ) ) {
     DCOPClient *client = KApplication::kApplication()->dcopClient();
     const QByteArray noParamData;
     const QByteArray paramData;
@@ -71,7 +79,8 @@ bool UriHandler::process( const QString &uri )
       kapp->updateRemoteUserTimestamp("kaddressbook");
 #endif
       DCOPRef kaddressbook( "kaddressbook", "KAddressBookIface" );
-      kaddressbook.send( "showContactEditor", uri.mid( 6 ) );
+      kaddressbook.send( "showContactEditor", 
+                         uri.mid( ::qstrlen( KDEPIMPROTOCOL_CONTACT ) ) );
       return true;
     } else {
       /*
@@ -81,15 +90,29 @@ bool UriHandler::process( const QString &uri )
       KIconLoader *iconLoader = new KIconLoader();
       QString iconPath = iconLoader->iconPath( "go", KIcon::Small );
       QString tmpStr = "kaddressbook --editor-only --uid ";
-      tmpStr += KProcess::quote( uri.mid( 6 ) );
+      tmpStr += KProcess::quote( uri.mid( ::qstrlen( KDEPIMPROTOCOL_CONTACT ) ) 
+      );
       KRun::runCommand( tmpStr, "KAddressBook", iconPath );
       return true;
     }
-  }
-  else {  // no special URI, let KDE handle it
+  } else if ( uri.startsWith( KDEPIMPROTOCOL_INCIDENCE ) ) {
+    // make sure korganizer is running or the part is shown
+    kapp->startServiceByDesktopPath("korganizer");
+
+    // we must work around KURL breakage (it doesn't know about URNs)
+    QString uid = KURL::decode_string( uri ).mid( 11 );
+    
+    KOrganizerIface_stub korganizerIface( "korganizer", "KOrganizerIface" );
+    return korganizerIface.showIncidence( uid );
+  } else if ( uri.startsWith( KDEPIMPROTOCOL_NEWSARTICLE ) ) {
+    kapp->startServiceByDesktopPath( "knode" );
+    
+    KNodeIface_stub knodeIface( "knode", "KNodeIface" );
+    knodeIface.openURL( uri );
+  } else {  // no special URI, let KDE handle it
     new KRun(KURL( uri ));
   }
-#endif
+#endif /* KORG_NODCOP */
   
   return false;
 }

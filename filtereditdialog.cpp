@@ -237,7 +237,11 @@ void FilterEdit::editCategorySelection()
              SIGNAL( editCategories() ) );
 
   }
+  // we need the children not to autoselect or else some unselected
+  // children can also become selected
+  mCategorySelectDialog->setAutoselectChildren( false );
   mCategorySelectDialog->setSelected( current->categoryList() );
+  mCategorySelectDialog->setAutoselectChildren( true );
 
   mCategorySelectDialog->show();
 }

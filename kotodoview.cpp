@@ -3,6 +3,7 @@
 
     Copyright (c) 2000,2001,2003 Cornelius Schumacher <schumacher@kde.org>
     Copyright (C) 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
+    Copyright (c) 2005 Rafal Rzepecki <divide@users.sourceforge.net>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -16,7 +17,8 @@
 
     You should have received a copy of the GNU General Public License
     along with this program; if not, write to the Free Software
-    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+    Foundation, Inc., 51 Franklin Street, Fifth Floor, 
+    Boston, MA 02110-1301, USA.
 
     As a special exception, permission is given to link this program
     with any edition of Qt, and distribute the resulting executable,
@@ -34,6 +36,11 @@
 #include <kglobal.h>
 #include <kiconloader.h>
 #include <kmessagebox.h>
+#include <kactioncollection.h>
+#ifndef KORG_NODND
+#include <kmultipledrag.h>
+#endif
+#include <ktoolbar.h>
 
 #include <libkcal/icaldrag.h>
 #include <libkcal/vcaldrag.h>
@@ -58,6 +65,9 @@
 #include "koglobals.h"
 using namespace KOrg;
 #include "kotodoviewitem.h"
+#include "kotodoviewquicksearch.h"
+#include <korganizer/mainwindow.h>
+
 #include "kotodoview.moc"
 
 
@@ -319,7 +329,7 @@ void KOTodoListView::contentsMouseMoveEvent(QMouseEvent* e)
     if ( item && mCalendar ) {
 //      kdDebug(5850) << "Start Drag for item " << item->text(0) << endl;
       DndFactory factory( mCalendar );
-      ICalDrag *vd = factory.createDrag(
+      QDragObject *vd = factory.createDrag(
                           ((KOTodoViewItem *)item)->todo(),viewport());
       if (vd->drag()) {
         kdDebug(5850) << "KOTodoListView::contentsMouseMoveEvent(): Delete drag source" << endl;
@@ -365,6 +375,26 @@ KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent, const char* name)
 {
   QBoxLayout *topLayout = new QVBoxLayout( this );
 
+  // find the main window (for the action collection)
+  KActionCollection *collection = 0;
+  for ( QWidget *curWidget = parentWidget(); curWidget; 
+        curWidget = curWidget->parentWidget() ) {
+    KOrg::MainWindow *mainWidget = dynamic_cast<KOrg::MainWindow *>( curWidget );
+    if ( mainWidget )
+      collection = mainWidget->getActionCollection();
+  }
+  
+  mTodoListView = new KOTodoListView( this );
+  
+  KOTodoListViewQuickSearchContainer *container = 
+          new KOTodoListViewQuickSearchContainer( this, mTodoListView, 
+                                                  collection, calendar,
+                                                  "todo quick search" );
+  mSearchToolBar = container->quickSearch();
+  
+  if ( !KOPrefs::instance()->mEnableTodoQuickSearch ) container->hide();
+  topLayout->addWidget( container );
+
   QLabel *title = new QLabel( i18n("To-dos:"), this );
   title->setFrameStyle( QFrame::Panel | QFrame::Raised );
   topLayout->addWidget( title );
@@ -375,7 +405,6 @@ KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent, const char* name)
 
   if ( !KOPrefs::instance()->mEnableQuickTodo ) mQuickAdd->hide();
 
-  mTodoListView = new KOTodoListView( this );
   topLayout->addWidget( mTodoListView );
 
   mTodoListView->setRootIsDecorated( true );
@@ -521,6 +550,7 @@ void KOTodoView::setCalendar( Calendar *cal )
 {
   BaseView::setCalendar( cal );
   mTodoListView->setCalendar( cal );
+  mSearchToolBar->setCalendar( cal );
 }
 
 void KOTodoView::updateView()
@@ -568,6 +598,8 @@ void KOTodoView::updateView()
 
   mTodoListView->setContentsPos( 0, oldPos );
 
+  mSearchToolBar->fillCategories();
+  
   processSelectionChange();
 }
 
@@ -725,9 +757,44 @@ void KOTodoView::showDates(const QDate &, const QDate &)
 {
 }
 
-void KOTodoView::showIncidences( const Incidence::List & )
+void KOTodoView::showIncidences( const Incidence::List &incidences )
 {
-  kdDebug(5850) << "KOTodoView::showIncidences( const Incidence::List & ): not yet implemented" << endl;
+  // we must check if they are not filtered; if they are, remove the filter
+  CalFilter *filter = calendar()->filter();
+  bool wehaveall = true;
+  if ( filter )
+    for ( Incidence::List::ConstIterator it = incidences.constBegin();
+        it != incidences.constEnd(); ++it )
+      if ( !( wehaveall = filter->filterIncidence( *it ) ) )
+        break;
+  
+  if ( !wehaveall )
+    calendar()->setFilter( 0 );
+  
+  // calculate the rectangle we must have
+  uint begin = mTodoListView->contentsHeight(), end = 0;
+  KOTodoViewItem *first = 0, *last;
+  for ( QListViewItemIterator it( mTodoListView ); it.current(); ++it )
+    if ( incidences.contains( static_cast<KOTodoViewItem *>( it.current() 
+                                                           )->todo() ) ) {
+      if ( !first ) first = static_cast<KOTodoViewItem *>( it.current() );
+      last = static_cast<KOTodoViewItem *>( it.current() );
+      uint pos = it.current()->itemPos();
+      begin = kMin( begin, pos );
+      end = kMax( end, pos + it.current()->height() );
+    }
+  
+  if ( end < begin )
+    // nothing to do
+    return;
+  if ( end - begin > (uint) mTodoListView->visibleHeight() )
+    // we can't show them all anyway, mise show the first on top
+    mTodoListView->setContentsPos( 0, first->itemPos() );
+  else  // center it
+    mTodoListView->center( 0, (begin + end) / 2 );
+  
+  // the final touch (make the user notice)
+  first->setSelected( true );
 }
 
 CalPrinter::PrintType KOTodoView::printType()
@@ -1094,4 +1161,9 @@ void KOTodoView::setIncidenceChanger( IncidenceChangerBase *changer )
 {
   mChanger = changer;
   mTodoListView->setIncidenceChanger( changer );
+}
+
+void KOTodoView::updateCategories()
+{
+  mSearchToolBar->fillCategories();
 }

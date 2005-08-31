@@ -3,6 +3,7 @@
 
     Copyright (c) 2000,2001,2003 Cornelius Schumacher <schumacher@kde.org>
     Copyright (C) 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
+    Copyright (c) 2005 Rafal Rzepecki <divide@users.sourceforge.net>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -16,7 +17,8 @@
 
     You should have received a copy of the GNU General Public License
     along with this program; if not, write to the Free Software
-    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+    Foundation, Inc., 51 Franklin Street, Fifth Floor, 
+    Boston, MA 02110-1301, USA.
 
     As a special exception, permission is given to link this program
     with any edition of Qt, and distribute the resulting executable,
@@ -40,7 +42,10 @@ class QDragLeaveEvent;
 class QDropEvent;
 class QPopupMenu;
 
+class KToolBar;
+
 class KOTodoListView;
+class KOTodoListViewQuickSearch;
 class KOTodoViewItem;
 class KDatePickerPopup;
 
@@ -173,6 +178,8 @@ class KOTodoView : public KOrg::BaseView
 
     void setNewPercentageDelayed( KOTodoViewItem *item, int percentage );
     void processDelayedNewPercentage();
+    
+    void updateCategories();
 
   signals:
     void unSubTodoSignal();
@@ -225,6 +232,7 @@ class KOTodoView : public KOrg::BaseView
     DocPrefs *mDocPrefs;
     QString mCurrentDoc;
     KPIM::ClickLineEdit *mQuickAdd;
+    KOTodoListViewQuickSearch *mSearchToolBar;
 
   public:
     enum {

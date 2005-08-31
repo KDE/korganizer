@@ -2,6 +2,7 @@
     This file is part of KOrganizer.
 
     Copyright (c) 2000,2001 Cornelius Schumacher <schumacher@kde.org>
+    Copyright (c) 2005 Rafal Rzepecki <divide@users.sourceforge.net>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -30,8 +31,8 @@
 
 KOEventViewerDialog::KOEventViewerDialog( QWidget *parent, const char *name,
                                           bool compact )
-  : KDialogBase( parent, name, false, i18n("Event Viewer"), Ok, Ok, false,
-                 i18n("Edit") )
+  : KDialogBase( parent, name, false, i18n("Event Viewer"), Ok | User1 | User2, 
+                 Ok, false, i18n("Edit"), i18n("Show in context") )
 {
   mEventViewer = new KOEventViewer( this );
   setMainWidget( mEventViewer );
@@ -45,6 +46,15 @@ KOEventViewerDialog::KOEventViewerDialog( QWidget *parent, const char *name,
     resize( 320, 300 );
   }
   connect( this, SIGNAL(finished()), this, SLOT(delayedDestruct()) );
+#ifdef KORG_NODCOP
+  showButton( KDialogBase::User1, false );
+  showButton( KDialogBase::User2, false );
+#else
+  connect( this, SIGNAL( user1Clicked() ), mEventViewer, 
+           SLOT( editIncidence() ) );
+  connect( this, SIGNAL( user2Clicked() ), mEventViewer,
+           SLOT( showIncidenceContext() ) );
+#endif
 }
 
 KOEventViewerDialog::~KOEventViewerDialog()

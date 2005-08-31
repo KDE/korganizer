@@ -270,6 +270,10 @@
       <default>true</default>
     </entry>
 
+    <entry type="Bool" key="Todo Quick Search" name="EnableTodoQuickSearch">
+      <default>true</default>
+    </entry>
+
     <entry type="Int" key="Next X Days">
       <label>Next x days</label>
       <whatsthis>Select on this spin box the number of &quot;x&quot; days to be displayed in the next days view. To access the  the next &quot;x&quot; days view, choose the the &quot;Next X Days&quot; menu item from the &quot;View&quot; menu.</whatsthis>

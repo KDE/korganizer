@@ -5,6 +5,7 @@
   Copyright (c) 2002 Don Sanders <sanders@kde.org>
   Copyright (c) 2004 Cornelius Schumacher <schumacher@kde.org>
   Copyright (C) 2004 Reinhold Kainhofer <reinhold@kainhofer.com>
+  Copyright (c) 2005 Rafal Rzepecki <divide@users.sourceforge.net>
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -1345,6 +1346,16 @@ QString ActionManager::getCurrentURLasString() const
 bool ActionManager::editIncidence( const QString& uid )
 {
   return mCalendarView->editIncidence( uid );
+}
+
+bool ActionManager::showIncidence( const QString& uid )
+{
+  return mCalendarView->showIncidence( uid );
+}
+
+bool ActionManager::showIncidenceContext( const QString& uid )
+{
+  return mCalendarView->showIncidenceContext( uid );
 }
 
 bool ActionManager::deleteIncidence( const QString& uid, bool force )

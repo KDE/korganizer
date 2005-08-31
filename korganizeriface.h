@@ -1,6 +1,7 @@
 /*
     This file is part of KOrganizer.
     Copyright (c) 2001 Cornelius Schumacher <schumacher@kde.org>
+    Copyright (c) 2005 Rafal Rzepecki <divide@users.sourceforge.net>
 
     This library is free software; you can redistribute it and/or
     modify it under the terms of the GNU Library General Public
@@ -50,6 +51,13 @@ class KOrganizerIface : virtual public DCOPObject
                   incidence, only the first is added to KOrganizer's calendar.
     */
     virtual bool addIncidence(const QString &iCal) = 0;
+    virtual bool showIncidence( const QString& uid ) = 0;
+    /**
+      Show an incidence in context. This means showing the todo, agenda or 
+      journal view (as appropriate) and scrolling it to show the incidence.
+      @param uid Unique ID of the incidence to show.
+    */
+    virtual bool showIncidenceContext( const QString& uid ) = 0;
 };
 
 #endif

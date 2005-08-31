@@ -2,6 +2,7 @@
     This file is part of KOrganizer.
 
     Copyright (c) 2001,2003 Cornelius Schumacher <schumacher@kde.org>
+    Copyright (c) 2005 Rafal Rzepecki <divide@users.sourceforge.net>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -22,12 +23,23 @@
     without including the source code for Qt in the source distribution.
 */
 
+#include <qregexp.h>
+
+#include <libkdepim/kdepimprotocols.h>
+
 #include "koeventviewer.h"
 
 #include "urihandler.h"
 
 #include <libkcal/incidence.h>
 #include <libkcal/incidenceformatter.h>
+
+#ifndef KORG_NODCOP
+#include <dcopclient.h>
+#include <kapplication.h>
+#include "korganizeriface_stub.h"
+#endif
+
 #include <kdebug.h>
 #include <koglobals.h>
 
@@ -67,12 +79,28 @@ void KOEventViewer::writeSettings( KConfig * config )
 
 void KOEventViewer::setSource( const QString &n )
 {
-  UriHandler::process( n );
+  QString uri = n;
+  // QTextBrowser for some reason insists on putting // in links,
+  // this is a crude workaround
+  if ( uri.startsWith( KDEPIMPROTOCOL_CONTACT ) || 
+       uri.startsWith( KDEPIMPROTOCOL_EMAIL ) ||
+       uri.startsWith( QString( KDEPIMPROTOCOL_INCIDENCE ).
+                                                  section( ':', 0, 0 ) ) ||
+       uri.startsWith( KDEPIMPROTOCOL_NEWSARTICLE ) )
+    uri.replace( QRegExp( "^([^:]*:)//" ), "\\1" );
+  
+  UriHandler::process( uri );
 }
 
 bool KOEventViewer::appendIncidence( Incidence *incidence )
 {
-  addText( IncidenceFormatter::extensiveDisplayString( incidence ) );
+  QString codeForIncidence = 
+                        IncidenceFormatter::extensiveDisplayString( incidence );
+/*  kdDebug( 5850 ) << " KOEventViewer: appending incidence, HTML code:" << endl
+                  << "-------------------FROM HERE--------------------" << endl
+                  << codeForIncidence << endl
+                  << "--------------------TO HERE---------------------" << endl; */
+  addText( codeForIncidence );
   return true;
 }
 
@@ -119,6 +147,32 @@ void KOEventViewer::changeIncidenceDisplay( Incidence *incidence, int action )
       } 
     }
   }
+}
+
+void KOEventViewer::editIncidence()
+{
+  if ( mIncidence ) {
+#ifndef KORG_NODCOP
+    // make sure korganizer is running or the part is shown
+    kapp->startServiceByDesktopPath("korganizer");
+
+    KOrganizerIface_stub korganizerIface( "korganizer", "KOrganizerIface" );
+    korganizerIface.editIncidence( mIncidence->uid() );
+#endif
+  }
+}
+
+void KOEventViewer::showIncidenceContext()
+{
+#ifndef KORG_NODCOP
+  if ( mIncidence ) {
+    // make sure korganizer is running or the part is shown
+    kapp->startServiceByDesktopPath("korganizer");
+
+    KOrganizerIface_stub korganizerIface( "korganizer", "KOrganizerIface" );
+    korganizerIface.showIncidenceContext( mIncidence->uid() );
+  }
+#endif
 }
 
 #include "koeventviewer.moc"

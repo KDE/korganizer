@@ -2,6 +2,7 @@
     This file is part of KOrganizer.
 
     Copyright (c) 2001,2003 Cornelius Schumacher <schumacher@kde.org>
+    Copyright (c) 2005 Rafal Rzepecki <divide@users.sourceforge.net>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -80,6 +81,12 @@ class KDE_EXPORT KOEventViewer : public QTextBrowser
     */
     virtual void setIncidence( Incidence * );
     void changeIncidenceDisplay( Incidence *incidence, int action );
+    virtual void editIncidence();
+    /**
+      Show the incidence in context. That means showing the todo, agenda or
+      journal view and scrolling to show it.
+    */
+    virtual void showIncidenceContext();
   private:
     Incidence *mIncidence;
     QTextBrowser *mEventTextView;

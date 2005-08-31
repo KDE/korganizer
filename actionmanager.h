@@ -5,6 +5,7 @@
     Copyright (c) 2002 Don Sanders <sanders@kde.org>
     Copyright (c) 2003,2004 Cornelius Schumacher <schumacher@kde.org>
     Copyright (C) 2003-2004 Reinhold Kainhofer <reinhold@kainhofer.com>
+    Copyright (c) 2005 Rafal Rzepecki <divide@users.sourceforge.net>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -156,6 +157,14 @@ class KDE_EXPORT ActionManager : public QObject, public KCalendarIface
 
     bool addIncidence( const QString& ical );
 
+    bool showIncidence( const QString &uid );
+    /**
+      Show an incidence in context. This means showing the todo, agenda or 
+      journal view (as appropriate) and scrolling it to show the incidence.
+      @param uid Unique ID of the incidence to show.
+    */
+    bool showIncidenceContext( const QString &uid );
+    
     //// Implementation of the DCOP interface
     virtual ResourceRequestReply resourceRequest( const QValueList<QPair<QDateTime, QDateTime> >& busy,
                                                   const QCString& resource,

@@ -3,6 +3,7 @@
 
     Copyright (c) 2003 Cornelius Schumacher <schumacher@kde.org>
     Copyright (c) 2005 Reinhold Kainhofer <reinhold@kainhofer.com>
+    Copyright (c) 2005 Rafal Rzepecki <divide@users.sourceforge.net>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -25,7 +26,10 @@
 #ifndef KOEDITORATTACHMENTS_H
 #define KOEDITORATTACHMENTS_H
 
+#include <qcstring.h>
 #include <qwidget.h>
+#include <kdialogbase.h>
+#include <kmimetype.h>
 #include <kurl.h>
 
 namespace KCal {
@@ -33,8 +37,41 @@ class Incidence;
 class Attachment;
 }
 
-class QListViewItem;
-class KListView;
+class AttachmentIconItem;
+class QIconDragItem;
+class QIconViewItem;
+class QLabel;
+class QLineEdit;
+class KIconView;
+class KPopupMenu;
+class KURLRequester;
+
+namespace KIO {
+class Job;
+}
+
+class AttachmentEditDialog : public KDialogBase
+{
+    Q_OBJECT
+  public:
+    AttachmentEditDialog( AttachmentIconItem *item, 
+                          QWidget *parent, const char *name = 0, 
+                          bool modal=true );
+    
+    void accept();
+  
+  protected slots:
+    void urlChanged( const QString &url );
+    virtual void slotApply();
+
+  private:
+    KMimeType::Ptr mMimeType;
+    AttachmentIconItem *mItem;
+    QLabel *mTypeLabel, *mIcon;
+    QLineEdit *mLabelEdit;
+    KURLRequester *mURLRequester;
+};
+
 
 class KOEditorAttachments : public QWidget
 {
@@ -45,8 +82,13 @@ class KOEditorAttachments : public QWidget
     ~KOEditorAttachments();
 
     void addAttachment( const QString &uri,
-                        const QString &mimeType = QString::null );
+                        const QString &mimeType = QString::null,
+                        const QString &label = QString::null,
+                        bool local = false );
     void addAttachment( KCal::Attachment *attachment );
+    void addAttachment( const QByteArray &data, 
+                        const QString &mimeType = QString::null, 
+                        const QString &label = QString::null );
 
     /** Set widgets to default values */
     void setDefaults();
@@ -56,20 +98,36 @@ class KOEditorAttachments : public QWidget
     void writeIncidence( KCal::Incidence * );
 
     bool hasAttachments();
+    
+  public slots:
+    /** Applies all deferred delete and copy operations */
+    void applyChanges();
 
   protected slots:
-    void showAttachment( QListViewItem *item );
+    void showAttachment( QIconViewItem *item );
     void slotAdd();
     void slotEdit();
     void slotRemove();
     void slotShow();
     void dragEnterEvent( QDragEnterEvent *event );
     void dropEvent( QDropEvent *event );
+    void slotItemRenamed ( QIconViewItem * item, const QString & text );
+    void showAttachmentContextMenu( QIconViewItem *item, const QPoint &pos );
+    void dropped ( QDropEvent * e, const QValueList<QIconDragItem> & lst );
+    void copyComplete( KIO::Job *job );
+  protected:
+    QString generateLocalAttachmentPath( QString filename, 
+                                         const KMimeType::Ptr mimeType );
+  
   signals:
     void openURL( const KURL &url );
 
   private:
-    KListView *mAttachments;
+    KIconView *mAttachments;
+    KPopupMenu *mPopupMenu, *mPopupNew;
+    QString mUid; // used only to generate attachments' filenames
+    KURL::List mDeferredDelete;
+    KURL::List mDeferredCopy;
 };
 
 #endif

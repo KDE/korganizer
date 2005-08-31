@@ -2,6 +2,7 @@
     This file is part of KOrganizer.
 
     Copyright (c) 2004 Bo Thorsen <bo@sonofthor.dk>
+    Copyright (c) 2005 Rafal Rzepecki <divide@users.sourceforge.net>
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of the GNU Library General Public
@@ -88,4 +89,14 @@ bool KOrganizerIfaceImpl::editIncidence( const QString &uid )
 bool KOrganizerIfaceImpl::addIncidence( const QString &ical )
 {
   return mActionManager->addIncidence( ical );
+}
+
+bool KOrganizerIfaceImpl::showIncidence( const QString &uid )
+{
+  return mActionManager->showIncidence( uid );
+}
+
+bool KOrganizerIfaceImpl::showIncidenceContext( const QString &uid )
+{
+  return mActionManager->showIncidenceContext( uid );
 }

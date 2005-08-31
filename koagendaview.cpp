@@ -41,6 +41,9 @@
 
 #include <kapplication.h>
 #include <kdebug.h>
+#ifndef KORG_NODND
+#include <kmultipledrag.h>
+#endif
 #include <kstandarddirs.h>
 #include <kiconloader.h>
 #include <klocale.h>
@@ -1220,9 +1223,37 @@ void KOAgendaView::showDates( const QDate &start, const QDate &end )
 }
 
 
-void KOAgendaView::showIncidences( const Incidence::List & )
+void KOAgendaView::showIncidences( const Incidence::List &incidences )
 {
-  kdDebug(5850) << "KOAgendaView::showIncidences( const Incidence::List & ) is not yet implemented" << endl;
+  // we must check if they are not filtered; if they are, remove the filter
+  CalFilter *filter = calendar()->filter();
+  bool wehaveall = true;
+  if ( filter )
+    for ( Incidence::List::ConstIterator it = incidences.constBegin();
+        it != incidences.constEnd(); ++it )
+      if ( !( wehaveall = filter->filterIncidence( *it ) ) )
+        break;
+  
+  if ( !wehaveall )
+    calendar()->setFilter( 0 );
+  
+  QDateTime start = incidences.first()->dtStart(), 
+            end = incidences.first()->dtEnd();
+  Incidence *first = incidences.first();
+  for ( Incidence::List::ConstIterator it = incidences.constBegin();
+        it != incidences.constEnd(); ++it ) {
+    if ( ( *it )->dtStart() < start )
+      first = *it;
+    start = kMin( start, ( *it )->dtStart() );
+    end = kMax( start, ( *it )->dtEnd() );
+  }
+  
+  if ( start.date().daysTo( end.date() ) + 1 <= currentDateCount() )
+    showDates( start.date(), end.date() );
+  else
+    showDates( start.date(), start.date().addDays( currentDateCount() - 1 ) );
+  
+  mAgenda->selectItemByUID( first->uid() );
 }
 
 void KOAgendaView::insertIncidence( Incidence *incidence, const QDate &curDate,
@@ -1571,7 +1602,7 @@ void KOAgendaView::startDrag( Incidence *incidence )
 {
 #ifndef KORG_NODND
   DndFactory factory( calendar() );
-  ICalDrag *vd = factory.createDrag( incidence, this );
+  QDragObject *vd = factory.createDrag( incidence, this );
   if ( vd->drag() ) {
     kdDebug(5850) << "KOAgendaView::startDrag(): Delete drag source" << endl;
   }
