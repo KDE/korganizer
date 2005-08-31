@@ -967,7 +967,7 @@ void KOMonthView::changeIncidenceDisplayAdded( Incidence *incidence )
      }
   } else if ( event ) {
       for ( QDateTime _date = date;
-            _date <= event->dtEnd(); _date = _date.addDays( 1 ) ) {
+            _date < event->dtEnd(); _date = _date.addDays( 1 ) ) {
         mvc = lookupCellByDate( _date.date() );
         if ( mvc ) mvc->addIncidence( event );
       }

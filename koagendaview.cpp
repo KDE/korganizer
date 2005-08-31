@@ -1243,7 +1243,7 @@ void KOAgendaView::insertIncidence( Incidence *incidence, const QDate &curDate,
   int endX;
   if ( event ) {
     beginX = curDate.daysTo( incidence->dtStart().date() ) + curCol;
-    endX = curDate.daysTo( event->dtEnd().date() ) + curCol;
+    endX = curDate.daysTo( event->dateEnd() ) + curCol;
   } else if ( todo ) {
     beginX = curDate.daysTo( todo->dtDue().date() ) + curCol;
     endX = beginX;
@@ -1266,7 +1266,9 @@ void KOAgendaView::insertIncidence( Incidence *incidence, const QDate &curDate,
     }
   } else if ( event && event->isMultiDay() ) {
     int startY = mAgenda->timeToY( event->dtStart().time() );
-    int endY = mAgenda->timeToY( event->dtEnd().time() ) - 1;
+    QTime endtime( event->dtEnd().time() );
+    if ( endtime == QTime( 0, 0, 0 ) ) endtime = QTime( 23, 59, 59 );
+    int endY = mAgenda->timeToY( endtime ) - 1;
     if ( (beginX <= 0 && curCol == 0) || beginX == curCol ) {
       mAgenda->insertMultiItem( event, curDate, beginX, endX, startY, endY );
     }
@@ -1284,7 +1286,9 @@ void KOAgendaView::insertIncidence( Incidence *incidence, const QDate &curDate,
     int startY = 0, endY = 0;
     if ( event ) {
       startY = mAgenda->timeToY( incidence->dtStart().time() );
-      endY = mAgenda->timeToY( event->dtEnd().time() ) - 1;
+      QTime endtime( event->dtEnd().time() );
+      if ( endtime == QTime( 0, 0, 0 ) ) endtime = QTime( 23, 59, 59 );
+      endY = mAgenda->timeToY( endtime ) - 1;
     }
     if ( todo ) {
       QTime t = todo->dtDue().time();
@@ -1325,7 +1329,7 @@ void KOAgendaView::changeIncidenceDisplayAdded( Incidence *incidence )
 
   QDate endDt;
   if ( incidence->type() == "Event" )
-    endDt = (static_cast<Event *>(incidence))->dtEnd().date();
+    endDt = (static_cast<Event *>(incidence))->dateEnd();
   if ( todo ) {
     endDt = todo->isOverdue() ? QDate::currentDate()
                               : todo->dtDue().date();
