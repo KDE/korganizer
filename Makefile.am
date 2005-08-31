@@ -46,8 +46,8 @@ timezone_LDADD   = libkorganizer.la $(LIB_KSYCOCA)
 timezone_SOURCES = timezone.cpp
 timezone_COMPILE_FIRST = koprefs_base.h
 
-lib_LTLIBRARIES = libkorganizer.la libkorganizer_eventviewer.la \
-                  libkorganizer_calendar.la
+lib_LTLIBRARIES = libkorganizer_eventviewer.la \
+                  libkorganizer_calendar.la libkorganizer.la 
 
 libkorganizer_la_LDFLAGS = $(all_libraries) $(KDE_RPATH) -version-info 1:0
 libkorganizer_la_LIBADD  = $(LIB_KPARTS) $(LIB_KFILE) $(LIB_KNEWSTUFF) \
