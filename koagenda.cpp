@@ -1075,11 +1075,11 @@ void KOAgenda::endItemAction()
             if ( newInc ) {
               // don't recreate items, they already have the correct position
               emit enableAgendaUpdate( false );
-              mChanger->changeIncidence( oldIncSaved, oldInc );
-              mActionItem->setIncidence( newInc );
               mActionItem->dissociateFromMultiItem();
+              mActionItem->setIncidence( newInc );
               mChanger->addIncidence( newInc );
               emit enableAgendaUpdate( true );
+              mChanger->changeIncidence( oldIncSaved, oldInc );
             } else {
               KMessageBox::sorry( this, i18n("Unable to add the exception item to the "
                   "calendar. No change will be done."), i18n("Error Occurred") );
@@ -1552,7 +1552,7 @@ KOAgendaItem *KOAgenda::insertItem( Incidence *incidence, const QDate &qd, int X
                                     int YTop, int YBottom )
 {
 #if 0
-  kdDebug(5850) << "KOAgenda::insertItem:" << event->summary() << "-"
+  kdDebug(5850) << "KOAgenda::insertItem:" << incidence->summary() << "-"
                 << qd.toString() << " ;top, bottom:" << YTop << "," << YBottom
                 << endl;
 #endif

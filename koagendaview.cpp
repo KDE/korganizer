@@ -1353,7 +1353,8 @@ void KOAgendaView::changeIncidenceDisplay( Incidence *incidence, int mode )
         // recreating everything even causes troubles: dropping to the day matrix
         // recreates the agenda items, but the evaluation is still in an agendaItems' code,
         // which was deleted in the mean time. Thus KOrg crashes...
-      changeIncidenceDisplayAdded( incidence );
+      if ( mAllowAgendaUpdate )
+        changeIncidenceDisplayAdded( incidence );
       break;
     }
     case KOGlobals::INCIDENCEEDITED: {
