@@ -526,6 +526,7 @@ class KOPrefsDialogViews : public KPrefsModule
                                             i18n("To-do View"),
                                             topFrame );
       addWidBool( KOPrefs::instance()->fullViewTodoItem(), todoGroup );
+      addWidBool( KOPrefs::instance()->useSplitListViewsItem(), todoGroup );
       addWidBool( KOPrefs::instance()->recordTodosInJournalsItem(), todoGroup );
       topLayout->addWidget( todoGroup );
 

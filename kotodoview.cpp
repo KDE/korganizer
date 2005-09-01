@@ -30,6 +30,8 @@
 #include <qcursor.h>
 #include <qlabel.h>
 #include <qtimer.h>
+#include <qvbox.h>
+#include <qwidgetstack.h>
 
 #include <kdebug.h>
 #include <klocale.h>
@@ -111,6 +113,39 @@ KOTodoListView::KOTodoListView( QWidget *parent, const char *name )
 {
   mOldCurrent = 0;
   mMousePressed = false;
+
+  setRootIsDecorated( true );
+  setAllColumnsShowFocus( true );
+
+  setShowSortIndicator( true );
+
+  addColumn( i18n("Summary") );
+  addColumn( i18n("Recurs") );
+  addColumn( i18n("Priority") );
+  setColumnAlignment( KOTodoView::ePriorityColumn, AlignHCenter );
+  addColumn( i18n("Complete") );
+  setColumnAlignment( KOTodoView::ePercentColumn, AlignRight );
+  addColumn( i18n("Due Date/Time") );
+  setColumnAlignment( KOTodoView::eDueDateColumn, AlignLeft );
+  addColumn( i18n("Categories") );
+#if 0
+  addColumn( i18n("Sort Id") );
+  setColumnAlignment( 4, AlignHCenter );
+#endif
+
+  setMinimumHeight( 60 );
+  setItemsRenameable( true );
+  setRenameable( 0 );
+
+  setColumnWidthMode( KOTodoView::eSummaryColumn, QListView::Manual );
+  setColumnWidthMode( KOTodoView::eRecurColumn, QListView::Manual );
+  setColumnWidthMode( KOTodoView::ePriorityColumn, QListView::Manual );
+  setColumnWidthMode( KOTodoView::ePercentColumn, QListView::Manual );
+  setColumnWidthMode( KOTodoView::eDueDateColumn, QListView::Manual );
+  setColumnWidthMode( KOTodoView::eCategoriesColumn, QListView::Manual );
+#if 0
+  setColumnWidthMode( KOTodoView::eDescriptionColumn, QListView::Manual );
+#endif
 
   /* Create a Tooltip */
   tooltip = new KOTodoListViewToolTip( viewport(), this );
@@ -371,7 +406,13 @@ void KOTodoListView::contentsMouseDoubleClickEvent(QMouseEvent *e)
 /////////////////////////////////////////////////////////////////////////////
 
 KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent, const char* name)
-  : KOrg::BaseView( calendar, parent, name )
+  : KOrg::BaseView( calendar, parent, name ),
+    mWidgetStack( 0 ),
+    mSplitter( 0 ),
+    mMyTodoListView( 0 ),
+    mOneTodoListView( 0 ),
+    mYourTodoListView( 0 ),
+    mOtherTodoListView( 0 )
 {
   QBoxLayout *topLayout = new QVBoxLayout( this );
 
@@ -384,10 +425,9 @@ KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent, const char* name)
       collection = mainWidget->getActionCollection();
   }
   
-  mTodoListView = new KOTodoListView( this );
-  
-  KOTodoListViewQuickSearchContainer *container = 
-          new KOTodoListViewQuickSearchContainer( this, mTodoListView, 
+  setupListViews();
+  KOTodoListViewQuickSearchContainer *container =
+          new KOTodoListViewQuickSearchContainer( this, mMyTodoListView, 
                                                   collection, calendar,
                                                   "todo quick search" );
   mSearchToolBar = container->quickSearch();
@@ -405,40 +445,8 @@ KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent, const char* name)
 
   if ( !KOPrefs::instance()->mEnableQuickTodo ) mQuickAdd->hide();
 
-  topLayout->addWidget( mTodoListView );
-
-  mTodoListView->setRootIsDecorated( true );
-  mTodoListView->setAllColumnsShowFocus( true );
-
-  mTodoListView->setShowSortIndicator( true );
-
-  mTodoListView->addColumn( i18n("Summary") );
-  mTodoListView->addColumn( i18n("Recurs") );
-  mTodoListView->addColumn( i18n("Priority") );
-  mTodoListView->setColumnAlignment( ePriorityColumn, AlignHCenter );
-  mTodoListView->addColumn( i18n("Complete") );
-  mTodoListView->setColumnAlignment( ePercentColumn, AlignRight );
-  mTodoListView->addColumn( i18n("Due Date/Time") );
-  mTodoListView->setColumnAlignment( eDueDateColumn, AlignLeft );
-  mTodoListView->addColumn( i18n("Categories") );
-#if 0
-  mTodoListView->addColumn( i18n("Sort Id") );
-  mTodoListView->setColumnAlignment( 4, AlignHCenter );
-#endif
-
-  mTodoListView->setMinimumHeight( 60 );
-  mTodoListView->setItemsRenameable( true );
-  mTodoListView->setRenameable( 0 );
-
-  mTodoListView->setColumnWidthMode( eSummaryColumn, QListView::Manual );
-  mTodoListView->setColumnWidthMode( eRecurColumn, QListView::Manual );
-  mTodoListView->setColumnWidthMode( ePriorityColumn, QListView::Manual );
-  mTodoListView->setColumnWidthMode( ePercentColumn, QListView::Manual );
-  mTodoListView->setColumnWidthMode( eDueDateColumn, QListView::Manual );
-  mTodoListView->setColumnWidthMode( eCategoriesColumn, QListView::Manual );
-#if 0
-  mTodoListView->setColumnWidthMode( eDescriptionColumn, QListView::Manual );
-#endif
+//  topLayout->addWidget( mTodoListView );
+  topLayout->addWidget( mWidgetStack );
 
   mPriorityPopupMenu = new QPopupMenu( this );
   mPriority[ mPriorityPopupMenu->insertItem( i18n("Unspecified priority", "unspecified") ) ] = 0;
@@ -512,31 +520,6 @@ KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent, const char* name)
                          this, SLOT(purgeCompleted()));
 
   mDocPrefs = new DocPrefs( name );
-
-  // Double clicking conflicts with opening/closing the subtree
-  connect( mTodoListView, SIGNAL( doubleClicked( QListViewItem *,
-                                                 const QPoint &, int ) ),
-           SLOT( editItem( QListViewItem *, const QPoint &, int ) ) );
-  connect( mTodoListView, SIGNAL( returnPressed( QListViewItem * ) ),
-           SLOT( editItem( QListViewItem * ) ) );
-  connect( mTodoListView, SIGNAL( contextMenuRequested( QListViewItem *,
-                                                        const QPoint &, int ) ),
-           SLOT( popupMenu( QListViewItem *, const QPoint &, int ) ) );
-  connect( mTodoListView, SIGNAL( expanded( QListViewItem * ) ),
-           SLOT( itemStateChanged( QListViewItem * ) ) );
-  connect( mTodoListView, SIGNAL( collapsed( QListViewItem * ) ),
-           SLOT( itemStateChanged( QListViewItem * ) ) );
-
-#if 0
-  connect(mTodoListView,SIGNAL(selectionChanged(QListViewItem *)),
-          SLOT(selectionChanged(QListViewItem *)));
-  connect(mTodoListView,SIGNAL(clicked(QListViewItem *)),
-          SLOT(selectionChanged(QListViewItem *)));
-  connect(mTodoListView,SIGNAL(pressed(QListViewItem *)),
-          SLOT(selectionChanged(QListViewItem *)));
-#endif
-  connect( mTodoListView, SIGNAL(selectionChanged() ),
-           SLOT( processSelectionChange() ) );
   connect( mQuickAdd, SIGNAL( returnPressed () ),
            SLOT( addQuickTodo() ) );
 }
@@ -546,19 +529,170 @@ KOTodoView::~KOTodoView()
   delete mDocPrefs;
 }
 
+
+void KOTodoView::setupListViews()
+{
+  mWidgetStack = new QWidgetStack( this );
+
+  /* Set up split list views:
+   * Three list views - the first one contains the tasks _I_ need to
+   * work on, the second one contains the tasks _I_ want _somebody
+   * else_ to work on, and the third one contains everything else. But
+   * only do this if the "split listview" configuration option is on.
+   */
+  mSplitter = new QSplitter( Qt::Vertical, this );
+  mWidgetStack->addWidget( mSplitter, eSplitListViews );
+
+  QVBox* myVBox = new QVBox( mSplitter );
+  new QLabel( i18n( "<qt><b>Tasks I have to work on:</b></qt>" ), myVBox );
+  mMyTodoListView = new KOTodoListView( myVBox );
+
+  QVBox* yourVBox = new QVBox( mSplitter );
+  new QLabel( i18n( "<qt><b>Tasks I want others to work on:</b></qt>" ),
+              yourVBox );
+  mYourTodoListView = new KOTodoListView( yourVBox );
+
+  QVBox* otherVBox = new QVBox( mSplitter );
+  new QLabel( i18n( "<qt><b>Other tasks I am watching:</b></qt>" ), otherVBox );
+  mOtherTodoListView = new KOTodoListView( otherVBox );
+
+  /* Set up the single list view */
+  mOneTodoListView = new KOTodoListView( this );
+  mWidgetStack->addWidget( mOneTodoListView, eOneListView );
+
+  /* Now show the right widget stack page depending on KOPrefs */
+  if( KOPrefs::instance()->mUseSplitListViews )
+    mWidgetStack->raiseWidget( eSplitListViews );
+  else
+    mWidgetStack->raiseWidget( eOneListView );
+
+  // Double clicking conflicts with opening/closing the subtree
+  connect( mMyTodoListView, SIGNAL( doubleClicked( QListViewItem *,
+                                                   const QPoint &, int ) ),
+           SLOT( editItem( QListViewItem *, const QPoint &, int ) ) );
+  connect( mOneTodoListView, SIGNAL( doubleClicked( QListViewItem *,
+                                                   const QPoint &, int ) ),
+           SLOT( editItem( QListViewItem *, const QPoint &, int ) ) );
+  connect( mYourTodoListView, SIGNAL( doubleClicked( QListViewItem *,
+                                                     const QPoint &, int ) ),
+           SLOT( editItem( QListViewItem *, const QPoint &, int ) ) );
+  connect( mOtherTodoListView, SIGNAL( doubleClicked( QListViewItem *,
+                                                      const QPoint &, int ) ),
+           SLOT( editItem( QListViewItem *, const QPoint &, int ) ) );
+
+  connect( mMyTodoListView, SIGNAL( returnPressed( QListViewItem * ) ),
+           SLOT( editItem( QListViewItem * ) ) );
+  connect( mOneTodoListView, SIGNAL( returnPressed( QListViewItem * ) ),
+           SLOT( editItem( QListViewItem * ) ) );
+  connect( mYourTodoListView, SIGNAL( returnPressed( QListViewItem * ) ),
+           SLOT( editItem( QListViewItem * ) ) );
+  connect( mOtherTodoListView, SIGNAL( returnPressed( QListViewItem * ) ),
+           SLOT( editItem( QListViewItem * ) ) );
+
+  connect( mMyTodoListView, SIGNAL( contextMenuRequested( QListViewItem *,
+                                                          const QPoint &, int ) ),
+           SLOT( popupMenu( QListViewItem *, const QPoint &, int ) ) );
+  connect( mOneTodoListView, SIGNAL( contextMenuRequested( QListViewItem *,
+                                                          const QPoint &, int ) ),
+           SLOT( popupMenu( QListViewItem *, const QPoint &, int ) ) );
+  connect( mYourTodoListView, SIGNAL( contextMenuRequested( QListViewItem *,
+                                                            const QPoint &, int ) ),
+           SLOT( popupMenu( QListViewItem *, const QPoint &, int ) ) );
+  connect( mOtherTodoListView, SIGNAL( contextMenuRequested( QListViewItem *,
+                                                             const QPoint &, int ) ),
+             SLOT( popupMenu( QListViewItem *, const QPoint &, int ) ) );
+
+  connect( mMyTodoListView, SIGNAL( expanded( QListViewItem * ) ),
+           SLOT( itemStateChanged( QListViewItem * ) ) );
+  connect( mOneTodoListView, SIGNAL( expanded( QListViewItem * ) ),
+           SLOT( itemStateChanged( QListViewItem * ) ) );
+
+  connect( mYourTodoListView, SIGNAL( expanded( QListViewItem * ) ),
+           SLOT( itemStateChanged( QListViewItem * ) ) );
+  connect( mOtherTodoListView, SIGNAL( expanded( QListViewItem * ) ),
+           SLOT( itemStateChanged( QListViewItem * ) ) );
+
+  connect( mMyTodoListView, SIGNAL( collapsed( QListViewItem * ) ),
+           SLOT( itemStateChanged( QListViewItem * ) ) );
+  connect( mOneTodoListView, SIGNAL( collapsed( QListViewItem * ) ),
+           SLOT( itemStateChanged( QListViewItem * ) ) );
+  connect( mYourTodoListView, SIGNAL( collapsed( QListViewItem * ) ),
+           SLOT( itemStateChanged( QListViewItem * ) ) );
+  connect( mOtherTodoListView, SIGNAL( collapsed( QListViewItem * ) ),
+           SLOT( itemStateChanged( QListViewItem * ) ) );
+
+#if 0
+  connect(mMyTodoListView,SIGNAL(selectionChanged(QListViewItem *)),
+          SLOT(selectionChanged(QListViewItem *)));
+  connect(mOneTodoListView,SIGNAL(selectionChanged(QListViewItem *)),
+          SLOT(selectionChanged(QListViewItem *)));
+  connect(mYourTodoListView,SIGNAL(selectionChanged(QListViewItem *)),
+          SLOT(selectionChanged(QListViewItem *)));
+  connect(mOtherTodoListView,SIGNAL(selectionChanged(QListViewItem *)),
+          SLOT(selectionChanged(QListViewItem *)));
+
+  connect(mMyTodoListView,SIGNAL(clicked(QListViewItem *)),
+          SLOT(selectionChanged(QListViewItem *)));
+  connect(mOneTodoListView,SIGNAL(clicked(QListViewItem *)),
+          SLOT(selectionChanged(QListViewItem *)));
+  connect(mYourTodoListView,SIGNAL(clicked(QListViewItem *)),
+          SLOT(selectionChanged(QListViewItem *)));
+  connect(mOtherTodoListView,SIGNAL(clicked(QListViewItem *)),
+          SLOT(selectionChanged(QListViewItem *)));
+
+  connect(mMyTodoListView,SIGNAL(pressed(QListViewItem *)),
+          SLOT(selectionChanged(QListViewItem *)));
+  connect(mOneTodoListView,SIGNAL(pressed(QListViewItem *)),
+          SLOT(selectionChanged(QListViewItem *)));
+  connect(mYourTodoListView,SIGNAL(pressed(QListViewItem *)),
+          SLOT(selectionChanged(QListViewItem *)));
+  connect(mOtherTodoListView,SIGNAL(pressed(QListViewItem *)),
+          SLOT(selectionChanged(QListViewItem *)));
+#endif
+  connect( mMyTodoListView, SIGNAL(selectionChanged() ),
+           SLOT( processSelectionChange() ) );
+  connect( mOneTodoListView, SIGNAL(selectionChanged() ),
+           SLOT( processSelectionChange() ) );
+  connect( mYourTodoListView, SIGNAL(selectionChanged() ),
+           SLOT( processSelectionChange() ) );
+  connect( mOtherTodoListView, SIGNAL(selectionChanged() ),
+           SLOT( processSelectionChange() ) );
+
+}
+
+// PENDING(kalle) Use a different distribution of splitter space
+
+
 void KOTodoView::setCalendar( Calendar *cal )
 {
   BaseView::setCalendar( cal );
-  mTodoListView->setCalendar( cal );
+  mMyTodoListView->setCalendar( cal );
+  mOneTodoListView->setCalendar( cal );
+  mYourTodoListView->setCalendar( cal );
+  mOtherTodoListView->setCalendar( cal );
   mSearchToolBar->setCalendar( cal );
 }
 
 void KOTodoView::updateView()
 {
-//  kdDebug(5850) << "KOTodoView::updateView()" << endl;
-  int oldPos = mTodoListView->contentsY();
   mItemsToDelete.clear();
-  mTodoListView->clear();
+  // Cache the list of all email addresses, as it is very expensive to
+  // query. It might change, though, (e.g. the user changing
+  // addressbook entries), so we cannot just cache it once in the
+  // KOTodoView ctor.
+  mAllEmailAddrs = KOPrefs::instance()->allEmails();
+  updateView( mMyTodoListView );
+  updateView( mOneTodoListView );
+  updateView( mYourTodoListView );
+  updateView( mOtherTodoListView );
+}
+
+
+void KOTodoView::updateView( KOTodoListView* listView )
+{
+//  kdDebug(5850) << "KOTodoView::updateView()" << endl;
+  int oldPos = listView->contentsY();
+  listView->clear();
 
   Todo::List todoList = calendar()->todos();
 
@@ -584,6 +718,7 @@ void KOTodoView::updateView()
   // specific order of events. That means that we have to generate parent items
   // recursively for proper hierarchical display of Todos.
   mTodoMap.clear();
+  // PENDING(kalle) Keep mTodoMap separate for the three listviews?
   Todo::List::ConstIterator it;
   for( it = todoList.begin(); it != todoList.end(); ++it ) {
     if ( !mTodoMap.contains( *it ) ) {
@@ -592,14 +727,15 @@ void KOTodoView::updateView()
   }
 
   // Restore opened/closed state
-  mTodoListView->blockSignals( true );
-  if( mDocPrefs ) restoreItemState( mTodoListView->firstChild() );
-  mTodoListView->blockSignals( false );
+  listView->blockSignals( true );
+  if( mDocPrefs ) restoreItemState( listView->firstChild() );
+  listView->blockSignals( false );
 
-  mTodoListView->setContentsPos( 0, oldPos );
+  listView->setContentsPos( 0, oldPos );
 
   mSearchToolBar->fillCategories();
   
+  // PENDING(kalle) pass listview to processSelectionChange()?
   processSelectionChange();
 }
 
@@ -613,9 +749,10 @@ void KOTodoView::restoreItemState( QListViewItem *item )
   }
 }
 
+// PENDING(kalle) Don't use split listview when in sidebar.
 
 QMap<Todo *,KOTodoViewItem *>::ConstIterator
-  KOTodoView::insertTodoItem(Todo *todo)
+  KOTodoView::insertTodoItem( Todo *todo)
 {
 //  kdDebug(5850) << "KOTodoView::insertTodoItem(): " << todo->getSummary() << endl;
   Incidence *incidence = todo->relatedTo();
@@ -637,7 +774,48 @@ QMap<Todo *,KOTodoViewItem *>::ConstIterator
   } else {
 //    kdDebug(5850) << "  no Related" << endl;
       // see above -zecke
-    KOTodoViewItem *todoItem = new KOTodoViewItem(mTodoListView,todo,this);
+
+    // This is where all the logic is about which item goes into which
+    // list view. All this stuff should really done via CalFilter, but
+    // as long as the filters work on the models instead of the view,
+    // that is not possible. Something to be done for KDE 3.6 or
+    // 4.0. For now, this is copied from libkcal/calfilter.cpp. But we
+    // only do it anyway if this was configured to be done.
+    KOTodoViewItem *todoItem = 0;
+    if( KOPrefs::instance()->mUseSplitListViews  ) {
+      bool iAmOneOfTheAttendees = false;
+      const Attendee::List &attendees = todo->attendees();
+      if ( !todo->attendees().isEmpty() ) {
+        for( Attendee::List::ConstIterator it = attendees.begin();
+             it != attendees.end(); ++it ) {
+          if ( mAllEmailAddrs.find( (*it)->email() ) != mAllEmailAddrs.end() ) {
+            iAmOneOfTheAttendees = true;
+            break;
+          }
+        }
+      } else {
+        // no attendees, must be me only
+        iAmOneOfTheAttendees = true;
+      }
+
+      // If I am one of the attendes, create the item and be happy about
+      // it, no need to go further.
+      if( iAmOneOfTheAttendees )
+        todoItem = new KOTodoViewItem( mMyTodoListView, todo, this );
+      else {
+        bool iAmTheOrganizer =
+          KOPrefs::instance()->thatIsMe( todo->organizer().email() );
+
+        if( iAmTheOrganizer /* and not one of the attendees */ )
+          todoItem = new KOTodoViewItem( mYourTodoListView, todo, this );
+        else
+          /* I am neither one of the attendees nor the organizer */
+          todoItem = new KOTodoViewItem( mOtherTodoListView, todo, this );
+      }
+    } else {
+      // no split list views, just put into the single list view
+      todoItem = new KOTodoViewItem( mOneTodoListView, todo, this );
+    }
     return mTodoMap.insert(todo,todoItem);
   }
 }
@@ -668,15 +846,32 @@ bool KOTodoView::scheduleRemoveTodoItem( KOTodoViewItem *todoItem )
 
 void KOTodoView::updateConfig()
 {
-  mTodoListView->repaintContents();
+  /* Now show the right widget stack page depending on KOPrefs */
+  if( KOPrefs::instance()->mUseSplitListViews )
+    mWidgetStack->raiseWidget( eSplitListViews );
+  else
+    mWidgetStack->raiseWidget( eOneListView );
+
+  mMyTodoListView->repaintContents();
+  mOneTodoListView->repaintContents();
+  mYourTodoListView->repaintContents();
+  mOtherTodoListView->repaintContents();
 }
 
 Incidence::List KOTodoView::selectedIncidences()
 {
+  // PENDING(kalle) This needs review. Where is this invoked; does it
+  // always apply to one particular listview?
+
   Incidence::List selected;
 
-  KOTodoViewItem *item = (KOTodoViewItem *)(mTodoListView->selectedItem());
-//  if (!item) item = mActiveItem;
+  KOTodoViewItem *item = (KOTodoViewItem *)(mMyTodoListView->selectedItem());
+  if (item) selected.append(item->todo());
+  item = (KOTodoViewItem *)(mOneTodoListView->selectedItem());
+  if (item) selected.append(item->todo());
+  item = (KOTodoViewItem*)(mYourTodoListView->selectedItem());
+  if (item) selected.append(item->todo());
+  item = (KOTodoViewItem*)(mOtherTodoListView->selectedItem());
   if (item) selected.append(item->todo());
 
   return selected;
@@ -684,10 +879,17 @@ Incidence::List KOTodoView::selectedIncidences()
 
 Todo::List KOTodoView::selectedTodos()
 {
+  // PENDING(kalle) This needs review. Where is this invoked; does it
+  // always apply to one particular listview?
   Todo::List selected;
 
-  KOTodoViewItem *item = (KOTodoViewItem *)(mTodoListView->selectedItem());
-//  if (!item) item = mActiveItem;
+  KOTodoViewItem *item = (KOTodoViewItem *)(mMyTodoListView->selectedItem());
+  if (item) selected.append(item->todo());
+  item = (KOTodoViewItem *)(mOneTodoListView->selectedItem());
+  if (item) selected.append(item->todo());
+  item = (KOTodoViewItem*)(mYourTodoListView->selectedItem());
+  if (item) selected.append(item->todo());
+  item = (KOTodoViewItem*)(mOtherTodoListView->selectedItem());
   if (item) selected.append(item->todo());
 
   return selected;
@@ -725,7 +927,11 @@ void KOTodoView::changeIncidenceDisplay(Incidence *incidence, int action)
               if ( parentItem ) {
                 parentItem->insertItem( todoItem );
               } else {
-                mTodoListView->insertItem( todoItem );
+                // PENDING(kalle) This is definitely wrong. We need to
+                // determine where this go here. Can an item ever
+                // change listviews? I guess it can, if assignments
+                // are changed.
+                mMyTodoListView->insertItem( todoItem );
               }
             }
             todoItem->construct();
@@ -735,7 +941,10 @@ void KOTodoView::changeIncidenceDisplay(Incidence *incidence, int action)
             insertTodoItem( todo );
           }
         }
-        mTodoListView->sort();
+        mMyTodoListView->sort();
+        mOneTodoListView->sort();
+        mYourTodoListView->sort();
+        mOtherTodoListView->sort();
         break;
       case KOGlobals::INCIDENCEDELETED:
         if ( todoItem ) {
@@ -759,6 +968,8 @@ void KOTodoView::showDates(const QDate &, const QDate &)
 
 void KOTodoView::showIncidences( const Incidence::List &incidences )
 {
+// FIXME after merging Kalle's branch with qsearch
+#if 0 
   // we must check if they are not filtered; if they are, remove the filter
   CalFilter *filter = calendar()->filter();
   bool wehaveall = true;
@@ -795,6 +1006,7 @@ void KOTodoView::showIncidences( const Incidence::List &incidences )
   
   // the final touch (make the user notice)
   first->setSelected( true );
+#endif
 }
 
 CalPrinter::PrintType KOTodoView::printType()
@@ -1109,20 +1321,28 @@ void KOTodoView::processDelayedNewPercentage()
 
 void KOTodoView::saveLayout(KConfig *config, const QString &group) const
 {
-  mTodoListView->saveLayout(config,group);
+  mMyTodoListView->saveLayout(config,group);
+  mOneTodoListView->saveLayout(config,group);
+  mYourTodoListView->saveLayout(config,group);
+  mOtherTodoListView->saveLayout(config,group);
 }
 
 void KOTodoView::restoreLayout(KConfig *config, const QString &group)
 {
-  mTodoListView->restoreLayout(config,group);
+  mMyTodoListView->restoreLayout(config,group);
+  mOneTodoListView->restoreLayout(config,group);
+  mYourTodoListView->restoreLayout(config,group);
+  mOtherTodoListView->restoreLayout(config,group);
 }
 
 void KOTodoView::processSelectionChange()
 {
 //  kdDebug(5850) << "KOTodoView::processSelectionChange()" << endl;
 
+  // PENDING(kalle) This is definitely wrong. We need to think about
+  // whose selection is changing here.
   KOTodoViewItem *item =
-    static_cast<KOTodoViewItem *>( mTodoListView->selectedItem() );
+    static_cast<KOTodoViewItem *>( mMyTodoListView->selectedItem() );
 
   if ( !item ) {
     emit incidenceSelected( 0 );
@@ -1133,7 +1353,11 @@ void KOTodoView::processSelectionChange()
 
 void KOTodoView::clearSelection()
 {
-  mTodoListView->selectAll( false );
+  mMyTodoListView->selectAll( false );
+  if( mYourTodoListView )
+    mYourTodoListView->selectAll( false );
+  if( mOtherTodoListView )
+    mOtherTodoListView->selectAll( false );
 }
 
 void KOTodoView::purgeCompleted()
@@ -1160,7 +1384,10 @@ void KOTodoView::addQuickTodo()
 void KOTodoView::setIncidenceChanger( IncidenceChangerBase *changer )
 {
   mChanger = changer;
-  mTodoListView->setIncidenceChanger( changer );
+  mMyTodoListView->setIncidenceChanger( changer );
+  mOneTodoListView->setIncidenceChanger( changer );
+  mYourTodoListView->setIncidenceChanger( changer );
+  mOtherTodoListView->setIncidenceChanger( changer );
 }
 
 void KOTodoView::updateCategories()

@@ -194,6 +194,9 @@ class KOTodoView : public KOrg::BaseView
     void addQuickTodo();
     void removeTodoItems();
 
+  protected:
+    void updateView( KOTodoListView* );
+
   private:
     /*
      * the TodoEditor approach is rather unscaling in the long
@@ -209,8 +212,17 @@ class KOTodoView : public KOrg::BaseView
     QMap<Todo *,KOTodoViewItem *>::ConstIterator insertTodoItem( Todo *todo );
     bool scheduleRemoveTodoItem( KOTodoViewItem *todoItem );
     void restoreItemState( QListViewItem * );
+    void setupListViews();
 
-    KOTodoListView *mTodoListView;
+    QWidgetStack   *mWidgetStack;
+    QSplitter      *mSplitter;
+    KOTodoListView *mMyTodoListView;
+    KOTodoListView *mOneTodoListView;
+    KOTodoListView *mYourTodoListView;
+    KOTodoListView *mOtherTodoListView;
+
+    enum { eOneListView, eSplitListViews };
+
     QPopupMenu *mItemPopupMenu;
     QPopupMenu *mPopupMenu;
     QPopupMenu *mPriorityPopupMenu;
@@ -233,6 +245,8 @@ class KOTodoView : public KOrg::BaseView
     QString mCurrentDoc;
     KPIM::ClickLineEdit *mQuickAdd;
     KOTodoListViewQuickSearch *mSearchToolBar;
+
+    QStringList mAllEmailAddrs;
 
   public:
     enum {
