@@ -50,6 +50,7 @@ AboutData::AboutData()
   addCredit("Laszlo Boloni");
   addCredit("Barry Benowitz");
   addCredit("Christopher Beard");
+  addCredit("Kalle Dalheimer");
   addCredit("Ian Dawes");
   addCredit("Thomas Eitzenberger");
   addCredit("Neil Hart");
@@ -63,6 +64,8 @@ AboutData::AboutData()
   addCredit("Glen Parker");
   addCredit("Dan Pilone");
   addCredit("Roman Rohr");
+  addCredit("Rafał Rzepecki", I18N_NOOP( "Part of work sponsored by Google with"
+      " Summer of Code 2005" ));
   addCredit("Don Sanders");
   addCredit("Bram Schoenmakers");
   addCredit("Günter Schwann");
