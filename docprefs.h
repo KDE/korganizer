@@ -2,6 +2,7 @@
     This file is part of KOrganizer.
 
     Copyright (c) 2001 Cornelius Schumacher <schumacher@kde.org>
+    Copyright (c) 2005 Rafal Rzepecki <divide@users.sourceforge.net>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -38,7 +39,9 @@ class DocPrefs
     QString doc() const;
 
     bool readBoolEntry( const QString &identifier ) const;    
-    void writeEntry( const QString &identifier, bool value );    
+    void writeBoolEntry( const QString &identifier, bool value );    
+    int readNumEntry( const QString &identifier ) const;
+    void writeNumEntry( const QString &identifier, int value );
 
   private:
     static KSimpleConfig *mConfig;

@@ -2,6 +2,7 @@
     This file is part of KOrganizer.
 
     Copyright (c) 2001 Cornelius Schumacher <schumacher@kde.org>
+    Copyright (c) 2005 Rafal Rzepecki <divide@users.sourceforge.net>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -56,13 +57,24 @@ bool DocPrefs::readBoolEntry( const QString &id ) const
 {
     mConfig->setGroup( mDocId );
     bool result = mConfig->readBoolEntry( id, false );
-//    kdDebug(5850) << "DocPrefs::readEntry(): " << id << " : " << (result ? "True" : "False" ) << endl;
     return result;
 }
 
-void DocPrefs::writeEntry( const QString &id, bool value )
+void DocPrefs::writeBoolEntry( const QString &id, bool value )
 {
-//    kdDebug(5850) << "DocPrefs::writeEntry(): " << id << " : " << (value ? "True" : "False" ) << endl;
     mConfig->setGroup( mDocId );
     mConfig->writeEntry( id, value );
+}
+
+int DocPrefs::readNumEntry( const QString &id ) const
+{
+  mConfig->setGroup( mDocId );
+  int result = mConfig->readNumEntry( id, 0 );
+  return result;
+}
+
+void DocPrefs::writeNumEntry( const QString &id, int value )
+{
+  mConfig->setGroup( mDocId );
+  mConfig->writeEntry( id, value );
 }

@@ -195,7 +195,7 @@ class KOTodoView : public KOrg::BaseView
     void removeTodoItems();
 
   protected:
-    void updateView( KOTodoListView* );
+    void fillViews();
 
   private:
     /*
@@ -211,7 +211,8 @@ class KOTodoView : public KOrg::BaseView
 
     QMap<Todo *,KOTodoViewItem *>::ConstIterator insertTodoItem( Todo *todo );
     bool scheduleRemoveTodoItem( KOTodoViewItem *todoItem );
-    void restoreItemState( QListViewItem * );
+    void restoreListViewState( QListView * );
+    void saveListViewState( QListView * );
     void setupListViews();
 
     QWidgetStack   *mWidgetStack;

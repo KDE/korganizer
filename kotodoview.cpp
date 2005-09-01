@@ -526,6 +526,10 @@ KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent, const char* name)
 
 KOTodoView::~KOTodoView()
 {
+  saveListViewState( mMyTodoListView );
+  saveListViewState( mOneTodoListView );
+  saveListViewState( mYourTodoListView );
+  saveListViewState( mOtherTodoListView );
   delete mDocPrefs;
 }
 
@@ -547,19 +551,19 @@ void KOTodoView::setupListViews()
 
   QVBox* myVBox = new QVBox( mSplitter );
   new QLabel( i18n( "<qt><b>Tasks I have to work on:</b></qt>" ), myVBox );
-  mMyTodoListView = new KOTodoListView( myVBox );
+  mMyTodoListView = new KOTodoListView( myVBox, "my todos" );
 
   QVBox* yourVBox = new QVBox( mSplitter );
   new QLabel( i18n( "<qt><b>Tasks I want others to work on:</b></qt>" ),
               yourVBox );
-  mYourTodoListView = new KOTodoListView( yourVBox );
+  mYourTodoListView = new KOTodoListView( yourVBox, "your todos" );
 
   QVBox* otherVBox = new QVBox( mSplitter );
   new QLabel( i18n( "<qt><b>Other tasks I am watching:</b></qt>" ), otherVBox );
-  mOtherTodoListView = new KOTodoListView( otherVBox );
+  mOtherTodoListView = new KOTodoListView( otherVBox, "other todos" );
 
   /* Set up the single list view */
-  mOneTodoListView = new KOTodoListView( this );
+  mOneTodoListView = new KOTodoListView( this, "all todos" );
   mWidgetStack->addWidget( mOneTodoListView, eOneListView );
 
   /* Now show the right widget stack page depending on KOPrefs */
@@ -683,39 +687,31 @@ void KOTodoView::updateView()
   // addressbook entries), so we cannot just cache it once in the
   // KOTodoView ctor.
   mAllEmailAddrs = KOPrefs::instance()->allEmails();
-  updateView( mMyTodoListView );
-  updateView( mOneTodoListView );
-  updateView( mYourTodoListView );
-  updateView( mOtherTodoListView );
+  saveListViewState( mMyTodoListView );
+  mMyTodoListView->clear();
+  saveListViewState( mOneTodoListView );
+  mOneTodoListView->clear();
+  saveListViewState( mYourTodoListView );
+  mYourTodoListView->clear();
+  saveListViewState( mOtherTodoListView );
+  mOtherTodoListView->clear();
+
+  fillViews();
+
+  restoreListViewState( mMyTodoListView );
+  restoreListViewState( mOneTodoListView );
+  restoreListViewState( mYourTodoListView );
+  restoreListViewState( mOtherTodoListView );
+
+  processSelectionChange();  
 }
 
 
-void KOTodoView::updateView( KOTodoListView* listView )
+void KOTodoView::fillViews()
 {
 //  kdDebug(5850) << "KOTodoView::updateView()" << endl;
-  int oldPos = listView->contentsY();
-  listView->clear();
-
   Todo::List todoList = calendar()->todos();
-
-/*
-  kdDebug(5850) << "KOTodoView::updateView(): Todo List:" << endl;
-  Event *t;
-  for(t = todoList.first(); t; t = todoList.next()) {
-    kdDebug(5850) << "  " << t->getSummary() << endl;
-
-    if (t->getRelatedTo()) {
-      kdDebug(5850) << "      (related to " << t->getRelatedTo()->getSummary() << ")" << endl;
-    }
-
-    QPtrList<Event> l = t->getRelations();
-    Event *c;
-    for(c=l.first();c;c=l.next()) {
-      kdDebug(5850) << "    - relation: " << c->getSummary() << endl;
-    }
-  }
-*/
-
+  
   // Put for each Event a KOTodoViewItem in the list view. Don't rely on a
   // specific order of events. That means that we have to generate parent items
   // recursively for proper hierarchical display of Todos.
@@ -728,27 +724,37 @@ void KOTodoView::updateView( KOTodoListView* listView )
     }
   }
 
-  // Restore opened/closed state
-  listView->blockSignals( true );
-  if( mDocPrefs ) restoreItemState( listView->firstChild() );
-  listView->blockSignals( false );
-
-  listView->setContentsPos( 0, oldPos );
-
   mSearchToolBar->fillCategories();
-  
-  // PENDING(kalle) pass listview to processSelectionChange()?
-  processSelectionChange();
 }
 
-void KOTodoView::restoreItemState( QListViewItem *item )
+void KOTodoView::restoreListViewState( QListView *listView )
 {
-  while( item ) {
-    KOTodoViewItem *todoItem = (KOTodoViewItem *)item;
-    todoItem->setOpen( mDocPrefs->readBoolEntry( todoItem->todo()->uid() ) );
-    if( item->childCount() > 0 ) restoreItemState( item->firstChild() );
-    item = item->nextSibling();
-  }
+  if ( mDocPrefs ) {
+    listView->blockSignals( true );
+    QListViewItem *item = listView->firstChild();
+    for ( QListViewItemIterator it( listView ); it.current(); ++it )
+      if ( KOTodoViewItem *todoItem
+          = dynamic_cast<KOTodoViewItem *>( it.current() ) )
+        todoItem->setOpen( mDocPrefs->readBoolEntry( todoItem->todo()->uid() ) );
+    listView->setContentsPos( 0, mDocPrefs
+        ->readNumEntry( QCString( listView->name() ) + " pos" ) );
+    listView->blockSignals( false );
+  } else
+    kdError( 5850 ) << k_funcinfo << " mDocPrefs doesn't exist" << endl;
+}
+
+void KOTodoView::saveListViewState( QListView *listView )
+{
+  if ( mDocPrefs ) {
+    mDocPrefs->writeBoolEntry( QCString( listView->name() ) + " pos",
+                           listView->contentsY() );
+
+    for ( QListViewItemIterator it( listView ); it.current(); ++it )
+      if ( KOTodoViewItem *todoItem
+          = dynamic_cast<KOTodoViewItem *>( it.current() ) )
+        mDocPrefs->writeNumEntry( todoItem->todo()->uid(), todoItem->isOpen() );
+  } else
+    kdError( 5850 ) << k_funcinfo << " mDocPrefs doesn't exist" << endl;
 }
 
 // PENDING(kalle) Don't use split listview when in sidebar.
@@ -1301,8 +1307,6 @@ void KOTodoView::itemStateChanged( QListViewItem *item )
   KOTodoViewItem *todoItem = (KOTodoViewItem *)item;
 
 //  kdDebug(5850) << "KOTodoView::itemStateChanged(): " << todoItem->todo()->summary() << endl;
-
-  if( mDocPrefs ) mDocPrefs->writeEntry( todoItem->todo()->uid(), todoItem->isOpen() );
 }
 
 void KOTodoView::setNewPercentageDelayed( KOTodoViewItem *item, int percentage )
@@ -1344,7 +1348,7 @@ void KOTodoView::processSelectionChange()
   // PENDING(kalle) This is definitely wrong. We need to think about
   // whose selection is changing here.
   KOTodoViewItem *item =
-    static_cast<KOTodoViewItem *>( mMyTodoListView->selectedItem() );
+    static_cast<KOTodoViewItem *>( mOneTodoListView->selectedItem() );
 
   if ( !item ) {
     emit incidenceSelected( 0 );
