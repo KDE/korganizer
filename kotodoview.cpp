@@ -533,6 +533,8 @@ KOTodoView::~KOTodoView()
 void KOTodoView::setupListViews()
 {
   mWidgetStack = new QWidgetStack( this );
+  mWidgetStack->setSizePolicy( QSizePolicy( QSizePolicy::Expanding,
+                               QSizePolicy::Expanding ) );
 
   /* Set up split list views:
    * Three list views - the first one contains the tasks _I_ need to
