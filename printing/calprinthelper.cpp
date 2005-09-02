@@ -525,24 +525,23 @@ void CalPrintHelper::drawAgendaItem( PrintCellItem *item, QPainter &p,
        ( endTime > startPrintDate && startTime < endPrintDate ) ) {
     if ( startTime < startPrintDate ) startTime = startPrintDate;
     if ( endTime > endPrintDate ) endTime = endPrintDate;
-    int eventLength = int( startTime.secsTo( endTime ) / 60. * minlen );
-    int currentyPos = int( y + startPrintDate.secsTo( startTime ) *
+    int currentHeight = int( startTime.secsTo( endTime ) / 60. * minlen );
+    int currentYPos = int( y + startPrintDate.secsTo( startTime ) *
                            minlen / 60. );
     int currentWidth = width / item->subCells();
     int currentX = x + item->subCell() * currentWidth;
 
-    p.drawRect( currentX, currentyPos, currentWidth, eventLength );
+    p.drawRect( currentX, currentYPos, currentWidth, currentHeight );
     int offset = 4;
     // print the text vertically centered. If it doesn't fit inside the
     // box, align it at the top so the beginning is visible
     int flags = Qt::AlignLeft | Qt::WordBreak;
-    QRect bound = p.boundingRect ( currentX + offset, currentyPos,
-                                   currentWidth - 2 * offset, eventLength,
+    QRect bound = p.boundingRect ( currentX + offset, currentYPos,
+                                   currentWidth - 2 * offset, currentHeight,
                                    flags, event->summary() );
-    if ( bound.height() >= eventLength - 4 ) flags |= Qt::AlignTop;
-    else flags |= Qt::AlignVCenter;
-    p.drawText( currentX+offset, currentyPos+offset, currentWidth-2*offset,
-                eventLength-2*offset, flags, event->summary() );
+    flags |= Qt::AlignTop;
+    p.drawText( currentX+offset, currentYPos+offset, currentWidth-2*offset,
+                currentHeight-2*offset, flags, event->summary() );
   }
 }
 
