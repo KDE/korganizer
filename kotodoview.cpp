@@ -426,8 +426,13 @@ KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent, const char* name)
   }
   
   setupListViews();
+  QValueList<KListView *> list;
+  list.append( mMyTodoListView );
+  list.append( mOneTodoListView );
+  list.append( mYourTodoListView );
+  list.append( mOtherTodoListView );
   KOTodoListViewQuickSearchContainer *container =
-          new KOTodoListViewQuickSearchContainer( this, mMyTodoListView, 
+          new KOTodoListViewQuickSearchContainer( this, list, 
                                                   collection, calendar,
                                                   "todo quick search" );
   mSearchToolBar = container->quickSearch();
@@ -731,7 +736,6 @@ void KOTodoView::restoreListViewState( QListView *listView )
 {
   if ( mDocPrefs ) {
     listView->blockSignals( true );
-    QListViewItem *item = listView->firstChild();
     for ( QListViewItemIterator it( listView ); it.current(); ++it )
       if ( KOTodoViewItem *todoItem
           = dynamic_cast<KOTodoViewItem *>( it.current() ) )

@@ -75,6 +75,7 @@ libkorganizer_la_SOURCES = komessagebox.cpp \
 	archivedialog.cpp \
 	kohelper.cpp \
 	komailclient.cpp kotodoview.cpp kotodoviewitem.cpp kotodoviewquicksearch.cpp \
+	klistviewnewsearchline.cpp \
 	kolistview.cpp \
 	koincidenceeditor.cpp koeventeditor.cpp kotodoeditor.cpp kojournaleditor.cpp\
 	koprefs.cpp kowindowlist.cpp \
@@ -139,6 +140,7 @@ noinst_HEADERS = komonthview.h \
 	searchdialog.h \
 	archivedialog.h \
 	komailclient.h kotodoview.h kotodoviewquicksearch.h \
+	klistviewnewsearchline.h \
 	kolistview.h \
 	koapp.h korganizer_part.h korganizer.h \
 	koprefsdialog.h koeventeditor.h \
