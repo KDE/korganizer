@@ -54,6 +54,7 @@
 #include <qcursor.h>
 #include <kpopupmenu.h>
 #include <X11/Xlib.h>
+#include <QX11Info>
 #undef KeyPress
 #undef None
 #undef Status
@@ -452,7 +453,7 @@ void KODayMatrix::dropEvent( QDropEvent *e )
   int root_x, root_y, win_x, win_y;
   uint keybstate;
   Window rootw, childw;
-  XQueryPointer( qt_xdisplay(), qt_xrootwin(), &rootw, &childw,
+  XQueryPointer( QX11Info::display(), QX11Info::appRootWindow(), &rootw, &childw,
                  &root_x, &root_y, &win_x, &win_y, &keybstate );
 
   if ( keybstate & ControlMask ) {
