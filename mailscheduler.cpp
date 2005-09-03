@@ -39,8 +39,8 @@
 
 using namespace KCal;
 
-MailScheduler::MailScheduler(Calendar *calendar)
-  : IMIPScheduler(calendar)
+MailScheduler::MailScheduler( Calendar *calendar )
+  : IMIPScheduler( calendar )
 {
 }
 
@@ -48,105 +48,122 @@ MailScheduler::~MailScheduler()
 {
 }
 
-bool MailScheduler::publish (IncidenceBase *incidence,const QString &recipients)
+bool MailScheduler::publish( IncidenceBase *incidence,
+                             const QString &recipients )
 {
-  QString messageText = mFormat->createScheduleMessage(incidence,
-                                                       Scheduler::Publish);
+  QString messageText = mFormat->createScheduleMessage( incidence,
+                                                        Scheduler::Publish );
   KOMailClient mailer;
-  //  kdDebug () << "MailScheduler::publish to " << recipients << endl;
-  return mailer.mailTo(incidence,recipients,messageText);
+  return mailer.mailTo( incidence, recipients, messageText );
 }
 
-bool MailScheduler::performTransaction(IncidenceBase *incidence,Method method,const QString &recipients)
+bool MailScheduler::performTransaction( IncidenceBase *incidence,
+                                        Method method,
+                                        const QString &recipients )
 {
-  QString messageText = mFormat->createScheduleMessage(incidence,method);
+  QString messageText = mFormat->createScheduleMessage( incidence, method );
 
   KOMailClient mailer;
-//  kdDebug () << "MailScheduler::performTransaction"  << endl;
-  if (method==Request || method==Cancel || method==Add || method==Declinecounter) {
-    return mailer.mailTo(incidence,recipients,messageText);
+  bool status;
+  if ( method == Request ||
+       method == Cancel ||
+       method == Add ||
+       method == Declinecounter ) {
+    status = mailer.mailTo( incidence, recipients, messageText );
+  } else {
+    status = mailer.mailTo( incidence, recipients, messageText );
   }
-  else {
-    return mailer.mailTo(incidence,recipients,messageText);
-  }
+  return status;
 }
 
-bool MailScheduler::performTransaction(IncidenceBase *incidence,Method method)
+bool MailScheduler::performTransaction( IncidenceBase *incidence,
+                                        Method method )
 {
-  QString messageText = mFormat->createScheduleMessage(incidence,method);
+  QString messageText = mFormat->createScheduleMessage( incidence, method );
 
   KOMailClient mailer;
-//  kdDebug () << "MailScheduler::performTransaction"  << endl;
-  if (method==Request || method==Cancel || method==Add || method==Declinecounter) {
-    return mailer.mailAttendees(incidence,messageText);
+  bool status;
+  if ( method == Request ||
+       method == Cancel ||
+       method == Add ||
+       method == Declinecounter ) {
+    status = mailer.mailAttendees( incidence, messageText );
+  } else {
+    status = mailer.mailOrganizer( incidence, messageText );
   }
-  else {
-    return mailer.mailOrganizer(incidence,messageText);
-  }
+  return status;
 }
 
 QPtrList<ScheduleMessage> MailScheduler::retrieveTransactions()
 {
-  QString incomingDirName = locateLocal("data","korganizer/income");
-  kdDebug(5850) << "MailScheduler::retrieveTransactions: dir: " << incomingDirName
-            << endl;
+  QString incomingDirName = locateLocal( "data", "korganizer/income" );
+  kdDebug(5850) << "MailScheduler::retrieveTransactions: dir: "
+                << incomingDirName << endl;
 
   QPtrList<ScheduleMessage> messageList;
 
-  QDir incomingDir(incomingDirName);
-  QStringList incoming = incomingDir.entryList(QDir::Files);
+  QDir incomingDir( incomingDirName );
+  QStringList incoming = incomingDir.entryList( QDir::Files );
   QStringList::ConstIterator it;
-  for(it = incoming.begin(); it != incoming.end(); ++it) {
+  for( it = incoming.begin(); it != incoming.end(); ++it ) {
     kdDebug(5850) << "-- File: " << (*it) << endl;
 
-    QFile f(incomingDirName + "/" + (*it));
+    QFile f( incomingDirName + "/" + (*it) );
     bool inserted = false;
     QMap<IncidenceBase*, QString>::Iterator iter;
     for ( iter = mEventMap.begin(); iter != mEventMap.end(); ++iter ) {
-      if (iter.data() == incomingDirName + "/" + (*it)) inserted = true;
+      if ( iter.data() == incomingDirName + "/" + (*it) )
+        inserted = true;
     }
-    if (!inserted) {
-    if (!f.open(IO_ReadOnly)) {
-      kdDebug(5850) << "MailScheduler::retrieveTransactions(): Can't open file'"
-                << (*it) << "'" << endl;
-    } else {
-      QTextStream t(&f);
-      t.setEncoding( QTextStream::Latin1 );
-      QString messageString = t.read();
-      messageString.replace( QRegExp("\n[ \t]"), "");
-      messageString = QString::fromUtf8( messageString.latin1() );
-      ScheduleMessage *message = mFormat->parseScheduleMessage( mCalendar,
-                                                                messageString );
-      if (message) {
-        kdDebug(5850) << "MailScheduler::retrieveTransactions: got message '"
-                  << (*it) << "'" << endl;
-        messageList.append(message);
-        mEventMap[message->event()]=incomingDirName + "/" + (*it);
+    if ( !inserted ) {
+      if ( !f.open( IO_ReadOnly ) ) {
+        kdDebug(5850)
+          << "MailScheduler::retrieveTransactions(): Can't open file'"
+          << (*it) << "'" << endl;
       } else {
-        QString errorMessage;
-        if (mFormat->exception()) {
-          errorMessage = mFormat->exception()->message();
+        QTextStream t( &f );
+        t.setEncoding( QTextStream::Latin1 );
+        QString messageString = t.read();
+        messageString.replace( QRegExp( "\n[ \t]"), "" );
+        messageString = QString::fromUtf8( messageString.latin1() );
+        ScheduleMessage *mess = mFormat->parseScheduleMessage( mCalendar,
+                                                               messageString );
+        if ( mess ) {
+          kdDebug(5850)
+            << "MailScheduler::retrieveTransactions: got message '"
+            << (*it) << "'" << endl;
+          messageList.append( mess );
+          mEventMap[ mess->event() ] = incomingDirName + "/" + (*it);
+        } else {
+          QString errorMessage;
+          if ( mFormat->exception() ) {
+            errorMessage = mFormat->exception()->message();
+          }
+          kdDebug(5850)
+            << "MailScheduler::retrieveTransactions() Error parsing message: "
+            << errorMessage << endl;
         }
-        kdDebug(5850) << "MailScheduler::retrieveTransactions() Error parsing "
-                     "message: " << errorMessage << endl;
+        f.close();
       }
-      f.close();
-    }
     }
   }
   return messageList;
 }
 
-bool MailScheduler::deleteTransaction(IncidenceBase *incidence)
+bool MailScheduler::deleteTransaction( IncidenceBase *incidence )
 {
+  bool status;
   QFile f( mEventMap[incidence] );
-  mEventMap.remove(incidence);
-  if ( !f.exists() ) return false;
-  else
-    return f.remove();
+  mEventMap.remove( incidence );
+  if ( !f.exists() ) {
+    status = false;
+  } else {
+    status = f.remove();
+  }
+  return status;
 }
 
 QString MailScheduler::freeBusyDir()
 {
-  return locateLocal("data","korganizer/freebusy");
+  return locateLocal( "data", "korganizer/freebusy" );
 }
