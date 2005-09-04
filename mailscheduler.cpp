@@ -64,16 +64,7 @@ bool MailScheduler::performTransaction( IncidenceBase *incidence,
   QString messageText = mFormat->createScheduleMessage( incidence, method );
 
   KOMailClient mailer;
-  bool status;
-  if ( method == Request ||
-       method == Cancel ||
-       method == Add ||
-       method == Declinecounter ) {
-    status = mailer.mailTo( incidence, recipients, messageText );
-  } else {
-    status = mailer.mailTo( incidence, recipients, messageText );
-  }
-  return status;
+  return mailer.mailTo( incidence, recipients, messageText );
 }
 
 bool MailScheduler::performTransaction( IncidenceBase *incidence,
