@@ -75,7 +75,7 @@
 
 #include <qcursor.h>
 #include <qtimer.h>
-#include <qvbox.h>
+#include <q3vbox.h>
 #include <qfile.h>
 #include <qlabel.h>
 #include <qlayout.h>

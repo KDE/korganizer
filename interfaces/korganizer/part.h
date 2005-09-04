@@ -22,6 +22,8 @@
 #define KORG_PART_H
 
 #include <qstring.h>
+//Added by qt3to4:
+#include <Q3PtrList>
 
 #include <klibloader.h>
 #include <kparts/part.h>
@@ -36,7 +38,7 @@ class Part : public KParts::Part
     static int interfaceVersion() { return 2; }
     static QString serviceType() { return "KOrganizer/Part"; }
 
-    typedef QPtrList<Part> List;
+    typedef Q3PtrList<Part> List;
 
     Part( MainWindow *parent, const char *name )
       : KParts::Part( parent?(parent->topLevelWidget()):0, name ), mMainWindow( parent ) {}

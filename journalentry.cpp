@@ -28,9 +28,14 @@
 #include <qlabel.h>
 #include <qlayout.h>
 #include <qcheckbox.h>
-#include <qwhatsthis.h>
+#include <q3whatsthis.h>
 #include <qtooltip.h>
 #include <qtoolbutton.h>
+//Added by qt3to4:
+#include <QPixmap>
+#include <QGridLayout>
+#include <QEvent>
+#include <Q3ValueList>
 
 #include <kdebug.h>
 #include <kdialog.h>
@@ -63,7 +68,7 @@ public:
 
 
 JournalDateEntry::JournalDateEntry( Calendar *calendar, QWidget *parent ) :
-  QVBox( parent ), mCalendar( calendar )
+  Q3VBox( parent ), mCalendar( calendar )
 {
 //kdDebug(5850)<<"JournalEntry::JournalEntry, parent="<<parent<<endl;
   mChanger = 0;
@@ -95,9 +100,9 @@ void JournalDateEntry::setDate(const QDate &date)
 
 void JournalDateEntry::clear()
 {
-  QValueList<JournalEntry*> values( mEntries.values() );
+  Q3ValueList<JournalEntry*> values( mEntries.values() );
 
-  QValueList<JournalEntry*>::Iterator it = values.begin();
+  Q3ValueList<JournalEntry*>::Iterator it = values.begin();
   for ( ; it != values.end(); ++it ) {
     delete (*it);
   }
@@ -130,9 +135,9 @@ void JournalDateEntry::addJournal( Journal *j )
 
 Journal::List JournalDateEntry::journals() const
 {
-  QValueList<Journal*> jList( mEntries.keys() );
+  Q3ValueList<Journal*> jList( mEntries.keys() );
   Journal::List l;
-  QValueList<Journal*>::Iterator it = jList.begin();
+  Q3ValueList<Journal*>::Iterator it = jList.begin();
   for ( ; it != jList.end(); ++it ) {
     l.append( *it );
   }
@@ -192,8 +197,8 @@ JournalEntry::JournalEntry( Journal* j, QWidget *parent ) :
   mLayout->addWidget( mTitleEdit, 0, 1 );
   mTitleLabel->setBuddy( mTitleEdit );
 
-  QWhatsThis::add( mTitleLabel, whatsThis );
-  QWhatsThis::add( mTitleEdit, whatsThis );
+  Q3WhatsThis::add( mTitleLabel, whatsThis );
+  Q3WhatsThis::add( mTitleEdit, whatsThis );
 
   mTimeCheck = new QCheckBox( i18n("Ti&me: "), this );
   mLayout->addWidget( mTimeCheck, 0, 2 );
@@ -201,9 +206,9 @@ JournalEntry::JournalEntry( Journal* j, QWidget *parent ) :
   mLayout->addWidget( mTimeEdit, 0, 3 );
   connect( mTimeCheck, SIGNAL(toggled(bool)),
            this, SLOT(timeCheckBoxToggled(bool)) );
-  QWhatsThis::add( mTimeCheck, i18n("Determines whether this journal entry has "
+  Q3WhatsThis::add( mTimeCheck, i18n("Determines whether this journal entry has "
                                     "a time associated with it") );
-  QWhatsThis::add( mTimeEdit, i18n( "Sets the time associated with this journal "
+  Q3WhatsThis::add( mTimeEdit, i18n( "Sets the time associated with this journal "
                                     " entry" ) );
 
   mDeleteButton = new QToolButton( this, "deleteButton" );
@@ -211,7 +216,7 @@ JournalEntry::JournalEntry( Journal* j, QWidget *parent ) :
   mDeleteButton->setPixmap( pix );
   mDeleteButton->setSizePolicy( QSizePolicy::Fixed, QSizePolicy::Fixed );
   QToolTip::add( mDeleteButton, i18n("Delete this journal entry") );
-  QWhatsThis::add( mDeleteButton, i18n("Delete this journal entry") );
+  Q3WhatsThis::add( mDeleteButton, i18n("Delete this journal entry") );
   mLayout->addWidget( mDeleteButton, 0, 4 );
   connect( mDeleteButton, SIGNAL(pressed()), this, SLOT(deleteItem()) );
 
@@ -219,7 +224,7 @@ JournalEntry::JournalEntry( Journal* j, QWidget *parent ) :
   mEditButton->setPixmap( KOGlobals::self()->smallIcon( "edit" ) );
   mEditButton->setSizePolicy( QSizePolicy::Fixed, QSizePolicy::Fixed );
   QToolTip::add( mEditButton, i18n("Edit this journal entry") );
-  QWhatsThis::add( mEditButton, i18n("Opens an editor dialog for this journal entry") );
+  Q3WhatsThis::add( mEditButton, i18n("Opens an editor dialog for this journal entry") );
   mLayout->addWidget( mEditButton, 0, 5 );
   connect( mEditButton, SIGNAL(clicked()), this, SLOT( editItem() ) );
 

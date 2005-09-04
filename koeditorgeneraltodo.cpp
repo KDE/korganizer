@@ -23,18 +23,24 @@
 */
 
 #include <qtooltip.h>
-#include <qfiledialog.h>
+#include <q3filedialog.h>
 #include <qlayout.h>
-#include <qvbox.h>
-#include <qbuttongroup.h>
+#include <q3vbox.h>
+#include <q3buttongroup.h>
 #include <qvgroupbox.h>
-#include <qwidgetstack.h>
+#include <q3widgetstack.h>
 #include <qdatetime.h>
 #include <qcheckbox.h>
 #include <qlabel.h>
 #include <qspinbox.h>
 #include <qpushbutton.h>
-#include <qwhatsthis.h>
+#include <q3whatsthis.h>
+//Added by qt3to4:
+#include <QGridLayout>
+#include <Q3Frame>
+#include <QHBoxLayout>
+#include <QBoxLayout>
+#include <QVBoxLayout>
 
 #include <kglobal.h>
 #include <klocale.h>
@@ -97,12 +103,12 @@ void KOEditorGeneralTodo::initTime(QWidget *parent,QBoxLayout *topLayout)
 {
   QBoxLayout *timeLayout = new QVBoxLayout(topLayout);
 
-  QGroupBox *timeGroupBox = new QGroupBox(1,QGroupBox::Horizontal,
+  Q3GroupBox *timeGroupBox = new Q3GroupBox(1,Qt::Horizontal,
                                           i18n("Date && Time"),parent);
   timeLayout->addWidget(timeGroupBox);
 
-  QFrame *timeBoxFrame = new QFrame(timeGroupBox);
-  QWhatsThis::add( timeBoxFrame,
+  Q3Frame *timeBoxFrame = new Q3Frame(timeGroupBox);
+  Q3WhatsThis::add( timeBoxFrame,
                    i18n("Sets options for due and start dates and times "
                         "for this to-do.") );
 
@@ -112,7 +118,7 @@ void KOEditorGeneralTodo::initTime(QWidget *parent,QBoxLayout *topLayout)
 
   QString whatsThis = i18n("Sets the due date for this to-do.");
   mDueCheck = new QCheckBox(i18n("&Due:"),timeBoxFrame);
-  QWhatsThis::add( mDueCheck, whatsThis );
+  Q3WhatsThis::add( mDueCheck, whatsThis );
   layoutTimeBox->addWidget(mDueCheck,0,0);
   connect(mDueCheck,SIGNAL(toggled(bool)),SLOT(enableDueEdit(bool)));
   connect(mDueCheck,SIGNAL(toggled(bool)),SLOT(showAlarm()));
@@ -120,36 +126,36 @@ void KOEditorGeneralTodo::initTime(QWidget *parent,QBoxLayout *topLayout)
   connect(mDueCheck,SIGNAL(toggled(bool)),SLOT(dateChanged()));
 
   mDueDateEdit = new KDateEdit(timeBoxFrame);
-  QWhatsThis::add( mDueDateEdit, whatsThis );
+  Q3WhatsThis::add( mDueDateEdit, whatsThis );
   layoutTimeBox->addWidget(mDueDateEdit,0,1);
   connect(mDueDateEdit,SIGNAL(dateChanged(const QDate&)),SLOT(dateChanged()));
 
   mDueTimeEdit = new KTimeEdit(timeBoxFrame);
-  QWhatsThis::add( mDueTimeEdit,
+  Q3WhatsThis::add( mDueTimeEdit,
                    i18n("Sets the due time for this to-do.") );
   layoutTimeBox->addWidget(mDueTimeEdit,0,2);
   connect(mDueTimeEdit,SIGNAL(timeChanged( QTime )),SLOT(dateChanged()));
 
   whatsThis = i18n("Sets the start date for this to-do");
   mStartCheck = new QCheckBox(i18n("Sta&rt:"),timeBoxFrame);
-  QWhatsThis::add( mStartCheck, whatsThis );
+  Q3WhatsThis::add( mStartCheck, whatsThis );
   layoutTimeBox->addWidget(mStartCheck,1,0);
   connect(mStartCheck,SIGNAL(toggled(bool)),SLOT(enableStartEdit(bool)));
   connect(mStartCheck,SIGNAL(toggled(bool)),SLOT(startDateModified()));
 
   mStartDateEdit = new KDateEdit(timeBoxFrame);
-  QWhatsThis::add( mStartDateEdit, whatsThis );
+  Q3WhatsThis::add( mStartDateEdit, whatsThis );
   layoutTimeBox->addWidget(mStartDateEdit,1,1);
   connect(mStartDateEdit,SIGNAL(dateChanged(const QDate&)),SLOT(startDateModified()));
 
   mStartTimeEdit = new KTimeEdit(timeBoxFrame);
-  QWhatsThis::add( mStartTimeEdit,
+  Q3WhatsThis::add( mStartTimeEdit,
                    i18n("Sets the start time for this to-do.") );
   layoutTimeBox->addWidget(mStartTimeEdit,1,2);
   connect(mStartTimeEdit,SIGNAL(timeChanged(QTime)),SLOT(startDateModified()));
 
   mTimeButton = new QCheckBox(i18n("Ti&me associated"),timeBoxFrame);
-  QWhatsThis::add( mTimeButton,
+  Q3WhatsThis::add( mTimeButton,
                    i18n("Sets whether or not this to-do's start and due dates "
                         "have times associated with them.") );
   layoutTimeBox->addMultiCellWidget(mTimeButton,2,2,0,2);
@@ -167,7 +173,7 @@ void KOEditorGeneralTodo::initCompletion(QWidget *parent, QBoxLayout *topLayout)
   QString whatsThis = i18n("Sets the current completion status of this to-do "
                            "as a percentage.");
   mCompletedCombo = new QComboBox(parent);
-  QWhatsThis::add( mCompletedCombo, whatsThis );
+  Q3WhatsThis::add( mCompletedCombo, whatsThis );
   for (int i = 0; i <= 100; i+=10) {
     // xgettext:no-c-format
     QString label = i18n("Percent complete", "%1 %").arg (i);

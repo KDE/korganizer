@@ -23,6 +23,8 @@
 */
 
 #include <qcursor.h>
+//Added by qt3to4:
+#include <Q3ValueList>
 
 #include <klocale.h>
 #include <kdebug.h>
@@ -51,7 +53,7 @@ KOEventPopupMenu::KOEventPopupMenu()
   mEditOnlyItems.append(insertItem (KOGlobals::self()->smallIcon("editdelete"),i18n("&Delete"),
                                    this,SLOT(popupDelete())));
   mEditOnlyItems.append( insertSeparator() );
-  mEditOnlyItems.append( insertItem( QIconSet( KOGlobals::self()->smallIcon("bell") ),
+  mEditOnlyItems.append( insertItem( QIcon( KOGlobals::self()->smallIcon("bell") ),
                                      i18n("&Toggle Reminder"), this,
                                      SLOT( popupAlarm() ) ) );
   mRecurrenceItems.append( insertSeparator() );
@@ -68,7 +70,7 @@ void KOEventPopupMenu::showIncidencePopup( Incidence *incidence, const QDate &qd
 
   if (mCurrentIncidence) {
     // Enable/Disabled menu items only valid for editable events.
-    QValueList<int>::Iterator it;
+    Q3ValueList<int>::Iterator it;
     for( it = mEditOnlyItems.begin(); it != mEditOnlyItems.end(); ++it ) {
       setItemEnabled(*it,!mCurrentIncidence->isReadOnly());
     }
@@ -81,7 +83,7 @@ void KOEventPopupMenu::showIncidencePopup( Incidence *incidence, const QDate &qd
   }
 }
 
-void KOEventPopupMenu::addAdditionalItem(const QIconSet &icon,const QString &text,
+void KOEventPopupMenu::addAdditionalItem(const QIcon &icon,const QString &text,
                                     const QObject *receiver, const char *member,
                                     bool editOnly)
 {

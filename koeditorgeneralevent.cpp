@@ -24,17 +24,23 @@
 
 #include <qtooltip.h>
 #include <qlayout.h>
-#include <qvbox.h>
-#include <qbuttongroup.h>
+#include <q3vbox.h>
+#include <q3buttongroup.h>
 #include <qvgroupbox.h>
-#include <qwidgetstack.h>
+#include <q3widgetstack.h>
 #include <qspinbox.h>
 #include <qdatetime.h>
 #include <qlabel.h>
 #include <qcheckbox.h>
 #include <qcombobox.h>
 #include <qpushbutton.h>
-#include <qwhatsthis.h>
+#include <q3whatsthis.h>
+//Added by qt3to4:
+#include <QGridLayout>
+#include <Q3Frame>
+#include <QHBoxLayout>
+#include <QBoxLayout>
+#include <QVBoxLayout>
 
 #include <kdebug.h>
 #include <kglobal.h>
@@ -97,14 +103,14 @@ void KOEditorGeneralEvent::initTime(QWidget *parent,QBoxLayout *topLayout)
 {
   QBoxLayout *timeLayout = new QVBoxLayout(topLayout);
 
-  QGroupBox *timeGroupBox = new QGroupBox(1,QGroupBox::Horizontal,
+  Q3GroupBox *timeGroupBox = new Q3GroupBox(1,Qt::Horizontal,
                                           i18n("Date && Time"),parent);
-  QWhatsThis::add( timeGroupBox,
+  Q3WhatsThis::add( timeGroupBox,
        i18n("Sets options related to the date and time of the "
             "event or to-do.") );
   timeLayout->addWidget(timeGroupBox);
 
-  QFrame *timeBoxFrame = new QFrame(timeGroupBox);
+  Q3Frame *timeBoxFrame = new Q3Frame(timeGroupBox);
 
   QGridLayout *layoutTimeBox = new QGridLayout(timeBoxFrame,2,3);
   layoutTimeBox->setSpacing(topLayout->spacing());
@@ -166,11 +172,11 @@ void KOEditorGeneralEvent::initClass(QWidget *parent,QBoxLayout *topLayout)
   QLabel *freeTimeLabel = new QLabel(i18n("S&how time as:"),parent);
   QString whatsThis = i18n("Sets how this time will appear on your Free/Busy "
                            "information.");
-  QWhatsThis::add( freeTimeLabel, whatsThis );
+  Q3WhatsThis::add( freeTimeLabel, whatsThis );
   classLayout->addWidget(freeTimeLabel);
 
   mFreeTimeCombo = new QComboBox(false, parent);
-  QWhatsThis::add( mFreeTimeCombo, whatsThis );
+  Q3WhatsThis::add( mFreeTimeCombo, whatsThis );
   mFreeTimeCombo->insertItem(i18n("Busy"));
   mFreeTimeCombo->insertItem(i18n("Free"));
   classLayout->addWidget(mFreeTimeCombo);
@@ -399,7 +405,7 @@ void KOEditorGeneralEvent::setDuration()
     }
   }
   mDurationLabel->setText(tmpStr);
-  QWhatsThis::add( mDurationLabel,
+  Q3WhatsThis::add( mDurationLabel,
        i18n("Shows the duration of the event or to-do with the "
       "current start and end dates and times.") );
 }

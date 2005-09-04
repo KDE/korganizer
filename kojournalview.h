@@ -28,8 +28,8 @@
 #include "journalentry.h"
 
 class JournalEntry;
-class QScrollView;
-class QVBox;
+class Q3ScrollView;
+class Q3VBox;
 
 /**
  * This class provides a journal view.
@@ -73,8 +73,8 @@ class KOJournalView : public KOrg::BaseView
     void clearEntries();
 
   private:
-    QScrollView *mSV;
-    QVBox *mVBox;
+    Q3ScrollView *mSV;
+    Q3VBox *mVBox;
     QMap<QDate, JournalDateEntry*> mEntries;
 //    DateList mSelectedDates;  // List of dates to be displayed
 };

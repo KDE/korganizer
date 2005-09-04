@@ -26,7 +26,7 @@
 #ifndef _KOLISTVIEW_H
 #define _KOLISTVIEW_H
 
-#include <qdict.h>
+#include <q3dict.h>
 #include <qtooltip.h>
 
 #include <libkcal/incidence.h>
@@ -95,8 +95,8 @@ class KOListView : public KOEventView
 
     void changeIncidenceDisplay(Incidence *, int);
 
-    void defaultItemAction(QListViewItem *item);
-    void popupMenu(QListViewItem *item,const QPoint &,int);
+    void defaultItemAction(Q3ListViewItem *item);
+    void popupMenu(Q3ListViewItem *item,const QPoint &,int);
 
   protected slots:
     void processSelectionChange();
@@ -111,7 +111,7 @@ class KOListView : public KOEventView
     KListView *mListView;
     KOEventPopupMenu *mPopupMenu;
     KOListViewItem *mActiveItem;
-    QDict<Incidence> mUidDict;
+    Q3Dict<Incidence> mUidDict;
     DateList mSelectedDates;
 };
 

@@ -64,7 +64,7 @@ Q_OBJECT
     void slotAddTemplate();
     void slotDeleteTemplate();
     void slotApplyTemplate();
-    void slotUpdateDeleteButton( QListBoxItem *item );
+    void slotUpdateDeleteButton( Q3ListBoxItem *item );
     void slotOk();
     
   private:

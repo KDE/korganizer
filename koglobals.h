@@ -24,9 +24,11 @@
 #define KORG_GLOBALS_H
 
 #include <kdepimmacros.h>
+//Added by qt3to4:
+#include <QPixmap>
 
 class QPixmap;
-class QIconSet;
+class QIcon;
 class KCalendarSystem;
 class AlarmClient;
 
@@ -57,7 +59,7 @@ class KDE_EXPORT KOGlobals
     ~KOGlobals();
 
     QPixmap smallIcon( const QString& name );
-    QIconSet smallIconSet( const QString& name, int size = 0 );
+    QIcon smallIconSet( const QString& name, int size = 0 );
 
     QString holiday( const QDate & );
     bool isWorkDay( const QDate & );

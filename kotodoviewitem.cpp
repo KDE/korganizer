@@ -36,14 +36,14 @@
 #include "koprefs.h"
 #include "koglobals.h"
 
-KOTodoViewItem::KOTodoViewItem( QListView *parent, Todo *todo, KOTodoView *kotodo)
-  : QCheckListItem( parent , "", CheckBox ), mTodo( todo ), mTodoView( kotodo )
+KOTodoViewItem::KOTodoViewItem( Q3ListView *parent, Todo *todo, KOTodoView *kotodo)
+  : Q3CheckListItem( parent , "", CheckBox ), mTodo( todo ), mTodoView( kotodo )
 {
   construct();
 }
 
 KOTodoViewItem::KOTodoViewItem( KOTodoViewItem *parent, Todo *todo, KOTodoView *kotodo )
-  : QCheckListItem( parent, "", CheckBox ), mTodo( todo ), mTodoView( kotodo )
+  : Q3CheckListItem( parent, "", CheckBox ), mTodo( todo ), mTodoView( kotodo )
 {
   construct();
 }
@@ -60,11 +60,11 @@ inline int KOTodoViewItem::compareDueDates( const KOTodoViewItem *b ) const
     return b->mEffectiveDueDate.secsTo( mEffectiveDueDate );
 }
 
-int KOTodoViewItem::compare( QListViewItem *it, int col, bool ascending ) const
+int KOTodoViewItem::compare( Q3ListViewItem *it, int col, bool ascending ) const
 {
   KOTodoViewItem *i = dynamic_cast<KOTodoViewItem *>( it );
   if ( !i )
-    return QListViewItem::compare( it, col, ascending );
+    return Q3ListViewItem::compare( it, col, ascending );
   
   // throw completed todos to the bottom
   if ( mTodo->isCompleted() && !i->todo()->isCompleted() )
@@ -97,7 +97,7 @@ int KOTodoViewItem::compare( QListViewItem *it, int col, bool ascending ) const
       return mTodo->description().localeAwareCompare( i->todo()->description() );
     default:
       Q_ASSERT( false && "unknown column to compare" );
-      return QListViewItem::compare( it, col, ascending );
+      return Q3ListViewItem::compare( it, col, ascending );
   }
 }
 
@@ -105,7 +105,7 @@ int KOTodoViewItem::compare( QListViewItem *it, int col, bool ascending ) const
 void KOTodoViewItem::paintBranches(QPainter *p,const QColorGroup & cg,int w,
                                    int y,int h)
 {
-  QListViewItem::paintBranches(p,cg,w,y,h);
+  Q3ListViewItem::paintBranches(p,cg,w,y,h);
 }
 #else
 #endif
@@ -195,12 +195,12 @@ bool KOTodoViewItem::isAlternate()
     {
        KOTodoViewItem *item;
        bool previous = true;
-       if (QListViewItem::parent())
+       if (Q3ListViewItem::parent())
        {
-          item = dynamic_cast<KOTodoViewItem *>(QListViewItem::parent());
+          item = dynamic_cast<KOTodoViewItem *>(Q3ListViewItem::parent());
           if (item)
              previous = item->m_odd;
-          item = dynamic_cast<KOTodoViewItem *>(QListViewItem::parent()->firstChild());
+          item = dynamic_cast<KOTodoViewItem *>(Q3ListViewItem::parent()->firstChild());
        }
        else
        {
@@ -257,6 +257,6 @@ void KOTodoViewItem::paintCell(QPainter *p, const QColorGroup &cg, int column, i
         KGlobalSettings::highlightColor() );
     p->restore();
   } else {
-    QCheckListItem::paintCell(p, _cg, column, width, alignment);
+    Q3CheckListItem::paintCell(p, _cg, column, width, alignment);
   }
 }

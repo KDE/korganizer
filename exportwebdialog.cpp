@@ -29,12 +29,14 @@
 #include <qradiobutton.h>
 #include <qcheckbox.h>
 #include <qlineedit.h>
-#include <qhbox.h>
-#include <qvbox.h>
+#include <q3hbox.h>
+#include <q3vbox.h>
 #include <qpushbutton.h>
-#include <qfiledialog.h>
+#include <q3filedialog.h>
 #include <qtextstream.h>
 #include <qlabel.h>
+//Added by qt3to4:
+#include <QVBoxLayout>
 
 #include <klocale.h>
 #include <kdebug.h>
@@ -139,12 +141,12 @@ void ExportWebDialog::setupGeneralPage()
   mGeneralPage = addPage( i18n("General") );
   QVBoxLayout *topLayout = new QVBoxLayout(mGeneralPage, 10);
 
-  QGroupBox *rangeGroup = new QHGroupBox( i18n("Date Range"), mGeneralPage );
+  Q3GroupBox *rangeGroup = new QHGroupBox( i18n("Date Range"), mGeneralPage );
   topLayout->addWidget( rangeGroup );
   addWidDate( mSettings->dateStartItem(), rangeGroup );
   addWidDate( mSettings->dateEndItem(), rangeGroup );
 
-  QButtonGroup *typeGroup = new QVButtonGroup( i18n("View Type"), mGeneralPage );
+  Q3ButtonGroup *typeGroup = new Q3VButtonGroup( i18n("View Type"), mGeneralPage );
   topLayout->addWidget( typeGroup );
 //  addWidBool( mSettings->weekViewItem(), typeGroup );
   addWidBool( mSettings->monthViewItem(), typeGroup );
@@ -155,7 +157,7 @@ void ExportWebDialog::setupGeneralPage()
   addWidBool( mSettings->excludePrivateItem(), typeGroup );
   addWidBool( mSettings->excludeConfidentialItem(), typeGroup );
 
-  QGroupBox *destGroup = new QVGroupBox(i18n("Destination"), mGeneralPage );
+  Q3GroupBox *destGroup = new QVGroupBox(i18n("Destination"), mGeneralPage );
   topLayout->addWidget(destGroup);
   KPrefsWidPath *pathWid = addWidPath( mSettings->outputFileItem(), 
                                        destGroup, "text/html", KFile::File );
@@ -175,11 +177,11 @@ void ExportWebDialog::setupTodoPage()
   mTodoPage = addPage(i18n("To-dos"));
   QVBoxLayout *topLayout = new QVBoxLayout( mTodoPage, 10 );
   
-  QHBox *hbox = new QHBox( mTodoPage );
+  Q3HBox *hbox = new Q3HBox( mTodoPage );
   topLayout->addWidget( hbox );
   addWidString( mSettings->todoListTitleItem(), hbox );
 
-  QVBox *vbox = new QVBox( mTodoPage );
+  Q3VBox *vbox = new Q3VBox( mTodoPage );
   topLayout->addWidget( vbox );
   addWidBool( mSettings->taskDueDateItem(), vbox );
   addWidBool( mSettings->taskCategoriesItem(), vbox );
@@ -195,11 +197,11 @@ void ExportWebDialog::setupEventPage()
   mEventPage = addPage(i18n("Events"));
   QVBoxLayout *topLayout = new QVBoxLayout( mEventPage, 10 );
 
-  QHBox *hbox = new QHBox( mEventPage );
+  Q3HBox *hbox = new Q3HBox( mEventPage );
   topLayout->addWidget( hbox );
   addWidString( mSettings->eventTitleItem(), hbox );
 
-  QVBox *vbox = new QVBox( mEventPage );
+  Q3VBox *vbox = new Q3VBox( mEventPage );
   topLayout->addWidget( vbox );
   addWidBool( mSettings->eventCategoriesItem(), vbox );
   addWidBool( mSettings->eventAttendeesItem(), vbox );

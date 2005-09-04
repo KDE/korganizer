@@ -63,6 +63,8 @@
 #include <qfile.h>
 #include <qtimer.h>
 #include <qlayout.h>
+//Added by qt3to4:
+#include <QVBoxLayout>
 
 typedef KParts::GenericFactory< KOrganizerPart > KOrganizerFactory;
 K_EXPORT_COMPONENT_FACTORY( libkorganizerpart, KOrganizerFactory )

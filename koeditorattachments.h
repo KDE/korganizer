@@ -26,8 +26,13 @@
 #ifndef KOEDITORATTACHMENTS_H
 #define KOEDITORATTACHMENTS_H
 
-#include <qcstring.h>
+#include <q3cstring.h>
 #include <qwidget.h>
+//Added by qt3to4:
+#include <QDragEnterEvent>
+#include <QLabel>
+#include <Q3ValueList>
+#include <QDropEvent>
 #include <kdialogbase.h>
 #include <kmimetype.h>
 #include <kurl.h>
@@ -38,8 +43,8 @@ class Attachment;
 }
 
 class AttachmentIconItem;
-class QIconDragItem;
-class QIconViewItem;
+class Q3IconDragItem;
+class Q3IconViewItem;
 class QLabel;
 class QLineEdit;
 class KIconView;
@@ -104,16 +109,16 @@ class KOEditorAttachments : public QWidget
     void applyChanges();
 
   protected slots:
-    void showAttachment( QIconViewItem *item );
+    void showAttachment( Q3IconViewItem *item );
     void slotAdd();
     void slotEdit();
     void slotRemove();
     void slotShow();
     void dragEnterEvent( QDragEnterEvent *event );
     void dropEvent( QDropEvent *event );
-    void slotItemRenamed ( QIconViewItem * item, const QString & text );
-    void showAttachmentContextMenu( QIconViewItem *item, const QPoint &pos );
-    void dropped ( QDropEvent * e, const QValueList<QIconDragItem> & lst );
+    void slotItemRenamed ( Q3IconViewItem * item, const QString & text );
+    void showAttachmentContextMenu( Q3IconViewItem *item, const QPoint &pos );
+    void dropped ( QDropEvent * e, const Q3ValueList<Q3IconDragItem> & lst );
     void copyComplete( KIO::Job *job );
   protected:
     QString generateLocalAttachmentPath( QString filename, 

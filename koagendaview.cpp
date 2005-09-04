@@ -22,22 +22,30 @@
     without including the source code for Qt in the source distribution.
 */
 
-#include <qhbox.h>
-#include <qvbox.h>
+#include <q3hbox.h>
+#include <q3vbox.h>
 #include <qlabel.h>
-#include <qframe.h>
+#include <q3frame.h>
 #include <qlayout.h>
 #ifndef KORG_NOSPLITTER
 #include <qsplitter.h>
 #endif
 #include <qfont.h>
 #include <qfontmetrics.h>
-#include <qpopupmenu.h>
+#include <q3popupmenu.h>
 #include <qtooltip.h>
 #include <qpainter.h>
 #include <qpushbutton.h>
 #include <qcursor.h>
 #include <qbitarray.h>
+//Added by qt3to4:
+#include <QPaintEvent>
+#include <QGridLayout>
+#include <QBoxLayout>
+#include <QHBoxLayout>
+#include <Q3ValueList>
+#include <QResizeEvent>
+#include <QVBoxLayout>
 
 #include <kapplication.h>
 #include <kdebug.h>
@@ -77,8 +85,8 @@
 
 using namespace KOrg;
 
-TimeLabels::TimeLabels(int rows,QWidget *parent,const char *name,WFlags f) :
-  QScrollView(parent,name,f)
+TimeLabels::TimeLabels(int rows,QWidget *parent,const char *name,Qt::WFlags f) :
+  Q3ScrollView(parent,name,f)
 {
   mRows = rows;
   mMiniWidth = 0;
@@ -94,7 +102,7 @@ TimeLabels::TimeLabels(int rows,QWidget *parent,const char *name,WFlags f) :
 
   viewport()->setBackgroundMode( PaletteBackground );
 
-  mMousePos = new QFrame(this);
+  mMousePos = new Q3Frame(this);
   mMousePos->setLineWidth(0);
   mMousePos->setMargin(0);
   mMousePos->setBackgroundColor(Qt::red);
@@ -270,7 +278,7 @@ void TimeLabels::paintEvent(QPaintEvent*)
 ////////////////////////////////////////////////////////////////////////////
 
 EventIndicator::EventIndicator(Location loc,QWidget *parent,const char *name)
-  : QFrame(parent,name)
+  : Q3Frame(parent,name)
 {
   mColumns = 1;
   mTopBox = 0;
@@ -440,7 +448,7 @@ KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name) :
   QBoxLayout *topLayout = new QVBoxLayout(this);
 
   // Create day name labels for agenda columns
-  mDayLabelsFrame = new QHBox(this);
+  mDayLabelsFrame = new Q3HBox(this);
   topLayout->addWidget(mDayLabelsFrame);
 
   // Create agenda splitter
@@ -454,20 +462,20 @@ KOAgendaView::KOAgendaView(Calendar *cal,QWidget *parent,const char *name) :
   mSplitterAgenda->setOpaqueResize();
 #endif
 
-  mAllDayFrame = new QHBox(mSplitterAgenda);
+  mAllDayFrame = new Q3HBox(mSplitterAgenda);
 
   QWidget *agendaFrame = new QWidget(mSplitterAgenda);
 #else
-  QVBox *mainBox = new QVBox( this );
+  Q3VBox *mainBox = new Q3VBox( this );
   topLayout->addWidget( mainBox );
 
-  mAllDayFrame = new QHBox(mainBox);
+  mAllDayFrame = new Q3HBox(mainBox);
 
   QWidget *agendaFrame = new QWidget(mainBox);
 #endif
 
   // Create all-day agenda widget
-  mDummyAllDayLeft = new QVBox( mAllDayFrame );
+  mDummyAllDayLeft = new Q3VBox( mAllDayFrame );
 
   if ( KOPrefs::instance()->compactDialogs() ) {
     mExpandButton = new QPushButton(mDummyAllDayLeft);
@@ -559,7 +567,7 @@ KOAgendaView::~KOAgendaView()
   delete mAllDayAgendaPopup;
 }
 
-void KOAgendaView::connectAgenda( KOAgenda *agenda, QPopupMenu *popup,
+void KOAgendaView::connectAgenda( KOAgenda *agenda, Q3PopupMenu *popup,
                                   KOAgenda *otherAgenda )
 {
   connect( agenda, SIGNAL( showIncidencePopupSignal( Incidence *, const QDate & ) ),
@@ -745,7 +753,7 @@ void KOAgendaView::createDayLabels()
   // each updateView() call)
   delete mDayLabels;
 
-  mDayLabels = new QFrame (mDayLabelsFrame);
+  mDayLabels = new Q3Frame (mDayLabelsFrame);
   mLayoutDayLabels = new QHBoxLayout(mDayLabels);
   mLayoutDayLabels->addSpacing(mTimeLabels->width());
 
@@ -1602,7 +1610,7 @@ void KOAgendaView::startDrag( Incidence *incidence )
 {
 #ifndef KORG_NODND
   DndFactory factory( calendar() );
-  QDragObject *vd = factory.createDrag( incidence, this );
+  Q3DragObject *vd = factory.createDrag( incidence, this );
   if ( vd->drag() ) {
     kdDebug(5850) << "KOAgendaView::startDrag(): Delete drag source" << endl;
   }
@@ -1621,7 +1629,7 @@ void KOAgendaView::readSettings(KConfig *config)
   config->setGroup("Views");
 
 #ifndef KORG_NOSPLITTER
-  QValueList<int> sizes = config->readIntListEntry("Separator AgendaView");
+  Q3ValueList<int> sizes = config->readIntListEntry("Separator AgendaView");
   if (sizes.count() == 2) {
     mSplitterAgenda->setSizes(sizes);
   }
@@ -1637,7 +1645,7 @@ void KOAgendaView::writeSettings(KConfig *config)
   config->setGroup("Views");
 
 #ifndef KORG_NOSPLITTER
-  QValueList<int> list = mSplitterAgenda->sizes();
+  Q3ValueList<int> list = mSplitterAgenda->sizes();
   config->writeEntry("Separator AgendaView",list);
 #endif
 }

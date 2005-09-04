@@ -34,13 +34,17 @@
 
 #include <qlayout.h>
 #include <qlabel.h>
+//Added by qt3to4:
+#include <QVBoxLayout>
+#include <Q3Frame>
+#include <QBoxLayout>
 
 FreeBusyUrlDialog::FreeBusyUrlDialog( KCal::Attendee *attendee, QWidget *parent,
                                       const char *name )
   : KDialogBase( Plain, i18n("Edit Free/Busy Location"), Ok|Cancel, Ok, parent,
                  name, true, false )
 {
-  QFrame *topFrame = plainPage();
+  Q3Frame *topFrame = plainPage();
 
   QBoxLayout *topLayout = new QVBoxLayout( topFrame, 0, spacingHint() );
 

@@ -29,6 +29,16 @@
 
 #include <qmap.h>
 #include <qtooltip.h>
+//Added by qt3to4:
+#include <QDragLeaveEvent>
+#include <Q3PtrList>
+#include <QDragMoveEvent>
+#include <QEvent>
+#include <QDropEvent>
+#include <Q3ValueList>
+#include <Q3PopupMenu>
+#include <QDragEnterEvent>
+#include <QMouseEvent>
 
 #include <klistview.h>
 
@@ -40,7 +50,7 @@ class QDragEnterEvent;
 class QDragMoveEvent;
 class QDragLeaveEvent;
 class QDropEvent;
-class QPopupMenu;
+class Q3PopupMenu;
 
 class KToolBar;
 
@@ -104,7 +114,7 @@ class KOTodoListView : public KListView
 
     QPoint mPressPos;
     bool mMousePressed;
-    QListViewItem *mOldCurrent;
+    Q3ListViewItem *mOldCurrent;
     KOTodoListViewToolTip *tooltip;
 };
 
@@ -139,7 +149,7 @@ class KOTodoView : public KOrg::BaseView
     void saveLayout( KConfig *config, const QString &group ) const;
     void restoreLayout( KConfig *config, const QString &group );
     /** Create a popup menu to set categories */
-    QPopupMenu *getCategoryPopupMenu( KOTodoViewItem *todoItem );
+    Q3PopupMenu *getCategoryPopupMenu( KOTodoViewItem *todoItem );
     void setIncidenceChanger( IncidenceChangerBase *changer );
 
   public slots:
@@ -153,11 +163,11 @@ class KOTodoView : public KOrg::BaseView
 
     void clearSelection();
 
-    void editItem( QListViewItem *item, const QPoint &, int );
-    void editItem( QListViewItem *item );
-    void showItem( QListViewItem *item, const QPoint &, int );
-    void showItem( QListViewItem *item );
-    void popupMenu( QListViewItem *item, const QPoint &, int );
+    void editItem( Q3ListViewItem *item, const QPoint &, int );
+    void editItem( Q3ListViewItem *item );
+    void showItem( Q3ListViewItem *item, const QPoint &, int );
+    void showItem( Q3ListViewItem *item );
+    void popupMenu( Q3ListViewItem *item, const QPoint &, int );
     void newTodo();
     void newSubTodo();
     void showTodo();
@@ -174,7 +184,7 @@ class KOTodoView : public KOrg::BaseView
 
     void purgeCompleted();
 
-    void itemStateChanged( QListViewItem * );
+    void itemStateChanged( Q3ListViewItem * );
 
     void setNewPercentageDelayed( KOTodoViewItem *item, int percentage );
     void processDelayedNewPercentage();
@@ -211,11 +221,11 @@ class KOTodoView : public KOrg::BaseView
 
     QMap<Todo *,KOTodoViewItem *>::ConstIterator insertTodoItem( Todo *todo );
     bool scheduleRemoveTodoItem( KOTodoViewItem *todoItem );
-    void restoreListViewState( QListView * );
-    void saveListViewState( QListView * );
+    void restoreListViewState( Q3ListView * );
+    void saveListViewState( Q3ListView * );
     void setupListViews();
 
-    QWidgetStack   *mWidgetStack;
+    Q3WidgetStack   *mWidgetStack;
     QSplitter      *mSplitter;
     KOTodoListView *mMyTodoListView;
     KOTodoListView *mOneTodoListView;
@@ -224,11 +234,11 @@ class KOTodoView : public KOrg::BaseView
 
     enum { eOneListView, eSplitListViews };
 
-    QPopupMenu *mItemPopupMenu;
-    QPopupMenu *mPopupMenu;
-    QPopupMenu *mPriorityPopupMenu;
-    QPopupMenu *mPercentageCompletedPopupMenu;
-    QPopupMenu *mCategoryPopupMenu;
+    Q3PopupMenu *mItemPopupMenu;
+    Q3PopupMenu *mPopupMenu;
+    Q3PopupMenu *mPriorityPopupMenu;
+    Q3PopupMenu *mPercentageCompletedPopupMenu;
+    Q3PopupMenu *mCategoryPopupMenu;
     KDatePickerPopup *mMovePopupMenu;
     KDatePickerPopup *mCopyPopupMenu;
 
@@ -239,8 +249,8 @@ class KOTodoView : public KOrg::BaseView
     KOTodoViewItem *mActiveItem;
 
     QMap<Todo *,KOTodoViewItem *> mTodoMap;
-    QPtrList<KOTodoViewItem> mItemsToDelete;
-    QValueList< QPair<KOTodoViewItem *, int> > mPercentChangedMap;
+    Q3PtrList<KOTodoViewItem> mItemsToDelete;
+    Q3ValueList< QPair<KOTodoViewItem *, int> > mPercentChangedMap;
 
     DocPrefs *mDocPrefs;
     QString mCurrentDoc;

@@ -24,13 +24,25 @@
 #ifndef KOAGENDA_H
 #define KOAGENDA_H
 
-#include <qscrollview.h>
+#include <q3scrollview.h>
 #include <qtimer.h>
-#include <qguardedptr.h>
+#include <qpointer.h>
+//Added by qt3to4:
+#include <QWheelEvent>
+#include <Q3MemArray>
+#include <Q3PtrList>
+#include <QEvent>
+#include <QKeyEvent>
+#include <Q3Frame>
+#include <QDropEvent>
+#include <QLabel>
+#include <QResizeEvent>
+#include <Q3PopupMenu>
+#include <QMouseEvent>
 #include <libkcal/incidencebase.h>
 
 
-class QPopupMenu;
+class Q3PopupMenu;
 class QTime;
 class QLabel;
 class KConfig;
@@ -49,7 +61,7 @@ class Todo;
 class Calendar;
 }
 
-class MarcusBains : public QFrame {
+class MarcusBains : public Q3Frame {
     Q_OBJECT
   public:
     MarcusBains( KOAgenda *agenda = 0, const char *name = 0 );
@@ -68,14 +80,14 @@ class MarcusBains : public QFrame {
 };
 
 
-class KOAgenda : public QScrollView
+class KOAgenda : public Q3ScrollView
 {
     Q_OBJECT
   public:
     KOAgenda ( int columns, int rows, int columnSize, QWidget *parent=0,
-               const char *name = 0, WFlags f = 0 );
+               const char *name = 0, Qt::WFlags f = 0 );
     KOAgenda ( int columns, QWidget *parent = 0,
-               const char *name = 0, WFlags f = 0 );
+               const char *name = 0, Qt::WFlags f = 0 );
     virtual ~KOAgenda();
 
     Incidence *selectedIncidence() const;
@@ -94,8 +106,8 @@ class KOAgenda : public QScrollView
     int timeToY ( const QTime &time );
     QTime gyToTime ( int y );
 
-    QMemArray<int> minContentsY();
-    QMemArray<int> maxContentsY();
+    Q3MemArray<int> minContentsY();
+    Q3MemArray<int> maxContentsY();
 
     int visibleContentsYMin();
     int visibleContentsYMax();
@@ -134,7 +146,7 @@ class KOAgenda : public QScrollView
 
     void checkScrollBoundaries();
 
-    void setHolidayMask( QMemArray<bool> * );
+    void setHolidayMask( Q3MemArray<bool> * );
 
     void setDateList( const DateList &selectedDates );
     DateList dateList() const;
@@ -323,7 +335,7 @@ class KOAgenda : public QScrollView
 
     // Working Hour coordiantes
     bool mWorkingHoursEnable;
-    QMemArray<bool> *mHolidayMask;
+    Q3MemArray<bool> *mHolidayMask;
     int mWorkingHoursYTop;
     int mWorkingHoursYBottom;
 
@@ -337,13 +349,13 @@ class KOAgenda : public QScrollView
     DateList mSelectedDates;
 
     // The KOAgendaItem, which has been right-clicked last
-    QGuardedPtr<KOAgendaItem> mClickedItem;
+    QPointer<KOAgendaItem> mClickedItem;
 
     // The KOAgendaItem, which is being moved/resized
-    QGuardedPtr<KOAgendaItem> mActionItem;
+    QPointer<KOAgendaItem> mActionItem;
 
     // Currently selected item
-    QGuardedPtr<KOAgendaItem> mSelectedItem;
+    QPointer<KOAgendaItem> mSelectedItem;
     // Uid of the last selected item. Used for reselecting in situations
     // where the selected item points to a no longer valid incidence, for
     // example during resource reload.
@@ -357,17 +369,17 @@ class KOAgenda : public QScrollView
     bool mItemMoved;
 
     // List of all Items contained in agenda
-    QPtrList<KOAgendaItem> mItems;
-    QPtrList<KOAgendaItem> mItemsToDelete;
+    Q3PtrList<KOAgendaItem> mItems;
+    Q3PtrList<KOAgendaItem> mItemsToDelete;
 
-    QPopupMenu *mItemPopup; // Right mouse button popup menu for KOAgendaItems
+    Q3PopupMenu *mItemPopup; // Right mouse button popup menu for KOAgendaItems
 
     int mOldLowerScrollValue;
     int mOldUpperScrollValue;
 
     bool mTypeAhead;
     QObject *mTypeAheadReceiver;
-    QPtrList<QEvent> mTypeAheadEvents;
+    Q3PtrList<QEvent> mTypeAheadEvents;
 
     bool mReturnPressed;
     KOrg::IncidenceChangerBase *mChanger;

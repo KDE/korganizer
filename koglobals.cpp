@@ -23,6 +23,8 @@
 */
 
 #include <qapplication.h>
+//Added by qt3to4:
+#include <QPixmap>
 
 #include <kdebug.h>
 #include <kglobal.h>
@@ -136,7 +138,7 @@ QPixmap KOGlobals::smallIcon( const QString& name )
   return SmallIcon( name, mOwnInstance );
 }
 
-QIconSet KOGlobals::smallIconSet( const QString& name, int size )
+QIcon KOGlobals::smallIconSet( const QString& name, int size )
 {
   return SmallIconSet( name, size, mOwnInstance );
 }

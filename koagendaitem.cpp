@@ -24,8 +24,14 @@
 */
 
 #include <qtooltip.h>
-#include <qdragobject.h>
+#include <q3dragobject.h>
 #include <qpainter.h>
+//Added by qt3to4:
+#include <QPixmap>
+#include <QPaintEvent>
+#include <Q3PtrList>
+#include <QDropEvent>
+#include <QDragEnterEvent>
 
 #include <kiconloader.h>
 #include <kdebug.h>
@@ -62,7 +68,7 @@ QPixmap *KOAgendaItem::organizerPxmp = 0;
 //--------------------------------------------------------------------------
 
 KOAgendaItem::KOAgendaItem( Incidence *incidence, const QDate &qd, QWidget *parent,
-                            const char *name, WFlags f ) :
+                            const char *name, Qt::WFlags f ) :
   QWidget( parent, name, f ), mIncidence( incidence ), mDate( qd ),
   mLabelText( mIncidence->summary() ), mIconAlarm( false ),
   mIconRecur( false ), mIconReadonly( false ), mIconReply( false ),
@@ -539,7 +545,7 @@ void KOAgendaItem::dragEnterEvent( QDragEnterEvent *e )
     e->ignore();
     return;
   }
-  if ( KVCardDrag::canDecode( e ) || QTextDrag::canDecode( e ) )
+  if ( KVCardDrag::canDecode( e ) || Q3TextDrag::canDecode( e ) )
     e->accept();
   else
     e->ignore();
@@ -566,7 +572,7 @@ void KOAgendaItem::dropEvent( QDropEvent *e )
 #ifndef KORG_NODND
   QString text;
 
-  bool decoded = QTextDrag::decode( e, text );
+  bool decoded = Q3TextDrag::decode( e, text );
   if( decoded && text.startsWith( "file:" ) ) {
     mIncidence->addAttachment( new Attachment( text ) );
     return;
@@ -602,12 +608,12 @@ void KOAgendaItem::dropEvent( QDropEvent *e )
 }
 
 
-QPtrList<KOAgendaItem> KOAgendaItem::conflictItems()
+Q3PtrList<KOAgendaItem> KOAgendaItem::conflictItems()
 {
   return mConflictItems;
 }
 
-void KOAgendaItem::setConflictItems( QPtrList<KOAgendaItem> ci )
+void KOAgendaItem::setConflictItems( Q3PtrList<KOAgendaItem> ci )
 {
   mConflictItems = ci;
   KOAgendaItem *item;

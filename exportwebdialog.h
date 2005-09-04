@@ -25,6 +25,8 @@
 #define _EXPORTWEBDIALOG_H
 
 #include <libkdepim/kprefsdialog.h>
+//Added by qt3to4:
+#include <Q3Frame>
 
 class HTMLExportSettings;
 using namespace KCal;
@@ -73,9 +75,9 @@ class ExportWebDialog : public KDialogBase, public KPrefsWidManager
     
   private:
     HTMLExportSettings* mSettings;
-    QFrame *mGeneralPage;
-    QFrame *mEventPage;
-    QFrame *mTodoPage;
+    Q3Frame *mGeneralPage;
+    Q3Frame *mEventPage;
+    Q3Frame *mTodoPage;
 //    QFrame *mJournalPage;
 //    QFrame *mFreeBusyPage;
 //    QFrame *mAdvancedPage;

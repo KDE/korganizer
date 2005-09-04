@@ -26,9 +26,15 @@
 #ifndef _KOMONTHVIEW_H
 #define _KOMONTHVIEW_H
 
-#include <qlistbox.h>
-#include <qptrvector.h>
+#include <q3listbox.h>
+#include <q3ptrvector.h>
 #include <qtooltip.h>
+//Added by qt3to4:
+#include <QPixmap>
+#include <QKeyEvent>
+#include <QLabel>
+#include <QResizeEvent>
+#include <QMouseEvent>
 #include "koeventview.h"
 
 class KNoScrollListBox;
@@ -46,7 +52,7 @@ class KOMonthCellToolTip : public QToolTip
 };
 
 
-class KNoScrollListBox: public QListBox
+class KNoScrollListBox: public Q3ListBox
 {
     Q_OBJECT
   public:
@@ -72,7 +78,7 @@ class KNoScrollListBox: public QListBox
 };
 
 
-class MonthViewItem: public QListBoxItem
+class MonthViewItem: public Q3ListBoxItem
 {
   public:
     MonthViewItem( Incidence *, const QDateTime &qd, const QString & title );
@@ -93,8 +99,8 @@ class MonthViewItem: public QListBoxItem
     QColor &resourceColor() { return mResourceColor; }
   protected:
     virtual void paint(QPainter *);
-    virtual int height(const QListBox *) const;
-    virtual int width(const QListBox *) const;
+    virtual int height(const Q3ListBox *) const;
+    virtual int width(const Q3ListBox *) const;
     //Color of the resource
     QColor mResourceColor;
   private:
@@ -174,8 +180,8 @@ class MonthViewCell : public QWidget
     void resizeEvent( QResizeEvent * );
 
   protected slots:
-    void defaultAction( QListBoxItem * );
-    void contextMenu( QListBoxItem * );
+    void defaultAction( Q3ListBoxItem * );
+    void contextMenu( Q3ListBoxItem * );
 
   private:
     class CreateItemVisitor;
@@ -262,8 +268,8 @@ class KOMonthView: public KOEventView
     int mNumCells;
     int mWeekStartDay;
 
-    QPtrVector<MonthViewCell> mCells;
-    QPtrVector<QLabel> mDayLabels;
+    Q3PtrVector<MonthViewCell> mCells;
+    Q3PtrVector<QLabel> mDayLabels;
 
     bool mShortDayLabels;
     int mWidthLongDayLabel;

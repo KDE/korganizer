@@ -28,10 +28,18 @@
 
 #include <libkcal/incidencebase.h>
 
-#include <qframe.h>
+#include <q3frame.h>
 #include <qcolor.h>
 #include <qtooltip.h>
 #include <qmap.h>
+//Added by qt3to4:
+#include <QDragEnterEvent>
+#include <QMouseEvent>
+#include <QDragLeaveEvent>
+#include <QDragMoveEvent>
+#include <QResizeEvent>
+#include <QDropEvent>
+#include <QPaintEvent>
 
 class QDragEnterEvent;
 class QDragMoveEvent;
@@ -101,7 +109,7 @@ class DynamicTip : public QToolTip
  *
  *  @author Eitzenberger Thomas
  */
-class KODayMatrix: public QFrame
+class KODayMatrix: public Q3Frame
 {
     Q_OBJECT
   public:

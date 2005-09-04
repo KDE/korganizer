@@ -24,18 +24,18 @@
 #ifndef KOWHATSNEXTVIEW_H
 #define KOWHATSNEXTVIEW_H
 
-#include <qtextbrowser.h>
+#include <q3textbrowser.h>
 
 #include <korganizer/baseview.h>
 
-class QListView;
+class Q3ListView;
 
 class KOEventViewerDialog;
 
-class WhatsNextTextBrowser : public QTextBrowser {
+class WhatsNextTextBrowser : public Q3TextBrowser {
     Q_OBJECT
   public:
-    WhatsNextTextBrowser(QWidget *parent) : QTextBrowser(parent) {}
+    WhatsNextTextBrowser(QWidget *parent) : Q3TextBrowser(parent) {}
 
     void setSource(const QString &);
 
@@ -75,7 +75,7 @@ class KOWhatsNextView : public KOrg::BaseView
     void showIncidence(const QString &);
 
   private:
-    QTextBrowser *mView;
+    Q3TextBrowser *mView;
     QString mText;
     QDate mStartDate;
     QDate mEndDate;

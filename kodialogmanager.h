@@ -26,7 +26,7 @@
 #define KODIALOGMANAGER_H
 
 #include <qobject.h>
-#include <qptrlist.h>
+#include <q3ptrlist.h>
 
 namespace KCal{class CalFilter; }
 class CalendarView;
@@ -76,7 +76,7 @@ class KODialogManager : public QObject
     void showCategoryEditDialog();
     void showSearchDialog();
     void showArchiveDialog();
-    void showFilterEditDialog(QPtrList<CalFilter> *filters);
+    void showFilterEditDialog(Q3PtrList<CalFilter> *filters);
 
   private:
     class DialogManagerVisitor;

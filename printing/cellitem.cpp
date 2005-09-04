@@ -27,7 +27,9 @@
 #include <klocale.h>
 #include <kdebug.h>
 
-#include <qintdict.h>
+#include <q3intdict.h>
+//Added by qt3to4:
+#include <Q3PtrList>
 
 using namespace KOrg;
 
@@ -36,17 +38,17 @@ QString CellItem::label() const
   return i18n("<undefined>");
 }
 
-QPtrList<CellItem> CellItem::placeItem( QPtrList<CellItem> cells,
+Q3PtrList<CellItem> CellItem::placeItem( Q3PtrList<CellItem> cells,
                                         CellItem *placeItem )
 {
   kdDebug(5855) << "Placing " << placeItem->label() << endl;
 
-  QPtrList<KOrg::CellItem> conflictItems;
+  Q3PtrList<KOrg::CellItem> conflictItems;
   int maxSubCells = 0;
-  QIntDict<KOrg::CellItem> subCellDict;
+  Q3IntDict<KOrg::CellItem> subCellDict;
 
   // Find all items which are in same cell
-  QPtrListIterator<KOrg::CellItem> it2( cells );
+  Q3PtrListIterator<KOrg::CellItem> it2( cells );
   for( it2.toFirst(); it2.current(); ++it2 ) {
     KOrg::CellItem *item = it2.current();
     if ( item == placeItem ) continue;
@@ -83,7 +85,7 @@ QPtrList<CellItem> CellItem::placeItem( QPtrList<CellItem> cells,
     conflictItems.append( placeItem );
     placeItem->setSubCells( maxSubCells );
 
-    QPtrListIterator<KOrg::CellItem> it3( conflictItems );
+    Q3PtrListIterator<KOrg::CellItem> it3( conflictItems );
     for( it3.toFirst(); it3.current(); ++it3 ) {
       (*it3)->setSubCells( maxSubCells );
     }

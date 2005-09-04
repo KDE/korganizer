@@ -27,9 +27,12 @@
 #include <libkcal/incidencebase.h>
 
 #include <qlabel.h>
+//Added by qt3to4:
+#include <QMouseEvent>
+#include <Q3Frame>
 
 class QPushButton;
-class QFrame;
+class Q3Frame;
 
 class ActiveLabel : public QLabel
 {

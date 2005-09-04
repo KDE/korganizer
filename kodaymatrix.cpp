@@ -28,7 +28,17 @@
 
 #include <qevent.h>
 #include <qpainter.h>
-#include <qptrlist.h>
+#include <q3ptrlist.h>
+//Added by qt3to4:
+#include <QPixmap>
+#include <QDragLeaveEvent>
+#include <QPaintEvent>
+#include <QDragMoveEvent>
+#include <Q3Frame>
+#include <QDropEvent>
+#include <QResizeEvent>
+#include <QDragEnterEvent>
+#include <QMouseEvent>
 
 #include <kglobal.h>
 #include <kdebug.h>
@@ -100,7 +110,7 @@ const int KODayMatrix::NOSELECTION = -1000;
 const int KODayMatrix::NUMDAYS = 42;
 
 KODayMatrix::KODayMatrix( QWidget *parent, const char *name )
-  : QFrame( parent, name ), mCalendar( 0 ), mStartDate( 1970, 1, 1 )
+  : Q3Frame( parent, name ), mCalendar( 0 ), mStartDate( 1970, 1, 1 )
 {
   // initialize dynamic arrays
   mDays = new QDate[ NUMDAYS ];

@@ -69,6 +69,9 @@
 #include <qapplication.h>
 #include <qtimer.h>
 #include <qlabel.h>
+//Added by qt3to4:
+#include <Q3ValueList>
+#include <Q3CString>
 
 
 // FIXME: Several places in the file don't use KConfigXT yet!
@@ -449,7 +452,7 @@ void ActionManager::initActions()
   mEditIncidenceAction = new KAction( i18n("&Edit..."), 0,
                                       mCalendarView,SLOT( editIncidence() ),
                                       mACollection, "edit_incidence" );
-  mDeleteIncidenceAction = new KAction( i18n("&Delete"), Key_Delete,
+  mDeleteIncidenceAction = new KAction( i18n("&Delete"), Qt::Key_Delete,
                                         mCalendarView,SLOT( deleteIncidence()),
                                         mACollection, "delete_incidence" );
 
@@ -1491,8 +1494,8 @@ void ActionManager::setTitle()
   mMainWindow->setTitle();
 }
 
-KCalendarIface::ResourceRequestReply ActionManager::resourceRequest( const QValueList<QPair<QDateTime, QDateTime> >&,
- const QCString& resource,
+KCalendarIface::ResourceRequestReply ActionManager::resourceRequest( const Q3ValueList<QPair<QDateTime, QDateTime> >&,
+ const Q3CString& resource,
  const QString& vCalIn )
 {
     kdDebug(5850) << k_funcinfo << "resource=" << resource << " vCalIn=" << vCalIn << endl;

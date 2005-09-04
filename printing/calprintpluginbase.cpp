@@ -25,10 +25,12 @@
 
 #include <qpainter.h>
 #include <qlayout.h>
-#include <qframe.h>
+#include <q3frame.h>
 #include <qlabel.h>
-#include <qptrlist.h>
-#include <qintdict.h>
+#include <q3ptrlist.h>
+#include <q3intdict.h>
+//Added by qt3to4:
+#include <QVBoxLayout>
 
 #include <kglobal.h>
 #include <klocale.h>
@@ -48,7 +50,7 @@
 
 QWidget *CalPrintPluginBase::createConfigWidget( QWidget *w )
 {
-  QFrame *wdg = new QFrame( w );
+  Q3Frame *wdg = new Q3Frame( w );
   QVBoxLayout *layout = new QVBoxLayout( wdg );
 
   QLabel *title = new QLabel( description(), wdg );

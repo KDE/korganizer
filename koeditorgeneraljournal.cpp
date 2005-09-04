@@ -37,12 +37,15 @@
 #include <kmessagebox.h>
 #include <kdebug.h>
 
-#include <qgroupbox.h>
+#include <q3groupbox.h>
 #include <qdatetime.h>
 #include <qcheckbox.h>
 #include <qlabel.h>
 #include <qlayout.h>
-#include <qwhatsthis.h>
+#include <q3whatsthis.h>
+//Added by qt3to4:
+#include <QHBoxLayout>
+#include <QBoxLayout>
 
 
 KOEditorGeneralJournal::KOEditorGeneralJournal( QObject *parent,
@@ -61,14 +64,14 @@ void KOEditorGeneralJournal::initTitle( QWidget *parent, QBoxLayout *topLayout )
   
   QString whatsThis = i18n("Sets the title of this journal.");
   QLabel *summaryLabel = new QLabel( i18n("T&itle:"), parent );
-  QWhatsThis::add( summaryLabel, whatsThis );
+  Q3WhatsThis::add( summaryLabel, whatsThis );
   QFont f = summaryLabel->font();
   f.setBold( true );
   summaryLabel->setFont( f );
   hbox->addWidget( summaryLabel );
 
   mSummaryEdit = new FocusLineEdit( parent );
-  QWhatsThis::add( mSummaryEdit, whatsThis );
+  Q3WhatsThis::add( mSummaryEdit, whatsThis );
   summaryLabel->setBuddy( mSummaryEdit );
   hbox->addWidget( mSummaryEdit );
 }

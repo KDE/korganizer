@@ -35,19 +35,22 @@
 
 #include "datenavigatorcontainer.h"
 
-#include <qwhatsthis.h>
+#include <q3whatsthis.h>
 #include <qtimer.h>
+//Added by qt3to4:
+#include <Q3Frame>
+#include <QResizeEvent>
 
 DateNavigatorContainer::DateNavigatorContainer( QWidget *parent,
                                                 const char *name )
-  : QFrame( parent, name ), mCalendar( 0 ),
+  : Q3Frame( parent, name ), mCalendar( 0 ),
     mHorizontalCount( 1 ), mVerticalCount( 1 )
 {
   mExtraViews.setAutoDelete( true );
-  setFrameStyle( QFrame::Sunken | QFrame::StyledPanel );
+  setFrameStyle( Q3Frame::Sunken | Q3Frame::StyledPanel );
 
   mNavigatorView = new KDateNavigator( this, name );
-  QWhatsThis::add( mNavigatorView,
+  Q3WhatsThis::add( mNavigatorView,
                    i18n( "<qt><p>Select the dates you want to "
                          "display in KOrganizer's main view here. Hold the "
                          "mouse button to select more than one day.</p>"

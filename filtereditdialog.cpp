@@ -26,11 +26,13 @@
 
 #include <qpushbutton.h>
 #include <qcheckbox.h>
-#include <qbuttongroup.h>
+#include <q3buttongroup.h>
 #include <qlineedit.h>
 #include <qradiobutton.h>
-#include <qlistbox.h>
-#include <qwhatsthis.h>
+#include <q3listbox.h>
+#include <q3whatsthis.h>
+//Added by qt3to4:
+#include <Q3PtrList>
 
 #include <kdebug.h>
 #include <klocale.h>
@@ -46,7 +48,7 @@
 #include "filtereditdialog.h"
 #include "filtereditdialog.moc"
 
-FilterEditDialog::FilterEditDialog( QPtrList<CalFilter> *filters,
+FilterEditDialog::FilterEditDialog( Q3PtrList<CalFilter> *filters,
                                     QWidget *parent, const char *name)
   : KDialogBase( parent, name, false, i18n("Edit Calendar Filters"),
                  Ok | Apply | Cancel )
@@ -92,12 +94,12 @@ void FilterEditDialog::setDialogConsistent(bool consistent) {
     enableButtonApply( consistent );
 }
 
-FilterEdit::FilterEdit(QPtrList<CalFilter> *filters, QWidget *parent)
+FilterEdit::FilterEdit(Q3PtrList<CalFilter> *filters, QWidget *parent)
   : FilterEdit_base( parent), current(0), mCategorySelectDialog( 0 )
 {
   mFilters = filters;
-  QWhatsThis::add( mNewButton, i18n( "Press this button to define a new filter." ) );
-  QWhatsThis::add( mDeleteButton, i18n( "Press this button to remove the currently active filter." ) );
+  Q3WhatsThis::add( mNewButton, i18n( "Press this button to define a new filter." ) );
+  Q3WhatsThis::add( mDeleteButton, i18n( "Press this button to remove the currently active filter." ) );
 
   connect( mRulesList, SIGNAL(selectionChanged()), this, SLOT(filterSelected()) );
   connect( mNewButton, SIGNAL( clicked() ), SLOT( bNewPressed() ) );

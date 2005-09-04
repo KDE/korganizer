@@ -44,7 +44,7 @@
 #include <koglobals.h>
 
 KOEventViewer::KOEventViewer( QWidget *parent, const char *name )
-  : QTextBrowser( parent, name ), mDefaultText("")
+  : Q3TextBrowser( parent, name ), mDefaultText("")
 {
   mIncidence = 0;
 }

@@ -22,7 +22,7 @@
     without including the source code for Qt in the source distribution.
 */
 
-#include <qpopupmenu.h>
+#include <q3popupmenu.h>
 #include <qcursor.h>
 
 #include <klocale.h>
@@ -81,7 +81,7 @@ KOEventPopupMenu *KOEventView::eventPopup()
   return eventPopup;
 }
 
-QPopupMenu *KOEventView::newEventPopup()
+Q3PopupMenu *KOEventView::newEventPopup()
 {
   KXMLGUIClient *client = KOCore::self()->xmlguiClient( this );
   if ( !client ) {
@@ -93,7 +93,7 @@ QPopupMenu *KOEventView::newEventPopup()
     return 0; // can happen if called too early
   }
 
-  return static_cast<QPopupMenu*>
+  return static_cast<Q3PopupMenu*>
       ( client->factory()->container( "rmb_selection_popup", client ) );
 }
 //---------------------------------------------------------------------------
@@ -135,7 +135,7 @@ void KOEventView::popupCopy()
 
 void KOEventView::showNewEventPopup()
 {
-  QPopupMenu *popup = newEventPopup();
+  Q3PopupMenu *popup = newEventPopup();
   if ( !popup ) {
     kdError() << "KOEventView::showNewEventPopup(): popup creation failed"
               << endl;

@@ -62,16 +62,25 @@
 #include <qlayout.h>
 #include <qlineedit.h>
 #include <qpushbutton.h>
-#include <qdragobject.h>
+#include <q3dragobject.h>
 #include <qregexp.h>
 #include <qstringlist.h>
 #include <qstyle.h>
-#include <qwhatsthis.h>
+#include <q3whatsthis.h>
+//Added by qt3to4:
+#include <QPixmap>
+#include <QGridLayout>
+#include <QBoxLayout>
+#include <QDropEvent>
+#include <QHBoxLayout>
+#include <Q3ValueList>
+#include <QVBoxLayout>
+#include <QDragEnterEvent>
 
 class AttachmentIconItem : public KIconViewItem
 {
   public:
-    AttachmentIconItem( KCal::Attachment*att, QIconView *parent ) :
+    AttachmentIconItem( KCal::Attachment*att, Q3IconView *parent ) :
         KIconViewItem( parent )
     {
       if ( att ) {
@@ -266,19 +275,19 @@ public:
   AttachmentIconView( QWidget *parent ) : KIconView( parent ) {}
   
 protected:
-  virtual QDragObject * dragObject ()
+  virtual Q3DragObject * dragObject ()
   {
     // create a list of the URL:s that we want to drag
     KURL::List urls;
     QStringList labels;
-    for ( QIconViewItem *it = firstItem() ; it; it = it->nextItem() ) {
+    for ( Q3IconViewItem *it = firstItem() ; it; it = it->nextItem() ) {
       if ( it->isSelected() ) {
         AttachmentIconItem *item = static_cast<AttachmentIconItem *>( it );
         urls.append( item->uri() );
         labels.append( KURL::encode_string( item->label() ) );
       }
     }
-    if ( selectionMode() == QIconView::NoSelection ) {
+    if ( selectionMode() == Q3IconView::NoSelection ) {
       AttachmentIconItem *item =
                              static_cast<AttachmentIconItem *>( currentItem() );
       if ( item ) {
@@ -297,7 +306,7 @@ protected:
     hotspot.setY( pixmap.height() / 2 );
     QMap<QString, QString> metadata;
     metadata["labels"] = labels.join(":");
-    QDragObject* myDragObject = new KURLDrag( urls, metadata, this );
+    Q3DragObject* myDragObject = new KURLDrag( urls, metadata, this );
     myDragObject->setPixmap( pixmap, hotspot );
     return myDragObject;
   }
@@ -311,25 +320,25 @@ KOEditorAttachments::KOEditorAttachments( int spacing, QWidget *parent,
   topLayout->setSpacing( spacing );
 
   mAttachments = new AttachmentIconView( this );
-  QWhatsThis::add( mAttachments,
+  Q3WhatsThis::add( mAttachments,
                    i18n("Displays items (files, mail, etc.) "
                         "that have been associated with this event or to-do.") 
                         );
   mAttachments->setItemsMovable( false );
-  mAttachments->setSelectionMode( QIconView::Extended );
+  mAttachments->setSelectionMode( Q3IconView::Extended );
   topLayout->addWidget( mAttachments );
-  connect( mAttachments, SIGNAL( executed( QIconViewItem * ) ),
-           SLOT( showAttachment( QIconViewItem * ) ) );
-  connect( mAttachments, SIGNAL( itemRenamed( QIconViewItem *, 
+  connect( mAttachments, SIGNAL( executed( Q3IconViewItem * ) ),
+           SLOT( showAttachment( Q3IconViewItem * ) ) );
+  connect( mAttachments, SIGNAL( itemRenamed( Q3IconViewItem *, 
                                 const QString & ) ),
-           SLOT( slotItemRenamed( QIconViewItem *, const QString & ) ) );
-  connect( mAttachments, SIGNAL( contextMenuRequested( QIconViewItem *, 
+           SLOT( slotItemRenamed( Q3IconViewItem *, const QString & ) ) );
+  connect( mAttachments, SIGNAL( contextMenuRequested( Q3IconViewItem *, 
                                                        const QPoint & ) ),
-           SLOT( showAttachmentContextMenu( QIconViewItem *, 
+           SLOT( showAttachmentContextMenu( Q3IconViewItem *, 
                                             const QPoint & ) ) );
   connect( mAttachments, SIGNAL( dropped( QDropEvent *, 
-                                          const QValueList<QIconDragItem> & ) ),
-           SLOT( dropped( QDropEvent *, const QValueList<QIconDragItem> & ) ) );
+                                          const Q3ValueList<Q3IconDragItem> & ) ),
+           SLOT( dropped( QDropEvent *, const Q3ValueList<Q3IconDragItem> & ) ) );
   
   // FIXME for some reason it doesn't work
   connect( mAttachments, SIGNAL( moved() ), SLOT( slotRemove() ) );
@@ -337,28 +346,28 @@ KOEditorAttachments::KOEditorAttachments( int spacing, QWidget *parent,
   QBoxLayout *buttonLayout = new QHBoxLayout( topLayout );
 
   QPushButton *button = new QPushButton( i18n("&Add..."), this );
-  QWhatsThis::add( button,
+  Q3WhatsThis::add( button,
                    i18n("Shows a dialog used to select an attachment "
                         "to add to this event or to-do.") );
   buttonLayout->addWidget( button );
   connect( button, SIGNAL( clicked() ), SLOT( slotAdd() ) );
 
   button = new QPushButton( i18n("&Properties..."), this );
-  QWhatsThis::add( button,
+  Q3WhatsThis::add( button,
                    i18n("Shows a dialog used to edit the attachment "
                         "currently selected in the list above.") );
   buttonLayout->addWidget( button );
   connect( button, SIGNAL( clicked() ), SLOT( slotEdit() ) );
 
   button = new QPushButton( i18n("&Remove"), this );
-  QWhatsThis::add( button,
+  Q3WhatsThis::add( button,
                    i18n("Removes the attachment selected in the list above "
                         "from this event or to-do.") );
   buttonLayout->addWidget( button );
   connect( button, SIGNAL( clicked() ), SLOT( slotRemove() ) );
 
   button = new QPushButton( i18n("&Show"), this );
-  QWhatsThis::add( button,
+  Q3WhatsThis::add( button,
                    i18n("Opens the attachment selected in the list above "
                         "in the viewer that is associated with it in your "
                         "KDE preferences.") );
@@ -392,7 +401,7 @@ bool KOEditorAttachments::hasAttachments()
 }
 
 void KOEditorAttachments::dragEnterEvent( QDragEnterEvent* event ) {
-  event->accept( KURLDrag::canDecode( event ) | QTextDrag::canDecode( event ) );
+  event->accept( KURLDrag::canDecode( event ) | Q3TextDrag::canDecode( event ) );
 }
 
 QString KOEditorAttachments::generateLocalAttachmentPath( 
@@ -455,7 +464,7 @@ void KOEditorAttachments::dropEvent( QDropEvent* event ) {
     labels = QStringList::split( ":", metadata["labels"] );
     for ( QStringList::Iterator it = labels.begin(); it != labels.end(); ++it )
       *it = KURL::decode_string( *it );
-  } else if ( QTextDrag::decode( event, text ) ) {
+  } else if ( Q3TextDrag::decode( event, text ) ) {
     QStringList lst = QStringList::split( '\n', text );
     for ( QStringList::ConstIterator it = lst.begin(); it != lst.end(); ++it )
       urls.append( *it );
@@ -506,7 +515,7 @@ void KOEditorAttachments::dropEvent( QDropEvent* event ) {
       KMimeType::Ptr mimeType = KMimeType::mimeType( event->format() );
       QString path = generateLocalAttachmentPath( QString::null, mimeType );
       QFile file( path );
-      file.open( IO_WriteOnly );
+      file.open( QIODevice::WriteOnly );
       QDataStream( &file ) << event->encodedData( event->format() );
       file.close();
       addAttachment( path, mimeType->name(), mimeType->comment(), true );
@@ -546,12 +555,12 @@ void KOEditorAttachments::copyComplete( KIO::Job *job )
 }
 
 void KOEditorAttachments::dropped ( QDropEvent * e, 
-                                    const QValueList<QIconDragItem> & /*lst*/ )
+                                    const Q3ValueList<Q3IconDragItem> & /*lst*/ )
 {
   dropEvent( e );
 }
 
-void KOEditorAttachments::showAttachment( QIconViewItem *item )
+void KOEditorAttachments::showAttachment( Q3IconViewItem *item )
 {
   AttachmentIconItem *attitem = static_cast<AttachmentIconItem*>(item);
   if ( !attitem || !attitem->attachment() ) return;
@@ -593,7 +602,7 @@ void KOEditorAttachments::slotAdd()
 
 void KOEditorAttachments::slotEdit()
 {
-  for ( QIconViewItem *item = mAttachments->firstItem(); item;
+  for ( Q3IconViewItem *item = mAttachments->firstItem(); item;
         item = item->nextItem() )
     if ( item->isSelected() ) {
       AttachmentIconItem *attitem = static_cast<AttachmentIconItem*>(item);
@@ -610,8 +619,8 @@ void KOEditorAttachments::slotEdit()
 
 void KOEditorAttachments::slotRemove()
 {
-  QValueList<QIconViewItem *> toDelete;
-  for ( QIconViewItem *it = mAttachments->firstItem(); it; it = it->nextItem() )
+  Q3ValueList<Q3IconViewItem *> toDelete;
+  for ( Q3IconViewItem *it = mAttachments->firstItem(); it; it = it->nextItem() )
     if ( it->isSelected() ) {
       AttachmentIconItem *item =
           static_cast<AttachmentIconItem *>( it );
@@ -630,14 +639,14 @@ void KOEditorAttachments::slotRemove()
       }
     }
 
-  for ( QValueList<QIconViewItem *>::ConstIterator it = toDelete.constBegin();
+  for ( Q3ValueList<Q3IconViewItem *>::ConstIterator it = toDelete.constBegin();
         it != toDelete.constEnd(); ++it )
     delete *it;
 }
 
 void KOEditorAttachments::slotShow()
 {
-  for ( QIconViewItem *item = mAttachments->firstItem(); item;
+  for ( Q3IconViewItem *item = mAttachments->firstItem(); item;
         item = item->nextItem() )
     if ( item->isSelected() )
       showAttachment( item );
@@ -706,7 +715,7 @@ void KOEditorAttachments::writeIncidence( KCal::Incidence *i )
 {
   i->clearAttachments();
 
-  QIconViewItem *item;
+  Q3IconViewItem *item;
   AttachmentIconItem *attitem;
   for( item = mAttachments->firstItem(); item; item = item->nextItem() ) {
     attitem = static_cast<AttachmentIconItem*>(item);
@@ -715,13 +724,13 @@ void KOEditorAttachments::writeIncidence( KCal::Incidence *i )
   }
 }
 
-void KOEditorAttachments::slotItemRenamed ( QIconViewItem * item, 
+void KOEditorAttachments::slotItemRenamed ( Q3IconViewItem * item, 
                                             const QString & text )
 {
   static_cast<AttachmentIconItem *>( item )->setLabel( text );
 }
 
-void KOEditorAttachments::showAttachmentContextMenu( QIconViewItem *item, 
+void KOEditorAttachments::showAttachmentContextMenu( Q3IconViewItem *item, 
                                                      const QPoint &pos )
 {
   if ( item )

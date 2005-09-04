@@ -41,6 +41,9 @@
 #include <libkcal/freebusycache.h>
 #include <qstring.h>
 #include <qobject.h>
+//Added by qt3to4:
+#include <QTimerEvent>
+#include <Q3CString>
 
 namespace KIO { class Job; }
 namespace KCal {
@@ -72,7 +75,7 @@ class FreeBusyDownloadJob : public QObject
     FreeBusyManager *mManager;
     QString mEmail;
 
-    QCString mFreeBusyData;
+    Q3CString mFreeBusyData;
 };
 
 class FreeBusyManager : public QObject, public KCal::FreeBusyCache
@@ -98,7 +101,7 @@ class FreeBusyManager : public QObject, public KCal::FreeBusyCache
 
     void cancelRetrieval();
 
-    KCal::FreeBusy *iCalToFreeBusy( const QCString &data );
+    KCal::FreeBusy *iCalToFreeBusy( const Q3CString &data );
 
     /**
       Load freebusy information belonging to email.

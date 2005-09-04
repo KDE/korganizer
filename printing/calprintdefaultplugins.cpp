@@ -27,11 +27,11 @@
 #ifndef KORG_NOPRINTER
 
 #include <qpainter.h>
-#include <qdatetimeedit.h>
+#include <q3datetimeedit.h>
 #include <qdatetime.h>
 #include <qcheckbox.h>
 #include <qlineedit.h>
-#include <qbuttongroup.h>
+#include <q3buttongroup.h>
 
 #include <kglobal.h>
 #include <klocale.h>

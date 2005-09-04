@@ -26,13 +26,20 @@
 
 #include <klistview.h>
 #include "customlistviewitem.h"
+//Added by qt3to4:
+#include <QDragEnterEvent>
+#include <QLabel>
+#include <QDragMoveEvent>
+#include <QEvent>
+#include <QDropEvent>
+#include <Q3PtrList>
 
 class QPushButton;
 class QCheckBox;
 class QLineEdit;
 class QLabel;
 class QComboBox;
-class QHBox;
+class Q3HBox;
 class KDateEdit;
 class KOEditorFreeBusy;
 
@@ -125,7 +132,7 @@ class KOEditorDetails : public QWidget
     QComboBox* mRoleCombo;
     QCheckBox* mRsvpButton;
     QComboBox* mStatusCombo;
-    QHBox* mOrganizerHBox;
+    Q3HBox* mOrganizerHBox;
     QComboBox *mOrganizerCombo; // either we organize it (combo shown)
     QLabel *mOrganizerLabel; // or someone else does (just a label is shown)
 
@@ -133,7 +140,7 @@ class KOEditorDetails : public QWidget
     QPushButton* mRemoveButton;
     QPushButton* mAddressBookButton;
 
-    QPtrList<Attendee> mdelAttendees;
+    Q3PtrList<Attendee> mdelAttendees;
 
     KOEditorFreeBusy *mFreeBusy;
 };

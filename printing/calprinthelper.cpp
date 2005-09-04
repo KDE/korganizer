@@ -25,10 +25,12 @@
 
 #include <qpainter.h>
 #include <qlayout.h>
-#include <qframe.h>
+#include <q3frame.h>
 #include <qlabel.h>
-#include <qptrlist.h>
-#include <qintdict.h>
+#include <q3ptrlist.h>
+#include <q3intdict.h>
+//Added by qt3to4:
+#include <Q3ValueList>
 
 #include <kglobal.h>
 #include <klocale.h>
@@ -159,7 +161,7 @@ void CalPrintHelper::drawHeader( QPainter &p, QString title,
   QFont oldFont(p.font());
   p.setFont( QFont("helvetica", 18, QFont::Bold) );
   QRect textRect( x+5, y+5, right-10-x, height-10 );
-  p.drawText( textRect, Qt::AlignLeft | Qt::AlignTop | Qt::WordBreak, title );
+  p.drawText( textRect, Qt::AlignLeft | Qt::AlignTop | Qt::TextWordWrap, title );
   p.setFont(oldFont);
 }
 
@@ -374,7 +376,7 @@ void CalPrintHelper::drawAllDayBox(QPainter &p, Event::List &eventList,
         p.drawRect( x, offset, width, height );
         p.drawText( x + 5, offset + 5, width - 10, height - 10,
                     Qt::AlignCenter | Qt::AlignVCenter | Qt::AlignJustify |
-                    Qt::WordBreak,
+                    Qt::TextWordWrap,
                     currEvent->summary() );
         // reset the colors
         p.setBrush( oldBrush );
@@ -397,7 +399,7 @@ void CalPrintHelper::drawAllDayBox(QPainter &p, Event::List &eventList,
                   QBrush( Qt::Dense5Pattern ) );
       p.drawText( x + 5, offset + 5, width - 10, height - 10,
                   Qt::AlignCenter | Qt::AlignVCenter | Qt::AlignJustify |
-                  Qt::WordBreak,
+                  Qt::TextWordWrap,
                   multiDayStr);
     }
   } else {
@@ -465,19 +467,19 @@ void CalPrintHelper::drawAgendaDayBox( QPainter &p, Event::List &events,
   // Calculate horizontal positions and widths of events taking into account
   // overlapping events
 
-  QPtrList<KOrg::CellItem> cells;
+  Q3PtrList<KOrg::CellItem> cells;
   cells.setAutoDelete( true );
 
   Event::List::ConstIterator itEvents;
   for( itEvents = events.begin(); itEvents != events.end(); ++itEvents ) {
-    QValueList<QDateTime> times = (*itEvents)->startDateTimesForDate( qd );
-    for ( QValueList<QDateTime>::ConstIterator it = times.begin();
+    Q3ValueList<QDateTime> times = (*itEvents)->startDateTimesForDate( qd );
+    for ( Q3ValueList<QDateTime>::ConstIterator it = times.begin();
           it != times.end(); ++it ) {
       cells.append( new PrintCellItem( *itEvents, (*it), (*itEvents)->endDateForStart( *it ) ) );
     }
   }
 
-  QPtrListIterator<KOrg::CellItem> it1( cells );
+  Q3PtrListIterator<KOrg::CellItem> it1( cells );
   for( it1.toFirst(); it1.current(); ++it1 ) {
     KOrg::CellItem *placeItem = it1.current();
 
@@ -535,7 +537,7 @@ void CalPrintHelper::drawAgendaItem( PrintCellItem *item, QPainter &p,
     int offset = 4;
     // print the text vertically centered. If it doesn't fit inside the
     // box, align it at the top so the beginning is visible
-    int flags = Qt::AlignLeft | Qt::WordBreak;
+    int flags = Qt::AlignLeft | Qt::TextWordWrap;
     QRect bound = p.boundingRect ( currentX + offset, currentyPos,
                                    currentWidth - 2 * offset, eventLength,
                                    flags, event->summary() );
@@ -804,7 +806,7 @@ void CalPrintHelper::drawTodo( int &count, Todo *todo, QPainter &p,
 
   // This list keeps all starting points of the parent to-dos so the connection
   // lines of the tree can easily be drawn (needed if a new page is started)
-  static QPtrList<TodoParentStart> startPoints;
+  static Q3PtrList<TodoParentStart> startPoints;
   if ( level < 1 ) {
     startPoints.clear();
   }
@@ -817,11 +819,11 @@ void CalPrintHelper::drawTodo( int &count, Todo *todo, QPainter &p,
   // size of to-do
   outStr=todo->summary();
   int left = posSummary + ( level*10 );
-  rect = p.boundingRect( left, y, ( rhs-left-5 ), -1, Qt::WordBreak, outStr );
+  rect = p.boundingRect( left, y, ( rhs-left-5 ), -1, Qt::TextWordWrap, outStr );
   if ( !todo->description().isEmpty() && desc ) {
     outStr = todo->description();
     rect = p.boundingRect( left+20, rect.bottom()+5, width-(left+10-x), -1,
-                           Qt::WordBreak, outStr );
+                           Qt::TextWordWrap, outStr );
   }
   // if too big make new page
   if ( rect.bottom() > pageHeight ) {
@@ -895,7 +897,7 @@ void CalPrintHelper::drawTodo( int &count, Todo *todo, QPainter &p,
   // summary
   outStr=todo->summary();
   rect = p.boundingRect( lhs, rect.top(), (rhs-(left + rect.width() + 5)),
-                         -1, Qt::WordBreak, outStr );
+                         -1, Qt::TextWordWrap, outStr );
 
   QRect newrect;
   //FIXME: the following code prints underline rather than strikeout text
@@ -905,12 +907,12 @@ void CalPrintHelper::drawTodo( int &count, Todo *todo, QPainter &p,
     f.setStrikeOut( true );
     p.setFont( f );
   }
-  p.drawText( rect, Qt::WordBreak, outStr, -1, &newrect );
+  p.drawText( rect, Qt::TextWordWrap, outStr, -1, &newrect );
   f.setStrikeOut( false );
   p.setFont( f );
 #endif
   //TODO: Remove this section when the code above is fixed
-  p.drawText( rect, Qt::WordBreak, outStr, -1, &newrect );
+  p.drawText( rect, Qt::TextWordWrap, outStr, -1, &newrect );
   if ( todo->isCompleted() && strikeoutCompleted ) {
     // strike out the summary text if to-do is complete
     // Note: we tried to use a strike-out font and for unknown reasons the
@@ -958,8 +960,8 @@ void CalPrintHelper::drawTodo( int &count, Todo *todo, QPainter &p,
     y = newrect.bottom() + 5;
     outStr = todo->description();
     rect = p.boundingRect( left+20, y, x+width-(left+10), -1,
-                           Qt::WordBreak, outStr );
-    p.drawText( rect, Qt::WordBreak, outStr, -1, &newrect );
+                           Qt::TextWordWrap, outStr );
+    p.drawText( rect, Qt::TextWordWrap, outStr, -1, &newrect );
   }
 
   // Set the new line position
@@ -1025,17 +1027,17 @@ void CalPrintHelper::drawJournalField( QPainter &p, QString field, QString text,
 
   QString entry( field.arg( text ) );
 
-  QRect rect( p.boundingRect( x, y, width, -1, Qt::WordBreak, entry) );
+  QRect rect( p.boundingRect( x, y, width, -1, Qt::TextWordWrap, entry) );
   if ( rect.bottom() > pageHeight) {
     // Start new page...
     // FIXME: If it's a multi-line text, draw a few lines on this page, and the
     // remaining lines on the next page.
     y=0;
     mPrinter->newPage();
-    rect = p.boundingRect( x, y, width, -1, Qt::WordBreak, entry);
+    rect = p.boundingRect( x, y, width, -1, Qt::TextWordWrap, entry);
   }
   QRect newrect;
-  p.drawText( rect, Qt::WordBreak, entry, -1, &newrect );
+  p.drawText( rect, Qt::TextWordWrap, entry, -1, &newrect );
   y = newrect.bottom() + 7;
 }
 
@@ -1056,15 +1058,15 @@ void CalPrintHelper::drawJournal( Journal * journal, QPainter &p, int x, int &y,
                      .arg( dateText );
   }
 
-  QRect rect( p.boundingRect( x, y, width, -1, Qt::WordBreak, headerText) );
+  QRect rect( p.boundingRect( x, y, width, -1, Qt::TextWordWrap, headerText) );
   if ( rect.bottom() > pageHeight) {
     // Start new page...
     y=0;
     mPrinter->newPage();
-    rect = p.boundingRect( x, y, width, -1, Qt::WordBreak, headerText );
+    rect = p.boundingRect( x, y, width, -1, Qt::TextWordWrap, headerText );
   }
   QRect newrect;
-  p.drawText( rect, Qt::WordBreak, headerText, -1, &newrect );
+  p.drawText( rect, Qt::TextWordWrap, headerText, -1, &newrect );
   p.setFont( oldFont );
 
   y = newrect.bottom() + 4;

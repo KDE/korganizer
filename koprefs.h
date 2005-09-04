@@ -24,7 +24,7 @@
 #ifndef KOPREFS_H
 #define KOPREFS_H
 
-#include <qdict.h>
+#include <q3dict.h>
 
 #include <kdepimmacros.h>
 
@@ -96,10 +96,10 @@ class KDE_EXPORT KOPrefs : public KOPrefsBase
     QString mRetrievePassword;
 
   private:
-    QDict<QColor> mCategoryColors;
+    Q3Dict<QColor> mCategoryColors;
     QColor mDefaultCategoryColor;
 
-    QDict<QColor> mResourceColors;
+    Q3Dict<QColor> mResourceColors;
     QColor mDefaultResourceColor;
 
     QFont mDefaultMonthViewFont;

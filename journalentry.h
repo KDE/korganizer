@@ -26,7 +26,11 @@
 //
 // Widget showing one Journal entry
 
-#include <qvbox.h>
+#include <q3vbox.h>
+//Added by qt3to4:
+#include <QLabel>
+#include <QGridLayout>
+#include <QEvent>
 
 class QLabel;
 class KActiveLabel;
@@ -35,7 +39,7 @@ class QGridLayout;
 class KLineEdit;
 class KTextEdit;
 class KTimeEdit;
-class QButton;
+class Q3Button;
 namespace KOrg {
 class IncidenceChangerBase;
 }
@@ -97,8 +101,8 @@ class JournalEntry : public QWidget {
     KTextEdit *mEditor;
     QCheckBox *mTimeCheck;
     KTimeEdit *mTimeEdit;
-    QButton *mDeleteButton;
-    QButton *mEditButton;
+    Q3Button *mDeleteButton;
+    Q3Button *mEditButton;
 
     QGridLayout *mLayout;
 
@@ -108,7 +112,7 @@ class JournalEntry : public QWidget {
 };
 
 
-class JournalDateEntry : public QVBox {
+class JournalDateEntry : public Q3VBox {
     Q_OBJECT
   public:
     typedef ListBase<JournalDateEntry> List;

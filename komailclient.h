@@ -25,6 +25,8 @@
 #define KOMAILCLIENT_H
 
 #include <qstring.h>
+//Added by qt3to4:
+#include <Q3CString>
 
 class KURL;
 namespace KCal {
@@ -52,14 +54,14 @@ class KOMailClient
     int kMailOpenComposer(const QString& to, const QString& cc,
                           const QString& bcc, const QString& subject,
                           const QString& body, int hidden,
-                          const QString& attachName, const QCString& attachCte,
-                          const QCString& attachData,
-                          const QCString& attachType,
-                          const QCString& attachSubType,
-                          const QCString& attachParamAttr,
+                          const QString& attachName, const Q3CString& attachCte,
+                          const Q3CString& attachData,
+                          const Q3CString& attachType,
+                          const Q3CString& attachSubType,
+                          const Q3CString& attachParamAttr,
                           const QString& attachParamValue,
-                          const QCString& attachContDisp,
-                          const QCString& attachCharset);
+                          const Q3CString& attachContDisp,
+                          const Q3CString& attachCharset);
     int kMailOpenComposer(const QString& arg0,const QString& arg1,
                           const QString& arg2,const QString& arg3,
                           const QString& arg4,int arg5,const KURL& arg6);

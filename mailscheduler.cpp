@@ -25,6 +25,9 @@
 #include <qdir.h>
 #include <qfile.h>
 #include <qregexp.h>
+//Added by qt3to4:
+#include <QTextStream>
+#include <Q3PtrList>
 
 #include <kstandarddirs.h>
 #include <kdebug.h>
@@ -85,13 +88,13 @@ bool MailScheduler::performTransaction( IncidenceBase *incidence,
   return status;
 }
 
-QPtrList<ScheduleMessage> MailScheduler::retrieveTransactions()
+Q3PtrList<ScheduleMessage> MailScheduler::retrieveTransactions()
 {
   QString incomingDirName = locateLocal( "data", "korganizer/income" );
   kdDebug(5850) << "MailScheduler::retrieveTransactions: dir: "
                 << incomingDirName << endl;
 
-  QPtrList<ScheduleMessage> messageList;
+  Q3PtrList<ScheduleMessage> messageList;
 
   QDir incomingDir( incomingDirName );
   QStringList incoming = incomingDir.entryList( QDir::Files );
@@ -107,7 +110,7 @@ QPtrList<ScheduleMessage> MailScheduler::retrieveTransactions()
         inserted = true;
     }
     if ( !inserted ) {
-      if ( !f.open( IO_ReadOnly ) ) {
+      if ( !f.open( QIODevice::ReadOnly ) ) {
         kdDebug(5850)
           << "MailScheduler::retrieveTransactions(): Can't open file'"
           << (*it) << "'" << endl;

@@ -63,6 +63,10 @@
 #include <qbuffer.h>
 #include <qregexp.h>
 #include <qdir.h>
+//Added by qt3to4:
+#include <QTimerEvent>
+#include <QTextStream>
+#include <Q3CString>
 
 using namespace KCal;
 
@@ -456,7 +460,7 @@ KURL FreeBusyManager::freeBusyUrl( const QString &email )
   return sourceURL;
 }
 
-KCal::FreeBusy *FreeBusyManager::iCalToFreeBusy( const QCString &data )
+KCal::FreeBusy *FreeBusyManager::iCalToFreeBusy( const Q3CString &data )
 {
   kdDebug(5850) << "FreeBusyManager::iCalToFreeBusy()" << endl;
   kdDebug(5850) << data << endl;
@@ -489,7 +493,7 @@ FreeBusy *FreeBusyManager::loadFreeBusy( const QString &email )
     return 0;
   }
 
-  if ( !f.open( IO_ReadOnly ) ) {
+  if ( !f.open( QIODevice::ReadOnly ) ) {
     kdDebug(5850) << "FreeBusyManager::loadFreeBusy() Unable to open file "
               << f.name() << endl;
     return 0;
@@ -533,7 +537,7 @@ bool FreeBusyManager::saveFreeBusy( FreeBusy *freebusy, const Person &person )
   QString messageText = mFormat.createScheduleMessage( freebusy,
                                                        Scheduler::Publish );
 
-  if ( !f.open( IO_ReadWrite ) ) {
+  if ( !f.open( QIODevice::ReadWrite ) ) {
     kdDebug(5850) << "acceptFreeBusy: Can't open:" << filename << " for writing"
               << endl;
     return false;

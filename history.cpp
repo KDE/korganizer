@@ -30,6 +30,8 @@
 
 #include <klocale.h>
 #include <kdebug.h>
+//Added by qt3to4:
+#include <Q3PtrList>
 
 using namespace KCal;
 using namespace KOrg;
@@ -84,7 +86,7 @@ void History::truncate()
   while ( mUndoEntry.current() != mEntries.last() ) {
     mEntries.removeLast();
   }
-  mRedoEntry = QPtrList<Entry>( mEntries );
+  mRedoEntry = Q3PtrList<Entry>( mEntries );
   emit redoAvailable( QString::null );
 }
 
@@ -97,7 +99,7 @@ void History::recordDelete( Incidence *incidence )
     truncate();
     mEntries.append( entry );
     mUndoEntry.toLast();
-    mRedoEntry = QPtrList<Entry>( mEntries );
+    mRedoEntry = Q3PtrList<Entry>( mEntries );
     emit undoAvailable( entry->text() );
   }
 }
@@ -111,7 +113,7 @@ void History::recordAdd( Incidence *incidence )
     truncate();
     mEntries.append( entry );
     mUndoEntry.toLast();
-    mRedoEntry = QPtrList<Entry>( mEntries );
+    mRedoEntry = Q3PtrList<Entry>( mEntries );
     emit undoAvailable( entry->text() );
   }
 }
@@ -125,7 +127,7 @@ void History::recordEdit( Incidence *oldIncidence, Incidence *newIncidence )
     truncate();
     mEntries.append( entry );
     mUndoEntry.toLast();
-    mRedoEntry = QPtrList<Entry>( mEntries );
+    mRedoEntry = Q3PtrList<Entry>( mEntries );
     emit undoAvailable( entry->text() );
   }
 }
@@ -139,7 +141,7 @@ void History::startMultiModify( const QString &description )
   truncate();
   mEntries.append( mCurrentMultiEntry );
   mUndoEntry.toLast();
-  mRedoEntry = QPtrList<Entry>( mEntries );
+  mRedoEntry = Q3PtrList<Entry>( mEntries );
   emit undoAvailable( mCurrentMultiEntry->text() );
 }
 
@@ -264,7 +266,7 @@ void History::MultiEntry::appendEntry( Entry* entry )
 
 void History::MultiEntry::undo()
 {
-  QPtrListIterator<Entry> it( mEntries );
+  Q3PtrListIterator<Entry> it( mEntries );
   it.toLast();
   Entry *entry;
   while ( (entry = it.current()) != 0 ) {
@@ -275,7 +277,7 @@ void History::MultiEntry::undo()
 
 void History::MultiEntry::redo()
 {
-  QPtrListIterator<Entry> it( mEntries );
+  Q3PtrListIterator<Entry> it( mEntries );
   Entry *entry;
   while ( (entry = it.current()) != 0 ) {
     ++it;

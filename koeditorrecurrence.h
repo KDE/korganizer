@@ -27,15 +27,18 @@
 #include <qdatetime.h>
 #include <qwidget.h>
 #include <qbitarray.h>
+//Added by qt3to4:
+#include <QBoxLayout>
+#include <QLabel>
 
 #include <kdialogbase.h>
 
 #include <libkcal/incidencebase.h>
 
-class QWidgetStack;
+class Q3WidgetStack;
 class QSpinBox;
 class QRadioButton;
-class QGroupBox;
+class Q3GroupBox;
 class QCheckBox;
 
 class KDateEdit;
@@ -195,7 +198,7 @@ class ExceptionsWidget : public QWidget, public ExceptionsBase
 
   private:
     KDateEdit *mExceptionDateEdit;
-    QListBox *mExceptionList;
+    Q3ListBox *mExceptionList;
     DateList mExceptionDates;
 };
 
@@ -247,7 +250,7 @@ class RecurrenceRangeWidget : public QWidget, public RecurrenceRangeBase
     void showCurrentRange();
 
   private:
-    QGroupBox *mRangeGroupBox;
+    Q3GroupBox *mRangeGroupBox;
     QLabel *mStartDateLabel;
     QRadioButton *mNoEndDateButton;
     QRadioButton *mEndDurationButton;
@@ -313,11 +316,11 @@ class KOEditorRecurrence : public QWidget
   private:
     QCheckBox *mEnabledCheck;
 
-    QGroupBox *mTimeGroupBox;
+    Q3GroupBox *mTimeGroupBox;
     QLabel *mDateTimeLabel;
 
-    QGroupBox *mRuleBox;
-    QWidgetStack *mRuleStack;
+    Q3GroupBox *mRuleBox;
+    Q3WidgetStack *mRuleStack;
     RecurrenceChooser *mRecurrenceChooser;
 
     RecurDaily *mDaily;

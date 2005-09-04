@@ -21,11 +21,13 @@
 #define KLISTVIEWNEWSEARCHLINE_H
 
 #include <klineedit.h>
-#include <qhbox.h>
-#include <qvaluelist.h>
+#include <q3hbox.h>
+#include <q3valuelist.h>
+//Added by qt3to4:
+#include <Q3PopupMenu>
 
 class KListView;
-class QListViewItem;
+class Q3ListViewItem;
 class QToolButton;
 
 /* FIXME push changes into kdelibs */
@@ -66,7 +68,7 @@ public:
      * @since 4.0
      */
     KListViewNewSearchLine(QWidget *parent,
-                           const QValueList<KListView *> &listViews,
+                           const Q3ValueList<KListView *> &listViews,
                            const char *name = 0);
 
     /**
@@ -94,7 +96,7 @@ public:
      *
      * @see setSearchColumns
      */
-    QValueList<int> searchColumns() const;
+    Q3ValueList<int> searchColumns() const;
 
     /**
      * If this is true (the default) then the parents of matched items will also
@@ -119,7 +121,7 @@ public:
      * @see setListViews(), addListView(), listView()
      * @since 4.0
      */
-    const QValueList<KListView *> &listViews() const;
+    const Q3ValueList<KListView *> &listViews() const;
 
 public slots:
     /**
@@ -175,7 +177,7 @@ public slots:
      *
      * @see searchColumns
      */
-    void setSearchColumns(const QValueList<int> &columns);
+    void setSearchColumns(const Q3ValueList<int> &columns);
 
     /**
      * Sets the KListView that is filtered by this search line, replacing any
@@ -194,7 +196,7 @@ public slots:
      * @see listViews(), addListView(), setListView()
      * @since 4.0
      */
-    void setListViews(const QValueList<KListView *> &lv);
+    void setListViews(const Q3ValueList<KListView *> &lv);
 
 
   protected:
@@ -204,14 +206,14 @@ public slots:
      * based on the value of caseSensitive().  This can be overridden in
      * subclasses to implement more complicated matching schemes.
      */
-    virtual bool itemMatches(const QListViewItem *item, const QString &s) const;
+    virtual bool itemMatches(const Q3ListViewItem *item, const QString &s) const;
 
     /**
     * Re-implemented for internal reasons.  API not affected.
     *
     * See QLineEdit::mousePressEvent().
     */
-    virtual QPopupMenu *createPopupMenu();
+    virtual Q3PopupMenu *createPopupMenu();
 
     /**
      * Updates search to only make visible appropriate items in \a listView.  If
@@ -298,10 +300,10 @@ private:
      * It makes a recursive call to all children.  It returns true if at least
      * one item in the subtree with the given root item is visible.
      */
-    bool checkItemParentsVisible(QListViewItem *item, QListViewItem *highestHiddenParent = 0);
+    bool checkItemParentsVisible(Q3ListViewItem *item, Q3ListViewItem *highestHiddenParent = 0);
 
 private slots:
-    void itemAdded(QListViewItem *item) const;
+    void itemAdded(Q3ListViewItem *item) const;
     void listViewDeleted( QObject *listView );
     void searchColumnsMenuActivated(int);
 

@@ -24,7 +24,9 @@
 */
 
 #include <qobject.h>
-#include <qobjectlist.h>
+#include <qobject.h>
+//Added by qt3to4:
+#include <Q3CString>
 
 #include <libkdepim/kdepimprotocols.h>
 
@@ -69,7 +71,7 @@ bool UriHandler::process( const QString &uri )
     const QByteArray noParamData;
     const QByteArray paramData;
     QByteArray replyData;
-    QCString replyTypeStr;
+    Q3CString replyTypeStr;
     bool foundAbbrowser = client->call( "kaddressbook", "KAddressBookIface",
                                         "interfaces()",  noParamData,
                                         replyTypeStr, replyData );

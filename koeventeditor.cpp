@@ -24,11 +24,15 @@
 */
 
 #include <qtooltip.h>
-#include <qframe.h>
+#include <q3frame.h>
 #include <qpixmap.h>
 #include <qlayout.h>
-#include <qwidgetstack.h>
-#include <qwhatsthis.h>
+#include <q3widgetstack.h>
+#include <q3whatsthis.h>
+//Added by qt3to4:
+#include <QVBoxLayout>
+#include <QHBoxLayout>
+#include <QBoxLayout>
 
 #include <kabc/addressee.h>
 #include <kiconloader.h>
@@ -114,7 +118,7 @@ void KOEventEditor::setupGeneral()
 
   if( KOPrefs::instance()->mCompactDialogs ) {
     QFrame *topFrame = addPage(i18n("General"));
-    QWhatsThis::add( topFrame,
+    Q3WhatsThis::add( topFrame,
                      i18n("The General tab allows you to set the most common "
                           "options for the event.") );
 
@@ -140,7 +144,7 @@ void KOEventEditor::setupGeneral()
     mGeneral->initDescription(topFrame2,topLayout2);
   } else {
     QFrame *topFrame = addPage(i18n("&General"));
-    QWhatsThis::add( topFrame,
+    Q3WhatsThis::add( topFrame,
                      i18n("The General tab allows you to set the most common "
                           "options for the event.") );
 
@@ -173,7 +177,7 @@ void KOEventEditor::setupRecurrence()
 {
   QFrame *topFrame = addPage( i18n("Rec&urrence") );
 
-  QWhatsThis::add( topFrame,
+  Q3WhatsThis::add( topFrame,
         i18n("The Recurrence tab allows you to set options on "
        "how often this event recurs.") );
 
@@ -186,7 +190,7 @@ void KOEventEditor::setupRecurrence()
 void KOEventEditor::setupFreeBusy()
 {
   QFrame *freeBusyPage = addPage( i18n("&Free/Busy") );
-  QWhatsThis::add( freeBusyPage,
+  Q3WhatsThis::add( freeBusyPage,
         i18n("The Free/Busy tab allows you to see whether "
        "other attendees are free or busy during your event.") );
 

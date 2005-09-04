@@ -26,9 +26,14 @@
 #include <qtooltip.h>
 #include <qpushbutton.h>
 #include <qlayout.h>
-#include <qframe.h>
-#include <qpopupmenu.h>
+#include <q3frame.h>
+#include <q3popupmenu.h>
 #include <qlabel.h>
+//Added by qt3to4:
+#include <QMouseEvent>
+#include <QPixmap>
+#include <QHBoxLayout>
+#include <QBoxLayout>
 
 #include <kdebug.h>
 #include <klocale.h>
@@ -171,7 +176,7 @@ void NavigatorBar::selectMonth()
 
   int i, month, months = calSys->monthsInYear( mDate );
 
-  QPopupMenu *popup = new QPopupMenu( mMonth );
+  Q3PopupMenu *popup = new Q3PopupMenu( mMonth );
 
   for ( i = 1; i <= months; i++ )
     popup->insertItem( calSys->monthName( i, calSys->year( mDate ) ), i );

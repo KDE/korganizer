@@ -26,6 +26,10 @@
 #include <qstringlist.h>
 #include <qlayout.h>
 #include <qcombobox.h>
+//Added by qt3to4:
+#include <QVBoxLayout>
+#include <QHBoxLayout>
+#include <QBoxLayout>
 
 #include <kdebug.h>
 #include <klocale.h>

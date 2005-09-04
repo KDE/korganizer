@@ -26,12 +26,25 @@
 */
 
 #include <qlayout.h>
-#include <qheader.h>
+#include <q3header.h>
 #include <qcursor.h>
 #include <qlabel.h>
 #include <qtimer.h>
-#include <qvbox.h>
-#include <qwidgetstack.h>
+#include <q3vbox.h>
+#include <q3widgetstack.h>
+//Added by qt3to4:
+#include <QBoxLayout>
+#include <Q3PopupMenu>
+#include <QMouseEvent>
+#include <Q3Frame>
+#include <QEvent>
+#include <QDragMoveEvent>
+#include <Q3CString>
+#include <QDragLeaveEvent>
+#include <Q3ValueList>
+#include <QVBoxLayout>
+#include <QDropEvent>
+#include <QDragEnterEvent>
 
 #include <kdebug.h>
 #include <klocale.h>
@@ -130,21 +143,21 @@ KOTodoListView::KOTodoListView( QWidget *parent, const char *name )
   addColumn( i18n("Categories") );
 #if 0
   addColumn( i18n("Sort Id") );
-  setColumnAlignment( 4, AlignHCenter );
+  setColumnAlignment( 4, Qt::AlignHCenter );
 #endif
 
   setMinimumHeight( 60 );
   setItemsRenameable( true );
   setRenameable( 0 );
 
-  setColumnWidthMode( KOTodoView::eSummaryColumn, QListView::Manual );
-  setColumnWidthMode( KOTodoView::eRecurColumn, QListView::Manual );
-  setColumnWidthMode( KOTodoView::ePriorityColumn, QListView::Manual );
-  setColumnWidthMode( KOTodoView::ePercentColumn, QListView::Manual );
-  setColumnWidthMode( KOTodoView::eDueDateColumn, QListView::Manual );
-  setColumnWidthMode( KOTodoView::eCategoriesColumn, QListView::Manual );
+  setColumnWidthMode( KOTodoView::eSummaryColumn, Q3ListView::Manual );
+  setColumnWidthMode( KOTodoView::eRecurColumn, Q3ListView::Manual );
+  setColumnWidthMode( KOTodoView::ePriorityColumn, Q3ListView::Manual );
+  setColumnWidthMode( KOTodoView::ePercentColumn, Q3ListView::Manual );
+  setColumnWidthMode( KOTodoView::eDueDateColumn, Q3ListView::Manual );
+  setColumnWidthMode( KOTodoView::eCategoriesColumn, Q3ListView::Manual );
 #if 0
-  setColumnWidthMode( KOTodoView::eDescriptionColumn, QListView::Manual );
+  setColumnWidthMode( KOTodoView::eDescriptionColumn, Q3ListView::Manual );
 #endif
 
   /* Create a Tooltip */
@@ -193,7 +206,7 @@ void KOTodoListView::contentsDragEnterEvent(QDragEnterEvent *e)
 #ifndef KORG_NODND
 //  kdDebug(5850) << "KOTodoListView::contentsDragEnterEvent" << endl;
   if ( !ICalDrag::canDecode( e ) && !VCalDrag::canDecode( e ) &&
-       !QTextDrag::canDecode( e ) ) {
+       !Q3TextDrag::canDecode( e ) ) {
     e->ignore();
     return;
   }
@@ -209,7 +222,7 @@ void KOTodoListView::contentsDragMoveEvent(QDragMoveEvent *e)
 //  kdDebug(5850) << "KOTodoListView::contentsDragMoveEvent" << endl;
 
   if ( !ICalDrag::canDecode( e ) && !VCalDrag::canDecode( e ) &&
-       !QTextDrag::canDecode( e ) ) {
+       !Q3TextDrag::canDecode( e ) ) {
     e->ignore();
     return;
   }
@@ -235,7 +248,7 @@ void KOTodoListView::contentsDropEvent( QDropEvent *e )
 
   if ( !mCalendar || !mChanger ||
        ( !ICalDrag::canDecode( e ) && !VCalDrag::canDecode( e ) &&
-         !QTextDrag::canDecode( e ) ) ) {
+         !Q3TextDrag::canDecode( e ) ) ) {
     e->ignore();
     return;
   }
@@ -296,7 +309,7 @@ void KOTodoListView::contentsDropEvent( QDropEvent *e )
       kdDebug( 5850 ) << "KOTodoListView::contentsDropEvent(): Not dropped on a todo item" << endl;
       kdDebug( 5850 ) << "TODO: Create a new todo with the given data" << endl;
       // FIXME: Create a new todo with the given text/contact/whatever
-    } else if ( QTextDrag::decode(e, text) ) {
+    } else if ( Q3TextDrag::decode(e, text) ) {
       //QListViewItem *qlvi = itemAt( contentsToViewport(e->pos()) );
       kdDebug(5850) << "Dropped : " << text << endl;
       Todo*todo = todoi->todo();
@@ -334,9 +347,9 @@ void KOTodoListView::contentsDropEvent( QDropEvent *e )
 
 void KOTodoListView::contentsMousePressEvent(QMouseEvent* e)
 {
-  QListView::contentsMousePressEvent(e);
+  Q3ListView::contentsMousePressEvent(e);
   QPoint p(contentsToViewport(e->pos()));
-  QListViewItem *i = itemAt(p);
+  Q3ListViewItem *i = itemAt(p);
   if (i) {
     // if the user clicked into the root decoration of the item, don't
     // try to start a drag!
@@ -356,15 +369,15 @@ void KOTodoListView::contentsMouseMoveEvent(QMouseEvent* e)
 {
 #ifndef KORG_NODND
 //  kdDebug(5850) << "KOTodoListView::contentsMouseMoveEvent()" << endl;
-  QListView::contentsMouseMoveEvent(e);
+  Q3ListView::contentsMouseMoveEvent(e);
   if (mMousePressed && (mPressPos - e->pos()).manhattanLength() >
       QApplication::startDragDistance()) {
     mMousePressed = false;
-    QListViewItem *item = itemAt(contentsToViewport(mPressPos));
+    Q3ListViewItem *item = itemAt(contentsToViewport(mPressPos));
     if ( item && mCalendar ) {
 //      kdDebug(5850) << "Start Drag for item " << item->text(0) << endl;
       DndFactory factory( mCalendar );
-      QDragObject *vd = factory.createDrag(
+      Q3DragObject *vd = factory.createDrag(
                           ((KOTodoViewItem *)item)->todo(),viewport());
       if (vd->drag()) {
         kdDebug(5850) << "KOTodoListView::contentsMouseMoveEvent(): Delete drag source" << endl;
@@ -386,7 +399,7 @@ void KOTodoListView::contentsMouseMoveEvent(QMouseEvent* e)
 
 void KOTodoListView::contentsMouseReleaseEvent(QMouseEvent *e)
 {
-  QListView::contentsMouseReleaseEvent(e);
+  Q3ListView::contentsMouseReleaseEvent(e);
   mMousePressed = false;
 }
 
@@ -396,7 +409,7 @@ void KOTodoListView::contentsMouseDoubleClickEvent(QMouseEvent *e)
 
   QPoint vp = contentsToViewport(e->pos());
 
-  QListViewItem *item = itemAt(vp);
+  Q3ListViewItem *item = itemAt(vp);
 
   if (!item) return;
 
@@ -426,7 +439,7 @@ KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent, const char* name)
   }
   
   setupListViews();
-  QValueList<KListView *> list;
+  Q3ValueList<KListView *> list;
   list.append( mMyTodoListView );
   list.append( mOneTodoListView );
   list.append( mYourTodoListView );
@@ -441,7 +454,7 @@ KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent, const char* name)
   topLayout->addWidget( container );
 
   QLabel *title = new QLabel( i18n("To-dos:"), this );
-  title->setFrameStyle( QFrame::Panel | QFrame::Raised );
+  title->setFrameStyle( Q3Frame::Panel | Q3Frame::Raised );
   topLayout->addWidget( title );
 
   mQuickAdd = new KPIM::ClickLineEdit( this, i18n( "Click to add a new to-do" ) );
@@ -453,7 +466,7 @@ KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent, const char* name)
 //  topLayout->addWidget( mTodoListView );
   topLayout->addWidget( mWidgetStack );
 
-  mPriorityPopupMenu = new QPopupMenu( this );
+  mPriorityPopupMenu = new Q3PopupMenu( this );
   mPriority[ mPriorityPopupMenu->insertItem( i18n("Unspecified priority", "unspecified") ) ] = 0;
   mPriority[ mPriorityPopupMenu->insertItem( i18n( "1 (highest)") ) ] = 1;
   mPriority[ mPriorityPopupMenu->insertItem( i18n( "2" ) ) ] = 2;
@@ -467,7 +480,7 @@ KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent, const char* name)
   connect( mPriorityPopupMenu, SIGNAL( activated( int ) ),
            SLOT( setNewPriority( int ) ));
 
-  mPercentageCompletedPopupMenu = new QPopupMenu(this);
+  mPercentageCompletedPopupMenu = new Q3PopupMenu(this);
   for (int i = 0; i <= 100; i+=10) {
     QString label = QString ("%1 %").arg (i);
     mPercentage[mPercentageCompletedPopupMenu->insertItem (label)] = i;
@@ -490,7 +503,7 @@ KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent, const char* name)
   connect( mCopyPopupMenu, SIGNAL( dateChanged( QDate )),
            SLOT( copyTodoToDate( QDate ) ) );
 
-  mItemPopupMenu = new QPopupMenu(this);
+  mItemPopupMenu = new Q3PopupMenu(this);
   mItemPopupMenu->insertItem(i18n("&Show"), this,
                              SLOT (showTodo()));
   mItemPopupMenu->insertItem(i18n("&Edit..."), this,
@@ -518,7 +531,7 @@ KOTodoView::KOTodoView( Calendar *calendar, QWidget *parent, const char* name)
   connect( mCopyPopupMenu, SIGNAL( dateChanged( QDate ) ),
            mItemPopupMenu, SLOT( hide() ) );
 
-  mPopupMenu = new QPopupMenu(this);
+  mPopupMenu = new Q3PopupMenu(this);
   mPopupMenu->insertItem(KOGlobals::self()->smallIconSet("todo"), i18n("&New To-do..."), this,
                          SLOT (newTodo()));
   mPopupMenu->insertItem(i18n("delete completed to-dos","&Purge Completed"),
@@ -541,7 +554,7 @@ KOTodoView::~KOTodoView()
 
 void KOTodoView::setupListViews()
 {
-  mWidgetStack = new QWidgetStack( this );
+  mWidgetStack = new Q3WidgetStack( this );
   mWidgetStack->setSizePolicy( QSizePolicy( QSizePolicy::Expanding,
                                QSizePolicy::Expanding ) );
 
@@ -554,16 +567,16 @@ void KOTodoView::setupListViews()
   mSplitter = new QSplitter( Qt::Vertical, this );
   mWidgetStack->addWidget( mSplitter, eSplitListViews );
 
-  QVBox* myVBox = new QVBox( mSplitter );
+  Q3VBox* myVBox = new Q3VBox( mSplitter );
   new QLabel( i18n( "<qt><b>Tasks I have to work on:</b></qt>" ), myVBox );
   mMyTodoListView = new KOTodoListView( myVBox, "my todos" );
 
-  QVBox* yourVBox = new QVBox( mSplitter );
+  Q3VBox* yourVBox = new Q3VBox( mSplitter );
   new QLabel( i18n( "<qt><b>Tasks I want others to work on:</b></qt>" ),
               yourVBox );
   mYourTodoListView = new KOTodoListView( yourVBox, "your todos" );
 
-  QVBox* otherVBox = new QVBox( mSplitter );
+  Q3VBox* otherVBox = new Q3VBox( mSplitter );
   new QLabel( i18n( "<qt><b>Other tasks I am watching:</b></qt>" ), otherVBox );
   mOtherTodoListView = new KOTodoListView( otherVBox, "other todos" );
 
@@ -578,87 +591,87 @@ void KOTodoView::setupListViews()
     mWidgetStack->raiseWidget( eOneListView );
 
   // Double clicking conflicts with opening/closing the subtree
-  connect( mMyTodoListView, SIGNAL( doubleClicked( QListViewItem *,
+  connect( mMyTodoListView, SIGNAL( doubleClicked( Q3ListViewItem *,
                                                    const QPoint &, int ) ),
-           SLOT( editItem( QListViewItem *, const QPoint &, int ) ) );
-  connect( mOneTodoListView, SIGNAL( doubleClicked( QListViewItem *,
+           SLOT( editItem( Q3ListViewItem *, const QPoint &, int ) ) );
+  connect( mOneTodoListView, SIGNAL( doubleClicked( Q3ListViewItem *,
                                                    const QPoint &, int ) ),
-           SLOT( editItem( QListViewItem *, const QPoint &, int ) ) );
-  connect( mYourTodoListView, SIGNAL( doubleClicked( QListViewItem *,
+           SLOT( editItem( Q3ListViewItem *, const QPoint &, int ) ) );
+  connect( mYourTodoListView, SIGNAL( doubleClicked( Q3ListViewItem *,
                                                      const QPoint &, int ) ),
-           SLOT( editItem( QListViewItem *, const QPoint &, int ) ) );
-  connect( mOtherTodoListView, SIGNAL( doubleClicked( QListViewItem *,
+           SLOT( editItem( Q3ListViewItem *, const QPoint &, int ) ) );
+  connect( mOtherTodoListView, SIGNAL( doubleClicked( Q3ListViewItem *,
                                                       const QPoint &, int ) ),
-           SLOT( editItem( QListViewItem *, const QPoint &, int ) ) );
+           SLOT( editItem( Q3ListViewItem *, const QPoint &, int ) ) );
 
-  connect( mMyTodoListView, SIGNAL( returnPressed( QListViewItem * ) ),
-           SLOT( editItem( QListViewItem * ) ) );
-  connect( mOneTodoListView, SIGNAL( returnPressed( QListViewItem * ) ),
-           SLOT( editItem( QListViewItem * ) ) );
-  connect( mYourTodoListView, SIGNAL( returnPressed( QListViewItem * ) ),
-           SLOT( editItem( QListViewItem * ) ) );
-  connect( mOtherTodoListView, SIGNAL( returnPressed( QListViewItem * ) ),
-           SLOT( editItem( QListViewItem * ) ) );
+  connect( mMyTodoListView, SIGNAL( returnPressed( Q3ListViewItem * ) ),
+           SLOT( editItem( Q3ListViewItem * ) ) );
+  connect( mOneTodoListView, SIGNAL( returnPressed( Q3ListViewItem * ) ),
+           SLOT( editItem( Q3ListViewItem * ) ) );
+  connect( mYourTodoListView, SIGNAL( returnPressed( Q3ListViewItem * ) ),
+           SLOT( editItem( Q3ListViewItem * ) ) );
+  connect( mOtherTodoListView, SIGNAL( returnPressed( Q3ListViewItem * ) ),
+           SLOT( editItem( Q3ListViewItem * ) ) );
 
-  connect( mMyTodoListView, SIGNAL( contextMenuRequested( QListViewItem *,
+  connect( mMyTodoListView, SIGNAL( contextMenuRequested( Q3ListViewItem *,
                                                           const QPoint &, int ) ),
-           SLOT( popupMenu( QListViewItem *, const QPoint &, int ) ) );
-  connect( mOneTodoListView, SIGNAL( contextMenuRequested( QListViewItem *,
+           SLOT( popupMenu( Q3ListViewItem *, const QPoint &, int ) ) );
+  connect( mOneTodoListView, SIGNAL( contextMenuRequested( Q3ListViewItem *,
                                                           const QPoint &, int ) ),
-           SLOT( popupMenu( QListViewItem *, const QPoint &, int ) ) );
-  connect( mYourTodoListView, SIGNAL( contextMenuRequested( QListViewItem *,
+           SLOT( popupMenu( Q3ListViewItem *, const QPoint &, int ) ) );
+  connect( mYourTodoListView, SIGNAL( contextMenuRequested( Q3ListViewItem *,
                                                             const QPoint &, int ) ),
-           SLOT( popupMenu( QListViewItem *, const QPoint &, int ) ) );
-  connect( mOtherTodoListView, SIGNAL( contextMenuRequested( QListViewItem *,
+           SLOT( popupMenu( Q3ListViewItem *, const QPoint &, int ) ) );
+  connect( mOtherTodoListView, SIGNAL( contextMenuRequested( Q3ListViewItem *,
                                                              const QPoint &, int ) ),
-             SLOT( popupMenu( QListViewItem *, const QPoint &, int ) ) );
+             SLOT( popupMenu( Q3ListViewItem *, const QPoint &, int ) ) );
 
-  connect( mMyTodoListView, SIGNAL( expanded( QListViewItem * ) ),
-           SLOT( itemStateChanged( QListViewItem * ) ) );
-  connect( mOneTodoListView, SIGNAL( expanded( QListViewItem * ) ),
-           SLOT( itemStateChanged( QListViewItem * ) ) );
+  connect( mMyTodoListView, SIGNAL( expanded( Q3ListViewItem * ) ),
+           SLOT( itemStateChanged( Q3ListViewItem * ) ) );
+  connect( mOneTodoListView, SIGNAL( expanded( Q3ListViewItem * ) ),
+           SLOT( itemStateChanged( Q3ListViewItem * ) ) );
 
-  connect( mYourTodoListView, SIGNAL( expanded( QListViewItem * ) ),
-           SLOT( itemStateChanged( QListViewItem * ) ) );
-  connect( mOtherTodoListView, SIGNAL( expanded( QListViewItem * ) ),
-           SLOT( itemStateChanged( QListViewItem * ) ) );
+  connect( mYourTodoListView, SIGNAL( expanded( Q3ListViewItem * ) ),
+           SLOT( itemStateChanged( Q3ListViewItem * ) ) );
+  connect( mOtherTodoListView, SIGNAL( expanded( Q3ListViewItem * ) ),
+           SLOT( itemStateChanged( Q3ListViewItem * ) ) );
 
-  connect( mMyTodoListView, SIGNAL( collapsed( QListViewItem * ) ),
-           SLOT( itemStateChanged( QListViewItem * ) ) );
-  connect( mOneTodoListView, SIGNAL( collapsed( QListViewItem * ) ),
-           SLOT( itemStateChanged( QListViewItem * ) ) );
-  connect( mYourTodoListView, SIGNAL( collapsed( QListViewItem * ) ),
-           SLOT( itemStateChanged( QListViewItem * ) ) );
-  connect( mOtherTodoListView, SIGNAL( collapsed( QListViewItem * ) ),
-           SLOT( itemStateChanged( QListViewItem * ) ) );
+  connect( mMyTodoListView, SIGNAL( collapsed( Q3ListViewItem * ) ),
+           SLOT( itemStateChanged( Q3ListViewItem * ) ) );
+  connect( mOneTodoListView, SIGNAL( collapsed( Q3ListViewItem * ) ),
+           SLOT( itemStateChanged( Q3ListViewItem * ) ) );
+  connect( mYourTodoListView, SIGNAL( collapsed( Q3ListViewItem * ) ),
+           SLOT( itemStateChanged( Q3ListViewItem * ) ) );
+  connect( mOtherTodoListView, SIGNAL( collapsed( Q3ListViewItem * ) ),
+           SLOT( itemStateChanged( Q3ListViewItem * ) ) );
 
 #if 0
-  connect(mMyTodoListView,SIGNAL(selectionChanged(QListViewItem *)),
-          SLOT(selectionChanged(QListViewItem *)));
-  connect(mOneTodoListView,SIGNAL(selectionChanged(QListViewItem *)),
-          SLOT(selectionChanged(QListViewItem *)));
-  connect(mYourTodoListView,SIGNAL(selectionChanged(QListViewItem *)),
-          SLOT(selectionChanged(QListViewItem *)));
-  connect(mOtherTodoListView,SIGNAL(selectionChanged(QListViewItem *)),
-          SLOT(selectionChanged(QListViewItem *)));
+  connect(mMyTodoListView,SIGNAL(selectionChanged(Q3ListViewItem *)),
+          SLOT(selectionChanged(Q3ListViewItem *)));
+  connect(mOneTodoListView,SIGNAL(selectionChanged(Q3ListViewItem *)),
+          SLOT(selectionChanged(Q3ListViewItem *)));
+  connect(mYourTodoListView,SIGNAL(selectionChanged(Q3ListViewItem *)),
+          SLOT(selectionChanged(Q3ListViewItem *)));
+  connect(mOtherTodoListView,SIGNAL(selectionChanged(Q3ListViewItem *)),
+          SLOT(selectionChanged(Q3ListViewItem *)));
 
-  connect(mMyTodoListView,SIGNAL(clicked(QListViewItem *)),
-          SLOT(selectionChanged(QListViewItem *)));
-  connect(mOneTodoListView,SIGNAL(clicked(QListViewItem *)),
-          SLOT(selectionChanged(QListViewItem *)));
-  connect(mYourTodoListView,SIGNAL(clicked(QListViewItem *)),
-          SLOT(selectionChanged(QListViewItem *)));
-  connect(mOtherTodoListView,SIGNAL(clicked(QListViewItem *)),
-          SLOT(selectionChanged(QListViewItem *)));
+  connect(mMyTodoListView,SIGNAL(clicked(Q3ListViewItem *)),
+          SLOT(selectionChanged(Q3ListViewItem *)));
+  connect(mOneTodoListView,SIGNAL(clicked(Q3ListViewItem *)),
+          SLOT(selectionChanged(Q3ListViewItem *)));
+  connect(mYourTodoListView,SIGNAL(clicked(Q3ListViewItem *)),
+          SLOT(selectionChanged(Q3ListViewItem *)));
+  connect(mOtherTodoListView,SIGNAL(clicked(Q3ListViewItem *)),
+          SLOT(selectionChanged(Q3ListViewItem *)));
 
-  connect(mMyTodoListView,SIGNAL(pressed(QListViewItem *)),
-          SLOT(selectionChanged(QListViewItem *)));
-  connect(mOneTodoListView,SIGNAL(pressed(QListViewItem *)),
-          SLOT(selectionChanged(QListViewItem *)));
-  connect(mYourTodoListView,SIGNAL(pressed(QListViewItem *)),
-          SLOT(selectionChanged(QListViewItem *)));
-  connect(mOtherTodoListView,SIGNAL(pressed(QListViewItem *)),
-          SLOT(selectionChanged(QListViewItem *)));
+  connect(mMyTodoListView,SIGNAL(pressed(Q3ListViewItem *)),
+          SLOT(selectionChanged(Q3ListViewItem *)));
+  connect(mOneTodoListView,SIGNAL(pressed(Q3ListViewItem *)),
+          SLOT(selectionChanged(Q3ListViewItem *)));
+  connect(mYourTodoListView,SIGNAL(pressed(Q3ListViewItem *)),
+          SLOT(selectionChanged(Q3ListViewItem *)));
+  connect(mOtherTodoListView,SIGNAL(pressed(Q3ListViewItem *)),
+          SLOT(selectionChanged(Q3ListViewItem *)));
 #endif
   connect( mMyTodoListView, SIGNAL(selectionChanged() ),
            SLOT( processSelectionChange() ) );
@@ -732,28 +745,28 @@ void KOTodoView::fillViews()
   mSearchToolBar->fillCategories();
 }
 
-void KOTodoView::restoreListViewState( QListView *listView )
+void KOTodoView::restoreListViewState( Q3ListView *listView )
 {
   if ( mDocPrefs ) {
     listView->blockSignals( true );
-    for ( QListViewItemIterator it( listView ); it.current(); ++it )
+    for ( Q3ListViewItemIterator it( listView ); it.current(); ++it )
       if ( KOTodoViewItem *todoItem
           = dynamic_cast<KOTodoViewItem *>( it.current() ) )
         todoItem->setOpen( mDocPrefs->readBoolEntry( todoItem->todo()->uid() ) );
     listView->setContentsPos( 0, mDocPrefs
-        ->readNumEntry( QCString( listView->name() ) + " pos" ) );
+        ->readNumEntry( Q3CString( listView->name() ) + " pos" ) );
     listView->blockSignals( false );
   } else
     kdError( 5850 ) << k_funcinfo << " mDocPrefs doesn't exist" << endl;
 }
 
-void KOTodoView::saveListViewState( QListView *listView )
+void KOTodoView::saveListViewState( Q3ListView *listView )
 {
   if ( mDocPrefs ) {
-    mDocPrefs->writeBoolEntry( QCString( listView->name() ) + " pos",
+    mDocPrefs->writeBoolEntry( Q3CString( listView->name() ) + " pos",
                            listView->contentsY() );
 
-    for ( QListViewItemIterator it( listView ); it.current(); ++it )
+    for ( Q3ListViewItemIterator it( listView ); it.current(); ++it )
       if ( KOTodoViewItem *todoItem
           = dynamic_cast<KOTodoViewItem *>( it.current() ) )
         mDocPrefs->writeNumEntry( todoItem->todo()->uid(), todoItem->isOpen() );
@@ -997,7 +1010,7 @@ void KOTodoView::showIncidences( const Incidence::List &incidences )
   // calculate the rectangle we must have
   uint begin = mTodoListView->contentsHeight(), end = 0;
   KOTodoViewItem *first = 0, *last;
-  for ( QListViewItemIterator it( mTodoListView ); it.current(); ++it )
+  for ( Q3ListViewItemIterator it( mTodoListView ); it.current(); ++it )
     if ( incidences.contains( static_cast<KOTodoViewItem *>( it.current() 
                                                            )->todo() ) ) {
       if ( !first ) first = static_cast<KOTodoViewItem *>( it.current() );
@@ -1026,29 +1039,29 @@ CalPrinter::PrintType KOTodoView::printType()
   return CalPrinter::Todolist;
 }
 
-void KOTodoView::editItem( QListViewItem *item )
+void KOTodoView::editItem( Q3ListViewItem *item )
 {
   if (item)
     emit editIncidenceSignal( static_cast<KOTodoViewItem *>( item )->todo() );
 }
 
-void KOTodoView::editItem( QListViewItem *item, const QPoint &, int )
+void KOTodoView::editItem( Q3ListViewItem *item, const QPoint &, int )
 {
   editItem( item );
 }
 
-void KOTodoView::showItem( QListViewItem *item )
+void KOTodoView::showItem( Q3ListViewItem *item )
 {
   if (item)
     emit showIncidenceSignal( static_cast<KOTodoViewItem *>( item )->todo() );
 }
 
-void KOTodoView::showItem( QListViewItem *item, const QPoint &, int )
+void KOTodoView::showItem( Q3ListViewItem *item, const QPoint &, int )
 {
   showItem( item );
 }
 
-void KOTodoView::popupMenu( QListViewItem *item, const QPoint &, int column )
+void KOTodoView::popupMenu( Q3ListViewItem *item, const QPoint &, int column )
 {
   mActiveItem = static_cast<KOTodoViewItem *>( item );
   if ( mActiveItem && mActiveItem->todo() &&
@@ -1178,7 +1191,7 @@ void KOTodoView::setNewPercentage( KOTodoViewItem *item, int percentage )
       todo->setCompleted( QDateTime::currentDateTime() );
       // If the todo does recur, it doesn't get set as completed. However, the
       // item is still checked. Uncheck it again.
-      if ( !todo->isCompleted() ) item->setState( QCheckListItem::Off );
+      if ( !todo->isCompleted() ) item->setState( Q3CheckListItem::Off );
       else todo->setPercentComplete( percentage );
     } else {
       todo->setCompleted( false );
@@ -1251,9 +1264,9 @@ void KOTodoView::copyTodoToDate( QDate date )
  }
 }
 
-QPopupMenu *KOTodoView::getCategoryPopupMenu( KOTodoViewItem *todoItem )
+Q3PopupMenu *KOTodoView::getCategoryPopupMenu( KOTodoViewItem *todoItem )
 {
-  QPopupMenu *tempMenu = new QPopupMenu( this );
+  Q3PopupMenu *tempMenu = new Q3PopupMenu( this );
   QStringList checkedCategories = todoItem->todo()->categories();
 
   tempMenu->setCheckable( true );
@@ -1304,7 +1317,7 @@ void KOTodoView::setDocumentId( const QString &id )
   mDocPrefs->setDoc( id );
 }
 
-void KOTodoView::itemStateChanged( QListViewItem *item )
+void KOTodoView::itemStateChanged( Q3ListViewItem *item )
 {
   if (!item) return;
 
@@ -1322,7 +1335,7 @@ void KOTodoView::setNewPercentageDelayed( KOTodoViewItem *item, int percentage )
 
 void KOTodoView::processDelayedNewPercentage()
 {
-  QValueList< QPair< KOTodoViewItem *, int> >::Iterator it;
+  Q3ValueList< QPair< KOTodoViewItem *, int> >::Iterator it;
   for ( it = mPercentChangedMap.begin(); it != mPercentChangedMap.end(); ++it )
     setNewPercentage( (*it).first, (*it).second );
 

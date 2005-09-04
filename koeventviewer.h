@@ -25,7 +25,7 @@
 #ifndef KOEVENTVIEWER_H
 #define KOEVENTVIEWER_H
 
-#include <qtextbrowser.h>
+#include <q3textbrowser.h>
 #include <kdepimmacros.h>
 
 #include <kconfig.h>
@@ -40,7 +40,7 @@ using namespace KCal;
 /**
   Viewer widget for events.
 */
-class KDE_EXPORT KOEventViewer : public QTextBrowser
+class KDE_EXPORT KOEventViewer : public Q3TextBrowser
 {
     Q_OBJECT
   public:
@@ -89,7 +89,7 @@ class KDE_EXPORT KOEventViewer : public QTextBrowser
     virtual void showIncidenceContext();
   private:
     Incidence *mIncidence;
-    QTextBrowser *mEventTextView;
+    Q3TextBrowser *mEventTextView;
     QString mDefaultText;
     QString mText;
 };

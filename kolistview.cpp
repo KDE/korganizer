@@ -24,10 +24,14 @@
     without including the source code for Qt in the source distribution.
 */
 
-#include <qlistview.h>
+#include <q3listview.h>
 #include <qlayout.h>
-#include <qpopupmenu.h>
+#include <q3popupmenu.h>
 #include <qcursor.h>
+//Added by qt3to4:
+#include <QPixmap>
+#include <QVBoxLayout>
+#include <QBoxLayout>
 
 #include <klocale.h>
 #include <kdebug.h>
@@ -56,7 +60,7 @@ KOListViewToolTip::KOListViewToolTip( QWidget* parent,
 void KOListViewToolTip::maybeTip( const QPoint & pos)
 {
   QRect r;
-  QListViewItem *it = eventlist->itemAt(pos);
+  Q3ListViewItem *it = eventlist->itemAt(pos);
   KOListViewItem *i = static_cast<KOListViewItem*>(it);
 
   if( i && KOPrefs::instance()->mEnableToolTips ) {
@@ -227,14 +231,14 @@ KOListView::KOListView( Calendar *calendar, QWidget *parent,
                       SLOT(hideDates()));
 */
 
-  QObject::connect( mListView, SIGNAL( doubleClicked( QListViewItem * ) ),
-                    SLOT( defaultItemAction( QListViewItem * ) ) );
-  QObject::connect( mListView, SIGNAL( returnPressed( QListViewItem * ) ),
-                    SLOT( defaultItemAction( QListViewItem * ) ) );
-  QObject::connect( mListView, SIGNAL( rightButtonClicked ( QListViewItem *,
+  QObject::connect( mListView, SIGNAL( doubleClicked( Q3ListViewItem * ) ),
+                    SLOT( defaultItemAction( Q3ListViewItem * ) ) );
+  QObject::connect( mListView, SIGNAL( returnPressed( Q3ListViewItem * ) ),
+                    SLOT( defaultItemAction( Q3ListViewItem * ) ) );
+  QObject::connect( mListView, SIGNAL( rightButtonClicked ( Q3ListViewItem *,
                                                             const QPoint &,
                                                             int ) ),
-                    SLOT( popupMenu( QListViewItem *, const QPoint &, int ) ) );
+                    SLOT( popupMenu( Q3ListViewItem *, const QPoint &, int ) ) );
   QObject::connect( mListView, SIGNAL( selectionChanged() ),
                     SLOT( processSelectionChange() ) );
 
@@ -265,7 +269,7 @@ Incidence::List KOListView::selectedIncidences()
 {
   Incidence::List eventList;
 
-  QListViewItem *item = mListView->selectedItem();
+  Q3ListViewItem *item = mListView->selectedItem();
   if (item) eventList.append(((KOListViewItem *)item)->data());
 
   return eventList;
@@ -404,13 +408,13 @@ KOListViewItem *KOListView::getItemForIncidence(Incidence *incidence)
   return 0;
 }
 
-void KOListView::defaultItemAction(QListViewItem *i)
+void KOListView::defaultItemAction(Q3ListViewItem *i)
 {
   KOListViewItem *item = static_cast<KOListViewItem *>( i );
   if ( item ) defaultAction( item->data() );
 }
 
-void KOListView::popupMenu(QListViewItem *item,const QPoint &,int)
+void KOListView::popupMenu(Q3ListViewItem *item,const QPoint &,int)
 {
   mActiveItem = (KOListViewItem *)item;
   if (mActiveItem) {

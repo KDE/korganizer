@@ -28,7 +28,9 @@
 #include "calendarview.h"
 
 #include <libkcal/resourcecalendar.h>
-#include <qlistview.h>
+#include <q3listview.h>
+//Added by qt3to4:
+#include <Q3PtrList>
 
 namespace KCal {
 class CalendarResources;
@@ -55,7 +57,7 @@ class ResourceViewFactory : public CalendarViewExtension::Factory
 };
 
 
-class ResourceItem : public QCheckListItem
+class ResourceItem : public Q3CheckListItem
 {
   public:
     ResourceItem( KCal::ResourceCalendar *resource, ResourceView *view,
@@ -130,14 +132,14 @@ class ResourceView : public CalendarViewExtension
     void addResource();
     void removeResource();
     void editResource();
-    void currentChanged( QListViewItem* );
+    void currentChanged( Q3ListViewItem* );
     void slotSubresourceAdded( ResourceCalendar *, const QString &,
                                const QString &resource,const QString& label );
     void slotSubresourceRemoved( ResourceCalendar *, const QString &,
                                  const QString & );
     void closeResource( ResourceCalendar * );
 
-    void contextMenuRequested ( QListViewItem *i, const QPoint &pos, int );
+    void contextMenuRequested ( Q3ListViewItem *i, const QPoint &pos, int );
 
     void assignColor();
     void disableColor();
@@ -155,7 +157,7 @@ class ResourceView : public CalendarViewExtension
     QPushButton *mAddButton;
     QPushButton *mDeleteButton;
     QPushButton *mEditButton;
-    QPtrList<ResourceCalendar> mResourcesToClose;
+    Q3PtrList<ResourceCalendar> mResourcesToClose;
 };
 
 #endif

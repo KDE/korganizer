@@ -23,15 +23,16 @@
     without including the source code for Qt in the source distribution.
 */
 
-#include <qvbuttongroup.h>
-#include <qwidgetstack.h>
+#include <q3widgetstack.h>
 #include <qradiobutton.h>
 #include <qlayout.h>
 #include <qpushbutton.h>
 #include <qcombobox.h>
 #include <qlabel.h>
-#include <qvbox.h>
+#include <q3vbox.h>
 #include <qsplitter.h>
+//Added by qt3to4:
+#include <QGridLayout>
 
 #include <kprinter.h>
 #include <ksimpleconfig.h>
@@ -176,12 +177,12 @@ CalPrintDialog::CalPrintDialog( KOrg::PrintPlugin::List plugins, KPrinter *p,
   : KDialogBase( parent, name, /*modal*/true, i18n("Print"), Ok | Cancel ),
     mPrinter( p ), mPrintPlugins( plugins )
 {
-  QVBox *page = makeVBoxMainWidget();
+  Q3VBox *page = makeVBoxMainWidget();
 
   QSplitter *splitter = new QSplitter( page );
-  splitter->setOrientation( QSplitter::Horizontal );
+  splitter->setOrientation( Qt::Horizontal );
 
-  mTypeGroup = new QVButtonGroup( i18n("Print Style"), splitter, "buttonGroup" );
+  mTypeGroup = new Q3VButtonGroup( i18n("Print Style"), splitter, "buttonGroup" );
   // use the minimal width possible = max width of the radio buttons, not extensible
 /*  mTypeGroup->setSizePolicy( QSizePolicy( (QSizePolicy::SizeType)4,
     (QSizePolicy::SizeType)5, 0, 0,
@@ -192,7 +193,7 @@ CalPrintDialog::CalPrintDialog( KOrg::PrintPlugin::List plugins, KPrinter *p,
   splitterRightLayout->setMargin( marginHint() );
   splitterRightLayout->setSpacing( spacingHint() );
 
-  mConfigArea = new QWidgetStack( splitterRight, "configWidgetStack" );
+  mConfigArea = new Q3WidgetStack( splitterRight, "configWidgetStack" );
   splitterRightLayout->addMultiCellWidget( mConfigArea, 0,0, 0,1 );
 
   QLabel *orientationLabel = new QLabel( i18n("Page &orientation:"),

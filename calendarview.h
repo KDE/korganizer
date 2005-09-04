@@ -27,8 +27,10 @@
 #define CALENDARVIEW_H
 
 #include <qwidget.h>
-#include <qptrlist.h>
+#include <q3ptrlist.h>
 #include <qmap.h>
+//Added by qt3to4:
+#include <Q3CString>
 #include <kfile.h>
 #include <korganizer/koeventviewer.h>
 #include <libkcal/scheduler.h>
@@ -36,7 +38,7 @@
 
 #include <korganizer/calendarviewbase.h>
 
-class QWidgetStack;
+class Q3WidgetStack;
 class QSplitter;
 
 class CalPrinter;
@@ -122,7 +124,7 @@ class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::
     KOViewManager *viewManager() const { return mViewManager; }
     KODialogManager *dialogManager() const { return mDialogManager; }
 
-    QWidgetStack *viewStack() const { return mRightFrame; }
+    Q3WidgetStack *viewStack() const { return mRightFrame; }
     QWidget *leftFrame() const { return mLeftFrame; }
     NavigatorBar *navigatorBar() const { return mNavigatorBar; }
     DateNavigator *dateNavigator() const { return mNavigator; }
@@ -226,7 +228,7 @@ class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::
   public slots:
     /** options dialog made a changed to the configuration. we catch this
      *  and notify all widgets which need to update their configuration. */
-    void updateConfig( const QCString& );
+    void updateConfig( const Q3CString& );
     /** Calendar configuration was changed, so refresh categories list
     */
     void updateCategories();
@@ -586,14 +588,14 @@ class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::
     QSplitter    *mPanner;
     QSplitter    *mLeftSplitter;
     QWidget      *mLeftFrame;
-    QWidgetStack *mRightFrame;
+    Q3WidgetStack *mRightFrame;
 
     NavigatorBar *mNavigatorBar;
 
     DateNavigatorContainer *mDateNavigator;
 
 
-    QPtrList<CalendarViewExtension> mExtensions;
+    Q3PtrList<CalendarViewExtension> mExtensions;
 
     Calendar *mCalendar;
 
@@ -605,7 +607,7 @@ class KDE_EXPORT CalendarView : public KOrg::CalendarViewBase, public Calendar::
     KODialogManager *mDialogManager;
 
     // Calendar filters
-    QPtrList<CalFilter> mFilters;
+    Q3PtrList<CalFilter> mFilters;
     CalFilter *mCurrentFilter;
 
     // various housekeeping variables.

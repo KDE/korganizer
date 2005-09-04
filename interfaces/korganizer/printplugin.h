@@ -1,3 +1,5 @@
+//Added by qt3to4:
+#include <Q3PtrList>
 /*
     This file is part of KOrganizer.
 
@@ -47,7 +49,7 @@ class PrintPlugin : public KOrg::Plugin
          mCalendar(0), mConfig(0), mHelper(0) {}
     virtual ~PrintPlugin() {}
 
-    typedef QPtrList<PrintPlugin> List;
+    typedef Q3PtrList<PrintPlugin> List;
     static int interfaceVersion() { return 2; }
     static QString serviceType() { return "KOrganizer/PrintPlugin"; }
 

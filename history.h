@@ -25,7 +25,7 @@
 #define KORG_HISTORY_H
 
 #include <qobject.h>
-#include <qptrlist.h>
+#include <q3ptrlist.h>
 
 namespace KCal {
 
@@ -140,16 +140,16 @@ class History : public QObject
         QString text();
       
       private:
-        QPtrList<Entry> mEntries;
+        Q3PtrList<Entry> mEntries;
         QString mText;
     };
 
     KCal::Calendar *mCalendar;
     MultiEntry *mCurrentMultiEntry;
 
-    QPtrList<Entry> mEntries;
-    QPtrListIterator<Entry> mUndoEntry;
-    QPtrListIterator<Entry> mRedoEntry;
+    Q3PtrList<Entry> mEntries;
+    Q3PtrListIterator<Entry> mUndoEntry;
+    Q3PtrListIterator<Entry> mRedoEntry;
 };
 
 }

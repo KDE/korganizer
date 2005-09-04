@@ -27,7 +27,14 @@
 #include <qlabel.h>
 #include <qcombobox.h>
 #include <qpushbutton.h>
-#include <qwhatsthis.h>
+#include <q3whatsthis.h>
+//Added by qt3to4:
+#include <Q3Frame>
+#include <QHBoxLayout>
+#include <QBoxLayout>
+#include <Q3ValueList>
+#include <QTimerEvent>
+#include <QVBoxLayout>
 
 #include <kdebug.h>
 #include <klocale.h>
@@ -135,8 +142,8 @@ void FreeBusyItem::setFreeBusyPeriods( FreeBusy* fb )
       delete it;
 
     // Evaluate free/busy information
-    QValueList<KCal::Period> busyPeriods = fb->busyPeriods();
-    for( QValueList<KCal::Period>::Iterator it = busyPeriods.begin();
+    Q3ValueList<KCal::Period> busyPeriods = fb->busyPeriods();
+    for( Q3ValueList<KCal::Period>::Iterator it = busyPeriods.begin();
 	 it != busyPeriods.end(); ++it ) {
       KDGanttViewTaskItem* newSubItem = new KDGanttViewTaskItem( this );
       newSubItem->setStartTime( (*it).start() );
@@ -180,7 +187,7 @@ KOEditorFreeBusy::KOEditorFreeBusy( int spacing, QWidget *parent,
   mIsOrganizer = false; // Will be set later. This is just valgrind silencing
   mStatusSummaryLabel = new QLabel( this );
   mStatusSummaryLabel->setPalette( QToolTip::palette() );
-  mStatusSummaryLabel->setFrameStyle( QFrame::Plain | QFrame::Box );
+  mStatusSummaryLabel->setFrameStyle( Q3Frame::Plain | Q3Frame::Box );
   mStatusSummaryLabel->setLineWidth( 1 );
   mStatusSummaryLabel->hide(); // Will be unhidden later if you are organizer
   topLayout->addWidget( mStatusSummaryLabel );
@@ -196,11 +203,11 @@ KOEditorFreeBusy::KOEditorFreeBusy( int spacing, QWidget *parent,
 			   "while 'Automatic' selects the range most "
 			   "appropriate for the current event or to-do.");
   QLabel *label = new QLabel( i18n( "Scale: " ), this );
-  QWhatsThis::add( label, whatsThis );
+  Q3WhatsThis::add( label, whatsThis );
   controlLayout->addWidget( label );
 
   scaleCombo = new QComboBox( this ); 
-  QWhatsThis::add( scaleCombo, whatsThis );
+  Q3WhatsThis::add( scaleCombo, whatsThis );
   scaleCombo->insertItem( i18n( "Hour" ) );
   scaleCombo->insertItem( i18n( "Day" ) );
   scaleCombo->insertItem( i18n( "Week" ) );
@@ -212,14 +219,14 @@ KOEditorFreeBusy::KOEditorFreeBusy( int spacing, QWidget *parent,
   controlLayout->addWidget( scaleCombo );
 
   QPushButton *button = new QPushButton( i18n( "Center on Start" ), this );
-  QWhatsThis::add( button,
+  Q3WhatsThis::add( button,
 		   i18n("Centers the Gantt chart on the start time "
 		        "and day of this event.") );
   connect( button, SIGNAL( clicked() ), SLOT( slotCenterOnStart() ) );
   controlLayout->addWidget( button );
 
   button = new QPushButton( i18n( "Zoom to Fit" ), this );
-  QWhatsThis::add( button,
+  Q3WhatsThis::add( button,
 		   i18n("Zooms the Gantt chart so that you can see the "
 			"entire duration of the event on it.") );
   connect( button, SIGNAL( clicked() ), SLOT( slotZoomToTime() ) );
@@ -228,7 +235,7 @@ KOEditorFreeBusy::KOEditorFreeBusy( int spacing, QWidget *parent,
   controlLayout->addStretch( 1 );
 
   button = new QPushButton( i18n( "Pick Date" ), this );
-  QWhatsThis::add( button,
+  Q3WhatsThis::add( button,
 		   i18n("Moves the event to a date and time when all the "
 			"attendees are free.") );
   connect( button, SIGNAL( clicked() ), SLOT( slotPickDate() ) );
@@ -237,14 +244,14 @@ KOEditorFreeBusy::KOEditorFreeBusy( int spacing, QWidget *parent,
   controlLayout->addStretch( 1 );
 
   button = new QPushButton( i18n("Reload"), this );
-  QWhatsThis::add( button,
+  Q3WhatsThis::add( button,
 		   i18n("Reloads Free/Busy data for all attendees from "
 		   	"the corresponding servers.") );
   controlLayout->addWidget( button );
   connect( button, SIGNAL( clicked() ), SLOT( reload() ) );
 
   mGanttView = new KDGanttView( this, "mGanttView" );
-  QWhatsThis::add( mGanttView,
+  Q3WhatsThis::add( mGanttView,
 		   i18n("Shows the free/busy status of all attendees. "
 		   	"Double-clicking on an attendees entry in the "
 			"list will allow you to enter the location of their "
@@ -558,8 +565,8 @@ bool KOEditorFreeBusy::tryDate( FreeBusyItem *attendee,
   if( !fb )
     return true;
 
-  QValueList<KCal::Period> busyPeriods = fb->busyPeriods();
-  for( QValueList<KCal::Period>::Iterator it = busyPeriods.begin();
+  Q3ValueList<KCal::Period> busyPeriods = fb->busyPeriods();
+  for( Q3ValueList<KCal::Period>::Iterator it = busyPeriods.begin();
        it != busyPeriods.end(); ++it ) {
     if( (*it).end() <= tryFrom || // busy period ends before try period
 	(*it).start() >= tryTo )  // busy period starts after try period

@@ -24,6 +24,8 @@
 #include <qstring.h>
 #include <qdatetime.h>
 #include <qpixmap.h>
+//Added by qt3to4:
+#include <Q3PtrList>
 
 #include <klibloader.h>
 
@@ -43,7 +45,7 @@ class CalendarDecoration : public Plugin
     static int interfaceVersion() { return 2; }
     static QString serviceType() { return "Calendar/Decoration"; }
 
-    typedef QPtrList<CalendarDecoration> List;
+    typedef Q3PtrList<CalendarDecoration> List;
 
     CalendarDecoration() {}
     virtual ~CalendarDecoration() {}

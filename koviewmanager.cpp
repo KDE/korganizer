@@ -23,7 +23,7 @@
     without including the source code for Qt in the source distribution.
 */
 
-#include <qwidgetstack.h>
+#include <q3widgetstack.h>
 
 #include <kconfig.h>
 #include <kglobal.h>

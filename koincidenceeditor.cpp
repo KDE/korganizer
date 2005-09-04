@@ -23,12 +23,17 @@
 */
 
 #include <qtooltip.h>
-#include <qframe.h>
+#include <q3frame.h>
 #include <qpixmap.h>
 #include <qlayout.h>
-#include <qwidgetstack.h>
+#include <q3widgetstack.h>
 #include <qdatetime.h>
-#include <qwhatsthis.h>
+#include <q3whatsthis.h>
+//Added by qt3to4:
+#include <QVBoxLayout>
+#include <Q3CString>
+#include <QBoxLayout>
+#include <Q3PtrList>
 
 #include <kdebug.h>
 #include <klocale.h>
@@ -91,7 +96,7 @@ KOIncidenceEditor::~KOIncidenceEditor()
 void KOIncidenceEditor::setupAttendeesTab()
 {
   QFrame *topFrame = addPage( i18n("Atte&ndees") );
-  QWhatsThis::add( topFrame,
+  Q3WhatsThis::add( topFrame,
                    i18n("The Attendees tab allows you to Add or Remove "
                         "Attendees to/from this event or to-do.") );
 
@@ -104,7 +109,7 @@ void KOIncidenceEditor::setupAttendeesTab()
 void KOIncidenceEditor::setupAttachmentsTab()
 {
   QFrame *topFrame = addPage( i18n("Attach&ments") );
-  QWhatsThis::add( topFrame,
+  Q3WhatsThis::add( topFrame,
                    i18n("The Attachments tab allows you to add or remove "
                         "files, emails, contacts, and other items "
                         "associated with this event or to-do.") );
@@ -261,8 +266,8 @@ class KCalStorage : public KPIM::DesignerFields::Storage
     {
       QStringList keys;
 
-      QMap<QCString, QString> props = mIncidence->customProperties();
-      QMap<QCString, QString>::ConstIterator it;
+      QMap<Q3CString, QString> props = mIncidence->customProperties();
+      QMap<Q3CString, QString>::ConstIterator it;
       for( it = props.begin(); it != props.end(); ++it ) {
         QString customKey = it.key();
         QStringList parts = QStringList::split( "-", customKey );
@@ -342,7 +347,7 @@ kdDebug() << "mEmbeddedURLPages are not empty, clearing it!" << endl;
     mEmbeddedURLPages.setAutoDelete( false );
   }
   if ( !mAttachedDesignerFields.isEmpty() ) {
-    for ( QPtrList<QWidget>::Iterator it = mAttachedDesignerFields.begin();
+    for ( Q3PtrList<QWidget>::Iterator it = mAttachedDesignerFields.begin();
           it != mAttachedDesignerFields.end(); ++it ) {
       if ( mDesignerFieldForWidget.contains( *it ) ) {
         mDesignerFields.remove( mDesignerFieldForWidget[ *it ] );

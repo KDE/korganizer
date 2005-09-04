@@ -26,10 +26,12 @@
 // View of Journal entries
 
 #include <qlayout.h>
-#include <qpopupmenu.h>
-#include <qvbox.h>
+#include <q3popupmenu.h>
+#include <q3vbox.h>
 #include <qlabel.h>
-#include <qscrollview.h>
+#include <q3scrollview.h>
+//Added by qt3to4:
+#include <QVBoxLayout>
 
 #include <klocale.h>
 #include <kdebug.h>
@@ -48,12 +50,12 @@ KOJournalView::KOJournalView(Calendar *calendar, QWidget *parent,
 {
   QVBoxLayout*topLayout = new QVBoxLayout( this );
   topLayout->setAutoAdd(true);
-  mSV = new QScrollView( this, "JournalScrollView" );
+  mSV = new Q3ScrollView( this, "JournalScrollView" );
   topLayout = new QVBoxLayout( mSV->viewport() );
   topLayout->setAutoAdd(true);
-  mVBox = new QVBox( mSV->viewport() );
-  mSV->setVScrollBarMode( QScrollView::Auto );
-  mSV->setHScrollBarMode( QScrollView::AlwaysOff );
+  mVBox = new Q3VBox( mSV->viewport() );
+  mSV->setVScrollBarMode( Q3ScrollView::Auto );
+  mSV->setHScrollBarMode( Q3ScrollView::AlwaysOff );
 //  mVBox->setSpacing( 10 );
 }
 

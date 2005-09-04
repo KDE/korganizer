@@ -27,14 +27,16 @@
 #include "koeditoralarms.h"
 
 #include <qlayout.h>
-#include <qlistview.h>
+#include <q3listview.h>
 #include <qpushbutton.h>
 #include <qspinbox.h>
 #include <qcombobox.h>
 #include <qcheckbox.h>
-#include <qbuttongroup.h>
-#include <qtextedit.h>
-#include <qwidgetstack.h>
+#include <q3buttongroup.h>
+#include <q3textedit.h>
+#include <q3widgetstack.h>
+//Added by qt3to4:
+#include <Q3ValueList>
 
 #include <kurlrequester.h>
 #include <klocale.h>
@@ -45,10 +47,10 @@
 
 #include <libemailfunctions/email.h>
 
-class AlarmListViewItem : public QListViewItem
+class AlarmListViewItem : public Q3ListViewItem
 {
   public:
-    AlarmListViewItem( QListView *parent, KCal::Alarm *alarm );
+    AlarmListViewItem( Q3ListView *parent, KCal::Alarm *alarm );
     virtual ~AlarmListViewItem();
     KCal::Alarm *alarm() const { return mAlarm; }
     void construct();
@@ -57,8 +59,8 @@ class AlarmListViewItem : public QListViewItem
     KCal::Alarm *mAlarm;
 };
 
-AlarmListViewItem::AlarmListViewItem( QListView *parent, KCal::Alarm *alarm )
-    : QListViewItem( parent )
+AlarmListViewItem::AlarmListViewItem( Q3ListView *parent, KCal::Alarm *alarm )
+    : Q3ListViewItem( parent )
 {
   if ( alarm ) {
     mAlarm = new KCal::Alarm( *alarm );
@@ -140,10 +142,10 @@ KOEditorAlarms::KOEditorAlarms( KCal::Alarm::List *alarms, QWidget *parent,
   : KDialogBase( parent, name, true, i18n("Edit Reminders"), Ok | Apply | Cancel ), mAlarms( alarms )
 {
   setMainWidget( mWidget = new KOEditorAlarms_base( this ) );
-  mWidget->mAlarmList->setColumnWidthMode( 0, QListView::Maximum );
-  mWidget->mAlarmList->setColumnWidthMode( 1, QListView::Maximum );
-  connect( mWidget->mAlarmList, SIGNAL( selectionChanged( QListViewItem * ) ),
-           SLOT( selectionChanged( QListViewItem * ) ) );
+  mWidget->mAlarmList->setColumnWidthMode( 0, Q3ListView::Maximum );
+  mWidget->mAlarmList->setColumnWidthMode( 1, Q3ListView::Maximum );
+  connect( mWidget->mAlarmList, SIGNAL( selectionChanged( Q3ListViewItem * ) ),
+           SLOT( selectionChanged( Q3ListViewItem * ) ) );
   connect( mWidget->mAddButton, SIGNAL( clicked() ), SLOT( slotAdd() ) );
   connect( mWidget->mRemoveButton, SIGNAL( clicked() ), SLOT( slotRemove() ) );
   connect( mWidget->mDuplicateButton, SIGNAL( clicked() ), SLOT( slotDuplicate() ) );
@@ -236,9 +238,9 @@ void KOEditorAlarms::readAlarm( KCal::Alarm *alarm )
         break;
     case KCal::Alarm::Email: {
         mWidget->mAlarmType->setButton( 3 );
-        QValueList<KCal::Person> addresses = alarm->mailAddresses();
+        Q3ValueList<KCal::Person> addresses = alarm->mailAddresses();
         QStringList add;
-        for ( QValueList<KCal::Person>::ConstIterator it = addresses.begin();
+        for ( Q3ValueList<KCal::Person>::ConstIterator it = addresses.begin();
               it != addresses.end(); ++it ) {
           add << (*it).fullName();
         }
@@ -296,7 +298,7 @@ void KOEditorAlarms::writeAlarm( KCal::Alarm *alarm )
         break;
     case 3: { // Email
         QStringList addresses = KPIM::splitEmailAddrList( mWidget->mEmailAddress->text() );
-        QValueList<KCal::Person> add;
+        Q3ValueList<KCal::Person> add;
         for ( QStringList::Iterator it = addresses.begin(); it != addresses.end();
               ++it ) {
           add << KCal::Person( *it );
@@ -312,7 +314,7 @@ void KOEditorAlarms::writeAlarm( KCal::Alarm *alarm )
   }
 }
 
-void KOEditorAlarms::selectionChanged( QListViewItem *listviewitem )
+void KOEditorAlarms::selectionChanged( Q3ListViewItem *listviewitem )
 {
   AlarmListViewItem *item = dynamic_cast<AlarmListViewItem*>(listviewitem);
   mCurrentItem = item;
@@ -328,7 +330,7 @@ void KOEditorAlarms::slotApply()
   // copy the mAlarms list
   if ( mAlarms ) {
     mAlarms->clear();
-    QListViewItemIterator it( mWidget->mAlarmList );
+    Q3ListViewItemIterator it( mWidget->mAlarmList );
     while ( it.current() ) {
       AlarmListViewItem *item = dynamic_cast<AlarmListViewItem*>(*it);
       if ( item ) {

@@ -27,7 +27,9 @@
 #include <libkdepim/kprefsdialog.h>
 #include <libkdepim/kcmdesignerfields.h>
 
-#include <qdict.h>
+#include <q3dict.h>
+//Added by qt3to4:
+#include <QLabel>
 
 class QLineEdit;
 class QLabel;
@@ -36,7 +38,7 @@ class QComboBox;
 class KColorButton;
 class KPushButton;
 class QColor;
-class QListView;
+class Q3ListView;
 
 class KDE_EXPORT KOPrefsDialogMain : public KPrefsModule
 {
@@ -71,11 +73,11 @@ class KDE_EXPORT KOPrefsDialogColors : public KPrefsModule
   private:
     QComboBox     *mCategoryCombo;
     KColorButton  *mCategoryButton;
-    QDict<QColor> mCategoryDict;
+    Q3Dict<QColor> mCategoryDict;
 
     QComboBox     *mResourceCombo;
     KColorButton  *mResourceButton;
-    QDict<QColor> mResourceDict;
+    Q3Dict<QColor> mResourceDict;
     //For translation Identifier <->idx in Combo
     QStringList mResourceIdentifier;
 };
@@ -97,7 +99,7 @@ class KDE_EXPORT KOPrefsDialogGroupScheduling : public KPrefsModule
     void updateInput();
 
   private:
-    QListView *mAMails;
+    Q3ListView *mAMails;
     QLineEdit *aEmailsEdit;
 };
 
@@ -127,11 +129,11 @@ class KDE_EXPORT KOPrefsDialogPlugins : public KPrefsModule
     void usrReadConfig();
     void usrWriteConfig();
     void configure();
-    void selectionChanged( QListViewItem* );
+    void selectionChanged( Q3ListViewItem* );
 
   private:
     void buildList();
-    QListView *mListView;
+    Q3ListView *mListView;
     QLabel *mDescription;
     KPushButton *mConfigureButton;
 };

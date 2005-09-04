@@ -27,6 +27,8 @@
 #define SEARCHDIALOG_H
 
 #include <qregexp.h>
+//Added by qt3to4:
+#include <QLabel>
 
 #include <kdialogbase.h>
 

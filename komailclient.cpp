@@ -42,6 +42,8 @@
 #include "koprefs.h"
 
 #include "komailclient.h"
+//Added by qt3to4:
+#include <Q3CString>
 
 KOMailClient::KOMailClient()
 {
@@ -219,8 +221,8 @@ int KOMailClient::kMailOpenComposer(const QString& arg0,const QString& arg1,
   int result = 0;
 
   QByteArray data, replyData;
-  QCString replyType;
-  QDataStream arg( data, IO_WriteOnly );
+  Q3CString replyType;
+  QDataStream arg( data, QIODevice::WriteOnly );
   arg << arg0;
   arg << arg1;
   arg << arg2;
@@ -233,7 +235,7 @@ int KOMailClient::kMailOpenComposer(const QString& arg0,const QString& arg1,
 #endif
   if (kapp->dcopClient()->call("kmail","KMailIface","openComposer(QString,QString,QString,QString,QString,int,KURL)", data, replyType, replyData ) ) {
     if ( replyType == "int" ) {
-      QDataStream _reply_stream( replyData, IO_ReadOnly );
+      QDataStream _reply_stream( replyData, QIODevice::ReadOnly );
       _reply_stream >> result;
     } else {
       kdDebug(5850) << "kMailOpenComposer() call failed." << endl;
@@ -247,10 +249,10 @@ int KOMailClient::kMailOpenComposer(const QString& arg0,const QString& arg1,
 int KOMailClient::kMailOpenComposer( const QString& arg0, const QString& arg1,
                                      const QString& arg2, const QString& arg3,
                                      const QString& arg4, int arg5, const QString& arg6,
-                                     const QCString& arg7, const QCString& arg8,
-                                     const QCString& arg9, const QCString& arg10,
-                                     const QCString& arg11, const QString& arg12,
-                                     const QCString& arg13, const QCString& arg14 )
+                                     const Q3CString& arg7, const Q3CString& arg8,
+                                     const Q3CString& arg9, const Q3CString& arg10,
+                                     const Q3CString& arg11, const QString& arg12,
+                                     const Q3CString& arg13, const Q3CString& arg14 )
 {
     //kdDebug(5850) << "KOMailClient::kMailOpenComposer( "
     //    << arg0 << " , " << arg1 << arg2 << " , " << arg3
@@ -262,8 +264,8 @@ int KOMailClient::kMailOpenComposer( const QString& arg0, const QString& arg1,
     int result = 0;
 
     QByteArray data, replyData;
-    QCString replyType;
-    QDataStream arg( data, IO_WriteOnly );
+    Q3CString replyType;
+    QDataStream arg( data, QIODevice::WriteOnly );
     arg << arg0;
     arg << arg1;
     arg << arg2;
@@ -285,7 +287,7 @@ int KOMailClient::kMailOpenComposer( const QString& arg0, const QString& arg1,
     if ( kapp->dcopClient()->call("kmail","KMailIface",
           "openComposer(QString,QString,QString,QString,QString,int,QString,QCString,QCString,QCString,QCString,QCString,QString,QCString,QCString)", data, replyType, replyData ) ) {
         if ( replyType == "int" ) {
-            QDataStream _reply_stream( replyData, IO_ReadOnly );
+            QDataStream _reply_stream( replyData, QIODevice::ReadOnly );
             _reply_stream >> result;
         } else {
             kdDebug(5850) << "kMailOpenComposer() call failed." << endl;

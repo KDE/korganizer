@@ -25,8 +25,12 @@
 #ifndef KDATENAVIGATOR_H
 #define KDATENAVIGATOR_H
 
-#include <qframe.h>
+#include <q3frame.h>
 #include <qdatetime.h>
+//Added by qt3to4:
+#include <QLabel>
+#include <QWheelEvent>
+#include <QEvent>
 
 #include <libkcal/incidencebase.h>
 
@@ -42,7 +46,7 @@ using namespace KCal;
 
 class KODayMatrix;
 
-class KDateNavigator: public QFrame
+class KDateNavigator: public Q3Frame
 {
     Q_OBJECT
   public:

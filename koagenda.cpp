@@ -26,13 +26,24 @@
 */
 #include <assert.h>
 
-#include <qintdict.h>
+#include <q3intdict.h>
 #include <qdatetime.h>
 #include <qapplication.h>
-#include <qpopupmenu.h>
+#include <q3popupmenu.h>
 #include <qcursor.h>
 #include <qpainter.h>
 #include <qlabel.h>
+//Added by qt3to4:
+#include <QWheelEvent>
+#include <QPixmap>
+#include <Q3MemArray>
+#include <Q3PtrList>
+#include <QEvent>
+#include <QKeyEvent>
+#include <Q3Frame>
+#include <QDropEvent>
+#include <QResizeEvent>
+#include <QMouseEvent>
 
 #include <kdebug.h>
 #include <klocale.h>
@@ -62,7 +73,7 @@
 
 ////////////////////////////////////////////////////////////////////////////
 MarcusBains::MarcusBains(KOAgenda *_agenda,const char *name)
-    : QFrame(_agenda->viewport(),name), agenda(_agenda)
+    : Q3Frame(_agenda->viewport(),name), agenda(_agenda)
 {
   setLineWidth(0);
   setMargin(0);
@@ -158,8 +169,8 @@ void MarcusBains::updateLocation(bool recalculate)
   Create an agenda widget with rows rows and columns columns.
 */
 KOAgenda::KOAgenda( int columns, int rows, int rowSize, QWidget *parent,
-                    const char *name, WFlags f )
-  : QScrollView( parent, name, f ), mChanger( 0 )
+                    const char *name, Qt::WFlags f )
+  : Q3ScrollView( parent, name, f ), mChanger( 0 )
 {
   mColumns = columns;
   mRows = rows;
@@ -175,8 +186,8 @@ KOAgenda::KOAgenda( int columns, int rows, int rowSize, QWidget *parent,
   Create an agenda widget with columns columns and one row. This is used for
   all-day events.
 */
-KOAgenda::KOAgenda( int columns, QWidget *parent, const char *name, WFlags f )
-  : QScrollView( parent, name, f )
+KOAgenda::KOAgenda( int columns, QWidget *parent, const char *name, Qt::WFlags f )
+  : Q3ScrollView( parent, name, f )
 {
   mColumns = columns;
   mRows = 1;
@@ -369,7 +380,7 @@ bool KOAgenda::eventFilter ( QObject *object, QEvent *event )
 
     case QEvent::Enter:
       emit enterAgenda();
-      return QScrollView::eventFilter( object, event );
+      return Q3ScrollView::eventFilter( object, event );
 
 #ifndef KORG_NODND
     case QEvent::DragEnter:
@@ -381,7 +392,7 @@ bool KOAgenda::eventFilter ( QObject *object, QEvent *event )
 #endif
 
     default:
-      return QScrollView::eventFilter( object, event );
+      return Q3ScrollView::eventFilter( object, event );
   }
 }
 
@@ -455,7 +466,7 @@ bool KOAgenda::eventFilter_key( QObject *, QKeyEvent *ke )
   // kdDebug(5850) << "KOAgenda::eventFilter_key() " << ke->type() << endl;
 
   // If Return is pressed bring up an editor for the current selected time span.
-  if ( ke->key() == Key_Return ) {
+  if ( ke->key() == Qt::Key_Return ) {
     if ( ke->type() == QEvent::KeyPress ) mReturnPressed = true;
     else if ( ke->type() == QEvent::KeyRelease ) {
       if ( mReturnPressed ) {
@@ -473,24 +484,24 @@ bool KOAgenda::eventFilter_key( QObject *, QKeyEvent *ke )
 
   if ( ke->type() == QEvent::KeyPress || ke->type() == QEvent::KeyRelease ) {
     switch ( ke->key() ) {
-      case Key_Escape:
-      case Key_Return:
-      case Key_Enter:
-      case Key_Tab:
-      case Key_Backtab:
-      case Key_Left:
-      case Key_Right:
-      case Key_Up:
-      case Key_Down:
-      case Key_Backspace:
-      case Key_Delete:
-      case Key_Prior:
-      case Key_Next:
-      case Key_Home:
-      case Key_End:
-      case Key_Control:
-      case Key_Meta:
-      case Key_Alt:
+      case Qt::Key_Escape:
+      case Qt::Key_Return:
+      case Qt::Key_Enter:
+      case Qt::Key_Tab:
+      case Qt::Key_Backtab:
+      case Qt::Key_Left:
+      case Qt::Key_Right:
+      case Qt::Key_Up:
+      case Qt::Key_Down:
+      case Qt::Key_Backspace:
+      case Qt::Key_Delete:
+      case Qt::Key_PageUp:
+      case Qt::Key_PageDown:
+      case Qt::Key_Home:
+      case Qt::Key_End:
+      case Qt::Key_Control:
+      case Qt::Key_Meta:
+      case Qt::Key_Alt:
         break;
       default:
         mTypeAheadEvents.append( new QKeyEvent( ke->type(), ke->key(),
@@ -530,7 +541,7 @@ bool KOAgenda::eventFilter_wheel ( QObject *object, QWheelEvent *e )
 {
   QPoint viewportPos;
   bool accepted=false;
-  if  ( ( e->state() & ShiftButton) == ShiftButton ) {
+  if  ( ( e->state() & Qt::ShiftModifier) == Qt::ShiftModifier ) {
     if ( object != viewport() ) {
       viewportPos = ( (QWidget *) object )->mapToParent( e->pos() );
     } else {
@@ -544,7 +555,7 @@ bool KOAgenda::eventFilter_wheel ( QObject *object, QWheelEvent *e )
     accepted=true;
   }
 
-  if  ( ( e->state() & ControlButton ) == ControlButton ){
+  if  ( ( e->state() & Qt::ControlModifier ) == Qt::ControlModifier ){
     if ( object != viewport() ) {
       viewportPos = ( (QWidget *)object )->mapToParent( e->pos() );
     } else {
@@ -1130,7 +1141,7 @@ void KOAgenda::endItemAction()
 
       KOAgendaItem *modif = placeItem;
 
-      QPtrList<KOAgendaItem> oldconflictItems = placeItem->conflictItems();
+      Q3PtrList<KOAgendaItem> oldconflictItems = placeItem->conflictItems();
       KOAgendaItem *item;
       for ( item = oldconflictItems.first(); item != 0;
             item = oldconflictItems.next() ) {
@@ -1294,16 +1305,16 @@ void KOAgenda::placeSubCells( KOAgendaItem *placeItem )
   kdDebug(5850) << "KOAgenda::placeSubCells()..." << endl;
 #endif
 
-  QPtrList<KOrg::CellItem> cells;
+  Q3PtrList<KOrg::CellItem> cells;
   KOAgendaItem *item;
   for ( item = mItems.first(); item != 0; item = mItems.next() ) {
     cells.append( item );
   }
 
-  QPtrList<KOrg::CellItem> items = KOrg::CellItem::placeItem( cells,
+  Q3PtrList<KOrg::CellItem> items = KOrg::CellItem::placeItem( cells,
                                                               placeItem );
 
-  placeItem->setConflictItems( QPtrList<KOAgendaItem>() );
+  placeItem->setConflictItems( Q3PtrList<KOAgendaItem>() );
   double newSubCellWidth = calcSubCellWidth( placeItem );
   KOrg::CellItem *i;
   for ( i = items.first(); i; i = items.next() ) {
@@ -1503,9 +1514,9 @@ QTime KOAgenda::gyToTime(int gy)
   return time;
 }
 
-QMemArray<int> KOAgenda::minContentsY()
+Q3MemArray<int> KOAgenda::minContentsY()
 {
-  QMemArray<int> minArray;
+  Q3MemArray<int> minArray;
   minArray.fill( timeToY( QTime(23, 59) ), mSelectedDates.count() );
   for ( KOAgendaItem *item = mItems.first();
         item != 0; item = mItems.next() ) {
@@ -1520,9 +1531,9 @@ QMemArray<int> KOAgenda::minContentsY()
   return minArray;
 }
 
-QMemArray<int> KOAgenda::maxContentsY()
+Q3MemArray<int> KOAgenda::maxContentsY()
 {
-  QMemArray<int> maxArray;
+  Q3MemArray<int> maxArray;
   maxArray.fill( timeToY( QTime(0, 0) ), mSelectedDates.count() );
   for ( KOAgendaItem *item = mItems.first();
         item != 0; item = mItems.next() ) {
@@ -1652,7 +1663,7 @@ void KOAgenda::insertMultiItem (Event *event,const QDate &qd,int XBegin,int XEnd
   int width = XEnd - XBegin + 1;
   int count = 0;
   KOAgendaItem *current = 0;
-  QPtrList<KOAgendaItem> multiItems;
+  Q3PtrList<KOAgendaItem> multiItems;
   int visibleCount = mSelectedDates.first().daysTo(mSelectedDates.last());
   for ( cellX = XBegin; cellX <= XEnd; ++cellX ) {
     ++count;
@@ -1697,7 +1708,7 @@ void KOAgenda::removeIncidence( Incidence *incidence )
   // First find all items to be deleted and store them
   // in its own list. Otherwise removeAgendaItem will reset
   // the current position and mess this up.
-  QPtrList<KOAgendaItem> itemsToRemove;
+  Q3PtrList<KOAgendaItem> itemsToRemove;
 
   KOAgendaItem *item = mItems.first();
   while ( item ) {
@@ -1730,7 +1741,7 @@ bool KOAgenda::removeAgendaItem( KOAgendaItem *item )
   // we found the item. Let's remove it and update the conflicts
   bool taken = false;
   KOAgendaItem *thisItem = item;
-  QPtrList<KOAgendaItem> conflictItems = thisItem->conflictItems();
+  Q3PtrList<KOAgendaItem> conflictItems = thisItem->conflictItems();
   removeChild( thisItem );
   int pos = mItems.find( thisItem );
   if ( pos>=0 ) {
@@ -1790,7 +1801,7 @@ void KOAgenda::resizeEvent ( QResizeEvent *ev )
   }
   calculateWorkingHours();
   QTimer::singleShot( 0, this, SLOT( resizeAllContents() ) );
-  QScrollView::resizeEvent(ev);
+  Q3ScrollView::resizeEvent(ev);
 }
 
 void KOAgenda::resizeAllContents()
@@ -1972,7 +1983,7 @@ void KOAgenda::setDateList(const DateList &selectedDates)
     marcus_bains();
 }
 
-void KOAgenda::setHolidayMask(QMemArray<bool> *mask)
+void KOAgenda::setHolidayMask(Q3MemArray<bool> *mask)
 {
   mHolidayMask = mask;
 
@@ -1981,7 +1992,7 @@ void KOAgenda::setHolidayMask(QMemArray<bool> *mask)
 void KOAgenda::contentsMousePressEvent ( QMouseEvent *event )
 {
   kdDebug(5850) << "KOagenda::contentsMousePressEvent(): type: " << event->type() << endl;
-  QScrollView::contentsMousePressEvent(event);
+  Q3ScrollView::contentsMousePressEvent(event);
 }
 
 void KOAgenda::setTypeAheadReceiver( QObject *o )

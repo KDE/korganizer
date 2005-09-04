@@ -30,9 +30,11 @@
 
 #include <qapplication.h>
 #include <qtimer.h>
-#include <qpopupmenu.h>
+#include <q3popupmenu.h>
 #include <qlabel.h>
-#include <qheader.h>
+#include <q3header.h>
+//Added by qt3to4:
+#include <Q3ValueList>
 
 #define KLISTVIEWSEARCHLINE_ALLVISIBLECOLUMNS_ID 2004
 
@@ -46,14 +48,14 @@ public:
         canChooseColumns(true),
         queuedSearches(0) {}
 
-    QValueList<KListView *> listViews;
+    Q3ValueList<KListView *> listViews;
     bool caseSensitive;
     bool activeSearch;
     bool keepParentsVisible;
     bool canChooseColumns;
     QString search;
     int queuedSearches;
-    QValueList<int> searchColumns;
+    Q3ValueList<int> searchColumns;
 };
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -72,7 +74,7 @@ KListViewNewSearchLine::KListViewNewSearchLine(QWidget *parent, KListView *listV
 }
 
 KListViewNewSearchLine::KListViewNewSearchLine(QWidget *parent,
-                                       const QValueList<KListView *> &listViews,
+                                       const Q3ValueList<KListView *> &listViews,
                                        const char *name) :
      KLineEdit(parent, name)
 {
@@ -106,12 +108,12 @@ bool KListViewNewSearchLine::caseSensitive() const
     return d->caseSensitive;
 }
 
-QValueList<int> KListViewNewSearchLine::searchColumns() const
+Q3ValueList<int> KListViewNewSearchLine::searchColumns() const
 {
     if (d->canChooseColumns)
         return d->searchColumns;
     else
-        return QValueList<int>();
+        return Q3ValueList<int>();
 }
 
 bool KListViewNewSearchLine::keepParentsVisible() const
@@ -127,7 +129,7 @@ KListView *KListViewNewSearchLine::listView() const
         return 0;
 }
 
-const QValueList<KListView *> &KListViewNewSearchLine::listViews() const
+const Q3ValueList<KListView *> &KListViewNewSearchLine::listViews() const
 {
     return d->listViews;
 }
@@ -152,7 +154,7 @@ void KListViewNewSearchLine::addListView(KListView *lv)
 void KListViewNewSearchLine::removeListView(KListView *lv)
 {
     if (lv) {
-        QValueList<KListView *>::Iterator it = d->listViews.find(lv);
+        Q3ValueList<KListView *>::Iterator it = d->listViews.find(lv);
         
         if ( it != d->listViews.end() ) {
             d->listViews.remove( it );
@@ -169,7 +171,7 @@ void KListViewNewSearchLine::updateSearch(const QString &s)
 {
     d->search = s.isNull() ? text() : s;
 
-    for (QValueList<KListView *>::Iterator it = d->listViews.begin();
+    for (Q3ValueList<KListView *>::Iterator it = d->listViews.begin();
          it != d->listViews.end(); ++it)
         updateSearch( *it );
 }
@@ -183,7 +185,7 @@ void KListViewNewSearchLine::updateSearch(KListView *listView)
     // If there's a selected item that is visible, make sure that it's visible
     // when the search changes too (assuming that it still matches).
 
-    QListViewItem *currentItem = 0;
+    Q3ListViewItem *currentItem = 0;
 
     switch(listView->selectionMode())
     {
@@ -194,8 +196,8 @@ void KListViewNewSearchLine::updateSearch(KListView *listView)
         break;
     default:
     {
-        int flags = QListViewItemIterator::Selected | QListViewItemIterator::Visible;
-        for(QListViewItemIterator it(listView, flags);
+        int flags = Q3ListViewItemIterator::Selected | Q3ListViewItemIterator::Visible;
+        for(Q3ListViewItemIterator it(listView, flags);
             it.current() && !currentItem;
             ++it)
         {
@@ -224,7 +226,7 @@ void KListViewNewSearchLine::setKeepParentsVisible(bool v)
     d->keepParentsVisible = v;
 }
 
-void KListViewNewSearchLine::setSearchColumns(const QValueList<int> &columns)
+void KListViewNewSearchLine::setSearchColumns(const Q3ValueList<int> &columns)
 {
     if (d->canChooseColumns)
         d->searchColumns = columns;
@@ -232,19 +234,19 @@ void KListViewNewSearchLine::setSearchColumns(const QValueList<int> &columns)
 
 void KListViewNewSearchLine::setListView(KListView *lv)
 {
-    setListViews(QValueList<KListView *>());
+    setListViews(Q3ValueList<KListView *>());
     addListView(lv);
 }
 
-void KListViewNewSearchLine::setListViews(const QValueList<KListView *> &lv)
+void KListViewNewSearchLine::setListViews(const Q3ValueList<KListView *> &lv)
 {
-    for (QValueList<KListView *>::Iterator it = d->listViews.begin();
+    for (Q3ValueList<KListView *>::Iterator it = d->listViews.begin();
          it != d->listViews.end(); ++it)
              disconnectListView(*it);
     
     d->listViews = lv;
 
-    for (QValueList<KListView *>::Iterator it = d->listViews.begin();
+    for (Q3ValueList<KListView *>::Iterator it = d->listViews.begin();
          it != d->listViews.end(); ++it)
         connectListView(*it);
 
@@ -255,7 +257,7 @@ void KListViewNewSearchLine::setListViews(const QValueList<KListView *> &lv)
 // protected members
 ////////////////////////////////////////////////////////////////////////////////
 
-bool KListViewNewSearchLine::itemMatches(const QListViewItem *item, const QString &s) const
+bool KListViewNewSearchLine::itemMatches(const Q3ListViewItem *item, const QString &s) const
 {
     if(s.isEmpty())
         return true;
@@ -264,7 +266,7 @@ bool KListViewNewSearchLine::itemMatches(const QListViewItem *item, const QStrin
     // specifified.  If it is empty default to searching all of the columns.
 
     if(!d->searchColumns.isEmpty()) {
-        QValueList<int>::ConstIterator it = d->searchColumns.begin();
+        Q3ValueList<int>::ConstIterator it = d->searchColumns.begin();
         for(; it != d->searchColumns.end(); ++it) {
             if(*it < item->listView()->columns() &&
                item->text(*it).find(s, 0, d->caseSensitive) >= 0)
@@ -284,12 +286,12 @@ bool KListViewNewSearchLine::itemMatches(const QListViewItem *item, const QStrin
     return false;
 }
 
-QPopupMenu *KListViewNewSearchLine::createPopupMenu()
+Q3PopupMenu *KListViewNewSearchLine::createPopupMenu()
 {
-    QPopupMenu *popup = KLineEdit::createPopupMenu();
+    Q3PopupMenu *popup = KLineEdit::createPopupMenu();
 
     if (d->canChooseColumns) {
-        QPopupMenu *subMenu = new QPopupMenu(popup);
+        Q3PopupMenu *subMenu = new Q3PopupMenu(popup);
         connect(subMenu, SIGNAL(activated(int)), this, SLOT(searchColumnsMenuActivated(int)));
 
         popup->insertSeparator();
@@ -300,7 +302,7 @@ QPopupMenu *KListViewNewSearchLine::createPopupMenu()
     
         bool allColumnsAreSearchColumns = true;
 	// TODO Make the entry order match the actual column order
-	QHeader* const header = d->listViews.first()->header();
+	Q3Header* const header = d->listViews.first()->header();
 	int visibleColumns = 0;
 	for(int i = 0; i < d->listViews.first()->columns(); i++) {
 	    if(d->listViews.first()->columnWidth(i)>0) {
@@ -334,16 +336,16 @@ void KListViewNewSearchLine::connectListView(KListView *lv)
 {
     connect(lv, SIGNAL(destroyed( QObject * )),
             this, SLOT(listViewDeleted( QObject *)));
-    connect(lv, SIGNAL(itemAdded(QListViewItem *)),
-            this, SLOT(itemAdded(QListViewItem *)));
+    connect(lv, SIGNAL(itemAdded(Q3ListViewItem *)),
+            this, SLOT(itemAdded(Q3ListViewItem *)));
 }
 
 void KListViewNewSearchLine::disconnectListView(KListView *lv)
 {
     disconnect(lv, SIGNAL(destroyed( QObject * )),
             this, SLOT(listViewDeleted( QObject *)));
-    disconnect(lv, SIGNAL(itemAdded(QListViewItem *)),
-            this, SLOT(itemAdded(QListViewItem *)));
+    disconnect(lv, SIGNAL(itemAdded(Q3ListViewItem *)),
+            this, SLOT(itemAdded(Q3ListViewItem *)));
 }
 
 bool KListViewNewSearchLine::canChooseColumnsCheck()
@@ -365,7 +367,7 @@ bool KListViewNewSearchLine::canChooseColumnsCheck()
     for (unsigned int i = 0; i < numcols; ++i)
         headers.append(first->columnText(i));
 
-    QValueList<KListView *>::ConstIterator it = d->listViews.constBegin();
+    Q3ValueList<KListView *>::ConstIterator it = d->listViews.constBegin();
     for (++it /* skip the first one */; it !=d->listViews.constEnd(); ++it) {
         // the listviews have different numbers of columns,
         if ((unsigned int) (*it)->columns() != numcols)
@@ -407,7 +409,7 @@ void KListViewNewSearchLine::activateSearch()
 // private slots
 ////////////////////////////////////////////////////////////////////////////////
 
-void KListViewNewSearchLine::itemAdded(QListViewItem *item) const
+void KListViewNewSearchLine::itemAdded(Q3ListViewItem *item) const
 {
     item->setVisible(itemMatches(item, text()));
 }
@@ -461,10 +463,10 @@ void KListViewNewSearchLine::checkColumns()
 
 void KListViewNewSearchLine::checkItemParentsNotVisible(KListView *listView)
 {
-    QListViewItemIterator it(listView);
+    Q3ListViewItemIterator it(listView);
     for(; it.current(); ++it)
     {
-        QListViewItem *item = it.current();
+        Q3ListViewItem *item = it.current();
         if(itemMatches(item, d->search))
             item->setVisible(true);
         else
@@ -483,14 +485,14 @@ void KListViewNewSearchLine::checkItemParentsNotVisible(KListView *listView)
  *  \return \c true if an item which should be visible is found, \c false if all items found should be hidden. If this function
  *             returns true and \p highestHiddenParent was not 0, highestHiddenParent will have been shown.
  */
-bool KListViewNewSearchLine::checkItemParentsVisible(QListViewItem *item, QListViewItem *highestHiddenParent)
+bool KListViewNewSearchLine::checkItemParentsVisible(Q3ListViewItem *item, Q3ListViewItem *highestHiddenParent)
 {
     bool visible = false;
-    QListViewItem * first = item;
+    Q3ListViewItem * first = item;
     for(; item; item = item->nextSibling())
     {
         //What we pass to our children as highestHiddenParent:
-        QListViewItem * hhp = highestHiddenParent ? highestHiddenParent : item->isVisible() ? 0L : item;
+        Q3ListViewItem * hhp = highestHiddenParent ? highestHiddenParent : item->isVisible() ? 0L : item;
         bool childMatch = false;
         if(item->firstChild() && checkItemParentsVisible(item->firstChild(), hhp))
             childMatch = true;
@@ -503,13 +505,13 @@ bool KListViewNewSearchLine::checkItemParentsVisible(QListViewItem *item, QListV
                 highestHiddenParent->setVisible(true);
                 // Calling setVisible on our ancestor will unhide all its descendents. Hide the ones
                 // before us that should not be shown.
-                for(QListViewItem *hide = first; hide != item; hide = hide->nextSibling())
+                for(Q3ListViewItem *hide = first; hide != item; hide = hide->nextSibling())
                     hide->setVisible(false);
                 highestHiddenParent = 0;
                 // If we matched, than none of our children matched, yet the setVisible() call on our
                 // ancestor unhid them, undo the damage:
                 if(!childMatch)
-                    for(QListViewItem *hide = item->firstChild(); hide; hide = hide->nextSibling())
+                    for(Q3ListViewItem *hide = item->firstChild(); hide; hide = hide->nextSibling())
                         hide->setVisible(false);
             }
             else
@@ -538,7 +540,7 @@ public:
 KListViewSearchLineWidget::KListViewSearchLineWidget(KListView *listView,
                                                      QWidget *parent,
                                                      const char *name) :
-    QHBox(parent, name)
+    Q3HBox(parent, name)
 {
     d = new KListViewSearchLineWidgetPrivate;
     d->listView = listView;
@@ -566,7 +568,7 @@ void KListViewSearchLineWidget::createWidgets()
 
     if(!d->clearButton) {
         d->clearButton = new QToolButton(this);
-        QIconSet icon = SmallIconSet(QApplication::reverseLayout() ? "clear_left" : "locationbar_erase");
+        QIcon icon = SmallIconSet(QApplication::reverseLayout() ? "clear_left" : "locationbar_erase");
         d->clearButton->setIconSet(icon);
     }
 

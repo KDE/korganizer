@@ -28,6 +28,8 @@
 #include <libkcal/incidencebase.h>
 
 #include <korganizer/baseview.h>
+//Added by qt3to4:
+#include <Q3PopupMenu>
 
 
 namespace KCal {
@@ -37,7 +39,7 @@ using namespace KCal;
 
 class KOEventPopupMenu;
 class CalPrinter;
-class QPopupMenu;
+class Q3PopupMenu;
 
 /**
   KOEventView is the abstract base class from which all other
@@ -86,7 +88,7 @@ class KOEventView : public KOrg::BaseView
     /**
      * Construct a standard context that allows to create a new event.
      */
-    QPopupMenu *newEventPopup();
+    Q3PopupMenu *newEventPopup();
 
     /** This view is an view for displaying events. */
     bool isEventView() { return true; }

@@ -27,7 +27,7 @@
 #define KOTODOVIEWITEM_H
 
 #include <qmap.h>
-#include <qlistview.h>
+#include <q3listview.h>
 #include <qpalette.h>
 #include <qdatetime.h>
 
@@ -45,7 +45,7 @@ class KOTodoView;
   @author Cornelius Schumacher <schumacher@kde.org>
   @see KOTodoView
 */
-class KOTodoViewItem : public QCheckListItem
+class KOTodoViewItem : public Q3CheckListItem
 {
   public:
     /**
@@ -55,7 +55,7 @@ class KOTodoViewItem : public QCheckListItem
       @param todo is the todo to have the item display information for.
       @param kotodo is a pointer to the KOTodoView object.
     */
-    KOTodoViewItem(QListView *parent, Todo *todo, KOTodoView *kotodo);
+    KOTodoViewItem(Q3ListView *parent, Todo *todo, KOTodoView *kotodo);
     KOTodoViewItem(KOTodoViewItem *parent, Todo *todo, KOTodoView *kotodo);
     virtual ~KOTodoViewItem() {}
 
@@ -64,7 +64,7 @@ class KOTodoViewItem : public QCheckListItem
     Todo *todo() const { return mTodo; }
 
     bool isAlternate();
-    int compare( QListViewItem *i, int col, bool ascending ) const;
+    int compare( Q3ListViewItem *i, int col, bool ascending ) const;
     virtual void paintCell(QPainter *p, const QColorGroup &cg,
       int column, int width, int alignment);
 

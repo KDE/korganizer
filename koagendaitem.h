@@ -28,6 +28,12 @@
 #include "cellitem.h"
 
 #include <qdatetime.h>
+//Added by qt3to4:
+#include <QDragEnterEvent>
+#include <QPixmap>
+#include <QDropEvent>
+#include <QPaintEvent>
+#include <Q3PtrList>
 
 class QToolTipGroup;
 class QDragEnterEvent;
@@ -76,7 +82,7 @@ class KOAgendaItem : public QWidget, public KOrg::CellItem
     Q_OBJECT
   public:
     KOAgendaItem(Incidence *incidence, const QDate &qd, QWidget *parent, const char *name=0,
-                 WFlags f=0 );
+                 Qt::WFlags f=0 );
 
     int cellXLeft() const { return mCellXLeft; }
     int cellXRight() const { return mCellXRight; }
@@ -131,8 +137,8 @@ class KOAgendaItem : public QWidget, public KOrg::CellItem
 
     static QToolTipGroup *toolTipGroup();
 
-    QPtrList<KOAgendaItem> conflictItems();
-    void setConflictItems(QPtrList<KOAgendaItem>);
+    Q3PtrList<KOAgendaItem> conflictItems();
+    void setConflictItems(Q3PtrList<KOAgendaItem>);
     void addConflictItem(KOAgendaItem *ci);
 
     QString label() const;
@@ -192,7 +198,7 @@ class KOAgendaItem : public QWidget, public KOrg::CellItem
     static QToolTipGroup *mToolTipGroup;
 
     bool mSelected;
-    QPtrList<KOAgendaItem> mConflictItems;
+    Q3PtrList<KOAgendaItem> mConflictItems;
 
     static QPixmap *alarmPxmp;
     static QPixmap *recurPxmp;

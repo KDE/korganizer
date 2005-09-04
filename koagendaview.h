@@ -25,25 +25,33 @@
 #ifndef KOAGENDAVIEW_H
 #define KOAGENDAVIEW_H
 
-#include <qscrollview.h>
+#include <q3scrollview.h>
 #include <qlabel.h>
+//Added by qt3to4:
+#include <QPixmap>
+#include <QPaintEvent>
+#include <Q3MemArray>
+#include <Q3Frame>
+#include <QBoxLayout>
+#include <QResizeEvent>
+#include <Q3PopupMenu>
 
 #include "calprinter.h"
 #include "koeventview.h"
 
-class QHBox;
+class Q3HBox;
 class QPushButton;
 
 class KOAgenda;
 class KOAgendaItem;
 class KConfig;
 
-class TimeLabels : public QScrollView
+class TimeLabels : public Q3ScrollView
 {
     Q_OBJECT
   public:
     TimeLabels( int rows, QWidget *parent = 0, const char *name = 0,
-                WFlags f = 0 );
+                Qt::WFlags f = 0 );
 
     void setCellHeight( int height );
 
@@ -79,15 +87,15 @@ class TimeLabels : public QScrollView
     int mMiniWidth;
     KOAgenda* mAgenda;
 
-    QFrame *mMousePos;  // shows a marker for the current mouse position in y direction
+    Q3Frame *mMousePos;  // shows a marker for the current mouse position in y direction
 };
 
-class EventIndicator : public QFrame
+class EventIndicator : public Q3Frame
 {
     Q_OBJECT
   public:
     enum Location { Top, Bottom };
-    EventIndicator( Location loc = Top, QWidget *parent = 0,
+    EventIndicator( Location loc = Qt::DockTop, QWidget *parent = 0,
                     const char *name = 0 );
     virtual ~EventIndicator();
 
@@ -100,11 +108,11 @@ class EventIndicator : public QFrame
 
   private:
     int mColumns;
-    QHBox *mTopBox;
+    Q3HBox *mTopBox;
     QBoxLayout *mTopLayout;
     Location mLocation;
     QPixmap mPixmap;
-    QMemArray<bool> mEnabled;
+    Q3MemArray<bool> mEnabled;
 };
 
 class KOAlternateLabel : public QLabel
@@ -227,7 +235,7 @@ class KOAgendaView : public KOEventView
     /** Fill agenda using the current set value for the start date */
     void fillAgenda();
 
-    void connectAgenda( KOAgenda*agenda, QPopupMenu*popup, KOAgenda* otherAgenda );
+    void connectAgenda( KOAgenda*agenda, Q3PopupMenu*popup, KOAgenda* otherAgenda );
 
     /** Create labels for the selected dates. */
     void createDayLabels();
@@ -262,10 +270,10 @@ class KOAgendaView : public KOEventView
 
   private:
     // view widgets
-    QFrame *mDayLabels;
-    QHBox *mDayLabelsFrame;
+    Q3Frame *mDayLabels;
+    Q3HBox *mDayLabelsFrame;
     QBoxLayout *mLayoutDayLabels;
-    QFrame *mAllDayFrame;
+    Q3Frame *mAllDayFrame;
     KOAgenda *mAllDayAgenda;
     KOAgenda *mAgenda;
     TimeLabels *mTimeLabels;
@@ -282,10 +290,10 @@ class KOAgendaView : public KOEventView
     EventIndicator *mEventIndicatorTop;
     EventIndicator *mEventIndicatorBottom;
 
-    QMemArray<int> mMinY;
-    QMemArray<int> mMaxY;
+    Q3MemArray<int> mMinY;
+    Q3MemArray<int> mMaxY;
 
-    QMemArray<bool> mHolidayMask;
+    Q3MemArray<bool> mHolidayMask;
 
     QPixmap mExpandedPixmap;
     QPixmap mNotExpandedPixmap;

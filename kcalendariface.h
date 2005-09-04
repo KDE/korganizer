@@ -29,6 +29,9 @@
 #include <qdatetime.h>
 #include <qdatastream.h>
 #include <qstringlist.h>
+//Added by qt3to4:
+#include <Q3ValueList>
+#include <Q3CString>
 // yes, this is this very header - but it tells dcopidl to include it
 // in _stub.cpp and _skel.cpp files, to get the definition of the structs.
 #include "kcalendariface.h"
@@ -54,8 +57,8 @@ class KCalendarIface : public DCOPObject
         QDateTime start; QDateTime end;
     };
     virtual KCalendarIface::ResourceRequestReply resourceRequest(
-                         const QValueList< QDateTimePair >& busy,
-                         const QCString& resource,
+                         const Q3ValueList< QDateTimePair >& busy,
+                         const Q3CString& resource,
                          const QString& vCalIn ) = 0;
 
     virtual void openEventEditor( const QString& text ) = 0;

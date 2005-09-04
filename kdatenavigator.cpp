@@ -24,11 +24,15 @@
 */
 
 #include <qstring.h>
-#include <qkeycode.h>
+#include <qnamespace.h>
 #include <qlayout.h>
 #include <qtimer.h>
-#include <qframe.h>
+#include <q3frame.h>
 #include <qlabel.h>
+//Added by qt3to4:
+#include <QWheelEvent>
+#include <QGridLayout>
+#include <QEvent>
 
 #include <kdebug.h>
 #include <klocale.h>
@@ -46,7 +50,7 @@
 #include "kdatenavigator.h"
 
 KDateNavigator::KDateNavigator( QWidget *parent, const char *name )
-  : QFrame( parent, name ), mBaseDate( 1970, 1, 1 )
+  : Q3Frame( parent, name ), mBaseDate( 1970, 1, 1 )
 {
   QGridLayout* topLayout = new QGridLayout( this, 8, 8 );
 
@@ -66,7 +70,7 @@ KDateNavigator::KDateNavigator( QWidget *parent, const char *name )
   for( i = 0; i < 7; i++ ) {
     headings[i] = new QLabel( this );
     headings[i]->setFont( QFont( generalFont, 10, QFont::Bold ) );
-    headings[i]->setAlignment( AlignCenter );
+    headings[i]->setAlignment( Qt::AlignCenter );
 
     topLayout->addWidget( headings[i], 1, i + 1 );
   }
@@ -74,7 +78,7 @@ KDateNavigator::KDateNavigator( QWidget *parent, const char *name )
   // Create the weeknumber labels
   for( i = 0; i < 6; i++ ) {
     weeknos[i] = new QLabel( this );
-    weeknos[i]->setAlignment( AlignCenter );
+    weeknos[i]->setAlignment( Qt::AlignCenter );
     weeknos[i]->setFont( QFont( generalFont, 10 ) );
     weeknos[i]->installEventFilter( this );
 

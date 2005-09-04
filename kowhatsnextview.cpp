@@ -23,10 +23,13 @@
 */
 
 #include <qlayout.h>
-#include <qtextbrowser.h>
+#include <q3textbrowser.h>
 #include <qtextcodec.h>
 #include <qfileinfo.h>
 #include <qlabel.h>
+//Added by qt3to4:
+#include <QVBoxLayout>
+#include <QBoxLayout>
 
 #include <kglobal.h>
 #include <klocale.h>
@@ -55,7 +58,7 @@ void WhatsNextTextBrowser::setSource(const QString& n)
     emit showIncidence(n);
     return;
   } else {
-    QTextBrowser::setSource(n);
+    Q3TextBrowser::setSource(n);
   }
 }
 

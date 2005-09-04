@@ -26,10 +26,14 @@
 
 #include <qlayout.h>
 #include <qcheckbox.h>
-#include <qgroupbox.h>
+#include <q3groupbox.h>
 #include <qhbuttongroup.h>
 #include <qlabel.h>
 #include <qlineedit.h>
+//Added by qt3to4:
+#include <QVBoxLayout>
+#include <Q3Frame>
+#include <QHBoxLayout>
 
 #include <klocale.h>
 #include <kmessagebox.h>
@@ -51,7 +55,7 @@ SearchDialog::SearchDialog(Calendar *calendar,QWidget *parent)
 {
   mCalendar = calendar;
 
-  QFrame *topFrame = plainPage();
+  Q3Frame *topFrame = plainPage();
   QVBoxLayout *layout = new QVBoxLayout(topFrame,0,spacingHint());
 
   // Search expression
@@ -67,7 +71,7 @@ SearchDialog::SearchDialog(Calendar *calendar,QWidget *parent)
            this, SLOT( searchTextChanged( const QString & ) ) );
 
 
-  QHButtonGroup *itemsGroup = new QHButtonGroup( i18n("Search For"), topFrame );
+  Q3HButtonGroup *itemsGroup = new Q3HButtonGroup( i18n("Search For"), topFrame );
   layout->addWidget( itemsGroup );
   mEventsCheck = new QCheckBox( i18n("&Events"), itemsGroup );
   mTodosCheck = new QCheckBox( i18n("To-&dos"), itemsGroup );
@@ -76,7 +80,7 @@ SearchDialog::SearchDialog(Calendar *calendar,QWidget *parent)
   mTodosCheck->setChecked( true );
 
   // Date range
-  QGroupBox *rangeGroup = new QGroupBox( 1, Horizontal, i18n( "Date Range" ),
+  Q3GroupBox *rangeGroup = new Q3GroupBox( 1, Horizontal, i18n( "Date Range" ),
                                         topFrame );
   layout->addWidget( rangeGroup );
 
@@ -99,7 +103,7 @@ SearchDialog::SearchDialog(Calendar *calendar,QWidget *parent)
   mIncludeUndatedTodos->setChecked( true );
 
   // Subjects to search
-  QHButtonGroup *subjectGroup = new QHButtonGroup( i18n("Search In"), topFrame );
+  Q3HButtonGroup *subjectGroup = new Q3HButtonGroup( i18n("Search In"), topFrame );
   layout->addWidget(subjectGroup);
 
   mSummaryCheck = new QCheckBox( i18n("Su&mmaries"), subjectGroup );

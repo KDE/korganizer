@@ -27,6 +27,9 @@
 #include <qwidget.h>
 #include <qdatetime.h>
 #include <qtimer.h>
+//Added by qt3to4:
+#include <QLabel>
+#include <QTimerEvent>
 
 class QLabel;
 class KDGanttView;

@@ -37,13 +37,17 @@
 #include <kinputdialog.h>
 #include <libkcal/calendarresources.h>
 
-#include <qhbox.h>
+#include <q3hbox.h>
 #include <qlayout.h>
 #include <qlabel.h>
 #include <qpainter.h>
 #include <qpushbutton.h>
-#include <qpopupmenu.h>
-#include <qwhatsthis.h>
+#include <q3popupmenu.h>
+#include <q3whatsthis.h>
+//Added by qt3to4:
+#include <QPixmap>
+#include <QBoxLayout>
+#include <QVBoxLayout>
 
 #include "koprefs.h"
 
@@ -87,7 +91,7 @@ ResourceView *ResourceViewFactory::resourceView() const
 
 ResourceItem::ResourceItem( ResourceCalendar *resource, ResourceView *view,
                             KListView *parent )
-  : QCheckListItem( parent, resource->resourceName(), CheckBox ),
+  : Q3CheckListItem( parent, resource->resourceName(), CheckBox ),
     mResource( resource ), mView( view ), mBlockStateChange( false ),
     mIsSubresource( false ), mResourceIdentifier( QString::null ),
     mSubItemsCreated( false ), mIsStandardResource( false )
@@ -122,7 +126,7 @@ ResourceItem::ResourceItem( KCal::ResourceCalendar *resource,
                             const QString& sub, const QString& label,
                             ResourceView *view, ResourceItem* parent )
 
-  : QCheckListItem( parent, label, CheckBox ), mResource( resource ),
+  : Q3CheckListItem( parent, label, CheckBox ), mResource( resource ),
     mView( view ), mBlockStateChange( false ), mIsSubresource( true ),
     mSubItemsCreated( false ), mIsStandardResource( false )
 {
@@ -202,7 +206,7 @@ void ResourceItem::paintCell(QPainter *p, const QColorGroup &cg,
   QFont newFont = oldFont;
   newFont.setBold( mIsStandardResource && !mIsSubresource );
   p->setFont( newFont );
-  QCheckListItem::paintCell( p, cg, column, width, alignment );
+  Q3CheckListItem::paintCell( p, cg, column, width, alignment );
   p->setFont( oldFont );
 /*  QColorGroup _cg = cg;
   if(!mResource) return;
@@ -217,7 +221,7 @@ ResourceView::ResourceView( KCal::CalendarResources *calendar,
   QBoxLayout *topLayout = new QVBoxLayout( this, 0, KDialog::spacingHint() );
 
   mListView = new KListView( this );
-  QWhatsThis::add( mListView,
+  Q3WhatsThis::add( mListView,
                    i18n( "<qt><p>Select on this list the active KOrganizer "
                          "resources. Check the resource box to make it "
                          "active. Press the \"Add...\" button below to add new "
@@ -231,15 +235,15 @@ ResourceView::ResourceView( KCal::CalendarResources *calendar,
                          "use the default resource or be prompted "
                          "to select the resource to use.</p></qt>" ) );
   mListView->addColumn( i18n("Calendar") );
-  mListView->setResizeMode( QListView::LastColumn );
+  mListView->setResizeMode( Q3ListView::LastColumn );
   topLayout->addWidget( mListView );
 
-  QHBox *buttonBox = new QHBox( this );
+  Q3HBox *buttonBox = new Q3HBox( this );
   buttonBox->setSpacing( KDialog::spacingHint() );
   topLayout->addWidget( buttonBox );
 
   mAddButton = new QPushButton( i18n("Add..."), buttonBox, "add" );
-  QWhatsThis::add( mAddButton,
+  Q3WhatsThis::add( mAddButton,
                    i18n( "<qt><p>Press this button to add a resource to "
                          "KOrganizer.</p>"
                          "<p>Events, journal entries and to-dos are retrieved "
@@ -251,27 +255,27 @@ ResourceView::ResourceView( KCal::CalendarResources *calendar,
                          "use the default resource or be prompted "
                          "to select the resource to use.</p></qt>" ) );
   mEditButton = new QPushButton( i18n("Edit..."), buttonBox, "edit" );
-  QWhatsThis::add( mEditButton,
+  Q3WhatsThis::add( mEditButton,
                    i18n( "Press this button to edit the resource currently "
                          "selected on the KOrganizer resources list above." ) );
   mDeleteButton = new QPushButton( i18n("Remove"), buttonBox, "del" );
-  QWhatsThis::add( mDeleteButton,
+  Q3WhatsThis::add( mDeleteButton,
                    i18n( "Press this button to delete the resource currently "
                          "selected on the KOrganizer resources list above." ) );
   mDeleteButton->setDisabled( true );
   mEditButton->setDisabled( true );
 
-  connect( mListView, SIGNAL( clicked( QListViewItem * ) ),
-           SLOT( currentChanged( QListViewItem * ) ) );
+  connect( mListView, SIGNAL( clicked( Q3ListViewItem * ) ),
+           SLOT( currentChanged( Q3ListViewItem * ) ) );
   connect( mAddButton, SIGNAL( clicked() ), SLOT( addResource() ) );
   connect( mDeleteButton, SIGNAL( clicked() ), SLOT( removeResource() ) );
   connect( mEditButton, SIGNAL( clicked() ), SLOT( editResource() ) );
-  connect( mListView, SIGNAL( doubleClicked ( QListViewItem *, const QPoint &,
+  connect( mListView, SIGNAL( doubleClicked ( Q3ListViewItem *, const QPoint &,
                                               int ) ),
            SLOT( editResource() ) );
-  connect( mListView, SIGNAL( contextMenuRequested ( QListViewItem *,
+  connect( mListView, SIGNAL( contextMenuRequested ( Q3ListViewItem *,
                                                      const QPoint &, int ) ),
-           SLOT( contextMenuRequested( QListViewItem *, const QPoint &,
+           SLOT( contextMenuRequested( Q3ListViewItem *, const QPoint &,
                                        int ) ) );
 
   updateView();
@@ -375,7 +379,7 @@ void ResourceView::slotSubresourceAdded( ResourceCalendar *calendar,
                                          const QString& resource,
                                          const QString& label)
 {
-  QListViewItem *i = mListView->findItem( calendar->resourceName(), 0 );
+  Q3ListViewItem *i = mListView->findItem( calendar->resourceName(), 0 );
   if ( !i )
     // Not found
     return;
@@ -411,7 +415,7 @@ void ResourceView::updateResourceItem( ResourceCalendar *resource )
 
 ResourceItem *ResourceView::currentItem()
 {
-  QListViewItem *item = mListView->currentItem();
+  Q3ListViewItem *item = mListView->currentItem();
   ResourceItem *rItem = static_cast<ResourceItem *>( item );
   return rItem;
 }
@@ -461,7 +465,7 @@ void ResourceView::editResource()
   }
 }
 
-void ResourceView::currentChanged( QListViewItem *item)
+void ResourceView::currentChanged( Q3ListViewItem *item)
 {
    ResourceItem *i = currentItem();
    if ( !item || i->isSubresource() ) {
@@ -475,7 +479,7 @@ void ResourceView::currentChanged( QListViewItem *item)
 
 ResourceItem *ResourceView::findItem( ResourceCalendar *r )
 {
-  QListViewItem *item;
+  Q3ListViewItem *item;
   ResourceItem *i = 0;
   for( item = mListView->firstChild(); item; item = item->nextSibling() ) {
     i = static_cast<ResourceItem *>( item );
@@ -486,7 +490,7 @@ ResourceItem *ResourceView::findItem( ResourceCalendar *r )
 
 ResourceItem *ResourceView::findItemByIdentifier( const QString& id )
 {
-  QListViewItem *item;
+  Q3ListViewItem *item;
   ResourceItem *i = 0;
   for( item = mListView->firstChild(); item; item = item->itemBelow() ) {
     i = static_cast<ResourceItem *>( item );
@@ -497,13 +501,13 @@ ResourceItem *ResourceView::findItemByIdentifier( const QString& id )
 }
 
 
-void ResourceView::contextMenuRequested ( QListViewItem *i,
+void ResourceView::contextMenuRequested ( Q3ListViewItem *i,
                                           const QPoint &pos, int )
 {
   KCal::CalendarResourceManager *manager = mCalendar->resourceManager();
   ResourceItem *item = static_cast<ResourceItem *>( i );
 
-  QPopupMenu *menu = new QPopupMenu( this );
+  Q3PopupMenu *menu = new Q3PopupMenu( this );
   connect( menu, SIGNAL( aboutToHide() ), menu, SLOT( deleteLater() ) );
   if ( item ) {
     int reloadId = menu->insertItem( i18n("Re&load"), this,
@@ -517,7 +521,7 @@ void ResourceView::contextMenuRequested ( QListViewItem *i,
     menu->insertItem( i18n("Show &Info"), this, SLOT( showInfo() ) );
     //FIXME: This is better on the resource dialog
     if ( KOPrefs::instance()->agendaViewUsesResourceColor() ) {
-      QPopupMenu *assignMenu= new QPopupMenu( menu );
+      Q3PopupMenu *assignMenu= new Q3PopupMenu( menu );
       assignMenu->insertItem( i18n( "&Assign Color" ), this, SLOT( assignColor() ) );
       if ( item->resourceColor().isValid() )
         assignMenu->insertItem( i18n( "&Disable Color" ), this, SLOT( disableColor() ) );
@@ -619,7 +623,7 @@ void ResourceView::setStandard()
 
 void ResourceView::updateResourceList()
 {
-  QListViewItemIterator it( mListView );
+  Q3ListViewItemIterator it( mListView );
   ResourceCalendar* stdRes = mCalendar->resourceManager()->standardResource();
   while ( it.current() ) {
     ResourceItem *item = static_cast<ResourceItem *>( it.current() );

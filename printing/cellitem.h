@@ -25,7 +25,7 @@
 #define KORG_CELLITEM_H
 
 #include <qstring.h>
-#include <qptrlist.h>
+#include <q3ptrlist.h>
 
 #include <kdepimmacros.h>
 
@@ -38,7 +38,7 @@ class KDE_EXPORT CellItem
       : mSubCells( 0 ), mSubCell( -1 )
     {
     }
-  
+ 	virtual ~CellItem(){} 
     void setSubCells( int v ) { mSubCells = v; }
     int subCells() const { return mSubCells; }
     
@@ -55,7 +55,7 @@ class KDE_EXPORT CellItem
       
       \return Placed items
     */
-    static QPtrList<CellItem> placeItem( QPtrList<CellItem> cells,
+    static Q3PtrList<CellItem> placeItem( Q3PtrList<CellItem> cells,
                                          CellItem *placeItem );
     
   private:

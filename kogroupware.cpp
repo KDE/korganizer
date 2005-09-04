@@ -50,6 +50,8 @@
 #include <qfile.h>
 #include <qregexp.h>
 #include <qdir.h>
+//Added by qt3to4:
+#include <QTextStream>
 
 FreeBusyManager *KOGroupware::mFreeBusyManager = 0;
 
@@ -123,7 +125,7 @@ void KOGroupware::incomingDirChanged( const QString& path )
 
   // Read the file and remove it
   QFile f( path + "/" + files[0] );
-  if (!f.open(IO_ReadOnly)) {
+  if (!f.open(QIODevice::ReadOnly)) {
     kdError(5850) << "Can't open file '" << files[0] << "'" << endl;
     return;
   }

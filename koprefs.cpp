@@ -32,6 +32,8 @@
 #include <qcolor.h>
 #include <qmap.h>
 #include <qstringlist.h>
+//Added by qt3to4:
+#include <Q3ValueList>
 
 #include <kglobalsettings.h>
 #include <kglobal.h>
@@ -178,7 +180,7 @@ void KOPrefs::usrReadConfig()
   // old category colors, ignore if they have the old default
   // should be removed a few versions after 3.2...
   config()->setGroup("Category Colors");
-  QValueList<QColor> oldCategoryColors;
+  Q3ValueList<QColor> oldCategoryColors;
   QStringList::Iterator it;
   for (it = mCustomCategories.begin();it != mCustomCategories.end();++it ) {
     QColor c = config()->readColorEntry(*it, &mDefaultCategoryColor);
@@ -188,7 +190,7 @@ void KOPrefs::usrReadConfig()
 
   // new category colors
   config()->setGroup("Category Colors2");
-  QValueList<QColor>::Iterator it2;
+  Q3ValueList<QColor>::Iterator it2;
   for (it = mCustomCategories.begin(), it2 = oldCategoryColors.begin();
        it != mCustomCategories.end(); ++it, ++it2 ) {
     setCategoryColor(*it,config()->readColorEntry(*it, &*it2));
@@ -226,14 +228,14 @@ void KOPrefs::usrWriteConfig()
   config()->writeEntry("Custom Categories",mCustomCategories);
 
   config()->setGroup("Category Colors2");
-  QDictIterator<QColor> it(mCategoryColors);
+  Q3DictIterator<QColor> it(mCategoryColors);
   while (it.current()) {
     config()->writeEntry(it.currentKey(),*(it.current()));
     ++it;
   }
 
   config()->setGroup( "Resources Colors" );
-  QDictIterator<QColor> it2( mResourceColors );
+  Q3DictIterator<QColor> it2( mResourceColors );
   while( it2.current() ) {
     config()->writeEntry( it2.currentKey(), *( it2.current() ) );
     ++it2;

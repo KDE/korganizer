@@ -25,13 +25,17 @@
 
 #include <libkcal/alarm.h>
 #include <qlineedit.h>
+//Added by qt3to4:
+#include <QLabel>
+#include <QFocusEvent>
+#include <QBoxLayout>
 
 class QWidget;
 class QBoxLayout;
 class QLineEdit;
 class QLabel;
 class QCheckBox;
-class QWidgetStack;
+class Q3WidgetStack;
 class QSpinBox;
 class QPushButton;
 class QComboBox;
@@ -107,7 +111,7 @@ class KOEditorGeneral : public QObject
     QLineEdit               *mSummaryEdit;
     QLineEdit               *mLocationEdit;
     QLabel                  *mAlarmBell;
-    QWidgetStack            *mAlarmStack;
+    Q3WidgetStack            *mAlarmStack;
     QLabel                  *mAlarmInfoLabel;
     QCheckBox               *mAlarmButton;
     QSpinBox                *mAlarmTimeEdit;

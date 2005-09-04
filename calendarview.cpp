@@ -94,17 +94,22 @@
 #include <qapplication.h>
 #include <qclipboard.h>
 #include <qcursor.h>
-#include <qmultilineedit.h>
+#include <q3multilineedit.h>
 #include <qtimer.h>
-#include <qwidgetstack.h>
-#include <qptrlist.h>
+#include <q3widgetstack.h>
+#include <q3ptrlist.h>
 #include <qfile.h>
 #include <qlayout.h>
 #ifndef KORG_NOSPLITTER
 #include <qsplitter.h>
 #endif
-#include <qvbox.h>
-#include <qwhatsthis.h>
+#include <q3vbox.h>
+#include <q3whatsthis.h>
+//Added by qt3to4:
+#include <Q3CString>
+#include <QBoxLayout>
+#include <Q3ValueList>
+#include <QVBoxLayout>
 
 #include <stdlib.h>
 #include <assert.h>
@@ -139,11 +144,11 @@ CalendarView::CalendarView( QWidget *parent, const char *name )
 
 #ifndef KORG_NOSPLITTER
   // create the main layout frames.
-  mPanner = new QSplitter( QSplitter::Horizontal, this,
+  mPanner = new QSplitter( Qt::Horizontal, this,
                            "CalendarView::Panner" );
   topLayout->addWidget( mPanner );
 
-  mLeftSplitter = new QSplitter( QSplitter::Vertical, mPanner,
+  mLeftSplitter = new QSplitter( Qt::Vertical, mPanner,
                                  "CalendarView::LeftFrame" );
 //  mPanner->setResizeMode( mLeftSplitter, QSplitter::Stretch );
 
@@ -156,9 +161,9 @@ CalendarView::CalendarView( QWidget *parent, const char *name )
 
   mEventViewer = new KOEventViewer( mLeftSplitter,"EventViewer" );
 
-  QVBox *rightBox = new QVBox( mPanner );
+  Q3VBox *rightBox = new Q3VBox( mPanner );
   mNavigatorBar = new NavigatorBar( rightBox );
-  mRightFrame = new QWidgetStack( rightBox );
+  mRightFrame = new Q3WidgetStack( rightBox );
   rightBox->setStretchFactor( mRightFrame, 1 );
 
   mLeftFrame = mLeftSplitter;
@@ -167,11 +172,11 @@ CalendarView::CalendarView( QWidget *parent, const char *name )
   QWidget *leftFrame;
 
   if ( KOPrefs::instance()->mVerticalScreen ) {
-    mainBox = new QVBox( this );
-    leftFrame = new QHBox( mainBox );
+    mainBox = new Q3VBox( this );
+    leftFrame = new Q3HBox( mainBox );
   } else {
-    mainBox = new QHBox( this );
-    leftFrame = new QVBox( mainBox );
+    mainBox = new Q3HBox( this );
+    leftFrame = new Q3VBox( mainBox );
   }
 
   topLayout->addWidget( mainBox );
@@ -189,7 +194,7 @@ CalendarView::CalendarView( QWidget *parent, const char *name )
   mNavigatorBar = new NavigatorBar( QDate::currentDate(), rightBox );
   rightLayout->addWidget( mNavigatorBar );
 
-  mRightFrame = new QWidgetStack( rightBox );
+  mRightFrame = new Q3WidgetStack( rightBox );
   rightLayout->addWidget( mRightFrame );
 
   mLeftFrame = leftFrame;
@@ -266,7 +271,7 @@ CalendarView::CalendarView( QWidget *parent, const char *name )
            "here.</p>");
 
   mEventViewer->setDefaultText( s );
-  QWhatsThis::add( mEventViewer,
+  Q3WhatsThis::add( mEventViewer,
                    i18n( "View the details of events, journal entries or to-dos "
                          "selected in KOrganizer's main view here." ) );
   mEventViewer->setIncidence( 0 );
@@ -489,7 +494,7 @@ void CalendarView::readSettings()
 #ifndef KORG_NOSPLITTER
   config->setGroup( "KOrganizer Geometry" );
 
-  QValueList<int> sizes = config->readIntListEntry( "Separator1" );
+  Q3ValueList<int> sizes = config->readIntListEntry( "Separator1" );
   if ( sizes.count() != 2 ) {
     sizes << mDateNavigator->minimumSizeHint().width();
     sizes << 300;
@@ -524,7 +529,7 @@ void CalendarView::writeSettings()
 #ifndef KORG_NOSPLITTER
   config->setGroup( "KOrganizer Geometry" );
 
-  QValueList<int> list = mPanner->sizes();
+  Q3ValueList<int> list = mPanner->sizes();
   config->writeEntry( "Separator1", list );
 
   list = mLeftSplitter->sizes();
@@ -633,7 +638,7 @@ void CalendarView::goPrevious()
     mNavigator->selectPrevious();
 }
 
-void CalendarView::updateConfig( const QCString& receiver)
+void CalendarView::updateConfig( const Q3CString& receiver)
 {
   if ( receiver != "korganizer" ) return;
   kdDebug(5850) << "CalendarView::updateConfig()" << endl;

@@ -25,13 +25,13 @@
 
 #include "koeditordetails.h"
 
-#include <qbuttongroup.h>
+#include <q3buttongroup.h>
 #include <qcheckbox.h>
 #include <qcombobox.h>
 #include <qdatetime.h>
-#include <qdragobject.h>
-#include <qfiledialog.h>
-#include <qgroupbox.h>
+#include <q3dragobject.h>
+#include <q3filedialog.h>
+#include <q3groupbox.h>
 #include <qlabel.h>
 #include <qlayout.h>
 #include <qlineedit.h>
@@ -39,10 +39,17 @@
 #include <qradiobutton.h>
 #include <qregexp.h>
 #include <qtooltip.h>
-#include <qvbox.h>
+#include <q3vbox.h>
 #include <qvgroupbox.h>
-#include <qwhatsthis.h>
-#include <qwidgetstack.h>
+#include <q3whatsthis.h>
+#include <q3widgetstack.h>
+//Added by qt3to4:
+#include <QGridLayout>
+#include <QDragMoveEvent>
+#include <QEvent>
+#include <QDropEvent>
+#include <QVBoxLayout>
+#include <QDragEnterEvent>
 
 #include <kdebug.h>
 #include <klocale.h>
@@ -112,7 +119,7 @@ void KOAttendeeListView::contentsDragEnterEvent( QDragEnterEvent *e )
 void KOAttendeeListView::contentsDragMoveEvent( QDragMoveEvent *e )
 {
 #ifndef KORG_NODND
-  if ( KVCardDrag::canDecode( e ) || QTextDrag::canDecode( e ) ) {
+  if ( KVCardDrag::canDecode( e ) || Q3TextDrag::canDecode( e ) ) {
     e->accept();
   } else {
     e->ignore();
@@ -123,7 +130,7 @@ void KOAttendeeListView::contentsDragMoveEvent( QDragMoveEvent *e )
 void KOAttendeeListView::dragEnterEvent( QDragEnterEvent *e )
 {
 #ifndef KORG_NODND
-  if ( KVCardDrag::canDecode( e ) || QTextDrag::canDecode( e ) ) {
+  if ( KVCardDrag::canDecode( e ) || Q3TextDrag::canDecode( e ) ) {
     e->accept();
   } else {
     e->ignore();
@@ -166,7 +173,7 @@ void KOAttendeeListView::dropEvent( QDropEvent *e )
     }
   } else
 #endif // KORG_NOKABC
-  if (QTextDrag::decode(e,text)) {
+  if (Q3TextDrag::decode(e,text)) {
     kdDebug(5850) << "Dropped : " << text << endl;
     QStringList emails = QStringList::split(",",text);
     for(QStringList::ConstIterator it = emails.begin();it!=emails.end();++it) {
@@ -184,7 +191,7 @@ KOEditorDetails::KOEditorDetails( int spacing, QWidget *parent,
   QGridLayout *topLayout = new QGridLayout( this );
   topLayout->setSpacing( spacing );
 
-  mOrganizerHBox = new QHBox( this );
+  mOrganizerHBox = new Q3HBox( this );
   // If creating a new event, then the user is the organizer -> show the
   // identity combo
   // readEvent will delete it and set another label text instead, if the user
@@ -205,13 +212,13 @@ KOEditorDetails::KOEditorDetails( int spacing, QWidget *parent,
   mOrganizerLabel = new QLabel( i18n( "Identity as organizer:" ),
                                 mOrganizerHBox );
   mOrganizerCombo = new QComboBox( mOrganizerHBox );
-  QWhatsThis::add( mOrganizerLabel, whatsThis );
-  QWhatsThis::add( mOrganizerCombo, whatsThis );
+  Q3WhatsThis::add( mOrganizerLabel, whatsThis );
+  Q3WhatsThis::add( mOrganizerCombo, whatsThis );
   fillOrganizerCombo();
   mOrganizerHBox->setStretchFactor( mOrganizerCombo, 100 );
 
   mListView = new KOAttendeeListView( this, "mListView" );
-  QWhatsThis::add( mListView,
+  Q3WhatsThis::add( mListView,
 		   i18n("Displays information about current attendees. "
 		   	"To edit an attendee, select it in this list "
 			"and modify the values in the area below. "
@@ -224,12 +231,12 @@ KOEditorDetails::KOEditorDetails( int spacing, QWidget *parent,
   mListView->addColumn( i18n("Role"), 60 );
   mListView->addColumn( i18n("Status"), 100 );
   mListView->addColumn( i18n("RSVP"), 35 );
-  mListView->setResizeMode( QListView::LastColumn );
+  mListView->setResizeMode( Q3ListView::LastColumn );
   if ( KOPrefs::instance()->mCompactDialogs ) {
     mListView->setFixedHeight( 78 );
   }
 
-  connect( mListView, SIGNAL( selectionChanged( QListViewItem * ) ),
+  connect( mListView, SIGNAL( selectionChanged( Q3ListViewItem * ) ),
            SLOT( updateAttendeeInput() ) );
 #ifndef KORG_NODND
   connect( mListView, SIGNAL( dropped( Attendee * ) ),
@@ -240,11 +247,11 @@ KOEditorDetails::KOEditorDetails( int spacing, QWidget *parent,
   		   "above, or adds a new attendee if there are no attendees"
 		   "in the list.");
   QLabel *attendeeLabel = new QLabel( this );
-  QWhatsThis::add( attendeeLabel, whatsThis );
+  Q3WhatsThis::add( attendeeLabel, whatsThis );
   attendeeLabel->setText( i18n("Na&me:") );
 
   mNameEdit = new KPIM::AddresseeLineEdit( this );
-  QWhatsThis::add( mNameEdit, whatsThis );
+  Q3WhatsThis::add( mNameEdit, whatsThis );
   mNameEdit->setClickMessage( i18n("Click to add a new attendee") );
   attendeeLabel->setBuddy( mNameEdit );
   mNameEdit->installEventFilter( this );
@@ -254,11 +261,11 @@ KOEditorDetails::KOEditorDetails( int spacing, QWidget *parent,
   whatsThis = i18n("Edits the role of the attendee selected "
   		   "in the list above.");
   QLabel *attendeeRoleLabel = new QLabel( this );
-  QWhatsThis::add( attendeeRoleLabel, whatsThis );
+  Q3WhatsThis::add( attendeeRoleLabel, whatsThis );
   attendeeRoleLabel->setText( i18n("Ro&le:") );
 
   mRoleCombo = new QComboBox( false, this );
-  QWhatsThis::add( mRoleCombo, whatsThis );
+  Q3WhatsThis::add( mRoleCombo, whatsThis );
   mRoleCombo->insertStringList( Attendee::roleList() );
   attendeeRoleLabel->setBuddy( mRoleCombo );
   connect( mRoleCombo, SIGNAL( activated( int ) ),
@@ -267,18 +274,18 @@ KOEditorDetails::KOEditorDetails( int spacing, QWidget *parent,
   whatsThis = i18n("Edits the current attendance status of the attendee "
   		   "selected in the list above.");
   QLabel *statusLabel = new QLabel( this );
-  QWhatsThis::add( statusLabel, whatsThis );
+  Q3WhatsThis::add( statusLabel, whatsThis );
   statusLabel->setText( i18n("Stat&us:") );
 
   mStatusCombo = new QComboBox( false, this );
-  QWhatsThis::add( mStatusCombo, whatsThis );
+  Q3WhatsThis::add( mStatusCombo, whatsThis );
   mStatusCombo->insertStringList( Attendee::statusList() );
   statusLabel->setBuddy( mStatusCombo );
   connect( mStatusCombo, SIGNAL( activated( int ) ),
            SLOT( updateAttendeeItem() ) );
 
   mRsvpButton = new QCheckBox( this );
-  QWhatsThis::add( mRsvpButton,
+  Q3WhatsThis::add( mRsvpButton,
 		   i18n("Edits whether to send an email to the attendee "
 			"selected in the list above to request "
 			"a response concerning attendance.") );
@@ -289,7 +296,7 @@ KOEditorDetails::KOEditorDetails( int spacing, QWidget *parent,
   QVBoxLayout *buttonLayout = new QVBoxLayout( buttonBox );
 
   QPushButton *newButton = new QPushButton( i18n("&New"), buttonBox );
-  QWhatsThis::add( newButton,
+  Q3WhatsThis::add( newButton,
 		   i18n("Adds a new attendee to the list. Once the "
 		   	"attendee is added, you will be able to "
 			"edit the attendee's name, role, attendance "
@@ -301,7 +308,7 @@ KOEditorDetails::KOEditorDetails( int spacing, QWidget *parent,
   connect( newButton, SIGNAL( clicked() ), SLOT( addNewAttendee() ) );
 
   mRemoveButton = new QPushButton( i18n("&Remove"), buttonBox );
-  QWhatsThis::add( mRemoveButton,
+  Q3WhatsThis::add( mRemoveButton,
 		   i18n("Removes the attendee selected in "
 		   	"the list above.") );
   buttonLayout->addWidget( mRemoveButton );
@@ -309,7 +316,7 @@ KOEditorDetails::KOEditorDetails( int spacing, QWidget *parent,
 
   mAddressBookButton = new QPushButton( i18n("Select Addressee..."),
                                         buttonBox );
-  QWhatsThis::add( mAddressBookButton,
+  Q3WhatsThis::add( mAddressBookButton,
 		   i18n("Opens your address book, allowing you to select "
 			"new attendees from it.") );
   buttonLayout->addWidget( mAddressBookButton );
@@ -507,7 +514,7 @@ void KOEditorDetails::readEvent( Incidence *event )
 void KOEditorDetails::writeEvent(Incidence *event)
 {
   event->clearAttendees();
-  QListViewItem *item;
+  Q3ListViewItem *item;
   AttendeeListItem *a;
   for (item = mListView->firstChild(); item;
        item = item->nextSibling()) {
@@ -537,7 +544,7 @@ bool KOEditorDetails::validateInput()
 void KOEditorDetails::updateAttendeeInput()
 {
   setEnableAttendeeInput(!mNameEdit->text().isEmpty());
-  QListViewItem *item = mListView->selectedItem();
+  Q3ListViewItem *item = mListView->selectedItem();
   AttendeeListItem *aItem = static_cast<AttendeeListItem *>( item );
   if (aItem) {
     fillAttendeeInput( aItem );
@@ -590,7 +597,7 @@ void KOEditorDetails::updateAttendeeItem()
 {
   if (mDisableItemUpdate) return;
 
-  QListViewItem *item = mListView->selectedItem();
+  Q3ListViewItem *item = mListView->selectedItem();
   AttendeeListItem *aItem = static_cast<AttendeeListItem *>( item );
   if ( !aItem ) return;
 

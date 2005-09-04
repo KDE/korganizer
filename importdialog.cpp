@@ -33,7 +33,10 @@
 #include <qlabel.h>
 #include <qlayout.h>
 #include <qradiobutton.h>
-#include <qbuttongroup.h>
+#include <q3buttongroup.h>
+//Added by qt3to4:
+#include <QVBoxLayout>
+#include <Q3Frame>
 
 using namespace KCal;
 
@@ -42,7 +45,7 @@ ImportDialog::ImportDialog( const KURL &url, QWidget *parent )
                  0, true, true ),
     mUrl( url )
 {
-  QFrame *topFrame = plainPage();
+  Q3Frame *topFrame = plainPage();
   QVBoxLayout *topLayout = new QVBoxLayout( topFrame, 0, spacingHint() );
 
   QString txt = i18n("Import calendar at '%1' into KOrganizer.")
@@ -50,7 +53,7 @@ ImportDialog::ImportDialog( const KURL &url, QWidget *parent )
 
   topLayout->addWidget( new QLabel( txt, topFrame ) );
 
-  QButtonGroup *radioBox = new QButtonGroup( 1, Horizontal, topFrame );
+  Q3ButtonGroup *radioBox = new Q3ButtonGroup( 1, Horizontal, topFrame );
   radioBox->setFlat( true );
   topLayout->addWidget( radioBox );
 

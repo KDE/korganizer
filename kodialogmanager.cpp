@@ -45,6 +45,9 @@
 
 #include "kodialogmanager.h"
 #include "kodialogmanager.moc"
+//Added by qt3to4:
+#include <Q3CString>
+#include <Q3PtrList>
 
 
 // FIXME: Handle KOEventViewerDialogs in dialog manager. Pass
@@ -121,12 +124,12 @@ void KODialogManager::showOptionsDialog()
 //    mOptionsDialog = new KConfigureDialog( KConfigureDialog::Configurable );
 //    mOptionsDialog = new KConfigureDialog( mMainView );
     connect( mOptionsDialog->dialog(),
-             SIGNAL( configCommitted( const QCString & ) ),
+             SIGNAL( configCommitted( const Q3CString & ) ),
              mMainView, SLOT( updateConfig() ) );
 #else
     mOptionsDialog = new KCMultiDialog( mMainView, "KorganizerPreferences" );
-    connect( mOptionsDialog, SIGNAL( configCommitted( const QCString & ) ),
-             mMainView, SLOT( updateConfig( const QCString& ) ) );
+    connect( mOptionsDialog, SIGNAL( configCommitted( const Q3CString & ) ),
+             mMainView, SLOT( updateConfig( const Q3CString& ) ) );
 #if 0
     connect( mOptionsDialog, SIGNAL( applyClicked() ),
              mMainView, SLOT( updateConfig() ) );
@@ -201,7 +204,7 @@ void KODialogManager::showArchiveDialog()
 #endif
 }
 
-void KODialogManager::showFilterEditDialog( QPtrList<CalFilter> *filters )
+void KODialogManager::showFilterEditDialog( Q3PtrList<CalFilter> *filters )
 {
   if ( !mFilterEditDialog ) {
     mFilterEditDialog = new FilterEditDialog( filters, mMainView );

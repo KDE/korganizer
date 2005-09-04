@@ -23,19 +23,26 @@
     without including the source code for Qt in the source distribution.
 */
 
-#include <qpopupmenu.h>
+#include <q3popupmenu.h>
 #include <qfont.h>
 #include <qfontmetrics.h>
-#include <qkeycode.h>
-#include <qhbox.h>
-#include <qvbox.h>
+#include <qnamespace.h>
+#include <q3hbox.h>
+#include <q3vbox.h>
 #include <qpushbutton.h>
 #include <qtooltip.h>
 #include <qpainter.h>
 #include <qcursor.h>
-#include <qlistbox.h>
+#include <q3listbox.h>
 #include <qlayout.h>
 #include <qlabel.h>
+//Added by qt3to4:
+#include <QGridLayout>
+#include <QKeyEvent>
+#include <Q3Frame>
+#include <QResizeEvent>
+#include <QVBoxLayout>
+#include <QMouseEvent>
 
 #include <kdebug.h>
 #include <klocale.h>
@@ -71,7 +78,7 @@ KOMonthCellToolTip::KOMonthCellToolTip( QWidget *parent,
 void KOMonthCellToolTip::maybeTip( const QPoint & pos )
 {
   QRect r;
-  QListBoxItem *it = eventlist->itemAt( pos );
+  Q3ListBoxItem *it = eventlist->itemAt( pos );
   MonthViewItem *i = static_cast<MonthViewItem*>( it );
 
   if( i && KOPrefs::instance()->mEnableToolTips ) {
@@ -86,7 +93,7 @@ void KOMonthCellToolTip::maybeTip( const QPoint & pos )
 }
 
 KNoScrollListBox::KNoScrollListBox( QWidget *parent, const char *name )
-  : QListBox( parent, name ),
+  : Q3ListBox( parent, name ),
     mSqueezing( false )
 {
   QPalette pal = palette();
@@ -143,7 +150,7 @@ void KNoScrollListBox::keyPressEvent( QKeyEvent *e )
           setTopItem( topItem() + 1 );
         }
       }
-    case Key_Shift:
+    case Qt::Key_Shift:
       emit shiftDown();
       break;
     default:
@@ -154,7 +161,7 @@ void KNoScrollListBox::keyPressEvent( QKeyEvent *e )
 void KNoScrollListBox::keyReleaseEvent( QKeyEvent *e )
 {
   switch( e->key() ) {
-    case Key_Shift:
+    case Qt::Key_Shift:
       emit shiftUp();
       break;
     default:
@@ -164,7 +171,7 @@ void KNoScrollListBox::keyReleaseEvent( QKeyEvent *e )
 
 void KNoScrollListBox::mousePressEvent( QMouseEvent *e )
 {
-  QListBox::mousePressEvent( e );
+  Q3ListBox::mousePressEvent( e );
 
   if ( e->button() == RightButton ) {
     emit rightClick();
@@ -173,8 +180,8 @@ void KNoScrollListBox::mousePressEvent( QMouseEvent *e )
 
 void KNoScrollListBox::contentsMouseDoubleClickEvent ( QMouseEvent * e )
 {
-  QListBox::contentsMouseDoubleClickEvent( e );
-  QListBoxItem *item = itemAt( e->pos() );
+  Q3ListBox::contentsMouseDoubleClickEvent( e );
+  Q3ListBoxItem *item = itemAt( e->pos() );
   if ( !item ) {
     emit doubleClicked( item );
   }
@@ -187,11 +194,11 @@ void KNoScrollListBox::resizeEvent( QResizeEvent *e )
     triggerUpdate( false );
 
   mSqueezing = s;
-  QListBox::resizeEvent( e );
+  Q3ListBox::resizeEvent( e );
 }
 
 MonthViewItem::MonthViewItem( Incidence *incidence, const QDateTime &qd,
-                              const QString & s ) : QListBoxItem()
+                              const QString & s ) : Q3ListBoxItem()
 {
   setText( s );
 
@@ -269,13 +276,13 @@ void MonthViewItem::paint( QPainter *p )
   KWordWrap::drawFadeoutText( p, x, yPos, listBox()->width() - x, text() );
 }
 
-int MonthViewItem::height( const QListBox *lb ) const
+int MonthViewItem::height( const Q3ListBox *lb ) const
 {
   return QMAX( QMAX( mRecurPixmap.height(), mReplyPixmap.height() ),
                QMAX( mAlarmPixmap.height(), lb->fontMetrics().lineSpacing()+1) );
 }
 
-int MonthViewItem::width( const QListBox *lb ) const
+int MonthViewItem::width( const Q3ListBox *lb ) const
 {
   int x = 3;
   if( mRecur ) {
@@ -299,13 +306,13 @@ MonthViewCell::MonthViewCell( KOMonthView *parent)
   QVBoxLayout *topLayout = new QVBoxLayout( this );
 
   mLabel = new QLabel( this );
-  mLabel->setFrameStyle( QFrame::Panel | QFrame::Plain );
+  mLabel->setFrameStyle( Q3Frame::Panel | Q3Frame::Plain );
   mLabel->setLineWidth( 1 );
   mLabel->setAlignment( AlignCenter );
 
   mItemList = new KNoScrollListBox( this );
   mItemList->setMinimumSize( 10, 10 );
-  mItemList->setFrameStyle( QFrame::Panel | QFrame::Plain );
+  mItemList->setFrameStyle( Q3Frame::Panel | Q3Frame::Plain );
   mItemList->setLineWidth( 1 );
 
   new KOMonthCellToolTip( mItemList->viewport(),
@@ -321,12 +328,12 @@ MonthViewCell::MonthViewCell( KOMonthView *parent)
 
   updateConfig();
 
-  connect( mItemList, SIGNAL( doubleClicked( QListBoxItem *) ),
-           SLOT( defaultAction( QListBoxItem * ) ) );
-  connect( mItemList, SIGNAL( rightButtonPressed( QListBoxItem *,
+  connect( mItemList, SIGNAL( doubleClicked( Q3ListBoxItem *) ),
+           SLOT( defaultAction( Q3ListBoxItem * ) ) );
+  connect( mItemList, SIGNAL( rightButtonPressed( Q3ListBoxItem *,
                                                   const QPoint &) ),
-           SLOT( contextMenu( QListBoxItem * ) ) );
-  connect( mItemList, SIGNAL( clicked( QListBoxItem * ) ),
+           SLOT( contextMenu( Q3ListBoxItem * ) ) );
+  connect( mItemList, SIGNAL( clicked( Q3ListBoxItem * ) ),
            SLOT( select() ) );
 }
 
@@ -551,7 +558,7 @@ void MonthViewCell::addIncidence( Incidence *incidence )
       QDateTime dt( item->incidenceDateTime() );
 
       while ( i < mItemList->count() && pos<0 ) {
-        QListBoxItem *item = mItemList->item( i );
+        Q3ListBoxItem *item = mItemList->item( i );
         MonthViewItem *mvitem = dynamic_cast<MonthViewItem*>( item );
         if ( mvitem && mvitem->incidenceDateTime()>dt ) {
           pos = i;
@@ -617,11 +624,11 @@ void MonthViewCell::updateConfig()
 void MonthViewCell::enableScrollBars( bool enabled )
 {
   if ( enabled ) {
-    mItemList->setVScrollBarMode( QScrollView::Auto );
-    mItemList->setHScrollBarMode( QScrollView::Auto );
+    mItemList->setVScrollBarMode( Q3ScrollView::Auto );
+    mItemList->setHScrollBarMode( Q3ScrollView::Auto );
   } else {
-    mItemList->setVScrollBarMode( QScrollView::AlwaysOff );
-    mItemList->setHScrollBarMode( QScrollView::AlwaysOff );
+    mItemList->setVScrollBarMode( Q3ScrollView::AlwaysOff );
+    mItemList->setHScrollBarMode( Q3ScrollView::AlwaysOff );
   }
 }
 
@@ -662,7 +669,7 @@ void MonthViewCell::select()
 
   // don't mess up the cell when it represents today
   if( mDate != QDate::currentDate() ) {
-    mItemList->setFrameStyle( QFrame::Sunken | QFrame::Panel );
+    mItemList->setFrameStyle( Q3Frame::Sunken | Q3Frame::Panel );
     mItemList->setLineWidth( 3 );
   }
 }
@@ -670,7 +677,7 @@ void MonthViewCell::select()
 void MonthViewCell::deselect()
 {
   mItemList->clearSelection();
-  mItemList->setFrameStyle( QFrame::Plain | QFrame::Panel );
+  mItemList->setFrameStyle( Q3Frame::Plain | Q3Frame::Panel );
   setFrameWidth();
 
   enableScrollBars( false );
@@ -681,7 +688,7 @@ void MonthViewCell::resizeEvent ( QResizeEvent * )
   mLabel->move( width() - mLabel->width(), height() - mLabel->height() );
 }
 
-void MonthViewCell::defaultAction( QListBoxItem *item )
+void MonthViewCell::defaultAction( Q3ListBoxItem *item )
 {
   select();
 
@@ -694,7 +701,7 @@ void MonthViewCell::defaultAction( QListBoxItem *item )
   }
 }
 
-void MonthViewCell::contextMenu( QListBoxItem *item )
+void MonthViewCell::contextMenu( Q3ListBoxItem *item )
 {
   select();
 
@@ -727,9 +734,9 @@ KOMonthView::KOMonthView( Calendar *calendar, QWidget *parent, const char *name 
   // month name on top
   mLabel = new QLabel( this );
   mLabel->setFont( mfont );
-  mLabel->setAlignment( AlignCenter );
+  mLabel->setAlignment( Qt::AlignCenter );
   mLabel->setLineWidth( 0 );
-  mLabel->setFrameStyle( QFrame::Plain );
+  mLabel->setFrameStyle( Q3Frame::Plain );
 
   dayLayout->addMultiCellWidget( mLabel, 0, 0, 0, mDaysPerWeek );
 
@@ -740,9 +747,9 @@ KOMonthView::KOMonthView( Calendar *calendar, QWidget *parent, const char *name 
   for( i = 0; i < mDaysPerWeek; i++ ) {
     QLabel *label = new QLabel( this );
     label->setFont( bfont );
-    label->setFrameStyle( QFrame::Panel | QFrame::Raised );
+    label->setFrameStyle( Q3Frame::Panel | Q3Frame::Raised );
     label->setLineWidth( 1 );
-    label->setAlignment( AlignCenter );
+    label->setAlignment( Qt::AlignCenter );
 
     mDayLabels.insert( i, label );
 

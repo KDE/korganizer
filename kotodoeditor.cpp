@@ -25,10 +25,14 @@
 */
 
 #include <qtooltip.h>
-#include <qframe.h>
+#include <q3frame.h>
 #include <qpixmap.h>
 #include <qlayout.h>
 #include <qdatetime.h>
+//Added by qt3to4:
+#include <QVBoxLayout>
+#include <QHBoxLayout>
+#include <QBoxLayout>
 
 #include <kabc/addressee.h>
 #include <kiconloader.h>

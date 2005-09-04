@@ -1,3 +1,5 @@
+//Added by qt3to4:
+#include <QLabel>
 /*
     This file is part of KOrganizer.
 
@@ -27,7 +29,7 @@
 
 #ifndef KORG_NOPRINTER
 
-#include <qptrlist.h>
+#include <q3ptrlist.h>
 #include <kdialogbase.h>
 #include <korganizer/baseview.h>
 #include <korganizer/printplugin.h>
@@ -38,8 +40,8 @@ class CoreHelper;
 }
 using namespace KCal;
 
-class QVButtonGroup;
-class QWidgetStack;
+class Q3VButtonGroup;
+class Q3WidgetStack;
 class KPrinter;
 class CalPrintDialog;
 class KConfig;
@@ -129,8 +131,8 @@ class CalPrintDialog : public KDialogBase
 
   private:
     KPrinter *mPrinter;
-    QVButtonGroup *mTypeGroup;
-    QWidgetStack *mConfigArea;
+    Q3VButtonGroup *mTypeGroup;
+    Q3WidgetStack *mConfigArea;
     KOrg::PrintPlugin::List mPrintPlugins;
     QString mPreviewText;
     QComboBox *mOrientationSelection;
