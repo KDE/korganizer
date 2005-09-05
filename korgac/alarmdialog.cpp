@@ -22,15 +22,18 @@
     without including the source code for Qt in the source distribution.
 */
 
-#include <qhbox.h>
-#include <qvbox.h>
+#include <q3hbox.h>
+#include <q3vbox.h>
 #include <qlabel.h>
 #include <qfile.h>
 #include <qspinbox.h>
 #include <qlayout.h>
 #include <qpushbutton.h>
-#include <qcstring.h>
+#include <q3cstring.h>
 #include <qdatastream.h>
+//Added by qt3to4:
+#include <QVBoxLayout>
+#include <QBoxLayout>
 
 #include <kapplication.h>
 #include <dcopclient.h>
@@ -52,8 +55,8 @@
 #include "alarmdialog.moc"
 
 AlarmDialog::AlarmDialog( QWidget *parent, const char *name )
-  : KDialogBase( Plain, WType_TopLevel | WStyle_Customize | WStyle_StaysOnTop |
-                 WStyle_DialogBorder,
+  : KDialogBase( Plain, Qt::WType_TopLevel | Qt::WStyle_Customize | Qt::WStyle_StaysOnTop |
+                 Qt::WStyle_DialogBorder,
                  parent, name, false, i18n("Reminder"), Ok | User1 | User2/* | User3*/, User1/*3*/,
                  false, i18n("Suspend"), i18n("Edit...") ),
                  mSuspendTimer(this)
@@ -69,7 +72,7 @@ AlarmDialog::AlarmDialog( QWidget *parent, const char *name )
   mEventViewer = new KOEventViewer( topBox );
   topLayout->addWidget( mEventViewer );
 
-  QHBox *suspendBox = new QHBox( topBox );
+  Q3HBox *suspendBox = new Q3HBox( topBox );
   suspendBox->setSpacing( spacingHint() );
   topLayout->addWidget( suspendBox );
 
@@ -158,7 +161,7 @@ void AlarmDialog::slotUser2()
 
   // get desktop # where korganizer (or kontact) runs
   QByteArray replyData;
-  QCString object, replyType;
+  DCOPCString object, replyType;
   object = kapp->dcopClient()->isApplicationRegistered( "kontact" ) ?
            "kontact-mainwindow#1" : "KOrganizer MainWindow";
   if (!kapp->dcopClient()->call( "korganizer", object,
@@ -167,7 +170,7 @@ void AlarmDialog::slotUser2()
 
   if ( replyType == "int" ) {
     int desktop, window;
-    QDataStream ds( replyData, IO_ReadOnly );
+    QDataStream ds( &replyData, QIODevice::ReadOnly );
     ds >> window;
     desktop = KWin::windowInfo( window ).desktop();
 

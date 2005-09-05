@@ -41,6 +41,8 @@
 
 #include <qtooltip.h>
 #include <qfile.h>
+//Added by qt3to4:
+#include <QMouseEvent>
 
 #include <stdlib.h>
 
@@ -166,7 +168,7 @@ void AlarmDockWindow::enableAutostart( bool enable )
 
 void AlarmDockWindow::mousePressEvent( QMouseEvent *e )
 {
-  if ( e->button() == LeftButton ) {
+  if ( e->button() == Qt::LeftButton ) {
     kapp->startServiceByDesktopName( "korganizer", QString::null );
   } else {
     KSystemTray::mousePressEvent( e );

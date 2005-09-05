@@ -32,6 +32,8 @@
 
 #include <qtimer.h>
 #include <qdatetime.h>
+//Added by qt3to4:
+#include <Q3ValueList>
 
 class AlarmDialog;
 class AlarmDockWindow;
@@ -74,7 +76,7 @@ class KOAlarmClient : public QObject, virtual public AlarmClientIface, public KS
     void saveLastCheckTime();
 
     AlarmDockWindow *mDocker;  // the panel icon
-    QValueList<AlarmDialog *> mReminders;
+    Q3ValueList<AlarmDialog *> mReminders;
 
     KCal::CalendarResources *mCalendar;
 
