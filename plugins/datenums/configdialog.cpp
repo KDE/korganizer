@@ -20,8 +20,10 @@
 
 #include <qlayout.h>
 #include <qlabel.h>
-#include <qvbuttongroup.h>
 #include <qradiobutton.h>
+//Added by qt3to4:
+#include <QVBoxLayout>
+#include <Q3Frame>
 
 #include <klocale.h>
 #include <kmessagebox.h>
@@ -42,7 +44,7 @@ ConfigDialog::ConfigDialog(QWidget *parent)
 
 //  QLabel *label = new QLabel(i18n("Show date numbers:"),topFrame);
 //  topLayout->addWidget(label);
-  mDayNumGroup = new QVButtonGroup( i18n("Show Date Number"), topFrame );
+  mDayNumGroup = new Q3VButtonGroup( i18n("Show Date Number"), topFrame );
 	topLayout->addWidget( mDayNumGroup );
 
 	new QRadioButton( i18n("Show day number"), mDayNumGroup );
