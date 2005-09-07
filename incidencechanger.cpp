@@ -76,7 +76,7 @@ void IncidenceChanger::cancelAttendees( Incidence *incidence )
 
 bool IncidenceChanger::endChange( Incidence *incidence )
 {
-  // FIXME: if that's a groupware incidence, and I'm not the organizer, 
+  // FIXME: if that's a groupware incidence, and I'm not the organizer,
   // send out a mail to the organizer with a counterproposal instead
   // of actually changing the incidence. Then no locking is needed.
   // FIXME: if that's a groupware incidence, and the incidence was
@@ -119,13 +119,13 @@ class IncidenceChanger::ComparisonVisitor : public IncidenceBase::Visitor
 {
   public:
     ComparisonVisitor() {}
-    bool act( IncidenceBase *incidence, IncidenceBase *inc2 ) 
-    { 
+    bool act( IncidenceBase *incidence, IncidenceBase *inc2 )
+    {
       mIncidence2 = inc2;
-      if ( incidence ) 
-        return incidence->accept( *this ); 
-      else 
-        return (inc2 == 0); 
+      if ( incidence )
+        return incidence->accept( *this );
+      else
+        return (inc2 == 0);
     }
   protected:
     bool visit( Event *event )
@@ -177,12 +177,12 @@ class IncidenceChanger::AssignmentVisitor : public IncidenceBase::Visitor
 {
   public:
     AssignmentVisitor() {}
-    bool act( IncidenceBase *incidence, IncidenceBase *inc2 ) 
-    { 
+    bool act( IncidenceBase *incidence, IncidenceBase *inc2 )
+    {
       mIncidence2 = inc2;
-      if ( incidence ) 
-        return incidence->accept( *this ); 
-      else 
+      if ( incidence )
+        return incidence->accept( *this );
+      else
         return false;
     }
   protected:
@@ -253,10 +253,10 @@ bool IncidenceChanger::myAttendeeStatusChanged( Incidence *oldInc, Incidence *ne
   return false;
 }
 
-bool IncidenceChanger::changeIncidence( Incidence *oldinc, Incidence *newinc, 
+bool IncidenceChanger::changeIncidence( Incidence *oldinc, Incidence *newinc,
                                         int action )
 {
-kdDebug(5850)<<"IncidenceChanger::changeChange for incidence \""<<newinc->summary()<<"\" ( old one was \""<<oldinc->summary()<<"\")"<<endl;
+kdDebug(5850)<<"IncidenceChanger::changeIncidence for incidence \""<<newinc->summary()<<"\" ( old one was \""<<oldinc->summary()<<"\")"<<endl;
   if( incidencesEqual( newinc, oldinc ) ) {
     // Don't do anything
     kdDebug(5850) << "Incidence not changed\n";
@@ -265,9 +265,9 @@ kdDebug(5850)<<"IncidenceChanger::changeChange for incidence \""<<newinc->summar
     bool statusChanged = myAttendeeStatusChanged( oldinc, newinc );
     int revision = newinc->revision();
     newinc->setRevision( revision + 1 );
-    // FIXME: Use a generic method for this! Ideally, have an interface class 
-    //        for group cheduling. Each implementation could then just do what 
-    //        it wants with the event. If no groupware is used,use the null 
+    // FIXME: Use a generic method for this! Ideally, have an interface class
+    //        for group cheduling. Each implementation could then just do what
+    //        it wants with the event. If no groupware is used,use the null
     //        pattern...
     if( !KOPrefs::instance()->mUseGroupwareCommunication ||
         KOGroupware::instance()->sendICalMessage( 0,
