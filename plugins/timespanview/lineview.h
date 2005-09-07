@@ -24,10 +24,10 @@
 #ifndef LINEVIEW_H
 #define LINEVIEW_H
 
-#include <qscrollview.h>
-#include <qptrlist.h>
+#include <q3scrollview.h>
+#include <q3ptrlist.h>
 
-class LineView : public QScrollView
+class LineView : public Q3ScrollView
 {
     Q_OBJECT
   public:
@@ -51,7 +51,7 @@ class LineView : public QScrollView
       int end;
     };
 
-    QPtrList<Line> mLines;
+    Q3PtrList<Line> mLines;
     int mPixelWidth;
 };
 

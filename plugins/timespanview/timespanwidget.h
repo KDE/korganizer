@@ -25,13 +25,15 @@
 #define TimeSpanWidget_H
 
 #include <qwidget.h>
+//Added by qt3to4:
+#include <Q3ValueList>
 
 namespace KCal {
 class Event;
 }
 
 class QSplitter;
-class QListView;
+class Q3ListView;
 class LineView;
 class TimeLine;
 
@@ -44,8 +46,8 @@ class TimeSpanWidget : public QWidget
     
     void addItem( KCal::Event * );
 
-    QValueList<int> splitterSizes();
-    void setSplitterSizes( QValueList<int> );
+    Q3ValueList<int> splitterSizes();
+    void setSplitterSizes( Q3ValueList<int> );
     
     void clear();
     
@@ -66,7 +68,7 @@ class TimeSpanWidget : public QWidget
     
   private:
     QSplitter *mSplitter;
-    QListView *mList;
+    Q3ListView *mList;
     TimeLine *mTimeLine;
     LineView *mLineView;
     

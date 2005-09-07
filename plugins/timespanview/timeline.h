@@ -24,10 +24,10 @@
 #ifndef TIMELINE_H
 #define TIMELINE_H
 
-#include <qscrollview.h>
+#include <q3scrollview.h>
 #include <qdatetime.h>
 
-class TimeLine : public QScrollView
+class TimeLine : public Q3ScrollView
 {
     Q_OBJECT
   public:

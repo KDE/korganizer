@@ -23,10 +23,15 @@
 */
 
 #include <qsplitter.h>
-#include <qlistview.h>
+#include <q3listview.h>
 #include <qlayout.h>
-#include <qheader.h>
+#include <q3header.h>
 #include <qpushbutton.h>
+//Added by qt3to4:
+#include <QVBoxLayout>
+#include <Q3ValueList>
+#include <QHBoxLayout>
+#include <QBoxLayout>
 
 #include <klocale.h>
 #include <kdebug.h>
@@ -47,7 +52,7 @@ TimeSpanWidget::TimeSpanWidget( QWidget *parent, const char *name ) :
   mSplitter = new QSplitter( this );
   topLayout->addWidget( mSplitter );
 
-  mList = new QListView( mSplitter );
+  mList = new Q3ListView( mSplitter );
   mList->addColumn( i18n("Summary") );
   
   QWidget *rightPane = new QWidget( mSplitter );
@@ -82,19 +87,19 @@ TimeSpanWidget::~TimeSpanWidget()
 {
 }
 
-QValueList<int> TimeSpanWidget::splitterSizes()
+Q3ValueList<int> TimeSpanWidget::splitterSizes()
 {
   return mSplitter->sizes();
 }
 
-void TimeSpanWidget::setSplitterSizes( QValueList<int> sizes )
+void TimeSpanWidget::setSplitterSizes( Q3ValueList<int> sizes )
 {
   mSplitter->setSizes( sizes );
 }
 
 void TimeSpanWidget::addItem( KCal::Event *event )
 {
-  new QListViewItem( mList, event->summary() );
+  new Q3ListViewItem( mList, event->summary() );
   
   QDateTime startDt = event->dtStart();
   QDateTime endDt = event->dtEnd();

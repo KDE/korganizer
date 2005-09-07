@@ -30,7 +30,7 @@
 #include "timeline.moc"
 
 TimeLine::TimeLine( QWidget *parent, const char *name ) :
-  QScrollView( parent, name )
+  Q3ScrollView( parent, name )
 {
   mPixelWidth = 1000;
   
@@ -83,5 +83,5 @@ void TimeLine::setDateRange( const QDateTime &start, const QDateTime &end )
 
 void TimeLine::setContentsPos( int pos )
 {
-  QScrollView::setContentsPos ( pos, 0 );
+  Q3ScrollView::setContentsPos ( pos, 0 );
 }
