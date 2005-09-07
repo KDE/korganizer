@@ -24,6 +24,7 @@
 */
 
 #include <q3widgetstack.h>
+#include <Q3VButtonGroup>
 #include <qradiobutton.h>
 #include <qlayout.h>
 #include <qpushbutton.h>
