@@ -44,6 +44,7 @@ Comment[et]=See plugin näitab iga päevakavavaate ülaosas iga päeva järjekor
 Comment[fr]=Pour chaque jour, ce module montre le numéro du jour en haut de la vue agenda. Par exemple, le 1er février est le 32ème jour de l'année.
 Comment[hu]=Megjeleníti az év elejétől eltelt napok számát az áttekintő nézet tetején. Például február elseje az év 32. napja.
 Comment[it]=Per ciascun giorno, questo plugin mostra la data giuliana (numero progressivo a partire dal primo gennaio dell'anno corrente). Per esempio al primo di febbraio corrisponde il numero 32.
+Comment[lt]=Kiekvienai dienai šis priedas rodo metų dienos numerį tvarkyklės viršuje. Pvz., Vasario 1 yra32 metų diena.
 Comment[nl]=Deze plugin zorgt ervoor dat het dagnummer boven de agendaweergave wordt geplaatst. Bijvoorbeeld, bij 1 februari hoort dagnummer 32.
 Comment[nn]=For kvar dag vil dette programtillegget visa nummeret til denne dagen i året øvst i tidsplanen. 1. februar vil til dømes visast som dag 32.
 Comment[pl]=Ta wtyczka dla każdego dnia pokazuje jego numer kolejny w roku, na szczycie widoku planu. Na przykład, 1 luty to 32 dzień roku.
