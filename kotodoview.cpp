@@ -215,7 +215,6 @@ void KOTodoListView::contentsDragEnterEvent(QDragEnterEvent *e)
 #endif
 }
 
-
 void KOTodoListView::contentsDragMoveEvent(QDragMoveEvent *e)
 {
 #ifndef KORG_NODND
@@ -1174,20 +1173,6 @@ void KOTodoView::setNewPercentage( KOTodoViewItem *item, int percentage )
       myChild = myChild->nextSibling();
     }*/
     if ( percentage == 100 ) {
-      if ( KOPrefs::instance()->recordTodosInJournals() ) {
-        //FIXME: put all completed to-dos in one journal entry
-        // FIXME: This needs to be done by the calendar view (a to-do might
-        // also be marked completed in the to-do editor!
-        QString text = i18n( "Todo completed: %1" ).arg( todo->summary() );
-        Journal *journal = new Journal();
-        journal->setDtStart( QDateTime::currentDateTime() );
-        journal->setDescription( text );
-        if ( !mChanger->addIncidence( journal ) ) {
-          KODialogManager::errorSaveIncidence( this, journal );
-          delete journal;
-          return;
-        }
-      }
       todo->setCompleted( QDateTime::currentDateTime() );
       // If the todo does recur, it doesn't get set as completed. However, the
       // item is still checked. Uncheck it again.

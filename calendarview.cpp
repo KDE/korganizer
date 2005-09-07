@@ -700,6 +700,51 @@ void CalendarView::incidenceChanged( Incidence *oldIncidence,
   }
   setModified( true );
   history()->recordEdit( oldIncidence, newIncidence );
+  
+  // Record completed todos in journals, if enabled. we should to this here in
+  // favour of the todolist. users can mark a task as completed in an editor
+  // as well.
+  if ( newIncidence->type() == "Todo"
+    && KOPrefs::instance()->recordTodosInJournals()
+    && what == KOGlobals::COMPLETION_MODIFIED ) {
+
+      Todo *todo = static_cast<Todo *>(newIncidence);
+      if ( todo->isCompleted() ) {
+        QString timeStr = KGlobal::locale()->formatTime( QTime::currentTime() );
+        QString description = i18n( "Todo completed: %1 (%2)" ).arg(
+          newIncidence->summary() ).arg( timeStr );
+
+        Journal::List journals = calendar()->journals( QDate::currentDate() );
+        Journal *journal;
+        
+        if ( journals.isEmpty() ) {
+          journal = new Journal();
+          journal->setDtStart( QDateTime::currentDateTime() );
+          
+          QString dateStr = KGlobal::locale()->formatDate( QDate::currentDate() );
+          journal->setSummary( i18n("Journal of %1").arg( dateStr ) );
+          journal->setDescription( description );
+
+          if ( !mChanger->addIncidence( journal ) ) {
+            KODialogManager::errorSaveIncidence( this, journal );
+            delete journal;
+            return;
+          }
+
+        } else { // journal list is not empty
+          journal = *(journals.at(0));
+          Journal *oldJournal = journal->clone();
+          journal->setDescription( journal->description().append( "\n" + description ) );
+
+          if ( !mChanger->changeIncidence( oldJournal, journal ) ) {
+            KODialogManager::errorSaveIncidence( this, journal );
+            delete journal;
+            return;
+          }
+        }
+      }
+  }
+  
   changeIncidenceDisplay( newIncidence, KOGlobals::INCIDENCEEDITED );
   updateUnmanagedViews();
   checkForFilteredChange( newIncidence );
