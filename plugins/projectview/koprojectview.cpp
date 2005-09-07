@@ -18,15 +18,22 @@
 */
 
 #include <qlayout.h>
-#include <qheader.h>
+#include <q3header.h>
 #include <qpushbutton.h>
 #include <qfont.h>
 #include <qlabel.h>
 #include <qlineedit.h>
-#include <qlistbox.h>
-#include <qpopupmenu.h>
-#include <qstrlist.h>
-#include <qlistview.h>
+#include <q3listbox.h>
+#include <q3popupmenu.h>
+#include <q3strlist.h>
+#include <q3listview.h>
+//Added by qt3to4:
+#include <Q3PtrList>
+#include <Q3Frame>
+#include <QHBoxLayout>
+#include <QBoxLayout>
+#include <Q3ValueList>
+#include <QVBoxLayout>
 
 #include <kapplication.h>
 #include <kdebug.h>
@@ -74,7 +81,7 @@ KOProjectView::KOProjectView(Calendar *calendar,QWidget* parent,
   topLayout->addLayout(topBar);
 
   QLabel *title = new QLabel(i18n("Project View"),this);
-  title->setFrameStyle(QFrame::Panel|QFrame::Raised);
+  title->setFrameStyle(Q3Frame::Panel|Q3Frame::Raised);
   topBar->addWidget(title,1);
 
   QPushButton *zoomIn = new QPushButton(i18n("Zoom In"),this);
@@ -122,7 +129,7 @@ void KOProjectView::readSettings()
   KConfig config( "korganizerrc", true, false); // Open read-only, no kdeglobals
   config.setGroup("Views");
 
-  QValueList<int> sizes = config.readIntListEntry("Separator ProjectView");
+  Q3ValueList<int> sizes = config.readIntListEntry("Separator ProjectView");
   if (sizes.count() == 2) {
     mGantt->splitter()->setSizes(sizes);
   }
@@ -134,7 +141,7 @@ void KOProjectView::writeSettings(KConfig *config)
 
   config->setGroup("Views");
 
-  QValueList<int> list = mGantt->splitter()->sizes();
+  Q3ValueList<int> list = mGantt->splitter()->sizes();
   config->writeEntry("Separator ProjectView",list);
 }
 
@@ -144,7 +151,7 @@ void KOProjectView::updateView()
   kdDebug(5850) << "KOProjectView::updateView()" << endl;
 
   // Clear Gantt view
-  QPtrList<KGanttItem> subs = mMainTask->getSubItems();
+  Q3PtrList<KGanttItem> subs = mMainTask->getSubItems();
   KGanttItem *t=subs.first();
   while(t) {
     KGanttItem *nt=subs.next();
@@ -287,17 +294,17 @@ void KOProjectView::showIncidences( const Incidence::List & )
 }
 
 #if 0
-void KOProjectView::editItem(QListViewItem *item)
+void KOProjectView::editItem(Q3ListViewItem *item)
 {
   emit editIncidenceSignal(((KOProjectViewItem *)item)->event());
 }
 
-void KOProjectView::showItem(QListViewItem *item)
+void KOProjectView::showItem(Q3ListViewItem *item)
 {
   emit showIncidenceSignal(((KOProjectViewItem *)item)->event());
 }
 
-void KOProjectView::popupMenu(QListViewItem *item,const QPoint &,int)
+void KOProjectView::popupMenu(Q3ListViewItem *item,const QPoint &,int)
 {
   mActiveItem = (KOProjectViewItem *)item;
   if (item) mItemPopupMenu->popup(QCursor::pos());
@@ -316,7 +323,7 @@ void KOProjectView::newSubTodo()
   }
 }
 
-void KOProjectView::itemClicked(QListViewItem *item)
+void KOProjectView::itemClicked(Q3ListViewItem *item)
 {
   if (!item) return;
 
